@@ -1,276 +1,214 @@
 <?php
-# This file loads the data and all. The other one saves it.
 class ApiQueryArticleFeedback extends ApiQueryBase {
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'af' );
 	}
-	
-	# split these two off into their own modules, instead of doing this.
+
 	public function execute() {
-error_log('hi');
-		$params     = $this->extractRequestParams();
 		global $wgArticleFeedbackRatingTypes;
-
-		if($params['subaction'] == 'showratings') {
-			$this->executeFetchRatings();
-		} else {
-			$this->executeNewForm();
-		}
-	}
-
-	# Initialize a brand new request 
-	protected function executeNewForm() {
-		global $wgUser;
-		$params     = $this->extractRequestParams();
-		$bucket     = $this->getBucket();
-		$result     = $this->getResult();
-
-		if(!$params['pageid'] || !$params['revid']) {
-		    return null;
-		}
-
-		$result->addValue('form', 'pageId',     $params['pageid']); 
-		$result->addValue('form', 'bucketId',   $bucket);
-		$this->logBucket($params['pageid'], $params['revid'], $bucket);
-
-		/* Commented out, because we're allowing unlimited comments.
-		$userData   = array();
-		$tmp        = $this->getFeedbackId($params, $bucket);
-		$feedbackId = $tmp['feedbackId'];
-		if($feedbackId && $tmp['userId'] == $wgUser->getId()) {
-			$userData   = $this->getUserRatings($feedbackId);
-		}
-		$result->addValue('form', 'feedbackId', $feedbackId);
-		foreach($userData as $row) {
-			$key = $val['key'];
-			$val = $val['value'];
-			$result->addValue(array('form', 'data'), $key,  $val);
-		}
-		*/
-	}
-
-	protected function executeFetchRatings() {
-		$params        = $this->extractRequestParams();
-		$result        = $this->getResult();
+		
+		$params = $this->extractRequestParams();
+		$result = $this->getResult();
 		$revisionLimit = $this->getRevisionLimit( $params['pageid'] );
-		$bucket        = $this->getBucket();
-		$pageId	       = $params['pageid'];
-		$rows          = $this->fetchRevisionRollup($pageId, $revisionLimit);
-		$historical    = $this->fetchPageRollup($pageId);
-		$ratings       = array(
-			'pageid'  => $params['pageid'],
-			'ratings' => array(),
-			'status'  => 'current'
-		);
+		
+		$this->addTables( array( 'article_feedback_revisions' ) );
+		$this->addFields( array(
+			'MAX(afr_revision) as afr_revision',
+			'SUM(afr_total) as afr_total',
+			'SUM(afr_count) as afr_count',
+			'afr_rating_id',
+		) );
+		$this->addWhereFld( 'afr_page_id', $params['pageid'] );
+		$this->addWhere( 'afr_revision >= ' . $revisionLimit );
+		$this->addWhereFld( 'afr_rating_id', array_keys( $wgArticleFeedbackRatingTypes ) );
+		$this->addOption( 'GROUP BY', 'afr_rating_id' );
+		$this->addOption( 'LIMIT', count( $wgArticleFeedbackRatingTypes ) );
 
-		foreach ( $rows as $row ) {
-			$overall = 0;
-			foreach($historical as $ancient) {
-				if($ancient->aaf_name == $row->aaf_name) {
-					$overall = $ancient->reviews;
+		// Rating counts and totals
+		$res = $this->select( __METHOD__ );
+		$ratings = array( $params['pageid'] => array( 'pageid' => $params['pageid'] ) );
+		$historicCounts = $this->getHistoricCounts( $params );
+		foreach ( $res as $i => $row ) {
+			if ( !isset( $ratings[$params['pageid']]['revid'] ) ) {
+				$ratings[$params['pageid']]['revid'] = (int) $row->afr_revision;
+			}
+			if ( !isset( $ratings[$params['pageid']]['ratings'] ) ) {
+				$ratings[$params['pageid']]['ratings'] = array();
+			}
+			$ratings[$params['pageid']]['ratings'][] = array(
+				'ratingid' => (int) $row->afr_rating_id,
+				'ratingdesc' => $wgArticleFeedbackRatingTypes[$row->afr_rating_id],
+				'total' => (int) $row->afr_total,
+				'count' => (int) $row->afr_count,
+				'countall' => isset( $historicCounts[$row->afr_rating_id] )
+					? (int) $historicCounts[$row->afr_rating_id] : 0
+			);
+		}
+
+		// User-specific data
+		$ratings[$params['pageid']]['status'] = 'current';
+		if ( $params['userrating'] ) {
+			// User ratings
+			$userRatings = $this->getUserRatings( $params );
+
+			// If valid ratings already exist..
+			if ( isset( $ratings[$params['pageid']]['ratings'] ) ) {
+				foreach ( $ratings[$params['pageid']]['ratings'] as $i => $rating ) {
+					if ( isset( $userRatings[$rating['ratingid']] ) ) {
+						// Rating value
+						$ratings[$params['pageid']]['ratings'][$i]['userrating'] =
+							(int) $userRatings[$rating['ratingid']]['value'];
+						// Expiration
+						if ( $userRatings[$rating['ratingid']]['revision'] < $revisionLimit ) {
+							$ratings[$params['pageid']]['status'] = 'expired';
+						}
+					}
+				}
+
+			// Else, no valid ratings exist..
+			} else {
+
+				if ( count( $userRatings ) ) {
+					$ratings[$params['pageid']]['status'] = 'expired';
+				}
+
+				foreach ( $userRatings as $ratingId => $userRating ) {
+					// Revision
+					if ( !isset( $ratings[$params['pageid']]['revid'] ) ) {
+						$ratings[$params['pageid']]['revid'] = (int) $userRating['revision'];
+					}
+					// Ratings
+					if ( !isset( $ratings[$params['pageid']]['ratings'] ) ) {
+						$ratings[$params['pageid']]['ratings'] = array();
+					}
+					// Rating value
+					$ratings[$params['pageid']]['ratings'][] = array(
+						'ratingid' => $ratingId,
+						'ratingdesc' => $userRating['text'],
+						'total' => 0,
+						'count' => 0,
+						'countall' => isset( $historicCounts[$row->afr_rating_id] )
+							? (int) $historicCounts[$row->afr_rating_id] : 0,
+						'userrating' => (int) $userRating['value'],
+					);
 				}
 			}
-			$ratings['ratings'][] = array(
-				'ratingdesc' => $row->field_name,
-				'ratingid'   => (int) $row->field_id,
-				'total'      => (int) $row->points,
-				'count'      => (int) $row->reviews,
-				'countall'   => (int) $overall
-			);
+
+			// Expertise
+			if ( isset( $ratings[$params['pageid']]['revid'] ) ) {
+				$expertise = $this->getExpertise( $params, $ratings[$params['pageid']]['revid'] );
+				if ( $expertise !== false ) {
+					$ratings[$params['pageid']]['expertise'] = $expertise;
+				}
+			}
 		}
 
-		foreach ( $ratings as $r ) {
-			$result->addValue( 
-				array('query', $this->getModuleName()), null, $r
-			);
+		foreach ( $ratings as $rat ) {
+			if ( isset( $rat['ratings'] ) ) {
+				$result->setIndexedTagName( $rat['ratings'], 'r' );
+			}
+			
+			$result->addValue( array( 'query', $this->getModuleName() ), null, $rat );
 		}
-
+		
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'aa' );
 	}
 
-	protected function getBucket() {
-		#TODO base this on last 2 digits of IP address per requirements
-		return 5;
-	}
-
-	private function logBucket($page, $revision, $bucket) {
-	    $dbw = wfGetDB( DB_MASTER );
-	    $dbr = wfGetDB( DB_SLAVE );
-
-	    # Select hit counter row
-	    $row = $dbr->select(
-		'aft_article_hits',
-		'aah_counter',
-		array(
-		    'aah_page_id'     => $page,
-		    'aah_revision_id' => $revision,
-		    'aah_bucket_id'   => $bucket,
-		)
-	    );
-
-	    # If there's a row, update it.
-	    if($row) {
-		$dbw->insert(
-		    'aft_article_hits' 
-		    array( 'aah_counter' => ($row['aah_counter'} + 1) ),
-		    array(
-			'aah_page_id'     => $page,
-			'aah_revision_id' => $revision,
-			'aah_bucket_id'   => $bucket,
-		    )
-		);
+	protected function getHistoricCounts( $params ) {
+		global $wgArticleFeedbackRatingTypes;
 		
-	    } 
-
-	    # Otherwise, there's no row, insert one.
-	    $dbw->insert('aft_article_hits' array(
-		'aah_page_id'	  => $page,
-		'aah_revision_id' => $revision,
-		'aah_bucket_id'   => $bucket,
-		'aah_counter'     => 1
-	    ));
-	}
-
-	public function fetchPageRollup($pageId, $revisionLimit = 0) {
-		return $this->fetchRollup($pageId, $revisionLimit, 'page');
-	}
-
-	public function fetchRevisionRollup($pageId, $revisionLimit = 0) {
-		return $this->fetchRollup($pageId, $revisionLimit, 'revision');
-	}
-
-	private function fetchRollup($pageId, $revisionLimit, $type) {
-		$dbr   = wfGetDB( DB_SLAVE );
-		$where = array();
-
-		if($type == 'page') {
-			$table   = 'article_feedback_ratings_rollup';
-			$prefix  = 'aap';
-		} else {
-			$table   = 'article_revision_feedback_ratings_rollup';
-			$prefix  = 'afr';
-			$where[] = 'afr_revision >= '.$revisionLimit; #lmao
-		}
-		$where[$prefix.'_page_id']  = $pageId;
-		$where[] = $prefix.'_rating_id = aaf_id';
-
-		$rows  = $dbr->select(
-			array( $table, 'article_field' ),
+		$res = $this->getDB()->select(
+			'article_feedback_pages',
 			array(
-				'aaf_name AS field_name',
-				$prefix.'_rating_id AS field_id',
-				'SUM('.$prefix.'_total) AS points',
-				'SUM('.$prefix.'_count) AS reviews',
+				'aap_rating_id',
+				'aap_count',
 			),
-			$where,
-			__METHOD__,
 			array(
-				'GROUP BY' => $prefix.'_rating_id, aaf_name'
-			)
-		);
-
-		return $rows;
-	}
-
-	# Either returns this users feedbackID for this page/rev, or saves 
-	# a new one and returns that.
-	protected function getFeedbackId($params, $bucket) {
-		global $wgUser;
-		$token	   = ApiArticleFeedbackUtils::getAnonToken($params);
-		$dbr       = wfGetDB( DB_SLAVE );
-		$timestamp = $dbr->timestamp();
-		$revId     = $params['revid'];
-		
-		# make sure we have the page/revision/user
-		if(!$params['pageid'] || !$wgUser) { return array(); }
-
-		# Fetch this if it wasn't passed in
-		if(!$revId) {
-			$revId = $dbr->selectField(
-				'revision', 'rev_id',
-				array('rev_page' => $params['pageid']),
-				__METHOD__,
-				array(
-					'ORDER BY' => 'rev_id DESC',
-					'LIMIT'    => 1
-				)
-			);
-		}
-
-		# check for existing feedback for this rev/page/user
-		$feedbackId = $dbr->selectField(
-			'article_feedback', 'aa_id',
-			array(
-				'aa_page_id'   => $params['pageid'],
-				'aa_revision'  => $revId,
-				'aa_user_text' => $wgUser->getName()
-			),
-			__METHOD__,
-			array(
-				'ORDER BY' => 'aa_id DESC',
-				'LIMIT'    => 1
-			)
-		);
-		if($feedbackId) { 
-			return array(
-				'feedbackId' => $feedbackId,
-				'userId'     => $wgUser->getId()
-			); 
-		}
-
-		# insert new row if we don't already have one
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->insert('article_feedback', array(
-			'aa_page_id'         => $params['pageid'],
-                        'aa_revision'        => $revId,
-                        'aa_created'         => $timestamp,
-                        'aa_user_id'         => $wgUser->getId(),
-                        'aa_user_text'       => $wgUser->getName(),
-                        'aa_user_anon_token' => $token,
-                        'aa_design_bucket'   => $bucket,
-		), __METHOD__);
-		return array(
-			'feedbackId' => $dbw->insertID(),
-			'userId'     => $wgUser->getId()
-		); 
-	}
-
-	# Gets the user's feedback for this page. Only works on userids,
-	# NOT IP adderesses. Idea being that IPs can move, and we don't want
-	# your comments being shown to a different person who took your IP.
-	# ALSO take revision limit into account.
-	protected function getUserRatings($feedbackId) {
-		global $wgUser;
-		$dbr      = wfGetDB( DB_SLAVE );
-		$feedback = array();
-		$rows     = $dbr->select(
-			array('article_answer', 'article_field', 
-			 'article_feedback'),
-			array('aaaa_response_rating', 'aaaa_response_text', 
-			 'aaaa_response_bool', 'aaaa_response_option_id', 
-			 'aaf_name', 'aaf_data_type'),
-			array(
-				'aa_revision >= '.$this->getRevisionLimit(),
-				'aaaa_feedback_id' => $feedbackId,
-				'aa_user_id'       => $wgUser->getId(),
-				'aa_is_submitted'  => 1,
+				'aap_page_id' => $params['pageid'],
+				'aap_rating_id' => array_keys( $wgArticleFeedbackRatingTypes ),
 			),
 			__METHOD__
 		);
-
-		foreach($rows as $row) {
-			$method = 'response_'.$row->aaf_data_type;
-			$feeedback[] = array(
-				'name'  => $row->aaf_name,
-				'value' => $row->$method
-			);
+		$counts = array();
+		foreach ( $res as $row ) {
+			$counts[$row->aap_rating_id] = $row->aap_count;
 		}
-		return $feedback;
+		return $counts;
+	}
+
+	protected function getAnonToken( $params ) {
+		global $wgUser;
+		$token = '';
+		if ( $wgUser->isAnon() && $params['userrating'] ) {
+			if ( !isset( $params['anontoken'] ) ) {
+				$this->dieUsageMsg( array( 'missingparam', 'anontoken' ) );
+			} elseif ( strlen( $params['anontoken'] ) != 32 ) {
+				$this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
+			}
+			$token = $params['anontoken'];
+		}
+		return $token;
+	}
+	
+	protected function getExpertise( $params, $revid ) {
+		global $wgUser;
+		
+		return $this->getDB()->selectField(
+			'article_feedback_properties',
+			'afp_value_text',
+			array(
+				'afp_key' => 'expertise',
+				'afp_user_text' => $wgUser->getName(),
+				'afp_user_anon_token' => $this->getAnonToken( $params ),
+				'afp_revision' => $revid,
+			),
+			__METHOD__
+		);
+	}
+	
+	protected function getUserRatings( $params ) {
+		global $wgUser, $wgArticleFeedbackRatingTypes;
+
+		$res = $this->getDB()->select(
+			array( 'article_feedback' ),
+			array(
+				'aa_rating_id',
+				'aa_revision',
+				'aa_rating_value',
+			),
+			array(
+				'aa_page_id' => $params['pageid'],
+				'aa_rating_id' => array_keys( $wgArticleFeedbackRatingTypes ),
+				'aa_user_text' => $wgUser->getName(),
+				'aa_user_anon_token' => $this->getAnonToken( $params ),
+			),
+			__METHOD__,
+			array(
+				'LIMIT' => count( $wgArticleFeedbackRatingTypes ),
+				'ORDER BY' => 'aa_id DESC',
+			)
+		);
+		$ratings = array();
+		$revId = null;
+		foreach ( $res as $row ) {
+			if ( $revId === null ) {
+				$revId = $row->aa_revision;
+			}
+			// Prevent incomplete rating sets from making a mess
+			if ( $revId === $row->aa_revision ) {
+				$ratings[$row->aa_rating_id] = array(
+					'value' => $row->aa_rating_value,
+					'revision' => $row->aa_revision,
+					'text' => $wgArticleFeedbackRatingTypes[$row->aa_rating_id],
+				);
+			}
+		}
+		return $ratings;
 	}
 
 	/**
 	 * Get the revision number of the oldest revision still being counted in totals.
-	 *
+	 * 
 	 * @param $pageId Integer: ID of page to check revisions for
 	 * @return Integer: Oldest valid revision number or 0 of all revisions are valid
 	 */
@@ -284,8 +222,8 @@ error_log('hi');
 			__METHOD__,
 			array(
 				'ORDER BY' => 'rev_id DESC',
-				'LIMIT'    => 1,
-				'OFFSET'   => $wgArticleFeedbackRatingLifetime - 1
+				'LIMIT' => 1,
+				'OFFSET' => $wgArticleFeedbackRatingLifetime - 1
 			)
 		);
 		if ( $revision ) {
@@ -293,7 +231,7 @@ error_log('hi');
 		}
 		return 0;
 	}
-
+	
 	public function getCacheMode( $params ) {
 		if ( $params['userrating'] ) {
 			return 'anon-public-user-private';
@@ -304,23 +242,13 @@ error_log('hi');
 
 	public function getAllowedParams() {
 		return array(
-			'userrating' => 0,
-			'anontoken'  => null,
-			'subaction'  => array(
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array('showratings','newform'),
-			),
-			'revid'     => array(
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'integer',
-			),
-			'pageid'     => array(
+			'pageid' => array(
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'integer',
-			)
+				ApiBase::PARAM_ISMULTI => false,
+				ApiBase::PARAM_TYPE => 'integer',
+			),
+			'userrating' => 0,
+			'anontoken' => null,
 		);
 	}
 
