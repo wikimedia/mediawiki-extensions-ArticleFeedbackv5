@@ -1,334 +1,159 @@
 <?php
-class ApiArticleFeedback extends ApiBase {
+# This file saves the data and all. The other one loads it.
+class ApiArticleFeedbackv5 extends ApiBase {
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, '' );
 	}
 
 	public function execute() {
-		global $wgUser, $wgArticleFeedbackRatingTypes, $wgArticleFeedbackSMaxage,
-			$wgArticleFeedbackNamespaces;
+		global $wgUser, $wgArticleFeedbackv5SMaxage;
 		$params = $this->extractRequestParams();
 
+error_log('saving form');
+error_log(print_r($params,1));
+
 		// Anon token check
-		if ( $wgUser->isAnon() ) {
-			if ( !isset( $params['anontoken'] ) ) {
-				$this->dieUsageMsg( array( 'missingparam', 'anontoken' ) );
-			} elseif ( strlen( $params['anontoken'] ) != 32 ) {
-				$this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
-			}
+		$token = ApiArticleFeedbackv5Utils::getAnonToken( $params );
 
-			$token = $params['anontoken'];
-		} else {
-			$token = '';
+		// Is feedback enabled on this page check?
+		if ( !ApiArticleFeedbackv5Utils::isFeedbackEnabled( $params ) ) {
+			$this->dieUsage( 'ArticleFeedback is not enabled on this page', 'invalidpage' );
 		}
 
-		// Load check, is this page ArticleFeedback-enabled ?
-		// Keep in sync with ext.articleFeedback.startup.js
-		$title = Title::newFromID( $params['pageid'] );
-		if (
-			// Inexisting page ? (newFromID returns null so we can't use $title->exists)
-			is_null( $title )
-			// Namespace not a valid ArticleFeedback namespace ?
-			|| !in_array( $title->getNamespace(), $wgArticleFeedbackNamespaces )
-			// Page a redirect ?
-			|| $title->isRedirect()
-		) {
-				// ...then error out
-				$this->dieUsage( 'ArticleFeedback is not enabled on this page', 'invalidpage' );
-		}
-
-		$dbw = wfGetDB( DB_MASTER );
-		
-		$pageId = $params['pageid'];
-		$revisionId = $params['revid'];
-		
-		// Build array( rating ID => rating value )
-		$ratings = array();
-		foreach ( $wgArticleFeedbackRatingTypes as $ratingID => $unused ) {
-			$ratings[$ratingID] = intval( $params["r{$ratingID}"] );
-		}
-		// Insert the new ratings
-		$id = $this->insertUserRatings( $pageId, $revisionId, $wgUser, $token, $ratings, $params['bucket'] );
-		
-		// Query the previous ratings by this user for this page,
-		// possibly for an older revision
-		// Use aa_id < $id to make sure we get the one before ours even if other ratings were inserted after
-		// insertUserRatings() but before selectRow(); this prevents race conditions from messing things up.
-		$res = $dbw->select(
-			'article_feedback',
-			array( 'aa_rating_id', 'aa_rating_value', 'aa_revision' ),
-			array(
-				'aa_user_text' => $wgUser->getName(),
-				'aa_page_id' => $params['pageid'],
-				'aa_rating_id' => array_keys( $wgArticleFeedbackRatingTypes ),
-				'aa_user_anon_token' => $token,
-				'aa_id < ' . intval( $id )
-			),
-			__METHOD__,
-			array(
-				'ORDER BY' => 'aa_id DESC',
-				'LIMIT' => count( $wgArticleFeedbackRatingTypes ),
-			)
+		$feedbackId   = $this->getFeedbackId($params);
+error_log("feedback id is $feedbackId");
+		$dbr          = wfGetDB( DB_SLAVE );
+		$keys         = array();
+		foreach($params as $key => $unused) { $keys[] = $key; }
+		$user_answers = array();
+		$pageId       = $params['pageid'];
+		$bucket       = $params['bucket'];
+		$revisionId   = $params['revid'];
+		$answers      = $dbr->select(
+			'aft_article_field',
+			array('aaf_id', 'aaf_name', 'aaf_data_type'),
+			array('aaf_name' => $keys),
+			__METHOD__
 		);
-		$lastRatings = array();
-		foreach ( $res as $row ) {
-			$lastRatings[$row->aa_rating_id]['value'] = $row->aa_rating_value;
-			$lastRatings[$row->aa_rating_id]['revision'] = $row->aa_revision;
-		}
-		
-		foreach ( $wgArticleFeedbackRatingTypes as $ratingID => $unused ) {
-			$lastPageRating = false;
-			$lastRevRating = false;
-			if ( isset( $lastRatings[$ratingID] ) ) {
-				$lastPageRating = intval( $lastRatings[$ratingID]['value'] );
-				if ( intval( $lastRatings[$ratingID]['revision'] ) == $revisionId ) {
-					$lastRevRating = $lastPageRating;
-				}
-			}
-			$thisRating = intval( $params["r{$ratingID}"] );
-			
-			// Update counter tables
-			$this->insertRevisionRating( $pageId, $revisionId, $ratingID, $thisRating - $lastRevRating,
-				$thisRating, $lastRevRating
+
+		foreach($answers as $answer) {
+			$type = $answer->aaf_data_type;
+			$user_answers[] = array(
+				'aaaa_feedback_id'    => $feedbackId,
+				'aaaa_field_id'       => $answer->aaf_id,
+				"aaaa_response_$type" => $params[$answer->aaf_name]
 			);
-			$this->insertPageRating( $pageId, $ratingID, $thisRating - $lastPageRating, $thisRating, $lastPageRating );
 		}
 
-		$this->insertProperties( $revisionId, $wgUser, $token, $params );
+		$ctaId = $this->saveUserRatings($user_answers, $feedbackId, $bucket);
+		$this->updateRollupTables($pageId, $revisionId);
 
-		$squidUpdate = new SquidUpdate( array( wfAppendQuery( wfScript( 'api' ), array(
-			'action' => 'query',
-			'format' => 'json',
-			'list' => 'articlefeedback',
-			'afpageid' => $pageId,
-			'afanontoken' => '',
-			'afuserrating' => 0,
-			'maxage' => 0,
-			'smaxage' => $wgArticleFeedbackSMaxage
-		) ) ) );
+		$squidUpdate = new SquidUpdate(array(
+			wfAppendQuery(wfScript('api'), array(
+				'action'       => 'query',
+				'format'       => 'json',
+				'list'         => 'articlefeedback',
+				'afpageid'     => $pageId,
+				'afanontoken'  => '',
+				'afuserrating' => 0,
+				'maxage'       => 0,
+				'smaxage'      => $wgArticleFeedbackv5SMaxage
+			))
+		));
 		$squidUpdate->doUpdate();
 
-		wfRunHooks( 'ArticleFeedbackChangeRating', array( $params ) );
+		wfRunHooks('ArticleFeedbackChangeRating', array($params));
 
-		$r = array( 'result' => 'Success' );
-		$this->getResult()->addValue( null, $this->getModuleName(), $r );
-	}
-	
-	/**
-	 * Inserts (or Updates, where appropriate) the aggregate page rating
-	 * 
-	 * @param $pageId Integer: Page Id
-	 * @param $ratingId Integer: Rating Id
-	 * @param $updateAddition Integer: Difference between user's last rating (if applicable)
-	 * @param $thisRating Integer|Boolean: Value of the Rating
-	 * @param $lastRating Integer|Boolean: Value of the last Rating
-	 */
-	private function insertPageRating( $pageId, $ratingId, $updateAddition, $thisRating, $lastRating ) {
-		$dbw = wfGetDB( DB_MASTER );
-
-		// Try to insert a new afp row for this page with zeroes in it
-		// Try will silently fail if the row already exists
-		$dbw->insert(
-			'article_feedback_pages',
-			 array(
-				'aap_page_id' => $pageId,
-				'aap_total' => 0,
-				'aap_count' => 0,
-				'aap_rating_id' => $ratingId,
-			),
-			__METHOD__,
-			 array( 'IGNORE' )
-		);
-
-		// We now know the row exists, so increment it
-		$dbw->update(
-			'article_feedback_pages',
-			array(
-				'aap_total = aap_total + ' . $updateAddition,
-				'aap_count = aap_count + ' . $this->getCountChange( $lastRating, $thisRating ),
-			),
-			array(
-				'aap_page_id' => $pageId,
-				'aap_rating_id' => $ratingId,
-			),
-			__METHOD__
+		$this->getResult()->addValue(null, $this->getModuleName(),
+			array('result' => 'Success')
 		);
 	}
 
-	/**
-	 * Inserts (or Updates, where appropriate) the aggregate revision rating
-	 * 
-	 * @param $pageId Integer: Page Id
-	 * @param $revisionId Integer: Revision Id
-	 * @param $ratingId Integer: Rating Id
-	 * @param $updateAddition Integer: Difference between user's last rating (if applicable)
-	 * @param $thisRating Integer|Boolean: Value of the Rating
-	 * @param $lastRating Integer|Boolean: Value of the last Rating
-	 */
-	private function insertRevisionRating( $pageId, $revisionId, $ratingId, $updateAddition, $thisRating, $lastRating ) {
-		$dbw = wfGetDB( DB_MASTER );
-
-		// Try to insert a new "totals" row for this page,rev,rating set
-		$dbw->insert(
-			'article_feedback_revisions',
-			 array(
-				'afr_page_id' => $pageId,
-				'afr_total' => 0,
-				'afr_count' => 0,
-				'afr_rating_id' => $ratingId,
-			 	'afr_revision' => $revisionId,
-			),
-			__METHOD__,
-			 array( 'IGNORE' )
-		);
-		
-		// Apply the difference between the previous and new ratings to the current "totals" row
-		$dbw->update(
-			'article_feedback_revisions',
-			array(
-				'afr_total = afr_total + ' . $updateAddition,
-				'afr_count = afr_count + ' . $this->getCountChange( $lastRating, $thisRating ),
-			),
-			array(
-				'afr_page_id' => $pageId,
-				'afr_rating_id' => $ratingId,
-				'afr_revision' => $revisionId,
-			),
-			__METHOD__
-		);
-	}
-	/**
-	 * Calculate the difference between the previous rating and this one
-	 *    -1 == Rating last time, but abstained this time
-	 *     0 == No change in rating count
-	 *     1 == No rating last time (or new rating), and now there is
-	 */
-	protected function getCountChange( $lastRating, $thisRating ) {
-		if ( $lastRating === false || $lastRating === 0 ) {
-			return $thisRating === 0 ? 0 : 1;
-		}
-		// Last rating was > 0
-		return $thisRating === 0 ? -1 : 0;
+	public function updateRollupTables($page, $revision) {
+		$this->updateRatingRollup($page, $revision);
+		$this->updateSelectRollup($page, $revision);
 	}
 
-	/**
-	 * Inserts the user's ratings for a specific revision
-	 *
-	 * @param $pageId Integer: Page Id
-	 * @param $revisionId Integer: Revision Id
-	 * @param $user User: Current User object
-	 * @param $token Array: Token if necessary
-	 * @param $ratings Array: Keys are rating IDs, values are rating values
-	 * @param $bucket Integer: Which rating widget was the user shown
-	 * @return int Return value of $dbw->insertID(). This is the aa_id of the first (MySQL) or last (SQLite) inserted row
-	 */
-	private function insertUserRatings( $pageId, $revisionId, $user, $token, $ratings, $bucket ) {
-		$dbw = wfGetDB( DB_MASTER );
+	public function updateRatingRollup($page, $rev) {
+		$this->__updateRollup($page, $rev, 'ratings', 'page');
+		$this->__updateRollup($page, $rev, 'ratings', 'revision');
+	}
 
+	public function updateSelectRollup($page, $rev) {
+		$this->__updateRollup($page, $rev, 'select', 'page');
+		$this->__updateRollup($page, $rev, 'select', 'revision');
+	}
+
+	# page and rev and page and revision ids
+	# type is either ratings or select, the two rollups we have
+	# scope is either page or revision
+	private function __updateRollup($page, $rev, $type, $scope) {
+		# sanity check
+		if($type != 'ratings' && $type != 'select') { return 0; }
+		if($scope != 'page' && $scope != 'revision') { return 0; }
+
+		# TODO
+		$table = 'article_'.$rev.'_feedback_'.$type.'_rollup';
+	}
+
+	public function getFeedbackId($params) {
+		global $wgUser;
+		$dbw       = wfGetDB( DB_MASTER );
+		$revId     = $params['revid'];
+		$bucket    = $params['revid'];
+		$token     = ApiArticleFeedbackv5Utils::getAnonToken($params);
 		$timestamp = $dbw->timestamp();
-		
-		$rows = array();
-		foreach ( $ratings as $ratingID => $ratingValue ) {
-			$rows[] = array(
-				'aa_page_id' => $pageId,
-				'aa_user_id' => $user->getId(),
-				'aa_user_text' => $user->getName(),
-				'aa_user_anon_token' => $token,
-				'aa_revision' => $revisionId,
-				'aa_timestamp' => $timestamp,
-				'aa_rating_id' => $ratingID,
-				'aa_rating_value' => $ratingValue,
-				'aa_design_bucket' => $bucket,
-			);
+
+		# make sure we have a page/user
+		if(!$params['pageid'] || !$wgUser) { return null; }
+
+		# Fetch this if it wasn't passed in
+		if(!$revId) {
+			$revId = ApiArticleFeedbackv5Utils::getRevisionId($params['pageid']);
+error_log('rev id?');
 		}
 
-		// In MySQL, there is native support for multi-row inserts and our rows
-		// will automatically get consecutive insertIDs. In SQLite this seems
-		// to be the case if you use a transaction, but I couldn't find anything
-		// on the web that states whether this is true.
-		$dbw->begin();
-		$dbw->insert( 'article_feedback', $rows, __METHOD__ );
-		$dbw->commit();
-		
+		$dbw->insert('aft_article_feedback', array(
+			'aa_page_id'         => $params['pageid'],
+			'aa_revision_id'     => $revId,
+			'aa_created'         => $timestamp,
+			'aa_user_id'         => $wgUser->getId(),
+			'aa_user_text'       => $wgUser->getName(),
+			'aa_user_anon_token' => $token,
+			'aa_bucket_id'       => $bucket,
+		));
+
 		return $dbw->insertID();
 	}
 
-	/**
-	 * Inserts or updates properties for a specific rating
-	 * @param $revisionId int Revision ID
-	 * @param $user User object
-	 * @param $token string Anon token or empty string
-	 * @param $params array Request parameters
-	 */
-	private function insertProperties( $revisionId, $user, $token, $params ) {
-		// Expertise is given as a list of one or more tags, such as profession, hobby, etc.
-		$this->insertProperty( $revisionId, $user, $token, 'expertise', $params['expertise'] );
-		// Capture edit counts as of right now for the past 1, 3 and 6 months as well as all time
-		// - These time distances match the default configuration for the ClickTracking extension
-		if ( $user->isLoggedIn() ) {
-			$this->insertProperty(
-				$revisionId, $user, $token, 'contribs-lifetime', (integer) $user->getEditCount()
-			);
-			// Take advantage of the UserDailyContribs extension if it's present
-			if ( function_exists( 'getUserEditCountSince' ) ) {
-				$now = time();
-				$this->insertProperty(
-					$revisionId, $user, $token, 'contribs-6-months',
-					getUserEditCountSince( $now - ( 60 * 60 * 24 * 365 / 2 ) )
-				);
-				$this->insertProperty(
-					$revisionId, $user, $token, 'contribs-3-months',
-					getUserEditCountSince( $now - ( 60 * 60 * 24 * 365 / 4 ) )
-				);
-				$this->insertProperty(
-					$revisionId, $user, $token, 'contribs-1-month',
-					getUserEditCountSince( $now - ( 60 * 60 * 24 * 30 ) )
-				);
-			}
-		}
-	}
 
 	/**
-	 * Inserts or updates a specific property for a specific rating
-	 * @param $revisionId int Revision ID
-	 * @param $user User object
-	 * @param $token string Anon token or empty string
-	 * @param $key string Property key
-	 * @param $value int Property value
+	 * Inserts the user's rating for a specific revision
 	 */
-	private function insertProperty( $revisionId, $user, $token, $key, $value ) {
-		$dbw = wfGetDB( DB_MASTER );
-		
-		$dbw->insert( 'article_feedback_properties', array(
-				'afp_revision' => $revisionId,
-				'afp_user_text' => $user->getName(),
-				'afp_user_anon_token' => $token,
-				'afp_key' => $key,
-				'afp_value' => is_int( $value ) ? $value : null,
-				'afp_value_text' => !is_int( $value ) ? strval( $value ) : null,
-			),
-			__METHOD__,
-			array( 'IGNORE' )
+	private function saveUserRatings($data, $feedbackId, $bucket) {
+		$dbw   = wfGetDB(DB_MASTER);
+		$ctaId = $this->getCTAId($data, $bucket);
+
+		# TODO: Move these deleted rows to an archive table or flag
+		# them as archived or something.
+		$dbw->begin();
+		$dbw->insert('aft_article_answer', $data, __METHOD__);
+		$dbw->update(
+			'aft_article_feedback',
+			array( 'aa_cta_id'    => $ctaId ),
+			array( 'aa_id' => $feedbackId ),
+			__METHOD__
 		);
-		
-		if ( !$dbw->affectedRows() ) {
-			$dbw->update( 'article_feedback_properties',
-				array( 
-					'afp_value' => is_int( $value ) ? $value : null,
-					'afp_value_text' => !is_int( $value ) ? strval( $value ) : null,
-				),
-				array(
-					'afp_revision' => $revisionId,
-					'afp_user_text' => $user->getName(),
-					'afp_user_anon_token' => $token,
-					'afp_key' => $key,
-				), __METHOD__
-			);
-		}
+		$dbw->commit();
+
+		return $ctaId;
+	}
+
+	public function getCTAId($answers, $bucket) {
+	    return 1; # Hard-code this for now.
 	}
 
 	public function getAllowedParams() {
-		global $wgArticleFeedbackRatingTypes;
 		$ret = array(
 			'pageid' => array(
 				ApiBase::PARAM_TYPE => 'integer',
@@ -352,47 +177,38 @@ class ApiArticleFeedback extends ApiBase {
 			),
 		);
 
-		foreach( $wgArticleFeedbackRatingTypes as $ratingID => $unused ) {
-			$ret["r{$ratingID}"] = array(
-				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_RANGE_ENFORCE => true,
-				ApiBase::PARAM_MIN => 0,
-				ApiBase::PARAM_MAX => 5,
+		$fields = ApiArticleFeedbackv5Utils::getFields();
+		foreach( $fields as $field ) {
+			$ret[$field->aaf_name] = array(
+				ApiBase::PARAM_TYPE     => 'text',
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
 			);
 		}
+
 		return $ret;
 	}
 
 	public function getParamDescription() {
-		global $wgArticleFeedbackRatingTypes;
-		$ret = array(
-			'pageid' => 'Page ID to submit feedback for',
-			'revid' => 'Revision ID to submit feedback for',
+		$fields = ApiArticleFeedbackv5Utils::getFields();
+		$ret    = array(
+			'pageid'    => 'Page ID to submit feedback for',
+			'revid'     => 'Revision ID to submit feedback for',
 			'anontoken' => 'Token for anonymous users',
-			'bucket' => 'Which rating widget was shown to the user',
+			'bucket'    => 'Which rating widget was shown to the user',
 			'expertise' => 'What kinds of expertise does the user claim to have',
 		);
-		foreach( $wgArticleFeedbackRatingTypes as $rating => $unused ) {
-			$ret["r{$rating}"] = "Rating {$rating}";
+
+		foreach( $fields as $f ) {
+		    $ret[$f->aaf_name] = 'Optional feedbackl field, only appears in certain "buckets".';
 		}
+
 		return $ret;
 	}
 
-	public function getDescription() {
-		return array(
-			'Submit article feedback'
-		);
-	}
+	public function mustBePosted() { return true; }
 
-	public function mustBePosted() {
-		return true;
-	}
-
-	public function isWriteMode() {
-		return true;
-	}
+	public function isWriteMode() { return true; }
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
@@ -400,6 +216,12 @@ class ApiArticleFeedback extends ApiBase {
 			array( 'code' => 'invalidtoken', 'info' => 'The anontoken is not 32 characters' ),
 			array( 'code' => 'invalidpage', 'info' => 'ArticleFeedback is not enabled on this page' ),
 		) );
+	}
+
+	public function getDescription() {
+		return array(
+			'Submit article feedback'
+		);
 	}
 
 	protected function getExamples() {

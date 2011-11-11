@@ -5,7 +5,7 @@
 
 // Only track users who have been assigned to the tracking group
 var tracked = 'track' === mw.user.bucket(
-	'ext.articleFeedback-tracking', mw.config.get( 'wgArticleFeedbackTracking' )
+	'ext.articleFeedback-tracking', mw.config.get( 'wgArticleFeedbackv5Tracking' )
 );
 
 /**
@@ -15,7 +15,7 @@ var tracked = 'track' === mw.user.bucket(
  * @return String: Prefixed event name
  */
 function prefix( key ) {
-	var version = mw.config.get( 'wgArticleFeedbackTracking' ).version || 0;
+	var version = mw.config.get( 'wgArticleFeedbackv5Tracking' ).version || 0;
 	return 'ext.articleFeedback@' + version + '-' + key;
 }
 
@@ -91,7 +91,7 @@ var survey = new ( function() {
 					'bgiframe': true,
 					'autoOpen': true,
 					'modal': true,
-					'title': mw.msg( 'articlefeedback-survey-title' ),
+					'title': mw.msg( 'articlefeedbackv5-survey-title' ),
 					'close': function() {
 						// Click tracking
 						trackClick( 'survey-cancel' );
@@ -124,10 +124,10 @@ var survey = new ( function() {
 							.html( function() {
 								var link = mw.html.element(
 									'a', {
-										href: mw.msg( 'articlefeedback-privacyurl' )
-									}, mw.msg( 'articlefeedback-survey-disclaimerlink' )
+										href: mw.msg( 'articlefeedbackv5-privacyurl' )
+									}, mw.msg( 'articlefeedbackv5-survey-disclaimerlink' )
 								);
-								return mw.html.escape( mw.msg( 'articlefeedback-survey-disclaimer' ) )
+								return mw.html.escape( mw.msg( 'articlefeedbackv5-survey-disclaimer' ) )
 									.replace( /\$1/, link );
 							})
 					);
@@ -206,14 +206,14 @@ var survey = new ( function() {
 	this.alert = function( message ) {
 		$message = $( '<div />' )
 			.addClass( 'articleFeedback-survey-message-' + message )
-			.text( mw.msg( 'articlefeedback-survey-message-' + message ) )
+			.text( mw.msg( 'articlefeedbackv5-survey-message-' + message ) )
 			.appendTo( $dialog );
 		$dialog.dialog( 'option', 'height', $message.height() + 100 );
 	};
 } )();
 
 var config = {
-	'ratings': mw.config.get( 'wgArticleFeedbackRatingTypesFlipped' ),
+	'ratings': mw.config.get( 'wgArticleFeedbackv5RatingTypesFlipped' ),
 	'pitches': {
 		'survey': {
 			'weight': 1,
@@ -227,11 +227,11 @@ var config = {
 				// Hide the pitch immediately
 				return true;
 			},
-			'title': 'articlefeedback-pitch-thanks',
-			'message': 'articlefeedback-pitch-survey-message',
-			'body': 'articlefeedback-pitch-survey-body',
-			'accept': 'articlefeedback-pitch-survey-accept',
-			'reject': 'articlefeedback-pitch-reject'
+			'title': 'articlefeedbackv5-pitch-thanks',
+			'message': 'articlefeedbackv5-pitch-survey-message',
+			'body': 'articlefeedbackv5-pitch-survey-body',
+			'accept': 'articlefeedbackv5-pitch-survey-accept',
+			'reject': 'articlefeedbackv5-pitch-reject'
 		},
 		'join': {
 			'weight': 1,
@@ -251,13 +251,13 @@ var config = {
 					} ), 'pitch-join-accept-signup' );
 				return false;
 			},
-			'title': 'articlefeedback-pitch-thanks',
-			'message': 'articlefeedback-pitch-join-message',
-			'body': 'articlefeedback-pitch-join-body',
-			'accept': 'articlefeedback-pitch-join-accept',
-			'reject': 'articlefeedback-pitch-reject',
+			'title': 'articlefeedbackv5-pitch-thanks',
+			'message': 'articlefeedbackv5-pitch-join-message',
+			'body': 'articlefeedbackv5-pitch-join-body',
+			'accept': 'articlefeedbackv5-pitch-join-accept',
+			'reject': 'articlefeedbackv5-pitch-reject',
 			// Special alternative action for going to login page
-			'altAccept': 'articlefeedback-pitch-join-login',
+			'altAccept': 'articlefeedbackv5-pitch-join-login',
 			'altAction': function() {
 				// Mute for 1 day
 				mutePitch( 'join', 1 );
@@ -306,11 +306,11 @@ var config = {
 				);
 				return false;
 			},
-			'title': 'articlefeedback-pitch-thanks',
-			'message': 'articlefeedback-pitch-edit-message',
-			'body': 'articlefeedback-pitch-edit-body',
-			'accept': 'articlefeedback-pitch-edit-accept',
-			'reject': 'articlefeedback-pitch-reject'
+			'title': 'articlefeedbackv5-pitch-thanks',
+			'message': 'articlefeedbackv5-pitch-edit-message',
+			'body': 'articlefeedbackv5-pitch-edit-body',
+			'accept': 'articlefeedbackv5-pitch-edit-accept',
+			'reject': 'articlefeedbackv5-pitch-reject'
 		}
 	}
 };
@@ -331,7 +331,7 @@ if ( $( '#catlinks' ).length && $.inArray( mw.config.get( 'skin' ), legacyskins 
 /* Add link so users can navigate to the feedback tool from the toolbox */
 var $tbAft = $( '<li id="t-articlefeedback"><a href="#mw-articlefeedback"></a></li>' )
 	.find( 'a' )
-		.text( mw.msg( 'articlefeedback-form-switch-label' ) )
+		.text( mw.msg( 'articlefeedbackv5-form-switch-label' ) )
 		.click( function() {
 			// Click tracking
 			trackClick( 'toolbox-link' );
