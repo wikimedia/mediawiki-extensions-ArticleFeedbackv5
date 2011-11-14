@@ -13,6 +13,7 @@ class ArticleFeedbackv5Hooks {
 			'scripts' => 'ext.articleFeedback/ext.articleFeedback.startup.js',
 			'dependencies' => array(
 				'mediawiki.util',
+				'ext.articleFeedback',
 			),
 		),
 		'ext.articleFeedback' => array(
@@ -84,7 +85,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-report-panel-description',
 				'articlefeedbackv5-report-empty',
 				'articlefeedbackv5-report-ratings',
-				'articlefeedbackv5-privacyurl'
+				'articlefeedbackv5-privacyurl',
 			),
 			'dependencies' => array(
 				'jquery.appear',
@@ -161,6 +162,19 @@ class ArticleFeedbackv5Hooks {
 		$remotepath = "$wgExtensionAssetsPath/ArticleFeedbackv5/modules";
 
 		foreach ( self::$modules as $name => $resources ) {
+			if ( $name == 'jquery.articleFeedback' ) {
+				$fields = ApiArticleFeedbackv5Utils::getFields();
+				$prefix = 'articlefeedbackv5-field-';
+				foreach( $fields as $field ) {
+					$resources['messages'][] = $prefix . $field->aaf_name . '-label';
+					$resources['messages'][] = $prefix . $field->aaf_name . '-tip';
+					$resources['messages'][] = $prefix . $field->aaf_name . '-tooltip-1';
+					$resources['messages'][] = $prefix . $field->aaf_name . '-tooltip-2';
+					$resources['messages'][] = $prefix . $field->aaf_name . '-tooltip-3';
+					$resources['messages'][] = $prefix . $field->aaf_name . '-tooltip-4';
+					$resources['messages'][] = $prefix . $field->aaf_name . '-tooltip-5';
+				}
+			}
 			$resourceLoader->register(
 				$name, new ResourceLoaderFileModule( $resources, $localpath, $remotepath )
 			);
@@ -189,10 +203,9 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMsgForContent( 'articlefeedbackv5-form-panel-explanation-link' );
 
 		$fields = ApiArticleFeedbackv5Utils::getFields();
-error_log('hi');
 		foreach( $fields as $field ) {
 			$vars['wgArticleFeedbackv5RatingTypes'][] = $field->aaf_name;
-			$vars['wgArticleFeedbackv5RatingTypesFlipped'][$field->aaf_name] = $fiekd->aaf_id;
+			$vars['wgArticleFeedbackv5RatingTypesFlipped'][$field->aaf_name] = $field->aaf_id;
 		}
 		return true;
 	}

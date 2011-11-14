@@ -80,11 +80,11 @@ var survey = new ( function() {
 	
 	this.load = function() {
 		// Try to select existing dialog
-		$dialog = $( '#articleFeedback-dialog' );
+		$dialog = $( '#articleFeedbackv5-dialog' );
 		// Fall-back on creating one
 		if ( $dialog.length === 0 ) {
 			// Create initially in loading state
-			$dialog = $( '<div id="articleFeedback-dialog" class="loading" />' )
+			$dialog = $( '<div id="articleFeedbackv5-dialog" class="loading" />' )
 				.dialog( {
 					'width': 600,
 					'height': 400,
@@ -118,7 +118,7 @@ var survey = new ( function() {
 					// Insert disclaimer message
 					$button.before(
 						$( '<div>' )
-							.addClass( 'articleFeedback-survey-disclaimer' )
+							.addClass( 'articleFeedbackv5-survey-disclaimer' )
 							// Can't use .text() with mw.message(, /* $1 */ link).toString(),
 							// because 'link' should not be re-escaped (which would happen if done by mw.message)
 							.html( function() {
@@ -139,7 +139,7 @@ var survey = new ( function() {
 		$dialog.dialog( 'open' );
 	};
 	this.submit = function() {
-		$dialog = $( '#articleFeedback-dialog' );
+		$dialog = $( '#articleFeedbackv5-dialog' );
 		// Put dialog into "loading" state
 		$dialog
 			.addClass( 'loading' )
@@ -205,7 +205,7 @@ var survey = new ( function() {
 	};
 	this.alert = function( message ) {
 		$message = $( '<div />' )
-			.addClass( 'articleFeedback-survey-message-' + message )
+			.addClass( 'articleFeedbackv5-survey-message-' + message )
 			.text( mw.msg( 'articlefeedbackv5-survey-message-' + message ) )
 			.appendTo( $dialog );
 		$dialog.dialog( 'option', 'height', $message.height() + 100 );
@@ -316,7 +316,7 @@ var config = {
 };
 
 /* Load at the bottom of the article */
-var $aftDiv = $( '<div id="mw-articlefeedback"></div>' ).articleFeedback( config );
+var $aftDiv = $( '<div id="mw-articlefeedback"></div>' ).articleFeedbackv5( config );
 
 // Put on bottom of article before #catlinks (if it exists)
 // Except in legacy skins, which have #catlinks above the article but inside content-div.
