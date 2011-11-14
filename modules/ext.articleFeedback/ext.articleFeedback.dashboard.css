@@ -1,33 +1,33 @@
-.articleFeedback-table {
+.articleFeedbackv5-table {
 	border: solid 1px #cccccc;
 	margin-bottom: 2em;
 }
 
-.articleFeedback-table caption {
+.articleFeedbackv5-table caption {
 	text-align: left;
 	font-size: 1.6em;
 	margin-bottom: 0.5em;
 }
 
-.articleFeedback-table th {
+.articleFeedbackv5-table th {
 	padding-left: 0.75em;
 	padding-top: 0.25em;
 	padding-bottom: 0.25em;
 	text-align: left;
 }
 
-.articleFeedback-table td {
+.articleFeedbackv5-table td {
 	padding: 0.25em 0.75em;
 	border-top: solid 1px #eeeeee;
 }
 
-.articleFeedback-table td.articleFeedback-table-column-page,
-.articleFeedback-table td.articleFeedback-table-column-category {
+.articleFeedbackv5-table td.articleFeedbackv5-table-column-page,
+.articleFeedbackv5-table td.articleFeedbackv5-table-column-category {
 	text-align: left;
 }
 
-.articleFeedback-table td.articleFeedback-table-column-rating,
-.articleFeedback-table td.articleFeedback-table-column-average {
+.articleFeedbackv5-table td.articleFeedbackv5-table-column-rating,
+.articleFeedbackv5-table td.articleFeedbackv5-table-column-average {
 	text-align: right;
 }
 
@@ -37,34 +37,34 @@
  * later if found useful.
  */
 /*
-.articleFeedback-table-column-score-0,
-.articleFeedback-table-column-score-1 {
+.articleFeedbackv5-table-column-score-0,
+.articleFeedbackv5-table-column-score-1 {
 	background-color: #ffcccc;
 }
 
 
-.articleFeedback-table-column-score-2,
-.articleFeedback-table-column-bad {
+.articleFeedbackv5-table-column-score-2,
+.articleFeedbackv5-table-column-bad {
 	background-color: #ffcc99;
 }
 
-.articleFeedback-table-column-score-3 {
+.articleFeedbackv5-table-column-score-3 {
 	background-color: #ffff99;
 }
 
-.articleFeedback-table-column-score-4,
-.articleFeedback-table-column-good {
+.articleFeedbackv5-table-column-score-4,
+.articleFeedbackv5-table-column-good {
 	background-color: #99ff99;
 }
-.articleFeedback-table-column-score-5 {
+.articleFeedbackv5-table-column-score-5 {
 	background-color: #55ff55;
 }
 */
 
-.articleFeedback-table-column-bad {
+.articleFeedbackv5-table-column-bad {
 	background-color: #ffcc99;
 }
 
-.articleFeedback-table-column-good {
+.articleFeedbackv5-table-column-good {
 	background-color: #99ff99;
 }

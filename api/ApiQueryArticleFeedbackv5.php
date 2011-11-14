@@ -1,198 +1,155 @@
 <?php
-# This file loads the data and all. The other one saves it.
+/**
+ * ApiQueryArticleFeedbackv5 class
+ *
+ * @package    ArticleFeedback
+ * @subpackage Api
+ * @author     Greg Chiasson <greg@omniti.com>
+ * @author     Reha Sterbin <reha@omniti.com>
+ * @version    $Id$
+ */
+
+/**
+ * This class loads data.  The other one saves it.
+ *
+ * @package    ArticleFeedback
+ * @subpackage Api
+ */
 class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
+
+	/**
+	 * Constructor
+	 */
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'af' );
 	}
 
-	# split these two off into their own modules, instead of doing this.
+	/**
+	 * Execute the API call: initialize a brand new request
+	 *
+	 * JS passes in a page id and, sometimes, a revision id.  Return back the
+	 * correct bucket id.
+	 *
+	 * NB: This call used to return a feedback id and any associated answers as
+	 * well as the bucket id (each user was allowed one rating/comment saved
+	 * per page per revision); it no longer does, as per the 11/10 meeting --
+	 * instead, we'll store everything the user submits.
+	 */
 	public function execute() {
-		$params     = $this->extractRequestParams();
-		global $wgArticleFeedbackv5RatingTypes;
-
-		if($params['subaction'] == 'showratings') {
-			$this->executeFetchRatings();
-		} else {
-			$this->executeNewForm();
-		}
-	}
-
-	# Initialize a brand new request
-	protected function executeNewForm() {
-		global $wgUser;
+		$params = $this->extractRequestParams();
+		global $wgArticleFeedbackv5RatingTypes, $wgUser;
 		$params     = $this->extractRequestParams();
 		$bucket     = $this->getBucket();
 		$result     = $this->getResult();
 
-		if(!$params['revid']) {
-			$params['revid'] = ApiArticleFeedbackv5Utils::getRevisionId($params['pageid']);
+		if ( !$params['revid'] ) {
+			$params['revid'] = ApiArticleFeedbackv5Utils::getRevisionId( $params['pageid'] );
 		}
-
-		if(!$params['pageid'] || !$params['revid']) {
+		if ( !$params['pageid'] || !$params['revid'] ) {
 			return null;
 		}
 
+		$this->logHit( $params['pageid'], $params['revid'], $bucket );
 
-		$this->logHit($params['pageid'], $params['revid'], $bucket);
+		$result->addValue( 'form', 'pageId', $params['pageid'] );
+		$result->addValue( 'form', 'bucketId', $bucket );
 
-		$result->addValue('form', 'pageId', $params['pageid']);
-		$result->addValue('form', 'bucketId', $bucket);
-		# Not doing this, per 11/10 meeting, for scalability reasons.
-		#$feedbackId = $this->getFeedbackId($params, $bucket);
-		#$result->addValue('form', 'feedbackId', $feedbackId);
+		// $feedbackId = $this->getFeedbackId($params, $bucket);
+		// $result->addValue('form', 'feedbackId', $feedbackId);
 	}
 
-	protected function executeFetchRatings() {
-		$params        = $this->extractRequestParams();
-		$result        = $this->getResult();
-		$revisionLimit = ApiArticleFeedbackv5Utils::getRevisionId( $params['pageid'] );
-		$bucket        = $this->getBucket();
-		$pageId	       = $params['pageid'];
-		$rows          = $this->fetchRevisionRollup($pageId, $revisionLimit);
-		$historical    = $this->fetchPageRollup($pageId);
-		$ratings       = array(
-			'pageid'  => $params['pageid'],
-			'ratings' => array(),
-			'status'  => 'current'
-		);
-
-		foreach ( $rows as $row ) {
-			$overall = 0;
-			foreach($historical as $ancient) {
-				if($ancient->aaf_name == $row->aaf_name) {
-					$overall = $ancient->reviews;
-				}
-			}
-			$ratings['ratings'][] = array(
-				'ratingdesc' => $row->field_name,
-				'ratingid'   => (int) $row->field_id,
-				'total'      => (int) $row->points,
-				'count'      => (int) $row->reviews,
-				'countall'   => (int) $overall
-			);
-		}
-
-		foreach ( $ratings as $r ) {
-			$result->addValue(
-				array('query', $this->getModuleName()), null, $r
-			);
-		}
-
-		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'aa' );
-	}
-
+	/**
+	 * Determine into which bucket this request should fall
+	 *
+	 * @TODO Base this on last 2 digits of IP address per requirements; when we
+	 * have markup, we can add other buckets
+	 *
+	 * @return int the bucket id
+	 */
 	protected function getBucket() {
-		#TODO base this on last 2 digits of IP address per requirements
 		return 5;
 	}
 
-	private function logHit($page, $revision, $bucket) {
+	/**
+	 * Log that this bucket was served for this page and revision
+	 *
+	 * @param $page     int the page id
+	 * @param $revision int the revision id
+	 * @param $bucket   int the bucket id
+	 */
+	private function logHit( $page, $revision, $bucket ) {
 		$dbr  = wfGetDB( DB_SLAVE );
 		$dbw = wfGetDB( DB_MASTER );
-		$date = date('Y-m-d');
+		$date = date( 'Y-m-d' );
 
-		if(!$page && !$revision) {
-		return;
+		if ( !$page && !$revision ) {
+			return;
 		}
 
-		# Select hit counter row
+		// Select hit counter row
 		$hits = $dbr->selectField(
-		'aft_article_hits',
-		'aah_hits',
-		array(
-			'aah_page_id'   => $page,
-			'aah_date'      => $date,
-			'aah_bucket_id' => $bucket,
-		)
-		);
-
-		# If there's a row, update it.
-		if($hits) {
-		$dbw->update(
 			'aft_article_hits',
-			array( 'aah_hits' => ($hits + 1) ),
+			'aah_hits',
 			array(
-			'aah_page_id'   => $page,
-			'aah_date'      => $date,
-			'aah_bucket_id' => $bucket,
-			)
-		);
-		} else {
-		# Otherwise, there's no row, insert one.
-		$dbw->insert('aft_article_hits', array(
-			'aah_page_id'   => $page,
-			'aah_date'      => $date,
-			'aah_bucket_id' => $bucket,
-			'aah_hits'      => 1
-		));
-		}
-	}
-
-	public function fetchPageRollup($pageId, $revisionLimit = 0) {
-		return $this->fetchRollup($pageId, $revisionLimit, 'page');
-	}
-
-	public function fetchRevisionRollup($pageId, $revisionLimit = 0) {
-		return $this->fetchRollup($pageId, $revisionLimit, 'revision');
-	}
-
-	private function fetchRollup($pageId, $revisionLimit, $type) {
-		$dbr   = wfGetDB( DB_SLAVE );
-		$where = array();
-
-		if($type == 'page') {
-			$table   = 'article_feedback_ratings_rollup';
-			$prefix  = 'aap';
-		} else {
-			$table   = 'article_revision_feedback_ratings_rollup';
-			$prefix  = 'afr';
-			$where[] = 'afr_revision_id >= '.$revisionLimit;
-		}
-		$where[$prefix.'_page_id']  = $pageId;
-		$where[] = $prefix.'_rating_id = aaf_id';
-
-		$rows  = $dbr->select(
-			array( 'aft_'.$table, 'aft_article_field' ),
-			array(
-				'aaf_name AS field_name',
-				$prefix.'_rating_id AS field_id',
-				'SUM('.$prefix.'_total) AS points',
-				'SUM('.$prefix.'_count) AS reviews',
-			),
-			$where,
-			__METHOD__,
-			array(
-				'GROUP BY' => $prefix.'_rating_id, aaf_name'
+				'aah_page_id'   => $page,
+				'aah_date'      => $date,
+				'aah_bucket_id' => $bucket,
 			)
 		);
 
-		return $rows;
+		// If there's a row, update it.
+		if ( $hits ) {
+			$dbw->update(
+				'aft_article_hits',
+				array( 'aah_hits' => ( $hits + 1 ) ),
+				array(
+					'aah_page_id'   => $page,
+					'aah_date'      => $date,
+					'aah_bucket_id' => $bucket,
+				)
+			);
+		} else {
+			// Otherwise, there's no row, insert one.
+			$dbw->insert('aft_article_hits', array(
+				'aah_page_id'   => $page,
+				'aah_date'      => $date,
+				'aah_bucket_id' => $bucket,
+				'aah_hits'      => 1
+			));
+		}
 	}
 
-	# Mostly deprecated
-	# Gets the user's feedback for this page. Only works on userids,
-	# NOT IP adderesses. Idea being that IPs can move, and we don't want
-	# your comments being shown to a different person who took your IP.
-	# ALSO take revision limit into account.
-	protected function getUserRatings($feedbackId) {
+	/**
+	 * Gets the user's feedback for this page.
+	 *
+	 * Only works on userids, NOT IP adderesses. Idea being that IPs can move,
+	 * and we don't want your comments being shown to a different person who
+	 * took your IP.  ALSO take revision limit into account.
+	 *
+	 * NB: Mostly deprecated; do not use in new code.
+	 *
+	 * @param  $feedbackId the feedback id
+	 * @return array       the previous answers
+	 */
+	protected function getUserRatings( $feedbackId ) {
 		global $wgUser;
 		$dbr      = wfGetDB( DB_SLAVE );
 		$feedback = array();
 		$rows     = $dbr->select(
 			array('aft_article_answer', 'aft_article_field',
-			 'aft_article_feedback'),
+				'aft_article_feedback'),
 			array('aaaa_response_rating', 'aaaa_response_text',
-			 'aaaa_response_bool', 'aaaa_response_option_id',
-			 'aaf_name', 'aaf_data_type'),
+				'aaaa_response_bool', 'aaaa_response_option_id',
+				'aaf_name', 'aaf_data_type'),
 			array(
-				'aa_revision >= '.$this->getRevisionLimit(),
+				'aa_revision >= ' . $this->getRevisionLimit(),
 				'aaaa_feedback_id' => $feedbackId,
 				'aa_user_id'       => $wgUser->getId(),
 				'aa_is_submitted'  => 1,
 			)
 		);
 
-		foreach($rows as $row) {
+		foreach ( $rows as $row ) {
 			$method = 'response_'.$row->aaf_data_type;
 			$feeedback[] = array(
 				'name'  => $row->aaf_name,
@@ -203,10 +160,11 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	/**
-	 * Get the revision number of the oldest revision still being counted in totals.
+	 * Get the revision number of the oldest revision still being counted in
+	 * totals
 	 *
-	 * @param $pageId Integer: ID of page to check revisions for
-	 * @return Integer: Oldest valid revision number or 0 of all revisions are valid
+	 * @param  $pageId int ID of page to check revisions for
+	 * @return int     oldest valid revision number or 0 of all revisions are valid
 	 */
 	protected function getRevisionLimit( $pageId ) {
 		global $wgArticleFeedbackv5RatingLifetime;
@@ -228,6 +186,12 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 		return 0;
 	}
 
+	/**
+	 * Gets the cache mode
+	 *
+	 * @param  $params array the params passed in
+	 * @return string  the cache mode ('anon-public-user-private' or 'public')
+	 */
 	public function getCacheMode( $params ) {
 		if ( $params['userrating'] ) {
 			return 'anon-public-user-private';
@@ -236,6 +200,12 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 		}
 	}
 
+	/**
+	 * TODO
+	 * Gets the allowed parameters
+	 *
+	 * @return array the params info, indexed by allowed key
+	 */
 	public function getAllowedParams() {
 		return array(
 			'userrating' => 0,
@@ -243,7 +213,7 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 			'subaction'  => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array('showratings','newform'),
+				ApiBase::PARAM_TYPE     => array( 'showratings', 'newform' ),
 			),
 			'revid'     => array(
 				ApiBase::PARAM_REQUIRED => false,
@@ -258,7 +228,12 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 		);
 	}
 
-	# TODO
+	/**
+	 * TODO
+	 * Gets the parameter descriptions
+	 *
+	 * @return array the descriptions, indexed by allowed key
+	 */
 	public function getParamDescription() {
 		return array(
 			'pageid'    => 'Page ID to get feedback ratings for',
@@ -267,14 +242,24 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 		);
 	}
 
-	# TODO
+	/**
+	 * TODO
+	 * Gets the api descriptions
+	 *
+	 * @return array the description as the first element in an array
+	 */
 	public function getDescription() {
 		return array(
 			'List article feedback ratings for a specified page'
 		);
 	}
 
-	# TODO
+	/**
+	 * TODO
+	 * Gets any possible errors
+	 *
+	 * @return array the errors
+	 */
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 				array( 'missingparam', 'anontoken' ),
@@ -283,15 +268,27 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 		);
 	}
 
-	# TODO
+	/**
+	 * TODO
+	 * Gets an example
+	 *
+	 * @return array the example as the first element in an array
+	 */
 	protected function getExamples() {
 		return array(
 			'api.php?action=query&list=articlefeedbackv5&afpageid=1',
 		);
 	}
 
-	# TODO
+	/**
+	 * TODO
+	 * Gets the version info
+	 *
+	 * @return string the SVN version info
+	 */
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}
+
 }
+

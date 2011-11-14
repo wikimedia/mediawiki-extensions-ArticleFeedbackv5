@@ -1,10 +1,10 @@
 <?php
 /**
  * Article Feedback extension
- * 
+ *
  * @file
  * @ingroup Extensions
- * 
+ *
  * @author Trevor Parscal <trevor@wikimedia.org>
  * @license GPL v2 or later
  * @version 0.1.0
@@ -78,14 +78,14 @@ $wgArticleFeedbackv5Options = array(
  *
  * Since the dashboard is powered by a SpecialPage, we cannot rel on the built-in
  * MW talk page for this, so we must expose our own page - internally or externally.
- * 
- * This value will be passed into an i18n message which will parse the URL as an 
+ *
+ * This value will be passed into an i18n message which will parse the URL as an
  * external link using wikitext, so this must be a full URL.
  * @var string
  */
 $wgArticleFeedbackv5DashboardTalkPage = "http://www.mediawiki.org/wiki/Talk:Article_feedback";
 
-# TODO: What's up with the surveys, then? 
+# TODO: What's up with the surveys, then?
 // Would ordinarily call this articlefeedback but survey names are 16 chars max
 $wgPrefSwitchSurveys['articlerating'] = array(
 	'updatable' => false,
@@ -148,13 +148,14 @@ $wgExtensionCredits['other'][] = array(
 
 // Autoloading
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['ApiQueryArticleFeedbackv5'] = $dir . 'api/ApiQueryArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiArticleFeedbackv5Utils'] = $dir . 'api/ApiArticleFeedbackv5Utils.php';
-$wgAutoloadClasses['ApiArticleFeedbackv5']      = $dir . 'api/ApiArticleFeedbackv5.php';
-$wgAutoloadClasses['ArticleFeedbackv5Hooks']    = $dir . 'ArticleFeedbackv5.hooks.php';
-$wgAutoloadClasses['SpecialArticleFeedbackv5']  = $dir . 'SpecialArticleFeedbackv5.php';
-$wgExtensionMessagesFiles['ArticleFeedbackv5']  = $dir . 'ArticleFeedbackv5.i18n.php';
-$wgExtensionAliasesFiles['ArticleFeedbackv5']   = $dir . 'ArticleFeedbackv5.alias.php';
+$wgAutoloadClasses['ApiQueryArticleFeedbackv5']       = $dir . 'api/ApiQueryArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiArticleFeedbackv5Utils']       = $dir . 'api/ApiArticleFeedbackv5Utils.php';
+$wgAutoloadClasses['ApiArticleFeedbackv5']            = $dir . 'api/ApiArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5'] = $dir . 'api/ApiViewRatingsArticleFeedbackv5.php';
+$wgAutoloadClasses['ArticleFeedbackv5Hooks']          = $dir . 'ArticleFeedbackv5.hooks.php';
+$wgAutoloadClasses['SpecialArticleFeedbackv5']        = $dir . 'SpecialArticleFeedbackv5.php';
+$wgExtensionMessagesFiles['ArticleFeedbackv5']        = $dir . 'ArticleFeedbackv5.i18n.php';
+$wgExtensionAliasesFiles['ArticleFeedbackv5']         = $dir . 'ArticleFeedbackv5.alias.php';
 
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleFeedbackv5Hooks::loadExtensionSchemaUpdates';
@@ -167,6 +168,7 @@ $wgHooks['SkinTemplateNavigation'][] = 'ArticleFeedbackv5Hooks::addFeedbackLink'
 
 // API Registration
 $wgAPIListModules['articlefeedbackv5'] = 'ApiQueryArticleFeedbackv5';
+$wgAPIListModules['articlefeedbackv5-view-ratings'] = 'ApiViewRatingsArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5'] = 'ApiArticleFeedbackv5';
 
 // Special Page
