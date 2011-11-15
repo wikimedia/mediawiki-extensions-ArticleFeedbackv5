@@ -1,16 +1,16 @@
 /*
  * Styles for Article Feedback Extension
  */
-#articleFeedbackv5-dialog {
+#articleFeedback-dialog {
 	padding: 2em;
 	padding-top: 1em;
 }
 
-.articleFeedbackv5-survey-disclaimer {
+.articleFeedback-survey-disclaimer {
 	font-weight: normal; /* Override bold */
 	font-style: italic;
 }
 
-.articleFeedbackv5-survey-disclaimer a {
+.articleFeedback-survey-disclaimer a {
 	color: #0645AD; /* Override blackish color set by JUI */
 }

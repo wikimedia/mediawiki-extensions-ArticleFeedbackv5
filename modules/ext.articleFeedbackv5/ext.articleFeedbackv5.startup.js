@@ -62,7 +62,7 @@ jQuery( function( $ ) {
 
 		// Lazy loading
 		if ( !disable && ( wonLottery || enable ) ) {
-			mw.loader.load( 'ext.articleFeedback' );
+			mw.loader.load( 'ext.articleFeedbackv5' );
 		}
 	}
 } );

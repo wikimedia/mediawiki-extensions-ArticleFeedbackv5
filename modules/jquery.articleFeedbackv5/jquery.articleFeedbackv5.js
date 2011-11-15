@@ -131,15 +131,6 @@
 			 */
 			showOptions: 'show' === mw.user.bucket( 'ext.articleFeedback-options', mw.config.get( 'wgArticleFeedbackv5Options' ) ),
 
-			/**
-			 * Whether we need to load the aggregate ratings the next time the
-			 * button is clicked.  This is initially set to true, turned to
-			 * false after the first time, then turned back to true on form
-			 * submission, in case the user wants to go back and see the ratings with
-			 * theirs included.
-			 */
-			loadAggregate: true,
-
 			// }}}
 			// {{{ buildForm
 
@@ -310,6 +301,9 @@
 					$block.find( '.articleFeedbackv5-options' ).hide();
 				}
 
+				// Grab the results in the background
+				$.articleFeedbackv5.currentBucket().loadAggregateRatings();
+
 				return $block;
 			},
 
@@ -374,10 +368,6 @@
 				// Set up form/report switch behavior
 				$block.find( '.articleFeedbackv5-switch' )
 					.click( function ( e ) {
-						if ( $(this).attr( 'rel' ) == 'report' && $.articleFeedbackv5.currentBucket().loadAggregate ) {
-							$.articleFeedbackv5.currentBucket().loadAggregateRatings();
-							$.articleFeedbackv5.currentBucket().loadAggregate = false;
-						}
 						$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-visibleWith-' + $(this).attr( 'rel' ) )
 							.show();
 						$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-switch' )
@@ -545,43 +535,56 @@
 			 * the label's CSS class
 			 */
 			loadAggregateRatings: function () {
+				var usecache = !( !$.articleFeedbackv5.anonymous || $.articleFeedbackv5.alreadySubmitted );
+
 				$.ajax( {
 					'url': $.articleFeedbackv5.apiUrl,
 					'type': 'GET',
 					'dataType': 'json',
+					'cache': usecache,
 					'data': {
 						'action': 'query',
 						'format': 'json',
-						'list': 'articlefeedbackv5-view-ratings',
+						'list': 'articlefeedbackv5',
+						'afsubaction': 'showratings',
 						'afpageid': $.articleFeedbackv5.pageId,
-						'afanontoken': $.articleFeedbackv5.userId,
+						'afanontoken': usecache ? $.articleFeedbackv5.userId : '',
+						'afuserrating': Number( !usecache ),
 						'maxage': 0,
-						'smaxage': mw.config.get( 'wgArticleFeedbackSMaxage' )
+						'smaxage': usecache ? 0 : mw.config.get( 'wgArticleFeedbackSMaxage' )
 					},
 					'success': function ( data ) {
 						// Get data
 						if (
 							!( 'query' in data )
-							|| !( 'articlefeedbackv5-view-ratings' in data.query )
-							|| !( 'rollup' in data.query['articlefeedbackv5-view-ratings'] )
+							|| !( 'articlefeedbackv5' in data.query )
+							|| !$.isArray( data.query.articlefeedbackv5 )
+							|| !data.query.articlefeedbackv5.length
 						) {
 							mw.log( 'ArticleFeedback invalid response error.' );
-							var msg = 'ArticleFeedback invalid response error.';
-							if ( 'error' in data && 'info' in data.error ) {
-								msg = data.error.info;
-							} else {
-								console.log(data);
+							if ($.articleFeedbackv5.debug && 'error' in data && 'info' in data.error) {
+								console.log( data.error.info );
+								$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error-message' ).html( data.error.info.replace( "\n", '<br />' ) );
 							}
-							$.articleFeedbackv5.currentBucket().markShowstopperError( msg );
+							$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' ).show();
 							return;
 						}
-						var rollup = data.query['articlefeedbackv5-view-ratings'].rollup;
+						$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' ).show();
+						var feedback = data.query.articlefeedbackv5[0];
+
+						// Index rating data by rating ID
+						var ratings = {};
+						if ( typeof feedback.ratings === 'object' && feedback.ratings !== null ) {
+							for ( var i = 0; i < feedback.ratings.length; i++ ) {
+								ratings[feedback.ratings[i].ratingid] = feedback.ratings[i];
+							}
+						}
 
 						// Ratings
 						$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-rating' ).each( function () {
 							var name = $(this).attr( 'rel' );
 							var info = $.articleFeedbackv5.currentBucket().ratingInfo;
-							var rating = name in info && info[name] in rollup ? rollup[info[name]] : null;
+							var rating = name in info && info[name] in ratings ?  ratings[info[name]] : null;
 							if (
 								rating !== null
 								&& 'total' in rating
@@ -594,7 +597,7 @@
 								$(this).find( '.articleFeedbackv5-rating-meter div' )
 									.css( 'width', Math.round( average * 21 ) + 'px' );
 								$(this).find( '.articleFeedbackv5-rating-count' )
-									.text( mw.msg( 'articlefeedbackv5-report-ratings', rating.count ) );
+									.text( mw.msg( 'articlefeedbackv5-report-ratings', rating.countall ) );
 							} else {
 								// Special case for no ratings
 								$(this).find( '.articleFeedbackv5-rating-average' )
@@ -623,7 +626,6 @@
 					},
 					'error': function () {
 						mw.log( 'Report loading error' );
-						$.articleFeedbackv5.currentBucket().markShowstopperError( 'Report loading error' );
 						$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' ).show();
 					}
 				} );
@@ -725,31 +727,6 @@
 			},
 
 			// }}}
-			// {{{ markShowstopperError
-
-			/**
-			 * Marks a showstopper error
-			 *
-			 * @param string message the message to display, if in dev
-			 */
-			markShowstopperError: function ( message ) {
-				console.log( message );
-				if ($.articleFeedbackv5.debug && message) {
-					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error-message' ).html( message.replace( "\n", '<br />' ) );
-				}
-				var veil = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' );
-				var box  = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' );
-				// TODO: Make this smarter -- on ubuntu/ff at least, using the
-				// offset puts it about 100px down from where it should be;
-				// this math corrects for it, but will most likely be wrong on
-				// other browsers
-				veil.css('top', box.find('.articleFeedbackv5-ui').offset().top / 2 + 10);
-				veil.css('width', box.width());
-				veil.css('height', box.height());
-				veil.show();
-			},
-
-			// }}}
 			// {{{ setSuccessState
 
 			/**
@@ -773,10 +750,9 @@
 			 */
 			onSubmit: function () {
 
-				$.articleFeedbackv5.currentBucket().loadAggregate = true;
 
 /////////////////////////////////////////////////////////////////////////////////
-// TODO: Email capture
+// BOOKMARK
 /////////////////////////////////////////////////////////////////////////////////
 
 //		'submit': function () {

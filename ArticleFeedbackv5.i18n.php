@@ -28,7 +28,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-survey-thanks' => 'Thanks for filling out the survey.',
 	'articlefeedbackv5-survey-disclaimer' => 'By submitting, you agree to transparency under these $1.',
 	'articlefeedbackv5-survey-disclaimerlink' => 'terms',
-	/* ext.articleFeedback and jquery.articleFeedback */
+	/* ext.articleFeedbackv5 and jquery.articleFeedbackv5 */
 	'articlefeedbackv5-error' => 'An error has occured. Please try again later.',
 	'articlefeedbackv5-form-switch-label' => 'Rate this page',
 	'articlefeedbackv5-form-panel-title' => 'Rate this page',
@@ -100,15 +100,15 @@ $messages['en'] = array(
 Please try again later.',
 	'articlefeedbackv5-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	/* Special:ArticleFeedback */
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Today\'s highs and lows',
-	'articleFeedback-table-caption-dailyhighs' => 'Pages with highest ratings: $1',
-	'articleFeedback-table-caption-dailylows' => 'Pages with lowest ratings: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'This week\'s most changed',
-	'articleFeedback-table-caption-recentlows' => 'Recent lows',
-	'articleFeedback-table-heading-page' => 'Page',
-	'articleFeedback-table-heading-average' => 'Average',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Today\'s highs and lows',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Pages with highest ratings: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Pages with lowest ratings: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'This week\'s most changed',
+	'articleFeedbackv5-table-caption-recentlows' => 'Recent lows',
+	'articleFeedbackv5-table-heading-page' => 'Page',
+	'articleFeedbackv5-table-heading-average' => 'Average',
 	'articlefeedbackv5-table-noratings' => '-',
-	'articleFeedback-copy-above-highlow-tables' => 'This is an experimental feature.  Please provide feedback on the [$1 discussion page].',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'This is an experimental feature.  Please provide feedback on the [$1 discussion page].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Note''': We will continue to experiment with different ways of surfacing articles in these dashboards.  At present, the dashboards include the following articles:
 * Pages with highest/lowest ratings: articles that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.
 * Recent lows: articles that got 70% or more low (2 stars or lower) ratings in any category in the last 24 hours. Only articles that have received at least 10 ratings in the last 24 hours are included.",
@@ -153,7 +153,7 @@ The {{SITENAME}} team',
  * @author Yekrats
  */
 $messages['qqq'] = array(
-	'articlefeedback' => 'The title of the feature. It is about reader feedback.
+	'articlefeedbackv5' => 'The title of the feature. It is about reader feedback.
 	
 Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a prototype installation.',
 	'articlefeedbackv5-desc' => '{{desc}}',
@@ -183,17 +183,17 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 This message is used in JavaScript by module 'jquery.articleFeedback'.
 $1 is an integer, and the rating count.",
 	'articlefeedbackv5-pitch-or' => '{{Identical|Or}}',
-	'articlefeedbackv5-pitch-join-body' => 'Based on {{msg-mw|Articlefeedback-pitch-join-message}}.',
+	'articlefeedbackv5-pitch-join-body' => 'Based on {{msg-mw|articleFeedbackv5-pitch-join-message}}.',
 	'articlefeedbackv5-pitch-join-accept' => '{{Identical|Create an account}}',
 	'articlefeedbackv5-pitch-join-login' => '{{Identical|Log in}}',
 	'articlefeedbackv5-privacyurl' => 'This URL can be changed to point to a translated version of the page if it exists.',
-	'articleFeedback-table-heading-page' => 'This is used in the [[mw:Extension:ArticleFeedback|Article Feedback extension]].
+	'articleFeedbackv5-table-heading-page' => 'This is used in the [[mw:Extension:ArticleFeedback|Article Feedback extension]].
 {{Identical|Page}}',
-	'articleFeedback-table-heading-average' => '{{Identical|Average}}',
+	'articleFeedbackv5-table-heading-average' => '{{Identical|Average}}',
 	'articlefeedbackv5-table-noratings' => '{{Optional}}
 
 Text to display in a table cell if there is no number to be shown',
-	'articleFeedback-copy-above-highlow-tables' => 'The variable $1 will contain a full URL to a discussion page where the dashboard can be discussed - since the dashboard is powered by a special page, we can not rely on the built-in MediaWiki talk page.',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'The variable $1 will contain a full URL to a discussion page where the dashboard can be discussed - since the dashboard is powered by a special page, we can not rely on the built-in MediaWiki talk page.',
 	'articlefeedbackv5-emailcapture-response-body' => 'Body of an e-mail sent to a user wishing to participate in [[mw:Extension:ArticleFeedback|article feedback]] (see the extension documentation).
 * <code>$1</code> – URL of the confirmation link
 * <code>$2</code> – URL to type in the confirmation code manually.
@@ -204,7 +204,7 @@ Text to display in a table cell if there is no number to be shown',
  * @author Naudefj
  */
 $messages['af'] = array(
-	'articlefeedback' => 'Bladsybeoordeling',
+	'articlefeedbackv5' => 'Bladsybeoordeling',
 	'articlefeedbackv5-desc' => 'Bladsybeoordeling',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-wiki' => 'Ek wil bydrae tot {{site name}}',
 	'articlefeedbackv5-survey-answer-whyrated-sharing-opinion' => 'Ek hou daarvan om my mening te deel',
@@ -261,20 +261,20 @@ $messages['af'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Dankie dat u die opname ingevul het.',
 	'articlefeedbackv5-survey-message-error' => "'n Fout het voorgekom.
 Probeer asseblief later weer.",
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Vandag se hoogte- en laagtepunte',
-	'articleFeedback-table-caption-dailyhighs' => 'Bladsye met die hoogste graderings: $1',
-	'articleFeedback-table-caption-dailylows' => 'Bladsye met die laagste graderings: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Hierdie week se mees veranderde',
-	'articleFeedback-table-caption-recentlows' => 'Onlangse laagtepunte',
-	'articleFeedback-table-heading-page' => 'Bladsy',
-	'articleFeedback-table-heading-average' => 'Gemiddelde',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Vandag se hoogte- en laagtepunte',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Bladsye met die hoogste graderings: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Bladsye met die laagste graderings: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Hierdie week se mees veranderde',
+	'articleFeedbackv5-table-caption-recentlows' => 'Onlangse laagtepunte',
+	'articleFeedbackv5-table-heading-page' => 'Bladsy',
+	'articleFeedbackv5-table-heading-average' => 'Gemiddelde',
 );
 
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'articleFeedback-table-heading-page' => 'Pachina',
+	'articleFeedbackv5-table-heading-page' => 'Pachina',
 );
 
 /** Arabic (العربية)
@@ -285,7 +285,7 @@ $messages['an'] = array(
  * @author زكريا
  */
 $messages['ar'] = array(
-	'articlefeedback' => 'لوحة تعليقات المقالة',
+	'articlefeedbackv5' => 'لوحة تعليقات المقالة',
 	'articlefeedbackv5-desc' => 'ملاحظات على المقال',
 	'articlefeedbackv5-survey-question-origin' => 'في أي صفحة كنت عندما بدأت هذا الاستطلاع؟',
 	'articlefeedbackv5-survey-question-whyrated' => 'الرجاء إخبارنا لماذا قمت بتقييم هذه الصفحة اليوم (ضع علامة أمام كل ما ينطبق):',
@@ -368,14 +368,14 @@ $messages['ar'] = array(
 	'articlefeedbackv5-survey-message-success' => 'شكرا للمشاركة في الاستطلاع',
 	'articlefeedbackv5-survey-message-error' => 'لقد حدث خطأ.
 كرر المحاولة لاحقا.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'تقييمات اليوم',
-	'articleFeedback-table-caption-dailyhighs' => 'أعلى الصفحات تقييما: $1',
-	'articleFeedback-table-caption-dailylows' => 'أدنى الصفحات تقييما: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'أشد الصفحات تغيرا هذا الأسبوع',
-	'articleFeedback-table-caption-recentlows' => 'المتدنية حديثا',
-	'articleFeedback-table-heading-page' => 'صفحة',
-	'articleFeedback-table-heading-average' => 'متوسط',
-	'articleFeedback-copy-above-highlow-tables' => 'هذه خاصية قيد التجربة. أعطي تقييمك في [صفحة نقاش $1].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'تقييمات اليوم',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'أعلى الصفحات تقييما: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'أدنى الصفحات تقييما: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'أشد الصفحات تغيرا هذا الأسبوع',
+	'articleFeedbackv5-table-caption-recentlows' => 'المتدنية حديثا',
+	'articleFeedbackv5-table-heading-page' => 'صفحة',
+	'articleFeedbackv5-table-heading-average' => 'متوسط',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'هذه خاصية قيد التجربة. أعطي تقييمك في [صفحة نقاش $1].',
 	'articlefeedbackv5-dashboard-bottom' => "'''تنبيه''': سنستمر في تجربة مختلف طرق التعريف بالمقالات على هذه اللوحة (لوحة القيادة). الآن، توجد على لوحة القيادة المقالات التالية:
 * أعلى المقالات تقييما وأدناها: وهي التي قيمت على الأقل عشر مرات في الساعات الأربع والعشرين الأخيرة. المتوسط يحسب بقياس القيمة الوسطى للجميع التقييمات المرسلة في الساعات الأربع والعشرين الأخيرة.
 * المتدنية حديثا: وهي ما حصل على ما لا يقل عن سبعين بالمئة (نجمتين) في التقييم على أي تصنيف في الساعات الأربع والعشرين الأخيرة. لا تحتسب إلا المقالات التي حصلت على ما لا يقل عن عشرة تقييمات  في الساعات الأربع والعشرين الأخيرة.",
@@ -427,7 +427,7 @@ $messages['az'] = array(
 	'articlefeedbackv5-field-trustworthy-tooltip-5' => 'Əla etibarlı mənbələr',
 	'articlefeedbackv5-field-complete-tooltip-1' => 'Məlumatın böyük hissəsi yoxdur',
 	'articlefeedbackv5-pitch-join-login' => 'Daxil ol',
-	'articleFeedback-table-heading-page' => 'Səhifə',
+	'articleFeedbackv5-table-heading-page' => 'Səhifə',
 );
 
 /** Bashkir (Башҡортса)
@@ -435,7 +435,7 @@ $messages['az'] = array(
  * @author Roustammr
  */
 $messages['ba'] = array(
-	'articlefeedback' => 'Мәҡәләне баһалау',
+	'articlefeedbackv5' => 'Мәҡәләне баһалау',
 	'articlefeedbackv5-desc' => 'Мәҡәләне баһалау (һынау өсөн)',
 	'articlefeedbackv5-survey-question-whyrated' => 'Зинһар, ниңә һеҙ бөгөн был биткә баһа биреүегеҙҙе беҙгә белгертегеҙ (бөтә тап килгән яуаптарҙы билдәләгеҙ):',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => 'Минең был биттең дөйөм баһаһына өлөш индергем килде.',
@@ -489,7 +489,7 @@ $messages['ba'] = array(
 	'articlefeedbackv5-pitch-edit-accept' => 'Был битте үҙгәртергә',
 	'articlefeedbackv5-survey-message-success' => 'Һорауҙарға яуап биреүегеҙ өсөн рәхмәт.',
 	'articlefeedbackv5-survey-message-error' => 'Хата килеп сыҡты. Зинһар, һуңыраҡ яңынан ҡабатлап ҡарағыҙ.',
-	'articleFeedback-table-heading-page' => 'Бит',
+	'articleFeedbackv5-table-heading-page' => 'Бит',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -498,7 +498,7 @@ $messages['ba'] = array(
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'articlefeedback' => 'Дошка адзнакі артыкулаў',
+	'articlefeedbackv5' => 'Дошка адзнакі артыкулаў',
 	'articlefeedbackv5-desc' => 'Адзнака артыкулаў (пачатковая вэрсія)',
 	'articlefeedbackv5-survey-question-origin' => 'На якой старонцы Вы знаходзіліся, калі пачалося апытаньне?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Калі ласка, паведаміце нам, чаму Вы адзначылі сёньня гэтую старонку (пазначце ўсе падыходзячыя варыянты):',
@@ -581,14 +581,14 @@ $messages['be-tarask'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Дзякуй за адказы на гэтае апытаньне.',
 	'articlefeedbackv5-survey-message-error' => 'Узьнікла памылка.
 Калі ласка, паспрабуйце потым.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Сёньняшнія ўзьлёты і падзеньні',
-	'articleFeedback-table-caption-dailyhighs' => 'Артыкулы з найвышэйшымі адзнакамі: $1',
-	'articleFeedback-table-caption-dailylows' => 'Артыкулы з найніжэйшымі адзнакамі: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Найбольш зьмененыя на гэтым тыдні',
-	'articleFeedback-table-caption-recentlows' => 'Апошнія падзеньні',
-	'articleFeedback-table-heading-page' => 'Старонка',
-	'articleFeedback-table-heading-average' => 'Сярэдняе',
-	'articleFeedback-copy-above-highlow-tables' => 'Гэта экспэрымэнтальная магчымасьць. Калі ласка, падайце Ваш водгук на [$1 старонцы абмеркаваньня].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Сёньняшнія ўзьлёты і падзеньні',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Артыкулы з найвышэйшымі адзнакамі: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Артыкулы з найніжэйшымі адзнакамі: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Найбольш зьмененыя на гэтым тыдні',
+	'articleFeedbackv5-table-caption-recentlows' => 'Апошнія падзеньні',
+	'articleFeedbackv5-table-heading-page' => 'Старонка',
+	'articleFeedbackv5-table-heading-average' => 'Сярэдняе',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Гэта экспэрымэнтальная магчымасьць. Калі ласка, падайце Ваш водгук на [$1 старонцы абмеркаваньня].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Заўвага''': Мы ўсё яшчэ працягваем экспэрымэнтаваць з апрацоўкай артыкулаў на гэтых пляцоўках.  У цяперашні час пляцоўкі ўтрымліваюць наступныя артыкулы:
 * Старонкі з вышэйшымі/ніжэйшымі адзнакамі: артыкулы, якія атрымалі ня менш 10 адзнакаў за апошнія 24 гадзіны. Сярэдняя адзнака вылічаная на падставе усіх адзнакаў атрыманых за апошнія 24 гадзіны.
 * Апошнія самыя нізкія адзнакі: артыкулы, якія маюць 70% ці болей нізкіх (2 зоркі ці ніжэй) адзнакаў у любой катэгорыі за апошнія 24 гадзіны. Улічваюцца толькі артыкулы якія атрымалі ня менш 10 адзнакаў за апошнія 24 гадзіны.",
@@ -646,10 +646,10 @@ $messages['bg'] = array(
 	'articlefeedbackv5-pitch-join-login' => 'Влизане',
 	'articlefeedbackv5-pitch-edit-accept' => 'Редактиране на тази страница',
 	'articlefeedbackv5-survey-message-success' => 'Благодарим ви, че попълнихте въпросника!',
-	'articleFeedback-table-caption-dailyhighs' => 'Страници с най-високи оценки: $1',
-	'articleFeedback-table-caption-dailylows' => 'Страници с най-ниски оценки: $1',
-	'articleFeedback-table-heading-page' => 'Страница',
-	'articleFeedback-copy-above-highlow-tables' => 'Това е експериментална функцоиналност. Можете да дадете мнения и препоръки на [$1 беседата].',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Страници с най-високи оценки: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Страници с най-ниски оценки: $1',
+	'articleFeedbackv5-table-heading-page' => 'Страница',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Това е експериментална функцоиналност. Можете да дадете мнения и препоръки на [$1 беседата].',
 	'articlefeedbackv5-disable-preference' => 'Без показване на притурката за Оценяване на статиите в страниците',
 );
 
@@ -658,7 +658,7 @@ $messages['bg'] = array(
  * @author Wikitanvir
  */
 $messages['bn'] = array(
-	'articlefeedback' => 'নিবন্ধ প্রতিক্রিয়া ড্যাসবোর্ড',
+	'articlefeedbackv5' => 'নিবন্ধ প্রতিক্রিয়া ড্যাসবোর্ড',
 	'articlefeedbackv5-desc' => 'নিবন্ধ প্ররিক্রিয়া',
 	'articlefeedbackv5-survey-question-origin' => 'এই জরিপ শুরুর সময় আপনি কোন পাতায় ছিলেন?',
 	'articlefeedbackv5-survey-question-whyrated' => 'অনুগ্রহপূর্বক আমাদের বলুন, কেনো আজ আপনি এই পাতাটিকে রেট করলেন (প্রযোজ্য সকল অপশন চেক করুন):',
@@ -740,8 +740,8 @@ $messages['bn'] = array(
 	'articlefeedbackv5-survey-message-success' => 'জরিপটিতে অংশ নেওয়ার জন্য আপনাকে ধন্যবাদ।',
 	'articlefeedbackv5-survey-message-error' => 'একটি ত্রুটি দেখা দিয়েছে।
 অনুগ্রহ করে পরবর্তীতে আবার চেষ্টা করুন।',
-	'articleFeedback-table-heading-page' => 'পাতা',
-	'articleFeedback-table-heading-average' => 'গড়',
+	'articleFeedbackv5-table-heading-page' => 'পাতা',
+	'articleFeedbackv5-table-heading-average' => 'গড়',
 	'articlefeedbackv5-disable-preference' => 'পাতায় নিবন্ধ প্রতিক্রিয়া উইজেটটি দেখিও না',
 );
 
@@ -752,7 +752,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'articlefeedback' => 'Taolenn vourzh priziañ ar pennad',
+	'articlefeedbackv5' => 'Taolenn vourzh priziañ ar pennad',
 	'articlefeedbackv5-desc' => 'Priziadenn pennadoù (stumm stur)',
 	'articlefeedbackv5-survey-question-origin' => "E peseurt pajenn e oac'h p'hoc'h eus kroget gant an enselladenn-mañ ?",
 	'articlefeedbackv5-survey-question-whyrated' => "Roit deomp an abeg d'ar perak ho peus priziet ar bajenn-mañ hiziv (kevaskit an abegoù gwirion) :",
@@ -829,14 +829,14 @@ $messages['br'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Trugarez da vezañ leuniet ar goulennaoueg.',
 	'articlefeedbackv5-survey-message-error' => "Ur fazi zo bet.
 Klaskit en-dro diwezhatoc'h.",
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Berzh ha droukverzh an devezh',
-	'articleFeedback-table-caption-dailyhighs' => 'Pajennoù gwellañ priziet : $1',
-	'articleFeedback-table-caption-dailylows' => 'Pajennoù priziet an nebeutañ : $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Ar re gemmet ar muiañ er sizhun-mañ',
-	'articleFeedback-table-caption-recentlows' => 'Droukverzh nevesañ',
-	'articleFeedback-table-heading-page' => 'Pajenn',
-	'articleFeedback-table-heading-average' => 'Keidenn',
-	'articleFeedback-copy-above-highlow-tables' => "Un arc'hwel arnodel eo hemañ. Lakait an evezhiadennoù er [$1 bajenn gaozeal].",
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Berzh ha droukverzh an devezh',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Pajennoù gwellañ priziet : $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Pajennoù priziet an nebeutañ : $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Ar re gemmet ar muiañ er sizhun-mañ',
+	'articleFeedbackv5-table-caption-recentlows' => 'Droukverzh nevesañ',
+	'articleFeedbackv5-table-heading-page' => 'Pajenn',
+	'articleFeedbackv5-table-heading-average' => 'Keidenn',
+	'articleFeedbackv5-copy-above-highlow-tables' => "Un arc'hwel arnodel eo hemañ. Lakait an evezhiadennoù er [$1 bajenn gaozeal].",
 	'articlefeedbackv5-dashboard-bottom' => "'''Notenn''' : Kenderc'hel a raimp da amprouiñ doareoù disheñvel da ginnig ar pennadoù en taolennoù-bourzh-mañ. Evit ar mare emañ enno ar pennadoù da-heul :
 * Pajennoù ar gwellañ/fallañ priziet : pennadoù zo bet priziet da nebeutañ 10 gwezh e-kerzh an devezh diwezhañ. C'hoarvezout a ra ar c'heidennoù diwar jediñ keidenn an holl briziadennoù bet abaoe 24 eurvezh.
 * Pennadoù a zisplij : pennadoù bet priziet gant 2 steredenn pe nebeutoc'h, e-pad 70 % eus an amzer pe pelloc'h, ne vern o rummad e-pad ar 24 eurvezh tremenet. Ne sell nemet ouzh ar pennadoù bet priziet da nebeutañ 10 gwezh e-pad ar 24 eurvezh diwezhañ.",
@@ -869,7 +869,7 @@ Skipailh {{SITENAME}}",
  * @author CERminator
  */
 $messages['bs'] = array(
-	'articlefeedback' => 'Tabla za ocjenjivanje članaka',
+	'articlefeedbackv5' => 'Tabla za ocjenjivanje članaka',
 	'articlefeedbackv5-desc' => 'Ocjenjivanje članaka (probna verzija)',
 	'articlefeedbackv5-survey-question-origin' => 'Koja je stranica na kojoj ste bili kada ste počeli ovu anketu?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Molimo recite nam zašto se ocijenili danas ovu stranicu (označite sve koje se može primijeniti):',
@@ -931,14 +931,14 @@ $messages['bs'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Hvala vam na popunjavanju ankete.',
 	'articlefeedbackv5-survey-message-error' => 'Desila se greška.
 Molimo pokušajte kasnije.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Današnji najviši i najniži',
-	'articleFeedback-table-caption-dailyhighs' => 'Stranice sa najvišim ocjenama: $1',
-	'articleFeedback-table-caption-dailylows' => 'Stranice sa najnižim ocjenama: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Najviše mijenjano ove sedmice',
-	'articleFeedback-table-caption-recentlows' => 'Nedavne najniže ocjene',
-	'articleFeedback-table-heading-page' => 'Stranica',
-	'articleFeedback-table-heading-average' => 'Prosjek',
-	'articleFeedback-copy-above-highlow-tables' => 'Ovo je probna osobina. Molimo da nam pošaljete povratne informacije na [$1 stranicu za razgovor].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Današnji najviši i najniži',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Stranice sa najvišim ocjenama: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Stranice sa najnižim ocjenama: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Najviše mijenjano ove sedmice',
+	'articleFeedbackv5-table-caption-recentlows' => 'Nedavne najniže ocjene',
+	'articleFeedbackv5-table-heading-page' => 'Stranica',
+	'articleFeedbackv5-table-heading-average' => 'Prosjek',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Ovo je probna osobina. Molimo da nam pošaljete povratne informacije na [$1 stranicu za razgovor].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Napomena''': Mi ćemo nastaviti da probavamo sa raznim načinima prikaza članaka na ovim tablama.  Trenutno, table uključuju slijedeće članke:
 * Stranice sa najboljim/najslabijim ocjenama: članke koji imaju najmanje 10 ocjena u posljednja 24 sata.  Prosjeci su računati tako što su izračunati prosjeci svih poslanih ocjena u posljednja 24 sata.
 * Nedavne padovi: članci koji su dobili 70% ili manje (2 zvijezde ili niže) ocjene u bilo kojoj kategoriji u posljednja 24 sata. Samo članci koji su dobili najmanje 10 ocjena u posljednja 24 sata su ovdje uključeni.",
@@ -975,7 +975,7 @@ Vaš {{SITENAME}} tim',
  * @author Toniher
  */
 $messages['ca'] = array(
-	'articlefeedback' => "Avaluació de l'article",
+	'articlefeedbackv5' => "Avaluació de l'article",
 	'articlefeedbackv5-desc' => "Avaluació de l'article",
 	'articlefeedbackv5-survey-question-whyrated' => "Per favor, diga'ns per què has valorat aquesta pàgina avui (marca totes les opcions que creguis convenient):",
 	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => 'Vull contribuir a la qualificació global de la pàgina',
@@ -1010,8 +1010,8 @@ $messages['ca'] = array(
 	'articlefeedbackv5-pitch-survey-accept' => "Comença l'enquesta",
 	'articlefeedbackv5-pitch-join-accept' => 'Crea un compte',
 	'articlefeedbackv5-pitch-edit-accept' => 'Comença a editar',
-	'articleFeedback-table-heading-page' => 'Pàgina',
-	'articleFeedback-table-heading-average' => 'Mitjana',
+	'articleFeedbackv5-table-heading-page' => 'Pàgina',
+	'articleFeedbackv5-table-heading-average' => 'Mitjana',
 );
 
 /** Chechen (Нохчийн)
@@ -1028,7 +1028,7 @@ $messages['ce'] = array(
  * @author Mr. Richard Bolla
  */
 $messages['cs'] = array(
-	'articlefeedback' => 'Přehled hodnocení článků',
+	'articlefeedbackv5' => 'Přehled hodnocení článků',
 	'articlefeedbackv5-desc' => 'Hodnocení článků (pilotní verze)',
 	'articlefeedbackv5-survey-question-origin' => 'Ze které stránky jste {{gender:|přišel|přišla|přišli}} na tento průzkum?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Proč jste dnes hodnotili tuto stránku (zaškrtněte všechny platné možnosti)?',
@@ -1111,14 +1111,14 @@ $messages['cs'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Děkujeme za vyplnění dotazníku.',
 	'articlefeedbackv5-survey-message-error' => 'Došlo k chybě.
 Zkuste to prosím později.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Dnešní maxima a minima',
-	'articleFeedback-table-caption-dailyhighs' => 'Stránky s nejvyšším hodnocením: $1',
-	'articleFeedback-table-caption-dailylows' => 'Stránky s nejnižším hodnocením: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Největší změny tohoto týdne',
-	'articleFeedback-table-caption-recentlows' => 'Nedávná minima',
-	'articleFeedback-table-heading-page' => 'Stránka',
-	'articleFeedback-table-heading-average' => 'Průměr',
-	'articleFeedback-copy-above-highlow-tables' => 'Toto je pokusná funkce. Sdělte nám svůj názor na [$1 diskusní stránce].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Dnešní maxima a minima',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Stránky s nejvyšším hodnocením: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Stránky s nejnižším hodnocením: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Největší změny tohoto týdne',
+	'articleFeedbackv5-table-caption-recentlows' => 'Nedávná minima',
+	'articleFeedbackv5-table-heading-page' => 'Stránka',
+	'articleFeedbackv5-table-heading-average' => 'Průměr',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Toto je pokusná funkce. Sdělte nám svůj názor na [$1 diskusní stránce].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Poznámka''': I nadále budeme experimentovat s různými způsoby zobrazení článků na tomto přehledu. V současné chvíli přehled zahrnuje následující články:
 * Stránky s nejvyšším/nejnižším hodnocením: články, které za posledních 24 hodin byly hodnoceny nejméně 10krát. Průměry se počítají ze všech hodnocení odeslaných v posledních 24 hodinách.
 * Nedávná minima: články, které mají za posledních 24 hodin 70 % nebo více nízkých hodnocení (2 hvězdičky nebo horší) v libovolné kategorii. Zahrnuty jsou jen články, které byly za posledních 24 hodin hodnoceny nejméně 10krát.",
@@ -1151,7 +1151,7 @@ tým {{grammar:2sg|{{SITENAME}}}}',
  * @author Pwyll
  */
 $messages['cy'] = array(
-	'articlefeedback' => 'Dangosfwrdd adborth erthygl',
+	'articlefeedbackv5' => 'Dangosfwrdd adborth erthygl',
 	'articlefeedbackv5-desc' => 'Adborth am erthygl',
 	'articlefeedbackv5-survey-question-origin' => 'Ar ba dudalen oeddech chi pan ddechreuoch chi ar yr holiadur hwn?',
 	'articlefeedbackv5-survey-question-whyrated' => "Rhowch wybod i ni pam roeddech chi wedi teilyngu'r dudalen hon heddiw, os gwelwch yn dda (ticiwch bob un sy'n berthnasol):",
@@ -1233,14 +1233,14 @@ $messages['cy'] = array(
 	'articlefeedbackv5-pitch-edit-accept' => 'Golygwch y dudalen hon',
 	'articlefeedbackv5-survey-message-success' => "Diolch am gwblhau'r holiadur.",
 	'articlefeedbackv5-survey-message-error' => 'Cafwyd gwall. Ceisiwch eto nes ymlaen os gwelwch yn dda.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Uchafbwyntiau ac iselfannau heddiw',
-	'articleFeedback-table-caption-dailyhighs' => "Tudalennau gyda'r sgôrau uchaf: $1",
-	'articleFeedback-table-caption-dailylows' => "Tudalennau gyda'r sgôrau isaf: $1",
-	'articleFeedback-table-caption-weeklymostchanged' => 'Newidiadau mwyaf yr wythnos hon',
-	'articleFeedback-table-caption-recentlows' => 'Iselfannau diweddar',
-	'articleFeedback-table-heading-page' => 'Tudalen',
-	'articleFeedback-table-heading-average' => 'Cyfartaledd',
-	'articleFeedback-copy-above-highlow-tables' => 'Nodwedd arbrofol yw hon. Darparwch adborth ar [dudalen sgwrs $1] os gwelwch yn dda.',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Uchafbwyntiau ac iselfannau heddiw',
+	'articleFeedbackv5-table-caption-dailyhighs' => "Tudalennau gyda'r sgôrau uchaf: $1",
+	'articleFeedbackv5-table-caption-dailylows' => "Tudalennau gyda'r sgôrau isaf: $1",
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Newidiadau mwyaf yr wythnos hon',
+	'articleFeedbackv5-table-caption-recentlows' => 'Iselfannau diweddar',
+	'articleFeedbackv5-table-heading-page' => 'Tudalen',
+	'articleFeedbackv5-table-heading-average' => 'Cyfartaledd',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Nodwedd arbrofol yw hon. Darparwch adborth ar [dudalen sgwrs $1] os gwelwch yn dda.',
 	'articlefeedbackv5-dashboard-bottom' => "'''Noder''': Byddwn yn parhau i arbrofi gyda ffyrdd gwahanol o gyflwyno erthyglau ar y dangosfyrddau hyn. Ar hyn o bryd, mae'r dangosfyrddau'n cynnwys yr erthyglau canlynol:
 * Tudalennau gyda'r sgôrau uchaf/isaf: erthyglau sydd wedi derbyn 10 sgôr o leiaf yn ystod y 24 awr diwethaf. Daw'r cyfartaleddau trwy gymryd y cymedr o'r holl sgôrau a gyflwynwyd yn ystod y 24 awr diwethaf.
 * Iselfannau diweddar: erthyglau a gafodd sgôrau o 70% neu'n is (2 seren neu'n is) mewn unrhyw gategori yn ystod y 24 awr diwethaf. Dim ond erthyglau a dderbyniodd 10 sgôr o leiaf yn ystod y 24 awr diwethaf sy'n cael eu cynnwys.",
@@ -1306,8 +1306,8 @@ $messages['da'] = array(
 	'articlefeedbackv5-pitch-edit-message' => 'Vidste du, at du kan redigere denne side?',
 	'articlefeedbackv5-survey-message-error' => 'En fejl opstod.
 Prøv venligst igen senere.',
-	'articleFeedback-table-heading-page' => 'Side',
-	'articleFeedback-table-heading-average' => 'Gennemsnit',
+	'articleFeedbackv5-table-heading-page' => 'Side',
+	'articleFeedbackv5-table-heading-average' => 'Gennemsnit',
 );
 
 /** German (Deutsch)
@@ -1316,7 +1316,7 @@ Prøv venligst igen senere.',
  * @author Purodha
  */
 $messages['de'] = array(
-	'articlefeedback' => 'Arbeits- und Übersichtsseite zu Seiteneinschätzungen',
+	'articlefeedbackv5' => 'Arbeits- und Übersichtsseite zu Seiteneinschätzungen',
 	'articlefeedbackv5-desc' => 'Ermöglicht die Einschätzung von Seiten (Pilotversion)',
 	'articlefeedbackv5-survey-question-origin' => 'Auf welcher Seite befandest du dich zu Anfang dieser Umfrage?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Bitte lasse uns wissen, warum du diese Seite heute eingeschätzt hast (Zutreffendes bitte ankreuzen):',
@@ -1401,14 +1401,14 @@ $messages['de'] = array(
 	'articlefeedbackv5-survey-message-error' => 'Ein Fehler ist aufgetreten.
 Bitte später erneut versuchen.',
 	'articlefeedbackv5-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Heutige Hochs und Tiefs',
-	'articleFeedback-table-caption-dailyhighs' => 'Artikel mit den höchsten Bewertungen: $1',
-	'articleFeedback-table-caption-dailylows' => 'Artikel mit den niedrigsten Bewertungen: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Diese Woche am meisten geändert',
-	'articleFeedback-table-caption-recentlows' => 'Aktuelle Tiefs',
-	'articleFeedback-table-heading-page' => 'Seite',
-	'articleFeedback-table-heading-average' => 'Durchschnitt',
-	'articleFeedback-copy-above-highlow-tables' => 'Dies ist ein experimenteller Funktionsbestandteil. Bitte hierzu auf der [$1 Diskussionsseite] eine Rückmeldung geben.',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Heutige Hochs und Tiefs',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Artikel mit den höchsten Bewertungen: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Artikel mit den niedrigsten Bewertungen: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Diese Woche am meisten geändert',
+	'articleFeedbackv5-table-caption-recentlows' => 'Aktuelle Tiefs',
+	'articleFeedbackv5-table-heading-page' => 'Seite',
+	'articleFeedbackv5-table-heading-average' => 'Durchschnitt',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Dies ist ein experimenteller Funktionsbestandteil. Bitte hierzu auf der [$1 Diskussionsseite] eine Rückmeldung geben.',
 	'articlefeedbackv5-dashboard-bottom' => "'''Hinweis:''' Wir werden weiterhin unterschiedliche Möglichkeiten ausprobieren, Artikel auf diesen Arbeits- und Übersichtseiten anzuzeigen. Momentan werden hier die folgenden Artikel angezeigt:
 * Seiten mit den höchsten/niedrigsten Bewertungen: Artikel, die mindestens zehn Bewertungen während der vergangenen 24 Stunden erhalten haben. Die Durchschnittswerte sind dabei der Mittelwert aller Bewertungen während der vergangenen 24 Stunden.
 * Aktuelle schlechte Bewertungen: Artikel, die während der vergangenen 24 Stunden 70 % oder schlechtere Bewertungen (zwei Sterne oder weniger) in jeder der Kategorien erhalten haben. Lediglich Artikel mit wenigstens zehn Bewertungen während der vergangenen 24 Stunden werden dabei einbezogen.",
@@ -1525,7 +1525,7 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
-	'articlefeedback' => 'Ταμπλό ανατροφοδότησης άρθρου',
+	'articlefeedbackv5' => 'Ταμπλό ανατροφοδότησης άρθρου',
 	'articlefeedbackv5-desc' => 'Αξιολόγηση Άρθρου (πιλοτική έκδοση)',
 	'articlefeedbackv5-survey-question-origin' => 'Σε ποιά σελίδα  ήσασταν όταν ξεκινήσατε αυτή την έρευνα;',
 	'articlefeedbackv5-survey-question-whyrated' => 'Bonvolu informigi nin  kial vi taksis ĉi tiun paĝon hodiaŭ (marku ĉion taŭgan):',
@@ -1608,14 +1608,14 @@ $messages['el'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Ευχαριστώ για τη συμπλήρωση της έρευνας.',
 	'articlefeedbackv5-survey-message-error' => 'Παρουσιάστηκε ένα σφάλμα.
 Προσπαθήστε ξανά αργότερα.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Σημερινά υψηλά και χαμηλά',
-	'articleFeedback-table-caption-dailyhighs' => 'Σελίδες με την υψηλότερη βαθμολογία: $1',
-	'articleFeedback-table-caption-dailylows' => 'Σελίδες με τις χαμηλότερες βαθμολογίες: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Τα πιο αλλαγμένα αυτής της εβδομάδας',
-	'articleFeedback-table-caption-recentlows' => 'Πρόσφατα χαμηλά',
-	'articleFeedback-table-heading-page' => 'Σελίδα',
-	'articleFeedback-table-heading-average' => 'Μέσος όρος',
-	'articleFeedback-copy-above-highlow-tables' => 'Αυτό είναι ένα πειραματικό χαρακτηριστικό. Παρακαλώ παράσχετε ανατροφοδότηση στη [$1 σελίδα συζήτησης].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Σημερινά υψηλά και χαμηλά',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Σελίδες με την υψηλότερη βαθμολογία: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Σελίδες με τις χαμηλότερες βαθμολογίες: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Τα πιο αλλαγμένα αυτής της εβδομάδας',
+	'articleFeedbackv5-table-caption-recentlows' => 'Πρόσφατα χαμηλά',
+	'articleFeedbackv5-table-heading-page' => 'Σελίδα',
+	'articleFeedbackv5-table-heading-average' => 'Μέσος όρος',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Αυτό είναι ένα πειραματικό χαρακτηριστικό. Παρακαλώ παράσχετε ανατροφοδότηση στη [$1 σελίδα συζήτησης].',
 	'articlefeedbackv5-disable-preference' => 'Να μην εμφανίζεται το εργαλείο ανατροφοδότησης Άρθρων στις σελίδες',
 );
 
@@ -1623,7 +1623,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'articlefeedback' => 'Stirpanelo pri artikolo-komentoj',
+	'articlefeedbackv5' => 'Stirpanelo pri artikolo-komentoj',
 	'articlefeedbackv5-desc' => 'Artikola takso (testa versio)',
 	'articlefeedbackv5-survey-question-origin' => 'En kiu paĝo vi estis kiam vi komencis la etikedon?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Bonvolu informigi nin  kial vi taksis ĉi tiun paĝon hodiaŭ (marku ĉion taŭgan):',
@@ -1706,14 +1706,14 @@ $messages['eo'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Dankon pro plenumante la enketon.',
 	'articlefeedbackv5-survey-message-error' => 'Eraro okazis. 
 Bonvolu reprovi baldaŭ.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'La altoj kaj malaltoj hodiaŭ',
-	'articleFeedback-table-caption-dailyhighs' => 'Paĝoj kun la plej bonaj taksoj: $1',
-	'articleFeedback-table-caption-dailylows' => 'Paĝoj kun la plej malbonaj taksoj: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Plej ŝanĝitaj ĉi-semajne',
-	'articleFeedback-table-caption-recentlows' => 'Lastatempaj malaltoj',
-	'articleFeedback-table-heading-page' => 'Paĝo',
-	'articleFeedback-table-heading-average' => 'Averaĝo',
-	'articleFeedback-copy-above-highlow-tables' => 'Ĉi tiu estas eksperimenta eco. Bonvolu provizi komentojn en la [$1 diskuto-paĝo].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'La altoj kaj malaltoj hodiaŭ',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Paĝoj kun la plej bonaj taksoj: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Paĝoj kun la plej malbonaj taksoj: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Plej ŝanĝitaj ĉi-semajne',
+	'articleFeedbackv5-table-caption-recentlows' => 'Lastatempaj malaltoj',
+	'articleFeedbackv5-table-heading-page' => 'Paĝo',
+	'articleFeedbackv5-table-heading-average' => 'Averaĝo',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Ĉi tiu estas eksperimenta eco. Bonvolu provizi komentojn en la [$1 diskuto-paĝo].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Notu''': Ni eksperimentos plu pri aliaj fojo enmeti artikolojn en kontrolskatoloj. Nune, la kontrolskatoloj inkluzivas la jenaj artikoloj:
 * Paĝoj kun la plej bonaj aŭ malbonaj rangoj: artikoloj ricevis almenaŭ 10 taksojn en la lastaj 24 horoj. Averaĝoj estas kalkulitaj laŭ la averaĝaj taskoj faritaj en la lastaj 24 horoj.
 * Lastaj malaltaĵoj: Artikoloj ricevantaj 70% aŭ pli malgrandajn (2 steloj aŭ malpli) taksojn en iu kategorio en la lasta 24 horoj. Nur artikoloj ricevantaj almenaŭ 10 taksojn en la lastaj 24 horoj estas inkluzivitaj.",
@@ -1753,7 +1753,7 @@ La teamo {{SITENAME}}',
  * @author Translationista
  */
 $messages['es'] = array(
-	'articlefeedback' => 'Panel de evaluación de artículos',
+	'articlefeedbackv5' => 'Panel de evaluación de artículos',
 	'articlefeedbackv5-desc' => 'Evaluación del artículo',
 	'articlefeedbackv5-survey-question-origin' => '¿En qué página estabas cuando iniciaste esta encuesta?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Por favor, dinos por qué decidiste valorar esta página (marca todas las opciones que correspondan):',
@@ -1836,14 +1836,14 @@ $messages['es'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Gracias por completar la encuesta.',
 	'articlefeedbackv5-survey-message-error' => 'Ha ocurrido un error.
 Por favor inténtalo de nuevo más tarde.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Altibajos de hoy',
-	'articleFeedback-table-caption-dailyhighs' => 'Páginas con las calificaciones más altas: $1',
-	'articleFeedback-table-caption-dailylows' => 'Páginas con las calificaciones más bajas: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Lo más modificado de la semana',
-	'articleFeedback-table-caption-recentlows' => 'Calificaciones bajas recientes',
-	'articleFeedback-table-heading-page' => 'Página',
-	'articleFeedback-table-heading-average' => 'Promedio',
-	'articleFeedback-copy-above-highlow-tables' => 'Esta es una característica experimental. Por favor, proporciona tus comentarios en su [$1 página de discusión].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Altibajos de hoy',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Páginas con las calificaciones más altas: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Páginas con las calificaciones más bajas: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Lo más modificado de la semana',
+	'articleFeedbackv5-table-caption-recentlows' => 'Calificaciones bajas recientes',
+	'articleFeedbackv5-table-heading-page' => 'Página',
+	'articleFeedbackv5-table-heading-average' => 'Promedio',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Esta es una característica experimental. Por favor, proporciona tus comentarios en su [$1 página de discusión].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Nota''': Continuaremos experimentando con diferentes formas de presentar los artículos en estos paneles. Ahora, los paneles incluyen los siguientes artículos:
 * Las páginas con las calificaciones más altas y más bajas: artpiculos que han recibido al menos diez calificaciones en las últimas 24 horas. Se calculan promedios tomando en cuenta las calificaciones enviadas en las últimas 24 horas.
 * Calificaciones bajas recientes: artículos que obtuvieron el 70% o más de calificaciones bajas (2 estrellas o menos) en cualquier categoría en las últimas 24 horas. Solamente se incluyen aquellos artículos que hayan recibido al menos diez calificaciones en las últimas 24 horas.",
@@ -1877,7 +1877,7 @@ El equipo de {{SITENAME}}.',
  * @author Pikne
  */
 $messages['et'] = array(
-	'articlefeedback' => 'Artiklite hindamise ülevaade',
+	'articlefeedbackv5' => 'Artiklite hindamise ülevaade',
 	'articlefeedbackv5-desc' => 'Artikli hindamine (prooviversioon)',
 	'articlefeedbackv5-survey-question-whyrated' => 'Miks seda lehekülge täna hindasid (vali kõik sobivad):',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => 'Tahtsin leheküljele üldist hinnangut anda',
@@ -1951,10 +1951,10 @@ $messages['et'] = array(
 	'articlefeedbackv5-pitch-edit-accept' => 'Redigeeri',
 	'articlefeedbackv5-survey-message-error' => 'Ilmnes tõrge.
 Palun proovi hiljem uuesti.',
-	'articleFeedback-table-caption-dailyhighs' => 'Parimate hinnangutega leheküljed: $1',
-	'articleFeedback-table-caption-dailylows' => 'Halvimate hinnangutega leheküljed: $1',
-	'articleFeedback-table-heading-page' => 'Lehekülg',
-	'articleFeedback-table-heading-average' => 'Keskmine',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Parimate hinnangutega leheküljed: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Halvimate hinnangutega leheküljed: $1',
+	'articleFeedbackv5-table-heading-page' => 'Lehekülg',
+	'articleFeedbackv5-table-heading-average' => 'Keskmine',
 	'articlefeedbackv5-disable-preference' => 'Ära näita lehekülgedel artikli hindamise dialoogikasti',
 	'articlefeedbackv5-emailcapture-response-body' => 'Tere!
 
@@ -1987,7 +1987,7 @@ Kõike paremat!
  * @author Theklan
  */
 $messages['eu'] = array(
-	'articlefeedback' => 'Artikuluen gaineko ekarpenen arbela',
+	'articlefeedbackv5' => 'Artikuluen gaineko ekarpenen arbela',
 	'articlefeedbackv5-desc' => 'Artikuluaren ekarpenak',
 	'articlefeedbackv5-survey-question-origin' => 'Ze orrialdetan zeunden inkesta hau betetzen hasi zarenean?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Esaiguzu, mesedez, zergatik baloratu duzun orrialde hau gaur (klik egin nahi duzun guztien gainean):',
@@ -2042,13 +2042,13 @@ $messages['eu'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Eskerrik asko inkesta betetzeagatik.',
 	'articlefeedbackv5-survey-message-error' => 'Akats bat egon da.
 Saia zaitez bearnduago.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Gaurko goi eta beheak',
-	'articleFeedback-table-caption-dailyhighs' => 'Baloraziorik altuena duten orrialdeak: $1',
-	'articleFeedback-table-caption-dailylows' => 'Balorazio eskasena duten orrialdeak: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Aste honetan gehien aldatu direnak',
-	'articleFeedback-table-caption-recentlows' => 'Balorazio eskasa izan duten azkenak',
-	'articleFeedback-table-heading-page' => 'Orrialdea',
-	'articleFeedback-table-heading-average' => 'Bataz bestekoa',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Gaurko goi eta beheak',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Baloraziorik altuena duten orrialdeak: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Balorazio eskasena duten orrialdeak: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Aste honetan gehien aldatu direnak',
+	'articleFeedbackv5-table-caption-recentlows' => 'Balorazio eskasa izan duten azkenak',
+	'articleFeedbackv5-table-heading-page' => 'Orrialdea',
+	'articleFeedbackv5-table-heading-average' => 'Bataz bestekoa',
 );
 
 /** Persian (فارسی)
@@ -2058,7 +2058,7 @@ Saia zaitez bearnduago.',
  * @author ZxxZxxZ
  */
 $messages['fa'] = array(
-	'articlefeedback' => 'داشبورد بازخورد مقاله',
+	'articlefeedbackv5' => 'داشبورد بازخورد مقاله',
 	'articlefeedbackv5-desc' => 'ارزیابی مقاله‌ها (نسخهٔ آزمایشی)',
 	'articlefeedbackv5-survey-question-origin' => 'زمان شروع نظرسنجی در کدام صفحه قرار داشتید؟',
 	'articlefeedbackv5-survey-question-whyrated' => 'لطفاً به ما اطلاع دهید که چرا شما امروز به این صفحه نمره دادید (تمام موارد مرتبط را انتخاب کنید):',
@@ -2141,14 +2141,14 @@ $messages['fa'] = array(
 	'articlefeedbackv5-survey-message-success' => 'سپاس از شما بابت پر کردن فرم نظرسنجی.',
 	'articlefeedbackv5-survey-message-error' => 'خطایی رخ داده است.
 لطفاً بعداً دوباره سعی کنید.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'بالاترین‌ها و پایین‌ترین‌های امروز',
-	'articleFeedback-table-caption-dailyhighs' => 'صفحات با بالاترین رأی:$1',
-	'articleFeedback-table-caption-dailylows' => 'صفحات با کمترین رأی:$1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'بیشترین تغییر این هفته',
-	'articleFeedback-table-caption-recentlows' => 'سطوح پایین اخیر',
-	'articleFeedback-table-heading-page' => 'صفحه',
-	'articleFeedback-table-heading-average' => 'میانگین',
-	'articleFeedback-copy-above-highlow-tables' => 'این یک ویژگی تجربی است.  لطفاً بازخورد را در [$1 صفحهٔ بحث] ارائه دهید.',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'بالاترین‌ها و پایین‌ترین‌های امروز',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'صفحات با بالاترین رأی:$1',
+	'articleFeedbackv5-table-caption-dailylows' => 'صفحات با کمترین رأی:$1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'بیشترین تغییر این هفته',
+	'articleFeedbackv5-table-caption-recentlows' => 'سطوح پایین اخیر',
+	'articleFeedbackv5-table-heading-page' => 'صفحه',
+	'articleFeedbackv5-table-heading-average' => 'میانگین',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'این یک ویژگی تجربی است.  لطفاً بازخورد را در [$1 صفحهٔ بحث] ارائه دهید.',
 	'articlefeedbackv5-disable-preference' => 'ابزار نظرسنجی مقاله را در صفحات نشان نده',
 	'articlefeedbackv5-emailcapture-response-body' => 'سلام!
 
@@ -2179,7 +2179,7 @@ $3
  * @author Olli
  */
 $messages['fi'] = array(
-	'articlefeedback' => 'Artikkelin arvioinnin koostesivu',
+	'articlefeedbackv5' => 'Artikkelin arvioinnin koostesivu',
 	'articlefeedbackv5-desc' => 'Artikkelin arviointi (kokeiluversio)',
 	'articlefeedbackv5-survey-question-origin' => 'Millä sivulla olit, kun aloitit tämän kyselyn?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Kerro meille, miksi arvostelit tämän sivun tänään (lisää merkki kaikkiin, jotka pitävät paikkaansa):',
@@ -2262,14 +2262,14 @@ $messages['fi'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Kiitos kyselyn täyttämisestä.',
 	'articlefeedbackv5-survey-message-error' => 'Tapahtui virhe.
 Yritä myöhemmin uudelleen.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Tämän päivän ennätykset',
-	'articleFeedback-table-caption-dailyhighs' => 'Sivut, joilla on parhaat arviot: $1',
-	'articleFeedback-table-caption-dailylows' => 'Sivut, joilla on huonoimmat arviot: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Tällä viikolla eniten muutettu',
-	'articleFeedback-table-caption-recentlows' => 'Viimeisimmät matalat arviot',
-	'articleFeedback-table-heading-page' => 'Sivu',
-	'articleFeedback-table-heading-average' => 'Keskiarvo',
-	'articleFeedback-copy-above-highlow-tables' => 'Tämä on kokeellinen ominaisuus.  Anna palautetta [$1 keskustelusivulla].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Tämän päivän ennätykset',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Sivut, joilla on parhaat arviot: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Sivut, joilla on huonoimmat arviot: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Tällä viikolla eniten muutettu',
+	'articleFeedbackv5-table-caption-recentlows' => 'Viimeisimmät matalat arviot',
+	'articleFeedbackv5-table-heading-page' => 'Sivu',
+	'articleFeedbackv5-table-heading-average' => 'Keskiarvo',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Tämä on kokeellinen ominaisuus.  Anna palautetta [$1 keskustelusivulla].',
 	'articlefeedbackv5-disable-preference' => 'Älä näytä Sivupalaute-toimintoa sivuilla',
 	'articlefeedbackv5-emailcapture-response-body' => 'Hei!
 
@@ -2307,7 +2307,7 @@ Kiitos! Terveisin,
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'articlefeedback' => 'Tableau de bord de l’évaluation d’article',
+	'articlefeedbackv5' => 'Tableau de bord de l’évaluation d’article',
 	'articlefeedbackv5-desc' => 'Évaluation d’article (version pilote)',
 	'articlefeedbackv5-survey-question-origin' => 'À quelle page étiez-vous lorsque vous avez commencé cette évaluation ?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Veuillez nous indiquer pourquoi vous avez évalué cette page aujourd’hui (cochez tout ce qui s’applique) :',
@@ -2390,14 +2390,14 @@ $messages['fr'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Merci d’avoir rempli le questionnaire.',
 	'articlefeedbackv5-survey-message-error' => 'Une erreur est survenue.
 Veuillez ré-essayer plus tard.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Les hauts et les bas d’aujourd’hui',
-	'articleFeedback-table-caption-dailyhighs' => 'Pages avec les plus hautes cotes : $1',
-	'articleFeedback-table-caption-dailylows' => 'Pages avec cotes les plus basses : $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Les plus modifiés cette semaine',
-	'articleFeedback-table-caption-recentlows' => 'Dernières cotes basses',
-	'articleFeedback-table-heading-page' => 'Page',
-	'articleFeedback-table-heading-average' => 'Moyenne',
-	'articleFeedback-copy-above-highlow-tables' => 'Il s’agit d’une fonctionnalité expérimentale. Veuillez fournir des commentaires sur la [$1 page de discussion].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Les hauts et les bas d’aujourd’hui',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Pages avec les plus hautes cotes : $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Pages avec cotes les plus basses : $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Les plus modifiés cette semaine',
+	'articleFeedbackv5-table-caption-recentlows' => 'Dernières cotes basses',
+	'articleFeedbackv5-table-heading-page' => 'Page',
+	'articleFeedbackv5-table-heading-average' => 'Moyenne',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Il s’agit d’une fonctionnalité expérimentale. Veuillez fournir des commentaires sur la [$1 page de discussion].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Note''' : Nous allons continuer à expérimenter avec différentes façons de représenter les articles dans ces tableaux de bord. Ceux-ci contiennent les articles suivants :
 * pages qui ont les taux les plus faibles ou plus élevés : ce sont les articles qui ont reçu au moins 10 évaluations dans les dernières 24 heures. Les moyennes sont obtenues en calculant la moyenne de toutes les évaluations des dernières 24 heures.
 * bas récents : articles qui ont reçu deux étoiles ou moins, 70 % du temps ou plus, peu importe la catégorie dans les dernières 24 heures. Cela s’applique seulement aux articles qui ont reçu au moins 10 évaluations dans les dernières 24 heures.",
@@ -2431,7 +2431,7 @@ L’équipe de {{SITENAME}}",
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'articlefeedback' => 'Tablô de bôrd de l’èstimacion d’articllo',
+	'articlefeedbackv5' => 'Tablô de bôrd de l’èstimacion d’articllo',
 	'articlefeedbackv5-desc' => 'Èstimacion d’articllo (vèrsion pilote)',
 	'articlefeedbackv5-survey-question-origin' => 'A quinta pâge érâd-vos quand vos éd comenciê cela èstimacion ?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Nos volyéd endicar porquè vos éd èstimâ cela pâge houé (pouentâd tot cen que s’aplique) :',
@@ -2515,14 +2515,14 @@ $messages['frp'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Grant-marci d’avêr rempli lo quèstionèro.',
 	'articlefeedbackv5-survey-message-error' => 'Una èrror est arrevâ.
 Volyéd tornar èprovar ples târd.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Los hôts et bâs d’houé',
-	'articleFeedback-table-caption-dailyhighs' => 'Pâges avouéc quotes les ples hôtes : $1',
-	'articleFeedback-table-caption-dailylows' => 'Pâges avouéc quotes les ples bâsses : $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Los ples changiês de cela semana',
-	'articleFeedback-table-caption-recentlows' => 'Dèrriérs bâs',
-	'articleFeedback-table-heading-page' => 'Pâge',
-	'articleFeedback-table-heading-average' => 'Moyena',
-	'articleFeedback-copy-above-highlow-tables' => 'O est una fonccionalitât èxpèrimentâla. Volyéd balyér voutron avis sur la [$1 pâge de discussion].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Los hôts et bâs d’houé',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Pâges avouéc quotes les ples hôtes : $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Pâges avouéc quotes les ples bâsses : $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Los ples changiês de cela semana',
+	'articleFeedbackv5-table-caption-recentlows' => 'Dèrriérs bâs',
+	'articleFeedbackv5-table-heading-page' => 'Pâge',
+	'articleFeedbackv5-table-heading-average' => 'Moyena',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'O est una fonccionalitât èxpèrimentâla. Volyéd balyér voutron avis sur la [$1 pâge de discussion].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Nota :''' nos volens continuar a èxpèrimentar difèrentes façons de reprèsentar los articllos dens celos tablôs de bôrd.  Ora, celos contegnont cetos articllos :
 * pâges qu’ont les quotes les ples hôtes / fêbles : sont los articllos qu’ont reçus u muens 10 èstimacions dens les 24 hores passâs.  Les moyenes sont avues en calculent la moyena de totes les èstimacions de les 24 hores passâs.
 * bâs novéls : sont los articllos qu’ont reçus 70 % ou ben una quota ples fêbla (2 ètêles ou ben muens) dens una catègorie quinta que seye dens les 24 hores passâs. Cen s’aplique ren qu’ux articllos qu’ont reçus u muens 10 èstimacions dens les 24 hores passâs.",
@@ -2563,7 +2563,7 @@ $messages['fur'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'articlefeedback' => 'Panel de avaliación de artigos',
+	'articlefeedbackv5' => 'Panel de avaliación de artigos',
 	'articlefeedbackv5-desc' => 'Versión piloto da avaliación dos artigos',
 	'articlefeedbackv5-survey-question-origin' => 'En que páxina estaba cando comezou a enquisa?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Díganos por que valorou esta páxina (marque todas as opcións que cumpran):',
@@ -2646,14 +2646,14 @@ $messages['gl'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Grazas por encher a enquisa.',
 	'articlefeedbackv5-survey-message-error' => 'Houbo un erro.
 Inténteo de novo máis tarde.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Os altos e baixos de hoxe',
-	'articleFeedback-table-caption-dailyhighs' => 'Artigos coas valoracións máis altas: $1',
-	'articleFeedback-table-caption-dailylows' => 'Artigos coas valoracións máis baixas: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Os máis modificados esta semana',
-	'articleFeedback-table-caption-recentlows' => 'Últimos baixos',
-	'articleFeedback-table-heading-page' => 'Páxina',
-	'articleFeedback-table-heading-average' => 'Media',
-	'articleFeedback-copy-above-highlow-tables' => 'Esta é unha característica experimental. Deixe os seus comentarios na [$1 páxina de conversa].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Os altos e baixos de hoxe',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Artigos coas valoracións máis altas: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Artigos coas valoracións máis baixas: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Os máis modificados esta semana',
+	'articleFeedbackv5-table-caption-recentlows' => 'Últimos baixos',
+	'articleFeedbackv5-table-heading-page' => 'Páxina',
+	'articleFeedbackv5-table-heading-average' => 'Media',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Esta é unha característica experimental. Deixe os seus comentarios na [$1 páxina de conversa].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Nota:''' Continuaremos experimentando diferentes xeitos de seleccionar artigos neste taboleiro. Polo de agora, os taboleiros inclúen os seguintes artigos:
 * Páxinas coas mellores/peores valoracións: artigos que recibiron, polo menos, 10 avaliacións nas últimas 24 horas. As medias calcúlanse tomando a media de todas as valoracións enviadas nas últimas 24 horas.
 * Os baixos máis recentes: artigos que tiveron un 70% ou menos (2 estrelas ou menos) das valoracións en calquera categoría nas últimas 24 horas. Soamente se inclúen os artigos que recibiron, polo menos, 10 avaliacións nas últimas 24 horas.",
@@ -2687,7 +2687,7 @@ O equipo de {{SITENAME}}',
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'articlefeedback' => 'Übersichtssyte für Artikelbeurteilige',
+	'articlefeedbackv5' => 'Übersichtssyte für Artikelbeurteilige',
 	'articlefeedbackv5-desc' => 'Macht d Yyschetzig vu Artikel megli (Pilotversion)',
 	'articlefeedbackv5-survey-question-origin' => 'Uff wellere Syte bisch gsi, wo die Umfroog aagfange hesch?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Bitte loss es is wisse, wurum Du dää Artikel hite yygschetzt hesch (bitte aachryzle, was zuetrifft):',
@@ -2770,14 +2770,14 @@ $messages['gsw'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Dankschen, ass Du bi däre Umfrog mitgmacht hesch.',
 	'articlefeedbackv5-survey-message-error' => 'E Fähler isch ufträtte.
 Bitte versuech s speter nomol.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Di Hööche- un Diefpunkt vo hüt',
-	'articleFeedback-table-caption-dailyhighs' => 'Artikel mit de beschte Bewertige: $1',
-	'articleFeedback-table-caption-dailylows' => 'Artikel mit de schlächteste Bewertige: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'In derre Wuche am meiste gänderet',
-	'articleFeedback-table-caption-recentlows' => 'Aktuelli Diefpünkt',
-	'articleFeedback-table-heading-page' => 'Syte',
-	'articleFeedback-table-heading-average' => 'Durschnitt',
-	'articleFeedback-copy-above-highlow-tables' => 'Des isch e Versuechsfunktion. Bitte gib uff de [$1 Diskussionssyte] e Ruggmäldig dezue.',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Di Hööche- un Diefpunkt vo hüt',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Artikel mit de beschte Bewertige: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Artikel mit de schlächteste Bewertige: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'In derre Wuche am meiste gänderet',
+	'articleFeedbackv5-table-caption-recentlows' => 'Aktuelli Diefpünkt',
+	'articleFeedbackv5-table-heading-page' => 'Syte',
+	'articleFeedbackv5-table-heading-average' => 'Durschnitt',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Des isch e Versuechsfunktion. Bitte gib uff de [$1 Diskussionssyte] e Ruggmäldig dezue.',
 	'articlefeedbackv5-dashboard-bottom' => "'''Hywyys''': Mir experimentiere wyter mit verschidne Mögligkeite zume Artikel uff dänne Übersichtssyte uffzeige. Zur Zit werde doo die Artikel aazeigt:
 *Syte mit de beschte/schlächteschte Bewertige: Artikel wo derwyylischt de letschte 24 Stunde mindestens 10 Bewertige kriegt hen. De Durchschnitt wird durch alli Beurteilige in de letschte 24 Stunde berächnet.
 *Aktuelli schlächti Bewertige: Artikel wo derwyylischt de letschte 24 Stunde e Bewertige vo 70% oder niidriger übercho hen (2 Stärnli oder weniger), in allene Kategorie. Numme Artikel wo derwyylscht de letschte 24 Stunde mindestens 10 Bewertige übercho hen, sin beruggsichtigt.",
@@ -2810,7 +2810,7 @@ D Mitarbeiter vo {{SITENAME}}',
  * @author YaronSh
  */
 $messages['he'] = array(
-	'articlefeedback' => 'לוח בקרה למשוב על ערך',
+	'articlefeedbackv5' => 'לוח בקרה למשוב על ערך',
 	'articlefeedbackv5-desc' => 'הערכת ערך (גרסה ניסיונית)',
 	'articlefeedbackv5-survey-question-origin' => 'מאיזה עמוד הגעתם לסקר הזה?',
 	'articlefeedbackv5-survey-question-whyrated' => 'נא ליידע אותנו מדובר דירגת דף זה היום (יש לסמן את כל העונים לשאלה):',
@@ -2893,14 +2893,14 @@ $messages['he'] = array(
 	'articlefeedbackv5-survey-message-success' => 'תודה על מילוי הסקר.',
 	'articlefeedbackv5-survey-message-error' => 'אירעה שגיאה. 
 נא לנסות שוב מאוחר יותר.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'התוצאות הגבוהות והנמוכות היום',
-	'articleFeedback-table-caption-dailyhighs' => 'ערכים עם הדירוגים הגבוהים ביותר: $1',
-	'articleFeedback-table-caption-dailylows' => 'ערכים עם הדירוגים הנמוכים ביותר: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'מה השתנה השבוע יותר מכול',
-	'articleFeedback-table-caption-recentlows' => 'תוצאות נמוכות לאחרונה',
-	'articleFeedback-table-heading-page' => 'דף',
-	'articleFeedback-table-heading-average' => 'ממוצע',
-	'articleFeedback-copy-above-highlow-tables' => 'זוהי תכונה ניסיונית. נשמח לקבל משוב ב[$1 דף השיחה].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'התוצאות הגבוהות והנמוכות היום',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'ערכים עם הדירוגים הגבוהים ביותר: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'ערכים עם הדירוגים הנמוכים ביותר: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'מה השתנה השבוע יותר מכול',
+	'articleFeedbackv5-table-caption-recentlows' => 'תוצאות נמוכות לאחרונה',
+	'articleFeedbackv5-table-heading-page' => 'דף',
+	'articleFeedbackv5-table-heading-average' => 'ממוצע',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'זוהי תכונה ניסיונית. נשמח לקבל משוב ב[$1 דף השיחה].',
 	'articlefeedbackv5-dashboard-bottom' => "'''שימו לב''': אנחנו נמשיך לערוך ניסויים עם דרכים שונות להציף ערכים בלוחות הבקרה האלה. כעת לוחות הברה כוללים את הערכים הבאים:
 * דפים עם דירוגים גבוהים ביותר או נמוכים ביותר: ערכים שקיבלו לפחות 10 דירוגים ב־24 השעות האחרונות. הממוצעים מחושבים לפי ממוצע על הדירוגים ב־24 השעות האחרונות.
 * נמוכים אחרונים: ערכים שקיבלו דירוג של 70% נמוך (2 כוכבים או פחות) בקטגוריה כלשהי ב־24 השעות האחרונות. רק ערכים שקיבלו לפחות 10 דירוגים ב־24 השעות האחרונות כלולים.",
@@ -2935,7 +2935,7 @@ $3
  * @author Vibhijain
  */
 $messages['hi'] = array(
-	'articlefeedback' => 'लेख प्रतिक्रिया डैशबोर्ड',
+	'articlefeedbackv5' => 'लेख प्रतिक्रिया डैशबोर्ड',
 	'articlefeedbackv5-desc' => 'लेख सुझाव प्रतिक्रिया',
 	'articlefeedbackv5-survey-question-origin' => 'आप कौनसे पृष्ठ पर थे जब आपने यह सर्वेक्षण शुरु किया था?',
 	'articlefeedbackv5-survey-question-whyrated' => 'कृपया हमें बताये कि आपने क्यों आज इस पृष्ठ का मूल्यांकन किया (सभी लागु होने वाले विकल्प चुने):',
@@ -3017,14 +3017,14 @@ $messages['hi'] = array(
 	'articlefeedbackv5-pitch-edit-accept' => 'यह पृष्ठ संपादित करें',
 	'articlefeedbackv5-survey-message-success' => 'सर्वेक्षण को भरने के लिए धन्यवाद।',
 	'articlefeedbackv5-survey-message-error' => 'कोई त्रुटि उत्पन्न हुई। कृपया बाद में पुन: प्रयास करें।',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'आज के उतार-चढ़ाव',
-	'articleFeedback-table-caption-dailyhighs' => 'सर्वोच्च रेटिंग वाले पृष्ठ:$1',
-	'articleFeedback-table-caption-dailylows' => 'निम्नतम् रेटिंग वाले पृष्ठ:$1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'इस सप्ताह के सबसे अधिक बदलाव',
-	'articleFeedback-table-caption-recentlows' => 'हाल ही के चढ़ाव',
-	'articleFeedback-table-heading-page' => 'पृष्ठ',
-	'articleFeedback-table-heading-average' => 'औसत',
-	'articleFeedback-copy-above-highlow-tables' => 'यह एक प्रायोगिक सुविधा है।  कृपया अपनी राय  [$1 चर्चा पृष्ठ] पर अवश्य दें',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'आज के उतार-चढ़ाव',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'सर्वोच्च रेटिंग वाले पृष्ठ:$1',
+	'articleFeedbackv5-table-caption-dailylows' => 'निम्नतम् रेटिंग वाले पृष्ठ:$1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'इस सप्ताह के सबसे अधिक बदलाव',
+	'articleFeedbackv5-table-caption-recentlows' => 'हाल ही के चढ़ाव',
+	'articleFeedbackv5-table-heading-page' => 'पृष्ठ',
+	'articleFeedbackv5-table-heading-average' => 'औसत',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'यह एक प्रायोगिक सुविधा है।  कृपया अपनी राय  [$1 चर्चा पृष्ठ] पर अवश्य दें',
 	'articlefeedbackv5-dashboard-bottom' => "'''नोट''': हम इन डैशबोर्ड्स में लेख सरफेसिंग के विभिन्न तरीकों का प्रयोग करेंगे। वर्तमान में डैशबोर्ड्स निम्न लेख शामिल किये हुए है-
 *उच्चतम एवं निम्नतम रेटिंग वाले पृष्ठ: जिन लेखों ने पिछ्हले २४ घन्टों में १० से अधिक रेटिंग प्राप्त की हैं, पिछले २४ घन्टों में प्राप्त रेटिंग के औसत से औसत मान निकाला जाता  है।
 *हाल ही के उतार:जिन लेखों ने ७०% या २ से कम रेटिंग पिछले २४ घण्टों में प्राप्त की है। केवल पिछले २४ घण्टों में १० से अधिक रेटिंग प्राप्त करने वाले लेख शामिल किये गये है।",
@@ -3038,7 +3038,7 @@ $messages['hi'] = array(
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
-	'articlefeedback' => 'Ocjenjivanje članaka',
+	'articlefeedbackv5' => 'Ocjenjivanje članaka',
 	'articlefeedbackv5-desc' => 'Ocjenjivanje članaka (probna inačica)',
 	'articlefeedbackv5-survey-question-whyrated' => 'Molimo recite nam zašto ste ocijenili danas ovu stranicu (označite sve što se može primijeniti):',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => 'Želio sam pridonijeti sveukupnoj ocjeni stranice',
@@ -3101,7 +3101,7 @@ Molimo Vas, pokušajte ponovno kasnije.',
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'articlefeedback' => 'Přehladna strona k posudkam',
+	'articlefeedbackv5' => 'Přehladna strona k posudkam',
 	'articlefeedbackv5-desc' => 'Pohódnoćenje nastawkow (pilotowa wersija)',
 	'articlefeedbackv5-survey-question-whyrated' => 'Prošu zdźěl nam, čehodla sy tutu stronu dźensa posudźił (trjechace prošu nakřižować):',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => 'Chcych so na cyłkownym pohódnoćenju strony wobdźělić',
@@ -3159,8 +3159,8 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-survey-message-success' => 'Dźakujemy so za wobdźělenje na naprašowanju.',
 	'articlefeedbackv5-survey-message-error' => 'Zmylk je wustupił.
 Prošu spytaj pozdźišo hišće raz.',
-	'articleFeedback-table-heading-page' => 'Strona',
-	'articleFeedback-table-heading-average' => 'Přerězk',
+	'articleFeedbackv5-table-heading-page' => 'Strona',
+	'articleFeedbackv5-table-heading-average' => 'Přerězk',
 );
 
 /** Hungarian (Magyar)
@@ -3170,7 +3170,7 @@ Prošu spytaj pozdźišo hišće raz.',
  * @author Tgr
  */
 $messages['hu'] = array(
-	'articlefeedback' => 'Cikk értékelése',
+	'articlefeedbackv5' => 'Cikk értékelése',
 	'articlefeedbackv5-desc' => 'Cikk értékelése (kísérleti változat)',
 	'articlefeedbackv5-survey-question-origin' => 'Milyen oldalon voltál, amikor elkezdted ezt a felmérést?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Kérjük, mondd el nekünk, miért értékelted ezt az oldalt (jelöld meg ay összes megfelelőt):',
@@ -3252,14 +3252,14 @@ $messages['hu'] = array(
 	'articlefeedbackv5-pitch-edit-accept' => 'Oldal szerkesztése',
 	'articlefeedbackv5-survey-message-success' => 'Köszönjük a kérdőív kitöltését!',
 	'articlefeedbackv5-survey-message-error' => 'Hiba történt. Kérlek, próbáld meg később.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'A napi legjobbak és legrosszabbak',
-	'articleFeedback-table-caption-dailyhighs' => 'Legtöbbre értékelt oldalak: $1',
-	'articleFeedback-table-caption-dailylows' => 'Legkevesebbre értékelt oldalak: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'A héten legtöbbet változott',
-	'articleFeedback-table-caption-recentlows' => 'Közelmúltbeli mélypontok',
-	'articleFeedback-table-heading-page' => 'Oldal',
-	'articleFeedback-table-heading-average' => 'Átlag',
-	'articleFeedback-copy-above-highlow-tables' => 'Ey egy kísérleti funkció, a [$1 vitalapján] tudoad véleményezni.',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'A napi legjobbak és legrosszabbak',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Legtöbbre értékelt oldalak: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Legkevesebbre értékelt oldalak: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'A héten legtöbbet változott',
+	'articleFeedbackv5-table-caption-recentlows' => 'Közelmúltbeli mélypontok',
+	'articleFeedbackv5-table-heading-page' => 'Oldal',
+	'articleFeedbackv5-table-heading-average' => 'Átlag',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Ey egy kísérleti funkció, a [$1 vitalapján] tudoad véleményezni.',
 	'articlefeedbackv5-dashboard-bottom' => "'''Megjegyzés''': Folyamatosan kísérletezni fogunk a cikkek listázásának különböző módjaival. Jelenleg a listák a következő cikkeket tartalmazzák:
 * a legmagasabbra ill. legalacsonyabbra értékelt oldalakat. Az átlagba csak az elmúlt 24 órában leadott értékelések számítanak bele, és legalább tíz ilyennek kell lennie.
 * Közelmúltbeli mélypontok: olyan szócikkek, amelyek valamelyik kérdésre legalább 70%-ban kaptak 1 vagy 2 csillagot az elmúlt 24 órában. Csak a legalább 10 értékelést kapott szócikkek szerepelnek.",
@@ -3293,7 +3293,7 @@ A {{SITENAME}} csapata',
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'articlefeedback' => 'Pannello de evalutation de articulos',
+	'articlefeedbackv5' => 'Pannello de evalutation de articulos',
 	'articlefeedbackv5-desc' => 'Evalutation de articulos (version pilota)',
 	'articlefeedbackv5-survey-question-origin' => 'In qual pagina te trovava tu quando tu comenciava iste sondage?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Per favor dice nos proque tu ha evalutate iste pagina hodie (marca tote le optiones applicabile):',
@@ -3376,14 +3376,14 @@ $messages['ia'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Gratias pro haber respondite al inquesta.',
 	'articlefeedbackv5-survey-message-error' => 'Un error ha occurrite.
 Per favor reproba plus tarde.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Altos e bassos de hodie',
-	'articleFeedback-table-caption-dailyhighs' => 'Articulos le plus appreciate: $1',
-	'articleFeedback-table-caption-dailylows' => 'Articulos le minus appreciate: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Le plus modificate iste septimana',
-	'articleFeedback-table-caption-recentlows' => 'Bassos recente',
-	'articleFeedback-table-heading-page' => 'Pagina',
-	'articleFeedback-table-heading-average' => 'Medie',
-	'articleFeedback-copy-above-highlow-tables' => 'Iste function es experimental.  Per favor lassa tu opinion in le [$1 pagina de discussion].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Altos e bassos de hodie',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Articulos le plus appreciate: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Articulos le minus appreciate: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Le plus modificate iste septimana',
+	'articleFeedbackv5-table-caption-recentlows' => 'Bassos recente',
+	'articleFeedbackv5-table-heading-page' => 'Pagina',
+	'articleFeedbackv5-table-heading-average' => 'Medie',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Iste function es experimental.  Per favor lassa tu opinion in le [$1 pagina de discussion].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Nota''': Nos continua a experimentar con differente modos de mitter articulos in evidentia in iste pannellos.  A presente, le pannellos include le sequente articulos:
 * Paginas con le evalutationes le plus alte/basse: articulos que ha recipite al minus 10 evalutationes durante le ultime 24 horas.  Le media es calculate usante tote le evalutationes submittite durante le ultime 24 horas.
 * Bassos recente: articulos que recipeva 70% o plus de evalutationes basse (2 stellas o minus) in qualcunque categoria durante le ultime 24 horas. Solmente le articulos que ha recipite al minus 10 evalutationes durante le ultime 24 horas es includite.",
@@ -3418,7 +3418,7 @@ Le equipa de {{SITENAME}}',
  * @author Kenrick95
  */
 $messages['id'] = array(
-	'articlefeedback' => 'Dasbor umpan balik artikel',
+	'articlefeedbackv5' => 'Dasbor umpan balik artikel',
 	'articlefeedbackv5-desc' => 'Penilaian artikel (versi percobaan)',
 	'articlefeedbackv5-survey-question-origin' => 'Apa halaman yang sedang Anda lihat saat memulai survei ini?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Harap beritahu kami mengapa Anda menilai halaman ini hari ini (centang semua yang benar):',
@@ -3500,14 +3500,14 @@ $messages['id'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Terima kasih telah mengisi survei ini.',
 	'articlefeedbackv5-survey-message-error' => 'Kesalahan terjadi.
 Silakan coba lagi.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Kenaikan dan penurunan hari ini',
-	'articleFeedback-table-caption-dailyhighs' => 'Artikel berperingkat tertinggi: $1',
-	'articleFeedback-table-caption-dailylows' => 'Artikel berperingkat terendah: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Paling berubah minggu ini',
-	'articleFeedback-table-caption-recentlows' => 'Penurunan terbaru',
-	'articleFeedback-table-heading-page' => 'Halaman',
-	'articleFeedback-table-heading-average' => 'Rata-rata',
-	'articleFeedback-copy-above-highlow-tables' => 'Ini adalah fitur percobaan. Harap berikan masukan pada [$1 halaman pembicaraan].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Kenaikan dan penurunan hari ini',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Artikel berperingkat tertinggi: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Artikel berperingkat terendah: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Paling berubah minggu ini',
+	'articleFeedbackv5-table-caption-recentlows' => 'Penurunan terbaru',
+	'articleFeedbackv5-table-heading-page' => 'Halaman',
+	'articleFeedbackv5-table-heading-average' => 'Rata-rata',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Ini adalah fitur percobaan. Harap berikan masukan pada [$1 halaman pembicaraan].',
 	'articlefeedbackv5-disable-preference' => 'Jangan tampilkan widget umpan balik artikel pada halaman',
 	'articlefeedbackv5-emailcapture-response-body' => 'Halo!
 
@@ -3538,7 +3538,7 @@ Tim {{SITENAME}}',
  * @author Pietrodn
  */
 $messages['it'] = array(
-	'articlefeedback' => 'Cruscotto valutazione pagine',
+	'articlefeedbackv5' => 'Cruscotto valutazione pagine',
 	'articlefeedbackv5-desc' => 'Valutazione pagina (versione pilota)',
 	'articlefeedbackv5-survey-question-origin' => 'In quale pagina eravate quando avete iniziato questa indagine?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Esprimi il motivo per cui oggi hai valutato questa pagina (puoi selezionare più opzioni):',
@@ -3617,11 +3617,11 @@ Riprova più tardi.',
 	'articlefeedbackv5-survey-message-success' => 'Grazie per aver compilato il questionario.',
 	'articlefeedbackv5-survey-message-error' => 'Si è verificato un errore. 
 Riprova più tardi.',
-	'articleFeedback-table-caption-dailyhighs' => 'Articoli con punteggi più alti: $1',
-	'articleFeedback-table-caption-dailylows' => 'Articoli con punteggi più bassi: $1',
-	'articleFeedback-table-heading-page' => 'Pagina',
-	'articleFeedback-table-heading-average' => 'Media',
-	'articleFeedback-copy-above-highlow-tables' => 'Questa è una funzione sperimentale. Lascia un feedback sulla [$1 pagina di discussione].',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Articoli con punteggi più alti: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Articoli con punteggi più bassi: $1',
+	'articleFeedbackv5-table-heading-page' => 'Pagina',
+	'articleFeedbackv5-table-heading-average' => 'Media',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Questa è una funzione sperimentale. Lascia un feedback sulla [$1 pagina di discussione].',
 	'articlefeedbackv5-disable-preference' => 'Non mostrare il widget di valutazione sulle pagine (Article Feedback)',
 );
 
@@ -3635,7 +3635,7 @@ Riprova più tardi.',
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'articlefeedback' => '記事のフィードバックのダッシュ​​ボード',
+	'articlefeedbackv5' => '記事のフィードバックのダッシュ​​ボード',
 	'articlefeedbackv5-desc' => '記事の評価',
 	'articlefeedbackv5-survey-question-origin' => 'このアンケートを始めたときにいたページはどのページですか？',
 	'articlefeedbackv5-survey-question-whyrated' => '今日、なぜこのページを評価したか教えてください（該当するものすべてにチェックを入れてください）：',
@@ -3716,11 +3716,11 @@ $messages['ja'] = array(
 	'articlefeedbackv5-survey-message-success' => 'アンケートに記入していただきありがとうございます。',
 	'articlefeedbackv5-survey-message-error' => 'エラーが発生しました。
 後でもう一度試してください。',
-	'articleFeedback-table-caption-dailyhighsandlows' => '今日の最高値と最低値',
-	'articleFeedback-table-caption-dailyhighs' => '最も高い評価があるページ：$1',
-	'articleFeedback-table-caption-dailylows' => '最も低い評価があるページ：$1',
-	'articleFeedback-table-heading-page' => 'ページ',
-	'articleFeedback-table-heading-average' => '平均',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => '今日の最高値と最低値',
+	'articleFeedbackv5-table-caption-dailyhighs' => '最も高い評価があるページ：$1',
+	'articleFeedbackv5-table-caption-dailylows' => '最も低い評価があるページ：$1',
+	'articleFeedbackv5-table-heading-page' => 'ページ',
+	'articleFeedbackv5-table-heading-average' => '平均',
 );
 
 /** Georgian (ქართული)
@@ -3730,7 +3730,7 @@ $messages['ja'] = array(
  * @author ITshnik
  */
 $messages['ka'] = array(
-	'articlefeedback' => 'სტატიის შეფასება',
+	'articlefeedbackv5' => 'სტატიის შეფასება',
 	'articlefeedbackv5-desc' => 'სტატიის შეფასება',
 	'articlefeedbackv5-survey-question-whyrated' => 'გთხოვთ შეგვატყობინეთ, თუ რატომ შეაფასეთ დღეს ეს სტატია (შეამოწმეთ სისწორე)',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => 'მე ვისურვებდი სტატიის შეფასებაში მონაწილეობის მიღებას',
@@ -3792,7 +3792,7 @@ $messages['ka'] = array(
  * @author Ricolyuki
  */
 $messages['ko'] = array(
-	'articlefeedback' => '문서 평가 현황',
+	'articlefeedbackv5' => '문서 평가 현황',
 	'articlefeedbackv5-desc' => '문서 평가 (파일럿 버전)',
 	'articlefeedbackv5-survey-question-origin' => '이 설문 조사를 시작할 때에 어느 문서를 보고 있었나요?',
 	'articlefeedbackv5-survey-question-whyrated' => '오늘 이 문서를 왜 평가했는지 알려주십시오 (해당되는 모든 항목에 체크해주세요):',
@@ -3854,14 +3854,14 @@ $messages['ko'] = array(
 	'articlefeedbackv5-survey-message-success' => '설문을 작성해 주셔서 감사합니다.',
 	'articlefeedbackv5-survey-message-error' => '오류가 발생했습니다.
 잠시 후 다시 시도해주세요.',
-	'articleFeedback-table-caption-dailyhighsandlows' => '오늘의 최고값과 최저값',
-	'articleFeedback-table-caption-dailyhighs' => '가장 높은 평가를 받은 문서: $1',
-	'articleFeedback-table-caption-dailylows' => '가장 낮은 평가를 받은 문서: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => '이번 주에 가장 많이 바뀐 문서',
-	'articleFeedback-table-caption-recentlows' => '최근의 평점 낮은 문서',
-	'articleFeedback-table-heading-page' => '문서',
-	'articleFeedback-table-heading-average' => '평균',
-	'articleFeedback-copy-above-highlow-tables' => '실험적인 기능입니다. 기능에 대한 의견을 [$1 토론란]에 남겨 주세요.',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => '오늘의 최고값과 최저값',
+	'articleFeedbackv5-table-caption-dailyhighs' => '가장 높은 평가를 받은 문서: $1',
+	'articleFeedbackv5-table-caption-dailylows' => '가장 낮은 평가를 받은 문서: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => '이번 주에 가장 많이 바뀐 문서',
+	'articleFeedbackv5-table-caption-recentlows' => '최근의 평점 낮은 문서',
+	'articleFeedbackv5-table-heading-page' => '문서',
+	'articleFeedbackv5-table-heading-average' => '평균',
+	'articleFeedbackv5-copy-above-highlow-tables' => '실험적인 기능입니다. 기능에 대한 의견을 [$1 토론란]에 남겨 주세요.',
 	'articlefeedbackv5-disable-preference' => '문서에 평가 도구 표시하지 않기',
 );
 
@@ -3869,7 +3869,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'articlefeedback' => 'Enschäzonge för Sigge — Övverbleck',
+	'articlefeedbackv5' => 'Enschäzonge för Sigge — Övverbleck',
 	'articlefeedbackv5-desc' => 'Enschäzonge för Sigge',
 	'articlefeedbackv5-survey-question-origin' => 'Op wat för en Sigg bes De jewääse, wi De aanjefange häs, op heh di Froore ze antwoote?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Bes esu joot, un lohß ons weße, woröm De hück för heh di Sigg en Enschäzong affjejovve häs, un maach e Krüzje övverall, woh_t paß:',
@@ -3954,14 +3954,14 @@ $1',
 	'articlefeedbackv5-survey-message-success' => 'Merci för et Ußfölle!',
 	'articlefeedbackv5-survey-message-error' => 'Ene Fähler es dozwesche jukumme.
 Versöhg et shpääder norr_enß.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Hühje un Deefe vun hück',
-	'articleFeedback-table-caption-dailyhighs' => 'Sigge met de beste Enschäzonge: $1',
-	'articleFeedback-table-caption-dailylows' => 'Sigge met de schläächteste Enschäzonge: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Diß Woch et miehtß jeändert',
-	'articleFeedback-table-caption-recentlows' => 'Köözlejje Deefe',
-	'articleFeedback-table-heading-page' => 'Sigg',
-	'articleFeedback-table-heading-average' => 'Dorschnett',
-	'articleFeedback-copy-above-highlow-tables' => 'Mer sin dat heeh aam upropeere.
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Hühje un Deefe vun hück',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Sigge met de beste Enschäzonge: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Sigge met de schläächteste Enschäzonge: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Diß Woch et miehtß jeändert',
+	'articleFeedbackv5-table-caption-recentlows' => 'Köözlejje Deefe',
+	'articleFeedbackv5-table-heading-page' => 'Sigg',
+	'articleFeedbackv5-table-heading-average' => 'Dorschnett',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Mer sin dat heeh aam upropeere.
 Doht uns op di [$1 Klaafsigg] schrieve, wad Er dovun hallde doht.',
 	'articlefeedbackv5-dashboard-bottom' => "'''Opjepaß''': Mer donn ongerscheidlijje Aate ußprobeere, Atikelle heh en dä Övverseeschte ze zeije. Em Momang sin dobei:
 * Sigge met de hühßte un de deefste Enschäzonge - die mieh wie zehn Mohl en de verjangene 24 Schtonde enjeschäz woode sen. Der Dorschnett weed us alle Enschäzonge us dä 24 Schtonde ußjerääschnet.
@@ -3998,7 +3998,7 @@ De Jemeinschaff vun {{GRAMMAR:Nominativ|{{SITENAME}}}}',
 $messages['ku-latn'] = array(
 	'articlefeedbackv5-survey-question-useful-iffalse' => 'Çima?',
 	'articlefeedbackv5-report-switch-label' => 'Encaman nîşan bide',
-	'articleFeedback-table-heading-page' => 'Rûpel',
+	'articleFeedbackv5-table-heading-page' => 'Rûpel',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -4006,7 +4006,7 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'articlefeedback' => 'Iwwerbléck-Säit Artikelbewäertung',
+	'articlefeedbackv5' => 'Iwwerbléck-Säit Artikelbewäertung',
 	'articlefeedbackv5-desc' => 'Artikelaschätzung Pilotversioun',
 	'articlefeedbackv5-survey-question-origin' => 'Op wat fir enger Säit war Dir wéi Dir mat der Ëmfro ugefaang huet?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Sot eis w.e.g. firwat datt Dir dës säit bewäert hutt (klickt alles u wat zoutrëfft):',
@@ -4089,14 +4089,14 @@ $messages['lb'] = array(
 	'articlefeedbackv5-survey-message-success' => "Merci datt Dir d'Ëmfro ausgefëllt hutt.",
 	'articlefeedbackv5-survey-message-error' => 'Et ass e Feeler geschitt.
 Probéiert w.e.g. méi spéit nach emol.',
-	'articleFeedback-table-caption-dailyhighsandlows' => "D'Héichten an d'Déifte vun haut",
-	'articleFeedback-table-caption-dailyhighs' => 'Säite mat den héchste Bewäertungen: $1',
-	'articleFeedback-table-caption-dailylows' => 'Säite mat den niddregste Bewäertungen: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Déi gréisst Ännerungen an dëser Woch',
-	'articleFeedback-table-caption-recentlows' => 'Rezent schlecht Bewäertungen',
-	'articleFeedback-table-heading-page' => 'Säit',
-	'articleFeedback-table-heading-average' => 'Duerchschnëtt',
-	'articleFeedback-copy-above-highlow-tables' => 'Dëst ass eng experimentell Fonctioun. Gitt eis w.e.g. Äre Feedback op der [$1 Diskussiouns-Säit].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => "D'Héichten an d'Déifte vun haut",
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Säite mat den héchste Bewäertungen: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Säite mat den niddregste Bewäertungen: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Déi gréisst Ännerungen an dëser Woch',
+	'articleFeedbackv5-table-caption-recentlows' => 'Rezent schlecht Bewäertungen',
+	'articleFeedbackv5-table-heading-page' => 'Säit',
+	'articleFeedbackv5-table-heading-average' => 'Duerchschnëtt',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Dëst ass eng experimentell Fonctioun. Gitt eis w.e.g. Äre Feedback op der [$1 Diskussiouns-Säit].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Informatioun:''' Mir probéiere weider ënnerschiddlech Méiglechkeeten aus fir Artikelen op dësen Arbechts- an Iwwersichtsäiten ze weisen. Momentan ginn hei dës Artikele gewisen:
 * Säite mat de beschten / schlechtste Bewäertungen: Artikel déi mindestens zéng Bewäertungen während de leschte 24 Stonne kritt hunn. D'Durchschnëttswäerter sinn dobäi de Mëttelwäert vun alle Bewäertunge vun de leschte 24 Stonnen.
 * Aktuell schlechte Bewäertungen: Artikel déi während de leschte 24 Stonne 70 % oder méi schlecht Bewäertungen (zwee Stären oder manner) an enger Kategorien kritt hunn. Nëmmen Artikel mat mindestens zéng Bewäertunge während de leschte 24 Stonne ginn dobäi berücksichtegt",
@@ -4129,7 +4129,7 @@ E schéine Bonjour a villmools Merci,
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'articlefeedback' => 'Paginabeoordeiling',
+	'articlefeedbackv5' => 'Paginabeoordeiling',
 	'articlefeedbackv5-desc' => 'Paginabeoordeiling (tesversie)',
 	'articlefeedbackv5-survey-answer-whyrated-other' => 'Anges',
 	'articlefeedbackv5-survey-question-useful-iffalse' => 'Wróm?',
@@ -4141,7 +4141,7 @@ $messages['li'] = array(
  * @author Perkunas
  */
 $messages['lt'] = array(
-	'articlefeedback' => 'Straipsnis atsiliepimus Panel',
+	'articlefeedbackv5' => 'Straipsnis atsiliepimus Panel',
 	'articlefeedbackv5-desc' => 'Straipsnio atsiliepimai',
 	'articlefeedbackv5-survey-question-origin' => 'Kokiame puslapyje jus buvote kai pradėjote šia apklausą?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Prašome pranešti mums, kodėl jus įvertino šį puslapį šiandien (pažymėkite visus tinkamus):',
@@ -4224,14 +4224,14 @@ $messages['lt'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Dėkojame, kad užpildėte apklausa.',
 	'articlefeedbackv5-survey-message-error' => 'Įvyko klaida.
 Pabandykite vėliau.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Šiandienos aukštų ir rekordinį lygį',
-	'articleFeedback-table-caption-dailyhighs' => 'Straipsniai su aukščiausiais įvertinimais: $1',
-	'articleFeedback-table-caption-dailylows' => 'Straipsniai su žemiausiais įvertinimais: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Šią savaitę labiausiai pasikeitę',
-	'articleFeedback-table-caption-recentlows' => 'Neseniai rekordinį lygį',
-	'articleFeedback-table-heading-page' => 'Puslapis',
-	'articleFeedback-table-heading-average' => 'Vidurkis',
-	'articleFeedback-copy-above-highlow-tables' => 'Tai eksperimentinė funkcija. Prašome pateikti atsiliepimus [$1 discussion page].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Šiandienos aukštų ir rekordinį lygį',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Straipsniai su aukščiausiais įvertinimais: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Straipsniai su žemiausiais įvertinimais: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Šią savaitę labiausiai pasikeitę',
+	'articleFeedbackv5-table-caption-recentlows' => 'Neseniai rekordinį lygį',
+	'articleFeedbackv5-table-heading-page' => 'Puslapis',
+	'articleFeedbackv5-table-heading-average' => 'Vidurkis',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Tai eksperimentinė funkcija. Prašome pateikti atsiliepimus [$1 discussion page].',
 	'articlefeedbackv5-dashboard-bottom' => '"" Pastaba "": mes ir toliau eksperimentuoti su įvairiais būdais dangos straipsniuose, šių skelbimų lentos.  Šiuo metu informacijos skydus įtraukti šie straipsniai:
  * puslapių su didžiausią ir mažiausią reitingai: straipsniai, kurie yra gavę ne mažiau kaip 10 reitingai per paskutines 24 valandas.  Vidurkiai apskaičiuojami imant visų reitingai, per paskutines 24 valandas vidurkis.
  * neseniai rekordinį lygį: straipsniai, kad gavo 70 % arba daugiau žemas (2 žvaigždučių arba mažesnis) klases į bet kurią kategoriją, paskutines 24 valandas. Čia taip pat įtraukiami tik straipsniuose, gavo ne mažiau kaip 10 reitingai per paskutines 24 valandas.',
@@ -4255,7 +4255,7 @@ N!Geriausias pageidavimus, ir Dėkojame jums
  * @author Papuass
  */
 $messages['lv'] = array(
-	'articlefeedback' => 'Atsauksme par rakstu',
+	'articlefeedbackv5' => 'Atsauksme par rakstu',
 	'articlefeedbackv5-desc' => 'Atsauksme par rakstu',
 	'articlefeedbackv5-survey-question-origin' => 'Kādas lapas Jūs apmeklējāt pirms sākāt šo aptauju?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Lūdzu pasakiet, kādēļ Jūs šodien novērtējāt šo lapu (atzīmējiet visas atbilstošās atbildes):',
@@ -4320,20 +4320,20 @@ $messages['lv'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Paldies, ka aizpildījās aptauju!',
 	'articlefeedbackv5-survey-message-error' => 'Radusies kļūda.
 Lūdzu, mēģiniet vēlāk vēlreiz.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Šodienas kāpumi un kritumi',
-	'articleFeedback-table-caption-dailyhighs' => 'Lapas ar visaugstāko vērtējumu: $1',
-	'articleFeedback-table-caption-dailylows' => 'Lapas ar viszemāko vērtējumu: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Šajā nedēļā visvairāk mainītie',
-	'articleFeedback-table-caption-recentlows' => 'Pēdējie kritumi',
-	'articleFeedback-table-heading-page' => 'Lapa',
-	'articleFeedback-table-heading-average' => 'Vidēji',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Šodienas kāpumi un kritumi',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Lapas ar visaugstāko vērtējumu: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Lapas ar viszemāko vērtējumu: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Šajā nedēļā visvairāk mainītie',
+	'articleFeedbackv5-table-caption-recentlows' => 'Pēdējie kritumi',
+	'articleFeedbackv5-table-heading-page' => 'Lapa',
+	'articleFeedbackv5-table-heading-average' => 'Vidēji',
 );
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'articlefeedback' => 'Табла за оценување на статија',
+	'articlefeedbackv5' => 'Табла за оценување на статија',
 	'articlefeedbackv5-desc' => 'Пилотна верзија на Оценување на статија',
 	'articlefeedbackv5-survey-question-origin' => 'На која страница бевте кога ја започнавте анкетава?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Кажете ни зошто ја оценивте страницава денес (штиклирајте ги сите релевантни одговори)',
@@ -4417,14 +4417,14 @@ $messages['mk'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Ви благодариме што ја пополнивте анкетата.',
 	'articlefeedbackv5-survey-message-error' => 'Се појави грешка.
 Обидете се подоцна.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Издигања и падови за денес',
-	'articleFeedback-table-caption-dailyhighs' => 'Статии со највисоки оценки: $1',
-	'articleFeedback-table-caption-dailylows' => 'Статии со најниски оценки: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Најизменети за неделава',
-	'articleFeedback-table-caption-recentlows' => 'Скорешни падови',
-	'articleFeedback-table-heading-page' => 'Страница',
-	'articleFeedback-table-heading-average' => 'Просечно',
-	'articleFeedback-copy-above-highlow-tables' => 'Ова е експериментална функција. Искажете го вашето мислење на [$1 страницатата за разговор].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Издигања и падови за денес',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Статии со највисоки оценки: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Статии со најниски оценки: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Најизменети за неделава',
+	'articleFeedbackv5-table-caption-recentlows' => 'Скорешни падови',
+	'articleFeedbackv5-table-heading-page' => 'Страница',
+	'articleFeedbackv5-table-heading-average' => 'Просечно',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Ова е експериментална функција. Искажете го вашето мислење на [$1 страницатата за разговор].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Напомена''': Ќе продолжиме да експериментираме со различни начини на истакнување на статии во овие контролни табли.  Моментално таблите ги истакнуваат следниве статии:
 * Страници со највисоки/најниски оценки: статии што добиле барем 10 оценки во текот на последните 24 часа.  Просекот се пресметува со наоѓање на средината на сите оценки дадени во последните 24 часа.
 * Неодамна нискооценети: статии со 70% или повеќе ниски оценки (2 ѕвезди и помалку) во било која категорија во последните 24 часа. Се бројат само статии со барем 10 оценки добиени во последните 24 часа.",
@@ -4457,7 +4457,7 @@ $3
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'articlefeedback' => 'ലേഖനത്തിന്റെ മൂല്യനിർണ്ണയ നിയന്ത്രണോപാധികൾ',
+	'articlefeedbackv5' => 'ലേഖനത്തിന്റെ മൂല്യനിർണ്ണയ നിയന്ത്രണോപാധികൾ',
 	'articlefeedbackv5-desc' => 'ലേഖനത്തിന്റെ മൂല്യനിർണ്ണയം (പ്രാരംഭ പതിപ്പ്)',
 	'articlefeedbackv5-survey-question-origin' => 'താങ്കൾ ഈ സർവേ ഉപയോഗിക്കാൻ തുടങ്ങിയപ്പോൾ ഏത് താളിലായിരുന്നു?',
 	'articlefeedbackv5-survey-question-whyrated' => 'ഈ താളിന് താങ്കൾ ഇന്ന് നിലവാരമിട്ടതെന്തുകൊണ്ടാണെന്ന് ദയവായി പറയാമോ (ബാധകമാകുന്ന എല്ലാം തിരഞ്ഞെടുക്കുക):',
@@ -4540,14 +4540,14 @@ $messages['ml'] = array(
 	'articlefeedbackv5-survey-message-success' => 'സർവേ പൂരിപ്പിച്ചതിനു നന്ദി',
 	'articlefeedbackv5-survey-message-error' => 'എന്തോ പിഴവുണ്ടായിരിക്കുന്നു.
 ദയവായി വീണ്ടും ശ്രമിക്കുക.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'ഇന്നത്തെ കയറ്റിറക്കങ്ങൾ',
-	'articleFeedback-table-caption-dailyhighs' => 'ഉയർന്ന നിലവാരമിട്ട ലേഖനങ്ങൾ: $1',
-	'articleFeedback-table-caption-dailylows' => 'താഴ്ന്ന നിലവാരമിട്ട ലേഖനങ്ങൾ: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'ഈ ആഴ്ചയിൽ ഏറ്റവുമധികം മാറിയത്',
-	'articleFeedback-table-caption-recentlows' => 'സമീപകാല ഇറക്കങ്ങൾ',
-	'articleFeedback-table-heading-page' => 'താൾ',
-	'articleFeedback-table-heading-average' => 'ശരാശരി',
-	'articleFeedback-copy-above-highlow-tables' => 'ഇത് പരീക്ഷണാടിസ്ഥാനത്തിലുള്ള സൗകര്യമാണ്. അഭിപ്രായങ്ങൾ [$1 സംവാദം താളിൽ] തീർച്ചയായും അറിയിക്കുക.',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'ഇന്നത്തെ കയറ്റിറക്കങ്ങൾ',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'ഉയർന്ന നിലവാരമിട്ട ലേഖനങ്ങൾ: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'താഴ്ന്ന നിലവാരമിട്ട ലേഖനങ്ങൾ: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'ഈ ആഴ്ചയിൽ ഏറ്റവുമധികം മാറിയത്',
+	'articleFeedbackv5-table-caption-recentlows' => 'സമീപകാല ഇറക്കങ്ങൾ',
+	'articleFeedbackv5-table-heading-page' => 'താൾ',
+	'articleFeedbackv5-table-heading-average' => 'ശരാശരി',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'ഇത് പരീക്ഷണാടിസ്ഥാനത്തിലുള്ള സൗകര്യമാണ്. അഭിപ്രായങ്ങൾ [$1 സംവാദം താളിൽ] തീർച്ചയായും അറിയിക്കുക.',
 	'articlefeedbackv5-emailcapture-response-body' => 'നമസ്കാരം!
 
 {{SITENAME}} മെച്ചപ്പെടുത്താനുള്ള സഹായം ചെയ്യാൻ സന്നദ്ധത പ്രകടിപ്പിച്ചതിന് ആത്മാർത്ഥമായ നന്ദി.
@@ -4584,7 +4584,7 @@ $messages['mn'] = array(
  * @author Aviator
  */
 $messages['ms'] = array(
-	'articlefeedback' => 'Papan pemuka maklum balas rencana',
+	'articlefeedbackv5' => 'Papan pemuka maklum balas rencana',
 	'articlefeedbackv5-desc' => 'Pentaksiran rencana (versi percubaan)',
 	'articlefeedbackv5-survey-question-origin' => 'Di laman yang manakah anda berada ketika anda memulakan pantauan ini?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Sila maklumkan kami sebab anda menilai laman ini hari ini (tandai semua yang berkenaan):',
@@ -4667,14 +4667,14 @@ $messages['ms'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Terima kasih kerana membalas tinjauan kami.',
 	'articlefeedbackv5-survey-message-error' => 'Berlakunya ralat.
  Sila cuba lagi kemudian.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Penilaian tertinggi dan terendah hari ini',
-	'articleFeedback-table-caption-dailyhighs' => 'Laman yang tertinggi penilaiannya: $1',
-	'articleFeedback-table-caption-dailylows' => 'Laman yang terendah penilaiannya: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Laman yang paling banyak berubah minggu ini',
-	'articleFeedback-table-caption-recentlows' => 'Penilaian terendah terkini',
-	'articleFeedback-table-heading-page' => 'Laman',
-	'articleFeedback-table-heading-average' => 'Purata',
-	'articleFeedback-copy-above-highlow-tables' => 'Ciri ini sedang diuji kaji. Sila berikan maklum balas di [$1 laman perbincangan].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Penilaian tertinggi dan terendah hari ini',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Laman yang tertinggi penilaiannya: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Laman yang terendah penilaiannya: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Laman yang paling banyak berubah minggu ini',
+	'articleFeedbackv5-table-caption-recentlows' => 'Penilaian terendah terkini',
+	'articleFeedbackv5-table-heading-page' => 'Laman',
+	'articleFeedbackv5-table-heading-average' => 'Purata',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Ciri ini sedang diuji kaji. Sila berikan maklum balas di [$1 laman perbincangan].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Perhatian''': Kami akan terus menguji kaji cara-cara lain untuk menimbulkan rencana di papan pemuka ini. Ketika ini, papan pemuka merangkumi rencana-rencana berikut:
 * Laman yang tertinggi/terendah penilaiannya: rencana yang menerima sekurang-kurangnya 10 penilaian dalam masa 24 jam yang lalu.  Puratanya dihitung dengan mengambil min semua penilaian yang diterima dalam masa 24 jam yang lalu.
 * Penilaian terendah terkini: rencana yang menerima 70% atau lebih penilaian rendah (2 bintang ke bawah) dalam mana-mana kategori dalam masa 24 jam yang lalu; hanya mengambil kira rencana yang menerima sekurang-kurangnya 10 penilaian dalam masa 24 jam yang lalu.",
@@ -4787,12 +4787,12 @@ $messages['mt'] = array(
 	'articlefeedbackv5-pitch-edit-accept' => 'Immodifika din il-paġna',
 	'articlefeedbackv5-survey-message-success' => 'Grazzi talli komplet dan l-istħarriġ.',
 	'articlefeedbackv5-survey-message-error' => 'Kien hemm żball. Jekk jogħġbok, ipprova iktar tard.',
-	'articleFeedback-table-caption-dailyhighs' => 'Paġni bl-ogħla valutazzjoni: $1',
-	'articleFeedback-table-caption-dailylows' => 'Paġni bl-inqas valutazzjoni: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'L-iktar li mbiddlu fil-ġimgħa',
-	'articleFeedback-table-heading-page' => 'Paġna',
-	'articleFeedback-table-heading-average' => 'Medja',
-	'articleFeedback-copy-above-highlow-tables' => "Din hija funzjoni sperimentali. Ħalli r-rispons tiegħek fil-[$1 paġna ta' diskussjoni].",
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Paġni bl-ogħla valutazzjoni: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Paġni bl-inqas valutazzjoni: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'L-iktar li mbiddlu fil-ġimgħa',
+	'articleFeedbackv5-table-heading-page' => 'Paġna',
+	'articleFeedbackv5-table-heading-average' => 'Medja',
+	'articleFeedbackv5-copy-above-highlow-tables' => "Din hija funzjoni sperimentali. Ħalli r-rispons tiegħek fil-[$1 paġna ta' diskussjoni].",
 	'articlefeedbackv5-disable-preference' => "Turix il-''widget'' tal-valutazzjoni fuq il-paġni (Article Feedback)",
 	'articlefeedbackv5-emailcapture-response-body' => "Grazzi talli wrejt interess li ttejjeb lil {{SITENAME}}.
 
@@ -4826,7 +4826,7 @@ $messages['myv'] = array(
 	'articlefeedbackv5-field-wellwritten-label' => 'Парсте сёрмадозь',
 	'articlefeedbackv5-pitch-or' => 'эли',
 	'articlefeedbackv5-pitch-edit-accept' => 'Витнемс-петнемс те лопанть',
-	'articleFeedback-table-heading-page' => 'Лопазо',
+	'articleFeedbackv5-table-heading-page' => 'Лопазо',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -4872,7 +4872,7 @@ $messages['ne'] = array(
  * @author Tjcool007
  */
 $messages['nl'] = array(
-	'articlefeedback' => 'Dashboard voor paginawaardering',
+	'articlefeedbackv5' => 'Dashboard voor paginawaardering',
 	'articlefeedbackv5-desc' => 'Paginabeoordeling (testversie)',
 	'articlefeedbackv5-survey-question-origin' => 'Op welke pagina was u toen u aan deze vragenlijst bent begonnen?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Laat ons weten waarom u deze pagina vandaag hebt beoordeeld (kies alle redenen die van toepassing zijn):',
@@ -4959,14 +4959,14 @@ Uw beoordeling is opgeslagen.',
 	'articlefeedbackv5-survey-message-error' => 'Er is een fout opgetreden.
 Probeer het later opnieuw.',
 	'articlefeedbackv5-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement/nl',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Hoogte- en dieptepunten van vandaag',
-	'articleFeedback-table-caption-dailyhighs' => "Pagina's met de hoogste waarderingen: $1",
-	'articleFeedback-table-caption-dailylows' => "Pagina's met de laagste waarderingen: $1",
-	'articleFeedback-table-caption-weeklymostchanged' => 'Deze week de meeste wijzigingen',
-	'articleFeedback-table-caption-recentlows' => 'Recente dieptepunten',
-	'articleFeedback-table-heading-page' => 'Pagina',
-	'articleFeedback-table-heading-average' => 'Gemiddelde',
-	'articleFeedback-copy-above-highlow-tables' => 'Dit is experimentele functionaliteit. Geef alstublieft terugkoppeling op de [$1 overlegpagina].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Hoogte- en dieptepunten van vandaag',
+	'articleFeedbackv5-table-caption-dailyhighs' => "Pagina's met de hoogste waarderingen: $1",
+	'articleFeedbackv5-table-caption-dailylows' => "Pagina's met de laagste waarderingen: $1",
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Deze week de meeste wijzigingen',
+	'articleFeedbackv5-table-caption-recentlows' => 'Recente dieptepunten',
+	'articleFeedbackv5-table-heading-page' => 'Pagina',
+	'articleFeedbackv5-table-heading-average' => 'Gemiddelde',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Dit is experimentele functionaliteit. Geef alstublieft terugkoppeling op de [$1 overlegpagina].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Let op''': We gaan door met experimenteren met verschillende manieren van het weergeven van pagina's in deze dashboards. Op dit moment bevatten de dashboards onder meer de volgende pagina's:
 * Pagina's met de hoogste / laagste waarderingen: pagina's die ten minste tien waarderingen hebben gekregen in de afgelopen 24 uur. Gemiddelden worden berekend door het gemiddelde te nemen van alle waarderingen in de afgelopen 24 uur.
 * Recente dieptepunten: pagina's die 70% of meer laag (twee sterren of lager) worden gewaardeerd in elke categorie in de afgelopen 24 uur. Alleen pagina's die op zijn minst tien waarderingen hebben gekregen in de afgelopen 24 uur worden opgenomen.",
@@ -5060,7 +5060,7 @@ $messages['nn'] = array(
  * @author Sjurhamre
  */
 $messages['no'] = array(
-	'articlefeedback' => 'Panelbord for artikkelvurdering',
+	'articlefeedbackv5' => 'Panelbord for artikkelvurdering',
 	'articlefeedbackv5-desc' => 'Artikkelvurdering (pilotversjon)',
 	'articlefeedbackv5-survey-question-origin' => 'Hvilken side var du på når du startet denne undersøkelsen?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Gi oss beskjed om hvorfor du vurderte denne siden idag (huk av alle som passer):',
@@ -5143,14 +5143,14 @@ $messages['no'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Takk for at du fylte ut undersøkelsen.',
 	'articlefeedbackv5-survey-message-error' => 'En feil har oppstått.
 Prøv igjen senere.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Dagens oppturer og nedturer',
-	'articleFeedback-table-caption-dailyhighs' => 'Artikler med høyest vurdering: $1',
-	'articleFeedback-table-caption-dailylows' => 'Artikler med lavest vurdering: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Mest endret denne uken',
-	'articleFeedback-table-caption-recentlows' => 'Ukens nedturer',
-	'articleFeedback-table-heading-page' => 'Side',
-	'articleFeedback-table-heading-average' => 'Gjennomsnitt',
-	'articleFeedback-copy-above-highlow-tables' => 'Dette er en eksperimentell funksjon.  Vennligst gi tilbakemelding på [$1 diskusjonssiden].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Dagens oppturer og nedturer',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Artikler med høyest vurdering: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Artikler med lavest vurdering: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Mest endret denne uken',
+	'articleFeedbackv5-table-caption-recentlows' => 'Ukens nedturer',
+	'articleFeedbackv5-table-heading-page' => 'Side',
+	'articleFeedbackv5-table-heading-average' => 'Gjennomsnitt',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Dette er en eksperimentell funksjon.  Vennligst gi tilbakemelding på [$1 diskusjonssiden].',
 	'articlefeedbackv5-dashboard-bottom' => "'''NB''': Vi vil fortsette å eksperimentere med forskjellige måter å eksponere artikler i disse oversiktene.  For tiden inkluderer oversiktene følgende artikler:
  * sider med høyeste/laveste rangering: artikler som har mottatt minst 10 rangeringer innen de siste 24 timene.  Middelverdien blir beregnet fra alle rangeringer mottatt det siste døgnet.
  * siste lavrangeringer: artikler som har fått 70% eller lavere (2 stjerner eller lavere) klassifisering i vilkårlig kategori de siste 24 timene. Bare artikler som har mottatt minst 10 rangeringer de siste 24 timene blir inkludert.",
@@ -5184,22 +5184,22 @@ Hilsen {{SITENAME}}-teamet',
  */
 $messages['or'] = array(
 	'articlefeedbackv5-survey-submit' => 'ଦାଖଲକରିବା',
-	'articleFeedback-table-heading-page' => 'ପୃଷ୍ଠା',
-	'articleFeedback-table-heading-average' => 'ହାରାହାରି',
+	'articleFeedbackv5-table-heading-page' => 'ପୃଷ୍ଠା',
+	'articleFeedbackv5-table-heading-average' => 'ହାରାହାରି',
 );
 
 /** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
-	'articleFeedback-table-heading-average' => 'Рæстæмбис',
+	'articleFeedbackv5-table-heading-average' => 'Рæстæмбис',
 );
 
 /** Polish (Polski)
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'articlefeedback' => 'Ocena artykułu',
+	'articlefeedbackv5' => 'Ocena artykułu',
 	'articlefeedbackv5-desc' => 'Ocena artykułu (wersja pilotażowa)',
 	'articlefeedbackv5-survey-question-origin' => 'Na jakie strony {{GENDER:|wchodziłeś|wchodziłaś}} od momentu rozpoczęcia ankiety?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Dlaczego oceniłeś dziś tę stronę (zaznacz wszystkie pasujące):',
@@ -5282,14 +5282,14 @@ $messages['pl'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Dziękujemy za wypełnienie ankiety.',
 	'articlefeedbackv5-survey-message-error' => 'Wystąpił błąd.
 Proszę spróbować ponownie później.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Najwyższe i najniższe w dniu dzisiejszym',
-	'articleFeedback-table-caption-dailyhighs' => 'Artykuły najwyżej oceniane: $1',
-	'articleFeedback-table-caption-dailylows' => 'Artykuły najniżej oceniane: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Najczęściej zmieniane w tym tygodniu',
-	'articleFeedback-table-caption-recentlows' => 'Najniższe ostatnio',
-	'articleFeedback-table-heading-page' => 'Strona',
-	'articleFeedback-table-heading-average' => 'Średnio',
-	'articleFeedback-copy-above-highlow-tables' => 'To jest rozwiązanie eksperymentalne. Wyraź swoją opinię na jego temat na [$1 stronie dyskusji].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Najwyższe i najniższe w dniu dzisiejszym',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Artykuły najwyżej oceniane: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Artykuły najniżej oceniane: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Najczęściej zmieniane w tym tygodniu',
+	'articleFeedbackv5-table-caption-recentlows' => 'Najniższe ostatnio',
+	'articleFeedbackv5-table-heading-page' => 'Strona',
+	'articleFeedbackv5-table-heading-average' => 'Średnio',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'To jest rozwiązanie eksperymentalne. Wyraź swoją opinię na jego temat na [$1 stronie dyskusji].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Uwaga''' – będziemy nadal eksperymentować z różnymi metodami poprawiania artykułów. Obecnie pracujemy nad następującymi artykułami:
  * Strony oceniane najwyżej i najniżej – artykuły, które zostały co najmniej 10 razy ocenione w ciągu ostatnich 24 godzin. Wartości średnie są obliczane poprzez wyciągnięcie średniej ze wszystkich ocen z ostatnich 24 godzin.
  * Ostatnio słabe – artykuły, które uzyskały 70% lub więcej ocen negatywnych (2 gwiazdki lub mniej) w każdej kategorii, w ciągu ostatnich 24 godzin. Uwzględniane są tylko te artykuły, które otrzymały przynajmniej 10 ocen w ostatnich 24 godzinach.",
@@ -5323,7 +5323,7 @@ zespół {{GRAMMAR:D.lp|{{SITENAME}}}}.',
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'articlefeedback' => "Cruscòt ëd valutassion ëd j'artìcoj",
+	'articlefeedbackv5' => "Cruscòt ëd valutassion ëd j'artìcoj",
 	'articlefeedbackv5-desc' => "Version pilòta dla valutassion ëd j'artìcoj",
 	'articlefeedbackv5-survey-question-origin' => "Ansima a che pàgina a l'era quand a l'ha ancaminà costa valutassion?",
 	'articlefeedbackv5-survey-question-whyrated' => "Për piasì, ch'an fasa savèj përchè a l'ha valutà costa pàgina ancheuj (ch'a marca tut lòn ch'a-i intra):",
@@ -5406,14 +5406,14 @@ $messages['pms'] = array(
 	'articlefeedbackv5-survey-message-success' => "Mersì d'avèj compilà ël questionari.",
 	'articlefeedbackv5-survey-message-error' => "A l'é capitaje n'eror. 
 Për piasì preuva torna pi tard.",
-	'articleFeedback-table-caption-dailyhighsandlows' => "J'àut e ij bass d'ancheuj",
-	'articleFeedback-table-caption-dailyhighs' => 'Pàgine con le mej valutassion: $1',
-	'articleFeedback-table-caption-dailylows' => 'Pàgine con le pes valutassion: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Ij pì modificà dë sta sman-a',
-	'articleFeedback-table-caption-recentlows' => 'Bass recent',
-	'articleFeedback-table-heading-page' => 'Pàgina',
-	'articleFeedback-table-heading-average' => 'Media',
-	'articleFeedback-copy-above-highlow-tables' => "Costa a l'é na funsionalità sperimental. Për piasì, ch'a fasa ij sò coment an sla [pàgina ëd discussion ëd $1]",
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => "J'àut e ij bass d'ancheuj",
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Pàgine con le mej valutassion: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Pàgine con le pes valutassion: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Ij pì modificà dë sta sman-a',
+	'articleFeedbackv5-table-caption-recentlows' => 'Bass recent',
+	'articleFeedbackv5-table-heading-page' => 'Pàgina',
+	'articleFeedbackv5-table-heading-average' => 'Media',
+	'articleFeedbackv5-copy-above-highlow-tables' => "Costa a l'é na funsionalità sperimental. Për piasì, ch'a fasa ij sò coment an sla [pàgina ëd discussion ëd $1]",
 	'articlefeedbackv5-dashboard-bottom' => "'''Nòta''': Noi i continuëroma a sperimenté ëd manere diferente d'arpresenté j'artìcoj andrinta a coste tablò. Al present, ël tablò a conten costi artìcoj:
 * Pàgine con le mej/pes valutassion: artìcoj che a l'han arseivù almanch 10 valutassion ant j'ùltime 24 ore. Le medie a son calcolà an pijand la media ëd tute le valutassion spedìe ant j'ùltime 24 ore.
 * Pi bass recent: artìcoj ch'a l'han pijà lë 70% o valutassion pi basse (2 stèile o men) an tute le categorìe ant j'ùltime 24 ore. Mach j'artìcoj ch'a l'han arseivù almanch 10 valutassion ant j'ùltime 24 ore a son comprèis.",
@@ -5456,7 +5456,7 @@ $messages['ps'] = array(
 	'articlefeedbackv5-pitch-join-accept' => 'يو ګڼون جوړول',
 	'articlefeedbackv5-pitch-join-login' => 'ننوتل',
 	'articlefeedbackv5-pitch-edit-accept' => 'دا مخ سمول',
-	'articleFeedback-table-heading-page' => 'مخ',
+	'articleFeedbackv5-table-heading-page' => 'مخ',
 );
 
 /** Portuguese (Português)
@@ -5466,7 +5466,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'articlefeedback' => 'Painel de avaliação de artigos',
+	'articlefeedbackv5' => 'Painel de avaliação de artigos',
 	'articlefeedbackv5-desc' => 'Avaliação de artigos',
 	'articlefeedbackv5-survey-question-origin' => 'Em que página estava quando iniciou esta avaliação?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Diga-nos porque é que avaliou esta página hoje (marque todas as opções verdadeiras):',
@@ -5549,14 +5549,14 @@ $messages['pt'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Obrigado por preencher o inquérito.',
 	'articlefeedbackv5-survey-message-error' => 'Ocorreu um erro. 
 Tente novamente mais tarde, por favor.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'As melhores e piores de hoje',
-	'articleFeedback-table-caption-dailyhighs' => 'Páginas com as avaliações mais elevadas: $1',
-	'articleFeedback-table-caption-dailylows' => 'Páginas com as avaliações mais baixas: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Os mais alterados da semana',
-	'articleFeedback-table-caption-recentlows' => 'As piores mais recentes',
-	'articleFeedback-table-heading-page' => 'Página',
-	'articleFeedback-table-heading-average' => 'Média',
-	'articleFeedback-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na [$1 página de discussão], por favor.',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'As melhores e piores de hoje',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Páginas com as avaliações mais elevadas: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Páginas com as avaliações mais baixas: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Os mais alterados da semana',
+	'articleFeedbackv5-table-caption-recentlows' => 'As piores mais recentes',
+	'articleFeedbackv5-table-heading-page' => 'Página',
+	'articleFeedbackv5-table-heading-average' => 'Média',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na [$1 página de discussão], por favor.',
 	'articlefeedbackv5-dashboard-bottom' => "'''Nota''': Continuaremos a experimentar diferentes critérios de selecção de artigos para estes painéis. De momento, os painéis incluem os seguintes:
 * Páginas com as avaliações mais altas e mais baixas: artigos que receberam pelo menos 10 avaliações nas últimas 24 horas. As médias são calculadas pela média de todas as avaliações recebidas nas últimas 24 horas.
 * Os piores mais recentes: artigos com 70% ou mais de avaliações baixas (2 estrelas ou menos) em qualquer categoria nas últimas 24 horas. Só são incluídos os artigos que receberam pelo menos 10 avaliações nas últimas 24 horas.",
@@ -5592,7 +5592,7 @@ A equipa da {{SITENAME}}',
  * @author Raylton P. Sousa
  */
 $messages['pt-br'] = array(
-	'articlefeedback' => 'Painel de avaliação de artigos',
+	'articlefeedbackv5' => 'Painel de avaliação de artigos',
 	'articlefeedbackv5-desc' => 'Avaliação do artigo (versão de testes)',
 	'articlefeedbackv5-survey-question-origin' => 'Em que página você estava quando começou a responder esta pesquisa?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Diga-nos porque é que classificou esta página hoje, por favor (marque todas as opções as quais se aplicam):',
@@ -5675,14 +5675,14 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Obrigado por preencher o questionário.',
 	'articlefeedbackv5-survey-message-error' => 'Ocorreu um erro. 
 Tente novamente mais tarde, por favor.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Os melhores e piores de hoje',
-	'articleFeedback-table-caption-dailyhighs' => 'Artigos com as avaliações mais elevadas: $1',
-	'articleFeedback-table-caption-dailylows' => 'Artigos com as avaliações mais baixas: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Os mais alterados da semana',
-	'articleFeedback-table-caption-recentlows' => 'Os piores mais recentes',
-	'articleFeedback-table-heading-page' => 'Página',
-	'articleFeedback-table-heading-average' => 'Média',
-	'articleFeedback-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na [$1 página de discussão], por favor.',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Os melhores e piores de hoje',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Artigos com as avaliações mais elevadas: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Artigos com as avaliações mais baixas: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Os mais alterados da semana',
+	'articleFeedbackv5-table-caption-recentlows' => 'Os piores mais recentes',
+	'articleFeedbackv5-table-heading-page' => 'Página',
+	'articleFeedbackv5-table-heading-average' => 'Média',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na [$1 página de discussão], por favor.',
 	'articlefeedbackv5-dashboard-bottom' => "'''Nota''': Continuaremos a experimentar diferentes critérios de selecção de artigos para estes painéis. De momento, os painéis incluem os seguintes:
 * Páginas com as avaliações mais altas e mais baixas: artigos que receberam pelo menos 10 avaliações nas últimas 24 horas. As médias são calculadas pela média de todas as avaliações recebidas nas últimas 24 horas.
 * Os piores mais recentes: artigos com 70% ou mais de avaliações baixas (2 estrelas ou menos) em qualquer categoria nas últimas 24 horas. Só são incluídos os artigos que receberam pelo menos 10 avaliações nas últimas 24 horas.",
@@ -5718,7 +5718,7 @@ A equipe da {{SITENAME}}',
  * @author Strainu
  */
 $messages['ro'] = array(
-	'articlefeedback' => 'Panou de control evaluare articol',
+	'articlefeedbackv5' => 'Panou de control evaluare articol',
 	'articlefeedbackv5-desc' => 'Evaluare articol',
 	'articlefeedbackv5-survey-question-origin' => 'Care a fost ultima pagină vizitată înainte de a începe acest sondaj?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Vă rugăm să ne spuneți de ce ați evaluat această pagină astăzi (bifați tot ce se aplică):',
@@ -5799,14 +5799,14 @@ $messages['ro'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Vă mulțumim că ați completat chestionarul.',
 	'articlefeedbackv5-survey-message-error' => 'A apărut o eroare.
 Vă rugăm să reîncercați mai târziu.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Cele mai bune și cele mai slabe evaluări de astăzi',
-	'articleFeedback-table-caption-dailyhighs' => 'Paginile cu cele mai bune evaluări: $1',
-	'articleFeedback-table-caption-dailylows' => 'Paginile cu cele mai slabe evaluări: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Cea mai modificată din această săptămână',
-	'articleFeedback-table-caption-recentlows' => 'Minime recente',
-	'articleFeedback-table-heading-page' => 'Pagina',
-	'articleFeedback-table-heading-average' => 'Medie',
-	'articleFeedback-copy-above-highlow-tables' => 'Aceasta este o unealtă experimentală. Vă rugăm să ne oferiți reacții pe [$1 pagina de discuție].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Cele mai bune și cele mai slabe evaluări de astăzi',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Paginile cu cele mai bune evaluări: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Paginile cu cele mai slabe evaluări: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Cea mai modificată din această săptămână',
+	'articleFeedbackv5-table-caption-recentlows' => 'Minime recente',
+	'articleFeedbackv5-table-heading-page' => 'Pagina',
+	'articleFeedbackv5-table-heading-average' => 'Medie',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Aceasta este o unealtă experimentală. Vă rugăm să ne oferiți reacții pe [$1 pagina de discuție].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Notă''': Vom continua să experimentăm diferite moduri de reprezentare ale articolului în aceste tablouri de bord. În prezent conțin articolele următoare:
 * Pagini cu cel mai mare și cel mai mic calificativ: articole care au fost evaluate de cel puțin 10 ori în ultimele 24 de ore. Mediile sunt calculate luând în considerare toate evaluările trimise în ultimele 24 de ore.
 * Recent scăzute: articole care au primit cel puțin 70% calificative slabe (2 stele sau mai puțin) în orice categorie în ultimele 24 de ore. Numai articolele care au primit cel puțin 10 evaluări în ultimele 24 de ore sunt incluse.",
@@ -5840,7 +5840,7 @@ Echipa proiectului {{SITENAME}}',
  * @author Reder
  */
 $messages['roa-tara'] = array(
-	'articlefeedback' => "Cruscotte d'a valutazione de le vôsce",
+	'articlefeedbackv5' => "Cruscotte d'a valutazione de le vôsce",
 	'articlefeedbackv5-desc' => 'Artichele de valutazione (versiune guidate)',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => "Ije vogghie condrebbuische a 'u pundegge totale d'a pàgene",
 	'articlefeedbackv5-survey-answer-whyrated-contribute-wiki' => "Ije amm'a condrebbuì a {{SITENAME}}",
@@ -5907,14 +5907,14 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-survey-message-success' => "Grazzie pè avè combilate 'u sondagge.",
 	'articlefeedbackv5-survey-message-error' => "'N'errore s'a verificate.
 Pe piacere pruève arrete.",
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Le megghie e le pesce de osce',
-	'articleFeedback-table-caption-dailyhighs' => "Pàggene cu 'u pundegge cchiù ierte: $1",
-	'articleFeedback-table-caption-dailylows' => "Pàggene cu 'u pundegge cchiù vasce: $1",
-	'articleFeedback-table-caption-weeklymostchanged' => 'Le cangiaminde maggiore de sta sumàne',
-	'articleFeedback-table-caption-recentlows' => 'Urteme discese',
-	'articleFeedback-table-heading-page' => 'Pàgene',
-	'articleFeedback-table-heading-average' => 'Medie',
-	'articleFeedback-copy-above-highlow-tables' => "Quiste jè 'na caratteristeche sperimendale. Pe piacere vide ce manne 'nu feedback sus a [$1 pàgene de le 'ngazzaminde].",
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Le megghie e le pesce de osce',
+	'articleFeedbackv5-table-caption-dailyhighs' => "Pàggene cu 'u pundegge cchiù ierte: $1",
+	'articleFeedbackv5-table-caption-dailylows' => "Pàggene cu 'u pundegge cchiù vasce: $1",
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Le cangiaminde maggiore de sta sumàne',
+	'articleFeedbackv5-table-caption-recentlows' => 'Urteme discese',
+	'articleFeedbackv5-table-heading-page' => 'Pàgene',
+	'articleFeedbackv5-table-heading-average' => 'Medie',
+	'articleFeedbackv5-copy-above-highlow-tables' => "Quiste jè 'na caratteristeche sperimendale. Pe piacere vide ce manne 'nu feedback sus a [$1 pàgene de le 'ngazzaminde].",
 );
 
 /** Russian (Русский)
@@ -5927,7 +5927,7 @@ Pe piacere pruève arrete.",
  * @author Сrower
  */
 $messages['ru'] = array(
-	'articlefeedback' => 'Панель оценок статьи',
+	'articlefeedbackv5' => 'Панель оценок статьи',
 	'articlefeedbackv5-desc' => 'Оценка статьи (экспериментальный вариант)',
 	'articlefeedbackv5-survey-question-origin' => 'На какой странице вы находились, когда начали этот опрос?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Пожалуйста, дайте нам знать, почему вы сегодня дали оценку этой странице (отметьте все подходящие варианты):',
@@ -6011,15 +6011,15 @@ $messages['ru'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Спасибо за участие в опросе.',
 	'articlefeedbackv5-survey-message-error' => 'Произошла ошибка. 
 Пожалуйста, повторите попытку позже.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Сегодняшние взлёты и падения',
-	'articleFeedback-table-caption-dailyhighs' => 'Статьи с наивысшими оценками: $1',
-	'articleFeedback-table-caption-dailylows' => 'Статьи с самыми низкими оценками: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Наиболее изменившиеся на этой неделе',
-	'articleFeedback-table-caption-recentlows' => 'Недавние падения',
-	'articleFeedback-table-heading-page' => 'Страница',
-	'articleFeedback-table-heading-average' => 'Среднее',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Сегодняшние взлёты и падения',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Статьи с наивысшими оценками: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Статьи с самыми низкими оценками: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Наиболее изменившиеся на этой неделе',
+	'articleFeedbackv5-table-caption-recentlows' => 'Недавние падения',
+	'articleFeedbackv5-table-heading-page' => 'Страница',
+	'articleFeedbackv5-table-heading-average' => 'Среднее',
 	'articlefeedbackv5-table-noratings' => '-',
-	'articleFeedback-copy-above-highlow-tables' => 'Это экспериментальная возможность. Пожалуйста, оставьте отзыв на [$1 странице обсуждения].',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Это экспериментальная возможность. Пожалуйста, оставьте отзыв на [$1 странице обсуждения].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Примечание'''. Мы будем продолжать экспериментировать с различными способами наполнения этой панели. Сейчас на неё попадают следующие статьи:
 * Страницы с самым высокими/низкими оценками: статьи, получившие не менее 10 оценок за последние 24 часа. Средние значения рассчитываются после обработки всех оценок за последние 24 часа.
 * Последние минимумы: статьи, получившие 70% и ниже (2 звезды и ниже) в любой из категорий за последние 24 часа. Учитываются только статьи, получившие не менее 10 оценок за последние 24 часа.",
@@ -6053,7 +6053,7 @@ $3
  * @author Gazeb
  */
 $messages['rue'] = array(
-	'articlefeedback' => 'Панель оцінок статї',
+	'articlefeedbackv5' => 'Панель оцінок статї',
 	'articlefeedbackv5-desc' => 'Оцінка статї (експеріменталный варіант)',
 	'articlefeedbackv5-survey-question-origin' => 'З котрой сторінкы сьте {{gender:|пришов|пришла|пришли}} на тото вызвідуваня?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Чом сьте днесь оцінили тоту сторінку (зачаркните вшыткы платны можности):',
@@ -6136,14 +6136,14 @@ $messages['rue'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Дякуєме за выповнїня звідованя.',
 	'articlefeedbackv5-survey-message-error' => 'Дішло ку хыбі. 
 Просиме, попробуйте пізнїше.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Днешнї максіма і мініма',
-	'articleFeedback-table-caption-dailyhighs' => 'Сторінкы з найвысшыма оцїнками: $1',
-	'articleFeedback-table-caption-dailylows' => 'Сторінкы з найнизшыма оцїнками: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Найвекшы зміны того тыждня',
-	'articleFeedback-table-caption-recentlows' => 'Недавны мініма',
-	'articleFeedback-table-heading-page' => 'Сторінка',
-	'articleFeedback-table-heading-average' => 'Середнє',
-	'articleFeedback-copy-above-highlow-tables' => 'Тото є експеріментална функція. Дайте знати ваш назор на [$1 діскузній сторінцї].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Днешнї максіма і мініма',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Сторінкы з найвысшыма оцїнками: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Сторінкы з найнизшыма оцїнками: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Найвекшы зміны того тыждня',
+	'articleFeedbackv5-table-caption-recentlows' => 'Недавны мініма',
+	'articleFeedbackv5-table-heading-page' => 'Сторінка',
+	'articleFeedbackv5-table-heading-average' => 'Середнє',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Тото є експеріментална функція. Дайте знати ваш назор на [$1 діскузній сторінцї].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Позначка''': Будеме продовжовати експеріментованя з різныма способами наповнїня статей на тім панелї. Теперь панел обсягує наступны статї:
 * Статї з найвысшым/найнизшым рейтінґом: Статї, котры обтримали холем 10 рейтінґів почас остатнїх 24 годин. Середня годнота є рахована по спрацованю вшыткых рейтінґів за остатнїх 24 годин.
 * Чінны оутсайдеры: Статї, котры обтримали ниже 70% і ниже (2 звіздочкы і ниже) оцїнкы в будь-якій катеґорії за остатнї 24 годины. Рахують ся лем статї, котры обтримали холем 10 оцїнок за остатнїх 24 годин.",
@@ -6176,7 +6176,7 @@ $3
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'articlefeedback' => 'Ыстатыйаны сыаналааһын хаптаһына',
+	'articlefeedbackv5' => 'Ыстатыйаны сыаналааһын хаптаһына',
 	'articlefeedbackv5-desc' => 'Ыстатыйаны сыаналааһын (тургутуллар барыла)',
 	'articlefeedbackv5-survey-question-origin' => 'Бу ыйытыгы саҕалыыргар ханнык сирэйи көрө олорбуккунуй?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Бука диэн эт эрэ, тоҕо бүгүн бу сирэйи сыаналаатыҥ (туох баар сөп түбэһэр барыллары бэлиэтээ):',
@@ -6237,14 +6237,14 @@ $messages['sah'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Ыйытыыларга хоруйдаабыккар махтанабыт.',
 	'articlefeedbackv5-survey-message-error' => 'Алҕас таҕыста.
 Бука диэн хойутуу хос боруобалаар.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Бүгүү тахсыылар уонна түһүүлэр',
-	'articleFeedback-table-caption-dailyhighs' => 'Уһулуччу сыанабылы ылбыт ыстатыйалар: $1',
-	'articleFeedback-table-caption-dailylows' => 'Саамай намыһах сыанабылы ылбыт ыстатыйалар: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Бу нэдиэлэҕэ саамай элбэхтэ уларыйбыттар',
-	'articleFeedback-table-caption-recentlows' => 'Соторутааҥы түһүүлэр',
-	'articleFeedback-table-heading-page' => 'Сирэй',
-	'articleFeedback-table-heading-average' => 'Орто',
-	'articleFeedback-copy-above-highlow-tables' => 'Бу кыах тургутулла турар. Бука диэн, санааҕын [$1 сирэйгэ] суруй.',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Бүгүү тахсыылар уонна түһүүлэр',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Уһулуччу сыанабылы ылбыт ыстатыйалар: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Саамай намыһах сыанабылы ылбыт ыстатыйалар: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Бу нэдиэлэҕэ саамай элбэхтэ уларыйбыттар',
+	'articleFeedbackv5-table-caption-recentlows' => 'Соторутааҥы түһүүлэр',
+	'articleFeedbackv5-table-heading-page' => 'Сирэй',
+	'articleFeedbackv5-table-heading-average' => 'Орто',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Бу кыах тургутулла турар. Бука диэн, санааҕын [$1 сирэйгэ] суруй.',
 );
 
 /** Sicilian (Sicilianu)
@@ -6261,7 +6261,7 @@ $messages['scn'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'articlefeedback' => 'Hodnotenie článku',
+	'articlefeedbackv5' => 'Hodnotenie článku',
 	'articlefeedbackv5-desc' => 'Hodnotenie článku (pilotná verzia)',
 	'articlefeedbackv5-survey-question-origin' => 'Na ktorej stránke ste sa nachádzali, keď ste spustili tento prieskum?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Prosím, dajte nám vedieť prečo ste dnes ohodnotili túto stránku (zaškrtnite všetky možnosti, ktoré považujete za pravdivé):',
@@ -6321,18 +6321,18 @@ $messages['sk'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Ďakujeme za vyplnenie dotazníka.',
 	'articlefeedbackv5-survey-message-error' => 'Vyskytla sa chyba.
 Prosím, skúste to neskôr.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Dnešné maximá a minimá',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Tento týždeň sa najviac menil',
-	'articleFeedback-table-caption-recentlows' => 'Nedávne minimá',
-	'articleFeedback-table-heading-page' => 'Stránka',
-	'articleFeedback-table-heading-average' => 'Priemer',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Dnešné maximá a minimá',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Tento týždeň sa najviac menil',
+	'articleFeedbackv5-table-caption-recentlows' => 'Nedávne minimá',
+	'articleFeedbackv5-table-heading-page' => 'Stránka',
+	'articleFeedbackv5-table-heading-average' => 'Priemer',
 );
 
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */
 $messages['sl'] = array(
-	'articlefeedback' => 'Pregledna plošča povratnih informacij člankov',
+	'articlefeedbackv5' => 'Pregledna plošča povratnih informacij člankov',
 	'articlefeedbackv5-desc' => 'Povratna informacija članka',
 	'articlefeedbackv5-survey-question-origin' => 'Na kateri strani ste bili, ko ste začeli s to anketo?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Prosimo, povejte nam, zakaj ste danes ocenili to stran (izberite vse, kar ustreza):',
@@ -6417,14 +6417,14 @@ $messages['sl'] = array(
 	'articlefeedbackv5-survey-message-error' => 'Prišlo je do napake.
 Prosimo, poskusite znova pozneje.',
 	'articlefeedbackv5-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Današnji vzponi in padci',
-	'articleFeedback-table-caption-dailyhighs' => 'Članki z najvišjimi ocenami: $1',
-	'articleFeedback-table-caption-dailylows' => 'Članki z najnižjimi ocenami: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Ta teden najbolj spremenjeno',
-	'articleFeedback-table-caption-recentlows' => 'Nedavni padci',
-	'articleFeedback-table-heading-page' => 'Stran',
-	'articleFeedback-table-heading-average' => 'Povprečje',
-	'articleFeedback-copy-above-highlow-tables' => 'To je preizkusna funkcija. Prosimo, podajte povratno informacijo na [$1 pogovorni strani].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Današnji vzponi in padci',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Članki z najvišjimi ocenami: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Članki z najnižjimi ocenami: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Ta teden najbolj spremenjeno',
+	'articleFeedbackv5-table-caption-recentlows' => 'Nedavni padci',
+	'articleFeedbackv5-table-heading-page' => 'Stran',
+	'articleFeedbackv5-table-heading-average' => 'Povprečje',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'To je preizkusna funkcija. Prosimo, podajte povratno informacijo na [$1 pogovorni strani].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Opomba''': Nadaljevali bomo z raziskovanjem različnih načinov prikazovanja člankov na teh preglednih ploščah. Pregledna plošča trenutno vključuje naslednje članke:
 * Strani z najvišjimi/najnižjimi ocenami: članki, ki so v zadnjih 24 urah prejeli vsaj 10 ocen. Povprečja predstavljajo sredino vseh ocen, podanih v zadnjih 24 urah.
 * Nedavni padci: članki, ki so v zadnjih 24 urah prejeli 70&nbsp;% ali več nizkih (dve zvezdici ali manj) ocen v kateri koli kategoriji. Vključeni so samo članki, ki so v zadnjih 24 urah prejeli vsaj 10 ocen.",
@@ -6459,7 +6459,7 @@ ekipa {{GRAMMAR:rodilnik|{{SITENAME}}}}',
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'articlefeedback' => 'Табла за оцењивање чланака',
+	'articlefeedbackv5' => 'Табла за оцењивање чланака',
 	'articlefeedbackv5-desc' => 'Оцењивање чланака',
 	'articlefeedbackv5-survey-question-origin' => 'На којој страници сте били када сте започели ову анкету?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Реците нам зашто сте данас оценили ову страницу (означити све што одговара):',
@@ -6520,15 +6520,15 @@ $messages['sr-ec'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Хвала вам што сте попунили упитник.',
 	'articlefeedbackv5-survey-message-error' => 'Дошло је до грешке.
 Покушајте касније.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Данашње високе и ниске оцене',
-	'articleFeedback-table-caption-dailyhighs' => 'Странице с највишим оценама: $1',
-	'articleFeedback-table-caption-dailylows' => 'Странице с најнижим оценама: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Највише мењани ове недеље',
-	'articleFeedback-table-caption-recentlows' => 'Скорашње ниске оцене',
-	'articleFeedback-table-heading-page' => 'Страница',
-	'articleFeedback-table-heading-average' => 'Просек',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Данашње високе и ниске оцене',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Странице с највишим оценама: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Странице с најнижим оценама: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Највише мењани ове недеље',
+	'articleFeedbackv5-table-caption-recentlows' => 'Скорашње ниске оцене',
+	'articleFeedbackv5-table-heading-page' => 'Страница',
+	'articleFeedbackv5-table-heading-average' => 'Просек',
 	'articlefeedbackv5-table-noratings' => '-',
-	'articleFeedback-copy-above-highlow-tables' => 'Ово је експериментални додатак. Молимо вас да пошаљете повратну информацију на [$1 страници за разговор].',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Ово је експериментални додатак. Молимо вас да пошаљете повратну информацију на [$1 страници за разговор].',
 	'articlefeedbackv5-emailcapture-response-body' => 'Здраво!
 
 Хвала вам што сте показали жељу да помогнете у унапређењу пројекта {{SITENAME}}.
@@ -6561,7 +6561,7 @@ $3
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'articlefeedback' => 'Instrumentpanel för artikelbedömning',
+	'articlefeedbackv5' => 'Instrumentpanel för artikelbedömning',
 	'articlefeedbackv5-desc' => 'Artikelbedömning (pilotversion)',
 	'articlefeedbackv5-survey-question-origin' => 'Vilken sida var du på när du startade denna undersökning?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Låt oss gärna veta varför du betygsatte denna sida i dag (markera alla som gäller):',
@@ -6644,14 +6644,14 @@ $messages['sv'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Tack för att du fyllde i undersökningen.',
 	'articlefeedbackv5-survey-message-error' => 'Ett fel har uppstått. 
 Försök igen senare.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Dagens toppar och dalar',
-	'articleFeedback-table-caption-dailyhighs' => 'Sidor med högst betyg: $1',
-	'articleFeedback-table-caption-dailylows' => 'Sidor med lägst betyg: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Veckans mest ändrade',
-	'articleFeedback-table-caption-recentlows' => 'Senaste dalar',
-	'articleFeedback-table-heading-page' => 'Sida',
-	'articleFeedback-table-heading-average' => 'Genomsnittlig',
-	'articleFeedback-copy-above-highlow-tables' => 'Detta är en experimentell funktion. Lämna feedback på [$1 diskussionssidan].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Dagens toppar och dalar',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Sidor med högst betyg: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Sidor med lägst betyg: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Veckans mest ändrade',
+	'articleFeedbackv5-table-caption-recentlows' => 'Senaste dalar',
+	'articleFeedbackv5-table-heading-page' => 'Sida',
+	'articleFeedbackv5-table-heading-average' => 'Genomsnittlig',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Detta är en experimentell funktion. Lämna feedback på [$1 diskussionssidan].',
 	'articlefeedbackv5-dashboard-bottom' => "'''OBS''': Vi kommer att fortsätta experimentera med olika sätt att belysa artiklar i dessa instrumentpaneler. För närvarande inkluderar instrumentpanelen följande artiklar:
 * Sidor med den högst/lägst betyg: Artiklar som har fått minst tio betygsättningar inom de senaste 24 timmarna. Medelvärden räknas ut genom att ta genomsnittet av alla betygssättningar som har skickats in inom de senaste 24 timmarna.
 * Nyliga bottenrekord: Artiklar som fått 70 % eller fler låga (två stjärnor eller lägre) betygssättningar i någon kategori under de senaste 24 timmarna. Endast artiklar som fått minst tio betygssättningar inom de senaste 24 timmarna inkluderas.",
@@ -6698,7 +6698,7 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'articlefeedback' => 'వ్యాసపు మూల్యాంకన',
+	'articlefeedbackv5' => 'వ్యాసపు మూల్యాంకన',
 	'articlefeedbackv5-survey-question-whyrated' => 'ఈ పుటని ఈరోజు మీరు ఎందుకు మూల్యాంకన చేసారో మాకు దయచేసి తెలియజేయండి (వర్తించే వాటినన్నీ ఎంచుకోండి):',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => 'నేను ఈ పుట యొక్క స్థూల మూల్యాంకనకి తోడ్పాలనుకున్నాను',
 	'articlefeedbackv5-survey-answer-whyrated-development' => 'నా మూల్యాంకన ఈ పుట యొక్క అభివృద్ధికి సానుకూలంగా ప్రభావితం చేస్తుందని ఆశిస్తున్నాను',
@@ -6719,22 +6719,22 @@ $messages['te'] = array(
 	'articlefeedbackv5-pitch-or' => 'లేదా',
 	'articlefeedbackv5-pitch-join-login' => 'ప్రవేశించండి',
 	'articlefeedbackv5-pitch-edit-accept' => 'ఈ పుటని మార్చండి',
-	'articleFeedback-table-heading-page' => 'పుట',
-	'articleFeedback-table-heading-average' => 'సగటు',
+	'articleFeedbackv5-table-heading-page' => 'పుట',
+	'articleFeedbackv5-table-heading-average' => 'సగటు',
 );
 
 /** Tetum (Tetun)
  * @author MF-Warburg
  */
 $messages['tet'] = array(
-	'articleFeedback-table-heading-page' => 'Pájina',
+	'articleFeedbackv5-table-heading-page' => 'Pájina',
 );
 
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */
 $messages['tk'] = array(
-	'articlefeedback' => 'Makala berlen baha',
+	'articlefeedbackv5' => 'Makala berlen baha',
 	'articlefeedbackv5-desc' => 'Makala berlen baha (synag warianty)',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => 'Men sahypanyň umumy derejesine goşant goşmak isledim.',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-wiki' => '{{SITENAME}} saýtyna goşant goşmak isledim.',
@@ -6752,7 +6752,7 @@ $messages['tk'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'articlefeedback' => 'Pisarang-dunggulan ng katugunang-puna na panglathalain',
+	'articlefeedbackv5' => 'Pisarang-dunggulan ng katugunang-puna na panglathalain',
 	'articlefeedbackv5-desc' => 'Pagsusuri ng lathalain (paunang bersyon)',
 	'articlefeedbackv5-survey-question-origin' => 'Anong pahina ang kinaroroonan mo noong simulan mo ang pagtatanung-tanong na ito?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Mangyari sabihin sa amin kung bakit mo inantasan ng ganito ang pahinang ito ngayon (lagyan ng tsek ang lahat ng maaari):',
@@ -6813,13 +6813,13 @@ $messages['tl'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Salamat sa pagpuno ng tugon.',
 	'articlefeedbackv5-survey-message-error' => 'Naganap ang isang kamalian.
 Paki subukan uli mamaya.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Mga matataas at mga mabababa sa araw na ito',
-	'articleFeedback-table-caption-dailyhighs' => 'Mga artikulong may pinakamataas na mga kaantasan: $1',
-	'articleFeedback-table-caption-dailylows' => 'Mga artikulong may pinakamababang mga kaantasan: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Pinaka nabago sa linggong ito',
-	'articleFeedback-table-caption-recentlows' => 'Kamakailang mga mabababa',
-	'articleFeedback-table-heading-page' => 'Pahina',
-	'articleFeedback-table-heading-average' => 'Karaniwan',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Mga matataas at mga mabababa sa araw na ito',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Mga artikulong may pinakamataas na mga kaantasan: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Mga artikulong may pinakamababang mga kaantasan: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Pinaka nabago sa linggong ito',
+	'articleFeedbackv5-table-caption-recentlows' => 'Kamakailang mga mabababa',
+	'articleFeedbackv5-table-heading-page' => 'Pahina',
+	'articleFeedbackv5-table-heading-average' => 'Karaniwan',
 	'articlefeedbackv5-emailcapture-response-body' => 'Kumusta!
 
 Salamat sa pagpapahayag mo ng pagnanais na makatulong sa pagpapainam ng {{SITENAME}}.
@@ -6854,7 +6854,7 @@ Ang pangkat ng {{SITENAME}}',
  * @author Stultiwikia
  */
 $messages['tr'] = array(
-	'articlefeedback' => 'Madde değerlendirmesi',
+	'articlefeedbackv5' => 'Madde değerlendirmesi',
 	'articlefeedbackv5-desc' => 'Madde geribildirimi',
 	'articlefeedbackv5-survey-question-origin' => 'Bu ankete başladığında hangi sayfadaydınız?',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => 'Sayfanın genel değerlendirilmesine katkıda bulunmak istedim',
@@ -6900,8 +6900,8 @@ $messages['tr'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Anketi doldurduğunuz için teşekkür ederiz.',
 	'articlefeedbackv5-survey-message-error' => 'Bir hata meydana geldi.
 Lütfen daha sonra tekrar deneyin.',
-	'articleFeedback-table-heading-page' => 'Madde',
-	'articleFeedback-table-heading-average' => 'Ortalama',
+	'articleFeedbackv5-table-heading-page' => 'Madde',
+	'articleFeedbackv5-table-heading-average' => 'Ortalama',
 );
 
 /** Ukrainian (Українська)
@@ -6911,7 +6911,7 @@ Lütfen daha sonra tekrar deneyin.',
  * @author Тест
  */
 $messages['uk'] = array(
-	'articlefeedback' => 'Панель оцінювання статті',
+	'articlefeedbackv5' => 'Панель оцінювання статті',
 	'articlefeedbackv5-desc' => 'Оцінка статті',
 	'articlefeedbackv5-survey-question-origin' => 'На якій сторінці ви були, коли почали це опитування?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Будь ласка, розкажіть нам, чому Ви оцінили цю сторінку сьогодні (позначте всі підходящі варіанти):',
@@ -6994,15 +6994,15 @@ $messages['uk'] = array(
 	'articlefeedbackv5-pitch-edit-accept' => 'Редагувати цю сторінку',
 	'articlefeedbackv5-survey-message-success' => 'Дякуємо за участь в опитуванні.',
 	'articlefeedbackv5-survey-message-error' => 'Сталася помилка. Будь ласка, повторіть спробу пізніше.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Лідери та аутсайдери цього дня.',
-	'articleFeedback-table-caption-dailyhighs' => 'Сторінки з найвищими оцінками: $1',
-	'articleFeedback-table-caption-dailylows' => 'Сторінки з найнижчими оцінками: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'На цьому тижні найбільш змінилися',
-	'articleFeedback-table-caption-recentlows' => 'Останні зниження рейтингу',
-	'articleFeedback-table-heading-page' => 'Сторінка',
-	'articleFeedback-table-heading-average' => 'Середнє значення',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Лідери та аутсайдери цього дня.',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Сторінки з найвищими оцінками: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Сторінки з найнижчими оцінками: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'На цьому тижні найбільш змінилися',
+	'articleFeedbackv5-table-caption-recentlows' => 'Останні зниження рейтингу',
+	'articleFeedbackv5-table-heading-page' => 'Сторінка',
+	'articleFeedbackv5-table-heading-average' => 'Середнє значення',
 	'articlefeedbackv5-table-noratings' => '-',
-	'articleFeedback-copy-above-highlow-tables' => 'Це експериментальна можливість. Прохання висловлювати коментарі на [$1 сторінці обговорення].',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Це експериментальна можливість. Прохання висловлювати коментарі на [$1 сторінці обговорення].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Примітка''': Ми будемо продовжувати експериментувати з різними способами наповнення цієї панелі. На даний час панель включає такі статті:
 * Сторінки з високим/низьким рейтингом: статті, які отримали щонайменше 10 оцінок протягом останніх 24 годин. Середня оцінка розраховується після обробки усіх оцінок за останні 24 години.
 * Чинні аутсайдери: Статті, які отримали оцінку нижчу за 70% (1-2 зірки) у будь-якій категорії за останні 24 години. Враховуються тільки статті, які отримали щонайменше 10 оцінок за останні 24 години.",
@@ -7023,7 +7023,7 @@ $3
  * @author Candalua
  */
 $messages['vec'] = array(
-	'articlefeedback' => 'Valutassion pagina',
+	'articlefeedbackv5' => 'Valutassion pagina',
 	'articlefeedbackv5-desc' => 'Valutassion pagina (version de prova)',
 	'articlefeedbackv5-survey-question-whyrated' => 'Dine el motivo par cui te ghè valutà sta pagina (te poli selessionar più opzioni):',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => 'Voléa contribuir a la valutassion conplessiva de la pagina',
@@ -7044,7 +7044,7 @@ $messages['vec'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'articlefeedback' => 'Bảng phản hồi bài',
+	'articlefeedbackv5' => 'Bảng phản hồi bài',
 	'articlefeedbackv5-desc' => 'Phản hồi bài',
 	'articlefeedbackv5-survey-question-origin' => 'Bạn đang xem trang nào lúc khi bắt đầu cuộc khảo sát này?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Xin hãy cho chúng tôi biết lý do tại sao bạn đánh giá trang này hôm nay (kiểm tra các hộp thích hợp):',
@@ -7127,14 +7127,14 @@ $messages['vi'] = array(
 	'articlefeedbackv5-survey-message-success' => 'Cám ơn bạn đã điền khảo sát.',
 	'articlefeedbackv5-survey-message-error' => 'Đã gặp lỗi.
 Xin hãy thử lại sau.',
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Các điểm cao và thấp nhất hôm nay',
-	'articleFeedback-table-caption-dailyhighs' => 'Các bài đánh giá cao nhất: $1',
-	'articleFeedback-table-caption-dailylows' => 'Các bài đánh giá thấp nhất: $1',
-	'articleFeedback-table-caption-weeklymostchanged' => 'Các điểm thay đổi nhiều nhất vào tuần này',
-	'articleFeedback-table-caption-recentlows' => 'Các điểm thấp gần đây',
-	'articleFeedback-table-heading-page' => 'Trang',
-	'articleFeedback-table-heading-average' => 'Trung bình',
-	'articleFeedback-copy-above-highlow-tables' => 'Đây là một tính năng thử nghiệm. Xin vui lòng đưa ra phản hồi tại [$1 trang thảo luận].',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Các điểm cao và thấp nhất hôm nay',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Các bài đánh giá cao nhất: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Các bài đánh giá thấp nhất: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Các điểm thay đổi nhiều nhất vào tuần này',
+	'articleFeedbackv5-table-caption-recentlows' => 'Các điểm thấp gần đây',
+	'articleFeedbackv5-table-heading-page' => 'Trang',
+	'articleFeedbackv5-table-heading-average' => 'Trung bình',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'Đây là một tính năng thử nghiệm. Xin vui lòng đưa ra phản hồi tại [$1 trang thảo luận].',
 	'articlefeedbackv5-dashboard-bottom' => "'''Lưu ý:''' Chúng tôi sẽ tiếp tục thử nghiệm những cách chọn lọc bài trong cách bảng điều khiển. Hiện nay các bảng điều khiển bao gồm các bài sau:
 * Các trang được đánh giá cao nhất hoặc thấp nhất: các bài đã được đánh giá 10 lần trở lên trong 24 giờ trước. Trung bình tính tất cả các đánh giá được nhận trong 24 giờ trước.
 * Các điểm thấp gần đây: các bài được đánh giá 70% (2 sao) trở xuống trong thể loại này trong 24 giờ trước. Chỉ tính các bài được đánh giá 10 lần trở lên trong 24 giờ trước.",
@@ -7167,7 +7167,7 @@ Nhóm {{SITENAME}}',
  * @author Demmy
  */
 $messages['yo'] = array(
-	'articlefeedback' => 'Ibi èsì àyọkà',
+	'articlefeedbackv5' => 'Ibi èsì àyọkà',
 	'articlefeedbackv5-desc' => '条目评级（测试版）',
 	'articlefeedbackv5-survey-question-whyrated' => '请告诉我们今天你为何评价了此页面(选择所有符合的):',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => '我想对网页的总体评价作贡献',
@@ -7197,7 +7197,7 @@ $messages['yo'] = array(
  * @author 阿pp
  */
 $messages['zh-hans'] = array(
-	'articlefeedback' => '条目评分面板',
+	'articlefeedbackv5' => '条目评分面板',
 	'articlefeedbackv5-desc' => '条目评分',
 	'articlefeedbackv5-survey-question-origin' => '当你开始这项统计调查的时候正在访问哪个页面？',
 	'articlefeedbackv5-survey-question-whyrated' => '请告诉我们你今天为此页打分的原因（选择所有合适的选项）：',
@@ -7280,14 +7280,14 @@ $messages['zh-hans'] = array(
 	'articlefeedbackv5-survey-message-success' => '谢谢您回答问卷。',
 	'articlefeedbackv5-survey-message-error' => '出现错误。
 请稍后再试。',
-	'articleFeedback-table-caption-dailyhighsandlows' => '今日评分动态',
-	'articleFeedback-table-caption-dailyhighs' => '评分最高的条目：$1',
-	'articleFeedback-table-caption-dailylows' => '评分最低的条目：$1',
-	'articleFeedback-table-caption-weeklymostchanged' => '本周最多更改',
-	'articleFeedback-table-caption-recentlows' => '近期低分',
-	'articleFeedback-table-heading-page' => '页面',
-	'articleFeedback-table-heading-average' => '平均',
-	'articleFeedback-copy-above-highlow-tables' => '这是一个实验性功能。请在 [$1 讨论页] 提供反馈意见。',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => '今日评分动态',
+	'articleFeedbackv5-table-caption-dailyhighs' => '评分最高的条目：$1',
+	'articleFeedbackv5-table-caption-dailylows' => '评分最低的条目：$1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => '本周最多更改',
+	'articleFeedbackv5-table-caption-recentlows' => '近期低分',
+	'articleFeedbackv5-table-heading-page' => '页面',
+	'articleFeedbackv5-table-heading-average' => '平均',
+	'articleFeedbackv5-copy-above-highlow-tables' => '这是一个实验性功能。请在 [$1 讨论页] 提供反馈意见。',
 	'articlefeedbackv5-dashboard-bottom' => "'''注意'''：我们仍将尝试用各种不同的方式在面板上组织条目。目前，此面板包括下列条目：
 * 最高或最低分的条目：在过去24小时内至少得到10次评分的条目。平均值计算以过去24小时内提交的所有评分为准。
 * 近期低分：过去24小时内，在任何类别得到过70%或低分（2星或更低）的条目。只会展示在过去24小时内至少得到10次评分的条目。",
@@ -7324,7 +7324,7 @@ $3
  * @author Waihorace
  */
 $messages['zh-hant'] = array(
-	'articlefeedback' => '條目評分公告板',
+	'articlefeedbackv5' => '條目評分公告板',
 	'articlefeedbackv5-desc' => '條目評分',
 	'articlefeedbackv5-survey-question-origin' => '在你開始這個調查的時候你在哪一頁？',
 	'articlefeedbackv5-survey-question-whyrated' => '請讓我們知道你為什麼今天要評價本頁（選擇所有適用的項目）：',
@@ -7407,14 +7407,14 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-survey-message-success' => '謝謝您回答問卷。',
 	'articlefeedbackv5-survey-message-error' => '出現錯誤！
 請稍後再試。',
-	'articleFeedback-table-caption-dailyhighsandlows' => '今天的新鮮事',
-	'articleFeedback-table-caption-dailyhighs' => '最高評級的頁面：$1',
-	'articleFeedback-table-caption-dailylows' => '最低評級的頁面：$1',
-	'articleFeedback-table-caption-weeklymostchanged' => '本週最多改變',
-	'articleFeedback-table-caption-recentlows' => '近期低點',
-	'articleFeedback-table-heading-page' => '頁面',
-	'articleFeedback-table-heading-average' => '平均',
-	'articleFeedback-copy-above-highlow-tables' => '這是一個試驗性的功能。請在[$1 討論頁]提供反饋意見。',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => '今天的新鮮事',
+	'articleFeedbackv5-table-caption-dailyhighs' => '最高評級的頁面：$1',
+	'articleFeedbackv5-table-caption-dailylows' => '最低評級的頁面：$1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => '本週最多改變',
+	'articleFeedbackv5-table-caption-recentlows' => '近期低點',
+	'articleFeedbackv5-table-heading-page' => '頁面',
+	'articleFeedbackv5-table-heading-average' => '平均',
+	'articleFeedbackv5-copy-above-highlow-tables' => '這是一個試驗性的功能。請在[$1 討論頁]提供反饋意見。',
 	'articlefeedbackv5-dashboard-bottom' => "'''注意'''：我們仍將嘗試用各種不同的方式在面板上組織條目。目前，此面板包括下列條目：
 * 最高或最低分的頁面：在過去24小時內至少得到10次評分的條目。平均值計算以過去24小時內提交的所有評分為準。
 * 近期低分：過去24小時內，在任何類別得到過70%或低分（2星或更低）的條目。只會展示在過去24小時內至少得到10次評分的條目。",

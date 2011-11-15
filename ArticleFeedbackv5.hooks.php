@@ -9,16 +9,16 @@
 class ArticleFeedbackv5Hooks {
 
 	protected static $modules = array(
-		'ext.articleFeedback.startup' => array(
-			'scripts' => 'ext.articleFeedback/ext.articleFeedback.startup.js',
+		'ext.articleFeedbackv5.startup' => array(
+			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js',
 			'dependencies' => array(
 				'mediawiki.util',
-				'ext.articleFeedback',
+				'ext.articleFeedbackv5',
 			),
 		),
-		'ext.articleFeedback' => array(
-			'scripts' => 'ext.articleFeedback/ext.articleFeedback.js',
-			'styles' => 'ext.articleFeedback/ext.articleFeedback.css',
+		'ext.articleFeedbackv5' => array(
+			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.js',
+			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.css',
 			'messages' => array(
 				'articlefeedbackv5-pitch-reject',
 				'articlefeedbackv5-pitch-or',
@@ -43,22 +43,22 @@ class ArticleFeedbackv5Hooks {
 			'dependencies' => array(
 				'jquery.ui.dialog',
 				'jquery.ui.button',
-				'jquery.articleFeedback',
+				'jquery.articleFeedbackv5',
 				'jquery.cookie',
 				'jquery.clickTracking',
-				'ext.articleFeedback.ratingi18n',
+				'ext.articleFeedbackv5.ratingi18n',
 			),
 		),
-		'ext.articleFeedback.ratingi18n' => array(
+		'ext.articleFeedbackv5.ratingi18n' => array(
 			'messages' => null, // Filled in by the resourceLoaderRegisterModules() hook function later
 		),
-		'ext.articleFeedback.dashboard' => array(
-			'scripts' => 'ext.articleFeedback/ext.articleFeedback.dashboard.js',
-			'styles' => 'ext.articleFeedback/ext.articleFeedback.dashboard.css',
+		'ext.articleFeedbackv5.dashboard' => array(
+			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.js',
+			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.css',
 		),
-		'jquery.articleFeedback' => array(
-			'scripts' => 'jquery.articleFeedback/jquery.articleFeedback.js',
-			'styles' => 'jquery.articleFeedback/jquery.articleFeedback.css',
+		'jquery.articleFeedbackv5' => array(
+			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.js',
+			'styles' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.css',
 			'messages' => array(
 				'articlefeedbackv5-error',
 				'articlefeedbackv5-form-switch-label',
@@ -149,7 +149,7 @@ class ArticleFeedbackv5Hooks {
 	 * BeforePageDisplay hook
 	 */
 	public static function beforePageDisplay( $out ) {
-		$out->addModules( 'ext.articleFeedback.startup' );
+		$out->addModules( 'ext.articleFeedbackv5.startup' );
 		return true;
 	}
 
@@ -162,7 +162,7 @@ class ArticleFeedbackv5Hooks {
 		$remotepath = "$wgExtensionAssetsPath/ArticleFeedbackv5/modules";
 
 		foreach ( self::$modules as $name => $resources ) {
-			if ( $name == 'jquery.articleFeedback' ) {
+			if ( $name == 'jquery.articleFeedbackv5' ) {
 				$fields = ApiArticleFeedbackv5Utils::getFields();
 				$prefix = 'articlefeedbackv5-field-';
 				foreach( $fields as $field ) {
