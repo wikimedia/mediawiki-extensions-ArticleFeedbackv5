@@ -71,7 +71,6 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-bucket5-form-switch-label',
 				'articlefeedbackv5-bucket5-form-panel-title',
 				'articlefeedbackv5-bucket5-form-panel-explanation',
-				'articlefeedbackv5-bucket5-form-panel-explanation-link',
 				'articlefeedbackv5-bucket5-form-panel-clear',
 				'articlefeedbackv5-bucket5-form-panel-expertise',
 				'articlefeedbackv5-bucket5-form-panel-expertise-studies',
@@ -93,8 +92,11 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-bucket5-report-empty',
 				'articlefeedbackv5-bucket5-report-ratings',
 				'articlefeedbackv5-error',
-				'articlefeedbackv5-form-panel-explanation-link',
-				'articlefeedbackv5-privacyurl',
+				'articlefeedbackv5-shared-on-feedback',
+				'articlefeedbackv5-shared-on-feedback-linktext',
+				'articlefeedbackv5-transparency-terms',
+				'articlefeedbackv5-transparency-terms-linktext',
+				'parentheses',
 			),
 			'dependencies' => array(
 				'jquery.appear',
@@ -210,7 +212,8 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5Tracking'] = $wgArticleFeedbackv5Tracking;
 		$vars['wgArticleFeedbackv5Options'] = $wgArticleFeedbackv5Options;
 		$vars['wgArticleFeedbackv5Namespaces'] = $wgArticleFeedbackv5Namespaces;
-		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMsgForContent( 'articlefeedbackv5-form-panel-explanation-link' );
+		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMsgForContent( 'articlefeedbackv5-bucket5-form-panel-explanation-link' );
+		$vars['wgArticleFeedbackv5TermsPage'] = wfMsgForContent( 'articlefeedbackv5-transparency-terms-url' );
 
 		$fields = ApiArticleFeedbackv5Utils::getFields();
 		foreach( $fields as $field ) {

@@ -145,6 +145,10 @@
 							<textarea name="comment"></textarea>\
 						</div>\
 						<div style="clear:both;"></div>\
+						<div class="articleFeedbackv5-feedback-terms-info">\
+							<div class="articleFeedbackv5-feedback"></div>\
+							<div class="articleFeedbackv5-terms"></div>\
+						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket1-form-submit" /></button>\
 						<div class="articleFeedbackv5-success"><span><html:msg key="bucket1-form-success" /></span></div>\
 						<div class="articleFeedbackv5-pending"><span><html:msg key="bucket1-form-pending" /></span></div>\
@@ -163,6 +167,23 @@
 				// Set the default comment text
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.val( mw.msg( 'articlefeedbackv5-bucket1-question-comment' ) );
+
+				// Fill in the feedback and terms info text
+				$block.find( '.articleFeedbackv5-feedback-terms-info .articleFeedbackv5-feedback' )
+					.html( $.articleFeedbackv5.buildLink(
+						mw.config.get( 'wgScript' ) + '?' + $.param( {
+							'title': mw.config.get( 'wgPageName' ),
+							'action': 'feedback'
+						} ),
+						'articlefeedbackv5-shared-on-feedback-linktext',
+						'articlefeedbackv5-shared-on-feedback'
+					) );
+				$block.find( '.articleFeedbackv5-feedback-terms-info .articleFeedbackv5-terms' )
+					.html( $.articleFeedbackv5.buildLink(
+						mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ), // TODO: Make this work
+						'articlefeedbackv5-transparency-terms-linktext',
+						'articlefeedbackv5-transparency-terms'
+					) );
 
 				// Localize the block
 				$block.localize( { 'prefix': 'articlefeedbackv5-' } );
@@ -187,9 +208,14 @@
 				// Clear out the question on focus
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.focus( function () {
-						var def_msg = mw.msg( 'bucket1-question-comment' );
+						var def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-comment' );
 						if ( $( this ).val() == def_msg ) {
 							$( this ).val( '' );
+						}
+					} )
+					.blur( function () {
+						if ( $( this ).val() == '' ) {
+							$( this ).val( mw.msg( 'articlefeedbackv5-bucket1-question-comment' ) );
 						}
 					} );
 
@@ -432,23 +458,19 @@
 
 				// Fill in the link to the What's This page
 				$block.find( '.articleFeedbackv5-explanation-link' )
-					.attr( 'href', mw.config.get( 'wgArticlePath' ).replace(
-						'$1', mw.config.get( 'wgArticleFeedbackv5WhatsThisPage' )
-					) );
+					.attr(
+						'href',
+						mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5WhatsThisPage' ) ) // TODO: Make this work
+					);
 
 				// Fill in the Help Improve message and links
 				$block.find( '.articleFeedbackv5-helpimprove-note' )
-					// Can't use .text() with mw.message(, /* $1 */ link).toString(),
-					// because 'link' should not be re-escaped (which would happen if done by mw.message)
-					.html( function () {
-						var link = mw.html.element(
-							'a', {
-								href: mw.util.wikiGetlink( mw.msg('articlefeedbackv5-bucket5-form-panel-helpimprove-privacylink') )
-							}, mw.msg('articlefeedbackv5-bucket5-form-panel-helpimprove-privacy')
-						);
-						return mw.html.escape( mw.msg( 'articlefeedbackv5-bucket5-form-panel-helpimprove-note') )
-							.replace( /\$1/, mw.message( 'parentheses', link ).toString() );
-					});
+					.html( $.articleFeedbackv5.buildLink(
+						mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ), // TODO: Make this work
+						'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy',
+						'articlefeedbackv5-bucket5-form-panel-helpimprove-note'
+					) );
+
 				$block.find( '.articleFeedbackv5-helpimprove-email' )
 					.attr( 'placeholder', mw.msg( 'articlefeedbackv5-bucket5-form-panel-helpimprove-email-placeholder' ) )
 					.placeholder(); // back. compat. for older browsers
@@ -590,7 +612,7 @@
 					$el.prevAll( '.articleFeedbackv5-rating-label' )
 						.addClass( 'articleFeedbackv5-rating-label-hover-tail' );
 					$rating.find( '.articleFeedbackv5-rating-tooltip' )
-						.text( mw.msg( 'articlefeedbackv5-field-' + $rating.attr( 'rel' ) + '-tooltip-' + $el.attr( 'rel' ) ) )
+						.text( mw.msg( 'articlefeedbackv5-bucket5-' + $rating.attr( 'rel' ) + '-tooltip-' + $el.attr( 'rel' ) ) )
 						.show();
 				}, function () {
 					// mouse off
@@ -1117,6 +1139,25 @@
 		return $.articleFeedbackv5.ctas[$.articleFeedbackv5.ctaId];
 	};
 
+	/**
+	 * Utility method: Build a link from a href and message keys for the full
+	 * text (with $1 where the link goes) and link text
+	 *
+	 * Can't use .text() with mw.message(, \/* $1 *\/ link).toString(),
+	 * because 'link' should not be re-escaped (which would happen if done by mw.message)
+	 *
+	 * @param  string href     the link
+	 * @param  string linktext the message key for the link text
+	 * @param  string fulltext the message key for the full text
+	 * @return string the html
+	 */
+	$.articleFeedbackv5.buildLink = function ( href, linktext, fulltext ) {
+		var link = mw.html.element( 'a', { href: href }, mw.msg( linktext ) );
+		var full = mw.html.escape( mw.msg( fulltext ) )
+			.replace( /\$1/, link.toString() );
+		return full;
+	};
+
 	// }}}
 	// {{{ Form loading methods
 
@@ -1140,7 +1181,7 @@
 				'afanontoken': $.articleFeedbackv5.userId,
 				'afpageid': $.articleFeedbackv5.pageId,
 				'afrevid': $.articleFeedbackv5.revisionId,
-				'afbucketreqested': requested
+				'afbucketrequested': requested
 			},
 			'success': function ( data ) {
 				if ( !( 'form' in data ) || !( 'bucketId' in data.form ) ) {

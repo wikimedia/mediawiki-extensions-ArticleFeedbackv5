@@ -331,7 +331,7 @@ if ( $( '#catlinks' ).length && $.inArray( mw.config.get( 'skin' ), legacyskins 
 /* Add link so users can navigate to the feedback tool from the toolbox */
 var $tbAft = $( '<li id="t-articlefeedback"><a href="#mw-articlefeedback"></a></li>' )
 	.find( 'a' )
-		.text( mw.msg( 'articlefeedbackv5-form-switch-label' ) )
+		.text( mw.msg( 'articlefeedbackv5-bucket5-form-switch-label' ) )
 		.click( function() {
 			// Click tracking
 			trackClick( 'toolbox-link' );

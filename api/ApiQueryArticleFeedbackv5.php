@@ -39,7 +39,7 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 		$params = $this->extractRequestParams();
 		global $wgArticleFeedbackv5RatingTypes, $wgUser;
 		$params     = $this->extractRequestParams();
-		$bucket     = $this->getBucket();
+		$bucket     = $this->getBucket( $params );
 		$result     = $this->getResult();
 
 		if ( !$params['revid'] ) {
@@ -49,7 +49,7 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 			return null;
 		}
 
-		$this->logHit( $params['pageid'], $params['revid'], $bucket );
+		// $this->logHit( $params['pageid'], $params['revid'], $bucket );
 
 		$result->addValue( 'form', 'pageId', $params['pageid'] );
 		$result->addValue( 'form', 'bucketId', $bucket );
@@ -69,13 +69,16 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	protected function getBucket( $params = array() ) {
 		$allowedBuckets = array( 1, 5, 6 );
-		if ( !empty( $params['bucketreqested'] )
-			&& is_numeric( $params['bucketreqested'] )
-			&& in_array( $allowedBuckets, $params['bucketreqested'] ) ) {
-			$bucket = $params['bucketreqested'];
+		if ( !empty( $params['bucketrequested'] )
+			&& is_numeric( $params['bucketrequested'] )
+			&& in_array( $params['bucketrequested'],  $allowedBuckets ) ) {
+			$bucket = $params['bucketrequested'];
+// error_log('Using requested bucket');
 		} else {
 			// Randomize for now; use the designated algorithm later
 			$bucket = $allowedBuckets[rand( 0, count( $allowedBuckets ) - 1 )];
+// error_log('Using random bucket');
+// error_log(var_export($params, true));
 		}
 		return $bucket;
 	}
@@ -220,7 +223,7 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 		return array(
 			'userrating' => 0,
 			'anontoken'  => null,
-			'bucketreqested' => null,
+			'bucketrequested' => null,
 			'subaction'  => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
@@ -247,10 +250,10 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getParamDescription() {
 		return array(
-			'pageid'         => 'Page ID to get feedback ratings for',
-			'revid'          => 'Rev ID to get feedback ratings for',
-			'anontoken'      => 'Token for anonymous users',
-			'bucketreqested' => 'The bucket number requested in the url',
+			'pageid'          => 'Page ID to get feedback ratings for',
+			'revid'           => 'Rev ID to get feedback ratings for',
+			'anontoken'       => 'Token for anonymous users',
+			'bucketrequested' => 'The bucket number requested in the url',
 		);
 	}
 
