@@ -38,7 +38,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-survey-message-error',
 				'articlefeedbackv5-survey-disclaimer',
 				'articlefeedbackv5-survey-disclaimerlink',
-				'articlefeedbackv5-privacyurl'
+				'articlefeedbackv5-privacyurl',
 			),
 			'dependencies' => array(
 				'jquery.ui.dialog',
@@ -60,31 +60,40 @@ class ArticleFeedbackv5Hooks {
 			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.js',
 			'styles' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.css',
 			'messages' => array(
+				'articlefeedbackv5-bucket1-title',
+				'articlefeedbackv5-bucket1-question-toggle',
+				'articlefeedbackv5-bucket1-toggle-found-yes',
+				'articlefeedbackv5-bucket1-toggle-found-no',
+				'articlefeedbackv5-bucket1-question-comment',
+				'articlefeedbackv5-bucket1-form-pending',
+				'articlefeedbackv5-bucket1-form-success',
+				'articlefeedbackv5-bucket1-form-submit',
+				'articlefeedbackv5-bucket5-form-switch-label',
+				'articlefeedbackv5-bucket5-form-panel-title',
+				'articlefeedbackv5-bucket5-form-panel-explanation',
+				'articlefeedbackv5-bucket5-form-panel-explanation-link',
+				'articlefeedbackv5-bucket5-form-panel-clear',
+				'articlefeedbackv5-bucket5-form-panel-expertise',
+				'articlefeedbackv5-bucket5-form-panel-expertise-studies',
+				'articlefeedbackv5-bucket5-form-panel-expertise-profession',
+				'articlefeedbackv5-bucket5-form-panel-expertise-hobby',
+				'articlefeedbackv5-bucket5-form-panel-expertise-other',
+				'articlefeedbackv5-bucket5-form-panel-helpimprove',
+				'articlefeedbackv5-bucket5-form-panel-helpimprove-note',
+				'articlefeedbackv5-bucket5-form-panel-helpimprove-email-placeholder',
+				'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy',
+				'articlefeedbackv5-bucket5-form-panel-submit',
+				'articlefeedbackv5-bucket5-form-panel-pending',
+				'articlefeedbackv5-bucket5-form-panel-success',
+				'articlefeedbackv5-bucket5-form-panel-expiry-title',
+				'articlefeedbackv5-bucket5-form-panel-expiry-message',
+				'articlefeedbackv5-bucket5-report-switch-label',
+				'articlefeedbackv5-bucket5-report-panel-title',
+				'articlefeedbackv5-bucket5-report-panel-description',
+				'articlefeedbackv5-bucket5-report-empty',
+				'articlefeedbackv5-bucket5-report-ratings',
 				'articlefeedbackv5-error',
-				'articlefeedbackv5-form-switch-label',
-				'articlefeedbackv5-form-panel-title',
-				'articlefeedbackv5-form-panel-explanation',
 				'articlefeedbackv5-form-panel-explanation-link',
-				'articlefeedbackv5-form-panel-clear',
-				'articlefeedbackv5-form-panel-expertise',
-				'articlefeedbackv5-form-panel-expertise-studies',
-				'articlefeedbackv5-form-panel-expertise-profession',
-				'articlefeedbackv5-form-panel-expertise-hobby',
-				'articlefeedbackv5-form-panel-expertise-other',
-				'articlefeedbackv5-form-panel-helpimprove',
-				'articlefeedbackv5-form-panel-helpimprove-note',
-				'articlefeedbackv5-form-panel-helpimprove-email-placeholder',
-				'articlefeedbackv5-form-panel-helpimprove-privacy',
-				'articlefeedbackv5-form-panel-submit',
-				'articlefeedbackv5-form-panel-success',
-				'articlefeedbackv5-form-panel-pending',
-				'articlefeedbackv5-form-panel-expiry-title',
-				'articlefeedbackv5-form-panel-expiry-message',
-				'articlefeedbackv5-report-switch-label',
-				'articlefeedbackv5-report-panel-title',
-				'articlefeedbackv5-report-panel-description',
-				'articlefeedbackv5-report-empty',
-				'articlefeedbackv5-report-ratings',
 				'articlefeedbackv5-privacyurl',
 			),
 			'dependencies' => array(
@@ -163,8 +172,9 @@ class ArticleFeedbackv5Hooks {
 
 		foreach ( self::$modules as $name => $resources ) {
 			if ( $name == 'jquery.articleFeedbackv5' ) {
+				// Bucket 5: labels and tooltips
 				$fields = ApiArticleFeedbackv5Utils::getFields();
-				$prefix = 'articlefeedbackv5-field-';
+				$prefix = 'articlefeedbackv5-bucket5-';
 				foreach( $fields as $field ) {
 					$resources['messages'][] = $prefix . $field->aaf_name . '-label';
 					$resources['messages'][] = $prefix . $field->aaf_name . '-tip';

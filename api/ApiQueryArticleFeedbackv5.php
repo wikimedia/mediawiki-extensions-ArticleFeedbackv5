@@ -64,10 +64,20 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 	 * @TODO Base this on last 2 digits of IP address per requirements; when we
 	 * have markup, we can add other buckets
 	 *
-	 * @return int the bucket id
+	 * @param  array $params [optional] the params passed in
+	 * @return int   the bucket id
 	 */
-	protected function getBucket() {
-		return 5;
+	protected function getBucket( $params = array() ) {
+		$allowedBuckets = array( 1, 5, 6 );
+		if ( !empty( $params['bucketreqested'] )
+			&& is_numeric( $params['bucketreqested'] )
+			&& in_array( $allowedBuckets, $params['bucketreqested'] ) ) {
+			$bucket = $params['bucketreqested'];
+		} else {
+			// Randomize for now; use the designated algorithm later
+			$bucket = $allowedBuckets[rand( 0, count( $allowedBuckets ) - 1 )];
+		}
+		return $bucket;
 	}
 
 	/**
@@ -210,6 +220,7 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 		return array(
 			'userrating' => 0,
 			'anontoken'  => null,
+			'bucketreqested' => null,
 			'subaction'  => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
@@ -224,7 +235,7 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer',
-			)
+			),
 		);
 	}
 
@@ -236,9 +247,10 @@ class ApiQueryArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getParamDescription() {
 		return array(
-			'pageid'    => 'Page ID to get feedback ratings for',
-			'revid'     => 'Rev ID to get feedback ratings for',
-			'anontoken' => 'Token for anonymous users',
+			'pageid'         => 'Page ID to get feedback ratings for',
+			'revid'          => 'Rev ID to get feedback ratings for',
+			'anontoken'      => 'Token for anonymous users',
+			'bucketreqested' => 'The bucket number requested in the url',
 		);
 	}
 

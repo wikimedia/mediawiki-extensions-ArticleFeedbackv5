@@ -111,6 +111,202 @@
 	 */
 	$.articleFeedbackv5.buckets = {
 
+		// {{{ Bucket 1
+
+		/**
+		 * Bucket 1: Share Your Feedback
+		 */
+		'1': {
+
+			// {{{ buildForm
+
+			/**
+			 * Builds the empty form
+			 *
+			 * @return Element the form
+			 */
+			buildForm: function () {
+
+				// The overall template
+				var block_tpl = '\
+					<form>\
+						<div class="articleFeedbackv5-title"><html:msg key="bucket1-title" /></div>\
+						<div style="clear:both;"></div>\
+						<div class="articleFeedbackv5-bucket1-toggle">\
+							<div class="articleFeedbackv5-question"><html:msg key="bucket1-question-toggle" /></div>\
+							<div style="clear:both;"></div>\
+							<input type="radio" name="toggle" value="yes" id="articleFeedbackv5-bucket1-toggle-yes" />\
+							<label class="articleFeedbackv5-bucket1-toggle-found" for="articleFeedbackv5-bucket1-toggle-yes"><html:msg key="bucket1-toggle-found-yes" /></label>\
+							<input type="radio" name="toggle" value="no" id="articleFeedbackv5-bucket1-toggle-no" />\
+							<label class="articleFeedbackv5-bucket1-toggle-found" for="articleFeedbackv5-bucket1-toggle-no"><html:msg key="bucket1-toggle-found-no" /></label>\
+						</div>\
+						<div style="clear:both;"></div>\
+						<div class="articleFeedbackv5-comment">\
+							<textarea name="comment"></textarea>\
+						</div>\
+						<div style="clear:both;"></div>\
+						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket1-form-submit" /></button>\
+						<div class="articleFeedbackv5-success"><span><html:msg key="bucket1-form-success" /></span></div>\
+						<div class="articleFeedbackv5-pending"><span><html:msg key="bucket1-form-pending" /></span></div>\
+						<div style="clear:both;"></div>\
+						<div class="articleFeedbackv5-notices">\
+							<div class="articleFeedbackv5-expiry">\
+								<div class="articleFeedbackv5-expiry-title"><html:msg key="form-panel-expiry-title" /></div>\
+								<div class="articleFeedbackv5-expiry-message"><html:msg key="form-panel-expiry-message" /></div>\
+							</div>\
+						</div>\
+					</form>\
+					';
+				// Start up the block to return
+				var $block = $( block_tpl );
+
+				// Set the default comment text
+				$block.find( '.articleFeedbackv5-comment textarea' )
+					.val( mw.msg( 'articlefeedbackv5-bucket1-question-comment' ) );
+
+				// Localize the block
+				$block.localize( { 'prefix': 'articlefeedbackv5-' } );
+
+				// Turn the submit into a slick button
+				$block.find( '.articleFeedbackv5-submit' )
+					.button()
+					.addClass( 'ui-button-blue' )
+
+				return $block;
+			},
+
+			// }}}
+			// {{{ bindEvents
+
+			/**
+			 * Binds any events
+			 *
+			 * @param $block element the form block
+			 */
+			bindEvents: function ( $block ) {
+				// Clear out the question on focus
+				$block.find( '.articleFeedbackv5-comment textarea' )
+					.focus( function () {
+						var def_msg = mw.msg( 'bucket1-question-comment' );
+						if ( $( this ).val() == def_msg ) {
+							$( this ).val( '' );
+						}
+					} );
+
+				// Enable submission on toggle selection
+				$block.find( '.articleFeedbackv5-bucket1-toggle input' )
+					.change( function () {
+						var $h = $.articleFeedbackv5.$holder;
+						if ( $h.find( '.articleFeedbackv5-bucket1-toggle input:checked' ).length > 0 ) {
+							$.articleFeedbackv5.currentBucket().enableSubmission( true );
+						} else {
+							$.articleFeedbackv5.currentBucket().enableSubmission( false );
+						}
+					} );
+
+				// Attach the submit
+				$block.find( '.articleFeedbackv5-submit' )
+					.click( function ( e ) {
+						e.preventDefault();
+						$.articleFeedbackv5.submitForm();
+					} );
+			},
+
+			// }}}
+			// {{{ enableSubmission
+
+			/**
+			 * Enables or disables submission of the form
+			 *
+			 * @param state bool true to enable; false to disable
+			 */
+			enableSubmission: function ( state ) {
+				var $h = $.articleFeedbackv5.$holder;
+				if ( state ) {
+					if ($.articleFeedbackv5.successTimeout) {
+						clearTimeout( $.articleFeedbackv5.successTimeout );
+					}
+					$h.find( '.articleFeedbackv5-submit' ).button( { 'disabled': false } );
+					$h.find( '.articleFeedbackv5-success span' ).hide();
+					$h.find( '.articleFeedbackv5-pending span' ).fadeIn( 'fast' );
+				} else {
+					$h.find( '.articleFeedbackv5-submit' ).button( { 'disabled': true } );
+					$h.find( '.articleFeedbackv5-pending span' ).hide();
+				}
+			},
+
+			// }}}
+			// {{{ getFormData
+
+			/**
+			 * Pulls down form data
+			 *
+			 * @return object the form data
+			 */
+			getFormData: function () {
+				var data = {};
+				data.toggle = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input:checked' ).val() == 'yes' ?  true : false;
+				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
+				return data;
+			},
+
+			// }}}
+			// {{{ localValidation
+
+			/**
+			 * Performs any local validation
+			 *
+			 * @param  object formdata the form data
+			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
+			 */
+			localValidation: function ( formdata ) {
+				var error = {};
+				var ok = true;
+				if ( $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input:checked' ).length < 1 ) {
+					error.toggle = 'Please select an option';
+					ok = false;
+				}
+				return ok ? false : error;
+			},
+
+			// }}}
+			// {{{ markFormError
+
+			/**
+			 * Marks any errors on the form
+			 *
+			 * @param object error errors, indexed by field name
+			 */
+			markFormError: function ( error ) {
+				if ( '_api' in error ) {
+					$.articleFeedbackv5.markShowstopperError( error._api.info );
+				} else {
+					alert( 'Validation error' );
+					mw.log( 'Validation error' );
+				}
+				console.log( error );
+			},
+
+			// }}}
+			// {{{ setSuccessState
+
+			/**
+			 * Sets the success state
+			 */
+			setSuccessState: function () {
+				var $h = $.articleFeedbackv5.$holder;
+				$h.find( '.articleFeedbackv5-success span' ).fadeIn( 'fast' );
+				$.articleFeedbackv5.successTimeout = setTimeout( function () {
+					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-success span' )
+						.fadeOut( 'slow' );
+				}, 5000 );
+			},
+
+			// }}}
+
+		},
+
+		// }}}
 		// {{{ Bucket 5
 
 		/**
@@ -131,6 +327,15 @@
 			 */
 			showOptions: 'show' === mw.user.bucket( 'ext.articleFeedback-options', mw.config.get( 'wgArticleFeedbackv5Options' ) ),
 
+			/**
+			 * Whether we need to load the aggregate ratings the next time the
+			 * button is clicked.  This is initially set to true, turned to
+			 * false after the first time, then turned back to true on form
+			 * submission, in case the user wants to go back and see the ratings with
+			 * theirs included.
+			 */
+			loadAggregate: true,
+
 			// }}}
 			// {{{ buildForm
 
@@ -143,50 +348,45 @@
 
 				// The overall template
 				var block_tpl = '\
-					<div class="articleFeedbackv5-panel">\
-						<div class="articleFeedbackv5-buffer articleFeedbackv5-ui">\
-							<div class="articleFeedbackv5-switch articleFeedbackv5-switch-report articleFeedbackv5-visibleWith-form" rel="report"><html:msg key="report-switch-label" /></div>\
-							<div class="articleFeedbackv5-switch articleFeedbackv5-switch-form articleFeedbackv5-visibleWith-report" rel="form"><html:msg key="form-switch-label" /></div>\
-							<div class="articleFeedbackv5-title articleFeedbackv5-visibleWith-form"><html:msg key="form-panel-title" /></div>\
-							<div class="articleFeedbackv5-title articleFeedbackv5-visibleWith-report"><html:msg key="report-panel-title" /></div>\
-							<div class="articleFeedbackv5-explanation articleFeedbackv5-visibleWith-form"><a class="articleFeedbackv5-explanation-link"><html:msg key="form-panel-explanation" /></a></div>\
-							<div class="articleFeedbackv5-description articleFeedbackv5-visibleWith-report"><html:msg key="report-panel-description" /></div>\
-							<div style="clear:both;"></div>\
-							<div class="articleFeedbackv5-ratings"></div>\
-							<div style="clear:both;"></div>\
-							<div class="articleFeedbackv5-options">\
-								<div class="articleFeedbackv5-expertise articleFeedbackv5-visibleWith-form" >\
-									<input type="checkbox" value="general" disabled="disabled" /><label class="articleFeedbackv5-expertise-disabled"><html:msg key="form-panel-expertise" /></label>\
-									<div class="articleFeedbackv5-expertise-options">\
-										<div><input type="checkbox" value="studies" /><label><html:msg key="form-panel-expertise-studies" /></label></div>\
-										<div><input type="checkbox" value="profession" /><label><html:msg key="form-panel-expertise-profession" /></label></div>\
-										<div><input type="checkbox" value="hobby" /><label><html:msg key="form-panel-expertise-hobby" /></label></div>\
-										<div><input type="checkbox" value="other" /><label><html:msg key="form-panel-expertise-other" /></label></div>\
-										<div class="articleFeedbackv5-helpimprove">\
-											<input type="checkbox" value="helpimprove-email" />\
-											<label><html:msg key="form-panel-helpimprove" /></label>\
-											<input type="text" placeholder="" class="articleFeedbackv5-helpimprove-email" />\
-											<div class="articleFeedbackv5-helpimprove-note"></div>\
-										</div>\
+					<form>\
+						<div class="articleFeedbackv5-switch articleFeedbackv5-switch-report articleFeedbackv5-visibleWith-form" rel="report"><html:msg key="bucket5-report-switch-label" /></div>\
+						<div class="articleFeedbackv5-switch articleFeedbackv5-switch-form articleFeedbackv5-visibleWith-report" rel="form"><html:msg key="bucket5-form-switch-label" /></div>\
+						<div class="articleFeedbackv5-title articleFeedbackv5-visibleWith-form"><html:msg key="bucket5-form-panel-title" /></div>\
+						<div class="articleFeedbackv5-title articleFeedbackv5-visibleWith-report"><html:msg key="bucket5-report-panel-title" /></div>\
+						<div class="articleFeedbackv5-explanation articleFeedbackv5-visibleWith-form"><a class="articleFeedbackv5-explanation-link"><html:msg key="bucket5-form-panel-explanation" /></a></div>\
+						<div class="articleFeedbackv5-description articleFeedbackv5-visibleWith-report"><html:msg key="bucket5-report-panel-description" /></div>\
+						<div style="clear:both;"></div>\
+						<div class="articleFeedbackv5-ratings"></div>\
+						<div style="clear:both;"></div>\
+						<div class="articleFeedbackv5-options">\
+							<div class="articleFeedbackv5-expertise articleFeedbackv5-visibleWith-form" >\
+								<input type="checkbox" value="general" disabled="disabled" /><label class="articleFeedbackv5-expertise-disabled"><html:msg key="bucket5-form-panel-expertise" /></label>\
+								<div class="articleFeedbackv5-expertise-options">\
+									<div><input type="checkbox" value="studies" /><label><html:msg key="bucket5-form-panel-expertise-studies" /></label></div>\
+									<div><input type="checkbox" value="profession" /><label><html:msg key="bucket5-form-panel-expertise-profession" /></label></div>\
+									<div><input type="checkbox" value="hobby" /><label><html:msg key="bucket5-form-panel-expertise-hobby" /></label></div>\
+									<div><input type="checkbox" value="other" /><label><html:msg key="bucket5-form-panel-expertise-other" /></label></div>\
+									<div class="articleFeedbackv5-helpimprove">\
+										<input type="checkbox" value="helpimprove-email" />\
+										<label><html:msg key="bucket5-form-panel-helpimprove" /></label>\
+										<input type="text" placeholder="" class="articleFeedbackv5-helpimprove-email" />\
+										<div class="articleFeedbackv5-helpimprove-note"></div>\
 									</div>\
 								</div>\
-								<div style="clear:both;"></div>\
 							</div>\
-							<button class="articleFeedbackv5-submit articleFeedbackv5-visibleWith-form" type="submit" disabled="disabled"><html:msg key="form-panel-submit" /></button>\
-							<div class="articleFeedbackv5-success articleFeedbackv5-visibleWith-form"><span><html:msg key="form-panel-success" /></span></div>\
-							<div class="articleFeedbackv5-pending articleFeedbackv5-visibleWith-form"><span><html:msg key="form-panel-pending" /></span></div>\
 							<div style="clear:both;"></div>\
-							<div class="articleFeedbackv5-notices articleFeedbackv5-visibleWith-form">\
-								<div class="articleFeedbackv5-expiry">\
-									<div class="articleFeedbackv5-expiry-title"><html:msg key="form-panel-expiry-title" /></div>\
-									<div class="articleFeedbackv5-expiry-message"><html:msg key="form-panel-expiry-message" /></div>\
-								</div>\
+						</div>\
+						<button class="articleFeedbackv5-submit articleFeedbackv5-visibleWith-form" type="submit" disabled="disabled"><html:msg key="bucket5-form-panel-submit" /></button>\
+						<div class="articleFeedbackv5-success articleFeedbackv5-visibleWith-form"><span><html:msg key="bucket5-form-panel-success" /></span></div>\
+						<div class="articleFeedbackv5-pending articleFeedbackv5-visibleWith-form"><span><html:msg key="bucket5-form-panel-pending" /></span></div>\
+						<div style="clear:both;"></div>\
+						<div class="articleFeedbackv5-notices articleFeedbackv5-visibleWith-form">\
+							<div class="articleFeedbackv5-expiry">\
+								<div class="articleFeedbackv5-expiry-title"><html:msg key="bucket5-form-panel-expiry-title" /></div>\
+								<div class="articleFeedbackv5-expiry-message"><html:msg key="bucket5-form-panel-expiry-message" /></div>\
 							</div>\
 						</div>\
-						<div class="articleFeedbackv5-error"><div class="articleFeedbackv5-error-message"><html:msg key="error" /></div></div>\
-						<div class="articleFeedbackv5-pitches"></div>\
-						<div style="clear:both;"></div>\
-					</div>\
+					</form>\
 					';
 
 				// A single rating block
@@ -218,14 +418,14 @@
 				// Add the ratings from the options
 				$block.find( '.articleFeedbackv5-ratings' ).each( function () {
 					for ( var key in $.articleFeedbackv5.currentBucket().ratingInfo ) {
-						var	tip_msg = 'articlefeedbackv5-field-' + key + '-tip';
-						var label_msg = 'articlefeedbackv5-field-' + key + '-label';
+						var	tip_msg = 'articlefeedbackv5-bucket5-' + key + '-tip';
+						var label_msg = 'articlefeedbackv5-bucket5-' + key + '-label';
 						var $rtg = $( rating_tpl ).attr( 'rel', key );
 						$rtg.find( '.articleFeedbackv5-label' )
 							.attr( 'title', mw.msg( tip_msg ) )
 							.text( mw.msg( label_msg ) );
 						$rtg.find( '.articleFeedbackv5-rating-clear' )
-							.attr( 'title', mw.msg( 'articlefeedbackv5-form-panel-clear' ) );
+							.attr( 'title', mw.msg( 'articlefeedbackv5-bucket5-form-panel-clear' ) );
 						$rtg.appendTo( $(this) );
 					}
 				} );
@@ -243,14 +443,14 @@
 					.html( function () {
 						var link = mw.html.element(
 							'a', {
-								href: mw.util.wikiGetlink( mw.msg('articlefeedbackv5-form-panel-helpimprove-privacylink') )
-							}, mw.msg('articlefeedbackv5-form-panel-helpimprove-privacy')
+								href: mw.util.wikiGetlink( mw.msg('articlefeedbackv5-bucket5-form-panel-helpimprove-privacylink') )
+							}, mw.msg('articlefeedbackv5-bucket5-form-panel-helpimprove-privacy')
 						);
-						return mw.html.escape( mw.msg( 'articlefeedbackv5-form-panel-helpimprove-note') )
+						return mw.html.escape( mw.msg( 'articlefeedbackv5-bucket5-form-panel-helpimprove-note') )
 							.replace( /\$1/, mw.message( 'parentheses', link ).toString() );
 					});
 				$block.find( '.articleFeedbackv5-helpimprove-email' )
-					.attr( 'placeholder', mw.msg( 'articlefeedbackv5-form-panel-helpimprove-email-placeholder' ) )
+					.attr( 'placeholder', mw.msg( 'articlefeedbackv5-bucket5-form-panel-helpimprove-email-placeholder' ) )
 					.placeholder(); // back. compat. for older browsers
 
 				// Localize the block
@@ -300,9 +500,6 @@
 				if ( !$.articleFeedbackv5.currentBucket().showOptions ) {
 					$block.find( '.articleFeedbackv5-options' ).hide();
 				}
-
-				// Grab the results in the background
-				$.articleFeedbackv5.currentBucket().loadAggregateRatings();
 
 				return $block;
 			},
@@ -368,6 +565,10 @@
 				// Set up form/report switch behavior
 				$block.find( '.articleFeedbackv5-switch' )
 					.click( function ( e ) {
+						if ( $(this).attr( 'rel' ) == 'report' && $.articleFeedbackv5.currentBucket().loadAggregate ) {
+							$.articleFeedbackv5.currentBucket().loadAggregateRatings();
+							$.articleFeedbackv5.currentBucket().loadAggregate = false;
+						}
 						$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-visibleWith-' + $(this).attr( 'rel' ) )
 							.show();
 						$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-switch' )
@@ -535,56 +736,43 @@
 			 * the label's CSS class
 			 */
 			loadAggregateRatings: function () {
-				var usecache = !( !$.articleFeedbackv5.anonymous || $.articleFeedbackv5.alreadySubmitted );
-
 				$.ajax( {
 					'url': $.articleFeedbackv5.apiUrl,
 					'type': 'GET',
 					'dataType': 'json',
-					'cache': usecache,
 					'data': {
 						'action': 'query',
 						'format': 'json',
-						'list': 'articlefeedbackv5',
-						'afsubaction': 'showratings',
+						'list': 'articlefeedbackv5-view-ratings',
 						'afpageid': $.articleFeedbackv5.pageId,
-						'afanontoken': usecache ? $.articleFeedbackv5.userId : '',
-						'afuserrating': Number( !usecache ),
+						'afanontoken': $.articleFeedbackv5.userId,
 						'maxage': 0,
-						'smaxage': usecache ? 0 : mw.config.get( 'wgArticleFeedbackSMaxage' )
+						'smaxage': mw.config.get( 'wgArticleFeedbackSMaxage' )
 					},
 					'success': function ( data ) {
 						// Get data
 						if (
 							!( 'query' in data )
-							|| !( 'articlefeedbackv5' in data.query )
-							|| !$.isArray( data.query.articlefeedbackv5 )
-							|| !data.query.articlefeedbackv5.length
+							|| !( 'articlefeedbackv5-view-ratings' in data.query )
+							|| !( 'rollup' in data.query['articlefeedbackv5-view-ratings'] )
 						) {
 							mw.log( 'ArticleFeedback invalid response error.' );
-							if ($.articleFeedbackv5.debug && 'error' in data && 'info' in data.error) {
-								console.log( data.error.info );
-								$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error-message' ).html( data.error.info.replace( "\n", '<br />' ) );
+							var msg = 'ArticleFeedback invalid response error.';
+							if ( 'error' in data && 'info' in data.error ) {
+								msg = data.error.info;
+							} else {
+								console.log(data);
 							}
-							$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' ).show();
+							$.articleFeedbackv5.markShowstopperError( msg );
 							return;
 						}
-						$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' ).show();
-						var feedback = data.query.articlefeedbackv5[0];
-
-						// Index rating data by rating ID
-						var ratings = {};
-						if ( typeof feedback.ratings === 'object' && feedback.ratings !== null ) {
-							for ( var i = 0; i < feedback.ratings.length; i++ ) {
-								ratings[feedback.ratings[i].ratingid] = feedback.ratings[i];
-							}
-						}
+						var rollup = data.query['articlefeedbackv5-view-ratings'].rollup;
 
 						// Ratings
 						$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-rating' ).each( function () {
 							var name = $(this).attr( 'rel' );
 							var info = $.articleFeedbackv5.currentBucket().ratingInfo;
-							var rating = name in info && info[name] in ratings ?  ratings[info[name]] : null;
+							var rating = name in info && info[name] in rollup ? rollup[info[name]] : null;
 							if (
 								rating !== null
 								&& 'total' in rating
@@ -597,7 +785,7 @@
 								$(this).find( '.articleFeedbackv5-rating-meter div' )
 									.css( 'width', Math.round( average * 21 ) + 'px' );
 								$(this).find( '.articleFeedbackv5-rating-count' )
-									.text( mw.msg( 'articlefeedbackv5-report-ratings', rating.countall ) );
+									.text( mw.msg( 'articlefeedbackv5-bucket5-report-ratings', rating.count ) );
 							} else {
 								// Special case for no ratings
 								$(this).find( '.articleFeedbackv5-rating-average' )
@@ -626,6 +814,7 @@
 					},
 					'error': function () {
 						mw.log( 'Report loading error' );
+						$.articleFeedbackv5.currentBucket().markShowstopperError( 'Report loading error' );
 						$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' ).show();
 					}
 				} );
@@ -675,28 +864,6 @@
 					}
 				}
 				return ok ? false : error;
-			},
-
-			// }}}
-			// {{{ lockForm
-
-			/**
-			 * Locks the form
-			 */
-			lockForm: function () {
-				$.articleFeedbackv5.currentBucket().enableSubmission( false );
-				$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-lock' ).show();
-			},
-
-			// }}}
-			// {{{ unlockForm
-
-			/**
-			 * Unlocks the form
-			 */
-			unlockForm: function () {
-				$.articleFeedbackv5.currentBucket().enableSubmission( true );
-				$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-lock' ).hide();
 			},
 
 			// }}}
@@ -750,9 +917,10 @@
 			 */
 			onSubmit: function () {
 
+				$.articleFeedbackv5.currentBucket().loadAggregate = true;
 
 /////////////////////////////////////////////////////////////////////////////////
-// BOOKMARK
+// TODO: Email capture
 /////////////////////////////////////////////////////////////////////////////////
 
 //		'submit': function () {
@@ -959,6 +1127,7 @@
 	 * feedback ID, and using those, build the form.
 	 */
 	$.articleFeedbackv5.loadForm = function () {
+		var requested = mw.util.getParamValue( 'bucket' );
 		$.ajax( {
 			'url': $.articleFeedbackv5.apiUrl,
 			'type': 'GET',
@@ -970,7 +1139,8 @@
 				'afsubaction': 'newform',
 				'afanontoken': $.articleFeedbackv5.userId,
 				'afpageid': $.articleFeedbackv5.pageId,
-				'afrevid': $.articleFeedbackv5.revisionId
+				'afrevid': $.articleFeedbackv5.revisionId,
+				'afbucketreqested': requested
 			},
 			'success': function ( data ) {
 				if ( !( 'form' in data ) || !( 'bucketId' in data.form ) ) {
@@ -999,7 +1169,7 @@
 	 * @param response object any existing answers
 	 */
 	$.articleFeedbackv5.buildForm = function ( response ) {
-		$.articleFeedbackv5.bucketId = 5; // For now, only use Option 5
+		console.log( 'Using bucket #' + $.articleFeedbackv5.bucketId );
 		var bucket = $.articleFeedbackv5.currentBucket();
 		if ( !( 'buildForm' in bucket ) ) {
 			return;
@@ -1011,8 +1181,18 @@
 		if ( 'fillForm' in bucket ) {
 			bucket.fillForm( $block, response );
 		}
+		var $wrapper = $('\
+			<div class="articleFeedbackv5-panel">\
+				<div class="articleFeedbackv5-buffer articleFeedbackv5-ui">\
+				</div>\
+				<div class="articleFeedbackv5-error"><div class="articleFeedbackv5-error-message"><html:msg key="error" /></div></div>\
+				<div style="clear:both;"></div>\
+			</div>\
+		');
+		$wrapper.find( '.articleFeedbackv5-ui' ).append( $block );
+
 		$.articleFeedbackv5.$holder
-			.html( $block )
+			.html( $wrapper )
 			.append( '<div class="articleFeedbackv5-lock"></div>' );
 	};
 
@@ -1054,10 +1234,8 @@
 			}
 		}
 
-		// If the form locks, lock it
-		if ( 'lockForm' in bucket ) {
-			bucket.lockForm( false );
-		}
+		// Lock the form
+		$.articleFeedbackv5.lockForm();
 
 		// Send off the ajax request
 		$.ajax( {
@@ -1079,10 +1257,9 @@
 					} else {
 						alert( 'ArticleFeedback: Form submission error : ' + data.error );
 					}
+					$.articleFeedbackv5.unlockForm();
 				} else {
-					if ( 'lockForm' in bucket ) {
-						bucket.lockForm( false );
-					}
+					$.articleFeedbackv5.unlockForm();
 					if ( 'onSuccess' in bucket ) {
 						bucket.onSuccess( formdata );
 					}
@@ -1092,6 +1269,7 @@
 			'error': function () {
 				mw.log( 'Form submission error' );
 				alert( 'ArticleFeedback: Form submission error' );
+				$.articleFeedbackv5.unlockForm();
 			}
 		} );
 
@@ -1100,6 +1278,53 @@
 		if ( 'onSubmit' in bucket ) {
 			bucket.onSubmit( formdata );
 		}
+	};
+
+	// }}}
+	// {{{ UI methods
+
+	/**
+	 * Marks a showstopper error
+	 *
+	 * @param string message the message to display, if in dev
+	 */
+	$.articleFeedbackv5.markShowstopperError = function ( message ) {
+		console.log( message );
+		if ($.articleFeedbackv5.debug && message) {
+			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error-message' ).html( message.replace( "\n", '<br />' ) );
+		}
+		var veil = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' );
+		var box  = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' );
+		// TODO: Make this smarter -- on ubuntu/ff at least, using the
+		// offset puts it about 100px down from where it should be;
+		// this math corrects for it, but will most likely be wrong on
+		// other browsers
+		veil.css('top', box.find('.articleFeedbackv5-ui').offset().top / 2 + 10);
+		veil.css('width', box.width());
+		veil.css('height', box.height());
+		veil.show();
+	};
+
+	/**
+	 * Locks the form
+	 */
+	$.articleFeedbackv5.lockForm = function () {
+		var bucket = $.articleFeedbackv5.currentBucket();
+		if ( 'enableSubmission' in bucket ) {
+			$.articleFeedbackv5.currentBucket().enableSubmission( false );
+		}
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-lock' ).show();
+	};
+
+	/**
+	 * Unlocks the form
+	 */
+	$.articleFeedbackv5.unlockForm = function () {
+		var bucket = $.articleFeedbackv5.currentBucket();
+		if ( 'enableSubmission' in bucket ) {
+			$.articleFeedbackv5.currentBucket().enableSubmission( true );
+		}
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-lock' ).hide();
 	};
 
 	// }}}
