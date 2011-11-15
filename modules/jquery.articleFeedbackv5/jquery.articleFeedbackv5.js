@@ -130,35 +130,45 @@
 				// The overall template
 				var block_tpl = '\
 					<form>\
-						<div class="articleFeedbackv5-title"><html:msg key="bucket1-title" /></div>\
-						<div style="clear:both;"></div>\
-						<div class="articleFeedbackv5-bucket1-toggle">\
-							<div class="articleFeedbackv5-question"><html:msg key="bucket1-question-toggle" /></div>\
-							<div style="clear:both;"></div>\
-							<input type="radio" name="toggle" value="yes" id="articleFeedbackv5-bucket1-toggle-yes" />\
-							<label class="articleFeedbackv5-bucket1-toggle-found" for="articleFeedbackv5-bucket1-toggle-yes"><html:msg key="bucket1-toggle-found-yes" /></label>\
-							<input type="radio" name="toggle" value="no" id="articleFeedbackv5-bucket1-toggle-no" />\
-							<label class="articleFeedbackv5-bucket1-toggle-found" for="articleFeedbackv5-bucket1-toggle-no"><html:msg key="bucket1-toggle-found-no" /></label>\
-						</div>\
-						<div style="clear:both;"></div>\
-						<div class="articleFeedbackv5-comment">\
-							<textarea name="comment"></textarea>\
-						</div>\
-						<div style="clear:both;"></div>\
-						<div class="articleFeedbackv5-feedback-terms-info">\
-							<div class="articleFeedbackv5-feedback"></div>\
-							<div class="articleFeedbackv5-terms"></div>\
-						</div>\
-						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket1-form-submit" /></button>\
-						<div class="articleFeedbackv5-success"><span><html:msg key="bucket1-form-success" /></span></div>\
-						<div class="articleFeedbackv5-pending"><span><html:msg key="bucket1-form-pending" /></span></div>\
-						<div style="clear:both;"></div>\
-						<div class="articleFeedbackv5-notices">\
-							<div class="articleFeedbackv5-expiry">\
-								<div class="articleFeedbackv5-expiry-title"><html:msg key="form-panel-expiry-title" /></div>\
-								<div class="articleFeedbackv5-expiry-message"><html:msg key="form-panel-expiry-message" /></div>\
+						<div class="title-wrap">\
+						<h2>What do <em>you</em> think?</h2>\
+						<a class="trigger">&nbsp;</a>\
+						<script type="text/javascript" language="javascript">\
+							$(".articleFeedback a.trigger").tooltip();\
+						</script>\
+						<div class="tooltip">\
+							<div class="tooltip-top"></div>\
+							<div class="tooltip-repeat">\
+								<h3>What is This?</h3>\
+								<p>Wikipedia’s new Article Feedback system is designed to help you help us. We need your input to make Wikipedia the best encyclopedia in the world.</p>\
+								<p><a target="_blank" href="#">Learn more about Article Feedback</a></p>\
 							</div>\
+							<div class="tooltip-bottom"></div>\
 						</div>\
+						<div class="clear"></div>\
+					</div>\
+					<div class="form-row">\
+						<p class="instructions-left">Did you find what you were looking for?</p>\
+						<div class="buttons">\
+							<div class="form-item">\
+								<label for="find-yes">Yes, I found what I was looking for.</label>\
+								<span class="button-placeholder">Yes</span>\
+								<input type="radio" name="find" id="find-yes" class="query-button" />\
+							</div>\
+							<div class="form-item">\
+								<label for="find-no">No, I did not find what I was looking for.</label>\
+								<span class="button-placeholder">No.</span>\
+								<input type="radio" id="find-now" class="query-button last" />\
+							</div>\
+							<div class="clear"></div>\
+						</div>\
+					</div>\
+					<textarea id="find-feedback" class="feedback-text">How can we improve this Article?</textarea>\
+					<div class="articleFeedback-disclosure">\
+						<p>Your Feedback will be shared <a href="#" target="_blank">here</a>. Seee our <a target="_blank" href="#">privacy policy</a> for more details.</p>\
+					</div>\
+					<button class="articleFeedback-submit articleFeedback-visibleWith-form ui-button ui-widget ui-state-default ui-corner-all ui-button-disabled ui-state-disabled ui-button-text-only ui-button-blue" type="submit" disabled="disabled" role="button" aria-disabled="true"><span class="ui-button-text">Submit Your Feedback</span></button>\
+					<div class="clear"></div>\
 					</form>\
 					';
 				// Start up the block to return
