@@ -1421,3 +1421,9 @@ $.fn.articleFeedbackv5 = function ( opts ) {
 
 } )( jQuery );
 
+
+
+
+
+
+
