@@ -31,19 +31,28 @@ error_log("feedback id is $feedbackId");
 		$revisionId   = $params['revid'];
 		$answers      = $dbr->select(
 			'aft_article_field',
-			array('aaf_id', 'aaf_name', 'aaf_data_type'),
-			array('aaf_name' => $keys),
+			array('afi_id', 'afi_name', 'afi_data_type'),
+			array('afi_name' => $keys),
 			__METHOD__
 		);
 
 		foreach($answers as $answer) {
-			$type = $answer->aaf_data_type;
-			$user_answers[] = array(
-				'aaaa_feedback_id'    => $feedbackId,
-				'aaaa_field_id'       => $answer->aaf_id,
-				"aaaa_response_$type" => $params[$answer->aaf_name]
-			);
+			$type = $answer->afi_data_type;
+			# TODO: validation
+			# rating: int between 1 and 5 (inclusive)
+			# boolean: 1 or 0
+			# option:  option exists
+			# text:    none (maybe xss encode)
+			if($params[$answer->afi_name]) {
+				$user_answers[] = array(
+					'aa_feedback_id'    => $feedbackId,
+					'aa_field_id'       => $answer->afi_id,
+					"aa_response_$type" => $params[$answer->afi_name]
+				);
+			}
 		}
+error_log('user answers are');
+error_log(print_r($user_answers,1));
 
 		$ctaId = $this->saveUserRatings($user_answers, $feedbackId, $bucket);
 		$this->updateRollupTables($pageId, $revisionId);
@@ -93,7 +102,7 @@ error_log("feedback id is $feedbackId");
 		if($scope != 'page' && $scope != 'revision') { return 0; }
 
 		# TODO
-		$table = 'article_'.$rev.'_feedback_'.$type.'_rollup';
+		$table = 'aft_article_'.$rev.'_feedback_'.$type.'_rollup';
 	}
 
 	public function getFeedbackId($params) {
@@ -114,18 +123,17 @@ error_log('rev id?');
 		}
 
 		$dbw->insert('aft_article_feedback', array(
-			'aa_page_id'         => $params['pageid'],
-			'aa_revision_id'     => $revId,
-			'aa_created'         => $timestamp,
-			'aa_user_id'         => $wgUser->getId(),
-			'aa_user_text'       => $wgUser->getName(),
-			'aa_user_anon_token' => $token,
-			'aa_bucket_id'       => $bucket,
+			'af_page_id'         => $params['pageid'],
+			'af_revision_id'     => $revId,
+			'af_created'         => $timestamp,
+			'af_user_id'         => $wgUser->getId(),
+			'af_user_text'       => $wgUser->getName(),
+			'af_user_anon_token' => $token,
+			'af_bucket_id'       => $bucket,
 		));
 
 		return $dbw->insertID();
 	}
-
 
 	/**
 	 * Inserts the user's rating for a specific revision
@@ -134,14 +142,12 @@ error_log('rev id?');
 		$dbw   = wfGetDB(DB_MASTER);
 		$ctaId = $this->getCTAId($data, $bucket);
 
-		# TODO: Move these deleted rows to an archive table or flag
-		# them as archived or something.
 		$dbw->begin();
-		$dbw->insert('aft_article_answer', $data, __METHOD__);
+		$dbw->insert( 'aft_article_answer', $data, __METHOD__ );
 		$dbw->update(
 			'aft_article_feedback',
-			array( 'aa_cta_id'    => $ctaId ),
-			array( 'aa_id' => $feedbackId ),
+			array( 'af_cta_id' => $ctaId ),
+			array( 'af_id'     => $feedbackId ),
 			__METHOD__
 		);
 		$dbw->commit();
@@ -156,31 +162,28 @@ error_log('rev id?');
 	public function getAllowedParams() {
 		$ret = array(
 			'pageid' => array(
-				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI => false,
+				ApiBase::PARAM_ISMULTI  => false,
 			),
 			'revid' => array(
-				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI => false,
+				ApiBase::PARAM_ISMULTI  => false,
 			),
 			'anontoken' => null,
 			'bucket' => array(
-				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_MIN => 0
-			),
-			'expertise' => array(
-				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_MIN      => 1
 			),
 		);
 
 		$fields = ApiArticleFeedbackv5Utils::getFields();
 		foreach( $fields as $field ) {
-			$ret[$field->aaf_name] = array(
-				ApiBase::PARAM_TYPE     => 'text',
+			$ret[$field->afi_name] = array(
+				ApiBase::PARAM_TYPE     => 'string',
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 			);
@@ -200,7 +203,7 @@ error_log('rev id?');
 		);
 
 		foreach( $fields as $f ) {
-		    $ret[$f->aaf_name] = 'Optional feedbackl field, only appears in certain "buckets".';
+		    $ret[$f->afi_name] = 'Optional feedback field, only appears on certain "buckets".';
 		}
 
 		return $ret;
@@ -226,7 +229,7 @@ error_log('rev id?');
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=articlefeedback'
+			'api.php?action=articlefeedbackv5'
 		);
 	}
 

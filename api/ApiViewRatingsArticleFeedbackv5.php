@@ -90,19 +90,19 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 
 		if ( $type == 'page' ) {
 			$table   = 'article_feedback_ratings_rollup';
-			$prefix  = 'aap';
+			$prefix  = 'arr';
 		} else {
 			$table   = 'article_revision_feedback_ratings_rollup';
-			$prefix  = 'afr';
-			$where[] = 'afr_revision_id >= ' . $revisionLimit;
+			$prefix  = 'afrr';
+			$where[] = 'afrr_revision_id >= ' . $revisionLimit;
 		}
 		$where[$prefix . '_page_id']  = $pageId;
-		$where[] = $prefix . '_rating_id = aaf_id';
+		$where[] = $prefix . '_rating_id = afi_id';
 
 		$rows  = $dbr->select(
 			array( 'aft_' . $table, 'aft_article_field' ),
 			array(
-				'aaf_name AS field_name',
+				'afi_name AS field_name',
 				$prefix . '_rating_id AS field_id',
 				'SUM(' . $prefix . '_total) AS points',
 				'SUM(' . $prefix . '_count) AS reviews',
@@ -110,7 +110,7 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 			$where,
 			__METHOD__,
 			array(
-				'GROUP BY' => $prefix . '_rating_id, aaf_name'
+				'GROUP BY' => $prefix . '_rating_id, afi_name'
 			)
 		);
 
