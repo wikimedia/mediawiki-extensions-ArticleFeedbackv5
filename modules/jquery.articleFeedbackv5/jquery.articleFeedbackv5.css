@@ -449,7 +449,7 @@
 	cursor: pointer;
 	text-decoration: none;
 }
-.articleFeedbackv5-panel .button-placeholder {
+.articleFeedbackv5-panel .articleFeedbackv5-button-placeholder {
 	display: inline-block;
 	height: 20px;
 	width: 50px;
@@ -477,11 +477,11 @@
 .articleFeedbackv5-panel .buttons input {
 	display: none;
 }
-.articleFeedbackv5-panel .buttons .button-placeholder:hover {
+.articleFeedbackv5-panel .buttons .articleFeedbackv5-button-placeholder:hover {
 	background: url(images/bg-button.png) repeat-x;
 	cursor: pointer;
 }
-.articleFeedbackv5-panel .buttons .button-placeholder-active {
+.articleFeedbackv5-panel .buttons .articleFeedbackv5-button-placeholder-active {
 	background: url(images/bg-button.png) repeat-x;
 }
 .articleFeedbackv5-panel .feedback-text {

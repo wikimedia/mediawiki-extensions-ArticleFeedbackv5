@@ -145,18 +145,18 @@
 						</div>\
 						<div class="clear"></div>\
 					</div>\
-					<div class="form-row">\
+					<div class="form-row articleFeedbackv5-bucket1-toggle">\
 						<p class="instructions-left"><html:msg key="bucket1-question-toggle" /></p>\
 						<div class="buttons">\
-							<div class="form-item">\
-								<label for="find-yes"><html:msg key="bucket1-toggle-found-yes-full" /></label>\
-								<span class="button-placeholder"><html:msg key="bucket1-toggle-found-yes" /></span>\
-								<input type="radio" name="toggle" id="find-yes" class="query-button" />\
+							<div class="form-item" rel="yes" id="articleFeedbackv5-bucket1-toggle-wrapper-yes">\
+								<label for="articleFeedbackv5-bucket1-toggle-yes"><html:msg key="bucket1-toggle-found-yes-full" /></label>\
+								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-yes" value="yes" /></span>\
+								<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-yes" class="query-button" />\
 							</div>\
-							<div class="form-item">\
-								<label for="find-no"><html:msg key="bucket1-toggle-found-no-full" /></label>\
-								<span class="button-placeholder"><html:msg key="bucket1-toggle-found-no" /></span>\
-								<input type="radio" name="toggle" id="find-no" class="query-button last" />\
+							<div class="form-item" rel="no" id="articleFeedbackv5-bucket1-toggle-wrapper-no">\
+								<label for="articleFeedbackv5-bucket1-toggle-no"><html:msg key="bucket1-toggle-found-no-full" /></label>\
+								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-no" /></span>\
+								<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-no" class="query-button last" value="no" />\
 							</div>\
 							<div class="clear"></div>\
 						</div>\
@@ -176,10 +176,6 @@
 				
 				// Start out the tooltip hidden
 				$block.find( '.articleFeedbackv5-tooltip' ).hide();
-
-				// Set the default comment text
-				$block.find( '.articleFeedbackv5-comment textarea' )
-					.val( mw.msg( 'articlefeedbackv5-bucket1-question-comment' ) );
 
 				// Fill in the disclosure text
 				$block.find( '.articleFeedbackv5-disclosure p' )
@@ -221,6 +217,7 @@
 			 */
 			bindEvents: function ( $block ) {
 
+				// Tooltip
 				$block.find( '.articleFeedbackv5-tooltip-trigger' ).hover( function () {
 					// mouse on
 					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).show();
@@ -232,26 +229,52 @@
 				// Clear out the question on focus
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.focus( function () {
-						var def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-comment' );
+						var def_msg = '';
+						var val = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input:checked' ).val();
+						if ( val == 'yes' ) {
+							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
+						} else if ( val == 'no' ) {
+							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-comment-no' );
+						}
 						if ( $( this ).val() == def_msg ) {
 							$( this ).val( '' );
 						}
 					} )
 					.blur( function () {
+						var def_msg = '';
+						var val = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input:checked' ).val();
+						if ( val == 'yes' ) {
+							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
+						} else if ( val == 'no' ) {
+							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-comment-no' );
+						}
 						if ( $( this ).val() == '' ) {
-							$( this ).val( mw.msg( 'articlefeedbackv5-bucket1-question-comment' ) );
+							$( this ).val( def_msg );
 						}
 					} );
 
-				// Enable submission on toggle selection
-				$block.find( '.articleFeedbackv5-bucket1-toggle input' )
-					.change( function () {
-						var $h = $.articleFeedbackv5.$holder;
-						if ( $h.find( '.articleFeedbackv5-bucket1-toggle input:checked' ).length > 0 ) {
-							$.articleFeedbackv5.currentBucket().enableSubmission( true );
-						} else {
-							$.articleFeedbackv5.currentBucket().enableSubmission( false );
+				// Enable submission and switch out the comment default on toggle selection
+				$block.find( '.articleFeedbackv5-button-placeholder' )
+					.click( function ( e ) {
+						var new_val = $( this ).parent().attr( 'rel' );
+						var old_val = ( new_val == 'yes' ? 'no' : 'yes' );
+						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + new_val );
+						var $other_wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + old_val );
+						// make the button blue
+						$wrap.find( 'span' ).addClass( 'articleFeedbackv5-button-placeholder-active' );
+						$other_wrap.find( 'span' ).removeClass( 'articleFeedbackv5-button-placeholder-active' );
+						// check/uncheck radio buttons
+						$wrap.find( 'input' ).attr( 'checked', 'checked' );
+						$other_wrap.find( 'input' ).attr( 'checked', '' );
+						// set default comment message
+						var $txt = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
+						var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
+						var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-comment-no' );
+						if ( $txt.val() == '' || $txt.val() == def_msg_yes || $txt.val() == def_msg_no ) {
+							$txt.val( new_val == 'yes' ? def_msg_yes : def_msg_no );
 						}
+						// enable submission
+						$.articleFeedbackv5.currentBucket().enableSubmission( true );
 					} );
 
 				// Attach the submit
