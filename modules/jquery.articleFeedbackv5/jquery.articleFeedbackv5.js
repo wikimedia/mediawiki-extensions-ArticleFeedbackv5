@@ -132,7 +132,7 @@
 				var block_tpl = '\
 					<form>\
 					<div class="title-wrap">\
-						<h2 class="articleFeedbackv5-title"></h2>\
+						<h2 class="articleFeedbackv5-title"><html:msg key="bucket1-title" /></h2>\
 						<a class="articleFeedbackv5-tooltip-trigger">?</a>\
 						<div class="articleFeedbackv5-tooltip">\
 							<div class="tooltip-top"></div>\
@@ -173,15 +173,7 @@
 					';
 				// Start up the block to return
 				var $block = $( block_tpl );
-
-				// Set the title with emphasis
-				$block.find('.articleFeedbackv5-title').
-					html( function () {
-					var em = mw.html.element( 'em', {}, mw.msg( 'articlefeedbackv5-bucket1-title-emphasis' ) );
-					return mw.html.escape( mw.msg( 'articlefeedbackv5-bucket1-title' ) )
-						.replace( /\$1/, em.toString() );
-					} );
-
+				
 				// Start out the tooltip hidden
 				$block.find( '.articleFeedbackv5-tooltip' ).hide();
 

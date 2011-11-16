@@ -405,8 +405,6 @@
 	color: #777777;
 }
 /*---===<<< Sean's Version 5 Styles >>>===---*/
-@charset "UTF-8";
-/* CSS Document */
 .clear {
 	display: block;
 	height: 0;
@@ -425,28 +423,100 @@
 	padding:25px;
 	color:#fff;	
 }
-.articleFeedback {}
-.atf5 .articleFeedback-panel {
+.articleFeedbackv5-panel {
 	width: 598px;
 	background: #f5faff;
 	border: 1px solid #ccc;
 	color: #000;
 }
-.atf5 .articleFeedback-panel .articleFeedback-buffer {
+.articleFeedbackv5-panel .articleFeedback-buffer {
 	padding: 20px;
 }
-.atf5 h2 {
+.articleFeedbackv5-panel h2 {
 	float: left;
+	border: none;
 }
-.atf5 .trigger {
+.articleFeedbackv5-panel .trigger {
 	display: block;
 	height: 27px;
 	width: 26px;
 	background: url(images/bg-tooltip-trigger.png) no-repeat;
-	cursor: pointer;
 	float: right;
 	position: relative;
 }
-.atf5 .trigger:hover {
+.articleFeedbackv5-panel .trigger:hover {
 	background: url(images/bg-tooltip-trigger-hov.png) no-repeat;
+	cursor: pointer;
+	text-decoration: none;
+}
+.articleFeedbackv5-panel .button-placeholder {
+	display: inline-block;
+	height: 20px;
+	width: 50px;
+	text-align: center;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	background: url(images/bg-button-disable.png) repeat-x;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px; /* future proofing */
+	-khtml-border-radius: 3px; /* for old Konqueror browsers */
+}
+.articleFeedbackv5-panel .instructions-left {
+	float:left;
+	margin: 0 15px 0 0;
+}
+.articleFeedbackv5-panel .buttons {
+	float: left;
+}
+.articleFeedbackv5-panel .buttons .form-item {
+	float: left;
+	margin: 0 15px 0 0;
+}
+.articleFeedbackv5-panel .buttons label,
+.articleFeedbackv5-panel .buttons input {
+	display: none;
+}
+.articleFeedbackv5-panel .buttons .button-placeholder:hover {
+	background: url(images/bg-button.png) repeat-x;
+	cursor: pointer;
+}
+.articleFeedbackv5-panel .buttons .button-placeholder-active {
+	background: url(images/bg-button.png) repeat-x;
+}
+.articleFeedbackv5-panel .feedback-text {
+	resize: none;
+	background: #fff;
+	border: 1px solid #000;
+	width: 518px;
+	height: 68px;
+	overflow: hidden;
+	padding: 10px;
+	font-size: 14px;
+	font: sans-serif;
+}
+.articleFeedbackv5-panel .articleFeedback-disclosure {
+	float: left;
+	width: 235px;
+	margin: 0 0 0 10px;
+}
+.articleFeedbackv5-panel .articleFeedback-submit {
+	float: right;
+	height: 25px;
+	width: 200px;
+	text-align: center;
+	background: url(images/bg-submit-disable.png) repeat-x !important;
+	margin: 10px 53px 0 0 !important;
+	border: none !important;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px; /* future proofing */
+	-khtml-border-radius: 3px; /* for old Konqueror browsers */
+}
+.articleFeedbackv5-panel .articleFeedback-submit span {
+	font-size: 16px;
+	line-height: 15px;
+	text-align: center;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
 }

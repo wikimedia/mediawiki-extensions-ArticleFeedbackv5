@@ -30,8 +30,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-survey-disclaimerlink' => 'terms',
 	/* ext.articleFeedbackv5 and jquery.articleFeedbackv5 */
 	/* START Messages needing translation */
-	'articlefeedbackv5-bucket1-title' => 'What do $1 think?',
-    'articlefeedbackv5-bucket1-title-emphasis' => 'you',
+	'articlefeedbackv5-bucket1-title' => 'Help improve this article',
     'articlefeedbackv5-bucket1-tooltip-title' => 'What is This?',
     'articlefeedbackv5-bucket1-tooltip-info' => 'Wikipedia\'s new Article Feedback system is designed to help you help us. We need your input to make Wikipedia the best encyclopedia in the world.',
     'articlefeedbackv5-bucket1-tooltip-linktext' => 'Learn more about Article Feedback',
@@ -5203,7 +5202,7 @@ Takk skal du ha og lykke til!
 Hilsen {{SITENAME}}-teamet',
 );
 
-/** Oriya (ଓଡ଼ିଆ)
+/** Oriya (ଓଡ଼ିଆ)
  * @author Odisha1
  */
 $messages['or'] = array(

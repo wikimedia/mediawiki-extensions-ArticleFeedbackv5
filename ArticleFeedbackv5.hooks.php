@@ -61,7 +61,6 @@ class ArticleFeedbackv5Hooks {
 			'styles' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.css',
 			'messages' => array(
 				'articlefeedbackv5-bucket1-title',
-				'articlefeedbackv5-bucket1-title-emphasis',
 				'articlefeedbackv5-bucket1-tooltip-title',
 				'articlefeedbackv5-bucket1-tooltip-info',
 				'articlefeedbackv5-bucket1-tooltip-linktext',
