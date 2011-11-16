@@ -131,69 +131,81 @@
 				// The overall template
 				var block_tpl = '\
 					<form>\
-						<div class="title-wrap">\
-						<h2>What do <em>you</em> think?</h2>\
-						<a class="trigger">&nbsp;</a>\
-						<script type="text/javascript" language="javascript">\
-							$(".articleFeedback a.trigger").tooltip();\
-						</script>\
-						<div class="tooltip">\
+					<div class="title-wrap">\
+						<h2 class="articleFeedbackv5-title"></h2>\
+						<a class="articleFeedbackv5-tooltip-trigger">?</a>\
+						<div class="articleFeedbackv5-tooltip">\
 							<div class="tooltip-top"></div>\
 							<div class="tooltip-repeat">\
-								<h3>What is This?</h3>\
-								<p>Wikipedia’s new Article Feedback system is designed to help you help us. We need your input to make Wikipedia the best encyclopedia in the world.</p>\
-								<p><a target="_blank" href="#">Learn more about Article Feedback</a></p>\
+								<h3><html:msg key="bucket1-tooltip-title" /></h3>\
+								<p><html:msg key="bucket1-tooltip-info" /></p>\
+								<p><a target="_blank" href="#"><html:msg key="bucket1-tooltip-linktext" /></a></p>\
 							</div>\
 							<div class="tooltip-bottom"></div>\
 						</div>\
 						<div class="clear"></div>\
 					</div>\
 					<div class="form-row">\
-						<p class="instructions-left">Did you find what you were looking for?</p>\
+						<p class="instructions-left"><html:msg key="bucket1-question-toggle" /></p>\
 						<div class="buttons">\
 							<div class="form-item">\
-								<label for="find-yes">Yes, I found what I was looking for.</label>\
-								<span class="button-placeholder">Yes</span>\
-								<input type="radio" name="find" id="find-yes" class="query-button" />\
+								<label for="find-yes"><html:msg key="bucket1-toggle-found-yes-full" /></label>\
+								<span class="button-placeholder"><html:msg key="bucket1-toggle-found-yes" /></span>\
+								<input type="radio" name="toggle" id="find-yes" class="query-button" />\
 							</div>\
 							<div class="form-item">\
-								<label for="find-no">No, I did not find what I was looking for.</label>\
-								<span class="button-placeholder">No.</span>\
-								<input type="radio" id="find-now" class="query-button last" />\
+								<label for="find-no"><html:msg key="bucket1-toggle-found-no-full" /></label>\
+								<span class="button-placeholder"><html:msg key="bucket1-toggle-found-no" /></span>\
+								<input type="radio" name="toggle" id="find-no" class="query-button last" />\
 							</div>\
 							<div class="clear"></div>\
 						</div>\
 					</div>\
-					<textarea id="find-feedback" class="feedback-text">How can we improve this Article?</textarea>\
-					<div class="articleFeedback-disclosure">\
-						<p>Your Feedback will be shared <a href="#" target="_blank">here</a>. Seee our <a target="_blank" href="#">privacy policy</a> for more details.</p>\
+					<div class="articleFeedbackv5-comment">\
+						<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
 					</div>\
-					<button class="articleFeedback-submit articleFeedback-visibleWith-form ui-button ui-widget ui-state-default ui-corner-all ui-button-disabled ui-state-disabled ui-button-text-only ui-button-blue" type="submit" disabled="disabled" role="button" aria-disabled="true"><span class="ui-button-text">Submit Your Feedback</span></button>\
+					<div class="articleFeedbackv5-disclosure">\
+						<p></p>\
+					</div>\
+					<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket1-form-submit" /></button>\
 					<div class="clear"></div>\
 					</form>\
 					';
 				// Start up the block to return
 				var $block = $( block_tpl );
 
+				// Set the title with emphasis
+				$block.find('.articleFeedbackv5-title').
+					html( function () {
+					var em = mw.html.element( 'em', {}, mw.msg( 'articlefeedbackv5-bucket1-title-emphasis' ) );
+					return mw.html.escape( mw.msg( 'articlefeedbackv5-bucket1-title' ) )
+						.replace( /\$1/, em.toString() );
+					} );
+
+				// Start out the tooltip hidden
+				$block.find( '.articleFeedbackv5-tooltip' ).hide();
+
 				// Set the default comment text
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.val( mw.msg( 'articlefeedbackv5-bucket1-question-comment' ) );
 
-				// Fill in the feedback and terms info text
-				$block.find( '.articleFeedbackv5-feedback-terms-info .articleFeedbackv5-feedback' )
+				// Fill in the disclosure text
+				$block.find( '.articleFeedbackv5-disclosure p' )
 					.html( $.articleFeedbackv5.buildLink(
-						mw.config.get( 'wgScript' ) + '?' + $.param( {
-							'title': mw.config.get( 'wgPageName' ),
-							'action': 'feedback'
-						} ),
-						'articlefeedbackv5-shared-on-feedback-linktext',
-						'articlefeedbackv5-shared-on-feedback'
-					) );
-				$block.find( '.articleFeedbackv5-feedback-terms-info .articleFeedbackv5-terms' )
-					.html( $.articleFeedbackv5.buildLink(
-						mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ), // TODO: Make this work
-						'articlefeedbackv5-transparency-terms-linktext',
-						'articlefeedbackv5-transparency-terms'
+						'articlefeedbackv5-bucket1-disclosure',
+						{
+							href: mw.config.get( 'wgScript' ) + '?' + $.param( {
+								title: mw.config.get( 'wgPageName' ),
+								action: 'feedback'
+							} ),
+							text: 'articlefeedbackv5-bucket1-disclosure-shared-linktext',
+							target: '_blank'
+						},
+						{
+							href: mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ),
+							text: 'articlefeedbackv5-bucket1-disclosure-privacy-policy-linktext',
+							target: '_blank'
+						}
 					) );
 
 				// Localize the block
@@ -216,6 +228,15 @@
 			 * @param $block element the form block
 			 */
 			bindEvents: function ( $block ) {
+
+				$block.find( '.articleFeedbackv5-tooltip-trigger' ).hover( function () {
+					// mouse on
+					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).show();
+				}, function () {
+					// mouse off
+					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).hide();
+				} );
+
 				// Clear out the question on focus
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.focus( function () {
@@ -476,9 +497,11 @@
 				// Fill in the Help Improve message and links
 				$block.find( '.articleFeedbackv5-helpimprove-note' )
 					.html( $.articleFeedbackv5.buildLink(
-						mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ), // TODO: Make this work
-						'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy',
-						'articlefeedbackv5-bucket5-form-panel-helpimprove-note'
+						'articlefeedbackv5-bucket5-form-panel-helpimprove-note',
+						{
+							href: mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ), // TODO: Make this work
+							text: 'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy'
+						}
 					) );
 
 				$block.find( '.articleFeedbackv5-helpimprove-email' )
@@ -1161,15 +1184,32 @@
 	 * Can't use .text() with mw.message(, \/* $1 *\/ link).toString(),
 	 * because 'link' should not be re-escaped (which would happen if done by mw.message)
 	 *
-	 * @param  string href     the link
-	 * @param  string linktext the message key for the link text
 	 * @param  string fulltext the message key for the full text
+	 * @param  object link1    the first link, as { href: '#', text: 'click here' }
+	 * @param  object link2    [optional] the second link, as above
+	 * @param  object link2    [optional] the third link, as above
 	 * @return string the html
 	 */
-	$.articleFeedbackv5.buildLink = function ( href, linktext, fulltext ) {
-		var link = mw.html.element( 'a', { href: href }, mw.msg( linktext ) );
-		var full = mw.html.escape( mw.msg( fulltext ) )
-			.replace( /\$1/, link.toString() );
+	$.articleFeedbackv5.buildLink = function ( fulltext, link1, link2, link3 ) {
+		var full = mw.html.escape( mw.msg( fulltext ) );
+		if ( link1 ) {
+			full = full.replace(
+					/\$1/,
+					mw.html.element( 'a', { href: link1.href }, mw.msg( link1.text )
+				).toString() );
+		}
+		if ( link2 ) {
+			full = full.replace(
+					/\$2/,
+					mw.html.element( 'a', { href: link2.href }, mw.msg( link2.text )
+				).toString() );
+		}
+		if ( link3 ) {
+			full = full.replace(
+					/\$3/,
+					mw.html.element( 'a', { href: link3.href }, mw.msg( link3.text )
+				).toString() );
+		}
 		return full;
 	};
 
