@@ -73,7 +73,7 @@ error_log(print_r($user_answers,1));
 		);
 	}
 
-	protected function validateParams($value, $type) {
+	protected function validateParam($value, $type) {
 		# rating: int between 1 and 5 (inclusive)
 		# boolean: 1 or 0
 		# option:  option exists

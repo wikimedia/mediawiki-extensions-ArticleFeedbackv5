@@ -46,10 +46,11 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_field_group (
 -- We already used af_ above, so this is ArticleFIeld instead
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_field (
   afi_id        integer unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  afi_name      varchar(255) NOT NULL UNIQUE,
+  afi_name      varchar(255) NOT NULL,
   afi_data_type ENUM('text', 'boolean', 'rating', 'select'),
   -- FKey to article_field_groups.group_id
-  afi_group_id  integer unsigned NULL
+  afi_group_id  integer unsigned NULL,
+  afi_bucket_id integer unsigned NOT NULL
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_field_option (
