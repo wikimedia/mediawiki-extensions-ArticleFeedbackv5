@@ -195,7 +195,7 @@
 							text: 'articlefeedbackv5-bucket1-disclosure-privacy-policy-linktext',
 							target: '_blank'
 						}
-					) );
+					).replace( /\$0/, '<br />' );
 
 				// Localize the block
 				$block.localize( { 'prefix': 'articlefeedbackv5-' } );
