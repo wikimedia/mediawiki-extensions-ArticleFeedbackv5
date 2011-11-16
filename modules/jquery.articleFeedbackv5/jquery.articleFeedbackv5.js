@@ -226,6 +226,30 @@
 					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).hide();
 				} );
 
+				// Enable submission and switch out the comment default on toggle selection
+				$block.find( '.articleFeedbackv5-button-placeholder' )
+					.click( function ( e ) {
+						var new_val = $( this ).parent().attr( 'rel' );
+						var old_val = ( new_val == 'yes' ? 'no' : 'yes' );
+						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + new_val );
+						var $other_wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + old_val );
+						// make the button blue
+						$wrap.find( 'span' ).addClass( 'articleFeedbackv5-button-placeholder-active' );
+						$other_wrap.find( 'span' ).removeClass( 'articleFeedbackv5-button-placeholder-active' );
+						// check/uncheck radio buttons
+						$wrap.find( 'input' ).attr( 'checked', 'checked' );
+						$other_wrap.find( 'input' ).attr( 'checked', '' );
+						// set default comment message
+						var $txt = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
+						var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
+						var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-comment-no' );
+						if ( $txt.val() == '' || $txt.val() == def_msg_yes || $txt.val() == def_msg_no ) {
+							$txt.val( new_val == 'yes' ? def_msg_yes : def_msg_no );
+						}
+						// enable submission
+						$.articleFeedbackv5.currentBucket().enableSubmission( true );
+					} );
+
 				// Clear out the question on focus
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.focus( function () {
@@ -251,30 +275,6 @@
 						if ( $( this ).val() == '' ) {
 							$( this ).val( def_msg );
 						}
-					} );
-
-				// Enable submission and switch out the comment default on toggle selection
-				$block.find( '.articleFeedbackv5-button-placeholder' )
-					.click( function ( e ) {
-						var new_val = $( this ).parent().attr( 'rel' );
-						var old_val = ( new_val == 'yes' ? 'no' : 'yes' );
-						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + new_val );
-						var $other_wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + old_val );
-						// make the button blue
-						$wrap.find( 'span' ).addClass( 'articleFeedbackv5-button-placeholder-active' );
-						$other_wrap.find( 'span' ).removeClass( 'articleFeedbackv5-button-placeholder-active' );
-						// check/uncheck radio buttons
-						$wrap.find( 'input' ).attr( 'checked', 'checked' );
-						$other_wrap.find( 'input' ).attr( 'checked', '' );
-						// set default comment message
-						var $txt = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
-						var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
-						var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-comment-no' );
-						if ( $txt.val() == '' || $txt.val() == def_msg_yes || $txt.val() == def_msg_no ) {
-							$txt.val( new_val == 'yes' ? def_msg_yes : def_msg_no );
-						}
-						// enable submission
-						$.articleFeedbackv5.currentBucket().enableSubmission( true );
 					} );
 
 				// Attach the submit
