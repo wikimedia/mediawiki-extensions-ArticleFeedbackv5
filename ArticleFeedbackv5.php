@@ -185,7 +185,6 @@ $wgExtensionCredits['other'][] = array(
 
 // Autoloading
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['ApiQueryArticleFeedbackv5']       = $dir . 'api/ApiQueryArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiArticleFeedbackv5Utils']       = $dir . 'api/ApiArticleFeedbackv5Utils.php';
 $wgAutoloadClasses['ApiArticleFeedbackv5']            = $dir . 'api/ApiArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5'] = $dir . 'api/ApiViewRatingsArticleFeedbackv5.php';
@@ -204,7 +203,6 @@ $wgHooks['GetPreferences'][] = 'ArticleFeedbackv5Hooks::getPreferences';
 $wgHooks['SkinTemplateNavigation'][] = 'ArticleFeedbackv5Hooks::addFeedbackLink';
 
 // API Registration
-$wgAPIListModules['articlefeedbackv5'] = 'ApiQueryArticleFeedbackv5';
 $wgAPIListModules['articlefeedbackv5-view-ratings'] = 'ApiViewRatingsArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5'] = 'ApiArticleFeedbackv5';
 
