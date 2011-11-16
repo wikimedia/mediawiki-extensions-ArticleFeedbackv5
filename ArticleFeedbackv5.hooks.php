@@ -178,13 +178,13 @@ class ArticleFeedbackv5Hooks {
 				$fields = ApiArticleFeedbackv5Utils::getFields();
 				$prefix = 'articlefeedbackv5-bucket5-';
 				foreach( $fields as $field ) {
-					$resources['messages'][] = $prefix . $field->aaf_name . '-label';
-					$resources['messages'][] = $prefix . $field->aaf_name . '-tip';
-					$resources['messages'][] = $prefix . $field->aaf_name . '-tooltip-1';
-					$resources['messages'][] = $prefix . $field->aaf_name . '-tooltip-2';
-					$resources['messages'][] = $prefix . $field->aaf_name . '-tooltip-3';
-					$resources['messages'][] = $prefix . $field->aaf_name . '-tooltip-4';
-					$resources['messages'][] = $prefix . $field->aaf_name . '-tooltip-5';
+					$resources['messages'][] = $prefix . $field->afi_name . '-label';
+					$resources['messages'][] = $prefix . $field->afi_name . '-tip';
+					$resources['messages'][] = $prefix . $field->afi_name . '-tooltip-1';
+					$resources['messages'][] = $prefix . $field->afi_name . '-tooltip-2';
+					$resources['messages'][] = $prefix . $field->afi_name . '-tooltip-3';
+					$resources['messages'][] = $prefix . $field->afi_name . '-tooltip-4';
+					$resources['messages'][] = $prefix . $field->afi_name . '-tooltip-5';
 				}
 			}
 			$resourceLoader->register(
@@ -221,8 +221,8 @@ class ArticleFeedbackv5Hooks {
 
 		$fields = ApiArticleFeedbackv5Utils::getFields();
 		foreach( $fields as $field ) {
-			$vars['wgArticleFeedbackv5RatingTypes'][] = $field->aaf_name;
-			$vars['wgArticleFeedbackv5RatingTypesFlipped'][$field->aaf_name] = $field->aaf_id;
+			$vars['wgArticleFeedbackv5RatingTypes'][] = $field->afi_name;
+			$vars['wgArticleFeedbackv5RatingTypesFlipped'][$field->afi_name] = $field->afi_id;
 		}
 		return true;
 	}
