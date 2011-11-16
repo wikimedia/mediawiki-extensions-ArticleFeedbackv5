@@ -414,14 +414,34 @@
 	width: 100%;
 }
 /* tooltip styling. by default the element to be styled is .tooltip  */
-.tooltip {
-	display:none !important;
-	background: #0F0;
+.articleFeedbackv5-panel .title-wrap {
+	position: relative;
+}
+.articleFeedbackv5-panel .articleFeedbackv5-tooltip  {
+	display:none;
+	position: absolute;
+	z-index: 15;
+	top: -175px;
+	right: -105px;
 	font-size:12px;
-	height:70px;
-	width:160px;
-	padding:25px;
-	color:#fff;	
+	width:234px;
+	color:#000;	
+}
+.articleFeedbackv5-panel .articleFeedbackv5-tooltip .tooltip-top {
+	background: url(images/bg-tooltip-top.png);
+	height: 11px;
+}
+.articleFeedbackv5-panel .articleFeedbackv5-tooltip .tooltip-repeat {
+	background: url(images/bg-tooltip.png) repeat-y;
+	padding: 0 20px 10px;
+	margin: 0;
+}
+.articleFeedbackv5-panel .articleFeedbackv5-tooltip .tooltip-repeat p {
+	display: block;
+}
+.articleFeedbackv5-panel .articleFeedbackv5-tooltip .tooltip-bottom {
+	background: url(images/bg-tooltip-bottom.png);
+	height: 26px;
 }
 .articleFeedbackv5-panel {
 	width: 598px;
