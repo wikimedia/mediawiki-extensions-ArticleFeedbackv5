@@ -133,7 +133,7 @@
 					<form>\
 					<div class="title-wrap">\
 						<h2 class="articleFeedbackv5-title"><html:msg key="bucket1-title" /></h2>\
-						<a class="articleFeedbackv5-tooltip-trigger">?</a>\
+						<a class="articleFeedbackv5-tooltip-trigger"></a>\
 						<div class="articleFeedbackv5-tooltip">\
 							<div class="tooltip-top"></div>\
 							<div class="tooltip-repeat">\
@@ -160,6 +160,7 @@
 							</div>\
 							<div class="clear"></div>\
 						</div>\
+						<div class="clear"></div>\
 					</div>\
 					<div class="articleFeedbackv5-comment">\
 						<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
@@ -218,12 +219,8 @@
 			bindEvents: function ( $block ) {
 
 				// Tooltip
-				$block.find( '.articleFeedbackv5-tooltip-trigger' ).hover( function () {
-					// mouse on
-					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).show();
-				}, function () {
-					// mouse off
-					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).hide();
+				$block.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
+					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
 				} );
 
 				// Enable submission and switch out the comment default on toggle selection

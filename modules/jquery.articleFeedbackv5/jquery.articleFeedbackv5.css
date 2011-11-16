@@ -415,7 +415,7 @@
 }
 /* tooltip styling. by default the element to be styled is .tooltip  */
 .tooltip {
-	display:none;
+	display:none !important;
 	background: #0F0;
 	font-size:12px;
 	height:70px;
@@ -436,31 +436,22 @@
 	float: left;
 	border: none;
 }
-.articleFeedbackv5-panel .trigger {
+.articleFeedbackv5-panel .articleFeedbackv5-tooltip-trigger {
 	display: block;
 	height: 27px;
 	width: 26px;
 	background: url(images/bg-tooltip-trigger.png) no-repeat;
 	float: right;
 	position: relative;
+	text-indent: -9999px;
 }
-.articleFeedbackv5-panel .trigger:hover {
+.articleFeedbackv5-panel .articleFeedbackv5-tooltip-trigger:hover {
 	background: url(images/bg-tooltip-trigger-hov.png) no-repeat;
 	cursor: pointer;
 	text-decoration: none;
 }
-.articleFeedbackv5-panel .articleFeedbackv5-button-placeholder {
-	display: inline-block;
-	height: 20px;
-	width: 50px;
-	text-align: center;
-	color: #fff;
-	text-shadow: 1px 1px 1px #000;
-	background: url(images/bg-button-disable.png) repeat-x;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px; /* future proofing */
-	-khtml-border-radius: 3px; /* for old Konqueror browsers */
+.articleFeedbackv5-panel .form-row {
+	margin: 0 0 15px;
 }
 .articleFeedbackv5-panel .instructions-left {
 	float:left;
@@ -476,6 +467,19 @@
 .articleFeedbackv5-panel .buttons label,
 .articleFeedbackv5-panel .buttons input {
 	display: none;
+}
+.articleFeedbackv5-panel .buttons .articleFeedbackv5-button-placeholder {
+	display: inline-block;
+	height: 20px;
+	width: 50px;
+	text-align: center;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	background: url(images/bg-button-disable.png) repeat-x;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px; /* future proofing */
+	-khtml-border-radius: 3px; /* for old Konqueror browsers */
 }
 .articleFeedbackv5-panel .buttons .articleFeedbackv5-button-placeholder:hover {
 	background: url(images/bg-button.png) repeat-x;
@@ -495,12 +499,12 @@
 	font-size: 14px;
 	font: sans-serif;
 }
-.articleFeedbackv5-panel .articleFeedback-disclosure {
+.articleFeedbackv5-panel .articleFeedbackv5-disclosure {
 	float: left;
 	width: 235px;
 	margin: 0 0 0 10px;
 }
-.articleFeedbackv5-panel .articleFeedback-submit {
+.articleFeedbackv5-panel .articleFeedbackv5-submit {
 	float: right;
 	height: 25px;
 	width: 200px;
@@ -513,7 +517,7 @@
 	border-radius: 3px; /* future proofing */
 	-khtml-border-radius: 3px; /* for old Konqueror browsers */
 }
-.articleFeedbackv5-panel .articleFeedback-submit span {
+.articleFeedbackv5-panel .articleFeedbackv5-submit span {
 	font-size: 16px;
 	line-height: 15px;
 	text-align: center;
