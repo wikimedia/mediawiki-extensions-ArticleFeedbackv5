@@ -20,7 +20,7 @@ jQuery( function( $ ) {
 		&& mw.util.getParamValue( 'diff' ) == null
 		&& mw.util.getParamValue( 'oldid' ) == null
 		// Not disabled via preferences
-		&& !mw.user.options.get( 'articlefeedbackv5-disable' )
+		&& !mw.user.options.get( 'articlefeedback-disable' )
 		// Not viewing a redirect
 		&& mw.util.getParamValue( 'redirect' ) != 'no'
 		// Not viewing the printable version
