@@ -38,6 +38,23 @@ class ApiArticleFeedbackv5Utils {
 		return 1;
 	}
 
+	public static function getRevisionLimit( $pageId ) {
+		global $wgArticleFeedbackv5RatingLifetime;
+		$dbr      = wfGetDB( DB_SLAVE );
+		$revision = $dbr->selectField(
+			'revision', 'rev_id',
+			array( 'rev_page' => $pageId ),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'rev_id DESC',
+				'LIMIT'    => 1,
+				'OFFSET'   => $wgArticleFeedbackv5RatingLifetime - 1
+			)
+		);
+
+		return $revision ? intval($revision) : 0;
+	}
+
 	public static function getRevisionId($pageId) {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$revId = $dbr->selectField(

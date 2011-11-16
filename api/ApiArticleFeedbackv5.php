@@ -16,12 +16,11 @@ error_log(print_r($params,1));
 		$token = ApiArticleFeedbackv5Utils::getAnonToken( $params );
 
 		// Is feedback enabled on this page check?
-		if ( !ApiArticleFeedbackv5Utils::isFeedbackEnabled( $params ) ) {
-			$this->dieUsage( 'ArticleFeedback is not enabled on this page', 'invalidpage' );
-		}
+#		if ( !ApiArticleFeedbackv5Utils::isFeedbackEnabled( $params ) ) {
+#			$this->dieUsage( 'ArticleFeedback is not enabled on this page', 'invalidpage' );
+#		}
 
 		$feedbackId   = $this->getFeedbackId($params);
-error_log("feedback id is $feedbackId");
 		$dbr          = wfGetDB( DB_SLAVE );
 		$keys         = array();
 		foreach($params as $key => $unused) { $keys[] = $key; }
@@ -37,17 +36,13 @@ error_log("feedback id is $feedbackId");
 		);
 
 		foreach($answers as $answer) {
-			$type = $answer->afi_data_type;
-			# TODO: validation
-			# rating: int between 1 and 5 (inclusive)
-			# boolean: 1 or 0
-			# option:  option exists
-			# text:    none (maybe xss encode)
-			if($params[$answer->afi_name]) {
+			$type  = $answer->afi_data_type;
+			$value = $params[$answer->afi_name];
+			if($value && $this->validateParam($value, $type)) {
 				$user_answers[] = array(
 					'aa_feedback_id'    => $feedbackId,
 					'aa_field_id'       => $answer->afi_id,
-					"aa_response_$type" => $params[$answer->afi_name]
+					"aa_response_$type" => $value
 				);
 			}
 		}
@@ -78,31 +73,131 @@ error_log(print_r($user_answers,1));
 		);
 	}
 
+	protected function validateParams($value, $type) {
+		# rating: int between 1 and 5 (inclusive)
+		# boolean: 1 or 0
+		# option:  option exists
+		# text:    none (maybe xss encode)
+		switch($type) {
+			case 'rating':
+				if(preg_match('/^(1|2|3|4|5)$/', $value)) {
+					return 1;
+				}
+				break;
+			case 'boolean':
+				if(preg_match('/^(1|0)$/', $value)) {
+					return 1;
+				}
+				break;
+			case 'option':
+				# TODO: check for option existance.
+			case 'text':
+				return 1;
+				break;
+			default:
+				return 0;
+				break;
+		}
+
+		return 0;
+	}
+
 	public function updateRollupTables($page, $revision) {
-		$this->updateRatingRollup($page, $revision);
-		$this->updateSelectRollup($page, $revision);
+#		foreach( array( 'rating', 'boolean', 'select' ) as $type ) {
+#		foreach( array( 'rating', 'boolean' ) as $type ) {
+		foreach( array( 'rating' ) as $type ) {
+			$this->updateRollup( $page, $revision, $type );
+		}
 	}
 
-	public function updateRatingRollup($page, $rev) {
-		$this->__updateRollup($page, $rev, 'ratings', 'page');
-		$this->__updateRollup($page, $rev, 'ratings', 'revision');
-	}
+	# TODO: This breaks on the select/option_id type.
+	private function updateRollup($pageId, $revId, $type) {
+		global $wgArticleFeedbackv5RatingLifetime;
+		$dbr   = wfGetDB( DB_SLAVE );
+		$dbw   = wfGetDB( DB_MASTER );
+		$limit = ApiArticleFeedbackv5Utils::getRevisionLimit($pageId);
 
-	public function updateSelectRollup($page, $rev) {
-		$this->__updateRollup($page, $rev, 'select', 'page');
-		$this->__updateRollup($page, $rev, 'select', 'revision');
-	}
-
-	# page and rev and page and revision ids
-	# type is either ratings or select, the two rollups we have
-	# scope is either page or revision
-	private function __updateRollup($page, $rev, $type, $scope) {
 		# sanity check
-		if($type != 'ratings' && $type != 'select') { return 0; }
-		if($scope != 'page' && $scope != 'revision') { return 0; }
+		if( $type != 'rating' && $type != 'select' 
+		 && $type != 'boolean' ) { return 0; }
 
-		# TODO
-		$table = 'aft_article_'.$rev.'_feedback_'.$type.'_rollup';
+		$rows = $dbr->select(
+			array( 'aft_article_answer', 'aft_article_feedback', 
+			 'aft_article_field' ),
+			array( 'aa_field_id', 
+			 "SUM(aa_response_$type) AS earned", 
+			 'COUNT(*) AS submits'),
+			array(
+				'afi_data_type'  => $type,
+				'af_page_id'     => $pageId,
+				'aa_feedback_id = af_id',
+				'afi_id = aa_field_id',
+				"af_revision_id >= $limit"
+			),
+			__METHOD__,
+			array( 'GROUP BY' =>  'aa_field_id' )
+		);
+
+		if( $type == 'select' ) {
+			$page_prefix = 'afsr_';
+			$rev_prefix  = 'arfsr_';
+		} else {
+			$page_prefix = 'arr_';
+			$rev_prefix  = 'afrr_';
+		}
+		$page_data  = array();
+		$rev_data   = array();
+		$rev_table  = 'aft_article_revision_feedback_'
+		 .( $type == 'select' ? 'select' : 'ratings' ).'_rollup'; 
+		$page_table = 'aft_article_feedback_'
+		 .( $type == 'select' ? 'select' : 'ratings' ).'_rollup'; 
+
+		foreach($rows as $row) {
+			if($type == 'rating') {
+				$points = $row->submits * 5;
+			} else {
+				$points = $row->submits;
+			}
+
+			if(!array_key_exists($row->aa_field_id, $page_data)) {
+				$page_data[$row->aa_field_id] = array(
+					$page_prefix.'page_id' => $pageId,
+					$page_prefix.'total'   => 0,
+					$page_prefix.'count'   => 0,
+					$page_prefix.($type == 'select' ? 'option' : 'rating').'_id' => $row->aa_field_id
+				);
+			}
+
+			$rev_data[] = array(
+				$rev_prefix.'page_id'     => $pageId,
+				$rev_prefix.'revision_id' => $revId,
+				$rev_prefix.'total'       => $row->earned,
+				$rev_prefix.'count'       => $points,
+				$rev_prefix.($type == 'select' ? 'option' : 'rating').'_id' => $row->aa_field_id
+			);
+			$page_data[$row->aa_field_id][$page_prefix.'total'] += $row->earned;
+			$page_data[$row->aa_field_id][$page_prefix.'count'] += $points;
+		}
+
+		# Hack becuse you can't use array keys or insert barfs.
+		$tmp = array();
+		foreach($page_data as $p) {
+			$tmp[] = $p;
+		}
+		$page_data = $tmp;
+
+		$dbw->begin();
+		$dbw->delete( $rev_table, array(
+			$rev_prefix.'page_id'     => $pageId,
+			$rev_prefix.'revision_id' => $revId,
+		) );
+		$dbw->insert( $rev_table,  $rev_data );
+		$dbw->delete( $page_table, array(
+			$page_prefix.'page_id'     => $pageId,
+		) );
+		$dbw->insert( $page_table, $page_data );
+
+		$dbw->commit();
 	}
 
 	public function getFeedbackId($params) {
