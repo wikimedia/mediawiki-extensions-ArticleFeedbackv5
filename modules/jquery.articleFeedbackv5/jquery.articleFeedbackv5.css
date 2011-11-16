@@ -414,6 +414,17 @@
 	width: 100%;
 }
 /* tooltip styling. by default the element to be styled is .tooltip  */
+<<<<<<< .mine
+.articleFeedbackv5-panel .title-wrap {
+	position: relative;
+}
+.articleFeedbackv5-panel .articleFeedbackv5-tooltip  {
+	display:none;
+	position: absolute;
+	z-index: 15;
+	top: -185px;
+	right: -105px;
+=======
 .articleFeedbackv5-panel .title-wrap {
 	position: relative;
 }
@@ -423,10 +434,26 @@
 	z-index: 15;
 	top: -175px;
 	right: -105px;
+>>>>>>> .r103389
 	font-size:12px;
 	width:234px;
 	color:#000;	
 }
+<<<<<<< .mine
+.articleFeedbackv5-panel .articleFeedbackv5-tooltip .tooltip-top {
+	background: url(images/bg-tooltip-top.png);
+	height: 11px;
+}
+.articleFeedbackv5-panel .articleFeedbackv5-tooltip .tooltip-repeat {
+	background: url(images/bg-tooltip.png) repeat-y;
+	padding: 0 20px 1px;
+	margin: 0;
+}
+.articleFeedbackv5-panel .articleFeedbackv5-tooltip .tooltip-bottom {
+	background: url(images/bg-tooltip-bottom.png);
+	height: 26px;
+}
+=======
 .articleFeedbackv5-panel .articleFeedbackv5-tooltip .tooltip-top {
 	background: url(images/bg-tooltip-top.png);
 	height: 11px;
@@ -443,6 +470,7 @@
 	background: url(images/bg-tooltip-bottom.png);
 	height: 26px;
 }
+>>>>>>> .r103389
 .articleFeedbackv5-panel {
 	width: 598px;
 	background: #f5faff;
@@ -521,7 +549,7 @@
 }
 .articleFeedbackv5-panel .articleFeedbackv5-disclosure {
 	float: left;
-	width: 235px;
+	width: 280px;
 	margin: 0 0 0 10px;
 }
 .articleFeedbackv5-panel .articleFeedbackv5-submit {
