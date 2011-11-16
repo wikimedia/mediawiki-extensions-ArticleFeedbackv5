@@ -202,6 +202,8 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5Categories,
 			$wgArticleFeedbackv5BlacklistCategories,
 			$wgArticleFeedbackv5LotteryOdds,
+			$wgArticleFeedbackv5Debug,
+			$wgArticleFeedbackv5DisplayBuckets,
 			$wgArticleFeedbackv5Tracking,
 			$wgArticleFeedbackv5Options,
 			$wgArticleFeedbackv5Namespaces;
@@ -209,6 +211,8 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
 		$vars['wgArticleFeedbackv5LotteryOdds'] = $wgArticleFeedbackv5LotteryOdds;
+		$vars['wgArticleFeedbackv5Debug'] = $wgArticleFeedbackv5Debug;
+		$vars['wgArticleFeedbackv5DisplayBuckets'] = $wgArticleFeedbackv5DisplayBuckets;
 		$vars['wgArticleFeedbackv5Tracking'] = $wgArticleFeedbackv5Tracking;
 		$vars['wgArticleFeedbackv5Options'] = $wgArticleFeedbackv5Options;
 		$vars['wgArticleFeedbackv5Namespaces'] = $wgArticleFeedbackv5Namespaces;

@@ -56,9 +56,10 @@
 	// {{{ Properties
 
 	/**
-	 * Temporary -- this will need to come from the config.
+	 * Whether we're in debug mode.  We'll pull the config value on load, but
+	 * default it to false for now.
 	 */
-	$.articleFeedbackv5.debug = true;
+	$.articleFeedbackv5.debug = false;
 
 	/**
 	 * The bucket ID is the variation of the Article Feedback form chosen for this
@@ -361,14 +362,13 @@
 			/**
 			 * Only certain users can see the expertise checkboxes and email
 			 */
-			showOptions: 'show' === mw.user.bucket( 'ext.articleFeedback-options', mw.config.get( 'wgArticleFeedbackv5Options' ) ),
+			showOptions: 'show' === mw.user.bucket( 'ext.articleFeedbackv5-options', mw.config.get( 'wgArticleFeedbackv5Options' ) ),
 
 			/**
-			 * Whether we need to load the aggregate ratings the next time the
-			 * button is clicked.  This is initially set to true, turned to
-			 * false after the first time, then turned back to true on form
-			 * submission, in case the user wants to go back and see the ratings with
-			 * theirs included.
+			 * Whether we need to load the aggregate ratings the next time the button is
+			 * clicked.  This is initially set to true, turned to false after the first
+			 * time, then turned back to true on form submission, in case the user wants
+			 * to go back and see the ratings with theirs included.
 			 */
 			loadAggregate: true,
 
@@ -1074,10 +1074,14 @@
 				var $block = $( block_tpl );
 
 				// Fill in the link
-				$block.find( '.articleFeedbackv5-edit-link' )
-					.attr( 'href', mw.config.get( 'wgArticlePath' ).replace(
-						'$1', mw.config.get( 'wgArticleFeedbackv5WhatsThisPage' )
-					) );
+				$block.find( '.articleFeedbackv5-edit-cta-link' )
+					.attr(
+						'href',
+						mw.config.get( 'wgScript' ) + '?' + $.param( {
+							'title': mw.config.get( 'wgPageName' ),
+							'action': 'edit'
+						} )
+					);
 
 				return $block;
 			}
@@ -1109,7 +1113,8 @@
 		$.articleFeedbackv5.config = config;
 		// Has the user already submitted ratings for this page at this revision?
 		$.articleFeedbackv5.alreadySubmitted = $.cookie( $.articleFeedbackv5.prefix( 'submitted' ) ) === 'true';
-		// Go ahead and load the form
+		// Are we in debug mode?
+		$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' ) ? true : false;
 		// When the tool is visible, load the form
 		$.articleFeedbackv5.$holder.appear( function () {
 			$.articleFeedbackv5.loadForm();
@@ -1172,46 +1177,39 @@
 	// {{{ Form loading methods
 
 	/**
-	 * Loads the appropriate form
+	 * Chooses a bucket and loads the appropriate form
 	 *
-	 * The load method uses an ajax request to pull down the bucket ID, the
-	 * feedback ID, and using those, build the form.
+	 * If the plugin is in debug mode, you'll be able to pass in a particular
+	 * bucket in the url.  Otherwise, it will use the core bucketing
+	 * (configuration for this module passed in) to choose a bucket.
 	 */
 	$.articleFeedbackv5.loadForm = function () {
+		// Find out which display bucket they go in:
+		// 1. Requested in query string (debug only)
+		// 2. From cookie (see below)
+		// 3. Core bucketing
+		var knownBuckets = { 1: true, 5: true, 6: true };
 		var requested = mw.util.getParamValue( 'bucket' );
-		$.ajax( {
-			'url': $.articleFeedbackv5.apiUrl,
-			'type': 'GET',
-			'dataType': 'json',
-			'data': {
-				'list': 'articlefeedbackv5',
-				'action': 'query',
-				'format': 'json',
-				'afsubaction': 'newform',
-				'afanontoken': $.articleFeedbackv5.userId,
-				'afpageid': $.articleFeedbackv5.pageId,
-				'afrevid': $.articleFeedbackv5.revisionId,
-				'afbucketrequested': requested
-			},
-			'success': function ( data ) {
-				if ( !( 'form' in data ) || !( 'bucketId' in data.form ) ) {
-					mw.log( 'ArticleFeedback invalid response error.' );
-					if ( 'error' in data && 'info' in data.error ) {
-						console.log(data.error.info);
-					} else {
-						console.log(data);
-					}
-					$.articleFeedbackv5.bucketId = 6; // No form
-				} else {
-					$.articleFeedbackv5.bucketId = data.form.bucketId;
-				}
-				$.articleFeedbackv5.buildForm( 'form' in data ? data.form.response : null );
-			},
-			'error': function () {
-				mw.log( 'Report loading error' );
-				$.articleFeedbackv5.buildForm();
-			}
-		} );
+		var cookieval = $.cookie( $.articleFeedbackv5.prefix( 'display-bucket' ) );
+		if ( $.articleFeedbackv5.debug && requested in knownBuckets ) {
+			$.articleFeedbackv5.bucketId = requested;
+		} else if ( cookieval in knownBuckets ) {
+			$.articleFeedbackv5.bucketId = cookieval;
+		} else {
+			$.articleFeedbackv5.bucketId = mw.user.bucket(
+				'ext.articleFeedbackv5-display',
+				mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' )
+			);
+		}
+		// Drop in a cookie to keep track of their display bucket;
+		// use the config to determine how long to hold onto it.
+		var cfg = mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' );
+		$.cookie(
+			$.articleFeedbackv5.prefix( 'display-bucket' ),
+			$.articleFeedbackv5.bucketId,
+			{ 'expires': cfg.expires, 'path': '/' }
+		);
+		$.articleFeedbackv5.buildForm();
 	};
 
 	/**
@@ -1220,7 +1218,9 @@
 	 * @param response object any existing answers
 	 */
 	$.articleFeedbackv5.buildForm = function ( response ) {
-		console.log( 'Using bucket #' + $.articleFeedbackv5.bucketId );
+		if ( $.articleFeedbackv5.debug ) {
+			console.log( 'Using bucket #' + $.articleFeedbackv5.bucketId );
+		}
 		var bucket = $.articleFeedbackv5.currentBucket();
 		if ( !( 'buildForm' in bucket ) ) {
 			return;

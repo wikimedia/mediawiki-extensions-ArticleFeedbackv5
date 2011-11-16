@@ -41,6 +41,39 @@ $wgArticleFeedbackv5Namespaces = $wgContentNamespaces;
 // are the smallest increments used.
 $wgArticleFeedbackv5LotteryOdds = 0;
 
+// This puts the javascript into debug mode. In debug mode, you can set your
+// own bucket by passing it in the url (e.g., ?bucket=1), and the showstopper
+// error mode will have a useful error message, if one exists, rather than the
+// default message.
+$wgArticleFeedbackv5Debug = true;
+
+// Bucket settings for display options
+$wgArticleFeedbackv5DisplayBuckets = array(
+	// Users can fall into one of several display buckets (these are defined in
+	// modules/jquery.articlefeedbackv5/jquery.articlefeedbackv5.js).  When a
+	// user arrives at the page, this config will be used by core bucketing to
+	// decide which of the available form options they see.  Whenever there's
+	// an update to the available buckets, change the version number to ensure
+	// the new odds are applied to everyone, not just people who have yet to be
+	// placed in a bucket.
+	'buckets' => array(
+		'1' => 34,
+		'5' => 33,
+		'6' => 33,
+	),
+	// This version number is added to all tracking event names, so that
+	// changes in the software don't corrupt the data being collected. Bump
+	// this when you want to start a new "experiment".
+	'version' => 0,
+	// Let users be tracked for a month, and then rebucket them, allowing some
+	// churn.
+	'expires' => 30,
+	// Track the event of users being bucketed - so we can be sure the odds
+	// worked out right.
+	'tracked' => true
+);
+
+
 // Bucket settings for tracking users
 $wgArticleFeedbackv5Tracking = array(
 	// Not all users need to be tracked, but we do want to track some users over time - these

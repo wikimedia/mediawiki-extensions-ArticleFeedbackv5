@@ -20,7 +20,7 @@ jQuery( function( $ ) {
 		&& mw.util.getParamValue( 'diff' ) == null
 		&& mw.util.getParamValue( 'oldid' ) == null
 		// Not disabled via preferences
-		&& !mw.user.options.get( 'articlefeedback-disable' )
+		&& !mw.user.options.get( 'articlefeedbackv5-disable' )
 		// Not viewing a redirect
 		&& mw.util.getParamValue( 'redirect' ) != 'no'
 		// Not viewing the printable version
@@ -28,7 +28,7 @@ jQuery( function( $ ) {
 	) {
 		// Assign a tracking bucket using options from wgArticleFeedbackv5Tracking
 		mw.user.bucket(
-			'ext.articleFeedback-tracking', mw.config.get( 'wgArticleFeedbackv5Tracking' )
+			'ext.articleFeedbackv5-tracking', mw.config.get( 'wgArticleFeedbackv5Tracking' )
 		);
 
 		// Collect categories for intersection tests

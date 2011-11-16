@@ -5,7 +5,7 @@
 
 // Only track users who have been assigned to the tracking group
 var tracked = 'track' === mw.user.bucket(
-	'ext.articleFeedback-tracking', mw.config.get( 'wgArticleFeedbackv5Tracking' )
+	'ext.articleFeedbackv5-tracking', mw.config.get( 'wgArticleFeedbackv5Tracking' )
 );
 
 /**
@@ -16,7 +16,7 @@ var tracked = 'track' === mw.user.bucket(
  */
 function prefix( key ) {
 	var version = mw.config.get( 'wgArticleFeedbackv5Tracking' ).version || 0;
-	return 'ext.articleFeedback@' + version + '-' + key;
+	return 'ext.articleFeedbackv5@' + version + '-' + key;
 }
 
 /**
@@ -316,7 +316,7 @@ var config = {
 };
 
 /* Load at the bottom of the article */
-var $aftDiv = $( '<div id="mw-articlefeedback"></div>' ).articleFeedbackv5( config );
+var $aftDiv = $( '<div id="mw-articlefeedbackv5"></div>' ).articleFeedbackv5( config );
 
 // Put on bottom of article before #catlinks (if it exists)
 // Except in legacy skins, which have #catlinks above the article but inside content-div.
@@ -329,14 +329,16 @@ if ( $( '#catlinks' ).length && $.inArray( mw.config.get( 'skin' ), legacyskins 
 }
 
 /* Add link so users can navigate to the feedback tool from the toolbox */
-var $tbAft = $( '<li id="t-articlefeedback"><a href="#mw-articlefeedback"></a></li>' )
+var $tbAft = $( '<li id="t-articlefeedbackv5"><a href="#mw-articlefeedbackv5"></a></li>' )
 	.find( 'a' )
+		// TODO: Find out whether this needs to change per bucket.  Bucketing
+		// logic may need to move out of the jquery component into here.
 		.text( mw.msg( 'articlefeedbackv5-bucket5-form-switch-label' ) )
 		.click( function() {
 			// Click tracking
 			trackClick( 'toolbox-link' );
 			// Get the image, set the count and an interval.
-			var $box = $( '#mw-articlefeedback' );
+			var $box = $( '#mw-articlefeedbackv5' );
 			var count = 0;
 			var interval = setInterval( function() {
 				// Animate the opacity over .2 seconds
