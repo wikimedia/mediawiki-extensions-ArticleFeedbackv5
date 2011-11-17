@@ -43,7 +43,7 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 
 		$info = array();
 		foreach ( $rollup as $row ) {
-			$info[$row->field_id] = array(
+			$info[$row->field_name] = array(
 				'ratingdesc' => $row->field_name,
 				'ratingid'   => (int) $row->field_id,
 				'total'      => (int) $row->points,
@@ -98,6 +98,7 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 		}
 		$where[$prefix . '_page_id']  = $pageId;
 		$where[] = $prefix . '_rating_id = afi_id';
+		$where['afi_bucket_id'] = 5; // TODO: Pass this in
 
 		$rows  = $dbr->select(
 			array( 'aft_' . $table, 'aft_article_field' ),

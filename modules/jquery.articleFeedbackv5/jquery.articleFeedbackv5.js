@@ -151,7 +151,7 @@
 							<div class="form-item" rel="yes" id="articleFeedbackv5-bucket1-toggle-wrapper-yes">\
 								<label for="articleFeedbackv5-bucket1-toggle-yes"><html:msg key="bucket1-toggle-found-yes-full" /></label>\
 								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-yes" value="yes" /></span>\
-								<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-yes" class="query-button" />\
+								<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-yes" class="query-button" value="yes" />\
 							</div>\
 							<div class="form-item" rel="no" id="articleFeedbackv5-bucket1-toggle-wrapper-no">\
 								<label for="articleFeedbackv5-bucket1-toggle-no"><html:msg key="bucket1-toggle-found-no-full" /></label>\
@@ -238,7 +238,7 @@
 						$other_wrap.find( 'span' ).removeClass( 'articleFeedbackv5-button-placeholder-active' );
 						// check/uncheck radio buttons
 						$wrap.find( 'input' ).attr( 'checked', 'checked' );
-						$other_wrap.find( 'input' ).attr( 'checked', '' );
+						$other_wrap.find( 'input' ).removeAttr( 'checked' );
 						// set default comment message
 						var $txt = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
 						var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
@@ -254,7 +254,7 @@
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.focus( function () {
 						var def_msg = '';
-						var val = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input:checked' ).val();
+						var val = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).val();
 						if ( val == 'yes' ) {
 							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
 						} else if ( val == 'no' ) {
@@ -266,7 +266,7 @@
 					} )
 					.blur( function () {
 						var def_msg = '';
-						var val = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input:checked' ).val();
+						var val = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).val();
 						if ( val == 'yes' ) {
 							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
 						} else if ( val == 'no' ) {
@@ -318,8 +318,14 @@
 			 */
 			getFormData: function () {
 				var data = {};
-				data.toggle = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input:checked' ).val() == 'yes' ?  true : false;
+				var $check = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' );
+				data.found = $check.val() == 'yes' ?  1 : 0;
 				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
+				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
+				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-comment-no' );
+				if ( data.comment == def_msg_yes || data.comment == def_msg_no ) {
+					data.comment = '';
+				}
 				return data;
 			},
 
@@ -335,7 +341,7 @@
 			localValidation: function ( formdata ) {
 				var error = {};
 				var ok = true;
-				if ( $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input:checked' ).length < 1 ) {
+				if ( $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).length < 1 ) {
 					error.toggle = 'Please select an option';
 					ok = false;
 				}
@@ -393,7 +399,7 @@
 			 * The ratings right now are coming from the config, but they really
 			 * can't be configured.  Eventually, these should just be hardcoded.
 			 */
-			ratingInfo: mw.config.get( 'wgArticleFeedbackv5RatingTypesFlipped' ),
+			ratingInfo: mw.config.get( 'wgArticleFeedbackv5Bucket5RatingCategories' ),
 
 			/**
 			 * Only certain users can see the expertise checkboxes and email
@@ -465,7 +471,7 @@
 				var rating_tpl = '\
 					<div class="articleFeedbackv5-rating">\
 						<div class="articleFeedbackv5-label"></div>\
-						<input type="hidden" />\
+						<input type="hidden" name="" />\
 						<div class="articleFeedbackv5-rating-labels articleFeedbackv5-visibleWith-form">\
 							<div class="articleFeedbackv5-rating-label" rel="1"></div>\
 							<div class="articleFeedbackv5-rating-label" rel="2"></div>\
@@ -489,7 +495,9 @@
 
 				// Add the ratings from the options
 				$block.find( '.articleFeedbackv5-ratings' ).each( function () {
-					for ( var key in $.articleFeedbackv5.currentBucket().ratingInfo ) {
+					var info = $.articleFeedbackv5.currentBucket().ratingInfo;
+					for ( var i in info ) {
+						var key = info[i];
 						var	tip_msg = 'articlefeedbackv5-bucket5-' + key + '-tip';
 						var label_msg = 'articlefeedbackv5-bucket5-' + key + '-label';
 						var $rtg = $( rating_tpl ).attr( 'rel', key );
@@ -561,8 +569,7 @@
 				// Name the hidden rating fields
 				$block.find( '.articleFeedbackv5-rating' )
 					.each( function () {
-						var name = $.articleFeedbackv5.currentBucket().ratingInfo[$(this).attr( 'rel' )];
-						$(this).find( 'input:hidden' ) .attr( 'name', 'r' + name );
+						$(this).find( 'input:hidden' ) .attr( 'name', $(this).attr( 'rel' ) );
 					} );
 
 				// Hide the additional options, if the user's in a bucket that
@@ -841,8 +848,7 @@
 						// Ratings
 						$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-rating' ).each( function () {
 							var name = $(this).attr( 'rel' );
-							var info = $.articleFeedbackv5.currentBucket().ratingInfo;
-							var rating = name in info && info[name] in rollup ? rollup[info[name]] : null;
+							var rating = name in rollup ? rollup[name] : null;
 							if (
 								rating !== null
 								&& 'total' in rating
@@ -863,7 +869,7 @@
 								$(this).find( '.articleFeedbackv5-rating-meter div' )
 									.css( 'width', 0 );
 								$(this).find( '.articleFeedbackv5-rating-count' )
-									.text( mw.msg( 'articlefeedbackv5-report-empty' ) );
+									.text( mw.msg( 'articlefeedbackv5-bucket5-report-empty' ) );
 							}
 						} );
 
@@ -902,15 +908,14 @@
 			getFormData: function () {
 				var data = {};
 				var info = $.articleFeedbackv5.currentBucket().ratingInfo;
-				for ( var key in info ) {
-					var id = info[key];
-					data['r' + id] = $.articleFeedbackv5.$holder.find( 'input[name="r' + id + '"]' ).val();
+				for ( var i in info ) {
+					var key = info[i];
+					data[key] = $.articleFeedbackv5.$holder.find( 'input[name="' + key + '"]' ).val();
 				}
-				var expertise = [];
 				$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-expertise input:checked' ).each( function () {
-					expertise.push( $(this).val() );
+					console.log($(this).is(':checked'));
+					data['expertise-' + $( this ).val()] = 1;
 				} );
-				data.expertise = expertise.join( '|' );
 				return data;
 			},
 
@@ -1485,10 +1490,4 @@ $.fn.articleFeedbackv5 = function ( opts ) {
 // }}}
 
 } )( jQuery );
-
-
-
-
-
-
 

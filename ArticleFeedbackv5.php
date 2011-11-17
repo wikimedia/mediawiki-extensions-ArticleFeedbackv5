@@ -47,6 +47,9 @@ $wgArticleFeedbackv5LotteryOdds = 0;
 // default message.
 $wgArticleFeedbackv5Debug = true;
 
+// The rating categories for bucket 5 -- these MUST match the field names in the database.
+$wgArticleFeedbackv5Bucket5RatingCategories = array( 'trustworthy', 'objective', 'complete', 'wellwritten' );
+
 // Bucket settings for display options
 $wgArticleFeedbackv5DisplayBuckets = array(
 	// Users can fall into one of several display buckets (these are defined in
@@ -72,7 +75,6 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// worked out right.
 	'tracked' => true
 );
-
 
 // Bucket settings for tracking users
 $wgArticleFeedbackv5Tracking = array(
@@ -209,3 +211,4 @@ $wgAPIModules['articlefeedbackv5'] = 'ApiArticleFeedbackv5';
 // Special Page
 $wgSpecialPages['ArticleFeedbackv5'] = 'SpecialArticleFeedbackv5';
 $wgSpecialPageGroups['ArticleFeedbackv5'] = 'other';
+

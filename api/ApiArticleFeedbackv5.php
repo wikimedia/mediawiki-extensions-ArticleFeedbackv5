@@ -1,16 +1,35 @@
 <?php
-# This file saves the data and all. The other one loads it.
+/**
+ * ApiArticleFeedbackv5 class
+ *
+ * @package    ArticleFeedback
+ * @subpackage Api
+ * @author     Greg Chiasson <greg@omniti.com>
+ * @author     Reha Sterbin <reha@omniti.com>
+ * @version    $Id$
+ */
+
+/**
+ * This saves the ratings
+ *
+ * @package    ArticleFeedback
+ * @subpackage Api
+ */
 class ApiArticleFeedbackv5 extends ApiBase {
+
+	/**
+	 * Constructor
+	 */
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, '' );
 	}
 
+	/**
+	 * Execute the API call: Save the form values
+	 */
 	public function execute() {
 		global $wgUser, $wgArticleFeedbackv5SMaxage;
 		$params = $this->extractRequestParams();
-
-error_log('saving form');
-error_log(print_r($params,1));
 
 		// Anon token check
 		$token = ApiArticleFeedbackv5Utils::getAnonToken( $params );
@@ -20,40 +39,44 @@ error_log(print_r($params,1));
 #			$this->dieUsage( 'ArticleFeedback is not enabled on this page', 'invalidpage' );
 #		}
 
-		$feedbackId   = $this->getFeedbackId($params);
+		$feedbackId   = $this->getFeedbackId( $params );
 		$dbr          = wfGetDB( DB_SLAVE );
-		$keys         = array();
-		foreach($params as $key => $unused) { $keys[] = $key; }
-		$user_answers = array();
 		$pageId       = $params['pageid'];
 		$bucket       = $params['bucket'];
 		$revisionId   = $params['revid'];
-		$answers      = $dbr->select(
-			'aft_article_field',
-			array('afi_id', 'afi_name', 'afi_data_type'),
-			array('afi_name' => $keys),
-			__METHOD__
-		);
 
-		foreach($answers as $answer) {
-			$type  = $answer->afi_data_type;
-			$value = $params[$answer->afi_name];
-			if($value && $this->validateParam($value, $type)) {
-				$user_answers[] = array(
-					'aa_feedback_id'    => $feedbackId,
-					'aa_field_id'       => $answer->afi_id,
-					"aa_response_$type" => $value
-				);
+		$user_answers = array();
+		$fields = ApiArticleFeedbackv5Utils::getFields();
+		foreach ( $fields as $field ) {
+			if ( $field->afi_bucket_id != $bucket ) {
+				continue;
+			}
+			if ( isset( $params[$field->afi_name] ) ) {
+				$value = $params[$field->afi_name];
+				$type  = $field->afi_data_type;
+				if ( $value === '' ) {
+					continue;
+				}
+				if ( $this->validateParam( $value, $type ) ) {
+					$data = array(
+						'aa_feedback_id' => $feedbackId,
+						'aa_field_id'    => $field->afi_id,
+					);
+					foreach ( array( 'rating', 'text', 'boolean', 'option_id' ) as $t ) {
+						$data["aa_response_$t"] = $t == $type ? $value : null;
+					}
+					$user_answers[] = $data;
+				} else {
+					// TODO: ERROR
+				}
 			}
 		}
-error_log('user answers are');
-error_log(print_r($user_answers,1));
 
-		$ctaId = $this->saveUserRatings($user_answers, $feedbackId, $bucket);
-		$this->updateRollupTables($pageId, $revisionId);
+		$ctaId = $this->saveUserRatings( $user_answers, $feedbackId, $bucket );
+		$this->updateRollupTables( $pageId, $revisionId );
 
-		$squidUpdate = new SquidUpdate(array(
-			wfAppendQuery(wfScript('api'), array(
+		$squidUpdate = new SquidUpdate( array(
+			wfAppendQuery( wfScript( 'api' ), array(
 				'action'       => 'query',
 				'format'       => 'json',
 				'list'         => 'articlefeedback',
@@ -62,83 +85,100 @@ error_log(print_r($user_answers,1));
 				'afuserrating' => 0,
 				'maxage'       => 0,
 				'smaxage'      => $wgArticleFeedbackv5SMaxage
-			))
-		));
+			) )
+		) );
 		$squidUpdate->doUpdate();
 
-		wfRunHooks('ArticleFeedbackChangeRating', array($params));
+		wfRunHooks( 'ArticleFeedbackChangeRating', array( $params ) );
 
-		$this->getResult()->addValue(null, $this->getModuleName(),
-			array('result' => 'Success')
+		$this->getResult()->addValue(
+			null,
+			$this->getModuleName(),
+			array( 'result' => 'Success' )
 		);
 	}
 
-	protected function validateParam($value, $type) {
+	/**
+	 * Validates a value against a field type
+	 *
+	 * @param  $value mixed  the value
+	 * @param  $type  string the field type
+	 * @return bool whether this is okay
+	 */
+	protected function validateParam( $value, $type ) {
 		# rating: int between 1 and 5 (inclusive)
 		# boolean: 1 or 0
 		# option:  option exists
 		# text:    none (maybe xss encode)
-		switch($type) {
+		switch ( $type ) {
 			case 'rating':
-				if(preg_match('/^(1|2|3|4|5)$/', $value)) {
-					return 1;
+				if ( preg_match( '/^(1|2|3|4|5)$/', $value ) ) {
+					return true;
 				}
 				break;
 			case 'boolean':
-				if(preg_match('/^(1|0)$/', $value)) {
-					return 1;
+				if ( preg_match( '/^(1|0)$/', $value ) ) {
+					return true;
 				}
 				break;
 			case 'option':
 				# TODO: check for option existance.
+				break;
 			case 'text':
-				return 1;
-				break;
+				return true;
 			default:
-				return 0;
-				break;
+				return false;
 		}
-
-		return 0;
+		return false;
 	}
 
-	public function updateRollupTables($page, $revision) {
+	/**
+	 * Update the rollup tables
+	 *
+	 * @param $page     int the page id
+	 * @param $revision int the revision id
+	 */
+	public function updateRollupTables( $page, $revision ) {
+# Select rollup doesn't work yet
 #		foreach( array( 'rating', 'boolean', 'select' ) as $type ) {
-#		foreach( array( 'rating', 'boolean' ) as $type ) {
-		foreach( array( 'rating' ) as $type ) {
+		foreach( array( 'rating', 'boolean' ) as $type ) {
 			$this->updateRollup( $page, $revision, $type );
 		}
 	}
 
-	# TODO: This breaks on the select/option_id type.
+	/**
+	 * Update the rollup tables
+	 *
+	 * @param $page     int    the page id
+	 * @param $revision int    the revision id
+	 * @param $type     string the type (rating, select, or boolean)
+	 */
 	private function updateRollup($pageId, $revId, $type) {
 		global $wgArticleFeedbackv5RatingLifetime;
 		$dbr   = wfGetDB( DB_SLAVE );
 		$dbw   = wfGetDB( DB_MASTER );
-		$limit = ApiArticleFeedbackv5Utils::getRevisionLimit($pageId);
+		$limit = ApiArticleFeedbackv5Utils::getRevisionLimit( $pageId );
 
 		# sanity check
-		if( $type != 'rating' && $type != 'select' 
-		 && $type != 'boolean' ) { return 0; }
+		if ( $type != 'rating' && $type != 'select' && $type != 'boolean' ) {
+			return 0;
+		}
 
 		$rows = $dbr->select(
-			array( 'aft_article_answer', 'aft_article_feedback', 
-			 'aft_article_field' ),
-			array( 'aa_field_id', 
-			 "SUM(aa_response_$type) AS earned", 
-			 'COUNT(*) AS submits'),
+			array( 'aft_article_answer', 'aft_article_feedback', 'aft_article_field' ),
+			array( 'aa_field_id', "SUM(aa_response_$type) AS earned", 'COUNT(*) AS submits' ),
 			array(
 				'afi_data_type'  => $type,
 				'af_page_id'     => $pageId,
 				'aa_feedback_id = af_id',
 				'afi_id = aa_field_id',
-				"af_revision_id >= $limit"
+				"af_revision_id >= $limit",
 			),
 			__METHOD__,
 			array( 'GROUP BY' =>  'aa_field_id' )
 		);
 
-		if( $type == 'select' ) {
+		if ( $type == 'select' ) {
 			$page_prefix = 'afsr_';
 			$rev_prefix  = 'arfsr_';
 		} else {
@@ -148,76 +188,74 @@ error_log(print_r($user_answers,1));
 		$page_data  = array();
 		$rev_data   = array();
 		$rev_table  = 'aft_article_revision_feedback_'
-		 .( $type == 'select' ? 'select' : 'ratings' ).'_rollup'; 
+			. ( $type == 'select' ? 'select' : 'ratings' )
+			. '_rollup';
 		$page_table = 'aft_article_feedback_'
-		 .( $type == 'select' ? 'select' : 'ratings' ).'_rollup'; 
+			. ( $type == 'select' ? 'select' : 'ratings' )
+			. '_rollup';
 
-		foreach($rows as $row) {
-			if($type == 'rating') {
-				$points = $row->submits * 5;
-			} else {
-				$points = $row->submits;
-			}
-
-			if(!array_key_exists($row->aa_field_id, $page_data)) {
+		foreach ( $rows as $row ) {
+			if ( !array_key_exists( $row->aa_field_id, $page_data ) ) {
 				$page_data[$row->aa_field_id] = array(
-					$page_prefix.'page_id' => $pageId,
-					$page_prefix.'total'   => 0,
-					$page_prefix.'count'   => 0,
-					$page_prefix.($type == 'select' ? 'option' : 'rating').'_id' => $row->aa_field_id
+					$page_prefix . 'page_id' => $pageId,
+					$page_prefix . 'total'   => 0,
+					$page_prefix . 'count'   => 0,
+					$page_prefix . ($type == 'select' ? 'option' : 'rating') . '_id' => $row->aa_field_id
 				);
 			}
 
 			$rev_data[] = array(
-				$rev_prefix.'page_id'     => $pageId,
-				$rev_prefix.'revision_id' => $revId,
-				$rev_prefix.'total'       => $row->earned,
-				$rev_prefix.'count'       => $points,
-				$rev_prefix.($type == 'select' ? 'option' : 'rating').'_id' => $row->aa_field_id
+				$rev_prefix . 'page_id'     => $pageId,
+				$rev_prefix . 'revision_id' => $revId,
+				$rev_prefix . 'total'       => $row->earned,
+				$rev_prefix . 'count'       => $points,
+				$rev_prefix . ($type == 'select' ? 'option' : 'rating') . '_id' => $row->aa_field_id
 			);
 			$page_data[$row->aa_field_id][$page_prefix.'total'] += $row->earned;
-			$page_data[$row->aa_field_id][$page_prefix.'count'] += $points;
+			$page_data[$row->aa_field_id][$page_prefix.'count'] += $row->submits;
 		}
-
-		# Hack becuse you can't use array keys or insert barfs.
-		$tmp = array();
-		foreach($page_data as $p) {
-			$tmp[] = $p;
-		}
-		$page_data = $tmp;
 
 		$dbw->begin();
 		$dbw->delete( $rev_table, array(
-			$rev_prefix.'page_id'     => $pageId,
-			$rev_prefix.'revision_id' => $revId,
+			$rev_prefix . 'page_id'     => $pageId,
+			$rev_prefix . 'revision_id' => $revId,
+			$rev_prefix . 'rating_id'   => array_keys( $page_data ),
 		) );
-		$dbw->insert( $rev_table,  $rev_data );
+		$dbw->insert( $rev_table, $rev_data );
 		$dbw->delete( $page_table, array(
-			$page_prefix.'page_id'     => $pageId,
+			$page_prefix . 'page_id'   => $pageId,
+			$page_prefix . 'rating_id' => array_keys( $page_data ),
 		) );
-		$dbw->insert( $page_table, $page_data );
+		$dbw->insert( $page_table, array_values ( $page_data ) );
 
 		$dbw->commit();
 	}
 
+	/**
+	 * Gets the feedback id
+	 *
+	 * @param  $params array the parameters
+	 * @return int the feedback id
+	 */
 	public function getFeedbackId($params) {
 		global $wgUser;
 		$dbw       = wfGetDB( DB_MASTER );
 		$revId     = $params['revid'];
 		$bucket    = $params['revid'];
-		$token     = ApiArticleFeedbackv5Utils::getAnonToken($params);
+		$token     = ApiArticleFeedbackv5Utils::getAnonToken( $params );
 		$timestamp = $dbw->timestamp();
 
 		# make sure we have a page/user
-		if(!$params['pageid'] || !$wgUser) { return null; }
-
-		# Fetch this if it wasn't passed in
-		if(!$revId) {
-			$revId = ApiArticleFeedbackv5Utils::getRevisionId($params['pageid']);
-error_log('rev id?');
+		if ( !$params['pageid'] || !$wgUser) {
+			return null;
 		}
 
-		$dbw->insert('aft_article_feedback', array(
+		# Fetch this if it wasn't passed in
+		if ( !$revId ) {
+			$revId = ApiArticleFeedbackv5Utils::getRevisionId($params['pageid']);
+		}
+
+		$dbw->insert( 'aft_article_feedback', array(
 			'af_page_id'         => $params['pageid'],
 			'af_revision_id'     => $revId,
 			'af_created'         => $timestamp,
@@ -225,17 +263,22 @@ error_log('rev id?');
 			'af_user_text'       => $wgUser->getName(),
 			'af_user_anon_token' => $token,
 			'af_bucket_id'       => $bucket,
-		));
+		) );
 
 		return $dbw->insertID();
 	}
 
 	/**
 	 * Inserts the user's rating for a specific revision
+	 *
+	 * @param  array $data       the data
+	 * @param  int   $feedbackId the feedback id
+	 * @param  int   $bucket     the bucket id
+	 * @return int   the cta id
 	 */
-	private function saveUserRatings($data, $feedbackId, $bucket) {
-		$dbw   = wfGetDB(DB_MASTER);
-		$ctaId = $this->getCTAId($data, $bucket);
+	private function saveUserRatings( $data, $feedbackId, $bucket ) {
+		$dbw   = wfGetDB( DB_MASTER );
+		$ctaId = $this->getCTAId( $data, $bucket );
 
 		$dbw->begin();
 		$dbw->insert( 'aft_article_answer', $data, __METHOD__ );
@@ -250,10 +293,22 @@ error_log('rev id?');
 		return $ctaId;
 	}
 
+	/**
+	 * Picks a CTA to send the user to
+	 *
+	 * @param  $answers array the user's answers
+	 * @param  $bucket  int   the bucket id
+	 * @return int the cta id
+	 */
 	public function getCTAId($answers, $bucket) {
-	    return 1; # Hard-code this for now.
+		return 1; # Hard-code this for now.
 	}
 
+	/**
+	 * Gets the allowed parameters
+	 *
+	 * @return array the params info, indexed by allowed key
+	 */
 	public function getAllowedParams() {
 		$ret = array(
 			'pageid' => array(
@@ -276,7 +331,7 @@ error_log('rev id?');
 		);
 
 		$fields = ApiArticleFeedbackv5Utils::getFields();
-		foreach( $fields as $field ) {
+		foreach ( $fields as $field ) {
 			$ret[$field->afi_name] = array(
 				ApiBase::PARAM_TYPE     => 'string',
 				ApiBase::PARAM_REQUIRED => false,
@@ -287,27 +342,45 @@ error_log('rev id?');
 		return $ret;
 	}
 
+	/**
+	 * Gets the parameter descriptions
+	 *
+	 * @return array the descriptions, indexed by allowed key
+	 */
 	public function getParamDescription() {
-		$fields = ApiArticleFeedbackv5Utils::getFields();
-		$ret    = array(
+		$ret = array(
 			'pageid'    => 'Page ID to submit feedback for',
 			'revid'     => 'Revision ID to submit feedback for',
 			'anontoken' => 'Token for anonymous users',
 			'bucket'    => 'Which rating widget was shown to the user',
-			'expertise' => 'What kinds of expertise does the user claim to have',
 		);
-
-		foreach( $fields as $f ) {
-		    $ret[$f->afi_name] = 'Optional feedback field, only appears on certain "buckets".';
+		$fields = ApiArticleFeedbackv5Utils::getFields();
+		foreach ( $fields as $f ) {
+			$ret[$f->afi_name] = 'Optional feedback field, only appears on certain "buckets".';
 		}
-
 		return $ret;
 	}
 
+	/**
+	 * Returns whether this API call is post-only
+	 *
+	 * @return bool
+	 */
 	public function mustBePosted() { return true; }
 
+	/**
+	 * Returns whether this is a write call
+	 *
+	 * @return bool
+	 */
 	public function isWriteMode() { return true; }
 
+	/**
+	 * TODO
+	 * Gets a list of possible errors
+	 *
+	 * @return bool
+	 */
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'missingparam', 'anontoken' ),
@@ -316,19 +389,37 @@ error_log('rev id?');
 		) );
 	}
 
+	/**
+	 * Gets a description
+	 *
+	 * @return string
+	 */
 	public function getDescription() {
 		return array(
 			'Submit article feedback'
 		);
 	}
 
+	/**
+	 * TODO
+	 * Gets a list of examples
+	 *
+	 * @return array
+	 */
 	protected function getExamples() {
 		return array(
 			'api.php?action=articlefeedbackv5'
 		);
 	}
 
+	/**
+	 * Gets the version info
+	 *
+	 * @return string the SVN version info
+	 */
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}
+
 }
+

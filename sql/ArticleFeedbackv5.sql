@@ -97,12 +97,12 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback_select_rollup (
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_revision_feedback_select_rollup (
-    arfsr_page_id     integer unsigned NOT NULL,
-    arfsr_revision_id integer unsigned NOT NULL,
-    arfsr_option_id   integer unsigned NOT NULL,
-    arfsr_total       integer unsigned NOT NULL,
-    arfsr_count       integer unsigned NOT NULL,
-    PRIMARY KEY (arfsr_revision_id, arfsr_option_id)
+	arfsr_page_id     integer unsigned NOT NULL,
+	arfsr_revision_id integer unsigned NOT NULL,
+	arfsr_option_id   integer unsigned NOT NULL,
+	arfsr_total       integer unsigned NOT NULL,
+	arfsr_count       integer unsigned NOT NULL,
+	PRIMARY KEY (arfsr_revision_id, arfsr_option_id)
 ) /*$wgDBTableOptions*/;
 
 -- Mostyl taken from avtV4
@@ -118,9 +118,15 @@ CREATE TABLE  IF NOT EXISTS /*_*/aft_article_feedback_properties (
 
 -- TODO: Add indices
 
-INSERT INTO aft_article_field(afi_name, afi_data_type) VALUES ('trustworthy', 'rating');
-INSERT INTO aft_article_field(afi_name, afi_data_type) VALUES ('objective', 'rating');
-INSERT INTO aft_article_field(afi_name, afi_data_type) VALUES ('complete', 'rating');
-INSERT INTO aft_article_field(afi_name, afi_data_type) VALUES ('wellwritten', 'rating');
-INSERT INTO aft_article_field(afi_name, afi_data_type) VALUES ('expertise', 'boolean');
-INSERT INTO aft_article_field(afi_name, afi_data_type) VALUES ('comment', 'text');
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('found', 'boolean', 1);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('comment', 'text', 1);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('trustworthy', 'rating', 5);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('objective', 'rating', 5);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('complete', 'rating', 5);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('wellwritten', 'rating', 5);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-general', 'boolean', 5);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-studies', 'boolean', 5);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-profession', 'boolean', 5);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-hobby', 'boolean', 5);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-other', 'boolean', 5);
+

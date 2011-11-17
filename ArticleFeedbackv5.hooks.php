@@ -174,25 +174,24 @@ class ArticleFeedbackv5Hooks {
 	 * ResourceLoaderRegisterModules hook
 	 */
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
-		global $wgExtensionAssetsPath;
+		global $wgExtensionAssetsPath,
+			$wgArticleFeedbackv5Bucket5RatingCategories;
+
 		$localpath = dirname( __FILE__ ) . '/modules';
 		$remotepath = "$wgExtensionAssetsPath/ArticleFeedbackv5/modules";
 
 		foreach ( self::$modules as $name => $resources ) {
 			if ( $name == 'jquery.articleFeedbackv5' ) {
 				// Bucket 5: labels and tooltips
-				$fields = ApiArticleFeedbackv5Utils::getFields();
 				$prefix = 'articlefeedbackv5-bucket5-';
-				foreach( $fields as $field ) {
-					if($fielf->afi_data_type == 'rating') {
- 						$resources['messages'][] = $prefix . $field->afi_name . '-label';
-						$resources['messages'][] = $prefix . $field->afi_name . '-tip';
-						$resources['messages'][] = $prefix . $field->afi_name . '-tooltip-1';
-						$resources['messages'][] = $prefix . $field->afi_name . '-tooltip-2';
-						$resources['messages'][] = $prefix . $field->afi_name . '-tooltip-3';
-						$resources['messages'][] = $prefix . $field->afi_name . '-tooltip-4';
-						$resources['messages'][] = $prefix . $field->afi_name . '-tooltip-5';
-					}
+				foreach ( $wgArticleFeedbackv5Bucket5RatingCategories as $field ) {
+					$resources['messages'][] = $prefix . $field . '-label';
+					$resources['messages'][] = $prefix . $field . '-tip';
+					$resources['messages'][] = $prefix . $field . '-tooltip-1';
+					$resources['messages'][] = $prefix . $field . '-tooltip-2';
+					$resources['messages'][] = $prefix . $field . '-tooltip-3';
+					$resources['messages'][] = $prefix . $field . '-tooltip-4';
+					$resources['messages'][] = $prefix . $field . '-tooltip-5';
 				}
 			}
 			$resourceLoader->register(
@@ -211,6 +210,7 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5BlacklistCategories,
 			$wgArticleFeedbackv5LotteryOdds,
 			$wgArticleFeedbackv5Debug,
+			$wgArticleFeedbackv5Bucket5RatingCategories,
 			$wgArticleFeedbackv5DisplayBuckets,
 			$wgArticleFeedbackv5Tracking,
 			$wgArticleFeedbackv5Options,
@@ -220,18 +220,13 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
 		$vars['wgArticleFeedbackv5LotteryOdds'] = $wgArticleFeedbackv5LotteryOdds;
 		$vars['wgArticleFeedbackv5Debug'] = $wgArticleFeedbackv5Debug;
+		$vars['wgArticleFeedbackv5Bucket5RatingCategories'] = $wgArticleFeedbackv5Bucket5RatingCategories;
 		$vars['wgArticleFeedbackv5DisplayBuckets'] = $wgArticleFeedbackv5DisplayBuckets;
 		$vars['wgArticleFeedbackv5Tracking'] = $wgArticleFeedbackv5Tracking;
 		$vars['wgArticleFeedbackv5Options'] = $wgArticleFeedbackv5Options;
 		$vars['wgArticleFeedbackv5Namespaces'] = $wgArticleFeedbackv5Namespaces;
 		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMsgForContent( 'articlefeedbackv5-bucket5-form-panel-explanation-link' );
 		$vars['wgArticleFeedbackv5TermsPage'] = wfMsgForContent( 'articlefeedbackv5-transparency-terms-url' );
-
-		$fields = ApiArticleFeedbackv5Utils::getFields();
-		foreach( $fields as $field ) {
-			$vars['wgArticleFeedbackv5RatingTypes'][] = $field->afi_name;
-			$vars['wgArticleFeedbackv5RatingTypesFlipped'][$field->afi_name] = $field->afi_id;
-		}
 		return true;
 	}
 

@@ -1,9 +1,33 @@
 <?php
-# ApiArticleFeedback and ApiQueryArticleFeedback don't descend from the same
-# parent, which is why these are all static methods instead of just a parent
-# class with inheritable methods. I don't get it either.
+/**
+ * ApiViewRatingsArticleFeedbackv5 class
+ *
+ * @package    ArticleFeedback
+ * @subpackage Api
+ * @author     Greg Chiasson <greg@omniti.com>
+ * @author     Reha Sterbin <reha@omniti.com>
+ * @version    $Id: ApiViewRatingsArticleFeedbackv5.php 103335 2011-11-16 16:25:53Z gregchiasson $
+ */
+
+/**
+ * Utility methods used by api calls
+ *
+ * ApiArticleFeedback and ApiQueryArticleFeedback don't descend from the same
+ * parent, which is why these are all static methods instead of just a parent
+ * class with inheritable methods. I don't get it either.
+ *
+ * @package    ArticleFeedback
+ * @subpackage Api
+ */
 class ApiArticleFeedbackv5Utils {
-	public static function getAnonToken($params) {
+
+	/**
+	 * Gets the anonymous token from the params
+	 *
+	 * @param  $params array the params
+	 * @return string the token, or null if the user is not anonymous
+	 */
+	public static function getAnonToken( $params ) {
 		global $wgUser;
 		$token = null;
 		if ( $wgUser->isAnon() ) {
@@ -17,11 +41,16 @@ class ApiArticleFeedbackv5Utils {
 		} else {
 			$token = '';
 		}
-
 		return $token;
 	}
 
-	public static function isFeedbackEnabled($params) {
+	/**
+	 * Returns whether feedback is enabled for this page
+	 *
+	 * @param  $params array the params
+	 * @return bool
+	 */
+	public static function isFeedbackEnabled( $params ) {
 		global $wgArticleFeedbackNamespaces;
 		$title = Title::newFromID( $params['pageid'] );
 		if (
@@ -33,11 +62,17 @@ class ApiArticleFeedbackv5Utils {
 			|| $title->isRedirect()
 		) {
 			// ...then feedback diabled
-			return 0;
+			return false;
 		}
-		return 1;
+		return true;
 	}
 
+	/**
+	 * Returns the revision limit for a page
+	 *
+	 * @param  $pageId int the page id
+	 * @return int the revision limit
+	 */
 	public static function getRevisionLimit( $pageId ) {
 		global $wgArticleFeedbackv5RatingLifetime;
 		$dbr      = wfGetDB( DB_SLAVE );
@@ -51,11 +86,16 @@ class ApiArticleFeedbackv5Utils {
 				'OFFSET'   => $wgArticleFeedbackv5RatingLifetime - 1
 			)
 		);
-
-		return $revision ? intval($revision) : 0;
+		return $revision ? intval( $revision ) : 0;
 	}
 
-	public static function getRevisionId($pageId) {
+	/**
+	 * Gets the most recent revision id for a page id
+	 *
+	 * @param  $pageId int the page id
+	 * @return int the revision id
+	 */
+	public static function getRevisionId( $pageId ) {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$revId = $dbr->selectField(
 			'revision', 'rev_id',
@@ -70,14 +110,21 @@ class ApiArticleFeedbackv5Utils {
 		return $revId;
 	}
 
-	# TODO: use memcache
+	/**
+	 * Gets the known feedback fields
+	 *
+	 * TODO: use memcache
+	 *
+	 * @return array the rows in the aft_article_field table
+	 */
 	public static function getFields() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$rv  = $dbr->select(
 			'aft_article_field',
-			array( 'afi_name', 'afi_id', 'afi_data_type' )
+			array( 'afi_name', 'afi_id', 'afi_data_type', 'afi_bucket_id' )
 		);
-
 		return $rv;
 	}
+
 }
+

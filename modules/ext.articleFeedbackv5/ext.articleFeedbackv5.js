@@ -213,7 +213,6 @@ var survey = new ( function() {
 } )();
 
 var config = {
-	'ratings': mw.config.get( 'wgArticleFeedbackv5RatingTypesFlipped' ),
 	'pitches': {
 		'survey': {
 			'weight': 1,
