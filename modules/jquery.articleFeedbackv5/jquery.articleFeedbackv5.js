@@ -166,7 +166,8 @@
 						<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
 					</div>\
 					<div class="articleFeedbackv5-disclosure">\
-						<p></p>\
+						<p class="articlefeedbackv5-shared-on-feedback"></p>\
+						<p class="articlefeedbackv5-transparency-terms"></p>\
 					</div>\
 					<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket1-form-submit" /></button>\
 					<div class="clear"></div>\
@@ -179,23 +180,25 @@
 				$block.find( '.articleFeedbackv5-tooltip' ).hide();
 
 				// Fill in the disclosure text
-				$block.find( '.articleFeedbackv5-disclosure p' )
+				$block.find( '.articlefeedbackv5-shared-on-feedback' )
 					.html( $.articleFeedbackv5.buildLink(
-						'articlefeedbackv5-bucket1-disclosure',
+						'articlefeedbackv5-shared-on-feedback',
 						{
 							href: mw.config.get( 'wgScript' ) + '?' + $.param( {
 								title: mw.config.get( 'wgPageName' ),
 								action: 'feedback'
 							} ),
-							text: 'articlefeedbackv5-bucket1-disclosure-shared-linktext',
+							text: 'articlefeedbackv5-shared-on-feedback-linktext',
 							target: '_blank'
-						},
+						} ) );
+				$block.find( '.articlefeedbackv5-transparency-terms' )
+					.html( $.articleFeedbackv5.buildLink(
+						'articlefeedbackv5-transparency-terms',
 						{
 							href: mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ),
-							text: 'articlefeedbackv5-bucket1-disclosure-privacy-policy-linktext',
+							text: 'articlefeedbackv5-transparency-terms-linktext',
 							target: '_blank'
-						}
-					).replace( /\$0/, '<br />' ) );
+						} ) );
 
 				// Localize the block
 				$block.localize( { 'prefix': 'articlefeedbackv5-' } );
