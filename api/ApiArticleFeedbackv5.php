@@ -215,6 +215,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$page_data[$row->aa_field_id][$page_prefix.'count'] += $row->submits;
 		}
 
+		if ( count( $page_data ) < 1 ) {
+			return;
+		}
+
 		$dbw->begin();
 		$dbw->delete( $rev_table, array(
 			$rev_prefix . 'page_id'     => $pageId,
@@ -241,7 +245,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		global $wgUser;
 		$dbw       = wfGetDB( DB_MASTER );
 		$revId     = $params['revid'];
-		$bucket    = $params['revid'];
+		$bucket    = $params['bucket'];
 		$token     = ApiArticleFeedbackv5Utils::getAnonToken( $params );
 		$timestamp = $dbw->timestamp();
 
