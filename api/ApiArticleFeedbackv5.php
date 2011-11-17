@@ -208,7 +208,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				$rev_prefix . 'page_id'     => $pageId,
 				$rev_prefix . 'revision_id' => $revId,
 				$rev_prefix . 'total'       => $row->earned,
-				$rev_prefix . 'count'       => $points,
+				$rev_prefix . 'count'       => $row->submits,
 				$rev_prefix . ($type == 'select' ? 'option' : 'rating') . '_id' => $row->aa_field_id
 			);
 			$page_data[$row->aa_field_id][$page_prefix.'total'] += $row->earned;
