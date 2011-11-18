@@ -263,7 +263,7 @@
 						if ( $( this ).val() == def_msg ) {
 							$( this ).val( '' );
 						}
-						$(this).addClass("active");
+						$(this).addClass( 'active' );
 					})
 					.blur( function () {
 						var def_msg = '';
