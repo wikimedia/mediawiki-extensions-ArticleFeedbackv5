@@ -139,7 +139,7 @@
 							<div class="tooltip-repeat">\
 								<h3><html:msg key="bucket1-tooltip-title" /></h3>\
 								<p><html:msg key="bucket1-tooltip-info" /></p>\
-								<p><a target="_blank" href="#"><html:msg key="bucket1-tooltip-linktext" /></a></p>\
+								<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5"><html:msg key="bucket1-tooltip-linktext" /></a></p>\
 							</div>\
 							<div class="tooltip-bottom"></div>\
 						</div>\
@@ -252,7 +252,7 @@
 
 				// Clear out the question on focus
 				$block.find( '.articleFeedbackv5-comment textarea' )
-					.focus( function () {
+					.focus( function () {			
 						var def_msg = '';
 						var val = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).val();
 						if ( val == 'yes' ) {
@@ -263,7 +263,8 @@
 						if ( $( this ).val() == def_msg ) {
 							$( this ).val( '' );
 						}
-					} )
+						$(this).addClass(active);
+					})
 					.blur( function () {
 						var def_msg = '';
 						var val = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).val();
@@ -274,8 +275,9 @@
 						}
 						if ( $( this ).val() == '' ) {
 							$( this ).val( def_msg );
-						}
+						} 
 					} );
+					
 
 				// Attach the submit
 				$block.find( '.articleFeedbackv5-submit' )

@@ -473,6 +473,7 @@
 .articleFeedbackv5-panel .instructions-left {
 	float:left;
 	margin: 0 15px 0 0;
+	font-size: 1.2em;
 }
 .articleFeedbackv5-panel .buttons {
 	float: left;
@@ -513,8 +514,12 @@
 	height: 68px;
 	overflow: hidden;
 	padding: 10px;
-	font-size: 14px;
+	font-size: 1.0em;
 	font: sans-serif;
+	color: #ddd;
+}
+.articleFeedbackv5-panel .feedback-text.active {
+	color: #000;
 }
 .articleFeedbackv5-panel .articleFeedbackv5-disclosure {
 	float: left;
@@ -523,6 +528,7 @@
 }
 .articleFeedbackv5-panel .articleFeedbackv5-disclosure p {
 	margin: 0;
+	font-size: 0.75em;
 }
 .articleFeedbackv5-panel .articleFeedbackv5-submit {
 	float: right;
