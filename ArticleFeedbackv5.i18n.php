@@ -31,9 +31,9 @@ $messages['en'] = array(
 	/* ext.articleFeedbackv5 and jquery.articleFeedbackv5 */
 	/* START Messages needing translation */
 	'articlefeedbackv5-bucket1-title' => 'Help improve this article',
-    'articlefeedbackv5-bucket1-tooltip-title' => 'What is This?',
-    'articlefeedbackv5-bucket1-tooltip-info' => 'Wikipedia\'s new Article Feedback system is designed to help you help us. We need your input to make Wikipedia the best encyclopedia in the world.',
-    'articlefeedbackv5-bucket1-tooltip-linktext' => 'Learn more about Article Feedback',
+	'articlefeedbackv5-bucket1-tooltip-title' => 'What is This?',
+	'articlefeedbackv5-bucket1-tooltip-info' => 'Wikipedia\'s new Article Feedback system is designed to help you help us. We need your input to make Wikipedia the best encyclopedia in the world.',
+	'articlefeedbackv5-bucket1-tooltip-linktext' => 'Learn more about Article Feedback',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Did you find what you were looking for?',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Yes',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'No',
@@ -42,8 +42,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket1-question-comment-yes' => 'What did you like most?  Share your praise with the editors.',
 	'articlefeedbackv5-bucket1-question-comment-no' => 'What\'s missing? Any suggestions for improvement?',
 	'articlefeedbackv5-bucket1-disclosure' => 'Your comment will be shared on this $1. $0By posting, you agree to transparency under these $2.',
-    'articlefeedbackv5-bucket1-disclosure-shared-linktext' => 'feedback page',
-    'articlefeedbackv5-bucket1-disclosure-privacy-policy-linktext' => 'terms',
+	'articlefeedbackv5-bucket1-disclosure-shared-linktext' => 'feedback page',
+	'articlefeedbackv5-bucket1-disclosure-privacy-policy-linktext' => 'terms',
 	'articlefeedbackv5-bucket1-form-pending' => 'Your feedback has not been submitted yet',
 	'articlefeedbackv5-bucket5-form-success' => 'Saved successfully',
 	'articlefeedbackv5-bucket1-form-submit' => 'Post Your Feedback',
