@@ -262,8 +262,9 @@
 						}
 						if ( $( this ).val() == def_msg ) {
 							$( this ).val( '' );
+							$(this).addClass( 'active' );
 						}
-						$(this).addClass( 'active' );
+						
 					})
 					.blur( function () {
 						var def_msg = '';
@@ -275,7 +276,8 @@
 						}
 						if ( $( this ).val() == '' ) {
 							$( this ).val( def_msg );
-						} 
+							$(this).removeClass( 'active' );
+						}
 					} );
 					
 
