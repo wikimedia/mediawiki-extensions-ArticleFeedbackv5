@@ -26,7 +26,7 @@
  *   5. Rate This Page
  *   	The existing article feedback tool, except that it can use any of the
  *   	CTA types.
- *   6. No Feedback
+ *   0. No Feedback
  *   	Shows nothing at all.
  * The available CTAs are:
  *   1. Edit this page
@@ -68,7 +68,7 @@
 	 *
 	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_form_interface
 	 */
-	$.articleFeedbackv5.bucketId = 6;
+	$.articleFeedbackv5.bucketId = 0;
 
 	/**
 	 * The CTA is the view presented to a user who has successfully submitted
@@ -112,6 +112,14 @@
 	 */
 	$.articleFeedbackv5.buckets = {
 
+		// {{{ Bucket 0
+
+		/**
+		 * Bucket 0: No form
+		 */
+		'0': { }
+
+		// }}}
 		// {{{ Bucket 1
 
 		/**
@@ -346,6 +354,639 @@
 				var error = {};
 				var ok = true;
 				if ( $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).length < 1 ) {
+					error.toggle = 'Please select an option';
+					ok = false;
+				}
+				return ok ? false : error;
+			},
+
+			// }}}
+			// {{{ markFormError
+
+			/**
+			 * Marks any errors on the form
+			 *
+			 * @param object error errors, indexed by field name
+			 */
+			markFormError: function ( error ) {
+				if ( '_api' in error ) {
+					$.articleFeedbackv5.markShowstopperError( error._api.info );
+				} else {
+					alert( 'Validation error' );
+					mw.log( 'Validation error' );
+				}
+				console.log( error );
+			},
+
+			// }}}
+			// {{{ setSuccessState
+
+			/**
+			 * Sets the success state
+			 */
+			setSuccessState: function () {
+				var $h = $.articleFeedbackv5.$holder;
+				$h.find( '.articleFeedbackv5-success span' ).fadeIn( 'fast' );
+				$.articleFeedbackv5.successTimeout = setTimeout( function () {
+					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-success span' )
+						.fadeOut( 'slow' );
+				}, 5000 );
+			},
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ Bucket 2
+
+		/**
+		 * Bucket 2: Help Improve This Article
+		 */
+		'2': {
+
+			// {{{ buildForm
+
+			/**
+			 * Builds the empty form
+			 *
+			 * @return Element the form
+			 */
+			buildForm: function () {
+
+				// The overall template
+				var block_tpl = '\
+					<form>\
+					<div class="title-wrap">\
+						<h2 class="articleFeedbackv5-title"><html:msg key="bucket2-title" /></h2>\
+						<a class="articleFeedbackv5-tooltip-trigger"></a>\
+						<div class="articleFeedbackv5-tooltip">\
+							<div class="tooltip-top"></div>\
+							<div class="tooltip-repeat">\
+								<h3><html:msg key="bucket2-tooltip-title" /></h3>\
+								<p><html:msg key="bucket2-tooltip-info" /></p>\
+								<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5"><html:msg key="bucket2-tooltip-linktext" /></a></p>\
+							</div>\
+							<div class="tooltip-bottom"></div>\
+						</div>\
+						<div class="clear"></div>\
+					</div>\
+					<div class="form-row articleFeedbackv5-bucket2-toggle">\
+						<p class="instructions-left"><html:msg key="bucket2-question-toggle" /></p>\
+						<div class="buttons">\
+							<div class="form-item" rel="yes" id="articleFeedbackv5-bucket2-toggle-wrapper-yes">\
+								<label for="articleFeedbackv5-bucket2-toggle-yes"><html:msg key="bucket2-toggle-found-yes-full" /></label>\
+								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket2-toggle-found-yes" value="yes" /></span>\
+								<input type="radio" name="toggle" id="articleFeedbackv5-bucket2-toggle-yes" class="query-button" value="yes" />\
+							</div>\
+							<div class="form-item" rel="no" id="articleFeedbackv5-bucket2-toggle-wrapper-no">\
+								<label for="articleFeedbackv5-bucket2-toggle-no"><html:msg key="bucket2-toggle-found-no-full" /></label>\
+								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket2-toggle-found-no" /></span>\
+								<input type="radio" name="toggle" id="articleFeedbackv5-bucket2-toggle-no" class="query-button last" value="no" />\
+							</div>\
+							<div class="clear"></div>\
+						</div>\
+						<div class="clear"></div>\
+					</div>\
+					<div class="articleFeedbackv5-comment">\
+						<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
+					</div>\
+					<div class="articleFeedbackv5-disclosure">\
+						<p class="articlefeedbackv5-shared-on-feedback"></p>\
+						<p class="articlefeedbackv5-transparency-terms"></p>\
+					</div>\
+					<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket2-form-submit" /></button>\
+					<div class="clear"></div>\
+					</form>\
+					';
+				// Start up the block to return
+				var $block = $( block_tpl );
+				
+				// Start out the tooltip hidden
+				$block.find( '.articleFeedbackv5-tooltip' ).hide();
+
+				// Fill in the disclosure text
+				$block.find( '.articlefeedbackv5-shared-on-feedback' )
+					.html( $.articleFeedbackv5.buildLink(
+						'articlefeedbackv5-shared-on-feedback',
+						{
+							href: mw.config.get( 'wgScript' ) + '?' + $.param( {
+								title: mw.config.get( 'wgPageName' ),
+								action: 'feedback'
+							} ),
+							text: 'articlefeedbackv5-shared-on-feedback-linktext',
+							target: '_blank'
+						} ) );
+				$block.find( '.articlefeedbackv5-transparency-terms' )
+					.html( $.articleFeedbackv5.buildLink(
+						'articlefeedbackv5-transparency-terms',
+						{
+							href: mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ),
+							text: 'articlefeedbackv5-transparency-terms-linktext',
+							target: '_blank'
+						} ) );
+
+				// Localize the block
+				$block.localize( { 'prefix': 'articlefeedbackv5-' } );
+
+				// Turn the submit into a slick button
+				$block.find( '.articleFeedbackv5-submit' )
+					.button()
+					.addClass( 'ui-button-blue' )
+
+				return $block;
+			},
+
+			// }}}
+			// {{{ bindEvents
+
+			/**
+			 * Binds any events
+			 *
+			 * @param $block element the form block
+			 */
+			bindEvents: function ( $block ) {
+
+				// Attach the submit
+				$block.find( '.articleFeedbackv5-submit' )
+					.click( function ( e ) {
+						e.preventDefault();
+						$.articleFeedbackv5.submitForm();
+					} );
+
+			},
+
+			// }}}
+			// {{{ enableSubmission
+
+			/**
+			 * Enables or disables submission of the form
+			 *
+			 * @param state bool true to enable; false to disable
+			 */
+			enableSubmission: function ( state ) {
+				var $h = $.articleFeedbackv5.$holder;
+				if ( state ) {
+					if ($.articleFeedbackv5.successTimeout) {
+						clearTimeout( $.articleFeedbackv5.successTimeout );
+					}
+					$h.find( '.articleFeedbackv5-submit' ).button( { 'disabled': false } );
+					$h.find( '.articleFeedbackv5-success span' ).hide();
+					$h.find( '.articleFeedbackv5-pending span' ).fadeIn( 'fast' );
+				} else {
+					$h.find( '.articleFeedbackv5-submit' ).button( { 'disabled': true } );
+					$h.find( '.articleFeedbackv5-pending span' ).hide();
+				}
+			},
+
+			// }}}
+			// {{{ getFormData
+
+			/**
+			 * Pulls down form data
+			 *
+			 * @return object the form data
+			 */
+			getFormData: function () {
+				var data = {};
+				return data;
+			},
+
+			// }}}
+			// {{{ localValidation
+
+			/**
+			 * Performs any local validation
+			 *
+			 * @param  object formdata the form data
+			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
+			 */
+			localValidation: function ( formdata ) {
+				var error = {};
+				var ok = true;
+				if ( $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket2-toggle input[checked]' ).length < 1 ) {
+					error.toggle = 'Please select an option';
+					ok = false;
+				}
+				return ok ? false : error;
+			},
+
+			// }}}
+			// {{{ markFormError
+
+			/**
+			 * Marks any errors on the form
+			 *
+			 * @param object error errors, indexed by field name
+			 */
+			markFormError: function ( error ) {
+				if ( '_api' in error ) {
+					$.articleFeedbackv5.markShowstopperError( error._api.info );
+				} else {
+					alert( 'Validation error' );
+					mw.log( 'Validation error' );
+				}
+				console.log( error );
+			},
+
+			// }}}
+			// {{{ setSuccessState
+
+			/**
+			 * Sets the success state
+			 */
+			setSuccessState: function () {
+				var $h = $.articleFeedbackv5.$holder;
+				$h.find( '.articleFeedbackv5-success span' ).fadeIn( 'fast' );
+				$.articleFeedbackv5.successTimeout = setTimeout( function () {
+					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-success span' )
+						.fadeOut( 'slow' );
+				}, 5000 );
+			},
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ Bucket 3
+
+		/**
+		 * Bucket 3: Help Improve This Article
+		 */
+		'3': {
+
+			// {{{ buildForm
+
+			/**
+			 * Builds the empty form
+			 *
+			 * @return Element the form
+			 */
+			buildForm: function () {
+
+				// The overall template
+				var block_tpl = '\
+					<form>\
+					<div class="title-wrap">\
+						<h2 class="articleFeedbackv5-title"><html:msg key="bucket3-title" /></h2>\
+						<a class="articleFeedbackv5-tooltip-trigger"></a>\
+						<div class="articleFeedbackv5-tooltip">\
+							<div class="tooltip-top"></div>\
+							<div class="tooltip-repeat">\
+								<h3><html:msg key="bucket3-tooltip-title" /></h3>\
+								<p><html:msg key="bucket3-tooltip-info" /></p>\
+								<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5"><html:msg key="bucket3-tooltip-linktext" /></a></p>\
+							</div>\
+							<div class="tooltip-bottom"></div>\
+						</div>\
+						<div class="clear"></div>\
+					</div>\
+					<div class="form-row articleFeedbackv5-bucket3-toggle">\
+						<p class="instructions-left"><html:msg key="bucket3-question-toggle" /></p>\
+						<div class="buttons">\
+							<div class="form-item" rel="yes" id="articleFeedbackv5-bucket3-toggle-wrapper-yes">\
+								<label for="articleFeedbackv5-bucket3-toggle-yes"><html:msg key="bucket3-toggle-found-yes-full" /></label>\
+								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket3-toggle-found-yes" value="yes" /></span>\
+								<input type="radio" name="toggle" id="articleFeedbackv5-bucket3-toggle-yes" class="query-button" value="yes" />\
+							</div>\
+							<div class="form-item" rel="no" id="articleFeedbackv5-bucket3-toggle-wrapper-no">\
+								<label for="articleFeedbackv5-bucket3-toggle-no"><html:msg key="bucket3-toggle-found-no-full" /></label>\
+								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket3-toggle-found-no" /></span>\
+								<input type="radio" name="toggle" id="articleFeedbackv5-bucket3-toggle-no" class="query-button last" value="no" />\
+							</div>\
+							<div class="clear"></div>\
+						</div>\
+						<div class="clear"></div>\
+					</div>\
+					<div class="articleFeedbackv5-comment">\
+						<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
+					</div>\
+					<div class="articleFeedbackv5-disclosure">\
+						<p class="articlefeedbackv5-shared-on-feedback"></p>\
+						<p class="articlefeedbackv5-transparency-terms"></p>\
+					</div>\
+					<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket3-form-submit" /></button>\
+					<div class="clear"></div>\
+					</form>\
+					';
+				// Start up the block to return
+				var $block = $( block_tpl );
+				
+				// Start out the tooltip hidden
+				$block.find( '.articleFeedbackv5-tooltip' ).hide();
+
+				// Fill in the disclosure text
+				$block.find( '.articlefeedbackv5-shared-on-feedback' )
+					.html( $.articleFeedbackv5.buildLink(
+						'articlefeedbackv5-shared-on-feedback',
+						{
+							href: mw.config.get( 'wgScript' ) + '?' + $.param( {
+								title: mw.config.get( 'wgPageName' ),
+								action: 'feedback'
+							} ),
+							text: 'articlefeedbackv5-shared-on-feedback-linktext',
+							target: '_blank'
+						} ) );
+				$block.find( '.articlefeedbackv5-transparency-terms' )
+					.html( $.articleFeedbackv5.buildLink(
+						'articlefeedbackv5-transparency-terms',
+						{
+							href: mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ),
+							text: 'articlefeedbackv5-transparency-terms-linktext',
+							target: '_blank'
+						} ) );
+
+				// Localize the block
+				$block.localize( { 'prefix': 'articlefeedbackv5-' } );
+
+				// Turn the submit into a slick button
+				$block.find( '.articleFeedbackv5-submit' )
+					.button()
+					.addClass( 'ui-button-blue' )
+
+				return $block;
+			},
+
+			// }}}
+			// {{{ bindEvents
+
+			/**
+			 * Binds any events
+			 *
+			 * @param $block element the form block
+			 */
+			bindEvents: function ( $block ) {
+
+				// Attach the submit
+				$block.find( '.articleFeedbackv5-submit' )
+					.click( function ( e ) {
+						e.preventDefault();
+						$.articleFeedbackv5.submitForm();
+					} );
+
+			},
+
+			// }}}
+			// {{{ enableSubmission
+
+			/**
+			 * Enables or disables submission of the form
+			 *
+			 * @param state bool true to enable; false to disable
+			 */
+			enableSubmission: function ( state ) {
+				var $h = $.articleFeedbackv5.$holder;
+				if ( state ) {
+					if ($.articleFeedbackv5.successTimeout) {
+						clearTimeout( $.articleFeedbackv5.successTimeout );
+					}
+					$h.find( '.articleFeedbackv5-submit' ).button( { 'disabled': false } );
+					$h.find( '.articleFeedbackv5-success span' ).hide();
+					$h.find( '.articleFeedbackv5-pending span' ).fadeIn( 'fast' );
+				} else {
+					$h.find( '.articleFeedbackv5-submit' ).button( { 'disabled': true } );
+					$h.find( '.articleFeedbackv5-pending span' ).hide();
+				}
+			},
+
+			// }}}
+			// {{{ getFormData
+
+			/**
+			 * Pulls down form data
+			 *
+			 * @return object the form data
+			 */
+			getFormData: function () {
+				var data = {};
+				return data;
+			},
+
+			// }}}
+			// {{{ localValidation
+
+			/**
+			 * Performs any local validation
+			 *
+			 * @param  object formdata the form data
+			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
+			 */
+			localValidation: function ( formdata ) {
+				var error = {};
+				var ok = true;
+				if ( $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket3-toggle input[checked]' ).length < 1 ) {
+					error.toggle = 'Please select an option';
+					ok = false;
+				}
+				return ok ? false : error;
+			},
+
+			// }}}
+			// {{{ markFormError
+
+			/**
+			 * Marks any errors on the form
+			 *
+			 * @param object error errors, indexed by field name
+			 */
+			markFormError: function ( error ) {
+				if ( '_api' in error ) {
+					$.articleFeedbackv5.markShowstopperError( error._api.info );
+				} else {
+					alert( 'Validation error' );
+					mw.log( 'Validation error' );
+				}
+				console.log( error );
+			},
+
+			// }}}
+			// {{{ setSuccessState
+
+			/**
+			 * Sets the success state
+			 */
+			setSuccessState: function () {
+				var $h = $.articleFeedbackv5.$holder;
+				$h.find( '.articleFeedbackv5-success span' ).fadeIn( 'fast' );
+				$.articleFeedbackv5.successTimeout = setTimeout( function () {
+					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-success span' )
+						.fadeOut( 'slow' );
+				}, 5000 );
+			},
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ Bucket 4
+
+		/**
+		 * Bucket 4: Help Improve This Article
+		 */
+		'4': {
+
+			// {{{ buildForm
+
+			/**
+			 * Builds the empty form
+			 *
+			 * @return Element the form
+			 */
+			buildForm: function () {
+
+				// The overall template
+				var block_tpl = '\
+					<form>\
+					<div class="title-wrap">\
+						<h2 class="articleFeedbackv5-title"><html:msg key="bucket4-title" /></h2>\
+						<a class="articleFeedbackv5-tooltip-trigger"></a>\
+						<div class="articleFeedbackv5-tooltip">\
+							<div class="tooltip-top"></div>\
+							<div class="tooltip-repeat">\
+								<h4><html:msg key="bucket4-tooltip-title" /></h4>\
+								<p><html:msg key="bucket4-tooltip-info" /></p>\
+								<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5"><html:msg key="bucket4-tooltip-linktext" /></a></p>\
+							</div>\
+							<div class="tooltip-bottom"></div>\
+						</div>\
+						<div class="clear"></div>\
+					</div>\
+					<div class="form-row articleFeedbackv5-bucket4-toggle">\
+						<p class="instructions-left"><html:msg key="bucket4-question-toggle" /></p>\
+						<div class="buttons">\
+							<div class="form-item" rel="yes" id="articleFeedbackv5-bucket4-toggle-wrapper-yes">\
+								<label for="articleFeedbackv5-bucket4-toggle-yes"><html:msg key="bucket4-toggle-found-yes-full" /></label>\
+								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket4-toggle-found-yes" value="yes" /></span>\
+								<input type="radio" name="toggle" id="articleFeedbackv5-bucket4-toggle-yes" class="query-button" value="yes" />\
+							</div>\
+							<div class="form-item" rel="no" id="articleFeedbackv5-bucket4-toggle-wrapper-no">\
+								<label for="articleFeedbackv5-bucket4-toggle-no"><html:msg key="bucket4-toggle-found-no-full" /></label>\
+								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket4-toggle-found-no" /></span>\
+								<input type="radio" name="toggle" id="articleFeedbackv5-bucket4-toggle-no" class="query-button last" value="no" />\
+							</div>\
+							<div class="clear"></div>\
+						</div>\
+						<div class="clear"></div>\
+					</div>\
+					<div class="articleFeedbackv5-comment">\
+						<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
+					</div>\
+					<div class="articleFeedbackv5-disclosure">\
+						<p class="articlefeedbackv5-shared-on-feedback"></p>\
+						<p class="articlefeedbackv5-transparency-terms"></p>\
+					</div>\
+					<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket4-form-submit" /></button>\
+					<div class="clear"></div>\
+					</form>\
+					';
+				// Start up the block to return
+				var $block = $( block_tpl );
+				
+				// Start out the tooltip hidden
+				$block.find( '.articleFeedbackv5-tooltip' ).hide();
+
+				// Fill in the disclosure text
+				$block.find( '.articlefeedbackv5-shared-on-feedback' )
+					.html( $.articleFeedbackv5.buildLink(
+						'articlefeedbackv5-shared-on-feedback',
+						{
+							href: mw.config.get( 'wgScript' ) + '?' + $.param( {
+								title: mw.config.get( 'wgPageName' ),
+								action: 'feedback'
+							} ),
+							text: 'articlefeedbackv5-shared-on-feedback-linktext',
+							target: '_blank'
+						} ) );
+				$block.find( '.articlefeedbackv5-transparency-terms' )
+					.html( $.articleFeedbackv5.buildLink(
+						'articlefeedbackv5-transparency-terms',
+						{
+							href: mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ),
+							text: 'articlefeedbackv5-transparency-terms-linktext',
+							target: '_blank'
+						} ) );
+
+				// Localize the block
+				$block.localize( { 'prefix': 'articlefeedbackv5-' } );
+
+				// Turn the submit into a slick button
+				$block.find( '.articleFeedbackv5-submit' )
+					.button()
+					.addClass( 'ui-button-blue' )
+
+				return $block;
+			},
+
+			// }}}
+			// {{{ bindEvents
+
+			/**
+			 * Binds any events
+			 *
+			 * @param $block element the form block
+			 */
+			bindEvents: function ( $block ) {
+
+				// Attach the submit
+				$block.find( '.articleFeedbackv5-submit' )
+					.click( function ( e ) {
+						e.preventDefault();
+						$.articleFeedbackv5.submitForm();
+					} );
+
+			},
+
+			// }}}
+			// {{{ enableSubmission
+
+			/**
+			 * Enables or disables submission of the form
+			 *
+			 * @param state bool true to enable; false to disable
+			 */
+			enableSubmission: function ( state ) {
+				var $h = $.articleFeedbackv5.$holder;
+				if ( state ) {
+					if ($.articleFeedbackv5.successTimeout) {
+						clearTimeout( $.articleFeedbackv5.successTimeout );
+					}
+					$h.find( '.articleFeedbackv5-submit' ).button( { 'disabled': false } );
+					$h.find( '.articleFeedbackv5-success span' ).hide();
+					$h.find( '.articleFeedbackv5-pending span' ).fadeIn( 'fast' );
+				} else {
+					$h.find( '.articleFeedbackv5-submit' ).button( { 'disabled': true } );
+					$h.find( '.articleFeedbackv5-pending span' ).hide();
+				}
+			},
+
+			// }}}
+			// {{{ getFormData
+
+			/**
+			 * Pulls down form data
+			 *
+			 * @return object the form data
+			 */
+			getFormData: function () {
+				var data = {};
+				return data;
+			},
+
+			// }}}
+			// {{{ localValidation
+
+			/**
+			 * Performs any local validation
+			 *
+			 * @param  object formdata the form data
+			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
+			 */
+			localValidation: function ( formdata ) {
+				var error = {};
+				var ok = true;
+				if ( $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket4-toggle input[checked]' ).length < 1 ) {
 					error.toggle = 'Please select an option';
 					ok = false;
 				}
@@ -1074,14 +1715,6 @@
 		},
 
 		// }}}
-		// {{{ Bucket 6
-
-		/**
-		 * Bucket 6: No form
-		 */
-		'6': { }
-
-		// }}}
 
 	};
 
@@ -1252,7 +1885,7 @@
 		// 1. Requested in query string (debug only)
 		// 2. From cookie (see below)
 		// 3. Core bucketing
-		var knownBuckets = { 1: true, 5: true, 6: true };
+		var knownBuckets = { 0: true, 1: true, 2: true, 3: true, 5: true };
 		var requested = mw.util.getParamValue( 'bucket' );
 		var cookieval = $.cookie( $.articleFeedbackv5.prefix( 'display-bucket' ) );
 		if ( $.articleFeedbackv5.debug && requested in knownBuckets ) {
