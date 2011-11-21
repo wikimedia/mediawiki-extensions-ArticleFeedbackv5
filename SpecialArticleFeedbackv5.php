@@ -6,7 +6,7 @@
  * @ingroup Extensions
  */
 
-class SpecialArticleFeedback extends SpecialPage {
+class SpecialArticleFeedbackv5 extends SpecialPage {
 
 	/* Methods */
 

@@ -182,7 +182,7 @@ class PopulateAFStatistics extends Maintenance {
 
 		// populate stats table with problem articles & associated data
 		// fetch stats type id - add stat type if it's non-existent
-		$stats_type_id = SpecialArticleFeedback::getStatsTypeId( 'problems' );
+		$stats_type_id = SpecialArticleFeedbackv5::getStatsTypeId( 'problems' );
 		if ( !$stats_type_id ) {
 			$stats_type_id = $this->addStatType( 'problems' );
 		}
@@ -235,7 +235,7 @@ class PopulateAFStatistics extends Maintenance {
 		$this->output( "Caching latest problems (if cache present).\n" );
 		// grab the article feedback special page so we can reuse the data structure building code
 		// FIXME this logic should not be in the special page class
-		$problems = SpecialArticleFeedback::buildProblems( $rowsCopy );
+		$problems = SpecialArticleFeedbackv5::buildProblems( $rowsCopy );
 		// stash the data structure in the cache
 		$key = wfMemcKey( 'article_feedback_stats_problems' );
 		$wgMemc->set( $key, $problems, 86400 );
@@ -291,7 +291,7 @@ class PopulateAFStatistics extends Maintenance {
 		$this->output( "Done\n" );
 
 		// fetch stats type id - add stat type if it's non-existant
-		$stats_type_id = SpecialArticleFeedback::getStatsTypeId( 'highs_and_lows' );
+		$stats_type_id = SpecialArticleFeedbackv5::getStatsTypeId( 'highs_and_lows' );
 		if ( !$stats_type_id ) {
 			$stats_type_id = $this->addStatType( 'highs_and_lows' );
 		}
@@ -335,7 +335,7 @@ class PopulateAFStatistics extends Maintenance {
 		$key = wfMemcKey( 'article_feedback_stats_highs_lows' );
 		// grab the article feedback special page so we can reuse the data structure building code
 		// FIXME this logic should not be in the special page class
-		$highs_lows = SpecialArticleFeedback::buildHighsAndLows( $rowsCopy );
+		$highs_lows = SpecialArticleFeedbackv5::buildHighsAndLows( $rowsCopy );
 		// stash the data structure in the cache
 		$wgMemc->set( $key, $highs_lows, 86400 );
 		$this->output( "Done\n" );
