@@ -406,12 +406,13 @@
 }
 /*---===<<< Sean's Version 5 Styles >>>===---*/
 .clear {
-	display: block;
-	height: 0;
-	overflow: hidden;
-	clear: both;
-	float: none;
-	width: 100%;
+	display: block !important;
+	height: 0 !important;
+	overflow: hidden !important;
+	clear: both !important;
+	float: none !important;
+	width: 100% !important;
+	border: none !important;
 }
 /* tooltip styling. by default the element to be styled is .tooltip  */
 .articleFeedbackv5-panel .title-wrap {
@@ -549,4 +550,62 @@
 	text-align: center;
 	color: #fff;
 	text-shadow: 1px 1px 1px #000;
+}
+/*** Option 2 ***/
+.tags ul li {
+	color: #666;
+	list-style: none;
+	float: left;
+	margin: 0 0 0 10px;
+	line-height: 28px;
+	height: 28px;
+	padding: 0 8px;
+	background: #e6e6e6;
+	border: 1px solid #d6d6d6;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px; /* future proofing */
+	-khtml-border-radius: 5px; /* for old Konqueror browsers */
+}
+.tags ul li:first-child {
+	margin: 0;
+}
+.tags ul li:hover, .tags ul li.active {
+	background: #fff;
+	border-color: #ccc;
+	color: #000;
+}
+.tags ul li input {
+	display: none;
+}
+.tags ul li label {
+	padding: 0 0 0 8px;
+}
+.tags ul li .articleFeedbackv5-bucket2-suggestion-label {
+	background: url(images/bg-tag-suggestion-off.png) no-repeat 0 center;
+}
+.tags ul li .articleFeedbackv5-bucket2-question-label {
+	background: url(images/bg-tag-question-off.png) no-repeat 0 center;
+}
+.tags ul li .articleFeedbackv5-bucket2-problem-label {
+	background: url(images/bg-tag-problem-off.png) no-repeat 0 center;
+}
+.tags ul li .articleFeedbackv5-bucket2-praise-label {
+	background: url(images/bg-tag-praise-off.png) no-repeat 0 center;
+}
+.tags ul li:hover .articleFeedbackv5-bucket2-suggestion-label,
+.tags ul li.active .articleFeedbackv5-bucket2-suggestion-label {
+	background: url(images/bg-tag-suggestion-on.png) no-repeat 0 center;
+}
+.tags ul li:hover .articleFeedbackv5-bucket2-question-label,
+.tags ul li.active .articleFeedbackv5-bucket2-question-label {
+	background: url(images/bg-tag-question-on.png) no-repeat 0 center;
+}
+.tags ul li:hover .articleFeedbackv5-bucket2-problem-label,
+.tags ul li.active .articleFeedbackv5-bucket2-problem-label {
+	background: url(images/bg-tag-problem-on.png) no-repeat 0 center;
+}
+.tags ul li:hover .articleFeedbackv5-bucket2-praise-label,
+.tags ul li.active .articleFeedbackv5-bucket2-praise-label {
+	background: url(images/bg-tag-praise-on.png) no-repeat 0 center;
 }

@@ -417,46 +417,55 @@
 				// The overall template
 				var block_tpl = '\
 					<form>\
-					<div class="title-wrap">\
-						<h2 class="articleFeedbackv5-title"><html:msg key="bucket2-title" /></h2>\
-						<a class="articleFeedbackv5-tooltip-trigger"></a>\
-						<div class="articleFeedbackv5-tooltip">\
-							<div class="tooltip-top"></div>\
-							<div class="tooltip-repeat">\
-								<h3><html:msg key="bucket2-tooltip-title" /></h3>\
-								<p><html:msg key="bucket2-tooltip-info" /></p>\
-								<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5"><html:msg key="bucket2-tooltip-linktext" /></a></p>\
-							</div>\
-							<div class="tooltip-bottom"></div>\
-						</div>\
-						<div class="clear"></div>\
-					</div>\
-					<div class="form-row articleFeedbackv5-bucket2-toggle">\
-						<p class="instructions-left"><html:msg key="bucket2-question-toggle" /></p>\
-						<div class="buttons">\
-							<div class="form-item" rel="yes" id="articleFeedbackv5-bucket2-toggle-wrapper-yes">\
-								<label for="articleFeedbackv5-bucket2-toggle-yes"><html:msg key="bucket2-toggle-found-yes-full" /></label>\
-								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket2-toggle-found-yes" value="yes" /></span>\
-								<input type="radio" name="toggle" id="articleFeedbackv5-bucket2-toggle-yes" class="query-button" value="yes" />\
-							</div>\
-							<div class="form-item" rel="no" id="articleFeedbackv5-bucket2-toggle-wrapper-no">\
-								<label for="articleFeedbackv5-bucket2-toggle-no"><html:msg key="bucket2-toggle-found-no-full" /></label>\
-								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket2-toggle-found-no" /></span>\
-								<input type="radio" name="toggle" id="articleFeedbackv5-bucket2-toggle-no" class="query-button last" value="no" />\
+						<div class="title-wrap">\
+							<h2 class="articleFeedbackv5-title">\
+								<html:msg key="bucket2-title" />\
+							</h2>\
+							<a class="articleFeedbackv5-tooltip-trigger"></a>\
+							<div class="articleFeedbackv5-tooltip">\
+								<div class="tooltip-top"></div>\
+								<div class="tooltip-repeat">\
+									<h3>\
+										<html:msg key="bucket2-tooltip-title" />\
+									</h3>\
+									<p>\
+										<html:msg key="bucket2-tooltip-info" />\
+									</p>\
+									<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5">\
+										<html:msg key="bucket2-tooltip-linktext" />\
+										</a></p>\
+								</div>\
+								<div class="tooltip-bottom"></div>\
 							</div>\
 							<div class="clear"></div>\
 						</div>\
+						<div>\
+							<p class="instructions-left">\
+								<html:msg key="bucket2-question-toggle" />\
+							</p>\
+							<div class="tags">\
+								<ul>\
+									<li class="active"><span class="tag-selector"></span><label class="articleFeedbackv5-bucket2-suggestion-label" for="articleFeedbackv5-bucket2-suggestion">Suggestion</label><input name="articleFeedbackv5-bucket2-tag" type="radio" id="articleFeedbackv5-bucket2-suggestion"><span class="clear"></span></li>\
+									<li><span class="tag-selector"></span><label class="articleFeedbackv5-bucket2-question-label" for="articleFeedbackv5-bucket2-question">Question</label><input name="articleFeedbackv5-bucket2-tag" type="radio" id="articleFeedbackv5-bucket2-question"><span class="clear"></span></li>\
+									<li><span class="tag-selector"></span><label class="articleFeedbackv5-bucket2-problem-label" for="articleFeedbackv5-bucket2-problem">Problem</label><input name="articleFeedbackv5-bucket2-tag" type="radio" id="articleFeedbackv5-bucket2-problem"><span class="clear"></span></li>\
+									<li><span class="tag-selector"></span><label class="articleFeedbackv5-bucket2-praise-label" for="articleFeedbackv5-bucket2-praise">Praise</label><input name="articleFeedbackv5-bucket2-tag" type="radio" id="articleFeedbackv5-bucket2-praise"><span class="clear"></span></li>\
+									<li class="clear"></li>\
+								</ul>\
+								<div class="clear"></div>\
+							</div>\
+							<div class="clear"></div>\
+						</div>\
+						<div class="articleFeedbackv5-comment">\
+							<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
+						</div>\
+						<div class="articleFeedbackv5-disclosure">\
+							<p class="articlefeedbackv5-shared-on-feedback"></p>\
+							<p class="articlefeedbackv5-transparency-terms"></p>\
+						</div>\
+						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled">\
+						<html:msg key="bucket2-form-submit" />\
+						</button>\
 						<div class="clear"></div>\
-					</div>\
-					<div class="articleFeedbackv5-comment">\
-						<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
-					</div>\
-					<div class="articleFeedbackv5-disclosure">\
-						<p class="articlefeedbackv5-shared-on-feedback"></p>\
-						<p class="articlefeedbackv5-transparency-terms"></p>\
-					</div>\
-					<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket2-form-submit" /></button>\
-					<div class="clear"></div>\
 					</form>\
 					';
 				// Start up the block to return
