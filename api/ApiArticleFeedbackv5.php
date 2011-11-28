@@ -94,7 +94,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$this->getResult()->addValue(
 			null,
 			$this->getModuleName(),
-			array( 'result' => 'Success' )
+			array(
+				'result' => 'Success',
+				'feedback_id' => $feedbackId,
+				'cta_id' => $ctaId,
+			)
 		);
 	}
 

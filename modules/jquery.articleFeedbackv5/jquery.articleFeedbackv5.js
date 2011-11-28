@@ -104,6 +104,11 @@
 	 */
 	$.articleFeedbackv5.revisionId = mw.config.get( 'wgCurRevisionId' );
 
+	/**
+	 * The feedback ID (collected on submit, for use in tracking edits)
+	 */
+	$.articleFeedbackv5.feedbackId = 0;
+
 	// }}}
 	// {{{ Bucket UI objects
 
@@ -1768,7 +1773,10 @@
 						'href',
 						mw.config.get( 'wgScript' ) + '?' + $.param( {
 							'title': mw.config.get( 'wgPageName' ),
-							'action': 'edit'
+							'action': 'edit',
+							'articleFeedbackv5_feedback_id': $.articleFeedbackv5.feedbackId,
+							'articleFeedbackv5_cta_id': $.articleFeedbackv5.ctaId,
+							'articleFeedbackv5_bucket_id': $.articleFeedbackv5.bucketId
 						} )
 					);
 
@@ -2008,19 +2016,29 @@
 				'bucket': $.articleFeedbackv5.bucketId
 			} ),
 			'success': function( data ) {
-				if ( 'error' in data ) {
-					if ( 'markFormError' in bucket ) {
-						bucket.markFormError( { _api : data.error } );
-					} else {
-						alert( 'ArticleFeedback: Form submission error : ' + data.error );
-					}
-					$.articleFeedbackv5.unlockForm();
-				} else {
+				if ( 'articlefeedbackv5' in data
+						&& 'feedback_id' in data.articlefeedbackv5
+						&& 'cta_id' in data.articlefeedbackv5 ) {
+					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
+					$.articleFeedbackv5.ctaId = data.articlefeedbackv5.cta_id;
 					$.articleFeedbackv5.unlockForm();
 					if ( 'onSuccess' in bucket ) {
 						bucket.onSuccess( formdata );
 					}
 					$.articleFeedbackv5.showCTA();
+				} else {
+					var msg;
+					if ( 'error' in data ) {
+						msg = data.error;
+					} else {
+						msg = 'Unknown error';
+					}
+					if ( 'markFormError' in bucket ) {
+						bucket.markFormError( { _api : msg } );
+					} else {
+						alert( 'ArticleFeedback: Form submission error : ' + msg );
+					}
+					$.articleFeedbackv5.unlockForm();
 				}
 			},
 			'error': function () {
@@ -2089,11 +2107,8 @@
 
 	/**
 	 * Shows a CTA
-	 *
-	 * @param cta_name string the name of the CTA to display
 	 */
-	$.articleFeedbackv5.showCTA = function ( ctaId ) {
-		$.articleFeedbackv5.ctaId = 1; // For now, just use the edit CTA
+	$.articleFeedbackv5.showCTA = function () {
 		var cta = $.articleFeedbackv5.currentCTA();
 		if ( !( 'build' in cta ) ) {
 			return;

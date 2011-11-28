@@ -243,4 +243,48 @@ class ArticleFeedbackv5Hooks {
 		);
 		return true;
 	}
+
+	/**
+	 * Pushes the tracking fields into the edit page
+	 *
+	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/EditPage::showEditForm:fields
+	 */
+	public static function pushTrackingFieldsToEdit( $editPage, $output ) {
+		global $wgRequest;
+
+		$feedbackId = $wgRequest->getVal( 'articleFeedbackv5_feedback_id' );
+		$ctaId = $wgRequest->getVal( 'articleFeedbackv5_cta_id' );
+		$bucketId = $wgRequest->getVal( 'articleFeedbackv5_bucket_id' );
+
+		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_feedback_id', $feedbackId );
+		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_cta_id', $ctaId );
+		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_bucket_id', $bucketId );
+
+		return true;
+	}
+
+	/**
+	 * Tracks edits
+	 *
+	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/ArticleSaveComplete
+	 */
+	public static function trackEdit( $article, $user, $text, $summary, $minoredit,
+			$watchthis, $sectionanchor, $flags, $revision, $baseRevId ) {
+		global $wgRequest;
+
+		$feedbackId = $wgRequest->getVal( 'articleFeedbackv5_feedback_id' );
+		$ctaId = $wgRequest->getVal( 'articleFeedbackv5_cta_id' );
+		$bucketId = $wgRequest->getVal( 'articleFeedbackv5_bucket_id' );
+
+error_log('Tracking!');
+error_log(var_export($feedbackId, true));
+error_log(var_export($ctaId, true));
+error_log(var_export($bucketId, true));
+error_log(var_export($article->getTitle()->getText(), true));
+
+		return true;
+	}
+
+
 }
+
