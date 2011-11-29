@@ -562,10 +562,11 @@
 	padding: 0 8px;
 	background: #e6e6e6;
 	border: 1px solid #d6d6d6;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px; /* future proofing */
-	-khtml-border-radius: 5px; /* for old Konqueror browsers */
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px; /* future proofing */
+	-khtml-border-radius: 8px; /* for old Konqueror browsers */
+	position: relative;
 }
 .tags ul li:first-child {
 	margin: 0;
@@ -575,17 +576,30 @@
 	border-color: #ccc;
 	color: #000;
 }
+.tags ul li.active .tag-selector {
+	position: absolute;
+	background: url(images/bg-tag-active.png) no-repeat center bottom;
+	display: block;
+	width: 15px;
+	height: 9px;
+	bottom: -9px;
+	left: 50%;
+	margin: 0 0 0 -5px;
+}
 .tags ul li input {
 	display: none;
 }
 .tags ul li label {
-	padding: 0 0 0 8px;
+	padding: 0 0 0 22px;
+	cursor: pointer;
 }
 .tags ul li .articleFeedbackv5-bucket2-suggestion-label {
 	background: url(images/bg-tag-suggestion-off.png) no-repeat 0 center;
+	padding: 0 0 0 15px;
 }
 .tags ul li .articleFeedbackv5-bucket2-question-label {
 	background: url(images/bg-tag-question-off.png) no-repeat 0 center;
+	
 }
 .tags ul li .articleFeedbackv5-bucket2-problem-label {
 	background: url(images/bg-tag-problem-off.png) no-repeat 0 center;
@@ -608,4 +622,14 @@
 .tags ul li:hover .articleFeedbackv5-bucket2-praise-label,
 .tags ul li.active .articleFeedbackv5-bucket2-praise-label {
 	background: url(images/bg-tag-praise-on.png) no-repeat 0 center;
+}
+/*** Option 2 ***/
+.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label {
+	background: url(images/bg-rating-off.png) no-repeat;
+}
+.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.active {
+	background: url(images/bg-rating-on.png) no-repeat;
+}
+.articleFeedbackv5-rating .articleFeedbackv5-rating-prompt {
+
 }
