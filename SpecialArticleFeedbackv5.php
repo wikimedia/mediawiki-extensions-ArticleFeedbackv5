@@ -39,21 +39,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		$output .= "\n== Feedback ==\n";
 
-/*
-		$feedback  = $this->api->fetchFeedback( $pageId );
-		foreach($feedback as $record) {
-			# add a table or something
-			$output .= " \n record: ".$record[0]->af_id;
-			foreach($record as $answer) {
-				$func = 'aa_response_'.$answer->afi_data_type;
-				$output .= " \n ".$answer->afi_name.': '
-				.$answer->$func;
-			}
-			$output .= " \n ----------- ";
-			
-		}
-*/
-
 		$wgOut->addWikiText( $output );
 
 		$wgOut->addHTML(<<<EOH

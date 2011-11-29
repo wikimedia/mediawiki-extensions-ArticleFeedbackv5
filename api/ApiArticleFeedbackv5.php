@@ -178,7 +178,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		if ( $type == 'select' ) {
 			$page_prefix = 'afsr_';
 			$rev_prefix  = 'arfsr_';
-			$select      = array( 'aa_field_id', 'aa_response_option_id', 'COUNT(aa_response_option_id) AS earned' );
+			$select      = array( 'aa_field_id', 'aa_response_option_id', 'COUNT(aa_response_option_id) AS earned', '0 AS submits' );
 			$group       = array( 'GROUP BY' => 'aa_response_option_id' );
 		} else {
 			$page_prefix = 'arr_';
@@ -189,7 +189,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 
 		$rows = $dbr->select(
-			array( 'aft_article_answer', 'aft_article_feedback', 'aft_article_field' ),
+			array( 
+				'aft_article_answer', 
+				'aft_article_feedback', 
+				'aft_article_field' 
+			),
 			$select,
 			array(
 				'afi_data_type'  => $type,
@@ -202,14 +206,34 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$group
 		);
 
+		# Fake the select counts, because we want to group by ughhh
+		$totals = array();
+		foreach ( $rows as $row ) {
+			if( !array_key_exists( $row->aa_field_id, $totals ) ) {
+				$totals[$row->aa_field_id] = 0;
+			}
+			$totals[$row->aa_field_id] += $row->earned;
+		}
 
 		foreach ( $rows as $row ) {
-			if ( !array_key_exists( $row->aa_field_id, $page_data ) ) {
-				$page_data[$row->aa_field_id] = array(
+			if( $type == 'select' ) {
+				$key   = $row->aa_response_option_id;
+				$field = 'option_id';
+				$value = $row->aa_response_option_id;
+				$count = $totals[$row->aa_field_id];
+			} else {
+				$key   = $row->aa_field_id;
+				$field = 'rating_id';
+				$value = $row->aa_field_id;
+				$count = $row->submits;
+			}
+
+			if ( !array_key_exists( $key, $page_data ) ) {
+				$page_data[$key] = array(
 					$page_prefix . 'page_id' => $pageId,
 					$page_prefix . 'total'   => 0,
 					$page_prefix . 'count'   => 0,
-					$page_prefix . ($type == 'select' ? 'option' : 'rating') . '_id' => $row->aa_field_id
+					$page_prefix . $field    => $value
 				);
 			}
 
@@ -217,11 +241,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				$rev_prefix . 'page_id'     => $pageId,
 				$rev_prefix . 'revision_id' => $revId,
 				$rev_prefix . 'total'       => $row->earned,
-				$rev_prefix . 'count'       => $row->submits,
-				$rev_prefix . ($type == 'select' ? 'option' : 'rating') . '_id' => $row->aa_field_id
+				$rev_prefix . 'count'       => $count,
+				$rev_prefix . $field        => $value 
 			);
-			$page_data[$row->aa_field_id][$page_prefix.'total'] += $row->earned;
-			$page_data[$row->aa_field_id][$page_prefix.'count'] += $row->submits;
+
+			$page_data[$key][$page_prefix . 'total'] += $row->earned;
+			$page_data[$key][$page_prefix . 'count'] += $count;
 		}
 
 		if ( count( $page_data ) < 1 ) {

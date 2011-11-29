@@ -3,8 +3,7 @@
 
 	// TODO: Pass this in from the PHP side. Add it to mwConfig or w/e?
 	//$.articleFeedbackv5special.page   = mw.config.get( 'wgPageId' );
-	$.articleFeedbackv5special.page   = 0;
-console.log('oage id is ' + hackPageId);
+	$.articleFeedbackv5special.page   = hackPageId;
 	$.articleFeedbackv5special.filter = 'visible';
 	$.articleFeedbackv5special.sort   = 'newest';
 	$.articleFeedbackv5special.limit  = 5;
