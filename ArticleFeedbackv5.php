@@ -50,6 +50,9 @@ $wgArticleFeedbackv5Debug = true;
 // The rating categories for bucket 5 -- these MUST match the field names in the database.
 $wgArticleFeedbackv5Bucket5RatingCategories = array( 'trustworthy', 'objective', 'complete', 'wellwritten' );
 
+// The tag names for bucket 5.
+$wgArticleFeedbackv5Bucket2TagNames = array( 'suggestion', 'question', 'problem', 'praise' );
+
 // Bucket settings for display options
 $wgArticleFeedbackv5DisplayBuckets = array(
 	// Users can fall into one of several display buckets (these are defined in
@@ -123,6 +126,13 @@ $wgArticleFeedbackv5Options = array(
  * @var string
  */
 $wgArticleFeedbackv5DashboardTalkPage = "http://www.mediawiki.org/wiki/Talk:Article_feedback";
+
+/**
+ * The full URL for the "Learn to Edit" link
+ *
+ * @var string
+ */
+$wgArticleFeedbackv5LearnToEdit = "http://en.wikipedia.org/wiki/Wikipedia:Tutorial";
 
 # TODO: What's up with the surveys, then?
 // Would ordinarily call this articlefeedback but survey names are 16 chars max

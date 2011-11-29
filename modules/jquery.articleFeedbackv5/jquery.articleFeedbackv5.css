@@ -552,7 +552,7 @@
 	text-shadow: 1px 1px 1px #000;
 }
 /*** Option 2 ***/
-.tags ul li {
+.articleFeedbackv5-tags ul li {
 	color: #666;
 	list-style: none;
 	float: left;
@@ -568,15 +568,15 @@
 	-khtml-border-radius: 8px; /* for old Konqueror browsers */
 	position: relative;
 }
-.tags ul li:first-child {
+.articleFeedbackv5-tags ul li:first-child {
 	margin: 0;
 }
-.tags ul li:hover, .tags ul li.active {
+.articleFeedbackv5-tags ul li:hover, .articleFeedbackv5-tags ul li.active {
 	background: #fff;
 	border-color: #ccc;
 	color: #000;
 }
-.tags ul li.active .tag-selector {
+.articleFeedbackv5-tags ul li.active .tag-selector {
 	position: absolute;
 	background: url(images/bg-tag-active.png) no-repeat center bottom;
 	display: block;
@@ -586,44 +586,42 @@
 	left: 50%;
 	margin: 0 0 0 -5px;
 }
-.tags ul li input {
+.articleFeedbackv5-tags ul li input {
 	display: none;
 }
-.tags ul li label {
+.articleFeedbackv5-tags ul li label {
 	padding: 0 0 0 22px;
 	cursor: pointer;
 }
-.tags ul li .articleFeedbackv5-bucket2-suggestion-label {
+.articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-suggestion-label {
 	background: url(images/bg-tag-suggestion-off.png) no-repeat 0 center;
-	padding: 0 0 0 15px;
 }
-.tags ul li .articleFeedbackv5-bucket2-question-label {
+.articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-question-label {
 	background: url(images/bg-tag-question-off.png) no-repeat 0 center;
-	
 }
-.tags ul li .articleFeedbackv5-bucket2-problem-label {
+.articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-problem-label {
 	background: url(images/bg-tag-problem-off.png) no-repeat 0 center;
 }
-.tags ul li .articleFeedbackv5-bucket2-praise-label {
+.articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-praise-label {
 	background: url(images/bg-tag-praise-off.png) no-repeat 0 center;
 }
-.tags ul li:hover .articleFeedbackv5-bucket2-suggestion-label,
-.tags ul li.active .articleFeedbackv5-bucket2-suggestion-label {
+.articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-suggestion-label,
+.articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-suggestion-label {
 	background: url(images/bg-tag-suggestion-on.png) no-repeat 0 center;
 }
-.tags ul li:hover .articleFeedbackv5-bucket2-question-label,
-.tags ul li.active .articleFeedbackv5-bucket2-question-label {
+.articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-question-label,
+.articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-question-label {
 	background: url(images/bg-tag-question-on.png) no-repeat 0 center;
 }
-.tags ul li:hover .articleFeedbackv5-bucket2-problem-label,
-.tags ul li.active .articleFeedbackv5-bucket2-problem-label {
+.articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-problem-label,
+.articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-problem-label {
 	background: url(images/bg-tag-problem-on.png) no-repeat 0 center;
 }
-.tags ul li:hover .articleFeedbackv5-bucket2-praise-label,
-.tags ul li.active .articleFeedbackv5-bucket2-praise-label {
+.articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-praise-label,
+.articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-praise-label {
 	background: url(images/bg-tag-praise-on.png) no-repeat 0 center;
 }
-/*** Option 2 ***/
+/*** Option 3 ***/
 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label {
 	background: url(images/bg-rating-off.png) no-repeat;
 }

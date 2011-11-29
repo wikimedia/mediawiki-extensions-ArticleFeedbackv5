@@ -150,9 +150,9 @@
 						<div class="articleFeedbackv5-tooltip">\
 							<div class="tooltip-top"></div>\
 							<div class="tooltip-repeat">\
-								<h3><html:msg key="bucket1-tooltip-title" /></h3>\
-								<p><html:msg key="bucket1-tooltip-info" /></p>\
-								<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5"><html:msg key="bucket1-tooltip-linktext" /></a></p>\
+								<h3><html:msg key="help-tooltip-title" /></h3>\
+								<p><html:msg key="help-tooltip-info" /></p>\
+								<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5"><html:msg key="help-tooltip-linktext" /></a></p>\
 							</div>\
 							<div class="tooltip-bottom"></div>\
 						</div>\
@@ -188,7 +188,7 @@
 					';
 				// Start up the block to return
 				var $block = $( block_tpl );
-				
+
 				// Start out the tooltip hidden
 				$block.find( '.articleFeedbackv5-tooltip' ).hide();
 
@@ -265,7 +265,7 @@
 
 				// Clear out the question on focus
 				$block.find( '.articleFeedbackv5-comment textarea' )
-					.focus( function () {			
+					.focus( function () {
 						var def_msg = '';
 						var val = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).val();
 						if ( val == 'yes' ) {
@@ -277,7 +277,7 @@
 							$( this ).val( '' );
 							$(this).addClass( 'active' );
 						}
-						
+
 					})
 					.blur( function () {
 						var def_msg = '';
@@ -290,9 +290,11 @@
 						if ( $( this ).val() == '' ) {
 							$( this ).val( def_msg );
 							$(this).removeClass( 'active' );
+						} else {
+							$.articleFeedbackv5.currentBucket().enableSubmission( true );
 						}
 					} );
-					
+
 
 				// Attach the submit
 				$block.find( '.articleFeedbackv5-submit' )
@@ -410,6 +412,19 @@
 		 */
 		'2': {
 
+			// {{{ properties
+
+			/**
+			 * The tags available for this bucket
+			 */
+			tagInfo: mw.config.get( 'wgArticleFeedbackv5Bucket2TagNames' ),
+
+			/**
+			 * The comment default text, by tag (filled by buildForm)
+			 */
+			commentDefault: {},
+
+			// }}}
 			// {{{ buildForm
 
 			/**
@@ -431,13 +446,13 @@
 								<div class="tooltip-top"></div>\
 								<div class="tooltip-repeat">\
 									<h3>\
-										<html:msg key="bucket2-tooltip-title" />\
+										<html:msg key="help-tooltip-title" />\
 									</h3>\
 									<p>\
-										<html:msg key="bucket2-tooltip-info" />\
+										<html:msg key="help-tooltip-info" />\
 									</p>\
 									<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5">\
-										<html:msg key="bucket2-tooltip-linktext" />\
+										<html:msg key="help-tooltip-linktext" />\
 										</a></p>\
 								</div>\
 								<div class="tooltip-bottom"></div>\
@@ -445,17 +460,8 @@
 							<div class="clear"></div>\
 						</div>\
 						<div>\
-							<p class="instructions-left">\
-								<html:msg key="bucket2-question-toggle" />\
-							</p>\
-							<div class="tags">\
-								<ul>\
-									<li class="active"><span class="tag-selector"></span><label class="articleFeedbackv5-bucket2-suggestion-label" for="articleFeedbackv5-bucket2-suggestion">Suggestion</label><input name="articleFeedbackv5-bucket2-tag" type="radio" id="articleFeedbackv5-bucket2-suggestion"><span class="clear"></span></li>\
-									<li><span class="tag-selector"></span><label class="articleFeedbackv5-bucket2-question-label" for="articleFeedbackv5-bucket2-question">Question</label><input name="articleFeedbackv5-bucket2-tag" type="radio" id="articleFeedbackv5-bucket2-question"><span class="clear"></span></li>\
-									<li><span class="tag-selector"></span><label class="articleFeedbackv5-bucket2-problem-label" for="articleFeedbackv5-bucket2-problem">Problem</label><input name="articleFeedbackv5-bucket2-tag" type="radio" id="articleFeedbackv5-bucket2-problem"><span class="clear"></span></li>\
-									<li><span class="tag-selector"></span><label class="articleFeedbackv5-bucket2-praise-label" for="articleFeedbackv5-bucket2-praise">Praise</label><input name="articleFeedbackv5-bucket2-tag" type="radio" id="articleFeedbackv5-bucket2-praise"><span class="clear"></span></li>\
-									<li class="clear"></li>\
-								</ul>\
+							<div class="articleFeedbackv5-tags">\
+								<ul></ul>\
 								<div class="clear"></div>\
 							</div>\
 							<div class="clear"></div>\
@@ -473,9 +479,42 @@
 						<div class="clear"></div>\
 					</form>\
 					';
+
+				var tag_tpl = '\
+					<li>\
+						<span class="tag-selector"></span>\
+						<label class="articleFeedbackv5-tag-label"></label>\
+						<input name="articleFeedbackv5-bucket2-tag" type="radio" class="articleFeedbackv5-tag-input" />\
+						<span class="clear"></span>\
+					</li>\
+					';
+
 				// Start up the block to return
 				var $block = $( block_tpl );
-				
+
+				// Add the tags from the options
+				$block.find( '.articleFeedbackv5-tags ul' ).each( function () {
+					var info = $.articleFeedbackv5.currentBucket().tagInfo;
+					for ( var i in info ) {
+						var key = info[i];
+						var comm_def_msg = 'articlefeedbackv5-bucket2-' + key + '-comment-default';
+						$.articleFeedbackv5.currentBucket().commentDefault[key] = mw.msg( comm_def_msg );
+						var label_msg = 'articlefeedbackv5-bucket2-' + key + '-label';
+						var tag_id = 'articleFeedbackv5-bucket2-' + key;
+						var $tag = $( tag_tpl );
+						$tag.attr( 'rel', key );
+						$tag.find( '.articleFeedbackv5-tag-input' )
+							.attr( 'id', tag_id )
+							.val( key );
+						$tag.find( '.articleFeedbackv5-tag-label' )
+							.addClass( 'articleFeedbackv5-bucket2-' + key + '-label' )
+							.attr( 'for', tag_id )
+							.text( mw.msg( label_msg ) );
+						$tag.appendTo( $( this ) );
+					}
+					$( '<li class="clear"></li>' ).appendTo( $( this ) );
+				} );
+
 				// Start out the tooltip hidden
 				$block.find( '.articleFeedbackv5-tooltip' ).hide();
 
@@ -521,6 +560,38 @@
 			 */
 			bindEvents: function ( $block ) {
 
+				// Enable submission and switch out the comment default on toggle selection
+				$block.find( '.articleFeedbackv5-tags li' )
+					.click( function ( e ) {
+						var new_val = $( this ).attr( 'rel' );
+						$.articleFeedbackv5.currentBucket().selectTag( new_val );
+						$.articleFeedbackv5.currentBucket().enableSubmission( true );
+					} );
+
+				// Clear out the question on focus
+				$block.find( '.articleFeedbackv5-comment textarea' )
+					.focus( function () {
+						var key = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tags input[checked]' ).val();
+						var def_msg = $.articleFeedbackv5.currentBucket().commentDefault[key];
+						console.log( key );
+						console.log( def_msg );
+						if ( $( this ).val() == def_msg ) {
+							$( this ).val( '' );
+							$(this).addClass( 'active' );
+						}
+
+					})
+					.blur( function () {
+						var key = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tags input[checked]' ).val();
+						var def_msg = $.articleFeedbackv5.currentBucket().commentDefault[key];
+						if ( $( this ).val() == '' ) {
+							$( this ).val( def_msg );
+							$(this).removeClass( 'active' );
+						} else {
+							$.articleFeedbackv5.currentBucket().enableSubmission( true );
+						}
+					} );
+
 				// Attach the submit
 				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
@@ -528,6 +599,48 @@
 						$.articleFeedbackv5.submitForm();
 					} );
 
+			},
+
+			// }}}
+			// {{{ selectTag
+
+			/**
+			 * Selects a particular tag
+			 *
+			 * @param tag string the tag
+			 */
+			selectTag: function ( tag ) {
+				var $h = $.articleFeedbackv5.$holder;
+				var $c = $h.find( '.articleFeedbackv5-comment textarea' );
+				$h.find( '.articleFeedbackv5-tags li' ).each( function () {
+					var key = $( this ).attr( 'rel' );
+					if ( key == tag ) {
+						// Set checked
+						$( this ).find( 'input' ).attr( 'checked', 'checked' );
+						// Set active
+						$( this ).addClass( 'active' );
+						// Change out comment text
+						var empty = false;
+						if ( $c.val() == '') {
+							empty = true;
+						} else {
+							for ( t in $.articleFeedbackv5.currentBucket().commentDefault ) {
+								if ( $c.val() == $.articleFeedbackv5.currentBucket().commentDefault[t] ) {
+									empty = true;
+									break;
+								}
+							}
+						}
+						if ( empty ) {
+							$c.val( $.articleFeedbackv5.currentBucket().commentDefault[key] );
+						}
+					} else {
+						// Clear checked
+						$( this ).find( 'input' ).removeAttr( 'checked' );
+						// Remove active
+						$( this ).removeClass( 'active' );
+					}
+				} );
 			},
 
 			// }}}
@@ -642,51 +755,63 @@
 				// The overall template
 				var block_tpl = '\
 					<form>\
-					<div class="title-wrap">\
-						<h2 class="articleFeedbackv5-title"><html:msg key="bucket3-title" /></h2>\
-						<a class="articleFeedbackv5-tooltip-trigger"></a>\
-						<div class="articleFeedbackv5-tooltip">\
-							<div class="tooltip-top"></div>\
-							<div class="tooltip-repeat">\
-								<h3><html:msg key="bucket3-tooltip-title" /></h3>\
-								<p><html:msg key="bucket3-tooltip-info" /></p>\
-								<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5"><html:msg key="bucket3-tooltip-linktext" /></a></p>\
-							</div>\
-							<div class="tooltip-bottom"></div>\
-						</div>\
-						<div class="clear"></div>\
-					</div>\
-					<div class="form-row articleFeedbackv5-bucket3-toggle">\
-						<p class="instructions-left"><html:msg key="bucket3-question-toggle" /></p>\
-						<div class="buttons">\
-							<div class="form-item" rel="yes" id="articleFeedbackv5-bucket3-toggle-wrapper-yes">\
-								<label for="articleFeedbackv5-bucket3-toggle-yes"><html:msg key="bucket3-toggle-found-yes-full" /></label>\
-								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket3-toggle-found-yes" value="yes" /></span>\
-								<input type="radio" name="toggle" id="articleFeedbackv5-bucket3-toggle-yes" class="query-button" value="yes" />\
-							</div>\
-							<div class="form-item" rel="no" id="articleFeedbackv5-bucket3-toggle-wrapper-no">\
-								<label for="articleFeedbackv5-bucket3-toggle-no"><html:msg key="bucket3-toggle-found-no-full" /></label>\
-								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket3-toggle-found-no" /></span>\
-								<input type="radio" name="toggle" id="articleFeedbackv5-bucket3-toggle-no" class="query-button last" value="no" />\
+						<div class="title-wrap">\
+							<h2 class="articleFeedbackv5-title">\
+								<html:msg key="bucket3-title" />\
+							</h2>\
+							<a class="articleFeedbackv5-tooltip-trigger"></a>\
+							<div class="articleFeedbackv5-tooltip">\
+								<div class="tooltip-top"></div>\
+								<div class="tooltip-repeat">\
+									<h3>\
+										<html:msg key="help-tooltip-title" />\
+									</h3>\
+									<p>\
+										<html:msg key="help-tooltip-info" />\
+									</p>\
+									<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5">\
+										<html:msg key="help-tooltip-linktext" />\
+										</a></p>\
+								</div>\
+								<div class="tooltip-bottom"></div>\
 							</div>\
 							<div class="clear"></div>\
 						</div>\
+						<div>\
+							<p class="instructions-left">\
+								<html:msg key="bucket3-question-toggle" />\
+							</p>\
+							<div class="articleFeedbackv5-rating articleFeedbackv5-rating-new" rel="trustworthy">\
+								<span class="articleFeedbackv5-rating-prompt">How would you rate this article?</span>\
+								<input type="hidden" name="r1" value="2">\
+								<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form">\
+									<div class="articleFeedbackv5-rating-label articleFeedback-rating-label-full" rel="1"></div>\
+									<div class="articleFeedbackv5-rating-label articleFeedback-rating-label-full" rel="2"></div>\
+									<div class="articleFeedbackv5-rating-label" rel="3"></div>\
+									<div class="articleFeedbackv5-rating-label" rel="4"></div>\
+									<div class="articleFeedbackv5-rating-label" rel="5"></div>\
+									<div class="articleFeedback-rating-clear" original-title="Remove this rating" style="display: block; "></div>\
+								</div>\
+								<div style="clear:both;"></div>\
+							</div>\
+							<div class="clear"></div>\
+						</div>\
+						<div class="articleFeedbackv5-comment">\
+							<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
+						</div>\
+						<div class="articleFeedbackv5-disclosure">\
+							<p class="articlefeedbackv5-shared-on-feedback"></p>\
+							<p class="articlefeedbackv5-transparency-terms"></p>\
+						</div>\
+						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled">\
+						<html:msg key="bucket3-form-submit" />\
+						</button>\
 						<div class="clear"></div>\
-					</div>\
-					<div class="articleFeedbackv5-comment">\
-						<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
-					</div>\
-					<div class="articleFeedbackv5-disclosure">\
-						<p class="articlefeedbackv5-shared-on-feedback"></p>\
-						<p class="articlefeedbackv5-transparency-terms"></p>\
-					</div>\
-					<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket3-form-submit" /></button>\
-					<div class="clear"></div>\
 					</form>\
 					';
 				// Start up the block to return
 				var $block = $( block_tpl );
-				
+
 				// Start out the tooltip hidden
 				$block.find( '.articleFeedbackv5-tooltip' ).hide();
 
@@ -859,68 +984,47 @@
 						<div class="articleFeedbackv5-tooltip">\
 							<div class="tooltip-top"></div>\
 							<div class="tooltip-repeat">\
-								<h4><html:msg key="bucket4-tooltip-title" /></h4>\
-								<p><html:msg key="bucket4-tooltip-info" /></p>\
-								<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5"><html:msg key="bucket4-tooltip-linktext" /></a></p>\
+								<h4><html:msg key="help-tooltip-title" /></h4>\
+								<p><html:msg key="help-tooltip-info" /></p>\
+								<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5"><html:msg key="help-tooltip-linktext" /></a></p>\
 							</div>\
 							<div class="tooltip-bottom"></div>\
 						</div>\
 						<div class="clear"></div>\
 					</div>\
 					<div class="form-row articleFeedbackv5-bucket4-toggle">\
-						<p class="instructions-left"><html:msg key="bucket4-question-toggle" /></p>\
-						<div class="buttons">\
-							<div class="form-item" rel="yes" id="articleFeedbackv5-bucket4-toggle-wrapper-yes">\
-								<label for="articleFeedbackv5-bucket4-toggle-yes"><html:msg key="bucket4-toggle-found-yes-full" /></label>\
-								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket4-toggle-found-yes" value="yes" /></span>\
-								<input type="radio" name="toggle" id="articleFeedbackv5-bucket4-toggle-yes" class="query-button" value="yes" />\
-							</div>\
-							<div class="form-item" rel="no" id="articleFeedbackv5-bucket4-toggle-wrapper-no">\
-								<label for="articleFeedbackv5-bucket4-toggle-no"><html:msg key="bucket4-toggle-found-no-full" /></label>\
-								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket4-toggle-found-no" /></span>\
-								<input type="radio" name="toggle" id="articleFeedbackv5-bucket4-toggle-no" class="query-button last" value="no" />\
-							</div>\
-							<div class="clear"></div>\
-						</div>\
-						<div class="clear"></div>\
-					</div>\
-					<div class="articleFeedbackv5-comment">\
-						<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
+						<h3><html:msg key="bucket4-subhead"></h3>\
+						<p class="instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
+						<html:msg key="bucket4-teaser-line1" /></p>\
 					</div>\
 					<div class="articleFeedbackv5-disclosure">\
-						<p class="articlefeedbackv5-shared-on-feedback"></p>\
-						<p class="articlefeedbackv5-transparency-terms"></p>\
+						<p><a class="articleFeedbackv5-learn-to-edit" target="_blank"><html:msg key="bucket4-learn-to-edit"></a></p>\
 					</div>\
-					<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket4-form-submit" /></button>\
+					<a class="articleFeedbackv5-submit"><html:msg key="bucket4-form-submit" /></a>\
 					<div class="clear"></div>\
 					</form>\
 					';
 				// Start up the block to return
 				var $block = $( block_tpl );
-				
+
 				// Start out the tooltip hidden
 				$block.find( '.articleFeedbackv5-tooltip' ).hide();
 
-				// Fill in the disclosure text
-				$block.find( '.articlefeedbackv5-shared-on-feedback' )
-					.html( $.articleFeedbackv5.buildLink(
-						'articlefeedbackv5-shared-on-feedback',
-						{
-							href: mw.config.get( 'wgScript' ) + '?' + $.param( {
-								title: mw.config.get( 'wgPageName' ),
-								action: 'feedback'
-							} ),
-							text: 'articlefeedbackv5-shared-on-feedback-linktext',
-							target: '_blank'
-						} ) );
-				$block.find( '.articlefeedbackv5-transparency-terms' )
-					.html( $.articleFeedbackv5.buildLink(
-						'articlefeedbackv5-transparency-terms',
-						{
-							href: mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ),
-							text: 'articlefeedbackv5-transparency-terms-linktext',
-							target: '_blank'
-						} ) );
+				// Fill in the learn to edit link
+				$block.find( '.articleFeedbackv5-learn-to-edit' )
+					.attr( 'href', mw.config.get( 'wgArticleFeedbackv5LearnToEdit' ) );
+
+				// Fill in the edit link
+				$block.find( '.articleFeedbackv5-submit' )
+					.attr( 'href',
+						mw.config.get( 'wgScript' ) + '?' + $.param( {
+							'title': mw.config.get( 'wgPageName' ),
+							'action': 'edit',
+							'articleFeedbackv5_feedback_id': $.articleFeedbackv5.feedbackId,
+							'articleFeedbackv5_cta_id': $.articleFeedbackv5.ctaId,
+							'articleFeedbackv5_bucket_id': $.articleFeedbackv5.bucketId
+						} )
+					);
 
 				// Localize the block
 				$block.localize( { 'prefix': 'articlefeedbackv5-' } );
@@ -931,114 +1035,7 @@
 					.addClass( 'ui-button-blue' )
 
 				return $block;
-			},
-
-			// }}}
-			// {{{ bindEvents
-
-			/**
-			 * Binds any events
-			 *
-			 * @param $block element the form block
-			 */
-			bindEvents: function ( $block ) {
-
-				// Attach the submit
-				$block.find( '.articleFeedbackv5-submit' )
-					.click( function ( e ) {
-						e.preventDefault();
-						$.articleFeedbackv5.submitForm();
-					} );
-
-			},
-
-			// }}}
-			// {{{ enableSubmission
-
-			/**
-			 * Enables or disables submission of the form
-			 *
-			 * @param state bool true to enable; false to disable
-			 */
-			enableSubmission: function ( state ) {
-				var $h = $.articleFeedbackv5.$holder;
-				if ( state ) {
-					if ($.articleFeedbackv5.successTimeout) {
-						clearTimeout( $.articleFeedbackv5.successTimeout );
-					}
-					$h.find( '.articleFeedbackv5-submit' ).button( { 'disabled': false } );
-					$h.find( '.articleFeedbackv5-success span' ).hide();
-					$h.find( '.articleFeedbackv5-pending span' ).fadeIn( 'fast' );
-				} else {
-					$h.find( '.articleFeedbackv5-submit' ).button( { 'disabled': true } );
-					$h.find( '.articleFeedbackv5-pending span' ).hide();
-				}
-			},
-
-			// }}}
-			// {{{ getFormData
-
-			/**
-			 * Pulls down form data
-			 *
-			 * @return object the form data
-			 */
-			getFormData: function () {
-				var data = {};
-				return data;
-			},
-
-			// }}}
-			// {{{ localValidation
-
-			/**
-			 * Performs any local validation
-			 *
-			 * @param  object formdata the form data
-			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
-			 */
-			localValidation: function ( formdata ) {
-				var error = {};
-				var ok = true;
-				if ( $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket4-toggle input[checked]' ).length < 1 ) {
-					error.toggle = 'Please select an option';
-					ok = false;
-				}
-				return ok ? false : error;
-			},
-
-			// }}}
-			// {{{ markFormError
-
-			/**
-			 * Marks any errors on the form
-			 *
-			 * @param object error errors, indexed by field name
-			 */
-			markFormError: function ( error ) {
-				if ( '_api' in error ) {
-					$.articleFeedbackv5.markShowstopperError( error._api.info );
-				} else {
-					alert( 'Validation error' );
-					mw.log( 'Validation error' );
-				}
-				console.log( error );
-			},
-
-			// }}}
-			// {{{ setSuccessState
-
-			/**
-			 * Sets the success state
-			 */
-			setSuccessState: function () {
-				var $h = $.articleFeedbackv5.$holder;
-				$h.find( '.articleFeedbackv5-success span' ).fadeIn( 'fast' );
-				$.articleFeedbackv5.successTimeout = setTimeout( function () {
-					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-success span' )
-						.fadeOut( 'slow' );
-				}, 5000 );
-			},
+			}
 
 			// }}}
 
@@ -1902,7 +1899,7 @@
 		// 1. Requested in query string (debug only)
 		// 2. From cookie (see below)
 		// 3. Core bucketing
-		var knownBuckets = { 0: true, 1: true, 2: true, 3: true, 5: true };
+		var knownBuckets = { '0': true, '1': true, '2': true, '3': true, '4': true, '5': true };
 		var requested = mw.util.getParamValue( 'bucket' );
 		var cookieval = $.cookie( $.articleFeedbackv5.prefix( 'display-bucket' ) );
 		if ( $.articleFeedbackv5.debug && requested in knownBuckets ) {

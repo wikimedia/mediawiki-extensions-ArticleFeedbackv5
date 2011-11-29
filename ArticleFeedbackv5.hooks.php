@@ -61,9 +61,6 @@ class ArticleFeedbackv5Hooks {
 			'styles' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.css',
 			'messages' => array(
 				'articlefeedbackv5-bucket1-title',
-				'articlefeedbackv5-bucket1-tooltip-title',
-				'articlefeedbackv5-bucket1-tooltip-info',
-				'articlefeedbackv5-bucket1-tooltip-linktext',
 				'articlefeedbackv5-bucket1-question-toggle',
 				'articlefeedbackv5-bucket1-toggle-found-yes',
 				'articlefeedbackv5-bucket1-toggle-found-yes-full',
@@ -74,6 +71,9 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-bucket1-form-pending',
 				'articlefeedbackv5-bucket1-form-success',
 				'articlefeedbackv5-bucket1-form-submit',
+				'articlefeedbackv5-bucket2-title',
+				'articlefeedbackv5-bucket2-form-submit',
+
 				'articlefeedbackv5-bucket5-form-switch-label',
 				'articlefeedbackv5-bucket5-form-panel-title',
 				'articlefeedbackv5-bucket5-form-panel-explanation',
@@ -100,6 +100,9 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-error',
 				'articlefeedbackv5-shared-on-feedback',
 				'articlefeedbackv5-shared-on-feedback-linktext',
+				'articlefeedbackv5-help-tooltip-title',
+				'articlefeedbackv5-help-tooltip-info',
+				'articlefeedbackv5-help-tooltip-linktext',
 				'articlefeedbackv5-transparency-terms',
 				'articlefeedbackv5-transparency-terms-linktext',
 				'parentheses',
@@ -179,13 +182,20 @@ class ArticleFeedbackv5Hooks {
 	 */
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
 		global $wgExtensionAssetsPath,
-			$wgArticleFeedbackv5Bucket5RatingCategories;
+			$wgArticleFeedbackv5Bucket5RatingCategories,
+			$wgArticleFeedbackv5Bucket2TagNames;
 
 		$localpath = dirname( __FILE__ ) . '/modules';
 		$remotepath = "$wgExtensionAssetsPath/ArticleFeedbackv5/modules";
 
 		foreach ( self::$modules as $name => $resources ) {
 			if ( $name == 'jquery.articleFeedbackv5' ) {
+				// Bucket 2: labels and comment defaults
+				$prefix = 'articlefeedbackv5-bucket2-';
+				foreach ( $wgArticleFeedbackv5Bucket2TagNames as $tag ) {
+					$resources['messages'][] = $prefix . $tag . '-label';
+					$resources['messages'][] = $prefix . $tag . '-comment-default';
+				}
 				// Bucket 5: labels and tooltips
 				$prefix = 'articlefeedbackv5-bucket5-';
 				foreach ( $wgArticleFeedbackv5Bucket5RatingCategories as $field ) {
@@ -215,21 +225,25 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5BlacklistCategories,
 			$wgArticleFeedbackv5LotteryOdds,
 			$wgArticleFeedbackv5Debug,
+			$wgArticleFeedbackv5Bucket2TagNames,
 			$wgArticleFeedbackv5Bucket5RatingCategories,
 			$wgArticleFeedbackv5DisplayBuckets,
 			$wgArticleFeedbackv5Tracking,
 			$wgArticleFeedbackv5Options,
-			$wgArticleFeedbackv5Namespaces;
+			$wgArticleFeedbackv5Namespaces,
+			$wgArticleFeedbackv5LearnToEdit;
 		$vars['wgArticleFeedbackv5SMaxage'] = $wgArticleFeedbackv5SMaxage;
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
 		$vars['wgArticleFeedbackv5LotteryOdds'] = $wgArticleFeedbackv5LotteryOdds;
 		$vars['wgArticleFeedbackv5Debug'] = $wgArticleFeedbackv5Debug;
+		$vars['wgArticleFeedbackv5Bucket2TagNames'] = $wgArticleFeedbackv5Bucket2TagNames;
 		$vars['wgArticleFeedbackv5Bucket5RatingCategories'] = $wgArticleFeedbackv5Bucket5RatingCategories;
 		$vars['wgArticleFeedbackv5DisplayBuckets'] = $wgArticleFeedbackv5DisplayBuckets;
 		$vars['wgArticleFeedbackv5Tracking'] = $wgArticleFeedbackv5Tracking;
 		$vars['wgArticleFeedbackv5Options'] = $wgArticleFeedbackv5Options;
 		$vars['wgArticleFeedbackv5Namespaces'] = $wgArticleFeedbackv5Namespaces;
+		$vars['wgArticleFeedbackv5LearnToEdit'] = $wgArticleFeedbackv5LearnToEdit;
 		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMsgForContent( 'articlefeedbackv5-bucket5-form-panel-explanation-link' );
 		$vars['wgArticleFeedbackv5TermsPage'] = wfMsgForContent( 'articlefeedbackv5-transparency-terms-url' );
 		return true;
