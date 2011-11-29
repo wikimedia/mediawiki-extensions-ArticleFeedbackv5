@@ -143,7 +143,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param $revision int the revision id
 	 */
 	public function updateRollupTables( $page, $revision ) {
-# Select rollup doesn't work yet
 #		foreach( array( 'rating', 'boolean', 'select' ) as $type ) {
 		foreach( array( 'rating', 'boolean' ) as $type ) {
 			$this->updateRollup( $page, $revision, $type );
@@ -158,37 +157,15 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param $type     string the type (rating, select, or boolean)
 	 */
 	private function updateRollup($pageId, $revId, $type) {
-		global $wgArticleFeedbackv5RatingLifetime;
-		$dbr   = wfGetDB( DB_SLAVE );
-		$dbw   = wfGetDB( DB_MASTER );
-		$limit = ApiArticleFeedbackv5Utils::getRevisionLimit( $pageId );
-
 		# sanity check
 		if ( $type != 'rating' && $type != 'select' && $type != 'boolean' ) {
 			return 0;
 		}
 
-		$rows = $dbr->select(
-			array( 'aft_article_answer', 'aft_article_feedback', 'aft_article_field' ),
-			array( 'aa_field_id', "SUM(aa_response_$type) AS earned", 'COUNT(*) AS submits' ),
-			array(
-				'afi_data_type'  => $type,
-				'af_page_id'     => $pageId,
-				'aa_feedback_id = af_id',
-				'afi_id = aa_field_id',
-				"af_revision_id >= $limit",
-			),
-			__METHOD__,
-			array( 'GROUP BY' =>  'aa_field_id' )
-		);
-
-		if ( $type == 'select' ) {
-			$page_prefix = 'afsr_';
-			$rev_prefix  = 'arfsr_';
-		} else {
-			$page_prefix = 'arr_';
-			$rev_prefix  = 'afrr_';
-		}
+		global $wgArticleFeedbackv5RatingLifetime;
+		$dbr        = wfGetDB( DB_SLAVE );
+		$dbw        = wfGetDB( DB_MASTER );
+		$limit      = ApiArticleFeedbackv5Utils::getRevisionLimit( $pageId );
 		$page_data  = array();
 		$rev_data   = array();
 		$rev_table  = 'aft_article_revision_feedback_'
@@ -197,6 +174,34 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$page_table = 'aft_article_feedback_'
 			. ( $type == 'select' ? 'select' : 'ratings' )
 			. '_rollup';
+
+		if ( $type == 'select' ) {
+			$page_prefix = 'afsr_';
+			$rev_prefix  = 'arfsr_';
+			$select      = array( 'aa_field_id', 'aa_response_option_id', 'COUNT(aa_response_option_id) AS earned' );
+			$group       = array( 'GROUP BY' => 'aa_response_option_id' );
+		} else {
+			$page_prefix = 'arr_';
+			$rev_prefix  = 'afrr_';
+			$select      = array( 'aa_field_id', "SUM(aa_response_$type) AS earned", 'COUNT(*) AS submits' );
+			$group       = array( 'GROUP BY' =>  'aa_field_id' );
+
+		}
+
+		$rows = $dbr->select(
+			array( 'aft_article_answer', 'aft_article_feedback', 'aft_article_field' ),
+			$select,
+			array(
+				'afi_data_type'  => $type,
+				'af_page_id'     => $pageId,
+				'aa_feedback_id = af_id',
+				'afi_id = aa_field_id',
+				"af_revision_id >= $limit",
+			),
+			__METHOD__,
+			$group
+		);
+
 
 		foreach ( $rows as $row ) {
 			if ( !array_key_exists( $row->aa_field_id, $page_data ) ) {

@@ -187,13 +187,14 @@ $wgExtensionCredits['other'][] = array(
 
 // Autoloading
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['ApiArticleFeedbackv5Utils']       = $dir . 'api/ApiArticleFeedbackv5Utils.php';
-$wgAutoloadClasses['ApiArticleFeedbackv5']            = $dir . 'api/ApiArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5'] = $dir . 'api/ApiViewRatingsArticleFeedbackv5.php';
-$wgAutoloadClasses['ArticleFeedbackv5Hooks']          = $dir . 'ArticleFeedbackv5.hooks.php';
-$wgAutoloadClasses['SpecialArticleFeedbackv5']        = $dir . 'SpecialArticleFeedbackv5.php';
-$wgExtensionMessagesFiles['ArticleFeedbackv5']        = $dir . 'ArticleFeedbackv5.i18n.php';
-$wgExtensionAliasesFiles['ArticleFeedbackv5']         = $dir . 'ArticleFeedbackv5.alias.php';
+$wgAutoloadClasses['ApiArticleFeedbackv5Utils']        = $dir . 'api/ApiArticleFeedbackv5Utils.php';
+$wgAutoloadClasses['ApiArticleFeedbackv5']             = $dir . 'api/ApiArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5']  = $dir . 'api/ApiViewRatingsArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5'] = $dir . 'api/ApiViewFeedbackArticleFeedbackv5.php';
+$wgAutoloadClasses['ArticleFeedbackv5Hooks']           = $dir . 'ArticleFeedbackv5.hooks.php';
+$wgAutoloadClasses['SpecialArticleFeedbackv5']         = $dir . 'SpecialArticleFeedbackv5.php';
+$wgExtensionMessagesFiles['ArticleFeedbackv5']         = $dir . 'ArticleFeedbackv5.i18n.php';
+$wgExtensionAliasesFiles['ArticleFeedbackv5']          = $dir . 'ArticleFeedbackv5.alias.php';
 
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleFeedbackv5Hooks::loadExtensionSchemaUpdates';
@@ -207,10 +208,10 @@ $wgHooks['EditPage::showEditForm:fields'][] = 'ArticleFeedbackv5Hooks::pushTrack
 $wgHooks['ArticleSaveComplete'][] = 'ArticleFeedbackv5Hooks::trackEdit';
 
 // API Registration
-$wgAPIListModules['articlefeedbackv5-view-ratings'] = 'ApiViewRatingsArticleFeedbackv5';
-$wgAPIModules['articlefeedbackv5'] = 'ApiArticleFeedbackv5';
+$wgAPIListModules['articlefeedbackv5-view-ratings']  = 'ApiViewRatingsArticleFeedbackv5';
+$wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';
+$wgAPIModules['articlefeedbackv5']                   = 'ApiArticleFeedbackv5';
 
 // Special Page
 $wgSpecialPages['ArticleFeedbackv5'] = 'SpecialArticleFeedbackv5';
 $wgSpecialPageGroups['ArticleFeedbackv5'] = 'other';
-

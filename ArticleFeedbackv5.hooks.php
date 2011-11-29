@@ -115,6 +115,10 @@ class ArticleFeedbackv5Hooks {
 				'jquery.clickTracking',
 			),
 		),
+		'jquery.articleFeedbackv5.special' => array(
+			'scripts ' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js',
+			'styles'   => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css',
+		),
 	);
 
 	public static function addFeedbackLink($template, &$content_actions) {
@@ -122,7 +126,7 @@ class ArticleFeedbackv5Hooks {
 		$content_actions['namespaces'][] = array(
 			'class'   => false or 'selected',
 			'text'    => 'Feedback',
-			'href'    => '/wiki-dev/index.php/Feedback:Greg', #TODO
+			'href'    => '/wiki-dev/index.php/Special:ArticleFeedbackv5', #TODO
 			'context' => 'feedback'
 		);
 		return true;
@@ -194,6 +198,7 @@ class ArticleFeedbackv5Hooks {
 					$resources['messages'][] = $prefix . $field . '-tooltip-5';
 				}
 			}
+
 			$resourceLoader->register(
 				$name, new ResourceLoaderFileModule( $resources, $localpath, $remotepath )
 			);
