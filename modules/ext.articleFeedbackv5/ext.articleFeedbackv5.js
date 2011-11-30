@@ -24,21 +24,7 @@ var clickFeedbackLink = function ( linkId ) {
 		$.trackActionWithInfo( linkInfo[linkId].clickTracking, mw.config.get( 'wgTitle' ) );
 	}
 	// Set the link id
-	$( '#mw-articlefeedbackv5' ).articleFeedbackv5( 'setLinkId', linkId );
-	// Go to the box and flash it
-	var $box = $( '#mw-articlefeedbackv5' );
-	var count = 0;
-	var interval = setInterval( function() {
-		// Animate the opacity over .2 seconds
-		$box.animate( { 'opacity': 0.5 }, 100, function() {
-			// When finished, animate it back to solid.
-			$box.animate( { 'opacity': 1.0 }, 100 );
-		} );
-		// Clear the interval once we've reached 3.
-		if ( ++count >= 3 ) {
-			clearInterval( interval );
-		}
-	}, 200 );
+	$( '#mw-articlefeedbackv5' ).articleFeedbackv5( 'openAsModal', linkId );
 }
 
 /* Load at the bottom of the article */
@@ -61,7 +47,8 @@ $( 'span.editsection' ).append(
 		mw.msg( 'articlefeedbackv5-section-linktext' ) + '</a>' +
 	']'
 );
-$( 'span.editsection a.articleFeedbackv5-sectionlink' ).click( function () {
+$( 'span.editsection a.articleFeedbackv5-sectionlink' ).click( function ( e ) {
+	e.preventDefault();
 	clickFeedbackLink( '1' );
 } );
 
@@ -69,7 +56,10 @@ $( 'span.editsection a.articleFeedbackv5-sectionlink' ).click( function () {
 var $aftLink4 = $( '<li id="t-articlefeedbackv5"><a href="#mw-articlefeedbackv5"></a></li>' )
 	.find( 'a' )
 		.text( mw.msg( 'articlefeedbackv5-toolbox-linktext' ) )
-		.click( function () { clickFeedbackLink( '4' ) } )
+		.click( function ( e ) {
+			e.preventDefault();
+			clickFeedbackLink( '4' );
+		} )
 	.end();
 $( '#p-tb' ).find( 'ul' ).append( $aftLink4 );
 

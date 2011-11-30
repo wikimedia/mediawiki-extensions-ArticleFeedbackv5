@@ -629,5 +629,25 @@
 	background: url(images/bg-rating-on.png) no-repeat;
 }
 .articleFeedbackv5-rating .articleFeedbackv5-rating-prompt {
-
 }
+
+
+/*** Dialog ***/
+.articleFeedbackv5-dialog {
+	border: none;
+}
+.articleFeedbackv5-dialog.ui-widget-content,
+.articleFeedbackv5-dialog.ui-dialog .ui-widget-header {
+	background: transparent !important;
+}
+.articleFeedbackv5-dialog .ui-widget-header {
+	border: none;
+}
+.articleFeedbackv5-dialog .ui-dialog-titlebar-close {
+	background-color: white;
+	border: 1px solid gray;
+	top: 35px !important;
+	right: -5px !important;
+	padding: 0;
+}
+
