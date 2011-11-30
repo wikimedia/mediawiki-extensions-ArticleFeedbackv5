@@ -45,7 +45,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 <!-- This is a terrible, terrible hack. I'm taking it out as soon as I stop
      being an idiot and sort this ResourceLoader thing out -->
 <script> var hackPageId = $pageId; </script>
-<script src="http://wikidev.int.omniti.net/extensions/ArticleFeedbackv5/modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js"></script>
+<script src="/extensions/ArticleFeedbackv5/modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js"></script>
 <!--
 Show only: <select id="aft5-filter">
 <option>visible</option>
