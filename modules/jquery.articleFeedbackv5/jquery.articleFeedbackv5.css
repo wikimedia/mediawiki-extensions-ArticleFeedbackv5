@@ -523,7 +523,7 @@
 	color: #000;
 }
 .articleFeedbackv5-panel .articleFeedbackv5-disclosure {
-	float: left;
+	float: right;
 	width: 335px;
 	margin: 10px 0 0;
 }
@@ -532,10 +532,11 @@
 	font-size: 0.75em;
 }
 .articleFeedbackv5-panel .articleFeedbackv5-submit {
-	float: right;
-	height: 25px;
-	width: 180px;
+	float: left;
+	height: 30px;
+	width: auto;
 	text-align: center;
+	padding: 0 6px;
 	background: url(images/bg-submit-disable.png) repeat-x !important;
 	margin: 10px 30px 0 0 !important;
 	border: none !important;
@@ -543,15 +544,24 @@
 	-webkit-border-radius: 3px;
 	border-radius: 3px; /* future proofing */
 	-khtml-border-radius: 3px; /* for old Konqueror browsers */
+	-moz-box-shadow: -3px 3px 3px #999;
+	-webkit-box-shadow: -3px 3px 3px #999;
+	box-shadow: -3px 3px 3px #999;
 }
 .articleFeedbackv5-panel .articleFeedbackv5-submit span {
 	font-size: 16px;
-	line-height: 15px;
+	display: inline-block;
+	height: 21px;
 	text-align: center;
 	color: #fff;
 	text-shadow: 1px 1px 1px #000;
+	padding: 0 30px 0 0;
+	background: url(images/bg-submit-icon.png) right center no-repeat;
 }
 /*** Option 2 ***/
+.articleFeedbackv5-tags ul {
+	margin: 0 0 10px;
+}
 .articleFeedbackv5-tags ul li {
 	color: #666;
 	list-style: none;
@@ -592,6 +602,9 @@
 .articleFeedbackv5-tags ul li label {
 	padding: 0 0 0 22px;
 	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	line-height: 18px;
 }
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-suggestion-label {
 	background: url(images/bg-tag-suggestion-off.png) no-repeat 0 center;
