@@ -52,8 +52,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	}
 
-	# TODO: When there's an overall rating field, use that.
-	# Using "completeness" for now, because I needed something to test with.
 	public function fetchOverallRating( $pageId ) {
 		$rv   = array();
 		$dbr  = wfGetDB( DB_SLAVE );
@@ -65,14 +63,14 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			),
 			array( 'arr_page_id' => $pageId,
 				'arr_rating_id = afi_id',
-				"afi_name IN ('found', 'complete')"
+				"afi_name IN ('found', 'rating')"
 			)
 		);
 
 		foreach( $rows as $row ) {
 			if( $row->afi_name == 'found' ) {
 				$rv['found']  = ( int ) ( 100 * $row->rating );
-			} elseif( $row->afi_name == 'complete' ) {
+			} elseif( $row->afi_name == 'rating' ) {
 				# Or should this be round/ceil/floor/float?
 				$rv['rating'] = ( int ) $row->rating;
 			}
@@ -134,8 +132,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		$rows  = $dbr->select(
 			array( 'aft_article_feedback', 'aft_article_answer', 
-				'aft_article_field' ),
-			array( 'af_id', 'af_bucket_id', 'afi_name', 
+				'aft_article_field', 'aft_article_field_option'
+			),
+			array( 'af_id', 'af_bucket_id', 'afi_name', 'afo_name',
 				'aa_response_text', 'aa_response_boolean', 
 				'aa_response_rating', 'aa_response_option_id',
 				'afi_data_type', 'af_created', 'af_user_text'
@@ -144,12 +143,16 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			__METHOD__,
 			array( 'ORDER BY' => $order ),
 			array(
-				'aft_article_answer' => array(
-					'LEFT JOIN', 'af_id = aa_feedback_id'
-				),
-				'aft_article_field'  => array(
+				'aft_article_field'        => array(
 					'JOIN', 'afi_id = aa_field_id'
 				),
+				'aft_article_answer'       => array(
+					'LEFT JOIN', 'af_id = aa_feedback_id'
+				),
+				'aft_article_field_option' => array(
+					'LEFT JOIN', 
+					'aa_response_option_id = afo_option_id'
+				)
 			)
 		);
 
@@ -196,9 +199,25 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		.'</blockquote>';
 	}
 
-	private function renderBucket2( $record ) { }
-	private function renderBucket3( $record ) { }
-	private function renderBucket4( $record ) { }
+	private function renderBucket2( $record ) { 
+		$name = $record[0]->af_user_text;
+		$type = $record['tag']->afo_name;
+		return "$name had a $type:"
+		.'<blockquote>'.$record['comment']->aa_response_text
+		.'</blockquote>';
+	}
+
+	private function renderBucket3( $record ) { 
+		$name   = $record[0]->af_user_text;
+		$rating = $record['rating']->aa_response_rating;
+		return "$name rated this page $rating/5:"
+		.'<blockquote>'.$record['comment']->aa_response_text
+		.'</blockquote>';
+	}
+
+	private function renderBucket4( $record ) { 
+		return 'User was presented with the CTA-only form.';
+	}
 
 	private function renderBucket5( $record ) { 
 		$name  = $record[0]->af_user_text;
@@ -213,8 +232,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		return $rv;
 	}
 
+	private function renderBucket0( $record ) { 
+		# Future-proof this for when the bucket ID changes.
+		return $this->renderBucket6( $record );
+	}
+
 	private function renderBucket6( $record ) { 
-		return 'User was presented with the CTA-only form.';
+		return 'User was not shown a feedback form.';
 	}
 
 	/**

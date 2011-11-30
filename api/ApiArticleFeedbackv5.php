@@ -153,8 +153,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param $revision int the revision id
 	 */
 	public function updateRollupTables( $page, $revision ) {
-#		foreach( array( 'rating', 'boolean', 'select' ) as $type ) {
-		foreach( array( 'rating', 'boolean' ) as $type ) {
+		foreach( array( 'rating', 'boolean', 'option_id' ) as $type ) {
 			$this->updateRollup( $page, $revision, $type );
 		}
 	}
@@ -166,9 +165,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param $revision int    the revision id
 	 * @param $type     string the type (rating, select, or boolean)
 	 */
-	private function updateRollup($pageId, $revId, $type) {
+	private function updateRollup( $pageId, $revId, $type ) {
 		# sanity check
-		if ( $type != 'rating' && $type != 'select' && $type != 'boolean' ) {
+		if ( $type != 'rating' && $type != 'option_id' && $type != 'boolean' ) {
 			return 0;
 		}
 
@@ -179,13 +178,13 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$page_data  = array();
 		$rev_data   = array();
 		$rev_table  = 'aft_article_revision_feedback_'
-			. ( $type == 'select' ? 'select' : 'ratings' )
+			. ( $type == 'option_id' ? 'select' : 'ratings' )
 			. '_rollup';
 		$page_table = 'aft_article_feedback_'
-			. ( $type == 'select' ? 'select' : 'ratings' )
+			. ( $type == 'option_id' ? 'select' : 'ratings' )
 			. '_rollup';
 
-		if ( $type == 'select' ) {
+		if ( $type == 'option_id' ) {
 			$page_prefix = 'afsr_';
 			$rev_prefix  = 'arfsr_';
 			$select      = array( 'aa_field_id', 'aa_response_option_id', 'COUNT(aa_response_option_id) AS earned', '0 AS submits' );
@@ -226,7 +225,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 
 		foreach ( $rows as $row ) {
-			if( $type == 'select' ) {
+			if( $type == 'option_id' ) {
 				$key   = $row->aa_response_option_id;
 				$field = 'option_id';
 				$value = $row->aa_response_option_id;
@@ -267,15 +266,14 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$dbw->delete( $rev_table, array(
 			$rev_prefix . 'page_id'     => $pageId,
 			$rev_prefix . 'revision_id' => $revId,
-			$rev_prefix . 'rating_id'   => array_keys( $page_data ),
+			$rev_prefix . $field        => array_keys( $page_data ),
 		) );
 		$dbw->insert( $rev_table, $rev_data );
 		$dbw->delete( $page_table, array(
-			$page_prefix . 'page_id'   => $pageId,
-			$page_prefix . 'rating_id' => array_keys( $page_data ),
+			$page_prefix . 'page_id' => $pageId,
+			$page_prefix . $field    => array_keys( $page_data ),
 		) );
 		$dbw->insert( $page_table, array_values ( $page_data ) );
-
 		$dbw->commit();
 	}
 
