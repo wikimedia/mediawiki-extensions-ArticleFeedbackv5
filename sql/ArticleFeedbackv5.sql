@@ -24,11 +24,13 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   af_user_anon_token varbinary(32) NOT NULL DEFAULT '',
   -- Foreign key to revision.rev_id
   af_revision_id     integer unsigned NOT NULL,
-  -- Which rating widget the user was given. Default of 0 is the "old" design
-  af_bucket_id       int unsigned NOT NULL DEFAULT 0,
-  -- Which CTA widget was displayed to the user. 0 is "none"
+  -- Which feedback widget the user was given. Default of 0 is "none".
+  af_bucket_id       integer unsigned NOT NULL DEFAULT 0,
+  -- Which CTA widget was displayed to the user. 0 is "none",
   -- Which would come up if they got the edit page CTA, and couldn't edit.
-  af_cta_id          int unsigned NOT NULL DEFAULT 0,
+  af_cta_id          integer unsigned NOT NULL DEFAULT 0,
+  -- Which link the user clicked on to get to the widget. Default of 0 is "none".
+  af_link_id         integer unsigned NOT NULL DEFAULT 0,
   af_created         timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   af_modified        timestamp NULL
 ) /*$wgDBTableOptions*/;

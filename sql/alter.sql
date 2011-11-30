@@ -20,4 +20,5 @@ INSERT INTO aft_article_field_option (afo_field_id, afo_name)
 INSERT INTO aft_article_field_option (afo_field_id, afo_name)
 	SELECT afi_id, 'praise' FROM aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
 
+ALTER TABLE aft_article_feedback ADD COLUMN af_link_id integer unsigned NOT NULL DEFAULT 0;
 

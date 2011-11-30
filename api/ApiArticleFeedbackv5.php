@@ -288,6 +288,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$dbw       = wfGetDB( DB_MASTER );
 		$revId     = $params['revid'];
 		$bucket    = $params['bucket'];
+		$link      = $params['link'];
 		$token     = ApiArticleFeedbackv5Utils::getAnonToken( $params );
 		$timestamp = $dbw->timestamp();
 
@@ -309,6 +310,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'af_user_text'       => $wgUser->getName(),
 			'af_user_anon_token' => $token,
 			'af_bucket_id'       => $bucket,
+			'af_link_id'         => $link,
 		) );
 
 		return $dbw->insertID();
@@ -372,7 +374,13 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_MIN      => 1
+				ApiBase::PARAM_MIN      => 0
+			),
+			'link' => array(
+				ApiBase::PARAM_TYPE     => 'integer',
+				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_MIN      => 0
 			),
 		);
 
@@ -398,7 +406,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'pageid'    => 'Page ID to submit feedback for',
 			'revid'     => 'Revision ID to submit feedback for',
 			'anontoken' => 'Token for anonymous users',
-			'bucket'    => 'Which rating widget was shown to the user',
+			'bucket'    => 'Which feedback widget was shown to the user',
+			'link'      => 'Which link the user clicked on to get to the widget',
 		);
 		$fields = ApiArticleFeedbackv5Utils::getFields();
 		foreach ( $fields as $f ) {

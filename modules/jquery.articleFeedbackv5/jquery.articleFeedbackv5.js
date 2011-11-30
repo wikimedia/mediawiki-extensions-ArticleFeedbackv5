@@ -68,7 +68,7 @@
 	 *
 	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_form_interface
 	 */
-	$.articleFeedbackv5.bucketId = 0;
+	$.articleFeedbackv5.bucketId = '0';
 
 	/**
 	 * The CTA is the view presented to a user who has successfully submitted
@@ -76,7 +76,20 @@
 	 *
 	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Calls_to_Action
 	 */
-	$.articleFeedbackv5.ctaId = 1;
+	$.articleFeedbackv5.ctaId = '1';
+
+	/**
+	 * The link ID indicates where the user clicked (or not) to get to the
+	 * feedback form.  Options are:
+	 *  0: No link; user scrolled to the bottom of the page
+	 *  1: Section bars
+	 *  2: Title bar
+	 *  3: Vertical button
+	 *  4: Toolbox (bottom of left nav)
+	 *
+	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Placement
+	 */
+	$.articleFeedbackv5.linkId = '0';
 
 	/**
 	 * Use the mediawiki util resource's config method to find the correct url to
@@ -2041,19 +2054,23 @@
 		// Lock the form
 		$.articleFeedbackv5.lockForm();
 
+		// Request data
+		var data = $.extend( formdata, {
+			'action': 'articlefeedbackv5',
+			'format': 'json',
+			'anontoken': $.articleFeedbackv5.userId,
+			'pageid': $.articleFeedbackv5.pageId,
+			'revid': $.articleFeedbackv5.revisionId,
+			'bucket': $.articleFeedbackv5.bucketId,
+			'link': $.articleFeedbackv5.linkId
+		} );
+
 		// Send off the ajax request
 		$.ajax( {
 			'url': $.articleFeedbackv5.apiUrl,
 			'type': 'POST',
 			'dataType': 'json',
-			'data': $.extend( formdata, {
-				'action': 'articlefeedbackv5',
-				'format': 'json',
-				'anontoken': $.articleFeedbackv5.userId,
-				'pageid': $.articleFeedbackv5.pageId,
-				'revid': $.articleFeedbackv5.revisionId,
-				'bucket': $.articleFeedbackv5.bucketId
-			} ),
+			'data': data,
 			'success': function( data ) {
 				if ( 'articlefeedbackv5' in data
 						&& 'feedback_id' in data.articlefeedbackv5
@@ -2091,6 +2108,21 @@
 		// ajax request, not as a result of it)?
 		if ( 'onSubmit' in bucket ) {
 			bucket.onSubmit( formdata );
+		}
+	};
+
+	// }}}
+	// {{{ Outside interaction methods
+
+	/**
+	 * Sets the link ID
+	 *
+	 * @param int linkId the link ID
+	 */
+	$.articleFeedbackv5.setLinkId = function ( linkId ) {
+		var knownLinks = { '0': true, '1': true, '2': true, '3': true, '4': true };
+		if ( linkId in knownLinks ) {
+			$.articleFeedbackv5.linkId = linkId + '';
 		}
 	};
 
@@ -2161,24 +2193,16 @@
 // {{{ articleFeedbackv5 plugin
 
 /**
- * Can be called with an options object like...
+ * Right now there are no options for this plugin, but there will be in the
+ * future, so allow them to be passed in.
  *
- * 	$( ... ).articleFeedbackv5( {
- * 		'ratings': {
- * 			'rating-name': {
- * 				'id': 1, // Numeric identifier of the rating, same as the rating_id value in the db
- * 				'label': 'msg-key-for-label', // String of message key for label
- * 				'tip': 'msg-key-for-tip', // String of message key for tip
- * 			},
- *			// More ratings here...
- * 		}
- * 	} );
- *
- * Rating IDs need to be included in $wgArticleFeedbackv5RatingTypes, which is an array mapping allowed IDs to rating names.
+ * If a string is passed in, it's considered a public function
  */
-$.fn.articleFeedbackv5 = function ( opts ) {
-	if ( typeof( opts ) == 'object' ) {
+$.fn.articleFeedbackv5 = function ( opts, arg ) {
+	if ( typeof ( opts ) == 'undefined' || typeof ( opts ) == 'object' ) {
 		$.articleFeedbackv5.init( $( this ), opts );
+	} else if ( 'setLinkId' === opts ) {
+		$.articleFeedbackv5.setLinkId( arg );
 	}
 	return $( this );
 };

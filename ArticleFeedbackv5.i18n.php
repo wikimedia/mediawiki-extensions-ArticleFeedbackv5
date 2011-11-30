@@ -78,6 +78,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-transparency-terms' => 'By posting, you agree to transparency under these $1.',
 	'articlefeedbackv5-transparency-terms-linktext' => 'terms',
 	'articlefeedbackv5-transparency-terms-url' => 'Project:Privacy_policy', // TODO: Confirm correct link
+	'articlefeedbackv5-section-linktext' => 'feedback',
+	'articlefeedbackv5-toolbox-linktext' => 'Feedback',
 	/* END Messages needing translation */
 	'articlefeedbackv5-error' => 'An error has occured. Please try again later.',
 	'articlefeedbackv5-bucket5-form-switch-label' => 'Rate this page',

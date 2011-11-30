@@ -3,22 +3,46 @@
  */
 ( function( $ ) {
 
+/* Setup for feedback links */
+
 // Only track users who have been assigned to the tracking group
-var tracked = 'track' === mw.user.bucket(
+var useClickTracking = 'track' === mw.user.bucket(
 	'ext.articleFeedbackv5-tracking', mw.config.get( 'wgArticleFeedbackv5Tracking' )
 );
 
-function trackClick( id ) {
-	// Track the click so we can figure out how useful this is
-	if ( tracked && $.isFunction( $.trackActionWithInfo ) ) {
-		$.trackActionWithInfo( $.articleFeedbackv5.prefix( id ), mw.config.get( 'wgTitle' ) );
+// Info about each of the links
+var linkInfo = {
+	'4': {
+		clickTracking: $.articleFeedbackv5.prefix( 'toolbox-link' )
 	}
+};
+
+// Click event
+var clickFeedbackLink = function ( linkId ) {
+	// Click tracking
+	if ( useClickTracking && $.isFunction( $.trackActionWithInfo ) ) {
+		$.trackActionWithInfo( linkInfo[linkId].clickTracking, mw.config.get( 'wgTitle' ) );
+	}
+	// Set the link id
+	$( '#mw-articlefeedbackv5' ).articleFeedbackv5( 'setLinkId', linkId );
+	// Go to the box and flash it
+	var $box = $( '#mw-articlefeedbackv5' );
+	var count = 0;
+	var interval = setInterval( function() {
+		// Animate the opacity over .2 seconds
+		$box.animate( { 'opacity': 0.5 }, 100, function() {
+			// When finished, animate it back to solid.
+			$box.animate( { 'opacity': 1.0 }, 100 );
+		} );
+		// Clear the interval once we've reached 3.
+		if ( ++count >= 3 ) {
+			clearInterval( interval );
+		}
+	}, 200 );
 }
 
-var config = { };
-
 /* Load at the bottom of the article */
-var $aftDiv = $( '<div id="mw-articlefeedbackv5"></div>' ).articleFeedbackv5( config );
+var $aftDiv = $( '<div id="mw-articlefeedbackv5"></div>' ).articleFeedbackv5();
 
 // Put on bottom of article before #catlinks (if it exists)
 // Except in legacy skins, which have #catlinks above the article but inside content-div.
@@ -30,32 +54,23 @@ if ( $( '#catlinks' ).length && $.inArray( mw.config.get( 'skin' ), legacyskins 
 	mw.util.$content.append( $aftDiv );
 }
 
-/* Add link so users can navigate to the feedback tool from the toolbox */
-var $tbAft = $( '<li id="t-articlefeedbackv5"><a href="#mw-articlefeedbackv5"></a></li>' )
+/* Add section links */
+$( 'span.editsection' ).append(
+	'&nbsp;[' +
+	'<a href="#mw-articlefeedbackv5" class="articleFeedbackv5-sectionlink">' +
+		mw.msg( 'articlefeedbackv5-section-linktext' ) + '</a>' +
+	']'
+);
+$( 'span.editsection a.articleFeedbackv5-sectionlink' ).click( function () {
+	clickFeedbackLink( '1' );
+} );
+
+/* Add toolbox link */
+var $aftLink4 = $( '<li id="t-articlefeedbackv5"><a href="#mw-articlefeedbackv5"></a></li>' )
 	.find( 'a' )
-		// TODO: Find out whether this needs to change per bucket.  Bucketing
-		// logic may need to move out of the jquery component into here.
-		.text( mw.msg( 'articlefeedbackv5-bucket5-form-switch-label' ) )
-		.click( function() {
-			// Click tracking
-			trackClick( 'toolbox-link' );
-			// Get the image, set the count and an interval.
-			var $box = $( '#mw-articlefeedbackv5' );
-			var count = 0;
-			var interval = setInterval( function() {
-				// Animate the opacity over .2 seconds
-				$box.animate( { 'opacity': 0.5 }, 100, function() {
-					// When finished, animate it back to solid.
-					$box.animate( { 'opacity': 1.0 }, 100 );
-				} );
-				// Clear the interval once we've reached 3.
-				if ( ++count >= 3 ) {
-					clearInterval( interval );
-				}
-			}, 200 );
-			return true;
-		} )
-		.end();
-$( '#p-tb' ).find( 'ul' ).append( $tbAft );
+		.text( mw.msg( 'articlefeedbackv5-toolbox-linktext' ) )
+		.click( function () { clickFeedbackLink( '4' ) } )
+	.end();
+$( '#p-tb' ).find( 'ul' ).append( $aftLink4 );
 
 } )( jQuery );
