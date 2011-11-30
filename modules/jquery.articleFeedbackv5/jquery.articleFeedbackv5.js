@@ -355,25 +355,6 @@
 			},
 
 			// }}}
-			// {{{ localValidation
-
-			/**
-			 * Performs any local validation
-			 *
-			 * @param  object formdata the form data
-			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
-			 */
-			localValidation: function ( formdata ) {
-				var error = {};
-				var ok = true;
-				if ( $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).length < 1 ) {
-					error.toggle = 'Please select an option';
-					ok = false;
-				}
-				return ok ? false : error;
-			},
-
-			// }}}
 			// {{{ markFormError
 
 			/**
@@ -389,21 +370,6 @@
 					mw.log( 'Validation error' );
 				}
 				console.log( error );
-			},
-
-			// }}}
-			// {{{ setSuccessState
-
-			/**
-			 * Sets the success state
-			 */
-			setSuccessState: function () {
-				var $h = $.articleFeedbackv5.$holder;
-				$h.find( '.articleFeedbackv5-success span' ).fadeIn( 'fast' );
-				$.articleFeedbackv5.successTimeout = setTimeout( function () {
-					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-success span' )
-						.fadeOut( 'slow' );
-				}, 5000 );
 			}
 
 			// }}}
@@ -652,7 +618,6 @@
 							for ( t in $.articleFeedbackv5.currentBucket().commentDefault ) {
 								if ( $c.val() == $.articleFeedbackv5.currentBucket().commentDefault[t] ) {
 									empty = true;
-									break;
 								}
 							}
 						}
@@ -678,26 +643,14 @@
 			 */
 			getFormData: function () {
 				var data = {};
-				return data;
-			},
-
-			// }}}
-			// {{{ localValidation
-
-			/**
-			 * Performs any local validation
-			 *
-			 * @param  object formdata the form data
-			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
-			 */
-			localValidation: function ( formdata ) {
-				var error = {};
-				var ok = true;
-				if ( $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket2-toggle input[checked]' ).length < 1 ) {
-					error.toggle = 'Please select an option';
-					ok = false;
+				data.tag = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tags input[checked]' ).val();
+				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
+				for ( t in $.articleFeedbackv5.currentBucket().commentDefault ) {
+					if ( data.comment == $.articleFeedbackv5.currentBucket().commentDefault[t] ) {
+						data.comment = '';
+					}
 				}
-				return ok ? false : error;
+				return data;
 			},
 
 			// }}}
@@ -716,21 +669,6 @@
 					mw.log( 'Validation error' );
 				}
 				console.log( error );
-			},
-
-			// }}}
-			// {{{ setSuccessState
-
-			/**
-			 * Sets the success state
-			 */
-			setSuccessState: function () {
-				var $h = $.articleFeedbackv5.$holder;
-				$h.find( '.articleFeedbackv5-success span' ).fadeIn( 'fast' );
-				$.articleFeedbackv5.successTimeout = setTimeout( function () {
-					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-success span' )
-						.fadeOut( 'slow' );
-				}, 5000 );
 			}
 
 			// }}}
@@ -990,26 +928,12 @@
 			 */
 			getFormData: function () {
 				var data = {};
-				return data;
-			},
-
-			// }}}
-			// {{{ localValidation
-
-			/**
-			 * Performs any local validation
-			 *
-			 * @param  object formdata the form data
-			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
-			 */
-			localValidation: function ( formdata ) {
-				var error = {};
-				var ok = true;
-				if ( $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket3-toggle input[checked]' ).length < 1 ) {
-					error.toggle = 'Please select an option';
-					ok = false;
+				data.rating = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-rating input:hidden' ).val();
+				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
+				if ( data.comment == mw.msg( 'articlefeedbackv5-bucket3-comment-default' ) ) {
+					data.comment = '';
 				}
-				return ok ? false : error;
+				return data;
 			},
 
 			// }}}
@@ -1028,21 +952,6 @@
 					mw.log( 'Validation error' );
 				}
 				console.log( error );
-			},
-
-			// }}}
-			// {{{ setSuccessState
-
-			/**
-			 * Sets the success state
-			 */
-			setSuccessState: function () {
-				var $h = $.articleFeedbackv5.$holder;
-				$h.find( '.articleFeedbackv5-success span' ).fadeIn( 'fast' );
-				$.articleFeedbackv5.successTimeout = setTimeout( function () {
-					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-success span' )
-						.fadeOut( 'slow' );
-				}, 5000 );
 			}
 
 			// }}}
@@ -1226,7 +1135,6 @@
 							<div style="clear:both;"></div>\
 						</div>\
 						<button class="articleFeedbackv5-submit articleFeedbackv5-visibleWith-form" type="submit" disabled="disabled"><html:msg key="bucket5-form-panel-submit" /></button>\
-						<div class="articleFeedbackv5-success articleFeedbackv5-visibleWith-form"><span><html:msg key="bucket5-form-panel-success" /></span></div>\
 						<div class="articleFeedbackv5-pending articleFeedbackv5-visibleWith-form"><span><html:msg key="bucket5-form-panel-pending" /></span></div>\
 						<div style="clear:both;"></div>\
 						<div class="articleFeedbackv5-notices articleFeedbackv5-visibleWith-form">\
@@ -1546,7 +1454,6 @@
 			enableSubmission: function ( state ) {
 				var $h = $.articleFeedbackv5.$holder;
 				if ( state ) {
-					$h.find( '.articleFeedbackv5-success span' ).hide();
 					$h.find( '.articleFeedbackv5-pending span' ).fadeIn( 'fast' );
 				} else {
 					$h.find( '.articleFeedbackv5-pending span' ).hide();
@@ -1750,21 +1657,6 @@
 					mw.log( 'Validation error' );
 				}
 				console.log( error );
-			},
-
-			// }}}
-			// {{{ setSuccessState
-
-			/**
-			 * Sets the success state
-			 */
-			setSuccessState: function () {
-				var $h = $.articleFeedbackv5.$holder;
-				$h.find( '.articleFeedbackv5-success span' ).fadeIn( 'fast' );
-				$.articleFeedbackv5.successTimeout = setTimeout( function () {
-					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-success span' )
-						.fadeOut( 'slow' );
-				}, 5000 );
 			},
 
 			// }}}
@@ -2020,9 +1912,6 @@
 	$.articleFeedbackv5.enableSubmission = function ( state ) {
 		var $h = $.articleFeedbackv5.$holder;
 		if ( state ) {
-			if ($.articleFeedbackv5.successTimeout) {
-				clearTimeout( $.articleFeedbackv5.successTimeout );
-			}
 			$h.find( '.articleFeedbackv5-submit' ).button( { 'disabled': false } );
 		} else {
 			$h.find( '.articleFeedbackv5-submit' ).button( { 'disabled': true } );

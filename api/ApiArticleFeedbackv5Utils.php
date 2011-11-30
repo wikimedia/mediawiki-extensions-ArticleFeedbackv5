@@ -126,5 +126,34 @@ class ApiArticleFeedbackv5Utils {
 		return $rv;
 	}
 
+	/**
+	 * Gets the known feedback options
+	 *
+	 * Pulls all the rows in the aft_article_field_option table, then arranges
+	 * them like so:
+	 *   {field id} => array(
+	 *       {option id} => {option name},
+	 *   ),
+	 *
+	 * TODO: use memcache
+	 *
+	 * @return array the rows in the aft_article_field_option table
+	 */
+	public static function getOptions() {
+		$dbr  = wfGetDB( DB_SLAVE );
+		$rows = $dbr->select(
+			'aft_article_field_option',
+			array( 'afo_option_id', 'afo_field_id', 'afo_name' )
+		);
+		$rv = array();
+		foreach ( $rows as $row ) {
+			if ( !isset( $rv[$row->afo_field_id] ) ) {
+				$rv[$row->afo_field_id] = array();
+			}
+			$rv[$row->afo_field_id][$row->afo_option_id] = $row->afo_name;
+		}
+		return $rv;
+	}
+
 }
 

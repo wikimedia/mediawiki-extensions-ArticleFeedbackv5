@@ -57,7 +57,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				if ( $value === '' ) {
 					continue;
 				}
-				if ( $this->validateParam( $value, $type ) ) {
+				if ( $this->validateParam( $value, $type, $field->afi_id ) ) {
 					$data = array(
 						'aa_feedback_id' => $feedbackId,
 						'aa_field_id'    => $field->afi_id,
@@ -105,15 +105,17 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	/**
 	 * Validates a value against a field type
 	 *
-	 * @param  $value mixed  the value
-	 * @param  $type  string the field type
-	 * @return bool whether this is okay
+	 * @param  $value    mixed  the value (reference, as option_id switches out
+	 *                          text for the id)
+	 * @param  $type     string the field type
+	 * @param  $field_id int    the field id
+	 * @return bool      whether this is okay
 	 */
-	protected function validateParam( $value, $type ) {
+	protected function validateParam( &$value, $type, $field_id ) {
 		# rating: int between 1 and 5 (inclusive)
 		# boolean: 1 or 0
-		# option:  option exists
-		# text:    none (maybe xss encode)
+		# option_id: option exists
+		# text: none (maybe xss encode)
 		switch ( $type ) {
 			case 'rating':
 				if ( preg_match( '/^(1|2|3|4|5)$/', $value ) ) {
@@ -125,8 +127,16 @@ class ApiArticleFeedbackv5 extends ApiBase {
 					return true;
 				}
 				break;
-			case 'option':
-				# TODO: check for option existance.
+			case 'option_id':
+				$options = ApiArticleFeedbackv5Utils::getOptions();
+				if ( !isset( $options[$field_id] ) ) {
+					return false;
+				}
+				$flip = array_flip( $options[$field_id] );
+				if ( isset( $flip[$value] ) ) {
+					$value = $flip[$value];
+					return true;
+				}
 				break;
 			case 'text':
 				return true;
@@ -189,10 +199,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 
 		$rows = $dbr->select(
-			array( 
-				'aft_article_answer', 
-				'aft_article_feedback', 
-				'aft_article_field' 
+			array(
+				'aft_article_answer',
+				'aft_article_feedback',
+				'aft_article_field'
 			),
 			$select,
 			array(
@@ -242,7 +252,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				$rev_prefix . 'revision_id' => $revId,
 				$rev_prefix . 'total'       => $row->earned,
 				$rev_prefix . 'count'       => $count,
-				$rev_prefix . $field        => $value 
+				$rev_prefix . $field        => $value
 			);
 
 			$page_data[$key][$page_prefix . 'total'] += $row->earned;

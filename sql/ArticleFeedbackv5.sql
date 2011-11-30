@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_field_group (
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_field (
   afi_id        integer unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   afi_name      varchar(255) NOT NULL,
-  afi_data_type ENUM('text', 'boolean', 'rating', 'select'),
+  afi_data_type ENUM('text', 'boolean', 'rating', 'option_id'),
   -- FKey to article_field_groups.group_id
   afi_group_id  integer unsigned NULL,
   afi_bucket_id integer unsigned NOT NULL
@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_field (
 
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_field_option (
   afo_option_id integer unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  afo_field_id  integer unsigned NOT NULL,
   afo_name      varchar(255) NOT NULL
 ) /*$wgDBTableOptions*/;
 
@@ -120,6 +121,10 @@ CREATE TABLE  IF NOT EXISTS /*_*/aft_article_feedback_properties (
 
 INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('found', 'boolean', 1);
 INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('comment', 'text', 1);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('tag', 'option_id', 2);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('comment', 'text', 2);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('rating', 'rating', 3);
+INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('comment', 'text', 3);
 INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('trustworthy', 'rating', 5);
 INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('objective', 'rating', 5);
 INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('complete', 'rating', 5);
@@ -129,4 +134,13 @@ INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('e
 INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-profession', 'boolean', 5);
 INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-hobby', 'boolean', 5);
 INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-other', 'boolean', 5);
+
+INSERT INTO aft_article_field_option (afo_field_id, afo_name)
+	SELECT afi_id, 'suggestion' FROM aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
+INSERT INTO aft_article_field_option (afo_field_id, afo_name)
+	SELECT afi_id, 'question' FROM aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
+INSERT INTO aft_article_field_option (afo_field_id, afo_name)
+	SELECT afi_id, 'problem' FROM aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
+INSERT INTO aft_article_field_option (afo_field_id, afo_name)
+	SELECT afi_id, 'praise' FROM aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
 
