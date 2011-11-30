@@ -22,8 +22,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$this->api = $this->getApi();
 		$output    = '';
 		$ratings   = $this->api->fetchOverallRating( $pageId );
-		$found     = $ratings['found'];
-		$rating    = $ratings['rating'];
+		$found     = isset( $ratings['found'] )  ? $ratings['found']  : null;
+		$rating    = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
 
 		$output .= "[[Wikipedia:$title|Go to Article]]
 			| [[Wikipedia:$title|Discussion page]]
