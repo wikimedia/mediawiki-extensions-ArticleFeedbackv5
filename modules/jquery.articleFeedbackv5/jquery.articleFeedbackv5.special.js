@@ -30,12 +30,52 @@
 			$.articleFeedbackv5special.loadFeedback();
 			return false;
 		} );
-		// TODO: need to handle: upvote, downvote, hide, flag as abuse
-		// PROTIP use 'live' instead of 'bind' because dynamic loading.
+		$( '.aft5-abuse-link' ).live( 'click', function(e) {
+			var id = $( this ).attr( 'id' ).replace( 'aft5-abuse-link-', '' );
+			$.articleFeedbackv5special.abuseFeedback( id );
+			return false;
+		} );
+		$( '.aft5-hide-link' ).live( 'click', function(e) {
+			var id = $( this ).attr( 'id' ).replace( 'aft5-hide-link-', '' );
+			$.articleFeedbackv5special.hideFeedback( id );
+			return false;
+		} );
+	}
+
+	$.articleFeedbackv5special.hideFeedback = function ( id ) {
+		$.articleFeedbackv5special.flagFeedback( id, 'hide' );
+	}
+
+	$.articleFeedbackv5special.abuseFeedback = function ( id ) {
+		$.articleFeedbackv5special.flagFeedback( id, 'abuse' );
+	}
+
+	// TODO: User ID?
+	$.articleFeedbackv5special.flagFeedback = function ( id, type ) {
+		$.ajax( {
+			'url'     : $.articleFeedbackv5special.apiUrl,
+			'type'    : 'POST',
+'action': 'articlefeedbackv5',
+			'dataType': 'json',
+			'data'    : {
+				'affeedbackid': id,
+				'afflagtype'  : type,
+				'format'      : 'json',
+				'maxage'      : 0,
+				'list'        : 'articlefeedbackv5-flag-feedback',
+			},
+			'success': function ( data ) {
+				// TODO check output and error if needed
+				$( '#aft5-' + type + '-link-' + id ).html(
+					type + ' flag saved !'
+				);
+			}
+			// TODO have a callback for failures.
+		} );
+		return false;
 	}
 
 	$.articleFeedbackv5special.loadFeedback = function () {
-
 		$.ajax( {
 			'url'     : $.articleFeedbackv5special.apiUrl,
 			'type'    : 'GET',

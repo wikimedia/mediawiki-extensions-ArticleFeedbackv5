@@ -22,3 +22,5 @@ INSERT INTO aft_article_field_option (afo_field_id, afo_name)
 
 ALTER TABLE aft_article_feedback ADD COLUMN af_link_id integer unsigned NOT NULL DEFAULT 0;
 
+ALTER TABLE aft_article_feedback ADD COLUMN af_abuse_count integer unsigned NOT NULL DEFAULT 0;
+ALTER TABLE aft_article_feedback ADD COLUMN af_hide_count integer unsigned NOT NULL DEFAULT 0;

@@ -168,8 +168,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	protected function renderFeedback( $record ) {
-		$rv = "<div class='aft5-feedback'>"
-		."<p>Feedback #".$record[0]->af_id
+		$id = $record[0]->af_id;
+		$rv = "<div class='aft5-feedback'><p>Feedback #$id"
 		.', @'.$record[0]->af_created.'</p>';
 		switch( $record[0]->af_bucket_id ) {
 			case 1: $rv .= $this->renderBucket1( $record ); break;
@@ -181,10 +181,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			default: return 'Invalid bucket id';
 		}
 		$rv .= "<p>
-<!--
-		<a href=''>Hide this</a>
-		<a href=''>Flag as abuse</a>
--->
+		<a href='#' class='aft5-hide-link' id='aft5-hide-link-$id'>Hide this</a>
+		<a href='#' class='aft5-abuse-link' id='aft5-abuse-link-$id'>Flag as abuse</a>
 		</p>
 		</div><hr>";
 		return $rv;

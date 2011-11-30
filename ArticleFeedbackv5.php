@@ -201,6 +201,7 @@ $wgAutoloadClasses['ApiArticleFeedbackv5Utils']        = $dir . 'api/ApiArticleF
 $wgAutoloadClasses['ApiArticleFeedbackv5']             = $dir . 'api/ApiArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5']  = $dir . 'api/ApiViewRatingsArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5'] = $dir . 'api/ApiViewFeedbackArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5'] = $dir . 'api/ApiFlagFeedbackArticleFeedbackv5.php';
 $wgAutoloadClasses['ArticleFeedbackv5Hooks']           = $dir . 'ArticleFeedbackv5.hooks.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5']         = $dir . 'SpecialArticleFeedbackv5.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5']         = $dir . 'ArticleFeedbackv5.i18n.php';
@@ -220,6 +221,7 @@ $wgHooks['ArticleSaveComplete'][] = 'ArticleFeedbackv5Hooks::trackEdit';
 // API Registration
 $wgAPIListModules['articlefeedbackv5-view-ratings']  = 'ApiViewRatingsArticleFeedbackv5';
 $wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';
+$wgAPIListModules['articlefeedbackv5-flag-feedback'] = 'ApiFlagFeedbackArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5']                   = 'ApiArticleFeedbackv5';
 
 // Special Page
