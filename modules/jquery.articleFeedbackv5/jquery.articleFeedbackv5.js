@@ -232,7 +232,7 @@
 							<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
-							<p class="articlefeedbackv5-shared-on-feedback"></p>\
+							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
 							<p class="articlefeedbackv5-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket1-form-submit" /></button>\
@@ -461,7 +461,7 @@
 							<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
-							<p class="articlefeedbackv5-shared-on-feedback"></p>\
+							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
 							<p class="articlefeedbackv5-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled">\
@@ -753,7 +753,7 @@
 							<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
-							<p class="articlefeedbackv5-shared-on-feedback"></p>\
+							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
 							<p class="articlefeedbackv5-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket3-form-submit" /></button>\
