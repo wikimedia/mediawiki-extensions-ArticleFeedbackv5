@@ -133,7 +133,7 @@
 	$.articleFeedbackv5.feedbackId = 0;
 
 	// }}}
-	// {{{ Templates shared by multiple buckets/ctas
+	// {{{ Templates
 
 	$.articleFeedbackv5.templates = {
 
@@ -245,13 +245,8 @@
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
-				// Add the help tooltip to the title
-				$block.find( '.title-wrap' )
-					.append( $.articleFeedbackv5.templates.helpToolTip )
-					.append( $.articleFeedbackv5.templates.clear );
-
-				// Start out the tooltip hidden
-				$block.find( '.articleFeedbackv5-tooltip' ).hide();
+				// Add the help button
+				$.articleFeedbackv5.addHelpButton( $block );
 
 				// Fill in the disclosure text
 				$block.find( '.articlefeedbackv5-shared-on-feedback' )
@@ -294,11 +289,6 @@
 			 * @param $block element the form block
 			 */
 			bindEvents: function ( $block ) {
-
-				// Tooltip
-				$block.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
-					$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip' ).toggle();
-				} );
 
 				// Enable submission and switch out the comment default on toggle selection
 				$block.find( '.articleFeedbackv5-button-placeholder' )
@@ -514,16 +504,10 @@
 						$tag.appendTo( $( this ) );
 					}
 					$( $.articleFeedbackv5.templates.clear ).appendTo( $( this ) );
-
 				} );
 
-				// Add the help tooltip to the title
-				$block.find( '.title-wrap' )
-					.append( $.articleFeedbackv5.templates.helpToolTip )
-					.append( $.articleFeedbackv5.templates.clear );
-
-				// Start out the tooltip hidden
-				$block.find( '.articleFeedbackv5-tooltip' ).hide();
+				// Add the help button
+				$.articleFeedbackv5.addHelpButton( $block );
 
 				// Fill in the disclosure text
 				$block.find( '.articlefeedbackv5-shared-on-feedback' )
@@ -566,11 +550,6 @@
 			 * @param $block element the form block
 			 */
 			bindEvents: function ( $block ) {
-
-				// Tooltip
-				$block.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
-					$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip' ).toggle();
-				} );
 
 				// Enable submission and switch out the comment default on toggle selection
 				$block.find( '.articleFeedbackv5-tags li' )
@@ -775,13 +754,8 @@
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
-				// Add the help tooltip to the title
-				$block.find( '.title-wrap' )
-					.append( $.articleFeedbackv5.templates.helpToolTip )
-					.append( $.articleFeedbackv5.templates.clear );
-
-				// Start out the tooltip hidden
-				$block.find( '.articleFeedbackv5-tooltip' ).hide();
+				// Add the help button
+				$.articleFeedbackv5.addHelpButton( $block );
 
 				// Fill in the rating clear title
 				var clear_msg = mw.msg( 'articlefeedbackv5-bucket3-clear-rating' );
@@ -834,11 +808,6 @@
 			 * @param $block element the form block
 			 */
 			bindEvents: function ( $block ) {
-
-				// Tooltip
-				$block.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
-					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
-				} );
 
 				// Set up rating behavior
 				var rlabel = $block.find( '.articleFeedbackv5-rating-label' );
@@ -1040,13 +1009,8 @@
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
-				// Add the help tooltip to the title
-				$block.find( '.title-wrap' )
-					.append( $.articleFeedbackv5.templates.helpToolTip )
-					.append( $.articleFeedbackv5.templates.clear );
-
-				// Start out the tooltip hidden
-				$block.find( '.articleFeedbackv5-tooltip' ).hide();
+				// Add the help button
+				$.articleFeedbackv5.addHelpButton( $block );
 
 				// Fill in the learn to edit link
 				$block.find( '.articleFeedbackv5-learn-to-edit' )
@@ -1073,23 +1037,6 @@
 					.addClass( 'ui-button-blue' )
 
 				return $block;
-			},
-
-			// }}}
-			// {{{ bindEvents
-
-			/**
-			 * Binds any events
-			 *
-			 * @param $block element the form block
-			 */
-			bindEvents: function ( $block ) {
-
-				// Tooltip
-				$block.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
-					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
-				} );
-
 			}
 
 			// }}}
@@ -1842,6 +1789,8 @@
 	// }}}
 	// {{{ Initialization
 
+	// {{{ init
+
 	/**
 	 * Initializes the object
 	 *
@@ -1869,6 +1818,9 @@
 			}
 		} );
 	};
+
+	// }}}
+	// {{{ selectBucket
 
 	/**
 	 * Chooses a bucket and loads the appropriate form
@@ -1909,7 +1861,11 @@
 	};
 
 	// }}}
+
+	// }}}
 	// {{{ Utility methods
+
+	// {{{ prefix
 
 	/**
 	 * Utility method: Prefixes a key for cookies or events with extension and
@@ -1923,6 +1879,9 @@
 		return 'ext.articleFeedbackv5@' + version + '-' + key;
 	};
 
+	// }}}
+	// {{{ currentBucket
+
 	/**
 	 * Utility method: Get the current bucket
 	 *
@@ -1932,6 +1891,9 @@
 		return $.articleFeedbackv5.buckets[$.articleFeedbackv5.bucketId];
 	};
 
+	// }}}
+	// {{{ currentCTA
+
 	/**
 	 * Utility method: Get the current CTA
 	 *
@@ -1940,6 +1902,30 @@
 	$.articleFeedbackv5.currentCTA = function () {
 		return $.articleFeedbackv5.ctas[$.articleFeedbackv5.ctaId];
 	};
+
+	// }}}
+	// {{{ addHelpButton
+
+	/**
+	 * Utility method: add a help button to the titlebar (with bound event)
+	 *
+	 * @param Element $block the form block
+	 */
+	$.articleFeedbackv5.addHelpButton = function ( $block ) {
+		// Add the help tooltip to the title
+		$block.find( '.title-wrap' )
+			.append( $.articleFeedbackv5.templates.helpToolTip )
+			.append( $.articleFeedbackv5.templates.clear );
+		// Start out the tooltip hidden
+		$block.find( '.articleFeedbackv5-tooltip' ).hide();
+		// Toogle on click
+		$block.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
+			$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip' ).toggle();
+		} );
+	};
+
+	// }}}
+	// {{{ buildLink
 
 	/**
 	 * Utility method: Build a link from a href and message keys for the full
@@ -1977,6 +1963,9 @@
 		return full;
 	};
 
+	// }}}
+	// {{{ enableSubmission
+
 	/**
 	 * Utility method: Enables or disables submission of the form
 	 *
@@ -1994,6 +1983,9 @@
 		}
 	};
 
+	// }}}
+	// {{{ find
+
 	/**
 	 * Utility method: Find an element, whether it's in the dialog or not
 	 *
@@ -2009,7 +2001,11 @@
 	};
 
 	// }}}
-	// {{{ Form loading methods
+
+	// }}}
+	// {{{ Process methods
+
+	// {{{ loadForm
 
 	/**
 	 * Build the form and load it into the document
@@ -2065,7 +2061,7 @@
 	};
 
 	// }}}
-	// {{{ Form submission methods
+	// {{{ submitForm
 
 	/**
 	 * Submits the form
@@ -2163,53 +2159,28 @@
 	};
 
 	// }}}
-	// {{{ Outside interaction methods
+	// {{{ showCTA
 
 	/**
-	 * Sets the link ID
-	 *
-	 * @param int linkId the link ID
+	 * Shows a CTA
 	 */
-	$.articleFeedbackv5.setLinkId = function ( linkId ) {
-		var knownLinks = { '0': true, '1': true, '2': true, '3': true, '4': true };
-		if ( linkId in knownLinks ) {
-			$.articleFeedbackv5.linkId = linkId + '';
+	$.articleFeedbackv5.showCTA = function () {
+		var cta = $.articleFeedbackv5.currentCTA();
+		if ( !( 'build' in cta ) ) {
+			return;
 		}
-	};
-
-	/**
-	 * Opens the feedback tool as a modal window
-	 *
-	 * @param linkId string the link ID to set on open
-	 */
-	$.articleFeedbackv5.openAsModal = function ( linkId ) {
-		$.articleFeedbackv5.setLinkId( linkId );
-		if ( !$.articleFeedbackv5.isLoaded ) {
-			$.articleFeedbackv5.loadForm();
+		var $block = cta.build();
+		if ( 'bindEvents' in cta ) {
+			cta.bindEvents( $block );
 		}
-		if ( !$.articleFeedbackv5.inDialog ) {
-			$inner = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' ).detach();
-			$.articleFeedbackv5.$dialog.append( $inner );
-			$.articleFeedbackv5.setLinkId( linkId );
-			$.articleFeedbackv5.$dialog.dialog( 'open' );
-			$.articleFeedbackv5.inDialog = true;
-		}
-	};
-
-	/**
-	 * Closes the feedback tool as a modal window
-	 */
-	$.articleFeedbackv5.closeAsModal = function () {
-		if ( $.articleFeedbackv5.inDialog ) {
-			$.articleFeedbackv5.setLinkId( '0' );
-			$inner = $.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-panel' ).detach();
-			$.articleFeedbackv5.$holder.append( $inner );
-			$.articleFeedbackv5.inDialog = false;
-		}
+		$.articleFeedbackv5.$holder.html( $block );
 	};
 
 	// }}}
+	// }}}
 	// {{{ UI methods
+
+	// {{{ markShowstopperError
 
 	/**
 	 * Marks a showstopper error
@@ -2233,6 +2204,9 @@
 		veil.show();
 	};
 
+	// }}}
+	// {{{ lockForm
+
 	/**
 	 * Locks the form
 	 */
@@ -2241,6 +2215,9 @@
 		$.articleFeedbackv5.enableSubmission( false );
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-lock' ).show();
 	};
+
+	// }}}
+	// {{{ unlockForm
 
 	/**
 	 * Unlocks the form
@@ -2252,22 +2229,62 @@
 	};
 
 	// }}}
-	// {{{ CTA methods
+
+	// }}}
+	// {{{ Outside interaction methods
+
+	// {{{ setLinkId
 
 	/**
-	 * Shows a CTA
+	 * Sets the link ID
+	 *
+	 * @param int linkId the link ID
 	 */
-	$.articleFeedbackv5.showCTA = function () {
-		var cta = $.articleFeedbackv5.currentCTA();
-		if ( !( 'build' in cta ) ) {
-			return;
+	$.articleFeedbackv5.setLinkId = function ( linkId ) {
+		var knownLinks = { '0': true, '1': true, '2': true, '3': true, '4': true };
+		if ( linkId in knownLinks ) {
+			$.articleFeedbackv5.linkId = linkId + '';
 		}
-		var $block = cta.build();
-		if ( 'bindEvents' in cta ) {
-			cta.bindEvents( $block );
-		}
-		$.articleFeedbackv5.$holder.html( $block );
 	};
+
+	// }}}
+	// {{{ openAsModal
+
+	/**
+	 * Opens the feedback tool as a modal window
+	 *
+	 * @param linkId string the link ID to set on open
+	 */
+	$.articleFeedbackv5.openAsModal = function ( linkId ) {
+		$.articleFeedbackv5.setLinkId( linkId );
+		if ( !$.articleFeedbackv5.isLoaded ) {
+			$.articleFeedbackv5.loadForm();
+		}
+		if ( !$.articleFeedbackv5.inDialog ) {
+			$inner = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' ).detach();
+			$.articleFeedbackv5.$dialog.append( $inner );
+			$.articleFeedbackv5.setLinkId( linkId );
+			$.articleFeedbackv5.$dialog.dialog( 'open' );
+			$.articleFeedbackv5.inDialog = true;
+		}
+	};
+
+	// }}}
+	// {{{ closeAsModal
+
+	/**
+	 * Closes the feedback tool as a modal window
+	 */
+	$.articleFeedbackv5.closeAsModal = function () {
+		if ( $.articleFeedbackv5.inDialog ) {
+			$.articleFeedbackv5.setLinkId( '0' );
+			$inner = $.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-panel' ).detach();
+			$.articleFeedbackv5.$holder.append( $inner );
+			$.articleFeedbackv5.inDialog = false;
+		}
+	};
+
+	// }}}
 
 	// }}}
 
