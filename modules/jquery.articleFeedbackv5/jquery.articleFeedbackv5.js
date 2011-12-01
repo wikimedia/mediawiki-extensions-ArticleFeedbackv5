@@ -139,12 +139,25 @@
 
 		panelOuter: '\
 			<div class="articleFeedbackv5-panel">\
-				<div class="articleFeedbackv5-buffer articleFeedbackv5-ui">\
+				<div class="articleFeedbackv5-buffer">\
+					<div class="articleFeedbackv5-title-wrap">\
+						<h2 class="articleFeedbackv5-title"></h2>\
+					</div>\
+					<div class="articleFeedbackv5-ui" />\
 				</div>\
-				<div class="articleFeedbackv5-error"><div class="articleFeedbackv5-error-message"><html:msg key="error" /></div></div>\
+				<div class="articleFeedbackv5-error"><div class="articleFeedbackv5-error-message"></div></div>\
 				<div style="clear:both;"></div>\
 			</div>\
-		',
+			',
+
+		dialogInner: '\
+			<div class="articleFeedbackv5-dialog-inner">\
+				<div class="articleFeedbackv5-buffer">\
+				</div>\
+				<div class="articleFeedbackv5-error"><div class="articleFeedbackv5-error-message"></div></div>\
+				<div style="clear:both;"></div>\
+			</div>\
+			',
 
 		helpToolTip: '\
 			<a class="articleFeedbackv5-tooltip-trigger"></a>\
@@ -198,38 +211,47 @@
 				 */
 				block: '\
 					<form>\
-					<div class="title-wrap">\
-						<h2 class="articleFeedbackv5-title"><html:msg key="bucket1-title" /></h2>\
-					</div>\
-					<div class="form-row articleFeedbackv5-bucket1-toggle">\
-						<p class="instructions-left"><html:msg key="bucket1-question-toggle" /></p>\
-						<div class="buttons">\
-							<div class="form-item" rel="yes" id="articleFeedbackv5-bucket1-toggle-wrapper-yes">\
-								<label for="articleFeedbackv5-bucket1-toggle-yes"><html:msg key="bucket1-toggle-found-yes-full" /></label>\
-								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-yes" value="yes" /></span>\
-								<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-yes" class="query-button" value="yes" />\
-							</div>\
-							<div class="form-item" rel="no" id="articleFeedbackv5-bucket1-toggle-wrapper-no">\
-								<label for="articleFeedbackv5-bucket1-toggle-no"><html:msg key="bucket1-toggle-found-no-full" /></label>\
-								<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-no" /></span>\
-								<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-no" class="query-button last" value="no" />\
+						<div class="form-row articleFeedbackv5-bucket1-toggle">\
+							<p class="instructions-left"><html:msg key="bucket1-question-toggle" /></p>\
+							<div class="buttons">\
+								<div class="form-item" rel="yes" id="articleFeedbackv5-bucket1-toggle-wrapper-yes">\
+									<label for="articleFeedbackv5-bucket1-toggle-yes"><html:msg key="bucket1-toggle-found-yes-full" /></label>\
+									<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-yes" value="yes" /></span>\
+									<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-yes" class="query-button" value="yes" />\
+								</div>\
+								<div class="form-item" rel="no" id="articleFeedbackv5-bucket1-toggle-wrapper-no">\
+									<label for="articleFeedbackv5-bucket1-toggle-no"><html:msg key="bucket1-toggle-found-no-full" /></label>\
+									<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-no" /></span>\
+									<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-no" class="query-button last" value="no" />\
+								</div>\
+								<div class="clear"></div>\
 							</div>\
 							<div class="clear"></div>\
 						</div>\
+						<div class="articleFeedbackv5-comment">\
+							<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
+						</div>\
+						<div class="articleFeedbackv5-disclosure">\
+							<p class="articlefeedbackv5-shared-on-feedback"></p>\
+							<p class="articlefeedbackv5-transparency-terms"></p>\
+						</div>\
+						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket1-form-submit" /></button>\
 						<div class="clear"></div>\
-					</div>\
-					<div class="articleFeedbackv5-comment">\
-						<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
-					</div>\
-					<div class="articleFeedbackv5-disclosure">\
-						<p class="articlefeedbackv5-shared-on-feedback"></p>\
-						<p class="articlefeedbackv5-transparency-terms"></p>\
-					</div>\
-					<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket1-form-submit" /></button>\
-					<div class="clear"></div>\
 					</form>\
 					'
 
+			},
+
+			// }}}
+			// {{{ getTitle
+
+			/**
+			 * Gets the title
+			 *
+			 * @return string the title
+			 */
+			getTitle: function () {
+				return mw.msg( 'articlefeedbackv5-bucket1-title' );
 			},
 
 			// }}}
@@ -268,9 +290,6 @@
 							text: 'articlefeedbackv5-transparency-terms-linktext',
 							target: '_blank'
 						} ) );
-
-				// Localize the block
-				$block.localize( { 'prefix': 'articlefeedbackv5-' } );
 
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-submit' )
@@ -431,9 +450,6 @@
 				 */
 				block: '\
 					<form>\
-						<div class="title-wrap">\
-							<h2 class="articleFeedbackv5-title"><html:msg key="bucket2-title" /></h2>\
-						</div>\
 						<div>\
 							<div class="articleFeedbackv5-tags">\
 								<ul></ul>\
@@ -468,6 +484,18 @@
 					</li>\
 					'
 
+			},
+
+			// }}}
+			// {{{ getTitle
+
+			/**
+			 * Gets the title
+			 *
+			 * @return string the title
+			 */
+			getTitle: function () {
+				return mw.msg( 'articlefeedbackv5-bucket2-title' );
 			},
 
 			// }}}
@@ -529,9 +557,6 @@
 							text: 'articlefeedbackv5-transparency-terms-linktext',
 							target: '_blank'
 						} ) );
-
-				// Localize the block
-				$block.localize( { 'prefix': 'articlefeedbackv5-' } );
 
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-submit' )
@@ -705,9 +730,6 @@
 				 */
 				block: '\
 					<form>\
-						<div class="title-wrap">\
-							<h2 class="articleFeedbackv5-title"><html:msg key="bucket3-title" /></h2>\
-						</div>\
 						<div>\
 							<p class="instructions-left"><html:msg key="bucket3-rating-question" /></p>\
 							<div class="articleFeedbackv5-rating articleFeedbackv5-rating-new">\
@@ -739,6 +761,18 @@
 					</form>\
 					'
 
+			},
+
+			// }}}
+			// {{{ getTitle
+
+			/**
+			 * Gets the title
+			 *
+			 * @return string the title
+			 */
+			getTitle: function () {
+				return mw.msg( 'articlefeedbackv5-bucket3-title' );
 			},
 
 			// }}}
@@ -787,9 +821,6 @@
 				// Start with a default comment
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.val( mw.msg( 'articlefeedbackv5-bucket3-comment-default' ) );
-
-				// Localize the block
-				$block.localize( { 'prefix': 'articlefeedbackv5-' } );
 
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-submit' )
@@ -977,10 +1008,6 @@
 				 * The template for the whole block
 				 */
 				block: '\
-					<form>\
-					<div class="title-wrap">\
-						<h2 class="articleFeedbackv5-title"><html:msg key="bucket4-title" /></h2>\
-					</div>\
 					<div class="form-row articleFeedbackv5-bucket4-toggle">\
 						<h3><html:msg key="bucket4-subhead"></h3>\
 						<p class="instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
@@ -991,9 +1018,20 @@
 					</div>\
 					<a class="articleFeedbackv5-submit"><html:msg key="bucket4-form-submit" /></a>\
 					<div class="clear"></div>\
-					</form>\
 					'
 
+			},
+
+			// }}}
+			// {{{ getTitle
+
+			/**
+			 * Gets the title
+			 *
+			 * @return string the title
+			 */
+			getTitle: function () {
+				return mw.msg( 'articlefeedbackv5-bucket4-title' );
 			},
 
 			// }}}
@@ -1027,9 +1065,6 @@
 							'articleFeedbackv5_bucket_id': $.articleFeedbackv5.bucketId
 						} )
 					);
-
-				// Localize the block
-				$block.localize( { 'prefix': 'articlefeedbackv5-' } );
 
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-submit' )
@@ -1072,6 +1107,11 @@
 			 */
 			loadAggregate: true,
 
+			/**
+			 * Whether we're currently looking at the report
+			 */
+			inReport: false,
+
 			// }}}
 			// {{{ templates
 
@@ -1087,8 +1127,6 @@
 					<form>\
 						<div class="articleFeedbackv5-switch articleFeedbackv5-switch-report articleFeedbackv5-visibleWith-form" rel="report"><html:msg key="bucket5-report-switch-label" /></div>\
 						<div class="articleFeedbackv5-switch articleFeedbackv5-switch-form articleFeedbackv5-visibleWith-report" rel="form"><html:msg key="bucket5-form-switch-label" /></div>\
-						<div class="articleFeedbackv5-title articleFeedbackv5-visibleWith-form"><html:msg key="bucket5-form-panel-title" /></div>\
-						<div class="articleFeedbackv5-title articleFeedbackv5-visibleWith-report"><html:msg key="bucket5-report-panel-title" /></div>\
 						<div class="articleFeedbackv5-explanation articleFeedbackv5-visibleWith-form"><a class="articleFeedbackv5-explanation-link"><html:msg key="bucket5-form-panel-explanation" /></a></div>\
 						<div class="articleFeedbackv5-description articleFeedbackv5-visibleWith-report"><html:msg key="bucket5-report-panel-description" /></div>\
 						<div style="clear:both;"></div>\
@@ -1153,6 +1191,22 @@
 			},
 
 			// }}}
+			// {{{ getTitle
+
+			/**
+			 * Gets the title
+			 *
+			 * @return string the title
+			 */
+			getTitle: function () {
+				if ( $.articleFeedbackv5.buckets[5].inReport ) {
+					return mw.msg( 'articlefeedbackv5-bucket5-report-panel-title' );
+				} else {
+					return mw.msg( 'articlefeedbackv5-bucket5-form-panel-title' );
+				}
+			},
+
+			// }}}
 			// {{{ buildForm
 
 			/**
@@ -1207,9 +1261,6 @@
 				$block.find( '.articleFeedbackv5-helpimprove-email' )
 					.attr( 'placeholder', mw.msg( 'articlefeedbackv5-bucket5-form-panel-helpimprove-email-placeholder' ) )
 					.placeholder(); // back. compat. for older browsers
-
-				// Localize the block
-				$block.localize( { 'prefix': 'articlefeedbackv5-' } );
 
 				// Activate tooltips
 				$block.find( '[title]' )
@@ -1319,17 +1370,18 @@
 				// Set up form/report switch behavior
 				$block.find( '.articleFeedbackv5-switch' )
 					.click( function ( e ) {
-						if ( $(this).attr( 'rel' ) == 'report' && $.articleFeedbackv5.currentBucket().loadAggregate ) {
+						var which = $( this ).attr( 'rel' );
+						if ( which == 'report' && $.articleFeedbackv5.currentBucket().loadAggregate ) {
 							$.articleFeedbackv5.currentBucket().loadAggregateRatings();
 							$.articleFeedbackv5.currentBucket().loadAggregate = false;
 						}
-						$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-visibleWith-' + $(this).attr( 'rel' ) )
-							.show();
-						$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-switch' )
-							.not( $(this) )
+						$.articleFeedbackv5.find( '.articleFeedbackv5-visibleWith-' + which ).show();
+						$.articleFeedbackv5.find( '.articleFeedbackv5-switch' )
+							.not( $( this ) )
 							.each( function () {
-								$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-visibleWith-' + $(this).attr( 'rel' ) ).hide();
+								$.articleFeedbackv5.find( '.articleFeedbackv5-visibleWith-' + $( this ).attr( 'rel' ) ).hide();
 							} );
+						$.articleFeedbackv5.currentBucket().inReport = which == 'report';
 						e.preventDefault();
 						return false;
 					} );
@@ -1541,18 +1593,6 @@
 							}
 						} );
 
-						// Expiration
-						var $ui = $.articleFeedbackv5.find( 'articleFeedbackv5-ui' );
-						if ( typeof feedback.status === 'string' && feedback.status === 'expired' ) {
-							$ui.addClass( 'articleFeedbackv5-expired' );
-							$ui.find( '.articleFeedbackv5-expiry' )
-								.slideDown( 'fast' );
-						} else {
-							$ui.removeClass( 'articleFeedbackv5-expired' )
-							$ui.find( '.articleFeedbackv5-expiry' )
-								.slideUp( 'fast' );
-						}
-
 						// Status change - un-new the rating controls
 						$.articleFeedbackv5.find( '.articleFeedbackv5-rating-new' )
 							.removeClass( 'articleFeedbackv5-rating-new' );
@@ -1582,7 +1622,6 @@
 					data[key] = $.articleFeedbackv5.find( 'input[name="' + key + '"]' ).val();
 				}
 				$.articleFeedbackv5.find( '.articleFeedbackv5-expertise input:checked' ).each( function () {
-					console.log($(this).is(':checked'));
 					data['expertise-' + $( this ).val()] = 1;
 				} );
 				return data;
@@ -1912,16 +1951,6 @@
 	 * @param Element $block the form block
 	 */
 	$.articleFeedbackv5.addHelpButton = function ( $block ) {
-		// Add the help tooltip to the title
-		$block.find( '.title-wrap' )
-			.append( $.articleFeedbackv5.templates.helpToolTip )
-			.append( $.articleFeedbackv5.templates.clear );
-		// Start out the tooltip hidden
-		$block.find( '.articleFeedbackv5-tooltip' ).hide();
-		// Toogle on click
-		$block.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
-			$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip' ).toggle();
-		} );
 	};
 
 	// }}}
@@ -2022,13 +2051,23 @@
 		if ( 'bindEvents' in bucket ) {
 			bucket.bindEvents( $block );
 		}
-		if ( 'fillForm' in bucket ) {
-			bucket.fillForm( $block, response );
-		}
 
 		// Wrap it in a panel
 		var $wrapper = $( $.articleFeedbackv5.templates.panelOuter );
 		$wrapper.find( '.articleFeedbackv5-ui' ).append( $block );
+		if ( 'getTitle' in bucket ) {
+			$wrapper.find( '.articleFeedbackv5-title' ).html( bucket.getTitle() );
+		}
+
+		// Set up the tooltip for the panel version
+		$wrapper.find( '.articleFeedbackv5-title-wrap' ).append( $.articleFeedbackv5.templates.helpToolTip );
+		$wrapper.find( '.articleFeedbackv5-tooltip' ).hide();
+		$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
+			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
+		} );
+
+		// Localize
+		$wrapper.localize( { 'prefix': 'articlefeedbackv5-' } );
 
 		// Add it to the page
 		$.articleFeedbackv5.$holder
@@ -2038,18 +2077,6 @@
 		// Add an empty dialog
 		$.articleFeedbackv5.$dialog = $( '<div id="articleFeedbackv5-dialog-wrap"></div>' );
 		$.articleFeedbackv5.$holder.after( $.articleFeedbackv5.$dialog );
-		var w = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' ).width();
-		var h = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' ).height();
-		$.articleFeedbackv5.$dialog.dialog( {
-			width: w + 20,
-			height: h + 50,
-			dialogClass: 'articleFeedbackv5-dialog',
-			resizable: false,
-			autoOpen: false,
-			close: function ( event, ui ) {
-				$.articleFeedbackv5.closeAsModal();
-			}
-		} );
 
 		// Set loaded
 		$.articleFeedbackv5.isLoaded = true;
@@ -2177,6 +2204,7 @@
 	};
 
 	// }}}
+
 	// }}}
 	// {{{ UI methods
 
@@ -2189,9 +2217,11 @@
 	 */
 	$.articleFeedbackv5.markShowstopperError = function ( message ) {
 		console.log( message );
+		var msg_html = mw.msg( 'articlefeedbackv5-error' );
 		if ($.articleFeedbackv5.debug && message) {
-			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error-message' ).html( message.replace( "\n", '<br />' ) );
+			msg_html = message.replace( "\n", '<br />' );
 		}
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error-message' ).html( msg_html );
 		var veil = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' );
 		var box  = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' );
 		// TODO: Make this smarter -- on ubuntu/ff at least, using the
@@ -2253,18 +2283,46 @@
 	/**
 	 * Opens the feedback tool as a modal window
 	 *
-	 * @param linkId string the link ID to set on open
+	 * @param $link Element the feedback link
 	 */
-	$.articleFeedbackv5.openAsModal = function ( linkId ) {
-		$.articleFeedbackv5.setLinkId( linkId );
+	$.articleFeedbackv5.openAsModal = function ( $link ) {
 		if ( !$.articleFeedbackv5.isLoaded ) {
 			$.articleFeedbackv5.loadForm();
 		}
 		if ( !$.articleFeedbackv5.inDialog ) {
-			$inner = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' ).detach();
+			var w = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' ).width();
+			var h = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' ).height();
+			var o = $link.offset();
+			var x = 'center';
+			// var y = o.top - h - 20;
+			var y = 'center';
+			$inner = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' ).detach();
 			$.articleFeedbackv5.$dialog.append( $inner );
-			$.articleFeedbackv5.setLinkId( linkId );
-			$.articleFeedbackv5.$dialog.dialog( 'open' );
+			$.articleFeedbackv5.setLinkId( $link.data( 'linkId' ) );
+			$.articleFeedbackv5.$dialog.dialog( {
+				width: w + 20,
+				height: h + 50,
+				position: [ x, y ],
+				dialogClass: 'articleFeedbackv5-dialog',
+				resizable: false,
+				draggable: true,
+				title: $.articleFeedbackv5.currentBucket().getTitle(),
+				modal: true,
+				close: function ( event, ui ) {
+					$.articleFeedbackv5.closeAsModal();
+				}
+			} );
+			var $title = $( '#ui-dialog-title-articleFeedbackv5-dialog-wrap' );
+			var $titlebar = $title.parent();
+			$title.addClass( 'articleFeedbackv5-title' );
+			// Set up the tooltip
+			$titlebar.append( $.articleFeedbackv5.templates.helpToolTip );
+			$titlebar.find( '.articleFeedbackv5-tooltip' ).hide();
+			$titlebar.find( '.articleFeedbackv5-tooltip-trigger' ).click( function ( e ) {
+				$( e.target ).next( '.articleFeedbackv5-tooltip' ).toggle();
+			} );
+			$titlebar.localize( { 'prefix': 'articlefeedbackv5-' } );
+
 			$.articleFeedbackv5.inDialog = true;
 		}
 	};
@@ -2278,8 +2336,9 @@
 	$.articleFeedbackv5.closeAsModal = function () {
 		if ( $.articleFeedbackv5.inDialog ) {
 			$.articleFeedbackv5.setLinkId( '0' );
-			$inner = $.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-panel' ).detach();
-			$.articleFeedbackv5.$holder.append( $inner );
+			$inner = $.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-ui' ).detach();
+			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-buffer' ).append( $inner );
+			$.articleFeedbackv5.$dialog.dialog( 'destroy' );
 			$.articleFeedbackv5.inDialog = false;
 		}
 	};

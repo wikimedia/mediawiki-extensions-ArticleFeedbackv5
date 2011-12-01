@@ -404,7 +404,9 @@
 	padding-left: 28px;
 	color: #777777;
 }
+
 /*---===<<< Sean's Version 5 Styles >>>===---*/
+
 .clear {
 	display: block !important;
 	height: 0 !important;
@@ -414,12 +416,34 @@
 	width: 100% !important;
 	border: none !important;
 }
-/* tooltip styling. by default the element to be styled is .tooltip  */
-.articleFeedbackv5-panel .title-wrap {
-	position: relative;
+
+.articleFeedbackv5-panel {
+	width: 598px;
+	background: #f5faff;
+	border: 1px solid #ccc;
+	color: #000;
 }
-.articleFeedbackv5-panel .articleFeedbackv5-tooltip  {
-	display: none;
+
+.articleFeedbackv5-panel .articleFeedback-buffer {
+	padding: 20px;
+}
+
+.articleFeedbackv5-panel .articleFeedbackv5-title-wrap {
+	position: relative;
+	display: block;
+}
+
+.articleFeedbackv5-panel .articleFeedbackv5-ui {
+	clear: both;
+	display: block;
+}
+
+.articleFeedbackv5-panel h2 {
+	float: left;
+	border: none;
+}
+
+.articleFeedbackv5-tooltip  {
 	position: absolute;
 	z-index: 15;
 	top: -185px;
@@ -428,33 +452,24 @@
 	width: 234px;
 	color: #000;	
 }
-.articleFeedbackv5-panel .articleFeedbackv5-tooltip .tooltip-top {
+
+.articleFeedbackv5-tooltip .tooltip-top {
 	background: url(images/bg-tooltip-top.png);
 	height: 11px;
 }
-.articleFeedbackv5-panel .articleFeedbackv5-tooltip .tooltip-repeat {
+
+.articleFeedbackv5-tooltip .tooltip-repeat {
 	background: url(images/bg-tooltip.png) repeat-y;
 	padding: 0 20px 1px;
 	margin: 0;
 }
-.articleFeedbackv5-panel .articleFeedbackv5-tooltip .tooltip-bottom {
+
+.articleFeedbackv5-tooltip .tooltip-bottom {
 	background: url(images/bg-tooltip-bottom.png);
 	height: 26px;
 }
-.articleFeedbackv5-panel {
-	width: 598px;
-	background: #f5faff;
-	border: 1px solid #ccc;
-	color: #000;
-}
-.articleFeedbackv5-panel .articleFeedback-buffer {
-	padding: 20px;
-}
-.articleFeedbackv5-panel h2 {
-	float: left;
-	border: none;
-}
-.articleFeedbackv5-panel .articleFeedbackv5-tooltip-trigger {
+
+.articleFeedbackv5-tooltip-trigger {
 	display: block;
 	height: 27px;
 	width: 26px;
@@ -463,31 +478,38 @@
 	position: relative;
 	text-indent: -9999px;
 }
-.articleFeedbackv5-panel .articleFeedbackv5-tooltip-trigger:hover {
+
+.articleFeedbackv5-tooltip-trigger:hover {
 	background: url(images/bg-tooltip-trigger-hov.png) no-repeat;
 	cursor: pointer;
 	text-decoration: none;
 }
-.articleFeedbackv5-panel .form-row {
+
+.articleFeedbackv5-ui .form-row {
 	margin: 0 0 15px;
 }
-.articleFeedbackv5-panel .instructions-left {
+
+.articleFeedbackv5-ui .instructions-left {
 	float:left;
 	margin: 0 15px 0 0;
 	font-size: 1.2em;
 }
-.articleFeedbackv5-panel .buttons {
+
+.articleFeedbackv5-ui .buttons {
 	float: left;
 }
-.articleFeedbackv5-panel .buttons .form-item {
+
+.articleFeedbackv5-ui .buttons .form-item {
 	float: left;
 	margin: 0 15px 0 0;
 }
-.articleFeedbackv5-panel .buttons label,
-.articleFeedbackv5-panel .buttons input {
+
+.articleFeedbackv5-ui .buttons label,
+.articleFeedbackv5-ui .buttons input {
 	display: none;
 }
-.articleFeedbackv5-panel .buttons .articleFeedbackv5-button-placeholder {
+
+.articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder {
 	display: inline-block;
 	height: 20px;
 	width: 50px;
@@ -500,14 +522,17 @@
 	border-radius: 3px; /* future proofing */
 	-khtml-border-radius: 3px; /* for old Konqueror browsers */
 }
-.articleFeedbackv5-panel .buttons .articleFeedbackv5-button-placeholder:hover {
+
+.articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder:hover {
 	background: url(images/bg-button.png) repeat-x;
 	cursor: pointer;
 }
-.articleFeedbackv5-panel .buttons .articleFeedbackv5-button-placeholder-active {
+
+.articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder-active {
 	background: url(images/bg-button.png) repeat-x;
 }
-.articleFeedbackv5-panel .feedback-text {
+
+.articleFeedbackv5-ui .feedback-text {
 	resize: none;
 	background: #fff;
 	border: 1px solid #000;
@@ -519,19 +544,23 @@
 	font: sans-serif;
 	color: #ddd;
 }
-.articleFeedbackv5-panel .feedback-text.active {
+
+.articleFeedbackv5-ui .feedback-text.active {
 	color: #000;
 }
-.articleFeedbackv5-panel .articleFeedbackv5-disclosure {
+
+.articleFeedbackv5-ui .articleFeedbackv5-disclosure {
 	float: right;
 	width: 335px;
 	margin: 10px 0 0;
 }
-.articleFeedbackv5-panel .articleFeedbackv5-disclosure p {
+
+.articleFeedbackv5-ui .articleFeedbackv5-disclosure p {
 	margin: 0;
 	font-size: 0.75em;
 }
-.articleFeedbackv5-panel .articleFeedbackv5-submit {
+
+.articleFeedbackv5-ui .articleFeedbackv5-submit {
 	float: left;
 	height: 30px;
 	width: auto;
@@ -548,7 +577,8 @@
 	-webkit-box-shadow: -3px 3px 3px #999;
 	box-shadow: -3px 3px 3px #999;
 }
-.articleFeedbackv5-panel .articleFeedbackv5-submit span {
+
+.articleFeedbackv5-ui .articleFeedbackv5-submit span {
 	font-size: 16px;
 	display: inline-block;
 	height: 21px;
@@ -558,10 +588,12 @@
 	padding: 0 30px 0 0;
 	background: url(images/bg-submit-icon.png) right center no-repeat;
 }
+
 /*** Option 2 ***/
 .articleFeedbackv5-tags ul {
 	margin: 0 0 10px;
 }
+
 .articleFeedbackv5-tags ul li {
 	color: #666;
 	list-style: none;
@@ -578,14 +610,17 @@
 	-khtml-border-radius: 8px; /* for old Konqueror browsers */
 	position: relative;
 }
+
 .articleFeedbackv5-tags ul li:first-child {
 	margin: 0;
 }
+
 .articleFeedbackv5-tags ul li:hover, .articleFeedbackv5-tags ul li.active {
 	background: #fff;
 	border-color: #ccc;
 	color: #000;
 }
+
 .articleFeedbackv5-tags ul li.active .tag-selector {
 	position: absolute;
 	background: url(images/bg-tag-active.png) no-repeat center bottom;
@@ -596,9 +631,11 @@
 	left: 50%;
 	margin: 0 0 0 -5px;
 }
+
 .articleFeedbackv5-tags ul li input {
 	display: none;
 }
+
 .articleFeedbackv5-tags ul li label {
 	padding: 0 0 0 22px;
 	cursor: pointer;
@@ -606,61 +643,82 @@
 	height: 16px;
 	line-height: 18px;
 }
+
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-suggestion-label {
 	background: url(images/bg-tag-suggestion-off.png) no-repeat 0 center;
 }
+
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-question-label {
 	background: url(images/bg-tag-question-off.png) no-repeat 0 center;
 }
+
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-problem-label {
 	background: url(images/bg-tag-problem-off.png) no-repeat 0 center;
 }
+
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-praise-label {
 	background: url(images/bg-tag-praise-off.png) no-repeat 0 center;
 }
+
 .articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-suggestion-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-suggestion-label {
 	background: url(images/bg-tag-suggestion-on.png) no-repeat 0 center;
 }
+
 .articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-question-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-question-label {
 	background: url(images/bg-tag-question-on.png) no-repeat 0 center;
 }
+
 .articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-problem-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-problem-label {
 	background: url(images/bg-tag-problem-on.png) no-repeat 0 center;
 }
+
 .articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-praise-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-praise-label {
 	background: url(images/bg-tag-praise-on.png) no-repeat 0 center;
 }
+
 /*** Option 3 ***/
 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label {
 	background: url(images/bg-rating-off.png) no-repeat;
 }
+
 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.active {
 	background: url(images/bg-rating-on.png) no-repeat;
 }
+
 .articleFeedbackv5-rating .articleFeedbackv5-rating-prompt {
 }
 
 
 /*** Dialog ***/
 .articleFeedbackv5-dialog {
-	border: none;
+	border: 1px solid #cccccc;
 }
-.articleFeedbackv5-dialog.ui-widget-content,
+
 .articleFeedbackv5-dialog.ui-dialog .ui-widget-header {
-	background: transparent !important;
-}
-.articleFeedbackv5-dialog .ui-widget-header {
+	background: #f5faff !important;
 	border: none;
 }
-.articleFeedbackv5-dialog .ui-dialog-titlebar-close {
-	background-color: white;
-	border: 1px solid gray;
-	top: 35px !important;
-	right: -5px !important;
-	padding: 0;
+
+.articleFeedbackv5-dialog.ui-dialog .ui-dialog-content {
+	background: #f5faff;
+}
+
+.articleFeedbackv5-dialog.ui-dialog .ui-widget-header {
+	font-weight: normal;
+	margin-bottom: 0;
+	padding-top: .5em;
+	padding-bottom: .17em;
+}
+
+.articleFeedbackv5-dialog.ui-dialog .articleFeedbackv5-tooltip-trigger {
+	margin-right: 20px;
+}
+
+.articleFeedbackv5-dialog.ui-dialog .articleFeedbackv5-tooltip {
+	right: -67px;
 }
 

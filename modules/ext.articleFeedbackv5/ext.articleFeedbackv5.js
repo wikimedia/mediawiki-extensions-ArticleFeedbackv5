@@ -18,13 +18,13 @@ var linkInfo = {
 };
 
 // Click event
-var clickFeedbackLink = function ( linkId ) {
+var clickFeedbackLink = function ( $link ) {
 	// Click tracking
 	if ( useClickTracking && $.isFunction( $.trackActionWithInfo ) ) {
-		$.trackActionWithInfo( linkInfo[linkId].clickTracking, mw.config.get( 'wgTitle' ) );
+		$.trackActionWithInfo( linkInfo[ $link.data( 'linkId' ) ].clickTracking, mw.config.get( 'wgTitle' ) );
 	}
 	// Set the link id
-	$( '#mw-articlefeedbackv5' ).articleFeedbackv5( 'openAsModal', linkId );
+	$( '#mw-articlefeedbackv5' ).articleFeedbackv5( 'openAsModal', $link );
 }
 
 /* Load at the bottom of the article */
@@ -47,18 +47,21 @@ $( 'span.editsection' ).append(
 		mw.msg( 'articlefeedbackv5-section-linktext' ) + '</a>' +
 	']'
 );
-$( 'span.editsection a.articleFeedbackv5-sectionlink' ).click( function ( e ) {
-	e.preventDefault();
-	clickFeedbackLink( '1' );
-} );
+$( 'span.editsection a.articleFeedbackv5-sectionlink' )
+	.data( 'linkId', 1 )
+	.click( function ( e ) {
+		e.preventDefault();
+		clickFeedbackLink( $( e.target ) );
+	} );
 
 /* Add toolbox link */
 var $aftLink4 = $( '<li id="t-articlefeedbackv5"><a href="#mw-articlefeedbackv5"></a></li>' )
 	.find( 'a' )
+		.data( 'linkId', 4 )
 		.text( mw.msg( 'articlefeedbackv5-toolbox-linktext' ) )
 		.click( function ( e ) {
 			e.preventDefault();
-			clickFeedbackLink( '4' );
+			clickFeedbackLink( $( e.target ) );
 		} )
 	.end();
 $( '#p-tb' ).find( 'ul' ).append( $aftLink4 );
