@@ -63,9 +63,12 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// the new odds are applied to everyone, not just people who have yet to be
 	// placed in a bucket.
 	'buckets' => array(
-		'1' => 34,
-		'5' => 33,
-		'6' => 33,
+		'0' => 17,
+		'1' => 17,
+		'2' => 17,
+		'3' => 17,
+		'4' => 16,
+		'5' => 16,
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
@@ -88,12 +91,8 @@ $wgArticleFeedbackv5Tracking = array(
 	// this number to ensure the new odds are applied to everyone, not just people who have yet to
 	// be placed in a bucket.
 	'buckets' => array(
-		'one'   => 16,
-		'two'   => 16,
-		'three' => 16,
-		'four'  => 16,
-		'five'  => 16,
-		'six'   => 16,
+		'ignore' => 0,
+		'track'  => 100,
 	),
 	// This version number is added to all tracking event names, so that changes in the software
 	// don't corrupt the data being collected. Bump this when you want to start a new "experiment".
