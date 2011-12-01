@@ -60,14 +60,13 @@ Sort:
 -->
 <br>
 <span id="aft5-showing">
-Showing 0 posts (of 0)
+Showing <span id="aft5-feedback-count-shown">0</span> posts (of <span id="aft5-feedback-count-total">0</span>)
 </span>
 <br>
-<div style="border:1px solid red;" id="aft5-show-feedback">Loading...</div>
-<a href="#" id="aft5-more">More</a>
+<div style="border:1px solid red;" id="aft5-show-feedback"></div>
+<a href="#" id="aft5-show-more">More</a>
 EOH
 		);
-		# "more" link to load the next 50 and append it.
 	}
 
 	protected static function formatNumber( $number ) {

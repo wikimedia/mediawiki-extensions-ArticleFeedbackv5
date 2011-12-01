@@ -27,11 +27,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function execute() {
 		$params   = $this->extractRequestParams();
-		#error_log(print_r($params,1));
 		$html     = '';
 		$result   = $this->getResult();
-                $path     = array( 'query', $this->getModuleName() );
                 $pageId   = $params['pageid'];
+		$length   = 0;
+		$count    = $this->fetchFeedbackCount( 
+		 $params['pageid'], $params['filter'] );
                 $feedback = $this->fetchFeedback(
 			$params['pageid'],
 			$params['filter'],
@@ -42,14 +43,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
                 foreach ( $feedback as $record ) {
 			$html .= $this->renderFeedback($record);
+			$length++;
                 }
 
-                $result->addValue( $path, 'feedback', $html );
-
-                $result->setIndexedTagName_internal( 
-			array( 'query', $this->getModuleName() ), 'aa' 
-		);
-
+                $result->addValue( 'data', 'length', $length );
+                $result->addValue( 'data', 'count', $count );
+                $result->addValue( 'data', 'feedback', $html );
 	}
 
 	public function fetchOverallRating( $pageId ) {
@@ -79,6 +78,18 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		return $rv;
 	}
 
+	public function fetchFeedbackCount( $pageId, $filter ) {
+		$dbr   = wfGetDB( DB_SLAVE );
+		$where = $this->getFilterCriteria( $filter );
+
+		$where['af_page_id'] = $pageId;
+
+		return $dbr->selectField(
+                        array( 'aft_article_feedback' ),
+                        array( 'COUNT(*) AS count' ),
+			$where
+                );
+	}
 
 	public function fetchFeedback( $pageId, 
 	 $filter = 'visible', $order = 'newest', $limit = 5, $offset = 0 ) {
@@ -86,7 +97,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$ids   = array();
 		$rows  = array();
 		$rv    = array();
-		$where = array();
+		$where = $this->getFilterCriteria( $filter );
 		$order;
 
 		switch($order) {
@@ -95,18 +106,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				break;
 			default:
 				$order = 'af_id DESC';
-				break;
-		}
-
-		switch($filter) {
-			case 'all':
-				$where = array();
-				break;
-			case 'visible':
-				$where = array( 'af_hide_count' => 0 );
- 				break;
-			default:
-				$where = array();
 				break;
 		}
 
@@ -144,7 +143,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			array( 'ORDER BY' => $order ),
 			array(
 				'aft_article_field'        => array(
-					'JOIN', 'afi_id = aa_field_id'
+					'LEFT JOIN', 'afi_id = aa_field_id'
 				),
 				'aft_article_answer'       => array(
 					'LEFT JOIN', 'af_id = aa_feedback_id'
@@ -167,6 +166,22 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		return $rv;
 	}
 
+	private function getFilterCriteria( $filter ) {
+		$where = array();
+		switch($filter) {
+			case 'all':
+				$where = array();
+				break;
+			case 'visible':
+				$where = array( 'af_hide_count' => 0 );
+ 				break;
+			default:
+				$where = array();
+				break;
+		}
+		return $where;
+	}
+
 	protected function renderFeedback( $record ) {
 		$id = $record[0]->af_id;
 		$rv = "<div class='aft5-feedback'><p>Feedback #$id"
@@ -178,7 +193,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			case 4: $rv .= $this->renderBucket4( $record ); break;
 			case 5: $rv .= $this->renderBucket5( $record ); break;
 			case 6: $rv .= $this->renderBucket6( $record ); break;
-			default: return 'Invalid bucket id';
+			default: $rv .= $this->renderNoBucket( $record ); break;
 		}
 		$rv .= "<p>
 		<a href='#' class='aft5-hide-link' id='aft5-hide-link-$id'>Hide this (".$record[0]->af_hide_count.")</a>
@@ -234,6 +249,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	private function renderBucket0( $record ) { 
 		# Future-proof this for when the bucket ID changes.
 		return $this->renderBucket6( $record );
+	}
+
+	private function renderNoBucket( $record ) { 
+		return 'Invalid form ID';
 	}
 
 	private function renderBucket6( $record ) { 

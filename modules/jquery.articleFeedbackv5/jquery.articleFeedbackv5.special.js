@@ -3,11 +3,12 @@
 
 	// TODO: Pass this in from the PHP side. Add it to mwConfig or w/e?
 	//$.articleFeedbackv5special.page   = mw.config.get( 'wgPageId' );
-	$.articleFeedbackv5special.page   = hackPageId;
-	$.articleFeedbackv5special.filter = 'all';
-	$.articleFeedbackv5special.sort   = 'newest';
-	$.articleFeedbackv5special.limit  = 5;
-	$.articleFeedbackv5special.offset = 0;
+	$.articleFeedbackv5special.page    = hackPageId;
+	$.articleFeedbackv5special.filter  = 'all';
+	$.articleFeedbackv5special.sort    = 'newest';
+	$.articleFeedbackv5special.limit   = 5;
+	$.articleFeedbackv5special.offset  = 0;
+	$.articleFeedbackv5special.showing = 0;
 
 	$.articleFeedbackv5special.apiUrl = mw.config.get( 'wgScriptPath' ) 
 	 + '/api.php';
@@ -24,7 +25,7 @@
 			$.articleFeedbackv5special.loadFeedback();
 			return false;
 		} );
-		$( '#aft5-more' ).bind( 'click', function(e) {
+		$( '#aft5-show-more' ).bind( 'click', function(e) {
 			$.articleFeedbackv5special.offset += 
 			 $.articleFeedbackv5special.limit;
 			$.articleFeedbackv5special.loadFeedback();
@@ -90,13 +91,25 @@
 				'maxage'  : 0,
 			},
 			'success': function ( data ) {
-				// TODO check output and error if needed
-				$( '#aft5-show-feedback' ).html(
-$( '#aft5-show-feedback' ).html() + data.query['articlefeedbackv5-view-feedback'].feedback
-				);
+				if ( 'data' in data ) {
+					$( '#aft5-show-feedback' ).html(
+						$( '#aft5-show-feedback' ).html() + data.data.feedback
+					);
+
+					$.articleFeedbackv5special.showing += data.data.length;
+					$( '#aft5-feedback-count-shown' ).html( $.articleFeedbackv5special.showing );
+					$( '#aft5-feedback-count-total' ).html( data.data.count );
+					if ( $.articleFeedbackv5special.showing >= data.data.count ) {
+						$( '#aft5-show-more' ).hide();
+					}
+
+				} else {
+					// TODO: have error message
+				}
 			}
-			// TODO have a callback for failures.
+			// TODO: have a callback for failures.
 		} );
+
 		return false;
 	}
 } )( jQuery );
