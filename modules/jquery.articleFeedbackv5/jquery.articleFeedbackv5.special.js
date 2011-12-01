@@ -4,7 +4,7 @@
 	// TODO: Pass this in from the PHP side. Add it to mwConfig or w/e?
 	//$.articleFeedbackv5special.page   = mw.config.get( 'wgPageId' );
 	$.articleFeedbackv5special.page   = hackPageId;
-	$.articleFeedbackv5special.filter = 'visible';
+	$.articleFeedbackv5special.filter = 'all';
 	$.articleFeedbackv5special.sort   = 'newest';
 	$.articleFeedbackv5special.limit  = 5;
 	$.articleFeedbackv5special.offset = 0;
@@ -55,19 +55,17 @@
 		$.ajax( {
 			'url'     : $.articleFeedbackv5special.apiUrl,
 			'type'    : 'POST',
-'action': 'articlefeedbackv5',
 			'dataType': 'json',
 			'data'    : {
 				'affeedbackid': id,
 				'afflagtype'  : type,
-				'format'      : 'json',
-				'maxage'      : 0,
-				'list'        : 'articlefeedbackv5-flag-feedback',
+				'format' : 'json',
+				'action' : 'articlefeedbackv5-flag-feedback',
 			},
 			'success': function ( data ) {
 				// TODO check output and error if needed
 				$( '#aft5-' + type + '-link-' + id ).html(
-					type + ' flag saved !'
+					type + ' flag saved'
 				);
 			}
 			// TODO have a callback for failures.

@@ -121,17 +121,6 @@ class ArticleFeedbackv5Hooks {
 		),
 	);
 
-	public static function addFeedbackLink($template, &$content_actions) {
-	   # This needs like an is-article check or something
-		$content_actions['namespaces'][] = array(
-			'class'   => false or 'selected',
-			'text'    => 'Feedback',
-			'href'    => '/wiki-dev/index.php/Special:ArticleFeedbackv5', #TODO
-			'context' => 'feedback'
-		);
-		return true;
-	}
-
 	/* Static Methods */
 
 	/**

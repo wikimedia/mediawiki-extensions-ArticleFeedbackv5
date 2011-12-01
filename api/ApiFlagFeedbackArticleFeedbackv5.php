@@ -23,11 +23,55 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
+		$error  = null;
+		$dbr    = wfGetDB( DB_SLAVE );
+
+		if ( !isset( $params['feedbackid'] )
+		 || !preg_match( '/^\d+$/', $params['feedbackid'] ) ) {
+			$error = 'Invalid feedback ID format.';
+		}
+
+		# load feedback record, bail if we don't have one
+		$record = $dbr->selectRow(
+			'aft_article_feedback',
+			array( 'af_id', 'af_abuse_count', 'af_hide_count' ),
+			array( 'af_id' => $params['feedbackid'] )
+		);
+
+		if ( !$record->af_id ) {
+			// no-op, because this is already broken
+			$error = 'Invalid feedback ID.';
+		} elseif ( $params['flagtype'] == 'abuse' ) {
+			$update['af_abuse_count'] = $record->af_abuse_count + 1;
+		} elseif ( $params['flagtype'] == 'hide' ) {
+			$update['af_hide_count'] = $record->af_hide_count + 1;
+		} else {
+			$error = 'Invalid flag type.';
+		}
+
+		if ( !$error ) {
+			$dbw = wfGetDB( DB_MASTER );
+			$dbw->update(
+				'aft_article_feedback',
+				$update,
+				array( 'af_id' => $params['feedbackid'] )
+			);
+		}
+
+		if ( $error ) {
+			$result = 'Error';
+			$reason = $error;
+		} else {
+			$result = 'Success';
+			$reason = 'Feedback saved.';
+		}
+
 		$this->getResult()->addValue(
 			null,
 			$this->getModuleName(),
 			array(
-				'result' => 'Success',
+				'result' => $result,
+				'reason' => $reason,
 			)
 		);
 	}
@@ -44,7 +88,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
 			),
-			'type'       => array(
+			'flagtype'   => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array( 

@@ -213,14 +213,13 @@ $wgHooks['BeforePageDisplay'][] = 'ArticleFeedbackv5Hooks::beforePageDisplay';
 $wgHooks['ResourceLoaderRegisterModules'][] = 'ArticleFeedbackv5Hooks::resourceLoaderRegisterModules';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'ArticleFeedbackv5Hooks::resourceLoaderGetConfigVars';
 $wgHooks['GetPreferences'][] = 'ArticleFeedbackv5Hooks::getPreferences';
-$wgHooks['SkinTemplateNavigation'][] = 'ArticleFeedbackv5Hooks::addFeedbackLink';
 $wgHooks['EditPage::showEditForm:fields'][] = 'ArticleFeedbackv5Hooks::pushTrackingFieldsToEdit';
 $wgHooks['ArticleSaveComplete'][] = 'ArticleFeedbackv5Hooks::trackEdit';
 
 // API Registration
 $wgAPIListModules['articlefeedbackv5-view-ratings']  = 'ApiViewRatingsArticleFeedbackv5';
 $wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';
-$wgAPIListModules['articlefeedbackv5-flag-feedback'] = 'ApiFlagFeedbackArticleFeedbackv5';
+$wgAPIModules['articlefeedbackv5-flag-feedback']     = 'ApiFlagFeedbackArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5']                   = 'ApiArticleFeedbackv5';
 
 // Special Page

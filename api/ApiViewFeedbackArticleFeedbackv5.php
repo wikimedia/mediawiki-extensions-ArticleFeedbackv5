@@ -82,12 +82,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	public function fetchFeedback( $pageId, 
 	 $filter = 'visible', $order = 'newest', $limit = 5, $offset = 0 ) {
-		$dbr  = wfGetDB( DB_SLAVE );
-		$ids  = array();
-		$rows = array();
-		$rv   = array();
+		$dbr   = wfGetDB( DB_SLAVE );
+		$ids   = array();
+		$rows  = array();
+		$rv    = array();
+		$where = array();
 		$order;
-		$where;
 
 		switch($order) {
 			case 'newest':
@@ -103,9 +103,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				$where = array();
 				break;
 			case 'visible':
-# TODO: add the column to control how a thing is hidden.
-#				$where = array(
-#				break;
+				$where = array( 'af_hide_count' => 0 );
+ 				break;
 			default:
 				$where = array();
 				break;
@@ -137,7 +136,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			array( 'af_id', 'af_bucket_id', 'afi_name', 'afo_name',
 				'aa_response_text', 'aa_response_boolean', 
 				'aa_response_rating', 'aa_response_option_id',
-				'afi_data_type', 'af_created', 'af_user_text'
+				'afi_data_type', 'af_created', 'af_user_text',
+				'af_hide_count', 'af_abuse_count'
 			),
 			array( 'af_id' => $ids ),
 			__METHOD__,
@@ -181,8 +181,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			default: return 'Invalid bucket id';
 		}
 		$rv .= "<p>
-		<a href='#' class='aft5-hide-link' id='aft5-hide-link-$id'>Hide this</a>
-		<a href='#' class='aft5-abuse-link' id='aft5-abuse-link-$id'>Flag as abuse</a>
+		<a href='#' class='aft5-hide-link' id='aft5-hide-link-$id'>Hide this (".$record[0]->af_hide_count.")</a>
+<br>
+		<a href='#' class='aft5-abuse-link' id='aft5-abuse-link-$id'>Flag as abuse (".$record[0]->af_abuse_count.")</a>
 		</p>
 		</div><hr>";
 		return $rv;
