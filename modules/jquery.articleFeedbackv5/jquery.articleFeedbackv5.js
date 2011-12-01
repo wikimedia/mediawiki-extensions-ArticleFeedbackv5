@@ -1778,6 +1778,36 @@
 
 		'1': {
 
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The template for the whole block
+				 */
+				block: '\
+					<p>Eventually this will have a pretty button and some nice messages.  For now, though...</p>\
+					<p><a href="" class="articleFeedbackv5-edit-cta-link">EDIT THIS PAGE</a></p>\
+					'
+
+			},
+
+			// }}}
+			// {{{ getTitle
+
+			/**
+			 * Gets the title
+			 *
+			 * @return string the title
+			 */
+			getTitle: function () {
+				return 'TODO: EDIT CTA';
+			},
+
+			// }}}
 			// {{{ build
 
 			/**
@@ -1787,19 +1817,8 @@
 			 */
 			build: function () {
 
-				// The overall template
-				var block_tpl = '\
-					<div class="articleFeedbackv5-panel">\
-						<div class="articleFeedbackv5-buffer">\
-							<h5 class="articleFeedbackv5-title">TODO: EDIT CTA</h5>\
-							<p>Eventually this will have a pretty button and some nice messages.  For now, though...</p>\
-							<p><a href="" class="articleFeedbackv5-edit-cta-link">EDIT THIS PAGE</a></p>\
-						</div>\
-					</div>\
-					';
-
 				// Start up the block to return
-				var $block = $( block_tpl );
+				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
 
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-edit-cta-link' )
@@ -2200,7 +2219,15 @@
 		if ( 'bindEvents' in cta ) {
 			cta.bindEvents( $block );
 		}
-		$.articleFeedbackv5.$holder.html( $block );
+		if ( 'getTitle' in cta ) {
+			if ( $.articleFeedbackv5.inDialog ) {
+				$.articleFeedbackv5.$dialog.dialog( 'option', 'title', cta.getTitle() );
+			} else {
+				$.articleFeedbackv5.find( '.articleFeedbackv5-title' ).html( cta.getTitle() );
+			}
+		}
+		$.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).empty();
+		$.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).append( $block );
 	};
 
 	// }}}
@@ -2315,6 +2342,7 @@
 			var $title = $( '#ui-dialog-title-articleFeedbackv5-dialog-wrap' );
 			var $titlebar = $title.parent();
 			$title.addClass( 'articleFeedbackv5-title' );
+
 			// Set up the tooltip
 			$titlebar.append( $.articleFeedbackv5.templates.helpToolTip );
 			$titlebar.find( '.articleFeedbackv5-tooltip' ).hide();
@@ -2322,6 +2350,9 @@
 				$( e.target ).next( '.articleFeedbackv5-tooltip' ).toggle();
 			} );
 			$titlebar.localize( { 'prefix': 'articlefeedbackv5-' } );
+
+			// Hide the panel
+			$.articleFeedbackv5.$holder.hide();
 
 			$.articleFeedbackv5.inDialog = true;
 		}
@@ -2339,6 +2370,7 @@
 			$inner = $.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-ui' ).detach();
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-buffer' ).append( $inner );
 			$.articleFeedbackv5.$dialog.dialog( 'destroy' );
+			$.articleFeedbackv5.$holder.show();
 			$.articleFeedbackv5.inDialog = false;
 		}
 	};
