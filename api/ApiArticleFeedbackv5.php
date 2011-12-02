@@ -44,6 +44,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$pageId       = $params['pageid'];
 		$bucket       = $params['bucket'];
 		$revisionId   = $params['revid'];
+		$email_data   = array(
+			'ratingData' => array(),
+			'pageID'     => $pageId,
+			'bucketId'   => $bucket
+		);
 
 		$user_answers = array();
 		$fields = ApiArticleFeedbackv5Utils::getFields();
@@ -66,6 +71,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 						$data["aa_response_$t"] = $t == $type ? $value : null;
 					}
 					$user_answers[] = $data;
+					$email_data['ratingData'][$field->afi_name] = $value;
 				} else {
 					// TODO: ERROR
 				}
@@ -74,6 +80,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		$ctaId = $this->saveUserRatings( $user_answers, $feedbackId, $bucket );
 		$this->updateRollupTables( $pageId, $revisionId );
+
+		if( $params['email'] ) {
+			$this->captureEmail ( $params['email'], json_encode( 
+				$email_data
+			) );
+		}
 
 		$squidUpdate = new SquidUpdate( array(
 			wfAppendQuery( wfScript( 'api' ), array(
@@ -100,6 +112,19 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'cta_id' => $ctaId,
 			)
 		);
+	}
+
+	protected function captureEmail( $email, $json ) {
+		global $wgScriptPath, $wgServer;
+		$url  = "$wgServer$wgScriptPath/api.php";
+		$body = "email=$email&info=$json&action=emailcapture&format=json";
+		$c = curl_init ( $url );
+		curl_setopt( $c, CURLOPT_POST, true );
+		curl_setopt( $c, CURLOPT_POSTFIELDS, $body );
+		curl_setopt( $c, CURLOPT_RETURNTRANSFER, true );
+
+		$rv = curl_exec( $c );
+		curl_close( $c );
 	}
 
 	/**
@@ -382,6 +407,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_MIN      => 0
 			),
+			'email' => array(
+				ApiBase::PARAM_TYPE     => 'string',
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
+			)
 		);
 
 		$fields = ApiArticleFeedbackv5Utils::getFields();

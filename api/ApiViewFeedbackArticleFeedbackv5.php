@@ -29,11 +29,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$params   = $this->extractRequestParams();
 		$html     = '';
 		$result   = $this->getResult();
-                $pageId   = $params['pageid'];
+		$pageId   = $params['pageid'];
 		$length   = 0;
 		$count    = $this->fetchFeedbackCount( 
 		 $params['pageid'], $params['filter'] );
-                $feedback = $this->fetchFeedback(
+		$feedback = $this->fetchFeedback(
 			$params['pageid'],
 			$params['filter'],
 			$params['sort'],
@@ -41,14 +41,14 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$params['offset']
 		);
 
-                foreach ( $feedback as $record ) {
+		foreach ( $feedback as $record ) {
 			$html .= $this->renderFeedback($record);
 			$length++;
-                }
+		}
 
-                $result->addValue( 'data', 'length', $length );
-                $result->addValue( 'data', 'count', $count );
-                $result->addValue( 'data', 'feedback', $html );
+		$result->addValue( 'data', 'length', $length );
+		$result->addValue( 'data', 'count', $count );
+		$result->addValue( 'data', 'feedback', $html );
 	}
 
 	public function fetchOverallRating( $pageId ) {
@@ -85,10 +85,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$where['af_page_id'] = $pageId;
 
 		return $dbr->selectField(
-                        array( 'aft_article_feedback' ),
-                        array( 'COUNT(*) AS count' ),
+			array( 'aft_article_feedback' ),
+			array( 'COUNT(*) AS count' ),
 			$where
-                );
+		);
 	}
 
 	public function fetchFeedback( $pageId, 
@@ -340,7 +340,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 *
 	 * @return array the example as the first element in an array
 	 */
-	protected function getExamples() {
+	public function getExamples() {
 		return array(
 			'api.php?action=query&list=articlefeedbackv5-view-feedback&afpageid=1',
 		);
