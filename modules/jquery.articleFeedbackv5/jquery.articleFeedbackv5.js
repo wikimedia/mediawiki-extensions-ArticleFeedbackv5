@@ -1325,7 +1325,7 @@
 				// Slide-down for the expertise checkboxes
 				$block.find( '.articleFeedbackv5-expertise > input:checkbox' )
 					.change( function () {
-						var $options = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-expertise-options' );
+						var $options = $.articleFeedbackv5.find( '.articleFeedbackv5-expertise-options' );
 						if ( $(this).is( ':checked' ) ) {
 							$options.slideDown( 'fast' );
 						} else {
@@ -1404,7 +1404,7 @@
 				});
 				rlabel.mousedown( function () {
 					$.articleFeedbackv5.enableSubmission( true );
-					var $ui = $.articleFeedbackv5.find( 'articleFeedbackv5-ui' );
+					var $ui = $.articleFeedbackv5.find( '.articleFeedbackv5-ui' );
 					if ( $ui.hasClass( 'articleFeedbackv5-expired' ) ) {
 						// Changing one means the rest will get submitted too
 						$ui.removeClass( 'articleFeedbackv5-expired' );
@@ -1616,6 +1616,9 @@
 				$.articleFeedbackv5.find( '.articleFeedbackv5-expertise input:checked' ).each( function () {
 					data['expertise-' + $( this ).val()] = 1;
 				} );
+				if ( $.articleFeedbackv5.find( '.articleFeedbackv5-helpimprove input:checked' ).length > 0 ) {
+					data.email = $.articleFeedbackv5.find( '.articleFeedbackv5-helpimprove-email' ).val();
+				}
 				return data;
 			},
 
