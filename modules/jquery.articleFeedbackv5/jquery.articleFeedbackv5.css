@@ -607,13 +607,8 @@
 	margin: 0 0 0 10px;
 	line-height: 28px;
 	height: 28px;
-	padding: 0 8px;
-	background: #e6e6e6;
-	border: 1px solid #d6d6d6;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border-radius: 8px; /* future proofing */
-	-khtml-border-radius: 8px; /* for old Konqueror browsers */
+	padding: 1px 9px;
+	
 	position: relative;
 }
 
@@ -622,9 +617,15 @@
 }
 
 .articleFeedbackv5-tags ul li:hover, .articleFeedbackv5-tags ul li.active {
+	padding: 0 8px;
 	background: #fff;
 	border-color: #ccc;
 	color: #000;
+	border: 1px solid #d6d6d6;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px; /* future proofing */
+	-khtml-border-radius: 8px; /* for old Konqueror browsers */
 }
 
 .articleFeedbackv5-tags ul li.active .tag-selector {
@@ -651,22 +652,22 @@
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-suggestion-label {
-	background: url(images/bg-tag-suggestion-off.png) no-repeat 0 center;
+	background: url(images/bg-tag-suggestion-on.png) no-repeat 0 center;
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-question-label {
-	background: url(images/bg-tag-question-off.png) no-repeat 0 center;
+	background: url(images/bg-tag-question-on.png) no-repeat 0 center;
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-problem-label {
-	background: url(images/bg-tag-problem-off.png) no-repeat 0 center;
+	background: url(images/bg-tag-problem-on.png) no-repeat 0 center;
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-praise-label {
-	background: url(images/bg-tag-praise-off.png) no-repeat 0 center;
+	background: url(images/bg-tag-praise-on.png) no-repeat 0 center;
 }
 
-.articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-suggestion-label,
+/*.articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-suggestion-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-suggestion-label {
 	background: url(images/bg-tag-suggestion-on.png) no-repeat 0 center;
 }
@@ -684,7 +685,7 @@
 .articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-praise-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-praise-label {
 	background: url(images/bg-tag-praise-on.png) no-repeat 0 center;
-}
+}*/
 
 /*** Option 3 ***/
 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label {
