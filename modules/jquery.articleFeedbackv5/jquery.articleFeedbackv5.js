@@ -267,9 +267,6 @@
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
-				// Add the help button
-				$.articleFeedbackv5.addHelpButton( $block );
-
 				// Fill in the disclosure text
 				$block.find( '.articlefeedbackv5-shared-on-feedback' )
 					.html( $.articleFeedbackv5.buildLink(
@@ -534,9 +531,6 @@
 					$( $.articleFeedbackv5.templates.clear ).appendTo( $( this ) );
 				} );
 
-				// Add the help button
-				$.articleFeedbackv5.addHelpButton( $block );
-
 				// Fill in the disclosure text
 				$block.find( '.articlefeedbackv5-shared-on-feedback' )
 					.html( $.articleFeedbackv5.buildLink(
@@ -788,9 +782,6 @@
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
-				// Add the help button
-				$.articleFeedbackv5.addHelpButton( $block );
-
 				// Fill in the rating clear title
 				var clear_msg = mw.msg( 'articlefeedbackv5-bucket3-clear-rating' );
 				$block.find( '.articleFeedback-rating-clear' )
@@ -1008,16 +999,18 @@
 				 * The template for the whole block
 				 */
 				block: '\
-					<div class="form-row articleFeedbackv5-bucket4-toggle">\
-						<h3><html:msg key="bucket4-subhead"></h3>\
-						<p class="instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
-						<html:msg key="bucket4-teaser-line2" /></p>\
+					<div>\
+						<div class="form-row articleFeedbackv5-bucket4-toggle">\
+							<h3><html:msg key="bucket4-subhead"></h3>\
+							<p class="instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
+							<html:msg key="bucket4-teaser-line2" /></p>\
+						</div>\
+						<div class="articleFeedbackv5-disclosure">\
+							<p><a class="articleFeedbackv5-learn-to-edit" target="_blank"><html:msg key="bucket4-learn-to-edit"> &gt;&gt;</a></p>\
+						</div>\
+						<a class="articleFeedbackv5-submit"><html:msg key="bucket4-form-submit" /></a>\
+						<div class="clear"></div>\
 					</div>\
-					<div class="articleFeedbackv5-disclosure">\
-						<p><a class="articleFeedbackv5-learn-to-edit" target="_blank"><html:msg key="bucket4-learn-to-edit"> &gt;&gt;</a></p>\
-					</div>\
-					<a class="articleFeedbackv5-submit"><html:msg key="bucket4-form-submit" /></a>\
-					<div class="clear"></div>\
 					'
 
 			},
@@ -1046,9 +1039,6 @@
 
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
-
-				// Add the help button
-				$.articleFeedbackv5.addHelpButton( $block );
 
 				// Fill in the learn to edit link
 				$block.find( '.articleFeedbackv5-learn-to-edit' )
@@ -1789,8 +1779,10 @@
 				 * The template for the whole block
 				 */
 				block: '\
-					<p>Eventually this will have a pretty button and some nice messages.  For now, though...</p>\
-					<p><a href="" class="articleFeedbackv5-edit-cta-link">EDIT THIS PAGE</a></p>\
+					<div>\
+						<p>Eventually this will have a pretty button and some nice messages.  For now, though...</p>\
+						<p><a href="" class="articleFeedbackv5-edit-cta-link">EDIT THIS PAGE</a></p>\
+					</div>\
 					'
 
 			},
@@ -1962,17 +1954,6 @@
 	};
 
 	// }}}
-	// {{{ addHelpButton
-
-	/**
-	 * Utility method: add a help button to the titlebar (with bound event)
-	 *
-	 * @param Element $block the form block
-	 */
-	$.articleFeedbackv5.addHelpButton = function ( $block ) {
-	};
-
-	// }}}
 	// {{{ buildLink
 
 	/**
@@ -2096,6 +2077,32 @@
 		// Add an empty dialog
 		$.articleFeedbackv5.$dialog = $( '<div id="articleFeedbackv5-dialog-wrap"></div>' );
 		$.articleFeedbackv5.$holder.after( $.articleFeedbackv5.$dialog );
+
+		// Set up the dialog
+		$.articleFeedbackv5.$dialog.dialog( {
+			width: 500,
+			height: 300,
+			dialogClass: 'articleFeedbackv5-dialog',
+			resizable: false,
+			draggable: true,
+			title: $.articleFeedbackv5.currentBucket().getTitle(),
+			modal: true,
+			autoOpen: false,
+			close: function ( event, ui ) {
+				$.articleFeedbackv5.closeAsModal();
+			}
+		} );
+		var $title = $( '#ui-dialog-title-articleFeedbackv5-dialog-wrap' );
+		var $titlebar = $title.parent();
+		$title.addClass( 'articleFeedbackv5-title' );
+
+		// Set up the tooltip for the dialoag
+		$titlebar.append( $.articleFeedbackv5.templates.helpToolTip );
+		$titlebar.find( '.articleFeedbackv5-tooltip' ).hide();
+		$titlebar.find( '.articleFeedbackv5-tooltip-trigger' ).click( function ( e ) {
+			$( e.target ).next( '.articleFeedbackv5-tooltip' ).toggle();
+		} );
+		$titlebar.localize( { 'prefix': 'articlefeedbackv5-' } );
 
 		// Set loaded
 		$.articleFeedbackv5.isLoaded = true;
@@ -2325,31 +2332,11 @@
 			var y = 'center';
 			$inner = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' ).detach();
 			$.articleFeedbackv5.$dialog.append( $inner );
+			$.articleFeedbackv5.$dialog.dialog( 'option', 'width', w + 20 );
+			$.articleFeedbackv5.$dialog.dialog( 'option', 'height', h + 70 );
+			$.articleFeedbackv5.$dialog.dialog( 'option', 'position', [ x, y ] );
+			$.articleFeedbackv5.$dialog.dialog( 'open' );
 			$.articleFeedbackv5.setLinkId( $link.data( 'linkId' ) );
-			$.articleFeedbackv5.$dialog.dialog( {
-				width: w + 20,
-				height: h + 50,
-				position: [ x, y ],
-				dialogClass: 'articleFeedbackv5-dialog',
-				resizable: false,
-				draggable: true,
-				title: $.articleFeedbackv5.currentBucket().getTitle(),
-				modal: true,
-				close: function ( event, ui ) {
-					$.articleFeedbackv5.closeAsModal();
-				}
-			} );
-			var $title = $( '#ui-dialog-title-articleFeedbackv5-dialog-wrap' );
-			var $titlebar = $title.parent();
-			$title.addClass( 'articleFeedbackv5-title' );
-
-			// Set up the tooltip
-			$titlebar.append( $.articleFeedbackv5.templates.helpToolTip );
-			$titlebar.find( '.articleFeedbackv5-tooltip' ).hide();
-			$titlebar.find( '.articleFeedbackv5-tooltip-trigger' ).click( function ( e ) {
-				$( e.target ).next( '.articleFeedbackv5-tooltip' ).toggle();
-			} );
-			$titlebar.localize( { 'prefix': 'articlefeedbackv5-' } );
 
 			// Hide the panel
 			$.articleFeedbackv5.$holder.hide();
@@ -2369,7 +2356,6 @@
 			$.articleFeedbackv5.setLinkId( '0' );
 			$inner = $.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-ui' ).detach();
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-buffer' ).append( $inner );
-			$.articleFeedbackv5.$dialog.dialog( 'destroy' );
 			$.articleFeedbackv5.$holder.show();
 			$.articleFeedbackv5.inDialog = false;
 		}
