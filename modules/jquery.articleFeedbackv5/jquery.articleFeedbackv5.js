@@ -73,8 +73,8 @@
 
 	/**
 	 * The bucket ID is the variation of the Article Feedback form chosen for this
-	 * particualar user.  It will be passed in at load time, but if all else fails,
-	 * default to Option Six (no form).
+	 * particualar user.  It set at load time, but if all else fails, default to
+	 * Bucket 6 (no form).
 	 *
 	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_form_interface
 	 */
@@ -166,7 +166,7 @@
 				<div class="tooltip-repeat">\
 					<h3><html:msg key="help-tooltip-title" /></h3>\
 					<p><html:msg key="help-tooltip-info" /></p>\
-					<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5"><html:msg key="help-tooltip-linktext" /></a></p>\
+					<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
 				</div>\
 				<div class="tooltip-bottom"></div>\
 			</div>\
