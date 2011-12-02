@@ -63,12 +63,12 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// the new odds are applied to everyone, not just people who have yet to be
 	// placed in a bucket.
 	'buckets' => array(
-		'0' => 17,
-		'1' => 17,
-		'2' => 17,
-		'3' => 17,
-		'4' => 16,
-		'5' => 16,
+		'zero' => 17,
+		'one' => 17,
+		'two' => 17,
+		'three' => 17,
+		'four' => 16,
+		'five' => 16,
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
@@ -82,7 +82,7 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	'tracked' => true
 );
 
-// Bucket settings for tracking users
+// Bucket settings for click tracking on feedback links
 $wgArticleFeedbackv5Tracking = array(
 	// Not all users need to be tracked, but we do want to track some users over time - these
 	// buckets are used when deciding to track someone or not, placing them in one of two buckets:
@@ -97,13 +97,13 @@ $wgArticleFeedbackv5Tracking = array(
 	// This version number is added to all tracking event names, so that changes in the software
 	// don't corrupt the data being collected. Bump this when you want to start a new "experiment".
 	'version' => 0,
-	// Let user's be tracked for a month, and then rebucket them, allowing some churn
+	// Let users be tracked for a month, and then rebucket them, allowing some churn
 	'expires' => 30,
 	// Track the event of users being bucketed - so we can be sure the odds worked out right
 	'tracked' => true
 );
 
-// Bucket settings for extra options in the UI
+// Bucket settings for extra expertise checkboxes in the Option 5 feedback form
 $wgArticleFeedbackv5Options = array(
 	'buckets' => array(
 		'show' => 100,
@@ -111,6 +111,31 @@ $wgArticleFeedbackv5Options = array(
 	),
 	'version' => 0,
 	'expires' => 30,
+	'tracked' => true
+);
+
+// Bucket settings for links to the feedback form
+$wgArticleFeedbackv5LinkBuckets = array(
+	// Users can fall into one of several buckets for links.  These are:
+	//  0: No link; user must scroll to the bottom of the page
+	//  1: Section bars
+	//  2: Title bar
+	//  3: Vertical button
+	'buckets' => array(
+		'-' => 0,
+		'A' => 0,
+		'B' => 100,
+		'C' => 0,
+	),
+	// This version number is added to all tracking event names, so that
+	// changes in the software don't corrupt the data being collected. Bump
+	// this when you want to start a new "experiment".
+	'version' => 0,
+	// Let users be tracked for a month, and then rebucket them, allowing some
+	// churn.
+	'expires' => 30,
+	// Track the event of users being bucketed - so we can be sure the odds
+	// worked out right.
 	'tracked' => true
 );
 

@@ -127,7 +127,9 @@ $messages['en'] = array(
 	'articlefeedbackv5-transparency-terms-linktext' => 'terms',
 	'articlefeedbackv5-transparency-terms-url' => 'Project:Privacy_policy', // TODO: Confirm correct link
 	'articlefeedbackv5-section-linktext' => 'feedback',
-	'articlefeedbackv5-toolbox-linktext' => 'Feedback',
+	'articlefeedbackv5-titlebar-linktext' => 'Feedback',
+	'articlefeedbackv5-toolbox-linktext' => 'Rate this page',
+
 
 	/* --- copied from AFTv4 and possibly not used --- */
 	/* ArticleFeedback survey */
@@ -285,6 +287,7 @@ $1 is an integer, and the rating count.",
 	'articlefeedbackv5-transparency-terms-url' => 'The URL for the terms (can be translated; defaults to Project:Privacy_policy; Do not translate "Project:")',
 	'articlefeedbackv5-section-linktext' => 'When a link to pop up the feedback tool appears on the article section headers, next to [edit], this will be the text inside the brackets immediately following (e.g. "[edit] [feedback]").',
 	'articlefeedbackv5-toolbox-linktext' => 'When a link to pop up the feedback tool appears at the bottom of the toolbox area in the sidebar, this will be the link text.',
+	'articlefeedbackv5-toolbox-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far right, this will be the link text.',
 
 	/* --- copied from AFTv4 and possibly not used --- */
 	/* ArticleFeedback survey */

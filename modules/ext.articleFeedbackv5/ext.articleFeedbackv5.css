@@ -1,16 +1,18 @@
-/*
- * Styles for Article Feedback Extension
- */
-#articleFeedback-dialog {
-	padding: 2em;
-	padding-top: 1em;
+/** Styles for feedback links **/
+
+#articleFeedbackv5-titlebarlink {
+	float: right;
+	font-size: 85%;
+	font-weight: bold;
+	line-height: 1.5em;
+	margin: 5px 0;
+	padding: 0;
+	position: absolute;
+	right: 0;
+	text-align: right;
+	text-indent: 0;
+	text-transform: none;
+	top: 0;
+	white-space: nowrap;
 }
 
-.articleFeedback-survey-disclaimer {
-	font-weight: normal; /* Override bold */
-	font-style: italic;
-}
-
-.articleFeedback-survey-disclaimer a {
-	color: #0645AD; /* Override blackish color set by JUI */
-}

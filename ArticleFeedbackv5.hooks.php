@@ -20,6 +20,7 @@ class ArticleFeedbackv5Hooks {
 			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.css',
 			'messages' => array(
 				'articlefeedbackv5-section-linktext',
+				'articlefeedbackv5-titlebar-linktext',
 				'articlefeedbackv5-toolbox-linktext',
 			),
 			'dependencies' => array(
@@ -216,6 +217,7 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5DisplayBuckets,
 			$wgArticleFeedbackv5Tracking,
 			$wgArticleFeedbackv5Options,
+			$wgArticleFeedbackv5LinkBuckets,
 			$wgArticleFeedbackv5Namespaces,
 			$wgArticleFeedbackv5LearnToEdit;
 		$vars['wgArticleFeedbackv5SMaxage'] = $wgArticleFeedbackv5SMaxage;
@@ -228,6 +230,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5DisplayBuckets'] = $wgArticleFeedbackv5DisplayBuckets;
 		$vars['wgArticleFeedbackv5Tracking'] = $wgArticleFeedbackv5Tracking;
 		$vars['wgArticleFeedbackv5Options'] = $wgArticleFeedbackv5Options;
+		$vars['wgArticleFeedbackv5LinkBuckets'] = $wgArticleFeedbackv5LinkBuckets;
 		$vars['wgArticleFeedbackv5Namespaces'] = $wgArticleFeedbackv5Namespaces;
 		$vars['wgArticleFeedbackv5LearnToEdit'] = $wgArticleFeedbackv5LearnToEdit;
 		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMsgForContent( 'articlefeedbackv5-bucket5-form-panel-explanation-link' );

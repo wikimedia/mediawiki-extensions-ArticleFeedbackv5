@@ -1906,10 +1906,12 @@
 		} else if ( cookieval in knownBuckets ) {
 			$.articleFeedbackv5.bucketId = cookieval;
 		} else {
-			$.articleFeedbackv5.bucketId = mw.user.bucket(
+			var bucketName = mw.user.bucket(
 				'ext.articleFeedbackv5-display',
 				mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' )
 			);
+			var nameMap = { zero: '0', one: '1', two: '2', three: '3', four: '4', five: '5' };
+			$.articleFeedbackv5.bucketId = nameMap[bucketName];
 		}
 		// Drop in a cookie to keep track of their display bucket;
 		// use the config to determine how long to hold onto it.
@@ -2329,6 +2331,30 @@
 	};
 
 	// }}}
+	// {{{ inDebug
+
+	/**
+	 * Returns whether the plugin is in debug mode
+	 *
+	 * @return int whether the plugin is in debug mode
+	 */
+	$.articleFeedbackv5.inDebug = function () {
+		return $.articleFeedbackv5.debug;
+	};
+
+	// }}}
+	// {{{ getBucketId
+
+	/**
+	 * Gets the bucket ID
+	 *
+	 * @return int the bucket ID
+	 */
+	$.articleFeedbackv5.getBucketId = function () {
+		return $.articleFeedbackv5.bucketId;
+	};
+
+	// }}}
 	// {{{ openAsModal
 
 	/**
@@ -2396,6 +2422,12 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 		$.articleFeedbackv5.init( $( this ), opts );
 	} else if ( 'setLinkId' === opts ) {
 		$.articleFeedbackv5.setLinkId( arg );
+	} else if ( 'getBucketId' === opts ) {
+		return $.articleFeedbackv5.getBucketId();
+	} else if ( 'inDebug' === opts ) {
+		return $.articleFeedbackv5.inDebug();
+	} else if ( 'prefix' === opts ) {
+		return $.articleFeedbackv5.prefix( arg );
 	} else if ( 'openAsModal' === opts ) {
 		$.articleFeedbackv5.openAsModal( arg );
 	} else if ( 'closeAsModal' === opts ) {
