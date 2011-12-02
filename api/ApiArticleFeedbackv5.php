@@ -115,16 +115,15 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	}
 
 	protected function captureEmail( $email, $json ) {
-		global $wgScriptPath, $wgServer;
-		$url  = "$wgServer$wgScriptPath/api.php";
-		$body = "email=$email&info=$json&action=emailcapture&format=json";
-		$c = curl_init ( $url );
-		curl_setopt( $c, CURLOPT_POST, true );
-		curl_setopt( $c, CURLOPT_POSTFIELDS, $body );
-		curl_setopt( $c, CURLOPT_RETURNTRANSFER, true );
-
-		$rv = curl_exec( $c );
-		curl_close( $c );
+		# http://www.mediawiki.org/wiki/API:Calling_internally
+		$params = new FauxRequest( array(
+			'action' => 'emailcapture',
+			'format' => 'json',
+			'email'  => $email,
+			'info'   => $json
+		) );
+		$api = new ApiMain( $params, true );
+		$api->execute();
 	}
 
 	/**
