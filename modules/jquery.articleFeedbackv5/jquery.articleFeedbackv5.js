@@ -164,9 +164,10 @@
 			<div class="articleFeedbackv5-tooltip">\
 				<div class="tooltip-top"></div>\
 				<div class="tooltip-repeat">\
-					<h3><html:msg key="help-tooltip-title" /></h3>\
+					<h3><html:msg key="help-tooltip-title" /></h3><span class="articleFeedbackv5-tooltip-close">X</span>\
+					<div class="clear"></div>\
 					<p><html:msg key="help-tooltip-info" /></p>\
-					<p><a target="_blank" href="http://www.mediawiki.org/wiki/Article_feedback/Version_5"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
+					<p><a target="_blank" href="http://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
 				</div>\
 				<div class="tooltip-bottom"></div>\
 			</div>\
@@ -1784,9 +1785,17 @@
 				 * The template for the whole block
 				 */
 				block: '\
-					<div>\
-						<p>Eventually this will have a pretty button and some nice messages.  For now, though...</p>\
-						<p><a href="" class="articleFeedbackv5-edit-cta-link">EDIT THIS PAGE</a></p>\
+					<div class="articleFeedbackv5-confirmation-panel>\
+						<div class="articleFeedbackv5-panel-leftContent">\
+							<div class="articleFeedbackv5-confirmation-text">\
+								<span class=articleFeedbackv5-confirmation-thanks">[Thanks!]</span><span class="articleFeedbackv5-confirmation-follow-up">[Your feedback has been saved.]</span>\
+							</div>\
+							<h3 class="articleFeedbackv5-confirmation-title">Did you know that you can edit this page?</h3>\
+							<p class="articleFeedbackv5-confirmation-wikipediaWorks">[Wikipedia works because anyone can edit its articles. Go ahead, give it a try. Be bold!]</p>\
+							<p class="articleFeedbackv5-confirmation-learnHow"><a target="_blank" href="#">[Learn how to edit] &raquo;</a></p>\
+						</div>\
+						<a href="&amp;action=edit" class="articleFeedbackv5-edit-cta-link"><span class="ui-button-text">[Edit this page]</span></a>\
+						<div class="clear"></div>\
 					</div>\
 					'
 
@@ -2068,6 +2077,9 @@
 		$wrapper.find( '.articleFeedbackv5-title-wrap' ).append( $.articleFeedbackv5.templates.helpToolTip );
 		$wrapper.find( '.articleFeedbackv5-tooltip' ).hide();
 		$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
+			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
+		} );
+		$wrapper.find( '.articleFeedbackv5-tooltip-close' ).click( function () {
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
 		} );
 

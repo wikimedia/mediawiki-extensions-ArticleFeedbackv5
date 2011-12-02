@@ -201,7 +201,7 @@
 
 #mw-articlefeedbackv5 .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full {
 	/* @embed */
-	background-image: url(images/star-full.png) !important;
+	background-image: url(images/star-full.png);
 }
 
 #mw-articlefeedbackv5 .articleFeedbackv5-expired .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full {
@@ -446,7 +446,7 @@
 .articleFeedbackv5-tooltip  {
 	position: absolute;
 	z-index: 15;
-	top: -185px;
+	top: -165px;
 	right: -105px;
 	font-size: 12px;
 	width: 234px;
@@ -462,6 +462,20 @@
 	background: url(images/bg-tooltip.png) repeat-y;
 	padding: 0 20px 1px;
 	margin: 0;
+}
+
+.articleFeedbackv5-tooltip .tooltip-repeat h3 {
+	float: left;
+}
+
+.articleFeedbackv5-tooltip .tooltip-repeat .articleFeedbackv5-tooltip-close {
+	float: right;
+	cursor: pointer;
+	margin: -5px -5px 0 0;
+}
+
+.articleFeedbackv5-tooltip .tooltip-repeat .articleFeedbackv5-tooltip-close:hover {
+	text-decoration: underline;
 }
 
 .articleFeedbackv5-tooltip .tooltip-bottom {
@@ -512,7 +526,7 @@
 .articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder {
 	display: inline-block;
 	height: 19px;
-	line-height: 19px;
+	line-height: 22px;
 	font-size: .9em;
 	min-width: 34px;
 	padding: 0 8px;
@@ -569,13 +583,14 @@
 	font-size: 0.75em;
 }
 
-.articleFeedbackv5-ui .articleFeedbackv5-submit {
+.articleFeedbackv5-ui .articleFeedbackv5-submit,
+.articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link {
 	float: left;
-	height: 30px;
+	height: 29px;
 	width: auto;
 	text-align: center;
 	padding: 0 6px;
-	background: url(images/bg-submit-disable.png) repeat-x !important;
+	background: url(images/bg-submit.png) repeat-x !important;
 	margin: 10px 30px 0 0 !important;
 	border: none !important;
 	-moz-border-radius: 3px;
@@ -587,7 +602,12 @@
 	box-shadow: -2px 2px 1px #999;
 }
 
-.articleFeedbackv5-ui .articleFeedbackv5-submit span {
+.articleFeedbackv5-ui .articleFeedbackv5-submit {
+	float: left;
+}
+
+.articleFeedbackv5-ui .articleFeedbackv5-submit span, 
+.articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link span{
 	font-size: 14px;
 	font-weight: bold;
 	display: inline-block;
@@ -596,6 +616,7 @@
 	color: #fff;
 	/*text-shadow: 1px 1px 1px #000;*/
 	padding: 1px 30px 0 0;
+	margin: 5px 0 0;
 	background: url(images/bg-submit-icon.png) right center no-repeat;
 }
 
@@ -728,7 +749,7 @@ body .ui-widget-overlay {
 }
 
 .articleFeedbackv5-dialog.ui-dialog .articleFeedbackv5-tooltip-trigger {
-	margin-right: 20px;
+	margin-right: 10px;
 }
 
 .articleFeedbackv5-dialog.ui-dialog .articleFeedbackv5-tooltip {
@@ -745,11 +766,12 @@ body .ui-dialog .ui-icon-closethick:hover {
 	border: none !important;
 }
 .ui-dialog .ui-dialog-titlebar-close {
-position: absolute;
-right: .75em;
-top: 50%;
-width: 19px;
-margin: -10px 0 0 0;
+	float: right;
+position: static !important;
+right: auto !important;
+top: auto !important;
+width: 23px !important;
+margin: 0 !important;
 padding: 0 !important;
 height: auto !important;
 }
