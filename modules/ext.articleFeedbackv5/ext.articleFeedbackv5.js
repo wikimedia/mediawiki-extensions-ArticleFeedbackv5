@@ -12,6 +12,9 @@ var useClickTracking = 'track' === mw.user.bucket(
 
 // Info about each of the links
 var linkInfo = {
+	'1': {
+		clickTracking: $.articleFeedbackv5.prefix( 'section-link' )
+	},
 	'4': {
 		clickTracking: $.articleFeedbackv5.prefix( 'toolbox-link' )
 	}
