@@ -6,7 +6,7 @@
 	$.articleFeedbackv5special.page    = hackPageId;
 	$.articleFeedbackv5special.filter  = 'all';
 	$.articleFeedbackv5special.sort    = 'newest';
-	$.articleFeedbackv5special.limit   = 5;
+	$.articleFeedbackv5special.limit   = 25;
 	$.articleFeedbackv5special.offset  = 0;
 	$.articleFeedbackv5special.showing = 0;
 

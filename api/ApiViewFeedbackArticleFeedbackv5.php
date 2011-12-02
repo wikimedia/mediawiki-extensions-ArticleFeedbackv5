@@ -92,7 +92,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	public function fetchFeedback( $pageId, 
-	 $filter = 'visible', $order = 'newest', $limit = 5, $offset = 0 ) {
+	 $filter = 'visible', $order = 'newest', $limit = 25, $offset = 0 ) {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$ids   = array();
 		$rows  = array();
@@ -196,8 +196,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			default: $rv .= $this->renderNoBucket( $record ); break;
 		}
 		$rv .= "<p>
-		<a href='#' class='aft5-hide-link' id='aft5-hide-link-$id'>Hide this (".$record[0]->af_hide_count.")</a>
-<br>
+		Option ".$record[0]->af_bucket_id." |
+		<a href='#' class='aft5-hide-link' id='aft5-hide-link-$id'>Hide this (".$record[0]->af_hide_count.")</a> |
 		<a href='#' class='aft5-abuse-link' id='aft5-abuse-link-$id'>Flag as abuse (".$record[0]->af_abuse_count.")</a>
 		</p>
 		</div><hr>";
@@ -236,8 +236,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	private function renderBucket5( $record ) { 
 		$name  = $record[0]->af_user_text;
 		$rv = "$name had this to say about robocop:<ul>";
-		foreach( $record as $answer ) {
-			if( $answer->afi_data_type == 'rating' ) {
+		foreach( $record as $key => $answer ) {
+			if( $answer->afi_data_type == 'rating' && $key != '0' ) {
 				$rv .= "<li>".$answer->afi_name.': '.$answer->aa_response_rating."</li>";
 			}
 		}
