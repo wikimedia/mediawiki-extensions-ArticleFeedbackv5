@@ -728,13 +728,15 @@
 							<p class="instructions-left"><html:msg key="bucket3-rating-question" /></p>\
 							<div class="articleFeedbackv5-rating articleFeedbackv5-rating-new">\
 								<input type="hidden" name="rating" value="0">\
-								<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form">\
-									<div class="articleFeedbackv5-rating-label" rel="1"></div>\
-									<div class="articleFeedbackv5-rating-label" rel="2"></div>\
-									<div class="articleFeedbackv5-rating-label" rel="3"></div>\
-									<div class="articleFeedbackv5-rating-label" rel="4"></div>\
-									<div class="articleFeedbackv5-rating-label" rel="5"></div>\
-									<div class="articleFeedbackv5-rating-clear" original-title="Remove this rating" style="display: block; "></div>\
+								<div class="bucket3-rating">\
+									<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form">\
+										<div class="articleFeedbackv5-rating-label" rel="1"></div>\
+										<div class="articleFeedbackv5-rating-label" rel="2"></div>\
+										<div class="articleFeedbackv5-rating-label" rel="3"></div>\
+										<div class="articleFeedbackv5-rating-label" rel="4"></div>\
+										<div class="articleFeedbackv5-rating-label" rel="5"></div>\
+										<div class="articleFeedbackv5-rating-clear" original-title="Remove this rating"></div>\
+									</div>\
 								</div>\
 								<div style="clear:both;"></div>\
 								<div class="articleFeedbackv5-visibleWith-form">\

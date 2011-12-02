@@ -511,8 +511,11 @@
 
 .articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder {
 	display: inline-block;
-	height: 20px;
-	width: 50px;
+	height: 19px;
+	line-height: 19px;
+	font-size: .9em;
+	min-width: 34px;
+	padding: 0 8px;
 	text-align: center;
 	color: #333;
 	font-weight: bold;
@@ -529,7 +532,7 @@
 .articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder:hover {
 	background: url(images/bg-button-hov.png) repeat-x;
 	cursor: pointer;
-	color: #fff;
+	color: #333;
 }
 
 .articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder-active,
@@ -548,7 +551,7 @@
 	padding: 10px;
 	font-size: 1.0em;
 	font: sans-serif;
-	color: #ddd;
+	color: #999;
 }
 
 .articleFeedbackv5-ui .feedback-text.active {
@@ -585,13 +588,14 @@
 }
 
 .articleFeedbackv5-ui .articleFeedbackv5-submit span {
-	font-size: 16px;
+	font-size: 14px;
+	font-weight: bold;
 	display: inline-block;
-	height: 21px;
+	height: 19px;
 	text-align: center;
 	color: #fff;
-	text-shadow: 1px 1px 1px #000;
-	padding: 0 30px 0 0;
+	/*text-shadow: 1px 1px 1px #000;*/
+	padding: 1px 30px 0 0;
 	background: url(images/bg-submit-icon.png) right center no-repeat;
 }
 
