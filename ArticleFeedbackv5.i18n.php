@@ -9,6 +9,18 @@ $messages = array();
  * @author Arthur Richards
  */
 $messages['en'] = array(
+	'articlefeedbackv5-abuse-saved' => 'Abuse flag saved',
+	'articlefeedbackv5-hide-saved' => 'Hide flag saved',
+	'articlefeedbackv5-error-loading-feedback' => 'Error loading Feedback',
+	'articlefeedbackv5-invalid-feedback-id' => 'Invalid feedback ID',
+	'articlefeedbackv5-invalid-feedback-flag' => 'Invalid feedback flag',
+	'articlefeedbackv5-go-to-article' => 'Go to Article',
+	'articlefeedbackv5-discussion-page' => 'Discussion Page',
+	'articlefeedbackv5-whats-this' => 'What\'s this?',
+	'articlefeedbackv5-invalid-page-id' => 'Invalid page ID',
+	'articlefeedbackv5-percent-found' => '$1% of users found what they were looking for.',
+	'articlefeedbackv5-overall-rating' => 'Rating: $1/5',
+	'articlefeedbackv5-special-title' => '==Feedback==',
 	'articlefeedbackv5' => 'Article feedback dashboard',
 	'articlefeedbackv5-desc' => 'Article feedback',
 

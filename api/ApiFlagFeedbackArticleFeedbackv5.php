@@ -28,7 +28,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 		if ( !isset( $params['feedbackid'] )
 		 || !preg_match( '/^\d+$/', $params['feedbackid'] ) ) {
-			$error = 'Invalid feedback ID format.';
+			$error = wfMsg( 'articlefeedbackv5-invalid-feedback-id' );
 		}
 
 		# load feedback record, bail if we don't have one
@@ -40,13 +40,13 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 		if ( !$record->af_id ) {
 			// no-op, because this is already broken
-			$error = 'Invalid feedback ID.';
+			$error = wfMsg( 'articlefeedbackv5-invalid-feedback-id' );
 		} elseif ( $params['flagtype'] == 'abuse' ) {
 			$update['af_abuse_count'] = $record->af_abuse_count + 1;
 		} elseif ( $params['flagtype'] == 'hide' ) {
 			$update['af_hide_count'] = $record->af_hide_count + 1;
 		} else {
-			$error = 'Invalid flag type.';
+			$error = wfMsg( 'articlefeedbackv5-invalid-feedback-flag' );
 		}
 
 		if ( !$error ) {

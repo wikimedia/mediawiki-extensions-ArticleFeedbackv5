@@ -9,37 +9,35 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	public function execute( $title ) {
 		global $wgOut;
 		$pageId    = $this->pageIdFromTitle( $title );
-
-		if( !$pageId ) { 
-			# Probably this is bad.
-			print "That ain't no good kind of page.";
-			die();
-		}
-
-		$wgOut->setPagetitle( "Feedback for $title" );
-#		$wgOut->addModules( 'jquery.articleFeedbackv5.special' );
-
 		$this->api = $this->getApi();
-		$output    = '';
 		$ratings   = $this->api->fetchOverallRating( $pageId );
 		$found     = isset( $ratings['found'] )  ? $ratings['found']  : null;
 		$rating    = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
 
-		$output .= "[[Wikipedia:$title|Go to Article]]
-			| [[Wikipedia:$title|Discussion page]]
-			| [[Wikipedia:$title|What's this?]]\n";
+		$wgOut->setPagetitle( "Feedback for $title" );
+
+		if( !$pageId ) { 
+			$wgOut->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
+		} else {
+			$wgOut->addWikiText(
+				"[[Wikipedia:$title|"
+				.wfMsg('articlefeedbackv5-go-to-article')."]]
+				| [[Wikipedia:$title|"
+				.wfMsg('articlefeedbackv5-discussion-page')."]]
+				| [[Wikipedia:$title|"
+				.wfMsg('articlefeedbackv5-whats-this')."]]"
+			);
+		}
 
 		if( $found ) {
-			$output .= " $found% of users found what they were looking for. ";
+			$wgOut->addWikiMsg( 'articlefeedbackv5-percent-found', $found );
 		}
 
 		if( $rating ) {
-			$output .= " Rating: $rating/5 ";
+			$wgOut->addWikiMsg( 'articlefeedbackv5-overall-rating', $rating);
 		}
 
-		$output .= "\n== Feedback ==\n";
-
-		$wgOut->addWikiText( $output );
+		$wgOut->addWikiMsg( 'articlefeedbackv5-special-title' );
 
 		$wgOut->addHTML(<<<EOH
 <!-- This is a terrible, terrible hack. I'm taking it out as soon as I stop

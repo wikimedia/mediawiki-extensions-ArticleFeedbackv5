@@ -66,7 +66,7 @@
 			'success': function ( data ) {
 				// TODO check output and error if needed
 				$( '#aft5-' + type + '-link-' + id ).html(
-					type + ' flag saved'
+					mw.msg( 'articlefeedbackv5-' + type + '-saved' )
 				);
 			}
 			// TODO have a callback for failures.
@@ -104,7 +104,7 @@
 					}
 
 				} else {
-					// TODO: have error message
+					$( '#aft5-show-feedback' ).html( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
 			}
 			// TODO: have a callback for failures.

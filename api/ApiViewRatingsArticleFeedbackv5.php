@@ -98,7 +98,6 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 		}
 		$where[$prefix . '_page_id']  = $pageId;
 		$where[] = $prefix . '_rating_id = afi_id';
-#		$where['afi_bucket_id'] = 5; // TODO: Pass this in
 
 		$rows  = $dbr->select(
 			array( 'aft_' . $table, 'aft_article_field' ),
