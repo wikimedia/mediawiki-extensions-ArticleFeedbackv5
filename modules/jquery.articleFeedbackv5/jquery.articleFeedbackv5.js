@@ -1792,7 +1792,7 @@
 					<div class="articleFeedbackv5-confirmation-panel">\
 						<div class="articleFeedbackv5-panel-leftContent">\
 							<div class="articleFeedbackv5-confirmation-text">\
-								<span class=articleFeedbackv5-confirmation-thanks">[Thanks!]</span><span class="articleFeedbackv5-confirmation-follow-up">[Your feedback has been saved.]</span>\
+								<span class="articleFeedbackv5-confirmation-thanks">[Thanks!]</span><span class="articleFeedbackv5-confirmation-follow-up">[Your feedback has been saved.]</span>\
 							</div>\
 							<h3 class="articleFeedbackv5-confirmation-title">Did you know that you can edit this page?</h3>\
 							<p class="articleFeedbackv5-confirmation-wikipediaWorks">[Wikipedia works because anyone can edit its articles. Go ahead, give it a try. Be bold!]</p>\

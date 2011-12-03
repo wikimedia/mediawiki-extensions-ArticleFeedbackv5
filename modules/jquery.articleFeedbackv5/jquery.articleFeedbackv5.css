@@ -778,3 +778,9 @@ height: auto !important;
 .ui-dialog .ui-dialog-titlebar-close.ui-state-hover {
 	border: none !important;
 }
+/*** Confirmation and Call to Action ***/
+.articleFeedbackv5-confirmation-panel {}
+.articleFeedbackv5-confirmation-panel .articleFeedbackv5-confirmation-text {
+	float: left;
+	width: 330px;
+}
