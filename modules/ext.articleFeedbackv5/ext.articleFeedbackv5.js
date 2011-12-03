@@ -80,23 +80,22 @@ if ( $aftDiv.articleFeedbackv5( 'inDebug' ) ) {
 
 /* Add section links */
 if ( '1' == linkBucket ) {
-	$( 'span.editsection' ).append(
-		'&nbsp;[' +
-		'<a href="#mw-articlefeedbackv5" class="articleFeedbackv5-sectionlink">' +
-			mw.msg( 'articlefeedbackv5-section-linktext' ) + '</a>' +
-		']'
-	);
-	$( 'span.editsection a.articleFeedbackv5-sectionlink' )
+	var $wrp = $( '<span class="articleFeedbackv5-sectionlink-wrap"/>' )
+		.html( '&nbsp;[<a href="#mw-articlefeedbackv5" class="articleFeedbackv5-sectionlink"></a>]' );
+	$wrp.find( 'a.articleFeedbackv5-sectionlink' )
 		.data( 'linkId', 1 )
+		.text( mw.msg( 'articlefeedbackv5-section-linktext' ) )
 		.click( function ( e ) {
 			e.preventDefault();
 			clickFeedbackLink( $( e.target ) );
 		} );
+	$( 'span.editsection' ).append( $wrp );
+	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $wrp );
 }
 
 /* Add titlebar link */
 if ( '2' == linkBucket ) {
-	$( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-titlebarlink" />' )
+	var $tlk = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-titlebarlink" />' )
 		.data( 'linkId', 2 )
 		.text( mw.msg( 'articlefeedbackv5-titlebar-linktext' ) )
 		.click( function ( e ) {
@@ -104,6 +103,7 @@ if ( '2' == linkBucket ) {
 			clickFeedbackLink( $( e.target ) );
 		} )
 		.insertBefore( $aftDiv );
+	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $tlk );
 }
 
 /* Add toolbox link */

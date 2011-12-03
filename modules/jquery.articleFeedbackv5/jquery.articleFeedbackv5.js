@@ -56,10 +56,9 @@
 	// {{{ Properties
 
 	/**
-	 * Whether we're in debug mode.  We'll pull the config value on load, but
-	 * default it to false for now.
+	 * Are we in debug mode?
 	 */
-	$.articleFeedbackv5.debug = false;
+	$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' ) ? true : false;
 
 	/**
 	 * Has the form been loaded yet?
@@ -131,6 +130,11 @@
 	 * The revision ID
 	 */
 	$.articleFeedbackv5.revisionId = mw.config.get( 'wgCurRevisionId' );
+
+	/**
+	 * Whether we're showing a form, a CTA, or nothing
+	 */
+	$.articleFeedbackv5.nowShowing = 'none';
 
 	/**
 	 * The feedback ID (collected on submit, for use in tracking edits)
@@ -1686,78 +1690,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 			 * submit
 			 */
 			onSubmit: function () {
-
 				$.articleFeedbackv5.currentBucket().loadAggregate = true;
-
-/////////////////////////////////////////////////////////////////////////////////
-// TODO: Email capture
-/////////////////////////////////////////////////////////////////////////////////
-
-//		'submit': function () {
-//
-//			// Build data from form values for 'action=emailcapture'
-//			// Ignore if email was invalid
-//			if ( context.$ui.find( '.articleFeedback-helpimprove-email.valid' ).length
-//				// Ignore if email field was empty (it's optional)
-//				 && !$.isEmpty( context.$ui.find( '.articleFeedback-helpimprove-email' ).val() )
-//				 // Ignore if checkbox was unchecked (ie. user can enter and then decide to uncheck,
-//				 // field fades out, then we shouldn't submit)
-//				 && context.$ui.find('.articleFeedback-helpimprove input:checked' ).length
-//			) {
-//				$.ajax( {
-//					'url': mw.config.get( 'wgScriptPath' ) + '/api.php',
-//					'type': 'POST',
-//					'dataType': 'json',
-//					'context': context,
-//					'data': {
-//						'email': context.$ui.find( '.articleFeedback-helpimprove-email' ).val(),
-//						'info': $.toJSON( {
-//							'ratingData': data,
-//							'pageTitle': mw.config.get( 'wgTitle' ),
-//							'pageCategories': mw.config.get( 'wgCategories' )
-//						} ),
-//						'action': 'emailcapture',
-//						'format': 'json'
-//					},
-//					'success': function ( data ) {
-//						var context = this;
-//
-//						if ( 'error' in data ) {
-//							mw.log( 'EmailCapture: Form submission error' );
-//							mw.log( data.error );
-//							updateMailValidityLabel( 'triggererror', context );
-//
-//						} else {
-//							// Hide helpimprove-email for when user returns to Rate-view
-//							// without reloading page
-//							context.$ui.find( '.articleFeedback-helpimprove' ).hide();
-//
-//							// Set cookie if it was successful, so it won't be asked again
-//							$.cookie(
-//								prefix( 'helpimprove-email' ),
-//								// Path must be set so it will be remembered
-//								// for all article (not just current level)
-//								// @XXX: '/' may be too wide (multi-wiki domains)
-//								'hide', { 'expires': 30, 'path': '/' }
-//							);
-//						}
-//					}
-//				} );
-//
-//			// If something was invalid, reset the helpimprove-email part of the form.
-//			// When user returns from submit, it will be clean
-//			} else {
-//				context.$ui
-//					.find( '.articleFeedback-helpimprove' )
-//						.find( 'input:checkbox' )
-//							.removeAttr( 'checked' )
-//							.end()
-//						.find( '.articleFeedback-helpimprove-email' )
-//							.val( '' )
-//							.removeClass( 'valid invalid' );
-//			}
-//		},
-
 			}
 
 			// }}}
@@ -1888,6 +1821,8 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 				$.articleFeedbackv5.loadForm();
 			}
 		} );
+		// Keep track of links that must be removed after a successful submission
+		$.articleFeedbackv5.$toRemove = $( [] );
 	};
 
 	// }}}
@@ -2140,6 +2075,8 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 		if ( 'afterBuild' in bucket ) {
 			bucket.afterBuild();
 		}
+
+		$.articleFeedbackv5.nowShowing = 'form';
 	};
 
 	// }}}
@@ -2158,11 +2095,6 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 		// Are we allowed to do this?
 		if ( !$.articleFeedbackv5.submissionEnabled ) {
 			return false;
-		}
-
-		// For anonymous users, keep a cookie around so we know they've rated before
-		if ( mw.user.anonymous() ) {
-			$.cookie( $.articleFeedbackv5.prefix( 'rated' ), 'true', { 'expires': 365, 'path': '/' } );
 		}
 
 		// Get the form data
@@ -2212,10 +2144,14 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
 					$.articleFeedbackv5.ctaId = data.articlefeedbackv5.cta_id;
 					$.articleFeedbackv5.unlockForm();
-					if ( 'onSuccess' in bucket ) {
-						bucket.onSuccess( formdata );
-					}
 					$.articleFeedbackv5.showCTA();
+					// Drop a cookie for a successful submit
+					$.cookie( $.articleFeedbackv5.prefix( 'submitted' ), 'true', { 'expires': 365, 'path': '/' } );
+					// Clear out anything that needs removing (usually feedback links)
+					// Comment this out and uncomment the clear on dialog close to switch to
+					// the feedback link replacing the form. _SWITCH_CLEAR_
+					$.articleFeedbackv5.$toRemove.remove();
+					$.articleFeedbackv5.$toRemove = $( [] );
 				} else {
 					var msg;
 					if ( 'error' in data ) {
@@ -2269,6 +2205,27 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 		}
 		$.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).empty();
 		$.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).append( $block );
+		$.articleFeedbackv5.nowShowing = 'cta';
+	};
+
+	// }}}
+	// {{{ clear
+
+	/**
+	 * Clears out the panel
+	 */
+	$.articleFeedbackv5.clear = function () {
+
+		$.articleFeedbackv5.isLoaded = false;
+		$.articleFeedbackv5.inDialog = false;
+		$.articleFeedbackv5.submissionEnabled = false;
+		$.articleFeedbackv5.feedbackId = 0;
+
+		$.articleFeedbackv5.$holder.empty();
+		$.articleFeedbackv5.$dialog.remove();
+
+
+		$.articleFeedbackv5.nowShowing = 'none';
 	};
 
 	// }}}
@@ -2331,6 +2288,20 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 	// }}}
 	// {{{ Outside interaction methods
 
+	// {{{ addToRemovalQueue
+
+	/**
+	 * Adds an element (usually a feedback link) to the collection that will be
+	 * removed after a successful submission
+	 *
+	 * @param $el Element the element
+	 */
+	$.articleFeedbackv5.addToRemovalQueue = function ( $el ) {
+		$.articleFeedbackv5.$toRemove = $.articleFeedbackv5.$toRemove.add( $el );
+		console.log( $.articleFeedbackv5.$toRemove );
+	};
+
+	// }}}
 	// {{{ setLinkId
 
 	/**
@@ -2370,6 +2341,18 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 	};
 
 	// }}}
+	// {{{ getShowing
+
+	/**
+	 * Returns which is showing: the form, the cta, or nothing
+	 *
+	 * @return string "form", "cta", or "none"
+	 */
+	$.articleFeedbackv5.getShowing = function () {
+		return $.articleFeedbackv5.nowShowing;
+	};
+
+	// }}}
 	// {{{ openAsModal
 
 	/**
@@ -2378,6 +2361,11 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 	 * @param $link Element the feedback link
 	 */
 	$.articleFeedbackv5.openAsModal = function ( $link ) {
+		if ( 'cta' == $.articleFeedbackv5.nowShowing ) {
+			// Uncomment here and comment out link removal to switch to the feedback
+			// link replacing the form.  _SWITCH_CLEAR_
+			// $.articleFeedbackv5.clear();
+		}
 		if ( !$.articleFeedbackv5.isLoaded ) {
 			$.articleFeedbackv5.loadForm();
 		}
@@ -2416,6 +2404,11 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-buffer' ).append( $inner );
 			$.articleFeedbackv5.$holder.show();
 			$.articleFeedbackv5.inDialog = false;
+			if ( 'cta' == $.articleFeedbackv5.nowShowing ) {
+				// Uncomment here and comment out link removal to switch to the feedback
+				// link replacing the form.  _SWITCH_CLEAR_
+				// $.articleFeedbackv5.clear();
+			}
 		}
 	};
 
@@ -2435,18 +2428,28 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 $.fn.articleFeedbackv5 = function ( opts, arg ) {
 	if ( typeof ( opts ) == 'undefined' || typeof ( opts ) == 'object' ) {
 		$.articleFeedbackv5.init( $( this ), opts );
-	} else if ( 'setLinkId' === opts ) {
-		$.articleFeedbackv5.setLinkId( arg );
-	} else if ( 'getBucketId' === opts ) {
-		return $.articleFeedbackv5.getBucketId();
-	} else if ( 'inDebug' === opts ) {
-		return $.articleFeedbackv5.inDebug();
-	} else if ( 'prefix' === opts ) {
-		return $.articleFeedbackv5.prefix( arg );
-	} else if ( 'openAsModal' === opts ) {
-		$.articleFeedbackv5.openAsModal( arg );
-	} else if ( 'closeAsModal' === opts ) {
-		$.articleFeedbackv5.closeAsModal();
+		return $( this );
+	}
+	var public = {
+		setLinkId: { args: 1, ret: false },
+		getBucketId: { args: 0, ret: true },
+		inDebug: { args: 0, ret: true },
+		nowShowing: { args: 0, ret: true },
+		prefix: { args: 1, ret: true },
+		addToRemovalQueue: { args: 1, ret: false },
+		openAsModal: { args: 1, ret: false },
+		closeAsModal: { args: 0, ret: true }
+	};
+	if ( opts in public ) {
+		var r;
+		if ( 1 == public[opts].args ) {
+			r = $.articleFeedbackv5[opts]( arg );
+		} else if ( 0 == public[opts].args ) {
+			r = $.articleFeedbackv5[opts]();
+		}
+		if ( public[opts].ret) {
+			return r;
+		}
 	}
 	return $( this );
 };
