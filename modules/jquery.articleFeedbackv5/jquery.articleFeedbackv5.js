@@ -1789,6 +1789,7 @@
 				 * The template for the whole block
 				 */
 				block: '\
+					<div class="clear"></div>
 					<div class="articleFeedbackv5-confirmation-panel">\
 						<div class="articleFeedbackv5-panel-leftContent">\
 							<div class="articleFeedbackv5-confirmation-text">\
