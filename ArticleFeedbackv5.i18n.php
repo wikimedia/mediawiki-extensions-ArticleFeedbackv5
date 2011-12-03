@@ -91,6 +91,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket4-teaser-line2' => 'Go ahead, give it a try. Be bold!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Learn how to edit',
 	'articlefeedbackv5-bucket4-form-submit' => 'Edit this page',
+	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Wikipedia wants to know what you think.  Help improve this page by becoming an editor.',
 	/* Option 5 (just like AFTv4, but ported to work with v5) */
 	'articlefeedbackv5-bucket5-form-switch-label' => 'Rate this page',
 	'articlefeedbackv5-bucket5-form-panel-title' => 'Rate this page',
@@ -157,7 +158,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-section-linktext' => 'feedback',
 	'articlefeedbackv5-titlebar-linktext' => 'Feedback',
 	'articlefeedbackv5-toolbox-linktext' => 'Rate this page',
-
 
 	/* --- copied from AFTv4 and possibly not used --- */
 	/* ArticleFeedback survey */
@@ -294,6 +294,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-bucket4-teaser-line2' => 'The second line of the teaser text for option 4; should be a playful call to give editing a try.',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'The text for the "Learn how to edit" link',
 	'articlefeedbackv5-bucket4-form-submit' => 'The text for the big edit button',
+	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Overrides "articlefeedbackv5-help-tooltip-info" for option 4; DO NOT TRANSLATE: English text is not finalized.',
 	/* Option 5 (just like AFTv4, but ported to work with v5) */
 	'articlefeedbackv5-bucket5-form-panel-explanation' => '{{Identical|What is this}}',
 	'articlefeedbackv5-bucket5-form-panel-explanation-link' => 'Do not translate "Project:". Also translate the "ArticleFeedback" special page name at [[Special:AdvancedTranslate]].',

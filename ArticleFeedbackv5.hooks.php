@@ -83,6 +83,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-bucket4-teaser-line2',
 				'articlefeedbackv5-bucket4-learn-to-edit',
 				'articlefeedbackv5-bucket4-form-submit',
+				'articlefeedbackv5-bucket4-help-tooltip-info',
 				'articlefeedbackv5-bucket5-form-switch-label',
 				'articlefeedbackv5-bucket5-form-panel-title',
 				'articlefeedbackv5-bucket5-form-panel-explanation',

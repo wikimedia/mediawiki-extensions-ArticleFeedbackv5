@@ -175,7 +175,7 @@
 				<div class="tooltip-repeat">\
 					<h3><html:msg key="help-tooltip-title" /></h3><span class="articleFeedbackv5-tooltip-close">X</span>\
 					<div class="clear"></div>\
-					<p><html:msg key="help-tooltip-info" /></p>\
+					<p class="articleFeedbackv5-tooltip-info"><html:msg key="help-tooltip-info" /></p>\
 					<p><a target="_blank" class="articleFeedbackv5-tooltip-link"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
 				</div>\
 				<div class="tooltip-bottom"></div>\
@@ -1113,6 +1113,21 @@
 					.addClass( 'ui-button-blue' )
 
 				return $block;
+			},
+
+			// }}}
+			// {{{ afterBuild
+
+			/**
+			 * Handles any setup that has to be done once the markup is in the
+			 * holder
+			 */
+			afterBuild: function () {
+				// Set a custom message
+				$.articleFeedbackv5.$holder
+					.add( $.articleFeedbackv5.$dialog)
+					.find( '.articleFeedbackv5-tooltip-info' )
+					.text( mw.msg( 'articlefeedbackv5-bucket4-help-tooltip-info' ) );
 			}
 
 			// }}}
@@ -1487,6 +1502,20 @@
 						$.articleFeedbackv5.currentBucket().updateRating( $rating );
 					} );
 
+			},
+
+			// }}}
+			// {{{ afterBuild
+
+			/**
+			 * Handles any setup that has to be done once the markup is in the
+			 * holder
+			 */
+			afterBuild: function () {
+				// Drop the tooltip and trigger
+				$.articleFeedbackv5.$holder
+					.add( $.articleFeedbackv5.$dialog)
+					.find( '.articleFeedbackv5-tooltip-trigger' ).hide();
 			},
 
 			// }}}
@@ -2056,14 +2085,9 @@
 		$wrapper.find( '.articleFeedbackv5-tooltip-link' )
 			.attr( 'href', mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' ) );
 		$wrapper.find( '.articleFeedbackv5-tooltip' ).hide();
-
-		if ( $.articleFeedbackv5.bucketId == 5 ) {
-			$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).hide();
-		} else { 
-			$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
-				$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
-			} );
-		}
+		$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
+			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
+		} );
 
 		$wrapper.find( '.articleFeedbackv5-tooltip-close' ).click( function () {
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
