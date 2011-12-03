@@ -1039,7 +1039,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 				block: '\
 					<div class="articleFeedbackv5-bucket4">\
 						<div class="form-row articleFeedbackv5-bucket4-toggle">\
-							<p class="instructions-left"><strong><html:msg key="bucket4-subhead"></strong></p>\
+							<p class="sub-header"><strong><html:msg key="bucket4-subhead"></strong></p>\
 							<p class="instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
 							<html:msg key="bucket4-teaser-line2" /></p>\
 						</div>\

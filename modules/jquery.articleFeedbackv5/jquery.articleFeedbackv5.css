@@ -824,7 +824,7 @@ height: auto !important;
 	-webkit-box-shadow: -2px 2px 1px #999;
 	box-shadow: -2px 2px 1px #999;
 }
-.bucket4 .articleFeedbackv5-submit,
+/*.articleFeedbackv5-bucket4 .articleFeedbackv5-submit,*/
 .articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link {
 	float: right;
 	position: relative;
@@ -832,7 +832,6 @@ height: auto !important;
 	margin: 105px 0 0 !important;
 }
 
-.bucket4 .articleFeedbackv5-submit,
 .articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link span{
 	font-size: 14px;
 	font-weight: bold;
@@ -856,4 +855,15 @@ height: auto !important;
 .articleFeedbackv5-bucket4 .articleFeedbackv5-disclosure p {
 	font-size: 1em;
 	font-weight: bold;
+}
+.articleFeedbackv5-bucket4 .sub-header {
+	font-size: 1.1em;
+	margin: 0 0 15px;
+}
+.articleFeedbackv5-bucket4 .instructions-left {
+	font-size: 1em;
+	margin: 0 0 15px;
+}
+.articleFeedbackv5-bucket4 .articleFeedbackv5-submit span {
+	margin: 8px 0 0;
 }
