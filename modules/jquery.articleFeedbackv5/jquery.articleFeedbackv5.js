@@ -358,7 +358,15 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 							$(this).addClass( 'active' );
 						}
 
-					})
+					} )
+					.keyup ( function () {
+						if( $( this ).val().length > 0 ) {
+							$.articleFeedbackv5.enableSubmission( true );
+//						} else {
+//							$.articleFeedbackv5.enableSubmission( false );
+
+						}
+					} )
 					.blur( function () {
 						var def_msg = '';
 						var val = $.articleFeedbackv5.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).val();
@@ -601,6 +609,14 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 							$(this).addClass( 'active' );
 						}
 					})
+					.keyup ( function () {
+						if( $( this ).val().length > 0 ) {
+							$.articleFeedbackv5.enableSubmission( true );
+//						} else {
+//							$.articleFeedbackv5.enableSubmission( false );
+
+						}
+					} )
 					.blur( function () {
 						var key = $.articleFeedbackv5.find( '.articleFeedbackv5-tags input[checked]' ).val();
 						var def_msg = $.articleFeedbackv5.currentBucket().commentDefault[key];
@@ -910,6 +926,14 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 							$(this).addClass( 'active' );
 						}
 					})
+					.keyup ( function () {
+						if( $( this ).val().length > 0 ) {
+							$.articleFeedbackv5.enableSubmission( true );
+//						} else {
+//							$.articleFeedbackv5.enableSubmission( false );
+
+						}
+					} )
 					.blur( function () {
 						var def_msg = mw.msg( 'articlefeedbackv5-bucket3-comment-default' );
 						if ( $( this ).val() == '' ) {
