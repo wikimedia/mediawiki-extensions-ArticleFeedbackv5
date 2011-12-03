@@ -244,7 +244,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
 							<p class="articlefeedbackv5-transparency-terms"></p>\
 						</div>\
-						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket1-form-submit" /></button>\
+						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket1-form-submit" /></button>\
 						<div class="clear"></div>\
 					</form>\
 					'
@@ -470,7 +470,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
 							<p class="articlefeedbackv5-transparency-terms"></p>\
 						</div>\
-						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled">\
+						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn">\
 						<html:msg key="bucket2-form-submit" />\
 						</button>\
 						<div class="clear"></div>\
@@ -761,7 +761,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
 							<p class="articlefeedbackv5-transparency-terms"></p>\
 						</div>\
-						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled"><html:msg key="bucket3-form-submit" /></button>\
+						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket3-form-submit" /></button>\
 						<div class="clear"></div>\
 					</form>\
 					'
@@ -1019,7 +1019,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 						<div class="articleFeedbackv5-disclosure">\
 							<p><a class="articleFeedbackv5-learn-to-edit" target="_blank"><html:msg key="bucket4-learn-to-edit"> &gt;&gt;</a></p>\
 						</div>\
-						<a class="articleFeedbackv5-submit"><html:msg key="bucket4-form-submit" /></a>\
+						<a class="articleFeedbackv5-submit" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket4-form-submit" /></a>\
 						<div class="clear"></div>\
 					</div>\
 					'
@@ -1151,7 +1151,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 							</div>\
 							<div style="clear:both;"></div>\
 						</div>\
-						<button class="articleFeedbackv5-submit articleFeedbackv5-visibleWith-form" type="submit" disabled="disabled"><html:msg key="bucket5-form-panel-submit" /></button>\
+						<button class="articleFeedbackv5-submit articleFeedbackv5-visibleWith-form" id="articleFeedbackv5-submit-bttn5" type="submit" disabled="disabled"><html:msg key="bucket5-form-panel-submit" /></button>\
 						<div class="articleFeedbackv5-pending articleFeedbackv5-visibleWith-form"><span><html:msg key="bucket5-form-panel-pending" /></span></div>\
 						<div style="clear:both;"></div>\
 						<div class="articleFeedbackv5-notices articleFeedbackv5-visibleWith-form">\
@@ -2034,6 +2034,8 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 			bucket.enableSubmission( state );
 		}
 		$.articleFeedbackv5.submissionEnabled = state;
+		$( '#articleFeedbackv5-submit-bttn span' ).html( mw.msg( 'articlefeedbackv5-bucket1-form-submit' ) );
+		$( '#articleFeedbackv5-submit-bttn5 span' ).html( mw.msg( 'articlefeedbackv5-bucket5-form-panel-submit' ) );
 	};
 
 	// }}}
