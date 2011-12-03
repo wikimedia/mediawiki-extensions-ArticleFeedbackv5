@@ -1,5 +1,4 @@
-<?php
-$messages = array();
+<?php $messages = array();
 
 /** English
  * @author Nimish Gautam
@@ -17,6 +16,11 @@ $messages['en'] = array(
 	'articlefeedbackv5-cta1-learn-how' => 'Learn how to edit',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Edit this page',
 
+	// error messages
+	'articlefeedbackv5-error-email' => 'That email address is not valid',
+	'articlefeedbackv5-error-validation' => 'Validation error',
+	'articlefeedbackv5-error-unknown' => 'Unknown error',
+	'articlefeedbackv5-error-submit' => 'Form submission error.',
 
 	// Article Feedback special page.
 	'articlefeedbackv5-form-optionid' => 'Option $1',

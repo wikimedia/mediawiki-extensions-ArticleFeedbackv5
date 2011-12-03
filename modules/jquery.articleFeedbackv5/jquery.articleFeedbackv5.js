@@ -417,8 +417,8 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 				if ( '_api' in error ) {
 					$.articleFeedbackv5.markShowstopperError( error._api.info );
 				} else {
-					alert( 'Validation error' );
-					mw.log( 'Validation error' );
+					alert( mw.msg( 'articlefeedbackv5-error-validation' ) );
+					mw.log( mw.msg( 'articlefeedbackv5-error-validation' ) );
 				}
 				console.log( error );
 			}
@@ -707,8 +707,8 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 				if ( '_api' in error ) {
 					$.articleFeedbackv5.markShowstopperError( error._api.info );
 				} else {
-					alert( 'Validation error' );
-					mw.log( 'Validation error' );
+					alert( mw.msg( 'articlefeedbackv5-error-validation' ) );
+					mw.log( mw.msg( 'articlefeedbackv5-error-validation' ) );
 				}
 				console.log( error );
 			}
@@ -985,8 +985,8 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 				if ( '_api' in error ) {
 					$.articleFeedbackv5.markShowstopperError( error._api.info );
 				} else {
-					alert( 'Validation error' );
-					mw.log( 'Validation error' );
+					alert( mw.msg( 'articlefeedbackv5-error-validation' ) );
+					mw.log( mw.msg( 'articlefeedbackv5-error-validation' ) );
 				}
 				console.log( error );
 			}
@@ -1559,8 +1559,8 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 							|| !( 'articlefeedbackv5-view-ratings' in data.query )
 							|| !( 'rollup' in data.query['articlefeedbackv5-view-ratings'] )
 						) {
-							mw.log( 'ArticleFeedback invalid response error.' );
-							var msg = 'ArticleFeedback invalid response error.';
+							mw.log( mw.msg ( 'articlefeedbackv5-error-response' ) );
+							var msg = mw.msg ( 'articlefeedbackv5-error-response' );
 							if ( 'error' in data && 'info' in data.error ) {
 								msg = data.error.info;
 							} else {
@@ -1648,7 +1648,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 				if ( $.articleFeedbackv5.find( '.articleFeedbackv5-helpimprove input:checked' ).length > 0 ) {
 					var mail = $.articleFeedbackv5.find( '.articleFeedbackv5-helpimprove-email' ).val();
 					if ( !mw.util.validateEmail( mail ) ) {
-						error.helpimprove_email = 'That email address is not valid';
+						error.helpimprove_email = mw.msg( 'articlefeedbackv5-error-email' );
 						ok = false;
 					}
 				}
@@ -1676,8 +1676,8 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 							.addClass( 'invalid' )
 							.removeClass( 'valid' );
 					}
-					alert( 'Validation error' );
-					mw.log( 'Validation error' );
+					alert( mw.msg( 'articlefeedbackv5-error-validation' ) );
+					mw.log( mw.msg( 'articlefeedbackv5-error-validation' ) );
 				}
 				console.log( error );
 			},
@@ -2157,19 +2157,19 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 					if ( 'error' in data ) {
 						msg = data.error;
 					} else {
-						msg = 'Unknown error';
+						msg = mw.msg( 'articlefeedbackv5-error-unknown' );
 					}
 					if ( 'markFormError' in bucket ) {
 						bucket.markFormError( { _api : msg } );
 					} else {
-						alert( 'ArticleFeedback: Form submission error : ' + msg );
+						alert( mw.msg( 'articlefeedbackv5-error-submit' ) );
 					}
 					$.articleFeedbackv5.unlockForm();
 				}
 			},
 			'error': function () {
-				mw.log( 'Form submission error' );
-				alert( 'ArticleFeedback: Form submission error' );
+				mw.log( mw.msg( 'articlefeedbackv5-error-submit' ) );
+				alert( mw.msg( 'articlefeedbackv5-error-submit' ) );
 				$.articleFeedbackv5.unlockForm();
 			}
 		} );
