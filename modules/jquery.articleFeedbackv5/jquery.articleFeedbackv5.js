@@ -72,6 +72,11 @@
 	$.articleFeedbackv5.inDialog = false;
 
 	/**
+	 * Is form submission enabled?
+	 */
+	$.articleFeedbackv5.submissionEnabled = false;
+
+	/**
 	 * The bucket ID is the variation of the Article Feedback form chosen for this
 	 * particualar user.  It set at load time, but if all else fails, default to
 	 * Bucket 6 (no form).
@@ -1480,6 +1485,7 @@
 				} else {
 					$.articleFeedbackv5.find( '.articleFeedbackv5-pending span' ).hide();
 				}
+				$.articleFeedbackv5.submissionEnabled = state;
 			},
 
 			// }}}
@@ -2026,6 +2032,7 @@
 		if ( 'enableSubmission' in bucket ) {
 			bucket.enableSubmission( state );
 		}
+		$.articleFeedbackv5.submissionEnabled = state;
 	};
 
 	// }}}
@@ -2144,6 +2151,11 @@
 	 * object.
 	 */
 	$.articleFeedbackv5.submitForm = function () {
+
+		// Are we allowed to do this?
+		if ( !$.articleFeedbackv5.submissionEnabled ) {
+			return false;
+		}
 
 		// For anonymous users, keep a cookie around so we know they've rated before
 		if ( mw.user.anonymous() ) {
