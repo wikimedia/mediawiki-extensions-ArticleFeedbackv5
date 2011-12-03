@@ -2015,7 +2015,11 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 
 		// Wrap it in a panel
 		var $wrapper = $( $.articleFeedbackv5.templates.panelOuter );
-		$wrapper.find( '.articleFeedbackv5-ui' ).append( $block );
+		$wrapper.find( '.articleFeedbackv5-ui' )
+			.addClass( '.articleFeedbackv5-option-' + $.articleFeedbackv5.bucketId )
+			.append( $block );
+
+		// Set the title
 		if ( 'getTitle' in bucket ) {
 			$wrapper.find( '.articleFeedbackv5-title' ).html( bucket.getTitle() );
 		}
