@@ -54,18 +54,13 @@ var linkBucket = function () {
 	// 3. Random bucketing
 	var displayBucket = $aftDiv.articleFeedbackv5( 'getBucketId' );
 	if ( '5' == displayBucket || '0' == displayBucket ) {
-		console.log( '5 or 0');
 		return '0';
 	}
 	var knownBuckets = { '0': true, '1': true, '2': true };
 	var requested = mw.util.getParamValue( 'aft_link' );
 	if ( $aftDiv.articleFeedbackv5( 'inDebug' ) && requested in knownBuckets ) {
-		console.log( 'requested ' + requested );
 		return requested;
 	} else {
-		console.log( 'bucketing' );
-		console.log( mw.config.get( 'wgArticleFeedbackv5LinkBuckets' ) );
-		console.log( mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' ) );
 		var bucketName = mw.user.bucket( 'ext.articleFeedbackv5-links',
 			mw.config.get( 'wgArticleFeedbackv5LinkBuckets' )
 		);
