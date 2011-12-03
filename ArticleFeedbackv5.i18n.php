@@ -17,10 +17,12 @@ $messages['en'] = array(
 	'articlefeedbackv5-cta1-edit-linktext' => 'Edit this page',
 
 	// error messages
+	'articlefeedbackv5-error' => 'An error has occured. Please try again later.',
 	'articlefeedbackv5-error-email' => 'That email address is not valid',
 	'articlefeedbackv5-error-validation' => 'Validation error',
 	'articlefeedbackv5-error-unknown' => 'Unknown error',
 	'articlefeedbackv5-error-submit' => 'Form submission error.',
+	'articlefeedbackv5-error-nofeedback' => 'Please enter your feedback.',
 
 	// Article Feedback special page.
 	'articlefeedbackv5-form-optionid' => 'Option $1',
@@ -143,7 +145,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket5-wellwritten-tooltip-4' => 'Good clarity',
 	'articlefeedbackv5-bucket5-wellwritten-tooltip-5' => 'Exceptional clarity',
 	/* Messages shared by all displays */
-	'articlefeedbackv5-error' => 'An error has occured. Please try again later.',
 	'articlefeedbackv5-shared-on-feedback' => 'Your comment will be shared on this $1.',
 	'articlefeedbackv5-shared-on-feedback-linktext' => 'feedback page',
 	'articlefeedbackv5-help-tooltip-title' => 'What\'s this?',
@@ -304,6 +305,8 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 This message is used in JavaScript by module 'jquery.articleFeedback'.
 $1 is an integer, and the rating count.",
 	/* Messages shared by all displays */
+	'articlefeedbackv5-error' => 'This error message will be displayed in a grey box replacing the form if there was an unrecoverable error.',
+	'articlefeedbackv5-error-nofeedback' => 'This error message will be displayed above the form (but below the title) if the user has attempted to submit a blank form.',
 	'articlefeedbackv5-shared-on-feedback' => 'This is the top line of the small text that goes beside the submit button and lets the user know that their comment will be posted on the feedback page.  $1 will hold the link to the feedback page.',
 	'articlefeedbackv5-shared-on-feedback-linktext' => 'The text for the feedback page link (see "articlefeedbackv5-shared-on-feedback")',
 	'articlefeedbackv5-help-tooltip-title' => 'The title for the help tooltip',

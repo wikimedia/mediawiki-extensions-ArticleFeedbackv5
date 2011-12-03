@@ -45,6 +45,7 @@ class ArticleFeedbackv5Hooks {
 			'messages' => array(
 				'articlefeedbackv5-error-email',
 				'articlefeedbackv5-error-validation',
+				'articlefeedbackv5-error-nofeedback',
 				'articlefeedbackv5-error-unknown',
 				'articlefeedbackv5-error-submit',
 				'articlefeedbackv5-cta1-thanks',

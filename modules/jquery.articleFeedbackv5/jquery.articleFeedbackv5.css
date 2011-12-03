@@ -871,3 +871,9 @@ height: auto !important;
 #articleFeedbackv5-bucket5 .articleFeedbackv5-submit {
 	float: right;
 }
+
+/*** Top error ***/
+.articleFeedbackv5-top-error {
+	color: #8b0000;
+	margin-bottom: 5px;
+}

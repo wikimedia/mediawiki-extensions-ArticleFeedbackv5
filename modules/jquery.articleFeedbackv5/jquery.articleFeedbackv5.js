@@ -176,9 +176,7 @@
 					<h3><html:msg key="help-tooltip-title" /></h3><span class="articleFeedbackv5-tooltip-close">X</span>\
 					<div class="clear"></div>\
 					<p><html:msg key="help-tooltip-info" /></p>\
-					<p><a target="_blank" href="' + 
-mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
-+ '"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
+					<p><a target="_blank" class="articleFeedbackv5-tooltip-link"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
 				</div>\
 				<div class="tooltip-bottom"></div>\
 			</div>\
@@ -223,6 +221,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 				 */
 				block: '\
 					<form>\
+						<div class="articleFeedbackv5-top-error"></div>\
 						<div class="form-row articleFeedbackv5-bucket1-toggle">\
 							<p class="instructions-left"><html:msg key="bucket1-question-toggle" /></p>\
 							<div class="buttons">\
@@ -402,7 +401,11 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 			getFormData: function () {
 				var data = {};
 				var $check = $.articleFeedbackv5.find( '.articleFeedbackv5-bucket1-toggle input[checked]' );
-				data.found = $check.val() == 'yes' ?  1 : 0;
+				if ( $check.val() == 'yes' ) {
+					data.found = 1;
+				} else if ( $check.val() == 'no' ) {
+					data.found = 0;
+				}
 				data.comment = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' ).val();
 				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
 				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-comment-no' );
@@ -413,21 +416,24 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 			},
 
 			// }}}
-			// {{{ markFormError
+			// {{{ localValidation
 
 			/**
-			 * Marks any errors on the form
+			 * Performs any local validation
 			 *
-			 * @param object error errors, indexed by field name
+			 * @param  object formdata the form data
+			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
-			markFormError: function ( error ) {
-				if ( '_api' in error ) {
-					$.articleFeedbackv5.markShowstopperError( error._api.info );
-				} else {
-					alert( mw.msg( 'articlefeedbackv5-error-validation' ) );
-					mw.log( mw.msg( 'articlefeedbackv5-error-validation' ) );
+			localValidation: function ( formdata ) {
+				var error = {};
+				var ok = true;
+				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
+					&& !( 'found' in formdata ) ) {
+					$.articleFeedbackv5.enableSubmission( false );
+					error.nofeedback = mw.msg( 'articlefeedbackv5-error-nofeedback' );
+					ok = false;
 				}
-				console.log( error );
+				return ok ? false : error;
 			}
 
 			// }}}
@@ -467,6 +473,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 				 */
 				block: '\
 					<form>\
+						<div class="articleFeedbackv5-top-error"></div>\
 						<div>\
 							<div class="articleFeedbackv5-tags">\
 								<ul></ul>\
@@ -711,21 +718,23 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 			},
 
 			// }}}
-			// {{{ markFormError
+			// {{{ localValidation
 
 			/**
-			 * Marks any errors on the form
+			 * Performs any local validation
 			 *
-			 * @param object error errors, indexed by field name
+			 * @param  object formdata the form data
+			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
-			markFormError: function ( error ) {
-				if ( '_api' in error ) {
-					$.articleFeedbackv5.markShowstopperError( error._api.info );
-				} else {
-					alert( mw.msg( 'articlefeedbackv5-error-validation' ) );
-					mw.log( mw.msg( 'articlefeedbackv5-error-validation' ) );
+			localValidation: function ( formdata ) {
+				var error = {};
+				var ok = true;
+				if ( !( 'comment' in formdata ) || formdata.comment == '' ) {
+					$.articleFeedbackv5.enableSubmission( false );
+					error.nofeedback = mw.msg( 'articlefeedbackv5-error-nofeedback' );
+					ok = false;
 				}
-				console.log( error );
+				return ok ? false : error;
 			}
 
 			// }}}
@@ -752,6 +761,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 				 */
 				block: '\
 					<form>\
+						<div class="articleFeedbackv5-top-error"></div>\
 						<div>\
 							<p class="instructions-left"><html:msg key="bucket3-rating-question" /></p>\
 							<div class="articleFeedbackv5-rating articleFeedbackv5-rating-new">\
@@ -997,21 +1007,24 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 			},
 
 			// }}}
-			// {{{ markFormError
+			// {{{ localValidation
 
 			/**
-			 * Marks any errors on the form
+			 * Performs any local validation
 			 *
-			 * @param object error errors, indexed by field name
+			 * @param  object formdata the form data
+			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
-			markFormError: function ( error ) {
-				if ( '_api' in error ) {
-					$.articleFeedbackv5.markShowstopperError( error._api.info );
-				} else {
-					alert( mw.msg( 'articlefeedbackv5-error-validation' ) );
-					mw.log( mw.msg( 'articlefeedbackv5-error-validation' ) );
+			localValidation: function ( formdata ) {
+				var error = {};
+				var ok = true;
+				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
+					&& ( !( 'rating' in formdata ) || formdata.rating < 1 ) ) {
+					$.articleFeedbackv5.enableSubmission( false );
+					error.nofeedback = mw.msg( 'articlefeedbackv5-error-nofeedback' );
+					ok = false;
 				}
-				console.log( error );
+				return ok ? false : error;
 			}
 
 			// }}}
@@ -1653,6 +1666,9 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 				$.articleFeedbackv5.find( '.articleFeedbackv5-expertise input:checked' ).each( function () {
 					data['expertise-' + $( this ).val()] = 1;
 				} );
+				if ( $.articleFeedbackv5.find( '.articleFeedbackv5-helpimprove input:checked' ).length > 0 ) {
+					data.email = $.articleFeedbackv5.find( '.articleFeedbackv5-helpimprove-email' ).val();
+				}
 				return data;
 			},
 
@@ -1669,8 +1685,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 				var error = {};
 				var ok = true;
 				if ( $.articleFeedbackv5.find( '.articleFeedbackv5-helpimprove input:checked' ).length > 0 ) {
-					var mail = $.articleFeedbackv5.find( '.articleFeedbackv5-helpimprove-email' ).val();
-					if ( !mw.util.validateEmail( mail ) ) {
+					if ( 'email' in formdata && !mw.util.validateEmail( formdata.email ) ) {
 						error.helpimprove_email = mw.msg( 'articlefeedbackv5-error-email' );
 						ok = false;
 					}
@@ -1679,30 +1694,19 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 			},
 
 			// }}}
-			// {{{ markFormError
+			// {{{ markFormErrors
 
 			/**
 			 * Marks any errors on the form
 			 *
-			 * @param object error errors, indexed by field name
+			 * @param object errors errors, indexed by field name
 			 */
-			markFormError: function ( error ) {
-				if ( '_api' in error ) {
-					if ($.articleFeedbackv5.debug) {
-						$.articleFeedbackv5.find( '.articleFeedbackv5-error-message' )
-							.html( error._api.info.replace( "\n", '<br />' ) );
-					}
-					$.articleFeedbackv5.find( '.articleFeedbackv5-error' ).show();
-				} else {
-					if ( 'helpimprove_email' in error ) {
-						$.articleFeedbackv5.find( '.articleFeedbackv5-helpimprove-email' )
-							.addClass( 'invalid' )
-							.removeClass( 'valid' );
-					}
-					alert( mw.msg( 'articlefeedbackv5-error-validation' ) );
-					mw.log( mw.msg( 'articlefeedbackv5-error-validation' ) );
+			markFormErrors: function ( errors ) {
+				if ( 'helpimprove_email' in errors ) {
+					$.articleFeedbackv5.find( '.articleFeedbackv5-helpimprove-email' )
+						.addClass( 'invalid' )
+						.removeClass( 'valid' );
 				}
-				console.log( error );
 			},
 
 			// }}}
@@ -2049,9 +2053,11 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 
 		// Set up the tooltip for the panel version
 		$wrapper.find( '.articleFeedbackv5-title-wrap' ).append( $.articleFeedbackv5.templates.helpToolTip );
+		$wrapper.find( '.articleFeedbackv5-tooltip-link' )
+			.attr( 'href', mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' ) );
 		$wrapper.find( '.articleFeedbackv5-tooltip' ).hide();
 
-		if( $.articleFeedbackv5.bucketId == 5 ) {
+		if ( $.articleFeedbackv5.bucketId == 5 ) {
 			$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).hide();
 		} else { 
 			$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
@@ -2096,6 +2102,8 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 		// Set up the tooltip for the dialoag
 		$titlebar.append( $.articleFeedbackv5.templates.helpToolTip );
 		$titlebar.find( '.articleFeedbackv5-tooltip' ).hide();
+		$titlebar.find( '.articleFeedbackv5-tooltip-link' )
+			.attr( 'href', mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' ) );
 		$titlebar.find( '.articleFeedbackv5-tooltip-trigger' ).click( function ( e ) {
 			$( e.target ).next( '.articleFeedbackv5-tooltip' ).toggle();
 		} );
@@ -2139,13 +2147,9 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 
 		// Perform any local validation
 		if ( 'localValidation' in bucket ) {
-			var error = bucket.localValidation( formdata );
-			if ( error ) {
-				if ( 'markFormError' in bucket ) {
-					bucket.markFormError( error );
-				} else {
-					alert( error.join( "\n" ) );
-				}
+			var errors = bucket.localValidation( formdata );
+			if ( errors ) {
+				$.articleFeedbackv5.markFormErrors( errors );
 				return;
 			}
 		}
@@ -2190,19 +2194,15 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 					if ( 'error' in data ) {
 						msg = data.error;
 					} else {
-						msg = mw.msg( 'articlefeedbackv5-error-unknown' );
+						msg = { info: mw.msg( 'articlefeedbackv5-error-unknown' ) };
 					}
-					if ( 'markFormError' in bucket ) {
-						bucket.markFormError( { _api : msg } );
-					} else {
-						alert( mw.msg( 'articlefeedbackv5-error-submit' ) );
-					}
+					$.articleFeedbackv5.markFormErrors( { _api : msg } );
 					$.articleFeedbackv5.unlockForm();
 				}
 			},
 			'error': function () {
-				mw.log( mw.msg( 'articlefeedbackv5-error-submit' ) );
-				alert( mw.msg( 'articlefeedbackv5-error-submit' ) );
+				var err = { _api: { info: mw.msg( 'articlefeedbackv5-error-submit' ) } };
+				$.articleFeedbackv5.markFormErrors( err );
 				$.articleFeedbackv5.unlockForm();
 			}
 		} );
@@ -2293,6 +2293,48 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 	};
 
 	// }}}
+	// {{{ markTopError
+
+	/**
+	 * Marks an error at the top of the form
+	 *
+	 * @param msg string the error message
+	 */
+	$.articleFeedbackv5.markTopError = function ( msg ) {
+		$.articleFeedbackv5.find( '.articleFeedbackv5-top-error' ).html( msg );
+	};
+
+	// }}}
+	// {{{ markFormErrors
+
+	/**
+	 * Marks any errors on the form
+	 *
+	 * @param object errors errors, indexed by field name
+	 */
+	$.articleFeedbackv5.markFormErrors = function ( errors ) {
+		if ( '_api' in errors ) {
+			if ( $.articleFeedbackv5.debug ) {
+				$.articleFeedbackv5.markTopError( errors._api.info );
+			} else {
+				mw.log( mw.msg( 'articlefeedbackv5-error-submit' ) );
+			}
+			mw.log( mw.msg( errors._api.info ) );
+		} else {
+			mw.log( mw.msg( 'articlefeedbackv5-error-validation' ) );
+			if ( 'nofeedback' in errors ) {
+				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-nofeedback' ) );
+			}
+		}
+		if ( $.articleFeedbackv5.debug ) {
+			console.log( errors );
+		}
+		if ( 'markFormErrors' in $.articleFeedbackv5.currentBucket() ) {
+			$.articleFeedbackv5.currentBucket().markFormErrors( errors );
+		}
+	};
+
+	// }}}
 	// {{{ lockForm
 
 	/**
@@ -2331,7 +2373,6 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 	 */
 	$.articleFeedbackv5.addToRemovalQueue = function ( $el ) {
 		$.articleFeedbackv5.$toRemove = $.articleFeedbackv5.$toRemove.add( $el );
-		console.log( $.articleFeedbackv5.$toRemove );
 	};
 
 	// }}}
