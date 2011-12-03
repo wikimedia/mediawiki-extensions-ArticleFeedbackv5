@@ -184,46 +184,68 @@
 	background-position: center center;
 	cursor: pointer;
 }
-#mw-articlefeedbackv5 .articleFeedbackv5-rating-label {
+
+/* Green stars for Option 3 */
+.articleFeedbackv5-rating-label {
 	/* @embed */
 	background-image: url(images/star-empty.png);
 }
-
-#mw-articlefeedbackv5 .articleFeedbackv5-rating-clear {
+.articleFeedbackv5-rating-clear {
 	/* @embed */
 	background-image: url(images/trash.png);
 	display: none;
 }
-
-#mw-articlefeedbackv5 .articleFeedbackv5-rating-labels:hover .articleFeedbackv5-rating-clear {
+.articleFeedbackv5-rating-labels:hover .articleFeedbackv5-rating-clear {
 	/* @embed */
 	background-image: url(images/trash-hover.png);
 }
-
-#mw-articlefeedbackv5 .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full {
+.articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full {
 	/* @embed */
 	background-image: url(images/star-full.png);
 }
-
-#mw-articlefeedbackv5 .articleFeedbackv5-expired .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full {
+.articleFeedbackv5-expired .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full {
 	/* @embed */
 	background-image: url(images/star-full-expired.png);
 }
-
-#mw-articlefeedbackv5 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full,
-#mw-articlefeedbackv5 .articleFeedbackv5-rating .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-hover-tail {
+.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full,
+.articleFeedbackv5-rating .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-hover-tail {
 	/* @embed */
 	background-image: url(images/star-new.png);
 }
-
-#mw-articlefeedbackv5 .articleFeedbackv5-rating .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-hover-head {
+.articleFeedbackv5-rating .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-hover-head {
 	/* @embed */
 	background-image: url(images/star-new-hover.png);
 }
-
-#mw-articlefeedbackv5 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-down {
+.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-down {
 	/* @embed */
 	background-image: url(images/star-new-down.png);
+}
+
+/** Old red stars for option 5 **/
+.articleFeedbackv5-rating-label {
+	/* @embed */
+	background-image: url(images/old-star-empty.png);
+}
+.articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full {
+	/* @embed */
+	background-image: url(images/old-star-full.png);
+}
+.articleFeedbackv5-expired .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full {
+	/* @embed */
+	background-image: url(images/old-star-full-expired.png);
+}
+.articleFeedbackv5-option-5 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full,
+.articleFeedbackv5-option-5 .articleFeedbackv5-rating .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-hover-tail {
+	/* @embed */
+	background-image: url(images/old-star-new.png);
+}
+.articleFeedbackv5-option-5 .articleFeedbackv5-rating .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-hover-head {
+	/* @embed */
+	background-image: url(images/old-star-new-hover.png);
+}
+.articleFeedbackv5-option-5 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-down {
+	/* @embed */
+	background-image: url(images/old-star-new-down.png);
 }
 
 .articleFeedbackv5-rating-tooltip {
@@ -771,17 +793,18 @@ body .ui-dialog .ui-icon-closethick:hover {
 }
 .ui-dialog .ui-dialog-titlebar-close {
 	float: right;
-position: static !important;
-right: auto !important;
-top: auto !important;
-width: 23px !important;
-margin: 0 !important;
-padding: 0 !important;
-height: auto !important;
+	position: static !important;
+	right: auto !important;
+	top: auto !important;
+	width: 23px !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	height: auto !important;
 }
 .ui-dialog .ui-dialog-titlebar-close.ui-state-hover {
 	border: none !important;
 }
+
 /*** Confirmation and Call to Action ***/
 .articleFeedbackv5-confirmation-panel {}
 .articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent {
@@ -825,7 +848,7 @@ height: auto !important;
 	-webkit-box-shadow: -2px 2px 1px #999;
 	box-shadow: -2px 2px 1px #999;
 }
-/*.articleFeedbackv5-bucket4 .articleFeedbackv5-submit,*/
+/*.articleFeedbackv5-option-4 .articleFeedbackv5-submit,*/
 .articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link {
 	float: right;
 	position: relative;
@@ -845,31 +868,33 @@ height: auto !important;
 	margin: 8px 0 0;
 	background: url(images/bg-submit-icon.png) right center no-repeat;
 }
+
 /*** Option 4 ***/
-.articleFeedbackv5-bucket4 .articleFeedbackv5-submit {
+.articleFeedbackv5-option-4 .articleFeedbackv5-submit {
 	float: right;
 }
-.articleFeedbackv5-bucket4 .articleFeedbackv5-disclosure {
+.articleFeedbackv5-option-4 .articleFeedbackv5-disclosure {
 	float: left;
 	margin: 22px 0 0;
 }
-.articleFeedbackv5-bucket4 .articleFeedbackv5-disclosure p {
+.articleFeedbackv5-option-4 .articleFeedbackv5-disclosure p {
 	font-size: 1em;
 	font-weight: bold;
 }
-.articleFeedbackv5-bucket4 .sub-header {
+.articleFeedbackv5-option-4 .sub-header {
 	font-size: 1.1em;
 	margin: 0 0 15px;
 }
-.articleFeedbackv5-bucket4 .instructions-left {
+.articleFeedbackv5-option-4 .instructions-left {
 	font-size: 1em;
 	margin: 0 0 15px;
 }
-.articleFeedbackv5-bucket4 .articleFeedbackv5-submit span {
+.articleFeedbackv5-option-4 .articleFeedbackv5-submit span {
 	margin: 8px 0 0;
 }
-/*** Bucket 5 ***/
-#articleFeedbackv5-bucket5 .articleFeedbackv5-submit {
+
+/*** Option 5 ***/
+#articleFeedbackv5-option-5 .articleFeedbackv5-submit {
 	float: right;
 }
 
@@ -878,3 +903,23 @@ height: auto !important;
 	color: #8b0000;
 	margin-bottom: 5px;
 }
+
+/*** CTA has a button to remove itself from the page ***/
+
+.articleFeedbackv5-clear-trigger {
+	display: block;
+	height: 27px;
+	width: 26px;
+	background: url(images/bg-close-off.png) no-repeat !important;
+	float: right;
+	position: relative;
+	text-indent: -9999px;
+	margin: 1px 0 0 10px;
+}
+
+.articleFeedbackv5-clear-trigger:hover {
+	background: url(images/bg-close-hov.png) no-repeat !important;
+	cursor: pointer;
+	text-decoration: none;
+}
+

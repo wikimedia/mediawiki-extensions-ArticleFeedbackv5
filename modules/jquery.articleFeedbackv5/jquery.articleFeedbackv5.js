@@ -1050,7 +1050,7 @@
 				 * The template for the whole block
 				 */
 				block: '\
-					<div class="articleFeedbackv5-bucket4">\
+					<div>\
 						<div class="form-row articleFeedbackv5-bucket4-toggle">\
 							<p class="sub-header"><strong><html:msg key="bucket4-subhead"></strong></p>\
 							<p class="instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
@@ -2072,7 +2072,7 @@
 		// Wrap it in a panel
 		var $wrapper = $( $.articleFeedbackv5.templates.panelOuter );
 		$wrapper.find( '.articleFeedbackv5-ui' )
-			.addClass( '.articleFeedbackv5-option-' + $.articleFeedbackv5.bucketId )
+			.addClass( 'articleFeedbackv5-option-' + $.articleFeedbackv5.bucketId )
 			.append( $block );
 
 		// Set the title
@@ -2262,6 +2262,14 @@
 		}
 		$.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).empty();
 		$.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).append( $block );
+		// Add a close button to clear out the panel
+		var $close = $( '<a class="articleFeedbackv5-clear-trigger">x</a>' )
+			.click( function (e) {
+				e.preventDefault();
+				$.articleFeedbackv5.clear();
+			} );
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title-wrap .articleFeedbackv5-tooltip-trigger' )
+			.before( $close );
 		$.articleFeedbackv5.nowShowing = 'cta';
 	};
 
@@ -2476,7 +2484,7 @@
 			var y = 'center';
 			$inner = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' ).detach();
 			$.articleFeedbackv5.$dialog.append( $inner );
-			$.articleFeedbackv5.$dialog.dialog( 'option', 'width', w + 20 );
+			$.articleFeedbackv5.$dialog.dialog( 'option', 'width', w + 25 );
 			$.articleFeedbackv5.$dialog.dialog( 'option', 'height', h + 70 );
 			$.articleFeedbackv5.$dialog.dialog( 'option', 'position', [ x, y ] );
 			$.articleFeedbackv5.$dialog.dialog( 'open' );
@@ -2503,9 +2511,7 @@
 			$.articleFeedbackv5.$holder.show();
 			$.articleFeedbackv5.inDialog = false;
 			if ( 'cta' == $.articleFeedbackv5.nowShowing ) {
-				// Uncomment here and comment out link removal to switch to the feedback
-				// link replacing the form.  _SWITCH_CLEAR_
-				// $.articleFeedbackv5.clear();
+				$.articleFeedbackv5.clear();
 			}
 		}
 	};
