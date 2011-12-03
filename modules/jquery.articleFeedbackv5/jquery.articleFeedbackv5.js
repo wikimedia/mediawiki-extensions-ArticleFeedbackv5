@@ -1152,7 +1152,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 				 * The template for the whole block
 				 */
 				block: '\
-					<form>\
+					<form id="articleFeedbackv5-bucket5">\
 						<div class="articleFeedbackv5-switch articleFeedbackv5-switch-report articleFeedbackv5-visibleWith-form" rel="report"><html:msg key="bucket5-report-switch-label" /></div>\
 						<div class="articleFeedbackv5-switch articleFeedbackv5-switch-form articleFeedbackv5-visibleWith-report" rel="form"><html:msg key="bucket5-form-switch-label" /></div>\
 						<div class="articleFeedbackv5-explanation articleFeedbackv5-visibleWith-form"><a class="articleFeedbackv5-explanation-link"><html:msg key="bucket5-form-panel-explanation" /></a></div>\

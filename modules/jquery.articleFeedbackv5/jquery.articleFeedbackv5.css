@@ -867,3 +867,7 @@ height: auto !important;
 .articleFeedbackv5-bucket4 .articleFeedbackv5-submit span {
 	margin: 8px 0 0;
 }
+/*** Bucket 5 ***/
+#articleFeedbackv5-bucket5 .articleFeedbackv5-submit {
+	float: right;
+}
