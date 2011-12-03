@@ -43,6 +43,10 @@ class ArticleFeedbackv5Hooks {
 			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.js',
 			'styles' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.css',
 			'messages' => array(
+				'articlefeedbackv5-error-email',
+				'articlefeedbackv5-error-validation',
+				'articlefeedbackv5-error-unknown',
+				'articlefeedbackv5-error-submit',
 				'articlefeedbackv5-cta1-thanks',
 				'articlefeedbackv5-cta1-confirmation-followup',
 				'articlefeedbackv5-cta1-confirmation-title',
