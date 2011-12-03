@@ -18,6 +18,7 @@
 	background-color: #f9f9f9;
 	border: 1px solid #cccccc;
 	padding-bottom: 1px;
+	margin: 0 0 15px;
 }
 
 .articleFeedbackv5-error-message {
@@ -432,7 +433,9 @@
 	position: relative;
 	display: block;
 }
-
+.articleFeedbackv5-panel .articleFeedbackv5-title-wrap:after {
+	clear: both;
+}
 .articleFeedbackv5-panel .articleFeedbackv5-ui {
 	clear: both;
 	display: block;
@@ -583,13 +586,12 @@
 	font-size: 0.75em;
 }
 
-.articleFeedbackv5-ui .articleFeedbackv5-submit,
-.articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link {
+.articleFeedbackv5-ui .articleFeedbackv5-submit {
 	float: left;
 	height: 35px !important;
 	width: auto;
 	text-align: center;
-	padding: 0 6px;
+	padding: 0 10px;
 	background: url(images/bg-submit.png) repeat-x !important;
 	margin: 10px 30px 0 0 !important;
 	border: none !important;
@@ -602,12 +604,14 @@
 	box-shadow: -2px 2px 1px #999;
 }
 
-.articleFeedbackv5-ui .articleFeedbackv5-submit {
-	float: left;
+.articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link {
+	float: right;
+	position: relative;
+	bottom: 10px;
+	margin: 105px 0 0 !important;
 }
 
-.articleFeedbackv5-ui .articleFeedbackv5-submit span, 
-.articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link span{
+.articleFeedbackv5-ui .articleFeedbackv5-submit span {
 	font-size: 14px;
 	font-weight: bold;
 	display: inline-block;
@@ -616,7 +620,6 @@
 	color: #fff;
 	/*text-shadow: 1px 1px 1px #000;*/
 	padding: 1px 30px 0 0;
-	margin: 8px 0 0;
 	background: url(images/bg-submit-icon.png) right center no-repeat;
 }
 
@@ -780,7 +783,77 @@ height: auto !important;
 }
 /*** Confirmation and Call to Action ***/
 .articleFeedbackv5-confirmation-panel {}
-.articleFeedbackv5-confirmation-panel .articleFeedbackv5-confirmation-text {
+.articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent {
 	float: left;
-	width: 330px;
+	width: 335px;
+}
+.articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent .articleFeedbackv5-confirmation-text {
+	display: inline-block;
+	background: #f7f5f5;
+	border: 1px solid #cccaca;
+	padding: 5px 10px;
+	line-height: 25px;
+	
+}
+.articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent .articleFeedbackv5-confirmation-text .articleFeedbackv5-confirmation-thanks {
+	font-weight: bold;
+	font-style: italic;
+	display: inline-block;
+	padding: 0 0 0 24px;
+	margin: 0 9px 0 0;
+	height: 25px;
+	background: url(images/bg-confirmation-thanks.png) 0 center no-repeat;
+}
+.articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent .articleFeedbackv5-confirmation-learnHow {
+	font-weight: bold;
+}
+.articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link {
+	float: left;
+	height: 35px !important;
+	width: auto;
+	text-align: center;
+	padding: 0 10px;
+	background: url(images/bg-submit.png) repeat-x !important;
+	margin: 10px 30px 0 0 !important;
+	border: none !important;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px; /* future proofing */
+	-khtml-border-radius: 3px; /* for old Konqueror browsers */
+	-moz-box-shadow: -2px 2px 1px #999;
+	-webkit-box-shadow: -2px 2px 1px #999;
+	box-shadow: -2px 2px 1px #999;
+}
+.bucket4 .articleFeedbackv5-submit,
+.articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link {
+	float: right;
+	position: relative;
+	bottom: 10px;
+	margin: 105px 0 0 !important;
+}
+
+.bucket4 .articleFeedbackv5-submit,
+.articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link span{
+	font-size: 14px;
+	font-weight: bold;
+	display: inline-block;
+	height: 19px;
+	text-align: center;
+	color: #fff;
+	/*text-shadow: 1px 1px 1px #000;*/
+	padding: 1px 30px 0 0;
+	margin: 8px 0 0;
+	background: url(images/bg-submit-icon.png) right center no-repeat;
+}
+/*** Option 4 ***/
+.articleFeedbackv5-bucket4 .articleFeedbackv5-submit {
+	float: right;
+}
+.articleFeedbackv5-bucket4 .articleFeedbackv5-disclosure {
+	float: left;
+	margin: 22px 0 0;
+}
+.articleFeedbackv5-bucket4 .articleFeedbackv5-disclosure p {
+	font-size: 1em;
+	font-weight: bold;
 }

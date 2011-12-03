@@ -151,7 +151,6 @@
 				<div class="articleFeedbackv5-buffer">\
 					<div class="articleFeedbackv5-title-wrap">\
 						<h2 class="articleFeedbackv5-title"></h2>\
-						<div class="clear"></div>\
 					</div>\
 					<div class="articleFeedbackv5-ui" />\
 				</div>\
@@ -1038,14 +1037,14 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 				 * The template for the whole block
 				 */
 				block: '\
-					<div>\
+					<div class="articleFeedbackv5-bucket4">\
 						<div class="form-row articleFeedbackv5-bucket4-toggle">\
-							<h3><html:msg key="bucket4-subhead"></h3>\
+							<p class="instructions-left"><strong><html:msg key="bucket4-subhead"></strong></p>\
 							<p class="instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
 							<html:msg key="bucket4-teaser-line2" /></p>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
-							<p><a class="articleFeedbackv5-learn-to-edit" target="_blank"><html:msg key="bucket4-learn-to-edit"> &gt;&gt;</a></p>\
+							<p><a class="articleFeedbackv5-learn-to-edit" target="_blank"><html:msg key="bucket4-learn-to-edit" /> &raquo;</a></p>\
 						</div>\
 						<a class="articleFeedbackv5-submit" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket4-form-submit" /></a>\
 						<div class="clear"></div>\

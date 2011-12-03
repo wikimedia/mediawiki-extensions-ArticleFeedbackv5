@@ -60,7 +60,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'No, I did not find what I was looking for.',
 	'articlefeedbackv5-bucket1-question-comment-yes' => 'What did you like most?  Share your praise with the editors.',
 	'articlefeedbackv5-bucket1-question-comment-no' => 'What\'s missing? Any suggestions for improvement?',
-	'articlefeedbackv5-bucket1-form-submit' => 'Post Your Feedback',
+	'articlefeedbackv5-bucket1-form-submit' => 'Post your feedback',
 	/* Option 2 (getsatisfaction style) */
 	'articlefeedbackv5-bucket2-title' => 'Help improve this article',
 	'articlefeedbackv5-bucket2-suggestion-label' => 'Suggestion',
@@ -71,7 +71,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket2-question-comment-default' => 'Ask a question about this article.',
 	'articlefeedbackv5-bucket2-problem-comment-default' => 'Report a problem. How can this article be improved?',
 	'articlefeedbackv5-bucket2-praise-comment-default' => 'What do you like most? Share your praise with the editors',
-	'articlefeedbackv5-bucket2-form-submit' => 'Post Your Feedback',
+	'articlefeedbackv5-bucket2-form-submit' => 'Post your feedback',
 	/* Option 3 (single rating) */
 	'articlefeedbackv5-bucket3-title' => 'Help improve this article',
 	'articlefeedbackv5-bucket3-rating-question' => 'How would you rate it, overall?',
@@ -81,7 +81,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket3-rating-tooltip-4' => 'Good',
 	'articlefeedbackv5-bucket3-rating-tooltip-5' => 'Very Good',
 	'articlefeedbackv5-bucket3-comment-default' => 'Add a comment. How can this article be improved?',
-	'articlefeedbackv5-bucket3-form-submit' => 'Post Your Feedback',
+	'articlefeedbackv5-bucket3-form-submit' => 'Post your feedback',
 	/* Option 4 (just a big glossy edit button and some teaser text) */
 	'articlefeedbackv5-bucket4-title' => 'Help improve this article',
 	'articlefeedbackv5-bucket4-subhead' => 'Did you know that you can edit this page?',
