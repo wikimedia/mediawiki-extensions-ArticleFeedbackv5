@@ -9,6 +9,19 @@ $messages = array();
  * @author Arthur Richards
  */
 $messages['en'] = array(
+	// Article Feedback special page.
+	'articlefeedbackv5-form-optionid' => 'Option $1',
+	'articlefeedbackv5-form-hide' => 'Hide this ($1)',
+	'articlefeedbackv5-form-abuse' => 'Flag as abuse ($1)',
+	'articlefeedbackv5-form-header' => 'Feedback #$1, at $2',
+	'articlefeedbackv5-form1-header-found' => '$1 found what they were looking for:',
+	'articlefeedbackv5-form1-header-not-found' => '$1 did not find what they were looking for:',
+	'articlefeedbackv5-form2-header' => '$1 had a $2:',
+	'articlefeedbackv5-form3-header' => '$1 rated this page $2 / 5',
+	'articlefeedbackv5-form4-header' => 'User was presented with the CTA-only form.',
+	'articlefeedbackv5-form5-header' => '$1 rated this page:',
+	'articlefeedbackv5-form-not-shown' => 'User was not shown a feedback form.',
+	'articlefeedbackv5-form-invalud' => 'Invalid feedback form ID.',
 	'articlefeedbackv5-abuse-saved' => 'Abuse flag saved',
 	'articlefeedbackv5-hide-saved' => 'Hide flag saved',
 	'articlefeedbackv5-error-loading-feedback' => 'Error loading Feedback',

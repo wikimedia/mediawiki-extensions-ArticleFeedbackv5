@@ -184,8 +184,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	protected function renderFeedback( $record ) {
 		$id = $record[0]->af_id;
-		$rv = "<div class='aft5-feedback'><p>Feedback #$id"
-		.', @'.$record[0]->af_created.'</p>';
+		$rv = "<div class='aft5-feedback'><p>"
+		.wfMsg( 'articlefeedbackv5-form-header', $id, $record[0]->af_created )
+		.'</p>';
 		switch( $record[0]->af_bucket_id ) {
 			case 1: $rv .= $this->renderBucket1( $record ); break;
 			case 2: $rv .= $this->renderBucket2( $record ); break;
@@ -195,28 +196,41 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			case 6: $rv .= $this->renderBucket6( $record ); break;
 			default: $rv .= $this->renderNoBucket( $record ); break;
 		}
-		$rv .= "<p>
-		Option ".$record[0]->af_bucket_id." |
-		<a href='#' class='aft5-hide-link' id='aft5-hide-link-$id'>Hide this (".$record[0]->af_hide_count.")</a> |
-		<a href='#' class='aft5-abuse-link' id='aft5-abuse-link-$id'>Flag as abuse (".$record[0]->af_abuse_count.")</a>
-		</p>
-		</div><hr>";
+		$rv .= "<p>"
+		.wfMsg( 'articlefeedbackv5-form-optionid', $record[0]->af_bucket_id )
+		." | "
+		."<a href='#' class='aft5-hide-link' id='aft5-hide-link-$id'>"
+		.wfMsg( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )
+		.'</a> | '
+		."<a href='#' class='aft5-abuse-link' id='aft5-abuse-link-$id'>"
+		.wfMsg( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )
+		."</a></p></div><hr>";
 		return $rv;
 	}
 
 	private function renderBucket1( $record ) { 
 		$name  = $record[0]->af_user_text;
-		$found = $record['found']->aa_response_boolean ? 'found'
-		 : 'did not find';
-		return "$name $found what they were looking for:"
-		.'<blockquote>'.$record['comment']->aa_response_text
+		if( $record['found']->aa_response_boolean ) {
+			$found = wfMsg( 
+				'articlefeedbackv5-form1-header-found',
+				$name
+			);
+		} else {
+			$found = wfMsg( 
+				'articlefeedbackv5-form1-header-not-found',
+				$name
+			);
+
+		}
+		return "$found 
+		<blockquote>".$record['comment']->aa_response_text
 		.'</blockquote>';
 	}
 
 	private function renderBucket2( $record ) { 
 		$name = $record[0]->af_user_text;
 		$type = $record['tag']->afo_name;
-		return "$name had a $type:"
+		return wfMsg( 'articlefeedbackv5-form2-header', $name, $type )
 		.'<blockquote>'.$record['comment']->aa_response_text
 		.'</blockquote>';
 	}
@@ -224,18 +238,19 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	private function renderBucket3( $record ) { 
 		$name   = $record[0]->af_user_text;
 		$rating = $record['rating']->aa_response_rating;
-		return "$name rated this page $rating/5:"
+		return wfMsg( 'articlefeedbackv5-form3-header', $name, $rating )
 		.'<blockquote>'.$record['comment']->aa_response_text
 		.'</blockquote>';
 	}
 
 	private function renderBucket4( $record ) { 
-		return 'User was presented with the CTA-only form.';
+		return wfMsg( 'articlefeedbackv5-form4-header' );
 	}
 
 	private function renderBucket5( $record ) { 
 		$name  = $record[0]->af_user_text;
-		$rv = "$name had this to say about robocop:<ul>";
+		$rv = wfMsg( 'articlefeedbackv5-form5-header', $name );
+		$rv .= '<ul>';
 		foreach( $record as $key => $answer ) {
 			if( $answer->afi_data_type == 'rating' && $key != '0' ) {
 				$rv .= "<li>".$answer->afi_name.': '.$answer->aa_response_rating."</li>";
@@ -247,16 +262,16 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderBucket0( $record ) { 
-		# Future-proof this for when the bucket ID changes.
+		# Future-proof this for when the bucket ID changes to 0.
 		return $this->renderBucket6( $record );
 	}
 
 	private function renderNoBucket( $record ) { 
-		return 'Invalid form ID';
+		return wfMsg( 'articlefeedbackv5-form-invalid' );
 	}
 
 	private function renderBucket6( $record ) { 
-		return 'User was not shown a feedback form.';
+		return wfMsg( 'articlefeedbackv5-form-not-shown' );
 	}
 
 	/**
