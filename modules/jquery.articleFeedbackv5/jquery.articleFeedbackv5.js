@@ -2050,9 +2050,15 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 		// Set up the tooltip for the panel version
 		$wrapper.find( '.articleFeedbackv5-title-wrap' ).append( $.articleFeedbackv5.templates.helpToolTip );
 		$wrapper.find( '.articleFeedbackv5-tooltip' ).hide();
-		$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
-			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
-		} );
+
+		if( $.articleFeedbackv5.bucketId == 5 ) {
+			$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).hide();
+		} else { 
+			$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
+				$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
+			} );
+		}
+
 		$wrapper.find( '.articleFeedbackv5-tooltip-close' ).click( function () {
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
 		} );
