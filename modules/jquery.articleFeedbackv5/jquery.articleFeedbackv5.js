@@ -707,8 +707,8 @@
 			 */
 			getFormData: function () {
 				var data = {};
-				data.tag = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tags input[checked]' ).val();
-				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
+				data.tag = $.articleFeedbackv5.find( '.articleFeedbackv5-tags input[checked]' ).val();
+				data.comment = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' ).val();
 				for ( t in $.articleFeedbackv5.currentBucket().commentDefault ) {
 					if ( data.comment == $.articleFeedbackv5.currentBucket().commentDefault[t] ) {
 						data.comment = '';
@@ -998,8 +998,8 @@
 			 */
 			getFormData: function () {
 				var data = {};
-				data.rating = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-rating input:hidden' ).val();
-				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
+				data.rating = $.articleFeedbackv5.find( '.articleFeedbackv5-rating input:hidden' ).val();
+				data.comment = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' ).val();
 				if ( data.comment == mw.msg( 'articlefeedbackv5-bucket3-comment-default' ) ) {
 					data.comment = '';
 				}
@@ -1374,7 +1374,7 @@
 				// Slide-down for the expertise checkboxes
 				$block.find( '.articleFeedbackv5-expertise > input:checkbox' )
 					.change( function () {
-						var $options = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-expertise-options' );
+						var $options = $.articleFeedbackv5.find( '.articleFeedbackv5-expertise-options' );
 						if ( $(this).is( ':checked' ) ) {
 							$options.slideDown( 'fast' );
 						} else {
@@ -1453,7 +1453,7 @@
 				});
 				rlabel.mousedown( function () {
 					$.articleFeedbackv5.enableSubmission( true );
-					var $ui = $.articleFeedbackv5.find( 'articleFeedbackv5-ui' );
+					var $ui = $.articleFeedbackv5.find( '.articleFeedbackv5-ui' );
 					if ( $ui.hasClass( 'articleFeedbackv5-expired' ) ) {
 						// Changing one means the rest will get submitted too
 						$ui.removeClass( 'articleFeedbackv5-expired' );
