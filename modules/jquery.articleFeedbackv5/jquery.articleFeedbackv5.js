@@ -173,7 +173,9 @@
 					<h3><html:msg key="help-tooltip-title" /></h3><span class="articleFeedbackv5-tooltip-close">X</span>\
 					<div class="clear"></div>\
 					<p><html:msg key="help-tooltip-info" /></p>\
-					<p><a target="_blank" href="http://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
+					<p><a target="_blank" href="' + 
+mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
++ '"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
 				</div>\
 				<div class="tooltip-bottom"></div>\
 			</div>\
@@ -290,7 +292,7 @@
 					.html( $.articleFeedbackv5.buildLink(
 						'articlefeedbackv5-transparency-terms',
 						{
-							href: mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ),
+							href: 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 							text: 'articlefeedbackv5-transparency-terms-linktext',
 							target: '_blank'
 						} ) );

@@ -101,6 +101,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-help-tooltip-title',
 				'articlefeedbackv5-help-tooltip-info',
 				'articlefeedbackv5-help-tooltip-linktext',
+				'articlefeedbackv5-help-tooltip-linkurl',
 				'articlefeedbackv5-transparency-terms',
 				'articlefeedbackv5-transparency-terms-linktext',
 				'parentheses',
