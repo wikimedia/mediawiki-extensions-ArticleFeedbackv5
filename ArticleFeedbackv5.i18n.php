@@ -9,6 +9,15 @@ $messages = array();
  * @author Arthur Richards
  */
 $messages['en'] = array(
+	// CTA translations
+	'articlefeedbackv5-cta1-thanks' => 'Thanks!',
+	'articlefeedbackv5-cta1-confirmation-followup' => 'Your feedback has been saved.',
+	'articlefeedbackv5-cta1-confirmation-title' => 'Did you know that you can edit this page?',
+	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia works because anyone can edit its articles. Go ahead, give it a try. Be bold!',
+	'articlefeedbackv5-cta1-learn-how' => 'Learn how to edit',
+	'articlefeedbackv5-cta1-edit-linktext' => 'Edit this page',
+
+
 	// Article Feedback special page.
 	'articlefeedbackv5-form-optionid' => 'Option $1',
 	'articlefeedbackv5-form-hide' => 'Hide this ($1)',

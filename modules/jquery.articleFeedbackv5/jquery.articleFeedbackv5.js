@@ -1795,13 +1795,13 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 					<div class="articleFeedbackv5-confirmation-panel">\
 						<div class="articleFeedbackv5-panel-leftContent">\
 							<div class="articleFeedbackv5-confirmation-text">\
-								<span class="articleFeedbackv5-confirmation-thanks">[Thanks!]</span><span class="articleFeedbackv5-confirmation-follow-up">[Your feedback has been saved.]</span>\
+								<span class="articleFeedbackv5-confirmation-thanks">' + mw.msg( "articlefeedbackv5-cta1-thanks" ) + '</span> <span class="articleFeedbackv5-confirmation-follow-up">' + mw.msg( "articlefeedbackv5-cta1-confirmation-followup" ) + '</span>\
 							</div>\
-							<h3 class="articleFeedbackv5-confirmation-title">Did you know that you can edit this page?</h3>\
-							<p class="articleFeedbackv5-confirmation-wikipediaWorks">[Wikipedia works because anyone can edit its articles. Go ahead, give it a try. Be bold!]</p>\
-							<p class="articleFeedbackv5-confirmation-learnHow"><a target="_blank" href="#">[Learn how to edit] &raquo;</a></p>\
+							<h3 class="articleFeedbackv5-confirmation-title">' + mw.msg( "articlefeedbackv5-cta1-confirmation-title" ) + '</h3>\
+							<p class="articleFeedbackv5-confirmation-wikipediaWorks">' + mw.msg( "articlefeedbackv5-cta1-confirmation-call" ) + '</p>\
+							<p class="articleFeedbackv5-confirmation-learnHow"><a target="_blank" href="#">' + mw.msg("articlefeedbackv5-cta1-learn-how") + ' &raquo;</a></p>\
 						</div>\
-						<a href="&amp;action=edit" class="articleFeedbackv5-edit-cta-link"><span class="ui-button-text">[Edit this page]</span></a>\
+						<a href="&amp;action=edit" class="articleFeedbackv5-edit-cta-link"><span class="ui-button-text">' + mw.msg( "articlefeedbackv5-cta1-edit-linktext" ) + '</span></a>\
 						<div class="clear"></div>\
 					</div>\
 					'
@@ -1817,7 +1817,7 @@ mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' )
 			 * @return string the title
 			 */
 			getTitle: function () {
-				return 'TODO: EDIT CTA';
+//				return 'TODO: EDIT CTA';
 			},
 
 			// }}}

@@ -43,6 +43,12 @@ class ArticleFeedbackv5Hooks {
 			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.js',
 			'styles' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.css',
 			'messages' => array(
+				'articlefeedbackv5-cta1-thanks',
+				'articlefeedbackv5-cta1-confirmation-followup',
+				'articlefeedbackv5-cta1-confirmation-title',
+				'articlefeedbackv5-cta1-confirmation-call',
+				'articlefeedbackv5-cta1-learn-how',
+				'articlefeedbackv5-cta1-edit-linktext',
 				'articlefeedbackv5-bucket1-title',
 				'articlefeedbackv5-bucket1-question-toggle',
 				'articlefeedbackv5-bucket1-toggle-found-yes',
