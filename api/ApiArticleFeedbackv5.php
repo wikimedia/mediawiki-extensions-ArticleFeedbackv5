@@ -39,7 +39,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 #			$this->dieUsage( 'ArticleFeedback is not enabled on this page', 'invalidpage' );
 #		}
 
-		$feedbackId   = $this->getFeedbackId( $params );
+		$feedbackId   = $this->newFeedback( $params );
 		$dbr          = wfGetDB( DB_SLAVE );
 		$pageId       = $params['pageid'];
 		$bucket       = $params['bucket'];
@@ -82,7 +82,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$this->updateRollupTables( $pageId, $revisionId );
 
 		if( $params['email'] ) {
-			$this->captureEmail ( $params['email'], json_encode( 
+			$this->captureEmail ( $params['email'], json_encode(
 				$email_data
 			) );
 		}
@@ -139,7 +139,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		# rating: int between 1 and 5 (inclusive)
 		# boolean: 1 or 0
 		# option_id: option exists
-		# text: none (maybe xss encode)
+		# text: none
 		switch ( $type ) {
 			case 'rating':
 				if ( preg_match( '/^(1|2|3|4|5)$/', $value ) ) {
@@ -302,12 +302,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	}
 
 	/**
-	 * Gets the feedback id
+	 * Creates a new feedback row and returns the id
 	 *
 	 * @param  $params array the parameters
 	 * @return int the feedback id
 	 */
-	public function getFeedbackId($params) {
+	public function newFeedback( $params ) {
 		global $wgUser;
 		$dbw       = wfGetDB( DB_MASTER );
 		$revId     = $params['revid'];
@@ -323,7 +323,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		# Fetch this if it wasn't passed in
 		if ( !$revId ) {
-			$revId = ApiArticleFeedbackv5Utils::getRevisionId($params['pageid']);
+			$revId = ApiArticleFeedbackv5Utils::getRevisionId( $params['pageid'] );
 		}
 
 		$dbw->insert( 'aft_article_feedback', array(
@@ -372,7 +372,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param  $bucket  int   the bucket id
 	 * @return int the cta id
 	 */
-	public function getCTAId($answers, $bucket) {
+	public function getCTAId( $answers, $bucket ) {
 		return 1; # Hard-code this for now.
 	}
 
@@ -386,30 +386,24 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'pageid' => array(
 				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI  => false,
 			),
 			'revid' => array(
 				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI  => false,
 			),
 			'anontoken' => null,
 			'bucket' => array(
 				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_MIN      => 0
 			),
 			'link' => array(
 				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_MIN      => 0
 			),
 			'email' => array(
 				ApiBase::PARAM_TYPE     => 'string',
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
 			)
 		);
 
