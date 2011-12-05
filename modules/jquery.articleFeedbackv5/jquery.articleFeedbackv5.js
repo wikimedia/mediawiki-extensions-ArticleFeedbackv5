@@ -1624,7 +1624,7 @@
 						'afpageid': $.articleFeedbackv5.pageId,
 						'afanontoken': $.articleFeedbackv5.userId,
 						'maxage': 0,
-						'smaxage': mw.config.get( 'wgArticleFeedbackSMaxage' )
+						'smaxage': mw.config.get( 'wgArticleFeedbackv5SMaxage' )
 					},
 					'success': function ( data ) {
 						// Get data
