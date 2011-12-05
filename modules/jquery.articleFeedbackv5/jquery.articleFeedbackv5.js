@@ -109,7 +109,7 @@
 	 * Use the mediawiki util resource's config method to find the correct url to
 	 * call for all ajax requests.
 	 */
-	$.articleFeedbackv5.apiUrl = mw.config.get( 'wgScriptPath' ) + '/api.php';
+	$.articleFeedbackv5.apiUrl = mw.util.wikiScript( 'api' );
 
 	/**
 	 * Is this an anonymous user?
@@ -240,7 +240,7 @@
 							<div class="clear"></div>\
 						</div>\
 						<div class="articleFeedbackv5-comment">\
-							<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
+							<textarea id="articleFeedbackv5-find-feedback" class="feedback-text" name="comment"></textarea>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
 							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
@@ -294,7 +294,7 @@
 					.html( $.articleFeedbackv5.buildLink(
 						'articlefeedbackv5-transparency-terms',
 						{
-							href: 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
+							href: mw.config.get( 'wgArticleFeedbackv5TermsPage' ),
 							text: 'articlefeedbackv5-transparency-terms-linktext',
 							target: '_blank'
 						} ) );
@@ -360,9 +360,6 @@
 					.keyup ( function () {
 						if( $( this ).val().length > 0 ) {
 							$.articleFeedbackv5.enableSubmission( true );
-//						} else {
-//							$.articleFeedbackv5.enableSubmission( false );
-
 						}
 					} )
 					.blur( function () {
@@ -482,7 +479,7 @@
 							<div class="clear"></div>\
 						</div>\
 						<div class="articleFeedbackv5-comment">\
-							<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
+							<textarea id="articleFeedbackv5-find-feedback" class="feedback-text" name="comment"></textarea>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
 							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
@@ -574,7 +571,7 @@
 					.html( $.articleFeedbackv5.buildLink(
 						'articlefeedbackv5-transparency-terms',
 						{
-							href: mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ),
+							href: mw.config.get( 'wgArticleFeedbackv5TermsPage' ),
 							text: 'articlefeedbackv5-transparency-terms-linktext',
 							target: '_blank'
 						} ) );
@@ -618,9 +615,6 @@
 					.keyup ( function () {
 						if( $( this ).val().length > 0 ) {
 							$.articleFeedbackv5.enableSubmission( true );
-//						} else {
-//							$.articleFeedbackv5.enableSubmission( false );
-
 						}
 					} )
 					.blur( function () {
@@ -679,7 +673,7 @@
 						if ( $c.val() == '') {
 							empty = true;
 						} else {
-							for ( t in $.articleFeedbackv5.currentBucket().commentDefault ) {
+							for ( var t in $.articleFeedbackv5.currentBucket().commentDefault ) {
 								if ( $c.val() == $.articleFeedbackv5.currentBucket().commentDefault[t] ) {
 									empty = true;
 								}
@@ -709,7 +703,7 @@
 				var data = {};
 				data.tag = $.articleFeedbackv5.find( '.articleFeedbackv5-tags input[checked]' ).val();
 				data.comment = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' ).val();
-				for ( t in $.articleFeedbackv5.currentBucket().commentDefault ) {
+				for ( var t in $.articleFeedbackv5.currentBucket().commentDefault ) {
 					if ( data.comment == $.articleFeedbackv5.currentBucket().commentDefault[t] ) {
 						data.comment = '';
 					}
@@ -773,7 +767,7 @@
 										<div class="articleFeedbackv5-rating-label" rel="3"></div>\
 										<div class="articleFeedbackv5-rating-label" rel="4"></div>\
 										<div class="articleFeedbackv5-rating-label" rel="5"></div>\
-										<div class="articleFeedbackv5-rating-clear" original-title="Remove this rating"></div>\
+										<div class="articleFeedbackv5-rating-clear"></div>\
 									</div>\
 								</div>\
 								<div style="clear:both;"></div>\
@@ -784,7 +778,7 @@
 							<div class="clear"></div>\
 						</div>\
 						<div class="articleFeedbackv5-comment">\
-							<textarea id="find-feedback" class="feedback-text" name="comment"></textarea>\
+							<textarea id="articleFeedbackv5-find-feedback" class="feedback-text" name="comment"></textarea>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
 							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
@@ -853,7 +847,7 @@
 					.html( $.articleFeedbackv5.buildLink(
 						'articlefeedbackv5-transparency-terms',
 						{
-							href: mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ),
+							href: mw.config.get( 'wgArticleFeedbackv5TermsPage' ),
 							text: 'articlefeedbackv5-transparency-terms-linktext',
 							target: '_blank'
 						} ) );
@@ -947,9 +941,6 @@
 					.keyup ( function () {
 						if( $( this ).val().length > 0 ) {
 							$.articleFeedbackv5.enableSubmission( true );
-//						} else {
-//							$.articleFeedbackv5.enableSubmission( false );
-
 						}
 					} )
 					.blur( function () {
@@ -1061,7 +1052,7 @@
 				block: '\
 					<div>\
 						<div class="form-row articleFeedbackv5-bucket4-toggle">\
-							<p class="sub-header"><strong><html:msg key="bucket4-subhead"></strong></p>\
+							<p class="sub-header"><strong><html:msg key="bucket4-subhead" /></strong></p>\
 							<p class="instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
 							<html:msg key="bucket4-teaser-line2" /></p>\
 						</div>\
@@ -1281,10 +1272,6 @@
 			 */
 			buildForm: function () {
 
-				// A single rating block
-				var rating_tpl = '\
-					';
-
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
@@ -1318,7 +1305,7 @@
 					.html( $.articleFeedbackv5.buildLink(
 						'articlefeedbackv5-bucket5-form-panel-helpimprove-note',
 						{
-							href: mw.util.wikiGetlink( mw.config.get( 'wgArticleFeedbackv5TermsPage' ) ), // TODO: Make this work
+							href: mw.config.get( 'wgArticleFeedbackv5TermsPage' ), // TODO: Make this work
 							text: 'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy'
 						}
 					) );
@@ -1622,7 +1609,6 @@
 						'format': 'json',
 						'list': 'articlefeedbackv5-view-ratings',
 						'afpageid': $.articleFeedbackv5.pageId,
-						'afanontoken': $.articleFeedbackv5.userId,
 						'maxage': 0,
 						'smaxage': mw.config.get( 'wgArticleFeedbackv5SMaxage' )
 					},
@@ -1637,7 +1623,7 @@
 							var msg = mw.msg ( 'articlefeedbackv5-error-response' );
 							if ( 'error' in data && 'info' in data.error ) {
 								msg = data.error.info;
-							} else {
+							} else if ( typeof console != 'undefined' ) {
 								console.log(data);
 							}
 							$.articleFeedbackv5.markShowstopperError( msg );
@@ -1793,13 +1779,14 @@
 					<div class="articleFeedbackv5-confirmation-panel">\
 						<div class="articleFeedbackv5-panel-leftContent">\
 							<div class="articleFeedbackv5-confirmation-text">\
-								<span class="articleFeedbackv5-confirmation-thanks">' + mw.msg( "articlefeedbackv5-cta1-thanks" ) + '</span> <span class="articleFeedbackv5-confirmation-follow-up">' + mw.msg( "articlefeedbackv5-cta1-confirmation-followup" ) + '</span>\
+								<span class="articleFeedbackv5-confirmation-thanks"><html:msg key="cta1-thanks" /></span>\
+								<span class="articleFeedbackv5-confirmation-follow-up"><html:msg key="cta1-confirmation-followup" /></span>\
 							</div>\
-							<h3 class="articleFeedbackv5-confirmation-title">' + mw.msg( "articlefeedbackv5-cta1-confirmation-title" ) + '</h3>\
-							<p class="articleFeedbackv5-confirmation-wikipediaWorks">' + mw.msg( "articlefeedbackv5-cta1-confirmation-call" ) + '</p>\
-							<p class="articleFeedbackv5-confirmation-learnHow"><a target="_blank" href="#">' + mw.msg("articlefeedbackv5-cta1-learn-how") + ' &raquo;</a></p>\
+							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta1-confirmation-title" /></h3>\
+							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta1-confirmation-call" /></p>\
+							<p class="articleFeedbackv5-confirmation-learnHow"><a target="_blank" href="#"><html:msg key="cta1-learn-how" /> &raquo;</a></p>\
 						</div>\
-						<a href="&amp;action=edit" class="articleFeedbackv5-edit-cta-link"><span class="ui-button-text">' + mw.msg( "articlefeedbackv5-cta1-edit-linktext" ) + '</span></a>\
+						<a href="&amp;action=edit" class="articleFeedbackv5-edit-cta-link"><span class="ui-button-text"><html:msg key="cta1-edit-linktext" /></span></a>\
 						<div class="clear"></div>\
 					</div>\
 					'
@@ -1928,7 +1915,7 @@
 			$.articleFeedbackv5.bucketId,
 			{ 'expires': cfg.expires, 'path': '/' }
 		);
-		if ( $.articleFeedbackv5.debug ) {
+		if ( $.articleFeedbackv5.debug && typeof console != 'undefined' ) {
 			console.log( 'Using bucket #' + $.articleFeedbackv5.bucketId );
 		}
 	};
@@ -2034,8 +2021,8 @@
 			bucket.enableSubmission( state );
 		}
 		$.articleFeedbackv5.submissionEnabled = state;
-		$( '#articleFeedbackv5-submit-bttn span' ).html( mw.msg( 'articlefeedbackv5-bucket1-form-submit' ) );
-		$( '#articleFeedbackv5-submit-bttn5 span' ).html( mw.msg( 'articlefeedbackv5-bucket5-form-panel-submit' ) );
+		$( '#articleFeedbackv5-submit-bttn span' ).text( mw.msg( 'articlefeedbackv5-bucket1-form-submit' ) );
+		$( '#articleFeedbackv5-submit-bttn5 span' ).text( mw.msg( 'articlefeedbackv5-bucket5-form-panel-submit' ) );
 	};
 
 	// }}}
@@ -2262,6 +2249,7 @@
 		if ( 'bindEvents' in cta ) {
 			cta.bindEvents( $block );
 		}
+		$block.localize( { 'prefix': 'articlefeedbackv5-' } );
 		if ( 'getTitle' in cta ) {
 			if ( $.articleFeedbackv5.inDialog ) {
 				$.articleFeedbackv5.$dialog.dialog( 'option', 'title', cta.getTitle() );
@@ -2315,22 +2303,22 @@
 	 * @param string message the message to display, if in dev
 	 */
 	$.articleFeedbackv5.markShowstopperError = function ( message ) {
-		console.log( message );
-		var msg_html = mw.msg( 'articlefeedbackv5-error' );
-		if ($.articleFeedbackv5.debug && message) {
-			msg_html = message.replace( "\n", '<br />' );
+		if ( typeof console != 'undefined' ) {
+			console.log( message );
 		}
-		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error-message' ).html( msg_html );
-		var veil = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' );
-		var box  = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' );
+		var $err = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error-message' );
+		$err.text( $.articleFeedbackv5.debug && message ? message : mw.msg( 'articlefeedbackv5-error' ) );
+		$err.html( $err.html().replace( "\n", '<br />' ) );
+		var $veil = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' );
+		var $box  = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-buffer' );
 		// TODO: Make this smarter -- on ubuntu/ff at least, using the
 		// offset puts it about 100px down from where it should be;
 		// this math corrects for it, but will most likely be wrong on
 		// other browsers
-		veil.css('top', box.find('.articleFeedbackv5-ui').offset().top / 2 + 10);
-		veil.css('width', box.width());
-		veil.css('height', box.height());
-		veil.show();
+		$veil.css('top', $box.find('.articleFeedbackv5-ui').offset().top / 2 + 10);
+		$veil.css('width', $box.width());
+		$veil.css('height', $box.height());
+		$veil.show();
 	};
 
 	// }}}
@@ -2368,7 +2356,9 @@
 			}
 		}
 		if ( $.articleFeedbackv5.debug ) {
-			console.log( errors );
+			if ( typeof console != 'undefined' ) {
+				console.log( errors );
+			}
 		}
 		if ( 'markFormErrors' in $.articleFeedbackv5.currentBucket() ) {
 			$.articleFeedbackv5.currentBucket().markFormErrors( errors );
