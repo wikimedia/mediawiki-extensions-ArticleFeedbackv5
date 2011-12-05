@@ -75,7 +75,7 @@ if ( $aftDiv.articleFeedbackv5( 'inDebug' ) ) {
 
 /* Add section links */
 if ( '1' == linkBucket ) {
-	var $wrp = $( '<span class="articleFeedbackv5-sectionlink-wrap"/>' )
+	var $wrp = $( '<span class="articleFeedbackv5-sectionlink-wrap"></span>' )
 		.html( '&nbsp;[<a href="#mw-articlefeedbackv5" class="articleFeedbackv5-sectionlink"></a>]' );
 	$wrp.find( 'a.articleFeedbackv5-sectionlink' )
 		.data( 'linkId', 1 )
@@ -90,7 +90,7 @@ if ( '1' == linkBucket ) {
 
 /* Add titlebar link */
 if ( '2' == linkBucket ) {
-	var $tlk = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-titlebarlink" />' )
+	var $tlk = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-titlebarlink"></span>' )
 		.data( 'linkId', 2 )
 		.text( mw.msg( 'articlefeedbackv5-titlebar-linktext' ) )
 		.click( function ( e ) {
