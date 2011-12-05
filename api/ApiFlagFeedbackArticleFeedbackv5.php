@@ -150,7 +150,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 * @return string the SVN version info
 	 */
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiFlagRatingsArticleFeedbackv5.php 103439 2011-11-17 03:19:01Z gregchiasson $';
+		return __CLASS__ . ': $Id$';
 	}
 
 	public function isWriteMode() { return true; }
