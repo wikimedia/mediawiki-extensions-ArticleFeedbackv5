@@ -36,7 +36,7 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 		$result_path   = array( 'query', $this->getModuleName() );
 		$revisionId    = ApiArticleFeedbackv5Utils::getRevisionId( $params['pageid'] );
 		$pageId	       = $params['pageid'];
-		$rollup        = $this->fetchPageRollup( $pageId );
+		$rollup        = $this->fetchRollup( $pageId );
 
 		$result->addValue( $result_path, 'pageid', $params['pageid'] );
 		$result->addValue( $result_path, 'status', 'current' );
@@ -51,29 +51,6 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 			);
 		}
 		$result->addValue( $result_path, 'rollup', $info );
-
-		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'aa' );
-	}
-
-	/**
-	 * Pulls the page rollup row
-	 *
-	 * @param  $pageId        int the page id
-	 * @return array          the rollup row
-	 */
-	public function fetchPageRollup( $pageId ) {
-		return $this->fetchRollup( $pageId, 0, 'page' );
-	}
-
-	/**
-	 * Pulls the revision rollup row
-	 *
-	 * @param  $pageId        int the page id
-	 * @param  $revisionLimit int [optional] go back only to this revision
-	 * @return array          the rollup row
-	 */
-	public function fetchRevisionRollup( $pageId, $revisionLimit = 0 ) {
-		return $this->fetchRollup( $pageId, $revisionLimit, 'revision' );
 	}
 
 	/**
@@ -85,20 +62,12 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 	 * @return array          the rollup row
 	 */
 	private function fetchRollup( $pageId, $revisionLimit, $type ) {
-		$dbr   = wfGetDB( DB_SLAVE );
-		$where = array();
-
-		if ( $type == 'page' ) {
-			$table   = 'article_feedback_ratings_rollup';
-			$prefix  = 'arr';
-		} else {
-			$table   = 'article_revision_feedback_ratings_rollup';
-			$prefix  = 'afrr';
-			$where[] = 'afrr_revision_id >= ' . $revisionLimit;
-		}
+		$dbr    = wfGetDB( DB_SLAVE );
+		$where  = array();
+		$table  = 'article_feedback_ratings_rollup';
+		$prefix = 'arr';
 		$where[$prefix . '_page_id']  = $pageId;
 		$where[] = $prefix . '_rating_id = afi_id';
-
 		$rows  = $dbr->select(
 			array( 'aft_' . $table, 'aft_article_field' ),
 			array(
@@ -124,20 +93,7 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getAllowedParams() {
 		return array(
-			'userrating' => 0,
-			'anontoken'  => null,
-			'userid'     => null,
-			'subaction'  => array(
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array( 'showratings', 'newform' ),
-			),
-			'revid'     => array(
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'integer',
-			),
-			'pageid'     => array(
+			'pageid' => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer',
@@ -152,9 +108,7 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getParamDescription() {
 		return array(
-			'pageid'    => 'Page ID to get feedback ratings for',
-			'revid'     => 'Rev ID to get feedback ratings for',
-			'anontoken' => 'Token for anonymous users',
+			'pageid' => 'Page ID to get feedback ratings for',
 		);
 	}
 
@@ -166,19 +120,6 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 	public function getDescription() {
 		return array(
 			'List article feedback ratings for a specified page'
-		);
-	}
-
-	/**
-	 * Gets any possible errors
-	 *
-	 * @return array the errors
-	 */
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-				array( 'missingparam', 'anontoken' ),
-				array( 'code' => 'invalidtoken', 'info' => 'The anontoken is not 32 characters' ),
-			)
 		);
 	}
 
