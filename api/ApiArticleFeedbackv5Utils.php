@@ -61,7 +61,7 @@ class ApiArticleFeedbackv5Utils {
 			// Page a redirect?
 			|| $title->isRedirect()
 		) {
-			// ...then feedback diabled
+			// ...then feedback disabled
 			return false;
 		}
 		return true;

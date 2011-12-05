@@ -20,8 +20,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	/**
 	 * Constructor
 	 */
-	public function __construct( $query, $moduleName ) {
-		parent::__construct( $query, $moduleName, '' );
+	public function __construct( $main, $action ) {
+		parent::__construct( $main, $action );
 	}
 
 	/**
