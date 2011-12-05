@@ -82,6 +82,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket3-rating-tooltip-3' => 'Average',
 	'articlefeedbackv5-bucket3-rating-tooltip-4' => 'Good',
 	'articlefeedbackv5-bucket3-rating-tooltip-5' => 'Very Good',
+	'articlefeedbackv5-bucket3-clear-rating' => 'Remove this rating',
 	'articlefeedbackv5-bucket3-comment-default' => 'Add a comment. How can this article be improved?',
 	'articlefeedbackv5-bucket3-form-submit' => 'Post your feedback',
 	/* Option 4 (just a big glossy edit button and some teaser text) */
@@ -285,6 +286,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-bucket3-rating-tooltip-3' => 'This is the text that appears under the rating stars when you roll over star #3',
 	'articlefeedbackv5-bucket3-rating-tooltip-4' => 'This is the text that appears under the rating stars when you roll over star #4',
 	'articlefeedbackv5-bucket3-rating-tooltip-5' => 'This is the text that appears under the rating stars when you roll over star #5',
+	'articlefeedbackv5-bucket3-clear-rating' => 'This is the tooltip that appears when you roll over the ratings-clear trash can icon',
 	'articlefeedbackv5-bucket3-comment-default' => 'This is the grey default text that appears in the comment box.',
 	'articlefeedbackv5-bucket3-form-submit' => 'This is the contents of the submit button for option 3 (a 1-5 star rating selector and a comment box)',
 	/* Option 4 (just a big glossy edit button and some teaser text) */

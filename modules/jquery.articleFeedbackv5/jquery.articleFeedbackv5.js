@@ -767,7 +767,7 @@
 							<div class="articleFeedbackv5-rating articleFeedbackv5-rating-new">\
 								<input type="hidden" name="rating" value="0">\
 								<div class="bucket3-rating">\
-									<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form">\
+									<div class="articleFeedbackv5-rating-labels articleFeedbackv5-visibleWith-form">\
 										<div class="articleFeedbackv5-rating-label" rel="1"></div>\
 										<div class="articleFeedbackv5-rating-label" rel="2"></div>\
 										<div class="articleFeedbackv5-rating-label" rel="3"></div>\
@@ -824,9 +824,18 @@
 
 				// Fill in the rating clear title
 				var clear_msg = mw.msg( 'articlefeedbackv5-bucket3-clear-rating' );
-				$block.find( '.articleFeedback-rating-clear' )
-					.attr( 'original-title', clear_msg ) // not sure what this is for... Sean?
+				$block.find( '.articleFeedbackv5-rating-clear' )
 					.attr( 'title', clear_msg );
+
+				// Activate tooltips
+				$block.find( '[title]' )
+					.tipsy( {
+						'gravity': 'sw',
+						'center': false,
+						'fade': true,
+						'delayIn': 300,
+						'delayOut': 100
+					} );
 
 				// Fill in the disclosure text
 				$block.find( '.articlefeedbackv5-shared-on-feedback' )
