@@ -62,14 +62,14 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_field_option (
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_answer (
-  -- FKEY to article_feedback.aa_id)
+  -- FKEY to article_feedback.af_id)
   aa_feedback_id        integer unsigned NOT NULL,
-  -- FKEY to article_fields.article_field_id)
+  -- FKEY to article_field.afi_id)
   aa_field_id           integer unsigned NOT NULL,
   aa_response_rating    integer NULL,
   aa_response_text      text NULL,
   aa_response_boolean   boolean NULL,
-  -- FKey to article_field_options.option_id)
+  -- FKey to article_field_options.afo_option_id)
   aa_response_option_id integer unsigned NULL,
   PRIMARY KEY (aa_feedback_id, aa_field_id)
 ) /*$wgDBTableOptions*/;
@@ -100,16 +100,16 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback_select_rollup (
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_revision_feedback_select_rollup (
-	arfsr_page_id     integer unsigned NOT NULL,
-	arfsr_revision_id integer unsigned NOT NULL,
-	arfsr_option_id   integer unsigned NOT NULL,
-	arfsr_total       integer unsigned NOT NULL,
-	arfsr_count       integer unsigned NOT NULL,
-	PRIMARY KEY (arfsr_revision_id, arfsr_option_id)
+  arfsr_page_id     integer unsigned NOT NULL,
+  arfsr_revision_id integer unsigned NOT NULL,
+  arfsr_option_id   integer unsigned NOT NULL,
+  arfsr_total       integer unsigned NOT NULL,
+  arfsr_count       integer unsigned NOT NULL,
+  PRIMARY KEY (arfsr_revision_id, arfsr_option_id)
 ) /*$wgDBTableOptions*/;
 
--- Mostyl taken from avtV4
-CREATE TABLE  IF NOT EXISTS /*_*/aft_article_feedback_properties (
+-- Mostly taken from AFTv4
+CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback_properties (
   -- Keys to article_feedback.aa_id
   afp_feedback_id integer unsigned NOT NULL,
   -- Key/value pair - allow text or numerical metadata
