@@ -146,26 +146,19 @@ class ArticleFeedbackv5Hooks {
 	 */
 	public static function loadExtensionSchemaUpdates( $updater = null ) {
 		if ( $updater === null ) {
-			// Guess that's it for now?
 			global $wgExtNewTables;
 			$wgExtNewTables[] = array(
 				'article_feedback',
 				dirname( __FILE__ ) . '/sql/ArticleFeedbackv5.sql'
 			);
 		} else {
-			# no-op, since we dobn't have upgrades yet.
+			$updater->addExtensionUpdate( array(
+				'addTable',
+				'article_feedback',
+				dirname( __FILE__ ) . '/sql/ArticleFeedbackv5.sql',
+				true
+			) );
 		}
-		return true;
-	}
-
-	/**
-	 * ParserTestTables hook
-	 */
-	public static function parserTestTables( &$tables ) {
-		$tables[] = 'article_feedback';
-		$tables[] = 'article_feedback_pages';
-		$tables[] = 'article_feedback_revisions';
-		$tables[] = 'article_feedback_properties';
 		return true;
 	}
 
