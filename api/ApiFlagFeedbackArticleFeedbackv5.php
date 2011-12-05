@@ -14,9 +14,9 @@
  * @subpackage Api
  */
 class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
-        public function __construct( $query, $moduleName ) {
-                parent::__construct( $query, $moduleName, 'af' );
-        }
+	public function __construct( $query, $moduleName ) {
+		parent::__construct( $query, $moduleName, 'af' );
+	}
 
 	/**
 	 * Execute the API call: Pull the requested feedback
