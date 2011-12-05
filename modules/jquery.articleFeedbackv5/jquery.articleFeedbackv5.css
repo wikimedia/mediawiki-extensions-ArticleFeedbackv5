@@ -10,7 +10,7 @@
 
 @media print {
 	.articleFeedbackv5 {
-		display:none;
+		display: none;
 	}
 }
 
@@ -479,11 +479,13 @@
 }
 
 .articleFeedbackv5-tooltip .tooltip-top {
+	/* @embed */
 	background: url(images/bg-tooltip-top.png);
 	height: 11px;
 }
 
 .articleFeedbackv5-tooltip .tooltip-repeat {
+	/* @embed */
 	background: url(images/bg-tooltip.png) repeat-y;
 	padding: 0 20px 1px;
 	margin: 0;
@@ -504,6 +506,7 @@
 }
 
 .articleFeedbackv5-tooltip .tooltip-bottom {
+	/* @embed */
 	background: url(images/bg-tooltip-bottom.png);
 	height: 26px;
 }
@@ -512,6 +515,7 @@
 	display: block;
 	height: 27px;
 	width: 26px;
+	/* @embed */
 	background: url(images/bg-tooltip-trigger.png) no-repeat;
 	float: right;
 	position: relative;
@@ -519,6 +523,7 @@
 }
 
 .articleFeedbackv5-tooltip-trigger:hover {
+	/* @embed */
 	background: url(images/bg-tooltip-trigger-hov.png) no-repeat;
 	cursor: pointer;
 	text-decoration: none;
@@ -558,6 +563,7 @@
 	text-align: center;
 	color: #333;
 	font-weight: bold;
+	/* @embed */
 	background: url(images/bg-button-disable.png) repeat-x;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -569,6 +575,7 @@
 }
 
 .articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder:hover {
+	/* @embed */
 	background: url(images/bg-button-hov.png) repeat-x;
 	cursor: pointer;
 	color: #333;
@@ -576,6 +583,7 @@
 
 .articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder-active,
 .articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder-active:hover {
+	/* @embed */
 	background: url(images/bg-button.png) repeat-x;
 	color: #fff;
 }
@@ -614,6 +622,7 @@
 	width: auto;
 	text-align: center;
 	padding: 0 10px;
+	/* @embed */
 	background: url(images/bg-submit.png) repeat-x !important;
 	margin: 10px 30px 0 0 !important;
 	border: none !important;
@@ -642,6 +651,7 @@
 	color: #fff;
 	/*text-shadow: 1px 1px 1px #000;*/
 	padding: 1px 30px 0 0;
+	/* @embed */
 	background: url(images/bg-submit-icon.png) right center no-repeat;
 }
 
@@ -680,6 +690,7 @@
 
 .articleFeedbackv5-tags ul li.active .tag-selector {
 	position: absolute;
+	/* @embed */
 	background: url(images/bg-tag-active.png) no-repeat center bottom;
 	display: block;
 	width: 15px;
@@ -703,18 +714,22 @@
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-suggestion-label {
+	/* @embed */
 	background: url(images/bg-tag-suggestion-on.png) no-repeat 0 center;
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-question-label {
+	/* @embed */
 	background: url(images/bg-tag-question-on.png) no-repeat 0 center;
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-problem-label {
+	/* @embed */
 	background: url(images/bg-tag-problem-on.png) no-repeat 0 center;
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-praise-label {
+	/* @embed */
 	background: url(images/bg-tag-praise-on.png) no-repeat 0 center;
 }
 
@@ -740,10 +755,12 @@
 
 /*** Option 3 ***/
 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label {
+	/* @embed */
 	background: url(images/bg-rating-off.png) no-repeat;
 }
 
 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.active {
+	/* @embed */
 	background: url(images/bg-rating-on.png) no-repeat;
 }
 
@@ -785,9 +802,11 @@ body .ui-dialog .ui-icon-closethick {
 	text-indent: -90000px;
 	width: 23px;
 	height: 22px;
+	/* @embed */
 	background: url(images/bg-close-off.png) no-repeat !important;
 }
 body .ui-dialog .ui-icon-closethick:hover {
+	/* @embed */
 	background: url(images/bg-close-hov.png) no-repeat !important;
 	border: none !important;
 }
@@ -826,6 +845,7 @@ body .ui-dialog .ui-icon-closethick:hover {
 	padding: 0 0 0 24px;
 	margin: 0 9px 0 0;
 	height: 25px;
+	/* @embed */
 	background: url(images/bg-confirmation-thanks.png) 0 center no-repeat;
 }
 .articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent .articleFeedbackv5-confirmation-learnHow {
@@ -837,6 +857,7 @@ body .ui-dialog .ui-icon-closethick:hover {
 	width: auto;
 	text-align: center;
 	padding: 0 10px;
+	/* @embed */
 	background: url(images/bg-submit.png) repeat-x !important;
 	margin: 10px 30px 0 0 !important;
 	border: none !important;
@@ -866,6 +887,7 @@ body .ui-dialog .ui-icon-closethick:hover {
 	/*text-shadow: 1px 1px 1px #000;*/
 	padding: 1px 30px 0 0;
 	margin: 8px 0 0;
+	/* @embed */
 	background: url(images/bg-submit-icon.png) right center no-repeat;
 }
 
@@ -910,6 +932,7 @@ body .ui-dialog .ui-icon-closethick:hover {
 	display: block;
 	height: 27px;
 	width: 26px;
+	/* @embed */
 	background: url(images/bg-close-off.png) no-repeat !important;
 	float: right;
 	position: relative;
@@ -918,8 +941,8 @@ body .ui-dialog .ui-icon-closethick:hover {
 }
 
 .articleFeedbackv5-clear-trigger:hover {
+	/* @embed */
 	background: url(images/bg-close-hov.png) no-repeat !important;
 	cursor: pointer;
 	text-decoration: none;
 }
-
