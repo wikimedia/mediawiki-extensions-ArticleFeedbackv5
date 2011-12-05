@@ -8,7 +8,7 @@
  */
 
 /**
- * This class pulls the individual ratings/comments for the feedback page. 
+ * This class pulls the individual ratings/comments for the feedback page.
  *
  * @package    ArticleFeedback
  * @subpackage Api
@@ -31,7 +31,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$result   = $this->getResult();
 		$pageId   = $params['pageid'];
 		$length   = 0;
-		$count    = $this->fetchFeedbackCount( 
+		$count    = $this->fetchFeedbackCount(
 		 $params['pageid'], $params['filter'] );
 		$feedback = $this->fetchFeedback(
 			$params['pageid'],
@@ -91,7 +91,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		);
 	}
 
-	public function fetchFeedback( $pageId, 
+	public function fetchFeedback( $pageId,
 	 $filter = 'visible', $order = 'newest', $limit = 25, $offset = 0 ) {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$ids   = array();
@@ -100,10 +100,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$where = $this->getFilterCriteria( $filter );
 		$order;
 
+		# Newest first is the only option right now.
 		switch($order) {
 			case 'newest':
-				$order = 'af_id DESC';
-				break;
 			default:
 				$order = 'af_id DESC';
 				break;
@@ -112,16 +111,16 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$where['af_page_id'] = $pageId;
 
 		/* I'd really love to do this in one big query, but MySQL
-		   doesn't support LIMIT inside IN() subselects, and since 
+		   doesn't support LIMIT inside IN() subselects, and since
 		   we don't know the number of answers for each feedback
 		   record until we fetch them, this is the only way to make
 		   sure we get all answers for the exact IDs we want. */
 		$id_query = $dbr->select(
 			'aft_article_feedback', 'af_id', $where, __METHOD__,
-			array( 
-				'LIMIT'    => $limit, 
+			array(
+				'LIMIT'    => $limit,
 				'OFFSET'   => $offset,
-				'ORDER BY' => $order 
+				'ORDER BY' => $order
 			)
 		);
 		foreach($id_query as $id) {
@@ -129,11 +128,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 
 		$rows  = $dbr->select(
-			array( 'aft_article_feedback', 'aft_article_answer', 
+			array( 'aft_article_feedback', 'aft_article_answer',
 				'aft_article_field', 'aft_article_field_option'
 			),
 			array( 'af_id', 'af_bucket_id', 'afi_name', 'afo_name',
-				'aa_response_text', 'aa_response_boolean', 
+				'aa_response_text', 'aa_response_boolean',
 				'aa_response_rating', 'aa_response_option_id',
 				'afi_data_type', 'af_created', 'af_user_text',
 				'af_hide_count', 'af_abuse_count'
@@ -149,7 +148,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 					'LEFT JOIN', 'af_id = aa_feedback_id'
 				),
 				'aft_article_field_option' => array(
-					'LEFT JOIN', 
+					'LEFT JOIN',
 					'aa_response_option_id = afo_option_id'
 				)
 			)
@@ -208,26 +207,26 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		return $rv;
 	}
 
-	private function renderBucket1( $record ) { 
+	private function renderBucket1( $record ) {
 		$name  = $record[0]->af_user_text;
 		if( $record['found']->aa_response_boolean ) {
-			$found = wfMsg( 
+			$found = wfMsg(
 				'articlefeedbackv5-form1-header-found',
 				$name
 			);
 		} else {
-			$found = wfMsg( 
+			$found = wfMsg(
 				'articlefeedbackv5-form1-header-not-found',
 				$name
 			);
 
 		}
-		return "$found 
+		return "$found
 		<blockquote>".$record['comment']->aa_response_text
 		.'</blockquote>';
 	}
 
-	private function renderBucket2( $record ) { 
+	private function renderBucket2( $record ) {
 		$name = $record[0]->af_user_text;
 		$type = $record['tag']->afo_name;
 		return wfMsg( 'articlefeedbackv5-form2-header', $name, $type )
@@ -235,7 +234,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		.'</blockquote>';
 	}
 
-	private function renderBucket3( $record ) { 
+	private function renderBucket3( $record ) {
 		$name   = $record[0]->af_user_text;
 		$rating = $record['rating']->aa_response_rating;
 		return wfMsg( 'articlefeedbackv5-form3-header', $name, $rating )
@@ -243,11 +242,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		.'</blockquote>';
 	}
 
-	private function renderBucket4( $record ) { 
+	private function renderBucket4( $record ) {
 		return wfMsg( 'articlefeedbackv5-form4-header' );
 	}
 
-	private function renderBucket5( $record ) { 
+	private function renderBucket5( $record ) {
 		$name  = $record[0]->af_user_text;
 		$rv = wfMsg( 'articlefeedbackv5-form5-header', $name );
 		$rv .= '<ul>';
@@ -261,16 +260,16 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		return $rv;
 	}
 
-	private function renderBucket0( $record ) { 
+	private function renderBucket0( $record ) {
 		# Future-proof this for when the bucket ID changes to 0.
 		return $this->renderBucket6( $record );
 	}
 
-	private function renderNoBucket( $record ) { 
+	private function renderNoBucket( $record ) {
 		return wfMsg( 'articlefeedbackv5-form-invalid' );
 	}
 
-	private function renderBucket6( $record ) { 
+	private function renderBucket6( $record ) {
 		return wfMsg( 'articlefeedbackv5-form-not-shown' );
 	}
 
@@ -289,13 +288,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'sort'      => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array( 
+				ApiBase::PARAM_TYPE     => array(
 				 'oldest', 'newest', 'etc' )
 			),
 			'filter'    => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array( 
+				ApiBase::PARAM_TYPE     => array(
 				 'all', 'hidden', 'visible' )
 			),
 			'limit'     => array(
