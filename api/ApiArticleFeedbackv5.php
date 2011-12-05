@@ -323,7 +323,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		# Fetch this if it wasn't passed in
 		if ( !$revId ) {
-			$revId = ApiArticleFeedbackv5Utils::getRevisionId( $params['pageid'] );
+			$title = Title::newFromID( $params['pageid'] );
+			$revId = $title->getLatestRevID();
 		}
 
 		$dbw->insert( 'aft_article_feedback', array(

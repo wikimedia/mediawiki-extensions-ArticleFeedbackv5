@@ -51,7 +51,7 @@ class ApiArticleFeedbackv5Utils {
 	 * @return bool
 	 */
 	public static function isFeedbackEnabled( $params ) {
-		global $wgArticleFeedbackNamespaces;
+		global $wgArticleFeedbackv5Namespaces;
 		$title = Title::newFromID( $params['pageid'] );
 		if (
 			// not an existing page?
@@ -90,32 +90,11 @@ class ApiArticleFeedbackv5Utils {
 	}
 
 	/**
-	 * Gets the most recent revision id for a page id
-	 *
-	 * @param  $pageId int the page id
-	 * @return int the revision id
-	 */
-	public static function getRevisionId( $pageId ) {
-		$dbr   = wfGetDB( DB_SLAVE );
-		$revId = $dbr->selectField(
-			'revision', 'rev_id',
-			array( 'rev_page' => $pageId ),
-			__METHOD__,
-			array(
-				'ORDER BY' => 'rev_id DESC',
-				'LIMIT'    => 1
-			)
-		);
-
-		return $revId;
-	}
-
-	/**
 	 * Gets the known feedback fields
 	 *
 	 * TODO: use memcache
 	 *
-	 * @return array the rows in the aft_article_field table
+	 * @return ResultWrapper the rows in the aft_article_field table
 	 */
 	public static function getFields() {
 		$dbr = wfGetDB( DB_SLAVE );
@@ -147,9 +126,6 @@ class ApiArticleFeedbackv5Utils {
 		);
 		$rv = array();
 		foreach ( $rows as $row ) {
-			if ( !isset( $rv[$row->afo_field_id] ) ) {
-				$rv[$row->afo_field_id] = array();
-			}
 			$rv[$row->afo_field_id][$row->afo_option_id] = $row->afo_name;
 		}
 		return $rv;

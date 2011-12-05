@@ -34,7 +34,6 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 		$params        = $this->extractRequestParams();
 		$result        = $this->getResult();
 		$result_path   = array( 'query', $this->getModuleName() );
-		$revisionId    = ApiArticleFeedbackv5Utils::getRevisionId( $params['pageid'] );
 		$pageId	       = $params['pageid'];
 		$rollup        = $this->fetchRollup( $pageId );
 
