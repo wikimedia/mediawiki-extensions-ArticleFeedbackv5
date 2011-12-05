@@ -35,13 +35,13 @@ $wgArticleFeedbackv5BlacklistCategories = array();
 // Default to $wgContentNamespaces (defaults to array( NS_MAIN ) ).
 $wgArticleFeedbackv5Namespaces = $wgContentNamespaces;
 
-// Articles not categorized as on of the values in $wgArticleFeedbackv5Categories can still have the
-// tool psudo-randomly activated by applying the following odds to a lottery based on $wgArticleId.
+// Articles not categorized as one of the values in $wgArticleFeedbackv5Categories can still have the
+// tool pseudo-randomly activated by applying the following odds to a lottery based on wgArticleId.
 // The value can be a floating point number (percentage) in range of 0 - 100. Tenths of a percent
 // are the smallest increments used.
 $wgArticleFeedbackv5LotteryOdds = 0;
 
-// This puts the javascript into debug mode. In debug mode, you can set your
+// This puts the JavaScript into debug mode. In debug mode, you can set your
 // own bucket by passing it in the url (e.g., ?bucket=1), and the showstopper
 // error mode will have a useful error message, if one exists, rather than the
 // default message.
@@ -86,8 +86,8 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 $wgArticleFeedbackv5Tracking = array(
 	// Not all users need to be tracked, but we do want to track some users over time - these
 	// buckets are used when deciding to track someone or not, placing them in one of two buckets:
-	// "ignore" or "track". When $wgArticleFeedbackv5TrackingVersion changes, users will be
-	// re-bucketed, so you should always increment $wgArticleFeedbackv5TrackingVersion when changing
+	// "ignore" or "track". When the 'version' key changes, users will be
+	// re-bucketed, so you should always increment the 'version' key when changing
 	// this number to ensure the new odds are applied to everyone, not just people who have yet to
 	// be placed in a bucket.
 	'buckets' => array(
