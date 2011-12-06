@@ -18,10 +18,18 @@ if ( $( '#catlinks' ).length && $.inArray( mw.config.get( 'skin' ), legacyskins 
 
 /* Setup for feedback links */
 
-// Only track users who have been assigned to the tracking group
-var useClickTracking = 'track' === mw.user.bucket(
-	'ext.articleFeedbackv5-tracking', mw.config.get( 'wgArticleFeedbackv5Tracking' )
-);
+// Only track users who have been assigned to the tracking group; don't bucket
+// at all if we're set to always ignore or always track.
+var useClickTracking = function () {
+	var b = mw.config.get( 'wgArticleFeedbackv5Tracking' );
+	if ( b.buckets.ignore == 100 && b.buckets.track == 0 ) {
+		return false;
+	}
+	if ( b.buckets.ignore == 0 && b.buckets.track == 100 ) {
+		return true;
+	}
+	return ( 'track' === mw.user.bucket( 'ext.articleFeedbackv5-tracking', b ) );
+}();
 
 // Info about each of the links
 var linkInfo = {
