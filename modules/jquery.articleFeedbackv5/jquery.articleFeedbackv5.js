@@ -631,7 +631,7 @@
 				// Attach the submit
 				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
-						console.log( 'got to click event' );
+						//alert( 'got to click event' );
 						e.preventDefault();
 						$.articleFeedbackv5.submitForm();
 					} );
@@ -2028,6 +2028,13 @@
 	 * @param state bool true to enable; false to disable
 	 */
 	$.articleFeedbackv5.enableSubmission = function ( state ) {
+        // this is actually required to resolve jQuery behavior of not triggering the
+        // click event when .blur() occurs on the textarea and .click() is supposed to
+        // be triggered on the button.
+        if($.articleFeedbackv5.submissionEnabled == state ) {
+            return;
+        }
+        
 		if ( state ) {
 			$.articleFeedbackv5.find( '.articleFeedbackv5-submit' ).button( 'enable' );
 		} else {
