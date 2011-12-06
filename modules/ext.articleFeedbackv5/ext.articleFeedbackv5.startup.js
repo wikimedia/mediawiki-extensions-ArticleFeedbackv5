@@ -26,11 +26,6 @@ jQuery( function( $ ) {
 		// Not viewing the printable version
 		&& mw.util.getParamValue( 'printable' ) != 'yes'
 	) {
-		// Assign a tracking bucket using options from wgArticleFeedbackv5Tracking
-		mw.user.bucket(
-			'ext.articleFeedbackv5-tracking', mw.config.get( 'wgArticleFeedbackv5Tracking' )
-		);
-
 		// Collect categories for intersection tests
 		var categories = {
 			'include': mw.config.get( 'wgArticleFeedbackv5Categories', [] ),

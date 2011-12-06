@@ -1152,8 +1152,9 @@
 
 			/**
 			 * Only certain users can see the expertise checkboxes and email
+			 * (bucketed on init)
 			 */
-			showOptions: 'show' === mw.user.bucket( 'ext.articleFeedbackv5-options', mw.config.get( 'wgArticleFeedbackv5Options' ) ),
+			showOptions: false,
 
 			/**
 			 * Whether we need to load the aggregate ratings the next time the button is
@@ -1244,6 +1245,17 @@
 					</div>\
 					'
 
+			},
+
+			// }}}
+			// {{{ init
+
+			/**
+			 * Initializes the bucket
+			 */
+			init: function () {
+				var opt = mw.user.bucket( 'ext.articleFeedbackv5-options', mw.config.get( 'wgArticleFeedbackv5Options' ) )
+				$.articleFeedbackv5.currentBucket().showOptions = ( 'show' === opt );
 			},
 
 			// }}}
@@ -1867,6 +1879,10 @@
 		$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' ) ? true : false;
 		// Go ahead and bucket right away
 		$.articleFeedbackv5.selectBucket();
+		// Anything the bucket needs to do?
+		if ( 'init' in $.articleFeedbackv5.currentBucket() ) {
+			$.articleFeedbackv5.currentBucket().init();
+		}
 		// When the tool is visible, load the form
 		$.articleFeedbackv5.$holder.appear( function () {
 			if ( !$.articleFeedbackv5.isLoaded ) {
