@@ -631,6 +631,7 @@
 				// Attach the submit
 				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
+						console.log( 'got to click event' );
 						e.preventDefault();
 						$.articleFeedbackv5.submitForm();
 					} );
@@ -2028,9 +2029,9 @@
 	 */
 	$.articleFeedbackv5.enableSubmission = function ( state ) {
 		if ( state ) {
-			$.articleFeedbackv5.find( '.articleFeedbackv5-submit' ).button( { 'disabled': false } );
+			$.articleFeedbackv5.find( '.articleFeedbackv5-submit' ).button( 'enable' );
 		} else {
-			$.articleFeedbackv5.find( '.articleFeedbackv5-submit' ).button( { 'disabled': true } );
+			$.articleFeedbackv5.find( '.articleFeedbackv5-submit' ).button( 'disable' );
 		}
 		var bucket = $.articleFeedbackv5.currentBucket();
 		if ( 'enableSubmission' in bucket ) {
