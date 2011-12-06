@@ -117,10 +117,10 @@ $wgArticleFeedbackv5Options = array(
 // Bucket settings for links to the feedback form
 $wgArticleFeedbackv5LinkBuckets = array(
 	// Users can fall into one of several buckets for links.  These are:
-	//  0: No link; user must scroll to the bottom of the page
-	//  1: Section bars
-	//  2: Title bar
-	//  3: Vertical button
+	//  -: No link; user must scroll to the bottom of the page
+	//  A: Section bars
+	//  B: Title bar
+	//  C: Vertical button
 	'buckets' => array(
 		'-' => 0,
 		'A' => 0,

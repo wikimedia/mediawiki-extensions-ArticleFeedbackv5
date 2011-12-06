@@ -290,12 +290,6 @@ class ArticleFeedbackv5Hooks {
 		$ctaId = $wgRequest->getVal( 'articleFeedbackv5_cta_id' );
 		$bucketId = $wgRequest->getVal( 'articleFeedbackv5_bucket_id' );
 
-error_log('Tracking!');
-error_log(var_export($feedbackId, true));
-error_log(var_export($ctaId, true));
-error_log(var_export($bucketId, true));
-error_log(var_export($article->getTitle()->getText(), true));
-
 		return true;
 	}
 
