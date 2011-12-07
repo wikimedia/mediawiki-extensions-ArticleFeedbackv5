@@ -10,8 +10,7 @@
 	$.articleFeedbackv5special.offset  = 0;
 	$.articleFeedbackv5special.showing = 0;
 
-	$.articleFeedbackv5special.apiUrl = mw.config.get( 'wgScriptPath' ) 
-	 + '/api.php';
+	$.articleFeedbackv5special.apiUrl = mw.util.wikiScript('api'); //config.get( 'wgScriptPath' ) + '/api.php';
 
 
 	$.articleFeedbackv5special.setBinds = function() {
@@ -51,7 +50,6 @@
 		$.articleFeedbackv5special.flagFeedback( id, 'abuse' );
 	}
 
-	// TODO: User ID?
 	$.articleFeedbackv5special.flagFeedback = function ( id, type ) {
 		$.ajax( {
 			'url'     : $.articleFeedbackv5special.apiUrl,
@@ -61,7 +59,7 @@
 				'affeedbackid': id,
 				'afflagtype'  : type,
 				'format' : 'json',
-				'action' : 'articlefeedbackv5-flag-feedback',
+				'action' : 'articlefeedbackv5-flag-feedback'
 			},
 			'success': function ( data ) {
 				// TODO check output and error if needed
@@ -88,17 +86,14 @@
 				'action'  : 'query',
 				'format'  : 'json',
 				'list'    : 'articlefeedbackv5-view-feedback',
-				'maxage'  : 0,
+				'maxage'  : 0
 			},
 			'success': function ( data ) {
 				if ( 'data' in data ) {
-					$( '#aft5-show-feedback' ).html(
-						$( '#aft5-show-feedback' ).html() + data.data.feedback
-					);
-
+					$( '#aft5-show-feedback' ).append( data.data.feedback);
 					$.articleFeedbackv5special.showing += data.data.length;
-					$( '#aft5-feedback-count-shown' ).html( $.articleFeedbackv5special.showing );
-					$( '#aft5-feedback-count-total' ).html( data.data.count );
+					$( '#aft5-feedback-count-shown' ).text( $.articleFeedbackv5special.showing );
+					$( '#aft5-feedback-count-total' ).text( data.data.count );
 					if ( $.articleFeedbackv5special.showing >= data.data.count ) {
 						$( '#aft5-show-more' ).hide();
 					}
