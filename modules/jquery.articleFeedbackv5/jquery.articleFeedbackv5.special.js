@@ -1,17 +1,14 @@
 ( function ( $ ) {
 	$.articleFeedbackv5special = {};
 
-	// TODO: Pass this in from the PHP side. Add it to mwConfig or w/e?
-	//$.articleFeedbackv5special.page   = mw.config.get( 'wgPageId' );
+	// TODO: Pass this in better from the PHP side.
 	$.articleFeedbackv5special.page    = hackPageId;
 	$.articleFeedbackv5special.filter  = 'all';
 	$.articleFeedbackv5special.sort    = 'newest';
 	$.articleFeedbackv5special.limit   = 25;
 	$.articleFeedbackv5special.offset  = 0;
 	$.articleFeedbackv5special.showing = 0;
-
-	$.articleFeedbackv5special.apiUrl = mw.util.wikiScript('api'); //config.get( 'wgScriptPath' ) + '/api.php';
-
+	$.articleFeedbackv5special.apiUrl  = undefined; 
 
 	$.articleFeedbackv5special.setBinds = function() {
 		$( '#aft5-filter' ).bind( 'change', function(e) {
@@ -110,8 +107,14 @@
 } )( jQuery );
 
 $( document ).ready( function() {
+	// This was failing sometimes when it was in the function above.
+	// I think it maky have been a race condition.
+	$.articleFeedbackv5special.apiUrl  = mw.util.wikiScript('api');
+
 	// Blank out the 'loading' text
 	$( '#aft5-show-feedback' ).text( ' ' );
+
+	// Set up event binds and do initial data fetch.
 	$.articleFeedbackv5special.setBinds();
 	$.articleFeedbackv5special.loadFeedback();
 } );
