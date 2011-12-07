@@ -53,18 +53,27 @@
 			'type'    : 'POST',
 			'dataType': 'json',
 			'data'    : {
-				'affeedbackid': id,
-				'afflagtype'  : type,
-				'format' : 'json',
-				'action' : 'articlefeedbackv5-flag-feedback'
+				'feedbackid': id,
+				'flagtype'  : type,
+				'format'    : 'json',
+				'action'    : 'articlefeedbackv5-flag-feedback'
 			},
 			'success': function ( data ) {
-				// TODO check output and error if needed
-				$( '#aft5-' + type + '-link-' + id ).text(
-					mw.msg( 'articlefeedbackv5-' + type + '-saved' )
-				);
+				var msg = 'articlefeedbackv5-error-flagging';
+				if ( 'articlefeedbackv5-flag-feedback' in data ) {
+					if ( 'result' in data['articlefeedbackv5-flag-feedback'] ) {
+						if( data['articlefeedbackv5-flag-feedback'].result == 'Success' ) {
+							msg = 'articlefeedbackv5-' + type + '-saved';
+						} else if (data['articlefeedbackv5-flag-feedback'].result == 'Error' ) {
+							msg = data['articlefeedbackv5-flag-feedback'].reason;
+						}
+					}
+				}
+				$( '#aft5-' + type + '-link-' + id ).text( mw.msg( msg ) );
+			},
+			'failure': function ( data ) {
+				$( '#aft5-' + type + '-link-' + id ).text( mw.msg( 'articlefeedbackv5-error-flagging' ) );
 			}
-			// TODO have a callback for failures.
 		} );
 		return false;
 	}

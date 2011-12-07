@@ -132,6 +132,13 @@ class ArticleFeedbackv5Hooks {
 		'jquery.articleFeedbackv5.special' => array(
 			'scripts ' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js',
 			'styles'   => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css',
+			'messages' => array(
+				'articlefeedbackv5-error-flagging',
+				'articlefeedbackv5-invalid-feedback-id',
+				'articlefeedbackv5-invalid-feedback-flag',
+        			'articlefeedbackv5-abuse-saved',
+				'articlefeedbackv5-hide-saved',
+			),
 		),
 	);
 

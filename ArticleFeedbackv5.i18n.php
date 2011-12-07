@@ -23,6 +23,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-unknown' => 'Unknown error',
 	'articlefeedbackv5-error-submit' => 'Form submission error.',
 	'articlefeedbackv5-error-nofeedback' => 'Please enter your feedback.',
+	'articlefeedbackv5-error-flagging' => 'Error flagging feedback.',
 
 	// Article Feedback special page.
 	'articlefeedbackv5-form-optionid' => 'Option $1',
