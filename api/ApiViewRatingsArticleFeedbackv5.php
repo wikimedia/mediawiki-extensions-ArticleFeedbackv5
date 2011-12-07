@@ -45,8 +45,8 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 			$info[$row->field_name] = array(
 				'ratingdesc' => $row->field_name,
 				'ratingid'   => (int) $row->field_id,
-				'total'      => (int) $row->points,
-				'count'      => (int) $row->reviews,
+				'total'      => (int) $row->arr_total,
+				'count'      => (int) $row->add_count,
 			);
 		}
 		$result->addValue( $result_path, 'rollup', $info );
@@ -58,28 +58,26 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 	 * @param  $pageId        int    the page id
 	 * @param  $revisionLimit int    go back only to this revision
 	 * @param  $type          string the type of row to fetch ('page' or 'revision')
-	 * @return array          the rollup row
+	 * @return array          the rollup rows
 	 */
 	private function fetchRollup( $pageId, $revisionLimit, $type ) {
 		$dbr    = wfGetDB( DB_SLAVE );
 		$where  = array();
 		$table  = 'article_feedback_ratings_rollup';
-		$prefix = 'arr';
-		$where[$prefix . '_page_id']  = $pageId;
-		$where[] = $prefix . '_rating_id = afi_id';
+		$where['arr_page_id']  = $pageId;
+		$where[] = 'arr_rating_id = afi_id';
 		$rows  = $dbr->select(
-			array( 'aft_' . $table, 'aft_article_field' ),
+			array( 
+				'aft_article_feedback_ratings_rollup', 
+				'aft_article_field' ),
 			array(
 				'afi_name AS field_name',
-				$prefix . '_rating_id AS field_id',
-				'SUM(' . $prefix . '_total) AS points',
-				'SUM(' . $prefix . '_count) AS reviews',
+				'arr_rating_id AS field_id',
+				'arr_total',
+				'arr_count',
 			),
 			$where,
 			__METHOD__,
-			array(
-				'GROUP BY' => $prefix . '_rating_id, afi_name'
-			)
 		);
 
 		return $rows;
@@ -94,7 +92,6 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 		return array(
 			'pageid' => array(
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer',
 			)
 		);
