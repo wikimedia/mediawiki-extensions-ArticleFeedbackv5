@@ -2205,7 +2205,6 @@
 		var data = $.extend( formdata, {
 			'action': 'articlefeedbackv5',
 			'format': 'json',
-			'anontoken': $.articleFeedbackv5.userId,
 			'pageid': $.articleFeedbackv5.pageId,
 			'revid': $.articleFeedbackv5.revisionId,
 			'bucket': $.articleFeedbackv5.bucketId,

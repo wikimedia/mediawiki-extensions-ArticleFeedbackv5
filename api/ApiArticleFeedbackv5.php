@@ -16,6 +16,8 @@
  * @subpackage Api
  */
 class ApiArticleFeedbackv5 extends ApiBase {
+	// Cache this, so we don't have to look it up every time.
+	private $revision_limit = null;
 
 	/**
 	 * Constructor
@@ -44,14 +46,15 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$pageId       = $params['pageid'];
 		$bucket       = $params['bucket'];
 		$revisionId   = $params['revid'];
+		$error        = null;
+		$user_answers = array();
+		$fields       = ApiArticleFeedbackv5Utils::getFields();
 		$email_data   = array(
 			'ratingData' => array(),
 			'pageID'     => $pageId,
 			'bucketId'   => $bucket
 		);
 
-		$user_answers = array();
-		$fields = ApiArticleFeedbackv5Utils::getFields();
 		foreach ( $fields as $field ) {
 			if ( $field->afi_bucket_id != $bucket ) {
 				continue;
@@ -73,9 +76,16 @@ class ApiArticleFeedbackv5 extends ApiBase {
 					$user_answers[] = $data;
 					$email_data['ratingData'][$field->afi_name] = $value;
 				} else {
-					// TODO: ERROR
+					$error = 'articlefeedbackv5-error-validation';
 				}
 			}
+		}
+
+		if($error) {
+			$this->getResult()->addValue(
+				null, 'error', $error
+			);
+			return;
 		}
 
 		$ctaId = $this->saveUserRatings( $user_answers, $feedbackId, $bucket );
@@ -91,10 +101,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			wfAppendQuery( wfScript( 'api' ), array(
 				'action'       => 'query',
 				'format'       => 'json',
-				'list'         => 'articlefeedback',
+				'list'         => 'articlefeedbackv5-view-ratings',
 				'afpageid'     => $pageId,
-				'afanontoken'  => '',
-				'afuserrating' => 0,
 				'maxage'       => 0,
 				'smaxage'      => $wgArticleFeedbackv5SMaxage
 			) )
@@ -183,11 +191,34 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	}
 
 	/**
+	 * Cache result of ApiArticleFeedbackv5Utils::getRevisionLimit to avoid
+	 * multiple fetches. 
+	
+	 * @param $pageID   int    the page id
+ 	 * @return int             the oldest revision to still count	
+	 */
+	public function getRevisionLimit( $pageId ) {
+		if( $this->revision_limit === null ) {
+			$this->revision_limit = ApiArticleFeedbackv5Utils::getRevisionLimit( $pageId );
+		}
+		return $this->revision_limit;
+	}
+
+	/**
 	 * Update the rollup tables
 	 *
 	 * @param $page     int    the page id
 	 * @param $revision int    the revision id
 	 * @param $type     string the type (rating, select, or boolean)
+
+	 * Selects feedback across the last $wgArticleFeedbackv5RatingLifetime
+	 * revisions of this page, grouped by revisionId. Each revision row
+	 * is replaced, as well as the page-level one in that rollup, which is
+	 * the sum of all revision-level rollups. We don't know if the revision
+	 * window has changed, so every time we're checking for the relevent
+	 * revisions and replacing the page value, as old revisions fall out of
+	 * the window.
+
 	 */
 	private function updateRollup( $pageId, $revId, $type ) {
 		# sanity check
@@ -198,7 +229,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		global $wgArticleFeedbackv5RatingLifetime;
 		$dbr        = wfGetDB( DB_SLAVE );
 		$dbw        = wfGetDB( DB_MASTER );
-		$limit      = ApiArticleFeedbackv5Utils::getRevisionLimit( $pageId );
+		$limit      = $this->getRevisionLimit( $pageId );
 		$page_data  = array();
 		$rev_data   = array();
 		$rev_table  = 'aft_article_revision_feedback_'
@@ -239,13 +270,17 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$group
 		);
 
-		# Fake the select counts, because we want to group by ughhh
+		// We've already grouped by option_id, so in order to get
+		// counts grouped by field_id, we need to sum them up here.
+		// Necessary for select rollups, unused on ratings/booleans.
 		$totals = array();
-		foreach ( $rows as $row ) {
-			if( !array_key_exists( $row->aa_field_id, $totals ) ) {
-				$totals[$row->aa_field_id] = 0;
+		if( $type == 'option_id' ) {
+			foreach ( $rows as $row ) {
+				if( !array_key_exists( $row->aa_field_id, $totals ) ) {
+					$totals[$row->aa_field_id] = 0;
+				}
+				$totals[$row->aa_field_id] += $row->earned;
 			}
-			$totals[$row->aa_field_id] += $row->earned;
 		}
 
 		foreach ( $rows as $row ) {
@@ -415,7 +450,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
 			),
-			'anontoken' => null,
 			'bucket' => array(
 				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,

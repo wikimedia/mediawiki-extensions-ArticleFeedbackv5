@@ -147,7 +147,10 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback_properties (
   PRIMARY KEY (afp_feedback_id, afp_key)
 ) /*$wgDBTableOptions*/;
 
--- TODO: Add indices
+-- TODO: Add indicesafi_data_type);
+CREATE INDEX /*i*/af_page_revision ON /*_*/aft_article_feedback (af_page_id, af_revision_id);
+CREATE INDEX /*i*/afi_data_type ON /*_*/aft_article_field (afi_data_type);
+CREATE INDEX /*i*/aa_feedback_field_option ON /*_*/aft_article_answer (aa_feedback_id, aa_field_id, aa_response_option_id);
 
 INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('found', 'boolean', 1);
 INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('comment', 'text', 1);
