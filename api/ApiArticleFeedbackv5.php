@@ -450,6 +450,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
 			),
+			'anontoken' => null,
 			'bucket' => array(
 				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
