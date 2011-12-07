@@ -63,7 +63,7 @@
 			},
 			'success': function ( data ) {
 				// TODO check output and error if needed
-				$( '#aft5-' + type + '-link-' + id ).html(
+				$( '#aft5-' + type + '-link-' + id ).text(
 					mw.msg( 'articlefeedbackv5-' + type + '-saved' )
 				);
 			}
@@ -99,7 +99,7 @@
 					}
 
 				} else {
-					$( '#aft5-show-feedback' ).html( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
+					$( '#aft5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
 			}
 			// TODO: have a callback for failures.
@@ -110,6 +110,8 @@
 } )( jQuery );
 
 $( document ).ready( function() {
+	// Blank out the 'loading' text
+	$( '#aft5-show-feedback' ).text( ' ' );
 	$.articleFeedbackv5special.setBinds();
 	$.articleFeedbackv5special.loadFeedback();
 } );
