@@ -32,12 +32,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$params = $this->extractRequestParams();
 
 		// Anon token check
-		$token = ApiArticleFeedbackv5Utils::getAnonToken( $params );
+		$token = $this->getAnonToken( $params );
 
 		// Is feedback enabled on this page check?
-#		if ( !ApiArticleFeedbackv5Utils::isFeedbackEnabled( $params ) ) {
-#			$this->dieUsage( 'ArticleFeedback is not enabled on this page', 'invalidpage' );
-#		}
+		if ( !ApiArticleFeedbackv5Utils::isFeedbackEnabled( $params ) ) {
+			$this->dieUsage( 'ArticleFeedback is not enabled on this page', 'invalidpage' );
+		}
 
 		$feedbackId   = $this->newFeedback( $params );
 		$dbr          = wfGetDB( DB_SLAVE );
@@ -313,7 +313,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$revId     = $params['revid'];
 		$bucket    = $params['bucket'];
 		$link      = $params['link'];
-		$token     = ApiArticleFeedbackv5Utils::getAnonToken( $params );
+		$token     = $this->getAnonToken( $params );
 		$timestamp = $dbw->timestamp();
 		$ip        = wfGetIP();
 
@@ -376,6 +376,28 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getCTAId( $answers, $bucket ) {
 		return 1; # Hard-code this for now.
+	}
+
+	/**
+	* Gets the anonymous token from the params
+	*
+	* @param  $params array the params
+	* @return string the token, or null if the user is not anonymous
+	*/
+	public function getAnonToken( $params ) {
+		global $wgUser;
+		$token = null;
+		if ( $wgUser->isAnon() ) {
+			if ( !isset( $params['anontoken'] ) ) {
+				$this->dieUsageMsg( array( 'missingparam', 'anontoken' ) );
+			} elseif ( strlen( $params['anontoken'] ) != 32 ) {
+				$this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
+			}
+			$token = $params['anontoken'];
+		} else {
+			$token = '';
+		}
+		return $token;
 	}
 
 	/**

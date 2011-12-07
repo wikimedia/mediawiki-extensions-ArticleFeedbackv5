@@ -20,30 +20,6 @@
  * @subpackage Api
  */
 class ApiArticleFeedbackv5Utils {
-
-	/**
-	 * Gets the anonymous token from the params
-	 *
-	 * @param  $params array the params
-	 * @return string the token, or null if the user is not anonymous
-	 */
-	public static function getAnonToken( $params ) {
-		global $wgUser;
-		$token = null;
-		if ( $wgUser->isAnon() ) {
-# TODO: error handling
-			if ( !isset( $params['anontoken'] ) ) {
-#                                $this->dieUsageMsg( array( 'missingparam', 'anontoken' ) );
-			} elseif ( strlen( $params['anontoken'] ) != 32 ) {
-#                                $this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
-			}
-			$token = $params['anontoken'];
-		} else {
-			$token = '';
-		}
-		return $token;
-	}
-
 	/**
 	 * Returns whether feedback is enabled for this page
 	 *
@@ -100,7 +76,9 @@ class ApiArticleFeedbackv5Utils {
 		$dbr = wfGetDB( DB_SLAVE );
 		$rv  = $dbr->select(
 			'aft_article_field',
-			array( 'afi_name', 'afi_id', 'afi_data_type', 'afi_bucket_id' )
+			array( 'afi_name', 'afi_id', 'afi_data_type', 'afi_bucket_id' ),
+			null, 
+			__METHOD__
 		);
 		return $rv;
 	}
@@ -122,7 +100,9 @@ class ApiArticleFeedbackv5Utils {
 		$dbr  = wfGetDB( DB_SLAVE );
 		$rows = $dbr->select(
 			'aft_article_field_option',
-			array( 'afo_option_id', 'afo_field_id', 'afo_name' )
+			array( 'afo_option_id', 'afo_field_id', 'afo_name' ),
+			null, 
+			__METHOD__
 		);
 		$rv = array();
 		foreach ( $rows as $row ) {
@@ -130,6 +110,5 @@ class ApiArticleFeedbackv5Utils {
 		}
 		return $rv;
 	}
-
 }
 
