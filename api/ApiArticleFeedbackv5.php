@@ -315,6 +315,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$link      = $params['link'];
 		$token     = ApiArticleFeedbackv5Utils::getAnonToken( $params );
 		$timestamp = $dbw->timestamp();
+		$ip        = wfGetIP();
 
 		# make sure we have a page/user
 		if ( !$params['pageid'] || !$wgUser) {
@@ -332,7 +333,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'af_revision_id'     => $revId,
 			'af_created'         => $timestamp,
 			'af_user_id'         => $wgUser->getId(),
-			'af_user_text'       => $wgUser->getName(),
+			'af_user_ip'         => $ip,
 			'af_user_anon_token' => $token,
 			'af_bucket_id'       => $bucket,
 			'af_link_id'         => $link,

@@ -11,15 +11,15 @@ DROP TABLE IF EXISTS /*_*/aft_article_revision_feedback_select_rollup;
 DROP TABLE IF EXISTS /*_*/aft_article_hits;
 DROP TABLE IF EXISTS /*_*/aft_article_feedback_properties;
 
+-- Stores feedback records: "user X submitted feedback on page Y, at time Z"
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   -- Row ID (primary key)
   af_id               integer unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   -- Foreign key to page.page_id
   af_page_id         integer unsigned NOT NULL,
-  -- User Id (0 if anon)
+  -- User Id (0 if anon), and ip address
   af_user_id         integer NOT NULL,
-  -- Username or IP address
-  af_user_text       varbinary(255) NOT NULL,
+  af_user_ip         varchar(32) NOT NULL,
   -- Unique token for anonymous users (to facilitate ratings from multiple users on the same IP)
   af_user_anon_token varbinary(32) NOT NULL DEFAULT '',
   -- Foreign key to revision.rev_id
@@ -31,49 +31,77 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   af_cta_id          integer unsigned NOT NULL DEFAULT 0,
   -- Which link the user clicked on to get to the widget. Default of 0 is "none".
   af_link_id         integer unsigned NOT NULL DEFAULT 0,
-  af_created         timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  af_modified        timestamp NULL
+  -- Creation timetamp
+  af_created         binary(14) NOT NULL DEFAULT ''
 ) /*$wgDBTableOptions*/;
-CREATE INDEX /*i*/af_page_user_token_id ON /*_*/aft_article_feedback (af_page_id, af_user_text, af_user_anon_token, af_id);
+CREATE INDEX /*i*/af_page_user_token_id ON /*_*/aft_article_feedback (af_page_id, af_user_id, af_user_anon_token, af_id);
 CREATE INDEX /*i*/af_revision_id ON /*_*/aft_article_feedback (af_revision_id);
 -- Create an index on the article_feedback.af_timestamp field
 CREATE INDEX /*i*/article_feedback_timestamp ON /*_*/aft_article_feedback (af_created);
 CREATE INDEX /*i*/af_page_id ON /*_*/aft_article_feedback (af_page_id, af_created);
 
+-- Allows for organizing fields into fieldsets, for reporting or rendering.
+-- A group is just a name and an ID.
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_field_group (
   afg_id   integer unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   afg_name varchar(255) NOT NULL UNIQUE
 ) /*$wgDBTableOptions*/;
 
--- We already used af_ above, so this is ArticleFIeld instead
+-- Stores article fields, zero or more of which are used by each feedback widget
+-- We already used af_ as a prefix above, so this is afi_ instead
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_field (
   afi_id        integer unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   afi_name      varchar(255) NOT NULL,
+  -- Allowed data types - relates directly to which aa_response_* field gets 
+  -- set in aft_article_answer, and where we check for answers when fetching
   afi_data_type ENUM('text', 'boolean', 'rating', 'option_id'),
   -- FKey to article_field_groups.group_id
   afi_group_id  integer unsigned NULL,
+  -- Which 'bucket' this field should be rendered in.
   afi_bucket_id integer unsigned NOT NULL
 ) /*$wgDBTableOptions*/;
 
+-- Stores options for multi-value feedback fields (ie, select boxes) 
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_field_option (
   afo_option_id integer unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  -- foreign key to aft_article_field.afi_id
   afo_field_id  integer unsigned NOT NULL,
   afo_name      varchar(255) NOT NULL
 ) /*$wgDBTableOptions*/;
 
+-- Stores individual answers for each feedback record - for a given feedback 
+-- record, what did the user answer for each individual question/input on 
+-- the form with which they were presented.
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_answer (
   -- FKEY to article_feedback.af_id)
   aa_feedback_id        integer unsigned NOT NULL,
   -- FKEY to article_field.afi_id)
   aa_field_id           integer unsigned NOT NULL,
+  -- Only one of these four columns will be non-null, based on the afi_data_type
+  -- of the aa_field_id related to this record.
   aa_response_rating    integer NULL,
   aa_response_text      text NULL,
   aa_response_boolean   boolean NULL,
   -- FKey to article_field_options.afo_option_id)
   aa_response_option_id integer unsigned NULL,
+  -- Only allow one answer per field per feedback ID.
   PRIMARY KEY (aa_feedback_id, aa_field_id)
 ) /*$wgDBTableOptions*/;
 
+/*
+These next four are rollup tables used by the articlefeedback special page.
+The revision tables store per-revision numers, as we (in meetings with WMF)
+agreed that per-revision numbers could be useful in reporting, though
+they aren't currently used on the feedback page. The page-level ones only
+count back to wgArticleFeedbackv5RatingLifetime, so they're a rolling window.
+
+There are tables for ratings and select (ratings includes booleans as well),
+because while the vaue of the rating/boolean is important (Rated 3/5), for
+selects we only want the count for each input, not the value of that input or
+the sum of the values (which will be numerical option_ids, not meaningful 
+rating values). The queries were sufficiently different that we deemed multiple
+tables worthwhile.
+*/
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback_ratings_rollup (
   arr_page_id   integer unsigned NOT NULL,
   arr_rating_id integer unsigned NOT NULL,
@@ -108,7 +136,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_revision_feedback_select_rollup (
   PRIMARY KEY (arfsr_revision_id, arfsr_option_id)
 ) /*$wgDBTableOptions*/;
 
--- Mostly taken from AFTv4
+-- Directly taken from AFTv4
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback_properties (
   -- Keys to article_feedback.aa_id
   afp_feedback_id integer unsigned NOT NULL,

@@ -158,7 +158,6 @@ $wgArticleFeedbackv5DashboardTalkPage = "http://www.mediawiki.org/wiki/Talk:Arti
  */
 $wgArticleFeedbackv5LearnToEdit = "http://en.wikipedia.org/wiki/Wikipedia:Tutorial";
 
-# TODO: What's up with the surveys, then?
 // Would ordinarily call this articlefeedback but survey names are 16 chars max
 $wgPrefSwitchSurveys['articlerating'] = array(
 	'updatable' => false,

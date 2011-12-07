@@ -24,3 +24,9 @@ ALTER TABLE aft_article_feedback ADD COLUMN af_link_id integer unsigned NOT NULL
 
 ALTER TABLE aft_article_feedback ADD COLUMN af_abuse_count integer unsigned NOT NULL DEFAULT 0;
 ALTER TABLE aft_article_feedback ADD COLUMN af_hide_count integer unsigned NOT NULL DEFAULT 0;
+
+ALTER TABLE aft_article_feedback ADD COLUMN af_user_ip varchar(32); 
+UPDATE aft_article_feedback SET af_user_ip = af_user_text WHERE af_user_text REGEXP '[0-9\.]+';
+ALTER TABLE aft_article_feedback DROP COLUMN af_user_text;
+ALTER TABLE aft_article_feedback DROP COLUMN af_modified;
+ALTER TABLE aft_article_feedback MODIFY COLUMN af_created binary(14) NOT NULL DEFAULT '';

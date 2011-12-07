@@ -129,18 +129,22 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		$rows  = $dbr->select(
 			array( 'aft_article_feedback', 'aft_article_answer',
-				'aft_article_field', 'aft_article_field_option'
+				'aft_article_field', 'aft_article_field_option',
+				'user'
 			),
 			array( 'af_id', 'af_bucket_id', 'afi_name', 'afo_name',
 				'aa_response_text', 'aa_response_boolean',
 				'aa_response_rating', 'aa_response_option_id',
-				'afi_data_type', 'af_created', 'af_user_text',
-				'af_hide_count', 'af_abuse_count'
+				'afi_data_type', 'af_created', 'user_name', 
+				'af_user_ip', 'af_hide_count', 'af_abuse_count'
 			),
 			array( 'af_id' => $ids ),
 			__METHOD__,
 			array( 'ORDER BY' => $order ),
 			array(
+				'user'        => array(
+					'LEFT JOIN', 'user_id = af_user_id'
+				),
 				'aft_article_field'        => array(
 					'LEFT JOIN', 'afi_id = aa_field_id'
 				),
@@ -154,20 +158,21 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			)
 		);
 
-		foreach($rows as $row) {
-			if(!array_key_exists($row->af_id, $rv)) {
-				$rv[$row->af_id] = array();
+		foreach( $rows as $row ) {
+			if( !array_key_exists( $row->af_id, $rv ) ) {
+				$rv[$row->af_id]    = array();
 				$rv[$row->af_id][0] = $row;
+				$rv[$row->af_id][0]->user_name = $row->user_name ? $row->user_name : $row->af_user_ip;
 			}
 			$rv[$row->af_id][$row->afi_name] = $row;
 		}
-
+		
 		return $rv;
 	}
 
 	private function getFilterCriteria( $filter ) {
 		$where = array();
-		switch($filter) {
+		switch( $filter ) {
 			case 'all':
 				$where = array();
 				break;
@@ -208,7 +213,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderBucket1( $record ) {
-		$name  = $record[0]->af_user_text;
+		$name  = $record[0]->user_name;
 		if( $record['found']->aa_response_boolean ) {
 			$found = wfMsg(
 				'articlefeedbackv5-form1-header-found',
@@ -227,7 +232,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderBucket2( $record ) {
-		$name = $record[0]->af_user_text;
+		$name = $record[0]->user_name;
 		$type = $record['tag']->afo_name;
 		return wfMsg( 'articlefeedbackv5-form2-header', $name, $type )
 		.'<blockquote>'.$record['comment']->aa_response_text
@@ -235,7 +240,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderBucket3( $record ) {
-		$name   = $record[0]->af_user_text;
+		$name   = $record[0]->user_name;
 		$rating = $record['rating']->aa_response_rating;
 		return wfMsg( 'articlefeedbackv5-form3-header', $name, $rating )
 		.'<blockquote>'.$record['comment']->aa_response_text
@@ -247,8 +252,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderBucket5( $record ) {
-		$name  = $record[0]->af_user_text;
-		$rv = wfMsg( 'articlefeedbackv5-form5-header', $name );
+		$name = $record[0]->user_name;
+		$rv   = wfMsg( 'articlefeedbackv5-form5-header', $name );
 		$rv .= '<ul>';
 		foreach( $record as $key => $answer ) {
 			if( $answer->afi_data_type == 'rating' && $key != '0' ) {
