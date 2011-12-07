@@ -466,6 +466,7 @@
 .articleFeedbackv5-panel h2 {
 	float: left;
 	border: none;
+	font-weight: bold;
 }
 .articleFeedbackv5-tooltip-wrap {
 	float: right;
@@ -610,9 +611,8 @@
 }
 
 .articleFeedbackv5-ui .articleFeedbackv5-disclosure {
-	float: right;
 	width: 335px;
-	margin: 18px 0 0;
+	margin: 10px 0;
 }
 
 .articleFeedbackv5-ui .articleFeedbackv5-disclosure p {
@@ -621,7 +621,7 @@
 }
 
 .articleFeedbackv5-ui .articleFeedbackv5-submit {
-	float: left;
+	/*float: left;*/
 	height: 35px !important;
 	width: auto;
 	text-align: center;
@@ -654,9 +654,9 @@
 	text-align: center;
 	color: #fff;
 	/*text-shadow: 1px 1px 1px #000;*/
-	padding: 1px 30px 0 0;
+	/*padding: 1px 30px 0 0;*/
 	/* @embed */
-	background: url(images/bg-submit-icon.png) right center no-repeat;
+	/*background: url(images/bg-submit-icon.png) right center no-repeat;*/
 }
 
 /*** Option 2 ***/
