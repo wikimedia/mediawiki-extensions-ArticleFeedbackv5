@@ -26,10 +26,10 @@ $wgArticleFeedbackv5RatingLifetime = 30;
 
 // Which categories the pages must belong to have the rating widget added (with _ in text)
 // Extension is "disabled" if this field is an empty array (as per default configuration)
-$wgArticleFeedbackv5Categories = array('AFT5');
+$wgArticleFeedbackv5Categories = array( 'Article_Feedback_5' );
 
 // Which categories the pages must not belong to have the rating widget added (with _ in text)
-$wgArticleFeedbackv5BlacklistCategories = array();
+$wgArticleFeedbackv5BlacklistCategories = array( 'Article_Feedback_Blacklist' );
 
 // Only load the module / enable the tool in these namespaces
 // Default to $wgContentNamespaces (defaults to array( NS_MAIN ) ).
