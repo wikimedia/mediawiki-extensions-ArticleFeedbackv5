@@ -602,8 +602,8 @@
 	height: 68px;
 	overflow: hidden;
 	padding: 10px;
-	font-size: 1.0em;
-	font: sans-serif;
+	font-size: 1.1em;
+	font-family: sans-serif !important;
 	color: #999;
 }
 
