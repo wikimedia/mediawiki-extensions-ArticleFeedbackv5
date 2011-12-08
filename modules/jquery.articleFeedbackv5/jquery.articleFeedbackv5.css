@@ -520,6 +520,7 @@
 
 .articleFeedbackv5-tooltip-trigger {
 	display: block;
+	float: left;
 	height: 27px;
 	width: 26px;
 	/* @embed */
@@ -621,7 +622,7 @@
 }
 
 .articleFeedbackv5-ui .articleFeedbackv5-submit {
-	/*float: left;*/
+	float: none;
 	height: 35px !important;
 	width: auto;
 	text-align: center;
