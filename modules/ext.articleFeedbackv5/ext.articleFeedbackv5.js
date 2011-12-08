@@ -64,7 +64,7 @@ var linkBucket = function () {
 	if ( '5' == displayBucket || '0' == displayBucket ) {
 		return '0';
 	}
-	var knownBuckets = { '0': true, '1': true, '2': true };
+	var knownBuckets = { '0': true, '1': true, '2': true, '3': true };
 	var requested = mw.util.getParamValue( 'aft_link' );
 	if ( $aftDiv.articleFeedbackv5( 'inDebug' ) && requested in knownBuckets ) {
 		return requested;
@@ -72,9 +72,8 @@ var linkBucket = function () {
 		var bucketName = mw.user.bucket( 'ext.articleFeedbackv5-links',
 			mw.config.get( 'wgArticleFeedbackv5LinkBuckets' )
 		);
-		var nameMap = { '-': 0, 'A': 1, 'B': 2 };
+		var nameMap = { '-': '0', 'A': '1', 'B': '2', 'C': '3' };
 		return nameMap[bucketName];
-
 	}
 }();
 if ( $aftDiv.articleFeedbackv5( 'inDebug' ) ) {
@@ -107,6 +106,19 @@ if ( '2' == linkBucket ) {
 		} )
 		.insertBefore( $aftDiv );
 	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $tlk );
+}
+
+/* Add fixed tab link */
+if( '3' == linkBucket ) {
+    var $fixedTab = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-fixedtablink"></a>')
+        .data( 'linkId', 3 )
+        .text( mw.msg( 'articlefeedbackv5-fixedtab-linktext' ) )
+        .click( function( e ) {
+            e.preventDefault();
+			clickFeedbackLink( $( e.target ) );
+        } )
+        .insertBefore( $aftDiv );
+    $aftDiv.articleFeedbackv5( 'addToRemovalQueue', $fixedTab );
 }
 
 /* Add toolbox link */

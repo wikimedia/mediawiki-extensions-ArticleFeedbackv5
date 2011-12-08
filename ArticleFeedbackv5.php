@@ -120,12 +120,12 @@ $wgArticleFeedbackv5LinkBuckets = array(
 	//  -: No link; user must scroll to the bottom of the page
 	//  A: Section bars
 	//  B: Title bar
-	//  C: Vertical button
+	//  C: Vertical button (fixed tab)
 	'buckets' => array(
 		'-' => 0,
 		'A' => 0,
-		'B' => 100,
-		'C' => 0,
+		'B' => 0,
+		'C' => 100,
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump

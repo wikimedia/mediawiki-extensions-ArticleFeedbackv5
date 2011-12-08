@@ -21,6 +21,7 @@ class ArticleFeedbackv5Hooks {
 			'messages' => array(
 				'articlefeedbackv5-section-linktext',
 				'articlefeedbackv5-titlebar-linktext',
+                'articlefeedbackv5-fixedtab-linktext',
 				'articlefeedbackv5-toolbox-linktext',
 			),
 			'dependencies' => array(
