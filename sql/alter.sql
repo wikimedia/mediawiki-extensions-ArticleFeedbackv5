@@ -30,3 +30,9 @@ UPDATE aft_article_feedback SET af_user_ip = af_user_text WHERE af_user_text REG
 ALTER TABLE aft_article_feedback DROP COLUMN af_user_text;
 ALTER TABLE aft_article_feedback DROP COLUMN af_modified;
 ALTER TABLE aft_article_feedback MODIFY COLUMN af_created binary(14) NOT NULL DEFAULT '';
+
+-- added 12/8 (greg)
+ALTER TABLE aft_article_revision_feedback_select_rollup ADD COLUMN arfsr_field_id int NOT NULL;
+ALTER TABLE aft_article_revision_feedback_ratings_rollup CHANGE COLUMN afrr_rating_id afrr_field_id integer unsigned NOT NULL;
+ALTER TABLE aft_article_feedback_ratings_rollup CHANGE COLUMN arr_rating_id arr_field_id integer unsigned NOT NULL;
+ALTER TABLE aft_article_feedback_select_rollup ADD COLUMN afsr_field_id int NOT NULL;

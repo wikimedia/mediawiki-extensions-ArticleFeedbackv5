@@ -104,7 +104,7 @@ tables worthwhile.
 */
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback_ratings_rollup (
   arr_page_id   integer unsigned NOT NULL,
-  arr_rating_id integer unsigned NOT NULL,
+  arr_field_id  integer unsigned NOT NULL,
   arr_total     integer unsigned NOT NULL,
   arr_count     integer unsigned NOT NULL,
   PRIMARY KEY (arr_page_id, arr_rating_id)
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback_ratings_rollup (
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_revision_feedback_ratings_rollup (
   afrr_page_id      integer unsigned NOT NULL,
   afrr_revision_id  integer unsigned NOT NULL,
-  afrr_rating_id    integer unsigned NOT NULL,
+  afrr_field_id     integer unsigned NOT NULL,
   afrr_total        integer unsigned NOT NULL,
   afrr_count        integer unsigned NOT NULL,
   PRIMARY KEY (afrr_page_id, afrr_rating_id, afrr_revision_id)
@@ -122,6 +122,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_revision_feedback_ratings_rollup (
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback_select_rollup (
   afsr_page_id   integer unsigned NOT NULL,
   afsr_option_id integer unsigned NOT NULL,
+  afsr_field_id  integer unsigned NOT NULL,
   afsr_total     integer unsigned NOT NULL,
   afsr_count     integer unsigned NOT NULL,
   PRIMARY KEY (afsr_page_id, afsr_option_id)
@@ -131,6 +132,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_revision_feedback_select_rollup (
   arfsr_page_id     integer unsigned NOT NULL,
   arfsr_revision_id integer unsigned NOT NULL,
   arfsr_option_id   integer unsigned NOT NULL,
+  arfsr_field_id    integer unsigned NOT NULL,
   arfsr_total       integer unsigned NOT NULL,
   arfsr_count       integer unsigned NOT NULL,
   PRIMARY KEY (arfsr_revision_id, arfsr_option_id)

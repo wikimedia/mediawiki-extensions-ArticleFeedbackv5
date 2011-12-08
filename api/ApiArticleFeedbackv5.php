@@ -89,7 +89,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 
 		$ctaId = $this->saveUserRatings( $user_answers, $feedbackId, $bucket );
-		$this->updateRollupTables( $pageId, $revisionId );
+		$this->updateRollupTables( $pageId, $revisionId, $user_answers );
 
 		if( $params['email'] ) {
 			$this->captureEmail ( $params['email'], json_encode(
@@ -181,12 +181,13 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	/**
 	 * Update the rollup tables
 	 *
-	 * @param $page     int the page id
-	 * @param $revision int the revision id
+	 * @param $page     int   the page id
+	 * @param $revision int   the revision id
+	 * @param $data     array the user's validated feedback answers
 	 */
-	public function updateRollupTables( $page, $revision ) {
+	public function updateRollupTables( $page, $revision, $data ) {
 		foreach( array( 'rating', 'boolean', 'option_id' ) as $type ) {
-			$this->updateRollup( $page, $revision, $type );
+			$this->updateRollup( $page, $revision, $type, $data );
 		}
 	}
 
@@ -210,130 +211,228 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param $page     int    the page id
 	 * @param $revision int    the revision id
 	 * @param $type     string the type (rating, select, or boolean)
+	 * @param $raw_data array  the user's validated feedback answers
 
-	 * Selects feedback across the last $wgArticleFeedbackv5RatingLifetime
-	 * revisions of this page, grouped by revisionId. Each revision row
-	 * is replaced, as well as the page-level one in that rollup, which is
-	 * the sum of all revision-level rollups. We don't know if the revision
-	 * window has changed, so every time we're checking for the relevent
-	 * revisions and replacing the page value, as old revisions fall out of
-	 * the window.
+	 * This should:
+	 * 0. Attempt to insert a blank revision rollup row for each $data of type $type, based on revId, fieldId.
+	 * 1. Increment said revision rollup for each $data of type $type, based on revId, fieldId, and value
+	 * 2. Re-calculate the page value, across the last [X] revisions (an old revision, or more, may have moved outside of the wgArticleFeedbackv5RatingLifetime window, so we can't just increment the page level rollups - revision-level, absolutely)
 
 	 */
-	private function updateRollup( $pageId, $revId, $type ) {
+	private function updateRollup( $pageId, $revId, $type, $raw_data ) {
 		# sanity check
 		if ( $type != 'rating' && $type != 'option_id' && $type != 'boolean' ) {
 			return 0;
 		}
-
-		global $wgArticleFeedbackv5RatingLifetime;
-		$dbr        = wfGetDB( DB_SLAVE );
-		$dbw        = wfGetDB( DB_MASTER );
-		$limit      = $this->getRevisionLimit( $pageId );
-		$page_data  = array();
-		$rev_data   = array();
-		$rev_table  = 'aft_article_revision_feedback_'
-			. ( $type == 'option_id' ? 'select' : 'ratings' )
-			. '_rollup';
-		$page_table = 'aft_article_feedback_'
-			. ( $type == 'option_id' ? 'select' : 'ratings' )
-			. '_rollup';
-
-		if ( $type == 'option_id' ) {
-			$page_prefix = 'afsr_';
-			$rev_prefix  = 'arfsr_';
-			$select      = array( 'aa_field_id', 'aa_response_option_id', 'COUNT(aa_response_option_id) AS earned', '0 AS submits' );
-			$group       = array( 'GROUP BY' => 'aa_response_option_id' );
-		} else {
-			$page_prefix = 'arr_';
-			$rev_prefix  = 'afrr_';
-			$select      = array( 'aa_field_id', "SUM(aa_response_$type) AS earned", 'COUNT(*) AS submits' );
-			$group       = array( 'GROUP BY' =>  'aa_field_id' );
-
+		
+		// Strip out the data not of this type.
+		foreach ( $raw_data as $row ) {
+			if ( $row["aa_response_$type"] != null ) {
+				$this->updateRollupRow( $pageId, $revId, $type, $row );
+			}
 		}
 
-		$rows = $dbr->select(
-			array(
-				'aft_article_answer',
-				'aft_article_feedback',
-				'aft_article_field'
-			),
-			$select,
-			array(
-				'afi_data_type'  => $type,
-				'af_page_id'     => $pageId,
-				'aa_feedback_id = af_id',
-				'afi_id = aa_field_id',
-				"af_revision_id >= $limit",
-			),
-			__METHOD__,
-			$group
-		);
+	}
 
-		// We've already grouped by option_id, so in order to get
-		// counts grouped by field_id, we need to sum them up here.
-		// Necessary for select rollups, unused on ratings/booleans.
-		$totals = array();
+	/**
+	 * Update the rollup tables
+	 *
+	 * @param $page     int    the page id
+	 * @param $revision int    the revision id
+	 * @param $type     string the type (rating, select, or boolean)
+	 * @param $row      array  a user's validated feedback answer
+
+	 * This should:
+	 * 0. Attempt to insert a blank revision rollup row, based on revId, fieldId.
+	 * 1. Increment said revision rollup, based on revId, fieldId, and value
+	 * 2. Re-calculate the page rolup value, across the last [X] revisions (an old revision, or more, may have moved outside of the wgArticleFeedbackv5RatingLifetime window, so we can't just increment the page level rollups - revision-level, absolutely)
+
+	 */
+	private function updateRollupRow( $pageId, $revId, $type, $row ) {
+		$dbr   = wfGetDB( DB_SLAVE );
+		$dbw   = wfGetDB( DB_MASTER );
+		$limit = $this->getRevisionLimit( $pageId );
+		$field = $row['aa_field_id'];
+		$value = $row["aa_response_$type"];
+
 		if( $type == 'option_id' ) {
-			foreach ( $rows as $row ) {
-				if( !array_key_exists( $row->aa_field_id, $totals ) ) {
-					$totals[$row->aa_field_id] = 0;
-				}
-				$totals[$row->aa_field_id] += $row->earned;
-			}
-		}
+			// Selects are kind of a odd bird. We store one row
+			// per option per field, and each one has the number
+			// of times that option was chosen, and the number of
+			// times the question was shown in total. So, you'd 
+			// have 1/10, 2/10, 7/10, eg. We increment the times
+			// chosen on the one that was chosen, and the times
+			// shown on all of them. 
 
-		foreach ( $rows as $row ) {
-			if( $type == 'option_id' ) {
-				$key   = $row->aa_response_option_id;
-				$field = 'option_id';
-				$value = $row->aa_response_option_id;
-				$count = $totals[$row->aa_field_id];
-			} else {
-				$key   = $row->aa_field_id;
-				$field = 'rating_id';
-				$value = $row->aa_field_id;
-				$count = $row->submits;
-			}
+			// Fetch all the options for this field.
+			$options = $dbr->select(
+				'aft_article_field_option',
+				array( 'afo_option_id' ),
+				array( 'afo_field_id' => $field ),
+				__METHOD__
+			);
 
-			if ( !array_key_exists( $key, $page_data ) ) {
-				$page_data[$key] = array(
-					$page_prefix . 'page_id' => $pageId,
-					$page_prefix . 'total'   => 0,
-					$page_prefix . 'count'   => 0,
-					$page_prefix . $field    => $value
+			// For each option this field has, make sure we have 
+			// a row by inserting one - will fail silently if the
+			// row already exists.
+			foreach( $options as $option ) {
+				// These inserts could possibly fail or succeed
+				// individually, so we can't use the multiple-
+				// insert functionality of the insert class.
+				$dbw->insert(
+					'aft_article_revision_feedback_select_rollup',
+					array(
+						'arfsr_page_id'     => $pageId,
+						'arfsr_revision_id' => $revId,
+						'arfsr_field_id'    => $field,
+						'arfsr_option_id'   => $option->afo_option_id,
+						'arfsr_total'       => 0,
+						'arfsr_count'       => 0,
+					),
+					__METHOD__,
+					array( 'IGNORE' )
 				);
 			}
 
-			$rev_data[] = array(
-				$rev_prefix . 'page_id'     => $pageId,
-				$rev_prefix . 'revision_id' => $revId,
-				$rev_prefix . 'total'       => $row->earned,
-				$rev_prefix . 'count'       => $count,
-				$rev_prefix . $field        => $value
+			// Increment number of picks for this option.
+			$dbw->update(
+				'aft_article_revision_feedback_select_rollup',
+				array(
+					'arfsr_total = arfsr_total + 1',
+				),
+				array(
+					'arfsr_page_id'     => $pageId,
+					'arfsr_revision_id' => $revId,
+					'arfsr_field_id'    => $field,
+					'arfsr_option_id'   => $value,
+				),
+				__METHOD__
+			);
+			// Increment count for ALL options on this field.
+			$dbw->update(
+				'aft_article_revision_feedback_select_rollup',
+				array(
+					'arfsr_count = arfsr_count + 1',
+				),
+				array(
+					'arfsr_page_id'     => $pageId,
+					'arfsr_revision_id' => $revId,
+					'arfsr_field_id'    => $field,
+				),
+				__METHOD__
+			);
+		} else {
+			// Make sure we have a row by inserting one - will fail
+			// silently if the row already exists.
+			$dbw->insert(
+				'aft_article_revision_feedback_ratings_rollup',
+				array(
+					'afrr_page_id'     => $pageId,
+					'afrr_revision_id' => $revId,
+					'afrr_field_id'    => $field,
+					'afrr_total'       => 0,
+					'afrr_count'       => 0,
+				),
+				__METHOD__,
+				array( 'IGNORE' )
 			);
 
-			$page_data[$key][$page_prefix . 'total'] += $row->earned;
-			$page_data[$key][$page_prefix . 'count'] += $count;
+			// Update total rating, and increment count.
+			$dbw->update(
+				'aft_article_revision_feedback_ratings_rollup',
+				array(
+					"afrr_total = afrr_total + $value",
+					"afrr_total = afrr_count + 1",
+				),
+				array(
+					'afrr_page_id'     => $pageId,
+					'afrr_revision_id' => $revId,
+					'afrr_field_id'    => $field,
+				),
+				__METHOD__
+			);
 		}
 
-		if ( count( $page_data ) < 1 ) {
-			return;
-		}
+		// Revision rollups being done, we update the page rollups.
+		// These are built off of the revision rollups, and only 
+		// count revisions back to the user-specified limit, so
+		// they need to be recalculated every time, since we don't
+		// know what revision we're dealing with, or how many times
+		// a page has changed since the last feedback.
 
+		// Select rollup data for revisions, grouped up by field, so we
+		// can drop it into the page rollups.
+		if( $type == 'option_id' ) {
+			$table  = 'aft_article_feedback_select_rollup';
+			$prefix = 'afsr_';
+			$rows   = $dbr->select(
+				'aft_article_revision_feedback_select_rollup',
+				array(
+					'arfsr_option_id', 
+					'SUM(arfsr_total) AS total', 
+					'SUM(arfsr_count) AS count'
+				),
+				array(
+					'arfsr_page_id'     => $pageId,
+					"arfsr_revision_id > $limit",
+					'arfsr_field_id'    => $field
+				),
+				__METHOD__,
+				array( 'GROUP BY' => 'arfsr_option_id' )
+			);
+
+			$page_data = array();
+			foreach( $rows as $row ) {
+				$page_data[] = array(
+				'afsr_page_id'   => $pageId,
+				'afsr_field_id'  => $field,
+				'afsr_option_id' => $row->arfsr_option_id,
+				'afsr_total'     => $row->total,
+				'afsr_count'     => $row->count 
+				);
+			}
+		} else {
+			$table  = 'aft_article_feedback_ratings_rollup';
+			$prefix = 'arr_';
+			$row    = $dbr->selectRow(
+				'aft_article_revision_feedback_ratings_rollup',
+				array(
+					'SUM(afrr_total) AS total', 
+					'SUM(afrr_count) AS count'
+				),
+				array(
+					'afrr_page_id'     => $pageId,
+					"afrr_revision_id > $limit",
+					'afrr_field_id'    => $field
+				),
+				__METHOD__,
+				array( 'GROUP BY' => 'afrr_field_id' )
+			);
+
+			$page_data = array(
+				'arr_page_id'  => $pageId,
+				'arr_field_id' => $field,
+				'arr_total'    => $row->total,
+				'arr_count'    => $row->count 
+			);
+		}
+		
 		$dbw->begin();
-		$dbw->delete( $rev_table, array(
-			$rev_prefix . 'page_id'     => $pageId,
-			$rev_prefix . 'revision_id' => $revId,
-			$rev_prefix . $field        => array_keys( $page_data ),
-		) );
-		$dbw->insert( $rev_table, $rev_data );
-		$dbw->delete( $page_table, array(
-			$page_prefix . 'page_id' => $pageId,
-			$page_prefix . $field    => array_keys( $page_data ),
-		) );
-		$dbw->insert( $page_table, array_values ( $page_data ) );
+		// Delete the existing page rollup rows.
+		$dbw->delete( $table, array(
+			$prefix . 'page_id'     => $pageId,
+			$prefix . 'field_id'    => $field
+		), __METHOD__ );
+
+		// Insert the new ones.
+		$dbw->insert( $table, $page_data, __METHOD__ );
 		$dbw->commit();
+
+		// One way to speed this up would be to purge old rows from
+		// the revision_rollup tables, as soon as they're out of the 
+		// window in which we count them. 30 revisions per page is still
+		// a lot, but it'd be better than this, which has no limit and
+		// will only get larger over time.
 	}
 
 	/**
