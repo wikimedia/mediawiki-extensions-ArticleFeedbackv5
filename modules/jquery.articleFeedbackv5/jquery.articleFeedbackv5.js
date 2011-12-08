@@ -140,6 +140,12 @@
 	 * The feedback ID (collected on submit, for use in tracking edits)
 	 */
 	$.articleFeedbackv5.feedbackId = 0;
+    
+    /**
+     * Currently displayed placeholder text for option 2. This is a workaround for Chrome/FF
+     * behavior overlays.
+     */
+    $.currentDefaultText = "";
 
 	// }}}
 	// {{{ Templates
@@ -537,6 +543,7 @@
 				// Add the tags from the options
 				$block.find( '.articleFeedbackv5-tags ul' ).each( function () {
 					var info = $.articleFeedbackv5.currentBucket().tagInfo;
+                    var tabIndex = 1;
 					for ( var i in info ) {
 						var key = info[i];
 						var comm_def_msg = 'articlefeedbackv5-bucket2-' + key + '-comment-default';
@@ -547,6 +554,7 @@
 						$tag.attr( 'rel', key );
 						$tag.find( '.articleFeedbackv5-tag-input' )
 							.attr( 'id', tag_id )
+                            .attr( 'tabindex', tabIndex++)
 							.val( key );
 						$tag.find( '.articleFeedbackv5-tag-label' )
 							.addClass( 'articleFeedbackv5-bucket2-' + key + '-label' )
@@ -607,9 +615,8 @@
 				// Clear out the question on focus
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.focus( function () {
-						var key = $.articleFeedbackv5.find( '.articleFeedbackv5-tags input[checked]' ).val();
-						var def_msg = $.articleFeedbackv5.currentBucket().commentDefault[key];
-						if ( $( this ).val() == def_msg ) {
+						if ( $( this ).val() == $.currentDefaultText ) {
+                            console.log('in if');
 							$( this ).val( '' );
 							$(this).addClass( 'active' );
 						}
@@ -676,12 +683,14 @@
 						} else {
 							for ( var t in $.articleFeedbackv5.currentBucket().commentDefault ) {
 								if ( $c.val() == $.articleFeedbackv5.currentBucket().commentDefault[t] ) {
-									empty = true;
+									empty = true; 
 								}
 							}
 						}
 						if ( empty ) {
 							$c.val( $.articleFeedbackv5.currentBucket().commentDefault[key] );
+                            // Store default text, workaround for overlay bug in Chrome/FF
+                            $.currentDefaultText = $.articleFeedbackv5.currentBucket().commentDefault[key];
 						}
 					} else {
 						// Clear checked
