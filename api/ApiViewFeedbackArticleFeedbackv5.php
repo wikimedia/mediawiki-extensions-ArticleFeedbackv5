@@ -51,33 +51,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$result->addValue( 'data', 'feedback', $html );
 	}
 
-	public function fetchOverallRating( $pageId ) {
-		$rv   = array();
-		$dbr  = wfGetDB( DB_SLAVE );
-		$rows = $dbr->select(
-			array( 'aft_article_feedback_ratings_rollup',
-				'aft_article_field' ),
-			array( 'arr_total / arr_count AS rating',
-				'afi_name'
-			),
-			array( 'arr_page_id' => $pageId,
-				'arr_rating_id = afi_id',
-				"afi_name IN ('found', 'rating')"
-			)
-		);
-
-		foreach( $rows as $row ) {
-			if( $row->afi_name == 'found' ) {
-				$rv['found']  = ( int ) ( 100 * $row->rating );
-			} elseif( $row->afi_name == 'rating' ) {
-				# Or should this be round/ceil/floor/float?
-				$rv['rating'] = ( int ) $row->rating;
-			}
-		}
-
-		return $rv;
-	}
-
 	public function fetchFeedbackCount( $pageId, $filter ) {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$where = $this->getFilterCriteria( $filter );

@@ -1,47 +1,44 @@
 <?php
 class SpecialArticleFeedbackv5 extends SpecialPage {
-	private $api;
-
 	public function __construct() {
 		parent::__construct( 'ArticleFeedbackv5' );
 	}
 
-	public function execute( $title ) {
+	public function execute( $param ) {
 		global $wgOut;
-		$pageId    = $this->pageIdFromTitle( $title );
 
+		$title = Title::newFromText( $param );
+		if ( $title ) {
+			$pageId = $title->getArticleID();
+		} else {
+			$wgOut->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
+			return;
+		}
 
-#	private function getApi() {
-#		$q   = new ApiQuery(
-#		 'ApiQuery', 'articlefeedbackv5-view-feedback' );
-#		$api = new ApiViewFeedbackArticleFeedbackv5( 
-#		 $q, 'articlefeedbackv5-view-feedback' );
-#		return $api;
-#	}
-                $rating_params = new FauxRequest( array(
-                        'action'  => 'articlefeedbackv5-view-ratings',
-                        'format'  => 'json',
-                        'pageId'  => $pageId,
-                ) );
-                $api     = new ApiMain( $rating_params, true );
-#		$ratings = $api->fetchOverallRating( $pageId );
-
-
-		$found     = isset( $ratings['found'] )  ? $ratings['found']  : null;
-		$rating    = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
+		$ratings = $this->fetchOverallRating( $pageId );
+		$found   = isset( $ratings['found'] )  ? $ratings['found']  : null;
+		$rating  = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
 
 		$wgOut->setPagetitle( "Feedback for $title" );
 
-		if( !$pageId ) { 
+		if( !$pageId ) {
 			$wgOut->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
 		} else {
-			$wgOut->addWikiText(
-				"[[Wikipedia:$title|"
-				.wfMsg('articlefeedbackv5-go-to-article')."]]
-				| [[Wikipedia:$title|"
-				.wfMsg('articlefeedbackv5-discussion-page')."]]
-				| [[Wikipedia:$title|"
-				.wfMsg('articlefeedbackv5-whats-this')."]]"
+			$wgOut->addHTML(
+				Linker::link(
+					Title::newFromText( $param ),
+					wfMessage( 'articlefeedbackv5-go-to-article' )->escaped()
+				)
+				.' | '.
+				Linker::link(
+					Title::newFromText( $param ),
+					wfMessage( 'articlefeedbackv5-discussion-page' )->escaped()
+				)
+				.' | '.
+				Linker::link(
+					Title::newFromText( $param ),
+					wfMessage( 'articlefeedbackv5-whats-this' )->escaped()
+				)
 			);
 		}
 
@@ -56,8 +53,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$wgOut->addWikiMsg( 'articlefeedbackv5-special-title' );
 
 		$wgOut->addHTML(<<<EOH
-<!-- This is a terrible, terrible hack. I'm taking it out as soon as I stop
-     being an idiot and sort this ResourceLoader thing out -->
 <script> var hackPageId = $pageId; </script>
 <script src="/extensions/ArticleFeedbackv5/modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js"></script>
 <!--
@@ -83,17 +78,39 @@ EOH
 		);
 	}
 
+	private function fetchOverallRating( $pageId ) {
+		$rv   = array();
+		$dbr  = wfGetDB( DB_SLAVE );
+		$rows = $dbr->select(
+			array( 
+				'aft_article_feedback_ratings_rollup',
+				'aft_article_field' 
+			),
+			array( 
+				'arr_total / arr_count AS rating',
+				'afi_name'
+			),
+			array( 
+				'arr_page_id' => $pageId,
+				'arr_field_id = afi_id',
+				"afi_name IN ('found', 'rating')"
+			)
+		);
+
+		foreach( $rows as $row ) {
+			if( $row->afi_name == 'found' ) {
+				$rv['found']  = ( int ) ( 100 * $row->rating );
+			} elseif( $row->afi_name == 'rating' ) {
+				$rv['rating'] = ( int ) $row->rating;
+			}
+		}
+
+		return $rv;
+	}
+
+
 	protected static function formatNumber( $number ) {
 		global $wgLang;
 		return $wgLang->formatNum( number_format( $number, 2 ) );
-	}
-
-	protected function pageIdFromTitle( $title ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		return $dbr->selectField(
-			'page',
-			'page_id',
-			array( 'page_title' => $title )
-		);
 	}
 }
