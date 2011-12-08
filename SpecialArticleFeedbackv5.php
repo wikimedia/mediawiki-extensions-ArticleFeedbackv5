@@ -9,8 +9,24 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	public function execute( $title ) {
 		global $wgOut;
 		$pageId    = $this->pageIdFromTitle( $title );
-		$this->api = $this->getApi();
-		$ratings   = $this->api->fetchOverallRating( $pageId );
+
+
+#	private function getApi() {
+#		$q   = new ApiQuery(
+#		 'ApiQuery', 'articlefeedbackv5-view-feedback' );
+#		$api = new ApiViewFeedbackArticleFeedbackv5( 
+#		 $q, 'articlefeedbackv5-view-feedback' );
+#		return $api;
+#	}
+                $rating_params = new FauxRequest( array(
+                        'action'  => 'articlefeedbackv5-view-ratings',
+                        'format'  => 'json',
+                        'pageId'  => $email,
+                ) );
+                $api     = new ApiMain( $rating_params, true );
+#		$ratings = $api->fetchOverallRating( $pageId );
+
+
 		$found     = isset( $ratings['found'] )  ? $ratings['found']  : null;
 		$rating    = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
 
@@ -79,13 +95,5 @@ EOH
 			'page_id',
 			array( 'page_title' => $title )
 		);
-	}
-
-	private function getApi() {
-		$q   = new ApiQuery(
-		 'ApiQuery', 'articlefeedbackv5-view-feedback' );
-		$api = new ApiViewFeedbackArticleFeedbackv5( 
-		 $q, 'articlefeedbackv5-view-feedback' );
-		return $api;
 	}
 }
