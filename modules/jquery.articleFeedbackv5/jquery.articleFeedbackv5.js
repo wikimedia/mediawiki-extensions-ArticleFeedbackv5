@@ -648,10 +648,8 @@
 			 * holder
 			 */
 			afterBuild: function () {
-
 				// Default to 'suggestion'
-				// $.articleFeedbackv5.currentBucket().selectTag( 'suggestion' );
-
+				$.articleFeedbackv5.currentBucket().selectTag( 'suggestion' );
 			},
 
 			// }}}

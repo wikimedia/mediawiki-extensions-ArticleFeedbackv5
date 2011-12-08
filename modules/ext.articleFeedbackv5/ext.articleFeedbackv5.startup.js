@@ -32,6 +32,13 @@ jQuery( function( $ ) {
 			'exclude': mw.config.get( 'wgArticleFeedbackv5BlacklistCategories', [] ),
 			'current': mw.config.get( 'wgCategories', [] )
 		};
+        
+        // Categories are configures with underscores, but article's categories are returned with
+        // spaces instead. Revent to underscores here for sane comparison.
+        for( cat in categories['current'] ) {
+            categories['current'][cat] = categories['current'][cat].replace(/\s/gi, '_');
+            console.log(categories['current'][cat]);
+        }
 
 		// Category exclusion
 		var disable = false;
