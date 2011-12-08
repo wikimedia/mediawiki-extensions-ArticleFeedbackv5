@@ -669,7 +669,7 @@
 	color: #666;
 	list-style: none;
 	float: left;
-	margin: 0 0 0 10px;
+	margin: 0 0 0 20px;
 	line-height: 28px;
 	height: 28px;
 	padding: 1px 9px;
@@ -686,7 +686,7 @@
 	background: #fff;
 	border-color: #ccc;
 	color: #000;
-	border: 1px solid #d6d6d6;
+	border: 1px solid #000;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
 	border-radius: 8px; /* future proofing */
@@ -714,6 +714,7 @@
 	cursor: pointer;
 	display: inline-block;
 	height: 16px;
+	font-size: 1.3em;
 	line-height: 18px;
 	margin: 6px 0 0;
 }
