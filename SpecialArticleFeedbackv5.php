@@ -21,7 +21,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
                 $rating_params = new FauxRequest( array(
                         'action'  => 'articlefeedbackv5-view-ratings',
                         'format'  => 'json',
-                        'pageId'  => $email,
+                        'pageId'  => $pageId,
                 ) );
                 $api     = new ApiMain( $rating_params, true );
 #		$ratings = $api->fetchOverallRating( $pageId );

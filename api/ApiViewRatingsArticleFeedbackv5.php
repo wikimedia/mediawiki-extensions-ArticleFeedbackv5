@@ -69,7 +69,8 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 		$rows  = $dbr->select(
 			array( 
 				'aft_article_feedback_ratings_rollup', 
-				'aft_article_field' ),
+				'aft_article_field' 
+			),
 			array(
 				'afi_name AS field_name',
 				'arr_field_id AS field_id',
@@ -77,7 +78,7 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 				'arr_count',
 			),
 			$where,
-			__METHOD__,
+			__METHOD__
 		);
 
 		return $rows;
