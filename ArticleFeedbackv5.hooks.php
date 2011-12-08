@@ -53,6 +53,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-cta1-confirmation-title',
 				'articlefeedbackv5-cta1-confirmation-call',
 				'articlefeedbackv5-cta1-learn-how',
+                'articlefeedbackv5-cta1-learn-how-url',
 				'articlefeedbackv5-cta1-edit-linktext',
 				'articlefeedbackv5-bucket1-title',
 				'articlefeedbackv5-bucket1-question-toggle',

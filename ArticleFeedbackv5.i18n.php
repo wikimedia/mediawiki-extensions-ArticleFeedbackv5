@@ -14,6 +14,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-cta1-confirmation-title' => 'Did you know that you can edit this page?',
 	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia works because anyone can edit its articles. Go ahead, give it a try. Be bold!',
 	'articlefeedbackv5-cta1-learn-how' => 'Learn how to edit',
+    'articlefeedbackv5-cta1-learn-how-url' => 'http://en.wikipedia.org/wiki/Wikipedia:Tutorial',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Edit this page',
 
 	// error messages

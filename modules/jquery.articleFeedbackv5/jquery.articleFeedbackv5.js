@@ -1832,6 +1832,10 @@
 
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
+                
+                // Fill in the tutorial link
+                $block.find( '.articleFeedbackv5-confirmation-learnHow a' )
+                    .attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-edit-cta-link' )
