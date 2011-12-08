@@ -673,15 +673,16 @@
 	line-height: 28px;
 	height: 28px;
 	padding: 1px 9px;
-	
 	position: relative;
 }
 
 .articleFeedbackv5-tags ul li:first-child {
 	margin: 0;
 }
-
-.articleFeedbackv5-tags ul li:hover, .articleFeedbackv5-tags ul li.active {
+.articleFeedbackv5-tags ul li:hover label {
+	text-decoration: underline;
+}
+.articleFeedbackv5-tags ul li.active {
 	padding: 0 8px;
 	background: #fff;
 	border-color: #ccc;
