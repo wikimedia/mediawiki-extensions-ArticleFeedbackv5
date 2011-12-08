@@ -159,7 +159,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-transparency-terms-linktext' => 'terms',
 	'articlefeedbackv5-transparency-terms-url' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articlefeedbackv5-section-linktext' => 'feedback',
-	'articlefeedbackv5-titlebar-linktext' => 'Feedback',
+	'articlefeedbackv5-titlebar-linktext' => 'Help improve this article >>',
+    'articlefeedbackv5-fixedtab-linktext' => 'Feedback',
 	'articlefeedbackv5-toolbox-linktext' => 'Rate this page',
 
 	/* --- copied from AFTv4 and possibly not used --- */
