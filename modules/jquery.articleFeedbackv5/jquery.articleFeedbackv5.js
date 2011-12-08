@@ -777,7 +777,7 @@
 										<div class="articleFeedbackv5-rating-label" rel="3"></div>\
 										<div class="articleFeedbackv5-rating-label" rel="4"></div>\
 										<div class="articleFeedbackv5-rating-label" rel="5"></div>\
-										<div class="articleFeedbackv5-rating-clear"></div>\
+										<div class="articleFeedbackv5-rating-clear" style="display: none;"></div>\
 									</div>\
 								</div>\
 								<div style="clear:both;"></div>\
