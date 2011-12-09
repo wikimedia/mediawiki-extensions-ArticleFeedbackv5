@@ -19,7 +19,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 * Constructor
 	 */
 	public function __construct( $query, $moduleName ) {
-		parent::__construct( $query, $moduleName, 'af' );
+		parent::__construct( $query, $moduleName, 'afvf' );
 	}
 
 	/**
@@ -46,9 +46,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$length++;
 		}
 
-		$result->addValue( 'data', 'length', $length );
-		$result->addValue( 'data', 'count', $count );
-		$result->addValue( 'data', 'feedback', $html );
+		$result->addValue(  $this->getModuleName(), 'length', $length );
+		$result->addValue(  $this->getModuleName(), 'count', $count );
+		$result->addValue(  $this->getModuleName(), 'feedback', $html );
 	}
 
 	public function fetchFeedbackCount( $pageId, $filter ) {
@@ -75,6 +75,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		# Newest first is the only option right now.
 		switch($order) {
+			case 'oldest': 
+				$order = 'af_id ASC';
+				break;
 			case 'newest':
 			default:
 				$order = 'af_id DESC';
@@ -98,6 +101,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		);
 		foreach($id_query as $id) {
 			$ids[] = $id->af_id;
+		}
+
+		if( !count( $ids ) ) {
+			return array();
 		}
 
 		$rows  = $dbr->select(
@@ -149,11 +156,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			case 'all':
 				$where = array();
 				break;
-			case 'visible':
-				$where = array( 'af_hide_count' => 0 );
+			case 'invisible':
+				$where = array( 'af_hide_count > 0' );
  				break;
+			case 'visible':
 			default:
-				$where = array();
+				$where = array( 'af_hide_count' => 0 );
 				break;
 		}
 		return $where;
@@ -267,13 +275,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'oldest', 'newest', 'etc' )
+				 'oldest', 'newest' )
 			),
 			'filter'    => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'all', 'hidden', 'visible' )
+				 'all', 'invisible', 'visible' )
 			),
 			'limit'     => array(
 				ApiBase::PARAM_REQUIRED => false,

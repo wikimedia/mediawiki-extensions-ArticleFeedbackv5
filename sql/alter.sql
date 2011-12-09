@@ -36,3 +36,6 @@ ALTER TABLE aft_article_revision_feedback_select_rollup ADD COLUMN arfsr_field_i
 ALTER TABLE aft_article_revision_feedback_ratings_rollup CHANGE COLUMN afrr_rating_id afrr_field_id integer unsigned NOT NULL;
 ALTER TABLE aft_article_feedback_ratings_rollup CHANGE COLUMN arr_rating_id arr_field_id integer unsigned NOT NULL;
 ALTER TABLE aft_article_feedback_select_rollup ADD COLUMN afsr_field_id int NOT NULL;
+
+-- added 12/8 (later)
+CREATE INDEX /*i*/af_page_feedback_id ON /*_*/aft_article_feedback (af_page_id, af_id);

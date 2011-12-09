@@ -39,6 +39,7 @@ CREATE INDEX /*i*/af_revision_id ON /*_*/aft_article_feedback (af_revision_id);
 -- Create an index on the article_feedback.af_timestamp field
 CREATE INDEX /*i*/article_feedback_timestamp ON /*_*/aft_article_feedback (af_created);
 CREATE INDEX /*i*/af_page_id ON /*_*/aft_article_feedback (af_page_id, af_created);
+CREATE INDEX /*i*/af_page_feedback_id ON /*_*/aft_article_feedback (af_page_id, af_id);
 
 -- Allows for organizing fields into fieldsets, for reporting or rendering.
 -- A group is just a name and an ID.

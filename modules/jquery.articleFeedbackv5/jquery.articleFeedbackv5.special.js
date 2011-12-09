@@ -3,7 +3,7 @@
 
 	// TODO: Pass this in better from the PHP side.
 	$.articleFeedbackv5special.page    = hackPageId;
-	$.articleFeedbackv5special.filter  = 'all';
+	$.articleFeedbackv5special.filter  = 'visible';
 	$.articleFeedbackv5special.sort    = 'newest';
 	$.articleFeedbackv5special.limit   = 25;
 	$.articleFeedbackv5special.offset  = 0;
@@ -13,18 +13,18 @@
 	$.articleFeedbackv5special.setBinds = function() {
 		$( '#aft5-filter' ).bind( 'change', function(e) {
 			$.articleFeedbackv5special.filter = $(this).val();
-			$.articleFeedbackv5special.loadFeedback();
+			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
 		$( '#aft5-sort' ).bind( 'change', function(e) {
 			$.articleFeedbackv5special.sort = $(this).val();
-			$.articleFeedbackv5special.loadFeedback();
+			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
 		$( '#aft5-show-more' ).bind( 'click', function(e) {
 			$.articleFeedbackv5special.offset += 
 			 $.articleFeedbackv5special.limit;
-			$.articleFeedbackv5special.loadFeedback();
+			$.articleFeedbackv5special.loadFeedback( false);
 			return false;
 		} );
 		$( '.aft5-abuse-link' ).live( 'click', function(e) {
@@ -78,37 +78,46 @@
 		return false;
 	}
 
-	$.articleFeedbackv5special.loadFeedback = function () {
+	// ie, on loading next page, don't reset the view, but on sort/filter
+	// remove what was there and start over.
+	$.articleFeedbackv5special.loadFeedback = function ( resetContents ) {
 		$.ajax( {
 			'url'     : $.articleFeedbackv5special.apiUrl,
 			'type'    : 'GET',
 			'dataType': 'json',
 			'data'    : {
-				'afpageid': $.articleFeedbackv5special.page,
-				'affilter': $.articleFeedbackv5special.filter,
-				'afsort'  : $.articleFeedbackv5special.sort,
-				'aflimit' : $.articleFeedbackv5special.limit,
-				'afoffset': $.articleFeedbackv5special.offset,
+				'afvfpageid': $.articleFeedbackv5special.page,
+				'afvffilter': $.articleFeedbackv5special.filter,
+				'afvfsort'  : $.articleFeedbackv5special.sort,
+				'afvflimit' : $.articleFeedbackv5special.limit,
+				'afvfoffset': $.articleFeedbackv5special.offset,
 				'action'  : 'query',
 				'format'  : 'json',
 				'list'    : 'articlefeedbackv5-view-feedback',
 				'maxage'  : 0
 			},
 			'success': function ( data ) {
-				if ( 'data' in data ) {
-					$( '#aft5-show-feedback' ).append( data.data.feedback);
-					$.articleFeedbackv5special.showing += data.data.length;
+				if ( 'articlefeedbackv5-view-feedback' in data ) {
+					if ( resetContents ) {
+						$( '#aft5-show-feedback' ).html( data['articlefeedbackv5-view-feedback'].feedback);
+						$.articleFeedbackv5special.showing = data['articlefeedbackv5-view-feedback'].length;
+					} else {
+						$( '#aft5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback);
+						$.articleFeedbackv5special.showing += data['articlefeedbackv5-view-feedback'].length;
+					}
 					$( '#aft5-feedback-count-shown' ).text( $.articleFeedbackv5special.showing );
-					$( '#aft5-feedback-count-total' ).text( data.data.count );
-					if ( $.articleFeedbackv5special.showing >= data.data.count ) {
+					$( '#aft5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
+					if ( $.articleFeedbackv5special.showing >= data['articlefeedbackv5-view-feedback'].count ) {
 						$( '#aft5-show-more' ).hide();
 					}
 
 				} else {
 					$( '#aft5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
+			},
+			'failure': function ( data ) {
+				$( '#aft5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 			}
-			// TODO: have a callback for failures.
 		} );
 
 		return false;
@@ -120,10 +129,7 @@ $( document ).ready( function() {
 	// I think it maky have been a race condition.
 	$.articleFeedbackv5special.apiUrl  = mw.util.wikiScript('api');
 
-	// Blank out the 'loading' text
-	$( '#aft5-show-feedback' ).text( ' ' );
-
 	// Set up event binds and do initial data fetch.
 	$.articleFeedbackv5special.setBinds();
-	$.articleFeedbackv5special.loadFeedback();
+	$.articleFeedbackv5special.loadFeedback( true );
 } );
