@@ -7,7 +7,7 @@
  *
  * @param any Output message
  */
-var aft5_debug = function( any ) {
+aft5_debug = function( any ) {
 	if ( typeof console != 'undefined' ) {
 		console.log( any );
 	}
@@ -15,7 +15,7 @@ var aft5_debug = function( any ) {
 
 /*** Main entry point ***/
 jQuery( function( $ ) {
-		
+	
 	// Load check, is this page ArticleFeedbackv5-enabled ?
 	// Keep in sync with ApiArticleFeedbackv5.php
 	if (
