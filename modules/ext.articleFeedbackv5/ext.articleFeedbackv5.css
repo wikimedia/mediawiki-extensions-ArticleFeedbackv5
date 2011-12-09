@@ -26,6 +26,7 @@
 	border-top: 0px solid #555599;
 	background-color: #eeeef9;
 	text-align: center;
+	writing-mode: tb-rl;
 	-moz-transform:rotate(90deg); 
 	-moz-transform-origin: top right;
 	-webkit-transform: rotate(90deg);
@@ -34,8 +35,7 @@
 	-o-transform-origin: top right;
 	transform: rotate(90deg);
 	transform-origin: top right;
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
-	top: 45%;
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=0, M12=-1, M21=-1, M22=0);
 	right: 0%;
 }
 #articleFeedbackv5-fixedtablink:hover {
