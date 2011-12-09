@@ -52,30 +52,37 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		$wgOut->addWikiMsg( 'articlefeedbackv5-special-title' );
 
-		$wgOut->addHTML(<<<EOH
-<script> var hackPageId = $pageId; </script>
-<script src="/extensions/ArticleFeedbackv5/modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js"></script>
-<!--
-Show only: <select id="aft5-filter">
-<option>visible</option>
-<option>all</option>
-</select>
-<br/>
-Sort:
-<select id="aft5-sort">
-<option>newest</option>
-<option>oldest</option>
-</select>
--->
-<br>
-<span id="aft5-showing">
-Showing <span id="aft5-feedback-count-shown">0</span> posts (of <span id="aft5-feedback-count-total">0</span>)
-</span>
+		$showing = wfMessage(
+			'articlefeedbackv5-special-showing',
+			'<span id="aft5-feedback-count-shown">0</span>',
+			'<span id="aft5-feedback-count-total">0</span>'
+		);
+
+		$wgOut->addHTML('
+<script> var hackPageId = '.$pageId.'; </script>
+<script src="/extensions/ArticleFeedbackv5/modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js"></script>'
+.wfMessage('articlefeedbackv5-special-filter-label-before')->escaped()
+.'<select id="aft5-filter">
+	<option value="visible">'.wfMessage( 'articlefeedbackv5-special-filter-visible' )->escaped().'</option>
+	<option value="invisible">'.wfMessage( 'articlefeedbackv5-special-filter-invisible' )->escaped().'</option>
+	<option value="all">'.wfMessage( 'articlefeedbackv5-special-filter-all' )->escaped().'</option>
+</select>'
+.wfMessage('articlefeedbackv5-special-filter-label-after')->escaped()
+.' | '
+.wfMessage('articlefeedbackv5-special-sort-label-before')->escaped()
+.'<select id="aft5-sort">
+	<option value="newest">'.wfMessage( 'articlefeedbackv5-special-sort-newest' )->escaped().'</option>
+	<option value="oldest">'.wfMessage( 'articlefeedbackv5-special-sort-oldest' )->escaped().'</option>
+</select>'
+.wfMessage('articlefeedbackv5-special-sort-label-after')->escaped()
+.'<br>
+<span id="aft5-showing"> '.$showing.' </span>
 <br>
 <div style="border:1px solid red;" id="aft5-show-feedback"></div>
-<a href="#" id="aft5-show-more">More</a>
-EOH
-		);
+<a href="#" id="aft5-show-more">'
+.wfMessage( 'articlefeedbackv5-special-more' )->escaped()
+.'</a>
+		');
 	}
 
 	private function fetchOverallRating( $pageId ) {

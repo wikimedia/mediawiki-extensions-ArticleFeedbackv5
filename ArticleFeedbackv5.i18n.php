@@ -27,6 +27,17 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-flagging' => 'Error flagging feedback.',
 
 	// Article Feedback special page.
+	'articlefeedbackv5-special-filter-visible' => 'Visible',
+	'articlefeedbackv5-special-filter-invisible' => 'Invisible',
+	'articlefeedbackv5-special-filter-all' => 'All',
+	'articlefeedbackv5-special-sort-newest' => 'Newest first',
+	'articlefeedbackv5-special-sort-oldest' => 'Oldest first',
+	'articlefeedbackv5-special-sort-label-before' => 'Order by: ',
+	'articlefeedbackv5-special-sort-label-after' => '',
+	'articlefeedbackv5-special-filter-label-before' => 'Show only: ',
+	'articlefeedbackv5-special-filter-label-after' => '',
+	'articlefeedbackv5-special-showing' => 'Showing $1 posts (of $2)',
+	'articlefeedbackv5-special-more' => 'More',
 	'articlefeedbackv5-form-optionid' => 'Option $1',
 	'articlefeedbackv5-form-hide' => 'Hide this ($1)',
 	'articlefeedbackv5-form-abuse' => 'Flag as abuse ($1)',
