@@ -77,7 +77,7 @@ var linkBucket = function () {
 	}
 }();
 if ( $aftDiv.articleFeedbackv5( 'inDebug' ) ) {
-	console.log( 'Using link option #' + linkBucket );
+	aft5_debug( 'Using link option #' + linkBucket );
 }
 
 /* Add section links */

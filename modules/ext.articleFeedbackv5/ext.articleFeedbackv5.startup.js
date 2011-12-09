@@ -2,7 +2,20 @@
  * Script for Article Feedback Extension
  */
 
+/**
+ * Global debug function
+ *
+ * @param any Output message
+ */
+var aft5_debug = function( any ) {
+	if ( typeof console != 'undefined' ) {
+		console.log( any );
+	}
+}
+
+/*** Main entry point ***/
 jQuery( function( $ ) {
+		
 	// Load check, is this page ArticleFeedbackv5-enabled ?
 	// Keep in sync with ApiArticleFeedbackv5.php
 	if (
@@ -37,7 +50,6 @@ jQuery( function( $ ) {
         // spaces instead. Revent to underscores here for sane comparison.
         for( cat in categories['current'] ) {
             categories['current'][cat] = categories['current'][cat].replace(/\s/gi, '_');
-            console.log(categories['current'][cat]);
         }
 
 		// Category exclusion

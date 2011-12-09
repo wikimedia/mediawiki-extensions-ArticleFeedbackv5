@@ -1644,8 +1644,8 @@
 							var msg = mw.msg ( 'articlefeedbackv5-error-response' );
 							if ( 'error' in data && 'info' in data.error ) {
 								msg = data.error.info;
-							} else if ( typeof console != 'undefined' ) {
-								console.log(data);
+							} else {
+								aft5_debug(data);
 							}
 							$.articleFeedbackv5.markShowstopperError( msg );
 							return;
@@ -1944,8 +1944,8 @@
 			$.articleFeedbackv5.bucketId,
 			{ 'expires': cfg.expires, 'path': '/' }
 		);
-		if ( $.articleFeedbackv5.debug && typeof console != 'undefined' ) {
-			console.log( 'Using bucket #' + $.articleFeedbackv5.bucketId );
+		if ( $.articleFeedbackv5.debug ) {
+			aft5_debug( 'Using bucket #' + $.articleFeedbackv5.bucketId );
 		}
 	};
 
@@ -2342,9 +2342,7 @@
 	 * @param string message the message to display, if in dev
 	 */
 	$.articleFeedbackv5.markShowstopperError = function ( message ) {
-		if ( typeof console != 'undefined' ) {
-			console.log( message );
-		}
+		aft5_debug( message );
 		var $err = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error-message' );
 		$err.text( $.articleFeedbackv5.debug && message ? message : mw.msg( 'articlefeedbackv5-error' ) );
 		$err.html( $err.html().replace( "\n", '<br />' ) );
@@ -2395,9 +2393,7 @@
 			}
 		}
 		if ( $.articleFeedbackv5.debug ) {
-			if ( typeof console != 'undefined' ) {
-				console.log( errors );
-			}
+			aft5_debug( errors );
 		}
 		if ( 'markFormErrors' in $.articleFeedbackv5.currentBucket() ) {
 			$.articleFeedbackv5.currentBucket().markFormErrors( errors );
