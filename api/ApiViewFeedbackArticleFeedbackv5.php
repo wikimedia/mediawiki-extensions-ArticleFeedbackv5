@@ -57,6 +57,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		$where['af_page_id'] = $pageId;
 
+		// TODO: Not this.
 		return $dbr->selectField(
 			array( 'aft_article_feedback' ),
 			array( 'COUNT(*) AS count' ),
@@ -170,7 +171,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	protected function renderFeedback( $record ) {
 		$id = $record[0]->af_id;
 		$rv = "<div class='aft5-feedback'><p>"
-		.wfMsg( 'articlefeedbackv5-form-header', $id, $record[0]->af_created )
+		.wfMessage( 'articlefeedbackv5-form-header', $id, $record[0]->af_created )->escaped()
 		.'</p>';
 		switch( $record[0]->af_bucket_id ) {
 			case 1: $rv .= $this->renderBucket1( $record ); break;
@@ -182,63 +183,67 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			default: $rv .= $this->renderNoBucket( $record ); break;
 		}
 		$rv .= "<p>"
-		.wfMsg( 'articlefeedbackv5-form-optionid', $record[0]->af_bucket_id )
+		.wfMessage( 'articlefeedbackv5-form-optionid', $record[0]->af_bucket_id )->escaped()
 		." | "
 		."<a href='#' class='aft5-hide-link' id='aft5-hide-link-$id'>"
-		.wfMsg( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )
+		.wfMessage( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )->escaped()
 		.'</a> | '
+//204
 		."<a href='#' class='aft5-abuse-link' id='aft5-abuse-link-$id'>"
-		.wfMsg( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )
+		.wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->escaped()
 		."</a></p></div><hr>";
 		return $rv;
 	}
 
 	private function renderBucket1( $record ) {
-		$name  = $record[0]->user_name;
+		$name  = htmlspecialchars( $record[0]->user_name );
 		if( $record['found']->aa_response_boolean ) {
-			$found = wfMsg(
+			$found = wfMessage(
 				'articlefeedbackv5-form1-header-found',
 				$name
-			);
+			)->escaped();
 		} else {
-			$found = wfMsg(
+			$found = wfMessage(
 				'articlefeedbackv5-form1-header-not-found',
 				$name
-			);
-
+			)->escaped();
 		}
 		return "$found
-		<blockquote>".$record['comment']->aa_response_text
+		<blockquote>".htmlspecialchars( $record['comment']->aa_response_text )
 		.'</blockquote>';
 	}
 
 	private function renderBucket2( $record ) {
-		$name = $record[0]->user_name;
-		$type = $record['tag']->afo_name;
-		return wfMsg( 'articlefeedbackv5-form2-header', $name, $type )
-		.'<blockquote>'.$record['comment']->aa_response_text
+		$name = htmlspecialchars( $record[0]->user_name );
+		$type = htmlspecialchars( $record['tag']->afo_name );
+		return wfMessage( 'articlefeedbackv5-form2-header', $name, $type )->escaped()
+		.'<blockquote>'.htmlspecialchars( $record['comment']->aa_response_text )
 		.'</blockquote>';
 	}
 
 	private function renderBucket3( $record ) {
-		$name   = $record[0]->user_name;
-		$rating = $record['rating']->aa_response_rating;
-		return wfMsg( 'articlefeedbackv5-form3-header', $name, $rating )
-		.'<blockquote>'.$record['comment']->aa_response_text
+		$name   = htmlspecialchars( $record[0]->user_name );
+		$rating = htmlspecialchars( $record['rating']->aa_response_rating );
+		return wfMessage( 'articlefeedbackv5-form3-header', $name, $rating )->escaped()
+		.'<blockquote>'.htmlspecialchars( $record['comment']->aa_response_text )
 		.'</blockquote>';
 	}
 
 	private function renderBucket4( $record ) {
-		return wfMsg( 'articlefeedbackv5-form4-header' );
+		return wfMessage( 'articlefeedbackv5-form4-header' )->escaped();
 	}
 
 	private function renderBucket5( $record ) {
-		$name = $record[0]->user_name;
-		$rv   = wfMsg( 'articlefeedbackv5-form5-header', $name );
+		$name = htmlspecialchars( $record[0]->user_name );
+		$rv   = wfMessage( 'articlefeedbackv5-form5-header', $name )->escaped();
 		$rv .= '<ul>';
 		foreach( $record as $key => $answer ) {
 			if( $answer->afi_data_type == 'rating' && $key != '0' ) {
-				$rv .= "<li>".$answer->afi_name.': '.$answer->aa_response_rating."</li>";
+				$rv .= "<li>"
+				.htmlspecialchars( $answer->afi_name  )
+				.': '
+				.htmlspecialchars( $answer->aa_response_rating )
+				."</li>";
 			}
 		}
 		$rv .= "</ul>";
@@ -252,11 +257,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderNoBucket( $record ) {
-		return wfMsg( 'articlefeedbackv5-form-invalid' );
+		return wfMessage( 'articlefeedbackv5-form-invalid' )->escaped();
 	}
 
 	private function renderBucket6( $record ) {
-		return wfMsg( 'articlefeedbackv5-form-not-shown' );
+		return wfMessage( 'articlefeedbackv5-form-not-shown' )->escaped();
 	}
 
 	/**
