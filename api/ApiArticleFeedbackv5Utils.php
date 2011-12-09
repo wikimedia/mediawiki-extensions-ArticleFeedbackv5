@@ -68,46 +68,74 @@ class ApiArticleFeedbackv5Utils {
 	/**
 	 * Gets the known feedback fields
 	 *
-	 * TODO: use memcache
-	 *
 	 * @return ResultWrapper the rows in the aft_article_field table
 	 */
 	public static function getFields() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$rv  = $dbr->select(
-			'aft_article_field',
-			array( 'afi_name', 'afi_id', 'afi_data_type', 'afi_bucket_id' ),
-			null, 
-			__METHOD__
-		);
+		global $wgMemc;
+
+		$key    = wfMemcKey( 'articlefeedbackv5', 'getFields' );
+		$cached = $wgMemc->get( $key );
+
+		if( $cached != '' ) {
+			return $cached;
+		} else {
+			$dbr = wfGetDB( DB_SLAVE );
+			$rv  = $dbr->select(
+				'aft_article_field',
+				array( 
+					'afi_name', 
+					'afi_id', 
+					'afi_data_type', 
+					'afi_bucket_id' 
+				),
+				null, 
+				__METHOD__
+			);
+			// An hour? That might be reasonable for a cache time.
+			$wgMemc->set( $key, $rv, 60 * 60 );
+		}
+
 		return $rv;
 	}
 
 	/**
 	 * Gets the known feedback options
 	 *
-	 * Pulls all the rows in the aft_article_field_option table, then arranges
-	 * them like so:
+	 * Pulls all the rows in the aft_article_field_option table, then 
+	 * arranges them like so:
 	 *   {field id} => array(
 	 *       {option id} => {option name},
 	 *   ),
 	 *
-	 * TODO: use memcache
-	 *
 	 * @return array the rows in the aft_article_field_option table
 	 */
 	public static function getOptions() {
-		$dbr  = wfGetDB( DB_SLAVE );
-		$rows = $dbr->select(
-			'aft_article_field_option',
-			array( 'afo_option_id', 'afo_field_id', 'afo_name' ),
-			null, 
-			__METHOD__
-		);
-		$rv = array();
-		foreach ( $rows as $row ) {
-			$rv[$row->afo_field_id][$row->afo_option_id] = $row->afo_name;
-		}
+                global $wgMemc;
+
+                $key    = wfMemcKey( 'articlefeedbackv5', 'getOptions' );
+                $cached = $wgMemc->get( $key );
+
+                if( $cached != '' ) {
+                        return $cached;
+                } else {
+			$rv   = array();
+			$dbr  = wfGetDB( DB_SLAVE );
+			$rows = $dbr->select(
+				'aft_article_field_option',
+				array( 
+					'afo_option_id', 
+					'afo_field_id', 
+					'afo_name' 
+				),
+				null, 
+				__METHOD__
+			);
+			foreach ( $rows as $row ) {
+				$rv[$row->afo_field_id][$row->afo_option_id] = $row->afo_name;
+			}
+                        // An hour? That might be reasonable for a cache time.
+                        $wgMemc->set( $key, $rv, 60 * 60 );
+                }
 		return $rv;
 	}
 }
