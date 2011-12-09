@@ -231,7 +231,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				$this->updateRollupRow( $pageId, $revId, $type, $row );
 			}
 		}
-
 	}
 
 	/**
@@ -342,7 +341,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'aft_article_revision_feedback_ratings_rollup',
 				array(
 					"afrr_total = afrr_total + $value",
-					"afrr_total = afrr_count + 1",
+					"afrr_count = afrr_count + 1",
 				),
 				array(
 					'afrr_page_id'     => $pageId,
