@@ -73,7 +73,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'No',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Yes, I found what I was looking for.',
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'No, I did not find what I was looking for.',
-	'articlefeedbackv5-bucket1-question-comment-yes' => 'What did you like most?  Share your praise with the editors.',
+	'articlefeedbackv5-bucket1-question-comment-yes' => 'What was most useful to you? How could this article be improved?',
 	'articlefeedbackv5-bucket1-question-comment-no' => 'What\'s missing? Any suggestions for improvement?',
 	'articlefeedbackv5-bucket1-form-submit' => 'Post your feedback',
 	/* Option 2 (getsatisfaction style) */
