@@ -14,7 +14,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-cta1-confirmation-title' => 'Did you know that you can edit this page?',
 	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia works because anyone can edit its articles. Go ahead, give it a try. Be bold!',
 	'articlefeedbackv5-cta1-learn-how' => 'Learn how to edit',
-    'articlefeedbackv5-cta1-learn-how-url' => 'http://en.wikipedia.org/wiki/Wikipedia:Tutorial',
+	'articlefeedbackv5-cta1-learn-how-url' => 'http://en.wikipedia.org/wiki/Wikipedia:Tutorial',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Edit this page',
 
 	// error messages
@@ -171,7 +171,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-transparency-terms-url' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articlefeedbackv5-section-linktext' => 'feedback',
 	'articlefeedbackv5-titlebar-linktext' => 'Help improve this article >>',
-    'articlefeedbackv5-fixedtab-linktext' => 'Feedback',
+	'articlefeedbackv5-fixedtab-linktext' => 'Feedback',
 	'articlefeedbackv5-toolbox-linktext' => 'Rate this page',
 
 	/* --- copied from AFTv4 and possibly not used --- */
@@ -334,8 +334,8 @@ $1 is an integer, and the rating count.",
 	'articlefeedbackv5-transparency-terms-url' => 'The URL for the terms (can be translated; defaults to Project:Privacy_policy; Do not translate "Project:")',
 	'articlefeedbackv5-section-linktext' => 'When a link to pop up the feedback tool appears on the article section headers, next to [edit], this will be the text inside the brackets immediately following (e.g. "[edit] [feedback]").',
 	'articlefeedbackv5-toolbox-linktext' => 'When a link to pop up the feedback tool appears at the bottom of the toolbox area in the sidebar, this will be the link text.',
-	'articlefeedbackv5-toolbox-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far right, this will be the link text.',
-
+	'articlefeedbackv5-titlebar-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far right, this will be the link text.',
+	'articlefeedbackv5-fixedtab-linktext' => 'When a link to pop up the feedback tool appears as a fixed-positioned tab, this will be the link text',
 	/* --- copied from AFTv4 and possibly not used --- */
 	/* ArticleFeedback survey */
 	'articlefeedbackv5-survey-question-whyrated' => 'This is a question in the survey with checkboxes for the answers. The user can check multiple answers.',
