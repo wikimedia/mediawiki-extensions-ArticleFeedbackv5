@@ -140,12 +140,12 @@
 	 * The feedback ID (collected on submit, for use in tracking edits)
 	 */
 	$.articleFeedbackv5.feedbackId = 0;
-    
-    /**
-     * Currently displayed placeholder text for option 2. This is a workaround for Chrome/FF
-     * behavior overlays.
-     */
-    $.currentDefaultText = "";
+	
+	/**
+	 * Currently displayed placeholder text for option 2. This is a workaround for Chrome/FF
+	 * behavior overlays.
+	 */
+	$.currentDefaultText = "";
 
 	// }}}
 	// {{{ Templates
@@ -158,7 +158,21 @@
 					<div class="articleFeedbackv5-title-wrap">\
 						<h2 class="articleFeedbackv5-title"></h2>\
 					</div>\
-					<div class="articleFeedbackv5-ui" />\
+					<div class="articleFeedbackv5-ui">\
+						<div class="articleFeedbackv5-ui-inner"></div>\
+						<div class="articleFeedbackv5-tooltip-wrap">\
+							<div class="articleFeedbackv5-tooltip">\
+								<div class="tooltip-top"></div>\
+								<div class="tooltip-repeat">\
+									<h3><html:msg key="help-tooltip-title" /></h3><span class="articleFeedbackv5-tooltip-close">X</span>\
+									<div class="clear"></div>\
+									<p class="articleFeedbackv5-tooltip-info"><html:msg key="help-tooltip-info" /></p>\
+									<p><a target="_blank" class="articleFeedbackv5-tooltip-link"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
+								</div>\
+								<div class="tooltip-bottom"></div>\
+							</div>\
+						</div>\
+					</div>\
 				</div>\
 				<div class="articleFeedbackv5-error"><div class="articleFeedbackv5-error-message"></div></div>\
 				<div style="clear:both;"></div>\
@@ -174,21 +188,7 @@
 			</div>\
 			',
 
-		helpToolTip: '\
-			<div class="articleFeedbackv5-tooltip-wrap">\
-				<a class="articleFeedbackv5-tooltip-trigger"></a>\
-				<div class="articleFeedbackv5-tooltip">\
-					<div class="tooltip-top"></div>\
-					<div class="tooltip-repeat">\
-						<h3><html:msg key="help-tooltip-title" /></h3><span class="articleFeedbackv5-tooltip-close">X</span>\
-						<div class="clear"></div>\
-						<p class="articleFeedbackv5-tooltip-info"><html:msg key="help-tooltip-info" /></p>\
-						<p><a target="_blank" class="articleFeedbackv5-tooltip-link"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
-					</div>\
-					<div class="tooltip-bottom"></div>\
-				</div>\
-			</div>\
-			',
+		helpToolTipTrigger: '<div class="articleFeedbackv5-tooltip-trigger-wrap"><a class="articleFeedbackv5-tooltip-trigger"></a></div>',
 
 		clear: '<div class="clear"></div>'
 
@@ -543,7 +543,7 @@
 				// Add the tags from the options
 				$block.find( '.articleFeedbackv5-tags ul' ).each( function () {
 					var info = $.articleFeedbackv5.currentBucket().tagInfo;
-                    var tabIndex = 1;
+					var tabIndex = 1;
 					for ( var i in info ) {
 						var key = info[i];
 						var comm_def_msg = 'articlefeedbackv5-bucket2-' + key + '-comment-default';
@@ -554,7 +554,7 @@
 						$tag.attr( 'rel', key );
 						$tag.find( '.articleFeedbackv5-tag-input' )
 							.attr( 'id', tag_id )
-                            .attr( 'tabindex', tabIndex++)
+							.attr( 'tabindex', tabIndex++)
 							.val( key );
 						$tag.find( '.articleFeedbackv5-tag-label' )
 							.addClass( 'articleFeedbackv5-bucket2-' + key + '-label' )
@@ -616,7 +616,6 @@
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.focus( function () {
 						if ( $( this ).val() == $.currentDefaultText ) {
-                            console.log('in if');
 							$( this ).val( '' );
 							$(this).addClass( 'active' );
 						}
@@ -689,8 +688,8 @@
 						}
 						if ( empty ) {
 							$c.val( $.articleFeedbackv5.currentBucket().commentDefault[key] );
-                            // Store default text, workaround for overlay bug in Chrome/FF
-                            $.currentDefaultText = $.articleFeedbackv5.currentBucket().commentDefault[key];
+							// Store default text, workaround for overlay bug in Chrome/FF
+							$.currentDefaultText = $.articleFeedbackv5.currentBucket().commentDefault[key];
 						}
 					} else {
 						// Clear checked
@@ -1839,10 +1838,10 @@
 
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
-                
-                // Fill in the tutorial link
-                $block.find( '.articleFeedbackv5-confirmation-learnHow a' )
-                    .attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
+				
+				// Fill in the tutorial link
+				$block.find( '.articleFeedbackv5-confirmation-learnHow a' )
+					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-edit-cta-link' )
@@ -2041,13 +2040,13 @@
 	 * @param state bool true to enable; false to disable
 	 */
 	$.articleFeedbackv5.enableSubmission = function ( state ) {
-        // this is actually required to resolve jQuery behavior of not triggering the
-        // click event when .blur() occurs on the textarea and .click() is supposed to
-        // be triggered on the button.
-        if($.articleFeedbackv5.submissionEnabled == state ) {
-            return;
-        }
-        
+		// this is actually required to resolve jQuery behavior of not triggering the
+		// click event when .blur() occurs on the textarea and .click() is supposed to
+		// be triggered on the button.
+		if($.articleFeedbackv5.submissionEnabled == state ) {
+			return;
+		}
+		
 		if ( state ) {
 			$.articleFeedbackv5.find( '.articleFeedbackv5-submit' ).button( 'enable' );
 		} else {
@@ -2105,25 +2104,31 @@
 		// Wrap it in a panel
 		var $wrapper = $( $.articleFeedbackv5.templates.panelOuter );
 		$wrapper.find( '.articleFeedbackv5-ui' )
-			.addClass( 'articleFeedbackv5-option-' + $.articleFeedbackv5.bucketId )
+			.addClass( 'articleFeedbackv5-option-' + $.articleFeedbackv5.bucketId );
+		$wrapper.find( '.articleFeedbackv5-ui-inner' )
 			.append( $block );
+
+		// Set up the help tooltip
+		$wrapper.find( '.articleFeedbackv5-tooltip-link' )
+			.attr( 'href', mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' ) )
+			.click( function ( e ) {
+				e.preventDefault();
+				window.open( $( e.target ).attr( 'href' ) );
+			} );
+		$wrapper.find( '.articleFeedbackv5-tooltip-close' ).click( function () {
+			$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip' ).toggle();
+		} );
+		$wrapper.find( '.articleFeedbackv5-tooltip' ).hide();
 
 		// Set the title
 		if ( 'getTitle' in bucket ) {
 			$wrapper.find( '.articleFeedbackv5-title' ).html( bucket.getTitle() );
 		}
 
-		// Set up the tooltip for the panel version
-		$wrapper.find( '.articleFeedbackv5-title-wrap' ).append( $.articleFeedbackv5.templates.helpToolTip );
-		$wrapper.find( '.articleFeedbackv5-tooltip-link' )
-			.attr( 'href', mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' ) );
-		$wrapper.find( '.articleFeedbackv5-tooltip' ).hide();
+		// Set up the tooltip trigger for the panel version
+		$wrapper.find( '.articleFeedbackv5-title-wrap' ).append( $.articleFeedbackv5.templates.helpToolTipTrigger );
 		$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
-			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
-		} );
-
-		$wrapper.find( '.articleFeedbackv5-tooltip-close' ).click( function () {
-			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
+			$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip' ).toggle();
 		} );
 
 		// Localize
@@ -2144,7 +2149,7 @@
 			height: 300,
 			dialogClass: 'articleFeedbackv5-dialog',
 			resizable: false,
-			draggable: false,
+			draggable: true,
 			title: $.articleFeedbackv5.currentBucket().getTitle(),
 			modal: true,
 			autoOpen: false,
@@ -2156,13 +2161,10 @@
 		var $titlebar = $title.parent();
 		$title.addClass( 'articleFeedbackv5-title' );
 
-		// Set up the tooltip for the dialoag
-		$titlebar.append( $.articleFeedbackv5.templates.helpToolTip );
-		$titlebar.find( '.articleFeedbackv5-tooltip' ).hide();
-		$titlebar.find( '.articleFeedbackv5-tooltip-link' )
-			.attr( 'href', mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' ) );
+		// Set up the tooltip trigger for the dialoag
+		$titlebar.append( $.articleFeedbackv5.templates.helpToolTipTrigger );
 		$titlebar.find( '.articleFeedbackv5-tooltip-trigger' ).click( function ( e ) {
-			$( e.target ).next( '.articleFeedbackv5-tooltip' ).toggle();
+			$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip' ).toggle();
 		} );
 		$titlebar.localize( { 'prefix': 'articlefeedbackv5-' } );
 
@@ -2518,6 +2520,7 @@
 			var x = 'center';
 			// var y = o.top - h - 20;
 			var y = 'center';
+			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).hide();
 			$inner = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' ).detach();
 			$.articleFeedbackv5.$dialog.append( $inner );
 			$.articleFeedbackv5.$dialog.dialog( 'option', 'width', w + 25 );
@@ -2542,6 +2545,7 @@
 	$.articleFeedbackv5.closeAsModal = function () {
 		if ( $.articleFeedbackv5.inDialog ) {
 			$.articleFeedbackv5.setLinkId( '0' );
+			$.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-tooltip' ).hide();
 			$inner = $.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-ui' ).detach();
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-buffer' ).append( $inner );
 			$.articleFeedbackv5.$holder.show();
