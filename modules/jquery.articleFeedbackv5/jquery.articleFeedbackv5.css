@@ -26,6 +26,10 @@
 	text-align: center;
 }
 
+.articleFeedbackv5-error-wrap {
+	position: relative;
+}
+
 .articleFeedbackv5-error {
 	display: none;
 	position: absolute;

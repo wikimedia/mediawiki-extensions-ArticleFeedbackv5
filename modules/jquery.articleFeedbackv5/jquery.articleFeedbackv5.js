@@ -174,17 +174,13 @@
 						</div>\
 					</div>\
 				</div>\
-				<div class="articleFeedbackv5-error"><div class="articleFeedbackv5-error-message"></div></div>\
-				<div style="clear:both;"></div>\
 			</div>\
 			',
 
-		dialogInner: '\
-			<div class="articleFeedbackv5-dialog-inner">\
-				<div class="articleFeedbackv5-buffer">\
+		errorPanel: '<div class="articleFeedbackv5-error-wrap">\
+				<div class="articleFeedbackv5-error">\
+					<div class="articleFeedbackv5-error-message"></div>\
 				</div>\
-				<div class="articleFeedbackv5-error"><div class="articleFeedbackv5-error-message"></div></div>\
-				<div style="clear:both;"></div>\
 			</div>\
 			',
 
@@ -2137,6 +2133,7 @@
 		// Add it to the page
 		$.articleFeedbackv5.$holder
 			.html( $wrapper )
+			.append( $( $.articleFeedbackv5.templates.errorPanel ) )
 			.append( '<div class="articleFeedbackv5-lock"></div>' );
 
 		// Add an empty dialog
@@ -2343,19 +2340,33 @@
 	 */
 	$.articleFeedbackv5.markShowstopperError = function ( message ) {
 		aft5_debug( message );
-		var $err = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error-message' );
+		if ( $.articleFeedbackv5.inDialog ) {
+			$.articleFeedbackv5.$dialog.dialog( 'option', 'title', '' );
+			$.articleFeedbackv5.$dialog.dialog( 'option', 'close', function () {
+				$.articleFeedbackv5.clear();
+			} );
+			$.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-ui' ).remove();
+			$( '#ui-dialog-title-articleFeedbackv5-dialog-wrap' ).parent()
+				.find( '.articleFeedbackv5-tooltip-trigger' ).remove();
+			$.articleFeedbackv5.$dialog.append( $( '<div class="articleFeedbackv5-error-message"></div>' ) );
+			$.articleFeedbackv5.find( '.articleFeedbackv5-error' ).show();
+		} else {
+			var $veil = $.articleFeedbackv5.find( '.articleFeedbackv5-error' );
+			var $box  = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' );
+			$veil.css( 'top', '-' + $box.height() );
+			$veil.css( 'width', $box.width() );
+			$veil.css( 'height', $box.height() );
+			$veil.show();
+			$box.css( 'width', $box.width() );
+			$box.css( 'height', $box.height() );
+			$box.html( '' );
+		}
+		var $err = $.articleFeedbackv5.find( '.articleFeedbackv5-error-message' );
 		$err.text( $.articleFeedbackv5.debug && message ? message : mw.msg( 'articlefeedbackv5-error' ) );
 		$err.html( $err.html().replace( "\n", '<br />' ) );
-		var $veil = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' );
-		var $box  = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-buffer' );
-		// TODO: Make this smarter -- on ubuntu/ff at least, using the
-		// offset puts it about 100px down from where it should be;
-		// this math corrects for it, but will most likely be wrong on
-		// other browsers
-		$veil.css('top', $box.find('.articleFeedbackv5-ui').offset().top / 2 + 10);
-		$veil.css('width', $box.width());
-		$veil.css('height', $box.height());
-		$veil.show();
+		$.articleFeedbackv5.$toRemove.remove();
+		$.articleFeedbackv5.$toRemove = $( [] );
+		$.articleFeedbackv5.nowShowing = 'none';
 	};
 
 	// }}}
