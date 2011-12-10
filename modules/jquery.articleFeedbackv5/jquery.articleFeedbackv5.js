@@ -2149,7 +2149,6 @@
 
 		// Add the help tooltip
 		$wrapper.find( '.articleFeedbackv5-tooltip-link' )
-			.attr( 'href', mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' ) )
 			.click( function ( e ) {
 				e.preventDefault();
 				window.open( $( e.target ).attr( 'href' ) );
@@ -2237,6 +2236,10 @@
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title' ).html( bucket.getTitle() );
 			$.articleFeedbackv5.$dialog.dialog( 'option', 'title', bucket.getTitle() );
 		}
+
+		// Set the tooltip link
+		$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip-link' )
+			.attr( 'href', mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' ));
 
 		// Do anything special the bucket requires
 		if ( 'afterBuild' in bucket ) {
@@ -2374,6 +2377,10 @@
 			$.articleFeedbackv5.$dialog.dialog( 'option', 'title', cta.getTitle() );
 			$.articleFeedbackv5.find( '.articleFeedbackv5-title' ).html( cta.getTitle() );
 		}
+
+		// Set the tooltip link
+		$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip-link' )
+			.attr( 'href', mw.config.get( 'wgArticleFeedbackv5LearnToEdit' ) );
 
 		// Add a close button to clear out the panel
 		var $close = $( '<a class="articleFeedbackv5-clear-trigger">x</a>' )
