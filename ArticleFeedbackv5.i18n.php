@@ -159,6 +159,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket5-wellwritten-tooltip-3' => 'Adequate clarity',
 	'articlefeedbackv5-bucket5-wellwritten-tooltip-4' => 'Good clarity',
 	'articlefeedbackv5-bucket5-wellwritten-tooltip-5' => 'Exceptional clarity',
+	'articlefeedbackv5-bucket5-toolbox-linktext' => 'Rate this page',
 	/* Messages shared by all displays */
 	'articlefeedbackv5-shared-on-feedback' => 'Your comment will be shared on this $1.',
 	'articlefeedbackv5-shared-on-feedback-linktext' => 'feedback page',
@@ -172,7 +173,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-section-linktext' => 'feedback',
 	'articlefeedbackv5-titlebar-linktext' => 'Help improve this article >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Improve this page',
-	'articlefeedbackv5-toolbox-linktext' => 'Rate this page',
+	'articlefeedbackv5-toolbox-linktext' => 'Improve this page',
 
 	/* --- copied from AFTv4 and possibly not used --- */
 	/* ArticleFeedback survey */
@@ -321,6 +322,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-bucket5-report-ratings' => "Needs plural support.
 This message is used in JavaScript by module 'jquery.articleFeedback'.
 $1 is an integer, and the rating count.",
+	'articlefeedbackv5-bucket5-toolbox-linktext' => 'When a link to pop up the feedback tool appears at the bottom of the toolbox area in the sidebar, this will be the link text.  This should match AFTv4.',
 	/* Messages shared by all displays */
 	'articlefeedbackv5-error' => 'This error message will be displayed in a grey box replacing the form if there was an unrecoverable error.',
 	'articlefeedbackv5-error-nofeedback' => 'This error message will be displayed above the form (but below the title) if the user has attempted to submit a blank form.',

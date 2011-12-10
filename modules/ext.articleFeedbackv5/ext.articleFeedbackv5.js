@@ -110,28 +110,39 @@ if ( '2' == linkBucket ) {
 
 /* Add fixed tab link */
 if( '3' == linkBucket ) {
-    var $fixedTab = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-fixedtablink"></a>')
-        .data( 'linkId', 3 )
-        .text( mw.msg( 'articlefeedbackv5-fixedtab-linktext' ) )
-        .click( function( e ) {
-            e.preventDefault();
+	var $fixedTab = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-fixedtablink"></a>')
+		.data( 'linkId', 3 )
+		.text( mw.msg( 'articlefeedbackv5-fixedtab-linktext' ) )
+		.click( function( e ) {
+			e.preventDefault();
 			clickFeedbackLink( $( e.target ) );
-        } )
-        .insertBefore( $aftDiv );
-    $aftDiv.articleFeedbackv5( 'addToRemovalQueue', $fixedTab );
+		} )
+		.insertBefore( $aftDiv );
+	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $fixedTab );
 }
 
 /* Add toolbox link */
 if ( '5' == $aftDiv.articleFeedbackv5( 'getBucketId' ) ) {
-	var $aftLink4 = $( '<li id="t-articlefeedbackv5"><a href="#mw-articlefeedbackv5"></a></li>' )
+	var $tbx = $( '<li id="t-articlefeedbackv5"><a href="#mw-articlefeedbackv5"></a></li>' )
 		.find( 'a' )
-			.text( mw.msg( 'articlefeedbackv5-toolbox-linktext' ) )
+			.text( mw.msg( 'articlefeedbackv5-bucket5-toolbox-linktext' ) )
 			.click( function ( e ) {
 				// Just set the link ID -- this should act just like AFTv4
 				$aftDiv.articleFeedbackv5( 'setLinkId', 4 );
 			} )
 		.end();
-	$( '#p-tb' ).find( 'ul' ).append( $aftLink4 );
+	$( '#p-tb' ).find( 'ul' ).append( $tbx );
+} else {
+	var $tbx = $( '<li id="t-articlefeedbackv5"><a href="#mw-articlefeedbackv5"></a></li>' )
+		.find( 'a' )
+			.text( mw.msg( 'articlefeedbackv5-toolbox-linktext' ) )
+			.click( function ( e ) {
+				e.preventDefault();
+				clickFeedbackLink( $( e.target ) );
+			} )
+		.end();
+	$( '#p-tb' ).find( 'ul' ).append( $tbx );
+	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $tbx );
 }
 
 } )( jQuery );

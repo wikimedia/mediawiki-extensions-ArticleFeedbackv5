@@ -21,8 +21,9 @@ class ArticleFeedbackv5Hooks {
 			'messages' => array(
 				'articlefeedbackv5-section-linktext',
 				'articlefeedbackv5-titlebar-linktext',
-                'articlefeedbackv5-fixedtab-linktext',
+				'articlefeedbackv5-fixedtab-linktext',
 				'articlefeedbackv5-toolbox-linktext',
+				'articlefeedbackv5-bucket5-toolbox-linktext',
 			),
 			'dependencies' => array(
 				'jquery.ui.dialog',
@@ -54,7 +55,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-cta1-confirmation-title',
 				'articlefeedbackv5-cta1-confirmation-call',
 				'articlefeedbackv5-cta1-learn-how',
-                'articlefeedbackv5-cta1-learn-how-url',
+				'articlefeedbackv5-cta1-learn-how-url',
 				'articlefeedbackv5-cta1-edit-linktext',
 				'articlefeedbackv5-bucket1-title',
 				'articlefeedbackv5-bucket1-question-toggle',
@@ -138,7 +139,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-error-flagging',
 				'articlefeedbackv5-invalid-feedback-id',
 				'articlefeedbackv5-invalid-feedback-flag',
-        			'articlefeedbackv5-abuse-saved',
+					'articlefeedbackv5-abuse-saved',
 				'articlefeedbackv5-hide-saved',
 			),
 		),
