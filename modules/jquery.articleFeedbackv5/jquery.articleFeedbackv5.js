@@ -1859,6 +1859,29 @@
 			},
 
 			// }}}
+			// {{{ verify
+
+			/**
+			 * Verifies that this CTA can be displayed
+			 *
+			 * @return bool whether the CTA can be displayed
+			 */
+			verify: function () {
+				// An empty restrictions array means anyone can edit
+				var restrictions =  mw.config.get( 'wgRestrictionEdit', [] );
+				if ( restrictions.length ) {
+					var groups =  mw.config.get( 'wgUserGroups' );
+					// Verify that each restriction exists in the user's groups
+					for ( var i = 0; i < restrictions.length; i++ ) {
+						if ( $.inArray( restrictions[i], groups ) < 0 ) {
+							return false;
+						}
+					}
+				}
+				return true;
+			},
+
+			// }}}
 			// {{{ build
 
 			/**
@@ -2325,6 +2348,7 @@
 						&& 'feedback_id' in data.articlefeedbackv5
 						&& 'cta_id' in data.articlefeedbackv5 ) {
 					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
+					$.articleFeedbackv5.selectCTA( data.articlefeedbackv5.cta_id );
 					$.articleFeedbackv5.ctaId = data.articlefeedbackv5.cta_id;
 					$.articleFeedbackv5.unlockForm();
 					$.articleFeedbackv5.showCTA();
@@ -2361,6 +2385,29 @@
 	};
 
 	// }}}
+	// {{{ selectCTA
+
+	/**
+	 * Chooses a CTA
+	 *
+	 * @param  requested int the requested id
+	 * @return int       the selected id
+	 */
+	$.articleFeedbackv5.selectCTA = function ( requested ) {
+		if ( !( requested in $.articleFeedbackv5.ctas ) ) {
+			requested = '0';
+		}
+		temp = $.articleFeedbackv5.ctas[requested];
+		if ( 'verify' in temp ) {
+			if ( !temp.verify() ) {
+				requested = '0';
+			}
+		}
+		$.articleFeedbackv5.ctaId = requested;
+		return requested;
+	};
+
+	// }}}
 	// {{{ showCTA
 
 	/**
@@ -2368,7 +2415,7 @@
 	 */
 	$.articleFeedbackv5.showCTA = function () {
 
-		// Build the form
+		// Build the cta
 		var cta = $.articleFeedbackv5.currentCTA();
 		if ( !( 'build' in cta ) ) {
 			return;
