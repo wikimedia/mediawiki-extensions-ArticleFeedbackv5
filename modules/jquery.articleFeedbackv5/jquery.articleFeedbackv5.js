@@ -61,6 +61,11 @@
 	$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' ) ? true : false;
 
 	/**
+	 * Have the containers been added?
+	 */
+	$.articleFeedbackv5.hasContainers = false;
+
+	/**
 	 * Has the form been loaded yet?
 	 */
 	$.articleFeedbackv5.isLoaded = false;
@@ -132,7 +137,12 @@
 	$.articleFeedbackv5.revisionId = mw.config.get( 'wgCurRevisionId' );
 
 	/**
-	 * Whether we're showing a form, a CTA, or nothing
+	 * What we're meant to be showing: a form, a CTA, a showstopper error, or nothing
+	 */
+	$.articleFeedbackv5.toDisplay = 'form';
+
+	/**
+	 * What we're actually showing
 	 */
 	$.articleFeedbackv5.nowShowing = 'none';
 
@@ -140,12 +150,6 @@
 	 * The feedback ID (collected on submit, for use in tracking edits)
 	 */
 	$.articleFeedbackv5.feedbackId = 0;
-	
-	/**
-	 * Currently displayed placeholder text for option 2. This is a workaround for Chrome/FF
-	 * behavior overlays.
-	 */
-	$.currentDefaultText = "";
 
 	// }}}
 	// {{{ Templates
@@ -461,6 +465,12 @@
 			 */
 			commentDefault: {},
 
+			/**
+			 * Currently displayed placeholder text. This is a workaround for Chrome/FF
+			 * automatic focus in overlays.
+			 */
+			currentDefaultText: '',
+
 			// }}}
 			// {{{ templates
 
@@ -611,7 +621,7 @@
 				// Clear out the question on focus
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.focus( function () {
-						if ( $( this ).val() == $.currentDefaultText ) {
+						if ( $( this ).val() == $.articleFeedbackv5.currentBucket().currentDefaultText ) {
 							$( this ).val( '' );
 							$(this).addClass( 'active' );
 						}
@@ -678,14 +688,14 @@
 						} else {
 							for ( var t in $.articleFeedbackv5.currentBucket().commentDefault ) {
 								if ( $c.val() == $.articleFeedbackv5.currentBucket().commentDefault[t] ) {
-									empty = true; 
+									empty = true;
 								}
 							}
 						}
 						if ( empty ) {
 							$c.val( $.articleFeedbackv5.currentBucket().commentDefault[key] );
 							// Store default text, workaround for overlay bug in Chrome/FF
-							$.currentDefaultText = $.articleFeedbackv5.currentBucket().commentDefault[key];
+							$.articleFeedbackv5.currentBucket().currentDefaultText = $.articleFeedbackv5.currentBucket().commentDefault[key];
 						}
 					} else {
 						// Clear checked
@@ -1795,16 +1805,22 @@
 					<div class="clear"></div>\
 					<div class="articleFeedbackv5-confirmation-panel">\
 						<div class="articleFeedbackv5-panel-leftContent">\
-							<div class="articleFeedbackv5-confirmation-text">\
-								<span class="articleFeedbackv5-confirmation-thanks"><html:msg key="cta1-thanks" /></span>\
-								<span class="articleFeedbackv5-confirmation-follow-up"><html:msg key="cta1-confirmation-followup" /></span>\
-							</div>\
 							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta1-confirmation-title" /></h3>\
 							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta1-confirmation-call" /></p>\
 							<p class="articleFeedbackv5-confirmation-learnHow"><a target="_blank" href="#"><html:msg key="cta1-learn-how" /> &raquo;</a></p>\
 						</div>\
 						<a href="&amp;action=edit" class="articleFeedbackv5-edit-cta-link"><span class="ui-button-text"><html:msg key="cta1-edit-linktext" /></span></a>\
 						<div class="clear"></div>\
+					</div>\
+					',
+
+				/**
+				 * The title/confirmation
+				 */
+				titleConfirm: '\
+					<div class="articleFeedbackv5-confirmation-text">\
+						<span class="articleFeedbackv5-confirmation-thanks"><html:msg key="cta1-thanks" /></span>\
+						<span class="articleFeedbackv5-confirmation-follow-up"><html:msg key="cta1-confirmation-followup" /></span>\
 					</div>\
 					'
 
@@ -1819,7 +1835,10 @@
 			 * @return string the title
 			 */
 			getTitle: function () {
-//				return 'TODO: EDIT CTA';
+
+				var $title = $( '<div></div>' ).html( $.articleFeedbackv5.currentCTA().templates.titleConfirm );
+				$title.localize( { 'prefix': 'articlefeedbackv5-' } );
+				return $title.html();
 			},
 
 			// }}}
@@ -1834,7 +1853,7 @@
 
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
-				
+
 				// Fill in the tutorial link
 				$block.find( '.articleFeedbackv5-confirmation-learnHow a' )
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
@@ -1895,7 +1914,7 @@
 		// When the tool is visible, load the form
 		$.articleFeedbackv5.$holder.appear( function () {
 			if ( !$.articleFeedbackv5.isLoaded ) {
-				$.articleFeedbackv5.loadForm();
+				$.articleFeedbackv5.load();
 			}
 		} );
 		// Keep track of links that must be removed after a successful submission
@@ -2042,7 +2061,7 @@
 		if($.articleFeedbackv5.submissionEnabled == state ) {
 			return;
 		}
-		
+
 		if ( state ) {
 			$.articleFeedbackv5.find( '.articleFeedbackv5-submit' ).button( 'enable' );
 		} else {
@@ -2079,32 +2098,56 @@
 	// }}}
 	// {{{ Process methods
 
-	// {{{ loadForm
+	// {{{ load
 
 	/**
-	 * Build the form and load it into the document
+	 * Loads the tool onto the page
+	 *
+	 * @param display string "form" or "cta"
 	 */
-	$.articleFeedbackv5.loadForm = function () {
+	$.articleFeedbackv5.load = function ( display ) {
 
-		// Build the form
-		var bucket = $.articleFeedbackv5.currentBucket();
-		if ( !( 'buildForm' in bucket ) ) {
-			$.articleFeedbackv5.isLoaded = true;
-			return;
-		}
-		var $block = bucket.buildForm();
-		if ( 'bindEvents' in bucket ) {
-			bucket.bindEvents( $block );
+		if ( display ) {
+			$.articleFeedbackv5.toDisplay = ( display == 'cta' ? 'cta' : 'form' );
 		}
 
-		// Wrap it in a panel
+		$.articleFeedbackv5.clearContainers();
+		$.articleFeedbackv5.nowShowing = 'none';
+
+		if ( 'form' == $.articleFeedbackv5.toDisplay ) {
+			var bucket = $.articleFeedbackv5.currentBucket();
+			if ( !( 'buildForm' in bucket ) ) {
+				$.articleFeedbackv5.isLoaded = true;
+				return;
+			}
+			$.articleFeedbackv5.loadContainers();
+			$.articleFeedbackv5.showForm();
+		}
+
+		else if ( 'cta' == $.articleFeedbackv5.toDisplay ) {
+			var cta = $.articleFeedbackv5.currentCTA();
+			if ( !( 'build' in cta ) ) {
+				$.articleFeedbackv5.isLoaded = true;
+				return;
+			}
+			$.articleFeedbackv5.loadContainers();
+			$.articleFeedbackv5.showCTA();
+		}
+
+	};
+
+	// }}}
+	// {{{ loadContainers
+
+	/**
+	 * Builds containers and loads them onto the page
+	 */
+	$.articleFeedbackv5.loadContainers = function () {
+
+		// Set up the panel
 		var $wrapper = $( $.articleFeedbackv5.templates.panelOuter );
-		$wrapper.find( '.articleFeedbackv5-ui' )
-			.addClass( 'articleFeedbackv5-option-' + $.articleFeedbackv5.bucketId );
-		$wrapper.find( '.articleFeedbackv5-ui-inner' )
-			.append( $block );
 
-		// Set up the help tooltip
+		// Add the help tooltip
 		$wrapper.find( '.articleFeedbackv5-tooltip-link' )
 			.attr( 'href', mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' ) )
 			.click( function ( e ) {
@@ -2115,11 +2158,6 @@
 			$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip' ).toggle();
 		} );
 		$wrapper.find( '.articleFeedbackv5-tooltip' ).hide();
-
-		// Set the title
-		if ( 'getTitle' in bucket ) {
-			$wrapper.find( '.articleFeedbackv5-title' ).html( bucket.getTitle() );
-		}
 
 		// Set up the tooltip trigger for the panel version
 		$wrapper.find( '.articleFeedbackv5-title-wrap' ).append( $.articleFeedbackv5.templates.helpToolTipTrigger );
@@ -2165,8 +2203,40 @@
 		} );
 		$titlebar.localize( { 'prefix': 'articlefeedbackv5-' } );
 
-		// Set loaded
-		$.articleFeedbackv5.isLoaded = true;
+		// Mark that we have containers
+		$.articleFeedbackv5.hasContainers = true;
+	};
+
+	// }}}
+	// {{{ showForm
+
+	/**
+	 * Builds the form and loads it into the document
+	 */
+	$.articleFeedbackv5.showForm = function () {
+
+		// Build the form
+		var bucket = $.articleFeedbackv5.currentBucket();
+		var $block = bucket.buildForm();
+		if ( 'bindEvents' in bucket ) {
+			bucket.bindEvents( $block );
+		}
+		$block.localize( { 'prefix': 'articlefeedbackv5-' } );
+
+		// Add it to the appropriate container
+		$.articleFeedbackv5.find( '.articleFeedbackv5-ui-inner' )
+			.append( $block );
+
+		// Set the appropriate class on the ui block
+		$.articleFeedbackv5.find( '.articleFeedbackv5-ui' )
+			.addClass( 'articleFeedbackv5-option-' + $.articleFeedbackv5.bucketId )
+			.removeClass( 'articleFeedbackv5-cta-' + $.articleFeedbackv5.ctaId );
+
+		// Set the title
+		if ( 'getTitle' in bucket ) {
+			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title' ).html( bucket.getTitle() );
+			$.articleFeedbackv5.$dialog.dialog( 'option', 'title', bucket.getTitle() );
+		}
 
 		// Do anything special the bucket requires
 		if ( 'afterBuild' in bucket ) {
@@ -2277,6 +2347,8 @@
 	 * Shows a CTA
 	 */
 	$.articleFeedbackv5.showCTA = function () {
+
+		// Build the form
 		var cta = $.articleFeedbackv5.currentCTA();
 		if ( !( 'build' in cta ) ) {
 			return;
@@ -2286,15 +2358,23 @@
 			cta.bindEvents( $block );
 		}
 		$block.localize( { 'prefix': 'articlefeedbackv5-' } );
+
+		// Add it to the appropriate container
+		$.articleFeedbackv5.find( '.articleFeedbackv5-ui-inner' ).empty();
+		$.articleFeedbackv5.find( '.articleFeedbackv5-ui-inner' )
+			.append( $block );
+
+		// Set the appropriate class on the ui block
+		$.articleFeedbackv5.find( '.articleFeedbackv5-ui' )
+			.removeClass( 'articleFeedbackv5-option-' + $.articleFeedbackv5.bucketId )
+			.addClass( 'articleFeedbackv5-cta-' + $.articleFeedbackv5.ctaId );
+
+		// Set the title in both places
 		if ( 'getTitle' in cta ) {
-			if ( $.articleFeedbackv5.inDialog ) {
-				$.articleFeedbackv5.$dialog.dialog( 'option', 'title', cta.getTitle() );
-			} else {
-				$.articleFeedbackv5.find( '.articleFeedbackv5-title' ).html( cta.getTitle() );
-			}
+			$.articleFeedbackv5.$dialog.dialog( 'option', 'title', cta.getTitle() );
+			$.articleFeedbackv5.find( '.articleFeedbackv5-title' ).html( cta.getTitle() );
 		}
-		$.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).empty();
-		$.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).append( $block );
+
 		// Add a close button to clear out the panel
 		var $close = $( '<a class="articleFeedbackv5-clear-trigger">x</a>' )
 			.click( function (e) {
@@ -2303,6 +2383,10 @@
 			} );
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title-wrap .articleFeedbackv5-tooltip-trigger' )
 			.before( $close );
+
+		// Reset the panel dimensions
+		$.articleFeedbackv5.setDialogDimensions();
+
 		$.articleFeedbackv5.nowShowing = 'cta';
 	};
 
@@ -2313,17 +2397,25 @@
 	 * Clears out the panel
 	 */
 	$.articleFeedbackv5.clear = function () {
-
 		$.articleFeedbackv5.isLoaded = false;
 		$.articleFeedbackv5.inDialog = false;
 		$.articleFeedbackv5.submissionEnabled = false;
 		$.articleFeedbackv5.feedbackId = 0;
-
-		$.articleFeedbackv5.$holder.empty();
-		$.articleFeedbackv5.$dialog.remove();
-
-
+		$.articleFeedbackv5.clearContainers();
 		$.articleFeedbackv5.nowShowing = 'none';
+	};
+
+	// }}}
+	// {{{ clearContainers
+
+	/**
+	 * Wipes the containers from the page
+	 */
+	$.articleFeedbackv5.clearContainers = function () {
+		$.articleFeedbackv5.$holder.empty();
+		if ( $.articleFeedbackv5.$dialog ) {
+			$.articleFeedbackv5.$dialog.remove();
+		}
 	};
 
 	// }}}
@@ -2366,7 +2458,7 @@
 		$err.html( $err.html().replace( "\n", '<br />' ) );
 		$.articleFeedbackv5.$toRemove.remove();
 		$.articleFeedbackv5.$toRemove = $( [] );
-		$.articleFeedbackv5.nowShowing = 'none';
+		$.articleFeedbackv5.nowShowing = 'error';
 	};
 
 	// }}}
@@ -2518,21 +2610,14 @@
 			// $.articleFeedbackv5.clear();
 		}
 		if ( !$.articleFeedbackv5.isLoaded ) {
-			$.articleFeedbackv5.loadForm();
+			$.articleFeedbackv5.load();
 		}
 		if ( !$.articleFeedbackv5.inDialog ) {
-			var w = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' ).width();
-			var h = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' ).height();
-			var o = $link.offset();
-			var x = 'center';
-			// var y = o.top - h - 20;
-			var y = 'center';
+			$.articleFeedbackv5.setDialogDimensions();
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).hide();
 			$inner = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' ).detach();
 			$.articleFeedbackv5.$dialog.append( $inner );
-			$.articleFeedbackv5.$dialog.dialog( 'option', 'width', w + 25 );
-			$.articleFeedbackv5.$dialog.dialog( 'option', 'height', h + 70 );
-			$.articleFeedbackv5.$dialog.dialog( 'option', 'position', [ x, y ] );
+			$.articleFeedbackv5.$dialog.dialog( 'option', 'position', [ 'center', 'center' ] );
 			$.articleFeedbackv5.$dialog.dialog( 'open' );
 			$.articleFeedbackv5.setLinkId( $link.data( 'linkId' ) );
 
@@ -2561,6 +2646,19 @@
 				$.articleFeedbackv5.clear();
 			}
 		}
+	};
+
+	// }}}
+	// {{{ setDialogDimensions
+
+	/**
+	 * Sets the dialog's dimensions
+	 */
+	$.articleFeedbackv5.setDialogDimensions = function () {
+		var w = $.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).width();
+		var h = $.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).height();
+		$.articleFeedbackv5.$dialog.dialog( 'option', 'width', w + 25 );
+		$.articleFeedbackv5.$dialog.dialog( 'option', 'height', h + 70 );
 	};
 
 	// }}}

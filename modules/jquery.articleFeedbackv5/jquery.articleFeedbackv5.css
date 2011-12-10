@@ -849,20 +849,21 @@ body .ui-dialog .ui-icon-closethick:hover {
 	float: left;
 	width: 340px;
 }
-.articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent .articleFeedbackv5-confirmation-text {
+.articleFeedbackv5-confirmation-text {
 	display: inline-block;
 	background: #f7f5f5;
 	border: 1px solid #cccaca;
 	padding: 5px 10px;
 	line-height: 25px;
-	
+	font-size: 0.75em;
+	font-weight: normal;
 }
-.articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent .articleFeedbackv5-confirmation-text .articleFeedbackv5-confirmation-thanks {
+.articleFeedbackv5-confirmation-text .articleFeedbackv5-confirmation-thanks {
 	font-weight: bold;
 	font-style: italic;
 	display: inline-block;
-	padding: 0 0 0 24px;
-	margin: 0 9px 0 0;
+	padding: 0 0 0 30px;
+	margin: 0 10px 0 0;
 	height: 25px;
 	/* @embed */
 	background: url(images/bg-confirmation-thanks.png) 0 center no-repeat;
@@ -945,7 +946,7 @@ body .ui-dialog .ui-icon-closethick:hover {
 	margin-bottom: 5px;
 }
 
-/*** CTA has a button to remove itself from the page ***/
+/*** CTA overrides ***/
 
 .articleFeedbackv5-clear-trigger {
 	display: block;
@@ -965,3 +966,13 @@ body .ui-dialog .ui-icon-closethick:hover {
 	cursor: pointer;
 	text-decoration: none;
 }
+
+.articleFeedbackv5-cta-1 .articleFeedbackv5-tooltip {
+	top: -405px;
+	right: -68px;
+}
+
+.articleFeedbackv5-panel .articleFeedbackv5-cta-1 h2.articleFeedbackv5-title {
+	font-weight: normal;
+}
+
