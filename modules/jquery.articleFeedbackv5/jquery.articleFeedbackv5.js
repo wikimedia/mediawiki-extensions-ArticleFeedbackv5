@@ -13,22 +13,23 @@
  * This plugin supports a choice of forms and CTAs.  Each form option is called
  * a "bucket" because users are sorted into buckets and each bucket gets a
  * different form option.  Right now, these buckets are:
- *   1. Share Your Feedback - NOT implemented
+ *   0. No Feedback
+ *   	Shows nothing at all.
+ *   1. Share Your Feedback
  *   	Has a yes/no toggle on "Did you find what you were looking for?" and a
  *   	text area for comments.
- *   2. Make A Suggestion - NOT implemented
+ *   2. Make A Suggestion
  *   	Modeled after getsatisfaction.com; users can say that their comment is a
  *   	suggestion, question, problem, or praise.
- *   3. Review This Page - NOT implemented
+ *   3. Review This Page
  *   	Has a single star rating field and a comment box.
- *   4. Help Edit This Page - NOT implemented
+ *   4. Help Edit This Page
  *   	Has no input fields; just links to the Edit page.
  *   5. Rate This Page
  *   	The existing article feedback tool, except that it can use any of the
  *   	CTA types.
- *   0. No Feedback
- *   	Shows nothing at all.
  * The available CTAs are:
+ *   0. Just a confirmation notice
  *   1. Edit this page
  *   	Just a big glossy button to send the user to the edit page.
  *   2. Take a survey - NOT implemented
@@ -189,6 +190,13 @@
 			',
 
 		helpToolTipTrigger: '<div class="articleFeedbackv5-tooltip-trigger-wrap"><a class="articleFeedbackv5-tooltip-trigger"></a></div>',
+
+		ctaTitleConfirm: '\
+			<div class="articleFeedbackv5-confirmation-text">\
+				<span class="articleFeedbackv5-confirmation-thanks"><html:msg key="cta1-thanks" /></span>\
+				<span class="articleFeedbackv5-confirmation-follow-up"><html:msg key="cta1-confirmation-followup" /></span>\
+			</div>\
+			',
 
 		clear: '<div class="clear"></div>'
 
@@ -1535,7 +1543,7 @@
 			 * holder
 			 */
 			afterBuild: function () {
-				// Drop the tooltip and trigger
+				// Drop the tooltip trigger
 				$.articleFeedbackv5.$holder
 					.add( $.articleFeedbackv5.$dialog)
 					.find( '.articleFeedbackv5-tooltip-trigger' ).hide();
@@ -1787,6 +1795,40 @@
 	 */
 	$.articleFeedbackv5.ctas = {
 
+		// {{{ CTA 0: Just a confirmation message
+
+		'0': {
+
+			// {{{ build
+
+			/**
+			 * Builds the CTA
+			 *
+			 * @return Element the form
+			 */
+			build: function () {
+				return $( '<div></div>' );
+			},
+
+			// }}}
+			// {{{ afterBuild
+
+			/**
+			 * Handles any setup that has to be done once the markup is in the
+			 * holder
+			 */
+			afterBuild: function () {
+				// Drop the tooltip trigger
+				$.articleFeedbackv5.$holder
+					.add( $.articleFeedbackv5.$dialog)
+					.find( '.articleFeedbackv5-tooltip-trigger' ).hide();
+			}
+
+			// }}}
+
+		},
+
+		// }}}
 		// {{{ CTA 1: Encticement to edit
 
 		'1': {
@@ -1812,33 +1854,8 @@
 						<a href="&amp;action=edit" class="articleFeedbackv5-edit-cta-link"><span class="ui-button-text"><html:msg key="cta1-edit-linktext" /></span></a>\
 						<div class="clear"></div>\
 					</div>\
-					',
-
-				/**
-				 * The title/confirmation
-				 */
-				titleConfirm: '\
-					<div class="articleFeedbackv5-confirmation-text">\
-						<span class="articleFeedbackv5-confirmation-thanks"><html:msg key="cta1-thanks" /></span>\
-						<span class="articleFeedbackv5-confirmation-follow-up"><html:msg key="cta1-confirmation-followup" /></span>\
-					</div>\
 					'
 
-			},
-
-			// }}}
-			// {{{ getTitle
-
-			/**
-			 * Gets the title
-			 *
-			 * @return string the title
-			 */
-			getTitle: function () {
-
-				var $title = $( '<div></div>' ).html( $.articleFeedbackv5.currentCTA().templates.titleConfirm );
-				$title.localize( { 'prefix': 'articlefeedbackv5-' } );
-				return $title.html();
 			},
 
 			// }}}
@@ -2374,9 +2391,15 @@
 
 		// Set the title in both places
 		if ( 'getTitle' in cta ) {
-			$.articleFeedbackv5.$dialog.dialog( 'option', 'title', cta.getTitle() );
-			$.articleFeedbackv5.find( '.articleFeedbackv5-title' ).html( cta.getTitle() );
+			var title = cta.getTitle();
+		} else {
+			var title = $( '<div></div>' )
+				.html( $.articleFeedbackv5.templates.ctaTitleConfirm )
+				.localize( { 'prefix': 'articlefeedbackv5-' } )
+				.html();
 		}
+		$.articleFeedbackv5.$dialog.dialog( 'option', 'title', title );
+		$.articleFeedbackv5.find( '.articleFeedbackv5-title' ).html( title );
 
 		// Set the tooltip link
 		$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip-link' )
@@ -2390,6 +2413,11 @@
 			} );
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title-wrap .articleFeedbackv5-tooltip-trigger' )
 			.before( $close );
+
+		// Do anything special the CTA requires
+		if ( 'afterBuild' in cta ) {
+			cta.afterBuild();
+		}
 
 		// Reset the panel dimensions
 		$.articleFeedbackv5.setDialogDimensions();
