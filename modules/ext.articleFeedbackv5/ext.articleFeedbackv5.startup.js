@@ -46,8 +46,8 @@ jQuery( function( $ ) {
 			'current': mw.config.get( 'wgCategories', [] )
 		};
         
-        // Categories are configures with underscores, but article's categories are returned with
-        // spaces instead. Revent to underscores here for sane comparison.
+        // Categories are configured with underscores, but article's categories are returned with
+        // spaces instead. Revert to underscores here for sane comparison.
         for( cat in categories['current'] ) {
             categories['current'][cat] = categories['current'][cat].replace(/\s/gi, '_');
         }
