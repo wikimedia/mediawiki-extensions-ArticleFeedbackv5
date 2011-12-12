@@ -97,7 +97,7 @@ if ( '1' == linkBucket ) {
 
 /* Add titlebar link */
 if ( '2' == linkBucket ) {
-	var $tlk = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-titlebarlink"></span>' )
+	var $tlk = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-titlebarlink"></a>' )
 		.data( 'linkId', 2 )
 		.text( mw.msg( 'articlefeedbackv5-titlebar-linktext' ) )
 		.click( function ( e ) {
