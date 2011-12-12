@@ -650,7 +650,7 @@
 	box-shadow: -2px 2px 1px #999;
 }
 
-.articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link {
+.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
 	float: right;
 	position: relative;
 	bottom: 10px;
@@ -871,7 +871,7 @@ body .ui-dialog .ui-icon-closethick:hover {
 .articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent .articleFeedbackv5-confirmation-learnHow {
 	font-weight: bold;
 }
-.articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link {
+.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
 	float: left;
 	height: 35px !important;
 	width: auto;
@@ -890,14 +890,14 @@ body .ui-dialog .ui-icon-closethick:hover {
 	box-shadow: -2px 2px 1px #999;
 }
 /*.articleFeedbackv5-option-4 .articleFeedbackv5-submit,*/
-.articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link {
+.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
 	float: right;
 	position: relative;
 	bottom: 10px;
 	margin: 105px 0 0 !important;
 }
 
-.articleFeedbackv5-ui .articleFeedbackv5-edit-cta-link span{
+.articleFeedbackv5-ui .articleFeedbackv5-cta-button span {
 	font-size: 14px;
 	font-weight: bold;
 	display: inline-block;
@@ -967,12 +967,19 @@ body .ui-dialog .ui-icon-closethick:hover {
 	text-decoration: none;
 }
 
-.articleFeedbackv5-cta-1 .articleFeedbackv5-tooltip {
+.articleFeedbackv5-cta-0 .articleFeedbackv5-tooltip,
+.articleFeedbackv5-cta-1 .articleFeedbackv5-tooltip,
+.articleFeedbackv5-cta-2 .articleFeedbackv5-tooltip {
 	top: -405px;
 	right: -68px;
 }
 
-.articleFeedbackv5-panel .articleFeedbackv5-cta-1 h2.articleFeedbackv5-title {
+.articleFeedbackv5-panel .articleFeedbackv5-cta-0 h2.articleFeedbackv5-title,
+.articleFeedbackv5-panel .articleFeedbackv5-cta-1 h2.articleFeedbackv5-title,
+.articleFeedbackv5-panel .articleFeedbackv5-cta-2 h2.articleFeedbackv5-title {
 	font-weight: normal;
 }
 
+.articleFeedbackv5-panel .articleFeedbackv5-cta-2 .articleFeedbackv5-cta-button {
+	margin-top: 50px !important;
+}

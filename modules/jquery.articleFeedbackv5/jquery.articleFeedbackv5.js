@@ -193,8 +193,8 @@
 
 		ctaTitleConfirm: '\
 			<div class="articleFeedbackv5-confirmation-text">\
-				<span class="articleFeedbackv5-confirmation-thanks"><html:msg key="cta1-thanks" /></span>\
-				<span class="articleFeedbackv5-confirmation-follow-up"><html:msg key="cta1-confirmation-followup" /></span>\
+				<span class="articleFeedbackv5-confirmation-thanks"><html:msg key="cta-thanks" /></span>\
+				<span class="articleFeedbackv5-confirmation-follow-up"><html:msg key="cta-confirmation-followup" /></span>\
 			</div>\
 			',
 
@@ -1851,7 +1851,7 @@
 							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta1-confirmation-call" /></p>\
 							<p class="articleFeedbackv5-confirmation-learnHow"><a target="_blank" href="#"><html:msg key="cta1-learn-how" /> &raquo;</a></p>\
 						</div>\
-						<a href="&amp;action=edit" class="articleFeedbackv5-edit-cta-link"><span class="ui-button-text"><html:msg key="cta1-edit-linktext" /></span></a>\
+						<a href="&amp;action=edit" class="articleFeedbackv5-cta-button"><span class="ui-button-text"><html:msg key="cta1-edit-linktext" /></span></a>\
 						<div class="clear"></div>\
 					</div>\
 					'
@@ -1910,6 +1910,59 @@
 							'articleFeedbackv5_bucket_id': $.articleFeedbackv5.bucketId
 						} )
 					);
+
+				return $block;
+			}
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ CTA 2: Learn more
+
+		'2': {
+
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The template for the whole block
+				 */
+				block: '\
+					<div class="clear"></div>\
+					<div class="articleFeedbackv5-confirmation-panel">\
+						<div class="articleFeedbackv5-panel-leftContent">\
+							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta2-confirmation-title" /></h3>\
+							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta2-confirmation-call" /></p>\
+						</div>\
+						<a href="&amp;action=edit" class="articleFeedbackv5-cta-button"><span class="ui-button-text"><html:msg key="cta2-button-text" /></span></a>\
+						<div class="clear"></div>\
+					</div>\
+					'
+
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the CTA
+			 *
+			 * @return Element the form
+			 */
+			build: function () {
+
+				// Start up the block to return
+				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
+
+				// Fill in the button link
+				$block.find( '.articleFeedbackv5-cta-button' )
+					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				return $block;
 			}
@@ -2349,7 +2402,6 @@
 						&& 'cta_id' in data.articlefeedbackv5 ) {
 					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
 					$.articleFeedbackv5.selectCTA( data.articlefeedbackv5.cta_id );
-					$.articleFeedbackv5.ctaId = data.articlefeedbackv5.cta_id;
 					$.articleFeedbackv5.unlockForm();
 					$.articleFeedbackv5.showCTA();
 					// Drop a cookie for a successful submit
@@ -2400,7 +2452,7 @@
 		temp = $.articleFeedbackv5.ctas[requested];
 		if ( 'verify' in temp ) {
 			if ( !temp.verify() ) {
-				requested = '0';
+				requested = requested == '1' ? '2' : '0';
 			}
 		}
 		$.articleFeedbackv5.ctaId = requested;

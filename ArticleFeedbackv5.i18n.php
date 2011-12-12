@@ -9,13 +9,16 @@
  */
 $messages['en'] = array(
 	// CTA translations
-	'articlefeedbackv5-cta1-thanks' => 'Thanks!',
-	'articlefeedbackv5-cta1-confirmation-followup' => 'Your feedback has been saved.',
+	'articlefeedbackv5-cta-thanks' => 'Thanks!',
+	'articlefeedbackv5-cta-confirmation-followup' => 'Your feedback has been saved.',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Did you know that you can edit this page?',
 	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia works because anyone can edit its articles. Go ahead, give it a try. Be bold!',
 	'articlefeedbackv5-cta1-learn-how' => 'Learn how to edit',
 	'articlefeedbackv5-cta1-learn-how-url' => 'http://en.wikipedia.org/wiki/Wikipedia:Tutorial',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Edit this page',
+	'articlefeedbackv5-cta2-confirmation-title' => 'Help improve Wikipedia',
+	'articlefeedbackv5-cta2-confirmation-call' => 'This encyclopedia is created by people like you. Can you give us a hand?',
+	'articlefeedbackv5-cta2-button-text' => 'Learn more',
 
 	// error messages
 	'articlefeedbackv5-error' => 'An error has occured. Please try again later.',
@@ -269,6 +272,18 @@ $messages['qqq'] = array(
 
 Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a prototype installation.',
 	'articlefeedbackv5-desc' => '{{desc}}',
+
+	/* CTAs */
+	'articlefeedbackv5-cta-thanks' => 'The bolded part of the message that appears at the top of every CTA',
+	'articlefeedbackv5-cta-confirmation-followup' => 'The non-bolded part of the message that appears at the top of every CTA',
+	'articlefeedbackv5-cta1-confirmation-title' => 'The title of the edit CTA',
+	'articlefeedbackv5-cta1-confirmation-call' => 'The text of the edit CTA',
+	'articlefeedbackv5-cta1-learn-how' => 'The link below the text on the edit CTA, pointing to the edit tutorial',
+	'articlefeedbackv5-cta1-learn-how-url' => 'The link to the edit tutorial',
+	'articlefeedbackv5-cta1-edit-linktext' => 'The explanatory text for the button on the edit CTA',
+	'articlefeedbackv5-cta2-confirmation-title' => 'The title of the learn more CTA',
+	'articlefeedbackv5-cta2-confirmation-call' => 'The explanatory text of the learn more CTA',
+	'articlefeedbackv5-cta2-button-text' => 'The text for the button on the learn more CTA',
 
 	/* Feedback forms */
 	/* Option 1 ("Did you find what you were looking for?") */
