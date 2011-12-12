@@ -21,7 +21,6 @@
 	margin: 0;
 	right: 0;
 	top: 200px;
-	z-index: 10000000;
 }
 .articleFeedbackv5-fixedtabbox {
 	position: relative;
@@ -34,9 +33,9 @@
 	margin: 0;
 	padding: 5px 10px;
 	color: .333;
-	border: 1px solid .555599;
-	border-top: 0px solid .555599;
-	background-color: .eeeef9;	
+	border: 1px solid #555599;
+	border-top: 0px solid #555599;
+	background-color: #eeeef9;	
 	text-align: center;
 	writing-mode: tb-rl;
 	-moz-transform:rotate(90deg); 

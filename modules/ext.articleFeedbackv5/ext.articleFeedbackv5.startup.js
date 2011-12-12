@@ -45,12 +45,12 @@ jQuery( function( $ ) {
 			'exclude': mw.config.get( 'wgArticleFeedbackv5BlacklistCategories', [] ),
 			'current': mw.config.get( 'wgCategories', [] )
 		};
-        
+
 		var enable = false;
-        for( cat in categories['current'] ) {
+		for( var cat in categories['current'] ) {
 			// Categories are configured with underscores, but article's categories are returned with
 			// spaces instead. Revert to underscores here for sane comparison.
-            categories['current'][cat] = categories['current'][cat].replace(/\s/gi, '_');
+			categories['current'][cat] = categories['current'][cat].replace(/\s/gi, '_');
 			// Check exclusion - exclusion overrides everything else
 			if( $.inArray( categories['current'][cat], categories.exclude ) > -1 ) {
 				// Blacklist overrides everything else
@@ -61,7 +61,7 @@ jQuery( function( $ ) {
 				// categories, and others might be blacklisted - so continue iterating
 				enable = true;
 			}
-        }
+		}
 
 		// Lazy loading
 		if ( enable ) {

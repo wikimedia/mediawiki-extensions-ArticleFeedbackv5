@@ -111,14 +111,23 @@ if ( '2' == linkBucket ) {
 
 /* Add fixed tab link */
 if( '3' == linkBucket ) {
-	var $fixedTab = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-fixedtablink"></a>')
+	var $fixedTab = $( '\
+		<div id="articleFeedbackv5-fixedtab">\
+			<div id="articleFeedbackv5-fixedtabbox">\
+				<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-fixedtablink"></a>\
+			</div>\
+		</div>' );
+	$fixedTab.find( '#articleFeedbackv5-fixedtablink' )
 		.data( 'linkId', 3 )
 		.text( mw.msg( 'articlefeedbackv5-fixedtab-linktext' ) )
 		.click( function( e ) {
 			e.preventDefault();
 			clickFeedbackLink( $( e.target ) );
-		} )
-		.insertBefore( $aftDiv );
+		} );
+	$fixedTab.insertBefore( $aftDiv );
+	$fixedTab.addClass( 'articleFeedbackv5-fixedtab' );
+	$fixedTab.find( '#articleFeedbackv5-fixedtabbox' ).addClass( 'articleFeedbackv5-fixedtabbox' );
+	$fixedTab.find( '#articleFeedbackv5-fixedtablink' ).addClass( 'articleFeedbackv5-fixedtablink' );
 	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $fixedTab );
 }
 
