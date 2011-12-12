@@ -46,36 +46,25 @@ jQuery( function( $ ) {
 			'current': mw.config.get( 'wgCategories', [] )
 		};
         
-		// Categories are configured with underscores, but article's categories are returned with
-		// spaces instead. Convert to underscores here for sane comparison.
-		for ( var cat in categories['current'] ) {
-			categories['current'][cat] = categories['current'][cat].replace(/\s/gi, '_');
-		}
-
-		// Category exclusion
-		var disable = false;
-		for ( var i = 0; i < categories.current.length; i++ ) {
-			if ( $.inArray( categories.current[i], categories.exclude ) > -1 ) {
-				disable = true;
-				break;
-			}
-		}
-
-		// Category inclusion
 		var enable = false;
-		for ( var i = 0; i < categories.current.length; i++ ) {
-			if ( $.inArray( categories.current[i], categories.include ) > -1 ) {
-				enable = true;
-				break;
+        for( cat in categories['current'] ) {
+			// Categories are configured with underscores, but article's categories are returned with
+			// spaces instead. Revert to underscores here for sane comparison.
+            categories['current'][cat] = categories['current'][cat].replace(/\s/gi, '_');
+			// Check exclusion - exclusion overrides everything else
+			if( $.inArray( categories['current'][cat], categories.exclude ) > -1 ) {
+				// Blacklist overrides everything else
+				return;
 			}
-		}
-
-		// Lottery inclusion
-		var wonLottery = ( Number( mw.config.get( 'wgArticleId', 0 ) ) % 1000 )
-				< Number( mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 ) ) * 10;
+			if( $.inArray( categories['current'][cat], categories.include ) > -1 ) {
+				// One match is enough for include, however we are iterating on the 'current'
+				// categories, and others might be blacklisted - so continue iterating
+				enable = true;
+			}
+        }
 
 		// Lazy loading
-		if ( !disable && ( wonLottery || enable ) ) {
+		if ( enable ) {
 			mw.loader.load( 'ext.articleFeedbackv5' );
 			// Load the IE-specific module
 			if( navigator.appVersion.indexOf( 'MSIE' ) != -1 ) {

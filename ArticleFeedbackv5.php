@@ -63,10 +63,10 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// the new odds are applied to everyone, not just people who have yet to be
 	// placed in a bucket.
 	'buckets' => array(
-		'zero' => 25,
-		'one' => 25,
-		'two' => 25,
-		'three' => 25,
+		'zero' => 0,
+		'one' => 34,
+		'two' => 33,
+		'three' => 33,
 		'four' => 0,
 		'five' => 0,
 	),
