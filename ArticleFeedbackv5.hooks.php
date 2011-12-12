@@ -146,7 +146,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-error-flagging',
 				'articlefeedbackv5-invalid-feedback-id',
 				'articlefeedbackv5-invalid-feedback-flag',
-					'articlefeedbackv5-abuse-saved',
+				'articlefeedbackv5-abuse-saved',
 				'articlefeedbackv5-hide-saved',
 			),
 		),
