@@ -73,6 +73,7 @@ var linkBucket = function () {
 			mw.config.get( 'wgArticleFeedbackv5LinkBuckets' )
 		);
 		var nameMap = { '-': '0', 'A': '1', 'B': '2', 'C': '3' };
+		aft5_debug('Links option: ' + bucketName + ' - ' + nameMap[bucketName]);
 		return nameMap[bucketName];
 	}
 }();

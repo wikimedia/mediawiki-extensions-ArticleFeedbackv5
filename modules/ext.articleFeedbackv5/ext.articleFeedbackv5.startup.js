@@ -77,6 +77,10 @@ jQuery( function( $ ) {
 		// Lazy loading
 		if ( !disable && ( wonLottery || enable ) ) {
 			mw.loader.load( 'ext.articleFeedbackv5' );
+			// Load the IE-specific module
+			if( navigator.appVersion.indexOf(ÒMSIEÓ) != -1 ) {
+				mw.loader.load( 'ext.articleFeedbackv5.ie' );
+			}
 		}
 	}
 } );

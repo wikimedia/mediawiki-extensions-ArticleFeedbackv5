@@ -34,6 +34,10 @@ class ArticleFeedbackv5Hooks {
 				'ext.articleFeedbackv5.ratingi18n',
 			),
 		),
+		'ext.articleFeedbackv5.ie' => array(
+			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.ie.js',
+			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.ie.css'
+		),
 		'ext.articleFeedbackv5.ratingi18n' => array(
 			'messages' => null, // Filled in by the resourceLoaderRegisterModules() hook function later
 		),
