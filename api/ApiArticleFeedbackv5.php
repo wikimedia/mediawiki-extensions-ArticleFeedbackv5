@@ -448,7 +448,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$link      = $params['link'];
 		$token     = $this->getAnonToken( $params );
 		$timestamp = $dbw->timestamp();
-		$ip        = wfGetIP();
+		$ip        = null;
+
+		// Only save IP address if the user isn't logged in.
+		if( !$wgUser->isLoggedIn() ) {
+			$ip        = wfGetIP();
+		}
 
 		# make sure we have a page/user
 		if ( !$params['pageid'] || !$wgUser) {
