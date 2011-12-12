@@ -97,7 +97,7 @@ they aren't currently used on the feedback page. The page-level ones only
 count back to wgArticleFeedbackv5RatingLifetime, so they're a rolling window.
 
 There are tables for ratings and select (ratings includes booleans as well),
-because while the vaue of the rating/boolean is important (Rated 3/5), for
+because while the value of the rating/boolean is important (Rated 3/5), for
 selects we only want the count for each input, not the value of that input or
 the sum of the values (which will be numerical option_ids, not meaningful 
 rating values). The queries were sufficiently different that we deemed multiple
