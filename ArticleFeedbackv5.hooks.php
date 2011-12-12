@@ -267,11 +267,14 @@ class ArticleFeedbackv5Hooks {
 	 * @param $preferences
 	 */
 	public static function getPreferences( $user, &$preferences ) {
-		$preferences['articlefeedbackv5-disable'] = array(
-			'type' => 'check',
-			'section' => 'rendering/advancedrendering',
-			'label-message' => 'articlefeedbackv5-disable-preference',
-		);
+		// need to check for existing key, if deployed simultaneously with AFTv4
+		if( !array_key_exists( 'articlefeedbackv5-disable', $preferences ) ) {
+			$preferences['articlefeedbackv5-disable'] = array(
+				'type' => 'check',
+				'section' => 'rendering/advancedrendering',
+				'label-message' => 'articlefeedbackv5-disable-preference',
+			);
+		}
 		return true;
 	}
 
