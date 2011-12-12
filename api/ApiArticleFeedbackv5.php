@@ -92,7 +92,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$this->updateRollupTables( $pageId, $revisionId, $user_answers );
 
 		if( $params['email'] ) {
-			$this->captureEmail ( $params['email'], json_encode(
+			$this->captureEmail ( $params['email'], FormatJson::encode(
 				$email_data
 			) );
 		}
