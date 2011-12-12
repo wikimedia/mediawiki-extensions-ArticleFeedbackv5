@@ -16,29 +16,40 @@
 	white-space: nowrap;
 }
 
-#articleFeedbackv5-fixedtablink {
-	display: block;
+.articleFeedbackv5-fixedtab {
 	position: fixed;
-	margin: 0px;
+	margin: 0;
+	right: 0;
+	top: 200px;
+	z-index: 10000000;
+}
+.articleFeedbackv5-fixedtabbox {
+	position: relative;
+}
+.articleFeedbackv5-fixedtablink {
+	position: absolute;
+	min-width: 105px;
+	left: 0;
+	display: inline;
+	margin: 0;
 	padding: 5px 10px;
-	color: #333;
-	border: 1px solid #555599;
-	border-top: 0px solid #555599;
-	background-color: #eeeef9;
+	color: .333;
+	border: 1px solid .555599;
+	border-top: 0px solid .555599;
+	background-color: .eeeef9;	
 	text-align: center;
 	writing-mode: tb-rl;
 	-moz-transform:rotate(90deg); 
-	-moz-transform-origin: top right;
+	-moz-transform-origin: top left;
 	-webkit-transform: rotate(90deg);
-	-webkit-transform-origin: top right;
+	-webkit-transform-origin: top left;
 	-o-transform: rotate(90deg);
-	-o-transform-origin: top right;
+	-o-transform-origin: top left;
 	transform: rotate(90deg);
-	transform-origin: top right;
-	filter: progid:DXImageTransform.Microsoft.Matrix(M11=0, M12=-1, M21=-1, M22=0);
-	right: 0%;
+	transform-origin: top left;	
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=-1.0,M12=0.0,M21=0.0,M22=1.0);
 }
-#articleFeedbackv5-fixedtablink:hover {
+.articleFeedbackv5-fixedtablink:hover {
 	text-decoration: none;
 }
 
