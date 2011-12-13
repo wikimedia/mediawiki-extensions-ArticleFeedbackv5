@@ -46,7 +46,7 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 				'ratingdesc' => $row->field_name,
 				'ratingid'   => (int) $row->field_id,
 				'total'      => (int) $row->arr_total,
-				'count'      => (int) $row->add_count,
+				'count'      => (int) $row->arr_count,
 			);
 		}
 		$result->addValue( $result_path, 'rollup', $info );
