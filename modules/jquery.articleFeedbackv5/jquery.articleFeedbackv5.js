@@ -2449,7 +2449,7 @@
 		if ( !( requested in $.articleFeedbackv5.ctas ) ) {
 			requested = '0';
 		}
-		temp = $.articleFeedbackv5.ctas[requested];
+		var temp = $.articleFeedbackv5.ctas[requested];
 		if ( 'verify' in temp ) {
 			if ( !temp.verify() ) {
 				requested = requested == '1' ? '2' : '0';
