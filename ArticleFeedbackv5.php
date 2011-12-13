@@ -78,8 +78,8 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// churn.
 	'expires' => 30,
 	// Track the event of users being bucketed - so we can be sure the odds
-	// worked out right.
-	'tracked' => true
+	// worked out right. [LATER - depends on UDP logging being set up]
+	'tracked' => false,
 );
 
 // Bucket settings for click tracking on feedback links
@@ -99,8 +99,9 @@ $wgArticleFeedbackv5Tracking = array(
 	'version' => 0,
 	// Let users be tracked for a month, and then rebucket them, allowing some churn
 	'expires' => 30,
-	// Track the event of users being bucketed - so we can be sure the odds worked out right
-	'tracked' => true
+	// Track the event of users being bucketed - so we can be sure the odds
+	// worked out right [LATER - depends on UDP logging being set up]
+	'tracked' => false,
 );
 
 // Bucket settings for extra expertise checkboxes in the Option 5 feedback form
@@ -111,7 +112,7 @@ $wgArticleFeedbackv5Options = array(
 	),
 	'version' => 0,
 	'expires' => 30,
-	'tracked' => true
+	'tracked' => false,
 );
 
 // Bucket settings for links to the feedback form
@@ -135,8 +136,8 @@ $wgArticleFeedbackv5LinkBuckets = array(
 	// churn.
 	'expires' => 30,
 	// Track the event of users being bucketed - so we can be sure the odds
-	// worked out right.
-	'tracked' => true
+	// worked out right. [LATER - depends on UDP logging being set up]
+	'tracked' => false
 );
 
 /**
