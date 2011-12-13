@@ -1899,7 +1899,7 @@
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the link
-				$block.find( '.articleFeedbackv5-edit-cta-link' )
+				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr(
 						'href',
 						mw.config.get( 'wgScript' ) + '?' + $.param( {
