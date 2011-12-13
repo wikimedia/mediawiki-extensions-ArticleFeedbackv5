@@ -12,6 +12,9 @@
 	 border: 0;
 	 list-style: none;
 }
+.articleFeedbackv5-tags ul li:first-child {
+	margin: 0;
+}
 .articleFeedbackv5-tags ul li {
 	display: block !important;
 	float: left !important;
