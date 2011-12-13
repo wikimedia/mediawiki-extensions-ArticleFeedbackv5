@@ -71,7 +71,7 @@
 				}
 				$( '#aft5-' + type + '-link-' + id ).text( mw.msg( msg ) );
 			},
-			'failure': function ( data ) {
+			'error': function ( data ) {
 				$( '#aft5-' + type + '-link-' + id ).text( mw.msg( 'articlefeedbackv5-error-flagging' ) );
 			}
 		} );
@@ -115,7 +115,7 @@
 					$( '#aft5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
 			},
-			'failure': function ( data ) {
+			'error': function ( data ) {
 				$( '#aft5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 			}
 		} );
