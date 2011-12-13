@@ -676,6 +676,7 @@
 /*** Option 2 ***/
 .articleFeedbackv5-tags ul {
 	margin: 0 0 10px;
+	list-style: none;
 }
 .articleFeedbackv5-tags ul:after {
 	clear: both;
@@ -683,17 +684,15 @@
 .articleFeedbackv5-tags ul li {
 	color: #666;
 	list-style: none;
-	float: left;
+	float: left !important;
+	display:block;
 	margin: 0 0 0 20px;
 	line-height: 28px;
 	height: 28px;
 	padding: 1px 9px;
 	position: relative;
+	white-space: nowrap;
 }
-.articleFeedbackv5-tags ul li:hover {
-	float: left;
-}
-
 
 .articleFeedbackv5-tags ul li:first-child {
 	margin: 0;
@@ -741,42 +740,42 @@
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-suggestion-label {
 	/* @embed */
-	background: url(images/bg-tag-suggestion-on.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_hover_lightbulb.png) no-repeat 0 center;
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-question-label {
 	/* @embed */
-	background: url(images/bg-tag-question-on.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_set_confused.png) no-repeat 0 center;
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-problem-label {
 	/* @embed */
-	background: url(images/bg-tag-problem-on.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_hover_sad.png) no-repeat 0 center;
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-praise-label {
 	/* @embed */
-	background: url(images/bg-tag-praise-on.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_hover_happy.png) no-repeat 0 center;
 }
 
 /*.articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-suggestion-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-suggestion-label {
-	background: url(images/bg-tag-suggestion-on.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_hover_lightbulb.png) no-repeat 0 center;
 }
 
 .articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-question-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-question-label {
-	background: url(images/bg-tag-question-on.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_set_confused.png) no-repeat 0 center;
 }
 
 .articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-problem-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-problem-label {
-	background: url(images/bg-tag-problem-on.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_hover_sad.png) no-repeat 0 center;
 }
 
 .articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-praise-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-praise-label {
-	background: url(images/bg-tag-praise-on.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_hover_happy.png) no-repeat 0 center;
 }*/
 
 /*** Option 3 ***/

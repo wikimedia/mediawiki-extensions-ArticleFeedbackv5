@@ -1,0 +1,51 @@
+.articleFeedbackv5-ui .articleFeedbackv5-submit {
+	min-width: 190px;
+}
+.articleFeedbackv5-tags ul {
+	margin: 0;
+	padding: 0;
+	display: block;
+	list-style: none;
+}
+.articleFeedbackv5-tags ul li {
+	 margin: 0 2% 5px 0;
+	 border: 0;
+	 list-style: none;
+}
+.articleFeedbackv5-tags ul li {
+	display: block !important;
+	float: left !important;
+	width: 20% !important;
+	white-space:nowrap;
+	text-align: center;
+	line-height: 18px !important;
+}
+.articleFeedbackv5-fixedtab {
+	position: static !important;
+	top: 0 !important;
+	left: 0 !important;
+}
+.articleFeedbackv5-fixedtablink {
+	position: absolute;
+	min-width: 105px;
+	left: 0;
+	display: inline-block;
+	height: 20px;
+	margin: 0;
+	padding: 5px 10px;
+	color: .333;
+	border: 1px solid #555599;
+	border-top: none;
+	background-color: #0C0;	
+	text-align: center;
+	/*writing-mode: tb-rl;*/
+	/*-moz-transform:rotate(90deg); 
+	-moz-transform-origin: top left;
+	-webkit-transform: rotate(90deg);
+	-webkit-transform-origin: top left;
+	-o-transform: rotate(90deg);
+	-o-transform-origin: top left;
+	transform: rotate(90deg);
+	transform-origin: top left;	
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=-1.0,M12=0.0,M21=0.0,M22=1.0);*/
+}
