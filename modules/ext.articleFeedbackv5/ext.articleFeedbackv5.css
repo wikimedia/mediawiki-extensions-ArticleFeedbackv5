@@ -23,19 +23,20 @@
 	top: 200px;
 }
 .articleFeedbackv5-fixedtabbox {
-	position: relative;
+	position: relative;	
 }
 .articleFeedbackv5-fixedtablink {
 	position: absolute;
+	border: 1px solid #555599;
+	background-color: #eeeef9;
 	min-width: 105px;
+	width: auto;
+	height: auto;
 	left: 0;
-	display: inline;
+	display: block;
 	margin: 0;
 	padding: 5px 10px;
 	color: .333;
-	border: 1px solid #555599;
-	border-top: 0px solid #555599;
-	background-color: #eeeef9;	
 	text-align: center;
 	writing-mode: tb-rl;
 	-moz-transform:rotate(90deg); 
@@ -44,9 +45,8 @@
 	-webkit-transform-origin: top left;
 	-o-transform: rotate(90deg);
 	-o-transform-origin: top left;
-	transform: rotate(90deg);
-	transform-origin: top left;	
-	filter: progid:DXImageTransform.Microsoft.Matrix(M11=-1.0,M12=0.0,M21=0.0,M22=1.0);
+	/*transform: rotate(90deg);
+	transform-origin: top left;*/	
 }
 .articleFeedbackv5-fixedtablink:hover {
 	text-decoration: none;
