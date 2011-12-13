@@ -81,7 +81,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			}
 		}
 
-		if($error) {
+		if ( $error ) {
 			$this->getResult()->addValue(
 				null, 'error', $error
 			);
@@ -91,7 +91,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$ctaId = $this->saveUserRatings( $user_answers, $feedbackId, $bucket );
 		$this->updateRollupTables( $pageId, $revisionId, $user_answers );
 
-		if( $params['email'] ) {
+		if ( $params['email'] ) {
 			$this->captureEmail ( $params['email'], FormatJson::encode(
 				$email_data
 			) );
@@ -193,10 +193,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 	/**
 	 * Cache result of ApiArticleFeedbackv5Utils::getRevisionLimit to avoid
-	 * multiple fetches. 
-	
-	 * @param $pageID   int    the page id
- 	 * @return int             the oldest revision to still count	
+	 * multiple fetches.
+	 *
+	 * @param  $pageID int the page id
+	 * @return int     the oldest revision to still count
 	 */
 	public function getRevisionLimit( $pageId ) {
 		if( $this->revision_limit === null ) {
@@ -212,19 +212,19 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param $revision int    the revision id
 	 * @param $type     string the type (rating, select, or boolean)
 	 * @param $raw_data array  the user's validated feedback answers
-
+	 *
 	 * This should:
 	 * 0. Attempt to insert a blank revision rollup row for each $data of type $type, based on revId, fieldId.
 	 * 1. Increment said revision rollup for each $data of type $type, based on revId, fieldId, and value
 	 * 2. Re-calculate the page value, across the last [X] revisions (an old revision, or more, may have moved outside of the wgArticleFeedbackv5RatingLifetime window, so we can't just increment the page level rollups - revision-level, absolutely)
-
+	 *
 	 */
 	private function updateRollup( $pageId, $revId, $type, $raw_data ) {
 		# sanity check
 		if ( $type != 'rating' && $type != 'option_id' && $type != 'boolean' ) {
 			return 0;
 		}
-		
+
 		// Strip out the data not of this type.
 		foreach ( $raw_data as $row ) {
 			if ( $row["aa_response_$type"] != null ) {
@@ -240,12 +240,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param $revision int    the revision id
 	 * @param $type     string the type (rating, select, or boolean)
 	 * @param $row      array  a user's validated feedback answer
-
+	 *
 	 * This should:
 	 * 0. Attempt to insert a blank revision rollup row, based on revId, fieldId.
 	 * 1. Increment said revision rollup, based on revId, fieldId, and value
 	 * 2. Re-calculate the page rolup value, across the last [X] revisions (an old revision, or more, may have moved outside of the wgArticleFeedbackv5RatingLifetime window, so we can't just increment the page level rollups - revision-level, absolutely)
-
+	 *
 	 */
 	private function updateRollupRow( $pageId, $revId, $type, $row ) {
 		$dbr   = wfGetDB( DB_SLAVE );
@@ -258,10 +258,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			// Selects are kind of a odd bird. We store one row
 			// per option per field, and each one has the number
 			// of times that option was chosen, and the number of
-			// times the question was shown in total. So, you'd 
+			// times the question was shown in total. So, you'd
 			// have 1/10, 2/10, 7/10, eg. We increment the times
 			// chosen on the one that was chosen, and the times
-			// shown on all of them. 
+			// shown on all of them.
 
 			// Fetch all the options for this field.
 			$options = $dbr->select(
@@ -271,7 +271,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				__METHOD__
 			);
 
-			// For each option this field has, make sure we have 
+			// For each option this field has, make sure we have
 			// a row by inserting one - will fail silently if the
 			// row already exists.
 			foreach( $options as $option ) {
@@ -353,7 +353,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 
 		// Revision rollups being done, we update the page rollups.
-		// These are built off of the revision rollups, and only 
+		// These are built off of the revision rollups, and only
 		// count revisions back to the user-specified limit, so
 		// they need to be recalculated every time, since we don't
 		// know what revision we're dealing with, or how many times
@@ -367,8 +367,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$rows   = $dbr->select(
 				'aft_article_revision_feedback_select_rollup',
 				array(
-					'arfsr_option_id', 
-					'SUM(arfsr_total) AS total', 
+					'arfsr_option_id',
+					'SUM(arfsr_total) AS total',
 					'SUM(arfsr_count) AS count'
 				),
 				array(
@@ -387,7 +387,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'afsr_field_id'  => $field,
 				'afsr_option_id' => $row->arfsr_option_id,
 				'afsr_total'     => $row->total,
-				'afsr_count'     => $row->count 
+				'afsr_count'     => $row->count
 				);
 			}
 		} else {
@@ -396,7 +396,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$row    = $dbr->selectRow(
 				'aft_article_revision_feedback_ratings_rollup',
 				array(
-					'SUM(afrr_total) AS total', 
+					'SUM(afrr_total) AS total',
 					'SUM(afrr_count) AS count'
 				),
 				array(
@@ -412,10 +412,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'arr_page_id'  => $pageId,
 				'arr_field_id' => $field,
 				'arr_total'    => $row->total,
-				'arr_count'    => $row->count 
+				'arr_count'    => $row->count
 			);
 		}
-		
+
 		$dbw->begin();
 		// Delete the existing page rollup rows.
 		$dbw->delete( $table, array(
@@ -428,7 +428,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$dbw->commit();
 
 		// One way to speed this up would be to purge old rows from
-		// the revision_rollup tables, as soon as they're out of the 
+		// the revision_rollup tables, as soon as they're out of the
 		// window in which we count them. 30 revisions per page is still
 		// a lot, but it'd be better than this, which has no limit and
 		// will only get larger over time.
@@ -451,18 +451,23 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$ip        = null;
 
 		// Only save IP address if the user isn't logged in.
-		if( !$wgUser->isLoggedIn() ) {
-			$ip        = wfGetIP();
+		if ( !$wgUser->isLoggedIn() ) {
+			$ip = wfGetIP();
 		}
 
 		# make sure we have a page/user
 		if ( !$params['pageid'] || !$wgUser) {
-			return null;
+			if ( !$feedbackId ) {
+				$this->dieUsage( 'Saving feedback requires a page ID', 'invalidpageid' );
+			}
 		}
 
 		# Fetch this if it wasn't passed in
 		if ( !$revId ) {
 			$title = Title::newFromID( $params['pageid'] );
+			if ( !$title ) {
+				$this->dieUsage( 'Page ID is invalid', 'invalidpageid' );
+			}
 			$revId = $title->getLatestRevID();
 		}
 
@@ -520,7 +525,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	* Gets the anonymous token from the params
 	*
 	* @param  $params array the params
-	* @return string the token, or null if the user is not anonymous
+	* @return string  the token, or null if the user is not anonymous
 	*/
 	public function getAnonToken( $params ) {
 		global $wgUser;
@@ -626,6 +631,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			array( 'missingparam', 'anontoken' ),
 			array( 'code' => 'invalidtoken', 'info' => 'The anontoken is not 32 characters' ),
 			array( 'code' => 'invalidpage', 'info' => 'ArticleFeedback is not enabled on this page' ),
+			array( 'code' => 'invalidpageid', 'info' => 'Page ID is missing or invalid' ),
 		) );
 	}
 
