@@ -128,6 +128,7 @@ if( '3' == linkBucket ) {
 	$fixedTab.addClass( 'articleFeedbackv5-fixedtab' );
 	$fixedTab.find( '#articleFeedbackv5-fixedtabbox' ).addClass( 'articleFeedbackv5-fixedtabbox' );
 	$fixedTab.find( '#articleFeedbackv5-fixedtablink' ).addClass( 'articleFeedbackv5-fixedtablink' );
+	$fixedTab.find( '#articleFeedbackv5-fixedtablink' ).css( 'border', '#00F 1px solid' );
 	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $fixedTab );
 }
 

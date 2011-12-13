@@ -224,6 +224,12 @@
 		 * Bucket 1: Share Your Feedback
 		 */
 		'1': {
+			
+			/**
+			 * Currently displayed placeholder text. This is a workaround for Chrome/FF
+			 * automatic focus in overlays.
+			 */
+			currentDefaultText: '',
 
 			// {{{ templates
 
@@ -352,6 +358,7 @@
 						var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-comment-no' );
 						if ( $txt.val() == '' || $txt.val() == def_msg_yes || $txt.val() == def_msg_no ) {
 							$txt.val( new_val == 'yes' ? def_msg_yes : def_msg_no );
+							$.articleFeedbackv5.currentBucket().currentDefaultText = $txt.val();
 						}
 						// enable submission
 						$.articleFeedbackv5.enableSubmission( true );
@@ -360,18 +367,10 @@
 				// Clear out the question on focus
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.focus( function () {
-						var def_msg = '';
-						var val = $.articleFeedbackv5.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).val();
-						if ( val == 'yes' ) {
-							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
-						} else if ( val == 'no' ) {
-							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-comment-no' );
-						}
-						if ( $( this ).val() == def_msg ) {
+						if ( $( this ).val() == $.articleFeedbackv5.currentBucket().currentDefaultText ) {
 							$( this ).val( '' );
-							$(this).addClass( 'active' );
+							$( this ).addClass( 'active' );
 						}
-
 					} )
 					.keyup ( function () {
 						if( $( this ).val().length > 0 ) {
