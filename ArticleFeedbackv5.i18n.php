@@ -87,7 +87,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket2-praise-label' => 'Praise',
 	'articlefeedbackv5-bucket2-suggestion-comment-default' => 'Make a suggestion! How can this article be improved?',
 	'articlefeedbackv5-bucket2-question-comment-default' => 'Ask a question about this article.',
-	'articlefeedbackv5-bucket2-problem-comment-default' => 'Report a problem! How can this article be improved?',
+	'articlefeedbackv5-bucket2-problem-comment-default' => 'Report a problem. How can this article be improved?',
 	'articlefeedbackv5-bucket2-praise-comment-default' => 'What do you like most? Share your praise with the editors.',
 	'articlefeedbackv5-bucket2-form-submit' => 'Post your feedback',
 	/* Option 3 (single rating) */
