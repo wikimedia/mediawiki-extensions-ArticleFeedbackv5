@@ -1912,6 +1912,13 @@
 					);
 
 				return $block;
+			},
+			
+			/**
+			 * Perform adjustments after build
+			 */
+			afterBuild: function() {
+				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
 			}
 
 			// }}}
@@ -2516,6 +2523,12 @@
 		// Do anything special the CTA requires
 		if ( 'afterBuild' in cta ) {
 			cta.afterBuild();
+		}
+		
+		// The close element needs to be created anyway, to serve as an anchor. However, it needs
+		// to be hidden when the CTA is not displayed in a dialog
+		if( !$.articleFeedbackv5.inDialog ) {
+			$close.hide();
 		}
 
 		// Reset the panel dimensions
