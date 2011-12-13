@@ -1914,6 +1914,9 @@
 				return $block;
 			},
 			
+			// }}}
+			// {{{ afterBuild
+			
 			/**
 			 * Perform adjustments after build
 			 */
@@ -1972,6 +1975,16 @@
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				return $block;
+			},
+
+			// }}}
+			// {{{ afterBuild
+			
+			/**
+			 * Perform adjustments after build
+			 */
+			afterBuild: function() {
+				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
 			}
 
 			// }}}
