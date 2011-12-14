@@ -2255,7 +2255,7 @@
 		} else if ( '1' == $.articleFeedbackv5.ctaId ) {
 			return 'cta-edit';
 		} else if ( '2' == $.articleFeedbackv5.ctaId ) {
-			return 'cta-learn-more';
+			return 'cta-learnmore';
 		} else {
 			return 'cta-unknown';
 		}
