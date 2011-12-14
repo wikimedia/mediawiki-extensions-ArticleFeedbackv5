@@ -248,5 +248,5 @@ $wgAPIModules['articlefeedbackv5-flag-feedback']     = 'ApiFlagFeedbackArticleFe
 $wgAPIModules['articlefeedbackv5']                   = 'ApiArticleFeedbackv5';
 
 // Special Page
-$wgSpecialPages['ArticleFeedbackv5'] = 'SpecialArticleFeedbackv5';
-$wgSpecialPageGroups['ArticleFeedbackv5'] = 'other';
+//$wgSpecialPages['ArticleFeedbackv5'] = 'SpecialArticleFeedbackv5';
+//$wgSpecialPageGroups['ArticleFeedbackv5'] = 'other';
