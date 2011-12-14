@@ -20,6 +20,9 @@ jQuery( function( $ ) {
 	// Rule out MSIE 6, iPhone, iPod, iPad, Android
 	if(
 		(ua.indexOf( 'msie 6' ) != -1) ||
+		(ua.indexOf( 'msie 7' ) != -1) ||
+		(ua.indexOf( 'firefox/2') != -1) ||
+		(ua.indexOf( 'firefox 2') != -1) ||
 		(ua.indexOf( 'android' ) != -1) ||
 		(ua.indexOf( 'iphone' ) != -1) ||
 		(ua.indexOf( 'ipod' ) != -1 ) ||
