@@ -62,6 +62,11 @@
 	$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' ) ? true : false;
 
 	/**
+	 * Are we tracking clicks?
+	 */
+	$.articleFeedbackv5.clickTracking = false;
+
+	/**
 	 * Have the containers been added?
 	 */
 	$.articleFeedbackv5.hasContainers = false;
@@ -398,6 +403,8 @@
 				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
+						$.articleFeedbackv5.trackClick( 'option1-submit-' +
+							( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 						$.articleFeedbackv5.submitForm();
 					} );
 			},
@@ -652,8 +659,9 @@
 				// Attach the submit
 				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
-						//alert( 'got to click event' );
 						e.preventDefault();
+						$.articleFeedbackv5.trackClick( 'option2-submit-' +
+							( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 						$.articleFeedbackv5.submitForm();
 					} );
 
@@ -980,6 +988,8 @@
 				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
+						$.articleFeedbackv5.trackClick( 'option3-submit-' +
+							( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 						$.articleFeedbackv5.submitForm();
 					} );
 
@@ -1118,16 +1128,10 @@
 					.attr( 'href', mw.config.get( 'wgArticleFeedbackv5LearnToEdit' ) );
 
 				// Fill in the edit link
-				$block.find( '.articleFeedbackv5-submit' )
-					.attr( 'href',
-						mw.config.get( 'wgScript' ) + '?' + $.param( {
-							'title': mw.config.get( 'wgPageName' ),
-							'action': 'edit',
-							'articleFeedbackv5_feedback_id': $.articleFeedbackv5.feedbackId,
-							'articleFeedbackv5_cta_id': $.articleFeedbackv5.ctaId,
-							'articleFeedbackv5_bucket_id': $.articleFeedbackv5.bucketId
-						} )
-					);
+				var edit_track_id = $.articleFeedbackv5.buttonName() + '-button-click-' +
+					( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
+				$block.find( '.articleFeedbackv5-cta-button' )
+					.attr( 'href', $.articleFeedbackv5.editUrl( edit_track_id ) );
 
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-submit' )
@@ -1898,17 +1902,10 @@
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the link
+				var edit_track_id = $.articleFeedbackv5.ctaName() + '-button-click-' +
+					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
-					.attr(
-						'href',
-						mw.config.get( 'wgScript' ) + '?' + $.param( {
-							'title': mw.config.get( 'wgPageName' ),
-							'action': 'edit',
-							'articleFeedbackv5_feedback_id': $.articleFeedbackv5.feedbackId,
-							'articleFeedbackv5_cta_id': $.articleFeedbackv5.ctaId,
-							'articleFeedbackv5_bucket_id': $.articleFeedbackv5.bucketId
-						} )
-					);
+					.attr( 'href', $.articleFeedbackv5.editUrl( edit_track_id ) );
 
 				return $block;
 			},
@@ -1970,8 +1967,11 @@
 				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
 
 				// Fill in the button link
+				var learn_url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
+				var learn_track_id = $.articleFeedbackv5.ctaName() + '-button-click-' +
+					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
-					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
+					.attr( 'href', $.articleFeedbackv5.trackingUrl( learn_url, learn_track_id ) );
 
 				return $block;
 			},
@@ -2013,6 +2013,8 @@
 	$.articleFeedbackv5.init = function ( $el, config ) {
 		$.articleFeedbackv5.$holder = $el;
 		$.articleFeedbackv5.config = config;
+		// Are we tracking clicks?
+		$.articleFeedbackv5.clickTracking = $.articleFeedbackv5.checkClickTracking();
 		// Has the user already submitted ratings for this page at this revision?
 		$.articleFeedbackv5.alreadySubmitted = $.cookie( $.articleFeedbackv5.prefix( 'submitted' ) ) === 'true';
 		// Are we in debug mode?
@@ -2074,6 +2076,26 @@
 		if ( $.articleFeedbackv5.debug ) {
 			aft5_debug( 'Using bucket #' + $.articleFeedbackv5.bucketId );
 		}
+	};
+
+	// }}}
+	// {{{ checkClickTracking
+
+	/**
+	 * Checks whether click tracking is turned on
+	 *
+	 * Only track users who have been assigned to the tracking group; don't bucket
+	 * at all if we're set to always ignore or always track.
+	 */
+	$.articleFeedbackv5.checkClickTracking = function () {
+		var b = mw.config.get( 'wgArticleFeedbackv5Tracking' );
+		if ( b.buckets.ignore == 100 && b.buckets.track == 0 ) {
+			return false;
+		}
+		if ( b.buckets.ignore == 0 && b.buckets.track == 100 ) {
+			return true;
+		}
+		return ( 'track' === mw.user.bucket( 'ext.articleFeedbackv5-tracking', b ) );
 	};
 
 	// }}}
@@ -2202,6 +2224,85 @@
 			return $.articleFeedbackv5.$dialog.find( query );
 		} else {
 			return $.articleFeedbackv5.$holder.find( query );
+		}
+	};
+
+	// }}}
+	// {{{ bucketName
+
+	/**
+	 * Utility method: Gets the name of the current bucket
+	 *
+	 * @return string the bucket name
+	 */
+	$.articleFeedbackv5.bucketName = function () {
+		return 'option' + $.articleFeedbackv5.bucketId;
+	};
+
+	// }}}
+	// {{{ ctaName
+
+	/**
+	 * Utility method: Gets the name of the current CTA
+	 *
+	 * @return string the CTA name
+	 */
+	$.articleFeedbackv5.ctaName = function () {
+		if ( '0' == $.articleFeedbackv5.ctaId ) {
+			return 'cta-none';
+		} else if ( '1' == $.articleFeedbackv5.ctaId ) {
+			return 'cta-edit';
+		} else if ( '2' == $.articleFeedbackv5.ctaId ) {
+			return 'cta-learn-more';
+		} else {
+			return 'cta-unknown';
+		}
+	};
+
+	// }}}
+	// {{{ trackingUrl
+
+	/**
+	 * Creates a URL that tracks a particular click
+	 *
+	 * @param url        string the url so far
+	 * @param trackingId string the tracking ID
+	 */
+	$.articleFeedbackv5.trackingUrl = function ( url, trackingId ) {
+		if ( $.articleFeedbackv5.clickTracking && $.isFunction( $.trackActionURL ) ) {
+			return $.trackActionURL( url, $.articleFeedbackv5.prefix( trackingId ) );
+		} else {
+			return url;
+		}
+	};
+
+	// }}}
+	// {{{ editUrl
+
+	/**
+	 * Builds the edit URL, with tracking if appropriate
+	 *
+	 * @param trackingId string the tracking ID
+	 */
+	$.articleFeedbackv5.editUrl = function ( url, trackingId ) {
+		var params = {
+			'title': mw.config.get( 'wgPageName' ),
+			'action': 'edit',
+		};
+		if ( $.articleFeedbackv5.bucketId ) {
+			params.articleFeedbackv5_bucket_id = $.articleFeedbackv5.bucketId;
+		}
+		if ( $.articleFeedbackv5.ctaId ) {
+			params.articleFeedbackv5_cta_id = $.articleFeedbackv5.ctaId;
+		}
+		if ( $.articleFeedbackv5.feedbackId ) {
+			params.articleFeedbackv5_feedback_id = $.articleFeedbackv5.feedbackId;
+		}
+		var url = mw.config.get( 'wgScript' ) + '?' + $.param( params );
+		if ( trackingId ) {
+			return $.articleFeedbackv5.trackingUrl( url, trackingId );
+		} else {
+			return url;
 		}
 	};
 
@@ -2356,6 +2457,14 @@
 		// Do anything special the bucket requires
 		if ( 'afterBuild' in bucket ) {
 			bucket.afterBuild();
+		}
+
+		// Track the event
+		if ( $.articleFeedbackv5.inDialog ) {
+			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-overlay-impression' );
+		} else {
+			// Don't track bottom-of-the-page loads, at least for now
+			// $.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-bottom-impression' );
 		}
 
 		$.articleFeedbackv5.nowShowing = 'form';
@@ -2545,6 +2654,10 @@
 
 		// Reset the panel dimensions
 		$.articleFeedbackv5.setDialogDimensions();
+
+		// Track the event
+			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-impression-' +
+				( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 
 		$.articleFeedbackv5.nowShowing = 'cta';
 	};
@@ -2795,6 +2908,11 @@
 	 */
 	$.articleFeedbackv5.closeAsModal = function () {
 		if ( $.articleFeedbackv5.inDialog ) {
+			if ( 'form' == $.articleFeedbackv5.nowShowing ) {
+				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-overlay-close' );
+			} else if ('cta' == $.articleFeedbackv5.nowShowing ) {
+				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-overlay-close' );
+			}
 			$.articleFeedbackv5.setLinkId( '0' );
 			$.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-tooltip' ).hide();
 			$inner = $.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-ui' ).detach();
@@ -2818,6 +2936,23 @@
 		var h = $.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).height();
 		$.articleFeedbackv5.$dialog.dialog( 'option', 'width', w + 25 );
 		$.articleFeedbackv5.$dialog.dialog( 'option', 'height', h + 70 );
+	};
+
+	// }}}
+	// {{{ trackClick
+
+	/**
+	 * Tracks a click
+	 *
+	 * @param trackingId string the tracking ID
+	 */
+	$.articleFeedbackv5.trackClick = function ( trackingId ) {
+		if ( $.articleFeedbackv5.clickTracking && $.isFunction( $.trackActionWithInfo ) ) {
+			$.trackActionWithInfo(
+				$.articleFeedbackv5.prefix( trackingId ),
+				mw.config.get( 'wgTitle' )
+			);
+		}
 	};
 
 	// }}}
@@ -2846,7 +2981,8 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 		prefix: { args: 1, ret: true },
 		addToRemovalQueue: { args: 1, ret: false },
 		openAsModal: { args: 1, ret: false },
-		closeAsModal: { args: 0, ret: true }
+		closeAsModal: { args: 0, ret: true },
+		trackClick: { args: 1, ret: false }
 	};
 	if ( opts in public ) {
 		var r;

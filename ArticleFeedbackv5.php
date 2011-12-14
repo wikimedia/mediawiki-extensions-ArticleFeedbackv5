@@ -82,7 +82,7 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	'tracked' => false,
 );
 
-// Bucket settings for click tracking on feedback links
+// Bucket settings for click tracking across the plugin
 $wgArticleFeedbackv5Tracking = array(
 	// Not all users need to be tracked, but we do want to track some users over time - these
 	// buckets are used when deciding to track someone or not, placing them in one of two buckets:
@@ -91,8 +91,8 @@ $wgArticleFeedbackv5Tracking = array(
 	// this number to ensure the new odds are applied to everyone, not just people who have yet to
 	// be placed in a bucket.
 	'buckets' => array(
-		'ignore' => 100,
-		'track'  => 0,
+		'ignore' => 0,
+		'track'  => 100,
 	),
 	// This version number is added to all tracking event names, so that changes in the software
 	// don't corrupt the data being collected. Bump this when you want to start a new "experiment".

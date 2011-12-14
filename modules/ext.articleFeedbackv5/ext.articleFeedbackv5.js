@@ -18,39 +18,17 @@ if ( $( '#catlinks' ).length && $.inArray( mw.config.get( 'skin' ), legacyskins 
 
 /* Setup for feedback links */
 
-// Only track users who have been assigned to the tracking group; don't bucket
-// at all if we're set to always ignore or always track.
-var useClickTracking = function () {
-	var b = mw.config.get( 'wgArticleFeedbackv5Tracking' );
-	if ( b.buckets.ignore == 100 && b.buckets.track == 0 ) {
-		return false;
-	}
-	if ( b.buckets.ignore == 0 && b.buckets.track == 100 ) {
-		return true;
-	}
-	return ( 'track' === mw.user.bucket( 'ext.articleFeedbackv5-tracking', b ) );
-}();
-
 // Info about each of the links
 var linkInfo = {
-	'1': {
-		clickTracking: $aftDiv.articleFeedbackv5( 'prefix', 'section-link' )
-	},
-	'2': {
-		clickTracking: $aftDiv.articleFeedbackv5( 'prefix', 'titlebar-link' )
-	},
-	'4': {
-		clickTracking: $aftDiv.articleFeedbackv5( 'prefix', 'toolbox-link' )
-	}
+	'1': { trackId: 'section-link' },
+	'2': { trackId: 'titlebar-link' },
+	'3': { trackId: 'vertical-link' },
+	'4': { trackId: 'toolbox-link' }
 };
 
 // Click event
 var clickFeedbackLink = function ( $link ) {
-	// Click tracking
-	if ( useClickTracking && $.isFunction( $.trackActionWithInfo ) ) {
-		$.trackActionWithInfo( linkInfo[ $link.data( 'linkId' ) ].clickTracking, mw.config.get( 'wgTitle' ) );
-	}
-	// Open as modal
+	$aftDiv.articleFeedbackv5( 'trackClick', linkInfo[ $link.data( 'linkId' ) ].trackId );
 	$aftDiv.articleFeedbackv5( 'openAsModal', $link );
 };
 
