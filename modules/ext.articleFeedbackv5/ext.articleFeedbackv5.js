@@ -28,7 +28,9 @@ var linkInfo = {
 
 // Click event
 var clickFeedbackLink = function ( $link ) {
-	$aftDiv.articleFeedbackv5( 'trackClick', linkInfo[ $link.data( 'linkId' ) ].trackId );
+	var tracking_id = $aftDiv.articleFeedbackv5( 'bucketName' ) +
+		linkInfo[ $link.data( 'linkId' ) ].trackId;
+	$aftDiv.articleFeedbackv5( 'trackClick', tracking_id );
 	$aftDiv.articleFeedbackv5( 'openAsModal', $link );
 };
 

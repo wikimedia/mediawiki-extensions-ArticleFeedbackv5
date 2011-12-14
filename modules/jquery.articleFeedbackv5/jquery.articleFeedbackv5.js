@@ -1902,7 +1902,8 @@
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the link
-				var edit_track_id = $.articleFeedbackv5.ctaName() + '-button-click-' +
+				var edit_track_id = $.articleFeedbackv5.bucketName() + '-' +
+					$.articleFeedbackv5.ctaName() + '-button-click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.editUrl( edit_track_id ) );
@@ -1968,7 +1969,8 @@
 
 				// Fill in the button link
 				var learn_url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
-				var learn_track_id = $.articleFeedbackv5.ctaName() + '-button-click-' +
+				var learn_track_id = $.articleFeedbackv5.bucketName() + '-' +
+					$.articleFeedbackv5.ctaName() + '-button-click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl( learn_url, learn_track_id ) );
@@ -2656,7 +2658,8 @@
 		$.articleFeedbackv5.setDialogDimensions();
 
 		// Track the event
-			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-impression-' +
+			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-' +
+				$.articleFeedbackv5.ctaName() + '-impression-' +
 				( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 
 		$.articleFeedbackv5.nowShowing = 'cta';
@@ -2911,7 +2914,8 @@
 			if ( 'form' == $.articleFeedbackv5.nowShowing ) {
 				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-overlay-close' );
 			} else if ('cta' == $.articleFeedbackv5.nowShowing ) {
-				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-overlay-close' );
+				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-' +
+					$.articleFeedbackv5.ctaName() + '-overlay-close' );
 			}
 			$.articleFeedbackv5.setLinkId( '0' );
 			$.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-tooltip' ).hide();
@@ -2979,6 +2983,7 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 		inDebug: { args: 0, ret: true },
 		nowShowing: { args: 0, ret: true },
 		prefix: { args: 1, ret: true },
+		bucketName: { args: 0, ret: true },
 		addToRemovalQueue: { args: 1, ret: false },
 		openAsModal: { args: 1, ret: false },
 		closeAsModal: { args: 0, ret: true },
