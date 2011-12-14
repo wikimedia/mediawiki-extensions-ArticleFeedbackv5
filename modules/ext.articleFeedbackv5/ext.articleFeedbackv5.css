@@ -23,30 +23,38 @@
 	top: 200px;
 }
 .articleFeedbackv5-fixedtabbox {
-	position: relative;	
-}
-.articleFeedbackv5-fixedtablink {
-	position: absolute;
-	border: 1px solid #555599;
-	background-color: #eeeef9;
-	min-width: 105px;
-	width: auto;
-	height: auto;
-	left: 0;
-	display: block;
-	margin: 0;
-	padding: 5px 10px;
-	color: .333;
-	text-align: center;
-	writing-mode: tb-rl;
-	-moz-transform:rotate(90deg); 
+	position: relative;
+	/*-moz-transform:rotate(90deg); 
 	-moz-transform-origin: top left;
 	-webkit-transform: rotate(90deg);
 	-webkit-transform-origin: top left;
 	-o-transform: rotate(90deg);
 	-o-transform-origin: top left;
-	/*transform: rotate(90deg);
-	transform-origin: top left;*/	
+	-ms-transform: rotate(90deg);
+	-ms-transform-origin: top left;
+	transform: rotate(90deg);
+	transform-origin: top left;*/
+}
+.articleFeedbackv5-fixedtablink {
+	/*border: none;
+	background-color: #5373a6;
+	-moz-border-radius: 0 0 10px 10px;
+	-webkit-border-radius: 0 0 10px 10px;
+	-ms-border-radius: 0 0 10px 10px;
+	border-radius: 0 0 10px 10px;
+	min-width: 105px;*/
+	width: 27px;
+	height: 114px;
+	right: 0;
+	display: block;
+	margin: 0;
+	background: url(images/img_aftv5_tablink.png) no-repeat;
+	/*padding: 5px 10px;
+	color: #fff;
+	text-align: center;
+	writing-mode: tb-rl;*/	
+	position: absolute;
+	z-index: 100000;
 }
 .articleFeedbackv5-fixedtablink:hover {
 	text-decoration: none;

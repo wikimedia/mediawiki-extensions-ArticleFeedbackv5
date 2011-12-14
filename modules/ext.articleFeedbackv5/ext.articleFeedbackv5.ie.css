@@ -23,16 +23,16 @@
 	text-align: center;
 	line-height: 18px !important;
 }
-
-.articleFeedbackv5-fixedtabbox {
+.articleFeedbackv5-fixedtab {
+	margin: 0 40px 0 0 !important;
+	*margin: 0 !important;
 	/*filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);*/
+}
+.articleFeedbackv5-fixedtabbox {
+	
 }
 .articleFeedbackv5-fixedtablink {
 	/*position: absolute;*/
-	min-width: 0 !important;
-	display: block !important;
-	border: #000 1px solid !important;
-}
-.articleFeedbackv5-fixedtablink span {
-	border: #00F 1px solid;
+	*min-width: 0 !important;
+	*display: block !important;
 }

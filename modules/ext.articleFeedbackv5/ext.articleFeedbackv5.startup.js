@@ -79,7 +79,7 @@ jQuery( function( $ ) {
 		if ( enable ) {
 			mw.loader.load( 'ext.articleFeedbackv5' );
 			// Load the IE-specific module
-			if( navigator.appVersion.indexOf( 'MSIE' ) != -1 ) {
+			if( navigator.appVersion.indexOf( 'MSIE 7' ) != -1 ) {
 				mw.loader.load( 'ext.articleFeedbackv5.ie' );
 			}
 		}

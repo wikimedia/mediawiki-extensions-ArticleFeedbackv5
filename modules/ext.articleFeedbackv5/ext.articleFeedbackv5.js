@@ -119,16 +119,15 @@ if( '3' == linkBucket ) {
 		</div>' );
 	$fixedTab.find( '#articleFeedbackv5-fixedtablink' )
 		.data( 'linkId', 3 )
-		.text( mw.msg( 'articlefeedbackv5-fixedtab-linktext' ) )
+		.attr( 'title', mw.msg( 'articlefeedbackv5-fixedtab-linktext' ) )
 		.click( function( e ) {
 			e.preventDefault();
 			clickFeedbackLink( $( e.target ) );
-		} );
+		} );http://wikidev.int.omniti.net:8000/wiki-dev/index.php/images/img_aftv5_tablink.png
 	$fixedTab.insertBefore( $aftDiv );
 	$fixedTab.addClass( 'articleFeedbackv5-fixedtab' );
 	$fixedTab.find( '#articleFeedbackv5-fixedtabbox' ).addClass( 'articleFeedbackv5-fixedtabbox' );
 	$fixedTab.find( '#articleFeedbackv5-fixedtablink' ).addClass( 'articleFeedbackv5-fixedtablink' );
-	$fixedTab.find( '#articleFeedbackv5-fixedtablink' ).css( 'border', '#00F 1px solid' );
 	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $fixedTab );
 }
 
