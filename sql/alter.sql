@@ -39,3 +39,9 @@ ALTER TABLE aft_article_feedback_select_rollup ADD COLUMN afsr_field_id int NOT 
 
 -- added 12/8 (later)
 CREATE INDEX /*i*/af_page_feedback_id ON /*_*/aft_article_feedback (af_page_id, af_id);
+
+-- aded 12/15
+ALTER TABLE aft_article_revision_feedback_select_rollup DROP PRIMARY KEY;
+ALTER TABLE aft_article_revision_feedback_select_rollup ADD PRIMARY KEY (arfsr_page_id, arfsr_field_id, arfsr_revision_id, arfsr_option_id);
+ALTER TABLE aft_article_revision_feedback_ratings_rollup DROP PRIMARY KEY;
+ALTER TABLE aft_article_revision_feedback_ratings_rollup ADD PRIMARY KEY (afrr_page_id, afrr_field_id, afrr_revision_id);

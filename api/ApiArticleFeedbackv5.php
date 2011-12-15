@@ -340,7 +340,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$dbw->update(
 				'aft_article_revision_feedback_ratings_rollup',
 				array(
-					"afrr_total = afrr_total + $value",
+					"afrr_total = afrr_total + " . intval( $value ),
 					"afrr_count = afrr_count + 1",
 				),
 				array(
@@ -373,7 +373,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				),
 				array(
 					'arfsr_page_id'     => $pageId,
-					"arfsr_revision_id > $limit",
+					"arfsr_revision_id > " . intval( $limit ),
 					'arfsr_field_id'    => $field
 				),
 				__METHOD__,
@@ -383,11 +383,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$page_data = array();
 			foreach( $rows as $row ) {
 				$page_data[] = array(
-				'afsr_page_id'   => $pageId,
-				'afsr_field_id'  => $field,
-				'afsr_option_id' => $row->arfsr_option_id,
-				'afsr_total'     => $row->total,
-				'afsr_count'     => $row->count
+					'afsr_page_id'   => $pageId,
+					'afsr_field_id'  => $field,
+					'afsr_option_id' => $row->arfsr_option_id,
+					'afsr_total'     => $row->total,
+					'afsr_count'     => $row->count
 				);
 			}
 		} else {
@@ -401,11 +401,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				),
 				array(
 					'afrr_page_id'     => $pageId,
-					"afrr_revision_id > $limit",
+					"afrr_revision_id > " . intval( $limit ),
 					'afrr_field_id'    => $field
 				),
-				__METHOD__,
-				array( 'GROUP BY' => 'afrr_field_id' )
+				__METHOD__
 			);
 
 			$page_data = array(

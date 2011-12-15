@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_revision_feedback_select_rollup (
   arfsr_field_id    integer unsigned NOT NULL,
   arfsr_total       integer unsigned NOT NULL,
   arfsr_count       integer unsigned NOT NULL,
-  PRIMARY KEY (arfsr_revision_id, arfsr_option_id)
+  PRIMARY KEY (arfsr_page_id, arfsr_field_id, arfsr_revision_id, arfsr_option_id)
 ) /*$wgDBTableOptions*/;
 
 -- Directly taken from AFTv4
