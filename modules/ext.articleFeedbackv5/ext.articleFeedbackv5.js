@@ -61,6 +61,10 @@ if ( $aftDiv.articleFeedbackv5( 'inDebug' ) ) {
 	aft5_debug( 'Using link option #' + linkBucket );
 }
 
+/*** REMOVING FEEDBACK LINK FOR 1.0 PER ERIK's REQUEST ***/
+/*** TO RESTORE FUNCTIONALITY REMOVE THE FOLLOWING LINE ***/
+linkBucket = '0';
+
 /* Add section links */
 if ( '1' == linkBucket ) {
 	var $wrp = $( '<span class="articleFeedbackv5-sectionlink-wrap"></span>' )
