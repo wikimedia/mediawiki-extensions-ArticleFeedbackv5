@@ -1970,7 +1970,7 @@
 				// Fill in the button link
 				var learn_url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
 				var learn_track_id = $.articleFeedbackv5.bucketName() + '-' +
-					$.articleFeedbackv5.ctaName() + '-button-click-' +
+					$.articleFeedbackv5.ctaName() + '-button_click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl( learn_url, learn_track_id ) );
