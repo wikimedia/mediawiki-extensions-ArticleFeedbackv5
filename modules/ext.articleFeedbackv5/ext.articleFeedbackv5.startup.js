@@ -16,7 +16,7 @@ aft5_debug = function( any ) {
 /*** Main entry point ***/
 jQuery( function( $ ) {
 	
-	var ua = navigator.appVersion.toLowerCase();
+	var ua = navigator.userAgent.toLowerCase();
 	// Rule out MSIE 6, iPhone, iPod, iPad, Android
 	if(
 		(ua.indexOf( 'msie 6' ) != -1) ||
