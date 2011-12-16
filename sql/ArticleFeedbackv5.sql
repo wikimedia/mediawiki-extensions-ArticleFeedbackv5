@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   af_page_id         integer unsigned NOT NULL,
   -- User Id (0 if anon), and ip address
   af_user_id         integer NOT NULL,
-  af_user_ip         varchar(32) NOT NULL,
+  af_user_ip         varchar(32) NULL,
   -- Unique token for anonymous users (to facilitate ratings from multiple users on the same IP)
   af_user_anon_token varbinary(32) NOT NULL DEFAULT '',
   -- Foreign key to revision.rev_id

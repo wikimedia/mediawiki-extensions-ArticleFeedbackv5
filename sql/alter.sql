@@ -45,3 +45,6 @@ ALTER TABLE aft_article_revision_feedback_select_rollup DROP PRIMARY KEY;
 ALTER TABLE aft_article_revision_feedback_select_rollup ADD PRIMARY KEY (arfsr_page_id, arfsr_field_id, arfsr_revision_id, arfsr_option_id);
 ALTER TABLE aft_article_revision_feedback_ratings_rollup DROP PRIMARY KEY;
 ALTER TABLE aft_article_revision_feedback_ratings_rollup ADD PRIMARY KEY (afrr_page_id, afrr_field_id, afrr_revision_id);
+
+-- added 12/16 (Roan)
+ALTER TABLE aft_article_feedback MODIFY COLUMN af_user_ip varchar(32) NULL;
