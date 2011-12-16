@@ -457,7 +457,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		# make sure we have a page/user
 		if ( !$params['pageid'] || !$wgUser) {
 			if ( !$feedbackId ) {
-				$this->dieUsage( 'Saving feedback requires a page ID', 'invalidpageid' );
+				$this->dieUsage( 'Page ID is missing or invalid', 'invalidpageid' );
 			}
 		}
 
@@ -465,7 +465,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		if ( !$revId ) {
 			$title = Title::newFromID( $params['pageid'] );
 			if ( !$title ) {
-				$this->dieUsage( 'Page ID is invalid', 'invalidpageid' );
+				$this->dieUsage( 'Page ID is missing or invalid', 'invalidpageid' );
 			}
 			$revId = $title->getLatestRevID();
 		}
