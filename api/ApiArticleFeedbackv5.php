@@ -449,16 +449,18 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$timestamp = $dbw->timestamp();
 		$ip        = null;
 
+		if ( !$wgUser ) {
+			$this->dieUsage( 'User info is missing', 'missinguser' );
+		}
+
 		// Only save IP address if the user isn't logged in.
 		if ( !$wgUser->isLoggedIn() ) {
 			$ip = wfGetIP();
 		}
 
-		# make sure we have a page/user
-		if ( !$params['pageid'] || !$wgUser) {
-			if ( !$feedbackId ) {
-				$this->dieUsage( 'Page ID is missing or invalid', 'invalidpageid' );
-			}
+		// Make sure we have a page ID
+		if ( !$params['pageid'] ) {
+			$this->dieUsage( 'Page ID is missing or invalid', 'invalidpageid' );
 		}
 
 		# Fetch this if it wasn't passed in
@@ -631,6 +633,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			array( 'code' => 'invalidtoken', 'info' => 'The anontoken is not 32 characters' ),
 			array( 'code' => 'invalidpage', 'info' => 'ArticleFeedback is not enabled on this page' ),
 			array( 'code' => 'invalidpageid', 'info' => 'Page ID is missing or invalid' ),
+			array( 'code' => 'missinguser', 'info' => 'User info is missing' ),
 		) );
 	}
 
