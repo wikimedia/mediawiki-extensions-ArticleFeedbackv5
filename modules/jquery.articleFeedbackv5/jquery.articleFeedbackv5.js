@@ -1128,7 +1128,7 @@
 					.attr( 'href', mw.config.get( 'wgArticleFeedbackv5LearnToEdit' ) );
 
 				// Fill in the edit link
-				var edit_track_id = $.articleFeedbackv5.buttonName() + '-button-click-' +
+				var edit_track_id = $.articleFeedbackv5.bucketName() + '-button_click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.editUrl( edit_track_id ) );
@@ -1903,7 +1903,7 @@
 
 				// Fill in the link
 				var edit_track_id = $.articleFeedbackv5.bucketName() + '-' +
-					$.articleFeedbackv5.ctaName() + '-button-click-' +
+					$.articleFeedbackv5.ctaName() + '-button_click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.editUrl( edit_track_id ) );
@@ -2251,13 +2251,13 @@
 	 */
 	$.articleFeedbackv5.ctaName = function () {
 		if ( '0' == $.articleFeedbackv5.ctaId ) {
-			return 'cta-none';
+			return 'cta_none';
 		} else if ( '1' == $.articleFeedbackv5.ctaId ) {
-			return 'cta-edit';
+			return 'cta_edit';
 		} else if ( '2' == $.articleFeedbackv5.ctaId ) {
-			return 'cta-learnmore';
+			return 'cta_learn_more';
 		} else {
-			return 'cta-unknown';
+			return 'cta_unknown';
 		}
 	};
 
@@ -2290,15 +2290,14 @@
 		var params = {
 			'title': mw.config.get( 'wgPageName' ),
 			'action': 'edit',
+			'articleFeedbackv5_click_tracking': $.articleFeedbackv5.clickTracking ? '1' : '0',
 		};
-		if ( $.articleFeedbackv5.bucketId ) {
+		if ( $.articleFeedbackv5.clickTracking ) {
+			params.articleFeedbackv5_ct_token  = $.cookie( 'clicktracking-session' );
 			params.articleFeedbackv5_bucket_id = $.articleFeedbackv5.bucketId;
-		}
-		if ( $.articleFeedbackv5.ctaId ) {
-			params.articleFeedbackv5_cta_id = $.articleFeedbackv5.ctaId;
-		}
-		if ( $.articleFeedbackv5.feedbackId ) {
-			params.articleFeedbackv5_feedback_id = $.articleFeedbackv5.feedbackId;
+			params.articleFeedbackv5_cta_id    = $.articleFeedbackv5.ctaId;
+			params.articleFeedbackv5_link_id   = $.articleFeedbackv5.linkId;
+			params.articleFeedbackv5_location  = $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom';
 		}
 		var url = mw.config.get( 'wgScript' ) + '?' + $.param( params );
 		if ( trackingId ) {
@@ -2463,10 +2462,10 @@
 
 		// Track the event
 		if ( $.articleFeedbackv5.inDialog ) {
-			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-overlay-impression' );
+			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-impression-overlay' );
 		} else {
 			// Don't track bottom-of-the-page loads, at least for now
-			// $.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-bottom-impression' );
+			// $.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-impression-bottom' );
 		}
 
 		$.articleFeedbackv5.nowShowing = 'form';
@@ -2912,10 +2911,10 @@
 	$.articleFeedbackv5.closeAsModal = function () {
 		if ( $.articleFeedbackv5.inDialog ) {
 			if ( 'form' == $.articleFeedbackv5.nowShowing ) {
-				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-overlay-close' );
+				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-close-overlay' );
 			} else if ('cta' == $.articleFeedbackv5.nowShowing ) {
 				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-' +
-					$.articleFeedbackv5.ctaName() + '-overlay-close' );
+					$.articleFeedbackv5.ctaName() + '-close-overlay' );
 			}
 			$.articleFeedbackv5.setLinkId( '0' );
 			$.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-tooltip' ).hide();

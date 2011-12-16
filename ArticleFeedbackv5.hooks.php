@@ -286,33 +286,81 @@ class ArticleFeedbackv5Hooks {
 	public static function pushTrackingFieldsToEdit( $editPage, $output ) {
 		global $wgRequest;
 
-		$feedbackId = $wgRequest->getVal( 'articleFeedbackv5_feedback_id' );
-		$ctaId = $wgRequest->getVal( 'articleFeedbackv5_cta_id' );
+		$tracking = $wgRequest->getVal( 'articleFeedbackv5_click_tracking' );
 		$bucketId = $wgRequest->getVal( 'articleFeedbackv5_bucket_id' );
+		$ctaId    = $wgRequest->getVal( 'articleFeedbackv5_cta_id' );
+		$location = $wgRequest->getVal( 'articleFeedbackv5_location' );
+		$token    = $wgRequest->getVal( 'articleFeedbackv5_ct_token' );
 
-		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_feedback_id', $feedbackId );
-		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_cta_id', $ctaId );
+		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_click_tracking', $tracking );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_bucket_id', $bucketId );
+		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_cta_id', $ctaId );
+		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_location', $location );
+		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_ct_token', $token );
 
 		return true;
 	}
 
 	/**
-	 * Tracks edits
+	 * Tracks edit attempts
 	 *
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/ArticleSaveComplete
+	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/EditPage::attemptSave
 	 */
-	public static function trackEdit( $article, $user, $text, $summary, $minoredit,
-			$watchthis, $sectionanchor, $flags, $revision, $baseRevId ) {
-		global $wgRequest;
-
-		$feedbackId = $wgRequest->getVal( 'articleFeedbackv5_feedback_id' );
-		$ctaId = $wgRequest->getVal( 'articleFeedbackv5_cta_id' );
-		$bucketId = $wgRequest->getVal( 'articleFeedbackv5_bucket_id' );
-
+	public static function trackEditAttempt( $editpage ) {
+		self::trackEvent( 'edit_attempt' );
 		return true;
 	}
 
+	/**
+	 * Tracks successful edits
+	 *
+	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/ArticleSaveComplete
+	 */
+	public static function trackEditSuccess( &$article, &$user, $text,
+			$summary, $minoredit, $watchthis, $sectionanchor, &$flags,
+			$revision, &$status, $baseRevId, &$redirect) {
+		self::trackEvent( 'edit_success' );
+		return true;
+	}
+
+	/**
+	 * Internal use: Tracks an event
+	 *
+	 * @param $event string the event name
+	 */
+	private static function trackEvent( $event ) {
+		global $wgRequest,
+			$wgArticleFeedbackv5Tracking,
+			$wgTitle;
+		$ctas = array( 'none', 'edit', 'learn_more' );
+
+		$tracking = $wgRequest->getVal( 'articleFeedbackv5_click_tracking' );
+		if ( !$tracking ) {
+			return;
+		}
+
+		$version  = $wgArticleFeedbackv5Tracking['version'];
+		$bucketId = $wgRequest->getVal( 'articleFeedbackv5_bucket_id' );
+		$ctaId    = $wgRequest->getVal( 'articleFeedbackv5_cta_id' );
+		$location = $wgRequest->getVal( 'articleFeedbackv5_location' );
+		$token    = $wgRequest->getVal( 'articleFeedbackv5_ct_token' );
+
+		$trackingId = 'ext.articleFeedbackv5@' . $version
+			. '-option' . $bucketId
+			. '-cta_' . ( isset( $ctas[$ctaId] ) ? $ctas[$ctaId] : 'unknown' )
+			. '-' . $event
+			. '-' . $location;
+
+		$params = new FauxRequest( array(
+			'action' => 'clicktracking',
+			'eventid' => $trackingId,
+			'token' => $token,
+			'info' => $wgTitle->getText(),
+			'namespacenumber' => $wgTitle->getNamespace()
+		) );
+		$api = new ApiMain( $params, true );
+		$api->execute();
+	}
 
 }
 
