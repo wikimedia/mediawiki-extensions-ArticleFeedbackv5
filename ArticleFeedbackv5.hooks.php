@@ -307,7 +307,7 @@ class ArticleFeedbackv5Hooks {
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/EditPage::attemptSave
 	 */
 	public static function trackEditAttempt( $editpage ) {
-		self::trackEvent( 'edit_attempt' );
+		self::trackEvent( 'edit_attempt', $editpage->getTitle() );
 		return true;
 	}
 
@@ -319,7 +319,7 @@ class ArticleFeedbackv5Hooks {
 	public static function trackEditSuccess( &$article, &$user, $text,
 			$summary, $minoredit, $watchthis, $sectionanchor, &$flags,
 			$revision, &$status, $baseRevId, &$redirect) {
-		self::trackEvent( 'edit_success' );
+		self::trackEvent( 'edit_success', $article->getTitle() );
 		return true;
 	}
 
@@ -328,10 +328,8 @@ class ArticleFeedbackv5Hooks {
 	 *
 	 * @param $event string the event name
 	 */
-	private static function trackEvent( $event ) {
-		global $wgRequest,
-			$wgArticleFeedbackv5Tracking,
-			$wgTitle;
+	private static function trackEvent( $event, $title ) {
+		global $wgRequest, $wgArticleFeedbackv5Tracking;
 		$ctas = array( 'none', 'edit', 'learn_more' );
 
 		$tracking = $wgRequest->getVal( 'articleFeedbackv5_click_tracking' );
@@ -355,8 +353,8 @@ class ArticleFeedbackv5Hooks {
 			'action' => 'clicktracking',
 			'eventid' => $trackingId,
 			'token' => $token,
-			'info' => $wgTitle->getText(),
-			'namespacenumber' => $wgTitle->getNamespace()
+			'info' => $title->getText(),
+			'namespacenumber' => $title->getNamespace()
 		) );
 		$api = new ApiMain( $params, true );
 		$api->execute();
