@@ -1,5 +1,12 @@
-<?php $messages = array();
+<?php
+/**
+ * Internationalisation file for extension ArticleFeedbackv5.
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
+$messages = array();
 /** English
  * @author Nimish Gautam
  * @author Sam Reed
@@ -17,7 +24,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-cta1-learn-how' => 'Learn how to edit',
 	'articlefeedbackv5-cta1-learn-how-url' => 'http://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Tutorial',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Edit this page',
-	'articlefeedbackv5-cta2-confirmation-title' => 'Help improve Wikipedia',
+	'articlefeedbackv5-cta2-confirmation-title' => 'Help improve {{SITENAME}}',
 	'articlefeedbackv5-cta2-confirmation-call' => 'This website is created by people like you. Can you give us a hand?',
 	'articlefeedbackv5-cta2-button-text' => 'Learn more',
 
@@ -105,7 +112,7 @@ $messages['en'] = array(
 	/* Option 4 (just a big glossy edit button and some teaser text) */
 	'articlefeedbackv5-bucket4-title' => 'Help improve this page',
 	'articlefeedbackv5-bucket4-subhead' => 'Did you know that you can edit this page?',
-	'articlefeedbackv5-bucket4-teaser-line1' => 'Wikipedia works because anyone can edit its pages.',
+	'articlefeedbackv5-bucket4-teaser-line1' => '{{SITENAME}} works because anyone can edit its pages.',
 	'articlefeedbackv5-bucket4-teaser-line2' => 'Go ahead, give it a try. Be bold!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Learn how to edit',
 	'articlefeedbackv5-bucket4-form-submit' => 'Edit this page',
@@ -121,7 +128,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket5-form-panel-expertise-profession' => 'It is part of my profession',
 	'articlefeedbackv5-bucket5-form-panel-expertise-hobby' => 'It is a deep personal passion',
 	'articlefeedbackv5-bucket5-form-panel-expertise-other' => 'The source of my knowledge is not listed here',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'I would like to help improve Wikipedia, send me an e-mail (optional)',
+	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'I would like to help improve {{SITENAME}}, send me an e-mail (optional)',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-note' => 'We will send you a confirmation e-mail. We will not share your e-mail address with outside parties as per our $1.',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-email-placeholder' => 'email@example.org', // Optional
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy' => 'feedback privacy statement',
