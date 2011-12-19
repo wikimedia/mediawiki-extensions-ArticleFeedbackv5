@@ -6,25 +6,26 @@
  * @author Brandon Harris
  * @author Trevor Parscal
  * @author Arthur Richards
+ * @author Siebrand Mazeland
  */
 $messages['en'] = array(
 	// CTA translations
 	'articlefeedbackv5-cta-thanks' => 'Thanks!',
 	'articlefeedbackv5-cta-confirmation-followup' => 'Your feedback has been saved.',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Did you know that you can edit this page?',
-	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia works because anyone can edit its articles. Go ahead, give it a try. Be bold!',
+	'articlefeedbackv5-cta1-confirmation-call' => '{{SITENAME}} works because anyone can edit its pages. Go ahead, give it a try. Be bold!',
 	'articlefeedbackv5-cta1-learn-how' => 'Learn how to edit',
 	'articlefeedbackv5-cta1-learn-how-url' => 'http://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Tutorial',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Edit this page',
 	'articlefeedbackv5-cta2-confirmation-title' => 'Help improve Wikipedia',
-	'articlefeedbackv5-cta2-confirmation-call' => 'This encyclopedia is created by people like you. Can you give us a hand?',
+	'articlefeedbackv5-cta2-confirmation-call' => 'This website is created by people like you. Can you give us a hand?',
 	'articlefeedbackv5-cta2-button-text' => 'Learn more',
 
 	// error messages
 	'articlefeedbackv5-error' => 'An error has occured. Please try again later.',
-	'articlefeedbackv5-error-email' => 'That email address is not valid',
-	'articlefeedbackv5-error-validation' => 'Validation error',
-	'articlefeedbackv5-error-unknown' => 'Unknown error',
+	'articlefeedbackv5-error-email' => 'That e-mail address is not valid.',
+	'articlefeedbackv5-error-validation' => 'Validation error.',
+	'articlefeedbackv5-error-unknown' => 'Unknown error.',
 	'articlefeedbackv5-error-submit' => 'Form submission error.',
 	'articlefeedbackv5-error-nofeedback' => 'Please enter your feedback.',
 	'articlefeedbackv5-error-flagging' => 'Error flagging feedback.',
@@ -39,7 +40,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-sort-label-after' => '',
 	'articlefeedbackv5-special-filter-label-before' => 'Show only: ',
 	'articlefeedbackv5-special-filter-label-after' => '',
-	'articlefeedbackv5-special-showing' => 'Showing $1 posts (of $2)',
+	'articlefeedbackv5-special-showing' => 'Showing $1 posts (of $2)', // FIXME: Needs plural support on $1.
 	'articlefeedbackv5-special-more' => 'More',
 	'articlefeedbackv5-form-optionid' => 'Option $1',
 	'articlefeedbackv5-form-hide' => 'Hide this ($1)',
@@ -70,45 +71,45 @@ $messages['en'] = array(
 
 	/* Feedback forms */
 	/* Option 1 ("Did you find what you were looking for?") */
-	'articlefeedbackv5-bucket1-title' => 'Help improve this article',
+	'articlefeedbackv5-bucket1-title' => 'Help improve this page',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Did you find what you were looking for?',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Yes',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'No',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Yes, I found what I was looking for.',
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'No, I did not find what I was looking for.',
-	'articlefeedbackv5-bucket1-question-comment-yes' => 'What was most useful to you? How could this article be improved?',
+	'articlefeedbackv5-bucket1-question-comment-yes' => 'What was most useful to you? How could this page be improved?',
 	'articlefeedbackv5-bucket1-question-comment-no' => 'What\'s missing? Any suggestions for improvement?',
 	'articlefeedbackv5-bucket1-form-submit' => 'Post your feedback',
 	/* Option 2 (getsatisfaction style) */
-	'articlefeedbackv5-bucket2-title' => 'Help improve this article',
+	'articlefeedbackv5-bucket2-title' => 'Help improve this page',
 	'articlefeedbackv5-bucket2-suggestion-label' => 'Suggestion',
 	'articlefeedbackv5-bucket2-question-label' => 'Question',
 	'articlefeedbackv5-bucket2-problem-label' => 'Problem',
 	'articlefeedbackv5-bucket2-praise-label' => 'Praise',
-	'articlefeedbackv5-bucket2-suggestion-comment-default' => 'Make a suggestion! How can this article be improved?',
-	'articlefeedbackv5-bucket2-question-comment-default' => 'Ask a question about this article.',
-	'articlefeedbackv5-bucket2-problem-comment-default' => 'Report a problem. How can this article be improved?',
+	'articlefeedbackv5-bucket2-suggestion-comment-default' => 'Make a suggestion! How can this page be improved?',
+	'articlefeedbackv5-bucket2-question-comment-default' => 'Ask a question about this page.',
+	'articlefeedbackv5-bucket2-problem-comment-default' => 'Report a problem. How can this page be improved?',
 	'articlefeedbackv5-bucket2-praise-comment-default' => 'What do you like most? Share your praise with the editors.',
 	'articlefeedbackv5-bucket2-form-submit' => 'Post your feedback',
 	/* Option 3 (single rating) */
-	'articlefeedbackv5-bucket3-title' => 'Help improve this article',
-	'articlefeedbackv5-bucket3-rating-question' => 'Is this article helpful?',
+	'articlefeedbackv5-bucket3-title' => 'Help improve this page',
+	'articlefeedbackv5-bucket3-rating-question' => 'Is this page helpful?',
 	'articlefeedbackv5-bucket3-rating-tooltip-1' => 'Not helpful at all',
 	'articlefeedbackv5-bucket3-rating-tooltip-2' => 'Not very helpful',
 	'articlefeedbackv5-bucket3-rating-tooltip-3' => 'Average',
 	'articlefeedbackv5-bucket3-rating-tooltip-4' => 'Helpful',
 	'articlefeedbackv5-bucket3-rating-tooltip-5' => 'Very helpful',
 	'articlefeedbackv5-bucket3-clear-rating' => 'Remove this rating',
-	'articlefeedbackv5-bucket3-comment-default' => 'Add a comment. How can this article be improved?',
+	'articlefeedbackv5-bucket3-comment-default' => 'Add a comment. How can this page be improved?',
 	'articlefeedbackv5-bucket3-form-submit' => 'Post your feedback',
 	/* Option 4 (just a big glossy edit button and some teaser text) */
-	'articlefeedbackv5-bucket4-title' => 'Help improve this article',
+	'articlefeedbackv5-bucket4-title' => 'Help improve this page',
 	'articlefeedbackv5-bucket4-subhead' => 'Did you know that you can edit this page?',
-	'articlefeedbackv5-bucket4-teaser-line1' => 'Wikipedia works because anyone can edit its articles.',
+	'articlefeedbackv5-bucket4-teaser-line1' => 'Wikipedia works because anyone can edit its pages.',
 	'articlefeedbackv5-bucket4-teaser-line2' => 'Go ahead, give it a try. Be bold!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Learn how to edit',
 	'articlefeedbackv5-bucket4-form-submit' => 'Edit this page',
-	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Wikipedia wants to know what you think.  Help improve this page by becoming an editor.',
+	'articlefeedbackv5-bucket4-help-tooltip-info' => '{{SITENAME}} wants to know what you think. Help improve this page by becoming an editor.',
 	/* Option 5 (just like AFTv4, but ported to work with v5) */
 	'articlefeedbackv5-bucket5-form-switch-label' => 'Rate this page',
 	'articlefeedbackv5-bucket5-form-panel-title' => 'Rate this page',
@@ -133,7 +134,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket5-report-panel-title' => 'Page ratings',
 	'articlefeedbackv5-bucket5-report-panel-description' => 'Current average ratings.',
 	'articlefeedbackv5-bucket5-report-empty' => 'No ratings',
-	'articlefeedbackv5-bucket5-report-ratings' => '$1 ratings',
+	'articlefeedbackv5-bucket5-report-ratings' => '$1 ratings', // FIXME: Needs plural support for $1.
 	'articlefeedbackv5-bucket5-trustworthy-label' => 'Trustworthy',
 	'articlefeedbackv5-bucket5-trustworthy-tip' => 'Do you feel this page has sufficient citations and that those citations come from trustworthy sources?',
 	'articlefeedbackv5-bucket5-trustworthy-tooltip-1' => 'Lacks reputable sources',
@@ -167,18 +168,19 @@ $messages['en'] = array(
 	'articlefeedbackv5-shared-on-feedback' => 'Your comment will be shared on this $1.',
 	'articlefeedbackv5-shared-on-feedback-linktext' => 'feedback page',
 	'articlefeedbackv5-help-tooltip-title' => 'What\'s this?',
-	'articlefeedbackv5-help-tooltip-info' => 'Wikipedia would like to hear what you think of this article. Share your feedback with the editors -- and help improve this page.',
+	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} would like to hear what you think of this page. Share your feedback with the editors -- and help improve this page.',
 	'articlefeedbackv5-help-tooltip-linktext' => 'Learn more',
 	'articlefeedbackv5-help-tooltip-linkurl' => 'http://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help',
 	'articlefeedbackv5-transparency-terms' => 'By posting, you agree to transparency under these $1.',
 	'articlefeedbackv5-transparency-terms-linktext' => 'terms',
 	'articlefeedbackv5-transparency-terms-url' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articlefeedbackv5-section-linktext' => 'feedback',
-	'articlefeedbackv5-titlebar-linktext' => 'Help improve this article >>',
+	'articlefeedbackv5-titlebar-linktext' => 'Help improve this page >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Improve this page',
 	'articlefeedbackv5-toolbox-linktext' => 'Improve this page',
 
 	/* --- copied from AFTv4 and possibly not used --- */
+	// FIXME: Can we get clarity on this? Translators may be wasting their time here (!!!)
 	/* ArticleFeedback survey */
 	'articlefeedbackv5-survey-question-origin' => 'What page were you on when you started this survey?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Please let us know why you rated this page today (check all that apply):',
@@ -223,10 +225,10 @@ Please try again later.',
 	'articleFeedbackv5-table-heading-page' => 'Page',
 	'articleFeedbackv5-table-heading-average' => 'Average',
 	'articlefeedbackv5-table-noratings' => '-',
-	'articleFeedbackv5-copy-above-highlow-tables' => 'This is an experimental feature.  Please provide feedback on the [$1 discussion page].',
-	'articlefeedbackv5-dashboard-bottom' => "'''Note''': We will continue to experiment with different ways of surfacing articles in these dashboards.  At present, the dashboards include the following articles:
-* Pages with highest/lowest ratings: articles that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.
-* Recent lows: articles that got 70% or more low (2 stars or lower) ratings in any category in the last 24 hours. Only articles that have received at least 10 ratings in the last 24 hours are included.",
+	'articleFeedbackv5-copy-above-highlow-tables' => 'This is an experimental feature. Please provide feedback on the [$1 discussion page].',
+	'articlefeedbackv5-dashboard-bottom' => "'''Note''': We will continue to experiment with different ways of surfacing pages in these dashboards.  At present, the dashboards include the following pages:
+* Pages with highest/lowest ratings: pages that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.
+* Recent lows: pages that got 70% or more low (2 stars or lower) ratings in any category in the last 24 hours. Only pages that have received at least 10 ratings in the last 24 hours are included.",
 	/* Special:Preferences */
 	'articlefeedbackv5-disable-preference' => "Don't show the Article feedback widget on pages",
 	/* EmailCapture */
