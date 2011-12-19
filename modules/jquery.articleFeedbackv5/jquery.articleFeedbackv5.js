@@ -564,7 +564,7 @@
 				$block.find( '.articleFeedbackv5-tags ul' ).each( function () {
 					var info = $.articleFeedbackv5.currentBucket().tagInfo;
 					var tabIndex = 1;
-					for ( var i in info ) {
+					for ( var i = 0; i < info.length; i++ ) {
 						var key = info[i];
 						var comm_def_msg = 'articlefeedbackv5-bucket2-' + key + '-comment-default';
 						$.articleFeedbackv5.currentBucket().commentDefault[key] = mw.msg( comm_def_msg );
@@ -1316,7 +1316,7 @@
 				// Add the ratings from the options
 				$block.find( '.articleFeedbackv5-ratings' ).each( function () {
 					var info = $.articleFeedbackv5.currentBucket().ratingInfo;
-					for ( var i in info ) {
+					for ( var i = 0; i < info.length; i++ ) {
 						var key = info[i];
 						var	tip_msg = 'articlefeedbackv5-bucket5-' + key + '-tip';
 						var label_msg = 'articlefeedbackv5-bucket5-' + key + '-label';
@@ -1721,7 +1721,7 @@
 			getFormData: function () {
 				var data = {};
 				var info = $.articleFeedbackv5.currentBucket().ratingInfo;
-				for ( var i in info ) {
+				for ( var i = 0; i < info.length; i++ ) {
 					var key = info[i];
 					data[key] = $.articleFeedbackv5.find( 'input[name="' + key + '"]' ).val();
 				}

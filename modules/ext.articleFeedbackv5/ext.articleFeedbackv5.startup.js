@@ -62,16 +62,16 @@ jQuery( function( $ ) {
 		};
 
 		var enable = false;
-		for( var cat in categories['current'] ) {
+		for( var i = 0; i < categories['current'].length; i++ ) {
 			// Categories are configured with underscores, but article's categories are returned with
 			// spaces instead. Revert to underscores here for sane comparison.
-			categories['current'][cat] = categories['current'][cat].replace(/\s/gi, '_');
+			categories['current'][i] = categories['current'][i].replace(/\s/gi, '_');
 			// Check exclusion - exclusion overrides everything else
-			if( $.inArray( categories['current'][cat], categories.exclude ) > -1 ) {
+			if( $.inArray( categories['current'][i], categories.exclude ) > -1 ) {
 				// Blacklist overrides everything else
 				return;
 			}
-			if( $.inArray( categories['current'][cat], categories.include ) > -1 ) {
+			if( $.inArray( categories['current'][i], categories.include ) > -1 ) {
 				// One match is enough for include, however we are iterating on the 'current'
 				// categories, and others might be blacklisted - so continue iterating
 				enable = true;
