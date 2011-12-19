@@ -318,7 +318,7 @@ class ArticleFeedbackv5Hooks {
 	 */
 	public static function trackEditSuccess( &$article, &$user, $text,
 			$summary, $minoredit, $watchthis, $sectionanchor, &$flags,
-			$revision, &$status, $baseRevId, &$redirect) {
+			$revision, &$status, $baseRevId /*, &$redirect */ ) { // $redirect not passed in 1.18wmf1
 		self::trackEvent( 'edit_success', $article->getTitle() );
 		return true;
 	}
