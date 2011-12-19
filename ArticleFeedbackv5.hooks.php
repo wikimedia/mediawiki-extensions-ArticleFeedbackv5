@@ -307,7 +307,7 @@ class ArticleFeedbackv5Hooks {
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/EditPage::attemptSave
 	 */
 	public static function trackEditAttempt( $editpage ) {
-		self::trackEvent( 'edit_attempt', $editpage->getTitle() );
+		self::trackEvent( 'edit_attempt', $editpage->getArticle()->getTitle() ); // EditPage::getTitle() doesn't exist in 1.18wmf1
 		return true;
 	}
 
