@@ -56,7 +56,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		);
 
 		foreach ( $fields as $field ) {
-			$field_name = $field->afi_name;
+			$field_name = $field['afi_name'];
 			if ( $field['afi_bucket_id'] != $bucket ) {
 				continue;
 			}
