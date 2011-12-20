@@ -2384,6 +2384,7 @@
 		// Add it to the page
 		$.articleFeedbackv5.$holder
 			.html( $wrapper )
+			.addClass( 'articleFeedbackv5' )
 			.append( $( $.articleFeedbackv5.templates.errorPanel ) )
 			.append( '<div class="articleFeedbackv5-lock"></div>' );
 
