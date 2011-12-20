@@ -423,7 +423,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		), __METHOD__ );
 
 		// Insert the new ones.
-		$dbw->insert( $table, $page_data, __METHOD__ );
+		$dbw->insert( $table, $page_data, __METHOD__, array( 'IGNORE' ) );
 		$dbw->commit();
 
 		// One way to speed this up would be to purge old rows from
