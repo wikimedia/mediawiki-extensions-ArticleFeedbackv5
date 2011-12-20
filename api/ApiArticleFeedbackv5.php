@@ -56,25 +56,26 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		);
 
 		foreach ( $fields as $field ) {
-			if ( $field->afi_bucket_id != $bucket ) {
+			$field_name = $field->afi_name;
+			if ( $field['afi_bucket_id'] != $bucket ) {
 				continue;
 			}
-			if ( isset( $params[$field->afi_name] ) ) {
-				$value = $params[$field->afi_name];
-				$type  = $field->afi_data_type;
+			if ( isset( $params[$field['afi_name']] ) ) {
+				$value = $params[$field_name];
+				$type  = $field['afi_data_type'];
 				if ( $value === '' ) {
 					continue;
 				}
-				if ( $this->validateParam( $value, $type, $field->afi_id ) ) {
+				if ( $this->validateParam( $value, $type, $field['afi_id'] ) ) {
 					$data = array(
 						'aa_feedback_id' => $feedbackId,
-						'aa_field_id'    => $field->afi_id,
+						'aa_field_id'    => $field['afi_id'],
 					);
 					foreach ( array( 'rating', 'text', 'boolean', 'option_id' ) as $t ) {
 						$data["aa_response_$t"] = $t == $type ? $value : null;
 					}
 					$user_answers[] = $data;
-					$email_data['ratingData'][$field->afi_name] = $value;
+					$email_data['ratingData'][$field_name] = $value;
 				} else {
 					$error = 'articlefeedbackv5-error-validation';
 				}
@@ -577,7 +578,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		$fields = ApiArticleFeedbackv5Utils::getFields();
 		foreach ( $fields as $field ) {
-			$ret[$field->afi_name] = array(
+			$ret[$field['afi_name']] = array(
 				ApiBase::PARAM_TYPE     => 'string',
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
@@ -602,7 +603,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		);
 		$fields = ApiArticleFeedbackv5Utils::getFields();
 		foreach ( $fields as $f ) {
-			$ret[$f->afi_name] = 'Optional feedback field, only appears on certain "buckets".';
+			$ret[$f['afi_name']] = 'Optional feedback field, only appears on certain "buckets".';
 		}
 		return $ret;
 	}

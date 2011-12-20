@@ -57,12 +57,14 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		$where['af_page_id'] = $pageId;
 
-		// TODO: Not this.
-		return $dbr->selectField(
-			array( 'aft_article_feedback' ),
-			array( 'COUNT(*) AS count' ),
-			$where
-		);
+		# Until this is done properly, just don't do anything.
+		return 0; 
+
+#		return $dbr->selectField(
+#			array( 'aft_article_feedback' ),
+#			array( 'COUNT(*) AS count' ),
+#			$where
+#		);
 	}
 
 	public function fetchFeedback( $pageId,
@@ -184,11 +186,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 		$rv .= "<p>"
 		.wfMessage( 'articlefeedbackv5-form-optionid', $record[0]->af_bucket_id )->escaped()
-		." | "
+		.'</a> '.wfMessage( 'pipe-separator' )->escaped()
 		."<a href='#' class='aft5-hide-link' id='aft5-hide-link-$id'>"
 		.wfMessage( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )->escaped()
-		.'</a> | '
-//204
+		.'</a>'.wfMessage( 'pipe-separator' )->escaped()
 		."<a href='#' class='aft5-abuse-link' id='aft5-abuse-link-$id'>"
 		.wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->escaped()
 		."</a></p></div><hr>";

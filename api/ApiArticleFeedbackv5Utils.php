@@ -79,8 +79,9 @@ class ApiArticleFeedbackv5Utils {
 		if( $cached != '' ) {
 			return $cached;
 		} else {
-			$dbr = wfGetDB( DB_SLAVE );
-			$rv  = $dbr->select(
+			$rv   = array();
+			$dbr  = wfGetDB( DB_SLAVE );
+			$rows = $dbr->select(
 				'aft_article_field',
 				array( 
 					'afi_name', 
@@ -91,6 +92,16 @@ class ApiArticleFeedbackv5Utils {
 				null, 
 				__METHOD__
 			);
+
+			foreach( $rows as $row ) {
+				$rv[] = array(
+					'afi_name'      => $row->afi_name,
+					'afi_id'        => $row->afi_id, 
+					'afi_data_type' => $row->afi_data_type, 
+					'afi_bucket_id' => $row->afi_bucket_id 
+				);
+			}
+
 			// An hour? That might be reasonable for a cache time.
 			$wgMemc->set( $key, $rv, 60 * 60 );
 		}
