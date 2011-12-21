@@ -90,6 +90,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 
 		$ctaId = $this->saveUserRatings( $user_answers, $feedbackId, $bucket );
+		$this->saveUserProperties( $revisionId );
 		$this->updateRollupTables( $pageId, $revisionId, $user_answers );
 
 		if ( $params['email'] ) {
@@ -511,6 +512,82 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		return $ctaId;
 	}
+
+        /**
+         * Inserts or updates properties for a specific rating
+         * @param $revisionId int    Revision ID
+         */
+	private function saveUserProperties( $revisionId ) {
+		global $wgUser;
+		$dbw  = wfGetDB( DB_MASTER );
+		$dbr  = wfGetDB( DB_SLAVE );
+		$rows = array();
+
+		// Only save data for logged-in users.
+		if( !$wgUser->isLoggedIn() ) {
+			return null;
+		}
+
+		// I'd really rather have this passed in, to save a query,
+		// and rule out consistency problems, but there doesn't seem
+		// to be a way to do 'RETUNING af_id' on the insert, or to 
+		// pre-increment the ID column (since it's a MySQL auto-
+		// increment, not a sequence) before the insert.  So, fetch 
+		// the most recent feedback ID for this user on this revision.
+		// This gets called imediately after saving, so it'll almost 
+		// certainly be the right one.
+		$feedbackId = $dbr->selectField(
+			'aft_article_feedback',
+			'af_id',
+			array(
+				'af_revision_id' => $revisionId,
+				'af_user_id'     => $wgUser->getId()
+			),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'af_id DESC',
+				'LIMIT'    => 1
+			)
+		);
+
+		// Total edits by this user
+		$rows[] = array(
+			'afp_feedback_id' => $feedbackId,
+			'afp_key'         => 'contribs-lifetime',
+			'afp_value_int'   => ( integer ) $wgUser->getEditCount()
+		);
+
+		// Use the UserDailyContribs extension if it's present. Get 
+		// edit counts for last 6 months, last 3 months, and last month.
+		if ( function_exists( 'getUserEditCountSince' ) ) {
+			$now = time();
+
+			$rows[] = array(
+				'afp_feedback_id' => $feedbackId,
+				'afp_key'         => 'contribs-6-months',
+				'afp_value_int'   => getUserEditCountSince( $now - ( 60 * 60 * 24 * 365 / 2 ) )
+			);
+
+			$rows[] = array(
+				'afp_feedback_id' => $feedbackId,
+				'afp_key'         => 'contribs-3-months',
+				'afp_value_int'   => getUserEditCountSince( $now - ( 60 * 60 * 24 * 365 / 4 ) )
+			);
+
+			$rows[] = array(
+				'afp_feedback_id' => $feedbackId,
+				'afp_key'         => 'contribs-1-months',
+				'afp_value_int'   => getUserEditCountSince( $now - ( 60 * 60 * 24 * 30 ) )
+			);
+		}
+
+		$dbw->insert(
+			'aft_article_feedback_properties',
+			$rows,
+			__METHOD__
+		);
+	}
+
 
 	/**
 	 * Picks a CTA to send the user to
