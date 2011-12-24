@@ -740,42 +740,50 @@
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-suggestion-label {
 	/* @embed */
-	background: url(images/moodbar_emoticon_hover_lightbulb.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_hover_lightbulb.png) no-repeat 0;
+	background-position: left; /* for flipping */
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-question-label {
 	/* @embed */
-	background: url(images/moodbar_emoticon_hover_confused.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_hover_confused.png) no-repeat 0;
+	background-position: left;
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-problem-label {
 	/* @embed */
-	background: url(images/moodbar_emoticon_hover_sad.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_hover_sad.png) no-repeat 0;
+	background-position: left;
 }
 
 .articleFeedbackv5-tags ul li .articleFeedbackv5-bucket2-praise-label {
 	/* @embed */
-	background: url(images/moodbar_emoticon_hover_happy.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_hover_happy.png) no-repeat 0;
+	background-position: left;
 }
 
 /*.articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-suggestion-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-suggestion-label {
-	background: url(images/moodbar_emoticon_hover_lightbulb.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_hover_lightbulb.png) no-repeat 0;
+	background-position: left;
 }
 
 .articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-question-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-question-label {
-	background: url(images/moodbar_emoticon_set_confused.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_set_confused.png) no-repeat 0;
+	background-position: left;
 }
 
 .articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-problem-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-problem-label {
-	background: url(images/moodbar_emoticon_hover_sad.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_hover_sad.png) no-repeat 0;
+	background-position: left;
 }
 
 .articleFeedbackv5-tags ul li:hover .articleFeedbackv5-bucket2-praise-label,
 .articleFeedbackv5-tags ul li.active .articleFeedbackv5-bucket2-praise-label {
-	background: url(images/moodbar_emoticon_hover_happy.png) no-repeat 0 center;
+	background: url(images/moodbar_emoticon_hover_happy.png) no-repeat 0;
+	background-position: left;
 }*/
 
 /*** Option 3 ***/
