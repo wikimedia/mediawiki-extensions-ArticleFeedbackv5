@@ -12,3 +12,8 @@ $specialPageAliases = array();
 $specialPageAliases['en'] = array(
 	'ArticleFeedbackv5' => array( 'ArticleFeedbackv5' ),
 );
+
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'ArticleFeedbackv5' => array( 'Terugkoppelingv5' ),
+);
