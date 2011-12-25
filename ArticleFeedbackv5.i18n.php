@@ -6069,7 +6069,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  * @author Sjurhamre
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'articlefeedbackv5-error' => 'En feil har oppstått. Prøv igjen senere.',
 	'articlefeedbackv5' => 'Panelbord for artikkelvurdering',
 	'articlefeedbackv5-desc' => 'Artikkelvurdering (pilotversjon)',
