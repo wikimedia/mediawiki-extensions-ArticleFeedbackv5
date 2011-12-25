@@ -217,7 +217,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	private function renderBucket2( $record ) {
 		$name = htmlspecialchars( $record[0]->user_name );
 		$type = htmlspecialchars( $record['tag']->afo_name );
-		return wfMessage( 'articlefeedbackv5-form2-header', $name, $type )->escaped()
+		// Document for grepping. Uses any of the messages:
+		// * articlefeedbackv5-form2-header-praise
+		// * articlefeedbackv5-form2-header-problem
+		// * articlefeedbackv5-form2-header-question
+		// * articlefeedbackv5-form2-header-suggestion
+		return wfMessage( 'articlefeedbackv5-form2-header-' . $type, $name )->escaped()
 		.'<blockquote>'.htmlspecialchars( $record['comment']->aa_response_text )
 		.'</blockquote>';
 	}

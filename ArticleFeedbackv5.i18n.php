@@ -55,7 +55,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-header' => 'Feedback #$1, at $2',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$1}} found what they were looking for:',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$1}} did not find what they were looking for:',
-	'articlefeedbackv5-form2-header' => '$1 had a $2:',
+	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}} had a comment:',
+	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} had a praise:',
+	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} had a question:',
+	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} had a suggestion:',
 	'articlefeedbackv5-form3-header' => '$1 rated this page $2/5',
 	'articlefeedbackv5-form4-header' => 'User was presented with the CTA-only form.',
 	'articlefeedbackv5-form5-header' => '$1 rated this page:',
@@ -296,6 +299,14 @@ $messages['qqq'] = array(
 * $1 is a username.',
 	'articlefeedbackv5-form1-header-not-found' => 'Parameters:
 * $1 is a username.',
+	'articlefeedbackv5-form2-header-praise' => 'Parameters:
+* $1 is a user name.',
+	'articlefeedbackv5-form2-header-problem' => 'Parameters:
+* $1 is a user name.',
+	'articlefeedbackv5-form2-header-question' => 'Parameters:
+* $1 is a user name.',
+	'articlefeedbackv5-form2-header-suggestion' => 'Parameters:
+* $1 is a user name.',
 	'articlefeedbackv5-special-title' => 'don\'t touch "== =="',
 	'articlefeedbackv5' => 'The title of the feature. It is about reader feedback.
 
