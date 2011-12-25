@@ -229,7 +229,7 @@ $wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5'] = $dir . 'api/ApiFlagFeed
 $wgAutoloadClasses['ArticleFeedbackv5Hooks']           = $dir . 'ArticleFeedbackv5.hooks.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5']         = $dir . 'SpecialArticleFeedbackv5.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5']         = $dir . 'ArticleFeedbackv5.i18n.php';
-$wgExtensionAliasesFiles['ArticleFeedbackv5']          = $dir . 'ArticleFeedbackv5.alias.php';
+$wgExtensionMessagesFiles['ArticleFeedbackv5Alias']    = $dir . 'ArticleFeedbackv5.alias.php';
 
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleFeedbackv5Hooks::loadExtensionSchemaUpdates';
