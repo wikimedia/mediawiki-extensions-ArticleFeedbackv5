@@ -55,10 +55,11 @@ jQuery( function( $ ) {
 		&& mw.util.getParamValue( 'printable' ) != 'yes'
 	) {
 		// Collect categories for intersection tests
+		// Clone the arrays so we can safely modify them
 		var categories = {
-			'include': mw.config.get( 'wgArticleFeedbackv5Categories', [] ),
-			'exclude': mw.config.get( 'wgArticleFeedbackv5BlacklistCategories', [] ),
-			'current': mw.config.get( 'wgCategories', [] )
+			'include': [].concat( mw.config.get( 'wgArticleFeedbackv5Categories', [] ) ),
+			'exclude': [].concat( mw.config.get( 'wgArticleFeedbackv5BlacklistCategories', [] ) ),
+			'current': [].concat( mw.config.get( 'wgCategories', [] ) )
 		};
 
 		var enable = false;
