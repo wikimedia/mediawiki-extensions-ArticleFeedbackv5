@@ -1,8 +1,7 @@
 ( function ( $ ) {
 	$.articleFeedbackv5special = {};
 
-	// TODO: Pass this in better from the PHP side.
-	$.articleFeedbackv5special.page    = hackPageId;
+	$.articleFeedbackv5special.page    = undefined;
 	$.articleFeedbackv5special.filter  = 'visible';
 	$.articleFeedbackv5special.sort    = 'newest';
 	$.articleFeedbackv5special.limit   = 25;
@@ -128,6 +127,7 @@ $( document ).ready( function() {
 	// This was failing sometimes when it was in the function above.
 	// I think it maky have been a race condition.
 	$.articleFeedbackv5special.apiUrl  = mw.util.wikiScript('api');
+	$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
 
 	// Set up event binds and do initial data fetch.
 	$.articleFeedbackv5special.setBinds();

@@ -5,13 +5,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	}
 
 	public function execute( $param ) {
-		global $wgOut;
-
+		$out = $this->getOutput();
 		$title = Title::newFromText( $param );
 		if ( $title ) {
 			$pageId = $title->getArticleID();
 		} else {
-			$wgOut->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
+			$out->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
 			return;
 		}
 
@@ -19,70 +18,90 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$found   = isset( $ratings['found'] )  ? $ratings['found']  : null;
 		$rating  = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
 
-		$wgOut->setPagetitle( "Feedback for $title" );
+		$out->setPagetitle( "Feedback for $title" );
 
 		if( !$pageId ) {
-			$wgOut->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
+			$out->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
 		} else {
-			$wgOut->addHTML(
+			$out->addHTML(
 				Linker::link(
 					Title::newFromText( $param ),
-					wfMessage( 'articlefeedbackv5-go-to-article' )->escaped()
+					$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
 				)
 				.' | '.
 				Linker::link(
 					Title::newFromText( $param ),
-					wfMessage( 'articlefeedbackv5-discussion-page' )->escaped()
+					$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
 				)
 				.' | '.
 				Linker::link(
 					Title::newFromText( $param ),
-					wfMessage( 'articlefeedbackv5-whats-this' )->escaped()
+					$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
 				)
 			);
 		}
 
 		if( $found ) {
-			$wgOut->addWikiMsg( 'articlefeedbackv5-percent-found', $found );
+			$out->addWikiMsg( 'articlefeedbackv5-percent-found', $found );
 		}
 
 		if( $rating ) {
-			$wgOut->addWikiMsg( 'articlefeedbackv5-overall-rating', $rating);
+			$out->addWikiMsg( 'articlefeedbackv5-overall-rating', $rating);
 		}
 
-		$wgOut->addWikiMsg( 'articlefeedbackv5-special-title' );
+		$out->addWikiMsg( 'articlefeedbackv5-special-title' );
 
-		$showing = wfMessage(
+		$showing = $this->msg(
 			'articlefeedbackv5-special-showing',
-			'<span id="aft5-feedback-count-shown">0</span>',
-			'<span id="aft5-feedback-count-total">0</span>'
+			Html::element( 'span', array( 'id' => 'aft-feedback-count-shown' ), '0'),
+			Html::element( 'span', array( 'id' => 'aft-feedback-count-total' ), '0')
 		);
 
-		$wgOut->addHTML('
-<script> var hackPageId = '.$pageId.'; </script>
-<script src="/extensions/ArticleFeedbackv5/modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js"></script>'
-.wfMessage('articlefeedbackv5-special-filter-label-before')->escaped()
-.'<select id="aft5-filter">
-	<option value="visible">'.wfMessage( 'articlefeedbackv5-special-filter-visible' )->escaped().'</option>
-	<option value="invisible">'.wfMessage( 'articlefeedbackv5-special-filter-invisible' )->escaped().'</option>
-	<option value="all">'.wfMessage( 'articlefeedbackv5-special-filter-all' )->escaped().'</option>
-</select>'
-.wfMessage('articlefeedbackv5-special-filter-label-after')->escaped()
-.' | '
-.wfMessage('articlefeedbackv5-special-sort-label-before')->escaped()
-.'<select id="aft5-sort">
-	<option value="newest">'.wfMessage( 'articlefeedbackv5-special-sort-newest' )->escaped().'</option>
-	<option value="oldest">'.wfMessage( 'articlefeedbackv5-special-sort-oldest' )->escaped().'</option>
-</select>'
-.wfMessage('articlefeedbackv5-special-sort-label-after')->escaped()
-.'<br>
-<span id="aft5-showing"> '.$showing.' </span>
-<br>
-<div style="border:1px solid red;" id="aft5-show-feedback"></div>
-<a href="#" id="aft5-show-more">'
-.wfMessage( 'articlefeedbackv5-special-more' )->escaped()
-.'</a>
-		');
+		$out->addJsConfigVars( 'afPageId', $pageId );
+		$out->addModules( 'jquery.articleFeedbackv5.special' );
+
+		$filterSelect = new XmlSelect( false, 'aft5-filter' );
+		$filterSelect->addOptions( $this->selectMsg( array(
+			'articlefeedbackv5-special-filter-visible' => 'visible',
+			'articlefeedbackv5-special-filter-invisible' => 'invisible',
+			'articlefeedbackv5-special-filter-all' => 'all',
+		) ) );
+
+		$sortSelect = new XmlSelect( false, 'aft5-sort' );
+		$sortSelect->addOptions( $this->selectMsg( array(
+			'articlefeedbackv5-special-sort-newest' => 'newest',
+			'articlefeedbackv5-special-sort-oldest' => 'oldest',
+		) ) );
+
+		$out->addHTML($this->msg('articlefeedbackv5-special-filter-label-before')->escaped()
+			. $filterSelect->getHTML()
+			. $this->msg('articlefeedbackv5-special-filter-label-after')->escaped()
+			. ' | '
+			. $this->msg('articlefeedbackv5-special-sort-label-before')->escaped()
+			. $sortSelect->getHTML()
+			. $this->msg('articlefeedbackv5-special-sort-label-after')->escaped()
+			. Html::element( 'span', array( 'id' => 'aft-showing' ), $showing )
+			. Html::element( 'div', array( 'id' => 'aft5-show-feedback',
+					'style' => 'border:1px solid red;' ), '' )
+			. Html::element( 'a', array( 'href' => '#', 'id' => 'aft5-show-more' ),
+					$this->msg( 'articlefeedbackv5-special-more' )->escaped() )
+		);
+	}
+
+	/**
+	 * Takes an associative array of label to value and converts the message
+	 * names into localized strings
+	 *
+	 * @param array $options
+	 * @return array
+	 */
+	private function selectMsg( array $options ) {
+		$newOpts = array();
+		foreach ( $options as $label => $value ) {
+			$newOpts[$this->msg( $label )->escaped()] = $value;
+		}
+
+		return $newOpts;
 	}
 
 	private function fetchOverallRating( $pageId ) {
@@ -113,11 +132,5 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		return $rv;
-	}
-
-
-	protected static function formatNumber( $number ) {
-		global $wgLang;
-		return $wgLang->formatNum( number_format( $number, 2 ) );
 	}
 }
