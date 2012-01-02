@@ -145,7 +145,7 @@ class ArticleFeedbackv5Hooks {
 			),
 		),
 		'jquery.articleFeedbackv5.special' => array(
-			'scripts ' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js',
+			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js',
 			'styles'   => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css',
 			'messages' => array(
 				'articlefeedbackv5-error-flagging',
