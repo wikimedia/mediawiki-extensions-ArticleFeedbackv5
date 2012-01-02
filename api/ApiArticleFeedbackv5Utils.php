@@ -51,15 +51,15 @@ class ApiArticleFeedbackv5Utils {
 	 */
 	public static function getRevisionLimit( $pageId ) {
 		global $wgArticleFeedbackv5RatingLifetime;
-		$dbr      = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$revision = $dbr->selectField(
 			'revision', 'rev_id',
 			array( 'rev_page' => $pageId ),
 			__METHOD__,
 			array(
 				'ORDER BY' => 'rev_id DESC',
-				'LIMIT'    => 1,
-				'OFFSET'   => $wgArticleFeedbackv5RatingLifetime - 1
+				'LIMIT' => 1,
+				'OFFSET' => $wgArticleFeedbackv5RatingLifetime - 1
 			)
 		);
 		return $revision ? intval( $revision ) : 0;
@@ -73,32 +73,32 @@ class ApiArticleFeedbackv5Utils {
 	public static function getFields() {
 		global $wgMemc;
 
-		$key    = wfMemcKey( 'articlefeedbackv5', 'getFields' );
+		$key = wfMemcKey( 'articlefeedbackv5', 'getFields' );
 		$cached = $wgMemc->get( $key );
 
-		if( $cached != '' ) {
+		if ( $cached != '' ) {
 			return $cached;
 		} else {
-			$rv   = array();
-			$dbr  = wfGetDB( DB_SLAVE );
+			$rv = array();
+			$dbr = wfGetDB( DB_SLAVE );
 			$rows = $dbr->select(
 				'aft_article_field',
-				array( 
-					'afi_name', 
-					'afi_id', 
-					'afi_data_type', 
-					'afi_bucket_id' 
+				array(
+					'afi_name',
+					'afi_id',
+					'afi_data_type',
+					'afi_bucket_id'
 				),
-				null, 
+				null,
 				__METHOD__
 			);
 
-			foreach( $rows as $row ) {
+			foreach ( $rows as $row ) {
 				$rv[] = array(
-					'afi_name'      => $row->afi_name,
-					'afi_id'        => $row->afi_id, 
-					'afi_data_type' => $row->afi_data_type, 
-					'afi_bucket_id' => $row->afi_bucket_id 
+					'afi_name' => $row->afi_name,
+					'afi_id' => $row->afi_id,
+					'afi_data_type' => $row->afi_data_type,
+					'afi_bucket_id' => $row->afi_bucket_id
 				);
 			}
 
@@ -112,7 +112,7 @@ class ApiArticleFeedbackv5Utils {
 	/**
 	 * Gets the known feedback options
 	 *
-	 * Pulls all the rows in the aft_article_field_option table, then 
+	 * Pulls all the rows in the aft_article_field_option table, then
 	 * arranges them like so:
 	 *   {field id} => array(
 	 *       {option id} => {option name},
@@ -121,32 +121,32 @@ class ApiArticleFeedbackv5Utils {
 	 * @return array the rows in the aft_article_field_option table
 	 */
 	public static function getOptions() {
-                global $wgMemc;
+		global $wgMemc;
 
-                $key    = wfMemcKey( 'articlefeedbackv5', 'getOptions' );
-                $cached = $wgMemc->get( $key );
+		$key = wfMemcKey( 'articlefeedbackv5', 'getOptions' );
+		$cached = $wgMemc->get( $key );
 
-                if( $cached != '' ) {
-                        return $cached;
-                } else {
-			$rv   = array();
-			$dbr  = wfGetDB( DB_SLAVE );
+		if ( $cached != '' ) {
+			return $cached;
+		} else {
+			$rv = array();
+			$dbr = wfGetDB( DB_SLAVE );
 			$rows = $dbr->select(
 				'aft_article_field_option',
-				array( 
-					'afo_option_id', 
-					'afo_field_id', 
-					'afo_name' 
+				array(
+					'afo_option_id',
+					'afo_field_id',
+					'afo_name'
 				),
-				null, 
+				null,
 				__METHOD__
 			);
 			foreach ( $rows as $row ) {
 				$rv[$row->afo_field_id][$row->afo_option_id] = $row->afo_name;
 			}
-                        // An hour? That might be reasonable for a cache time.
-                        $wgMemc->set( $key, $rv, 60 * 60 );
-                }
+			// An hour? That might be reasonable for a cache time.
+			$wgMemc->set( $key, $rv, 60 * 60 );
+		}
 		return $rv;
 	}
 }

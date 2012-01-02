@@ -15,12 +15,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		$ratings = $this->fetchOverallRating( $pageId );
-		$found   = isset( $ratings['found'] )  ? $ratings['found']  : null;
-		$rating  = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
+		$found = isset( $ratings['found'] ) ? $ratings['found'] : null;
+		$rating = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
 
 		$out->setPagetitle( "Feedback for $title" );
 
-		if( !$pageId ) {
+		if ( !$pageId ) {
 			$out->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
 		} else {
 			$out->addHTML(
@@ -28,33 +28,33 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					Title::newFromText( $param ),
 					$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
 				)
-				.' | '.
-				Linker::link(
-					Title::newFromText( $param ),
-					$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
-				)
-				.' | '.
-				Linker::link(
-					Title::newFromText( $param ),
-					$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
-				)
+					. ' | ' .
+					Linker::link(
+						Title::newFromText( $param ),
+						$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
+					)
+					. ' | ' .
+					Linker::link(
+						Title::newFromText( $param ),
+						$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
+					)
 			);
 		}
 
-		if( $found ) {
+		if ( $found ) {
 			$out->addWikiMsg( 'articlefeedbackv5-percent-found', $found );
 		}
 
-		if( $rating ) {
-			$out->addWikiMsg( 'articlefeedbackv5-overall-rating', $rating);
+		if ( $rating ) {
+			$out->addWikiMsg( 'articlefeedbackv5-overall-rating', $rating );
 		}
 
 		$out->addWikiMsg( 'articlefeedbackv5-special-title' );
 
 		$showing = $this->msg(
 			'articlefeedbackv5-special-showing',
-			Html::element( 'span', array( 'id' => 'aft-feedback-count-shown' ), '0'),
-			Html::element( 'span', array( 'id' => 'aft-feedback-count-total' ), '0')
+			Html::element( 'span', array( 'id' => 'aft-feedback-count-shown' ), '0' ),
+			Html::element( 'span', array( 'id' => 'aft-feedback-count-total' ), '0' )
 		);
 
 		$out->addJsConfigVars( 'afPageId', $pageId );
@@ -62,29 +62,37 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		$filterSelect = new XmlSelect( false, 'aft5-filter' );
 		$filterSelect->addOptions( $this->selectMsg( array(
-			'articlefeedbackv5-special-filter-visible' => 'visible',
-			'articlefeedbackv5-special-filter-invisible' => 'invisible',
-			'articlefeedbackv5-special-filter-all' => 'all',
-		) ) );
+					'articlefeedbackv5-special-filter-visible' => 'visible',
+					'articlefeedbackv5-special-filter-invisible' => 'invisible',
+					'articlefeedbackv5-special-filter-all' => 'all',
+				)
+			)
+		);
 
 		$sortSelect = new XmlSelect( false, 'aft5-sort' );
 		$sortSelect->addOptions( $this->selectMsg( array(
-			'articlefeedbackv5-special-sort-newest' => 'newest',
-			'articlefeedbackv5-special-sort-oldest' => 'oldest',
-		) ) );
+					'articlefeedbackv5-special-sort-newest' => 'newest',
+					'articlefeedbackv5-special-sort-oldest' => 'oldest',
+				)
+			)
+		);
 
-		$out->addHTML($this->msg('articlefeedbackv5-special-filter-label-before')->escaped()
-			. $filterSelect->getHTML()
-			. $this->msg('articlefeedbackv5-special-filter-label-after')->escaped()
-			. ' | '
-			. $this->msg('articlefeedbackv5-special-sort-label-before')->escaped()
-			. $sortSelect->getHTML()
-			. $this->msg('articlefeedbackv5-special-sort-label-after')->escaped()
-			. Html::element( 'span', array( 'id' => 'aft-showing' ), $showing )
-			. Html::element( 'div', array( 'id' => 'aft5-show-feedback',
-					'style' => 'border:1px solid red;' ), '' )
-			. Html::element( 'a', array( 'href' => '#', 'id' => 'aft5-show-more' ),
-					$this->msg( 'articlefeedbackv5-special-more' )->escaped() )
+		$out->addHTML( $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
+				. $filterSelect->getHTML()
+				. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
+				. ' | '
+				. $this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
+				. $sortSelect->getHTML()
+				. $this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
+				. Html::element( 'span', array( 'id' => 'aft-showing' ), $showing )
+				. Html::element( 'div', array(
+						'id' => 'aft5-show-feedback',
+						'style' => 'border:1px solid red;'
+					), ''
+				)
+				. Html::element( 'a', array( 'href' => '#', 'id' => 'aft5-show-more' ),
+					$this->msg( 'articlefeedbackv5-special-more' )->escaped()
+				)
 		);
 	}
 
@@ -105,28 +113,28 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	}
 
 	private function fetchOverallRating( $pageId ) {
-		$rv   = array();
-		$dbr  = wfGetDB( DB_SLAVE );
+		$rv = array();
+		$dbr = wfGetDB( DB_SLAVE );
 		$rows = $dbr->select(
-			array( 
+			array(
 				'aft_article_feedback_ratings_rollup',
-				'aft_article_field' 
+				'aft_article_field'
 			),
-			array( 
+			array(
 				'arr_total / arr_count AS rating',
 				'afi_name'
 			),
-			array( 
+			array(
 				'arr_page_id' => $pageId,
 				'arr_field_id = afi_id',
 				"afi_name IN ('found', 'rating')"
 			)
 		);
 
-		foreach( $rows as $row ) {
-			if( $row->afi_name == 'found' ) {
-				$rv['found']  = ( int ) ( 100 * $row->rating );
-			} elseif( $row->afi_name == 'rating' ) {
+		foreach ( $rows as $row ) {
+			if ( $row->afi_name == 'found' ) {
+				$rv['found'] = ( int ) ( 100 * $row->rating );
+			} elseif ( $row->afi_name == 'rating' ) {
 				$rv['rating'] = ( int ) $row->rating;
 			}
 		}
