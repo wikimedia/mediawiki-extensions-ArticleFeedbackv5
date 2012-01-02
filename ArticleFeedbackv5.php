@@ -150,14 +150,14 @@ $wgArticleFeedbackv5LinkBuckets = array(
  * external link using wikitext, so this must be a full URL.
  * @var string
  */
-$wgArticleFeedbackv5DashboardTalkPage = "http://www.mediawiki.org/wiki/Talk:Article_feedback";
+$wgArticleFeedbackv5DashboardTalkPage = "//www.mediawiki.org/wiki/Talk:Article_feedback";
 
 /**
  * The full URL for the "Learn to Edit" link
  *
  * @var string
  */
-$wgArticleFeedbackv5LearnToEdit = "http://en.wikipedia.org/wiki/Wikipedia:Tutorial";
+$wgArticleFeedbackv5LearnToEdit = "//en.wikipedia.org/wiki/Wikipedia:Tutorial";
 
 // Would ordinarily call this articlefeedback but survey names are 16 chars max
 $wgPrefSwitchSurveys['articlerating'] = array(
@@ -216,7 +216,7 @@ $wgExtensionCredits['other'][] = array(
 	),
 	'version' => '0.0.1',
 	'descriptionmsg' => 'articlefeedbackv5-desc',
-	'url' => 'https://www.mediawiki.org/wiki/Extension:ArticleFeedbackv5'
+	'url' => '//www.mediawiki.org/wiki/Extension:ArticleFeedbackv5'
 );
 
 // Autoloading
