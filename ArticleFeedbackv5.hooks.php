@@ -323,7 +323,7 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function trackEditAttempt( $editpage ) {
-		self::trackEvent( 'edit_attempt', $editpage->getArticle()->getTitle() ); // EditPage::getTitle() doesn't exist in 1.18wmf1
+		self::trackEvent( 'edit_attempt', $editpage->getArticle()->getTitle(), $editpage->getArticle()->getContext() ); // EditPage::getTitle() doesn't exist in 1.18wmf1
 		return true;
 	}
 
@@ -347,7 +347,7 @@ class ArticleFeedbackv5Hooks {
 	public static function trackEditSuccess( &$article, &$user, $text,
 			$summary, $minoredit, $watchthis, $sectionanchor, &$flags,
 			$revision, &$status, $baseRevId /*, &$redirect */ ) { // $redirect not passed in 1.18wmf1
-		self::trackEvent( 'edit_success', $article->getTitle() );
+		self::trackEvent( 'edit_success', $article->getTitle(), $article->getContext() );
 		return true;
 	}
 
@@ -355,23 +355,26 @@ class ArticleFeedbackv5Hooks {
 	 * Internal use: Tracks an event
 	 *
 	 * @param $event string the event name
-	 * @param $title Title
+	 * @param $context IContextSource
 	 * @return
 	 */
-	private static function trackEvent( $event, $title ) {
-		global $wgRequest, $wgArticleFeedbackv5Tracking;
+	private static function trackEvent( $event, $title, IContextSource $context ) {
+		global $wgArticleFeedbackv5Tracking;
 		$ctas = array( 'none', 'edit', 'learn_more' );
 
-		$tracking = $wgRequest->getVal( 'articleFeedbackv5_click_tracking' );
+		$request = $context->getRequest();
+		$title = $context->getTitle();
+
+		$tracking = $request->getVal( 'articleFeedbackv5_click_tracking' );
 		if ( !$tracking ) {
 			return;
 		}
 
 		$version  = $wgArticleFeedbackv5Tracking['version'];
-		$bucketId = $wgRequest->getVal( 'articleFeedbackv5_bucket_id' );
-		$ctaId    = $wgRequest->getVal( 'articleFeedbackv5_cta_id' );
-		$location = $wgRequest->getVal( 'articleFeedbackv5_location' );
-		$token    = $wgRequest->getVal( 'articleFeedbackv5_ct_token' );
+		$bucketId = $request->getVal( 'articleFeedbackv5_bucket_id' );
+		$ctaId    = $request->getVal( 'articleFeedbackv5_cta_id' );
+		$location = $request->getVal( 'articleFeedbackv5_location' );
+		$token    = $request->getVal( 'articleFeedbackv5_ct_token' );
 
 		$trackingId = 'ext.articleFeedbackv5@' . $version
 			. '-option' . $bucketId
