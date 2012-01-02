@@ -323,7 +323,7 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function trackEditAttempt( $editpage ) {
-		self::trackEvent( 'edit_attempt', $editpage->getArticle()->getTitle(), $editpage->getArticle()->getContext() ); // EditPage::getTitle() doesn't exist in 1.18wmf1
+		self::trackEvent( 'edit_attempt', $editpage->getArticle()->getTitle() ); // EditPage::getTitle() doesn't exist in 1.18wmf1
 		return true;
 	}
 
@@ -331,7 +331,7 @@ class ArticleFeedbackv5Hooks {
 	 * Tracks successful edits
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/ArticleSaveComplete
-	 * @param $article Article
+	 * @param $article WikiPage
 	 * @param $user
 	 * @param $text
 	 * @param $summary
@@ -347,7 +347,7 @@ class ArticleFeedbackv5Hooks {
 	public static function trackEditSuccess( &$article, &$user, $text,
 			$summary, $minoredit, $watchthis, $sectionanchor, &$flags,
 			$revision, &$status, $baseRevId /*, &$redirect */ ) { // $redirect not passed in 1.18wmf1
-		self::trackEvent( 'edit_success', $article->getTitle(), $article->getContext() );
+		self::trackEvent( 'edit_success', $article->getTitle() );
 		return true;
 	}
 
@@ -358,12 +358,11 @@ class ArticleFeedbackv5Hooks {
 	 * @param $context IContextSource
 	 * @return
 	 */
-	private static function trackEvent( $event, $title, IContextSource $context ) {
+	private static function trackEvent( $event, $title ) {
 		global $wgArticleFeedbackv5Tracking;
 		$ctas = array( 'none', 'edit', 'learn_more' );
 
-		$request = $context->getRequest();
-		$title = $context->getTitle();
+		$request = RequestContext::getMain()->getRequest();
 
 		$tracking = $request->getVal( 'articleFeedbackv5_click_tracking' );
 		if ( !$tracking ) {
