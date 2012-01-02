@@ -8,6 +8,11 @@
 
 class ArticleFeedbackv5Hooks {
 
+	/**
+	 * Resource loader modules
+	 *
+	 * @var array
+	 */
 	protected static $modules = array(
 		'ext.articleFeedbackv5.startup' => array(
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js',
@@ -181,6 +186,8 @@ class ArticleFeedbackv5Hooks {
 
 	/**
 	 * BeforePageDisplay hook
+	 * @param $out OutputPage
+	 * @return bool
 	 */
 	public static function beforePageDisplay( $out ) {
 		$out->addModules( 'ext.articleFeedbackv5.startup' );
@@ -189,6 +196,8 @@ class ArticleFeedbackv5Hooks {
 
 	/**
 	 * ResourceLoaderRegisterModules hook
+	 * @param $resourceLoader ResourceLoader
+	 * @return bool
 	 */
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
 		global $wgExtensionAssetsPath,
@@ -228,6 +237,8 @@ class ArticleFeedbackv5Hooks {
 
 	/**
 	 * ResourceLoaderGetConfigVars hook
+	 * @param $vars array
+	 * @return bool
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
 		global $wgArticleFeedbackv5SMaxage,
@@ -265,6 +276,7 @@ class ArticleFeedbackv5Hooks {
 	 * Add the preference in the user preferences with the GetPreferences hook.
 	 * @param $user User
 	 * @param $preferences
+	 * @return bool
 	 */
 	public static function getPreferences( $user, &$preferences ) {
 		// need to check for existing key, if deployed simultaneously with AFTv4
@@ -282,15 +294,17 @@ class ArticleFeedbackv5Hooks {
 	 * Pushes the tracking fields into the edit page
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/EditPage::showEditForm:fields
+	 * @param $editPage EditPage
+	 * @param $output OutputPage
+	 * @return bool
 	 */
 	public static function pushTrackingFieldsToEdit( $editPage, $output ) {
-		global $wgRequest;
-
-		$tracking = $wgRequest->getVal( 'articleFeedbackv5_click_tracking' );
-		$bucketId = $wgRequest->getVal( 'articleFeedbackv5_bucket_id' );
-		$ctaId    = $wgRequest->getVal( 'articleFeedbackv5_cta_id' );
-		$location = $wgRequest->getVal( 'articleFeedbackv5_location' );
-		$token    = $wgRequest->getVal( 'articleFeedbackv5_ct_token' );
+		$request = $output->getRequest();
+		$tracking = $request->getVal( 'articleFeedbackv5_click_tracking' );
+		$bucketId = $request->getVal( 'articleFeedbackv5_bucket_id' );
+		$ctaId    = $request->getVal( 'articleFeedbackv5_cta_id' );
+		$location = $request->getVal( 'articleFeedbackv5_location' );
+		$token    = $request->getVal( 'articleFeedbackv5_ct_token' );
 
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_click_tracking', $tracking );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_bucket_id', $bucketId );
@@ -305,6 +319,8 @@ class ArticleFeedbackv5Hooks {
 	 * Tracks edit attempts
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/EditPage::attemptSave
+	 * @param $editpage EditPage
+	 * @return bool
 	 */
 	public static function trackEditAttempt( $editpage ) {
 		self::trackEvent( 'edit_attempt', $editpage->getArticle()->getTitle() ); // EditPage::getTitle() doesn't exist in 1.18wmf1
@@ -315,6 +331,18 @@ class ArticleFeedbackv5Hooks {
 	 * Tracks successful edits
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/ArticleSaveComplete
+	 * @param $article Article
+	 * @param $user
+	 * @param $text
+	 * @param $summary
+	 * @param $minoredit
+	 * @param $watchthis
+	 * @param $sectionanchor
+	 * @param $flags
+	 * @param $revision
+	 * @param $status
+	 * @param $baseRevId
+	 * @return bool
 	 */
 	public static function trackEditSuccess( &$article, &$user, $text,
 			$summary, $minoredit, $watchthis, $sectionanchor, &$flags,
@@ -327,6 +355,8 @@ class ArticleFeedbackv5Hooks {
 	 * Internal use: Tracks an event
 	 *
 	 * @param $event string the event name
+	 * @param $title Title
+	 * @return
 	 */
 	private static function trackEvent( $event, $title ) {
 		global $wgRequest, $wgArticleFeedbackv5Tracking;
