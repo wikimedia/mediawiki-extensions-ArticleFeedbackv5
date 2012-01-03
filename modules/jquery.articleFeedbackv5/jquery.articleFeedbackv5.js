@@ -105,16 +105,12 @@
 
 	/**
 	 * The link ID indicates where the user clicked (or not) to get to the
-	 * feedback form.  Options are:
-	 *  0: No link; user scrolled to the bottom of the page
-	 *  1: Section bars
-	 *  2: Title bar
-	 *  3: Vertical button
-	 *  4: Toolbox (bottom of left nav)
+	 * feedback form.  Options are "-" or A-H
 	 *
-	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Placement
+	 * @see $wgArticleFeedbackv5LinkBuckets
+	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_links_on_article_pages
 	 */
-	$.articleFeedbackv5.linkId = '0';
+	$.articleFeedbackv5.linkId = '-';
 
 	/**
 	 * Use the mediawiki util resource's config method to find the correct url to
@@ -2828,10 +2824,7 @@
 	 * @param int linkId the link ID
 	 */
 	$.articleFeedbackv5.setLinkId = function ( linkId ) {
-		var knownLinks = { '0': true, '1': true, '2': true, '3': true, '4': true };
-		if ( linkId in knownLinks ) {
-			$.articleFeedbackv5.linkId = linkId + '';
-		}
+		$.articleFeedbackv5.linkId = linkId;
 	};
 
 	// }}}

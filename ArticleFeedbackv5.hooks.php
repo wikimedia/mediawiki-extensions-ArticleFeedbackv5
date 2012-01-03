@@ -24,9 +24,10 @@ class ArticleFeedbackv5Hooks {
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.js',
 			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.css',
 			'messages' => array(
-				'articlefeedbackv5-section-linktext',
+				'articlefeedbackv5-sitesub-linktext',
 				'articlefeedbackv5-titlebar-linktext',
 				'articlefeedbackv5-fixedtab-linktext',
+				'articlefeedbackv5-section-linktext',
 				'articlefeedbackv5-toolbox-linktext',
 				'articlefeedbackv5-bucket5-toolbox-linktext',
 			),

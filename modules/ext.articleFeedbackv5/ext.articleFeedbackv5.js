@@ -20,10 +20,11 @@ if ( $( '#catlinks' ).length && $.inArray( mw.config.get( 'skin' ), legacyskins 
 
 // Info about each of the links
 var linkInfo = {
-	'1': { trackId: 'section-link' },
-	'2': { trackId: 'titlebar-link' },
-	'3': { trackId: 'vertical-link' },
-	'4': { trackId: 'toolbox-link' }
+	'A':   { trackId: 'sitesub-link' },
+	'B':   { trackId: 'titlebar-link' },
+	'C':   { trackId: 'vertical-link' },
+	'H':   { trackId: 'section-link' },
+	'tbx': { trackId: 'toolbox-link' }
 };
 
 // Click event
@@ -37,64 +38,79 @@ var clickFeedbackLink = function ( $link ) {
 // Bucketing
 var linkBucket = function () {
 	// Find out which link bucket they go in:
-	// 1. Display buckets 0 or 5?  Always zero.
+	// 1. Display buckets 0 or 5?  Always no link.
 	// 2. Requested in query string (debug only)
 	// 3. Random bucketing
 	var displayBucket = $aftDiv.articleFeedbackv5( 'getBucketId' );
 	if ( '5' == displayBucket || '0' == displayBucket ) {
-		return '0';
+		return '-';
 	}
-	var knownBuckets = { '0': true, '1': true, '2': true, '3': true };
-	var requested = mw.util.getParamValue( 'aft_link' );
+	var cfg = mw.config.get( 'wgArticleFeedbackv5LinkBuckets' );
+	if ( !( 'buckets' in cfg ) ) {
+		return '-';
+	}
+	var knownBuckets = cfg.buckets;
+	var requested = mw.util.getParamValue( 'aftv5_link' );
 	if ( $aftDiv.articleFeedbackv5( 'inDebug' ) && requested in knownBuckets ) {
 		return requested;
-	} else {
-		var bucketName = mw.user.bucket( 'ext.articleFeedbackv5-links',
-			mw.config.get( 'wgArticleFeedbackv5LinkBuckets' )
-		);
-		var nameMap = { '-': '0', 'A': '1', 'B': '2', 'C': '3' };
-		aft5_debug('Links option: ' + bucketName + ' - ' + nameMap[bucketName]);
-		return nameMap[bucketName];
 	}
+	return mw.user.bucket( 'ext.articleFeedbackv5-links', cfg );
 }();
 if ( $aftDiv.articleFeedbackv5( 'inDebug' ) ) {
-	aft5_debug( 'Using link option #' + linkBucket );
+	aft5_debug( 'Using link option ' + linkBucket );
 }
 
 /*** REMOVING FEEDBACK LINK FOR 1.0 PER ERIK's REQUEST ***/
-/*** TO RESTORE FUNCTIONALITY REMOVE THE FOLLOWING LINE ***/
-linkBucket = '0';
-
-/* Add section links */
-if ( '1' == linkBucket ) {
-	var $wrp = $( '<span class="articleFeedbackv5-sectionlink-wrap"></span>' )
-		.html( '&nbsp;[<a href="#mw-articlefeedbackv5" class="articleFeedbackv5-sectionlink"></a>]' );
-	$wrp.find( 'a.articleFeedbackv5-sectionlink' )
-		.data( 'linkId', 1 )
-		.text( mw.msg( 'articlefeedbackv5-section-linktext' ) )
-		.click( function ( e ) {
-			e.preventDefault();
-			clickFeedbackLink( $( e.target ) );
-		} );
-	$( 'span.editsection' ).append( $wrp );
-	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $wrp );
+/*** TO RESTORE FUNCTIONALITY REMOVE THE FOLLOWING LINES ***/
+if ( $aftDiv.articleFeedbackv5( 'inDebug' ) && mw.util.getParamValue( 'aftv5_show_link' ) == 'true' ) {
+	// Allow feedback link
+} else {
+	// Always turn off
+	linkBucket = '-';
 }
 
-/* Add titlebar link */
-if ( '2' == linkBucket ) {
-	var $tlk = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-titlebarlink"></a>' )
-		.data( 'linkId', 2 )
-		.text( mw.msg( 'articlefeedbackv5-titlebar-linktext' ) )
+// A: After the site tagline (below the article title)
+if ( 'A' == linkBucket ) {
+	var $sub = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-sitesublink"></a>' )
+		.data( 'linkId', 'A' )
+		.text( mw.msg( 'articlefeedbackv5-sitesub-linktext' ) )
 		.click( function ( e ) {
 			e.preventDefault();
 			clickFeedbackLink( $( e.target ) );
 		} )
-		.insertBefore( $aftDiv );
+	// The link is going to be at different markup locations on different skins,
+	// and it needs to show up if the site subhead (e.g., "From Wikipedia, the free
+	// encyclopedia") is not visible for any reason.
+	if ( $( '#siteSub' ).filter( ':visible' ).length ) {
+		$( '#siteSub' ).append( ' ' ).append( $sub );
+	} else if ( $( 'h1.pagetitle + p.subtitle' ).filter( ':visible' ).length ) {
+		$( 'h1.pagetitle + p.subtitle' ).append( ' ' ).append( $sub );
+	} else if ( $( '#mw_contentholder .mw-topboxes' ).length ) {
+		$( '#mw_contentholder .mw-topboxes' ).after( $sub );
+	} else if ( $( '#bodyContent' ).length ) {
+		$( '#bodyContent' ).prepend( $sub );
+	}
+	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $sub );
+}
+
+// B: Below the titlebar on the right
+if ( 'B' == linkBucket ) {
+	var $tlk = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-titlebarlink"></a>' )
+		.data( 'linkId', 'B' )
+		.text( mw.msg( 'articlefeedbackv5-titlebar-linktext' ) )
+		.click( function ( e ) {
+			e.preventDefault();
+			clickFeedbackLink( $( e.target ) );
+		} );
+	if ( $( '#coordinates' ).length ) {
+		$tlk.css( 'margin-top: 2.5em' );
+	}
+	$tlk.insertBefore( $aftDiv );
 	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $tlk );
 }
 
-/* Add fixed tab link */
-if( '3' == linkBucket ) {
+// C: Button fixed to right side
+if ( 'C' == linkBucket ) {
 	var $fixedTab = $( '\
 		<div id="articleFeedbackv5-fixedtab">\
 			<div id="articleFeedbackv5-fixedtabbox">\
@@ -102,7 +118,7 @@ if( '3' == linkBucket ) {
 			</div>\
 		</div>' );
 	$fixedTab.find( '#articleFeedbackv5-fixedtablink' )
-		.data( 'linkId', 3 )
+		.data( 'linkId', 'C' )
 		.attr( 'title', mw.msg( 'articlefeedbackv5-fixedtab-linktext' ) )
 		.click( function( e ) {
 			e.preventDefault();
@@ -115,19 +131,47 @@ if( '3' == linkBucket ) {
 	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $fixedTab );
 }
 
-/* Add toolbox link */
+// D: Button fixed to bottom right
+// NOT IMPLEMENTED
+
+// E: Button fixed to bottom center
+// NOT IMPLEMENTED
+
+// F: Button fixed to left side
+// NOT IMPLEMENTED
+
+// G: Button below logo
+// NOT IMPLEMENTED
+
+// H: Link on each section bar
+if ( 'H' == linkBucket ) {
+	var $wrp = $( '<span class="articleFeedbackv5-sectionlink-wrap"></span>' )
+		.html( '&nbsp;[<a href="#mw-articlefeedbackv5" class="articleFeedbackv5-sectionlink"></a>]' );
+	$wrp.find( 'a.articleFeedbackv5-sectionlink' )
+		.data( 'linkId', 'H' )
+		.text( mw.msg( 'articlefeedbackv5-section-linktext' ) )
+		.click( function ( e ) {
+			e.preventDefault();
+			clickFeedbackLink( $( e.target ) );
+		} );
+	$( 'span.editsection' ).append( $wrp );
+	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $wrp );
+}
+
+// Add toolbox link
 if ( '5' == $aftDiv.articleFeedbackv5( 'getBucketId' ) ) {
 	var $tbx = $( '<li id="t-articlefeedbackv5"><a href="#mw-articlefeedbackv5"></a></li>' )
 		.find( 'a' )
 			.text( mw.msg( 'articlefeedbackv5-bucket5-toolbox-linktext' ) )
 			.click( function ( e ) {
 				// Just set the link ID -- this should act just like AFTv4
-				$aftDiv.articleFeedbackv5( 'setLinkId', 4 );
+				$aftDiv.articleFeedbackv5( 'setLinkId', 'tbx' );
 			} )
 		.end();
 	$( '#p-tb' ).find( 'ul' ).append( $tbx );
 } else {
 	var $tbx = $( '<li id="t-articlefeedbackv5"><a href="#mw-articlefeedbackv5"></a></li>' )
+		.data( 'linkId', 'tbx' )
 		.find( 'a' )
 			.text( mw.msg( 'articlefeedbackv5-toolbox-linktext' ) )
 			.click( function ( e ) {

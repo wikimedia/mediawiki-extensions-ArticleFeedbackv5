@@ -119,14 +119,24 @@ $wgArticleFeedbackv5Options = array(
 $wgArticleFeedbackv5LinkBuckets = array(
 	// Users can fall into one of several buckets for links.  These are:
 	//  -: No link; user must scroll to the bottom of the page
-	//  A: Section bars
-	//  B: Title bar
-	//  C: Vertical button (fixed tab)
+	//  A: After the site tagline (below the article title)
+	//  B: Below the titlebar on the right
+	//  C: Button fixed to right side
+	//  D: Button fixed to bottom right
+	//  E: Button fixed to bottom center
+	//  F: Button fixed to left side
+	//  G: Button below logo
+	//  H: Link on each section bar
 	'buckets' => array(
-		'-' => 0,
-		'A' => 0,
+		'-' => 34,
+		'A' => 33,
 		'B' => 0,
-		'C' => 100,
+		'C' => 0,
+		'D' => 33,
+		'E' => 0,
+		'F' => 0,
+		'G' => 0,
+		'H' => 0,
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump

@@ -185,9 +185,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-transparency-terms' => 'By posting, you agree to transparency under these $1.',
 	'articlefeedbackv5-transparency-terms-linktext' => 'terms',
 	'articlefeedbackv5-transparency-terms-url' => '//wikimediafoundation.org/wiki/Feedback_privacy_statement',
-	'articlefeedbackv5-section-linktext' => 'feedback',
+	'articlefeedbackv5-sitesub-linktext' => 'Improve this page',
 	'articlefeedbackv5-titlebar-linktext' => 'Help improve this page >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Improve this page',
+	'articlefeedbackv5-section-linktext' => 'feedback',
 	'articlefeedbackv5-toolbox-linktext' => 'Improve this page',
 
 	/* --- copied from AFTv4 and possibly not used --- */
@@ -373,10 +374,11 @@ $1 is an integer, and the rating count.",
 	'articlefeedbackv5-transparency-terms' => "This is the bottom line of the small text that goes beside the submit button and tells the user about the terms they're agreeing to by posting a comment.  $1 will hold the link to the terms page, with the text from {{msg-mw|Articlefeedbackv5-transparency-terms-linktext}}",
 	'articlefeedbackv5-transparency-terms-linktext' => 'The text for the terms link (see {{msg-mw|articlefeedbackv5-transparency-terms}})',
 	'articlefeedbackv5-transparency-terms-url' => 'The URL for the terms (can be translated; defaults to Project:Privacy_policy; Do not translate "Project:")',
-	'articlefeedbackv5-section-linktext' => 'When a link to pop up the feedback tool appears on the article section headers, next to [edit], this will be the text inside the brackets immediately following (e.g. "[edit] [feedback]").
-{{Identical|Feedback}}',
+	'articlefeedbackv5-sitesub-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far left, this will be the link text.',
 	'articlefeedbackv5-titlebar-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far right, this will be the link text.',
 	'articlefeedbackv5-fixedtab-linktext' => 'When a link to pop up the feedback tool appears as a fixed-positioned tab, this will be the link text',
+	'articlefeedbackv5-section-linktext' => 'When a link to pop up the feedback tool appears on the article section headers, next to [edit], this will be the text inside the brackets immediately following (e.g. "[edit] [feedback]").
+{{Identical|Feedback}}',
 	'articlefeedbackv5-toolbox-linktext' => 'When a link to pop up the feedback tool appears at the bottom of the toolbox area in the sidebar, this will be the link text.',
 	'articlefeedbackv5-survey-question-whyrated' => 'This is a question in the survey with checkboxes for the answers. The user can check multiple answers.',
 	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',

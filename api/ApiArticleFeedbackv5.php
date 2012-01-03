@@ -442,11 +442,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @return int the feedback id
 	 */
 	public function newFeedback( $params ) {
-		global $wgUser;
+		global $wgUser, $wgArticleFeedbackv5LinkBuckets;
 		$dbw       = wfGetDB( DB_MASTER );
 		$revId     = $params['revid'];
 		$bucket    = $params['bucket'];
-		$link      = $params['link'];
+		$linkName  = $params['link'];
 		$token     = $this->getAnonToken( $params );
 		$timestamp = $dbw->timestamp();
 		$ip        = null;
@@ -465,7 +465,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$this->dieUsage( 'Page ID is missing or invalid', 'invalidpageid' );
 		}
 
-		# Fetch this if it wasn't passed in
+		// Fetch this if it wasn't passed in
 		if ( !$revId ) {
 			$title = Title::newFromID( $params['pageid'] );
 			if ( !$title ) {
@@ -473,6 +473,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			}
 			$revId = $title->getLatestRevID();
 		}
+
+		// Get the link ID
+		$links = array_flip( array_keys( $wgArticleFeedbackv5LinkBuckets['buckets'] ) );
+		$linkId = isset($links[$linkName]) ? $links[$linkName] : 0;
 
 		$dbw->insert( 'aft_article_feedback', array(
 			'af_page_id'         => $params['pageid'],
@@ -482,7 +486,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'af_user_ip'         => $ip,
 			'af_user_anon_token' => $token,
 			'af_bucket_id'       => $bucket,
-			'af_link_id'         => $link,
+			'af_link_id'         => $linkId,
 		) );
 
 		return $dbw->insertID();
@@ -513,10 +517,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		return $ctaId;
 	}
 
-        /**
-         * Inserts or updates properties for a specific rating
-         * @param $revisionId int    Revision ID
-         */
+	/**
+	 * Inserts or updates properties for a specific rating
+	 * @param $revisionId int    Revision ID
+	 */
 	private function saveUserProperties( $revisionId ) {
 		global $wgUser;
 		$dbw  = wfGetDB( DB_MASTER );
@@ -530,11 +534,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		// I'd really rather have this passed in, to save a query,
 		// and rule out consistency problems, but there doesn't seem
-		// to be a way to do 'RETUNING af_id' on the insert, or to 
+		// to be a way to do 'RETUNING af_id' on the insert, or to
 		// pre-increment the ID column (since it's a MySQL auto-
-		// increment, not a sequence) before the insert.  So, fetch 
+		// increment, not a sequence) before the insert.  So, fetch
 		// the most recent feedback ID for this user on this revision.
-		// This gets called imediately after saving, so it'll almost 
+		// This gets called imediately after saving, so it'll almost
 		// certainly be the right one.
 		$feedbackId = $dbr->selectField(
 			'aft_article_feedback',
@@ -557,7 +561,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'afp_value_int'   => ( integer ) $wgUser->getEditCount()
 		);
 
-		// Use the UserDailyContribs extension if it's present. Get 
+		// Use the UserDailyContribs extension if it's present. Get
 		// edit counts for last 6 months, last 3 months, and last month.
 		if ( function_exists( 'getUserEditCountSince' ) ) {
 			$now = time();
@@ -644,9 +648,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_MIN      => 0
 			),
 			'link' => array(
-				ApiBase::PARAM_TYPE     => 'integer',
+				ApiBase::PARAM_TYPE     => 'string',
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_MIN      => 0
 			),
 			'email' => array(
 				ApiBase::PARAM_TYPE     => 'string',
