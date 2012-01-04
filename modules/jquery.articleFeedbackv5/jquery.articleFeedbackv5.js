@@ -2029,6 +2029,10 @@
 		} );
 		// Keep track of links that must be removed after a successful submission
 		$.articleFeedbackv5.$toRemove = $( [] );
+		// Track init at 1%
+		if ( Math.random() * 100 < 1 ) {
+			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-init' );
+		}
 	};
 
 	// }}}
@@ -2459,8 +2463,7 @@
 		if ( $.articleFeedbackv5.inDialog ) {
 			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-impression-overlay' );
 		} else {
-			// Don't track bottom-of-the-page loads, at least for now
-			// $.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-impression-bottom' );
+			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-impression-bottom' );
 		}
 
 		$.articleFeedbackv5.nowShowing = 'form';
