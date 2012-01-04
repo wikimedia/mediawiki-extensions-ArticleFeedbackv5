@@ -128,11 +128,11 @@ $wgArticleFeedbackv5LinkBuckets = array(
 	//  G: Button below logo
 	//  H: Link on each section bar
 	'buckets' => array(
-		'-' => 34,
-		'A' => 33,
-		'B' => 0,
+		'-' => 25,
+		'A' => 25,
+		'B' => 25,
 		'C' => 0,
-		'D' => 33,
+		'D' => 25,
 		'E' => 0,
 		'F' => 0,
 		'G' => 0,

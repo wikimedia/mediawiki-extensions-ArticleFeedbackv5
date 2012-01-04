@@ -60,3 +60,31 @@
 	text-decoration: none;
 }
 
+.articleFeedbackv5-bottomrighttab {
+	position: fixed;
+	margin: 0;
+	right: 0;
+	bottom: 0;
+	height: 27px;
+	width: 141px;
+}
+.articleFeedbackv5-bottomrighttabbox {
+	position: relative;
+}
+.articleFeedbackv5-bottomrighttablink {
+	border: none;
+	color: #fff;
+	background-color: #5373a6;
+	min-width: 105px;
+	right: 0;
+	display: block;
+	margin: 0;
+	padding: 5px 10px;
+	text-align: center;
+	position: absolute;
+	z-index: 100000;
+}
+.articleFeedbackv5-bottomrighttablink:hover {
+	text-decoration: none;
+}
+

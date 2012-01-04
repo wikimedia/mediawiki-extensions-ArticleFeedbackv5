@@ -23,6 +23,7 @@ var linkInfo = {
 	'A':   { trackId: 'sitesub-link' },
 	'B':   { trackId: 'titlebar-link' },
 	'C':   { trackId: 'vertical-link' },
+	'D':   { trackId: 'bottomright-link' },
 	'H':   { trackId: 'section-link' },
 	'tbx': { trackId: 'toolbox-link' }
 };
@@ -132,7 +133,26 @@ if ( 'C' == linkBucket ) {
 }
 
 // D: Button fixed to bottom right
-// NOT IMPLEMENTED
+if ( 'D' == linkBucket ) {
+	var $bottomRightTab = $( '\
+		<div id="articleFeedbackv5-bottomrighttab">\
+			<div id="articleFeedbackv5-bottomrighttabbox">\
+				<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-bottomrighttablink"></a>\
+			</div>\
+		</div>' );
+	$bottomRightTab.find( '#articleFeedbackv5-bottomrighttablink' )
+		.data( 'linkId', 'D' )
+		.html( mw.msg( 'articlefeedbackv5-bottomrighttab-linktext' ) )
+		.click( function( e ) {
+			e.preventDefault();
+			clickFeedbackLink( $( e.target ) );
+		} );
+	$bottomRightTab.insertBefore( $aftDiv );
+	$bottomRightTab.addClass( 'articleFeedbackv5-bottomrighttab' );
+	$bottomRightTab.find( '#articleFeedbackv5-bottomrighttabbox' ).addClass( 'articleFeedbackv5-bottomrighttabbox' );
+	$bottomRightTab.find( '#articleFeedbackv5-bottomrighttablink' ).addClass( 'articleFeedbackv5-bottomrighttablink' );
+	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $bottomRightTab );
+}
 
 // E: Button fixed to bottom center
 // NOT IMPLEMENTED

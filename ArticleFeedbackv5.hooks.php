@@ -27,6 +27,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-sitesub-linktext',
 				'articlefeedbackv5-titlebar-linktext',
 				'articlefeedbackv5-fixedtab-linktext',
+				'articlefeedbackv5-bottomrighttab-linktext',
 				'articlefeedbackv5-section-linktext',
 				'articlefeedbackv5-toolbox-linktext',
 				'articlefeedbackv5-bucket5-toolbox-linktext',

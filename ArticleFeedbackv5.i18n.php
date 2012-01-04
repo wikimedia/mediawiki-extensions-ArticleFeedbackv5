@@ -188,6 +188,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-sitesub-linktext' => 'Improve this page',
 	'articlefeedbackv5-titlebar-linktext' => 'Help improve this page >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Improve this page',
+	'articlefeedbackv5-bottomrighttab-linktext' => 'Improve this page',
 	'articlefeedbackv5-section-linktext' => 'feedback',
 	'articlefeedbackv5-toolbox-linktext' => 'Improve this page',
 
@@ -377,6 +378,7 @@ $1 is an integer, and the rating count.",
 	'articlefeedbackv5-sitesub-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far left, this will be the link text.',
 	'articlefeedbackv5-titlebar-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far right, this will be the link text.',
 	'articlefeedbackv5-fixedtab-linktext' => 'When a link to pop up the feedback tool appears as a fixed-positioned tab, this will be the link text',
+	'articlefeedbackv5-bottomrighttab-linktext' => 'When a link to pop up the feedback tool appears as a fixed-positioned tab at the bottom right, this will be the link text',
 	'articlefeedbackv5-section-linktext' => 'When a link to pop up the feedback tool appears on the article section headers, next to [edit], this will be the text inside the brackets immediately following (e.g. "[edit] [feedback]").
 {{Identical|Feedback}}',
 	'articlefeedbackv5-toolbox-linktext' => 'When a link to pop up the feedback tool appears at the bottom of the toolbox area in the sidebar, this will be the link text.',
