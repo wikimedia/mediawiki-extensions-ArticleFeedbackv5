@@ -45,7 +45,7 @@ $wgArticleFeedbackv5LotteryOdds = 0;
 // own bucket by passing it in the url (e.g., ?bucket=1), and the showstopper
 // error mode will have a useful error message, if one exists, rather than the
 // default message.
-$wgArticleFeedbackv5Debug = true;
+$wgArticleFeedbackv5Debug = false;
 
 // The rating categories for bucket 5 -- these MUST match the field names in the database.
 $wgArticleFeedbackv5Bucket5RatingCategories = array( 'trustworthy', 'objective', 'complete', 'wellwritten' );
