@@ -2655,9 +2655,9 @@
 		$.articleFeedbackv5.setDialogDimensions();
 
 		// Track the event
-			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-' +
-				$.articleFeedbackv5.ctaName() + '-impression-' +
-				( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-' +
+			$.articleFeedbackv5.ctaName() + '-impression-' +
+			( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 
 		$.articleFeedbackv5.nowShowing = 'cta';
 	};
@@ -2933,7 +2933,7 @@
 		var w = $.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).width();
 		var h = $.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).height();
 		$.articleFeedbackv5.$dialog.dialog( 'option', 'width', w + 25 );
-		$.articleFeedbackv5.$dialog.dialog( 'option', 'height', h + 70 );
+		$.articleFeedbackv5.$dialog.dialog( 'option', 'height', h + 85 );
 	};
 
 	// }}}
