@@ -18,20 +18,11 @@ if ( $( '#catlinks' ).length && $.inArray( mw.config.get( 'skin' ), legacyskins 
 
 /* Setup for feedback links */
 
-// Info about each of the links
-var linkInfo = {
-	'A':   { trackId: 'sitesub-link' },
-	'B':   { trackId: 'titlebar-link' },
-	'C':   { trackId: 'vertical-link' },
-	'D':   { trackId: 'bottomright-link' },
-	'H':   { trackId: 'section-link' },
-	'tbx': { trackId: 'toolbox-link' }
-};
-
 // Click event
 var clickFeedbackLink = function ( $link ) {
 	var tracking_id = $aftDiv.articleFeedbackv5( 'bucketName' ) +
-		linkInfo[ $link.data( 'linkId' ) ].trackId;
+		'-trigger' + $link.data( 'linkId' ) +
+		'-click-overlay';
 	$aftDiv.articleFeedbackv5( 'trackClick', tracking_id );
 	$aftDiv.articleFeedbackv5( 'openAsModal', $link );
 };
@@ -185,15 +176,15 @@ if ( '5' == $aftDiv.articleFeedbackv5( 'getBucketId' ) ) {
 			.text( mw.msg( 'articlefeedbackv5-bucket5-toolbox-linktext' ) )
 			.click( function ( e ) {
 				// Just set the link ID -- this should act just like AFTv4
-				$aftDiv.articleFeedbackv5( 'setLinkId', 'tbx' );
+				$aftDiv.articleFeedbackv5( 'setLinkId', 'TBX' );
 			} )
 		.end();
 	$( '#p-tb' ).find( 'ul' ).append( $tbx );
 } else {
 	var $tbx = $( '<li id="t-articlefeedbackv5"><a href="#mw-articlefeedbackv5"></a></li>' )
-		.data( 'linkId', 'tbx' )
 		.find( 'a' )
 			.text( mw.msg( 'articlefeedbackv5-toolbox-linktext' ) )
+			.data( 'linkId', 'TBX' )
 			.click( function ( e ) {
 				e.preventDefault();
 				clickFeedbackLink( $( e.target ) );
