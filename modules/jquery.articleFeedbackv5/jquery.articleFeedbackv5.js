@@ -59,7 +59,7 @@
 	/**
 	 * Are we in debug mode?
 	 */
-	$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' ) ? true : false;
+	$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' ) ? true : ( mw.util.getParamValue( 'debug' ) ? true : false );
 
 	/**
 	 * Are we tracking clicks?
@@ -2015,8 +2015,6 @@
 		$.articleFeedbackv5.clickTracking = $.articleFeedbackv5.checkClickTracking();
 		// Has the user already submitted ratings for this page at this revision?
 		$.articleFeedbackv5.alreadySubmitted = $.cookie( $.articleFeedbackv5.prefix( 'submitted' ) ) === 'true';
-		// Are we in debug mode?
-		$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' ) ? true : false;
 		// Go ahead and bucket right away
 		$.articleFeedbackv5.selectBucket();
 		// Anything the bucket needs to do?
