@@ -19,7 +19,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$rating = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
 
 		$out->setPagetitle(
-			$this->msg( 'articlefeedbackv5-special-title', $title )
+			$this->msg( 'articlefeedbackv5-special-pagetitle', $title )
 				->escaped()
 		);
 

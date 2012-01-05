@@ -50,7 +50,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-filter-label-after' => '',
 	'articlefeedbackv5-special-showing' => 'Showing $1 posts (of $2)', // FIXME: Needs plural support on $1.
 	'articlefeedbackv5-special-more' => 'More',
-	'articlefeedbackv5-special-title' => 'Feedback for $1',
+	'articlefeedbackv5-special-pagetitle' => 'Feedback for $1',
 
 	'articlefeedbackv5-form-optionid' => 'Option $1',
 	'articlefeedbackv5-form-hide' => 'Hide this ($1)',
@@ -302,6 +302,8 @@ $messages['qqq'] = array(
 	'articlefeedbackv5-error-nofeedback' => 'This error message will be displayed above the form (but below the title) if the user has attempted to submit a blank form.',
 	'articlefeedbackv5-special-filter-all' => '{{Identical|All}}',
 	'articlefeedbackv5-special-more' => '{{Identical|More}}',
+	'articlefeedbackv5-special-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]]. Parameters:
+* $1 is the title of the article for which we show the feedback',
 	'articlefeedbackv5-form-header' => "* '''$1''' is the feedback ID.
 * '''$2''' is the date and time at which the feedback was given.",
 	'articlefeedbackv5-form1-header-found' => 'Parameters:
