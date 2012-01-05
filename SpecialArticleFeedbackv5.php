@@ -18,7 +18,10 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$found = isset( $ratings['found'] ) ? $ratings['found'] : null;
 		$rating = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
 
-		$out->setPagetitle( "Feedback for $title" );
+		$out->setPagetitle(
+			$this->msg( 'articlefeedbackv5-special-title', $title )
+				->escaped()
+		);
 
 		if ( !$pageId ) {
 			$out->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );

@@ -50,6 +50,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-filter-label-after' => '',
 	'articlefeedbackv5-special-showing' => 'Showing $1 posts (of $2)', // FIXME: Needs plural support on $1.
 	'articlefeedbackv5-special-more' => 'More',
+	'articlefeedbackv5-special-title' => 'Feedback for $1',
+
 	'articlefeedbackv5-form-optionid' => 'Option $1',
 	'articlefeedbackv5-form-hide' => 'Hide this ($1)',
 	'articlefeedbackv5-form-abuse' => 'Flag as abuse ($1)',
