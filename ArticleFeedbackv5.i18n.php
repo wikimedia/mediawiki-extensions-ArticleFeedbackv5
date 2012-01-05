@@ -377,7 +377,8 @@ $1 is an integer, and the rating count.",
 	'articlefeedbackv5-bucket5-toolbox-linktext' => 'When a link to pop up the feedback tool appears at the bottom of the toolbox area in the sidebar, this will be the link text.  This should match AFTv4.',
 	'articlefeedbackv5-shared-on-feedback' => 'This is the top line of the small text that goes beside the submit button and lets the user know that their comment will be posted on the feedback page.  $1 will hold the link to the feedback page.',
 	'articlefeedbackv5-shared-on-feedback-linktext' => 'The text for the feedback page link (see "articlefeedbackv5-shared-on-feedback")',
-	'articlefeedbackv5-help-tooltip-title' => 'The title for the help tooltip',
+	'articlefeedbackv5-help-tooltip-title' => 'The title for the help tooltip.
+{{Identical|What is this}}',
 	'articlefeedbackv5-help-tooltip-info' => 'The contents of the help tooltip',
 	'articlefeedbackv5-help-tooltip-linktext' => 'The link at the bottom of the tooltip (goes to the article feedback v5 page on wikimedia for now)',
 	'articlefeedbackv5-transparency-terms' => "This is the bottom line of the small text that goes beside the submit button and tells the user about the terms they're agreeing to by posting a comment.  $1 will hold the link to the terms page, with the text from {{msg-mw|Articlefeedbackv5-transparency-terms-linktext}}",
@@ -834,7 +835,7 @@ $messages['be-tarask'] = array(
 	'articlefeedbackv5-cta-confirmation-followup' => 'Ваш водгук быў захаваны.',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Вы ведалі, што можаце рэдагаваць гэтую старонку?',
 	'articlefeedbackv5-cta1-confirmation-call' => 'Вікіпэдыя працуе, таму што кожны можа рэдагаваць яе старонкі. Наперад, паспрабуйце і Вы. Сьмялей!',
-	'articlefeedbackv5-cta1-learn-how' => 'Давейцеся, як рэдагаваць',
+	'articlefeedbackv5-cta1-learn-how' => 'Даведайцеся, як рэдагаваць',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Рэдагаваць гэтую старонку',
 	'articlefeedbackv5-cta2-confirmation-title' => 'Дапамагчы палепшыць Вікіпэдыю',
 	'articlefeedbackv5-cta2-confirmation-call' => 'Гэты сайт створаны такімі людзьмі як і Вы. Вы можаце нам дапамагчы?',
@@ -876,6 +877,11 @@ $messages['be-tarask'] = array(
 	'articlefeedbackv5-invalid-feedback-id' => 'Няслушны ідэнтыфікатар водгуку',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Няслушнае пазначэньне водгуку',
 	'articlefeedbackv5-go-to-article' => 'Перайсьці на старонку',
+	'articlefeedbackv5-discussion-page' => 'Старонка абмеркаваньня',
+	'articlefeedbackv5-whats-this' => 'Што гэта?',
+	'articlefeedbackv5-invalid-page-id' => 'Няслушны ідэнтыфікатар старонкі',
+	'articlefeedbackv5-percent-found' => '$1% удзельнікаў знайшлі тое, што шукалі.',
+	'articlefeedbackv5-overall-rating' => 'Адзнака: $1/5',
 	'articlefeedbackv5-special-title' => '==Водгук==',
 	'articlefeedbackv5' => 'Дошка адзнакі артыкулаў',
 	'articlefeedbackv5-desc' => 'Водгук пра старонку',
@@ -905,16 +911,16 @@ $messages['be-tarask'] = array(
 	'articlefeedbackv5-bucket3-rating-tooltip-3' => 'Сярэдне',
 	'articlefeedbackv5-bucket3-rating-tooltip-4' => 'Карысная',
 	'articlefeedbackv5-bucket3-rating-tooltip-5' => 'Вельмі карысная',
-	'articlefeedbackv5-bucket3-clear-rating' => 'Выдаліць адзнаку',
+	'articlefeedbackv5-bucket3-clear-rating' => 'Выдаліць гэтую адзнаку',
 	'articlefeedbackv5-bucket3-comment-default' => 'Дадайце камэнтар. Як можна палепшыць гэтую старонку?',
 	'articlefeedbackv5-bucket3-form-submit' => 'Даслаць водгук',
 	'articlefeedbackv5-bucket4-title' => 'Дапамажыце палепшыць гэтую старонку',
-	'articlefeedbackv5-bucket4-subhead' => 'Ці ведалі вы, што можаце рэдагаваць гэтую старонку?',
+	'articlefeedbackv5-bucket4-subhead' => 'Ці ведалі Вы, што можаце рэдагаваць гэтую старонку?',
 	'articlefeedbackv5-bucket4-teaser-line1' => 'Вікіпэдыя працуе, бо кожны можа рэдагаваць яе старонкі.',
 	'articlefeedbackv5-bucket4-teaser-line2' => 'Хутчэй, паспрабуйце! Будзьце рашучымі!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Даведайцеся, як рэдагаваць',
 	'articlefeedbackv5-bucket4-form-submit' => 'Рэдагаваць гэтую старонку',
-	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Вікіпэдыі цікавая ваша думка. Дапамажыце палепшыць гэтую старонку, стаўшыся рэдактарам.',
+	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Вікіпэдыі цікавая Вашая думка. Дапамажыце палепшыць гэтую старонку, стаўшыся рэдактарам.',
 	'articlefeedbackv5-bucket5-form-switch-label' => 'Адзначце гэтую старонку',
 	'articlefeedbackv5-bucket5-form-panel-title' => 'Адзначце гэтую старонку',
 	'articlefeedbackv5-bucket5-form-panel-explanation' => 'Што гэта?',
@@ -1364,8 +1370,10 @@ $messages['br'] = array(
 	'articlefeedbackv5-help-tooltip-linktext' => "Gouzout hiroc'h.",
 	'articlefeedbackv5-transparency-terms' => "Ma kasit an dra-se ec'h asantit bezañ treuzwelus hervez $1.",
 	'articlefeedbackv5-transparency-terms-linktext' => 'termenoù',
+	'articlefeedbackv5-sitesub-linktext' => 'Gwellaat ar bajenn-mañ',
 	'articlefeedbackv5-titlebar-linktext' => 'Hor skoazellit da wellaat ar bajenn-mañ >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Gwellaat ar bajenn-mañ',
+	'articlefeedbackv5-bottomrighttab-linktext' => 'Gwellaat ar bajenn-mañ',
 	'articlefeedbackv5-section-linktext' => 'Sonjoù',
 	'articlefeedbackv5-toolbox-linktext' => 'Gwellaat ar bajenn-mañ',
 	'articlefeedbackv5-survey-question-origin' => "E peseurt pajenn e oac'h p'hoc'h eus kroget gant an enselladenn-mañ ?",
@@ -2008,6 +2016,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-special-filter-label-before' => 'Nur anzeigen:',
 	'articlefeedbackv5-special-showing' => 'Es werden $1 von $2 Rückmeldungen angezeigt.',
 	'articlefeedbackv5-special-more' => 'Mehr',
+	'articlefeedbackv5-special-pagetitle' => 'Rückmeldung für $1',
 	'articlefeedbackv5-form-optionid' => 'Option $1',
 	'articlefeedbackv5-form-hide' => 'Ausblenden ($1)',
 	'articlefeedbackv5-form-abuse' => 'Als missbräuchliche Nutzung kennzeichnen ($1)',
@@ -2135,7 +2144,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-sitesub-linktext' => 'Verbessere diese Seite',
 	'articlefeedbackv5-titlebar-linktext' => 'Hilf mit, diese Seite zu verbessern >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Verbessere diese Seite',
-	'articlefeedbackv5-bottomrighttab-linktext' => 'Diese Seite verbessern',
+	'articlefeedbackv5-bottomrighttab-linktext' => 'Verbessere diese Seite',
 	'articlefeedbackv5-section-linktext' => 'Rückmeldung',
 	'articlefeedbackv5-toolbox-linktext' => 'Verbessere diese Seite',
 	'articlefeedbackv5-survey-question-origin' => 'Auf welcher Seite befandest du dich zu Anfang dieser Umfrage?',
@@ -2251,6 +2260,7 @@ $messages['de-formal'] = array(
 	'articlefeedbackv5-sitesub-linktext' => 'Verbessern Sie diese Seite',
 	'articlefeedbackv5-titlebar-linktext' => 'Helfen Sie mit, diese Seite zu verbessern >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Verbessern Sie diese Seite',
+	'articlefeedbackv5-bottomrighttab-linktext' => 'Verbessern Sie diese Seite',
 	'articlefeedbackv5-toolbox-linktext' => 'Verbessern Sie diese Seite',
 	'articlefeedbackv5-survey-question-origin' => 'Auf welcher Seite befanden Sie sich zu Anfang dieser Umfrage?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Bitte lassen Sie uns wissen, warum Sie diese Seite heute eingeschätzt haben (Zutreffendes bitte ankreuzen):',
@@ -4457,19 +4467,20 @@ D Mitarbeiter vo {{SITENAME}}',
  * @author Nahum
  * @author Ofrahod
  * @author YaronSh
+ * @author דניאל ב.
  */
 $messages['he'] = array(
 	'articlefeedbackv5-cta-thanks' => 'תודה!',
 	'articlefeedbackv5-cta-confirmation-followup' => 'המשוב שלך נשמר.',
 	'articlefeedbackv5-cta1-confirmation-title' => 'האם ידעת שבאפשרותך לערוך דף זה?',
 	'articlefeedbackv5-cta1-confirmation-call' => 'ויקיפדיה מצליחה כי כל אחד יכול לערוך את הדפים שלה. קדימה, נסו לערוך. היו נועזים!',
-	'articlefeedbackv5-cta1-learn-how' => 'ללימוד כיצד לערוך',
+	'articlefeedbackv5-cta1-learn-how' => 'למדו כיצד לערוך',
 	'articlefeedbackv5-cta1-edit-linktext' => 'עריכת דף זה',
 	'articlefeedbackv5-cta2-confirmation-title' => 'עזרו לשפר את ויקיפדיה',
 	'articlefeedbackv5-cta2-confirmation-call' => 'אתר זה נוצר על ידי אנשים כמוך. את/ה יכול/ה לעזור לנו?',
 	'articlefeedbackv5-cta2-button-text' => 'לפרטים נוספים',
 	'articlefeedbackv5-error' => 'אירעה שגיאה. נא לנסות שוב מאוחר יותר.',
-	'articlefeedbackv5-error-email' => 'כתובת דואל זו אינה חוקית.',
+	'articlefeedbackv5-error-email' => 'כתובת דוא"ל זו אינה חוקית.',
 	'articlefeedbackv5-error-validation' => 'שגיאת אימות.',
 	'articlefeedbackv5-error-unknown' => 'שגיאה לא מוכרת.',
 	'articlefeedbackv5-error-submit' => 'שגיאה בהזנת הטופס.',
@@ -4611,6 +4622,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-sitesub-linktext' => 'שיפור הדף הזה.',
 	'articlefeedbackv5-titlebar-linktext' => 'עזרו לשפר דף זה >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'לשפר דף זה',
+	'articlefeedbackv5-bottomrighttab-linktext' => 'שפרו את הדף הזה',
 	'articlefeedbackv5-section-linktext' => 'משוב',
 	'articlefeedbackv5-toolbox-linktext' => 'לשפר דף זה',
 	'articlefeedbackv5-survey-question-origin' => 'מאיזה עמוד הגעתם לסקר הזה?',
@@ -4651,7 +4663,7 @@ $messages['he'] = array(
 	'articleFeedbackv5-table-heading-page' => 'דף',
 	'articleFeedbackv5-table-heading-average' => 'ממוצע',
 	'articleFeedbackv5-copy-above-highlow-tables' => 'זוהי תכונה ניסיונית. נשמח לקבל משוב ב[$1 דף השיחה].',
-	'articlefeedbackv5-dashboard-bottom' => "'''שימו לב''': אנחנו נמשיך לערוך ניסויים עם דרכים שונות להציף ערכים בלוחות הבקרה האלה. כעת לוחות הברה כוללים את הערכים הבאים:
+	'articlefeedbackv5-dashboard-bottom' => "'''שימו לב''': אנחנו נמשיך לערוך ניסויים עם דרכים שונות להציף ערכים בלוחות הבקרה האלה. כעת לוחות הבקרה כוללים את הערכים הבאים:
 * דפים עם דירוגים גבוהים ביותר או נמוכים ביותר: ערכים שקיבלו לפחות 10 דירוגים ב־24 השעות האחרונות. הממוצעים מחושבים לפי ממוצע על הדירוגים ב־24 השעות האחרונות.
 * נמוכים אחרונים: ערכים שקיבלו דירוג של 70% נמוך (2 כוכבים או פחות) בקטגוריה כלשהי ב־24 השעות האחרונות. רק ערכים שקיבלו לפחות 10 דירוגים ב־24 השעות האחרונות כלולים.",
 	'articlefeedbackv5-disable-preference' => 'לא להציג את כלי דירוג הערכים בדפים',
@@ -5537,9 +5549,11 @@ $messages['ia'] = array(
 	'articlefeedbackv5-help-tooltip-linktext' => 'Leger plus',
 	'articlefeedbackv5-transparency-terms' => 'Per inviar, tu accepta que tu contribution essera usate publicamente sub iste $1.',
 	'articlefeedbackv5-transparency-terms-linktext' => 'conditiones',
-	'articlefeedbackv5-section-linktext' => 'retroaction',
+	'articlefeedbackv5-sitesub-linktext' => 'Meliorar iste pagina',
 	'articlefeedbackv5-titlebar-linktext' => 'Adjutar a meliorar iste pagina >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Meliorar iste pagina',
+	'articlefeedbackv5-bottomrighttab-linktext' => 'Meliorar iste pagina',
+	'articlefeedbackv5-section-linktext' => 'retroaction',
 	'articlefeedbackv5-toolbox-linktext' => 'Meliorar iste pagina',
 	'articlefeedbackv5-survey-question-origin' => 'In qual pagina te trovava tu quando tu comenciava iste sondage?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Per favor dice nos proque tu ha evalutate iste pagina hodie (marca tote le optiones applicabile):',
@@ -5837,7 +5851,7 @@ $messages['ilo'] = array(
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-note' => 'Agipatulod kamin to ti kaniam ti pagsingkedan nga e-surat. Saan mi nga ibingbingay ti pagtaemgam nga e-surat kadagiti adda dita ruar a gunglo a kas tunggal maysa-mi a /nga $1.',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy' => 'pribado a sarita ti insao para ti panagipagarupan',
 	'articlefeedbackv5-bucket5-form-panel-submit' => 'Ited dagiti pangpatpateg',
-	'articlefeedbackv5-bucket5-form-panel-pending' => 'Your ratings have not been submitted yet',
+	'articlefeedbackv5-bucket5-form-panel-pending' => 'Dagiti pangpatpategam ket saan pay a naited',
 	'articlefeedbackv5-bucket5-form-panel-success' => 'Balligi ti panakaidulin',
 	'articlefeedbackv5-bucket5-form-panel-expiry-title' => 'Nagpaso dagiti pagipatpategam',
 	'articlefeedbackv5-bucket5-form-panel-expiry-message' => 'Pangngaasi a kitaem manen daytoy a panid ken agited kadagiti baro a pategan.',
@@ -5882,9 +5896,11 @@ $messages['ilo'] = array(
 	'articlefeedbackv5-help-tooltip-linktext' => 'Agadal ka pay ti adu',
 	'articlefeedbackv5-transparency-terms' => 'Babaen ti panagi-pablaak, agtulag ka ti panagsaragasag babaen kadagitoy $1',
 	'articlefeedbackv5-transparency-terms-linktext' => 'banbanag',
-	'articlefeedbackv5-section-linktext' => 'pagarupan',
+	'articlefeedbackv5-sitesub-linktext' => 'Agparang-ay iti daytoy a panid',
 	'articlefeedbackv5-titlebar-linktext' => 'Tumulong nga agparang-ay iti daytoy a panid >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Agparang-ay iti daytoy a panid',
+	'articlefeedbackv5-bottomrighttab-linktext' => 'agparang-ay iti daytoy a panid',
+	'articlefeedbackv5-section-linktext' => 'pagarupan',
 	'articlefeedbackv5-toolbox-linktext' => 'Agparang-ay iti daytoy a panid',
 	'articlefeedbackv5-survey-question-origin' => 'Ania a panid ti ayanmo idi nagrugi ka iti daytoy a panagala?',
 	'articlefeedbackv5-survey-question-whyrated' => 'Pangngaasi nga ibagam kaniami no apay nga pinategam daytoy a panid tatta nga aldaw. (ikur-it amin nga idangep) :',
@@ -5929,6 +5945,29 @@ Pangngaasi a padasem to no madamdama.',
 iti uneg ti 24 nga oras.
 * Dagiti kinaudi a kababaan: dagiti artikulo a nakaala ti 70% wenno kaad-adu a nababa ( 2 a bituen wenno nabab-baba) a dagiti pategan iti ania man a kategoria iti kinaudi a 24 nga oras. Dagiti artikulo laeng a nakaala ti kababaan a 10 a pategan iti kinaudi a 24 nga oras dagiti mairaman.",
 	'articlefeedbackv5-disable-preference' => 'Saan nga iparang ti Artikulo a pangipagarupan a widget kadagiti paid',
+	'articlefeedbackv5-emailcapture-response-body' => 'Kumusta!
+
+Agyaman ti ti panagiyebkas mo ti interasado a panagtulong a rumang-ay ti {{SITENAME}}.
+
+Pangngaasi a mangala ti kanito tapno mapasingkedan ti e-surat babaen ti panag-takla iti panilpo dita baba:
+
+$1
+
+Mabalinmo pay a sarungkaran ti:
+
+$2
+
+Ken ikabil ti sumaganad a pasingkedan a kodigo:
+
+$3
+
+Sagiden da kan to no kasano ka a makatulong ti panagrang-ay ti {{SITENAME}}.
+
+No saan mo a kiniddaw daytoy, pangngaasi a saan mo nga ikaskaso daytoy nga e-surat ken saan kamin nga agipatulod ti sabali.
+
+Kasayaatan a tarigagay, ken panagyaman,
+
+Ti timpuyog ti {{SITENAME}}',
 );
 
 /** Italian (Italiano)
@@ -7494,6 +7533,7 @@ $messages['mk'] = array(
 	'articlefeedbackv5-sitesub-linktext' => 'Подобрете ја страницава',
 	'articlefeedbackv5-titlebar-linktext' => 'Помогнете ни да ја подобриме страницава >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Подобрете ја страницава',
+	'articlefeedbackv5-bottomrighttab-linktext' => 'Подобрете ја страницава',
 	'articlefeedbackv5-section-linktext' => 'мислења',
 	'articlefeedbackv5-toolbox-linktext' => 'Подобрете ја страницава',
 	'articlefeedbackv5-survey-question-origin' => 'На која страница бевте кога ја започнавте анкетава?',
@@ -9401,7 +9441,7 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-form-optionid' => 'Opção $1',
 	'articlefeedbackv5-form-hide' => 'Ocultar este ($1)',
 	'articlefeedbackv5-form-abuse' => 'Marcar como inadequado ($1)',
-	'articlefeedbackv5-form-header' => 'Comentário nº$1 realizado em $2',
+	'articlefeedbackv5-form-header' => 'Comentário nº $1 realizado em $2',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$1}} encontraram o que eles estavam procurando:',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$1}} não encontraram o que estavam procurando:',
 	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}} tinha um comentário:',
@@ -10618,9 +10658,11 @@ $messages['si'] = array(
 	'articlefeedbackv5-help-tooltip-linktext' => 'තවත් දැනගන්න',
 	'articlefeedbackv5-transparency-terms' => 'තැපැල් කිරීමෙන්, $1 යටතේ පාරදෘෂ්‍යතාවට ඔබ එකඟ වේ.',
 	'articlefeedbackv5-transparency-terms-linktext' => 'කොන්දේසි',
-	'articlefeedbackv5-section-linktext' => 'ප්‍රතිචාරය',
+	'articlefeedbackv5-sitesub-linktext' => 'මෙම පිටුව වැඩි දියුණු කරන්න',
 	'articlefeedbackv5-titlebar-linktext' => 'මෙම පිටුව වැඩි දියුණු කිරීමට සහය වන්න >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'මෙම පිටුව වැඩි දියුණු කරන්න',
+	'articlefeedbackv5-bottomrighttab-linktext' => 'මෙම පිටුව වැඩි දියුණු කරන්න',
+	'articlefeedbackv5-section-linktext' => 'ප්‍රතිචාරය',
 	'articlefeedbackv5-toolbox-linktext' => 'මෙම පිටුව වැඩි දියුණු කරන්න',
 	'articlefeedbackv5-survey-question-origin' => 'සමීක්ෂණය අරඹන විට ඔබ සිටියේ කුමන පිටුවකද?',
 	'articlefeedbackv5-survey-question-whyrated' => 'කරුණාකර ඔබ මෙම පිටුවට අද තරාතිරම් කලේ මන්දැයි අපට පවසන්න (යෙදෙන සියල්ලම අවේක්ෂණය කරන්න):',
@@ -12500,9 +12542,11 @@ $messages['zh-hans'] = array(
 	'articlefeedbackv5-help-tooltip-linktext' => '了解更多',
 	'articlefeedbackv5-transparency-terms' => '提交后，您将同意在$1下的透明度。',
 	'articlefeedbackv5-transparency-terms-linktext' => '条款',
-	'articlefeedbackv5-section-linktext' => '反馈',
+	'articlefeedbackv5-sitesub-linktext' => '改善这个页面',
 	'articlefeedbackv5-titlebar-linktext' => '帮助改善这个页面 >>',
 	'articlefeedbackv5-fixedtab-linktext' => '改善这个页面',
+	'articlefeedbackv5-bottomrighttab-linktext' => '改善这个页面',
+	'articlefeedbackv5-section-linktext' => '反馈',
 	'articlefeedbackv5-toolbox-linktext' => '改善这个页面',
 	'articlefeedbackv5-survey-question-origin' => '当你开始这项统计调查的时候正在访问哪个页面？',
 	'articlefeedbackv5-survey-question-whyrated' => '请告诉我们你今天为此页打分的原因（选择所有合适的选项）：',
