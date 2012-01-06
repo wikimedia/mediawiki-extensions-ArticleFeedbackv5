@@ -1,9 +1,33 @@
 <?php
+/**
+ * SpecialArticleFeedbackv5 class
+ *
+ * @package    ArticleFeedback
+ * @subpackage Special
+ * @author     Greg Chiasson <gchiasson@omniti.com>
+ * @version    $Id$
+ */
+
+/**
+ * This is the Special page the shows the feedback dashboard
+ *
+ * @package    ArticleFeedback
+ * @subpackage Special
+ */
 class SpecialArticleFeedbackv5 extends SpecialPage {
+
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		parent::__construct( 'ArticleFeedbackv5' );
 	}
 
+	/**
+	 * Executes the special page
+	 *
+	 * @param $param string the parameter passed in the url
+	 */
 	public function execute( $param ) {
 		$out = $this->getOutput();
 		$title = Title::newFromText( $param );
@@ -103,18 +127,23 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * Takes an associative array of label to value and converts the message
 	 * names into localized strings
 	 *
-	 * @param array $options
-	 * @return array
+	 * @param  $options array the options, indexed by label
+	 * @return array    the options, indexed by localized and escaped text
 	 */
 	private function selectMsg( array $options ) {
 		$newOpts = array();
 		foreach ( $options as $label => $value ) {
 			$newOpts[$this->msg( $label )->escaped()] = $value;
 		}
-
 		return $newOpts;
 	}
 
+	/**
+	 * Grabs the overall rating for a page
+	 *
+	 * @param  $pageId int the page id
+	 * @return array   the overall rating, as array (found => %, rating => avg)
+	 */
 	private function fetchOverallRating( $pageId ) {
 		$rv = array();
 		$dbr = wfGetDB( DB_SLAVE );
@@ -144,4 +173,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		return $rv;
 	}
+
 }
+

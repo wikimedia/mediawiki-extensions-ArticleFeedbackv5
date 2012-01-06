@@ -179,6 +179,8 @@
 	 * When a next-page load is requested, it appends the new responses; on a
 	 * sort or filter change, the existing responses are removed from the view
 	 * and replaced.
+	 *
+	 * @param resetContents bool whether to remove the existing responses
 	 */
 	$.articleFeedbackv5special.loadFeedback = function ( resetContents ) {
 		$.ajax( {
