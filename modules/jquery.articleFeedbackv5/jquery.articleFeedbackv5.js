@@ -1027,7 +1027,7 @@
 			getFormData: function () {
 				var data = {};
 				var rating = $.articleFeedbackv5.find( '.articleFeedbackv5-rating input:hidden' ).val();
-				if ( '0' != rating ) {
+				if ( true ) { // '0' != rating ) {
 					data.rating = rating;
 				}
 				data.comment = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' ).val();
@@ -2760,13 +2760,19 @@
 	 * @param object errors errors, indexed by field name
 	 */
 	$.articleFeedbackv5.markFormErrors = function ( errors ) {
+		aft5_debug( 'got here' );
 		if ( '_api' in errors ) {
-			if ( $.articleFeedbackv5.debug ) {
-				$.articleFeedbackv5.markTopError( errors._api.info );
+			if ( typeof errors._api == 'object' ) {
+				if ( 'info' in errors._api ) {
+					mw.log( mw.msg( errors._api.info ) );
+				} else {
+					mw.log( mw.msg( 'articlefeedbackv5-error-submit' ) );
+				}
+				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-submit' ) );
 			} else {
-				mw.log( mw.msg( 'articlefeedbackv5-error-submit' ) );
+				mw.log( mw.msg( errors._api ) );
+				$.articleFeedbackv5.markTopError( errors._api );
 			}
-			mw.log( mw.msg( errors._api.info ) );
 		} else {
 			mw.log( mw.msg( 'articlefeedbackv5-error-validation' ) );
 			if ( 'nofeedback' in errors ) {
