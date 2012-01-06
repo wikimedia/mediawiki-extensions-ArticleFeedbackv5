@@ -30,7 +30,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * Execute the API call: Save the form values
 	 */
 	public function execute() {
-error_Log('hi there');
 		global $wgUser, $wgArticleFeedbackv5SMaxage;
 		$params = $this->extractRequestParams();
 
@@ -437,7 +436,7 @@ error_Log('hi there');
 	}
 
 	/**
- 	 * Creates a new feedback record and inserts the user's rating 
+ 	 * Creates a new feedback record and inserts the user's rating
 	 * for a specific revision
 	 *
 	 * @param  array $data       the data
