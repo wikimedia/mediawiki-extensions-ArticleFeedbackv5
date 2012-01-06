@@ -1027,7 +1027,7 @@
 			getFormData: function () {
 				var data = {};
 				var rating = $.articleFeedbackv5.find( '.articleFeedbackv5-rating input:hidden' ).val();
-				if ( true ) { // '0' != rating ) {
+				if ( '0' != rating ) {
 					data.rating = rating;
 				}
 				data.comment = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' ).val();
@@ -2760,7 +2760,6 @@
 	 * @param object errors errors, indexed by field name
 	 */
 	$.articleFeedbackv5.markFormErrors = function ( errors ) {
-		aft5_debug( 'got here' );
 		if ( '_api' in errors ) {
 			if ( typeof errors._api == 'object' ) {
 				if ( 'info' in errors._api ) {
