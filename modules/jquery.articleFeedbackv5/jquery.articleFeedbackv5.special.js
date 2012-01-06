@@ -1,14 +1,76 @@
+/**
+ * ArticleFeedback special page
+ *
+ * This file handles the display of feedback responses and moderation tools for
+ * privileged users.  The flow goes like this:
+ *
+ * User arrives at special page -> basic markup is created without data -> ajax
+ * request is sent to pull most recent feedback
+ *
+ * For each change to the selected filter or sort method, or when more feedback
+ * is requested, another ajax request is sent.
+ *
+ * This file is long, so it's commented with manual fold markers.  To use folds
+ * this way in vim:
+ *   set foldmethod=marker
+ *   set foldlevel=0
+ *   set foldcolumn=0
+ *
+ * @package    ArticleFeedback
+ * @subpackage Resources
+ * @author     Greg Chiasson <gchiasson@omniti.com>
+ * @version    $Id$
+ */
+
 ( function ( $ ) {
+
+// {{{ articleFeedbackv5 definition
+
 	$.articleFeedbackv5special = {};
 
-	$.articleFeedbackv5special.page    = undefined;
-	$.articleFeedbackv5special.filter  = 'visible';
-	$.articleFeedbackv5special.sort    = 'newest';
-	$.articleFeedbackv5special.limit   = 25;
-	$.articleFeedbackv5special.offset  = 0;
-	$.articleFeedbackv5special.showing = 0;
-	$.articleFeedbackv5special.apiUrl  = undefined; 
+	// {{{ Properties
 
+	/**
+	 * What page is this?
+	 */
+	$.articleFeedbackv5special.page = undefined;
+
+	/**
+	 * The name of the filter used to select feedback
+	 */
+	$.articleFeedbackv5special.filter = 'visible';
+
+	/**
+	 * The name of the sorting method used
+	 */
+	$.articleFeedbackv5special.sort = 'newest';
+
+	/**
+	 * The number of responses to display per data pull
+	 */
+	$.articleFeedbackv5special.limit = 25;
+
+	/**
+	 * The index at which to start the pull
+	 */
+	$.articleFeedbackv5special.offset = 0;
+
+	/**
+	 * ???
+	 */
+	$.articleFeedbackv5special.showing = 0;
+
+	/**
+	 * The url to which to send the request
+	 */
+	$.articleFeedbackv5special.apiUrl = undefined;
+
+	// }}}
+	// {{{ Init methods
+
+	/**
+	 * Binds events for each of the controls
+	 */
 	$.articleFeedbackv5special.setBinds = function() {
 		$( '#aft5-filter' ).bind( 'change', function(e) {
 			$.articleFeedbackv5special.filter = $(this).val();
@@ -38,14 +100,41 @@
 		} );
 	}
 
+	// }}}
+	// {{{ Moderation methods
+
+	// {{{ hideFeedback
+
+	/**
+	 * Hides a response
+	 *
+	 * @param id int the feedback id
+	 */
 	$.articleFeedbackv5special.hideFeedback = function ( id ) {
 		$.articleFeedbackv5special.flagFeedback( id, 'hide' );
 	}
 
+	// }}}
+	// {{{ abuseFeedback
+
+	/**
+	 * Flags a response as abuse
+	 *
+	 * @param id int the feedback id
+	 */
 	$.articleFeedbackv5special.abuseFeedback = function ( id ) {
 		$.articleFeedbackv5special.flagFeedback( id, 'abuse' );
 	}
 
+	// }}}
+	// {{{ flagFeedback
+
+	/**
+	 * Sends the request to mark a response
+	 *
+	 * @param id   int    the feedback id
+	 * @param type string the type of mark ('hide' or 'abuse')
+	 */
 	$.articleFeedbackv5special.flagFeedback = function ( id, type ) {
 		$.ajax( {
 			'url'     : $.articleFeedbackv5special.apiUrl,
@@ -77,8 +166,20 @@
 		return false;
 	}
 
-	// ie, on loading next page, don't reset the view, but on sort/filter
-	// remove what was there and start over.
+	// }}}
+
+	// }}}
+	// {{{ Process methods
+
+	// {{{ loadFeedback
+
+	/**
+	 * Pulls in a set of responses.
+	 *
+	 * When a next-page load is requested, it appends the new responses; on a
+	 * sort or filter change, the existing responses are removed from the view
+	 * and replaced.
+	 */
 	$.articleFeedbackv5special.loadFeedback = function ( resetContents ) {
 		$.ajax( {
 			'url'     : $.articleFeedbackv5special.apiUrl,
@@ -121,9 +222,19 @@
 
 		return false;
 	}
+
+	// }}}
+
+	// }}}
+
+// }}}
+
 } )( jQuery );
 
 $( document ).ready( function() {
+
+// {{{ Kick off when ready
+
 	// This was failing sometimes when it was in the function above.
 	// I think it maky have been a race condition.
 	$.articleFeedbackv5special.apiUrl  = mw.util.wikiScript('api');
@@ -132,4 +243,8 @@ $( document ).ready( function() {
 	// Set up event binds and do initial data fetch.
 	$.articleFeedbackv5special.setBinds();
 	$.articleFeedbackv5special.loadFeedback( true );
+
+// }}}
+
 } );
+
