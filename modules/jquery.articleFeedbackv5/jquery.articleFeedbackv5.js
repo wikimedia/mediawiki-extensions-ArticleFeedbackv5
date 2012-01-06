@@ -2547,7 +2547,7 @@
 				} else {
 					var msg;
 					if ( 'error' in data ) {
-						msg = data.error;
+						msg = mw.msg( data.error );
 					} else {
 						msg = { info: mw.msg( 'articlefeedbackv5-error-unknown' ) };
 					}
