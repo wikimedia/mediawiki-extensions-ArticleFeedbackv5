@@ -1026,7 +1026,10 @@
 			 */
 			getFormData: function () {
 				var data = {};
-				data.rating = $.articleFeedbackv5.find( '.articleFeedbackv5-rating input:hidden' ).val();
+				var rating = $.articleFeedbackv5.find( '.articleFeedbackv5-rating input:hidden' ).val();
+				if ( '0' != rating ) {
+					data.rating = rating;
+				}
 				data.comment = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' ).val();
 				if ( data.comment == mw.msg( 'articlefeedbackv5-bucket3-comment-default' ) ) {
 					data.comment = '';
@@ -1719,7 +1722,10 @@
 				var info = $.articleFeedbackv5.currentBucket().ratingInfo;
 				for ( var i = 0; i < info.length; i++ ) {
 					var key = info[i];
-					data[key] = $.articleFeedbackv5.find( 'input[name="' + key + '"]' ).val();
+					var val = $.articleFeedbackv5.find( 'input[name="' + key + '"]' ).val();
+					if ( '0' != val ) {
+						data[key] = val;
+					}
 				}
 				$.articleFeedbackv5.find( '.articleFeedbackv5-expertise input:checked' ).each( function () {
 					data['expertise-' + $( this ).val()] = 1;
