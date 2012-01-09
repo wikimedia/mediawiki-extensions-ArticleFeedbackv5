@@ -73,8 +73,10 @@
 }
 .articleFeedbackv5-bottomrighttablink {
 	border: none;
-	color: #fff;
-	background-color: #5373a6;
+	border-top: 1px solid gray;
+	border-left: 1px solid gray;
+	color: #000;
+	background-color: #f5faff;
 	min-width: 105px;
 	right: 0;
 	display: block;
