@@ -43,83 +43,129 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$rating = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
 
 		$out->setPagetitle(
-			$this->msg( 'articlefeedbackv5-special-pagetitle', $title )
-				->escaped()
+			$this->msg( 'articlefeedbackv5-special-pagetitle', $title )->escaped()
 		);
 
 		if ( !$pageId ) {
 			$out->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
 		} else {
+			# TODO: Fix links.
 			$out->addHTML(
-				Linker::link(
+				Html::openElement(
+					'div', 
+					array( 'id' => 'aft5-header-links' )
+				)
+				.Linker::link(
 					Title::newFromText( $param ),
 					$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
 				)
-					. ' | ' .
-					Linker::link(
-						Title::newFromText( $param ),
-						$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
-					)
-					. ' | ' .
-					Linker::link(
-						Title::newFromText( $param ),
-						$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
-					)
+				. ' | ' .
+				Linker::link(
+					Title::newFromText( $param ),
+					$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
+				)
+				. ' | ' .
+				Linker::link(
+					Title::newFromText( $param ),
+					$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
+				)
+				.Html::closeElement( 'div' )
 			);
 		}
 
+		$out->addHTML( 
+			Html::openElement(
+				'div', 
+				array( 'id' => 'aft5-showing-count-wrap' )
+			)
+			.$this->msg(
+				'articlefeedbackv5-special-showing',
+				Html::element( 'span', array( 'id' => 'aft-feedback-count-total' ), '0' )
+			)
+			.Html::closeElement( 'div' )
+		);
+
 		if ( $found ) {
-			$out->addWikiMsg( 'articlefeedbackv5-percent-found', $found );
+			$out->addHtml(
+				Html::openElement(
+					'div', 
+					array( 'id' => 'aft5-percent-found-wrap' )
+				)
+				.$this->msg( 'articlefeedbackv5-percent-found', $found )->escaped()
+				.Html::closeElement( 'div' )
+			);
 		}
 
-		if ( $rating ) {
-			$out->addWikiMsg( 'articlefeedbackv5-overall-rating', $rating );
-		}
+#		if ( $rating ) {
+#			$out->addWikiMsg( 'articlefeedbackv5-overall-rating', $rating );
+#		}
 
 		$out->addWikiMsg( 'articlefeedbackv5-special-title' );
-
-		$showing = $this->msg(
-			'articlefeedbackv5-special-showing',
-			Html::element( 'span', array( 'id' => 'aft-feedback-count-shown' ), '0' ),
-			Html::element( 'span', array( 'id' => 'aft-feedback-count-total' ), '0' )
-		);
 
 		$out->addJsConfigVars( 'afPageId', $pageId );
 		$out->addModules( 'jquery.articleFeedbackv5.special' );
 
+
+		$sortLabels = array();
+		$sortOpts   = array( 'newest', 'oldest' );
+		foreach( $sortOpts as $sort ) {
+			$sortLabels[] = Html::element( 
+				'a',
+				array(
+					'href'  => '#',
+					'id'    => 'articlefeedbackv5-special-sort-'.$sort,
+					'class' => 'aft5-sort-link' 
+				),
+				$this->msg( 'articlefeedbackv5-special-sort-'.$sort )
+			);
+		}
+
 		$filterSelect = new XmlSelect( false, 'aft5-filter' );
 		$filterSelect->addOptions( $this->selectMsg( array(
-					'articlefeedbackv5-special-filter-visible' => 'visible',
-					'articlefeedbackv5-special-filter-invisible' => 'invisible',
-					'articlefeedbackv5-special-filter-all' => 'all',
-				)
+			'articlefeedbackv5-special-filter-visible'   => 'visible',
+			'articlefeedbackv5-special-filter-invisible' => 'invisible',
+			'articlefeedbackv5-special-filter-all'       => 'all',
+		)));
+
+		$out->addHTML(
+			Html::openElement(
+				'div', 
+				array( 'id' => 'aft5-sort-filter-controls' )
 			)
+			.$this->msg( 'articlefeedbackv5-special-sort-label-before' )
+			.implode( wfMessage( 'pipe-separator' )->escaped(), $sortLabels )
+			.$this->msg( 'articlefeedbackv5-special-sort-label-after' )
+
+			.$this->msg( 'articlefeedbackv5-special-filter-label-before' )
+			.$filterSelect->getHTML()
+			.$this->msg( 'articlefeedbackv5-special-filter-label-after' )
+			.Html::element( 
+				'a',
+				array(
+					'href'  => '#',
+					'id'    => 'articlefeedbackv5-special-add-feedback',
+				),
+				$this->msg( 'articlefeedbackv5-special-add-feedback' )
+                        )
+			.Html::closeElement( 'div' )
 		);
 
-		$sortSelect = new XmlSelect( false, 'aft5-sort' );
-		$sortSelect->addOptions( $this->selectMsg( array(
-					'articlefeedbackv5-special-sort-newest' => 'newest',
-					'articlefeedbackv5-special-sort-oldest' => 'oldest',
-				)
+		$out->addHTML(
+			Html::element(
+				'div', 
+				array(
+					'id'    => 'aft5-show-feedback',
+					'style' => 'border:1px solid red;'
+				), ''
 			)
-		);
-
-		$out->addHTML( $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
-				. $filterSelect->getHTML()
-				. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
-				. ' | '
-				. $this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
-				. $sortSelect->getHTML()
-				. $this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
-				. Html::element( 'span', array( 'id' => 'aft-showing' ), $showing )
-				. Html::element( 'div', array(
-						'id' => 'aft5-show-feedback',
-						'style' => 'border:1px solid red;'
-					), ''
-				)
-				. Html::element( 'a', array( 'href' => '#', 'id' => 'aft5-show-more' ),
-					$this->msg( 'articlefeedbackv5-special-more' )->escaped()
-				)
+			.Html::element( 
+				'a', 
+				array( 
+					'href' => '#', 
+					'id'   => 'aft5-show-more' 
+				),
+				$this->msg( 'articlefeedbackv5-special-more' )->escaped()
+			)
 		);
 	}
 

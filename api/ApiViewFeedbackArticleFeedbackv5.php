@@ -46,9 +46,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$length++;
 		}
 
-		$result->addValue(  $this->getModuleName(), 'length', $length );
-		$result->addValue(  $this->getModuleName(), 'count', $count );
-		$result->addValue(  $this->getModuleName(), 'feedback', $html );
+		$result->addValue( $this->getModuleName(), 'length', $length );
+		$result->addValue( $this->getModuleName(), 'count', $count );
+		$result->addValue( $this->getModuleName(), 'feedback', $html );
 	}
 
 	public function fetchFeedbackCount( $pageId, $filter ) {
@@ -171,29 +171,49 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	protected function renderFeedback( $record ) {
-		$id = $record[0]->af_id;
-		$rv = "<div class='aft5-feedback'><p>"
-		.wfMessage( 'articlefeedbackv5-form-header', $id, $record[0]->af_created )->escaped()
-		.'</p>';
 		switch( $record[0]->af_bucket_id ) {
-			case 1: $rv .= $this->renderBucket1( $record ); break;
-			case 2: $rv .= $this->renderBucket2( $record ); break;
-			case 3: $rv .= $this->renderBucket3( $record ); break;
-			case 4: $rv .= $this->renderBucket4( $record ); break;
-			case 5: $rv .= $this->renderBucket5( $record ); break;
-			case 6: $rv .= $this->renderBucket6( $record ); break;
-			default: $rv .= $this->renderNoBucket( $record ); break;
+			case 1: $content .= $this->renderBucket1( $record ); break;
+			case 2: $content .= $this->renderBucket2( $record ); break;
+			case 3: $content .= $this->renderBucket3( $record ); break;
+			case 4: $content .= $this->renderBucket4( $record ); break;
+			case 5: $content .= $this->renderBucket5( $record ); break;
+			case 6: $content .= $this->renderBucket6( $record ); break;
+			default: $content .= $this->renderNoBucket( $record ); break;
 		}
-		$rv .= "<p>"
+		# TODO: check roles to determine what to show here (and cache somewhere so we don't keep looking them up).
+		$can_flag   = 1;
+		$can_hide   = 1;
+		$can_delete = 1;
+		$id         = $record[0]->af_id;
+
+		# TODO: permalinks
+		return Html::openElement( 'div', array( 'id' => 'aft5-feedback' ) )
+		.Html::openElement( 'p' )
+		.Html::element( 'a', array( 'class' => 'aft5-comment-name', 'href' => 'profilepage or whatever' ), $id )
+		.Html::element( 'span', array( 'class' => 'aft5-comment-timestamp' ), $record[0]->af_created )
+		.Html::closeElement( 'p' )
 		.wfMessage( 'articlefeedbackv5-form-optionid', $record[0]->af_bucket_id )->escaped()
-		.'</a> '.wfMessage( 'pipe-separator' )->escaped()
-		."<a href='#' class='aft5-hide-link' id='aft5-hide-link-$id'>"
-		.wfMessage( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )->escaped()
-		.'</a>'.wfMessage( 'pipe-separator' )->escaped()
-		."<a href='#' class='aft5-abuse-link' id='aft5-abuse-link-$id'>"
-		.wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->escaped()
-		."</a></p></div><hr>";
-		return $rv;
+		.$content
+		.wfMessage( 'articlefeedbackv5-form-helpful-label' )->escaped()
+		.Html::openElement( 'div', array( 'id' => 'aft5-feedback-tools' ) )
+		.Html::element( 'h3', array(), 'Tools' )
+		.Html::openElement( 'ul' )
+		.($can_flag ? Html::rawElement( 'li', array(), Html::element( 'a', array(
+			'id'    => "aft5-hide-link-$id",
+			'class' => 'aft5-hide-link'
+		), wfMessage( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )->escaped() ) ) : '' )
+		.($can_hide ? Html::rawElement( 'li', array(), Html::element( 'a', array(
+			'id'    => "aft5-abuse-link-$id",
+			'class' => 'aft5-abuse-link'
+		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->escaped() ) ) : '' )
+		.($can_delete ? Html::rawElement( 'li', array(), Html::element( 'a', array(
+			'id'    => "aft5-delete-link-$id",
+			'class' => 'aft5-delete-link'
+		), wfMessage( 'articlefeedbackv5-form-delete' )->escaped() ) ) : '' )
+		.Html::closeElement( 'ul' )
+		.Html::closeElement( 'div' )
+		.Html::closeElement( 'div' )
+		.Html::element( 'hr' );
 	}
 
 	private function renderBucket1( $record ) {

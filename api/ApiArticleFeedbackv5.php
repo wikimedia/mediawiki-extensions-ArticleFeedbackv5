@@ -65,7 +65,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				if ( $value === '' ) {
 					continue;
 				}
-				if ( $this->validateParam( $value, $type, $field['afi_id'] ) ) {
+				if ( $this->validateParam( $value, $type, $field['afi_id'], $pageId ) ) {
 					$data = array(
 						'aa_field_id'    => $field['afi_id'],
 					);
@@ -143,9 +143,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 *                          text for the id)
 	 * @param  $type     string the field type
 	 * @param  $field_id int    the field id
+	 * @param  $pageId   int    the page id  (needed by abuse filter)
 	 * @return bool      whether this is okay
 	 */
-	protected function validateParam( &$value, $type, $field_id ) {
+	protected function validateParam( &$value, $type, $field_id, $pageId ) {
 		# rating: int between 1 and 5 (inclusive)
 		# boolean: 1 or 0
 		# option_id: option exists
@@ -173,11 +174,44 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				}
 				break;
 			case 'text':
-				return true;
+				return $this->validateText( $value, $pageId );
 			default:
 				return false;
 		}
 		return false;
+	}
+
+	/**
+	 * Run the text through the AbuseFilter and SpamBlacklist extensions.
+	 * Should we check length as well? What's a reasonable max length?
+	 *
+	 */
+	private function validateText( &$value, $pageId ) {
+		global $wgArticleFeedbackv5MaxCommentLength;
+		$title = Title::newFromID( $pageId );
+
+		# Apparently this returns either true or an error message?
+		# http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/AbuseFilter/AbuseFilter.class.php?view=markup
+		# (line 715-721). So normalize this.
+		$vars  = array(
+		);
+#		$filter_error = AbuseFilter::filterAction( $vars, $title );
+#		$filter_error = ( $filter_error === true ? 1 : 0 );
+
+		$filter_error = 0; # TODO
+		$spam_error   = 0; # TODO
+
+		# Not actually a requirement, but I can see this being a thing,
+		# not letting people post the entire text of 1984 in a comment
+		# or something like that.
+		$length_error = 0;
+		if( isset( $wgArticleFeedbackv5MaxCommentLength ) ) {
+			$length_error = strlen( $value ) > $wgArticleFeedbackv5MaxCommentLength ? 1 : 0;
+		}
+
+		$has_error = $filter_error + $spam_error + $length_error;
+
+		return $has_error ? false : true;
 	}
 
 	/**

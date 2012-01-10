@@ -26,6 +26,8 @@
 
 // {{{ articleFeedbackv5 definition
 
+	// TODO: jam sort/filter options into URL anchors, and use them as defaults if present.
+
 	$.articleFeedbackv5special = {};
 
 	// {{{ Properties
@@ -56,11 +58,6 @@
 	$.articleFeedbackv5special.offset = 0;
 
 	/**
-	 * ???
-	 */
-	$.articleFeedbackv5special.showing = 0;
-
-	/**
 	 * The url to which to send the request
 	 */
 	$.articleFeedbackv5special.apiUrl = undefined;
@@ -72,32 +69,34 @@
 	 * Binds events for each of the controls
 	 */
 	$.articleFeedbackv5special.setBinds = function() {
-		$( '#aft5-filter' ).bind( 'change', function(e) {
+		$( '#aft5-filter' ).bind( 'change', function( e ) {
 			$.articleFeedbackv5special.filter = $(this).val();
 			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
-		$( '#aft5-sort' ).bind( 'change', function(e) {
-			$.articleFeedbackv5special.sort = $(this).val();
+		$( '.aft5-sort-link' ).bind( 'click', function( e ) {
+			$.articleFeedbackv5special.sort = $.articleFeedbackv5special.stripID( this, 'articlefeedbackv5-special-sort-' );
 			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
-		$( '#aft5-show-more' ).bind( 'click', function(e) {
-			$.articleFeedbackv5special.offset += 
-			 $.articleFeedbackv5special.limit;
-			$.articleFeedbackv5special.loadFeedback( false);
+		$( '#aft5-show-more' ).bind( 'click', function( e ) {
+			$.articleFeedbackv5special.offset += $.articleFeedbackv5special.limit;
+			$.articleFeedbackv5special.loadFeedback( false );
 			return false;
 		} );
-		$( '.aft5-abuse-link' ).live( 'click', function(e) {
-			var id = $( this ).attr( 'id' ).replace( 'aft5-abuse-link-', '' );
-			$.articleFeedbackv5special.abuseFeedback( id );
+		$( '.aft5-abuse-link' ).live( 'click', function( e ) {
+			$.articleFeedbackv5special.abuseFeedback( $.articleFeedbackv5special.stripID( this, 'aft5-abuse-link-' ) );
 			return false;
 		} );
-		$( '.aft5-hide-link' ).live( 'click', function(e) {
-			var id = $( this ).attr( 'id' ).replace( 'aft5-hide-link-', '' );
-			$.articleFeedbackv5special.hideFeedback( id );
+		$( '.aft5-hide-link' ).live( 'click', function( e ) {
+			$.articleFeedbackv5special.hideFeedback( $.articleFeedbackv5special.stripID( this, 'aft5-hide-link-' ) );
 			return false;
 		} );
+	}
+
+	// Utility method for stripping long IDs down to the specific bits we care about.
+	$.articleFeedbackv5special.stripID = function ( object, toRemove ) {
+		return $( object ).attr( 'id' ).replace( toRemove, '' );
 	}
 
 	// }}}
@@ -202,17 +201,10 @@
 				if ( 'articlefeedbackv5-view-feedback' in data ) {
 					if ( resetContents ) {
 						$( '#aft5-show-feedback' ).html( data['articlefeedbackv5-view-feedback'].feedback);
-						$.articleFeedbackv5special.showing = data['articlefeedbackv5-view-feedback'].length;
 					} else {
 						$( '#aft5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback);
-						$.articleFeedbackv5special.showing += data['articlefeedbackv5-view-feedback'].length;
 					}
-					$( '#aft5-feedback-count-shown' ).text( $.articleFeedbackv5special.showing );
 					$( '#aft5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
-					if ( $.articleFeedbackv5special.showing >= data['articlefeedbackv5-view-feedback'].count ) {
-						$( '#aft5-show-more' ).hide();
-					}
-
 				} else {
 					$( '#aft5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
@@ -237,12 +229,9 @@ $( document ).ready( function() {
 
 // {{{ Kick off when ready
 
-	// This was failing sometimes when it was in the function above.
-	// I think it maky have been a race condition.
+	// Set up config vars, event binds, and do initial fetch.
 	$.articleFeedbackv5special.apiUrl  = mw.util.wikiScript('api');
 	$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
-
-	// Set up event binds and do initial data fetch.
 	$.articleFeedbackv5special.setBinds();
 	$.articleFeedbackv5special.loadFeedback( true );
 
