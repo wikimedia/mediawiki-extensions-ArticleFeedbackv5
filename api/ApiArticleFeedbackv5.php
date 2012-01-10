@@ -90,7 +90,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$ctaId      = $ratingIds['cta_id'];
 		$feedbackId = $ratingIds['feedback_id'];
 
-		$this->saveUserProperties( $revisionId );
+		$this->saveUserProperties( $feedbackId );
 		$this->updateRollupTables( $pageId, $revisionId, $user_answers );
 
 		if ( $params['email'] ) {
@@ -554,7 +554,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * Inserts or updates properties for a specific rating
 	 * @param $revisionId int    Revision ID
 	 */
-	private function saveUserProperties( $revisionId ) {
+	private function saveUserProperties( $feedbackId ) {
 		global $wgUser;
 		$dbw  = wfGetDB( DB_MASTER );
 		$dbr  = wfGetDB( DB_SLAVE );
@@ -564,28 +564,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		if( !$wgUser->isLoggedIn() ) {
 			return null;
 		}
-
-		// I'd really rather have this passed in, to save a query,
-		// and rule out consistency problems, but there doesn't seem
-		// to be a way to do 'RETUNING af_id' on the insert, or to
-		// pre-increment the ID column (since it's a MySQL auto-
-		// increment, not a sequence) before the insert.  So, fetch
-		// the most recent feedback ID for this user on this revision.
-		// This gets called imediately after saving, so it'll almost
-		// certainly be the right one.
-		$feedbackId = $dbr->selectField(
-			'aft_article_feedback',
-			'af_id',
-			array(
-				'af_revision_id' => $revisionId,
-				'af_user_id'     => $wgUser->getId()
-			),
-			__METHOD__,
-			array(
-				'ORDER BY' => 'af_id DESC',
-				'LIMIT'    => 1
-			)
-		);
 
 		// Total edits by this user
 		$rows[] = array(
