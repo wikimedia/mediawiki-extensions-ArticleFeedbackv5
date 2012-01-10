@@ -189,6 +189,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	private function validateText( &$value, $pageId ) {
 		global $wgArticleFeedbackv5MaxCommentLength;
 		$title = Title::newFromID( $pageId );
+		$filter_error = 0; # TODO
+		$spam_error   = 0; # TODO
+		$length_error = 0;
 
 		# Apparently this returns either true or an error message?
 		# http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/AbuseFilter/AbuseFilter.class.php?view=markup
@@ -198,15 +201,14 @@ class ApiArticleFeedbackv5 extends ApiBase {
 #		$filter_error = AbuseFilter::filterAction( $vars, $title );
 #		$filter_error = ( $filter_error === true ? 1 : 0 );
 
-		$filter_error = 0; # TODO
-		$spam_error   = 0; # TODO
+		# SpamBlacklist filtering goes here. (TODO)
 
 		# Not actually a requirement, but I can see this being a thing,
 		# not letting people post the entire text of 1984 in a comment
 		# or something like that.
-		$length_error = 0;
-		if( isset( $wgArticleFeedbackv5MaxCommentLength ) ) {
-			$length_error = strlen( $value ) > $wgArticleFeedbackv5MaxCommentLength ? 1 : 0;
+		if( $wgArticleFeedbackv5MaxCommentLength > 0
+		 && strlen( $value ) > $wgArticleFeedbackv5MaxCommentLength ) {
+			$length_error = 1;
 		}
 
 		$has_error = $filter_error + $spam_error + $length_error;

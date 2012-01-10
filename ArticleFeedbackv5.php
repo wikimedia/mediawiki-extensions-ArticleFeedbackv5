@@ -15,6 +15,10 @@ require_once( dirname( dirname( __FILE__ ) ) . '/SimpleSurvey/SimpleSurvey.php' 
 
 /* Configuration */
 
+// How long text-based feedback is allowed to be before returning an error.
+// Set to 0 to disable length checking entirely.
+$wgArticleFeedbackv5MaxCommentLength =  0;
+
 // How long to keep ratings in the squids (they will also be purged when needed)
 $wgArticleFeedbackv5SMaxage = 2592000;
 

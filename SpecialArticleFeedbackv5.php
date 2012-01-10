@@ -132,20 +132,20 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				'div', 
 				array( 'id' => 'aft5-sort-filter-controls' )
 			)
-			.$this->msg( 'articlefeedbackv5-special-sort-label-before' )
-			.implode( wfMessage( 'pipe-separator' )->escaped(), $sortLabels )
-			.$this->msg( 'articlefeedbackv5-special-sort-label-after' )
+			.$this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
+			.implode( $this->msg( 'pipe-separator' )->escaped(), $sortLabels )
+			.$this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
 
-			.$this->msg( 'articlefeedbackv5-special-filter-label-before' )
+			.$this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
 			.$filterSelect->getHTML()
-			.$this->msg( 'articlefeedbackv5-special-filter-label-after' )
+			.$this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
 			.Html::element( 
 				'a',
 				array(
 					'href'  => '#',
 					'id'    => 'articlefeedbackv5-special-add-feedback',
 				),
-				$this->msg( 'articlefeedbackv5-special-add-feedback' )
+				$this->msg( 'articlefeedbackv5-special-add-feedback' )->escaped()
                         )
 			.Html::closeElement( 'div' )
 		);

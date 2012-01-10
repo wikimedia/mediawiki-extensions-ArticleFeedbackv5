@@ -39,8 +39,9 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-flagging' => 'Error flagging feedback.',
 
 	// Article Feedback special page.
+	'articlefeedbackv5-form-tools-label' => 'Tools',
 	'articlefeedbackv5-form-helpful-label' => 'Is this feedback helpful?',
-	'articlefeedbackv5-special-add-feedback' => 'Add Your feedback',
+	'articlefeedbackv5-special-add-feedback' => 'Add your feedback',
 	'articlefeedbackv5-special-filter-visible' => 'Visible',
 	'articlefeedbackv5-special-filter-invisible' => 'Invisible',
 	'articlefeedbackv5-special-filter-all' => 'All',

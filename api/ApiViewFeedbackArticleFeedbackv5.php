@@ -196,7 +196,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		.$content
 		.wfMessage( 'articlefeedbackv5-form-helpful-label' )->escaped()
 		.Html::openElement( 'div', array( 'id' => 'aft5-feedback-tools' ) )
-		.Html::element( 'h3', array(), 'Tools' )
+		.Html::element( 'h3', array(), wfMessage( 'articlefeedbackv5-form-tools-label' )->escaped() )
 		.Html::openElement( 'ul' )
 		.($can_flag ? Html::rawElement( 'li', array(), Html::element( 'a', array(
 			'id'    => "aft5-hide-link-$id",
