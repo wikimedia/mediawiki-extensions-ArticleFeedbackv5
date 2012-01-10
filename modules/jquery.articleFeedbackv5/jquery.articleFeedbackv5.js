@@ -2352,6 +2352,7 @@
 			$.articleFeedbackv5.showCTA();
 		}
 
+		$.articleFeedbackv5.isLoaded = true;
 	};
 
 	// }}}
