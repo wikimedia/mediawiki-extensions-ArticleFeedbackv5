@@ -133,7 +133,7 @@ if ( 'D' == linkBucket ) {
 		</div>' );
 	$bottomRightTab.find( '#articleFeedbackv5-bottomrighttablink' )
 		.data( 'linkId', 'D' )
-		.html( mw.msg( 'articlefeedbackv5-bottomrighttab-linktext' ) )
+		.text( mw.msg( 'articlefeedbackv5-bottomrighttab-linktext' ) )
 		.click( function( e ) {
 			e.preventDefault();
 			clickFeedbackLink( $( e.target ) );
