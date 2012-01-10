@@ -2935,6 +2935,23 @@
 	};
 
 	// }}}
+	// {{{ toggleModal
+
+	/**
+	 * Toggles the modal state
+	 *
+	 * @param $link Element the feedback link
+	 */
+	$.articleFeedbackv5.toggleModal = function ( $link ) {
+		if ( $.articleFeedbackv5.inDialog ) {
+			$.articleFeedbackv5.closeAsModal();
+			$.articleFeedbackv5.$dialog.dialog( 'close' );
+		} else {
+			$.articleFeedbackv5.openAsModal( $link );
+		}
+	};
+
+	// }}}
 	// {{{ setDialogDimensions
 
 	/**
@@ -2992,6 +3009,7 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 		addToRemovalQueue: { args: 1, ret: false },
 		openAsModal: { args: 1, ret: false },
 		closeAsModal: { args: 0, ret: true },
+		toggleModal: { args: 1, ret: false },
 		trackClick: { args: 1, ret: false }
 	};
 	if ( opts in public ) {

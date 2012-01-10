@@ -24,7 +24,7 @@ var clickFeedbackLink = function ( $link ) {
 		'-trigger' + $link.data( 'linkId' ) +
 		'-click-overlay';
 	$aftDiv.articleFeedbackv5( 'trackClick', tracking_id );
-	$aftDiv.articleFeedbackv5( 'openAsModal', $link );
+	$aftDiv.articleFeedbackv5( 'toggleModal', $link );
 };
 
 // Bucketing
