@@ -2966,6 +2966,18 @@
 	};
 
 	// }}}
+	// {{{ clickTrackingOn
+
+	/**
+	 * Returns whether click tracking is on
+	 *
+	 * @bool whether click tracking is on
+	 */
+	$.articleFeedbackv5.clickTrackingOn = function () {
+		return $.articleFeedbackv5.clickTracking;
+	};
+
+	// }}}
 	// {{{ trackClick
 
 	/**
@@ -3011,6 +3023,7 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 		openAsModal: { args: 1, ret: false },
 		closeAsModal: { args: 0, ret: true },
 		toggleModal: { args: 1, ret: false },
+		clickTrackingOn: { args: 0, ret: true },
 		trackClick: { args: 1, ret: false }
 	};
 	if ( opts in public ) {

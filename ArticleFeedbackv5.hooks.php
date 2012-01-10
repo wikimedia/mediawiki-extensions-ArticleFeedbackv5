@@ -307,12 +307,14 @@ class ArticleFeedbackv5Hooks {
 		$ctaId    = $request->getVal( 'articleFeedbackv5_cta_id' );
 		$location = $request->getVal( 'articleFeedbackv5_location' );
 		$token    = $request->getVal( 'articleFeedbackv5_ct_token' );
+		$ctEvent  = $request->getVal( 'articleFeedbackv5_ct_event' );
 
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_click_tracking', $tracking );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_bucket_id', $bucketId );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_cta_id', $ctaId );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_location', $location );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_ct_token', $token );
+		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_ct_event', $ctEvent );
 
 		return true;
 	}
@@ -376,12 +378,17 @@ class ArticleFeedbackv5Hooks {
 		$ctaId    = $request->getVal( 'articleFeedbackv5_cta_id' );
 		$location = $request->getVal( 'articleFeedbackv5_location' );
 		$token    = $request->getVal( 'articleFeedbackv5_ct_token' );
+		$ctEvent  = $request->getVal( 'articleFeedbackv5_ct_event' );
 
-		$trackingId = 'ext.articleFeedbackv5@' . $version
-			. '-option' . $bucketId
-			. '-cta_' . ( isset( $ctas[$ctaId] ) ? $ctas[$ctaId] : 'unknown' )
-			. '-' . $event
-			. '-' . $location;
+		if ( $ctEvent ) {
+			$trackingId = $ctEvent . '-' . $event;
+		} else {
+			$trackingId = 'ext.articleFeedbackv5@' . $version
+				. '-option' . $bucketId
+				. '-cta_' . ( isset( $ctas[$ctaId] ) ? $ctas[$ctaId] : 'unknown' )
+				. '-' . $event
+				. '-' . $location;
+		}
 
 		$params = new FauxRequest( array(
 			'action' => 'clicktracking',
