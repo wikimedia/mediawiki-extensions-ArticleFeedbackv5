@@ -73,15 +73,6 @@ if ( $aftDiv.articleFeedbackv5( 'inDebug' ) ) {
 	aft5_debug( 'Using link option ' + linkBucket );
 }
 
-/*** REMOVING FEEDBACK LINK FOR 1.0 PER ERIK's REQUEST ***/
-/*** TO RESTORE FUNCTIONALITY REMOVE THE FOLLOWING LINES ***/
-if ( $aftDiv.articleFeedbackv5( 'inDebug' ) && mw.util.getParamValue( 'aftv5_show_link' ) == 'true' ) {
-	// Allow feedback link
-} else {
-	// Always turn off
-	linkBucket = '-';
-}
-
 // A: After the site tagline (below the article title)
 if ( 'A' == linkBucket ) {
 	var $sub = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-sitesublink"></a>' )
