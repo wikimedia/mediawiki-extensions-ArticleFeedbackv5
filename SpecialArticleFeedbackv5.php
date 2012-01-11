@@ -116,7 +116,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					'id'    => 'articlefeedbackv5-special-sort-'.$sort,
 					'class' => 'aft5-sort-link' 
 				),
-				$this->msg( 'articlefeedbackv5-special-sort-'.$sort )
+				$this->msg( 'articlefeedbackv5-special-sort-'.$sort )->text()
 			);
 		}
 
@@ -145,7 +145,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					'href'  => '#',
 					'id'    => 'articlefeedbackv5-special-add-feedback',
 				),
-				$this->msg( 'articlefeedbackv5-special-add-feedback' )->escaped()
+				$this->msg( 'articlefeedbackv5-special-add-feedback' )->text()
                         )
 			.Html::closeElement( 'div' )
 		);
@@ -164,7 +164,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					'href' => '#', 
 					'id'   => 'aft5-show-more' 
 				),
-				$this->msg( 'articlefeedbackv5-special-more' )->escaped()
+				$this->msg( 'articlefeedbackv5-special-more' )->text()
 			)
 		);
 	}
