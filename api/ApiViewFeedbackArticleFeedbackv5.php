@@ -196,20 +196,20 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		.$content
 		.wfMessage( 'articlefeedbackv5-form-helpful-label' )->escaped()
 		.Html::openElement( 'div', array( 'id' => 'aft5-feedback-tools' ) )
-		.Html::element( 'h3', array(), wfMessage( 'articlefeedbackv5-form-tools-label' )->escaped() )
+		.Html::element( 'h3', array(), wfMessage( 'articlefeedbackv5-form-tools-label' )->text() )
 		.Html::openElement( 'ul' )
 		.($can_flag ? Html::rawElement( 'li', array(), Html::element( 'a', array(
 			'id'    => "aft5-hide-link-$id",
 			'class' => 'aft5-hide-link'
-		), wfMessage( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )->escaped() ) ) : '' )
+		), wfMessage( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )->text() ) ) : '' )
 		.($can_hide ? Html::rawElement( 'li', array(), Html::element( 'a', array(
 			'id'    => "aft5-abuse-link-$id",
 			'class' => 'aft5-abuse-link'
-		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->escaped() ) ) : '' )
+		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
 		.($can_delete ? Html::rawElement( 'li', array(), Html::element( 'a', array(
 			'id'    => "aft5-delete-link-$id",
 			'class' => 'aft5-delete-link'
-		), wfMessage( 'articlefeedbackv5-form-delete' )->escaped() ) ) : '' )
+		), wfMessage( 'articlefeedbackv5-form-delete' )->text() ) ) : '' )
 		.Html::closeElement( 'ul' )
 		.Html::closeElement( 'div' )
 		.Html::closeElement( 'div' )
