@@ -2548,7 +2548,12 @@
 				} else {
 					var msg;
 					if ( 'error' in data ) {
-						msg = mw.msg( data.error );
+						if ( typeof( data.error ) == 'object' ) {
+							msg = data.error;
+						} else {
+							msg = mw.msg( data.error );
+						}
+						aft5_debug( data.error );
 					} else {
 						msg = { info: mw.msg( 'articlefeedbackv5-error-unknown' ) };
 					}
