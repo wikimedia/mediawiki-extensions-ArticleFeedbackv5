@@ -54,6 +54,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'bucketId'   => $bucket
 		);
 
+		// Validate the response data
 		foreach ( $fields as $field ) {
 			$field_name = $field['afi_name'];
 			if ( $field['afi_bucket_id'] != $bucket ) {
@@ -65,34 +66,35 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				if ( $value === '' ) {
 					continue;
 				}
-				if ( $this->validateParam( $value, $type, $field['afi_id'], $pageId ) ) {
-					$data = array(
-						'aa_field_id'    => $field['afi_id'],
-					);
-					foreach ( array( 'rating', 'text', 'boolean', 'option_id' ) as $t ) {
-						$data["aa_response_$t"] = $t == $type ? $value : null;
-					}
-					$user_answers[] = $data;
-					$email_data['ratingData'][$field_name] = $value;
-				} else {
+				if ( !$this->validateParam( $value, $type, $field['afi_id'], $pageId ) ) {
 					$error = 'articlefeedbackv5-error-validation';
+					break;
 				}
+				if ( 'text' == $type && $this->findAbuse( $value, $pageId ) ) {
+					$error = 'articlefeedbackv5-error-abuse';
+					break;
+				}
+				$data = array( 'aa_field_id' => $field['afi_id'] );
+				foreach ( array( 'rating', 'text', 'boolean', 'option_id' ) as $t ) {
+					$data["aa_response_$t"] = $t == $type ? $value : null;
+				}
+				$user_answers[] = $data;
+				$email_data['ratingData'][$field_name] = $value;
 			}
 		}
-
 		if ( $error ) {
-			$this->getResult()->addValue(
-				null, 'error', $error
-			);
+			$this->getResult()->addValue( null, 'error', $error );
 			return;
 		}
+
+		// Save the response data
 		$ratingIds  = $this->saveUserRatings( $user_answers, $bucket, $params );
 		$ctaId      = $ratingIds['cta_id'];
 		$feedbackId = $ratingIds['feedback_id'];
-
 		$this->saveUserProperties( $feedbackId );
 		$this->updateRollupTables( $pageId, $revisionId, $user_answers );
 
+		// If we have an email address, capture it
 		if ( $params['email'] ) {
 			$this->captureEmail ( $params['email'], FormatJson::encode(
 				$email_data
@@ -124,6 +126,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		);
 	}
 
+	/**
+	 * Option 5 only: Capture the user's email address
+	 *
+	 * @param $email string the email address
+	 * @param $json  string the info to send with it, as JSON
+	 */
 	protected function captureEmail( $email, $json ) {
 		# http://www.mediawiki.org/wiki/API:Calling_internally
 		$params = new FauxRequest( array(
@@ -174,7 +182,15 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				}
 				break;
 			case 'text':
-				return $this->validateText( $value, $pageId );
+				# Not actually a requirement, but I can see this being a thing,
+				# not letting people post the entire text of 1984 in a comment
+				# or something like that.
+				global $wgArticleFeedbackv5MaxCommentLength;
+				if ( $wgArticleFeedbackv5MaxCommentLength > 0
+					&& strlen( $value ) > $wgArticleFeedbackv5MaxCommentLength ) {
+					return false;
+				}
+				return true;
 			default:
 				return false;
 		}
@@ -182,38 +198,51 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	}
 
 	/**
-	 * Run the text through the AbuseFilter and SpamBlacklist extensions.
-	 * Should we check length as well? What's a reasonable max length?
+	 * Check for abusive or spammy content
 	 *
+	 * Check the following in sequence (cheapest processing to most expensive,
+	 * returning if we get a hit):
+	 *  1) Respect $wgSpamRegex
+	 *  2) Check SpamBlacklist
+	 *  3) Check AbuseFilter
+	 *
+	 * @param $value  string the text to check
+	 * @param $pageId int    the page ID
 	 */
-	private function validateText( &$value, $pageId ) {
-		global $wgArticleFeedbackv5MaxCommentLength;
-		$title = Title::newFromID( $pageId );
-		$filter_error = 0; # TODO
-		$spam_error   = 0; # TODO
-		$length_error = 0;
-
-		# Apparently this returns either true or an error message?
-		# http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/AbuseFilter/AbuseFilter.class.php?view=markup
-		# (line 715-721). So normalize this.
-		$vars  = array(
-		);
-#		$filter_error = AbuseFilter::filterAction( $vars, $title );
-#		$filter_error = ( $filter_error === true ? 1 : 0 );
-
-		# SpamBlacklist filtering goes here. (TODO)
-
-		# Not actually a requirement, but I can see this being a thing,
-		# not letting people post the entire text of 1984 in a comment
-		# or something like that.
-		if ( $wgArticleFeedbackv5MaxCommentLength > 0
-		 && strlen( $value ) > $wgArticleFeedbackv5MaxCommentLength ) {
-			$length_error = 1;
+	private function findAbuse( &$value, $pageId ) {
+		// Respect $wgSpamRegex
+		global $wgSpamRegex;
+		// In older versions, $wgSpamRegex may be a single string rather than
+		// an array of regexes, so make it compatible.
+		$regexes = ( array ) $wgSpamRegex;
+		foreach ( $regexes as $regex ) {
+			if ( preg_match( $regex, $value ) ) {
+				return true;
+			}
 		}
 
-		$has_error = $filter_error + $spam_error + $length_error;
+		// Create a fake title so we can pretend this is an article edit
+		$title = Title::newFromText( '__article_feedback_5__' );
 
-		return $has_error ? false : true;
+		// Check SpamBlacklist
+		$spam = wfSpamBlacklistObject();
+		$ret = $spam->filter( $title, $value, '' );
+		if ( $ret !== false ) {
+			return true;
+		}
+
+		// Check the abuse filter
+		global $wgUser;
+		$vars = new AbuseFilterVariableHolder;
+		$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
+		$vars->addHolder( AbuseFilter::generateTitleVars( $title, 'FEEDBACK' ) );
+		$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
+		$vars->setVar( 'ACTION', 'feedback' );
+		$vars->setVar( 'old_wikitext', '' );
+		$vars->setVar( 'new_wikitext', $value );
+		$vars->addHolder( AbuseFilter::getEditVars( $title ) );
+		$filter_result = AbuseFilter::filterAction( $vars, $title );
+		return $filter_result != '' && $filter_result !== true;
 	}
 
 	/**

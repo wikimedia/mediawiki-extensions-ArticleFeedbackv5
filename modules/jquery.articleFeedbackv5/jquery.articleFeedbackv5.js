@@ -2571,6 +2571,12 @@
 					if ( 'error' in data ) {
 						if ( typeof( data.error ) == 'object' ) {
 							msg = data.error;
+						} else if ( 'articlefeedbackv5-error-abuse' == data.error ) {
+							msg = $.articleFeedbackv5.buildLink( data.error, {
+								href: mw.msg( 'articleFeedbackv5-error-abuse-link' ),
+								text: 'articleFeedbackv5-error-abuse-linktext',
+								target: '_blank'
+							});
 						} else {
 							msg = mw.msg( data.error );
 						}
