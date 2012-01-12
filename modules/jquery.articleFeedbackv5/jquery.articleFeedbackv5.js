@@ -1343,7 +1343,8 @@
 						'articlefeedbackv5-bucket5-form-panel-helpimprove-note',
 						{
 							href: mw.config.get( 'wgArticleFeedbackv5TermsPage' ), // TODO: Make this work
-							text: 'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy'
+							text: 'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy',
+							target: '_blank'
 						}
 					) );
 
@@ -2168,22 +2169,43 @@
 		if ( link1 ) {
 			full = full.replace(
 					/\$1/,
-					mw.html.element( 'a', { href: link1.href }, mw.msg( link1.text )
+					mw.html.element( 'a', $.articleFeedbackv5.attribs( link1 ), mw.msg( link1.text )
 				).toString() );
 		}
 		if ( link2 ) {
 			full = full.replace(
 					/\$2/,
-					mw.html.element( 'a', { href: link2.href }, mw.msg( link2.text )
+					mw.html.element( 'a', $.articleFeedbackv5.attribs( link2 ), mw.msg( link2.text )
 				).toString() );
 		}
 		if ( link3 ) {
 			full = full.replace(
 					/\$3/,
-					mw.html.element( 'a', { href: link3.href }, mw.msg( link3.text )
+					mw.html.element( 'a', $.articleFeedbackv5.attribs( link3 ), mw.msg( link3.text )
 				).toString() );
 		}
 		return full;
+	};
+
+	// }}}
+	// {{{ attribs
+
+	/**
+	 * Utility method: Set up the attributes for a link (works with
+	 * buildLink())
+	 *
+	 * @param  object link the first link, as { href: '#', text: 'click here'.
+	 *                     other-attrib: 'whatever'}
+	 * @return object the attributes
+	 */
+	$.articleFeedbackv5.attribs = function ( link ) {
+		var attr = {};
+		for ( var k in link ) {
+			if ( 'text' != k ) {
+				attr[k] = link[k];
+			}
+		}
+		return attr;
 	};
 
 	// }}}
@@ -2552,7 +2574,6 @@
 						} else {
 							msg = mw.msg( data.error );
 						}
-						aft5_debug( data.error );
 					} else {
 						msg = { info: mw.msg( 'articlefeedbackv5-error-unknown' ) };
 					}
