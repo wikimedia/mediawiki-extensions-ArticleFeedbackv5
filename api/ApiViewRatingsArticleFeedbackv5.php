@@ -67,9 +67,9 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 		$where['arr_page_id']  = $pageId;
 		$where[] = 'arr_field_id = afi_id';
 		$rows  = $dbr->select(
-			array( 
-				'aft_article_feedback_ratings_rollup', 
-				'aft_article_field' 
+			array(
+				'aft_article_feedback_ratings_rollup',
+				'aft_article_field'
 			),
 			array(
 				'afi_name AS field_name',

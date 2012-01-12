@@ -15,7 +15,7 @@ aft5_debug = function( any ) {
 
 /*** Main entry point ***/
 jQuery( function( $ ) {
-	
+
 	var ua = navigator.userAgent.toLowerCase();
 	// Rule out MSIE 6, iPhone, iPod, iPad, Android
 	if(
@@ -29,8 +29,8 @@ jQuery( function( $ ) {
 		(ua.indexOf( 'ipad' ) != -1)
 	) {
 		return;
-	}	
-	
+	}
+
 	// Load check, is this page ArticleFeedbackv5-enabled ?
 	// Keep in sync with ApiArticleFeedbackv5.php
 	if (

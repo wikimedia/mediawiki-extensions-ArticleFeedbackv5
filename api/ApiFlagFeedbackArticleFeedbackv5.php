@@ -8,7 +8,7 @@
  */
 
 /**
- * This class pulls the individual ratings/comments for the feedback page. 
+ * This class pulls the individual ratings/comments for the feedback page.
  *
  * @package    ArticleFeedback
  * @subpackage Api
@@ -91,7 +91,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			'flagtype'   => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array( 
+				ApiBase::PARAM_TYPE     => array(
 				 'abuse', 'hide' )
 			),
 		);

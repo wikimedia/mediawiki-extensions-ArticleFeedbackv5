@@ -42,7 +42,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		);
 
 		foreach ( $feedback as $record ) {
-			$html .= $this->renderFeedback($record);
+			$html .= $this->renderFeedback( $record );
 			$length++;
 		}
 
@@ -58,7 +58,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$where['af_page_id'] = $pageId;
 
 		# Until this is done properly, just don't do anything.
-		return 0; 
+		return 0;
 
 #		return $dbr->selectField(
 #			array( 'aft_article_feedback' ),
@@ -77,8 +77,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$order;
 
 		# Newest first is the only option right now.
-		switch($order) {
-			case 'oldest': 
+		switch( $order ) {
+			case 'oldest':
 				$order = 'af_id ASC';
 				break;
 			case 'newest':
@@ -102,11 +102,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'ORDER BY' => $order
 			)
 		);
-		foreach($id_query as $id) {
+		foreach ( $id_query as $id ) {
 			$ids[] = $id->af_id;
 		}
 
-		if( !count( $ids ) ) {
+		if ( !count( $ids ) ) {
 			return array();
 		}
 
@@ -118,7 +118,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			array( 'af_id', 'af_bucket_id', 'afi_name', 'afo_name',
 				'aa_response_text', 'aa_response_boolean',
 				'aa_response_rating', 'aa_response_option_id',
-				'afi_data_type', 'af_created', 'user_name', 
+				'afi_data_type', 'af_created', 'user_name',
 				'af_user_ip', 'af_hide_count', 'af_abuse_count'
 			),
 			array( 'af_id' => $ids ),
@@ -141,15 +141,15 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			)
 		);
 
-		foreach( $rows as $row ) {
-			if( !array_key_exists( $row->af_id, $rv ) ) {
+		foreach ( $rows as $row ) {
+			if ( !array_key_exists( $row->af_id, $rv ) ) {
 				$rv[$row->af_id]    = array();
 				$rv[$row->af_id][0] = $row;
 				$rv[$row->af_id][0]->user_name = $row->user_name ? $row->user_name : $row->af_user_ip;
 			}
 			$rv[$row->af_id][$row->afi_name] = $row;
 		}
-		
+
 		return $rv;
 	}
 
@@ -188,37 +188,37 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		# TODO: permalinks
 		return Html::openElement( 'div', array( 'id' => 'aft5-feedback' ) )
-		.Html::openElement( 'p' )
-		.Html::element( 'a', array( 'class' => 'aft5-comment-name', 'href' => 'profilepage or whatever' ), $id )
-		.Html::element( 'span', array( 'class' => 'aft5-comment-timestamp' ), $record[0]->af_created )
-		.Html::closeElement( 'p' )
-		.wfMessage( 'articlefeedbackv5-form-optionid', $record[0]->af_bucket_id )->escaped()
-		.$content
-		.wfMessage( 'articlefeedbackv5-form-helpful-label' )->escaped()
-		.Html::openElement( 'div', array( 'id' => 'aft5-feedback-tools' ) )
-		.Html::element( 'h3', array(), wfMessage( 'articlefeedbackv5-form-tools-label' )->text() )
-		.Html::openElement( 'ul' )
-		.($can_flag ? Html::rawElement( 'li', array(), Html::element( 'a', array(
+		. Html::openElement( 'p' )
+		. Html::element( 'a', array( 'class' => 'aft5-comment-name', 'href' => 'profilepage or whatever' ), $id )
+		. Html::element( 'span', array( 'class' => 'aft5-comment-timestamp' ), $record[0]->af_created )
+		. Html::closeElement( 'p' )
+		. wfMessage( 'articlefeedbackv5-form-optionid', $record[0]->af_bucket_id )->escaped()
+		. $content
+		. wfMessage( 'articlefeedbackv5-form-helpful-label' )->escaped()
+		. Html::openElement( 'div', array( 'id' => 'aft5-feedback-tools' ) )
+		. Html::element( 'h3', array(), wfMessage( 'articlefeedbackv5-form-tools-label' )->text() )
+		. Html::openElement( 'ul' )
+		. ( $can_flag ? Html::rawElement( 'li', array(), Html::element( 'a', array(
 			'id'    => "aft5-hide-link-$id",
 			'class' => 'aft5-hide-link'
 		), wfMessage( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )->text() ) ) : '' )
-		.($can_hide ? Html::rawElement( 'li', array(), Html::element( 'a', array(
+		. ( $can_hide ? Html::rawElement( 'li', array(), Html::element( 'a', array(
 			'id'    => "aft5-abuse-link-$id",
 			'class' => 'aft5-abuse-link'
 		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
-		.($can_delete ? Html::rawElement( 'li', array(), Html::element( 'a', array(
+		. ( $can_delete ? Html::rawElement( 'li', array(), Html::element( 'a', array(
 			'id'    => "aft5-delete-link-$id",
 			'class' => 'aft5-delete-link'
 		), wfMessage( 'articlefeedbackv5-form-delete' )->text() ) ) : '' )
-		.Html::closeElement( 'ul' )
-		.Html::closeElement( 'div' )
-		.Html::closeElement( 'div' )
-		.Html::element( 'hr' );
+		. Html::closeElement( 'ul' )
+		. Html::closeElement( 'div' )
+		. Html::closeElement( 'div' )
+		. Html::element( 'hr' );
 	}
 
 	private function renderBucket1( $record ) {
 		$name  = htmlspecialchars( $record[0]->user_name );
-		if( $record['found']->aa_response_boolean ) {
+		if ( $record['found']->aa_response_boolean ) {
 			$found = wfMessage(
 				'articlefeedbackv5-form1-header-found',
 				$name
@@ -230,8 +230,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			)->escaped();
 		}
 		return "$found
-		<blockquote>".htmlspecialchars( $record['comment']->aa_response_text )
-		.'</blockquote>';
+		<blockquote>" . htmlspecialchars( $record['comment']->aa_response_text )
+		. '</blockquote>';
 	}
 
 	private function renderBucket2( $record ) {
@@ -243,16 +243,16 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// * articlefeedbackv5-form2-header-question
 		// * articlefeedbackv5-form2-header-suggestion
 		return wfMessage( 'articlefeedbackv5-form2-header-' . $type, $name )->escaped()
-		.'<blockquote>'.htmlspecialchars( $record['comment']->aa_response_text )
-		.'</blockquote>';
+		. '<blockquote>' . htmlspecialchars( $record['comment']->aa_response_text )
+		. '</blockquote>';
 	}
 
 	private function renderBucket3( $record ) {
 		$name   = htmlspecialchars( $record[0]->user_name );
 		$rating = htmlspecialchars( $record['rating']->aa_response_rating );
 		return wfMessage( 'articlefeedbackv5-form3-header', $name, $rating )->escaped()
-		.'<blockquote>'.htmlspecialchars( $record['comment']->aa_response_text )
-		.'</blockquote>';
+		. '<blockquote>' . htmlspecialchars( $record['comment']->aa_response_text )
+		. '</blockquote>';
 	}
 
 	private function renderBucket4( $record ) {
@@ -263,13 +263,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$name = htmlspecialchars( $record[0]->user_name );
 		$rv   = wfMessage( 'articlefeedbackv5-form5-header', $name )->escaped();
 		$rv .= '<ul>';
-		foreach( $record as $key => $answer ) {
-			if( $answer->afi_data_type == 'rating' && $key != '0' ) {
+		foreach ( $record as $key => $answer ) {
+			if ( $answer->afi_data_type == 'rating' && $key != '0' ) {
 				$rv .= "<li>"
-				.htmlspecialchars( $answer->afi_name  )
-				.': '
-				.htmlspecialchars( $answer->aa_response_rating )
-				."</li>";
+				. htmlspecialchars( $answer->afi_name  )
+				. ': '
+				. htmlspecialchars( $answer->aa_response_rating )
+				. "</li>";
 			}
 		}
 		$rv .= "</ul>";

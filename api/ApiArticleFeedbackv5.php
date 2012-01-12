@@ -206,7 +206,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		# Not actually a requirement, but I can see this being a thing,
 		# not letting people post the entire text of 1984 in a comment
 		# or something like that.
-		if( $wgArticleFeedbackv5MaxCommentLength > 0
+		if ( $wgArticleFeedbackv5MaxCommentLength > 0
 		 && strlen( $value ) > $wgArticleFeedbackv5MaxCommentLength ) {
 			$length_error = 1;
 		}
@@ -224,7 +224,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param $data     array the user's validated feedback answers
 	 */
 	public function updateRollupTables( $page, $revision, $data ) {
-		foreach( array( 'rating', 'boolean', 'option_id' ) as $type ) {
+		foreach ( array( 'rating', 'boolean', 'option_id' ) as $type ) {
 			$this->updateRollup( $page, $revision, $type, $data );
 		}
 	}
@@ -237,7 +237,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @return int     the oldest revision to still count
 	 */
 	public function getRevisionLimit( $pageId ) {
-		if( $this->revision_limit === null ) {
+		if ( $this->revision_limit === null ) {
 			$this->revision_limit = ApiArticleFeedbackv5Utils::getRevisionLimit( $pageId );
 		}
 		return $this->revision_limit;
@@ -292,7 +292,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$field = $row['aa_field_id'];
 		$value = $row["aa_response_$type"];
 
-		if( $type == 'option_id' ) {
+		if ( $type == 'option_id' ) {
 			// Selects are kind of a odd bird. We store one row
 			// per option per field, and each one has the number
 			// of times that option was chosen, and the number of
@@ -312,7 +312,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			// For each option this field has, make sure we have
 			// a row by inserting one - will fail silently if the
 			// row already exists.
-			foreach( $options as $option ) {
+			foreach ( $options as $option ) {
 				// These inserts could possibly fail or succeed
 				// individually, so we can't use the multiple-
 				// insert functionality of the insert class.
@@ -399,7 +399,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		// Select rollup data for revisions, grouped up by field, so we
 		// can drop it into the page rollups.
-		if( $type == 'option_id' ) {
+		if ( $type == 'option_id' ) {
 			$table  = 'aft_article_feedback_select_rollup';
 			$prefix = 'afsr_';
 			$rows   = $dbr->select(
@@ -419,7 +419,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			);
 
 			$page_data = array();
-			foreach( $rows as $row ) {
+			foreach ( $rows as $row ) {
 				$page_data[] = array(
 					'afsr_page_id'   => $pageId,
 					'afsr_field_id'  => $field,
@@ -517,7 +517,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		// Find the link ID using the order of the link buckets ('-' = 0, 'A' = 1,
 		// 'B' = 2, etc.)
 		$links = array_flip( array_keys( $wgArticleFeedbackv5LinkBuckets['buckets'] ) );
-		$linkId = isset($links[$linkName]) ? $links[$linkName] : 0;
+		$linkId = isset( $links[$linkName] ) ? $links[$linkName] : 0;
 
 		$dbw->begin();
 
@@ -534,7 +534,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		$feedbackId = $dbw->insertID();
 
-		foreach($data as $key => $item) {
+		foreach ( $data as $key => $item ) {
 			$data[$key]['aa_feedback_id'] = $feedbackId;
 		}
 
@@ -548,8 +548,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$dbw->commit();
 
 		return array(
-			'cta_id'      => ($ctaId ? $ctaId : 0),
-			'feedback_id' => ($feedbackId ? $feedbackId : 0)
+			'cta_id'      => ( $ctaId ? $ctaId : 0 ),
+			'feedback_id' => ( $feedbackId ? $feedbackId : 0 )
 		);
 	}
 
@@ -564,7 +564,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$rows = array();
 
 		// Only save data for logged-in users.
-		if( !$wgUser->isLoggedIn() ) {
+		if ( !$wgUser->isLoggedIn() ) {
 			return null;
 		}
 

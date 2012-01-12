@@ -52,10 +52,10 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			# TODO: Fix links.
 			$out->addHTML(
 				Html::openElement(
-					'div', 
+					'div',
 					array( 'id' => 'aft5-header-links' )
 				)
-				.Linker::link(
+				. Linker::link(
 					Title::newFromText( $param ),
 					$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
 				)
@@ -69,30 +69,30 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					Title::newFromText( $param ),
 					$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
 				)
-				.Html::closeElement( 'div' )
+				. Html::closeElement( 'div' )
 			);
 		}
 
-		$out->addHTML( 
+		$out->addHTML(
 			Html::openElement(
-				'div', 
+				'div',
 				array( 'id' => 'aft5-showing-count-wrap' )
 			)
-			.$this->msg(
+			. $this->msg(
 				'articlefeedbackv5-special-showing',
 				Html::element( 'span', array( 'id' => 'aft-feedback-count-total' ), '0' )
 			)
-			.Html::closeElement( 'div' )
+			. Html::closeElement( 'div' )
 		);
 
 		if ( $found ) {
 			$out->addHtml(
 				Html::openElement(
-					'div', 
+					'div',
 					array( 'id' => 'aft5-percent-found-wrap' )
 				)
-				.$this->msg( 'articlefeedbackv5-percent-found', $found )->escaped()
-				.Html::closeElement( 'div' )
+				. $this->msg( 'articlefeedbackv5-percent-found', $found )->escaped()
+				. Html::closeElement( 'div' )
 			);
 		}
 
@@ -108,15 +108,15 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		$sortLabels = array();
 		$sortOpts   = array( 'newest', 'oldest' );
-		foreach( $sortOpts as $sort ) {
-			$sortLabels[] = Html::element( 
+		foreach ( $sortOpts as $sort ) {
+			$sortLabels[] = Html::element(
 				'a',
 				array(
 					'href'  => '#',
-					'id'    => 'articlefeedbackv5-special-sort-'.$sort,
-					'class' => 'aft5-sort-link' 
+					'id'    => 'articlefeedbackv5-special-sort-' . $sort,
+					'class' => 'aft5-sort-link'
 				),
-				$this->msg( 'articlefeedbackv5-special-sort-'.$sort )->text()
+				$this->msg( 'articlefeedbackv5-special-sort-' . $sort )->text()
 			);
 		}
 
@@ -125,21 +125,21 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			'articlefeedbackv5-special-filter-visible'   => 'visible',
 			'articlefeedbackv5-special-filter-invisible' => 'invisible',
 			'articlefeedbackv5-special-filter-all'       => 'all',
-		)));
+		) ) );
 
 		$out->addHTML(
 			Html::openElement(
-				'div', 
+				'div',
 				array( 'id' => 'aft5-sort-filter-controls' )
 			)
-			.$this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
-			.implode( $this->msg( 'pipe-separator' )->escaped(), $sortLabels )
-			.$this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
+			. $this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
+			. implode( $this->msg( 'pipe-separator' )->escaped(), $sortLabels )
+			. $this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
 
-			.$this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
-			.$filterSelect->getHTML()
-			.$this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
-			.Html::element( 
+			. $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
+			. $filterSelect->getHTML()
+			. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
+			. Html::element(
 				'a',
 				array(
 					'href'  => '#',
@@ -147,22 +147,22 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				),
 				$this->msg( 'articlefeedbackv5-special-add-feedback' )->text()
                         )
-			.Html::closeElement( 'div' )
+			. Html::closeElement( 'div' )
 		);
 
 		$out->addHTML(
 			Html::element(
-				'div', 
+				'div',
 				array(
 					'id'    => 'aft5-show-feedback',
 					'style' => 'border:1px solid red;'
 				), ''
 			)
-			.Html::element( 
-				'a', 
-				array( 
-					'href' => '#', 
-					'id'   => 'aft5-show-more' 
+			. Html::element(
+				'a',
+				array(
+					'href' => '#',
+					'id'   => 'aft5-show-more'
 				),
 				$this->msg( 'articlefeedbackv5-special-more' )->text()
 			)
