@@ -2030,7 +2030,7 @@
 		// When the tool is visible, load the form
 		$.articleFeedbackv5.$holder.appear( function () {
 			if ( !$.articleFeedbackv5.isLoaded ) {
-				$.articleFeedbackv5.load();
+				$.articleFeedbackv5.load( 'auto', 'bottom' );
 			}
 		} );
 		// Keep track of links that must be removed after a successful submission
@@ -2321,11 +2321,12 @@
 	/**
 	 * Loads the tool onto the page
 	 *
-	 * @param display string "form" or "cta"
+	 * @param display string what to load ("form", "cta", or "auto")
+	 * @param from    string from whence came the request ("bottom" or "overlay")
 	 */
-	$.articleFeedbackv5.load = function ( display ) {
+	$.articleFeedbackv5.load = function ( display, from ) {
 
-		if ( display ) {
+		if ( display && 'auto' != display ) {
 			$.articleFeedbackv5.toDisplay = ( display == 'cta' ? 'cta' : 'form' );
 		}
 
@@ -2339,7 +2340,7 @@
 				return;
 			}
 			$.articleFeedbackv5.loadContainers();
-			$.articleFeedbackv5.showForm();
+			$.articleFeedbackv5.showForm( from );
 		}
 
 		else if ( 'cta' == $.articleFeedbackv5.toDisplay ) {
@@ -2349,7 +2350,7 @@
 				return;
 			}
 			$.articleFeedbackv5.loadContainers();
-			$.articleFeedbackv5.showCTA();
+			$.articleFeedbackv5.showCTA( from );
 		}
 
 		$.articleFeedbackv5.isLoaded = true;
@@ -2431,8 +2432,10 @@
 
 	/**
 	 * Builds the form and loads it into the document
+	 *
+	 * @param from string from whence came the request ("bottom" or "overlay")
 	 */
-	$.articleFeedbackv5.showForm = function () {
+	$.articleFeedbackv5.showForm = function ( from ) {
 
 		// Build the form
 		var bucket = $.articleFeedbackv5.currentBucket();
@@ -2467,11 +2470,7 @@
 		}
 
 		// Track the event
-		if ( $.articleFeedbackv5.inDialog ) {
-			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-impression-overlay' );
-		} else {
-			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-impression-bottom' );
-		}
+		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-impression-' + from );
 
 		$.articleFeedbackv5.nowShowing = 'form';
 	};
@@ -2537,7 +2536,7 @@
 					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
 					$.articleFeedbackv5.selectCTA( data.articlefeedbackv5.cta_id );
 					$.articleFeedbackv5.unlockForm();
-					$.articleFeedbackv5.showCTA();
+					$.articleFeedbackv5.showCTA( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
 					// Drop a cookie for a successful submit
 					$.cookie( $.articleFeedbackv5.prefix( 'submitted' ), 'true', { 'expires': 365, 'path': '/' } );
 					// Clear out anything that needs removing (usually feedback links)
@@ -2603,8 +2602,10 @@
 
 	/**
 	 * Shows a CTA
+	 *
+	 * @param from string from whence came the request ("bottom" or "overlay")
 	 */
-	$.articleFeedbackv5.showCTA = function () {
+	$.articleFeedbackv5.showCTA = function ( from ) {
 
 		// Build the cta
 		var cta = $.articleFeedbackv5.currentCTA();
@@ -2668,8 +2669,7 @@
 
 		// Track the event
 		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-' +
-			$.articleFeedbackv5.ctaName() + '-impression-' +
-			( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+			$.articleFeedbackv5.ctaName() + '-impression-' + from );
 
 		$.articleFeedbackv5.nowShowing = 'cta';
 	};
@@ -2896,7 +2896,7 @@
 			// $.articleFeedbackv5.clear();
 		}
 		if ( !$.articleFeedbackv5.isLoaded ) {
-			$.articleFeedbackv5.load();
+			$.articleFeedbackv5.load( 'auto', 'overlay' );
 		}
 		if ( !$.articleFeedbackv5.inDialog ) {
 			$.articleFeedbackv5.setDialogDimensions();
