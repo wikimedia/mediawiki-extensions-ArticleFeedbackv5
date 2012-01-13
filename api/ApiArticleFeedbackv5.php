@@ -212,37 +212,46 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	private function findAbuse( &$value, $pageId ) {
 		// Respect $wgSpamRegex
 		global $wgSpamRegex;
-		// In older versions, $wgSpamRegex may be a single string rather than
-		// an array of regexes, so make it compatible.
-		$regexes = ( array ) $wgSpamRegex;
-		foreach ( $regexes as $regex ) {
-			if ( preg_match( $regex, $value ) ) {
-				return true;
+		if ( ( is_array( $wgSpamRegex ) && count( $wgSpamRegex ) > 0 )
+			|| ( is_string( $wgSpamRegex ) && strlen( $wgSpamRegex ) > 0 ) ) {
+			// In older versions, $wgSpamRegex may be a single string rather than
+			// an array of regexes, so make it compatible.
+			$regexes = ( array ) $wgSpamRegex;
+			foreach ( $regexes as $regex ) {
+				if ( preg_match( $regex, $value ) ) {
+					return true;
+				}
 			}
 		}
 
 		// Create a fake title so we can pretend this is an article edit
 		$title = Title::newFromText( '__article_feedback_5__' );
 
-		// Check SpamBlacklist
-		$spam = wfSpamBlacklistObject();
-		$ret = $spam->filter( $title, $value, '' );
-		if ( $ret !== false ) {
-			return true;
+		// Check SpamBlacklist, if installed
+		if ( function_exists( 'wfSpamBlacklistObject' ) ) {
+			$spam = wfSpamBlacklistObject();
+			$ret = $spam->filter( $title, $value, '' );
+			if ( $ret !== false ) {
+				return true;
+			}
 		}
 
-		// Check the abuse filter
-		global $wgUser;
-		$vars = new AbuseFilterVariableHolder;
-		$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
-		$vars->addHolder( AbuseFilter::generateTitleVars( $title, 'FEEDBACK' ) );
-		$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
-		$vars->setVar( 'ACTION', 'feedback' );
-		$vars->setVar( 'old_wikitext', '' );
-		$vars->setVar( 'new_wikitext', $value );
-		$vars->addHolder( AbuseFilter::getEditVars( $title ) );
-		$filter_result = AbuseFilter::filterAction( $vars, $title );
-		return $filter_result != '' && $filter_result !== true;
+		// Check AbuseFilter, if installed
+		if ( class_exists( 'AbuseFilter' ) ) {
+			global $wgUser;
+			$vars = new AbuseFilterVariableHolder;
+			$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
+			$vars->addHolder( AbuseFilter::generateTitleVars( $title, 'FEEDBACK' ) );
+			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
+			$vars->setVar( 'ACTION', 'feedback' );
+			$vars->setVar( 'old_wikitext', '' );
+			$vars->setVar( 'new_wikitext', $value );
+			$vars->addHolder( AbuseFilter::getEditVars( $title ) );
+			$filter_result = AbuseFilter::filterAction( $vars, $title );
+			return $filter_result != '' && $filter_result !== true;
+		}
+
+		return false;
 	}
 
 	/**
