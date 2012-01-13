@@ -116,9 +116,9 @@ if ( 'B' == linkBucket ) {
 // C: Button fixed to right side
 if ( 'C' == linkBucket ) {
 	var $fixedTab = $( '\
-		<div id="articleFeedbackv5-fixedtab">\
-			<div id="articleFeedbackv5-fixedtabbox">\
-				<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-fixedtablink"></a>\
+		<div id="articleFeedbackv5-fixedtab" class="articleFeedbackv5-fixedtab">\
+			<div id="articleFeedbackv5-fixedtabbox" class="articleFeedbackv5-fixedtabbox">\
+				<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-fixedtablink" class="articleFeedbackv5-fixedtablink"></a>\
 			</div>\
 		</div>' );
 	$fixedTab.find( '#articleFeedbackv5-fixedtablink' )
@@ -129,18 +129,15 @@ if ( 'C' == linkBucket ) {
 			clickFeedbackLink( $( e.target ) );
 		} );
 	$fixedTab.insertBefore( $aftDiv );
-	$fixedTab.addClass( 'articleFeedbackv5-fixedtab' );
-	$fixedTab.find( '#articleFeedbackv5-fixedtabbox' ).addClass( 'articleFeedbackv5-fixedtabbox' );
-	$fixedTab.find( '#articleFeedbackv5-fixedtablink' ).addClass( 'articleFeedbackv5-fixedtablink' );
 	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $fixedTab );
 }
 
 // D: Button fixed to bottom right
 if ( 'D' == linkBucket ) {
 	var $bottomRightTab = $( '\
-		<div id="articleFeedbackv5-bottomrighttab">\
-			<div id="articleFeedbackv5-bottomrighttabbox">\
-				<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-bottomrighttablink"></a>\
+		<div id="articleFeedbackv5-bottomrighttab" class="articleFeedbackv5-bottomrighttab">\
+			<div id="articleFeedbackv5-bottomrighttabbox" class="articleFeedbackv5-bottomrighttabbox">\
+				<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-bottomrighttablink" class="articleFeedbackv5-bottomrighttablink"></a>\
 			</div>\
 		</div>' );
 	$bottomRightTab.find( '#articleFeedbackv5-bottomrighttablink' )
@@ -151,9 +148,6 @@ if ( 'D' == linkBucket ) {
 			clickFeedbackLink( $( e.target ) );
 		} );
 	$bottomRightTab.insertBefore( $aftDiv );
-	$bottomRightTab.addClass( 'articleFeedbackv5-bottomrighttab' );
-	$bottomRightTab.find( '#articleFeedbackv5-bottomrighttabbox' ).addClass( 'articleFeedbackv5-bottomrighttabbox' );
-	$bottomRightTab.find( '#articleFeedbackv5-bottomrighttablink' ).addClass( 'articleFeedbackv5-bottomrighttablink' );
 	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $bottomRightTab );
 }
 
