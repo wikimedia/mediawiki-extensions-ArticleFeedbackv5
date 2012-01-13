@@ -46,9 +46,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$bucket       = $params['bucket'];
 		$revisionId   = $params['revid'];
 		$error        = null;
-		$user_answers = array();
+		$userAnswers  = array();
 		$fields       = ApiArticleFeedbackv5Utils::getFields();
-		$email_data   = array(
+		$emailData    = array(
 			'ratingData' => array(),
 			'pageID'     => $pageId,
 			'bucketId'   => $bucket
@@ -78,8 +78,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				foreach ( array( 'rating', 'text', 'boolean', 'option_id' ) as $t ) {
 					$data["aa_response_$t"] = $t == $type ? $value : null;
 				}
-				$user_answers[] = $data;
-				$email_data['ratingData'][$field_name] = $value;
+				$userAnswers[] = $data;
+				$emailData['ratingData'][$field_name] = $value;
 			}
 		}
 		if ( $error ) {
@@ -88,16 +88,17 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 
 		// Save the response data
-		$ratingIds  = $this->saveUserRatings( $user_answers, $bucket, $params );
+		$ratingIds  = $this->saveUserRatings( $userAnswers, $bucket, $params );
 		$ctaId      = $ratingIds['cta_id'];
 		$feedbackId = $ratingIds['feedback_id'];
 		$this->saveUserProperties( $feedbackId );
-		$this->updateRollupTables( $pageId, $revisionId, $user_answers );
+		$this->updateRollupTables( $pageId, $revisionId, $userAnswers );
+		$this->updateFilterCounts( $pageId, $userAnswers );
 
 		// If we have an email address, capture it
 		if ( $params['email'] ) {
 			$this->captureEmail ( $params['email'], FormatJson::encode(
-				$email_data
+				$emailData
 			) );
 		}
 
@@ -252,6 +253,65 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 
 		return false;
+	}
+
+	public function updateFilterCounts( $pageId, $answers ) {
+		$has_comment = false;
+
+		# Does this record have a comment attached? 
+		# Defined as an answer of type 'text'.
+		foreach( $answers as $a ) {
+			if( $a['aa_response_text'] !== null ) {
+				$has_comment = true;
+			}
+		}
+
+		# Update the overall number of records for this page.
+		$this->updateFilterCount( $pageId, 'all' );
+		# If the feedbackrecord had a comment, update that fitler count.
+		if( $has_comment ) {
+			$this->updateFilterCount( $pageId, 'comment' );
+		}
+	}
+
+	/**
+	 * Update the feedback count rollup table
+	 *
+	 * @param $pageId     int    the page id
+	 * @param $filterName string the name of the filter to update
+	 */
+	private function updateFilterCount( $pageId, $filterName ) {
+		$dbw = wfGetDB( DB_MASTER );
+
+		$dbw->begin();
+
+		# Try to insert the record, but ignore failures.
+		# Ensures the count row exists.
+		$dbw->insert(
+			'aft_article_filter_counts',
+			array( 
+				'afc_page_id'      => $pageId,
+				'afc_filter_name'  => $filterName,
+				'afc_filter_count' => 0
+			),
+			__METHOD__,
+			array( 'IGNORE' )
+		);
+
+		# Update the count row, incrementing the count.
+		$dbw->update(
+			'aft_article_filter_counts',
+			array( 
+				'afc_filter_count = afc_filter_count + 1'
+			),
+			array(
+				'afc_page_id'     => $pageId,
+				'afc_filter_name' => $filterName
+			),
+			__METHOD__
+		);
+		
+		$dbw->commit();
 	}
 
 	/**

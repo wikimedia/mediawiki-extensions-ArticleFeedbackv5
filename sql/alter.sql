@@ -48,3 +48,11 @@ ALTER TABLE aft_article_revision_feedback_ratings_rollup ADD PRIMARY KEY (afrr_p
 
 -- added 12/16 (Roan)
 ALTER TABLE aft_article_feedback MODIFY COLUMN af_user_ip varchar(32) NULL;
+
+-- added 1/13 (greg)
+CREATE TABLE IF NOT EXISTS /*_*/aft_article_filter_count (
+  afc_page_id      integer unsigned NOT NULL,
+  afc_filter_name  varchar(64) NOT NULL,
+  afc_filter_count integer unsigned NOT NULL,
+  PRIMARY KEY (afc_page_id, afc_filter_name)
+);

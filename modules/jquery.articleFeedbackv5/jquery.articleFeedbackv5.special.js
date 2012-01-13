@@ -50,12 +50,12 @@
 	/**
 	 * The number of responses to display per data pull
 	 */
-	$.articleFeedbackv5special.limit = 25;
+	$.articleFeedbackv5special.limit = 5;
 
 	/**
 	 * The index at which to start the pull
 	 */
-	$.articleFeedbackv5special.offset = 0;
+	$.articleFeedbackv5special.continue = null;
 
 	/**
 	 * The url to which to send the request
@@ -69,27 +69,26 @@
 	 * Binds events for each of the controls
 	 */
 	$.articleFeedbackv5special.setBinds = function() {
-		$( '#aft5-filter' ).bind( 'change', function( e ) {
+		$( '#articleFeedbackv5-filter' ).bind( 'change', function( e ) {
 			$.articleFeedbackv5special.filter = $(this).val();
 			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
-		$( '.aft5-sort-link' ).bind( 'click', function( e ) {
-			$.articleFeedbackv5special.sort = $.articleFeedbackv5special.stripID( this, 'articlefeedbackv5-special-sort-' );
+		$( '.articleFeedbackv5-sort-link' ).bind( 'click', function( e ) {
+			$.articleFeedbackv5special.sort = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-sort-' );
 			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
-		$( '#aft5-show-more' ).bind( 'click', function( e ) {
-			$.articleFeedbackv5special.offset += $.articleFeedbackv5special.limit;
+		$( '#articleFeedbackv5-show-more' ).bind( 'click', function( e ) {
 			$.articleFeedbackv5special.loadFeedback( false );
 			return false;
 		} );
-		$( '.aft5-abuse-link' ).live( 'click', function( e ) {
-			$.articleFeedbackv5special.abuseFeedback( $.articleFeedbackv5special.stripID( this, 'aft5-abuse-link-' ) );
+		$( '.articleFeedbackv5-abuse-link' ).live( 'click', function( e ) {
+			$.articleFeedbackv5special.abuseFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-abuse-link-' ) );
 			return false;
 		} );
-		$( '.aft5-hide-link' ).live( 'click', function( e ) {
-			$.articleFeedbackv5special.hideFeedback( $.articleFeedbackv5special.stripID( this, 'aft5-hide-link-' ) );
+		$( '.articleFeedbackv5-hide-link' ).live( 'click', function( e ) {
+			$.articleFeedbackv5special.hideFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-hide-link-' ) );
 			return false;
 		} );
 	}
@@ -156,10 +155,10 @@
 						}
 					}
 				}
-				$( '#aft5-' + type + '-link-' + id ).text( mw.msg( msg ) );
+				$( '#articleFeedbackv5-' + type + '-link-' + id ).text( mw.msg( msg ) );
 			},
 			'error': function ( data ) {
-				$( '#aft5-' + type + '-link-' + id ).text( mw.msg( 'articlefeedbackv5-error-flagging' ) );
+				$( '#articleFeedbackv5-' + type + '-link-' + id ).text( mw.msg( 'articlefeedbackv5-error-flagging' ) );
 			}
 		} );
 		return false;
@@ -187,11 +186,11 @@
 			'type'    : 'GET',
 			'dataType': 'json',
 			'data'    : {
-				'afvfpageid': $.articleFeedbackv5special.page,
-				'afvffilter': $.articleFeedbackv5special.filter,
-				'afvfsort'  : $.articleFeedbackv5special.sort,
-				'afvflimit' : $.articleFeedbackv5special.limit,
-				'afvfoffset': $.articleFeedbackv5special.offset,
+				'afvfpageid'  : $.articleFeedbackv5special.page,
+				'afvffilter'  : $.articleFeedbackv5special.filter,
+				'afvfsort'    : $.articleFeedbackv5special.sort,
+				'afvflimit'   : $.articleFeedbackv5special.limit,
+				'afvfcontinue': $.articleFeedbackv5special.continue,
 				'action'  : 'query',
 				'format'  : 'json',
 				'list'    : 'articlefeedbackv5-view-feedback',
@@ -200,17 +199,18 @@
 			'success': function ( data ) {
 				if ( 'articlefeedbackv5-view-feedback' in data ) {
 					if ( resetContents ) {
-						$( '#aft5-show-feedback' ).html( data['articlefeedbackv5-view-feedback'].feedback);
+						$( '#articleFeedbackv5-show-feedback' ).html( data['articlefeedbackv5-view-feedback'].feedback);
 					} else {
-						$( '#aft5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback);
+						$( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback);
 					}
-					$( '#aft5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
+					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
+					$.articleFeedbackv5special.continue = data['articlefeedbackv5-view-feedback'].continue;
 				} else {
-					$( '#aft5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
+					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
 			},
 			'error': function ( data ) {
-				$( '#aft5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
+				$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 			}
 		} );
 

@@ -140,6 +140,17 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_revision_feedback_select_rollup (
   PRIMARY KEY (arfsr_page_id, arfsr_field_id, arfsr_revision_id, arfsr_option_id)
 ) /*$wgDBTableOptions*/;
 
+-- Exists to provide counts on filters for the feedback page, and toggle the "more" button"
+CREATE TABLE IF NOT EXISTS /*_*/aft_article_filter_count (
+  -- Keys to page.page_id
+  afc_page_id      integer unsigned NOT NULL,
+  -- The name of the filter (must be matched by the fitler select on feedback page)
+  afc_filter_name  varchar(64) NOT NULL,
+  -- Number of aft_article_feedback records that match this filter.
+  afc_filter_count integer unsigned NOT NULL,
+  PRIMARY KEY (afc_page_id, afc_filter_name)
+);
+
 -- Directly taken from AFTv4
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback_properties (
   -- Keys to article_feedback.aa_id

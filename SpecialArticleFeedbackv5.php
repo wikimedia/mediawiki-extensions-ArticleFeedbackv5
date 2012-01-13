@@ -15,6 +15,12 @@
  * @subpackage Special
  */
 class SpecialArticleFeedbackv5 extends SpecialPage {
+	private $filters = array( 
+		'visible', 
+		'invisible', 
+		'all', 
+		'comment'
+	);
 
 	/**
 	 * Constructor
@@ -29,8 +35,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @param $param string the parameter passed in the url
 	 */
 	public function execute( $param ) {
-		$out = $this->getOutput();
+		$out   = $this->getOutput();
 		$title = Title::newFromText( $param );
+
 		if ( $title ) {
 			$pageId = $title->getArticleID();
 		} else {
@@ -39,8 +46,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		$ratings = $this->fetchOverallRating( $pageId );
-		$found = isset( $ratings['found'] ) ? $ratings['found'] : null;
-		$rating = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
+		$found   = isset( $ratings['found'] ) ? $ratings['found'] : null;
+		$rating  = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
 
 		$out->setPagetitle(
 			$this->msg( 'articlefeedbackv5-special-pagetitle', $title )->escaped()
@@ -53,7 +60,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$out->addHTML(
 				Html::openElement(
 					'div',
-					array( 'id' => 'aft5-header-links' )
+					array( 'id' => 'articleFeedbackv5-header-links' )
 				)
 				. Linker::link(
 					Title::newFromText( $param ),
@@ -76,11 +83,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->addHTML(
 			Html::openElement(
 				'div',
-				array( 'id' => 'aft5-showing-count-wrap' )
+				array( 'id' => 'articleFeedbackv5-showing-count-wrap' )
 			)
 			. $this->msg(
 				'articlefeedbackv5-special-showing',
-				Html::element( 'span', array( 'id' => 'aft-feedback-count-total' ), '0' )
+				Html::element( 'span', array( 'id' => 'articleFeedbackv5-feedback-count-total' ), '0' )
 			)
 			. Html::closeElement( 'div' )
 		);
@@ -89,7 +96,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$out->addHtml(
 				Html::openElement(
 					'div',
-					array( 'id' => 'aft5-percent-found-wrap' )
+					array( 'id' => 'articleFeedbackv5-percent-found-wrap' )
 				)
 				. $this->msg( 'articlefeedbackv5-percent-found', $found )->escaped()
 				. Html::closeElement( 'div' )
@@ -105,7 +112,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->addJsConfigVars( 'afPageId', $pageId );
 		$out->addModules( 'jquery.articleFeedbackv5.special' );
 
-
 		$sortLabels = array();
 		$sortOpts   = array( 'newest', 'oldest' );
 		foreach ( $sortOpts as $sort ) {
@@ -113,24 +119,28 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				'a',
 				array(
 					'href'  => '#',
-					'id'    => 'articlefeedbackv5-special-sort-' . $sort,
-					'class' => 'aft5-sort-link'
+					'id'    => 'articleFeedbackv5-special-sort-' . $sort,
+					'class' => 'articleFeedbackv5-sort-link'
 				),
 				$this->msg( 'articlefeedbackv5-special-sort-' . $sort )->text()
 			);
 		}
 
-		$filterSelect = new XmlSelect( false, 'aft5-filter' );
-		$filterSelect->addOptions( $this->selectMsg( array(
-			'articlefeedbackv5-special-filter-visible'   => 'visible',
-			'articlefeedbackv5-special-filter-invisible' => 'invisible',
-			'articlefeedbackv5-special-filter-all'       => 'all',
-		) ) );
+		$opts   = array();
+		$counts = $this->getFilterCounts( $pageId );
+		foreach( $this->filters as $filter ) {
+			$count = isset($counts[$filter]) ? $counts[$filter] : 0;
+			$key = $this->msg( 'articlefeedbackv5-special-filter-'.$filter, $count )->escaped();
+			$opts[ (string) $key ] = $filter;
+		}
+
+		$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter' );
+		$filterSelect->addOptions( $opts );
 
 		$out->addHTML(
 			Html::openElement(
 				'div',
-				array( 'id' => 'aft5-sort-filter-controls' )
+				array( 'id' => 'articleFeedbackv5-sort-filter-controls' )
 			)
 			. $this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
 			. implode( $this->msg( 'pipe-separator' )->escaped(), $sortLabels )
@@ -143,7 +153,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				'a',
 				array(
 					'href'  => '#',
-					'id'    => 'articlefeedbackv5-special-add-feedback',
+					'id'    => 'articleFeedbackv5-special-add-feedback',
 				),
 				$this->msg( 'articlefeedbackv5-special-add-feedback' )->text()
                         )
@@ -154,15 +164,14 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			Html::element(
 				'div',
 				array(
-					'id'    => 'aft5-show-feedback',
-					'style' => 'border:1px solid red;'
-				), ''
+					'id'    => 'articleFeedbackv5-show-feedback',
+				)
 			)
 			. Html::element(
 				'a',
 				array(
 					'href' => '#',
-					'id'   => 'aft5-show-more'
+					'id'   => 'articleFeedbackv5-show-more'
 				),
 				$this->msg( 'articlefeedbackv5-special-more' )->text()
 			)
@@ -220,5 +229,27 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		return $rv;
 	}
 
+	private function getFilterCounts( $pageId ) {
+		$rv   = array();
+		$dbr  = wfGetDB( DB_SLAVE );
+		$rows = $dbr->select(
+			'aft_article_filter_count',
+			array(
+				'afc_filter_name',
+				'afc_filter_count'
+			),
+			array(
+				'afc_page_id' => $pageId
+			),
+			array(),
+			__METHOD__
+		);
+
+		foreach( $rows as $row ) {
+			$rv[ $row->afc_filter_name ] = $row->afc_filter_count;
+		}
+
+		return $rv;
+	}
 }
 
