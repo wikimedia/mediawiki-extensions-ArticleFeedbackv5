@@ -129,7 +129,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'aa_response_text', 'aa_response_boolean',
 				'aa_response_rating', 'aa_response_option_id',
 				'afi_data_type', 'af_created', 'user_name',
-				'af_user_ip', 'af_hide_count', 'af_abuse_count'
+				'af_user_ip', 'af_hide_count', 'af_abuse_count',
+				'af_helpful_count'
 			),
 			array( 'af_id' => $ids ),
 			__METHOD__,
@@ -192,42 +193,57 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 		# TODO: check roles to determine what to show here (and cache somewhere so we don't keep looking them up).
 		$can_flag   = 1;
+		$can_upvote = 1;
 		$can_hide   = 1;
 		$can_delete = 1;
 		$id         = $record[0]->af_id;
 
-		# TODO: permalinks
-		return Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback' ) )
-		. Html::openElement( 'p' )
+		$header_links = Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-head' ) )
 		. Html::element( 'a', array( 'class' => 'articleFeedbackv5-comment-name', 'href' => 'profilepage or whatever' ), $id )
 		. Html::element( 'span', array( 'class' => 'articleFeedbackv5-comment-timestamp' ), $record[0]->af_created )
-		. Html::closeElement( 'p' )
 		. wfMessage( 'articlefeedbackv5-form-optionid', $record[0]->af_bucket_id )->escaped()
-		. $content
+		. Html::closeElement( 'p' );
 
-		. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback-rate' ) )
-		. wfMessage( 'articlefeedbackv5-form-helpful-label' )->escaped()
-		. Html::closeElement( 'div' )
-
-		. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback-tools' ) )
-		. Html::element( 'h3', array(), wfMessage( 'articlefeedbackv5-form-tools-label' )->text() )
+		$footer_links = Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-foot' ) )
 		. Html::openElement( 'ul' )
 		. ( $can_flag ? Html::rawElement( 'li', array(), Html::element( 'a', array(
-			'id'    => "articleFeedbackv5-hide-link-$id",
-			'class' => 'articleFeedbackv5-hide-link'
-		), wfMessage( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )->text() ) ) : '' )
-		. ( $can_hide ? Html::rawElement( 'li', array(), Html::element( 'a', array(
 			'id'    => "articleFeedbackv5-abuse-link-$id",
 			'class' => 'articleFeedbackv5-abuse-link'
 		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
+		. ( $can_upvote ? Html::rawElement( 'li', array(), Html::element( 'a', array(
+			'id'    => "articleFeedbackv5-helpful-link-$id",
+			'class' => 'articleFeedbackv5-helpful-link'
+		), wfMessage( 'articlefeedbackv5-form-helpful', $record[0]->af_helpful_count )->text() ) ) : '' )
+		. Html::closeElement( 'ul' )
+		. Html::closeElement( 'p' );
+
+		$rate = Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback-rate' ) )
+		. wfMessage( 'articlefeedbackv5-form-helpful-label' )->escaped()
+		. Html::closeElement( 'div' );
+
+
+		$tools = Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback-tools' ) )
+		. Html::element( 'h3', array(), wfMessage( 'articlefeedbackv5-form-tools-label' )->text() )
+		. Html::openElement( 'ul' )
+		. ( $can_hide ? Html::rawElement( 'li', array(), Html::element( 'a', array(
+			'id'    => "articleFeedbackv5-hide-link-$id",
+			'class' => 'articleFeedbackv5-hide-link'
+		), wfMessage( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )->text() ) ) : '' )
 		. ( $can_delete ? Html::rawElement( 'li', array(), Html::element( 'a', array(
 			'id'    => "articleFeedbackv5-delete-link-$id",
 			'class' => 'articleFeedbackv5-delete-link'
 		), wfMessage( 'articlefeedbackv5-form-delete' )->text() ) ) : '' )
 		. Html::closeElement( 'ul' )
-		. Html::closeElement( 'div' )
-		. Html::closeElement( 'div' )
-		. Html::element( 'hr' );
+		. Html::closeElement( 'div' );
+
+		# TODO: permalinks
+		return Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback' ) )
+		. $tools
+		. $header_links
+		. $content
+		. $footer_links
+		. $rate
+		. Html::closeElement( 'div' );
 	}
 
 	private function renderBucket1( $record ) {

@@ -45,6 +45,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$update['af_abuse_count'] = $record->af_abuse_count + 1;
 		} elseif ( $params['flagtype'] == 'hide' ) {
 			$update['af_hide_count'] = $record->af_hide_count + 1;
+		} elseif ( $params['flagtype'] == 'helpful' ) {
+			$update['af_helpful_count'] = $record->af_helpful_count + 1;
 		} else {
 			$error = 'articlefeedbackv5-invalid-feedback-flag';
 		}
@@ -92,7 +94,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'abuse', 'hide' )
+				 'abuse', 'hide', 'helpful' )
 			),
 		);
 	}

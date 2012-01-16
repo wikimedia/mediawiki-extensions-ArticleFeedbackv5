@@ -35,7 +35,8 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   af_created         binary(14) NOT NULL DEFAULT '',
   -- Number of times the feedback was hidden or marked as abusive.
   af_abuse_count     integer unsigned NOT NULL DEFAULT 0,
-  af_hide_count      integer unsigned NOT NULL DEFAULT 0
+  af_hide_count      integer unsigned NOT NULL DEFAULT 0,
+  af_helpful_count   integer unsigned NOT NULL DEFAULT 0
 ) /*$wgDBTableOptions*/;
 CREATE INDEX /*i*/af_page_user_token_id ON /*_*/aft_article_feedback (af_page_id, af_user_id, af_user_anon_token, af_id);
 CREATE INDEX /*i*/af_revision_id ON /*_*/aft_article_feedback (af_revision_id);

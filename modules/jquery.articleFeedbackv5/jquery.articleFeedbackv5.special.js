@@ -70,12 +70,14 @@
 	 */
 	$.articleFeedbackv5special.setBinds = function() {
 		$( '#articleFeedbackv5-filter' ).bind( 'change', function( e ) {
-			$.articleFeedbackv5special.filter = $(this).val();
+			$.articleFeedbackv5special.filter   = $(this).val();
+			$.articleFeedbackv5special.continue = null;
 			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
 		$( '.articleFeedbackv5-sort-link' ).bind( 'click', function( e ) {
 			$.articleFeedbackv5special.sort = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-sort-' );
+			$.articleFeedbackv5special.continue = null;
 			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
@@ -91,6 +93,10 @@
 			$.articleFeedbackv5special.hideFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-hide-link-' ) );
 			return false;
 		} );
+		$( '.articleFeedbackv5-helpful-link' ).live( 'click', function( e ) {
+			$.articleFeedbackv5special.helpfulFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-helpful-link-' ) );
+			return false;
+		} );
 	}
 
 	// Utility method for stripping long IDs down to the specific bits we care about.
@@ -100,6 +106,18 @@
 
 	// }}}
 	// {{{ Moderation methods
+
+	// {{{ helpfulFeedback 
+
+	/**
+	 * Hides a response
+	 *
+	 * @param id int the feedback id
+	 */
+	$.articleFeedbackv5special.helpfulFeedback = function ( id ) {
+		$.articleFeedbackv5special.flagFeedback( id, 'helpful' );
+	}
+
 
 	// {{{ hideFeedback
 
