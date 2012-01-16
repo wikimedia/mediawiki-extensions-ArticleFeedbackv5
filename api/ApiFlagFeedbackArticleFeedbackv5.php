@@ -38,6 +38,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			array( 'af_id' => $params['feedbackid'] )
 		);
 
+		# TODO: 
 		if ( !$record->af_id ) {
 			// no-op, because this is already broken
 			$error = 'articlefeedbackv5-invalid-feedback-id';
@@ -47,6 +48,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$update['af_hide_count'] = $record->af_hide_count + 1;
 		} elseif ( $params['flagtype'] == 'helpful' ) {
 			$update['af_helpful_count'] = $record->af_helpful_count + 1;
+		} elseif ( $params['flagtype'] == 'delete' ) {
+			$update['af_delete_count'] = $record->af_delete_count + 1;
 		} else {
 			$error = 'articlefeedbackv5-invalid-feedback-flag';
 		}
@@ -85,6 +88,11 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getAllowedParams() {
 		return array(
+			'pageid'     => array(
+				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_TYPE     => 'integer'
+			),
 			'feedbackid' => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
@@ -94,7 +102,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'abuse', 'hide', 'helpful' )
+				 'abuse', 'hide', 'helpful', 'delete' )
 			),
 		);
 	}

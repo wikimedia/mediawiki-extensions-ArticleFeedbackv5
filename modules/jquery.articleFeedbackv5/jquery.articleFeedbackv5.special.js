@@ -93,6 +93,10 @@
 			$.articleFeedbackv5special.hideFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-hide-link-' ) );
 			return false;
 		} );
+		$( '.articleFeedbackv5-delete-link' ).live( 'click', function( e ) {
+			$.articleFeedbackv5special.deleteFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-delete-link-' ) );
+			return false;
+		} );
 		$( '.articleFeedbackv5-helpful-link' ).live( 'click', function( e ) {
 			$.articleFeedbackv5special.helpfulFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-helpful-link-' ) );
 			return false;
@@ -110,7 +114,7 @@
 	// {{{ helpfulFeedback 
 
 	/**
-	 * Hides a response
+	 * Flags a response as helpful
 	 *
 	 * @param id int the feedback id
 	 */
@@ -118,6 +122,16 @@
 		$.articleFeedbackv5special.flagFeedback( id, 'helpful' );
 	}
 
+	// {{{ hideFeedback
+
+	/**
+	 * "Deletes" a response - actually just super-hides so only admins see.
+	 *
+	 * @param id int the feedback id
+	 */
+	$.articleFeedbackv5special.deleteFeedback = function ( id ) {
+		$.articleFeedbackv5special.flagFeedback( id, 'delete' );
+	}
 
 	// {{{ hideFeedback
 
@@ -157,6 +171,7 @@
 			'type'    : 'POST',
 			'dataType': 'json',
 			'data'    : {
+				'pageid'    : $.articleFeedbackv5special.page,
 				'feedbackid': id,
 				'flagtype'  : type,
 				'format'    : 'json',

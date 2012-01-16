@@ -80,7 +80,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$where = $this->getFilterCriteria( $filter );
 		$order;
 
-		# Newest first is the only option right now.
 		# TODO: The SQL needs to handle all sorts of weird cases.
 		switch( $order ) {
 			case 'oldest':
@@ -95,6 +94,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 
 		$where['af_page_id'] = $pageId;
+		# the join is needed for the comment 
+		$where[] = 'af_id = aa_feedback_id';
 
 		if( $continue !== null ) {
 			$where[] = "$continueSql $continue";
@@ -106,7 +107,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		   record until we fetch them, this is the only way to make
 		   sure we get all answers for the exact IDs we want. */
 		$id_query = $dbr->select(
-			'aft_article_feedback', 'af_id', $where, __METHOD__,
+			array(
+				'aft_article_feedback', 
+				'aft_article_answer'
+			),
+			'DISTINCT af_id', $where, __METHOD__,
 			array(
 				'LIMIT'    => $limit,
 				'ORDER BY' => $order
@@ -130,7 +135,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'aa_response_rating', 'aa_response_option_id',
 				'afi_data_type', 'af_created', 'user_name',
 				'af_user_ip', 'af_hide_count', 'af_abuse_count',
-				'af_helpful_count'
+				'af_helpful_count', 'af_delete_count'
 			),
 			array( 'af_id' => $ids ),
 			__METHOD__,
@@ -173,6 +178,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			case 'invisible':
 				$where = array( 'af_hide_count > 0' );
  				break;
+			case 'comment':
+				$where = array( 'aa_response_text IS NOT NULL');
+				break;
 			case 'visible':
 			default:
 				$where = array( 'af_hide_count' => 0 );
@@ -206,20 +214,20 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		$footer_links = Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-foot' ) )
 		. Html::openElement( 'ul' )
-		. ( $can_flag ? Html::rawElement( 'li', array(), Html::element( 'a', array(
-			'id'    => "articleFeedbackv5-abuse-link-$id",
-			'class' => 'articleFeedbackv5-abuse-link'
-		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
 		. ( $can_upvote ? Html::rawElement( 'li', array(), Html::element( 'a', array(
 			'id'    => "articleFeedbackv5-helpful-link-$id",
 			'class' => 'articleFeedbackv5-helpful-link'
 		), wfMessage( 'articlefeedbackv5-form-helpful', $record[0]->af_helpful_count )->text() ) ) : '' )
+		. ( $can_flag ? Html::rawElement( 'li', array(), Html::element( 'a', array(
+			'id'    => "articleFeedbackv5-abuse-link-$id",
+			'class' => 'articleFeedbackv5-abuse-link'
+		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
 		. Html::closeElement( 'ul' )
 		. Html::closeElement( 'p' );
 
-		$rate = Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback-rate' ) )
-		. wfMessage( 'articlefeedbackv5-form-helpful-label' )->escaped()
-		. Html::closeElement( 'div' );
+#		$rate = Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback-rate' ) )
+#		. wfMessage( 'articlefeedbackv5-form-helpful-label' )->escaped()
+#		. Html::closeElement( 'div' );
 
 
 		$tools = Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback-tools' ) )

@@ -267,51 +267,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 
 		# Update the overall number of records for this page.
-		$this->updateFilterCount( $pageId, 'all' );
-		# If the feedbackrecord had a comment, update that fitler count.
+		ApiArticleFeedbackv5Utils::incrementFilterCount( $pageId, 'all' );
+		# If the feedbackrecord had a comment, update that filter count.
 		if( $has_comment ) {
-			$this->updateFilterCount( $pageId, 'comment' );
+			ApiArticleFeedbackv5Utils::incrementFilterCount( $pageId, 'comment' );
 		}
-	}
-
-	/**
-	 * Update the feedback count rollup table
-	 *
-	 * @param $pageId     int    the page id
-	 * @param $filterName string the name of the filter to update
-	 */
-	private function updateFilterCount( $pageId, $filterName ) {
-		$dbw = wfGetDB( DB_MASTER );
-
-		$dbw->begin();
-
-		# Try to insert the record, but ignore failures.
-		# Ensures the count row exists.
-		$dbw->insert(
-			'aft_article_filter_counts',
-			array( 
-				'afc_page_id'      => $pageId,
-				'afc_filter_name'  => $filterName,
-				'afc_filter_count' => 0
-			),
-			__METHOD__,
-			array( 'IGNORE' )
-		);
-
-		# Update the count row, incrementing the count.
-		$dbw->update(
-			'aft_article_filter_counts',
-			array( 
-				'afc_filter_count = afc_filter_count + 1'
-			),
-			array(
-				'afc_page_id'     => $pageId,
-				'afc_filter_name' => $filterName
-			),
-			__METHOD__
-		);
-		
-		$dbw->commit();
 	}
 
 	/**

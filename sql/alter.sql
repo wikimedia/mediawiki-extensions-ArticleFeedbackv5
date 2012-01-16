@@ -59,3 +59,4 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_filter_count (
 
 -- added 1/16 (greg)
 ALTER TABLE aft_article_feedback ADD COLUMN af_helpful_count integer unsigned NOT NULL DEFAULT 0;
+ALTER TABLE aft_article_feedback ADD COLUMN af_delete_count integer unsigned NOT NULL DEFAULT 0;
