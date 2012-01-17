@@ -158,6 +158,8 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-invalid-feedback-flag',
 				'articlefeedbackv5-abuse-saved',
 				'articlefeedbackv5-hide-saved',
+				'articlefeedbackv5-delete-saved',
+				'articlefeedbackv5-helpful-saved'
 			),
 		),
 	);
