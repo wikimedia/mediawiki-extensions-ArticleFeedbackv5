@@ -34,7 +34,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		# load feedback record, bail if we don't have one
 		$record = $dbr->selectRow(
 			'aft_article_feedback',
-			array( 'af_id', 'af_abuse_count', 'af_hide_count' ),
+			array( 'af_id', 'af_abuse_count', 'af_hide_count', 'af_helpful_count', 'af_delete_count' ),
 			array( 'af_id' => $params['feedbackid'] )
 		);
 

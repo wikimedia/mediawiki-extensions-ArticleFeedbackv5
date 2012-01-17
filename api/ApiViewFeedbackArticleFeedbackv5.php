@@ -58,9 +58,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	public function fetchFeedbackCount( $pageId, $filter ) {
-		$dbr = wfGetDB( DB_SLAVE );
-
-		return $dbr->selectField(
+		$dbr   = wfGetDB( DB_SLAVE );
+		$count = $dbr->selectField(
 			array( 'aft_article_filter_count' ),
 			array( 'afc_filter_count' ),
 			array(
@@ -69,6 +68,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			),
 			__METHOD__
 		);
+		// selectField returns false if there's no row, so make that 0
+		return $count ? $count : 0;
 	}
 
 	public function fetchFeedback( $pageId,
@@ -218,10 +219,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'id'    => "articleFeedbackv5-helpful-link-$id",
 			'class' => 'articleFeedbackv5-helpful-link'
 		), wfMessage( 'articlefeedbackv5-form-helpful', $record[0]->af_helpful_count )->text() ) ) : '' )
-		. ( $can_flag ? Html::rawElement( 'li', array(), Html::element( 'a', array(
-			'id'    => "articleFeedbackv5-abuse-link-$id",
-			'class' => 'articleFeedbackv5-abuse-link'
-		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
 		. Html::closeElement( 'ul' )
 		. Html::closeElement( 'p' );
 
@@ -241,6 +238,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'id'    => "articleFeedbackv5-delete-link-$id",
 			'class' => 'articleFeedbackv5-delete-link'
 		), wfMessage( 'articlefeedbackv5-form-delete' )->text() ) ) : '' )
+		. ( $can_flag ? Html::rawElement( 'li', array(), Html::element( 'a', array(
+			'id'    => "articleFeedbackv5-abuse-link-$id",
+			'class' => 'articleFeedbackv5-abuse-link'
+		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
 		. Html::closeElement( 'ul' )
 		. Html::closeElement( 'div' );
 
