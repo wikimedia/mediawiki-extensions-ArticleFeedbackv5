@@ -60,6 +60,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-filter-label-before' => 'Show only:',
 	'articlefeedbackv5-special-filter-label-after' => '',
 	'articlefeedbackv5-special-showing' => '$1 feedback posts on this page', // FIXME: Needs plural support on $1.
+	'articleFeedbackv5-link' => 'Permanent link',
+	'articleFeedbackv5-updates-since' => '$1 Edits since post',
 	'articlefeedbackv5-special-more' => 'More',
 	'articlefeedbackv5-special-pagetitle' => 'Feedback: $1',
 

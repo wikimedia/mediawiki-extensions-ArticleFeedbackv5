@@ -207,11 +207,30 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$can_delete = 1;
 		$id         = $record[0]->af_id;
 
-		$header_links = Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-head' ) )
-		. Html::element( 'a', array( 'class' => 'articleFeedbackv5-comment-name', 'href' => 'profilepage or whatever' ), $id )
-		. Html::element( 'span', array( 'class' => 'articleFeedbackv5-comment-timestamp' ), $record[0]->af_created )
-		. wfMessage( 'articlefeedbackv5-form-optionid', $record[0]->af_bucket_id )->escaped()
-		. Html::closeElement( 'p' );
+#		$header_links = Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-head' ) )
+#		. Html::element( 'a', array( 'class' => 'articleFeedbackv5-comment-name', 'href' => 'profilepage or whatever' ), $id )
+#		. Html::openElement( 'div', array(
+#		. Html::element( 'span', array( 'class' => 'articleFeedbackv5-comment-timestamp' ), $record[0]->af_created )
+#		. wfMessage( 'articlefeedbackv5-form-optionid', $record[0]->af_bucket_id )->escaped()
+#		. Html::closeElement( 'p' );
+
+		$details = Html::openElement( 'div', array(
+			'class' => 'articleFeedbackv5-comment-details'
+		) )
+		. Html::element( 'div', array(
+			'class' => 'articleFeedbackv5-comment-details-date'
+		), date( 'r', $record[0]->af_created ) )
+		. Html::openElement( 'div', array(
+			'class' => 'articleFeedbackv5-comment-details-permalink'
+		) )
+		.Html::element( 'a', array(
+			'href' => '#'
+		), wfMessage( 'articlefeedbackv5-comment-link' ) )
+		. Html::closeElement( 'div' )
+		. Html::element( 'div', array(
+			'class' => 'articleFeedbackv5-comment-details-updates'
+		), wfMessage( 'articleFeedbackv5-updates-since', 0 ) );
+;
 
 		$footer_links = Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-foot' ) )
 		. Html::openElement( 'ul' )
@@ -247,9 +266,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		# TODO: permalinks
 		return Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback' ) )
-		. $tools
 		. $header_links
 		. $content
+		. $details
+		. $tools
 		. $footer_links
 		. $rate
 		. Html::closeElement( 'div' );
