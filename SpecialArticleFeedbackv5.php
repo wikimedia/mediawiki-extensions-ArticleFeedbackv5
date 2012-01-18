@@ -101,7 +101,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				. Html::element(
 					'span',
 					array( 'class' => 'stat-marker positive' )
-				, $found )
+				, $found.'%' )
 				. wfMessage( 'articlefeedbackv5-percent-found' )
 				. Html::closeElement( 'span' )
 				. Html::closeElement( 'div' )
