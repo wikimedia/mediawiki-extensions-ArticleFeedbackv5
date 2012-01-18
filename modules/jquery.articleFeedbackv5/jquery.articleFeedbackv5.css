@@ -203,24 +203,24 @@
 	/* @embed */
 	background-image: url(images/trash-hover.png);
 }
-.articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full {
+.articleFeedbackv5-rating-label-full {
 	/* @embed */
 	background-image: url(images/star-full.png);
 }
-.articleFeedbackv5-expired .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full {
+.articleFeedbackv5-expired .articleFeedbackv5-rating-label-full {
 	/* @embed */
 	background-image: url(images/star-full-expired.png);
 }
-.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full,
-.articleFeedbackv5-rating .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-hover-tail {
+.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-full,
+.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-hover-tail {
 	/* @embed */
 	background-image: url(images/star-new.png);
 }
-.articleFeedbackv5-rating .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-hover-head {
+.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-hover-head {
 	/* @embed */
 	background-image: url(images/star-new-hover.png);
 }
-.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-down {
+.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-down {
 	/* @embed */
 	background-image: url(images/star-new-down.png);
 }
@@ -230,24 +230,24 @@
 	/* @embed */
 	background-image: url(images/old-star-empty.png);
 }
-.articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full {
+.articleFeedbackv5-rating-label-full {
 	/* @embed */
 	background-image: url(images/old-star-full.png);
 }
-.articleFeedbackv5-expired .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full {
+.articleFeedbackv5-expired .articleFeedbackv5-rating-label-full {
 	/* @embed */
 	background-image: url(images/old-star-full-expired.png);
 }
-.articleFeedbackv5-option-5 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-full,
-.articleFeedbackv5-option-5 .articleFeedbackv5-rating .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-hover-tail {
+.articleFeedbackv5-option-5 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-full,
+.articleFeedbackv5-option-5 .articleFeedbackv5-rating .articleFeedbackv5-rating-label-hover-tail {
 	/* @embed */
 	background-image: url(images/old-star-new.png);
 }
-.articleFeedbackv5-option-5 .articleFeedbackv5-rating .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-hover-head {
+.articleFeedbackv5-option-5 .articleFeedbackv5-rating .articleFeedbackv5-rating-label-hover-head {
 	/* @embed */
 	background-image: url(images/old-star-new-hover.png);
 }
-.articleFeedbackv5-option-5 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.articleFeedbackv5-rating-label-down {
+.articleFeedbackv5-option-5 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-down {
 	/* @embed */
 	background-image: url(images/old-star-new-down.png);
 }
@@ -789,15 +789,20 @@
 /*** Option 3 ***/
 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label {
 	/* @embed */
-	background: url(images/bg-rating-off.png) no-repeat;
+	background: url(images/star-empty.png) no-repeat;
 }
-
-.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label.active {
+.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-full {
 	/* @embed */
-	background: url(images/bg-rating-on.png) no-repeat;
+	background: url(images/star-new.png) no-repeat;
 }
-
-.articleFeedbackv5-rating .articleFeedbackv5-rating-prompt {
+.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-hover-head,
+.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-hover-tail {
+	/* @embed */
+	background: url(images/star-new-hover.png) no-repeat;
+}
+.articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-hover-head:active {
+	/* @embed */
+	background: url(images/star-new-down.png) no-repeat;
 }
 
 /*** Option 4 ***/
