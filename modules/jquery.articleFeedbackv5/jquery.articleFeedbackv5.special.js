@@ -43,6 +43,11 @@
 	$.articleFeedbackv5special.filter = 'visible';
 
 	/**
+	 * Some fitlers have values they need tobe passed (eg, permalinks)
+	 */
+	$.articleFeedbackv5special.filterValue = undefined;
+
+	/**
 	 * The name of the sorting method used
 	 */
 	$.articleFeedbackv5special.sort = 'newest';
@@ -50,7 +55,7 @@
 	/**
 	 * The number of responses to display per data pull
 	 */
-	$.articleFeedbackv5special.limit = 5;
+	$.articleFeedbackv5special.limit = 25;
 
 	/**
 	 * The index at which to start the pull
@@ -225,11 +230,12 @@
 			'type'    : 'GET',
 			'dataType': 'json',
 			'data'    : {
-				'afvfpageid'  : $.articleFeedbackv5special.page,
-				'afvffilter'  : $.articleFeedbackv5special.filter,
-				'afvfsort'    : $.articleFeedbackv5special.sort,
-				'afvflimit'   : $.articleFeedbackv5special.limit,
-				'afvfcontinue': $.articleFeedbackv5special.continue,
+				'afvfpageid'      : $.articleFeedbackv5special.page,
+				'afvffilter'      : $.articleFeedbackv5special.filter,
+				'afvffiltervalue' : $.articleFeedbackv5special.filterValue,
+				'afvfsort'        : $.articleFeedbackv5special.sort,
+				'afvflimit'       : $.articleFeedbackv5special.limit,
+				'afvfcontinue'    : $.articleFeedbackv5special.continue,
 				'action'  : 'query',
 				'format'  : 'json',
 				'list'    : 'articlefeedbackv5-view-feedback',
@@ -278,6 +284,16 @@ $( document ).ready( function() {
 	$.articleFeedbackv5special.apiUrl  = mw.util.wikiScript('api');
 	$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
 	$.articleFeedbackv5special.setBinds();
+
+	// Process anything we found in the URL hash
+	// Permalinks.
+	var id = window.location.hash.match(/id=(\d+)/)
+	if( id ) {
+		$.articleFeedbackv5special.filter      = 'id';
+		$.articleFeedbackv5special.filterValue = id[1];
+	}
+
+	// Initial load
 	$.articleFeedbackv5special.loadFeedback( true );
 
 // }}}

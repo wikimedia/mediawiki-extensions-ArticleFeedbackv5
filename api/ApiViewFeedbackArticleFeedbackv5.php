@@ -31,10 +31,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$pageId   = $params['pageid'];
 		$html     = '';
 		$length   = 0;
-		$count    = $this->fetchFeedbackCount( $params['pageid'], $params['filter'] );
+		$count    = $this->fetchFeedbackCount( $params['pageid'], $params['filter'], $params['filtervalue'] );
 		$feedback = $this->fetchFeedback(
 			$params['pageid'],
 			$params['filter'],
+			$params['filtervalue'],
 			$params['sort'],
 			$params['limit'],
 			( $params['continue'] !== 'null' ? $params['continue'] : null )
@@ -57,7 +58,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 	}
 
-	public function fetchFeedbackCount( $pageId, $filter ) {
+	public function fetchFeedbackCount( $pageId, $filter, $filterValue ) {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$count = $dbr->selectField(
 			array( 'aft_article_filter_count' ),
@@ -73,12 +74,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	public function fetchFeedback( $pageId,
-	 $filter = 'visible', $order = 'newest', $limit = 25, $continue = null ) {
+	 $filter = 'visible', $filterValue = null, $order = 'newest', $limit = 25, $continue = null ) {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$ids   = array();
 		$rows  = array();
 		$rv    = array();
-		$where = $this->getFilterCriteria( $filter );
+		$where = $this->getFilterCriteria( $filter, $filterValue );
 		$order;
 
 		# TODO: The SQL needs to handle all sorts of weird cases.
@@ -118,6 +119,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'ORDER BY' => $order
 			)
 		);
+
 		foreach ( $id_query as $id ) {
 			$ids[] = $id->af_id;
 		}
@@ -136,7 +138,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'aa_response_rating', 'aa_response_option_id',
 				'afi_data_type', 'af_created', 'user_name',
 				'af_user_ip', 'af_hide_count', 'af_abuse_count',
-				'af_helpful_count', 'af_delete_count'
+				'af_helpful_count', 'af_delete_count', '(SELECT COUNT(*) FROM revision WHERE rev_id > af_revision_id AND rev_page = '.( integer ) $pageId.') AS age'
 			),
 			array( 'af_id' => $ids ),
 			__METHOD__,
@@ -170,7 +172,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		return $rv;
 	}
 
-	private function getFilterCriteria( $filter ) {
+	private function getFilterCriteria( $filter, $filterValue = null ) {
 		$where = array();
 		switch( $filter ) {
 			case 'all':
@@ -181,6 +183,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
  				break;
 			case 'comment':
 				$where = array( 'aa_response_text IS NOT NULL');
+				break;
+			case 'id':
+				$where = array( 'af_id' => $filterValue );
 				break;
 			case 'visible':
 			default:
@@ -224,12 +229,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'class' => 'articleFeedbackv5-comment-details-permalink'
 		) )
 		.Html::element( 'a', array(
-			'href' => '#'
+			'href' => "#id=$id"
 		), wfMessage( 'articlefeedbackv5-comment-link' ) )
 		. Html::closeElement( 'div' )
 		. Html::element( 'div', array(
 			'class' => 'articleFeedbackv5-comment-details-updates'
-		), wfMessage( 'articleFeedbackv5-updates-since', 0 ) )
+		), wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age ) )
 		. Html::closeElement( 'div' );
 ;
 
@@ -272,9 +277,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. Html::closeElement( 'ul' )
 		. Html::closeElement( 'div' );
 
-		# TODO: permalinks
 		return Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback' ) )
-		. $header_links
 		. $content
 		. $details
 		. $tools
@@ -369,29 +372,34 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getAllowedParams() {
 		return array(
-			'pageid'    => array(
+			'pageid'      => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
 			),
-			'sort'      => array(
+			'sort'        => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
 				 'oldest', 'newest' )
 			),
-			'filter'    => array(
+			'filter'      => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'all', 'invisible', 'visible', 'comment' )
+				 'all', 'invisible', 'visible', 'comment', 'id' )
 			),
-			'limit'     => array(
+			'filtervalue' => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_TYPE     => 'string'
+			),
+			'limit'       => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
 			),
-			'continue'  => array(
+			'continue'    => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'
@@ -406,11 +414,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getParamDescription() {
 		return array(
-			'pageid'   => 'Page ID to get feedback ratings for',
-			'sort'     => 'Key to sort records by',
-			'filter'   => 'What filtering to apply to list',
-			'limit'    => 'Number of records to show',
-			'continue' => 'Offset from which to continue',
+			'pageid'      => 'Page ID to get feedback ratings for',
+			'sort'        => 'Key to sort records by',
+			'filter'      => 'What filtering to apply to list',
+			'filtervalue' => 'Optional param to pass to filter',
+			'limit'       => 'Number of records to show',
+			'continue'    => 'Offset from which to continue',
 		);
 	}
 
