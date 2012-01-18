@@ -60,7 +60,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-filter-label-before' => 'Show only:',
 	'articlefeedbackv5-special-filter-label-after' => '',
 	'articlefeedbackv5-special-showing' => '$1 feedback posts on this page', // FIXME: Needs plural support on $1.
-	'articleFeedbackv5-link' => 'Permanent link',
+	'articleFeedbackv5-link' => 'Permalink',
 	'articleFeedbackv5-updates-since' => '$1 Edits since post',
 	'articlefeedbackv5-special-more' => 'More',
 	'articlefeedbackv5-special-pagetitle' => 'Feedback: $1',
@@ -93,7 +93,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-discussion-page' => 'Discussion',
 	'articlefeedbackv5-whats-this' => 'Help',
 	'articlefeedbackv5-invalid-page-id' => 'Invalid page ID',
-	'articlefeedbackv5-percent-found' => '$1% of users found what they were looking for.',
+	'articlefeedbackv5-percent-found' => '% of users found what they were looking for.', // TODO: yeah, i know this is awful.
 	'articlefeedbackv5-overall-rating' => 'Rating: $1/5',
 	'articlefeedbackv5-special-title' => '==Feedback==',
 	'articlefeedbackv5' => 'Article feedback dashboard',
