@@ -258,16 +258,21 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	private function renderBucket1( $record ) {
 		$name  = htmlspecialchars( $record[0]->user_name );
 		if ( $record['found']->aa_response_boolean ) {
-			$found = wfMessage(
-				'articlefeedbackv5-form1-header-found',
-				$name
-			)->escaped();
+			$msg   = 'articlefeedbackv5-form1-header-found';
+			$class = 'positive';
 		} else {
-			$found = wfMessage(
-				'articlefeedbackv5-form1-header-not-found',
-				$name
-			)->escaped();
+			$msg   = 'articlefeedbackv5-form1-header-not-found';
+			$class = 'negative';
 		}
+		$found = Html::openElement( 'h3' )
+		. Html::element( 'a', array(
+			'href' => '#',
+		), $name )
+		.Html::element( 'span', array(
+			'class' => $class,
+		), wfMessage( $msg, '')->escaped() )
+		. Html::closeElement( 'h3' );
+
 		return "$found
 		<blockquote>" . htmlspecialchars( $record['comment']->aa_response_text )
 		. '</blockquote>';
