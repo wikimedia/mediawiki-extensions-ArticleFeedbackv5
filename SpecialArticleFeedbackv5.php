@@ -98,7 +98,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					'div',
 					array( 'id' => 'articleFeedbackv5-percent-found-wrap' )
 				)
+				. Html::openElement(
+					'spam',
+					array( 'class' => 'stat-marker positive' )
+				)
 				. $this->msg( 'articlefeedbackv5-percent-found', $found )->escaped()
+				. Html::closeElement( 'span' )
 				. Html::closeElement( 'div' )
 				. Html::element(
 					'a',
