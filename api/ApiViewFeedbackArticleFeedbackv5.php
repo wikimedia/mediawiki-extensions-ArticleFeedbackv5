@@ -247,9 +247,16 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 #		. Html::closeElement( 'div' );
 
 
-		$tools = Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback-tools' ) )
-		. Html::element( 'h3', array(), wfMessage( 'articlefeedbackv5-form-tools-label' )->text() )
-		. Html::openElement( 'ul' )
+		$tools = Html::openElement( 'div', array( 
+			'class' => 'articleFeedbackv5-feedback-tools',
+			'id'    => 'articleFeedbackv5-feedback-tools-'.$id
+		) )
+		. Html::element( 'h3', array(
+			'id' => 'articleFeedbackv5-feedback-tools-header-'.$id
+		), wfMessage( 'articlefeedbackv5-form-tools-label' )->text() )
+		. Html::openElement( 'ul', array(
+			'id' => 'articleFeedbackv5-feedback-tools-list-'.$id
+		) )
 		. ( $can_hide ? Html::rawElement( 'li', array(), Html::element( 'a', array(
 			'id'    => "articleFeedbackv5-hide-link-$id",
 			'class' => 'articleFeedbackv5-hide-link'
