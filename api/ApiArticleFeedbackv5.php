@@ -70,7 +70,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 					$error = 'articlefeedbackv5-error-validation';
 					break;
 				}
-				if ( 'text' == $type && $this->findAbuse( $value, $pageId ) ) {
+				if ( $wgArticleFeedbackv5AbuseFiltering && 'text' == $type
+					&& $this->findAbuse( $value, $pageId ) ) {
 					$error = 'articlefeedbackv5-error-abuse';
 					break;
 				}
@@ -258,7 +259,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	public function updateFilterCounts( $pageId, $answers ) {
 		$has_comment = false;
 
-		# Does this record have a comment attached? 
+		# Does this record have a comment attached?
 		# Defined as an answer of type 'text'.
 		foreach( $answers as $a ) {
 			if( $a['aa_response_text'] !== null ) {

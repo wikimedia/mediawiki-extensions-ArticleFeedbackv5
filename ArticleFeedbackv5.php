@@ -155,6 +155,18 @@ $wgArticleFeedbackv5LinkBuckets = array(
 );
 
 /**
+ * Turn on abuse filtering
+ *
+ * If this is set to true, comments will be run through:
+ *   1. $wgSpamRegex, if set
+ *   2. SpamBlacklist, if installed
+ *   3. AbuseFilter, if installed
+ *
+ * @var boolean
+ */
+$wgArticleFeedbackv5AbuseFiltering = false;
+
+/**
  * The full URL for a discussion page about the Article Feedback Dashboard
  *
  * Since the dashboard is powered by a SpecialPage, we cannot rel on the built-in
