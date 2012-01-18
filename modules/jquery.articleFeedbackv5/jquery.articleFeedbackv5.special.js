@@ -104,8 +104,14 @@
 	}
 
 	// Utility method for stripping long IDs down to the specific bits we care about.
-	$.articleFeedbackv5special.stripID = function ( object, toRemove ) {
+	$.articleFeedbackv5special.stripID = function( object, toRemove ) {
 		return $( object ).attr( 'id' ).replace( toRemove, '' );
+	}
+	
+	// Display/hide the toolbox
+	$.articleFeedbackv5special.toggleToolbox = function( container ) {
+		var id = $.articleFeedbackv5special.stripID(container, 'articleFeedbackv5-feedback-tools-');
+		$( '#articleFeedbackv5-feedback-tools-list-' + id ).slideToggle( 300 );
 	}
 
 	// }}}
@@ -238,6 +244,12 @@
 					}
 					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
 					$.articleFeedbackv5special.continue = data['articlefeedbackv5-view-feedback'].continue;
+					// set effects on toolboxes
+					$( '.articleFeedbackv5-feedback-tools > ul' ).hide();
+					$( '.articleFeedbackv5-feedback-tools' ).hover( 
+						function( eventObj ) { $.articleFeedbackv5special.toggleToolbox( this ); },
+						function( eventObj ) { $.articleFeedbackv5special.toggleToolbox( this ); }
+					);
 				} else {
 					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
