@@ -229,7 +229,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. Html::closeElement( 'div' )
 		. Html::element( 'div', array(
 			'class' => 'articleFeedbackv5-comment-details-updates'
-		), wfMessage( 'articleFeedbackv5-updates-since', 0 ) );
+		), wfMessage( 'articleFeedbackv5-updates-since', 0 ) )
+		. Html::closeElement( 'div' );
 ;
 
 		$footer_links = Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-foot' ) )
