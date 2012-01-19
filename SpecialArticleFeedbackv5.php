@@ -121,7 +121,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->addModules( 'jquery.articleFeedbackv5.special' );
 
 		$sortLabels = array();
-		$sortOpts   = array( 'newest', 'oldest' );
+		$sortOpts   = array( 'newest', 'oldest', 'helpful' );
 		foreach ( $sortOpts as $sort ) {
 			$sortLabels[] = Html::element(
 				'a',

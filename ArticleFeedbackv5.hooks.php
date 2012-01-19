@@ -161,6 +161,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-hide-saved',
 				'articlefeedbackv5-delete-saved',
 				'articlefeedbackv5-helpful-saved',
+				'articlefeedbackv5-unhelpful-saved',
 				'articlefeedbackv5-comment-link'
 			),
 		),

@@ -34,7 +34,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		# load feedback record, bail if we don't have one
 		$record = $dbr->selectRow(
 			'aft_article_feedback',
-			array( 'af_id', 'af_abuse_count', 'af_hide_count', 'af_helpful_count', 'af_delete_count' ),
+			array( 'af_id', 'af_abuse_count', 'af_hide_count', 'af_helpful_count', 'af_unhelpful_count', 'af_delete_count' ),
 			array( 'af_id' => $params['feedbackid'] )
 		);
 
@@ -48,6 +48,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$update['af_hide_count'] = $record->af_hide_count + 1;
 		} elseif ( $params['flagtype'] == 'helpful' ) {
 			$update['af_helpful_count'] = $record->af_helpful_count + 1;
+		} elseif ( $params['flagtype'] == 'unhelpful' ) {
+			$update['af_unhelpful_count'] = $record->af_unhelpful_count + 1;
 		} elseif ( $params['flagtype'] == 'delete' ) {
 			$update['af_delete_count'] = $record->af_delete_count + 1;
 		} else {
@@ -102,7 +104,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'abuse', 'hide', 'helpful', 'delete' )
+				 'abuse', 'hide', 'helpful', 'unhelpful', 'delete' )
 			),
 		);
 	}

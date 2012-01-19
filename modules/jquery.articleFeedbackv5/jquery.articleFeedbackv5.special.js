@@ -90,20 +90,25 @@
 			$.articleFeedbackv5special.loadFeedback( false );
 			return false;
 		} );
+
 		$( '.articleFeedbackv5-abuse-link' ).live( 'click', function( e ) {
-			$.articleFeedbackv5special.abuseFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-abuse-link-' ) );
+			$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-abuse-link-' ), 'abuse' );
 			return false;
 		} );
 		$( '.articleFeedbackv5-hide-link' ).live( 'click', function( e ) {
-			$.articleFeedbackv5special.hideFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-hide-link-' ) );
+			$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-hide-link-' ), 'hide' );
 			return false;
 		} );
 		$( '.articleFeedbackv5-delete-link' ).live( 'click', function( e ) {
-			$.articleFeedbackv5special.deleteFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-delete-link-' ) );
+			$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-delete-link-' ), 'delete' );
 			return false;
 		} );
 		$( '.articleFeedbackv5-helpful-link' ).live( 'click', function( e ) {
-			$.articleFeedbackv5special.helpfulFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-helpful-link-' ) );
+			$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-helpful-link-' ), 'helpful' );
+			return false;
+		} );
+		$( '.articleFeedbackv5-unhelpful-link' ).live( 'click', function( e ) {
+			$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-unhelpful-link-' ), 'unhelpful' );
 			return false;
 		} );
 	}
@@ -120,61 +125,14 @@
 	}
 
 	// }}}
-	// {{{ Moderation methods
 
-	// {{{ helpfulFeedback 
-
-	/**
-	 * Flags a response as helpful
-	 *
-	 * @param id int the feedback id
-	 */
-	$.articleFeedbackv5special.helpfulFeedback = function ( id ) {
-		$.articleFeedbackv5special.flagFeedback( id, 'helpful' );
-	}
-
-	// {{{ hideFeedback
-
-	/**
-	 * "Deletes" a response - actually just super-hides so only admins see.
-	 *
-	 * @param id int the feedback id
-	 */
-	$.articleFeedbackv5special.deleteFeedback = function ( id ) {
-		$.articleFeedbackv5special.flagFeedback( id, 'delete' );
-	}
-
-	// {{{ hideFeedback
-
-	/**
-	 * Hides a response
-	 *
-	 * @param id int the feedback id
-	 */
-	$.articleFeedbackv5special.hideFeedback = function ( id ) {
-		$.articleFeedbackv5special.flagFeedback( id, 'hide' );
-	}
-
-	// }}}
-	// {{{ abuseFeedback
-
-	/**
-	 * Flags a response as abuse
-	 *
-	 * @param id int the feedback id
-	 */
-	$.articleFeedbackv5special.abuseFeedback = function ( id ) {
-		$.articleFeedbackv5special.flagFeedback( id, 'abuse' );
-	}
-
-	// }}}
 	// {{{ flagFeedback
 
 	/**
 	 * Sends the request to mark a response
 	 *
 	 * @param id   int    the feedback id
-	 * @param type string the type of mark ('hide' or 'abuse')
+	 * @param type string the type of mark (valid values: hide, abuse, delete, helpful, unhelpful
 	 */
 	$.articleFeedbackv5special.flagFeedback = function ( id, type ) {
 		$.ajax( {

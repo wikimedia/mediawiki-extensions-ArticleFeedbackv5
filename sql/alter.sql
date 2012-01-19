@@ -69,3 +69,6 @@ INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_co
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'visible', COUNT(*) FROM aft_article_feedback WHERE af_hide_count = 0 GROUP BY af_page_id;
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'all', COUNT(*) FROM aft_article_feedback GROUP BY af_page_id;
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'comment', COUNT(*) FROM aft_article_feedback, aft_article_answer WHERE af_id = aa_feedback_id AND aa_response_text IS NOT NULL GROUP BY af_page_id;
+
+-- added 1/19 (greg)
+ALTER TABLE aft_article_feedback ADD COLUMN af_unhelpful_count integer unsigned NOT NULL DEFAULT 0;
