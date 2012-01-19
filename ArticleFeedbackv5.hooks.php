@@ -18,6 +18,7 @@ class ArticleFeedbackv5Hooks {
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js',
 			'dependencies' => array(
 				'mediawiki.util',
+				'mediawiki.user',
 			),
 		),
 		'ext.articleFeedbackv5' => array(
