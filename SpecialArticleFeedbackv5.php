@@ -15,11 +15,16 @@
  * @subpackage Special
  */
 class SpecialArticleFeedbackv5 extends SpecialPage {
+	private $access;	
 	private $filters = array( 
 		'visible', 
-		'invisible', 
 		'all', 
 		'comment'
+	);
+	private $sorts = array( 
+		'newest', 
+		'oldest', 
+		'helpful' 
 	);
 
 	/**
@@ -27,6 +32,14 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 */
 	public function __construct() {
 		parent::__construct( 'ArticleFeedbackv5' );
+		$this->access = ApiArticleFeedbackv5Utils::initializeAccess();
+
+		if( $this->access[ 'rollbackers' ] ) {
+			$filter[] = 'invisible';
+		}
+		if( $this->access[ 'oversight' ] ) {
+			$filter[] = 'deleted';
+		}
 	}
 
 	/**
@@ -121,8 +134,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->addModules( 'jquery.articleFeedbackv5.special' );
 
 		$sortLabels = array();
-		$sortOpts   = array( 'newest', 'oldest', 'helpful' );
-		foreach ( $sortOpts as $sort ) {
+		foreach ( $this->sorts as $sort ) {
 			$sortLabels[] = Html::element(
 				'a',
 				array(

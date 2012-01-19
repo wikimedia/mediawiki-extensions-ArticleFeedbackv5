@@ -33,6 +33,13 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		global $wgUser, $wgArticleFeedbackv5SMaxage;
 		$params = $this->extractRequestParams();
 
+		// Blocked users are, well, blocked.
+		if( $wgUser->isBlocked() ) {
+			$this->getResult()->addValue( null, 'error', 'articlefeedbackv5-error-blocked' );
+			return;
+		}
+
+
 		// Anon token check
 		$token = $this->getAnonToken( $params );
 

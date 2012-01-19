@@ -14,12 +14,13 @@
  * @subpackage Api
  */
 class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
-
+	private $access = array();
 	/**
 	 * Constructor
 	 */
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'afvf' );
+		$this->access = ApiArticleFeedbackv5Utils::initializeAccess();
 	}
 
 	/**
@@ -185,6 +186,16 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	private function getFilterCriteria( $filter, $filterValue = null ) {
 		$where = array();
+
+		// Permissions check
+		if( 
+			( $filter == 'invisible' && !$this->access[ 'rollbackers' ] )
+			|| ( $filter == 'deleted' && !$this->access[ 'oversight' ] )
+
+		) {
+			$filter = null;
+		}
+
 		switch( $filter ) {
 			case 'all':
 				$where = array();
@@ -217,10 +228,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			default: $content .= $this->renderNoBucket( $record ); break;
 		}
 		# TODO: check roles to determine what to show here (and cache somewhere so we don't keep looking them up).
-		$can_flag   = 1;
-		$can_upvote = 1;
-		$can_hide   = 1;
-		$can_delete = 1;
+		$can_flag   = !$this->access[ 'blocked' ];
+		$can_vote   = !$this->access[ 'blocked' ];
+		$can_hide   = $this->access[ 'rollbackers' ];
+		$can_delete = $this->access[ 'oversight' ];
 		$id         = $record[0]->af_id;
 
 #		$header_links = Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-head' ) )
@@ -251,7 +262,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		$footer_links = Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-foot' ) );
 
-		if( $can_upvote ) {
+		if( $can_vote ) {
 			$footer_links .= Html::element( 'span', array(
 				'class' => 'articleFeedbackv5-helpful-caption'
 			), wfMessage( 'articlefeedbackv5-form-helpful-label', ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ) ) )
@@ -286,6 +297,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. Html::openElement( 'ul', array(
 			'id' => 'articleFeedbackv5-feedback-tools-list-'.$id
 		) )
+		# TODO: unhide hidden posts
 		. ( $can_hide ? Html::rawElement( 'li', array(), Html::element( 'a', array(
 			'id'    => "articleFeedbackv5-hide-link-$id",
 			'class' => 'articleFeedbackv5-hide-link'
@@ -294,6 +306,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'id'    => "articleFeedbackv5-abuse-link-$id",
 			'class' => 'articleFeedbackv5-abuse-link'
 		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
+		# TODO: nonoversight can mark for oversight, oversight can 
+		# either delete or un-delete, based on deletion status
 		. ( $can_delete ? Html::rawElement( 'li', array(), Html::element( 'a', array(
 			'id'    => "articleFeedbackv5-delete-link-$id",
 			'class' => 'articleFeedbackv5-delete-link'
@@ -490,5 +504,4 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	public function getVersion() {
 		return __CLASS__ . ': $Id: ApiViewRatingsArticleFeedbackv5.php 103439 2011-11-17 03:19:01Z rsterbin $';
 	}
-
 }
