@@ -22,9 +22,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		'comment'
 	);
 	private $sorts = array( 
-		'newest', 
-		'oldest', 
-		'helpful' 
+		'age', 
+		'helpfulness', 
+		'rating'
 	);
 
 	/**
@@ -135,7 +135,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		$sortLabels = array();
 		foreach ( $this->sorts as $sort ) {
-			$sortLabels[] = Html::element(
+			$sortLabels[] = Html::element( 'span',
+				array(
+					'id'    => 'articleFeedbackv5-sort-arrow-' . $sort,
+					'class' => 'articleFeedbackv5-sort-arrow'
+
+				), '' )
+				. Html::element(
 				'a',
 				array(
 					'href'  => '#',
@@ -173,7 +179,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			. Html::closeElement( 'div' )
 			. Html::openElement(
 				'div',
-				array( 'id' => 'articleFeedbackv5-sort' )
+				array( 'id' => 'articleFeedbackv5-filter' )
 			)
 			. $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
 			. $filterSelect->getHTML()
