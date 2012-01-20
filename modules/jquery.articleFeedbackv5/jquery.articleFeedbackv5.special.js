@@ -86,19 +86,19 @@
 			return false;
 		} );
 		$( '.articleFeedbackv5-sort-link' ).bind( 'click', function( e ) {
-			id    = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-sort-' );
-			oldId = $.articleFeedbackv5special.sort;
+			id     = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-sort-' );
+			oldId  = $.articleFeedbackv5special.sort;
 
 			// set direction = desc...
-			$.articleFeedbackv5special.sortDirection = 'desc';
 			$.articleFeedbackv5special.sort          = id;
 			$.articleFeedbackv5special.continue      = null;
 
 			// unless we're flipping the direction on the current sort.
-			if( id == oldId 
-			 && $.articleFeedbackv5special.sortDirection == 'desc') {
+			if( id == oldId && $.articleFeedbackv5special.sortDirection == 'desc' ) {
 				$.articleFeedbackv5special.sortDirection = 'asc';
-			} 
+			}  else {
+				$.articleFeedbackv5special.sortDirection = 'desc';
+			}
 
 			$.articleFeedbackv5special.loadFeedback( true );
 			// draw arrow and load feedback posts
