@@ -145,7 +145,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$rows  = $dbr->select(
 			array( 'aft_article_feedback', 'aft_article_answer',
 				'aft_article_field', 'aft_article_field_option',
-				'user'
+				'user', 'page'
 			),
 			array( 'af_id', 'af_bucket_id', 'afi_name', 'afo_name',
 				'aa_response_text', 'aa_response_boolean',
@@ -154,13 +154,17 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'af_user_ip', 'af_hide_count', 'af_abuse_count',
 				'af_helpful_count', 'af_unhelpful_count', 'af_delete_count', 
 				'(SELECT COUNT(*) FROM revision WHERE rev_id > af_revision_id AND rev_page = '.( integer ) $pageId.') AS age', 
-				'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) AS net_helpfulness'
+				'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) AS net_helpfulness',
+				'page_latest', 'af_revision_id'
 			),
 			array( 'af_id' => $ids ),
 			__METHOD__,
 			array( 'ORDER BY' => $order ),
 			array(
-				'user'        => array(
+				'page'                     => array(
+					'JOIN', 'page_id = af_page_id'
+				),
+				'user'                     => array(
 					'LEFT JOIN', 'user_id = af_user_id'
 				),
 				'aft_article_field'        => array(
@@ -243,6 +247,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	protected function renderFeedback( $record ) {
+		global $wgArticlePath;
 		switch( $record[0]->af_bucket_id ) {
 			case 1: $content .= $this->renderBucket1( $record ); break;
 			case 2: $content .= $this->renderBucket2( $record ); break;
@@ -268,19 +273,37 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$details = Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-comment-details'
 		) )
-		. Html::element( 'div', array(
-			'class' => 'articleFeedbackv5-comment-details-date'
-		), date( 'r', $record[0]->af_created ) )
 		. Html::openElement( 'div', array(
-			'class' => 'articleFeedbackv5-comment-details-permalink'
-		) )
+			'class' => 'articleFeedbackv5-comment-details-date'
+		) ) 
 		.Html::element( 'a', array(
 			'href' => "#id=$id"
-		), wfMessage( 'articlefeedbackv5-comment-link' ) )
+		), date( 'M j, Y H:i', strtotime($record[0]->af_created) ) )
 		. Html::closeElement( 'div' )
-		. Html::element( 'div', array(
+# Remove for now, pending feedback.
+#		. Html::openElement( 'div', array(
+#			'class' => 'articleFeedbackv5-comment-details-permalink'
+#		) )
+#		.Html::element( 'a', array(
+#			'href' => "#id=$id"
+#		), wfMessage( 'articlefeedbackv5-comment-link' ) )
+#		. Html::closeElement( 'div' )
+
+		. Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-comment-details-updates'
-		), wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age ) )
+		) ) 
+		. Linker::link(
+			Title::newFromText( 'Greg' ),
+			wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age ), 
+			array(),
+			array(
+				'action' => 'historysubmit',
+				'diff'   => $record[0]->page_latest,
+				'oldid'  => $record[0]->af_revision_id
+			)
+		)
+#		), wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age ) )
+		. Html::closeElement( 'div' )
 		. Html::closeElement( 'div' );
 ;
 

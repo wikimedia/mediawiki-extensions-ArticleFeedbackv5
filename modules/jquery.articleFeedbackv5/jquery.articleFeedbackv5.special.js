@@ -79,7 +79,7 @@
 	 * Binds events for each of the controls
 	 */
 	$.articleFeedbackv5special.setBinds = function() {
-		$( '#articleFeedbackv5-filter' ).bind( 'change', function( e ) {
+		$( '#articleFeedbackv5-filter-select' ).bind( 'change', function( e ) {
 			$.articleFeedbackv5special.filter   = $(this).val();
 			$.articleFeedbackv5special.continue = null;
 			$.articleFeedbackv5special.loadFeedback( true );
@@ -93,15 +93,15 @@
 			$.articleFeedbackv5special.sortDirection = 'desc';
 			$.articleFeedbackv5special.sort          = id;
 			$.articleFeedbackv5special.continue      = null;
-			$.articleFeedbackv5special.loadFeedback( true );
 
 			// unless we're flipping the direction on the current sort.
-console.log('id is ' + id + ', old id is ' + oldId);
 			if( id == oldId 
 			 && $.articleFeedbackv5special.sortDirection == 'desc') {
 				$.articleFeedbackv5special.sortDirection = 'asc';
 			} 
-			// draw arrow
+
+			$.articleFeedbackv5special.loadFeedback( true );
+			// draw arrow and load feedback posts
 			$.articleFeedbackv5special.drawSortArrow();
 
 			return false;
@@ -125,10 +125,13 @@ console.log('id is ' + id + ', old id is ' + oldId);
 		} );
 		$( '.articleFeedbackv5-helpful-link' ).live( 'click', function( e ) {
 			$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-helpful-link-' ), 'helpful' );
+			$(this).addClass('active');
+			
 			return false;
 		} );
 		$( '.articleFeedbackv5-unhelpful-link' ).live( 'click', function( e ) {
 			$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-unhelpful-link-' ), 'unhelpful' );
+			$(this).addClass('active');
 			return false;
 		} );
 	}

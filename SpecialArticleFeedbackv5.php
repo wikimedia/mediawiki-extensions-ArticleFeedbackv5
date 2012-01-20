@@ -128,7 +128,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 #			$out->addWikiMsg( 'articlefeedbackv5-overall-rating', $rating );
 #		}
 
-		$out->addWikiMsg( 'articlefeedbackv5-special-title' );
 
 		$out->addJsConfigVars( 'afPageId', $pageId );
 		$out->addModules( 'jquery.articleFeedbackv5.special' );
@@ -160,7 +159,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$opts[ (string) $key ] = $filter;
 		}
 
-		$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter' );
+		$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter-select' );
 		$filterSelect->addOptions( $opts );
 
 		$out->addHTML(
