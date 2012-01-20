@@ -340,9 +340,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. Html::closeElement( 'div' );
 
 		return Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback' ) )
-		. Html::openElement( 'div' => array(
+		. Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-comment-wrap'
-		)
+		) )
 		. $content
 		. $footer_links
 		. Html::closeElement( 'div' )
