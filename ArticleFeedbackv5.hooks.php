@@ -162,7 +162,9 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-delete-saved',
 				'articlefeedbackv5-helpful-saved',
 				'articlefeedbackv5-unhelpful-saved',
-				'articlefeedbackv5-comment-link'
+				'articlefeedbackv5-comment-link',
+				'articlefeedbackv5-special-sort-asc',
+				'articlefeedbackv5-special-sort-desc'
 			),
 		),
 	);

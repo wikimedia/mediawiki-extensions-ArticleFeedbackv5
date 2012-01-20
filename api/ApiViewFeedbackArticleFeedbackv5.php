@@ -38,6 +38,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$params['filter'],
 			$params['filtervalue'],
 			$params['sort'],
+			$params['sortdirection'],
 			$params['limit'],
 			( $params['continue'] !== 'null' ? $params['continue'] : null )
 		);
@@ -75,28 +76,31 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	public function fetchFeedback( $pageId,
-	 $filter = 'visible', $filterValue = null, $order = 'newest', $limit = 25, $continue = null ) {
+	 $filter = 'visible', $filterValue = null, $sort = 'age', $sortOrder = 'desc', $limit = 25, $continue = null ) {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$ids   = array();
 		$rows  = array();
 		$rv    = array();
 		$where = $this->getFilterCriteria( $filter, $filterValue );
-		$order;
 
-		# TODO: The SQL needs to handle all sorts of weird cases.
-		switch( $order ) {
+		$direction         = strtolower( $sortOrder ) == 'asc' ? 'ASC' : 'DESC';
+		$continueDirection = ( $direction == 'ASC' ? '>' : '<' );
+		$order;
+		$continue;
+
+		switch( $sort ) {
 			case 'helpful':
-				$order       = 'net_helpfulness DESC';
-				$continueSql = 'net_helpfulness <';
+				$order       = "net_helpfulness $direction";
+				$continueSql = "net_helpfulness $continueDirection";
 				break;
-			case 'oldest':
-				$order       = 'af_id ASC';
-				$continueSql = 'af_id >';
+			case 'rating':
+				# For now, just fall through. Not specced out.
 				break;
-			case 'newest':
+			case 'age':
+				# Default sort is by age.
 			default:
-				$order       = 'af_id DESC';
-				$continueSql = 'af_id <';
+				$order       = "af_id $direction";
+				$continueSql = "af_id $continueDirection";
 				break;
 		}
 
@@ -182,6 +186,27 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 
 		return $rv;
+	}
+
+	private function getContinue( $sort, $sortOrder ) {
+		$continue;
+		$direction = strtolower( $sortOrder ) == 'asc' ? '<' : '>';
+
+		switch( $sort ) {
+			case 'helpful':
+				$continue = 'net_helpfulness <';
+				break;
+			case 'rating':
+				# For now, just fall through. Not specced out.
+				break;
+			case 'age':
+				# Default sort is by age.
+			default:
+				$continue  = 'af_id >';
+				break;
+		}
+
+		return $continue;
 	}
 
 	private function getFilterCriteria( $filter, $filterValue = null ) {
@@ -315,10 +340,14 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. Html::closeElement( 'div' );
 
 		return Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback' ) )
+		. Html::openElement( 'div' => array(
+			'class' => 'articleFeedbackv5-comment-wrap'
+		)
 		. $content
+		. $footer_links
+		. Html::closeElement( 'div' )
 		. $details
 		. $tools
-		. $footer_links
 		. $rate
 		. Html::closeElement( 'div' );
 	}
@@ -409,34 +438,40 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getAllowedParams() {
 		return array(
-			'pageid'      => array(
+			'pageid'        => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
 			),
-			'sort'        => array(
+			'sort'          => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'oldest', 'newest', 'helpful' )
+				 'age', 'helpfulness', 'rating' )
 			),
-			'filter'      => array(
+			'sortdirection' => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_TYPE     => array(
+				 'desc', 'asc' )
+			),
+			'filter'        => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
 				 'all', 'invisible', 'visible', 'comment', 'id' )
 			),
-			'filtervalue' => array(
+			'filtervalue'   => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'
 			),
-			'limit'       => array(
+			'limit'         => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
 			),
-			'continue'    => array(
+			'continue'      => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'

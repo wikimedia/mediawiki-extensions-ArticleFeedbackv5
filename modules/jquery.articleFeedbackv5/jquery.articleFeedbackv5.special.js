@@ -50,7 +50,12 @@
 	/**
 	 * The name of the sorting method used
 	 */
-	$.articleFeedbackv5special.sort = 'newest';
+	$.articleFeedbackv5special.sort = 'age';
+
+	/**
+	 * The dorection of the sorting method used
+	 */
+	$.articleFeedbackv5special.sortDirection = 'desc';
 
 	/**
 	 * The number of responses to display per data pull
@@ -81,9 +86,24 @@
 			return false;
 		} );
 		$( '.articleFeedbackv5-sort-link' ).bind( 'click', function( e ) {
-			$.articleFeedbackv5special.sort = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-sort-' );
-			$.articleFeedbackv5special.continue = null;
+			id    = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-sort-' );
+			oldId = $.articleFeedbackv5special.sort;
+
+			// set direction = desc...
+			$.articleFeedbackv5special.sortDirection = 'desc';
+			$.articleFeedbackv5special.sort          = id;
+			$.articleFeedbackv5special.continue      = null;
 			$.articleFeedbackv5special.loadFeedback( true );
+
+			// unless we're flipping the direction on the current sort.
+console.log('id is ' + id + ', old id is ' + oldId);
+			if( id == oldId 
+			 && $.articleFeedbackv5special.sortDirection == 'desc') {
+				$.articleFeedbackv5special.sortDirection = 'asc';
+			} 
+			// draw arrow
+			$.articleFeedbackv5special.drawSortArrow();
+
 			return false;
 		} );
 		$( '#articleFeedbackv5-show-more' ).bind( 'click', function( e ) {
@@ -111,6 +131,18 @@
 			$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-unhelpful-link-' ), 'unhelpful' );
 			return false;
 		} );
+	}
+
+	$.articleFeedbackv5special.drawSortArrow = function() { 
+		id  = $.articleFeedbackv5special.sort;
+		dir = $.articleFeedbackv5special.sortDirection;
+
+		$( '.articleFeedbackv5-sort-arrow' ).hide();
+
+		$( '#articleFeedbackv5-sort-arrow-' + id ).text(
+			mw.msg( 'articlefeedbackv5-special-sort-' + dir )
+		);
+		$( '#articleFeedbackv5-sort-arrow-' + id ).show();
 	}
 
 	// Utility method for stripping long IDs down to the specific bits we care about.
@@ -188,12 +220,13 @@
 			'type'    : 'GET',
 			'dataType': 'json',
 			'data'    : {
-				'afvfpageid'      : $.articleFeedbackv5special.page,
-				'afvffilter'      : $.articleFeedbackv5special.filter,
-				'afvffiltervalue' : $.articleFeedbackv5special.filterValue,
-				'afvfsort'        : $.articleFeedbackv5special.sort,
-				'afvflimit'       : $.articleFeedbackv5special.limit,
-				'afvfcontinue'    : $.articleFeedbackv5special.continue,
+				'afvfpageid'        : $.articleFeedbackv5special.page,
+				'afvffilter'        : $.articleFeedbackv5special.filter,
+				'afvffiltervalue'   : $.articleFeedbackv5special.filterValue,
+				'afvfsort'          : $.articleFeedbackv5special.sort,
+				'afvfsortdirection' : $.articleFeedbackv5special.sortDirection,
+				'afvflimit'         : $.articleFeedbackv5special.limit,
+				'afvfcontinue'      : $.articleFeedbackv5special.continue,
 				'action'  : 'query',
 				'format'  : 'json',
 				'list'    : 'articlefeedbackv5-view-feedback',
@@ -253,6 +286,7 @@ $( document ).ready( function() {
 
 	// Initial load
 	$.articleFeedbackv5special.loadFeedback( true );
+	$.articleFeedbackv5special.drawSortArrow();
 
 // }}}
 
