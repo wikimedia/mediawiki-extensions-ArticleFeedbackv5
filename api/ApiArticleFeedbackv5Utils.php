@@ -193,15 +193,15 @@ class ApiArticleFeedbackv5Utils {
 
 	public function initializeAccess() {
 		global $wgUser;
-                return array(
-                        'blocked'       => $wgUser->isBlocked(),
-                        'anon'          => $wgUser->isAnon(),
-                        'registered'    => !$wgUser->isAnon() && !$wgUser->isBlocked(),
-                        'autoconfirmed' => in_array('autoconfirmed', $wgUser->getEffectiveGroups()),
-                        'rollbackers'   => in_array('rollbacker', $wgUser->getEffectiveGroups()),
-                        'admins'        => in_array('sysop', $wgUser->getEffectiveGroups()),
-                        'oversight'     => in_array('oversight', $wgUser->getEffectiveGroups())
-                );
+		return array(
+			'blocked'       => $wgUser->isBlocked(),
+			'anon'          => $wgUser->isAnon(),
+			'registered'    => !$wgUser->isAnon() && !$wgUser->isBlocked(),
+			'autoconfirmed' => in_array('autoconfirmed', $wgUser->getEffectiveGroups()),
+			'rollbackers'   => in_array('rollbacker', $wgUser->getEffectiveGroups()),
+			'admins'        => in_array('sysop', $wgUser->getEffectiveGroups()),
+			'oversight'     => in_array('oversight', $wgUser->getEffectiveGroups())
+		);
 	}
 }
 

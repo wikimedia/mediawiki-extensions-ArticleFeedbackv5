@@ -227,7 +227,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			case 6: $content .= $this->renderBucket6( $record ); break;
 			default: $content .= $this->renderNoBucket( $record ); break;
 		}
-		# TODO: check roles to determine what to show here (and cache somewhere so we don't keep looking them up).
 		$can_flag   = !$this->access[ 'blocked' ];
 		$can_vote   = !$this->access[ 'blocked' ];
 		$can_hide   = $this->access[ 'rollbackers' ];
