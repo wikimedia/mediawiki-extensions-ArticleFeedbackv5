@@ -470,7 +470,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'age', 'helpfulness', 'rating' )
+				 'age', 'helpful', 'rating' )
 			),
 			'sortdirection' => array(
 				ApiBase::PARAM_REQUIRED => false,

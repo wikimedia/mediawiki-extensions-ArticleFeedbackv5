@@ -23,7 +23,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	);
 	private $sorts = array( 
 		'age', 
-		'helpfulness', 
+		'helpful', 
 		'rating'
 	);
 
@@ -68,33 +68,35 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		if ( !$pageId ) {
 			$out->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
-		} else {
-			# TODO: Fix links.
-			$out->addHTML(
-				Html::openElement(
-					'div',
-					array( 'id' => 'articleFeedbackv5-header-links' )
-				)
-				. Linker::link(
-					Title::newFromText( $param ),
-					$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
-				)
-				. ' | ' .
-				Linker::link(
-					Title::newFromText( $param ),
-					$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
-				)
-				. ' | ' .
-				Linker::link(
-					Title::newFromText( $param ),
-					$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
-				)
-				. Html::closeElement( 'div' )
-			);
+			return;
 		}
 
+		# TODO: Fix links.
 		$out->addHTML(
 			Html::openElement(
+				'div',
+				array( 'id' => 'articleFeedbackv5-header-wrap' )
+			)
+			. Html::openElement(
+				'div',
+				array( 'id' => 'articleFeedbackv5-header-links' )
+			)
+			. Linker::link(
+				Title::newFromText( $param ),
+				$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
+			)
+			. ' | ' .
+			Linker::link(
+				Title::newFromText( $param ),
+				$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
+			)
+			. ' | ' .
+			Linker::link(
+				Title::newFromText( $param ),
+				$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
+			)
+			. Html::closeElement( 'div' )
+			. Html::openElement(
 				'div',
 				array( 'id' => 'articleFeedbackv5-showing-count-wrap' )
 			)
@@ -113,16 +115,20 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				)
 				. $this->msg( 'articlefeedbackv5-percent-found', $found ) # Can't escape this, need the <span> tag to parse.
 				. Html::closeElement( 'div' )
-				. Html::element(
-					'a',
-					array(
-						'href'  => '#',
-						'id'    => 'articleFeedbackv5-special-add-feedback',
-					),
-					$this->msg( 'articlefeedbackv5-special-add-feedback' )->text()
-        	                )
 			);
 		}
+		
+		$out->addHtml(
+			Html::element(
+				'a',
+				array(
+					'href'  => '#',
+					'id'    => 'articleFeedbackv5-special-add-feedback',
+				),
+				$this->msg( 'articlefeedbackv5-special-add-feedback' )->text()
+       	                )
+			. Html::closeElement( 'div' )
+		);
 
 #		if ( $rating ) {
 #			$out->addWikiMsg( 'articlefeedbackv5-overall-rating', $rating );
