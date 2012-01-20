@@ -321,6 +321,7 @@ $messages['qqq'] = array(
 	'articlefeedbackv5-cta2-confirmation-title' => 'The title of the learn more CTA',
 	'articlefeedbackv5-cta2-confirmation-call' => 'The explanatory text of the learn more CTA',
 	'articlefeedbackv5-cta2-button-text' => 'The text for the button on the learn more CTA',
+	'articlefeedbackv5-error-blocked' => 'This error message will be displayed on the form if the user is blocked from submitting feedback.',
 	'articlefeedbackv5-error' => 'This error message will be displayed in a grey box replacing the form if there was an unrecoverable error.',
 	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters. $1 is the link to the abuse policy.',
 	'articlefeedbackv5-error-abuse-linktext' => 'The text for the abuse policy link.',

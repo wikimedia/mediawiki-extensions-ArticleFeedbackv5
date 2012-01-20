@@ -26,11 +26,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$error  = null;
 		$dbr    = wfGetDB( DB_SLAVE );
 
-		if ( !isset( $params['feedbackid'] )
-		 || !preg_match( '/^\d+$/', $params['feedbackid'] ) ) {
-			$error = 'articlefeedbackv5-invalid-feedback-id';
-		}
-
 		# load feedback record, bail if we don't have one
 		$record = $dbr->selectRow(
 			'aft_article_feedback',
@@ -38,20 +33,16 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			array( 'af_id' => $params['feedbackid'] )
 		);
 
-		# TODO: 
+		$flags  = array( 'abuse', 'hide', 'helpful', 'unhelpful', 'delete' );
 		if ( !$record->af_id ) {
 			// no-op, because this is already broken
 			$error = 'articlefeedbackv5-invalid-feedback-id';
-		} elseif ( $params['flagtype'] == 'abuse' ) {
-			$update['af_abuse_count'] = $record->af_abuse_count + 1;
-		} elseif ( $params['flagtype'] == 'hide' ) {
-			$update['af_hide_count'] = $record->af_hide_count + 1;
-		} elseif ( $params['flagtype'] == 'helpful' ) {
-			$update['af_helpful_count'] = $record->af_helpful_count + 1;
-		} elseif ( $params['flagtype'] == 'unhelpful' ) {
-			$update['af_unhelpful_count'] = $record->af_unhelpful_count + 1;
-		} elseif ( $params['flagtype'] == 'delete' ) {
-			$update['af_delete_count'] = $record->af_delete_count + 1;
+		} elseif( in_array( $params['flagtype'], $flags ) ) {
+			// Probably this doesn't need validation, since the API
+			// will handle it, but if it's getting interpolated into
+			// the SQL, I'm really wary not re-validating it.
+			$flag = 'af_'.$params['flagtype'].'_count';
+			$update[] = "$flag = $flag + 1";
 		} else {
 			$error = 'articlefeedbackv5-invalid-feedback-flag';
 		}
