@@ -128,6 +128,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				$this->msg( 'articlefeedbackv5-special-add-feedback' )->text()
        	                )
 			. Html::closeElement( 'div' )
+			. Html::element( 'div', array( 'class' => 'float-clear' ) )
 		);
 
 #		if ( $rating ) {
