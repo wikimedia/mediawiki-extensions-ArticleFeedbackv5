@@ -293,6 +293,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'class' => 'articleFeedbackv5-comment-details-updates'
 		) ) 
 		. Linker::link(
+#TODO: take out that hardcoded thing.
 			Title::newFromText( 'Greg' ),
 			wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age ), 
 			array(),
@@ -362,9 +363,19 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. Html::closeElement( 'ul' )
 		. Html::closeElement( 'div' );
 
+		# Only set a wrapper class for bucket 1.
+		$class = '';
+		if( array_key_exists( 'found', $record ) ) {
+			if ( $record['found']->aa_response_boolean ) {
+				$class = 'positive';
+			} else {
+				$class = 'negative';
+			}
+		}
+
 		return Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback' ) )
 		. Html::openElement( 'div', array(
-			'class' => 'articleFeedbackv5-comment-wrap'
+			'class' => "articleFeedbackv5-comment-wrap $class"
 		) )
 		. $content
 		. $footer_links
@@ -376,7 +387,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderBucket1( $record ) {
-		$name  = htmlspecialchars( $record[0]->user_name );
+		$name = htmlspecialchars( $record[0]->user_name );
+		$link = $record[0]->af_user_id ? "User:$name" : "Special:Contributions/$name";
+
 		if ( $record['found']->aa_response_boolean ) {
 			$msg   = 'articlefeedbackv5-form1-header-found';
 			$class = 'positive';
@@ -385,9 +398,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$class = 'negative';
 		}
 		$found = Html::openElement( 'h3' )
-		. Html::element( 'a', array(
-			'href' => '#',
-		), $name )
+		. Html::element( 'span', array( 'class' => 'icon' ) )
+                . Linker::link( Title::newFromText( $link ), $name )
 		.Html::element( 'span', array(
 			'class' => $class,
 		), wfMessage( $msg, '')->escaped() )
@@ -406,15 +418,23 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// * articlefeedbackv5-form2-header-problem
 		// * articlefeedbackv5-form2-header-question
 		// * articlefeedbackv5-form2-header-suggestion
-		return wfMessage( 'articlefeedbackv5-form2-header-' . $type, $name )->escaped()
+		return 
+		Html::openElement( 'h3' )
+		. wfMessage( 'articlefeedbackv5-form2-header-' . $type, $name )->escaped()
+		. Html::closeElement( 'h3' )
 		. '<blockquote>' . htmlspecialchars( $record['comment']->aa_response_text )
 		. '</blockquote>';
 	}
 
+	# TODO: The headers here really need the same treatment as bucket1, with
+	# the links and such.
 	private function renderBucket3( $record ) {
 		$name   = htmlspecialchars( $record[0]->user_name );
 		$rating = htmlspecialchars( $record['rating']->aa_response_rating );
-		return wfMessage( 'articlefeedbackv5-form3-header', $name, $rating )->escaped()
+		return 
+		Html::openElement( 'h3' )
+		. wfMessage( 'articlefeedbackv5-form3-header', $name, $rating )->escaped()
+		. Html::closeElement( 'h3' )
 		. '<blockquote>' . htmlspecialchars( $record['comment']->aa_response_text )
 		. '</blockquote>';
 	}
@@ -425,7 +445,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	private function renderBucket5( $record ) {
 		$name = htmlspecialchars( $record[0]->user_name );
-		$rv   = wfMessage( 'articlefeedbackv5-form5-header', $name )->escaped();
+		$rv   = 
+		Html::openElement( 'h3' )
+		. wfMessage( 'articlefeedbackv5-form5-header', $name )->escaped()
+		. Html::closeElement( 'h3' );
 		$rv .= '<ul>';
 		foreach ( $record as $key => $answer ) {
 			if ( $answer->afi_data_type == 'rating' && $key != '0' ) {
