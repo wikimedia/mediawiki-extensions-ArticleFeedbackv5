@@ -276,6 +276,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		# Update the overall number of records for this page.
 		ApiArticleFeedbackv5Utils::incrementFilterCount( $pageId, 'all' );
+		ApiArticleFeedbackv5Utils::incrementFilterCount( $pageId, 'visible' );
 		# If the feedbackrecord had a comment, update that filter count.
 		if( $has_comment ) {
 			ApiArticleFeedbackv5Utils::incrementFilterCount( $pageId, 'comment' );

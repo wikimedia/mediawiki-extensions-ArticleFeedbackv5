@@ -387,9 +387,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderBucket1( $record ) {
-		$name = htmlspecialchars( $record[0]->user_name );
-		$link = $record[0]->af_user_id ? "User:$name" : "Special:Contributions/$name";
-
 		if ( $record['found']->aa_response_boolean ) {
 			$msg   = 'articlefeedbackv5-form1-header-found';
 			$class = 'positive';
@@ -397,31 +394,24 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$msg   = 'articlefeedbackv5-form1-header-not-found';
 			$class = 'negative';
 		}
-		$found = Html::openElement( 'h3' )
-		. Html::element( 'span', array( 'class' => 'icon' ) )
-                . Linker::link( Title::newFromText( $link ), $name )
-		.Html::element( 'span', array(
-			'class' => $class,
-		), wfMessage( $msg, '')->escaped() )
-		. Html::closeElement( 'h3' );
+
+		$found = $this->feedbackHead( $msg, $class, $record[0] );
 
 		return "$found
 		<blockquote>" . htmlspecialchars( $record['comment']->aa_response_text )
 		. '</blockquote>';
 	}
 
+
 	private function renderBucket2( $record ) {
-		$name = htmlspecialchars( $record[0]->user_name );
-		$type = htmlspecialchars( $record['tag']->afo_name );
+		$type  = htmlspecialchars( $record['tag']->afo_name );
+		$class = $type == 'problem' ? 'negative' : 'positive';
 		// Document for grepping. Uses any of the messages:
 		// * articlefeedbackv5-form2-header-praise
 		// * articlefeedbackv5-form2-header-problem
 		// * articlefeedbackv5-form2-header-question
 		// * articlefeedbackv5-form2-header-suggestion
-		return 
-		Html::openElement( 'h3' )
-		. wfMessage( 'articlefeedbackv5-form2-header-' . $type, $name )->escaped()
-		. Html::closeElement( 'h3' )
+		return $this->feedbackHead( "articlefeedbackv5-form2-header-$type", $class, $record[0], $type )
 		. '<blockquote>' . htmlspecialchars( $record['comment']->aa_response_text )
 		. '</blockquote>';
 	}
@@ -431,37 +421,48 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	private function renderBucket3( $record ) {
 		$name   = htmlspecialchars( $record[0]->user_name );
 		$rating = htmlspecialchars( $record['rating']->aa_response_rating );
-		return 
-		Html::openElement( 'h3' )
-		. wfMessage( 'articlefeedbackv5-form3-header', $name, $rating )->escaped()
-		. Html::closeElement( 'h3' )
+		$class  = $record['rating']->aa_response_rating >= 3 ? 'positive' : 'negative';
+
+		return $this->feedbackHead( 'articlefeedbackv5-form3-header', $class, $record[0], $record['rating']->aa_response_rating )
 		. '<blockquote>' . htmlspecialchars( $record['comment']->aa_response_text )
 		. '</blockquote>';
 	}
 
 	private function renderBucket4( $record ) {
-		return wfMessage( 'articlefeedbackv5-form4-header' )->escaped();
+		return $this->feedbackHead(
+                        'articlefeedbackv5-form4-header',
+                        'positive',
+                        $record[0]
+                );
 	}
 
 	private function renderBucket5( $record ) {
-		$name = htmlspecialchars( $record[0]->user_name );
-		$rv   = 
-		Html::openElement( 'h3' )
-		. wfMessage( 'articlefeedbackv5-form5-header', $name )->escaped()
-		. Html::closeElement( 'h3' );
-		$rv .= '<ul>';
+		$name  = htmlspecialchars( $record[0]->user_name );
+		$body  = '<ul>';
+		$total = 0;
+		$count = 0;
 		foreach ( $record as $key => $answer ) {
 			if ( $answer->afi_data_type == 'rating' && $key != '0' ) {
-				$rv .= "<li>"
+				$body .= "<li>"
 				. htmlspecialchars( $answer->afi_name  )
 				. ': '
 				. htmlspecialchars( $answer->aa_response_rating )
 				. "</li>";
+				$total += $answer->aa_response_rating;
+				$count++;
 			}
 		}
-		$rv .= "</ul>";
+		$body .= "</ul>";
+	
+		$class = $total / $count >= 3 ? 'positive' : 'negative';
 
-		return $rv;
+                $head = $this->feedbackHead(
+                        'articlefeedbackv5-form5-header',
+                        $class,
+                        $record[0]
+                );
+
+		return $head.$body;
 	}
 
 	private function renderBucket0( $record ) {
@@ -470,11 +471,35 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderNoBucket( $record ) {
-		return wfMessage( 'articlefeedbackv5-form-invalid' )->escaped();
+		return $this->feedbackHead( 
+			'articlefeedbackv5-form-invalid',
+			'negative',
+			$record[0]
+		);	
 	}
 
 	private function renderBucket6( $record ) {
-		return wfMessage( 'articlefeedbackv5-form-not-shown' )->escaped();
+		return $this->feedbackHead( 
+			'articlefeedbackv5-form-not-shown',
+			'positive',
+			$record[0]
+		);	
+	}
+
+	private function feedbackHead( $message, $class, $record, $extra = '' ) {
+		$gender = ''; #?
+		$name = htmlspecialchars( $record->user_name );
+		$link = $record->af_user_id ? "User:$name" : "Special:Contributions/$name";
+		$html = Html::openElement( 'h3' )
+		. Html::element( 'span', array( 'class' => 'icon' ) )
+                . Linker::link( Title::newFromText( $link ), $name )
+		. Html::element( 'span', 
+			array( 'class' => $class ), 
+			wfMessage( $message, $gender, $extra )->escaped() 
+		)
+		. Html::closeElement( 'h3' );
+
+		return $html;
 	}
 
 	/**

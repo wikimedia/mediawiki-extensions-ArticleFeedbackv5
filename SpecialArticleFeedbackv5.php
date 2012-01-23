@@ -18,7 +18,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	private $access;	
 	private $filters = array( 
 		'visible', 
-		'all', 
 		'comment'
 	);
 	private $sorts = array( 
@@ -35,10 +34,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$this->access = ApiArticleFeedbackv5Utils::initializeAccess();
 
 		if( $this->access[ 'rollbackers' ] ) {
-			$filter[] = 'invisible';
+			$this->filters[] = 'invisible';
+			$this->filters[] = 'all';
 		}
 		if( $this->access[ 'oversight' ] ) {
-			$filter[] = 'deleted';
+			$this->filters[] = 'deleted';
 		}
 	}
 
