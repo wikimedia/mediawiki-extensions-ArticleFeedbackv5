@@ -252,3 +252,5 @@ a#articleFeedbackv5-show-more {
 .articleFeedbackv5-feedback h3.negative .icon {
 	background: #bf0a0a url(images/bg_emoticon_negative.png) no-repeat center center;
 }
+
+.sort-active { font-weight: bold; }

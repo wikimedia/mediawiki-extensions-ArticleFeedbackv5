@@ -178,7 +178,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				'div',
 				array( 'id' => 'articleFeedbackv5-sort' )
 			)
+			. Html::openElement(
+				'span',
+				array( 'class' => 'articleFeedbackv5-sort-label' )
+			)
 			. $this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
+			. Html::closeElement( 'span' )
 			. implode( $this->msg( 'pipe-separator' )->escaped(), $sortLabels )
 
 			. $this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
@@ -187,7 +192,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				'div',
 				array( 'id' => 'articleFeedbackv5-filter' )
 			)
+			. Html::openElement(
+				'span',
+				array( 'class' => 'articleFeedbackv5-filter-label' )
+			)
 			. $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
+			. Html::closeElement( 'span' )
 			. $filterSelect->getHTML()
 			. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
 			. Html::closeElement( 'div' )

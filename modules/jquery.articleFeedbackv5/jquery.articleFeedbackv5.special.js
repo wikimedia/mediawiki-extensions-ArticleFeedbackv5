@@ -141,11 +141,13 @@
 		dir = $.articleFeedbackv5special.sortDirection;
 
 		$( '.articleFeedbackv5-sort-arrow' ).hide();
+		$( '.articleFeedbackv5-sort-link' ).removeClass( 'sort-active' );
 
 		$( '#articleFeedbackv5-sort-arrow-' + id ).text(
 			mw.msg( 'articlefeedbackv5-special-sort-' + dir )
 		);
 		$( '#articleFeedbackv5-sort-arrow-' + id ).show();
+		$( '#articleFeedbackv5-special-sort-' + id).addClass( 'sort-active' );
 	}
 
 	// Utility method for stripping long IDs down to the specific bits we care about.
