@@ -1018,6 +1018,11 @@
 	margin-top: 50px !important;
 }
 
+.articleFeedbackv5-ui.articleFeedbackv5-cta-3 .articleFeedbackv5-cta-button {
+	margin-top: 50px !important;
+}
+
+
 /* Skin-specific styles */
 body.skin-vector .articleFeedbackv5-dialog.ui-dialog .ui-dialog-content a,
 body.skin-monobook .articleFeedbackv5-dialog.ui-dialog .ui-dialog-content a {

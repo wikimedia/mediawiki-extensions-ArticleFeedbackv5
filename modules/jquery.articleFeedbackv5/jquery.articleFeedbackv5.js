@@ -1993,7 +1993,107 @@
 
 			// }}}
 
-		}
+		},
+
+		// }}}
+		// {{{ CTA 3: Take a survey
+
+		'3': {
+
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The template for the whole block
+				 */
+				block: '\
+					<div class="clear"></div>\
+					<div class="articleFeedbackv5-confirmation-panel">\
+						<div class="articleFeedbackv5-panel-leftContent">\
+							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta3-confirmation-title" /></h3>\
+							<p class="articleFeedbackv5-confirmation-call"><html:msg key="cta3-confirmation-call" /></p>\
+						</div>\
+						<a href="#" class="articleFeedbackv5-cta-button" target="_blank"><span class="ui-button-text"><html:msg key="cta3-button-text" /></span></a>\
+						<div class="clear"></div>\
+					</div>\
+					'
+
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the CTA
+			 *
+			 * @return Element the form
+			 */
+			build: function () {
+
+				// Start up the block to return
+				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
+
+				// Fill in the go-to-survey link
+				var survey_track_id = $.articleFeedbackv5.bucketName() + '-' +
+					$.articleFeedbackv5.ctaName() + '-button_click-' +
+					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
+				$block.find( '.articleFeedbackv5-cta-button' )
+					.attr( 'href', $.articleFeedbackv5.trackingUrl(
+						mw.config.get( 'wgArticleFeedbackv5SurveyUrl' ) +
+							'?c=' + $.articleFeedbackv5.bucketId +
+							'&f=' + $.articleFeedbackv5.feedbackId,
+						survey_track_id
+					) );
+
+				return $block;
+			},
+
+			// }}}
+			// {{{ bindEvents
+
+			/**
+			 * Binds any events
+			 *
+			 * @param $block element the form block
+			 */
+			bindEvents: function ( $block ) {
+
+				// Make the link work as a popup
+				$block.find( '.articleFeedbackv5-cta-button' )
+					.click( function ( e ) {
+						e.preventDefault();
+						var link = $( this ).attr( 'href' );
+						var params = 'status=0,\
+							toolbar=0,\
+							location=0,\
+							menubar=0,\
+							directories=0,\
+							resizable=1,\
+							scrollbars=1,\
+							height=600,\
+							width=800';
+						var survey = window.open( link, 'survey', params );
+					} );
+
+			},
+
+			// }}}
+			// {{{ afterBuild
+
+			/**
+			 * Perform adjustments after build
+			 */
+			afterBuild: function() {
+				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
+			}
+
+			// }}}
+
+		},
 
 		// }}}
 
@@ -2282,6 +2382,8 @@
 			return 'cta_edit';
 		} else if ( '2' == $.articleFeedbackv5.ctaId ) {
 			return 'cta_learn_more';
+		} else if ( '3' == $.articleFeedbackv5.ctaId ) {
+			return 'cta_survey';
 		} else {
 			return 'cta_unknown';
 		}

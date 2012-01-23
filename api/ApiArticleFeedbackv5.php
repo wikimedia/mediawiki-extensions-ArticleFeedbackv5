@@ -682,7 +682,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @return int the cta id
 	 */
 	public function getCTAId( $answers, $bucket ) {
-		return 1; # Hard-code this for now.
+		return 3; # Hard-code this for now.
 	}
 
 	/**
