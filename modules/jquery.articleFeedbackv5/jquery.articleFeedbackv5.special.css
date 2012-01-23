@@ -39,10 +39,10 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	text-align: center;
 }
 #articleFeedbackv5-percent-found-wrap .positive {
-	 background: #2f8035 url(images/bg_emoticon_positive.png) no-repeat 5px center;
+	 background: #2f8035 url(images/bg_emoticon_positive.png) no-repeat 8px center;
 }
 #articleFeedbackv5-percent-found-wrap .negative {
-	 background: #bf0a0a url(images/bg_emoticon_negative.png) no-repeat 5px center;
+	 background: #bf0a0a url(images/bg_emoticon_negative.png) no-repeat 8px center;
 }
 .aftv5-feedbackpage .aftv5-feedbackpage-comment-display-header {
 	height: 40px;
@@ -90,10 +90,10 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 .articleFeedbackv5-comment-wrap {
 	float: left;
 }
-.articleFeedbackv5-comment-wrap h3 .positive {
+.articleFeedbackv5-comment-wrap h3.positive .result {
 	color: #2f8035;
 }
-.articleFeedbackv5-comment-wrap h3 .negative {
+.articleFeedbackv5-comment-wrap h3.negative .result {
 	color: #bf0a0a;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools {
@@ -118,6 +118,8 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	position: absolute;
 	z-index: 150;
 	width: 140px;
+	height: 40px;
+	line-height: 40px;s
 	margin: 0;
 	cursor: pointer;
 }
@@ -229,3 +231,24 @@ a#articleFeedbackv5-show-more {
 	/*background: url(images/bg-button.png) repeat-x;
 	color: #fff;
 }*/
+.articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap h3 {
+	line-height: 24px;
+}
+.articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap h3 .icon {
+	display: inline-block;
+	width: 28px;
+	height: 28px;
+	margin: 0 5px 0 0;
+	position: relative;
+	top: 8px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	border-radius: 5px;
+}
+.articleFeedbackv5-feedback h3.positive .icon {
+	background: #2f8035 url(images/bg_emoticon_positive.png) no-repeat center center;
+}
+.articleFeedbackv5-feedback h3.negative .icon {
+	background: #bf0a0a url(images/bg_emoticon_negative.png) no-repeat center center;
+}
