@@ -155,7 +155,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'af_helpful_count', 'af_unhelpful_count', 'af_delete_count', 
 				'(SELECT COUNT(*) FROM revision WHERE rev_id > af_revision_id AND rev_page = '.( integer ) $pageId.') AS age', 
 				'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) AS net_helpfulness',
-				'page_latest', 'af_revision_id'
+				'page_latest', 'af_revision_id', 'page_title'
 			),
 			array( 'af_id' => $ids ),
 			__METHOD__,
@@ -293,8 +293,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'class' => 'articleFeedbackv5-comment-details-updates'
 		) ) 
 		. Linker::link(
-#TODO: take out that hardcoded thing.
-			Title::newFromText( 'Greg' ),
+			Title::newFromText( $record[0]->page_title ),
 			wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age ), 
 			array(),
 			array(
@@ -363,19 +362,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. Html::closeElement( 'ul' )
 		. Html::closeElement( 'div' );
 
-		# Only set a wrapper class for bucket 1.
-		$class = '';
-		if( array_key_exists( 'found', $record ) ) {
-			if ( $record['found']->aa_response_boolean ) {
-				$class = 'positive';
-			} else {
-				$class = 'negative';
-			}
-		}
-
 		return Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback' ) )
 		. Html::openElement( 'div', array(
-			'class' => "articleFeedbackv5-comment-wrap $class"
+			'class' => "articleFeedbackv5-comment-wrap"
 		) )
 		. $content
 		. $footer_links
@@ -416,8 +405,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. '</blockquote>';
 	}
 
-	# TODO: The headers here really need the same treatment as bucket1, with
-	# the links and such.
 	private function renderBucket3( $record ) {
 		$name   = htmlspecialchars( $record[0]->user_name );
 		$rating = htmlspecialchars( $record['rating']->aa_response_rating );
@@ -488,18 +475,19 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	private function feedbackHead( $message, $class, $record, $extra = '' ) {
 		$gender = ''; #?
-		$name = htmlspecialchars( $record->user_name );
-		$link = $record->af_user_id ? "User:$name" : "Special:Contributions/$name";
-		$html = Html::openElement( 'h3' )
+		$name   = htmlspecialchars( $record->user_name );
+		$link   = $record->af_user_id ? "User:$name" : "Special:Contributions/$name";
+
+		return Html::openElement( 'h3', array( 
+			'class' => $class
+		) )
 		. Html::element( 'span', array( 'class' => 'icon' ) )
                 . Linker::link( Title::newFromText( $link ), $name )
 		. Html::element( 'span', 
-			array( 'class' => $class ), 
+			array( 'class' => 'result' ), 
 			wfMessage( $message, $gender, $extra )->escaped() 
 		)
 		. Html::closeElement( 'h3' );
-
-		return $html;
 	}
 
 	/**
