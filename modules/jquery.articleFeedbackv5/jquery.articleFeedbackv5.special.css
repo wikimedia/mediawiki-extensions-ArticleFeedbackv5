@@ -20,7 +20,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 }
 #articleFeedbackv5-showing-count-wrap {
 	float: left;
-	margin: 0 0 5px;
+	margin: 0 0 15px;
 }
 #articleFeedbackv5-percent-found-wrap {
 	clear: left;
@@ -68,7 +68,8 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 }
 #articleFeedbackv5-filter-select {
 	position: relative;
-	top: 10px;
+	top: 9x;
+	left: 3px;
 	float: none;
 	display: inline-block;
 }
@@ -79,8 +80,8 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 .articleFeedbackv5-feedback {
 	min-width: 650px;
 	position: relative;
-	padding: 10px 10px 09px;
-	border-bottom: 1px solid #d6d6d6;
+	padding: 10px 10px 8px;
+	border-bottom: 2px solid #d6d6d6;
 	overflow: hidden;
 }
 .articleFeedbackv5-feedback:after {
@@ -139,9 +140,9 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	cursor: pointer;
 }
 .articleFeedbackv5-feedback:hover {
-	padding: 9px 10px;
-	border-top: 1px solid #3366bb;
-	border-bottom: 1px solid #3366bb;
+	padding: 8px 10px;
+	border-top: 2px solid #3366bb;
+	border-bottom: 2px solid #3366bb;
 }
 .articleFeedbackv5-feedback:hover .articleFeedbackv5-feedback-tools {
 	display: block;
@@ -165,18 +166,19 @@ a#articleFeedbackv5-show-more {
 	float: right;
 }
 #articleFeedbackv5-special-add-feedback {
-	color:white;
+	/*color:white;
 	display: block;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	-ms-border-radius: 5px;
-	border-radius: 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	border-radius: 3px;
 	width: auto;
 	height: 35px;
 	line-height: 35px;
 	padding: 0 9px;
 	float: right;
-	background: url(images/bg-submit.png) repeat-x;
+	background: url(images/bg-submit.png) repeat-x;*/
+	display: none;
 }
 #articleFeedbackv5-special-add-feedback:after {
 	clear:both;
@@ -203,11 +205,12 @@ a#articleFeedbackv5-show-more {
 	background: url(images/bg-button-disable.png) repeat-x;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
-	border-radius: 3px; /* future proofing */
-	-khtml-border-radius: 3px; /* for old Konqueror browsers */
-	-moz-box-shadow: -2px 2px 1px #999;
+	border-radius: 3px; 
+	-khtml-border-radius: 3px; 
+	/*-moz-box-shadow: -2px 2px 1px #999;
 	-webkit-box-shadow: -2px 2px 1px #999;
-	box-shadow: -2px 2px 1px #999;
+	box-shadow: -2px 2px 1px #999;*/
+	border: 1px solid #999;
 }
 
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link:hover,
