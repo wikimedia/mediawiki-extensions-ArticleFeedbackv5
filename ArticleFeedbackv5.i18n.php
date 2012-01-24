@@ -77,7 +77,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|1 feedback post|$1 feedback posts }} on this article',
 	'articlefeedbackv5-comment-link' => 'Permalink',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edit|$1 edits}} since post',
-	'articlefeedbackv5-special-more' => 'More',
+	'articlefeedbackv5-special-more' => 'Show more posts',
 	'articlefeedbackv5-special-pagetitle' => 'Feedback: $1',
 
 	'articlefeedbackv5-form-optionid' => 'Option $1',
