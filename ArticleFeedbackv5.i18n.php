@@ -34,6 +34,7 @@ $messages['en'] = array(
 
 	// error messages
 	'articlefeedbackv5-error' => 'An error has occured. Please try again later.',
+	'articlefeedbackv5-page-disabled' => 'Article Feedback page not enabled for this article.',
 	'articlefeedbackv5-error-email' => 'That e-mail address is not valid.',
 	'articlefeedbackv5-error-blocked' => 'Blocked users may not submit feedback.',
 	'articlefeedbackv5-error-validation' => 'Validation error.',
