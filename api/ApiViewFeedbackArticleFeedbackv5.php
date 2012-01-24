@@ -254,7 +254,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				$where[] = 'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) > 0';
 				break;
 			case 'unhelpful':
-				$where[] = 'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) <= 0';
+				$where[] = 'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) < 0';
 				break;
 			case 'comment':
 				$where[] = 'aa_response_text IS NOT NULL';

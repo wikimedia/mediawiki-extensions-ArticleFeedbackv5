@@ -23,9 +23,11 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
+		$pageId = $params['pageid'];
 		$error  = null;
 		$dbr    = wfGetDB( DB_SLAVE );
 		$counts = array( 'increment' => array(), 'decrement' => array() );
+
 		# load feedback record, bail if we don't have one
 		$record = $dbr->selectRow(
 			'aft_article_feedback',
@@ -62,16 +64,28 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$error = 'articlefeedbackv5-invalid-feedback-flag';
 		}
 
-
 		// Newly abusive record
 		if( $flag == 'abuse' && $record->af_abuse_count == 0 ) {
-			$counts['increment'][] = 'abuse';
+			$counts['increment'][] = 'abusive';
 		}
+
+		if( $flag == 'oversight' ) {
+			$counts['increment'][] = 'needsoversight';
+		}
+		if( $flag == 'unoversight' ) {
+			$counts['decrement'][] = 'needsoversight';
+		}
+
 
 		// Newly hidden record
 		if( $flag == 'hide' && $record->af_hide_count == 0 ) {
 			$counts['increment'][] = 'invisible';
 			$counts['decrement'][] = 'visible';
+		}
+		// Unhidden record
+		if( $flag == 'unhide') {
+			$counts['increment'][] = 'visible';
+			$counts['decrement'][] = 'invisible';
 		}
 
 		// Newly deleted record
@@ -79,15 +93,19 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$counts['increment'][] = 'deleted';
 			$counts['decrement'][] = 'visible';
 		}
-
+		// Undeleted record
+		if( $flag == 'undelete' ) {
+			$counts['increment'][] = 'visible';
+			$counts['decrement'][] = 'deleted';
+		}
+		
 		// Newly helpful record
 		if( $flag == 'helpful' && $record->af_helpful_count == 0 ) {
 			$counts['increment'][] = 'helpful';
 		}
-
 		// Newly unhelpful record (IE, unhelpful has overtaken helpful)
 		if( $flag == 'unhelpful' 
-		 && ( $record->af_helpful_count - $record->af_unhelpful_count ) == 1 ) {
+		 && ( ( $record->af_helpful_count - $record->af_unhelpful_count ) == 1 ) ) {
 			$counts['decrement'][] = 'helpful';
 		}
 
@@ -100,7 +118,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				__METHOD__
 			);
 
-			$this->updateFilterCounts( $counts, $params['pageid'] );
+			 ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
+			 ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['decrement'] );
 		}
 
 		if ( $error ) {
@@ -119,46 +138,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				'reason' => $reason,
 			)
 		);
-	}
-
-	public function updateFilterCounts( $counts, $pageId ) {
-		$dbw  = wfGetDB( DB_MASTER );
-		$rows = array();
-
-		foreach( array_merge( $counts['increment'], $counts['decrement'] ) as $filter ) {
-			$rows[] = array(
-				'afc_page_id'      => $pageId,
-				'afc_filter_name'  => $filter,
-				'afc_filter_count' => 0
-			);
-		}
-
-		// Make sure the rows are inserted.
-		$dbw->insert(
-			'aft_article_filter_count',
-			$rows,
-			__METHOD__,
-			array( 'IGNORE' )
-		);
-
-		// Update the filter counts
-		foreach( $counts['increment'] as $count ) {
-			$dbw->update(
-				'aft_article_filter_count',
-				array( 'afc_filter_count = afc_filter_count + 1' ),
-				array( 'afc_filter_name' => $count ),
-				__METHOD__
-			);
-		}
-
-		foreach( $counts['decrement'] as $count ) {
-			$dbw->update(
-				'aft_article_filter_count',
-				array( 'afc_filter_count = afc_filter_count - 1' ),
-				array( 'afc_filter_name' => $count ),
-				__METHOD__
-			);
-		}
 	}
 
 	/**

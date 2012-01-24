@@ -154,40 +154,62 @@ class ApiArticleFeedbackv5Utils {
 	 * Increments the per-page-per-filter count rollups used on the feedback
 	 * page.
 	 * 
-	 * @param $pageId     int    the ID of the page (page.page_id)
-	 * @param $filterName string name of the filter to increment
+	 * @param $pageId      int   the ID of the page (page.page_id)
+	 * @param $filterNames array values are names of filters to increment
 	 */
-	public static function incrementFilterCount( $pageId, $filterName ) {
+	public static function incrementFilterCounts( $pageId, $filterNames ) {
+		ApiArticleFeedbackv5Utils::updateFilterCounts( $pageId, $filterNames, false );
+	}
+
+	/**
+	 * decrements the per-page-per-filter count rollups used on the feedback
+	 * page.
+	 * 
+	 * @param $pageId      int   the ID of the page (page.page_id)
+	 * @param $filterNames array values are names of filters to decrement
+	 */
+	public static function decrementFilterCounts( $pageId, $filterNames ) {
+		ApiArticleFeedbackv5Utils::updateFilterCounts( $pageId, $filterNames, true );
+	}
+
+	public function updateFilterCounts( $pageId, $filters, $decrement ) {
                 $dbw = wfGetDB( DB_MASTER );
 
                 $dbw->begin();
 
-                # Try to insert the record, but ignore failures.
-                # Ensures the count row exists.
-                $dbw->insert(
-                        'aft_article_filter_count',
-                        array(
-                                'afc_page_id'      => $pageId,
-                                'afc_filter_name'  => $filterName,
-                                'afc_filter_count' => 0
-                        ),
-                        __METHOD__,
-                        array( 'IGNORE' )
-                );
+		foreach( $filters as $filter ) { 
+			$rows[] = array(
+				'afc_page_id'      => $pageId,
+				'afc_filter_name'  => $filter,
+				'afc_filter_count' => 0
+			);
+		}
 
-                # Update the count row, incrementing the count.
-                $dbw->update(
-                        'aft_article_filter_count',
-                        array(
-                                'afc_filter_count = afc_filter_count + 1'
-                        ),
-                        array(
-                                'afc_page_id'     => $pageId,
-                                'afc_filter_name' => $filterName
-                        ),
-                        __METHOD__
-                );
+		# Try to insert the record, but ignore failures.
+		# Ensures the count row exists.
+		$dbw->insert(
+			'aft_article_filter_count',
+			$rows,
+			__METHOD__,
+			array( 'IGNORE' )
+		);
 
-                $dbw->commit();
+		$value = $decrement ? 'afc_filter_count - 1' : 'afc_filter_count + 1';
+
+		foreach( $filters as $filter ) {
+                	# Update each row with the new count.
+			$dbw->update(
+				'aft_article_filter_count',
+				array( "afc_filter_count = $value" ),
+				array(
+					'afc_page_id'     => $pageId,
+					'afc_filter_name' => $filter
+				),
+				__METHOD__
+			);
+
+		}
+
+		$dbw->commit();
 	}
 }

@@ -61,19 +61,19 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_filter_count (
 ALTER TABLE aft_article_feedback ADD COLUMN af_helpful_count integer unsigned NOT NULL DEFAULT 0;
 ALTER TABLE aft_article_feedback ADD COLUMN af_delete_count integer unsigned NOT NULL DEFAULT 0;
 
--- added 1/18 (greg)
-DELETE FROM aft_article_filter_count;
-INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'helpful', COUNT(*) FROM aft_article_feedback WHERE af_helpful_count > 0 GROUP BY af_page_id;
-INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'abuse', COUNT(*) FROM aft_article_feedback WHERE af_abuse_count = 0 GROUP BY af_page_id;
-INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'invisible', COUNT(*) FROM aft_article_feedback WHERE af_hide_count > 0 GROUP BY af_page_id;
-INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'visible', COUNT(*) FROM aft_article_feedback WHERE af_hide_count = 0 GROUP BY af_page_id;
-INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'all', COUNT(*) FROM aft_article_feedback GROUP BY af_page_id;
-INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'comment', COUNT(*) FROM aft_article_feedback, aft_article_answer WHERE af_id = aa_feedback_id AND aa_response_text IS NOT NULL GROUP BY af_page_id;
 
 -- added 1/19 (greg)
 ALTER TABLE aft_article_feedback ADD COLUMN af_unhelpful_count integer unsigned NOT NULL DEFAULT 0;
 
--- added 1/24 (greg)
+-- added  or updated 1/24 (greg)
+DELETE FROM aft_article_filter_count;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'helpful', COUNT(*) FROM aft_article_feedback WHERE CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) > 0 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'abusive', COUNT(*) FROM aft_article_feedback WHERE af_abuse_count = 0 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'invisible', COUNT(*) FROM aft_article_feedback WHERE af_hide_count > 0 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'visible', COUNT(*) FROM aft_article_feedback WHERE af_hide_count = 0 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'all', COUNT(*) FROM aft_article_feedback GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'comment', COUNT(*) FROM aft_article_feedback, aft_article_answer WHERE af_id = aa_feedback_id AND aa_response_text IS NOT NULL GROUP BY af_page_id;
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'deleted', COUNT(*) FROM aft_article_feedback WHERE af_delete_count > 0 GROUP BY af_page_id;
-INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'unhelpful', COUNT(*) FROM aft_article_feedback WHERE af_helpful_count <= 0 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'unhelpful', COUNT(*) FROM aft_article_feedback WHERE CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) < 0 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'needsoversight', COUNT(*) FROM aft_article_feedback WHERE af_needs_oversight IS TRUE GROUP BY af_page_id;
 ALTER TABLE aft_article_feedback ADD COLUMN af_needs_oversight boolean NOT NULL DEFAULT FALSE;
