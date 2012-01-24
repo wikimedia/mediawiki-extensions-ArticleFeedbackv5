@@ -2106,9 +2106,14 @@
 							directories=0,\
 							resizable=1,\
 							scrollbars=1,\
-							height=600,\
-							width=800';
+							height=800,\
+							width=600';
 						var survey = window.open( link, 'survey', params );
+						if ( $.articleFeedbackv5.inDialog ) {
+							$.articleFeedbackv5.closeAsModal();
+						} else {
+							$.articleFeedbackv5.clear();
+						}
 					} );
 
 			},
