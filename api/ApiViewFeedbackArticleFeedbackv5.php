@@ -200,25 +200,24 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		global $wgUser;
 		$where = array();
 
-		// Permissions check
+		// Permissions check: these filters are for admins only.
 		if(
 			( $filter == 'invisible' 
 			 && !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) )
 			|| 
 			( $filter == 'deleted' 
-			 && !$wgUser->isAllowed( 'aftv5-ssee-deleted-feedback' ) )
+			 && !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) )
 		) {
 			$filter = null;
 		}
 
-		// Always limit this to non-hidden records, unless they 
-		// specifically ask to see them.
-		if( in_array( $filter, array( 'invisible', 'all', 'almostall' ) ) ) { 
+		// Don't let non-allowed users see these.
+		if( !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			$where['af_hide_count'] = 0;
 		}
 
-		// Same, but for deleted/supressed/oversight-only records.
-		if( in_array( $filter, array( 'deleted', 'all'  ) ) ) { 
+		// Don't let non-allowed users see these.
+		if( !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
 			$where['af_delete_count'] = 0;
 		}
 
@@ -228,18 +227,16 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				$where[ 'af_id' ] = $filterValue;
 				break;
 			case 'all':
+				# relies on the above to handler filtering,
+				# because 'all' doesn't mean thhe same thing
+				# at all access levels.
 				# oversight, real 'all' - no filtering done
-				break;
-			case 'almostall':
 				# non-oversight 'all' - no deleted feedback
-				$where['af_delete_count'] = 0;
-				break;
-			case 'notall':
 				# non-moderator 'all' - no hidden/deleted
-				$where['af_delete_count'] = 0;
-				$where['af_hide_count']   = 0;
 				break;
 			case 'visible':
+				# For oversights/sysops to see what normal
+				# people see.
 				$where['af_delete_count'] = 0;
 				$where['af_hide_count']   = 0;
 				break;
@@ -352,6 +349,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. Html::closeElement( 'p' );
 
 		// Don't render the toolbox if they can't do anything with it.
+		$tools = null;
 		if( $can_hide || $can_delete ) { 
 			$tools = Html::openElement( 'div', array( 
 				'class' => 'articleFeedbackv5-feedback-tools',
@@ -362,18 +360,42 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			), wfMessage( 'articlefeedbackv5-form-tools-label' )->text() )
 			. Html::openElement( 'ul', array(
 				'id' => 'articleFeedbackv5-feedback-tools-list-'.$id
-			) )
-			# TODO: unhide hidden posts
-			. ( $can_hide ? Html::rawElement( 'li', array(), Html::element( 'a', array(
-				'id'    => "articleFeedbackv5-hide-link-$id",
-				'class' => 'articleFeedbackv5-hide-link'
-			), wfMessage( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )->text() ) ) : '' )
-			# TODO: nonoversight can mark for oversight, oversight can 
-			# either delete or un-delete, based on deletion status
-			. ( $can_delete ? Html::rawElement( 'li', array(), Html::element( 'a', array(
-				'id'    => "articleFeedbackv5-delete-link-$id",
-				'class' => 'articleFeedbackv5-delete-link'
-			), wfMessage( 'articlefeedbackv5-form-delete' )->text() ) ) : '' )
+			) );
+
+
+			if( $can_hide ) { 
+				$link = 'hide';
+				if( $record[0]->af_hide_count > 0 ) {
+					# unhide
+					$link = 'unhide';
+				}
+				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-$link-link-$id",
+					'class' => "articleFeedbackv5-$link-link"
+				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_hide_count )->text() ) );
+			}
+
+			# TODO: a third link, to remove oversight flag
+			if( $can_delete ) {
+				# delete
+				$link = 'delete';
+				if( $record[0]->af_delete_count > 0 ) {
+					# undelete
+					$link = 'undelete';
+				}
+#			} else {
+#				if( $record[0]->af_needs_oversight ) {
+#					# TODO: already flagged
+#					$link = 'oversight';
+#				}
+#				# flag for oversight
+#				$link = 'oversight';
+			}
+
+			$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+				'id'    => "articleFeedbackv5-$link-link-$id",
+				'class' => "articleFeedbackv5-$link-link"
+				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_delete_count )->text() ) )
 			. Html::closeElement( 'ul' )
 			. Html::closeElement( 'div' );
 		}
@@ -496,8 +518,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		return Html::openElement( 'h3', array( 
 			'class' => $class
 		) )
-		. Html::element( 'span', array( 'class' => 'icon' ) )
                 . Linker::link( Title::newFromText( $link ), $name )
+		. Html::element( 'span', array( 'class' => 'icon' ) )
 		. Html::element( 'span', 
 			array( 'class' => 'result' ), 
 			wfMessage( $message, $gender, $extra )->escaped() 
@@ -533,7 +555,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'all', 'invisible', 'visible', 'comment', 'id', 'helpful', 'unhelpful', 'abusive', 'almostall', 'notall' )
+				 'all', 'invisible', 'visible', 'comment', 'id', 'helpful', 'unhelpful', 'abusive', 'deleted' )
 			),
 			'filtervalue'   => array(
 				ApiBase::PARAM_REQUIRED => false,

@@ -39,6 +39,19 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		if ( !$record->af_id ) {
 			// no-op, because this is already broken
 			$error = 'articlefeedbackv5-invalid-feedback-id';
+		} elseif( $params['flagtype'] == 'unhide' ) {
+			// remove the hidden status
+			$update[] = 'af_hide_count = 0';
+		} elseif( $params['flagtype'] == 'unoversight' ) {
+			// remove the oversight flag 
+			$update[] = 'af_needs_oversight = FALSE';
+		} elseif( $params['flagtype'] == 'undelete' ) {
+			// remove the deleted status, and clear oversight flag
+			$update[] = 'af_delete_count = 0';
+			$update[] = 'af_needs_oversight = FALSE';
+		} elseif( $params['flagtype'] == 'oversight' ) {
+			// flag for oversight
+			$update[] = 'af_oversight = TRUE';
 		} elseif( in_array( $params['flagtype'], $flags ) ) {
 			// Probably this doesn't need validation, since the API
 			// will handle it, but if it's getting interpolated into
@@ -169,7 +182,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'abuse', 'hide', 'helpful', 'unhelpful', 'delete' )
+				 'abuse', 'hide', 'helpful', 'unhelpful', 'delete', 'undelete', 'unhide', 'oversight' )
 			),
 		);
 	}

@@ -17,7 +17,8 @@
 class SpecialArticleFeedbackv5 extends SpecialPage {
 	private $filters = array(
 		'comment',
-		'helpful'
+		'helpful',
+		'all'
 	);
 	private $sorts = array(
 		'age',
@@ -32,6 +33,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		global $wgUser;
 		parent::__construct( 'ArticleFeedbackv5' );
 
+		// NOTE: The 'all' option actually displays different things 
+		// based on the users role, which is handled in the filter:
+		// - deleter-all is actually everything
+		// - hidder-all is 'visible + hidden' 
+		// - regular non-admin all is just 'all visible'
+
 		if( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			array_push( $this->filters,
 				'invisible', 'unhelpful', 'abusive'
@@ -39,22 +46,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		if( $wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
-			array_push( $this->filters, 'deleted', 'all' );
-		}
-
-		// The 'all' option actually displays different things based
-		// on the users role, which is why we do this.
-		// - deleted-all is actually everything
-		// - hidden-all is 'visible + hidden'
-		// - regular non-admin all is just 'all visible'
-		if( !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' )
-		 && $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
-			$this->filters[] = 'almostall';
-		}
-
-		if( !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' )
-		 && !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
-			$this->filters[] = 'notall';
+			$this->filters[] = 'deleted';
 		}
 	}
 

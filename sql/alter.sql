@@ -72,3 +72,8 @@ INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_co
 
 -- added 1/19 (greg)
 ALTER TABLE aft_article_feedback ADD COLUMN af_unhelpful_count integer unsigned NOT NULL DEFAULT 0;
+
+-- added 1/24 (greg)
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'deleted', COUNT(*) FROM aft_article_feedback WHERE af_delete_count > 0 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'unhelpful', COUNT(*) FROM aft_article_feedback WHERE af_helpful_count <= 0 GROUP BY af_page_id;
+ALTER TABLE aft_article_feedback ADD COLUMN af_needs_oversight boolean NOT NULL DEFAULT FALSE;

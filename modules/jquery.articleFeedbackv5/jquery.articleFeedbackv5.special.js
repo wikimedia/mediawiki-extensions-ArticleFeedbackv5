@@ -119,8 +119,8 @@
 			oldId  = $.articleFeedbackv5special.sort;
 
 			// set direction = desc...
-			$.articleFeedbackv5special.sort          = id;
-			$.articleFeedbackv5special.continue      = null;
+			$.articleFeedbackv5special.sort     = id;
+			$.articleFeedbackv5special.continue = null;
 
 			// unless we're flipping the direction on the current sort.
 			if( id == oldId && $.articleFeedbackv5special.sortDirection == 'desc' ) {
@@ -140,29 +140,12 @@
 			return false;
 		} );
 
-		$( '.articleFeedbackv5-abuse-link' ).live( 'click', function( e ) {
-			$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-abuse-link-' ), 'abuse' );
-			return false;
-		} );
-		$( '.articleFeedbackv5-hide-link' ).live( 'click', function( e ) {
-			$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-hide-link-' ), 'hide' );
-			return false;
-		} );
-		$( '.articleFeedbackv5-delete-link' ).live( 'click', function( e ) {
-			$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-delete-link-' ), 'delete' );
-			return false;
-		} );
-		$( '.articleFeedbackv5-helpful-link' ).live( 'click', function( e ) {
-			$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-helpful-link-' ), 'helpful' );
-			$(this).addClass('active');
-			
-			return false;
-		} );
-		$( '.articleFeedbackv5-unhelpful-link' ).live( 'click', function( e ) {
-			$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-unhelpful-link-' ), 'unhelpful' );
-			$(this).addClass('active');
-			return false;
-		} );
+		$.each( ['unhide', 'undelete', 'oversight', 'hide', 'abuse', 'delete', 'helpful', 'unhelpful'], 
+		function ( index, value ) { 
+			$( '.articleFeedbackv5-' + value + '-link' ).live( 'click', function( e ) {
+				$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-' + value + '-link-' ), value );
+			})
+		});
 	}
 
 	// }}}
