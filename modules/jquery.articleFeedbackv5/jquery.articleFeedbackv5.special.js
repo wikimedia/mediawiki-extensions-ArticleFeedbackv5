@@ -140,12 +140,12 @@
 			return false;
 		} );
 
-		$.each( ['unhide', 'undelete', 'oversight', 'hide', 'abuse', 'delete', 'helpful', 'unhelpful'], 
+		$.each( ['unhide', 'undelete', 'oversight', 'hide', 'abuse', 'delete', 'helpful', 'unhelpful', 'unoversight'], 
 		function ( index, value ) { 
 			$( '.articleFeedbackv5-' + value + '-link' ).live( 'click', function( e ) {
 				$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-' + value + '-link-' ), value );
-			})
-		});
+			} )
+		} );
 	}
 
 	// }}}

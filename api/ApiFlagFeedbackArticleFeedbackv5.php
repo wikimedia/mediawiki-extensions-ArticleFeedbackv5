@@ -51,7 +51,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$update[] = 'af_needs_oversight = FALSE';
 		} elseif( $params['flagtype'] == 'oversight' ) {
 			// flag for oversight
-			$update[] = 'af_oversight = TRUE';
+			$update[] = 'af_needs_oversight = TRUE';
 		} elseif( in_array( $params['flagtype'], $flags ) ) {
 			// Probably this doesn't need validation, since the API
 			// will handle it, but if it's getting interpolated into
@@ -182,7 +182,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'abuse', 'hide', 'helpful', 'unhelpful', 'delete', 'undelete', 'unhide', 'oversight' )
+				 'abuse', 'hide', 'helpful', 'unhelpful', 'delete', 'undelete', 'unhide', 'oversight', 'unoversight' )
 			),
 		);
 	}

@@ -41,7 +41,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		if( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			array_push( $this->filters,
-				'invisible', 'unhelpful', 'abusive'
+				'invisible', 'unhelpful', 'abusive', 'needsoversight'
 			);
 		}
 

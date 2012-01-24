@@ -156,7 +156,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'aa_response_rating', 'aa_response_option_id',
 				'afi_data_type', 'af_created', 'user_name',
 				'af_user_ip', 'af_hide_count', 'af_abuse_count',
-				'af_helpful_count', 'af_unhelpful_count', 'af_delete_count', 
+				'af_helpful_count', 'af_unhelpful_count', 
+				'af_delete_count', 'af_needs_oversight',
 				'(SELECT COUNT(*) FROM revision WHERE rev_id > af_revision_id AND rev_page = '.( integer ) $pageId.') AS age', 
 				'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) AS net_helpfulness',
 				'page_latest', 'af_revision_id', 'page_title'
@@ -222,9 +223,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 
 		switch( $filter ) {
+			case 'needsoversight':
+				$where[] = 'af_needs_oversight IS TRUE';
+				break;
 			case 'id':
 				# Used for permalinks.
-				$where[ 'af_id' ] = $filterValue;
+				$where['af_id'] = $filterValue;
 				break;
 			case 'all':
 				# relies on the above to handler filtering,
@@ -368,6 +372,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				if( $record[0]->af_hide_count > 0 ) {
 					# unhide
 					$link = 'unhide';
+					$tools .= Html::element( 'li', array(), wfMessage( 'articlefeedbackv5-hidden' ) );
 				}
 				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 					'id'    => "articleFeedbackv5-$link-link-$id",
@@ -375,28 +380,38 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_hide_count )->text() ) );
 			}
 
-			# TODO: a third link, to remove oversight flag
 			if( $can_delete ) {
 				# delete
 				$link = 'delete';
 				if( $record[0]->af_delete_count > 0 ) {
-					# undelete
 					$link = 'undelete';
 				}
-#			} else {
-#				if( $record[0]->af_needs_oversight ) {
-#					# TODO: already flagged
-#					$link = 'oversight';
-#				}
-#				# flag for oversight
-#				$link = 'oversight';
+				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-$link-link-$id",
+					'class' => "articleFeedbackv5-$link-link"
+					), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_delete_count )->text() ) );
 			}
 
-			$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
-				'id'    => "articleFeedbackv5-$link-link-$id",
-				'class' => "articleFeedbackv5-$link-link"
-				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_delete_count )->text() ) )
-			. Html::closeElement( 'ul' )
+			$link = null;
+			if( $record[0]->af_needs_oversight ) {
+				if( $can_delete ) {
+					$link = 'unoversight';
+				} else {
+					$link = 'oversighted';
+				}
+			} elseif( $can_hide ) { 
+				# flag for oversight
+				$link = 'oversight';
+			}
+
+			if( $link ) {
+				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-$link-link-$id",
+					'class' => "articleFeedbackv5-$link-link"
+				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_delete_count )->text() ) );
+			}
+
+			$tools .= Html::closeElement( 'ul' )
 			. Html::closeElement( 'div' );
 		}
 
@@ -555,7 +570,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'all', 'invisible', 'visible', 'comment', 'id', 'helpful', 'unhelpful', 'abusive', 'deleted' )
+				 'all', 'invisible', 'visible', 'comment', 'id', 'helpful', 'unhelpful', 'abusive', 'deleted', 'needsoversight' )
 			),
 			'filtervalue'   => array(
 				ApiBase::PARAM_REQUIRED => false,
