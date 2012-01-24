@@ -179,6 +179,9 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-special-sort-asc',
 				'articlefeedbackv5-special-sort-desc'
 			),
+			'dependencies' => array(
+				'mediawiki.util',
+			),
 		),
 	);
 
