@@ -14,6 +14,8 @@
  * @subpackage Api
  */
 class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
+	private $continue;
+
 	/**
 	 * Constructor
 	 */
@@ -45,10 +47,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$html .= $this->renderFeedback( $record );
 			$length++;
 		}
-		$tmp = end($feedback);
-		if( $tmp ) {
-			$continue = $tmp[0]->af_id;
-		}
+
+		$continue = $this->continue;
 
 		$result->addValue( $this->getModuleName(), 'length', $length );
 		$result->addValue( $this->getModuleName(), 'count', $count );
@@ -84,26 +84,30 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$direction         = strtolower( $sortOrder ) == 'asc' ? 'ASC' : 'DESC';
 		$continueDirection = ( $direction == 'ASC' ? '>' : '<' );
 		$order;
-		$continue;
+		$continueSql;
 		$sortField;
 
 		switch( $sort ) {
 			case 'helpful':
-				$sortField = 'net_helpfulness';
+				$sortField   = 'net_helpfulness';
+				// Can't use aliases in mysql where clauses.
+				$continueSql = "CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) $continueDirection";
 				break;
 			case 'rating':
-				$sortField = 'rating';
-				break;
+# disable because it's broken
+#				$sortField = 'rating';
+#				break;
 			case 'age':
 				# Default field, fall through	
 			default:
-				$sortField = 'af_id';
+				$sortField   = 'af_id';
+				$continueSql = "$sortField $continueDirection";
 				break;
 		}	
 		$order       = "$sortField $direction";
-		$continueSql = "$sortField $continueDirection";
 
 		$where['af_page_id'] = $pageId;
+
 		# This join is needed for the comment filter.
 		$where[] = 'af_id = aa_feedback_id';
 
@@ -135,6 +139,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		foreach ( $id_query as $id ) {
 			$ids[] = $id->af_id;
+			$this->continue = $id->$sortField;
 		}
 
 		if ( !count( $ids ) ) {
@@ -191,27 +196,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		return $rv;
 	}
 
-	private function getContinue( $sort, $sortOrder ) {
-		$continue;
-		$direction = strtolower( $sortOrder ) == 'asc' ? '<' : '>';
-
-		switch( $sort ) {
-			case 'helpful':
-				$continue = 'net_helpfulness <';
-				break;
-			case 'rating':
-				# For now, just fall through. Not specced out.
-				break;
-			case 'age':
-				# Default sort is by age.
-			default:
-				$continue  = 'af_id >';
-				break;
-		}
-
-		return $continue;
-	}
-
 	private function getFilterCriteria( $filter, $filterValue = null ) {
 		global $wgUser;
 		$where = array();
@@ -229,33 +213,53 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		// Always limit this to non-hidden records, unless they 
 		// specifically ask to see them.
-		if( $filter != 'invisible' ) {
-			$where[ 'af_hide_count' ] = 0;
+		if( in_array( $filter, array( 'invisible', 'all', 'almostall' ) ) ) { 
+			$where['af_hide_count'] = 0;
 		}
 
 		// Same, but for deleted/supressed/oversight-only records.
-		if( $filter != 'deleted' ) {
-			$where[ 'af_delete_count' ] = 0;
+		if( in_array( $filter, array( 'deleted', 'all'  ) ) ) { 
+			$where['af_delete_count'] = 0;
 		}
 
 		switch( $filter ) {
+			case 'id':
+				# Used for permalinks.
+				$where[ 'af_id' ] = $filterValue;
+				break;
 			case 'all':
-				# no op
+				# oversight, real 'all' - no filtering done
+				break;
+			case 'almostall':
+				# non-oversight 'all' - no deleted feedback
+				$where['af_delete_count'] = 0;
+				break;
+			case 'notall':
+				# non-moderator 'all' - no hidden/deleted
+				$where['af_delete_count'] = 0;
+				$where['af_hide_count']   = 0;
+				break;
+			case 'visible':
+				$where['af_delete_count'] = 0;
+				$where['af_hide_count']   = 0;
 				break;
 			case 'invisible':
 				$where[] = 'af_hide_count > 0';
  				break;
+			case 'abusive': 
+				$where[] = 'af_abuse_count > 0';
+				break;
+			case 'helpful':
+				$where[] = 'net_helpfulness > 0';
+				break;
+			case 'unhelpful':
+				$where[] = 'net_helpfulness <= 0';
+				break;
 			case 'comment':
 				$where[] = 'aa_response_text IS NOT NULL';
 				break;
-			case 'id':
-				$where[ 'af_id' ] = $filterValue;
-				break;
-			case 'visible':
-				$where[ 'af_hide_count' ] = 0;
-				break;
 			case 'deleted':
-				$where[ 'af_delete_count' ] = 0;
+				$where[] = 'af_delete_count > 0';
 				break;
 			default:
 				break;
@@ -529,7 +533,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'all', 'invisible', 'visible', 'comment', 'id' )
+				 'all', 'invisible', 'visible', 'comment', 'id', 'helpful', 'unhelpful', 'abusive', 'almostall', 'notall' )
 			),
 			'filtervalue'   => array(
 				ApiBase::PARAM_REQUIRED => false,
