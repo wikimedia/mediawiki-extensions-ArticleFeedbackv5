@@ -2025,6 +2025,18 @@
 			},
 
 			// }}}
+			// {{{ verify
+
+			/**
+			 * Verifies that this CTA can be displayed
+			 *
+			 * @return bool whether the CTA can be displayed
+			 */
+			verify: function () {
+				return $.articleFeedbackv5.ctas['3'].getSurveyUrl() !== false;
+			},
+
+			// }}}
 			// {{{ build
 
 			/**
@@ -2038,18 +2050,38 @@
 				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
 
 				// Fill in the go-to-survey link
-				var survey_track_id = $.articleFeedbackv5.bucketName() + '-' +
-					$.articleFeedbackv5.ctaName() + '-button_click-' +
-					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
-				$block.find( '.articleFeedbackv5-cta-button' )
-					.attr( 'href', $.articleFeedbackv5.trackingUrl(
-						mw.config.get( 'wgArticleFeedbackv5SurveyUrl' ) +
-							'?c=' + $.articleFeedbackv5.bucketId +
-							'&f=' + $.articleFeedbackv5.feedbackId,
-						survey_track_id
-					) );
+				var survey_url = $.articleFeedbackv5.currentCTA().getSurveyUrl();
+				if ( survey_url ) {
+					var survey_track_id = $.articleFeedbackv5.bucketName() + '-' +
+						$.articleFeedbackv5.ctaName() + '-button_click-' +
+						( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
+					$block.find( '.articleFeedbackv5-cta-button' )
+						.attr( 'href', $.articleFeedbackv5.trackingUrl(
+							survey_url + '?c=' + $.articleFeedbackv5.feedbackId,
+							survey_track_id
+						) );
+				}
 
 				return $block;
+			},
+
+			// }}}
+			// {{{ getSurveyUrl
+
+			/**
+			 * Gets the appropriate survey url, or returns false if none was
+			 * found
+			 *
+			 * @return mixed the url, if one is availabe, or false if not
+			 */
+			getSurveyUrl: function () {
+				var base = mw.config.get( 'wgArticleFeedbackv5SurveyUrls' );
+				aft5_debug( base );
+				aft5_debug( $.articleFeedbackv5.bucketId );
+				if ( typeof base != 'object' || !( $.articleFeedbackv5.bucketId in base ) ) {
+					return false;
+				}
+				return base[$.articleFeedbackv5.bucketId];
 			},
 
 			// }}}

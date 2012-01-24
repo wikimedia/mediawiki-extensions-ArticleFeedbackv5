@@ -10,9 +10,6 @@
  * @version 0.1.0
  */
 
-/* XXX: Survey setup */
-require_once( dirname( dirname( __FILE__ ) ) . '/SimpleSurvey/SimpleSurvey.php' );
-
 /* Configuration */
 
 // How long text-based feedback is allowed to be before returning an error.
@@ -190,42 +187,11 @@ $wgArticleFeedbackv5LearnToEdit = "//en.wikipedia.org/wiki/Wikipedia:Tutorial";
  *
  * @var string
  */
-$wgArticleFeedbackv5SurveyUrl = "https://www.surveymonkey.com/s/aft5";
-
-// Would ordinarily call this articlefeedback but survey names are 16 chars max
-$wgPrefSwitchSurveys['articlerating'] = array(
-	'updatable' => false,
-	'submit-msg' => 'articlefeedbackv5-survey-submit',
-	'questions' => array(
-		'origin' => array(
-			'visibility' => 'hidden',
-			'question' => 'articlefeedbackv5-survey-question-origin',
-			'type' => 'text',
-		),
-		'whyrated' => array(
-			'question' => 'articlefeedbackv5-survey-question-whyrated',
-			'type' => 'checks',
-			'answers' => array(
-				'contribute-rating' => 'articlefeedbackv5-survey-answer-whyrated-contribute-rating',
-				'development' => 'articlefeedbackv5-survey-answer-whyrated-development',
-				'contribute-wiki' => 'articlefeedbackv5-survey-answer-whyrated-contribute-wiki',
-				'sharing-opinion' => 'articlefeedbackv5-survey-answer-whyrated-sharing-opinion',
-				'didntrate' => 'articlefeedbackv5-survey-answer-whyrated-didntrate',
-			),
-			'other' => 'articlefeedbackv5-survey-answer-whyrated-other',
-		),
-		'useful' => array(
-			'question' => 'articlefeedbackv5-survey-question-useful',
-			'type' => 'boolean',
-			'iffalse' => 'articlefeedbackv5-survey-question-useful-iffalse',
-		),
-		'comments' => array(
-			'question' => 'articlefeedbackv5-survey-question-comments',
-			'type' => 'text',
-		),
-	),
+$wgArticleFeedbackv5SurveyUrls = array(
+	'1' => 'https://www.surveymonkey.com/s/aft5-1',
+	'2' => 'https://www.surveymonkey.com/s/aft5-2',
+	'3' => 'https://www.surveymonkey.com/s/aft5-3',
 );
-$wgValidSurveys[] = 'articlerating';
 
 // Replace default emailcapture message
 $wgEmailCaptureAutoResponse['body-msg'] = 'articlefeedbackv5-emailcapture-response-body';
