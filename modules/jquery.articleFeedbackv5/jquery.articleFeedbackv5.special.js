@@ -178,15 +178,6 @@
 	}
 
 	// }}}
-	// {{{ toggleToolbox
-
-	// Display/hide the toolbox
-	$.articleFeedbackv5special.toggleToolbox = function( container ) {
-		var id = $.articleFeedbackv5special.stripID(container, 'articleFeedbackv5-feedback-tools-');
-		$( '#articleFeedbackv5-feedback-tools-list-' + id ).slideToggle( 300 );
-	}
-
-	// }}}
 
 	// }}}
 	// {{{ Process methods
@@ -273,8 +264,15 @@
 					// set effects on toolboxes
 					$( '.articleFeedbackv5-feedback-tools > ul' ).hide();
 					$( '.articleFeedbackv5-feedback-tools' ).hover( 
-						function( eventObj ) { $.articleFeedbackv5special.toggleToolbox( this ); },
-						function( eventObj ) { $.articleFeedbackv5special.toggleToolbox( this ); }
+						function( eventObj ) {
+							//alert(this);
+							var id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-feedback-tools-' );
+							$( '#articleFeedbackv5-feedback-tools-list-' + id ).slideDown( 200 );
+						},
+						function( eventObj ) {
+							var id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-feedback-tools-' );
+							$( '#articleFeedbackv5-feedback-tools-list-' + id ).slideUp( 200 );
+						}
 					);
 				} else {
 					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
