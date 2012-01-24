@@ -325,7 +325,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. Html::closeElement( 'div' );
 ;
 
-		$footer_links = Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-foot' ) );
+		$footer_links = Html::openElement( 'div', array(
+			'class' => 'articleFeedbackv5-vote-wrapper'
+		) )
+		. Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-foot' ) );
 
 		if( $can_vote ) {
 			$footer_links .= Html::element( 'span', array(
@@ -350,7 +353,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'id'    => "articleFeedbackv5-abuse-link-$id",
 			'class' => 'articleFeedbackv5-abuse-link'
 		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
-		. Html::closeElement( 'p' );
+		. Html::closeElement( 'p' )
+		. Html::closeElement( 'div' );
 
 		// Don't render the toolbox if they can't do anything with it.
 		$tools = null;
@@ -436,11 +440,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$class = 'negative';
 		}
 
-		$found = $this->feedbackHead( $msg, $class, $record[0] );
-
-		return "$found
-		<blockquote>" . htmlspecialchars( $record['comment']->aa_response_text )
-		. '</blockquote>';
+		return $this->feedbackHead( $msg, $class, $record[0] )
+		. $this->renderComment( $record['comment']->aa_response_text );
 	}
 
 
@@ -453,8 +454,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// * articlefeedbackv5-form2-header-question
 		// * articlefeedbackv5-form2-header-suggestion
 		return $this->feedbackHead( "articlefeedbackv5-form2-header-$type", $class, $record[0], $type )
-		. '<blockquote>' . htmlspecialchars( $record['comment']->aa_response_text )
-		. '</blockquote>';
+		. $this->renderComment( $record['comment']->aa_response_text );
 	}
 
 	private function renderBucket3( $record ) {
@@ -463,8 +463,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$class  = $record['rating']->aa_response_rating >= 3 ? 'positive' : 'negative';
 
 		return $this->feedbackHead( 'articlefeedbackv5-form3-header', $class, $record[0], $record['rating']->aa_response_rating )
-		. '<blockquote>' . htmlspecialchars( $record['comment']->aa_response_text )
-		. '</blockquote>';
+		. $this->renderComment( $record['comment']->aa_response_text );
 	}
 
 	private function renderBucket4( $record ) {
@@ -523,6 +522,18 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'positive',
 			$record[0]
 		);	
+	}
+
+	private function renderComment( $text ) {
+		if( strlen( $text ) <= 500 ) { 
+			$rv = "<blockquote>"
+			. htmlspecialchars( $record['comment']->aa_response_text )
+			. '</blockquote>';
+		} else {
+			$rv = "<blockquote>"
+			. htmlspecialchars( $record['comment']->aa_response_text )
+			. '</blockquote>';
+		}
 	}
 
 	private function feedbackHead( $message, $class, $record, $extra = '' ) {
