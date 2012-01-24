@@ -284,3 +284,8 @@ $wgAPIModules['articlefeedbackv5']                   = 'ApiArticleFeedbackv5';
 // Special Page
 $wgSpecialPages['ArticleFeedbackv5'] = 'SpecialArticleFeedbackv5';
 $wgSpecialPageGroups['ArticleFeedbackv5'] = 'other';
+
+$wgAvailableRights[] = 'aftv5-hide-feedback';
+$wgAvailableRights[] = 'aftv5-delete-feedback';
+$wgAvailableRights[] = 'aftv5-see-deleted-feedback';
+$wgAvailableRights[] = 'aftv5-see-hidden-feedback';

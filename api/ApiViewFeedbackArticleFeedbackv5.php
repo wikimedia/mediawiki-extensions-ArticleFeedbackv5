@@ -14,13 +14,11 @@
  * @subpackage Api
  */
 class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
-	private $access = array();
 	/**
 	 * Constructor
 	 */
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'afvf' );
-		$this->access = ApiArticleFeedbackv5Utils::initializeAccess();
 	}
 
 	/**
@@ -87,22 +85,23 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$continueDirection = ( $direction == 'ASC' ? '>' : '<' );
 		$order;
 		$continue;
+		$sortField;
 
 		switch( $sort ) {
 			case 'helpful':
-				$order       = "net_helpfulness $direction";
-				$continueSql = "net_helpfulness $continueDirection";
+				$sortField = 'net_helpfulness';
 				break;
 			case 'rating':
-				# For now, just fall through. Not specced out.
+				$sortField = 'rating';
 				break;
 			case 'age':
-				# Default sort is by age.
+				# Default field, fall through	
 			default:
-				$order       = "af_id $direction";
-				$continueSql = "af_id $continueDirection";
+				$sortField = 'af_id';
 				break;
-		}
+		}	
+		$order       = "$sortField $direction";
+		$continueSql = "$sortField $continueDirection";
 
 		$where['af_page_id'] = $pageId;
 		# This join is needed for the comment filter.
@@ -214,40 +213,60 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function getFilterCriteria( $filter, $filterValue = null ) {
+		global $wgUser;
 		$where = array();
 
 		// Permissions check
-		if( 
-			( $filter == 'invisible' && !$this->access[ 'rollbackers' ] )
-			|| ( $filter == 'deleted' && !$this->access[ 'oversight' ] )
-
+		if(
+			( $filter == 'invisible' 
+			 && !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) )
+			|| 
+			( $filter == 'deleted' 
+			 && !$wgUser->isAllowed( 'aftv5-ssee-deleted-feedback' ) )
 		) {
 			$filter = null;
 		}
 
+		// Always limit this to non-hidden records, unless they 
+		// specifically ask to see them.
+		if( $filter != 'invisible' ) {
+			$where[ 'af_hide_count' ] = 0;
+		}
+
+		// Same, but for deleted/supressed/oversight-only records.
+		if( $filter != 'deleted' ) {
+			$where[ 'af_delete_count' ] = 0;
+		}
+
 		switch( $filter ) {
 			case 'all':
-				$where = array();
+				# no op
 				break;
 			case 'invisible':
-				$where = array( 'af_hide_count > 0' );
+				$where[] = 'af_hide_count > 0';
  				break;
 			case 'comment':
-				$where = array( 'aa_response_text IS NOT NULL');
+				$where[] = 'aa_response_text IS NOT NULL';
 				break;
 			case 'id':
-				$where = array( 'af_id' => $filterValue );
+				$where[ 'af_id' ] = $filterValue;
 				break;
 			case 'visible':
+				$where[ 'af_hide_count' ] = 0;
+				break;
+			case 'deleted':
+				$where[ 'af_delete_count' ] = 0;
+				break;
 			default:
-				$where = array( 'af_hide_count' => 0 );
 				break;
 		}
 		return $where;
 	}
 
 	protected function renderFeedback( $record ) {
-		global $wgArticlePath;
+		global $wgArticlePath, $wgUser;
+		$id = $record[0]->af_id;
+
 		switch( $record[0]->af_bucket_id ) {
 			case 1: $content .= $this->renderBucket1( $record ); break;
 			case 2: $content .= $this->renderBucket2( $record ); break;
@@ -257,18 +276,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			case 6: $content .= $this->renderBucket6( $record ); break;
 			default: $content .= $this->renderNoBucket( $record ); break;
 		}
-		$can_flag   = !$this->access[ 'blocked' ];
-		$can_vote   = !$this->access[ 'blocked' ];
-		$can_hide   = $this->access[ 'rollbackers' ];
-		$can_delete = $this->access[ 'oversight' ];
-		$id         = $record[0]->af_id;
 
-#		$header_links = Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-head' ) )
-#		. Html::element( 'a', array( 'class' => 'articleFeedbackv5-comment-name', 'href' => 'profilepage or whatever' ), $id )
-#		. Html::openElement( 'div', array(
-#		. Html::element( 'span', array( 'class' => 'articleFeedbackv5-comment-timestamp' ), $record[0]->af_created )
-#		. wfMessage( 'articlefeedbackv5-form-optionid', $record[0]->af_bucket_id )->escaped()
-#		. Html::closeElement( 'p' );
+		// These two are the same for now, but may now always be,
+		// so set them each separately.
+		$can_flag   = !$wgUser->isBlocked();
+		$can_vote   = !$wgUser->isBlocked();
+		$can_hide   = $wgUser->isAllowed( 'aftv5-hide-feedback' );
+		$can_delete = $wgUser->isAllowed( 'aftv5-delete-feedback' );
 
 		$details = Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-comment-details'
@@ -302,7 +316,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'oldid'  => $record[0]->af_revision_id
 			)
 		)
-#		), wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age ) )
 		. Html::closeElement( 'div' )
 		. Html::closeElement( 'div' );
 ;
@@ -326,41 +339,40 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$footer_links .= Html::element( 'span', array(
 			'class' => 'articleFeedbackv5-helpful-votes'
 		), wfMessage( 'articlefeedbackv5-form-helpful-votes', ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ), $record[0]->af_helpful_count, $record[0]->af_unhelpful_count ) )
-		. Html::closeElement( 'p' );
-
-
-#		$rate = Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback-rate' ) )
-#		. wfMessage( 'articlefeedbackv5-form-helpful-label' )->escaped()
-#		. Html::closeElement( 'div' );
-
-
-		$tools = Html::openElement( 'div', array( 
-			'class' => 'articleFeedbackv5-feedback-tools',
-			'id'    => 'articleFeedbackv5-feedback-tools-'.$id
-		) )
-		. Html::element( 'h3', array(
-			'id' => 'articleFeedbackv5-feedback-tools-header-'.$id
-		), wfMessage( 'articlefeedbackv5-form-tools-label' )->text() )
-		. Html::openElement( 'ul', array(
-			'id' => 'articleFeedbackv5-feedback-tools-list-'.$id
-		) )
-		# TODO: unhide hidden posts
-		. ( $can_hide ? Html::rawElement( 'li', array(), Html::element( 'a', array(
-			'id'    => "articleFeedbackv5-hide-link-$id",
-			'class' => 'articleFeedbackv5-hide-link'
-		), wfMessage( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )->text() ) ) : '' )
-		. ( $can_flag ? Html::rawElement( 'li', array(), Html::element( 'a', array(
+		. ( $can_flag ? Html::rawElement( 'div', array(
+			'class' => 'articleFeedbackv5-abuse-link-wrap'
+		), Html::element( 'a', array(
 			'id'    => "articleFeedbackv5-abuse-link-$id",
 			'class' => 'articleFeedbackv5-abuse-link'
 		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
-		# TODO: nonoversight can mark for oversight, oversight can 
-		# either delete or un-delete, based on deletion status
-		. ( $can_delete ? Html::rawElement( 'li', array(), Html::element( 'a', array(
-			'id'    => "articleFeedbackv5-delete-link-$id",
-			'class' => 'articleFeedbackv5-delete-link'
-		), wfMessage( 'articlefeedbackv5-form-delete' )->text() ) ) : '' )
-		. Html::closeElement( 'ul' )
-		. Html::closeElement( 'div' );
+		. Html::closeElement( 'p' );
+
+		// Don't render the toolbox if they can't do anything with it.
+		if( $can_hide || $can_delete ) { 
+			$tools = Html::openElement( 'div', array( 
+				'class' => 'articleFeedbackv5-feedback-tools',
+				'id'    => 'articleFeedbackv5-feedback-tools-'.$id
+			) )
+			. Html::element( 'h3', array(
+				'id' => 'articleFeedbackv5-feedback-tools-header-'.$id
+			), wfMessage( 'articlefeedbackv5-form-tools-label' )->text() )
+			. Html::openElement( 'ul', array(
+				'id' => 'articleFeedbackv5-feedback-tools-list-'.$id
+			) )
+			# TODO: unhide hidden posts
+			. ( $can_hide ? Html::rawElement( 'li', array(), Html::element( 'a', array(
+				'id'    => "articleFeedbackv5-hide-link-$id",
+				'class' => 'articleFeedbackv5-hide-link'
+			), wfMessage( 'articlefeedbackv5-form-hide', $record[0]->af_hide_count )->text() ) ) : '' )
+			# TODO: nonoversight can mark for oversight, oversight can 
+			# either delete or un-delete, based on deletion status
+			. ( $can_delete ? Html::rawElement( 'li', array(), Html::element( 'a', array(
+				'id'    => "articleFeedbackv5-delete-link-$id",
+				'class' => 'articleFeedbackv5-delete-link'
+			), wfMessage( 'articlefeedbackv5-form-delete' )->text() ) ) : '' )
+			. Html::closeElement( 'ul' )
+			. Html::closeElement( 'div' );
+		}
 
 		return Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-feedback' ) )
 		. Html::openElement( 'div', array(
@@ -371,7 +383,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. Html::closeElement( 'div' )
 		. $details
 		. $tools
-		. $rate
 		. Html::closeElement( 'div' );
 	}
 

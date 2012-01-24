@@ -15,10 +15,9 @@
  * @subpackage Special
  */
 class SpecialArticleFeedbackv5 extends SpecialPage {
-	private $access;	
 	private $filters = array( 
-		'visible', 
-		'comment'
+		'comment',
+		'visible'
 	);
 	private $sorts = array( 
 		'age', 
@@ -30,14 +29,15 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * Constructor
 	 */
 	public function __construct() {
+		global $wgUser;
 		parent::__construct( 'ArticleFeedbackv5' );
-		$this->access = ApiArticleFeedbackv5Utils::initializeAccess();
 
-		if( $this->access[ 'rollbackers' ] ) {
+		if( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			$this->filters[] = 'invisible';
 			$this->filters[] = 'all';
 		}
-		if( $this->access[ 'oversight' ] ) {
+
+		if( $wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
 			$this->filters[] = 'deleted';
 		}
 	}
@@ -48,16 +48,36 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @param $param string the parameter passed in the url
 	 */
 	public function execute( $param ) {
+		global $wgArticleFeedbackv5DashboardCategory;
 		$out   = $this->getOutput();
 		$title = Title::newFromText( $param );
 
-		if ( $title ) {
-			$pageId = $title->getArticleID();
-		} else {
+		// Page does not exist.
+		if( !$title->exists() ) {
 			$out->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
 			return;
 		}
 
+		$pageId = $title->getArticleID();
+		$dbr    = wfGetDB( DB_SLAVE );
+		$t      = $dbr->select( 
+			'categorylinks', 
+			'cl_from', 
+			array( 
+				'cl_from' => $pageId,
+				'cl_to'   => $wgArticleFeedbackv5DashboardCategory 
+			),
+			__METHOD__, 
+			array( 'LIMIT' => 1 ) 
+		);
+
+		// Page exists, but feedback is disabled.
+		if( $dbr->numRows( $t ) == 0 ) {
+			$out->addWikiMsg( 'articlefeedbackv5-page-disabled' );
+			return;
+		}
+
+		// Success!
 		$ratings = $this->fetchOverallRating( $pageId );
 		$found   = isset( $ratings['found'] ) ? $ratings['found'] : null;
 		$rating  = isset( $ratings['rating'] ) ? $ratings['rating'] : null;
@@ -141,11 +161,10 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		$sortLabels = array();
 		foreach ( $this->sorts as $sort ) {
-			$sortLabels[] = Html::element( 'span',
+			$sortLabels[] = Html::element( 'img',
 				array(
 					'id'    => 'articleFeedbackv5-sort-arrow-' . $sort,
 					'class' => 'articleFeedbackv5-sort-arrow'
-
 				), '' )
 				. Html::element(
 				'a',

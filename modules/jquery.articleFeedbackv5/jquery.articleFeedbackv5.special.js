@@ -40,7 +40,7 @@
 	/**
 	 * The name of the filter used to select feedback
 	 */
-	$.articleFeedbackv5special.filter = 'visible';
+	$.articleFeedbackv5special.filter = 'comment';
 
 	/**
 	 * Some fitlers have values they need tobe passed (eg, permalinks)
@@ -143,10 +143,10 @@
 		$( '.articleFeedbackv5-sort-arrow' ).hide();
 		$( '.articleFeedbackv5-sort-link' ).removeClass( 'sort-active' );
 
-		$( '#articleFeedbackv5-sort-arrow-' + id ).text(
-			mw.msg( 'articlefeedbackv5-special-sort-' + dir )
-		);
 		$( '#articleFeedbackv5-sort-arrow-' + id ).show();
+		$( '#articleFeedbackv5-sort-arrow-' + id ).attr(
+			'src', 'images/sort ' + dir + 'ending.png'
+		);
 		$( '#articleFeedbackv5-special-sort-' + id).addClass( 'sort-active' );
 	}
 

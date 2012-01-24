@@ -190,31 +190,4 @@ class ApiArticleFeedbackv5Utils {
 
                 $dbw->commit();
 	}
-
-	public function initializeAccess() {
-		global $wgUser;
-		$permissions = array(
-			'blocked'       => $wgUser->isBlocked(),
-			'anon'          => $wgUser->isAnon(),
-			'registered'    => !$wgUser->isAnon() && !$wgUser->isBlocked(),
-			'autoconfirmed' => in_array('autoconfirmed', $wgUser->getEffectiveGroups()),
-			'rollbackers'   => in_array('rollbacker', $wgUser->getEffectiveGroups()),
-			'admins'        => false,
-			'oversight'     => false
-		);
-
-		if( in_array('sysop', $wgUser->getEffectiveGroups() ) ) {
-			$permissions['admins']      = true;
-			$permissions['rollbackers'] = true;
-		}
-		
-		if( in_array('oversight ', $wgUser->getEffectiveGroups() ) ) {
-			$permissions['oversight']   = true;
-			$permissions['rollbackers'] = true;
-			$permissions['admins']      = true;
-		}
-
-		return $permissions;
-	}
 }
-
