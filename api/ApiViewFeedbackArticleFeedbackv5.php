@@ -343,6 +343,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'class' => 'articleFeedbackv5-unhelpful-link'
 			), wfMessage( 'articlefeedbackv5-form-helpful-no-label', $record[0]->af_unhelpful_count )->text() );
 		}
+		$footer_links .= Html::closeElement( 'p' );
 
 		$footer_links .= Html::element( 'span', array(
 			'class' => 'articleFeedbackv5-helpful-votes'
@@ -353,7 +354,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'id'    => "articleFeedbackv5-abuse-link-$id",
 			'class' => 'articleFeedbackv5-abuse-link'
 		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
-		. Html::closeElement( 'p' )
 		. Html::closeElement( 'div' );
 
 		// Don't render the toolbox if they can't do anything with it.
