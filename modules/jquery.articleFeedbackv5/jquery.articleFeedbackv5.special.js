@@ -75,6 +75,35 @@
 	// }}}
 	// {{{ Init methods
 
+	// {{{ setup
+
+	/**
+	 * Sets up the page
+	 */
+	$.articleFeedbackv5special.setup = function() {
+		// Set up config vars, event binds, and do initial fetch.
+		aft5_debug( mw );
+		aft5_debug( mw.util );
+		$.articleFeedbackv5special.apiUrl = mw.util.wikiScript( 'api' );
+		$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
+		$.articleFeedbackv5special.setBinds();
+
+		// Process anything we found in the URL hash
+		// Permalinks.
+		var id = window.location.hash.match(/id=(\d+)/)
+		if( id ) {
+			$.articleFeedbackv5special.filter      = 'id';
+			$.articleFeedbackv5special.filterValue = id[1];
+		}
+
+		// Initial load
+		$.articleFeedbackv5special.loadFeedback( true );
+		$.articleFeedbackv5special.drawSortArrow();
+	};
+
+	// }}}
+	// {{{ setBinds
+
 	/**
 	 * Binds events for each of the controls
 	 */
@@ -136,6 +165,13 @@
 		} );
 	}
 
+	// }}}
+
+	// }}}
+	// {{{ Utility methods
+
+	// {{{ drawSortArrow
+
 	$.articleFeedbackv5special.drawSortArrow = function() { 
 		id  = $.articleFeedbackv5special.sort;
 		dir = $.articleFeedbackv5special.sortDirection;
@@ -150,11 +186,17 @@
 		$( '#articleFeedbackv5-special-sort-' + id).addClass( 'sort-active' );
 	}
 
+	// }}}
+	// {{{ stripID
+
 	// Utility method for stripping long IDs down to the specific bits we care about.
 	$.articleFeedbackv5special.stripID = function( object, toRemove ) {
 		return $( object ).attr( 'id' ).replace( toRemove, '' );
 	}
-	
+
+	// }}}
+	// {{{ toggleToolbox
+
 	// Display/hide the toolbox
 	$.articleFeedbackv5special.toggleToolbox = function( container ) {
 		var id = $.articleFeedbackv5special.stripID(container, 'articleFeedbackv5-feedback-tools-');
@@ -162,6 +204,9 @@
 	}
 
 	// }}}
+
+	// }}}
+	// {{{ Process methods
 
 	// {{{ flagFeedback
 
@@ -204,10 +249,6 @@
 	}
 
 	// }}}
-
-	// }}}
-	// {{{ Process methods
-
 	// {{{ loadFeedback
 
 	/**
@@ -271,29 +312,4 @@
 // }}}
 
 } )( jQuery );
-
-$( document ).ready( function() {
-
-// {{{ Kick off when ready
-
-	// Set up config vars, event binds, and do initial fetch.
-	$.articleFeedbackv5special.apiUrl  = mw.util.wikiScript('api');
-	$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
-	$.articleFeedbackv5special.setBinds();
-
-	// Process anything we found in the URL hash
-	// Permalinks.
-	var id = window.location.hash.match(/id=(\d+)/)
-	if( id ) {
-		$.articleFeedbackv5special.filter      = 'id';
-		$.articleFeedbackv5special.filterValue = id[1];
-	}
-
-	// Initial load
-	$.articleFeedbackv5special.loadFeedback( true );
-	$.articleFeedbackv5special.drawSortArrow();
-
-// }}}
-
-} );
 

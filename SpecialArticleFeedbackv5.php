@@ -15,13 +15,13 @@
  * @subpackage Special
  */
 class SpecialArticleFeedbackv5 extends SpecialPage {
-	private $filters = array( 
+	private $filters = array(
 		'comment',
 		'helpful'
 	);
-	private $sorts = array( 
-		'age', 
-		'helpful', 
+	private $sorts = array(
+		'age',
+		'helpful',
 		'rating'
 	);
 
@@ -33,8 +33,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		parent::__construct( 'ArticleFeedbackv5' );
 
 		if( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
-			array_push( $this->filters, 
-				'invisible', 'unhelpful', 'abusive' 
+			array_push( $this->filters,
+				'invisible', 'unhelpful', 'abusive'
 			);
 		}
 
@@ -45,14 +45,14 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// The 'all' option actually displays different things based
 		// on the users role, which is why we do this.
 		// - deleted-all is actually everything
-		// - hidden-all is 'visible + hidden' 
+		// - hidden-all is 'visible + hidden'
 		// - regular non-admin all is just 'all visible'
-		if( !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) 
+		if( !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' )
 		 && $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			$this->filters[] = 'almostall';
 		}
 
-		if( !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) 
+		if( !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' )
 		 && !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			$this->filters[] = 'notall';
 		}
@@ -76,15 +76,15 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		$pageId = $title->getArticleID();
 		$dbr    = wfGetDB( DB_SLAVE );
-		$t      = $dbr->select( 
-			'categorylinks', 
-			'cl_from', 
-			array( 
+		$t      = $dbr->select(
+			'categorylinks',
+			'cl_from',
+			array(
 				'cl_from' => $pageId,
-				'cl_to'   => $wgArticleFeedbackv5DashboardCategory 
+				'cl_to'   => $wgArticleFeedbackv5DashboardCategory
 			),
-			__METHOD__, 
-			array( 'LIMIT' => 1 ) 
+			__METHOD__,
+			array( 'LIMIT' => 1 )
 		);
 
 		// Page exists, but feedback is disabled.
@@ -153,7 +153,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				. Html::closeElement( 'div' )
 			);
 		}
-		
+
 		$out->addHtml(
 			Html::element(
 				'a',
@@ -162,7 +162,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					'id'    => 'articleFeedbackv5-special-add-feedback',
 				),
 				$this->msg( 'articlefeedbackv5-special-add-feedback' )->text()
-       	                )
+	   	                )
 			. Html::element( 'div', array( 'class' => 'float-clear' ) )
 			. Html::closeElement( 'div' )
 		);
@@ -171,9 +171,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 #			$out->addWikiMsg( 'articlefeedbackv5-overall-rating', $rating );
 #		}
 
-
 		$out->addJsConfigVars( 'afPageId', $pageId );
-		$out->addModules( 'jquery.articleFeedbackv5.special' );
+		$out->addModules( 'ext.articleFeedbackv5.dashboard' );
 
 		$sortLabels = array();
 		foreach ( $this->sorts as $sort ) {

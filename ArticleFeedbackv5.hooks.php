@@ -52,6 +52,11 @@ class ArticleFeedbackv5Hooks {
 		'ext.articleFeedbackv5.dashboard' => array(
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.js',
 			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.css',
+			'dependencies' => array(
+				'mediawiki.util',
+				'mediawiki.user',
+				'jquery.articleFeedbackv5.special',
+			),
 		),
 		'jquery.articleFeedbackv5' => array(
 			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.js',
