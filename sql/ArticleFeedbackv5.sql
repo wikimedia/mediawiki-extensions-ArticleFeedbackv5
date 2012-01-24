@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS /*_*/aft_article_feedback_select_rollup;
 DROP TABLE IF EXISTS /*_*/aft_article_revision_feedback_select_rollup;
 DROP TABLE IF EXISTS /*_*/aft_article_hits;
 DROP TABLE IF EXISTS /*_*/aft_article_feedback_properties;
+DROP TABLE IF EXISTS /*_*/aft_article_filter_count;
 
 -- Stores feedback records: "user X submitted feedback on page Y, at time Z"
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
@@ -99,17 +100,17 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_answer (
   PRIMARY KEY (aa_feedback_id, aa_field_id)
 ) /*$wgDBTableOptions*/;
 
---These next four are rollup tables used by the articlefeedback special page.
---The revision tables store per-revision numers, as we (in meetings with WMF)
---agreed that per-revision numbers could be useful in reporting, though
---they aren't currently used on the feedback page. The page-level ones only
---count back to wgArticleFeedbackv5RatingLifetime, so they're a rolling window.
+-- These next four are rollup tables used by the articlefeedback special page.
+-- The revision tables store per-revision numers, as we (in meetings with WMF)
+-- agreed that per-revision numbers could be useful in reporting, though
+-- they aren't currently used on the feedback page. The page-level ones only
+-- count back to wgArticleFeedbackv5RatingLifetime, so they're a rolling window.
 --
---There are tables for ratings and select (ratings includes booleans as well),
---because while the value of the rating/boolean is important (Rated 3/5), for
---selects we only want the count for each input, not the value of that input or
---the sum of the values (which will be numerical option_ids, not meaningful 
---rating values). The queries were sufficiently different that we deemed multiple
+-- There are tables for ratings and select (ratings includes booleans as well),
+-- because while the value of the rating/boolean is important (Rated 3/5), for
+-- selects we only want the count for each input, not the value of that input or
+-- the sum of the values (which will be numerical option_ids, not meaningful 
+-- rating values). The queries were sufficiently different that we deemed multiple
 --tables worthwhile.
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback_ratings_rollup (
   arr_page_id   integer unsigned NOT NULL,
