@@ -17,7 +17,8 @@ $messages = array();
  * @author John Du Hart
  */
 $messages['en'] = array(
-	// CTA translations
+
+	/* CTAs */
 	'articlefeedbackv5-cta-thanks' => 'Thanks!',
 	'articlefeedbackv5-cta-confirmation-followup' => 'Your feedback has been saved.',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Did you know that you can edit this page?',
@@ -32,7 +33,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-cta3-confirmation-call' => 'It only takes a minute and will help improve Wikipedia.',
 	'articlefeedbackv5-cta3-button-text' => 'Start the survey',
 
-	// error messages
+	/* Error Messages */
 	'articlefeedbackv5-error' => 'An error has occured. Please try again later.',
 	'articlefeedbackv5-page-disabled' => 'Article Feedback page not enabled for this article.',
 	'articlefeedbackv5-error-email' => 'That e-mail address is not valid.',
@@ -46,8 +47,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-nofeedback' => 'Please enter your feedback.',
 	'articlefeedbackv5-error-flagging' => 'Error flagging feedback.',
 
-	// Article Feedback special page.
-	'articlefeedbackv5-error-loading-feedback' => 'Error loading article feedback.',
+	/* Special Page */
 	'articlefeedbackv5-form-tools-label' => 'Tools',
 	'articlefeedbackv5-form-helpful-label' => 'Is this feedback helpful?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Yes',
@@ -77,7 +77,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edit|$1 edits}} since post',
 	'articlefeedbackv5-special-more' => 'Show more posts',
 	'articlefeedbackv5-special-pagetitle' => 'Feedback: $1',
-
 	'articlefeedbackv5-form-optionid' => 'Option $1',
 	'articlefeedbackv5-hidden' => 'Hidden',
 	'articlefeedbackv5-form-hide' => 'Hide this post ($1)',
@@ -121,6 +120,18 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-title' => '==Feedback==',
 	'articlefeedbackv5' => 'Article feedback dashboard',
 	'articlefeedbackv5-desc' => 'Article feedback',
+	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Today\'s highs and lows',
+	'articleFeedbackv5-table-caption-dailyhighs' => 'Pages with highest ratings: $1',
+	'articleFeedbackv5-table-caption-dailylows' => 'Pages with lowest ratings: $1',
+	'articleFeedbackv5-table-caption-weeklymostchanged' => 'This week\'s most changed',
+	'articleFeedbackv5-table-caption-recentlows' => 'Recent lows',
+	'articleFeedbackv5-table-heading-page' => 'Page',
+	'articleFeedbackv5-table-heading-average' => 'Average',
+	'articlefeedbackv5-table-noratings' => '-',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'This is an experimental feature. Please provide feedback on the [$1 discussion page].',
+	'articlefeedbackv5-dashboard-bottom' => "'''Note''': We will continue to experiment with different ways of surfacing pages in these dashboards.  At present, the dashboards include the following pages:
+* Pages with highest/lowest ratings: pages that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.
+* Recent lows: pages that got 70% or more low (2 stars or lower) ratings in any category in the last 24 hours. Only pages that have received at least 10 ratings in the last 24 hours are included.",
 
 	/* Feedback forms */
 	/* Option 1 ("Did you find what you were looking for?") */
@@ -133,6 +144,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket1-question-comment-yes' => 'What was most useful to you? How could this page be improved?',
 	'articlefeedbackv5-bucket1-question-comment-no' => 'What\'s missing? Any suggestions for improvement?',
 	'articlefeedbackv5-bucket1-form-submit' => 'Post your feedback',
+
 	/* Option 2 (getsatisfaction style) */
 	'articlefeedbackv5-bucket2-title' => 'Help improve this page',
 	'articlefeedbackv5-bucket2-suggestion-label' => 'Suggestion',
@@ -144,6 +156,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket2-problem-comment-default' => 'Report a problem. How can this page be improved?',
 	'articlefeedbackv5-bucket2-praise-comment-default' => 'What do you like most? Share your praise with the editors.',
 	'articlefeedbackv5-bucket2-form-submit' => 'Post your feedback',
+
 	/* Option 3 (single rating) */
 	'articlefeedbackv5-bucket3-title' => 'Help improve this page',
 	'articlefeedbackv5-bucket3-rating-question' => 'Is this page helpful?',
@@ -155,6 +168,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket3-clear-rating' => 'Remove this rating',
 	'articlefeedbackv5-bucket3-comment-default' => 'Add a comment. How can this page be improved?',
 	'articlefeedbackv5-bucket3-form-submit' => 'Post your feedback',
+
 	/* Option 4 (just a big glossy edit button and some teaser text) */
 	'articlefeedbackv5-bucket4-title' => 'Help improve this page',
 	'articlefeedbackv5-bucket4-subhead' => 'Did you know that you can edit this page?',
@@ -163,6 +177,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Learn how to edit',
 	'articlefeedbackv5-bucket4-form-submit' => 'Edit this page',
 	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Wikipedia wants to know what you think. Help improve this page by becoming an editor.',
+
 	/* Option 5 (just like AFTv4, but ported to work with v5) */
 	'articlefeedbackv5-bucket5-form-switch-label' => 'Rate this page',
 	'articlefeedbackv5-bucket5-form-panel-title' => 'Rate this page',
@@ -217,7 +232,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket5-wellwritten-tooltip-4' => 'Good clarity',
 	'articlefeedbackv5-bucket5-wellwritten-tooltip-5' => 'Exceptional clarity',
 	'articlefeedbackv5-bucket5-toolbox-linktext' => 'Rate this page',
-	/* Messages shared by all displays */
+
+	/* Messages shared by all feedback form options */
 	'articlefeedbackv5-shared-on-feedback' => 'Your comment will be shared on this $1.',
 	'articlefeedbackv5-shared-on-feedback-linktext' => 'feedback page',
 	'articlefeedbackv5-help-tooltip-title' => 'What\'s this?',
@@ -234,58 +250,12 @@ $messages['en'] = array(
 	'articlefeedbackv5-section-linktext' => 'feedback',
 	'articlefeedbackv5-toolbox-linktext' => 'Improve this page',
 
-	/* --- copied from AFTv4 and possibly not used --- */
-	// FIXME: Can we get clarity on this? Translators may be wasting their time here (!!!)
-	/* ArticleFeedback survey */
-	'articlefeedbackv5-survey-question-origin' => 'What page were you on when you started this survey?',
-	'articlefeedbackv5-survey-question-whyrated' => 'Please let us know why you rated this page today (check all that apply):',
-	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => 'I wanted to contribute to the overall rating of the page',
-	'articlefeedbackv5-survey-answer-whyrated-development' => 'I hope that my rating would positively affect the development of the page',
-	'articlefeedbackv5-survey-answer-whyrated-contribute-wiki' => 'I wanted to contribute to {{SITENAME}}',
-	'articlefeedbackv5-survey-answer-whyrated-sharing-opinion' => 'I like sharing my opinion',
-	'articlefeedbackv5-survey-answer-whyrated-didntrate' => "I didn't provide ratings today, but wanted to give feedback on the feature",
-	'articlefeedbackv5-survey-answer-whyrated-other' => 'Other',
-	'articlefeedbackv5-survey-question-useful' => 'Do you believe the ratings provided are useful and clear?',
-	'articlefeedbackv5-survey-question-useful-iffalse' => 'Why?',
-	'articlefeedbackv5-survey-question-comments' => 'Do you have any additional comments?',
-	'articlefeedbackv5-survey-submit' => 'Submit',
-	'articlefeedbackv5-survey-title' => 'Please answer a few questions',
-	'articlefeedbackv5-survey-thanks' => 'Thanks for filling out the survey.',
-	'articlefeedbackv5-survey-disclaimer' => 'By submitting, you agree to transparency under these $1.',
-	'articlefeedbackv5-survey-disclaimerlink' => 'terms',
-	/* ext.articleFeedbackv5 and jquery.articleFeedbackv5 */
-	'articlefeedbackv5-pitch-reject' => 'Maybe later',
-	'articlefeedbackv5-pitch-or' => 'or',
-	'articlefeedbackv5-pitch-thanks' => 'Thanks! Your ratings have been saved.',
-	'articlefeedbackv5-pitch-survey-message' => 'Please take a moment to complete a short survey.',
-	'articlefeedbackv5-pitch-survey-body' => '',
-	'articlefeedbackv5-pitch-survey-accept' => 'Start survey',
-	'articlefeedbackv5-pitch-join-message' => 'Did you want to create an account?',
-	'articlefeedbackv5-pitch-join-body' => 'An account will help you track your edits, get involved in discussions, and be a part of the community.',
-	'articlefeedbackv5-pitch-join-accept' => 'Create an account',
-	'articlefeedbackv5-pitch-join-login' => 'Log in',
-	'articlefeedbackv5-pitch-edit-message' => 'Did you know that you can edit this page?',
-	'articlefeedbackv5-pitch-edit-body' => '',
-	'articlefeedbackv5-pitch-edit-accept' => 'Edit this page',
-	'articlefeedbackv5-survey-message-success' => 'Thanks for filling out the survey.',
-	'articlefeedbackv5-survey-message-error' => 'An error has occurred.
-Please try again later.',
+	/* Not sure */
 	'articlefeedbackv5-privacyurl' => '//wikimediafoundation.org/wiki/Feedback_privacy_statement',
-	/* Special:ArticleFeedback */
-	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Today\'s highs and lows',
-	'articleFeedbackv5-table-caption-dailyhighs' => 'Pages with highest ratings: $1',
-	'articleFeedbackv5-table-caption-dailylows' => 'Pages with lowest ratings: $1',
-	'articleFeedbackv5-table-caption-weeklymostchanged' => 'This week\'s most changed',
-	'articleFeedbackv5-table-caption-recentlows' => 'Recent lows',
-	'articleFeedbackv5-table-heading-page' => 'Page',
-	'articleFeedbackv5-table-heading-average' => 'Average',
-	'articlefeedbackv5-table-noratings' => '-',
-	'articleFeedbackv5-copy-above-highlow-tables' => 'This is an experimental feature. Please provide feedback on the [$1 discussion page].',
-	'articlefeedbackv5-dashboard-bottom' => "'''Note''': We will continue to experiment with different ways of surfacing pages in these dashboards.  At present, the dashboards include the following pages:
-* Pages with highest/lowest ratings: pages that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.
-* Recent lows: pages that got 70% or more low (2 stars or lower) ratings in any category in the last 24 hours. Only pages that have received at least 10 ratings in the last 24 hours are included.",
+
 	/* Special:Preferences */
 	'articlefeedbackv5-disable-preference' => "Don't show the Article feedback widget on pages",
+
 	/* EmailCapture */
 	'articlefeedbackv5-emailcapture-response-body' => 'Hello!
 
@@ -309,6 +279,7 @@ If you did not initiate this request, please ignore this e-mail and we will not 
 
 Best wishes, and thank you,
 The {{SITENAME}} team',
+
 );
 
 /** Message documentation (Message documentation)
@@ -328,6 +299,8 @@ The {{SITENAME}} team',
  * @author Yekrats
  */
 $messages['qqq'] = array(
+
+	/* CTAs */
 	'articlefeedbackv5-cta-thanks' => 'The bolded part of the message that appears at the top of every CTA',
 	'articlefeedbackv5-cta-confirmation-followup' => 'The non-bolded part of the message that appears at the top of every CTA',
 	'articlefeedbackv5-cta1-confirmation-title' => 'The title of the edit CTA',
@@ -341,11 +314,16 @@ $messages['qqq'] = array(
 	'articlefeedbackv5-cta3-confirmation-title' => 'The title of the survey CTA',
 	'articlefeedbackv5-cta3-confirmation-call' => 'The explanatory text of the survey CTA',
 	'articlefeedbackv5-cta3-button-text' => 'The text for the button on the survey CTA',
+
+	/* Error Messages */
 	'articlefeedbackv5-error' => 'This error message will be displayed in a grey box replacing the form if there was an unrecoverable error.',
 	'articlefeedbackv5-error-blocked' => 'This error message will be displayed on the form if the user is blocked from submitting feedback.',
-	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters. $1 is the link to the abuse policy.',
-	'articlefeedbackv5-error-abuse-linktext' => 'The text for the abuse policy link.',
+	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters. $1 is the link to the abuse policy, the text of which is {{msg-mw|articlefeedbackv5-error-abuse-linktext}} and the url of which is {{msg-mw|articlefeedbackv5-error-abuse-link}}.',
+	'articlefeedbackv5-error-abuse-linktext' => 'The text for the abuse policy link within {{msg-mw|articlefeedbackv5-error-abuse}}.',
+	'articlefeedbackv5-error-abuse-link' => 'This will be the URL of the abuse policy (when a decision has been made regarding it).  It is used to build the link in {{msg-mw|articlefeedbackv5-error-abuse}}.',
 	'articlefeedbackv5-error-nofeedback' => 'This error message will be displayed above the form (but below the title) if the user has attempted to submit a blank form.',
+
+	/* Special Page */
 	'articlefeedbackv5-form-tools-label' => '{{Identical|Tools}}',
 	'articlefeedbackv5-form-helpful-yes-label' => '{{Identical|Yes}}',
 	'articlefeedbackv5-form-helpful-no-label' => '{{Identical|No}}',
@@ -385,10 +363,20 @@ $messages['qqq'] = array(
 	'articlefeedbackv5-whats-this' => '{{Identical|Help}}',
 	'articlefeedbackv5-special-title' => 'don\'t touch "== ==".
 {{Identical|Feedback}}',
+	'articleFeedbackv5-table-heading-page' => 'This is used in the [[mw:Extension:ArticleFeedback|Article Feedback extension]].
+{{Identical|Page}}',
+	'articleFeedbackv5-table-heading-average' => '{{Identical|Average}}',
+	'articlefeedbackv5-table-noratings' => '{{Optional}}
+
+Text to display in a table cell if there is no number to be shown',
+	'articleFeedbackv5-copy-above-highlow-tables' => 'The variable $1 will contain a full URL to a discussion page where the dashboard can be discussed - since the dashboard is powered by a special page, we can not rely on the built-in MediaWiki talk page.',
 	'articlefeedbackv5' => 'The title of the feature. It is about reader feedback.
 
 Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a prototype installation.',
 	'articlefeedbackv5-desc' => '{{desc}}',
+
+	/* Feedback forms */
+	/* Option 1 ("Did you find what you were looking for?") */
 	'articlefeedbackv5-bucket1-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
 	'articlefeedbackv5-bucket1-question-toggle' => 'This is the question that appears before the yes/no buttons in option 1',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'The text for the yes button in option 1.
@@ -400,6 +388,8 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-bucket1-question-comment-yes' => 'This is the grey default text that appears in the comment box when the yes button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
 	'articlefeedbackv5-bucket1-question-comment-no' => 'This is the grey default text that appears in the comment box when the no button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
 	'articlefeedbackv5-bucket1-form-submit' => 'This is the contents of the submit button for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
+
+	/* Option 2 (getsatisfaction style) */
 	'articlefeedbackv5-bucket2-title' => 'This is the title of the feedback form for option 2 (a comment box that can be tagged as "Suggestion", "Question", "Praise", or "Problem")',
 	'articlefeedbackv5-bucket2-suggestion-label' => 'The label for the suggestion tag',
 	'articlefeedbackv5-bucket2-question-label' => 'The label for the question tag.
@@ -411,6 +401,8 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-bucket2-problem-comment-default' => 'This is the grey default text that appears in the comment box when the "problem" tag has been selected in option 2.',
 	'articlefeedbackv5-bucket2-praise-comment-default' => 'This is the grey default text that appears in the comment box when the "praise" tag has been selected in option 2.',
 	'articlefeedbackv5-bucket2-form-submit' => 'This is the contents of the submit button for option 2 (a comment box that can be tagged as "Suggestion", "Question", "Praise", or "Problem")',
+
+	/* Option 3 (single rating) */
 	'articlefeedbackv5-bucket3-title' => 'This is the title of the feedback form for option 3 (a 1-5 star rating selector and a comment box)',
 	'articlefeedbackv5-bucket3-rating-question' => 'This is the question that appears before the rating stars in option 3',
 	'articlefeedbackv5-bucket3-rating-tooltip-1' => 'This is the text that appears under the rating stars when you roll over star #1',
@@ -422,6 +414,8 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-bucket3-clear-rating' => 'This is the tooltip that appears when you roll over the ratings-clear trash can icon',
 	'articlefeedbackv5-bucket3-comment-default' => 'This is the grey default text that appears in the comment box.',
 	'articlefeedbackv5-bucket3-form-submit' => 'This is the contents of the submit button for option 3 (a 1-5 star rating selector and a comment box)',
+
+	/* Option 4 (just a big glossy edit button and some teaser text) */
 	'articlefeedbackv5-bucket4-title' => 'This is the title of the feedback panel for option 4 (a big button to take you to the edit page, along with some inspiring text and a link to the "Learn to Edit" page)',
 	'articlefeedbackv5-bucket4-subhead' => 'A subheader to go directly under the title for option 4',
 	'articlefeedbackv5-bucket4-teaser-line1' => 'The first line of the teaser text for option 4; should mention that anyone can edit pages.',
@@ -429,26 +423,29 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'The text for the "Learn how to edit" link',
 	'articlefeedbackv5-bucket4-form-submit' => 'The text for the big edit button',
 	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Overrides {{msg-mw|articlefeedbackv5-help-tooltip-info}} for option 4.',
+
+	/* Option 5 (just like AFTv4, but ported to work with v5) */
 	'articlefeedbackv5-bucket5-form-panel-explanation' => '{{Identical|What is this}}',
 	'articlefeedbackv5-bucket5-form-panel-explanation-link' => 'Do not translate "Project:". Also translate the "ArticleFeedback" special page name at [[Special:AdvancedTranslate]].',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'This message may not use <nowiki>{{SITENAME}}</nowiki>.',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-note' => '$1 is a link pointing to the privacy policy. The link text is in the articlefeedbackv5-bucket5-form-panel-helpimprove-privacy message.',
+	'articlefeedbackv5-bucket5-form-panel-helpimprove-note' => '$1 is a link pointing to the privacy policy. The link text is in {{msg-mw|articlefeedbackv5-bucket5-form-panel-helpimprove-privacy}}.',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-email-placeholder' => '{{Optional}}',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy' => '{{Identical|Privacy}}',
 	'articlefeedbackv5-bucket5-report-ratings' => "Needs plural support.
 This message is used in JavaScript by module 'jquery.articleFeedback'.
 $1 is an integer, and the rating count.",
 	'articlefeedbackv5-bucket5-toolbox-linktext' => 'When a link to pop up the feedback tool appears at the bottom of the toolbox area in the sidebar, this will be the link text.  This should match AFTv4.',
-	'articlefeedbackv5-shared-on-feedback' => 'This is the top line of the small text that goes beside the submit button and lets the user know that their comment will be posted on the feedback page. Parameters:
-* $1 will hold the link to the feedback page.',
-	'articlefeedbackv5-shared-on-feedback-linktext' => 'The text for the feedback page link (see "articlefeedbackv5-shared-on-feedback")',
+
+	/* Messages shared by all feedback form options */
+	'articlefeedbackv5-shared-on-feedback' => 'This is the top line of the small text that goes beside the submit button and lets the user know that their comment will be posted on the feedback page. $1 is the link to the abuse policy, the text of which is {{msg-mw|articlefeedbackv5-shared-on-feedback-linktext}}.',
+	'articlefeedbackv5-shared-on-feedback-linktext' => 'The text for the feedback page link within {{msg-mw|articlefeedbackv5-shared-on-feedback}}.',
 	'articlefeedbackv5-help-tooltip-title' => 'The title for the help tooltip.
 {{Identical|What is this}}',
 	'articlefeedbackv5-help-tooltip-info' => 'The contents of the help tooltip',
 	'articlefeedbackv5-help-tooltip-linktext' => 'The link at the bottom of the tooltip (goes to the article feedback v5 page on wikimedia for now)',
 	'articlefeedbackv5-transparency-terms' => "This is the bottom line of the small text that goes beside the submit button and tells the user about the terms they're agreeing to by posting a comment.  $1 will hold the link to the terms page, with the text from {{msg-mw|Articlefeedbackv5-transparency-terms-linktext}}",
-	'articlefeedbackv5-transparency-terms-linktext' => 'The text for the terms link (see {{msg-mw|articlefeedbackv5-transparency-terms}})',
-	'articlefeedbackv5-transparency-terms-url' => 'The URL for the terms (can be translated; defaults to Project:Privacy_policy; Do not translate "Project:")',
+	'articlefeedbackv5-transparency-terms-linktext' => 'The text for the transparency terms link (see {{msg-mw|articlefeedbackv5-transparency-terms}})',
+	'articlefeedbackv5-transparency-terms-url' => 'The URL for the transparency terms link (see {{msg-mw|articlefeedbackv5-transparency-terms}}).  Can be translated; defaults to Project:Privacy_policy; Do not translate "Project:".',
 	'articlefeedbackv5-sitesub-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far left, this will be the link text.',
 	'articlefeedbackv5-titlebar-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far right, this will be the link text.',
 	'articlefeedbackv5-fixedtab-linktext' => 'When a link to pop up the feedback tool appears as a fixed-positioned tab, this will be the link text',
@@ -456,39 +453,16 @@ $1 is an integer, and the rating count.",
 	'articlefeedbackv5-section-linktext' => 'When a link to pop up the feedback tool appears on the article section headers, next to [edit], this will be the text inside the brackets immediately following (e.g. "[edit] [feedback]").
 {{Identical|Feedback}}',
 	'articlefeedbackv5-toolbox-linktext' => 'When a link to pop up the feedback tool appears at the bottom of the toolbox area in the sidebar, this will be the link text.',
-	'articlefeedbackv5-survey-question-whyrated' => 'This is a question in the survey with checkboxes for the answers. The user can check multiple answers.',
-	'articlefeedbackv5-survey-answer-whyrated-contribute-rating' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
-	'articlefeedbackv5-survey-answer-whyrated-development' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
-	'articlefeedbackv5-survey-answer-whyrated-contribute-wiki' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
-	'articlefeedbackv5-survey-answer-whyrated-sharing-opinion' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
-	'articlefeedbackv5-survey-answer-whyrated-didntrate' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
-	'articlefeedbackv5-survey-answer-whyrated-other' => 'This is a possible answer for the "Why did you rate this article today?" survey question. The user can check this to fill out an answer that wasn\'t provided as a checkbox.
-{{Identical|Other}}',
-	'articlefeedbackv5-survey-question-useful' => 'This is a question in the survey with "yes" and "no" (prefswitch-survey-true and prefswitch-survey-false) as possible answers.',
-	'articlefeedbackv5-survey-question-useful-iffalse' => 'This question appears when the user checks "no" for the "Do you believe the ratings provided are useful and clear?" question. The user can enter their answer in a text box.',
-	'articlefeedbackv5-survey-question-comments' => 'This is a question in the survey with a text box that the user can enter their answer in.',
-	'articlefeedbackv5-survey-submit' => 'This is the caption for the button that submits the survey.
-{{Identical|Submit}}',
-	'articlefeedbackv5-survey-title' => 'This text appears in the title bar of the survey dialog.',
-	'articlefeedbackv5-survey-thanks' => 'This text appears when the user has successfully submitted the survey.',
-	'articlefeedbackv5-survey-disclaimer' => 'This text appears on the survey form below the comment field and above the submit button. $1 is a link pointing to the privacy policy. The link text is from {{msg-mw|articlefeedbackv5-survey-disclaimerlink}}.',
-	'articlefeedbackv5-survey-disclaimerlink' => 'The text for the terms link (see {{msg-mw|articlefeedbackv5-survey-disclaimer}})',
-	'articlefeedbackv5-pitch-or' => '{{Identical|Or}}',
-	'articlefeedbackv5-pitch-join-body' => 'Based on {{msg-mw|articleFeedbackv5-pitch-join-message}}.',
-	'articlefeedbackv5-pitch-join-accept' => '{{Identical|Create an account}}',
-	'articlefeedbackv5-pitch-join-login' => '{{Identical|Log in}}',
-	'articlefeedbackv5-privacyurl' => 'This URL can be changed to point to a translated version of the page if it exists.',
-	'articleFeedbackv5-table-heading-page' => 'This is used in the [[mw:Extension:ArticleFeedback|Article Feedback extension]].
-{{Identical|Page}}',
-	'articleFeedbackv5-table-heading-average' => '{{Identical|Average}}',
-	'articlefeedbackv5-table-noratings' => '{{Optional}}
 
-Text to display in a table cell if there is no number to be shown',
-	'articleFeedbackv5-copy-above-highlow-tables' => 'The variable $1 will contain a full URL to a discussion page where the dashboard can be discussed - since the dashboard is powered by a special page, we can not rely on the built-in MediaWiki talk page.',
+	/* Not sure */
+	'articlefeedbackv5-privacyurl' => 'This URL can be changed to point to a translated version of the page if it exists.',
+
+	/* EmailCapture */
 	'articlefeedbackv5-emailcapture-response-body' => 'Body of an e-mail sent to a user wishing to participate in [[mw:Extension:ArticleFeedback|article feedback]] (see the extension documentation).
 * <code>$1</code> – URL of the confirmation link
 * <code>$2</code> – URL to type in the confirmation code manually.
 * <code>$3</code> – Confirmation code for the user to type in',
+
 );
 
 /** Afrikaans (Afrikaans)
