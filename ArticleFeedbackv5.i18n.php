@@ -118,8 +118,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-percent-found' => '<span class="stat-marker positive">$1%</span> found what they were looking for',
 	'articlefeedbackv5-overall-rating' => 'Rating: $1/5',
 	'articlefeedbackv5-special-title' => '==Feedback==',
-	'articlefeedbackv5' => 'Article feedback dashboard',
-	'articlefeedbackv5-desc' => 'Article feedback',
 	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Today\'s highs and lows',
 	'articleFeedbackv5-table-caption-dailyhighs' => 'Pages with highest ratings: $1',
 	'articleFeedbackv5-table-caption-dailylows' => 'Pages with lowest ratings: $1',
@@ -132,6 +130,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-dashboard-bottom' => "'''Note''': We will continue to experiment with different ways of surfacing pages in these dashboards.  At present, the dashboards include the following pages:
 * Pages with highest/lowest ratings: pages that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.
 * Recent lows: pages that got 70% or more low (2 stars or lower) ratings in any category in the last 24 hours. Only pages that have received at least 10 ratings in the last 24 hours are included.",
+	'articlefeedbackv5' => 'Article feedback dashboard',
+	'articlefeedbackv5-desc' => 'Article feedback',
 
 	/* Feedback forms */
 	/* Option 1 ("Did you find what you were looking for?") */
@@ -342,8 +342,6 @@ $messages['qqq'] = array(
 	'articlefeedbackv5-form-delete' => '{{Identical|Delete}}',
 	'articlefeedbackv5-form-oversight' => 'Request that an oversighter review this feedback',
 	'articlefeedbackv5-form-unoversight' => 'Remove request for oversight',
-	'articlefeedbackv5-oversight-saved' => 'Oversight request saved successfully',
-	'articlefeedbackv5-unoversight-saved' => 'Request for oversight removed successfully',
 	'articlefeedbackv5-form-header' => "* '''$1''' is the feedback ID.
 * '''$2''' is the date and time at which the feedback was given.",
 	'articlefeedbackv5-form1-header-found' => 'Parameters:
@@ -359,6 +357,8 @@ $messages['qqq'] = array(
 	'articlefeedbackv5-form2-header-suggestion' => 'Parameters:
 * $1 is a user name.',
 	'articlefeedbackv5-form4-header' => 'Messages in the feedback dashboard to indicate that a user was only presented with a Call To Action form. This is a feedback form that asks a user to do something, rather than provide feedback.',
+	'articlefeedbackv5-oversight-saved' => 'Oversight request saved successfully',
+	'articlefeedbackv5-unoversight-saved' => 'Request for oversight removed successfully',
 	'articlefeedbackv5-discussion-page' => '{{Identical|Discussion}}',
 	'articlefeedbackv5-whats-this' => '{{Identical|Help}}',
 	'articlefeedbackv5-special-title' => 'don\'t touch "== ==".
