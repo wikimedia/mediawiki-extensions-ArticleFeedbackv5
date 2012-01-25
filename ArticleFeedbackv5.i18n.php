@@ -132,8 +132,8 @@ $messages['en'] = array(
 * Recent lows: pages that got 70% or more low (2 stars or lower) ratings in any category in the last 24 hours. Only pages that have received at least 10 ratings in the last 24 hours are included.",
 	'articlefeedbackv5' => 'Article feedback dashboard',
 	'articlefeedbackv5-desc' => 'Article feedback',
-	'articlefeedbackv5-comment-more' => 'Label for the button to expand the truncated comment on feedback. Swaps to articlefeedbackv5-comment-less after being clicked.',
-	'articlefeedbackv5-comment-less' => 'Previous label (articlefeedbackv5-comment-more) switches to this after being clicked. This is the label for collapsing the expanded comments.',
+	'articlefeedbackv5-comment-more' => 'More',
+	'articlefeedbackv5-comment-less' => 'Less',
 
 	/* Feedback forms */
 	/* Option 1 ("Did you find what you were looking for?") */
@@ -376,8 +376,8 @@ Text to display in a table cell if there is no number to be shown',
 
 Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a prototype installation.',
 	'articlefeedbackv5-desc' => '{{desc}}',
-	'articlefeedbackv5-comment-more' => 'More',
-	'articlefeedbackv5-comment-less' => 'Less',
+	'articlefeedbackv5-comment-more' => 'Label for the button to expand the truncated comment on feedback. Swaps to articlefeedbackv5-comment-less after being clicked.',
+	'articlefeedbackv5-comment-less' => 'Previous label (articlefeedbackv5-comment-more) switches to this after being clicked. This is the label for collapsing the expanded comments.',
 
 	/* Feedback forms */
 	/* Option 1 ("Did you find what you were looking for?") */
