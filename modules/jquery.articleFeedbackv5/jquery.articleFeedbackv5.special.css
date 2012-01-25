@@ -20,29 +20,34 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 }
 #articleFeedbackv5-showing-count-wrap {
 	float: left;
-	margin: 0 0 15px;
+	font-size: 1.4em;
+	margin: 15px 50px 5px 0;
+	padding-top: 6px;
+}
+#articleFeedbackv5-feedback-count-total {
+	font-weight: bold;
 }
 #articleFeedbackv5-percent-found-wrap {
-	clear: left;
-	font-size: 1.5em;
-	line-height: 35px;
+	font-size: 1.4em;
+	margin: 15px 0 5px 0;
 	float: left;
 }  
 #articleFeedbackv5-percent-found-wrap .stat-marker {
-	display: inline-block;
-	color: #fff;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	-ms-border-radius: 3px;
-	border-radius: 3px;
-	padding: 3px 10px 0 35px;
-	text-align: center;
+	font-weight: bold;
+	line-height: 32px;
+	padding: 11px 0 8px 50px;
 }
 #articleFeedbackv5-percent-found-wrap .positive {
-	 background: #2f8035 url(images/bg_emoticon_positive.png) no-repeat 13px center;
+	background-image: url(images/type-happy-hovered.png);
+	background-repeat: no-repeat;
+	background-size: 32px;
+	background-position: left;
 }
 #articleFeedbackv5-percent-found-wrap .negative {
-	 background: #bf0a0a url(images/bg_emoticon_negative.png) no-repeat 13px center;
+	background-image: url(images/type-sad-hovered.png);
+	background-repeat: no-repeat;
+	background-size: 32px;
+	background-position: left;
 }
 .aftv5-feedbackpage .aftv5-feedbackpage-comment-display-header {
 	height: 40px;
@@ -58,9 +63,6 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	height: 40px;
 	line-height: 40px;
 	background: #D2E5F7;
-	border: 1px solid #ccc;
-	border-left: none;
-	border-right: none;
 }
 #articleFeedbackv5-sort-filter-controls:after {
 	clear: both;
@@ -77,14 +79,14 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	display: inline-block;
 }
 #articleFeedbackv5-show-feedback {
-	overflow: scroll;
+	overflow: auto;
 	height: 750px;
 }
 .articleFeedbackv5-feedback {
 	min-width: 650px;
 	position: relative;
-	padding: 10px 10px 8px;
-	border-bottom: 2px solid #d6d6d6;
+	padding: 0 10px 8px;
+	border-bottom: 1px solid #aaa;
 	overflow: hidden;
 }
 .articleFeedbackv5-feedback:after {
@@ -93,11 +95,19 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 .articleFeedbackv5-comment-wrap {
 	float: left;
 }
+.articleFeedbackv5-comment-wrap h3 {
+	font-weight: normal;
+	color: #444;
+	font-size: 1.1em;
+}
+.articleFeedbackv5-comment-wrap h3 a {
+	font-size: 1.2em;
+}
 .articleFeedbackv5-comment-wrap h3.positive .result {
-	color: #2f8035;
+	/*color: #2f8035;*/
 }
 .articleFeedbackv5-comment-wrap h3.negative .result {
-	color: #bf0a0a;
+	/*color: #bf0a0a;*/
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools {
 	display: none;
@@ -107,7 +117,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	width: 140px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools h3 {
-	background: #3366bb;
+	background: #5171B7;
 	-moz-border-radius-bottomright: 5px;
 	-moz-border-radius-bottomleft: 5px;
 	-webkit-border-bottom-right-radius: 5px;
@@ -118,6 +128,8 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	border-radius-bottomright: 5px;
 	color: #fff;
 	text-align: center;
+	font-weight: normal;
+	font-size: 1em;
 	position: absolute;
 	z-index: 150;
 	width: 140px;
@@ -130,6 +142,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	position: relative;
 	padding: 40px 10px 10px;
 	background: #d2e5f7;
+	border: solid 1px #c5c5c5;
 	-moz-border-radius-bottomright: 5px;
 	-moz-border-radius-bottomleft: 5px;
 	-webkit-border-bottom-right-radius: 5px;
@@ -145,15 +158,12 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	cursor: pointer;
 }
 .articleFeedbackv5-feedback:hover {
-	padding: 8px 10px;
-	border-top: 2px solid #3366bb;
-	border-bottom: 2px solid #3366bb;
+	/*padding: -1px 10px;
+	border-top: 1px solid #5171B7;
+	border-bottom: 1px solid #5171B7;*/
 }
 .articleFeedbackv5-feedback:hover .articleFeedbackv5-feedback-tools {
 	display: block;
-}
-span.positive {
-	color: #2f8035;
 }
 a#articleFeedbackv5-show-more {
 	display: block;
@@ -166,9 +176,15 @@ a#articleFeedbackv5-show-more {
 .articleFeedbackv5-feedback blockquote {
 	margin: 10px 0;
 	padding: 0;
+	font-size: 1.2em;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-details {
+	padding-top: 30px;
 	float: right;
+	width: 140px;
+}
+.articleFeedbackv5-feedback .articleFeedbackv5-comment-details-updates {
+	padding-top: 15px;
 }
 #articleFeedbackv5-special-add-feedback {
 	/*color:white;
@@ -188,8 +204,12 @@ a#articleFeedbackv5-show-more {
 #articleFeedbackv5-special-add-feedback:after {
 	clear:both;
 }
+#articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link {
+	margin-left: 150px;
+}
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot {
 	line-height: 22px;
+	float: left;
 }
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-caption {
 	margin: 0 15px 0 0;
@@ -212,10 +232,9 @@ a#articleFeedbackv5-show-more {
 	-webkit-border-radius: 3px;
 	border-radius: 3px; 
 	-khtml-border-radius: 3px; 
-	/*-moz-box-shadow: -2px 2px 1px #999;
+	-moz-box-shadow: -2px 2px 1px #999;
 	-webkit-box-shadow: -2px 2px 1px #999;
-	box-shadow: -2px 2px 1px #999;*/
-	border: 1px solid #999;
+	box-shadow: -2px 2px 1px #999;
 }
 
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link:hover,
@@ -235,6 +254,9 @@ a#articleFeedbackv5-show-more {
 	background: url(images/bg-button.png) repeat-x;
 	color: #fff;
 }
+.articleFeedbackv5-helpful-votes {
+	color: #888;
+}
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap h3 {
 	line-height: 24px;
 }
@@ -251,10 +273,18 @@ a#articleFeedbackv5-show-more {
 	border-radius: 3px;
 }
 .articleFeedbackv5-feedback h3.positive .icon {
-	background: #2f8035 url(images/bg_emoticon_positive.png) no-repeat center center;
+	background-image: url(images/type-happy-hovered.png);
+	background-size: 22px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-left: 25px;
 }
 .articleFeedbackv5-feedback h3.negative .icon {
-	background: #bf0a0a url(images/bg_emoticon_negative.png) no-repeat center center;
+	background-image: url(images/type-sad-hovered.png);
+	background-size: 22px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-left: 25px;
 }
 #articleFeedbackv5-sort .articleFeedbackv5-sort-label {
 	display: inline-block;

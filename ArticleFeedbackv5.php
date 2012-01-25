@@ -20,7 +20,7 @@ $wgArticleFeedbackv5MaxCommentLength =  0;
 $wgArticleFeedbackv5SMaxage = 2592000;
 
 // Enable/disable dashboard page
-$wgArticleFeedbackv5Dashboard = false;
+$wgArticleFeedbackv5Dashboard = true;
 
 // Number of revisions to keep a rating alive for
 $wgArticleFeedbackv5RatingLifetime = 30;

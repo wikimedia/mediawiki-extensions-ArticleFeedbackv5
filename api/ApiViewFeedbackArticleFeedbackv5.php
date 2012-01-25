@@ -343,9 +343,19 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'class' => 'articleFeedbackv5-unhelpful-link'
 			), wfMessage( 'articlefeedbackv5-form-helpful-no-label', $record[0]->af_unhelpful_count )->text() );
 		}
-		$footer_links .= Html::closeElement( 'p' );
-
 		$footer_links .= Html::element( 'span', array(
+			'class' => 'articleFeedbackv5-helpful-votes'
+		), wfMessage( 'articlefeedbackv5-form-helpful-votes', ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ), $record[0]->af_helpful_count, $record[0]->af_unhelpful_count ) );
+		if( $can_flag ) {
+			$footer_links .= Html::element( 'a', array(
+				'id'    => "articleFeedbackv5-abuse-link-$id",
+				'class' => 'articleFeedbackv5-abuse-link'
+			), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() );
+		}
+		$footer_links .= Html::closeElement( 'p' )
+		. Html::closeelement( 'div' );
+
+		/*$footer_links .= Html::element( 'span', array(
 			'class' => 'articleFeedbackv5-helpful-votes'
 		), wfMessage( 'articlefeedbackv5-form-helpful-votes', ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ), $record[0]->af_helpful_count, $record[0]->af_unhelpful_count ) )
 		. ( $can_flag ? Html::rawElement( 'div', array(
@@ -354,7 +364,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'id'    => "articleFeedbackv5-abuse-link-$id",
 			'class' => 'articleFeedbackv5-abuse-link'
 		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
-		. Html::closeElement( 'div' );
+		. Html::closeElement( 'div' );*/
 
 		// Don't render the toolbox if they can't do anything with it.
 		$tools = null;
@@ -527,13 +537,14 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	private function renderComment( $text ) {
 		if( strlen( $text ) <= 500 ) { 
 			$rv = "<blockquote>"
-			. htmlspecialchars( $record['comment']->aa_response_text )
+			. htmlspecialchars( $text )
 			. '</blockquote>';
 		} else {
 			$rv = "<blockquote>"
-			. htmlspecialchars( $record['comment']->aa_response_text )
+			. htmlspecialchars( $text )
 			. '</blockquote>';
 		}
+		return $rv;
 	}
 
 	private function feedbackHead( $message, $class, $record, $extra = '' ) {
