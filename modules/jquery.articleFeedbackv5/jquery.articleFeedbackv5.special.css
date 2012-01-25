@@ -38,12 +38,14 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	padding: 11px 0 8px 50px;
 }
 #articleFeedbackv5-percent-found-wrap .positive {
+	/* @embed */
 	background-image: url(images/type-happy-hovered.png);
 	background-repeat: no-repeat;
 	background-size: 32px;
 	background-position: left;
 }
 #articleFeedbackv5-percent-found-wrap .negative {
+	/* @embed */
 	background-image: url(images/type-sad-hovered.png);
 	background-repeat: no-repeat;
 	background-size: 32px;
@@ -51,6 +53,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 }
 .aftv5-feedbackpage .aftv5-feedbackpage-comment-display-header {
 	height: 40px;
+	/* @embed */
 	background: url(images/bg-feedbackpage-header.png) repeat-x;
 	padding: 0 10px;
 }
@@ -273,6 +276,7 @@ a#articleFeedbackv5-show-more {
 	border-radius: 3px;
 }
 .articleFeedbackv5-feedback h3.positive .icon {
+	/* @embed */
 	background-image: url(images/type-happy-hovered.png);
 	background-size: 22px;
 	background-repeat: no-repeat;
@@ -280,6 +284,7 @@ a#articleFeedbackv5-show-more {
 	margin-left: 25px;
 }
 .articleFeedbackv5-feedback h3.negative .icon {
+	/* @embed */
 	background-image: url(images/type-sad-hovered.png);
 	background-size: 22px;
 	background-repeat: no-repeat;
