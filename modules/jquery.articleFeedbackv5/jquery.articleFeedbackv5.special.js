@@ -164,7 +164,7 @@
 
 		$( '#articleFeedbackv5-sort-arrow-' + id ).show();
 		$( '#articleFeedbackv5-sort-arrow-' + id ).attr(
-			'src', 'images/sort ' + dir + 'ending.png'
+			'src', '/extensions/ArticleFeedbackv5/modules/jquery.articleFeedbackv5/images/sort-' + dir + 'ending.png'
 		);
 		$( '#articleFeedbackv5-special-sort-' + id).addClass( 'sort-active' );
 	}
