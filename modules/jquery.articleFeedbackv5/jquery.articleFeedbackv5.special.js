@@ -208,6 +208,11 @@
 					if ( 'result' in data['articlefeedbackv5-flag-feedback'] ) {
 						if( data['articlefeedbackv5-flag-feedback'].result == 'Success' ) {
 							msg = 'articlefeedbackv5-' + type + '-saved';
+							if( 'helpful' in data['articlefeedbackv5-flag-feedback'] ) {
+
+								$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
+
+							}
 						} else if (data['articlefeedbackv5-flag-feedback'].result == 'Error' ) {
 							msg = data['articlefeedbackv5-flag-feedback'].reason;
 						}

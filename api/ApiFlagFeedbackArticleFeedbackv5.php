@@ -27,6 +27,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$error  = null;
 		$dbr    = wfGetDB( DB_SLAVE );
 		$counts = array( 'increment' => array(), 'decrement' => array() );
+		$helpful = null;
 
 		# load feedback record, bail if we don't have one
 		$record = $dbr->selectRow(
@@ -120,6 +121,30 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 			 ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
 			 ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['decrement'] );
+		
+			// This gets a potentially stale copy from the read 
+			// database assumes it's valid, in the interest
+			// of staying off of the write database.
+			// Better stale data than wail on the master, IMO, 
+			// but I'm open to suggestion on that one.
+
+			// Update helpful/unhelpful count after submission
+			if( $params['flagtype'] == 'helpful' || $params['flagtype'] == 'unhelpful' ) {
+				$record  = $dbr->selectRow(
+					'aft_article_feedback',
+					array( 'af_helpful_count', 'af_unhelpful_count' ),
+					array( 'af_id' => $params['feedbackid'] ),
+					__METHOD__
+				);
+
+				$helpful   = $record->af_helpful_count;
+				$unhelpful = $record->af_unhelpful_count;
+
+				$helpful   = wfMessage( 'articlefeedbackv5-form-helpful-votes', 
+				( $helpful + $unhelpful ),
+				$helpful, $unhelpful
+				)->escaped();
+			}
 		}
 
 		if ( $error ) {
@@ -130,13 +155,19 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$reason = null;
 		}
 
+		$results = array(
+			'result' => $result,
+			'reason' => $reason,
+		);
+
+		if( $helpful ) { 
+			$results['helpful'] = $helpful;
+		}
+
 		$this->getResult()->addValue(
 			null,
 			$this->getModuleName(),
-			array(
-				'result' => $result,
-				'reason' => $reason,
-			)
+			$results
 		);
 	}
 

@@ -344,7 +344,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			), wfMessage( 'articlefeedbackv5-form-helpful-no-label', $record[0]->af_unhelpful_count )->text() );
 		}
 		$footer_links .= Html::element( 'span', array(
-			'class' => 'articleFeedbackv5-helpful-votes'
+			'class' => 'articleFeedbackv5-helpful-votes',
+			'id'    => "articleFeedbackv5-helpful-votes-$id"
 		), wfMessage( 'articlefeedbackv5-form-helpful-votes', ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ), $record[0]->af_helpful_count, $record[0]->af_unhelpful_count ) );
 		if( $can_flag ) {
 			$footer_links .= Html::element( 'a', array(
