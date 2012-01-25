@@ -158,7 +158,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'af_user_ip', 'af_hide_count', 'af_abuse_count',
 				'af_helpful_count', 'af_unhelpful_count', 
 				'af_delete_count', 'af_needs_oversight',
-				'(SELECT COUNT(*) FROM revision WHERE rev_id > af_revision_id AND rev_page = '.( integer ) $pageId.') AS age', 
+				'(SELECT COUNT(*) FROM '.$dbr->tableName( 'revision' ).' WHERE rev_id > af_revision_id AND rev_page = '.( integer ) $pageId.') AS age', 
 				'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) AS net_helpfulness',
 				'page_latest', 'af_revision_id', 'page_title'
 			),
