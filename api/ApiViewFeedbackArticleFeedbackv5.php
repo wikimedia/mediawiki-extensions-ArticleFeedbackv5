@@ -452,7 +452,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 
 		return $this->feedbackHead( $msg, $class, $record[0] )
-		. $this->renderComment( $record['comment']->aa_response_text );
+		. $this->renderComment( $record['comment']->aa_response_text, $record[0]->af_id );
 	}
 
 
@@ -465,7 +465,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// * articlefeedbackv5-form2-header-question
 		// * articlefeedbackv5-form2-header-suggestion
 		return $this->feedbackHead( "articlefeedbackv5-form2-header-$type", $class, $record[0], $type )
-		. $this->renderComment( $record['comment']->aa_response_text );
+		. $this->renderComment( $record['comment']->aa_response_text, $record[0]->af_id );
 	}
 
 	private function renderBucket3( $record ) {
@@ -474,7 +474,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$class  = $record['rating']->aa_response_rating >= 3 ? 'positive' : 'negative';
 
 		return $this->feedbackHead( 'articlefeedbackv5-form3-header', $class, $record[0], $record['rating']->aa_response_rating )
-		. $this->renderComment( $record['comment']->aa_response_text );
+		. $this->renderComment( $record['comment']->aa_response_text, $record[0]->af_id );
 	}
 
 	private function renderBucket4( $record ) {
@@ -535,16 +535,37 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		);	
 	}
 
-	private function renderComment( $text ) {
-		if( strlen( $text ) <= 500 ) { 
-			$rv = "<blockquote>"
+	private function renderComment( $text, $feedbackId ) {
+		global $wgLang;
+
+		$short = $wgLang->truncate( $text, 500 );
+
+		$rv = Html::openElement( 'blockquote',
+		array(
+			'class' => 'articleFeedbackv5-comment-short',
+			'id'    => "articleFeedbackv5-comment-short-$feedbackId"
+		) )
+		. htmlspecialchars( $short )
+		. Html::closeElement( 'blockquote' );
+
+		// If the short string is the same size as the 
+		// original, no truncation happened, so no 
+		// controls are needed.
+		if( $short != $text ) {
+			// Show the short text, with the 'show more' control.
+			$rv .= Html::openElement( 'blockquote',
+			array(
+				'class' => 'articleFeedbackv5-comment-full',
+				'id'    => "articleFeedbackv5-comment-full-$feedbackId"
+			) )
 			. htmlspecialchars( $text )
-			. '</blockquote>';
-		} else {
-			$rv = "<blockquote>"
-			. htmlspecialchars( $text )
-			. '</blockquote>';
+			. Html::closeElement( 'blockquote' )
+			. Html::element( 'a', array(
+				'class' => 'articleFeedbackv5-comment-toggle',
+				'id'    => "articleFeedbackv5-comment-toggle-$feedbackId"
+			), wfMessage( 'articlefeedbackv5-comment-more' )->escaped() );
 		}
+
 		return $rv;
 	}
 

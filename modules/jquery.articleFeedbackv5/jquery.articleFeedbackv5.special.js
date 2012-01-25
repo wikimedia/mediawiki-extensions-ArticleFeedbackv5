@@ -114,6 +114,7 @@
 			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
+
 		$( '.articleFeedbackv5-sort-link' ).bind( 'click', function( e ) {
 			id     = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-sort-' );
 			oldId  = $.articleFeedbackv5special.sort;
@@ -135,8 +136,15 @@
 
 			return false;
 		} );
+
 		$( '#articleFeedbackv5-show-more' ).bind( 'click', function( e ) {
 			$.articleFeedbackv5special.loadFeedback( false );
+			return false;
+		} );
+
+		$( '.articleFeedbackv5-comment-toggle' ).live( 'click', function( e ) {
+console.log('welp');
+			$.articleFeedbackv5special.toggleComment( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-comment-toggle-' ) );
 			return false;
 		} );
 
@@ -152,6 +160,30 @@
 
 	// }}}
 	// {{{ Utility methods
+
+
+
+	// {{{ toggleComment
+	$.articleFeedbackv5special.toggleComment = function( id ) { 
+console.log('id is ' + id);
+		if( $( '#articleFeedbackv5-comment-toggle-' + id ).text() 
+		 == mw.msg( 'articlefeedbackv5-comment-more' ) ) {
+console.log('show full');
+			$( '#articleFeedbackv5-comment-short-' + id ).hide();
+			$( '#articleFeedbackv5-comment-full-' + id ).show();
+			$( '#articleFeedbackv5-comment-toggle-' + id ).text(
+				mw.msg( 'articlefeedbackv5-comment-less' )
+			);
+		} else {
+console.log('show short');
+			$( '#articleFeedbackv5-comment-short-' + id ).show();
+			$( '#articleFeedbackv5-comment-full-' + id ).hide();
+			$( '#articleFeedbackv5-comment-toggle-' + id ).text(
+				mw.msg( 'articlefeedbackv5-comment-more' )
+			);
+		}
+	}
+	// }}}
 
 	// {{{ drawSortArrow
 

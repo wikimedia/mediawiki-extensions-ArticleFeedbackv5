@@ -317,3 +317,7 @@ a#articleFeedbackv5-show-more {
 	background-repeat: no-repeat;
 	background-size: 11px 7px;
 }
+
+.articleFeedbackv5-comment-full {
+	display: none;
+}
