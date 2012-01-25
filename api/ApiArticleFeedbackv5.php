@@ -238,7 +238,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		// Check SpamBlacklist, if installed
 		if ( function_exists( 'wfSpamBlacklistObject' ) ) {
-			$spam = wfSpamBlacklistObject();
+			$spam = wfSpamBlacklistObject(); // FIXME: this function exists in the 1.18wmf1 version of SpamBlacklist, but not in the trunk version
 			$ret = $spam->filter( $title, $value, '' );
 			if ( $ret !== false ) {
 				return true;
