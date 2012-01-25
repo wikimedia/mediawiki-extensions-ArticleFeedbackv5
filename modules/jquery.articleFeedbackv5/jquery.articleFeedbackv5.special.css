@@ -299,3 +299,21 @@ a#articleFeedbackv5-show-more {
 	font-weight: bold;
 	color: #0645AD;
 }
+.sort-active {
+	width: 11px;
+	height: 1em;
+}
+.ascending {
+	/* @embed */
+	background-image: url(images/sort-ascending.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 11px 7px;
+}
+.descending {
+	/* @embed */
+	background-image: url(images/sort-descending.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 11px 7px;
+}
