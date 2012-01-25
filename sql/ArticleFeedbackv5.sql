@@ -175,28 +175,28 @@ CREATE INDEX /*i*/af_page_revision ON /*_*/aft_article_feedback (af_page_id, af_
 CREATE INDEX /*i*/afi_data_type ON /*_*/aft_article_field (afi_data_type);
 CREATE INDEX /*i*/aa_feedback_field_option ON /*_*/aft_article_answer (aa_feedback_id, aa_field_id, aa_response_option_id);
 
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('found', 'boolean', 1);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('comment', 'text', 1);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('tag', 'option_id', 2);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('comment', 'text', 2);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('rating', 'rating', 3);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('comment', 'text', 3);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('trustworthy', 'rating', 5);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('objective', 'rating', 5);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('complete', 'rating', 5);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('wellwritten', 'rating', 5);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-general', 'boolean', 5);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-studies', 'boolean', 5);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-profession', 'boolean', 5);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-hobby', 'boolean', 5);
-INSERT INTO aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-other', 'boolean', 5);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('found', 'boolean', 1);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('comment', 'text', 1);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('tag', 'option_id', 2);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('comment', 'text', 2);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('rating', 'rating', 3);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('comment', 'text', 3);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('trustworthy', 'rating', 5);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('objective', 'rating', 5);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('complete', 'rating', 5);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('wellwritten', 'rating', 5);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-general', 'boolean', 5);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-studies', 'boolean', 5);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-profession', 'boolean', 5);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-hobby', 'boolean', 5);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-other', 'boolean', 5);
 
-INSERT INTO aft_article_field_option (afo_field_id, afo_name)
-	SELECT afi_id, 'suggestion' FROM aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
-INSERT INTO aft_article_field_option (afo_field_id, afo_name)
-	SELECT afi_id, 'question' FROM aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
-INSERT INTO aft_article_field_option (afo_field_id, afo_name)
-	SELECT afi_id, 'problem' FROM aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
-INSERT INTO aft_article_field_option (afo_field_id, afo_name)
-	SELECT afi_id, 'praise' FROM aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
+INSERT INTO /*_*/aft_article_field_option (afo_field_id, afo_name)
+	SELECT afi_id, 'suggestion' FROM /*_*/aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
+INSERT INTO /*_*/aft_article_field_option (afo_field_id, afo_name)
+	SELECT afi_id, 'question' FROM /*_*/aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
+INSERT INTO /*_*/aft_article_field_option (afo_field_id, afo_name)
+	SELECT afi_id, 'problem' FROM /*_*/aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
+INSERT INTO /*_*/aft_article_field_option (afo_field_id, afo_name)
+	SELECT afi_id, 'praise' FROM /*_*/aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
 
