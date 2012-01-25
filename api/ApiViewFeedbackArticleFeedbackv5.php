@@ -32,7 +32,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$pageId   = $params['pageid'];
 		$html     = '';
 		$length   = 0;
-		$count    = $this->fetchFeedbackCount( $params['pageid'], $params['filter'], $params['filtervalue'] );
+		$count    = $this->fetchFeedbackCount( $params['pageid'] );
 		$feedback = $this->fetchFeedback(
 			$params['pageid'],
 			$params['filter'],
@@ -58,14 +58,14 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 	}
 
-	public function fetchFeedbackCount( $pageId, $filter, $filterValue ) {
+	public function fetchFeedbackCount( $pageId ) {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$count = $dbr->selectField(
 			array( 'aft_article_filter_count' ),
 			array( 'afc_filter_count' ),
 			array(
 				'afc_page_id'     => $pageId,
-				'afc_filter_name' => $filter
+				'afc_filter_name' => 'all'
 			),
 			__METHOD__
 		);
