@@ -30,7 +30,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * Execute the API call: Save the form values
 	 */
 	public function execute() {
-		global $wgUser, $wgArticleFeedbackv5SMaxage;
+		global $wgUser, $wgArticleFeedbackv5SMaxage,
+			$wgArticleFeedbackv5AbuseFiltering;
+
 		$params = $this->extractRequestParams();
 
 		// Blocked users are, well, blocked.
