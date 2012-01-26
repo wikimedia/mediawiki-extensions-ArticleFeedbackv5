@@ -24,7 +24,7 @@
 
 ( function ( $ ) {
 
-// {{{ articleFeedbackv5 definition
+// {{{ articleFeedbackv5special definition
 
 	// TODO: jam sort/filter options into URL anchors, and use them as defaults if present.
 
@@ -38,39 +38,36 @@
 	$.articleFeedbackv5special.page = undefined;
 
 	/**
-	 * The name of the filter used to select feedback
-	 */
-	$.articleFeedbackv5special.filter = 'comment';
-
-	/**
-	 * Some fitlers have values they need tobe passed (eg, permalinks)
-	 */
-	$.articleFeedbackv5special.filterValue = undefined;
-
-	/**
-	 * The name of the sorting method used
-	 */
-	$.articleFeedbackv5special.sort = 'age';
-
-	/**
-	 * The dorection of the sorting method used
-	 */
-	$.articleFeedbackv5special.sortDirection = 'desc';
-
-	/**
-	 * The number of responses to display per data pull
-	 */
-	$.articleFeedbackv5special.limit = 25;
-
-	/**
-	 * The index at which to start the pull
-	 */
-	$.articleFeedbackv5special.continue = null;
-
-	/**
-	 * The url to which to send the request
+	 * The url to which to send the pull request
 	 */
 	$.articleFeedbackv5special.apiUrl = undefined;
+
+	/**
+	 * Controls for the list: sort, filter, continue flag, etc
+	 */
+	$.articleFeedbackv5special.listControls = {
+		filter: 'comment',
+		filterValue: undefined, // Permalinks require a feedback ID
+		sort: 'age',
+		sortDirection: 'desc',
+		limit: 25,
+		continue: null
+	};
+
+	/**
+	 * User activity: for each feedback record on this page, anything the user
+	 * has done (flagged as abuse, marked as helpful/unhelpful)
+	 *
+	 * @var object
+	 */
+	$.articleFeedbackv5special.activity = {};
+
+	/**
+	 * User activity cookie name (page id is appended on init)
+	 *
+	 * @var string
+	 */
+	$.articleFeedbackv5special.activityCookieName = 'activity-';
 
 	// }}}
 	// {{{ Init methods
@@ -82,8 +79,6 @@
 	 */
 	$.articleFeedbackv5special.setup = function() {
 		// Set up config vars, event binds, and do initial fetch.
-		aft5_debug( mw );
-		aft5_debug( mw.util );
 		$.articleFeedbackv5special.apiUrl = mw.util.wikiScript( 'api' );
 		$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
 		$.articleFeedbackv5special.setBinds();
@@ -92,9 +87,13 @@
 		// Permalinks.
 		var id = window.location.hash.match(/id=(\d+)/)
 		if( id ) {
-			$.articleFeedbackv5special.filter      = 'id';
-			$.articleFeedbackv5special.filterValue = id[1];
+			$.articleFeedbackv5special.listControls.filter      = 'id';
+			$.articleFeedbackv5special.listControls.filterValue = id[1];
 		}
+
+		// Grab the user's activity out of the cookie
+		$.articleFeedbackv5special.activityCookieName += $.articleFeedbackv5special.page;
+		$.articleFeedbackv5special.loadActivity();
 
 		// Initial load
 		$.articleFeedbackv5special.loadFeedback( true );
@@ -108,25 +107,25 @@
 	 */
 	$.articleFeedbackv5special.setBinds = function() {
 		$( '#articleFeedbackv5-filter-select' ).bind( 'change', function( e ) {
-			$.articleFeedbackv5special.filter   = $(this).val();
-			$.articleFeedbackv5special.continue = null;
+			$.articleFeedbackv5special.listControls.filter   = $(this).val();
+			$.articleFeedbackv5special.listControls.continue = null;
 			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
 
 		$( '.articleFeedbackv5-sort-link' ).bind( 'click', function( e ) {
 			id     = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-sort-' );
-			oldId  = $.articleFeedbackv5special.sort;
+			oldId  = $.articleFeedbackv5special.listControls.sort;
 
 			// set direction = desc...
-			$.articleFeedbackv5special.sort     = id;
-			$.articleFeedbackv5special.continue = null;
+			$.articleFeedbackv5special.listControls.sort     = id;
+			$.articleFeedbackv5special.listControls.continue = null;
 
 			// unless we're flipping the direction on the current sort.
-			if( id == oldId && $.articleFeedbackv5special.sortDirection == 'desc' ) {
-				$.articleFeedbackv5special.sortDirection = 'asc';
+			if( id == oldId && $.articleFeedbackv5special.listControls.sortDirection == 'desc' ) {
+				$.articleFeedbackv5special.listControls.sortDirection = 'asc';
 			}  else {
-				$.articleFeedbackv5special.sortDirection = 'desc';
+				$.articleFeedbackv5special.listControls.sortDirection = 'desc';
 			}
 
 			$.articleFeedbackv5special.loadFeedback( true );
@@ -143,9 +142,9 @@
 
 		$( '.articleFeedbackv5-permalink' ).live( 'click', function( e ) {
 			id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-permalink-' );
-			$.articleFeedbackv5special.filter      = 'id';
-			$.articleFeedbackv5special.filterValue = id;
-			$.articleFeedbackv5special.continue = null;
+			$.articleFeedbackv5special.listControls.filter      = 'id';
+			$.articleFeedbackv5special.listControls.filterValue = id;
+			$.articleFeedbackv5special.listControls.continue    = null;
 			$.articleFeedbackv5special.loadFeedback( true );
 		} );
 
@@ -176,8 +175,6 @@
 	// }}}
 	// {{{ Utility methods
 
-
-
 	// {{{ toggleComment
 	$.articleFeedbackv5special.toggleComment = function( id ) { 
 		if( $( '#articleFeedbackv5-comment-toggle-' + id ).text() 
@@ -194,14 +191,14 @@
 				mw.msg( 'articlefeedbackv5-comment-more' )
 			);
 		}
-	}
-	// }}}
+	};
 
+	// }}}
 	// {{{ drawSortArrow
 
 	$.articleFeedbackv5special.drawSortArrow = function() { 
-		id  = $.articleFeedbackv5special.sort;
-		dir = $.articleFeedbackv5special.sortDirection;
+		id  = $.articleFeedbackv5special.listControls.sort;
+		dir = $.articleFeedbackv5special.listControls.sortDirection;
 
 		$( '.articleFeedbackv5-sort-arrow' ).hide();
 		$( '.articleFeedbackv5-sort-link' ).removeClass( 'sort-active' );
@@ -211,7 +208,7 @@
 			'src', '/extensions/ArticleFeedbackv5/modules/jquery.articleFeedbackv5/images/sort-' + dir + 'ending.png'
 		);
 		$( '#articleFeedbackv5-special-sort-' + id).addClass( 'sort-active' );
-	}
+	};
 
 	// }}}
 	// {{{ stripID
@@ -219,7 +216,97 @@
 	// Utility method for stripping long IDs down to the specific bits we care about.
 	$.articleFeedbackv5special.stripID = function( object, toRemove ) {
 		return $( object ).attr( 'id' ).replace( toRemove, '' );
-	}
+	};
+
+	// }}}
+	// {{{ prefix
+
+	/**
+	 * Utility method: Prefixes a key for cookies or events with extension and
+	 * version information
+	 *
+	 * @param  key    string name of event to prefix
+	 * @return string prefixed event name
+	 */
+	$.articleFeedbackv5special.prefix = function ( key ) {
+		var version = mw.config.get( 'wgArticleFeedbackv5Tracking' ).version || 0;
+		return 'ext.articleFeedbackv5@' + version + '-' + key;
+	};
+
+	// }}}
+	// {{{ encodeActivity
+
+	/**
+	 * Utility method: Turns the user activity object into an encoded string
+	 *
+	 * @param  activity object the activity object
+	 * @return string   the encoded string
+	 */
+	$.articleFeedbackv5special.encodeActivity = function ( activity ) {
+		var encoded = '';
+		for ( var fb in activity ) {
+			var info = activity[fb];
+			var buffer = fb + ':';
+			if ( info.helpful ) {
+				buffer += 'H';
+			} else if ( info.unhelpful ) {
+				buffer += 'U';
+			}
+			if ( info.abuse ) {
+				buffer += 'A';
+			}
+			if ( info.hide ) {
+				buffer += 'I';
+			}
+			if ( info.delete ) {
+				buffer += 'D';
+			}
+			encoded += encoded == '' ? buffer : ';' + buffer;
+		}
+		return encoded;
+	};
+
+	// }}}
+	// {{{ decodeActivity
+
+	/**
+	 * Utility method: Turns the encoded string into a user activity object
+	 *
+	 * @param  encoded string the encoded string
+	 * @return object  the activity object
+	 */
+	$.articleFeedbackv5special.decodeActivity = function ( encoded ) {
+		var entries = encoded.split( ';' );
+		var activity = {};
+		for ( var i = 0; i < entries.length; ++i ) {
+			var parts = entries[i].split( ':' );
+			if ( parts.length != 2 ) {
+				continue;
+			}
+			var fb   = parts[0];
+			var info = parts[1];
+			var obj  = { helpful: false, unhelpful: false, abuse: false, hide: false, delete: false };
+			if ( fb.length > 0 && info.length > 0 ) {
+				if ( info.search( /H/ ) != -1 ) {
+					obj.helpful = true;
+				}
+				if ( info.search( /U/ ) != -1 ) {
+					obj.unhelpful = true;
+				}
+				if ( info.search( /A/ ) != -1 ) {
+					obj.abuse = true;
+				}
+				if ( info.search( /I/ ) != -1 ) {
+					obj.hide = true;
+				}
+				if ( info.search( /D/ ) != -1 ) {
+					obj.delete = true;
+				}
+				activity[fb] = obj;
+			}
+		}
+		return activity;
+	};
 
 	// }}}
 
@@ -232,7 +319,7 @@
 	 * Sends the request to mark a response
 	 *
 	 * @param id   int    the feedback id
-	 * @param type string the type of mark (valid values: hide, abuse, delete, helpful, unhelpful
+	 * @param type string the type of mark (valid values: hide, abuse, delete, helpful, unhelpful)
 	 */
 	$.articleFeedbackv5special.flagFeedback = function ( id, type ) {
 		$.ajax( {
@@ -250,14 +337,18 @@
 				var msg = 'articlefeedbackv5-error-flagging';
 				if ( 'articlefeedbackv5-flag-feedback' in data ) {
 					if ( 'result' in data['articlefeedbackv5-flag-feedback'] ) {
-						if( data['articlefeedbackv5-flag-feedback'].result == 'Success' ) {
+						if ( data['articlefeedbackv5-flag-feedback'].result == 'Success' ) {
 							msg = 'articlefeedbackv5-' + type + '-saved';
-							if( 'helpful' in data['articlefeedbackv5-flag-feedback'] ) {
-
+							if ( 'helpful' in data['articlefeedbackv5-flag-feedback'] ) {
 								$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
-
 							}
-						} else if (data['articlefeedbackv5-flag-feedback'].result == 'Error' ) {
+							// Save activity
+							if ( !( id in $.articleFeedbackv5special.activity ) ) {
+								$.articleFeedbackv5special.activity[id] = { helpful: false, unhelpful: false, abuse: false, hide: false, delete: false };
+							}
+							$.articleFeedbackv5special.activity[id][type] = true;
+							$.articleFeedbackv5special.storeActivity();
+						} else if ( data['articlefeedbackv5-flag-feedback'].result == 'Error' ) {
 							msg = data['articlefeedbackv5-flag-feedback'].reason;
 						}
 					}
@@ -290,12 +381,12 @@
 			'dataType': 'json',
 			'data'    : {
 				'afvfpageid'        : $.articleFeedbackv5special.page,
-				'afvffilter'        : $.articleFeedbackv5special.filter,
-				'afvffiltervalue'   : $.articleFeedbackv5special.filterValue,
-				'afvfsort'          : $.articleFeedbackv5special.sort,
-				'afvfsortdirection' : $.articleFeedbackv5special.sortDirection,
-				'afvflimit'         : $.articleFeedbackv5special.limit,
-				'afvfcontinue'      : $.articleFeedbackv5special.continue,
+				'afvffilter'        : $.articleFeedbackv5special.listControls.filter,
+				'afvffiltervalue'   : $.articleFeedbackv5special.listControls.filterValue,
+				'afvfsort'          : $.articleFeedbackv5special.listControls.sort,
+				'afvfsortdirection' : $.articleFeedbackv5special.listControls.sortDirection,
+				'afvflimit'         : $.articleFeedbackv5special.listControls.limit,
+				'afvfcontinue'      : $.articleFeedbackv5special.listControls.continue,
 				'action'  : 'query',
 				'format'  : 'json',
 				'list'    : 'articlefeedbackv5-view-feedback',
@@ -309,7 +400,7 @@
 						$( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback);
 					}
 					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
-					$.articleFeedbackv5special.continue = data['articlefeedbackv5-view-feedback'].continue;
+					$.articleFeedbackv5special.listControls.continue = data['articlefeedbackv5-view-feedback'].continue;
 					// set effects on toolboxes
 					$( '.articleFeedbackv5-feedback-tools > ul' ).hide();
 					$( '.articleFeedbackv5-feedback-tools' ).hover( 
@@ -333,6 +424,34 @@
 		} );
 
 		return false;
+	}
+
+	// }}}
+	// {{{ loadActivity
+
+	/**
+	 * Loads the user activity from the cookie
+	 */
+	$.articleFeedbackv5special.loadActivity = function () {
+		var flatActivity = 	$.cookie( $.articleFeedbackv5special.prefix( $.articleFeedbackv5special.activityCookieName ) );
+		if ( flatActivity ) {
+			$.articleFeedbackv5special.activity = $.articleFeedbackv5special.decodeActivity( flatActivity );
+		}
+	}
+
+	// }}}
+	// {{{ storeActivity
+
+	/**
+	 * Stores the user activity to the cookie
+	 */
+	$.articleFeedbackv5special.storeActivity = function () {
+		var flatActivity = $.articleFeedbackv5special.encodeActivity( $.articleFeedbackv5special.activity );
+		$.cookie(
+			$.articleFeedbackv5special.prefix( $.articleFeedbackv5special.activityCookieName ),
+			flatActivity,
+			{ 'expires': 365, 'path': '/' }
+		);
 	}
 
 	// }}}
