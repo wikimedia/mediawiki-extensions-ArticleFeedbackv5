@@ -302,8 +302,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				( $now - $timestamp ), 'avoidseconds'
                 	);
                 	$date = wfMessage( 'articleFeedbackv5-comment-ago', $time )->escaped();
-		} else {
+		} elseif( $timestamp ) {
 			$date = $wgLang->timeanddate($record[0]->af_created  );
+		} else {
 		}
 
 		$details = Html::openElement( 'div', array(

@@ -66,6 +66,8 @@ ALTER TABLE aft_article_feedback ADD COLUMN af_delete_count integer unsigned NOT
 ALTER TABLE aft_article_feedback ADD COLUMN af_unhelpful_count integer unsigned NOT NULL DEFAULT 0;
 
 -- added  or updated 1/24 (greg)
+ALTER TABLE aft_article_feedback ADD COLUMN af_needs_oversight boolean NOT NULL DEFAULT FALSE;
+
 DELETE FROM aft_article_filter_count;
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'helpful', COUNT(*) FROM aft_article_feedback WHERE CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) > 0 GROUP BY af_page_id;
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'abusive', COUNT(*) FROM aft_article_feedback WHERE af_abuse_count > 0 GROUP BY af_page_id;
@@ -76,4 +78,30 @@ INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_co
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'deleted', COUNT(*) FROM aft_article_feedback WHERE af_delete_count > 0 GROUP BY af_page_id;
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'unhelpful', COUNT(*) FROM aft_article_feedback WHERE CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) < 0 GROUP BY af_page_id;
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'needsoversight', COUNT(*) FROM aft_article_feedback WHERE af_needs_oversight IS TRUE GROUP BY af_page_id;
-ALTER TABLE aft_article_feedback ADD COLUMN af_needs_oversight boolean NOT NULL DEFAULT FALSE;
+
+-- added 1/26 (greg) - obviates much of the above from 1/24.
+DELETE FROM aft_article_filter_count;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'helpful', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) > 0 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'abusive', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND af_abuse_count > 0 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'invisible', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND af_hide_count > 0 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'visible', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND af_hide_count = 0 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'all', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'comment', COUNT(*) FROM aft_article_feedback, aft_article_answer WHERE af_bucket_id = 1 AND af_id = aa_feedback_id AND aa_response_text IS NOT NULL GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'deleted', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND af_delete_count > 0 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'unhelpful', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) < 0 GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'needsoversight', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND af_needs_oversight IS TRUE GROUP BY af_page_id;
+
+-- Note that this ignores the select rollups, since bucket 1 doesn't have any 
+-- selects in it. Those tables can be truncated, or possibly dropped entirely,
+-- if bucket 1 remains the only bucket. Holding off on that decision for now.
+DELETE FROM aft_article_feedback_ratings_rollup;
+DELETE FROM aft_article_revision_feedback_ratings_rollup;
+INSERT INTO aft_article_revision_feedback_ratings_rollup (afrr_page_id, afrr_revision_id, afrr_field_id, afrr_total, afrr_count)  
+SELECT af_page_id, af_revision_id, aa_field_id, SUM(aa_response_boolean), COUNT(aa_response_boolean) 
+FROM aft_article_feedback, aft_article_answer
+WHERE af_bucket_id = 1 AND af_id = aa_feedback_id AND aa_response_boolean IS NOT NULL
+GROUP BY af_page_id, af_revision_id;
+INSERT INTO aft_article_feedback_ratings_rollup (arr_page_id, arr_field_id, arr_total, arr_count)
+SELECT afrr_page_id, afrr_field_id, SUM(afrr_total), SUM(afrr_count)
+FROM aft_article_revision_feedback_ratings_rollup
+GROUP BY afrr_page_id;
