@@ -142,7 +142,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					'div',
 					array( 'id' => 'articleFeedbackv5-percent-found-wrap' )
 				)
-				. $this->msg( 'articlefeedbackv5-percent-found', $found ) # Can't escape this, need the <span> tag to parse.
+				. $this->msg( 'articlefeedbackv5-percent-found', $found )->plain() # Can't escape this, need the <span> tag to parse.
 				. Html::closeElement( 'div' )
 			);
 		}
