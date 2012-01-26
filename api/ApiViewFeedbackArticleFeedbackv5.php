@@ -104,7 +104,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				$continueSql = "$sortField $continueDirection";
 				break;
 		}
-		$order       = "$sortField $direction";
+		$order = "$sortField $direction";
 
 		$where['af_page_id'] = $pageId;
 
@@ -114,6 +114,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		if ( $continue !== null ) {
 			$where[] = $continueSql.' '.intVal( $continue );
 		}
+
+		# This filter is per Fabrice, 1/25 - only show feedback from option 1
+		$where['af_bucket_id'] = 1;
 
 		/* I'd really love to do this in one big query, but MySQL
 		   doesn't support LIMIT inside IN() subselects, and since
@@ -418,6 +421,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 					), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_delete_count )->text() ) );
 			}
 
+/*
 			$link = null;
 			if ( $record[0]->af_needs_oversight ) {
 				if ( $can_delete ) {
@@ -436,6 +440,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 					'class' => "articleFeedbackv5-$link-link"
 				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_delete_count )->text() ) );
 			}
+*/
 
 			$tools .= Html::closeElement( 'ul' )
 			. Html::closeElement( 'div' );

@@ -102,8 +102,13 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$ctaId      = $ratingIds['cta_id'];
 		$feedbackId = $ratingIds['feedback_id'];
 		$this->saveUserProperties( $feedbackId );
-		$this->updateRollupTables( $pageId, $revisionId, $userAnswers );
-		$this->updateFilterCounts( $pageId, $userAnswers );
+
+		// Per Fabrice 1/25, FeedbackPage only cares about option 1, so
+		// don't bother updating the rollups if this is a different one.
+		if( $bucket == 1 ) {
+			$this->updateRollupTables( $pageId, $revisionId, $userAnswers );
+			$this->updateFilterCounts( $pageId, $userAnswers );
+		}
 
 		// If we have an email address, capture it
 		if ( $params['email'] ) {
