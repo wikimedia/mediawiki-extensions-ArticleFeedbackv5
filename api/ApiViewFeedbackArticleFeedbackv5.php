@@ -98,12 +98,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 #				$sortField = 'rating';
 #				break;
 			case 'age':
-				# Default field, fall through	
+				# Default field, fall through
 			default:
 				$sortField   = 'af_id';
 				$continueSql = "$sortField $continueDirection";
 				break;
-		}	
+		}
 		$order       = "$sortField $direction";
 
 		$where['af_page_id'] = $pageId;
@@ -111,7 +111,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		# This join is needed for the comment filter.
 		$where[] = 'af_id = aa_feedback_id';
 
-		if( $continue !== null ) {
+		if ( $continue !== null ) {
 			$where[] = "$continueSql $continue";
 		}
 
@@ -122,14 +122,14 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		   sure we get all answers for the exact IDs we want. */
 		$id_query = $dbr->select(
 			array(
-				'aft_article_feedback', 
+				'aft_article_feedback',
 				'aft_article_answer'
 			),
 			array(
-				'DISTINCT af_id', 
+				'DISTINCT af_id',
 				'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) AS net_helpfulness'
 			),
-			$where, 
+			$where,
 			__METHOD__,
 			array(
 				'LIMIT'    => $limit,
@@ -156,9 +156,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'aa_response_rating', 'aa_response_option_id',
 				'afi_data_type', 'af_created', 'user_name',
 				'af_user_ip', 'af_hide_count', 'af_abuse_count',
-				'af_helpful_count', 'af_unhelpful_count', 
+				'af_helpful_count', 'af_unhelpful_count',
 				'af_delete_count', 'af_needs_oversight',
-				'(SELECT COUNT(*) FROM '.$dbr->tableName( 'revision' ).' WHERE rev_id > af_revision_id AND rev_page = '.( integer ) $pageId.') AS age', 
+				'(SELECT COUNT(*) FROM ' . $dbr->tableName( 'revision' ) . ' WHERE rev_id > af_revision_id AND rev_page = ' . ( integer ) $pageId . ') AS age',
 				'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) AS net_helpfulness',
 				'page_latest', 'af_revision_id', 'page_title'
 			),
@@ -202,23 +202,23 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$where = array();
 
 		// Permissions check: these filters are for admins only.
-		if(
-			( $filter == 'invisible' 
+		if (
+			( $filter == 'invisible'
 			 && !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) )
-			|| 
-			( $filter == 'deleted' 
+			||
+			( $filter == 'deleted'
 			 && !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) )
 		) {
 			$filter = null;
 		}
 
 		// Don't let non-allowed users see these.
-		if( !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
+		if ( !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			$where['af_hide_count'] = 0;
 		}
 
 		// Don't let non-allowed users see these.
-		if( !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
+		if ( !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
 			$where['af_delete_count'] = 0;
 		}
 
@@ -247,7 +247,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			case 'invisible':
 				$where[] = 'af_hide_count > 0';
  				break;
-			case 'abusive': 
+			case 'abusive':
 				$where[] = 'af_abuse_count > 0';
 				break;
 			case 'helpful':
@@ -294,10 +294,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		) )
 		. Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-comment-details-date'
-		) ) 
-		.Html::element( 'a', array(
+		) )
+		. Html::element( 'a', array(
 			'href' => "#id=$id"
-		), date( 'M j, Y H:i', strtotime($record[0]->af_created) ) )
+		), date( 'M j, Y H:i', strtotime( $record[0]->af_created ) ) )
 		. Html::closeElement( 'div' )
 # Remove for now, pending feedback.
 #		. Html::openElement( 'div', array(
@@ -310,10 +310,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		. Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-comment-details-updates'
-		) ) 
+		) )
 		. Linker::link(
 			Title::newFromText( $record[0]->page_title ),
-			wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age ), 
+			wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age ),
 			array(),
 			array(
 				'action' => 'historysubmit',
@@ -330,7 +330,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		) )
 		. Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-foot' ) );
 
-		if( $can_vote ) {
+		if ( $can_vote ) {
 			$footer_links .= Html::element( 'span', array(
 				'class' => 'articleFeedbackv5-helpful-caption'
 			), wfMessage( 'articlefeedbackv5-form-helpful-label', ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ) ) )
@@ -338,7 +338,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'id'    => "articleFeedbackv5-helpful-link-$id",
 				'class' => 'articleFeedbackv5-helpful-link'
 			), wfMessage( 'articlefeedbackv5-form-helpful-yes-label', $record[0]->af_helpful_count )->text() )
-			.Html::element( 'a', array(
+			. Html::element( 'a', array(
 				'id'    => "articleFeedbackv5-unhelpful-link-$id",
 				'class' => 'articleFeedbackv5-unhelpful-link'
 			), wfMessage( 'articlefeedbackv5-form-helpful-no-label', $record[0]->af_unhelpful_count )->text() );
@@ -347,7 +347,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'class' => 'articleFeedbackv5-helpful-votes',
 			'id'    => "articleFeedbackv5-helpful-votes-$id"
 		), wfMessage( 'articlefeedbackv5-form-helpful-votes', ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ), $record[0]->af_helpful_count, $record[0]->af_unhelpful_count ) );
-		if( $can_flag ) {
+		if ( $can_flag ) {
 			$footer_links .= Html::element( 'a', array(
 				'id'    => "articleFeedbackv5-abuse-link-$id",
 				'class' => 'articleFeedbackv5-abuse-link'
@@ -369,22 +369,22 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		// Don't render the toolbox if they can't do anything with it.
 		$tools = null;
-		if( $can_hide || $can_delete ) { 
-			$tools = Html::openElement( 'div', array( 
+		if ( $can_hide || $can_delete ) {
+			$tools = Html::openElement( 'div', array(
 				'class' => 'articleFeedbackv5-feedback-tools',
-				'id'    => 'articleFeedbackv5-feedback-tools-'.$id
+				'id'    => 'articleFeedbackv5-feedback-tools-' . $id
 			) )
 			. Html::element( 'h3', array(
-				'id' => 'articleFeedbackv5-feedback-tools-header-'.$id
+				'id' => 'articleFeedbackv5-feedback-tools-header-' . $id
 			), wfMessage( 'articlefeedbackv5-form-tools-label' )->text() )
 			. Html::openElement( 'ul', array(
-				'id' => 'articleFeedbackv5-feedback-tools-list-'.$id
+				'id' => 'articleFeedbackv5-feedback-tools-list-' . $id
 			) );
 
 
-			if( $can_hide ) { 
+			if ( $can_hide ) {
 				$link = 'hide';
-				if( $record[0]->af_hide_count > 0 ) {
+				if ( $record[0]->af_hide_count > 0 ) {
 					# unhide
 					$link = 'unhide';
 					$tools .= Html::element( 'li', array(), wfMessage( 'articlefeedbackv5-hidden' ) );
@@ -395,10 +395,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_hide_count )->text() ) );
 			}
 
-			if( $can_delete ) {
+			if ( $can_delete ) {
 				# delete
 				$link = 'delete';
-				if( $record[0]->af_delete_count > 0 ) {
+				if ( $record[0]->af_delete_count > 0 ) {
 					$link = 'undelete';
 				}
 				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
@@ -408,18 +408,18 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			}
 
 			$link = null;
-			if( $record[0]->af_needs_oversight ) {
-				if( $can_delete ) {
+			if ( $record[0]->af_needs_oversight ) {
+				if ( $can_delete ) {
 					$link = 'unoversight';
 				} else {
 					$link = 'oversighted';
 				}
-			} elseif( $can_hide ) { 
+			} elseif ( $can_hide ) {
 				# flag for oversight
 				$link = 'oversight';
 			}
 
-			if( $link ) {
+			if ( $link ) {
 				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 					'id'    => "articleFeedbackv5-$link-link-$id",
 					'class' => "articleFeedbackv5-$link-link"
@@ -479,10 +479,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	private function renderBucket4( $record ) {
 		return $this->feedbackHead(
-                        'articlefeedbackv5-form4-header',
-                        'positive',
-                        $record[0]
-                );
+			'articlefeedbackv5-form4-header',
+			'positive',
+			$record[0]
+		);
 	}
 
 	private function renderBucket5( $record ) {
@@ -502,16 +502,16 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			}
 		}
 		$body .= "</ul>";
-	
+
 		$class = $total / $count >= 3 ? 'positive' : 'negative';
 
-                $head = $this->feedbackHead(
-                        'articlefeedbackv5-form5-header',
-                        $class,
-                        $record[0]
+		$head = $this->feedbackHead(
+			'articlefeedbackv5-form5-header',
+			$class,
+			$record[0]
                 );
 
-		return $head.$body;
+		return $head . $body;
 	}
 
 	private function renderBucket0( $record ) {
@@ -520,19 +520,19 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderNoBucket( $record ) {
-		return $this->feedbackHead( 
+		return $this->feedbackHead(
 			'articlefeedbackv5-form-invalid',
 			'negative',
 			$record[0]
-		);	
+		);
 	}
 
 	private function renderBucket6( $record ) {
-		return $this->feedbackHead( 
+		return $this->feedbackHead(
 			'articlefeedbackv5-form-not-shown',
 			'positive',
 			$record[0]
-		);	
+		);
 	}
 
 	private function renderComment( $text, $feedbackId ) {
@@ -548,10 +548,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. htmlspecialchars( $short )
 		. Html::closeElement( 'blockquote' );
 
-		// If the short string is the same size as the 
-		// original, no truncation happened, so no 
+		// If the short string is the same size as the
+		// original, no truncation happened, so no
 		// controls are needed.
-		if( $short != $text ) {
+		if ( $short != $text ) {
 			// Show the short text, with the 'show more' control.
 			$rv .= Html::openElement( 'blockquote',
 			array(
@@ -570,18 +570,18 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function feedbackHead( $message, $class, $record, $extra = '' ) {
-		$gender = ''; #?
+		$gender = ''; # ?
 		$name   = htmlspecialchars( $record->user_name );
 		$link   = $record->af_user_id ? "User:$name" : "Special:Contributions/$name";
 
-		return Html::openElement( 'h3', array( 
+		return Html::openElement( 'h3', array(
 			'class' => $class
 		) )
-                . Linker::link( Title::newFromText( $link ), $name )
+		. Linker::link( Title::newFromText( $link ), $name )
 		. Html::element( 'span', array( 'class' => 'icon' ) )
-		. Html::element( 'span', 
-			array( 'class' => 'result' ), 
-			wfMessage( $message, $gender, $extra )->escaped() 
+		. Html::element( 'span',
+			array( 'class' => 'result' ),
+			wfMessage( $message, $gender, $extra )->escaped()
 		)
 		. Html::closeElement( 'h3' );
 	}

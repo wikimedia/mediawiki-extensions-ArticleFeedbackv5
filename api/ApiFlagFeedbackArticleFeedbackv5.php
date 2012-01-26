@@ -42,70 +42,70 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		if ( !$record->af_id ) {
 			// no-op, because this is already broken
 			$error = 'articlefeedbackv5-invalid-feedback-id';
-		} elseif( $params['flagtype'] == 'unhide' ) {
+		} elseif ( $params['flagtype'] == 'unhide' ) {
 			// remove the hidden status
 			$update[] = 'af_hide_count = 0';
-		} elseif( $params['flagtype'] == 'unoversight' ) {
-			// remove the oversight flag 
+		} elseif ( $params['flagtype'] == 'unoversight' ) {
+			// remove the oversight flag
 			$update[] = 'af_needs_oversight = FALSE';
-		} elseif( $params['flagtype'] == 'undelete' ) {
+		} elseif ( $params['flagtype'] == 'undelete' ) {
 			// remove the deleted status, and clear oversight flag
 			$update[] = 'af_delete_count = 0';
 			$update[] = 'af_needs_oversight = FALSE';
-		} elseif( $params['flagtype'] == 'oversight' ) {
+		} elseif ( $params['flagtype'] == 'oversight' ) {
 			// flag for oversight
 			$update[] = 'af_needs_oversight = TRUE';
-		} elseif( in_array( $params['flagtype'], $flags ) ) {
+		} elseif ( in_array( $params['flagtype'], $flags ) ) {
 			// Probably this doesn't need validation, since the API
 			// will handle it, but if it's getting interpolated into
 			// the SQL, I'm really wary not re-validating it.
-			$field = 'af_'.$params['flagtype'].'_count';
+			$field = 'af_' . $params['flagtype'] . '_count';
 			$update[] = "$field = $field + 1";
 		} else {
 			$error = 'articlefeedbackv5-invalid-feedback-flag';
 		}
 
 		// Newly abusive record
-		if( $flag == 'abuse' && $record->af_abuse_count == 0 ) {
+		if ( $flag == 'abuse' && $record->af_abuse_count == 0 ) {
 			$counts['increment'][] = 'abusive';
 		}
 
-		if( $flag == 'oversight' ) {
+		if ( $flag == 'oversight' ) {
 			$counts['increment'][] = 'needsoversight';
 		}
-		if( $flag == 'unoversight' ) {
+		if ( $flag == 'unoversight' ) {
 			$counts['decrement'][] = 'needsoversight';
 		}
 
 
 		// Newly hidden record
-		if( $flag == 'hide' && $record->af_hide_count == 0 ) {
+		if ( $flag == 'hide' && $record->af_hide_count == 0 ) {
 			$counts['increment'][] = 'invisible';
 			$counts['decrement'][] = 'visible';
 		}
 		// Unhidden record
-		if( $flag == 'unhide') {
+		if ( $flag == 'unhide' ) {
 			$counts['increment'][] = 'visible';
 			$counts['decrement'][] = 'invisible';
 		}
 
 		// Newly deleted record
-		if( $flag == 'delete' && $record->af_delete_count == 0 ) {
+		if ( $flag == 'delete' && $record->af_delete_count == 0 ) {
 			$counts['increment'][] = 'deleted';
 			$counts['decrement'][] = 'visible';
 		}
 		// Undeleted record
-		if( $flag == 'undelete' ) {
+		if ( $flag == 'undelete' ) {
 			$counts['increment'][] = 'visible';
 			$counts['decrement'][] = 'deleted';
 		}
-		
+
 		// Newly helpful record
-		if( $flag == 'helpful' && $record->af_helpful_count == 0 ) {
+		if ( $flag == 'helpful' && $record->af_helpful_count == 0 ) {
 			$counts['increment'][] = 'helpful';
 		}
 		// Newly unhelpful record (IE, unhelpful has overtaken helpful)
-		if( $flag == 'unhelpful' 
+		if ( $flag == 'unhelpful'
 		 && ( ( $record->af_helpful_count - $record->af_unhelpful_count ) == 1 ) ) {
 			$counts['decrement'][] = 'helpful';
 		}
@@ -121,15 +121,15 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 			 ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
 			 ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['decrement'] );
-		
-			// This gets a potentially stale copy from the read 
+
+			// This gets a potentially stale copy from the read
 			// database assumes it's valid, in the interest
 			// of staying off of the write database.
-			// Better stale data than wail on the master, IMO, 
+			// Better stale data than wail on the master, IMO,
 			// but I'm open to suggestion on that one.
 
 			// Update helpful/unhelpful count after submission
-			if( $params['flagtype'] == 'helpful' || $params['flagtype'] == 'unhelpful' ) {
+			if ( $params['flagtype'] == 'helpful' || $params['flagtype'] == 'unhelpful' ) {
 				$record  = $dbr->selectRow(
 					'aft_article_feedback',
 					array( 'af_helpful_count', 'af_unhelpful_count' ),
@@ -140,7 +140,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$helpful   = $record->af_helpful_count;
 				$unhelpful = $record->af_unhelpful_count;
 
-				$helpful   = wfMessage( 'articlefeedbackv5-form-helpful-votes', 
+				$helpful   = wfMessage( 'articlefeedbackv5-form-helpful-votes',
 				( $helpful + $unhelpful ),
 				$helpful, $unhelpful
 				)->escaped();
@@ -160,7 +160,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			'reason' => $reason,
 		);
 
-		if( $helpful ) { 
+		if ( $helpful ) {
 			$results['helpful'] = $helpful;
 		}
 

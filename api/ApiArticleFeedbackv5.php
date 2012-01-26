@@ -34,7 +34,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$params = $this->extractRequestParams();
 
 		// Blocked users are, well, blocked.
-		if( $wgUser->isBlocked() ) {
+		if ( $wgUser->isBlocked() ) {
 			$this->getResult()->addValue( null, 'error', 'articlefeedbackv5-error-blocked' );
 			return;
 		}
@@ -268,15 +268,15 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		# Does this record have a comment attached?
 		# Defined as an answer of type 'text'.
-		foreach( $answers as $a ) {
-			if( $a['aa_response_text'] !== null ) {
+		foreach ( $answers as $a ) {
+			if ( $a['aa_response_text'] !== null ) {
 				$has_comment = true;
 			}
 		}
 
 		$filters = array( 'all', 'visible' );
 		# If the feedbackrecord had a comment, update that filter count.
-		if( $has_comment ) {
+		if ( $has_comment ) {
 			$filters[] = 'comment';
 		}
 
