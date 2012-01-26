@@ -141,8 +141,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$unhelpful = $record->af_unhelpful_count;
 
 				$helpful   = wfMessage( 'articlefeedbackv5-form-helpful-votes',
-				( $helpful + $unhelpful ),
-				$helpful, $unhelpful
+					$helpful, $unhelpful
 				)->escaped();
 			}
 		}

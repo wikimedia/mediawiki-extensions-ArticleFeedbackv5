@@ -321,3 +321,8 @@ a#articleFeedbackv5-show-more {
 .articleFeedbackv5-comment-full {
 	display: none;
 }
+
+a.helpful-active {
+	background: url(images/bg-button.png) !important;
+	color: white !important;
+}

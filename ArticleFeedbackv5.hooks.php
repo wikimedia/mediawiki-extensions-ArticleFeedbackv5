@@ -175,9 +175,6 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-undelete-saved',
 				'articlefeedbackv5-oversight-saved',
 				'articlefeedbackv5-unoversight-saved',
-				'articlefeedbackv5-comment-link',
-				'articlefeedbackv5-special-sort-asc',
-				'articlefeedbackv5-special-sort-desc',
 				'articlefeedbackv5-comment-more',
 				'articlefeedbackv5-comment-less'
 			),

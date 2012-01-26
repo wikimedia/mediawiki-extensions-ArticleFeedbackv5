@@ -18,7 +18,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	private $filters = array(
 		'comment',
 		'helpful',
-		'all'
+		'visible'
 	);
 	private $sorts = array(
 		'age',
@@ -41,8 +41,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		if( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			array_push( $this->filters,
-				'invisible', 'unhelpful', 'abusive', 'needsoversight'
+				'unhelpful', 'abusive', 'invisible'
 			);
+			# removing the 'needsoversight' filter, per Fabrice
 		}
 
 		if( $wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {

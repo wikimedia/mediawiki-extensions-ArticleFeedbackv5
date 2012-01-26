@@ -112,7 +112,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$where[] = 'af_id = aa_feedback_id';
 
 		if ( $continue !== null ) {
-			$where[] = "$continueSql $continue";
+			$where[] = $continueSql.' '.intVal( $continue );
 		}
 
 		/* I'd really love to do this in one big query, but MySQL
@@ -269,7 +269,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	protected function renderFeedback( $record ) {
-		global $wgArticlePath, $wgUser;
+		global $wgArticlePath, $wgUser, $wgLang;
 		$id = $record[0]->af_id;
 
 		switch( $record[0]->af_bucket_id ) {
@@ -282,12 +282,26 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			default: $content .= $this->renderNoBucket( $record ); break;
 		}
 
-		// These two are the same for now, but may now always be,
+		// These two are the same for now, but may not always be,
 		// so set them each separately.
 		$can_flag   = !$wgUser->isBlocked();
 		$can_vote   = !$wgUser->isBlocked();
 		$can_hide   = $wgUser->isAllowed( 'aftv5-hide-feedback' );
 		$can_delete = $wgUser->isAllowed( 'aftv5-delete-feedback' );
+
+		// Taken from the Moodbar extension.
+                $now       = wfTimestamp( TS_UNIX );
+                $timestamp = wfTimestamp( TS_UNIX, $record[0]->af_created );
+		// Relative dates for 48 hours, normal timestamps later.
+		if( $timestamp > ( $now - ( 86400 * 2 ) ) ) {
+			// TODO: relative dates.
+                	$time = $wgLang->formatTimePeriod( 
+				( $now - $timestamp ), 'avoidseconds'
+                	);
+                	$date = wfMessage( 'articleFeedbackv5-comment-ago', $time )->escaped();
+		} else {
+			$date = $wgLang->timeanddate($record[0]->af_created  );
+		}
 
 		$details = Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-comment-details'
@@ -296,32 +310,29 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'class' => 'articleFeedbackv5-comment-details-date'
 		) )
 		. Html::element( 'a', array(
-			'href' => "#id=$id"
-		), date( 'M j, Y H:i', strtotime( $record[0]->af_created ) ) )
+			'class' => 'articleFeedbackv5-permalink',
+			'id'    => "articleFeedbackv5-permalink-$id",
+			'href'  => "#id=$id"
+		), $date )
 		. Html::closeElement( 'div' )
-# Remove for now, pending feedback.
-#		. Html::openElement( 'div', array(
-#			'class' => 'articleFeedbackv5-comment-details-permalink'
-#		) )
-#		.Html::element( 'a', array(
-#			'href' => "#id=$id"
-#		), wfMessage( 'articlefeedbackv5-comment-link' ) )
-#		. Html::closeElement( 'div' )
-
 		. Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-comment-details-updates'
-		) )
-		. Linker::link(
-			Title::newFromText( $record[0]->page_title ),
-			wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age ),
-			array(),
-			array(
-				'action' => 'historysubmit',
-				'diff'   => $record[0]->page_latest,
-				'oldid'  => $record[0]->af_revision_id
-			)
-		)
-		. Html::closeElement( 'div' )
+		) );
+
+		if( $record[0]->age > 0 ) {
+			$details .=  Linker::link(
+				Title::newFromText( $record[0]->page_title ),
+				wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age ), 
+				array(),
+				array(
+					'action' => 'historysubmit',
+					'diff'   => $record[0]->page_latest,
+					'oldid'  => $record[0]->af_revision_id
+				)
+			);
+		}
+
+		$details .= Html::closeElement( 'div' )
 		. Html::closeElement( 'div' );
 ;
 
@@ -346,7 +357,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$footer_links .= Html::element( 'span', array(
 			'class' => 'articleFeedbackv5-helpful-votes',
 			'id'    => "articleFeedbackv5-helpful-votes-$id"
-		), wfMessage( 'articlefeedbackv5-form-helpful-votes', ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ), $record[0]->af_helpful_count, $record[0]->af_unhelpful_count ) );
+		), wfMessage( 'articlefeedbackv5-form-helpful-votes', $record[0]->af_helpful_count, $record[0]->af_unhelpful_count ) );
 		if ( $can_flag ) {
 			$footer_links .= Html::element( 'a', array(
 				'id'    => "articleFeedbackv5-abuse-link-$id",
@@ -570,18 +581,18 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function feedbackHead( $message, $class, $record, $extra = '' ) {
-		$gender = ''; # ?
 		$name   = htmlspecialchars( $record->user_name );
 		$link   = $record->af_user_id ? "User:$name" : "Special:Contributions/$name";
+		$gender = $name;
 
 		return Html::openElement( 'h3', array(
 			'class' => $class
 		) )
 		. Linker::link( Title::newFromText( $link ), $name )
 		. Html::element( 'span', array( 'class' => 'icon' ) )
-		. Html::element( 'span',
-			array( 'class' => 'result' ),
-			wfMessage( $message, $gender, $extra )->escaped()
+		. Html::element( 'span', 
+			array( 'class' => 'result' ), 
+			wfMessage( $message, $gender, $extra )
 		)
 		. Html::closeElement( 'h3' );
 	}

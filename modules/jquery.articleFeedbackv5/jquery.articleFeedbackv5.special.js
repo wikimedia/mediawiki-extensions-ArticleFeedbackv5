@@ -98,7 +98,6 @@
 
 		// Initial load
 		$.articleFeedbackv5special.loadFeedback( true );
-		$.articleFeedbackv5special.drawSortArrow();
 	};
 
 	// }}}
@@ -142,13 +141,30 @@
 			return false;
 		} );
 
+		$( '.articleFeedbackv5-permalink' ).live( 'click', function( e ) {
+			id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-permalink-' );
+			$.articleFeedbackv5special.filter      = 'id';
+			$.articleFeedbackv5special.filterValue = id;
+			$.articleFeedbackv5special.continue = null;
+			$.articleFeedbackv5special.loadFeedback( true );
+		} );
+
 		$( '.articleFeedbackv5-comment-toggle' ).live( 'click', function( e ) {
 			$.articleFeedbackv5special.toggleComment( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-comment-toggle-' ) );
 			return false;
 		} );
 
-		$.each( ['unhide', 'undelete', 'oversight', 'hide', 'abuse', 'delete', 'helpful', 'unhelpful', 'unoversight'], 
-		function ( index, value ) { 
+		// Helpful and unhelpful have their own special logic, so break those out.
+		$.each( ['helpful', 'unhelpful' ], function ( index, value ) { 
+			$( '.articleFeedbackv5-' + value + '-link' ).live( 'click', function( e ) {
+				id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-' + value + '-link-' );
+				$.articleFeedbackv5special.flagFeedback( id, value );
+				// add highlighted class
+				$( this ).addClass( 'helpful-active' );
+			} )
+		} );
+
+		$.each( ['unhide', 'undelete', 'oversight', 'hide', 'abuse', 'delete', 'unoversight'], function ( index, value ) { 
 			$( '.articleFeedbackv5-' + value + '-link' ).live( 'click', function( e ) {
 				$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-' + value + '-link-' ), value );
 			} )
