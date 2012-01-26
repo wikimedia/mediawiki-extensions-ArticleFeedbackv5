@@ -71,7 +71,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-filter-label-before' => 'Showing:',
 	'articlefeedbackv5-special-filter-label-after' => '',
 	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|1 feedback post|$1 feedback posts }} on this article',
-	'articlefeedbackv5-comment-link' => 'Permalink',
 	'articleFeedbackv5-comment-ago'  => '$1 ago',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edit|$1 edits}} since post',
 	'articlefeedbackv5-special-more' => 'Show more posts',

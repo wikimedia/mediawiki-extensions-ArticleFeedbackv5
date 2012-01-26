@@ -322,7 +322,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		if( $record[0]->age > 0 ) {
 			$details .=  Linker::link(
 				Title::newFromText( $record[0]->page_title ),
-				wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age ), 
+				wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age )->text(), 
 				array(),
 				array(
 					'action' => 'historysubmit',
