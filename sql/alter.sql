@@ -105,3 +105,7 @@ INSERT INTO aft_article_feedback_ratings_rollup (arr_page_id, arr_field_id, arr_
 SELECT afrr_page_id, afrr_field_id, SUM(afrr_total), SUM(afrr_count)
 FROM aft_article_revision_feedback_ratings_rollup
 GROUP BY afrr_page_id;
+
+-- Added 1/27 (greg)
+ALTER TABLE aft_article_feedback CHANGE COLUMN af_delete_count af_is_deleted BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE aft_article_feedback CHANGE COLUMN af_hide_count af_is_hidden BOOLEAN NOT NULL DEFAULT FALSE;

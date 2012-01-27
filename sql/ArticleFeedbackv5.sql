@@ -35,15 +35,14 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   -- Creation timetamp
   af_created         binary(14) NOT NULL DEFAULT '',
   -- Number of times the feedback was hidden or marked as abusive.
-  -- or flagged as helpful or unhelpful, or "deleted"/marked for oversight.
+  -- or flagged as helpful or unhelpful.
   af_abuse_count     integer unsigned NOT NULL DEFAULT 0,
-  af_hide_count      integer unsigned NOT NULL DEFAULT 0,
-  af_delete_count    integer unsigned NOT NULL DEFAULT 0,
   af_helpful_count   integer unsigned NOT NULL DEFAULT 0,
   af_unhelpful_count integer unsigned NOT NULL DEFAULT 0,
-  -- Flag a message as requiring oversight
-  af_needs_oversight boolean NOT NULL DEFAULT FALSE
-	
+  -- Flag a message as requiring oversight, being hidden ,or being deleted
+  af_needs_oversight boolean NOT NULL DEFAULT FALSE,
+  af_is_deleted      boolean NOT NULL DEFAULT FALSE,
+  af_is_hidden       boolean NOT NULL DEFAULT FALSE
 ) /*$wgDBTableOptions*/;
 CREATE INDEX /*i*/af_page_user_token_id ON /*_*/aft_article_feedback (af_page_id, af_user_id, af_user_anon_token, af_id);
 CREATE INDEX /*i*/af_revision_id ON /*_*/aft_article_feedback (af_revision_id);

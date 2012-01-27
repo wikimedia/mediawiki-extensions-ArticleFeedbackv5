@@ -27,60 +27,56 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$flag      = $params['flagtype'];
 		$direction = isset( $params['direction'] ) ? $params['direction'] : 'increase';
 		$counts    = array( 'increment' => array(), 'decrement' => array() );
-		$flags     = array( 'abuse', 'hide', 'helpful', 'unhelpful', 'delete' );
+		$counters  = array( 'abuse', 'helpful', 'unhelpful' );
+		$flags     = array( 'oversight', 'hide', 'delete' );
 		$results   = array();
 		$helpful   = null;
 		$error     = null;
+		$where     = array( 'af_id' => $params['feedbackid'] );
 
 		# load feedback record, bail if we don't have one
 		$record = $this->fetchRecord( $params['feedbackid'] );
 
-		if ( !$record->af_id ) {
+		if ( $record === false || !$record->af_id ) {
 			// no-op, because this is already broken
 			$error = 'articlefeedbackv5-invalid-feedback-id';
-		} elseif ( $params['flagtype'] == 'unhide' ) {
-			if( $direction == 'increase' ) {
-				// remove the hidden status
-				$update[] = 'af_hide_count = 0';
-			} else {
-				// or set one
-				$update[] = 'af_hide_count = 1';
-			}
-		} elseif ( $params['flagtype'] == 'unoversight' ) {
-			if( $direction == 'increase' ) {
-				// remove the oversight flag
-				$update[] = 'af_needs_oversight = FALSE';
-			} else {
-				// or set one
-				$update[] = 'af_needs_oversight = TRUE';
-			}
-		} elseif ( $params['flagtype'] == 'undelete' ) {
-			if( $direction == 'increase' ) {
-				// remove the deleted status, and clear oversight flag
-				$update[] = 'af_delete_count = 0';
-				$update[] = 'af_needs_oversight = FALSE';
-			} else {
-				// add deleted status and oversight flag
-				$update[] = 'af_delete_count = 1';
-				$update[] = 'af_needs_oversight = TRUE';
-			}
-		} elseif ( $params['flagtype'] == 'oversight' ) {
-			if( $direction == 'increase' ) {
-				// flag for oversight
-				$update[] = 'af_needs_oversight = TRUE';
-			} else {
-				// remove flag for oversight
-				$update[] = 'af_needs_oversight = FALSE';
-			}
 		} elseif ( in_array( $params['flagtype'], $flags ) ) {
+			switch( $params['flagtype'] ) {
+				case 'hide':      $field = 'af_is_hidden';       break;
+				case 'oversight': $field = 'af_needs_oversight'; break;
+				case 'delete':    $field = 'af_is_deleted';      break;
+				default:          return; # return error, ideally.
+			}
+
+			if( $direction == 'increase' ) {
+				$update[] = "$field = TRUE";
+			} else {
+				$update[] = "$field = FALSE";
+			}	
+		} elseif ( in_array( $params['flagtype'], $counters ) ) {
 			// Probably this doesn't need validation, since the API
 			// will handle it, but if it's getting interpolated into
 			// the SQL, I'm really wary not re-validating it.
 			$field = 'af_' . $params['flagtype'] . '_count';
+
+			// Add another where condition to confirm that 
+			// the new flag value is at or above 0 (we use 
+			// unsigned ints, so negatives cause errors.
+
 			if( $direction == 'increase' ) {
 				$update[] = "$field = $field + 1";
+				// If this is already less than 0, 
+				// don't do anything - it'll just 
+				// throw a SQL error, so don't bother.  
+				// Incrementing from 0 is still valid.
+				$where[] = "$field >= 0";
 			} else {
 				$update[] = "$field = $field - 1";
+				// If this is already 0 or less, 
+				// don't decrement it, that would
+				// throw an error. 
+				// Decrementing from 0 is not allowed.
+				$where[] = "$field > 0";
 			}
 		} else {
 			$error = 'articlefeedbackv5-invalid-feedback-flag';
@@ -100,7 +96,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 
 		// Newly hidden record
-		if ( $flag == 'hide' && $record->af_hide_count == 0 ) {
+		if ( $flag == 'hide' && $record->af_is_hidden == 0 ) {
 			$counts['increment'][] = 'invisible';
 			$counts['decrement'][] = 'visible';
 		}
@@ -111,7 +107,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		}
 
 		// Newly deleted record
-		if ( $flag == 'delete' && $record->af_delete_count == 0 ) {
+		if ( $flag == 'delete' && $record->af_is_deleted == 0 ) {
 			$counts['increment'][] = 'deleted';
 			$counts['decrement'][] = 'visible';
 		}
@@ -136,7 +132,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$dbw->update(
 				'aft_article_feedback',
 				$update,
-				array( 'af_id' => $params['feedbackid'] ),
+				$where,
 				__METHOD__
 			);
 
@@ -182,7 +178,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			if( $record->af_abuse_count >= $wgArticleFeedbackv5HideAbuseThreshold ) {
 				$dbw->update(
 					'aft_article_feedback',
-					array( 'af_hide_count = af_hide_count + 1' ),
+					array( 'af_is_hidden = af_is_hidden + 1' ),
 					array( 'af_id' => $params['feedbackid'] ),
 					__METHOD__
 				);
@@ -210,7 +206,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$dbr    = wfGetDB( DB_SLAVE );
 		$record = $dbr->selectRow(
 			'aft_article_feedback',
-			array( 'af_id', 'af_abuse_count', 'af_hide_count', 'af_helpful_count', 'af_unhelpful_count', 'af_delete_count' ),
+			array( 'af_id', 'af_abuse_count', 'af_is_hidden', 'af_helpful_count', 'af_unhelpful_count', 'af_is_deleted' ),
 			array( 'af_id' => $id )
 		);
 		return $record;

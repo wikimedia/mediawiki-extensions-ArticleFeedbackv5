@@ -73,13 +73,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		return $count ? $count : 0;
 	}
 
-	public function fetchFeedback( $pageId,
-	 $filter = 'visible', $filterValue = null, $sort = 'age', $sortOrder = 'desc', $limit = 25, $continue = null ) {
+	public function fetchFeedback( $pageId, $filter = 'visible', 
+	 $filterValue = null, $sort = 'age', $sortOrder = 'desc', 
+	 $limit = 25, $continue = null ) {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$ids   = array();
 		$rows  = array();
 		$rv    = array();
-		$where = $this->getFilterCriteria( $filter, $filterValue );
 
 		$direction         = strtolower( $sortOrder ) == 'asc' ? 'ASC' : 'DESC';
 		$continueDirection = ( $direction == 'ASC' ? '>' : '<' );
@@ -87,6 +87,21 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$continueSql;
 		$sortField;
 
+		$ratingField  = 0;
+		$commentField = 0;
+		// This is in memcache so I don't feel that bad re-fetching it.
+		// Needed to join in the comment and rating tables, for filtering
+		// and sorting, respectively.
+		foreach( ApiArticleFeedbackv5Utils::getFields() as $field ) {
+			if( $field['afi_bucket_id'] == 1 && $field['afi_name'] == 'comment' ) {
+				$commentField = $field['afi_id'];
+			}
+			if( $field['afi_bucket_id'] == 1 && $field['afi_name'] == 'found' ) {
+				$ratingField = $field['afi_id'];
+			}
+		}
+
+		// Build ORDER BY clause.
 		switch( $sort ) {
 			case 'helpful':
 				$sortField   = 'net_helpfulness';
@@ -94,10 +109,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				$continueSql = "CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) $continueDirection";
 				break;
 			case 'rating':
-# TODO
-# disable because it's broken
-#				$sortField = 'rating';
-#				break;
+				$sortField = 'rating';
+				break;
 			case 'age':
 				# Default field, fall through
 			default:
@@ -107,40 +120,52 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 		$order = "$sortField $direction";
 
+		// Build WHERE clause.
+		// Filter applied , if any:
+		$where = $this->getFilterCriteria( $filter, $filterValue );
+		// PageID:
 		$where['af_page_id'] = $pageId;
-
-		# This join is needed for the comment filter.
-		$where[] = 'af_id = aa_feedback_id';
-
+		// Continue value, if any:
 		if ( $continue !== null ) {
 			$where[] = $continueSql.' '.intVal( $continue );
 		}
-
-		# This filter is per Fabrice, 1/25 - only show feedback from option 1
+		// Only show bucket 1 (per Fabrice on 1/25)
 		$where['af_bucket_id'] = 1;
 
+		// Fetch the feedback IDs we need.
 		/* I'd really love to do this in one big query, but MySQL
 		   doesn't support LIMIT inside IN() subselects, and since
 		   we don't know the number of answers for each feedback
 		   record until we fetch them, this is the only way to make
 		   sure we get all answers for the exact IDs we want. */
 		$id_query = $dbr->select(
-			array(
+			array( 
 				'aft_article_feedback',
-				'aft_article_answer'
+				'rating'  => 'aft_article_answer',
+				'comment' => 'aft_article_answer',
 			),
 			array(
-				'DISTINCT af_id',
-				'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) AS net_helpfulness'
+				'af_id',
+				'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) AS net_helpfulness',
+				'rating.aa_response_boolean AS rating'
 			),
 			$where,
 			__METHOD__,
 			array(
 				'LIMIT'    => $limit,
 				'ORDER BY' => $order
+			),
+			array(
+				'rating'  => array( 
+					'LEFT JOIN', 
+					'rating.aa_feedback_id = af_id AND rating.aa_field_id = '.intval( $ratingField ) 
+				),
+				'comment' => array( 
+					'LEFT JOIN', 
+					'comment.aa_feedback_id = af_id AND comment.aa_field_id = '.intval( $commentField ) 
+				)
 			)
 		);
-
 		foreach ( $id_query as $id ) {
 			$ids[] = $id->af_id;
 			$this->continue = $id->$sortField;
@@ -151,40 +176,47 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 
 		$rows  = $dbr->select(
-			array( 'aft_article_feedback', 'aft_article_answer',
-				'aft_article_field', 'aft_article_field_option',
-				'user', 'page'
+			array( 'aft_article_feedback', 
+				'rating' => 'aft_article_answer',
+				'answer' => 'aft_article_answer',
+				'aft_article_field', 
+				'aft_article_field_option', 'user', 'page'
 			),
 			array( 'af_id', 'af_bucket_id', 'afi_name', 'afo_name',
-				'aa_response_text', 'aa_response_boolean',
-				'aa_response_rating', 'aa_response_option_id',
+				'answer.aa_response_text', 'answer.aa_response_boolean',
+				'answer.aa_response_rating', 'answer.aa_response_option_id',
 				'afi_data_type', 'af_created', 'user_name',
-				'af_user_ip', 'af_hide_count', 'af_abuse_count',
+				'af_user_ip', 'af_is_hidden', 'af_abuse_count',
 				'af_helpful_count', 'af_unhelpful_count',
-				'af_delete_count', 'af_needs_oversight',
+				'af_is_deleted', 'af_needs_oversight',
 				'(SELECT COUNT(*) FROM ' . $dbr->tableName( 'revision' ) . ' WHERE rev_id > af_revision_id AND rev_page = ' . ( integer ) $pageId . ') AS age',
 				'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) AS net_helpfulness',
-				'page_latest', 'af_revision_id', 'page_title'
+				'page_latest', 'af_revision_id', 'page_title',
+				'rating.aa_response_boolean AS rating'
 			),
 			array( 'af_id' => $ids ),
 			__METHOD__,
 			array( 'ORDER BY' => $order ),
 			array(
-				'page'                     => array(
-					'JOIN', 'page_id = af_page_id'
+                                'rating'                   => array(
+                                        'LEFT JOIN',
+                                        'rating.aa_feedback_id = af_id AND rating.aa_field_id = '.intval( $ratingField )
+                                ),
+				'answer'                   => array(
+					'LEFT JOIN', 'af_id = answer.aa_feedback_id'
+				),
+				'aft_article_field'        => array(
+					'LEFT JOIN', 'afi_id = answer.aa_field_id'
+				),
+				'aft_article_field_option' => array(
+					'LEFT JOIN',
+					'answer.aa_response_option_id = afo_option_id'
 				),
 				'user'                     => array(
 					'LEFT JOIN', 'user_id = af_user_id'
 				),
-				'aft_article_field'        => array(
-					'LEFT JOIN', 'afi_id = aa_field_id'
-				),
-				'aft_article_answer'       => array(
-					'LEFT JOIN', 'af_id = aa_feedback_id'
-				),
-				'aft_article_field_option' => array(
-					'LEFT JOIN',
-					'aa_response_option_id = afo_option_id'
+				'page'                     => array(
+					'JOIN', 'page_id = af_page_id'
 				)
 			)
 		);
@@ -218,12 +250,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		// Don't let non-allowed users see these.
 		if ( !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
-			$where['af_hide_count'] = 0;
+			$where['af_is_hidden'] = 0;
 		}
 
 		// Don't let non-allowed users see these.
 		if ( !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
-			$where['af_delete_count'] = 0;
+			$where['af_is_deleted'] = 0;
 		}
 
 		switch( $filter ) {
@@ -234,22 +266,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				# Used for permalinks.
 				$where['af_id'] = $filterValue;
 				break;
-			case 'all':
-				# relies on the above to handler filtering,
-				# because 'all' doesn't mean thhe same thing
-				# at all access levels.
-				# oversight, real 'all' - no filtering done
-				# non-oversight 'all' - no deleted feedback
-				# non-moderator 'all' - no hidden/deleted
-				break;
 			case 'visible':
-				# For oversights/sysops to see what normal
-				# people see.
-				$where['af_delete_count'] = 0;
-				$where['af_hide_count']   = 0;
+				$where['af_is_deleted'] = 0;
+				$where['af_is_hidden']   = 0;
 				break;
 			case 'invisible':
-				$where[] = 'af_hide_count > 0';
+				$where[] = 'af_is_hidden > 0';
  				break;
 			case 'abusive':
 				$where[] = 'af_abuse_count > 0';
@@ -261,10 +283,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				$where[] = 'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) < 0';
 				break;
 			case 'comment':
-				$where[] = 'aa_response_text IS NOT NULL';
+				$where[] = 'comment.aa_response_text IS NOT NULL';
 				break;
 			case 'deleted':
-				$where[] = 'af_delete_count > 0';
+				$where[] = 'af_is_deleted > 0';
 				break;
 			default:
 				break;
@@ -404,7 +426,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 			if ( $can_hide ) {
 				$link = 'hide';
-				if ( $record[0]->af_hide_count > 0 ) {
+				if ( $record[0]->af_is_hidden > 0 ) {
 					# unhide
 					$link = 'unhide';
 					$tools .= Html::element( 'li', array(), wfMessage( 'articlefeedbackv5-hidden' ) );
@@ -412,19 +434,19 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 					'id'    => "articleFeedbackv5-$link-link-$id",
 					'class' => "articleFeedbackv5-$link-link"
-				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_hide_count )->text() ) );
+				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_is_hidden )->text() ) );
 			}
 
 			if ( $can_delete ) {
 				# delete
 				$link = 'delete';
-				if ( $record[0]->af_delete_count > 0 ) {
+				if ( $record[0]->af_is_deleted > 0 ) {
 					$link = 'undelete';
 				}
 				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 					'id'    => "articleFeedbackv5-$link-link-$id",
 					'class' => "articleFeedbackv5-$link-link"
-					), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_delete_count )->text() ) );
+					), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_is_deleted )->text() ) );
 			}
 
 /*
@@ -444,7 +466,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 					'id'    => "articleFeedbackv5-$link-link-$id",
 					'class' => "articleFeedbackv5-$link-link"
-				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_delete_count )->text() ) );
+				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_is_deleted )->text() ) );
 			}
 */
 
