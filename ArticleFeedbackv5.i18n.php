@@ -113,7 +113,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-discussion-page' => 'Talk',
 	'articlefeedbackv5-whats-this' => 'Help',
 	'articlefeedbackv5-invalid-page-id' => 'Invalid page ID',
-	'articlefeedbackv5-percent-found' => '<span class="stat-marker positive">$1%</span> found what they were looking for',
+	'articlefeedbackv5-percent-found' => '$1 found what they were looking for',
 	'articlefeedbackv5-overall-rating' => 'Rating: $1/5',
 	'articlefeedbackv5-special-title' => '==Feedback==',
 	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Today\'s highs and lows',

@@ -296,6 +296,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// Taken from the Moodbar extension.
                 $now       = wfTimestamp( TS_UNIX );
                 $timestamp = wfTimestamp( TS_UNIX, $record[0]->af_created );
+		$date;
 
 		// Relative dates for 48 hours, normal timestamps later.
 		if( $timestamp > ( $now - ( 86400 * 2 ) ) ) {
@@ -305,7 +306,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
                 	$date = wfMessage( 'articleFeedbackv5-comment-ago', $time )->escaped();
 		} elseif( $timestamp ) {
 			$date = $wgLang->timeanddate($record[0]->af_created  );
-		} else {
 		}
 
 		$details = Html::openElement( 'div', array(
@@ -327,7 +327,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		if( $record[0]->age > 0 ) {
 			$details .=  Linker::link(
 				Title::newFromText( $record[0]->page_title ),
-				wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age )->text(), 
+				wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age )->escaped(), 
 				array(),
 				array(
 					'action' => 'historysubmit',
@@ -602,7 +602,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. Html::element( 'span', array( 'class' => 'icon' ) )
 		. Html::element( 'span', 
 			array( 'class' => 'result' ), 
-			wfMessage( $message, $gender, $extra )
+			wfMessage( $message, $gender, $extra )->text()
 		)
 		. Html::closeElement( 'h3' );
 	}

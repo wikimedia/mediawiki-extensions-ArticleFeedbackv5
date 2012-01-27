@@ -137,12 +137,14 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		);
 
 		if ( $found ) {
+			$class = $found > 50 ? 'positive' : 'negative';
+			$span  = "<span class='stat-marker $class'>$found%</span>";
 			$out->addHtml(
 				Html::openElement(
 					'div',
 					array( 'id' => 'articleFeedbackv5-percent-found-wrap' )
 				)
-				. $this->msg( 'articlefeedbackv5-percent-found', $found )->plain() # Can't escape this, need the <span> tag to parse.
+				. $this->msg( 'articlefeedbackv5-percent-found' )->rawParams( $span )->escaped()
 				. Html::closeElement( 'div' )
 			);
 		}
