@@ -158,7 +158,7 @@
 			$( '.articleFeedbackv5-' + value + '-link' ).live( 'click', function( e ) {
 				e.preventDefault();
 				var $l = $( e.target );
-				var id = $l.parents( '.articleFeedbackv5-feedback' ).attr( 'rel' );
+				var id = $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
 				var activity = $.articleFeedbackv5special.getActivity( id );
 				if ( activity[value] ) {
 					return false;
@@ -178,7 +178,7 @@
 		$( '.articleFeedbackv5-abuse-link' ).live( 'click', function( e ) {
 			e.preventDefault();
 			var $l = $( e.target );
-			var id = $l.parents( '.articleFeedbackv5-feedback' ).attr( 'rel' );
+			var id = $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
 			var activity = $.articleFeedbackv5special.getActivity( id );
 			if ( activity.abuse ) {
 				$.articleFeedbackv5special.flagFeedback( id, 'abuse', -1 );
@@ -404,7 +404,8 @@
 									$l.removeClass( 'abusive' );
 								}
 								if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
-									$l.parents( '.articleFeedbackv5-feedback' ).hide( 'slow' );
+									// TODO: Grey it out and add a "hidden" flag somewhere (as per Fabrice)
+									// $l.closest( '.articleFeedbackv5-feedback' ).hide( 'slow' );
 								}
 							} else {
 								msg = 'articlefeedbackv5-' + type + '-saved';
