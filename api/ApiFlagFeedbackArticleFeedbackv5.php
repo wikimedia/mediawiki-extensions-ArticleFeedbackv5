@@ -180,7 +180,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					__METHOD__
 				);
 			}
-			if( $record->af_abuse_count > 3 ) {
+			global $wgArticleFeedbackv5AbusiveThreshold;
+			$results['abuse_count'] = $record->af_abuse_count;
+			if( $record->af_abuse_count > $wgArticleFeedbackv5AbusiveThreshold ) {
 				// Return a flag in the JSON, that turns the link red.
 				$results['abusive'] = 1;
 			}

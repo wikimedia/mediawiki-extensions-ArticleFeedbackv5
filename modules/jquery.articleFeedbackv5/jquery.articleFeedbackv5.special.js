@@ -175,8 +175,21 @@
 			} )
 		} );
 
-		$.each( ['unhide', 'undelete', 'oversight', 'hide', 'abuse', 'delete', 'unoversight'], function ( index, value ) { 
+		$( '.articleFeedbackv5-abuse-link' ).live( 'click', function( e ) {
+			e.preventDefault();
+			var $l = $( e.target );
+			var id = $l.parents( '.articleFeedbackv5-feedback' ).attr( 'rel' );
+			var activity = $.articleFeedbackv5special.getActivity( id );
+			if ( activity.abuse ) {
+				$.articleFeedbackv5special.flagFeedback( id, 'abuse', -1 );
+			} else {
+				$.articleFeedbackv5special.flagFeedback( id, 'abuse', 1 );
+			}
+		} )
+
+		$.each( ['unhide', 'undelete', 'oversight', 'hide', 'delete', 'unoversight'], function ( index, value ) { 
 			$( '.articleFeedbackv5-' + value + '-link' ).live( 'click', function( e ) {
+				e.preventDefault();
 				$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-' + value + '-link-' ), value, 1 );
 			} )
 		} );
@@ -368,7 +381,6 @@
 				if ( 'articlefeedbackv5-flag-feedback' in data ) {
 					if ( 'result' in data['articlefeedbackv5-flag-feedback'] ) {
 						if ( data['articlefeedbackv5-flag-feedback'].result == 'Success' ) {
-							msg = 'articlefeedbackv5-' + type + '-saved';
 							if ( 'helpful' in data['articlefeedbackv5-flag-feedback'] ) {
 								$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
 							}
@@ -379,6 +391,21 @@
 								} else {
 									$l.removeClass( 'helpful-active' );
 								}
+							} else if ( 'abuse' == type ) {
+								var $l = $( '#articleFeedbackv5-abuse-link-' + id );
+								if ( dir > 0 ) {
+									$l.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) );
+								} else {
+									$l.text( mw.msg( 'articlefeedbackv5-form-abuse', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
+								}
+								if ( data['articlefeedbackv5-flag-feedback'].abusive ) {
+									$l.addClass( 'abusive' );
+								} else {
+									$l.removeClass( 'abusive' );
+								}
+							} else {
+								msg = 'articlefeedbackv5-' + type + '-saved';
+								$( '#articleFeedbackv5-' + type + '-link-' + id ).text( mw.msg( msg ) );
 							}
 							// Save activity
 							if ( !( id in $.articleFeedbackv5special.activity ) ) {
@@ -391,7 +418,6 @@
 						}
 					}
 				}
-				$( '#articleFeedbackv5-' + type + '-link-' + id ).text( mw.msg( msg ) );
 			},
 			'error': function ( data ) {
 				$( '#articleFeedbackv5-' + type + '-link-' + id ).text( mw.msg( 'articlefeedbackv5-error-flagging' ) );
@@ -445,6 +471,10 @@
 							}
 							if ( activity.unhelpful ) {
 								$( this ).find( '#articleFeedbackv5-unhelpful-link-' + id ).addClass( 'helpful-active' );
+							}
+							if ( activity.abuse ) {
+								var $l = $( this ).find( '#articleFeedbackv5-abuse-link-' + id );
+								$l.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) );
 							}
 						}
 					} );

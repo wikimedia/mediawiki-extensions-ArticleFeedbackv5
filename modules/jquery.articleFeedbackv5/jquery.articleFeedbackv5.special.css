@@ -210,6 +210,9 @@ a#articleFeedbackv5-show-more {
 #articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link {
 	margin-left: 150px;
 }
+#articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link.abusive {
+	color: red;
+}
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot {
 	line-height: 22px;
 	float: left;

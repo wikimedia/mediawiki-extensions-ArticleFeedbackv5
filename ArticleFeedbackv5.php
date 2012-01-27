@@ -152,6 +152,15 @@ $wgArticleFeedbackv5LinkBuckets = array(
 );
 
 /**
+ * Abusive threshold
+ *
+ * After this many users flag a comment as abusive, it is marked as such.
+ *
+ * @var int
+ */
+$wgArticleFeedbackv5AbusiveThreshold = 3;
+
+/**
  * Temporary hack: for now, only one CTA is allowed, so set it here.
  *
  * Allowed values: '0' (just a confirm message), '1' (call to edit), '2' (learn
