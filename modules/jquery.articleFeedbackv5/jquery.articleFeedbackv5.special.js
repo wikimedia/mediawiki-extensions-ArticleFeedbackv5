@@ -156,16 +156,28 @@
 		// Helpful and unhelpful have their own special logic, so break those out.
 		$.each( ['helpful', 'unhelpful' ], function ( index, value ) { 
 			$( '.articleFeedbackv5-' + value + '-link' ).live( 'click', function( e ) {
-				id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-' + value + '-link-' );
-				$.articleFeedbackv5special.flagFeedback( id, value );
-				// add highlighted class
-				$( this ).addClass( 'helpful-active' );
+				e.preventDefault();
+				var $l = $( e.target );
+				var id = $l.parents( '.articleFeedbackv5-feedback' ).attr( 'rel' );
+				var activity = $.articleFeedbackv5special.getActivity( id );
+				if ( activity[value] ) {
+					return false;
+				}
+				if ( 'helpful' == value && activity.unhelpful ) {
+					$.articleFeedbackv5special.flagFeedback( id, 'unhelpful', -1 );
+					$.articleFeedbackv5special.flagFeedback( id, 'helpful', 1 );
+				} else if ( 'unhelpful' == value && activity.helpful ) {
+					$.articleFeedbackv5special.flagFeedback( id, 'helpful', -1 );
+					$.articleFeedbackv5special.flagFeedback( id, 'unhelpful', 1 );
+				} else {
+					$.articleFeedbackv5special.flagFeedback( id, value, 1 );
+				}
 			} )
 		} );
 
 		$.each( ['unhide', 'undelete', 'oversight', 'hide', 'abuse', 'delete', 'unoversight'], function ( index, value ) { 
 			$( '.articleFeedbackv5-' + value + '-link' ).live( 'click', function( e ) {
-				$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-' + value + '-link-' ), value );
+				$.articleFeedbackv5special.flagFeedback( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-' + value + '-link-' ), value, 1 );
 			} )
 		} );
 	}
@@ -309,6 +321,22 @@
 	};
 
 	// }}}
+	// {{{ getActivity
+
+	/**
+	 * Utility method: Gets the activity for a feedback ID
+	 *
+	 * @param  fid    int the feedback ID
+	 * @return object the activity object
+	 */
+	$.articleFeedbackv5special.getActivity = function ( fid ) {
+		if ( !( fid in $.articleFeedbackv5special.activity ) ) {
+			$.articleFeedbackv5special.activity[fid] = { helpful: false, unhelpful: false, abuse: false, hide: false, delete: false };
+		}
+		return $.articleFeedbackv5special.activity[fid];
+	};
+
+	// }}}
 
 	// }}}
 	// {{{ Process methods
@@ -320,8 +348,9 @@
 	 *
 	 * @param id   int    the feedback id
 	 * @param type string the type of mark (valid values: hide, abuse, delete, helpful, unhelpful)
+	 * @param dir  int    the direction of the mark (-1 = tick down; 1 = tick up)
 	 */
-	$.articleFeedbackv5special.flagFeedback = function ( id, type ) {
+	$.articleFeedbackv5special.flagFeedback = function ( id, type, dir ) {
 		$.ajax( {
 			'url'     : $.articleFeedbackv5special.apiUrl,
 			'type'    : 'POST',
@@ -330,6 +359,7 @@
 				'pageid'    : $.articleFeedbackv5special.page,
 				'feedbackid': id,
 				'flagtype'  : type,
+				'direction' : dir > 0 ? 'increase' : 'decrease',
 				'format'    : 'json',
 				'action'    : 'articlefeedbackv5-flag-feedback'
 			},
@@ -342,11 +372,19 @@
 							if ( 'helpful' in data['articlefeedbackv5-flag-feedback'] ) {
 								$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
 							}
+							if ( 'helpful' == type || 'unhelpful' == type ) {
+								var $l = $( '#articleFeedbackv5-' + type + '-link-' + id );
+								if ( dir > 0 ) {
+									$l.addClass( 'helpful-active' );
+								} else {
+									$l.removeClass( 'helpful-active' );
+								}
+							}
 							// Save activity
 							if ( !( id in $.articleFeedbackv5special.activity ) ) {
 								$.articleFeedbackv5special.activity[id] = { helpful: false, unhelpful: false, abuse: false, hide: false, delete: false };
 							}
-							$.articleFeedbackv5special.activity[id][type] = true;
+							$.articleFeedbackv5special.activity[id][type] = dir > 0 ? true : false;
 							$.articleFeedbackv5special.storeActivity();
 						} else if ( data['articlefeedbackv5-flag-feedback'].result == 'Error' ) {
 							msg = data['articlefeedbackv5-flag-feedback'].reason;
@@ -395,10 +433,22 @@
 			'success': function ( data ) {
 				if ( 'articlefeedbackv5-view-feedback' in data ) {
 					if ( resetContents ) {
-						$( '#articleFeedbackv5-show-feedback' ).html( data['articlefeedbackv5-view-feedback'].feedback);
-					} else {
-						$( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback);
+						$( '#articleFeedbackv5-show-feedback' ).empty();
 					}
+					var $newList = $( '<div></div>' ).html( data['articlefeedbackv5-view-feedback'].feedback );
+					$newList.find( '.articleFeedbackv5-feedback' ).each( function () {
+						var id = $( this ).attr( 'rel' );
+						if ( id in $.articleFeedbackv5special.activity ) {
+							var activity = $.articleFeedbackv5special.getActivity( id );
+							if ( activity.helpful ) {
+								$( this ).find( '#articleFeedbackv5-helpful-link-' + id ).addClass( 'helpful-active' );
+							}
+							if ( activity.unhelpful ) {
+								$( this ).find( '#articleFeedbackv5-unhelpful-link-' + id ).addClass( 'helpful-active' );
+							}
+						}
+					} );
+					$( '#articleFeedbackv5-show-feedback' ).append( $newList );
 					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
 					$.articleFeedbackv5special.listControls.continue = data['articlefeedbackv5-view-feedback'].continue;
 					// set effects on toolboxes
