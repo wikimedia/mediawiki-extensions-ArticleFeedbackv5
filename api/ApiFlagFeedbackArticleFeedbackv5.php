@@ -22,45 +22,66 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 * Execute the API call: Pull the requested feedback
 	 */
 	public function execute() {
-		$params = $this->extractRequestParams();
-		$pageId = $params['pageid'];
-		$error  = null;
-		$dbr    = wfGetDB( DB_SLAVE );
-		$counts = array( 'increment' => array(), 'decrement' => array() );
-		$helpful = null;
+		$params    = $this->extractRequestParams();
+		$pageId    = $params['pageid'];
+		$flag      = $params['flagtype'];
+		$direction = isset( $params['direction'] ) ? $params['direction'] : 'increase';
+		$counts    = array( 'increment' => array(), 'decrement' => array() );
+		$flags     = array( 'abuse', 'hide', 'helpful', 'unhelpful', 'delete' );
+		$results   = array();
+		$helpful   = null;
+		$error     = null;
 
 		# load feedback record, bail if we don't have one
-		$record = $dbr->selectRow(
-			'aft_article_feedback',
-			array( 'af_id', 'af_abuse_count', 'af_hide_count', 'af_helpful_count', 'af_unhelpful_count', 'af_delete_count' ),
-			array( 'af_id' => $params['feedbackid'] )
-		);
-
-		$flags  = array( 'abuse', 'hide', 'helpful', 'unhelpful', 'delete' );
-		$flag   = $params['flagtype'];
+		$record = $this->fetchRecord( $params['feedbackid'] );
 
 		if ( !$record->af_id ) {
 			// no-op, because this is already broken
 			$error = 'articlefeedbackv5-invalid-feedback-id';
 		} elseif ( $params['flagtype'] == 'unhide' ) {
-			// remove the hidden status
-			$update[] = 'af_hide_count = 0';
+			if( $direction == 'increase' ) {
+				// remove the hidden status
+				$update[] = 'af_hide_count = 0';
+			} else {
+				// or set one
+				$update[] = 'af_hide_count = 1';
+			}
 		} elseif ( $params['flagtype'] == 'unoversight' ) {
-			// remove the oversight flag
-			$update[] = 'af_needs_oversight = FALSE';
+			if( $direction == 'increase' ) {
+				// remove the oversight flag
+				$update[] = 'af_needs_oversight = FALSE';
+			} else {
+				// or set one
+				$update[] = 'af_needs_oversight = TRUE';
+			}
 		} elseif ( $params['flagtype'] == 'undelete' ) {
-			// remove the deleted status, and clear oversight flag
-			$update[] = 'af_delete_count = 0';
-			$update[] = 'af_needs_oversight = FALSE';
+			if( $direction == 'increase' ) {
+				// remove the deleted status, and clear oversight flag
+				$update[] = 'af_delete_count = 0';
+				$update[] = 'af_needs_oversight = FALSE';
+			} else {
+				// add deleted status and oversight flag
+				$update[] = 'af_delete_count = 1';
+				$update[] = 'af_needs_oversight = TRUE';
+			}
 		} elseif ( $params['flagtype'] == 'oversight' ) {
-			// flag for oversight
-			$update[] = 'af_needs_oversight = TRUE';
+			if( $direction == 'increase' ) {
+				// flag for oversight
+				$update[] = 'af_needs_oversight = TRUE';
+			} else {
+				// remove flag for oversight
+				$update[] = 'af_needs_oversight = FALSE';
+			}
 		} elseif ( in_array( $params['flagtype'], $flags ) ) {
 			// Probably this doesn't need validation, since the API
 			// will handle it, but if it's getting interpolated into
 			// the SQL, I'm really wary not re-validating it.
 			$field = 'af_' . $params['flagtype'] . '_count';
-			$update[] = "$field = $field + 1";
+			if( $direction == 'increase' ) {
+				$update[] = "$field = $field + 1";
+			} else {
+				$update[] = "$field = $field - 1";
+			}
 		} else {
 			$error = 'articlefeedbackv5-invalid-feedback-flag';
 		}
@@ -119,48 +140,58 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				__METHOD__
 			);
 
-			 ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
-			 ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['decrement'] );
+			if( $direction == 'decrease') {
+				// This is backwards to account for a users' unflagging something.
+				ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['decrement'] );
+				ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['increment'] );
+			} else {
+				ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
+				ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['decrement'] );
+			}
 
+			// Update helpful/unhelpful count after submission.
 			// This gets a potentially stale copy from the read
-			// database assumes it's valid, in the interest
+			// database and assumes it's valid, in the interest
 			// of staying off of the write database.
 			// Better stale data than wail on the master, IMO,
 			// but I'm open to suggestion on that one.
-
-			// Update helpful/unhelpful count after submission
 			if ( $params['flagtype'] == 'helpful' || $params['flagtype'] == 'unhelpful' ) {
-				$record  = $dbr->selectRow(
-					'aft_article_feedback',
-					array( 'af_helpful_count', 'af_unhelpful_count' ),
-					array( 'af_id' => $params['feedbackid'] ),
-					__METHOD__
-				);
+				$record = $this->fetchRecord( $params['feedbackid'] );
 
 				$helpful   = $record->af_helpful_count;
 				$unhelpful = $record->af_unhelpful_count;
 
-				$helpful   = wfMessage( 'articlefeedbackv5-form-helpful-votes',
+				$results['helpful'] = wfMessage( 'articlefeedbackv5-form-helpful-votes',
 					$helpful, $unhelpful
 				)->escaped();
+			}
+
+			// Conditional formatting for abuse flag
+			// Re-fetch record - as above, from read/slave DB.
+			// The record could have had it's falg increased or
+			// decreased, so load a fresh (as fresh as the read
+			// db is, anyway) copy of it.
+			$record =  $this->fetchRecord( $params['feedbackid'] );
+			if( $record->af_abuse_count > 5 ) {
+				$dbw->update(
+					'aft_article_feedback',
+					array( 'af_hide_count = af_hide_count + 1' ),
+					array( 'af_id' => $params['feedbackid'] ),
+					__METHOD__
+				);
+			}
+			if( $record->af_abuse_count > 3 ) {
+				// Return a flag in the JSON, that turns the link red.
+				$results['abusive'] = 1;
 			}
 		}
 
 		if ( $error ) {
-			$result = 'Error';
-			$reason = $error;
+			$results['result'] = 'Error';
+			$results['reason'] = $error;
 		} else {
-			$result = 'Success';
-			$reason = null;
-		}
-
-		$results = array(
-			'result' => $result,
-			'reason' => $reason,
-		);
-
-		if ( $helpful ) {
-			$results['helpful'] = $helpful;
+			$results['result'] = 'Success';
+			$results['reason'] = null;
 		}
 
 		$this->getResult()->addValue(
@@ -168,6 +199,16 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$this->getModuleName(),
 			$results
 		);
+	}
+
+	private function fetchRecord( $id ) {
+		$dbr    = wfGetDB( DB_SLAVE );
+		$record = $dbr->selectRow(
+			'aft_article_feedback',
+			array( 'af_id', 'af_abuse_count', 'af_hide_count', 'af_helpful_count', 'af_unhelpful_count', 'af_delete_count' ),
+			array( 'af_id' => $id )
+		);
+		return $record;
 	}
 
 	/**
@@ -193,6 +234,12 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_TYPE     => array(
 				 'abuse', 'hide', 'helpful', 'unhelpful', 'delete', 'undelete', 'unhide', 'oversight', 'unoversight' )
 			),
+			'direction' => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_TYPE     => array(
+				 'increase', 'decrease' )
+			)
 		);
 	}
 

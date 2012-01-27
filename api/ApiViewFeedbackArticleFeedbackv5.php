@@ -94,6 +94,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				$continueSql = "CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) $continueDirection";
 				break;
 			case 'rating':
+# TODO
 # disable because it's broken
 #				$sortField = 'rating';
 #				break;
@@ -295,9 +296,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// Taken from the Moodbar extension.
                 $now       = wfTimestamp( TS_UNIX );
                 $timestamp = wfTimestamp( TS_UNIX, $record[0]->af_created );
+
 		// Relative dates for 48 hours, normal timestamps later.
 		if( $timestamp > ( $now - ( 86400 * 2 ) ) ) {
-			// TODO: relative dates.
                 	$time = $wgLang->formatTimePeriod( 
 				( $now - $timestamp ), 'avoidseconds'
                 	);
