@@ -138,7 +138,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		if ( $found ) {
 			$class = $found > 50 ? 'positive' : 'negative';
-			$span  = "<span class='stat-marker $class'>$found%</span>";
+			$span = Html::rawElement( 'span', array( 
+				'class' => "stat-marker $class"
+			), wfMsg( 'percent', $found ) );
 			$out->addHtml(
 				Html::openElement(
 					'div',
