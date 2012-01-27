@@ -152,6 +152,16 @@ $wgArticleFeedbackv5LinkBuckets = array(
 );
 
 /**
+ * Temporary hack: for now, only one CTA is allowed, so set it here.
+ *
+ * Allowed values: '0' (just a confirm message), '1' (call to edit), '2' (learn
+ * more), or '3' (survey)
+ *
+ * @var int
+ */
+$wgArticleFeedbackv5SelectedCTA = '3';
+
+/**
  * Turn on abuse filtering
  *
  * If this is set to true, comments will be run through:
