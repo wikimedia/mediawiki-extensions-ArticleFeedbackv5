@@ -403,6 +403,9 @@
 								} else {
 									$l.removeClass( 'abusive' );
 								}
+								if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
+									$l.parents( '.articleFeedbackv5-feedback' ).hide( 'slow' );
+								}
 							} else {
 								msg = 'articlefeedbackv5-' + type + '-saved';
 								$( '#articleFeedbackv5-' + type + '-link-' + id ).text( mw.msg( msg ) );

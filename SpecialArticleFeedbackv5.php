@@ -33,20 +33,20 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		global $wgUser;
 		parent::__construct( 'ArticleFeedbackv5' );
 
-		// NOTE: The 'all' option actually displays different things 
+		// NOTE: The 'all' option actually displays different things
 		// based on the users role, which is handled in the filter:
 		// - deleter-all is actually everything
-		// - hidder-all is 'visible + hidden' 
+		// - hidder-all is 'visible + hidden'
 		// - regular non-admin all is just 'all visible'
 
-		if( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
+		if ( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			array_push( $this->filters,
 				'unhelpful', 'abusive', 'invisible'
 			);
 			# removing the 'needsoversight' filter, per Fabrice
 		}
 
-		if( $wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
+		if ( $wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
 			$this->filters[] = 'deleted';
 		}
 	}
@@ -62,7 +62,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$title = Title::newFromText( $param );
 
 		// Page does not exist.
-		if( !$title->exists() ) {
+		if ( !$title->exists() ) {
 			$out->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
 			return;
 		}
@@ -81,7 +81,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		);
 
 		// Page exists, but feedback is disabled.
-		if( $dbr->numRows( $t ) == 0 ) {
+		if ( $dbr->numRows( $t ) == 0 ) {
 			$out->addWikiMsg( 'articlefeedbackv5-page-disabled' );
 			return;
 		}
@@ -138,7 +138,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		if ( $found ) {
 			$class = $found > 50 ? 'positive' : 'negative';
-			$span = Html::rawElement( 'span', array( 
+			$span = Html::rawElement( 'span', array(
 				'class' => "stat-marker $class"
 			), wfMsg( 'percent', $found ) );
 			$out->addHtml(
@@ -159,7 +159,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					'id'    => 'articleFeedbackv5-special-add-feedback',
 				),
 				$this->msg( 'articlefeedbackv5-special-add-feedback' )->text()
-	   	                )
+			)
 			. Html::element( 'div', array( 'class' => 'float-clear' ) )
 			. Html::closeElement( 'div' )
 		);
@@ -191,7 +191,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		$opts   = array();
 		$counts = $this->getFilterCounts( $pageId );
-		foreach( $this->filters as $filter ) {
+		foreach ( $this->filters as $filter ) {
 			$count = array_key_exists( $filter, $counts ) ? $counts[$filter] : 0;
 			$key = $this->msg( 'articlefeedbackv5-special-filter-'.$filter, $count )->escaped();
 			$opts[ (string) $key ] = $filter;
@@ -322,7 +322,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			__METHOD__
 		);
 
-		foreach( $rows as $row ) {
+		foreach ( $rows as $row ) {
 			$rv[ $row->afc_filter_name ] = $row->afc_filter_count;
 		}
 

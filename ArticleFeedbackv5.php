@@ -161,6 +161,15 @@ $wgArticleFeedbackv5LinkBuckets = array(
 $wgArticleFeedbackv5AbusiveThreshold = 3;
 
 /**
+ * Hide abuse threshold
+ *
+ * After this many users flag a comment as abusive, it is hidden.
+ *
+ * @var int
+ */
+$wgArticleFeedbackv5HideAbuseThreshold = 5;
+
+/**
  * Temporary hack: for now, only one CTA is allowed, so set it here.
  *
  * Allowed values: '0' (just a confirm message), '1' (call to edit), '2' (learn

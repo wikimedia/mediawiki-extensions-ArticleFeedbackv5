@@ -365,7 +365,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		if ( $can_flag ) {
 			$aclass = 'articleFeedbackv5-abuse-link';
 			global $wgArticleFeedbackv5AbusiveThreshold;
-			if ( $record[0]->af_abuse_count > $wgArticleFeedbackv5AbusiveThreshold ) {
+			if ( $record[0]->af_abuse_count >= $wgArticleFeedbackv5AbusiveThreshold ) {
 				$aclass .= ' abusive';
 			}
 			$footer_links .= Html::element( 'a', array(

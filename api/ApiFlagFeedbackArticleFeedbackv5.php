@@ -167,24 +167,27 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			}
 
 			// Conditional formatting for abuse flag
+			global $wgArticleFeedbackv5AbusiveThreshold,
+				$wgArticleFeedbackv5HideAbuseThreshold;
 			// Re-fetch record - as above, from read/slave DB.
 			// The record could have had it's falg increased or
 			// decreased, so load a fresh (as fresh as the read
 			// db is, anyway) copy of it.
 			$record =  $this->fetchRecord( $params['feedbackid'] );
-			if( $record->af_abuse_count > 5 ) {
+			$results['abuse_count'] = $record->af_abuse_count;
+			if( $record->af_abuse_count >= $wgArticleFeedbackv5AbusiveThreshold ) {
+				// Return a flag in the JSON, that turns the link red.
+				$results['abusive'] = 1;
+			}
+			if( $record->af_abuse_count >= $wgArticleFeedbackv5HideAbuseThreshold ) {
 				$dbw->update(
 					'aft_article_feedback',
 					array( 'af_hide_count = af_hide_count + 1' ),
 					array( 'af_id' => $params['feedbackid'] ),
 					__METHOD__
 				);
-			}
-			global $wgArticleFeedbackv5AbusiveThreshold;
-			$results['abuse_count'] = $record->af_abuse_count;
-			if( $record->af_abuse_count > $wgArticleFeedbackv5AbusiveThreshold ) {
-				// Return a flag in the JSON, that turns the link red.
-				$results['abusive'] = 1;
+				// Return a flag in the JSON, that knows to kill the row
+				$results['abuse-hidden'] = 1;
 			}
 		}
 
