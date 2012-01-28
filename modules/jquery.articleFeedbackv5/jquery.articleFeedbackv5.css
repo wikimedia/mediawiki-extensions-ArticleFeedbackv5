@@ -612,7 +612,7 @@
 	background: #fff;
 	border: 1px solid #000;
 	width: 518px;
-	height: 68px;
+	height: 42px;
 	overflow: hidden;
 	padding: 10px;
 	font-size: 1.1em;
@@ -642,7 +642,7 @@
 	padding: 0 10px;
 	/* @embed */
 	background: url(images/bg-submit.png) repeat-x !important;
-	margin: 10px 30px 0 0 !important;
+	margin: 0 30px 0 0 !important;
 	border: none !important;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;

@@ -156,6 +156,7 @@ class ArticleFeedbackv5Hooks {
 				'jquery.ui.button',
 				'jquery.cookie',
 				'jquery.clickTracking',
+				'jquery.articleFeedbackv5.elastic',
 			),
 		),
 		'jquery.articleFeedbackv5.special' => array(
@@ -178,6 +179,10 @@ class ArticleFeedbackv5Hooks {
 			'dependencies' => array(
 				'mediawiki.util',
 			),
+		),
+		// TODO: Move jquery.elastic into core resources
+		'jquery.articleFeedbackv5.elastic' => array(
+			'scripts' => 'jquery.elastic/jquery.elastic.js'
 		),
 	);
 

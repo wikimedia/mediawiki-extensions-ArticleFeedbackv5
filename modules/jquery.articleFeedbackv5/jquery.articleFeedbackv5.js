@@ -325,7 +325,10 @@
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-submit' )
 					.button()
-					.addClass( 'ui-button-blue' )
+					.addClass( 'ui-button-blue' );
+
+				// Have the feedback textarea grow automatically
+				$block.find( '#articleFeedbackv5-find-feedback' ).elastic();
 
 				return $block;
 			},
