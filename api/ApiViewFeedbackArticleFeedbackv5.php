@@ -436,15 +436,15 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			}
 
 			if ( $can_delete ) {
-				# delete
-				$link = 'delete';
 				if ( $record[0]->af_is_deleted > 0 ) {
-					$link = 'undelete';
+					$msg = 'undelete';
+				} else {
+					$msg = 'delete';
 				}
 				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
-					'id'    => "articleFeedbackv5-$link-link-$id",
-					'class' => "articleFeedbackv5-$link-link"
-					), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_is_deleted )->text() ) );
+					'id'    => "articleFeedbackv5-delete-link-$id",
+					'class' => "articleFeedbackv5-delete-link"
+				), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 			}
 
 /*

@@ -169,11 +169,9 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-abuse-saved',
 				'articlefeedbackv5-form-hide',
 				'articlefeedbackv5-form-unhide',
+				'articlefeedbackv5-form-delete',
+				'articlefeedbackv5-form-undelete',
 				'articlefeedbackv5-hidden',
-				'articlefeedbackv5-delete-saved',
-				'articlefeedbackv5-undelete-saved',
-				'articlefeedbackv5-oversight-saved',
-				'articlefeedbackv5-unoversight-saved',
 				'articlefeedbackv5-comment-more',
 				'articlefeedbackv5-comment-less'
 			),
