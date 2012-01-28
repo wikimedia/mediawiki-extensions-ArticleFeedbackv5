@@ -270,14 +270,14 @@ $wgHooks['EditPage::attemptSave'][] = 'ArticleFeedbackv5Hooks::trackEditAttempt'
 $wgHooks['ArticleSaveComplete'][] = 'ArticleFeedbackv5Hooks::trackEditSuccess';
 
 // API Registration
-#$wgAPIListModules['articlefeedbackv5-view-ratings']  = 'ApiViewRatingsArticleFeedbackv5';
-#$wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';
-#$wgAPIModules['articlefeedbackv5-flag-feedback']     = 'ApiFlagFeedbackArticleFeedbackv5';
+$wgAPIListModules['articlefeedbackv5-view-ratings']  = 'ApiViewRatingsArticleFeedbackv5';
+$wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';
+$wgAPIModules['articlefeedbackv5-flag-feedback']     = 'ApiFlagFeedbackArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5']                   = 'ApiArticleFeedbackv5';
 
 // Special Page
-#$wgSpecialPages['ArticleFeedbackv5'] = 'SpecialArticleFeedbackv5';
-#$wgSpecialPageGroups['ArticleFeedbackv5'] = 'other';
+$wgSpecialPages['ArticleFeedbackv5'] = 'SpecialArticleFeedbackv5';
+$wgSpecialPageGroups['ArticleFeedbackv5'] = 'other';
 
 $wgAvailableRights[] = 'aftv5-hide-feedback';
 $wgAvailableRights[] = 'aftv5-delete-feedback';

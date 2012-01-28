@@ -73,8 +73,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		return $count ? $count : 0;
 	}
 
-	public function fetchFeedback( $pageId, $filter = 'visible', 
-	 $filterValue = null, $sort = 'age', $sortOrder = 'desc', 
+	public function fetchFeedback( $pageId, $filter = 'visible',
+	 $filterValue = null, $sort = 'age', $sortOrder = 'desc',
 	 $limit = 25, $continue = null ) {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$ids   = array();
@@ -139,7 +139,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		   record until we fetch them, this is the only way to make
 		   sure we get all answers for the exact IDs we want. */
 		$id_query = $dbr->select(
-			array( 
+			array(
 				'aft_article_feedback',
 				'rating'  => 'aft_article_answer',
 				'comment' => 'aft_article_answer',
@@ -156,13 +156,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'ORDER BY' => $order
 			),
 			array(
-				'rating'  => array( 
-					'LEFT JOIN', 
-					'rating.aa_feedback_id = af_id AND rating.aa_field_id = '.intval( $ratingField ) 
+				'rating'  => array(
+					'LEFT JOIN',
+					'rating.aa_feedback_id = af_id AND rating.aa_field_id = '.intval( $ratingField )
 				),
-				'comment' => array( 
-					'LEFT JOIN', 
-					'comment.aa_feedback_id = af_id AND comment.aa_field_id = '.intval( $commentField ) 
+				'comment' => array(
+					'LEFT JOIN',
+					'comment.aa_feedback_id = af_id AND comment.aa_field_id = '.intval( $commentField )
 				)
 			)
 		);
@@ -176,10 +176,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 
 		$rows  = $dbr->select(
-			array( 'aft_article_feedback', 
+			array( 'aft_article_feedback',
 				'rating' => 'aft_article_answer',
 				'answer' => 'aft_article_answer',
-				'aft_article_field', 
+				'aft_article_field',
 				'aft_article_field_option', 'user', 'page'
 			),
 			array( 'af_id', 'af_bucket_id', 'afi_name', 'afo_name',
@@ -198,10 +198,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			__METHOD__,
 			array( 'ORDER BY' => $order ),
 			array(
-                                'rating'                   => array(
-                                        'LEFT JOIN',
-                                        'rating.aa_feedback_id = af_id AND rating.aa_field_id = '.intval( $ratingField )
-                                ),
+				'rating'                   => array(
+						'LEFT JOIN',
+						'rating.aa_feedback_id = af_id AND rating.aa_field_id = '.intval( $ratingField )
+				),
 				'answer'                   => array(
 					'LEFT JOIN', 'af_id = answer.aa_feedback_id'
 				),
@@ -423,18 +423,16 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'id' => 'articleFeedbackv5-feedback-tools-list-' . $id
 			) );
 
-
 			if ( $can_hide ) {
-				$link = 'hide';
 				if ( $record[0]->af_is_hidden > 0 ) {
-					# unhide
-					$link = 'unhide';
-					$tools .= Html::element( 'li', array(), wfMessage( 'articlefeedbackv5-hidden' ) );
+					$msg = 'unhide';
+				} else {
+					$msg = 'hide';
 				}
 				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
-					'id'    => "articleFeedbackv5-$link-link-$id",
-					'class' => "articleFeedbackv5-$link-link"
-				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_is_hidden )->text() ) );
+					'id'    => "articleFeedbackv5-hide-link-$id",
+					'class' => "articleFeedbackv5-hide-link"
+				), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 			}
 
 			if ( $can_delete ) {
@@ -474,8 +472,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			. Html::closeElement( 'div' );
 		}
 
+		$topClass = 'articleFeedbackv5-feedback';
+		if ( $record[0]->af_is_hidden ) {
+			$topClass .= ' articleFeedbackv5-feedback-hidden';
+		}
 		return Html::openElement( 'div', array(
-			'class' => 'articleFeedbackv5-feedback',
+			'class' => $topClass,
 			'rel'   => $id
 		) )
 		. Html::openElement( 'div', array(
