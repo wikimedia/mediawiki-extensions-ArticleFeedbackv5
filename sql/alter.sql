@@ -109,3 +109,8 @@ GROUP BY afrr_page_id;
 -- Added 1/27 (greg)
 ALTER TABLE aft_article_feedback CHANGE COLUMN af_delete_count af_is_deleted BOOLEAN NOT NULL DEFAULT FALSE;
 ALTER TABLE aft_article_feedback CHANGE COLUMN af_hide_count af_is_hidden BOOLEAN NOT NULL DEFAULT FALSE;
+
+-- Added later 1/27 (greg) 
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'invisible', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND af_is_hidden IS TRUE GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'visible', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND af_is_hidden IS FALSE AND af_is_deleted IS FALSE GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'deleted', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND af_is_deleted IS TRUE GROUP BY af_page_id;
