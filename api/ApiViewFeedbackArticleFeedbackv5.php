@@ -315,37 +315,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$can_hide   = $wgUser->isAllowed( 'aftv5-hide-feedback' );
 		$can_delete = $wgUser->isAllowed( 'aftv5-delete-feedback' );
 
-		// Taken from the Moodbar extension.
-		$now       = wfTimestamp( TS_UNIX );
-		$timestamp = wfTimestamp( TS_UNIX, $record[0]->af_created );
-		$date;
-
-		// Relative dates for 48 hours, normal timestamps later.
-		if ( $timestamp > ( $now - ( 86400 * 2 ) ) ) {
-			$time = $wgLang->formatTimePeriod(
-				( $now - $timestamp ), 'avoidseconds'
-			);
-			$date = wfMessage( 'articleFeedbackv5-comment-ago', $time )->escaped();
-		} elseif( $timestamp ) {
-			$date = $wgLang->timeanddate($record[0]->af_created  );
-		}
-
 		$details = Html::openElement( 'div', array(
-			'class' => 'articleFeedbackv5-comment-details'
-		) )
-		. Html::openElement( 'div', array(
-			'class' => 'articleFeedbackv5-comment-details-date'
-		) )
-		. Html::element( 'a', array(
-			'class' => 'articleFeedbackv5-permalink',
-			'id'    => "articleFeedbackv5-permalink-$id",
-			'href'  => "#id=$id"
-		), $date )
-		. Html::closeElement( 'div' )
-		. Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-comment-details-updates'
 		) );
-
 		if( $record[0]->age > 0 ) {
 			$details .=  Linker::link(
 				Title::newFromText( $record[0]->page_title ),
@@ -358,14 +330,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				)
 			);
 		}
-
-		$details .= Html::closeElement( 'div' )
-			. Html::closeElement( 'div' );
+		$details .= Html::closeElement( 'div' );
 
 		$footer_links = Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-vote-wrapper'
 		) )
-		. Html::openElement( 'p', array( 'class' => 'articleFeedbackv5-comment-foot' ) );
+		. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot' ) );
 
 		if ( $can_vote ) {
 			$footer_links .= Html::element( 'span', array(
@@ -384,6 +354,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'class' => 'articleFeedbackv5-helpful-votes',
 			'id'    => "articleFeedbackv5-helpful-votes-$id"
 		), wfMessage( 'articlefeedbackv5-form-helpful-votes', $record[0]->af_helpful_count, $record[0]->af_unhelpful_count ) );
+		$footer_links .= Html::closeElement( 'div' );
 		if ( $can_flag ) {
 			$aclass = 'articleFeedbackv5-abuse-link';
 			global $wgArticleFeedbackv5AbusiveThreshold;
@@ -395,8 +366,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'class' => $aclass
 			), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() );
 		}
-		$footer_links .= Html::closeElement( 'p' )
-		. Html::closeelement( 'div' );
+		$footer_links .= $details . Html::closeElement( 'div' );
 
 		/*$footer_links .= Html::element( 'span', array(
 			'class' => 'articleFeedbackv5-helpful-votes'
@@ -486,9 +456,40 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. $content
 		. $footer_links
 		. Html::closeElement( 'div' )
-		. $details
+		//. $details
 		. $tools
 		. Html::closeElement( 'div' );
+	}
+	
+	private function renderPermalinkTimestamp( $record ) {
+	    global $wgLang;
+	    $id = $record->af_id;
+		
+	    // Taken from the Moodbar extension.
+	    $now       = wfTimestamp( TS_UNIX );
+	    $timestamp = wfTimestamp( TS_UNIX, $record->af_created );
+	    $date	   = '';
+
+	    // Relative dates for 48 hours, normal timestamps later.
+	    if ( $timestamp > ( $now - ( 86400 * 2 ) ) ) {
+		    $time = $wgLang->formatTimePeriod(
+			    ( $now - $timestamp ), 'avoidseconds'
+		    );
+		    $date = wfMessage( 'articleFeedbackv5-comment-ago', $time )->escaped();
+	    } elseif( $timestamp ) {
+		    $date = $wgLang->timeanddate($record->af_created  );
+	    }
+		
+	    // format the element
+	    return Html::openElement( 'span', array(
+		    'class' => 'articleFeedbackv5-comment-details-date'
+	    ) )
+	    . Html::element( 'a', array(
+		    'class' => 'articleFeedbackv5-permalink',
+		    'id'    => "articleFeedbackv5-permalink-$id",
+		    'href'  => "#id=$id"
+	    ), $date )
+	    . Html::closeElement( 'span' );
 	}
 
 	private function renderBucket1( $record ) {
@@ -632,7 +633,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			array( 'class' => 'result' ),
 			wfMessage( $message, $gender, $extra )->text()
 		)
-		. Html::closeElement( 'h3' );
+		. Html::closeElement( 'h3' )
+		. $this->renderPermalinkTimestamp( $record );
 	}
 
 	/**

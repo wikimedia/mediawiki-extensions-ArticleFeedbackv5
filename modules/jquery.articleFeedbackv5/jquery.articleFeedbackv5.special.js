@@ -556,19 +556,6 @@
 					$( '#articleFeedbackv5-show-feedback' ).append( $newList );
 					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
 					$.articleFeedbackv5special.listControls.continue = data['articlefeedbackv5-view-feedback'].continue;
-					// set effects on toolboxes
-					$( '.articleFeedbackv5-feedback-tools > ul' ).hide();
-					$( '.articleFeedbackv5-feedback-tools' ).hover( 
-						function( eventObj ) {
-							//alert(this);
-							var id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-feedback-tools-' );
-							$( '#articleFeedbackv5-feedback-tools-list-' + id ).slideDown( 200 );
-						},
-						function( eventObj ) {
-							var id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-feedback-tools-' );
-							$( '#articleFeedbackv5-feedback-tools-list-' + id ).slideUp( 200 );
-						}
-					);
 				} else {
 					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
