@@ -2169,6 +2169,7 @@
 		$.articleFeedbackv5.$holder.appear( function () {
 			if ( !$.articleFeedbackv5.isLoaded ) {
 				$.articleFeedbackv5.load( 'auto', 'bottom' );
+				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-impression-bottom' );
 			}
 		} );
 		// Keep track of links that must be removed after a successful submission
@@ -2633,9 +2634,6 @@
 			bucket.afterBuild();
 		}
 
-		// Track the event
-		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-impression-' + from );
-
 		$.articleFeedbackv5.nowShowing = 'form';
 	};
 
@@ -3075,6 +3073,9 @@
 			$.articleFeedbackv5.$dialog.dialog( 'option', 'position', [ 'center', 'center' ] );
 			$.articleFeedbackv5.$dialog.dialog( 'open' );
 			$.articleFeedbackv5.setLinkId( $link.data( 'linkId' ) );
+
+			// Track the impression
+			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-impression-overlay' );
 
 			// Hide the panel
 			$.articleFeedbackv5.$holder.hide();
