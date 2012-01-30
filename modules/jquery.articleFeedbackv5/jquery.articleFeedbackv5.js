@@ -327,9 +327,6 @@
 					.button()
 					.addClass( 'ui-button-blue' );
 
-				// Have the feedback textarea grow automatically
-				$block.find( '#articleFeedbackv5-find-feedback' ).elastic();
-
 				return $block;
 			},
 
@@ -2627,6 +2624,9 @@
 		// Set the tooltip link
 		$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip-link' )
 			.attr( 'href', mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' ));
+			
+		// Have the feedback textarea grow automatically
+		$.articleFeedbackv5.find( '#articleFeedbackv5-find-feedback' ).elastic();
 
 		// Do anything special the bucket requires
 		if ( 'afterBuild' in bucket ) {
