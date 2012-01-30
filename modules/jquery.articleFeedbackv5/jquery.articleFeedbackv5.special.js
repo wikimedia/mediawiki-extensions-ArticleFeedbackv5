@@ -161,15 +161,15 @@
 			$( '.articleFeedbackv5-' + value + '-link' ).live( 'click', function( e ) {
 				e.preventDefault();
 				var $l = $( e.target );
-				if ( $l.closest( '.articleFeedbackv5-feedback' ).data( 'hidden' ) ) {
+				if ( $l.closest( '.articleFeedbackv5-feedback' ).data( 'hidden' )
+					|| $l.closest( '.articleFeedbackv5-feedback' ).data( 'deleted' ) ) {
 					return false;
 				}
 				var id = $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
 				var activity = $.articleFeedbackv5special.getActivity( id );
 				if ( activity[value] ) {
-					return false;
-				}
-				if ( 'helpful' == value && activity.unhelpful ) {
+					$.articleFeedbackv5special.flagFeedback( id, value, -1 );
+				} else if ( 'helpful' == value && activity.unhelpful ) {
 					$.articleFeedbackv5special.flagFeedback( id, 'unhelpful', -1 );
 					$.articleFeedbackv5special.flagFeedback( id, 'helpful', 1 );
 				} else if ( 'unhelpful' == value && activity.helpful ) {
@@ -185,7 +185,8 @@
 		$( '.articleFeedbackv5-abuse-link' ).live( 'click', function( e ) {
 			e.preventDefault();
 			var $l = $( e.target );
-			if ( $l.closest( '.articleFeedbackv5-feedback' ).data( 'hidden' ) ) {
+			if ( $l.closest( '.articleFeedbackv5-feedback' ).data( 'hidden' )
+				|| $l.closest( '.articleFeedbackv5-feedback' ).data( 'deleted' ) ) {
 				return false;
 			}
 			var id = $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
@@ -387,11 +388,14 @@
 	 * @param $row element the feedback row
 	 */
 	$.articleFeedbackv5special.markHidden = function ( $row ) {
+		if ( $row.data( 'hidden' ) ) {
+			$.articleFeedbackv5special.unmarkHidden();
+		}
 		$row.addClass( 'articleFeedbackv5-feedback-hidden' )
 			.data( 'hidden', true );
 		$( '<span class="articleFeedbackv5-feedback-hidden-marker"></span>' )
 			.text( mw.msg( 'articlefeedbackv5-hidden' ) )
-			.insertAfter( $row.find( '.articleFeedbackv5-comment-wrap h3 span.result' ) );
+			.insertAfter( $row.find( '.articleFeedbackv5-comment-details-date a' ) );
 	};
 
 	// }}}
@@ -406,6 +410,43 @@
 		$row.removeClass( 'articleFeedbackv5-feedback-hidden' )
 			.data( 'hidden', false );
 		$row.find( '.articleFeedbackv5-feedback-hidden-marker' ).remove();
+	};
+
+	// }}}
+	// {{{ markDeleted
+
+	/**
+	 * Utility method: Marks a feedback row deleted
+	 *
+	 * @param $row element the feedback row
+	 */
+	$.articleFeedbackv5special.markDeleted = function ( $row ) {
+		if ( $row.data( 'deleted' ) ) {
+			$.articleFeedbackv5special.unmarkDeleted();
+		}
+		$row.addClass( 'articleFeedbackv5-feedback-deleted' )
+			.data( 'deleted', true );
+		var $marker = $( '<span class="articleFeedbackv5-feedback-deleted-marker"></span>' )
+			.text( mw.msg( 'articlefeedbackv5-deleted' ) );
+		if ( $row.data( 'hidden' ) ) {
+			$marker.insertAfter( $row.find( '.articleFeedbackv5-feedback-hidden-marker' ) );
+		} else {
+			$marker.insertAfter( $row.find( '.articleFeedbackv5-comment-details-date a' ) );
+		}
+	};
+
+	// }}}
+	// {{{ unmarkDeleted
+
+	/**
+	 * Utility method: Unmarks as deleted a feedback row
+	 *
+	 * @param $row element the feedback row
+	 */
+	$.articleFeedbackv5special.unmarkDeleted = function ( $row ) {
+		$row.removeClass( 'articleFeedbackv5-feedback-deleted' )
+			.data( 'deleted', false );
+		$row.find( '.articleFeedbackv5-feedback-deleted-marker' ).remove();
 	};
 
 	// }}}
@@ -440,23 +481,25 @@
 				if ( 'articlefeedbackv5-flag-feedback' in data ) {
 					if ( 'result' in data['articlefeedbackv5-flag-feedback'] ) {
 						if ( data['articlefeedbackv5-flag-feedback'].result == 'Success' ) {
+							var $l = $( '#articleFeedbackv5-' + type + '-link-' + id );
+							// Helpful or unhelpful
 							if ( 'helpful' in data['articlefeedbackv5-flag-feedback'] ) {
 								$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
 							}
 							if ( 'helpful' == type || 'unhelpful' == type ) {
-								var $l = $( '#articleFeedbackv5-' + type + '-link-' + id );
 								if ( dir > 0 ) {
 									$l.addClass( 'helpful-active' );
 								} else {
 									$l.removeClass( 'helpful-active' );
 								}
+							// Abusive
 							} else if ( 'abuse' == type ) {
-								var $l = $( '#articleFeedbackv5-abuse-link-' + id );
 								if ( dir > 0 ) {
-									$l.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) );
+									$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
 								} else {
 									$l.text( mw.msg( 'articlefeedbackv5-form-abuse', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
 								}
+								$l.attr( 'rel', data['articlefeedbackv5-flag-feedback'].abuse_count );
 								if ( data['articlefeedbackv5-flag-feedback'].abusive ) {
 									$l.addClass( 'abusive' );
 								} else {
@@ -465,8 +508,8 @@
 								if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
 									$.articleFeedbackv5special.markHidden( $l.closest( '.articleFeedbackv5-feedback' ) );
 								}
+							// Hide
 							} else if ( 'hide' == type ) {
-								var $l = $( '#articleFeedbackv5-hide-link-' + id );
 								if ( dir > 0 ) {
 									$l.text( mw.msg( 'articlefeedbackv5-form-unhide' ) );
 									$.articleFeedbackv5special.markHidden( $l.closest( '.articleFeedbackv5-feedback' ) );
@@ -474,12 +517,14 @@
 									$l.text( mw.msg( 'articlefeedbackv5-form-hide' ) );
 									$.articleFeedbackv5special.unmarkHidden( $l.closest( '.articleFeedbackv5-feedback' ) );
 								}
+							// Delete
 							} else if ( 'delete' == type ) {
-								var $l = $( '#articleFeedbackv5-delete-link-' + id );
 								if ( dir > 0 ) {
 									$l.text( mw.msg( 'articlefeedbackv5-form-undelete' ) );
+									$.articleFeedbackv5special.markDeleted( $l.closest( '.articleFeedbackv5-feedback' ) );
 								} else {
 									$l.text( mw.msg( 'articlefeedbackv5-form-delete' ) );
+									$.articleFeedbackv5special.unmarkDeleted( $l.closest( '.articleFeedbackv5-feedback' ) );
 								}
 							}
 							// Save activity
@@ -489,7 +534,7 @@
 							$.articleFeedbackv5special.activity[id][type] = dir > 0 ? true : false;
 							$.articleFeedbackv5special.storeActivity();
 						} else if ( data['articlefeedbackv5-flag-feedback'].result == 'Error' ) {
-							msg = data['articlefeedbackv5-flag-feedback'].reason;
+							mw.log( mw.msg( data['articlefeedbackv5-flag-feedback'].reason ) );
 						}
 					}
 				}
@@ -549,11 +594,14 @@
 							}
 							if ( activity.abuse ) {
 								var $l = $( this ).find( '#articleFeedbackv5-abuse-link-' + id );
-								$l.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) );
+								$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', $l.attr( 'rel' ) ) );
 							}
 						}
 						if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
 							$.articleFeedbackv5special.markHidden( $( this ) );
+						}
+						if ( $( this ).hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
+							$.articleFeedbackv5special.markDeleted( $( this ) );
 						}
 					} );
 					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );

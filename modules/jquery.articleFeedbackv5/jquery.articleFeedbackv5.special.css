@@ -185,13 +185,13 @@ a#articleFeedbackv5-show-more {
 	margin-right: 10px;
 }
 .articleFeedbackv5-comment-details-date {
-    float: left;
-    clear: right;
-    display: block;
-    line-height: 24px;
-    margin: 0 5px 0 0;
-    position: relative;
-    top: 18px;
+	float: left;
+	clear: right;
+	display: block;
+	line-height: 24px;
+	margin: 0 5px 0 0;
+	position: relative;
+	top: 18px;
 }
 #articleFeedbackv5-special-add-feedback {
 	/*color:white;
@@ -230,16 +230,15 @@ a#articleFeedbackv5-show-more {
 	width: 520px;
 }
 .articleFeedbackv5-vote-wrapper {
-    float: left;
-    width: 100%;
-    margin-bottom: 8px;
+	float: left;
+	width: 100%;
+	margin-bottom: 8px;
 }
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-caption {
 	margin: 0 15px 0 0;
 }
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-hidden .articleFeedbackv5-feedback-hidden-marker {
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link {
 	display: inline-block;
 	height: 22px;
 	line-height: 22px;
@@ -273,8 +272,7 @@ a#articleFeedbackv5-show-more {
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link.active,
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link.active,
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link.active:hover,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link.active:hover,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-hidden .articleFeedbackv5-feedback-hidden-marker {
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link.active:hover {
 	/* @embed */
 	background: url(images/bg-button.png) repeat-x;
 	color: #fff;
@@ -283,10 +281,10 @@ a#articleFeedbackv5-show-more {
 	color: #888;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap h3 {
-    display: block;
-    float: left;
-    width: 520px;
-    line-height: 24px;
+	display: block;
+	float: left;
+	width: 520px;
+	line-height: 24px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap h3 .icon {
 	display: inline-block;
@@ -349,13 +347,18 @@ a.helpful-active {
 	color: white !important;
 }
 .articleFeedbackv5-comment-wrap {
-    width: 100%;
+	width: 100%;
 }
-.articleFeedbackv5-feedback-hidden .articleFeedbackv5-comment-wrap {
+.articleFeedbackv5-feedback-hidden .articleFeedbackv5-comment-wrap,
+.articleFeedbackv5-feedback-deleted .articleFeedbackv5-comment-wrap {
 	opacity : 0.4;
 	filter: alpha(opacity=40); // msie
 	background-color: #000;
 }
-#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-hidden .articleFeedbackv5-feedback-hidden-marker {
+#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-hidden .articleFeedbackv5-feedback-hidden-marker,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-deleted .articleFeedbackv5-feedback-deleted-marker {
+	font-weight: bold;
+	color: red;
+	text-transform: uppercase;
 	margin-left: 20px;
 }

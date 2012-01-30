@@ -173,6 +173,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-form-delete',
 				'articlefeedbackv5-form-undelete',
 				'articlefeedbackv5-hidden',
+				'articlefeedbackv5-deleted',
 				'articlefeedbackv5-comment-more',
 				'articlefeedbackv5-comment-less',
 				'articlefeedbackv5-error-loading-feedback'

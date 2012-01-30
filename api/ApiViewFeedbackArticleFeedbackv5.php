@@ -363,7 +363,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			}
 			$footer_links .= Html::element( 'a', array(
 				'id'    => "articleFeedbackv5-abuse-link-$id",
-				'class' => $aclass
+				'class' => $aclass,
+				'rel'   => $record[0]->af_abuse_count
 			), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() );
 		}
 		$footer_links .= $details . Html::closeElement( 'div' );
@@ -446,6 +447,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		if ( $record[0]->af_is_hidden ) {
 			$topClass .= ' articleFeedbackv5-feedback-hidden';
 		}
+		if ( $record[0]->af_is_deleted ) {
+			$topClass .= ' articleFeedbackv5-feedback-deleted';
+		}
 		return Html::openElement( 'div', array(
 			'class' => $topClass,
 			'rel'   => $id
@@ -460,12 +464,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. $tools
 		. Html::closeElement( 'div' );
 	}
-	
+
 	private function renderPermalinkTimestamp( $record ) {
 	    global $wgLang;
 	    $id    = $record->af_id;
 		$title = $record->page_title;
-		
+
 	    // Taken from the Moodbar extension.
 	    $now       = wfTimestamp( TS_UNIX );
 	    $timestamp = wfTimestamp( TS_UNIX, $record->af_created );
@@ -480,16 +484,16 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	    } elseif( $timestamp ) {
 		    $date = $wgLang->timeanddate($record->af_created  );
 	    }
-		
+
 	    // format the element
 	    return Html::openElement( 'span', array(
 		    'class' => 'articleFeedbackv5-comment-details-date'
 	    ) )
-		. Linker::link( 
-			Title::newFromText( 
-				"Special:ArticleFeedbackv5/$title/$id" 
-			), 
-			$date 
+		. Linker::link(
+			Title::newFromText(
+				"Special:ArticleFeedbackv5/$title/$id"
+			),
+			$date
 		)
 	    . Html::closeElement( 'span' );
 	}
@@ -593,11 +597,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$short = $wgLang->truncate( $text, 500 );
 
 		$rv = Html::openElement( 'blockquote' )
-		. Html::element( 'span', 
+		. Html::element( 'span',
 			array(
 				'class' => 'articleFeedbackv5-comment-short',
 				'id'    => "articleFeedbackv5-comment-short-$feedbackId"
-			), 
+			),
 			htmlspecialchars( $short )
 		);
 
