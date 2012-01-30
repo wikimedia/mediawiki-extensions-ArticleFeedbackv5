@@ -533,7 +533,7 @@
 					if ( resetContents ) {
 						$( '#articleFeedbackv5-show-feedback' ).empty();
 					}
-					var $newList = $( '<div></div>' ).html( data['articlefeedbackv5-view-feedback'].feedback );
+					$newList = $( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback );
 					$newList.find( '.articleFeedbackv5-feedback' ).each( function () {
 						var id = $( this ).attr( 'rel' );
 						if ( id in $.articleFeedbackv5special.activity ) {
@@ -553,7 +553,6 @@
 							$.articleFeedbackv5special.markHidden( $( this ) );
 						}
 					} );
-					$( '#articleFeedbackv5-show-feedback' ).append( $newList );
 					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
 					$.articleFeedbackv5special.listControls.continue = data['articlefeedbackv5-view-feedback'].continue;
 				} else {

@@ -166,6 +166,15 @@ a#articleFeedbackv5-show-more {
 	clear: left;
 	padding-right: 160px;
 }
+
+.articleFeedbackv5-feedback blockquote .articleFeedbackv5-comment-full {
+	display: none;
+}
+
+.articleFeedbackv5-comment-toggle {
+	margin-left: 7px;
+}
+
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-details {
 	padding-top: 30px;
 	float: right;
@@ -202,6 +211,13 @@ a#articleFeedbackv5-show-more {
 #articleFeedbackv5-special-add-feedback:after {
 	clear:both;
 }
+#articleFeedbackv5-show-feedback {
+	width: 100%;
+	float: none;
+	margin: 0;
+	padding: 0;
+}
+
 #articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link {
 
 }
@@ -325,10 +341,6 @@ a#articleFeedbackv5-show-more {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 11px 7px;
-}
-
-.articleFeedbackv5-comment-full {
-	display: none;
 }
 
 a.helpful-active {

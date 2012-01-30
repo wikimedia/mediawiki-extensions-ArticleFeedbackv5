@@ -590,31 +590,34 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		$short = $wgLang->truncate( $text, 500 );
 
-		$rv = Html::openElement( 'blockquote',
-		array(
-			'class' => 'articleFeedbackv5-comment-short',
-			'id'    => "articleFeedbackv5-comment-short-$feedbackId"
-		) )
-		. htmlspecialchars( $short )
-		. Html::closeElement( 'blockquote' );
+		$rv = Html::openElement( 'blockquote' )
+		. Html::element( 'span', 
+			array(
+				'class' => 'articleFeedbackv5-comment-short',
+				'id'    => "articleFeedbackv5-comment-short-$feedbackId"
+			), 
+			htmlspecialchars( $short )
+		);
 
 		// If the short string is the same size as the
 		// original, no truncation happened, so no
 		// controls are needed.
 		if ( $short != $text ) {
 			// Show the short text, with the 'show more' control.
-			$rv .= Html::openElement( 'blockquote',
-			array(
-				'class' => 'articleFeedbackv5-comment-full',
-				'id'    => "articleFeedbackv5-comment-full-$feedbackId"
-			) )
-			. htmlspecialchars( $text )
-			. Html::closeElement( 'blockquote' )
+			$rv .= Html::element( 'span',
+				array(
+					'class' => 'articleFeedbackv5-comment-full',
+					'id'    => "articleFeedbackv5-comment-full-$feedbackId"
+				),
+				htmlspecialchars( $text )
+			)
 			. Html::element( 'a', array(
 				'class' => 'articleFeedbackv5-comment-toggle',
 				'id'    => "articleFeedbackv5-comment-toggle-$feedbackId"
 			), wfMessage( 'articlefeedbackv5-comment-more' )->escaped() );
 		}
+
+		$rv .= Html::closeElement( 'blockquote' );
 
 		return $rv;
 	}
