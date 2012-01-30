@@ -198,24 +198,24 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			__METHOD__,
 			array( 'ORDER BY' => $order ),
 			array(
-				'rating'                   => array(
-						'LEFT JOIN',
-						'rating.aa_feedback_id = af_id AND rating.aa_field_id = '.intval( $ratingField )
+				'rating' => array(
+					'LEFT JOIN',
+					'rating.aa_feedback_id = af_id AND rating.aa_field_id = ' . intval( $ratingField )
 				),
-				'answer'                   => array(
+				'answer' => array(
 					'LEFT JOIN', 'af_id = answer.aa_feedback_id'
 				),
-				'aft_article_field'        => array(
+				'aft_article_field' => array(
 					'LEFT JOIN', 'afi_id = answer.aa_field_id'
 				),
 				'aft_article_field_option' => array(
 					'LEFT JOIN',
 					'answer.aa_response_option_id = afo_option_id'
 				),
-				'user'                     => array(
+				'user' => array(
 					'LEFT JOIN', 'user_id = af_user_id'
 				),
-				'page'                     => array(
+				'page' => array(
 					'JOIN', 'page_id = af_page_id'
 				)
 			)
@@ -258,7 +258,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$where['af_is_deleted'] = 0;
 		}
 
-		switch( $filter ) {
+		switch ( $filter ) {
 			case 'needsoversight':
 				$where[] = 'af_needs_oversight IS TRUE';
 				break;
@@ -361,11 +361,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			if ( $record[0]->af_abuse_count >= $wgArticleFeedbackv5AbusiveThreshold ) {
 				$aclass .= ' abusive';
 			}
+			// Count masked if user cannot hide comments (as per Fabrice)
+			$msg = $can_hide ? 'articlefeedbackv5-form-abuse' : 'articlefeedbackv5-form-abuse-masked';
 			$footer_links .= Html::element( 'a', array(
 				'id'    => "articleFeedbackv5-abuse-link-$id",
 				'class' => $aclass,
 				'rel'   => $record[0]->af_abuse_count
-			), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() );
+			), wfMessage( $msg, $record[0]->af_abuse_count )->text() );
 		}
 		$footer_links .= $details . Html::closeElement( 'div' );
 
