@@ -463,7 +463,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	
 	private function renderPermalinkTimestamp( $record ) {
 	    global $wgLang;
-	    $id = $record->af_id;
+	    $id    = $record->af_id;
+		$title = $record->page_title;
 		
 	    // Taken from the Moodbar extension.
 	    $now       = wfTimestamp( TS_UNIX );
@@ -484,11 +485,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	    return Html::openElement( 'span', array(
 		    'class' => 'articleFeedbackv5-comment-details-date'
 	    ) )
-	    . Html::element( 'a', array(
-		    'class' => 'articleFeedbackv5-permalink',
-		    'id'    => "articleFeedbackv5-permalink-$id",
-		    'href'  => "#id=$id"
-	    ), $date )
+		. Linker::link( 
+			Title::newFromText( 
+				"Special:ArticleFeedbackv5/$title/$id" 
+			), 
+			$date 
+		)
 	    . Html::closeElement( 'span' );
 	}
 
@@ -624,14 +626,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	private function feedbackHead( $message, $class, $record, $extra = '' ) {
 		$name   = htmlspecialchars( $record->user_name );
-		$link   = $record->af_user_id ? "User:$name" : "Special:Contributions/$name";
+		$link   = !$record->af_user_ip ? "User:$name" : "Special:Contributions/$name";
 		$gender = $name;
 
-		return Html::openElement( 'h3', array(
-			'class' => $class
-		) )
-		. Linker::link( Title::newFromText( $link ), $name )
+		return Html::openElement( 'h3', array( 'class' => $class) )
 		. Html::element( 'span', array( 'class' => 'icon' ) )
+		. Linker::link( Title::newFromText( $link ), $name )
 		. Html::element( 'span',
 			array( 'class' => 'result' ),
 			wfMessage( $message, $gender, $extra )->text()

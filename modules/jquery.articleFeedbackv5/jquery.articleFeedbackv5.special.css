@@ -327,6 +327,7 @@ a#articleFeedbackv5-show-more {
 .sort-active {
 	width: 11px;
 	height: 1em;
+	font-weight: bold;
 }
 .ascending {
 	/* @embed */

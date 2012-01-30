@@ -85,11 +85,14 @@
 
 		// Process anything we found in the URL hash
 		// Permalinks.
-		var id = window.location.hash.match(/id=(\d+)/)
+		var id = window.location.href.match(/(.+)\/(\d+)$/)
 		if( id ) {
 			$.articleFeedbackv5special.listControls.filter      = 'id';
-			$.articleFeedbackv5special.listControls.filterValue = id[1];
+			$.articleFeedbackv5special.listControls.filterValue = id[2];
 		}
+
+		// Bold the default sort.
+		$( '#articleFeedbackv5-special-sort-age' ).addClass( 'sort-active' );
 
 		// Grab the user's activity out of the cookie
 		$.articleFeedbackv5special.activityCookieName += $.articleFeedbackv5special.page;

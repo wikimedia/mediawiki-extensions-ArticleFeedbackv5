@@ -335,6 +335,7 @@ $messages['qqq'] = array(
 	'articlefeedbackv5-form-delete' => '{{Identical|Delete}}',
 	'articlefeedbackv5-form-oversight' => 'Request that an oversighter review this feedback',
 	'articlefeedbackv5-form-unoversight' => 'Remove request for oversight',
+	'articlefeedbackv5-error-loading-feedback' => 'Message displayed when there was an error loading feedback - result is a largely-blank page.',
 	'articlefeedbackv5-form-header' => "* '''$1''' is the feedback ID.
 * '''$2''' is the date and time at which the feedback was given.",
 	'articlefeedbackv5-form1-header-found' => 'Parameters

@@ -59,6 +59,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	public function execute( $param ) {
 		global $wgArticleFeedbackv5DashboardCategory;
 		$out   = $this->getOutput();
+
+		if( preg_match('/^(.+)\/(\d+)$/', $param, $m ) ) {
+			$param = $m[1];
+		}
+
 		$title = Title::newFromText( $param );
 
 		// Page does not exist.
