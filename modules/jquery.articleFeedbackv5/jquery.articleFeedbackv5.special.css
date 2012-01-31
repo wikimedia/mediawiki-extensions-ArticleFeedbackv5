@@ -366,13 +366,13 @@ a.helpful-active {
 .articleFeedbackv5-feedback-hidden .articleFeedbackv5-comment-wrap,
 .articleFeedbackv5-feedback-deleted .articleFeedbackv5-comment-wrap {
 	opacity : 0.4;
-	filter: alpha(opacity=40); // msie
-	background-color: #000;
+	filter: alpha(opacity=40);
 }
 #articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-hidden .articleFeedbackv5-feedback-hidden-marker,
 #articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-deleted .articleFeedbackv5-feedback-deleted-marker {
 	font-weight: bold;
 	color: red;
-	text-transform: uppercase;
-	margin-left: 20px;
+	display: block;
+	clear: both;
+	margin-top: 10px;
 }

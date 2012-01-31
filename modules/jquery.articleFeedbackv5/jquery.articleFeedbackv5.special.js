@@ -399,7 +399,7 @@
 			.data( 'hidden', true );
 		$( '<span class="articleFeedbackv5-feedback-hidden-marker"></span>' )
 			.text( mw.msg( 'articlefeedbackv5-hidden' ) )
-			.insertAfter( $row.find( '.articleFeedbackv5-comment-details-date a' ) );
+			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap h3' ) );
 	};
 
 	// }}}
@@ -431,12 +431,8 @@
 		$row.addClass( 'articleFeedbackv5-feedback-deleted' )
 			.data( 'deleted', true );
 		var $marker = $( '<span class="articleFeedbackv5-feedback-deleted-marker"></span>' )
-			.text( mw.msg( 'articlefeedbackv5-deleted' ) );
-		if ( $row.data( 'hidden' ) ) {
-			$marker.insertAfter( $row.find( '.articleFeedbackv5-feedback-hidden-marker' ) );
-		} else {
-			$marker.insertAfter( $row.find( '.articleFeedbackv5-comment-details-date a' ) );
-		}
+			.text( mw.msg( 'articlefeedbackv5-deleted' ) )
+			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap h3' ) );
 	};
 
 	// }}}
