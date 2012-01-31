@@ -42,7 +42,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$params['limit'],
 			( $params['continue'] !== 'null' ? $params['continue'] : null )
 		);
-
 		foreach ( $feedback as $record ) {
 			$html .= $this->renderFeedback( $record );
 			$length++;
@@ -191,7 +190,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'af_is_deleted', 'af_needs_oversight',
 				'(SELECT COUNT(*) FROM ' . $dbr->tableName( 'revision' ) . ' WHERE rev_id > af_revision_id AND rev_page = ' . ( integer ) $pageId . ') AS age',
 				'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) AS net_helpfulness',
-				'page_latest', 'af_revision_id', 'page_title',
+				'page_latest', 'af_revision_id', 'page_title', 'page_namespace',
 				'rating.aa_response_boolean AS rating'
 			),
 			array( 'af_id' => $ids ),
@@ -320,7 +319,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		) );
 		if( $record[0]->age > 0 ) {
 			$details .=  Linker::link(
-				Title::newFromText( $record[0]->page_title ),
+				Title::newFromRow( $record[0] ),
 				wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age )->escaped(),
 				array(),
 				array(
