@@ -33,22 +33,34 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		global $wgUser;
 		parent::__construct( 'ArticleFeedbackv5' );
 
-		// NOTE: The 'all' option actually displays different things
-		// based on the users role, which is handled in the filter:
-		// - deleter-all is actually everything
-		// - hidder-all is 'visible + hidden'
-		// - regular non-admin all is just 'all visible'
+		$showHidden  = $wgUser->isAllowed( 'aftv5-see-hidden-feedback' );
+		$showDeleted = $wgUser->isAllowed( 'aftv5-see-deleted-feedback' );
 
-		if ( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
+		if ( $showHidden ) {
 			array_push( $this->filters,
 				'unhelpful', 'abusive', 'invisible'
 			);
 			# removing the 'needsoversight' filter, per Fabrice
 		}
 
-		if ( $wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
+		if ( $showDeleted ) {
 			$this->filters[] = 'deleted';
 		}
+
+		// NOTE: The 'all' option actually displays different things
+		// based on the users role, which is handled in the filter:
+		// - deleter's all is actually everything
+		// - hidder's all is 'visible + hidden'
+		// - regular non-admin only has 'all visible' not 'all'
+
+		// The all option, if any, is only added once, at the end of the list,
+		// which is why it's down here instead.
+		if ( $showDeleted ) {
+			$this->filters[] = 'all';
+		} elseif( $showHidden ) {
+			$this->filters[] = 'notdeleted';
+		}
+			$this->filters[] = 'notdeleted';
 	}
 
 	/**

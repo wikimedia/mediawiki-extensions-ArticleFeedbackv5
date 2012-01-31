@@ -231,36 +231,20 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	private function getFilterCriteria( $filter, $filterValue = null ) {
 		global $wgUser;
-		$where = array();
+		$where          = array();
+		$hiddenFilters  = array( 'invisible', 'notdeleted', 'all', 'deleted' );
+		$deletedFilters = array( 'all', 'deleted' );
 
-		// Permissions check: these filters are for admins only.
-		if (
-			( $filter == 'invisible'
-			 && !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) )
-			||
-			( $filter == 'deleted'
-			 && !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) )
-		) {
-			$filter = null;
-		}
-
-		// Don't let non-allowed users see these.
-		if ( !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
-			$where[] = 'af_is_hidden IS FALSE';
-		}
-
-		// Don't let non-allowed users see these.
-		if ( !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
+		// Never show hidden or deleted posts unless specifically requested
+		// and user has access.
+		if( !in_array( $filter, $deletedFilters ) 
+		 || !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
 			$where[] = 'af_is_deleted IS FALSE';
 		}
 
-		// Never show hidden or deleted posts unless specifically requested.
-		if( $filter != 'invisible' && $filter != 'deleted' ) { 
+		if( !in_array( $filter, $hiddenFilters ) 
+		 || !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			$where[] = 'af_is_hidden IS FALSE';
-		}
-
-		if( $filter != 'deleted' ) { 
-			$where[] = 'af_is_deleted IS FALSE';
 		}
 
 		switch ( $filter ) {
@@ -503,18 +487,20 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderBucket1( $record ) {
-		if ( $record['found']->aa_response_boolean ) {
+		if ( $record['found']->aa_response_boolean == 1 ) {
 			$msg   = 'articlefeedbackv5-form1-header-found';
 			$class = 'positive';
-		} else {
+		} elseif( $record['found']->aa_response_boolean !== null ) {
 			$msg   = 'articlefeedbackv5-form1-header-not-found';
 			$class = 'negative';
+		} else {
+			$msg   = 'articlefeedbackv5-form1-header-left-comment';
+			$class = '';
 		}
 
 		return $this->feedbackHead( $msg, $class, $record[0] )
 		. $this->renderComment( $record['comment']->aa_response_text, $record[0]->af_id );
 	}
-
 
 	private function renderBucket2( $record ) {
 		$type  = htmlspecialchars( $record['tag']->afo_name );
@@ -679,7 +665,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'all', 'invisible', 'visible', 'comment', 'id', 'helpful', 'unhelpful', 'abusive', 'deleted', 'needsoversight' )
+				 'all', 'notdeleted', 'invisible', 'visible', 'comment', 'id', 'helpful', 'unhelpful', 'abusive', 'deleted', 'needsoversight' )
 			),
 			'filtervalue'   => array(
 				ApiBase::PARAM_REQUIRED => false,
