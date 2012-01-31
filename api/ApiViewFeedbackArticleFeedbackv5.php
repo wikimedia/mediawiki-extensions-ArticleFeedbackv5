@@ -294,7 +294,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	protected function renderFeedback( $record ) {
-		global $wgUser;
+		global $wgUser, $wgLang;
 		$id = $record[0]->af_id;
 
 		switch( $record[0]->af_bucket_id ) {
@@ -339,20 +339,24 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		if ( $can_vote ) {
 			$footer_links .= Html::element( 'span', array(
 				'class' => 'articleFeedbackv5-helpful-caption'
-			), wfMessage( 'articlefeedbackv5-form-helpful-label', ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ) ) )
+			), wfMessage( 'articlefeedbackv5-form-helpful-label' )->text() 
+			)
 			. Html::element( 'a', array(
 				'id'    => "articleFeedbackv5-helpful-link-$id",
 				'class' => 'articleFeedbackv5-helpful-link'
-			), wfMessage( 'articlefeedbackv5-form-helpful-yes-label', $record[0]->af_helpful_count )->text() )
+			), wfMessage( 'articlefeedbackv5-form-helpful-yes-label' )->text() )
 			. Html::element( 'a', array(
 				'id'    => "articleFeedbackv5-unhelpful-link-$id",
 				'class' => 'articleFeedbackv5-unhelpful-link'
-			), wfMessage( 'articlefeedbackv5-form-helpful-no-label', $record[0]->af_unhelpful_count )->text() );
+			), wfMessage( 'articlefeedbackv5-form-helpful-no-label' )->text() );
 		}
 		$footer_links .= Html::element( 'span', array(
 			'class' => 'articleFeedbackv5-helpful-votes',
 			'id'    => "articleFeedbackv5-helpful-votes-$id"
-		), wfMessage( 'articlefeedbackv5-form-helpful-votes', $record[0]->af_helpful_count, $record[0]->af_unhelpful_count ) );
+		), wfMessage( 'articlefeedbackv5-form-helpful-votes', 
+			$wgLang->formatNum( $record[0]->af_helpful_count ),
+			$wgLang->formatNum( $record[0]->af_unhelpful_count ) 
+		)->text() );
 		$footer_links .= Html::closeElement( 'div' );
 		if ( $can_flag ) {
 			$aclass = 'articleFeedbackv5-abuse-link';
@@ -366,7 +370,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'id'    => "articleFeedbackv5-abuse-link-$id",
 				'class' => $aclass,
 				'rel'   => $record[0]->af_abuse_count
-			), wfMessage( $msg, $record[0]->af_abuse_count )->text() );
+			), wfMessage( $msg, $wgLang->formatNum( $record[0]->af_abuse_count ) )->text() );
 		}
 		$footer_links .= $details . Html::closeElement( 'div' );
 
