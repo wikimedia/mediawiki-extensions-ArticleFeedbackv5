@@ -581,7 +581,7 @@
 					if ( resetContents ) {
 						$( '#articleFeedbackv5-show-feedback' ).empty();
 					}
-					$newList = $( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback );
+					var $newList = $( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback );
 					$newList.find( '.articleFeedbackv5-feedback' ).each( function () {
 						var id = $( this ).attr( 'rel' );
 						if ( id in $.articleFeedbackv5special.activity ) {
