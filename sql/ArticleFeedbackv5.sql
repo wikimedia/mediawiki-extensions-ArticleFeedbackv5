@@ -79,6 +79,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_field_option (
   afo_field_id  integer unsigned NOT NULL,
   afo_name      varchar(255) NOT NULL
 ) /*$wgDBTableOptions*/;
+CREATE INDEX /*i*/afo_field_id ON /*_*/aft_article_field_option (afo_field_id);
 
 -- Stores individual answers for each feedback record - for a given feedback 
 -- record, what did the user answer for each individual question/input on 

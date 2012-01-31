@@ -296,7 +296,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			array(
 				'arr_page_id' => $pageId,
 				'arr_field_id = afi_id',
-				"afi_name IN ('found', 'rating')"
+				'afi_name' => array( 'found', 'rating' )
 			)
 		);
 

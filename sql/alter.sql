@@ -114,3 +114,6 @@ ALTER TABLE aft_article_feedback CHANGE COLUMN af_hide_count af_is_hidden BOOLEA
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'invisible', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND af_is_hidden IS TRUE GROUP BY af_page_id;
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'visible', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND af_is_hidden IS FALSE AND af_is_deleted IS FALSE GROUP BY af_page_id;
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'deleted', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND af_is_deleted IS TRUE GROUP BY af_page_id;
+
+-- Added 1/31 (Roan)
+CREATE INDEX /*i*/afo_field_id ON /*_*/aft_article_field_option (afo_field_id);
