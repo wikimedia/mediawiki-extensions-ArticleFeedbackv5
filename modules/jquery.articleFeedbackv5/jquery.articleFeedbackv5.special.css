@@ -342,6 +342,7 @@ a#articleFeedbackv5-show-more {
 }
 
 a.helpful-active {
+	/* @embed */
 	background: url(images/bg-button.png) !important;
 	color: white !important;
 }
