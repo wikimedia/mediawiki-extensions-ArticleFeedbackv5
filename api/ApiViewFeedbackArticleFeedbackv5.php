@@ -103,9 +103,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// Build ORDER BY clause.
 		switch( $sort ) {
 			case 'helpful':
-				$sortField   = 'net_helpfulness';
-				// Can't use aliases in mysql where clauses.
-				$continueSql = "CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) $continueDirection";
+				$sortField   = 'af_net_helpfulness';
 				break;
 			case 'rating':
 				$sortField = 'rating';
@@ -114,10 +112,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				# Default field, fall through
 			default:
 				$sortField   = 'af_id';
-				$continueSql = "$sortField $continueDirection";
 				break;
 		}
-		$order = "$sortField $direction";
+		$order       = "$sortField $direction";
+		$continueSql = "$sortField $continueDirection";
 
 		// Build WHERE clause.
 		// Filter applied , if any:
@@ -145,7 +143,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			),
 			array(
 				'af_id',
-				'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) AS net_helpfulness',
+				'af_net_helpfulness',
 				'rating.aa_response_boolean AS rating'
 			),
 			$where,
@@ -189,8 +187,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'af_helpful_count', 'af_unhelpful_count',
 				'af_is_deleted', 'af_needs_oversight',
 				'(SELECT COUNT(*) FROM ' . $dbr->tableName( 'revision' ) . ' WHERE rev_id > af_revision_id AND rev_page = ' . ( integer ) $pageId . ') AS age',
-				'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) AS net_helpfulness',
-				'page_latest', 'af_revision_id', 'page_title', 'page_namespace',
+				'af_net_helpfulness', 'af_revision_id',
+				'page_latest', 'page_title', 'page_namespace',
 				'rating.aa_response_boolean AS rating'
 			),
 			array( 'af_id' => $ids ),

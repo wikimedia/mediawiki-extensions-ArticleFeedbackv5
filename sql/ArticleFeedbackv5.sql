@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS /*_*/aft_article_filter_count;
 -- Stores feedback records: "user X submitted feedback on page Y, at time Z"
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   -- Row ID (primary key)
-  af_id               integer unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  af_id              integer unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   -- Foreign key to page.page_id
   af_page_id         integer unsigned NOT NULL,
   -- User Id (0 if anon), and ip address
@@ -39,6 +39,8 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   af_abuse_count     integer unsigned NOT NULL DEFAULT 0,
   af_helpful_count   integer unsigned NOT NULL DEFAULT 0,
   af_unhelpful_count integer unsigned NOT NULL DEFAULT 0,
+  -- Net helpfulness (helpful - unhelpful). Used in fetch query.
+  af_net_helpfulness integer NOT NULL DEFAULT 0,
   -- Flag a message as requiring oversight, being hidden ,or being deleted
   af_needs_oversight boolean NOT NULL DEFAULT FALSE,
   af_is_deleted      boolean NOT NULL DEFAULT FALSE,

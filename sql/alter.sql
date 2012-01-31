@@ -117,3 +117,8 @@ INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_co
 
 -- Added 1/31 (Roan)
 CREATE INDEX /*i*/afo_field_id ON /*_*/aft_article_field_option (afo_field_id);
+
+-- Added 1/31 (greg)
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_net_helpfulness integer NOT NULL DEFAULT 0;
+CREATE INDEX /*i*/af_net_helpfulness ON /*_*/aft_article_feedback (af_net_helpfulness);
+UPDATE aft_article_feedback SET af_net_helpfulness = CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED);

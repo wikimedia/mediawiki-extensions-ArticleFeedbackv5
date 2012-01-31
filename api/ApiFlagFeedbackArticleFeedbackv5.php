@@ -171,6 +171,16 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$results['helpful'] = wfMessage( 'articlefeedbackv5-form-helpful-votes',
 					$helpful, $unhelpful
 				)->escaped();
+
+				// Update net_helpfulness after flagging as helpful/unhelpful.
+				$dbw->update(
+					'aft_article_feedback',
+					array( 'af_net_helpfulness = CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED)' ),
+					array(
+						'af_id' => $params['feedbackid'],
+					),
+					__METHOD__
+				);
 			}
 
 			// Conditional formatting for abuse flag
