@@ -40,29 +40,44 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		if ( $record === false || !$record->af_id ) {
 			// no-op, because this is already broken
 			$error = 'articlefeedbackv5-invalid-feedback-id';
-		} elseif ( in_array( $params['flagtype'], $flags ) ) {
-			switch( $params['flagtype'] ) {
-				case 'hide':      $field = 'af_is_hidden';       break;
-				case 'oversight': $field = 'af_needs_oversight'; break;
-				case 'delete':    $field = 'af_is_deleted';      break;
-				default:          return; # return error, ideally.
+		} elseif ( in_array( $flag, $flags ) ) {
+			$count = null;	
+			switch( $flag ) {
+				case 'hide':      
+					$field = 'af_is_hidden';
+					$count = 'invisible';
+					break;
+				case 'oversight':
+					$field = 'af_needs_oversight';
+					$count = 'needsoversight';
+				case 'delete':
+					$field = 'af_is_deleted';
+					$count = 'deleted';
+				default: return; # return error, ideally.
 			}
 
 			if( $direction == 'increase' ) {
 				$update[] = "$field = TRUE";
 			} else {
 				$update[] = "$field = FALSE";
-			}	
-		} elseif ( in_array( $params['flagtype'], $counters ) ) {
+			}
+
+			// Increment or decrement whichever flag is being set.
+			$counts[$direction][] = $count;
+			// If this is hiding/deleting, decrement the visible count.
+			if( ( $count == 'hide' || $count == 'deleted' )
+			 && $direction == 'increase' ) {
+				$counts['decrease'][] = 'visible';
+			}
+		} elseif ( in_array( $flag, $counters ) ) {
 			// Probably this doesn't need validation, since the API
 			// will handle it, but if it's getting interpolated into
 			// the SQL, I'm really wary not re-validating it.
-			$field = 'af_' . $params['flagtype'] . '_count';
+			$field = 'af_' . $flag . '_count';
 
 			// Add another where condition to confirm that 
 			// the new flag value is at or above 0 (we use 
 			// unsigned ints, so negatives cause errors.
-
 			if( $direction == 'increase' ) {
 				$update[] = "$field = $field + 1";
 				// If this is already less than 0, 
@@ -78,69 +93,65 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				// Decrementing from 0 is not allowed.
 				$where[] = "$field > 0";
 			}
+
+			// Adding a new abuse flag: abusive++
+			if( $flag == 'abuse' && $direction == 'increase'
+			 && $record->af_abuse_count == 0 ) {
+				$counts['increment'][] = 'abusive';
+			}
+			// Removing the last abuse flag: abusive--
+			if( $flag == 'abuse' && $direction == 'decrease'
+			 && $record->af_abuse_count == 1 ) {
+				$counts['decrement'][] = 'abusive';
+			}
+
+			// note that a net helpfulness of 0 is neither helpful nor unhelpful
+			$netHelpfulness = $record->af_helpful_count - $record->af_unhelpful_count;
+
+			// increase helpful OR decrease unhelpful
+			if( ( ($flag == 'helpful' && $direction == 'increase' )
+			 || ($flag == 'unhelpful' && $direction == 'decrease' ) )
+			) {
+				// net was -1: no longer unhelpful
+				if( $netHelpfulness == -1 ) {
+					$counts['decrement'] = 'unhelpful';
+				}
+
+				// net was 0: now helpful
+				if( $netHelpfulness == -1 ) {
+					$counts['increment'] = 'helpful';
+				}
+			}
+
+			// increase unhelpful OR decrease unhelpful
+			if( ( ($flag == 'unhelpful' && $direction == 'increase' )
+			 || ($flag == 'helpful' && $direction == 'decrease' ) )
+			) {
+				// net was 1: no longer helpful
+				if( $netHelpfulness == 1 ) {
+					$counts['decrement'] = 'helpful';
+				}
+
+				// net was 0: now unhelpful
+				if( $netHelpfulness == 0 ) {
+					$counts['increment'] = 'unhelpful';
+				}
+			}
 		} else {
 			$error = 'articlefeedbackv5-invalid-feedback-flag';
 		}
 
-		// Newly abusive record
-		if ( $flag == 'abuse' && $record->af_abuse_count == 0 ) {
-			$counts['increment'][] = 'abusive';
-		}
-
-		if ( $flag == 'oversight' ) {
-			$counts['increment'][] = 'needsoversight';
-		}
-		if ( $flag == 'unoversight' ) {
-			$counts['decrement'][] = 'needsoversight';
-		}
-
-
-		// Newly hidden record
-		if ( $flag == 'hide' && $record->af_is_hidden == 0 ) {
-			$counts['increment'][] = 'invisible';
-			$counts['decrement'][] = 'visible';
-		}
-		// Unhidden record
-		if ( $flag == 'unhide' ) {
-			$counts['increment'][] = 'visible';
-			$counts['decrement'][] = 'invisible';
-		}
-
-		// Newly deleted record
-		if ( $flag == 'delete' && $record->af_is_deleted == 0 ) {
-			$counts['increment'][] = 'deleted';
-			$counts['decrement'][] = 'visible';
-		}
-		// Undeleted record
-		if ( $flag == 'undelete' ) {
-			$counts['increment'][] = 'visible';
-			$counts['decrement'][] = 'deleted';
-		}
-
-		// Newly helpful record
-		if ( $flag == 'helpful' && $record->af_helpful_count == 0 ) {
-			$counts['increment'][] = 'helpful';
-		}
-		// Newly unhelpful record (IE, unhelpful has overtaken helpful)
-		if ( $flag == 'unhelpful'
-		 && ( ( $record->af_helpful_count - $record->af_unhelpful_count ) == 1 ) ) {
-			$counts['decrement'][] = 'helpful';
-		}
-
 		if ( !$error ) {
-			$dbw = wfGetDB( DB_MASTER );
-			$dbw->update(
+			$dbw     = wfGetDB( DB_MASTER );
+			$success = $dbw->update(
 				'aft_article_feedback',
 				$update,
 				$where,
 				__METHOD__
 			);
 
-			if( $direction == 'decrease') {
-				// This is backwards to account for a users' unflagging something.
-				ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['decrement'] );
-				ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['increment'] );
-			} else {
+			// If the query worked, update the filter count rollups.
+			if( $success ) {
 				ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
 				ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['decrement'] );
 			}

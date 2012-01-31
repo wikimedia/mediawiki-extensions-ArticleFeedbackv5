@@ -268,7 +268,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				break;
 			case 'visible':
 				$where['af_is_deleted'] = 0;
-				$where['af_is_hidden']   = 0;
+				$where['af_is_hidden']  = 0;
 				break;
 			case 'invisible':
 				$where[] = 'af_is_hidden > 0';
