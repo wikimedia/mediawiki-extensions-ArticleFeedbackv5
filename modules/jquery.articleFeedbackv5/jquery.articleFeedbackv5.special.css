@@ -64,7 +64,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	clear: both;
 	padding: 0 10px;
 	height: 40px;
-	line-height: 40px;
+	line-height: 39px;
 	background: #D2E5F7;
 }
 #articleFeedbackv5-sort-filter-controls:after {
@@ -82,8 +82,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	display: inline-block;
 }
 #articleFeedbackv5-show-feedback {
-	overflow: auto;
-	height: 750px;
+	min-height: 250px;
 }
 .articleFeedbackv5-feedback {
 	min-width: 650px;
@@ -106,6 +105,9 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 .articleFeedbackv5-comment-wrap h3 a {
 	font-size: 1.2em;
 }
+.articleFeedbackv5-comment-wrap h3 .result {
+	margin-left: 0.5em;
+}
 .articleFeedbackv5-comment-wrap h3.positive .result {
 	/*color: #2f8035;*/
 }
@@ -118,7 +120,6 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	position: absolute;
 	top: 10px;
 	right: 10px;
-	border: solid 1px #c5c5c5;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools h3 {
 	background: #d2e5f7;
@@ -304,7 +305,6 @@ a#articleFeedbackv5-show-more {
 	background-size: 22px;
 	background-repeat: no-repeat;
 	background-position: center center;
-	margin-left: 25px;
 }
 .articleFeedbackv5-feedback h3.negative .icon {
 	/* @embed */
@@ -312,7 +312,6 @@ a#articleFeedbackv5-show-more {
 	background-size: 22px;
 	background-repeat: no-repeat;
 	background-position: center center;
-	margin-left: 25px;
 }
 #articleFeedbackv5-sort .articleFeedbackv5-sort-label {
 	display: inline-block;
