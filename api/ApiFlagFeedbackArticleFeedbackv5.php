@@ -50,12 +50,13 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				case 'oversight':
 					$field = 'af_needs_oversight';
 					$count = 'needsoversight';
+					break;
 				case 'delete':
 					$field = 'af_is_deleted';
 					$count = 'deleted';
+					break;
 				default: return; # return error, ideally.
 			}
-
 			if( $direction == 'increase' ) {
 				$update[] = "$field = TRUE";
 			} else {
@@ -63,11 +64,17 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			}
 
 			// Increment or decrement whichever flag is being set.
-			$counts[$direction][] = $count;
+			$countDirection = $direction == 'increase' ? 'increment' : 'decrement';
+			$counts[$countDirection][] = $count;
 			// If this is hiding/deleting, decrement the visible count.
 			if( ( $count == 'hide' || $count == 'deleted' )
 			 && $direction == 'increase' ) {
-				$counts['decrease'][] = 'visible';
+				$counts['decrement'][] = 'visible';
+			}
+			// If this is unhiding/undeleting, increment the visible count.
+			if( ( $count == 'hide' || $count == 'deleted' )
+			 && $direction == 'decrease' ) {
+				$counts['increment'][] = 'visible';
 			}
 		} elseif ( in_array( $flag, $counters ) ) {
 			// Probably this doesn't need validation, since the API

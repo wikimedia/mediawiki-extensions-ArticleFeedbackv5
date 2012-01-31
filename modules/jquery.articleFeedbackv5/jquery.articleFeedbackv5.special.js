@@ -204,7 +204,9 @@
 			var $l = $( e.target );
 			var id = $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
 			var activity = $.articleFeedbackv5special.getActivity( id );
-			if ( activity.hide ) {
+			if ( activity.hide 
+			  || $( e.target ).text() == mw.msg('articlefeedbackv5-form-unhide') 
+			) {
 				$.articleFeedbackv5special.flagFeedback( id, 'hide', -1 );
 			} else {
 				$.articleFeedbackv5special.flagFeedback( id, 'hide', 1 );
@@ -217,7 +219,9 @@
 			var $l = $( e.target );
 			var id = $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
 			var activity = $.articleFeedbackv5special.getActivity( id );
-			if ( activity.delete ) {
+			if ( activity.delete 
+			  || $( e.target ).text() == mw.msg('articlefeedbackv5-form-undelete') 
+			) {
 				$.articleFeedbackv5special.flagFeedback( id, 'delete', -1 );
 			} else {
 				$.articleFeedbackv5special.flagFeedback( id, 'delete', 1 );
