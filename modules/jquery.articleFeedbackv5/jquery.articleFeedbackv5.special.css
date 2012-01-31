@@ -13,7 +13,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
     text-transform: uppercase;
     color: #800;
     font-size: 1.4em;
-    font-variant: bold;
+    font-weight: normal;
     display: block;
     position: absolute;
     top: 45px;
