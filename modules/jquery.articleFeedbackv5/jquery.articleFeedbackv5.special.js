@@ -88,7 +88,7 @@
 		var id = window.location.href.match(/\/(\d+)$/)
 		if( id ) {
 			$.articleFeedbackv5special.listControls.filter      = 'id';
-			$.articleFeedbackv5special.listControls.filterValue = id[2];
+			$.articleFeedbackv5special.listControls.filterValue = id[1];
 		}
 
 		// Bold the default sort.
