@@ -59,6 +59,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	public function execute( $param ) {
 		global $wgArticleFeedbackv5DashboardCategory;
 		$out   = $this->getOutput();
+		
+		// set robot policy
+		$out->setIndexPolicy('noindex');
 
 		if( preg_match('/^(.+)\/(\d+)$/', $param, $m ) ) {
 			$param = $m[1];
