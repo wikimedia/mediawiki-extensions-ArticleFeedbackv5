@@ -246,12 +246,21 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		// Don't let non-allowed users see these.
 		if ( !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
-			$where['af_is_hidden'] = 0;
+			$where[] = 'af_is_hidden IS FALSE';
 		}
 
 		// Don't let non-allowed users see these.
 		if ( !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
-			$where['af_is_deleted'] = 0;
+			$where[] = 'af_is_deleted IS FALSE';
+		}
+
+		// Never show hidden or deleted posts unless specifically requested.
+		if( $filter != 'invisible' && $filter != 'deleted' ) { 
+			$where[] = 'af_is_hidden IS FALSE';
+		}
+
+		if( $filter != 'deleted' ) { 
+			$where[] = 'af_is_deleted IS FALSE';
 		}
 
 		switch ( $filter ) {
@@ -263,30 +272,31 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				$where['af_id'] = $filterValue;
 				break;
 			case 'visible':
-				$where['af_is_deleted'] = 0;
-				$where['af_is_hidden']  = 0;
+				$where[] = 'af_is_deleted IS FALSE';
+				$where[] = 'af_is_hidden IS FALSE';
 				break;
 			case 'invisible':
-				$where[] = 'af_is_hidden > 0';
+				$where[] = 'af_is_hidden IS TRUE';
  				break;
 			case 'abusive':
 				$where[] = 'af_abuse_count > 0';
 				break;
 			case 'helpful':
-				$where[] = 'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) > 0';
+				$where[] = 'af_net_helpfulness > 0';
 				break;
 			case 'unhelpful':
-				$where[] = 'CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED) < 0';
+				$where[] = 'af_net_helpfulness < 0';
 				break;
 			case 'comment':
 				$where[] = 'comment.aa_response_text IS NOT NULL';
 				break;
 			case 'deleted':
-				$where[] = 'af_is_deleted > 0';
+				$where[] = 'af_is_deleted IS TRUE';
 				break;
 			default:
 				break;
 		}
+
 		return $where;
 	}
 
