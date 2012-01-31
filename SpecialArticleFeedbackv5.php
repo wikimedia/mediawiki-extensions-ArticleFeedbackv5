@@ -108,7 +108,14 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			return;
 		}
 
-		# TODO: Fix links.	
+		$helpPage  = 'Article_Feedback_Tool/Version_5/Help/Feedback_page'; 
+		if( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
+			$helpPage = 'Article_Feedback_Tool/Version_5/Help/Feedback_page_Oversighters';
+		} elseif( $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
+			$helpPage = 'Article_Feedback_Tool/Version_5/Help/Feedback_page_Hiders';
+		}
+
+		$helpTitle = Title::newFromText( $helpPage, 'Wikipedia' );
 		$out->addHTML(
 			Html::openElement(
 				'div',
@@ -129,7 +136,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			)
 			. ' | ' .
 			Linker::link(
-				$title,
+				$helpTitle,
 				$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
 			)
 			. Html::closeElement( 'div' )
