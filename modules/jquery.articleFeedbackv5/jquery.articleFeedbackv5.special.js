@@ -495,9 +495,17 @@
 							// Abusive
 							} else if ( 'abuse' == type ) {
 								if ( dir > 0 ) {
-									$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
+									if( mw.config.get( 'afCanEdit' ) == 1 ) {
+										$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
+									} else {
+										$l.text( mw.msg( 'articlefeedbackv5-abuse-saved-masked', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
+									}
 								} else {
-									$l.text( mw.msg( 'articlefeedbackv5-form-abuse', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
+									if( mw.config.get( 'afCanEdit' ) == 1 ) {
+										$l.text( mw.msg( 'articlefeedbackv5-form-abuse', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
+									} else {
+										$l.text( mw.msg( 'articlefeedbackv5-form-abuse-masked', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
+									}
 								}
 								$l.attr( 'rel', data['articlefeedbackv5-flag-feedback'].abuse_count );
 								if ( data['articlefeedbackv5-flag-feedback'].abusive ) {
@@ -594,7 +602,11 @@
 							}
 							if ( activity.abuse ) {
 								var $l = $( this ).find( '#articleFeedbackv5-abuse-link-' + id );
-								$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', $l.attr( 'rel' ) ) );
+								if( mw.config.get( 'afCanEdit' ) == 1 ) {
+									$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', $l.attr( 'rel' ) ) );
+								} else {
+									$l.text( mw.msg( 'articlefeedbackv5-abuse-saved-masked', $l.attr( 'rel' ) ) );
+								}
 							}
 						}
 						if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {

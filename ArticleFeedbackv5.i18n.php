@@ -90,6 +90,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-header' => 'Feedback #$1, at $2',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$1}} found what they were looking for',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$1}} did not find what they were looking for',
+	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$1}} left a comment',
 	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}} had a praise:',
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} had a problem:',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} had a question:',
@@ -100,6 +101,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} was not shown a feedback form.',
 	'articlefeedbackv5-form-invalid' => 'Invalid feedback form ID.',
 	'articlefeedbackv5-abuse-saved' => 'Flagged as abuse ($1)',
+	'articlefeedbackv5-abuse-saved-masked' => 'Flagged as abuse',
 	'articlefeedbackv5-oversight-saved' => 'Marked for oversight',
 	'articlefeedbackv5-unoversight-saved' => 'Oversight flag removed',
 	'articlefeedbackv5-error-loading-feedback' => 'Error loading feedback',
@@ -347,6 +349,8 @@ $messages['qqq'] = array(
 	'articlefeedbackv5-form1-header-found' => 'Parameters
 * $1 is a username.',
 	'articlefeedbackv5-form1-header-not-found' => 'Parameters
+* $1 is a username.',
+    'articlefeedbackv5-form1-header-left-comment' => 'Parameters
 * $1 is a username.',
 	'articlefeedbackv5-form2-header-praise' => 'Parameters:
 * $1 is a user name.',

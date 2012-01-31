@@ -57,7 +57,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @param $param string the parameter passed in the url
 	 */
 	public function execute( $param ) {
-		global $wgArticleFeedbackv5DashboardCategory;
+		global $wgArticleFeedbackv5DashboardCategory, $wgUser;
 		$out   = $this->getOutput();
 		
 		// set robot policy
@@ -185,6 +185,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 #		}
 
 		$out->addJsConfigVars( 'afPageId', $pageId );
+		// Only show the abuse counts to editors (ie, anyone allowed to 
+		// hide content).
+		if ( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
+			$out->addJsConfigVars( 'afCanEdit', 1 );
+		}
 		$out->addModules( 'ext.articleFeedbackv5.dashboard' );
 
 		$sortLabels = array();
