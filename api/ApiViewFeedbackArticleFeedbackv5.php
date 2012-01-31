@@ -604,7 +604,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'class' => 'articleFeedbackv5-comment-short',
 				'id'    => "articleFeedbackv5-comment-short-$feedbackId"
 			),
-			htmlspecialchars( $short )
+			$short
 		);
 
 		// If the short string is the same size as the
@@ -617,12 +617,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 					'class' => 'articleFeedbackv5-comment-full',
 					'id'    => "articleFeedbackv5-comment-full-$feedbackId"
 				),
-				htmlspecialchars( $text )
+				$text
 			)
 			. Html::element( 'a', array(
 				'class' => 'articleFeedbackv5-comment-toggle',
 				'id'    => "articleFeedbackv5-comment-toggle-$feedbackId"
-			), wfMessage( 'articlefeedbackv5-comment-more' )->escaped() );
+			), wfMessage( 'articlefeedbackv5-comment-more' ) );
 		}
 
 		$rv .= Html::closeElement( 'blockquote' );
