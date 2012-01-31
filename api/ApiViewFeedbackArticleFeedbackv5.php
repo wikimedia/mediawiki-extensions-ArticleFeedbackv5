@@ -524,8 +524,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderBucket3( $record ) {
-		$name   = htmlspecialchars( $record[0]->user_name );
-		$rating = htmlspecialchars( $record['rating']->aa_response_rating );
 		$class  = $record['rating']->aa_response_rating >= 3 ? 'positive' : 'negative';
 
 		return $this->feedbackHead( 'articlefeedbackv5-form3-header', $class, $record[0], $record['rating']->aa_response_rating )
@@ -541,7 +539,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderBucket5( $record ) {
-		$name  = htmlspecialchars( $record[0]->user_name );
 		$body  = '<ul>';
 		$total = 0;
 		$count = 0;
@@ -629,12 +626,18 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	private function feedbackHead( $message, $class, $record, $extra = '' ) {
 		$name   = htmlspecialchars( $record->user_name );
-		$link   = !$record->af_user_ip ? "User:$name" : "Special:Contributions/$name";
 		$gender = $name;
+		if( $record->af_user_ip ) {
+			// Anonymous user, go to contributions page.
+			$title =  SpecialPage::getTitleFor( 'Contributions', $record->user_name );
+		} else {
+			// Registered user, go to user page.
+			$title = Title::makeTitleSafe( NS_USER, $record->user_name );
+		}
 
 		return Html::openElement( 'h3', array( 'class' => $class) )
 		. Html::element( 'span', array( 'class' => 'icon' ) )
-		. Linker::link( Title::newFromText( $link ), $name )
+		. Linker::link( $title, $name )
 		. Html::element( 'span',
 			array( 'class' => 'result' ),
 			wfMessage( $message, $gender, $extra )->text()
