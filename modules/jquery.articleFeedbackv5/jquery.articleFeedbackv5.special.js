@@ -117,8 +117,8 @@
 		} );
 
 		$( '.articleFeedbackv5-sort-link' ).bind( 'click', function( e ) {
-			id     = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-sort-' );
-			oldId  = $.articleFeedbackv5special.listControls.sort;
+			var	id     = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-sort-' ),
+				oldId  = $.articleFeedbackv5special.listControls.sort;
 
 			// set direction = desc...
 			$.articleFeedbackv5special.listControls.sort     = id;
@@ -144,7 +144,7 @@
 		} );
 
 		$( '.articleFeedbackv5-permalink' ).live( 'click', function( e ) {
-			id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-permalink-' );
+			var id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-permalink-' );
 			$.articleFeedbackv5special.listControls.filter      = 'id';
 			$.articleFeedbackv5special.listControls.filterValue = id;
 			$.articleFeedbackv5special.listControls.continue    = null;
@@ -252,8 +252,8 @@
 	// {{{ drawSortArrow
 
 	$.articleFeedbackv5special.drawSortArrow = function() { 
-		id  = $.articleFeedbackv5special.listControls.sort;
-		dir = $.articleFeedbackv5special.listControls.sortDirection;
+		var	id  = $.articleFeedbackv5special.listControls.sort,
+			dir = $.articleFeedbackv5special.listControls.sortDirection;
 
 		$( '.articleFeedbackv5-sort-arrow' ).hide();
 		$( '.articleFeedbackv5-sort-link' ).removeClass( 'sort-active' );
