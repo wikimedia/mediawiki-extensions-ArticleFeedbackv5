@@ -128,6 +128,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-desc' => 'Article feedback',
 	'articlefeedbackv5-comment-more' => 'More',
 	'articlefeedbackv5-comment-less' => 'Less',
+	'articlefeedbackv5-beta-notice' => 'Beta',
 
 	/* Feedback forms */
 	/* Option 1 ("Did you find what you were looking for?") */
@@ -447,6 +448,7 @@ $1 is an integer, and the rating count.",
 * <code>$1</code> – URL of the confirmation link
 * <code>$2</code> – URL to type in the confirmation code manually.
 * <code>$3</code> – Confirmation code for the user to type in',
+	'articlefeedbackv5-beta-notice' => 'The BETA state notice for article feedback v5',
 );
 
 /** Afrikaans (Afrikaans)

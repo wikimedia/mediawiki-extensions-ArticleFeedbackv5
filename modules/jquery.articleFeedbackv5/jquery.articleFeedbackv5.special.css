@@ -9,6 +9,16 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 .float-clear:after {
 	clear: both;
 }
+.articlefeedbackv5-beta-notice {
+    text-transform: uppercase;
+    color: #800;
+    font-size: 1.4em;
+    font-variant: bold;
+    display: block;
+    position: absolute;
+    top: 45px;
+    right: 0;
+}
 #articleFeedbackv5-header-wrap {
 	margin: 0 0 10px;
 }

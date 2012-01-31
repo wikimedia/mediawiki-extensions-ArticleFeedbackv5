@@ -158,6 +158,15 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				. Html::closeElement( 'div' )
 			);
 		}
+		
+		// BETA notice
+		$out->addHTML(
+		    Html::rawElement( 'span', array(
+			    'class' => 'articlefeedbackv5-beta-notice'
+		    ), $this->msg( 'articlefeedbackv5-beta-notice' )->text() )
+			. Html::element( 'div', array( 'class' => 'float-clear' ) )
+			. Html::closeElement( 'div' )
+		);
 
 		$out->addHtml(
 			Html::element(
