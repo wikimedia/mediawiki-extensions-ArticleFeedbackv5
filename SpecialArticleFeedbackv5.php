@@ -105,7 +105,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			return;
 		}
 
-		# TODO: Fix links.
+		# TODO: Fix links.	
 		$out->addHTML(
 			Html::openElement(
 				'div',
@@ -116,17 +116,17 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				array( 'id' => 'articleFeedbackv5-header-links' )
 			)
 			. Linker::link(
-				Title::newFromText( $param ),
+				$title,
 				$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
 			)
 			. ' | ' .
 			Linker::link(
-				Title::newFromText( $param ),
+				$title->getTalkPage(),
 				$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
 			)
 			. ' | ' .
 			Linker::link(
-				Title::newFromText( $param ),
+				$title,
 				$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
 			)
 			. Html::closeElement( 'div' )
