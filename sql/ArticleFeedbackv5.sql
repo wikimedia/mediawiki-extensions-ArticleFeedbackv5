@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_answer (
 -- selects we only want the count for each input, not the value of that input or
 -- the sum of the values (which will be numerical option_ids, not meaningful 
 -- rating values). The queries were sufficiently different that we deemed multiple
---tables worthwhile.
+-- tables worthwhile.
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback_ratings_rollup (
   arr_page_id   integer unsigned NOT NULL,
   arr_field_id  integer unsigned NOT NULL,
