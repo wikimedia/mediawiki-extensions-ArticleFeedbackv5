@@ -295,7 +295,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	protected function renderFeedback( $record ) {
-		global $wgArticlePath, $wgUser, $wgLang;
+		global $wgUser;
 		$id = $record[0]->af_id;
 
 		switch( $record[0]->af_bucket_id ) {
