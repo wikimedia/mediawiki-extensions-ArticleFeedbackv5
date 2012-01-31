@@ -73,6 +73,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|1 feedback post|$1 feedback posts}} on this article',
 	'articleFeedbackv5-comment-ago'  => '$1 ago',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edit|$1 edits}} since post',
+	'articlefeedbackv5-revision-link' => 'View exact page',
 	'articlefeedbackv5-special-more' => 'Show more posts',
 	'articlefeedbackv5-special-pagetitle' => 'Feedback: $1',
 	'articlefeedbackv5-form-optionid' => 'Option $1',
@@ -333,6 +334,7 @@ $messages['qqq'] = array(
 	'articlefeedbackv5-special-showing' => 'Text to show how many feedback psots have been posted to this article. $1 is the number of posts (needs plural support)',
 	'articleFeedbackv5-comment-ago' => 'For posts less than 48 hours old, display a relative timestamp ("2 hours 19 minutes ago", eg). Formatting timestamp is in $1',
 	'articlefeedbackv5-updates-since' => 'Number of edits made to this article since this feedback was posted. $1 is the number of edits. Requires plural support',
+	'articlefeedbackv5-revision-link' => 'Link to view the exact revision this user commented on (may be the current live page, or a historical revision).',
 	'articlefeedbackv5-special-more' => '{{Identical|More}}',
 	'articlefeedbackv5-special-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]]. Parameters:
 * $1 is the title of the article for which we show the feedback',

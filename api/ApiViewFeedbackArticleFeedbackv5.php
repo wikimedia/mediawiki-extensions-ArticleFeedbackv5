@@ -185,8 +185,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'afi_data_type', 'af_created', 'user_name',
 				'af_user_ip', 'af_is_hidden', 'af_abuse_count',
 				'af_helpful_count', 'af_unhelpful_count',
-				'af_is_deleted', 'af_needs_oversight',
-				'(SELECT COUNT(*) FROM ' . $dbr->tableName( 'revision' ) . ' WHERE rev_id > af_revision_id AND rev_page = ' . ( integer ) $pageId . ') AS age',
+				'af_is_deleted', 'af_needs_oversight', 'af_revision_id',
 				'af_net_helpfulness', 'af_revision_id',
 				'page_latest', 'page_title', 'page_namespace',
 				'rating.aa_response_boolean AS rating'
@@ -315,18 +314,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$details = Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-comment-details-updates'
 		) );
-		if( $record[0]->age > 0 ) {
-			$details .=  Linker::link(
-				Title::newFromRow( $record[0] ),
-				wfMessage( 'articlefeedbackv5-updates-since',  $record[0]->age )->escaped(),
-				array(),
-				array(
-					'action' => 'historysubmit',
-					'diff'   => $record[0]->page_latest,
-					'oldid'  => $record[0]->af_revision_id
-				)
-			);
-		}
+		$details .=  Linker::link(
+			Title::newFromRow( $record[0] ),
+			wfMessage( 'articlefeedbackv5-revision-link' )->escaped(),
+			array(),
+			array( 'oldid'  => $record[0]->af_revision_id )
+		);
 		$details .= Html::closeElement( 'div' );
 
 		$footer_links = Html::openElement( 'div', array(
@@ -398,7 +391,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			) );
 
 			if ( $can_hide ) {
-				if ( $record[0]->af_is_hidden > 0 ) {
+				if ( $record[0]->af_is_hidden ) {
 					$msg = 'unhide';
 				} else {
 					$msg = 'hide';
