@@ -85,7 +85,7 @@
 
 		// Process anything we found in the URL hash
 		// Permalinks.
-		var id = window.location.href.match(/(.+)\/(\d+)$/)
+		var id = window.location.href.match(/\/(\d+)$/)
 		if( id ) {
 			$.articleFeedbackv5special.listControls.filter      = 'id';
 			$.articleFeedbackv5special.listControls.filterValue = id[2];

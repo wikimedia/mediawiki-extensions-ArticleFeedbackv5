@@ -468,36 +468,34 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function renderPermalinkTimestamp( $record ) {
-	    global $wgLang;
-	    $id    = $record->af_id;
+		global $wgLang;
+		$id    = $record->af_id;
 		$title = $record->page_title;
 
-	    // Taken from the Moodbar extension.
-	    $now       = wfTimestamp( TS_UNIX );
-	    $timestamp = wfTimestamp( TS_UNIX, $record->af_created );
-	    $date	   = '';
+		// Taken from the Moodbar extension.
+		$now       = wfTimestamp( TS_UNIX );
+		$timestamp = wfTimestamp( TS_UNIX, $record->af_created );
+		$date	   = '';
 
-	    // Relative dates for 48 hours, normal timestamps later.
-	    if ( $timestamp > ( $now - ( 86400 * 2 ) ) ) {
-		    $time = $wgLang->formatTimePeriod(
-			    ( $now - $timestamp ), 'avoidseconds'
-		    );
-		    $date = wfMessage( 'articleFeedbackv5-comment-ago', $time )->escaped();
-	    } elseif( $timestamp ) {
-		    $date = $wgLang->timeanddate($record->af_created  );
-	    }
+		// Relative dates for 48 hours, normal timestamps later.
+		if ( $timestamp > ( $now - ( 86400 * 2 ) ) ) {
+			$time = $wgLang->formatTimePeriod(
+				( $now - $timestamp ), 'avoidseconds'
+			);
+			$date = wfMessage( 'articleFeedbackv5-comment-ago', $time )->escaped();
+			} elseif( $timestamp ) {
+				$date = $wgLang->timeanddate($record->af_created  );
+		}
 
-	    // format the element
-	    return Html::openElement( 'span', array(
-		    'class' => 'articleFeedbackv5-comment-details-date'
-	    ) )
+		// format the element
+		return Html::openElement( 'span', array(
+			'class' => 'articleFeedbackv5-comment-details-date'
+		) )
 		. Linker::link(
-			Title::newFromText(
-				"Special:ArticleFeedbackv5/$title/$id"
-			),
+			SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$id" ),
 			$date
 		)
-	    . Html::closeElement( 'span' );
+		. Html::closeElement( 'span' );
 	}
 
 	private function renderBucket1( $record ) {
