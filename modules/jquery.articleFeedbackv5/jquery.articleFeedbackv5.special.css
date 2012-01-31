@@ -60,6 +60,9 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 #bodyContent h2 {
 	clear: both;
 }
+#articleFeedbackv5-filter {
+    font-size: 1.125em;
+}
 #articleFeedbackv5-sort-filter-controls {
 	clear: both;
 	padding: 0 10px;
@@ -73,6 +76,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 #articleFeedbackv5-sort-filter-controls #articleFeedbackv5-sort {
 	float: left;
 	margin: 0 50px 0 0;
+	font-size: 1.125em;
 }
 #articleFeedbackv5-filter-select {
 	position: relative;
