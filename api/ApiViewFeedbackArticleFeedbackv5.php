@@ -618,7 +618,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			. Html::element( 'a', array(
 				'class' => 'articleFeedbackv5-comment-toggle',
 				'id'    => "articleFeedbackv5-comment-toggle-$feedbackId"
-			), wfMessage( 'articlefeedbackv5-comment-more' ) );
+			), wfMessage( 'articlefeedbackv5-comment-more' )->text() );
 		}
 
 		$rv .= Html::closeElement( 'blockquote' );
