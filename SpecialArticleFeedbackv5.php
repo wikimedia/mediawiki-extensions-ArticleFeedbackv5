@@ -60,7 +60,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		} elseif( $showHidden ) {
 			$this->filters[] = 'notdeleted';
 		}
-			$this->filters[] = 'notdeleted';
 	}
 
 	/**
