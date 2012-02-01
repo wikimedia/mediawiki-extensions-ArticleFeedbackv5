@@ -74,6 +74,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// set robot policy
 		$out->setIndexPolicy('noindex');
 
+		if( !$param ) {
+			$out->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
+			return;
+		}
+
 		if( preg_match('/^(.+)\/(\d+)$/', $param, $m ) ) {
 			$param = $m[1];
 		}
