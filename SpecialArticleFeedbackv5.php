@@ -133,7 +133,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$helpPage = 'Article_Feedback_Tool/Version_5/Help/Feedback_page_Editors';
 		}
 
-		$helpTitle = Title::newFromText( $helpPage, 'Wikipedia' );
+		$helpTitle = Title::newFromText( $helpPage, NS_PROJECT );
 		$out->addHTML(
 			Html::openElement(
 				'div',
