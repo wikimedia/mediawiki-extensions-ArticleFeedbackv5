@@ -234,7 +234,10 @@ a#articleFeedbackv5-show-more {
 }
 
 #articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link {
-
+	cursor: pointer;
+}
+.articleFeedbackv5-hide-link, .articleFeedbackv5-delete-link {
+	cursor: pointer;
 }
 #articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link.abusive {
 	color: red;
