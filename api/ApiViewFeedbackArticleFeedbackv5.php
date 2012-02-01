@@ -625,6 +625,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$title = Title::makeTitleSafe( NS_USER, $record->user_name );
 		}
 
+		// If user page doesn't exist, go someplace else.
+		// Use the contributions page for now, but it's really up to Fabrice.
+		if( !$title->exists() ) {
+			$title = SpecialPage::getTitleFor( 'Contributions', $record->user_name );
+		}
+
 		return Html::openElement( 'h3', array( 'class' => $class) )
 		. Html::element( 'span', array( 'class' => 'icon' ) )
 		. Html::rawElement( 'span',
