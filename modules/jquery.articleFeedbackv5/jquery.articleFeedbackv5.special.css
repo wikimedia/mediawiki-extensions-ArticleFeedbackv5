@@ -15,9 +15,9 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
     font-size: 1.4em;
     font-weight: normal;
     display: block;
-    position: absolute;
-    top: 45px;
-    right: 0;
+	position: relative;
+	top: 1.3em;
+	left: 3em;
 }
 #articleFeedbackv5-header-wrap {
 	margin: 0 0 10px;
