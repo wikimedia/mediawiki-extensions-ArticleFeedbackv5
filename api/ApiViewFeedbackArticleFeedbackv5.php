@@ -616,8 +616,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function feedbackHead( $message, $class, $record, $extra = '' ) {
-		$name   = htmlspecialchars( $record->user_name );
-		$gender = $name;
+		$name = htmlspecialchars( $record->user_name );
 		if( $record->af_user_ip ) {
 			// Anonymous user, go to contributions page.
 			$title =  SpecialPage::getTitleFor( 'Contributions', $record->user_name );
@@ -628,10 +627,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		return Html::openElement( 'h3', array( 'class' => $class) )
 		. Html::element( 'span', array( 'class' => 'icon' ) )
-		. Linker::link( $title, $name )
-		. Html::element( 'span',
+		. Html::rawElement( 'span',
 			array( 'class' => 'result' ),
-			wfMessage( $message, $gender, $extra )->text()
+			wfMessage( $message, $name )->rawParams( 
+				Linker::link( $title, $name )
+			)->escaped()
 		)
 		. Html::closeElement( 'h3' )
 		. $this->renderPermalinkTimestamp( $record );
