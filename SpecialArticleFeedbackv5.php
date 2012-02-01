@@ -14,7 +14,7 @@
  * @package    ArticleFeedback
  * @subpackage Special
  */
-class SpecialArticleFeedbackv5 extends SpecialPage {
+class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	private $filters = array(
 		'comment',
 		'helpful',
