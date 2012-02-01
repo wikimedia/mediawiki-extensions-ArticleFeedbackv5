@@ -113,7 +113,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			}
 
 			// note that a net helpfulness of 0 is neither helpful nor unhelpful
-			$netHelpfulness = $record->af_helpful_count - $record->af_unhelpful_count;
+			$netHelpfulness = $record->af_net_helpfulness;
 
 			// increase helpful OR decrease unhelpful
 			if( ( ($flag == 'helpful' && $direction == 'increase' )
@@ -157,37 +157,42 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				__METHOD__
 			);
 
-			// If the query worked, update the filter count rollups.
+			// If the query worked...
 			if( $success ) {
+				// Update the filter count rollups.
 				ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
 				ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['decrement'] );
-			}
 
-			// Update helpful/unhelpful count after submission.
-			// This gets a potentially stale copy from the read
-			// database and assumes it's valid, in the interest
-			// of staying off of the write database.
-			// Better stale data than wail on the master, IMO,
-			// but I'm open to suggestion on that one.
-			if ( $params['flagtype'] == 'helpful' || $params['flagtype'] == 'unhelpful' ) {
-				$record = $this->fetchRecord( $params['feedbackid'] );
+				// Update helpful/unhelpful display count after submission.
+				if ( $flag == 'helpful' || $flag == 'unhelpful' ) {
+					$helpful   = $record->af_helpful_count;
+					$unhelpful = $record->af_unhelpful_count;
 
-				$helpful   = $record->af_helpful_count;
-				$unhelpful = $record->af_unhelpful_count;
+					if( $flag == 'helpful' && $direction == 'increase' ) {
+						$helpful++;
+					} elseif ( $flag == 'helpful' && $direction == 'decrease' ) {
+						$helpful--;
+					} elseif ( $flag == 'unhelpful' && $direction == 'increase' ) {
+						$unhelpful++;
+					} elseif ( $flag == 'unhelpful' && $direction == 'decrease' ) {
+						$unhelpful--;
+					}
 
-				$results['helpful'] = wfMessage( 'articlefeedbackv5-form-helpful-votes',
-					$helpful, $unhelpful
-				)->escaped();
+					$results['helpful'] = wfMessage( 
+						'articlefeedbackv5-form-helpful-votes',
+						$helpful, $unhelpful
+					)->escaped();
 
-				// Update net_helpfulness after flagging as helpful/unhelpful.
-				$dbw->update(
-					'aft_article_feedback',
-					array( 'af_net_helpfulness = CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED)' ),
-					array(
-						'af_id' => $params['feedbackid'],
-					),
-					__METHOD__
-				);
+					// Update net_helpfulness after flagging as helpful/unhelpful.
+					$dbw->update(
+						'aft_article_feedback',
+						array( 'af_net_helpfulness = CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED)' ),
+						array(
+							'af_id' => $params['feedbackid'],
+						),
+						__METHOD__
+					);
+				}
 			}
 
 			// Conditional formatting for abuse flag
@@ -245,7 +250,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$dbr    = wfGetDB( DB_SLAVE );
 		$record = $dbr->selectRow(
 			'aft_article_feedback',
-			array( 'af_id', 'af_abuse_count', 'af_is_hidden', 'af_helpful_count', 'af_unhelpful_count', 'af_is_deleted' ),
+			array( 'af_id', 'af_abuse_count', 'af_is_hidden', 'af_helpful_count', 'af_unhelpful_count', 'af_is_deleted', 'af_net_helpfulness' ),
 			array( 'af_id' => $id )
 		);
 		return $record;
