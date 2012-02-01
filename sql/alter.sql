@@ -122,3 +122,6 @@ CREATE INDEX /*i*/afo_field_id ON /*_*/aft_article_field_option (afo_field_id);
 ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_net_helpfulness integer NOT NULL DEFAULT 0;
 CREATE INDEX /*i*/af_net_helpfulness ON /*_*/aft_article_feedback (af_net_helpfulness);
 UPDATE aft_article_feedback SET af_net_helpfulness = CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED);
+
+-- Added 2/1 (greg)
+CREATE INDEX /*_*/af_net_helpfulness_af_id ON /*_*/aft_article_feedback (af_id, af_net_helpfulness);

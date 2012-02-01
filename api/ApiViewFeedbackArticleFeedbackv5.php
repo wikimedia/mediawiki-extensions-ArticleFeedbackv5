@@ -14,7 +14,8 @@
  * @subpackage Api
  */
 class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
-	private $continue;
+	private $continue   = null;
+	private $continueId = null;
 
 	/**
 	 * Constructor
@@ -40,21 +41,23 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$params['sort'],
 			$params['sortdirection'],
 			$params['limit'],
-			( $params['continue'] !== 'null' ? $params['continue'] : null )
+			( $params['continue'] !== 'null' ? $params['continue'] : null ),
+			( $params['continueid'] !== 'null' ? $params['continueid'] : null )
 		);
 		foreach ( $feedback as $record ) {
 			$html .= $this->renderFeedback( $record );
 			$length++;
 		}
 
-		$continue = $this->continue;
-
 		$result->addValue( $this->getModuleName(), 'length', $length );
 		$result->addValue( $this->getModuleName(), 'count', $count );
-		$result->addValue( $this->getModuleName(), 'feedback', $html );
-		if ( $continue ) {
-			$result->addValue( $this->getModuleName(), 'continue', $continue );
+		if ( $this->continue !== null ) {
+			$result->addValue( $this->getModuleName(), 'continue', $this->continue );
 		}
+		if ( $this->continueId ) {
+			$result->addValue( $this->getModuleName(), 'continueid', $this->continueId );
+		}
+		$result->addValue( $this->getModuleName(), 'feedback', $html );
 	}
 
 	public function fetchFeedbackCount( $pageId ) {
@@ -74,7 +77,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	public function fetchFeedback( $pageId, $filter = 'visible',
 	 $filterValue = null, $sort = 'age', $sortOrder = 'desc',
-	 $limit = 25, $continue = null ) {
+	 $limit = 25, $continue = null, $continueId ) {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$ids   = array();
 		$rows  = array();
@@ -103,28 +106,37 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// Build ORDER BY clause.
 		switch( $sort ) {
 			case 'helpful':
-				$sortField   = 'af_net_helpfulness';
+				$sortField   = 'af_net_helpfulness'; 
+				$order       = "af_net_helpfulness $direction, af_id $direction";
+				$continueSql = "(af_net_helpfulness $continueDirection ".intVal( $continue )
+				 ." OR (af_net_helpfulness = ".intVal( $continue )
+				 ." AND af_id $continueDirection ".intval( $continueId ).") )";
 				break;
 			case 'rating':
-				$sortField = 'rating';
+				# TODO: null ratings don't seem to show up at all. Need to sort that one out.
+				$sortField   = 'rating';
+				$order       = "rating $direction, af_id $direction";
+				$continueSql = "(rating.aa_response_boolean $continueDirection ".intVal( $continue )
+				 ." OR (rating.aa_response_boolean = ".intVal( $continue )
+				 ." AND af_id $continueDirection ".intval( $continueId ).") )";
 				break;
 			case 'age':
 				# Default field, fall through
 			default:
-				$sortField   = 'af_id';
+				$sortField   = 'af_id'; 
+				$order       = "af_id $direction";
+				$continueSql = "af_id < ".intVal( $continue );
 				break;
 		}
-		$order       = "$sortField $direction";
-		$continueSql = "$sortField $continueDirection";
 
 		// Build WHERE clause.
 		// Filter applied , if any:
 		$where = $this->getFilterCriteria( $filter, $filterValue );
 		// PageID:
 		$where['af_page_id'] = $pageId;
-		// Continue value, if any:
+		// Continue SQL, if any:
 		if ( $continue !== null ) {
-			$where[] = $continueSql.' '.intVal( $continue );
+			$where[] = $continueSql;
 		}
 		// Only show bucket 1 (per Fabrice on 1/25)
 		$where['af_bucket_id'] = 1;
@@ -163,10 +175,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				)
 			)
 		);
+
 		foreach ( $id_query as $id ) {
 			$ids[] = $id->af_id;
-			$this->continue = $id->$sortField;
+			$this->continue   = $id->$sortField;
+			$this->continueId = $id->af_id;
 		}
+            
 
 		if ( !count( $ids ) ) {
 			return array();
@@ -683,6 +698,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
 			),
+			'continueid'    => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_TYPE     => 'string'
+			),
 			'continue'      => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
@@ -703,7 +723,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'filter'      => 'What filtering to apply to list',
 			'filtervalue' => 'Optional param to pass to filter',
 			'limit'       => 'Number of records to show',
-			'continue'    => 'Offset from which to continue',
+			'continue'    => 'sort value at which to continue',
+			'continueid'  => 'Last af_id with that sort value that was shown (IE, where to continue if the page break has the same sort value)',
 		);
 	}
 

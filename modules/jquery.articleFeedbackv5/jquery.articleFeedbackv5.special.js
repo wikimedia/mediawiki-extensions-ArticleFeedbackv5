@@ -51,7 +51,8 @@
 		sort: 'age',
 		sortDirection: 'desc',
 		limit: 25,
-		continue: null
+		continue: null,
+		continueId: null // Sort of a tie-breaker for continue values.
 	};
 
 	/**
@@ -110,8 +111,9 @@
 	 */
 	$.articleFeedbackv5special.setBinds = function() {
 		$( '#articleFeedbackv5-filter-select' ).bind( 'change', function( e ) {
-			$.articleFeedbackv5special.listControls.filter   = $(this).val();
-			$.articleFeedbackv5special.listControls.continue = null;
+			$.articleFeedbackv5special.listControls.filter     = $(this).val();
+			$.articleFeedbackv5special.listControls.continue   = null;
+			$.articleFeedbackv5special.listControls.continueId = null;
 			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
@@ -121,8 +123,9 @@
 				oldId  = $.articleFeedbackv5special.listControls.sort;
 
 			// set direction = desc...
-			$.articleFeedbackv5special.listControls.sort     = id;
-			$.articleFeedbackv5special.listControls.continue = null;
+			$.articleFeedbackv5special.listControls.sort       = id;
+			$.articleFeedbackv5special.listControls.continue   = null;
+			$.articleFeedbackv5special.listControls.continueId = null;
 
 			// unless we're flipping the direction on the current sort.
 			if( id == oldId && $.articleFeedbackv5special.listControls.sortDirection == 'desc' ) {
@@ -148,6 +151,7 @@
 			$.articleFeedbackv5special.listControls.filter      = 'id';
 			$.articleFeedbackv5special.listControls.filterValue = id;
 			$.articleFeedbackv5special.listControls.continue    = null;
+			$.articleFeedbackv5special.listControls.continueId  = null;
 			$.articleFeedbackv5special.loadFeedback( true );
 		} );
 
@@ -579,6 +583,7 @@
 				'afvfsortdirection' : $.articleFeedbackv5special.listControls.sortDirection,
 				'afvflimit'         : $.articleFeedbackv5special.listControls.limit,
 				'afvfcontinue'      : $.articleFeedbackv5special.listControls.continue,
+				'afvfcontinueid'    : $.articleFeedbackv5special.listControls.continueId,
 				'action'  : 'query',
 				'format'  : 'json',
 				'list'    : 'articlefeedbackv5-view-feedback',
@@ -617,7 +622,8 @@
 						}
 					} );
 					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
-					$.articleFeedbackv5special.listControls.continue = data['articlefeedbackv5-view-feedback'].continue;
+					$.articleFeedbackv5special.listControls.continue   = data['articlefeedbackv5-view-feedback'].continue;
+					$.articleFeedbackv5special.listControls.continueId = data['articlefeedbackv5-view-feedback'].continueid;
 				} else {
 					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
