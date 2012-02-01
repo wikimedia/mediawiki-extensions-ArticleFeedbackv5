@@ -350,13 +350,16 @@ $messages['qqq'] = array(
 	'articlefeedbackv5-form-header' => "* '''$1''' is the feedback ID.
 * '''$2''' is the date and time at which the feedback was given.",
 	'articlefeedbackv5-form1-header-found' => 'Parameters
-* $1 is a username.',
+* $1 is a username.
+* $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text',
 	'articlefeedbackv5-form1-header-not-found' => 'Parameters
-* $1 is a username.',
+* $1 is a username.
+* $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text',
     'articlefeedbackv5-form1-header-left-comment' => 'Parameters
 * $1 is a username.',
 	'articlefeedbackv5-form2-header-praise' => 'Parameters:
-* $1 is a user name.',
+* $1 is a user name.
+* $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text',
 	'articlefeedbackv5-form2-header-problem' => 'Parameters:
 * $1 is a user name.',
 	'articlefeedbackv5-form2-header-question' => 'Parameters:
