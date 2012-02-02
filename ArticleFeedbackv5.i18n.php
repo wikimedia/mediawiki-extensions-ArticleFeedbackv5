@@ -257,6 +257,12 @@ $messages['en'] = array(
 	/* Special:Preferences */
 	'articlefeedbackv5-disable-preference' => "Don't show the Article feedback widget on pages",
 
+	/* User rights: Special:ListGroupRights */
+	'right-aftv5-hide-feedback' => 'Hide feedback',
+	'right-aftv5-delete-feedback' => 'Delete feedback',
+	'right-aftv5-see-deleted-feedback' => 'View deleted feedback',
+	'right-aftv5-see-hidden-feedback' => 'View hidden feedback',
+
 	/* EmailCapture */
 	'articlefeedbackv5-emailcapture-response-body' => 'Hello!
 
