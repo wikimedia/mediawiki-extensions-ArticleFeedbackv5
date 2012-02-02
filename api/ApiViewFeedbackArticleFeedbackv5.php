@@ -16,6 +16,7 @@
 class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	private $continue   = null;
 	private $continueId = null;
+	private $showMore   = false;
 
 	/**
 	 * Constructor
@@ -51,6 +52,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		$result->addValue( $this->getModuleName(), 'length', $length );
 		$result->addValue( $this->getModuleName(), 'count', $count );
+		$result->addValue( $this->getModuleName(), 'more', $this->showMore );
 		if ( $this->continue !== null ) {
 			$result->addValue( $this->getModuleName(), 'continue', $this->continue );
 		}
@@ -125,7 +127,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			default:
 				$sortField   = 'af_id'; 
 				$order       = "af_id $direction";
-				$continueSql = "af_id < ".intVal( $continue );
+				$continueSql = "af_id $continueDirection ".intVal( $continue );
 				break;
 		}
 
@@ -161,7 +163,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$where,
 			__METHOD__,
 			array(
-				'LIMIT'    => $limit,
+				'LIMIT'    => ($limit + 1),
 				'ORDER BY' => $order
 			),
 			array(
@@ -178,13 +180,22 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		foreach ( $id_query as $id ) {
 			$ids[] = $id->af_id;
-			$this->continue   = $id->$sortField;
-			$this->continueId = $id->af_id;
+			// Get the continue values from the last counted item.
+			if( count( $ids ) == $limit ) {
+				$this->continue   = $id->$sortField;
+				$this->continueId = $id->af_id;
+			}
 		}
-            
 
 		if ( !count( $ids ) ) {
 			return array();
+		}
+
+		// Returned an extra row, meaning there's more to show.
+		// Also, pop that extra one off, so we don't render it.
+		if ( count( $ids ) > $limit ) {
+			$this->showMore = true;
+			array_pop( $ids );
 		}
 
 		$rows  = $dbr->select(

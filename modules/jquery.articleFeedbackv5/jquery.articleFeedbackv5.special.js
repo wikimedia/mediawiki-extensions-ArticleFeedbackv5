@@ -268,7 +268,7 @@
 
 		$( '#articleFeedbackv5-sort-arrow-' + id ).show();
 		$( '#articleFeedbackv5-sort-arrow-' + id ).attr(
-			'src', '/extensions/ArticleFeedbackv5/modules/jquery.articleFeedbackv5/images/sort-' + dir + 'ending.png'
+			'src', mw.config.get('wgExtensionAssetsPath') + '/ArticleFeedbackv5/modules/jquery.articleFeedbackv5/images/sort-' + dir + 'ending.png'
 		);
 		$( '#articleFeedbackv5-special-sort-' + id).addClass( 'sort-active' );
 	};
@@ -624,6 +624,11 @@
 					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
 					$.articleFeedbackv5special.listControls.continue   = data['articlefeedbackv5-view-feedback'].continue;
 					$.articleFeedbackv5special.listControls.continueId = data['articlefeedbackv5-view-feedback'].continueid;
+					if( data['articlefeedbackv5-view-feedback'].more ) {
+						$( '#articleFeedbackv5-show-more').show();
+					} else {
+						$( '#articleFeedbackv5-show-more').hide();
+					}
 				} else {
 					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
