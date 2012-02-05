@@ -618,6 +618,7 @@
 	font-size: 1.1em;
 	font-family: sans-serif !important;
 	color: #999;
+	direction: ltr;
 }
 
 .articleFeedbackv5-ui .feedback-text.active {
