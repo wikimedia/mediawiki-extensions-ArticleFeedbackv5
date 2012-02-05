@@ -6251,6 +6251,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} huet des Säit bewäert:',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} krut kee Feedback-Formulaire gewisen.',
 	'articlefeedbackv5-abuse-saved' => 'Als Mëssbrauch ($1) markéiert',
+	'articlefeedbackv5-abuse-saved-masked' => 'Als Mëssbrauch markéiert',
 	'articlefeedbackv5-error-loading-feedback' => 'Feeler beim Luede vum Feedback',
 	'articlefeedbackv5-go-to-article' => 'Artikel weisen',
 	'articlefeedbackv5-discussion-page' => 'Diskussioun',
@@ -8311,6 +8312,13 @@ $messages['or'] = array(
  */
 $messages['os'] = array(
 	'articleFeedbackv5-table-heading-average' => 'Рæстæмбис',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'articlefeedbackv5-special-filter-deleted' => 'Verwischt ($1)',
 );
 
 /** Polish (Polski)
