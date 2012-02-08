@@ -173,9 +173,12 @@ class ApiArticleFeedbackv5Utils {
 	}
 
 	public function updateFilterCounts( $pageId, $filters, $decrement ) {
-                $dbw = wfGetDB( DB_MASTER );
+		// Don't do anything unless we have filters to process.
+		if( !$filters ) { return; }
+		if( !count( $filters ) ) { return; }
 
-                $dbw->begin();
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin();
 
 		foreach ( $filters as $filter ) {
 			$rows[] = array(
