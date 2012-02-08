@@ -52,7 +52,8 @@
 		sortDirection: 'desc',
 		limit: 25,
 		continue: null,
-		continueId: null // Sort of a tie-breaker for continue values.
+		continueId: null, // Sort of a tie-breaker for continue values.
+		disabled: false	// Prevent (or at least limit) a flood of ajax requests.
 	};
 
 	/**
@@ -468,6 +469,15 @@
 	 * @param dir  int    the direction of the mark (-1 = tick down; 1 = tick up)
 	 */
 	$.articleFeedbackv5special.flagFeedback = function ( id, type, dir ) {
+		if( $.articleFeedbackv5special.listControls.disabled ) {
+			return false;
+		}
+
+		// Put a lock on ajax requests to prevent another one from going 
+		// through while this is still running. Prevents manic link-clicking
+		// messing up the counts, and generally seems like a good idea.
+		$.articleFeedbackv5special.listControls.disabled = true;
+
 		$.ajax( {
 			'url'     : $.articleFeedbackv5special.apiUrl,
 			'type'    : 'POST',
@@ -550,9 +560,13 @@
 						}
 					}
 				}
+				// Re-enable ajax flagging.
+				$.articleFeedbackv5special.listControls.disabled = false;
 			},
 			'error': function ( data ) {
 				$( '#articleFeedbackv5-' + type + '-link-' + id ).text( mw.msg( 'articlefeedbackv5-error-flagging' ) );
+				// Re-enable ajax flagging.
+				$.articleFeedbackv5special.listControls.disabled = false;
 			}
 		} );
 		return false;
