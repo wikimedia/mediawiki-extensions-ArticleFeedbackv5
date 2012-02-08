@@ -53,7 +53,8 @@
 		limit: 25,
 		continue: null,
 		continueId: null, // Sort of a tie-breaker for continue values.
-		disabled: false	// Prevent (or at least limit) a flood of ajax requests.
+		disabled: false,	// Prevent (at least limit) a flood of ajax requests.
+		allowMultiple: false
 	};
 
 	/**
@@ -175,11 +176,17 @@
 				if ( activity[value] ) {
 					$.articleFeedbackv5special.flagFeedback( id, value, -1 );
 				} else if ( 'helpful' == value && activity.unhelpful ) {
+					// Allow multiple simultaneous ajax requests in this case.
+					$.articleFeedbackv5special.listControls.allowMultiple = true;
 					$.articleFeedbackv5special.flagFeedback( id, 'unhelpful', -1 );
 					$.articleFeedbackv5special.flagFeedback( id, 'helpful', 1 );
+					$.articleFeedbackv5special.listControls.allowMultiple = false;
 				} else if ( 'unhelpful' == value && activity.helpful ) {
+					// Allow multiple simultaneous ajax requests in this case.
+					$.articleFeedbackv5special.listControls.allowMultiple = true;
 					$.articleFeedbackv5special.flagFeedback( id, 'helpful', -1 );
 					$.articleFeedbackv5special.flagFeedback( id, 'unhelpful', 1 );
+					$.articleFeedbackv5special.listControls.allowMultiple = false;
 				} else {
 					$.articleFeedbackv5special.flagFeedback( id, value, 1 );
 				}
@@ -473,10 +480,16 @@
 			return false;
 		}
 
-		// Put a lock on ajax requests to prevent another one from going 
-		// through while this is still running. Prevents manic link-clicking
-		// messing up the counts, and generally seems like a good idea.
-		$.articleFeedbackv5special.listControls.disabled = true;
+		// This was causing problems with eg 'clicking helpful when the cookie 
+		// already says unhelpful', which is a case where two ajax requests 
+		// is perfectly legitimate.
+		// Check another global variable to not disable ajax in that case.
+		if( !$.articleFeedbackv5special.listControls.allowMultiple ) {
+			// Put a lock on ajax requests to prevent another one from going 
+			// through while this is still running. Prevents manic link-clicking
+			// messing up the counts, and generally seems like a good idea.
+			$.articleFeedbackv5special.listControls.disabled = true;
+		}
 
 		$.ajax( {
 			'url'     : $.articleFeedbackv5special.apiUrl,
