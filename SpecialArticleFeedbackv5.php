@@ -239,8 +239,12 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		$counts = $this->getFilterCounts( $pageId );
 		foreach ( $this->filters as $filter ) {
 			$count = array_key_exists( $filter, $counts ) ? $counts[$filter] : 0;
-			$key = $this->msg( 'articlefeedbackv5-special-filter-'.$filter, $count )->escaped();
-			$opts[ (string) $key ] = $filter;
+			$key   = $this->msg( 'articlefeedbackv5-special-filter-'.$filter, $count )->escaped();
+			if( in_array( $filter, array( 'comment', 'helpful', 'visible' ) ) ) {
+				$opts[ (string) $key ] = $filter;
+			} else {
+				$opts[ '---------' ][ (string) $key ] = $filter;
+			}
 		}
 
 		$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter-select' );
