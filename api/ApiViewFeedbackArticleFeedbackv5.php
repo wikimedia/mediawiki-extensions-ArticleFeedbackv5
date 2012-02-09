@@ -494,11 +494,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// Relative dates for 48 hours, normal timestamps later.
 		if ( $timestamp > ( $now - ( 86400 * 2 ) ) ) {
 			$time = $wgLang->formatTimePeriod(
-				( $now - $timestamp ), 'avoidseconds'
+				( $now - $timestamp ),
+				array( 'avoid' => 'avoidseconds', 'noabbrevs' => true )
 			);
 			$date = wfMessage( 'articleFeedbackv5-comment-ago', $time )->escaped();
-			} elseif( $timestamp ) {
-				$date = $wgLang->timeanddate($record->af_created  );
+		} elseif( $timestamp ) {
+		    $date = $wgLang->timeanddate($record->af_created  );
 		}
 
 		// format the element
