@@ -282,10 +282,18 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			. $filterSelect->getHTML()
 			. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
 			. Html::closeElement( 'div' )
-
-
-			. Html::closeElement( 'div' )
 		);
+		if( $wgUser->isAllowed( 'aftv5-delete-feedback' ) || $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
+		    $out->addHTML(
+			Html::openElement(
+			    'div',
+			    array( 'id' => 'articleFeedbackv5-tools-label' )
+			)
+			. $this->msg( 'articlefeedbackv5-form-tools-label' )->escaped()
+			. Html::closeElement( 'div' )
+		    );
+		}
+		$out->addHTML( Html::closeElement( 'div' ) );
 
 		$out->addHTML(
 			Html::element(

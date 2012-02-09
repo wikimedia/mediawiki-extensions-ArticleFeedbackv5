@@ -70,7 +70,11 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 #bodyContent h2 {
 	clear: both;
 }
+#articleFeedbackv5-sort {
+    width: 300px;
+}
 #articleFeedbackv5-filter {
+    float: left;
     font-size: 1.125em;
 }
 #articleFeedbackv5-sort-filter-controls {
@@ -95,6 +99,14 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	float: none;
 	display: inline-block;
 }
+#articleFeedbackv5-tools-label {
+    float: right;
+    top: 0;
+    right: 150;
+    font-size: 1.125em;
+    width: 140px;
+}
+
 #articleFeedbackv5-show-feedback {
 	min-height: 250px;
 }
