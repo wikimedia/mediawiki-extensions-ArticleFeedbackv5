@@ -94,8 +94,9 @@
 			$.articleFeedbackv5special.listControls.filterValue = id[1];
 		}
 
-		// Bold the default sort.
+		// Bold the default sort, hide arrows
 		$( '#articleFeedbackv5-special-sort-age' ).addClass( 'sort-active' );
+		$( '.articleFeedbackv5-sort-arrow').hide();
 
 		// Grab the user's activity out of the cookie
 		$.articleFeedbackv5special.activityCookieName += $.articleFeedbackv5special.page;
@@ -271,13 +272,13 @@
 		var	id  = $.articleFeedbackv5special.listControls.sort,
 			dir = $.articleFeedbackv5special.listControls.sortDirection;
 
+		$( '.articleFeedbackv5-sort-arrow' ).removeClass( 'sort-asc' );
+		$( '.articleFeedbackv5-sort-arrow' ).removeClass( 'sort-desc' );
 		$( '.articleFeedbackv5-sort-arrow' ).hide();
 		$( '.articleFeedbackv5-sort-link' ).removeClass( 'sort-active' );
 
 		$( '#articleFeedbackv5-sort-arrow-' + id ).show();
-		$( '#articleFeedbackv5-sort-arrow-' + id ).attr(
-			'src', mw.config.get('wgExtensionAssetsPath') + '/ArticleFeedbackv5/modules/jquery.articleFeedbackv5/images/sort-' + dir + 'ending.png'
-		);
+		$( '#articleFeedbackv5-sort-arrow-' + id ).addClass( 'sort-' + dir );
 		$( '#articleFeedbackv5-special-sort-' + id).addClass( 'sort-active' );
 	};
 

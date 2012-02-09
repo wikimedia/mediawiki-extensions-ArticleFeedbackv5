@@ -219,6 +219,24 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 
 		$sortLabels = array();
 		foreach ( $this->sorts as $sort ) {
+		    
+			$sortLabels[] = Html::openElement( 'a',
+			    array(
+				'href'  => '#',
+				'id'    => 'articleFeedbackv5-special-sort-' . $sort,
+				'class' => 'articleFeedbackv5-sort-link'
+			    )
+			)
+			. $this->msg( 'articlefeedbackv5-special-sort-' . $sort )->escaped()
+			. Html::element( 'span',
+			    array(
+				'id'    => 'articleFeedbackv5-sort-arrow-' . $sort,
+				'class' => 'articleFeedbackv5-sort-arrow'
+			    )
+			)
+			. Html::closeElement( 'a' );
+			    
+		    /*
 			$sortLabels[] = Html::element( 'img',
 				array(
 					'id'    => 'articleFeedbackv5-sort-arrow-' . $sort,
@@ -231,8 +249,9 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 					'id'    => 'articleFeedbackv5-special-sort-' . $sort,
 					'class' => 'articleFeedbackv5-sort-link'
 				),
-				$this->msg( 'articlefeedbackv5-special-sort-' . $sort )->text()
-			);
+				$this->msg( 'articlefeedbackv5-special-sort-' . $sort )->escaped()
+				. Html::element( 'span' )
+			);*/
 		}
 
 		$opts   = array();
