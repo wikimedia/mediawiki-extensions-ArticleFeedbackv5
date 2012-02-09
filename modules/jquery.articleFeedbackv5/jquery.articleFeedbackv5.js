@@ -2673,6 +2673,9 @@
 
 		// Lock the form
 		$.articleFeedbackv5.lockForm();
+		
+		// this is a good time to hide the help box, if its displayed
+		$( '.articleFeedbackv5-tooltip' ).hide();
 
 		// Request data
 		var data = $.extend( formdata, {
