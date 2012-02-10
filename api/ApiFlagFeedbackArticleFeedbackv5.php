@@ -24,6 +24,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	public function execute() {
 		$params    = $this->extractRequestParams();
 		$pageId    = $params['pageid'];
+		$feedbackId = $params['feedbackid'];
 		$flag      = $params['flagtype'];
 		$direction = isset( $params['direction'] ) ? $params['direction'] : 'increase';
 		$counts    = array( 'increment' => array(), 'decrement' => array() );
@@ -32,15 +33,16 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$results   = array();
 		$helpful   = null;
 		$error     = null;
-		$where     = array( 'af_id' => $params['feedbackid'] );
+		$where     = array( 'af_id' => $feedbackId );
 
 		# load feedback record, bail if we don't have one
-		$record = $this->fetchRecord( $params['feedbackid'] );
+		$record = $this->fetchRecord( $feedbackId );
 
 		if ( $record === false || !$record->af_id ) {
 			// no-op, because this is already broken
 			$error = 'articlefeedbackv5-invalid-feedback-id';
 		} elseif ( in_array( $flag, $flags ) ) {
+
 			$count = null;	
 			switch( $flag ) {
 				case 'hide':      
@@ -159,6 +161,13 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 			// If the query worked...
 			if( $success ) {
+
+				// Log the feedback activity entry via the utils method
+				$activity = $this->getActivity( $flag, $direction );
+
+				// TODO: when activities have notes attached, they need to be fed as the last parameter
+				ApiArticleFeedbackv5Utils::logActivity( $activity , $pageId, $feedbackId, 'placeholder activity notes' );
+
 				// Update the filter count rollups.
 				ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
 				ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['decrement'] );
@@ -193,6 +202,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 						__METHOD__
 					);
 				}
+
 			}
 
 			// Conditional formatting for abuse flag
@@ -333,6 +343,47 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		return array(
 			'api.php?list=articlefeedbackv5-view-feedback&affeedbackid=1&aftype=abuse',
 		);
+	}
+
+	/**
+	 * Figures out which activity happened so it can be logged correctly
+	 *
+	 * @param $flag      string type of flag sent to the form
+	 * @param $direction string type of direction sent to the form
+	 * @return string name of activity to log
+	 */
+	protected function getActivity($flag, $direction) {
+
+		// handle flag as abuse / remove abuse flag
+		if ( 'abuse' == $flag && 'increase' == $direction) {
+			return 'flag';
+		} elseif ( 'abuse' == $flag && 'decrease' == $direction) {
+			return 'unflag';
+		}
+
+		// handle hide as hidden, unhidden
+		if ( 'hide' == $flag && 'increase' == $direction) {
+			return 'hidden';
+		} elseif ( 'hide' == $flag && 'decrease' == $direction) {
+			return 'unhidden';
+		}
+
+		// handle delete as oversight, unoversight
+		if ( 'delete' == $flag && 'increase' == $direction) {
+			return 'oversight';
+		} elseif ( 'delete' == $flag && 'decrease' == $direction) {
+			return 'unoversight';
+		}
+
+		// handle oversight as request and unrequest oversighting
+		if ( 'oversight' == $flag && 'increase' == $direction) {
+			return 'request';
+		} elseif ( 'oversight' == $flag && 'decrease' == $direction) {
+			return 'unrequest';
+		}
+
+		// TODO: how is "decline oversight" handled?
+		// how should fall out the bottom here be handled?  a simple "feedback altered"?
 	}
 
 	/**

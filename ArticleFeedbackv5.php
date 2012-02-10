@@ -287,3 +287,17 @@ $wgAvailableRights[] = 'aftv5-hide-feedback';
 $wgAvailableRights[] = 'aftv5-delete-feedback';
 $wgAvailableRights[] = 'aftv5-see-deleted-feedback';
 $wgAvailableRights[] = 'aftv5-see-hidden-feedback';
+
+// Logging
+$wgLogTypes[] = 'articlefeedbackv5';
+$wgLogNames['articlefeedbackv5'] = 'articlefeedbackv5-log-name';
+$wgLogHeaders['articlefeedbackv5'] = 'articlefeedbackv5-log-header';
+$wgLogActions['articlefeedbackv5/oversight']  = 'articlefeedbackv5-log-oversight';
+$wgLogActions['articlefeedbackv5/unoversight']  = 'articlefeedbackv5-log-unoversight';
+$wgLogActions['articlefeedbackv5/hidden']  = 'articlefeedbackv5-log-hidden';
+$wgLogActions['articlefeedbackv5/unhidden']  = 'articlefeedbackv5-log-unhidden';
+$wgLogActions['articlefeedbackv5/decline']  = 'articlefeedbackv5-log-decline';
+$wgLogActions['articlefeedbackv5/request']  = 'articlefeedbackv5-log-request';
+$wgLogActions['articlefeedbackv5/unrequest']  = 'articlefeedbackv5-log-unrequest';
+$wgLogActions['articlefeedbackv5/flag']  = 'articlefeedbackv5-log-flag';
+$wgLogActions['articlefeedbackv5/unflag']  = 'articlefeedbackv5-log-unflag';

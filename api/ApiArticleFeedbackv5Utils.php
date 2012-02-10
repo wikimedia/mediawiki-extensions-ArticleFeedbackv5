@@ -215,4 +215,36 @@ class ApiArticleFeedbackv5Utils {
 
 		$dbw->commit();
 	}
+
+	/**
+	 * Adds an activity item to the global log under the articlefeedbackv5
+	 *
+	 * @param $type      string the type of activity we'll be logging
+	 * @param $pageId    int    the id of the page so we can look it up
+	 * @param $itemId    int    the id of the feedback item, used to build permalinks
+	 * @param $notes     string any notes that were stored with the activity
+	 */
+	public static function logActivity( $type, $pageId, $itemId, $notes) {
+
+		// These are our valid activity log actions
+		$valid = array( 'oversight', 'unoversight', 'hidden', 'unhidden',
+				'decline', 'request', 'unrequest','flag','unflag' );
+
+		// if we do not have a valid action, return immediately
+		if ( !in_array( $type, $valid )) {
+			return;
+		}
+
+		// create a title for the page
+		$page = Title::newFromID( $pageId );
+		$title = $page->getPartialURL();
+
+		// to build our permalink, use the feedback entry key 
+		$title = SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$itemId" );
+
+		$log = new LogPage( 'articlefeedbackv5' );
+		// comments become the notes section from the feedback
+		$log->addEntry( $type, $title, $notes );
+	}
 }
+

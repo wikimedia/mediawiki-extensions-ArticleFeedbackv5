@@ -263,6 +263,19 @@ $messages['en'] = array(
 	'right-aftv5-see-deleted-feedback' => 'View deleted feedback',
 	'right-aftv5-see-hidden-feedback' => 'View hidden feedback',
 
+	// Log types
+	'articlefeedbackv5-log-name' => 'Article Feedback Activity Log',
+	'articlefeedbackv5-log-header' => 'This is the log of activity taken on feedback items collected for articles using Article Feedback.',
+	'articlefeedbackv5-log-oversight' => 'changed the feedback [[$1]] status to oversight',
+	'articlefeedbackv5-log-unoversight' => 'removed the oversight [[$1]] status from feedback',
+	'articlefeedbackv5-log-hidden' => 'hid the feedback [[$1]]',
+	'articlefeedbackv5-log-unhidden' => 'unhid the feedback [[$1]]',
+	'articlefeedbackv5-log-decline' => 'declined oversight request from the feedback [[$1]]',
+	'articlefeedbackv5-log-request' => 'requested oversight on the feedback [[$1]]',
+	'articlefeedbackv5-log-unrequest' => 'removed the requested oversight on the feedback [[$1]]',
+	'articlefeedbackv5-log-flag' => 'flagged the feedback [[$1]] as abuse',
+	'articlefeedbackv5-log-unflag' => 'unflagged the feedback [[$1]] as abuse',
+
 	/* EmailCapture */
 	'articlefeedbackv5-emailcapture-response-body' => 'Hello!
 
