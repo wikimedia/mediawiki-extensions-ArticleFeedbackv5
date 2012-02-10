@@ -2452,7 +2452,7 @@
 	 *
 	 * @param trackingId string the tracking ID
 	 */
-	$.articleFeedbackv5.editUrl = function ( url, trackingId ) {
+	$.articleFeedbackv5.editUrl = function ( trackingId ) {
 		var params = {
 			'title': mw.config.get( 'wgPageName' ),
 			'action': 'edit',
