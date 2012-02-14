@@ -71,6 +71,72 @@
 	 * @var string
 	 */
 	$.articleFeedbackv5special.activityCookieName = 'activity-';
+	
+	/**
+	 * Currently displayed panel host element id attribute value
+	 *
+	 * @var string
+	 */
+	$.articleFeedbackv5special.currentPanelHostId = undefined;
+	
+	/**
+	 * Action note flyover panel HTML template
+	 *
+	 * @var string
+	 */
+	$.articleFeedbackv5special.notePanelHtmlTemplate = '\
+		<div class="articlefeedbackv5-flyover-header">\
+			<h3 id="articlefeedbackv5-noteflyover-caption">' + mw.msg( 'articlefeedbackv5-noteflyover-hide-caption' ) + '</h3>\
+			<a id="articlefeedbackv5-noteflyover-close" href="#"></a>\
+		</div>\
+		<form class="articlefeedbackv5-form-flyover">\
+			<label id="articlefeedbackv5-noteflyover-label" for="articlefeedbackv5-noteflyover-note">'
+				+ mw.msg( 'articlefeedbackv5-noteflyover-hide-label' ) +
+			'</label>\
+			<textarea id="articlefeedbackv5-noteflyover-note" name="articlefeedbackv5-noteflyover-note"></textarea>\
+			<div class="articlefeedbackv5-flyover-footer">\
+				<a id="articlefeedbackv5-noteflyover-submit" class="articlefeedbackv5-flyover-button" href="#">'
+					+ mw.msg( 'articlefeedbackv5-noteflyover-hide-submit' ) +
+				'</a>\
+				<a class="articlefeedbackv5-flyover-help" id="articlefeedbackv5-noteflyover-help" href="'
+					+ mw.msg( 'articlefeedbackv5-noteflyover-hide-help-link' ) + '">'
+					+ mw.msg( 'articlefeedbackv5-noteflyover-hide-help' ) + 
+				'</a>\
+			</div>\
+		</form>';
+				
+	/**
+	 * Formatted and localized flyover panel HTMLs. These are initialized once on page setup.
+	 *
+	 * @var object
+	 */
+	$.articleFeedbackv5special.notePanelHtml = {
+		'hide': undefined,
+		'show': undefined,
+		'requestoversight': undefined,
+		'unrequestoversight': undefined,
+		'oversight': undefined,
+		'declineoversight': undefined,
+		'unoversight': undefined
+	};
+				
+	/**
+	 * Activity log flyover panel HTML
+	 * 
+	 * @var string
+	 */
+	$.articleFeedbackv5special.logPanelHtml = '\
+		<div>\
+			<div class="articlefeedbackv5-flyover-header">\
+				<h3></h3>\
+				<a></a>\
+				<a></a>\
+			</div>\
+			<div>\
+			</div>\
+			<div class="articlefeedbackv5-activityflyover-viewactivity">\
+			</div>\
+		</div>';
 
 	// }}}
 	// {{{ Init methods
@@ -102,10 +168,49 @@
 		$.articleFeedbackv5special.activityCookieName += $.articleFeedbackv5special.page;
 		$.articleFeedbackv5special.loadActivity();
 
+		// initialize flyover panels for actions	
+		$.articleFeedbackv5special.initFlyoverPanels();
+		
 		// Initial load
 		$.articleFeedbackv5special.loadFeedback( true );
 	};
 
+	// }}}
+	// {{{ initFlyoverPanels
+	
+	/**
+	 * Initialize the action note flyover panels
+	 */
+	$.articleFeedbackv5special.initFlyoverPanels = function() {
+		// set tipsy defaults, once
+		$.fn.tipsy.defaults = {
+			delayIn: 0,				// delay before showing tooltip (ms)
+			delayOut: 0,			// delay before hiding tooltip (ms)
+			fade: false,			// fade tooltips in/out?
+			fallback: '',			// fallback text to use when no tooltip text
+			gravity: 'e',			// gravity
+			html: true,				// is tooltip content HTML?
+			live: false,			// use live event support?
+			offset: 10,				// pixel offset of tooltip from element
+			opacity: 1.0,			// opacity of tooltip
+			title: 'title',			// attribute/callback containing tooltip text
+			trigger: 'manual'		// how tooltip is triggered - hover | focus | manual
+		};
+		
+		// i18n, create specific panels from template
+		var container = $( '<div></div>' );
+		container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
+		for( var action in $.articleFeedbackv5special.notePanelHtml ) {
+			container.find( '#articlefeedbackv5-noteflyover-caption' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
+			container.find( '#articlefeedbackv5-noteflyover-label' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
+			container.find( '#articlefeedbackv5-noteflyover-submit' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-submit' ) );
+			container.find( '#articlefeedbackv5-noteflyover-submit' ).attr( 'rel', action );
+			container.find( '#articlefeedbackv5-noteflyover-help' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help' ) );
+			container.find( '#articlefeedbackv5-noteflyover-help' ).attr( 'href', mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help-link' ) );
+			$.articleFeedbackv5special.notePanelHtml[action] = container.html();
+		}
+	}
+	
 	// }}}
 	// {{{ setBinds
 
@@ -211,23 +316,56 @@
 			}
 		} );
 
-		// Hide/Show this post
-		$( '.articleFeedbackv5-hide-link' ).live( 'click', function( e ) {
+		// Bind tipsies
+		for( var action in $.articleFeedbackv5special.notePanelHtml) {
+			$( '.articleFeedbackv5-' + action + '-link' ).live( 'click', function( e ) {
+				e.preventDefault();
+				var $l = $( e.target );
+				// are we hiding the current tipsy?
+				if( $l.attr( 'id' ) == $.articleFeedbackv5special.currentPanelHostId ) {
+					$l.tipsy( 'hide' );
+					$.articleFeedbackv5special.currentPanelHostId = undefined;
+				} else {
+					// no, we're displaying another one
+					if( undefined != $.articleFeedbackv5special.currentPanelHostId ) {
+						$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
+					}
+					$l.tipsy( 'show' );
+					$.articleFeedbackv5special.currentPanelHostId= $l.attr( 'id' );
+				}
+			} );
+		}
+		
+		// Bind submit actions on flyover panels
+		$( '#articlefeedbackv5-noteflyover-submit' ).live( 'click', function( e ) {
 			e.preventDefault();
-			var $l = $( e.target );
+			var $l = $( '#' + $.articleFeedbackv5special.currentPanelHostId );
+			var action = $( e.target ).attr( 'rel' );
 			var id = $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
 			var activity = $.articleFeedbackv5special.getActivity( id );
-			if ( activity.hide 
-			  || $( e.target ).text() == mw.msg('articlefeedbackv5-form-unhide') 
-			) {
-				$.articleFeedbackv5special.flagFeedback( id, 'hide', -1 );
-			} else {
-				$.articleFeedbackv5special.flagFeedback( id, 'hide', 1 );
+			var note = $( '#articlefeedbackv5-noteflyover-note' ).attr( 'value' );
+			switch( action ) {
+				case 'hide': case 'show':
+					if ( activity.hide 
+					  || $( e.target ).text() == mw.msg('articlefeedbackv5-form-unhide') 
+					) {
+						$.articleFeedbackv5special.flagFeedback( id, 'hide', -1, note );
+					} else {
+						$.articleFeedbackv5special.flagFeedback( id, 'hide', 1, note );
+					}
+					break;
+				case 'oversight': case 'unoversight': case 'declineoversight':
+					break;
+				case 'requestoversight': case 'unrequestoversight':
+					break;
 			}
+			// hide tipsy
+			$l.tipsy( 'hide' );
+			$.articleFeedbackv5special.currentPanelHostId = undefined;
 		} );
 
 		// Delete/Undelete this post
-		$( '.articleFeedbackv5-delete-link' ).live( 'click', function( e ) {
+		/*$( '.articleFeedbackv5-delete-link' ).live( 'click', function( e ) {
 			e.preventDefault();
 			var $l = $( e.target );
 			var id = $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
@@ -239,11 +377,41 @@
 			} else {
 				$.articleFeedbackv5special.flagFeedback( id, 'delete', 1 );
 			}
-		} );
+		} );*/
 	}
 
 	// }}}
+	// {{{ bindPanels
+	
+	/**
+	 * Bind panels to controls - that cannot be 'live' events due to jQuery.typsy
+	 * limitations. This function should be invoked after feedback posts are loaded,
+	 * without parameters. The function should be invoked with the id parameter set
+	 * after an action is executed and its link is replaced with reverse action.
+	 *
+	 * @param id post id to bind panels for. If none is supplied, bind entire list.
+	 */
+	$.articleFeedbackv5special.bindPanels = function( id ) {
+		// single post or entire list?		
+		var $selector = !id ? $( '#articleFeedbackv5-show-feedback' ) : $( '.articleFeedbackv5-feedback[rel="' + id + '"]' );
 
+		// hide action
+		$selector.find( '.articleFeedbackv5-hide-link' ).tipsy( {
+			title: function() {
+				var activity = $.articleFeedbackv5special.getActivity( id );
+				var temp = ( activity.hide || this.text == mw.msg( 'articlefeedbackv5-form-unhide' ) ) ?
+					$.articleFeedbackv5special.notePanelHtml['show'] : $.articleFeedbackv5special.notePanelHtml['hide'];
+				return temp;
+			}
+		} );
+		
+		// request oversight action
+		
+		// oversight action
+	}
+	
+	// }}}
+	
 	// }}}
 	// {{{ Utility methods
 
@@ -463,7 +631,7 @@
 	};
 
 	// }}}
-
+	
 	// }}}
 	// {{{ Process methods
 
@@ -475,12 +643,16 @@
 	 * @param id   int    the feedback id
 	 * @param type string the type of mark (valid values: hide, abuse, delete, helpful, unhelpful)
 	 * @param dir  int    the direction of the mark (-1 = tick down; 1 = tick up)
+	 * @param note string note for action (default empty)
 	 */
-	$.articleFeedbackv5special.flagFeedback = function ( id, type, dir ) {
+	$.articleFeedbackv5special.flagFeedback = function ( id, type, dir, note ) {
+		// default parameters
+		note = typeof note !== undefined ? note : '';
+		
 		if( $.articleFeedbackv5special.listControls.disabled ) {
 			return false;
 		}
-
+		
 		// This was causing problems with eg 'clicking helpful when the cookie 
 		// already says unhelpful', which is a case where two ajax requests 
 		// is perfectly legitimate.
@@ -501,6 +673,7 @@
 				'feedbackid': id,
 				'flagtype'  : type,
 				'direction' : dir > 0 ? 'increase' : 'decrease',
+				'note'		: note,
 				'format'    : 'json',
 				'action'    : 'articlefeedbackv5-flag-feedback'
 			},
@@ -569,6 +742,7 @@
 							}
 							$.articleFeedbackv5special.activity[id][type] = dir > 0 ? true : false;
 							$.articleFeedbackv5special.storeActivity();
+							$.articleFeedbackv5special.bindPanels( id );
 						} else if ( data['articlefeedbackv5-flag-feedback'].result == 'Error' ) {
 							mw.log( mw.msg( data['articlefeedbackv5-flag-feedback'].reason ) );
 						}
@@ -657,6 +831,7 @@
 					} else {
 						$( '#articleFeedbackv5-show-more').hide();
 					}
+					$.articleFeedbackv5special.bindPanels();
 				} else {
 					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}

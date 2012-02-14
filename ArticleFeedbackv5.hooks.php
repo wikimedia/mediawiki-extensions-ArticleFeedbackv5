@@ -178,10 +178,60 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-deleted',
 				'articlefeedbackv5-comment-more',
 				'articlefeedbackv5-comment-less',
-				'articlefeedbackv5-error-loading-feedback'
+				'articlefeedbackv5-error-loading-feedback',
+				
+				'articlefeedbackv5-noteflyover-hide-caption',
+				'articlefeedbackv5-noteflyover-hide-label',
+				'articlefeedbackv5-noteflyover-hide-placeholder',
+				'articlefeedbackv5-noteflyover-hide-submit',
+				'articlefeedbackv5-noteflyover-hide-help',
+				'articlefeedbackv5-noteflyover-hide-help-link',
+
+				'articlefeedbackv5-noteflyover-show-caption',
+				'articlefeedbackv5-noteflyover-show-label',
+				'articlefeedbackv5-noteflyover-show-placeholder',
+				'articlefeedbackv5-noteflyover-show-submit',
+				'articlefeedbackv5-noteflyover-show-help',
+				'articlefeedbackv5-noteflyover-show-help-link',
+
+				'articlefeedbackv5-noteflyover-requestoversight-caption',
+				'articlefeedbackv5-noteflyover-requestoversight-label',
+				'articlefeedbackv5-noteflyover-requestoversight-placeholder',
+				'articlefeedbackv5-noteflyover-requestoversight-submit',
+				'articlefeedbackv5-noteflyover-requestoversight-help',
+				'articlefeedbackv5-noteflyover-requestoversight-help-link',
+
+				'articlefeedbackv5-noteflyover-unrequestoversight-caption',
+				'articlefeedbackv5-noteflyover-unrequestoversight-label',
+				'articlefeedbackv5-noteflyover-unrequestoversight-placeholder',
+				'articlefeedbackv5-noteflyover-unrequestoversight-submit',
+				'articlefeedbackv5-noteflyover-unrequestoversight-help',
+				'articlefeedbackv5-noteflyover-unrequestoversight-help-link',
+
+				'articlefeedbackv5-noteflyover-oversight-caption',
+				'articlefeedbackv5-noteflyover-oversight-label',
+				'articlefeedbackv5-noteflyover-oversight-placeholder',
+				'articlefeedbackv5-noteflyover-oversight-submit',
+				'articlefeedbackv5-noteflyover-oversight-help',
+				'articlefeedbackv5-noteflyover-oversight-help-link',
+
+				'articlefeedbackv5-noteflyover-unoversight-caption',
+				'articlefeedbackv5-noteflyover-unoversight-label',
+				'articlefeedbackv5-noteflyover-unoversight-placeholder',
+				'articlefeedbackv5-noteflyover-unoversight-submit',
+				'articlefeedbackv5-noteflyover-unoversight-help',
+				'articlefeedbackv5-noteflyover-unoversight-help-link',
+
+				'articlefeedbackv5-noteflyover-declineoversight-caption',
+				'articlefeedbackv5-noteflyover-declineoversight-label',
+				'articlefeedbackv5-noteflyover-declineoversight-placeholder',
+				'articlefeedbackv5-noteflyover-declineoversight-submit',
+				'articlefeedbackv5-noteflyover-declineoversight-help',
+				'articlefeedbackv5-noteflyover-declineoversight-help-link'
 			),
 			'dependencies' => array(
 				'mediawiki.util',
+				'jquery.tipsy'
 			),
 		),
 		// TODO: Move jquery.elastic into core resources

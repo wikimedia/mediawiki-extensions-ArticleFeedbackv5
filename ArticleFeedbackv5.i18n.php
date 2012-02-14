@@ -133,6 +133,64 @@ $messages['en'] = array(
 	'articlefeedbackv5-comment-more' => 'More',
 	'articlefeedbackv5-comment-less' => 'Less',
 	'articlefeedbackv5-beta-notice' => 'Beta',
+	'articlefeedbackv5-viewactivity' => 'View activity',
+	
+	/* Special page flyover panels */
+	/* Hide this post panel */
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
+	
+	/* Show this post panel */
+	'articlefeedbackv5-noteflyover-show-caption' => 'Show this post',
+	'articlefeedbackv5-noteflyover-show-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'Why are you showing this post?',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Show this post',
+	'articlefeedbackv5-noteflyover-show-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-show-help-link' => '#',
+
+	/* Request oversight panel */
+	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Request oversigt',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Why are you requesting oversight?',
+	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Request oversight',
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-requestoversight-help-link' => '#',
+
+	/* Un-request oversight panel */
+	'articlefeedbackv5-noteflyover-unrequestoversight-caption' => 'Cancel oversight request',
+	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Why are you canceling the oversight request?',
+	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Cancel request',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help-link' => '#',
+
+	/* Oversight this post panel */
+	'articlefeedbackv5-noteflyover-ovesight-caption' => 'Oversight this post',
+	'articlefeedbackv5-noteflyover-ovesight-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-ovesight-placeholder' => 'Why are you oversighting this post?',
+	'articlefeedbackv5-noteflyover-ovesight-submit' => 'Oversight this post',
+	'articlefeedbackv5-noteflyover-ovesight-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-ovesight-help-link' => '#',
+
+	/* Un-oversight this post panel */
+	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Un-oversight this post',
+	'articlefeedbackv5-noteflyover-unoversight-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Why are you unoversighting this post?',
+	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Un-oversight this post',
+	'articlefeedbackv5-noteflyover-unoversight-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-unoversight-help-link' => '#',
+	
+	/* Decline oversight panel */
+	'articlefeedbackv5-noteflyover-declineoversight-caption' => 'Decline oversight',
+	'articlefeedbackv5-noteflyover-declineoversight-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'Why are you declining oversight?',
+	'articlefeedbackv5-noteflyover-declineoversight-submit' => 'Decline oversight',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-declineoversight-help-link' => '#',
 
 	/* Feedback forms */
 	/* Option 1 ("Did you find what you were looking for?") */
@@ -410,6 +468,64 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 {{Identical|More}}',
 	'articlefeedbackv5-comment-less' => 'Previous label (articlefeedbackv5-comment-more) switches to this after being clicked. This is the label for collapsing the expanded comments.',
 	'articlefeedbackv5-beta-notice' => 'The BETA state notice for article feedback v5',
+	'articlefeedbackv5-viewactivity' => 'View feedback post activity action text',
+
+	/* Show this post panel */
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
+
+	/* Show this post panel */
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
+
+	/* Request oversight panel */
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
+
+	/* Un-request oversight panel */
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
+
+	/* Oversight this post panel */
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
+
+	/* Un-oversight this post panel */
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
+	
+	/* Decline oversight panel */
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
+
 	'articlefeedbackv5-bucket1-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
 	'articlefeedbackv5-bucket1-question-toggle' => 'This is the question that appears before the yes/no buttons in option 1',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'The text for the yes button in option 1.

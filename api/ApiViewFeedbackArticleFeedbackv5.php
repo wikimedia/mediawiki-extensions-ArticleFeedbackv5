@@ -434,7 +434,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 			}
 
-/*
+
 			$link = null;
 			if ( $record[0]->af_needs_oversight ) {
 				if ( $can_delete ) {
@@ -453,7 +453,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 					'class' => "articleFeedbackv5-$link-link"
 				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_is_deleted )->text() ) );
 			}
-*/
+			
+			// view activity link
+			$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-activity-link-$id",
+					'class' => "articleFeedbackv5-activity-link"
+				), wfMessage( "articlefeedbackv5-viewactivity" )->text() ) );
 
 			$tools .= Html::closeElement( 'ul' )
 			. Html::closeElement( 'div' );

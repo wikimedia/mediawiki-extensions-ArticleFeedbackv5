@@ -395,3 +395,84 @@ a.helpful-active {
 	clear: both;
 	margin-top: 10px;
 }
+
+/* flyover panels */
+.tipsy {
+	padding: 5px 11px 5px 5px;
+}
+.tipsy-inner {
+	padding: 0;
+	border-color: #888;
+	max-width: 40em;
+	-moz-box-shadow: -2px 2px 1px #999;
+	-webkit-box-shadow: -2px 2px 1px #999;
+	box-shadow: -2px 2px 1px #999;
+}
+.tipsy-e .tipsy-arrow {
+	/* @embed */
+	background-image: url(images/tipsy-flyover.png);
+	width: 11px;
+	height: 23px;
+	margin-top: -11px;
+}
+form.articlefeedbackv5-form-flyover {
+	padding: 0 25px 0 0;
+}
+form.articlefeedbackv5-form-flyover label {
+	display: block;
+	margin: 5px 10px;
+}
+form.articlefeedbackv5-form-flyover textarea {
+	margin: 0 0 0 10px;
+}
+.articlefeedbackv5-flyover-header {
+	background-color: #d2e5f7;
+	padding: 0 10px 3px 10px;
+	-moz-border-radius: 3px 3px 0 0;
+	-webkit-border-radius: 3px 3px 0 0;
+	border-radius: 3px 3px 0 0; 
+	-khtml-border-radius: 3px 3px 0 0; 
+}
+.articlefeedbackv5-flyover-header h3 {
+	font-size: 1.125em;
+}
+.articlefeedbackv5-flyover-footer {
+	padding: 10px 10px 35px 10px;
+	width: 100%;
+}
+.articlefeedbackv5-flyover-help {
+	margin: 0 0 0 10px;
+	display: inline-block;
+	float: right;
+	margin-top: 4px;
+}
+.articlefeedbackv5-flyover-button {
+	display: inline-block;
+	float: left;
+	height: 22px;
+	line-height: 22px;
+	font-size: .9em;
+	min-width: 34px;
+	padding: 0 8px;
+	margin: 0 10px 0 0;
+	text-align: center;
+	color: #333;
+	font-weight: bold;
+	/* @embed */
+	background: url(images/bg-button-disable.png) repeat-x;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px; 
+	-khtml-border-radius: 3px; 
+	-moz-box-shadow: -2px 2px 1px #999;
+	-webkit-box-shadow: -2px 2px 1px #999;
+	box-shadow: -2px 2px 1px #999;
+}
+.articlefeedbackv5-flyover-button:hover {
+	/* @embed */
+	background: url(images/bg-button-hov.png) repeat-x;
+	cursor: pointer;
+	color: #333;
+	text-decoration: none;
+}
+
