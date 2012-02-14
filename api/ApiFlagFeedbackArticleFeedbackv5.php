@@ -26,6 +26,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$pageId    = $params['pageid'];
 		$feedbackId = $params['feedbackid'];
 		$flag      = $params['flagtype'];
+		$notes = $params['note'];
 		$direction = isset( $params['direction'] ) ? $params['direction'] : 'increase';
 		$counts    = array( 'increment' => array(), 'decrement' => array() );
 		$counters  = array( 'abuse', 'helpful', 'unhelpful' );
@@ -165,8 +166,15 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				// Log the feedback activity entry via the utils method
 				$activity = $this->getActivity( $flag, $direction );
 
-				// TODO: when activities have notes attached, they need to be fed as the last parameter
-				ApiArticleFeedbackv5Utils::logActivity( $activity , $pageId, $feedbackId, 'placeholder activity notes' );
+				// Make sure our notes are not too long - we won't error, just hard substr it
+				global $wgArticleFeedbackv5MaxCommentLength;
+
+				// for some reason, 0 means no length checking (ARGH) - should be -1!
+				if ($wgArticleFeedbackv5MaxCommentLength > 0) {
+					$notes = substr($notes, 0, $wgArticleFeedbackv5MaxCommentLength);
+				}
+
+				ApiArticleFeedbackv5Utils::logActivity( $activity , $pageId, $feedbackId, $notes );
 
 				// Update the filter count rollups.
 				ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
@@ -294,6 +302,11 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
 				 'increase', 'decrease' )
+			),
+			'note' => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_TYPE     => 'string'
 			)
 		);
 	}
@@ -306,7 +319,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	public function getParamDescription() {
 		return array(
 			'feedbackid'  => 'FeedbackID to flag',
-			'type'        => 'Type of flag to apply - hide or abuse'
+			'type'        => 'Type of flag to apply - hide or abuse',
+			'note'        => 'Information on why the feedback activity occurred'
 		);
 	}
 
