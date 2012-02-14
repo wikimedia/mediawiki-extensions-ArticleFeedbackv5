@@ -489,62 +489,6 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-beta-notice' => 'The BETA state notice for article feedback v5',
 	'articlefeedbackv5-viewactivity' => 'View feedback post activity action text',
 
-	/* Show this post panel */
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
-
-	/* Show this post panel */
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
-
-	/* Request oversight panel */
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
-
-	/* Un-request oversight panel */
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
-
-	/* Oversight this post panel */
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
-
-	/* Un-oversight this post panel */
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
-	
-	/* Decline oversight panel */
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
-	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
-
 	'articlefeedbackv5-bucket1-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
 	'articlefeedbackv5-bucket1-question-toggle' => 'This is the question that appears before the yes/no buttons in option 1',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'The text for the yes button in option 1.
