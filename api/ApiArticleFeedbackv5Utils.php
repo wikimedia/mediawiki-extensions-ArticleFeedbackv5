@@ -245,6 +245,21 @@ class ApiArticleFeedbackv5Utils {
 		$log = new LogPage( 'articlefeedbackv5' );
 		// comments become the notes section from the feedback
 		$log->addEntry( $type, $title, $notes );
+
+		// update our log count by 1
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin();
+
+		$dbw->update(
+			'aft_article_feedback',
+			array( 'af_activity_count = af_activity_count + 1' ),
+			array(
+				'af_id' => $itemId
+			),
+			__METHOD__
+		);
+
+		$dbw->commit();
 	}
 }
 

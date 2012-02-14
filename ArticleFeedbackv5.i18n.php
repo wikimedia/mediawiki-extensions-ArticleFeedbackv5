@@ -321,7 +321,7 @@ $messages['en'] = array(
 	'right-aftv5-see-deleted-feedback' => 'View deleted feedback',
 	'right-aftv5-see-hidden-feedback' => 'View hidden feedback',
 
-	// Log types
+	/* Log types */
 	'articlefeedbackv5-log-name' => 'Article Feedback Activity Log',
 	'articlefeedbackv5-log-header' => 'This is the log of activity taken on feedback items collected for articles using Article Feedback.',
 	'articlefeedbackv5-log-oversight' => 'changed the feedback [[$1]] status to oversight',
@@ -333,6 +333,25 @@ $messages['en'] = array(
 	'articlefeedbackv5-log-unrequest' => 'removed the requested oversight on the feedback [[$1]]',
 	'articlefeedbackv5-log-flag' => 'flagged the feedback [[$1]] as abuse',
 	'articlefeedbackv5-log-unflag' => 'unflagged the feedback [[$1]] as abuse',
+
+	/* Activity Pane phrases */
+	'articlefeedbackv5-activity-pane-header' => 'Activity Log',
+	'articlefeedbackv5-activity-help-item' => '?',
+	'articlefeedbackv5-activity-close-item' => 'X',
+	'articlefeedbackv5-activity-feedback-info' => 'Feedback Post #$1 by',
+	'articlefeedbackv5-activity-feedback-date' => 'Posted on $1',
+	'articlefeedbackv5-activity-permalink' => 'permalink',
+	'articlefeedbackv5-activity-request' => 'requested oversight on',
+	'articlefeedbackv5-activity-unrequest' => 'unrequested oversight on',
+	'articlefeedbackv5-activity-decline' => 'declined oversight on',
+	'articlefeedbackv5-activity-hidden' => 'hid this post on',
+	'articlefeedbackv5-activity-flag' => 'flagged this post on',
+	'articlefeedbackv5-activity-unhidden' => 'unhid this post on',
+	'articlefeedbackv5-activity-unflag' => 'unflagged this post on',
+	'articlefeedbackv5-activity-oversight' => 'oversighted this post on',
+	'articlefeedbackv5-activity-unoversight' => 'removed oversight on this post on',
+	'articlefeedbackv5-activity-count' => '$1 actions on this post',
+	'articlefeedbackv5-activity-more' => 'Show more Activity',
 
 	/* EmailCapture */
 	'articlefeedbackv5-emailcapture-response-body' => 'Hello!
