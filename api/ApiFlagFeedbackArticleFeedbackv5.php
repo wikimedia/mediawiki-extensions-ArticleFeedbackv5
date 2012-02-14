@@ -65,17 +65,16 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			} else {
 				$update[] = "$field = FALSE";
 			}
-
 			// Increment or decrement whichever flag is being set.
 			$countDirection = $direction == 'increase' ? 'increment' : 'decrement';
 			$counts[$countDirection][] = $count;
 			// If this is hiding/deleting, decrement the visible count.
-			if( ( $count == 'hide' || $count == 'deleted' )
+			if( ( $flag == 'hide' || $flag == 'delete' )
 			 && $direction == 'increase' ) {
 				$counts['decrement'][] = 'visible';
 			}
 			// If this is unhiding/undeleting, increment the visible count.
-			if( ( $count == 'hide' || $count == 'deleted' )
+			if( ( $flag == 'hide' || $flag == 'delete' )
 			 && $direction == 'decrease' ) {
 				$counts['increment'][] = 'visible';
 			}
@@ -108,11 +107,21 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			if( $flag == 'abuse' && $direction == 'increase'
 			 && $record->af_abuse_count == 0 ) {
 				$counts['increment'][] = 'abusive';
+				// Auto-hide after 5 abuse flags.
+				if( $record->af_abuse_count > 4 ) {
+					$counts['increment'][] = 'invisible';
+					$counts['decrement'][] = 'visible';
+				}
 			}
 			// Removing the last abuse flag: abusive--
 			if( $flag == 'abuse' && $direction == 'decrease'
 			 && $record->af_abuse_count == 1 ) {
 				$counts['decrement'][] = 'abusive';
+				// Un-hide if we don't have 5 flags anymore
+				if( $record->af_abuse_count == 5 ) {
+					$counts['increment'][] = 'visible';
+					$counts['decrement'][] = 'invisible';
+				}
 			}
 
 			// note that a net helpfulness of 0 is neither helpful nor unhelpful
@@ -124,12 +133,12 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			) {
 				// net was -1: no longer unhelpful
 				if( $netHelpfulness == -1 ) {
-					$counts['decrement'] = 'unhelpful';
+					$counts['decrement'][] = 'unhelpful';
 				}
 
 				// net was 0: now helpful
-				if( $netHelpfulness == -1 ) {
-					$counts['increment'] = 'helpful';
+				if( $netHelpfulness == 0 ) {
+					$counts['increment'][] = 'helpful';
 				}
 			}
 
@@ -139,12 +148,12 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			) {
 				// net was 1: no longer helpful
 				if( $netHelpfulness == 1 ) {
-					$counts['decrement'] = 'helpful';
+					$counts['decrement'][] = 'helpful';
 				}
 
 				// net was 0: now unhelpful
 				if( $netHelpfulness == 0 ) {
-					$counts['increment'] = 'unhelpful';
+					$counts['increment'][] = 'unhelpful';
 				}
 			}
 		} else {
@@ -176,6 +185,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 				ApiArticleFeedbackv5Utils::logActivity( $activity , $pageId, $feedbackId, $notes );
 
+>>>>>>> .r111511
 				// Update the filter count rollups.
 				ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
 				ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['decrement'] );
@@ -237,6 +247,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					$results['abuse-hidden'] = 1;
 				}	
 
+				// Hide the row if the abuse count is above our threshhold
 				$dbw->update(
 					'aft_article_feedback',
 					array( 'af_is_hidden = TRUE' ),
