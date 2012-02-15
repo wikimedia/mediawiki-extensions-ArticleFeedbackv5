@@ -86,22 +86,15 @@
 	 */
 	$.articleFeedbackv5special.notePanelHtmlTemplate = '\
 		<div class="articlefeedbackv5-flyover-header">\
-			<h3 id="articlefeedbackv5-noteflyover-caption">' + mw.msg( 'articlefeedbackv5-noteflyover-hide-caption' ) + '</h3>\
+			<h3 id="articlefeedbackv5-noteflyover-caption"></h3>\
 			<a id="articlefeedbackv5-noteflyover-close" href="#"></a>\
 		</div>\
 		<form class="articlefeedbackv5-form-flyover">\
-			<label id="articlefeedbackv5-noteflyover-label" for="articlefeedbackv5-noteflyover-note">'
-				+ mw.msg( 'articlefeedbackv5-noteflyover-hide-label' ) +
-			'</label>\
+			<label id="articlefeedbackv5-noteflyover-label" for="articlefeedbackv5-noteflyover-note"></label>\
 			<textarea id="articlefeedbackv5-noteflyover-note" name="articlefeedbackv5-noteflyover-note"></textarea>\
 			<div class="articlefeedbackv5-flyover-footer">\
-				<a id="articlefeedbackv5-noteflyover-submit" class="articlefeedbackv5-flyover-button" href="#">'
-					+ mw.msg( 'articlefeedbackv5-noteflyover-hide-submit' ) +
-				'</a>\
-				<a class="articlefeedbackv5-flyover-help" id="articlefeedbackv5-noteflyover-help" href="'
-					+ mw.msg( 'articlefeedbackv5-noteflyover-hide-help-link' ) + '">'
-					+ mw.msg( 'articlefeedbackv5-noteflyover-hide-help' ) + 
-				'</a>\
+				<a id="articlefeedbackv5-noteflyover-submit" class="articlefeedbackv5-flyover-button" href="#"></a>\
+				<a class="articlefeedbackv5-flyover-help" id="articlefeedbackv5-noteflyover-help" href="#"></a>\
 			</div>\
 		</form>';
 				
@@ -128,14 +121,11 @@
 	$.articleFeedbackv5special.logPanelHtml = '\
 		<div>\
 			<div class="articlefeedbackv5-flyover-header">\
-				<h3>Activity log</h3>\
-				<a>HELP</a>\
-				<a>CLOSE</a>\
+				<h3 id="articlefeedbackv5-noteflyover-caption">Activity log</h3>\
+				<a id="articlefeedbackv5-noteflyover-helpbutton" href="#"></a>\
+				<a id="articlefeedbackv5-noteflyover-close" href="#"></a>\
 			</div>\
-			<div>SOME ACTIVITY HERE\
-			</div>\
-			<div class="articlefeedbackv5-activityflyover-viewactivity">FOOTER HERE\
-			</div>\
+			<div id="articlefeedbackv5-activity-log"></div>\
 		</div>';
 
 	// }}}
@@ -336,6 +326,10 @@
 					}
 					$l.tipsy( 'show' );
 					$.articleFeedbackv5special.currentPanelHostId= $l.attr( 'id' );
+					// load activity if it is an activity log
+					if( -1 != $l.attr( 'id' ).indexOf( 'articleFeedbackv5-activity-link-' ) ) {
+						$.articleFeedbackv5special.loadActivityLog( $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ) );
+					}
 				}
 			} );
 		}
@@ -416,28 +410,28 @@
 		var $selector = !id ? $( '#articleFeedbackv5-show-feedback' ) : $( '.articleFeedbackv5-feedback[rel="' + id + '"]' );
 
 		// hide/show action
-		$selector.find( '.articleFeedbackv5-hide-link' ).tipsy( {
+		$selector.find( '.articleFeedbackv5-hide-link,.articleFeedbackv5-show-link' ).tipsy( {
 			title: function() {
 				var activity = $.articleFeedbackv5special.getActivity( id );
 				return ( activity.hide || this.text == mw.msg( 'articlefeedbackv5-form-unhide' ) ) ?
 					$.articleFeedbackv5special.notePanelHtml['show'] : $.articleFeedbackv5special.notePanelHtml['hide'];
 			}
 		} );
-		
+
 		// oversight/unoversight action
-		$selector.find( '.articleFeedbackv5-oversight-link' ).tipsy( {
+		$selector.find( '.articleFeedbackv5-oversight-link,.articleFeedbackv5-unoversight-link' ).tipsy( {
 			title: function() {
 				var activity = $.articleFeedbackv5special.getActivity( id );
 				return ( activity.delete || this.text == mw.msg('articlefeedbackv5-form-undelete') ) ?
 					$.articleFeedbackv5special.notePanelHtml['unoversight'] : $.articleFeedbackv5special.notePanelHtml['oversight'];
 			}
 		} );
-		
+				
 		// request/unrequest oversight action
-		$selector.find( '.articleFeedbackv5-requestoversight-link' ).tipsy( {
+		$selector.find( '.articleFeedbackv5-requestoversight-link,.articleFeedbackv5-unrequestoversight-link' ).tipsy( {
 			title: function() {
 				var activity = $.articleFeedbackv5special.getActivity( id );
-				return ( activity.requestoversight || this.text == mw.msg('articlefeedbackv5-form-unrequestoversight') ) ?
+				return ( activity.oversight || this.text == mw.msg('articlefeedbackv5-form-unoversight') ) ?
 					$.articleFeedbackv5special.notePanelHtml['unrequestoversight'] : $.articleFeedbackv5special.notePanelHtml['requestoversight'];
 			}
 		} );
@@ -621,7 +615,7 @@
 	 */
 	$.articleFeedbackv5special.markHidden = function ( $row ) {
 		if ( $row.data( 'hidden' ) ) {
-			$.articleFeedbackv5special.unmarkHidden();
+			$.articleFeedbackv5special.unmarkHidden( $row );
 		}
 		$row.addClass( 'articleFeedbackv5-feedback-hidden' )
 			.data( 'hidden', true );
@@ -730,6 +724,7 @@
 					if ( 'result' in data['articlefeedbackv5-flag-feedback'] ) {
 						if ( data['articlefeedbackv5-flag-feedback'].result == 'Success' ) {
 							var $l = $( '#articleFeedbackv5-' + type + '-link-' + id );
+							var $post = $l.closest( '.articleFeedbackv5-feedback' );
 							// Helpful or unhelpful
 							if ( 'helpful' in data['articlefeedbackv5-flag-feedback'] ) {
 								$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
@@ -764,23 +759,45 @@
 								if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
 									$.articleFeedbackv5special.markHidden( $l.closest( '.articleFeedbackv5-feedback' ) );
 								}
-							// Hide
+							// Hide/show
 							} else if ( 'hide' == type ) {
 								if ( dir > 0 ) {
+									var $l = $( '#articleFeedbackv5-hide-link-' + id );
+									$l.attr( 'id', 'articleFeedbackv5-show-link-' + id );
 									$l.text( mw.msg( 'articlefeedbackv5-form-unhide' ) );
 									$.articleFeedbackv5special.markHidden( $l.closest( '.articleFeedbackv5-feedback' ) );
 								} else {
+									var $l = $( '#articleFeedbackv5-show-link-' + id );
+									$l.attr( 'id', 'articleFeedbackv5-hide-link-' + id );
 									$l.text( mw.msg( 'articlefeedbackv5-form-hide' ) );
-									$.articleFeedbackv5special.unmarkHidden( $l.closest( '.articleFeedbackv5-feedback' ) );
+									$.articleFeedbackv5special.unmarkHidden( $l.closest( '.articleFeedbackv5-feedback' ));
 								}
-							// Delete
+							// oversight/unoversight
 							} else if ( 'delete' == type ) {
 								if ( dir > 0 ) {
+									var $l = $( '#articleFeedbackv5-oversight-link-' + id );
+									$l.attr( 'id', 'articleFeedbackv5-unoversight-link-' + id );
 									$l.text( mw.msg( 'articlefeedbackv5-form-undelete' ) );
 									$.articleFeedbackv5special.markDeleted( $l.closest( '.articleFeedbackv5-feedback' ) );
 								} else {
+									var $l = $( '#articleFeedbackv5-unoversight-link-' + id );
+									$l.attr( 'id', 'articleFeedbackv5-oversight-link-' + id );
 									$l.text( mw.msg( 'articlefeedbackv5-form-delete' ) );
 									$.articleFeedbackv5special.unmarkDeleted( $l.closest( '.articleFeedbackv5-feedback' ) );
+								}
+							// decline oversight
+							} else if( 'resetoversight' == type ) {
+								
+							// request/unrequest oversight
+							} else if( 'oversight' == type ) {
+								if( dir > 0 ) {
+									var $l = $( '#articleFeedbackv5-requestoversight-link-' + id );
+									$l.attr( 'id', 'articleFeedbackv5-unrequestoversight-link-' + id );
+									$l.text( mw.msg( 'articlefeedbackv5-form-unoversight' ) );
+								} else {
+									var $l = $( '#articleFeedbackv5-unrequestoversight-link-' + id );
+									$l.attr( 'id', 'articleFeedbackv5-requestoversight-link-' + id );
+									$l.text( mw.msg( 'articlefeedbackv5-form-oversight' ) );
 								}
 							}
 							// Save activity
@@ -807,6 +824,34 @@
 		return false;
 	}
 
+	// }}}
+	// {{{ loadActivityLog
+		
+	$.articleFeedbackv5special.loadActivityLog = function( id ) {
+		console.log('loadActivityLog');
+		$.ajax( {
+			'url': 		$.articleFeedbackv5special.apiUrl,
+			'type': 	'GET',
+			'dataType': 'json',
+			'data': {
+				'action':			'query',
+				'list':				'articlefeedbackv5-view-activity',
+				'format':			'json',
+				'affeedbackid':		id,
+				'continue':			0
+			},
+			'success': function( data ) {
+				console.log(data['articlefeedbackv5-view-activity'].activity);
+				$( '#articlefeedbackv5-activity-log' ).html( data['articlefeedbackv5-view-activity'].activity );
+			},
+			'error': function( data ) {
+				console.log('error');
+			}
+		} );
+		
+		return false;
+	}
+	
 	// }}}
 	// {{{ loadFeedback
 

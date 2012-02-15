@@ -465,6 +465,23 @@ form.articlefeedbackv5-form-flyover textarea {
 	/* @embed */
 	background-image: url(images/bg-close-hov.png);
 }
+#articlefeedbackv5-noteflyover-helpbutton {
+	display: block;
+	float: right;
+	width: 20px;
+	height: 20px;
+	margin-top: -18px;
+	margin-right: 30px;
+	/* @embed */
+	background-image: url(images/bg-tooltip-trigger.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-size: 20px 20px;
+}
+#articlefeedbackv5-noteflyover-helpbutton:hover {
+	/* @embed */
+	background-image: url(images/bg-tooltip-trigger-hov.png);
+}
 .articlefeedbackv5-flyover-button {
 	display: inline-block;
 	float: left;
@@ -494,4 +511,15 @@ form.articlefeedbackv5-form-flyover textarea {
 	color: #333;
 	text-decoration: none;
 }
-
+#articlefeedbackv5-activity-log {
+	width: 300px;
+	height: 360px;
+}
+.articleFeedbackv5-activity-pane {
+	height: 60px;
+}
+.articleFeedbackv5-activity-log-items {
+	height: 280px;
+	overflow: auto;
+	padding: 10px;
+}
