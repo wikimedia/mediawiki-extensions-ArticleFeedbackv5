@@ -67,28 +67,6 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			'class' => 'articleFeedbackv5-activity-pane'
 		) );
 
-		// <div class="articleFeedbackv5-activity-header">
-		$html .= Html::openElement( 'div', array(
-			'class' => 'articleFeedbackv5-activity-header'
-		) );
-
-		// <h1>Activity Log</h1>
-		$html .= Html::element( 'h1', array(),
-			wfMessage( 'articlefeedbackv5-activity-pane-header' )->text() );
-
-		// <div id="articlefeedbackv5-activity-pane-help">?</div>
-		$html .= Html::element( 'div', array(
-				'id' => 'articlefeedbackv5-activity-pane-help'),
-			wfMessage( 'articlefeedbackv5-activity-help-item' )->text() );
-
-		// <div id="articlefeedbackv5-activity-pane-close">X</div>
-		$html .= Html::element( 'div', array(
-				'id' => 'articlefeedbackv5-activity-pane-close'),
-			wfMessage( 'articlefeedbackv5-activity-close-item' )->text() );
-
-		// </div> for class="articleFeedbackv5-activity-header"
-		$html .= Html::closeElement( 'div' );
-
 		// <div class="articleFeedbackv5-activity-feedback">
 		$html .= Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-activity-feedback'
