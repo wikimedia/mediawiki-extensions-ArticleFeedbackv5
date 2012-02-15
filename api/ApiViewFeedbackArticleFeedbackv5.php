@@ -413,51 +413,65 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			if ( $can_hide ) {
 				if ( $record[0]->af_is_hidden ) {
 					$msg = 'unhide';
+					$class = 'show';
 				} else {
 					$msg = 'hide';
+					$class = 'hide';
 				}
 				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
-					'id'    => "articleFeedbackv5-hide-link-$id",
-					'class' => "articleFeedbackv5-hide-link"
+					'id'    => "articleFeedbackv5-$class-link-$id",
+					'class' => "articleFeedbackv5-$class-link",
+					'href' => '#',
 				), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 			}
 
+			// !can delete == request oversight
+			if ( $can_hide && !$can_delete) {
+				if ( $record[0]->af_needs_oversight ) {
+					$msg = 'unoversight';
+					$class = 'unrequestoversight';
+				} else {
+					$msg = 'oversight';
+					$class = 'requestoversight';
+				}
+				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-$class-link-$id",
+					'class' => "articleFeedbackv5-$class-link",
+					'href' => '#',
+				), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
+			}
+
+			// can delete == do oversight
 			if ( $can_delete ) {
+
+				// if we have oversight requested, add "decline oversight" link
+				if ( $record[0]->af_needs_oversight ) {
+					$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+						'id'    => "articleFeedbackv5-declineoversight-link-$id",
+						'class' => "articleFeedbackv5-declineoversight-link",
+						'href' => '#',
+						), wfMessage( "articlefeedbackv5-form-decline")->text() ) );
+				}
+
 				if ( $record[0]->af_is_deleted > 0 ) {
 					$msg = 'undelete';
+					$class = 'unoversight';
 				} else {
 					$msg = 'delete';
+					$class = 'oversight';
 				}
 				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
-					'id'    => "articleFeedbackv5-delete-link-$id",
-					'class' => "articleFeedbackv5-delete-link"
+					'id'    => "articleFeedbackv5-$class-link-$id",
+					'class' => "articleFeedbackv5-$class-link",
+					'href' => '#',
 				), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 			}
 
-
-			$link = null;
-			if ( $record[0]->af_needs_oversight ) {
-				if ( $can_delete ) {
-					$link = 'unoversight';
-				} else {
-					$link = 'oversighted';
-				}
-			} elseif ( $can_hide ) {
-				# flag for oversight
-				$link = 'oversight';
-			}
-
-			if ( $link ) {
-				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
-					'id'    => "articleFeedbackv5-$link-link-$id",
-					'class' => "articleFeedbackv5-$link-link"
-				), wfMessage( "articlefeedbackv5-form-$link", $record[0]->af_is_deleted )->text() ) );
-			}
-			
 			// view activity link
 			$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 					'id'    => "articleFeedbackv5-activity-link-$id",
-					'class' => "articleFeedbackv5-activity-link"
+					'class' => "articleFeedbackv5-activity-link",
+					'href' => '#',
 				), wfMessage( "articlefeedbackv5-viewactivity" )->text() ) );
 
 			$tools .= Html::closeElement( 'ul' )
