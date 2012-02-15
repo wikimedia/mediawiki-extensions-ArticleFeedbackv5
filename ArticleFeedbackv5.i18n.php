@@ -170,12 +170,12 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-unrequestoversight-help-link' => '#',
 
 	/* Oversight this post panel */
-	'articlefeedbackv5-noteflyover-ovesight-caption' => 'Oversight this post',
-	'articlefeedbackv5-noteflyover-ovesight-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-ovesight-placeholder' => 'Why are you oversighting this post?',
-	'articlefeedbackv5-noteflyover-ovesight-submit' => 'Oversight this post',
-	'articlefeedbackv5-noteflyover-ovesight-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-ovesight-help-link' => '#',
+	'articlefeedbackv5-noteflyover-oversight-caption' => 'Oversight this post',
+	'articlefeedbackv5-noteflyover-oversight-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Why are you oversighting this post?',
+	'articlefeedbackv5-noteflyover-oversight-submit' => 'Oversight this post',
+	'articlefeedbackv5-noteflyover-oversight-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-oversight-help-link' => '#',
 
 	/* Un-oversight this post panel */
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Un-oversight this post',
