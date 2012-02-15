@@ -446,6 +446,22 @@ form.articlefeedbackv5-form-flyover textarea {
 	float: right;
 	margin-top: 4px;
 }
+#articlefeedbackv5-noteflyover-close {
+	display: block;
+	float: right;
+	width: 16px;
+	height: 16px;
+	margin-top: -20px;
+	/* @embed */
+	background-image: url(images/bg-close-off.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-size: 16px 16px;
+}
+#articlefeedbackv5-noteflyover-close:hover {
+	/* @embed */
+	background-image: url(images/bg-close-hov.png);
+}
 .articlefeedbackv5-flyover-button {
 	display: inline-block;
 	float: left;
