@@ -376,6 +376,14 @@
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
 		} );
 		
+		// flyover panel close button
+		$( '#articlefeedbackv5-noteflyover-close' ).live( 'click', function( e ) {
+			e.preventDefault();
+			var $l = $( '#' + $.articleFeedbackv5special.currentPanelHostId );
+			$l.tipsy( 'hide' );
+			$.articleFeedbackv5special.currentPanelHostId = undefined;
+		} );
+		
 		// Delete/Undelete this post
 		/*$( '.articleFeedbackv5-delete-link' ).live( 'click', function( e ) {
 			e.preventDefault();

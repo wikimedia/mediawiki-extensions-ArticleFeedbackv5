@@ -331,17 +331,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$can_hide   = $wgUser->isAllowed( 'aftv5-hide-feedback' );
 		$can_delete = $wgUser->isAllowed( 'aftv5-delete-feedback' );
 
-		$details = Html::openElement( 'div', array(
-			'class' => 'articleFeedbackv5-comment-details-updates'
-		) );
-		$details .=  Linker::link(
-			Title::newFromRow( $record[0] ),
-			wfMessage( 'articlefeedbackv5-revision-link' )->escaped(),
-			array(),
-			array( 'oldid'  => $record[0]->af_revision_id )
-		);
-		$details .= Html::closeElement( 'div' );
-
 		$footer_links = Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-vote-wrapper'
 		) )
@@ -383,7 +372,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'rel'   => $record[0]->af_abuse_count
 			), wfMessage( $msg, $wgLang->formatNum( $record[0]->af_abuse_count ) )->text() );
 		}
-		$footer_links .= $details . Html::closeElement( 'div' );
+		$footer_links .= Html::closeElement( 'div' );
 
 		/*$footer_links .= Html::element( 'span', array(
 			'class' => 'articleFeedbackv5-helpful-votes'
@@ -504,22 +493,54 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		global $wgLang;
 		$id    = $record->af_id;
 		$title = $record->page_title;
+			
+		$blocks = array(
+			array( 'total' => 60 * 60 * 24 * 365, 'name' => 'years' ),
+			array( 'total' => 60 * 60 * 24 * 30, 'name' => 'months'),
+			array( 'total' => 60 * 60 * 24 * 7, 'name' => 'weeks'),
+			array( 'total' => 60 * 60 * 24, 'name' => 'days'),
+			array( 'total' => 60 * 60, 'name' => 'hours'),
+			array( 'total' => 60, 'name' => 'minutes') );
+		
+		$since = wfTimestamp( TS_UNIX ) - wfTimestamp( TS_UNIX, $record->af_created );
+		$displayTime = 0;
+		$displayBlock = '';
+		
+		// get the largest time block, 1 minute 35 seconds -> 2 minutes
+		for( $i = 0, $count = count( $blocks ); $i < $count; $i++ ) {
+			$seconds = $blocks[$i]['total'];
+			$displayTime = floor( $since / $seconds );
 
-		// Taken from the Moodbar extension.
-		$now       = wfTimestamp( TS_UNIX );
-		$timestamp = wfTimestamp( TS_UNIX, $record->af_created );
-		$date	   = '';
+			if ( $displayTime > 0 ) {
+				$displayBlock = $blocks[$i]['name'];
+				// round up if the remaining time is greater than
+				// half of the time unit
+				if ( ( $since % $seconds ) >= ( $seconds / 2 ) ) {
+					$displayTime++;
 
-		// Relative dates for 48 hours, normal timestamps later.
-		if ( $timestamp > ( $now - ( 86400 * 2 ) ) ) {
-			$time = $wgLang->formatTimePeriod(
-				( $now - $timestamp ),
-				array( 'avoid' => 'avoidseconds', 'noabbrevs' => true )
-			);
-			$date = wfMessage( 'articleFeedbackv5-comment-ago', $time )->escaped();
-		} elseif( $timestamp ) {
-		    $date = $wgLang->timeanddate($record->af_created  );
+					//advance to upper unit if possible, eg, 24 hours to 1 day
+					if ( isset( $blocks[$i-1] ) && $displayTime * $seconds ==  $blocks[$i-1]['total'] ) {
+						$displayTime = 1;
+						$displayBlock = $blocks[$i-1]['name'];
+					}
+				}
+				break;
+			}
 		}
+
+		$date = '';
+		if ( $displayTime > 0 ) {
+			if ( in_array( $displayBlock, array( 'years', 'months', 'weeks' ) ) ) {
+				$messageKey = 'articlefeedbackv5-timestamp-' . $displayBlock;
+			} else {
+				$messageKey = $displayBlock;
+			}
+			$date = wfMessage( $messageKey )->params( $wgLang->formatNum( $displayTime ) )->escaped();
+		} else {
+			$date = wfMessage( 'articlefeedbackv5-timestamp-seconds' )->escaped();
+		}
+
+		$message = wfMessage( 'articleFeedbackv5-comment-ago', $date )->escaped();
 
 		// format the element
 		return Html::openElement( 'span', array(
@@ -527,10 +548,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		) )
 		. Linker::link(
 			SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$id" ),
-			$date
+			$message
 		)
 		. Html::closeElement( 'span' );
 	}
+	
 
 	private function renderBucket1( $record ) {
 		if ( $record['found']->aa_response_boolean == 1 ) {
@@ -676,6 +698,17 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		if( !$title->exists() ) {
 			$title = SpecialPage::getTitleFor( 'Contributions', $record->user_name );
 		}
+		
+		$details = Html::openElement( 'span', array(
+			'class' => 'articleFeedbackv5-comment-details-updates'
+		) );
+		$details .=  Linker::link(
+			Title::newFromRow( $record ),
+			wfMessage( 'articlefeedbackv5-revision-link' )->escaped(),
+			array(),
+			array( 'oldid'  => $record->af_revision_id )
+		);
+		$details .= Html::closeElement( 'span' );
 
 		return Html::openElement( 'h3', array( 'class' => $class) )
 		. Html::element( 'span', array( 'class' => 'icon' ) )
@@ -686,7 +719,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			)->escaped()
 		)
 		. Html::closeElement( 'h3' )
-		. $this->renderPermalinkTimestamp( $record );
+		. $this->renderPermalinkTimestamp( $record )
+		. $details;
 	}
 
 	/**

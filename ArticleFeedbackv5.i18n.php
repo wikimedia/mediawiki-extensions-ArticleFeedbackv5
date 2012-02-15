@@ -74,7 +74,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|1 feedback post|$1 feedback posts}} on this article',
 	'articleFeedbackv5-comment-ago'  => '$1 ago',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edit|$1 edits}} since post',
-	'articlefeedbackv5-revision-link' => 'View original version',
+	'articlefeedbackv5-revision-link' => 'View article revision',
 	'articlefeedbackv5-special-more' => 'Show more posts',
 	'articlefeedbackv5-special-pagetitle' => 'Feedback: $1',
 	'articlefeedbackv5-form-optionid' => 'Option $1',
@@ -135,6 +135,11 @@ $messages['en'] = array(
 	'articlefeedbackv5-comment-less' => 'Less',
 	'articlefeedbackv5-beta-notice' => 'Beta',
 	'articlefeedbackv5-viewactivity' => 'View activity',
+	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 year|$1 years}}',
+	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 month|$1 months}}',
+	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 week|$1 weeks}}',
+	'articlefeedbackv5-timestamp-seconds' => 'less than 1 minute',
+	
 	
 	/* Special page flyover panels */
 	/* Hide this post panel */

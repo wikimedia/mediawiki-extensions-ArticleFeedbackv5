@@ -208,12 +208,15 @@ a#articleFeedbackv5-show-more {
 	width: 140px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-details-updates {
-	float: right;
-	margin-right: 10px;
+	float: left;
+	display: block;
+	line-height: 24px;
+	margin: 0 5px 0 30px;
+	position: relative;
+	top: 18px;
 }
 .articleFeedbackv5-comment-details-date {
 	float: left;
-	clear: right;
 	display: block;
 	line-height: 24px;
 	margin: 0 5px 0 0;
@@ -257,7 +260,7 @@ a#articleFeedbackv5-show-more {
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot {
 	line-height: 22px;
 	float: left;
-	width: 520px;
+	width: 450px;
 }
 .articleFeedbackv5-vote-wrapper {
 	float: left;
@@ -313,7 +316,7 @@ a#articleFeedbackv5-show-more {
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap h3 {
 	display: block;
 	float: left;
-	width: 520px;
+	width: 450px;
 	line-height: 24px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap h3 .icon {
