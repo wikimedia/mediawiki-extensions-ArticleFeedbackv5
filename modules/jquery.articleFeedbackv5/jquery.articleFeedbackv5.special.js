@@ -362,7 +362,7 @@
 					$.articleFeedbackv5special.flagFeedback( id, 'delete', -1, note );
 					break;
 				case 'declineoversight':
-					$.articleFeedbackv5special.flagFeedback( id, 'resetdelete', 1, note );
+					$.articleFeedbackv5special.flagFeedback( id, 'resetoversight', 1, note );
 					break;
 				case 'requestoversight':
 					$.articleFeedbackv5special.flagFeedback( id, 'oversight', 1, note );

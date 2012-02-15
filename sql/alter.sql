@@ -128,3 +128,4 @@ CREATE INDEX /*_*/af_net_helpfulness_af_id ON /*_*/aft_article_feedback (af_id, 
 
 -- Added 2/14 (emsmith)
 ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_activity_count integer unsigned NOT NULL DEFAULT 0;
+ALTER TABLE /*_*/aft_article_feedback CHANGE COLUMN af_needs_oversight af_oversight_count integer unsigned NOT NULL DEFAULT 0;

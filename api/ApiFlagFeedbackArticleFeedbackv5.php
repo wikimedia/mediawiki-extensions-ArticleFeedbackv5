@@ -29,8 +29,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$notes = $params['note'];
 		$direction = isset( $params['direction'] ) ? $params['direction'] : 'increase';
 		$counts    = array( 'increment' => array(), 'decrement' => array() );
-		$counters  = array( 'abuse', 'helpful', 'unhelpful' );
-		$flags     = array( 'oversight', 'hide', 'delete' );
+		$counters  = array( 'abuse', 'helpful', 'unhelpful', 'oversight' );
+		$flags     = array( 'hide', 'delete' );
 		$results   = array();
 		$helpful   = null;
 		$error     = null;
@@ -44,15 +44,11 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$error = 'articlefeedbackv5-invalid-feedback-id';
 		} elseif ( in_array( $flag, $flags ) ) {
 
-			$count = null;	
+			$count = null;
 			switch( $flag ) {
-				case 'hide':      
+				case 'hide':
 					$field = 'af_is_hidden';
 					$count = 'invisible';
-					break;
-				case 'oversight':
-					$field = 'af_needs_oversight';
-					$count = 'needsoversight';
 					break;
 				case 'delete':
 					$field = 'af_is_deleted';
@@ -65,6 +61,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			} else {
 				$update[] = "$field = FALSE";
 			}
+
 			// Increment or decrement whichever flag is being set.
 			$countDirection = $direction == 'increase' ? 'increment' : 'decrement';
 			$counts[$countDirection][] = $count;
@@ -78,6 +75,10 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			 && $direction == 'decrease' ) {
 				$counts['increment'][] = 'visible';
 			}
+		} elseif( 'resetoversight' === $flag) {
+			// special case, oversight request count becomes 0
+			$update[] = "af_oversight_count = 0";
+
 		} elseif ( in_array( $flag, $counters ) ) {
 			// Probably this doesn't need validation, since the API
 			// will handle it, but if it's getting interpolated into
@@ -302,7 +303,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'abuse', 'hide', 'helpful', 'unhelpful', 'delete', 'undelete', 'unhide', 'oversight', 'unoversight' )
+				 'abuse', 'hide', 'helpful', 'unhelpful', 'delete', 'undelete', 'unhide', 'oversight', 'unoversight', 'resetoversight' )
 			),
 			'direction' => array(
 				ApiBase::PARAM_REQUIRED => false,
@@ -403,8 +404,13 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			return 'unrequest';
 		}
 
-		// TODO: how is "decline oversight" handled?
-		// how should fall out the bottom here be handled?  a simple "feedback altered"?
+		// handle resetoversight
+		if ( 'resetoversight' == $flag) {
+			return 'decline';
+		}
+
+		// this is the default - we should never, ever get here, but just in case
+		return 'flag';
 	}
 
 	/**

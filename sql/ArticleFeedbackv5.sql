@@ -41,8 +41,9 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   af_unhelpful_count integer unsigned NOT NULL DEFAULT 0,
   -- Net helpfulness (helpful - unhelpful). Used in fetch query.
   af_net_helpfulness integer NOT NULL DEFAULT 0,
-  -- Flag a message as requiring oversight, being hidden ,or being deleted
-  af_needs_oversight boolean NOT NULL DEFAULT FALSE,
+  -- Keep track of requests for oversight on the item
+  af_oversight_count integer unsigned NOT NULL DEFAULT 0,
+  -- Flag a message as being hidden or being deleted
   af_is_deleted      boolean NOT NULL DEFAULT FALSE,
   af_is_hidden       boolean NOT NULL DEFAULT FALSE,
   -- Keep track of number of activities (hide/show/flag/unflag)

@@ -211,7 +211,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'afi_data_type', 'af_created', 'user_name',
 				'af_user_ip', 'af_is_hidden', 'af_abuse_count',
 				'af_helpful_count', 'af_unhelpful_count',
-				'af_is_deleted', 'af_needs_oversight', 'af_revision_id',
+				'af_is_deleted', 'af_oversight_count', 'af_revision_id',
 				'af_net_helpfulness', 'af_revision_id',
 				'page_latest', 'page_title', 'page_namespace',
 				'rating.aa_response_boolean AS rating'
@@ -275,7 +275,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		switch ( $filter ) {
 			case 'needsoversight':
-				$where[] = 'af_needs_oversight IS TRUE';
+				$where[] = 'af_oversight_count > 0';
 				break;
 			case 'id':
 				# Used for permalinks.
@@ -416,7 +416,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 			// !can delete == request oversight
 			if ( $can_hide && !$can_delete) {
-				if ( $record[0]->af_needs_oversight ) {
+				if ( $record[0]->af_oversight_count > 0 ) {
 					$msg = 'unoversight';
 					$class = 'unrequestoversight';
 				} else {
@@ -434,7 +434,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			if ( $can_delete ) {
 
 				// if we have oversight requested, add "decline oversight" link
-				if ( $record[0]->af_needs_oversight ) {
+				if ( $record[0]->af_oversight_count > 0 ) {
 					$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 						'id'    => "articleFeedbackv5-declineoversight-link-$id",
 						'class' => "articleFeedbackv5-declineoversight-link",
