@@ -16,6 +16,10 @@
 // Set to 0 to disable length checking entirely.
 $wgArticleFeedbackv5MaxCommentLength =  0;
 
+// How long text-based activity items are allowed to be - note this will not return
+// an error but simply chop notes that are too long
+$wgArticleFeedbackv5MaxActivityNoteLength =  5000;
+
 // How long to keep ratings in the squids (they will also be purged when needed)
 $wgArticleFeedbackv5SMaxage = 2592000;
 

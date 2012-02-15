@@ -176,16 +176,12 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$activity = $this->getActivity( $flag, $direction );
 
 				// Make sure our notes are not too long - we won't error, just hard substr it
-				global $wgArticleFeedbackv5MaxCommentLength;
+				global $wgArticleFeedbackv5MaxActivityNoteLength;
 
-				// for some reason, 0 means no length checking (ARGH) - should be -1!
-				if ($wgArticleFeedbackv5MaxCommentLength > 0) {
-					$notes = substr($notes, 0, $wgArticleFeedbackv5MaxCommentLength);
-				}
+				$notes = substr($notes, 0, $wgArticleFeedbackv5MaxActivityNoteLength);
 
 				ApiArticleFeedbackv5Utils::logActivity( $activity , $pageId, $feedbackId, $notes );
 
->>>>>>> .r111511
 				// Update the filter count rollups.
 				ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
 				ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['decrement'] );
