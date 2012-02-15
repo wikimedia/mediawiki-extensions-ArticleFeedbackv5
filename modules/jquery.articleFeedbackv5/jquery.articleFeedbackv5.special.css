@@ -451,10 +451,12 @@ form.articlefeedbackv5-form-flyover textarea {
 }
 #articlefeedbackv5-noteflyover-close {
 	display: block;
-	float: right;
+	position: absolute;
+	top: 0;
+	right: 25px;
+	margin-top: 14px;
 	width: 16px;
 	height: 16px;
-	margin-top: -20px;
 	/* @embed */
 	background-image: url(images/bg-close-off.png);
 	background-repeat: no-repeat;
@@ -467,11 +469,12 @@ form.articlefeedbackv5-form-flyover textarea {
 }
 #articlefeedbackv5-noteflyover-helpbutton {
 	display: block;
-	float: right;
+	position: absolute;
+	top: 0;
+	right: 50px;
+	margin-top: 13px;
 	width: 20px;
 	height: 20px;
-	margin-top: -18px;
-	margin-right: 30px;
 	/* @embed */
 	background-image: url(images/bg-tooltip-trigger.png);
 	background-repeat: no-repeat;
@@ -516,10 +519,25 @@ form.articlefeedbackv5-form-flyover textarea {
 	height: 360px;
 }
 .articleFeedbackv5-activity-pane {
-	height: 60px;
+	height: 70px;
 }
 .articleFeedbackv5-activity-log-items {
-	height: 280px;
+	height: 290px;
 	overflow: auto;
-	padding: 10px;
+}
+.articleFeedbackv5-activity-count {
+	background-color: #ddd;
+	padding: 3px 10px 3px 10px;
+}
+.articleFeedbackv5-activity-item {
+	padding: 5px 10px;
+	color: #555;
+}
+.articleFeedbackv5-activity-item a {
+	font-weight: bold;
+}
+.articleFeedbackv5-activity-item .articleFeedbackv5-activity-item-action {
+	font-weight: bold;
+	color: red;
+	padding: 0 5px;
 }

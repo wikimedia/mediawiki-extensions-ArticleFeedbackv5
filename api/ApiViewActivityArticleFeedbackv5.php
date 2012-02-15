@@ -128,16 +128,18 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 			// $user $did_something_on $date
 			$html .= $this->getUserLink($item->log_user, $item->log_user_text)
-				. Html::element( 'div', array(),
+				. Html::element( 'span', array(
+						'class' => 'articleFeedbackv5-activity-item-action'
+					),
 					wfMessage( 'articlefeedbackv5-activity-' . $item->log_action,
 						array())->text() )
 				. $wgLang->timeanddate( $item->log_timestamp );
 
 			// optional: <div class="articleFeedbackv5-activity-notes">$notes</div>
 			if (!empty($item->log_comment)) {
-				$html .= Html::element( 'div',
+				$html .= Html::element( 'span',
 							array('class' => 'articlefeedbackv5-activity-notes'),
-							$item->log_comment);
+							': ' . $item->log_comment);
 			}
 
 			// </div> for class="articleFeedbackv5-activity-item"
