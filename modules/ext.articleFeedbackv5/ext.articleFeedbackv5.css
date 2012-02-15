@@ -76,9 +76,8 @@
 	border: none;
 	border-top: 1px solid gray;
 	border-left: 1px solid gray;
-	color: #000;
 	background-color: #d0e1f4;
-	min-width: 105px;
+	min-width: 130px;
 	right: 0;
 	display: block;
 	margin: 0;
@@ -87,7 +86,13 @@
 	position: absolute;
 	z-index: 999;
 }
-.articleFeedbackv5-bottomrighttablink:hover {
+.articleFeedbackv5-bottomrighttablink a {
+	color: #000;
+}
+.articleFeedbackv5-bottomrighttablink a:hover {
 	text-decoration: none;
+}
+.articleFeedbackv5-bottomrighttabclose {
+	z-index: 999;
 }
 

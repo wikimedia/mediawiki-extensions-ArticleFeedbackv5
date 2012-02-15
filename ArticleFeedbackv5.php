@@ -195,6 +195,14 @@ $wgArticleFeedbackv5SelectedCTA = 3;
 $wgArticleFeedbackv5AbuseFiltering = false;
 
 /**
+ * If someone clicks the close button on a the floating link, wait this long
+ * (in days) before showing it to them again.
+ *
+ * @var int
+ */
+$wgArticleFeedbackv5DropLinkCookieExpires = 1;
+
+/**
  * The full URL for a discussion page about the Article Feedback Dashboard
  *
  * Since the dashboard is powered by a SpecialPage, we cannot rel on the built-in
