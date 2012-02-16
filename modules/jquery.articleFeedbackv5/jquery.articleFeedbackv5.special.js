@@ -787,7 +787,7 @@
 								}
 							// decline oversight
 							} else if( 'resetoversight' == type ) {
-								
+								$( '#articleFeedbackv5-resetoversight-link-' + id ).remove();
 							// request/unrequest oversight
 							} else if( 'oversight' == type ) {
 								if( dir > 0 ) {

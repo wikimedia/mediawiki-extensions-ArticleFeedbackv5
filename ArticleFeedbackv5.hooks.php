@@ -174,6 +174,8 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-form-unhide',
 				'articlefeedbackv5-form-delete',
 				'articlefeedbackv5-form-undelete',
+				'articlefeedbackv5-form-oversight',
+				'articlefeedbackv5-form-unoversight',
 				'articlefeedbackv5-hidden',
 				'articlefeedbackv5-deleted',
 				'articlefeedbackv5-comment-more',
