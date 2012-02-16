@@ -159,7 +159,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-show-help-link' => '#',
 
 	/* Request oversight panel */
-	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Request oversigt',
+	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Request oversight',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Add a note',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Why are you requesting oversight?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Request oversight',
