@@ -175,11 +175,9 @@ class ApiArticleFeedbackv5Utils {
 	public function updateFilterCounts( $pageId, $filters, $decrement ) {
 		// Don't do anything unless we have filters to process.
 		if( !$filters ) { 
-error_log("no filters");
 			return; 
 		}
 		if( !count( $filters ) ) { 
-error_log("no count of filters");
 			return; 
 		}
 
@@ -187,7 +185,6 @@ error_log("no count of filters");
 		$dbw->begin();
 
 		foreach ( $filters as $filter ) {
-error_log("have filter $filter for page $pageId");
 			$rows[] = array(
 				'afc_page_id'      => $pageId,
 				'afc_filter_name'  => $filter,
@@ -205,10 +202,8 @@ error_log("have filter $filter for page $pageId");
 		);
 
 		$value = $decrement ? 'afc_filter_count - 1' : 'afc_filter_count + 1';
-error_log("new value is $value");
 
 		foreach ( $filters as $filter ) {
-error_log("setting value for page $pageId, filter $filter");
 			# Update each row with the new count.
 			$dbw->update(
 				'aft_article_filter_count',

@@ -22,19 +22,18 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 * Execute the API call: Pull the requested feedback
 	 */
 	public function execute() {
-		$params    = $this->extractRequestParams();
-		$pageId    = $params['pageid'];
+		$params     = $this->extractRequestParams();
+		$pageId     = $params['pageid'];
 		$feedbackId = $params['feedbackid'];
-		$flag      = $params['flagtype'];
-		$notes = $params['note'];
-		$direction = isset( $params['direction'] ) ? $params['direction'] : 'increase';
-		$counts    = array( 'increment' => array(), 'decrement' => array() );
-		$counters  = array( 'abuse', 'helpful', 'unhelpful', 'oversight' );
-		$flags     = array( 'hide', 'delete' );
-		$results   = array();
-		$helpful   = null;
-		$error     = null;
-		$where     = array( 'af_id' => $feedbackId );
+		$flag       = $params['flagtype'];
+		$notes      = $params['note'];
+		$direction  = isset( $params['direction'] ) ? $params['direction'] : 'increase';
+		$counters   = array( 'abuse', 'helpful', 'unhelpful', 'oversight' );
+		$flags      = array( 'hide', 'delete' );
+		$results    = array();
+		$helpful    = null;
+		$error      = null;
+		$where      = array( 'af_id' => $feedbackId );
 
 		# load feedback record, bail if we don't have one
 		$record = $this->fetchRecord( $feedbackId );
@@ -48,11 +47,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			switch( $flag ) {
 				case 'hide':
 					$field = 'af_is_hidden';
-					$count = 'invisible';
 					break;
 				case 'delete':
 					$field = 'af_is_deleted';
-					$count = 'deleted';
 					break;
 				default: return; # return error, ideally.
 			}
@@ -60,20 +57,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$update[] = "$field = TRUE";
 			} else {
 				$update[] = "$field = FALSE";
-			}
-
-			// Increment or decrement whichever flag is being set.
-			$countDirection = $direction == 'increase' ? 'increment' : 'decrement';
-			$counts[$countDirection][] = $count;
-			// If this is hiding/deleting, decrement the visible count.
-			if( ( $flag == 'hide' || $flag == 'delete' )
-			 && $direction == 'increase' ) {
-				$counts['decrement'][] = 'visible';
-			}
-			// If this is unhiding/undeleting, increment the visible count.
-			if( ( $flag == 'hide' || $flag == 'delete' )
-			 && $direction == 'decrease' ) {
-				$counts['increment'][] = 'visible';
 			}
 		} elseif( 'resetoversight' === $flag) {
 			// special case, oversight request count becomes 0
@@ -103,60 +86,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				// Decrementing from 0 is not allowed.
 				$where[] = "$field > 0";
 			}
-
-			// Adding a new abuse flag: abusive++
-			if( $flag == 'abuse' && $direction == 'increase'
-			 && $record->af_abuse_count == 0 ) {
-				$counts['increment'][] = 'abusive';
-				// Auto-hide after 5 abuse flags.
-				if( $record->af_abuse_count > 4 ) {
-					$counts['increment'][] = 'invisible';
-					$counts['decrement'][] = 'visible';
-				}
-			}
-			// Removing the last abuse flag: abusive--
-			if( $flag == 'abuse' && $direction == 'decrease'
-			 && $record->af_abuse_count == 1 ) {
-				$counts['decrement'][] = 'abusive';
-				// Un-hide if we don't have 5 flags anymore
-				if( $record->af_abuse_count == 5 ) {
-					$counts['increment'][] = 'visible';
-					$counts['decrement'][] = 'invisible';
-				}
-			}
-
-			// note that a net helpfulness of 0 is neither helpful nor unhelpful
-			$netHelpfulness = $record->af_net_helpfulness;
-
-			// increase helpful OR decrease unhelpful
-			if( ( ($flag == 'helpful' && $direction == 'increase' )
-			 || ($flag == 'unhelpful' && $direction == 'decrease' ) )
-			) {
-				// net was -1: no longer unhelpful
-				if( $netHelpfulness == -1 ) {
-					$counts['decrement'][] = 'unhelpful';
-				}
-
-				// net was 0: now helpful
-				if( $netHelpfulness == 0 ) {
-					$counts['increment'][] = 'helpful';
-				}
-			}
-
-			// increase unhelpful OR decrease unhelpful
-			if( ( ($flag == 'unhelpful' && $direction == 'increase' )
-			 || ($flag == 'helpful' && $direction == 'decrease' ) )
-			) {
-				// net was 1: no longer helpful
-				if( $netHelpfulness == 1 ) {
-					$counts['decrement'][] = 'helpful';
-				}
-
-				// net was 0: now unhelpful
-				if( $netHelpfulness == 0 ) {
-					$counts['increment'][] = 'unhelpful';
-				}
-			}
 		} else {
 			$error = 'articlefeedbackv5-invalid-feedback-flag';
 		}
@@ -183,9 +112,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 				ApiArticleFeedbackv5Utils::logActivity( $activity , $pageId, $feedbackId, $notes );
 
-				// Update the filter count rollups.
-				ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
-				ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['decrement'] );
+				$this->updateCounts( $flag, $direction, $record, $pageId );
 
 				// Update helpful/unhelpful display count after submission.
 				if ( $flag == 'helpful' || $flag == 'unhelpful' ) {
@@ -217,7 +144,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 						__METHOD__
 					);
 				}
-
 			}
 
 			// Conditional formatting for abuse flag
@@ -365,6 +291,126 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		return array(
 			'api.php?list=articlefeedbackv5-view-feedback&affeedbackid=1&aftype=abuse',
 		);
+	}
+
+	/**
+	 * Figures out which filter counts to increment/decrement based on what
+	 * flag was clicked and which direction it was going.
+	 *
+	 * @param $action    string  type of flag sent to the form
+	 * @param $direction string  type of direction sent to the form
+	 * @param $record    object  database object representing the feedback row
+	 * @param $pageId    integer ID of the page to be updated.
+	 */
+	protected function updateCounts( $action, $direction, $record, $pageId ) {
+		$counts = array( 'increment' => array(), 'decrement' => array() );
+		$netHelpfulness = $record->af_net_helpfulness;
+
+		// Increment or decrement hide or delete filters.
+		if( $action == 'hide' || $action == 'delete' ) {
+			$count    = $action == 'hide' ? 'invisible' : 'deleted';
+
+			// If this is hiding/deleting, increment the visible count and 
+			// decrement the visible count.
+			if( $direction == 'increase' ) {
+				$counts['increment'][] = $count;
+				$counts['decrement'][] = 'visible';
+			}
+			// For unhiding/undeleting, do the opposite.
+		 	if( $direction == 'decrease' ) {
+				$counts['increment'][] = 'visible';
+				$counts['decrement'][] = $count;
+			}
+		}
+
+		// Adding a new abuse flag: abusive++
+		if( $action == 'abuse' && $direction == 'increase'
+		 && $record->af_abuse_count == 0 ) {
+			$counts['increment'][] = 'abusive';
+			// Auto-hide after 5 abuse flags.
+			if( $record->af_abuse_count > 4 ) {
+				$counts['increment'][] = 'invisible';
+				$counts['decrement'][] = 'visible';
+			}
+		}
+
+		// Removing the last abuse flag: abusive--
+		if( $action == 'abuse' && $direction == 'decrease'
+		 && $record->af_abuse_count == 1 ) {
+			$counts['decrement'][] = 'abusive';
+			// Un-hide if we don't have 5 flags anymore
+			if( $record->af_abuse_count == 5 ) {
+				$counts['increment'][] = 'visible';
+				$counts['decrement'][] = 'invisible';
+			}
+		}
+
+		// note that a net helpfulness of 0 is neither helpful nor unhelpful
+
+		// increase helpful OR decrease unhelpful
+		if( ( ($action == 'helpful' && $direction == 'increase' )
+		 || ($action == 'unhelpful' && $direction == 'decrease' ) )
+		) {
+			// net was -1: no longer unhelpful
+			if( $netHelpfulness == -1 ) {
+				$counts['decrement'][] = 'unhelpful';
+			}
+
+			// net was 0: now helpful
+			if( $netHelpfulness == 0 ) {
+				$counts['increment'][] = 'helpful';
+			}
+		}
+
+		// increase unhelpful OR decrease unhelpful
+		if( ( ($action == 'unhelpful' && $direction == 'increase' )
+		 || ($action == 'helpful' && $direction == 'decrease' ) )
+		) {
+			// net was 1: no longer helpful
+			if( $netHelpfulness == 1 ) {
+				$counts['decrement'][] = 'helpful';
+			}
+
+			// net was 0: now unhelpful
+			if( $netHelpfulness == 0 ) {
+				$counts['increment'][] = 'unhelpful';
+			}
+		}
+
+		// If someone hides or deletes an abusive/comment/helpful/unhelpful
+		// comment, decrement the relevent counter.
+		// If they unhide/undelete, increment that same counter.
+		if( $action == 'delete' || $action == 'hide' ) {
+			$dbr     = wfGetDB( DB_SLAVE );
+			$dir     = $direction == 'increase' ? 'decrement' : 'increment';
+			$comment = $dbr->select(
+				array( 'aft_article_answer', 'aft_article_field' ),
+				'aa_response_text',
+				array(
+					'aa_feedback_id' => $record->af_id,
+					'afi_data_type'  => 'text',
+					'aa_field_id = afi_id' 
+				),
+				__METHOD__
+			);
+
+			if( $record->af_abuse_count > 1 ) {
+				$counts[$dir][] = 'abusive';
+			}
+			if( $comment->numRows() > 0 ) {
+				$counts[$dir][] = 'comment';
+			}
+			if( $netHelpfulness > 1 ) {
+				$counts[$dir][] = 'helpful';
+			}
+			if( $netHelpfulness < 1 ) {
+				$counts[$dir][] = 'unhelpful';
+			}
+		}
+
+		// Update the filter count rollups.
+		ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
+		ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['decrement'] );
 	}
 
 	/**
