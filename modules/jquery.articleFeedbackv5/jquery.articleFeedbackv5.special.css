@@ -271,7 +271,9 @@ a#articleFeedbackv5-show-more {
 	margin: 0 15px 0 0;
 }
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link {
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link {
 	display: inline-block;
 	height: 22px;
 	line-height: 22px;
@@ -294,7 +296,9 @@ a#articleFeedbackv5-show-more {
 }
 
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link:hover,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link:hover {
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link:hover,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link:hover,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link:hover {
 	/* @embed */
 	background: url(images/bg-button-hov.png) repeat-x;
 	cursor: pointer;
@@ -305,7 +309,11 @@ a#articleFeedbackv5-show-more {
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link.active,
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link.active,
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link.active:hover,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link.active:hover {
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link.active:hover,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link.active,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link.active,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link.active:hover,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link.active:hover {
 	/* @embed */
 	background: url(images/bg-button.png) repeat-x;
 	color: #fff;

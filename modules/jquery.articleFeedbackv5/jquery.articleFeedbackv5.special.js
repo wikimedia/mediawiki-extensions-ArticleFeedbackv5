@@ -97,37 +97,7 @@
 				<a class="articlefeedbackv5-flyover-help" id="articlefeedbackv5-noteflyover-help" href="#"></a>\
 			</div>\
 		</form>';
-				
-	/**
-	 * Formatted and localized flyover panel HTMLs. These are initialized once on page setup.
-	 *
-	 * @var object
-	 */
-	$.articleFeedbackv5special.notePanelHtml = {
-		'hide': undefined,
-		'show': undefined,
-		'requestoversight': undefined,
-		'unrequestoversight': undefined,
-		'oversight': undefined,
-		'declineoversight': undefined,
-		'unoversight': undefined
-	};
-				
-	/**
-	 * Activity log flyover panel HTML
-	 * 
-	 * @var string
-	 */
-	$.articleFeedbackv5special.logPanelHtml = '\
-		<div>\
-			<div class="articlefeedbackv5-flyover-header">\
-				<h3 id="articlefeedbackv5-noteflyover-caption">Activity log</h3>\
-				<a id="articlefeedbackv5-noteflyover-helpbutton" href="#"></a>\
-				<a id="articlefeedbackv5-noteflyover-close" href="#"></a>\
-			</div>\
-			<div id="articlefeedbackv5-activity-log"></div>\
-		</div>';
-
+	
 	// }}}
 	// {{{ Init methods
 
@@ -158,20 +128,6 @@
 		$.articleFeedbackv5special.activityCookieName += $.articleFeedbackv5special.page;
 		$.articleFeedbackv5special.loadActivity();
 
-		// initialize flyover panels for actions	
-		$.articleFeedbackv5special.initFlyoverPanels();
-		
-		// Initial load
-		$.articleFeedbackv5special.loadFeedback( true );
-	};
-
-	// }}}
-	// {{{ initFlyoverPanels
-	
-	/**
-	 * Initialize the action note flyover panels
-	 */
-	$.articleFeedbackv5special.initFlyoverPanels = function() {
 		// set tipsy defaults, once
 		$.fn.tipsy.defaults = {
 			delayIn: 0,				// delay before showing tooltip (ms)
@@ -187,20 +143,26 @@
 			trigger: 'manual'		// how tooltip is triggered - hover | focus | manual
 		};
 		
-		// i18n, create specific panels from template
+		// i18n, create action-specific tipsy panels from template
 		var container = $( '<div></div>' );
 		container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
-		for( var action in $.articleFeedbackv5special.notePanelHtml ) {
-			container.find( '#articlefeedbackv5-noteflyover-caption' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
-			container.find( '#articlefeedbackv5-noteflyover-label' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
-			container.find( '#articlefeedbackv5-noteflyover-submit' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-submit' ) );
-			container.find( '#articlefeedbackv5-noteflyover-submit' ).attr( 'rel', action );
-			container.find( '#articlefeedbackv5-noteflyover-help' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help' ) );
-			container.find( '#articlefeedbackv5-noteflyover-help' ).attr( 'href', mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help-link' ) );
-			$.articleFeedbackv5special.notePanelHtml[action] = container.html();
+		for( var action in $.articleFeedbackv5special.actions ) {
+			if( $.articleFeedbackv5special.actions[action].hasTipsy && (undefined == $.articleFeedbackv5special.actions[action].tipsyHtml) ) {
+				container.find( '#articlefeedbackv5-noteflyover-caption' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
+				container.find( '#articlefeedbackv5-noteflyover-label' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
+				container.find( '#articlefeedbackv5-noteflyover-submit' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-submit' ) );
+				// will add an 'action' attribute to the link
+				container.find( '#articlefeedbackv5-noteflyover-submit' ).attr( 'action', action );
+				container.find( '#articlefeedbackv5-noteflyover-help' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help' ) );
+				container.find( '#articlefeedbackv5-noteflyover-help' ).attr( 'href', mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help-link' ) );
+				$.articleFeedbackv5special.actions[action].tipsyHtml = container.html();
+			}
 		}
-	}
-	
+		
+		// Initial load
+		$.articleFeedbackv5special.loadFeedback( true );
+	};
+
 	// }}}
 	// {{{ setBinds
 
@@ -258,145 +220,34 @@
 			return false;
 		} );
 
-		// Helpful and unhelpful
-		$.each( ['helpful', 'unhelpful' ], function ( index, value ) { 
-			$( '.articleFeedbackv5-' + value + '-link' ).live( 'click', function( e ) {
-				e.preventDefault();
-				var $l = $( e.target );
-				if ( $l.closest( '.articleFeedbackv5-feedback' ).data( 'hidden' )
-					|| $l.closest( '.articleFeedbackv5-feedback' ).data( 'deleted' ) ) {
-					return false;
-				}
-				var id = $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
-				var activity = $.articleFeedbackv5special.getActivity( id );
-				if ( activity[value] ) {
-					$.articleFeedbackv5special.flagFeedback( id, value, -1 );
-				} else if ( 'helpful' == value && activity.unhelpful ) {
-					// Allow multiple simultaneous ajax requests in this case.
-					$.articleFeedbackv5special.listControls.allowMultiple = true;
-					$.articleFeedbackv5special.flagFeedback( id, 'unhelpful', -1 );
-					$.articleFeedbackv5special.flagFeedback( id, 'helpful', 1 );
-					$.articleFeedbackv5special.listControls.allowMultiple = false;
-				} else if ( 'unhelpful' == value && activity.helpful ) {
-					// Allow multiple simultaneous ajax requests in this case.
-					$.articleFeedbackv5special.listControls.allowMultiple = true;
-					$.articleFeedbackv5special.flagFeedback( id, 'helpful', -1 );
-					$.articleFeedbackv5special.flagFeedback( id, 'unhelpful', 1 );
-					$.articleFeedbackv5special.listControls.allowMultiple = false;
-				} else {
-					$.articleFeedbackv5special.flagFeedback( id, value, 1 );
-				}
-			} )
-		} );
-
-		// Flag/Unflag as abuse
-		$( '.articleFeedbackv5-abuse-link' ).live( 'click', function( e ) {
-			e.preventDefault();
-			var $l = $( e.target );
-			if ( $l.closest( '.articleFeedbackv5-feedback' ).data( 'hidden' )
-				|| $l.closest( '.articleFeedbackv5-feedback' ).data( 'deleted' ) ) {
-				return false;
-			}
-			var id = $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
-			var activity = $.articleFeedbackv5special.getActivity( id );
-			if ( activity.abuse ) {
-				$.articleFeedbackv5special.flagFeedback( id, 'abuse', -1 );
-			} else {
-				$.articleFeedbackv5special.flagFeedback( id, 'abuse', 1 );
-			}
-		} );
-
-		// Prepare an array of actions to bind
-		var actions = ['activity'];
-		for( var action in $.articleFeedbackv5special.notePanelHtml ) { actions.push(action); }
-		// Bind tipsies
-		for( var index in actions ) {
-			var action = actions[index];
-			$( '.articleFeedbackv5-' + action + '-link' ).live( 'click', function( e ) {
-				e.preventDefault();
-				var $l = $( e.target );
-				// are we hiding the current tipsy?
-				if( $l.attr( 'id' ) == $.articleFeedbackv5special.currentPanelHostId ) {
-					$l.tipsy( 'hide' );
-					$.articleFeedbackv5special.currentPanelHostId = undefined;
-				} else {
-					// no, we're displaying another one
-					if( undefined != $.articleFeedbackv5special.currentPanelHostId ) {
-						$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
-					}
-					$l.tipsy( 'show' );
-					$.articleFeedbackv5special.currentPanelHostId= $l.attr( 'id' );
-					// load activity if it is an activity log
-					if( -1 != $l.attr( 'id' ).indexOf( 'articleFeedbackv5-activity-link-' ) ) {
-						$.articleFeedbackv5special.loadActivityLog( $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ) );
-					}
-				}
-			} );
+		// Bind actions
+		for( var action in $.articleFeedbackv5special.actions ) {
+			$( '.articleFeedbackv5-' + action + '-link' ).live( 'click', $.articleFeedbackv5special.actions[action].click );
 		}
 		
-		// Bind submit actions on flyover panels
+		// Bind submit actions on flyover panels (flag actions)
 		$( '#articlefeedbackv5-noteflyover-submit' ).live( 'click', function( e ) {
 			e.preventDefault();
-			var $l = $( '#' + $.articleFeedbackv5special.currentPanelHostId );
-			var action = $( e.target ).attr( 'rel' );
-			var id = $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
-			var activity = $.articleFeedbackv5special.getActivity( id );
-			var note = $( '#articlefeedbackv5-noteflyover-note' ).attr( 'value' );
-			switch( action ) {
-				case 'hide':
-					$.articleFeedbackv5special.flagFeedback( id, 'hide', 1, note );
-					break;
-				case 'show':
-					$.articleFeedbackv5special.flagFeedback( id, 'hide', -1, note );
-					break;
-				case 'oversight':
-					$.articleFeedbackv5special.flagFeedback( id, 'delete', 1, note );
-					break;
-				case 'unoversight':
-					$.articleFeedbackv5special.flagFeedback( id, 'delete', -1, note );
-					break;
-				case 'declineoversight':
-					$.articleFeedbackv5special.flagFeedback( id, 'resetoversight', 1, note );
-					break;
-				case 'requestoversight':
-					$.articleFeedbackv5special.flagFeedback( id, 'oversight', 1, note );
-					break;
-				case 'unrequestoversight':
-					$.articleFeedbackv5special.flagFeedback( id, 'oversight', -1, note );
-					break;
-			}
+			$.articleFeedbackv5special.flagFeedback(
+				$( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ),
+				$( e.target ).attr( 'action' ),
+				$( '#articlefeedbackv5-noteflyover-note' ).attr( 'value' ) );
+			
 			// hide tipsy
-			$l.tipsy( 'hide' );
+			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
 		} );
 		
-		// flyover panel close button
+		// bind flyover panel close button
 		$( '#articlefeedbackv5-noteflyover-close' ).live( 'click', function( e ) {
 			e.preventDefault();
-			var $l = $( '#' + $.articleFeedbackv5special.currentPanelHostId );
-			$l.tipsy( 'hide' );
+			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
 		} );
 		
-		// Delete/Undelete this post
-		/*$( '.articleFeedbackv5-delete-link' ).live( 'click', function( e ) {
-			e.preventDefault();
-			var $l = $( e.target );
-			var id = $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
-			var activity = $.articleFeedbackv5special.getActivity( id );
-			if ( activity.delete 
-			  || $( e.target ).text() == mw.msg('articlefeedbackv5-form-undelete') 
-			) {
-				$.articleFeedbackv5special.flagFeedback( id, 'delete', -1 );
-			} else {
-				$.articleFeedbackv5special.flagFeedback( id, 'delete', 1 );
-			}
-		} );*/
 	}
-
 	// }}}
 	// {{{ bindPanels
-	
 	/**
 	 * Bind panels to controls - that cannot be 'live' events due to jQuery.typsy
 	 * limitations. This function should be invoked after feedback posts are loaded,
@@ -408,53 +259,52 @@
 	$.articleFeedbackv5special.bindPanels = function( id ) {
 		// single post or entire list?		
 		var $selector = !id ? $( '#articleFeedbackv5-show-feedback' ) : $( '.articleFeedbackv5-feedback[rel="' + id + '"]' );
-
-		// hide/show action
-		$selector.find( '.articleFeedbackv5-hide-link,.articleFeedbackv5-show-link' ).tipsy( {
-			title: function() {
-				var activity = $.articleFeedbackv5special.getActivity( id );
-				return ( activity.hide || this.text == mw.msg( 'articlefeedbackv5-form-unhide' ) ) ?
-					$.articleFeedbackv5special.notePanelHtml['show'] : $.articleFeedbackv5special.notePanelHtml['hide'];
-			}
-		} );
-
-		// oversight/unoversight action
-		$selector.find( '.articleFeedbackv5-oversight-link,.articleFeedbackv5-unoversight-link' ).tipsy( {
-			title: function() {
-				var activity = $.articleFeedbackv5special.getActivity( id );
-				return ( activity.delete || this.text == mw.msg('articlefeedbackv5-form-undelete') ) ?
-					$.articleFeedbackv5special.notePanelHtml['unoversight'] : $.articleFeedbackv5special.notePanelHtml['oversight'];
-			}
-		} );
-				
-		// request/unrequest oversight action
-		$selector.find( '.articleFeedbackv5-requestoversight-link,.articleFeedbackv5-unrequestoversight-link' ).tipsy( {
-			title: function() {
-				var activity = $.articleFeedbackv5special.getActivity( id );
-				return ( activity.oversight || this.text == mw.msg('articlefeedbackv5-form-unoversight') ) ?
-					$.articleFeedbackv5special.notePanelHtml['unrequestoversight'] : $.articleFeedbackv5special.notePanelHtml['requestoversight'];
-			}
-		} );
 		
-		// decline oversight action
-		$selector.find( '.articleFeedbackv5-declineoversight-link' ).tipsy( {
-			title: function() {
-				return $.articleFeedbackv5special.notePanelHtml['declineoversight'];
-			}
-		} );
-		
-		// view activity action
-		$selector.find( '.articleFeedbackv5-activity-link' ).tipsy( {
-			title: function() {
-				return $.articleFeedbackv5special.logPanelHtml;
-			}
-		} );
+		for( var action in $.articleFeedbackv5special.actions ) {
+			$selector.find( '.articleFeedbackv5-' + action + '-link' )
+				.attr( 'action', action )
+				.tipsy( {
+					title: function() {
+						return $.articleFeedbackv5special.actions[$( this ).attr( 'action' )].tipsyHtml;
+					}
+				} );
+		}
 	}
-	
 	// }}}
 	
 	// }}}
 	// {{{ Utility methods
+	
+	// {{{ toggleTipsy
+	/**
+	 * Toggles tipsy display for an action link
+	 *
+	 * @param e event
+	 * @returns true if showing tipsy, false if hiding
+	 */
+	$.articleFeedbackv5special.toggleTipsy = function( e ) {
+		e.preventDefault();
+		var $l = $( e.target );
+		// are we hiding the current tipsy?
+		if( $l.attr( 'id' ) == $.articleFeedbackv5special.currentPanelHostId ) {
+			$l.tipsy( 'hide' );
+			$.articleFeedbackv5special.currentPanelHostId = undefined;
+			return false;
+		} else {
+			// no, we're displaying another one
+			if( undefined != $.articleFeedbackv5special.currentPanelHostId ) {
+				$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
+			}
+			$l.tipsy( 'show' );
+			$.articleFeedbackv5special.currentPanelHostId = $l.attr( 'id' );
+			return true;
+			// load activity if it is an activity log
+			if( -1 != $l.attr( 'id' ).indexOf( 'articleFeedbackv5-activity-link-' ) ) {
+				$.articleFeedbackv5special.loadActivityLog( $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ) );
+			}
+		}
+	}
+	// }}}
 
 	// {{{ toggleComment
 	$.articleFeedbackv5special.toggleComment = function( id ) { 
@@ -659,7 +509,6 @@
 
 	// }}}
 	// {{{ unmarkDeleted
-
 	/**
 	 * Utility method: Unmarks as deleted a feedback row
 	 *
@@ -670,7 +519,17 @@
 			.data( 'deleted', false );
 		$row.find( '.articleFeedbackv5-feedback-deleted-marker' ).remove();
 	};
-
+	// }}}
+	
+	// {{{ setActivityFlag
+	$.articleFeedbackv5special.setActivityFlag = function( id, flag, value ) {
+		// no activity for this post yet, create default structure
+		if ( !( id in $.articleFeedbackv5special.activity ) ) {
+			$.articleFeedbackv5special.activity[id] = { 'helpful': false, 'unhelpful': false, 'abuse': false, 'hide': false, 'delete': false };
+		}
+		$.articleFeedbackv5special.activity[id][flag] = value;
+		$.articleFeedbackv5special.storeActivity();
+	}
 	// }}}
 	
 	// }}}
@@ -681,16 +540,16 @@
 	/**
 	 * Sends the request to mark a response
 	 *
-	 * @param id   int    the feedback id
-	 * @param type string the type of mark (valid values: hide, abuse, delete, helpful, unhelpful)
-	 * @param dir  int    the direction of the mark (-1 = tick down; 1 = tick up)
-	 * @param note string note for action (default empty)
+	 * @param id   		int			the feedback id
+	 * @param action	string		action to execute
+	 * @param note 		string 		note for action (default empty)
 	 */
-	$.articleFeedbackv5special.flagFeedback = function ( id, type, dir, note ) {
+	$.articleFeedbackv5special.flagFeedback = function ( id, action, note ) {
 		// default parameters
 		note = typeof note !== undefined ? note : '';
 		
 		if( $.articleFeedbackv5special.listControls.disabled ) {
+			console.log('disabled');
 			return false;
 		}
 		
@@ -712,8 +571,8 @@
 			'data'    : {
 				'pageid'    : $.articleFeedbackv5special.page,
 				'feedbackid': id,
-				'flagtype'  : type,
-				'direction' : dir > 0 ? 'increase' : 'decrease',
+				'flagtype'  : $.articleFeedbackv5special.actions[action].apiFlagType,
+				'direction' : $.articleFeedbackv5special.actions[action].apiFlagDir > 0 ? 'increase' : 'decrease',
 				'note'		: note,
 				'format'    : 'json',
 				'action'    : 'articlefeedbackv5-flag-feedback'
@@ -723,90 +582,17 @@
 				if ( 'articlefeedbackv5-flag-feedback' in data ) {
 					if ( 'result' in data['articlefeedbackv5-flag-feedback'] ) {
 						if ( data['articlefeedbackv5-flag-feedback'].result == 'Success' ) {
-							var $l = $( '#articleFeedbackv5-' + type + '-link-' + id );
-							var $post = $l.closest( '.articleFeedbackv5-feedback' );
-							// Helpful or unhelpful
-							if ( 'helpful' in data['articlefeedbackv5-flag-feedback'] ) {
-								$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
+							// invoke the registered onSuccess callback for the executed action
+							if( undefined != $.articleFeedbackv5special.actions[action].onSuccess ) {
+								$.articleFeedbackv5special.actions[action].onSuccess( id, data );
 							}
-							if ( 'helpful' == type || 'unhelpful' == type ) {
-								if ( dir > 0 ) {
-									$l.addClass( 'helpful-active' );
-								} else {
-									$l.removeClass( 'helpful-active' );
-								}
-							// Abusive
-							} else if ( 'abuse' == type ) {
-								if ( dir > 0 ) {
-									if( mw.config.get( 'afCanEdit' ) == 1 ) {
-										$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
-									} else {
-										$l.text( mw.msg( 'articlefeedbackv5-abuse-saved-masked', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
-									}
-								} else {
-									if( mw.config.get( 'afCanEdit' ) == 1 ) {
-										$l.text( mw.msg( 'articlefeedbackv5-form-abuse', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
-									} else {
-										$l.text( mw.msg( 'articlefeedbackv5-form-abuse-masked', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
-									}
-								}
-								$l.attr( 'rel', data['articlefeedbackv5-flag-feedback'].abuse_count );
-								if ( data['articlefeedbackv5-flag-feedback'].abusive ) {
-									$l.addClass( 'abusive' );
-								} else {
-									$l.removeClass( 'abusive' );
-								}
-								if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
-									$.articleFeedbackv5special.markHidden( $l.closest( '.articleFeedbackv5-feedback' ) );
-								}
-							// Hide/show
-							} else if ( 'hide' == type ) {
-								if ( dir > 0 ) {
-									var $l = $( '#articleFeedbackv5-hide-link-' + id );
-									$l.attr( 'id', 'articleFeedbackv5-show-link-' + id );
-									$l.text( mw.msg( 'articlefeedbackv5-form-unhide' ) );
-									$.articleFeedbackv5special.markHidden( $l.closest( '.articleFeedbackv5-feedback' ) );
-								} else {
-									var $l = $( '#articleFeedbackv5-show-link-' + id );
-									$l.attr( 'id', 'articleFeedbackv5-hide-link-' + id );
-									$l.text( mw.msg( 'articlefeedbackv5-form-hide' ) );
-									$.articleFeedbackv5special.unmarkHidden( $l.closest( '.articleFeedbackv5-feedback' ));
-								}
-							// oversight/unoversight
-							} else if ( 'delete' == type ) {
-								if ( dir > 0 ) {
-									var $l = $( '#articleFeedbackv5-oversight-link-' + id );
-									$l.attr( 'id', 'articleFeedbackv5-unoversight-link-' + id );
-									$l.text( mw.msg( 'articlefeedbackv5-form-undelete' ) );
-									$.articleFeedbackv5special.markDeleted( $l.closest( '.articleFeedbackv5-feedback' ) );
-								} else {
-									var $l = $( '#articleFeedbackv5-unoversight-link-' + id );
-									$l.attr( 'id', 'articleFeedbackv5-oversight-link-' + id );
-									$l.text( mw.msg( 'articlefeedbackv5-form-delete' ) );
-									$.articleFeedbackv5special.unmarkDeleted( $l.closest( '.articleFeedbackv5-feedback' ) );
-								}
-							// decline oversight
-							} else if( 'resetoversight' == type ) {
-								$( '#articleFeedbackv5-resetoversight-link-' + id ).remove();
-							// request/unrequest oversight
-							} else if( 'oversight' == type ) {
-								if( dir > 0 ) {
-									var $l = $( '#articleFeedbackv5-requestoversight-link-' + id );
-									$l.attr( 'id', 'articleFeedbackv5-unrequestoversight-link-' + id );
-									$l.text( mw.msg( 'articlefeedbackv5-form-unoversight' ) );
-								} else {
-									var $l = $( '#articleFeedbackv5-unrequestoversight-link-' + id );
-									$l.attr( 'id', 'articleFeedbackv5-requestoversight-link-' + id );
-									$l.text( mw.msg( 'articlefeedbackv5-form-oversight' ) );
-								}
-							}
-							// Save activity
-							if ( !( id in $.articleFeedbackv5special.activity ) ) {
-								$.articleFeedbackv5special.activity[id] = { helpful: false, unhelpful: false, abuse: false, hide: false, delete: false };
-							}
-							$.articleFeedbackv5special.activity[id][type] = dir > 0 ? true : false;
-							$.articleFeedbackv5special.storeActivity();
+							
+							// Re-enable ajax flagging.
+							$.articleFeedbackv5special.listControls.disabled = false;
+							
+							// re-bind panels (tipsies)
 							$.articleFeedbackv5special.bindPanels( id );
+							return true;
 						} else if ( data['articlefeedbackv5-flag-feedback'].result == 'Error' ) {
 							mw.log( mw.msg( data['articlefeedbackv5-flag-feedback'].reason ) );
 						}
@@ -828,7 +614,6 @@
 	// {{{ loadActivityLog
 		
 	$.articleFeedbackv5special.loadActivityLog = function( id ) {
-		console.log('loadActivityLog');
 		$.ajax( {
 			'url': 		$.articleFeedbackv5special.apiUrl,
 			'type': 	'GET',
@@ -841,11 +626,10 @@
 				'continue':			0
 			},
 			'success': function( data ) {
-				console.log(data['articlefeedbackv5-view-activity'].activity);
 				$( '#articlefeedbackv5-activity-log' ).html( data['articlefeedbackv5-view-activity'].activity );
 			},
 			'error': function( data ) {
-				console.log('error');
+				$( '#articlefeedbackv5-activity-log' ).html( mw.msg( 'articleFeedbackv5-view-activity-error' ) );
 			}
 		} );
 		
@@ -894,10 +678,18 @@
 						if ( id in $.articleFeedbackv5special.activity ) {
 							var activity = $.articleFeedbackv5special.getActivity( id );
 							if ( activity.helpful ) {
-								$( this ).find( '#articleFeedbackv5-helpful-link-' + id ).addClass( 'helpful-active' );
+								$( this ).find( '#articleFeedbackv5-helpful-link-' + id )
+									.addClass( 'helpful-active' )
+									.removeClass( 'articleFeedbackv5-helpful-link' )
+									.addClass( 'articleFeedbackv5-reversehelpful-link' )
+									.attr( 'id', 'articleFeedbackv5-reversehelpful-link-' + id );
 							}
 							if ( activity.unhelpful ) {
-								$( this ).find( '#articleFeedbackv5-unhelpful-link-' + id ).addClass( 'helpful-active' );
+								$( this ).find( '#articleFeedbackv5-unhelpful-link-' + id )
+									.addClass( 'helpful-active' )
+									.removeClass( 'articleFeedbackv5-unhelpful-link' )
+									.addClass( 'articleFeedbackv5-reverseunhelpful-link' )
+									.attr( 'id', 'articleFeedbackv5-reverseunhelpful-link-' + id );
 							}
 							if ( activity.abuse ) {
 								var $l = $( this ).find( '#articleFeedbackv5-abuse-link-' + id );
@@ -906,6 +698,9 @@
 								} else {
 									$l.text( mw.msg( 'articlefeedbackv5-abuse-saved-masked', $l.attr( 'rel' ) ) );
 								}
+								$l.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
+									.removeClass( 'articleFeedbackv5-abuse-link' )
+									.addClass( 'articleFeedbackv5-unabuse-link' ); 
 							}
 						}
 						if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
@@ -951,7 +746,6 @@
 
 	// }}}
 	// {{{ storeActivity
-
 	/**
 	 * Stores the user activity to the cookie
 	 */
@@ -963,9 +757,356 @@
 			{ 'expires': 365, 'path': '/' }
 		);
 	}
-
+	// }}}
+	// {{{ canBeFlagged
+	/**
+	 * Returns true if the post can be flagged
+	 */
+	$.articleFeedbackv5special.canBeFlagged = function( $post ) {
+		return !$post.data( 'hidden' ) && !$post.data( 'deleted' );
+	}
 	// }}}
 
+	// }}}
+	
+	// {{{ Actions
+	/**
+	 * Actions - available actions on the page.
+	 * 
+	 * Each action is an object with the following properties:
+	 * 		hasTipsy - true if the action needs a flyover panel
+	 * 		tipsyHtml - html for the corresponding flyover panel
+	 * 		click - click action
+	 * 		apiFlagType - flag type for api call
+	 * 		apiFlagDir - flag direction for api call (+/-1)
+	 * 		onSuccess - callback to execute after action success. Callback parameters:
+	 * 			id - respective post id
+	 * 			data - any data returned by the AJAX call
+	 */
+	$.articleFeedbackv5special.actions = {
+		
+		// Vote helpful
+		'helpful': {
+			'hasTipsy': false,
+			'click': function( e ) {
+				e.preventDefault();
+				var $link = $( e.target );
+				if( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
+					var id = $link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
+					var activity = $.articleFeedbackv5special.getActivity( id );
+					$.articleFeedbackv5special.listControls.allowMultiple = true;
+					if( activity['unhelpful'] ) {
+						$.articleFeedbackv5special.flagFeedback( id, 'reverseunhelpful', '' );
+					}
+					$.articleFeedbackv5special.flagFeedback( id, 'helpful', '' );
+					$.articleFeedbackv5special.listControls.allowMultiple = false;
+				}
+			},
+			'apiFlagType': 'helpful',
+			'apiFlagDir': 1,
+			'onSuccess': function( id, data ) {
+				$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
+				$( '#articleFeedbackv5-helpful-link-' + id )
+					.addClass( 'helpful-active' )
+					.removeClass( 'articleFeedbackv5-helpful-link' )
+					.addClass( 'articleFeedbackv5-reversehelpful-link' )
+					.attr( 'id', 'articleFeedbackv5-reversehelpful-link-' + id );
+				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', true );
+			}
+		},
+		
+		// Un-vote helpful
+		'reversehelpful': {
+			'hasTipsy': false,
+			'click': function( e ) {
+				e.preventDefault();
+				var $link = $( e.target );
+				if( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
+					$.articleFeedbackv5special.flagFeedback(
+						$link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ), 'reversehelpful', '' );
+				}
+			},
+			'apiFlagType': 'helpful',
+			'apiFlagDir': -1,
+			'onSuccess': function( id, data ) {
+				$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
+				$( '#articleFeedbackv5-reversehelpful-link-' + id )
+					.removeClass( 'helpful-active' )
+					.removeClass( 'articleFeedbackv5-reversehelpful-link')
+					.addClass( 'articleFeedbackv5-helpful-link' )
+					.attr( 'id', 'articleFeedbackv5-helpful-link-' + id );
+				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', false );
+			}
+		},
+		
+		// Vote unhelpful
+		'unhelpful': {
+			'hasTipsy': false,
+			'click': function( e ) {
+				e.preventDefault();
+				var $link = $( e.target );
+				if( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
+					var id = $link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
+					var activity = $.articleFeedbackv5special.getActivity( id );
+					$.articleFeedbackv5special.listControls.allowMultiple = true;
+					if( activity['helpful'] ) {
+						$.articleFeedbackv5special.flagFeedback( id, 'reversehelpful', '' );
+					}
+					$.articleFeedbackv5special.flagFeedback( id, 'unhelpful', '' );
+					$.articleFeedbackv5special.listControls.allowMultiple = false;
+				}
+			},
+			'apiFlagType': 'unhelpful',
+			'apiFlagDir': 1,
+			'onSuccess': function( id, data ) {
+				$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
+				$( '#articleFeedbackv5-unhelpful-link-' + id )
+					.addClass( 'helpful-active' )
+					.removeClass( 'articleFeedbackv5-unhelpful-link')
+					.addClass( 'articleFeedbackv5-reverseunhelpful-link' )
+					.attr( 'id', 'articleFeedbackv5-reverseunhelpful-link-' + id );
+				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', true );
+			}
+		},
+		
+		// Un-vote unhelpful
+		'reverseunhelpful': {
+			'hasTipsy': false,
+			'click': function( e ) {
+				e.preventDefault();
+				var $link = $( e.target );
+				if( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
+					$.articleFeedbackv5special.flagFeedback(
+						$link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ), 'reverseunhelpful', '' );
+				}
+			},
+			'apiFlagType': 'unhelpful',
+			'apiFlagDir': -1,
+			'onSuccess': function( id, data ) {
+				$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
+				$( '#articleFeedbackv5-reverseunhelpful-link-' + id )
+					.removeClass( 'helpful-active' )
+					.removeClass( 'articleFeedbackv5-reverseunhelpful-link')
+					.addClass( 'articleFeedbackv5-unhelpful-link' )
+					.attr( 'id', 'articleFeedbackv5-unhelpful-link-' + id );
+				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', false );
+			}
+		},
+
+		// Flag post as abusive
+		'abuse': {
+			'hasTipsy': false,
+			'click': function( e ) {
+				e.preventDefault();
+				var $link = $( e.target );
+				if( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
+					var id = $link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
+					$.articleFeedbackv5special.flagFeedback( $link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ), 'abuse', '' );
+				}
+			},
+			'apiFlagType': 'abuse',
+			'apiFlagDir': 1,
+			'onSuccess': function( id, data ) {
+				$link = $( '#articleFeedbackv5-abuse-link-' + id );
+				if( mw.config.get( 'afCanEdit' ) == 1 ) {
+					$link.text( mw.msg( 'articlefeedbackv5-abuse-saved', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
+				} else {
+					$link.text( mw.msg( 'articlefeedbackv5-abuse-saved-masked', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
+				}
+				$link.attr( 'rel', data['articlefeedbackv5-flag-feedback'].abuse_count );
+				if ( data['articlefeedbackv5-flag-feedback'].abusive ) {
+					$link.addClass( 'abusive' );
+				} else {
+					$link.removeClass( 'abusive' );
+				}
+				if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
+					$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ) );
+				}
+				$link.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
+					.removeClass( 'articleFeedbackv5-abuse-link' )
+					.addClass( 'articleFeedbackv5-unabuse-link' );
+				$.articleFeedbackv5special.setActivityFlag( id, 'abuse', true );
+			}
+		},
+		
+		// Unflag post as abusive
+		'unabuse': {
+			'hasTipsy': false,
+			'click': function( e ) {
+				e.preventDefault();
+				var $link = $( e.target );
+				if( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
+					var id = $link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
+					$.articleFeedbackv5special.flagFeedback( $link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ), 'unabuse', '' );
+				}
+			},
+			'apiFlagType': 'abuse',
+			'apiFlagDir': -1,
+			'onSuccess': function( id, data ) {
+				$link = $( '#articleFeedbackv5-unabuse-link-' + id );
+				if( mw.config.get( 'afCanEdit' ) == 1 ) {
+					$link.text( mw.msg( 'articlefeedbackv5-form-abuse', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
+				} else {
+					$link.text( mw.msg( 'articlefeedbackv5-form-abuse-masked', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
+				}
+				$link.attr( 'rel', data['articlefeedbackv5-flag-feedback'].abuse_count );
+				if ( data['articlefeedbackv5-flag-feedback'].abusive ) {
+					$link.addClass( 'abusive' );
+				} else {
+					$link.removeClass( 'abusive' );
+				}
+				if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
+					$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ) );
+				}
+				$link.attr( 'id', 'articleFeedbackv5-abuse-link-' + id )
+					.removeClass( 'articleFeedbackv5-unabuse-link' )
+					.addClass( 'articleFeedbackv5-abuse-link' );
+				$.articleFeedbackv5special.setActivityFlag( id, 'abuse', false );
+			}
+		},
+		
+		// Hide post action
+		'hide': {
+			'hasTipsy': true,
+			'tipsyHtml': undefined,
+			'click': $.articleFeedbackv5special.toggleTipsy,
+			'apiFlagType': 'hide',
+			'apiFlagDir': 1,
+			'onSuccess': function( id, data ) {
+				var $link = $( '#articleFeedbackv5-hide-link-' + id )
+					.attr( 'action', 'show' )
+					.attr( 'id', 'articleFeedbackv5-show-link-' + id )
+					.text( mw.msg( 'articlefeedbackv5-form-unhide' ) )
+					.removeClass( 'articleFeedbackv5-hide-link' )
+					.addClass( 'articleFeedbackv5-show-link' );
+				$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ) );
+				$.articleFeedbackv5special.setActivityFlag( id, 'hide', true );
+			}
+		},
+		
+		// Show post action
+		'show': {
+			'hasTipsy': true,
+			'tipsyHtml': undefined,
+			'click': $.articleFeedbackv5special.toggleTipsy,
+			'apiFlagType': 'hide',
+			'apiFlagDir': -1,
+			'onSuccess': function( id, data ) {
+				var $link = $( '#articleFeedbackv5-show-link-' + id )
+					.attr( 'action', 'hide' )
+					.attr( 'id', 'articleFeedbackv5-hide-link-' + id )
+					.text( mw.msg( 'articlefeedbackv5-form-hide' ) )
+					.removeClass( 'articleFeedbackv5-show-link' )
+					.addClass( 'articleFeedbackv5-hide-link' );
+				$.articleFeedbackv5special.unmarkHidden( $link.closest( '.articleFeedbackv5-feedback' ));
+				$.articleFeedbackv5special.setActivityFlag( id, 'hide', false );
+			}
+		},
+		
+		// Request oversight action
+		'requestoversight': {
+			'hasTipsy': true,
+			'tipsyHtml': undefined,
+			'click': $.articleFeedbackv5special.toggleTipsy,
+			'apiFlagType': 'oversight',
+			'apiFlagDir': 1,
+			'onSuccess': function( id, data ) {
+				$( '#articleFeedbackv5-requestoversight-link-' + id )
+					.attr( 'action', 'unrequestoversight' )
+					.attr( 'id', 'articleFeedbackv5-unrequestoversight-link-' + id )
+					.text( mw.msg( 'articlefeedbackv5-form-unoversight' ) )
+					.removeClass( 'articleFeedbackv5-requestoversight-link' )
+					.addClass( 'articleFeedbackv5-unrequestoversight-link');
+			}
+		},
+		
+		// Cancel oversight request action
+		'unrequestOversight': {
+			'hasTipsy': true,
+			'tipsyHtml': undefined,
+			'click': $.articleFeedbackv5special.toggleTipsy,
+			'apiFlagType': 'oversight',
+			'apiFlagDir': -1,
+			'onSuccess': function( id, data ) {
+				$( '#articleFeedbackv5-unrequestoversight-link-' + id )
+					.attr( 'action', 'requestoversight' )
+					.attr( 'id', 'articleFeedbackv5-requestoversight-link-' + id )
+					.text( mw.msg( 'articlefeedbackv5-form-oversight' ) )
+					.removeClass( 'articleFeedbackv5-unrequestoversight-link' )
+					.addClass( 'articleFeedbackv5-requestoversight-link');
+			}
+		},
+		
+		// Oversight post action
+		'oversight': {
+			'hasTipsy': true,
+			'tipsyHtml': undefined,
+			'click': $.articleFeedbackv5special.toggleTipsy,
+			'apiFlagType': 'delete',
+			'apiFlagDir': 1,
+			'onSuccess': function( id, data ) {
+				var $link = $( '#articleFeedbackv5-oversight-link-' + id )
+					.attr( 'action', 'unoversight' )
+					.attr( 'id', 'articleFeedbackv5-unoversight-link-' + id )
+					.text( mw.msg( 'articlefeedbackv5-form-undelete' ) )
+					.removeClass( 'articleFeedbackv5-oversight-link' )
+					.addClass( 'articleFeedbackv5-unoversight-link' );
+				$.articleFeedbackv5special.markDeleted( $link.closest( '.articleFeedbackv5-feedback' ) );
+				$.articleFeedbackv5special.setActivityFlag( id, 'delete', true );
+			}
+		},
+		
+		// Un-oversight action
+		'unoversight': {
+			'hasTipsy': true,
+			'tipsyHtml': undefined,
+			'click': $.articleFeedbackv5special.toggleTipsy,
+			'apiFlagType': 'delete',
+			'apiFlagDir': 1,
+			'onSuccess': function( id, data ) {
+				var $link = $( '#articleFeedbackv5-unoversight-link-' + id )
+					.attr( 'action', 'oversight' )
+					.attr( 'id', 'articleFeedbackv5-oversight-link-' + id )
+					.text( mw.msg( 'articlefeedbackv5-form-delete' ) )
+					.removeClass( 'articleFeedbackv5-unoversight-link' )
+					.addClass( 'articleFeedbackv5-oversight-link' );
+				$.articleFeedbackv5special.unmarkDeleted( $link.closest( '.articleFeedbackv5-feedback' ) );
+				$.articleFeedbackv5special.setActivityFlag( id, 'delete', false );
+			}
+		},
+		
+		// Decline oversight action
+		'declineoversight': {
+			'hasTipsy': true,
+			'tipsyHtml': undefined,
+			'click': $.articleFeedbackv5special.toggleTipsy,
+			'apiFlagType': 'resetoversight',
+			'apiFlagDir': 1,
+			'onSuccess': function( id, data ) {
+				$( '#articleFeedbackv5-declineoversight-link-' + id ).remove();
+			}
+		},
+		
+		// View activity log action
+		'activity': {
+			'hasTipsy': true,
+			'tipsyHtml': '\
+				<div>\
+					<div class="articlefeedbackv5-flyover-header">\
+						<h3 id="articlefeedbackv5-noteflyover-caption">Activity log</h3>\
+						<a id="articlefeedbackv5-noteflyover-helpbutton" href="#"></a>\
+						<a id="articlefeedbackv5-noteflyover-close" href="#"></a>\
+					</div>\
+					<div id="articlefeedbackv5-activity-log"></div>\
+				</div>',
+			'click': function( e ) {
+				if( $.articleFeedbackv5special.toggleTipsy( e ) ) {
+					$.articleFeedbackv5special.loadActivityLog( $( e.target ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ) );
+				}
+			}
+		}
+		
+	};
 	// }}}
 
 // }}}
