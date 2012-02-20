@@ -2015,6 +2015,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Geitost
  * @author Kghbln
  * @author Metalhead64
  * @author Purodha
@@ -2144,7 +2145,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-noteflyover-show-help' => 'Weitere Informationen',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Löschung beantragen',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Eine Anmerkung hinzufügen',
-	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Warum beantragst du die Löschung ?',
+	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Warum beantragst du die Löschung?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Löschung beantragen',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Weitere Informationen',
 	'articlefeedbackv5-noteflyover-unrequestoversight-caption' => 'Löschantrag zurücknehmen',
@@ -2154,12 +2155,12 @@ $messages['de'] = array(
 	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Weitere Informationen',
 	'articlefeedbackv5-noteflyover-oversight-caption' => 'Diese Rückmeldung löschen',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Eine Anmerkung hinzufügen',
-	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Warum löschst du diese Rückmeldung ?',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Warum löschst du diese Rückmeldung?',
 	'articlefeedbackv5-noteflyover-oversight-submit' => 'Diese Rückmeldung löschen',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Weitere Informationen',
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Löschung  dieser Rückmeldung zurücknehmen',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Eine Anmerkung hinzufügen',
-	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Warum nimmst Du die Löschung  dieser Rückmeldung zurück?',
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Warum nimmst Du die Löschung dieser Rückmeldung zurück?',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Löschung  dieser Rückmeldung zurücknehmen',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Weitere Informationen',
 	'articlefeedbackv5-noteflyover-declineoversight-caption' => 'Löschung ablehnen',
@@ -2326,6 +2327,7 @@ Das {{SITENAME}}-Team',
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Catrope
+ * @author Geitost
  * @author Imre
  * @author Kghbln
  * @author Umherirrender
@@ -2343,10 +2345,10 @@ $messages['de-formal'] = array(
 	'articlefeedbackv5-special-add-feedback' => 'Geben Sie ein Rückmeldung',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Warum blenden Sie diese Rückmeldung aus?',
 	'articlefeedbackv5-noteflyover-show-placeholder' => 'Warum blenden Sie diese Rückmeldung ein?',
-	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Warum beantragen Sie die Löschung ?',
-	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Warum nehmen Sie den Antrag zur Löschung  zurück?',
-	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Warum löschen Sie diese Rückmeldung ?',
-	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Warum nehmen Sie die Löschung  dieser Rückmeldung zurück?',
+	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Warum beantragen Sie die Löschung?',
+	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Warum nehmen Sie den Antrag zur Löschung zurück?',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Warum löschen Sie diese Rückmeldung?',
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Warum nehmen Sie die Löschung dieser Rückmeldung zurück?',
 	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'Warum lehnen Sie die Löschung  ab?',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Haben Sie gefunden, wonach Sie suchten?',
 	'articlefeedbackv5-bucket1-question-comment-yes' => 'Was war am nützlichsten für Sie? Wie könnte diese Seite verbessert werden?',
