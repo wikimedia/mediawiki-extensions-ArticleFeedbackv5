@@ -184,7 +184,7 @@ class ApiArticleFeedbackv5Utils {
 		);
 
 		foreach ( $filters as $filter => $direction) {
-			$value = ($direction > 0) ? 'afc_filter_count + 1' : 'afc_filter_count - 1';
+			$value = ($direction > 0) ? 'afc_filter_count + 1' : 'GREATEST(0, afc_filter_count - 1)';
 
 			# Update each row with the new count.
 			$dbw->update(
