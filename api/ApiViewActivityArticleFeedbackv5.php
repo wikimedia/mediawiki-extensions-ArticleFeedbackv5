@@ -48,6 +48,10 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 		// fetch our activity database information
 		$feedback    = $this->fetchFeedback( $feedbackId );
+		// if this is false, this is bad feedback - move along
+		if( !$feedback) {
+			return;
+		}
 
 		// get the string title for the page
 		$page = Title::newFromID( $feedback->af_page_id );
