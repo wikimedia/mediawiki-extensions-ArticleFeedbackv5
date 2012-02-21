@@ -288,6 +288,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			case 'invisible':
 				$where[] = 'af_is_hidden IS TRUE';
  				break;
+			case 'unhidden':
+				$where[] = 'af_is_unhidden IS TRUE';
+ 				break;
 			case 'abusive':
 				$where[] = 'af_abuse_count > 0';
 				break;
@@ -302,6 +305,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				break;
 			case 'deleted':
 				$where[] = 'af_is_deleted IS TRUE';
+				break;
+			case 'undeleted':
+				$where[] = 'af_is_undeleted IS TRUE';
+				break;
+			case 'declined':
+				$where[] = 'af_is_declined';
 				break;
 			default:
 				break;
@@ -751,7 +760,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'all', 'notdeleted', 'invisible', 'visible', 'comment', 'id', 'helpful', 'unhelpful', 'abusive', 'deleted', 'needsoversight' )
+				 'all', 'notdeleted',
+				 'invisible', 'visible', 'unhidden',
+				 'comment', 'id',
+				 'helpful', 'unhelpful', 'abusive',
+				 'deleted', 'undeleted', 'needsoversight', 'declined' )
 			),
 			'filtervalue'   => array(
 				ApiBase::PARAM_REQUIRED => false,

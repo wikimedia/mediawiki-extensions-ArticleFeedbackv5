@@ -64,6 +64,9 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-filter-visible' => 'All visible ($1)',
 	'articlefeedbackv5-special-filter-invisible' => 'Hidden ($1)',
 	'articlefeedbackv5-special-filter-deleted' => 'Oversighted ($1)',
+	'articlefeedbackv5-special-filter-undeleted' => 'Un-oversighted ($1)',
+	'articlefeedbackv5-special-filter-declined' => 'Oversight Declined ($1)',
+	'articlefeedbackv5-special-filter-unhidden' => 'Un-hidden ($1)',
 	'articlefeedbackv5-special-sort-age' => 'Date',
 	'articlefeedbackv5-special-sort-helpful' => 'Helpful',
 	'articlefeedbackv5-special-sort-rating' => 'Rating',
@@ -342,8 +345,6 @@ $messages['en'] = array(
 
 	/* Activity Pane phrases */
 	'articlefeedbackv5-activity-pane-header' => 'Activity Log',
-	'articlefeedbackv5-activity-help-item' => '?',
-	'articlefeedbackv5-activity-close-item' => 'X',
 	'articlefeedbackv5-activity-feedback-info' => 'Feedback Post #$1 by',
 	'articlefeedbackv5-activity-feedback-date' => 'Posted on $1',
 	'articlefeedbackv5-activity-permalink' => 'permalink',
@@ -381,6 +382,29 @@ We will be in touch shortly with how you can help improve {{SITENAME}}.
 If you did not initiate this request, please ignore this e-mail and we will not send you anything else.
 
 Best wishes, and thank you,
+The {{SITENAME}} team',
+
+	'articlefeedbackv5-emailcapture-request-oversight' => 'Hello!
+
+A request for oversight has been made by
+
+$1 : $2
+
+on feedback item
+
+$3 : $4
+
+for page
+
+$5 : $6
+
+Please visit
+
+$7
+
+to decline or approve this oversight request.
+
+Thank you,
 The {{SITENAME}} team',
 
 );

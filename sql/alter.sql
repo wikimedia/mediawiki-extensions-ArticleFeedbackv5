@@ -127,5 +127,12 @@ UPDATE aft_article_feedback SET af_net_helpfulness = CONVERT(af_helpful_count, S
 CREATE INDEX /*_*/af_net_helpfulness_af_id ON /*_*/aft_article_feedback (af_id, af_net_helpfulness);
 
 -- Added 2/14 (emsmith)
-ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_activity_count integer unsigned NOT NULL DEFAULT 0;
 ALTER TABLE /*_*/aft_article_feedback CHANGE COLUMN af_needs_oversight af_oversight_count integer unsigned NOT NULL DEFAULT 0;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_has_comment BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_is_unhidden BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_is_undeleted BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_is_declined BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_activity_count integer unsigned NOT NULL DEFAULT 0;
+
+-- set has_comment appropriately
+UPDATE aft_article_feedback, aft_article_answer SET af_has_comment = TRUE WHERE af_bucket_id = 1 AND af_id = aa_feedback_id AND aa_response_text IS NOT NULL;

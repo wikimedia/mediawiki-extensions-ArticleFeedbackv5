@@ -151,40 +151,22 @@ class ApiArticleFeedbackv5Utils {
 	}
 
 	/**
-	 * Increments the per-page-per-filter count rollups used on the feedback
-	 * page.
+	 * Must pass in a useable database handle in a transaction - since all
+	 * counts MUST be incremented in the same transaction as the data changing
+	 * or the counts will be off
 	 *
 	 * @param $pageId      int   the ID of the page (page.page_id)
-	 * @param $filterNames array values are names of filters to increment
+	 * @param $filters     array  an array of filter name => direction pairs
+	 *                            direction 1 = increment, -1 = decrement
 	 */
-	public static function incrementFilterCounts( $pageId, $filterNames ) {
-		ApiArticleFeedbackv5Utils::updateFilterCounts( $pageId, $filterNames, false );
-	}
+	public static function updateFilterCounts( $dbw, $pageId, $filters ) {
 
-	/**
-	 * decrements the per-page-per-filter count rollups used on the feedback
-	 * page.
-	 *
-	 * @param $pageId      int   the ID of the page (page.page_id)
-	 * @param $filterNames array values are names of filters to decrement
-	 */
-	public static function decrementFilterCounts( $pageId, $filterNames ) {
-		ApiArticleFeedbackv5Utils::updateFilterCounts( $pageId, $filterNames, true );
-	}
-
-	public function updateFilterCounts( $pageId, $filters, $decrement ) {
 		// Don't do anything unless we have filters to process.
-		if( !$filters ) { 
-			return; 
-		}
-		if( !count( $filters ) ) { 
+		if( empty( $filters ) || count($filters) < 1 ) {
 			return; 
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin();
-
-		foreach ( $filters as $filter ) {
+		foreach ( $filters as $filter => $direction) {
 			$rows[] = array(
 				'afc_page_id'      => $pageId,
 				'afc_filter_name'  => $filter,
@@ -201,9 +183,9 @@ class ApiArticleFeedbackv5Utils {
 			array( 'IGNORE' )
 		);
 
-		$value = $decrement ? 'afc_filter_count - 1' : 'afc_filter_count + 1';
+		foreach ( $filters as $filter => $direction) {
+			$value = ($direction > 0) ? 'afc_filter_count + 1' : 'afc_filter_count - 1';
 
-		foreach ( $filters as $filter ) {
 			# Update each row with the new count.
 			$dbw->update(
 				'aft_article_filter_count',
@@ -216,8 +198,6 @@ class ApiArticleFeedbackv5Utils {
 			);
 
 		}
-
-		$dbw->commit();
 	}
 
 	/**
@@ -245,6 +225,10 @@ class ApiArticleFeedbackv5Utils {
 
 		// to build our permalink, use the feedback entry key 
 		$title = SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$itemId" );
+
+		// Make sure our notes are not too long - we won't error, just hard substr it
+		global $wgArticleFeedbackv5MaxActivityNoteLength;
+		$notes = substr($notes, 0, $wgArticleFeedbackv5MaxActivityNoteLength);
 
 		$log = new LogPage( 'articlefeedbackv5' );
 		// comments become the notes section from the feedback

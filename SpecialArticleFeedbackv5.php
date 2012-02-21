@@ -36,15 +36,14 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		$showHidden  = $wgUser->isAllowed( 'aftv5-see-hidden-feedback' );
 		$showDeleted = $wgUser->isAllowed( 'aftv5-see-deleted-feedback' );
 
-		if ( $showHidden ) {
-			array_push( $this->filters,
-				'unhelpful', 'abusive', 'invisible'
-			);
-			# removing the 'needsoversight' filter, per Fabrice
-		}
-
 		if ( $showDeleted ) {
-			$this->filters[] = 'deleted';
+			array_push( $this->filters,
+				'unhelpful', 'abusive', 'invisible', 'unhidden', 'needsoversight', 'deleted', 'undeleted', 'declined'
+			);
+		} elseif ( $showHidden ) {
+			array_push( $this->filters,
+				'unhelpful', 'abusive', 'invisible', 'unhidden', 'needsoversight', 'undeleted', 'declined'
+			);
 		}
 
 		// NOTE: The 'all' option actually displays different things

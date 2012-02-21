@@ -5,6 +5,7 @@
  * @package    ArticleFeedback
  * @subpackage Api
  * @author     Greg Chiasson <greg@omniti.com>
+ * @author     Elizabeth M Smith <elizabeth@omniti.com>
  */
 
 /**
@@ -19,132 +20,114 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	}
 
 	/**
-	 * Execute the API call: Pull the requested feedback
+	 * Execute the API call
+	 *
+	 * This single api call covers all cases where flags are being applied to
+	 * a piece of feedback
+	 *
+	 * A feedback request consists of
+	 * 1. 
 	 */
 	public function execute() {
+
+		// default values for information to be filled in
+		$filters   = array();
+		$update    = array();
+		$results   = array();
+
+		// get important values from our parameters
 		$params     = $this->extractRequestParams();
 		$pageId     = $params['pageid'];
 		$feedbackId = $params['feedbackid'];
 		$flag       = $params['flagtype'];
 		$notes      = $params['note'];
 		$direction  = isset( $params['direction'] ) ? $params['direction'] : 'increase';
-		$counters   = array( 'abuse', 'helpful', 'unhelpful', 'oversight' );
-		$flags      = array( 'hide', 'delete' );
-		$results    = array();
-		$helpful    = null;
-		$error      = null;
 		$where      = array( 'af_id' => $feedbackId );
 
-		# load feedback record, bail if we don't have one
-		$record = $this->fetchRecord( $feedbackId );
+		// we use ONE db connection that talks to master
+		$dbw     = wfGetDB( DB_MASTER );
+		$dbw->begin();
+
+		// load feedback record, bail if we don't have one
+		$record = $this->fetchRecord( $dbw, $feedbackId );
 
 		if ( $record === false || !$record->af_id ) {
 			// no-op, because this is already broken
 			$error = 'articlefeedbackv5-invalid-feedback-id';
-		} elseif ( in_array( $flag, $flags ) ) {
 
-			$count = null;
-			switch( $flag ) {
-				case 'hide':
-					$field = 'af_is_hidden';
-					break;
-				case 'delete':
-					$field = 'af_is_deleted';
-					break;
-				default: return; # return error, ideally.
-			}
+		} elseif ( 'delete' == $flag ) {
+
+			// deleting means to "mark as oversighted" and "delete" it
+			// oversighting also auto-hides the item
+
+			// increase means "oversight this"
 			if( $direction == 'increase' ) {
-				$update[] = "$field = TRUE";
-			} else {
-				$update[] = "$field = FALSE";
-			}
-		} elseif( 'resetoversight' === $flag) {
-			// special case, oversight request count becomes 0
-			$update[] = "af_oversight_count = 0";
+				$activity = 'oversight';
 
-		} elseif ( in_array( $flag, $counters ) ) {
-			// Probably this doesn't need validation, since the API
-			// will handle it, but if it's getting interpolated into
-			// the SQL, I'm really wary not re-validating it.
-			$field = 'af_' . $flag . '_count';
+				// delete
+				$update[] = "af_is_deleted = TRUE";
+				$update[] = "af_is_undeleted = FALSE";
+				// delete specific filters
+				$filters['deleted'] = 1;
+				$filters['notdeleted'] = -1;
 
-			// Add another where condition to confirm that 
-			// the new flag value is at or above 0 (we use 
-			// unsigned ints, so negatives cause errors.
-			if( $direction == 'increase' ) {
-				$update[] = "$field = $field + 1";
-				// If this is already less than 0, 
-				// don't do anything - it'll just 
-				// throw a SQL error, so don't bother.  
-				// Incrementing from 0 is still valid.
-				$where[] = "$field >= 0";
-			} else {
-				$update[] = "$field = $field - 1";
-				// If this is already 0 or less, 
-				// don't decrement it, that would
-				// throw an error. 
-				// Decrementing from 0 is not allowed.
-				$where[] = "$field > 0";
-			}
-		} else {
-			$error = 'articlefeedbackv5-invalid-feedback-flag';
-		}
-
-		if ( !$error ) {
-			$dbw     = wfGetDB( DB_MASTER );
-			$success = $dbw->update(
-				'aft_article_feedback',
-				$update,
-				$where,
-				__METHOD__
-			);
-
-			// If the query worked...
-			if( $success ) {
-
-				// Log the feedback activity entry via the utils method
-				$activity = $this->getActivity( $flag, $direction );
-
-				// Make sure our notes are not too long - we won't error, just hard substr it
-				global $wgArticleFeedbackv5MaxActivityNoteLength;
-
-				$notes = substr($notes, 0, $wgArticleFeedbackv5MaxActivityNoteLength);
-
-				ApiArticleFeedbackv5Utils::logActivity( $activity , $pageId, $feedbackId, $notes );
-
-				$this->updateCounts( $flag, $direction, $record, $pageId );
-
-				// Update helpful/unhelpful display count after submission.
-				if ( $flag == 'helpful' || $flag == 'unhelpful' ) {
-					$helpful   = $record->af_helpful_count;
-					$unhelpful = $record->af_unhelpful_count;
-
-					if( $flag == 'helpful' && $direction == 'increase' ) {
-						$helpful++;
-					} elseif ( $flag == 'helpful' && $direction == 'decrease' ) {
-						$helpful--;
-					} elseif ( $flag == 'unhelpful' && $direction == 'increase' ) {
-						$unhelpful++;
-					} elseif ( $flag == 'unhelpful' && $direction == 'decrease' ) {
-						$unhelpful--;
-					}
-
-					$results['helpful'] = wfMessage( 
-						'articlefeedbackv5-form-helpful-votes',
-						$helpful, $unhelpful
-					)->escaped();
-
-					// Update net_helpfulness after flagging as helpful/unhelpful.
-					$dbw->update(
-						'aft_article_feedback',
-						array( 'af_net_helpfulness = CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED)' ),
-						array(
-							'af_id' => $params['feedbackid'],
-						),
-						__METHOD__
-					);
+				// autohide if not hidden
+				if (false == $record->af_is_hidden ) {
+					$update[] = "af_is_hidden = TRUE";
+					$update[] = "af_is_unhidden = FALSE";
+					$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
+					$implicit_hide = true; // for logging
 				}
+
+			} else {
+			// decrease means "unoversight this" but does NOT auto-unhide
+				$activity = 'unoversight';
+				$update[] = "af_is_deleted = FALSE";
+				$update[] = "af_is_undeleted = TRUE";
+				// increment "undeleted", decrement "deleted"
+				// NOTE: we do not touch visible, since hidden controls visiblity
+				$filters['deleted'] = -1;
+				$filters['undeleted'] = 1;
+				// increment "notdeleted" for count of everything but oversighted
+				$filters['notdeleted'] = 1;
 			}
+
+		} elseif ( 'hide' == $flag ) {
+
+			// increase means "hide this"
+			if( $direction == 'increase' ) {
+				$activity = 'hide';
+
+				// hide
+				$update[] = "af_is_hidden = TRUE";
+				$update[] = "af_is_unhidden = FALSE";
+
+				$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
+
+			} else {
+			// decrease means "unhide this"
+				$activity = 'unhide';
+
+				$update[] = "af_is_hidden = FALSE";
+				$update[] = "af_is_unhidden = TRUE";
+
+				$filters = $this->changeFilterCounts( $record, $filters, 'show' );
+			}
+
+		} elseif( 'resetoversight' === $flag) {
+
+			$activity = 'decline';
+			// oversight request count becomes 0
+			$update[] = "af_oversight_count = 0";
+			// declined oversight is flagged
+			$update[] = "af_is_declined = TRUE";
+			$filters['declined'] = 1;
+			// if the oversight count was greater then 1
+			if(0 < $record->af_oversight_count) {
+				$filters['needsoversight'] = -1;
+			}
+
+		} elseif( 'abuse' === $flag) {
 
 			// Conditional formatting for abuse flag
 			global $wgArticleFeedbackv5AbusiveThreshold,
@@ -152,31 +135,193 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 			$results['abuse_count'] = $record->af_abuse_count;
 
-			if( $flag == 'abuse' ) {
-				// Make the abuse count in the result reflect this vote.
-				if( $direction == 'increase' ) {
-					$results['abuse_count']++; 
-				} else { 
-					$results['abuse_count']--; 
-				}
+			// Make the abuse count in the result reflect this vote.
+			if( $direction == 'increase' ) {
+				$results['abuse_count']++; 
+			} else { 
+				$results['abuse_count']--; 
+			}
+			// no negative numbers
+			$results['abuse_count'] = max(0, $results['abuse_count']);
 
-				// Return a flag in the JSON, that turns the link red.
-				if( $results['abuse_count'] >= $wgArticleFeedbackv5AbusiveThreshold ) {
-					$results['abusive'] = 1;
-				}
+			// Return a flag in the JSON, that turns the link red.
+			if( $results['abuse_count'] >= $wgArticleFeedbackv5AbusiveThreshold ) {
+				$results['abusive'] = 1;
+			}
 
-				// Return a flag in the JSON, that knows to kill the row
-				if( $results['abuse_count'] >= $wgArticleFeedbackv5HideAbuseThreshold ) {
+			// Adding a new abuse flag: abusive++
+			if($direction == 'increase') {
+				$activity = 'flag';
+				$filters['abusive'] = 1;
+				$update[] = "af_abuse_count = LEAST(af_abuse_count + 1, 1)";
+
+				// Auto-hide after threshold flags
+				if( $record->af_abuse_count > $wgArticleFeedbackv5HideAbuseThreshold
+				   && false == $record->af_is_hidden ) {
+					// hide
+					$update[] = "af_is_hidden = TRUE";
+					$update[] = "af_is_unhidden = FALSE";
+
+					$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
 					$results['abuse-hidden'] = 1;
-				}	
+					$implicit_hide = true;
+				}
+			}
+	
+			// Removing the last abuse flag: abusive--
+			elseif($direction == 'decrease') {
+				$activity = 'unflag';
+				$filters['abusive'] = -1;
+				$update[] = "af_abuse_count = GREATEST(af_abuse_count - 1, 0)";
 
-				// Hide the row if the abuse count is above our threshhold
+				// Un-hide if we don't have 5 flags anymore
+				if( $record->af_abuse_count == 5 && true == $record->af_is_hidden ) {
+					$update[] = "af_is_hidden = FALSE";
+					$update[] = "af_is_unhidden = TRUE";
+
+					$filters = $this->changeFilterCounts( $record, $filters, 'show' );
+
+					$implicit_unhide = true;
+				}
+			} else {
+				// TODO: real error here?
+				$error = 'articlefeedbackv5-invalid-feedback-flag';
+			}
+
+		// NOTE: this is actually request/unrequest oversight and works similar to abuse
+		} elseif( 'oversight' === $flag) {
+
+			if($direction == 'increase') {
+				$activity = 'request';
+				$filters['needsoversight'] = 1;
+				$update[] = "af_oversight_count = LEAST(af_oversight_count + 1, 1)";
+
+				// autohide if not hidden
+				if (false == $record->af_is_hidden ) {
+					$update[] = "af_is_hidden = TRUE";
+					$update[] = "af_is_unhidden = FALSE";
+					$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
+					$implicit_hide = true; // for logging
+				}
+			}
+
+			elseif($direction == 'decrease' && $record->af_abuse_count > 0 ) {
+				$activity = 'unrequest';
+				$filters['needsoversight'] = -1;
+				$update[] = "af_oversight_count = GREATEST(af_oversight_count - 1, 0)";
+
+				// Un-hide if we don't have oversight flags anymore
+				if( $record->af_oversight_count == 1 && true == $record->af_is_hidden ) {
+					$update[] = "af_is_hidden = FALSE";
+					$update[] = "af_is_unhidden = TRUE";
+
+					$filters = $this->changeFilterCounts( $record, $filters, 'show' );
+
+					$implicit_unhide = true;
+				}
+			} else {
+				// TODO: real error here?
+				$error = 'articlefeedbackv5-invalid-feedback-flag';
+			}
+
+		// helpful and unhelpful flagging
+		} elseif( 'unhelpful' === $flag || 'helpful' === $flag) {
+
+			if ( 'unhelpful' === $flag ) {
+				$update[] = "af_unhelpful_count = af_unhelpful_count + 1";
+			} elseif ( 'helpful' === $flag ) {
+				$update[] = "af_helpful_count = af_helpful_count + 1";
+			}
+
+			// note that a net helpfulness of 0 is neither helpful nor unhelpful
+			$netHelpfulness = $record->af_net_helpfulness;
+
+			// increase helpful OR decrease unhelpful
+			if( ( ($flag == 'helpful' && $direction == 'increase' )
+			 || ($flag == 'unhelpful' && $direction == 'decrease' ) )
+			) {
+				// net was -1: no longer unhelpful
+				if( $netHelpfulness == -1 ) {
+					$filters['unhelpful'] = -1;
+				}
+	
+				// net was 0: now helpful
+				if( $netHelpfulness == 0 ) {
+					$filters['helpful'] = 1;
+				}
+			}
+
+			// increase unhelpful OR decrease unhelpful
+			if( ( ($flag == 'unhelpful' && $direction == 'increase' )
+			 || ($flag == 'helpful' && $direction == 'decrease' ) )
+			) {
+				// net was 1: no longer helpful
+				if( $netHelpfulness == 1 ) {
+					$filters['helpful'] = -1;
+				}
+	
+				// net was 0: now unhelpful
+				if( $netHelpfulness == 0 ) {
+					$filters['unhelpful'] = 1;
+				}
+			}
+
+		} else {
+			$error = 'articlefeedbackv5-invalid-feedback-flag';
+		}
+
+		// we were valid
+		if ( !isset($error) ) {
+
+			$success = $dbw->update(
+				'aft_article_feedback',
+				$update,
+				$where,
+				__METHOD__
+			);
+
+			// Update the filter count rollups.
+			ApiArticleFeedbackv5Utils::updateFilterCounts( $dbw, $pageId, $filters );
+
+			$dbw->commit(); // everything went well, so we commit our db changes
+
+			// helpfulness counts are NOT logged, no activity is set
+			if (isset($activity)) {
+				ApiArticleFeedbackv5Utils::logActivity( $activity , $pageId, $feedbackId, $notes );
+			}
+
+			// TODO: handle implicit hide/show logging
+
+			// Update helpful/unhelpful display count after submission.
+			if ( $flag == 'helpful' || $flag == 'unhelpful' ) {
+				$helpful   = $record->af_helpful_count;
+				$unhelpful = $record->af_unhelpful_count;
+	
+				if( $flag == 'helpful' && $direction == 'increase' ) {
+					$helpful++;
+				} elseif ( $flag == 'helpful' && $direction == 'decrease' ) {
+					$helpful--;
+				} elseif ( $flag == 'unhelpful' && $direction == 'increase' ) {
+					$unhelpful++;
+				} elseif ( $flag == 'unhelpful' && $direction == 'decrease' ) {
+					$unhelpful--;
+				}
+
+				// no negative numbers please
+				$helpful = max(0, $helpful);
+				$unhelpful = max(0, $unhelpful);
+
+				$results['helpful'] = wfMessage( 
+					'articlefeedbackv5-form-helpful-votes',
+					$helpful, $unhelpful
+				)->escaped();
+	
+				// Update net_helpfulness after flagging as helpful/unhelpful.
 				$dbw->update(
 					'aft_article_feedback',
-					array( 'af_is_hidden = TRUE' ),
-					array( 
+					array( 'af_net_helpfulness = CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED)' ),
+					array(
 						'af_id' => $params['feedbackid'],
-						"af_abuse_count >= ". intval( $wgArticleFeedbackv5HideAbuseThreshold )
 					),
 					__METHOD__
 				);
@@ -198,14 +343,88 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		);
 	}
 
-	private function fetchRecord( $id ) {
-		$dbr    = wfGetDB( DB_SLAVE );
-		$record = $dbr->selectRow(
+	/**
+	 * Helper function to grab a record from the database with information
+	 * about the current feedback row
+	 *
+	 * @param object $dbw connection to database
+	 * @param int $id id of the feedback to fetch
+	 * @return object database record
+	 */
+	private function fetchRecord( $dbw, $id ) {
+		$record = $dbw->selectRow(
 			'aft_article_feedback',
-			array( 'af_id', 'af_abuse_count', 'af_is_hidden', 'af_helpful_count', 'af_unhelpful_count', 'af_is_deleted', 'af_net_helpfulness' ),
+			array(
+				'af_id',
+				'af_abuse_count',
+				'af_is_hidden',
+				'af_helpful_count',
+				'af_unhelpful_count',
+				'af_is_deleted',
+				'af_net_helpfulness',
+				'af_is_unhidden',
+				'af_is_undeleted',
+				'af_is_declined',
+				'af_has_comment'),
 			array( 'af_id' => $id )
 		);
 		return $record;
+	}
+
+	/**
+	 * Helper function to manipulate all flags when hiding/showing a piece of feedback
+	 *
+	 * @param object $record existing feedback database record
+	 * @param array $filters existing filters
+	 * @param string $action 'hide' or 'show'
+	 * @return array the filter array with new filter choices added
+	 */
+	protected function changeFilterCounts( $record, $filters, $action ) {
+		// only filters that hide shouldn't manipulate are
+		// all, deleted, undeleted, and notdeleted
+
+		// use -1 (decrement) for hide, 1 for increment (show) - default is hide
+		switch($action) {
+			case 'show':
+				$int = 1;
+				break;
+			default:
+				$int = -1;
+				break;
+		}
+
+		// visible, invisible, unhidden
+		$filters['visible'] = $int;
+		$filters['invisible'] = -$int; // opposite of int
+		if(true == $record->af_is_unhidden) {
+			$filters['unhidden'] = $int;
+		}
+
+		// comment
+		if(true == $record->af_has_comment) {
+			$filters['comment'] = $int;
+		}
+
+		// abusive
+		if( $record->af_abuse_count > 1 ) {
+			$filters['abusive'] = $int;
+		}
+		// helpful and unhelpful
+		if( $record->af_net_helpfulness > 1 ) {
+			$filters['helpful'] = $int;
+		} elseif( $record->af_net_helpfulness < 1 ) {
+			$filters['unhelpful'] = $int;
+		}
+
+		// needsoversight, declined
+		if($record->af_oversight_count > 0) {
+			$filters['needsoversight'] = $int;
+		}
+		if(true == $record->af_is_declined) {
+			$filters['declined'] = $int;
+		}
+
+		return $filters;
 	}
 
 	/**
@@ -229,7 +448,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'abuse', 'hide', 'helpful', 'unhelpful', 'delete', 'undelete', 'unhide', 'oversight', 'unoversight', 'resetoversight' )
+				 'abuse', 'hide', 'helpful', 'unhelpful', 'delete', 'oversight', 'resetoversight' )
 			),
 			'direction' => array(
 				ApiBase::PARAM_REQUIRED => false,
@@ -291,172 +510,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		return array(
 			'api.php?list=articlefeedbackv5-view-feedback&affeedbackid=1&aftype=abuse',
 		);
-	}
-
-	/**
-	 * Figures out which filter counts to increment/decrement based on what
-	 * flag was clicked and which direction it was going.
-	 *
-	 * @param $action    string  type of flag sent to the form
-	 * @param $direction string  type of direction sent to the form
-	 * @param $record    object  database object representing the feedback row
-	 * @param $pageId    integer ID of the page to be updated.
-	 */
-	protected function updateCounts( $action, $direction, $record, $pageId ) {
-		$counts = array( 'increment' => array(), 'decrement' => array() );
-		$netHelpfulness = $record->af_net_helpfulness;
-
-		// Increment or decrement hide or delete filters.
-		if( $action == 'hide' || $action == 'delete' ) {
-			$count    = $action == 'hide' ? 'invisible' : 'deleted';
-
-			// If this is hiding/deleting, increment the visible count and 
-			// decrement the visible count.
-			if( $direction == 'increase' ) {
-				$counts['increment'][] = $count;
-				$counts['decrement'][] = 'visible';
-			}
-			// For unhiding/undeleting, do the opposite.
-		 	if( $direction == 'decrease' ) {
-				$counts['increment'][] = 'visible';
-				$counts['decrement'][] = $count;
-			}
-		}
-
-		// Adding a new abuse flag: abusive++
-		if( $action == 'abuse' && $direction == 'increase'
-		 && $record->af_abuse_count == 0 ) {
-			$counts['increment'][] = 'abusive';
-			// Auto-hide after 5 abuse flags.
-			if( $record->af_abuse_count > 4 ) {
-				$counts['increment'][] = 'invisible';
-				$counts['decrement'][] = 'visible';
-			}
-		}
-
-		// Removing the last abuse flag: abusive--
-		if( $action == 'abuse' && $direction == 'decrease'
-		 && $record->af_abuse_count == 1 ) {
-			$counts['decrement'][] = 'abusive';
-			// Un-hide if we don't have 5 flags anymore
-			if( $record->af_abuse_count == 5 ) {
-				$counts['increment'][] = 'visible';
-				$counts['decrement'][] = 'invisible';
-			}
-		}
-
-		// note that a net helpfulness of 0 is neither helpful nor unhelpful
-
-		// increase helpful OR decrease unhelpful
-		if( ( ($action == 'helpful' && $direction == 'increase' )
-		 || ($action == 'unhelpful' && $direction == 'decrease' ) )
-		) {
-			// net was -1: no longer unhelpful
-			if( $netHelpfulness == -1 ) {
-				$counts['decrement'][] = 'unhelpful';
-			}
-
-			// net was 0: now helpful
-			if( $netHelpfulness == 0 ) {
-				$counts['increment'][] = 'helpful';
-			}
-		}
-
-		// increase unhelpful OR decrease unhelpful
-		if( ( ($action == 'unhelpful' && $direction == 'increase' )
-		 || ($action == 'helpful' && $direction == 'decrease' ) )
-		) {
-			// net was 1: no longer helpful
-			if( $netHelpfulness == 1 ) {
-				$counts['decrement'][] = 'helpful';
-			}
-
-			// net was 0: now unhelpful
-			if( $netHelpfulness == 0 ) {
-				$counts['increment'][] = 'unhelpful';
-			}
-		}
-
-		// If someone hides or deletes an abusive/comment/helpful/unhelpful
-		// comment, decrement the relevent counter.
-		// If they unhide/undelete, increment that same counter.
-		if( $action == 'delete' || $action == 'hide' ) {
-			$dbr     = wfGetDB( DB_SLAVE );
-			$dir     = $direction == 'increase' ? 'decrement' : 'increment';
-			$comment = $dbr->select(
-				array( 'aft_article_answer', 'aft_article_field' ),
-				'aa_response_text',
-				array(
-					'aa_feedback_id' => $record->af_id,
-					'afi_data_type'  => 'text',
-					'aa_field_id = afi_id' 
-				),
-				__METHOD__
-			);
-
-			if( $record->af_abuse_count > 1 ) {
-				$counts[$dir][] = 'abusive';
-			}
-			if( $comment->numRows() > 0 ) {
-				$counts[$dir][] = 'comment';
-			}
-			if( $netHelpfulness > 1 ) {
-				$counts[$dir][] = 'helpful';
-			}
-			if( $netHelpfulness < 1 ) {
-				$counts[$dir][] = 'unhelpful';
-			}
-		}
-
-		// Update the filter count rollups.
-		ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $counts['increment'] );
-		ApiArticleFeedbackv5Utils::decrementFilterCounts( $pageId, $counts['decrement'] );
-	}
-
-	/**
-	 * Figures out which activity happened so it can be logged correctly
-	 *
-	 * @param $flag      string type of flag sent to the form
-	 * @param $direction string type of direction sent to the form
-	 * @return string name of activity to log
-	 */
-	protected function getActivity($flag, $direction) {
-
-		// handle flag as abuse / remove abuse flag
-		if ( 'abuse' == $flag && 'increase' == $direction) {
-			return 'flag';
-		} elseif ( 'abuse' == $flag && 'decrease' == $direction) {
-			return 'unflag';
-		}
-
-		// handle hide as hidden, unhidden
-		if ( 'hide' == $flag && 'increase' == $direction) {
-			return 'hidden';
-		} elseif ( 'hide' == $flag && 'decrease' == $direction) {
-			return 'unhidden';
-		}
-
-		// handle delete as oversight, unoversight
-		if ( 'delete' == $flag && 'increase' == $direction) {
-			return 'oversight';
-		} elseif ( 'delete' == $flag && 'decrease' == $direction) {
-			return 'unoversight';
-		}
-
-		// handle oversight as request and unrequest oversighting
-		if ( 'oversight' == $flag && 'increase' == $direction) {
-			return 'request';
-		} elseif ( 'oversight' == $flag && 'decrease' == $direction) {
-			return 'unrequest';
-		}
-
-		// handle resetoversight
-		if ( 'resetoversight' == $flag) {
-			return 'decline';
-		}
-
-		// this is the default - we should never, ever get here, but just in case
-		return 'flag';
 	}
 
 	/**

@@ -46,9 +46,21 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   -- Flag a message as being hidden or being deleted
   af_is_deleted      boolean NOT NULL DEFAULT FALSE,
   af_is_hidden       boolean NOT NULL DEFAULT FALSE,
+  -- Keep track of items that have been unhidden, undeleted (unoversighted)
+  -- or had oversight declined - note this is cleared when the item is
+  -- rehidden, reoversighted, or has oversight requested again
+  af_is_unhidden      boolean NOT NULL DEFAULT FALSE,
+  af_is_undeleted     boolean NOT NULL DEFAULT FALSE,
+  af_is_declined      boolean NOT NULL DEFAULT FALSE,
+  -- keep track of "this has a comment" for filtering purposes (avoids a join)
+  af_has_comment      boolean NOT NULL DEFAULT FALSE,
   -- Keep track of number of activities (hide/show/flag/unflag)
   -- should be equivalent to counting rows in logging table
   af_activity_count  integer unsigned NOT NULL DEFAULT 0
+  -- for some of the filtering, we need to know "unhidden"
+  -- to do this we have to keep track of "has ever been hidden
+  -- same with "has ever been oversighted, has ever had oversight requested"
+  -- these go on and never go back off, really
 ) /*$wgDBTableOptions*/;
 CREATE INDEX /*i*/af_page_user_token_id ON /*_*/aft_article_feedback (af_page_id, af_user_id, af_user_anon_token, af_id);
 CREATE INDEX /*i*/af_revision_id ON /*_*/aft_article_feedback (af_revision_id);

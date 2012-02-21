@@ -50,7 +50,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$this->dieUsage( 'ArticleFeedback is not enabled on this page', 'invalidpage' );
 		}
 
-		$dbr          = wfGetDB( DB_SLAVE );
+		$dbw          = wfGetDB( DB_MASTER );
 		$pageId       = $params['pageid'];
 		$bucket       = $params['bucket'];
 		$revisionId   = $params['revid'];
@@ -97,8 +97,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			return;
 		}
 
+		// all write actions should be done under the same transaction
+		// or counts will be messed up
+		$dbw->begin();
+
 		// Save the response data
-		$ratingIds  = $this->saveUserRatings( $userAnswers, $bucket, $params );
+		$ratingIds  = $this->saveUserRatings( $dbw, $userAnswers, $bucket, $params );
 		$ctaId      = $ratingIds['cta_id'];
 		$feedbackId = $ratingIds['feedback_id'];
 		$this->saveUserProperties( $feedbackId );
@@ -107,8 +111,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		// don't bother updating the rollups if this is a different one.
 		if( $bucket == 1 ) {
 			$this->updateRollupTables( $pageId, $revisionId, $userAnswers );
-			$this->updateFilterCounts( $pageId, $userAnswers );
+			$this->updateFilterCounts( $dbw, $pageId, $userAnswers );
 		}
+
+		// at this point we're done doing db writes, if we haven't rolled back, commit
+		$dbw->commit();
 
 		// If we have an email address, capture it
 		if ( $params['email'] ) {
@@ -274,24 +281,22 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		return false;
 	}
 
-	public function updateFilterCounts( $pageId, $answers ) {
-		$has_comment = false;
+	public function updateFilterCounts( $dbw, $pageId, $answers ) {
 
-		# Does this record have a comment attached?
-		# Defined as an answer of type 'text'.
+		// a new item should be in all and visible by default, increment those counters
+		$filters = array( 'all' => 1, 'visible' => 1, 'notdeleted' => 1);
+
+		// if this record has a comment attached then increment comment as well
+		// notice we do not need to walk the entire array, since any one hit
+		// counts - aa_response_text is "comment" in the values
 		foreach ( $answers as $a ) {
 			if ( $a['aa_response_text'] !== null ) {
-				$has_comment = true;
+				$filters['comment'] = 1;
+				break;
 			}
 		}
 
-		$filters = array( 'all', 'visible' );
-		# If the feedbackrecord had a comment, update that filter count.
-		if ( $has_comment ) {
-			$filters[] = 'comment';
-		}
-
-		ApiArticleFeedbackv5Utils::incrementFilterCounts( $pageId, $filters );
+		ApiArticleFeedbackv5Utils::updateFilterCounts( $dbw, $pageId, $filters );
 	}
 
 	/**
@@ -558,9 +563,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param  int   $bucket     the bucket id
 	 * @return int   the cta id
 	 */
-	private function saveUserRatings( $data, $bucket, $params ) {
+	private function saveUserRatings( $dbw, $data, $bucket, $params ) {
 		global $wgUser, $wgArticleFeedbackv5LinkBuckets;
-		$dbw       = wfGetDB( DB_MASTER );
+
 		$ctaId     = $this->getCTAId( $data, $bucket );
 		$revId     = $params['revid'];
 		$bucket    = $params['bucket'];
@@ -597,7 +602,14 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$links = array_flip( array_keys( $wgArticleFeedbackv5LinkBuckets['buckets'] ) );
 		$linkId = isset( $links[$linkName] ) ? $links[$linkName] : 0;
 
-		$dbw->begin();
+		$has_comment = false;
+		foreach ( $data as $a ) {
+			if ( $a['aa_response_text'] !== null ) {
+				$has_comment = true;
+				break;
+			}
+		}
+
 
 		$dbw->insert( 'aft_article_feedback', array(
 			'af_page_id'         => $params['pageid'],
@@ -608,6 +620,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'af_user_anon_token' => $token,
 			'af_bucket_id'       => $bucket,
 			'af_link_id'         => $linkId,
+			'af_has_comment'     => $has_comment,
 		) );
 
 		$feedbackId = $dbw->insertID();
@@ -623,7 +636,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			array( 'af_id'     => $feedbackId ),
 			__METHOD__
 		);
-		$dbw->commit();
 
 		return array(
 			'cta_id'      => ( $ctaId ? $ctaId : 0 ),
