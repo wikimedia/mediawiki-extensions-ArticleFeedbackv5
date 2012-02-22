@@ -576,7 +576,6 @@
 		note = typeof note !== undefined ? note : '';
 		
 		if( $.articleFeedbackv5special.listControls.disabled ) {
-			console.log('disabled');
 			return false;
 		}
 		
@@ -837,9 +836,13 @@
 					.removeClass( 'articleFeedbackv5-helpful-link' )
 					.addClass( 'articleFeedbackv5-reversehelpful-link' )
 					.attr( 'id', 'articleFeedbackv5-reversehelpful-link-' + id );
-				if( data['toggle'] ) {
-					$( '#articleFeedbackv5-unhelpful-link-' + id ).removeClass( 'helpful-active' );
-					setActivityFlag( id, 'unhelpful', false )
+				if( data['articlefeedbackv5-flag-feedback']['toggle'] ) {
+					$( '#articleFeedbackv5-reverseunhelpful-link-' + id )
+						.removeClass( 'helpful-active' )
+						.removeClass( 'articleFeedbackv5-reverseunhelpful-link')
+						.addClass( 'articleFeedbackv5-unhelpful-link' )
+						.attr( 'id', 'articleFeedbackv5-unhelpful-link-' + id );
+					$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', false )
 				}
 				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', true );
 			}
@@ -890,9 +893,13 @@
 					.removeClass( 'articleFeedbackv5-unhelpful-link')
 					.addClass( 'articleFeedbackv5-reverseunhelpful-link' )
 					.attr( 'id', 'articleFeedbackv5-reverseunhelpful-link-' + id );
-				if( data['toggle'] ) {
-					$( '#articleFeedbackv5-helpful-link-' + id ).removeClass( 'helpful-active' );
-					setActivityFlag( id, 'helpful', false )
+				if( data['articlefeedbackv5-flag-feedback']['toggle'] ) {
+					$( '#articleFeedbackv5-reversehelpful-link-' + id )
+						.removeClass( 'helpful-active' )
+						.removeClass( 'articleFeedbackv5-reversehelpful-link')
+						.addClass( 'articleFeedbackv5-helpful-link' )
+						.attr( 'id', 'articleFeedbackv5-helpful-link-' + id );
+					$.articleFeedbackv5special.setActivityFlag( id, 'helpful', false )
 				}
 				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', true );
 			}
