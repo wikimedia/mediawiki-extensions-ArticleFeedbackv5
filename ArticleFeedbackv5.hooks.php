@@ -229,7 +229,10 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-declineoversight-placeholder',
 				'articlefeedbackv5-noteflyover-declineoversight-submit',
 				'articlefeedbackv5-noteflyover-declineoversight-help',
-				'articlefeedbackv5-noteflyover-declineoversight-help-link'
+				'articlefeedbackv5-noteflyover-declineoversight-help-link',
+				
+				'articlefeedbackv5-mask-text',
+				'articlefeedbackv5-mask-postnumber'
 			),
 			'dependencies' => array(
 				'mediawiki.util',

@@ -142,8 +142,9 @@ $messages['en'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 month|$1 months}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 week|$1 weeks}}',
 	'articlefeedbackv5-timestamp-seconds' => 'less than 1 minute',
-	
-	
+	'articlefeedbackv5-mask-text' => 'Feedback hidden by administrative action. Click to view contents.',
+	'articlefeedbackv5-mask-postnumber' => 'Post #$1',
+		
 	/* Special page flyover panels */
 	/* Hide this post panel */
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
@@ -598,6 +599,9 @@ This URL can be changed to point to a translated version of the page if it exist
 * <code>$1</code> – URL of the confirmation link
 * <code>$2</code> – URL to type in the confirmation code manually.
 * <code>$3</code> – Confirmation code for the user to type in',
+	'articlefeedbackv5-mask-text' => 'Text to be displayed on the hidden post mask',
+	'articlefeedbackv5-mask-postnumber' => 'Template for post number, to be displayed on the hidden post mask',
+
 );
 
 /** Afrikaans (Afrikaans)
