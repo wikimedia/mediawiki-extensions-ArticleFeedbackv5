@@ -457,7 +457,6 @@
 
 	// }}}
 	// {{{ markHidden
-
 	/**
 	 * Utility method: Marks a feedback row hidden
 	 *
@@ -472,11 +471,10 @@
 		$( '<span class="articleFeedbackv5-feedback-hidden-marker"></span>' )
 			.text( mw.msg( 'articlefeedbackv5-hidden' ) )
 			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap h3' ) );
+		$.articleFeedbackv5special.maskPost( $row );
 	};
-
 	// }}}
 	// {{{ unmarkHidden
-
 	/**
 	 * Utility method: Unmarks as hidden a feedback row
 	 *
@@ -487,10 +485,19 @@
 			.data( 'hidden', false );
 		$row.find( '.articleFeedbackv5-feedback-hidden-marker' ).remove();
 	};
-
+	// }}}
+	// {{{ maskPost
+	$.articleFeedbackv5special.maskPost = function( $row ) {
+		var $screen = $( '<div></div>' )
+			.addClass( 'articleFeedbackv5-post-screen' )
+			.height( $row.innerHeight() )
+			.click( function( e ) {
+				$( e.target ).remove();
+			});
+		$row.prepend( $screen );
+	}
 	// }}}
 	// {{{ markDeleted
-
 	/**
 	 * Utility method: Marks a feedback row deleted
 	 *
@@ -505,6 +512,7 @@
 		var $marker = $( '<span class="articleFeedbackv5-feedback-deleted-marker"></span>' )
 			.text( mw.msg( 'articlefeedbackv5-deleted' ) )
 			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap h3' ) );
+		$.articleFeedbackv5special.maskPost( $row );
 	};
 
 	// }}}
@@ -1021,7 +1029,7 @@
 		},
 		
 		// Cancel oversight request action
-		'unrequestOversight': {
+		'unrequestoversight': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,

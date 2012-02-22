@@ -523,8 +523,17 @@ form.articlefeedbackv5-form-flyover textarea {
 	text-decoration: none;
 }
 #articlefeedbackv5-activity-log {
-	width: 300px;
+	width: 350px;
 	height: 360px;
+}
+.articleFeedbackv5-activity-feedback {
+	padding: 10px 10px;
+	height: 29px;
+}
+.articleFeedbackv5-activity-feedback-permalink {
+	position: absolute;
+	top: 62px;
+	right: 22px;
 }
 .articleFeedbackv5-activity-pane {
 	height: 70px;
@@ -548,4 +557,14 @@ form.articlefeedbackv5-form-flyover textarea {
 	font-weight: bold;
 	color: red;
 	padding: 0 5px;
+}
+.articleFeedbackv5-post-screen {
+	z-index: 99;
+	margin: 0 -10px 0 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #dae2eb;
 }
