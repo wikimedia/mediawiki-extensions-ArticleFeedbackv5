@@ -6,7 +6,7 @@
  * @subpackage Api
  * @author     Greg Chiasson <greg@omniti.com>
  * @author     Reha Sterbin <reha@omniti.com>
- * @version    $Id: ApiViewRatingsArticleFeedbackv5.php 103335 2011-11-16 16:25:53Z gregchiasson $
+ * @version    $Id$
  */
 
 /**

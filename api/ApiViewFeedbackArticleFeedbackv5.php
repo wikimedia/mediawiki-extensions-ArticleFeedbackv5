@@ -847,6 +847,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 * @return string the SVN version info
 	 */
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiViewRatingsArticleFeedbackv5.php 103439 2011-11-17 03:19:01Z rsterbin $';
+		return __CLASS__ . ': $Id$';
 	}
 }
