@@ -59,6 +59,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 		// get our activities
 		$activities = $this->fetchActivity( $title, $feedbackId, $limit, $continue);
+		$old_continue = $continue;
 
 		// overwrite previous continue for new value
 		$continue = null;
@@ -67,7 +68,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		$html = '';
 
 		// only do this if continue < 1
-		if ($continue < 1) {
+		if ($old_continue < 1) {
 			// <div class="articleFeedbackv5-activity-pane">
 			$html .= Html::openElement( 'div', array(
 				'class' => 'articleFeedbackv5-activity-pane'
@@ -277,8 +278,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			$where,
 			__METHOD__,
 			array(
-				'LIMIT'    => ($limit + 1),
-				'ORDER BY' => 'log_timestamp DESC'
+				'LIMIT'    => $limit,
+				'ORDER BY' => 'log_timestamp DESC, log_id ASC'
 			)
 		);
 
