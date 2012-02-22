@@ -204,9 +204,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
 					$implicit_hide = true; // for logging
 				}
-			}
-
-			elseif($direction == 'decrease' && $record->af_abuse_count > 0 ) {
+			} elseif($direction == 'decrease') {
 				$activity = 'unrequest';
 				$filters['needsoversight'] = -1;
 				$update[] = "af_oversight_count = GREATEST(CONVERT(af_oversight_count, SIGNED) - 1, 0)";
