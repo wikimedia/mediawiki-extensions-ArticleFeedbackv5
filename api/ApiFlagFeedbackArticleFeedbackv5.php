@@ -154,7 +154,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			if($direction == 'increase') {
 				$activity = 'flag';
 				$filters['abusive'] = 1;
-				$update[] = "af_abuse_count = LEAST(af_abuse_count + 1, 1)";
+				$update[] = "af_abuse_count = af_abuse_count + 1";
 
 				// Auto-hide after threshold flags
 				if( $record->af_abuse_count > $wgArticleFeedbackv5HideAbuseThreshold
@@ -173,7 +173,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			elseif($direction == 'decrease') {
 				$activity = 'unflag';
 				$filters['abusive'] = -1;
-				$update[] = "af_abuse_count = GREATEST(af_abuse_count - 1, 0)";
+				$update[] = "af_abuse_count = GREATEST(CONVERT(af_abuse_count, SIGNED) -1, 0)";
 
 				// Un-hide if we don't have 5 flags anymore
 				if( $record->af_abuse_count == 5 && true == $record->af_is_hidden ) {
@@ -195,7 +195,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			if($direction == 'increase') {
 				$activity = 'request';
 				$filters['needsoversight'] = 1;
-				$update[] = "af_oversight_count = LEAST(af_oversight_count + 1, 1)";
+				$update[] = "af_oversight_count = af_oversight_count + 1";
 
 				// autohide if not hidden
 				if (false == $record->af_is_hidden ) {
