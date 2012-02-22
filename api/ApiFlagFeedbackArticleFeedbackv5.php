@@ -41,6 +41,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$feedbackId = $params['feedbackid'];
 		$flag       = $params['flagtype'];
 		$notes      = $params['note'];
+		$toggle     = $params['toggle'];
 		$direction  = isset( $params['direction'] ) ? $params['direction'] : 'increase';
 		$where      = array( 'af_id' => $feedbackId );
 
@@ -208,7 +209,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			elseif($direction == 'decrease' && $record->af_abuse_count > 0 ) {
 				$activity = 'unrequest';
 				$filters['needsoversight'] = -1;
-				$update[] = "af_oversight_count = GREATEST(af_oversight_count - 1, 0)";
+				$update[] = "af_oversight_count = GREATEST(CONVERT(af_oversight_count, SIGNED) - 1, 0)";
 
 				// Un-hide if we don't have oversight flags anymore
 				if( $record->af_oversight_count == 1 && true == $record->af_is_hidden ) {
@@ -227,14 +228,50 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		// helpful and unhelpful flagging
 		} elseif( 'unhelpful' === $flag || 'helpful' === $flag) {
 
-			if ( 'unhelpful' === $flag ) {
-				$update[] = "af_unhelpful_count = af_unhelpful_count + 1";
-			} elseif ( 'helpful' === $flag ) {
-				$update[] = "af_helpful_count = af_helpful_count + 1";
+			$results['toggle'] = $toggle;
+			$helpful = $record->af_helpful_count;
+			$unhelpful = $record->af_unhelpful_count;
+
+			// if toggle is on, we are decreasing one and increasing the other atomically
+			// means one less http request and the counts don't mess up
+			if (true == $toggle) {
+
+				if( ( ($flag == 'helpful' && $direction == 'increase' )
+				 || ($flag == 'unhelpful' && $direction == 'decrease' ) )
+				) {
+					$update[] = "af_helpful_count = af_helpful_count + 1";
+					$update[] = "af_unhelpful_count = GREATEST(0, CONVERT(af_unhelpful_count, SIGNED) - 1)";
+					$helpful++;
+					$unhelpful--;
+
+				} elseif ( ( ($flag == 'unhelpful' && $direction == 'increase' )
+				 || ($flag == 'helpful' && $direction == 'decrease' ) )
+				) {
+					$update[] = "af_unhelpful_count = af_unhelpful_count + 1";
+					$update[] = "af_helpful_count = GREATEST(0, CONVERT(af_helpful_count, SIGNED) - 1)";
+					$helpful--;
+					$unhelpful++;
+				}
+
+			} else {
+
+				if ( 'unhelpful' === $flag && $direction == 'increase') {
+					$update[] = "af_unhelpful_count = af_unhelpful_count + 1";
+					$unhelpful++;
+				} elseif ( 'unhelpful' === $flag && $direction == 'decrease') {
+					$update[] = "af_unhelpful_count = GREATEST(0, CONVERT(af_unhelpful_count, SIGNED) - 1)";
+					$unhelpful--;
+				} elseif ( $flag == 'helpful' && $direction == 'increase' ) {
+					$update[] = "af_helpful_count = af_helpful_count + 1";
+					$helpful++;
+				} elseif ( $flag == 'helpful' && $direction == 'decrease' ) {
+					$update[] = "af_helpful_count = GREATEST(0, CONVERT(af_helpful_count, SIGNED) - 1)";
+					$helpful--;
+				}
+
 			}
 
-			// note that a net helpfulness of 0 is neither helpful nor unhelpful
-			$netHelpfulness = $record->af_net_helpfulness;
+			$netHelpfulness = $helpful - $unhelpful;
 
 			// increase helpful OR decrease unhelpful
 			if( ( ($flag == 'helpful' && $direction == 'increase' )
@@ -294,18 +331,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 			// Update helpful/unhelpful display count after submission.
 			if ( $flag == 'helpful' || $flag == 'unhelpful' ) {
-				$helpful   = $record->af_helpful_count;
-				$unhelpful = $record->af_unhelpful_count;
-	
-				if( $flag == 'helpful' && $direction == 'increase' ) {
-					$helpful++;
-				} elseif ( $flag == 'helpful' && $direction == 'decrease' ) {
-					$helpful--;
-				} elseif ( $flag == 'unhelpful' && $direction == 'increase' ) {
-					$unhelpful++;
-				} elseif ( $flag == 'unhelpful' && $direction == 'decrease' ) {
-					$unhelpful--;
-				}
 
 				// no negative numbers please
 				$helpful = max(0, $helpful);
@@ -460,6 +485,11 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'
+			),
+			'toggle' => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_TYPE     => 'boolean'
 			)
 		);
 	}
@@ -473,7 +503,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		return array(
 			'feedbackid'  => 'FeedbackID to flag',
 			'type'        => 'Type of flag to apply - hide or abuse',
-			'note'        => 'Information on why the feedback activity occurred'
+			'note'        => 'Information on why the feedback activity occurred',
+			'toggle'      => 'The flag is being toggled atomically, only useful for (un)helpful'
 		);
 	}
 
