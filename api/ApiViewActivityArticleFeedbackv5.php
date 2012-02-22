@@ -66,56 +66,59 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		// generate our html
 		$html = '';
 
-		// <div class="articleFeedbackv5-activity-pane">
-		$html .= Html::openElement( 'div', array(
-			'class' => 'articleFeedbackv5-activity-pane'
-		) );
-
-		// <div class="articleFeedbackv5-activity-feedback">
-		$html .= Html::openElement( 'div', array(
-			'class' => 'articleFeedbackv5-activity-feedback'
-		) );
-
-		// <div>Feedback Post #{$feedbackid} by {$user_link}</div>
-		$html .= Html::openElement( 'div', array() );
-		$html .= wfMessage( 'articlefeedbackv5-activity-feedback-info',
-					array($feedback->af_id))->text()
-			. $this->getUserLink($feedback->af_user_id, $feedback->af_user_ip);
-		$html .= Html::closeElement( 'div' );
-
-		//<div>Posted on {$date} (UTC)</div>
-		$html .= Html::element( 'div', array(),
-			wfMessage( 'articlefeedbackv5-activity-feedback-date',
-					array( $wgLang->timeanddate( $feedback->af_created ) ))->text() );
-
-		// <div class="articleFeedbackv5-activity-feedback-permalink">
-		$html .= Html::openElement( 'div', array(
-			'class' => 'articleFeedbackv5-activity-feedback-permalink'
-		) );
-
-		// <a href="{$permalink}">permalink</a>
-		$html .= Linker::link(
-			SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title . '/'. $feedback->af_id ),
-			wfMessage( 'articlefeedbackv5-activity-permalink' )->text());
-
-		// </div> for class="articleFeedbackv5-activity-feedback-permalink"
-		$html .= Html::closeElement( 'div' );
-
-		// </div> for class="articleFeedbackv5-activity-feedback"
-		$html .= Html::closeElement( 'div' );
-
-		//<div class="articleFeedbackv5-activity-count">$n actions on this post</div>
-		$html .= Html::element( 'div', array('class' => 'articleFeedbackv5-activity-count'),
-			wfMessage( 'articlefeedbackv5-activity-count',
-					array( $feedback->af_activity_count ))->text() );
-		
-		// </div> for class="articleFeedbackv5-activity-pane"
-		$html .= Html::closeElement( 'div' );
-
-		//<div class="articleFeedbackv5-activity-log-items">
-		$html .= Html::openElement( 'div', array(
-			'class' => 'articleFeedbackv5-activity-log-items'
-		) );
+		// only do this if continue < 1
+		if ($continue < 1) {
+			// <div class="articleFeedbackv5-activity-pane">
+			$html .= Html::openElement( 'div', array(
+				'class' => 'articleFeedbackv5-activity-pane'
+			) );
+	
+			// <div class="articleFeedbackv5-activity-feedback">
+			$html .= Html::openElement( 'div', array(
+				'class' => 'articleFeedbackv5-activity-feedback'
+			) );
+	
+			// <div>Feedback Post #{$feedbackid} by {$user_link}</div>
+			$html .= Html::openElement( 'div', array() );
+			$html .= wfMessage( 'articlefeedbackv5-activity-feedback-info',
+						array($feedback->af_id))->text()
+				. $this->getUserLink($feedback->af_user_id, $feedback->af_user_ip);
+			$html .= Html::closeElement( 'div' );
+	
+			//<div>Posted on {$date} (UTC)</div>
+			$html .= Html::element( 'div', array(),
+				wfMessage( 'articlefeedbackv5-activity-feedback-date',
+						array( $wgLang->timeanddate( $feedback->af_created ) ))->text() );
+	
+			// <div class="articleFeedbackv5-activity-feedback-permalink">
+			$html .= Html::openElement( 'div', array(
+				'class' => 'articleFeedbackv5-activity-feedback-permalink'
+			) );
+	
+			// <a href="{$permalink}">permalink</a>
+			$html .= Linker::link(
+				SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title . '/'. $feedback->af_id ),
+				wfMessage( 'articlefeedbackv5-activity-permalink' )->text());
+	
+			// </div> for class="articleFeedbackv5-activity-feedback-permalink"
+			$html .= Html::closeElement( 'div' );
+	
+			// </div> for class="articleFeedbackv5-activity-feedback"
+			$html .= Html::closeElement( 'div' );
+	
+			//<div class="articleFeedbackv5-activity-count">$n actions on this post</div>
+			$html .= Html::element( 'div', array('class' => 'articleFeedbackv5-activity-count'),
+				wfMessage( 'articlefeedbackv5-activity-count',
+						array( $feedback->af_activity_count ))->text() );
+			
+			// </div> for class="articleFeedbackv5-activity-pane"
+			$html .= Html::closeElement( 'div' );
+	
+			//<div class="articleFeedbackv5-activity-log-items">
+			$html .= Html::openElement( 'div', array(
+				'class' => 'articleFeedbackv5-activity-log-items'
+			) );
+		}
 
 		// divs of activity items
 		foreach($activities as $item) {
@@ -156,10 +159,12 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		// figure out if we have more based on our new continue value
 		$more = $this->fetchHasMore($title, $feedbackId, $continue);
 
-		//optional <div class="articleFeedbackv5-activity-more">Show more Activity</div>
+		//optional <a href="#" class="articleFeedbackv5-activity-more">Show more Activity</a>
 		if ($more) {
-			$html .= Html::element( 'div', array('class' => 'articleFeedbackv5-activity-more'),
-			wfMessage( 'articlefeedbackv5-activity-more', array())->text() );
+			$html .= Html::element( 'a', array(
+					'class' => "articleFeedbackv5-activity-more",
+					'href' => '#',
+				), wfMessage( "articlefeedbackv5-activity-more" )->text() );
 		}
 
 		// </div> for class="acticleFeedbackv5-activity-log-items"
