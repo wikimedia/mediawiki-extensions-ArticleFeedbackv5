@@ -97,7 +97,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 			// increase means "hide this"
 			if( $direction == 'increase' ) {
-				$activity = 'hide';
+				$activity = 'hidden';
 
 				// hide
 				$update[] = "af_is_hidden = TRUE";
@@ -107,7 +107,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 			} else {
 			// decrease means "unhide this"
-				$activity = 'unhide';
+				$activity = 'unhidden';
 
 				$update[] = "af_is_hidden = FALSE";
 				$update[] = "af_is_unhidden = TRUE";
@@ -388,7 +388,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				'af_is_unhidden',
 				'af_is_undeleted',
 				'af_is_declined',
-				'af_has_comment'),
+				'af_has_comment',
+				'af_oversight_count'),
 			array( 'af_id' => $id )
 		);
 		return $record;
