@@ -446,14 +446,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$filters['unhelpful'] = $int;
 		}
 
-		// needsoversight, declined
-		if($record->af_oversight_count > 0) {
-			$filters['needsoversight'] = $int;
-		}
-		if(true == $record->af_is_declined) {
-			$filters['declined'] = $int;
-		}
-
 		return $filters;
 	}
 
