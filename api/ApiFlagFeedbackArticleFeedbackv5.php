@@ -71,6 +71,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				// delete specific filters
 				$filters['deleted'] = 1;
 				$filters['notdeleted'] = -1;
+				if (true == $record->af_is_undeleted ) {
+					$filters['undeleted'] = -1;
+				}
 
 				// autohide if not hidden
 				if (false == $record->af_is_hidden ) {
@@ -411,8 +414,14 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		switch($action) {
 			case 'show':
 				$int = 1;
+				// if we're showing, this will increment
+				$filters['unhidden'] = 1;
 				break;
 			default:
+				// if we're hiding, and was unhidden, decrement
+				if(true == $record->af_is_unhidden) {
+					$filters['unhidden'] = -1;
+				}
 				$int = -1;
 				break;
 		}
@@ -420,9 +429,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		// visible, invisible, unhidden
 		$filters['visible'] = $int;
 		$filters['invisible'] = -$int; // opposite of int
-		if(true == $record->af_is_unhidden) {
-			$filters['unhidden'] = $int;
-		}
 
 		// comment
 		if(true == $record->af_has_comment) {
