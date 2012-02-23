@@ -258,7 +258,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	private function getFilterCriteria( $filter, $filterValue = null ) {
 		global $wgUser;
 		$where          = array();
-		$hiddenFilters  = array( 'invisible', 'notdeleted', 'all', 'deleted' );
+		$hiddenFilters  = array( 'invisible', 'notdeleted', 'all', 'deleted', 'needsoversight', 'declined' );
 		$deletedFilters = array( 'all', 'deleted' );
 
 		// Never show hidden or deleted posts unless specifically requested
@@ -275,8 +275,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		switch ( $filter ) {
 			case 'needsoversight':
-				// all oversight requests are autohidden
-				$where[] = 'af_is_hidden IS TRUE';
 				$where[] = 'af_oversight_count > 0';
 				break;
 			case 'id':
