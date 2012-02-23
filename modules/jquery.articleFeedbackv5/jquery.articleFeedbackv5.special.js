@@ -1117,7 +1117,7 @@
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
 			'apiFlagType': 'delete',
-			'apiFlagDir': 1,
+			'apiFlagDir': -1,
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-unoversight-link-' + id )
 					.attr( 'action', 'oversight' )
