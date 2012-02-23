@@ -254,7 +254,8 @@ a#articleFeedbackv5-show-more {
 .articleFeedbackv5-hide-link, .articleFeedbackv5-delete-link {
 	cursor: pointer;
 }
-#articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link.abusive {
+#articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link.abusive,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-unabuse-link.abusive {
 	color: red;
 }
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot {
@@ -584,4 +585,10 @@ form.articlefeedbackv5-form-flyover textarea {
 	display: inline-block;
 	float: right;
 	margin-right: 50px;
+}
+.articleFeedbackv5-activity-more {
+	display: block;
+	text-align: center;
+	padding: 5px;
+	background-color: #d2e5f7;
 }

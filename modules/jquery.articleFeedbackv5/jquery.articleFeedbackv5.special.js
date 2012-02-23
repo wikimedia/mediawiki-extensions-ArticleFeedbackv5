@@ -310,10 +310,6 @@
 			$l.tipsy( 'show' );
 			$.articleFeedbackv5special.currentPanelHostId = $l.attr( 'id' );
 			return true;
-			// load activity if it is an activity log
-			if( -1 != $l.attr( 'id' ).indexOf( 'articleFeedbackv5-activity-link-' ) ) {
-				$.articleFeedbackv5special.loadActivityLog( $l.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ) );
-			}
 		}
 	}
 	// }}}
@@ -642,21 +638,44 @@
 
 	// }}}
 	// {{{ loadActivityLog
-		
-	$.articleFeedbackv5special.loadActivityLog = function( id ) {
+	/**
+	 * Load the activity log for a feedback post item
+	 *
+	 * @param id			feedback post item id
+	 * @param continueId	should be 0 for the first request (first page), then the continue id returned from the last API call
+	 */
+	$.articleFeedbackv5special.loadActivityLog = function( id, continueId ) {
+		var data = {
+			'action':			'query',
+			'list':				'articlefeedbackv5-view-activity',
+			'format':			'json',
+			'affeedbackid':		id,
+		};
+		if( continueId > 0 ) {
+			data['afcontinue'] = continueId;	
+		}
 		$.ajax( {
 			'url': 		$.articleFeedbackv5special.apiUrl,
 			'type': 	'GET',
 			'dataType': 'json',
-			'data': {
-				'action':			'query',
-				'list':				'articlefeedbackv5-view-activity',
-				'format':			'json',
-				'affeedbackid':		id,
-				'continue':			0
-			},
+			'data': 	data,
 			'success': function( data ) {
-				$( '#articlefeedbackv5-activity-log' ).html( data['articlefeedbackv5-view-activity'].activity );
+				if( 0 == continueId ) {
+					$( '#articlefeedbackv5-activity-log' ).html( data['articlefeedbackv5-view-activity'].activity );
+				} else {
+					console.log(continueId + ' - APPENDING');
+					$( '#articlefeedbackv5-activity-log' )
+						.find( '.articleFeedbackv5-activity-more' ).replaceWith( data['articlefeedbackv5-view-activity'].activity );
+				}
+				if( data['articlefeedbackv5-view-activity'].continue ) {
+					$( '#articlefeedbackv5-activity-log' ).find( '.articleFeedbackv5-activity-more' )
+						.attr( 'rel', data['articlefeedbackv5-view-activity'].continue )
+						.click( function( e ) {
+							$.articleFeedbackv5special.loadActivityLog(
+								$( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ),
+								$( e.target ).attr( 'rel') );
+						} );
+				}
 			},
 			'error': function( data ) {
 				$( '#articlefeedbackv5-activity-log' ).html( mw.msg( 'articleFeedbackv5-view-activity-error' ) );
@@ -1137,7 +1156,7 @@
 				</div>',
 			'click': function( e ) {
 				if( $.articleFeedbackv5special.toggleTipsy( e ) ) {
-					$.articleFeedbackv5special.loadActivityLog( $( e.target ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ) );
+					$.articleFeedbackv5special.loadActivityLog( $( e.target ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ), 0 );
 				}
 			}
 		}
