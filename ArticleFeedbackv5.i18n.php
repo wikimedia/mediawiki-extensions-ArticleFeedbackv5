@@ -651,7 +651,7 @@ This URL can be changed to point to a translated version of the page if it exist
 	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Decline oversight note flyover panel - help link text',
 	'articlefeedbackv5-noteflyover-declineoversight-help-link' => 'Decline oversight note flyover panel - help link URL',
 	
-	/* Short (MoodBar-style) timestamp 
+	/* Short (MoodBar-style) timestamp */
 	'articlefeedbackv5-timestamp-years' => 'Years part - $1 is the years parameter',
 	'articlefeedbackv5-timestamp-months' => 'Months part - $1 is the months parameter',
 	'articlefeedbackv5-timestamp-weeks' => 'Weeks part - $1 is the weeks parameter',
