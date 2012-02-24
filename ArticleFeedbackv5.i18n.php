@@ -520,8 +520,6 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-comment-less' => 'Previous label (articlefeedbackv5-comment-more) switches to this after being clicked. This is the label for collapsing the expanded comments.',
 	'articlefeedbackv5-beta-notice' => 'The BETA state notice for article feedback v5',
 	'articlefeedbackv5-viewactivity' => 'View feedback post activity action text',
-	'articlefeedbackv5-mask-text' => 'Text to be displayed on the hidden post mask',
-	'articlefeedbackv5-mask-postnumber' => 'Template for post number, to be displayed on the hidden post mask',
 	'articlefeedbackv5-bucket1-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
 	'articlefeedbackv5-bucket1-question-toggle' => 'This is the question that appears before the yes/no buttons in option 1',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'The text for the yes button in option 1.
@@ -600,6 +598,98 @@ This URL can be changed to point to a translated version of the page if it exist
 * <code>$1</code> – URL of the confirmation link
 * <code>$2</code> – URL to type in the confirmation code manually.
 * <code>$3</code> – Confirmation code for the user to type in',
+	'articlefeedbackv5-mask-text' => 'Text to be displayed on the hidden post mask',
+	'articlefeedbackv5-mask-postnumber' => 'Template for post number, to be displayed on the hidden post mask',
+	
+	/* Flyover panels for feedback page */
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide post note flyover panel - panel caption',
+	'articlefeedbackv5-noteflyover-hide-label' => 'Hide post note flyover panel - text area label',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Hide post note flyover panel - text area placeholder text',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide post note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-hide-help' => 'Hide post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-hide-help-link' => 'Hide post note flyover panel - help link URL',
+	
+	'articlefeedbackv5-noteflyover-show-caption' => 'Show post note flyover panel - panel caption',
+	'articlefeedbackv5-noteflyover-show-label' => 'Show post note flyover panel - text area label',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'Show post note flyover panel - text area placeholder text',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Show post note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-show-help' => 'Show post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-show-help-link' => 'Show post note flyover panel - help link URL',
+	
+	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Request oversight note flyover panel - panel caption',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Request oversight note flyover panel - text area label',
+	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Request oversight note flyover panel - text area placeholder text',
+	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Request oversight note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Request oversight note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-requestoversight-help-link' => 'Request oversight note flyover panel - help link URL',
+	
+	'articlefeedbackv5-noteflyover-unrequestoversight-caption' => 'Un-request oversight note flyover panel - panel caption',
+	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'Un-request oversight note flyover panel - text area label',
+	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Un-request oversight note flyover panel - text area placeholder text',
+	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Un-request oversight note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Un-request oversight note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help-link' => 'Un-request oversight note flyover panel - help link URL',
+	
+	'articlefeedbackv5-noteflyover-oversight-caption' => 'Oversight note flyover panel - panel caption',
+	'articlefeedbackv5-noteflyover-oversight-label' => 'Oversight note flyover panel - text area label',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Oversight note flyover panel - text area placeholder text',
+	'articlefeedbackv5-noteflyover-oversight-submit' => 'Oversight note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-oversight-help' => 'Oversight note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-oversight-help-link' => 'Oversight note flyover panel - help link URL',
+	
+	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Un-oversight note flyover panel - panel caption',
+	'articlefeedbackv5-noteflyover-unoversight-label' => 'Un-oversight note flyover panel - text area label',
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Un-oversight note flyover panel - text area placeholder text',
+	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Un-oversight note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-unoversight-help' => 'Un-oversight note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-unoversight-help-link' => 'Un-oversight note flyover panel - help link URL',
+	
+	'articlefeedbackv5-noteflyover-declineoversight-caption' => 'Decline oversight note flyover panel - panel caption',
+	'articlefeedbackv5-noteflyover-declineoversight-label' => 'Decline oversight note flyover panel - text area label',
+	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'Decline oversight note flyover panel - text area placeholder text',
+	'articlefeedbackv5-noteflyover-declineoversight-submit' => 'Decline oversight note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Decline oversight note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-declineoversight-help-link' => 'Decline oversight note flyover panel - help link URL',
+	
+	/* Short (MoodBar-style) timestamp 
+	'articlefeedbackv5-timestamp-years' => 'Years part - $1 is the years parameter',
+	'articlefeedbackv5-timestamp-months' => 'Months part - $1 is the months parameter',
+	'articlefeedbackv5-timestamp-weeks' => 'Weeks part - $1 is the weeks parameter',
+	'articlefeedbackv5-timestamp-seconds' => 'Less than a minute - no parameters are required',
+	
+	/* Activity log actions */
+	'articlefeedbackv5-log-name' => 'Name of the AFTv5 log filter on the Special:Log page',
+	'articlefeedbackv5-log-header' => 'Description (header) of the AFTv5 activity log on the Special:Log page',
+	'articlefeedbackv5-log-oversight' => 'Oversight post action log string',
+	'articlefeedbackv5-log-unoversight' => 'Un-oversight post action log string',
+	'articlefeedbackv5-log-hidden' => 'Hide post action log string',
+	'articlefeedbackv5-log-unhidden' => 'Show post action log string',
+	'articlefeedbackv5-log-decline' => 'Decline oversight action log string',
+	'articlefeedbackv5-log-request' => 'Request oversight action log string',
+	'articlefeedbackv5-log-unrequest' => 'Un-request oversight action log string',
+	'articlefeedbackv5-log-flag' => 'Flag post as abuse action log string',
+	'articlefeedbackv5-log-unflag' => 'Unflag post as abuse action log string',
+	
+	/* Activity log flyover panel */
+	'articlefeedbackv5-activity-pane-header' => 'Flyover panel caption',
+	'articlefeedbackv5-activity-feedback-info' => 'Post information template (id, user)',
+	'articlefeedbackv5-activity-feedback-date' => 'Post information timestamp template',
+	'articlefeedbackv5-activity-permalink' => '[Permalink] link text',
+	'articlefeedbackv5-activity-request' => 'Request oversight display template',
+	'articlefeedbackv5-activity-unrequest' => 'Un-request oversight display template',
+	'articlefeedbackv5-activity-decline' => 'Decline oversight display template',
+	'articlefeedbackv5-activity-hidden' => 'Hide post display template',
+	'articlefeedbackv5-activity-flag' => 'Flag as abuse display template',
+	'articlefeedbackv5-activity-unhidden' => 'Show dpost isplay template',
+	'articlefeedbackv5-activity-unflag' => 'Unflag as abuse display template',
+	'articlefeedbackv5-activity-oversight' => 'Oversight display template',
+	'articlefeedbackv5-activity-unoversight' => 'Un-oversight display template',
+	'articlefeedbackv5-activity-count' => 'Template for activity items count',
+	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
+	
+	/* Misc */
+	'articlefeedbackv5-disable-preference' => 'Preference name/description for disabling AFTv5',
+
 );
 
 /** Afrikaans (Afrikaans)
