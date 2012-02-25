@@ -40,7 +40,7 @@
 	/**
 	 * The url to which to send the pull request
 	 */
-	$.articleFeedbackv5special.apiUrl = undefined;
+	$.articleFeedbackv5special.apiUrl = mw.util.wikiScript( 'api' );
 
 	/**
 	 * Controls for the list: sort, filter, continue flag, etc
@@ -119,7 +119,6 @@
 	 */
 	$.articleFeedbackv5special.setup = function() {
 		// Set up config vars, event binds, and do initial fetch.
-		$.articleFeedbackv5special.apiUrl = mw.util.wikiScript( 'api' );
 		$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
 		$.articleFeedbackv5special.setBinds();
 
