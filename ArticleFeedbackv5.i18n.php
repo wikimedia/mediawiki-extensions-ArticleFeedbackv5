@@ -2252,7 +2252,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Weitere Informationen',
 	'articlefeedbackv5-noteflyover-oversight-caption' => 'Diese Rückmeldung löschen',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Eine Anmerkung hinzufügen',
-	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Warum löschst du diese Rückmeldung?',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Warum versteckst du diese Rückmeldung?',
 	'articlefeedbackv5-noteflyover-oversight-submit' => 'Diese Rückmeldung löschen',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Weitere Informationen',
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Löschung  dieser Rückmeldung zurücknehmen',
@@ -2420,30 +2420,30 @@ Sofern du diese Anfrage nicht ausgelöst hast, ignoriere einfach diese E-Mail. W
 
 Viele Grüße und vielen Dank,
 Das {{SITENAME}}-Team',
-	'articlefeedbackv5-emailcapture-request-oversight' => "Hallo
+	'articlefeedbackv5-emailcapture-request-oversight' => 'Hallo!
 
-Ein Antrag auf Löschung (''„oversight“'') wurde von
+Ein Antrag zum Verstecken wurde von
 
 $1 : $2
 
- zu Rückmeldung
+zu Rückmeldung
 
 $3 : $4
 
- bezüglich Seite
+bezüglich der Seite
 
 $5 : $6
 
- gestellt.
+gestellt.
 
 Bitte besuche
 
 $7
 
- und akzeptiere diesen Antrag oder lehne ihn ab.
+und akzeptiere diesen Antrag oder lehne ihn ab.
 
 Vielen Dank,
-Das Team von {{SITENAME}}",
+Das Team von {{SITENAME}}',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -2468,7 +2468,7 @@ $messages['de-formal'] = array(
 	'articlefeedbackv5-noteflyover-show-placeholder' => 'Warum blenden Sie diese Rückmeldung ein?',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Warum beantragen Sie die Löschung?',
 	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Warum nehmen Sie den Antrag zur Löschung zurück?',
-	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Warum löschen Sie diese Rückmeldung?',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Warum verstecken Sie diese Rückmeldung?',
 	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Warum nehmen Sie die Löschung dieser Rückmeldung zurück?',
 	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'Warum lehnen Sie die Löschung  ab?',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Haben Sie gefunden, wonach Sie suchten?',
@@ -2527,27 +2527,27 @@ Sofern Sie diese Anfrage nicht ausgelöst haben, ignorieren Sie einfach diese E-
 
 Viele Grüße und vielen Dank,
 Das {{SITENAME}}-Team',
-	'articlefeedbackv5-emailcapture-request-oversight' => "Hallo
+	'articlefeedbackv5-emailcapture-request-oversight' => "Hallo!
 
-Ein Antrag auf Löschung (''„oversight“'') wurde von
+Ein Antrag auf Löschung ''(oversight)'' wurde von
 
 $1 : $2
 
- zu Rückmeldung
+als Rückmeldung
 
 $3 : $4
 
- bezüglich Seite
+bezüglich der Seite
 
 $5 : $6
 
- gestellt.
+gestellt.
 
 Bitte besuchen Sie
 
 $7
 
- und akzeptieren Sie diesen Antrag oder lehnen Sie ihn ab.
+und akzeptieren Sie diesen Antrag oder lehnen Sie ihn ab.
 
 Vielen Dank,
 Das Team von {{SITENAME}}",
@@ -8222,8 +8222,8 @@ $messages['mk'] = array(
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Не',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Да, го најдов.',
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'Не го најдов.',
-	'articlefeedbackv5-bucket1-question-comment-yes' => 'Што највеќе ви користеше. Како може да се подобри страницата?',
-	'articlefeedbackv5-bucket1-question-comment-no' => 'Што недостасува? Имате предлози за подобрувања?',
+	'articlefeedbackv5-bucket1-question-comment-yes' => 'Што највеќе ви користеше? Како може да се подобри страницата?',
+	'articlefeedbackv5-bucket1-question-comment-no' => 'Што недостасува? Имате ли некои предлози за подобрувања?',
 	'articlefeedbackv5-bucket1-form-submit' => 'Објави го мислењето',
 	'articlefeedbackv5-bucket2-title' => 'Помогнете ни да ја подобриме страницава',
 	'articlefeedbackv5-bucket2-suggestion-label' => 'Предлог',
