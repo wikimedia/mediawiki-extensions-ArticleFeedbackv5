@@ -481,7 +481,7 @@
 .articleFeedbackv5-tooltip {
 	position: absolute;
 	z-index: 15;
-	top: -450px;
+	top: -400px;
 	right: -105px;
 	font-size: 12px;
 	width: 234px;
@@ -943,7 +943,7 @@
 }
 
 .articleFeedbackv5-dialog.ui-dialog .articleFeedbackv5-tooltip {
-	top: -195px;
+	top: -170px;
 	right: -53px;
 }
 
@@ -1004,7 +1004,7 @@
 .articleFeedbackv5-cta-0 .articleFeedbackv5-tooltip,
 .articleFeedbackv5-cta-1 .articleFeedbackv5-tooltip,
 .articleFeedbackv5-cta-2 .articleFeedbackv5-tooltip {
-	top: -405px;
+	top: -380px;
 	right: -68px;
 }
 
