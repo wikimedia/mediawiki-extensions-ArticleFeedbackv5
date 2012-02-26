@@ -1412,6 +1412,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-special-filter-visible' => 'Gwelus an holl ($1)',
 	'articlefeedbackv5-special-filter-invisible' => 'Kuzhet ($1)',
 	'articlefeedbackv5-special-filter-deleted' => 'Evezhiet ($1)',
+	'articlefeedbackv5-special-filter-unhidden' => 'Anguzhet ($1)',
 	'articlefeedbackv5-special-sort-age' => 'Deiziad',
 	'articlefeedbackv5-special-sort-helpful' => 'Talvoudus',
 	'articlefeedbackv5-special-sort-rating' => 'Priziadenn',
@@ -1484,6 +1485,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL: $1|$1 miz|$1 miz}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL: $1|$1 sizhunvezh|$1 sizhunvezh}}',
 	'articlefeedbackv5-timestamp-seconds' => "nebeutoc'h eget ur vunutenn",
+	'articlefeedbackv5-mask-postnumber' => 'Kemennadenn #$1',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Kuzhat ar gemennadenn-mañ',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => "Perak 'ta kuzhat an notenn-mañ ?",
@@ -1643,6 +1645,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-activity-oversight' => 'evezhiañ an notenn-mañ war',
 	'articlefeedbackv5-activity-unoversight' => 'lemel an evezhiañ evit an notenn-mañ war',
 	'articlefeedbackv5-activity-count' => '$1 oberiadenn war an notenn-mañ',
+	'articlefeedbackv5-activity-more' => "Diskouez muioc'h a obererezh",
 	'articlefeedbackv5-emailcapture-response-body' => "Demat deoc'h !
 
 Trugarez deoc'h da vezañ diskouezet bezañ dedennet d'hor skoazellañ evit gwellaat {{SITENAME}}.
@@ -1664,6 +1667,28 @@ A-barzh pell ez aimp e darempred ganeoc'h evit ho skoazellañ da wellaat {{SITEN
 Ma n'eo ket deuet ar goulenn ganeoc'h, na rit ket van ouzh ar postel-mañ, ne vo ket kaset mann ebet all deoc'h.
 
 A wir galon ganeoc'h ha trugarez deoc'h,
+Skipailh {{SITENAME}}",
+	'articlefeedbackv5-emailcapture-request-oversight' => "Salud !
+
+Savet ez eus bet ur goulenn evezhiañ gant 
+
+$1 : $2
+
+a-zivout an elfenn evezhiadennoù
+
+$3 : $4
+
+evit ar bajenn
+
+$5 : $6
+
+Kit da welet war
+
+$7
+
+evit nac'hañ pe aprouiñ ar goulenn evezhiañ-mañ. 
+
+Ho trugarekaat,
 Skipailh {{SITENAME}}",
 );
 
@@ -2422,11 +2447,11 @@ Viele Grüße und vielen Dank,
 Das {{SITENAME}}-Team',
 	'articlefeedbackv5-emailcapture-request-oversight' => 'Hallo!
 
-Ein Antrag zum Verstecken wurde von
+Ein Antrag auf das Verstecken wurde von
 
 $1 : $2
 
-zu Rückmeldung
+als Rückmeldung zu
 
 $3 : $4
 
@@ -2443,7 +2468,7 @@ $7
 und akzeptiere diesen Antrag oder lehne ihn ab.
 
 Vielen Dank,
-Das Team von {{SITENAME}}',
+das Team von {{SITENAME}}',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -2527,13 +2552,13 @@ Sofern Sie diese Anfrage nicht ausgelöst haben, ignorieren Sie einfach diese E-
 
 Viele Grüße und vielen Dank,
 Das {{SITENAME}}-Team',
-	'articlefeedbackv5-emailcapture-request-oversight' => "Hallo!
+	'articlefeedbackv5-emailcapture-request-oversight' => 'Hallo!
 
-Ein Antrag auf Löschung ''(oversight)'' wurde von
+Ein Antrag auf das Verstecken wurde von
 
 $1 : $2
 
-als Rückmeldung
+als Rückmeldung zu
 
 $3 : $4
 
@@ -2550,7 +2575,7 @@ $7
 und akzeptieren Sie diesen Antrag oder lehnen Sie ihn ab.
 
 Vielen Dank,
-Das Team von {{SITENAME}}",
+das Team von {{SITENAME}}',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -9396,7 +9421,7 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Dit bericht verbergen',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Opmerking toevoegen',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Waarom verbergt u dit bericht?',
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Dit bericht verbergen',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Bericht verbergen',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Meer lezen',
 	'articlefeedbackv5-noteflyover-show-caption' => 'Dit bericht weergeven',
 	'articlefeedbackv5-noteflyover-show-label' => 'Opmerking toevoegen',
@@ -9413,10 +9438,10 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Waarom annuleert u het verwijderingsverzoek?',
 	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Aanvraag annuleren',
 	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Meer lezen',
-	'articlefeedbackv5-noteflyover-oversight-caption' => 'Dit bericht verwijderen',
+	'articlefeedbackv5-noteflyover-oversight-caption' => 'Bericht verwijderen',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Opmerking toevoegen',
 	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Waarom verwijdert u dit bericht?',
-	'articlefeedbackv5-noteflyover-oversight-submit' => 'Dit bericht verwijderen',
+	'articlefeedbackv5-noteflyover-oversight-submit' => 'Bericht verwijderen',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Meer lezen',
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'De verwijdering van dit bericht ongedaan maken',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Opmerking toevoegen',
@@ -10248,13 +10273,43 @@ L'echip ëd {{SITENAME}}",
  */
 $messages['ps'] = array(
 	'articlefeedbackv5-cta-thanks' => 'مننه!',
+	'articlefeedbackv5-cta1-learn-how' => 'د سمون چارې زده کړۍ',
+	'articlefeedbackv5-cta1-edit-linktext' => 'همدا مخ سمول',
+	'articlefeedbackv5-cta2-confirmation-title' => 'د ويکيپېډيا په پرمختګ کې مرسته وکړۍ',
+	'articlefeedbackv5-cta2-button-text' => 'نور مالومات',
+	'articlefeedbackv5-error-unknown' => 'ناجوته ستونزه.',
+	'articlefeedbackv5-form-tools-label' => 'اوزارونه',
+	'articlefeedbackv5-form-helpful-yes-label' => 'هو',
+	'articlefeedbackv5-form-helpful-no-label' => 'نه',
+	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 هو|$1 هو}} / {{PLURAL:$2|1 نه|$2 نه}}',
 	'articlefeedbackv5-special-filter-all' => 'ټول',
+	'articlefeedbackv5-special-filter-notdeleted' => 'ټول ($1)',
+	'articlefeedbackv5-special-filter-comment' => 'يوازې تبصرې ($1)',
+	'articlefeedbackv5-special-filter-helpful' => 'ګټور ($1)',
+	'articlefeedbackv5-special-filter-unhelpful' => 'ناګټور ($1)',
+	'articlefeedbackv5-special-filter-visible' => 'ټول ښکاره ($1)',
+	'articlefeedbackv5-special-filter-invisible' => 'پټ ($1)',
+	'articlefeedbackv5-special-sort-age' => 'نېټه',
+	'articlefeedbackv5-special-sort-helpful' => 'ګټور',
+	'articlefeedbackv5-special-sort-rating' => 'ارزونه',
 	'articlefeedbackv5-special-more' => 'نور',
+	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} يوه ستونزه درلوده:',
+	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} يوه پوښتنه درلوده:',
+	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} يو وړانديز درلود:',
+	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} دا مخ ارزولی $2/5',
 	'articlefeedbackv5-form5-header' => '$1 دا مخ و ارزاوه:',
-	'articlefeedbackv5-go-to-article' => 'مخ ته ورتلل',
-	'articlefeedbackv5-discussion-page' => 'د خبرو اترو مخ',
-	'articlefeedbackv5-whats-this' => 'دا څه دی؟',
+	'articlefeedbackv5-go-to-article' => 'ليکنه کتل',
+	'articlefeedbackv5-discussion-page' => 'خبرې اترې',
+	'articlefeedbackv5-whats-this' => 'لارښود',
 	'articleFeedbackv5-table-heading-page' => 'مخ',
+	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 کال|$1 کالونه}}',
+	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 مياشت|$1 مياشتې}}',
+	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 اونۍ|$1 اونۍ}}',
+	'articlefeedbackv5-noteflyover-hide-label' => 'يو يادښت ورګډول',
+	'articlefeedbackv5-noteflyover-hide-help' => 'نور مالومات',
+	'articlefeedbackv5-noteflyover-show-label' => 'يو يادښت ورګډول',
+	'articlefeedbackv5-noteflyover-show-help' => 'نور مالومات',
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'نور مالومات',
 	'articlefeedbackv5-bucket1-title' => 'د دې مخ په ښه کېدو کې مرسته وکړۍ',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'هو',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'نه',
