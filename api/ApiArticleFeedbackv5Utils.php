@@ -219,12 +219,19 @@ class ApiArticleFeedbackv5Utils {
 			return;
 		}
 
-		// create a title for the page
-		$page = Title::newFromID( $pageId );
-		$title = $page->getPartialURL();
+		// we only have the page id, we need the string page name for the permalink
+		$title_object = Title::newFromID( $pageId );
 
-		// to build our permalink, use the feedback entry key 
-		$title = SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$itemId" );
+		// no title object? no page? well then no logging
+		if (!$title_object) {
+			return;
+		}
+
+		// get the string name of the page
+		$page_name = $title_object->getPartialURL();
+
+		// to build our permalink, use the feedback entry key + the page name (isn't page name a title? but title is an object? confusing)
+		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$page_name/$itemId" );
 
 		// Make sure our notes are not too long - we won't error, just hard substr it
 		global $wgArticleFeedbackv5MaxActivityNoteLength;
