@@ -51,6 +51,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		// we use ONE db connection that talks to master
 		$dbw     = wfGetDB( DB_MASTER );
 		$dbw->begin();
+		$timestamp = $dbw->timestamp();
 
 		// load feedback record, bail if we don't have one
 		$record = $this->fetchRecord( $dbw, $feedbackId );
@@ -69,8 +70,11 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$activity = 'oversight';
 
 				// delete
-				$update[] = "af_is_deleted = TRUE";
-				$update[] = "af_is_undeleted = FALSE";
+				$update['af_is_deleted'] = true;
+				$update['af_is_undeleted'] = false;
+				// only store the oversighter on delete/oversight
+				$update['af_oversight_user_id'] = $wgUser->getId();
+				$update['af_oversight_timestamp'] = $timestamp;
 				// delete specific filters
 				$filters['deleted'] = 1;
 				$filters['notdeleted'] = -1;
@@ -80,17 +84,20 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 				// autohide if not hidden
 				if (false == $record->af_is_hidden ) {
-					$update[] = "af_is_hidden = TRUE";
-					$update[] = "af_is_unhidden = FALSE";
+					$update['af_is_hidden'] = true;
+					$update['af_is_unhidden'] = false;
 					$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
+					// 0 is used for "autohidden" purposes, we'll explicitly set it to overwrite last hider
+					$update['af_hide_user_id'] = 0;
+					$update['af_hide_timestamp'] = $timestamp;
 					$implicit_hide = true; // for logging
 				}
 
 			} else {
 			// decrease means "unoversight this" but does NOT auto-unhide
 				$activity = 'unoversight';
-				$update[] = "af_is_deleted = FALSE";
-				$update[] = "af_is_undeleted = TRUE";
+				$update['af_is_deleted'] = false;
+				$update['af_is_undeleted'] = true;
 				// increment "undeleted", decrement "deleted"
 				// NOTE: we do not touch visible, since hidden controls visiblity
 				$filters['deleted'] = -1;
@@ -106,17 +113,19 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$activity = 'hidden';
 
 				// hide
-				$update[] = "af_is_hidden = TRUE";
-				$update[] = "af_is_unhidden = FALSE";
-
+				$update['af_is_hidden'] = true;
+				$update['af_is_unhidden'] = false;
+				// only store the hider on hide not show
+				$update['af_hide_user_id'] = $wgUser->getId();
+				$update['af_hide_timestamp'] = $timestamp;
 				$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
 
 			} else {
 			// decrease means "unhide this"
 				$activity = 'unhidden';
 
-				$update[] = "af_is_hidden = FALSE";
-				$update[] = "af_is_unhidden = TRUE";
+				$update['af_is_hidden'] = false;
+				$update['af_is_unhidden'] = true;
 
 				$filters = $this->changeFilterCounts( $record, $filters, 'show' );
 			}
@@ -125,9 +134,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 			$activity = 'decline';
 			// oversight request count becomes 0
-			$update[] = "af_oversight_count = 0";
+			$update['af_oversight_count'] = 0;
 			// declined oversight is flagged
-			$update[] = "af_is_declined = TRUE";
+			$update['af_is_declined'] = true;
 			$filters['declined'] = 1;
 			// if the oversight count was greater then 1
 			if(0 < $record->af_oversight_count) {
@@ -160,14 +169,18 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			if($direction == 'increase') {
 				$activity = 'flag';
 				$filters['abusive'] = 1;
+				// NOTE: we are bypassing traditional sql escaping here
 				$update[] = "af_abuse_count = af_abuse_count + 1";
 
 				// Auto-hide after threshold flags
 				if( $record->af_abuse_count > $wgArticleFeedbackv5HideAbuseThreshold
 				   && false == $record->af_is_hidden ) {
 					// hide
-					$update[] = "af_is_hidden = TRUE";
-					$update[] = "af_is_unhidden = FALSE";
+					$update['af_is_hidden'] = true;
+					$update['af_is_unhidden'] = false;
+					// 0 is used for "autohidden" purposes, we'll explicitly set it to overwrite last hider
+					$update['af_hide_user_id'] = 0;
+					$update['af_hide_timestamp'] = $timestamp;
 
 					$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
 					$results['abuse-hidden'] = 1;
@@ -179,12 +192,13 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			elseif($direction == 'decrease') {
 				$activity = 'unflag';
 				$filters['abusive'] = -1;
+				// NOTE: we are bypassing traditional sql escaping here
 				$update[] = "af_abuse_count = GREATEST(CONVERT(af_abuse_count, SIGNED) -1, 0)";
 
 				// Un-hide if we don't have 5 flags anymore
 				if( $record->af_abuse_count == 5 && true == $record->af_is_hidden ) {
-					$update[] = "af_is_hidden = FALSE";
-					$update[] = "af_is_unhidden = TRUE";
+					$update['af_is_hidden'] = false;
+					$update['af_is_unhidden'] = true;
 
 					$filters = $this->changeFilterCounts( $record, $filters, 'show' );
 
@@ -201,24 +215,28 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			if($direction == 'increase') {
 				$activity = 'request';
 				$filters['needsoversight'] = 1;
+				// NOTE: we are bypassing traditional sql escaping here
 				$update[] = "af_oversight_count = af_oversight_count + 1";
 
 				// autohide if not hidden
 				if (false == $record->af_is_hidden ) {
-					$update[] = "af_is_hidden = TRUE";
-					$update[] = "af_is_unhidden = FALSE";
+					$update['af_is_hidden'] = true;
+					$update['af_is_unhidden'] = false;
+					// 0 is used for "autohidden" purposes, we'll explicitly set it to overwrite last hider
+					$update['af_hide_user_id'] = 0;
 					$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
 					$implicit_hide = true; // for logging
 				}
 			} elseif($direction == 'decrease') {
 				$activity = 'unrequest';
 				$filters['needsoversight'] = -1;
+				// NOTE: we are bypassing traditional sql escaping here
 				$update[] = "af_oversight_count = GREATEST(CONVERT(af_oversight_count, SIGNED) - 1, 0)";
 
 				// Un-hide if we don't have oversight flags anymore
 				if( $record->af_oversight_count == 1 && true == $record->af_is_hidden ) {
-					$update[] = "af_is_hidden = FALSE";
-					$update[] = "af_is_unhidden = TRUE";
+					$update['af_is_hidden'] = false;
+					$update['af_is_unhidden'] = true;
 
 					$filters = $this->changeFilterCounts( $record, $filters, 'show' );
 
@@ -243,6 +261,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				if( ( ($flag == 'helpful' && $direction == 'increase' )
 				 || ($flag == 'unhelpful' && $direction == 'decrease' ) )
 				) {
+					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_helpful_count = af_helpful_count + 1";
 					$update[] = "af_unhelpful_count = GREATEST(0, CONVERT(af_unhelpful_count, SIGNED) - 1)";
 					$helpful++;
@@ -251,6 +270,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				} elseif ( ( ($flag == 'unhelpful' && $direction == 'increase' )
 				 || ($flag == 'helpful' && $direction == 'decrease' ) )
 				) {
+					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_unhelpful_count = af_unhelpful_count + 1";
 					$update[] = "af_helpful_count = GREATEST(0, CONVERT(af_helpful_count, SIGNED) - 1)";
 					$helpful--;
@@ -260,15 +280,19 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			} else {
 
 				if ( 'unhelpful' === $flag && $direction == 'increase') {
+					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_unhelpful_count = af_unhelpful_count + 1";
 					$unhelpful++;
 				} elseif ( 'unhelpful' === $flag && $direction == 'decrease') {
+					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_unhelpful_count = GREATEST(0, CONVERT(af_unhelpful_count, SIGNED) - 1)";
 					$unhelpful--;
 				} elseif ( $flag == 'helpful' && $direction == 'increase' ) {
+					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_helpful_count = af_helpful_count + 1";
 					$helpful++;
 				} elseif ( $flag == 'helpful' && $direction == 'decrease' ) {
+					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_helpful_count = GREATEST(0, CONVERT(af_helpful_count, SIGNED) - 1)";
 					$helpful--;
 				}
