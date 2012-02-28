@@ -207,8 +207,9 @@ class ApiArticleFeedbackv5Utils {
 	 * @param $pageId    int    the id of the page so we can look it up
 	 * @param $itemId    int    the id of the feedback item, used to build permalinks
 	 * @param $notes     string any notes that were stored with the activity
+	 * @param $auto      boolean true if this was an "automatic" action, if so the log doer is changed
 	 */
-	public static function logActivity( $type, $pageId, $itemId, $notes) {
+	public static function logActivity( $type, $pageId, $itemId, $notes, $auto = false) {
 
 		// These are our valid activity log actions
 		$valid = array( 'oversight', 'unoversight', 'hidden', 'unhidden',
@@ -237,9 +238,20 @@ class ApiArticleFeedbackv5Utils {
 		global $wgArticleFeedbackv5MaxActivityNoteLength;
 		$notes = substr($notes, 0, $wgArticleFeedbackv5MaxActivityNoteLength);
 
+		// if this is an automatic action, we create our special extension doer and send
+		if ($auto) {
+			$doer = User::newFromName( 'Article Feedback V5' );
+			// I cannot see how this could fail, but if it does do not log
+			if (!$doer) {
+				return;
+			}
+		} else {
+			$doer = null;
+		}
+
 		$log = new LogPage( 'articlefeedbackv5' );
 		// comments become the notes section from the feedback
-		$log->addEntry( $type, $title, $notes );
+		$log->addEntry( $type, $permalink, $notes, array(), $doer);
 
 		// update our log count by 1
 		$dbw = wfGetDB( DB_MASTER );
