@@ -229,7 +229,7 @@ class ApiArticleFeedbackv5Utils {
 		}
 
 		// get the string name of the page
-		$page_name = $title_object->getPartialURL();
+		$page_name = $title_object->getText();
 
 		// to build our permalink, use the feedback entry key + the page name (isn't page name a title? but title is an object? confusing)
 		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$page_name/$itemId" );
