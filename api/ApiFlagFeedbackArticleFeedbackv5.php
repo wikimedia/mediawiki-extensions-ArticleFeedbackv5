@@ -82,6 +82,10 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					$filters['undeleted'] = -1;
 				}
 
+				// TODO: This is data for the "hidden by, oversighted by" red line
+				$results['oversight_user'] = $wgUser->getId();
+				$results['oversight_timestamp'] = $timestamp;
+
 				// autohide if not hidden
 				if (false == $record->af_is_hidden ) {
 					$update['af_is_hidden'] = true;
@@ -91,6 +95,11 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					$update['af_hide_user_id'] = 0;
 					$update['af_hide_timestamp'] = $timestamp;
 					$implicit_hide = true; // for logging
+					// tell front-end autohiding was done
+					$results['autohidden'] = 1;
+					// TODO: This is data for the "hidden by, oversighted by" red line
+					$results['hide_user'] = 0;
+					$results['hide_timestamp'] = $timestamp;
 				}
 
 			} else {
@@ -119,6 +128,10 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$update['af_hide_user_id'] = $wgUser->getId();
 				$update['af_hide_timestamp'] = $timestamp;
 				$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
+
+				// TODO: This is data for the "hidden by, oversighted by" red line
+				$results['hide_user'] = $wgUser->getId();
+				$results['hide_timestamp'] = $timestamp;
 
 			} else {
 			// decrease means "unhide this"
@@ -185,6 +198,12 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
 					$results['abuse-hidden'] = 1;
 					$implicit_hide = true;
+
+					// tell front-end autohiding was done
+					$results['autohidden'] = 1;
+					// TODO: This is data for the "hidden by, oversighted by" red line
+					$results['hide_user'] = 0;
+					$results['hide_timestamp'] = $timestamp;
 				}
 			}
 	
@@ -224,24 +243,21 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					$update['af_is_unhidden'] = false;
 					// 0 is used for "autohidden" purposes, we'll explicitly set it to overwrite last hider
 					$update['af_hide_user_id'] = 0;
+					$update['af_hide_timestamp'] = $timestamp;
+
 					$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
 					$implicit_hide = true; // for logging
+					// tell front-end autohiding was done
+					$results['autohidden'] = 1;
+					// TODO: This is data for the "hidden by, oversighted by" red line
+					$results['hide_user'] = 0;
+					$results['hide_timestamp'] = $timestamp;
 				}
 			} elseif($direction == 'decrease') {
 				$activity = 'unrequest';
 				$filters['needsoversight'] = -1;
 				// NOTE: we are bypassing traditional sql escaping here
 				$update[] = "af_oversight_count = GREATEST(CONVERT(af_oversight_count, SIGNED) - 1, 0)";
-
-				// Un-hide if we don't have oversight flags anymore
-				if( $record->af_oversight_count == 1 && true == $record->af_is_hidden ) {
-					$update['af_is_hidden'] = false;
-					$update['af_is_unhidden'] = true;
-
-					$filters = $this->changeFilterCounts( $record, $filters, 'show' );
-
-					$implicit_unhide = true;
-				}
 			} else {
 				// TODO: real error here?
 				$error = 'articlefeedbackv5-invalid-feedback-flag';
@@ -356,12 +372,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			}
 
 			// handle implicit hide/show logging
-			if ( isset( $implicit_hide ) || isset ( $implicit_unhide )) {
-				if ( $implicit_hide ) {
-					$activity = 'hidden';
-				} else {
-					$activity = 'show';
-				}
+			if ( isset( $implicit_hide )) {
+				$activity = 'hidden';
 				ApiArticleFeedbackv5Utils::logActivity( $activity , $pageId, $feedbackId, '', true);
 			}
 
