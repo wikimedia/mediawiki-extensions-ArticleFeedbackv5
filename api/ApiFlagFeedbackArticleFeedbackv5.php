@@ -45,6 +45,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$direction  = isset( $params['direction'] ) ? $params['direction'] : 'increase';
 		$where      = array( 'af_id' => $feedbackId );
 
+		// woah, we were not checking for permissions (that could have been script kiddy bad)
+		global $wgUser;
+
 		// we use ONE db connection that talks to master
 		$dbw     = wfGetDB( DB_MASTER );
 		$dbw->begin();
@@ -56,7 +59,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			// no-op, because this is already broken
 			$error = 'articlefeedbackv5-invalid-feedback-id';
 
-		} elseif ( 'delete' == $flag ) {
+		} elseif ( 'delete' == $flag && $wgUser->isAllowed( 'aftv5-delete-feedback' )) {
 
 			// deleting means to "mark as oversighted" and "delete" it
 			// oversighting also auto-hides the item
@@ -96,7 +99,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$filters['notdeleted'] = 1;
 			}
 
-		} elseif ( 'hide' == $flag ) {
+		} elseif ( 'hide' == $flag && $wgUser->isAllowed( 'aftv5-hide-feedback' )) {
 
 			// increase means "hide this"
 			if( $direction == 'increase' ) {
@@ -118,7 +121,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$filters = $this->changeFilterCounts( $record, $filters, 'show' );
 			}
 
-		} elseif( 'resetoversight' === $flag) {
+		} elseif( 'resetoversight' === $flag && $wgUser->isAllowed( 'aftv5-delete-feedback' )) {
 
 			$activity = 'decline';
 			// oversight request count becomes 0
@@ -193,7 +196,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			}
 
 		// NOTE: this is actually request/unrequest oversight and works similar to abuse
-		} elseif( 'oversight' === $flag) {
+		} elseif( 'oversight' === $flag && $wgUser->isAllowed( 'aftv5-hide-feedback' )) {
 
 			if($direction == 'increase') {
 				$activity = 'request';
