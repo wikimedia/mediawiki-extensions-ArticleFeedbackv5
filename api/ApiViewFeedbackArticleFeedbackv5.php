@@ -214,7 +214,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'af_is_deleted', 'af_oversight_count', 'af_revision_id',
 				'af_net_helpfulness', 'af_revision_id',
 				'page_latest', 'page_title', 'page_namespace',
-				'rating.aa_response_boolean AS rating'
+				'rating.aa_response_boolean AS rating',
+				'af_hide_user_id',
+				'af_hide_timestamp',
+				'af_oversight_user_id',
+				'af_oversight_timestamp'
 			),
 			array( 'af_id' => $ids ),
 			__METHOD__,
@@ -483,10 +487,47 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		if ( $record[0]->af_is_deleted ) {
 			$topClass .= ' articleFeedbackv5-feedback-deleted';
 		}
-		return Html::openElement( 'div', array(
+
+		$attributes = array(
 			'class' => $topClass,
 			'rel'   => $id
-		) )
+		);
+		if ( $record[0]->af_is_hidden ) {
+			// if user is 0, we use a fake user
+			if ($record[0]->af_hide_user_id > 0) {
+				$user = User::newFromId( $record[0]->af_hide_user_id );
+				if ($user) {
+					$name = $user->getName();
+				}
+			}
+			if(!isset($name)) {
+				$name = 'Article Feedback V5';
+			}
+
+			$attributes['hide_user'] = $name;
+			if ($record[0]->af_hide_timestamp > 0) {
+				$attributes['hide_timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_hide_timestamp );
+			}
+		}
+		if ( $record[0]->af_is_deleted ) {
+			// if user is 0, we use a fake user
+			if ($record[0]->af_oversight_user_id > 0) {
+				$user = User::newFromId( $record[0]->af_oversight_user_id );
+				if ($user) {
+					$name = $user->getName();
+				}
+			}
+			if(!isset($name)) {
+				$name = 'Article Feedback V5';
+			}
+
+			$attributes['oversight_user'] = $name;
+			if ($record[0]->af_oversight_timestamp > 0) {
+				$attributes['oversight_timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_oversight_timestamp );
+			}
+		}
+
+		return Html::openElement( 'div', $attributes )
 		. Html::openElement( 'div', array(
 			'class' => "articleFeedbackv5-comment-wrap"
 		) )
