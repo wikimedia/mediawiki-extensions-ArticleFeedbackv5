@@ -662,7 +662,6 @@
 				if( 0 == continueId ) {
 					$( '#articlefeedbackv5-activity-log' ).html( data['articlefeedbackv5-view-activity'].activity );
 				} else {
-					console.log(continueId + ' - APPENDING');
 					$( '#articlefeedbackv5-activity-log' )
 						.find( '.articleFeedbackv5-activity-more' ).replaceWith( data['articlefeedbackv5-view-activity'].activity );
 				}
