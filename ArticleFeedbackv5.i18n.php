@@ -1412,6 +1412,8 @@ $messages['br'] = array(
 	'articlefeedbackv5-special-filter-visible' => 'Gwelus an holl ($1)',
 	'articlefeedbackv5-special-filter-invisible' => 'Kuzhet ($1)',
 	'articlefeedbackv5-special-filter-deleted' => 'Evezhiet ($1)',
+	'articlefeedbackv5-special-filter-undeleted' => 'Paouezet da evezhiañ ($1)',
+	'articlefeedbackv5-special-filter-declined' => 'Evezhiañ distaolet ($1)',
 	'articlefeedbackv5-special-filter-unhidden' => 'Anguzhet ($1)',
 	'articlefeedbackv5-special-sort-age' => 'Deiziad',
 	'articlefeedbackv5-special-sort-helpful' => 'Talvoudus',
@@ -1485,6 +1487,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL: $1|$1 miz|$1 miz}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL: $1|$1 sizhunvezh|$1 sizhunvezh}}',
 	'articlefeedbackv5-timestamp-seconds' => "nebeutoc'h eget ur vunutenn",
+	'articlefeedbackv5-mask-text' => 'Evezhiadenn kuzhet dre ziviz merañ. Klikañ evit gwelet an danvez',
 	'articlefeedbackv5-mask-postnumber' => 'Kemennadenn #$1',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Kuzhat ar gemennadenn-mañ',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Ouzhpennañ un notenn',
@@ -1629,8 +1632,15 @@ $messages['br'] = array(
 	'right-aftv5-see-hidden-feedback' => 'Diskouez an evezhiadennoù kuzhet',
 	'articlefeedbackv5-log-name' => 'Marilh obererezh an evezhiadennoù war ar pennadoù',
 	'articlefeedbackv5-log-header' => 'Setu aze ar marilh obererezh a vod evezhiadennoù an dud adtapet diwar ar pennadoù a ra gant "Article feedback".',
+	'articlefeedbackv5-log-oversight' => 'cheñchet stad an evezhiadenn [[$1]] da evezhiet',
+	'articlefeedbackv5-log-unoversight' => 'lamet kuit stad an evezhiañ [[$1]] eus an evezhiadenn',
 	'articlefeedbackv5-log-hidden' => 'kuzhat an evezhiadenn [[$1]]',
 	'articlefeedbackv5-log-unhidden' => 'paouez da guzhat an evezhiadenn [[$1]]',
+	'articlefeedbackv5-log-decline' => 'goulenn evezhiañ distaolet evit an evezhiadenn [[$1]]',
+	'articlefeedbackv5-log-request' => 'goulennet evezhiañ an evezhiadenn [[$1]]',
+	'articlefeedbackv5-log-unrequest' => 'diverket an evezhiañ goulennet evit an evezhiadenn [[$1]]',
+	'articlefeedbackv5-log-flag' => 'merket an evezhiadenn [[$1]] evel dizereat',
+	'articlefeedbackv5-log-unflag' => 'diverket dizereadegezh an evezhiadenn [[$1]]',
 	'articlefeedbackv5-activity-pane-header' => 'Marilh obererezh',
 	'articlefeedbackv5-activity-feedback-info' => 'Evezhiadenn postet gant #$1',
 	'articlefeedbackv5-activity-feedback-date' => 'Postet war $1',
@@ -9352,7 +9362,7 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-special-showing' => 'Er {{PLURAL:$1|wordt één terugkoppelingsbericht|worden $1 terugkoppelingsberichten}} voor deze pagina weergegeven',
 	'articleFeedbackv5-comment-ago' => '$1 geleden',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 bewerking|$1 bewerkingen}} sinds bericht',
-	'articlefeedbackv5-revision-link' => 'Artikelversie bekijken',
+	'articlefeedbackv5-revision-link' => 'Paginaversie bekijken',
 	'articlefeedbackv5-special-more' => 'Meer berichten weergeven',
 	'articlefeedbackv5-special-pagetitle' => 'Terugkoppeling: $1',
 	'articlefeedbackv5-form-optionid' => 'Optie $1',
@@ -9561,7 +9571,7 @@ Probeer het later opnieuw.',
 	'right-aftv5-see-deleted-feedback' => 'Verwijderde terugkoppeling bekijken',
 	'right-aftv5-see-hidden-feedback' => 'Verborgen terugkoppeling bekijken',
 	'articlefeedbackv5-log-name' => 'Article Feedback-activiteitenlogboek',
-	'articlefeedbackv5-log-header' => 'Dit is het logboek met handelingen die genomen zijn op terugkoppelingsitems verzameld voor artikelen die Article Feedback gebruiken.',
+	'articlefeedbackv5-log-header' => "Dit is het logboek met handelingen die genomen zijn op terugkoppelingsitems verzameld voor pagina's die Article Feedback gebruiken.",
 	'articlefeedbackv5-log-oversight' => 'heeft de status van de terugkoppeling [[$1]] gewijzigd naar verwijderd',
 	'articlefeedbackv5-log-unoversight' => 'heeft de verwijderingsstatus [[$1]] van de terugkoppeling verwijderd',
 	'articlefeedbackv5-log-hidden' => 'heeft de terugkoppeling [[$1]] verborgen',
@@ -11161,16 +11171,16 @@ $messages['ru'] = array(
 	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 да|$1 да}} / {{PLURAL:$2|1 нет|$2 нет}}',
 	'articlefeedbackv5-special-add-feedback' => 'Добавить ваш отзыв',
 	'articlefeedbackv5-special-filter-all' => 'Все (надзор) ( $1 )',
-	'articlefeedbackv5-special-filter-notdeleted' => 'Все',
+	'articlefeedbackv5-special-filter-notdeleted' => 'Все ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'Только комментарии ($1)',
 	'articlefeedbackv5-special-filter-abusive' => 'Помечено как злоупотребление ($1)',
-	'articlefeedbackv5-special-filter-helpful' => 'Полезная',
-	'articlefeedbackv5-special-filter-unhelpful' => 'Бесполезная ($1)',
+	'articlefeedbackv5-special-filter-helpful' => 'Полезный ($1)',
+	'articlefeedbackv5-special-filter-unhelpful' => 'Бесполезный ($1)',
 	'articlefeedbackv5-special-filter-needsoversight' => 'Запрошен надзор ($1)',
 	'articlefeedbackv5-special-filter-visible' => 'Все видимые ( $1 )',
 	'articlefeedbackv5-special-filter-invisible' => 'Скрытые ( $1 )',
 	'articlefeedbackv5-special-filter-deleted' => 'Под надзором ($1)',
-	'articlefeedbackv5-special-filter-undeleted' => 'Без надзора',
+	'articlefeedbackv5-special-filter-undeleted' => 'Без надзора ($1)',
 	'articlefeedbackv5-special-filter-declined' => 'Надзор отклонен ( $1 )',
 	'articlefeedbackv5-special-filter-unhidden' => 'Нескрытый ($1)',
 	'articlefeedbackv5-special-sort-age' => 'Дата',
@@ -11398,6 +11408,24 @@ $messages['ru'] = array(
 	'articlefeedbackv5-log-unhidden' => 'открыл доступ к обратной связи [[$1]]',
 	'articlefeedbackv5-log-decline' => 'отклонил запрос надзора из обратной связи [[$1]]',
 	'articlefeedbackv5-log-request' => 'запросил надзор в обратной связи [[$1]]',
+	'articlefeedbackv5-log-unrequest' => 'удален запрошенный надзор над обратной связью [[$1]]',
+	'articlefeedbackv5-log-flag' => 'поставлена пометка злоупотребления в отзыве [[$1]]',
+	'articlefeedbackv5-log-unflag' => 'удалена пометка злоупотребления в отзыве [[$1]]',
+	'articlefeedbackv5-activity-pane-header' => 'Журнал изменений',
+	'articlefeedbackv5-activity-feedback-info' => 'Отзыв о статье #$1 от',
+	'articlefeedbackv5-activity-feedback-date' => 'Опубликовано в $1',
+	'articlefeedbackv5-activity-permalink' => 'Постоянная ссылка',
+	'articlefeedbackv5-activity-request' => 'запрошен надзор над',
+	'articlefeedbackv5-activity-unrequest' => 'отменил запрос надзора в',
+	'articlefeedbackv5-activity-decline' => 'отклонил надзор в',
+	'articlefeedbackv5-activity-hidden' => 'скрыл этот отзыв в',
+	'articlefeedbackv5-activity-flag' => 'поставил отметку о злоупотреблении в',
+	'articlefeedbackv5-activity-unhidden' => 'убрал скрытие отзыва в',
+	'articlefeedbackv5-activity-unflag' => 'убрал отметку о злоупотреблении в',
+	'articlefeedbackv5-activity-oversight' => 'надзирает этот отзыв с',
+	'articlefeedbackv5-activity-unoversight' => 'убрал надзор с',
+	'articlefeedbackv5-activity-count' => '$1 действий на этот отзыв',
+	'articlefeedbackv5-activity-more' => 'Показать дополнительные действия',
 	'articlefeedbackv5-emailcapture-response-body' => 'Здравствуйте!
 
 Спасибо за интерес к улучшению проекта {{SITENAME}}.
@@ -11420,6 +11448,28 @@ $3
 
 С наилучшими пожеланиями и благодарностью
 Команда проекта {{SITENAME}}',
+	'articlefeedbackv5-emailcapture-request-oversight' => 'Добрый день!
+
+Участник
+
+$1 : $2
+
+запросил надзор на отзыв
+
+$3 : $4,
+
+сделанный на странице
+
+$5 : $6
+
+Пожалуйста, посетите
+
+$7
+
+чтобы подтвердить или отклонить этот запрос.
+
+Спасибо,
+Команда {{SITENAME}}',
 );
 
 /** Rusyn (Русиньскый)
@@ -12716,6 +12766,7 @@ Ang pangkat ng {{SITENAME}}',
  * @author Karduelis
  * @author Reedy
  * @author Stultiwikia
+ * @author Suelnur
  */
 $messages['tr'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Teşekkürler!',
@@ -12765,6 +12816,9 @@ $messages['tr'] = array(
 	'articlefeedbackv5-comment-less' => 'Daha az',
 	'articlefeedbackv5-beta-notice' => 'Deneme',
 	'articlefeedbackv5-viewactivity' => 'Etkinliği görüntüle',
+	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 yıl| $1 yıl}}',
+	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 ay| $1 ay}}',
+	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 hafta| $1 hafta}}',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Bu yazıyı gizle',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Not ekle',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Bu yazıyı gizle',
@@ -12881,6 +12935,7 @@ $messages['tr'] = array(
 	'articlefeedbackv5-toolbox-linktext' => 'Bu sayfayı geliştirin',
 	'right-aftv5-hide-feedback' => 'Geri bildirimi gizle',
 	'right-aftv5-delete-feedback' => 'Geri bildirimi sil',
+	'articlefeedbackv5-activity-permalink' => 'Kalıcı Bağlantı',
 );
 
 /** Ukrainian (Українська)
