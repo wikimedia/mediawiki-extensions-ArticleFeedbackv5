@@ -650,8 +650,8 @@
 			'format':			'json',
 			'aafeedbackid':		id,
 		};
-		if( continueId > 0 ) {
-			data['aacontinue'] = continueId;	
+		if( continueId ) {
+			data['aacontinue'] = continueId;
 		}
 		$.ajax( {
 			'url': 		$.articleFeedbackv5special.apiUrl,
@@ -659,15 +659,15 @@
 			'dataType': 'json',
 			'data': 	data,
 			'success': function( data ) {
-				if( 0 == continueId ) {
+				if( data['articlefeedbackv5-view-activity'].hasHeader ) {
 					$( '#articlefeedbackv5-activity-log' ).html( data['articlefeedbackv5-view-activity'].activity );
 				} else {
 					$( '#articlefeedbackv5-activity-log' )
 						.find( '.articleFeedbackv5-activity-more' ).replaceWith( data['articlefeedbackv5-view-activity'].activity );
 				}
-				if( data['articlefeedbackv5-view-activity'].continue ) {
+				if( data['query-continue']['articlefeedbackv5-view-activity'] ) {
 					$( '#articlefeedbackv5-activity-log' ).find( '.articleFeedbackv5-activity-more' )
-						.attr( 'rel', data['articlefeedbackv5-view-activity'].continue )
+						.attr( 'rel', data['query-continue']['articlefeedbackv5-view-activity'].aacontinue )
 						.click( function( e ) {
 							$.articleFeedbackv5special.loadActivityLog(
 								$( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ),

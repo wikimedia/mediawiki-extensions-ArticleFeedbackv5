@@ -45,6 +45,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		$feedbackId        = $params['feedbackid'];
 		$limit = $params['limit'];
 		$continue = $params['continue'];
+		$result = $this->getResult();
 
 		// fetch our activity database information
 		$feedback    = $this->fetchFeedback( $feedbackId );
@@ -62,16 +63,14 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 		// get our activities
 		$activities = $this->fetchActivity( $title, $feedbackId, $limit, $continue);
-		$old_continue = $continue;
-
-		// overwrite previous continue for new value
-		$continue = null;
 
 		// generate our html
 		$html = '';
 
-		// only do this if continue < 1
-		if ($old_continue < 1) {
+		// only do this if continue is not null
+		if ( !$continue ) {
+			$result->addValue( $this->getModuleName(), 'hasHeader', true );
+
 			// <div class="articleFeedbackv5-activity-pane">
 			$html .= Html::openElement( 'div', array(
 				'class' => 'articleFeedbackv5-activity-pane'
@@ -124,12 +123,21 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			) );
 		}
 
+		$count = 0;
+
 		// divs of activity items
 		foreach($activities as $item) {
 
 			// if we do not have a valid action, skip this item
 			if ( !in_array( $item->log_action, $valid )) {
 				continue;
+			}
+
+			$count++;
+
+			// figure out if we have more if we have another row past our limit
+			if($count > $limit) {
+				break;
 			}
 
 			// <div class="articleFeedbackv5-activity-item">
@@ -155,16 +163,10 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 			// </div> for class="articleFeedbackv5-activity-item"
 			$html .= Html::closeElement( 'div' );
-
-			// the last item's log_id should be the continue;
-			$continue = $item->log_id;
 		}
 
-		// figure out if we have more based on our new continue value
-		$more = $this->fetchHasMore($title, $feedbackId, $continue);
-
 		//optional <a href="#" class="articleFeedbackv5-activity-more">Show more Activity</a>
-		if ($more) {
+		if ($count > $limit) {
 			$html .= Html::element( 'a', array(
 					'class' => "articleFeedbackv5-activity-more",
 					'href' => '#',
@@ -175,47 +177,13 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		$html .= Html::closeElement( 'div' );
 		
 		// finally add our generated html data
-		$result = $this->getResult();
 		$result->addValue( $this->getModuleName(), 'limit', $limit );
 		$result->addValue( $this->getModuleName(), 'activity', $html );
 
 		// continue only goes in if it's not empty
-		if ($continue > 0) {
-			$result->addValue( $this->getModuleName(), 'continue', $continue );
+		if ($count > $limit) {
+			$this->setContinueEnumParameter( 'continue', $this->getContinue( $item ) );
 		}
-
-		// more only goes in if there are more entries
-		if ($more) {
-			$result->addValue( $this->getModuleName(), 'more', $more );
-		}
-	}
-
-	/**
-	 * Sees if there are additional activity rows to view
-	 *
-	 * @param string $title the title of the page
-	 * @param int $feedbackId identifier for the feedback item we are fetching activity for
-	 * @param mixed $continue used for offsets
-	 * @return bool true if there are more rows, or false
-	 */
-	protected function fetchHasMore( $title, $feedbackId, $continue = null ) {
-		$dbr   = wfGetDB( DB_SLAVE );
-
-		$feedback = $dbr->selectField(
-			array( 'logging' ),
-			array( 'log_id'),
-			array(
-				'log_type' => 'articlefeedbackv5',
-				'log_title' => "ArticleFeedbackv5/$title/$feedbackId",
-				'log_id < ' . intval($continue)
-			),
-			__METHOD__,
-			array(
-				'LIMIT'    => 1
-			)
-		);
-
-		return ( (bool) $feedback );
 	}
 
 	/**
@@ -264,9 +232,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 				'log_title' => "ArticleFeedbackv5/$title/$feedbackId"
 			);
 
-		if ( null !== $continue ) {
-			$where[] = 'log_id < ' . intval($continue);
-		}
+		$where = $this->applyContinue( $continue, $where );
 
 		$dbr   = wfGetDB( DB_SLAVE );
 		$activity = $dbr->select(
@@ -281,8 +247,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			$where,
 			__METHOD__,
 			array(
-				'LIMIT'    => $limit,
-				'ORDER BY' => 'log_id DESC'
+				'LIMIT'    => $limit + 1,
+				'ORDER BY' => 'log_timestamp DESC, log_id ASC'
 			)
 		);
 
@@ -375,6 +341,35 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 				$user->getName()
 			);
 		return $element;
+	}
+
+	/**
+	 * Creates a timestamp/id tuple for continue
+	 */
+	protected function getContinue( $row ) {
+		$ts = wfTimestamp( TS_MW, $row->log_timestamp );
+		return "$ts|{$row->log_id}";
+	}
+
+	/**
+	 * gets timestamp and id pair for continue
+	 */
+	protected function applyContinue( $continue, $where ) {
+		if ( !$continue ) {
+			return $where;
+		}
+
+		$vals = explode( '|', $continue, 3 );
+		if ( count( $vals ) !== 2 ) {
+			$this->dieUsage( 'Invalid continue param. You should pass the original value returned by the previous query', 'badcontinue' );
+		}
+
+		$db = $this->getDB();
+		$ts = $db->addQuotes( $db->timestamp( $vals[0] ) );
+		$id = intval( $vals[1] );
+		$where[] = '(log_id = ' . $id . ' AND log_timestamp = ' . $ts . ') OR log_timestamp < ' . $ts;
+
+		return $where;
 	}
 }
 
