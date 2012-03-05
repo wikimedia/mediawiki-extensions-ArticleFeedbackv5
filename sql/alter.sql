@@ -140,3 +140,7 @@ ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_oversight_timestamp binary(1
 
 -- set has_comment appropriately from current values
 UPDATE aft_article_feedback, aft_article_answer SET af_has_comment = TRUE WHERE af_bucket_id = 1 AND af_id = aa_feedback_id AND aa_response_text IS NOT NULL;
+
+-- Added 3/5 (emsmith)\
+DROP INDEX /*_*/af_net_helpfulness_af_id;
+CREATE INDEX /*_*/af_net_helpfulness_af_id ON /*_*/aft_article_feedback (af_net_helpfulness, af_id);

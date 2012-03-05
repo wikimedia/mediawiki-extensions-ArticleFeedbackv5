@@ -79,7 +79,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	public function fetchFeedback( $pageId, $filter = 'visible',
 	 $filterValue = null, $sort = 'age', $sortOrder = 'desc',
-	 $limit = 25, $continue = null, $continueId ) {
+	 $limit = 25, $continue = null, $continueId = null ) {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$ids   = array();
 		$rows  = array();
@@ -117,7 +117,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			case 'rating':
 				# TODO: null ratings don't seem to show up at all. Need to sort that one out.
 				$sortField   = 'rating';
-				$order       = "rating $direction, af_id $direction";
+				$order       = "yes_no $direction, af_id $direction";
 				$continueSql = "(rating.aa_response_boolean $continueDirection ".intVal( $continue )
 				 ." OR (rating.aa_response_boolean = ".intVal( $continue )
 				 ." AND af_id $continueDirection ".intval( $continueId ).") )";
@@ -158,7 +158,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			array(
 				'af_id',
 				'af_net_helpfulness',
-				'rating.aa_response_boolean AS rating'
+				'rating.aa_response_boolean AS yes_no'
 			),
 			$where,
 			__METHOD__,
@@ -214,7 +214,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'af_is_deleted', 'af_oversight_count', 'af_revision_id',
 				'af_net_helpfulness', 'af_revision_id',
 				'page_latest', 'page_title', 'page_namespace',
-				'rating.aa_response_boolean AS rating',
+				'rating.aa_response_boolean AS yes_no',
 				'af_hide_user_id',
 				'af_hide_timestamp',
 				'af_oversight_user_id',
