@@ -12,6 +12,15 @@
 
 /* Configuration */
 
+// Email address to send oversight request emails to, if set to null no emails are sent
+$wgArticleFeedbackv5OversightEmails = null;
+
+// Should eventually be this, let's NOT flood that list with bogus emails
+// $wgArticleFeedbackv5OversightEmails = 'stewards@wikimedia.org';
+
+// Name to send oversight request emails to
+$wgArticleFeedbackv5OversightEmailName = 'Oversighters';
+
 // How long text-based feedback is allowed to be before returning an error.
 // Set to 0 to disable length checking entirely.
 $wgArticleFeedbackv5MaxCommentLength =  0;
@@ -272,6 +281,7 @@ $wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5'] = $dir . 'api/ApiViewFeed
 $wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5'] = $dir . 'api/ApiFlagFeedbackArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewActivityArticleFeedbackv5'] = $dir . 'api/ApiViewActivityArticleFeedbackv5.php';
 $wgAutoloadClasses['ArticleFeedbackv5Hooks']           = $dir . 'ArticleFeedbackv5.hooks.php';
+$wgAutoloadClasses['ArticleFeedbackv5MailerJob']       = $dir . 'ArticleFeedbackv5MailerJob.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5']         = $dir . 'SpecialArticleFeedbackv5.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5']         = $dir . 'ArticleFeedbackv5.i18n.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5Alias']    = $dir . 'ArticleFeedbackv5.alias.php';
@@ -302,6 +312,9 @@ $wgAvailableRights[] = 'aftv5-hide-feedback';
 $wgAvailableRights[] = 'aftv5-delete-feedback';
 $wgAvailableRights[] = 'aftv5-see-deleted-feedback';
 $wgAvailableRights[] = 'aftv5-see-hidden-feedback';
+
+// Jobs
+$wgJobClasses['ArticleFeedbackv5MailerJob'] = 'ArticleFeedbackv5MailerJob';
 
 // Logging
 $wgLogTypes[] = 'articlefeedbackv5';

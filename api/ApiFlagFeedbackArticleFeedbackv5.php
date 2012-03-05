@@ -253,6 +253,13 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					$results['hide_user'] = 0;
 					$results['hide_timestamp'] = $timestamp;
 				}
+
+				// IF the previous setting was 0, send an email
+				if ( $record->af_oversight_count < 1) {
+
+					 $this->sendOversightEmail( $record->af_page_id , $feedbackId );
+
+				}
 			} elseif($direction == 'decrease') {
 				$activity = 'unrequest';
 				$filters['needsoversight'] = -1;
@@ -429,6 +436,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			'aft_article_feedback',
 			array(
 				'af_id',
+				'af_page_id',
 				'af_abuse_count',
 				'af_is_hidden',
 				'af_helpful_count',
@@ -598,4 +606,51 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 	public function isWriteMode() { return true; }
 	public function mustBePosted() { return true; }
+
+	/**
+	 * Helper function to dig out page url and title, feedback permalink, and
+	 * requestor page url and name - if all this data can be retrieved properly
+	 * it shoves an email job into the queue for sending ot the oversightor's
+	 * mailing list - only works on NEW oversight requests
+	 *
+	 * @param int $page_id page id to grab info on
+	 * @param int $feedback_id identifier for the feedback item
+	 */
+	protected function sendOversightEmail( $page_id, $feedback_id) {
+		global $wgUser;
+
+		// jobs need a title object
+		$title_object = Title::newFromID( $page_id );
+
+		if ( !$title_object ) {
+			return; // no title object, no mail
+		}
+
+		// get the string name of the page
+		$page_name = $title_object->getDBKey();
+
+		// make a title out of our user (sigh)
+		$user_page = Title::makeTitle( NS_USER, $wgUser->getName() );
+
+		if ( !$user_page ) {
+			return; // no user title object, no mail
+		}
+
+		// to build our permalink, use the feedback entry key + the page name (isn't page name a title? but title is an object? confusing)
+		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$page_name/$feedback_id" );
+
+		if ( !$permalink ) {
+			return; // no proper permalink? no mail
+		}
+
+		// build our params
+		$params = array( 'user_name' => $wgUser->getName(),
+				'user_url' => $user_page->getCanonicalUrl(),
+				'page_name' => $title_object->getText(),
+				'page_url' => $title_object->getCanonicalUrl(),
+				'permalink' => $permalink->getCanonicalUrl());
+
+		$job = new ArticleFeedbackv5MailerJob( $title_object, $params );
+		$job->insert();
+	}
 }

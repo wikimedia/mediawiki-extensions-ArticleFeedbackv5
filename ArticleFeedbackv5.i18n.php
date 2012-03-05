@@ -385,23 +385,20 @@ If you did not initiate this request, please ignore this e-mail and we will not 
 Best wishes, and thank you,
 The {{SITENAME}} team',
 
-	'articlefeedbackv5-emailcapture-request-oversight' => 'Hello!
+	'articlefeedbackv5-email-request-oversight-subject' => '$1 has requested oversight on $2',
+	'articlefeedbackv5-email-request-oversight-body' => 'Hello!
 
 A request for oversight has been made by
 
-$1 : $2
-
-on feedback item
-
-$3 : $4
+$4 : $1
 
 for page
 
-$5 : $6
+$5 : $2
 
-Please visit
+Please visit feedback item
 
-$7
+$3
 
 to decline or approve this oversight request.
 
@@ -666,6 +663,15 @@ This URL can be changed to point to a translated version of the page if it exist
 * <code>$1</code> – URL of the confirmation link
 * <code>$2</code> – URL to type in the confirmation code manually.
 * <code>$3</code> – Confirmation code for the user to type in',
+	'articlefeedbackv5-email-request-oversight-subject' => 'Subject line for email sent to oversight mailing list when an oversight request has been made.
+* <code>$1</code> – User name of requestor
+* <code>$2</code> – Page name of item with feedback requiring oversight.',
+	'articlefeedbackv5-email-request-oversight-body' => 'Body of an email sent to the oversight mailing list when an oversight request has been made.
+* <code>$1</code> – URL of user who requested oversight
+* <code>$2</code> – URL of page with feedback requiring oversight
+* <code>$3</code> – URL directly to feedback location
+* <code>$4</code> – User name of requestor
+* <code>$5</code> – Page name of item with feedback requiring oversight.',
 );
 
 /** Afrikaans (Afrikaans)
