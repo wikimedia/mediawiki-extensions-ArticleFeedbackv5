@@ -84,7 +84,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-hidden' => 'This post was hidden by an authorized editor',
 	'articlefeedbackv5-deleted' => 'This post was deleted by oversighters',
 	'articlefeedbackv5-form-hide' => 'Hide this post',
-	'articlefeedbackv5-form-unhide' => 'Show this post',
+	'articlefeedbackv5-form-unhide' => 'Unhide this post',
 	'articlefeedbackv5-form-helpful' => 'Mark as helpful ($1)',
 	'articlefeedbackv5-form-abuse' => 'Flag as abuse ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'Flag as abuse',
@@ -155,10 +155,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
 	
 	/* Show this post panel */
-	'articlefeedbackv5-noteflyover-show-caption' => 'Show this post',
+	'articlefeedbackv5-noteflyover-show-caption' => 'Unhide this post',
 	'articlefeedbackv5-noteflyover-show-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-show-placeholder' => 'Why are you showing this post?',
-	'articlefeedbackv5-noteflyover-show-submit' => 'Show this post',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'Why are you unhiding this post?',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Unhide this post',
 	'articlefeedbackv5-noteflyover-show-help' => 'Learn more',
 	'articlefeedbackv5-noteflyover-show-help-link' => '#',
 
