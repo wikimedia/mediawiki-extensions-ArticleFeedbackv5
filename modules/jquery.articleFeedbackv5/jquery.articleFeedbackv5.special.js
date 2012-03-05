@@ -158,12 +158,12 @@
 		container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
 		for( var action in $.articleFeedbackv5special.actions ) {
 			if( $.articleFeedbackv5special.actions[action].hasTipsy && (undefined == $.articleFeedbackv5special.actions[action].tipsyHtml) ) {
-				container.find( '#articlefeedbackv5-noteflyover-caption' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
-				container.find( '#articlefeedbackv5-noteflyover-label' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
-				container.find( '#articlefeedbackv5-noteflyover-submit' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-submit' ) );
+				container.find( '#articlefeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
+				container.find( '#articlefeedbackv5-noteflyover-label' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
+				container.find( '#articlefeedbackv5-noteflyover-submit' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-submit' ) );
 				// will add an 'action' attribute to the link
 				container.find( '#articlefeedbackv5-noteflyover-submit' ).attr( 'action', action );
-				container.find( '#articlefeedbackv5-noteflyover-help' ).html( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help' ) );
+				container.find( '#articlefeedbackv5-noteflyover-help' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help' ) );
 				container.find( '#articlefeedbackv5-noteflyover-help' ).attr( 'href', mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help-link' ) );
 				$.articleFeedbackv5special.actions[action].tipsyHtml = container.html();
 			}
