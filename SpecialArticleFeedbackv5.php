@@ -127,7 +127,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		if( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
 			$helpPage = 'Article_Feedback_Tool/Version_5/Help/Feedback_page_Oversighters';
 		} elseif( $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
-			$helpPage = 'Article_Feedback_Tool/Version_5/Help/Feedback_page_Hiders';
+			$helpPage = 'Article_Feedback_Tool/Version_5/Help/Feedback_page_Monitors';
 		} elseif( !$wgUser->isAnon() ) {
 			$helpPage = 'Article_Feedback_Tool/Version_5/Help/Feedback_page_Editors';
 		}
