@@ -282,7 +282,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			__METHOD__,
 			array(
 				'LIMIT'    => $limit,
-				'ORDER BY' => 'log_timestamp DESC, log_id ASC'
+				'ORDER BY' => 'log_id DESC'
 			)
 		);
 
