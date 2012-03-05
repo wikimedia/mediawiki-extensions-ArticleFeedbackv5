@@ -262,8 +262,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	private function getFilterCriteria( $filter, $filterValue = null ) {
 		global $wgUser;
 		$where          = array();
-		$hiddenFilters  = array( 'invisible', 'notdeleted', 'all', 'deleted', 'needsoversight', 'declined' );
-		$deletedFilters = array( 'all', 'deleted' );
+		$hiddenFilters  = array( 'id', 'invisible', 'notdeleted', 'all', 'deleted', 'needsoversight', 'declined' );
+		$deletedFilters = array( 'id', 'all', 'deleted' );
 
 		// Never show hidden or deleted posts unless specifically requested
 		// and user has access.
