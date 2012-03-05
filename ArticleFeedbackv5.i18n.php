@@ -1684,28 +1684,6 @@ Ma n'eo ket deuet ar goulenn ganeoc'h, na rit ket van ouzh ar postel-mañ, ne vo
 
 A wir galon ganeoc'h ha trugarez deoc'h,
 Skipailh {{SITENAME}}",
-	'articlefeedbackv5-emailcapture-request-oversight' => "Salud !
-
-Savet ez eus bet ur goulenn evezhiañ gant 
-
-$1 : $2
-
-a-zivout an elfenn evezhiadennoù
-
-$3 : $4
-
-evit ar bajenn
-
-$5 : $6
-
-Kit da welet war
-
-$7
-
-evit nac'hañ pe aprouiñ ar goulenn evezhiañ-mañ. 
-
-Ho trugarekaat,
-Skipailh {{SITENAME}}",
 );
 
 /** Bosnian (Bosanski)
@@ -2461,25 +2439,22 @@ Sofern du diese Anfrage nicht ausgelöst hast, ignoriere einfach diese E-Mail. W
 
 Viele Grüße und vielen Dank,
 Das {{SITENAME}}-Team',
-	'articlefeedbackv5-emailcapture-request-oversight' => 'Hallo!
+	'articlefeedbackv5-email-request-oversight-subject' => '$1 hat das Verstecken von $2 beantragt',
+	'articlefeedbackv5-email-request-oversight-body' => 'Hallo!
 
-Ein Antrag auf das Verstecken wurde von
+Ein Antrag auf Verstecken wurde von
 
-$1 : $2
+$4 : $1
 
-als Rückmeldung zu
+zur Seite
 
-$3 : $4
-
-bezüglich der Seite
-
-$5 : $6
+$5 : $2
 
 gestellt.
 
-Bitte besuche
+Bitte besuche die Rückmeldung
 
-$7
+$3
 
 und akzeptiere diesen Antrag oder lehne ihn ab.
 
@@ -2568,25 +2543,21 @@ Sofern Sie diese Anfrage nicht ausgelöst haben, ignorieren Sie einfach diese E-
 
 Viele Grüße und vielen Dank,
 Das {{SITENAME}}-Team',
-	'articlefeedbackv5-emailcapture-request-oversight' => 'Hallo!
+	'articlefeedbackv5-email-request-oversight-body' => 'Hallo!
 
-Ein Antrag auf das Verstecken wurde von
+Ein Antrag auf Verstecken wurde von
 
-$1 : $2
+$4 : $1
 
-als Rückmeldung zu
+zur Seite
 
-$3 : $4
-
-bezüglich der Seite
-
-$5 : $6
+$5 : $2
 
 gestellt.
 
 Bitte besuchen Sie
 
-$7
+$3
 
 und akzeptieren Sie diesen Antrag oder lehnen Sie ihn ab.
 
@@ -2996,6 +2967,7 @@ $3
 /** Esperanto (Esperanto)
  * @author Blahma
  * @author Lucas
+ * @author Pedroca cerebral
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -3015,9 +2987,17 @@ $messages['eo'] = array(
 	'articlefeedbackv5-error-submit' => 'Eraro dum sendado de la formularo.',
 	'articlefeedbackv5-error-nofeedback' => 'Bonvolu enigi viajn rimarkojn.',
 	'articlefeedbackv5-error-flagging' => 'Okazis eraro dum flagado de la rimarkoj.',
+	'articlefeedbackv5-form-tools-label' => 'Iloj',
+	'articlefeedbackv5-form-helpful-yes-label' => 'Jes',
+	'articlefeedbackv5-form-helpful-no-label' => 'Ne',
+	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 jes|$1 jes}} / {{PLURAL:$2|1 ne|$2 ne}}',
 	'articlefeedbackv5-special-filter-all' => 'Ĉio',
-	'articlefeedbackv5-special-filter-visible' => 'Videbla',
-	'articlefeedbackv5-special-filter-invisible' => 'Nevidebla',
+	'articlefeedbackv5-special-filter-notdeleted' => 'Ĉio ($1)',
+	'articlefeedbackv5-special-filter-abusive' => 'Marki kiel misuzon ($1)',
+	'articlefeedbackv5-special-filter-visible' => 'Ĉio videbla ($1)',
+	'articlefeedbackv5-special-filter-invisible' => 'Kaŝita ($1)',
+	'articlefeedbackv5-special-sort-age' => 'Dato',
+	'articlefeedbackv5-special-sort-rating' => 'Takso',
 	'articlefeedbackv5-special-sort-label-before' => 'Ordigi laŭ:',
 	'articlefeedbackv5-special-filter-label-before' => 'Montri nur:',
 	'articlefeedbackv5-special-showing' => 'Montrante $1 afiŝojn (el $2)',
@@ -3061,6 +3041,8 @@ $messages['eo'] = array(
 * Lastaj malaltaĵoj: Artikoloj ricevantaj 70% aŭ pli malgrandajn (2 steloj aŭ malpli) taksojn en iu kategorio en la lasta 24 horoj. Nur artikoloj ricevantaj almenaŭ 10 taksojn en la lastaj 24 horoj estas inkluzivitaj.",
 	'articlefeedbackv5' => 'Stirpanelo pri artikolo-komentoj',
 	'articlefeedbackv5-desc' => 'Takso de artikolo',
+	'articlefeedbackv5-comment-less' => 'Malpli',
+	'articlefeedbackv5-viewactivity' => 'Vidi aktivecon',
 	'articlefeedbackv5-bucket1-title' => 'Helpi plibonigi ĉi tiun paĝon',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Ĉu vi trovis kion vi serĉis?',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Jes',
@@ -3507,28 +3489,6 @@ Si tú no realizaste esta solicitud, por favor ignora este correo y no te enviar
 
 Agradecidos y con los mejores deseos,
 El equipo de {{SITENAME}}.',
-	'articlefeedbackv5-emailcapture-request-oversight' => '¡Hola!
-
-Una solicitud para supervisión ha sido presentada por
-
-$1 : $2
-
-sobre el elemento de comentarios
-
-$3 : $4
-
-para la página
-
-$5 : $6
-
-Visite
-
-$7
-
-para rechazar o aprobar esta solicitud de supervisión.
-
-Gracias
-El equipo de {{SITENAME}}',
 );
 
 /** Estonian (Eesti)
@@ -4405,28 +4365,6 @@ Si vous n'avez pas initié cette demande, veuillez ignorer ce courriel et nous n
 Meilleurs vœux, et merci,
 
 L’équipe de {{SITENAME}}",
-	'articlefeedbackv5-emailcapture-request-oversight' => "Bonjour!
-
-Une demande de surveillance a été faite par 
-
-$1 : $2
-
-sur l'élément commentaires 
-
-$3 : $4
-
-pour la page 
-
-$5 : $6
-
-Veuillez vous rendre sur
-
-$7
-
-pour refuser ou approuver cette demande de surveillance. 
-
-Merci,
-L'équipe de {{SITENAME}}",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -4933,28 +4871,6 @@ Se vostede non fixo esta petición, ignore esta mensaxe e non lle enviaremos má
 
 Os mellores desexos e grazas,
 O equipo de {{SITENAME}}',
-	'articlefeedbackv5-emailcapture-request-oversight' => 'Ola!
-
-Fíxose unha petición de supervisión por parte de
-
-$1 : $2
-
-do comentario
-
-$3 : $4
-
-sobre a páxina
-
-$5 : $6
-
-Visite
-
-$7
-
-para rexeitar ou aprobar esta solicitude de supervisión.
-
-Grazas,
-O equipo de {{SITENAME}}',
 );
 
 /** Swiss German (Alemannisch)
@@ -5367,28 +5283,6 @@ $3
 
 כל טוב, ותודה
 
-צוות {{SITENAME}}',
-	'articlefeedbackv5-emailcapture-request-oversight' => 'שלום!
-
-בקשה הסתרה נוצרה על־ידי
-
-$1‏ : $2
-
-בפריט המשוב
-
-$3‏ : $4
-
-לדף
-
-$5‏ : $6
-
-נא לבקר בדף
-
-$7
-
-כדי לדחות או לאשר את הבקשה הזאת.
-
-תודה,
 צוות {{SITENAME}}',
 );
 
@@ -5906,28 +5800,6 @@ Jeli njejsy tute naprašowanje pósłał, ignoruj prošu tutu e-mejl a njepósć
 
 Z najlěpšimi postrowami a wulki dźak,
 Team {{GRAMMAR:genitiw|{{SITENAME}}}}',
-	'articlefeedbackv5-emailcapture-request-oversight' => 'Witaj!
-
-Dohladowanje je so požadało wot
-
-$1 : $2
-
-wo komentarje
-
-$3 : $4
-
-za stronu
-
-$5 : $6.
-
-Prošu wopytaj
-
-$7,
-
-zo by požadanje za dohladowanje wotpokazał abo schwalił.
-
-Wulki dźak,
-team {{SITENAME}}',
 );
 
 /** Hungarian (Magyar)
@@ -6468,28 +6340,6 @@ Nos va tosto contactar te pro explicar como tu pote adjutar a meliorar {{SITENAM
 Si tu non ha initiate iste requesta, per favor ignora iste e-mail e nos non te inviara altere cosa.
 
 Optime salutes, e multe gratias,
-Le equipa de {{SITENAME}}',
-	'articlefeedbackv5-emailcapture-request-oversight' => 'Salute!
-
-Un requesta de supervision ha essite facite per
-
-$1 : $2
-
-sur le commentario de evalutation
-
-$3 : $4
-
-pro le pagina
-
-$5 : $6
-
-Per favor visita
-
-$7
-
-pro declinar o approbar iste requesta de supervision.
-
-Gratias,
 Le equipa de {{SITENAME}}',
 );
 
@@ -8419,23 +8269,24 @@ $3
 
 Ви благодариме и сè најдобро,
 Екипата на {{SITENAME}}',
-	'articlefeedbackv5-emailcapture-request-oversight' => 'Здраво!
+	'articlefeedbackv5-email-request-oversight-subject' => '$1 побара заверка на $2',
+	'articlefeedbackv5-email-request-oversight-body' => 'Здраво!
 
 Добивме барање за заверка од
 
-$1 : $2
+$4 : $1
 
-на мислењето
+на страницата
 
-$3 : $4
-
-искажано за страницата
-
-$5 : $6
+$5 : $2
 
 Појдете на
 
-$7
+$3
+
+Појдете на
+
+$3
 
 за да го одбиете или прифатите ова барање.
 
@@ -8923,28 +8774,6 @@ Jika bukan anda yang membuat permohonan ini, sila abaikan e-mel ini dan kami tid
 
 Sekian, terima kasih,
 Pasukan {{SITENAME}}',
-	'articlefeedbackv5-emailcapture-request-oversight' => 'Apa khabar!
-
-Pemohonan untuk pengawasan telah dibuat oleh
-
-$1 : $2
-
-terhadap perkara maklum balas
-
-$3 : $4
-
-untuk halaman
-
-$5 : $6
-
-Sila kunjungi
-
-$7
-
-untuk menolak atau menerima permohonan ini.
-
-Terima kasih,
-Pasukan {{SITENAME}}',
 );
 
 /** Maltese (Malti)
@@ -9041,6 +8870,7 @@ $messages['myv'] = array(
 );
 
 /** Norwegian Bokmål (‪Norsk (bokmål)‬)
+ * @author EivindJ
  * @author Event
  * @author Nghtwlkr
  * @author Sjurhamre
@@ -9055,6 +8885,9 @@ $messages['nb'] = array(
 	'articlefeedbackv5-cta2-confirmation-title' => 'Hjelp til å forbedre Wikipedia',
 	'articlefeedbackv5-cta2-confirmation-call' => 'Dette nettstedet skapes av folk som deg. Kan du hjelpe oss?',
 	'articlefeedbackv5-cta2-button-text' => 'Lær mer',
+	'articlefeedbackv5-cta3-confirmation-title' => 'Vennligst gjennomfør en rask undersøkelse',
+	'articlefeedbackv5-cta3-confirmation-call' => 'Den tar kun et minutt og vil være til hjelp for å forbedre Wikipedia.',
+	'articlefeedbackv5-cta3-button-text' => 'Start undersøkelsen',
 	'articlefeedbackv5-error' => 'En feil har oppstått. Prøv igjen senere.',
 	'articlefeedbackv5-error-email' => 'Den e-postadressen er ugyldig.',
 	'articlefeedbackv5-error-validation' => 'Valideringsfeil.',
@@ -9071,7 +8904,7 @@ $messages['nb'] = array(
 	'articlefeedbackv5-special-more' => 'Mer',
 	'articlefeedbackv5-special-pagetitle' => 'Tilbakemelding for $1',
 	'articlefeedbackv5-form-optionid' => 'Alternativ $1',
-	'articlefeedbackv5-form-hide' => 'Gjem dette ($1)',
+	'articlefeedbackv5-form-hide' => 'Gjem dette',
 	'articlefeedbackv5-form-abuse' => 'Flagg som misbruk ($1)',
 	'articlefeedbackv5-form-header' => 'Tilbakemelding #$1, ved $2',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$1}} fant det {{GENDER:$1|han|hun|de}} lette etter',
@@ -9086,7 +8919,6 @@ $messages['nb'] = array(
 	'articlefeedbackv5-form-not-shown' => 'Brukeren fikk ikke tilbakemeldingsskjema.',
 	'articlefeedbackv5-form-invalid' => 'Ugyldig ID for tilbakemeldingsskjema.',
 	'articlefeedbackv5-abuse-saved' => 'Misbruksflagg lagret',
-	'articlefeedbackv5-hide-saved' => 'Skjulingsflagg lagret',
 	'articlefeedbackv5-error-loading-feedback' => 'Feil ved lasting av tilbakemeldinger',
 	'articlefeedbackv5-invalid-feedback-id' => 'Ugyldig tilbakemeldings-ID',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Ugyldig tilbakemeldingsflagg',
@@ -9094,7 +8926,7 @@ $messages['nb'] = array(
 	'articlefeedbackv5-discussion-page' => 'Diskusjonsside',
 	'articlefeedbackv5-whats-this' => 'Hva er dette?',
 	'articlefeedbackv5-invalid-page-id' => 'Ugyldig side-ID',
-	'articlefeedbackv5-percent-found' => '<span class="stat-marker positive">$1 %</span> av brukerne fant det de lette etter.',
+	'articlefeedbackv5-percent-found' => '$1  av brukerne fant det de lette etter.',
 	'articlefeedbackv5-overall-rating' => 'Vurdering: $1/5',
 	'articlefeedbackv5-special-title' => '== Tilbakemelding ==',
 	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Dagens oppturer og nedturer',
@@ -9631,28 +9463,6 @@ Dank u!
 Met vriendelijke groet,
 
 Het team van {{SITENAME}}',
-	'articlefeedbackv5-emailcapture-request-oversight' => 'Hallo!
-
-Een aanvraag voor verwijdering is gemaakt door
-
-$1 : $2
-
-op terugkoppelingsitem
-
-$3 : $4
-
-voor pagina
-
-$5 : $6
-
-Bezoek
-
-$7
-
-om dit verwijderingsverzoek te verwerpen of goed te keuren.
-
-Bedankt,
-Het {{SITENAME}}-team',
 );
 
 /** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
@@ -10548,7 +10358,10 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-special-filter-needsoversight' => 'Supervisão solicitada ($1)',
 	'articlefeedbackv5-special-filter-visible' => 'Todos visíveis ($1)',
 	'articlefeedbackv5-special-filter-invisible' => 'Oculto ($1)',
-	'articlefeedbackv5-special-filter-deleted' => 'Eliminado ($1)',
+	'articlefeedbackv5-special-filter-deleted' => 'Supervisado ($1)',
+	'articlefeedbackv5-special-filter-undeleted' => 'Não supervisado ($1)',
+	'articlefeedbackv5-special-filter-declined' => 'Supervisão rejeitada ($1)',
+	'articlefeedbackv5-special-filter-unhidden' => 'Não ocultado ($1)',
 	'articlefeedbackv5-special-sort-age' => 'Data',
 	'articlefeedbackv5-special-sort-helpful' => 'Útil',
 	'articlefeedbackv5-special-sort-rating' => 'Classificação',
@@ -10557,7 +10370,7 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|1 comentário publicado|$1 comentários publicados}} neste artigo',
 	'articleFeedbackv5-comment-ago' => '$1 atrás',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edição| $1 edições}} desde a publicação',
-	'articlefeedbackv5-revision-link' => 'Ver versão original',
+	'articlefeedbackv5-revision-link' => 'Ver revisão do artigo',
 	'articlefeedbackv5-special-more' => 'Mostrar mais comentários',
 	'articlefeedbackv5-special-pagetitle' => 'Comentários: $1',
 	'articlefeedbackv5-form-optionid' => 'Opção $1',
@@ -10568,10 +10381,11 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-form-helpful' => 'Marcar como útil ($1)',
 	'articlefeedbackv5-form-abuse' => 'Marcar como inadequado ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'Marcar como abusivo',
-	'articlefeedbackv5-form-delete' => 'Eliminar (supervisão)',
+	'articlefeedbackv5-form-delete' => 'Supervisar',
 	'articlefeedbackv5-form-oversight' => 'Solicitar supervisão',
-	'articlefeedbackv5-form-unoversight' => 'Desmarcar supervisão',
-	'articlefeedbackv5-form-undelete' => 'Restaurar (supervisão)',
+	'articlefeedbackv5-form-unoversight' => 'Supervisão não solicitada',
+	'articlefeedbackv5-form-undelete' => 'Anular supervisão',
+	'articlefeedbackv5-form-decline' => 'Rejeitar supervisão',
 	'articlefeedbackv5-form-header' => 'Comentário nº $1 realizado em $2',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 encontraram o que eles estavam procurando}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 não encontraram o que estavam procurando}}',
@@ -10615,6 +10429,14 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-comment-more' => 'Mais',
 	'articlefeedbackv5-comment-less' => 'Menos',
 	'articlefeedbackv5-beta-notice' => 'Beta',
+	'articlefeedbackv5-viewactivity' => 'Exibir atividade',
+	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 ano|$1 anos}}',
+	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 mês|$1 meses}}',
+	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 semana|$1 semanas}}',
+	'articlefeedbackv5-timestamp-seconds' => 'menos de 1 minuto',
+	'articlefeedbackv5-mask-text' => 'Comentário ocultado por ação administrativa. Clique para exibir o conteúdo.',
+	'articlefeedbackv5-mask-postnumber' => 'Mensagem #$1',
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Ocultar esta mensagem',
 	'articlefeedbackv5-bucket1-title' => 'Ajude a melhorar esta página',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Você encontrou o que procurava?',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Sim',
@@ -11139,6 +10961,7 @@ Statte bbuène e grazie,
  * @author AlexSm
  * @author Assele
  * @author Catrope
+ * @author DR
  * @author Dim Grits
  * @author Eleferen
  * @author EugeneZelenko
@@ -11458,28 +11281,7 @@ $3
 
 С наилучшими пожеланиями и благодарностью
 Команда проекта {{SITENAME}}',
-	'articlefeedbackv5-emailcapture-request-oversight' => 'Добрый день!
-
-Участник
-
-$1 : $2
-
-запросил надзор на отзыв
-
-$3 : $4,
-
-сделанный на странице
-
-$5 : $6
-
-Пожалуйста, посетите
-
-$7
-
-чтобы подтвердить или отклонить этот запрос.
-
-Спасибо,
-Команда {{SITENAME}}',
+	'articlefeedbackv5-email-request-oversight-subject' => '$1 запросил скрытие $2',
 );
 
 /** Rusyn (Русиньскый)
