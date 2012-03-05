@@ -20,7 +20,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 * Constructor
 	 */
 	public function __construct( $query, $moduleName ) {
-		parent::__construct( $query, $moduleName, 'af' );
+		parent::__construct( $query, $moduleName, 'aa' );
 	}
 
 	/**
@@ -33,7 +33,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		// If we can't hide, we can't see activity, return an empty string
 		// front-end should never let you get here, but just in case
 		if( !$wgUser->isAllowed( 'aftv5-hide-feedback' )) {
-			return;
+			$this->dieUsage( "You don't have permission to hide feedback", 'permissiondenied' );
 		}
 
 		// These are our valid activity log actions
@@ -49,13 +49,16 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		// fetch our activity database information
 		$feedback    = $this->fetchFeedback( $feedbackId );
 		// if this is false, this is bad feedback - move along
-		if( !$feedback) {
-			return;
+		if( !$feedback ) {
+			$this->dieUsage( "Feedback does not exist", 'invalidfeedbackid' );
 		}
 
 		// get the string title for the page
 		$page = Title::newFromID( $feedback->af_page_id );
-		$title = $page->getPartialURL();
+		if( !$page ) {
+			$this->dieUsage( "Page for feedback does not exist", 'invalidfeedbackid' );
+		}
+		$title = $page->getDBKey();
 
 		// get our activities
 		$activities = $this->fetchActivity( $title, $feedbackId, $limit, $continue);

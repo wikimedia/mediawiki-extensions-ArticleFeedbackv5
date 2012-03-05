@@ -648,10 +648,10 @@
 			'action':			'query',
 			'list':				'articlefeedbackv5-view-activity',
 			'format':			'json',
-			'affeedbackid':		id,
+			'aafeedbackid':		id,
 		};
 		if( continueId > 0 ) {
-			data['afcontinue'] = continueId;	
+			data['aacontinue'] = continueId;	
 		}
 		$.ajax( {
 			'url': 		$.articleFeedbackv5special.apiUrl,
