@@ -237,7 +237,7 @@ class ApiArticleFeedbackv5Utils {
 		// Make sure our notes are not too long - we won't error, just hard substr it
 		global $wgArticleFeedbackv5MaxActivityNoteLength, $wgLang;
 
-		$notes = $wgLang->truncate( $note, $wgArticleFeedbackv5MaxActivityNoteLength );
+		$notes = $wgLang->truncate( $notes, $wgArticleFeedbackv5MaxActivityNoteLength );
 
 		// if this is an automatic action, we create our special extension doer and send
 		if ($auto) {

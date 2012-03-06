@@ -360,6 +360,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-activity-unoversight' => 'removed oversight on this post on',
 	'articlefeedbackv5-activity-count' => '$1 actions on this post',
 	'articlefeedbackv5-activity-more' => 'Show more Activity',
+	'articlefeedbackv5-activity-item-comment' => '$1 $2 $3 : $4',
+	'articlefeedbackv5-activity-item' => '$1 $2 $3',
 
 	/* EmailCapture */
 	'articlefeedbackv5-emailcapture-response-body' => 'Hello!
@@ -659,6 +661,8 @@ This URL can be changed to point to a translated version of the page if it exist
 	'articlefeedbackv5-activity-unoversight' => 'Un-oversight display template',
 	'articlefeedbackv5-activity-count' => 'Template for activity items count',
 	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
+	'articlefeedbackv5-activity-item-comment' => 'Text for the activity panel - user name link, activity action, date and comment',
+	'articlefeedbackv5-activity-item' => 'Text for the activity panel - user name link, activity action, date',
 	'articlefeedbackv5-emailcapture-response-body' => 'Body of an e-mail sent to a user wishing to participate in [[mw:Extension:ArticleFeedback|article feedback]] (see the extension documentation).
 * <code>$1</code> – URL of the confirmation link
 * <code>$2</code> – URL to type in the confirmation code manually.

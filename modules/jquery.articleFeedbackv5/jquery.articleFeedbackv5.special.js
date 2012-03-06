@@ -665,7 +665,7 @@
 					$( '#articlefeedbackv5-activity-log' )
 						.find( '.articleFeedbackv5-activity-more' ).replaceWith( data['articlefeedbackv5-view-activity'].activity );
 				}
-				if( data['query-continue']['articlefeedbackv5-view-activity'] ) {
+				if( data['query-continue'] && data['query-continue']['articlefeedbackv5-view-activity'] ) {
 					$( '#articlefeedbackv5-activity-log' ).find( '.articleFeedbackv5-activity-more' )
 						.attr( 'rel', data['query-continue']['articlefeedbackv5-view-activity'].aacontinue )
 						.click( function( e ) {

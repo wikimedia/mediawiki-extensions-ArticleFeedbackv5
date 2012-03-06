@@ -145,20 +145,36 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 				'class' => 'articleFeedbackv5-activity-item'
 			) );
 
-			// $user $did_something_on $date
-			$html .= $this->getUserLink($item->log_user, $item->log_user_text)
-				. Html::element( 'span', array(
-						'class' => 'articleFeedbackv5-activity-item-action'
-					),
-					wfMessage( 'articlefeedbackv5-activity-' . $item->log_action,
-						array())->text() )
-				. $wgLang->timeanddate( $item->log_timestamp );
+			// so because concatenation is evil, I have to figure out which format to use
+			// either the $user $did_something_on $date
+			// or the $user $did_something_on $date : $comment
+			// because the colon hanging around would look utterly stupid
 
-			// optional: <div class="articleFeedbackv5-activity-notes">$notes</div>
-			if (!empty($item->log_comment)) {
-				$html .= Html::element( 'span',
+			if ($item->log_comment == '') {
+				$html .= wfMessage( 'articlefeedbackv5-activity-item' )
+					->rawParams(
+						$this->getUserLink($item->log_user, $item->log_user_text),
+						Html::element( 'span', array(
+							'class' => 'articleFeedbackv5-activity-item-action'
+							),
+							wfMessage( 'articlefeedbackv5-activity-' . $item->log_action,
+								array())->text()),
+						$wgLang->timeanddate( $item->log_timestamp ))
+					->text();
+			} else {
+				$html .= wfMessage( 'articlefeedbackv5-activity-item-comment' )
+					->rawParams(
+						$this->getUserLink($item->log_user, $item->log_user_text),
+						Html::element( 'span', array(
+						'class' => 'articleFeedbackv5-activity-item-action'
+							),
+							wfMessage( 'articlefeedbackv5-activity-' . $item->log_action,
+								array())->text()),
+						$wgLang->timeanddate( $item->log_timestamp ),
+						Html::element( 'span',
 							array('class' => 'articlefeedbackv5-activity-notes'),
-							': ' . $item->log_comment);
+							$item->log_comment))
+					->text();
 			}
 
 			// </div> for class="articleFeedbackv5-activity-item"

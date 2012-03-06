@@ -380,8 +380,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 			// handle implicit hide/show logging
 			if ( isset( $implicit_hide )) {
-				$activity = 'hidden';
-				ApiArticleFeedbackv5Utils::logActivity( $activity , $pageId, $feedbackId, '', true);
+				ApiArticleFeedbackv5Utils::logActivity( 'hidden' , $pageId, $feedbackId, '', true);
 			}
 
 			// Update helpful/unhelpful display count after submission.
