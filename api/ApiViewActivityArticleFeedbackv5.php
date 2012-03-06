@@ -265,7 +265,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			__METHOD__,
 			array(
 				'LIMIT'    => $limit + 1,
-				'ORDER BY' => 'log_timestamp DESC, log_id ASC'
+				'ORDER BY' => 'log_timestamp DESC'
 			)
 		);
 
@@ -384,7 +384,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		$db = $this->getDB();
 		$ts = $db->addQuotes( $db->timestamp( $vals[0] ) );
 		$id = intval( $vals[1] );
-		$where[] = '(log_id = ' . $id . ' AND log_timestamp = ' . $ts . ') OR log_timestamp < ' . $ts;
+		$where[] = '(log_id = ' . $id . ' AND log_timestamp <= ' . $ts . ') OR log_timestamp < ' . $ts;
 
 		return $where;
 	}
