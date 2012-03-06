@@ -15,11 +15,15 @@
 // Email address to send oversight request emails to, if set to null no emails are sent
 $wgArticleFeedbackv5OversightEmails = null;
 
-// Should eventually be this, let's NOT flood that list with bogus emails
-// $wgArticleFeedbackv5OversightEmails = 'stewards@wikimedia.org';
-
 // Name to send oversight request emails to
 $wgArticleFeedbackv5OversightEmailName = 'Oversighters';
+
+// Help link for oversight email
+$wgArticleFeedbackv5OversightEmailHelp = 'http://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help/Feedback_page_Oversighters';
+
+// admin User page for oversight email
+$wgArticleFeedbackv5OversightEmailAdminUser = 'http://en.wikipedia.org/wiki/User:Okeyes_(WMF)';
+
 
 // How long text-based feedback is allowed to be before returning an error.
 // Set to 0 to disable length checking entirely.

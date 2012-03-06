@@ -387,25 +387,28 @@ If you did not initiate this request, please ignore this e-mail and we will not 
 Best wishes, and thank you,
 The {{SITENAME}} team',
 
-	'articlefeedbackv5-email-request-oversight-subject' => '$1 has requested oversight on $2',
-	'articlefeedbackv5-email-request-oversight-body' => 'Hello!
+	'articlefeedbackv5-email-request-oversight-subject' => 'Oversight requested for article feedback page',
 
-A request for oversight has been made by
+	'articlefeedbackv5-email-request-oversight-body' => 'Hello, oversighters!
 
-$4 : $1
+Oversight was requested by <user name - $4 : $1> for feedback posted on this article:
 
-for page
+<Article title - $5 : $2>
 
-$5 : $2
+Please review this feedback post, then approve or decline this oversight request:
 
-Please visit feedback item
+<permalink of feedback post for which oversight was requested - $3>
 
-$3
-
-to decline or approve this oversight request.
+If you have any questions about using the oversight features of the feedback page, please check this <oversighter feedback FAQ - $6> or contact community liaison <Oliver Keyes $7>. 
 
 Thank you,
-The {{SITENAME}} team',
+
+
+The {{SITENAME}} Team
+
+
+P.S.: Please note that the article feedback feature v5 is still in early stages of testing on the English Encyclopedia (0.6%, or 22k articles) and that the feedback page has not been publicized to the community during this testing period.
+',
 
 );
 
@@ -667,15 +670,15 @@ This URL can be changed to point to a translated version of the page if it exist
 * <code>$1</code> – URL of the confirmation link
 * <code>$2</code> – URL to type in the confirmation code manually.
 * <code>$3</code> – Confirmation code for the user to type in',
-	'articlefeedbackv5-email-request-oversight-subject' => 'Subject line for email sent to oversight mailing list when an oversight request has been made.
-* <code>$1</code> – User name of requestor
-* <code>$2</code> – Page name of item with feedback requiring oversight.',
+	'articlefeedbackv5-email-request-oversight-subject' => 'Subject line for email sent to oversight mailing list when an oversight request has been made.',
 	'articlefeedbackv5-email-request-oversight-body' => 'Body of an email sent to the oversight mailing list when an oversight request has been made.
 * <code>$1</code> – URL of user who requested oversight
 * <code>$2</code> – URL of page with feedback requiring oversight
 * <code>$3</code> – URL directly to feedback location
 * <code>$4</code> – User name of requestor
-* <code>$5</code> – Page name of item with feedback requiring oversight.',
+* <code>$5</code> – Page name of item with feedback requiring oversight.
+* <code>$6</code> – the help link.
+* <code>$7</code> – Oliver Keyes user page link.',
 );
 
 /** Afrikaans (Afrikaans)

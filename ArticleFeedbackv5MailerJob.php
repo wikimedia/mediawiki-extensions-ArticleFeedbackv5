@@ -80,11 +80,10 @@ class ArticleFeedbackv5MailerJob extends Job {
 	 */
 	protected function composeMail( $requestor_name, $requestor_url, $page_name, $page_url, $feedback_permalink ) {
 		global $wgPasswordSender, $wgPasswordSenderName, $wgNoReplyAddress, $wgRequest;
+		global $wgArticleFeedbackv5OversightEmailHelp, $wgArticleFeedbackv5OversightEmailAdminUser;
 
 		// build the subject
-		$subject = wfMessage( 'articlefeedbackv5-email-request-oversight-subject' )->params(
-				$requestor_name,
-				$page_name )->escaped();
+		$subject = wfMessage( 'articlefeedbackv5-email-request-oversight-subject' )->escaped();
 
 		//text version, no need to escape since client will interpret it as plain text
 		$body = wfMessage( 'articlefeedbackv5-email-request-oversight-body' )
@@ -94,7 +93,9 @@ class ArticleFeedbackv5MailerJob extends Job {
 					$feedback_permalink)
 				->params(
 					$requestor_name,
-					$page_name)
+					$page_name,
+					$wgArticleFeedbackv5OversightEmailHelp,
+					$wgArticleFeedbackv5OversightEmailAdminUser)
 				->text();
 
 		return array($subject, $body);
