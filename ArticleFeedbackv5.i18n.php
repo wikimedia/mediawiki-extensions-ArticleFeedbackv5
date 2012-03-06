@@ -346,7 +346,7 @@ $messages['en'] = array(
 
 	/* Activity Pane phrases */
 	'articlefeedbackv5-activity-pane-header' => 'Activity Log',
-	'articlefeedbackv5-activity-feedback-info' => 'Feedback Post #$1 by',
+	'articlefeedbackv5-activity-feedback-info' => 'Feedback Post #$1 by $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Posted on $1',
 	'articlefeedbackv5-activity-permalink' => 'permalink',
 	'articlefeedbackv5-activity-request' => 'requested oversight on',

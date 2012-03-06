@@ -84,8 +84,9 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			// <div>Feedback Post #{$feedbackid} by {$user_link}</div>
 			$html .= Html::openElement( 'div', array() );
 			$html .= wfMessage( 'articlefeedbackv5-activity-feedback-info',
-						array($feedback->af_id))->text()
-				. $this->getUserLink($feedback->af_user_id, $feedback->af_user_ip);
+						array($feedback->af_id))
+					->rawParams($this->getUserLink($feedback->af_user_id, $feedback->af_user_ip))
+					->text();
 			$html .= Html::closeElement( 'div' );
 	
 			//<div>Posted on {$date} (UTC)</div>
