@@ -112,7 +112,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			//<div class="articleFeedbackv5-activity-count">$n actions on this post</div>
 			$html .= Html::element( 'div', array('class' => 'articleFeedbackv5-activity-count'),
 				wfMessage( 'articlefeedbackv5-activity-count',
-						array( $feedback->af_activity_count ))->text() );
+						array( $wgLang->formatNum( $feedback->af_activity_count ) ))->text() );
 			
 			// </div> for class="articleFeedbackv5-activity-pane"
 			$html .= Html::closeElement( 'div' );
