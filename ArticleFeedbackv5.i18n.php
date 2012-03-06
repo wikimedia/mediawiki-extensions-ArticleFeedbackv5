@@ -650,7 +650,9 @@ This URL can be changed to point to a translated version of the page if it exist
 	'articlefeedbackv5-log-flag' => 'Flag post as abuse action log string',
 	'articlefeedbackv5-log-unflag' => 'Unflag post as abuse action log string',
 	'articlefeedbackv5-activity-pane-header' => 'Flyover panel caption',
-	'articlefeedbackv5-activity-feedback-info' => 'Post information template (id, user)',
+	'articlefeedbackv5-activity-feedback-info' => 'Post information template. Parameters:
+* $1 is the feedback post ID,
+* $2 is a username',
 	'articlefeedbackv5-activity-feedback-date' => 'Post information timestamp template',
 	'articlefeedbackv5-activity-permalink' => '[Permalink] link text',
 	'articlefeedbackv5-activity-request' => 'Request oversight display template',
@@ -665,7 +667,6 @@ This URL can be changed to point to a translated version of the page if it exist
 	'articlefeedbackv5-activity-count' => 'Template for activity items count',
 	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
 	'articlefeedbackv5-activity-item-comment' => 'Text for the activity panel - user name link, activity action, date and comment',
-	'articlefeedbackv5-activity-item' => 'Text for the activity panel - user name link, activity action, date',
 	'articlefeedbackv5-emailcapture-response-body' => 'Body of an e-mail sent to a user wishing to participate in [[mw:Extension:ArticleFeedback|article feedback]] (see the extension documentation).
 * <code>$1</code> – URL of the confirmation link
 * <code>$2</code> – URL to type in the confirmation code manually.
@@ -2197,7 +2198,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-hidden' => 'Dieser Beitrag wurde von einem dazu berechtigten Benutzer ausgeblendet',
 	'articlefeedbackv5-deleted' => 'Dieser Beitrag wurde gelöscht',
 	'articlefeedbackv5-form-hide' => 'Diese Rückmeldung ausblenden',
-	'articlefeedbackv5-form-unhide' => 'Diese Rückmeldung einblenden',
+	'articlefeedbackv5-form-unhide' => 'Diesen Beitrag einblenden',
 	'articlefeedbackv5-form-helpful' => 'Als hilfreich markieren ($1)',
 	'articlefeedbackv5-form-abuse' => 'Als missbräuchliche Nutzung kennzeichnen ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'Als missbräuchliche Nutzung kennzeichnen',
@@ -2261,10 +2262,10 @@ $messages['de'] = array(
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Warum blendest du diese Rückmeldung aus?',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Diese Rückmeldung ausblenden',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Weitere Informationen',
-	'articlefeedbackv5-noteflyover-show-caption' => 'Diese Rückmeldung einblenden',
+	'articlefeedbackv5-noteflyover-show-caption' => 'Diesen Beitrag einblenden',
 	'articlefeedbackv5-noteflyover-show-label' => 'Eine Anmerkung hinzufügen',
 	'articlefeedbackv5-noteflyover-show-placeholder' => 'Warum blendest du diese Rückmeldung ein?',
-	'articlefeedbackv5-noteflyover-show-submit' => 'Diese Rückmeldung einblenden',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Diesen Beitrag einblenden',
 	'articlefeedbackv5-noteflyover-show-help' => 'Weitere Informationen',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Löschung beantragen',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Eine Anmerkung hinzufügen',
@@ -3247,7 +3248,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-hidden' => 'Esta entrada (post) fue ocultada por un editor autorizado',
 	'articlefeedbackv5-deleted' => 'Esta entrada (post) fue eliminada por los controladores',
 	'articlefeedbackv5-form-hide' => 'Ocultar esta entrada (post)',
-	'articlefeedbackv5-form-unhide' => 'Mostrar esta entrada (post)',
+	'articlefeedbackv5-form-unhide' => 'Descubrir esta entrada (post)',
 	'articlefeedbackv5-form-helpful' => 'Marcar como útil ($1)',
 	'articlefeedbackv5-form-abuse' => 'Marcar como inadecuado ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'Marcar como abuso',
@@ -3311,10 +3312,10 @@ $messages['es'] = array(
 	'articlefeedbackv5-noteflyover-hide-placeholder' => '¿Por qué está ocultando esta entrada de blog (post)?',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Ocultar esta entrada (post)',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Aprenda más',
-	'articlefeedbackv5-noteflyover-show-caption' => 'Mostrar esta entrada (post)',
+	'articlefeedbackv5-noteflyover-show-caption' => 'Descubrir esta entrada (post)',
 	'articlefeedbackv5-noteflyover-show-label' => 'Agregar una nota',
-	'articlefeedbackv5-noteflyover-show-placeholder' => '¿Por qué muestra esta entrada de blog (post)?',
-	'articlefeedbackv5-noteflyover-show-submit' => 'Mostrar esta entrada (post)',
+	'articlefeedbackv5-noteflyover-show-placeholder' => '¿Por qué descubre esta entrada de blog (post)?',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Descubrir esta entrada (post)',
 	'articlefeedbackv5-noteflyover-show-help' => 'Aprenda más',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Solicitar supervisión',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Agregar una nota',
@@ -3472,7 +3473,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-activity-unflag' => 'desmarcada esta entrada de blog (post) en',
 	'articlefeedbackv5-activity-oversight' => 'supervisada esta entrada de blog (post) en',
 	'articlefeedbackv5-activity-unoversight' => 'eliminar la supervisión de esta entrada de blog (post) en',
-	'articlefeedbackv5-activity-count' => '$1 acciones en esta entrada de blog (post)',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 acción|$1 acciones}} en esta entrada (post)',
 	'articlefeedbackv5-activity-more' => 'Mostrar más actividad',
 	'articlefeedbackv5-emailcapture-response-body' => '¡Hola!
 
@@ -3496,6 +3497,29 @@ Si tú no realizaste esta solicitud, por favor ignora este correo y no te enviar
 
 Agradecidos y con los mejores deseos,
 El equipo de {{SITENAME}}.',
+	'articlefeedbackv5-email-request-oversight-subject' => '$1 ha solicitado supervisión en $2',
+	'articlefeedbackv5-email-request-oversight-body' => '¡Hola!
+
+Una solicitud para supervisión ha sido presentada por
+
+$1 : $2
+
+sobre el elemento de comentarios
+
+$4 : $1
+
+para la página
+
+$5 : $2
+
+Visite el elemento de comentario
+
+$3
+
+para rechazar o aprobar esta solicitud de supervisión.
+
+Gracias
+El equipo de {{SITENAME}}',
 );
 
 /** Estonian (Eesti)
@@ -3680,36 +3704,47 @@ $messages['fa'] = array(
 	'articlefeedbackv5-form-tools-label' => 'ابزارها',
 	'articlefeedbackv5-form-helpful-yes-label' => 'بله',
 	'articlefeedbackv5-form-helpful-no-label' => 'خیر',
+	'articlefeedbackv5-special-add-feedback' => 'بازخورد دهید',
 	'articlefeedbackv5-special-filter-all' => 'همه (نظارت) ($1)',
-	'articlefeedbackv5-special-filter-visible' => 'قابل دیدن',
-	'articlefeedbackv5-special-filter-invisible' => 'غیر قابل دیدن',
+	'articlefeedbackv5-special-filter-notdeleted' => 'همه ($1)',
+	'articlefeedbackv5-special-filter-comment' => 'فقط نظرات ($1)',
+	'articlefeedbackv5-special-filter-visible' => 'همگی قابل دیدن ($1)',
+	'articlefeedbackv5-special-filter-invisible' => 'پنهان ($1)',
 	'articlefeedbackv5-special-sort-age' => 'تاریخ',
+	'articlefeedbackv5-special-sort-helpful' => 'سودمند',
+	'articlefeedbackv5-special-sort-rating' => 'ارزش‌دهی',
 	'articlefeedbackv5-special-sort-label-before' => 'ترتیب بر پایۀ:',
-	'articlefeedbackv5-special-filter-label-before' => 'نمایش تنها برای:',
-	'articlefeedbackv5-special-showing' => 'نمایش $1 نگارش (از $2 مورد)',
-	'articlefeedbackv5-special-more' => 'بیشتر',
+	'articlefeedbackv5-special-filter-label-before' => 'نمایش:',
+	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|1 بازخورد|$1 بازخورد}} برای این مقاله',
+	'articleFeedbackv5-comment-ago' => '$1 پیش',
+	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 ویرایش|$1 ویرایش}} از زمان ارسال',
+	'articlefeedbackv5-revision-link' => 'klhda ksoiN lrhgi',
+	'articlefeedbackv5-special-more' => 'نمایش پست‌های بیشتر',
+	'articlefeedbackv5-special-pagetitle' => 'بازخورد: $1',
 	'articlefeedbackv5-form-optionid' => 'گزینهٔ $1',
-	'articlefeedbackv5-form-hide' => ' را پنهان کن',
+	'articlefeedbackv5-form-hide' => 'پنهان‌کردن این پست',
 	'articlefeedbackv5-form-abuse' => 'پرچم استفادهٔ نادرست ($1)',
 	'articlefeedbackv5-form-header' => 'بازخورد #$1 در $2',
-	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$1}} آنچه جستجو می‌کرد را پیدا کرد',
-	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$1}} آنچه جستجو می‌کرد را پیدا نکرد.',
+	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 آنچه را که دنبالش بودند یافتند}}',
+	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 آنچه را که دنبالش بود نیافت}}',
+	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 این نظر را فرستاد}}',
 	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}} یک نظر دارد:',
+	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} مشکلی داشت:',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} یک سوال دارد:',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} یک پیشنهاد دارد:',
-	'articlefeedbackv5-form3-header' => '$1 این صفحه را $2/۵ امتیاز داده‌است.',
-	'articlefeedbackv5-form5-header' => '$1 به این صفحه امتیاز داده است:',
+	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} به این صفحه امتیاز $2/۵ داد',
+	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} به این صفحه امتیاز داد:',
 	'articlefeedbackv5-form-not-shown' => 'فرم بازخورد برای کاربر نمایش داده نشد.',
 	'articlefeedbackv5-form-invalid' => 'شناسهٔ فرم بازخورد نامعتبر است.',
 	'articlefeedbackv5-abuse-saved' => 'پرچم استفادهٔ نادرست ذخیره شد',
 	'articlefeedbackv5-error-loading-feedback' => 'خطا در بارگذاری بازخورد',
 	'articlefeedbackv5-invalid-feedback-id' => 'شناسهٔ بازخورد نامعتبر است',
 	'articlefeedbackv5-invalid-feedback-flag' => 'پرچم بازخورد نامعتبر',
-	'articlefeedbackv5-go-to-article' => 'برو به صفحهٔ',
-	'articlefeedbackv5-discussion-page' => 'صفحهٔ گفتگو',
-	'articlefeedbackv5-whats-this' => 'این چیست؟',
+	'articlefeedbackv5-go-to-article' => 'نمایش مقاله',
+	'articlefeedbackv5-discussion-page' => 'بحث',
+	'articlefeedbackv5-whats-this' => 'راهنما',
 	'articlefeedbackv5-invalid-page-id' => 'شناسهٔ صفحه نامعتبر است.',
-	'articlefeedbackv5-percent-found' => '$1 کاربر آنچه جستجو می‌کرد را پیدا کرد.',
+	'articlefeedbackv5-percent-found' => '$1 آنچه دنبالش بودند یافتند',
 	'articlefeedbackv5-overall-rating' => 'امتیاز: $1/5',
 	'articlefeedbackv5-special-title' => '==بازخورد==',
 	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'بالاترین‌ها و پایین‌ترین‌های امروز',
@@ -3725,6 +3760,26 @@ $messages['fa'] = array(
 	'articlefeedbackv5-comment-more' => 'بیشتر',
 	'articlefeedbackv5-comment-less' => 'کمتر',
 	'articlefeedbackv5-beta-notice' => 'بتا',
+	'articlefeedbackv5-viewactivity' => 'نمایش فعالیت',
+	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 سال|$1 سال}}',
+	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 ماه|$1 ماه}}',
+	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 هفته|$1 هفته}}',
+	'articlefeedbackv5-timestamp-seconds' => 'کمتر از ۱ دقیقه',
+	'articlefeedbackv5-noteflyover-hide-caption' => 'پنهان کردن این پست',
+	'articlefeedbackv5-noteflyover-hide-label' => 'افزودن یادداشت',
+	'articlefeedbackv5-noteflyover-hide-help' => 'اطلاعات بیشتر',
+	'articlefeedbackv5-noteflyover-show-help' => 'اطلاعات بیشتر',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'افزودن یادداشت',
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'اطلاعات بیشتر',
+	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'افزودن یادداشت',
+	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'درخواست لغو',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'اطلاعات بیشتر',
+	'articlefeedbackv5-noteflyover-oversight-label' => 'افزودن یادداشت',
+	'articlefeedbackv5-noteflyover-oversight-help' => 'اطلاعات بیشتر',
+	'articlefeedbackv5-noteflyover-unoversight-label' => 'افزودن یادداشت',
+	'articlefeedbackv5-noteflyover-unoversight-help' => 'اطلاعات بیشتر',
+	'articlefeedbackv5-noteflyover-declineoversight-label' => 'افزودن یادداشت',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'اطلاعات بیشتر',
 	'articlefeedbackv5-bucket1-title' => 'به بهبود این صفحه کمک کنید',
 	'articlefeedbackv5-bucket1-question-toggle' => 'آنچه را جستجو می‌کردید، یافتید؟',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'بله',
@@ -3817,11 +3872,15 @@ $messages['fa'] = array(
 	'articlefeedbackv5-help-tooltip-info' => 'ویکی‌پدیا مایل است بداند نظر شما دربارهٔ این صفحه چیست. بازخورد خود را با ویرایشگران در میان بگذارید -- و به بهبود این صفحه کمک کنید.',
 	'articlefeedbackv5-help-tooltip-linktext' => 'اطلاعات بیشتر',
 	'articlefeedbackv5-transparency-terms-linktext' => 'شرایط',
+	'articlefeedbackv5-sitesub-linktext' => 'بهبود این صفحه',
 	'articlefeedbackv5-titlebar-linktext' => 'کمک به بهبود این صفحه >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'بهبود این صفحه',
+	'articlefeedbackv5-bottomrighttab-linktext' => 'بهبود این صفحه',
 	'articlefeedbackv5-section-linktext' => 'بازخورد',
 	'articlefeedbackv5-toolbox-linktext' => 'بهبود این صفحه',
 	'articlefeedbackv5-disable-preference' => 'ابزار بازخورد مقاله را در صفحه‌ها نشان نده',
+	'right-aftv5-hide-feedback' => 'پنهان‌کردن بازخورد',
+	'articlefeedbackv5-activity-pane-header' => 'سیاههٔ فعالیت',
 	'articlefeedbackv5-emailcapture-response-body' => 'سلام!
 
 از شما برای ابراز علاقه در بهبود {{SITENAME}} تشکر می‌کنم.
@@ -4123,7 +4182,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-hidden' => 'Cette note a été masquée par un éditeur agréé',
 	'articlefeedbackv5-deleted' => 'Cette note a été supprimée par les suveillants',
 	'articlefeedbackv5-form-hide' => 'Masquer cette publication',
-	'articlefeedbackv5-form-unhide' => 'Afficher ce mot',
+	'articlefeedbackv5-form-unhide' => 'Ne plus cacher ce mot',
 	'articlefeedbackv5-form-helpful' => 'Marquer comme utile ($1)',
 	'articlefeedbackv5-form-abuse' => 'Marquer comme abusif ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'Marquer comme abus',
@@ -4187,10 +4246,10 @@ $messages['fr'] = array(
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Pourquoi cachez-vous cette note?',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Cacher cette note',
 	'articlefeedbackv5-noteflyover-hide-help' => 'En savoir plus',
-	'articlefeedbackv5-noteflyover-show-caption' => 'Afficher cette note',
+	'articlefeedbackv5-noteflyover-show-caption' => 'Ne plus cacher cette note',
 	'articlefeedbackv5-noteflyover-show-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-show-placeholder' => 'Pourquoi affichez-vous cette note?',
-	'articlefeedbackv5-noteflyover-show-submit' => 'Afficher cette note',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'Pourquoi ne cachez-vous plus cette note?',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Ne plus cacher cette note',
 	'articlefeedbackv5-noteflyover-show-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Demander une surveillance',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Ajouter une note',
@@ -4372,6 +4431,25 @@ Si vous n'avez pas initié cette demande, veuillez ignorer ce courriel et nous n
 Meilleurs vœux, et merci,
 
 L’équipe de {{SITENAME}}",
+	'articlefeedbackv5-email-request-oversight-subject' => '$1a demandé une surveillance de $2',
+	'articlefeedbackv5-email-request-oversight-body' => "Bonjour!
+
+Une demande de surveillance a été faite par
+
+$4 : $1
+
+pour la page
+
+$5 : $2
+
+Veuillez regarder l'élément de commentaire
+
+$3
+
+pour refuser ou accepter cette demande de surveillance.
+
+Merci,
+L'équipe de {{SITENAME}}",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -4628,7 +4706,7 @@ $messages['gl'] = array(
 	'articlefeedbackv5-hidden' => 'Un editor autorizado agochou esta mensaxe',
 	'articlefeedbackv5-deleted' => 'Os supervisores borraron esta mensaxe',
 	'articlefeedbackv5-form-hide' => 'Agochar esta mensaxe',
-	'articlefeedbackv5-form-unhide' => 'Mostrar esta mensaxe',
+	'articlefeedbackv5-form-unhide' => 'Descubrir esta mensaxe',
 	'articlefeedbackv5-form-helpful' => 'Marcar como útil ($1)',
 	'articlefeedbackv5-form-abuse' => 'Marcar como abusivo ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'Marcar como abusivo',
@@ -4692,10 +4770,10 @@ $messages['gl'] = array(
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Por que agocha esta mensaxe?',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Agochar esta mensaxe',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Máis información',
-	'articlefeedbackv5-noteflyover-show-caption' => 'Mostrar esta mensaxe',
+	'articlefeedbackv5-noteflyover-show-caption' => 'Descubrir esta mensaxe',
 	'articlefeedbackv5-noteflyover-show-label' => 'Engadir unha nota',
-	'articlefeedbackv5-noteflyover-show-placeholder' => 'Por que mostra esta mensaxe?',
-	'articlefeedbackv5-noteflyover-show-submit' => 'Mostrar esta mensaxe',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'Por que descubre esta mensaxe?',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Descubrir esta mensaxe',
 	'articlefeedbackv5-noteflyover-show-help' => 'Máis información',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Pedir a supervisión',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Engadir unha nota',
@@ -4878,6 +4956,25 @@ Se vostede non fixo esta petición, ignore esta mensaxe e non lle enviaremos má
 
 Os mellores desexos e grazas,
 O equipo de {{SITENAME}}',
+	'articlefeedbackv5-email-request-oversight-subject' => '$1 solicitou a supervisión de "$2"',
+	'articlefeedbackv5-email-request-oversight-body' => 'Ola!
+
+Fíxose unha petición de supervisión por parte de
+
+$4 : $1
+
+da páxina
+
+$5 : $2
+
+Visite
+
+$3
+
+para rexeitar ou aprobar esta solicitude de supervisión.
+
+Grazas,
+O equipo de {{SITENAME}}',
 );
 
 /** Swiss German (Alemannisch)
@@ -5014,7 +5111,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-form-helpful-no-label' => 'לא',
 	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|$1 כן}} / {{PLURAL:$2|$2 לא}}',
 	'articlefeedbackv5-special-add-feedback' => 'הוספת משוב',
-	'articlefeedbackv5-special-filter-all' => 'הכול (הסתרה) ($1)',
+	'articlefeedbackv5-special-filter-all' => 'הכול (כוללת רשומות עם בקשות ביקורת) ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'הכול ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'רק הערות ($1)',
 	'articlefeedbackv5-special-filter-abusive' => 'סומן כפוגעני ($1)',
@@ -5023,9 +5120,9 @@ $messages['he'] = array(
 	'articlefeedbackv5-special-filter-needsoversight' => 'נדרשת ביקורת ($1)',
 	'articlefeedbackv5-special-filter-visible' => 'הכול גלוי ($1)',
 	'articlefeedbackv5-special-filter-invisible' => 'מוסתר ($1)',
-	'articlefeedbackv5-special-filter-deleted' => 'הוסתר ($1)',
-	'articlefeedbackv5-special-filter-undeleted' => 'הוסתר ($1)',
-	'articlefeedbackv5-special-filter-declined' => 'בקשת הסתרה נדתחה ($1)',
+	'articlefeedbackv5-special-filter-deleted' => 'הוסתר לאחר ביקורת ($1)',
+	'articlefeedbackv5-special-filter-undeleted' => 'הסתרה לאחר ביקורת בוטלה ($1)',
+	'articlefeedbackv5-special-filter-declined' => 'בקשת ביקורת והסתרה נדתחה ($1)',
 	'articlefeedbackv5-special-filter-unhidden' => 'ההסתרה בוטלה ($1)',
 	'articlefeedbackv5-special-sort-age' => 'תאריך',
 	'articlefeedbackv5-special-sort-helpful' => 'מועיל',
@@ -5042,15 +5139,15 @@ $messages['he'] = array(
 	'articlefeedbackv5-hidden' => 'הרשומה הזאת הוסתרה על־ידי עורך מורשה',
 	'articlefeedbackv5-deleted' => 'הרשומה הזאת נמחקה על־ידי מסתירים',
 	'articlefeedbackv5-form-hide' => 'הסתרת הרשומה הזאת',
-	'articlefeedbackv5-form-unhide' => 'הצגת הודעה זו',
+	'articlefeedbackv5-form-unhide' => 'לבטל את הסתרת הרשומה הזאת',
 	'articlefeedbackv5-form-helpful' => 'סימון כיעילה ($1)',
 	'articlefeedbackv5-form-abuse' => 'לסמן כשימוש לרעה ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'סימון בתור שימוש לרעה',
-	'articlefeedbackv5-form-delete' => 'הסתרה',
+	'articlefeedbackv5-form-delete' => 'ביקורת',
 	'articlefeedbackv5-form-oversight' => 'בקשת ביקורת',
 	'articlefeedbackv5-form-unoversight' => 'ביטול בקשת הסתרה',
-	'articlefeedbackv5-form-undelete' => 'ביטול הסתרה',
-	'articlefeedbackv5-form-decline' => 'דחיית הסתרה',
+	'articlefeedbackv5-form-undelete' => 'ביטול הסתרה שנעשתה כתוצאה מביקורת',
+	'articlefeedbackv5-form-decline' => 'דחיית בקשה ביקורת והסתרה',
 	'articlefeedbackv5-form-header' => "משוב מס' $1ב־$2",
 	'articlefeedbackv5-form1-header-found' => '$2 {{GENDER:$1|מצא את מה שחיפש|מצאה את מה שחיפשה}}',
 	'articlefeedbackv5-form1-header-not-found' => '$2 לא {{GENDER:$1|מצא את מה שחיפש|מצאה את מה שחיפשה}}',
@@ -5106,12 +5203,12 @@ $messages['he'] = array(
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'למה ביקשת להסתיר את הרשומה הזאת?',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'הסתרת הרשומה הזאת',
 	'articlefeedbackv5-noteflyover-hide-help' => 'מידע נוסף',
-	'articlefeedbackv5-noteflyover-show-caption' => 'הצגת הרשומה הזאת',
+	'articlefeedbackv5-noteflyover-show-caption' => 'לבטל את הסתרת הרושמה הזאת',
 	'articlefeedbackv5-noteflyover-show-label' => 'הוספת הערה',
-	'articlefeedbackv5-noteflyover-show-placeholder' => 'למה ביקשת להציג את הרשומה הזאת?',
-	'articlefeedbackv5-noteflyover-show-submit' => 'הצגת הרשומה הזאת',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'למה ביקשת לבטל את הסתרת הרשומה הזאת?',
+	'articlefeedbackv5-noteflyover-show-submit' => 'ביטול התסרת הרשומה הזאת',
 	'articlefeedbackv5-noteflyover-show-help' => 'מידע נוסף',
-	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'בקשת הסתרה',
+	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'בקשת ביקורת',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'הוספת הערה',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'למה ביקשת הסתרה?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'בקשת הסתרה',
@@ -5290,6 +5387,25 @@ $3
 
 כל טוב, ותודה
 
+צוות {{SITENAME}}',
+	'articlefeedbackv5-email-request-oversight-subject' => '$1 ביקשת ביקורת על $2',
+	'articlefeedbackv5-email-request-oversight-body' => 'שלום!
+
+התקבלה בקשה מאת
+
+$4 : $1
+
+עבור הדף
+
+$5 $2
+
+נא לבקר בפריט המשוב
+
+$3
+
+כדי לדחות או לאשר את בקשת הביקורת הזאת.
+
+תודה,
 צוות {{SITENAME}}',
 );
 
@@ -5807,6 +5923,26 @@ Jeli njejsy tute naprašowanje pósłał, ignoruj prošu tutu e-mejl a njepósć
 
 Z najlěpšimi postrowami a wulki dźak,
 Team {{GRAMMAR:genitiw|{{SITENAME}}}}',
+	'articlefeedbackv5-email-request-oversight-subject' => '$1 je dohladowanje na $2 požadał',
+	'articlefeedbackv5-email-request-oversight-body' => 'Witaj!
+
+Dohladowanje je so požadało wot
+
+$4 : $1
+
+za stronu
+
+$5 : $2
+
+
+Prošu wopytaj komentar
+
+$3,
+
+zo by požadanje za dohladowanje wotpokazał abo schwalił.
+
+Wulki dźak,
+team {{SITENAME}}',
 );
 
 /** Hungarian (Magyar)
@@ -5867,7 +6003,7 @@ $messages['hu'] = array(
 	'articlefeedbackv5-form-optionid' => '$1 beállítás',
 	'articlefeedbackv5-hidden' => 'Ezt az üzenetet elrejtette egy erre feljogosított szerkesztő',
 	'articlefeedbackv5-form-hide' => 'Üzenet elrejtése',
-	'articlefeedbackv5-form-unhide' => 'Üzenet megjelenítése',
+	'articlefeedbackv5-form-unhide' => 'Ezen üzenet megjelenítése',
 	'articlefeedbackv5-form-helpful' => 'Megjelölés hasznosként ($1)',
 	'articlefeedbackv5-form-abuse' => 'Visszaélés bejelentése ($1)',
 	'articlefeedbackv5-form-delete' => 'Törlés',
@@ -6312,7 +6448,7 @@ $messages['ia'] = array(
 	'articlefeedbackv5-log-flag' => 'marcava le evalutation [[$1]] como abuso',
 	'articlefeedbackv5-log-unflag' => 'dismarcava le evalutation [[$1]] como abuso',
 	'articlefeedbackv5-activity-pane-header' => 'Registro de activitate',
-	'articlefeedbackv5-activity-feedback-info' => 'Commentario #$1 per',
+	'articlefeedbackv5-activity-feedback-info' => 'Commentario №$1 per $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Publicate le $1',
 	'articlefeedbackv5-activity-permalink' => 'permaligamine',
 	'articlefeedbackv5-activity-request' => 'requestava supervision de',
@@ -6324,7 +6460,7 @@ $messages['ia'] = array(
 	'articlefeedbackv5-activity-unflag' => 'dis-signalava iste message sur',
 	'articlefeedbackv5-activity-oversight' => 'supervisava iste message sur',
 	'articlefeedbackv5-activity-unoversight' => 'removeva le supervision de iste message sur',
-	'articlefeedbackv5-activity-count' => '$1 actiones concernente iste message',
+	'articlefeedbackv5-activity-count' => '$1 {{PLURAL:$1|action|actiones}} sur iste message',
 	'articlefeedbackv5-activity-more' => 'Monstrar plus activitate',
 	'articlefeedbackv5-emailcapture-response-body' => 'Salute!
 
@@ -6348,6 +6484,26 @@ Si tu non ha initiate iste requesta, per favor ignora iste e-mail e nos non te i
 
 Optime salutes, e multe gratias,
 Le equipa de {{SITENAME}}',
+	'articlefeedbackv5-email-request-oversight-subject' => 'Requesta de supervision pro un pagina de evalutation de articulo',
+	'articlefeedbackv5-email-request-oversight-body' => 'Salute, supervisores!
+
+Le usator <user name - $4 : $1> ha requestate supervision pro le commentario lassate sur iste articulo:
+
+<Article title - $5 : $2>
+
+Per favor revide iste message de evalutation, postea approba o declina iste requesta de supervision:
+
+<permalink of feedback post for which oversight was requested - $3>
+
+Si tu ha questiones sur le uso del functionalitate de supervision del pagina de evalutation, per favor lege isto <oversighter feedback FAQ - $6> o contacta le representante del communitate <Oliver Keyes $7>. 
+
+Gratias,
+
+
+Le equipa de {{SITENAME}}
+
+
+P.S.: Per favor nota que le version 5 del functionalitate de evalutation es ancora in le prime stadios de test in le encyclopedia anglophone (0.6% o 22000 articulos) e que le pagina de evalutation non ha essite promovite pro le communitate durante iste periodo de test.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -6980,9 +7136,58 @@ $messages['ka'] = array(
 	'articlefeedbackv5-cta1-learn-how' => 'გ',
 	'articlefeedbackv5-cta1-edit-linktext' => 'ამ გვერდის რედაქტირება',
 	'articlefeedbackv5-cta2-confirmation-title' => 'დაგვეხმარეთ ვიკიპედიის გაუმჯობესებაში',
+	'articlefeedbackv5-cta2-button-text' => 'გაიგეთ მეტი',
 	'articlefeedbackv5-error' => 'წარმოიშვა რაღაც შეცდომა. გთხოვთ სცადეთ მოგვიანებით.',
+	'articlefeedbackv5-error-unknown' => 'უცნობი შეცდომა.',
+	'articlefeedbackv5-form-tools-label' => 'ხელსაწყოები',
+	'articlefeedbackv5-form-helpful-yes-label' => 'დიახ',
+	'articlefeedbackv5-form-helpful-no-label' => 'არა',
+	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 დიახ|$1 დიახ}} / {{PLURAL:$2|1 არა|$2 არა}}',
+	'articlefeedbackv5-special-filter-notdeleted' => 'ყველა ($1)',
+	'articlefeedbackv5-special-filter-comment' => 'მხოლოდ კომენტარები ($1)',
+	'articlefeedbackv5-special-filter-abusive' => 'მონიშნული როგორც ბოროტად გამოყენება ($1)',
+	'articlefeedbackv5-special-filter-visible' => 'ყველა ხილული ($1)',
+	'articlefeedbackv5-special-filter-invisible' => 'დამალული ($1)',
+	'articlefeedbackv5-go-to-article' => 'სტატიის ხილვა',
+	'articlefeedbackv5-discussion-page' => 'განხილვა',
+	'articlefeedbackv5-whats-this' => 'დახმარება',
+	'articlefeedbackv5-overall-rating' => 'რეიტინგი: $1/5',
+	'articlefeedbackv5-special-title' => '==შეფასება==',
+	'articleFeedbackv5-table-heading-page' => 'გვერდი',
+	'articleFeedbackv5-table-heading-average' => 'საშუალო',
 	'articlefeedbackv5' => 'სტატიის შეფასება',
 	'articlefeedbackv5-desc' => 'სტატიის შეფასება',
+	'articlefeedbackv5-comment-more' => 'მეტი',
+	'articlefeedbackv5-comment-less' => 'ნაკლები',
+	'articlefeedbackv5-beta-notice' => 'ბეტა',
+	'articlefeedbackv5-viewactivity' => 'აქტიურობის ხილვა',
+	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 წელი|$1 წლები}}',
+	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 თვე|$1 თვეები}}',
+	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 კვირა|$1 კვირა}}',
+	'articlefeedbackv5-timestamp-seconds' => '1 წუთზე ნაკლები',
+	'articlefeedbackv5-mask-postnumber' => 'გამოხმაურება #$1',
+	'articlefeedbackv5-noteflyover-hide-caption' => 'ამ გამოხმაურების დამალვა',
+	'articlefeedbackv5-noteflyover-hide-label' => 'შენიშვნის დამატება',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'რატომ დამალეთ ეს გამოხმაურება?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'ამ გამოხმაურების დამალვა',
+	'articlefeedbackv5-noteflyover-hide-help' => 'გაიგეთ მეტი',
+	'articlefeedbackv5-noteflyover-show-label' => 'შენიშვნის დამატება',
+	'articlefeedbackv5-noteflyover-show-help' => 'გაიგეთ მეტი',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'შენიშვნის დამატება',
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'გაიგეთ მეტი',
+	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'შენიშვნის დამატება',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'გაიგეთ მეტი',
+	'articlefeedbackv5-noteflyover-oversight-label' => 'შენიშვნის დამატება',
+	'articlefeedbackv5-noteflyover-oversight-help' => 'გაიგეთ მეტი',
+	'articlefeedbackv5-noteflyover-unoversight-label' => 'შენიშვნის დამატება',
+	'articlefeedbackv5-noteflyover-unoversight-help' => 'გაიგეთ მეტი',
+	'articlefeedbackv5-noteflyover-declineoversight-label' => 'შენიშვნის დამატება',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'გაიგეთ მეტი',
+	'articlefeedbackv5-bucket1-toggle-found-yes' => 'დიახ',
+	'articlefeedbackv5-bucket1-toggle-found-no' => 'არა',
+	'articlefeedbackv5-bucket2-suggestion-label' => 'წინადადება',
+	'articlefeedbackv5-bucket2-question-label' => 'შეკითხვა',
+	'articlefeedbackv5-bucket2-problem-label' => 'პრობლემა',
 	'articlefeedbackv5-bucket5-form-switch-label' => 'ამ გვერდის შეფასება',
 	'articlefeedbackv5-bucket5-form-panel-title' => 'ამ გვერდის შეფასება',
 	'articlefeedbackv5-bucket5-form-panel-clear' => 'შეფასება წაიშალა',
@@ -7009,6 +7214,7 @@ $messages['ka'] = array(
 	'articlefeedbackv5-bucket5-wellwritten-label' => 'კარგად დაწერილი',
 	'articlefeedbackv5-bucket5-wellwritten-tip' => 'მიგაჩნიათ, რომ ეს სტატია კარგი სტრუქტურისაა და კარგადაა დაწერილი?',
 	'articlefeedbackv5-bucket5-wellwritten-tooltip-2' => 'გასაგებად ძნელი',
+	'articlefeedbackv5-help-tooltip-title' => 'რა არის ეს?',
 );
 
 /** Korean (한국어)
@@ -7298,7 +7504,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-hidden' => 'Dëse Beidrag gouf vun engem dozou berectegten Editeur verstoppt',
 	'articlefeedbackv5-deleted' => 'Dës Réckmeldung gouf vun den Iwwerwaacher geläscht',
 	'articlefeedbackv5-form-hide' => 'Verstoppt dës Réckmeldung',
-	'articlefeedbackv5-form-unhide' => 'Dës Réckmeldung weisen',
+	'articlefeedbackv5-form-unhide' => 'Dës Réckmeldung nees weisen',
 	'articlefeedbackv5-form-helpful' => 'als hëllefräich markéieren ($1)',
 	'articlefeedbackv5-form-abuse' => 'Als Mëssbrauch markéieren ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'Als Mëssbrauch markéieren',
@@ -7348,9 +7554,9 @@ $messages['lb'] = array(
 	'articlefeedbackv5-noteflyover-hide-label' => 'Eng Notiz derbäisetzen',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Verstoppt dës Réckmeldung',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Fir méi ze wëssen',
-	'articlefeedbackv5-noteflyover-show-caption' => 'Dës Réckmeldung weisen',
+	'articlefeedbackv5-noteflyover-show-caption' => 'Dës Réckmeldung nees  weisen',
 	'articlefeedbackv5-noteflyover-show-label' => 'Eng Notiz derbäisetzen',
-	'articlefeedbackv5-noteflyover-show-submit' => 'Dës Réckmeldung weisen',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Dës Réckmeldung nees weisen',
 	'articlefeedbackv5-noteflyover-show-help' => 'Fir méi ze wëssen',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Eng Notiz derbäisetzen',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Iwwerwaachung ufroen',
@@ -8023,7 +8229,7 @@ $messages['mk'] = array(
 	'articlefeedbackv5-hidden' => 'Оваа објава е скриена од овластен уредник',
 	'articlefeedbackv5-deleted' => 'Објавата е избришана од заверувачите',
 	'articlefeedbackv5-form-hide' => 'Скриј го мислењево',
-	'articlefeedbackv5-form-unhide' => 'Прикажи ја објавата',
+	'articlefeedbackv5-form-unhide' => 'Откриј ја објавата',
 	'articlefeedbackv5-form-helpful' => 'Означи како корисно ($1)',
 	'articlefeedbackv5-form-abuse' => 'Означи како злоупотреба ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'Означи како злоупотреба',
@@ -8088,10 +8294,10 @@ $messages['mk'] = array(
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Зошто ја криете објавава?',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Скриј ја објавава',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Дознајте повеќе.',
-	'articlefeedbackv5-noteflyover-show-caption' => 'Прикажи ја објавата',
+	'articlefeedbackv5-noteflyover-show-caption' => 'Откриј ја објавата',
 	'articlefeedbackv5-noteflyover-show-label' => 'Додај белешка',
-	'articlefeedbackv5-noteflyover-show-placeholder' => 'Зошто ја прикажувате објавава?',
-	'articlefeedbackv5-noteflyover-show-submit' => 'Прикажи ја објавата',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'Зошто ја откривате објавата?',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Откриј ја објавата',
 	'articlefeedbackv5-noteflyover-show-help' => 'Дознајте повеќе',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Побарај заверка',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Додај белешка',
@@ -9200,7 +9406,7 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-special-filter-visible' => 'Alle zichtbaar ($1)',
 	'articlefeedbackv5-special-filter-invisible' => 'Verborgen ($1)',
 	'articlefeedbackv5-special-filter-deleted' => 'Verwijderd ($1)',
-	'articlefeedbackv5-special-filter-undeleted' => 'Verwijdering ongedaan gemaakt ($1)',
+	'articlefeedbackv5-special-filter-undeleted' => 'Toezicht ongedaan gemaakt ($1)',
 	'articlefeedbackv5-special-filter-declined' => 'Verwijdering verworpen ($1)',
 	'articlefeedbackv5-special-filter-unhidden' => 'Opnieuw weergegeven ($1)',
 	'articlefeedbackv5-special-sort-age' => 'Datum',
@@ -9218,15 +9424,15 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-hidden' => 'Dit bericht is verborgen door een daartoe gerechtigde gebruiker',
 	'articlefeedbackv5-deleted' => 'Dit bericht is verwijderd door toezichthouders',
 	'articlefeedbackv5-form-hide' => 'Bericht verbergen',
-	'articlefeedbackv5-form-unhide' => 'Dit bericht weergeven',
+	'articlefeedbackv5-form-unhide' => 'Bericht niet langer verbergen',
 	'articlefeedbackv5-form-helpful' => 'Markeren als nuttig ($1)',
 	'articlefeedbackv5-form-abuse' => 'Als misbruik markeren ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'Als misbruik markeren',
 	'articlefeedbackv5-form-delete' => 'Verwijderen',
 	'articlefeedbackv5-form-oversight' => 'Toezicht aanvragen',
-	'articlefeedbackv5-form-unoversight' => 'Verwijderingsaanvraag terugnemen',
-	'articlefeedbackv5-form-undelete' => 'Verwijderen ongedaan maken',
-	'articlefeedbackv5-form-decline' => 'Verwijdering verwerpen',
+	'articlefeedbackv5-form-unoversight' => 'Verzoek om toezicht intrekken',
+	'articlefeedbackv5-form-undelete' => 'Toezicht ongedaan maken',
+	'articlefeedbackv5-form-decline' => 'Verzoek om toezicht afwijzen',
 	'articlefeedbackv5-form-header' => 'Terugkoppeling #$1 om $2',
 	'articlefeedbackv5-form1-header-found' => '$2 heeft gevonden wat {{GENDER:$1|hij|zij|hij of zij}} zocht',
 	'articlefeedbackv5-form1-header-not-found' => '$2 heeft niet gevonden wat {{GENDER:$1|hij|zij|hij of zij}} zocht',
@@ -9282,17 +9488,17 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Waarom verbergt u dit bericht?',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Bericht verbergen',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Meer lezen',
-	'articlefeedbackv5-noteflyover-show-caption' => 'Dit bericht weergeven',
+	'articlefeedbackv5-noteflyover-show-caption' => 'Bericht niet langer verbergen',
 	'articlefeedbackv5-noteflyover-show-label' => 'Opmerking toevoegen',
-	'articlefeedbackv5-noteflyover-show-placeholder' => 'Waarom geeft u dit bericht weer?',
-	'articlefeedbackv5-noteflyover-show-submit' => 'Dit bericht weergeven',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'Waarom wilt u dit bericht weer weergeven?',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Bericht weergeven',
 	'articlefeedbackv5-noteflyover-show-help' => 'Meer lezen',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Verwijdering aanvragen',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Opmerking toevoegen',
-	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Waarom vraagt u verwijdering aan?',
+	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Waarom vraag u toezicht aan?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Verwijdering aanvragen',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Meer lezen',
-	'articlefeedbackv5-noteflyover-unrequestoversight-caption' => 'Verwijderingsverzoek annuleren',
+	'articlefeedbackv5-noteflyover-unrequestoversight-caption' => 'Verzoek om toezicht intrekken',
 	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'Opmerking toevoegen',
 	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Waarom annuleert u het verwijderingsverzoek?',
 	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Aanvraag annuleren',
@@ -9302,14 +9508,14 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Waarom verwijdert u dit bericht?',
 	'articlefeedbackv5-noteflyover-oversight-submit' => 'Bericht verwijderen',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Meer lezen',
-	'articlefeedbackv5-noteflyover-unoversight-caption' => 'De verwijdering van dit bericht ongedaan maken',
+	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Toezicht voor dit bericht ongedaan maken',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Opmerking toevoegen',
 	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Waarom maakt u de verwijdering van dit bericht ongedaan?',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'De verwijdering van dit bericht ongedaan maken',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Meer lezen',
-	'articlefeedbackv5-noteflyover-declineoversight-caption' => 'Verwijdering verwerpen',
+	'articlefeedbackv5-noteflyover-declineoversight-caption' => 'Verzoek om toezicht afwijzen',
 	'articlefeedbackv5-noteflyover-declineoversight-label' => 'Opmerking toevoegen',
-	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'Waarom verwerpt u de verwijdering?',
+	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'Waarom wijst u het verzoek om toezicht af?',
 	'articlefeedbackv5-noteflyover-declineoversight-submit' => 'Verwijdering verwerpen',
 	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Meer lezen',
 	'articlefeedbackv5-bucket1-title' => 'Help deze pagina te verbeteren',
@@ -9425,25 +9631,25 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-log-unoversight' => 'heeft de verwijderingsstatus [[$1]] van de terugkoppeling verwijderd',
 	'articlefeedbackv5-log-hidden' => 'heeft de terugkoppeling [[$1]] verborgen',
 	'articlefeedbackv5-log-unhidden' => 'heeft de terugkoppeling [[$1]] opnieuw weergegeven',
-	'articlefeedbackv5-log-decline' => 'heeft het verwijderingsverzoek van de terugkoppeling [[$1]] verworpen',
+	'articlefeedbackv5-log-decline' => 'heeft het verzoek voor toezicht voor de terugkoppeling [[$1]] afgewezen',
 	'articlefeedbackv5-log-request' => 'heeft verwijdering aangevraagd voor de terugkoppeling [[$1]]',
-	'articlefeedbackv5-log-unrequest' => 'heeft de aangevraagde verwijdering op de terugkoppeling [[$1]] verwijderd',
+	'articlefeedbackv5-log-unrequest' => 'heeft het verzoek voor toezicht voor de terugkoppeling [[$1]] gehonoreerd',
 	'articlefeedbackv5-log-flag' => 'heeft de terugkoppeling [[$1]] als misbruik gemarkeerd',
 	'articlefeedbackv5-log-unflag' => 'heeft de markering als misbruik van terugkoppeling [[$1]] opgeheven',
 	'articlefeedbackv5-activity-pane-header' => 'Activiteitenlogboek',
-	'articlefeedbackv5-activity-feedback-info' => 'Terugkoppelingsbericht #$1 door',
+	'articlefeedbackv5-activity-feedback-info' => 'Terugkoppelingsbericht #$1 door $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Geplaatst op $1',
 	'articlefeedbackv5-activity-permalink' => 'permanente verwijzing',
-	'articlefeedbackv5-activity-request' => 'heeft verwijdering aangevraagd op',
-	'articlefeedbackv5-activity-unrequest' => 'heeft het verwijderingsverzoek teruggenomen op',
-	'articlefeedbackv5-activity-decline' => 'heeft verwijdering verworpen op',
+	'articlefeedbackv5-activity-request' => 'heeft een verzoek voor toezicht aangevraagd op',
+	'articlefeedbackv5-activity-unrequest' => 'heeft het verzoek om toezicht ingetrokken voor',
+	'articlefeedbackv5-activity-decline' => 'heeft een verzoek om toezicht afgewezen op',
 	'articlefeedbackv5-activity-hidden' => 'heeft dit bericht verborgen op',
 	'articlefeedbackv5-activity-flag' => 'heeft dit bericht gemarkeerd op',
 	'articlefeedbackv5-activity-unhidden' => 'heeft dit bericht opnieuw weergegeven op',
-	'articlefeedbackv5-activity-unflag' => 'heeft de markering van dit bericht opgeheven op',
-	'articlefeedbackv5-activity-oversight' => 'heeft dit bericht verwijderd op',
+	'articlefeedbackv5-activity-unflag' => 'heeft de markering van dit bericht verwijderd op',
+	'articlefeedbackv5-activity-oversight' => 'heeft toezicht op bericht ingesteld op',
 	'articlefeedbackv5-activity-unoversight' => 'heeft de verwijdering van dit bericht ongedaan gemaakt op',
-	'articlefeedbackv5-activity-count' => '$1 handelingen op dit bericht',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|Eén handeling|$1 handelingen}} op dit bericht',
 	'articlefeedbackv5-activity-more' => 'Meer activiteit weergeven',
 	'articlefeedbackv5-emailcapture-response-body' => 'Hallo!
 
@@ -9470,6 +9676,25 @@ Dank u!
 Met vriendelijke groet,
 
 Het team van {{SITENAME}}',
+	'articlefeedbackv5-email-request-oversight-subject' => 'Er is een verzoek voor toezicht ingediend voor een terugkoppelingspagina',
+	'articlefeedbackv5-email-request-oversight-body' => 'Hallo toezichthouder.
+
+Er is een verzoek voor toezicht ingediend door gebruiker $4 ($1) voor terugkoppeling op deze pagina:
+
+Paginanaam: $5 ($2)
+
+Controleer deze terugkoppeling alstublieft, en keur het verzoek voor toezicht goed of af:
+
+Permanente verwijzing voor het bericht waarvoor toezicht is aangevraagd: $3
+
+Als u vragen hebt over het gebruik van de toezichtfunctie of de pagina voor terugkoppeling, kijk dan even op de pagina met veel gestelde vragen over toezicht ($6) of neem contact op met Oliver Keyes $7. 
+
+Bedankt!
+
+Het team van {{SITENAME}}
+
+
+PS Bedank u dat "paginaterugkoppeling v5" nog steeds in een vroeg stadium van ontwikkeling is en wordt getest in de Engelstalige Wikipedia op 0.6%, of 22.000 pagina\'s. De pagina voor terugkoppeling wordt nog niet beschikbaar gesteld aan de gemeenschap gedurende de testperiode.',
 );
 
 /** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
@@ -13121,7 +13346,28 @@ Nhóm {{SITENAME}}',
 $messages['yi'] = array(
 	'articlefeedbackv5-cta-thanks' => 'אַ דאַנק',
 	'articlefeedbackv5-special-filter-all' => 'אַלע',
-	'articlefeedbackv5-special-more' => 'מער',
+	'articlefeedbackv5-special-filter-notdeleted' => 'אלע ($1)',
+	'articlefeedbackv5-special-filter-comment' => 'נאר הערות ($1)',
+	'articlefeedbackv5-special-filter-abusive' => 'געצייכנט ווי קרומבאניץ',
+	'articlefeedbackv5-special-filter-helpful' => 'העלפֿיק ($1)',
+	'articlefeedbackv5-special-filter-unhelpful' => 'נישט העלפיק ($1)',
+	'articlefeedbackv5-special-filter-needsoversight' => 'רעצענזיע געפאדערט ($1)',
+	'articlefeedbackv5-special-filter-visible' => 'אלע זעבאר ($1)',
+	'articlefeedbackv5-special-filter-invisible' => 'באהאלטן ($1)',
+	'articlefeedbackv5-special-more' => 'ווייזן נאך מעלדונגען',
+	'articlefeedbackv5-special-pagetitle' => 'פֿידבעק: $1',
+	'articlefeedbackv5-form-optionid' => 'ברירה $1',
+	'articlefeedbackv5-form-hide' => 'באהאלטן די מעלדונג',
+	'articlefeedbackv5-form-unhide' => 'אומבאהאלטן די מעלדונג',
+	'articlefeedbackv5-form-helpful' => 'מארקירן העלפיק ($1)',
+	'articlefeedbackv5-form-delete' => 'אויפֿזען',
+	'articlefeedbackv5-form-oversight' => 'בעטן אויפזיכט',
+	'articlefeedbackv5-form-header' => 'פידבעק #$1, בײַ $2',
+	'articlefeedbackv5-form1-header-found' => '$1 האט געפונען {{GENDER:$1|$2 ער|$2 זי|$2 ער אדער זי}} האט געזוכט',
+	'articlefeedbackv5-form1-header-not-found' => '$1 האט נישט געפונען וואס {{GENDER:$1|$2 ער|$2 זי|$2 ער אדער זי}} האט געזוכט',
+	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} האט געהאט א פראבלעם:',
+	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} האט געהאט א שאלה:',
+	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} האט געהאט א פארשלאג:',
 	'articlefeedbackv5-go-to-article' => 'באקוקן ארטיקל',
 	'articlefeedbackv5-discussion-page' => 'שמועס',
 	'articlefeedbackv5-whats-this' => 'הילף',
