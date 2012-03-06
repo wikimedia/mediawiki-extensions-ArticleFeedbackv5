@@ -648,7 +648,7 @@
 			'action':			'query',
 			'list':				'articlefeedbackv5-view-activity',
 			'format':			'json',
-			'aafeedbackid':		id,
+			'aafeedbackid':		id
 		};
 		if( continueId ) {
 			data['aacontinue'] = continueId;
