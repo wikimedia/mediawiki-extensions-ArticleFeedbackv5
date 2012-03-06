@@ -609,8 +609,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	/**
 	 * Helper function to dig out page url and title, feedback permalink, and
 	 * requestor page url and name - if all this data can be retrieved properly
-	 * it shoves an email job into the queue for sending ot the oversightor's
-	 * mailing list - only works on NEW oversight requests
+	 * it shoves an email job into the queue for sending to the oversighters'
+	 * mailing list - only called for NEW oversight requests
 	 *
 	 * @param int $page_id page id to grab info on
 	 * @param int $feedback_id identifier for the feedback item
