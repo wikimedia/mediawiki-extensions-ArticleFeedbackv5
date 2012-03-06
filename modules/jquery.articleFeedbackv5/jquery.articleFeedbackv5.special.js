@@ -676,7 +676,8 @@
 				}
 			},
 			'error': function( data ) {
-				$( '#articlefeedbackv5-activity-log' ).html( mw.msg( 'articleFeedbackv5-view-activity-error' ) );
+				// FIXME this messages isn't defined
+				$( '#articlefeedbackv5-activity-log' ).text( mw.msg( 'articleFeedbackv5-view-activity-error' ) );
 			}
 		} );
 		
