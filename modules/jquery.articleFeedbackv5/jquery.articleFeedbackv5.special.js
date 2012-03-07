@@ -1065,12 +1065,15 @@
 			'apiFlagType': 'oversight',
 			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
-				$( '#articleFeedbackv5-requestoversight-link-' + id )
+				var $link = $( '#articleFeedbackv5-requestoversight-link-' + id )
 					.attr( 'action', 'unrequestoversight' )
 					.attr( 'id', 'articleFeedbackv5-unrequestoversight-link-' + id )
 					.text( mw.msg( 'articlefeedbackv5-form-unoversight' ) )
 					.removeClass( 'articleFeedbackv5-requestoversight-link' )
 					.addClass( 'articleFeedbackv5-unrequestoversight-link');
+				if ( data['articlefeedbackv5-flag-feedback']['autohidden'] ) {
+					$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ) );
+				}
 			}
 		},
 		
