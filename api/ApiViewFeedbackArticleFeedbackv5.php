@@ -221,7 +221,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			),
 			array( 'af_id' => $ids ),
 			__METHOD__,
-			array( 'ORDER BY' => $order ),
+			array(),
 			array(
 				'rating' => array(
 					'LEFT JOIN',
