@@ -406,6 +406,11 @@ a.helpful-active {
 	display: block;
 	clear: both;
 	margin-top: 10px;
+	position: absolute;
+	z-index: 10000;
+}
+.articleFeedbackv5-h3-push {
+	margin-top: 15px;
 }
 
 /* flyover panels */

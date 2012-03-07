@@ -475,9 +475,10 @@
 		}
 		$row.addClass( 'articleFeedbackv5-feedback-hidden' )
 			.data( 'hidden', true );
+		$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
 		$( '<span class="articleFeedbackv5-feedback-hidden-marker"></span>' )
 			.text( mw.msg( 'articlefeedbackv5-hidden', $hide_user, $hide_timestamp) )
-			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap h3' ) );
+			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
 		$.articleFeedbackv5special.maskPost( $row );
 	};
 	// }}}
@@ -491,6 +492,7 @@
 		$row.removeClass( 'articleFeedbackv5-feedback-hidden' )
 			.data( 'hidden', false );
 		$row.find( '.articleFeedbackv5-feedback-hidden-marker' ).remove();
+		$row.find( '.articleFeedbackv5-comment-wrap' ).removeClass( 'articleFeedbackv5-h3-push');
 	};
 	// }}}
 	// {{{ maskPost
@@ -525,6 +527,7 @@
 		var $marker = $( '<span class="articleFeedbackv5-feedback-deleted-marker"></span>' )
 			.text( mw.msg( 'articlefeedbackv5-deleted', $oversight_user, $oversight_timestamp ) )
 			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap h3' ) );
+		$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
 		$.articleFeedbackv5special.maskPost( $row );
 	};
 
@@ -539,6 +542,7 @@
 		$row.removeClass( 'articleFeedbackv5-feedback-deleted' )
 			.data( 'deleted', false );
 		$row.find( '.articleFeedbackv5-feedback-deleted-marker' ).remove();
+		$row.find( '.articleFeedbackv5-comment-wrap' ).removeClass( 'articleFeedbackv5-h3-push');
 	};
 	// }}}
 	
