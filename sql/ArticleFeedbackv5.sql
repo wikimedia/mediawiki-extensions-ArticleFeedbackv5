@@ -71,7 +71,7 @@ CREATE INDEX /*i*/af_revision_id ON /*_*/aft_article_feedback (af_revision_id);
 CREATE INDEX /*i*/article_feedback_timestamp ON /*_*/aft_article_feedback (af_created);
 CREATE INDEX /*i*/af_page_id ON /*_*/aft_article_feedback (af_page_id, af_created);
 CREATE INDEX /*i*/af_page_feedback_id ON /*_*/aft_article_feedback (af_page_id, af_id);
-CREATE INDEX /*_*/af_page_net_helpfulness_af_id ON /*_*/aft_article_feedback (af_page_id, af_net_helpfulness, af_id);
+CREATE INDEX /*i*/af_page_net_helpfulness_af_id ON /*_*/aft_article_feedback (af_page_id, af_net_helpfulness, af_id);
 
 -- Allows for organizing fields into fieldsets, for reporting or rendering.
 -- A group is just a name and an ID.
@@ -93,6 +93,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_field (
   -- Which 'bucket' this field should be rendered in.
   afi_bucket_id integer unsigned NOT NULL
 ) /*$wgDBTableOptions*/;
+CREATE UNIQUE INDEX /*i*/afi_name ON /*_*/aft_article_field (afi_name);
 
 -- Stores options for multi-value feedback fields (ie, select boxes) 
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_field_option (

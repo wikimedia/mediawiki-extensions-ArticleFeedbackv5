@@ -266,7 +266,13 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			__METHOD__,
 			array(
 				'LIMIT'    => $limit + 1,
-				'ORDER BY' => 'log_timestamp DESC'
+				'ORDER BY' => 'log_timestamp DESC',
+				// Force the page_time index (on _namespace, _title, _timestamp)
+				// We don't expect many if any rows for Special:ArticleFeedbackv5/foo that
+				// don't match log_type='articlefeedbackv5' , so we can afford to have that
+				// clause be unindexed. The alternative is to have the log_type clause be indexed
+				// and the namespace/title clauses unindexed, that would be bad.
+				'USE INDEX' => 'page_time'
 			)
 		);
 
