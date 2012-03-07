@@ -2413,7 +2413,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-log-flag' => 'kennzeichnete die Rückmeldung [[$1]] als Missbrauch',
 	'articlefeedbackv5-log-unflag' => 'entfernte die Missbrauchskennzeichnung der Rückmeldung [[$1]]',
 	'articlefeedbackv5-activity-pane-header' => 'Aktivitäten-Logbuch',
-	'articlefeedbackv5-activity-feedback-info' => 'Rückmeldung zum Beitrag Nr. $1 von',
+	'articlefeedbackv5-activity-feedback-info' => 'Rückmeldung Nr. $1 von $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Zu $1 verfasst',
 	'articlefeedbackv5-activity-permalink' => 'Permanentlink',
 	'articlefeedbackv5-activity-request' => 'beantragte die Löschung  von',
@@ -2425,7 +2425,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-activity-unflag' => 'nahm die Kennzeichnung dieser Rückmeldung zurück zu',
 	'articlefeedbackv5-activity-oversight' => 'löschte  diese Rückmeldung zu',
 	'articlefeedbackv5-activity-unoversight' => 'nahm die Löschung  dieser Rückmeldung zurück zu',
-	'articlefeedbackv5-activity-count' => '$1 Aktionen zu dieser Rückmeldung',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|Eine Aktion|$1 Aktionen}} zu dieser Rückmeldung',
 	'articlefeedbackv5-activity-more' => 'Weitere Aktivitäten anzeigen',
 	'articlefeedbackv5-emailcapture-response-body' => 'Hallo!
 
@@ -2449,7 +2449,7 @@ Sofern du diese Anfrage nicht ausgelöst hast, ignoriere einfach diese E-Mail. W
 
 Viele Grüße und vielen Dank,
 Das {{SITENAME}}-Team',
-	'articlefeedbackv5-email-request-oversight-subject' => '$1 hat das Verstecken von $2 beantragt',
+	'articlefeedbackv5-email-request-oversight-subject' => 'Das Verstecken der Rückmeldungsseite wurde beantragt',
 	'articlefeedbackv5-email-request-oversight-body' => 'Hallo!
 
 Ein Antrag auf Verstecken wurde von
@@ -3463,7 +3463,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-log-flag' => 'marcado el comentario [[$1]] como abusivo',
 	'articlefeedbackv5-log-unflag' => 'desmarcado el comentario [[$1]] como abusivo',
 	'articlefeedbackv5-activity-pane-header' => 'Registro de actividad',
-	'articlefeedbackv5-activity-feedback-info' => 'Comentario emitido por # $1',
+	'articlefeedbackv5-activity-feedback-info' => 'Comentario de post #$1 emitido por $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Publicado el $1',
 	'articlefeedbackv5-activity-permalink' => 'Enlace permanente',
 	'articlefeedbackv5-activity-request' => 'supervisión requerida en',
@@ -3499,29 +3499,24 @@ Si tú no realizaste esta solicitud, por favor ignora este correo y no te enviar
 
 Agradecidos y con los mejores deseos,
 El equipo de {{SITENAME}}.',
-	'articlefeedbackv5-email-request-oversight-subject' => '$1 ha solicitado supervisión en $2',
-	'articlefeedbackv5-email-request-oversight-body' => '¡Hola!
+	'articlefeedbackv5-email-request-oversight-subject' => 'Se ha solicitado supervisión en página de comentarios de un artículo',
+	'articlefeedbackv5-email-request-oversight-body' => '¡Hola, supervisores!
 
-Una solicitud para supervisión ha sido presentada por
+Una solicitud para supervisión ha sido presentada por <user name - $4 : $1> para un comentario publicado en este artículo
 
-$1 : $2
+<Article title - $5 : $2>
 
-sobre el elemento de comentarios
+Por favor, revise este comentario, luego apruebe o rechace esta petición de supervisión
 
-$4 : $1
+<permalink of feedback post for which oversight was requested - $3>
 
-para la página
+Si tienen alguna duda sobre el uso de las funciones de supervisión de la página de comentarios compruebe <oversighter feedback FAQ - $6> o contacte con el enlace de la comunidad <Oliver Keyes $7>.
 
-$5 : $2
+Gracias,
 
-Visite el elemento de comentario
+El equipo de {{SITENAME}}
 
-$3
-
-para rechazar o aprobar esta solicitud de supervisión.
-
-Gracias
-El equipo de {{SITENAME}}',
+PD: Por favor, tenga en cuenta que las funciones de comentario de artículo v5 se encuentra todavía en las primeras etapas de prueba en la Enciclopedia Inglesa (0,6%, o  22k artículos) y que la página de comentarios no se ha publicado para la comunidad durante este período de prueba.',
 );
 
 /** Estonian (Eesti)
@@ -4396,7 +4391,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-log-flag' => 'commentaire [[$1]] marqué comme abusif',
 	'articlefeedbackv5-log-unflag' => 'marquage du commentaire [[$1]] comme abusif supprimé',
 	'articlefeedbackv5-activity-pane-header' => "Journal d'activité",
-	'articlefeedbackv5-activity-feedback-info' => 'Commentaire émis par #$1',
+	'articlefeedbackv5-activity-feedback-info' => 'Publication du commentaire #$1 par $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Publié sur $1',
 	'articlefeedbackv5-activity-permalink' => 'Lien permanent',
 	'articlefeedbackv5-activity-request' => 'surveillance demandée sur',
@@ -4408,7 +4403,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-activity-unflag' => 'ne plus marquer cette note sur',
 	'articlefeedbackv5-activity-oversight' => 'surveiller cette note sur',
 	'articlefeedbackv5-activity-unoversight' => 'supprimer la surveillance de cette note sur',
-	'articlefeedbackv5-activity-count' => '$1 actions sur cette note',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 action sur cette note|$1 actions sur cette note}}',
 	'articlefeedbackv5-activity-more' => "Afficher plus d'activités",
 	'articlefeedbackv5-emailcapture-response-body' => "Bonjour !
 
@@ -4433,25 +4428,24 @@ Si vous n'avez pas initié cette demande, veuillez ignorer ce courriel et nous n
 Meilleurs vœux, et merci,
 
 L’équipe de {{SITENAME}}",
-	'articlefeedbackv5-email-request-oversight-subject' => '$1a demandé une surveillance de $2',
-	'articlefeedbackv5-email-request-oversight-body' => "Bonjour!
+	'articlefeedbackv5-email-request-oversight-subject' => "Surveillance demandée pour la page de commentaire de l'article",
+	'articlefeedbackv5-email-request-oversight-body' => "Bonjour, surveillants!
 
-Une demande de surveillance a été faite par
+Une surveillance a été demandée par <nom d'utilisateur - $4 : $1> pour les commentaires postés sur cet article:
 
-$4 : $1
+<Titre de l'article - $5 : $2>
 
-pour la page
+Veuillez relire ce commentaire publié, puis refuser ou approuver la demande de surveillance:
 
-$5 : $2
+<lien permanent du commentaire publié pour lequel la surveillance a été demandée - $3>
 
-Veuillez regarder l'élément de commentaire
-
-$3
-
-pour refuser ou accepter cette demande de surveillance.
+Si vous avez des questions sur la fonctionnalité de surveillance de la page de commentaire, veuillez regarder cette <FAQ de surveillance des commentaires - $6> ou contacter la liaison avec la communauté <Oliver Keyes $7>.
 
 Merci,
-L'équipe de {{SITENAME}}",
+
+L'équipe de {{SITENAME}}
+
+P.S.: Notez bien que cette fonctionnalité de commentaire d'article v5 est encore dans ses premières phases de test sur l'encyclopédie anglaise (0,6%, ou 22000 articles) et que la page de commentaires n'a pas été communiquée à la communauté durant cette phase de test.",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -4922,7 +4916,7 @@ $messages['gl'] = array(
 	'articlefeedbackv5-log-flag' => 'marcou o comentario "[[$1]]" como abusivo',
 	'articlefeedbackv5-log-unflag' => 'desmarcou o comentario "[[$1]]" como abusivo',
 	'articlefeedbackv5-activity-pane-header' => 'Rexistro de actividade',
-	'articlefeedbackv5-activity-feedback-info' => 'Comentario nº$1 deixado por',
+	'articlefeedbackv5-activity-feedback-info' => 'Comentario nº$1 deixado por $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Publicado o $1',
 	'articlefeedbackv5-activity-permalink' => 'ligazón permanente',
 	'articlefeedbackv5-activity-request' => 'pediu a supervisión o',
@@ -4934,7 +4928,7 @@ $messages['gl'] = array(
 	'articlefeedbackv5-activity-unflag' => 'desmarcou esta mensaxe o',
 	'articlefeedbackv5-activity-oversight' => 'supervisou esta mensaxe o',
 	'articlefeedbackv5-activity-unoversight' => 'eliminou a supervisión desta mensaxe o',
-	'articlefeedbackv5-activity-count' => '$1 accións nesta mensaxe',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 acción nesta mensaxe|$1 accións nesta mensaxe}}',
 	'articlefeedbackv5-activity-more' => 'Mostrar máis actividade',
 	'articlefeedbackv5-emailcapture-response-body' => 'Ola!
 
@@ -4958,25 +4952,26 @@ Se vostede non fixo esta petición, ignore esta mensaxe e non lle enviaremos má
 
 Os mellores desexos e grazas,
 O equipo de {{SITENAME}}',
-	'articlefeedbackv5-email-request-oversight-subject' => '$1 solicitou a supervisión de "$2"',
-	'articlefeedbackv5-email-request-oversight-body' => 'Ola!
+	'articlefeedbackv5-email-request-oversight-subject' => 'Solicitouse a supervisión da páxina de comentarios do artigo',
+	'articlefeedbackv5-email-request-oversight-body' => 'Ola, supervisores!
 
-Fíxose unha petición de supervisión por parte de
+<Nome de usuario - $4 : $1> fixo unha petición de supervisión dun comentario publicado neste artigo:
 
-$4 : $1
+<Título do artigo - $5 : $2>
 
-da páxina
+Revisade esta mensaxe e aprobade ou rexeitade a solicitude de supervisión:
 
-$5 : $2
+<ligazón permanente da mensaxe para a que se solicitou a supervisión - $3>
 
-Visite
-
-$3
-
-para rexeitar ou aprobar esta solicitude de supervisión.
+Se tedes algunha pregunta sobre o uso das ferramentas de supervisión, consultade isto <preguntas máis frecuentes dos supervisores - $6> ou poñédevos en contacto coa ligazón comunitaria <Oliver Keyes $7>.
 
 Grazas,
-O equipo de {{SITENAME}}',
+
+
+O equipo de {{SITENAME}}
+
+
+P.S.: Tede en conta que a versión 5 da ferramenta de avaliación de artigos está en probas na Wikipedia en inglés (0,6% ou 22k artigos) e que a páxina de comentarios non a pode ver a comunidade durante este período de probas.',
 );
 
 /** Swiss German (Alemannisch)
@@ -5353,7 +5348,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-log-flag' => 'סימן את משוב [[$1]] כשימוש לרעה',
 	'articlefeedbackv5-log-unflag' => 'הסיר את דגל השימוש לרעה ממשוב [[$1]]',
 	'articlefeedbackv5-activity-pane-header' => 'יומן פעילות',
-	'articlefeedbackv5-activity-feedback-info' => "רשומת משוב מס' $1 מאת",
+	'articlefeedbackv5-activity-feedback-info' => "רשומת משוב מס' $1 מאת $2",
 	'articlefeedbackv5-activity-feedback-date' => 'נשלח ב־$1',
 	'articlefeedbackv5-activity-permalink' => 'קישור קבוע',
 	'articlefeedbackv5-activity-request' => 'ביקש את הסתרת',
@@ -5365,7 +5360,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-activity-unflag' => 'ביטל הוספת הדגל לרשומה הזאת ב־',
 	'articlefeedbackv5-activity-oversight' => 'הסתיר את הרשומה הזאת ב־',
 	'articlefeedbackv5-activity-unoversight' => 'ביטל את הסתרת הרשומה הזאת ב־',
-	'articlefeedbackv5-activity-count' => 'פעולות $1 ברשומה הזאת',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|פעולה אחת ברשומה הזאת|$1 פעולות ברשומה הזאת}}',
 	'articlefeedbackv5-activity-more' => 'הצגת יותר פעילות',
 	'articlefeedbackv5-emailcapture-response-body' => 'שלום!
 
@@ -5390,7 +5385,7 @@ $3
 כל טוב, ותודה
 
 צוות {{SITENAME}}',
-	'articlefeedbackv5-email-request-oversight-subject' => '$1 ביקשת ביקורת על $2',
+	'articlefeedbackv5-email-request-oversight-subject' => 'נוצרה בקשת ביקורת על דף משוב ערכים',
 	'articlefeedbackv5-email-request-oversight-body' => 'שלום!
 
 התקבלה בקשה מאת
@@ -5889,7 +5884,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-log-flag' => 'woznamjeni komentar [[$1]] jako znjewužiwanje',
 	'articlefeedbackv5-log-unflag' => 'wotstroni woznamjenjenje komentara [[$1]]  jako znjewužiwanje',
 	'articlefeedbackv5-activity-pane-header' => 'Protokol aktiwity',
-	'articlefeedbackv5-activity-feedback-info' => 'Komentar přinoška čo. $1 wot',
+	'articlefeedbackv5-activity-feedback-info' => 'Komentar čo. $1 wot $2',
 	'articlefeedbackv5-activity-feedback-date' => '$1 pósłany',
 	'articlefeedbackv5-activity-permalink' => 'trajny wotkaz',
 	'articlefeedbackv5-activity-request' => 'požada dohladowanje za',
@@ -5925,26 +5920,23 @@ Jeli njejsy tute naprašowanje pósłał, ignoruj prošu tutu e-mejl a njepósć
 
 Z najlěpšimi postrowami a wulki dźak,
 Team {{GRAMMAR:genitiw|{{SITENAME}}}}',
-	'articlefeedbackv5-email-request-oversight-subject' => '$1 je dohladowanje na $2 požadał',
-	'articlefeedbackv5-email-request-oversight-body' => 'Witaj!
+	'articlefeedbackv5-email-request-oversight-subject' => 'Dohladowanje za stronu komentarow požadane',
+	'articlefeedbackv5-email-request-oversight-body' => 'Witaj, dohladowarjo!
 
-Dohladowanje je so požadało wot
+Dohladowanje je so požadało wot <wužiwarskeho mjena - $4 : $1> za komentar pósłany wo tutym nastawku:
 
-$4 : $1
+<Titul nastawka - $5 : $2>
 
-za stronu
+Prošu přepruwuj tutón komentar a schwal abo wotpokazaj potom požadanje na dohladowanje:
 
-$5 : $2
+<trajny wotkaz komentara, za kotryž dohladowanje je so požadało - $3>
+
+Jeli maš prašenja wo wužiwanju dohladowanskich funkcijow komentaroweje strony, přečitaj prošu tute <huste prašenja wo komentarach dohladowarjow - $6> abo staj so z <Oliver Keyes $7> do zwiska. 
+
+Wulki dźak
 
 
-Prošu wopytaj komentar
-
-$3,
-
-zo by požadanje za dohladowanje wotpokazał abo schwalił.
-
-Wulki dźak,
-team {{SITENAME}}',
+Team {{SITENAME}}',
 );
 
 /** Hungarian (Magyar)
@@ -7217,6 +7209,7 @@ $messages['ka'] = array(
 	'articlefeedbackv5-bucket5-wellwritten-tip' => 'მიგაჩნიათ, რომ ეს სტატია კარგი სტრუქტურისაა და კარგადაა დაწერილი?',
 	'articlefeedbackv5-bucket5-wellwritten-tooltip-2' => 'გასაგებად ძნელი',
 	'articlefeedbackv5-help-tooltip-title' => 'რა არის ეს?',
+	'articlefeedbackv5-transparency-terms-linktext' => 'პირობები',
 );
 
 /** Korean (한국어)
@@ -8448,7 +8441,7 @@ $messages['mk'] = array(
 	'articlefeedbackv5-log-flag' => 'означено мислењето [[$1]] како злоупотреба',
 	'articlefeedbackv5-log-unflag' => 'тргната ознаката за злоупотреба од мислењето [[$1]]',
 	'articlefeedbackv5-activity-pane-header' => 'Дневник на активности',
-	'articlefeedbackv5-activity-feedback-info' => 'Мислење бр. $1 од',
+	'articlefeedbackv5-activity-feedback-info' => 'Мислење бр. $1 од $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Објавено на $1',
 	'articlefeedbackv5-activity-permalink' => 'постојана врска',
 	'articlefeedbackv5-activity-request' => 'побара заверка на',
@@ -8460,7 +8453,7 @@ $messages['mk'] = array(
 	'articlefeedbackv5-activity-unflag' => 'ја тргна ознаката на оваа објава на',
 	'articlefeedbackv5-activity-oversight' => 'ја завери објавава на',
 	'articlefeedbackv5-activity-unoversight' => 'ја отстрани заверката на објавава на',
-	'articlefeedbackv5-activity-count' => '$1 дејства врз објавава',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 дејство врз објавава|$1 дејства врз објавава}}',
 	'articlefeedbackv5-activity-more' => 'Уште активности',
 	'articlefeedbackv5-emailcapture-response-body' => 'Здраво!
 
@@ -8484,29 +8477,26 @@ $3
 
 Ви благодариме и сè најдобро,
 Екипата на {{SITENAME}}',
-	'articlefeedbackv5-email-request-oversight-subject' => '$1 побара заверка на $2',
-	'articlefeedbackv5-email-request-oversight-body' => 'Здраво!
+	'articlefeedbackv5-email-request-oversight-subject' => 'Побарана е заверка на страница со мислења',
+	'articlefeedbackv5-email-request-oversight-body' => 'Здраво, заверувачи!
 
-Добивме барање за заверка од
+<user name - $4 : $1> побара заверка на мислењето објавено на следнава статија:
 
-$4 : $1
+<Article title - $5 : $2>
 
-на страницата
+Прегледајте го мислењето, па одобрете ја или одбијте ја заверката:
 
-$5 : $2
+<permalink of feedback post for which oversight was requested - $3>
 
-Појдете на
-
-$3
-
-Појдете на
-
-$3
-
-за да го одбиете или прифатите ова барање.
+Доколку имате прашања во врска со употребата на функциите за заверка, погледајте ја страницата <oversighter feedback FAQ - $6> или обратете се кај лицето за врски <Oliver Keyes $7>. 
 
 Ви благодариме,
-Екипата на {{SITENAME}}',
+
+
+Екипата на {{SITENAME}}
+
+
+П.С.: Имајте на ум дека верзијата 5 на функцијата за заверка е сè уште во рана фаза на испробување на англиската енциклопедија (0,6%, или 22.000 статии) и дека страницата за мислења не е на јавен увид за заедницата во текот на овој пробен период.',
 );
 
 /** Malayalam (മലയാളം)
@@ -9787,7 +9777,7 @@ $messages['or'] = array(
 	'articlefeedbackv5-invalid-feedback-flag' => 'ଅବୈଧ ମତାମତ ଫ୍ଲାଗ',
 	'articlefeedbackv5-go-to-article' => 'ପୃଷ୍ଠା ଦେଖିବେ',
 	'articlefeedbackv5-discussion-page' => 'ଆଲୋଚନା',
-	'articlefeedbackv5-whats-this' => 'ସାହାଯ୍ୟ',
+	'articlefeedbackv5-whats-this' => 'ସହଯୋଗ',
 	'articlefeedbackv5-invalid-page-id' => 'ପୃଷ୍ଠାର ଅବୈଧ ଆଇଡି',
 	'articlefeedbackv5-percent-found' => '$1 ବ୍ୟବହାରକାରୀ ଯାହା ଖୋଜୁଥିଲେ ତାହା ପାଇଛନ୍ତି',
 	'articlefeedbackv5-overall-rating' => 'ତଉଲ : $1/5',
@@ -9968,7 +9958,7 @@ $messages['pl'] = array(
 	'articlefeedbackv5-hidden' => 'Ten post został ukryty przez upoważnionego edytora',
 	'articlefeedbackv5-deleted' => 'Ten post został usunięty przez rewizorów',
 	'articlefeedbackv5-form-hide' => 'Ukryj ten post',
-	'articlefeedbackv5-form-unhide' => 'Pokaż ten post',
+	'articlefeedbackv5-form-unhide' => 'Odkryj ten post',
 	'articlefeedbackv5-form-helpful' => 'Oznacz jako przydatny ($1)',
 	'articlefeedbackv5-form-abuse' => 'Zgłoś nadużycie ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'Oznacz jako nadużycie',
