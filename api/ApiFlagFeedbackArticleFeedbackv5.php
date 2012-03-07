@@ -82,9 +82,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					$filters['undeleted'] = -1;
 				}
 
-				// TODO: This is data for the "hidden by, oversighted by" red line
-				$results['oversight_user'] = $wgUser->getId();
-				$results['oversight_timestamp'] = $timestamp;
+				// This is data for the "hidden by, oversighted by" red line
+				$results['oversight-user'] = $wgUser->getName();
+				$results['oversight-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 
 				// autohide if not hidden
 				if (false == $record->af_is_hidden ) {
@@ -97,9 +97,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					$implicit_hide = true; // for logging
 					// tell front-end autohiding was done
 					$results['autohidden'] = 1;
-					// TODO: This is data for the "hidden by, oversighted by" red line
-					$results['hide_user'] = 0;
-					$results['hide_timestamp'] = $timestamp;
+					// This is data for the "hidden by, oversighted by" red line
+					$results['hide-user'] = 'Article Feedback V5';
+					$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 				}
 
 			} else {
@@ -129,9 +129,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$update['af_hide_timestamp'] = $timestamp;
 				$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
 
-				// TODO: This is data for the "hidden by, oversighted by" red line
-				$results['hide_user'] = $wgUser->getId();
-				$results['hide_timestamp'] = $timestamp;
+				// This is data for the "hidden by, oversighted by" red line
+				$results['hide-user'] = $wgUser->getName();
+				$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 
 			} else {
 			// decrease means "unhide this"
@@ -201,9 +201,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 					// tell front-end autohiding was done
 					$results['autohidden'] = 1;
-					// TODO: This is data for the "hidden by, oversighted by" red line
-					$results['hide_user'] = 0;
-					$results['hide_timestamp'] = $timestamp;
+					// This is data for the "hidden by, oversighted by" red line
+					$results['hide-user'] = 'Article Feedback V5';
+					$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 				}
 			}
 	
@@ -249,9 +249,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					$implicit_hide = true; // for logging
 					// tell front-end autohiding was done
 					$results['autohidden'] = 1;
-					// TODO: This is data for the "hidden by, oversighted by" red line
-					$results['hide_user'] = 0;
-					$results['hide_timestamp'] = $timestamp;
+					// This is data for the "hidden by, oversighted by" red line
+					$results['hide-user'] = 'Article Feedback V5';
+					$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 				}
 
 				// IF the previous setting was 0, send an email

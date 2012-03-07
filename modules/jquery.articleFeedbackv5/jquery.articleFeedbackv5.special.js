@@ -476,7 +476,7 @@
 		$row.addClass( 'articleFeedbackv5-feedback-hidden' )
 			.data( 'hidden', true );
 		$( '<span class="articleFeedbackv5-feedback-hidden-marker"></span>' )
-			.text( mw.msg( 'articlefeedbackv5-hidden' ) )
+			.text( mw.msg( 'articlefeedbackv5-hidden', $row.data('hide-user'), $row.data('hide-timestamp')) )
 			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap h3' ) );
 		$.articleFeedbackv5special.maskPost( $row );
 	};
@@ -523,7 +523,7 @@
 		$row.addClass( 'articleFeedbackv5-feedback-deleted' )
 			.data( 'deleted', true );
 		var $marker = $( '<span class="articleFeedbackv5-feedback-deleted-marker"></span>' )
-			.text( mw.msg( 'articlefeedbackv5-deleted' ) )
+			.text( mw.msg( 'articlefeedbackv5-deleted', $row.data('oversight-user'), $row.data('oversight-timestamp') ) )
 			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap h3' ) );
 		$.articleFeedbackv5special.maskPost( $row );
 	};
@@ -1033,6 +1033,10 @@
 					.text( mw.msg( 'articlefeedbackv5-form-unhide' ) )
 					.removeClass( 'articleFeedbackv5-hide-link' )
 					.addClass( 'articleFeedbackv5-show-link' );
+
+				$link.data( 'hide-user', data['articlefeedbackv5-flag-feedback']['hide-user']);
+				$link.data( 'hide-timestamp', data['articlefeedbackv5-flag-feedback']['hide-timestamp']);
+
 				$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ) );
 				$.articleFeedbackv5special.setActivityFlag( id, 'hide', true );
 			}
@@ -1108,6 +1112,10 @@
 					.text( mw.msg( 'articlefeedbackv5-form-undelete' ) )
 					.removeClass( 'articleFeedbackv5-oversight-link' )
 					.addClass( 'articleFeedbackv5-unoversight-link' );
+
+				$link.data( 'oversight-user', data['articlefeedbackv5-flag-feedback']['oversight-user']);
+				$link.data( 'oversight-timestamp', data['articlefeedbackv5-flag-feedback']['oversight-timestamp']);
+
 				$.articleFeedbackv5special.markDeleted( $link.closest( '.articleFeedbackv5-feedback' ) );
 				$.articleFeedbackv5special.setActivityFlag( id, 'delete', true );
 			}
