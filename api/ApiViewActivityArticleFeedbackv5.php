@@ -246,6 +246,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 		$where = array (
 				'log_type' => 'articlefeedbackv5',
+				'log_namespace' => NS_SPECIAL,
 				'log_title' => "ArticleFeedbackv5/$title/$feedbackId"
 			);
 
