@@ -80,22 +80,20 @@ class ArticleFeedbackv5MailerJob extends Job {
 	 */
 	protected function composeMail( $requestor_name, $requestor_url, $page_name, $page_url, $feedback_permalink ) {
 		global $wgPasswordSender, $wgPasswordSenderName, $wgNoReplyAddress, $wgRequest;
-		global $wgArticleFeedbackv5OversightEmailHelp, $wgArticleFeedbackv5OversightEmailAdminUser;
+		global $wgArticleFeedbackv5OversightEmailHelp;
 
 		// build the subject
 		$subject = wfMessage( 'articlefeedbackv5-email-request-oversight-subject' )->escaped();
 
 		//text version, no need to escape since client will interpret it as plain text
 		$body = wfMessage( 'articlefeedbackv5-email-request-oversight-body' )
-				->rawParams(
-					$requestor_url,
-					$page_url,
-					$feedback_permalink)
 				->params(
 					$requestor_name,
-					$page_name,
-					$wgArticleFeedbackv5OversightEmailHelp,
-					$wgArticleFeedbackv5OversightEmailAdminUser)
+					$page_name)
+				->rawParams(
+					$feedback_permalink)
+				->params(
+					$wgArticleFeedbackv5OversightEmailHelp)
 				->text();
 
 		return array($subject, $body);
