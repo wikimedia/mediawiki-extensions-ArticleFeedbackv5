@@ -469,14 +469,14 @@
 	 *
 	 * @param $row element the feedback row
 	 */
-	$.articleFeedbackv5special.markHidden = function ( $row ) {
+	$.articleFeedbackv5special.markHidden = function ( $row, $hide_user, $hide_timestamp ) {
 		if ( $row.data( 'hidden' ) ) {
 			$.articleFeedbackv5special.unmarkHidden( $row );
 		}
 		$row.addClass( 'articleFeedbackv5-feedback-hidden' )
 			.data( 'hidden', true );
 		$( '<span class="articleFeedbackv5-feedback-hidden-marker"></span>' )
-			.text( mw.msg( 'articlefeedbackv5-hidden', $row.data('hide-user'), $row.data('hide-timestamp')) )
+			.text( mw.msg( 'articlefeedbackv5-hidden', $hide_user, $hide_timestamp) )
 			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap h3' ) );
 		$.articleFeedbackv5special.maskPost( $row );
 	};
@@ -516,14 +516,14 @@
 	 *
 	 * @param $row element the feedback row
 	 */
-	$.articleFeedbackv5special.markDeleted = function ( $row ) {
+	$.articleFeedbackv5special.markDeleted = function ( $row , $oversight_user, $oversight_timestamp) {
 		if ( $row.data( 'deleted' ) ) {
 			$.articleFeedbackv5special.unmarkDeleted();
 		}
 		$row.addClass( 'articleFeedbackv5-feedback-deleted' )
 			.data( 'deleted', true );
 		var $marker = $( '<span class="articleFeedbackv5-feedback-deleted-marker"></span>' )
-			.text( mw.msg( 'articlefeedbackv5-deleted', $row.data('oversight-user'), $row.data('oversight-timestamp') ) )
+			.text( mw.msg( 'articlefeedbackv5-deleted', $oversight_user, $oversight_timestamp ) )
 			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap h3' ) );
 		$.articleFeedbackv5special.maskPost( $row );
 	};
@@ -752,10 +752,10 @@
 							}
 						}
 						if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
-							$.articleFeedbackv5special.markHidden( $( this ) );
+							$.articleFeedbackv5special.markHidden( $( this ), $( this ).attr('hide-user'), $( this ).attr('hide-timestamp'));
 						}
 						if ( $( this ).hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
-							$.articleFeedbackv5special.markDeleted( $( this ) );
+							$.articleFeedbackv5special.markDeleted( $( this ), $( this ).attr('oversight-user'), $( this ).attr('oversight-timestamp'));
 						}
 					} );
 					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
@@ -974,7 +974,9 @@
 					$link.removeClass( 'abusive' );
 				}
 				if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
-					$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ) );
+					$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ),
+									data['articlefeedbackv5-flag-feedback']['hide-user'],
+									data['articlefeedbackv5-flag-feedback']['hide-timestamp']);
 				}
 				$link.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
 					.removeClass( 'articleFeedbackv5-abuse-link' )
@@ -1010,7 +1012,9 @@
 					$link.removeClass( 'abusive' );
 				}
 				if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
-					$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ) );
+					$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ),
+									data['articlefeedbackv5-flag-feedback']['hide-user'],
+									data['articlefeedbackv5-flag-feedback']['hide-timestamp']);
 				}
 				$link.attr( 'id', 'articleFeedbackv5-abuse-link-' + id )
 					.removeClass( 'articleFeedbackv5-unabuse-link' )
@@ -1034,10 +1038,9 @@
 					.removeClass( 'articleFeedbackv5-hide-link' )
 					.addClass( 'articleFeedbackv5-show-link' );
 
-				$link.data( 'hide-user', data['articlefeedbackv5-flag-feedback']['hide-user']);
-				$link.data( 'hide-timestamp', data['articlefeedbackv5-flag-feedback']['hide-timestamp']);
-
-				$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ) );
+				$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ),
+									data['articlefeedbackv5-flag-feedback']['hide-user'],
+									data['articlefeedbackv5-flag-feedback']['hide-timestamp']);
 				$.articleFeedbackv5special.setActivityFlag( id, 'hide', true );
 			}
 		},
@@ -1075,8 +1078,19 @@
 					.text( mw.msg( 'articlefeedbackv5-form-unoversight' ) )
 					.removeClass( 'articleFeedbackv5-requestoversight-link' )
 					.addClass( 'articleFeedbackv5-unrequestoversight-link');
+
 				if ( data['articlefeedbackv5-flag-feedback']['autohidden'] ) {
-					$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ) );
+					var $new_link = $( '#articleFeedbackv5-hide-link-' + id )
+						.attr( 'action', 'show' )
+						.attr( 'id', 'articleFeedbackv5-show-link-' + id )
+						.text( mw.msg( 'articlefeedbackv5-form-unhide' ) )
+						.removeClass( 'articleFeedbackv5-hide-link' )
+						.addClass( 'articleFeedbackv5-show-link' );
+
+					$.articleFeedbackv5special.markHidden( $new_link.closest( '.articleFeedbackv5-feedback' ),
+									data['articlefeedbackv5-flag-feedback']['hide-user'],
+									data['articlefeedbackv5-flag-feedback']['hide-timestamp']);
+					$.articleFeedbackv5special.setActivityFlag( id, 'hide', true );
 				}
 			}
 		},
@@ -1113,10 +1127,9 @@
 					.removeClass( 'articleFeedbackv5-oversight-link' )
 					.addClass( 'articleFeedbackv5-unoversight-link' );
 
-				$link.data( 'oversight-user', data['articlefeedbackv5-flag-feedback']['oversight-user']);
-				$link.data( 'oversight-timestamp', data['articlefeedbackv5-flag-feedback']['oversight-timestamp']);
-
-				$.articleFeedbackv5special.markDeleted( $link.closest( '.articleFeedbackv5-feedback' ) );
+				$.articleFeedbackv5special.markDeleted( $link.closest( '.articleFeedbackv5-feedback' ) ,
+									data['articlefeedbackv5-flag-feedback']['oversight-user'],
+									data['articlefeedbackv5-flag-feedback']['oversight-timestamp']);
 				$.articleFeedbackv5special.setActivityFlag( id, 'delete', true );
 			}
 		},

@@ -508,9 +508,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				$name = 'Article Feedback V5';
 			}
 
-			$attributes['data-hide-user'] = $name;
+			$attributes['hide-user'] = $name;
 			if ($record[0]->af_hide_timestamp > 0) {
-				$attributes['data-hide-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_hide_timestamp );
+				$attributes['hide-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_hide_timestamp );
 			}
 		}
 		if ( $record[0]->af_is_deleted ) {
@@ -525,9 +525,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				$name = 'Article Feedback V5';
 			}
 
-			$attributes['data-oversight-user'] = $name;
+			$attributes['oversight-user'] = $name;
 			if ($record[0]->af_oversight_timestamp > 0) {
-				$attributes['data-oversight-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_oversight_timestamp );
+				$attributes['oversight-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_oversight_timestamp );
 			}
 		}
 
