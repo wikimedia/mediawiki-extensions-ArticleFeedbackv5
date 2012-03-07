@@ -99,4 +99,21 @@ class ArticleFeedbackv5MailerJob extends Job {
 		return array($subject, $body);
 	}
 
+	/**
+	 * Override insert - prototype does not even have a jobs table and will
+	 * bomb miserably on this
+	 *
+	 * @return bool true on success
+	 */
+	function insert() {
+		global $wgArticleFeedbackv5OversightEmails;
+
+		// if the oversight email address is empty we're going to just skip all this, but return true
+		if ( null === $wgArticleFeedbackv5OversightEmails ) {
+			return true;
+		}
+
+		return parent::insert();
+	}
+
 }
