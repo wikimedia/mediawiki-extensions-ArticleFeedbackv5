@@ -83,7 +83,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$ids   = array();
 		$rows  = array();
-		$rv    = array();
 
 		$direction         = strtolower( $sortOrder ) == 'asc' ? 'ASC' : 'DESC';
 		$continueDirection = ( $direction == 'ASC' ? '>' : '<' );
@@ -179,7 +178,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		);
 
 		foreach ( $id_query as $id ) {
-			$ids[] = $id->af_id;
+			$ids[$id->af_id] = $id->af_id;
 			// Get the continue values from the last counted item.
 			if( count( $ids ) == $limit ) {
 				$this->continue   = $id->$sortField;
@@ -247,16 +246,21 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			)
 		);
 
+		// our $ids array is the correct order for every id that we're doing
+		// so we want to graft the extra data here into the id value
+
 		foreach ( $rows as $row ) {
-			if ( !array_key_exists( $row->af_id, $rv ) ) {
-				$rv[$row->af_id]    = array();
-				$rv[$row->af_id][0] = $row;
-				$rv[$row->af_id][0]->user_name = $row->user_name ? $row->user_name : $row->af_user_ip;
+			if ( !array_key_exists( $row->af_id, $ids ) ) {
+				continue; // something has gone dreadfully wrong actually
+			} elseif ( !is_array( $ids[$row->af_id] )) {
+				$ids[$row->af_id] = array();
+				$ids[$row->af_id][0] = $row;
+				$ids[$row->af_id][0]->user_name = $row->user_name ? $row->user_name : $row->af_user_ip;
 			}
-			$rv[$row->af_id][$row->afi_name] = $row;
+			$ids[$row->af_id][$row->afi_name] = $row;
 		}
 
-		return $rv;
+		return $ids;
 	}
 
 	private function getFilterCriteria( $filter, $filterValue = null ) {
