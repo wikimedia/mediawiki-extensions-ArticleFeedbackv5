@@ -143,7 +143,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 week|$1 weeks}}',
 	'articlefeedbackv5-timestamp-seconds' => 'less than 1 minute',
 	'articlefeedbackv5-mask-text-hidden' => 'This post was hidden by an authorized editor',
-	'articlefeedbackv5-mask-text-overarticlefeedbackv5-mask-text-hiddensight' => 'This post was oversighted by an authorized editor',
+	'articlefeedbackv5-mask-text-oversight' => 'This post was oversighted by an authorized editor',
 	'articlefeedbackv5-mask-postnumber' => 'Post #$1',
 
 	/* Special page flyover panels */

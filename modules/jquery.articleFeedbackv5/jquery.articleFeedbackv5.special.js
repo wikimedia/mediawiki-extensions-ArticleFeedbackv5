@@ -479,7 +479,7 @@
 		$( '<span class="articleFeedbackv5-feedback-hidden-marker"></span>' )
 			// this is on purpose html not text- $hide_user is a  link
 			.html( mw.msg( 'articlefeedbackv5-hidden', $hide_user, $hide_timestamp) )
-			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap-h3' ) );
+			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
 		$.articleFeedbackv5special.maskPost( $row, 'hidden');
 	};
 	// }}}
@@ -521,14 +521,17 @@
 	 */
 	$.articleFeedbackv5special.markDeleted = function ( $row , $oversight_user, $oversight_timestamp) {
 		if ( $row.data( 'deleted' ) ) {
-			$.articleFeedbackv5special.unmarkDeleted();
+			$.articleFeedbackv5special.unmarkDeleted( $row );
+		}
+		if ( $row.data( 'hidden' ) ) {
+			$.articleFeedbackv5special.unmarkHidden( $row );
 		}
 		$row.addClass( 'articleFeedbackv5-feedback-deleted' )
 			.data( 'deleted', true );
 		var $marker = $( '<span class="articleFeedbackv5-feedback-deleted-marker"></span>' )
 			// this is on purpose html not text- $oversight_user is a  link
 			.html( mw.msg( 'articlefeedbackv5-deleted', $oversight_user, $oversight_timestamp ) )
-			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap h3' ) );
+			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
 		$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
 		$.articleFeedbackv5special.maskPost( $row, 'oversight' );
 	};
@@ -757,12 +760,13 @@
 									.addClass( 'articleFeedbackv5-unabuse-link' ); 
 							}
 						}
-						if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
-							$.articleFeedbackv5special.markHidden( $( this ), $( this ).attr('hide-user'), $( this ).attr('hide-timestamp'));
-						}
+
 						if ( $( this ).hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
 							$.articleFeedbackv5special.markDeleted( $( this ), $( this ).attr('oversight-user'), $( this ).attr('oversight-timestamp'));
+						} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
+							$.articleFeedbackv5special.markHidden( $( this ), $( this ).attr('hide-user'), $( this ).attr('hide-timestamp'));
 						}
+
 					} );
 					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
 					$.articleFeedbackv5special.listControls.continue   = data['articlefeedbackv5-view-feedback'].continue;
@@ -1126,6 +1130,8 @@
 			'apiFlagType': 'delete',
 			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
+
+				// First we must possibly show
 				var $link = $( '#articleFeedbackv5-oversight-link-' + id )
 					.attr( 'action', 'unoversight' )
 					.attr( 'id', 'articleFeedbackv5-unoversight-link-' + id )
