@@ -481,8 +481,12 @@ The link to the edit tutorial',
 	'articlefeedbackv5-special-more' => '{{Identical|More}}',
 	'articlefeedbackv5-special-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]]. Parameters:
 * $1 is the title of the article for which we show the feedback',
-	'articlefeedbackv5-hidden' => '{{Identical|Hidden}}',
-	'articlefeedbackv5-deleted' => 'The marker that appears on a comment if it has been deleted by an oversighter.',
+	'articlefeedbackv5-hidden' => The marker that appears on a comment if it has been hidden by a monitor.
+* $1 is the name of the monitor who performed the hide
+* $2 is the timestamp for when the hide occured',
+	'articlefeedbackv5-deleted' => 'The marker that appears on a comment if it has been deleted by an oversighter.
+* $1 is the name of the oversighter who performed the delete
+* $2 is the timestamp for when the deletion occured',
 	'articlefeedbackv5-form-abuse' => 'Link text allowing the user to flag feedback as abuse.  $1 is the number of times the feedback has been flagged previously.',
 	'articlefeedbackv5-form-abuse-masked' => 'Link text allowing the user to flag feedback as abuse, without the count included in {{msg-mw|articlefeedbackv5-form-abuse}}',
 	'articlefeedbackv5-form-delete' => '{{Identical|Delete}}',
@@ -686,7 +690,8 @@ This URL can be changed to point to a translated version of the page if it exist
 * <code>$2</code> – Page name of item with feedback requiring oversight.
 * <code>$3</code> – URL directly to feedback location
 * <code>$4</code> – The help link.',
-	'articlefeedbackv5-default-user' => 'The name of the default or internal user who is listed as being the one who autohides feedback for logging and display purposes'
+	'articlefeedbackv5-default-user' => 'The name of the default or internal user who is listed as being the one who autohides feedback for logging and display purposes',
+	'articlefeedbackv5-activity-item' => 'Text for the activity panel - user name link, activity action and date.  (see {{msg-mw|articlefeedbackv5-activity-item}}) which is identical except it adds comments after this information',
 );
 
 /** Afrikaans (Afrikaans)
