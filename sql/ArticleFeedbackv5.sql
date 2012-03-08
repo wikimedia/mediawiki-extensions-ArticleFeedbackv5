@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_field (
   -- Which 'bucket' this field should be rendered in.
   afi_bucket_id integer unsigned NOT NULL
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/afi_name ON /*_*/aft_article_field (afi_name);
+CREATE INDEX /*i*/afi_name ON /*_*/aft_article_field (afi_name);
 
 -- Stores options for multi-value feedback fields (ie, select boxes) 
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_field_option (
