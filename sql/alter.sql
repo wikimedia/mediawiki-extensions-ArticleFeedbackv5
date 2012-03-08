@@ -144,3 +144,7 @@ UPDATE aft_article_feedback, aft_article_answer SET af_has_comment = TRUE WHERE 
 -- Added 3/5 (emsmith)\
 DROP INDEX /*_*/af_net_helpfulness_af_id;
 CREATE INDEX /*_*/af_net_helpfulness_af_id ON /*_*/aft_article_feedback (af_net_helpfulness, af_id);
+
+-- make sure all old feedback has dates, even if they're wrong
+UPDATE aft_article_feedback SET af_hide_timestamp = NOW() WHERE af_is_hidden IS TRUE AND af_hide_timestamp = '';
+UPDATE aft_article_feedback SET af_oversight_timestamp = NOW() WHERE af_is_deleted IS TRUE AND af_oversight_timestamp = '';
