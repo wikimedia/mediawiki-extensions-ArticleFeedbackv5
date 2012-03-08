@@ -241,7 +241,8 @@ class ApiArticleFeedbackv5Utils {
 
 		// if this is an automatic action, we create our special extension doer and send
 		if ($auto) {
-			$doer = User::newFromName( 'Article Feedback V5' );
+			$default_user = wfMessage( 'articlefeedbackv5-default-user' )->text();
+			$doer = User::newFromName( $default_user );
 			// I cannot see how this could fail, but if it does do not log
 			if (!$doer) {
 				return;

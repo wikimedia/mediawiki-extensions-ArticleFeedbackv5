@@ -364,6 +364,9 @@ $messages['en'] = array(
 	'articlefeedbackv5-activity-item-comment' => '$1 $2 $3 : $4',
 	'articlefeedbackv5-activity-item' => '$1 $2 $3',
 
+	/* Our fake/default user */
+	'articlefeedbackv5-default-user' => 'Article Feedback V5',
+
 	/* EmailCapture */
 	'articlefeedbackv5-emailcapture-response-body' => 'Hello!
 
@@ -683,6 +686,7 @@ This URL can be changed to point to a translated version of the page if it exist
 * <code>$2</code> – Page name of item with feedback requiring oversight.
 * <code>$3</code> – URL directly to feedback location
 * <code>$4</code> – The help link.',
+	'articlefeedbackv5-default-user' => 'The name of the default or internal user who is listed as being the one who autohides feedback for logging and display purposes'
 );
 
 /** Afrikaans (Afrikaans)

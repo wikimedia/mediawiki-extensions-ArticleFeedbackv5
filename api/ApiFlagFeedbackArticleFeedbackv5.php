@@ -48,6 +48,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		// woah, we were not checking for permissions (that could have been script kiddy bad)
 		global $wgUser;
 
+		// we may not actually use this, but don't want to repeat this a million times
+		$default_user = wfMessage( 'articlefeedbackv5-default-user' )->text();
+
 		// we use ONE db connection that talks to master
 		$dbw     = wfGetDB( DB_MASTER );
 		$dbw->begin();
@@ -98,7 +101,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					// tell front-end autohiding was done
 					$results['autohidden'] = 1;
 					// This is data for the "hidden by, oversighted by" red line
-					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink(null, 'Article Feedback V5');
+					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink(null, $default_user);
 					$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 				}
 
@@ -202,7 +205,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					// tell front-end autohiding was done
 					$results['autohidden'] = 1;
 					// This is data for the "hidden by, oversighted by" red line
-					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink(null, 'Article Feedback V5');
+					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink(null, $default_user);
 					$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 				}
 			}
@@ -250,7 +253,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					// tell front-end autohiding was done
 					$results['autohidden'] = 1;
 					// This is data for the "hidden by, oversighted by" red line
-					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink(null, 'Article Feedback V5');
+					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink(null, $default_user);
 					$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 				}
 

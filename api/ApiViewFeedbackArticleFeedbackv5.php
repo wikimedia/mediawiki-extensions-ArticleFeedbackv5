@@ -347,6 +347,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$can_vote   = !$wgUser->isBlocked();
 		$can_hide   = $wgUser->isAllowed( 'aftv5-hide-feedback' );
 		$can_delete = $wgUser->isAllowed( 'aftv5-delete-feedback' );
+		$default_user = wfMessage( 'articlefeedbackv5-default-user' )->text();
 
 		$footer_links = Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-vote-wrapper'
@@ -498,12 +499,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		);
 		if ( $record[0]->af_is_hidden ) {
 
-			$attributes['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink($record[0]->af_hide_user_id, 'Article Feedback V5');
+			$attributes['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink($record[0]->af_hide_user_id, $default_user);
 			$attributes['hide-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_hide_timestamp );
 		}
 		if ( $record[0]->af_is_deleted ) {
 
-			$attributes['oversight-user'] = ApiArticleFeedbackv5Utils::getUserLink($record[0]->af_oversight_user_id, 'Article Feedback V5');
+			$attributes['oversight-user'] = ApiArticleFeedbackv5Utils::getUserLink($record[0]->af_oversight_user_id, $default_user);
 			$attributes['oversight-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_oversight_timestamp );
 		}
 
