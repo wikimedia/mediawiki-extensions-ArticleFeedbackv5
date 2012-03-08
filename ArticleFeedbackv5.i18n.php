@@ -481,7 +481,7 @@ The link to the edit tutorial',
 	'articlefeedbackv5-special-more' => '{{Identical|More}}',
 	'articlefeedbackv5-special-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]]. Parameters:
 * $1 is the title of the article for which we show the feedback',
-	'articlefeedbackv5-hidden' => The marker that appears on a comment if it has been hidden by a monitor.
+	'articlefeedbackv5-hidden' => 'The marker that appears on a comment if it has been hidden by a monitor.
 * $1 is the name of the monitor who performed the hide
 * $2 is the timestamp for when the hide occured',
 	'articlefeedbackv5-deleted' => 'The marker that appears on a comment if it has been deleted by an oversighter.
