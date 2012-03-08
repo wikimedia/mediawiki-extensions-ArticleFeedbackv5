@@ -85,7 +85,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			$html .= Html::openElement( 'div', array() );
 			$html .= wfMessage( 'articlefeedbackv5-activity-feedback-info',
 						array($feedback->af_id))
-					->rawParams($this->getUserLink($feedback->af_user_id, $feedback->af_user_ip))
+					->rawParams(ApiArticleFeedbackv5Utils::getUserLink($feedback->af_user_id, $feedback->af_user_ip))
 					->text();
 			$html .= Html::closeElement( 'div' );
 	
@@ -153,7 +153,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			if ($item->log_comment == '') {
 				$html .= wfMessage( 'articlefeedbackv5-activity-item' )
 					->rawParams(
-						$this->getUserLink($item->log_user, $item->log_user_text),
+						ApiArticleFeedbackv5Utils::getUserLink($item->log_user, $item->log_user_text),
 						Html::element( 'span', array(
 							'class' => 'articleFeedbackv5-activity-item-action'
 							),
@@ -164,7 +164,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			} else {
 				$html .= wfMessage( 'articlefeedbackv5-activity-item-comment' )
 					->rawParams(
-						$this->getUserLink($item->log_user, $item->log_user_text),
+						ApiArticleFeedbackv5Utils::getUserLink($item->log_user, $item->log_user_text),
 						Html::element( 'span', array(
 						'class' => 'articleFeedbackv5-activity-item-action'
 							),
@@ -342,28 +342,6 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
-	}
-
-	/**
-	 * Creates a user link for a log row
-	 *
-	 * @param stdClass $item row from log table db
-	 * @return string the SVN version info
-	 */
-	protected function getUserLink($user_id, $user_ip) {
-		$userId = (int) $user_id;
-		if ( $userId !== 0 ) { // logged-in users
-			$user = User::newFromId( $userId );
-		} else { // IP users
-			$userText = $user_ip;
-			$user = User::newFromName( $userText, false );
-		}
-
-		$element = Linker::userLink(
-				$user->getId(),
-				$user->getName()
-			);
-		return $element;
 	}
 
 	/**

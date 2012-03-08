@@ -497,38 +497,14 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'rel'   => $id
 		);
 		if ( $record[0]->af_is_hidden ) {
-			// if user is 0, we use a fake user
-			if ($record[0]->af_hide_user_id > 0) {
-				$user = User::newFromId( $record[0]->af_hide_user_id );
-				if ($user) {
-					$name = $user->getName();
-				}
-			}
-			if(!isset($name)) {
-				$name = 'Article Feedback V5';
-			}
 
-			$attributes['hide-user'] = $name;
-			if ($record[0]->af_hide_timestamp > 0) {
-				$attributes['hide-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_hide_timestamp );
-			}
+			$attributes['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink($record[0]->af_hide_user_id, 'Article Feedback V5');
+			$attributes['hide-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_hide_timestamp );
 		}
 		if ( $record[0]->af_is_deleted ) {
-			// if user is 0, we use a fake user
-			if ($record[0]->af_oversight_user_id > 0) {
-				$user = User::newFromId( $record[0]->af_oversight_user_id );
-				if ($user) {
-					$name = $user->getName();
-				}
-			}
-			if(!isset($name)) {
-				$name = 'Article Feedback V5';
-			}
 
-			$attributes['oversight-user'] = $name;
-			if ($record[0]->af_oversight_timestamp > 0) {
-				$attributes['oversight-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_oversight_timestamp );
-			}
+			$attributes['oversight-user'] = ApiArticleFeedbackv5Utils::getUserLink($record[0]->af_oversight_user_id, 'Article Feedback V5');
+			$attributes['oversight-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_oversight_timestamp );
 		}
 
 		return Html::openElement( 'div', $attributes )

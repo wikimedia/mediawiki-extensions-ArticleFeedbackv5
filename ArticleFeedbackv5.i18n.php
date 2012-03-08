@@ -142,9 +142,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 month|$1 months}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 week|$1 weeks}}',
 	'articlefeedbackv5-timestamp-seconds' => 'less than 1 minute',
-	'articlefeedbackv5-mask-text' => 'Feedback hidden by administrative action. Click to view contents.',
+	'articlefeedbackv5-mask-text-hidden' => 'This post was hidden by an authorized editor',
+	'articlefeedbackv5-mask-text-overarticlefeedbackv5-mask-text-hiddensight' => 'This post was oversighted by an authorized editor',
 	'articlefeedbackv5-mask-postnumber' => 'Post #$1',
-		
+
 	/* Special page flyover panels */
 	/* Hide this post panel */
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',

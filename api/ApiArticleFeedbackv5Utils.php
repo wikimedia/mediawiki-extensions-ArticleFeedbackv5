@@ -269,5 +269,34 @@ class ApiArticleFeedbackv5Utils {
 
 		$dbw->commit();
 	}
+
+	/**
+	 * Creates a user link for a log row
+	 *
+	 * @param int $user_id can be null or a user object
+	 * @param string $user_ip (name works too)
+	 * @return anchor tag link to user
+	 */
+	public static function getUserLink($user_id, $user_ip = null) {
+		// if $user is not an object
+		if ( !($user_id instanceof User) ){
+			$userId = (int) $user_id;
+			if ( $userId !== 0 ) { // logged-in users
+				$user = User::newFromId( $userId );
+			} else { // IP users
+				$userText = $user_ip;
+				$user = User::newFromName( $userText, false );
+			}
+		} else {
+			// user is an object, all good, make link
+			$user = $user_id;
+		}
+
+		$element = Linker::userLink(
+				$user->getId(),
+				$user->getName()
+			);
+		return $element;
+	}
 }
 

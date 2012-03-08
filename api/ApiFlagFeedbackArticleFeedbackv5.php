@@ -83,7 +83,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				}
 
 				// This is data for the "hidden by, oversighted by" red line
-				$results['oversight-user'] = $wgUser->getName();
+				$results['oversight-user'] = ApiArticleFeedbackv5Utils::getUserLink($wgUser);
 				$results['oversight-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 
 				// autohide if not hidden
@@ -98,7 +98,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					// tell front-end autohiding was done
 					$results['autohidden'] = 1;
 					// This is data for the "hidden by, oversighted by" red line
-					$results['hide-user'] = 'Article Feedback V5';
+					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink(null, 'Article Feedback V5');
 					$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 				}
 
@@ -130,7 +130,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
 
 				// This is data for the "hidden by, oversighted by" red line
-				$results['hide-user'] = $wgUser->getName();
+				$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink($wgUser);
 				$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 
 			} else {
@@ -202,7 +202,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					// tell front-end autohiding was done
 					$results['autohidden'] = 1;
 					// This is data for the "hidden by, oversighted by" red line
-					$results['hide-user'] = 'Article Feedback V5';
+					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink(null, 'Article Feedback V5');
 					$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 				}
 			}
@@ -250,7 +250,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					// tell front-end autohiding was done
 					$results['autohidden'] = 1;
 					// This is data for the "hidden by, oversighted by" red line
-					$results['hide-user'] = 'Article Feedback V5';
+					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink(null, 'Article Feedback V5');
 					$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 				}
 

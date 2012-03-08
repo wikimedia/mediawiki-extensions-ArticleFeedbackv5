@@ -477,9 +477,10 @@
 			.data( 'hidden', true );
 		$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
 		$( '<span class="articleFeedbackv5-feedback-hidden-marker"></span>' )
-			.text( mw.msg( 'articlefeedbackv5-hidden', $hide_user, $hide_timestamp) )
-			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
-		$.articleFeedbackv5special.maskPost( $row );
+			// this is on purpose html not text- $hide_user is a  link
+			.html( mw.msg( 'articlefeedbackv5-hidden', $hide_user, $hide_timestamp) )
+			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap-h3' ) );
+		$.articleFeedbackv5special.maskPost( $row, 'hidden');
 	};
 	// }}}
 	// {{{ unmarkHidden
@@ -496,7 +497,7 @@
 	};
 	// }}}
 	// {{{ maskPost
-	$.articleFeedbackv5special.maskPost = function( $row ) {
+	$.articleFeedbackv5special.maskPost = function( $row, $type ) {
 		var $screen = $( $.articleFeedbackv5special.maskHtmlTemplate )
 			.addClass( 'articleFeedbackv5-post-screen' )
 			.height( $row.innerHeight() )
@@ -506,7 +507,7 @@
 		$screen.find( '.articleFeedbackv5-mask-text-wrapper')
 			.css( 'top', $screen.innerHeight() / 2 - 12 );
 		$screen.find( '.articleFeedbackv5-mask-text' )
-			.text( mw.msg( 'articlefeedbackv5-mask-text' ) );
+			.text( mw.msg( 'articlefeedbackv5-mask-text-' + $type ) );
 		$screen.find( '.articleFeedbackv5-mask-postid' )
 			.text( mw.msg( 'articlefeedbackv5-mask-postnumber', $row.attr( 'rel' ) ) );
 		$row.prepend( $screen );
@@ -525,10 +526,11 @@
 		$row.addClass( 'articleFeedbackv5-feedback-deleted' )
 			.data( 'deleted', true );
 		var $marker = $( '<span class="articleFeedbackv5-feedback-deleted-marker"></span>' )
-			.text( mw.msg( 'articlefeedbackv5-deleted', $oversight_user, $oversight_timestamp ) )
+			// this is on purpose html not text- $oversight_user is a  link
+			.html( mw.msg( 'articlefeedbackv5-deleted', $oversight_user, $oversight_timestamp ) )
 			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap h3' ) );
 		$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
-		$.articleFeedbackv5special.maskPost( $row );
+		$.articleFeedbackv5special.maskPost( $row, 'oversight' );
 	};
 
 	// }}}
