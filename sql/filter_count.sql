@@ -11,7 +11,7 @@ INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_co
 
 -- oversighted
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'deleted', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND af_is_deleted IS TRUE GROUP BY af_page_id;
---unoversighted
+-- unoversighted
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'undeleted', COUNT(*) FROM aft_article_feedback WHERE af_bucket_id = 1 AND af_is_deleted IS FALSE AND af_is_undeleted IS TRUE GROUP BY af_page_id;
 
 -- visible (all not hidden)
