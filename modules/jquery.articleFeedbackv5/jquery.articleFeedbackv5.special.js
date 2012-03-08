@@ -470,6 +470,9 @@
 	 * @param $row element the feedback row
 	 */
 	$.articleFeedbackv5special.markHidden = function ( $row, $hide_user, $hide_timestamp ) {
+		if ( $row.data( 'deleted' ) ) {
+			$.articleFeedbackv5special.unmarkDeleted( $row );
+		}
 		if ( $row.data( 'hidden' ) ) {
 			$.articleFeedbackv5special.unmarkHidden( $row );
 		}
