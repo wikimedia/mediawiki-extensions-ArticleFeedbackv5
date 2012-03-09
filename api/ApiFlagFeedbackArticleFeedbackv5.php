@@ -26,7 +26,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 * a piece of feedback
 	 *
 	 * A feedback request consists of
-	 * 1. 
+	 * 1.
 	 */
 	public function execute() {
 
@@ -63,13 +63,13 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			// no-op, because this is already broken
 			$error = 'articlefeedbackv5-invalid-feedback-id';
 
-		} elseif ( 'delete' == $flag && $wgUser->isAllowed( 'aftv5-delete-feedback' )) {
+		} elseif ( 'delete' == $flag && $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
 
 			// deleting means to "mark as oversighted" and "delete" it
 			// oversighting also auto-hides the item
 
 			// increase means "oversight this"
-			if( $direction == 'increase' ) {
+			if ( $direction == 'increase' ) {
 				$activity = 'oversight';
 
 				// delete
@@ -81,16 +81,16 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				// delete specific filters
 				$filters['deleted'] = 1;
 				$filters['notdeleted'] = -1;
-				if (true == $record->af_is_undeleted ) {
+				if ( true == $record->af_is_undeleted ) {
 					$filters['undeleted'] = -1;
 				}
 
 				// This is data for the "hidden by, oversighted by" red line
-				$results['oversight-user'] = ApiArticleFeedbackv5Utils::getUserLink($wgUser);
+				$results['oversight-user'] = ApiArticleFeedbackv5Utils::getUserLink( $wgUser );
 				$results['oversight-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 
 				// autohide if not hidden
-				if (false == $record->af_is_hidden ) {
+				if ( false == $record->af_is_hidden ) {
 					$update['af_is_hidden'] = true;
 					$update['af_is_unhidden'] = false;
 					$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
@@ -101,7 +101,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					// tell front-end autohiding was done
 					$results['autohidden'] = 1;
 					// This is data for the "hidden by, oversighted by" red line
-					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink(null, $default_user);
+					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink( null, $default_user );
 					$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 				}
 
@@ -118,10 +118,10 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$filters['notdeleted'] = 1;
 			}
 
-		} elseif ( 'hide' == $flag && $wgUser->isAllowed( 'aftv5-hide-feedback' )) {
+		} elseif ( 'hide' == $flag && $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
 
 			// increase means "hide this"
-			if( $direction == 'increase' ) {
+			if ( $direction == 'increase' ) {
 				$activity = 'hidden';
 
 				// hide
@@ -133,7 +133,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$filters = $this->changeFilterCounts( $record, $filters, 'hide' );
 
 				// This is data for the "hidden by, oversighted by" red line
-				$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink($wgUser);
+				$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink( $wgUser );
 				$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 
 			} else {
@@ -146,7 +146,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				$filters = $this->changeFilterCounts( $record, $filters, 'show' );
 			}
 
-		} elseif( 'resetoversight' === $flag && $wgUser->isAllowed( 'aftv5-delete-feedback' )) {
+		} elseif ( 'resetoversight' === $flag && $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
 
 			$activity = 'decline';
 			// oversight request count becomes 0
@@ -155,11 +155,11 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$update['af_is_declined'] = true;
 			$filters['declined'] = 1;
 			// if the oversight count was greater then 1
-			if(0 < $record->af_oversight_count) {
+			if ( 0 < $record->af_oversight_count ) {
 				$filters['needsoversight'] = -1;
 			}
 
-		} elseif( 'abuse' === $flag) {
+		} elseif ( 'abuse' === $flag ) {
 
 			// Conditional formatting for abuse flag
 			global $wgArticleFeedbackv5AbusiveThreshold,
@@ -168,28 +168,28 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$results['abuse_count'] = $record->af_abuse_count;
 
 			// Make the abuse count in the result reflect this vote.
-			if( $direction == 'increase' ) {
-				$results['abuse_count']++; 
-			} else { 
-				$results['abuse_count']--; 
+			if ( $direction == 'increase' ) {
+				$results['abuse_count']++;
+			} else {
+				$results['abuse_count']--;
 			}
 			// no negative numbers
-			$results['abuse_count'] = max(0, $results['abuse_count']);
+			$results['abuse_count'] = max( 0, $results['abuse_count'] );
 
 			// Return a flag in the JSON, that turns the link red.
-			if( $results['abuse_count'] >= $wgArticleFeedbackv5AbusiveThreshold ) {
+			if ( $results['abuse_count'] >= $wgArticleFeedbackv5AbusiveThreshold ) {
 				$results['abusive'] = 1;
 			}
 
 			// Adding a new abuse flag: abusive++
-			if($direction == 'increase') {
+			if ( $direction == 'increase' ) {
 				$activity = 'flag';
 				$filters['abusive'] = 1;
 				// NOTE: we are bypassing traditional sql escaping here
 				$update[] = "af_abuse_count = af_abuse_count + 1";
 
 				// Auto-hide after threshold flags
-				if( $record->af_abuse_count > $wgArticleFeedbackv5HideAbuseThreshold
+				if ( $record->af_abuse_count > $wgArticleFeedbackv5HideAbuseThreshold
 				   && false == $record->af_is_hidden ) {
 					// hide
 					$update['af_is_hidden'] = true;
@@ -205,20 +205,20 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					// tell front-end autohiding was done
 					$results['autohidden'] = 1;
 					// This is data for the "hidden by, oversighted by" red line
-					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink(null, $default_user);
+					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink( null, $default_user );
 					$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 				}
 			}
-	
+
 			// Removing the last abuse flag: abusive--
-			elseif($direction == 'decrease') {
+			elseif ( $direction == 'decrease' ) {
 				$activity = 'unflag';
 				$filters['abusive'] = -1;
 				// NOTE: we are bypassing traditional sql escaping here
 				$update[] = "af_abuse_count = GREATEST(CONVERT(af_abuse_count, SIGNED) -1, 0)";
 
 				// Un-hide if we don't have 5 flags anymore
-				if( $record->af_abuse_count == 5 && true == $record->af_is_hidden ) {
+				if ( $record->af_abuse_count == 5 && true == $record->af_is_hidden ) {
 					$update['af_is_hidden'] = false;
 					$update['af_is_unhidden'] = true;
 
@@ -232,16 +232,16 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			}
 
 		// NOTE: this is actually request/unrequest oversight and works similar to abuse
-		} elseif( 'oversight' === $flag && $wgUser->isAllowed( 'aftv5-hide-feedback' )) {
+		} elseif ( 'oversight' === $flag && $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
 
-			if($direction == 'increase') {
+			if ( $direction == 'increase' ) {
 				$activity = 'request';
 				$filters['needsoversight'] = 1;
 				// NOTE: we are bypassing traditional sql escaping here
 				$update[] = "af_oversight_count = af_oversight_count + 1";
 
 				// autohide if not hidden
-				if (false == $record->af_is_hidden ) {
+				if ( false == $record->af_is_hidden ) {
 					$update['af_is_hidden'] = true;
 					$update['af_is_unhidden'] = false;
 					// 0 is used for "autohidden" purposes, we'll explicitly set it to overwrite last hider
@@ -253,17 +253,17 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					// tell front-end autohiding was done
 					$results['autohidden'] = 1;
 					// This is data for the "hidden by, oversighted by" red line
-					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink(null, $default_user);
+					$results['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink( null, $default_user );
 					$results['hide-timestamp'] = wfTimestamp( TS_RFC2822, $timestamp );
 				}
 
 				// IF the previous setting was 0, send an email
-				if ( $record->af_oversight_count < 1) {
+				if ( $record->af_oversight_count < 1 ) {
 
 					 $this->sendOversightEmail( $record->af_page_id , $feedbackId );
 
 				}
-			} elseif($direction == 'decrease') {
+			} elseif ( $direction == 'decrease' ) {
 				$activity = 'unrequest';
 				$filters['needsoversight'] = -1;
 				// NOTE: we are bypassing traditional sql escaping here
@@ -274,7 +274,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			}
 
 		// helpful and unhelpful flagging
-		} elseif( 'unhelpful' === $flag || 'helpful' === $flag) {
+		} elseif ( 'unhelpful' === $flag || 'helpful' === $flag ) {
 
 			$results['toggle'] = $toggle;
 			$helpful = $record->af_helpful_count;
@@ -282,10 +282,10 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 			// if toggle is on, we are decreasing one and increasing the other atomically
 			// means one less http request and the counts don't mess up
-			if (true == $toggle) {
+			if ( true == $toggle ) {
 
-				if( ( ($flag == 'helpful' && $direction == 'increase' )
-				 || ($flag == 'unhelpful' && $direction == 'decrease' ) )
+				if ( ( ( $flag == 'helpful' && $direction == 'increase' )
+				 || ( $flag == 'unhelpful' && $direction == 'decrease' ) )
 				) {
 					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_helpful_count = af_helpful_count + 1";
@@ -293,8 +293,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 					$helpful++;
 					$unhelpful--;
 
-				} elseif ( ( ($flag == 'unhelpful' && $direction == 'increase' )
-				 || ($flag == 'helpful' && $direction == 'decrease' ) )
+				} elseif ( ( ( $flag == 'unhelpful' && $direction == 'increase' )
+				 || ( $flag == 'helpful' && $direction == 'decrease' ) )
 				) {
 					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_unhelpful_count = af_unhelpful_count + 1";
@@ -305,11 +305,11 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 			} else {
 
-				if ( 'unhelpful' === $flag && $direction == 'increase') {
+				if ( 'unhelpful' === $flag && $direction == 'increase' ) {
 					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_unhelpful_count = af_unhelpful_count + 1";
 					$unhelpful++;
-				} elseif ( 'unhelpful' === $flag && $direction == 'decrease') {
+				} elseif ( 'unhelpful' === $flag && $direction == 'decrease' ) {
 					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_unhelpful_count = GREATEST(0, CONVERT(af_unhelpful_count, SIGNED) - 1)";
 					$unhelpful--;
@@ -328,31 +328,31 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$netHelpfulness = $helpful - $unhelpful;
 
 			// increase helpful OR decrease unhelpful
-			if( ( ($flag == 'helpful' && $direction == 'increase' )
-			 || ($flag == 'unhelpful' && $direction == 'decrease' ) )
+			if ( ( ( $flag == 'helpful' && $direction == 'increase' )
+			 || ( $flag == 'unhelpful' && $direction == 'decrease' ) )
 			) {
 				// net was -1: no longer unhelpful
-				if( $netHelpfulness == -1 ) {
+				if ( $netHelpfulness == -1 ) {
 					$filters['unhelpful'] = -1;
 				}
-	
+
 				// net was 0: now helpful
-				if( $netHelpfulness == 0 ) {
+				if ( $netHelpfulness == 0 ) {
 					$filters['helpful'] = 1;
 				}
 			}
 
 			// increase unhelpful OR decrease unhelpful
-			if( ( ($flag == 'unhelpful' && $direction == 'increase' )
-			 || ($flag == 'helpful' && $direction == 'decrease' ) )
+			if ( ( ( $flag == 'unhelpful' && $direction == 'increase' )
+			 || ( $flag == 'helpful' && $direction == 'decrease' ) )
 			) {
 				// net was 1: no longer helpful
-				if( $netHelpfulness == 1 ) {
+				if ( $netHelpfulness == 1 ) {
 					$filters['helpful'] = -1;
 				}
-	
+
 				// net was 0: now unhelpful
-				if( $netHelpfulness == 0 ) {
+				if ( $netHelpfulness == 0 ) {
 					$filters['unhelpful'] = 1;
 				}
 			}
@@ -362,7 +362,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		}
 
 		// we were valid
-		if ( !isset($error) ) {
+		if ( !isset( $error ) ) {
 
 			$success = $dbw->update(
 				'aft_article_feedback',
@@ -377,27 +377,27 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$dbw->commit(); // everything went well, so we commit our db changes
 
 			// helpfulness counts are NOT logged, no activity is set
-			if (isset($activity)) {
+			if ( isset( $activity ) ) {
 				ApiArticleFeedbackv5Utils::logActivity( $activity , $pageId, $feedbackId, $notes );
 			}
 
 			// handle implicit hide/show logging
 			if ( isset( $implicit_hide ) && $implicit_hide ) {
-				ApiArticleFeedbackv5Utils::logActivity( 'hidden' , $pageId, $feedbackId, '', true);
+				ApiArticleFeedbackv5Utils::logActivity( 'hidden' , $pageId, $feedbackId, '', true );
 			}
 
 			// Update helpful/unhelpful display count after submission.
 			if ( $flag == 'helpful' || $flag == 'unhelpful' ) {
 
 				// no negative numbers please
-				$helpful = max(0, $helpful);
-				$unhelpful = max(0, $unhelpful);
+				$helpful = max( 0, $helpful );
+				$unhelpful = max( 0, $unhelpful );
 
-				$results['helpful'] = wfMessage( 
+				$results['helpful'] = wfMessage(
 					'articlefeedbackv5-form-helpful-votes',
 					$helpful, $unhelpful
 				)->escaped();
-	
+
 				// Update net_helpfulness after flagging as helpful/unhelpful.
 				$dbw->update(
 					'aft_article_feedback',
@@ -449,7 +449,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				'af_is_undeleted',
 				'af_is_declined',
 				'af_has_comment',
-				'af_oversight_count'),
+				'af_oversight_count' ),
 			array( 'af_id' => $id )
 		);
 		return $record;
@@ -468,7 +468,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		// all, deleted, undeleted, and notdeleted
 
 		// use -1 (decrement) for hide, 1 for increment (show) - default is hide
-		switch($action) {
+		switch( $action ) {
 			case 'show':
 				$int = 1;
 				// if we're showing, this will increment
@@ -476,7 +476,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				break;
 			default:
 				// if we're hiding, and was unhidden, decrement
-				if(true == $record->af_is_unhidden) {
+				if ( true == $record->af_is_unhidden ) {
 					$filters['unhidden'] = -1;
 				}
 				$int = -1;
@@ -488,18 +488,18 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$filters['invisible'] = -$int; // opposite of int
 
 		// comment
-		if(true == $record->af_has_comment) {
+		if ( true == $record->af_has_comment ) {
 			$filters['comment'] = $int;
 		}
 
 		// abusive
-		if( $record->af_abuse_count > 1 ) {
+		if ( $record->af_abuse_count > 1 ) {
 			$filters['abusive'] = $int;
 		}
 		// helpful and unhelpful
-		if( $record->af_net_helpfulness > 1 ) {
+		if ( $record->af_net_helpfulness > 1 ) {
 			$filters['helpful'] = $int;
-		} elseif( $record->af_net_helpfulness < 1 ) {
+		} elseif ( $record->af_net_helpfulness < 1 ) {
 			$filters['unhelpful'] = $int;
 		}
 
@@ -618,7 +618,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 * @param int $page_id page id to grab info on
 	 * @param int $feedback_id identifier for the feedback item
 	 */
-	protected function sendOversightEmail( $page_id, $feedback_id) {
+	protected function sendOversightEmail( $page_id, $feedback_id ) {
 		global $wgUser;
 
 		// jobs need a title object
@@ -650,7 +650,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				'user_url' => $user_page->getCanonicalUrl(),
 				'page_name' => $title_object->getText(),
 				'page_url' => $title_object->getCanonicalUrl(),
-				'permalink' => $permalink->getCanonicalUrl());
+				'permalink' => $permalink->getCanonicalUrl() );
 
 		$job = new ArticleFeedbackv5MailerJob( $title_object, $params );
 		$job->insert();

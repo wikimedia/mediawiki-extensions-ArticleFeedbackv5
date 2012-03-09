@@ -32,13 +32,13 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 		// If we can't hide, we can't see activity, return an empty string
 		// front-end should never let you get here, but just in case
-		if( !$wgUser->isAllowed( 'aftv5-hide-feedback' )) {
+		if ( !$wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
 			$this->dieUsage( "You don't have permission to hide feedback", 'permissiondenied' );
 		}
 
 		// These are our valid activity log actions
 		$valid = array( 'oversight', 'unoversight', 'hidden', 'unhidden',
-				'decline', 'request', 'unrequest','flag','unflag' );
+				'decline', 'request', 'unrequest', 'flag', 'unflag' );
 
 		// get our parameter information
 		$params = $this->extractRequestParams();
@@ -50,19 +50,19 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		// fetch our activity database information
 		$feedback    = $this->fetchFeedback( $feedbackId );
 		// if this is false, this is bad feedback - move along
-		if( !$feedback ) {
+		if ( !$feedback ) {
 			$this->dieUsage( "Feedback does not exist", 'invalidfeedbackid' );
 		}
 
 		// get the string title for the page
 		$page = Title::newFromID( $feedback->af_page_id );
-		if( !$page ) {
+		if ( !$page ) {
 			$this->dieUsage( "Page for feedback does not exist", 'invalidfeedbackid' );
 		}
 		$title = $page->getDBKey();
 
 		// get our activities
-		$activities = $this->fetchActivity( $title, $feedbackId, $limit, $continue);
+		$activities = $this->fetchActivity( $title, $feedbackId, $limit, $continue );
 
 		// generate our html
 		$html = '';
@@ -75,49 +75,49 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			$html .= Html::openElement( 'div', array(
 				'class' => 'articleFeedbackv5-activity-pane'
 			) );
-	
+
 			// <div class="articleFeedbackv5-activity-feedback">
 			$html .= Html::openElement( 'div', array(
 				'class' => 'articleFeedbackv5-activity-feedback'
 			) );
-	
+
 			// <div>Feedback Post #{$feedbackid} by {$user_link}</div>
 			$html .= Html::openElement( 'div', array() );
 			$html .= wfMessage( 'articlefeedbackv5-activity-feedback-info',
-						array($feedback->af_id))
-					->rawParams(ApiArticleFeedbackv5Utils::getUserLink($feedback->af_user_id, $feedback->af_user_ip))
+						array( $feedback->af_id ) )
+					->rawParams( ApiArticleFeedbackv5Utils::getUserLink( $feedback->af_user_id, $feedback->af_user_ip ) )
 					->text();
 			$html .= Html::closeElement( 'div' );
-	
-			//<div>Posted on {$date} (UTC)</div>
+
+			// <div>Posted on {$date} (UTC)</div>
 			$html .= Html::element( 'div', array(),
 				wfMessage( 'articlefeedbackv5-activity-feedback-date',
-						array( $wgLang->timeanddate( $feedback->af_created ) ))->text() );
-	
+						array( $wgLang->timeanddate( $feedback->af_created ) ) )->text() );
+
 			// <div class="articleFeedbackv5-activity-feedback-permalink">
 			$html .= Html::openElement( 'div', array(
 				'class' => 'articleFeedbackv5-activity-feedback-permalink'
 			) );
-	
+
 			// <a href="{$permalink}">permalink</a>
 			$html .= Linker::link(
-				SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title . '/'. $feedback->af_id ),
-				wfMessage( 'articlefeedbackv5-activity-permalink' )->text());
-	
+				SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title . '/' . $feedback->af_id ),
+				wfMessage( 'articlefeedbackv5-activity-permalink' )->text() );
+
 			// </div> for class="articleFeedbackv5-activity-feedback-permalink"
 			$html .= Html::closeElement( 'div' );
-	
+
 			// </div> for class="articleFeedbackv5-activity-feedback"
 			$html .= Html::closeElement( 'div' );
-	
-			//<div class="articleFeedbackv5-activity-count">$n actions on this post</div>
-			$html .= Html::element( 'div', array('class' => 'articleFeedbackv5-activity-count'),
+
+			// <div class="articleFeedbackv5-activity-count">$n actions on this post</div>
+			$html .= Html::element( 'div', array( 'class' => 'articleFeedbackv5-activity-count' ),
 					wfMessage( 'articlefeedbackv5-activity-count' )->numParams( $feedback->af_activity_count )->text() );
-			
+
 			// </div> for class="articleFeedbackv5-activity-pane"
 			$html .= Html::closeElement( 'div' );
-	
-			//<div class="articleFeedbackv5-activity-log-items">
+
+			// <div class="articleFeedbackv5-activity-log-items">
 			$html .= Html::openElement( 'div', array(
 				'class' => 'articleFeedbackv5-activity-log-items'
 			) );
@@ -126,17 +126,17 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		$count = 0;
 
 		// divs of activity items
-		foreach($activities as $item) {
+		foreach ( $activities as $item ) {
 
 			// if we do not have a valid action, skip this item
-			if ( !in_array( $item->log_action, $valid )) {
+			if ( !in_array( $item->log_action, $valid ) ) {
 				continue;
 			}
 
 			$count++;
 
 			// figure out if we have more if we have another row past our limit
-			if($count > $limit) {
+			if ( $count > $limit ) {
 				break;
 			}
 
@@ -150,30 +150,30 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			// or the $user $did_something_on $date : $comment
 			// because the colon hanging around would look utterly stupid
 
-			if ($item->log_comment == '') {
+			if ( $item->log_comment == '' ) {
 				$html .= wfMessage( 'articlefeedbackv5-activity-item' )
 					->rawParams(
-						ApiArticleFeedbackv5Utils::getUserLink($item->log_user, $item->log_user_text),
+						ApiArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
 						Html::element( 'span', array(
 							'class' => 'articleFeedbackv5-activity-item-action'
 							),
 							wfMessage( 'articlefeedbackv5-activity-' . $item->log_action,
-								array())->text()),
-						$wgLang->timeanddate( $item->log_timestamp ))
+								array() )->text() ),
+						$wgLang->timeanddate( $item->log_timestamp ) )
 					->text();
 			} else {
 				$html .= wfMessage( 'articlefeedbackv5-activity-item-comment' )
 					->rawParams(
-						ApiArticleFeedbackv5Utils::getUserLink($item->log_user, $item->log_user_text),
+						ApiArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
 						Html::element( 'span', array(
 						'class' => 'articleFeedbackv5-activity-item-action'
 							),
 							wfMessage( 'articlefeedbackv5-activity-' . $item->log_action,
-								array())->text()),
+								array() )->text() ),
 						$wgLang->timeanddate( $item->log_timestamp ),
 						Html::element( 'span',
-							array('class' => 'articlefeedbackv5-activity-notes'),
-							$item->log_comment))
+							array( 'class' => 'articlefeedbackv5-activity-notes' ),
+							$item->log_comment ) )
 					->text();
 			}
 
@@ -181,8 +181,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			$html .= Html::closeElement( 'div' );
 		}
 
-		//optional <a href="#" class="articleFeedbackv5-activity-more">Show more Activity</a>
-		if ($count > $limit) {
+		// optional <a href="#" class="articleFeedbackv5-activity-more">Show more Activity</a>
+		if ( $count > $limit ) {
 			$html .= Html::element( 'a', array(
 					'class' => "articleFeedbackv5-activity-more",
 					'href' => '#',
@@ -191,19 +191,19 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 		// </div> for class="acticleFeedbackv5-activity-log-items"
 		$html .= Html::closeElement( 'div' );
-		
+
 		// finally add our generated html data
 		$result->addValue( $this->getModuleName(), 'limit', $limit );
 		$result->addValue( $this->getModuleName(), 'activity', $html );
 
 		// continue only goes in if it's not empty
-		if ($count > $limit) {
+		if ( $count > $limit ) {
 			$this->setContinueEnumParameter( 'continue', $this->getContinue( $item ) );
 		}
 	}
 
 	/**
-	 * Gets some base feedback information 
+	 * Gets some base feedback information
 	 *
 	 * @param int $feedbackId identifier for the feedback item we are fetching activity for
 	 * @return int total number of activity items for feedback item
@@ -218,7 +218,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 				'af_user_id',
 				'af_user_ip',
 				'af_created',
-				'af_activity_count'),
+				'af_activity_count' ),
 			array(
 				'af_id'     => $feedbackId,
 			),
@@ -241,7 +241,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 * @param mixed $continue used for offsets
 	 * @return array db record rows
 	 */
-	protected function fetchActivity( $title, $feedbackId, $limit = 25, $continue = null) {
+	protected function fetchActivity( $title, $feedbackId, $limit = 25, $continue = null ) {
 
 		$where = array (
 				'log_type' => 'articlefeedbackv5',
@@ -260,7 +260,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 				'log_user',
 				'log_user_text',
 				'log_title',
-				'log_comment'),
+				'log_comment' ),
 			$where,
 			__METHOD__,
 			array(

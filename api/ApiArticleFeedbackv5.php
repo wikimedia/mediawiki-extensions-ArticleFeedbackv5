@@ -109,7 +109,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		// Per Fabrice 1/25, FeedbackPage only cares about option 1, so
 		// don't bother updating the rollups if this is a different one.
-		if( $bucket == 1 ) {
+		if ( $bucket == 1 ) {
 			$this->updateRollupTables( $pageId, $revisionId, $userAnswers );
 			$this->updateFilterCounts( $dbw, $pageId, $userAnswers );
 		}
@@ -284,7 +284,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	public function updateFilterCounts( $dbw, $pageId, $answers ) {
 
 		// a new item should be in all and visible by default, increment those counters
-		$filters = array( 'all' => 1, 'visible' => 1, 'notdeleted' => 1);
+		$filters = array( 'all' => 1, 'visible' => 1, 'notdeleted' => 1 );
 
 		// if this record has a comment attached then increment comment as well
 		// notice we do not need to walk the entire array, since any one hit

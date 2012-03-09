@@ -95,11 +95,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// This is in memcache so I don't feel that bad re-fetching it.
 		// Needed to join in the comment and rating tables, for filtering
 		// and sorting, respectively.
-		foreach( ApiArticleFeedbackv5Utils::getFields() as $field ) {
-			if( $field['afi_bucket_id'] == 1 && $field['afi_name'] == 'comment' ) {
+		foreach ( ApiArticleFeedbackv5Utils::getFields() as $field ) {
+			if ( $field['afi_bucket_id'] == 1 && $field['afi_name'] == 'comment' ) {
 				$commentField = $field['afi_id'];
 			}
-			if( $field['afi_bucket_id'] == 1 && $field['afi_name'] == 'found' ) {
+			if ( $field['afi_bucket_id'] == 1 && $field['afi_name'] == 'found' ) {
 				$ratingField = $field['afi_id'];
 			}
 		}
@@ -107,26 +107,26 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// Build ORDER BY clause.
 		switch( $sort ) {
 			case 'helpful':
-				$sortField   = 'af_net_helpfulness'; 
+				$sortField   = 'af_net_helpfulness';
 				$order       = "af_net_helpfulness $direction, af_id $direction";
-				$continueSql = "(af_net_helpfulness $continueDirection ".intVal( $continue )
-				 ." OR (af_net_helpfulness = ".intVal( $continue )
-				 ." AND af_id $continueDirection ".intval( $continueId ).") )";
+				$continueSql = "(af_net_helpfulness $continueDirection " . intVal( $continue )
+				 . " OR (af_net_helpfulness = " . intVal( $continue )
+				 . " AND af_id $continueDirection " . intval( $continueId ) . ") )";
 				break;
 			case 'rating':
 				# TODO: null ratings don't seem to show up at all. Need to sort that one out.
 				$sortField   = 'rating';
 				$order       = "yes_no $direction, af_id $direction";
-				$continueSql = "(rating.aa_response_boolean $continueDirection ".intVal( $continue )
-				 ." OR (rating.aa_response_boolean = ".intVal( $continue )
-				 ." AND af_id $continueDirection ".intval( $continueId ).") )";
+				$continueSql = "(rating.aa_response_boolean $continueDirection " . intVal( $continue )
+				 . " OR (rating.aa_response_boolean = " . intVal( $continue )
+				 . " AND af_id $continueDirection " . intval( $continueId ) . ") )";
 				break;
 			case 'age':
 				# Default field, fall through
 			default:
-				$sortField   = 'af_id'; 
+				$sortField   = 'af_id';
 				$order       = "af_id $direction";
-				$continueSql = "af_id $continueDirection ".intVal( $continue );
+				$continueSql = "af_id $continueDirection " . intVal( $continue );
 				break;
 		}
 
@@ -162,17 +162,17 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$where,
 			__METHOD__,
 			array(
-				'LIMIT'    => ($limit + 1),
+				'LIMIT'    => ( $limit + 1 ),
 				'ORDER BY' => $order
 			),
 			array(
 				'rating'  => array(
 					'LEFT JOIN',
-					'rating.aa_feedback_id = af_id AND rating.aa_field_id = '.intval( $ratingField )
+					'rating.aa_feedback_id = af_id AND rating.aa_field_id = ' . intval( $ratingField )
 				),
 				'comment' => array(
 					'LEFT JOIN',
-					'comment.aa_feedback_id = af_id AND comment.aa_field_id = '.intval( $commentField )
+					'comment.aa_feedback_id = af_id AND comment.aa_field_id = ' . intval( $commentField )
 				)
 			)
 		);
@@ -180,7 +180,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		foreach ( $id_query as $id ) {
 			$ids[$id->af_id] = $id->af_id;
 			// Get the continue values from the last counted item.
-			if( count( $ids ) == $limit ) {
+			if ( count( $ids ) == $limit ) {
 				$this->continue   = $id->$sortField;
 				$this->continueId = $id->af_id;
 			}
@@ -252,7 +252,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		foreach ( $rows as $row ) {
 			if ( !array_key_exists( $row->af_id, $ids ) ) {
 				continue; // something has gone dreadfully wrong actually
-			} elseif ( !is_array( $ids[$row->af_id] )) {
+			} elseif ( !is_array( $ids[$row->af_id] ) ) {
 				$ids[$row->af_id] = array();
 				$ids[$row->af_id][0] = $row;
 				$ids[$row->af_id][0]->user_name = $row->user_name ? $row->user_name : $row->af_user_ip;
@@ -271,12 +271,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		// Never show hidden or deleted posts unless specifically requested
 		// and user has access.
-		if( !in_array( $filter, $deletedFilters ) 
+		if ( !in_array( $filter, $deletedFilters )
 		 || !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
 			$where[] = 'af_is_deleted IS FALSE';
 		}
 
-		if( !in_array( $filter, $hiddenFilters ) 
+		if ( !in_array( $filter, $hiddenFilters )
 		 || !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			$where[] = 'af_is_hidden IS FALSE';
 		}
@@ -357,7 +357,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		if ( $can_vote ) {
 			$footer_links .= Html::element( 'span', array(
 				'class' => 'articleFeedbackv5-helpful-caption'
-			), wfMessage( 'articlefeedbackv5-form-helpful-label' )->text() 
+			), wfMessage( 'articlefeedbackv5-form-helpful-label' )->text()
 			)
 			. Html::element( 'a', array(
 				'id'    => "articleFeedbackv5-helpful-link-$id",
@@ -371,9 +371,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$footer_links .= Html::element( 'span', array(
 			'class' => 'articleFeedbackv5-helpful-votes',
 			'id'    => "articleFeedbackv5-helpful-votes-$id"
-		), wfMessage( 'articlefeedbackv5-form-helpful-votes', 
+		), wfMessage( 'articlefeedbackv5-form-helpful-votes',
 			$wgLang->formatNum( $record[0]->af_helpful_count ),
-			$wgLang->formatNum( $record[0]->af_unhelpful_count ) 
+			$wgLang->formatNum( $record[0]->af_unhelpful_count )
 		)->text() );
 		$footer_links .= Html::closeElement( 'div' );
 		if ( $can_flag ) {
@@ -433,7 +433,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			}
 
 			// !can delete == request oversight
-			if ( $can_hide && !$can_delete) {
+			if ( $can_hide && !$can_delete ) {
 				if ( $record[0]->af_oversight_count > 0 ) {
 					$msg = 'unoversight';
 					$class = 'unrequestoversight';
@@ -457,7 +457,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 						'id'    => "articleFeedbackv5-declineoversight-link-$id",
 						'class' => "articleFeedbackv5-declineoversight-link",
 						'href' => '#',
-						), wfMessage( "articlefeedbackv5-form-decline")->text() ) );
+						), wfMessage( "articlefeedbackv5-form-decline" )->text() ) );
 				}
 
 				if ( $record[0]->af_is_deleted > 0 ) {
@@ -499,12 +499,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		);
 		if ( $record[0]->af_is_hidden ) {
 
-			$attributes['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink($record[0]->af_hide_user_id, $default_user);
+			$attributes['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink( $record[0]->af_hide_user_id, $default_user );
 			$attributes['hide-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_hide_timestamp );
 		}
 		if ( $record[0]->af_is_deleted ) {
 
-			$attributes['oversight-user'] = ApiArticleFeedbackv5Utils::getUserLink($record[0]->af_oversight_user_id, $default_user);
+			$attributes['oversight-user'] = ApiArticleFeedbackv5Utils::getUserLink( $record[0]->af_oversight_user_id, $default_user );
 			$attributes['oversight-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_oversight_timestamp );
 		}
 
@@ -515,7 +515,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		. $content
 		. $footer_links
 		. Html::closeElement( 'div' )
-		//. $details
+		// . $details
 		. $tools
 		. Html::closeElement( 'div' );
 	}
@@ -524,21 +524,21 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		global $wgLang;
 		$id    = $record->af_id;
 		$title = $record->page_title;
-			
+
 		$blocks = array(
 			array( 'total' => 60 * 60 * 24 * 365, 'name' => 'years' ),
-			array( 'total' => 60 * 60 * 24 * 30, 'name' => 'months'),
-			array( 'total' => 60 * 60 * 24 * 7, 'name' => 'weeks'),
-			array( 'total' => 60 * 60 * 24, 'name' => 'days'),
-			array( 'total' => 60 * 60, 'name' => 'hours'),
-			array( 'total' => 60, 'name' => 'minutes') );
-		
+			array( 'total' => 60 * 60 * 24 * 30, 'name' => 'months' ),
+			array( 'total' => 60 * 60 * 24 * 7, 'name' => 'weeks' ),
+			array( 'total' => 60 * 60 * 24, 'name' => 'days' ),
+			array( 'total' => 60 * 60, 'name' => 'hours' ),
+			array( 'total' => 60, 'name' => 'minutes' ) );
+
 		$since = wfTimestamp( TS_UNIX ) - wfTimestamp( TS_UNIX, $record->af_created );
 		$displayTime = 0;
 		$displayBlock = '';
-		
+
 		// get the largest time block, 1 minute 35 seconds -> 2 minutes
-		for( $i = 0, $count = count( $blocks ); $i < $count; $i++ ) {
+		for ( $i = 0, $count = count( $blocks ); $i < $count; $i++ ) {
 			$seconds = $blocks[$i]['total'];
 			$displayTime = floor( $since / $seconds );
 
@@ -549,10 +549,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				if ( ( $since % $seconds ) >= ( $seconds / 2 ) ) {
 					$displayTime++;
 
-					//advance to upper unit if possible, eg, 24 hours to 1 day
-					if ( isset( $blocks[$i-1] ) && $displayTime * $seconds ==  $blocks[$i-1]['total'] ) {
+					// advance to upper unit if possible, eg, 24 hours to 1 day
+					if ( isset( $blocks[$i -1] ) && $displayTime * $seconds ==  $blocks[$i -1]['total'] ) {
 						$displayTime = 1;
-						$displayBlock = $blocks[$i-1]['name'];
+						$displayBlock = $blocks[$i -1]['name'];
 					}
 				}
 				break;
@@ -583,13 +583,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		)
 		. Html::closeElement( 'span' );
 	}
-	
+
 
 	private function renderBucket1( $record ) {
 		if ( $record['found']->aa_response_boolean == 1 ) {
 			$msg   = 'articlefeedbackv5-form1-header-found';
 			$class = 'positive';
-		} elseif( $record['found']->aa_response_boolean !== null ) {
+		} elseif ( $record['found']->aa_response_boolean !== null ) {
 			$msg   = 'articlefeedbackv5-form1-header-not-found';
 			$class = 'negative';
 		} else {
@@ -716,7 +716,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	private function feedbackHead( $message, $class, $record, $extra = '' ) {
 		$name = htmlspecialchars( $record->user_name );
-		if( $record->af_user_ip ) {
+		if ( $record->af_user_ip ) {
 			// Anonymous user, go to contributions page.
 			$title =  SpecialPage::getTitleFor( 'Contributions', $record->user_name );
 		} else {
@@ -726,10 +726,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		// If user page doesn't exist, go someplace else.
 		// Use the contributions page for now, but it's really up to Fabrice.
-		if( !$title->exists() ) {
+		if ( !$title->exists() ) {
 			$title = SpecialPage::getTitleFor( 'Contributions', $record->user_name );
 		}
-		
+
 		$details = Html::openElement( 'span', array(
 			'class' => 'articleFeedbackv5-comment-details-updates'
 		) );
@@ -741,11 +741,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		);
 		$details .= Html::closeElement( 'span' );
 
-		return Html::openElement( 'h3', array( 'class' => $class) )
+		return Html::openElement( 'h3', array( 'class' => $class ) )
 		. Html::element( 'span', array( 'class' => 'icon' ) )
 		. Html::rawElement( 'span',
 			array( 'class' => 'result' ),
-			wfMessage( $message, $name )->rawParams( 
+			wfMessage( $message, $name )->rawParams(
 				Linker::link( $title, $name )
 			)->escaped()
 		)

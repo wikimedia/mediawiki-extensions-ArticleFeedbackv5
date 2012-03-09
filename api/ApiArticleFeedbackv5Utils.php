@@ -162,11 +162,11 @@ class ApiArticleFeedbackv5Utils {
 	public static function updateFilterCounts( $dbw, $pageId, $filters ) {
 
 		// Don't do anything unless we have filters to process.
-		if( empty( $filters ) || count($filters) < 1 ) {
-			return; 
+		if ( empty( $filters ) || count( $filters ) < 1 ) {
+			return;
 		}
 
-		foreach ( $filters as $filter => $direction) {
+		foreach ( $filters as $filter => $direction ) {
 			$rows[] = array(
 				'afc_page_id'      => $pageId,
 				'afc_filter_name'  => $filter,
@@ -183,8 +183,8 @@ class ApiArticleFeedbackv5Utils {
 			array( 'IGNORE' )
 		);
 
-		foreach ( $filters as $filter => $direction) {
-			$value = ($direction > 0) ? 'afc_filter_count + 1' : 'GREATEST(0, CONVERT(afc_filter_count, SIGNED) - 1)';
+		foreach ( $filters as $filter => $direction ) {
+			$value = ( $direction > 0 ) ? 'afc_filter_count + 1' : 'GREATEST(0, CONVERT(afc_filter_count, SIGNED) - 1)';
 
 			# Update each row with the new count.
 			$dbw->update(
@@ -209,14 +209,14 @@ class ApiArticleFeedbackv5Utils {
 	 * @param $notes     string any notes that were stored with the activity
 	 * @param $auto      boolean true if this was an "automatic" action, if so the log doer is changed
 	 */
-	public static function logActivity( $type, $pageId, $itemId, $notes, $auto = false) {
+	public static function logActivity( $type, $pageId, $itemId, $notes, $auto = false ) {
 
 		// These are our valid activity log actions
 		$valid = array( 'oversight', 'unoversight', 'hidden', 'unhidden',
-				'decline', 'request', 'unrequest','flag','unflag' );
+				'decline', 'request', 'unrequest', 'flag', 'unflag' );
 
 		// if we do not have a valid action, return immediately
-		if ( !in_array( $type, $valid )) {
+		if ( !in_array( $type, $valid ) ) {
 			return;
 		}
 
@@ -224,7 +224,7 @@ class ApiArticleFeedbackv5Utils {
 		$title_object = Title::newFromID( $pageId );
 
 		// no title object? no page? well then no logging
-		if (!$title_object) {
+		if ( !$title_object ) {
 			return;
 		}
 
@@ -240,11 +240,11 @@ class ApiArticleFeedbackv5Utils {
 		$notes = $wgLang->truncate( $notes, $wgArticleFeedbackv5MaxActivityNoteLength );
 
 		// if this is an automatic action, we create our special extension doer and send
-		if ($auto) {
+		if ( $auto ) {
 			$default_user = wfMessage( 'articlefeedbackv5-default-user' )->text();
 			$doer = User::newFromName( $default_user );
 			// I cannot see how this could fail, but if it does do not log
-			if (!$doer) {
+			if ( !$doer ) {
 				return;
 			}
 		} else {
@@ -253,7 +253,7 @@ class ApiArticleFeedbackv5Utils {
 
 		$log = new LogPage( 'articlefeedbackv5' );
 		// comments become the notes section from the feedback
-		$log->addEntry( $type, $permalink, $notes, array(), $doer);
+		$log->addEntry( $type, $permalink, $notes, array(), $doer );
 
 		// update our log count by 1
 		$dbw = wfGetDB( DB_MASTER );
@@ -278,9 +278,9 @@ class ApiArticleFeedbackv5Utils {
 	 * @param string $user_ip (name works too)
 	 * @return anchor tag link to user
 	 */
-	public static function getUserLink($user_id, $user_ip = null) {
+	public static function getUserLink( $user_id, $user_ip = null ) {
 		// if $user is not an object
-		if ( !($user_id instanceof User) ){
+		if ( !( $user_id instanceof User ) ) {
 			$userId = (int) $user_id;
 			if ( $userId !== 0 ) { // logged-in users
 				$user = User::newFromId( $userId );
