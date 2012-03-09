@@ -2634,6 +2634,8 @@ $messages['dsb'] = array(
 	'articlefeedbackv5-special-filter-visible' => 'Wšykne widobne ($1)',
 	'articlefeedbackv5-special-filter-invisible' => 'Schowany ($1)',
 	'articlefeedbackv5-special-filter-deleted' => 'Doglědowany ($1)',
+	'articlefeedbackv5-special-filter-declined' => 'Doglědowanje wótpokazane ($1)',
+	'articlefeedbackv5-special-filter-unhidden' => 'Zasej pokazany ($1)',
 	'articlefeedbackv5-special-sort-age' => 'Datum',
 	'articlefeedbackv5-special-sort-helpful' => 'Pomocniwy',
 	'articlefeedbackv5-special-sort-rating' => 'Pógódnośenje',
@@ -2646,8 +2648,8 @@ $messages['dsb'] = array(
 	'articlefeedbackv5-special-more' => 'Dalšne powěsći pokazaś',
 	'articlefeedbackv5-special-pagetitle' => 'Komentary: $1',
 	'articlefeedbackv5-form-optionid' => 'Opcija $1',
-	'articlefeedbackv5-hidden' => 'Toś ten pśinosk jo se wót awtorizěrowanego wužywarja schował',
-	'articlefeedbackv5-deleted' => 'Toś ten pśinosk jo se wót doglědowarjow wulašował',
+	'articlefeedbackv5-hidden' => 'Toś ten pśinosk jo se wót $1 dnja $2 schował',
+	'articlefeedbackv5-deleted' => 'Toś ten pśinosk jo se wót $1 dnja $2 wulašował',
 	'articlefeedbackv5-form-hide' => 'Toś ten pśinosk schowaś',
 	'articlefeedbackv5-form-unhide' => 'Toś tu powěsć pokazaś',
 	'articlefeedbackv5-form-helpful' => 'Ako pomocniwy markěrowaś ($1)',
@@ -2669,6 +2671,7 @@ $messages['dsb'] = array(
 	'articlefeedbackv5-form-invalid' => 'Njepłaśiwy ID komentarowego formulara.',
 	'articlefeedbackv5-abuse-saved' => 'Ako znjewužywanje wóznamjenjony ($1)',
 	'articlefeedbackv5-abuse-saved-masked' => 'Ako znjewužywanje wóznamjenony',
+	'articlefeedbackv5-oversight-saved' => 'Za doglědowanje markěrowany',
 	'articlefeedbackv5-error-loading-feedback' => 'Zmólka pśi zacytowanju komentara.',
 	'articlefeedbackv5-invalid-feedback-id' => 'Njepłaśiwy ID komentara',
 	'articlefeedbackv5-go-to-article' => 'Nastawk se woglědaś',
@@ -2801,7 +2804,7 @@ $messages['dsb'] = array(
 	'articlefeedbackv5-log-flag' => 'jo wóznamjenił komentar [[$1]] ako znjewužywanje',
 	'articlefeedbackv5-log-unflag' => 'jo wótpórał wóznamjenjenje komentara [[$1]] ako znjewužywanje',
 	'articlefeedbackv5-activity-pane-header' => 'Protokol aktiwity',
-	'articlefeedbackv5-activity-feedback-info' => 'Komentar pśinoska  co. $1 wót',
+	'articlefeedbackv5-activity-feedback-info' => 'Komentar pśinoska  co. $1 wót $2',
 	'articlefeedbackv5-activity-feedback-date' => '$1 pósłany',
 	'articlefeedbackv5-activity-permalink' => 'Trajny wótkaz',
 	'articlefeedbackv5-activity-hidden' => 'jo schował ten komentar',
@@ -3322,6 +3325,8 @@ $messages['es'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 mes|$1 meses}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 semana|$1 semanas}}',
 	'articlefeedbackv5-timestamp-seconds' => 'menos de 1 minuto',
+	'articlefeedbackv5-mask-text-hidden' => 'Esta entrada (post) fue ocultada por un editor autorizado',
+	'articlefeedbackv5-mask-text-oversight' => 'Esta entrada (post) fue supervisada por un editor autorizado',
 	'articlefeedbackv5-mask-postnumber' => "Mensaje (''post'') #$1",
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Ocultar esta entrada (post)',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Agregar una nota',
@@ -4252,6 +4257,8 @@ $messages['fr'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 mois|$1 mois}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 semaine|$1 semaines}}',
 	'articlefeedbackv5-timestamp-seconds' => "moins d'une minute",
+	'articlefeedbackv5-mask-text-hidden' => 'Cette note a été masquée par un éditeur agréé',
+	'articlefeedbackv5-mask-text-oversight' => 'Cette note a été surveillée par un éditeur agréé',
 	'articlefeedbackv5-mask-postnumber' => 'Note #$1',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Cacher cette note',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Ajouter une note',
@@ -4776,6 +4783,8 @@ $messages['gl'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 mes|$1 meses}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 semana|$1 semanas}}',
 	'articlefeedbackv5-timestamp-seconds' => 'menos de 1 minuto',
+	'articlefeedbackv5-mask-text-hidden' => 'Un editor autorizado agochou esta mensaxe',
+	'articlefeedbackv5-mask-text-oversight' => 'Un editor autorizado supervisou esta mensaxe',
 	'articlefeedbackv5-mask-postnumber' => 'Mensaxe nº$1',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Agochar esta mensaxe',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Engadir unha nota',
@@ -5752,6 +5761,8 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 měsacom|$1 měsacomaj|$1 měsacami|$1 měsacami}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 tydźenjom|$1 njedźelomaj|$1 njedźelemi|$1 njedźelemi}}',
 	'articlefeedbackv5-timestamp-seconds' => 'mjenje hač 1 mjeńšina',
+	'articlefeedbackv5-mask-text-hidden' => 'Tutón přinošk je so wot awtorizowaneho wužiwarja schował',
+	'articlefeedbackv5-mask-text-oversight' => 'Tutón přinošk je so wot awtorizowaneho wužiwarja dohladował',
 	'articlefeedbackv5-mask-postnumber' => 'Přinošk čo. $1',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Tutón komentar schować',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Přispomnjenku přidać',
@@ -6312,6 +6323,8 @@ $messages['ia'] = array(
 	'articlefeedbackv5-timestamp-months' => '$1 {{PLURAL:$1|mense|menses}}',
 	'articlefeedbackv5-timestamp-weeks' => '$1 {{PLURAL:$1|septimana|septimanas}}',
 	'articlefeedbackv5-timestamp-seconds' => 'minus de 1 minuta',
+	'articlefeedbackv5-mask-text-hidden' => 'Iste message esseva celate per un redactor autorisate',
+	'articlefeedbackv5-mask-text-oversight' => 'Iste message esseva mittite sub supervision per un redactor autorisate',
 	'articlefeedbackv5-mask-postnumber' => 'Message №$1',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Celar iste message',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Adder un nota',
@@ -8308,6 +8321,8 @@ $messages['mk'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 месец|$1 месеци}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 недела|$1 недели}}',
 	'articlefeedbackv5-timestamp-seconds' => 'помалку од 1 минута',
+	'articlefeedbackv5-mask-text-hidden' => 'Оваа објава е скриена од овластен уредник',
+	'articlefeedbackv5-mask-text-oversight' => 'Оваа објава е заверена од овластен уредник',
 	'articlefeedbackv5-mask-postnumber' => 'Објава бр. $1',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Скриј ја објавава',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Додај белешка',
@@ -9440,8 +9455,8 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-special-more' => 'Meer berichten weergeven',
 	'articlefeedbackv5-special-pagetitle' => 'Terugkoppeling: $1',
 	'articlefeedbackv5-form-optionid' => 'Optie $1',
-	'articlefeedbackv5-hidden' => 'Dit bericht is verborgen door een daartoe gerechtigde gebruiker',
-	'articlefeedbackv5-deleted' => 'Dit bericht is verwijderd door toezichthouders',
+	'articlefeedbackv5-hidden' => 'Dit bericht is verborgen door $1 op $2',
+	'articlefeedbackv5-deleted' => 'Dit bericht is verwijderd door $1 op $2',
 	'articlefeedbackv5-form-hide' => 'Bericht verbergen',
 	'articlefeedbackv5-form-unhide' => 'Bericht niet langer verbergen',
 	'articlefeedbackv5-form-helpful' => 'Markeren als nuttig ($1)',
@@ -9500,6 +9515,8 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|één maand|$1 maanden}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|één week|$1 weken}}',
 	'articlefeedbackv5-timestamp-seconds' => 'minder dan 1 minuut',
+	'articlefeedbackv5-mask-text-hidden' => 'Dit bericht is verborgen door een daartoe gerechtigde gebruiker',
+	'articlefeedbackv5-mask-text-oversight' => 'Dit bericht staat onder toezicht na een beslissing van een daartoe gerechtigde gebruiker',
 	'articlefeedbackv5-mask-postnumber' => 'Bericht #$1',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Dit bericht verbergen',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Opmerking toevoegen',
@@ -9695,24 +9712,25 @@ Met vriendelijke groet,
 
 Het team van {{SITENAME}}',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Er is een verzoek voor toezicht ingediend voor een terugkoppelingspagina',
-	'articlefeedbackv5-email-request-oversight-body' => 'Hallo toezichthouder.
+	'articlefeedbackv5-email-request-oversight-body' => 'Hallo toezichthouders!
 
-Er is een verzoek voor toezicht ingediend door gebruiker $4 ($1) voor terugkoppeling op deze pagina:
+Er is een verzoek voor toezicht op terugkoppeling ingediend door gebruiker $1 op deze pagina:
 
-Paginanaam: $5 ($2)
+$2
 
 Controleer deze terugkoppeling alstublieft, en keur het verzoek voor toezicht goed of af:
 
-Permanente verwijzing voor het bericht waarvoor toezicht is aangevraagd: $3
-
-Als u vragen hebt over het gebruik van de toezichtfunctie of de pagina voor terugkoppeling, kijk dan even op de pagina met veel gestelde vragen over toezicht ($6) of neem contact op met Oliver Keyes $7. 
+$3
 
 Bedankt!
 
 Het team van {{SITENAME}}
 
+PS Als u vragen hebt over het gebruik van de functie toezicht op de terugkoppelingspagina, raadpleeg dan de veel gestelde vragen over toezicht:
 
-PS Bedank u dat "paginaterugkoppeling v5" nog steeds in een vroeg stadium van ontwikkeling is en wordt getest in de Engelstalige Wikipedia op 0.6%, of 22.000 pagina\'s. De pagina voor terugkoppeling wordt nog niet beschikbaar gesteld aan de gemeenschap gedurende de testperiode.',
+$4
+
+Bedenk u dat "paginaterugkoppeling v5" nog steeds in een vroeg stadium van ontwikkeling is en wordt getest in de Engelstalige Wikipedia. De pagina voor terugkoppeling wordt nog niet beschikbaar gesteld aan de gemeenschap gedurende deze testperiode.',
 );
 
 /** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
@@ -11969,7 +11987,7 @@ $messages['sl'] = array(
 	'articlefeedbackv5-special-pagetitle' => 'Povratna informacija: $1',
 	'articlefeedbackv5-form-optionid' => 'Možnost $1',
 	'articlefeedbackv5-form-hide' => 'Skrij objavo',
-	'articlefeedbackv5-form-unhide' => 'Prikaži objavo',
+	'articlefeedbackv5-form-unhide' => 'Razkrij objavo',
 	'articlefeedbackv5-form-helpful' => 'Označi kot koristno ($1)',
 	'articlefeedbackv5-form-abuse' => 'Označi kot zlorabo ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'Označi kot zlorabo',
