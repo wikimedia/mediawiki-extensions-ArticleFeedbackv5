@@ -485,7 +485,7 @@ class ArticleFeedbackv5Hooks {
 			'action' => 'clicktracking',
 			'eventid' => $trackingId,
 			'token' => $token,
-			'info' => $title->getText(),
+			'additional' => $title->getText(),
 			'namespacenumber' => $title->getNamespace()
 		) );
 		$api = new ApiMain( $params, true );
