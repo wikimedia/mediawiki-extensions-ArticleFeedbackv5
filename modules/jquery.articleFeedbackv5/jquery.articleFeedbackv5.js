@@ -2437,8 +2437,8 @@
 	 * @param trackingId string the tracking ID
 	 */
 	$.articleFeedbackv5.trackingUrl = function ( url, trackingId ) {
-		if ( $.articleFeedbackv5.clickTracking && $.isFunction( $.trackActionURL ) ) {
-			return $.trackActionURL( url, $.articleFeedbackv5.prefix( trackingId ) );
+		if ( $.articleFeedbackv5.clickTracking ) {
+			return $.articleFeedbackv5.trackActionURL( url, $.articleFeedbackv5.prefix( trackingId ) );
 		} else {
 			return url;
 		}
@@ -3173,6 +3173,30 @@
 	};
 
 	// }}}
+
+	// {{{ trackClick
+	/**
+	 * Rewrites a URL to one that runs through the ClickTracking API module
+	 * which registers the event and redirects to the real URL
+	 *
+	 * This is a copy of the one out of the clicktracking javascript API
+	 * we have to do our OWN because there is no "additional" option in that
+	 * API which we MUST use for the article title
+	 *
+	 * @param {string} url URL to redirect to
+	 * @param {string} id Event identifier
+	 */
+	$.articleFeedbackv5.trackActionURL = function( url, id ) {
+		return mw.config.get( 'wgScriptPath' ) + '/api.php?' + $.param( {
+			'action': 'clicktracking',
+			'format' : 'json',
+			'eventid': id,
+			'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
+			'token': $.cookie( 'clicktracking-session' ),
+			'additional': mw.config.get( 'wgTitle' ),
+			'redirectto': url
+		} );
+	};
 
 	// }}}
 
