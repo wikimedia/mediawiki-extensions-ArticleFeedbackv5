@@ -422,8 +422,8 @@ publicized to the community for this testing period.',
 );
 
 /** Message documentation (Message documentation)
- * @author Arthur Richards
  * @author Amire80
+ * @author Arthur Richards
  * @author Beta16
  * @author Brandon Harris
  * @author EugeneZelenko
@@ -8563,24 +8563,24 @@ $messages['ml'] = array(
 	'articlefeedbackv5-form-tools-label' => 'ഉപകരണങ്ങൾ',
 	'articlefeedbackv5-form-helpful-yes-label' => 'അതെ',
 	'articlefeedbackv5-form-helpful-no-label' => 'അല്ല',
-	'articlefeedbackv5-form-helpful-votes' => '({{PLURAL:$1|ഒരു ഉത്തരം|$1 ഉത്തരങ്ങൾ}} {{PLURAL:$2|അതെ 1|അതെ $2}}/{{PLURAL:$3|അല്ല 1|അല്ല $3}})',
+	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$2|അതെ 1|അതെ $2}}/{{PLURAL:$3|അല്ല 1|അല്ല $3}})',
 	'articlefeedbackv5-special-filter-all' => 'എല്ലാം (മേൽനോട്ടം) ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'എല്ലാം ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'അഭിപ്രായപ്രകടനം മാത്രം ($1)',
 	'articlefeedbackv5-special-filter-abusive' => 'അധിഷേപമാണെന്ന് അടയാളപ്പെടുത്തി ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'സഹായകരം ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'സഹായകരമല്ല ($1)',
-	'articlefeedbackv5-special-filter-visible' => 'ദൃശ്യം ($1)',
-	'articlefeedbackv5-special-filter-invisible' => 'അദൃശ്യം',
+	'articlefeedbackv5-special-filter-visible' => 'എല്ലാം ദൃശ്യം ($1)',
+	'articlefeedbackv5-special-filter-invisible' => 'മറയ്ക്കപ്പെട്ടത് ($1)',
 	'articlefeedbackv5-special-filter-deleted' => 'മായ്ച്ചവ ($1)',
 	'articlefeedbackv5-special-sort-age' => 'തീയതി',
 	'articlefeedbackv5-special-sort-helpful' => 'സഹായകരം',
 	'articlefeedbackv5-special-sort-label-before' => 'ക്രമീകരിക്കേണ്ടത്:',
-	'articlefeedbackv5-special-filter-label-before' => 'പ്രദർശിപ്പിക്കേണ്ടത്:',
+	'articlefeedbackv5-special-filter-label-before' => 'പ്രദർശിപ്പിക്കുന്നവ:',
 	'articlefeedbackv5-special-more' => 'കൂടുതൽ',
 	'articlefeedbackv5-form-optionid' => 'ഐച്ഛികം $1',
 	'articlefeedbackv5-form-hide' => 'ഇത് മറയ്ക്കുക',
-	'articlefeedbackv5-form-delete' => 'മായ്ക്കുക',
+	'articlefeedbackv5-form-delete' => 'മേൽനോട്ടം',
 	'articlefeedbackv5-go-to-article' => 'താളിലേക്ക് പോകുക',
 	'articlefeedbackv5-discussion-page' => 'സംവാദം താൾ',
 	'articlefeedbackv5-whats-this' => 'എന്താണിത്?',
