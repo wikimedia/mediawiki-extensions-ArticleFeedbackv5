@@ -423,6 +423,7 @@ publicized to the community for this testing period.',
 
 /** Message documentation (Message documentation)
  * @author Arthur Richards
+ * @author Amire80
  * @author Beta16
  * @author Brandon Harris
  * @author EugeneZelenko
@@ -440,20 +441,20 @@ publicized to the community for this testing period.',
  * @author Yekrats
  */
 $messages['qqq'] = array(
-	'articlefeedbackv5-cta-thanks' => 'The bolded part of the message that appears at the top of every CTA',
-	'articlefeedbackv5-cta-confirmation-followup' => 'The non-bolded part of the message that appears at the top of every CTA',
-	'articlefeedbackv5-cta1-confirmation-title' => 'The title of the edit CTA',
-	'articlefeedbackv5-cta1-confirmation-call' => 'The text of the edit CTA',
-	'articlefeedbackv5-cta1-learn-how' => 'The link below the text on the edit CTA, pointing to the edit tutorial',
+	'articlefeedbackv5-cta-thanks' => 'The bolded part of the message that appears at the top of every CTA (call to action)',
+	'articlefeedbackv5-cta-confirmation-followup' => 'The non-bolded part of the message that appears at the top of every CTA (call to action)',
+	'articlefeedbackv5-cta1-confirmation-title' => 'The title of the edit CTA (call to action)',
+	'articlefeedbackv5-cta1-confirmation-call' => 'The text of the edit CTA (call to action)',
+	'articlefeedbackv5-cta1-learn-how' => 'The link below the text on the edit CTA (call to action), pointing to the edit tutorial',
 	'articlefeedbackv5-cta1-learn-how-url' => '{{optional}}
 The link to the edit tutorial',
-	'articlefeedbackv5-cta1-edit-linktext' => 'The explanatory text for the button on the edit CTA',
-	'articlefeedbackv5-cta2-confirmation-title' => 'The title of the learn more CTA',
-	'articlefeedbackv5-cta2-confirmation-call' => 'The explanatory text of the learn more CTA',
-	'articlefeedbackv5-cta2-button-text' => 'The text for the button on the learn more CTA',
-	'articlefeedbackv5-cta3-confirmation-title' => 'The title of the survey CTA',
-	'articlefeedbackv5-cta3-confirmation-call' => 'The explanatory text of the survey CTA',
-	'articlefeedbackv5-cta3-button-text' => 'The text for the button on the survey CTA',
+	'articlefeedbackv5-cta1-edit-linktext' => 'The explanatory text for the button on the edit CTA (call to action)',
+	'articlefeedbackv5-cta2-confirmation-title' => 'The title of the learn more CTA (call to action)',
+	'articlefeedbackv5-cta2-confirmation-call' => 'The explanatory text of the learn more CTA (call to action)',
+	'articlefeedbackv5-cta2-button-text' => 'The text for the button on the learn more CTA (call to action)',
+	'articlefeedbackv5-cta3-confirmation-title' => 'The title of the survey CTA (call to action)',
+	'articlefeedbackv5-cta3-confirmation-call' => 'The explanatory text of the survey CTA (call to action)',
+	'articlefeedbackv5-cta3-button-text' => 'The text for the button on the survey CTA (call to action)',
 	'articlefeedbackv5-error' => 'This error message will be displayed in a grey box replacing the form if there was an unrecoverable error.',
 	'articlefeedbackv5-error-blocked' => 'This error message will be displayed on the form if the user is blocked from submitting feedback.',
 	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters. $1 is the link to the abuse policy, the text of which is {{msg-mw|articlefeedbackv5-error-abuse-linktext}} and the url of which is {{msg-mw|articlefeedbackv5-error-abuse-link}}.',
