@@ -33,7 +33,7 @@ if ( $aftDiv.articleFeedbackv5( 'clickTrackingOn' ) ) {
 			'articleFeedbackv5_ct_token': clickTrackingSession,
 			'articleFeedbackv5_ct_event': event
 		} );
-		$(this).attr( 'href', $.trackActionURL( editUrl, event + '-click' ) );
+		$(this).attr( 'href', $.articleFeedbackv5.trackActionURL( editUrl, event + '-click' ) );
 	} );
 }
 
