@@ -3193,7 +3193,7 @@
 			'eventid': id,
 			'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
 			'token': $.cookie( 'clicktracking-session' ),
-			'additional': mw.config.get( 'wgTitle' ),
+			'additional': mw.config.get( 'wgTitle' ) + '|' + $.articleFeedbackv5.revisionId,
 			'redirectto': url
 		} );
 	};

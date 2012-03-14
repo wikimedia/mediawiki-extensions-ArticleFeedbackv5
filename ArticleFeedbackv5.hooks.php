@@ -418,7 +418,7 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function trackEditAttempt( $editpage ) {
-		self::trackEvent( 'edit_attempt', $editpage->getArticle()->getTitle() ); // EditPage::getTitle() doesn't exist in 1.18wmf1
+		self::trackEvent( 'edit_attempt', $editpage->getArticle()->getTitle(), $editpage->getRevIdFetched()); // EditPage::getTitle() doesn't exist in 1.18wmf1
 		return true;
 	}
 
@@ -442,7 +442,7 @@ class ArticleFeedbackv5Hooks {
 	public static function trackEditSuccess( &$article, &$user, $text,
 			$summary, $minoredit, $watchthis, $sectionanchor, &$flags,
 			$revision, &$status, $baseRevId /*, &$redirect */ ) { // $redirect not passed in 1.18wmf1
-		self::trackEvent( 'edit_success', $article->getTitle() . '|' . $baseRevId );
+		self::trackEvent( 'edit_success', $article->getTitle(), $baseRevId );
 		return true;
 	}
 
@@ -453,7 +453,7 @@ class ArticleFeedbackv5Hooks {
 	 * @param $context IContextSource
 	 * @return
 	 */
-	private static function trackEvent( $event, $title ) {
+	private static function trackEvent( $event, $title, $rev_id) {
 		global $wgArticleFeedbackv5Tracking;
 		$ctas = array( 'none', 'edit', 'learn_more' );
 
@@ -485,7 +485,7 @@ class ArticleFeedbackv5Hooks {
 			'action' => 'clicktracking',
 			'eventid' => $trackingId,
 			'token' => $token,
-			'additional' => $title->getText(),
+			'additional' => $title->getText() . '|' . $rev_id,
 			'namespacenumber' => $title->getNamespace()
 		) );
 		$api = new ApiMain( $params, true );
