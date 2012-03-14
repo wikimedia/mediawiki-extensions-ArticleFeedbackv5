@@ -981,6 +981,7 @@
 					$link.text( mw.msg( 'articlefeedbackv5-abuse-saved-masked', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
 				}
 				$link.attr( 'rel', data['articlefeedbackv5-flag-feedback'].abuse_count );
+				$link.attr( 'href', '#' );
 				if ( data['articlefeedbackv5-flag-feedback'].abusive ) {
 					$link.addClass( 'abusive' );
 				} else {
@@ -1019,6 +1020,7 @@
 					$link.text( mw.msg( 'articlefeedbackv5-form-abuse-masked', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
 				}
 				$link.attr( 'rel', data['articlefeedbackv5-flag-feedback'].abuse_count );
+				$link.attr( 'href', '#' );
 				if ( data['articlefeedbackv5-flag-feedback'].abusive ) {
 					$link.addClass( 'abusive' );
 				} else {

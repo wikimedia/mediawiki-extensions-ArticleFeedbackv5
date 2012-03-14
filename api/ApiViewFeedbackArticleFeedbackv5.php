@@ -387,6 +387,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$footer_links .= Html::element( 'a', array(
 				'id'    => "articleFeedbackv5-abuse-link-$id",
 				'class' => $aclass,
+				'href'  => '#',
 				'rel'   => $record[0]->af_abuse_count
 			), wfMessage( $msg, $wgLang->formatNum( $record[0]->af_abuse_count ) )->text() );
 		}
