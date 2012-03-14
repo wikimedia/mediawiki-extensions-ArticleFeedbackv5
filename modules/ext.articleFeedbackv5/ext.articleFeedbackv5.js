@@ -48,27 +48,12 @@ var clickFeedbackLink = function ( $link ) {
 	$aftDiv.articleFeedbackv5( 'toggleModal', $link );
 };
 
-// Drop link event
-var dropFeedbackLink = function ( $wrapper, linkId ) {
-	$wrapper.remove();
-	var expireTime = mw.config.get( 'wgArticleFeedbackv5DropLinkCookieExpires' );
-	$.cookie(
-		$aftDiv.articleFeedbackv5( 'prefix', 'drop-link' ),
-		'true',
-		{ 'expires': expireTime, 'path': '/' }
-	);
-	var tracking_id = $aftDiv.articleFeedbackv5( 'bucketName' ) +
-		'-trigger' + linkId + '-drop';
-	$aftDiv.articleFeedbackv5( 'trackClick', tracking_id );
-};
-
 // Bucketing
 var linkBucket = function () {
 	// Find out which link bucket they go in:
 	// 1. Display buckets 0 or 5?  Always no link.
 	// 2. Requested in query string (debug only)
-	// 3. Turned off via cookie?
-	// 4. Random bucketing
+	// 3. Random bucketing
 	var displayBucket = $aftDiv.articleFeedbackv5( 'getBucketId' );
 	if ( '5' == displayBucket || '0' == displayBucket ) {
 		return '-';
@@ -82,9 +67,6 @@ var linkBucket = function () {
 	if ( $aftDiv.articleFeedbackv5( 'inDebug' ) && requested in knownBuckets ) {
 		return requested;
 	}
-	if ( $.cookie( $aftDiv.articleFeedbackv5( 'prefix', 'drop-link' ) ) === 'true' ) {
-		return '-';
-	}
 	return mw.user.bucket( 'ext.articleFeedbackv5-links', cfg );
 }();
 if ( $aftDiv.articleFeedbackv5( 'inDebug' ) ) {
@@ -94,7 +76,7 @@ if ( $aftDiv.articleFeedbackv5( 'inDebug' ) ) {
 // A: After the site tagline (below the article title)
 if ( 'A' == linkBucket ) {
 	var $sub = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-sitesublink"></a>' )
-		.data( 'linkId', linkBucket )
+		.data( 'linkId', 'A' )
 		.text( mw.msg( 'articlefeedbackv5-sitesub-linktext' ) )
 		.click( function ( e ) {
 			e.preventDefault();
@@ -118,7 +100,7 @@ if ( 'A' == linkBucket ) {
 // B: Below the titlebar on the right
 if ( 'B' == linkBucket ) {
 	var $tlk = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-titlebarlink"></a>' )
-		.data( 'linkId', linkBucket )
+		.data( 'linkId', 'B' )
 		.text( mw.msg( 'articlefeedbackv5-titlebar-linktext' ) )
 		.click( function ( e ) {
 			e.preventDefault();
@@ -140,7 +122,7 @@ if ( 'C' == linkBucket ) {
 			</div>\
 		</div>' );
 	$fixedTab.find( '#articleFeedbackv5-fixedtablink' )
-		.data( 'linkId', linkBucket )
+		.data( 'linkId', 'C' )
 		.attr( 'title', mw.msg( 'articlefeedbackv5-fixedtab-linktext' ) )
 		.click( function( e ) {
 			e.preventDefault();
@@ -155,23 +137,15 @@ if ( 'D' == linkBucket ) {
 	var $bottomRightTab = $( '\
 		<div id="articleFeedbackv5-bottomrighttab" class="articleFeedbackv5-bottomrighttab">\
 			<div id="articleFeedbackv5-bottomrighttabbox" class="articleFeedbackv5-bottomrighttabbox">\
-				<div class="articleFeedbackv5-bottomrighttablink">\
-					<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-bottomrighttablink"></a>\
-					<a href="#" id="articleFeedbackv5-bottmrighttabclose" class="articleFeedbackv5-bottomrighttabclose"><span>X</span></a>\
-				</div>\
+				<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-bottomrighttablink" class="articleFeedbackv5-bottomrighttablink"></a>\
 			</div>\
 		</div>' );
 	$bottomRightTab.find( '#articleFeedbackv5-bottomrighttablink' )
-		.data( 'linkId', linkBucket )
+		.data( 'linkId', 'D' )
 		.text( mw.msg( 'articlefeedbackv5-bottomrighttab-linktext' ) )
 		.click( function( e ) {
 			e.preventDefault();
 			clickFeedbackLink( $( e.target ) );
-		} );
-	$bottomRightTab.find( '#articleFeedbackv5-bottmrighttabclose' )
-		.click( function( e ) {
-			e.preventDefault();
-			dropFeedbackLink( $( e.target ).parents( '#articleFeedbackv5-bottomrighttab' ), linkBucket );
 		} );
 	$bottomRightTab.insertBefore( $aftDiv );
 	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $bottomRightTab );
@@ -191,7 +165,7 @@ if ( 'H' == linkBucket ) {
 	var $wrp = $( '<span class="articleFeedbackv5-sectionlink-wrap"></span>' )
 		.html( '&nbsp;[<a href="#mw-articlefeedbackv5" class="articleFeedbackv5-sectionlink"></a>]' );
 	$wrp.find( 'a.articleFeedbackv5-sectionlink' )
-		.data( 'linkId', linkBucket )
+		.data( 'linkId', 'H' )
 		.text( mw.msg( 'articlefeedbackv5-section-linktext' ) )
 		.click( function ( e ) {
 			e.preventDefault();
