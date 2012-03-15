@@ -424,7 +424,7 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function trackEditAttempt( $editpage ) {
-		self::trackEvent( 'edit_attempt', $editpage->getArticle()->getTitle(), $editpage->getRevIdFetched()); // EditPage::getTitle() doesn't exist in 1.18wmf1
+		self::trackEvent( 'edit_attempt', $editpage->getArticle()->getTitle(), $editpage->getArticle()->getRevIdFetched()); // EditPage::getTitle() doesn't exist in 1.18wmf1
 		return true;
 	}
 
