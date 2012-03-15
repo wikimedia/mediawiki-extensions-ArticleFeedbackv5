@@ -501,19 +501,22 @@
 	// }}}
 	// {{{ maskPost
 	$.articleFeedbackv5special.maskPost = function( $row, $type ) {
-		var $screen = $( $.articleFeedbackv5special.maskHtmlTemplate )
-			.addClass( 'articleFeedbackv5-post-screen' )
+		var $screen = $row.find( '.articleFeedbackv5-post-screen' );
+		if( 0 == $screen.length ) {
+			$screen = $( $.articleFeedbackv5special.maskHtmlTemplate );
+			$screen.find( '.articleFeedbackv5-mask-text' )
+				.text( mw.msg( 'articlefeedbackv5-mask-text' ) );
+			$screen.find( '.articleFeedbackv5-mask-postid' )
+				.text( mw.msg( 'articlefeedbackv5-mask-postnumber', $row.attr( 'rel' ) ) );
+			$row.prepend( $screen );
+		}
+		$screen
 			.height( $row.innerHeight() )
 			.click( function( e ) {
 				$( e.target ).closest( '.articleFeedbackv5-post-screen' ).remove();
 			} );
 		$screen.find( '.articleFeedbackv5-mask-text-wrapper')
 			.css( 'top', $screen.innerHeight() / 2 - 12 );
-		$screen.find( '.articleFeedbackv5-mask-text' )
-			.text( mw.msg( 'articlefeedbackv5-mask-text-' + $type ) );
-		$screen.find( '.articleFeedbackv5-mask-postid' )
-			.text( mw.msg( 'articlefeedbackv5-mask-postnumber', $row.attr( 'rel' ) ) );
-		$row.prepend( $screen );
 	}
 	// }}}
 	// {{{ markDeleted

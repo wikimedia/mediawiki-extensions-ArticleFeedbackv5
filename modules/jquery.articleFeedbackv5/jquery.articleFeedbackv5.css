@@ -1034,3 +1034,61 @@ body.skin-monobook .articleFeedbackv5-dialog {
 	border-radius: 0;
 }
 
+/* Tipsy */
+tipsy {
+	padding: 5px 5px 11px 5px;
+}
+.tipsy-inner {
+	padding: 0;
+	border-color: #888;
+	max-width: 40em;
+	-moz-box-shadow: 2px 2px 1px #999;
+	-webkit-box-shadow: 2px 2px 1px #999;
+	box-shadow: 2px 2px 1px #999;
+	margin-bottom: 5px;
+	font-size: 0.9em;
+}
+.tipsy-se .tipsy-arrow {
+	/* @embed */
+	background-image: url(images/tipsy-flyover.png);
+	width: 23px;
+	height: 11px;
+	margin-top: -11px;
+}
+.articlefeedbackv5-flyover-header {
+	background-color: #d2e5f7;
+	padding: 5px 10px 8px 10px;
+	-moz-border-radius: 3px 3px 0 0;
+	-webkit-border-radius: 3px 3px 0 0;
+	border-radius: 3px 3px 0 0; 
+	-khtml-border-radius: 3px 3px 0 0;
+	width: 200px;
+}
+.articlefeedbackv5-flyover-header h3 {
+	font-size: 1.0em;
+}
+.articlefeedbackv5-flyover-footer {
+	padding: 10px 10px 15px 10px;
+	width: 100%;
+}
+#articlefeedbackv5-noteflyover-close {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 15px;
+	margin-top: 15px;
+	width: 16px;
+	height: 16px;
+	/* @embed */
+	background-image: url(images/bg-close-off.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-size: 16px 16px;
+}
+#articlefeedbackv5-noteflyover-close:hover {
+	/* @embed */
+	background-image: url(images/bg-close-hov.png);
+}
+div.articlefeedbackv5-form-flyover {
+	padding: 10px 20px 10px 10px;
+}

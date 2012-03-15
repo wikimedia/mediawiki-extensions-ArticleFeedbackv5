@@ -419,6 +419,16 @@ Please note that the article feedback tool v5 is still in early stages of
 testing on the English Encyclopedia and that the feedback page has not been
 publicized to the community for this testing period.',
 
+	/* Front-end: feedback link close button */
+	'articlefeedbackv5-link-close-caption' => 'Remove Article Feedback?',
+	'articlefeedbackv5-link-close-text1' => 'To remove this widget, go to',
+	'articlefeedbackv5-link-close-linktext' => '"My Preferences > Appearances"',
+	'articlefeedbackv5-link-close-linkurl' => '#',
+	'articlefeedbackv5-link-close-text2' => 'then check this box:',
+	'articlefeedbackv5-link-cllse-text3' => '"Don\'t show the Article Feedback widget."',
+	'articlefeedbackv5-link-close-submit' => 'Remove',
+	'articlefeedbackv5-link-close-cancel' => 'Cancel',
+
 );
 
 /** Message documentation (Message documentation)
@@ -692,6 +702,17 @@ This URL can be changed to point to a translated version of the page if it exist
 * <code>$2</code> – Page name of item with feedback requiring oversight.
 * <code>$3</code> – URL directly to feedback location
 * <code>$4</code> – The help link.',
+
+	/* Front-end: feedback link close button */
+	'articlefeedbackv5-link-close-caption' => 'Remove article feedback tipsy - caption',
+	'articlefeedbackv5-link-close-text1' => 'Remove article feedback tipsy - text line 1',
+	'articlefeedbackv5-link-close-linktext' => 'Remove article feedback tipsy - text for close link',
+	'articlefeedbackv5-link-close-linkurl' => 'Remove article feedback tipsy - URL for close link (also used for confirm button link URL)',
+	'articlefeedbackv5-link-close-text2' => 'Remove article feedback tipsy - text line 2',
+	'articlefeedbackv5-link-cllse-text3' => 'Remove article feedback tipsy - text line 3',
+	'articlefeedbackv5-link-close-submit' => 'Remove article feedback tipsy - confirm button text',
+	'articlefeedbackv5-link-close-cancel' => 'Remove article feedback tipsy - cancel link text',
+
 );
 
 /** Afrikaans (Afrikaans)

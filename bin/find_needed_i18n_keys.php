@@ -8,11 +8,8 @@
 
 include dirname(__FILE__) . '/../ArticleFeedbackv5.i18n.php';
 
-$en_keys = array_keys($messages['en']);
-$qqq_keys = array_keys($messages['qqq']);
-
-$needed_keys = array_diff($en_keys, $qqq_keys);
-
-foreach($needed_keys as $name) {
-    echo "$name\n";
+foreach( array_keys($messages['en']) as $needle ) {
+	if( !array_key_exists($needle, $messages['qqq']) ) {
+		echo "'$needle' => '',\n";
+	}
 }

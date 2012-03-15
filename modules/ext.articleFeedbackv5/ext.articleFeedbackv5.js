@@ -6,6 +6,23 @@
 /* Load at the bottom of the article */
 var $aftDiv = $( '<div id="mw-articlefeedbackv5"></div>' ).articleFeedbackv5();
 
+var closeAftTipsyHtml = '\
+	<div class="articlefeedbackv5-flyover-header">\
+		<h3 id="articlefeedbackv5-noteflyover-caption">' + mw.msg( 'articlefeedbackv5-link-close-caption' ) + '</h3>\
+		<a id="articlefeedbackv5-noteflyover-close" href="#"></a>\
+	</div>\
+	<div class="articlefeedbackv5-form-flyover">\
+		<div>' + mw.msg( 'articlefeedbackv5-link-close-text1' ) + '</div>\
+		<a href="' + mw.msg( 'articlefeedbackv5-link-close-linkurl' ) + '">' + mw.msg( 'articlefeedbackv5-link-close-linktext' ) + '</a>\
+		<div>' + mw.msg( 'articlefeedbackv5-link-close-text2' ) + '</div>\
+		<div>' + mw.msg( 'articlefeedbackv5-link-close-text3' ) + '</div>\
+		<div class="articlefeedbackv5-flyover-footer">\
+			<a id="articlefeedbackv5-noteflyover-submit" class="articlefeedbackv5-flyover-button" href="#">CLOSE</a>\
+			<a id="articlefeedbackv5-noteflyover-cancel" href="#">CANCEL</a>\
+			<a class="articlefeedbackv5-flyover-help" id="articlefeedbackv5-noteflyover-help" href="#">[?]</a>\
+		</div>\
+	</div>';
+
 // Put on bottom of article before #catlinks (if it exists)
 // Except in legacy skins, which have #catlinks above the article but inside content-div.
 var legacyskins = [ 'standard', 'cologneblue', 'nostalgia' ];
@@ -148,11 +165,56 @@ if ( 'D' == linkBucket ) {
 			clickFeedbackLink( $( e.target ) );
 		} );
 	$bottomRightTab.insertBefore( $aftDiv );
+	
 	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $bottomRightTab );
 }
 
-// E: Button fixed to bottom center
-// NOT IMPLEMENTED
+// E: Same as D, with other colors
+if ( 'E' == linkBucket ) {
+	var $bottomRightTab = $( '\
+		<div id="articleFeedbackv5-bottomrighttab" class="articleFeedbackv5-bottomrighttab">\
+			<div id="articleFeedbackv5-bottomrighttabbox" class="articleFeedbackv5-bottomrighttabbox">\
+				<div class="articleFeedbackv5-bottomrighttablink">\
+					<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-bottomrighttablink"></a>\
+					<a href="#" id="articleFeedbackv5-bottmrighttabclose" class="articleFeedbackv5-bottomrighttabclose">X</a>\
+				</div>\
+			</div>\
+		</div>' );
+	$bottomRightTab.find( '#articleFeedbackv5-bottomrighttablink' )
+		.data( 'linkId', linkBucket )
+		.text( mw.msg( 'articlefeedbackv5-bottomrighttab-linktext' ) )
+		.click( function( e ) {
+			e.preventDefault();
+			clickFeedbackLink( $( e.target ) );
+		} );
+	$bottomRightTab.find( '#articleFeedbackv5-bottmrighttabclose' )
+		.tipsy( {
+			delayIn: 0,				// delay before showing tooltip (ms)
+			delayOut: 0,			// delay before hiding tooltip (ms)
+			fade: false,			// fade tooltips in/out?
+			fallback: '',			// fallback text to use when no tooltip text
+			gravity: 'se',			// gravity
+			html: true,				// is tooltip content HTML?
+			live: false,			// use live event support?
+			offset: 10,				// pixel offset of tooltip from element
+			opacity: 1.0,			// opacity of tooltip
+			trigger: 'manual',		// how tooltip is triggered - hover | focus | manual
+			title: function() {
+				return closeAftTipsyHtml;
+			}
+		} );
+	$bottomRightTab.find( '#articleFeedbackv5-bottmrighttabclose' )
+		.click( function( e ) {
+			e.preventDefault();
+			//dropFeedbackLink( $( e.target ).parents( '#articleFeedbackv5-bottomrighttab' ), linkBucket );
+			$( e.target ).tipsy( 'show' );
+		} );
+	$bottomRightTab.insertBefore( $aftDiv );
+	
+	// Setup close tipsy	
+	
+	$aftDiv.articleFeedbackv5( 'addToRemovalQueue', $bottomRightTab );
+}
 
 // F: Button fixed to left side
 // NOT IMPLEMENTED

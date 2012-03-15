@@ -81,9 +81,9 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// placed in a bucket.
 	'buckets' => array(
 		'zero' => 0,
-		'one' => 34,
-		'two' => 33,
-		'three' => 33,
+		'one' => 100,
+		'two' => 0,
+		'three' => 0,
 		'four' => 0,
 		'five' => 0,
 	),
@@ -140,7 +140,7 @@ $wgArticleFeedbackv5LinkBuckets = array(
 	//  B: Below the titlebar on the right
 	//  C: Button fixed to right side
 	//  D: Button fixed to bottom right
-	//  E: Button fixed to bottom center
+	//  E: Button fixed to bottom right, design D2
 	//  F: Button fixed to left side
 	//  G: Button below logo
 	//  H: Link on each section bar
@@ -149,8 +149,8 @@ $wgArticleFeedbackv5LinkBuckets = array(
 		'A' => 0,
 		'B' => 0,
 		'C' => 0,
-		'D' => 100,
-		'E' => 0,
+		'D' => 0,
+		'E' => 100,
 		'F' => 0,
 		'G' => 0,
 		'H' => 0,

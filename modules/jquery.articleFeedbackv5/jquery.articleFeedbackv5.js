@@ -200,7 +200,7 @@
 			',
 
 		clear: '<div class="clear"></div>'
-
+		
 	};
 
 	// }}}
@@ -2177,7 +2177,7 @@
 		// Track init at 1%
 		if ( Math.random() * 100 < 1 ) {
 			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-init' );
-		}
+		}		
 	};
 
 	// }}}
