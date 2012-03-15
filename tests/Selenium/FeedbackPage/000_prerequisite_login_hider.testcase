@@ -32,18 +32,24 @@
 	<td></td>
 </tr>
 <tr>
+	<td>waitForPageToLoad</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
 	<td>deleteAllVisibleCookies</td>
 	<td></td>
 	<td></td>
 </tr>
+<!--Attempt log out-->
 <tr>
 	<td>storeEval</td>
-	<td>null != window.document.getElementById('pt-logout')</td>
-	<td>canLogOut</td>
+	<td>window.document.getElementById('pt-logout')</td>
+	<td>logout</td>
 </tr>
 <tr>
 	<td>if</td>
-	<td>&quot;false&quot; != &quot;${canLogOut}&quot;</td>
+	<td>logout != &quot;null&quot;</td>
 	<td></td>
 </tr>
 <tr>
@@ -56,9 +62,67 @@
 	<td></td>
 	<td></td>
 </tr>
+<!--Attempt login via anonlogin-->
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById('pt-anonlogin')</td>
+	<td>login</td>
+</tr>
+<tr>
+	<td>if</td>
+	<td>login != null</td>
+	<td></td>
+</tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>xpath=//*[@id='pt-anonlogin']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>else</td>
+	<td></td>
+	<td></td>
+</tr>
+<!--Attempt login via normal login-->
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById('pt-login')</td>
+	<td>login</td>
+</tr>
+<tr>
+	<td>if</td>
+	<td>login != null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=//*[@id='pt-login']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>else</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>LOG.warn('Cannot locate login element')</td>
+	<td></td>
+</tr>
+<!--FATAL - cannot login-->
+<tr>
+	<td>assertEval</td>
+	<td>1</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>endIf</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>endIf</td>
+	<td></td>
 	<td></td>
 </tr>
 <tr>
@@ -75,6 +139,17 @@
 	<td>clickAndWait</td>
 	<td>id=wpLoginAttempt</td>
 	<td></td>
+</tr>
+<!--Assert logged in correctly-->
+<tr>
+	<td>assertElementPresent</td>
+	<td>id=pt-userpage</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=//*[@id='pt-userpage']/a</td>
+	<td>${hiderUserName}</td>
 </tr>
 </tbody></table>
 </body>
