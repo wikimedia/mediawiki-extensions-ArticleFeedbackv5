@@ -448,7 +448,8 @@ class ArticleFeedbackv5Hooks {
 	public static function trackEditSuccess( &$article, &$user, $text,
 			$summary, $minoredit, $watchthis, $sectionanchor, &$flags,
 			$revision, &$status, $baseRevId /*, &$redirect */ ) { // $redirect not passed in 1.18wmf1
-		self::trackEvent( 'edit_success', $article->getTitle(), $baseRevId );
+		$revID = $revision instanceof Revision ? $revision->getID() : 0;
+		self::trackEvent( 'edit_success', $article->getTitle(), $revID );
 		return true;
 	}
 
