@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/~yoni/mediawiki/index.php/Special:ArticleFeedbackv5/Test" />
+<title>015: Voting</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">015: Voting</td></tr>
+</thead><tbody>
+<!--Capture initial state-->
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent</td>
+	<td>initVotesText</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[0]</td>
+	<td>initHelpfulCount</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[3]</td>
+	<td>initUnhelpfulCount</td>
+</tr>
+<!--Vote helpful-->
+<tr>
+	<td>click</td>
+	<td>id=articleFeedbackv5-helpful-link-${firstPostId}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent != '${initVotesText}'</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent</td>
+	<td>newVotesText</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[0]</td>
+	<td>newHelpfulCount</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[3]</td>
+	<td>newUnhelpfulCount</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>${newHelpfulCount} - ${initHelpfulCount}</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=articleFeedbackv5-unhelpful-link-${firstPostId}</td>
+	<td></td>
+</tr>
+<!--Vote unhelpful-->
+<tr>
+	<td>click</td>
+	<td>id=articleFeedbackv5-unhelpful-link-${firstPostId}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent != '${initVotesText}'</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent</td>
+	<td>newVotesText</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[0]</td>
+	<td>newHelpfulCount</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[3]</td>
+	<td>newUnhelpfulCount</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>${newHelpfulCount} - ${initHelpfulCount}</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>${newUnhelpfulCount} - ${initUnhelpfulCount}</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=articleFeedbackv5-reverseunhelpful-link-${firstPostId}</td>
+	<td></td>
+</tr>
+<!--Reverse unhelpul vote-->
+<tr>
+	<td>click</td>
+	<td>id=articleFeedbackv5-reverseunhelpful-link-${firstPostId}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent == '${initVotesText}'</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent</td>
+	<td>newVotesText</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[0]</td>
+	<td>newHelpfulCount</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[3]</td>
+	<td>newUnhelpfulCount</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>${newHelpfulCount} - ${initHelpfulCount}</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>${newUnhelpfulCount} - ${initUnhelpfulCount}</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=articleFeedbackv5-unhelpful-link-${firstPostId}</td>
+	<td></td>
+</tr>
+<!--Vote unhelpful again-->
+<tr>
+	<td>click</td>
+	<td>id=articleFeedbackv5-unhelpful-link-${firstPostId}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent != '${initVotesText}'</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent</td>
+	<td>newVotesText</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[0]</td>
+	<td>newHelpfulCount</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[3]</td>
+	<td>newUnhelpfulCount</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>${newHelpfulCount} - ${initHelpfulCount}</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>${newUnhelpfulCount} - ${initUnhelpfulCount}</td>
+	<td>1</td>
+</tr>
+<!--Vote helpful-->
+<tr>
+	<td>click</td>
+	<td>id=articleFeedbackv5-helpful-link-${firstPostId}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent != '${initVotesText}'</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent</td>
+	<td>newVotesText</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[0]</td>
+	<td>newHelpfulCount</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[3]</td>
+	<td>newUnhelpfulCount</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>${newUnhelpfulCount} - ${initUnhelpfulCount}</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>${newHelpfulCount} - ${initHelpfulCount}</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=articleFeedbackv5-reversehelpful-link-${firstPostId}</td>
+	<td></td>
+</tr>
+<!--Reverse helpful-->
+<tr>
+	<td>click</td>
+	<td>id=articleFeedbackv5-reversehelpful-link-${firstPostId}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent == '${initVotesText}'</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent</td>
+	<td>newVotesText</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[0]</td>
+	<td>newHelpfulCount</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.document.getElementById(&quot;articleFeedbackv5-helpful-votes-${firstPostId}&quot;).textContent.split(' ')[3]</td>
+	<td>newUnhelpfulCount</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>${newHelpfulCount} - ${initHelpfulCount}</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>${newUnhelpfulCount} - ${initUnhelpfulCount}</td>
+	<td>0</td>
+</tr>
+</tbody></table>
+</body>
+</html>
