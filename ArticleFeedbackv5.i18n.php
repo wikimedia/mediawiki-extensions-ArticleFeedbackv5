@@ -702,17 +702,13 @@ This URL can be changed to point to a translated version of the page if it exist
 * <code>$2</code> – Page name of item with feedback requiring oversight.
 * <code>$3</code> – URL directly to feedback location
 * <code>$4</code> – The help link.',
-
-	/* Front-end: feedback link close button */
 	'articlefeedbackv5-link-close-caption' => 'Remove article feedback tipsy - caption',
 	'articlefeedbackv5-link-close-text1' => 'Remove article feedback tipsy - text line 1',
 	'articlefeedbackv5-link-close-linktext' => 'Remove article feedback tipsy - text for close link',
-	'articlefeedbackv5-link-close-linkurl' => 'Remove article feedback tipsy - URL for close link (also used for confirm button link URL)',
 	'articlefeedbackv5-link-close-text2' => 'Remove article feedback tipsy - text line 2',
-	'articlefeedbackv5-link-cllse-text3' => 'Remove article feedback tipsy - text line 3',
+	'articlefeedbackv5-link-cllse-text3' => 'Remove article feedback tipsy - text line 3. Identical to the text of {{msg-mw|Articlefeedbackv5-disable-preference}}',
 	'articlefeedbackv5-link-close-submit' => 'Remove article feedback tipsy - confirm button text',
 	'articlefeedbackv5-link-close-cancel' => 'Remove article feedback tipsy - cancel link text',
-
 );
 
 /** Afrikaans (Afrikaans)
@@ -2504,6 +2500,13 @@ $4
 Dieses Hilfsmittel für Rückmeldungen befindet sich noch in den Anfängen seiner
 Erprobung auf der englischsprachigen Wikipedia. Zudem wurde niemand über diese
 Erprobungsphase informiert.',
+	'articlefeedbackv5-link-close-caption' => 'Einschätzen von Seiten deaktivieren?',
+	'articlefeedbackv5-link-close-text1' => 'Um dieses Widget zu deaktivieren, gehe zu',
+	'articlefeedbackv5-link-close-linktext' => '„Einstellungen > Aussehen“',
+	'articlefeedbackv5-link-close-text2' => 'und klicke auf das Kontrollkästchen vor:',
+	'articlefeedbackv5-link-cllse-text3' => '„Das Widget zum Einschätzen von Seiten nicht anzeigen“',
+	'articlefeedbackv5-link-close-submit' => 'Entfernen',
+	'articlefeedbackv5-link-close-cancel' => 'Abbrechen',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -2611,6 +2614,8 @@ $4
 Dieses Hilfsmittel für Rückmeldungen befindet sich noch in den Anfängen seiner
 Erprobung auf der englischsprachigen Wikipedia. Zudem wurde niemand über diese
 Erprobungsphase informiert.',
+	'articlefeedbackv5-link-close-text1' => 'Um dieses Widget zu deaktivieren, gehen Sie zu',
+	'articlefeedbackv5-link-close-text2' => 'und klicken Sie auf das Kontrollkästchen vor:',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -3560,6 +3565,9 @@ PD: Si tienes alguna pregunta acerca de cómo utilizar las funciones de supervis
 $4
 
 Tenga en cuenta que la herramienta de comentario de artículo v5 se encuentra todavía en las primeras etapas de prueba en la Enciclopedia Inglesa y que la página de comentarios no se ha publicado para la comunidad durante este período de pruebas.',
+	'articlefeedbackv5-link-close-caption' => '¿Eliminar comentarios del artículo?',
+	'articlefeedbackv5-link-close-text1' => 'Para suprimir este widget, vaya a',
+	'articlefeedbackv5-link-close-linktext' => '"Mis preferencias > Aspecto"',
 );
 
 /** Estonian (Eesti)
@@ -4492,6 +4500,13 @@ P.S.: Si vous avez des questions sur la fonctionnalité de surveillance de la pa
 $4
 
 Notez bien que cette fonctionnalité de commentaire d'article v5 est encore dans ses premières phases de test sur l'encyclopédie anglaise et que la page de commentaires n'a pas été communiquée à la communauté durant cette phase de test.",
+	'articlefeedbackv5-link-close-caption' => "Supprimer le commentaire de l'article?",
+	'articlefeedbackv5-link-close-text1' => 'Pour supprimer ce widget, allez à',
+	'articlefeedbackv5-link-close-linktext' => '"Mes Préférences > Apparances"',
+	'articlefeedbackv5-link-close-text2' => 'puis cochez cette case:',
+	'articlefeedbackv5-link-cllse-text3' => '"Ne pas afficher le widget Commentaire de l\'article".',
+	'articlefeedbackv5-link-close-submit' => 'Supprimer',
+	'articlefeedbackv5-link-close-cancel' => 'Annuler',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -5141,28 +5156,28 @@ $messages['he'] = array(
 	'articlefeedbackv5-cta1-learn-how' => 'למדו כיצד לערוך',
 	'articlefeedbackv5-cta1-edit-linktext' => 'עריכת דף זה',
 	'articlefeedbackv5-cta2-confirmation-title' => 'עזרו לשפר את ויקיפדיה',
-	'articlefeedbackv5-cta2-confirmation-call' => 'אתר זה נוצר על ידי אנשים כמוך. את/ה יכול/ה לעזור לנו?',
+	'articlefeedbackv5-cta2-confirmation-call' => 'אתר זה נוצר על־ידי אנשים כמוך. אפשר לבקש ממך לעזור לנו?',
 	'articlefeedbackv5-cta2-button-text' => 'לפרטים נוספים',
 	'articlefeedbackv5-cta3-confirmation-title' => 'אנא השתתפו בסקר קצר',
 	'articlefeedbackv5-cta3-confirmation-call' => 'הוא יצריך רק דקה מזמנכם, ויעזור לנו לשפר את ויקיפדיה.',
 	'articlefeedbackv5-cta3-button-text' => 'התחלת הסקר',
 	'articlefeedbackv5-error' => 'אירעה שגיאה. נא לנסות שוב מאוחר יותר.',
 	'articlefeedbackv5-page-disabled' => 'דף המשוב אינו זמין עבור ערך זה.',
-	'articlefeedbackv5-error-email' => 'כתובת דוא"ל זו אינה חוקית.',
+	'articlefeedbackv5-error-email' => 'כתובת דוא"ל זו אינה תקינה.',
 	'articlefeedbackv5-error-blocked' => 'משתמשים חסומים אינם יכולים לשלוח משוב.',
 	'articlefeedbackv5-error-validation' => 'שגיאת אימות.',
 	'articlefeedbackv5-error-abuse' => 'ההערה שלך מפרה את $1. נא לתקן אותה.',
 	'articlefeedbackv5-error-abuse-linktext' => 'מדיניות השימוש לרעה במשוב',
 	'articlefeedbackv5-error-unknown' => 'שגיאה לא מוכרת.',
 	'articlefeedbackv5-error-submit' => 'שגיאה בהזנת הטופס.',
-	'articlefeedbackv5-error-nofeedback' => 'להזנת משוב שלך',
+	'articlefeedbackv5-error-nofeedback' => 'נא להזין את המשוב שלך.',
 	'articlefeedbackv5-error-flagging' => 'שגיאה בסימון משוב.',
 	'articlefeedbackv5-form-tools-label' => 'כלים',
 	'articlefeedbackv5-form-helpful-label' => 'האם המשוב הזה מועיל?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'כן',
 	'articlefeedbackv5-form-helpful-no-label' => 'לא',
 	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|$1 כן}} / {{PLURAL:$2|$2 לא}}',
-	'articlefeedbackv5-special-add-feedback' => 'הוספת משוב',
+	'articlefeedbackv5-special-add-feedback' => 'הוספת המשוב שלך',
 	'articlefeedbackv5-special-filter-all' => 'הכול (כוללת רשומות עם בקשות ביקורת) ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'הכול ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'רק הערות ($1)',
@@ -6559,6 +6574,13 @@ P.S.: Si tu ha questiones sur le uso del functionalitate de supervision del pagi
 $4
 
 Per favor nota que le version 5 del functionalitate de evalutation es ancora in le prime stadios de test in le encyclopedia anglophone e que le pagina de evalutation non ha essite promovite al communitate durante iste periodo de test.',
+	'articlefeedbackv5-link-close-caption' => 'Remover iste evalutation del articulo?',
+	'articlefeedbackv5-link-close-text1' => 'Pro remover iste widget, vade a',
+	'articlefeedbackv5-link-close-linktext' => '"Mi preferentias > Apparentias"',
+	'articlefeedbackv5-link-close-text2' => 'postea marca iste quadrato:',
+	'articlefeedbackv5-link-cllse-text3' => '"Non monstrar le widget Evalutation de articulo."',
+	'articlefeedbackv5-link-close-submit' => 'Remover',
+	'articlefeedbackv5-link-close-cancel' => 'Cancellar',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -10527,10 +10549,11 @@ $messages['ps'] = array(
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} يوه پوښتنه درلوده:',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} يو وړانديز درلود:',
 	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} دا مخ ارزولی $2/5',
-	'articlefeedbackv5-form5-header' => '$1 دا مخ و ارزاوه:',
+	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} دا مخ وارزاوه:',
 	'articlefeedbackv5-go-to-article' => 'ليکنه کتل',
 	'articlefeedbackv5-discussion-page' => 'خبرې اترې',
 	'articlefeedbackv5-whats-this' => 'لارښود',
+	'articlefeedbackv5-special-title' => '==غبرګون==',
 	'articleFeedbackv5-table-heading-page' => 'مخ',
 	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 کال|$1 کالونه}}',
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 مياشت|$1 مياشتې}}',
@@ -10540,6 +10563,10 @@ $messages['ps'] = array(
 	'articlefeedbackv5-noteflyover-show-label' => 'يو يادښت ورګډول',
 	'articlefeedbackv5-noteflyover-show-help' => 'نور مالومات',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'نور مالومات',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'نور مالومات',
+	'articlefeedbackv5-noteflyover-oversight-help' => 'نور مالومات',
+	'articlefeedbackv5-noteflyover-unoversight-help' => 'نور مالومات',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'نور مالومات',
 	'articlefeedbackv5-bucket1-title' => 'د دې مخ په ښه کېدو کې مرسته وکړۍ',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'هو',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'نه',
