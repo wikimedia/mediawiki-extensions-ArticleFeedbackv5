@@ -200,7 +200,7 @@
 			',
 
 		clear: '<div class="clear"></div>'
-		
+
 	};
 
 	// }}}
@@ -2177,7 +2177,7 @@
 		// Track init at 1%
 		if ( Math.random() * 100 < 1 ) {
 			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-init' );
-		}		
+		}
 	};
 
 	// }}}
@@ -2565,7 +2565,7 @@
 			width: 500,
 			height: 300,
 			dialogClass: 'articleFeedbackv5-dialog',
-			resizable: false,
+			resizable: true,
 			draggable: true,
 			title: $.articleFeedbackv5.currentBucket().getTitle(),
 			modal: true,
@@ -2625,9 +2625,6 @@
 		// Set the tooltip link
 		$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip-link' )
 			.attr( 'href', mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' ));
-			
-		// Have the feedback textarea grow automatically
-		$.articleFeedbackv5.find( '#articleFeedbackv5-find-feedback' ).elastic();
 
 		// Do anything special the bucket requires
 		if ( 'afterBuild' in bucket ) {
@@ -2673,7 +2670,7 @@
 
 		// Lock the form
 		$.articleFeedbackv5.lockForm();
-		
+
 		// this is a good time to hide the help box, if its displayed
 		$( '.articleFeedbackv5-tooltip' ).hide();
 
@@ -3173,8 +3170,8 @@
 	};
 
 	// }}}
+	// {{{ trackActionURL
 
-	// {{{ trackClick
 	/**
 	 * Rewrites a URL to one that runs through the ClickTracking API module
 	 * which registers the event and redirects to the real URL

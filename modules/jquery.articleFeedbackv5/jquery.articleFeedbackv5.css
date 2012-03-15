@@ -608,12 +608,10 @@
 }
 
 .articleFeedbackv5-ui .feedback-text {
-	resize: none;
 	background: #fff;
 	border: 1px solid #000;
 	width: 518px;
 	height: 42px;
-	overflow: hidden;
 	padding: 10px;
 	font-size: 1.1em;
 	font-family: sans-serif !important;

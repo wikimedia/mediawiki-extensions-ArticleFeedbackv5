@@ -164,7 +164,6 @@ class ArticleFeedbackv5Hooks {
 				'jquery.ui.button',
 				'jquery.cookie',
 				'jquery.clickTracking',
-				'jquery.articleFeedbackv5.elastic',
 			),
 		),
 		'jquery.articleFeedbackv5.special' => array(
@@ -189,7 +188,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-comment-more',
 				'articlefeedbackv5-comment-less',
 				'articlefeedbackv5-error-loading-feedback',
-				
+
 				'articlefeedbackv5-noteflyover-hide-caption',
 				'articlefeedbackv5-noteflyover-hide-label',
 				'articlefeedbackv5-noteflyover-hide-placeholder',
@@ -238,7 +237,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-declineoversight-submit',
 				'articlefeedbackv5-noteflyover-declineoversight-help',
 				'articlefeedbackv5-noteflyover-declineoversight-help-link',
-				
+
 				'articlefeedbackv5-mask-text-hidden',
 				'articlefeedbackv5-mask-text-oversight',
 				'articlefeedbackv5-mask-postnumber'
@@ -247,10 +246,6 @@ class ArticleFeedbackv5Hooks {
 				'mediawiki.util',
 				'jquery.tipsy'
 			),
-		),
-		// TODO: Move jquery.elastic into core resources
-		'jquery.articleFeedbackv5.elastic' => array(
-			'scripts' => 'jquery.elastic/jquery.elastic.js'
 		),
 	);
 
