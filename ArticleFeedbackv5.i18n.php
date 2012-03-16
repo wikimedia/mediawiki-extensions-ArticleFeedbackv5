@@ -522,7 +522,7 @@ The link to the edit tutorial',
 * $1 is a user name.',
 	'articlefeedbackv5-form2-header-suggestion' => 'Parameters:
 * $1 is a user name.',
-	'articlefeedbackv5-form4-header' => 'Messages in the feedback dashboard to indicate that a user was only presented with a Call To Action form. This is a feedback form that asks a user to do something, rather than provide feedback.',
+	'articlefeedbackv5-form4-header' => 'Messages in the feedback dashboard to indicate that a user was only presented with a Call To Action (CTA) form. This is a feedback form that asks a user to do something, rather than provide feedback.',
 	'articlefeedbackv5-oversight-saved' => 'Oversight request saved successfully (oversight request asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-unoversight-saved' => 'Request for oversight removed successfully oversight request asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-error-loading-feedback' => 'Message displayed when there was an error loading feedback - result is a largely-blank page.',
@@ -3568,6 +3568,10 @@ Tenga en cuenta que la herramienta de comentario de artículo v5 se encuentra to
 	'articlefeedbackv5-link-close-caption' => '¿Eliminar comentarios del artículo?',
 	'articlefeedbackv5-link-close-text1' => 'Para suprimir este widget, vaya a',
 	'articlefeedbackv5-link-close-linktext' => '"Mis preferencias > Aspecto"',
+	'articlefeedbackv5-link-close-text2' => 'a continuación, marque esta casilla:',
+	'articlefeedbackv5-link-cllse-text3' => '"No mostrar el widget de Comentarios del artículo".',
+	'articlefeedbackv5-link-close-submit' => 'Eliminar',
+	'articlefeedbackv5-link-close-cancel' => 'Cancelar',
 );
 
 /** Estonian (Eesti)
@@ -6010,6 +6014,13 @@ P.S. Jeli maš prašenja wo wužiwanju dohladowanskich funkcijow komentaroweje s
 $4
 
 Prošu wobkedźbuj, zo nastroj wo nastawkowych komentarch  wersije 5 je hišće w zažnym testowym stadiju na jendźelskej encyklopediji a zo strona komentarow hišće njeje so za testowu periodu wozjewiła.',
+	'articlefeedbackv5-link-close-caption' => 'Komentary nastawka wotstronić?',
+	'articlefeedbackv5-link-close-text1' => 'Zo by tutón pomocny srědk wotstronił, dźi k',
+	'articlefeedbackv5-link-close-linktext' => '"Nastajenja > Napohlad"',
+	'articlefeedbackv5-link-close-text2' => 'klikń potom do kontrolneho kašćika:',
+	'articlefeedbackv5-link-cllse-text3' => '"Pomocny srědk za komentary nastawkow njepokazać."',
+	'articlefeedbackv5-link-close-submit' => 'Wotstronjeny',
+	'articlefeedbackv5-link-close-cancel' => 'Přetorhnyć',
 );
 
 /** Hungarian (Magyar)
@@ -8586,6 +8597,13 @@ $3
 $4
 
 Имајте на ум дека верзијата 5 на функцијата за заверка е сè уште во рана фаза на испробување на англиската енциклопедија (0,6%, или 22.000 статии) и дека страницата за мислења не е на јавен увид за заедницата во текот на овој пробен период.',
+	'articlefeedbackv5-link-close-caption' => 'Сакате да го отстраните прилогот „Мислења за статии“?',
+	'articlefeedbackv5-link-close-text1' => 'За да го отстраните прилогот, појдете на',
+	'articlefeedbackv5-link-close-linktext' => '„нагодувања > изглед“',
+	'articlefeedbackv5-link-close-text2' => 'па штиклирајте го ова кутивче:',
+	'articlefeedbackv5-link-cllse-text3' => '„Не го прикажувај прилогот „Оценување на статии“ во страниците“.',
+	'articlefeedbackv5-link-close-submit' => 'Отстрани',
+	'articlefeedbackv5-link-close-cancel' => 'Откажи',
 );
 
 /** Malayalam (മലയാളം)
@@ -9105,6 +9123,13 @@ P.S.: Jika anda ada sebarang soalah tentang penggunaan ciri-ciri penghapusan pad
 $4
 
 Sila ambil perhatian bahawa alat maklum balas rencana v5 masih di peringkat awal percubaan di ensiklopedia ini, apalagi laman maklum balas belum dibuka kepada komuniti umum pada tempoh percubaan ini.',
+	'articlefeedbackv5-link-close-caption' => 'Gugurkan Maklum Balas Rencana?',
+	'articlefeedbackv5-link-close-text1' => 'Untuk menggugurkan widget ini, pergi ke',
+	'articlefeedbackv5-link-close-linktext' => '"Keutamaan saya > Penampilan"',
+	'articlefeedbackv5-link-close-text2' => 'kemudian raitkan petak ini:',
+	'articlefeedbackv5-link-cllse-text3' => '"Jangan paparkan widget Maklum Balas Rencana."',
+	'articlefeedbackv5-link-close-submit' => 'Gugurkan',
+	'articlefeedbackv5-link-close-cancel' => 'Batalkan',
 );
 
 /** Maltese (Malti)
@@ -12113,6 +12138,7 @@ $messages['sk'] = array(
 
 /** Slovenian (Slovenščina)
  * @author Dbc334
+ * @author Eleassar
  * @author Irena Plahuta
  */
 $messages['sl'] = array(
@@ -12125,36 +12151,82 @@ $messages['sl'] = array(
 	'articlefeedbackv5-cta2-confirmation-title' => 'Pomagajte izboljšati Wikipedijo.',
 	'articlefeedbackv5-cta2-confirmation-call' => 'To spletno stran ustvarjajo ljudje, kot ste vi. Nam lahko pomagate?',
 	'articlefeedbackv5-cta2-button-text' => 'Več o tem',
+	'articlefeedbackv5-cta3-confirmation-title' => 'Prosimo, odgovorite na kratko anketo.',
+	'articlefeedbackv5-cta3-confirmation-call' => 'Vzela vam bo samo minuto in bo pomagala pri izboljšanju Wikipedije.',
+	'articlefeedbackv5-cta3-button-text' => 'Začetek ankete',
 	'articlefeedbackv5-error' => 'Prišlo je do napake. Prosimo, poskusite znova pozneje.',
+	'articlefeedbackv5-page-disabled' => 'Pri tem članku stran za povratne informacije ni omogočena.',
 	'articlefeedbackv5-error-email' => 'Ta elektronski naslov ni veljaven.',
+	'articlefeedbackv5-error-blocked' => 'Blokirani uporabniki ne smejo objavljati povratnih informacij.',
 	'articlefeedbackv5-error-validation' => 'Napaka pri preverjanju.',
+	'articlefeedbackv5-error-abuse' => 'Vaš komentar krši $1. Prosimo, popravite ga.',
+	'articlefeedbackv5-error-abuse-linktext' => 'Politika zlorabe povratnih informacij',
 	'articlefeedbackv5-error-unknown' => 'Neznana napaka.',
+	'articlefeedbackv5-error-submit' => 'Napaka pri predložitvi obrazca.',
 	'articlefeedbackv5-error-nofeedback' => 'Prosimo, vnesite svoj odziv.',
+	'articlefeedbackv5-error-flagging' => 'Napaka pri označevanju povratne informacije.',
 	'articlefeedbackv5-form-tools-label' => 'Orodja',
+	'articlefeedbackv5-form-helpful-label' => 'Ali je povratna informacija v pomoč?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Da',
 	'articlefeedbackv5-form-helpful-no-label' => 'Ne',
+	'articlefeedbackv5-form-helpful-votes' => '{PLURAL:$1|1 da|$1 da}} / {{PLURAL:$2|1 ne|$2 ne}}',
+	'articlefeedbackv5-special-add-feedback' => 'Dodajte povratno informacijo.',
 	'articlefeedbackv5-special-filter-all' => 'Vsi (nadzornik) ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'Vsi ($1)',
+	'articlefeedbackv5-special-filter-comment' => 'Samo komentarji ($1)',
+	'articlefeedbackv5-special-filter-abusive' => 'Označeno kot zloraba ($1)',
+	'articlefeedbackv5-special-filter-helpful' => 'V pomoč ($1)',
+	'articlefeedbackv5-special-filter-unhelpful' => 'Nekoristno ($1)',
+	'articlefeedbackv5-special-filter-needsoversight' => 'Nadzor (brisanje) zahtevan ($1)',
 	'articlefeedbackv5-special-filter-visible' => 'Vsi vidni ($1)',
 	'articlefeedbackv5-special-filter-invisible' => 'Skriti ($1)',
+	'articlefeedbackv5-special-filter-deleted' => 'Izbrisano ($1)',
+	'articlefeedbackv5-special-filter-undeleted' => 'Izbris razveljavljen ($1)',
+	'articlefeedbackv5-special-filter-declined' => 'Izbris zavrnjen ($1)',
+	'articlefeedbackv5-special-filter-unhidden' => 'Razkrito ($1)',
+	'articlefeedbackv5-special-sort-age' => 'Datum',
+	'articlefeedbackv5-special-sort-helpful' => 'V pomoč',
+	'articlefeedbackv5-special-sort-rating' => 'Ocena',
 	'articlefeedbackv5-special-sort-label-before' => 'Razvrsti glede na:',
 	'articlefeedbackv5-special-filter-label-before' => 'Prikazovanje:',
 	'articlefeedbackv5-special-showing' => '$1 {{PLURAL:$1|sporočilo|sporočili|sporočila|sporočil}} s povratnimi informacijami pri tem članku',
 	'articleFeedbackv5-comment-ago' => 'pred $1',
+	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 urejanje|$1 urejanji|$1 urejanja |$1 urejanj}} po objavi',
 	'articlefeedbackv5-revision-link' => 'Ogled redakcije članka',
 	'articlefeedbackv5-special-more' => 'Prikaži več objav',
 	'articlefeedbackv5-special-pagetitle' => 'Povratna informacija: $1',
 	'articlefeedbackv5-form-optionid' => 'Možnost $1',
+	'articlefeedbackv5-hidden' => 'Objavo je {{GENDER:skril|skrila|skril}} $1 ob $2.',
+	'articlefeedbackv5-deleted' => 'Objavo je {{GENDER:|izbrisal|izbrisala|izbrisal}} $1 ob $2.',
 	'articlefeedbackv5-form-hide' => 'Skrij objavo',
 	'articlefeedbackv5-form-unhide' => 'Razkrij objavo',
 	'articlefeedbackv5-form-helpful' => 'Označi kot koristno ($1)',
 	'articlefeedbackv5-form-abuse' => 'Označi kot zlorabo ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'Označi kot zlorabo',
 	'articlefeedbackv5-form-delete' => 'Nadziraj',
-	'articlefeedbackv5-form-header' => 'Odziv #$1 na $2',
+	'articlefeedbackv5-form-oversight' => 'Zahteva za izbris.',
+	'articlefeedbackv5-form-unoversight' => 'Razveljavi zahtevo za izbris',
+	'articlefeedbackv5-form-undelete' => 'Razveljavi izbris',
+	'articlefeedbackv5-form-decline' => 'Zavrnitev izbrisa',
+	'articlefeedbackv5-form-header' => 'Povratna informacija #$1 ob $2',
+	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 je našel iskano informacijo|$2 je našla iskano informacijo}}',
+	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 ni našel iskane informacije|$2 ni našla iskane informacije}}',
+	'articlefeedbackv5-form1-header-left-comment' => 'Komentar je {{GENDER:$1|objavil $2|objavila $2}}',
+	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1 je pohvalil|$1 je pohvalila}}:',
+	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1 je naletel|$1 je naletela}} na težavo:',
+	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} ima vprašanje:',
+	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} ima predlog:',
+	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1 je ocenil|$1 je ocenila}} stran z oceno $2/5.',
+	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1 je videl|$1 je videla}} obrazec samo za CTA.',
+	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1 je ocenil|$ je ocenila}} stran z:',
+	'articlefeedbackv5-form-not-shown' => 'Za {{GENDER:$1|$1}} obrazec za povratne informacije ni bil prikazan.',
+	'articlefeedbackv5-form-invalid' => 'Neveljavna ID-številka obrazca za povratne informacije.',
 	'articlefeedbackv5-abuse-saved' => 'Označeno kot zloraba ($1)',
-	'articlefeedbackv5-error-loading-feedback' => 'Napaka pri nalaganju povratne informacije',
-	'articlefeedbackv5-invalid-feedback-id' => 'Neveljaven ID povratne informacije',
+	'articlefeedbackv5-abuse-saved-masked' => 'Označeno kot zloraba.',
+	'articlefeedbackv5-oversight-saved' => 'Označeno za izbris.',
+	'articlefeedbackv5-unoversight-saved' => 'Oznaka za brisanje odstranjena.',
+	'articlefeedbackv5-error-loading-feedback' => 'Napaka pri nalaganju povratne informacije.',
+	'articlefeedbackv5-invalid-feedback-id' => 'Neveljavna ID-številka povratne informacije',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Neveljavna oznaka povratne informacije',
 	'articlefeedbackv5-go-to-article' => 'Ogled članka',
 	'articlefeedbackv5-discussion-page' => 'Pogovor',
@@ -12176,6 +12248,52 @@ $messages['sl'] = array(
 * Nedavni padci: članki, ki so v zadnjih 24 urah prejeli 70&nbsp;% ali več nizkih (dve zvezdici ali manj) ocen v kateri koli kategoriji. Vključeni so samo članki, ki so v zadnjih 24 urah prejeli vsaj 10 ocen.",
 	'articlefeedbackv5' => 'Pregledna plošča povratnih informacij člankov',
 	'articlefeedbackv5-desc' => 'Povratna informacija članka',
+	'articlefeedbackv5-comment-more' => 'Več',
+	'articlefeedbackv5-comment-less' => 'Manj',
+	'articlefeedbackv5-beta-notice' => 'Beta',
+	'articlefeedbackv5-viewactivity' => 'Ogled dejavnosti',
+	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|eno leto|$1 leti|$1 leta|$1 let}}',
+	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|en mesec |$1 meseca |$1 mesece |$ mesecev}}',
+	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|en teden|$1 tedna |$1 tedne |$1 tednov}}',
+	'articlefeedbackv5-timestamp-seconds' => 'manj kot eno minuto',
+	'articlefeedbackv5-mask-text-hidden' => 'Ta komentar je skril pooblaščeni urednik.',
+	'articlefeedbackv5-mask-text-oversight' => 'Ta komentar je eden od pooblaščenih urednikov izbrisal.',
+	'articlefeedbackv5-mask-postnumber' => 'Objavi $1',
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Skrij objavo',
+	'articlefeedbackv5-noteflyover-hide-label' => 'Dodaj opombo',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Zakaj skrivate objavo?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Skrij objavo',
+	'articlefeedbackv5-noteflyover-hide-help' => 'Več informacij',
+	'articlefeedbackv5-noteflyover-show-caption' => 'Razkrij objavo',
+	'articlefeedbackv5-noteflyover-show-label' => 'Dodaj opombo',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'Zakaj razkrivate objavo?',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Razkrij objavo',
+	'articlefeedbackv5-noteflyover-show-help' => 'Več informacij',
+	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Zahteva za izbris',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Dodaj opombo',
+	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Zakaj zahtevate izbris?',
+	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Zahteva za izbris',
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Več o tem.',
+	'articlefeedbackv5-noteflyover-unrequestoversight-caption' => 'Prekliči zahtevo za izbris',
+	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'Dodaj opombo',
+	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Zakaj želite preklicati zahtevo za izbris?',
+	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Prekliči zahtevo za izbris',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Več o tem.',
+	'articlefeedbackv5-noteflyover-oversight-caption' => 'Izbris objave',
+	'articlefeedbackv5-noteflyover-oversight-label' => 'Dodaj opombo',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Zakaj nameravate izbrisati objavo?',
+	'articlefeedbackv5-noteflyover-oversight-submit' => 'Izbris objave',
+	'articlefeedbackv5-noteflyover-oversight-help' => 'Več o tem.',
+	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Razveljavitev izbrisa objave',
+	'articlefeedbackv5-noteflyover-unoversight-label' => 'Dodajte opombo',
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Zakaj nameravate razveljaviti izbris objave?',
+	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Razveljavi izbris objave',
+	'articlefeedbackv5-noteflyover-unoversight-help' => 'Več o tem.',
+	'articlefeedbackv5-noteflyover-declineoversight-caption' => 'Zavrnitev izbrisa objave',
+	'articlefeedbackv5-noteflyover-declineoversight-label' => 'Dodajte opombo',
+	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'Zakaj boste zavrnili izbris?',
+	'articlefeedbackv5-noteflyover-declineoversight-submit' => 'Zavrni izbris',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Več o tem',
 	'articlefeedbackv5-bucket1-title' => 'Pomagajte izboljšati stran',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Ste našli, kar ste iskali?',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Da',
@@ -12279,6 +12397,36 @@ $messages['sl'] = array(
 	'articlefeedbackv5-toolbox-linktext' => 'Izboljšajte stran',
 	'articlefeedbackv5-privacyurl' => '//wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articlefeedbackv5-disable-preference' => 'Na strani ne pokaži gradnika Povratna informacija članka',
+	'right-aftv5-hide-feedback' => 'Skrij povratne informacije',
+	'right-aftv5-delete-feedback' => 'Izbriši povratne informacije',
+	'right-aftv5-see-deleted-feedback' => 'Ogled izbrisanih povratnih informacij',
+	'right-aftv5-see-hidden-feedback' => 'Ogled skritih povratnih informacij',
+	'articlefeedbackv5-log-name' => 'Dnevnik dejanj v zvezi s povratnimi informacijami',
+	'articlefeedbackv5-log-header' => 'Dnevnik prikazuje predmete o povratnih informacijah, zbrane z orodjem za povratne informacije',
+	'articlefeedbackv5-log-oversight' => 'izbrisana povratna informacija [[$1]]',
+	'articlefeedbackv5-log-unoversight' => 'razveljavljen izbris povratne informacije [[$1]]',
+	'articlefeedbackv5-log-hidden' => 'skritje povratne informacije [[$1]]',
+	'articlefeedbackv5-log-unhidden' => 'razveljavitev skritja povratne informacije [[$1]]',
+	'articlefeedbackv5-log-decline' => 'izbris povratne informacije [[$1]] zavrnjen',
+	'articlefeedbackv5-log-request' => 'zahteva za izbris povratne informacije [[$1]]',
+	'articlefeedbackv5-log-unrequest' => 'odstranjena zahteva za izbris povratne informacije [[$1]]',
+	'articlefeedbackv5-log-flag' => 'povratna informacija [[$1]] označena kot zloraba',
+	'articlefeedbackv5-log-unflag' => 'odstranjena označitev povratne informacije [[$1]] kot zlorabe',
+	'articlefeedbackv5-activity-pane-header' => 'Dnevnik aktivnosti',
+	'articlefeedbackv5-activity-feedback-info' => 'Objava povratne informacije #$1 {{GRAMMAR|uporabnika|uporabnice}} $2',
+	'articlefeedbackv5-activity-feedback-date' => 'Objavljeno ob $1',
+	'articlefeedbackv5-activity-permalink' => 'Trajna povezava',
+	'articlefeedbackv5-activity-request' => 'zahteva za izbris na',
+	'articlefeedbackv5-activity-unrequest' => 'odstranjena zahteva za izbris na',
+	'articlefeedbackv5-activity-decline' => 'zavrnjena zahteva za izbris na',
+	'articlefeedbackv5-activity-hidden' => 'skitje te objave na',
+	'articlefeedbackv5-activity-flag' => 'označitev objave na',
+	'articlefeedbackv5-activity-unhidden' => 'razveljavitev označitve objave na',
+	'articlefeedbackv5-activity-unflag' => 'razveljavitev označitve objave na',
+	'articlefeedbackv5-activity-oversight' => 'izbris objave na',
+	'articlefeedbackv5-activity-unoversight' => 'odstranjen izbris objave na',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|Eno dejanje pri tej objavi|$1 dejanji pri tej objavi|$1 dejanja pri tej objavi|$1 dejanj pri tej objavi}}',
+	'articlefeedbackv5-activity-more' => 'Prikaži več aktivnosti',
 	'articlefeedbackv5-emailcapture-response-body' => 'Pozdravljeni!
 
 Zahvaljujemo se vam za izkazano zanimanje za pomoč pri izboljševanju {{GRAMMAR:rodilnik|{{SITENAME}}}}.
@@ -12291,16 +12439,48 @@ Obiščete lahko tudi:
 
 $2
 
-in vnesete spodnjo potrditveno kodo:
+in vnesete naslednjo potrditveno kodo:
 
 $3
 
 Kmalu vam bomo sporočili, kako lahko pomagate izboljšati {{GRAMMAR:tožilnik|{{SITENAME}}}}.
 
-Če tega niste zahtevali, prosimo, prezrite to e-pošto in ničesar več vam ne bomo poslali.
+Če tega niste zahtevali, prosimo, prezrite to e-pošto in vam ne bomo poslali ničesar več.
 
-Hvala in najlepše želje,
+Hvala in lepo pozdravljeni,
 ekipa {{GRAMMAR:rodilnik|{{SITENAME}}}}',
+	'articlefeedbackv5-email-request-oversight-subject' => 'Nadzor za stran s povratnimi sporočili je bil zahtevan',
+	'articlefeedbackv5-email-request-oversight-body' => 'Pozdravljeni, nadzorniki!
+
+$1 je {{GENDER|zahteval|zahtevala}} izbris povratne informacije pri članku:
+
+$2
+
+Prosimo, preglejte objavljeno povratno informacijo in potrdite ali zavrnite izbris:
+
+$3
+
+Hvala,
+
+
+Ekipa {{GRAMMAR:rodilni|{{SITENAME}}}}
+
+
+P.S.: Če imate katero koli vprašanje o uporabi možnosti brisanja na
+strani s povratnimi sporočili, preverite naslednja vprašanja z odgovori:
+
+$4
+
+Prosimo, upoštevajte, daje orodje za povratna sporočila v5 še vedno v zgodnjih
+fazah razvoja in da stran s povratnimi sporočili za obdobje preizkušanja ni na
+razpolago celotnemu občestvu.',
+	'articlefeedbackv5-link-close-caption' => 'Odstranitev povratnih sporočil?',
+	'articlefeedbackv5-link-close-text1' => 'Za odstranitev gradnika pojdite na',
+	'articlefeedbackv5-link-close-linktext' => '"Nastavitve > Videz"',
+	'articlefeedbackv5-link-close-text2' => 'nato potrdite to polje:',
+	'articlefeedbackv5-link-cllse-text3' => '"Ne prikaži gradnika Povratne informacije."',
+	'articlefeedbackv5-link-close-submit' => 'Odstrani',
+	'articlefeedbackv5-link-close-cancel' => 'Prekliči',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
