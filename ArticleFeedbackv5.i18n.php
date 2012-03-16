@@ -154,7 +154,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
 	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
-	
+
 	/* Show this post panel */
 	'articlefeedbackv5-noteflyover-show-caption' => 'Unhide this post',
 	'articlefeedbackv5-noteflyover-show-label' => 'Add a note',
@@ -194,7 +194,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Un-oversight this post',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Learn more',
 	'articlefeedbackv5-noteflyover-unoversight-help-link' => '#',
-	
+
 	/* Decline oversight panel */
 	'articlefeedbackv5-noteflyover-declineoversight-caption' => 'Decline oversight',
 	'articlefeedbackv5-noteflyover-declineoversight-label' => 'Add a note',
@@ -372,7 +372,7 @@ $messages['en'] = array(
 
 Thank you for expressing interest in helping to improve {{SITENAME}}.
 
-Please take a moment to confirm your e-mail by clicking on the link below: 
+Please take a moment to confirm your e-mail by clicking on the link below:
 
 $1
 
@@ -420,12 +420,12 @@ testing on the English Encyclopedia and that the feedback page has not been
 publicized to the community for this testing period.',
 
 	/* Front-end: feedback link close button */
-	'articlefeedbackv5-link-close-caption' => 'Remove Article Feedback?',
-	'articlefeedbackv5-link-close-text1' => 'To remove this widget, go to',
-	'articlefeedbackv5-link-close-linktext' => '"My Preferences > Appearances"',
-	'articlefeedbackv5-link-close-linkurl' => '#',
-	'articlefeedbackv5-link-close-text2' => 'then check this box:',
-	'articlefeedbackv5-link-cllse-text3' => '"Don\'t show the Article Feedback widget."',
+	'articlefeedbackv5-link-close-caption' => 'Remove article feedback?',
+	'articlefeedbackv5-link-close-text1' => 'To remove this widget, go to', // FIXME: Patchwork message
+	'articlefeedbackv5-link-close-linktext' => '"My preferences > Appearance"', // FIXME: Patchwork message
+	'articlefeedbackv5-link-close-linkurl' => '#', // FIXME: Patchwork message
+	'articlefeedbackv5-link-close-text2' => 'then check this box:', // FIXME: Patchwork message
+	'articlefeedbackv5-link-cllse-text3' => '"Do not show the Article Feedback widget."', // FIXME: Patchwork message
 	'articlefeedbackv5-link-close-submit' => 'Remove',
 	'articlefeedbackv5-link-close-cancel' => 'Cancel',
 
@@ -929,7 +929,7 @@ $messages['ar'] = array(
 
 شكرا لك على رغبتك في المساعدة على تحسين {{SITENAME}}.
 
-أكد بريدك الإلكتروتي بالضغط على الزر أسفله: 
+أكد بريدك الإلكتروتي بالضغط على الزر أسفله:
 
 $1
 
@@ -1252,7 +1252,7 @@ $messages['be-tarask'] = array(
 
 Дзякуй, за дапамогу ў паляпшэньні {{GRAMMAR:родны|{{SITENAME}}}}.
 
-Калі ласка, знайдзіце час каб пацьвердзіць Ваш адрас электроннай пошты. Перайдзіце па спасылцы пададзенай ніжэй: 
+Калі ласка, знайдзіце час каб пацьвердзіць Ваш адрас электроннай пошты. Перайдзіце па спасылцы пададзенай ніжэй:
 
 $1
 
@@ -1702,7 +1702,7 @@ $messages['br'] = array(
 
 Trugarez deoc'h da vezañ diskouezet bezañ dedennet d'hor skoazellañ evit gwellaat {{SITENAME}}.
 
-Kemerit ur pennadig amzer evit kadarnaat ho chomlec'h postel en ur glikañ war al liamm a-is : 
+Kemerit ur pennadig amzer evit kadarnaat ho chomlec'h postel en ur glikañ war al liamm a-is :
 
 $1
 
@@ -1776,7 +1776,7 @@ $messages['bs'] = array(
 
 Hvala što ste izrazili zanimanje za poboljšanje {{SITENAME}}.
 
-Molimo vas potvrdite vaš e-mail putem klika na link ispod: 
+Molimo vas potvrdite vaš e-mail putem klika na link ispod:
 
 $1
 
@@ -2999,7 +2999,7 @@ $messages['el'] = array(
 
 Ευχαριστούμε που δείξατε ενδιαφέρον στη βελτίωση της Βικπέδιας.
 
-Παρακαλώ αφιερώστε λίγο χρόνο για να επιβεβαιώσετε την διεύθυνση ηλεκτρονικού ταχυδρομείου σας πατώντας τον παρακάτω σύνδεσμο: 
+Παρακαλώ αφιερώστε λίγο χρόνο για να επιβεβαιώσετε την διεύθυνση ηλεκτρονικού ταχυδρομείου σας πατώντας τον παρακάτω σύνδεσμο:
 
 $1
 
@@ -3933,7 +3933,7 @@ $messages['fa'] = array(
 
 از شما برای ابراز علاقه در بهبود {{SITENAME}} تشکر می‌کنم.
 
-لطفاً لحظه‌ای برای تأیید پست الکترونیکی خود با کلیک بر روی پیوند مقابل وقت بگذارید: 
+لطفاً لحظه‌ای برای تأیید پست الکترونیکی خود با کلیک بر روی پیوند مقابل وقت بگذارید:
 
 $1
 
@@ -4680,7 +4680,7 @@ $messages['frp'] = array(
 
 Grant-marci d’avêr èxprimâ voutron entèrèt por édiér a mèlyorar {{SITENAME}}.
 
-Volyéd prendre un moment por confirmar voutra adrèce èlèctronica en cliquent sur lo lim ce-desot : 
+Volyéd prendre un moment por confirmar voutra adrèce èlèctronica en cliquent sur lo lim ce-desot :
 
 $1
 
@@ -4996,7 +4996,7 @@ $messages['gl'] = array(
 
 Grazas por expresar interese en axudar a mellorar {{SITENAME}}.
 
-Tome un momento para confirmar o seu correo electrónico premendo na ligazón que hai a continuación: 
+Tome un momento para confirmar o seu correo electrónico premendo na ligazón que hai a continuación:
 
 $1
 
@@ -5647,7 +5647,7 @@ $messages['hi'] = array(
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
-	'articlefeedbackv5-error' => 'Došlo je do pogrješke. 
+	'articlefeedbackv5-error' => 'Došlo je do pogrješke.
 Molimo, pokušajte ponovno kasnije.',
 	'articlefeedbackv5' => 'Ocjenjivanje članaka',
 	'articlefeedbackv5-desc' => 'Ocjenjivanje članaka (probna inačica)',
@@ -6957,7 +6957,7 @@ $messages['it'] = array(
 	'articlefeedbackv5-cta2-confirmation-title' => 'Aiutaci a migliorare Wikipedia',
 	'articlefeedbackv5-cta2-confirmation-call' => 'Questo sito è stato creato da persone come te. Puoi darci una mano?',
 	'articlefeedbackv5-cta2-button-text' => 'Ulteriori informazioni',
-	'articlefeedbackv5-error' => 'Si è verificato un errore. 
+	'articlefeedbackv5-error' => 'Si è verificato un errore.
 Riprova più tardi.',
 	'articlefeedbackv5-error-email' => 'Tale indirizzo di posta elettronica non è valido.',
 	'articlefeedbackv5-error-validation' => 'Errore di convalida.',
@@ -7759,7 +7759,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-activity-hidden' => 'huet dës Réckmeldung verstoppt',
 	'articlefeedbackv5-activity-unhidden' => 'dës Réckmeldung nees weisen',
 	'articlefeedbackv5-activity-more' => 'Méi Aktivitéit weisen',
-	'articlefeedbackv5-emailcapture-response-body' => 'Bonjour! 
+	'articlefeedbackv5-emailcapture-response-body' => 'Bonjour!
 
 Merci fir Ären Interessie fir {{SITENAME}} ze verbesseren.
 
@@ -7795,7 +7795,7 @@ $messages['li'] = array(
 	'articlefeedbackv5-cta1-edit-linktext' => 'Dees pagina bewirke',
 	'articlefeedbackv5-cta2-confirmation-title' => 'Helpe Wikipedia te verbaetere',
 	'articlefeedbackv5-cta2-button-text' => 'Mier leze',
-	'articlefeedbackv5-error' => "'n Fout is opgetraoje. 
+	'articlefeedbackv5-error' => "'n Fout is opgetraoje.
 Perbeer 't later obbenuuts.",
 	'articlefeedbackv5-error-email' => 'Dat e-mailadres is neet geljig.',
 	'articlefeedbackv5-error-validation' => 'Validatiefout.',
@@ -8545,7 +8545,7 @@ $messages['mk'] = array(
 
 Ви благодариме што изразивте интерес да помогнете во развојот на {{SITENAME}}.
 
-Потврдете ја вашата е-пошта на следнава врска: 
+Потврдете ја вашата е-пошта на следнава врска:
 
 $1
 
@@ -8581,7 +8581,7 @@ $3
 
 
 
-П.С.: Доколку имате прашања во врска со употребата на функциите за заверка, погледајте ја страницата за ЧПП. 
+П.С.: Доколку имате прашања во врска со употребата на функциите за заверка, погледајте ја страницата за ЧПП.
 
 $4
 
@@ -8752,7 +8752,7 @@ $messages['ml'] = array(
 
 {{SITENAME}} മെച്ചപ്പെടുത്താനുള്ള സഹായം ചെയ്യാൻ സന്നദ്ധത പ്രകടിപ്പിച്ചതിന് ആത്മാർത്ഥമായ നന്ദി.
 
-താഴെ നൽകിയിരിക്കുന്ന കണ്ണിയിൽ ഞെക്കി താങ്കളുടെ ഇമെയിൽ ദയവായി സ്ഥിരീകരിക്കുക: 
+താഴെ നൽകിയിരിക്കുന്ന കണ്ണിയിൽ ഞെക്കി താങ്കളുടെ ഇമെയിൽ ദയവായി സ്ഥിരീകരിക്കുക:
 
 $1
 
@@ -9065,7 +9065,7 @@ $messages['ms'] = array(
 
 Terima kasih kerana menunjukkan minat untuk membantu mempertingkatkan {{SITENAME}}.
 
-Sila luangkan sedikit masa untuk mengesahkan e-mel anda dengan mengklik pautan berikut: 
+Sila luangkan sedikit masa untuk mengesahkan e-mel anda dengan mengklik pautan berikut:
 
 $1
 
@@ -11159,7 +11159,7 @@ $messages['ro'] = array(
 
 Vă mulțumim pentru interesul arătat față de procesul de îmbunătățire al proiectului {{SITENAME}}.
 
-Vă rugăm să vă confirmați adresa de e-mail accesând legătura de mai jos: 
+Vă rugăm să vă confirmați adresa de e-mail accesând legătura de mai jos:
 
 $1
 
@@ -12048,7 +12048,7 @@ $messages['si'] = array(
 
 {{SITENAME}} වැඩිදියුණු කිරීම සඳහා උපකාර කිරීමට කැමැත්ත ප්‍රකාශ කළාට ස්තුතියි.
 
-කරුණාකර පහත දැක්වෙන සබැඳිය මත ක්ලික් කිරීම මඟින් ඔබේ විද්‍යුත් තැපැල් ලිපිනය තහවුරු කිරීම සඳහා මොහොතක් ගත කරන්න: 
+කරුණාකර පහත දැක්වෙන සබැඳිය මත ක්ලික් කිරීම මඟින් ඔබේ විද්‍යුත් තැපැල් ලිපිනය තහවුරු කිරීම සඳහා මොහොතක් ගත කරන්න:
 
 $1
 
@@ -13016,7 +13016,7 @@ $messages['tl'] = array(
 
 Salamat sa pagpapahayag mo ng pagnanais na makatulong sa pagpapainam ng {{SITENAME}}.
 
-Mangyaring kumuha ng isang sandli upang tiyakin ang iyong e-liham sa pamamagitan ng pagpindot sa kawing na nasa ibaba: 
+Mangyaring kumuha ng isang sandli upang tiyakin ang iyong e-liham sa pamamagitan ng pagpindot sa kawing na nasa ibaba:
 
 $1
 
@@ -13370,10 +13370,10 @@ $messages['uk'] = array(
 	'articlefeedbackv5-section-linktext' => "зворотній зв'язок",
 	'articlefeedbackv5-toolbox-linktext' => 'Поліпшити цю сторінку',
 	'articlefeedbackv5-disable-preference' => 'Не показувати на сторінках віджет оцінювання сторінок',
-	'articlefeedbackv5-emailcapture-response-body' => 'Привіт! 
+	'articlefeedbackv5-emailcapture-response-body' => 'Привіт!
 Дякуємо за інтерес до {{SITENAME}}! Будь ласка, знайдіть декілька секунд, щоб підтвердити адресу електронної пошти, натиснувши на посилання нижче:
 $1
-Ви також можете відвідати: 
+Ви також можете відвідати:
 $2
 і ввести наступний код підтвердження:
 $3
