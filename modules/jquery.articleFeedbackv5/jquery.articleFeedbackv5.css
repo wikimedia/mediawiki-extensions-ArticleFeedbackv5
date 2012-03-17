@@ -1032,10 +1032,103 @@ body.skin-monobook .articleFeedbackv5-dialog {
 	border-radius: 0;
 }
 
-/* Tipsy */
-tipsy {
-	padding: 5px 5px 11px 5px;
+/** Styles for feedback links **/
+
+#articleFeedbackv5-titlebarlink {
+	float: right;
+	font-size: 85%;
+	font-weight: bold;
+	line-height: 1.5em;
+	margin: 5px 0;
+	padding: 0;
+	position: absolute;
+	right: 0;
+	text-align: right;
+	text-indent: 0;
+	text-transform: none;
+	top: 0;
+	white-space: nowrap;
 }
+
+.articleFeedbackv5-fixedtab {
+	position: fixed;
+	margin: 0;
+	right: 0;
+	top: 200px;
+}
+.articleFeedbackv5-fixedtabbox {
+	position: relative;
+	/*-moz-transform:rotate(90deg); 
+	-moz-transform-origin: top left;
+	-webkit-transform: rotate(90deg);
+	-webkit-transform-origin: top left;
+	-o-transform: rotate(90deg);
+	-o-transform-origin: top left;
+	-ms-transform: rotate(90deg);
+	-ms-transform-origin: top left;
+	transform: rotate(90deg);
+	transform-origin: top left;*/
+}
+.articleFeedbackv5-fixedtablink {
+	/*border: none;
+	background-color: #5373a6;
+	-moz-border-radius: 0 0 10px 10px;
+	-webkit-border-radius: 0 0 10px 10px;
+	-ms-border-radius: 0 0 10px 10px;
+	border-radius: 0 0 10px 10px;
+	min-width: 105px;*/
+	width: 27px;
+	height: 114px;
+	right: 0;
+	display: block;
+	margin: 0;
+	/* @embed */
+	background: url(images/img_aftv5_tablink.png) no-repeat;
+	/*padding: 5px 10px;
+	color: #fff;
+	text-align: center;
+	writing-mode: tb-rl;*/	
+	position: absolute;
+	z-index: 999;
+}
+.articleFeedbackv5-fixedtablink:hover {
+	text-decoration: none;
+}
+
+.articleFeedbackv5-bottomrighttab {
+	position: fixed;
+	margin: 0;
+	right: 0;
+	bottom: 0;
+	height: 27px;
+	width: 141px;
+}
+.articleFeedbackv5-bottomrighttabbox {
+	position: relative;
+}
+.articleFeedbackv5-bottomrighttablink {
+	border: none;
+	border-top: 1px solid gray;
+	border-left: 1px solid gray;
+	color: #000;
+	background-color: #d0e1f4;
+	min-width: 105px;
+	right: 0;
+	display: block;
+	margin: 0;
+	padding: 5px 10px;
+	text-align: center;
+	position: absolute;
+	z-index: 999;
+}
+.articleFeedbackv5-bottomrighttablink:hover {
+	text-decoration: none;
+}
+.articleFeedbackv5-bottomrighttablink.articleFeedbackv5-closeable {
+	white-space: nowrap;
+}
+
+/* Disable flyover */
 .tipsy-inner {
 	padding: 0;
 	border-color: #888;
@@ -1046,30 +1139,34 @@ tipsy {
 	margin-bottom: 5px;
 	font-size: 0.9em;
 }
-.tipsy-se .tipsy-arrow {
+.tipsy-arrow {
 	/* @embed */
 	background-image: url(images/tipsy-flyover.png);
 	width: 23px;
 	height: 11px;
+}
+.tipsy-nw .tipsy-arrow {
+	margin-top: -6px;
+}
+.tipsy-se .tipsy-arrow {
 	margin-top: -11px;
 }
-.articlefeedbackv5-flyover-header {
-	background-color: #d2e5f7;
-	padding: 5px 10px 8px 10px;
+.articleFeedbackv5-disable-flyover {
+	padding: 10px;
+}
+.articleFeedbackv5-flyover-header {
 	-moz-border-radius: 3px 3px 0 0;
 	-webkit-border-radius: 3px 3px 0 0;
 	border-radius: 3px 3px 0 0; 
 	-khtml-border-radius: 3px 3px 0 0;
-	width: 200px;
 }
-.articlefeedbackv5-flyover-header h3 {
-	font-size: 1.0em;
+.articleFeedbackv5-flyover-header h3 {
+	font-size: 1.1em;
 }
-.articlefeedbackv5-flyover-footer {
-	padding: 10px 10px 15px 10px;
+.articleFeedbackv5-flyover-footer {
 	width: 100%;
 }
-#articlefeedbackv5-noteflyover-close {
+#articleFeedbackv5-noteflyover-close {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -1083,10 +1180,28 @@ tipsy {
 	background-position: left top;
 	background-size: 16px 16px;
 }
-#articlefeedbackv5-noteflyover-close:hover {
+#articleFeedbackv5-noteflyover-close:hover {
 	/* @embed */
 	background-image: url(images/bg-close-hov.png);
 }
-div.articlefeedbackv5-form-flyover {
-	padding: 10px 20px 10px 10px;
+.articleFeedbackv5-trigger-link-holder .articleFeedbackv5-close-trigger-link {
+	visibility: hidden;
+}
+.articleFeedbackv5-trigger-link-holder:hover .articleFeedbackv5-close-trigger-link {
+	visibility: visible;
+}
+.articleFeedbackv5-trigger-link-holder.articleFeedbackv5-tipsy-active .articleFeedbackv5-close-trigger-link {
+	visibility: visible;
+}
+.articleFeedbackv5-trigger-link-holder .articleFeedbackv5-close-trigger-link {
+	/* @embed */
+	background: url(images/bg-close-hov.png) no-repeat;
+	background-size: 16px 16px;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	vertical-align: middle;
+}
+.tipsy.articleFeedbackv5-disable-flyover-tip-E {
+	position: fixed;
 }

@@ -420,14 +420,12 @@ testing on the English Encyclopedia and that the feedback page has not been
 publicized to the community for this testing period.',
 
 	/* Front-end: feedback link close button */
-	'articlefeedbackv5-link-close-caption' => 'Remove article feedback?',
-	'articlefeedbackv5-link-close-text1' => 'To remove this widget, go to', // FIXME: Patchwork message
-	'articlefeedbackv5-link-close-linktext' => '"My preferences > Appearance"', // FIXME: Patchwork message
-	'articlefeedbackv5-link-close-linkurl' => '#', // FIXME: Patchwork message
-	'articlefeedbackv5-link-close-text2' => 'then check this box:', // FIXME: Patchwork message
-	'articlefeedbackv5-link-cllse-text3' => '"Do not show the Article Feedback widget."', // FIXME: Patchwork message
-	'articlefeedbackv5-link-close-submit' => 'Remove',
-	'articlefeedbackv5-link-close-cancel' => 'Cancel',
+	'articlefeedbackv5-disable-flyover-title' => 'Remove this tool?',
+	'articlefeedbackv5-disable-flyover-help-goto' => 'To remove $1, go to',
+	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Article Feedback',
+	'articlefeedbackv5-disable-flyover-help-location' => 'My preferences > Appearance',
+	'articlefeedbackv5-disable-flyover-help-direction' => 'and check',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Go to my preferences',
 
 );
 
@@ -702,13 +700,13 @@ This URL can be changed to point to a translated version of the page if it exist
 * <code>$2</code> – Page name of item with feedback requiring oversight.
 * <code>$3</code> – URL directly to feedback location
 * <code>$4</code> – The help link.',
-	'articlefeedbackv5-link-close-caption' => 'Remove article feedback tipsy - caption',
-	'articlefeedbackv5-link-close-text1' => 'Remove article feedback tipsy - text line 1',
-	'articlefeedbackv5-link-close-linktext' => 'Remove article feedback tipsy - text for close link',
-	'articlefeedbackv5-link-close-text2' => 'Remove article feedback tipsy - text line 2',
-	'articlefeedbackv5-link-cllse-text3' => 'Remove article feedback tipsy - text line 3. Identical to the text of {{msg-mw|Articlefeedbackv5-disable-preference}}',
-	'articlefeedbackv5-link-close-submit' => 'Remove article feedback tipsy - confirm button text',
-	'articlefeedbackv5-link-close-cancel' => 'Remove article feedback tipsy - cancel link text',
+	'articlefeedbackv5-disable-flyover-title' => 'Title of the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
+	'articlefeedbackv5-disable-flyover-help-goto' => 'Help text for the tooltip that pops up when you click the close button on a feedback trigger link, explaining where to go to remove the Article Feedback tool.  <code>$1</code>: Emphasized name of the tool (text is {{msg-mw|articlefeedbackv5-disable-flyover-help-emphasis-text}})',
+	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'The emphasis text for {{msg-mw|articlefeedbackv5-disable-flyover-help-goto}}',
+	'articlefeedbackv5-disable-flyover-help-location' => 'A short indication of where to go to change your Article Feedback preferences, immediately below {{msg-mw|articlefeedbackv5-disable-flyover-help-goto}}',
+	'articlefeedbackv5-disable-flyover-help-direction' => 'Help text for what to do once you get to the preferences panel (name of checkbox will be on the line below)',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'The text of the big glossy button used to send the user to their preferences in the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
+
 );
 
 /** Afrikaans (Afrikaans)

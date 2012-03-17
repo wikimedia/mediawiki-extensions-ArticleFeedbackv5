@@ -4,15 +4,18 @@
  * This file creates the plugin that will be used to build the Article Feedback
  * form.  The flow goes like this:
  *
- * User arrives at page -> build appropriate form
- *  -> User clicks the view link -> replace form with average ratings display
+ * User arrives at page -> build appropriate form and trigger link(s)
+ *  -> User clicks trigger link -> open form in modal window
+ *  -> User scrolls to end of article -> open form below article
  *  -> User submits form -> submit to API
  *      -> has errors -> show errors
  *      -> has no errors -> select random CTA and display
  *
- * This plugin supports a choice of forms and CTAs.  Each form option is called
- * a "bucket" because users are sorted into buckets and each bucket gets a
- * different form option.  Right now, these buckets are:
+ * This plugin supports a choice of forms, trigger links, and CTAs.  Each form
+ * option is called a "bucket" because users are sorted into buckets and each
+ * bucket gets a different form option.
+ *
+ * Right now, these buckets are:
  *   0. No Feedback
  *   	Shows nothing at all.
  *   1. Share Your Feedback
@@ -28,12 +31,27 @@
  *   5. Rate This Page
  *   	The existing article feedback tool, except that it can use any of the
  *   	CTA types.
+ *
+ * The available trigger links are:
+ *   A.   After the site tagline (below the article title)
+ *   B.   Below the titlebar on the right
+ *   C.   Button fixed to right side
+ *   D.   Button fixed to bottom right
+ *   E.   Same as D, with other colors
+ *   F.   Button fixed to left side -- NOT IMPLEMENTED
+ *   G.   Button below logo -- NOT IMPLEMENTED
+ *   H.   Link on each section bar
+ *   TBX. In the toolbox section (always added)
+ *
  * The available CTAs are:
  *   0. Just a confirmation notice
  *   1. Edit this page
  *   	Just a big glossy button to send the user to the edit page.
- *   2. Take a survey - NOT implemented
- *      Asks the user to take a survey, which will probably pop up in a new
+ *   2. Learn More
+ *   	Just a big glossy button to tell the user about how the wiki works
+ *   	(used if the user doesn't have edit privileges on the article).
+ *   3. Take a survey
+ *      Asks the user to take an external survey, which will pop up in a new
  *      window.
  *
  * This file is really long, so it's commented with manual fold markers.  To use
@@ -102,6 +120,15 @@
 	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Calls_to_Action
 	 */
 	$.articleFeedbackv5.ctaId = '1';
+
+	/**
+	 * The selected trigger links are the ones chosen to be loaded onto the
+	 * page. Options are "-" or A-H
+	 *
+	 * @see $wgArticleFeedbackv5LinkBuckets
+	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_links_on_article_pages
+	 */
+	$.articleFeedbackv5.selectedLinks = [];
 
 	/**
 	 * The link ID indicates where the user clicked (or not) to get to the
@@ -199,7 +226,29 @@
 			</div>\
 			',
 
-		clear: '<div class="clear"></div>'
+		clear: '<div class="clear"></div>',
+
+		disableFlyover: '\
+			<div>\
+				<div class="articleFeedbackv5-disable-flyover">\
+					<div class="articleFeedbackv5-flyover-header">\
+						<h3 id="articleFeedbackv5-noteflyover-caption"><html:msg key="disable-flyover-title" /></h3>\
+						<a id="articleFeedbackv5-noteflyover-close" class="articleFeedbackv5-form-flyover-closebutton" href="#"></a>\
+					</div>\
+					<div class="articleFeedbackv5-form-flyover">\
+						<div class="articleFeedbackv5-disable-flyover-help" >\
+							<p class="articleFeedbackv5-disable-flyover-help-goto"></p>\
+							<a class="articleFeedbackv5-disable-flyover-goto-link" target="_blank"><html:msg key="disable-flyover-help-location" /></a>\
+							<p><html:msg key="disable-flyover-help-direction" /></p>\
+							<p>&quot;<html:msg key="disable-preference" />&quot;</p>\
+						</div>\
+						<div class="articleFeedbackv5-flyover-footer">\
+							<a class="articleFeedbackv5-disable-flyover-button" target="_blank"><html:msg key="disable-flyover-prefbutton" /></a>\
+						</div>\
+					</div>\
+				</div>\
+			</div>\
+			'
 
 	};
 
@@ -2076,8 +2125,6 @@
 			 */
 			getSurveyUrl: function () {
 				var base = mw.config.get( 'wgArticleFeedbackv5SurveyUrls' );
-				aft5_debug( base );
-				aft5_debug( $.articleFeedbackv5.bucketId );
 				if ( typeof base != 'object' || !( $.articleFeedbackv5.bucketId in base ) ) {
 					return false;
 				}
@@ -2137,6 +2184,521 @@
 	};
 
 	// }}}
+	// {{{ Trigger link objects
+
+	/**
+	 * Set up the trigger link options
+	 */
+	$.articleFeedbackv5.triggerLinks = {
+
+		// {{{ A: After the site tagline (below the article title)
+
+		'A': {
+
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The link template, when it does not include a close button
+				 */
+				basic: '<span><a href="#mw-articleFeedbackv5" id="articleFeedbackv5-sitesublink"></a></span>',
+
+				/**
+				 * The link template, when it includes a close button
+				 */
+				closeable: '\
+					<span>\
+						<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-sitesublink"></a>\
+						<a href="#" class="articleFeedbackv5-close-trigger-link"></a>\
+					</span>\
+					'
+
+			},
+
+			// }}}
+			// {{{ closeable
+
+			/**
+			 * Returns whether the link includes a close button
+			 *
+			 * @return boolean
+			 */
+			closeable: function () {
+				return mw.user.name() != null;
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the trigger link
+			 *
+			 * @return Element the link
+			 */
+			build: function () {
+				var self = $.articleFeedbackv5.triggerLinks['A'];
+				var $link = $( self.closeable() ? self.templates.closeable : self.templates.basic )
+				$link.find('#articleFeedbackv5-sitesublink')
+					.data( 'linkId', 'A' )
+					.text( mw.msg( 'articlefeedbackv5-sitesub-linktext' ) )
+					.click( function ( e ) {
+						e.preventDefault();
+						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+					} );
+				return $link;
+			},
+
+			// }}}
+			// {{{ insert
+
+			/**
+			 * Inserts the link into the page
+			 *
+			 * @param Element $link the link
+			 */
+			insert: function ( $link ) {
+				// The link is going to be at different markup locations on different skins,
+				// and it needs to show up if the site subhead (e.g., "From Wikipedia, the free
+				// encyclopedia") is not visible for any reason.
+				if ( $( '#siteSub' ).filter( ':visible' ).length ) {
+					$( '#siteSub' ).append( ' &nbsp; ' ).append( $link );
+				} else if ( $( 'h1.pagetitle + p.subtitle' ).filter( ':visible' ).length ) {
+					$( 'h1.pagetitle + p.subtitle' ).append( ' ' ).append( $link );
+				} else if ( $( '#mw_contentholder .mw-topboxes' ).length ) {
+					$( '#mw_contentholder .mw-topboxes' ).after( $link );
+				} else if ( $( '#bodyContent' ).length ) {
+					$( '#bodyContent' ).prepend( $link );
+				}
+			}
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ B: Below the titlebar on the right
+
+		'B': {
+
+			// {{{ closeable
+
+			/**
+			 * Returns whether the link includes a close button
+			 *
+			 * @return boolean
+			 */
+			closeable: function () {
+				return false;
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the trigger link
+			 *
+			 * @return Element the link
+			 */
+			build: function () {
+				var $link = $( '<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-titlebarlink"></a>' )
+					.data( 'linkId', 'B' )
+					.text( mw.msg( 'articlefeedbackv5-titlebar-linktext' ) )
+					.click( function ( e ) {
+						e.preventDefault();
+						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+					} );
+				if ( $( '#coordinates' ).length ) {
+					$link.css( 'margin-top: 2.5em' );
+				}
+				return $link;
+			}
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ C: Button fixed to right side
+
+		'C': {
+
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The link template
+				 */
+				block: '\
+					<div id="articleFeedbackv5-fixedtab" class="articleFeedbackv5-fixedtab">\
+						<div id="articleFeedbackv5-fixedtabbox" class="articleFeedbackv5-fixedtabbox">\
+							<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-fixedtablink" class="articleFeedbackv5-fixedtablink"></a>\
+						</div>\
+					</div>'
+
+			},
+
+			// }}}
+			// {{{ closeable
+
+			/**
+			 * Returns whether the link includes a close button
+			 *
+			 * @return boolean
+			 */
+			closeable: function () {
+				return false;
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the trigger link
+			 *
+			 * @return Element the link
+			 */
+			build: function () {
+				var $link = $( $.articleFeedbackv5.triggerLinks['C'].templates.block );
+				$link.find( '#articleFeedbackv5-fixedtablink' )
+					.data( 'linkId', 'C' )
+					.attr( 'title', mw.msg( 'articlefeedbackv5-fixedtab-linktext' ) )
+					.click( function( e ) {
+						e.preventDefault();
+						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+					} );
+				return $link;
+			}
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ D: Button fixed to bottom right
+
+		'D': {
+
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The link template
+				 */
+				block: '\
+					<div id="articleFeedbackv5-bottomrighttab" class="articleFeedbackv5-bottomrighttab">\
+						<div id="articleFeedbackv5-bottomrighttabbox" class="articleFeedbackv5-bottomrighttabbox">\
+							<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-bottomrighttablink" class="articleFeedbackv5-bottomrighttablink"></a>\
+						</div>\
+					</div>'
+
+			},
+
+			// }}}
+			// {{{ closeable
+
+			/**
+			 * Returns whether the link includes a close button
+			 *
+			 * @return boolean
+			 */
+			closeable: function () {
+				return false;
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the trigger link
+			 *
+			 * @return Element the link
+			 */
+			build: function () {
+				var $link = $( $.articleFeedbackv5.triggerLinks['D'].templates.block );
+				$link.find( '#articleFeedbackv5-bottomrighttablink' )
+					.data( 'linkId', 'D' )
+					.text( mw.msg( 'articlefeedbackv5-bottomrighttab-linktext' ) )
+					.click( function( e ) {
+						e.preventDefault();
+						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+					} );
+				return $link;
+			}
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ E: Same as D, with other colors
+
+		'E': {
+
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The link template, when it does not include a close button
+				 */
+				basic: '\
+					<div id="articleFeedbackv5-bottomrighttab" class="articleFeedbackv5-bottomrighttab">\
+						<div id="articleFeedbackv5-bottomrighttabbox" class="articleFeedbackv5-bottomrighttabbox">\
+							<div class="articleFeedbackv5-bottomrighttablink">\
+								<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-bottomrighttablink"></a>\
+							</div>\
+						</div>\
+					</div>\
+					',
+
+				/**
+				 * The link template, when it includes a close button
+				 */
+				closeable: '\
+					<div id="articleFeedbackv5-bottomrighttab" class="articleFeedbackv5-bottomrighttab articleFeedbackv5-trigger-link">\
+						<div id="articleFeedbackv5-bottomrighttabbox" class="articleFeedbackv5-bottomrighttabbox">\
+							<div class="articleFeedbackv5-bottomrighttablink articleFeedbackv5-closeable">\
+								<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-bottomrighttablink"></a>\
+								<a href="#" class="articleFeedbackv5-close-trigger-link"></a>\
+							</div>\
+						</div>\
+					</div>\
+					'
+
+			},
+
+			// }}}
+			// {{{ closeable
+
+			/**
+			 * Returns whether the link includes a close button
+			 *
+			 * @return boolean
+			 */
+			closeable: function () {
+				return mw.user.name() != null;
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the trigger link
+			 *
+			 * @return Element the link
+			 */
+			build: function () {
+				var self = $.articleFeedbackv5.triggerLinks['E'];
+				var $link = $( self.closeable() ? self.templates.closeable : self.templates.basic );
+				$link.find( '#articleFeedbackv5-bottomrighttablink' )
+					.data( 'linkId', 'E' )
+					.text( mw.msg( 'articlefeedbackv5-bottomrighttab-linktext' ) )
+					.click( function( e ) {
+						e.preventDefault();
+						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+					} );
+				return $link;
+			}
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ F: Button fixed to left side -- NOT IMPLEMENTED
+
+		'F': {
+
+			// {{{ closeable
+
+			/**
+			 * Returns whether the link includes a close button
+			 *
+			 * @return boolean
+			 */
+			closeable: function () {
+				return false;
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the trigger link
+			 *
+			 * @return Element the link
+			 */
+			build: function () {
+			}
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ G: Button below logo -- NOT IMPLEMENTED
+
+		'G': {
+
+			// {{{ closeable
+
+			/**
+			 * Returns whether the link includes a close button
+			 *
+			 * @return boolean
+			 */
+			closeable: function () {
+				return false;
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the trigger link
+			 *
+			 * @return Element the link
+			 */
+			build: function () {
+			}
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ H: Link on each section bar
+
+		'H': {
+
+			// {{{ closeable
+
+			/**
+			 * Returns whether the link includes a close button
+			 *
+			 * @return boolean
+			 */
+			closeable: function () {
+				return false;
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the trigger link
+			 *
+			 * @return Element the link
+			 */
+			build: function () {
+				var $wrap = $( '<span class="articleFeedbackv5-sectionlink-wrap"></span>' )
+					.html( '&nbsp;[<a href="#mw-articlefeedbackv5" class="articleFeedbackv5-sectionlink"></a>]' );
+				$wrap.find( 'a.articleFeedbackv5-sectionlink' )
+					.data( 'linkId', 'H' )
+					.text( mw.msg( 'articlefeedbackv5-section-linktext' ) )
+					.click( function ( e ) {
+						e.preventDefault();
+						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+					} );
+				return $wrap;
+			},
+
+			// }}}
+			// {{{ insert
+
+			/**
+			 * Inserts the link into the page
+			 *
+			 * @param Element $link the link
+			 */
+			insert: function ( $link ) {
+				$( 'span.editsection' ).append( $link );
+			}
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ TBX: In the toolbox section (always added)
+
+		'TBX': {
+
+			// {{{ closeable
+
+			/**
+			 * Returns whether the link includes a close button
+			 *
+			 * @return boolean
+			 */
+			closeable: function () {
+				return false;
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the trigger link
+			 *
+			 * @return Element the link
+			 */
+			build: function () {
+				var $link = $( '<li id="t-articlefeedbackv5"><a href="#mw-articlefeedbackv5"></a></li>' );
+				$link.find( 'a' ).text( mw.msg( 'articlefeedbackv5-toolbox-linktext' ) );
+				if ( '5' == $.articleFeedbackv5.bucketId ) {
+					$link.find( 'a' )
+						.click( function ( e ) {
+							// Just set the link ID -- this should act just like AFTv4
+							$.articleFeedbackv5.setLinkId( 'TBX' );
+						} );
+				} else {
+					$link.find( 'a' )
+						.data( 'linkId', 'TBX' )
+						.click( function ( e ) {
+							e.preventDefault();
+							$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+						} );
+				}
+				return $link;
+			},
+
+			// }}}
+			// {{{ insert
+
+			/**
+			 * Inserts the link into the page
+			 *
+			 * @param Element $link the link
+			 */
+			insert: function ( $link ) {
+				$( '#p-tb' ).find( 'ul' ).append( $link );
+			}
+
+			// }}}
+
+		}
+
+		// }}}
+
+	};
+
+	// }}}
 	// {{{ Initialization
 
 	// {{{ init
@@ -2174,6 +2736,9 @@
 		} );
 		// Keep track of links that must be removed after a successful submission
 		$.articleFeedbackv5.$toRemove = $( [] );
+		// Select the trigger link(s)
+		$.articleFeedbackv5.selectTriggerLinks();
+		$.articleFeedbackv5.addTriggerLinks();
 		// Track init at 1%
 		if ( Math.random() * 100 < 1 ) {
 			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-init' );
@@ -2184,7 +2749,7 @@
 	// {{{ selectBucket
 
 	/**
-	 * Chooses a bucket and loads the appropriate form
+	 * Chooses a bucket
 	 *
 	 * If the plugin is in debug mode, you'll be able to pass in a particular
 	 * bucket in the url.  Otherwise, it will use the core bucketing
@@ -2241,6 +2806,44 @@
 			return true;
 		}
 		return ( 'track' === mw.user.bucket( 'ext.articleFeedbackv5-tracking', b ) );
+	};
+
+	// }}}
+	// {{{ selectTriggerLinks
+
+	/**
+	 * Chooses the trigger link(s) to add
+	 *
+	 * If the plugin is in debug mode, you'll be able to pass in a particular
+	 * link in the url.  Otherwise, it will use the core bucketing
+	 * (configuration for this module passed in) to choose a trigger link.
+	 */
+	$.articleFeedbackv5.selectTriggerLinks = function () {
+		// The bucketed link:
+		//   1. Display buckets 0 or 5?  Always no link.
+		//   2. Requested in query string (debug only)
+		//   3. Random bucketing
+		var bucketedLink = '-';
+		if ( '5' != $.articleFeedbackv5.bucketId && '0' != $.articleFeedbackv5.bucketId ) {
+			var cfg = mw.config.get( 'wgArticleFeedbackv5LinkBuckets' );
+			if ( 'buckets' in cfg ) {
+				var knownBuckets = cfg.buckets;
+				var requested = mw.util.getParamValue( 'aftv5_link' );
+				if ( $.articleFeedbackv5.inDebug() && requested in knownBuckets ) {
+					bucketedLink = requested;
+				} else {
+					bucketedLink = mw.user.bucket( 'ext.articleFeedbackv5-links', cfg );
+				}
+			}
+		}
+		if ( $.articleFeedbackv5.inDebug() ) {
+			aft5_debug( 'Using link option ' + bucketedLink );
+		}
+		if ('-' != bucketedLink) {
+			$.articleFeedbackv5.selectedLinks.push(bucketedLink);
+		}
+		// Always add the toolbox link
+		$.articleFeedbackv5.selectedLinks.push('TBX');
 	};
 
 	// }}}
@@ -2304,22 +2907,13 @@
 	 */
 	$.articleFeedbackv5.buildLink = function ( fulltext, link1, link2, link3 ) {
 		var full = mw.html.escape( mw.msg( fulltext ) );
-		if ( link1 ) {
-			full = full.replace(
-					/\$1/,
-					mw.html.element( 'a', $.articleFeedbackv5.attribs( link1 ), mw.msg( link1.text )
-				).toString() );
-		}
-		if ( link2 ) {
-			full = full.replace(
-					/\$2/,
-					mw.html.element( 'a', $.articleFeedbackv5.attribs( link2 ), mw.msg( link2.text )
-				).toString() );
-		}
-		if ( link3 ) {
-			full = full.replace(
-					/\$3/,
-					mw.html.element( 'a', $.articleFeedbackv5.attribs( link3 ), mw.msg( link3.text )
+		for ( var i = 1; i < arguments.length; i++ ) {
+			var sub = arguments[i];
+			var re = new RegExp("\\$" + i);
+			full = full.replace( re, mw.html.element(
+					'tag' in sub ? sub.tag : 'a',
+					$.articleFeedbackv5.attribs( sub ),
+					mw.msg( sub.text )
 				).toString() );
 		}
 		return full;
@@ -2339,7 +2933,7 @@
 	$.articleFeedbackv5.attribs = function ( link ) {
 		var attr = {};
 		for ( var k in link ) {
-			if ( 'text' != k ) {
+			if ( 'text' != k && 'tag' != k ) {
 				attr[k] = link[k];
 			}
 		}
@@ -2701,9 +3295,9 @@
 					$.articleFeedbackv5.showCTA( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
 					// Drop a cookie for a successful submit
 					$.cookie( $.articleFeedbackv5.prefix( 'submitted' ), 'true', { 'expires': 365, 'path': '/' } );
-					// Clear out anything that needs removing (usually feedback links)
+					// Clear out anything that needs removing (usually trigger links)
 					// Comment this out and uncomment the clear on dialog close to switch to
-					// the feedback link replacing the form. _SWITCH_CLEAR_
+					// the trigger link replacing the form. _SWITCH_CLEAR_
 					$.articleFeedbackv5.$toRemove.remove();
 					$.articleFeedbackv5.$toRemove = $( [] );
 				} else {
@@ -2870,6 +3464,114 @@
 	};
 
 	// }}}
+	// {{{ addTriggerLinks
+
+	/**
+	 * Adds the trigger links to the page
+	 */
+	$.articleFeedbackv5.addTriggerLinks = function () {
+		hasTipsy = false;
+		for ( var i in $.articleFeedbackv5.selectedLinks ) {
+			var linkId = $.articleFeedbackv5.selectedLinks[i];
+			if ( linkId in $.articleFeedbackv5.triggerLinks ) {
+				var option = $.articleFeedbackv5.triggerLinks[linkId];
+				var $link = option.build();
+				if ( 'insert' in option ) {
+					option.insert( $link );
+				} else {
+					$link.insertBefore( $.articleFeedbackv5.$holder );
+				}
+				if ( option.closeable ) {
+					$.articleFeedbackv5.buildDisableFlyover( linkId, $link );
+					hasTipsy = true;
+				}
+				if ( 'TBX' != linkId && '5' != $.articleFeedbackv5.bucketId ) {
+					$.articleFeedbackv5.addToRemovalQueue( $link );
+				}
+			}
+		}
+		if ( hasTipsy ) {
+			$( '.articleFeedbackv5-form-flyover-closebutton' ).live( 'click', function( e ) {
+				e.preventDefault();
+				var $host = $( '.articleFeedbackv5-trigger-link-' + $( e.target ).attr( 'rel' ) )
+				$host.tipsy( 'hide' );
+				$host.closest( '.articleFeedbackv5-trigger-link-holder' )
+					.removeClass( 'articleFeedbackv5-tipsy-active' );
+			} );
+		}
+	};
+
+	// }}}
+	// {{{ buildDisableFlyover
+
+	/**
+	 * Builds a disable flyover for a link
+	 *
+	 * @param string  linkId the name of the link (A-H, TBX)
+	 * @param Element $link  the link object
+	 */
+	$.articleFeedbackv5.buildDisableFlyover = function ( linkId, $link ) {
+		$link.addClass( 'articleFeedbackv5-trigger-link-holder' );
+		$link.addClass( 'articleFeedbackv5-trigger-link-holder-' + linkId );
+		var gravity = 'se';
+		if ( 'A' == linkId ) {
+			gravity = 'nw';
+		}
+		$link.find( '.articleFeedbackv5-close-trigger-link' )
+			.addClass( 'articleFeedbackv5-trigger-link-' + linkId )
+			.tipsy( {
+				delayIn: 0,
+				delayOut: 0,
+				fade: false,
+				fallback: '',
+				gravity: gravity,
+				html: true,
+				live: false,
+				offset: 10,
+				opacity: 1.0,
+				trigger: 'manual',
+				className: 'articleFeedbackv5-disable-flyover-tip-' + linkId,
+				title: function () {
+					var $flyover = $( $.articleFeedbackv5.templates.disableFlyover );
+					$flyover.localize( { 'prefix': 'articlefeedbackv5-' } );
+					$flyover.find( '.articleFeedbackv5-disable-flyover' )
+						.addClass( 'articleFeedbackv5-disable-flyover-' + linkId );
+					var prefLink = mw.config.get( 'wgScript' ) + '?' +
+						$.param( { title: 'Special:Preferences' } ) +
+						'#mw-prefsection-rendering';
+					$flyover.find( '.articleFeedbackv5-disable-flyover-help-goto' )
+						.html( $.articleFeedbackv5.buildLink(
+							'articlefeedbackv5-disable-flyover-help-goto', {
+								tag: 'strong',
+								text: 'articlefeedbackv5-disable-flyover-help-emphasis-text'
+							} ) );
+					$flyover.find( '.articleFeedbackv5-disable-flyover-goto-link' )
+						.attr( 'href', prefLink )
+					$flyover.find( '.articleFeedbackv5-disable-flyover-button' )
+						.attr( 'href', prefLink )
+						.button()
+						.addClass( 'ui-button-blue' );
+					$flyover.find('.articleFeedbackv5-form-flyover-closebutton')
+						.attr( 'href', '#hello' )
+						.attr( 'rel', linkId );
+					return $flyover.html();
+				}
+			} )
+			.click( function ( e ) {
+				e.preventDefault();
+				var $host = $( e.target );
+				var $wrap = $host.closest( '.articleFeedbackv5-trigger-link-holder' )
+				if ( $wrap.hasClass( 'articleFeedbackv5-tipsy-active' ) ) {
+					$host.tipsy( 'hide' );
+					$wrap.removeClass( 'articleFeedbackv5-tipsy-active' );
+				} else {
+					$host.tipsy( 'show' );
+					$wrap.addClass( 'articleFeedbackv5-tipsy-active' );
+				}
+			} );
+	};
+
+	// }}}
 
 	// }}}
 	// {{{ UI methods
@@ -2991,7 +3693,7 @@
 	// {{{ addToRemovalQueue
 
 	/**
-	 * Adds an element (usually a feedback link) to the collection that will be
+	 * Adds an element (usually a trigger link) to the collection that will be
 	 * removed after a successful submission
 	 *
 	 * @param $el Element the element
@@ -3054,7 +3756,7 @@
 	/**
 	 * Opens the feedback tool as a modal window
 	 *
-	 * @param $link Element the feedback link
+	 * @param $link Element the trigger link
 	 */
 	$.articleFeedbackv5.openAsModal = function ( $link ) {
 		if ( 'cta' == $.articleFeedbackv5.nowShowing ) {
@@ -3116,7 +3818,7 @@
 	/**
 	 * Toggles the modal state
 	 *
-	 * @param $link Element the feedback link
+	 * @param $link Element the trigger link
 	 */
 	$.articleFeedbackv5.toggleModal = function ( $link ) {
 		if ( $.articleFeedbackv5.inDialog ) {
@@ -3193,6 +3895,22 @@
 			'additional': mw.config.get( 'wgTitle' ) + '|' + $.articleFeedbackv5.revisionId,
 			'redirectto': url
 		} );
+	};
+
+	// }}}
+	// {{{ clickTriggerLink
+
+	/**
+	 * Handles the click event on a trigger link
+	 *
+	 * @param $link Element the trigger link
+	 */
+	$.articleFeedbackv5.clickTriggerLink = function( $link ) {
+		var tracking_id = $.articleFeedbackv5.bucketName() +
+			'-trigger' + $link.data( 'linkId' ) +
+			'-click-overlay';
+		$.articleFeedbackv5.trackClick( tracking_id );
+		$.articleFeedbackv5.toggleModal( $link );
 	};
 
 	// }}}
