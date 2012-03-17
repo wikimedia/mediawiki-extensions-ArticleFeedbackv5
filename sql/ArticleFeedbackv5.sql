@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   af_hide_user_id   integer unsigned NOT NULL DEFAULT 0,
   af_hide_timestamp  binary(14) NOT NULL DEFAULT '',
   af_oversight_user_id  integer unsigned NOT NULL DEFAULT 0,
-  af_oversight_timestamp  binary(14) NOT NULL DEFAULT '',
+  af_oversight_timestamp  binary(14) NOT NULL DEFAULT ''
 ) /*$wgDBTableOptions*/;
 CREATE INDEX /*i*/af_page_user_token_id ON /*_*/aft_article_feedback (af_page_id, af_user_id, af_user_anon_token, af_id);
 CREATE INDEX /*i*/af_revision_id ON /*_*/aft_article_feedback (af_revision_id);
