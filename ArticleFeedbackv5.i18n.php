@@ -706,7 +706,6 @@ This URL can be changed to point to a translated version of the page if it exist
 	'articlefeedbackv5-disable-flyover-help-location' => 'A short indication of where to go to change your Article Feedback preferences, immediately below {{msg-mw|articlefeedbackv5-disable-flyover-help-goto}}',
 	'articlefeedbackv5-disable-flyover-help-direction' => 'Help text for what to do once you get to the preferences panel (name of checkbox will be on the line below)',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'The text of the big glossy button used to send the user to their preferences in the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
-
 );
 
 /** Afrikaans (Afrikaans)
@@ -2498,13 +2497,6 @@ $4
 Dieses Hilfsmittel für Rückmeldungen befindet sich noch in den Anfängen seiner
 Erprobung auf der englischsprachigen Wikipedia. Zudem wurde niemand über diese
 Erprobungsphase informiert.',
-	'articlefeedbackv5-link-close-caption' => 'Einschätzen von Seiten deaktivieren?',
-	'articlefeedbackv5-link-close-text1' => 'Um dieses Widget zu deaktivieren, gehe zu',
-	'articlefeedbackv5-link-close-linktext' => '„Einstellungen > Aussehen“',
-	'articlefeedbackv5-link-close-text2' => 'und klicke auf das Kontrollkästchen vor:',
-	'articlefeedbackv5-link-cllse-text3' => '„Das Widget zum Einschätzen von Seiten nicht anzeigen“',
-	'articlefeedbackv5-link-close-submit' => 'Entfernen',
-	'articlefeedbackv5-link-close-cancel' => 'Abbrechen',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -2612,8 +2604,6 @@ $4
 Dieses Hilfsmittel für Rückmeldungen befindet sich noch in den Anfängen seiner
 Erprobung auf der englischsprachigen Wikipedia. Zudem wurde niemand über diese
 Erprobungsphase informiert.',
-	'articlefeedbackv5-link-close-text1' => 'Um dieses Widget zu deaktivieren, gehen Sie zu',
-	'articlefeedbackv5-link-close-text2' => 'und klicken Sie auf das Kontrollkästchen vor:',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -3563,13 +3553,6 @@ PD: Si tienes alguna pregunta acerca de cómo utilizar las funciones de supervis
 $4
 
 Tenga en cuenta que la herramienta de comentario de artículo v5 se encuentra todavía en las primeras etapas de prueba en la Enciclopedia Inglesa y que la página de comentarios no se ha publicado para la comunidad durante este período de pruebas.',
-	'articlefeedbackv5-link-close-caption' => '¿Eliminar comentarios del artículo?',
-	'articlefeedbackv5-link-close-text1' => 'Para suprimir este widget, vaya a',
-	'articlefeedbackv5-link-close-linktext' => '"Mis preferencias > Aspecto"',
-	'articlefeedbackv5-link-close-text2' => 'a continuación, marque esta casilla:',
-	'articlefeedbackv5-link-cllse-text3' => '"No mostrar el widget de Comentarios del artículo".',
-	'articlefeedbackv5-link-close-submit' => 'Eliminar',
-	'articlefeedbackv5-link-close-cancel' => 'Cancelar',
 );
 
 /** Estonian (Eesti)
@@ -4502,13 +4485,6 @@ P.S.: Si vous avez des questions sur la fonctionnalité de surveillance de la pa
 $4
 
 Notez bien que cette fonctionnalité de commentaire d'article v5 est encore dans ses premières phases de test sur l'encyclopédie anglaise et que la page de commentaires n'a pas été communiquée à la communauté durant cette phase de test.",
-	'articlefeedbackv5-link-close-caption' => "Supprimer le commentaire de l'article?",
-	'articlefeedbackv5-link-close-text1' => 'Pour supprimer ce widget, allez à',
-	'articlefeedbackv5-link-close-linktext' => '"Mes Préférences > Apparances"',
-	'articlefeedbackv5-link-close-text2' => 'puis cochez cette case:',
-	'articlefeedbackv5-link-cllse-text3' => '"Ne pas afficher le widget Commentaire de l\'article".',
-	'articlefeedbackv5-link-close-submit' => 'Supprimer',
-	'articlefeedbackv5-link-close-cancel' => 'Annuler',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -6012,13 +5988,6 @@ P.S. Jeli maš prašenja wo wužiwanju dohladowanskich funkcijow komentaroweje s
 $4
 
 Prošu wobkedźbuj, zo nastroj wo nastawkowych komentarch  wersije 5 je hišće w zažnym testowym stadiju na jendźelskej encyklopediji a zo strona komentarow hišće njeje so za testowu periodu wozjewiła.',
-	'articlefeedbackv5-link-close-caption' => 'Komentary nastawka wotstronić?',
-	'articlefeedbackv5-link-close-text1' => 'Zo by tutón pomocny srědk wotstronił, dźi k',
-	'articlefeedbackv5-link-close-linktext' => '"Nastajenja > Napohlad"',
-	'articlefeedbackv5-link-close-text2' => 'klikń potom do kontrolneho kašćika:',
-	'articlefeedbackv5-link-cllse-text3' => '"Pomocny srědk za komentary nastawkow njepokazać."',
-	'articlefeedbackv5-link-close-submit' => 'Wotstronjeny',
-	'articlefeedbackv5-link-close-cancel' => 'Přetorhnyć',
 );
 
 /** Hungarian (Magyar)
@@ -6583,13 +6552,6 @@ P.S.: Si tu ha questiones sur le uso del functionalitate de supervision del pagi
 $4
 
 Per favor nota que le version 5 del functionalitate de evalutation es ancora in le prime stadios de test in le encyclopedia anglophone e que le pagina de evalutation non ha essite promovite al communitate durante iste periodo de test.',
-	'articlefeedbackv5-link-close-caption' => 'Remover iste evalutation del articulo?',
-	'articlefeedbackv5-link-close-text1' => 'Pro remover iste widget, vade a',
-	'articlefeedbackv5-link-close-linktext' => '"Mi preferentias > Apparentias"',
-	'articlefeedbackv5-link-close-text2' => 'postea marca iste quadrato:',
-	'articlefeedbackv5-link-cllse-text3' => '"Non monstrar le widget Evalutation de articulo."',
-	'articlefeedbackv5-link-close-submit' => 'Remover',
-	'articlefeedbackv5-link-close-cancel' => 'Cancellar',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -8595,13 +8557,6 @@ $3
 $4
 
 Имајте на ум дека верзијата 5 на функцијата за заверка е сè уште во рана фаза на испробување на англиската енциклопедија (0,6%, или 22.000 статии) и дека страницата за мислења не е на јавен увид за заедницата во текот на овој пробен период.',
-	'articlefeedbackv5-link-close-caption' => 'Сакате да го отстраните прилогот „Мислења за статии“?',
-	'articlefeedbackv5-link-close-text1' => 'За да го отстраните прилогот, појдете на',
-	'articlefeedbackv5-link-close-linktext' => '„нагодувања > изглед“',
-	'articlefeedbackv5-link-close-text2' => 'па штиклирајте го ова кутивче:',
-	'articlefeedbackv5-link-cllse-text3' => '„Не го прикажувај прилогот „Оценување на статии“ во страниците“.',
-	'articlefeedbackv5-link-close-submit' => 'Отстрани',
-	'articlefeedbackv5-link-close-cancel' => 'Откажи',
 );
 
 /** Malayalam (മലയാളം)
@@ -8622,7 +8577,7 @@ $messages['ml'] = array(
 	'articlefeedbackv5-form-tools-label' => 'ഉപകരണങ്ങൾ',
 	'articlefeedbackv5-form-helpful-yes-label' => 'അതെ',
 	'articlefeedbackv5-form-helpful-no-label' => 'അല്ല',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|അതെ 1|അതെ $1}} / {{PLURAL:$2|അല്ല 1|അല്ല $2}})',
+	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|അതെ 1|അതെ $1}} / {{PLURAL:$2|അല്ല 1|അല്ല $2}}',
 	'articlefeedbackv5-special-filter-all' => 'എല്ലാം (മേൽനോട്ടം) ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'എല്ലാം ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'അഭിപ്രായപ്രകടനം മാത്രം ($1)',
@@ -9121,13 +9076,6 @@ P.S.: Jika anda ada sebarang soalah tentang penggunaan ciri-ciri penghapusan pad
 $4
 
 Sila ambil perhatian bahawa alat maklum balas rencana v5 masih di peringkat awal percubaan di ensiklopedia ini, apalagi laman maklum balas belum dibuka kepada komuniti umum pada tempoh percubaan ini.',
-	'articlefeedbackv5-link-close-caption' => 'Gugurkan Maklum Balas Rencana?',
-	'articlefeedbackv5-link-close-text1' => 'Untuk menggugurkan widget ini, pergi ke',
-	'articlefeedbackv5-link-close-linktext' => '"Keutamaan saya > Penampilan"',
-	'articlefeedbackv5-link-close-text2' => 'kemudian raitkan petak ini:',
-	'articlefeedbackv5-link-cllse-text3' => '"Jangan paparkan widget Maklum Balas Rencana."',
-	'articlefeedbackv5-link-close-submit' => 'Gugurkan',
-	'articlefeedbackv5-link-close-cancel' => 'Batalkan',
 );
 
 /** Maltese (Malti)
@@ -12472,13 +12420,6 @@ $4
 Prosimo, upoštevajte, daje orodje za povratna sporočila v5 še vedno v zgodnjih
 fazah razvoja in da stran s povratnimi sporočili za obdobje preizkušanja ni na
 razpolago celotnemu občestvu.',
-	'articlefeedbackv5-link-close-caption' => 'Odstranitev povratnih sporočil?',
-	'articlefeedbackv5-link-close-text1' => 'Za odstranitev gradnika pojdite na',
-	'articlefeedbackv5-link-close-linktext' => '"Nastavitve > Videz"',
-	'articlefeedbackv5-link-close-text2' => 'nato potrdite to polje:',
-	'articlefeedbackv5-link-cllse-text3' => '"Ne prikaži gradnika Povratne informacije."',
-	'articlefeedbackv5-link-close-submit' => 'Odstrani',
-	'articlefeedbackv5-link-close-cancel' => 'Prekliči',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
