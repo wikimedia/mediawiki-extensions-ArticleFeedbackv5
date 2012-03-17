@@ -190,6 +190,13 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		    ), $this->msg( 'articlefeedbackv5-beta-notice' )->text() )
 			. Html::element( 'div', array( 'class' => 'float-clear' ) )
 		);
+		
+		// Temporary "This is a prototype" disclaimer text
+		$out->addHTML(
+			Html::element( 'div', array(
+				'class' => 'articlefeedbackv5-special-disclaimer'
+			), $this->msg( 'articlefeedbackv5-special-disclaimer' )->text() )
+		);
 
 		$out->addHtml(
 			Html::element(

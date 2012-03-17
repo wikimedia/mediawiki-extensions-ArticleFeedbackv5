@@ -19,6 +19,11 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	top: 1.3em;
 	left: 3em;
 }
+.articlefeedbackv5-special-disclaimer {
+	font-size: 1.125em;
+	color: red;
+	font-weight: bold;
+}
 #articleFeedbackv5-header-wrap {
 	margin: 0 0 10px;
 }

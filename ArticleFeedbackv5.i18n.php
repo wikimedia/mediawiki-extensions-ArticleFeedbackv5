@@ -145,6 +145,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-mask-text-hidden' => 'This post was hidden by an authorized editor',
 	'articlefeedbackv5-mask-text-oversight' => 'This post was oversighted by an authorized editor',
 	'articlefeedbackv5-mask-postnumber' => 'Post #$1',
+	'articlefeedbackv5-special-disclaimer' => 'This is a prototype. Please do not use it unless you have been invited to.',
 
 	/* Special page flyover panels */
 	/* Hide this post panel */
