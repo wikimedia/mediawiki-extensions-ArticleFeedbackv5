@@ -1836,6 +1836,7 @@ $messages['ce'] = array(
  * @author Kuvaly
  * @author Mormegil
  * @author Mr. Richard Bolla
+ * @author Tchoř
  * @author Utar
  */
 $messages['cs'] = array(
@@ -1862,7 +1863,7 @@ $messages['cs'] = array(
 	'articlefeedbackv5-special-add-feedback' => 'Přidat názor',
 	'articlefeedbackv5-special-filter-all' => 'Vše ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'Jen komentáře ($1)',
-	'articlefeedbackv5-special-filter-abusive' => 'Zneužití ($1)',
+	'articlefeedbackv5-special-filter-abusive' => 'Označit jako zneužití ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Užitečné ($1)',
 	'articlefeedbackv5-special-filter-visible' => 'Viditelné ($1)',
 	'articlefeedbackv5-special-filter-invisible' => 'Neviditelné ($1)',
@@ -1890,7 +1891,7 @@ $messages['cs'] = array(
 	'articlefeedbackv5-form5-header' => '$1 ohodnotil/a tuto stránku:',
 	'articlefeedbackv5-form-not-shown' => 'Uživateli se nezobrazil formulář zpětné vazby.',
 	'articlefeedbackv5-form-invalid' => 'Neplatné ID formátu názoru.',
-	'articlefeedbackv5-abuse-saved' => 'Označeno jako zneužití',
+	'articlefeedbackv5-abuse-saved' => 'Označeno jako zneužití ($1)',
 	'articlefeedbackv5-error-loading-feedback' => 'Chyba při načítání zpětné vazby',
 	'articlefeedbackv5-invalid-feedback-id' => 'Neplatné ID názoru',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Neplatné označení názoru',
@@ -2284,6 +2285,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-mask-text-hidden' => 'Dieser Beitrag wurde von einem dazu berechtigten Benutzer ausgeblendet.',
 	'articlefeedbackv5-mask-text-oversight' => 'Dieser Beitrag wurde von einem dazu berechtigten Benutzer versteckt.',
 	'articlefeedbackv5-mask-postnumber' => 'Beitrag Nr. $1',
+	'articlefeedbackv5-special-disclaimer' => 'Es handelt sich um einen Prototypen. Nutze ihn nicht, es sei denn, du wirst dazu eingeladen es zu tun.',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Diese Rückmeldung ausblenden',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Eine Anmerkung hinzufügen',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Warum blendest du diese Rückmeldung aus?',
@@ -2498,6 +2500,12 @@ $4
 Dieses Hilfsmittel für Rückmeldungen befindet sich noch in den Anfängen seiner
 Erprobung auf der englischsprachigen Wikipedia. Zudem wurde niemand über diese
 Erprobungsphase informiert.',
+	'articlefeedbackv5-disable-flyover-title' => 'Diese Funktion entfernen?',
+	'articlefeedbackv5-disable-flyover-help-goto' => 'Um die $1 zu entfernen, geh zu',
+	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Rückmeldungen zu Artikeln',
+	'articlefeedbackv5-disable-flyover-help-location' => 'Einstellungen > Aussehen',
+	'articlefeedbackv5-disable-flyover-help-direction' => 'und klicke auf',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Zu meinen Einstellungen',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -2518,6 +2526,7 @@ $messages['de-formal'] = array(
 	'articlefeedbackv5-error-abuse' => 'Ihr Kommentar verstößt gegen die $1. Bitte ändern Sie ihn.',
 	'articlefeedbackv5-error-nofeedback' => 'Bitte geben Sie Ihre Rückmeldung ein.',
 	'articlefeedbackv5-special-add-feedback' => 'Geben Sie ein Rückmeldung',
+	'articlefeedbackv5-special-disclaimer' => 'Es handelt sich um einen Prototypen. Nutzen Sie ihn nicht, es sei denn, Sie werden dazu eingeladen es zu tun.',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Warum blenden Sie diese Rückmeldung aus?',
 	'articlefeedbackv5-noteflyover-show-placeholder' => 'Warum blenden Sie diese Rückmeldung ein?',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Warum beantragen Sie die Löschung?',
@@ -2605,6 +2614,8 @@ $4
 Dieses Hilfsmittel für Rückmeldungen befindet sich noch in den Anfängen seiner
 Erprobung auf der englischsprachigen Wikipedia. Zudem wurde niemand über diese
 Erprobungsphase informiert.',
+	'articlefeedbackv5-disable-flyover-help-goto' => 'Um die $1 zu entfernen, gehen Sie zu',
+	'articlefeedbackv5-disable-flyover-help-direction' => 'und klicken Sie auf',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -3344,6 +3355,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-mask-text-hidden' => 'Esta entrada (post) fue ocultada por un editor autorizado',
 	'articlefeedbackv5-mask-text-oversight' => 'Esta entrada (post) fue supervisada por un editor autorizado',
 	'articlefeedbackv5-mask-postnumber' => "Mensaje (''post'') #$1",
+	'articlefeedbackv5-special-disclaimer' => 'Esto es un prototipo. Por favor no lo utilice a menos que ha sido invitado para hacerlo.',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Ocultar esta entrada (post)',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Agregar una nota',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => '¿Por qué está ocultando esta entrada de blog (post)?',
@@ -3554,6 +3566,12 @@ PD: Si tienes alguna pregunta acerca de cómo utilizar las funciones de supervis
 $4
 
 Tenga en cuenta que la herramienta de comentario de artículo v5 se encuentra todavía en las primeras etapas de prueba en la Enciclopedia Inglesa y que la página de comentarios no se ha publicado para la comunidad durante este período de pruebas.',
+	'articlefeedbackv5-disable-flyover-title' => '¿Eliminar esta herramienta?',
+	'articlefeedbackv5-disable-flyover-help-goto' => 'Para eliminar  $1 , vaya a',
+	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Comentario de artículo',
+	'articlefeedbackv5-disable-flyover-help-location' => 'Mis preferencias > Aspecto',
+	'articlefeedbackv5-disable-flyover-help-direction' => 'y verifique',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ir a Mis preferencias',
 );
 
 /** Estonian (Eesti)
@@ -4802,6 +4820,7 @@ $messages['gl'] = array(
 	'articlefeedbackv5-mask-text-hidden' => 'Un editor autorizado agochou esta mensaxe',
 	'articlefeedbackv5-mask-text-oversight' => 'Un editor autorizado supervisou esta mensaxe',
 	'articlefeedbackv5-mask-postnumber' => 'Mensaxe nº$1',
+	'articlefeedbackv5-special-disclaimer' => 'Isto é un prototipo. Non o use a menos que o convidasen a facelo.',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Agochar esta mensaxe',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Engadir unha nota',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Por que agocha esta mensaxe?',
@@ -5021,6 +5040,12 @@ $4
 Tede en conta que a versión 5 da ferramenta de avaliación de artigos
 está en probas na Wikipedia en inglés e que a páxina de comentarios
 non a pode ver a comunidade durante este período de probas.',
+	'articlefeedbackv5-disable-flyover-title' => 'Quere eliminar a ferramenta?',
+	'articlefeedbackv5-disable-flyover-help-goto' => 'Para eliminar a $1, vaia a',
+	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'ferramenta de avaliación de artigos',
+	'articlefeedbackv5-disable-flyover-help-location' => 'As miñas preferencias > Aparencia',
+	'articlefeedbackv5-disable-flyover-help-direction' => 'e seleccione',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ir ás preferencias',
 );
 
 /** Swiss German (Alemannisch)
@@ -5452,6 +5477,9 @@ $3
 
 תודה,
 צוות {{SITENAME}}',
+	'articlefeedbackv5-disable-flyover-title' => 'להסיר את הכלי הזה?',
+	'articlefeedbackv5-disable-flyover-help-goto' => 'כדי להסיר את $1, יש לעבור אל',
+	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'כלי המשוב על ערכים',
 );
 
 /** Hindi (हिन्दी)
@@ -5780,6 +5808,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-mask-text-hidden' => 'Tutón přinošk je so wot awtorizowaneho wužiwarja schował',
 	'articlefeedbackv5-mask-text-oversight' => 'Tutón přinošk je so wot awtorizowaneho wužiwarja dohladował',
 	'articlefeedbackv5-mask-postnumber' => 'Přinošk čo. $1',
+	'articlefeedbackv5-special-disclaimer' => 'To je prototyp. Prošu njewužij jón, chibazo će přeprošeja to činić.',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Tutón komentar schować',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Přispomnjenku přidać',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Čehodla chowaš tutón komentar?',
@@ -5989,6 +6018,12 @@ P.S. Jeli maš prašenja wo wužiwanju dohladowanskich funkcijow komentaroweje s
 $4
 
 Prošu wobkedźbuj, zo nastroj wo nastawkowych komentarch  wersije 5 je hišće w zažnym testowym stadiju na jendźelskej encyklopediji a zo strona komentarow hišće njeje so za testowu periodu wozjewiła.',
+	'articlefeedbackv5-disable-flyover-title' => 'Tutón nastroj wotstronić?',
+	'articlefeedbackv5-disable-flyover-help-goto' => 'Zo by $1 wotstronił, dźi k',
+	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Komentary wo nastawkach',
+	'articlefeedbackv5-disable-flyover-help-location' => 'Nastajenja > Napohlad',
+	'articlefeedbackv5-disable-flyover-help-direction' => 'a klikń na',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'K nastajenjam',
 );
 
 /** Hungarian (Magyar)
@@ -6342,6 +6377,7 @@ $messages['ia'] = array(
 	'articlefeedbackv5-mask-text-hidden' => 'Iste message esseva celate per un redactor autorisate',
 	'articlefeedbackv5-mask-text-oversight' => 'Iste message esseva mittite sub supervision per un redactor autorisate',
 	'articlefeedbackv5-mask-postnumber' => 'Message №$1',
+	'articlefeedbackv5-special-disclaimer' => 'Isto es un prototypo. Per favor non usa lo a minus que tu ha essite invitate a facer lo.',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Celar iste message',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Adder un nota',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Proque cela tu iste message?',
@@ -6553,6 +6589,12 @@ P.S.: Si tu ha questiones sur le uso del functionalitate de supervision del pagi
 $4
 
 Per favor nota que le version 5 del functionalitate de evalutation es ancora in le prime stadios de test in le encyclopedia anglophone e que le pagina de evalutation non ha essite promovite al communitate durante iste periodo de test.',
+	'articlefeedbackv5-disable-flyover-title' => 'Remover iste instrumento?',
+	'articlefeedbackv5-disable-flyover-help-goto' => 'Pro remover $1, vade a',
+	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Evalutation de articulos',
+	'articlefeedbackv5-disable-flyover-help-location' => 'Mi preferentias > Apparentia',
+	'articlefeedbackv5-disable-flyover-help-direction' => 'e marca',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Vader a mi preferentias',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -8237,7 +8279,7 @@ $messages['mk'] = array(
 	'articlefeedbackv5-cta3-confirmation-call' => 'Ќе ви одземе само минутка, а со тоа ќе ни помогнете да ја подобриме Википедија.',
 	'articlefeedbackv5-cta3-button-text' => 'Започни ја анкетата',
 	'articlefeedbackv5-error' => 'Се појави грешка. Обидете се повторно.',
-	'articlefeedbackv5-page-disabled' => 'Страницата за мислења не е овозможена за оваа статија.',
+	'articlefeedbackv5-page-disabled' => 'Страницата за оценување не е овозможена за оваа статија.',
 	'articlefeedbackv5-error-email' => 'Таа е-пошта е неважечка.',
 	'articlefeedbackv5-error-blocked' => 'Блокираните корисници не можат да даваат мислења.',
 	'articlefeedbackv5-error-validation' => 'Грешка при проверката.',
@@ -8330,7 +8372,7 @@ $messages['mk'] = array(
 * Страници со највисоки/најниски оценки: статии што добиле барем 10 оценки во текот на последните 24 часа.  Просекот се пресметува со наоѓање на средината на сите оценки дадени во последните 24 часа.
 * Неодамна нискооценети: статии со 70% или повеќе ниски оценки (2 ѕвезди и помалку) во било која категорија во последните 24 часа. Се бројат само статии со барем 10 оценки добиени во последните 24 часа.",
 	'articlefeedbackv5' => 'Табла за оценување на статија',
-	'articlefeedbackv5-desc' => 'Оценување на статија',
+	'articlefeedbackv5-desc' => 'Оценување на статии',
 	'articlefeedbackv5-comment-more' => 'Повеќе',
 	'articlefeedbackv5-comment-less' => 'Помалку',
 	'articlefeedbackv5-beta-notice' => 'Бета',
@@ -8487,7 +8529,7 @@ $messages['mk'] = array(
 	'right-aftv5-delete-feedback' => 'Бришење на мислења',
 	'right-aftv5-see-deleted-feedback' => 'Преглед на избришани мислења',
 	'right-aftv5-see-hidden-feedback' => 'Преглед на скриени мислења',
-	'articlefeedbackv5-log-name' => 'Мислења за статии - дневник на активности',
+	'articlefeedbackv5-log-name' => 'Оценување на статии - дневник на активности',
 	'articlefeedbackv5-log-header' => 'Ова е дневникот на активности што заведува мислења со алатката „Мислења за статии“.',
 	'articlefeedbackv5-log-oversight' => 'сменет статусот на мислењето од [[$1]] на заверено',
 	'articlefeedbackv5-log-unoversight' => 'отстранет прегледниот статус на [[$1]] од мислењето',
@@ -8538,11 +8580,11 @@ $3
 	'articlefeedbackv5-email-request-oversight-subject' => 'Побарана е заверка на страница со мислења',
 	'articlefeedbackv5-email-request-oversight-body' => 'Здраво, заверувачи!
 
-$1 побара заверка на мислењето објавено на следнава статија:
+$1 побара заверка на оценката објавено на следнава статија:
 
 $2
 
-Прегледајте го мислењето, па одобрете ја или одбијте ја заверката:
+Прегледајте ја оценката, па одобрете ја или одбијте ја заверката:
 
 $3
 
@@ -8557,7 +8599,13 @@ $3
 
 $4
 
-Имајте на ум дека верзијата 5 на функцијата за заверка е сè уште во рана фаза на испробување на англиската енциклопедија (0,6%, или 22.000 статии) и дека страницата за мислења не е на јавен увид за заедницата во текот на овој пробен период.',
+Имајте на ум дека верзијата 5 на функцијата за заверка е сè уште во рана фаза на испробување на англиската енциклопедија (0,6%, или 22.000 статии) и дека страницата за оценка не е на јавен увид за заедницата во текот на овој пробен период.',
+	'articlefeedbackv5-disable-flyover-title' => 'Да ја отстранам алаткава?',
+	'articlefeedbackv5-disable-flyover-help-goto' => 'За да ја отстраните алатката „$1“, одете на',
+	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Оценување на статии',
+	'articlefeedbackv5-disable-flyover-help-location' => '„мои нагодувања > Изглед“',
+	'articlefeedbackv5-disable-flyover-help-direction' => 'и штиклирајте го',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Одете на вашите нагодувања',
 );
 
 /** Malayalam (മലയാളം)
@@ -9077,6 +9125,12 @@ P.S.: Jika anda ada sebarang soalah tentang penggunaan ciri-ciri penghapusan pad
 $4
 
 Sila ambil perhatian bahawa alat maklum balas rencana v5 masih di peringkat awal percubaan di ensiklopedia ini, apalagi laman maklum balas belum dibuka kepada komuniti umum pada tempoh percubaan ini.',
+	'articlefeedbackv5-disable-flyover-title' => 'Gugurkan alat ini?',
+	'articlefeedbackv5-disable-flyover-help-goto' => 'Untuk menggugurkan $1, pergi ke',
+	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Maklum Balas Rencana',
+	'articlefeedbackv5-disable-flyover-help-location' => 'Keutamaan saya > Penampilan',
+	'articlefeedbackv5-disable-flyover-help-direction' => 'dan raitkan',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Pergi ke keutamaan saya',
 );
 
 /** Maltese (Malti)
