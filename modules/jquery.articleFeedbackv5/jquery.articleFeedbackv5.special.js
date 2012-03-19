@@ -1138,8 +1138,17 @@
 			'apiFlagType': 'delete',
 			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
+				// if there is a "decline oversight" just hide it
+				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id ).hide();
 
-				// First we must possibly show
+				// Oversight is going to hide this as well, do the unhide/hide toggle
+				var $link = $( '#articleFeedbackv5-hide-link-' + id )
+					.attr( 'action', 'show' )
+					.attr( 'id', 'articleFeedbackv5-show-link-' + id )
+					.text( mw.msg( 'articlefeedbackv5-form-unhide' ) )
+					.removeClass( 'articleFeedbackv5-hide-link' )
+					.addClass( 'articleFeedbackv5-show-link' );
+
 				var $link = $( '#articleFeedbackv5-oversight-link-' + id )
 					.attr( 'action', 'unoversight' )
 					.attr( 'id', 'articleFeedbackv5-unoversight-link-' + id )
@@ -1162,6 +1171,9 @@
 			'apiFlagType': 'delete',
 			'apiFlagDir': -1,
 			'onSuccess': function( id, data ) {
+				// if there is a "decline oversight" just show it
+				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id ).show();
+
 				var $link = $( '#articleFeedbackv5-unoversight-link-' + id )
 					.attr( 'action', 'oversight' )
 					.attr( 'id', 'articleFeedbackv5-oversight-link-' + id )
