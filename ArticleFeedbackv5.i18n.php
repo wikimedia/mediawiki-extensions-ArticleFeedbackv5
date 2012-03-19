@@ -1863,7 +1863,7 @@ $messages['cs'] = array(
 	'articlefeedbackv5-special-add-feedback' => 'Přidat názor',
 	'articlefeedbackv5-special-filter-all' => 'Vše ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'Jen komentáře ($1)',
-	'articlefeedbackv5-special-filter-abusive' => 'Označit jako zneužití ($1)',
+	'articlefeedbackv5-special-filter-abusive' => 'Označené jako zneužití ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Užitečné ($1)',
 	'articlefeedbackv5-special-filter-visible' => 'Viditelné ($1)',
 	'articlefeedbackv5-special-filter-invisible' => 'Neviditelné ($1)',
@@ -4294,6 +4294,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-mask-text-hidden' => 'Cette note a été masquée par un éditeur agréé',
 	'articlefeedbackv5-mask-text-oversight' => 'Cette note a été surveillée par un éditeur agréé',
 	'articlefeedbackv5-mask-postnumber' => 'Note #$1',
+	'articlefeedbackv5-special-disclaimer' => "Il s'agit d'un prototype. Veuillez ne pas l'utiliser sauf si vous y avez été invités.",
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Cacher cette note',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Pourquoi cachez-vous cette note?',
@@ -4504,6 +4505,12 @@ P.S.: Si vous avez des questions sur la fonctionnalité de surveillance de la pa
 $4
 
 Notez bien que cette fonctionnalité de commentaire d'article v5 est encore dans ses premières phases de test sur l'encyclopédie anglaise et que la page de commentaires n'a pas été communiquée à la communauté durant cette phase de test.",
+	'articlefeedbackv5-disable-flyover-title' => 'Supprimer cet outil?',
+	'articlefeedbackv5-disable-flyover-help-goto' => 'Pour supprimer $1, allez à',
+	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Évaluation de l’article',
+	'articlefeedbackv5-disable-flyover-help-location' => 'Mes Préférences > Apparence',
+	'articlefeedbackv5-disable-flyover-help-direction' => 'et cocher',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Aller à mes préférences',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -8384,6 +8391,7 @@ $messages['mk'] = array(
 	'articlefeedbackv5-mask-text-hidden' => 'Оваа објава е скриена од овластен уредник',
 	'articlefeedbackv5-mask-text-oversight' => 'Оваа објава е заверена од овластен уредник',
 	'articlefeedbackv5-mask-postnumber' => 'Објава бр. $1',
+	'articlefeedbackv5-special-disclaimer' => 'Ова е прототип. Не користете го доколку немате посебна покана.',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Скриј ја објавава',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Додај белешка',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Зошто ја криете објавава?',
@@ -12170,7 +12178,7 @@ $messages['sl'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'Ali je povratna informacija v pomoč?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Da',
 	'articlefeedbackv5-form-helpful-no-label' => 'Ne',
-	'articlefeedbackv5-form-helpful-votes' => '{PLURAL:$1|1 da|$1 da}} / {{PLURAL:$2|1 ne|$2 ne}}',
+	'articlefeedbackv5-form-helpful-votes' => '$1 {{PLURAL:$1|da}} / $2 {{PLURAL:$2|ne}}',
 	'articlefeedbackv5-special-add-feedback' => 'Dodajte povratno informacijo.',
 	'articlefeedbackv5-special-filter-all' => 'Vsi (nadzornik) ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'Vsi ($1)',
