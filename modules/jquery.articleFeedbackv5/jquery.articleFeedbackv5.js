@@ -3876,7 +3876,7 @@
 		if ( $.articleFeedbackv5.clickTracking && $.isFunction( $.trackActionWithInfo ) ) {
 			$.trackActionWithInfo(
 				$.articleFeedbackv5.prefix( trackingId ),
-				mw.config.get( 'wgTitle' )
+				mw.config.get( 'wgTitle' ) + '|' + $.articleFeedbackv5.revisionId
 			);
 		}
 	};
