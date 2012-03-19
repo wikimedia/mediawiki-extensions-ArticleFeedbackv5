@@ -34,7 +34,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-cta3-button-text' => 'Start the survey',
 
 	/* Error Messages */
-	'articlefeedbackv5-error' => 'An error has occured. Please try again later.',
+	'articlefeedbackv5-error' => 'An error has occurred. Please try again later.',
 	'articlefeedbackv5-page-disabled' => 'Article Feedback page not enabled for this article.',
 	'articlefeedbackv5-error-email' => 'That e-mail address is not valid.',
 	'articlefeedbackv5-error-blocked' => 'Blocked users may not submit feedback.',
@@ -493,10 +493,10 @@ The link to the edit tutorial',
 * $1 is the title of the article for which we show the feedback',
 	'articlefeedbackv5-hidden' => 'The marker that appears on a comment if it has been hidden by a monitor.
 * $1 is the name of the monitor who performed the hide
-* $2 is the timestamp for when the hide occured',
+* $2 is the timestamp for when the hide occurred',
 	'articlefeedbackv5-deleted' => 'The marker that appears on a comment if it has been deleted by an oversighter.
 * $1 is the name of the oversighter who performed the delete
-* $2 is the timestamp for when the deletion occured',
+* $2 is the timestamp for when the deletion occurred',
 	'articlefeedbackv5-form-abuse' => 'Link text allowing the user to flag feedback as abuse.  $1 is the number of times the feedback has been flagged previously.',
 	'articlefeedbackv5-form-abuse-masked' => 'Link text allowing the user to flag feedback as abuse, without the count included in {{msg-mw|articlefeedbackv5-form-abuse}}',
 	'articlefeedbackv5-form-delete' => '{{Identical|Delete}}',
