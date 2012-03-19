@@ -505,7 +505,7 @@
 		if( 0 == $screen.length ) {
 			$screen = $( $.articleFeedbackv5special.maskHtmlTemplate );
 			$screen.find( '.articleFeedbackv5-mask-text' )
-				.text( mw.msg( 'articlefeedbackv5-mask-text' ) );
+				.text( mw.msg( 'articlefeedbackv5-mask-text-' + $type ) );
 			$screen.find( '.articleFeedbackv5-mask-postid' )
 				.text( mw.msg( 'articlefeedbackv5-mask-postnumber', $row.attr( 'rel' ) ) );
 			$row.prepend( $screen );
