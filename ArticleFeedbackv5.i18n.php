@@ -552,6 +552,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-mask-text-hidden' => 'Text to be displayed on the hidden post mask',
 	'articlefeedbackv5-mask-text-oversight' => 'Text to be displayed on the oversighted post mask',
 	'articlefeedbackv5-mask-postnumber' => 'Template for post number, to be displayed on the hidden post mask',
+	'articlefeedbackv5-special-disclaimer' => 'Cautionary text that is displayed in red at the top of the feedback dashboard. This will be removed when the requirements and design of this feature are more final.', 
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Hide post note flyover panel - text area label',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Hide post note flyover panel - text area placeholder text',
