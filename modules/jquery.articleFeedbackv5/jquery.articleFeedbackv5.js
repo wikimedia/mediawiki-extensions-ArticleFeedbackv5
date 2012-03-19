@@ -131,13 +131,22 @@
 	$.articleFeedbackv5.selectedLinks = [];
 
 	/**
-	 * The link ID indicates where the user clicked (or not) to get to the
-	 * feedback form.  Options are "-" or A-H
+	 * The floating link ID indicates the trigger link chosen to be added to the
+	 * page, in addition to the toolbox link.  Options are "X" or A-H.
 	 *
 	 * @see $wgArticleFeedbackv5LinkBuckets
 	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_links_on_article_pages
 	 */
-	$.articleFeedbackv5.linkId = '-';
+	$.articleFeedbackv5.floatingLinkId = 'X';
+
+	/**
+	 * The submitted link ID indicates where the user clicked (or not) to get to
+	 * the feedback form.  Options are "X" or A-H
+	 *
+	 * @see $wgArticleFeedbackv5LinkBuckets
+	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_links_on_article_pages
+	 */
+	$.articleFeedbackv5.submittedLinkId = 'X';
 
 	/**
 	 * Use the mediawiki util resource's config method to find the correct url to
@@ -2823,13 +2832,13 @@
 		//   1. Display buckets 0 or 5?  Always no link.
 		//   2. Requested in query string (debug only)
 		//   3. Random bucketing
-		var bucketedLink = '-';
+		var bucketedLink = 'X';
 		if ( '5' != $.articleFeedbackv5.bucketId && '0' != $.articleFeedbackv5.bucketId ) {
 			var cfg = mw.config.get( 'wgArticleFeedbackv5LinkBuckets' );
 			if ( 'buckets' in cfg ) {
 				var knownBuckets = cfg.buckets;
 				var requested = mw.util.getParamValue( 'aftv5_link' );
-				if ( $.articleFeedbackv5.inDebug() && requested in knownBuckets ) {
+				if ( $.articleFeedbackv5.inDebug() && ( requested in knownBuckets || requested == 'X' ) ) {
 					bucketedLink = requested;
 				} else {
 					bucketedLink = mw.user.bucket( 'ext.articleFeedbackv5-links', cfg );
@@ -2839,7 +2848,8 @@
 		if ( $.articleFeedbackv5.inDebug() ) {
 			aft5_debug( 'Using link option ' + bucketedLink );
 		}
-		if ('-' != bucketedLink) {
+		$.articleFeedbackv5.floatingLinkId = bucketedLink;
+		if ('X' != bucketedLink) {
 			$.articleFeedbackv5.selectedLinks.push(bucketedLink);
 		}
 		// Always add the toolbox link
@@ -3056,7 +3066,7 @@
 			params.articleFeedbackv5_ct_token  = $.cookie( 'clicktracking-session' );
 			params.articleFeedbackv5_bucket_id = $.articleFeedbackv5.bucketId;
 			params.articleFeedbackv5_cta_id    = $.articleFeedbackv5.ctaId;
-			params.articleFeedbackv5_link_id   = $.articleFeedbackv5.linkId;
+			params.articleFeedbackv5_link_id   = $.articleFeedbackv5.submittedLinkId;
 			params.articleFeedbackv5_location  = $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom';
 		}
 		var url = mw.config.get( 'wgScript' ) + '?' + $.param( params );
@@ -3276,7 +3286,7 @@
 			'pageid': $.articleFeedbackv5.pageId,
 			'revid': $.articleFeedbackv5.revisionId,
 			'bucket': $.articleFeedbackv5.bucketId,
-			'link': $.articleFeedbackv5.linkId
+			'link': $.articleFeedbackv5.submittedLinkId
 		} );
 
 		// Send off the ajax request

@@ -597,7 +597,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$revId = $title->getLatestRevID();
 		}
 
-		// Find the link ID using the order of the link buckets ('-' = 0, 'A' = 1,
+		// Find the link ID using the order of the link buckets ('X' = 0, 'A' = 1,
 		// 'B' = 2, etc.)
 		$links = array_flip( array_keys( $wgArticleFeedbackv5LinkBuckets['buckets'] ) );
 		$linkId = isset( $links[$linkName] ) ? $links[$linkName] : 0;
