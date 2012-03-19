@@ -247,7 +247,7 @@
 					<div class="articleFeedbackv5-form-flyover">\
 						<div class="articleFeedbackv5-disable-flyover-help" >\
 							<p class="articleFeedbackv5-disable-flyover-help-goto"></p>\
-							<a class="articleFeedbackv5-disable-flyover-goto-link" target="_blank"><html:msg key="disable-flyover-help-location" /></a>\
+							<p>&quot;<html:msg key="disable-flyover-help-location" />&quot;</p>\
 							<p><html:msg key="disable-flyover-help-direction" /></p>\
 							<p>&quot;<html:msg key="disable-preference" />&quot;</p>\
 						</div>\
@@ -457,7 +457,7 @@
 				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
-						$.articleFeedbackv5.trackClick( 'option1-submit-' +
+						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-submit-' +
 							( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 						$.articleFeedbackv5.submitForm();
 					} );
@@ -714,7 +714,7 @@
 				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
-						$.articleFeedbackv5.trackClick( 'option2-submit-' +
+						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-submit-' +
 							( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 						$.articleFeedbackv5.submitForm();
 					} );
@@ -1042,7 +1042,7 @@
 				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
-						$.articleFeedbackv5.trackClick( 'option3-submit-' +
+						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + 'submit-' +
 							( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 						$.articleFeedbackv5.submitForm();
 					} );
@@ -3006,7 +3006,7 @@
 	 * @return string the bucket name
 	 */
 	$.articleFeedbackv5.bucketName = function () {
-		return 'option' + $.articleFeedbackv5.bucketId;
+		return 'option' + $.articleFeedbackv5.bucketId + $.articleFeedbackv5.floatingLinkId;
 	};
 
 	// }}}
@@ -3546,24 +3546,28 @@
 					$flyover.localize( { 'prefix': 'articlefeedbackv5-' } );
 					$flyover.find( '.articleFeedbackv5-disable-flyover' )
 						.addClass( 'articleFeedbackv5-disable-flyover-' + linkId );
-					var prefLink = mw.config.get( 'wgScript' ) + '?' +
-						$.param( { title: 'Special:Preferences' } ) +
-						'#mw-prefsection-rendering';
+
 					$flyover.find( '.articleFeedbackv5-disable-flyover-help-goto' )
 						.html( $.articleFeedbackv5.buildLink(
 							'articlefeedbackv5-disable-flyover-help-goto', {
 								tag: 'strong',
 								text: 'articlefeedbackv5-disable-flyover-help-emphasis-text'
 							} ) );
-					$flyover.find( '.articleFeedbackv5-disable-flyover-goto-link' )
-						.attr( 'href', prefLink )
+
+					var prefLink = mw.config.get( 'wgScript' ) + '?' +
+						$.param( { title: 'Special:Preferences' } ) +
+						'#mw-prefsection-rendering';
+					var prefTrackId = $.articleFeedbackv5.bucketName() + '-disable_gotoprefs_click';
 					$flyover.find( '.articleFeedbackv5-disable-flyover-button' )
-						.attr( 'href', prefLink )
+						.attr( 'href', $.articleFeedbackv5.trackingUrl( prefLink, prefTrackId ) )
 						.button()
 						.addClass( 'ui-button-blue' );
+
 					$flyover.find('.articleFeedbackv5-form-flyover-closebutton')
 						.attr( 'href', '#hello' )
 						.attr( 'rel', linkId );
+
+					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-disable_flyover-impression' );
 					return $flyover.html();
 				}
 			} )
@@ -3577,6 +3581,7 @@
 				} else {
 					$host.tipsy( 'show' );
 					$wrap.addClass( 'articleFeedbackv5-tipsy-active' );
+					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-disable_button_click' );
 				}
 			} );
 	};
