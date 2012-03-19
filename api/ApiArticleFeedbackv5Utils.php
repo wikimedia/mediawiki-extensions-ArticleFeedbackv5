@@ -215,9 +215,19 @@ class ApiArticleFeedbackv5Utils {
 		$valid = array( 'oversight', 'unoversight', 'hidden', 'unhidden',
 				'decline', 'request', 'unrequest', 'flag', 'unflag' );
 
+		// suppress
+		$suppress = array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest');
+
 		// if we do not have a valid action, return immediately
 		if ( !in_array( $type, $valid ) ) {
 			return;
+		}
+
+		// log type might be afv5 or suppress
+		$logtype = 'articlefeedbackv5';
+
+		if ( in_array( $type, $suppress ) ) {
+			$logtype = 'suppress';
 		}
 
 		// we only have the page id, we need the string page name for the permalink
@@ -251,7 +261,7 @@ class ApiArticleFeedbackv5Utils {
 			$doer = null;
 		}
 
-		$log = new LogPage( 'articlefeedbackv5' );
+		$log = new LogPage( $logtype, false );
 		// comments become the notes section from the feedback
 		$log->addEntry( $type, $permalink, $notes, array(), $doer );
 
