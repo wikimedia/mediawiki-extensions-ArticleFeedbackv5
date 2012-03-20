@@ -1129,6 +1129,9 @@ body.skin-monobook .articleFeedbackv5-dialog {
 .articleFeedbackv5-bottomrighttablink a {
 	color: #fff;
 }
+.articleFeedbackv5-bottomrighttablink a:hover {
+	text-decoration: none;
+}
 .articleFeedbackv5-bottomrighttablink.articleFeedbackv5-closeable {
 	white-space: nowrap;
 	padding-right: 10px;
@@ -1226,3 +1229,4 @@ body.skin-monobook .articleFeedbackv5-dialog {
 	/* @embed */
 	background-image: url(images/tab_x_on.png);
 }
+
