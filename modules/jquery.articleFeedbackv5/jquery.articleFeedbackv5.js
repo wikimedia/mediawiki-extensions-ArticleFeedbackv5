@@ -3481,7 +3481,7 @@
 	 * Adds the trigger links to the page
 	 */
 	$.articleFeedbackv5.addTriggerLinks = function () {
-		hasTipsy = false;
+		var hasTipsy = false;
 		for ( var i in $.articleFeedbackv5.selectedLinks ) {
 			var linkId = $.articleFeedbackv5.selectedLinks[i];
 			if ( linkId in $.articleFeedbackv5.triggerLinks ) {
