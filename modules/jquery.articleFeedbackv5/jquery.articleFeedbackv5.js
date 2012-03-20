@@ -2914,20 +2914,23 @@
 	 */
 	$.articleFeedbackv5.buildLink = function ( fulltext, link1, link2, link3 ) {
 		var full = mw.html.escape( mw.msg( fulltext ) );
-		for ( var i = 1; i < arguments.length; i++ ) {
-			var sub = arguments[i];
-			var re = new RegExp("\\$" + i, 'g');
+		var args = arguments;
+		return full.replace( /\$(\d+)/g, function( str, number ) {
+			var i = parseInt( number, 10 );
+			var sub = args[i];
+			var replacement = '';
 			if ( sub.tag == 'quotes' ) {
-				full = full.replace( re, '&quot;' + mw.msg( sub.text ) + '&quot' );
+				replacement = '&quot;' + mw.msg( sub.text ) + '&quot';
 			} else {
-				full = full.replace( re, mw.html.element(
+				replacement = mw.html.element(
 					'tag' in sub ? sub.tag : 'a',
 					$.articleFeedbackv5.attribs( sub ),
 					mw.msg( sub.text )
-				).toString() );
+				).toString();
 			}
-		}
-		return full;
+			console.log(replacement);
+			return replacement;
+		} );
 	};
 
 	// }}}
