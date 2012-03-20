@@ -422,10 +422,9 @@ publicized to the community for this testing period.',
 
 	/* Front-end: feedback link close button */
 	'articlefeedbackv5-disable-flyover-title' => 'Remove this tool?',
-	'articlefeedbackv5-disable-flyover-help-goto' => 'To remove $1, go to',
+	'articlefeedbackv5-disable-flyover-help' => 'To remove $1, go to $2 and check $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Article Feedback',
 	'articlefeedbackv5-disable-flyover-help-location' => 'My preferences > Appearance',
-	'articlefeedbackv5-disable-flyover-help-direction' => 'and check',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Go to my preferences',
 
 );
@@ -703,10 +702,12 @@ This URL can be changed to point to a translated version of the page if it exist
 * <code>$3</code> – URL directly to feedback location
 * <code>$4</code> – The help link.',
 	'articlefeedbackv5-disable-flyover-title' => 'Title of the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
-	'articlefeedbackv5-disable-flyover-help-goto' => 'Help text for the tooltip that pops up when you click the close button on a feedback trigger link, explaining where to go to remove the Article Feedback tool.  <code>$1</code>: Emphasized name of the tool (text is {{msg-mw|articlefeedbackv5-disable-flyover-help-emphasis-text}})',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'The emphasis text for {{msg-mw|articlefeedbackv5-disable-flyover-help-goto}}',
-	'articlefeedbackv5-disable-flyover-help-location' => 'A short indication of where to go to change your Article Feedback preferences, immediately below {{msg-mw|articlefeedbackv5-disable-flyover-help-goto}}',
-	'articlefeedbackv5-disable-flyover-help-direction' => 'Help text for what to do once you get to the preferences panel (name of checkbox will be on the line below)',
+	'articlefeedbackv5-disable-flyover-help' => 'Help text for the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool.
+* <code>$1</code>: Emphasized name of the tool ({{msg-mw|articlefeedbackv5-disable-flyover-help-emphasis-text}})
+* <code>$2</code>: The location of the preference panel ({{msg-mw|articlefeedbackv5-disable-flyover-help-location}})
+* <code>$3</code>: The label of the checkbox ( {{msg-mw|articlefeedbackv5-disable-preference}})',
+	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'The emphasis text for {{msg-mw|articlefeedbackv5-disable-flyover-help}} (the name of the tool)',
+	'articlefeedbackv5-disable-flyover-help-location' => 'A short indication of where to go to change your Article Feedback preferences, inside {{msg-mw|articlefeedbackv5-disable-flyover-help}}',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'The text of the big glossy button used to send the user to their preferences in the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
 );
 

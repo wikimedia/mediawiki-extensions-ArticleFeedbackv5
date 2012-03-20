@@ -1138,7 +1138,8 @@ body.skin-monobook .articleFeedbackv5-dialog {
 }
 
 /* Disable flyover */
-.tipsy-inner {
+.articleFeedbackv5-disable-flyover-tip-A .tipsy-inner,
+.articleFeedbackv5-disable-flyover-tip-E .tipsy-inner {
 	padding: 0;
 	border-color: #888;
 	max-width: 40em;
@@ -1148,16 +1149,19 @@ body.skin-monobook .articleFeedbackv5-dialog {
 	margin-bottom: 5px;
 	font-size: 0.9em;
 }
-.tipsy-arrow {
+.articleFeedbackv5-disable-flyover-tip-A .tipsy-arrow,
+.articleFeedbackv5-disable-flyover-tip-E .tipsy-arrow {
 	/* @embed */
 	background-image: url(images/tipsy-flyover.png);
 	width: 23px;
 	height: 11px;
 }
-.tipsy-nw .tipsy-arrow {
+.articleFeedbackv5-disable-flyover-tip-A.tipsy-nw .tipsy-arrow,
+.articleFeedbackv5-disable-flyover-tip-E.tipsy-nw .tipsy-arrow {
 	margin-top: -6px;
 }
-.tipsy-se .tipsy-arrow {
+.articleFeedbackv5-disable-flyover-tip-A.tipsy-se .tipsy-arrow,
+.articleFeedbackv5-disable-flyover-tip-E.tipsy-se .tipsy-arrow {
 	margin-top: -11px;
 }
 .articleFeedbackv5-disable-flyover {

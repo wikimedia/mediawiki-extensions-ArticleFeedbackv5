@@ -245,12 +245,7 @@
 						<a id="articleFeedbackv5-noteflyover-close" class="articleFeedbackv5-form-flyover-closebutton" href="#"></a>\
 					</div>\
 					<div class="articleFeedbackv5-form-flyover">\
-						<div class="articleFeedbackv5-disable-flyover-help" >\
-							<p class="articleFeedbackv5-disable-flyover-help-goto"></p>\
-							<p>&quot;<html:msg key="disable-flyover-help-location" />&quot;</p>\
-							<p><html:msg key="disable-flyover-help-direction" /></p>\
-							<p>&quot;<html:msg key="disable-preference" />&quot;</p>\
-						</div>\
+						<div class="articleFeedbackv5-disable-flyover-help" ></div>\
 						<div class="articleFeedbackv5-flyover-footer">\
 							<a class="articleFeedbackv5-disable-flyover-button" target="_blank"><html:msg key="disable-flyover-prefbutton" /></a>\
 						</div>\
@@ -2274,10 +2269,10 @@
 				// and it needs to show up if the site subhead (e.g., "From Wikipedia, the free
 				// encyclopedia") is not visible for any reason.
 				if ( $( '#siteSub' ).filter( ':visible' ).length ) {
-					$link.prepend( ' &nbsp; | &nbsp; ' );
+					$link.prepend( ' &nbsp; ' + mw.msg('pipe-separator') + ' &nbsp; ' );
 					$( '#siteSub' ).append( $link );
 				} else if ( $( 'h1.pagetitle + p.subtitle' ).filter( ':visible' ).length ) {
-					$link.prepend( ' &nbsp; | &nbsp; ' );
+					$link.prepend( ' &nbsp; ' + mw.msg('pipe-separator') + ' &nbsp; ' );
 					$( 'h1.pagetitle + p.subtitle' ).append( $link );
 				} else if ( $( '#mw_contentholder .mw-topboxes' ).length ) {
 					$( '#mw_contentholder .mw-topboxes' ).after( $link );
@@ -2921,12 +2916,16 @@
 		var full = mw.html.escape( mw.msg( fulltext ) );
 		for ( var i = 1; i < arguments.length; i++ ) {
 			var sub = arguments[i];
-			var re = new RegExp("\\$" + i);
-			full = full.replace( re, mw.html.element(
+			var re = new RegExp("\\$" + i, 'g');
+			if ( sub.tag == 'quotes' ) {
+				full = full.replace( re, '&quot;' + mw.msg( sub.text ) + '&quot' );
+			} else {
+				full = full.replace( re, mw.html.element(
 					'tag' in sub ? sub.tag : 'a',
 					$.articleFeedbackv5.attribs( sub ),
 					mw.msg( sub.text )
 				).toString() );
+			}
 		}
 		return full;
 	};
@@ -3549,11 +3548,17 @@
 					$flyover.find( '.articleFeedbackv5-disable-flyover' )
 						.addClass( 'articleFeedbackv5-disable-flyover-' + linkId );
 
-					$flyover.find( '.articleFeedbackv5-disable-flyover-help-goto' )
+					$flyover.find( '.articleFeedbackv5-disable-flyover-help' )
 						.html( $.articleFeedbackv5.buildLink(
-							'articlefeedbackv5-disable-flyover-help-goto', {
+							'articlefeedbackv5-disable-flyover-help', {
 								tag: 'strong',
 								text: 'articlefeedbackv5-disable-flyover-help-emphasis-text'
+							}, {
+								tag: 'quotes',
+								text: 'articlefeedbackv5-disable-flyover-help-location',
+							}, {
+								tag: 'quotes',
+								text: 'articlefeedbackv5-disable-preference',
 							} ) );
 
 					var prefLink = mw.config.get( 'wgScript' ) + '?' +
