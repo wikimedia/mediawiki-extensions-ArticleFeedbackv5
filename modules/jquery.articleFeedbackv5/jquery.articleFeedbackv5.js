@@ -2274,9 +2274,11 @@
 				// and it needs to show up if the site subhead (e.g., "From Wikipedia, the free
 				// encyclopedia") is not visible for any reason.
 				if ( $( '#siteSub' ).filter( ':visible' ).length ) {
-					$( '#siteSub' ).append( ' &nbsp; ' ).append( $link );
+					$link.prepend( ' &nbsp; | &nbsp; ' );
+					$( '#siteSub' ).append( $link );
 				} else if ( $( 'h1.pagetitle + p.subtitle' ).filter( ':visible' ).length ) {
-					$( 'h1.pagetitle + p.subtitle' ).append( ' ' ).append( $link );
+					$link.prepend( ' &nbsp; | &nbsp; ' );
+					$( 'h1.pagetitle + p.subtitle' ).append( $link );
 				} else if ( $( '#mw_contentholder .mw-topboxes' ).length ) {
 					$( '#mw_contentholder .mw-topboxes' ).after( $link );
 				} else if ( $( '#bodyContent' ).length ) {
