@@ -242,12 +242,30 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 * @return array db record rows
 	 */
 	protected function fetchActivity( $title, $feedbackId, $limit = 25, $continue = null ) {
+		global $wgUser; // we need to check permissions in here for suppressionlog stuff
 
-		$where = array (
+
+		// get afv5 log items PLUS suppress log
+		if ( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
+			$where = array (
+				0 => "FOO (log_type = 'articlefeedbackv5')
+					OR (log_type = 'suppress' AND
+					(log_action = 'oversight' OR
+					 log_action = 'unoversight' OR
+					 log_action = 'decline' OR
+					 log_action = 'request' OR
+					 log_action = 'unrequest'))",
+				'log_namespace' => NS_SPECIAL,
+				'log_title' => "ArticleFeedbackv5/$title/$feedbackId"
+			);
+		// get only afv5 log items
+		} else {
+			$where = array (
 				'log_type' => 'articlefeedbackv5',
 				'log_namespace' => NS_SPECIAL,
 				'log_title' => "ArticleFeedbackv5/$title/$feedbackId"
 			);
+		}
 
 		$where = $this->applyContinue( $continue, $where );
 
