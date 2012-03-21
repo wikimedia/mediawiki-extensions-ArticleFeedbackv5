@@ -1148,10 +1148,16 @@ body.skin-monobook .articleFeedbackv5-dialog {
 	box-shadow: 2px 2px 1px #999;
 	margin-bottom: 5px;
 	font-size: 0.9em;
+	margin-left: -50px;
+	margin-top: 76px;
 }
 .articleFeedbackv5-disable-flyover-tip-E .tipsy-inner {
 	margin-left: -40px;
 	margin-top: 5px;
+}
+.articleFeedbackv5-disable-flyover-tip-A .tipsy-inner {
+	margin-left: -40px;
+	margin-top: 0;
 }
 .articleFeedbackv5-disable-flyover-tip-A .tipsy-arrow,
 .articleFeedbackv5-disable-flyover-tip-E .tipsy-arrow {
@@ -1182,7 +1188,6 @@ body.skin-monobook .articleFeedbackv5-dialog {
 	font-size: 1.1em;
 }
 .articleFeedbackv5-flyover-footer {
-	width: 100%;
 	margin-top: 12px;
 }
 #articleFeedbackv5-noteflyover-close {
