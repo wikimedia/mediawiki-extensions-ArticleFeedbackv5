@@ -2928,7 +2928,6 @@
 					mw.msg( sub.text )
 				).toString();
 			}
-			console.log(replacement);
 			return replacement;
 		} );
 	};
