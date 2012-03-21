@@ -551,7 +551,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-mask-text-hidden' => 'Text to be displayed on the hidden post mask',
 	'articlefeedbackv5-mask-text-oversight' => 'Text to be displayed on the oversighted post mask',
 	'articlefeedbackv5-mask-postnumber' => 'Template for post number, to be displayed on the hidden post mask',
-	'articlefeedbackv5-special-disclaimer' => 'Cautionary text that is displayed in red at the top of the feedback dashboard. This will be removed when the requirements and design of this feature are more final.', 
+	'articlefeedbackv5-special-disclaimer' => 'Cautionary text that is displayed in red at the top of the feedback dashboard. This will be removed when the requirements and design of this feature are more final.',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Hide post note flyover panel - text area label',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Hide post note flyover panel - text area placeholder text',
@@ -2503,10 +2503,8 @@ Dieses Hilfsmittel für Rückmeldungen befindet sich noch in den Anfängen seine
 Erprobung auf der englischsprachigen Wikipedia. Zudem wurde niemand über diese
 Erprobungsphase informiert.',
 	'articlefeedbackv5-disable-flyover-title' => 'Diese Funktion entfernen?',
-	'articlefeedbackv5-disable-flyover-help-goto' => 'Um die $1 zu entfernen, geh zu',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Rückmeldungen zu Artikeln',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Einstellungen > Aussehen',
-	'articlefeedbackv5-disable-flyover-help-direction' => 'und klicke auf',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Zu meinen Einstellungen',
 );
 
@@ -2616,8 +2614,6 @@ $4
 Dieses Hilfsmittel für Rückmeldungen befindet sich noch in den Anfängen seiner
 Erprobung auf der englischsprachigen Wikipedia. Zudem wurde niemand über diese
 Erprobungsphase informiert.',
-	'articlefeedbackv5-disable-flyover-help-goto' => 'Um die $1 zu entfernen, gehen Sie zu',
-	'articlefeedbackv5-disable-flyover-help-direction' => 'und klicken Sie auf',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -3569,10 +3565,8 @@ $4
 
 Tenga en cuenta que la herramienta de comentario de artículo v5 se encuentra todavía en las primeras etapas de prueba en la Enciclopedia Inglesa y que la página de comentarios no se ha publicado para la comunidad durante este período de pruebas.',
 	'articlefeedbackv5-disable-flyover-title' => '¿Eliminar esta herramienta?',
-	'articlefeedbackv5-disable-flyover-help-goto' => 'Para eliminar  $1 , vaya a',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Comentario de artículo',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Mis preferencias > Aspecto',
-	'articlefeedbackv5-disable-flyover-help-direction' => 'y verifique',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ir a Mis preferencias',
 );
 
@@ -4508,10 +4502,8 @@ $4
 
 Notez bien que cette fonctionnalité de commentaire d'article v5 est encore dans ses premières phases de test sur l'encyclopédie anglaise et que la page de commentaires n'a pas été communiquée à la communauté durant cette phase de test.",
 	'articlefeedbackv5-disable-flyover-title' => 'Supprimer cet outil?',
-	'articlefeedbackv5-disable-flyover-help-goto' => 'Pour supprimer $1, allez à',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Évaluation de l’article',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Mes Préférences > Apparence',
-	'articlefeedbackv5-disable-flyover-help-direction' => 'et cocher',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Aller à mes préférences',
 );
 
@@ -5050,10 +5042,8 @@ Tede en conta que a versión 5 da ferramenta de avaliación de artigos
 está en probas na Wikipedia en inglés e que a páxina de comentarios
 non a pode ver a comunidade durante este período de probas.',
 	'articlefeedbackv5-disable-flyover-title' => 'Quere eliminar a ferramenta?',
-	'articlefeedbackv5-disable-flyover-help-goto' => 'Para eliminar a $1, vaia a',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'ferramenta de avaliación de artigos',
 	'articlefeedbackv5-disable-flyover-help-location' => 'As miñas preferencias > Aparencia',
-	'articlefeedbackv5-disable-flyover-help-direction' => 'e seleccione',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ir ás preferencias',
 );
 
@@ -5487,7 +5477,6 @@ $3
 תודה,
 צוות {{SITENAME}}',
 	'articlefeedbackv5-disable-flyover-title' => 'להסיר את הכלי הזה?',
-	'articlefeedbackv5-disable-flyover-help-goto' => 'כדי להסיר את $1, יש לעבור אל',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'כלי המשוב על ערכים',
 );
 
@@ -6028,10 +6017,8 @@ $4
 
 Prošu wobkedźbuj, zo nastroj wo nastawkowych komentarch  wersije 5 je hišće w zažnym testowym stadiju na jendźelskej encyklopediji a zo strona komentarow hišće njeje so za testowu periodu wozjewiła.',
 	'articlefeedbackv5-disable-flyover-title' => 'Tutón nastroj wotstronić?',
-	'articlefeedbackv5-disable-flyover-help-goto' => 'Zo by $1 wotstronił, dźi k',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Komentary wo nastawkach',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Nastajenja > Napohlad',
-	'articlefeedbackv5-disable-flyover-help-direction' => 'a klikń na',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'K nastajenjam',
 );
 
@@ -6599,10 +6586,8 @@ $4
 
 Per favor nota que le version 5 del functionalitate de evalutation es ancora in le prime stadios de test in le encyclopedia anglophone e que le pagina de evalutation non ha essite promovite al communitate durante iste periodo de test.',
 	'articlefeedbackv5-disable-flyover-title' => 'Remover iste instrumento?',
-	'articlefeedbackv5-disable-flyover-help-goto' => 'Pro remover $1, vade a',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Evalutation de articulos',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Mi preferentias > Apparentia',
-	'articlefeedbackv5-disable-flyover-help-direction' => 'e marca',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Vader a mi preferentias',
 );
 
@@ -8611,10 +8596,8 @@ $4
 
 Имајте на ум дека верзијата 5 на функцијата за заверка е сè уште во рана фаза на испробување на англиската енциклопедија (0,6%, или 22.000 статии) и дека страницата за оценка не е на јавен увид за заедницата во текот на овој пробен период.',
 	'articlefeedbackv5-disable-flyover-title' => 'Да ја отстранам алаткава?',
-	'articlefeedbackv5-disable-flyover-help-goto' => 'За да ја отстраните алатката „$1“, одете на',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Оценување на статии',
 	'articlefeedbackv5-disable-flyover-help-location' => '„мои нагодувања > Изглед“',
-	'articlefeedbackv5-disable-flyover-help-direction' => 'и штиклирајте го',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Одете на вашите нагодувања',
 );
 
@@ -8657,9 +8640,9 @@ $messages['ml'] = array(
 	'articlefeedbackv5-form-optionid' => 'ഐച്ഛികം $1',
 	'articlefeedbackv5-form-hide' => 'ഇത് മറയ്ക്കുക',
 	'articlefeedbackv5-form-delete' => 'മേൽനോട്ടം',
-	'articlefeedbackv5-go-to-article' => 'താളിലേക്ക് പോകുക',
-	'articlefeedbackv5-discussion-page' => 'സംവാദം താൾ',
-	'articlefeedbackv5-whats-this' => 'എന്താണിത്?',
+	'articlefeedbackv5-go-to-article' => 'ലേഖനം കാണുക',
+	'articlefeedbackv5-discussion-page' => 'സംവാദം',
+	'articlefeedbackv5-whats-this' => 'സഹായം',
 	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'ഇന്നത്തെ കയറ്റിറക്കങ്ങൾ',
 	'articleFeedbackv5-table-caption-dailyhighs' => 'ഉയർന്ന നിലവാരമിട്ട ലേഖനങ്ങൾ: $1',
 	'articleFeedbackv5-table-caption-dailylows' => 'താഴ്ന്ന നിലവാരമിട്ട ലേഖനങ്ങൾ: $1',
@@ -8924,6 +8907,7 @@ $messages['ms'] = array(
 	'articlefeedbackv5-mask-text-hidden' => 'Pos ini disorokkan oleh seorang penyunting yang berizin',
 	'articlefeedbackv5-mask-text-oversight' => 'Pos ini dihapuskan oleh seorang penyunting yang berizin',
 	'articlefeedbackv5-mask-postnumber' => 'Pos #$1',
+	'articlefeedbackv5-special-disclaimer' => 'Ini ialah prototaip. Tolong jangan gunakannya melainkan anda dijemput.',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Sorokkan pos ini',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Tulis catatan',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Mengapakah anda menyorokkan pos ini?',
@@ -9136,10 +9120,8 @@ $4
 
 Sila ambil perhatian bahawa alat maklum balas rencana v5 masih di peringkat awal percubaan di ensiklopedia ini, apalagi laman maklum balas belum dibuka kepada komuniti umum pada tempoh percubaan ini.',
 	'articlefeedbackv5-disable-flyover-title' => 'Gugurkan alat ini?',
-	'articlefeedbackv5-disable-flyover-help-goto' => 'Untuk menggugurkan $1, pergi ke',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Maklum Balas Rencana',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Keutamaan saya > Penampilan',
-	'articlefeedbackv5-disable-flyover-help-direction' => 'dan raitkan',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Pergi ke keutamaan saya',
 );
 
@@ -9511,6 +9493,7 @@ $messages['ne'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author AvatarTeam
  * @author B4bol4t
  * @author Catrope
  * @author McDutchie
@@ -9851,6 +9834,8 @@ PS Als u vragen hebt over het gebruik van de functie toezicht op de terugkoppeli
 $4
 
 Bedenk u dat "paginaterugkoppeling v5" nog steeds in een vroeg stadium van ontwikkeling is en wordt getest in de Engelstalige Wikipedia. De pagina voor terugkoppeling wordt nog niet beschikbaar gesteld aan de gemeenschap gedurende deze testperiode.',
+	'articlefeedbackv5-disable-flyover-title' => 'Dit hulpprogramma verwijderen?',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ga naar mijn voorkeuren',
 );
 
 /** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
@@ -12798,7 +12783,7 @@ $messages['sv'] = array(
 	'articlefeedbackv5-special-filter-helpful' => 'Användbart ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Inte användbart ($1)',
 	'articlefeedbackv5-special-filter-visible' => 'Alla synliga ($1)',
-	'articlefeedbackv5-special-filter-invisible' => 'Osynlig',
+	'articlefeedbackv5-special-filter-invisible' => 'Dold ($1)',
 	'articlefeedbackv5-special-sort-age' => 'Datum',
 	'articlefeedbackv5-special-sort-helpful' => 'Användbar',
 	'articlefeedbackv5-special-sort-rating' => 'Betyg',
@@ -12821,15 +12806,18 @@ $messages['sv'] = array(
 	'articlefeedbackv5-form-header' => 'Feedback #$1, vid $2',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 hittade vad de letade efter}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 hittade inte vad de letade efter}}',
+	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 postade denna kommentar}}',
 	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}} hade en kommentar:',
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} hade ett problem:',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} hade en fråga:',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} hade ett förslag:',
-	'articlefeedbackv5-form3-header' => '$1 betygsatte denna sida $2/5',
+	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} betygsatte denna sida $2/5',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} betygsatte denna sida:',
+	'articlefeedbackv5-abuse-saved' => 'Flaggad som missbruk ($1)',
+	'articlefeedbackv5-abuse-saved-masked' => 'Flaggad som missbruk',
 	'articlefeedbackv5-go-to-article' => 'Visa artikel',
 	'articlefeedbackv5-discussion-page' => 'Diskussion',
-	'articlefeedbackv5-whats-this' => 'Vad är detta?',
+	'articlefeedbackv5-whats-this' => 'Hjälp',
 	'articlefeedbackv5-invalid-page-id' => 'Ogiltigt sid-ID',
 	'articlefeedbackv5-percent-found' => '$1 av användarna hittade vad de letade efter.',
 	'articlefeedbackv5-overall-rating' => 'Betyg: $1/5',
@@ -12856,6 +12844,24 @@ $messages['sv'] = array(
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 vecka|$1 veckor}}',
 	'articlefeedbackv5-timestamp-seconds' => 'mindre än 1 minut',
 	'articlefeedbackv5-mask-postnumber' => 'Inlägg #$1',
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Dölj detta inlägg',
+	'articlefeedbackv5-noteflyover-hide-label' => 'Lägg till en anteckning',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Varför döljer du detta inlägg?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Dölj detta inlägg',
+	'articlefeedbackv5-noteflyover-hide-help' => 'Läs mer',
+	'articlefeedbackv5-noteflyover-show-caption' => 'Ta fram detta inlägg',
+	'articlefeedbackv5-noteflyover-show-label' => 'Lägg till en anteckning',
+	'articlefeedbackv5-noteflyover-show-help' => 'Läs mer',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Lägg till en anteckning',
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Läs mer',
+	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'Lägg till en anteckning',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Läs mer',
+	'articlefeedbackv5-noteflyover-oversight-label' => 'Lägg till en anteckning',
+	'articlefeedbackv5-noteflyover-oversight-help' => 'Läs mer',
+	'articlefeedbackv5-noteflyover-unoversight-label' => 'Lägg till en anteckning',
+	'articlefeedbackv5-noteflyover-unoversight-help' => 'Läs mer',
+	'articlefeedbackv5-noteflyover-declineoversight-label' => 'Lägg till en anteckning',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Läs mer',
 	'articlefeedbackv5-bucket1-title' => 'Hjälp till att förbättra denna sida',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Hittade du det som du letade efter?',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Ja',
@@ -12891,6 +12897,7 @@ $messages['sv'] = array(
 	'articlefeedbackv5-bucket4-teaser-line2' => 'Kom igen, prova själv. Var djärv!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Lär dig att redigera',
 	'articlefeedbackv5-bucket4-form-submit' => 'Redigera denna sida',
+	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Wikipedia vill veta vad du tycker. Hjälp till att förbättra denna sida genom att bli en redigerare.',
 	'articlefeedbackv5-bucket5-form-switch-label' => 'Betygsätt denna sida',
 	'articlefeedbackv5-bucket5-form-panel-title' => 'Betygsätt denna sida',
 	'articlefeedbackv5-bucket5-form-panel-explanation' => 'Vad är detta?',
@@ -12951,11 +12958,24 @@ $messages['sv'] = array(
 	'articlefeedbackv5-help-tooltip-linktext' => 'Läs mer',
 	'articlefeedbackv5-transparency-terms' => 'Genom att skicka samtycker du till insyn under dessa $1.',
 	'articlefeedbackv5-transparency-terms-linktext' => 'termer',
+	'articlefeedbackv5-sitesub-linktext' => 'Förbättra denna sida',
 	'articlefeedbackv5-titlebar-linktext' => 'Hjälp till att förbättra denna sida >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Förbättra denna sida',
+	'articlefeedbackv5-bottomrighttab-linktext' => 'Förbättra denna sida',
 	'articlefeedbackv5-section-linktext' => 'feedback',
 	'articlefeedbackv5-toolbox-linktext' => 'Förbättra denna sida',
 	'articlefeedbackv5-disable-preference' => 'Visa inte artikelbedömnings-widget på sidor',
+	'right-aftv5-hide-feedback' => 'Dölj feedback',
+	'right-aftv5-delete-feedback' => 'Radera feedback',
+	'right-aftv5-see-deleted-feedback' => 'Visa raderad feedback',
+	'right-aftv5-see-hidden-feedback' => 'Visa dold feedback',
+	'articlefeedbackv5-log-name' => 'Aktivitetslogg för artikelfeedback',
+	'articlefeedbackv5-log-hidden' => 'dolde feedback [[$1]]',
+	'articlefeedbackv5-log-flag' => 'flaggade feedback [[$1]] som missbruk',
+	'articlefeedbackv5-activity-pane-header' => 'Aktivitetslogg',
+	'articlefeedbackv5-activity-permalink' => 'permanent länk',
+	'articlefeedbackv5-activity-hidden' => 'dolde detta inlägg på',
+	'articlefeedbackv5-activity-more' => 'Visa mer aktivitet',
 	'articlefeedbackv5-emailcapture-response-body' => 'Hej!
 
 Tack för att ha uttryckt intresse av att hjälpa till att förbättra {{SITENAME}}.
@@ -12978,6 +12998,10 @@ Om du inte påbörjade denna begäran, ignorera detta e-postmeddelande och vi ko
 
 Tack och lycka till!
 {{SITENAME}}-teamet',
+	'articlefeedbackv5-disable-flyover-title' => 'Ta bort detta verktyg?',
+	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Artikelbedömning',
+	'articlefeedbackv5-disable-flyover-help-location' => 'Mina inställningar > Utseende',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Gå till mina inställningar',
 );
 
 /** Tamil (தமிழ்)
