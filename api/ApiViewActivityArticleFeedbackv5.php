@@ -248,7 +248,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		// get afv5 log items PLUS suppress log
 		if ( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
 			$where = array (
-				0 => "FOO (log_type = 'articlefeedbackv5')
+				0 => "(log_type = 'articlefeedbackv5')
 					OR (log_type = 'suppress' AND
 					(log_action = 'oversight' OR
 					 log_action = 'unoversight' OR
