@@ -1122,6 +1122,7 @@ body.skin-monobook .articleFeedbackv5-dialog {
 	text-align: center;
 	position: absolute;
 	z-index: 999;
+	white-space: nowrap;
 }
 .articleFeedbackv5-bottomrighttablink:hover {
 	text-decoration: none;
@@ -1133,7 +1134,6 @@ body.skin-monobook .articleFeedbackv5-dialog {
 	text-decoration: none;
 }
 .articleFeedbackv5-bottomrighttablink.articleFeedbackv5-closeable {
-	white-space: nowrap;
 	padding-right: 10px;
 }
 
