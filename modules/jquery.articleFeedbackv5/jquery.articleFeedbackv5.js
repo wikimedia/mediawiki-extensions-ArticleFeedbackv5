@@ -3736,7 +3736,7 @@
 	 * @param int linkId the link ID
 	 */
 	$.articleFeedbackv5.setLinkId = function ( linkId ) {
-		$.articleFeedbackv5.linkId = linkId;
+		$.articleFeedbackv5.submittedLinkId = linkId;
 	};
 
 	// }}}
@@ -3825,7 +3825,7 @@
 				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-' +
 					$.articleFeedbackv5.ctaName() + '-close-overlay' );
 			}
-			$.articleFeedbackv5.setLinkId( '0' );
+			$.articleFeedbackv5.setLinkId( 'X' );
 			$.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-tooltip' ).hide();
 			$inner = $.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-ui' ).detach();
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-buffer' ).append( $inner );
