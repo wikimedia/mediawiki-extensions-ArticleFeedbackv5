@@ -3069,6 +3069,7 @@
 			params.articleFeedbackv5_ct_token  = $.cookie( 'clicktracking-session' );
 			params.articleFeedbackv5_bucket_id = $.articleFeedbackv5.bucketId;
 			params.articleFeedbackv5_cta_id    = $.articleFeedbackv5.ctaId;
+			params.articleFeedbackv5_f_link_id = $.articleFeedbackv5.floatingLinkId;
 			params.articleFeedbackv5_link_id   = $.articleFeedbackv5.submittedLinkId;
 			params.articleFeedbackv5_location  = $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom';
 		}
