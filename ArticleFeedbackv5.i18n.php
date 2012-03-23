@@ -2425,7 +2425,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-section-linktext' => 'Rückmeldung',
 	'articlefeedbackv5-toolbox-linktext' => 'Verbessere diese Seite',
 	'articlefeedbackv5-privacyurl' => '//wikimediafoundation.org/wiki/Feedback_privacy_statement',
-	'articlefeedbackv5-disable-preference' => 'Das Widget zum Einschätzen von Seiten nicht anzeigen',
+	'articlefeedbackv5-disable-preference' => 'Das Widget für Rückmeldungen zu Seiten nicht anzeigen',
 	'right-aftv5-hide-feedback' => 'Rückmeldung ausblenden',
 	'right-aftv5-delete-feedback' => 'Rückmeldung löschen',
 	'right-aftv5-see-deleted-feedback' => 'Gelöschte Rückmeldung ansehen',
@@ -2503,6 +2503,7 @@ Dieses Hilfsmittel für Rückmeldungen befindet sich noch in den Anfängen seine
 Erprobung auf der englischsprachigen Wikipedia. Zudem wurde niemand über diese
 Erprobungsphase informiert.',
 	'articlefeedbackv5-disable-flyover-title' => 'Diese Funktion entfernen?',
+	'articlefeedbackv5-disable-flyover-help' => 'Um $1 zu deaktivieren, gehe zu $2 und klicke die Option $3 an',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Rückmeldungen zu Artikeln',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Einstellungen > Aussehen',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Zu meinen Einstellungen',
@@ -2614,6 +2615,7 @@ $4
 Dieses Hilfsmittel für Rückmeldungen befindet sich noch in den Anfängen seiner
 Erprobung auf der englischsprachigen Wikipedia. Zudem wurde niemand über diese
 Erprobungsphase informiert.',
+	'articlefeedbackv5-disable-flyover-help' => 'Um $1 zu deaktivieren, gehen Sie zu $2 und klicken Sie die Option $3 an',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -3565,6 +3567,7 @@ $4
 
 Tenga en cuenta que la herramienta de comentario de artículo v5 se encuentra todavía en las primeras etapas de prueba en la Enciclopedia Inglesa y que la página de comentarios no se ha publicado para la comunidad durante este período de pruebas.',
 	'articlefeedbackv5-disable-flyover-title' => '¿Eliminar esta herramienta?',
+	'articlefeedbackv5-disable-flyover-help' => 'Para eliminar $1, vaya a $2 y compruebe $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Comentario de artículo',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Mis preferencias > Aspecto',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ir a Mis preferencias',
@@ -4502,6 +4505,7 @@ $4
 
 Notez bien que cette fonctionnalité de commentaire d'article v5 est encore dans ses premières phases de test sur l'encyclopédie anglaise et que la page de commentaires n'a pas été communiquée à la communauté durant cette phase de test.",
 	'articlefeedbackv5-disable-flyover-title' => 'Supprimer cet outil?',
+	'articlefeedbackv5-disable-flyover-help' => 'Pour supprimer $1, allez sur $2 et cochez $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Évaluation de l’article',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Mes Préférences > Apparence',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Aller à mes préférences',
@@ -6017,6 +6021,7 @@ $4
 
 Prošu wobkedźbuj, zo nastroj wo nastawkowych komentarch  wersije 5 je hišće w zažnym testowym stadiju na jendźelskej encyklopediji a zo strona komentarow hišće njeje so za testowu periodu wozjewiła.',
 	'articlefeedbackv5-disable-flyover-title' => 'Tutón nastroj wotstronić?',
+	'articlefeedbackv5-disable-flyover-help' => 'Zo by $1 wotstronił, dźi k $2 a klikń na $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Komentary wo nastawkach',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Nastajenja > Napohlad',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'K nastajenjam',
@@ -6586,6 +6591,7 @@ $4
 
 Per favor nota que le version 5 del functionalitate de evalutation es ancora in le prime stadios de test in le encyclopedia anglophone e que le pagina de evalutation non ha essite promovite al communitate durante iste periodo de test.',
 	'articlefeedbackv5-disable-flyover-title' => 'Remover iste instrumento?',
+	'articlefeedbackv5-disable-flyover-help' => 'Pro remover $1, vade a $2 e marca $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Evalutation de articulos',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Mi preferentias > Apparentia',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Vader a mi preferentias',
@@ -8462,7 +8468,7 @@ $messages['mk'] = array(
 	'articlefeedbackv5-bucket5-form-panel-expertise-other' => 'Изворот на моите сознанија не е наведен тука',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'Сакам да помогнам во подобрувањето на Википедија - испратете ми е-пошта (незадолжително)',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-note' => 'Ќе ви испратиме порака за потврда. Вашата адреса не ја даваме никому, согласно одредбите на нашите $1.',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-email-placeholder' => 'eposta@primer.org',
+	'articlefeedbackv5-bucket5-form-panel-helpimprove-email-placeholder' => 'epošta@primer.org',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy' => 'заштита на личните податоци кога искажувате мислења',
 	'articlefeedbackv5-bucket5-form-panel-submit' => 'Поднеси оценки',
 	'articlefeedbackv5-bucket5-form-panel-pending' => 'Вашите оценки не се поднесени',
@@ -8596,6 +8602,7 @@ $4
 
 Имајте на ум дека верзијата 5 на функцијата за заверка е сè уште во рана фаза на испробување на англиската енциклопедија (0,6%, или 22.000 статии) и дека страницата за оценка не е на јавен увид за заедницата во текот на овој пробен период.',
 	'articlefeedbackv5-disable-flyover-title' => 'Да ја отстранам алаткава?',
+	'articlefeedbackv5-disable-flyover-help' => 'За да ја отстраните алатката „$1“, појдете на $2 и штиклирајте го $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Оценување на статии',
 	'articlefeedbackv5-disable-flyover-help-location' => '„мои нагодувања > Изглед“',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Одете на вашите нагодувања',
@@ -9120,6 +9127,7 @@ $4
 
 Sila ambil perhatian bahawa alat maklum balas rencana v5 masih di peringkat awal percubaan di ensiklopedia ini, apalagi laman maklum balas belum dibuka kepada komuniti umum pada tempoh percubaan ini.',
 	'articlefeedbackv5-disable-flyover-title' => 'Gugurkan alat ini?',
+	'articlefeedbackv5-disable-flyover-help' => 'Untuk menggugurkan $1, pergi ke $2 dan raitkan $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Maklum Balas Rencana',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Keutamaan saya > Penampilan',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Pergi ke keutamaan saya',
@@ -11408,6 +11416,7 @@ Statte bbuène e grazie,
  * @author AlexSm
  * @author Assele
  * @author Catrope
+ * @author DCamer
  * @author DR
  * @author Dim Grits
  * @author Eleferen
@@ -11475,8 +11484,8 @@ $messages['ru'] = array(
 	'articlefeedbackv5-special-more' => 'Показать больше отзывов',
 	'articlefeedbackv5-special-pagetitle' => 'Отзыв: $1',
 	'articlefeedbackv5-form-optionid' => 'Вариант $1',
-	'articlefeedbackv5-hidden' => 'Этот отзыв скрыт авторизованным редактором',
-	'articlefeedbackv5-deleted' => 'Этот отзыв был удален надзирателями',
+	'articlefeedbackv5-hidden' => 'Этот отзыв скрыл $1, $2',
+	'articlefeedbackv5-deleted' => 'Этот отзыв был удален $1, $2',
 	'articlefeedbackv5-form-hide' => 'Скрыть это сообщение',
 	'articlefeedbackv5-form-unhide' => 'Показать этот отзыв',
 	'articlefeedbackv5-form-helpful' => 'Пометить как полезную ($1)',
@@ -11691,7 +11700,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-log-flag' => 'поставлена пометка злоупотребления в отзыве [[$1]]',
 	'articlefeedbackv5-log-unflag' => 'удалена пометка злоупотребления в отзыве [[$1]]',
 	'articlefeedbackv5-activity-pane-header' => 'Журнал изменений',
-	'articlefeedbackv5-activity-feedback-info' => 'Отзыв о статье #$1 от',
+	'articlefeedbackv5-activity-feedback-info' => 'Отзыв о статье #$1 от $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Опубликовано в $1',
 	'articlefeedbackv5-activity-permalink' => 'Постоянная ссылка',
 	'articlefeedbackv5-activity-request' => 'запрошен надзор над',
@@ -11703,7 +11712,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-activity-unflag' => 'убрал отметку о злоупотреблении в',
 	'articlefeedbackv5-activity-oversight' => 'надзирает этот отзыв с',
 	'articlefeedbackv5-activity-unoversight' => 'убрал надзор с',
-	'articlefeedbackv5-activity-count' => '$1 действий на этот отзыв',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 действие на этот отзыв|$1 действия на этот отзыв|$1 действий на этот отзыв}}',
 	'articlefeedbackv5-activity-more' => 'Показать дополнительные действия',
 	'articlefeedbackv5-emailcapture-response-body' => 'Здравствуйте!
 
