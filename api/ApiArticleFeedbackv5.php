@@ -271,9 +271,15 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$vars->addHolder( AbuseFilter::generateTitleVars( $title, 'FEEDBACK' ) );
 			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
 			$vars->setVar( 'ACTION', 'feedback' );
-			$vars->setVar( 'old_wikitext', '' );
 			$vars->setVar( 'new_wikitext', $value );
-			$vars->addHolder( AbuseFilter::getEditVars( $title ) );
+			$vars->setLazyLoadVar( 'new_size', 'length', array( 'length-var' => 'new_wikitext' ) );
+			$vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
+				array(
+					'namespace' => $title->getNamespace(),
+					'title' => $title->getText(),
+					'text-var' => 'new_wikitext',
+					'article' => null,
+				) );
 			$filter_result = AbuseFilter::filterAction( $vars, $title );
 			return $filter_result != '' && $filter_result !== true;
 		}
