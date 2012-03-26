@@ -1219,15 +1219,6 @@ body.skin-monobook .articleFeedbackv5-dialog {
 .articleFeedbackv5-trigger-link-holder.articleFeedbackv5-tipsy-active .articleFeedbackv5-close-trigger-link {
 	visibility: visible;
 }
-.articleFeedbackv5-trigger-link-holder .articleFeedbackv5-close-trigger-link {
-	/* @embed */
-	background: url(images/bg-close-hov.png) no-repeat;
-	background-size: 16px 16px;
-	display: inline-block;
-	width: 16px;
-	height: 16px;
-	vertical-align: middle;
-}
 
 .articleFeedbackv5-trigger-link-holder.articleFeedbackv5-trigger-link-holder-E .articleFeedbackv5-close-trigger-link {
 	/* @embed */

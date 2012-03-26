@@ -2217,7 +2217,7 @@
 				closeable: '\
 					<span>\
 						<a href="#mw-articleFeedbackv5" id="articleFeedbackv5-sitesublink"></a>\
-						<a href="#" class="articleFeedbackv5-close-trigger-link"></a>\
+						<a href="#" class="articleFeedbackv5-close-trigger-link">[X]</a>\
 					</span>\
 					'
 
