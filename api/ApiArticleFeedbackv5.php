@@ -296,7 +296,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				$matched, $title, $vars );
 
 			// Send to the abuse filter log
-			$action = $vars->getVar( 'ACTION' )->toString();
+			$dbr = wfGetDB( DB_SLAVE );
 			$log_template = array(
 				'afl_user' => $wgUser->getId(),
 				'afl_user_text' => $wgUser->getName(),
@@ -305,6 +305,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'afl_title' => $title->getDBkey(),
 				'afl_ip' => wfGetIP()
 			);
+			$action = $vars->getVar( 'ACTION' )->toString();
 			AbuseFilter::addLogEntries( $actions_taken, $log_template, $action, $vars );
 
 			// Local consequences (right now: disallow only)
