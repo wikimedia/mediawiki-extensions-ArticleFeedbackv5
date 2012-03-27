@@ -321,3 +321,8 @@ $wgLogActions['suppress/request']  = 'articlefeedbackv5-log-request';
 $wgLogActions['suppress/unrequest']  = 'articlefeedbackv5-log-unrequest';
 $wgLogActions['articlefeedbackv5/flag']  = 'articlefeedbackv5-log-flag';
 $wgLogActions['articlefeedbackv5/unflag']  = 'articlefeedbackv5-log-unflag';
+
+// Add custom action handlers for AbuseFilter
+$wgAbuseFilterAvailableActions[] = 'aftv5flagabuse';
+$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = 'ArticleFeedbackv5Hooks::callbackAbuseActionFlag';
+
