@@ -429,6 +429,7 @@ publicized to the community for this testing period.',
 
 	/* Custom AbuseFilter actions */
 	'abusefilter-edit-action-aftv5flagabuse' => '(Article Feedback) Auto-flag as abuse',
+	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Automatically flagged as abuse.  Rule: $1',
 );
 
 /** Message documentation (Message documentation)
@@ -711,6 +712,7 @@ This URL can be changed to point to a translated version of the page if it exist
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'The emphasis text for {{msg-mw|articlefeedbackv5-disable-flyover-help}} (the name of the tool)',
 	'articlefeedbackv5-disable-flyover-help-location' => 'A short indication of where to go to change your Article Feedback preferences, inside {{msg-mw|articlefeedbackv5-disable-flyover-help}}',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'The text of the big glossy button used to send the user to their preferences in the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
+	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'The note to add to the activity log when auto-flagging a new feedback post as abuse (<code>$1</code> is the name of the filter)',
 	'abusefilter-edit-action-aftv5flagabuse' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in the feedback being auto-flagged as abuse',
 );
 

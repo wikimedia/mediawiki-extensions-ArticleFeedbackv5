@@ -19,6 +19,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	// Cache this, so we don't have to look it up every time.
 	private $revision_limit = null;
 
+	// Allow auto-flagging of feedback
+	private $autoFlag = array();
+
 	/**
 	 * Constructor
 	 */
@@ -136,6 +139,23 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$squidUpdate->doUpdate();
 
 		wfRunHooks( 'ArticleFeedbackChangeRating', array( $params ) );
+
+		// Are we set to auto-flag?
+		foreach ( $this->autoFlag as $flag => $rule_desc ) {
+			$note = wfMsgExt( 'articlefeedbackv5-abusefilter-note-aftv5flagabuse',
+				'parseinline', array( $rule_desc ) );
+			$params = new FauxRequest( array(
+				'action'     => 'articlefeedbackv5-flag-feedback',
+				'pageid'     => $pageId,
+				'feedbackid' => $feedbackId,
+				'flagtype'   => $flag,
+				'direction'  => 'increase',
+				'note'       => $note,
+				'system'     => true,
+			) );
+			$api = new ApiMain( $params, true );
+			$api->execute();
+		}
 
 		$this->getResult()->addValue(
 			null,
@@ -282,6 +302,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 					'article' => null,
 				) );
 
+			// Add custom action handlers
+			global $wgAbuseFilterCustomActionsHandlers;
+			$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = array( $this, 'callbackAbuseActionFlag' );
+
 			// Check the filters (mimics AbuseFilter::filterAction)
 			$vars->setVar( 'context', 'filter' );
 			$vars->setVar( 'timestamp', time() );
@@ -323,6 +347,27 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 
 		return false;
+	}
+
+	/**
+	 * AbuseFilter callback: flag feedback (abuse, oversight, hide, etc.)
+	 *
+	 * @param string                    $action     the action name (AF)
+	 * @param array                     $parameters the action parameters (AF)
+	 * @param Title                     $title      the title passed in
+	 * @param AbuseFilterVariableHolder $vars       the variables passed in
+	 * @param string                    $rule_desc  the rule description
+	 */
+	public function callbackAbuseActionFlag( $action, $parameters,
+		$title, $vars, $rule_desc ) {
+		switch ( $action ) {
+			case 'aftv5flagabuse':
+				$this->autoFlag['abuse'] = $rule_desc;
+				break;
+			default:
+error_log("Consequence: flagging!  Action name is $action");
+				break;
+		}
 	}
 
 	public function updateFilterCounts( $dbw, $pageId, $answers ) {
@@ -739,7 +784,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			__METHOD__
 		);
 	}
-
 
 	/**
 	 * Picks a CTA to send the user to

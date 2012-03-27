@@ -44,6 +44,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$toggle     = $params['toggle'];
 		$direction  = isset( $params['direction'] ) ? $params['direction'] : 'increase';
 		$where      = array( 'af_id' => $feedbackId );
+		$system     = $params['system'];
 
 		// woah, we were not checking for permissions (that could have been script kiddy bad)
 		global $wgUser;
@@ -378,7 +379,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 			// helpfulness counts are NOT logged, no activity is set
 			if ( isset( $activity ) ) {
-				ApiArticleFeedbackv5Utils::logActivity( $activity , $pageId, $feedbackId, $notes );
+				ApiArticleFeedbackv5Utils::logActivity( $activity , $pageId, $feedbackId, $notes, $system );
 			}
 
 			// handle implicit hide/show logging
@@ -544,6 +545,11 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'boolean'
+			),
+			'system' => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_TYPE     => 'boolean'
 			)
 		);
 	}
@@ -558,7 +564,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			'feedbackid'  => 'FeedbackID to flag',
 			'type'        => 'Type of flag to apply - hide or abuse',
 			'note'        => 'Information on why the feedback activity occurred',
-			'toggle'      => 'The flag is being toggled atomically, only useful for (un)helpful'
+			'toggle'      => 'The flag is being toggled atomically, only useful for (un)helpful',
+			'system'      => 'This is an internal request',
 		);
 	}
 
