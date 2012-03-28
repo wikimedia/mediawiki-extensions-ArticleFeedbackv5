@@ -397,6 +397,7 @@ class ArticleFeedbackv5Hooks {
 		$tracking = $request->getVal( 'articleFeedbackv5_click_tracking' );
 		$bucketId = $request->getVal( 'articleFeedbackv5_bucket_id' );
 		$ctaId    = $request->getVal( 'articleFeedbackv5_cta_id' );
+		$flinkId  = $request->getVal( 'articleFeedbackv5_f_link_id' );
 		$location = $request->getVal( 'articleFeedbackv5_location' );
 		$token    = $request->getVal( 'articleFeedbackv5_ct_token' );
 		$ctEvent  = $request->getVal( 'articleFeedbackv5_ct_event' );
@@ -404,6 +405,7 @@ class ArticleFeedbackv5Hooks {
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_click_tracking', $tracking );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_bucket_id', $bucketId );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_cta_id', $ctaId );
+		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_f_link_id', $flinkId );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_location', $location );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_ct_token', $token );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_ct_event', $ctEvent );
@@ -469,6 +471,7 @@ class ArticleFeedbackv5Hooks {
 		$version  = $wgArticleFeedbackv5Tracking['version'];
 		$bucketId = $request->getVal( 'articleFeedbackv5_bucket_id' );
 		$ctaId    = $request->getVal( 'articleFeedbackv5_cta_id' );
+		$flinkId  = $request->getVal( 'articleFeedbackv5_f_link_id' );
 		$location = $request->getVal( 'articleFeedbackv5_location' );
 		$token    = $request->getVal( 'articleFeedbackv5_ct_token' );
 		$ctEvent  = $request->getVal( 'articleFeedbackv5_ct_event' );
@@ -477,7 +480,7 @@ class ArticleFeedbackv5Hooks {
 			$trackingId = $ctEvent . '-' . $event;
 		} else {
 			$trackingId = 'ext.articleFeedbackv5@' . $version
-				. '-option' . $bucketId
+				. '-option' . $bucketId . $flinkId
 				. '-cta_' . ( isset( $ctas[$ctaId] ) ? $ctas[$ctaId] : 'unknown' )
 				. '-' . $event
 				. '-' . $location;

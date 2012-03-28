@@ -90,7 +90,7 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
 	// this when you want to start a new "experiment".
-	'version' => 0,
+	'version' => 1,
 	// Let users be tracked for a month, and then rebucket them, allowing some
 	// churn.
 	'expires' => 30,
@@ -113,7 +113,7 @@ $wgArticleFeedbackv5Tracking = array(
 	),
 	// This version number is added to all tracking event names, so that changes in the software
 	// don't corrupt the data being collected. Bump this when you want to start a new "experiment".
-	'version' => 0,
+	'version' => 1,
 	// Let users be tracked for a month, and then rebucket them, allowing some churn
 	'expires' => 30,
 	// Track the event of users being bucketed - so we can be sure the odds
@@ -135,7 +135,7 @@ $wgArticleFeedbackv5Options = array(
 // Bucket settings for links to the feedback form
 $wgArticleFeedbackv5LinkBuckets = array(
 	// Users can fall into one of several buckets for links.  These are:
-	//  -: No link; user must scroll to the bottom of the page
+	//  X: No link; user must scroll to the bottom of the page
 	//  A: After the site tagline (below the article title)
 	//  B: Below the titlebar on the right
 	//  C: Button fixed to right side
@@ -145,7 +145,7 @@ $wgArticleFeedbackv5LinkBuckets = array(
 	//  G: Button below logo
 	//  H: Link on each section bar
 	'buckets' => array(
-		'-' => 33,
+		'X' => 33,
 		'A' => 33,
 		'B' => 0,
 		'C' => 0,
@@ -158,7 +158,7 @@ $wgArticleFeedbackv5LinkBuckets = array(
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
 	// this when you want to start a new "experiment".
-	'version' => 2,
+	'version' => 3,
 	// Let users be tracked for a month, and then rebucket them, allowing some
 	// churn.
 	'expires' => 30,
