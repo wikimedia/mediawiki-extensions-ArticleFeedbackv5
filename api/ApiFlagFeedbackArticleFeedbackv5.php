@@ -411,7 +411,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			}
 		}
 
-		if ( $error ) {
+		if ( isset( $error ) ) {
 			$results['result'] = 'Error';
 			$results['reason'] = $error;
 		} else {
