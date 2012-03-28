@@ -22,6 +22,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	// Allow auto-flagging of feedback
 	private $autoFlag = array();
 
+	// Warn for abuse?
+	private $warnForAbuse = false;
+
 	/**
 	 * Constructor
 	 */
@@ -57,6 +60,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$bucket       = $params['bucket'];
 		$revisionId   = $params['revid'];
 		$error        = null;
+		$warning      = null;
 		$userAnswers  = array();
 		$fields       = ApiArticleFeedbackv5Utils::getFields();
 		$emailData    = array(
@@ -83,7 +87,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				}
 				if ( $wgArticleFeedbackv5AbuseFiltering && 'text' == $type
 					&& $this->findAbuse( $value, $pageId ) ) {
-					$error = 'articlefeedbackv5-error-abuse';
+					if ( $this->warnForAbuse ) {
+						$warning = $this->warnForAbuse;
+					} else {
+						$error = 'articlefeedbackv5-error-abuse';
+					}
 					break;
 				}
 				$data = array( 'aa_field_id' => $field['afi_id'] );
@@ -96,6 +104,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 		if ( $error ) {
 			$this->getResult()->addValue( null, 'error', $error );
+			return;
+		}
+		if ( $warning ) {
+			$this->getResult()->addValue( null, 'warning', $warning );
 			return;
 		}
 
@@ -333,14 +345,22 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 			// Local consequences (right now: disallow only)
 			$disallow = false;
+			$warn = false;
 			foreach ( $actions_taken as $id => $actions ) {
 				foreach ( $actions as $action ) {
-					if ( 'disallow' == $action || 'warn' == $action ) {
+					if ( 'disallow' == $action) {
 						$disallow = true;
+					}
+					if ( 'warn' == $action ) {
+						$warn = true;
 					}
 				}
 			}
 			if ( $disallow ) {
+				return true;
+			}
+			if ( $warn ) {
+				$this->warnForAbuse = $error_msg;
 				return true;
 			}
 		}

@@ -46,6 +46,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-submit' => 'Form submission error.',
 	'articlefeedbackv5-error-nofeedback' => 'Please enter your feedback.',
 	'articlefeedbackv5-error-flagging' => 'Error flagging feedback.',
+	'articlefeedbackv5-warning-abuse' => 'Your comment has been automatically identified as harmful.  If you believe this comment to be constructive, you may click the submit button again to confirm it. A brief description of the abuse rule which your action matched is: $1',
 
 	/* Special Page */
 	'articlefeedbackv5-form-tools-label' => 'Tools',
@@ -714,6 +715,7 @@ This URL can be changed to point to a translated version of the page if it exist
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'The text of the big glossy button used to send the user to their preferences in the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
 	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'The note to add to the activity log when auto-flagging a new feedback post as abuse (<code>$1</code> is the name of the filter)',
 	'abusefilter-edit-action-aftv5flagabuse' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in the feedback being auto-flagged as abuse',
+	'articlefeedbackv5-warning-abuse' => 'A basic warning message that may be used by Special:AbuseFilter to let the user know their comment has violated policy (<code>$1</code> is the name of the filter)',
 );
 
 /** Afrikaans (Afrikaans)
