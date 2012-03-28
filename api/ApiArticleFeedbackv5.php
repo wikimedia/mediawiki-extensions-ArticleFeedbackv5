@@ -267,7 +267,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 
 		// Create a fake title so we can pretend this is an article edit
-		$title = Title::newFromText( '__article_feedback_5__' );
+		$title = Title::newFromText( 'ArticleFeedbackv5_' . $pageId );
 
 		// Check SpamBlacklist, if installed
 		if ( function_exists( 'wfSpamBlacklistObject' ) ) {
@@ -289,7 +289,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			// Set up variables
 			$vars = new AbuseFilterVariableHolder;
 			$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
-			$vars->addHolder( AbuseFilter::generateTitleVars( $title, 'FEEDBACK' ) );
 			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
 			$vars->setVar( 'ACTION', 'feedback' );
 			$vars->setVar( 'new_wikitext', $value );
