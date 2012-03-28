@@ -153,20 +153,19 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		wfRunHooks( 'ArticleFeedbackChangeRating', array( $params ) );
 
 		// Are we set to auto-flag?
+		$flagger = new ArticleFeedbackv5Flagging( 0, $pageId, $feedbackId );
 		foreach ( $this->autoFlag as $flag => $rule_desc ) {
-			$note = wfMsgExt( 'articlefeedbackv5-abusefilter-note-aftv5flagabuse',
-				'parseinline', array( $rule_desc ) );
-			$params = new FauxRequest( array(
-				'action'     => 'articlefeedbackv5-flag-feedback',
-				'pageid'     => $pageId,
-				'feedbackid' => $feedbackId,
-				'flagtype'   => $flag,
-				'direction'  => 'increase',
-				'note'       => $note,
-				'system'     => true,
-			) );
-			$api = new ApiMain( $params, true );
-			$api->execute();
+			$msg = 'articlefeedbackv5-abusefilter-note-aftv5';
+			if ( $flag == 'abuse' ) {
+				$msg .= 'flagabuse';
+			} else {
+				continue;
+			}
+			$notes = wfMsgExt( $msg, 'parseinline', array( $rule_desc ) );
+			$res = $flagger->run( $flag, $notes );
+			if ( 'Error' == $res['result'] ) {
+				// TODO: Log somewhere?
+			}
 		}
 
 		$this->getResult()->addValue(
