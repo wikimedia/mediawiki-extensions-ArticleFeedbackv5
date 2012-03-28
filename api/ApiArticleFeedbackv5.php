@@ -278,9 +278,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			}
 		}
 
-		// Create a fake title so we can pretend this is an article edit
-		$title = Title::newFromText( 'ArticleFeedbackv5_' . $pageId );
-
 		// Check SpamBlacklist, if installed
 		if ( function_exists( 'wfSpamBlacklistObject' ) ) {
 			$spam = wfSpamBlacklistObject();
@@ -288,6 +285,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$spam = BaseBlacklist::getInstance( 'spam' );
 		}
 		if ( $spam ) {
+			$title = Title::newFromText( 'ArticleFeedbackv5_' . $pageId );
 			$ret = $spam->filter( $title, $value, '' );
 			if ( $ret !== false ) {
 				return true;
@@ -299,19 +297,14 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			global $wgUser;
 
 			// Set up variables
+			$title = Title::newFromID( $pageId );
 			$vars = new AbuseFilterVariableHolder;
 			$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
+			$vars->addHolder( AbuseFilter::generateTitleVars( $title , 'ARTICLE' ) );
 			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
 			$vars->setVar( 'ACTION', 'feedback' );
 			$vars->setVar( 'new_wikitext', $value );
 			$vars->setLazyLoadVar( 'new_size', 'length', array( 'length-var' => 'new_wikitext' ) );
-			$vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
-				array(
-					'namespace' => $title->getNamespace(),
-					'title' => $title->getText(),
-					'text-var' => 'new_wikitext',
-					'article' => null,
-				) );
 
 			// Add custom action handlers
 			global $wgAbuseFilterCustomActionsHandlers;
