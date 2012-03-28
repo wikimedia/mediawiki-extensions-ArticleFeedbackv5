@@ -356,11 +356,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 					}
 				}
 			}
-			if ( $disallow ) {
-				return true;
-			}
 			if ( $warn ) {
 				$this->warnForAbuse = $error_msg;
+				return true;
+			}
+			if ( $disallow ) {
 				return true;
 			}
 		}
