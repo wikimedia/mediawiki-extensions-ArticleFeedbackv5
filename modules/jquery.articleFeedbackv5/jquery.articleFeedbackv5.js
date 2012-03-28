@@ -77,7 +77,7 @@
 	/**
 	 * Are we in debug mode?
 	 */
-	$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' ) ? true : ( mw.util.getParamValue( 'debug' ) ? true : false );
+	$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' ) ? true : false;
 
 	/**
 	 * Are we tracking clicks?
@@ -2723,6 +2723,11 @@
 	$.articleFeedbackv5.init = function ( $el, config ) {
 		$.articleFeedbackv5.$holder = $el;
 		$.articleFeedbackv5.config = config;
+		// Debug mode
+		var reqDebug = mw.util.getParamValue( 'debug' );
+		if ( reqDebug ) {
+			$.articleFeedbackv5.debug = reqDebug == 'false' ? false : true;
+		}
 		// Are we tracking clicks?
 		$.articleFeedbackv5.clickTracking = $.articleFeedbackv5.checkClickTracking();
 		// Has the user already submitted ratings for this page at this revision?
@@ -2769,7 +2774,7 @@
 		var knownBuckets = { '0': true, '1': true, '2': true, '3': true, '4': true, '5': true };
 		var requested = mw.util.getParamValue( 'bucket' );
 		var cookieval = $.cookie( $.articleFeedbackv5.prefix( 'display-bucket' ) );
-		if ( $.articleFeedbackv5.debug && requested in knownBuckets ) {
+		if ( requested in knownBuckets ) {
 			$.articleFeedbackv5.bucketId = requested;
 		} else if ( cookieval in knownBuckets ) {
 			$.articleFeedbackv5.bucketId = cookieval;
@@ -2835,14 +2840,14 @@
 			if ( 'buckets' in cfg ) {
 				var knownBuckets = cfg.buckets;
 				var requested = mw.util.getParamValue( 'aftv5_link' );
-				if ( $.articleFeedbackv5.inDebug() && ( requested in knownBuckets || requested == 'X' ) ) {
+				if ( requested in knownBuckets || requested == 'X' ) {
 					bucketedLink = requested;
 				} else {
 					bucketedLink = mw.user.bucket( 'ext.articleFeedbackv5-links', cfg );
 				}
 			}
 		}
-		if ( $.articleFeedbackv5.inDebug() ) {
+		if ( $.articleFeedbackv5.debug ) {
 			aft5_debug( 'Using link option ' + bucketedLink );
 		}
 		$.articleFeedbackv5.floatingLinkId = bucketedLink;
