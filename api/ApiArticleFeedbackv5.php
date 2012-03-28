@@ -158,6 +158,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$msg = 'articlefeedbackv5-abusefilter-note-aftv5';
 			if ( $flag == 'abuse' ) {
 				$msg .= 'flagabuse';
+			} elseif ( $flag == 'hide' ) {
+				$msg .= 'hide';
 			} else {
 				continue;
 			}
@@ -308,6 +310,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			// Add custom action handlers
 			global $wgAbuseFilterCustomActionsHandlers;
 			$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = array( $this, 'callbackAbuseActionFlag' );
+			$wgAbuseFilterCustomActionsHandlers['aftv5hide'] = array( $this, 'callbackAbuseActionFlag' );
 
 			// Check the filters (mimics AbuseFilter::filterAction)
 			$vars->setVar( 'context', 'filter' );
@@ -374,6 +377,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		switch ( $action ) {
 			case 'aftv5flagabuse':
 				$this->autoFlag['abuse'] = $rule_desc;
+				break;
+			case 'aftv5hide':
+				$this->autoFlag['hide'] = $rule_desc;
 				break;
 			default:
 error_log("Consequence: flagging!  Action name is $action");

@@ -431,6 +431,8 @@ publicized to the community for this testing period.',
 	/* Custom AbuseFilter actions */
 	'abusefilter-edit-action-aftv5flagabuse' => '(Article Feedback) Auto-flag as abuse',
 	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Automatically flagged as abuse.  Rule: $1',
+	'abusefilter-edit-action-aftv5hide' => '(Article Feedback) Auto-hide',
+	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automatically hidden.  Rule: $1',
 );
 
 /** Message documentation (Message documentation)
@@ -715,6 +717,8 @@ This URL can be changed to point to a translated version of the page if it exist
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'The text of the big glossy button used to send the user to their preferences in the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
 	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'The note to add to the activity log when auto-flagging a new feedback post as abuse (<code>$1</code> is the name of the filter)',
 	'abusefilter-edit-action-aftv5flagabuse' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in the feedback being auto-flagged as abuse',
+	'abusefilter-edit-action-aftv5hide' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in the feedback being auto-hidden',
+	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'The note to add to the activity log when auto-hiding a new feedback post (<code>$1</code> is the name of the filter)',
 	'articlefeedbackv5-warning-abuse' => 'A basic warning message that may be used by Special:AbuseFilter to let the user know their comment has violated policy (<code>$1</code> is the name of the filter)',
 );
 
