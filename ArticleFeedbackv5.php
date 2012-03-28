@@ -325,5 +325,5 @@ $wgLogActions['articlefeedbackv5/unflag']  = 'articlefeedbackv5-log-unflag';
 
 // Add custom action handlers for AbuseFilter
 $wgAbuseFilterAvailableActions[] = 'aftv5flagabuse';
-$wgAbuseFilterAvailableActions[] = 'aftv5autohide';
+$wgAbuseFilterAvailableActions[] = 'aftv5hide';
 
