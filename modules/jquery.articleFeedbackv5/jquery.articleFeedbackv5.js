@@ -2767,7 +2767,7 @@
 		// 2. From cookie (see below)
 		// 3. Core bucketing
 		var knownBuckets = { '0': true, '1': true, '2': true, '3': true, '4': true, '5': true };
-		var requested = mw.util.getParamValue( 'bucket' );
+		var requested = mw.util.getParamValue( 'aftv5_form' );
 		var cookieval = $.cookie( $.articleFeedbackv5.prefix( 'display-bucket' ) );
 		if ( $.articleFeedbackv5.debug && requested in knownBuckets ) {
 			$.articleFeedbackv5.bucketId = requested;
