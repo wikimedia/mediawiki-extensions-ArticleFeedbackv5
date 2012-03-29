@@ -17,6 +17,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	private $continue   = null;
 	private $continueId = null;
 	private $showMore   = false;
+	private $isPermalink = false;
 
 	/**
 	 * Constructor
@@ -48,6 +49,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		foreach ( $feedback as $record ) {
 			$html .= $this->renderFeedback( $record );
 			$length++;
+		}
+
+		if ( $this->isPermalink ) {
+			$html .= Linker::link(
+					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $record[0]->page_title ),
+					wfMessage( 'articlefeedbackv5-special-goback' )->text());
 		}
 
 		$result->addValue( $this->getModuleName(), 'length', $length );
@@ -288,6 +295,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			case 'id':
 				# Used for permalinks.
 				$where['af_id'] = $filterValue;
+				$this->isPermalink = true;
 				break;
 			case 'visible':
 				$where[] = 'af_is_deleted IS FALSE';
