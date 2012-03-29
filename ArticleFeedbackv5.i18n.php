@@ -147,6 +147,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-mask-text-oversight' => 'This post was oversighted by an authorized editor',
 	'articlefeedbackv5-mask-postnumber' => 'Post #$1',
 	'articlefeedbackv5-special-disclaimer' => 'This is a prototype. Please do not use it unless you have been invited to.',
+	'articlefeedbackv5-special-goback' => 'Go back to feedback list',
 
 	/* Special page flyover panels */
 	/* Hide this post panel */
@@ -489,6 +490,7 @@ The link to the edit tutorial',
 	'articlefeedbackv5-special-filter-deleted' => '{{Identical|Deleted}}',
 	'articlefeedbackv5-special-sort-age' => '{{Identical|Date}}',
 	'articlefeedbackv5-special-sort-rating' => '{{Identical|Rating}}',
+	'articlefeedbackv5-special-goback' => 'Link to take a user from a feedback permalink back to the listing of all feedback',
 	'articlefeedbackv5-special-sort-label-before' => 'Place to put a label before the sort options',
 	'articlefeedbackv5-special-filter-label-before' => 'Place to put a label before the filter select box',
 	'articlefeedbackv5-special-showing' => 'Text to show how many feedback psots have been posted to this article. $1 is the number of posts (needs plural support)',
