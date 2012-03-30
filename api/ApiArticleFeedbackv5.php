@@ -160,6 +160,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				$msg .= 'flagabuse';
 			} elseif ( $flag == 'hide' ) {
 				$msg .= 'hide';
+			} elseif ( $flag == 'oversight' ) {
+				$msg .= 'requestoversight';
 			} else {
 				continue;
 			}
@@ -309,8 +311,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 			// Add custom action handlers
 			global $wgAbuseFilterCustomActionsHandlers;
-			$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = array( $this, 'callbackAbuseActionFlag' );
-			$wgAbuseFilterCustomActionsHandlers['aftv5hide'] = array( $this, 'callbackAbuseActionFlag' );
+			$flagCallback = array( $this, 'callbackAbuseActionFlag' );
+			$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $flagCallback;
+			$wgAbuseFilterCustomActionsHandlers['aftv5hide'] = $flagCallback;
+			$wgAbuseFilterCustomActionsHandlers['aftv5requestoversight'] = $flagCallback;
 
 			// Check the filters (mimics AbuseFilter::filterAction)
 			$vars->setVar( 'context', 'filter' );
@@ -381,8 +385,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			case 'aftv5hide':
 				$this->autoFlag['hide'] = $rule_desc;
 				break;
+			case 'aftv5requestoversight':
+				$this->autoFlag['oversight'] = $rule_desc;
+				break;
 			default:
-error_log("Consequence: flagging!  Action name is $action");
+				// Fall through silently
 				break;
 		}
 	}
