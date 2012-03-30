@@ -148,3 +148,13 @@ CREATE INDEX /*_*/af_net_helpfulness_af_id ON /*_*/aft_article_feedback (af_net_
 -- make sure all old feedback has dates, even if they're wrong
 UPDATE aft_article_feedback SET af_hide_timestamp = NOW() WHERE af_is_hidden IS TRUE AND af_hide_timestamp = '';
 UPDATE aft_article_feedback SET af_oversight_timestamp = NOW() WHERE af_is_deleted IS TRUE AND af_oversight_timestamp = '';
+
+-- Added 3/29 (reha)
+ALTER TABLE /*_*/aft_article_feedback CHANGE COLUMN af_bucket_id af_form_id INTEGER UNSIGNED NOT NULL DEFAULT 0;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_experiment varchar(32) NULL;
+CREATE INDEX /*_*/af_experiment ON /*_*/aft_article_feedback (af_experiment);
+UPDATE /*_*/aft_article_feedback SET af_experiment = af_form_id WHERE DATE(af_created) <= '2012-03-21';
+UPDATE /*_*/aft_article_feedback SET af_experiment = CONCAT(af_form_id, 'A') WHERE DATE(af_created) > '2012-03-21' AND af_link_id = 1;
+UPDATE /*_*/aft_article_feedback SET af_experiment = CONCAT(af_form_id, 'E') WHERE DATE(af_created) > '2012-03-21' AND af_link_id = 5;
+UPDATE /*_*/aft_article_feedback SET af_experiment = CONCAT(af_form_id, '?') WHERE DATE(af_created) > '2012-03-21' AND af_link_id = 0;
+
