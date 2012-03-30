@@ -26,12 +26,14 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   -- Foreign key to revision.rev_id
   af_revision_id     integer unsigned NOT NULL,
   -- Which feedback widget the user was given. Default of 0 is "none".
-  af_bucket_id       integer unsigned NOT NULL DEFAULT 0,
+  af_form_id         integer unsigned NOT NULL DEFAULT 0,
   -- Which CTA widget was displayed to the user. 0 is "none",
   -- Which would come up if they got the edit page CTA, and couldn't edit.
   af_cta_id          integer unsigned NOT NULL DEFAULT 0,
   -- Which link the user clicked on to get to the widget. Default of 0 is "none".
   af_link_id         integer unsigned NOT NULL DEFAULT 0,
+  -- Which experiment this feedback is a part of (matches clicktracking).
+  af_experiment      varchar(32) NULL,
   -- Creation timetamp
   af_created         binary(14) NOT NULL DEFAULT '',
   -- Number of times the feedback was hidden or marked as abusive.
