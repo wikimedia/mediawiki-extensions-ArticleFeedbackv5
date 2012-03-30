@@ -140,6 +140,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// Build WHERE clause.
 		// Filter applied , if any:
 		$where = $this->getFilterCriteria( $filter, $filterValue );
+
 		// PageID:
 		$where['af_page_id'] = $pageId;
 		// Continue SQL, if any:
@@ -294,7 +295,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				break;
 			case 'id':
 				# Used for permalinks.
-				$where['af_id'] = $filterValue;
+				$where = array('af_id' => $filterValue);
 				$this->isPermalink = true;
 				break;
 			case 'visible':
@@ -357,164 +358,224 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$can_delete = $wgUser->isAllowed( 'aftv5-delete-feedback' );
 		$default_user = wfMessage( 'articlefeedbackv5-default-user' )->text();
 
-		$footer_links = Html::openElement( 'div', array(
-			'class' => 'articleFeedbackv5-vote-wrapper'
-		) )
-		. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot' ) );
+		// if this is permalinked - if oversighted  or hidden we might be doing empty gray mask
+		if  ( ( $this->isPermalink && $record[0]->af_is_deleted
+		     && !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) )
+		     || ( $this->isPermalink && $record[0]->af_is_hidden
+		     && !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) ) {
 
-		if ( $can_vote ) {
-			$footer_links .= Html::element( 'span', array(
-				'class' => 'articleFeedbackv5-helpful-caption'
-			), wfMessage( 'articlefeedbackv5-form-helpful-label' )->text()
-			)
-			. Html::element( 'a', array(
-				'id'    => "articleFeedbackv5-helpful-link-$id",
-				'class' => 'articleFeedbackv5-helpful-link'
-			), wfMessage( 'articlefeedbackv5-form-helpful-yes-label' )->text() )
-			. Html::element( 'a', array(
-				'id'    => "articleFeedbackv5-unhelpful-link-$id",
-				'class' => 'articleFeedbackv5-unhelpful-link'
-			), wfMessage( 'articlefeedbackv5-form-helpful-no-label' )->text() );
-		}
-		$footer_links .= Html::element( 'span', array(
-			'class' => 'articleFeedbackv5-helpful-votes',
-			'id'    => "articleFeedbackv5-helpful-votes-$id"
-		), wfMessage( 'articlefeedbackv5-form-helpful-votes',
-			$wgLang->formatNum( $record[0]->af_helpful_count ),
-			$wgLang->formatNum( $record[0]->af_unhelpful_count )
-		)->text() );
-		$footer_links .= Html::closeElement( 'div' );
-		if ( $can_flag ) {
-			$aclass = 'articleFeedbackv5-abuse-link';
-			global $wgArticleFeedbackv5AbusiveThreshold;
-			if ( $record[0]->af_abuse_count >= $wgArticleFeedbackv5AbusiveThreshold ) {
-				$aclass .= ' abusive';
+			// hide or oversight?
+			if ( $record[0]->af_is_deleted ) {
+				$user = $record[0]->af_oversight_user_id;
+				$timestamp = $record[0]->af_oversight_timestamp;
+				$class = 'oversight';
+				$msg_string = 'deleted';
+			} else {
+				$user = $record[0]->af_hide_user_id;
+				$timestamp = $record[0]->af_hide_timestamp;
+				$class = 'hidden';
+				$msg_string = $class;
 			}
-			// Count masked if user cannot hide comments (as per Fabrice)
-			$msg = $can_hide ? 'articlefeedbackv5-form-abuse' : 'articlefeedbackv5-form-abuse-masked';
-			$footer_links .= Html::element( 'a', array(
-				'id'    => "articleFeedbackv5-abuse-link-$id",
-				'class' => $aclass,
-				'href'  => '#',
-				'rel'   => $record[0]->af_abuse_count
-			), wfMessage( $msg, $wgLang->formatNum( $record[0]->af_abuse_count ) )->text() );
-		}
-		$footer_links .= Html::closeElement( 'div' );
 
-		/*$footer_links .= Html::element( 'span', array(
-			'class' => 'articleFeedbackv5-helpful-votes'
-		), wfMessage( 'articlefeedbackv5-form-helpful-votes', ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ), $record[0]->af_helpful_count, $record[0]->af_unhelpful_count ) )
-		. ( $can_flag ? Html::rawElement( 'div', array(
-			'class' => 'articleFeedbackv5-abuse-link-wrap'
-		), Html::element( 'a', array(
-			'id'    => "articleFeedbackv5-abuse-link-$id",
-			'class' => 'articleFeedbackv5-abuse-link'
-		), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
-		. Html::closeElement( 'div' );*/
+			$user_link = ApiArticleFeedbackv5Utils::getUserLink( $user, $default_user );
+			$user_timestamp =  wfTimestamp( TS_RFC2822, $timestamp );
 
-		// Don't render the toolbox if they can't do anything with it.
-		$tools = null;
-		if ( $can_hide || $can_delete ) {
-			$tools = Html::openElement( 'div', array(
-				'class' => 'articleFeedbackv5-feedback-tools',
-				'id'    => 'articleFeedbackv5-feedback-tools-' . $id
+			return Html::openElement( 'div',  array(
+					'class' => 'articleFeedbackv5-feedback articleFeedbackv5-feedback-' . $class . ' articleFeedbackv5-feedback-emptymask'
+				) )
+				. Html::openElement( 'div', array(
+					'class' => 'articleFeedbackv5-post-screen'
+				) )
+				. Html::openElement( 'div', array(
+					'class' => 'articleFeedbackv5-mask-text-wrapper'
+				) )
+				. Html::element( 'span', array(
+					'class' => 'articleFeedbackv5-mask-text'
+					), wfMessage( 'articlefeedbackv5-mask-text-' . $class )->text())
+				. Html::element( 'span', array(
+					'class' => 'articleFeedbackv5-mask-postid'
+					), wfMessage( 'articlefeedbackv5-mask-postnumber' )
+						->numParams($record[0]->af_id)
+						->text()
+					)
+				. Html::closeElement( 'div' )
+				. Html::closeElement( 'div' )
+
+				. Html::rawElement( 'span', array(
+					'class' => 'articleFeedbackv5-feedback-' . $msg_string . '-marker'
+					),
+					wfMessage( 'articlefeedbackv5-' . $msg_string)
+						->rawParams($user_link, $user_timestamp )
+						->escaped()
+					)
+
+				. Html::element( 'div', array(
+					'class' => 'articleFeedbackv5-comment-wrap articleFeedbackv5-h3-push'
+					) )
+				. Html::closeElement( 'div' );
+
+		// otherwise this is not permalinked so render normally
+		} else {
+
+			$footer_links = Html::openElement( 'div', array(
+				'class' => 'articleFeedbackv5-vote-wrapper'
 			) )
-			. Html::element( 'h3', array(
-				'id' => 'articleFeedbackv5-feedback-tools-header-' . $id
-			), wfMessage( 'articlefeedbackv5-form-tools-label' )->text() )
-			. Html::openElement( 'ul', array(
-				'id' => 'articleFeedbackv5-feedback-tools-list-' . $id
-			) );
-
-			if ( $can_hide ) {
-				if ( $record[0]->af_is_hidden ) {
-					$msg = 'unhide';
-					$class = 'show';
-				} else {
-					$msg = 'hide';
-					$class = 'hide';
-				}
-				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
-					'id'    => "articleFeedbackv5-$class-link-$id",
-					'class' => "articleFeedbackv5-$class-link",
-					'href' => '#',
-				), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
+			. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot' ) );
+	
+			if ( $can_vote ) {
+				$footer_links .= Html::element( 'span', array(
+					'class' => 'articleFeedbackv5-helpful-caption'
+				), wfMessage( 'articlefeedbackv5-form-helpful-label' )->text()
+				)
+				. Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-helpful-link-$id",
+					'class' => 'articleFeedbackv5-helpful-link'
+				), wfMessage( 'articlefeedbackv5-form-helpful-yes-label' )->text() )
+				. Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-unhelpful-link-$id",
+					'class' => 'articleFeedbackv5-unhelpful-link'
+				), wfMessage( 'articlefeedbackv5-form-helpful-no-label' )->text() );
 			}
-
-			// !can delete == request oversight
-			if ( $can_hide && !$can_delete ) {
-				if ( $record[0]->af_oversight_count > 0 ) {
-					$msg = 'unoversight';
-					$class = 'unrequestoversight';
-				} else {
-					$msg = 'oversight';
-					$class = 'requestoversight';
+			$footer_links .= Html::element( 'span', array(
+				'class' => 'articleFeedbackv5-helpful-votes',
+				'id'    => "articleFeedbackv5-helpful-votes-$id"
+			), wfMessage( 'articlefeedbackv5-form-helpful-votes',
+				$wgLang->formatNum( $record[0]->af_helpful_count ),
+				$wgLang->formatNum( $record[0]->af_unhelpful_count )
+			)->text() );
+			$footer_links .= Html::closeElement( 'div' );
+			if ( $can_flag ) {
+				$aclass = 'articleFeedbackv5-abuse-link';
+				global $wgArticleFeedbackv5AbusiveThreshold;
+				if ( $record[0]->af_abuse_count >= $wgArticleFeedbackv5AbusiveThreshold ) {
+					$aclass .= ' abusive';
 				}
-				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
-					'id'    => "articleFeedbackv5-$class-link-$id",
-					'class' => "articleFeedbackv5-$class-link",
-					'href' => '#',
-				), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
+				// Count masked if user cannot hide comments (as per Fabrice)
+				$msg = $can_hide ? 'articlefeedbackv5-form-abuse' : 'articlefeedbackv5-form-abuse-masked';
+				$footer_links .= Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-abuse-link-$id",
+					'class' => $aclass,
+					'href'  => '#',
+					'rel'   => $record[0]->af_abuse_count
+				), wfMessage( $msg, $wgLang->formatNum( $record[0]->af_abuse_count ) )->text() );
 			}
+			$footer_links .= Html::closeElement( 'div' );
+	
+			/*$footer_links .= Html::element( 'span', array(
+				'class' => 'articleFeedbackv5-helpful-votes'
+			), wfMessage( 'articlefeedbackv5-form-helpful-votes', ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ), $record[0]->af_helpful_count, $record[0]->af_unhelpful_count ) )
+			. ( $can_flag ? Html::rawElement( 'div', array(
+				'class' => 'articleFeedbackv5-abuse-link-wrap'
+			), Html::element( 'a', array(
+				'id'    => "articleFeedbackv5-abuse-link-$id",
+				'class' => 'articleFeedbackv5-abuse-link'
+			), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
+			. Html::closeElement( 'div' );*/
+	
+			// Don't render the toolbox if they can't do anything with it.
+			$tools = null;
+			if ( $can_hide || $can_delete ) {
+				$tools = Html::openElement( 'div', array(
+					'class' => 'articleFeedbackv5-feedback-tools',
+					'id'    => 'articleFeedbackv5-feedback-tools-' . $id
+				) )
+				. Html::element( 'h3', array(
+					'id' => 'articleFeedbackv5-feedback-tools-header-' . $id
+				), wfMessage( 'articlefeedbackv5-form-tools-label' )->text() )
+				. Html::openElement( 'ul', array(
+					'id' => 'articleFeedbackv5-feedback-tools-list-' . $id
+				) );
 
-			// can delete == do oversight
-			if ( $can_delete ) {
-
-				// if we have oversight requested, add "decline oversight" link
-				if ( $record[0]->af_oversight_count > 0 ) {
+				if ( $can_hide ) {
+					if ( $record[0]->af_is_hidden ) {
+						$msg = 'unhide';
+						$class = 'show';
+					} else {
+						$msg = 'hide';
+						$class = 'hide';
+					}
 					$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
-						'id'    => "articleFeedbackv5-declineoversight-link-$id",
-						'class' => "articleFeedbackv5-declineoversight-link",
+						'id'    => "articleFeedbackv5-$class-link-$id",
+						'class' => "articleFeedbackv5-$class-link",
 						'href' => '#',
-						), wfMessage( "articlefeedbackv5-form-decline" )->text() ) );
+					), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 				}
-
-				if ( $record[0]->af_is_deleted > 0 ) {
-					$msg = 'undelete';
-					$class = 'unoversight';
-				} else {
-					$msg = 'delete';
-					$class = 'oversight';
+	
+				// !can delete == request oversight
+				if ( $can_hide && !$can_delete ) {
+					if ( $record[0]->af_oversight_count > 0 ) {
+						$msg = 'unoversight';
+						$class = 'unrequestoversight';
+					} else {
+						$msg = 'oversight';
+						$class = 'requestoversight';
+					}
+					$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+						'id'    => "articleFeedbackv5-$class-link-$id",
+						'class' => "articleFeedbackv5-$class-link",
+						'href' => '#',
+					), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 				}
+	
+				// can delete == do oversight
+				if ( $can_delete ) {
+	
+					// if we have oversight requested, add "decline oversight" link
+					if ( $record[0]->af_oversight_count > 0 ) {
+						$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+							'id'    => "articleFeedbackv5-declineoversight-link-$id",
+							'class' => "articleFeedbackv5-declineoversight-link",
+							'href' => '#',
+							), wfMessage( "articlefeedbackv5-form-decline" )->text() ) );
+					}
+	
+					if ( $record[0]->af_is_deleted > 0 ) {
+						$msg = 'undelete';
+						$class = 'unoversight';
+					} else {
+						$msg = 'delete';
+						$class = 'oversight';
+					}
+					$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+						'id'    => "articleFeedbackv5-$class-link-$id",
+						'class' => "articleFeedbackv5-$class-link",
+						'href' => '#',
+					), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
+				}
+	
+				// view activity link
 				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
-					'id'    => "articleFeedbackv5-$class-link-$id",
-					'class' => "articleFeedbackv5-$class-link",
-					'href' => '#',
-				), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
+						'id'    => "articleFeedbackv5-activity-link-$id",
+						'class' => "articleFeedbackv5-activity-link",
+						'href' => '#',
+					), wfMessage( "articlefeedbackv5-viewactivity" )->text() ) );
+	
+				$tools .= Html::closeElement( 'ul' )
+				. Html::closeElement( 'div' );
 			}
-
-			// view activity link
-			$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
-					'id'    => "articleFeedbackv5-activity-link-$id",
-					'class' => "articleFeedbackv5-activity-link",
-					'href' => '#',
-				), wfMessage( "articlefeedbackv5-viewactivity" )->text() ) );
-
-			$tools .= Html::closeElement( 'ul' )
-			. Html::closeElement( 'div' );
-		}
-
-		$topClass = 'articleFeedbackv5-feedback';
-		if ( $record[0]->af_is_hidden ) {
-			$topClass .= ' articleFeedbackv5-feedback-hidden';
-		}
-		if ( $record[0]->af_is_deleted ) {
-			$topClass .= ' articleFeedbackv5-feedback-deleted';
-		}
-
-		$attributes = array(
-			'class' => $topClass,
-			'rel'   => $id
-		);
-		if ( $record[0]->af_is_hidden ) {
-
-			$attributes['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink( $record[0]->af_hide_user_id, $default_user );
-			$attributes['hide-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_hide_timestamp );
-		}
-		if ( $record[0]->af_is_deleted ) {
-
-			$attributes['oversight-user'] = ApiArticleFeedbackv5Utils::getUserLink( $record[0]->af_oversight_user_id, $default_user );
-			$attributes['oversight-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_oversight_timestamp );
+	
+			$topClass = 'articleFeedbackv5-feedback';
+			if ( $record[0]->af_is_hidden ) {
+				$topClass .= ' articleFeedbackv5-feedback-hidden';
+			}
+			if ( $record[0]->af_is_deleted ) {
+				$topClass .= ' articleFeedbackv5-feedback-deleted';
+			}
+	
+			$attributes = array(
+				'class' => $topClass,
+				'rel'   => $id
+			);
+			if ( $record[0]->af_is_hidden ) {
+	
+				$attributes['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink( $record[0]->af_hide_user_id, $default_user );
+				$attributes['hide-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_hide_timestamp );
+			}
+			if ( $record[0]->af_is_deleted ) {
+	
+				$attributes['oversight-user'] = ApiArticleFeedbackv5Utils::getUserLink( $record[0]->af_oversight_user_id, $default_user );
+				$attributes['oversight-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_oversight_timestamp );
+			}
 		}
 
 		return Html::openElement( 'div', $attributes )

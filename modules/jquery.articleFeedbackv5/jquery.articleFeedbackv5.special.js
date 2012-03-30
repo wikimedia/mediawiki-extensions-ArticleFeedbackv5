@@ -767,11 +767,18 @@
 							}
 						}
 
-						if ( $( this ).hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
+						if ( $( this ).hasClass( 'articleFeedbackv5-feedback-emptymask' ) ) {
+							var $screen = $( this ).find( '.articleFeedbackv5-post-screen' );
+							$screen.height( Math.max($( this ).innerHeight(), 100) );
+							$screen.find( '.articleFeedbackv5-mask-text-wrapper')
+								.css( 'top', $screen.innerHeight() / 2 - 12 );
+
+						} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
 							$.articleFeedbackv5special.markDeleted( $( this ), $( this ).attr('oversight-user'), $( this ).attr('oversight-timestamp'));
 						} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
 							$.articleFeedbackv5special.markHidden( $( this ), $( this ).attr('hide-user'), $( this ).attr('hide-timestamp'));
 						}
+
 
 					} );
 					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );

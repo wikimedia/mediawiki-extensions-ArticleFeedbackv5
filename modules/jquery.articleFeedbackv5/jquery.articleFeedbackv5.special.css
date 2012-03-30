@@ -602,3 +602,6 @@ form.articlefeedbackv5-form-flyover textarea {
 	padding: 5px;
 	background-color: #d2e5f7;
 }
+.articleFeedbackv5-feedback-emptymask {
+	min-height: 100px;
+}
