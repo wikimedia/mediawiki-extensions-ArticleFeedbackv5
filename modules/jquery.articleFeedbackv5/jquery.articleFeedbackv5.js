@@ -452,7 +452,7 @@
 				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
-						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-submit-' +
+						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-submit-' +
 							( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 						$.articleFeedbackv5.submitForm();
 					} );
@@ -624,7 +624,7 @@
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the link
-				var edit_track_id = $.articleFeedbackv5.bucketName() + '-' +
+				var edit_track_id = $.articleFeedbackv5.experiment() + '-' +
 					$.articleFeedbackv5.ctaName() + '-button_click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
@@ -691,7 +691,7 @@
 
 				// Fill in the button link
 				var learn_url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
-				var learn_track_id = $.articleFeedbackv5.bucketName() + '-' +
+				var learn_track_id = $.articleFeedbackv5.experiment() + '-' +
 					$.articleFeedbackv5.ctaName() + '-button_click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
@@ -771,7 +771,7 @@
 				// Fill in the go-to-survey link
 				var survey_url = $.articleFeedbackv5.currentCTA().getSurveyUrl();
 				if ( survey_url ) {
-					var survey_track_id = $.articleFeedbackv5.bucketName() + '-' +
+					var survey_track_id = $.articleFeedbackv5.experiment() + '-' +
 						$.articleFeedbackv5.ctaName() + '-button_click-' +
 						( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 					$block.find( '.articleFeedbackv5-cta-button' )
@@ -1408,7 +1408,7 @@
 		$.articleFeedbackv5.$holder.appear( function () {
 			if ( !$.articleFeedbackv5.isLoaded ) {
 				$.articleFeedbackv5.load( 'auto', 'bottom' );
-				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-impression-bottom' );
+				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-impression-bottom' );
 			}
 		} );
 		// Keep track of links that must be removed after a successful submission
@@ -1418,7 +1418,7 @@
 		$.articleFeedbackv5.addTriggerLinks();
 		// Track init at 1%
 		if ( Math.random() * 100 < 1 ) {
-			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-init' );
+			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-init' );
 		}
 	};
 
@@ -1672,14 +1672,14 @@
 	};
 
 	// }}}
-	// {{{ bucketName
+	// {{{ experiment
 
 	/**
-	 * Utility method: Gets the name of the current bucket
+	 * Utility method: Gets the name of the current experiment
 	 *
-	 * @return string the bucket name
+	 * @return string the experiment (e.g. "option1A")
 	 */
-	$.articleFeedbackv5.bucketName = function () {
+	$.articleFeedbackv5.experiment = function () {
 		return 'option' + $.articleFeedbackv5.bucketId + $.articleFeedbackv5.floatingLinkId;
 	};
 
@@ -1961,6 +1961,7 @@
 			'pageid': $.articleFeedbackv5.pageId,
 			'revid': $.articleFeedbackv5.revisionId,
 			'bucket': $.articleFeedbackv5.bucketId,
+			'experiment': $.articleFeedbackv5.experiment().replace( 'option', '' ),
 			'link': $.articleFeedbackv5.submittedLinkId
 		} );
 
@@ -2118,7 +2119,7 @@
 		$.articleFeedbackv5.setDialogDimensions();
 
 		// Track the event
-		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-' +
+		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-' +
 			$.articleFeedbackv5.ctaName() + '-impression-' + from );
 
 		$.articleFeedbackv5.nowShowing = 'cta';
@@ -2242,7 +2243,7 @@
 					var prefLink = mw.config.get( 'wgScript' ) + '?' +
 						$.param( { title: 'Special:Preferences' } ) +
 						'#mw-prefsection-rendering';
-					var prefTrackId = $.articleFeedbackv5.bucketName() + '-disable_gotoprefs_click';
+					var prefTrackId = $.articleFeedbackv5.experiment() + '-disable_gotoprefs_click';
 					$flyover.find( '.articleFeedbackv5-disable-flyover-button' )
 						.attr( 'href', $.articleFeedbackv5.trackingUrl( prefLink, prefTrackId ) )
 						.button()
@@ -2252,7 +2253,7 @@
 						.attr( 'href', '#hello' )
 						.attr( 'rel', linkId );
 
-					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-disable_flyover-impression' );
+					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-disable_flyover-impression' );
 					return $flyover.html();
 				}
 			} )
@@ -2266,7 +2267,7 @@
 				} else {
 					$host.tipsy( 'show' );
 					$wrap.addClass( 'articleFeedbackv5-tipsy-active' );
-					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-disable_button_click' );
+					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-disable_button_click' );
 				}
 			} );
 	};
@@ -2477,7 +2478,7 @@
 			$.articleFeedbackv5.setLinkId( $link.data( 'linkId' ) );
 
 			// Track the impression
-			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-impression-overlay' );
+			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-impression-overlay' );
 
 			// Hide the panel
 			$.articleFeedbackv5.$holder.hide();
@@ -2495,9 +2496,9 @@
 	$.articleFeedbackv5.closeAsModal = function () {
 		if ( $.articleFeedbackv5.inDialog ) {
 			if ( 'form' == $.articleFeedbackv5.nowShowing ) {
-				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-close-overlay' );
+				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-close-overlay' );
 			} else if ('cta' == $.articleFeedbackv5.nowShowing ) {
-				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.bucketName() + '-' +
+				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-' +
 					$.articleFeedbackv5.ctaName() + '-close-overlay' );
 			}
 			$.articleFeedbackv5.setLinkId( 'X' );
@@ -2606,7 +2607,7 @@
 	 * @param $link Element the trigger link
 	 */
 	$.articleFeedbackv5.clickTriggerLink = function( $link ) {
-		var tracking_id = $.articleFeedbackv5.bucketName() +
+		var tracking_id = $.articleFeedbackv5.experiment() +
 			'-trigger' + $link.data( 'linkId' ) +
 			'-click-overlay';
 		$.articleFeedbackv5.trackClick( tracking_id );
@@ -2635,7 +2636,7 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 		inDebug: { args: 0, ret: true },
 		nowShowing: { args: 0, ret: true },
 		prefix: { args: 1, ret: true },
-		bucketName: { args: 0, ret: true },
+		experiment: { args: 0, ret: true },
 		addToRemovalQueue: { args: 1, ret: false },
 		openAsModal: { args: 1, ret: false },
 		closeAsModal: { args: 0, ret: true },

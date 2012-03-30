@@ -58,6 +58,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$dbw          = wfGetDB( DB_MASTER );
 		$pageId       = $params['pageid'];
 		$bucket       = $params['bucket'];
+		$experiment   = $params['experiment'];
 		$revisionId   = $params['revid'];
 		$error        = null;
 		$warning      = null;
@@ -679,13 +680,14 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	private function saveUserRatings( $dbw, $data, $bucket, $params ) {
 		global $wgUser, $wgArticleFeedbackv5LinkBuckets;
 
-		$ctaId     = $this->getCTAId( $data, $bucket );
-		$revId     = $params['revid'];
-		$bucket    = $params['bucket'];
-		$linkName  = $params['link'];
-		$token     = $this->getAnonToken( $params );
-		$timestamp = $dbw->timestamp();
-		$ip        = null;
+		$ctaId      = $this->getCTAId( $data, $bucket );
+		$revId      = $params['revid'];
+		$bucket     = $params['bucket'];
+		$experiment = $params['experiment'];
+		$linkName   = $params['link'];
+		$token      = $this->getAnonToken( $params );
+		$timestamp  = $dbw->timestamp();
+		$ip         = null;
 
 		if ( !$wgUser ) {
 			$this->dieUsage( 'User info is missing', 'missinguser' );
@@ -731,7 +733,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'af_user_id'         => $wgUser->getId(),
 			'af_user_ip'         => $ip,
 			'af_user_anon_token' => $token,
-			'af_bucket_id'       => $bucket,
+			'af_form_id'         => $bucket,
+			'af_experiment'      => $experiment,
 			'af_link_id'         => $linkId,
 			'af_has_comment'     => $has_comment,
 		) );
@@ -868,6 +871,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_TYPE     => 'string',
 				ApiBase::PARAM_REQUIRED => true,
 			),
+			'experiment' => array(
+				ApiBase::PARAM_TYPE     => 'string',
+			),
 			'email' => array(
 				ApiBase::PARAM_TYPE     => 'string',
 			)
@@ -892,11 +898,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getParamDescription() {
 		$ret = array(
-			'pageid'    => 'Page ID to submit feedback for',
-			'revid'     => 'Revision ID to submit feedback for',
-			'anontoken' => 'Token for anonymous users',
-			'bucket'    => 'Which feedback widget was shown to the user',
-			'link'      => 'Which link the user clicked on to get to the widget',
+			'pageid'     => 'Page ID to submit feedback for',
+			'revid'      => 'Revision ID to submit feedback for',
+			'anontoken'  => 'Token for anonymous users',
+			'bucket'     => 'Which feedback form was shown to the user',
+			'experiment' => 'Which experiment was shown to the user',
+			'link'       => 'Which link the user clicked on to get to the widget',
 		);
 		$fields = ApiArticleFeedbackv5Utils::getFields();
 		foreach ( $fields as $f ) {
