@@ -225,9 +225,11 @@ class ApiArticleFeedbackv5Utils {
 
 		// log type might be afv5 or suppress
 		$logtype = 'articlefeedbackv5';
+		$increment = 'af_activity_count';
 
 		if ( in_array( $type, $suppress ) ) {
 			$logtype = 'suppress';
+			$increment = 'af_suppress_count';
 		}
 
 		// we only have the page id, we need the string page name for the permalink
@@ -271,7 +273,7 @@ class ApiArticleFeedbackv5Utils {
 
 		$dbw->update(
 			'aft_article_feedback',
-			array( 'af_activity_count = af_activity_count + 1' ),
+			array( $increment .' = ' .$increment . ' + 1' ),
 			array(
 				'af_id' => $itemId
 			),
