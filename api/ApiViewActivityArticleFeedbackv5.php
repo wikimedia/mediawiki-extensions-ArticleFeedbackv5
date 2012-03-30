@@ -111,8 +111,13 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			$html .= Html::closeElement( 'div' );
 
 			// <div class="articleFeedbackv5-activity-count">$n actions on this post</div>
+			if ( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
+				$activity_count = $feedback->af_activity_count + $feedback->af_suppress_count;
+			} else {
+				$activity_count = $feedback->af_activity_count;
+			}
 			$html .= Html::element( 'div', array( 'class' => 'articleFeedbackv5-activity-count' ),
-					wfMessage( 'articlefeedbackv5-activity-count' )->numParams( $feedback->af_activity_count )->text() );
+					wfMessage( 'articlefeedbackv5-activity-count' )->numParams( $activity_count )->text() );
 
 			// </div> for class="articleFeedbackv5-activity-pane"
 			$html .= Html::closeElement( 'div' );
@@ -218,7 +223,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 				'af_user_id',
 				'af_user_ip',
 				'af_created',
-				'af_activity_count' ),
+				'af_activity_count',
+				'af_suppress_count' ),
 			array(
 				'af_id'     => $feedbackId,
 			),
