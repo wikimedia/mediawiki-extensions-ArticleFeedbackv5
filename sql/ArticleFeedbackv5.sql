@@ -57,8 +57,10 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   -- keep track of "this has a comment" for filtering purposes (avoids a join)
   af_has_comment      boolean NOT NULL DEFAULT FALSE,
   -- Keep track of number of activities (hide/show/flag/unflag)
+  -- or suppress log items
   -- should be equivalent to counting rows in logging table
   af_activity_count  integer unsigned NOT NULL DEFAULT 0,
+  af_suppress_count  integer unsigned NOT NULL DEFAULT 0,
   -- keep the user id of the last hider and/or oversighter of the feedback
   -- only registered users can do this, which is why no ips
   -- data used on the overlay of hidden/oversighted items
