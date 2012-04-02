@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAI3///dY\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-02T14:13:24Z",
+      "side": 1,
+      "message": "You can use $wgUser-\u003egetPage() here",
+      "revId": "d93f8bbcb3180811896f67ca4aa0e14cf39147fe",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAI3///dU\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-02T14:13:24Z",
+      "side": 1,
+      "message": "Needs to be getPrefixedText(), or it won\u0027t work with pages outside of the main namespace",
+      "revId": "d93f8bbcb3180811896f67ca4aa0e14cf39147fe",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
