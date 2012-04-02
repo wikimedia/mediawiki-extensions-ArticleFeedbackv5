@@ -2008,6 +2008,9 @@
 					}
 					$.articleFeedbackv5.markFormErrors( { _api : msg } );
 					$.articleFeedbackv5.unlockForm();
+					if ( $.articleFeedbackv5.inDialog ) {
+						$.articleFeedbackv5.setDialogDimensions();
+					}
 				}
 			},
 			'error': function () {
