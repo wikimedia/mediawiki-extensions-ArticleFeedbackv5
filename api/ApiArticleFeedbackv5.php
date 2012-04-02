@@ -41,7 +41,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			return;
 		}
 
-
 		// Anon token check
 		$token = $this->getAnonToken( $params );
 
@@ -266,6 +265,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		// Check AbuseFilter, if installed
 		if ( class_exists( 'AbuseFilter' ) ) {
 			global $wgUser;
+
+			// Set up variables
 			$vars = new AbuseFilterVariableHolder;
 			$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
 			$vars->addHolder( AbuseFilter::generateTitleVars( $title, 'FEEDBACK' ) );
@@ -280,8 +281,45 @@ class ApiArticleFeedbackv5 extends ApiBase {
 					'text-var' => 'new_wikitext',
 					'article' => null,
 				) );
-			$filter_result = AbuseFilter::filterAction( $vars, $title );
-			return $filter_result != '' && $filter_result !== true;
+
+			// Check the filters (mimics AbuseFilter::filterAction)
+			$vars->setVar( 'context', 'filter' );
+			$vars->setVar( 'timestamp', time() );
+			$results = AbuseFilter::checkAllFilters( $vars );
+			if ( count( array_filter( $results ) ) == 0 ) {
+				return false;
+			}
+
+			// Abuse filter consequences
+			$matched = array_keys( array_filter( $results ) );
+			list( $actions_taken, $error_msg ) = AbuseFilter::executeFilterActions(
+				$matched, $title, $vars );
+
+			// Send to the abuse filter log
+			$dbr = wfGetDB( DB_SLAVE );
+			$log_template = array(
+				'afl_user' => $wgUser->getId(),
+				'afl_user_text' => $wgUser->getName(),
+				'afl_timestamp' => $dbr->timestamp( wfTimestampNow() ),
+				'afl_namespace' => $title->getNamespace(),
+				'afl_title' => $title->getDBkey(),
+				'afl_ip' => wfGetIP()
+			);
+			$action = $vars->getVar( 'ACTION' )->toString();
+			AbuseFilter::addLogEntries( $actions_taken, $log_template, $action, $vars );
+
+			// Local consequences (right now: disallow only)
+			$disallow = false;
+			foreach ( $actions_taken as $id => $actions ) {
+				foreach ( $actions as $action ) {
+					if ( 'disallow' == $action || 'warn' == $action ) {
+						$disallow = true;
+					}
+				}
+			}
+			if ( $disallow ) {
+				return true;
+			}
 		}
 
 		return false;
