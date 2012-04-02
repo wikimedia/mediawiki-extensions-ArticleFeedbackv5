@@ -16,6 +16,24 @@
       "revId": "e992f3bc33f170feba14b7991c03c93722aed899",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAI3///bo\u003d",
+        "filename": "api/ApiFlagFeedbackArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-02T14:36:29Z",
+      "side": 1,
+      "message": "Looks like this was fixed in https://gerrit.wikimedia.org/r/4000 , approving",
+      "parentUuid": "AAAAI3///eg\u003d",
+      "revId": "e992f3bc33f170feba14b7991c03c93722aed899",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
