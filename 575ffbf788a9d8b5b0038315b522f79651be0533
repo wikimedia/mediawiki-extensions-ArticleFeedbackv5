@@ -16,6 +16,24 @@
       "revId": "575ffbf788a9d8b5b0038315b522f79651be0533",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAI3///Uo\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-02T16:46:49Z",
+      "side": 1,
+      "message": "Agreed.  There\u0027s mention of Wikipedia throughout this file, alas, for just that reason.",
+      "parentUuid": "AAAAI3///X4\u003d",
+      "revId": "575ffbf788a9d8b5b0038315b522f79651be0533",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
