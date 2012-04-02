@@ -19,6 +19,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	// Cache this, so we don't have to look it up every time.
 	private $revision_limit = null;
 
+	// Allow auto-flagging of feedback
+	private $autoFlag = array();
+
+	// Warn for abuse?
+	private $warnForAbuse = false;
+
 	/**
 	 * Constructor
 	 */
@@ -54,6 +60,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$bucket       = $params['bucket'];
 		$revisionId   = $params['revid'];
 		$error        = null;
+		$warning      = null;
 		$userAnswers  = array();
 		$fields       = ApiArticleFeedbackv5Utils::getFields();
 		$emailData    = array(
@@ -80,7 +87,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				}
 				if ( $wgArticleFeedbackv5AbuseFiltering && 'text' == $type
 					&& $this->findAbuse( $value, $pageId ) ) {
-					$error = 'articlefeedbackv5-error-abuse';
+					if ( $this->warnForAbuse ) {
+						$warning = $this->warnForAbuse;
+					} else {
+						$error = 'articlefeedbackv5-error-abuse';
+					}
 					break;
 				}
 				$data = array( 'aa_field_id' => $field['afi_id'] );
@@ -93,6 +104,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 		if ( $error ) {
 			$this->getResult()->addValue( null, 'error', $error );
+			return;
+		}
+		if ( $warning ) {
+			$this->getResult()->addValue( null, 'warning', $warning );
 			return;
 		}
 
@@ -136,6 +151,26 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$squidUpdate->doUpdate();
 
 		wfRunHooks( 'ArticleFeedbackChangeRating', array( $params ) );
+
+		// Are we set to auto-flag?
+		$flagger = new ArticleFeedbackv5Flagging( 0, $pageId, $feedbackId );
+		foreach ( $this->autoFlag as $flag => $rule_desc ) {
+			$msg = 'articlefeedbackv5-abusefilter-note-aftv5';
+			if ( $flag == 'abuse' ) {
+				$msg .= 'flagabuse';
+			} elseif ( $flag == 'hide' ) {
+				$msg .= 'hide';
+			} elseif ( $flag == 'oversight' ) {
+				$msg .= 'requestoversight';
+			} else {
+				continue;
+			}
+			$notes = wfMsgExt( $msg, 'parseinline', array( $rule_desc ) );
+			$res = $flagger->run( $flag, $notes );
+			if ( 'Error' == $res['result'] ) {
+				// TODO: Log somewhere?
+			}
+		}
 
 		$this->getResult()->addValue(
 			null,
@@ -246,9 +281,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			}
 		}
 
-		// Create a fake title so we can pretend this is an article edit
-		$title = Title::newFromText( '__article_feedback_5__' );
-
 		// Check SpamBlacklist, if installed
 		if ( function_exists( 'wfSpamBlacklistObject' ) ) {
 			$spam = wfSpamBlacklistObject();
@@ -256,6 +288,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$spam = BaseBlacklist::getInstance( 'spam' );
 		}
 		if ( $spam ) {
+			$title = Title::newFromText( 'ArticleFeedbackv5_' . $pageId );
 			$ret = $spam->filter( $title, $value, '' );
 			if ( $ret !== false ) {
 				return true;
@@ -267,20 +300,21 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			global $wgUser;
 
 			// Set up variables
+			$title = Title::newFromID( $pageId );
 			$vars = new AbuseFilterVariableHolder;
 			$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
-			$vars->addHolder( AbuseFilter::generateTitleVars( $title, 'FEEDBACK' ) );
+			$vars->addHolder( AbuseFilter::generateTitleVars( $title , 'ARTICLE' ) );
 			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
 			$vars->setVar( 'ACTION', 'feedback' );
 			$vars->setVar( 'new_wikitext', $value );
 			$vars->setLazyLoadVar( 'new_size', 'length', array( 'length-var' => 'new_wikitext' ) );
-			$vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
-				array(
-					'namespace' => $title->getNamespace(),
-					'title' => $title->getText(),
-					'text-var' => 'new_wikitext',
-					'article' => null,
-				) );
+
+			// Add custom action handlers
+			global $wgAbuseFilterCustomActionsHandlers;
+			$flagCallback = array( $this, 'callbackAbuseActionFlag' );
+			$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $flagCallback;
+			$wgAbuseFilterCustomActionsHandlers['aftv5hide'] = $flagCallback;
+			$wgAbuseFilterCustomActionsHandlers['aftv5requestoversight'] = $flagCallback;
 
 			// Check the filters (mimics AbuseFilter::filterAction)
 			$vars->setVar( 'context', 'filter' );
@@ -310,12 +344,20 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 			// Local consequences (right now: disallow only)
 			$disallow = false;
+			$warn = false;
 			foreach ( $actions_taken as $id => $actions ) {
 				foreach ( $actions as $action ) {
-					if ( 'disallow' == $action || 'warn' == $action ) {
+					if ( 'disallow' == $action) {
 						$disallow = true;
 					}
+					if ( 'warn' == $action ) {
+						$warn = true;
+					}
 				}
+			}
+			if ( $warn ) {
+				$this->warnForAbuse = $error_msg;
+				return true;
 			}
 			if ( $disallow ) {
 				return true;
@@ -323,6 +365,33 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 
 		return false;
+	}
+
+	/**
+	 * AbuseFilter callback: flag feedback (abuse, oversight, hide, etc.)
+	 *
+	 * @param string                    $action     the action name (AF)
+	 * @param array                     $parameters the action parameters (AF)
+	 * @param Title                     $title      the title passed in
+	 * @param AbuseFilterVariableHolder $vars       the variables passed in
+	 * @param string                    $rule_desc  the rule description
+	 */
+	public function callbackAbuseActionFlag( $action, $parameters,
+		$title, $vars, $rule_desc ) {
+		switch ( $action ) {
+			case 'aftv5flagabuse':
+				$this->autoFlag['abuse'] = $rule_desc;
+				break;
+			case 'aftv5hide':
+				$this->autoFlag['hide'] = $rule_desc;
+				break;
+			case 'aftv5requestoversight':
+				$this->autoFlag['oversight'] = $rule_desc;
+				break;
+			default:
+				// Fall through silently
+				break;
+		}
 	}
 
 	public function updateFilterCounts( $dbw, $pageId, $answers ) {
@@ -739,7 +808,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			__METHOD__
 		);
 	}
-
 
 	/**
 	 * Picks a CTA to send the user to

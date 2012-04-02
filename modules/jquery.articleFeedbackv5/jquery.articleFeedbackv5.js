@@ -1999,6 +1999,10 @@
 						} else {
 							msg = mw.msg( data.error );
 						}
+					} else if ( 'warning' in data ) {
+						// NB: Warnings come from the AbuseFilter and are
+						// already translated.
+						msg = data.warning;
 					} else {
 						msg = { info: mw.msg( 'articlefeedbackv5-error-unknown' ) };
 					}

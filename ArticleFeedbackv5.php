@@ -273,6 +273,7 @@ $wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5'] = $dir . 'api/ApiViewFeed
 $wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5'] = $dir . 'api/ApiFlagFeedbackArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewActivityArticleFeedbackv5'] = $dir . 'api/ApiViewActivityArticleFeedbackv5.php';
 $wgAutoloadClasses['ArticleFeedbackv5Hooks']           = $dir . 'ArticleFeedbackv5.hooks.php';
+$wgAutoloadClasses['ArticleFeedbackv5Flagging']        = $dir . 'ArticleFeedbackv5.flagging.php';
 $wgAutoloadClasses['ArticleFeedbackv5MailerJob']       = $dir . 'ArticleFeedbackv5MailerJob.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5']         = $dir . 'SpecialArticleFeedbackv5.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5']         = $dir . 'ArticleFeedbackv5.i18n.php';
@@ -324,5 +325,6 @@ $wgLogActions['articlefeedbackv5/unflag']  = 'articlefeedbackv5-log-unflag';
 
 // Add custom action handlers for AbuseFilter
 $wgAbuseFilterAvailableActions[] = 'aftv5flagabuse';
-$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = 'ArticleFeedbackv5Hooks::callbackAbuseActionFlag';
+$wgAbuseFilterAvailableActions[] = 'aftv5hide';
+$wgAbuseFilterAvailableActions[] = 'aftv5requestoversight';
 

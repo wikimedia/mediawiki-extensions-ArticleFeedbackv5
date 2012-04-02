@@ -497,19 +497,5 @@ class ArticleFeedbackv5Hooks {
 		$api->execute();
 	}
 
-	/**
-	 * AbuseFilter callback: flag feedback (abuse, oversight, hide, etc.)
-	 *
-	 * @param string                    $action     the action name (AF)
-	 * @param array                     $parameters the action parameters (AF)
-	 * @param Title                     $title      the title passed in
-	 * @param AbuseFilterVariableHolder $vars       the variables passed in
-	 * @param string                    $rule_desc  the rule description
-	 */
-	public static function callbackAbuseActionFlag( $action, $parameters,
-		$title, $vars, $rule_desc) {
-error_log("Consequence: flagging!  Action name is $action");
-	}
-
 }
 
