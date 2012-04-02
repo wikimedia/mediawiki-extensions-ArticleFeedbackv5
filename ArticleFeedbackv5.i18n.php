@@ -427,6 +427,8 @@ publicized to the community for this testing period.',
 	'articlefeedbackv5-disable-flyover-help-location' => 'My preferences > Appearance',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Go to my preferences',
 
+	/* Custom AbuseFilter actions */
+	'abusefilter-edit-action-aftv5flagabuse' => '(Article Feedback) Auto-flag as abuse',
 );
 
 /** Message documentation (Message documentation)
@@ -709,6 +711,7 @@ This URL can be changed to point to a translated version of the page if it exist
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'The emphasis text for {{msg-mw|articlefeedbackv5-disable-flyover-help}} (the name of the tool)',
 	'articlefeedbackv5-disable-flyover-help-location' => 'A short indication of where to go to change your Article Feedback preferences, inside {{msg-mw|articlefeedbackv5-disable-flyover-help}}',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'The text of the big glossy button used to send the user to their preferences in the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
+	'abusefilter-edit-action-aftv5flagabuse' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in the feedback being auto-flagged as abuse',
 );
 
 /** Afrikaans (Afrikaans)
