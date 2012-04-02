@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAI3///c4\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 34
+      },
+      "writtenOn": "2012-04-02T14:19:54Z",
+      "side": 1,
+      "message": "May want to add a break here to abort both loops, setting it to true multiple times isn\u0027t is pointless.",
+      "revId": "de942fe420219c8c6361f520b3783b7c14b75056",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
