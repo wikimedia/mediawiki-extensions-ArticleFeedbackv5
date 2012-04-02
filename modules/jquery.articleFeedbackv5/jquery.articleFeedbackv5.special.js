@@ -16,6 +16,8 @@
  *   set foldlevel=0
  *   set foldcolumn=0
  *
+ * TODO: jam sort/filter options into URL anchors, and use them as defaults if present.
+ *
  * @package    ArticleFeedback
  * @subpackage Resources
  * @author     Greg Chiasson <gchiasson@omniti.com>
@@ -25,8 +27,6 @@
 ( function ( $ ) {
 
 // {{{ articleFeedbackv5special definition
-
-	// TODO: jam sort/filter options into URL anchors, and use them as defaults if present.
 
 	$.articleFeedbackv5special = {};
 
@@ -71,14 +71,14 @@
 	 * @var string
 	 */
 	$.articleFeedbackv5special.activityCookieName = 'activity-';
-	
+
 	/**
 	 * Currently displayed panel host element id attribute value
 	 *
 	 * @var string
 	 */
 	$.articleFeedbackv5special.currentPanelHostId = undefined;
-	
+
 	/**
 	 * Action note flyover panel HTML template
 	 *
@@ -97,7 +97,7 @@
 				<a class="articlefeedbackv5-flyover-help" id="articlefeedbackv5-noteflyover-help" href="#"></a>\
 			</div>\
 		</form>';
-	
+
 	/**
 	 * Mask HMTL template
 	 */
@@ -108,7 +108,7 @@
 				<span class="articleFeedbackv5-mask-postid"></span>\
 			</div>\
 		</div>';
-	
+
 	// }}}
 	// {{{ Init methods
 
@@ -152,12 +152,12 @@
 			title: 'title',			// attribute/callback containing tooltip text
 			trigger: 'manual'		// how tooltip is triggered - hover | focus | manual
 		};
-		
+
 		// i18n, create action-specific tipsy panels from template
 		var container = $( '<div></div>' );
 		container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
-		for( var action in $.articleFeedbackv5special.actions ) {
-			if( $.articleFeedbackv5special.actions[action].hasTipsy && (undefined == $.articleFeedbackv5special.actions[action].tipsyHtml) ) {
+		for ( var action in $.articleFeedbackv5special.actions ) {
+			if ( $.articleFeedbackv5special.actions[action].hasTipsy && (undefined == $.articleFeedbackv5special.actions[action].tipsyHtml) ) {
 				container.find( '#articlefeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
 				container.find( '#articlefeedbackv5-noteflyover-label' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
 				container.find( '#articlefeedbackv5-noteflyover-submit' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-submit' ) );
@@ -168,7 +168,7 @@
 				$.articleFeedbackv5special.actions[action].tipsyHtml = container.html();
 			}
 		}
-		
+
 		// Initial load
 		$.articleFeedbackv5special.loadFeedback( true );
 	};
@@ -198,7 +198,7 @@
 			$.articleFeedbackv5special.listControls.continueId = null;
 
 			// unless we're flipping the direction on the current sort.
-			if( id == oldId && $.articleFeedbackv5special.listControls.sortDirection == 'desc' ) {
+			if ( id == oldId && $.articleFeedbackv5special.listControls.sortDirection == 'desc' ) {
 				$.articleFeedbackv5special.listControls.sortDirection = 'asc';
 			}  else {
 				$.articleFeedbackv5special.listControls.sortDirection = 'desc';
@@ -231,10 +231,10 @@
 		} );
 
 		// Bind actions
-		for( var action in $.articleFeedbackv5special.actions ) {
+		for ( var action in $.articleFeedbackv5special.actions ) {
 			$( '.articleFeedbackv5-' + action + '-link' ).live( 'click', $.articleFeedbackv5special.actions[action].click );
 		}
-		
+
 		// Bind submit actions on flyover panels (flag actions)
 		$( '#articlefeedbackv5-noteflyover-submit' ).live( 'click', function( e ) {
 			e.preventDefault();
@@ -243,24 +243,24 @@
 				$( e.target ).attr( 'action' ),
 				$( '#articlefeedbackv5-noteflyover-note' ).attr( 'value' ),
 				{ } );
-			
+
 			// hide tipsy
 			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
 		} );
-		
+
 		// bind flyover panel close button
 		$( '#articlefeedbackv5-noteflyover-close' ).live( 'click', function( e ) {
 			e.preventDefault();
 			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
 		} );
-		
+
 	}
 	// }}}
 	// {{{ bindPanels
 	/**
-	 * Bind panels to controls - that cannot be 'live' events due to jQuery.typsy
+	 * Bind panels to controls - that cannot be 'live' events due to jQuery.tipsy
 	 * limitations. This function should be invoked after feedback posts are loaded,
 	 * without parameters. The function should be invoked with the id parameter set
 	 * after an action is executed and its link is replaced with reverse action.
@@ -268,10 +268,10 @@
 	 * @param id post id to bind panels for. If none is supplied, bind entire list.
 	 */
 	$.articleFeedbackv5special.bindPanels = function( id ) {
-		// single post or entire list?		
+		// single post or entire list?
 		var $selector = !id ? $( '#articleFeedbackv5-show-feedback' ) : $( '.articleFeedbackv5-feedback[rel="' + id + '"]' );
-		
-		for( var action in $.articleFeedbackv5special.actions ) {
+
+		for ( var action in $.articleFeedbackv5special.actions ) {
 			$selector.find( '.articleFeedbackv5-' + action + '-link' )
 				.attr( 'action', action )
 				.tipsy( {
@@ -282,13 +282,14 @@
 		}
 	}
 	// }}}
-	
+
 	// }}}
 	// {{{ Utility methods
-	
+
 	// {{{ toggleTipsy
+
 	/**
-	 * Toggles tipsy display for an action link
+	 * Utility method: Toggles tipsy display for an action link
 	 *
 	 * @param e event
 	 * @returns true if showing tipsy, false if hiding
@@ -297,7 +298,7 @@
 		e.preventDefault();
 		var $l = $( e.target );
 		// are we hiding the current tipsy?
-		if( $l.attr( 'id' ) == $.articleFeedbackv5special.currentPanelHostId ) {
+		if ( $l.attr( 'id' ) == $.articleFeedbackv5special.currentPanelHostId ) {
 			$l.tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
 			return false;
@@ -311,12 +312,17 @@
 			return true;
 		}
 	}
-	// }}}
 
+	// }}}
 	// {{{ toggleComment
-	$.articleFeedbackv5special.toggleComment = function( id ) { 
-		if( $( '#articleFeedbackv5-comment-toggle-' + id ).text() 
-		 == mw.msg( 'articlefeedbackv5-comment-more' ) ) {
+
+	/**
+	 * Utility method: Toggles a comment between short and full displays
+	 *
+	 * @param id string the comment id
+	 */
+	$.articleFeedbackv5special.toggleComment = function( id ) {
+		if ( $( '#articleFeedbackv5-comment-toggle-' + id ).text() == mw.msg( 'articlefeedbackv5-comment-more' ) ) {
 			$( '#articleFeedbackv5-comment-short-' + id ).hide();
 			$( '#articleFeedbackv5-comment-full-' + id ).show();
 			$( '#articleFeedbackv5-comment-toggle-' + id ).text(
@@ -334,7 +340,11 @@
 	// }}}
 	// {{{ drawSortArrow
 
-	$.articleFeedbackv5special.drawSortArrow = function() { 
+	/**
+	 * Utility method: Resets the sort arrows according to the currently selected
+	 * sort and direction
+	 */
+	$.articleFeedbackv5special.drawSortArrow = function() {
 		var	id  = $.articleFeedbackv5special.listControls.sort,
 			dir = $.articleFeedbackv5special.listControls.sortDirection;
 
@@ -351,7 +361,9 @@
 	// }}}
 	// {{{ stripID
 
-	// Utility method for stripping long IDs down to the specific bits we care about.
+	/**
+	 * Utility method: Strips long IDs down to the specific bits we care about
+	 */
 	$.articleFeedbackv5special.stripID = function( object, toRemove ) {
 		return $( object ).attr( 'id' ).replace( toRemove, '' );
 	};
@@ -464,12 +476,15 @@
 
 	// }}}
 	// {{{ markHidden
+
 	/**
 	 * Utility method: Marks a feedback row hidden
 	 *
-	 * @param $row element the feedback row
+	 * @param $row           element the feedback row
+	 * @param hide_user      string  the user's name, linked to their user page
+	 * @param hide_timestamp string  the timestamp
 	 */
-	$.articleFeedbackv5special.markHidden = function ( $row, $hide_user, $hide_timestamp ) {
+	$.articleFeedbackv5special.markHidden = function ( $row, hide_user, hide_timestamp ) {
 		if ( $row.data( 'deleted' ) ) {
 			$.articleFeedbackv5special.unmarkDeleted( $row );
 		}
@@ -480,13 +495,15 @@
 			.data( 'hidden', true );
 		$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
 		$( '<span class="articleFeedbackv5-feedback-hidden-marker"></span>' )
-			// this is on purpose html not text- $hide_user is a  link
-			.html( mw.msg( 'articlefeedbackv5-hidden', $hide_user, $hide_timestamp) )
+			// this is on purpose html not text- hide_user is a  link
+			.html( mw.msg( 'articlefeedbackv5-hidden', hide_user, hide_timestamp) )
 			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
 		$.articleFeedbackv5special.maskPost( $row, 'hidden');
 	};
+
 	// }}}
 	// {{{ unmarkHidden
+
 	/**
 	 * Utility method: Unmarks as hidden a feedback row
 	 *
@@ -498,14 +515,23 @@
 		$row.find( '.articleFeedbackv5-feedback-hidden-marker' ).remove();
 		$row.find( '.articleFeedbackv5-comment-wrap' ).removeClass( 'articleFeedbackv5-h3-push');
 	};
+
 	// }}}
 	// {{{ maskPost
-	$.articleFeedbackv5special.maskPost = function( $row, $type ) {
+
+	/**
+	 * Utility method: Masks a comment that's been marked
+	 * hidden/oversighted/etc.
+	 *
+	 * @param $row  element the feedback row
+	 * @param type  string  the mask type
+	 */
+	$.articleFeedbackv5special.maskPost = function( $row, type ) {
 		var $screen = $row.find( '.articleFeedbackv5-post-screen' );
 		if( 0 == $screen.length ) {
 			$screen = $( $.articleFeedbackv5special.maskHtmlTemplate );
 			$screen.find( '.articleFeedbackv5-mask-text' )
-				.text( mw.msg( 'articlefeedbackv5-mask-text-' + $type ) );
+				.text( mw.msg( 'articlefeedbackv5-mask-text-' + type ) );
 			$screen.find( '.articleFeedbackv5-mask-postid' )
 				.text( mw.msg( 'articlefeedbackv5-mask-postnumber', $row.attr( 'rel' ) ) );
 			$row.prepend( $screen );
@@ -518,14 +544,18 @@
 		$screen.find( '.articleFeedbackv5-mask-text-wrapper')
 			.css( 'top', $screen.innerHeight() / 2 - 12 );
 	}
+
 	// }}}
 	// {{{ markDeleted
+
 	/**
 	 * Utility method: Marks a feedback row deleted
 	 *
-	 * @param $row element the feedback row
+	 * @param $row                element the feedback row
+	 * @param oversight_user      string  the user's name, linked to their user page
+	 * @param oversight_timestamp string  the timestamp
 	 */
-	$.articleFeedbackv5special.markDeleted = function ( $row , $oversight_user, $oversight_timestamp) {
+	$.articleFeedbackv5special.markDeleted = function ( $row, oversight_user, oversight_timestamp ) {
 		if ( $row.data( 'deleted' ) ) {
 			$.articleFeedbackv5special.unmarkDeleted( $row );
 		}
@@ -535,8 +565,8 @@
 		$row.addClass( 'articleFeedbackv5-feedback-deleted' )
 			.data( 'deleted', true );
 		var $marker = $( '<span class="articleFeedbackv5-feedback-deleted-marker"></span>' )
-			// this is on purpose html not text- $oversight_user is a  link
-			.html( mw.msg( 'articlefeedbackv5-deleted', $oversight_user, $oversight_timestamp ) )
+			// this is on purpose html not text- oversight_user is a  link
+			.html( mw.msg( 'articlefeedbackv5-deleted', oversight_user, oversight_timestamp ) )
 			.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
 		$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
 		$.articleFeedbackv5special.maskPost( $row, 'oversight' );
@@ -544,6 +574,7 @@
 
 	// }}}
 	// {{{ unmarkDeleted
+
 	/**
 	 * Utility method: Unmarks as deleted a feedback row
 	 *
@@ -555,9 +586,17 @@
 		$row.find( '.articleFeedbackv5-feedback-deleted-marker' ).remove();
 		$row.find( '.articleFeedbackv5-comment-wrap' ).removeClass( 'articleFeedbackv5-h3-push');
 	};
+
 	// }}}
-	
 	// {{{ setActivityFlag
+
+	/**
+	 * Utility method: Sets an activity flag
+	 *
+	 * @param id    string the feedback id
+	 * @param flag  string the flag name
+	 * @param value string the value
+	 */
 	$.articleFeedbackv5special.setActivityFlag = function( id, flag, value ) {
 		// no activity for this post yet, create default structure
 		if ( !( id in $.articleFeedbackv5special.activity ) ) {
@@ -565,9 +604,10 @@
 		}
 		$.articleFeedbackv5special.activity[id][flag] = value;
 		$.articleFeedbackv5special.storeActivity();
-	}
+	};
+
 	// }}}
-	
+
 	// }}}
 	// {{{ Process methods
 
@@ -584,22 +624,22 @@
 	$.articleFeedbackv5special.flagFeedback = function ( id, action, note, options ) {
 		// default parameters
 		note = typeof note !== undefined ? note : '';
-		
+
 		if( $.articleFeedbackv5special.listControls.disabled ) {
 			return false;
 		}
-		
-		// This was causing problems with eg 'clicking helpful when the cookie 
-		// already says unhelpful', which is a case where two ajax requests 
+
+		// This was causing problems with eg 'clicking helpful when the cookie
+		// already says unhelpful', which is a case where two ajax requests
 		// is perfectly legitimate.
 		// Check another global variable to not disable ajax in that case.
 		if( !$.articleFeedbackv5special.listControls.allowMultiple ) {
-			// Put a lock on ajax requests to prevent another one from going 
+			// Put a lock on ajax requests to prevent another one from going
 			// through while this is still running. Prevents manic link-clicking
 			// messing up the counts, and generally seems like a good idea.
 			$.articleFeedbackv5special.listControls.disabled = true;
 		}
-		
+
 		// Merge request data and options objects (flat)
 		var requestData = {
 			'pageid'    : $.articleFeedbackv5special.page,
@@ -626,10 +666,10 @@
 							if( undefined != $.articleFeedbackv5special.actions[action].onSuccess ) {
 								$.articleFeedbackv5special.actions[action].onSuccess( id, data );
 							}
-							
+
 							// Re-enable ajax flagging.
 							$.articleFeedbackv5special.listControls.disabled = false;
-							
+
 							// re-bind panels (tipsies)
 							$.articleFeedbackv5special.bindPanels( id );
 							return true;
@@ -652,6 +692,7 @@
 
 	// }}}
 	// {{{ loadActivityLog
+
 	/**
 	 * Load the activity log for a feedback post item
 	 *
@@ -695,10 +736,10 @@
 				$( '#articlefeedbackv5-activity-log' ).text( mw.msg( 'articleFeedbackv5-view-activity-error' ) );
 			}
 		} );
-		
+
 		return false;
-	}
-	
+	};
+
 	// }}}
 	// {{{ loadFeedback
 
@@ -763,7 +804,7 @@
 								}
 								$l.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
 									.removeClass( 'articleFeedbackv5-abuse-link' )
-									.addClass( 'articleFeedbackv5-unabuse-link' ); 
+									.addClass( 'articleFeedbackv5-unabuse-link' );
 							}
 						}
 
@@ -793,7 +834,7 @@
 		} );
 
 		return false;
-	}
+	};
 
 	// }}}
 	// {{{ loadActivity
@@ -806,10 +847,11 @@
 		if ( flatActivity ) {
 			$.articleFeedbackv5special.activity = $.articleFeedbackv5special.decodeActivity( flatActivity );
 		}
-	}
+	};
 
 	// }}}
 	// {{{ storeActivity
+
 	/**
 	 * Stores the user activity to the cookie
 	 */
@@ -820,23 +862,26 @@
 			flatActivity,
 			{ 'expires': 365, 'path': '/' }
 		);
-	}
+	};
+
 	// }}}
 	// {{{ canBeFlagged
+
 	/**
 	 * Returns true if the post can be flagged
 	 */
 	$.articleFeedbackv5special.canBeFlagged = function( $post ) {
 		return !$post.data( 'hidden' ) && !$post.data( 'deleted' );
-	}
+	};
+
 	// }}}
 
 	// }}}
-	
 	// {{{ Actions
+
 	/**
 	 * Actions - available actions on the page.
-	 * 
+	 *
 	 * Each action is an object with the following properties:
 	 * 		hasTipsy - true if the action needs a flyover panel
 	 * 		tipsyHtml - html for the corresponding flyover panel
@@ -848,7 +893,7 @@
 	 * 			data - any data returned by the AJAX call
 	 */
 	$.articleFeedbackv5special.actions = {
-		
+
 		// Vote helpful
 		'helpful': {
 			'hasTipsy': false,
@@ -881,7 +926,7 @@
 				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', true );
 			}
 		},
-		
+
 		// Un-vote helpful
 		'reversehelpful': {
 			'hasTipsy': false,
@@ -905,7 +950,7 @@
 				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', false );
 			}
 		},
-		
+
 		// Vote unhelpful
 		'unhelpful': {
 			'hasTipsy': false,
@@ -938,7 +983,7 @@
 				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', true );
 			}
 		},
-		
+
 		// Un-vote unhelpful
 		'reverseunhelpful': {
 			'hasTipsy': false,
@@ -1001,7 +1046,7 @@
 				$.articleFeedbackv5special.setActivityFlag( id, 'abuse', true );
 			}
 		},
-		
+
 		// Unflag post as abusive
 		'unabuse': {
 			'hasTipsy': false,
@@ -1040,7 +1085,7 @@
 				$.articleFeedbackv5special.setActivityFlag( id, 'abuse', false );
 			}
 		},
-		
+
 		// Hide post action
 		'hide': {
 			'hasTipsy': true,
@@ -1062,7 +1107,7 @@
 				$.articleFeedbackv5special.setActivityFlag( id, 'hide', true );
 			}
 		},
-		
+
 		// Show post action
 		'show': {
 			'hasTipsy': true,
@@ -1081,7 +1126,7 @@
 				$.articleFeedbackv5special.setActivityFlag( id, 'hide', false );
 			}
 		},
-		
+
 		// Request oversight action
 		'requestoversight': {
 			'hasTipsy': true,
@@ -1112,7 +1157,7 @@
 				}
 			}
 		},
-		
+
 		// Cancel oversight request action
 		'unrequestoversight': {
 			'hasTipsy': true,
@@ -1129,7 +1174,7 @@
 					.addClass( 'articleFeedbackv5-requestoversight-link');
 			}
 		},
-		
+
 		// Oversight post action
 		'oversight': {
 			'hasTipsy': true,
@@ -1162,7 +1207,7 @@
 				$.articleFeedbackv5special.setActivityFlag( id, 'delete', true );
 			}
 		},
-		
+
 		// Un-oversight action
 		'unoversight': {
 			'hasTipsy': true,
@@ -1184,7 +1229,7 @@
 				$.articleFeedbackv5special.setActivityFlag( id, 'delete', false );
 			}
 		},
-		
+
 		// Decline oversight action
 		'declineoversight': {
 			'hasTipsy': true,
@@ -1196,7 +1241,7 @@
 				$( '#articleFeedbackv5-declineoversight-link-' + id ).remove();
 			}
 		},
-		
+
 		// View activity log action
 		'activity': {
 			'hasTipsy': true,
@@ -1215,8 +1260,9 @@
 				}
 			}
 		}
-		
+
 	};
+
 	// }}}
 
 // }}}
