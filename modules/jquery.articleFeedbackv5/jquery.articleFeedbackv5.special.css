@@ -10,11 +10,11 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	clear: both;
 }
 .articlefeedbackv5-beta-notice {
-    text-transform: uppercase;
-    color: #800;
-    font-size: 1.4em;
-    font-weight: normal;
-    display: block;
+	text-transform: uppercase;
+	color: #800;
+	font-size: 1.4em;
+	font-weight: normal;
+	display: block;
 	position: relative;
 	top: 1.3em;
 	left: 3em;
@@ -46,7 +46,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	font-size: 1.4em;
 	margin: 15px 0 5px 0;
 	float: left;
-}  
+}
 #articleFeedbackv5-percent-found-wrap .stat-marker {
 	font-weight: bold;
 	line-height: 32px;
@@ -259,6 +259,55 @@ a#articleFeedbackv5-show-more {
 .articleFeedbackv5-hide-link, .articleFeedbackv5-delete-link {
 	cursor: pointer;
 }
+
+.articleFeedbackv5-feedback-tools li a {
+	display: block;
+	padding-left: 30px;
+	height: 25px;
+	background-repeat: no-repeat;
+	background-position: left bottom;
+}
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-hide-link {
+	/* @embed */
+	background-image: url(images/toolbox_hide.png);
+}
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-hide-link:hover {
+	/* @embed */
+	background-image: url(images/toolbox_hide_hover.png);
+}
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-feature-link {
+	/* @embed */
+	background-image: url(images/toolbox_feature.png);
+}
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-feature-link:hover {
+	/* @embed */
+	background-image: url(images/toolbox_feature_hover.png);
+}
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-oversight-link {
+	/* @embed */
+	background-image: url(images/toolbox_oversight.png);
+}
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-oversight-link:hover {
+	/* @embed */
+	background-image: url(images/toolbox_oversight_hover.png);
+}
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-resolved-link {
+	/* @embed */
+	background-image: url(images/toolbox_resolved.png);
+}
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-resolved-link:hover {
+	/* @embed */
+	background-image: url(images/toolbox_resolved_hover.png);
+}
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-activity-link {
+	/* @embed */
+	background-image: url(images/toolbox_activity.png);
+}
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-activity-link:hover {
+	/* @embed */
+	background-image: url(images/toolbox_activity_hover.png);
+}
+
 #articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link.abusive,
 #articleFeedbackv5-show-feedback .articleFeedbackv5-unabuse-link.abusive {
 	color: red;
@@ -294,8 +343,8 @@ a#articleFeedbackv5-show-more {
 	background: url(images/bg-button-disable.png) repeat-x;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
-	border-radius: 3px; 
-	-khtml-border-radius: 3px; 
+	border-radius: 3px;
+	-khtml-border-radius: 3px;
 	-moz-box-shadow: -2px 2px 1px #999;
 	-webkit-box-shadow: -2px 2px 1px #999;
 	box-shadow: -2px 2px 1px #999;
@@ -452,8 +501,8 @@ form.articlefeedbackv5-form-flyover textarea {
 	padding: 0 10px 3px 10px;
 	-moz-border-radius: 3px 3px 0 0;
 	-webkit-border-radius: 3px 3px 0 0;
-	border-radius: 3px 3px 0 0; 
-	-khtml-border-radius: 3px 3px 0 0; 
+	border-radius: 3px 3px 0 0;
+	-khtml-border-radius: 3px 3px 0 0;
 }
 .articlefeedbackv5-flyover-header h3 {
 	font-size: 1.125em;
@@ -520,8 +569,8 @@ form.articlefeedbackv5-form-flyover textarea {
 	background: url(images/bg-button-disable.png) repeat-x;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
-	border-radius: 3px; 
-	-khtml-border-radius: 3px; 
+	border-radius: 3px;
+	-khtml-border-radius: 3px;
 	-moz-box-shadow: -2px 2px 1px #999;
 	-webkit-box-shadow: -2px 2px 1px #999;
 	box-shadow: -2px 2px 1px #999;
