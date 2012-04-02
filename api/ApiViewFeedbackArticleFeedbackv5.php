@@ -140,7 +140,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$where[] = $continueSql;
 		}
 		// Only show bucket 1 (per Fabrice on 1/25)
-		$where['af_bucket_id'] = 1;
+		$where['af_form_id'] = 1;
 
 		// Fetch the feedback IDs we need.
 		/* I'd really love to do this in one big query, but MySQL
@@ -204,7 +204,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'aft_article_field',
 				'aft_article_field_option', 'user', 'page'
 			),
-			array( 'af_id', 'af_bucket_id', 'afi_name', 'afo_name',
+			array( 'af_id', 'af_form_id', 'afi_name', 'afo_name',
 				'answer.aa_response_text', 'answer.aa_response_boolean',
 				'answer.aa_response_rating', 'answer.aa_response_option_id',
 				'afi_data_type', 'af_created', 'user_name',
@@ -331,7 +331,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		global $wgUser, $wgLang;
 		$id = $record[0]->af_id;
 
-		switch( $record[0]->af_bucket_id ) {
+		switch( $record[0]->af_form_id ) {
 			case 1: $content .= $this->renderBucket1( $record ); break;
 			case 2: $content .= $this->renderBucket2( $record ); break;
 			case 3: $content .= $this->renderBucket3( $record ); break;
