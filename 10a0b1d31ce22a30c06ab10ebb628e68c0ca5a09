@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAI3///co\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-02T14:27:03Z",
+      "side": 1,
+      "message": "When doing dynamic message key building like this, please add a comment mentioning all possible keys (e.g. \"Uses either foo or foo-bar depending on baz\") for easier greppability",
+      "revId": "10a0b1d31ce22a30c06ab10ebb628e68c0ca5a09",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
