@@ -109,7 +109,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	top: 0;
 	right: 150;
 	font-size: 1.125em;
-	width: 140px;
+	width: 160px;
 }
 
 #articleFeedbackv5-show-feedback {
@@ -147,7 +147,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools {
 	/* display: none; */
-	width: 140px;
+	width: 160px;
 	position: absolute;
 	top: 10px;
 	right: 10px;
@@ -157,7 +157,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	text-align: center;
 	font-weight: normal;
 	font-size: 1em;
-	width: 140px;
+	width: 160px;
 	height: 20px;
 	line-height: 15px;
 	margin: 0;
@@ -252,10 +252,6 @@ a#articleFeedbackv5-show-more {
 	margin: 0;
 	padding: 0;
 }
-
-#articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link {
-	cursor: pointer;
-}
 .articleFeedbackv5-hide-link, .articleFeedbackv5-delete-link {
 	cursor: pointer;
 }
@@ -267,11 +263,13 @@ a#articleFeedbackv5-show-more {
 	background-repeat: no-repeat;
 	background-position: left bottom;
 }
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-hide-link {
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-hide-link,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-show-link {
 	/* @embed */
 	background-image: url(images/toolbox_hide.png);
 }
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-hide-link:hover {
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-hide-link:hover,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-show-link:hover {
 	/* @embed */
 	background-image: url(images/toolbox_hide_hover.png);
 }
@@ -283,11 +281,15 @@ a#articleFeedbackv5-show-more {
 	/* @embed */
 	background-image: url(images/toolbox_feature_hover.png);
 }
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-oversight-link {
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-requestoversight-link,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-oversight-link,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unoversight-link {
 	/* @embed */
 	background-image: url(images/toolbox_oversight.png);
 }
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-oversight-link:hover {
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-requestoversight-link:hover,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-oversight-link:hover,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unoversight-link:hover {
 	/* @embed */
 	background-image: url(images/toolbox_oversight_hover.png);
 }
@@ -299,6 +301,14 @@ a#articleFeedbackv5-show-more {
 	/* @embed */
 	background-image: url(images/toolbox_resolved_hover.png);
 }
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-declineoversight-link {
+	/* @embed */
+	background-image: url(images/toolbox_decline.png);
+}
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-declineoversight-link:hover {
+	/* @embed */
+	background-image: url(images/toolbox_decline_hover.png);
+}
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-activity-link {
 	/* @embed */
 	background-image: url(images/toolbox_activity.png);
@@ -308,10 +318,30 @@ a#articleFeedbackv5-show-more {
 	background-image: url(images/toolbox_activity_hover.png);
 }
 
+#articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-unabuse-link {
+	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	padding-left: 16px;
+	/* @embed */
+	background-image: url(images/flag.png);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+}
+#articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link:hover {
+	/* @embed */
+	background-image: url(images/flag_hover.png);
+}
+#articleFeedbackv5-show-feedback .articleFeedbackv5-unabuse-link {
+	/* @embed */
+	background-image: url(images/flag_active.png);
+}
 #articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link.abusive,
 #articleFeedbackv5-show-feedback .articleFeedbackv5-unabuse-link.abusive {
 	color: red;
 }
+
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot {
 	line-height: 22px;
 	float: left;
@@ -325,6 +355,7 @@ a#articleFeedbackv5-show-more {
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-caption {
 	margin: 0 15px 0 0;
 }
+
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link,
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link,
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link,
@@ -340,14 +371,13 @@ a#articleFeedbackv5-show-more {
 	color: #333;
 	font-weight: bold;
 	/* @embed */
-	background: url(images/bg-button-disable.png) repeat-x;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	-khtml-border-radius: 3px;
-	-moz-box-shadow: -2px 2px 1px #999;
-	-webkit-box-shadow: -2px 2px 1px #999;
-	box-shadow: -2px 2px 1px #999;
+	background: url(images/thumbup.png) no-repeat;
+}
+
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link {
+	/* @embed */
+	background: url(images/thumbdwn.png) no-repeat;
 }
 
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link:hover,
@@ -355,27 +385,38 @@ a#articleFeedbackv5-show-more {
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link:hover,
 #articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link:hover {
 	/* @embed */
-	background: url(images/bg-button-hov.png) repeat-x;
+	background-image: url(images/thumbup_hover.png);
 	cursor: pointer;
 	color: #333;
 	text-decoration: none;
 }
 
-#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link.active,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link.active,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link.active:hover,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link.active:hover,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link.active,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link.active,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link.active:hover,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link.active:hover {
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link:hover,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link:hover {
 	/* @embed */
-	background: url(images/bg-button.png) repeat-x;
-	color: #fff;
+	background-image: url(images/thumbdwn_hover.png);
 }
+
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link.helpful-active,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link.helpful-active:hover,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link.helpful-active,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link.helpful-active:hover {
+	/* @embed */
+	background-image: url(images/thumbup_active.png);
+}
+
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link.helpful-active,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link.helpful-active:hover,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link.helpful-active,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link.helpful-active:hover {
+	/* @embed */
+	background-image: url(images/thumbdwn_active.png);
+}
+
 .articleFeedbackv5-helpful-votes {
 	color: #888;
 }
+
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap h3 {
 	display: block;
 	float: left;
@@ -440,11 +481,6 @@ a#articleFeedbackv5-show-more {
 	background-size: 11px 7px;
 }
 
-a.helpful-active {
-	/* @embed */
-	background: url(images/bg-button.png) !important;
-	color: white !important;
-}
 .articleFeedbackv5-comment-wrap {
 	width: 100%;
 }
