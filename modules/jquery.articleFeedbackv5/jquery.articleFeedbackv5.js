@@ -506,6 +506,103 @@
 
 			// }}}
 
+		},
+
+		// }}}
+		// {{{ Bucket 4
+
+		/**
+		 * Bucket 4: Help Improve This Article
+		 */
+		'4': {
+
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The template for the whole block
+				 */
+				block: '\
+					<div>\
+						<div class="form-row articleFeedbackv5-bucket4-toggle">\
+							<p class="sub-header"><strong><html:msg key="bucket4-subhead" /></strong></p>\
+							<p class="instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
+							<html:msg key="bucket4-teaser-line2" /></p>\
+						</div>\
+						<div class="articleFeedbackv5-disclosure">\
+							<p><a class="articleFeedbackv5-learn-to-edit" target="_blank"><html:msg key="bucket4-learn-to-edit" /> &raquo;</a></p>\
+						</div>\
+						<a class="articleFeedbackv5-cta-button" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket4-form-submit" /></a>\
+						<div class="clear"></div>\
+					</div>\
+					'
+
+			},
+
+			// }}}
+			// {{{ getTitle
+
+			/**
+			 * Gets the title
+			 *
+			 * @return string the title
+			 */
+			getTitle: function () {
+				return mw.msg( 'articlefeedbackv5-bucket4-title' );
+			},
+
+			// }}}
+			// {{{ buildForm
+
+			/**
+			 * Builds the empty form
+			 *
+			 * @return Element the form
+			 */
+			buildForm: function () {
+
+				// Start up the block to return
+				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
+
+				// Fill in the learn to edit link
+				$block.find( '.articleFeedbackv5-learn-to-edit' )
+					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
+
+				// Fill in the edit link
+				var edit_track_id = $.articleFeedbackv5.experiment() + '-button_click-' +
+					( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
+				$block.find( '.articleFeedbackv5-cta-button' )
+					.attr( 'href', $.articleFeedbackv5.editUrl( edit_track_id ) );
+
+				// Turn the submit into a slick button
+				$block.find( '.articleFeedbackv5-cta-button' )
+					.button()
+					.addClass( 'ui-button-blue' )
+
+				return $block;
+			},
+
+			// }}}
+			// {{{ afterBuild
+
+			/**
+			 * Handles any setup that has to be done once the markup is in the
+			 * holder
+			 */
+			afterBuild: function () {
+				// Set a custom message
+				$.articleFeedbackv5.$holder
+					.add( $.articleFeedbackv5.$dialog)
+					.find( '.articleFeedbackv5-tooltip-info' )
+					.text( mw.msg( 'articlefeedbackv5-bucket4-help-tooltip-info' ) );
+			}
+
+			// }}}
+
 		}
 
 		// }}}
@@ -1437,7 +1534,7 @@
 		// 1. Requested in query string (debug only)
 		// 2. From cookie (see below)
 		// 3. Core bucketing
-		var knownBuckets = { '0': true, '1': true };
+		var knownBuckets = { '0': true, '1': true, '4': true };
 		var requested = mw.util.getParamValue( 'aftv5_form' );
 		var cookieval = $.cookie( $.articleFeedbackv5.prefix( 'display-bucket' ) );
 		if ( requested in knownBuckets ) {
@@ -1449,7 +1546,7 @@
 				'ext.articleFeedbackv5-display',
 				mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' )
 			);
-			var nameMap = { zero: '0', one: '1' };
+			var nameMap = { zero: '0', one: '1', four: '4' };
 			$.articleFeedbackv5.bucketId = nameMap[bucketName];
 		}
 		// Drop in a cookie to keep track of their display bucket;
