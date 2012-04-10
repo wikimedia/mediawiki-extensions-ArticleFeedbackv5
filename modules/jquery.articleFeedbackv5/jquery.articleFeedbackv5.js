@@ -452,8 +452,6 @@
 				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
-						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-submit-' +
-							( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 						$.articleFeedbackv5.submitForm();
 					} );
 			},
@@ -1930,6 +1928,10 @@
 		if ( !$.articleFeedbackv5.submissionEnabled ) {
 			return false;
 		}
+
+		// Track the submit click
+		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-submit-' +
+			( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 
 		// Get the form data
 		var bucket = $.articleFeedbackv5.currentBucket();
