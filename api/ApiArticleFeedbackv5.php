@@ -313,8 +313,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			// Add custom action handlers
 			global $wgAbuseFilterCustomActionsHandlers;
 			$flagCallback = array( $this, 'callbackAbuseActionFlag' );
+			$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $flagCallback;
 			// Not for this release
-			// $wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $flagCallback;
 			// $wgAbuseFilterCustomActionsHandlers['aftv5hide'] = $flagCallback;
 			// $wgAbuseFilterCustomActionsHandlers['aftv5requestoversight'] = $flagCallback;
 
