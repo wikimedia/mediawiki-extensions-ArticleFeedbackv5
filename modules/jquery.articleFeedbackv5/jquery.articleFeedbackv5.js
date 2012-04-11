@@ -1929,10 +1929,6 @@
 			return false;
 		}
 
-		// Track the submit click
-		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-submit-' +
-			( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
-
 		// Get the form data
 		var bucket = $.articleFeedbackv5.currentBucket();
 		var formdata = {};
@@ -1967,6 +1963,10 @@
 			'link': $.articleFeedbackv5.submittedLinkId
 		} );
 
+		// Track the submit click
+		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-submit_attempt-' +
+			( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+
 		// Send off the ajax request
 		$.ajax( {
 			'url': $.articleFeedbackv5.apiUrl,
@@ -1988,17 +1988,25 @@
 					// the trigger link replacing the form. _SWITCH_CLEAR_
 					$.articleFeedbackv5.$toRemove.remove();
 					$.articleFeedbackv5.$toRemove = $( [] );
+					// Track the success
+					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-submit_success-' +
+						( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 				} else {
+					var code = 'unknown';
 					var msg;
 					if ( 'error' in data ) {
 						if ( typeof( data.error ) == 'object' ) {
 							msg = data.error;
+							if ( 'code' in data.error ) {
+								code = data.error.code;
+							}
 						} else if ( 'articlefeedbackv5-error-abuse' == data.error ) {
 							msg = $.articleFeedbackv5.buildLink( data.error, {
 								href: mw.msg( 'articlefeedbackv5-error-abuse-link' ),
 								text: 'articlefeedbackv5-error-abuse-linktext',
 								target: '_blank'
 							});
+							code = 'afreject';
 						} else {
 							msg = mw.msg( data.error );
 						}
@@ -2006,9 +2014,15 @@
 						// NB: Warnings come from the AbuseFilter and are
 						// already translated.
 						msg = data.warning;
+						code = 'afwarn';
 					} else {
 						msg = { info: mw.msg( 'articlefeedbackv5-error-unknown' ) };
 					}
+					// Track the error
+					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() +
+						'-submit_error_' + code + '-' +
+						( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+					// Set up error state
 					$.articleFeedbackv5.markFormErrors( { _api : msg } );
 					$.articleFeedbackv5.unlockForm();
 					if ( $.articleFeedbackv5.inDialog ) {
@@ -2016,7 +2030,12 @@
 					}
 				}
 			},
-			'error': function () {
+			'error': function (xhr, tstatus, error) {
+				// Track the error
+				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() +
+					'-submit_error_jquery-' +
+					( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+				// Set up error state
 				var err = { _api: { info: mw.msg( 'articlefeedbackv5-error-submit' ) } };
 				$.articleFeedbackv5.markFormErrors( err );
 				$.articleFeedbackv5.unlockForm();
