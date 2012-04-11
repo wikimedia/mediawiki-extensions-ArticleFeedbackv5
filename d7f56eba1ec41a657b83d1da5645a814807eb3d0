@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAI3//8sw\u003d",
+        "filename": "sql/fix_logs.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-11T00:53:09Z",
+      "side": 1,
+      "message": "Should say l2.log_type for consistency. Also don\u0027t see why your numbering goes 1-3-2. The tables are all distinct so you should need aliases or even need to indicate which table you mean (because field names are globally unique in our schema).",
+      "revId": "d7f56eba1ec41a657b83d1da5645a814807eb3d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAI3//8so\u003d",
+        "filename": "sql/fix_logs.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-11T00:53:09Z",
+      "side": 1,
+      "message": "Please make this condition more specific, that\u0027ll make the query run much faster. I was thinking of:\n\nAND log_namespace\u003d-1\nAND log_title \u003d CONCAT(\u0027ArticleFeedbackv5/\u0027, page_title, \u0027/\u0027, af_id)\n\nAdvantages:\n* more robust because it uses an exact value for log_title rather than a regex\n* uses (log_namespace, log_title) index\n* you don\u0027t need the GROUP BY any more (because you\u0027re using a fixed value for log_title)\n\nThis still means it won\u0027t work with non-main namespace titles, though, so you should add page_namespace\u003d0 to the outer query. This shouldn\u0027t matter in practice because I don\u0027t think we have any non-ns0 titles in the AFTv5 tables, but just in case we do that\u0027ll prevent the query from screwing up their counts.",
+      "revId": "d7f56eba1ec41a657b83d1da5645a814807eb3d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAI3//8ss\u003d",
+        "filename": "sql/fix_logs.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-11T00:53:09Z",
+      "side": 1,
+      "message": "Isn\u0027t this missing a closing ) for the COALESCE ? Why are you using COALESCE anyway, surely COUNT always returns a number?",
+      "revId": "d7f56eba1ec41a657b83d1da5645a814807eb3d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAI3//8sg\u003d",
+        "filename": "sql/fix_logs.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-11T00:53:09Z",
+      "side": 1,
+      "message": "This query has the same issues as the one above",
+      "revId": "d7f56eba1ec41a657b83d1da5645a814807eb3d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAI3//8sk\u003d",
+        "filename": "sql/fix_logs.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-11T00:53:09Z",
+      "side": 1,
+      "message": "This seems to be how you intended to close the COALESCE above",
+      "revId": "d7f56eba1ec41a657b83d1da5645a814807eb3d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
