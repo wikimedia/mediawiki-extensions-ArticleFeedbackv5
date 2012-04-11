@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAI3//8sY\u003d",
+        "filename": "sql/fix_logs.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-11T00:54:22Z",
+      "side": 1,
+      "message": "Never mind, this is fixed in the next commit (4189). I\u0027ll squash them later.",
+      "parentUuid": "AAAAI3//8ss\u003d",
+      "revId": "d7f56eba1ec41a657b83d1da5645a814807eb3d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAI3//8sg\u003d",
         "filename": "sql/fix_logs.sql",
         "patchSetId": 1
@@ -81,6 +99,24 @@
       "writtenOn": "2012-04-11T00:53:09Z",
       "side": 1,
       "message": "This seems to be how you intended to close the COALESCE above",
+      "revId": "d7f56eba1ec41a657b83d1da5645a814807eb3d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAI3//8sU\u003d",
+        "filename": "sql/fix_logs.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-11T00:54:22Z",
+      "side": 1,
+      "message": "Never mind, fixed in 4189, see above.",
+      "parentUuid": "AAAAI3//8sk\u003d",
       "revId": "d7f56eba1ec41a657b83d1da5645a814807eb3d0",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
