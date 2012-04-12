@@ -158,3 +158,6 @@ UPDATE /*_*/aft_article_feedback SET af_experiment = CONCAT(af_form_id, 'A') WHE
 UPDATE /*_*/aft_article_feedback SET af_experiment = CONCAT(af_form_id, 'E') WHERE DATE(af_created) > '2012-03-21' AND af_link_id = 5;
 UPDATE /*_*/aft_article_feedback SET af_experiment = CONCAT(af_form_id, '?') WHERE DATE(af_created) > '2012-03-21' AND af_link_id = 0;
 
+
+-- Added 3/30 (emsmith)
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_suppress_count integer unsigned NOT NULL DEFAULT 0;
