@@ -1400,6 +1400,8 @@
 		$.articleFeedbackv5.alreadySubmitted = $.cookie( $.articleFeedbackv5.prefix( 'submitted' ) ) === 'true';
 		// Go ahead and bucket right away
 		$.articleFeedbackv5.selectBucket();
+		// Select the trigger link(s)
+		$.articleFeedbackv5.selectTriggerLinks();
 		// Anything the bucket needs to do?
 		if ( 'init' in $.articleFeedbackv5.currentBucket() ) {
 			$.articleFeedbackv5.currentBucket().init();
@@ -1413,8 +1415,7 @@
 		} );
 		// Keep track of links that must be removed after a successful submission
 		$.articleFeedbackv5.$toRemove = $( [] );
-		// Select the trigger link(s)
-		$.articleFeedbackv5.selectTriggerLinks();
+		// Add them
 		$.articleFeedbackv5.addTriggerLinks();
 		// Track init at 1%
 		if ( Math.random() * 100 < 1 ) {
