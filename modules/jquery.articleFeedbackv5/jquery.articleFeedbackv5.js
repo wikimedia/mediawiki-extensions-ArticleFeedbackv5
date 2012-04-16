@@ -1828,9 +1828,9 @@
 		var exp = 'optionSE_' + $.articleFeedbackv5.bucketId + $.articleFeedbackv5.floatingLinkId;
 		if ( $.articleFeedbackv5.bucketId == 4 ) {
 			if ( $.articleFeedbackv5.editable ) {
-				exp .= '_edit';
+				exp += '_edit';
 			} else {
-				exp .= '_learn_more';
+				exp += '_learn_more';
 			}
 		}
 		return exp;
