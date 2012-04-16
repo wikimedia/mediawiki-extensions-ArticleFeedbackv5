@@ -1537,7 +1537,12 @@
 		$.articleFeedbackv5.addTriggerLinks();
 		// Track init at 1%
 		if ( Math.random() * 100 < 1 ) {
-			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-init' );
+			var exp = $.articleFeedbackv5.experiment();
+			if ( $.articleFeedbackv5.bucketId == 4 ) {
+				exp = exp.replace('_edit', '');
+				exp = exp.replace('_learn_more', '-noedit');
+			}
+			$.articleFeedbackv5.trackClick( exp + '-init' );
 		}
 	};
 
@@ -1820,7 +1825,15 @@
 	 * @return string the experiment (e.g. "option1A")
 	 */
 	$.articleFeedbackv5.experiment = function () {
-		return 'option' + $.articleFeedbackv5.bucketId + $.articleFeedbackv5.floatingLinkId;
+		var exp = 'optionSE_' + $.articleFeedbackv5.bucketId + $.articleFeedbackv5.floatingLinkId;
+		if ( $.articleFeedbackv5.bucketId == 4 ) {
+			if ( $.articleFeedbackv5.editable ) {
+				exp .= '_edit';
+			} else {
+				exp .= '_learn_more';
+			}
+		}
+		return exp;
 	};
 
 	// }}}
@@ -1877,12 +1890,13 @@
 			'articleFeedbackv5_click_tracking': $.articleFeedbackv5.clickTracking ? '1' : '0',
 		};
 		if ( $.articleFeedbackv5.clickTracking ) {
-			params.articleFeedbackv5_ct_token  = $.cookie( 'clicktracking-session' );
-			params.articleFeedbackv5_bucket_id = $.articleFeedbackv5.bucketId;
-			params.articleFeedbackv5_cta_id    = $.articleFeedbackv5.ctaId;
-			params.articleFeedbackv5_f_link_id = $.articleFeedbackv5.floatingLinkId;
-			params.articleFeedbackv5_link_id   = $.articleFeedbackv5.submittedLinkId;
-			params.articleFeedbackv5_location  = $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom';
+			params.articleFeedbackv5_ct_token   = $.cookie( 'clicktracking-session' );
+			params.articleFeedbackv5_bucket_id  = $.articleFeedbackv5.bucketId;
+			params.articleFeedbackv5_cta_id     = $.articleFeedbackv5.ctaId;
+			params.articleFeedbackv5_link_id    = $.articleFeedbackv5.submittedLinkId;
+			params.articleFeedbackv5_f_link_id  = $.articleFeedbackv5.floatingLinkId;
+			params.articleFeedbackv5_experiment = $.articleFeedbackv5.experiment();
+			params.articleFeedbackv5_location   = $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom';
 		}
 		var url = mw.config.get( 'wgScript' ) + '?' + $.param( params );
 		if ( trackingId ) {

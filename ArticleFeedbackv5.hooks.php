@@ -398,18 +398,20 @@ class ArticleFeedbackv5Hooks {
 	 */
 	public static function pushTrackingFieldsToEdit( $editPage, $output ) {
 		$request = $output->getRequest();
-		$tracking = $request->getVal( 'articleFeedbackv5_click_tracking' );
-		$bucketId = $request->getVal( 'articleFeedbackv5_bucket_id' );
-		$ctaId    = $request->getVal( 'articleFeedbackv5_cta_id' );
-		$flinkId  = $request->getVal( 'articleFeedbackv5_f_link_id' );
-		$location = $request->getVal( 'articleFeedbackv5_location' );
-		$token    = $request->getVal( 'articleFeedbackv5_ct_token' );
-		$ctEvent  = $request->getVal( 'articleFeedbackv5_ct_event' );
+		$tracking   = $request->getVal( 'articleFeedbackv5_click_tracking' );
+		$bucketId   = $request->getVal( 'articleFeedbackv5_bucket_id' );
+		$ctaId      = $request->getVal( 'articleFeedbackv5_cta_id' );
+		$flinkId    = $request->getVal( 'articleFeedbackv5_f_link_id' );
+		$experiment = $request->getVal( 'articleFeedbackv5_experiment' );
+		$location   = $request->getVal( 'articleFeedbackv5_location' );
+		$token      = $request->getVal( 'articleFeedbackv5_ct_token' );
+		$ctEvent    = $request->getVal( 'articleFeedbackv5_ct_event' );
 
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_click_tracking', $tracking );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_bucket_id', $bucketId );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_cta_id', $ctaId );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_f_link_id', $flinkId );
+		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_experiment', $experiment );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_location', $location );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_ct_token', $token );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_ct_event', $ctEvent );
@@ -472,20 +474,25 @@ class ArticleFeedbackv5Hooks {
 			return;
 		}
 
-		$version  = $wgArticleFeedbackv5Tracking['version'];
-		$bucketId = $request->getVal( 'articleFeedbackv5_bucket_id' );
-		$ctaId    = $request->getVal( 'articleFeedbackv5_cta_id' );
-		$flinkId  = $request->getVal( 'articleFeedbackv5_f_link_id' );
-		$location = $request->getVal( 'articleFeedbackv5_location' );
-		$token    = $request->getVal( 'articleFeedbackv5_ct_token' );
-		$ctEvent  = $request->getVal( 'articleFeedbackv5_ct_event' );
+		$version    = $wgArticleFeedbackv5Tracking['version'];
+		$bucketId   = $request->getVal( 'articleFeedbackv5_bucket_id' );
+		$ctaId      = $request->getVal( 'articleFeedbackv5_cta_id' );
+		$flinkId    = $request->getVal( 'articleFeedbackv5_f_link_id' );
+		$experiment = $request->getVal( 'articleFeedbackv5_experiment' );
+		$location   = $request->getVal( 'articleFeedbackv5_location' );
+		$token      = $request->getVal( 'articleFeedbackv5_ct_token' );
+		$ctEvent    = $request->getVal( 'articleFeedbackv5_ct_event' );
 
 		if ( $ctEvent ) {
 			$trackingId = $ctEvent . '-' . $event;
 		} else {
-			$trackingId = 'ext.articleFeedbackv5@' . $version
-				. '-option' . $bucketId . $flinkId
-				. '-cta_' . ( isset( $ctas[$ctaId] ) ? $ctas[$ctaId] : 'unknown' )
+			$trackingId = 'ext.articleFeedbackv5@' . $version;
+			if ( $experiment ) {
+				$trackingId .= '-' . $experiment; // Stage 3 or greater
+			} else {
+				$trackingId .= '-option' . $bucketId . $flinkId; // Prior to stage 3; handles cached js
+			}
+			$trackingId .= '-cta_' . ( isset( $ctas[$ctaId] ) ? $ctas[$ctaId] : 'unknown' )
 				. '-' . $event
 				. '-' . $location;
 		}
