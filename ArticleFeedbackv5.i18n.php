@@ -249,6 +249,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Learn how to edit',
 	'articlefeedbackv5-bucket4-form-submit' => 'Edit this page',
 	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Wikipedia wants to know what you think. Help improve this page by becoming an editor.',
+	'articlefeedbackv5-bucket4-noedit-title' => 'Help improve Wikipedia',
+	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'This website is created by people like you.',
+	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'Can you give us a hand?',
+	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Learn more',
 
 	/* Option 5 (just like AFTv4, but ported to work with v5) */
 	'articlefeedbackv5-bucket5-form-switch-label' => 'Rate this page',
@@ -636,6 +640,11 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'The text for the "Learn how to edit" link',
 	'articlefeedbackv5-bucket4-form-submit' => 'The text for the big edit button',
 	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Overrides {{msg-mw|articlefeedbackv5-help-tooltip-info}} for option 4.',
+	'articlefeedbackv5-bucket4-noedit-title' => 'This is the title of the feedback panel for option 4, when the user cannot edit the article',
+	'articlefeedbackv5-bucket4-noedit-subhead' => 'A subheader to go directly under the title for option 4, when the user cannot edit the article',
+	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'The first line of the teaser text for option 4, when the user cannot edit the article',
+	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'The second line of the teaser text for option 4, when the user cannot edit the article',
+	'articlefeedbackv5-bucket4-noedit-form-submit' => 'The text for the big button, when the user cannot edit the article',
 	'articlefeedbackv5-bucket5-form-panel-explanation' => '{{Identical|What is this}}',
 	'articlefeedbackv5-bucket5-form-panel-explanation-link' => 'Do not translate "Project:". Also translate the "ArticleFeedback" special page name at [[Special:AdvancedTranslate]].',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'This message may not use <nowiki>{{SITENAME}}</nowiki>.',

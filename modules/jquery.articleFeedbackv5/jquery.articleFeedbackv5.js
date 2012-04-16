@@ -524,9 +524,10 @@
 			templates: {
 
 				/**
-				 * The template for the whole block
+				 * The template for the whole block, if the user can edit the
+				 * article
 				 */
-				block: '\
+				editable: '\
 					<div>\
 						<div class="form-row articleFeedbackv5-bucket4-toggle">\
 							<p class="sub-header"><strong><html:msg key="bucket4-subhead" /></strong></p>\
@@ -537,6 +538,24 @@
 							<p><a class="articleFeedbackv5-learn-to-edit" target="_blank"><html:msg key="bucket4-learn-to-edit" /> &raquo;</a></p>\
 						</div>\
 						<a class="articleFeedbackv5-cta-button" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket4-form-submit" /></a>\
+						<div class="clear"></div>\
+					</div>\
+					',
+
+				/**
+				 * The template for the whole block, if the user cannot edit the
+				 * article
+				 */
+				noneditable: '\
+					<div>\
+						<div class="form-row articleFeedbackv5-bucket4-toggle">\
+							<p class="instructions-left"><html:msg key="bucket4-noedit-teaser-line1" /><br />\
+							<html:msg key="bucket4-noedit-teaser-line2" /></p>\
+						</div>\
+						<div class="articleFeedbackv5-disclosure">\
+							<p>&nbsp;</p>\
+						</div>\
+						<a class="articleFeedbackv5-cta-button" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket4-noedit-form-submit" /></a>\
 						<div class="clear"></div>\
 					</div>\
 					'
@@ -552,7 +571,7 @@
 			 * @return string the title
 			 */
 			getTitle: function () {
-				return mw.msg( 'articlefeedbackv5-bucket4-title' );
+				return mw.msg( $.articleFeedbackv5.editable ? 'articlefeedbackv5-bucket4-title' : 'articlefeedbackv5-bucket4-noedit-title' );
 			},
 
 			// }}}
@@ -566,17 +585,23 @@
 			buildForm: function () {
 
 				// Start up the block to return
-				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
+				var $block = $( $.articleFeedbackv5.editable ? $.articleFeedbackv5.currentBucket().templates.editable : $.articleFeedbackv5.currentBucket().templates.noneditable );
 
 				// Fill in the learn to edit link
 				$block.find( '.articleFeedbackv5-learn-to-edit' )
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
-				// Fill in the edit link
-				var edit_track_id = $.articleFeedbackv5.experiment() + '-button_click-' +
+				// Fill in the button link
+				var track_id = $.articleFeedbackv5.experiment() + '-button_click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
-				$block.find( '.articleFeedbackv5-cta-button' )
-					.attr( 'href', $.articleFeedbackv5.editUrl( edit_track_id ) );
+				if ( $.articleFeedbackv5.editable ) {
+					$block.find( '.articleFeedbackv5-cta-button' )
+						.attr( 'href', $.articleFeedbackv5.editUrl( track_id ) );
+				} else {
+					var learn_url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
+					$block.find( '.articleFeedbackv5-cta-button' )
+						.attr( 'href', $.articleFeedbackv5.trackingUrl( learn_url, track_id ) );
+				}
 
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-cta-button' )
@@ -599,6 +624,12 @@
 					.add( $.articleFeedbackv5.$dialog)
 					.find( '.articleFeedbackv5-tooltip-info' )
 					.text( mw.msg( 'articlefeedbackv5-bucket4-help-tooltip-info' ) );
+				// Add a class so we can drop the tooltip down a bit for the
+				// learn-more version
+				if ( !$.articleFeedbackv5.editable ) {
+					$.articleFeedbackv5.find( '.articleFeedbackv5-ui' )
+						.addClass( 'articleFeedbackv5-option-4-noedit' );
+				}
 			}
 
 			// }}}
@@ -689,18 +720,7 @@
 			 * @return bool whether the CTA can be displayed
 			 */
 			verify: function () {
-				// An empty restrictions array means anyone can edit
-				var restrictions =  mw.config.get( 'wgRestrictionEdit', [] );
-				if ( restrictions.length ) {
-					var groups =  mw.config.get( 'wgUserGroups' );
-					// Verify that each restriction exists in the user's groups
-					for ( var i = 0; i < restrictions.length; i++ ) {
-						if ( $.inArray( restrictions[i], groups ) < 0 ) {
-							return false;
-						}
-					}
-				}
-				return true;
+				return $.articleFeedbackv5.editable;
 			},
 
 			// }}}
@@ -1495,6 +1515,8 @@
 		$.articleFeedbackv5.clickTracking = $.articleFeedbackv5.checkClickTracking();
 		// Has the user already submitted ratings for this page at this revision?
 		$.articleFeedbackv5.alreadySubmitted = $.cookie( $.articleFeedbackv5.prefix( 'submitted' ) ) === 'true';
+		// Can the user edit the page?
+		$.articleFeedbackv5.editable = $.articleFeedbackv5.userCanEdit();
 		// Go ahead and bucket right away
 		$.articleFeedbackv5.selectBucket();
 		// Anything the bucket needs to do?
@@ -1619,6 +1641,27 @@
 		}
 		// Always add the toolbox link
 		$.articleFeedbackv5.selectedLinks.push('TBX');
+	};
+
+	// }}}
+	// {{{ userCanEdit
+
+	/**
+	 * Returns whether the user can edit the article
+	 */
+	$.articleFeedbackv5.userCanEdit = function () {
+		// An empty restrictions array means anyone can edit
+		var restrictions =  mw.config.get( 'wgRestrictionEdit', [] );
+		if ( restrictions.length ) {
+			var groups =  mw.config.get( 'wgUserGroups' );
+			// Verify that each restriction exists in the user's groups
+			for ( var i = 0; i < restrictions.length; i++ ) {
+				if ( $.inArray( restrictions[i], groups ) < 0 ) {
+					return false;
+				}
+			}
+		}
+		return true;
 	};
 
 	// }}}

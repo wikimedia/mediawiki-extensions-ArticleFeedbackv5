@@ -830,6 +830,10 @@
 	top: -350px;
 }
 
+.articleFeedbackv5-option-4-noedit .articleFeedbackv5-tooltip {
+	top: -310px;
+}
+
 /*** Option 5 ***/
 #articleFeedbackv5-option-5 .articleFeedbackv5-submit {
 	float: right;
