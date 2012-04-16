@@ -1486,10 +1486,10 @@ $messages['br'] = array(
 	'articlefeedbackv5-special-more' => 'Diskouez evezhiadennoù all',
 	'articlefeedbackv5-special-pagetitle' => 'Soñj: $1',
 	'articlefeedbackv5-form-optionid' => 'Dibarzh $1',
-	'articlefeedbackv5-hidden' => 'Kuzhet eo bet an evezhiadenn-mañ gant ur skridaozer aotreet',
-	'articlefeedbackv5-deleted' => 'Diverket eo bet an evezhiadenn-mañ gant an evezhierien',
+	'articlefeedbackv5-hidden' => 'Kuzhet eo bet an notenn-mañ gant $1 war $2',
+	'articlefeedbackv5-deleted' => 'Diverket eo bet an notenn-mañ gant $1 war $2',
 	'articlefeedbackv5-form-hide' => 'Kuzhat ar gemennadenn-mañ',
-	'articlefeedbackv5-form-unhide' => 'Diskouez an evezhiadenn-mañ',
+	'articlefeedbackv5-form-unhide' => 'Diguzhat an notenn-mañ',
 	'articlefeedbackv5-form-helpful' => 'Merkañ evel talvoudus ($1)',
 	'articlefeedbackv5-form-abuse' => 'Merkañ evel dizereat ($1)',
 	'articlefeedbackv5-form-abuse-masked' => 'Merkañ evel dizereat',
@@ -1546,16 +1546,18 @@ $messages['br'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL: $1|$1 miz|$1 miz}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL: $1|$1 sizhunvezh|$1 sizhunvezh}}',
 	'articlefeedbackv5-timestamp-seconds' => "nebeutoc'h eget ur vunutenn",
+	'articlefeedbackv5-mask-text-hidden' => 'Kuzhet eo bet an notenn-mañ gant ur skridaozer aotreet',
+	'articlefeedbackv5-mask-text-oversight' => 'Evezhiet eo bet an notenn-mañ gant ur skridaozer aotreet',
 	'articlefeedbackv5-mask-postnumber' => 'Kemennadenn #$1',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Kuzhat ar gemennadenn-mañ',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => "Perak 'ta kuzhat an notenn-mañ ?",
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Kuzhat ar gemennadenn-mañ',
 	'articlefeedbackv5-noteflyover-hide-help' => "Gouzout hiroc'h",
-	'articlefeedbackv5-noteflyover-show-caption' => 'Diskouez an evezhiadenn-mañ',
+	'articlefeedbackv5-noteflyover-show-caption' => 'Diguzhat an notenn-mañ',
 	'articlefeedbackv5-noteflyover-show-label' => 'Ouzhpennañ un notenn',
-	'articlefeedbackv5-noteflyover-show-placeholder' => "Perak 'ta diskouez an notenn-mañ ?",
-	'articlefeedbackv5-noteflyover-show-submit' => 'Diskouez an evezhiadenn-mañ',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'Perak diguzhat an notenn-mañ ?',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Diguzhat an notenn-mañ',
 	'articlefeedbackv5-noteflyover-show-help' => "Gouzout hiroc'h",
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Goulenn ma vo evezhiet',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Ouzhpennañ un notenn',
@@ -1700,7 +1702,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-log-flag' => 'merket an evezhiadenn [[$1]] evel dizereat',
 	'articlefeedbackv5-log-unflag' => 'diverket dizereadegezh an evezhiadenn [[$1]]',
 	'articlefeedbackv5-activity-pane-header' => 'Marilh obererezh',
-	'articlefeedbackv5-activity-feedback-info' => 'Evezhiadenn postet gant #$1',
+	'articlefeedbackv5-activity-feedback-info' => 'Evezhiadenn bost #$1 gant $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Postet war $1',
 	'articlefeedbackv5-activity-permalink' => 'Peurliamm',
 	'articlefeedbackv5-activity-request' => 'Evezhiañ goulennet war',
@@ -1712,7 +1714,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-activity-unflag' => 'na verkañ an notenn-mañ ken war',
 	'articlefeedbackv5-activity-oversight' => 'evezhiañ an notenn-mañ war',
 	'articlefeedbackv5-activity-unoversight' => 'lemel an evezhiañ evit an notenn-mañ war',
-	'articlefeedbackv5-activity-count' => '$1 oberiadenn war an notenn-mañ',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 oberiadenn war an notenn-mañ|$1 oberiadenn war an notenn-mañ}}',
 	'articlefeedbackv5-activity-more' => "Diskouez muioc'h a obererezh",
 	'articlefeedbackv5-emailcapture-response-body' => "Demat deoc'h !
 
@@ -1736,6 +1738,10 @@ Ma n'eo ket deuet ar goulenn ganeoc'h, na rit ket van ouzh ar postel-mañ, ne vo
 
 A wir galon ganeoc'h ha trugarez deoc'h,
 Skipailh {{SITENAME}}",
+	'articlefeedbackv5-disable-flyover-title' => 'Lemel kuit an ostilh-mañ ?',
+	'articlefeedbackv5-disable-flyover-help-location' => 'Ma fenndibaboù > Neuz',
+	'articlefeedbackv5-disable-flyover-prefbutton' => "Mont da'm fenndibaboù",
+	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Kuzhet ent emgefre. Reolenn : $1',
 );
 
 /** Bosnian (Bosanski)
@@ -4741,8 +4747,8 @@ $messages['gl'] = array(
 	'articlefeedbackv5-error-email' => 'O enderezo de correo electrónico é incorrecto.',
 	'articlefeedbackv5-error-blocked' => 'Os usuarios bloqueados non poden enviar comentarios.',
 	'articlefeedbackv5-error-validation' => 'Erro de validación.',
-	'articlefeedbackv5-error-abuse' => 'O seu comentario incumpre a $1. Revise as súas palabras.',
-	'articlefeedbackv5-error-abuse-linktext' => 'política de abuso',
+	'articlefeedbackv5-error-abuse' => 'O filtro do software rexeitou o seu comentario porque incumpre as $1 da Wikipedia. Revise as súas palabras e inténteo de novo.',
+	'articlefeedbackv5-error-abuse-linktext' => 'normas sobre comentarios',
 	'articlefeedbackv5-error-unknown' => 'Erro descoñecido.',
 	'articlefeedbackv5-error-submit' => 'Erro no envío do formulario.',
 	'articlefeedbackv5-error-nofeedback' => 'Dea a súa opinión.',
@@ -4842,6 +4848,7 @@ $messages['gl'] = array(
 	'articlefeedbackv5-mask-text-oversight' => 'Un editor autorizado supervisou esta mensaxe',
 	'articlefeedbackv5-mask-postnumber' => 'Mensaxe nº$1',
 	'articlefeedbackv5-special-disclaimer' => 'Isto é un prototipo. Non o use a menos que o convidasen a facelo.',
+	'articlefeedbackv5-special-goback' => 'Volver á lista de comentarios',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Agochar esta mensaxe',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Engadir unha nota',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Por que agocha esta mensaxe?',
@@ -5062,9 +5069,16 @@ Tede en conta que a versión 5 da ferramenta de avaliación de artigos
 está en probas na Wikipedia en inglés e que a páxina de comentarios
 non a pode ver a comunidade durante este período de probas.',
 	'articlefeedbackv5-disable-flyover-title' => 'Quere eliminar a ferramenta?',
+	'articlefeedbackv5-disable-flyover-help' => 'Para eliminar a $1, vaia ata $2 e marque a caixa "$3"',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'ferramenta de avaliación de artigos',
 	'articlefeedbackv5-disable-flyover-help-location' => 'As miñas preferencias > Aparencia',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ir ás preferencias',
+	'abusefilter-edit-action-aftv5flagabuse' => '(Avaliación de artigos) Marcado automaticamente como abusivo',
+	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Marcado automaticamente como abusivo. Regra: $1',
+	'abusefilter-edit-action-aftv5hide' => '(Avaliación de artigos) Agochado automaticamente',
+	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Agochado automaticamente. Regra: $1',
+	'abusefilter-edit-action-aftv5requestoversight' => '(Avaliación de artigos) Supervisión solicitada automaticamente',
+	'articlefeedbackv5-abusefilter-note-aftv5requestoversight' => 'Supervisión solicitada automaticamente. Regra: $1',
 );
 
 /** Swiss German (Alemannisch)
@@ -10079,6 +10093,7 @@ $messages['pdc'] = array(
 
 /** Polish (Polski)
  * @author BeginaFelicysym
+ * @author Odder
  * @author Olgak85
  * @author Sp5uhe
  */
@@ -10093,9 +10108,15 @@ $messages['pl'] = array(
 	'articlefeedbackv5-cta2-confirmation-call' => 'Ta strona jest tworzona przez ludzi jak Ty. Pomożesz nam?',
 	'articlefeedbackv5-cta2-button-text' => 'Dowiedz się więcej',
 	'articlefeedbackv5-cta3-confirmation-title' => 'Poświęć chwilę czasu na wypełnienie krótkiej ankiety',
+	'articlefeedbackv5-cta3-confirmation-call' => 'To zajmie tylko minutę a pomoże w ulepszeniu Wikipedii.',
+	'articlefeedbackv5-cta3-button-text' => 'Początek ankiety',
 	'articlefeedbackv5-error' => 'Wystąpił błąd. Proszę spróbować ponownie później.',
+	'articlefeedbackv5-page-disabled' => 'Strona opinii o artykule nie została aktywowana dla tego artykułu.',
 	'articlefeedbackv5-error-email' => 'Adres e-mail nie jest prawidłowy.',
+	'articlefeedbackv5-error-blocked' => 'Zablokowani użytkownicy nie mogą przesyłać opinii.',
 	'articlefeedbackv5-error-validation' => 'Błąd sprawdzania poprawności.',
+	'articlefeedbackv5-error-abuse' => 'Twój wpis został odrzucony przez oprogramowanie filtrujące z sugestią naruszenia zapisów $1 Wikipedii. Zweryfikuj wpis i spróbuj ponownie.',
+	'articlefeedbackv5-error-abuse-linktext' => 'wytyczne odnośnie opinii',
 	'articlefeedbackv5-error-unknown' => 'Nieznany błąd.',
 	'articlefeedbackv5-error-submit' => 'Błąd przesyłania formularza.',
 	'articlefeedbackv5-error-nofeedback' => 'Proszę wprowadzić swoje opinie.',
@@ -10194,6 +10215,8 @@ $messages['pl'] = array(
 	'articlefeedbackv5-mask-text-hidden' => 'Ten post wpis ukryty przez upoważnionego edytora',
 	'articlefeedbackv5-mask-text-oversight' => 'Ten wpis został zweryfikowany przez upoważnionego edytora',
 	'articlefeedbackv5-mask-postnumber' => 'Wpis #$1',
+	'articlefeedbackv5-special-disclaimer' => 'To jest prototyp. Można go używać wyłącznie na specjalne zaproszenie.',
+	'articlefeedbackv5-special-goback' => 'Wróć do listy opinii',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Ukryj ten wpis',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Dodaj notatkę',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Dlaczego ukrywasz ten wpis?',
@@ -10339,7 +10362,9 @@ $messages['pl'] = array(
 	'articlefeedbackv5-log-header' => 'Jest to dziennik aktywności na elementach ocen zebranych dla artykułów przy użyciu narzędzia Opinie artykułu.',
 	'articlefeedbackv5-log-oversight' => 'zmieniono status opinii [[$1]] na ocenzurowany',
 	'articlefeedbackv5-log-unoversight' => 'usunięto cenzurę statusu [[$1]] z opinii',
-	'articlefeedbackv5-activity-pane-header' => 'Dziennik aktywności',
+	'articlefeedbackv5-log-hidden' => 'ukryj opinię [[$1]]',
+	'articlefeedbackv5-log-unhidden' => 'pokaż opinię [[$1]]',
+	'articlefeedbackv5-activity-pane-header' => 'Rejestr aktywności',
 	'articlefeedbackv5-activity-feedback-info' => 'Ocena wpisu #$1 przez $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Zamieszczono $1',
 	'articlefeedbackv5-activity-permalink' => 'permalink',
@@ -11463,8 +11488,8 @@ $messages['ru'] = array(
 	'articlefeedbackv5-error-email' => 'Недопустимый адрес электронной почты.',
 	'articlefeedbackv5-error-blocked' => 'Заблокированные пользователи не могут представлять отзыв.',
 	'articlefeedbackv5-error-validation' => 'Ошибка проверки.',
-	'articlefeedbackv5-error-abuse' => 'Ваш комментарий нарушает $1. Просьба пересмотреть его.',
-	'articlefeedbackv5-error-abuse-linktext' => 'политику злоупотребления в отзывах',
+	'articlefeedbackv5-error-abuse' => 'Ваше сообщение было отвергнуто программным фильтром, который определил, что оно может нарушить $1 Википедии. Пожалуйста скорректируйте своё сообщение и повторите попытку.',
+	'articlefeedbackv5-error-abuse-linktext' => 'правила написания отзывов',
 	'articlefeedbackv5-error-unknown' => 'Неизвестная ошибка.',
 	'articlefeedbackv5-error-submit' => 'Ошибка при отправке данных формы.',
 	'articlefeedbackv5-error-nofeedback' => 'Введите, пожалуйста, ваш отзыв.',
@@ -11561,7 +11586,11 @@ $messages['ru'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 месяц|$1 месяца|$1 месяцев}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 неделя|$1 недели|$1 недель}}',
 	'articlefeedbackv5-timestamp-seconds' => 'менее 1 минуты',
+	'articlefeedbackv5-mask-text-hidden' => 'Этот отзыв скрыт авторизованным редактором',
+	'articlefeedbackv5-mask-text-oversight' => 'Этот отзыв скрыт от всех авторизованным редактором',
 	'articlefeedbackv5-mask-postnumber' => 'Отзыв #$1',
+	'articlefeedbackv5-special-disclaimer' => 'Это прототип. Не используйте его, если вас специально не приглашали.',
+	'articlefeedbackv5-special-goback' => 'Вернуться к списку отзывов',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Скрыть этот отзыв',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Добавить примечание',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Почему вы скрыли этот отзыв?',
@@ -11726,8 +11755,8 @@ $messages['ru'] = array(
 	'articlefeedbackv5-activity-flag' => 'поставил отметку о злоупотреблении в',
 	'articlefeedbackv5-activity-unhidden' => 'убрал скрытие отзыва в',
 	'articlefeedbackv5-activity-unflag' => 'убрал отметку о злоупотреблении в',
-	'articlefeedbackv5-activity-oversight' => 'надзирает этот отзыв с',
-	'articlefeedbackv5-activity-unoversight' => 'убрал надзор с',
+	'articlefeedbackv5-activity-oversight' => 'скрыл этот отзыв с',
+	'articlefeedbackv5-activity-unoversight' => 'раскрыл этот отзыв с',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 действие на этот отзыв|$1 действия на этот отзыв|$1 действий на этот отзыв}}',
 	'articlefeedbackv5-activity-more' => 'Показать дополнительные действия',
 	'articlefeedbackv5-emailcapture-response-body' => 'Здравствуйте!
@@ -11752,7 +11781,7 @@ $3
 
 С наилучшими пожеланиями и благодарностью
 Команда проекта {{SITENAME}}',
-	'articlefeedbackv5-email-request-oversight-subject' => '$1 запросил скрытие $2',
+	'articlefeedbackv5-email-request-oversight-subject' => 'Запрошено сокрытие для страницы отзыва',
 );
 
 /** Rusyn (Русиньскый)
@@ -13271,6 +13300,7 @@ Ang pangkat ng {{SITENAME}}',
 
 /** Turkish (Türkçe)
  * @author 82-145
+ * @author Bilalokms
  * @author Cekli829
  * @author CnkALTDS
  * @author Emperyan
@@ -13293,6 +13323,7 @@ $messages['tr'] = array(
 	'articlefeedbackv5-cta3-button-text' => 'Ankete başla',
 	'articlefeedbackv5-error' => 'Bir hata meydana geldi. Lütfen daha sonra tekrar deneyin.',
 	'articlefeedbackv5-error-email' => 'Bu e-posta adresi geçerli değil.',
+	'articlefeedbackv5-error-blocked' => 'Engellenmiş kullanıcılar geri bildirim gönderemez.',
 	'articlefeedbackv5-error-validation' => 'Doğrulama hatası.',
 	'articlefeedbackv5-error-abuse' => 'Yorumunuz $1 ilkesini ihlal ediyor. Lütfen bunu düzeltin.',
 	'articlefeedbackv5-error-abuse-linktext' => 'geri bildirim kötüye kullanım ilkesi',
@@ -13304,22 +13335,31 @@ $messages['tr'] = array(
 	'articlefeedbackv5-form-helpful-yes-label' => 'Evet',
 	'articlefeedbackv5-form-helpful-no-label' => 'Hayır',
 	'articlefeedbackv5-special-add-feedback' => 'Geri bildirim ekleyin',
-	'articlefeedbackv5-special-filter-all' => 'Hepsi ($1)',
+	'articlefeedbackv5-special-filter-all' => 'Hepsi (gözetim) ($1)',
+	'articlefeedbackv5-special-filter-notdeleted' => 'Hepsi ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'Sadece yorumlar ($1)',
+	'articlefeedbackv5-special-filter-abusive' => 'İstismar olarak bayraklandı ($1)',
 	'articlefeedbackv5-special-filter-invisible' => '($1) gizlendi',
 	'articlefeedbackv5-special-filter-deleted' => '($1) silindi',
 	'articlefeedbackv5-special-sort-age' => 'Tarih',
+	'articlefeedbackv5-special-filter-label-before' => 'Gösteriliyor:',
 	'articleFeedbackv5-comment-ago' => '$1 önce',
 	'articlefeedbackv5-revision-link' => 'Özgün sürümü görüntüle',
 	'articlefeedbackv5-special-more' => 'Daha fazla',
 	'articlefeedbackv5-special-pagetitle' => 'Geri bildirim: $1',
 	'articlefeedbackv5-form-optionid' => 'Seçenek $1',
 	'articlefeedbackv5-hidden' => 'Gizli',
-	'articlefeedbackv5-form-delete' => 'Sil',
+	'articlefeedbackv5-form-hide' => 'Bu yazıyı gizle',
+	'articlefeedbackv5-form-unhide' => 'Bu yazıyı göster',
+	'articlefeedbackv5-form-abuse' => 'İstismar olarak bayraklayın ($1)',
+	'articlefeedbackv5-form-abuse-masked' => 'İstismar olarak bayraklayın',
+	'articlefeedbackv5-form-delete' => 'Gözetim',
+	'articlefeedbackv5-abuse-saved' => 'İstismar olarak bayraklandı ($1)',
+	'articlefeedbackv5-abuse-saved-masked' => 'İstismar olarak bayraklandı',
 	'articlefeedbackv5-go-to-article' => 'Maddeyi görüntüle',
 	'articlefeedbackv5-discussion-page' => 'Tartışma',
 	'articlefeedbackv5-whats-this' => 'Yardım',
-	'articlefeedbackv5-overall-rating' => 'Oran',
+	'articlefeedbackv5-overall-rating' => 'Oran: $1/5',
 	'articlefeedbackv5-special-title' => '==Geri bildirim==',
 	'articleFeedbackv5-table-heading-page' => 'Madde',
 	'articleFeedbackv5-table-heading-average' => 'Ortalama',
@@ -13346,6 +13386,7 @@ $messages['tr'] = array(
 	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'İsteği iptal et',
 	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Daha fazla bilgi',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Not ekle',
+	'articlefeedbackv5-noteflyover-oversight-help' => 'Daha fazla bilgi',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Not ekle',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Daha fazla bilgi',
 	'articlefeedbackv5-noteflyover-declineoversight-label' => 'Not ekle',
@@ -13871,6 +13912,7 @@ $messages['yo'] = array(
  * @author Anakmalaysia
  * @author Bencmq
  * @author Breawycker
+ * @author Dimension
  * @author Hydra
  * @author Hzy980512
  * @author Liangent
@@ -13878,6 +13920,7 @@ $messages['yo'] = array(
  * @author PhiLiP
  * @author Shizhao
  * @author Xiaomingyan
+ * @author Yfdyh000
  * @author 阿pp
  */
 $messages['zh-hans'] = array(
@@ -13898,7 +13941,7 @@ $messages['zh-hans'] = array(
 	'articlefeedbackv5-error-email' => '此电子邮件地址无效。',
 	'articlefeedbackv5-error-blocked' => '被阻止的用户不能提交反馈。',
 	'articlefeedbackv5-error-validation' => '验证错误。',
-	'articlefeedbackv5-error-abuse' => '您的评论违反了$1，请修改之。',
+	'articlefeedbackv5-error-abuse' => '您的评论被软件过滤器拒绝，它可能违反了维基百科的$1。请修改您的评论再试。',
 	'articlefeedbackv5-error-abuse-linktext' => '反馈滥用政策',
 	'articlefeedbackv5-error-unknown' => '未知错误。',
 	'articlefeedbackv5-error-submit' => '表单提交错误。',
@@ -13995,7 +14038,9 @@ $messages['zh-hans'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1个月|$1个月}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1周|$1周}}',
 	'articlefeedbackv5-timestamp-seconds' => '不到1分钟',
+	'articlefeedbackv5-mask-text-hidden' => '此评论被一名已授权编者隐藏',
 	'articlefeedbackv5-mask-postnumber' => '帖子#$1',
+	'articlefeedbackv5-special-goback' => '回到反馈列表',
 	'articlefeedbackv5-noteflyover-hide-caption' => '隐藏该帖',
 	'articlefeedbackv5-noteflyover-hide-label' => '添加注释',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => '您为什么隐藏该帖？',
@@ -14138,6 +14183,8 @@ $messages['zh-hans'] = array(
 	'right-aftv5-see-deleted-feedback' => '查看已删除的反馈',
 	'right-aftv5-see-hidden-feedback' => '查看隐藏的反馈',
 	'articlefeedbackv5-log-name' => '文章反馈活动日志',
+	'articlefeedbackv5-activity-pane-header' => '活动日志',
+	'articlefeedbackv5-activity-more' => '显示更多活动',
 	'articlefeedbackv5-emailcapture-response-body' => '您好！
 
 谢谢您表示愿意帮助我们改善{{SITENAME}}。
@@ -14160,6 +14207,10 @@ $3
 
 祝好，致谢，
 {{SITENAME}}团队',
+	'articlefeedbackv5-disable-flyover-title' => '移除此工具吗？',
+	'articlefeedbackv5-disable-flyover-help' => '若要删除 $1，请转至 $2，并勾选 $3',
+	'articlefeedbackv5-disable-flyover-help-location' => '参数设置 > 外观',
+	'articlefeedbackv5-disable-flyover-prefbutton' => '转至参数设置',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
