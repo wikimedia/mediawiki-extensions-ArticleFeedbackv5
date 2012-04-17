@@ -452,8 +452,6 @@
 				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
-						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-submit-' +
-							( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 						$.articleFeedbackv5.submitForm();
 					} );
 			},
@@ -502,6 +500,134 @@
 					ok = false;
 				}
 				return ok ? false : error;
+			}
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ Bucket 4
+
+		/**
+		 * Bucket 4: Help Improve This Article
+		 */
+		'4': {
+
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The template for the whole block, if the user can edit the
+				 * article
+				 */
+				editable: '\
+					<div>\
+						<div class="form-row articleFeedbackv5-bucket4-toggle">\
+							<p class="sub-header"><strong><html:msg key="bucket4-subhead" /></strong></p>\
+							<p class="instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
+							<html:msg key="bucket4-teaser-line2" /></p>\
+						</div>\
+						<div class="articleFeedbackv5-disclosure">\
+							<p><a class="articleFeedbackv5-learn-to-edit" target="_blank"><html:msg key="bucket4-learn-to-edit" /> &raquo;</a></p>\
+						</div>\
+						<a class="articleFeedbackv5-cta-button" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket4-form-submit" /></a>\
+						<div class="clear"></div>\
+					</div>\
+					',
+
+				/**
+				 * The template for the whole block, if the user cannot edit the
+				 * article
+				 */
+				noneditable: '\
+					<div>\
+						<div class="form-row articleFeedbackv5-bucket4-toggle">\
+							<p class="instructions-left"><html:msg key="bucket4-noedit-teaser-line1" /><br />\
+							<html:msg key="bucket4-noedit-teaser-line2" /></p>\
+						</div>\
+						<div class="articleFeedbackv5-disclosure">\
+							<p>&nbsp;</p>\
+						</div>\
+						<a class="articleFeedbackv5-cta-button" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket4-noedit-form-submit" /></a>\
+						<div class="clear"></div>\
+					</div>\
+					'
+
+			},
+
+			// }}}
+			// {{{ getTitle
+
+			/**
+			 * Gets the title
+			 *
+			 * @return string the title
+			 */
+			getTitle: function () {
+				return mw.msg( $.articleFeedbackv5.editable ? 'articlefeedbackv5-bucket4-title' : 'articlefeedbackv5-bucket4-noedit-title' );
+			},
+
+			// }}}
+			// {{{ buildForm
+
+			/**
+			 * Builds the empty form
+			 *
+			 * @return Element the form
+			 */
+			buildForm: function () {
+
+				// Start up the block to return
+				var $block = $( $.articleFeedbackv5.editable ? $.articleFeedbackv5.currentBucket().templates.editable : $.articleFeedbackv5.currentBucket().templates.noneditable );
+
+				// Fill in the learn to edit link
+				$block.find( '.articleFeedbackv5-learn-to-edit' )
+					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
+
+				// Fill in the button link
+				var track_id = $.articleFeedbackv5.experiment() + '-button_click-' +
+					( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
+				if ( $.articleFeedbackv5.editable ) {
+					$block.find( '.articleFeedbackv5-cta-button' )
+						.attr( 'href', $.articleFeedbackv5.editUrl( track_id ) );
+				} else {
+					var learn_url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
+					$block.find( '.articleFeedbackv5-cta-button' )
+						.attr( 'href', $.articleFeedbackv5.trackingUrl( learn_url, track_id ) );
+				}
+
+				// Turn the submit into a slick button
+				$block.find( '.articleFeedbackv5-cta-button' )
+					.button()
+					.addClass( 'ui-button-blue' )
+
+				return $block;
+			},
+
+			// }}}
+			// {{{ afterBuild
+
+			/**
+			 * Handles any setup that has to be done once the markup is in the
+			 * holder
+			 */
+			afterBuild: function () {
+				// Set a custom message
+				$.articleFeedbackv5.$holder
+					.add( $.articleFeedbackv5.$dialog)
+					.find( '.articleFeedbackv5-tooltip-info' )
+					.text( mw.msg( 'articlefeedbackv5-bucket4-help-tooltip-info' ) );
+				// Add a class so we can drop the tooltip down a bit for the
+				// learn-more version
+				if ( !$.articleFeedbackv5.editable ) {
+					$.articleFeedbackv5.find( '.articleFeedbackv5-ui' )
+						.addClass( 'articleFeedbackv5-option-4-noedit' );
+				}
 			}
 
 			// }}}
@@ -592,18 +718,7 @@
 			 * @return bool whether the CTA can be displayed
 			 */
 			verify: function () {
-				// An empty restrictions array means anyone can edit
-				var restrictions =  mw.config.get( 'wgRestrictionEdit', [] );
-				if ( restrictions.length ) {
-					var groups =  mw.config.get( 'wgUserGroups' );
-					// Verify that each restriction exists in the user's groups
-					for ( var i = 0; i < restrictions.length; i++ ) {
-						if ( $.inArray( restrictions[i], groups ) < 0 ) {
-							return false;
-						}
-					}
-				}
-				return true;
+				return $.articleFeedbackv5.editable;
 			},
 
 			// }}}
@@ -1398,8 +1513,12 @@
 		$.articleFeedbackv5.clickTracking = $.articleFeedbackv5.checkClickTracking();
 		// Has the user already submitted ratings for this page at this revision?
 		$.articleFeedbackv5.alreadySubmitted = $.cookie( $.articleFeedbackv5.prefix( 'submitted' ) ) === 'true';
+		// Can the user edit the page?
+		$.articleFeedbackv5.editable = $.articleFeedbackv5.userCanEdit();
 		// Go ahead and bucket right away
 		$.articleFeedbackv5.selectBucket();
+		// Select the trigger link(s)
+		$.articleFeedbackv5.selectTriggerLinks();
 		// Anything the bucket needs to do?
 		if ( 'init' in $.articleFeedbackv5.currentBucket() ) {
 			$.articleFeedbackv5.currentBucket().init();
@@ -1413,12 +1532,16 @@
 		} );
 		// Keep track of links that must be removed after a successful submission
 		$.articleFeedbackv5.$toRemove = $( [] );
-		// Select the trigger link(s)
-		$.articleFeedbackv5.selectTriggerLinks();
+		// Add them
 		$.articleFeedbackv5.addTriggerLinks();
 		// Track init at 1%
 		if ( Math.random() * 100 < 1 ) {
-			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-init' );
+			var exp = $.articleFeedbackv5.experiment();
+			if ( $.articleFeedbackv5.bucketId == 4 ) {
+				exp = exp.replace('_edit', '');
+				exp = exp.replace('_learn_more', '-noedit');
+			}
+			$.articleFeedbackv5.trackClick( exp + '-init' );
 		}
 	};
 
@@ -1437,7 +1560,7 @@
 		// 1. Requested in query string (debug only)
 		// 2. From cookie (see below)
 		// 3. Core bucketing
-		var knownBuckets = { '0': true, '1': true };
+		var knownBuckets = { '0': true, '1': true, '4': true };
 		var requested = mw.util.getParamValue( 'aftv5_form' );
 		var cookieval = $.cookie( $.articleFeedbackv5.prefix( 'display-bucket' ) );
 		if ( requested in knownBuckets ) {
@@ -1449,7 +1572,7 @@
 				'ext.articleFeedbackv5-display',
 				mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' )
 			);
-			var nameMap = { zero: '0', one: '1' };
+			var nameMap = { zero: '0', one: '1', four: '4' };
 			$.articleFeedbackv5.bucketId = nameMap[bucketName];
 		}
 		// Drop in a cookie to keep track of their display bucket;
@@ -1461,7 +1584,7 @@
 			{ 'expires': cfg.expires, 'path': '/' }
 		);
 		if ( $.articleFeedbackv5.debug ) {
-			aft5_debug( 'Using bucket #' + $.articleFeedbackv5.bucketId );
+			aft5_debug( 'Using form option #' + $.articleFeedbackv5.bucketId );
 		}
 	};
 
@@ -1522,6 +1645,27 @@
 		}
 		// Always add the toolbox link
 		$.articleFeedbackv5.selectedLinks.push('TBX');
+	};
+
+	// }}}
+	// {{{ userCanEdit
+
+	/**
+	 * Returns whether the user can edit the article
+	 */
+	$.articleFeedbackv5.userCanEdit = function () {
+		// An empty restrictions array means anyone can edit
+		var restrictions =  mw.config.get( 'wgRestrictionEdit', [] );
+		if ( restrictions.length ) {
+			var groups =  mw.config.get( 'wgUserGroups' );
+			// Verify that each restriction exists in the user's groups
+			for ( var i = 0; i < restrictions.length; i++ ) {
+				if ( $.inArray( restrictions[i], groups ) < 0 ) {
+					return false;
+				}
+			}
+		}
+		return true;
 	};
 
 	// }}}
@@ -1680,7 +1824,15 @@
 	 * @return string the experiment (e.g. "option1A")
 	 */
 	$.articleFeedbackv5.experiment = function () {
-		return 'option' + $.articleFeedbackv5.bucketId + $.articleFeedbackv5.floatingLinkId;
+		var exp = 'optionSE_' + $.articleFeedbackv5.bucketId + $.articleFeedbackv5.floatingLinkId;
+		if ( $.articleFeedbackv5.bucketId == 4 ) {
+			if ( $.articleFeedbackv5.editable ) {
+				exp += '_edit';
+			} else {
+				exp += '_learn_more';
+			}
+		}
+		return exp;
 	};
 
 	// }}}
@@ -1737,12 +1889,13 @@
 			'articleFeedbackv5_click_tracking': $.articleFeedbackv5.clickTracking ? '1' : '0',
 		};
 		if ( $.articleFeedbackv5.clickTracking ) {
-			params.articleFeedbackv5_ct_token  = $.cookie( 'clicktracking-session' );
-			params.articleFeedbackv5_bucket_id = $.articleFeedbackv5.bucketId;
-			params.articleFeedbackv5_cta_id    = $.articleFeedbackv5.ctaId;
-			params.articleFeedbackv5_f_link_id = $.articleFeedbackv5.floatingLinkId;
-			params.articleFeedbackv5_link_id   = $.articleFeedbackv5.submittedLinkId;
-			params.articleFeedbackv5_location  = $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom';
+			params.articleFeedbackv5_ct_token   = $.cookie( 'clicktracking-session' );
+			params.articleFeedbackv5_bucket_id  = $.articleFeedbackv5.bucketId;
+			params.articleFeedbackv5_cta_id     = $.articleFeedbackv5.ctaId;
+			params.articleFeedbackv5_link_id    = $.articleFeedbackv5.submittedLinkId;
+			params.articleFeedbackv5_f_link_id  = $.articleFeedbackv5.floatingLinkId;
+			params.articleFeedbackv5_experiment = $.articleFeedbackv5.experiment();
+			params.articleFeedbackv5_location   = $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom';
 		}
 		var url = mw.config.get( 'wgScript' ) + '?' + $.param( params );
 		if ( trackingId ) {
@@ -1965,6 +2118,10 @@
 			'link': $.articleFeedbackv5.submittedLinkId
 		} );
 
+		// Track the submit click
+		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-submit_attempt-' +
+			( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+
 		// Send off the ajax request
 		$.ajax( {
 			'url': $.articleFeedbackv5.apiUrl,
@@ -1986,17 +2143,25 @@
 					// the trigger link replacing the form. _SWITCH_CLEAR_
 					$.articleFeedbackv5.$toRemove.remove();
 					$.articleFeedbackv5.$toRemove = $( [] );
+					// Track the success
+					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-submit_success-' +
+						( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 				} else {
+					var code = 'unknown';
 					var msg;
 					if ( 'error' in data ) {
 						if ( typeof( data.error ) == 'object' ) {
 							msg = data.error;
+							if ( 'code' in data.error ) {
+								code = data.error.code;
+							}
 						} else if ( 'articlefeedbackv5-error-abuse' == data.error ) {
 							msg = $.articleFeedbackv5.buildLink( data.error, {
 								href: mw.msg( 'articlefeedbackv5-error-abuse-link' ),
 								text: 'articlefeedbackv5-error-abuse-linktext',
 								target: '_blank'
 							});
+							code = 'afreject';
 						} else {
 							msg = mw.msg( data.error );
 						}
@@ -2004,9 +2169,15 @@
 						// NB: Warnings come from the AbuseFilter and are
 						// already translated.
 						msg = data.warning;
+						code = 'afwarn';
 					} else {
 						msg = { info: mw.msg( 'articlefeedbackv5-error-unknown' ) };
 					}
+					// Track the error
+					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() +
+						'-submit_error_' + code + '-' +
+						( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+					// Set up error state
 					$.articleFeedbackv5.markFormErrors( { _api : msg } );
 					$.articleFeedbackv5.unlockForm();
 					if ( $.articleFeedbackv5.inDialog ) {
@@ -2014,7 +2185,12 @@
 					}
 				}
 			},
-			'error': function () {
+			'error': function (xhr, tstatus, error) {
+				// Track the error
+				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() +
+					'-submit_error_jquery-' +
+					( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+				// Set up error state
 				var err = { _api: { info: mw.msg( 'articlefeedbackv5-error-submit' ) } };
 				$.articleFeedbackv5.markFormErrors( err );
 				$.articleFeedbackv5.unlockForm();

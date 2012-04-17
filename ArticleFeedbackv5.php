@@ -21,6 +21,9 @@ $wgArticleFeedbackv5OversightEmailName = 'Oversighters';
 // Help link for oversight email
 $wgArticleFeedbackv5OversightEmailHelp = 'http://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help/Feedback_page_Oversighters';
 
+// Help link for auto flag/hide etc
+$wgArticleFeedbackv5AutoHelp = 'http://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help';
+
 // How long text-based feedback is allowed to be before returning an error.
 // Set to 0 to disable length checking entirely.
 $wgArticleFeedbackv5MaxCommentLength =  0;
@@ -80,17 +83,17 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// the new odds are applied to everyone, not just people who have yet to be
 	// placed in a bucket.
 	'buckets' => array(
-		'zero' => 0,
-		'one' => 100,
-		'two' => 0,
+		'zero'  => 33,
+		'one'   => 33,
+		'two'   => 0,
 		'three' => 0,
-		'four' => 0,
-		'five' => 0,
+		'four'  => 33,
+		'five'  => 0,
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
 	// this when you want to start a new "experiment".
-	'version' => 1,
+	'version' => 2,
 	// Let users be tracked for a month, and then rebucket them, allowing some
 	// churn.
 	'expires' => 30,
@@ -113,7 +116,7 @@ $wgArticleFeedbackv5Tracking = array(
 	),
 	// This version number is added to all tracking event names, so that changes in the software
 	// don't corrupt the data being collected. Bump this when you want to start a new "experiment".
-	'version' => 1,
+	'version' => 2,
 	// Let users be tracked for a month, and then rebucket them, allowing some churn
 	'expires' => 30,
 	// Track the event of users being bucketed - so we can be sure the odds
@@ -322,10 +325,12 @@ $wgLogActions['suppress/request']  = 'articlefeedbackv5-log-request';
 $wgLogActions['suppress/unrequest']  = 'articlefeedbackv5-log-unrequest';
 $wgLogActions['articlefeedbackv5/flag']  = 'articlefeedbackv5-log-flag';
 $wgLogActions['articlefeedbackv5/unflag']  = 'articlefeedbackv5-log-unflag';
+$wgLogActions['articlefeedbackv5/autoflag']  = 'articlefeedbackv5-log-autoflag';
+$wgLogActions['articlefeedbackv5/autohide']  = 'articlefeedbackv5-log-autohide';
 
 // Add custom action handlers for AbuseFilter
+$wgAbuseFilterAvailableActions[] = 'aftv5flagabuse';
 // Not for this release
-// $wgAbuseFilterAvailableActions[] = 'aftv5flagabuse';
 // $wgAbuseFilterAvailableActions[] = 'aftv5hide';
 // $wgAbuseFilterAvailableActions[] = 'aftv5requestoversight';
 
