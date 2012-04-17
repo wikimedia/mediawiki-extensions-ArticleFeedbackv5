@@ -599,7 +599,7 @@ class ArticleFeedbackv5Flagging {
 		$page_name = $title_object->getDBKey();
 
 		// make a title out of our user (sigh)
-		$user_page = $wgUser->getPage();
+		$user_page = $wgUser->getUserPage();
 
 		if ( !$user_page ) {
 			return; // no user title object, no mail
