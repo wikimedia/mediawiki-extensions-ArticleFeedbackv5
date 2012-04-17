@@ -485,7 +485,7 @@
 	right: -105px;
 	font-size: 12px;
 	width: 234px;
-	color: #000;	
+	color: #000;
 }
 
 .articleFeedbackv5-tooltip .tooltip-top {
@@ -804,8 +804,8 @@
 }
 
 /*** Option 4 ***/
-.articleFeedbackv5-option-4 .articleFeedbackv5-submit {
-	float: right;
+.articleFeedbackv5-option-4.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
+	margin-top: 10px !important;
 }
 .articleFeedbackv5-option-4 .articleFeedbackv5-disclosure {
 	float: left;
@@ -825,6 +825,13 @@
 }
 .articleFeedbackv5-option-4 .articleFeedbackv5-submit span {
 	margin: 8px 0 0;
+}
+.articleFeedbackv5-option-4 .articleFeedbackv5-tooltip {
+	top: -350px;
+}
+
+.articleFeedbackv5-option-4-noedit .articleFeedbackv5-tooltip {
+	top: -310px;
 }
 
 /*** Option 5 ***/
@@ -1058,7 +1065,7 @@ body.skin-monobook .articleFeedbackv5-dialog {
 }
 .articleFeedbackv5-fixedtabbox {
 	position: relative;
-	/*-moz-transform:rotate(90deg); 
+	/*-moz-transform:rotate(90deg);
 	-moz-transform-origin: top left;
 	-webkit-transform: rotate(90deg);
 	-webkit-transform-origin: top left;
@@ -1087,7 +1094,7 @@ body.skin-monobook .articleFeedbackv5-dialog {
 	/*padding: 5px 10px;
 	color: #fff;
 	text-align: center;
-	writing-mode: tb-rl;*/	
+	writing-mode: tb-rl;*/
 	position: absolute;
 	z-index: 999;
 }
@@ -1183,7 +1190,7 @@ body.skin-monobook .articleFeedbackv5-dialog {
 .articleFeedbackv5-flyover-header {
 	-moz-border-radius: 3px 3px 0 0;
 	-webkit-border-radius: 3px 3px 0 0;
-	border-radius: 3px 3px 0 0; 
+	border-radius: 3px 3px 0 0;
 	-khtml-border-radius: 3px 3px 0 0;
 }
 .articleFeedbackv5-flyover-header h3 {
