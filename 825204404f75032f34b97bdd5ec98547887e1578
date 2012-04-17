@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAJX///JY\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-17T19:41:53Z",
+      "side": 1,
+      "message": "Don\u0027t use TS_RFC2822 for user-facing display purposes, use $wgLang-\u003etimeanddate() (or per Siebrand\u0027s review, $wgLang-\u003etime() and -\u003edate() separately). Also, timestamps shouldn\u0027t be passed in as raw parameters.",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///KI\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-17T19:41:53Z",
+      "side": 1,
+      "message": "Per Siebrand, $2 needs to be split into a date and a time, like \"This post was hidden by $1 on $2 at $3\"",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///JI\u003d",
+        "filename": "api/ApiFlagFeedbackArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-17T19:41:53Z",
+      "side": 1,
+      "message": "This parameter is unused and very scary, please remove this.",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///JE\u003d",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-17T19:41:53Z",
+      "side": 1,
+      "message": "This (changing from newFromRow to $record[0]-\u003epage_title) unfixes a bug that was fixed earlier (namespace not taken into account, assumed to be zero). This isn\u0027t an issue in production currently (we\u0027re not running AFTv5 on pages with a nonzero namespace right now) but it\u0027s sloppy coding at least.",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///JA\u003d",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-17T19:41:53Z",
+      "side": 1,
+      "message": "And this unfixes a security bug that was fixed earlier: this must be -\u003eescaped(), not -\u003etext(), because the second param to link() is HTML.",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///I0\u003d",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-17T19:41:53Z",
+      "side": 1,
+      "message": "As per my earlier comment, don\u0027t use RFC2822 for timestamp display, use $wgLang-\u003edate() and -\u003etime() fed into separate parameters, and don\u0027t pass timestamps as raw params",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///Io\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-17T19:41:53Z",
+      "side": 1,
+      "message": "You changed the parameter signature but didn\u0027t update the function documentation comment right above it",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///KQ\u003d",
+        "filename": "sql/ArticleFeedbackv5.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-17T19:41:53Z",
+      "side": 1,
+      "message": "Please don\u0027t use ENUM, see also comments in alter.sql",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///Ks\u003d",
+        "filename": "sql/alter.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-17T19:41:53Z",
+      "side": 1,
+      "message": "Please don\u0027t use ENUM in production, you will regret it. I\u0027ve thought it was a reasonable idea a few times before, and in retrospect I\u0027ve been wrong every time. Instead, just make this a varchar field and maintain the list of valid values PHP-side, then you don\u0027t have to do a schema change every time you add a new type.",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///JM\u003d",
+        "filename": "sql/alter.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-17T19:41:53Z",
+      "side": 1,
+      "message": "api/ApiViewFeedbackArticleFeedbackv5.php lines 380-385 still refer to these deleted columns",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
