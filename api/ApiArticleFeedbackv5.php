@@ -25,6 +25,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	// Warn for abuse?
 	private $warnForAbuse = false;
 
+	// filters incremented on creation
+	protected $filters = array( 'visible' => 1, 'notdeleted' => 1, 'all' => 1);
+
 	/**
 	 * Constructor
 	 */
@@ -268,6 +271,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param $pageId int    the page ID
 	 */
 	private function findAbuse( &$value, $pageId ) {
+
 		// Respect $wgSpamRegex
 		global $wgSpamRegex;
 		if ( ( is_array( $wgSpamRegex ) && count( $wgSpamRegex ) > 0 )
@@ -313,8 +317,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			// Add custom action handlers
 			global $wgAbuseFilterCustomActionsHandlers;
 			$flagCallback = array( $this, 'callbackAbuseActionFlag' );
+			$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $flagCallback;
 			// Not for this release
-			// $wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $flagCallback;
 			// $wgAbuseFilterCustomActionsHandlers['aftv5hide'] = $flagCallback;
 			// $wgAbuseFilterCustomActionsHandlers['aftv5requestoversight'] = $flagCallback;
 
@@ -398,15 +402,14 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 	public function updateFilterCounts( $dbw, $pageId, $answers ) {
 
-		// a new item should be in all and visible by default, increment those counters
-		$filters = array( 'all' => 1, 'visible' => 1, 'notdeleted' => 1 );
+		$filters = $this->filters;
 
 		// if this record has a comment attached then increment comment as well
 		// notice we do not need to walk the entire array, since any one hit
 		// counts - aa_response_text is "comment" in the values
 		foreach ( $answers as $a ) {
 			if ( $a['aa_response_text'] !== null ) {
-				$filters['comment'] = 1;
+				$filters['visible-comment'] = 1;
 				break;
 			}
 		}

@@ -47,6 +47,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-nofeedback' => 'Please enter your feedback.',
 	'articlefeedbackv5-error-flagging' => 'Error flagging feedback.',
 
+
 	/* Special Page */
 	'articlefeedbackv5-form-tools-label' => 'Tools',
 	'articlefeedbackv5-form-helpful-label' => 'Is this feedback helpful?',
@@ -55,17 +56,18 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 yes|$1 yes}} / {{PLURAL:$2|1 no|$2 no}}',
 	'articlefeedbackv5-special-add-feedback' => 'Add your feedback',
 	'articlefeedbackv5-special-filter-all' => 'All (oversight) ($1)',
-	'articlefeedbackv5-special-filter-notdeleted' => 'All ($1)',
+	'articlefeedbackv5-special-filter-notdeleted' => 'All (hidden) ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'Comments only ($1)',
 	'articlefeedbackv5-special-filter-abusive' => 'Flagged as abuse ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Helpful ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Unhelpful ($1)',
-	'articlefeedbackv5-special-filter-needsoversight' => 'Oversight requested ($1)',
+	'articlefeedbackv5-special-filter-requested' => 'Oversight requested ($1)',
+	'articlefeedbackv5-special-filter-unrequested' => 'Oversight unrequested ($1)',
 	'articlefeedbackv5-special-filter-visible' => 'All visible ($1)',
-	'articlefeedbackv5-special-filter-invisible' => 'Hidden ($1)',
-	'articlefeedbackv5-special-filter-deleted' => 'Oversighted ($1)',
-	'articlefeedbackv5-special-filter-undeleted' => 'Un-oversighted ($1)',
-	'articlefeedbackv5-special-filter-declined' => 'Oversight Declined ($1)',
+	'articlefeedbackv5-special-filter-hidden' => 'Hidden ($1)',
+	'articlefeedbackv5-special-filter-oversighted' => 'Oversighted ($1)',
+	'articlefeedbackv5-special-filter-unoversighted' => 'Un-oversighted ($1)',
+	'articlefeedbackv5-special-filter-declined' => 'Oversight declined ($1)',
 	'articlefeedbackv5-special-filter-unhidden' => 'Un-hidden ($1)',
 	'articlefeedbackv5-special-sort-age' => 'Date',
 	'articlefeedbackv5-special-sort-helpful' => 'Helpful',
@@ -81,8 +83,15 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-more' => 'Show more posts',
 	'articlefeedbackv5-special-pagetitle' => 'Feedback: $1',
 	'articlefeedbackv5-form-optionid' => 'Option $1',
-	'articlefeedbackv5-hidden' => 'This post was hidden by $1 on $2',
-	'articlefeedbackv5-deleted' => 'This post was deleted by $1 on $2',
+	'articlefeedbackv5-status-hidden' => 'This post was hidden by $1 on $2',
+	'articlefeedbackv5-status-unhidden' => 'This post was unhidden by $1 on $2',
+	'articlefeedbackv5-status-request' => 'Oversight for this post was requested by $1 on $2',
+	'articlefeedbackv5-status-unrequest' => 'Oversight for this post was un-requested by $1 on $2',
+	'articlefeedbackv5-status-declined' => 'Oversight for this post was declined by $1 on $2',
+	'articlefeedbackv5-status-autohide' => 'This post was auto-hidden by $1 on $2',
+	'articlefeedbackv5-status-deleted' => 'This post was oversighted by $1 on $2',
+	'articlefeedbackv5-status-undeleted' => 'This post was un-oversighted by $1 on $2',
+	'articlefeedbackv5-status-autoflag' => 'This post was auto-flagged by $1 on $2',
 	'articlefeedbackv5-form-hide' => 'Hide this post',
 	'articlefeedbackv5-form-unhide' => 'Unhide this post',
 	'articlefeedbackv5-form-helpful' => 'Mark as helpful ($1)',
@@ -113,6 +122,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-loading-feedback' => 'Error loading feedback',
 	'articlefeedbackv5-invalid-feedback-id' => 'Invalid feedback ID',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Invalid feedback flag',
+	'articlefeedbackv5-invalid-feedback-state' => 'Invalid feedback flag state',
 	'articlefeedbackv5-go-to-article' => 'View article',
 	'articlefeedbackv5-discussion-page' => 'Talk',
 	'articlefeedbackv5-whats-this' => 'Help',
@@ -249,6 +259,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Learn how to edit',
 	'articlefeedbackv5-bucket4-form-submit' => 'Edit this page',
 	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Wikipedia wants to know what you think. Help improve this page by becoming an editor.',
+	'articlefeedbackv5-bucket4-noedit-title' => 'Help improve Wikipedia',
+	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'This website is created by people like you.',
+	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'Can you give us a hand?',
+	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Learn more',
 
 	/* Option 5 (just like AFTv4, but ported to work with v5) */
 	'articlefeedbackv5-bucket5-form-switch-label' => 'Rate this page',
@@ -341,11 +355,13 @@ $messages['en'] = array(
 	'articlefeedbackv5-log-unoversight' => 'removed the oversight [[$1]] status from feedback',
 	'articlefeedbackv5-log-hidden' => 'hid the feedback [[$1]]',
 	'articlefeedbackv5-log-unhidden' => 'unhid the feedback [[$1]]',
-	'articlefeedbackv5-log-decline' => 'declined oversight request from the feedback [[$1]]',
-	'articlefeedbackv5-log-request' => 'requested oversight on the feedback [[$1]]',
-	'articlefeedbackv5-log-unrequest' => 'removed the requested oversight on the feedback [[$1]]',
+	'articlefeedbackv5-log-decline' => 'declined oversight for the feedback [[$1]]',
+	'articlefeedbackv5-log-request' => 'requested oversight for [[$1]]',
+	'articlefeedbackv5-log-unrequest' => 'un-requested oversight for [[$1]]',
 	'articlefeedbackv5-log-flag' => 'flagged the feedback [[$1]] as abuse',
 	'articlefeedbackv5-log-unflag' => 'unflagged the feedback [[$1]] as abuse',
+	'articlefeedbackv5-log-autohide' => 'auto-hid the feedback [[$1]] as abuse',
+	'articlefeedbackv5-log-autoflag' => 'auto-flagged the feedback [[$1]] as abuse',
 
 	/* Activity Pane phrases */
 	'articlefeedbackv5-activity-pane-header' => 'Activity Log',
@@ -499,12 +515,33 @@ The link to the edit tutorial',
 	'articlefeedbackv5-special-more' => '{{Identical|More}}',
 	'articlefeedbackv5-special-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]]. Parameters:
 * $1 is the title of the article for which we show the feedback',
-	'articlefeedbackv5-hidden' => 'The marker that appears on a comment if it has been hidden by a monitor.
+	'articlefeedbackv5-status-hidden' => 'The marker that appears on a comment if it has been hidden by a monitor.
 * $1 is the name of the monitor who performed the hide
 * $2 is the timestamp for when the hide occurred',
-	'articlefeedbackv5-deleted' => 'The marker that appears on a comment if it has been deleted by an oversighter.
+	'articlefeedbackv5-status-deleted' => 'The marker that appears on a comment if it has been deleted by an oversighter.
 * $1 is the name of the oversighter who performed the delete
 * $2 is the timestamp for when the deletion occurred',
+	'articlefeedbackv5-status-autohide' => 'The marker that appears on a comment if it has been autohidden by the extension.
+* $1 is the name of the monitor who performed the hide
+* $2 is the timestamp for when the hide occurred',
+	'articlefeedbackv5-status-unhidden' => 'The marker that appears on a comment if it has been unhidden by a user.
+* $1 is the name of the monitor who performed the unhide
+* $2 is the timestamp for when the unhide occurred',
+	'articlefeedbackv5-status-request' => 'The marker that appears on a comment if a user has requested oversight.
+* $1 is the name of the monitor who requested oversight
+* $2 is the timestamp for when the request occurred',
+	'articlefeedbackv5-status-unrequest' => 'The marker that appears on a comment if a user has canceled an oversight request.
+* $1 is the name of the monitor who canceled the oversight request
+* $2 is the timestamp for when the cancelation request occurred',
+	'articlefeedbackv5-status-autoflag' => 'The marker that appears on a comment if it has been automatically flagged as abuse.
+* $1 is a link to the faq about how autoflagging works
+* $2 is the timestamp for when the autoflag occurred',
+	'articlefeedbackv5-status-declined' => 'The marker that appears on a comment if a user has declined an oversight request.
+* $1 is the name of the oversighter who declined the oversight request
+* $2 is the timestamp for when the decline occurred',
+	'articlefeedbackv5-status-undeleted' => 'The marker that appears on a comment if a user has un-oversighted.
+* $1 is the name of the oversighter who un-oversighted
+* $2 is the timestamp for when the unoversight occurred',
 	'articlefeedbackv5-form-abuse' => 'Link text allowing the user to flag feedback as abuse.  $1 is the number of times the feedback has been flagged previously.',
 	'articlefeedbackv5-form-abuse-masked' => 'Link text allowing the user to flag feedback as abuse, without the count included in {{msg-mw|articlefeedbackv5-form-abuse}}',
 	'articlefeedbackv5-form-delete' => '{{Identical|Delete}}',
@@ -636,6 +673,11 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'The text for the "Learn how to edit" link',
 	'articlefeedbackv5-bucket4-form-submit' => 'The text for the big edit button',
 	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Overrides {{msg-mw|articlefeedbackv5-help-tooltip-info}} for option 4.',
+	'articlefeedbackv5-bucket4-noedit-title' => 'This is the title of the feedback panel for option 4, when the user cannot edit the article',
+	'articlefeedbackv5-bucket4-noedit-subhead' => 'A subheader to go directly under the title for option 4, when the user cannot edit the article',
+	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'The first line of the teaser text for option 4, when the user cannot edit the article',
+	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'The second line of the teaser text for option 4, when the user cannot edit the article',
+	'articlefeedbackv5-bucket4-noedit-form-submit' => 'The text for the big button, when the user cannot edit the article',
 	'articlefeedbackv5-bucket5-form-panel-explanation' => '{{Identical|What is this}}',
 	'articlefeedbackv5-bucket5-form-panel-explanation-link' => 'Do not translate "Project:". Also translate the "ArticleFeedback" special page name at [[Special:AdvancedTranslate]].',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'This message may not use <nowiki>{{SITENAME}}</nowiki>.',
@@ -682,6 +724,8 @@ This URL can be changed to point to a translated version of the page if it exist
 	'articlefeedbackv5-log-unrequest' => 'Un-request oversight action log string (an oversight request asks an oversighter to delete feedback)',
 	'articlefeedbackv5-log-flag' => 'Flag post as abuse action log string',
 	'articlefeedbackv5-log-unflag' => 'Unflag post as abuse action log string',
+	'articlefeedbackv5-log-autohide' => 'Hide a post automatically (for example, when requesting oversight, oversighting, too many abuse flags)',
+	'articlefeedbackv5-log-autoflag' => 'Flag a post as abuse automatically (for example, spam and abuse filtering mechanisms may do this)',
 	'articlefeedbackv5-activity-pane-header' => 'Flyover panel caption',
 	'articlefeedbackv5-activity-feedback-info' => 'Post information template. Parameters:
 * $1 is the feedback post ID,

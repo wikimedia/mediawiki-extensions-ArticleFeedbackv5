@@ -158,6 +158,23 @@ UPDATE /*_*/aft_article_feedback SET af_experiment = CONCAT(af_form_id, 'A') WHE
 UPDATE /*_*/aft_article_feedback SET af_experiment = CONCAT(af_form_id, 'E') WHERE DATE(af_created) > '2012-03-21' AND af_link_id = 5;
 UPDATE /*_*/aft_article_feedback SET af_experiment = CONCAT(af_form_id, '?') WHERE DATE(af_created) > '2012-03-21' AND af_link_id = 0;
 
-
 -- Added 3/30 (emsmith)
 ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_suppress_count integer unsigned NOT NULL DEFAULT 0;
+
+-- Added 4/3 (emsmith)
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_last_status enum('hidden', 'autohide', 'unhidden', 'deleted', 'undeleted', 'request', 'unrequest', 'declined', 'autoflag') NULL;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_last_status_user_id integer unsigned NOT NULL DEFAULT 0;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_last_status_timestamp binary(14) NOT NULL DEFAULT '';
+
+UPDATE /*_*/aft_article_feedback SET af_last_status_timestamp = af_oversight_timestamp, af_last_status_user_id = af_oversight_user_id, af_last_status = 'deleted' WHERE af_is_deleted IS TRUE;
+UPDATE /*_*/aft_article_feedback SET af_last_status_timestamp = af_hide_timestamp, af_last_status_user_id = af_hide_user_id, af_last_status = 'hidden' WHERE af_is_hidden IS TRUE;
+
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_is_autohide BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_is_unrequested BOOLEAN NOT NULL DEFAULT FALSE;
+UPDATE /*_*/aft_article_feedback SET af_is_autohide = 1 WHERE af_is_hidden IS TRUE AND af_hide_user_id < 1;
+UPDATE /*_*/aft_article_feedback SET af_last_status = 'autohide' WHERE af_is_autohide IS TRUE;
+
+ALTER TABLE /*_*/aft_article_feedback DROP COLUMN af_hide_timestamp;
+ALTER TABLE /*_*/aft_article_feedback DROP COLUMN af_hide_user_id;
+ALTER TABLE /*_*/aft_article_feedback DROP COLUMN af_oversight_timestamp;
+ALTER TABLE /*_*/aft_article_feedback DROP COLUMN af_oversight_user_id;
