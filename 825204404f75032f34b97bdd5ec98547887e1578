@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX///As\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-17T23:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX///JY\u003d",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJX///KI\u003d",
         "filename": "ArticleFeedbackv5.i18n.php",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-04-17T19:41:53Z",
       "side": 1,
       "message": "Per Siebrand, $2 needs to be split into a date and a time, like \"This post was hidden by $1 on $2 at $3\"",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///Ao\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-17T23:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX///KI\u003d",
       "revId": "825204404f75032f34b97bdd5ec98547887e1578",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX///Ak\u003d",
+        "filename": "api/ApiFlagFeedbackArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-17T23:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX///JI\u003d",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJX///JE\u003d",
         "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX///AE\u003d",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-17T23:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX///JE\u003d",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJX///JA\u003d",
         "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2012-04-17T19:41:53Z",
       "side": 1,
       "message": "And this unfixes a security bug that was fixed earlier: this must be -\u003eescaped(), not -\u003etext(), because the second param to link() is HTML.",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///AA\u003d",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-17T23:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX///JA\u003d",
       "revId": "825204404f75032f34b97bdd5ec98547887e1578",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX//+/0\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-17T23:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX///Io\u003d",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJX///KQ\u003d",
         "filename": "sql/ArticleFeedbackv5.sql",
         "patchSetId": 1
@@ -132,6 +240,24 @@
       "writtenOn": "2012-04-17T19:41:53Z",
       "side": 1,
       "message": "Please don\u0027t use ENUM, see also comments in alter.sql",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX//+/c\u003d",
+        "filename": "sql/ArticleFeedbackv5.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-17T23:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX///KQ\u003d",
       "revId": "825204404f75032f34b97bdd5ec98547887e1578",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -155,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX//+/g\u003d",
+        "filename": "sql/alter.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-17T23:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX///Ks\u003d",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJX///JM\u003d",
         "filename": "sql/alter.sql",
         "patchSetId": 1
@@ -166,6 +310,24 @@
       "writtenOn": "2012-04-17T19:41:53Z",
       "side": 1,
       "message": "api/ApiViewFeedbackArticleFeedbackv5.php lines 380-385 still refer to these deleted columns",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX//+/k\u003d",
+        "filename": "sql/alter.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-17T23:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX///JM\u003d",
       "revId": "825204404f75032f34b97bdd5ec98547887e1578",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
