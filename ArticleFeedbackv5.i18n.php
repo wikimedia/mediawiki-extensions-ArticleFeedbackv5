@@ -351,17 +351,18 @@ $messages['en'] = array(
 	/* Log types */
 	'articlefeedbackv5-log-name' => 'Article Feedback Activity Log',
 	'articlefeedbackv5-log-header' => 'This is the log of activity taken on feedback items collected for articles using Article Feedback.',
-	'articlefeedbackv5-log-oversight' => 'changed the feedback [[$1]] status to oversight',
-	'articlefeedbackv5-log-unoversight' => 'removed the oversight [[$1]] status from feedback',
-	'articlefeedbackv5-log-hidden' => 'hid the feedback [[$1]]',
-	'articlefeedbackv5-log-unhidden' => 'unhid the feedback [[$1]]',
-	'articlefeedbackv5-log-decline' => 'declined oversight for the feedback [[$1]]',
-	'articlefeedbackv5-log-request' => 'requested oversight for [[$1]]',
-	'articlefeedbackv5-log-unrequest' => 'un-requested oversight for [[$1]]',
-	'articlefeedbackv5-log-flag' => 'flagged the feedback [[$1]] as abuse',
-	'articlefeedbackv5-log-unflag' => 'unflagged the feedback [[$1]] as abuse',
-	'articlefeedbackv5-log-autohide' => 'auto-hid the feedback [[$1]] as abuse',
-	'articlefeedbackv5-log-autoflag' => 'auto-flagged the feedback [[$1]] as abuse',
+	'articlefeedbackv5-log-oversight' => 'changed the status of $1 to oversight on $2',
+	'articlefeedbackv5-log-unoversight' => 'removed the oversight status of $1 on $2',
+	'articlefeedbackv5-log-hidden' => 'hid $1 on $2',
+	'articlefeedbackv5-log-unhidden' => 'un-hid $1 on $2',
+	'articlefeedbackv5-log-decline' => 'declined oversight for $1 on $2',
+	'articlefeedbackv5-log-request' => 'requested oversight for $1 on $2',
+	'articlefeedbackv5-log-unrequest' => 'un-requested oversight for $1 on $2',
+	'articlefeedbackv5-log-flag' => 'flagged $1 as abuse on $2',
+	'articlefeedbackv5-log-unflag' => 'un-flagged $1 as abuse on $2',
+	'articlefeedbackv5-log-autohide' => 'auto-hid $1 on $2',
+	'articlefeedbackv5-log-autoflag' => 'auto-flagged $1 as abuse on $2',
+	'articlefeedbackv5-log-feedback-linktext' => 'feedback post #$1',
 
 	/* Activity Pane phrases */
 	'articlefeedbackv5-activity-pane-header' => 'Activity Log',
@@ -724,17 +725,40 @@ This URL can be changed to point to a translated version of the page if it exist
 	'right-aftv5-see-hidden-feedback' => '{{doc-right|aftv5-see-hidden-feedback}}',
 	'articlefeedbackv5-log-name' => 'Name of the AFTv5 log filter on the Special:Log page',
 	'articlefeedbackv5-log-header' => 'Description (header) of the AFTv5 activity log on the Special:Log page',
-	'articlefeedbackv5-log-oversight' => 'Oversight post action log string',
-	'articlefeedbackv5-log-unoversight' => 'Un-oversight post action log string (un-oversight means an oversighter un-deletes the feedback)',
-	'articlefeedbackv5-log-hidden' => 'Hide post action log string',
-	'articlefeedbackv5-log-unhidden' => 'Show post action log string',
-	'articlefeedbackv5-log-decline' => 'Decline oversight request action log string (an oversight request asks an oversighter to delete feedback)',
-	'articlefeedbackv5-log-request' => 'Request oversight action log string (an oversight request asks an oversighter to delete feedback)',
-	'articlefeedbackv5-log-unrequest' => 'Un-request oversight action log string (an oversight request asks an oversighter to delete feedback)',
-	'articlefeedbackv5-log-flag' => 'Flag post as abuse action log string',
-	'articlefeedbackv5-log-unflag' => 'Unflag post as abuse action log string',
-	'articlefeedbackv5-log-autohide' => 'Hide a post automatically (for example, when requesting oversight, oversighting, too many abuse flags)',
-	'articlefeedbackv5-log-autoflag' => 'Flag a post as abuse automatically (for example, spam and abuse filtering mechanisms may do this)',
+	'articlefeedbackv5-log-oversight' => 'Log entry for when a user "oversights" (deletes; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page) a feedback post:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unoversight' => 'Log entry for when a user un-"oversights" (un-deletes; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page) a feedback post:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-hidden' => 'Log entry for when a user hides a feedback post:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unhidden' => 'Log entry for when a user un-hides (shows) a feedback post:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-decline' => 'Log entry for when a user declines an oversight request on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-request' => 'Log entry for when a user requests oversight on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unrequest' => 'Log entry for when a user un-requests oversight on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-flag' => 'Log entry for when a user flags a feedback post as abuse:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unflag' => 'Log entry for when a user un-flags a feedback post as abuse:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-autohide' => 'Log entry for when a feedback post is automatically hidden (e.g., when it gets too many abuse flags, or when oversight is requested; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-autoflag' => 'Log entry for when a feedback post is automatically flagged as abuse (e.g., by an abuse filter):
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-feedback-linktext' => 'The text for a link to the feedback ($1 is the ID)',
 	'articlefeedbackv5-activity-pane-header' => 'Flyover panel caption',
 	'articlefeedbackv5-activity-feedback-info' => 'Post information template. Parameters:
 * $1 is the feedback post ID,

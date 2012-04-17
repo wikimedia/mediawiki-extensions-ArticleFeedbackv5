@@ -709,7 +709,7 @@ class ArticleFeedbackv5Flagging {
 		if( $record->af_net_helpfulness < 0 ) {
 			$filters['visible-unhelpful'] = $int;
 		}
-		if( $record->af_is_abusive > 0 ) {
+		if( $record->af_abuse_count > 0 ) {
 			$filters['visible-abusive'] = $int;
 		}
 
