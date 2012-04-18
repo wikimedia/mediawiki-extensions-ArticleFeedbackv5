@@ -1620,11 +1620,12 @@
 	 */
 	$.articleFeedbackv5.selectTriggerLinks = function () {
 		// The bucketed link:
-		//   1. Display buckets 0 or 5?  Always no link.
+		//   1. Display bucket 0 or 4-not-editable?  Always no link.
 		//   2. Requested in query string (debug only)
 		//   3. Random bucketing
 		var bucketedLink = 'X';
-		if ( '5' != $.articleFeedbackv5.bucketId && '0' != $.articleFeedbackv5.bucketId ) {
+		if ( ! ( '0' == $.articleFeedbackv5.bucketId
+			|| ( '4' == $.articleFeedbackv5.bucketId && !$.articleFeedbackv5.editable ) ) ) {
 			var cfg = mw.config.get( 'wgArticleFeedbackv5LinkBuckets' );
 			if ( 'buckets' in cfg ) {
 				var knownBuckets = cfg.buckets;
