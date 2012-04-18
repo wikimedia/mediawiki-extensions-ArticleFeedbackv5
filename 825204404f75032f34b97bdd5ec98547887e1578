@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX//++0\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-18T00:16:19Z",
+      "side": 1,
+      "message": "This looks good except that the return values of date() and time() are still being passed in raw. Instead, this should be something like:\n\nwfMessage( \u0027blah\u0027 )-\u003erawParams( $userlink )-\u003eparams( $wgLang-\u003edate(...), $wgLang-\u003etime(...) );\n\nand likewise for the other invocations of date()/time()",
+      "parentUuid": "AAAAJX///As\u003d",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJX///KI\u003d",
         "filename": "ArticleFeedbackv5.i18n.php",
         "patchSetId": 1
@@ -142,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX//++w\u003d",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-18T00:16:19Z",
+      "side": 1,
+      "message": "Not actually done according to the diff between patchsets 1 and 2",
+      "parentUuid": "AAAAJX///AE\u003d",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJX///JA\u003d",
         "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
         "patchSetId": 1
@@ -171,6 +207,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "AAAAJX///JA\u003d",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX//++s\u003d",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-18T00:16:19Z",
+      "side": 1,
+      "message": "Not actually done according to the diff between patchsets 1 and 2",
+      "parentUuid": "AAAAJX///AA\u003d",
       "revId": "825204404f75032f34b97bdd5ec98547887e1578",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -311,6 +365,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "AAAAJX///Ks\u003d",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX//++o\u003d",
+        "filename": "sql/alter.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-18T00:16:19Z",
+      "side": 1,
+      "message": "Not actually done. It\u0027s fixed in the schema file but not here in alter.sql",
+      "parentUuid": "AAAAJX//+/g\u003d",
       "revId": "825204404f75032f34b97bdd5ec98547887e1578",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
