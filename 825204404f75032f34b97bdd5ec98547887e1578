@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX//++A\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-18T00:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX//++0\u003d",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJX///KI\u003d",
         "filename": "ArticleFeedbackv5.i18n.php",
         "patchSetId": 1
@@ -178,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX//+98\u003d",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-18T00:39:31Z",
+      "side": 1,
+      "message": "Welp, that was weird.  It disappeared on me.  Trying again...",
+      "parentUuid": "AAAAJX//++w\u003d",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJX///JA\u003d",
         "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
         "patchSetId": 1
@@ -225,6 +261,24 @@
       "side": 1,
       "message": "Not actually done according to the diff between patchsets 1 and 2",
       "parentUuid": "AAAAJX///AA\u003d",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX//+94\u003d",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-18T00:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX//++s\u003d",
       "revId": "825204404f75032f34b97bdd5ec98547887e1578",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -383,6 +437,24 @@
       "side": 1,
       "message": "Not actually done. It\u0027s fixed in the schema file but not here in alter.sql",
       "parentUuid": "AAAAJX//+/g\u003d",
+      "revId": "825204404f75032f34b97bdd5ec98547887e1578",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX//++I\u003d",
+        "filename": "sql/alter.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-04-18T00:39:31Z",
+      "side": 1,
+      "message": "I added an extra alter line at the bottom of the file, for updating prototype \u0026etc, which already have the enum column.",
+      "parentUuid": "AAAAJX//++o\u003d",
       "revId": "825204404f75032f34b97bdd5ec98547887e1578",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
