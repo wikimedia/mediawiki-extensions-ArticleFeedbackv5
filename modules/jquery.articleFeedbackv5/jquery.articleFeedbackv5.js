@@ -578,9 +578,10 @@
 			/**
 			 * Builds the empty form
 			 *
+			 * @param from string from whence came the request ("bottom" or "overlay")
 			 * @return Element the form
 			 */
-			buildForm: function () {
+			buildForm: function ( from ) {
 
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.editable ? $.articleFeedbackv5.currentBucket().templates.editable : $.articleFeedbackv5.currentBucket().templates.noneditable );
@@ -590,11 +591,10 @@
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the button link
-				var track_id = $.articleFeedbackv5.experiment() + '-button_click-' +
-					( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
+				var track_id = $.articleFeedbackv5.experiment() + '-button_click-' + from;
 				if ( $.articleFeedbackv5.editable ) {
 					$block.find( '.articleFeedbackv5-cta-button' )
-						.attr( 'href', $.articleFeedbackv5.editUrl( track_id ) );
+						.attr( 'href', $.articleFeedbackv5.editUrl( track_id, from ) );
 				} else {
 					var learn_url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
 					$block.find( '.articleFeedbackv5-cta-button' )
@@ -1882,13 +1882,16 @@
 	 * Builds the edit URL, with tracking if appropriate
 	 *
 	 * @param trackingId string the tracking ID
+	 * @param from string from whence came the request ("bottom" or "overlay"),
+	 *                    since the build process happens before inDialog gets set
 	 */
-	$.articleFeedbackv5.editUrl = function ( trackingId ) {
+	$.articleFeedbackv5.editUrl = function ( trackingId, from ) {
 		var params = {
 			'title': mw.config.get( 'wgPageName' ),
 			'action': 'edit',
 			'articleFeedbackv5_click_tracking': $.articleFeedbackv5.clickTracking ? '1' : '0',
 		};
+		aft5_debug( from );
 		if ( $.articleFeedbackv5.clickTracking ) {
 			params.articleFeedbackv5_ct_token   = $.cookie( 'clicktracking-session' );
 			params.articleFeedbackv5_bucket_id  = $.articleFeedbackv5.bucketId;
@@ -1896,7 +1899,11 @@
 			params.articleFeedbackv5_link_id    = $.articleFeedbackv5.submittedLinkId;
 			params.articleFeedbackv5_f_link_id  = $.articleFeedbackv5.floatingLinkId;
 			params.articleFeedbackv5_experiment = $.articleFeedbackv5.experiment();
-			params.articleFeedbackv5_location   = $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom';
+			if ( from ) {
+				params.articleFeedbackv5_location = from;
+			} else {
+				params.articleFeedbackv5_location = $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom';
+			}
 		}
 		var url = mw.config.get( 'wgScript' ) + '?' + $.param( params );
 		if ( trackingId ) {
@@ -2034,7 +2041,7 @@
 
 		// Build the form
 		var bucket = $.articleFeedbackv5.currentBucket();
-		var $block = bucket.buildForm();
+		var $block = bucket.buildForm( from );
 		if ( 'bindEvents' in bucket ) {
 			bucket.bindEvents( $block );
 		}
