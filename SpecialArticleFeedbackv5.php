@@ -16,8 +16,8 @@
  */
 class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	private $filters = array(
-		'comment',
-		'helpful',
+		'visible-comment',
+		'visible-helpful',
 		'visible'
 	);
 	private $sorts = array(
@@ -26,6 +26,10 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		'rating'
 	);
 
+	protected $showHidden;
+	protected $showDeleted;
+	protected $defaultFilters;
+
 	/**
 	 * Constructor
 	 */
@@ -33,31 +37,21 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		global $wgUser;
 		parent::__construct( 'ArticleFeedbackv5' );
 
-		$showHidden  = $wgUser->isAllowed( 'aftv5-see-hidden-feedback' );
-		$showDeleted = $wgUser->isAllowed( 'aftv5-see-deleted-feedback' );
+		$this->showHidden  = $wgUser->isAllowed( 'aftv5-see-hidden-feedback' );
+		$this->showDeleted = $wgUser->isAllowed( 'aftv5-see-deleted-feedback' );
+		$this->defaultFilters = $this->filters;
 
-		if ( $showDeleted ) {
+		if ( $this->showDeleted ) {
 			array_push( $this->filters,
-				'unhelpful', 'abusive', 'invisible', 'unhidden', 'needsoversight', 'deleted', 'undeleted', 'declined'
+				'visible-unhelpful', 'visible-abusive', 'all-hidden', 'all-unhidden',
+				'all-requested', 'all-unrequested', 'all-declined',
+				'all-oversighted', 'all-unoversighted', 'all'
 			);
-		} elseif ( $showHidden ) {
+		} elseif ( $this->showHidden ) {
 			array_push( $this->filters,
-				'unhelpful', 'abusive', 'invisible', 'unhidden', 'needsoversight', 'undeleted', 'declined'
+				'visible-unhelpful', 'visible-abusive', 'notdeleted-hidden', 'notdeleted-unhidden',
+				'notdeleted-requested', 'notdeleted-unrequested', 'notdeleted-declined','notdeleted'
 			);
-		}
-
-		// NOTE: The 'all' option actually displays different things
-		// based on the users role, which is handled in the filter:
-		// - deleter's all is actually everything
-		// - hidder's all is 'visible + hidden'
-		// - regular non-admin only has 'all visible' not 'all'
-
-		// The all option, if any, is only added once, at the end of the list,
-		// which is why it's down here instead.
-		if ( $showDeleted ) {
-			$this->filters[] = 'all';
-		} elseif( $showHidden ) {
-			$this->filters[] = 'notdeleted';
 		}
 	}
 
@@ -263,9 +257,11 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		$opts   = array();
 		$counts = $this->getFilterCounts( $pageId );
 		foreach ( $this->filters as $filter ) {
+
 			$count = array_key_exists( $filter, $counts ) ? $counts[$filter] : 0;
-			$key   = $this->msg( 'articlefeedbackv5-special-filter-'.$filter, $count )->escaped();
-			if( in_array( $filter, array( 'comment', 'helpful', 'visible' ) ) ) {
+			$msg_key = str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
+			$key   = $this->msg( 'articlefeedbackv5-special-filter-' . $msg_key, $count )->escaped();
+			if( in_array( $filter, $this->defaultFilters ) ) {
 				$opts[ (string) $key ] = $filter;
 			} else {
 				$opts[ '---------' ][ (string) $key ] = $filter;

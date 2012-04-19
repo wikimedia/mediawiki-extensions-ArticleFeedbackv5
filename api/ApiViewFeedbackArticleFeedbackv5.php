@@ -30,6 +30,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 * Execute the API call: Pull the requested feedback
 	 */
 	public function execute() {
+		global $wgLang;
 		$params   = $this->extractRequestParams();
 		$result   = $this->getResult();
 		$pageId   = $params['pageid'];
@@ -53,7 +54,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		if ( $this->isPermalink ) {
 			$page_title = Title::newFromRow($record[0])->getPrefixedText();
-
 			$html .= Linker::link(
 					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page_title ),
 					wfMessage( 'articlefeedbackv5-special-goback' )->escaped());
@@ -224,10 +224,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'af_net_helpfulness', 'af_revision_id',
 				'page_latest', 'page_title', 'page_namespace',
 				'rating.aa_response_boolean AS yes_no',
-				'af_hide_user_id',
-				'af_hide_timestamp',
-				'af_oversight_user_id',
-				'af_oversight_timestamp'
+				'af_last_status',
+				'af_last_status_user_id',
+				'af_last_status_timestamp'
 			),
 			array( 'af_id' => $ids ),
 			__METHOD__,
@@ -275,9 +274,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	private function getFilterCriteria( $filter, $filterValue = null ) {
 		global $wgUser;
+
 		$where          = array();
-		$hiddenFilters  = array( 'id', 'invisible', 'notdeleted', 'all', 'deleted', 'needsoversight', 'declined' );
-		$deletedFilters = array( 'id', 'all', 'deleted' );
+		$hiddenFilters  = array( 'all-hidden', 'notdeleted-hidden', 'all-unhidden', 'notdeleted-unhidden',
+					 'all-requested', 'notdeleted-requested', 'all-unrequested', 'notdeleted-unrequested',
+					 'all-declined', 'notdeleted-declined', 'all-oversighted', 'all-unoversighted', 'notdeleted', 'all' );
+		$deletedFilters = array( 'all', 'all-unoversighted', 'all-oversighted', 'all-hidden', 'all-unhidden', 'all-requested',
+					 'all-unrequested', 'all-declined');
 
 		// Never show hidden or deleted posts unless specifically requested
 		// and user has access.
@@ -292,44 +295,51 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 
 		switch ( $filter ) {
-			case 'needsoversight':
-				$where[] = 'af_oversight_count > 0';
-				break;
+			// special case - doesn't get any hidden/deleted filtering and is used for permalinks
 			case 'id':
-				# Used for permalinks.
+				// overwrite any and all where conditions
 				$where = array('af_id' => $filterValue);
 				$this->isPermalink = true;
 				break;
-			case 'visible':
-				$where[] = 'af_is_deleted IS FALSE';
-				$where[] = 'af_is_hidden IS FALSE';
+
+			// regular filters
+			case 'visible-comment':
+				$where[] = 'af_has_comment IS TRUE';
 				break;
-			case 'invisible':
-				$where[] = 'af_is_hidden IS TRUE';
- 				break;
-			case 'unhidden':
-				$where[] = 'af_is_unhidden IS TRUE';
- 				break;
-			case 'abusive':
-				$where[] = 'af_abuse_count > 0';
-				break;
-			case 'helpful':
+			case 'visible-helpful':
 				$where[] = 'af_net_helpfulness > 0';
 				break;
-			case 'unhelpful':
+			case 'visible-unhelpful':
 				$where[] = 'af_net_helpfulness < 0';
 				break;
-			case 'comment':
-				$where[] = 'comment.aa_response_text IS NOT NULL';
+			case 'visible-abusive':
+				$where[] = 'af_abuse_count > 0';
 				break;
-			case 'deleted':
+			case 'notdeleted-hidden':
+			case 'all-hidden':
+				$where[] = 'af_is_hidden IS TRUE';
+ 				break;
+			case 'notdeleted-unhidden':
+			case 'all-unhidden':
+				$where[] = 'af_is_unhidden IS TRUE';
+ 				break;
+			case 'notdeleted-requested':
+			case 'all-requested':
+				$where[] = 'af_oversight_count > 0';
+				break;
+			case 'notdeleted-unrequested':
+			case 'all-unrequested':
+				$where[] = 'af_is_unrequested IS TRUE';
+				break;
+			case 'notdeleted-declined':
+			case 'all-declined':
+				$where[] = 'af_is_declined IS TRUE';
+				break;
+			case 'all-oversighted':
 				$where[] = 'af_is_deleted IS TRUE';
 				break;
-			case 'undeleted':
+			case 'all-unoversighted':
 				$where[] = 'af_is_undeleted IS TRUE';
-				break;
-			case 'declined':
-				$where[] = 'af_is_declined';
 				break;
 			default:
 				break;
@@ -341,6 +351,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	protected function renderFeedback( $record ) {
 		global $wgUser, $wgLang;
 		$id = $record[0]->af_id;
+		$content = '';
 
 		switch( $record[0]->af_form_id ) {
 			case 1: $content .= $this->renderBucket1( $record ); break;
@@ -358,7 +369,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$can_vote   = !$wgUser->isBlocked();
 		$can_hide   = $wgUser->isAllowed( 'aftv5-hide-feedback' );
 		$can_delete = $wgUser->isAllowed( 'aftv5-delete-feedback' );
-		$default_user = wfMessage( 'articlefeedbackv5-default-user' )->text();
 
 		// if this is permalinked - if oversighted  or hidden we might be doing empty gray mask
 		if  ( ( $this->isPermalink && $record[0]->af_is_deleted
@@ -368,19 +378,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 			// hide or oversight?
 			if ( $record[0]->af_is_deleted ) {
-				$user = $record[0]->af_oversight_user_id;
-				$timestamp = $record[0]->af_oversight_timestamp;
 				$class = 'oversight';
-				$msg_string = 'deleted';
 			} else {
-				$user = $record[0]->af_hide_user_id;
-				$timestamp = $record[0]->af_hide_timestamp;
 				$class = 'hidden';
-				$msg_string = $class;
 			}
-
-			$user_link = ApiArticleFeedbackv5Utils::getUserLink( $user, $default_user );
-			$user_timestamp =  wfTimestamp( TS_RFC2822, $timestamp );
 
 			return Html::openElement( 'div',  array(
 					'class' => 'articleFeedbackv5-feedback articleFeedbackv5-feedback-' . $class . ' articleFeedbackv5-feedback-emptymask'
@@ -404,10 +405,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				. Html::closeElement( 'div' )
 
 				. Html::rawElement( 'span', array(
-					'class' => 'articleFeedbackv5-feedback-' . $msg_string . '-marker'
+					'class' => 'articleFeedbackv5-feedback-status-marker'
 					),
-					wfMessage( 'articlefeedbackv5-' . $msg_string)
-						->rawParams($user_link, $user_timestamp )
+					wfMessage( 'articlefeedbackv5-status-' . $record[0]->af_last_status )
+						->rawParams( ApiArticleFeedbackv5Utils::getUserLink( $record[0]->af_last_status_user_id ) )
+						->params( $wgLang->date( $record[0]->af_last_status_timestamp ),
+							$wgLang->time( $record[0]->af_last_status_timestamp ) )
 						->escaped()
 					)
 
@@ -423,7 +426,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'class' => 'articleFeedbackv5-vote-wrapper'
 			) )
 			. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot' ) );
-	
+
 			if ( $can_vote ) {
 				$footer_links .= Html::element( 'span', array(
 					'class' => 'articleFeedbackv5-helpful-caption'
@@ -462,7 +465,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				), wfMessage( $msg, $wgLang->formatNum( $record[0]->af_abuse_count ) )->text() );
 			}
 			$footer_links .= Html::closeElement( 'div' );
-	
+
 			/*$footer_links .= Html::element( 'span', array(
 				'class' => 'articleFeedbackv5-helpful-votes'
 			), wfMessage( 'articlefeedbackv5-form-helpful-votes', ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ), $record[0]->af_helpful_count, $record[0]->af_unhelpful_count ) )
@@ -473,7 +476,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'class' => 'articleFeedbackv5-abuse-link'
 			), wfMessage( 'articlefeedbackv5-form-abuse', $record[0]->af_abuse_count )->text() ) ) : '' )
 			. Html::closeElement( 'div' );*/
-	
+
 			// Don't render the toolbox if they can't do anything with it.
 			$tools = null;
 			if ( $can_hide || $can_delete ) {
@@ -502,7 +505,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 						'href' => '#',
 					), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 				}
-	
+
 				// !can delete == request oversight
 				if ( $can_hide && !$can_delete ) {
 					if ( $record[0]->af_oversight_count > 0 ) {
@@ -518,10 +521,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 						'href' => '#',
 					), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 				}
-	
+
 				// can delete == do oversight
 				if ( $can_delete ) {
-	
+
 					// if we have oversight requested, add "decline oversight" link
 					if ( $record[0]->af_oversight_count > 0 ) {
 						$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
@@ -530,7 +533,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 							'href' => '#',
 							), wfMessage( "articlefeedbackv5-form-decline" )->text() ) );
 					}
-	
+
 					if ( $record[0]->af_is_deleted > 0 ) {
 						$msg = 'undelete';
 						$class = 'unoversight';
@@ -544,18 +547,18 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 						'href' => '#',
 					), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 				}
-	
+
 				// view activity link
 				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 						'id'    => "articleFeedbackv5-activity-link-$id",
 						'class' => "articleFeedbackv5-activity-link",
 						'href' => '#',
 					), wfMessage( "articlefeedbackv5-viewactivity" )->text() ) );
-	
+
 				$tools .= Html::closeElement( 'ul' )
 				. Html::closeElement( 'div' );
 			}
-	
+
 			$topClass = 'articleFeedbackv5-feedback';
 			if ( $record[0]->af_is_hidden ) {
 				$topClass .= ' articleFeedbackv5-feedback-hidden';
@@ -563,26 +566,33 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			if ( $record[0]->af_is_deleted ) {
 				$topClass .= ' articleFeedbackv5-feedback-deleted';
 			}
-	
-			$attributes = array(
-				'class' => $topClass,
-				'rel'   => $id
-			);
-			if ( $record[0]->af_is_hidden ) {
-	
-				$attributes['hide-user'] = ApiArticleFeedbackv5Utils::getUserLink( $record[0]->af_hide_user_id, $default_user );
-				$attributes['hide-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_hide_timestamp );
-			}
-			if ( $record[0]->af_is_deleted ) {
-	
-				$attributes['oversight-user'] = ApiArticleFeedbackv5Utils::getUserLink( $record[0]->af_oversight_user_id, $default_user );
-				$attributes['oversight-timestamp'] =  wfTimestamp( TS_RFC2822, $record[0]->af_oversight_timestamp );
+
+			$status_line = '';
+			$extra_class = '';
+
+			// order of status to show
+			if ( $record[0]->af_last_status ) {
+				$status_line = Html::rawElement( 'span', array(
+					'class' => 'articleFeedbackv5-feedback-status-marker'
+					),
+					wfMessage( 'articlefeedbackv5-status-' . $record[0]->af_last_status )
+						->rawParams( ApiArticleFeedbackv5Utils::getUserLink( $record[0]->af_last_status_user_id ) )
+						->params( $wgLang->date( $record[0]->af_last_status_timestamp ),
+							$wgLang->time( $record[0]->af_last_status_timestamp ) )
+						->escaped()
+					);
+
+
+				$extra_class = ' articleFeedbackv5-h3-push';
 			}
 		}
 
-		return Html::openElement( 'div', $attributes )
+		return Html::openElement( 'div', array(
+				'class' => $topClass,
+				'rel'   => $id ) )
+		. $status_line
 		. Html::openElement( 'div', array(
-			'class' => "articleFeedbackv5-comment-wrap"
+			'class' => "articleFeedbackv5-comment-wrap" . $extra_class
 		) )
 		. $content
 		. $footer_links
@@ -658,10 +668,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 
 	private function renderBucket1( $record ) {
-		if ( $record['found']->aa_response_boolean == 1 ) {
+		if ( isset( $record['found'] ) && $record['found']->aa_response_boolean == 1 ) {
 			$msg   = 'articlefeedbackv5-form1-header-found';
 			$class = 'positive';
-		} elseif ( $record['found']->aa_response_boolean !== null ) {
+		} elseif ( isset( $record['found'] ) && $record['found']->aa_response_boolean !== null ) {
 			$msg   = 'articlefeedbackv5-form1-header-not-found';
 			$class = 'negative';
 		} else {
@@ -854,11 +864,17 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'all', 'notdeleted',
-				 'invisible', 'visible', 'unhidden',
-				 'comment', 'id',
-				 'helpful', 'unhelpful', 'abusive',
-				 'deleted', 'undeleted', 'needsoversight', 'declined' )
+				 // permalinks
+				 'id',
+				 // basic
+				 'visible-comment', 'visible-helpful', 'visible-comments', 'visible',
+				 // autoconfirmed
+				 'visible-unhelpful', 'visible-abusive',
+				 // monitors
+				 'notdeleted-hidden', 'notdeleted-unhidden', 'notdeleted-requested', 'notdeleted-unrequested', 'notdeleted-declined', 'notdeleted',
+				 // oversighters
+				 'all-hidden', 'all-unhidden', 'all-requested', 'all-unrequested', 'all-declined',
+				 'all-oversighted', 'all-unoversighted', 'all')
 			),
 			'filtervalue'   => array(
 				ApiBase::PARAM_REQUIRED => false,

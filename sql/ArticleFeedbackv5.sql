@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   af_is_unhidden      boolean NOT NULL DEFAULT FALSE,
   af_is_undeleted     boolean NOT NULL DEFAULT FALSE,
   af_is_declined      boolean NOT NULL DEFAULT FALSE,
+  af_is_unrequested   boolean NOT NULL DEFAULT FALSE,
   -- keep track of "this has a comment" for filtering purposes (avoids a join)
   af_has_comment      boolean NOT NULL DEFAULT FALSE,
   -- Keep track of number of activities (hide/show/flag/unflag)
@@ -61,13 +62,14 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   -- should be equivalent to counting rows in logging table
   af_activity_count  integer unsigned NOT NULL DEFAULT 0,
   af_suppress_count  integer unsigned NOT NULL DEFAULT 0,
-  -- keep the user id of the last hider and/or oversighter of the feedback
+  -- keep the user id of the status event of the feedback
   -- only registered users can do this, which is why no ips
-  -- data used on the overlay of hidden/oversighted items
-  af_hide_user_id   integer unsigned NOT NULL DEFAULT 0,
-  af_hide_timestamp  binary(14) NOT NULL DEFAULT '',
-  af_oversight_user_id  integer unsigned NOT NULL DEFAULT 0,
-  af_oversight_timestamp  binary(14) NOT NULL DEFAULT ''
+  -- data used on the overlay status line
+  af_last_status varchar(16) NULL,
+  af_last_status_user_id integer unsigned NOT NULL DEFAULT 0,
+  af_last_status_timestamp binary(14) NOT NULL DEFAULT '',
+  -- flag if this was an autohide operation
+  af_is_autohide boolean NOT NULL DEFAULT FALSE
 ) /*$wgDBTableOptions*/;
 CREATE INDEX /*i*/af_page_user_token_id ON /*_*/aft_article_feedback (af_page_id, af_user_id, af_user_anon_token, af_id);
 CREATE INDEX /*i*/af_revision_id ON /*_*/aft_article_feedback (af_revision_id);

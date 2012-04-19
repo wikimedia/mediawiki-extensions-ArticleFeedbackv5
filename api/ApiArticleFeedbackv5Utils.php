@@ -207,13 +207,14 @@ class ApiArticleFeedbackv5Utils {
 	 * @param $pageId    int    the id of the page so we can look it up
 	 * @param $itemId    int    the id of the feedback item, used to build permalinks
 	 * @param $notes     string any notes that were stored with the activity
-	 * @param $auto      boolean true if this was an "automatic" action, if so the log doer is changed
+	 * @param $doer      int    id of user who did the action, null will use currently logged in user
+	 * @param $params    array  of parameters that can be passed into the msg thing - used for "perpetrator" for log entry
 	 */
-	public static function logActivity( $type, $pageId, $itemId, $notes, $auto = false ) {
+	public static function logActivity( $type, $pageId, $itemId, $notes, $doer = null, $params = array() ) {
 
 		// These are our valid activity log actions
 		$valid = array( 'oversight', 'unoversight', 'hidden', 'unhidden',
-				'decline', 'request', 'unrequest', 'flag', 'unflag' );
+				'decline', 'request', 'unrequest', 'flag', 'unflag', 'autoflag', 'autohide' );
 
 		// suppress
 		$suppress = array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest');
@@ -252,9 +253,13 @@ class ApiArticleFeedbackv5Utils {
 		$notes = $wgLang->truncate( $notes, $wgArticleFeedbackv5MaxActivityNoteLength );
 
 		// if this is an automatic action, we create our special extension doer and send
-		if ( $auto ) {
-			$default_user = wfMessage( 'articlefeedbackv5-default-user' )->text();
-			$doer = User::newFromName( $default_user );
+		if ( $doer ) {
+			if ( $doer > 0) {
+				$default_user = wfMessage( 'articlefeedbackv5-default-user' )->text();
+				$doer = User::newFromName( $default_user );
+			} else {
+				$doer = User::newFromId( $doer );
+			}
 			// I cannot see how this could fail, but if it does do not log
 			if ( !$doer ) {
 				return;
@@ -265,7 +270,7 @@ class ApiArticleFeedbackv5Utils {
 
 		$log = new LogPage( $logtype, false );
 		// comments become the notes section from the feedback
-		$log->addEntry( $type, $permalink, $notes, array(), $doer );
+		$log->addEntry( $type, $permalink, $notes, $params, $doer );
 
 		// update our log count by 1
 		$dbw = wfGetDB( DB_MASTER );
@@ -296,6 +301,12 @@ class ApiArticleFeedbackv5Utils {
 			$userId = (int) $user_id;
 			if ( $userId !== 0 ) { // logged-in users
 				$user = User::newFromId( $userId );
+			} elseif ( is_null($user_ip) || $userId == 0 ) { // magic user
+				global $wgArticleFeedbackv5AutoHelp;
+				$element = Linker::makeExternalLink(
+					$wgArticleFeedbackv5AutoHelp,
+					wfMessage( 'articlefeedbackv5-default-user' )->text());
+					return $element;
 			} else { // IP users
 				$userText = $user_ip;
 				$user = User::newFromName( $userText, false );
