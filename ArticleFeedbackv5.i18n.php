@@ -362,6 +362,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-log-unflag' => 'unflagged the feedback [[$1]] as abuse',
 	'articlefeedbackv5-log-autohide' => 'auto-hid the feedback [[$1]] as abuse',
 	'articlefeedbackv5-log-autoflag' => 'auto-flagged the feedback [[$1]] as abuse',
+	'articlefeedbackv5-log-feedback-linktext' => 'feedback post #$1',
 
 	/* Activity Pane phrases */
 	'articlefeedbackv5-activity-pane-header' => 'Activity Log',
