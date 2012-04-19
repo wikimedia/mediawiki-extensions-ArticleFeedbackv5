@@ -489,8 +489,7 @@ a#articleFeedbackv5-show-more {
 	opacity : 0.4;
 	filter: alpha(opacity=40);
 }
-#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-hidden .articleFeedbackv5-feedback-hidden-marker,
-#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-deleted .articleFeedbackv5-feedback-deleted-marker {
+#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-status-marker {
 	font-weight: bold;
 	color: red;
 	display: block;
