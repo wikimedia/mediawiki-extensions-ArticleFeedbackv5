@@ -182,3 +182,11 @@ ALTER TABLE /*_*/aft_article_feedback DROP COLUMN af_oversight_user_id;
 -- Added 4/17 (reha)
 ALTER TABLE /*_*/aft_article_feedback CHANGE COLUMN af_last_status af_last_status varchar(16) NULL;
 
+-- Added 4/5 (emsmith)
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_is_featured BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_is_unfeatured BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_is_resolved BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_is_unresolved BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_relevance_score integer signed NOT NULL DEFAULT 0;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_relevance_sort integer signed NOT NULL DEFAULT 0;
+CREATE INDEX /*i*/af_relevance_sort_af_created ON /*_*/aft_article_feedback (af_relevance_sort, af_created);

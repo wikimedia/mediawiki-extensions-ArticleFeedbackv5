@@ -62,6 +62,14 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   -- should be equivalent to counting rows in logging table
   af_activity_count  integer unsigned NOT NULL DEFAULT 0,
   af_suppress_count  integer unsigned NOT NULL DEFAULT 0,
+  -- keep track of flagging for feature/unfeature resolve/unresolve
+  af_is_featured BOOLEAN NOT NULL DEFAULT FALSE,
+  af_is_unfeatured BOOLEAN NOT NULL DEFAULT FALSE,
+  af_is_resolved BOOLEAN NOT NULL DEFAULT FALSE,
+  af_is_unresolved BOOLEAN NOT NULL DEFAULT FALSE,
+  -- TWO relevance scores here, a positive and a negative version so we can do a proper sort index
+  af_relevance_score integer signed NOT NULL DEFAULT 0,
+  af_relevance_sort integer signed NOT NULL DEFAULT 0,
   -- keep the user id of the status event of the feedback
   -- only registered users can do this, which is why no ips
   -- data used on the overlay status line
@@ -78,6 +86,7 @@ CREATE INDEX /*i*/article_feedback_timestamp ON /*_*/aft_article_feedback (af_cr
 CREATE INDEX /*i*/af_page_id ON /*_*/aft_article_feedback (af_page_id, af_created);
 CREATE INDEX /*i*/af_page_feedback_id ON /*_*/aft_article_feedback (af_page_id, af_id);
 CREATE INDEX /*i*/af_page_net_helpfulness_af_id ON /*_*/aft_article_feedback (af_page_id, af_net_helpfulness, af_id);
+CREATE INDEX /*i*/af_relevance_sort_af_created ON /*_*/aft_article_feedback (af_relevance_sort, af_created);
 
 -- Allows for organizing fields into fieldsets, for reporting or rendering.
 -- A group is just a name and an ID.
