@@ -12,6 +12,24 @@
 
 /* Configuration */
 
+/**
+ * Relevance Scoring
+ * name => integer scoring actions pairs
+ * after changing this you should also change the values in relevance_score.sql and run it to reset relevance
+ *
+ * @var array
+ */
+$wgArticleFeedbackv5RelevanceScoring = array(
+	'featured' => 50,
+	'unfeatured' => -50,
+	'helpful' => 1,
+	'unhelpful' => -1,
+	'resolved' => -45,
+	'unresolved' => 45,
+	'flagged' => -5,
+	'unflagged' => 5,
+	);
+
 // Email address to send oversight request emails to, if set to null no emails are sent
 $wgArticleFeedbackv5OversightEmails = null;
 
@@ -308,6 +326,7 @@ $wgAvailableRights[] = 'aftv5-hide-feedback';
 $wgAvailableRights[] = 'aftv5-delete-feedback';
 $wgAvailableRights[] = 'aftv5-see-deleted-feedback';
 $wgAvailableRights[] = 'aftv5-see-hidden-feedback';
+$wgAvailableRights[] = 'aftv5-feature-feedback';
 
 // Jobs
 $wgJobClasses['ArticleFeedbackv5MailerJob'] = 'ArticleFeedbackv5MailerJob';
@@ -316,12 +335,32 @@ $wgJobClasses['ArticleFeedbackv5MailerJob'] = 'ArticleFeedbackv5MailerJob';
 $wgLogTypes[] = 'articlefeedbackv5';
 $wgLogNames['articlefeedbackv5'] = 'articlefeedbackv5-log-name';
 $wgLogHeaders['articlefeedbackv5'] = 'articlefeedbackv5-log-header';
-foreach ( array( 'hidden', 'unhidden', 'flag', 'unflag', 'autoflag', 'autohide' ) as $t) {
-	$wgLogActionsHandlers["articlefeedbackv5/$t"] = 'ArticleFeedbackv5Hooks::formatActivityLogEntry';
-}
+
+$wgLogActions['suppress/oversight']  = 'articlefeedbackv5-log-oversight';
+$wgLogActions['suppress/unoversight']  = 'articlefeedbackv5-log-unoversight';
+$wgLogActions['suppress/decline']  = 'articlefeedbackv5-log-decline';
+$wgLogActions['suppress/request']  = 'articlefeedbackv5-log-request';
+$wgLogActions['suppress/unrequest']  = 'articlefeedbackv5-log-unrequest';
 foreach ( array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest' ) as $t) {
 	$wgLogActionsHandlers["suppress/$t"] = 'ArticleFeedbackv5Hooks::formatActivityLogEntry';
 }
+
+$wgLogActions['articlefeedbackv5/hidden']  = 'articlefeedbackv5-log-hidden';
+$wgLogActions['articlefeedbackv5/unhidden']  = 'articlefeedbackv5-log-unhidden';
+$wgLogActions['articlefeedbackv5/flag']  = 'articlefeedbackv5-log-flag';
+$wgLogActions['articlefeedbackv5/unflag']  = 'articlefeedbackv5-log-unflag';
+$wgLogActions['articlefeedbackv5/autoflag']  = 'articlefeedbackv5-log-autoflag';
+$wgLogActions['articlefeedbackv5/autohide']  = 'articlefeedbackv5-log-autohide';
+$wgLogActions['articlefeedbackv5/feature']  = 'articlefeedbackv5-log-feature';
+$wgLogActions['articlefeedbackv5/unfeature']  = 'articlefeedbackv5-log-unfeature';
+$wgLogActions['articlefeedbackv5/resolve']  = 'articlefeedbackv5-log-resolve';
+$wgLogActions['articlefeedbackv5/unresolve']  = 'articlefeedbackv5-log-unresolve';
+
+// register activity log formatter hooks
+foreach ( array( 'hidden', 'unhidden', 'flag', 'unflag', 'autoflag', 'autohide', 'feature', 'unfeature', 'resolve', 'unresolve' ) as $t) {
+	$wgLogActionsHandlers["articlefeedbackv5/$t"] = 'ArticleFeedbackv5Hooks::formatActivityLogEntry';
+}
+
 
 // Add custom action handlers for AbuseFilter
 $wgAbuseFilterAvailableActions[] = 'aftv5flagabuse';

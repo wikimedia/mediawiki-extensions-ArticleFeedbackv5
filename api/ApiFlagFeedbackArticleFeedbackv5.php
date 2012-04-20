@@ -74,7 +74,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'abuse', 'hide', 'helpful', 'unhelpful', 'delete', 'oversight', 'resetoversight' )
+				 'abuse', 'hide', 'helpful', 'unhelpful', 'delete', 'oversight', 'resetoversight', 'resolve', 'feature' )
 			),
 			'direction' => array(
 				ApiBase::PARAM_REQUIRED => false,
