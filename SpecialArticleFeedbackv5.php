@@ -5,6 +5,7 @@
  * @package    ArticleFeedback
  * @subpackage Special
  * @author     Greg Chiasson <gchiasson@omniti.com>
+ * @author     Elizabeth M Smith <elizabeth@omniti.com>
  * @version    $Id$
  */
 
@@ -16,16 +17,20 @@
  */
 class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	private $filters = array(
-		'visible-comment',
+		'visible-relevant',
+		'visible-featured',
 		'visible-helpful',
+		'visible-comment',
 		'visible'
 	);
 	private $sorts = array(
+		'relevance',
 		'age',
 		'helpful',
 		'rating'
 	);
 
+	protected $showFeatured;
 	protected $showHidden;
 	protected $showDeleted;
 	protected $defaultFilters;
@@ -39,18 +44,25 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 
 		$this->showHidden  = $wgUser->isAllowed( 'aftv5-see-hidden-feedback' );
 		$this->showDeleted = $wgUser->isAllowed( 'aftv5-see-deleted-feedback' );
+		$this->showFeatured = $wgUser->isAllowed( 'aftv5-feature-feedback' );
 		$this->defaultFilters = $this->filters;
 
 		if ( $this->showDeleted ) {
 			array_push( $this->filters,
-				'visible-unhelpful', 'visible-abusive', 'all-hidden', 'all-unhidden',
+				'visible-unhelpful', 'visible-abusive',  'visible-unfeatured', 'visible-resolved', 'visible-unresolved',
+				'all-hidden', 'all-unhidden',
 				'all-requested', 'all-unrequested', 'all-declined',
 				'all-oversighted', 'all-unoversighted', 'all'
 			);
 		} elseif ( $this->showHidden ) {
 			array_push( $this->filters,
-				'visible-unhelpful', 'visible-abusive', 'notdeleted-hidden', 'notdeleted-unhidden',
+				'visible-unhelpful', 'visible-abusive', 'visible-unfeatured', 'visible-resolved', 'visible-unresolved',
+				'notdeleted-hidden', 'notdeleted-unhidden',
 				'notdeleted-requested', 'notdeleted-unrequested', 'notdeleted-declined','notdeleted'
+			);
+		} elseif ( $this->showFeatured ) {
+			array_push( $this->filters,
+				'visible-unhelpful', 'visible-abusive', 'visible-unfeatured', 'visible-resolved', 'visible-unresolved'
 			);
 		}
 	}
@@ -176,7 +188,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 				. Html::closeElement( 'div' )
 			);
 		}
-		
+
 		// BETA notice
 		$out->addHTML(
 		    Html::element( 'span', array(
@@ -184,13 +196,14 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		    ), $this->msg( 'articlefeedbackv5-beta-notice' )->text() )
 			. Html::element( 'div', array( 'class' => 'float-clear' ) )
 		);
-		
-		// Temporary "This is a prototype" disclaimer text
+
+		/*
+		// Temporary "This is a prototype" disclaimer text - removed per Fabrice 4/25
 		$out->addHTML(
 			Html::element( 'div', array(
 				'class' => 'articlefeedbackv5-special-disclaimer'
 			), $this->msg( 'articlefeedbackv5-special-disclaimer' )->text() )
-		);
+		);*/
 
 		$out->addHtml(
 			Html::element(
@@ -278,6 +291,19 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			)
 			. Html::openElement(
 				'div',
+				array( 'id' => 'articleFeedbackv5-filter' )
+			)
+			. Html::openElement(
+				'span',
+				array( 'class' => 'articleFeedbackv5-filter-label' )
+			)
+			. $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
+			. Html::closeElement( 'span' )
+			. $filterSelect->getHTML()
+			. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
+			. Html::closeElement( 'div' )
+			. Html::openElement(
+				'div',
 				array( 'id' => 'articleFeedbackv5-sort' )
 			)
 			. Html::openElement(
@@ -290,21 +316,10 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 
 			. $this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
 			. Html::closeElement( 'div' )
-			. Html::openElement(
-				'div',
-				array( 'id' => 'articleFeedbackv5-filter' )
-			)
-			. Html::openElement(
-				'span',
-				array( 'class' => 'articleFeedbackv5-filter-label' )
-			)
-			. $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
-			. Html::closeElement( 'span' )
-			. $filterSelect->getHTML()
-			. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
-			. Html::closeElement( 'div' )
 		);
-		if( $wgUser->isAllowed( 'aftv5-delete-feedback' ) || $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
+
+		if( $wgUser->isAllowed( 'aftv5-delete-feedback' ) || $wgUser->isAllowed( 'aftv5-hide-feedback' )
+		   || $wgUser->isAllowed( 'aftv5-feature-feedback' )) {
 		    $out->addHTML(
 			Html::openElement(
 			    'div',
