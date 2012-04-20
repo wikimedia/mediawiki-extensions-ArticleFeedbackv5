@@ -54,9 +54,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		if ( $this->isPermalink ) {
 			$page_title = Title::newFromRow($record[0])->getPrefixedText();
-			$html .= Linker::link(
+			$html .= Html::rawElement( 'div', array(
+					'id' => 'articleFeedbackv5-feedback-permalink-goback'
+				), Linker::link(
 					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page_title ),
-					wfMessage( 'articlefeedbackv5-special-goback' )->escaped());
+					wfMessage( 'articlefeedbackv5-special-goback' )->escaped()));
 		}
 
 		$result->addValue( $this->getModuleName(), 'length', $length );
@@ -115,6 +117,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		// Build ORDER BY clause.
 		switch( $sort ) {
+			case 'relevance':
+				$sortField = 'af_relevance_sort';
+				$order       = "af_relevance_sort $real_dir, af_id $real_dir";
+				$continueSql = "(af_relevance_sort $real_con_dir " . intVal( $continue )
+				 . " OR (af_relevance_sort = " . intVal( $continue )
+				 . " AND af_id $continueDirection " . intval( $continueId ) . ") )";
+				break;
 			case 'helpful':
 				$sortField   = 'af_net_helpfulness';
 				$order       = "af_net_helpfulness $direction, af_id $direction";
@@ -167,6 +176,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			array(
 				'af_id',
 				'af_net_helpfulness',
+				'af_relevance_sort',
 				'rating.aa_response_boolean AS yes_no'
 			),
 			$where,
@@ -224,6 +234,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				'af_net_helpfulness', 'af_revision_id',
 				'page_latest', 'page_title', 'page_namespace',
 				'rating.aa_response_boolean AS yes_no',
+				'af_is_featured', 'af_is_resolved',
 				'af_last_status',
 				'af_last_status_user_id',
 				'af_last_status_timestamp'
@@ -303,6 +314,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				break;
 
 			// regular filters
+			case 'visible-relevant':
+				$where[] = '(af_is_featured IS TRUE OR af_has_comment is true OR af_net_helpfulness > 0) AND af_relevance_score > -5';
+				break;
 			case 'visible-comment':
 				$where[] = 'af_has_comment IS TRUE';
 				break;
@@ -314,6 +328,18 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				break;
 			case 'visible-abusive':
 				$where[] = 'af_abuse_count > 0';
+				break;
+			case 'visible-featured':
+				$where[] = 'af_is_featured IS TRUE';
+				break;
+			case 'visible-unfeatured':
+				$where[] = 'af_is_unfeatured IS TRUE';
+				break;
+			case 'visible-resolved':
+				$where[] = 'af_is_resolved IS TRUE';
+				break;
+			case 'visible-unresolved':
+				$where[] = 'af_is_unresolved IS TRUE';
 				break;
 			case 'notdeleted-hidden':
 			case 'all-hidden':
@@ -369,6 +395,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$can_vote   = !$wgUser->isBlocked();
 		$can_hide   = $wgUser->isAllowed( 'aftv5-hide-feedback' );
 		$can_delete = $wgUser->isAllowed( 'aftv5-delete-feedback' );
+		$can_feature = $wgUser->isAllowed( 'aftv5-feature-feedback' );
 
 		// if this is permalinked - if oversighted  or hidden we might be doing empty gray mask
 		if  ( ( $this->isPermalink && $record[0]->af_is_deleted
@@ -479,7 +506,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 			// Don't render the toolbox if they can't do anything with it.
 			$tools = null;
-			if ( $can_hide || $can_delete ) {
+			if ( $can_feature || $can_hide || $can_delete ) {
 				$tools = Html::openElement( 'div', array(
 					'class' => 'articleFeedbackv5-feedback-tools',
 					'id'    => 'articleFeedbackv5-feedback-tools-' . $id
@@ -490,6 +517,39 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				. Html::openElement( 'ul', array(
 					'id' => 'articleFeedbackv5-feedback-tools-list-' . $id
 				) );
+
+				if ( $can_feature ) {
+					if ( $record[0]->af_is_featured ) {
+						$msg = 'unfeature';
+						$class = 'unfeature';
+					} else {
+						$msg = 'feature';
+						$class = 'feature';
+					}
+					$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+						'id'    => "articleFeedbackv5-$class-link-$id",
+						'class' => "articleFeedbackv5-$class-link",
+						'href' => '#',
+					), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
+
+					// unresolve always appears if the item is resolved
+					if ( $record[0]->af_is_resolved ) {
+						$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+							'id'    => "articleFeedbackv5-unresolve-link-$id",
+							'class' => "articleFeedbackv5-unresolve-link",
+							'href' => '#',
+						), wfMessage( "articlefeedbackv5-form-unresolve" )->text() ) );
+					}
+					// resolve appears if item is featured and not resolved
+					if ( $record[0]->af_is_featured && !$record[0]->af_is_resolved ) {
+						$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+							'id'    => "articleFeedbackv5-resolve-link-$id",
+							'class' => "articleFeedbackv5-resolve-link",
+							'href' => '#',
+						), wfMessage( "articlefeedbackv5-form-resolve" )->text() ) );
+					}
+					
+				}
 
 				if ( $can_hide ) {
 					if ( $record[0]->af_is_hidden ) {
@@ -505,7 +565,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 						'href' => '#',
 					), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 				}
-
+	
 				// !can delete == request oversight
 				if ( $can_hide && !$can_delete ) {
 					if ( $record[0]->af_oversight_count > 0 ) {
@@ -521,10 +581,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 						'href' => '#',
 					), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 				}
-
+	
 				// can delete == do oversight
 				if ( $can_delete ) {
-
+	
 					// if we have oversight requested, add "decline oversight" link
 					if ( $record[0]->af_oversight_count > 0 ) {
 						$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
@@ -533,7 +593,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 							'href' => '#',
 							), wfMessage( "articlefeedbackv5-form-decline" )->text() ) );
 					}
-
+	
 					if ( $record[0]->af_is_deleted > 0 ) {
 						$msg = 'undelete';
 						$class = 'unoversight';
@@ -558,7 +618,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				$tools .= Html::closeElement( 'ul' )
 				. Html::closeElement( 'div' );
 			}
-
+	
 			$topClass = 'articleFeedbackv5-feedback';
 			if ( $record[0]->af_is_hidden ) {
 				$topClass .= ' articleFeedbackv5-feedback-hidden';
@@ -566,12 +626,18 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			if ( $record[0]->af_is_deleted ) {
 				$topClass .= ' articleFeedbackv5-feedback-deleted';
 			}
+			if ( $record[0]->af_is_featured ) {
+				$topClass .= ' articleFeedbackv5-feedback-featured';
+			}
+			if ( $record[0]->af_is_resolved ) {
+				$topClass .= ' articleFeedbackv5-feedback-resolved';
+			}
 
 			$status_line = '';
 			$extra_class = '';
 
 			// order of status to show
-			if ( $record[0]->af_last_status ) {
+			if ( $record[0]->af_last_status && $record[0]->af_last_status_timestamp ) {
 				$status_line = Html::rawElement( 'span', array(
 					'class' => 'articleFeedbackv5-feedback-status-marker'
 					),
@@ -852,7 +918,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'age', 'helpful', 'rating' )
+				 'age', 'helpful', 'rating', 'relevance' )
 			),
 			'sortdirection' => array(
 				ApiBase::PARAM_REQUIRED => false,
@@ -867,9 +933,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				 // permalinks
 				 'id',
 				 // basic
-				 'visible-comment', 'visible-helpful', 'visible-comments', 'visible',
+				 'visible-relevant', 'visible-featured', 'visible-helpful', 'visible-comment', 'visible',
 				 // autoconfirmed
-				 'visible-unhelpful', 'visible-abusive',
+				 'visible-unhelpful', 'visible-abusive', 'visible-unfeatured', 'visible-resolved', 'visible-unresolved',
 				 // monitors
 				 'notdeleted-hidden', 'notdeleted-unhidden', 'notdeleted-requested', 'notdeleted-unrequested', 'notdeleted-declined', 'notdeleted',
 				 // oversighters

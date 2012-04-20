@@ -75,12 +75,10 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 #bodyContent h2 {
 	clear: both;
 }
-#articleFeedbackv5-sort {
-	width: 300px;
-}
 #articleFeedbackv5-filter {
 	float: left;
 	font-size: 1.125em;
+	margin-right: 20px;
 }
 #articleFeedbackv5-sort-filter-controls {
 	clear: both;
@@ -109,7 +107,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	top: 0;
 	right: 150;
 	font-size: 1.125em;
-	width: 160px;
+	width: 170px;
 }
 
 #articleFeedbackv5-show-feedback {
@@ -147,7 +145,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools {
 	/* display: none; */
-	width: 160px;
+	width: 200px;
 	position: absolute;
 	top: 10px;
 	right: 10px;
@@ -157,7 +155,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	text-align: center;
 	font-weight: normal;
 	font-size: 1em;
-	width: 160px;
+	width: 190px;
 	height: 20px;
 	line-height: 15px;
 	margin: 0;
@@ -196,7 +194,7 @@ a#articleFeedbackv5-show-more {
 	display: block;
 	float: left;
 	clear: left;
-	padding-right: 160px;
+	padding-right: 180px;
 }
 
 .articleFeedbackv5-feedback blockquote .articleFeedbackv5-comment-full {
@@ -227,6 +225,34 @@ a#articleFeedbackv5-show-more {
 	margin: 0 5px 0 0;
 	position: relative;
 	top: 18px;
+}
+.articleFeedbackv5-feedback .articleFeedbackv5-featured-marker {
+	float: left;
+	display: block;
+	line-height: 24px;
+	margin: 0 5px 0 10px;
+	padding: 0 0 0 25px;
+	position: relative;
+	top: 18px;
+	font-weight: bold;
+	color: #3366CC;
+	text-transform: uppercase;
+	/* @embed */
+	background: url(images/toolbox_feature.png) no-repeat;
+	background-position: -5px -6px;
+}
+.articleFeedbackv5-feedback .articleFeedbackv5-resolved-marker {
+	float: left;
+	display: block;
+	line-height: 24px;
+	margin: 0 5px 0 40px;
+	padding: 0 0 0 25px;
+	font-weight: bold;
+	color: #3366CC;
+	text-transform: uppercase;
+	/* @embed */
+	background: url(images/toolbox_resolved.png) no-repeat;
+	background-position: -5px -6px;
 }
 #articleFeedbackv5-special-add-feedback {
 	/*color:white;
@@ -273,11 +299,13 @@ a#articleFeedbackv5-show-more {
 	/* @embed */
 	background-image: url(images/toolbox_hide_hover.png);
 }
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-feature-link {
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-feature-link,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unfeature-link {
 	/* @embed */
 	background-image: url(images/toolbox_feature.png);
 }
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-feature-link:hover {
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-feature-link:hover,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unfeature-link:hover {
 	/* @embed */
 	background-image: url(images/toolbox_feature_hover.png);
 }
@@ -293,11 +321,13 @@ a#articleFeedbackv5-show-more {
 	/* @embed */
 	background-image: url(images/toolbox_oversight_hover.png);
 }
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-resolved-link {
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-resolve-link,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unresolve-link {
 	/* @embed */
 	background-image: url(images/toolbox_resolved.png);
 }
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-resolved-link:hover {
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-resolve-link:hover,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unresolve-link:hover {
 	/* @embed */
 	background-image: url(images/toolbox_resolved_hover.png);
 }
@@ -328,6 +358,7 @@ a#articleFeedbackv5-show-more {
 	background-image: url(images/flag.png);
 	background-repeat: no-repeat;
 	background-position: left bottom;
+	float: left;
 }
 #articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link:hover {
 	/* @embed */
@@ -688,4 +719,8 @@ form.articlefeedbackv5-form-flyover textarea {
 }
 .articleFeedbackv5-feedback-emptymask {
 	min-height: 100px;
+}
+#articleFeedbackv5-feedback-permalink-goback {
+	font-size: 1.2em;
+	margin-top: 10px;
 }
