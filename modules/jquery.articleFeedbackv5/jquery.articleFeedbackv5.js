@@ -1555,7 +1555,10 @@
 			var exp = $.articleFeedbackv5.experiment();
 			if ( $.articleFeedbackv5.bucketId == 4 ) {
 				exp = exp.replace('_edit', '');
-				exp = exp.replace('_learn_more', '-noedit');
+				exp = exp.replace('_learn_more', '');
+			}
+			if ( !$.articleFeedbackv5.editable ) {
+				exp += '-noedit';
 			}
 			$.articleFeedbackv5.trackClick( exp + '-init' );
 		}
