@@ -1577,31 +1577,18 @@
 	$.articleFeedbackv5.selectBucket = function () {
 		// Find out which display bucket they go in:
 		// 1. Requested in query string (debug only)
-		// 2. From cookie (see below)
-		// 3. Core bucketing
+		// 2. Core bucketing
 		var knownBuckets = { '0': true, '1': true, '4': true };
 		var requested = mw.util.getParamValue( 'aftv5_form' );
-		var cookieval = $.cookie( $.articleFeedbackv5.prefix( 'display-bucket' ) );
+		var cfg = mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' );
 		if ( requested in knownBuckets ) {
 			$.articleFeedbackv5.bucketId = requested;
-		} else if ( cookieval in knownBuckets ) {
-			$.articleFeedbackv5.bucketId = cookieval;
 		} else {
-			var bucketName = mw.user.bucket(
-				'ext.articleFeedbackv5-display',
-				mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' )
-			);
+			var key = 'ext.articleFeedbackv5@' + cfg.version + '-form'
+			var bucketName = mw.user.bucket( key, cfg );
 			var nameMap = { zero: '0', one: '1', four: '4' };
 			$.articleFeedbackv5.bucketId = nameMap[bucketName];
 		}
-		// Drop in a cookie to keep track of their display bucket;
-		// use the config to determine how long to hold onto it.
-		var cfg = mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' );
-		$.cookie(
-			$.articleFeedbackv5.prefix( 'display-bucket' ),
-			$.articleFeedbackv5.bucketId,
-			{ 'expires': cfg.expires, 'path': '/' }
-		);
 		if ( $.articleFeedbackv5.debug ) {
 			aft5_debug( 'Using form option #' + $.articleFeedbackv5.bucketId );
 		}
@@ -1624,7 +1611,8 @@
 		if ( b.buckets.ignore == 0 && b.buckets.track == 100 ) {
 			return true;
 		}
-		return ( 'track' === mw.user.bucket( 'ext.articleFeedbackv5-tracking', b ) );
+		var key = 'ext.articleFeedbackv5@' + b.version + '-tracking'
+		return ( 'track' === mw.user.bucket( key, b ) );
 	};
 
 	// }}}
@@ -1652,7 +1640,8 @@
 				if ( requested in knownBuckets || requested == 'X' ) {
 					bucketedLink = requested;
 				} else {
-					bucketedLink = mw.user.bucket( 'ext.articleFeedbackv5-links', cfg );
+					var key = 'ext.articleFeedbackv5@' + cfg.version + '-links'
+					bucketedLink = mw.user.bucket( key, cfg );
 				}
 			}
 		}
