@@ -75,12 +75,10 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 #bodyContent h2 {
 	clear: both;
 }
-#articleFeedbackv5-sort {
-	width: 300px;
-}
 #articleFeedbackv5-filter {
 	float: left;
 	font-size: 1.125em;
+	margin-right: 20px;
 }
 #articleFeedbackv5-sort-filter-controls {
 	clear: both;
@@ -147,7 +145,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools {
 	/* display: none; */
-	width: 170px;
+	width: 200px;
 	position: absolute;
 	top: 10px;
 	right: 10px;
@@ -157,7 +155,7 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	text-align: center;
 	font-weight: normal;
 	font-size: 1em;
-	width: 160px;
+	width: 190px;
 	height: 20px;
 	line-height: 15px;
 	margin: 0;
@@ -721,4 +719,8 @@ form.articlefeedbackv5-form-flyover textarea {
 }
 .articleFeedbackv5-feedback-emptymask {
 	min-height: 100px;
+}
+#articleFeedbackv5-feedback-permalink-goback {
+	font-size: 1.2em;
+	margin-top: 10px;
 }

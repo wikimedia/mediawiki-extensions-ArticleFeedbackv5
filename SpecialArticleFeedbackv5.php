@@ -290,6 +290,19 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			)
 			. Html::openElement(
 				'div',
+				array( 'id' => 'articleFeedbackv5-filter' )
+			)
+			. Html::openElement(
+				'span',
+				array( 'class' => 'articleFeedbackv5-filter-label' )
+			)
+			. $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
+			. Html::closeElement( 'span' )
+			. $filterSelect->getHTML()
+			. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
+			. Html::closeElement( 'div' )
+			. Html::openElement(
+				'div',
 				array( 'id' => 'articleFeedbackv5-sort' )
 			)
 			. Html::openElement(
@@ -302,20 +315,8 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 
 			. $this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
 			. Html::closeElement( 'div' )
-			. Html::openElement(
-				'div',
-				array( 'id' => 'articleFeedbackv5-filter' )
-			)
-			. Html::openElement(
-				'span',
-				array( 'class' => 'articleFeedbackv5-filter-label' )
-			)
-			. $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
-			. Html::closeElement( 'span' )
-			. $filterSelect->getHTML()
-			. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
-			. Html::closeElement( 'div' )
 		);
+
 		if( $wgUser->isAllowed( 'aftv5-delete-feedback' ) || $wgUser->isAllowed( 'aftv5-hide-feedback' )
 		   || $wgUser->isAllowed( 'aftv5-feature-feedback' )) {
 		    $out->addHTML(

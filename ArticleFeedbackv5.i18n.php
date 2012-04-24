@@ -58,7 +58,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-filter-all' => 'All (oversight) ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'All (hidden) ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'Comments only ($1)',
-	'articlefeedbackv5-special-filter-relevant' => 'Relevant ($1)',
+	'articlefeedbackv5-special-filter-relevant' => 'Most Relevant ($1)',
 	'articlefeedbackv5-special-filter-abusive' => 'Flagged as abuse ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Helpful ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Unhelpful ($1)',
@@ -85,7 +85,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|1 feedback post|$1 feedback posts}} on this article',
 	'articleFeedbackv5-comment-ago'  => '$1 ago',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edit|$1 edits}} since post',
-	'articlefeedbackv5-revision-link' => 'View article revision',
+	'articlefeedbackv5-revision-link' => '(see old article)',
 	'articlefeedbackv5-special-more' => 'Show more posts',
 	'articlefeedbackv5-special-pagetitle' => 'Feedback: $1',
 	'articlefeedbackv5-form-optionid' => 'Option $1',
@@ -172,7 +172,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-mask-text-oversight' => 'This post was oversighted by an authorized editor',
 	'articlefeedbackv5-mask-postnumber' => 'Post #$1',
 	'articlefeedbackv5-special-disclaimer' => 'This is a prototype. Please do not use it unless you have been invited to.',
-	'articlefeedbackv5-special-goback' => 'Go back to feedback list',
+	'articlefeedbackv5-special-goback' => 'View feedback page',
 
 	/* Special page flyover panels */
 	/* Feature this post panel */

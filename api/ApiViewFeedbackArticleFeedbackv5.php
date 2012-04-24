@@ -54,9 +54,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		if ( $this->isPermalink ) {
 			$page_title = Title::newFromRow($record[0])->getPrefixedText();
-			$html .= Linker::link(
+			$html .= Html::rawElement( 'div', array(
+					'id' => 'articleFeedbackv5-feedback-permalink-goback'
+				), Linker::link(
 					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page_title ),
-					wfMessage( 'articlefeedbackv5-special-goback' )->escaped());
+					wfMessage( 'articlefeedbackv5-special-goback' )->escaped()));
 		}
 
 		$result->addValue( $this->getModuleName(), 'length', $length );
