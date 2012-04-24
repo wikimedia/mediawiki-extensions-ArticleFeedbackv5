@@ -1,7 +1,7 @@
 DELETE FROM aft_article_filter_count;
 
 -- relevant (featured OR comment OR helpful)
-INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'visible-relevant', COUNT(*) FROM aft_article_feedback WHERE af_form_id = 1 AND af_is_featured IS TRUE OR af_has_comment IS TRUE OR af_net_helpfulness > 0 AND af_is_deleted IS FALSE AND af_is_hidden IS FALSE GROUP BY af_page_id;
+INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'visible-relevant', COUNT(*) FROM aft_article_feedback WHERE af_form_id = 1 AND (af_is_featured IS TRUE OR af_has_comment IS TRUE OR af_net_helpfulness > 0) AND af_is_deleted IS FALSE AND af_is_hidden IS FALSE GROUP BY af_page_id;
 
 -- featured
 INSERT INTO aft_article_filter_count(afc_page_id, afc_filter_name, afc_filter_count) SELECT af_page_id, 'visible-featured', COUNT(*) FROM aft_article_feedback WHERE af_form_id = 1 AND af_is_featured IS TRUE AND af_is_deleted IS FALSE AND af_is_hidden IS FALSE GROUP BY af_page_id;

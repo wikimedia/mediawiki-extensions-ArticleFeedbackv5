@@ -118,25 +118,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// Build ORDER BY clause.
 		switch( $sort ) {
 			case 'relevance':
-				// NOTE: for relevance, we actually sort OPPOSITE of what is given
-				// because we want to sort by af_relevance_score ASC, af_created DESC
-				// and mysql is stupid
-				// so we have an af_relevance_sort which is a negative version of af_relevance_score
-				// so our direction in the sql is opposite of what is asked for always
-				// but the info sent to the front end stays the same - this is a dirty trick
-				if ( $direction == 'asc' ) {
-					$real_dir = 'desc';
-					$real_con_dir = '<';
-				} else {
-					$real_dir = 'asc';
-					$real_con_dir = '>';
-				}
-
 				$sortField = 'af_relevance_sort';
-				$order       = "af_relevance_sort $real_dir, af_created $real_dir";
-				$continueSql = "(af_relevance_sort $real_con_dir " . intVal( $continue )
+				$order       = "af_relevance_sort $direction, af_created $direction";
+				$continueSql = "(af_relevance_sort $continueDirection " . intVal( $continue )
 				 . " OR (af_relevance_sort = " . intVal( $continue )
-				 . " AND af_id $real_con_dir " . intval( $continueId ) . ") )";
+				 . " AND af_id $continueDirection " . intval( $continueId ) . ") )";
 				break;
 			case 'helpful':
 				$sortField   = 'af_net_helpfulness';
@@ -190,6 +176,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			array(
 				'af_id',
 				'af_net_helpfulness',
+				'af_relevance_sort',
 				'rating.aa_response_boolean AS yes_no'
 			),
 			$where,
@@ -544,9 +531,17 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 						'class' => "articleFeedbackv5-$class-link",
 						'href' => '#',
 					), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
-	
-					// resolved only appears IF the items IS featured
-					if ( $record[0]->af_is_featured ) {
+
+					// unresolve always appears if the item is resolved
+					if ( $record[0]->af_is_resolved ) {
+						$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+							'id'    => "articleFeedbackv5-unresolve-link-$id",
+							'class' => "articleFeedbackv5-unresolve-link",
+							'href' => '#',
+						), wfMessage( "articlefeedbackv5-form-unresolve" )->text() ) );
+					}
+					// resolve appears if item is featured and not resolved
+					if ( $record[0]->af_is_featured && !$record[0]->af_is_resolved ) {
 						$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 							'id'    => "articleFeedbackv5-resolve-link-$id",
 							'class' => "articleFeedbackv5-resolve-link",
@@ -642,7 +637,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$extra_class = '';
 
 			// order of status to show
-			if ( $record[0]->af_last_status ) {
+			if ( $record[0]->af_last_status && $record[0]->af_last_status_timestamp ) {
 				$status_line = Html::rawElement( 'span', array(
 					'class' => 'articleFeedbackv5-feedback-status-marker'
 					),

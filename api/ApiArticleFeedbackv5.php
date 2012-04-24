@@ -410,6 +410,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		foreach ( $answers as $a ) {
 			if ( $a['aa_response_text'] !== null ) {
 				$filters['visible-comment'] = 1;
+				// having a comment makes a new feedback item "relevant"
+				$filters['visible-relevant'] = 1;
 				break;
 			}
 		}
