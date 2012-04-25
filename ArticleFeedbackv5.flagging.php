@@ -648,6 +648,20 @@ class ArticleFeedbackv5Flagging {
 				__METHOD__
 			);
 
+			// if we possibly have relevance score changes... we have to fetch the new relevance score and possibly alter the count
+			if ( count($relevance_score) > 0 ) {
+				global $wgArticleFeedbackv5Cutoff;
+				$new_score = $dbw->selectField( 'aft_article_feedback', 'af_relevance_score', $where, __METHOD__ );
+
+				// if new score > -5 and old score was <= -5 add to filter
+				if ( $new_score > $wgArticleFeedbackv5Cutoff && $record->af_relevance_score <= $wgArticleFeedbackv5Cutoff ) {
+					$filters['visible-relevant'] = 1;
+				// if new score <= -5 and old score was > -5 subtract from filter
+				} elseif ( $new_score <= $wgArticleFeedbackv5Cutoff && $record->af_relevance_score > $wgArticleFeedbackv5Cutoff ) {
+					$filters['visible-relevant'] = -1;
+				}
+			}
+
 			// Update the filter count rollups.
 			ApiArticleFeedbackv5Utils::updateFilterCounts( $dbw, $this->pageId, $filters );
 
@@ -770,7 +784,8 @@ class ArticleFeedbackv5Flagging {
 				'af_is_featured',
 				'af_is_unfeatured',
 				'af_is_resolved',
-				'af_is_unresolved'),
+				'af_is_unresolved',
+				'af_relevance_score'),
 			array( 'af_id' => $id )
 		);
 		return $record;

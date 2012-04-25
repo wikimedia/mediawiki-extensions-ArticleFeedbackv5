@@ -13,6 +13,13 @@
 /* Configuration */
 
 /**
+ * Relevance Cutoff value
+ * A signed integer controlling the point at which items are "cutoff" from the relevant filter
+ * That means anything > value is in the relevant filter, anything <= is "cutoff"
+ */
+$wgArticleFeedbackv5Cutoff = -5;
+
+/**
  * Relevance Scoring
  * name => integer scoring actions pairs
  * after changing this you should also change the values in relevance_score.sql and run it to reset relevance

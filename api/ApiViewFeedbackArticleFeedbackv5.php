@@ -315,7 +315,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 			// regular filters
 			case 'visible-relevant':
-				$where[] = 'af_is_featured IS TRUE OR af_has_comment is true OR af_net_helpfulness > 0';
+				$where[] = '(af_is_featured IS TRUE OR af_has_comment is true OR af_net_helpfulness > 0) AND af_relevance_score > -5';
 				break;
 			case 'visible-comment':
 				$where[] = 'af_has_comment IS TRUE';
