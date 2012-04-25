@@ -504,12 +504,10 @@
 	$.articleFeedbackv5special.markFeatured = function ( $row, $status_line ) {
 		$row.addClass( 'articleFeedbackv5-feedback-featured' )
 			.data( 'featured', true );
-		var $marker = $row.find( 'articleFeedbackv5-feedback-featured-marker' );
-		if ( 0 == $marker.length ) {
-			$marker = $( $.articleFeedbackv5special.featuredMarkerTemplate );
-			$marker.localize( { 'prefix': 'articlefeedbackv5-' } );
-			$( $marker ).insertAfter( $row.find( '.articleFeedbackv5-comment-details-updates' ) );
-		}
+		$row.find( '.articleFeedbackv5-featured-marker' ).remove();
+		$marker = $( $.articleFeedbackv5special.featuredMarkerTemplate );
+		$marker.localize( { 'prefix': 'articlefeedbackv5-' } );
+		$( $marker ).insertAfter( $row.find( '.articleFeedbackv5-comment-details-updates' ) );
 		if ( $status_line ) {
 			$status = $row.find('.articleFeedbackv5-feedback-status-marker');
 			if ( 0 == $status.length ) {
@@ -557,12 +555,10 @@
 	$.articleFeedbackv5special.markResolved = function ( $row, $status_line ) {
 		$row.addClass( 'articleFeedbackv5-feedback-resolved' )
 			.data( 'resolved', true );
-		var $marker = $row.find( 'articleFeedbackv5-feedback-resolved-marker' );
-		if ( 0 == $marker.length ) {
-			$marker = $( $.articleFeedbackv5special.resolvedMarkerTemplate );
-			$marker.localize( { 'prefix': 'articlefeedbackv5-' } );
-			$( $marker ).insertAfter( $row.find( '.articleFeedbackv5-abuse-link' ) );
-		}
+		$row.find( '.articleFeedbackv5-resolved-marker' ).remove();
+		$marker = $( $.articleFeedbackv5special.resolvedMarkerTemplate );
+		$marker.localize( { 'prefix': 'articlefeedbackv5-' } );
+		$( $marker ).insertAfter( $row.find( '.articleFeedbackv5-abuse-link' ) );
 		if ( $status_line ) {
 			$status = $row.find('.articleFeedbackv5-feedback-status-marker');
 			if ( 0 == $status.length ) {
