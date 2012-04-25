@@ -342,6 +342,8 @@ class ArticleFeedbackv5Flagging {
 				}
 				$relevance_score[] = 'featured';
 
+				$is_featured = true;
+
 				$results['status-line'] = $this->createStatusLine( 'featured', $this->getUserId(), $timestamp );
 
 			} elseif ( $direction == 'decrease' && $record->af_is_featured ) {
@@ -357,6 +359,8 @@ class ArticleFeedbackv5Flagging {
 				$filters['visible-featured'] = -1;
 				$filters['visible-unfeatured'] = 1;
 				$relevance_score[] = 'unfeatured';
+
+				$is_featured = false;
 
 				$results['status-line'] = $this->createStatusLine( 'unfeatured', $this->getUserId(), $timestamp );
 			} else {
@@ -648,17 +652,50 @@ class ArticleFeedbackv5Flagging {
 				__METHOD__
 			);
 
-			// if we possibly have relevance score changes... we have to fetch the new relevance score and possibly alter the count
-			if ( count($relevance_score) > 0 ) {
+			// if we've changed helpfulness, featured, or relevance_score we adjust the relevance filter
+			if ( count($relevance_score) > 0 || $flag == 'helpful' || $flag == 'unhelpful' || $flag == 'feature' ) {
 				global $wgArticleFeedbackv5Cutoff;
+
+				// we might have changed the featured status or helpfulness score here
+				if ( !isset( $netHelpfulness ) ) {
+					$netHelpfulness = $record->af_net_helpfulness;
+				}
+				if ( !isset( $is_featured ) ) {
+					$is_featured = $record->af_is_featured;
+				}
+				// grab our shiny new relevance score
 				$new_score = $dbw->selectField( 'aft_article_feedback', 'af_relevance_score', $where, __METHOD__ );
 
-				// if new score > -5 and old score was <= -5 add to filter
-				if ( $new_score > $wgArticleFeedbackv5Cutoff && $record->af_relevance_score <= $wgArticleFeedbackv5Cutoff ) {
+				// we add 1 if
+
+				// 1. we're newly featured, don't have a comment, and nethelpfulness is not at threshold and greater then cutoff
+				if ( !$record->af_has_comment && $netHelpfulness <= 0
+				    && !$record->af_is_featured && $is_featured
+				    && $new_score > $wgArticleFeedbackv5Cutoff ) {
 					$filters['visible-relevant'] = 1;
-				// if new score <= -5 and old score was > -5 subtract from filter
-				} elseif ( $new_score <= $wgArticleFeedbackv5Cutoff && $record->af_relevance_score > $wgArticleFeedbackv5Cutoff ) {
+				// 2. we're newly net_helpful, don't have a comment, and aren't featured and greater then cutoff
+				} elseif ( !$record->af_has_comment && !$is_featured
+					  && $record->af_net_helpfulness <= 0 && $netHelpfulness > 0
+					  && $new_score > $wgArticleFeedbackv5Cutoff ) {
+					$filters['visible-relevant'] = 1;
+				// 3. we're newly above the cutoff and qualify as relevant in any way
+				} elseif ( ( $record->af_has_comment || $netHelpfulness > 0 || $is_featured )
+				    && $new_score > $wgArticleFeedbackv5Cutoff
+				    && $record->af_relevance_score <= $wgArticleFeedbackv5Cutoff ) {
+					$filters['visible-relevant'] = 1;
+
+				// we subtract 1 if
+
+				// we used to be in the relevant filter but are now below the cutoff
+				} elseif ( ( $record->af_has_comment || $record->af_new_helpfulness > 0 || $record->af_is_featured )
+					  && $new_score <= $wgArticleFeedbackv5Cutoff
+					  && $record->af_relevance_score > $wgArticleFeedbackv5Cutoff ) {
 					$filters['visible-relevant'] = -1;
+				// we used to be in the relevant filter via featured or helpfulness and are now not
+				} elseif ( !$record->af_has_comment
+					  && ( ( $record->af_new_helpfulness > 0 && $netHelpfulness <= 0 )
+						|| ( $record->af_is_featured && !$is_featured ) ) ) {
+						$filters['visible-relevant'] = -1;
 				}
 			}
 
@@ -804,12 +841,14 @@ class ArticleFeedbackv5Flagging {
 	 * @return array  the filter array with new filter choices added
 	 */
 	protected function visibleCounts( $record, $filters, $action = 'invisible' ) {
+		global $wgArticleFeedbackv5Cutoff;
 
 		if( $action === 'visible' ) {
 			if ( $record->af_is_hidden == false && $record->af_is_deleted == false) {
 				return $filters;
 			}
 			$int = 1;
+
 		} else {
 			if ( $record->af_is_hidden == true || $record->af_is_deleted == true) {
 				return $filters;
@@ -817,13 +856,15 @@ class ArticleFeedbackv5Flagging {
 			$int = -1;
 		}
 
+		// if this was/is in the relevant filter count it needs to be incremented/decremented
+		if( ( $record->af_has_comment || ( $record->af_net_helpfulness > 0 ) || $record->af_is_featured )
+		   && $record->af_relevance_score > $wgArticleFeedbackv5Cutoff )  {
+			$filters['visible-relevant'] = $int;
+		}
+
 		// visible is only decremented for hide or delete
 		$filters['visible'] = $int;
 
-		// all can see
-		if( $record->af_has_comment || ( $record->af_net_helpfulness > 0 ) || $record->af_is_featured ) {
-			$filters['visible-relevant'] = $int;
-		}
 		if( $record->af_is_featured ) {
 			$filters['visible-featured'] = $int;
 		}
