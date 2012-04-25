@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJ3///bw\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 2383,
+      "author": {
+        "id": 146
+      },
+      "writtenOn": "2012-04-25T21:31:48Z",
+      "side": 1,
+      "message": "The rebase on top of master had a ton of conflicts in this file and I was trying to guess which of the three way merge files had the \"right\" non en/qqq changes - any suggestions for handling this correctly?",
+      "parentUuid": "AAAAJ3///fM\u003d",
+      "revId": "db5bb6e188bd5cde6799f5b96faf9fa4a890a582",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJ3///dY\u003d",
         "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
         "patchSetId": 1
