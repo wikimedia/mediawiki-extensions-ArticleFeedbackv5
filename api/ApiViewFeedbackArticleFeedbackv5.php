@@ -284,7 +284,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	private function getFilterCriteria( $filter, $filterValue = null ) {
-		global $wgUser;
+		global $wgUser, $wgArticleFeedbackv5Cutoff;
 
 		$where          = array();
 		$hiddenFilters  = array( 'all-hidden', 'notdeleted-hidden', 'all-unhidden', 'notdeleted-unhidden',
@@ -315,7 +315,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 			// regular filters
 			case 'visible-relevant':
-				$where[] = '(af_is_featured IS TRUE OR af_has_comment is true OR af_net_helpfulness > 0) AND af_relevance_score > -5';
+				$where[] = '(af_is_featured IS TRUE OR af_has_comment is true OR af_net_helpfulness > 0) AND af_relevance_score > ' . $wgArticleFeedbackv5Cutoff;
 				break;
 			case 'visible-comment':
 				$where[] = 'af_has_comment IS TRUE';
