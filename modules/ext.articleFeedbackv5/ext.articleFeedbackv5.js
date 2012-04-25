@@ -21,7 +21,7 @@ $aftDiv.articleFeedbackv5();
 /* Add basic edit tracking */
 if ( $aftDiv.articleFeedbackv5( 'clickTrackingOn' ) ) {
 	var clickTrackingSession = $.cookie( 'clicktracking-session' );
-	var editEventBase = $aftDiv.articleFeedbackv5( 'prefix', $aftDiv.articleFeedbackv5( 'bucketName' ) );
+	var editEventBase = $aftDiv.articleFeedbackv5( 'prefix', $aftDiv.articleFeedbackv5( 'experiment' ) );
 	$( 'span.editsection a, #ca-edit a' ).each( function() {
 		var event = editEventBase;
 		if ( $(this).is( '#ca-edit a' ) ) {
