@@ -214,7 +214,8 @@ class ApiArticleFeedbackv5Utils {
 
 		// These are our valid activity log actions
 		$valid = array( 'oversight', 'unoversight', 'hidden', 'unhidden',
-				'decline', 'request', 'unrequest', 'flag', 'unflag', 'autoflag', 'autohide' );
+				'decline', 'request', 'unrequest', 'flag', 'unflag', 'autoflag', 'autohide',
+				'feature', 'unfeature', 'resolve', 'unresolve' );
 
 		// suppress
 		$suppress = array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest');
