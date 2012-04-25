@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJ3///bU\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 2383,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-04-25T21:35:09Z",
+      "side": 1,
+      "message": "I\u0027ll squash in the rest of the changes that I\u0027ve approved, and then I\u0027ll fix this by copying in the i18n file from master then copying back the \u0027en\u0027 and \u0027qqq\u0027 parts.",
+      "parentUuid": "AAAAJ3///bw\u003d",
+      "revId": "db5bb6e188bd5cde6799f5b96faf9fa4a890a582",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJ3///dY\u003d",
         "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
         "patchSetId": 1
