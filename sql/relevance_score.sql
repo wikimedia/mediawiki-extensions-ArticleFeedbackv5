@@ -7,7 +7,7 @@ UPDATE aft_article_feedback SET af_relevance_score = 0;
 -- this will push old items down if they don't have correct flagging
 -- TODO: should this be limited by date so only old stuff gets the push down?
 UPDATE aft_article_feedback
-	SET af_relevance_score = -50
+	SET af_relevance_score = -1
 	WHERE (
 		af_is_featured IS NOT TRUE OR
 		af_is_unfeatured IS NOT TRUE OR
