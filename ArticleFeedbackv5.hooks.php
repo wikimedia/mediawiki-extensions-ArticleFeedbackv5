@@ -559,8 +559,10 @@ class ArticleFeedbackv5Hooks {
 			} else {
 				$trackingId .= '-option' . $bucketId . $flinkId; // Prior to stage 3; handles cached js
 			}
-			$trackingId .= '-cta_' . ( isset( $ctas[$ctaId] ) ? $ctas[$ctaId] : 'unknown' )
-				. '-' . $event
+			if ( $bucketId != 4 ) { // Bucket 4 can never result in a CTA
+				$trackingId .= '-cta_' . ( isset( $ctas[$ctaId] ) ? $ctas[$ctaId] : 'unknown' );
+			}
+			$trackingId .= '-' . $event
 				. '-' . $location;
 		}
 
