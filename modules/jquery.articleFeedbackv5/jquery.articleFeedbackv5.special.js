@@ -51,7 +51,7 @@
 		filter: 'visible-relevant',
 		filterValue: undefined, // Permalinks require a feedback ID
 		sort: 'relevance',
-		sortDirection: 'asc',
+		sortDirection: 'desc',
 		limit: 25,
 		continue: null,
 		continueId: null, // Sort of a tie-breaker for continue values.
