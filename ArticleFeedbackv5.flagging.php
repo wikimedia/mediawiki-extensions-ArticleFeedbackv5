@@ -77,6 +77,7 @@ class ArticleFeedbackv5Flagging {
 		$update    = array();
 		$results   = array();
 		$log = array();
+		$relevance_score = array();
 
 		// start
 		$where = array( 'af_id' => $this->feedbackId );
@@ -322,6 +323,90 @@ class ArticleFeedbackv5Flagging {
 				$error = 'articlefeedbackv5-invalid-feedback-state';
 			}
 		// this is "decline oversight" which unsets all request/unrequest on a piece of feedback
+		} elseif ( 'feature' === $flag && $this->isAllowed( 'aftv5-feature-feedback' ) ) {
+
+			// increase means "feature this"
+			if ( $direction == 'increase' && !$record->af_is_featured ) {
+				$log[] = array('feature', $notes, $this->isSystemCall());
+
+				$update['af_is_featured'] = true;
+				$update['af_is_unfeatured'] = false;
+				$update['af_last_status'] = 'featured';
+				$update['af_last_status_user_id'] = $this->getUserId();
+				$update['af_last_status_timestamp'] = $timestamp;
+
+				// filter adjustments
+				$filters['visible-featured'] = 1;
+				if ( true == $record->af_is_unfeatured) {
+					$filters['visible-unfeatured'] = -1;
+				}
+				$relevance_score[] = 'featured';
+
+				$is_featured = true;
+
+				$results['status-line'] = $this->createStatusLine( 'featured', $this->getUserId(), $timestamp );
+
+			} elseif ( $direction == 'decrease' && $record->af_is_featured ) {
+				// decrease means "unfeature" this
+				$log[] = array('unfeature', $notes, $this->isSystemCall());
+
+				$update['af_is_featured'] = false;
+				$update['af_is_unfeatured'] = true;
+				$update['af_last_status'] = 'unfeatured';
+				$update['af_last_status_user_id'] = $this->getUserId();
+				$update['af_last_status_timestamp'] = $timestamp;
+				// filter adjustments
+				$filters['visible-featured'] = -1;
+				$filters['visible-unfeatured'] = 1;
+				$relevance_score[] = 'unfeatured';
+
+				$is_featured = false;
+
+				$results['status-line'] = $this->createStatusLine( 'unfeatured', $this->getUserId(), $timestamp );
+			} else {
+				$error = 'articlefeedbackv5-invalid-feedback-state';
+			}
+
+		} elseif ( 'resolve' === $flag && $this->isAllowed( 'aftv5-feature-feedback' ) ) {
+
+			// increase means "resolve this"
+			if ( $direction == 'increase' && !$record->af_is_resolved) {
+				$log[] = array('resolve', $notes, $this->isSystemCall());
+
+				$update['af_is_resolved'] = true;
+				$update['af_is_unresolved'] = false;
+				$update['af_last_status'] = 'resolved';
+				$update['af_last_status_user_id'] = $this->getUserId();
+				$update['af_last_status_timestamp'] = $timestamp;
+
+				// filter adjustments
+				$filters['visible-resolved'] = 1;
+				if ( true == $record->af_is_unresolved) {
+					$filters['visible-unresolved'] = -1;
+				}
+				$relevance_score[] = 'resolved';
+
+				$results['status-line'] = $this->createStatusLine( 'resolved', $this->getUserId(), $timestamp );
+
+			} elseif ( $direction == 'decrease' && $record->af_is_resolved ) {
+				// decrease means "unresolve" this
+				$log[] = array('unresolve', $notes, $this->isSystemCall());
+
+				$update['af_is_resolved'] = false;
+				$update['af_is_unresolved'] = true;
+				$update['af_last_status'] = 'unresolved';
+				$update['af_last_status_user_id'] = $this->getUserId();
+				$update['af_last_status_timestamp'] = $timestamp;
+				// filter adjustments
+				$filters['visible-resolved'] = -1;
+				$filters['visible-unresolved'] = 1;
+				$relevance_score[] = 'unresolved';
+
+				$results['status-line'] = $this->createStatusLine( 'unresolved', $this->getUserId(), $timestamp );
+			} else {
+				$error = 'articlefeedbackv5-invalid-feedback-state';
+			}
+
 		} elseif ( 'resetoversight' === $flag && $this->isAllowed( 'aftv5-delete-feedback' ) ) {
 
 			$log[] = array('decline', $notes, $this->isSystemCall());
@@ -362,8 +447,10 @@ class ArticleFeedbackv5Flagging {
 			// Make the abuse count in the result reflect this vote.
 			if ( $direction == 'increase' ) {
 				$results['abuse_count']++;
+				$relevance_score[] = 'flagged';
 			} else {
 				$results['abuse_count']--;
+				$relevance_score[] = 'unflagged';
 			}
 			// no negative numbers
 			$results['abuse_count'] = max( 0, $results['abuse_count'] );
@@ -474,6 +561,8 @@ class ArticleFeedbackv5Flagging {
 					$helpful = max(0, --$helpful);
 					$unhelpful++;
 				}
+				$relevance_score[] = 'helpful';
+				$relevance_score[] = 'unhelpful';
 
 			} else {
 
@@ -481,18 +570,22 @@ class ArticleFeedbackv5Flagging {
 					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_unhelpful_count = af_unhelpful_count + 1";
 					$unhelpful++;
+					$relevance_score[] = 'unhelpful';
 				} elseif ( 'unhelpful' === $flag && $direction == 'decrease' ) {
 					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_unhelpful_count = GREATEST(0, CONVERT(af_unhelpful_count, SIGNED) - 1)";
 					$unhelpful = max(0, --$unhelpful);
+					$relevance_score[] = 'unhelpful';
 				} elseif ( $flag == 'helpful' && $direction == 'increase' ) {
 					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_helpful_count = af_helpful_count + 1";
 					$helpful++;
+					$relevance_score[] = 'helpful';
 				} elseif ( $flag == 'helpful' && $direction == 'decrease' ) {
 					// NOTE: we are bypassing traditional sql escaping here
 					$update[] = "af_helpful_count = GREATEST(0, CONVERT(af_helpful_count, SIGNED) - 1)";
 					$helpful = max(0, --$helpful);
+					$relevance_score[] = 'helpful';
 				}
 
 			}
@@ -534,6 +627,21 @@ class ArticleFeedbackv5Flagging {
 			$error = 'articlefeedbackv5-invalid-feedback-flag';
 		}
 
+		// figure out if we have relevance_scores to adjust
+		if ( count($relevance_score) > 0 ) {
+			global $wgArticleFeedbackv5RelevanceScoring;
+			$math = array();
+
+			foreach( $relevance_score as $item ) {
+				if ( array_key_exists( $item, $wgArticleFeedbackv5RelevanceScoring ) ) {
+					$math[] = $wgArticleFeedbackv5RelevanceScoring[$item];
+				}
+			}
+
+			$update[] = 'af_relevance_score = (' . implode (' + ', $math) . ')';
+			$update[] = 'af_relevance_sort = - af_relevance_score';
+		}
+
 		// we were valid
 		if ( !isset( $error ) ) {
 
@@ -543,6 +651,53 @@ class ArticleFeedbackv5Flagging {
 				$where,
 				__METHOD__
 			);
+
+			// if we've changed helpfulness, featured, or relevance_score we adjust the relevance filter
+			if ( count($relevance_score) > 0 || $flag == 'helpful' || $flag == 'unhelpful' || $flag == 'feature' ) {
+				global $wgArticleFeedbackv5Cutoff;
+
+				// we might have changed the featured status or helpfulness score here
+				if ( !isset( $netHelpfulness ) ) {
+					$netHelpfulness = $record->af_net_helpfulness;
+				}
+				if ( !isset( $is_featured ) ) {
+					$is_featured = $record->af_is_featured;
+				}
+				// grab our shiny new relevance score
+				$new_score = $dbw->selectField( 'aft_article_feedback', 'af_relevance_score', $where, __METHOD__ );
+
+				// we add 1 if
+
+				// 1. we're newly featured, don't have a comment, and nethelpfulness is not at threshold and greater then cutoff
+				if ( !$record->af_has_comment && $netHelpfulness <= 0
+				    && !$record->af_is_featured && $is_featured
+				    && $new_score > $wgArticleFeedbackv5Cutoff ) {
+					$filters['visible-relevant'] = 1;
+				// 2. we're newly net_helpful, don't have a comment, and aren't featured and greater then cutoff
+				} elseif ( !$record->af_has_comment && !$is_featured
+					  && $record->af_net_helpfulness <= 0 && $netHelpfulness > 0
+					  && $new_score > $wgArticleFeedbackv5Cutoff ) {
+					$filters['visible-relevant'] = 1;
+				// 3. we're newly above the cutoff and qualify as relevant in any way
+				} elseif ( ( $record->af_has_comment || $netHelpfulness > 0 || $is_featured )
+				    && $new_score > $wgArticleFeedbackv5Cutoff
+				    && $record->af_relevance_score <= $wgArticleFeedbackv5Cutoff ) {
+					$filters['visible-relevant'] = 1;
+
+				// we subtract 1 if
+
+				// we used to be in the relevant filter but are now below the cutoff
+				} elseif ( ( $record->af_has_comment || $record->af_new_helpfulness > 0 || $record->af_is_featured )
+					  && $new_score <= $wgArticleFeedbackv5Cutoff
+					  && $record->af_relevance_score > $wgArticleFeedbackv5Cutoff ) {
+					$filters['visible-relevant'] = -1;
+				// we used to be in the relevant filter via featured or helpfulness and are now not
+				} elseif ( !$record->af_has_comment
+					  && ( ( $record->af_new_helpfulness > 0 && $netHelpfulness <= 0 )
+						|| ( $record->af_is_featured && !$is_featured ) ) ) {
+						$filters['visible-relevant'] = -1;
+				}
+			}
 
 			// Update the filter count rollups.
 			ApiArticleFeedbackv5Utils::updateFilterCounts( $dbw, $this->pageId, $filters );
@@ -662,7 +817,12 @@ class ArticleFeedbackv5Flagging {
 				'af_has_comment',
 				'af_oversight_count',
 				'af_is_unrequested',
-				'af_is_autohide'),
+				'af_is_autohide',
+				'af_is_featured',
+				'af_is_unfeatured',
+				'af_is_resolved',
+				'af_is_unresolved',
+				'af_relevance_score'),
 			array( 'af_id' => $id )
 		);
 		return $record;
@@ -681,12 +841,14 @@ class ArticleFeedbackv5Flagging {
 	 * @return array  the filter array with new filter choices added
 	 */
 	protected function visibleCounts( $record, $filters, $action = 'invisible' ) {
+		global $wgArticleFeedbackv5Cutoff;
 
 		if( $action === 'visible' ) {
 			if ( $record->af_is_hidden == false && $record->af_is_deleted == false) {
 				return $filters;
 			}
 			$int = 1;
+
 		} else {
 			if ( $record->af_is_hidden == true || $record->af_is_deleted == true) {
 				return $filters;
@@ -694,10 +856,18 @@ class ArticleFeedbackv5Flagging {
 			$int = -1;
 		}
 
+		// if this was/is in the relevant filter count it needs to be incremented/decremented
+		if( ( $record->af_has_comment || ( $record->af_net_helpfulness > 0 ) || $record->af_is_featured )
+		   && $record->af_relevance_score > $wgArticleFeedbackv5Cutoff )  {
+			$filters['visible-relevant'] = $int;
+		}
+
 		// visible is only decremented for hide or delete
 		$filters['visible'] = $int;
 
-		// all can see
+		if( $record->af_is_featured ) {
+			$filters['visible-featured'] = $int;
+		}
 		if( $record->af_has_comment ) {
 			$filters['visible-comment'] = $int;
 		}
@@ -711,6 +881,15 @@ class ArticleFeedbackv5Flagging {
 		}
 		if( $record->af_abuse_count > 0 ) {
 			$filters['visible-abusive'] = $int;
+		}
+		if( $record->af_is_unfeatured ) {
+			$filters['visible-unfeatured'] = $int;
+		}
+		if( $record->af_is_resolved ) {
+			$filters['visible-resolved'] = $int;
+		}
+		if( $record->af_is_unresolved ) {
+			$filters['visible-unresolved'] = $int;
 		}
 
 		return $filters;

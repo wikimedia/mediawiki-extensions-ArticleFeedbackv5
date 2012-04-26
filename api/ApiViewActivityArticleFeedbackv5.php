@@ -38,7 +38,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 		// These are our valid activity log actions
 		$valid = array( 'oversight', 'unoversight', 'hidden', 'unhidden',
-				'decline', 'request', 'unrequest', 'flag', 'unflag' );
+				'decline', 'request', 'unrequest', 'flag', 'unflag',
+				'resolve', 'unresolve', 'feature', 'unfeature');
 
 		// get our parameter information
 		$params = $this->extractRequestParams();
