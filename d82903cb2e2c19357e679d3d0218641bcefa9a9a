@@ -1,0 +1,8 @@
+Change-Id: Id82903cb2e2c19357e679d3d0218641bcefa9a9a
+Code-Review+2: Catrope <roan.kattouw@gmail.com>
+Verified+1: Catrope <roan.kattouw@gmail.com>
+Submitted-by: Catrope <roan.kattouw@gmail.com>
+Submitted-at: Thu, 26 Apr 2012 17:19:58 +0000
+Reviewed-on: https://gerrit.wikimedia.org/r/5892
+Project: mediawiki/extensions/ArticleFeedbackv5
+Branch: refs/heads/master
