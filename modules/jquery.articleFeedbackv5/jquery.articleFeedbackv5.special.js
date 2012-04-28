@@ -54,7 +54,6 @@
 		sortDirection: 'asc',
 		limit: 25,
 		continue: null,
-		continueId: null, // Sort of a tie-breaker for continue values.
 		disabled: false,	// Prevent (at least limit) a flood of ajax requests.
 		allowMultiple: false
 	};
@@ -201,7 +200,6 @@
 		$( '#articleFeedbackv5-filter-select' ).bind( 'change', function( e ) {
 			$.articleFeedbackv5special.listControls.filter     = $(this).val();
 			$.articleFeedbackv5special.listControls.continue   = null;
-			$.articleFeedbackv5special.listControls.continueId = null;
 			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
@@ -213,7 +211,6 @@
 			// set direction = desc...
 			$.articleFeedbackv5special.listControls.sort       = id;
 			$.articleFeedbackv5special.listControls.continue   = null;
-			$.articleFeedbackv5special.listControls.continueId = null;
 
 			// unless we're flipping the direction on the current sort.
 			if ( id == oldId && $.articleFeedbackv5special.listControls.sortDirection == 'desc' ) {
@@ -239,7 +236,6 @@
 			$.articleFeedbackv5special.listControls.filter      = 'id';
 			$.articleFeedbackv5special.listControls.filterValue = id;
 			$.articleFeedbackv5special.listControls.continue    = null;
-			$.articleFeedbackv5special.listControls.continueId  = null;
 			$.articleFeedbackv5special.loadFeedback( true );
 		} );
 
@@ -812,18 +808,18 @@
 	/**
 	 * Load the activity log for a feedback post item
 	 *
-	 * @param id			feedback post item id
-	 * @param continueId	should be 0 for the first request (first page), then the continue id returned from the last API call
+	 * @param id           int    feedback post item id
+	 * @param continueInfo string should be null for the first request (first page), then the continue info returned from the last API call
 	 */
-	$.articleFeedbackv5special.loadActivityLog = function( id, continueId ) {
+	$.articleFeedbackv5special.loadActivityLog = function( id, continueInfo ) {
 		var data = {
 			'action':			'query',
 			'list':				'articlefeedbackv5-view-activity',
 			'format':			'json',
 			'aafeedbackid':		id
 		};
-		if( continueId ) {
-			data['aacontinue'] = continueId;
+		if ( continueInfo ) {
+			data['aacontinue'] = continueInfo;
 		}
 		$.ajax( {
 			'url': 		$.articleFeedbackv5special.apiUrl,
@@ -881,7 +877,6 @@
 				'afvfsortdirection' : $.articleFeedbackv5special.listControls.sortDirection,
 				'afvflimit'         : $.articleFeedbackv5special.listControls.limit,
 				'afvfcontinue'      : $.articleFeedbackv5special.listControls.continue,
-				'afvfcontinueid'    : $.articleFeedbackv5special.listControls.continueId,
 				'action'  : 'query',
 				'format'  : 'json',
 				'list'    : 'articlefeedbackv5-view-feedback',
@@ -950,8 +945,7 @@
 
 					} );
 					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
-					$.articleFeedbackv5special.listControls.continue   = data['articlefeedbackv5-view-feedback'].continue;
-					$.articleFeedbackv5special.listControls.continueId = data['articlefeedbackv5-view-feedback'].continueid;
+					$.articleFeedbackv5special.listControls.continue = data['articlefeedbackv5-view-feedback'].continue;
 					if( data['articlefeedbackv5-view-feedback'].more ) {
 						$( '#articleFeedbackv5-show-more').show();
 					} else {
