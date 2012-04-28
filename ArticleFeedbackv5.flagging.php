@@ -147,7 +147,8 @@ class ArticleFeedbackv5Flagging {
 					$log[] = array( 'autohide', '', $this->getUserId );
 
 					$results['autohidden'] = 1;
-					$results['status-line'] = $this->createStatusLine( 'autohide', $this->getUserId(), $timestamp );
+					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+						'autohide', $this->getUserId(), $timestamp );
 
 					// NOTE: we've already adjusted all visiblity counts above so we only do hide specific ones
 					$filters = $this->hideCounts( $record, $filters, 'hide' );
@@ -158,7 +159,8 @@ class ArticleFeedbackv5Flagging {
 					$update['af_last_status_user_id'] = $this->getUserId();
 					$update['af_last_status_timestamp'] = $timestamp;
 
-					$results['status-line'] = $this->createStatusLine( 'deleted', $this->getUserId(), $timestamp );
+					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+						'deleted', $this->getUserId(), $timestamp );
 				}
 
 			// unoversight (no autohide)
@@ -172,7 +174,8 @@ class ArticleFeedbackv5Flagging {
 				$update['af_last_status_timestamp'] = $timestamp;
 
 				$log[] = array('unoversight', $notes, $this->isSystemCall());
-				$results['status-line'] = $this->createStatusLine( 'undeleted', $this->getUserId(), $timestamp );
+				$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+					'undeleted', $this->getUserId(), $timestamp );
 
 				$filters = array('all-unoversighted' => 1,
 						 'all-oversighted' => -1);
@@ -215,7 +218,8 @@ class ArticleFeedbackv5Flagging {
 				$filters = $this->visibleCounts( $record, $filters, 'invisible' );
 
 				$log[] = array('hidden', $notes, $this->isSystemCall());
-				$results['status-line'] = $this->createStatusLine( 'hidden', $this->getUserId(), $timestamp );
+				$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+					'hidden', $this->getUserId(), $timestamp );
 
 			} elseif( $direction == 'decrease' && $record->af_is_hidden ) {
 
@@ -232,7 +236,8 @@ class ArticleFeedbackv5Flagging {
 				$filters = $this->visibleCounts( $record, $filters, 'visible' );
 
 				$log[] = array('unhidden', $notes, $this->isSystemCall());
-				$results['status-line'] = $this->createStatusLine( 'unhidden', $this->getUserId(), $timestamp );
+				$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+					'unhidden', $this->getUserId(), $timestamp );
 
 			} else {
 				$error = 'articlefeedbackv5-invalid-feedback-state';
@@ -279,7 +284,8 @@ class ArticleFeedbackv5Flagging {
 					$log[] = array( 'autohide', '', $this->getUserId );
 
 					$results['autohidden'] = 1;
-					$results['status-line'] = $this->createStatusLine( 'autohide', $this->getUserId(), $timestamp );
+					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+						'unhidden', $this->getUserId(), $timestamp );
 
 					$filters = $this->hideCounts( $record, $filters, 'hide' );
 					// NOTE: unlike autohide after oversight, we must do the visiblity filter
@@ -289,7 +295,8 @@ class ArticleFeedbackv5Flagging {
 					$update['af_last_status'] = 'request';
 					$update['af_last_status_user_id'] = $this->getUserId();
 					$update['af_last_status_timestamp'] = $timestamp;
-					$results['status-line'] = $this->createStatusLine( 'request', $this->getUserId(), $timestamp );
+					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+						'request', $this->getUserId(), $timestamp );
 				}
 
 				// IF the previous setting was 0, send an email
@@ -317,7 +324,8 @@ class ArticleFeedbackv5Flagging {
 				$update['af_last_status'] = 'unrequest';
 				$update['af_last_status_user_id'] = $this->getUserId();
 				$update['af_last_status_timestamp'] = $timestamp;
-				$results['status-line'] = $this->createStatusLine( 'unrequest', $this->getUserId(), $timestamp );
+				$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+					'unrequest', $this->getUserId(), $timestamp );
 
 			} else {
 				$error = 'articlefeedbackv5-invalid-feedback-state';
@@ -344,7 +352,8 @@ class ArticleFeedbackv5Flagging {
 
 				$is_featured = true;
 
-				$results['status-line'] = $this->createStatusLine( 'featured', $this->getUserId(), $timestamp );
+				$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+					'featured', $this->getUserId(), $timestamp );
 
 			} elseif ( $direction == 'decrease' && $record->af_is_featured ) {
 				// decrease means "unfeature" this
@@ -362,7 +371,9 @@ class ArticleFeedbackv5Flagging {
 
 				$is_featured = false;
 
-				$results['status-line'] = $this->createStatusLine( 'unfeatured', $this->getUserId(), $timestamp );
+				$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+					'unfeatured', $this->getUserId(), $timestamp );
+
 			} else {
 				$error = 'articlefeedbackv5-invalid-feedback-state';
 			}
@@ -386,7 +397,8 @@ class ArticleFeedbackv5Flagging {
 				}
 				$relevance_score[] = 'resolved';
 
-				$results['status-line'] = $this->createStatusLine( 'resolved', $this->getUserId(), $timestamp );
+				$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+					'resolved', $this->getUserId(), $timestamp );
 
 			} elseif ( $direction == 'decrease' && $record->af_is_resolved ) {
 				// decrease means "unresolve" this
@@ -402,7 +414,8 @@ class ArticleFeedbackv5Flagging {
 				$filters['visible-unresolved'] = 1;
 				$relevance_score[] = 'unresolved';
 
-				$results['status-line'] = $this->createStatusLine( 'unresolved', $this->getUserId(), $timestamp );
+				$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+					'unresolved', $this->getUserId(), $timestamp );
 			} else {
 				$error = 'articlefeedbackv5-invalid-feedback-state';
 			}
@@ -432,7 +445,8 @@ class ArticleFeedbackv5Flagging {
 				}
 			}
 
-			$results['status-line'] = $this->createStatusLine( 'declined', $this->getUserId(), $timestamp );
+			$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+				'declined', $this->getUserId(), $timestamp );
 
 		// this is flag/unflag for abuse
 		} elseif ( 'abuse' === $flag ) {
@@ -490,7 +504,8 @@ class ArticleFeedbackv5Flagging {
 					$log[] = array( 'autohide', '', $this->getUserId );
 
 					$results['autohidden'] = 1;
-					$results['status-line'] = $this->createStatusLine( 'autohide', $this->getUserId(), $timestamp );
+					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+						'autohide', $this->getUserId(), $timestamp );
 
 					$filters = $this->hideCounts( $record, $filters, 'hide' );
 					// NOTE: unlike autohide after oversight, we must do the visiblity filter
@@ -500,7 +515,8 @@ class ArticleFeedbackv5Flagging {
 					$update['af_last_status'] = 'autoflag';
 					$update['af_last_status_user_id'] = 0;
 					$update['af_last_status_timestamp'] = $timestamp;
-					$results['status-line'] = $this->createStatusLine( 'autoflag', 0, $timestamp );
+					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+						'autoflag', 0, $timestamp );
 				}
 
 			} elseif ( $direction == 'decrease' ) {
@@ -977,21 +993,5 @@ class ArticleFeedbackv5Flagging {
 		$job->insert();
 	}
 
-	/**
-	 * Helper function to create a new red status line based on the last status line created
-	 * action performed
-	 */
-	protected function createStatusLine( $last_status, $last_status_user_id, $last_status_timestamp ) {
-		global $wgLang;
-
-		return Html::rawElement( 'span', array(
-			'class' => 'articleFeedbackv5-feedback-status-marker'
-			),
-			wfMessage( 'articlefeedbackv5-status-' . $last_status )
-				->rawParams( ApiArticleFeedbackv5Utils::getUserLink( $last_status_user_id ) )
-				->params( $wgLang->date( $last_status_timestamp ),
-					$wgLang->time( $last_status_timestamp ) )
-				->escaped()
-			);
-	}
 }
+
