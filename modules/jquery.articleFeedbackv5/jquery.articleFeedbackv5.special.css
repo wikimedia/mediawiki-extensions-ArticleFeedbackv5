@@ -347,6 +347,13 @@ a#articleFeedbackv5-show-more {
 	/* @embed */
 	background-image: url(images/toolbox_activity_hover.png);
 }
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-activity-link.inactive {
+	color: #444;
+	cursor: default;
+	text-decoration: none;
+	/* @embed */
+	background-image: url(images/toolbox_activity_inactive.png);
+}
 
 #articleFeedbackv5-show-feedback .articleFeedbackv5-abuse-link,
 #articleFeedbackv5-show-feedback .articleFeedbackv5-unabuse-link {
