@@ -75,7 +75,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	public function execute( $param ) {
 		global $wgArticleFeedbackv5DashboardCategory, $wgUser;
 		$out   = $this->getOutput();
-		
+
 		// set robot policy
 		$out->setIndexPolicy('noindex');
 
@@ -129,16 +129,15 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			return;
 		}
 
-		$helpPage  = 'Article_Feedback_Tool/Version_5/Help/Feedback_page'; 
+		$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl' )->escaped();
 		if( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
-			$helpPage = 'Article_Feedback_Tool/Version_5/Help/Feedback_page_Oversighters';
+			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-oversighters' )->escaped();
 		} elseif( $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
-			$helpPage = 'Article_Feedback_Tool/Version_5/Help/Feedback_page_Monitors';
+			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-monitors' )->escaped();
 		} elseif( !$wgUser->isAnon() ) {
-			$helpPage = 'Article_Feedback_Tool/Version_5/Help/Feedback_page_Editors';
+			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' )->escaped();
 		}
 
-		$helpTitle = Title::newFromText( $helpPage, NS_PROJECT );
 		$out->addHTML(
 			Html::openElement(
 				'div',
@@ -158,8 +157,9 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 				$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
 			)
 			. ' | ' .
-			Linker::link(
-				$helpTitle,
+			Html::element(
+				'a',
+				array( 'href' => $helpLink ),
 				$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
 			)
 			. Html::closeElement( 'div' )
@@ -223,7 +223,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 #		}
 
 		$out->addJsConfigVars( 'afPageId', $pageId );
-		// Only show the abuse counts to editors (ie, anyone allowed to 
+		// Only show the abuse counts to editors (ie, anyone allowed to
 		// hide content).
 		if ( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			$out->addJsConfigVars( 'afCanEdit', 1 );
@@ -232,7 +232,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 
 		$sortLabels = array();
 		foreach ( $this->sorts as $sort ) {
-		    
+
 			$sortLabels[] = Html::openElement( 'a',
 			    array(
 				'href'  => '#',
@@ -248,7 +248,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			    )
 			)
 			. Html::closeElement( 'a' );
-			    
+
 		    /*
 			$sortLabels[] = Html::element( 'img',
 				array(
