@@ -48,6 +48,27 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	protected $showDeleted;
 
 	/**
+	 * The starting filter
+	 *
+	 * @var string
+	 */
+	protected $startingFilter;
+
+	/**
+	 * The starting sort
+	 *
+	 * @var string
+	 */
+	protected $startingSort;
+
+	/**
+	 * The starting sort direction
+	 *
+	 * @var string
+	 */
+	protected $startingSortDirection;
+
+	/**
 	 * The filters available to users without special privileges
 	 *
 	 * @var bool
@@ -269,14 +290,6 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			. Html::closeElement( 'div' )
 		);
 
-		$out->addJsConfigVars( 'afPageId', $pageId );
-		// Only show the abuse counts to editors (ie, anyone allowed to
-		// hide content).
-		if ( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
-			$out->addJsConfigVars( 'afCanEdit', 1 );
-		}
-		$out->addModules( 'ext.articleFeedbackv5.dashboard' );
-
 		// Sorting
 		// decide on our default sort info
 		if ( $this->showDeleted ) {
@@ -288,6 +301,8 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		} else {
 			list( $default, $dir ) = $wgArticleFeedbackv5DefaultSorts['all'];
 		}
+		$this->startingSort = $default;
+		$this->startingSortDirection = $dir;
 
 		$sortLabels = array();
 		foreach ( $this->sorts as $sort ) {
@@ -342,6 +357,12 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		} else {
 			$default = $wgArticleFeedbackv5DefaultFilters['all'];
 		}
+		if ( !isset( $counts[$default] ) || $counts[$default] == 0 ) {
+			if ( $default == 'visible-relevant' ) {
+				$default = 'visible-comment';
+			}
+		}
+		$this->startingFilter = $default;
 
 		foreach ( $this->filters as $filter ) {
 			$count = array_key_exists( $filter, $counts ) ? $counts[$filter] : 0;
@@ -424,6 +445,17 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 				$this->msg( 'articlefeedbackv5-special-more' )->text()
 			)
 		);
+
+		$out->addJsConfigVars( 'afPageId', $pageId );
+		// Only show the abuse counts to editors (ie, anyone allowed to
+		// hide content).
+		if ( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
+			$out->addJsConfigVars( 'afCanEdit', 1 );
+		}
+		$out->addJsConfigVars( 'afStartingFilter', $this->startingFilter );
+		$out->addJsConfigVars( 'afStartingSort', $this->startingSort );
+		$out->addJsConfigVars( 'afStartingSortDirection', $this->startingSortDirection );
+		$out->addModules( 'ext.articleFeedbackv5.dashboard' );
 	}
 
 	/**

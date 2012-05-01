@@ -48,10 +48,10 @@
 	 * Controls for the list: sort, filter, continue flag, etc
 	 */
 	$.articleFeedbackv5special.listControls = {
-		filter: 'visible-relevant',
+		filter: mw.config.get( 'afStartingFilter' ),
 		filterValue: undefined, // Permalinks require a feedback ID
-		sort: 'relevance',
-		sortDirection: 'asc',
+		sort: mw.config.get( 'afStartingSort' ),
+		sortDirection: mw.config.get( 'afStartingSortDirection' ),
 		limit: mw.config.get( 'wgArticleFeedbackv5InitialFeedbackPostCountToDisplay') || 25,
 		continue: null,
 		disabled: false,	// Prevent (at least limit) a flood of ajax requests.
@@ -142,7 +142,7 @@
 		// Process anything we found in the URL hash
 		// Permalinks.
 		var id = window.location.href.match(/\/(\d+)$/)
-		if( id ) {
+		if ( id ) {
 			$.articleFeedbackv5special.listControls.filter      = 'id';
 			$.articleFeedbackv5special.listControls.filterValue = id[1];
 		}
