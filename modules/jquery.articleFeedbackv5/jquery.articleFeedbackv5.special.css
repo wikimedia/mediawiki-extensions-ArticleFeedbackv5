@@ -529,6 +529,17 @@ a#articleFeedbackv5-show-more {
 	position: absolute;
 	z-index: 10000;
 }
+#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-status-marker.articleFeedbackv5-laststatus-featured,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-status-marker.articleFeedbackv5-laststatus-unfeatured,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-status-marker.articleFeedbackv5-laststatus-resolved,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-status-marker.articleFeedbackv5-laststatus-unresolved,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-status-marker.articleFeedbackv5-laststatus-unrequest,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-status-marker.articleFeedbackv5-laststatus-declined,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-status-marker.articleFeedbackv5-laststatus-undeleted,
+#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback-status-marker.articleFeedbackv5-laststatus-unhidden {
+	color: #177D47;
+}
+
 .articleFeedbackv5-h3-push {
 	margin-top: 15px;
 }
