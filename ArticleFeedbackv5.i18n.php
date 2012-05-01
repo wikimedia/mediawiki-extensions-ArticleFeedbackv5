@@ -1725,6 +1725,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-mask-postnumber' => 'Kemennadenn #$1',
 	'articlefeedbackv5-noteflyover-feature-label' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-feature-help' => "Gouzout hiroc'h",
+	'articlefeedbackv5-noteflyover-unfeature-label' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-unfeature-help' => "Gouzout hiroc'h",
 	'articlefeedbackv5-noteflyover-resolve-caption' => 'Merkañ evel diskoulmet',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Ouzhpennañ un notenn',
@@ -1809,6 +1810,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Wikipedia a garfe gouzout ar pezh a soñjit. Hor sikourit da wellaat ar bajenn-mañ. Deuit da vezañ ur skridaozer.',
 	'articlefeedbackv5-bucket4-noedit-title' => 'Hor skoazellit da wellaat Wikipedia',
 	'articlefeedbackv5-bucket4-noedit-teaser-line1' => "Savet eo al lec'hienn-mañ gant tud eveldoc'h.",
+	'articlefeedbackv5-bucket4-noedit-form-submit' => "Gouzout hiroc'h",
 	'articlefeedbackv5-bucket5-form-switch-label' => "Reiñ un notenn d'ar bajenn-mañ",
 	'articlefeedbackv5-bucket5-form-panel-title' => "Reiñ un notenn d'ar bajenn-mañ",
 	'articlefeedbackv5-bucket5-form-panel-explanation' => 'Petra eo se ?',
@@ -3143,6 +3145,7 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author AK
+ * @author Crazymadlover
  * @author Glavkos
  * @author Kiolalis
  * @author Omnipaedista
@@ -3162,9 +3165,11 @@ $messages['el'] = array(
 	'articlefeedbackv5-error-unknown' => 'Άγνωστο σφάλμα.',
 	'articlefeedbackv5-error-submit' => 'Σφάλμα κατά την υποβολή της φόρμας.',
 	'articlefeedbackv5-error-nofeedback' => 'Παρακαλώ εισάγετε τα σχόλιά σας.',
+	'articlefeedbackv5-form-helpful-yes-label' => 'Ναι',
+	'articlefeedbackv5-form-helpful-no-label' => 'Όχι',
 	'articlefeedbackv5-special-filter-all' => 'Όλα',
 	'articlefeedbackv5-special-filter-visible' => 'Ορατά',
-	'articlefeedbackv5-special-filter-invisible' => 'Μη ορατά',
+	'articlefeedbackv5-special-filter-hidden' => 'Μη ορατά',
 	'articlefeedbackv5-special-sort-label-before' => 'Ταξινόμηση κατά:',
 	'articlefeedbackv5-special-filter-label-before' => 'Εμφάνιση μόνο:',
 	'articlefeedbackv5-special-showing' => 'Προβολή $1 δημοσιεύσεων (από $2)',
@@ -11644,6 +11649,7 @@ $messages['ps'] = array(
  * @author Hamilton Abreu
  * @author Helder.wiki
  * @author Luckas Blade
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
@@ -11662,8 +11668,8 @@ $messages['pt'] = array(
 	'articlefeedbackv5-error-email' => 'Esse endereço de correio electrónico não é válido.',
 	'articlefeedbackv5-error-blocked' => 'Os utilizadores bloqueados não podem enviar comentários.',
 	'articlefeedbackv5-error-validation' => 'Erro de validação.',
-	'articlefeedbackv5-error-abuse' => 'Seu comentário viola a $1. Por favor revise-o.',
-	'articlefeedbackv5-error-abuse-linktext' => 'política de abuso de comentários',
+	'articlefeedbackv5-error-abuse' => 'O seu comentário foi rejeitado por um filtro do software que sugere que ele viola a $1 da Wikipédia. Por favor, reveja o seu comentário e tente novamente.',
+	'articlefeedbackv5-error-abuse-linktext' => 'linhas orientadoras de comentários',
 	'articlefeedbackv5-error-unknown' => 'Erro desconhecido.',
 	'articlefeedbackv5-error-submit' => 'Erro no envio do formulário.',
 	'articlefeedbackv5-form-tools-label' => 'Ferramentas',
@@ -11672,7 +11678,7 @@ $messages['pt'] = array(
 	'articlefeedbackv5-form-helpful-no-label' => 'Não',
 	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 sim|$1 sins}} / {{PLURAL:$2|1 não|$2 nãos}}',
 	'articlefeedbackv5-special-add-feedback' => 'Enviar seu comentário',
-	'articlefeedbackv5-special-filter-notdeleted' => 'Todos ($1)',
+	'articlefeedbackv5-special-filter-notdeleted' => 'Todos (ocultos)  ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'Apenas comentários ($1)',
 	'articlefeedbackv5-special-filter-abusive' => 'Marcado como abusivo ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Útil ($1)',
@@ -13256,7 +13262,7 @@ $messages['sl'] = array(
 	'articlefeedbackv5-special-showing' => '$1 {{PLURAL:$1|sporočilo|sporočili|sporočila|sporočil}} s povratnimi informacijami pri tem članku',
 	'articleFeedbackv5-comment-ago' => 'pred $1',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 urejanje|$1 urejanji|$1 urejanja |$1 urejanj}} po objavi',
-	'articlefeedbackv5-revision-link' => 'Ogled redakcije članka',
+	'articlefeedbackv5-revision-link' => '(ogled starega članka)',
 	'articlefeedbackv5-special-more' => 'Prikaži več objav',
 	'articlefeedbackv5-special-pagetitle' => 'Povratna informacija: $1',
 	'articlefeedbackv5-form-optionid' => 'Možnost $1',
