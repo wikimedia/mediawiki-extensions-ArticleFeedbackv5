@@ -214,18 +214,22 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		/* We'll try to determine if the there are log entries (= activity) for this feedback, but the visible activity
 		   depend on the user's permissions */
+
+		// get the string title for the page
+		$page = Title::newFromID( $pageId );
+		if ( !$page ) {
+			$this->dieUsage( "Page for feedback does not exist", "invalidfeedbackid" );
+		}
+		$title = $page->getPrefixedDBKey();
+
 		// get afv5 log items PLUS suppress log
 		if ( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
 			$whereLogging = array(
-				"(logging.log_type = 'articlefeedbackv5')
-					OR (logging.log_type = 'suppress' AND
-					(logging.log_action = 'oversight' OR
-					logging.log_action = 'unoversight' OR
-					logging.log_action = 'decline' OR
-					logging.log_action = 'request' OR
-					logging.log_action = 'unrequest'))",
+				"logging.log_type = 'articlefeedbackv5'
+					OR (logging.log_type = 'suppress'
+					AND logging.log_action IN ('oversight', 'unoversight', 'decline', 'request', 'unrequest'))",
 				"logging.log_namespace" => NS_SPECIAL,
-				"logging.log_title = CONCAT('ArticleFeedbackv5/', page.page_title, '/', af_id)"
+				"logging.log_title = CONCAT('ArticleFeedbackv5/$title/', af_id)"
 			);
 
 		// get only afv5 log items
@@ -233,7 +237,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$whereLogging = array (
 				"logging.log_type" => "articlefeedbackv5",
 				"logging.log_namespace" => NS_SPECIAL,
-				"logging.log_title = CONCAT('ArticleFeedbackv5/', page.page_title, '/', af_id)"
+				"logging.log_title = CONCAT('ArticleFeedbackv5/$title/', af_id)"
 			);
 		}
 
