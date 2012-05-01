@@ -503,6 +503,25 @@
 	};
 
 	// }}}
+	// {{{ setStatusLine
+
+	/**
+	 * Utility method: Sets the status line
+	 *
+	 * @param $row         element the feedback row
+	 * @param $status_line element the status line
+	 */
+	$.articleFeedbackv5special.setStatusLine = function ( $row, $status_line ) {
+		var $status = $row.find('.articleFeedbackv5-feedback-status-marker');
+		if ( 0 == $status.length && $status_line ) {
+			$status_line.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
+			$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
+		} else {
+			$status.replaceWith( $status_line ? $status_line : '' );
+		}
+	};
+
+	// }}}
 	// {{{ markFeatured
 
 	/**
@@ -518,15 +537,7 @@
 		$marker = $( $.articleFeedbackv5special.featuredMarkerTemplate );
 		$marker.localize( { 'prefix': 'articlefeedbackv5-' } );
 		$( $marker ).insertAfter( $row.find( '.articleFeedbackv5-comment-details-updates' ) );
-		if ( $status_line ) {
-			var $status = $row.find('.articleFeedbackv5-feedback-status-marker');
-			if ( 0 == $status.length ) {
-				$status_line.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
-				$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
-			} else {
-				$status.html( $status_line.html() );
-			}
-		}
+		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
 	};
 
 	// }}}
@@ -542,15 +553,7 @@
 		$row.removeClass( 'articleFeedbackv5-feedback-featured' )
 			.data( 'featured', false );
 		$row.find( '.articleFeedbackv5-featured-marker' ).remove();
-		if ( $status_line ) {
-			var $status = $row.find('.articleFeedbackv5-feedback-status-marker');
-			if ( 0 == $status.length ) {
-				$status_line.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
-				$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
-			} else {
-				$status.html( $status_line.html() );
-			}
-		}
+		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
 	};
 
 	// }}}
@@ -569,15 +572,7 @@
 		$marker = $( $.articleFeedbackv5special.resolvedMarkerTemplate );
 		$marker.localize( { 'prefix': 'articlefeedbackv5-' } );
 		$( $marker ).insertAfter( $row.find( '.articleFeedbackv5-abuse-link' ) );
-		if ( $status_line ) {
-			var $status = $row.find('.articleFeedbackv5-feedback-status-marker');
-			if ( 0 == $status.length ) {
-				$status_line.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
-				$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
-			} else {
-				$status.html( $status_line.html() );
-			}
-		}
+		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
 	};
 
 	// }}}
@@ -593,15 +588,7 @@
 		$row.removeClass( 'articleFeedbackv5-feedback-resolved' )
 			.data( 'resolved', false );
 		$row.find( '.articleFeedbackv5-resolved-marker' ).remove();
-		if ( $status_line ) {
-			var $status = $row.find('.articleFeedbackv5-feedback-status-marker');
-			if ( 0 == $status.length ) {
-				$status_line.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
-				$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
-			} else {
-				$status.html( $status_line.html() );
-			}
-		}
+		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
 	};
 
 	// }}}
@@ -621,11 +608,7 @@
 		$row.addClass( 'articleFeedbackv5-feedback-hidden' )
 			.data( 'hidden', true );
 		var $marker = $row.find('articleFeedbackv5-feedback-status-marker');
-
-		if ( 0 == $marker.length ) {
-			$( $status_line ).insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
-			$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
-		}
+		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
 		$.articleFeedbackv5special.maskPost( $row, 'hidden');
 	};
 
@@ -689,12 +672,7 @@
 		}
 		$row.addClass( 'articleFeedbackv5-feedback-deleted' )
 			.data( 'deleted', true );
-		var $marker = $row.find('articleFeedbackv5-feedback-status-marker');
-
-		if ( 0 == $marker.length ) {
-			$( $status_line).insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
-			$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
-		}
+		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
 		$.articleFeedbackv5special.maskPost( $row, 'oversight' );
 	};
 

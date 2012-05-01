@@ -332,7 +332,8 @@ class ApiArticleFeedbackv5Utils {
 	public static function renderStatusLine( $status, $user_id, $timestamp ) {
 		global $wgLang;
 		return Html::rawElement( 'span', array(
-			'class' => 'articleFeedbackv5-feedback-status-marker'
+			'class' => 'articleFeedbackv5-feedback-status-marker ' .
+				'articleFeedbackv5-laststatus-' . $status
 			),
 			wfMessage( 'articlefeedbackv5-status-' . $status )
 				->rawParams( ApiArticleFeedbackv5Utils::getUserLink( $user_id ) )
