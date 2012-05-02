@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAJ3//9oU\u003d",
+        "filename": "ArticleFeedbackv5.fetch.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:01:26Z",
+      "side": 1,
+      "message": "Why are you doing this? You don\u0027t need to declare variables in PHP.",
+      "revId": "0b77c93aa0af70d5f2674e2abb9e353489c49cbe",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3//9oA\u003d",
+        "filename": "ArticleFeedbackv5.fetch.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:01:26Z",
+      "side": 1,
+      "message": "This line has a leading space before the first tab (Gerrit highlights this in red)",
+      "revId": "0b77c93aa0af70d5f2674e2abb9e353489c49cbe",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3//9n8\u003d",
+        "filename": "ArticleFeedbackv5.fetch.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:01:26Z",
+      "side": 1,
+      "message": "This line does too",
+      "revId": "0b77c93aa0af70d5f2674e2abb9e353489c49cbe",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3//9l4\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:01:26Z",
+      "side": 1,
+      "message": "You shouldn\u0027t escape $type here, you\u0027re not outputting it but you are using it for other things where escaping would be harmful",
+      "revId": "0b77c93aa0af70d5f2674e2abb9e353489c49cbe",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3//9lE\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:01:26Z",
+      "side": 1,
+      "message": "This is wrong, should be -\u003egetPrefixedText() on a Title object",
+      "revId": "0b77c93aa0af70d5f2674e2abb9e353489c49cbe",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
