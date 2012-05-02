@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJ3//9kc\u003d",
+        "filename": "ArticleFeedbackv5.fetch.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:16:06Z",
+      "side": 1,
+      "message": "Yes, this definitely needs $title escaping (with $dbr-\u003estrencode()). We have titles like \"Administrators\u0027 noticeboard\".",
+      "parentUuid": "AAAAJ3//9sM\u003d",
+      "revId": "5403496ca09a2b2318e3463e4d5ebf7512c517f4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJ3//9sU\u003d",
         "filename": "ArticleFeedbackv5.i18n.php",
         "patchSetId": 1
@@ -53,6 +71,23 @@
     },
     {
       "key": {
+        "uuid": "AAAAJ3//9kM\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:16:06Z",
+      "side": 1,
+      "message": "Please use var helpLink \u003d blah; otherwise helpLink is a global variable.",
+      "revId": "5403496ca09a2b2318e3463e4d5ebf7512c517f4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJ3//9sI\u003d",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
         "patchSetId": 1
@@ -70,6 +105,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJ3//9kQ\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2081,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:16:06Z",
+      "side": 1,
+      "message": "elseif only works in PHP, not in JS AFAIK. You\u0027re right about the spacing.",
+      "parentUuid": "AAAAJ3//9sI\u003d",
+      "revId": "5403496ca09a2b2318e3463e4d5ebf7512c517f4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJ3//9sE\u003d",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
         "patchSetId": 1
@@ -81,6 +134,24 @@
       "writtenOn": "2012-05-02T14:52:01Z",
       "side": 1,
       "message": "Coding standard calls for braces with every if statement, even if it\u0027s just one line.",
+      "revId": "5403496ca09a2b2318e3463e4d5ebf7512c517f4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3//9kI\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:16:06Z",
+      "side": 1,
+      "message": "That\u0027s right. And put it on a separate line, too, like so:\n\nif ( foo ) {\n\tbar();\n}",
+      "parentUuid": "AAAAJ3//9sE\u003d",
       "revId": "5403496ca09a2b2318e3463e4d5ebf7512c517f4",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
