@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAJ3//9kA\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:34:02Z",
+      "side": 1,
+      "message": "Needs PLURAL per Siebrand",
+      "revId": "96af74d19a9a713b6f74a4a4d2b0073f63dc8313",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3//9jw\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:34:02Z",
+      "side": 1,
+      "message": "This will double-escape the message because element() also escapes its input",
+      "revId": "96af74d19a9a713b6f74a4a4d2b0073f63dc8313",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3//9js\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:34:02Z",
+      "side": 1,
+      "message": "Double-escaping",
+      "revId": "96af74d19a9a713b6f74a4a4d2b0073f63dc8313",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3//9jo\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:34:02Z",
+      "side": 1,
+      "message": "Double-escaping",
+      "revId": "96af74d19a9a713b6f74a4a4d2b0073f63dc8313",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3//9jk\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-02T18:34:02Z",
+      "side": 1,
+      "message": "Double-escaping",
+      "revId": "96af74d19a9a713b6f74a4a4d2b0073f63dc8313",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
