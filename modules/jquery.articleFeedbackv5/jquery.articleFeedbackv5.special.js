@@ -52,7 +52,7 @@
 		filterValue: undefined, // Permalinks require a feedback ID
 		sort: 'relevance',
 		sortDirection: 'asc',
-		limit: 25,
+		limit: mw.config.get( 'wgArticleFeedbackv5InitialFeedbackPostCountToDisplay') || 25,
 		continue: null,
 		disabled: false,	// Prevent (at least limit) a flood of ajax requests.
 		allowMultiple: false
