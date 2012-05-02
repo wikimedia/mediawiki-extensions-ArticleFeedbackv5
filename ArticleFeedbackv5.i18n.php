@@ -173,6 +173,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-mask-postnumber' => 'Post #$1',
 	'articlefeedbackv5-special-disclaimer' => 'This is a prototype. Please do not use it unless you have been invited to.',
 	'articlefeedbackv5-special-goback' => 'View feedback page',
+	'articlefeedbackv5-permalink-info-posted' => 'Posted: $1 at $2',
+	'articlefeedbackv5-permalink-info-length' => 'Length: {{PLURAL:$1|$1 word|$1 words}} - {{PLURAL:$2|$2 character|$2 characters}}',
+	'articlefeedbackv5-permalink-info-scores' => 'Scores: $1 relevance, $2 helpfulness',
+	'articlefeedbackv5-permalink-info-number' => 'Post #$1 - Feedback form $2',
 
 	/* Special page flyover panels */
 	/* Feature this post panel */
@@ -576,6 +580,11 @@ The link to the edit tutorial',
 
 {{Identical|Rating}}',
 	'articlefeedbackv5-special-sort-relevance' => 'Appears at the top of the feedbacks list, suggesting to sort the posts according to this criterion. Sort by what is better, more relevant feedback for the user.  Appears near the message {{msg-mw|Articlefeedbackv5-special-sort-label-before}}.',
+	'articlefeedbackv5-special-goback' => 'Link to take a user from a feedback permalink back to the listing of all feedback',
+	'articlefeedbackv5-permalink-info-posted' => 'Permalink info block, post date line: $1 is the date; $2 is the time',
+	'articlefeedbackv5-permalink-info-length' => 'Permalink info block, comment length line: $1 is the number of words; $2 is the number of characters',
+	'articlefeedbackv5-permalink-info-scores' => 'Permalink info block, score line: $1 is the relevance score; $2 is the net helpfulness score',
+	'articlefeedbackv5-permalink-info-number' => 'Permalink info block, about line: $1 is the feedback id; $2 is the name of the experimental form shown to the user',
 	'articlefeedbackv5-special-sort-label-before' => 'Place to put a label before the sort options',
 	'articlefeedbackv5-special-filter-label-before' => 'Place to put a label before the filter select box',
 	'articlefeedbackv5-special-showing' => 'Text to show how many feedback psots have been posted to this article. $1 is the number of posts (needs plural support)',
