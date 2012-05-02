@@ -52,7 +52,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$res = $fetch->run();
 
 		// Build html
-		$permalink = ( 'id' == $fetch->getSort() );
+		$permalink = ( 'id' == $fetch->getFilter() );
 		$renderer = new ArticleFeedbackv5Render( $wgUser, $permalink );
 		foreach ( $res->records as $record ) {
 			$html .= $renderer->run( $record );
