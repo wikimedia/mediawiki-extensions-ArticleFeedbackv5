@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAJ3//9sM\u003d",
+        "filename": "ArticleFeedbackv5.fetch.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-02T14:52:01Z",
+      "side": 1,
+      "message": "Please make sure the title is properly escaped before adding it here.  It\u0027s unlikely there would be an issue, but better to be safe.",
+      "revId": "5403496ca09a2b2318e3463e4d5ebf7512c517f4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3//9sU\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-02T14:52:01Z",
+      "side": 1,
+      "message": "Please explain what these links are meant to do -- the translators will need a bit more information, especially since there are three of them now.  The editor/monitor/oversighter language is jargon, so it would be helpful to explain that editors are logged-in users, monitors have the ability to hide feedback, and oversighters have the ability to delete feedback.",
+      "revId": "5403496ca09a2b2318e3463e4d5ebf7512c517f4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3//9sQ\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 9422,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-02T14:52:01Z",
+      "side": 1,
+      "message": "Don\u0027t make any changes to non-English sections.  The translation wiki will fill those in automatically.",
+      "revId": "5403496ca09a2b2318e3463e4d5ebf7512c517f4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3//9sI\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2081,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-02T14:52:01Z",
+      "side": 1,
+      "message": "The MW coding standard doesn\u0027t specify, but we\u0027ve been using a space after control statements (e.g. \"if ( $condition )\"), and elseif rather than else if.\n\nNot a big deal at all, just a heads-up.",
+      "revId": "5403496ca09a2b2318e3463e4d5ebf7512c517f4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3//9sE\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-02T14:52:01Z",
+      "side": 1,
+      "message": "Coding standard calls for braces with every if statement, even if it\u0027s just one line.",
+      "revId": "5403496ca09a2b2318e3463e4d5ebf7512c517f4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
