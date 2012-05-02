@@ -48,6 +48,13 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	protected $showDeleted;
 
 	/**
+	 * The feedback ID we're operating on (if permalink)
+	 *
+	 * @var int
+	 */
+	protected $feedbackId;
+
+	/**
 	 * The starting filter
 	 *
 	 * @var string
@@ -134,6 +141,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		// If this is a permalink, grab the page title
 		if ( preg_match('/^(.+)\/(\d+)$/', $param, $m ) ) {
 			$param = $m[1];
+			$this->feedbackId = $m[2];
 		}
 
 		$title = Title::newFromText( $param );
@@ -347,7 +355,9 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		$counts = $this->getFilterCounts( $pageId );
 
 		// decide on our default filter key name
-		if ( $this->showDeleted ) {
+		if ( $this->feedbackId ) {
+			$default = 'id';
+		} elseif ( $this->showDeleted ) {
 			$default = $wgArticleFeedbackv5DefaultFilters['deleted'];
 		} elseif ( $this->showHidden ) {
 			$default = $wgArticleFeedbackv5DefaultFilters['hidden'];
@@ -452,6 +462,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			$out->addJsConfigVars( 'afCanEdit', 1 );
 		}
 		$out->addJsConfigVars( 'afStartingFilter', $this->startingFilter );
+		$out->addJsConfigVars( 'afStartingFilterValue', $this->startingFilter == 'id' ? $this->feedbackId : null );
 		$out->addJsConfigVars( 'afStartingSort', $this->startingSort );
 		$out->addJsConfigVars( 'afStartingSortDirection', $this->startingSortDirection );
 		$out->addModules( 'ext.articleFeedbackv5.dashboard' );
