@@ -118,18 +118,10 @@ class ArticleFeedbackv5Render {
 			$extra_class = ' articleFeedbackv5-h3-push';
 		}
 
-		// Link back to list (for permalinks)
-		$linkback = '';
+		// Permalink info
+		$permalinkInfo = '';
 		if ( $this->isPermalink ) {
-			$page_title = Title::newFromRow($record[0])->getPrefixedText();
-			// <div id="articleFeedbackv5-feedback-permalink-goback">
-			//   <a href="{$page_title}">{msg:articlefeedbackv5-special-goback}</a>
-			// </div>
-			$linkback.= Html::rawElement( 'div', array(
-					'id' => 'articleFeedbackv5-feedback-permalink-goback'
-				), Linker::link(
-					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page_title ),
-					wfMessage( 'articlefeedbackv5-special-goback' )->escaped()));
+			$permalinkInfo = $this->renderPermalinkInfo( $record );
 		}
 
 		// Join it all together...
@@ -155,8 +147,8 @@ class ArticleFeedbackv5Render {
 				. $toolbox
 			// </div>
 			. Html::closeElement( 'div' )
-			// {link back to list for permalinks}
-			. $linkback;
+			// {info section for permalinks}
+			. $permalinkInfo;
 	}
 
 	/**
@@ -275,7 +267,6 @@ class ArticleFeedbackv5Render {
 
 		return $content;
 	}
-
 
 	/**
 	 * Returns the feedback head and comment for form #1
@@ -833,6 +824,74 @@ class ArticleFeedbackv5Render {
 			. Html::closeElement( 'div' );
 
 		return $tools;
+	}
+
+	/**
+	 * Returns the permalink info section
+	 *
+	 * @param  $record array the record, with keys 0 + answers
+	 * @return string  the rendered info section
+	 */
+	private function renderPermalinkInfo( $record ) {
+		global $wgLang;
+		$id = $record[0]->af_id;
+		$html = '';
+
+		if ( $this->hasPermission( 'see_hidden' ) ) {
+			// Info section
+			$html .=
+				// <div id="articleFeedbackv5-feedback-permalink-info">
+				Html::openElement( 'div', array(
+					'class' => 'articleFeedbackv5-feedback-permalink-info'
+				) )
+					// <p>Posted on: {date}</p>
+					. Html::rawElement( 'p', array(),
+						wfMessage( 'articlefeedbackv5-permalink-info-posted' )
+							->params( $wgLang->date( $record[0]->af_created ), $wgLang->time( $record[0]->af_created ) )
+							->escaped()
+					);
+			if ( isset( $record['comment'] ) ) {
+				$html .=
+					// <p>Length: {count} words - {count} characters</p>
+					Html::rawElement( 'p', array(),
+						wfMessage( 'articlefeedbackv5-permalink-info-length' )
+							->params(
+								str_word_count( $record['comment']->aa_response_text ),
+								strlen( $record['comment']->aa_response_text )
+							)
+							->escaped()
+					);
+			}
+			$html .=
+				// <p>Scores: {score} relevance, {score} helpfulness</p>
+				Html::rawElement( 'p', array(),
+					wfMessage( 'articlefeedbackv5-permalink-info-scores' )
+						->params( $record[0]->af_relevance_score, $record[0]->af_net_helpfulness )
+						->escaped()
+					)
+				// <p>Post #{id} - Feedback form {experiment}</p>
+				. Html::rawElement( 'p', array(),
+					wfMessage( 'articlefeedbackv5-permalink-info-number' )
+						->params( $record[0]->af_id, $record[0]->af_experiment )
+						->escaped()
+					)
+				// </div>
+				. Html::closeElement( 'div' );
+		}
+
+		// Link back to article
+		$page_title = Title::newFromRow($record[0])->getPrefixedText();
+		$html .=
+			// <div id="articleFeedbackv5-feedback-permalink-goback">
+			//   <a href="{$page_title}">{msg:articlefeedbackv5-special-goback}</a>
+			// </div>
+			Html::rawElement( 'div', array(
+					'id' => 'articleFeedbackv5-feedback-permalink-goback'
+				), Linker::link(
+					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page_title ),
+					wfMessage( 'articlefeedbackv5-special-goback' )->escaped()));
+
+		return $html;
 	}
 
 }
