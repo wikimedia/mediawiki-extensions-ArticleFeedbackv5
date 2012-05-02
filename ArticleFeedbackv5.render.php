@@ -812,6 +812,12 @@ class ArticleFeedbackv5Render {
 
 		// View Activity
 		if ( $this->hasPermission( 'can_delete' ) ) {
+			// if no activity has been logged yet, add the "inactive" class so we can display it accordingly
+			$activityClass = "articleFeedbackv5-activity-link";
+			if( !$record['found']->log_timestamp ) {
+				$activityClass .= " inactive";
+			}
+
 			// <li>
 			//   <a id="articleFeedbackv5-activity-link-{$id}"
 			//     class="articleFeedbackv5-activity-link" href="#">
@@ -820,7 +826,7 @@ class ArticleFeedbackv5Render {
 			// </li>
 			$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 					'id'    => "articleFeedbackv5-activity-link-$id",
-					'class' => "articleFeedbackv5-activity-link",
+					'class' => $activityClass,
 					'href' => '#',
 				), wfMessage( "articlefeedbackv5-viewactivity" )->text() ) );
 		}
