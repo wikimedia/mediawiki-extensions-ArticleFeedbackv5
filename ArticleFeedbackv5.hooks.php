@@ -381,7 +381,8 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5LinkBuckets,
 			$wgArticleFeedbackv5Namespaces,
 			$wgArticleFeedbackv5LearnToEdit,
-			$wgArticleFeedbackv5SurveyUrls;
+			$wgArticleFeedbackv5SurveyUrls,
+			$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		$vars['wgArticleFeedbackv5SMaxage'] = $wgArticleFeedbackv5SMaxage;
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
@@ -398,6 +399,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMsgForContent( 'articlefeedbackv5-bucket5-form-panel-explanation-link' );
 		$vars['wgArticleFeedbackv5TermsPage'] = wfMsgForContent( 'articlefeedbackv5-transparency-terms-url' );
 		$vars['wgArticleFeedbackv5SurveyUrls'] = $wgArticleFeedbackv5SurveyUrls;
+		$vars['wgArticleFeedbackv5InitialFeedbackPostCountToDisplay'] = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		return true;
 	}
 

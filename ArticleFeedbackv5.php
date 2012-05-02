@@ -298,6 +298,13 @@ $wgArticleFeedbackv5SurveyUrls = array(
 // Replace default emailcapture message
 $wgEmailCaptureAutoResponse['body-msg'] = 'articlefeedbackv5-emailcapture-response-body';
 
+/**
+ * How many feedback posts to display initially.
+ *
+ * @var int
+ */
+$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay = 50;
+
 /* Setup */
 
 $wgExtensionCredits['other'][] = array(
