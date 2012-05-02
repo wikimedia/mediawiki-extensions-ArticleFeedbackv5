@@ -49,7 +49,7 @@
 	 */
 	$.articleFeedbackv5special.listControls = {
 		filter: mw.config.get( 'afStartingFilter' ),
-		filterValue: undefined, // Permalinks require a feedback ID
+		filterValue: mw.config.get( 'afStartingFilterValue' ), // Permalinks require a feedback ID
 		sort: mw.config.get( 'afStartingSort' ),
 		sortDirection: mw.config.get( 'afStartingSortDirection' ),
 		limit: mw.config.get( 'wgArticleFeedbackv5InitialFeedbackPostCountToDisplay') || 25,
@@ -139,16 +139,7 @@
 		$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
 		$.articleFeedbackv5special.setBinds();
 
-		// Process anything we found in the URL hash
-		// Permalinks.
-		var id = window.location.href.match(/\/(\d+)$/)
-		if ( id ) {
-			$.articleFeedbackv5special.listControls.filter      = 'id';
-			$.articleFeedbackv5special.listControls.filterValue = id[1];
-		}
-
-		// Bold the default sort, hide arrows
-		$( '#articleFeedbackv5-special-sort-relevance' ).addClass( 'sort-active' );
+		// Hide arrows
 		$( '.articleFeedbackv5-sort-arrow').hide();
 
 		// Grab the user's activity out of the cookie
