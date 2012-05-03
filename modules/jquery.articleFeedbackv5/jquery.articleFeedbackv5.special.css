@@ -163,18 +163,27 @@ div.articleFeedbackv5-feedback-tools { border:1px solid #CCD; background:#EEF; m
 	display: none;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul {
-	padding: 10px 10px 10px;
 	background: #d2e5f7;
 	margin: 0;
 	list-style: none;
 }
-.articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul li a:hover {
+.articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul li.tools_feature,
+.articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul li.tools_delete {
+	border-bottom: 1px solid #444;
+}
+.articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul li ul {
+	padding: 0 10px;
+}
+.articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul li ul li a:hover {
 	cursor: hand;
 }
 .articleFeedbackv5-feedback:hover {
 	/*padding: -1px 10px;
 	border-top: 1px solid #5171B7;
 	border-bottom: 1px solid #5171B7;*/
+}
+.articleFeedbackv5-feedback:hover .articleFeedbackv5-feedback-tools {
+	display: block;
 }
 .articleFeedbackv5-feedback:hover .articleFeedbackv5-feedback-tools {
 	display: block;
@@ -286,8 +295,9 @@ a#articleFeedbackv5-show-more {
 	display: block;
 	padding-left: 30px;
 	height: 25px;
+	line-height: 25px;
 	background-repeat: no-repeat;
-	background-position: left bottom;
+	background-position: left;
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-hide-link,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-show-link {
