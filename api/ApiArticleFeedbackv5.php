@@ -176,6 +176,14 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			}
 		}
 
+		// build url to AFT for this page
+		$page = Title::newFromID( $pageId );
+		if ( !$page ) {
+			$this->dieUsage( "Page for feedback does not exist", "invalidfeedbackid" );
+		}
+		$title = Title::newFromText( "ArticleFeedbackv5/$page", NS_SPECIAL );
+		$aftUrl = $title->getLinkUrl();
+
 		$this->getResult()->addValue(
 			null,
 			$this->getModuleName(),
@@ -183,6 +191,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'result'      => 'Success',
 				'feedback_id' => $feedbackId,
 				'cta_id'      => $ctaId,
+				'aft_url'     => $aftUrl
 			)
 		);
 	}
