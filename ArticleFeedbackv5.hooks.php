@@ -147,6 +147,9 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-help-tooltip-info',
 				'articlefeedbackv5-help-tooltip-linktext',
 				'articlefeedbackv5-help-tooltip-linkurl',
+				'articlefeedbackv5-help-tooltip-linkurl-editors',
+				'articlefeedbackv5-help-tooltip-linkurl-monitors',
+				'articlefeedbackv5-help-tooltip-linkurl-oversighters',
 				'articlefeedbackv5-transparency-terms',
 				'articlefeedbackv5-transparency-terms-linktext',
 				'parentheses',
@@ -381,7 +384,8 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5LinkBuckets,
 			$wgArticleFeedbackv5Namespaces,
 			$wgArticleFeedbackv5LearnToEdit,
-			$wgArticleFeedbackv5SurveyUrls;
+			$wgArticleFeedbackv5SurveyUrls,
+			$wgUser;
 		$vars['wgArticleFeedbackv5SMaxage'] = $wgArticleFeedbackv5SMaxage;
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
@@ -398,6 +402,12 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMsgForContent( 'articlefeedbackv5-bucket5-form-panel-explanation-link' );
 		$vars['wgArticleFeedbackv5TermsPage'] = wfMsgForContent( 'articlefeedbackv5-transparency-terms-url' );
 		$vars['wgArticleFeedbackv5SurveyUrls'] = $wgArticleFeedbackv5SurveyUrls;
+		$vars['wgArticleFeedbackv5InitialFeedbackPostCountToDisplay'] = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
+		$vars['wgArticleFeedbackv5Permissions'] = array(
+			'oversighter' => $wgUser->isAllowed( 'aftv5-delete-feedback' ),
+			'moderator' => $wgUser->isAllowed( 'aftv5-hide-feedback' ),
+			'editor' => !$wgUser->isAnon()
+		);
 		return true;
 	}
 

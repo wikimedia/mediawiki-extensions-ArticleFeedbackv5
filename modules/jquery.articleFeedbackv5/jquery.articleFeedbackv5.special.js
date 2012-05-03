@@ -246,7 +246,21 @@
 
 		// Bind actions
 		for ( var action in $.articleFeedbackv5special.actions ) {
-			$( '.articleFeedbackv5-' + action + '-link' ).live( 'click', $.articleFeedbackv5special.actions[action].click );
+			$( '.articleFeedbackv5-' + action + '-link' ).live( 'click', function( e ) {
+				e.preventDefault();
+				var $link = $( e.target );
+				var classes = $link.attr( 'class' ).split( ' ' );
+				var actionName = '';
+				for ( i = 0; i < classes.length; ++i ) {
+					if ( classes[i].match( /^articleFeedbackv5-/ ) ) {
+						actionName = classes[i].replace( 'articleFeedbackv5-', '' ).replace( '-link', '' );
+						break;
+					}
+				}
+				if ( actionName && !$link.hasClass( 'inactive' ) ) {
+					$.articleFeedbackv5special.actions[actionName].click(e);
+				}
+			} );
 		}
 
 		// Bind submit actions on flyover panels (flag actions)
@@ -1028,7 +1042,7 @@
 			'click': function( e ) {
 				e.preventDefault();
 				var $link = $( e.target );
-				if( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
+				if ( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
 					var id = $link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
 					var activity = $.articleFeedbackv5special.getActivity( id );
 					$.articleFeedbackv5special.flagFeedback( id, 'helpful', '', activity['unhelpful'] ? { toggle: true } : { } );
@@ -1043,7 +1057,7 @@
 					.removeClass( 'articleFeedbackv5-helpful-link' )
 					.addClass( 'articleFeedbackv5-reversehelpful-link' )
 					.attr( 'id', 'articleFeedbackv5-reversehelpful-link-' + id );
-				if( data['articlefeedbackv5-flag-feedback']['toggle'] ) {
+				if ( data['articlefeedbackv5-flag-feedback']['toggle'] ) {
 					$( '#articleFeedbackv5-reverseunhelpful-link-' + id )
 						.removeClass( 'helpful-active' )
 						.removeClass( 'articleFeedbackv5-reverseunhelpful-link')
