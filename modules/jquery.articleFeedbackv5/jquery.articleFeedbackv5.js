@@ -981,6 +981,73 @@
 		},
 
 		// }}}
+		// {{{ CTA 5: View feedback
+
+		'5': {
+
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The template for the whole block
+				 */
+				block: '\
+					<div class="clear"></div>\
+					<div class="articleFeedbackv5-confirmation-panel">\
+						<div class="articleFeedbackv5-panel-leftContent">\
+							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta5-confirmation-title" /></h3>\
+							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta5-confirmation-call" /></p>\
+						</div>\
+						<a href="#" class="articleFeedbackv5-cta-button"><span class="ui-button-text"><html:msg key="cta5-button-text" /></span></a>\
+						<div class="clear"></div>\
+					</div>\
+					'
+
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the CTA
+			 *
+			 * @return Element the form
+			 */
+			build: function () {
+
+				// Start up the block to return
+				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
+
+				// Fill in the link
+				var feedback_url = $.articleFeedbackv5.aftUrl;
+				var feedback_track_id = $.articleFeedbackv5.experiment() + '-' +
+					$.articleFeedbackv5.ctaName() + '-button_click-' +
+					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
+				$block.find( '.articleFeedbackv5-cta-button' )
+					.attr( 'href', $.articleFeedbackv5.trackingUrl( feedback_url, feedback_track_id ) );
+
+				return $block;
+			},
+
+			// }}}
+			// {{{ afterBuild
+
+			/**
+			 * Perform adjustments after build
+			 */
+			afterBuild: function() {
+				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
+			}
+
+			// }}}
+
+		},
+
+		// }}}
 
 	};
 
@@ -1861,6 +1928,8 @@
 			return 'cta_learn_more';
 		} else if ( '3' == $.articleFeedbackv5.ctaId ) {
 			return 'cta_survey';
+		} else if ( '5' == $.articleFeedbackv5.ctaId ) {
+			return 'cta_feedback';
 		} else {
 			return 'cta_unknown';
 		}
@@ -2146,9 +2215,11 @@
 			'success': function( data ) {
 				if ( 'articlefeedbackv5' in data
 						&& 'feedback_id' in data.articlefeedbackv5
-						&& 'cta_id' in data.articlefeedbackv5 ) {
+						&& 'cta_id' in data.articlefeedbackv5
+						&& 'aft_url' in data.articlefeedbackv5 ) {
 					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
 					$.articleFeedbackv5.selectCTA( data.articlefeedbackv5.cta_id );
+					$.articleFeedbackv5.aftUrl = data.articlefeedbackv5.aft_url;
 					$.articleFeedbackv5.unlockForm();
 					$.articleFeedbackv5.showCTA( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
 					// Drop a cookie for a successful submit

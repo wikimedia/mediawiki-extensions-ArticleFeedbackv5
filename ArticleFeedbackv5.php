@@ -247,11 +247,11 @@ $wgArticleFeedbackv5HideAbuseThreshold = 5;
  * Temporary hack: for now, only one CTA is allowed, so set it here.
  *
  * Allowed values: 0 (just a confirm message), 1 (call to edit), 2 (learn
- * more), or 3 (survey)
+ * more), 3 (survey), or 5 (view feedback)
  *
  * @var int
  */
-$wgArticleFeedbackv5SelectedCTA = 3;
+$wgArticleFeedbackv5SelectedCTA = 5;
 
 /**
  * Turn on abuse filtering
