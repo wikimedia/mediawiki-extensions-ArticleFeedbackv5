@@ -240,6 +240,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-declineoversight-help',
 				'articlefeedbackv5-noteflyover-declineoversight-help-link',
 
+				'articlefeedbackv5-mask-view-contents',
 				'articlefeedbackv5-mask-text-hidden',
 				'articlefeedbackv5-mask-text-oversight',
 				'articlefeedbackv5-mask-postnumber',
