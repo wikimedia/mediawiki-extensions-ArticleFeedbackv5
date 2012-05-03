@@ -2070,12 +2070,12 @@
 		}
 
 		// Link to help is dependent on the group the user belongs to
-		helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' );
-		if( mw.config.get( 'wgArticleFeedbackv5Permissions' )['oversighter'] ) {
+		var helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' );
+		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['oversighter'] ) {
 			helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl-oversighters' );
-		} else if( mw.config.get( 'wgArticleFeedbackv5Permissions' )['monitor'] ) {
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['monitor'] ) {
 			helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl-monitors' );
-		} else if( !mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'] ) {
+		} else if ( !mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'] ) {
 			helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' );
 		}
 

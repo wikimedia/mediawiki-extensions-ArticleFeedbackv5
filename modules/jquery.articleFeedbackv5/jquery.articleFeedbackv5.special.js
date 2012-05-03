@@ -248,7 +248,9 @@
 		for ( var action in $.articleFeedbackv5special.actions ) {
 			$( '.articleFeedbackv5-' + action + '-link' ).live( 'click', function( e ) {
 				e.preventDefault();
-				if(!$(this).hasClass( 'inactive' )) $.articleFeedbackv5special.actions[action].click(e);
+				if ( !$(this).hasClass( 'inactive' ) ) {
+					$.articleFeedbackv5special.actions[action].click(e);
+				}
 			} );
 		}
 

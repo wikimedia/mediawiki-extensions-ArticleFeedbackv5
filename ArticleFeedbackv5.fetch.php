@@ -291,7 +291,7 @@ class ArticleFeedbackv5Fetch {
 					OR (logging.log_type = 'suppress'
 					AND logging.log_action IN ('oversight', 'unoversight', 'decline', 'request', 'unrequest'))",
 					"logging.log_namespace" => NS_SPECIAL,
-					"logging.log_title = CONCAT('ArticleFeedbackv5/$title/', af_id)"
+					"logging.log_title = CONCAT('ArticleFeedbackv5/" . $dbr->strencode($title) . "/', af_id)"
 			);
 
 			// get only afv5 log items
@@ -299,7 +299,7 @@ class ArticleFeedbackv5Fetch {
 			$whereLogging = array (
 					"logging.log_type" => "articlefeedbackv5",
 					"logging.log_namespace" => NS_SPECIAL,
-					"logging.log_title = CONCAT('ArticleFeedbackv5/$title/', af_id)"
+					"logging.log_title = CONCAT('ArticleFeedbackv5/" . $dbr->strencode($title) . "/', af_id)"
 			);
 		}
 
