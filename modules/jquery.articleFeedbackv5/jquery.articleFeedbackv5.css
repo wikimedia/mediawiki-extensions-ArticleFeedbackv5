@@ -887,10 +887,10 @@
 }
 /*.articleFeedbackv5-option-4 .articleFeedbackv5-submit,*/
 .articleFeedbackv5-ui .articleFeedbackv5-cta-button {
-	float: right;
-	position: relative;
-	bottom: 10px;
-	margin: 105px 0 0 !important;
+	bottom: 35px;
+	margin: 0 !important;
+	position: absolute;
+	right: 1em;
 }
 
 .articleFeedbackv5-ui .articleFeedbackv5-cta-button span {
