@@ -156,15 +156,15 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			return;
 		}
 
-		$helpPage  = 'Article_Feedback_Tool/Version_5/Help/Feedback_page';
-		if ( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
-			$helpPage = 'Article_Feedback_Tool/Version_5/Help/Feedback_page_Oversighters';
-		} elseif ( $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
-			$helpPage = 'Article_Feedback_Tool/Version_5/Help/Feedback_page_Monitors';
-		} elseif ( !$wgUser->isAnon() ) {
-			$helpPage = 'Article_Feedback_Tool/Version_5/Help/Feedback_page_Editors';
+
+		$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl')->text();
+		if( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
+			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-oversighters' )->text();
+		} elseif( $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
+			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-monitors' )->text();
+		} elseif( !$wgUser->isAnon() ) {
+			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' )->text();
 		}
-		$helpTitle = Title::newFromText( $helpPage, NS_PROJECT );
 
 		$out->addHTML(
 			// <div id="articleFeedbackv5-header-wrap">
@@ -190,8 +190,9 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 					// <a href="{help link}">
 					//   {msg:articlefeedbackv5-whats-this}
 					// </a>
-					Linker::link(
-						$helpTitle,
+					Html::element(
+						'a',
+						array( 'href' => $helpLink ),
 						$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
 					)
 				// </div>
