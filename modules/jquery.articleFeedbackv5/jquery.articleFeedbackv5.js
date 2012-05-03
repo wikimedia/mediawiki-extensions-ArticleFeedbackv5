@@ -2069,9 +2069,19 @@
 			$.articleFeedbackv5.$dialog.dialog( 'option', 'title', bucket.getTitle() );
 		}
 
+		// Link to help is dependent on the group the user belongs to
+		var helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' );
+		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['oversighter'] ) {
+			helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl-oversighters' );
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['monitor'] ) {
+			helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl-monitors' );
+		} else if ( !mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'] ) {
+			helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' );
+		}
+
 		// Set the tooltip link
 		$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip-link' )
-			.attr( 'href', mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' ));
+			.attr( 'href', helpLink );
 
 		// Do anything special the bucket requires
 		if ( 'afterBuild' in bucket ) {

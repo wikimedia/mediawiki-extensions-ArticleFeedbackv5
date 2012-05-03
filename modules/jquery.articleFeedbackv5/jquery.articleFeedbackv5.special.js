@@ -246,7 +246,12 @@
 
 		// Bind actions
 		for ( var action in $.articleFeedbackv5special.actions ) {
-			$( '.articleFeedbackv5-' + action + '-link' ).live( 'click', $.articleFeedbackv5special.actions[action].click );
+			$( '.articleFeedbackv5-' + action + '-link' ).live( 'click', function( e ) {
+				e.preventDefault();
+				if ( !$(this).hasClass( 'inactive' ) ) {
+					$.articleFeedbackv5special.actions[action].click(e);
+				}
+			} );
 		}
 
 		// Bind submit actions on flyover panels (flag actions)
