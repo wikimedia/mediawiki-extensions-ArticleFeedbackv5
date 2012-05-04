@@ -451,6 +451,9 @@ $messages['en'] = array(
 	'articlefeedbackv5-activity-item-comment' => '$1 $2 $3 : $4',
 	'articlefeedbackv5-activity-item' => '$1 $2 $3',
 
+	/* Talk page */
+	'articlefeedbackv5-talk-view-feedback' => 'View feedback >>',
+
 	/* Our fake/default user */
 	'articlefeedbackv5-default-user' => 'Article Feedback V5',
 
@@ -900,6 +903,7 @@ This URL can be changed to point to a translated version of the page if it exist
 	'articlefeedbackv5-activity-count' => 'Template for activity items count',
 	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
 	'articlefeedbackv5-activity-item-comment' => 'Text for the activity panel - user name link, activity action, date and comment',
+	'articlefeedbackv5-talk-view-feedback' => 'A link on the talk page to encourage people to visit the feedback',
 	'articlefeedbackv5-emailcapture-response-body' => 'Body of an e-mail sent to a user wishing to participate in [[mw:Extension:ArticleFeedback|article feedback]] (see the extension documentation).
 * <code>$1</code> – URL of the confirmation link
 * <code>$2</code> – URL to type in the confirmation code manually.
