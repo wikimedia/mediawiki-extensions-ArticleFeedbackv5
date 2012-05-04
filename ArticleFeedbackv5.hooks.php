@@ -58,6 +58,16 @@ class ArticleFeedbackv5Hooks {
 				'jquery.articleFeedbackv5.special',
 			),
 		),
+		'ext.articleFeedbackv5.talk' => array(
+			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js',
+			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.talk.css',
+			'messages' => array(
+				'articlefeedbackv5-talk-view-feedback',
+			),
+			'dependencies' => array(
+				'mediawiki.util',
+			),
+		),
 		'jquery.articleFeedbackv5' => array(
 			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.js',
 			'styles' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.css',
@@ -320,7 +330,15 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function beforePageDisplay( $out ) {
+		global $wgTitle;
+
 		$out->addModules( 'ext.articleFeedbackv5.startup' );
+
+		// Load module for talk-page
+		if( $wgTitle->getNamespace() == NS_TALK ) {
+			$out->addModules( 'ext.articleFeedbackv5.talk' );
+		}
+
 		return true;
 	}
 
@@ -386,7 +404,8 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5LearnToEdit,
 			$wgArticleFeedbackv5SurveyUrls,
 			$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay,
-			$wgUser;
+			$wgUser,
+			$wgArticleFeedbackv5TalkPageLink;
 		$vars['wgArticleFeedbackv5SMaxage'] = $wgArticleFeedbackv5SMaxage;
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
@@ -409,6 +428,8 @@ class ArticleFeedbackv5Hooks {
 			'moderator' => $wgUser->isAllowed( 'aftv5-hide-feedback' ),
 			'editor' => !$wgUser->isAnon()
 		);
+		$vars['wgArticleFeedbackv5SpecialUrl'] = Title::newFromText( "ArticleFeedbackv5/", NS_SPECIAL )->getLinkUrl();
+		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
 		return true;
 	}
 
