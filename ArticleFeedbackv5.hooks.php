@@ -58,6 +58,16 @@ class ArticleFeedbackv5Hooks {
 				'jquery.articleFeedbackv5.special',
 			),
 		),
+		'ext.articleFeedbackv5.talk' => array(
+			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js',
+			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.talk.css',
+			'messages' => array(
+				'articlefeedbackv5-talk-view-feedback',
+			),
+			'dependencies' => array(
+				'mediawiki.util',
+			),
+		),
 		'jquery.articleFeedbackv5' => array(
 			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.js',
 			'styles' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.css',
@@ -317,7 +327,15 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function beforePageDisplay( $out ) {
+		global $wgTitle;
+
 		$out->addModules( 'ext.articleFeedbackv5.startup' );
+
+		// Load module for talk-page
+		if( $wgTitle->getNamespace() == NS_TALK ) {
+			$out->addModules( 'ext.articleFeedbackv5.talk' );
+		}
+
 		return true;
 	}
 
@@ -398,6 +416,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMsgForContent( 'articlefeedbackv5-bucket5-form-panel-explanation-link' );
 		$vars['wgArticleFeedbackv5TermsPage'] = wfMsgForContent( 'articlefeedbackv5-transparency-terms-url' );
 		$vars['wgArticleFeedbackv5SurveyUrls'] = $wgArticleFeedbackv5SurveyUrls;
+		$vars['wgArticleFeedbackv5SpecialUrl'] = Title::newFromText( "ArticleFeedbackv5/", NS_SPECIAL )->getLinkUrl();
 		return true;
 	}
 
