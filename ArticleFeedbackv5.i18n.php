@@ -8486,6 +8486,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|engem Mount|$1 Méint}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL: $1|enger Woch|$1 Wochen}}',
 	'articlefeedbackv5-timestamp-seconds' => 'manner wéi eng Minutt',
+	'articlefeedbackv5-special-goback' => "D'Säit mam Feedback weisen",
 	'articlefeedbackv5-noteflyover-feature-label' => 'Eng Notiz derbäisetzen',
 	'articlefeedbackv5-noteflyover-feature-help' => 'Fir méi ze wëssen',
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Eng Notiz derbäisetzen',
