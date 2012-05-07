@@ -168,15 +168,22 @@ class ApiArticleFeedbackv5Utils {
 		}
 
 		foreach ( $filters as $filter => $direction ) {
+			// One for the page
 			$rows[] = array(
 				'afc_page_id'      => $pageId,
 				'afc_filter_name'  => $filter,
 				'afc_filter_count' => 0
 			);
+			// One for the central log
+			$rows[] = array(
+				'afc_page_id'      => 0,
+				'afc_filter_name'  => $filter,
+				'afc_filter_count' => 0
+			);
 		}
 
-		# Try to insert the record, but ignore failures.
-		# Ensures the count row exists.
+		// Try to insert the record, but ignore failures.
+		// Ensures the count row exists.
 		$dbw->insert(
 			'aft_article_filter_count',
 			$rows,
@@ -187,7 +194,7 @@ class ApiArticleFeedbackv5Utils {
 		foreach ( $filters as $filter => $direction ) {
 			$value = ( $direction > 0 ) ? 'afc_filter_count + 1' : 'GREATEST(0, CONVERT(afc_filter_count, SIGNED) - 1)';
 
-			# Update each row with the new count.
+			// Update each row with the new count for each page filter
 			$dbw->update(
 				'aft_article_filter_count',
 				array( "afc_filter_count = $value" ),
@@ -198,6 +205,16 @@ class ApiArticleFeedbackv5Utils {
 				__METHOD__
 			);
 
+			// Update each row with the new count for the central filters
+			$dbw->update(
+				'aft_article_filter_count',
+				array( "afc_filter_count = $value" ),
+				array(
+					'afc_page_id'     => 0,
+					'afc_filter_name' => $filter
+				),
+				__METHOD__
+			);
 		}
 	}
 

@@ -130,6 +130,10 @@ class ArticleFeedbackv5Fetch {
 		if ( $pageId ) {
 			$this->setPageId( $pageId );
 		}
+		global $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
+		if ( $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay ) {
+			$this->limit = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
+		}
 	}
 
 	/**
@@ -141,8 +145,6 @@ class ArticleFeedbackv5Fetch {
 	 *                  }
 	 */
 	public function run() {
-		global $wgUser; // we need to check permissions in here for suppressionlog stuff
-
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$result = new stdClass;
@@ -271,44 +273,15 @@ class ArticleFeedbackv5Fetch {
 			array_pop( $ids );
 		}
 
-		/* We'll try to determine if the there are log entries (= activity) for this feedback, but the visible activity
-		 depend on the user's permissions */
-
-		// get the string title for the page
-		$page = Title::newFromID( $this->pageId );
-		if ( !$page ) {
-			$this->dieUsage( "Page for feedback does not exist", "invalidfeedbackid" );
-		}
-		$title = $page->getPrefixedDBKey();
-
-		// get afv5 log items PLUS suppress log
-		if ( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
-			$whereLogging = array(
-					"logging.log_type = 'articlefeedbackv5'
-					OR (logging.log_type = 'suppress'
-					AND logging.log_action IN ('oversight', 'unoversight', 'decline', 'request', 'unrequest'))",
-					"logging.log_namespace" => NS_SPECIAL,
-					"logging.log_title = CONCAT('ArticleFeedbackv5/" . $dbr->strencode($title) . "/', af_id)"
-			);
-
-			// get only afv5 log items
-		} else {
-			$whereLogging = array (
-					"logging.log_type" => "articlefeedbackv5",
-					"logging.log_namespace" => NS_SPECIAL,
-					"logging.log_title = CONCAT('ArticleFeedbackv5/" . $dbr->strencode($title) . "/', af_id)"
-			);
-		}
-
 		// Select rows
 		$rows  = $dbr->select(
 			array( 'aft_article_feedback',
 				'rating' => 'aft_article_answer',
 				'answer' => 'aft_article_answer',
 				'aft_article_field',
-				'aft_article_field_option', 'user', 'page', 'logging'
+				'aft_article_field_option', 'user', 'page'
 			),
-			array( 'af_id', 'af_form_id', 'af_experiment', 'afi_name', 'afo_name',
+			array( 'af_id', 'af_page_id', 'af_form_id', 'af_experiment', 'afi_name', 'afo_name',
 				'answer.aa_response_text', 'answer.aa_response_boolean',
 				'answer.aa_response_rating', 'answer.aa_response_option_id',
 				'afi_data_type', 'af_created', 'user_name',
@@ -321,8 +294,7 @@ class ArticleFeedbackv5Fetch {
 				'af_is_featured', 'af_is_resolved',
 				'af_last_status',
 				'af_last_status_user_id',
-				'af_last_status_timestamp',
-				'logging.log_timestamp'
+				'af_last_status_timestamp'
 			),
 			array( 'af_id' => $ids ),
 			__METHOD__,
@@ -348,10 +320,6 @@ class ArticleFeedbackv5Fetch {
 				'page' => array(
 					'JOIN', 'page_id = af_page_id'
 				),
-				'logging' => array(
-					'LEFT JOIN',
-					$whereLogging
-				)
 			)
 		);
 
@@ -458,6 +426,25 @@ class ArticleFeedbackv5Fetch {
 		}
 
 		return $where;
+	}
+
+	/**
+	 * Get the total number of responses, not taking any filters into account
+	 *
+	 * @return int the count
+	 */
+	public function overallCount() {
+		$dbr   = wfGetDB( DB_SLAVE );
+		$where = array( 'afc_filter_name' => 'all' );
+		$where['afc_page_id'] = $this->pageId ? $this->pageId : 0;
+		$count = $dbr->selectField(
+			array( 'aft_article_filter_count' ),
+			array( 'afc_filter_count' ),
+			$where,
+			__METHOD__
+		);
+		// selectField returns false if there's no row, so make that 0
+		return $count ? $count : 0;
 	}
 
 	/**

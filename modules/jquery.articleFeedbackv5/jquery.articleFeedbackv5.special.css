@@ -759,3 +759,9 @@ form.articlefeedbackv5-form-flyover textarea {
 	font-size: 1.2em;
 	margin-top: 10px;
 }
+
+/** Central feedback log overrides **/
+.articleFeedbackv5-central-feedback-log h3 {
+	margin-top: 15px;
+}
+

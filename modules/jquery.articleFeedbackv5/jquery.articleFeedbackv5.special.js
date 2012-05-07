@@ -52,7 +52,7 @@
 		filterValue: mw.config.get( 'afStartingFilterValue' ), // Permalinks require a feedback ID
 		sort: mw.config.get( 'afStartingSort' ),
 		sortDirection: mw.config.get( 'afStartingSortDirection' ),
-		limit: mw.config.get( 'wgArticleFeedbackv5InitialFeedbackPostCountToDisplay') || 25,
+		limit: mw.config.get( 'afStartingLimit' ),
 		continue: null,
 		disabled: false,	// Prevent (at least limit) a flood of ajax requests.
 		allowMultiple: false
@@ -178,7 +178,11 @@
 		}
 
 		// Initial load
-		$.articleFeedbackv5special.loadFeedback( true );
+		$.articleFeedbackv5special.processFeedback(
+			mw.config.get( 'afCount' ),
+			mw.config.get( 'afContinue' ),
+			mw.config.get( 'afShowMore' )
+		);
 	};
 
 	// }}}
@@ -276,8 +280,10 @@
 		} );
 
 	}
+
 	// }}}
 	// {{{ bindPanels
+
 	/**
 	 * Bind panels to controls - that cannot be 'live' events due to jQuery.tipsy
 	 * limitations. This function should be invoked after feedback posts are loaded,
@@ -300,6 +306,7 @@
 				} );
 		}
 	}
+
 	// }}}
 
 	// }}}
@@ -528,7 +535,9 @@
 		$marker = $( $.articleFeedbackv5special.featuredMarkerTemplate );
 		$marker.localize( { 'prefix': 'articlefeedbackv5-' } );
 		$( $marker ).insertAfter( $row.find( '.articleFeedbackv5-comment-details-updates' ) );
-		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		if ( $status_line && $status_line.length > 0 ) {
+			$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		}
 	};
 
 	// }}}
@@ -544,7 +553,9 @@
 		$row.removeClass( 'articleFeedbackv5-feedback-featured' )
 			.data( 'featured', false );
 		$row.find( '.articleFeedbackv5-featured-marker' ).remove();
-		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		if ( $status_line && $status_line.length > 0 ) {
+			$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		}
 	};
 
 	// }}}
@@ -563,7 +574,9 @@
 		$marker = $( $.articleFeedbackv5special.resolvedMarkerTemplate );
 		$marker.localize( { 'prefix': 'articlefeedbackv5-' } );
 		$( $marker ).insertAfter( $row.find( '.articleFeedbackv5-abuse-link' ) );
-		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		if ( $status_line && $status_line.length > 0 ) {
+			$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		}
 	};
 
 	// }}}
@@ -579,7 +592,9 @@
 		$row.removeClass( 'articleFeedbackv5-feedback-resolved' )
 			.data( 'resolved', false );
 		$row.find( '.articleFeedbackv5-resolved-marker' ).remove();
-		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		if ( $status_line && $status_line.length > 0 ) {
+			$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		}
 	};
 
 	// }}}
@@ -599,7 +614,9 @@
 		$row.addClass( 'articleFeedbackv5-feedback-hidden' )
 			.data( 'hidden', true );
 		var $marker = $row.find('articleFeedbackv5-feedback-status-marker');
-		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		if ( $status_line && $status_line.length > 0 ) {
+			$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		}
 		$.articleFeedbackv5special.maskPost( $row, 'hidden');
 	};
 
@@ -663,7 +680,9 @@
 		}
 		$row.addClass( 'articleFeedbackv5-feedback-deleted' )
 			.data( 'deleted', true );
-		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		if ( $status_line && $status_line.length > 0 ) {
+			$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		}
 		$.articleFeedbackv5special.maskPost( $row, 'oversight' );
 	};
 
@@ -870,71 +889,12 @@
 					if ( resetContents ) {
 						$( '#articleFeedbackv5-show-feedback' ).empty();
 					}
-					var $newList = $( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback );
-					$newList.find( '.articleFeedbackv5-feedback' ).each( function () {
-						var id = $( this ).attr( 'rel' );
-						if ( id in $.articleFeedbackv5special.activity ) {
-							var activity = $.articleFeedbackv5special.getActivity( id );
-							if ( activity.helpful ) {
-								$( this ).find( '#articleFeedbackv5-helpful-link-' + id )
-									.addClass( 'helpful-active' )
-									.removeClass( 'articleFeedbackv5-helpful-link' )
-									.addClass( 'articleFeedbackv5-reversehelpful-link' )
-									.attr( 'id', 'articleFeedbackv5-reversehelpful-link-' + id );
-							}
-							if ( activity.unhelpful ) {
-								$( this ).find( '#articleFeedbackv5-unhelpful-link-' + id )
-									.addClass( 'helpful-active' )
-									.removeClass( 'articleFeedbackv5-unhelpful-link' )
-									.addClass( 'articleFeedbackv5-reverseunhelpful-link' )
-									.attr( 'id', 'articleFeedbackv5-reverseunhelpful-link-' + id );
-							}
-							if ( activity.abuse ) {
-								var $l = $( this ).find( '#articleFeedbackv5-abuse-link-' + id );
-								if( mw.config.get( 'afCanEdit' ) == 1 ) {
-									$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', $l.attr( 'rel' ) ) );
-								} else {
-									$l.text( mw.msg( 'articlefeedbackv5-abuse-saved-masked', $l.attr( 'rel' ) ) );
-								}
-								$l.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
-									.removeClass( 'articleFeedbackv5-abuse-link' )
-									.addClass( 'articleFeedbackv5-unabuse-link' );
-							}
-						}
-
-						if ( $( this ).hasClass( 'articleFeedbackv5-feedback-emptymask' ) ) {
-							var $screen = $( this ).find( '.articleFeedbackv5-post-screen' );
-							$screen.height( Math.max($( this ).innerHeight(), 100) );
-							$screen.find( '.articleFeedbackv5-mask-text-wrapper')
-								.css( 'top', $screen.innerHeight() / 2 - 12 );
-
-						} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
-							$.articleFeedbackv5special.markDeleted( $( this ) );
-						} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
-							$.articleFeedbackv5special.markHidden( $( this ) );
-						}
-
-						if ( $( this ).hasClass( 'articleFeedbackv5-feedback-featured' ) ) {
-							$.articleFeedbackv5special.markFeatured( $( this ) );
-						}
-						if ( $( this ).hasClass( 'articleFeedbackv5-feedback-resolved' ) ) {
-							$.articleFeedbackv5special.markResolved( $( this ) );
-						}
-
-						var $tbx = $( this ).find( '.articleFeedbackv5-feedback-tools' );
-						if ( $( this ).height() < $tbx.height() + 20 ) {
-							$( this ).css( 'min-height', $tbx.height() + 20 + 'px' );
-						}
-
-					} );
-					$( '#articleFeedbackv5-feedback-count-total' ).text( data['articlefeedbackv5-view-feedback'].count );
-					$.articleFeedbackv5special.listControls.continue = data['articlefeedbackv5-view-feedback'].continue;
-					if( data['articlefeedbackv5-view-feedback'].more ) {
-						$( '#articleFeedbackv5-show-more').show();
-					} else {
-						$( '#articleFeedbackv5-show-more').hide();
-					}
-					$.articleFeedbackv5special.bindPanels();
+					$( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback );
+					$.articleFeedbackv5special.processFeedback(
+						data['articlefeedbackv5-view-feedback'].count,
+						data['articlefeedbackv5-view-feedback'].continue,
+						data['articlefeedbackv5-view-feedback'].more
+					);
 				} else {
 					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
@@ -945,6 +905,83 @@
 		} );
 
 		return false;
+	};
+
+	// }}}
+	// {{{ processFeedback
+
+	/**
+	 * Processes in a set of responses
+	 *
+	 * @param count        int   the total number of responses
+	 * @param continueInfo mixed the first continue value
+	 * @param showMore     bool  whether there are more records to show
+	 */
+	$.articleFeedbackv5special.processFeedback = function ( count, continueInfo, showMore ) {
+		var $newList = $( '#articleFeedbackv5-show-feedback' );
+		$newList.find( '.articleFeedbackv5-feedback' ).each( function () {
+			var id = $( this ).attr( 'rel' );
+			if ( id in $.articleFeedbackv5special.activity ) {
+				var activity = $.articleFeedbackv5special.getActivity( id );
+				if ( activity.helpful ) {
+					$( this ).find( '#articleFeedbackv5-helpful-link-' + id )
+						.addClass( 'helpful-active' )
+						.removeClass( 'articleFeedbackv5-helpful-link' )
+						.addClass( 'articleFeedbackv5-reversehelpful-link' )
+						.attr( 'id', 'articleFeedbackv5-reversehelpful-link-' + id );
+				}
+				if ( activity.unhelpful ) {
+					$( this ).find( '#articleFeedbackv5-unhelpful-link-' + id )
+						.addClass( 'helpful-active' )
+						.removeClass( 'articleFeedbackv5-unhelpful-link' )
+						.addClass( 'articleFeedbackv5-reverseunhelpful-link' )
+						.attr( 'id', 'articleFeedbackv5-reverseunhelpful-link-' + id );
+				}
+				if ( activity.abuse ) {
+					var $l = $( this ).find( '#articleFeedbackv5-abuse-link-' + id );
+					if( mw.config.get( 'afCanEdit' ) == 1 ) {
+						$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', $l.attr( 'rel' ) ) );
+					} else {
+						$l.text( mw.msg( 'articlefeedbackv5-abuse-saved-masked', $l.attr( 'rel' ) ) );
+					}
+					$l.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
+						.removeClass( 'articleFeedbackv5-abuse-link' )
+						.addClass( 'articleFeedbackv5-unabuse-link' );
+				}
+			}
+
+			if ( $( this ).hasClass( 'articleFeedbackv5-feedback-emptymask' ) ) {
+				var $screen = $( this ).find( '.articleFeedbackv5-post-screen' );
+				$screen.height( Math.max($( this ).innerHeight(), 100) );
+				$screen.find( '.articleFeedbackv5-mask-text-wrapper')
+					.css( 'top', $screen.innerHeight() / 2 - 12 );
+			} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
+				$.articleFeedbackv5special.markDeleted( $( this ) );
+			} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
+				$.articleFeedbackv5special.markHidden( $( this ) );
+			}
+
+			if ( $( this ).hasClass( 'articleFeedbackv5-feedback-featured' ) ) {
+				$.articleFeedbackv5special.markFeatured( $( this ) );
+			}
+			if ( $( this ).hasClass( 'articleFeedbackv5-feedback-resolved' ) ) {
+				$.articleFeedbackv5special.markResolved( $( this ) );
+			}
+
+			var $tbx = $( this ).find( '.articleFeedbackv5-feedback-tools' );
+			if ( $( this ).height() < $tbx.height() + 20 ) {
+				$( this ).css( 'min-height', $tbx.height() + 20 + 'px' );
+			}
+		} );
+
+		$( '#articleFeedbackv5-feedback-count-total' ).text( count );
+		$.articleFeedbackv5special.listControls.continue = continueInfo;
+		if ( showMore ) {
+			$( '#articleFeedbackv5-show-more').show();
+		} else {
+			$( '#articleFeedbackv5-show-more').hide();
+		}
+		$.articleFeedbackv5special.bindPanels( $.articleFeedbackv5special.listControls.filterValue );
 	};
 
 	// }}}
