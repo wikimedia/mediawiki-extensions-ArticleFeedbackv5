@@ -23,6 +23,13 @@ class ArticleFeedbackv5Render {
 	private $isPermalink;
 
 	/**
+	 * Whether this is on the central log
+	 *
+	 * @var bool
+	 */
+	private $isCentral;
+
+	/**
 	 * Permissions
 	 *
 	 * Keys: can_flag, can_vote, can_hide, can_delete, can_feature,
@@ -45,8 +52,9 @@ class ArticleFeedbackv5Render {
 	 *
 	 * @param $user      User [optional] the current user
 	 * @param $permalink bool [optional] whether this is a permalink?
+	 * @param $central   bool [optional] whether this is on the central log?
 	 */
-	public function __construct( $user = null, $permalink = false ) {
+	public function __construct( $user = null, $permalink = false, $central = false ) {
 		if ( $user ) {
 			$this->setPermission( 'can_flag', !$user->isBlocked() );
 			$this->setPermission( 'can_vote', !$user->isBlocked() );
@@ -57,6 +65,7 @@ class ArticleFeedbackv5Render {
 			$this->setPermission( 'see_hidden', $user->isAllowed( 'aftv5-see-hidden-feedback' ) );
 		}
 		$this->setIsPermalink( $permalink );
+		$this->setIsCentral( $central );
 	}
 
 	/**
@@ -78,11 +87,15 @@ class ArticleFeedbackv5Render {
 		}
 
 		// Build with the actual content of the feedback (header + comment)
-		switch( $record[0]->af_form_id ) {
-			case 1: $content = $this->renderBucket1( $record ); break;
-			case 2: $content = $this->renderBucket2( $record ); break;
-			case 3: $content = $this->renderBucket3( $record ); break;
-			default: $content = $this->renderNoBucket( $record ); break;
+		if ( $this->isCentral ) {
+			$content = $this->renderCentral( $record );
+		} else {
+			switch( $record[0]->af_form_id ) {
+				case 1: $content = $this->renderBucket1( $record ); break;
+				case 2: $content = $this->renderBucket2( $record ); break;
+				case 3: $content = $this->renderBucket3( $record ); break;
+				default: $content = $this->renderNoBucket( $record ); break;
+			}
 		}
 
 		// Build the footer
@@ -168,6 +181,26 @@ class ArticleFeedbackv5Render {
 	 */
 	public function setIsPermalink( $isPermalink ) {
 		$this->isPermalink = $isPermalink ? true : false;
+		return true;
+	}
+
+	/**
+	 * Gets whether this is on the central log
+	 *
+	 * @return bool whether this is on the central log
+	 */
+	public function getIsCentral() {
+		return $this->isCentral;
+	}
+
+	/**
+	 * Sets whether this is on the central log
+	 *
+	 * @param  $isCentral bool whether this is on the central log
+	 * @return bool       whether it passed validation and was set
+	 */
+	public function setIsCentral( $isCentral ) {
+		$this->isCentral = $isCentral ? true : false;
 		return true;
 	}
 
@@ -330,6 +363,20 @@ class ArticleFeedbackv5Render {
 	}
 
 	/**
+	 * Returns the feedback head and comment for the central log
+	 *
+	 * @param  $record array the record, with keys 0 + answers
+	 * @return string  the rendered feedback info
+	 */
+	private function renderCentral( $record ) {
+		return $this->feedbackHead( 'articlefeedbackv5-central-header-left-comment', '', $record[0] )
+			. $this->renderComment(
+				isset( $record['comment'] ) ?  $record['comment']->aa_response_text : '',
+				$record[0]->af_id
+			);
+	}
+
+	/**
 	 * Returns the feedback head
 	 *
 	 * @param  $message string   the message key describing the the nature of
@@ -372,18 +419,30 @@ class ArticleFeedbackv5Render {
 		// </span>
 		$details .= Html::closeElement( 'span' );
 
-		return
-			// <h3 class="{$class}">
-			Html::openElement( 'h3', array( 'class' => $class ) )
+		if ( $this->isCentral ) {
+			$article = Title::newFromRow($record);
+			$parsedMsg = wfMessage( $message, $name )->rawParams(
+					Linker::link( $title, $name )
+				)->rawParams(
+					Linker::link( $article )
+				)->escaped();
+		} else {
+			$parsedMsg =
 				// <span class="icon"></span>
-				. Html::element( 'span', array( 'class' => 'icon' ) )
+				Html::element( 'span', array( 'class' => 'icon' ) )
 				// <span class="result">{msg:$message}</span>
 				. Html::rawElement( 'span',
 					array( 'class' => 'result' ),
 					wfMessage( $message, $name )->rawParams(
 						Linker::link( $title, $name )
 					)->escaped()
-				)
+				);
+		}
+
+		return
+			// <h3 class="{$class}">
+			Html::openElement( 'h3', array( 'class' => $class ) )
+				. $parsedMsg
 			// </h3>
 			. Html::closeElement( 'h3' )
 			// {permalink/timestamp}
@@ -809,7 +868,7 @@ class ArticleFeedbackv5Render {
 		if ( $this->hasPermission( 'can_delete' ) ) {
 			// if no activity has been logged yet, add the "inactive" class so we can display it accordingly
 			$activityClass = "articleFeedbackv5-activity-link";
-			if( !$record['found']->log_timestamp ) {
+			if ( !$record[0]->log_timestamp ) {
 				$activityClass .= " inactive";
 			}
 

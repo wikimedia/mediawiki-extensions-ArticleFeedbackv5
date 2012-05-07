@@ -25,6 +25,7 @@ $wgArticleFeedbackv5DefaultFilters = array (
 	'featured' => 'visible-relevant',
 	'hidden' => 'visible-comment',
 	'deleted' => 'visible-comment',
+	'central' => 'visible-comment',
 );
 
 /**
@@ -40,6 +41,7 @@ $wgArticleFeedbackv5DefaultSorts = array (
 	'featured' => array( 'relevance', 'asc'),
 	'hidden' => array( 'age', 'desc'),
 	'deleted' => array( 'age', 'desc'),
+	'central' => array( 'age', 'desc'),
 );
 
 /**
