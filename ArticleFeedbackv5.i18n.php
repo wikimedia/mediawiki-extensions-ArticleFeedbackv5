@@ -9601,6 +9601,7 @@ $messages['ml'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|ഒരു മാസം|$1 മാസം}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|ഒരാഴ്ച്ച|$1 ആഴ്ച്ച}}',
 	'articlefeedbackv5-timestamp-seconds' => 'ഒരു മിനിറ്റിൽ താഴെ',
+	'articlefeedbackv5-noteflyover-unresolve-help' => 'കൂടുതൽ അറിയുക',
 	'articlefeedbackv5-noteflyover-hide-label' => 'ഒരു കുറിപ്പ് ചേർക്കുക',
 	'articlefeedbackv5-noteflyover-hide-help' => 'കൂടുതൽ അറിയുക',
 	'articlefeedbackv5-noteflyover-show-label' => 'ഒരു കുറിപ്പ് ചേർക്കുക',
