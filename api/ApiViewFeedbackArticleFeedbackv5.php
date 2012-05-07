@@ -36,7 +36,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$pageId   = $params['pageid'];
 		$html     = '';
 		$length   = 0;
-		$count    = $this->fetchFeedbackCount( $params['pageid'] );
 
 		// Build fetch object
 		$fetch = new ArticleFeedbackv5Fetch( $params['filter'],
@@ -47,13 +46,15 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		if ( $params['continue'] !== 'null' ) {
 			$fetch->setContinue( $params['continue'] );
 		}
+		$count = $fetch->overallCount();
 
 		// Run
 		$res = $fetch->run();
 
 		// Build html
 		$permalink = ( 'id' == $fetch->getFilter() );
-		$renderer = new ArticleFeedbackv5Render( $wgUser, $permalink );
+		$central   = ( $params['pageid'] ? false : true );
+		$renderer  = new ArticleFeedbackv5Render( $wgUser, $permalink, $central );
 		foreach ( $res->records as $record ) {
 			$html .= $renderer->run( $record );
 			$length++;
