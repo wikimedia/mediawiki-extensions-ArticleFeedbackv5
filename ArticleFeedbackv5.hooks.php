@@ -420,42 +420,6 @@ class ArticleFeedbackv5Hooks {
 	}
 
 	/**
-	 * Formats an activity log entry
-	 *
-	 * @param  $type            string the log type
-	 * @param  $action          string the action (usually, but not always, the flag)
-	 * @param  $title           Title  the title
-	 * @param  $skin            Skin   the skin
-	 * @param  $params          array  any extra params
-	 * @param  $filterWikilinks bool   whether to filter links
-	 * @return string           the log entry
-	 */
-	public static function formatActivityLogEntry( $type, $action, $title, $skin, $params, $filterWikilinks = false ) {
-
-		if ( preg_match( '|^ArticleFeedbackv5/(.*)/(\d+)$|', $title->getDBKey(), $matches ) ) {
-			$page = Title::newFromDBKey( $matches[1] );
-			$fbid = $matches[2];
-		} else {
-			$fbid = '?';
-		}
-
-		$fbtext = wfMessage( 'articlefeedbackv5-log-feedback-linktext',
-			$fbid )->escaped();
-		$fblink = Message::rawParam( Linker::makeLinkObj( $title, $fbtext ) );
-
-		if ( $page ) {
-			$pagelink = Message::rawParam( Linker::makeLinkObj( $page ) );
-		} else {
-			$pagelink = '?';
-		}
-
-		global $wgLang, $wgContLang;
-		$language = $skin === null ? $wgContLang : $wgLang;
-		return wfMessage( "articlefeedbackv5-log-$action" )->params(
-			array( $fblink, $pagelink ) )->inLanguage( $language )->text();
-	}
-
-	/**
 	 * Pushes the tracking fields into the edit page
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/EditPage::showEditForm:fields
@@ -576,4 +540,3 @@ class ArticleFeedbackv5Hooks {
 	}
 
 }
-
