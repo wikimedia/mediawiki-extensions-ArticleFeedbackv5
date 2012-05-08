@@ -577,3 +577,27 @@ class ArticleFeedbackv5Hooks {
 
 }
 
+/**
+ * This class formats all articlefeedbackv5log entries.
+ */
+class ArticleFeedbackv5LogFormatter extends LogFormatter {
+	protected function getActionMessage() {
+		$entry = $this->entry;
+		$action = ArticleFeedbackv5Hooks::formatActivityLogEntry(
+				$entry->getType(),
+				$entry->getSubtype(),
+				$entry->getTarget(),
+				$this->plaintext ? null : $this->context->getSkin(),
+				(array)$entry->getParameters(),
+				!$this->plaintext // whether to filter [[]] links
+		);
+
+		$performer = $this->getPerformerElement();
+		if ( !$this->irctext ) {
+			$action = $performer .  $this->msg( 'word-separator' )->text() . $action;
+		}
+
+		return $action;
+	}
+
+}
