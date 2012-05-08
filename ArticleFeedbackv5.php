@@ -348,6 +348,7 @@ $wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5'] = $dir . 'api/ApiViewFeed
 $wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5'] = $dir . 'api/ApiFlagFeedbackArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewActivityArticleFeedbackv5'] = $dir . 'api/ApiViewActivityArticleFeedbackv5.php';
 $wgAutoloadClasses['ArticleFeedbackv5Hooks']           = $dir . 'ArticleFeedbackv5.hooks.php';
+$wgAutoloadClasses['ArticleFeedbackv5LogFormatter']    = $dir . 'ArticleFeedbackv5.logFormatter.php';
 $wgAutoloadClasses['ArticleFeedbackv5Fetch']           = $dir . 'ArticleFeedbackv5.fetch.php';
 $wgAutoloadClasses['ArticleFeedbackv5Flagging']        = $dir . 'ArticleFeedbackv5.flagging.php';
 $wgAutoloadClasses['ArticleFeedbackv5MailerJob']       = $dir . 'ArticleFeedbackv5MailerJob.php';
@@ -398,7 +399,7 @@ $wgLogActions['suppress/decline']  = 'articlefeedbackv5-log-decline';
 $wgLogActions['suppress/request']  = 'articlefeedbackv5-log-request';
 $wgLogActions['suppress/unrequest']  = 'articlefeedbackv5-log-unrequest';
 foreach ( array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest' ) as $t) {
-	$wgLogActionsHandlers["suppress/$t"] = 'ArticleFeedbackv5Hooks::formatActivityLogEntry';
+	$wgLogActionsHandlers["suppress/$t"] = 'ArticleFeedbackv5LogFormatter';
 }
 
 $wgLogActions['articlefeedbackv5/hidden']  = 'articlefeedbackv5-log-hidden';
@@ -414,7 +415,7 @@ $wgLogActions['articlefeedbackv5/unresolve']  = 'articlefeedbackv5-log-unresolve
 
 // register activity log formatter hooks
 foreach ( array( 'hidden', 'unhidden', 'flag', 'unflag', 'autoflag', 'autohide', 'feature', 'unfeature', 'resolve', 'unresolve' ) as $t) {
-	$wgLogActionsHandlers["articlefeedbackv5/$t"] = 'ArticleFeedbackv5Hooks::formatActivityLogEntry';
+	$wgLogActionsHandlers["articlefeedbackv5/$t"] = 'ArticleFeedbackv5LogFormatter';
 }
 
 // Add a custom filter group for AbuseFilter
