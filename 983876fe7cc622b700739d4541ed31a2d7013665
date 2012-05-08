@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALX///3Y\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-08T20:19:54Z",
+      "side": 1,
+      "message": "These shouldn\u0027t be escaped, because they\u0027re passed as attribute values to element(), which escapes attribute values. Use -\u003etext() instead",
+      "revId": "983876fe7cc622b700739d4541ed31a2d7013665",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALX///2w\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-08T20:19:54Z",
+      "side": 1,
+      "message": "Needs to be var i \u003d 0; otherwise i is a global variable",
+      "revId": "983876fe7cc622b700739d4541ed31a2d7013665",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
