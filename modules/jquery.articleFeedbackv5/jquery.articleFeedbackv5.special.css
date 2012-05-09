@@ -321,12 +321,14 @@ a#articleFeedbackv5-show-more {
 	background-image: url(images/toolbox_feature_hover.png);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-requestoversight-link,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unrequestoversight-link,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-oversight-link,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unoversight-link {
 	/* @embed */
 	background-image: url(images/toolbox_oversight.png);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-requestoversight-link:hover,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unrequestoversight-link:hover,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-oversight-link:hover,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unoversight-link:hover {
 	/* @embed */
