@@ -806,7 +806,7 @@ class ArticleFeedbackv5Render {
 		}
 
 		// View Activity
-		if ( $this->hasPermission( 'can_delete' ) ) {
+		if ( $this->hasPermission( 'can_delete' ) || $this->hasPermission( 'can_hide' ) ) {
 			// if no activity has been logged yet, add the "inactive" class so we can display it accordingly
 			$activityClass = "articleFeedbackv5-activity-link";
 			if( !$record['found']->log_timestamp ) {
