@@ -655,9 +655,13 @@ class ArticleFeedbackv5Render {
 				. Html::openElement( 'ul', array(
 					'id' => 'articleFeedbackv5-feedback-tools-list-' . $id
 				) );
+		$toolsFeature = '';
+		$toolsDelete = '';
+		$toolsActivity = '';
 
 		// Feature/unfeature and mark/unmark resolved
 		if ( $this->hasPermission( 'can_feature' ) ) {
+
 			// Message can be:
 			//  * articlefeedbackv5-form-feature
 			//  * articlefeedbackv5-form-unfeature
@@ -674,7 +678,7 @@ class ArticleFeedbackv5Render {
 			//     {msg:articlefeedbackv5-form-{feature|unfeature}}
 			//   </a>
 			// </li>
-			$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+			$toolsFeature .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 				'id'    => "articleFeedbackv5-$class-link-$id",
 				'class' => "articleFeedbackv5-$class-link",
 				'href' => '#',
@@ -688,7 +692,7 @@ class ArticleFeedbackv5Render {
 				//     {msg:articlefeedbackv5-form-{unresolve}}
 				//   </a>
 				// </li>
-				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+				$toolsFeature .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 					'id'    => "articleFeedbackv5-unresolve-link-$id",
 					'class' => "articleFeedbackv5-unresolve-link",
 					'href' => '#',
@@ -703,7 +707,7 @@ class ArticleFeedbackv5Render {
 				//     {msg:articlefeedbackv5-form-{resolve}}
 				//   </a>
 				// </li>
-				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+				$toolsFeature .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 					'id'    => "articleFeedbackv5-resolve-link-$id",
 					'class' => "articleFeedbackv5-resolve-link",
 					'href' => '#',
@@ -729,7 +733,7 @@ class ArticleFeedbackv5Render {
 			//     {msg:articlefeedbackv5-form-{hide|unhide}}
 			//   </a>
 			// </li>
-			$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+			$toolsDelete .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 				'id'    => "articleFeedbackv5-$class-link-$id",
 				'class' => "articleFeedbackv5-$class-link",
 				'href' => '#',
@@ -754,7 +758,7 @@ class ArticleFeedbackv5Render {
 			//     {msg:articlefeedbackv5-form-{oversight|unoversight}}
 			//   </a>
 			// </li>
-			$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+			$toolsDelete .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 				'id'    => "articleFeedbackv5-$class-link-$id",
 				'class' => "articleFeedbackv5-$class-link",
 				'href' => '#',
@@ -771,7 +775,7 @@ class ArticleFeedbackv5Render {
 				//     {msg:articlefeedbackv5-form-decline}
 				//   </a>
 				// </li>
-				$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+				$toolsDelete .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 					'id'    => "articleFeedbackv5-declineoversight-link-$id",
 					'class' => "articleFeedbackv5-declineoversight-link",
 					'href' => '#',
@@ -794,7 +798,7 @@ class ArticleFeedbackv5Render {
 			//     {msg:articlefeedbackv5-form-{delete|undelete}}
 			//   </a>
 			// </li>
-			$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+			$toolsDelete .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 				'id'    => "articleFeedbackv5-$class-link-$id",
 				'class' => "articleFeedbackv5-$class-link",
 				'href' => '#',
@@ -815,12 +819,23 @@ class ArticleFeedbackv5Render {
 			//     {msg:articlefeedbackv5-form-activity}
 			//   </a>
 			// </li>
-			$tools .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+			$toolsActivity.= Html::rawElement( 'li', array(), Html::element( 'a', array(
 					'id'    => "articleFeedbackv5-activity-link-$id",
 					'class' => $activityClass,
 					'href' => '#',
 				), wfMessage( "articlefeedbackv5-viewactivity" )->text() ) );
 		}
+
+		// create containers for 3 toolbox-groups
+		$tools .= Html::rawElement( 'li', array(
+			'class' => 'tools_feature'
+		), Html::rawElement( 'ul', array(), $toolsFeature));
+		$tools .= Html::rawElement( 'li', array(
+			'class' => 'tools_delete'
+		), Html::rawElement( 'ul', array(), $toolsDelete));
+		$tools .= Html::rawElement( 'li', array(
+			'class' => 'tools_activity'
+		), Html::rawElement( 'ul', array(), $toolsActivity));
 
 		// Close
 		$tools .=
