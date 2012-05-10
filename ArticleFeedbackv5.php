@@ -13,6 +13,36 @@
 /* Configuration */
 
 /**
+ * Default filter and direction settings for groups
+ *
+ * all
+ * editors (autoconfirmed) (can-feature)
+ * monitors (see hidden)
+ * oversighters (see deleted)
+ */
+$wgArticleFeedbackv5DefaultFilters = array (
+	'all' => 'visible-relevant',
+	'featured' => 'visible-relevant',
+	'hidden' => 'visible-comment',
+	'deleted' => 'visible-comment',
+);
+
+/**
+ * Default filter and direction settings for groups
+ *
+ * all
+ * editors (autoconfirmed) (can-feature)
+ * monitors (see hidden)
+ * oversighters (see deleted)
+ */
+$wgArticleFeedbackv5DefaultSorts = array (
+	'all' => array( 'relevance', 'asc'),
+	'featured' => array( 'relevance', 'asc'),
+	'hidden' => array( 'age', 'desc'),
+	'deleted' => array( 'age', 'desc'),
+);
+
+/**
  * Relevance Cutoff value
  * A signed integer controlling the point at which items are "cutoff" from the relevant filter
  * That means anything > value is in the relevant filter, anything <= is "cutoff"
@@ -268,6 +298,13 @@ $wgArticleFeedbackv5SurveyUrls = array(
 // Replace default emailcapture message
 $wgEmailCaptureAutoResponse['body-msg'] = 'articlefeedbackv5-emailcapture-response-body';
 
+/**
+ * How many feedback posts to display initially.
+ *
+ * @var int
+ */
+$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay = 50;
+
 /* Setup */
 
 $wgExtensionCredits['other'][] = array(
@@ -301,8 +338,10 @@ $wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5'] = $dir . 'api/ApiViewFeed
 $wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5'] = $dir . 'api/ApiFlagFeedbackArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewActivityArticleFeedbackv5'] = $dir . 'api/ApiViewActivityArticleFeedbackv5.php';
 $wgAutoloadClasses['ArticleFeedbackv5Hooks']           = $dir . 'ArticleFeedbackv5.hooks.php';
+$wgAutoloadClasses['ArticleFeedbackv5Fetch']           = $dir . 'ArticleFeedbackv5.fetch.php';
 $wgAutoloadClasses['ArticleFeedbackv5Flagging']        = $dir . 'ArticleFeedbackv5.flagging.php';
 $wgAutoloadClasses['ArticleFeedbackv5MailerJob']       = $dir . 'ArticleFeedbackv5MailerJob.php';
+$wgAutoloadClasses['ArticleFeedbackv5Render']          = $dir . 'ArticleFeedbackv5.render.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5']         = $dir . 'SpecialArticleFeedbackv5.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5']         = $dir . 'ArticleFeedbackv5.i18n.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5Alias']    = $dir . 'ArticleFeedbackv5.alias.php';
