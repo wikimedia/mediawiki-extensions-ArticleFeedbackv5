@@ -77,7 +77,7 @@ class ArticleFeedbackv5Fetch {
 	 *
 	 * @var array
 	 */
-	public static $knownSorts = array( 'relevance', 'helpful', 'rating', 'age' );
+	public static $knownSorts = array( 'relevance', 'age', 'helpful', 'rating' );
 
 	/**
 	 * The known filters
