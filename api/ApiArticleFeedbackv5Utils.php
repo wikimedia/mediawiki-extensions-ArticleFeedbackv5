@@ -20,6 +20,7 @@
  * @subpackage Api
  */
 class ApiArticleFeedbackv5Utils {
+
 	/**
 	 * Returns whether feedback is enabled for this page
 	 *
@@ -322,6 +323,23 @@ class ApiArticleFeedbackv5Utils {
 				$user->getName()
 			);
 		return $element;
+	}
+
+	/**
+	 * Helper function to create a new red status line based on the last status line created
+	 * action performed
+	 */
+	public static function renderStatusLine( $status, $user_id, $timestamp ) {
+		global $wgLang;
+		return Html::rawElement( 'span', array(
+			'class' => 'articleFeedbackv5-feedback-status-marker ' .
+				'articleFeedbackv5-laststatus-' . $status
+			),
+			wfMessage( 'articlefeedbackv5-status-' . $status )
+				->rawParams( ApiArticleFeedbackv5Utils::getUserLink( $user_id ) )
+				->params( $wgLang->date( $timestamp ), $wgLang->time( $timestamp ) )
+				->escaped()
+			);
 	}
 }
 
