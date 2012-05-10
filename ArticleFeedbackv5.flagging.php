@@ -149,6 +149,8 @@ class ArticleFeedbackv5Flagging {
 					$results['autohidden'] = 1;
 					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 						'autohide', $this->getUserId(), $timestamp );
+					$results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
+						'hidden', $this->getUserId(), $timestamp );
 
 					// NOTE: we've already adjusted all visiblity counts above so we only do hide specific ones
 					$filters = $this->hideCounts( $record, $filters, 'hide' );
@@ -161,6 +163,8 @@ class ArticleFeedbackv5Flagging {
 
 					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 						'deleted', $this->getUserId(), $timestamp );
+					$results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
+						'oversight', $this->getUserId(), $timestamp );
 				}
 
 			// unoversight (no autohide)
@@ -219,6 +223,8 @@ class ArticleFeedbackv5Flagging {
 
 				$log[] = array('hidden', $notes, $this->isSystemCall());
 				$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+					'hidden', $this->getUserId(), $timestamp );
+				$results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
 					'hidden', $this->getUserId(), $timestamp );
 
 			} elseif( $direction == 'decrease' && $record->af_is_hidden ) {
@@ -506,6 +512,8 @@ class ArticleFeedbackv5Flagging {
 					$results['autohidden'] = 1;
 					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 						'autohide', $this->getUserId(), $timestamp );
+					$results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
+						'hidden', $this->getUserId(), $timestamp );
 
 					$filters = $this->hideCounts( $record, $filters, 'hide' );
 					// NOTE: unlike autohide after oversight, we must do the visiblity filter
@@ -725,10 +733,11 @@ class ArticleFeedbackv5Flagging {
 				$helpful = max( 0, $helpful );
 				$unhelpful = max( 0, $unhelpful );
 
-				$results['helpful'] = wfMessage(
-					'articlefeedbackv5-form-helpful-votes',
-					$helpful, $unhelpful
-				)->escaped();
+				$results['helpful'] = wfMessage( 'articlefeedbackv5-form-helpful-votes' )
+					->rawParams( wfMessage( 'percent',
+							ApiArticleFeedbackv5Utils::percentHelpful( $helpful, $unhelpful )
+						)->escaped() )
+					->escaped();
 
 				// Update net_helpfulness after flagging as helpful/unhelpful.
 				$dbw->update(
