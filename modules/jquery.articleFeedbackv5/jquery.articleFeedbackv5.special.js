@@ -105,8 +105,12 @@
 	$.articleFeedbackv5special.maskHtmlTemplate = '\
 		<div class="articleFeedbackv5-post-screen">\
 			<div class="articleFeedbackv5-mask-text-wrapper">\
-				<span class="articleFeedbackv5-mask-text"></span>\
-				<span class="articleFeedbackv5-mask-postid"></span>\
+				<span class="articleFeedbackv5-mask-text">\
+					<span class="articleFeedbackv5-mask-info"></span>\
+					<span class="articleFeedbackv5-mask-view"><a href="#" onclick="return false;">\
+						<html:msg key="mask-view-contents"/ >\
+					</a></span>\
+				</span>\
 			</div>\
 		</div>';
 
@@ -126,6 +130,14 @@
 			<html:msg key="resolved-marker" />\
 		</span>';
 
+	/**
+	 * Loading tag template
+	 */
+	$.articleFeedbackv5special.loadingTemplate = '\
+		<div id="articleFeedbackv5-feedback-loading">\
+			<span class="articleFeedbackv5-loading-message"><html:msg key="loading-tag" /></span>\
+		</div>'
+
 	// }}}
 	// {{{ Init methods
 
@@ -141,6 +153,9 @@
 
 		// Hide arrows
 		$( '.articleFeedbackv5-sort-arrow').hide();
+
+		// Adjust the select width
+		$.articleFeedbackv5special.adjustSelectWidth();
 
 		// Grab the user's activity out of the cookie
 		$.articleFeedbackv5special.activityCookieName += $.articleFeedbackv5special.page;
@@ -177,6 +192,20 @@
 			}
 		}
 
+		// Add a loading tag to the top and hide it
+		var $loading1 = $( $.articleFeedbackv5special.loadingTemplate );
+		$loading1.attr( 'id', $loading1.attr( 'id' ) + '-top' );
+		$loading1.localize( { 'prefix': 'articlefeedbackv5-' } );
+		$loading1.hide();
+		$( '#articleFeedbackv5-show-feedback' ).before( $loading1 );
+
+		// Add a loading tag to the bottom and hide it
+		var $loading2 = $( $.articleFeedbackv5special.loadingTemplate );
+		$loading2.attr( 'id', $loading2.attr( 'id' ) + '-bottom' );
+		$loading2.localize( { 'prefix': 'articlefeedbackv5-' } );
+		$loading2.hide();
+		$( '#articleFeedbackv5-show-more' ).before( $loading2 );
+
 		// Initial load
 		$.articleFeedbackv5special.processFeedback(
 			mw.config.get( 'afCount' ),
@@ -193,10 +222,26 @@
 	 */
 	$.articleFeedbackv5special.setBinds = function() {
 		$( '#articleFeedbackv5-filter-select' ).bind( 'change', function( e ) {
-			$.articleFeedbackv5special.listControls.filter     = $(this).val();
-			$.articleFeedbackv5special.listControls.continue   = null;
+			if ( $(this).val() == '' ) {
+				return false;
+			}
+			$.articleFeedbackv5special.listControls.filter   = $(this).val();
+			$.articleFeedbackv5special.listControls.continue = null;
+			$( '.articleFeedbackv5-filter-link' ).removeClass( 'filter-active' );
 			$.articleFeedbackv5special.loadFeedback( true );
+			$.articleFeedbackv5special.adjustSelectWidth();
 			return false;
+		} );
+
+		$( '.articleFeedbackv5-filter-link' ).bind( 'click', function( e ) {
+			var	id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-filter-' );
+			$.articleFeedbackv5special.listControls.filter   = id;
+			$.articleFeedbackv5special.listControls.continue = null;
+			$.articleFeedbackv5special.loadFeedback( true );
+			$.articleFeedbackv5special.drawSortArrow();
+			$( '.articleFeedbackv5-filter-link' ).removeClass( 'filter-active' );
+			$( '#articleFeedbackv5-special-filter-' + id).addClass( 'filter-active' );
+			$.articleFeedbackv5special.adjustSelectWidth();
 		} );
 
 		$( '.articleFeedbackv5-sort-link' ).bind( 'click', function( e ) {
@@ -278,7 +323,6 @@
 			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
 		} );
-
 	}
 
 	// }}}
@@ -288,7 +332,7 @@
 	 * Bind panels to controls - that cannot be 'live' events due to jQuery.tipsy
 	 * limitations. This function should be invoked after feedback posts are loaded,
 	 * without parameters. The function should be invoked with the id parameter set
-	 * after an action is executed and its link is replaced with reverse action.
+	 * after an action is executed and its link is replaced ith reverse action.
 	 *
 	 * @param id post id to bind panels for. If none is supplied, bind entire list.
 	 */
@@ -312,6 +356,23 @@
 	// }}}
 	// {{{ Utility methods
 
+	// {{{ adjustSelectWidth
+
+	/**
+	 * Utility method: Adjusts the select width so we can see all of the text,
+	 * and the arrow ends up neatly on the left
+	 */
+	$.articleFeedbackv5special.adjustSelectWidth = function() {
+		var selText = $('#articleFeedbackv5-filter-select option:selected').text();
+		$('#articleFeedbackv5-filter-select option:selected').html( '<span>' + selText + '</span>' );
+		var selWidth = $('#articleFeedbackv5-filter-select option:selected span:first').width();
+		if ( selWidth > 0 ) {
+			$('#articleFeedbackv5-filter-select').css( 'width', selWidth + 30 + 'px' );
+		}
+		$('#articleFeedbackv5-filter-select option:selected').text( selText );
+	}
+
+	// }}}
 	// {{{ toggleTipsy
 
 	/**
@@ -501,41 +562,20 @@
 	};
 
 	// }}}
-	// {{{ setStatusLine
-
-	/**
-	 * Utility method: Sets the status line
-	 *
-	 * @param $row         element the feedback row
-	 * @param $status_line element the status line
-	 */
-	$.articleFeedbackv5special.setStatusLine = function ( $row, $status_line ) {
-		var $status = $row.find('.articleFeedbackv5-feedback-status-marker');
-		if ( 0 == $status.length && $status_line && 0 == $status_line.length ) {
-			$status_line.insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
-			$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
-		} else {
-			$status.replaceWith( $status_line ? $status_line : '' );
-		}
-	};
-
-	// }}}
 	// {{{ markFeatured
 
 	/**
 	 * Utility method: Marks a feedback row featured
 	 *
-	 * @param $row         element the feedback row
-	 * @param $status_line element [optional] the status line
+	 * @param $row element the feedback row
 	 */
-	$.articleFeedbackv5special.markFeatured = function ( $row, $status_line ) {
+	$.articleFeedbackv5special.markFeatured = function ( $row ) {
 		$row.addClass( 'articleFeedbackv5-feedback-featured' )
 			.data( 'featured', true );
 		$row.find( '.articleFeedbackv5-featured-marker' ).remove();
 		$marker = $( $.articleFeedbackv5special.featuredMarkerTemplate );
 		$marker.localize( { 'prefix': 'articlefeedbackv5-' } );
-		$( $marker ).insertAfter( $row.find( '.articleFeedbackv5-comment-details-updates' ) );
-		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		$row.find( '.articleFeedbackv5-comment-tags' ).append( $marker );
 	};
 
 	// }}}
@@ -544,14 +584,12 @@
 	/**
 	 * Utility method: Unmarks as featured a feedback row
 	 *
-	 * @param $row         element the feedback row
-	 * @param $status_line element [optional] the status line
+	 * @param $row element the feedback row
 	 */
-	$.articleFeedbackv5special.unmarkFeatured = function ( $row, $status_line ) {
+	$.articleFeedbackv5special.unmarkFeatured = function ( $row ) {
 		$row.removeClass( 'articleFeedbackv5-feedback-featured' )
 			.data( 'featured', false );
 		$row.find( '.articleFeedbackv5-featured-marker' ).remove();
-		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
 	};
 
 	// }}}
@@ -560,17 +598,15 @@
 	/**
 	 * Utility method: Marks a feedback row as resolved
 	 *
-	 * @param $row         element the feedback row
-	 * @param $status_line element [optional] the status line
+	 * @param $row element the feedback row
 	 */
-	$.articleFeedbackv5special.markResolved = function ( $row, $status_line ) {
+	$.articleFeedbackv5special.markResolved = function ( $row ) {
 		$row.addClass( 'articleFeedbackv5-feedback-resolved' )
 			.data( 'resolved', true );
 		$row.find( '.articleFeedbackv5-resolved-marker' ).remove();
 		$marker = $( $.articleFeedbackv5special.resolvedMarkerTemplate );
 		$marker.localize( { 'prefix': 'articlefeedbackv5-' } );
-		$( $marker ).insertAfter( $row.find( '.articleFeedbackv5-abuse-link' ) );
-		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
+		$row.find( '.articleFeedbackv5-comment-tags' ).append( $marker );
 	};
 
 	// }}}
@@ -579,14 +615,12 @@
 	/**
 	 * Utility method: Unmarks as resolved a feedback row
 	 *
-	 * @param $row         element the feedback row
-	 * @param $status_line element [optional] the status line
+	 * @param $row element the feedback row
 	 */
-	$.articleFeedbackv5special.unmarkResolved = function ( $row, $status_line ) {
+	$.articleFeedbackv5special.unmarkResolved = function ( $row ) {
 		$row.removeClass( 'articleFeedbackv5-feedback-resolved' )
 			.data( 'resolved', false );
 		$row.find( '.articleFeedbackv5-resolved-marker' ).remove();
-		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
 	};
 
 	// }}}
@@ -595,19 +629,12 @@
 	/**
 	 * Utility method: Marks a feedback row hidden
 	 *
-	 * @param $row         element the feedback row
-	 * @param $status_line element the status line
+	 * @param $row element the feedback row
+	 * @param line string  the mask line
 	 */
-	$.articleFeedbackv5special.markHidden = function ( $row, $status_line ) {
-		if ( $status_line ) {
-			$.articleFeedbackv5special.unmarkDeleted( $row );
-			$.articleFeedbackv5special.unmarkHidden( $row );
-		}
-		$row.addClass( 'articleFeedbackv5-feedback-hidden' )
-			.data( 'hidden', true );
-		var $marker = $row.find('articleFeedbackv5-feedback-status-marker');
-		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
-		$.articleFeedbackv5special.maskPost( $row, 'hidden');
+	$.articleFeedbackv5special.markHidden = function ( $row, line ) {
+		$row.addClass( 'articleFeedbackv5-feedback-hidden' );
+		$.articleFeedbackv5special.maskPost( $row, line );
 	};
 
 	// }}}
@@ -619,10 +646,10 @@
 	 * @param $row element the feedback row
 	 */
 	$.articleFeedbackv5special.unmarkHidden = function ( $row ) {
-		$row.removeClass( 'articleFeedbackv5-feedback-hidden' )
-			.data( 'hidden', false );
-		$row.find( '.articleFeedbackv5-feedback-status-marker' ).remove();
-		$row.find( '.articleFeedbackv5-comment-wrap' ).removeClass( 'articleFeedbackv5-h3-push');
+		$row.removeClass( 'articleFeedbackv5-feedback-hidden' );
+		if ( !$row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
+			$.articleFeedbackv5special.unmaskPost( $row );
+		}
 	};
 
 	// }}}
@@ -632,24 +659,57 @@
 	 * Utility method: Masks a comment that's been marked
 	 * hidden/oversighted/etc.
 	 *
-	 * @param $row  element the feedback row
-	 * @param type  string  the mask type
+	 * @param $row element the feedback row
+	 * @param line string  the mask line
 	 */
-	$.articleFeedbackv5special.maskPost = function( $row, $type ) {
+	$.articleFeedbackv5special.maskPost = function( $row, line ) {
 		var $screen = $row.find( '.articleFeedbackv5-post-screen' );
-		if( 0 == $screen.length ) {
+		if ( 0 == $screen.length ) {
 			$screen = $( $.articleFeedbackv5special.maskHtmlTemplate );
-			$screen.find( '.articleFeedbackv5-mask-text' )
-				.html( mw.msg( 'articlefeedbackv5-mask-text-' + $type ) + '. <a href="#" onclick="return false;">' + mw.msg( 'articlefeedbackv5-mask-view-contents' ) + '</a>' );
-			$screen.find( '.articleFeedbackv5-mask-postid' )
-				.text( mw.msg( 'articlefeedbackv5-mask-postnumber', $row.attr( 'rel' ) ) );
+			$screen.localize( { 'prefix': 'articlefeedbackv5-' } );
+			$screen.find( '.articleFeedbackv5-mask-info' ).html( line );
 			$row.prepend( $screen );
 		}
-		$screen
-			.height( $row.innerHeight() )
-			.click( function( e ) {
-				$( e.target ).closest( '.articleFeedbackv5-post-screen' ).remove();
-			} );
+		if ( !$screen.hasClass( 'articleFeedbackv5-post-screen-on' ) ) {
+			$screen.addClass( 'articleFeedbackv5-post-screen-on' );
+		}
+		if ( $screen.hasClass( 'articleFeedbackv5-post-screen-off' ) ) {
+			$screen.removeClass( 'articleFeedbackv5-post-screen-off' );
+		}
+		$screen.click( function( e ) {
+			$.articleFeedbackv5special.unmaskPost(
+				$( e.target ).closest( '.articleFeedbackv5-feedback' )
+			);
+		} );
+		$.articleFeedbackv5special.adjustMask( $row, $screen );
+	}
+
+	// }}}
+	// {{{ unmaskPost
+
+	/**
+	 * Utility method: Unmasks a comment that was previously marked
+	 * hidden/oversighted/etc.
+	 *
+	 * @param $row element the feedback row
+	 */
+	$.articleFeedbackv5special.unmaskPost = function( $row ) {
+		$row.find( '.articleFeedbackv5-post-screen' )
+			.addClass( 'articleFeedbackv5-post-screen-off' )
+			.removeClass( 'articleFeedbackv5-post-screen-on' );
+	}
+
+	// }}}
+	// {{{ adjustMask
+
+	/**
+	 * Utility method: Adjusts the mask on a comment to match its height
+	 *
+	 * @param $row element the feedback row
+	 */
+	$.articleFeedbackv5special.adjustMask = function( $row ) {
+		var $screen = $row.find( '.articleFeedbackv5-post-screen' );
+		$screen.height( $row.innerHeight() );
 		$screen.find( '.articleFeedbackv5-mask-text-wrapper')
 			.css( 'top', $screen.innerHeight() / 2 - 12 );
 	}
@@ -660,18 +720,12 @@
 	/**
 	 * Utility method: Marks a feedback row deleted
 	 *
-	 * @param $row         element the feedback row
-	 * @param $status_line element the status line
+	 * @param $row element the feedback row
+	 * @param line string  the mask line
 	 */
-	$.articleFeedbackv5special.markDeleted = function ( $row, $status_line ) {
-		if ( $status_line ) {
-			$.articleFeedbackv5special.unmarkDeleted( $row );
-			$.articleFeedbackv5special.unmarkHidden( $row );
-		}
-		$row.addClass( 'articleFeedbackv5-feedback-deleted' )
-			.data( 'deleted', true );
-		$.articleFeedbackv5special.setStatusLine( $row, $status_line );
-		$.articleFeedbackv5special.maskPost( $row, 'oversight' );
+	$.articleFeedbackv5special.markDeleted = function ( $row, line ) {
+		$row.addClass( 'articleFeedbackv5-feedback-deleted' );
+		$.articleFeedbackv5special.maskPost( $row, line );
 	};
 
 	// }}}
@@ -683,10 +737,10 @@
 	 * @param $row element the feedback row
 	 */
 	$.articleFeedbackv5special.unmarkDeleted = function ( $row ) {
-		$row.removeClass( 'articleFeedbackv5-feedback-deleted' )
-			.data( 'deleted', false );
-		$row.find( '.articleFeedbackv5-feedback-status-marker' ).remove();
-		$row.find( '.articleFeedbackv5-comment-wrap' ).removeClass( 'articleFeedbackv5-h3-push');
+		$row.removeClass( 'articleFeedbackv5-feedback-deleted' );
+		if ( !$row.hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
+			$.articleFeedbackv5special.unmaskPost( $row );
+		}
 	};
 
 	// }}}
@@ -855,6 +909,11 @@
 	 * @param resetContents bool whether to remove the existing responses
 	 */
 	$.articleFeedbackv5special.loadFeedback = function ( resetContents ) {
+		if ( resetContents ) {
+			$( '#articleFeedbackv5-feedback-loading-top' ).fadeIn();
+		} else {
+			$( '#articleFeedbackv5-feedback-loading-bottom' ).fadeIn();
+		}
 		$.ajax( {
 			'url'     : $.articleFeedbackv5special.apiUrl,
 			'type'    : 'GET',
@@ -886,9 +945,19 @@
 				} else {
 					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
+				if ( resetContents ) {
+					$( '#articleFeedbackv5-feedback-loading-top' ).fadeOut();
+				} else {
+					$( '#articleFeedbackv5-feedback-loading-bottom' ).fadeOut();
+				}
 			},
 			'error': function ( data ) {
 				$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
+				if ( resetContents ) {
+					$( '#articleFeedbackv5-feedback-loading-top' ).fadeOut();
+				} else {
+					$( '#articleFeedbackv5-feedback-loading-bottom' ).fadeOut();
+				}
 			}
 		} );
 
@@ -939,26 +1008,11 @@
 			}
 
 			if ( $( this ).hasClass( 'articleFeedbackv5-feedback-emptymask' ) ) {
-				var $screen = $( this ).find( '.articleFeedbackv5-post-screen' );
-				$screen.height( Math.max($( this ).innerHeight(), 100) );
-				$screen.find( '.articleFeedbackv5-mask-text-wrapper')
-					.css( 'top', $screen.innerHeight() / 2 - 12 );
+				$.articleFeedbackv5special.adjustMask( $( this ) );
 			} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
-				$.articleFeedbackv5special.markDeleted( $( this ) );
+				$.articleFeedbackv5special.maskPost( $( this ) );
 			} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
-				$.articleFeedbackv5special.markHidden( $( this ) );
-			}
-
-			if ( $( this ).hasClass( 'articleFeedbackv5-feedback-featured' ) ) {
-				$.articleFeedbackv5special.markFeatured( $( this ) );
-			}
-			if ( $( this ).hasClass( 'articleFeedbackv5-feedback-resolved' ) ) {
-				$.articleFeedbackv5special.markResolved( $( this ) );
-			}
-
-			var $tbx = $( this ).find( '.articleFeedbackv5-feedback-tools' );
-			if ( $( this ).height() < $tbx.height() + 20 ) {
-				$( this ).css( 'min-height', $tbx.height() + 20 + 'px' );
+				$.articleFeedbackv5special.maskPost( $( this ) );
 			}
 		} );
 
@@ -1172,8 +1226,10 @@
 					$link.removeClass( 'abusive' );
 				}
 				if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
-					$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ),
-									data['articlefeedbackv5-flag-feedback']['status-line']);
+					$.articleFeedbackv5special.markHidden(
+						$link.closest( '.articleFeedbackv5-feedback' ),
+						data['articlefeedbackv5-flag-feedback']['mask-line']
+					);
 				}
 				$link.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
 					.removeClass( 'articleFeedbackv5-abuse-link' )
@@ -1210,8 +1266,10 @@
 					$link.removeClass( 'abusive' );
 				}
 				if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
-					$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ),
-									data['articlefeedbackv5-flag-feedback']['status-line']);
+					$.articleFeedbackv5special.markHidden(
+						$link.closest( '.articleFeedbackv5-feedback' ),
+						data['articlefeedbackv5-flag-feedback']['mask-line']
+					);
 				}
 				$link.attr( 'id', 'articleFeedbackv5-abuse-link-' + id )
 					.removeClass( 'articleFeedbackv5-unabuse-link' )
@@ -1235,8 +1293,7 @@
 					.removeClass( 'articleFeedbackv5-feature-link' )
 					.addClass( 'articleFeedbackv5-unfeature-link' );
 
-				$.articleFeedbackv5special.markFeatured( $link.closest( '.articleFeedbackv5-feedback' ),
-					$( data['articlefeedbackv5-flag-feedback']['status-line'] ) );
+				$.articleFeedbackv5special.markFeatured( $link.closest( '.articleFeedbackv5-feedback' ) );
 				$.articleFeedbackv5special.setActivityFlag( id, 'feature', true );
 			}
 		},
@@ -1257,8 +1314,7 @@
 					.addClass( 'articleFeedbackv5-feature-link' );
 
 				var $row = $link.closest( '.articleFeedbackv5-feedback' );
-				$.articleFeedbackv5special.unmarkFeatured( $row,
-					$( data['articlefeedbackv5-flag-feedback']['status-line'] ) );
+				$.articleFeedbackv5special.unmarkFeatured( $row );
 				$.articleFeedbackv5special.setActivityFlag( id, 'feature', false );
 			}
 		},
@@ -1278,8 +1334,7 @@
 					.removeClass( 'articleFeedbackv5-resolve-link' )
 					.addClass( 'articleFeedbackv5-unresolve-link' );
 
-				$.articleFeedbackv5special.markResolved( $link.closest( '.articleFeedbackv5-feedback' ),
-					$( data['articlefeedbackv5-flag-feedback']['status-line'] ) );
+				$.articleFeedbackv5special.markResolved( $link.closest( '.articleFeedbackv5-feedback' ) );
 				$.articleFeedbackv5special.setActivityFlag( id, 'resolve', true );
 			}
 		},
@@ -1300,8 +1355,7 @@
 					.addClass( 'articleFeedbackv5-resolve-link' );
 
 				var $row = $link.closest( '.articleFeedbackv5-feedback' );
-				$.articleFeedbackv5special.unmarkResolved( $row,
-					$( data['articlefeedbackv5-flag-feedback']['status-line'] ) );
+				$.articleFeedbackv5special.unmarkResolved( $row );
 				$.articleFeedbackv5special.setActivityFlag( id, 'resolve', false );
 			}
 		},
@@ -1321,8 +1375,10 @@
 					.removeClass( 'articleFeedbackv5-hide-link' )
 					.addClass( 'articleFeedbackv5-show-link' );
 
-				$.articleFeedbackv5special.markHidden( $link.closest( '.articleFeedbackv5-feedback' ),
-									data['articlefeedbackv5-flag-feedback']['status-line'] );
+				$.articleFeedbackv5special.markHidden(
+					$link.closest( '.articleFeedbackv5-feedback' ),
+					data['articlefeedbackv5-flag-feedback']['mask-line']
+				);
 				$.articleFeedbackv5special.setActivityFlag( id, 'hide', true );
 			}
 		},
@@ -1344,8 +1400,6 @@
 
 				var $row = $link.closest( '.articleFeedbackv5-feedback' );
 				$.articleFeedbackv5special.unmarkHidden( $row );
-				$( data['articlefeedbackv5-flag-feedback']['status-line'] ).insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
-				$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
 				$.articleFeedbackv5special.setActivityFlag( id, 'hide', false );
 			}
 		},
@@ -1373,15 +1427,11 @@
 						.removeClass( 'articleFeedbackv5-hide-link' )
 						.addClass( 'articleFeedbackv5-show-link' );
 
-					$.articleFeedbackv5special.markHidden( $new_link.closest( '.articleFeedbackv5-feedback' ),
-									data['articlefeedbackv5-flag-feedback']['status-line']);
+					$.articleFeedbackv5special.markHidden(
+						$link.closest( '.articleFeedbackv5-feedback' ),
+						data['articlefeedbackv5-flag-feedback']['mask-line']
+					);
 					$.articleFeedbackv5special.setActivityFlag( id, 'hide', true );
-				} else {
-					var $row = $link.closest( '.articleFeedbackv5-feedback' );
-					$row.find( '.articleFeedbackv5-feedback-status-marker' ).remove();
-
-					$( data['articlefeedbackv5-flag-feedback']['status-line'] ).insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
-					$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
 				}
 			}
 		},
@@ -1394,19 +1444,12 @@
 			'apiFlagType': 'oversight',
 			'apiFlagDir': -1,
 			'onSuccess': function( id, data ) {
-				var $row = $( '#articleFeedbackv5-unrequestoversight-link-' + id ).closest( '.articleFeedbackv5-feedback' );
-
 				$( '#articleFeedbackv5-unrequestoversight-link-' + id )
 					.attr( 'action', 'requestoversight' )
 					.attr( 'id', 'articleFeedbackv5-requestoversight-link-' + id )
 					.text( mw.msg( 'articlefeedbackv5-form-oversight' ) )
 					.removeClass( 'articleFeedbackv5-unrequestoversight-link' )
 					.addClass( 'articleFeedbackv5-requestoversight-link');
-
-				$row.find( '.articleFeedbackv5-feedback-status-marker' ).remove();
-
-				$( data['articlefeedbackv5-flag-feedback']['status-line'] ).insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
-				$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
 			}
 		},
 
@@ -1436,8 +1479,10 @@
 					.removeClass( 'articleFeedbackv5-oversight-link' )
 					.addClass( 'articleFeedbackv5-unoversight-link' );
 
-				$.articleFeedbackv5special.markDeleted( $link.closest( '.articleFeedbackv5-feedback' ) ,
-									data['articlefeedbackv5-flag-feedback']['status-line']);
+				$.articleFeedbackv5special.markDeleted(
+					$link.closest( '.articleFeedbackv5-feedback' ),
+					data['articlefeedbackv5-flag-feedback']['mask-line']
+				);
 				$.articleFeedbackv5special.setActivityFlag( id, 'delete', true );
 			}
 		},
@@ -1462,8 +1507,6 @@
 
 				var $row = $link.closest( '.articleFeedbackv5-feedback' );
 				$.articleFeedbackv5special.unmarkDeleted( $row );
-				$( data['articlefeedbackv5-flag-feedback']['status-line'] ).insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
-				$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
 				$.articleFeedbackv5special.setActivityFlag( id, 'delete', false );
 			}
 		},
@@ -1478,10 +1521,6 @@
 			'onSuccess': function( id, data ) {
 				var $row = $( '#articleFeedbackv5-declineoversight-link-' + id )
 					.closest( '.articleFeedbackv5-feedback' );
-				$row.find( '.articleFeedbackv5-feedback-status-marker' ).remove();
-
-				$( data['articlefeedbackv5-flag-feedback']['status-line'] ).insertBefore( $row.find( '.articleFeedbackv5-comment-wrap' ) );
-				$row.find( '.articleFeedbackv5-comment-wrap' ).addClass( 'articleFeedbackv5-h3-push');
 			}
 		},
 
