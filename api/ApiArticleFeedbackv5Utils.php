@@ -358,5 +358,101 @@ class ApiArticleFeedbackv5Utils {
 				->escaped()
 			);
 	}
+
+	/**
+	 * Returns the percentage helpful, given a helpful count and an unhelpful count
+	 *
+	 * @param  $helpful   int the number of helpful votes
+	 * @param  $unhelpful int the number of unhelpful votes
+	 * @return int        the percentage
+	 */
+	public static function percentHelpful( $helpful, $unhelpful ) {
+		if ( $helpful > 0 || $unhelpful > 0 ) {
+			return intval( ( $helpful / ( $helpful + $unhelpful ) ) * 100 );
+		}
+		return 0;
+	}
+
+	/**
+	 * Helper function to create an "X ago" timestamp from a date
+	 *
+	 * @param  $timestamp string the timestamp, from the db
+	 * @return string     the x-ago timestamp string
+	 */
+	public static function renderTimeAgo( $timestamp ) {
+		global $wgLang;
+
+		$blocks = array(
+			array( 'total' => 60 * 60 * 24 * 365, 'name' => 'years' ),
+			array( 'total' => 60 * 60 * 24 * 30, 'name' => 'months' ),
+			array( 'total' => 60 * 60 * 24 * 7, 'name' => 'weeks' ),
+			array( 'total' => 60 * 60 * 24, 'name' => 'days' ),
+			array( 'total' => 60 * 60, 'name' => 'hours' ),
+			array( 'total' => 60, 'name' => 'minutes' ) );
+
+		$since = wfTimestamp( TS_UNIX ) - wfTimestamp( TS_UNIX, $timestamp );
+		$displayTime = 0;
+		$displayBlock = '';
+
+		// get the largest time block, 1 minute 35 seconds -> 2 minutes
+		for ( $i = 0, $count = count( $blocks ); $i < $count; $i++ ) {
+			$seconds = $blocks[$i]['total'];
+			$displayTime = floor( $since / $seconds );
+
+			if ( $displayTime > 0 ) {
+				$displayBlock = $blocks[$i]['name'];
+				// round up if the remaining time is greater than
+				// half of the time unit
+				if ( ( $since % $seconds ) >= ( $seconds / 2 ) ) {
+					$displayTime++;
+
+					// advance to upper unit if possible, eg, 24 hours to 1 day
+					if ( isset( $blocks[$i -1] ) && $displayTime * $seconds ==  $blocks[$i -1]['total'] ) {
+						$displayTime = 1;
+						$displayBlock = $blocks[$i -1]['name'];
+					}
+				}
+				break;
+			}
+		}
+
+		$date = '';
+		if ( $displayTime > 0 ) {
+			if ( in_array( $displayBlock, array( 'years', 'months', 'weeks' ) ) ) {
+				$messageKey = 'articlefeedbackv5-timestamp-' . $displayBlock;
+			} else {
+				$messageKey = $displayBlock;
+			}
+			$date = wfMessage( $messageKey )->params( $wgLang->formatNum( $displayTime ) )->escaped();
+		} else {
+			$date = wfMessage( 'articlefeedbackv5-timestamp-seconds' )->escaped();
+		}
+
+		return $date;
+	}
+
+	/**
+	 * Helper function to create a mask line
+	 *
+	 * @param  $type      string the type (hidden or oversight)
+	 * @param  $post_id   int    the feedback post id
+	 * @param  $user_id   int    the user id
+	 * @param  $timestamp string the timestamp, from the db
+	 * @return string     the mask line
+	 */
+	public static function renderMaskLine( $type, $post_id, $user_id, $timestamp ) {
+		global $wgLang;
+		if ( (int) $user_id !== 0 ) { // logged-in users
+			$username = User::newFromId( $user_id )->getName();
+		} else { // magic user
+			$username = wfMessage( 'articlefeedbackv5-default-user' )->text();
+		}
+		return wfMessage( 'articlefeedbackv5-mask-text-' . $type )
+			->numParams( $post_id )
+			->params( $username )
+			->rawParams( ApiArticleFeedbackv5Utils::renderTimeAgo( $timestamp ) )
+			->escaped();
+	}
+
 }
 
