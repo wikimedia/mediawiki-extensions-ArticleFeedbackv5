@@ -193,6 +193,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-comment-more',
 				'articlefeedbackv5-comment-less',
 				'articlefeedbackv5-error-loading-feedback',
+				'articlefeedbackv5-loading-tag',
 
 				'articlefeedbackv5-noteflyover-hide-caption',
 				'articlefeedbackv5-noteflyover-hide-label',
