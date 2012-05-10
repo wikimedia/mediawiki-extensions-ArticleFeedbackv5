@@ -71,8 +71,8 @@ class ArticleFeedbackv5Render {
 		// Empty gray mask, for permalinks where the feedback is deleted or
 		// hidden, and the user doesn't have permission to see them
 		if  ( $this->isPermalink && (
-				( $record[0]->af_is_deleted && $this->hasPermission( 'see_deleted' ) )
-				|| ( $record[0]->af_is_hidden && $this->hasPermission( 'see_hidden') )
+				( $record[0]->af_is_deleted && !$this->hasPermission( 'see_deleted' ) )
+				|| ( $record[0]->af_is_hidden && !$this->hasPermission( 'see_hidden') )
 			) ) {
 			return $this->emptyGrayMask( $record );
 		}
