@@ -1,70 +1,198 @@
-.articleFeedback-table {
-	border: solid 1px #cccccc;
-	margin-bottom: 2em;
+/*----- SPECIAL PAGE ------*/
+
+/* Utility classes */
+.float-clear {
+	clear: both;
+	height: 0;
+}
+.float-clear:after {
+	clear: both;
 }
 
-.articleFeedback-table caption {
-	text-align: left;
-	font-size: 1.6em;
-	margin-bottom: 0.5em;
+/** Adjustments **/
+#bodyContent h2 {
+	clear: both;
 }
 
-.articleFeedback-table th {
-	padding-left: 0.75em;
-	padding-top: 0.25em;
-	padding-bottom: 0.25em;
-	text-align: left;
+/** Notices **/
+.articlefeedbackv5-beta-notice {
+	text-transform: uppercase;
+	color: #800;
+	font-size: 1.4em;
+	font-weight: normal;
+	display: block;
+	position: relative;
+	top: 1.3em;
+	left: 3em;
+}
+.articlefeedbackv5-special-disclaimer {
+	font-size: 1.125em;
+	color: red;
+	font-weight: bold;
 }
 
-.articleFeedback-table td {
-	padding: 0.25em 0.75em;
-	border-top: solid 1px #eeeeee;
+/** Header section **/
+#articleFeedbackv5-header-wrap {
+	margin: 0 0 10px;
+}
+#articleFeedbackv5-header-wrap:after {
+	clear: both;
+}
+#articleFeedbackv5-header-links {
+	float: right;
+}
+#articleFeedbackv5-showing-count-wrap {
+	float: left;
+	font-size: 1.4em;
+	margin: 15px 50px 5px 0;
+	padding-top: 6px;
+}
+#articleFeedbackv5-feedback-count-total {
+	font-weight: bold;
+}
+#articleFeedbackv5-percent-found-wrap {
+	font-size: 1.4em;
+	margin: 15px 0 5px 0;
+	float: left;
+}
+#articleFeedbackv5-percent-found-wrap .stat-marker {
+	font-weight: bold;
+	line-height: 32px;
+	padding: 11px 0 8px 40px;
+}
+#articleFeedbackv5-percent-found-wrap .positive {
+	/* @embed */
+	background-image: url(images/type-happy-hovered.png);
+	background-repeat: no-repeat;
+	background-size: 28px;
+	background-position: left;
+}
+#articleFeedbackv5-percent-found-wrap .negative {
+	/* @embed */
+	background-image: url(images/type-sad-hovered.png);
+	background-repeat: no-repeat;
+	background-size: 28px;
+	background-position: left;
+}
+.aftv5-feedbackpage .aftv5-feedbackpage-comment-display-header {
+	height: 40px;
+	/* @embed */
+	background: url(images/bg-feedbackpage-header.png) repeat-x;
+	padding: 0 10px;
+}
+#articleFeedbackv5-special-add-feedback {
+	/*color:white;
+	display: block;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	border-radius: 3px;
+	width: auto;
+	height: 35px;
+	line-height: 35px;
+	padding: 0 9px;
+	float: right;
+	background: url(images/bg-submit.png) repeat-x;*/
+	display: none;
+}
+#articleFeedbackv5-special-add-feedback:after {
+	clear:both;
 }
 
-.articleFeedback-table td.articleFeedback-table-column-page,
-.articleFeedback-table td.articleFeedback-table-column-category {
-	text-align: left;
+/** Sorting / Filtering **/
+#articleFeedbackv5-sort-filter-controls {
+	clear: both;
+	padding: 0 10px;
+	line-height: 39px;
+	border-bottom: 2px solid #D5D5D2;
+	overflow: auto;
+}
+#articleFeedbackv5-sort-filter-controls:after {
+	clear: both;
+}
+#articleFeedbackv5-sort {
+	float: right;
+}
+#articleFeedbackv5-sort .articleFeedbackv5-sort-label {
+	display: inline-block;
+	margin: 0 5px 0 0;
+	font-weight: bold;
+}
+#articleFeedbackv5-sort .articleFeedbackv5-sort-arrow {
+	font-weight: bold;
+	color: #0645AD;
+}
+.articleFeedbackv5-sort-arrow {
+	display: inline-block;
+	width: 11px;
+	height: 7px;
+	margin: 0 0 0 5px;
+}
+.sort-active {
+	font-weight: bold;
+}
+.articleFeedbackv5-sort-arrow.sort-asc{
+	/* @embed */
+	background-image: url(images/sort-ascending.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 11px 7px;
+}
+.articleFeedbackv5-sort-arrow.sort-desc{
+	/* @embed */
+	background-image: url(images/sort-descending.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 11px 7px;
+}
+#articleFeedbackv5-filter {
+	float: left;
+}
+.articleFeedbackv5-filter-label {
+	margin-right: 10px;
+	font-weight: bold;
+}
+#articleFeedbackv5-filter-select {
+	width: 130px;
+	margin-right: 25px;
+	position: relative;
+	top: 9px;
+	left: 0;
+	float: none;
+	display: inline-block;
+	font-size: 0.9em;
+}
+.filter-active, .filter-active:visited {
+	font-weight: bold;
+	color: #000;
 }
 
-.articleFeedback-table td.articleFeedback-table-column-rating,
-.articleFeedback-table td.articleFeedback-table-column-average {
-	text-align: right;
+/** Show Feedback Results */
+#articleFeedbackv5-show-feedback {
+	min-height: 250px;
+	width: 100%;
+	float: none;
+	margin: 0;
+	padding: 0;
 }
 
-/**
- * Per ArticleFeedback meeting of 2011-05-06,
- * disable colors for now. We may re-enable them
- * later if found useful.
- */
-/*
-.articleFeedback-table-column-score-0,
-.articleFeedback-table-column-score-1 {
-	background-color: #ffcccc;
+/** Show More **/
+a#articleFeedbackv5-show-more {
+	display: block;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: #d2e5f7;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+
+/** Permalink styles **/
+.articleFeedbackv5-feedback-permalink-goback {
+	font-size: 1.2em;
+	margin-top: 10px;
+	clear: both;
 }
 
 
-.articleFeedback-table-column-score-2,
-.articleFeedback-table-column-bad {
-	background-color: #ffcc99;
-}
-
-.articleFeedback-table-column-score-3 {
-	background-color: #ffff99;
-}
-
-.articleFeedback-table-column-score-4,
-.articleFeedback-table-column-good {
-	background-color: #99ff99;
-}
-.articleFeedback-table-column-score-5 {
-	background-color: #55ff55;
-}
-*/
-
-.articleFeedback-table-column-bad {
-	background-color: #ffcc99;
-}
-
-.articleFeedback-table-column-good {
-	background-color: #99ff99;
-}
