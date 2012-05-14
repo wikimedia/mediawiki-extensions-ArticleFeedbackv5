@@ -323,9 +323,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			// $wgAbuseFilterCustomActionsHandlers['aftv5requestoversight'] = $flagCallback;
 
 			// Check the filters (mimics AbuseFilter::filterAction)
+			global $wgArticleFeedbackv5AbuseFilterGroup;
 			$vars->setVar( 'context', 'filter' );
 			$vars->setVar( 'timestamp', time() );
-			$results = AbuseFilter::checkAllFilters( $vars );
+			$results = AbuseFilter::checkAllFilters( $vars, $wgArticleFeedbackv5AbuseFilterGroup );
 			if ( count( array_filter( $results ) ) == 0 ) {
 				return false;
 			}
