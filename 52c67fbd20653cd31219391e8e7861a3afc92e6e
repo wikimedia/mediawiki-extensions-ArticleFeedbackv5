@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALX//9ZU\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-15T21:41:12Z",
+      "side": 1,
+      "message": "Ideally you\u0027d use Title::makeTitleSafe( NS_SPECIAL, \u0027ArticleFeedbackv5/\u0027 ); here, or SpecialPage::getTitleFor( \u0027ArticleFeedbackv5\u0027 ) (the latter gets you the translated special page name)",
+      "revId": "52c67fbd20653cd31219391e8e7861a3afc92e6e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALX//9ZM\u003d",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-15T21:41:12Z",
+      "side": 1,
+      "message": "I think you meant \"corresponding\"",
+      "revId": "52c67fbd20653cd31219391e8e7861a3afc92e6e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALX///Go\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-15T21:41:12Z",
+      "side": 1,
+      "message": "Please build this using jQuery, injecting things into HTML using string concatenation scares me. When using jQuery, I can read the code and instantly tell that it\u0027s secure, rather than having to go read back and think about whether XSS might be possible.\n\nSee also https://www.mediawiki.org/wiki/Security_for_developers#Demonstrable_security",
+      "revId": "52c67fbd20653cd31219391e8e7861a3afc92e6e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
