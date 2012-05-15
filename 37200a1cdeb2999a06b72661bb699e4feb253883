@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALX//9bA\u003d",
+        "filename": "ArticleFeedbackv5.logFormatter.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-15T21:22:47Z",
+      "side": 1,
+      "message": "This function documentation is no longer accurate, getActionMessage() doesn\u0027t take any parameters",
+      "revId": "37200a1cdeb2999a06b72661bb699e4feb253883",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALX//9a0\u003d",
+        "filename": "ArticleFeedbackv5.logFormatter.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-15T21:22:47Z",
+      "side": 1,
+      "message": "Why is there commented-out code here? Can\u0027t this just be removed?",
+      "revId": "37200a1cdeb2999a06b72661bb699e4feb253883",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALX//9ao\u003d",
+        "filename": "ArticleFeedbackv5.logFormatter.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-15T21:22:47Z",
+      "side": 1,
+      "message": "makeLinkObj() is deprecated, you should use Linker::link() instead",
+      "revId": "37200a1cdeb2999a06b72661bb699e4feb253883",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
