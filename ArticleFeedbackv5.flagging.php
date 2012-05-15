@@ -654,7 +654,7 @@ class ArticleFeedbackv5Flagging {
 				}
 			}
 
-			$update[] = 'af_relevance_score = (' . implode (' + ', $math) . ')';
+			$update[] = 'af_relevance_score = af_relevance_score + (' . implode (' + ', $math) . ')';
 			$update[] = 'af_relevance_sort = - af_relevance_score';
 		}
 
