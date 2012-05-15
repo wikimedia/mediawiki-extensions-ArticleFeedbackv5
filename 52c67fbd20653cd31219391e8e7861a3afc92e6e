@@ -36,6 +36,40 @@
     },
     {
       "key": {
+        "uuid": "AAAALX//9ZE\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 34
+      },
+      "writtenOn": "2012-05-15T21:43:55Z",
+      "side": 1,
+      "message": "No global functions please, of any kind. Especially no implied global (use window.globalvariable \u003d value;)\n\nCreate something like mw.articleFeedback.debug instead, or use mw.log (mw.log is probably better in this case).",
+      "revId": "52c67fbd20653cd31219391e8e7861a3afc92e6e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALX//9ZA\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 34
+      },
+      "writtenOn": "2012-05-15T21:43:55Z",
+      "side": 1,
+      "message": "[gerrit:wse](Whitespace error: Trailing space at end of line)",
+      "revId": "52c67fbd20653cd31219391e8e7861a3afc92e6e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALX///Go\u003d",
         "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
         "patchSetId": 4
