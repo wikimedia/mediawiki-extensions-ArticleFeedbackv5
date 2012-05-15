@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALX//9dA\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-15T18:45:15Z",
+      "side": 1,
+      "message": "The \"proper\" way to do this is Title::makeTitleSafe( NS_SPECIAL, \"ArticleFeedbackv5/$page\" ); , but this works.",
+      "revId": "bf96aeb41a257f4fa28fc58cbcf076c47a3d7dcb",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
