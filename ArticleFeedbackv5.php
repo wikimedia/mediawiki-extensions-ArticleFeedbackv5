@@ -266,6 +266,16 @@ $wgArticleFeedbackv5SelectedCTA = 1;
 $wgArticleFeedbackv5AbuseFiltering = false;
 
 /**
+ * This is the custom group name for AbuseFilter
+ *
+ * It ensures that AbuseFilter only pulls the filters related to AFT.  If you
+ * would like AbuseFilter to pull all of the filters, enter 'default' here.
+ *
+ * @var string
+ */
+$wgArticleFeedbackv5AbuseFilterGroup = 'feedback';
+
+/**
  * The full URL for a discussion page about the Article Feedback Dashboard
  *
  * Since the dashboard is powered by a SpecialPage, we cannot rel on the built-in
@@ -407,6 +417,10 @@ foreach ( array( 'hidden', 'unhidden', 'flag', 'unflag', 'autoflag', 'autohide',
 	$wgLogActionsHandlers["articlefeedbackv5/$t"] = 'ArticleFeedbackv5Hooks::formatActivityLogEntry';
 }
 
+// Add a custom filter group for AbuseFilter
+if ( $wgArticleFeedbackv5AbuseFilterGroup != 'default' ) {
+	$wgAbuseFilterValidGroups[] = $wgArticleFeedbackv5AbuseFilterGroup;
+}
 
 // Add custom action handlers for AbuseFilter
 $wgAbuseFilterAvailableActions[] = 'aftv5flagabuse';
