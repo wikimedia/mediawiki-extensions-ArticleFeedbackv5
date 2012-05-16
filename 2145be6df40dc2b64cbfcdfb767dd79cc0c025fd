@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALX//9M0\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-16T14:54:47Z",
+      "side": 1,
+      "message": "Because they\u0027re in the comps, that\u0027s why.  I figured if they were in the string, at least translators would have some way of making the idea of \"go back to the feedback page\" make sense -- rather than, say, putting it outside of the message and making it constant across languages.\n\nIf you have a better idea for making this work and still match the comps, I\u0027d love to hear it.  If you have an idea for changing the comps, I\u0027d be happy to pass it on.",
+      "parentUuid": "AAAALX//9R0\u003d",
+      "revId": "2145be6df40dc2b64cbfcdfb767dd79cc0c025fd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALX//9TI\u003d",
         "filename": "ArticleFeedbackv5.i18n.php",
         "patchSetId": 7
@@ -98,6 +116,24 @@
       "writtenOn": "2012-05-16T03:13:50Z",
       "side": 1,
       "message": "This is no different than $ops[$this-\u003emsg(\u0027...\u0027)] \u003d \u0027\u0027; because the + operator lets the left-hand side win, so for clarity you should either write it that way (if that\u0027s what you meant) or reverse the order (if you meant for an existing key in $opts to win).",
+      "revId": "2145be6df40dc2b64cbfcdfb767dd79cc0c025fd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALX//9NA\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-16T14:54:47Z",
+      "side": 1,
+      "message": "It *is* different -- this puts the default option at the beginning of the opts array rather than the end.  Like array_unshift(), but for associative arrays. ;)\n\nI\u0027ll add a comment to explain.",
+      "parentUuid": "AAAALX//9S8\u003d",
       "revId": "2145be6df40dc2b64cbfcdfb767dd79cc0c025fd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
