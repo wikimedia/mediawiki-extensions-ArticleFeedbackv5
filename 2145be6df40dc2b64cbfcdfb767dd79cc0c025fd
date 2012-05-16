@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALX//9Mg\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-16T15:02:20Z",
+      "side": 1,
+      "message": "What if it\u0027s a link using the user\u0027s name as the text?  I thought {{GENDER:}} could be used for that, too, since it was in the status line, but I notice the documentation for the status line messages says user name.",
+      "parentUuid": "AAAALX//9TI\u003d",
+      "revId": "2145be6df40dc2b64cbfcdfb767dd79cc0c025fd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALX//9TE\u003d",
         "filename": "ArticleFeedbackv5.render.php",
         "patchSetId": 7
