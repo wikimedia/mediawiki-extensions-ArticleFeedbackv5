@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALX//9T0\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-16T02:05:37Z",
+      "side": 1,
+      "message": "This message is undocumented, should at least document what $1, $2 and $3 are",
+      "revId": "0b063a35e6aba1eb2e0b7dbf21b33834b7254a31",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALX//9Tw\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-16T02:05:37Z",
+      "side": 1,
+      "message": "Good use of the optimization operator :D\n\n(Relevant meme: https://wikitech.wikimedia.org/index.php?title\u003dFile%3AMituzas_-_Wikipedia_A_very_cheap_story_-_2008.pdf\u0026page\u003d15 , http://dom.as/2007/11/15/optimization-operator/ )",
+      "revId": "0b063a35e6aba1eb2e0b7dbf21b33834b7254a31",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALX//9Tg\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-16T02:05:37Z",
+      "side": 1,
+      "message": "Are you sure this is what you mean, don\u0027t you mean for $status_line.length to NOT equal zero? Otherwise $status_line.insertBefore() wouldn\u0027t do anything",
+      "revId": "0b063a35e6aba1eb2e0b7dbf21b33834b7254a31",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
