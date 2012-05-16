@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALX//9Bc\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 54
+      },
+      "writtenOn": "2012-05-16T23:04:56Z",
+      "side": 1,
+      "message": "Technically, the Unicode bidi algorithm will correctly and magically flip these \"arrows\" if the rest of the environment is properly defined for RTL. There is, however, no reason at all to include them in the message. They are the same for all languages, so they can be added in the code.\n\nAlso, I just submitted Language::getBackwardArrow ( https://gerrit.wikimedia.org/r/#/c/7837/ ). If it\u0027s accepted, it can be used here.\n\nPutting these arrows inside the message doesn\u0027t help the translators. That\u0027s what qqq documentation is for.",
+      "parentUuid": "AAAALX//9M0\u003d",
+      "revId": "2145be6df40dc2b64cbfcdfb767dd79cc0c025fd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALX//9TI\u003d",
         "filename": "ArticleFeedbackv5.i18n.php",
         "patchSetId": 7
