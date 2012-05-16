@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAALX//9R4\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-05-16T06:09:35Z",
+      "side": 1,
+      "message": "This still needs plural, because people/users/readers is implicit.",
+      "revId": "2145be6df40dc2b64cbfcdfb767dd79cc0c025fd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALX//9R0\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-05-16T06:09:35Z",
+      "side": 1,
+      "message": "Why these weird \u003c\u003c? I also think these cause RTL issues. Asking Amir to assess.",
+      "revId": "2145be6df40dc2b64cbfcdfb767dd79cc0c025fd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALX//9TI\u003d",
         "filename": "ArticleFeedbackv5.i18n.php",
         "patchSetId": 7
