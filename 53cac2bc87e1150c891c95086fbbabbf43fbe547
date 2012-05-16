@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALX//9VA\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-16T00:39:22Z",
+      "side": 1,
+      "message": "Is this commented-out code still needed?",
+      "revId": "53cac2bc87e1150c891c95086fbbabbf43fbe547",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
