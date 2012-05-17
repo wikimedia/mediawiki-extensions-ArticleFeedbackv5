@@ -86,11 +86,13 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-filter-label-before' => 'Showing:',
 	'articlefeedbackv5-special-filter-label-after' => '',
 	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|1 feedback post|$1 feedback posts}} on this article',
+	'articlefeedbackv5-special-central-showing' => '{{PLURAL:$1|1 feedback post|$1 feedback posts}}',
 	'articleFeedbackv5-comment-ago'  => '$1 ago',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edit|$1 edits}} since post',
 	'articlefeedbackv5-revision-link' => '(see old article)',
 	'articlefeedbackv5-special-more' => 'Show more posts',
 	'articlefeedbackv5-special-pagetitle' => 'Feedback: $1',
+	'articlefeedbackv5-special-central-pagetitle' => 'Central Feedback Log',
 	'articlefeedbackv5-form-optionid' => 'Option $1',
 	'articlefeedbackv5-status-hidden' => 'This post was hidden by $1 on $2 at $3',
 	'articlefeedbackv5-status-unhidden' => 'This post was unhidden by $1 on $2 at $3',
@@ -134,6 +136,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} rated this page:',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} was not shown a feedback form.',
 	'articlefeedbackv5-form-invalid' => 'Invalid feedback form ID.',
+	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} posted feedback to $3',
 	'articlefeedbackv5-abuse-saved' => 'Flagged as abuse ($1)',
 	'articlefeedbackv5-abuse-saved-masked' => 'Flagged as abuse',
 	'articlefeedbackv5-oversight-saved' => 'Marked for oversight',
@@ -589,13 +592,15 @@ The link to the edit tutorial',
 	'articlefeedbackv5-special-sort-relevance' => 'Appears at the top of the feedbacks list, suggesting to sort the posts according to this criterion. Sort by what is better, more relevant feedback for the user.  Appears near the message {{msg-mw|Articlefeedbackv5-special-sort-label-before}}.',
 	'articlefeedbackv5-special-sort-label-before' => 'Place to put a label before the sort options',
 	'articlefeedbackv5-special-filter-label-before' => 'Place to put a label before the filter select box',
-	'articlefeedbackv5-special-showing' => 'Text to show how many feedback psots have been posted to this article. $1 is the number of posts (needs plural support)',
+	'articlefeedbackv5-special-showing' => 'Text to show how many feedback posts have been posted to this article. $1 is the number of posts (needs plural support)',
+	'articlefeedbackv5-special-central-showing' => 'Text to show how many feedback posts have been posted across the wiki. $1 is the number of posts (needs plural support)',
 	'articleFeedbackv5-comment-ago' => 'For posts less than 48 hours old, display a relative timestamp ("2 hours 19 minutes ago", eg). Formatting timestamp is in $1',
 	'articlefeedbackv5-updates-since' => 'Number of edits made to this article since this feedback was posted. $1 is the number of edits. Requires plural support',
 	'articlefeedbackv5-revision-link' => 'Link to view the exact revision this user commented on (may be the current live page, or a historical revision).',
 	'articlefeedbackv5-special-more' => '{{Identical|More}}',
 	'articlefeedbackv5-special-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]]. Parameters:
 * $1 is the title of the article for which we show the feedback',
+	'articlefeedbackv5-special-central-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]] when viewing the central log (all pages)',
 	'articlefeedbackv5-status-hidden' => 'The marker that appears on a comment if it has been hidden by a monitor.
 * $1 is the name of the monitor who performed the hide
 * $2 is the date when the hide occurred
@@ -663,6 +668,10 @@ The link to the edit tutorial',
 	'articlefeedbackv5-form2-header-suggestion' => 'Parameters:
 * $1 is a user name.',
 	'articlefeedbackv5-form4-header' => 'Messages in the feedback dashboard to indicate that a user was only presented with a Call To Action (CTA) form. This is a feedback form that asks a user to do something, rather than provide feedback.',
+	'articlefeedbackv5-central-header-left-comment' => 'Comment header indicating that the user posted feedback (central feedback page only) Parameters:
+* $1 is a username.
+* $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text
+* $3 is a link to the article to which the feedback was posted',
 	'articlefeedbackv5-oversight-saved' => 'Oversight request saved successfully (oversight request asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-unoversight-saved' => 'Request for oversight removed successfully oversight request asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-error-loading-feedback' => 'Message displayed when there was an error loading feedback - result is a largely-blank page.',
