@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALX//8+I\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-17T03:04:21Z",
+      "side": 1,
+      "message": "Previous patchsets had $row.find( \u0027.articleFeedbackv5-comment-tags\u0027 ).append( $marker ); here. It seems like you\u0027d need to add that back in or this\u0027ll do nothing, it\u0027ll just create the marker, localize it, then discard it.",
+      "revId": "81016b480444f9e43c70719283d509076f9cfdac",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
