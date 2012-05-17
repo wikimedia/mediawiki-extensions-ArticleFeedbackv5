@@ -208,12 +208,12 @@ $wgArticleFeedbackv5LinkBuckets = array(
 	//  G: Button below logo
 	//  H: Link on each section bar
 	'buckets' => array(
-		'X' => 0,
+		'X' => 100,
 		'A' => 0,
 		'B' => 0,
 		'C' => 0,
 		'D' => 0,
-		'E' => 100,
+		'E' => 0,
 		'F' => 0,
 		'G' => 0,
 		'H' => 0,
@@ -221,7 +221,7 @@ $wgArticleFeedbackv5LinkBuckets = array(
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
 	// this when you want to start a new "experiment".
-	'version' => 4,
+	'version' => 5,
 	// Let users be tracked for a month, and then rebucket them, allowing some
 	// churn.
 	'expires' => 30,
