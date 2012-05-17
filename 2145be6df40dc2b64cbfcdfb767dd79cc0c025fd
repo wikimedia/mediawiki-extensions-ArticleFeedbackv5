@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALX//9AA\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-17T00:09:01Z",
+      "side": 1,
+      "message": "{{GENDER:}} needs a straight-up user name, which is why you frequently see stuff like {{GENDER:$1|$2}} where $1 is the plain user name and $2 is a link to the user page.",
+      "parentUuid": "AAAALX//9Mg\u003d",
+      "revId": "2145be6df40dc2b64cbfcdfb767dd79cc0c025fd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALX//9TE\u003d",
         "filename": "ArticleFeedbackv5.render.php",
         "patchSetId": 7
@@ -170,6 +188,24 @@
       "side": 1,
       "message": "It *is* different -- this puts the default option at the beginning of the opts array rather than the end.  Like array_unshift(), but for associative arrays. ;)\n\nI\u0027ll add a comment to explain.",
       "parentUuid": "AAAALX//9S8\u003d",
+      "revId": "2145be6df40dc2b64cbfcdfb767dd79cc0c025fd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALX//8/8\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-17T00:09:01Z",
+      "side": 1,
+      "message": "Ah, yes, of course.",
+      "parentUuid": "AAAALX//9NA\u003d",
       "revId": "2145be6df40dc2b64cbfcdfb767dd79cc0c025fd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
