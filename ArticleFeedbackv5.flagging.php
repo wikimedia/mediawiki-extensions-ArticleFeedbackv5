@@ -150,7 +150,7 @@ class ArticleFeedbackv5Flagging {
 					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 						'autohide', $this->getUserId(), $timestamp );
 					$results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
-						'hidden', $this->getUserId(), $timestamp );
+						'hidden', $record->af_id, $this->getUserId(), $timestamp );
 
 					// NOTE: we've already adjusted all visiblity counts above so we only do hide specific ones
 					$filters = $this->hideCounts( $record, $filters, 'hide' );
@@ -164,7 +164,7 @@ class ArticleFeedbackv5Flagging {
 					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 						'deleted', $this->getUserId(), $timestamp );
 					$results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
-						'oversight', $this->getUserId(), $timestamp );
+						'oversight', $record->af_id, $this->getUserId(), $timestamp );
 				}
 
 			// unoversight (no autohide)
@@ -225,7 +225,7 @@ class ArticleFeedbackv5Flagging {
 				$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 					'hidden', $this->getUserId(), $timestamp );
 				$results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
-					'hidden', $this->getUserId(), $timestamp );
+					'hidden', $record->af_id, $this->getUserId(), $timestamp );
 
 			} elseif( $direction == 'decrease' && $record->af_is_hidden ) {
 
@@ -513,7 +513,7 @@ class ArticleFeedbackv5Flagging {
 					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 						'autohide', $this->getUserId(), $timestamp );
 					$results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
-						'hidden', $this->getUserId(), $timestamp );
+						'hidden', $record->af_id, $this->getUserId(), $timestamp );
 
 					$filters = $this->hideCounts( $record, $filters, 'hide' );
 					// NOTE: unlike autohide after oversight, we must do the visiblity filter
