@@ -211,6 +211,8 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-unsupported-message',
 				'articlefeedbackv5-error-loading-feedback',
 				'articlefeedbackv5-loading-tag',
+				'articlefeedbackv5-permalink-activity-more',
+				'articlefeedbackv5-permalink-activity-fewer',
 
 				'articlefeedbackv5-noteflyover-hide-caption',
 				'articlefeedbackv5-noteflyover-hide-label',

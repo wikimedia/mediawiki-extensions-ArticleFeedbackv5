@@ -386,7 +386,9 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		);
 
 		// Render
+		$out->addHTML( Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-show-feedback' ) ) );
 		$out->addHTML( $renderer->run( $record ) );
+		$out->addHTML( Html::closeElement( 'div' ) );
 
 		// Bottom linkback
 		$out->addHTML(
