@@ -189,4 +189,9 @@ ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_is_resolved BOOLEAN NOT NULL
 ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_is_unresolved BOOLEAN NOT NULL DEFAULT FALSE;
 ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_relevance_score integer signed NOT NULL DEFAULT 0;
 ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_relevance_sort integer signed NOT NULL DEFAULT 0;
-CREATE INDEX /*i*/af_relevance_sort_af_id ON /*_*/aft_article_feedback (af_relevance_sort, af_id);
+CREATE INDEX /*i*/af_relevance_sort_af_id ON /*_*/aft_article_feedback (af_relevance_sort, af_created);
+
+-- Added 5/15 (reha)
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_last_status_notes varchar(255) NULL;
+ALTER TABLE /*_*/aft_article_feedback ADD COLUMN af_activity_count integer unsigned NOT NULL DEFAULT 0;
+
