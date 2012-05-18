@@ -143,6 +143,9 @@ class ArticleFeedbackv5Flagging {
 					$update['af_last_status'] = 'autohide';
 					$update['af_last_status_user_id'] = $this->getUserId();
 					$update['af_last_status_timestamp'] = $timestamp;
+					if ( $notes ) {
+						$update['af_last_status_notes'] = $notes;
+					}
 
 					$log[] = array( 'autohide', '', $this->getUserId );
 
@@ -160,6 +163,9 @@ class ArticleFeedbackv5Flagging {
 					$update['af_last_status'] = 'deleted';
 					$update['af_last_status_user_id'] = $this->getUserId();
 					$update['af_last_status_timestamp'] = $timestamp;
+					if ( $notes ) {
+						$update['af_last_status_notes'] = $notes;
+					}
 
 					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 						'deleted', $this->getUserId(), $timestamp );
@@ -176,6 +182,9 @@ class ArticleFeedbackv5Flagging {
 				$update['af_last_status'] = 'undeleted';
 				$update['af_last_status_user_id'] = $this->getUserId();
 				$update['af_last_status_timestamp'] = $timestamp;
+				if ( $notes ) {
+					$update['af_last_status_notes'] = $notes;
+				}
 
 				$log[] = array('unoversight', $notes, $this->isSystemCall());
 				$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
@@ -215,6 +224,9 @@ class ArticleFeedbackv5Flagging {
 				$update['af_last_status'] = 'hidden';
 				$update['af_last_status_user_id'] = $this->getUserId();
 				$update['af_last_status_timestamp'] = $timestamp;
+				if ( $notes ) {
+					$update['af_last_status_notes'] = $notes;
+				}
 
 				$filters = array();
 
@@ -235,6 +247,9 @@ class ArticleFeedbackv5Flagging {
 				$update['af_last_status'] = 'unhidden';
 				$update['af_last_status_user_id'] = $this->getUserId();
 				$update['af_last_status_timestamp'] = $timestamp;
+				if ( $notes ) {
+					$update['af_last_status_notes'] = $notes;
+				}
 
 				$filters = array();
 
@@ -286,6 +301,9 @@ class ArticleFeedbackv5Flagging {
 					$update['af_last_status'] = 'autohide';
 					$update['af_last_status_user_id'] = $this->getUserId();
 					$update['af_last_status_timestamp'] = $timestamp;
+					if ( $notes ) {
+						$update['af_last_status_notes'] = $notes;
+					}
 
 					$log[] = array( 'autohide', '', $this->getUserId );
 
@@ -301,6 +319,9 @@ class ArticleFeedbackv5Flagging {
 					$update['af_last_status'] = 'request';
 					$update['af_last_status_user_id'] = $this->getUserId();
 					$update['af_last_status_timestamp'] = $timestamp;
+					if ( $notes ) {
+						$update['af_last_status_notes'] = $notes;
+					}
 					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 						'request', $this->getUserId(), $timestamp );
 				}
@@ -330,6 +351,9 @@ class ArticleFeedbackv5Flagging {
 				$update['af_last_status'] = 'unrequest';
 				$update['af_last_status_user_id'] = $this->getUserId();
 				$update['af_last_status_timestamp'] = $timestamp;
+				if ( $notes ) {
+					$update['af_last_status_notes'] = $notes;
+				}
 				$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 					'unrequest', $this->getUserId(), $timestamp );
 
@@ -348,6 +372,9 @@ class ArticleFeedbackv5Flagging {
 				$update['af_last_status'] = 'featured';
 				$update['af_last_status_user_id'] = $this->getUserId();
 				$update['af_last_status_timestamp'] = $timestamp;
+				if ( $notes ) {
+					$update['af_last_status_notes'] = $notes;
+				}
 
 				// filter adjustments
 				$filters['visible-featured'] = 1;
@@ -370,6 +397,9 @@ class ArticleFeedbackv5Flagging {
 				$update['af_last_status'] = 'unfeatured';
 				$update['af_last_status_user_id'] = $this->getUserId();
 				$update['af_last_status_timestamp'] = $timestamp;
+				if ( $notes ) {
+					$update['af_last_status_notes'] = $notes;
+				}
 				// filter adjustments
 				$filters['visible-featured'] = -1;
 				$filters['visible-unfeatured'] = 1;
@@ -395,6 +425,9 @@ class ArticleFeedbackv5Flagging {
 				$update['af_last_status'] = 'resolved';
 				$update['af_last_status_user_id'] = $this->getUserId();
 				$update['af_last_status_timestamp'] = $timestamp;
+				if ( $notes ) {
+					$update['af_last_status_notes'] = $notes;
+				}
 
 				// filter adjustments
 				$filters['visible-resolved'] = 1;
@@ -415,6 +448,9 @@ class ArticleFeedbackv5Flagging {
 				$update['af_last_status'] = 'unresolved';
 				$update['af_last_status_user_id'] = $this->getUserId();
 				$update['af_last_status_timestamp'] = $timestamp;
+				if ( $notes ) {
+					$update['af_last_status_notes'] = $notes;
+				}
 				// filter adjustments
 				$filters['visible-resolved'] = -1;
 				$filters['visible-unresolved'] = 1;
@@ -436,6 +472,9 @@ class ArticleFeedbackv5Flagging {
 			$update['af_last_status'] = 'declined';
 			$update['af_last_status_user_id'] = $this->getUserId();
 			$update['af_last_status_timestamp'] = $timestamp;
+			if ( $notes ) {
+				$update['af_last_status_notes'] = $notes;
+			}
 
 			// always increment our all declined
 			$filters = array('all-declined' => 1);
@@ -506,6 +545,9 @@ class ArticleFeedbackv5Flagging {
 					$update['af_last_status'] = 'autohide';
 					$update['af_last_status_user_id'] = $this->getUserId();
 					$update['af_last_status_timestamp'] = $timestamp;
+					if ( $notes ) {
+						$update['af_last_status_notes'] = $notes;
+					}
 
 					$log[] = array( 'autohide', '', $this->getUserId );
 
@@ -523,6 +565,9 @@ class ArticleFeedbackv5Flagging {
 					$update['af_last_status'] = 'autoflag';
 					$update['af_last_status_user_id'] = 0;
 					$update['af_last_status_timestamp'] = $timestamp;
+					if ( $notes ) {
+						$update['af_last_status_notes'] = $notes;
+					}
 					$results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 						'autoflag', 0, $timestamp );
 				}
@@ -664,6 +709,11 @@ class ArticleFeedbackv5Flagging {
 
 			$update[] = 'af_relevance_score = af_relevance_score + (' . implode (' + ', $math) . ')';
 			$update[] = 'af_relevance_sort = - af_relevance_score';
+		}
+
+		// if we've added to the activity log, bump up the count
+		if ( count( $log ) > 0 ) {
+			$update[] = 'af_activity_count = af_activity_count + ' . count( $log );
 		}
 
 		// we were valid

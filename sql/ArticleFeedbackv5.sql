@@ -76,6 +76,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   af_last_status varchar(16) NULL,
   af_last_status_user_id integer unsigned NOT NULL DEFAULT 0,
   af_last_status_timestamp binary(14) NOT NULL DEFAULT '',
+  af_last_status_notes varchar(255) NULL,
   -- flag if this was an autohide operation
   af_is_autohide boolean NOT NULL DEFAULT FALSE
 ) /*$wgDBTableOptions*/;

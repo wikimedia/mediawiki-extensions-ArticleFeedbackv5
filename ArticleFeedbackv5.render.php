@@ -903,8 +903,7 @@ class ArticleFeedbackv5Render {
 		if ( $this->hasPermission( 'can_delete' ) || $this->hasPermission( 'can_hide' ) ) {
 			// if no activity has been logged yet, add the "inactive" class so we can display it accordingly
 			$activityClass = "articleFeedbackv5-activity-link";
-			// TODO: look at a denormalized count of activity... which we don't have now
-			if ( false ) {
+			if ( $record[0]->af_activity_count < 1 ) {
 				$activityClass .= " inactive";
 			}
 
@@ -949,64 +948,249 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered info section
 	 */
 	private function renderPermalinkInfo( $record ) {
-		global $wgLang;
-		$id = $record[0]->af_id;
-		$html = '';
+		global $wgLang, $wgArticleFeedbackv5LinkBuckets;
 
-		if ( $this->hasPermission( 'see_hidden' ) ) {
-			// Info section
-			$html .=
-				// <div id="articleFeedbackv5-feedback-permalink-info">
-				Html::openElement( 'div', array(
-					'class' => 'articleFeedbackv5-feedback-permalink-info'
-				) )
-					// <p>Posted on: {date}</p>
-					. Html::rawElement( 'p', array(),
-						wfMessage( 'articlefeedbackv5-permalink-info-posted' )
-							->params( $wgLang->date( $record[0]->af_created ), $wgLang->time( $record[0]->af_created ) )
-							->escaped()
-					);
-			if ( isset( $record['comment'] ) ) {
-				$html .=
-					// <p>Length: {count} words - {count} characters</p>
-					Html::rawElement( 'p', array(),
-						wfMessage( 'articlefeedbackv5-permalink-info-length' )
-							->params(
-								str_word_count( $record['comment']->aa_response_text ),
-								strlen( $record['comment']->aa_response_text )
-							)
-							->escaped()
-					);
-			}
-			$html .=
-				// <p>Scores: {score} relevance, {score} helpfulness</p>
-				Html::rawElement( 'p', array(),
-					wfMessage( 'articlefeedbackv5-permalink-info-scores' )
-						->params( $record[0]->af_relevance_score, $record[0]->af_net_helpfulness )
-						->escaped()
-					)
-				// <p>Post #{id} - Feedback form {experiment}</p>
-				. Html::rawElement( 'p', array(),
-					wfMessage( 'articlefeedbackv5-permalink-info-number' )
-						->params( $record[0]->af_id, $record[0]->af_experiment )
-						->escaped()
-					);
-
-			if ( $record[0]->af_last_status && $record[0]->af_last_status_timestamp ) {
-				$status_line = ApiArticleFeedbackv5Utils::renderStatusLine(
-						$record[0]->af_last_status,
-						$record[0]->af_last_status_user_id,
-						$record[0]->af_last_status_timestamp
-					);
-				$html .=
-					// <p>{status line}</p>
-					Html::rawElement( 'p', array(), $status_line );
-			}
-
-			$html .=
-				// </div>
-				Html::closeElement( 'div' );
+		if ( !$this->hasPermission( 'see_hidden' ) ) {
+			return '';
 		}
+
+		$id = $record[0]->af_id;
+		$title = Title::newFromRow($record[0])->getPrefixedDBkey();
+
+		// Metadata section
+		$utype = $record[0]->af_user_id > 0 ? 'editor' : 'reader';
+		$metadata =
+			// <div class="articleFeedbackv5-feedback-permalink-meta">
+			Html::openElement( 'div', array(
+				'class' => 'articleFeedbackv5-feedback-permalink-meta'
+			) )
+				// <p>Written by a registered user <span>using feedback form 1 and link E</span></p>
+				// Possible messages:
+				//  {msg:articlefeedbackv5-permalink-written-by-editor}
+				//  {msg:articlefeedbackv5-permalink-written-by-reader}
+				.Html::rawElement( 'p', array(),
+					wfMessage( "articlefeedbackv5-permalink-written-by-$utype" )
+						->params( $record[0]->af_experiment )
+						->parse()
+				)
+				// <p>{msg:articlefeedbackv5-permalink-info-posted}</p>
+				. Html::rawElement( 'p', array(),
+					wfMessage( 'articlefeedbackv5-permalink-info-posted' )
+						->params( $wgLang->date( $record[0]->af_created ), $wgLang->time( $record[0]->af_created ) )
+						->escaped()
+				)
+				// <p class="articleFeedbackv5-old-revision">
+				. Html::openElement( 'p', array(
+						'class' => 'articleFeedbackv5-old-revision'
+				) )
+					// <a href="{previous rev}">{msg:articlefeedbackv5-permalink-info-revision-link}</a></p>
+					.  Linker::link(
+						Title::newFromRow( $record[0] ),
+						wfMessage( 'articlefeedbackv5-permalink-info-revision-link' )->escaped(),
+						array(),
+						array( 'oldid'  => $record[0]->af_revision_id )
+					)
+				// </p>
+				. Html::closeElement( 'p' )
+			// </div>
+			. Html::closeElement( 'div' );
+
+		// Stats section
+		$stats =
+			// <dl class="articleFeedbackv5-feedback-permalink-stats">
+			Html::openElement( 'dl', array(
+				'class' => 'articleFeedbackv5-feedback-permalink-stats'
+			) );
+		if ( isset( $record['comment'] ) ) {
+			$stats .=
+				// <dt>{msg:articlefeedbackv5-permalink-info-stats-title-length}</dt>
+				Html::rawElement( 'dt', array(),
+					wfMessage( 'articlefeedbackv5-permalink-info-stats-title-length' )->escaped()
+				)
+				// <dd>
+				. Html::openElement( 'dd' )
+					// {msg:articlefeedbackv5-permalink-info-length-words}
+					. wfMessage(
+						'articlefeedbackv5-permalink-info-length-words',
+						str_word_count( $record['comment']->aa_response_text )
+					)->escaped()
+					// &nbsp;
+					. '&nbsp;'
+					// <span>{msg:articlefeedbackv5-permalink-info-length-characters}</span>
+					. Html::rawElement( 'span', array(),
+						wfMessage(
+							'articlefeedbackv5-permalink-info-length-characters',
+							strlen( $record['comment']->aa_response_text )
+						)->escaped()
+					)
+				// </dd>
+				. Html::closeElement( 'dd' );
+		}
+		$relevance = $record[0]->af_relevance_score;
+		$helpfulness = $record[0]->af_net_helpfulness;
+		$stats .=
+				// <dt>{msg:articlefeedbackv5-permalink-info-stats-title-scores}</dt>
+				Html::rawElement( 'dt', array(),
+					wfMessage( 'articlefeedbackv5-permalink-info-stats-title-scores' )->escaped()
+				)
+				// <dd class="articleFeedbackv5-feedback-permalink-scores">
+				. Html::openElement( 'dd', array(
+					'class' => 'articleFeedbackv5-feedback-permalink-scores',
+				) )
+					// <dl>
+					. Html::openElement( 'dl' )
+						// <dt>{msg:articlefeedbackv5-permalink-info-stats-subtitle-relevance}</dt>
+						. Html::rawElement( 'dt', array(),
+							wfMessage( 'articlefeedbackv5-permalink-info-stats-subtitle-relevance' )->escaped()
+						)
+						// <dd>{relvance score}</dd>
+						. Html::element( 'dd', array(),
+							$relevance > 0 ? '+' . $relevance : $relevance )
+						// <dt>{msg:articlefeedbackv5-permalink-info-stats-subtitle-helpfulness}</dt>
+						. Html::rawElement( 'dt', array(),
+							wfMessage( 'articlefeedbackv5-permalink-info-stats-subtitle-helpfulness' )->escaped()
+						)
+						// <dd>{net helpfulness score}</dd>
+						. Html::element( 'dd', array(),
+							$helpfulness > 0 ? '+' . $helpfulness : $helpfulness )
+					// </dl>
+					. Html::closeElement( 'dl' )
+				// </dd>
+				. Html::closeElement( 'dd' )
+			// </dl>
+			. Html::closeElement( 'dl' );
+
+		// Activity section
+		$activity = '';
+		if ( $record[0]->af_last_status && $record[0]->af_last_status_timestamp ) {
+			$activity .=
+				// <p class="articleFeedbackv5-feedback-permalink-activity-status">
+				Html::openElement( 'p', array(
+						'class' => 'articleFeedbackv5-feedback-permalink-activity-status'
+					) )
+					// <span class="articleFeedbackv5-feedback-permalink-status">
+					//   One of:
+					//   {msg:articlefeedbackv5-permalink-status-hidden}
+					//   {msg:articlefeedbackv5-permalink-status-unhidden}
+					//   {msg:articlefeedbackv5-permalink-status-request}
+					//   {msg:articlefeedbackv5-permalink-status-unrequest}
+					//   {msg:articlefeedbackv5-permalink-status-declined}
+					//   {msg:articlefeedbackv5-permalink-status-autohide}
+					//   {msg:articlefeedbackv5-permalink-status-deleted}
+					//   {msg:articlefeedbackv5-permalink-status-undeleted}
+					//   {msg:articlefeedbackv5-permalink-status-autoflag}
+					//   {msg:articlefeedbackv5-permalink-status-featured}
+					//   {msg:articlefeedbackv5-permalink-status-unfeatured}
+					//   {msg:articlefeedbackv5-permalink-status-resolved}
+					//   {msg:articlefeedbackv5-permalink-status-unresolved}
+					// </span>
+					. Html::rawElement( 'span', array(
+						'class' => 'articleFeedbackv5-feedback-permalink-status ' .
+							'articleFeedbackv5-laststatus-' . $record[0]->af_last_status
+						),
+						wfMessage( 'articlefeedbackv5-permalink-status-' . $record[0]->af_last_status )
+							->rawParams( ApiArticleFeedbackv5Utils::getUserLink( $record[0]->af_last_status_user_id ) )
+							->rawParams( ApiArticleFeedbackv5Utils::renderTimeAgo( $record[0]->af_last_status_timestamp ) )
+							->parse()
+						)
+				// </p>
+				. Html::closeElement( 'p' );
+			if ( $record[0]->af_last_status_notes ) {
+				$activity .=
+					// <p class="articleFeedbackv5-feedback-permalink-activity-note">
+					//   {activity note}
+					// </p>
+					Html::element( 'p', array(
+							'class' => 'articleFeedbackv5-feedback-permalink-activity-status'
+						),
+						$record[0]->af_last_status_notes
+					);
+			}
+			$activity .=
+				// <p class="articleFeedbackv5-feedback-permalink-activity-more">
+				Html::openElement( 'p', array(
+						'class' => 'articleFeedbackv5-feedback-permalink-activity-more',
+					) )
+					// <a href="#" class="articleFeedbackv5-activity-link">
+					//   {msg:articlefeedbackv5-permalink-activity-more}
+					// </a>
+					. Html::rawElement( 'a', array(
+							'href'  => '#',
+							'class' => 'articleFeedbackv5-activity2-link'
+						),
+						wfMessage( 'articlefeedbackv5-permalink-activity-more' )->escaped()
+					)
+				// </p>
+				. Html::closeElement( 'p' )
+				// <div id="articleFeedbackv5-activity-log">
+				. Html::openElement( 'div', array(
+						'id' => 'articleFeedbackv5-permalink-activity-log'
+					) )
+				// </div>
+				. Html::closeElement( 'div' );
+		} else {
+			$activity .=
+				// <p class="articleFeedbackv5-feedback-permalink-activity-note">
+				//   {msg:articlefeedbackv5-permalink-activity-none}
+				// </p>
+				Html::rawElement( 'p', array(
+						'class' => 'articleFeedbackv5-feedback-permalink-activity-none',
+					),
+					wfMessage( 'articlefeedbackv5-permalink-activity-none')->escaped()
+				);
+		}
+
+		// Frame and return
+		return
+			// <div id="articleFeedbackv5-feedback-permalink-info">
+			Html::openElement( 'div', array(
+				'id' => 'articleFeedbackv5-feedback-permalink-info'
+			) )
+				// <div class="articleFeedbackv5-feedback-permalink-about">
+				. Html::openElement( 'div', array(
+					'class' => 'articleFeedbackv5-feedback-permalink-about'
+				) )
+					// <h4>
+					. Html::openElement( 'h4' )
+						// {msg:articlefeedbackv5-permalink-info-title}
+						. wfMessage( 'articlefeedbackv5-permalink-info-title' )->escaped()
+						// <span>{msg:articlefeedbackv5-permalink-info-subtitle}</span>
+						. Html::rawElement( 'span', array(),
+							wfMessage( 'articlefeedbackv5-permalink-info-subtitle' )
+								->params( $id )
+								->escaped()
+						)
+					// </h4>
+					. Html::closeElement( 'h4' )
+					// {metadata section}
+					. $metadata
+					// {stats section}
+					. $stats
+				// </div>
+				. Html::closeElement( 'div' )
+				// <div class="articleFeedbackv5-feedback-permalink-activity">
+				. Html::openElement( 'div', array(
+					'class' => 'articleFeedbackv5-feedback-permalink-activity'
+				) )
+					// <h4>
+					. Html::openElement( 'h4', array() )
+						// {msg:articlefeedbackv5-permalink-activity-title}
+						. wfMessage( 'articlefeedbackv5-permalink-activity-title' )->escaped()
+						// <span>{msg:articlefeedbackv5-permalink-activity-subtitle}</span>
+						. Html::rawElement( 'span', array(),
+							wfMessage( 'articlefeedbackv5-permalink-activity-subtitle' )
+								->params( $record[0]->af_activity_count )
+								->escaped()
+						)
+					// </h4>
+					. Html::closeElement( 'h4' )
+					// {activity section}
+					. $activity
+				// </div>
+				. Html::closeElement( 'div' )
+
+			// </div>
+			. Html::closeElement( 'div' );
 
 		return $html;
 	}
