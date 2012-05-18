@@ -43,7 +43,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 		// get our parameter information
 		$params = $this->extractRequestParams();
-		$feedbackId        = $params['feedbackid'];
+		$feedbackId = $params['feedbackid'];
 		$limit = $params['limit'];
 		$continue = $params['continue'];
 		$result = $this->getResult();
@@ -69,7 +69,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		$html = '';
 
 		// only do this if continue is not null
-		if ( !$continue ) {
+		if ( !$continue && !$params['noheader'] ) {
 			$result->addValue( $this->getModuleName(), 'hasHeader', true );
 
 			// <div class="articleFeedbackv5-activity-pane">
@@ -322,6 +322,9 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			),
 			'continue' => null,
+			'noheader' => array(
+				ApiBase::PARAM_TYPE => 'boolean',
+			),
 		);
 	}
 
@@ -335,6 +338,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			'feedbackid' => 'ID to get feedback activity for',
 			'limit' => 'How many activity results to return',
 			'continue' => 'When more results are available, use this to continue',
+			'noheader' => 'Skip the header markup, even if this is the first page',
 		);
 	}
 
