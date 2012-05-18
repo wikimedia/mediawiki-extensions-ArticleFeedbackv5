@@ -86,16 +86,16 @@
 	 * @var string
 	 */
 	$.articleFeedbackv5special.notePanelHtmlTemplate = '\
-		<div class="articlefeedbackv5-flyover-header">\
-			<h3 id="articlefeedbackv5-noteflyover-caption"></h3>\
-			<a id="articlefeedbackv5-noteflyover-close" href="#"></a>\
+		<div class="articleFeedbackv5-flyover-header">\
+			<h3 id="articleFeedbackv5-noteflyover-caption"></h3>\
+			<a id="articleFeedbackv5-noteflyover-close" href="#"></a>\
 		</div>\
-		<form class="articlefeedbackv5-form-flyover">\
-			<label id="articlefeedbackv5-noteflyover-label" for="articlefeedbackv5-noteflyover-note"></label>\
-			<textarea id="articlefeedbackv5-noteflyover-note" name="articlefeedbackv5-noteflyover-note"></textarea>\
-			<div class="articlefeedbackv5-flyover-footer">\
-				<a id="articlefeedbackv5-noteflyover-submit" class="articlefeedbackv5-flyover-button" href="#"></a>\
-				<a class="articlefeedbackv5-flyover-help" id="articlefeedbackv5-noteflyover-help" href="#"></a>\
+		<form class="articleFeedbackv5-form-flyover">\
+			<label id="articleFeedbackv5-noteflyover-label" for="articleFeedbackv5-noteflyover-note"></label>\
+			<textarea id="articleFeedbackv5-noteflyover-note" name="articleFeedbackv5-noteflyover-note"></textarea>\
+			<div class="articleFeedbackv5-flyover-footer">\
+				<a id="articleFeedbackv5-noteflyover-submit" class="articleFeedbackv5-flyover-button" href="#"></a>\
+				<a class="articleFeedbackv5-flyover-help" id="articleFeedbackv5-noteflyover-help" href="#"></a>\
 			</div>\
 		</form>';
 
@@ -178,13 +178,13 @@
 		container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
 		for ( var action in $.articleFeedbackv5special.actions ) {
 			if ( $.articleFeedbackv5special.actions[action].hasTipsy && (undefined == $.articleFeedbackv5special.actions[action].tipsyHtml) ) {
-				container.find( '#articlefeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
-				container.find( '#articlefeedbackv5-noteflyover-label' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
-				container.find( '#articlefeedbackv5-noteflyover-submit' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-submit' ) );
+				container.find( '#articleFeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
+				container.find( '#articleFeedbackv5-noteflyover-label' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
+				container.find( '#articleFeedbackv5-noteflyover-submit' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-submit' ) );
 				// will add an 'action' attribute to the link
-				container.find( '#articlefeedbackv5-noteflyover-submit' ).attr( 'action', action );
-				container.find( '#articlefeedbackv5-noteflyover-help' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help' ) );
-				container.find( '#articlefeedbackv5-noteflyover-help' ).attr( 'href', mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help-link' ) );
+				container.find( '#articleFeedbackv5-noteflyover-submit' ).attr( 'action', action );
+				container.find( '#articleFeedbackv5-noteflyover-help' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help' ) );
+				container.find( '#articleFeedbackv5-noteflyover-help' ).attr( 'href', mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help-link' ) );
 				$.articleFeedbackv5special.actions[action].tipsyHtml = container.html();
 			}
 		}
@@ -300,12 +300,12 @@
 		}
 
 		// Bind submit actions on flyover panels (flag actions)
-		$( '#articlefeedbackv5-noteflyover-submit' ).live( 'click', function( e ) {
+		$( '#articleFeedbackv5-noteflyover-submit' ).live( 'click', function( e ) {
 			e.preventDefault();
 			$.articleFeedbackv5special.flagFeedback(
 				$( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ),
 				$( e.target ).attr( 'action' ),
-				$( '#articlefeedbackv5-noteflyover-note' ).attr( 'value' ),
+				$( '#articleFeedbackv5-noteflyover-note' ).attr( 'value' ),
 				{ } );
 
 			// hide tipsy
@@ -314,7 +314,7 @@
 		} );
 
 		// bind flyover panel close button
-		$( '#articlefeedbackv5-noteflyover-close' ).live( 'click', function( e ) {
+		$( '#articleFeedbackv5-noteflyover-close' ).live( 'click', function( e ) {
 			e.preventDefault();
 			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
@@ -370,7 +370,7 @@
 			return false;
 		} else {
 			// no, we're displaying another one
-			if( undefined != $.articleFeedbackv5special.currentPanelHostId ) {
+			if ( undefined != $.articleFeedbackv5special.currentPanelHostId ) {
 				$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			}
 			$l.tipsy( 'show' );
@@ -833,42 +833,53 @@
 	 *
 	 * @param id           int    feedback post item id
 	 * @param continueInfo string should be null for the first request (first page), then the continue info returned from the last API call
+	 * @param location     string where to put the results
 	 */
-	$.articleFeedbackv5special.loadActivityLog = function( id, continueInfo ) {
+	$.articleFeedbackv5special.loadActivityLog = function( id, continueInfo, location ) {
 		var data = {
-			'action':			'query',
-			'list':				'articlefeedbackv5-view-activity',
-			'format':			'json',
-			'aafeedbackid':		id
+			'action': 'query',
+			'list': 'articlefeedbackv5-view-activity',
+			'format': 'json',
+			'aafeedbackid': id
 		};
 		if ( continueInfo ) {
 			data['aacontinue'] = continueInfo;
 		}
+		if ( location == '#articleFeedbackv5-permalink-activity-log' ) {
+			data['aanoheader'] = true;
+		}
 		$.ajax( {
-			'url': 		$.articleFeedbackv5special.apiUrl,
-			'type': 	'GET',
+			'url': $.articleFeedbackv5special.apiUrl,
+			'type': 'GET',
 			'dataType': 'json',
-			'data': 	data,
+			'data': data,
+			'context': { location: location },
 			'success': function( data ) {
-				if( data['articlefeedbackv5-view-activity'].hasHeader ) {
-					$( '#articlefeedbackv5-activity-log' ).html( data['articlefeedbackv5-view-activity'].activity );
+				if ( data['articlefeedbackv5-view-activity'].hasHeader ) {
+					$( this.location ).html( data['articlefeedbackv5-view-activity'].activity );
 				} else {
-					$( '#articlefeedbackv5-activity-log' )
-						.find( '.articleFeedbackv5-activity-more' ).replaceWith( data['articlefeedbackv5-view-activity'].activity );
+					var $place = $( this.location ).find( '.articleFeedbackv5-activity-more' );
+					if ( $place.length > 0 ) {
+						$place.replaceWith( data['articlefeedbackv5-view-activity'].activity );
+					} else {
+						$( this.location ).html( data['articlefeedbackv5-view-activity'].activity );
+					}
 				}
-				if( data['query-continue'] && data['query-continue']['articlefeedbackv5-view-activity'] ) {
-					$( '#articlefeedbackv5-activity-log' ).find( '.articleFeedbackv5-activity-more' )
+				if ( data['query-continue'] && data['query-continue']['articlefeedbackv5-view-activity'] ) {
+					$( this.location ).find( '.articleFeedbackv5-activity-more' )
 						.attr( 'rel', data['query-continue']['articlefeedbackv5-view-activity'].aacontinue )
 						.click( function( e ) {
 							$.articleFeedbackv5special.loadActivityLog(
 								$( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ),
-								$( e.target ).attr( 'rel') );
+								$( e.target ).attr( 'rel'),
+								this.location
+							);
 						} );
 				}
 			},
 			'error': function( data ) {
 				// FIXME this messages isn't defined
-				$( '#articlefeedbackv5-activity-log' ).text( mw.msg( 'articleFeedbackv5-view-activity-error' ) );
+				$( this.location ).text( mw.msg( 'articleFeedbackv5-view-activity-error' ) );
 			}
 		} );
 
@@ -1002,7 +1013,7 @@
 		} else {
 			$( '#articleFeedbackv5-show-more').hide();
 		}
-		$.articleFeedbackv5special.bindPanels( $.articleFeedbackv5special.listControls.filterValue );
+		$.articleFeedbackv5special.bindPanels();
 	};
 
 	// }}}
@@ -1508,16 +1519,32 @@
 			'hasTipsy': true,
 			'tipsyHtml': '\
 				<div>\
-					<div class="articlefeedbackv5-flyover-header">\
-						<h3 id="articlefeedbackv5-noteflyover-caption">Activity log</h3>\
-						<a id="articlefeedbackv5-noteflyover-helpbutton" href="#"></a>\
-						<a id="articlefeedbackv5-noteflyover-close" href="#"></a>\
+					<div class="articleFeedbackv5-flyover-header">\
+						<h3 id="articleFeedbackv5-noteflyover-caption">Activity log</h3>\
+						<a id="articleFeedbackv5-noteflyover-helpbutton" href="#"></a>\
+						<a id="articleFeedbackv5-noteflyover-close" href="#"></a>\
 					</div>\
-					<div id="articlefeedbackv5-activity-log"></div>\
+					<div id="articleFeedbackv5-activity-log"></div>\
 				</div>',
 			'click': function( e ) {
-				if( $.articleFeedbackv5special.toggleTipsy( e ) ) {
-					$.articleFeedbackv5special.loadActivityLog( $( e.target ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ), 0 );
+				if ( $.articleFeedbackv5special.toggleTipsy( e ) ) {
+					$.articleFeedbackv5special.loadActivityLog( $( e.target ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ), 0, '#articleFeedbackv5-activity-log' );
+				}
+			}
+		},
+
+		// View activity log action on permalink
+		'activity2': {
+			'click': function( e ) {
+				if ( $( e.target ).data( 'started' ) == true ) {
+					$( '#articleFeedbackv5-permalink-activity-log' ).fadeOut();
+					$( e.target ).text( mw.msg( 'articlefeedbackv5-permalink-activity-more' ) );
+					$( e.target ).data( 'started', false );
+				} else {
+					$.articleFeedbackv5special.loadActivityLog( $( '#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback' ).attr( 'rel' ), 0, '#articleFeedbackv5-permalink-activity-log' );
+					$( '#articleFeedbackv5-permalink-activity-log' ).fadeIn();
+					$( e.target ).text( mw.msg( 'articlefeedbackv5-permalink-activity-fewer' ) );
+					$( e.target ).data( 'started', true );
 				}
 			}
 		}

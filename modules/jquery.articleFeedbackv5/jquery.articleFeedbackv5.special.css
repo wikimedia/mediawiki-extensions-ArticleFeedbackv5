@@ -359,17 +359,17 @@
 	height: 23px;
 	margin-top: -11px;
 }
-form.articlefeedbackv5-form-flyover {
+form.articleFeedbackv5-form-flyover {
 	padding: 0 25px 0 0;
 }
-form.articlefeedbackv5-form-flyover label {
+form.articleFeedbackv5-form-flyover label {
 	display: block;
 	margin: 5px 10px;
 }
-form.articlefeedbackv5-form-flyover textarea {
+form.articleFeedbackv5-form-flyover textarea {
 	margin: 0 0 0 10px;
 }
-.articlefeedbackv5-flyover-header {
+.articleFeedbackv5-flyover-header {
 	background-color: #d2e5f7;
 	padding: 0 10px 3px 10px;
 	-moz-border-radius: 3px 3px 0 0;
@@ -377,20 +377,20 @@ form.articlefeedbackv5-form-flyover textarea {
 	border-radius: 3px 3px 0 0;
 	-khtml-border-radius: 3px 3px 0 0;
 }
-.articlefeedbackv5-flyover-header h3 {
+.articleFeedbackv5-flyover-header h3 {
 	font-size: 1.125em;
 }
-.articlefeedbackv5-flyover-footer {
+.articleFeedbackv5-flyover-footer {
 	padding: 10px 10px 35px 10px;
 	width: 100%;
 }
-.articlefeedbackv5-flyover-help {
+.articleFeedbackv5-flyover-help {
 	margin: 0 0 0 10px;
 	display: inline-block;
 	float: right;
 	margin-top: 4px;
 }
-#articlefeedbackv5-noteflyover-close {
+#articleFeedbackv5-noteflyover-close {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -404,11 +404,11 @@ form.articlefeedbackv5-form-flyover textarea {
 	background-position: left top;
 	background-size: 16px 16px;
 }
-#articlefeedbackv5-noteflyover-close:hover {
+#articleFeedbackv5-noteflyover-close:hover {
 	/* @embed */
 	background-image: url(images/bg-close-hov.png);
 }
-#articlefeedbackv5-noteflyover-helpbutton {
+#articleFeedbackv5-noteflyover-helpbutton {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -422,11 +422,11 @@ form.articlefeedbackv5-form-flyover textarea {
 	background-position: left top;
 	background-size: 20px 20px;
 }
-#articlefeedbackv5-noteflyover-helpbutton:hover {
+#articleFeedbackv5-noteflyover-helpbutton:hover {
 	/* @embed */
 	background-image: url(images/bg-tooltip-trigger-hov.png);
 }
-.articlefeedbackv5-flyover-button {
+.articleFeedbackv5-flyover-button {
 	display: inline-block;
 	float: left;
 	height: 22px;
@@ -448,7 +448,7 @@ form.articlefeedbackv5-form-flyover textarea {
 	-webkit-box-shadow: -2px 2px 1px #999;
 	box-shadow: -2px 2px 1px #999;
 }
-.articlefeedbackv5-flyover-button:hover {
+.articleFeedbackv5-flyover-button:hover {
 	/* @embed */
 	background: url(images/bg-button-hov.png) repeat-x;
 	cursor: pointer;
@@ -457,7 +457,7 @@ form.articlefeedbackv5-form-flyover textarea {
 }
 
 /** Activity Log **/
-#articlefeedbackv5-activity-log {
+#articleFeedbackv5-activity-log {
 	width: 350px;
 	height: 360px;
 }
@@ -569,9 +569,92 @@ form.articlefeedbackv5-form-flyover textarea {
 }
 
 /** Permalink info box **/
-.articleFeedbackv5-feedback-permalink-info {
-	padding: 10px 8px;
+#articleFeedbackv5-feedback-permalink-info {
+	font-size: 1.05em;
+	padding: 20px 8px;
 	border-bottom: 2px solid #D6D7D5;
 	margin-bottom: 20px;
+	overflow: auto;
+	clear: both;
+}
+#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-about,
+#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-activity {
+	float: left;
+	width: 50%;
+}
+
+#articleFeedbackv5-feedback-permalink-info h4 {
+	padding: 0 0 0.4em 22px;
+	font-size: 1.3em;
+	background-position: 0 1px;
+	background-repeat: no-repeat;
+}
+#articleFeedbackv5-feedback-permalink-info h4 span {
+	color: #696B67;
+	font-size: 0.875em;
+	padding-left: 0.5em;
+}
+#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-about h4 {
+	/* @embed */
+	background-image: url(images/info.png);
+}
+#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-activity h4 {
+	/* @embed */
+	background-image: url(images/activity.png);
+}
+
+#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-meta {
+	margin-bottom: 2em;
+}
+#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-meta p {
+	margin: 0 0 0.3em 0;
+}
+#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-meta p span {
+	color: #8C8D8A;
+}
+#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-meta p.articleFeedbackv5-old-revision {
+	margin: 10px 0;
+	padding-left: 22px;
+	/* @embed */
+	background-image: url(images/old.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+
+#articleFeedbackv5-feedback-permalink-info dl.articleFeedbackv5-feedback-permalink-stats {
+	overflow: auto;
+	font-size: 1.2em;
+}
+#articleFeedbackv5-feedback-permalink-info dt {
+	float: left;
+	clear: left;
+}
+#articleFeedbackv5-feedback-permalink-info dd {
+	margin-left: 8em;
+}
+#articleFeedbackv5-feedback-permalink-info dd span {
+	font-size: 0.875em;
+}
+#articleFeedbackv5-feedback-permalink-info dd.articleFeedbackv5-feedback-permalink-scores dl {
+	overflow: auto;
+}
+#articleFeedbackv5-feedback-permalink-info dd.articleFeedbackv5-feedback-permalink-scores dt {
+	font-weight: normal;
+}
+#articleFeedbackv5-feedback-permalink-info dd.articleFeedbackv5-feedback-permalink-scores dd {
+	margin-left: 7em;
+}
+
+#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-status {
+	color: #8C8D8A;
+}
+#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-status strong {
+	color: #000;
+	font-size: 1.125em;
+}
+
+/** Stuff I haven't finished **/
+#articleFeedbackv5-feedback-permalink-info .notdone {
+	background-color: LavenderBlush;
 }
 
