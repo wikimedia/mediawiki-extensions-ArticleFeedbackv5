@@ -149,6 +149,7 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 		'three' => 0,
 		'four'  => 0,
 		'five'  => 0,
+		'six'  => 0,
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
