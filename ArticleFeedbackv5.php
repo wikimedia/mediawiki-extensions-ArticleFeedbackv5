@@ -144,11 +144,12 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// placed in a bucket.
 	'buckets' => array(
 		'zero'  => 0,
-		'one'   => 100,
+		'one'   => 50,
 		'two'   => 0,
 		'three' => 0,
 		'four'  => 0,
 		'five'  => 0,
+		'six'  => 50,
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
@@ -249,14 +250,23 @@ $wgArticleFeedbackv5AbusiveThreshold = 3;
 $wgArticleFeedbackv5HideAbuseThreshold = 5;
 
 /**
- * Temporary hack: for now, only one CTA is allowed, so set it here.
+ * Temporary hack: either one default CTA is allowed (integer value), or an
+ * array of form_id => cta_id associations.
  *
  * Allowed values: 0 (just a confirm message), 1 (call to edit), 2 (learn
  * more), 3 (survey), or 5 (view feedback)
  *
  * @var int
  */
-$wgArticleFeedbackv5SelectedCTA = 5;
+$wgArticleFeedbackv5SelectedCTA = array(
+	0 => 1,
+	1 => 5,
+	2 => 1,
+	3 => 1,
+	4 => 1,
+	5 => 1,
+	6 => 3,
+);
 
 /**
  * Turn on abuse filtering
@@ -308,6 +318,7 @@ $wgArticleFeedbackv5SurveyUrls = array(
 	'1' => 'https://www.surveymonkey.com/s/aft5-1',
 	'2' => 'https://www.surveymonkey.com/s/aft5-2',
 	'3' => 'https://www.surveymonkey.com/s/aft5-3',
+	'6' => 'https://www.surveymonkey.com/s/aft5-6',
 );
 
 /**
