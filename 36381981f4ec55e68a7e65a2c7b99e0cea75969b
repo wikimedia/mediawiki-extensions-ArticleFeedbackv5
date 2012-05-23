@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn///t8\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-23T03:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALX//7Xw\u003d",
+      "revId": "36381981f4ec55e68a7e65a2c7b99e0cea75969b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALX//7Xs\u003d",
         "filename": "ArticleFeedbackv5.i18n.php",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-05-21T22:21:55Z",
       "side": 1,
       "message": "Some or all of these messages with user names in them might need GENDER, CC Siebrand to confirm",
+      "revId": "36381981f4ec55e68a7e65a2c7b99e0cea75969b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///t4\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-23T03:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALX//7Xs\u003d",
       "revId": "36381981f4ec55e68a7e65a2c7b99e0cea75969b",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn///t0\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-23T03:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALX//7XU\u003d",
+      "revId": "36381981f4ec55e68a7e65a2c7b99e0cea75969b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALX//7Hg\u003d",
         "filename": "maintenance/refreshLastActivity.php",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2012-05-21T22:21:55Z",
       "side": 1,
       "message": "Why are you ordering by log_id? This doesn\u0027t seem to be necessary to me and it\u0027ll make the query perform worse. In fact, it doesn\u0027t seem like you care about the order at all, so it\u0027d  be best not to set an ORDER BY at all if that\u0027s the case.",
+      "revId": "36381981f4ec55e68a7e65a2c7b99e0cea75969b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALX//63A\u003d",
+        "filename": "maintenance/refreshLastActivity.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-23T03:26:03Z",
+      "side": 1,
+      "message": "I\u0027m ordering because I need to know which log action was the most recent.",
+      "parentUuid": "AAAALX//7Hg\u003d",
       "revId": "36381981f4ec55e68a7e65a2c7b99e0cea75969b",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn///tw\u003d",
+        "filename": "maintenance/refreshLastActivity.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-23T03:26:03Z",
+      "side": 1,
+      "message": "I double-checked the logging method, and it doesn\u0027t take namespace into account, either.  I vote to add a bug for this issue.",
+      "parentUuid": "AAAALX//7HM\u003d",
+      "revId": "36381981f4ec55e68a7e65a2c7b99e0cea75969b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALX//7Go\u003d",
         "filename": "maintenance/refreshLastActivity.php",
         "patchSetId": 3
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn///+I\u003d",
+        "filename": "maintenance/refreshLastActivity.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-23T03:26:03Z",
+      "side": 1,
+      "message": "Mostly just to make certain I could safely continue each time -- but I don\u0027t know that it\u0027s really all that important.  Removing.",
+      "parentUuid": "AAAALX//7Go\u003d",
+      "revId": "36381981f4ec55e68a7e65a2c7b99e0cea75969b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALX//7GQ\u003d",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
         "patchSetId": 3
@@ -115,6 +223,24 @@
       "writtenOn": "2012-05-21T22:21:55Z",
       "side": 1,
       "message": "Please don\u0027t leave console.log() calls in production code, they cause JS errors in certain environments",
+      "revId": "36381981f4ec55e68a7e65a2c7b99e0cea75969b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///ts\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-23T03:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALX//7GQ\u003d",
       "revId": "36381981f4ec55e68a7e65a2c7b99e0cea75969b",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
