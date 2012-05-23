@@ -28,6 +28,10 @@ jQuery( function( $ ) {
 		(ua.indexOf( 'ipod' ) != -1 ) ||
 		(ua.indexOf( 'ipad' ) != -1)
 	) {
+		// Remove the extension's output & replace it with a 
+		var warning = $( '#articlefeedbackv5-beta-message' ).text( mw.msg( 'articlefeedbackv5-unsupported-message' ) );
+		$( '#mw-content-text' ).empty().append( warning );
+
 		return;
 	}
 
