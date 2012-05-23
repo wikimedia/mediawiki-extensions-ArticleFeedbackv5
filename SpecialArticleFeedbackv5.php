@@ -463,6 +463,15 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	public function outputNotices() {
 		$out = $this->getOutput();
 
+		// Beta message
+		$out->addHTML(
+			Html::element(
+				'p',
+				array( 'id' => 'articlefeedbackv5-beta-message' ),
+				$this->msg( 'articlefeedbackv5-beta-message' )->text()
+			)
+		);
+
 		// Showing {count} posts
 		$out->addHTML(
 			// <div id="articleFeedbackv5-showing-count-wrap">
@@ -515,18 +524,6 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 				), $this->msg( 'articlefeedbackv5-special-survey-button-text' )->text() )
 			);
 		}
-
-		// BETA notice
-		$out->addHTML(
-			// <span class="articlefeedbackv5-beta-notice">
-			//   {msg:articlefeedbackv5-beta-notice}
-			// </span>
-		    Html::element( 'span', array(
-			    'class' => 'articlefeedbackv5-beta-notice'
-		    ), $this->msg( 'articlefeedbackv5-beta-notice' )->text() )
-			// <div class="float-clear"></div>
-			. Html::element( 'div', array( 'class' => 'float-clear' ) )
-		);
 
 		// Link to add feedback (view article)
 		if ( $this->pageId ) {
