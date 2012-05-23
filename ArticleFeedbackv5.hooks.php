@@ -153,6 +153,21 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-bucket5-report-panel-description',
 				'articlefeedbackv5-bucket5-report-empty',
 				'articlefeedbackv5-bucket5-report-ratings',
+				'articlefeedbackv5-bucket6-title',
+				'articlefeedbackv5-bucket6-question-toggle',
+				'articlefeedbackv5-bucket6-toggle-found-yes',
+				'articlefeedbackv5-bucket6-toggle-found-yes-full',
+				'articlefeedbackv5-bucket6-toggle-found-no',
+				'articlefeedbackv5-bucket6-toggle-found-no-full',
+				'articlefeedbackv5-bucket6-feedback-countdown',
+				'articlefeedbackv5-bucket6-question-instructions-yes',
+				'articlefeedbackv5-bucket6-question-comment-yes',
+				'articlefeedbackv5-bucket6-question-instructions-no',
+				'articlefeedbackv5-bucket6-question-comment-no',
+				'articlefeedbackv5-bucket6-form-pending',
+				'articlefeedbackv5-bucket6-form-success',
+				'articlefeedbackv5-bucket6-form-submit',
+				'articlefeedbackv5-bucket6-backlink-text',
 				'articlefeedbackv5-error',
 				'articlefeedbackv5-shared-on-feedback',
 				'articlefeedbackv5-shared-on-feedback-linktext',
@@ -164,7 +179,8 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-help-tooltip-linkurl-monitors',
 				'articlefeedbackv5-help-tooltip-linkurl-oversighters',
 				'articlefeedbackv5-transparency-terms',
-				'articlefeedbackv5-transparency-terms-linktext',
+				'articlefeedbackv5-transparency-terms-linktext-1',
+				'articlefeedbackv5-transparency-terms-linktext-2',
 				'parentheses',
 				'articlefeedbackv5-disable-flyover-title',
 				'articlefeedbackv5-disable-flyover-help',
@@ -425,7 +441,8 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5Namespaces'] = $wgArticleFeedbackv5Namespaces;
 		$vars['wgArticleFeedbackv5LearnToEdit'] = $wgArticleFeedbackv5LearnToEdit;
 		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMsgForContent( 'articlefeedbackv5-bucket5-form-panel-explanation-link' );
-		$vars['wgArticleFeedbackv5TermsPage'] = wfMsgForContent( 'articlefeedbackv5-transparency-terms-url' );
+		$vars['wgArticleFeedbackv5HelpPage'] = wfMsgForContent( 'articlefeedbackv5-transparency-terms-url-1' );
+		$vars['wgArticleFeedbackv5TermsPage'] = wfMsgForContent( 'articlefeedbackv5-transparency-terms-url-2' );
 		$vars['wgArticleFeedbackv5SurveyUrls'] = $wgArticleFeedbackv5SurveyUrls;
 		$vars['wgArticleFeedbackv5InitialFeedbackPostCountToDisplay'] = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		$vars['wgArticleFeedbackv5Permissions'] = array(

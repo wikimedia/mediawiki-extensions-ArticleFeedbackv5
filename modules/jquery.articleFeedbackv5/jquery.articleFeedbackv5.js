@@ -31,6 +31,9 @@
  *   5. Rate This Page
  *   	The existing article feedback tool, except that it can use any of the
  *   	CTA types.
+ *   6. Share Your Feedback, 2-step
+ *   	Pretty much the same at bucket 1, but split in 2 steps: first presenting
+ *      Y/N selection, than asking for textual feedback.
  *
  * The available trigger links are:
  *   A.   After the site tagline (below the article title)
@@ -228,7 +231,7 @@
 			</div>\
 			',
 
-		helpToolTipTrigger: '<div class="articleFeedbackv5-tooltip-trigger-wrap"><a class="articleFeedbackv5-tooltip-trigger"></a></div>',
+		helpToolTipTrigger: '<div class="articleFeedbackv5-tooltip-trigger-wrap"><a class="articleFeedbackv5-tooltip-trigger"><html:msg key="help-tooltip-title" /></a></div>',
 
 		ctaTitleConfirm: '\
 			<div class="articleFeedbackv5-confirmation-text">\
@@ -372,8 +375,13 @@
 					.html( $.articleFeedbackv5.buildLink(
 						'articlefeedbackv5-transparency-terms',
 						{
+							href: mw.config.get( 'wgArticleFeedbackv5HelpPage' ),
+							text: 'articlefeedbackv5-transparency-terms-linktext-1',
+							target: '_blank'
+						},
+						{
 							href: mw.config.get( 'wgArticleFeedbackv5TermsPage' ),
-							text: 'articlefeedbackv5-transparency-terms-linktext',
+							text: 'articlefeedbackv5-transparency-terms-linktext-2',
 							target: '_blank'
 						} ) );
 
@@ -425,7 +433,7 @@
 					.focus( function () {
 						if ( $( this ).val() == $.articleFeedbackv5.currentBucket().currentDefaultText ) {
 							$( this ).val( '' );
-							$( this ).addClass( 'active' );
+							$( this ).removeClass( 'inactive' );
 						}
 					} )
 					.keyup ( function () {
@@ -443,12 +451,11 @@
 						}
 						if ( $( this ).val() == '' ) {
 							$( this ).val( def_msg );
-							$(this).removeClass( 'active' );
+							$( this ).addClass( 'inactive' );
 						} else {
 							$.articleFeedbackv5.enableSubmission( true );
 						}
 					} );
-
 
 				// Attach the submit
 				$block.find( '.articleFeedbackv5-submit' )
@@ -650,7 +657,344 @@
 
 			// }}}
 
-		}
+		},
+
+		// }}}
+		// {{{ Bucket 6
+
+		/**
+		 * Bucket 6: Share Your Feedback, 2-step
+		 */
+		'6': {
+
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The template for the whole block
+				 */
+				block: '\
+					<form>\
+						<div class="articleFeedbackv5-top-error"></div>\
+						<div class="form-row articleFeedbackv5-bucket6-toggle">\
+							<p class="instructions-left"><html:msg key="bucket6-question-toggle" /></p>\
+							<div class="buttons">\
+								<div class="form-item" rel="yes" id="articleFeedbackv5-bucket6-toggle-wrapper-yes">\
+									<label for="articleFeedbackv5-bucket6-toggle-yes"><html:msg key="bucket6-toggle-found-yes-full" /></label>\
+									<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-yes" value="yes" /></span>\
+									<input type="radio" name="toggle" id="articleFeedbackv5-bucket6-toggle-yes" class="query-button" value="yes" />\
+								</div>\
+								<div class="form-item" rel="no" id="articleFeedbackv5-bucket6-toggle-wrapper-no">\
+									<label for="articleFeedbackv5-bucket6-toggle-no"><html:msg key="bucket6-toggle-found-no-full" /></label>\
+									<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-no" /></span>\
+									<input type="radio" name="toggle" id="articleFeedbackv5-bucket6-toggle-no" class="query-button last" value="no" />\
+								</div>\
+								<div class="clear"></div>\
+							</div>\
+							<div class="clear"></div>\
+						</div>\
+						<div class="articleFeedbackv5-comment">\
+							<p class="instructions-left" id="articlefeedbackv5-feedback-instructions"></p>\
+							<p id="articlefeedbackv5-feedback-countdown"></p>\
+							<textarea id="articleFeedbackv5-find-feedback" class="feedback-text" name="comment"></textarea>\
+						</div>\
+						<div class="articleFeedbackv5-disclosure">\
+							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
+							<p class="articlefeedbackv5-transparency-terms"></p>\
+						</div>\
+						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket6-form-submit" /></button>\
+						<div class="clear"></div>\
+					</form>\
+					'
+
+			},
+
+			// }}}
+			// {{{ getTitle
+
+			/**
+			 * Gets the title
+			 *
+			 * @return string the title
+			 */
+			getTitle: function () {
+				return mw.msg( 'articlefeedbackv5-bucket6-title' );
+			},
+
+			// }}}
+			// {{{ buildForm
+
+			/**
+			 * Builds the empty form
+			 *
+			 * @return Element the form
+			 */
+			buildForm: function () {
+
+				// Start up the block to return
+				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
+
+				// Fill in the disclosure text
+				$block.find( '.articlefeedbackv5-shared-on-feedback' )
+					.html( $.articleFeedbackv5.buildLink(
+						'articlefeedbackv5-shared-on-feedback',
+						{
+							href: mw.config.get( 'wgScript' ) + '?' + $.param( {
+								title: mw.config.get( 'wgPageName' ),
+								action: 'feedback'
+							} ),
+							text: 'articlefeedbackv5-shared-on-feedback-linktext',
+							target: '_blank'
+						} ) );
+				$block.find( '.articlefeedbackv5-transparency-terms' )
+					.html( $.articleFeedbackv5.buildLink(
+						'articlefeedbackv5-transparency-terms',
+						{
+							href: mw.config.get( 'wgArticleFeedbackv5HelpPage' ),
+							text: 'articlefeedbackv5-transparency-terms-linktext-1',
+							target: '_blank'
+						},
+						{
+							href: mw.config.get( 'wgArticleFeedbackv5TermsPage' ),
+							text: 'articlefeedbackv5-transparency-terms-linktext-2',
+							target: '_blank'
+						} ) );
+
+				// Turn the submit into a slick button
+				$block.find( '.articleFeedbackv5-submit' )
+					.button()
+					.addClass( 'ui-button-blue' );
+
+				// Show only step 1
+				$.articleFeedbackv5.currentBucket().displayStep1( $block );
+
+				return $block;
+			},
+
+			// }}}
+			// {{{ bindEvents
+
+			/**
+			 * Binds any events
+			 *
+			 * @param $block element the form block
+			 */
+			bindEvents: function ( $block ) {
+
+				// enable submission and switch out the comment default on toggle selection
+				$block.find( '.articleFeedbackv5-button-placeholder' )
+					.click( function ( e ) {
+						var new_val = $( this ).parent().attr( 'rel' );
+						var $wrap = $.articleFeedbackv5.find( '#articleFeedbackv5-bucket6-toggle-wrapper-' + new_val );
+
+						// move on to step 2
+						$.articleFeedbackv5.currentBucket().displayStep2( $block );
+
+						// add instructional text for feedback
+						$( '#articlefeedbackv5-feedback-instructions' ).text( mw.msg( 'articlefeedbackv5-bucket6-question-instructions-' + new_val ) );
+
+						// make the button blue
+						$( 'span.articleFeedbackv5-button-placeholder-active' ).removeClass( 'articleFeedbackv5-button-placeholder-active' );
+						$wrap.find( 'span' ).addClass( 'articleFeedbackv5-button-placeholder-active' );
+
+						// check/uncheck radio buttons
+						$wrap.find( 'input' ).trigger( 'click' );
+
+						// set default comment message
+						var $element = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' );
+						var text = mw.msg( 'articlefeedbackv5-bucket6-question-comment-' + new_val );
+						$.articleFeedbackv5.currentBucket().placeHolder( $element, text );
+
+						// (re-)init countdown
+						var length = $.articleFeedbackv5.currentBucket().countdown( $( '.articleFeedbackv5-comment textarea' ) );
+
+						// allow feedback submission if there is feedback (or if Y/N was positive)
+						var enable = length > 0 || $( '#articleFeedbackv5-bucket6-toggle-yes').is( ':checked' );
+						$.articleFeedbackv5.enableSubmission( enable );
+					} );
+
+				// add character-countdown on feedback-field
+				$( document )
+					.on( 'keyup', '.articleFeedbackv5-comment textarea', function () {
+						var length = $.articleFeedbackv5.currentBucket().countdown( $( this ) );
+
+						// allow feedback submission if there is feedback (or if Y/N was positive)
+						var enable = length > 0 || $( '#articleFeedbackv5-bucket6-toggle-yes').is( ':checked' );
+						$.articleFeedbackv5.enableSubmission( enable );
+					} );
+
+				// clicking the back-link on step 2 should show step 1 again
+				$( document )
+					.on( 'click', '.articleFeedbackv5-arrow-back', function ( e ) {
+						e.preventDefault();
+						$.articleFeedbackv5.currentBucket().displayStep1( $block );
+					} );
+
+				// attach the submit
+				$block.find( '.articleFeedbackv5-submit' )
+					.click( function ( e ) {
+						e.preventDefault();
+						$.articleFeedbackv5.submitForm();
+					} );
+			},
+
+			// }}}
+			// {{{ getFormData
+
+			/**
+			 * Pulls down form data
+			 *
+			 * @return object the form data
+			 */
+			getFormData: function () {
+				var data = {};
+				var $check = $.articleFeedbackv5.find( '.articleFeedbackv5-bucket6-toggle input[checked]' );
+				if ( $check.val() == 'yes' ) {
+					data.found = 1;
+				} else if ( $check.val() == 'no' ) {
+					data.found = 0;
+				}
+				data.comment = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' ).val();
+				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket6-question-comment-yes' );
+				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket6-question-comment-no' );
+				if ( data.comment == def_msg_yes || data.comment == def_msg_no ) {
+					data.comment = '';
+				}
+				return data;
+			},
+
+			// }}}
+			// {{{ localValidation
+
+			/**
+			 * Performs any local validation
+			 *
+			 * @param  object formdata the form data
+			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
+			 */
+			localValidation: function ( formdata ) {
+				var error = {};
+				var ok = true;
+				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
+					&& !( 'found' in formdata ) ) {
+					$.articleFeedbackv5.enableSubmission( false );
+					error.nofeedback = mw.msg( 'articlefeedbackv5-error-nofeedback' );
+					ok = false;
+				}
+				return ok ? false : error;
+			},
+
+			// }}}
+			// {{{ displayStep1
+
+			/**
+			 * Display step 1
+			 */
+			displayStep1: function ( $block ) {
+				$step1 = $( '.form-row', $block );
+				$step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit', $block );
+
+				// hide comment, disclosure & submit first (should only show after clicking Y/N)
+				$step1.show();
+				$step2.hide();
+
+				// remove back-arrow from title (if present)
+				$( '.articleFeedbackv5-title .articleFeedbackv5-arrow-back' ).remove();
+			},
+
+			// }}}
+			// {{{ displayStep2
+
+			/**
+			 * Display step 2
+			 */
+			displayStep2: function ( $block ) {
+				$step1 = $( '.form-row', $block );
+				$step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit', $block );
+
+				// show comment, disclosure & submit; hide Y/N buttons
+				$step2.show();
+				$step1.hide();
+
+				// spoof a keyup on the textarea, to init the character countdown
+				$( '#articleFeedbackv5-find-feedback' ).trigger( 'keyup' );
+
+				// add back-arrow in front of title
+				var $backLink = $( '<a href="#" class="articleFeedbackv5-arrow-back"></a>' );
+				$backLink.text( mw.msg( 'articlefeedbackv5-bucket6-backlink-text' ) );
+				$backLink.attr( 'title', mw.msg( 'articlefeedbackv5-bucket6-backlink-text' ) );
+				$( '.articleFeedbackv5-title' ).prepend( $backLink );
+			},
+
+			// }}}
+			// {{{ placeHolder
+
+			/**
+			 * Set placeholder text
+			 * 
+			 * @param $element the element to attach the placeholder to
+			 * @param text the text to serve as placeholder
+			 */
+			placeHolder: function ( $element, text ) {
+				// unbind previous placeholders (if any)
+				$element.unbind( 'focus keyup' );
+
+				// bind interaction for placeholder
+				$element
+					.focus( function () {
+						if ( $element.hasClass( 'inactive' ) ) {
+							$element.val( '' );
+						}
+						$element.removeClass( 'inactive' );
+					} )
+					.blur( function () {
+						if ( $element.val() == '' || $element.val() == text || $element.hasClass( 'inactive' ) ) {
+							$element.val( text );
+							$element.addClass( 'inactive' );
+						}
+					});
+
+				// trigger first blur, to init the placeholder
+				$element.trigger( 'blur' );
+			},
+
+			// }}}
+			// {{{ countdown
+
+			/**
+			 * Character countdown
+			 *
+			 * Note: will not do server-side check as well: this is only used to encourage people to keep their
+			 * feedback concise, there's no technical reason not to allow more
+			 *
+			 * @param $element the form element to count the characters down for
+			 * @return int the current amount of characters in the form field
+			 */
+			countdown: function ( $element ) {
+				var maxLength = 5000;
+
+				// grab the current length of the form element (or set to 0 if the current text is bogus placeholder)
+				var length = maxLength - $element.val().length;
+				if( $element.hasClass( 'inactive' ) ) length = maxLength;
+
+				// display the amount of characters
+				var message = mw.msg( 'articlefeedbackv5-bucket6-feedback-countdown' ).replace( '$1', length );
+				$( '#articlefeedbackv5-feedback-countdown' ).text( message );
+
+				// remove excessive characters
+				if ( length < 0 ) {
+					$element.val( $element.val().substr( 0, maxLength ) );
+				}
+				return maxLength - length;
+			}
+
+			// }}}
+
+		},
 
 		// }}}
 
@@ -1647,7 +1991,7 @@
 		// Find out which display bucket they go in:
 		// 1. Requested in query string (debug only)
 		// 2. Core bucketing
-		var knownBuckets = { '0': true, '1': true, '4': true };
+		var knownBuckets = { '0': true, '1': true, '4': true, '6': true };
 		var requested = mw.util.getParamValue( 'aftv5_form' );
 		var cfg = mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' );
 		if ( requested in knownBuckets ) {
@@ -1655,7 +1999,7 @@
 		} else {
 			var key = 'ext.articleFeedbackv5@' + cfg.version + '-form'
 			var bucketName = mw.user.bucket( key, cfg );
-			var nameMap = { zero: '0', one: '1', four: '4' };
+			var nameMap = { zero: '0', one: '1', four: '4', six: '6' };
 			$.articleFeedbackv5.bucketId = nameMap[bucketName];
 		}
 		if ( $.articleFeedbackv5.debug ) {
