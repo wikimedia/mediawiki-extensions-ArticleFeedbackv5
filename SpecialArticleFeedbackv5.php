@@ -163,7 +163,10 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	 * @param $param string the parameter passed in the url
 	 */
 	public function execute( $param ) {
-		global $wgArticleFeedbackv5DashboardCategory, $wgArticleFeedbackv5DefaultSorts, $wgArticleFeedbackv5DefaultFilters, $wgUser;
+		global $wgArticleFeedbackv5DashboardCategory,
+			$wgArticleFeedbackv5DefaultSorts, $wgArticleFeedbackv5DefaultFilters,
+			$wgUser, $wgRequest;
+
 		$out = $this->getOutput();
 		$out->addModuleStyles( 'ext.articleFeedbackv5.dashboard' );
 		$out->addModuleStyles( 'jquery.articleFeedbackv5.special' );
@@ -274,11 +277,13 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 
 		// JS variables
 		$out->addJsConfigVars( 'afPageId', $this->pageId );
+		$out->addJsConfigVars( 'afReferral', $wgRequest->getText( 'ref', 'url' ) );
 		// Only show the abuse counts to editors (ie, anyone allowed to
 		// hide content).
 		if ( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			$out->addJsConfigVars( 'afCanEdit', 1 );
 		}
+		$out->addJsConfigVars( 'afIsAnon', $wgUser->isAnon() );
 		$out->addJsConfigVars( 'afStartingFilter', $this->startingFilter );
 		$out->addJsConfigVars( 'afStartingFilterValue', $this->startingFilter == 'id' ? $this->feedbackId : null );
 		$out->addJsConfigVars( 'afStartingSort', $this->startingSort );
@@ -495,6 +500,21 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 					. Html::closeElement( 'div' )
 				);
 			}
+		}
+
+		// Survey button
+		global $wgArticleFeedbackv5SpecialPageSurveyUrl;
+		if ( $wgArticleFeedbackv5SpecialPageSurveyUrl ) {
+			$out->addHTML(
+				// <a href="{survey-url}" target="_blank" class="articleFeedbackv5-survey-button">
+				//   {msg:articlefeedbackv5-special-survey-button-text}
+				// </span>
+				Html::element( 'a', array(
+					'href'   => $wgArticleFeedbackv5SpecialPageSurveyUrl,
+					'target' => '_blank',
+					'class'  => 'articleFeedbackv5-survey-button',
+				), $this->msg( 'articlefeedbackv5-special-survey-button-text' )->text() )
+			);
 		}
 
 		// BETA notice
