@@ -840,7 +840,16 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getCTAId( $answers, $bucket ) {
 		global $wgArticleFeedbackv5SelectedCTA;
-		return $wgArticleFeedbackv5SelectedCTA;
+
+		// 1 default value for all form_ids
+		if ( is_int( $wgArticleFeedbackv5SelectedCTA ) ) {
+			return $wgArticleFeedbackv5SelectedCTA;
+		// cta_id for this form specifically
+		} elseif ( isset( $wgArticleFeedbackv5SelectedCTA[$bucket] ) ) {
+			return $wgArticleFeedbackv5SelectedCTA[$bucket];
+		}
+
+		return 0;
 	}
 
 	/**
