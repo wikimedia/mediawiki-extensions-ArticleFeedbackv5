@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn///Fs\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T17:50:32Z",
+      "side": 1,
+      "message": "That doesn\u0027t help, because the default action for stringifying a Message object is -\u003eescaped() as well IIRC. Either way, you should never rely on this, always explicitly use -\u003etext() (or -\u003eescaped() or -\u003eparse() or whatever)",
+      "revId": "cd96a226e57c5c80ac50c9d4e354b8eb4d2ce963",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
