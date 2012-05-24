@@ -191,6 +191,16 @@
 	 */
 	$.articleFeedbackv5.feedbackId = 0;
 
+	/**
+	 * The new feedback's permalink (collected on submit, for use in CTA5)
+	 */
+	$.articleFeedbackv5.permalink = undefined;
+
+	/**
+	 * The link to the special page (collected on submit, for use in CTA5)
+	 */
+	$.articleFeedbackv5.specialUrl = undefined;
+
 	// }}}
 	// {{{ Templates
 
@@ -995,6 +1005,16 @@
 			templates: {
 
 				/**
+				 * The template for the title
+				 */
+				title: '\
+					<div class="articleFeedbackv5-confirmation-text">\
+						<span class="articleFeedbackv5-confirmation-thanks"><html:msg key="cta-thanks" /></span>\
+						<span class="articleFeedbackv5-confirmation-follow-up"></span>\
+					</div>\
+					',
+
+				/**
 				 * The template for the whole block
 				 */
 				block: '\
@@ -1025,14 +1045,41 @@
 				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
 
 				// Fill in the link
-				var feedback_url = $.articleFeedbackv5.aftUrl;
-				var feedback_track_id = $.articleFeedbackv5.experiment() + '-' +
-					$.articleFeedbackv5.ctaName() + '-button_click-' +
-					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
+				var feedback_url = $.articleFeedbackv5.specialUrl;
+				var feedback_track_id = 'cta_view_feedback-button_click';
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl( feedback_url, feedback_track_id ) );
 
 				return $block;
+			},
+
+			// }}}
+			// {{{ getTitle
+
+			/**
+			 * Gets the title
+			 *
+			 * @return string the title
+			 */
+			getTitle: function () {
+				var $title = $( '<div></div>' )
+					.html( $.articleFeedbackv5.currentCTA().templates.title )
+					.localize( { 'prefix': 'articlefeedbackv5-' } );
+				var link = $.articleFeedbackv5.trackingUrl(
+					$.articleFeedbackv5.permalink,
+					'cta_view_feedback-link_click'
+				);
+				$title.find( '.articleFeedbackv5-confirmation-follow-up' )
+					.html( $.articleFeedbackv5.buildLink(
+						'articlefeedbackv5-cta5-confirmation-followup',
+						{
+							href: $.articleFeedbackv5.trackingUrl(
+								$.articleFeedbackv5.permalink,
+								'cta_view_feedback-link_click'
+							),
+							text: 'articlefeedbackv5-cta5-confirmation-followup-linktext'
+						} ) );
+				return $title.html();
 			},
 
 			// }}}
@@ -1043,11 +1090,13 @@
 			 */
 			afterBuild: function() {
 				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
+				// Track the impression
+				$.articleFeedbackv5.trackClick( 'cta_view_feedback-impression' );
 			}
 
 			// }}}
 
-		},
+		}
 
 		// }}}
 
@@ -2231,7 +2280,8 @@
 						&& 'aft_url' in data.articlefeedbackv5 ) {
 					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
 					$.articleFeedbackv5.selectCTA( data.articlefeedbackv5.cta_id );
-					$.articleFeedbackv5.aftUrl = data.articlefeedbackv5.aft_url;
+					$.articleFeedbackv5.specialUrl = data.articlefeedbackv5.aft_url;
+					$.articleFeedbackv5.permalink = data.articlefeedbackv5.permalink;
 					$.articleFeedbackv5.unlockForm();
 					$.articleFeedbackv5.showCTA( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
 					// Drop a cookie for a successful submit
@@ -2866,7 +2916,7 @@
 		if ( $.articleFeedbackv5.clickTracking && $.isFunction( $.trackActionWithInfo ) ) {
 			$.trackActionWithInfo(
 				$.articleFeedbackv5.prefix( trackingId ),
-				mw.config.get( 'wgTitle' ) + '|' + $.articleFeedbackv5.revisionId
+				mw.config.get( 'wgPageName' ) + '|' + $.articleFeedbackv5.revisionId
 			);
 		}
 	};
@@ -2892,7 +2942,7 @@
 			'eventid': id,
 			'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
 			'token': $.cookie( 'clicktracking-session' ),
-			'additional': mw.config.get( 'wgTitle' ) + '|' + $.articleFeedbackv5.revisionId,
+			'additional': mw.config.get( 'wgPageName' ) + '|' + $.articleFeedbackv5.revisionId,
 			'redirectto': url
 		} );
 	};

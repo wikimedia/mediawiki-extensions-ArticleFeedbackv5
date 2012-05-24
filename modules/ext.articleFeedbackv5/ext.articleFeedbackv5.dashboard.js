@@ -17,10 +17,11 @@ aft5_debug = function( any ) {
 jQuery( function( $ ) {
 
 	var ua = navigator.userAgent.toLowerCase();
-	// Rule out MSIE 6, iPhone, iPod, iPad, Android
+	// Rule out MSIE 6/7/8, iPhone, iPod, iPad, Android
 	if(
 		(ua.indexOf( 'msie 6' ) != -1) ||
-		/*(ua.indexOf( 'msie 7' ) != -1) ||*/
+		(ua.indexOf( 'msie 7' ) != -1) ||
+		(ua.indexOf( 'msie 8' ) != -1) ||
 		(ua.indexOf( 'firefox/2') != -1) ||
 		(ua.indexOf( 'firefox 2') != -1) ||
 		(ua.indexOf( 'android' ) != -1) ||
@@ -28,6 +29,10 @@ jQuery( function( $ ) {
 		(ua.indexOf( 'ipod' ) != -1 ) ||
 		(ua.indexOf( 'ipad' ) != -1)
 	) {
+		// Remove the extension's output & replace it with a warning to the user that his browser isn't supported
+		var warning = $( '#articlefeedbackv5-beta-message' ).text( mw.msg( 'articlefeedbackv5-unsupported-message' ) );
+		$( '#mw-content-text' ).empty().append( warning );
+
 		return;
 	}
 

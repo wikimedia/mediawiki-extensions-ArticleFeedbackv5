@@ -66,6 +66,7 @@ class ArticleFeedbackv5Hooks {
 			),
 			'dependencies' => array(
 				'mediawiki.util',
+				'jquery.clickTracking',
 			),
 		),
 		'jquery.articleFeedbackv5' => array(
@@ -96,6 +97,8 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-cta5-confirmation-title',
 				'articlefeedbackv5-cta5-confirmation-call',
 				'articlefeedbackv5-cta5-button-text',
+				'articlefeedbackv5-cta5-confirmation-followup',
+				'articlefeedbackv5-cta5-confirmation-followup-linktext',
 				'articlefeedbackv5-bucket1-title',
 				'articlefeedbackv5-bucket1-question-toggle',
 				'articlefeedbackv5-bucket1-toggle-found-yes',
@@ -205,6 +208,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-form-unoversight',
 				'articlefeedbackv5-comment-more',
 				'articlefeedbackv5-comment-less',
+				'articlefeedbackv5-unsupported-message',
 				'articlefeedbackv5-error-loading-feedback',
 				'articlefeedbackv5-loading-tag',
 
@@ -337,11 +341,16 @@ class ArticleFeedbackv5Hooks {
 	public static function beforePageDisplay( $out ) {
 		global $wgTitle;
 
-		$out->addModules( 'ext.articleFeedbackv5.startup' );
-
-		// Load module for talk-page
-		if( $wgTitle->getNamespace() == NS_TALK ) {
-			$out->addModules( 'ext.articleFeedbackv5.talk' );
+		// Load modules
+		switch ( $wgTitle->getNamespace() ) {
+			case NS_SPECIAL:
+				// note: ext.articleFeedbackv5.dashboard is being loaded from SpecialArticleFeedbackv5.php
+				break;
+			case NS_TALK:
+				$out->addModules( 'ext.articleFeedbackv5.talk' );
+				break;
+			default:
+				$out->addModules( 'ext.articleFeedbackv5.startup' );
 		}
 
 		return true;
