@@ -176,7 +176,7 @@ $wgArticleFeedbackv5Tracking = array(
 	),
 	// This version number is added to all tracking event names, so that changes in the software
 	// don't corrupt the data being collected. Bump this when you want to start a new "experiment".
-	'version' => 2,
+	'version' => 4,
 	// Let users be tracked for a month, and then rebucket them, allowing some churn
 	'expires' => 30,
 	// Track the event of users being bucketed - so we can be sure the odds
@@ -309,6 +309,13 @@ $wgArticleFeedbackv5SurveyUrls = array(
 	'2' => 'https://www.surveymonkey.com/s/aft5-2',
 	'3' => 'https://www.surveymonkey.com/s/aft5-3',
 );
+
+/**
+ * The full URL for the special page survey link
+ *
+ * @var string
+ */
+$wgArticleFeedbackv5SpecialPageSurveyUrl = 'https://www.surveymonkey.com/s/aft5-5';
 
 // Replace default emailcapture message
 $wgEmailCaptureAutoResponse['body-msg'] = 'articlefeedbackv5-emailcapture-response-body';

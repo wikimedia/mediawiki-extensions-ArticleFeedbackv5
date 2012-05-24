@@ -15,6 +15,17 @@
 }
 
 /** Notices **/
+.articleFeedbackv5-survey-button {
+	clear: right;
+	float: right;
+	display: block;
+	width: 167px;
+	height: 22px;
+	margin-top: 10px;
+	/* @embed */
+	background: url(images/survey-button.png) no-repeat;
+	text-indent: -9999px;
+}
 .articlefeedbackv5-beta-notice {
 	text-transform: uppercase;
 	color: #800;
