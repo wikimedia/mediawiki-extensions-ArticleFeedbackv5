@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn///N0\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T14:56:49Z",
+      "side": 1,
+      "message": "You should add qqq for this message, documenting that $1 is replaced with the followup-linktext message",
+      "revId": "0fbaee4e584b986ca5bf4010d93f61d26c744c06",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///NY\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T14:56:49Z",
+      "side": 1,
+      "message": "mw.user.anonymous() exists for this purpose",
+      "revId": "0fbaee4e584b986ca5bf4010d93f61d26c744c06",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///Mw\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T14:56:49Z",
+      "side": 1,
+      "message": "If that\u0027s the case, then why does your code use wgTitle (which has no namespace prefix) instead of wgPageName (which does have a namespace prefix)? Also, this seems more like a bug in the existing clicktracking wrapper functions than a feature, so you should fix them, not reimplement them.",
+      "revId": "0fbaee4e584b986ca5bf4010d93f61d26c744c06",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///Mk\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T14:56:49Z",
+      "side": 1,
+      "message": "This code is duplicated from the clickTrackingOn function added to ext.articleFeedback.talk.js elsewhere in this commit, which in turn I\u0027m pretty sure was duplicated from somewhere else. You should clean up this duplication.",
+      "revId": "0fbaee4e584b986ca5bf4010d93f61d26c744c06",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///Mg\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T14:56:49Z",
+      "side": 1,
+      "message": "Aren\u0027t all these functions (prefix, trackClick, trackActionURL and trackingUrl) duplicated from elsewhere in the extension?",
+      "revId": "0fbaee4e584b986ca5bf4010d93f61d26c744c06",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
