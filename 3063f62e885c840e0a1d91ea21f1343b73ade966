@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn///H4\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T17:31:32Z",
+      "side": 1,
+      "message": "This should use PLURAL. You can make PLURAL work in JS by having your module depend on mediawiki.jqueryMsg",
+      "revId": "3063f62e885c840e0a1d91ea21f1343b73ade966",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///Hc\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T17:31:32Z",
+      "side": 1,
+      "message": "Use var $step1 , otherwise $step1 is a global variable",
+      "revId": "3063f62e885c840e0a1d91ea21f1343b73ade966",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///HQ\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T17:31:32Z",
+      "side": 1,
+      "message": "More implicit globals here",
+      "revId": "3063f62e885c840e0a1d91ea21f1343b73ade966",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///Gs\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T17:31:32Z",
+      "side": 1,
+      "message": "We have a jquery.placeholder plugin in core you can use for this",
+      "revId": "3063f62e885c840e0a1d91ea21f1343b73ade966",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///Gk\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T17:31:32Z",
+      "side": 1,
+      "message": "So are you or aren\u0027t you checking it server-side? The way it\u0027s written is confusing, because \"as well\" implies a positive.",
+      "revId": "3063f62e885c840e0a1d91ea21f1343b73ade966",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///GY\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T17:31:32Z",
+      "side": 1,
+      "message": "You can use mw.msg( \u0027msgname\u0027, length ) for this",
+      "revId": "3063f62e885c840e0a1d91ea21f1343b73ade966",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
