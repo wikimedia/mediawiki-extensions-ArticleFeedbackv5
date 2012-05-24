@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn///Ic\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-24T17:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALn///N0\u003d",
+      "revId": "0fbaee4e584b986ca5bf4010d93f61d26c744c06",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALn///NY\u003d",
         "filename": "SpecialArticleFeedbackv5.php",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-05-24T14:56:49Z",
       "side": 1,
       "message": "mw.user.anonymous() exists for this purpose",
+      "revId": "0fbaee4e584b986ca5bf4010d93f61d26c744c06",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///IY\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-24T17:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALn///NY\u003d",
       "revId": "0fbaee4e584b986ca5bf4010d93f61d26c744c06",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn///H8\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-24T17:27:29Z",
+      "side": 1,
+      "message": "Fixed the wgPageName issue.  Will do the rest after deploy.",
+      "parentUuid": "AAAALn///Mw\u003d",
+      "revId": "0fbaee4e584b986ca5bf4010d93f61d26c744c06",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALn///Mk\u003d",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn///Hs\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-24T17:27:29Z",
+      "side": 1,
+      "message": "Will fix after deploy.",
+      "parentUuid": "AAAALn///Mk\u003d",
+      "revId": "0fbaee4e584b986ca5bf4010d93f61d26c744c06",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALn///Mg\u003d",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2012-05-24T14:56:49Z",
       "side": 1,
       "message": "Aren\u0027t all these functions (prefix, trackClick, trackActionURL and trackingUrl) duplicated from elsewhere in the extension?",
+      "revId": "0fbaee4e584b986ca5bf4010d93f61d26c744c06",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///Hw\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-05-24T17:27:29Z",
+      "side": 1,
+      "message": "Will fix after deploy.",
+      "parentUuid": "AAAALn///Mg\u003d",
       "revId": "0fbaee4e584b986ca5bf4010d93f61d26c744c06",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
