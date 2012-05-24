@@ -45,6 +45,29 @@
 	$.articleFeedbackv5special.apiUrl = mw.util.wikiScript( 'api' );
 
 	/**
+	 * Are we tracking clicks?
+	 */
+	$.articleFeedbackv5special.clickTracking = false;
+
+	/**
+	 * The current user type (anon|reg|mon)
+	 *
+	 * anon = Anonymous user
+	 * reg  = Registered user
+	 * mon  = Monitor (can see hidden feedback)
+	 */
+	$.articleFeedbackv5special.userType = undefined;
+
+	/**
+	 * The referral -- how the user got to this page
+	 *
+	 * url  = Typed in the url directly
+	 * cta  = Clicked on the link in CTA 5
+	 * talk = Clicked on the link in the talk page
+	 */
+	$.articleFeedbackv5special.referral = undefined;
+
+	/**
 	 * Controls for the list: sort, filter, continue flag, etc
 	 */
 	$.articleFeedbackv5special.listControls = {
@@ -147,6 +170,21 @@
 	 * Sets up the page
 	 */
 	$.articleFeedbackv5special.setup = function() {
+		// Are we tracking clicks?
+		$.articleFeedbackv5special.clickTracking = $.articleFeedbackv5special.checkClickTracking();
+
+		// Get the user type
+		if ( mw.user.anonymous() ) {
+			$.articleFeedbackv5special.userType = 'anon';
+		} else if ( mw.config.get( 'afCanEdit' ) ) {
+			$.articleFeedbackv5special.userType = 'mon';
+		} else {
+			$.articleFeedbackv5special.userType = 'reg';
+		}
+
+		// Get the referral
+		$.articleFeedbackv5special.referral = mw.config.get( 'afReferral' );
+
 		// Set up config vars, event binds, and do initial fetch.
 		$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
 		$.articleFeedbackv5special.setBinds();
@@ -209,6 +247,32 @@
 			mw.config.get( 'afContinue' ),
 			mw.config.get( 'afShowMore' )
 		);
+
+		// Track an impression
+		$.articleFeedbackv5special.trackClick( 'feedback_page-impression-' +
+			$.articleFeedbackv5special.referral + '-' +
+			$.articleFeedbackv5special.userType );
+	};
+
+	// }}}
+	// {{{ checkClickTracking
+
+	/**
+	 * Checks whether click tracking is turned on
+	 *
+	 * Only track users who have been assigned to the tracking group; don't bucket
+	 * at all if we're set to always ignore or always track.
+	 */
+	$.articleFeedbackv5special.checkClickTracking = function () {
+		var b = mw.config.get( 'wgArticleFeedbackv5Tracking' );
+		if ( b.buckets.ignore == 100 && b.buckets.track == 0 ) {
+			return false;
+		}
+		if ( b.buckets.ignore == 0 && b.buckets.track == 100 ) {
+			return true;
+		}
+		var key = 'ext.articleFeedbackv5@' + b.version + '-tracking'
+		return ( 'track' === mw.user.bucket( key, b ) );
 	};
 
 	// }}}
@@ -222,14 +286,21 @@
 			if ( $(this).val() == '' ) {
 				return false;
 			}
-			$.articleFeedbackv5special.listControls.filter   = $(this).val();
+			var id = $(this).val();
+			$.articleFeedbackv5special.listControls.filter   = id;
 			$.articleFeedbackv5special.listControls.continue = null;
 			$( '.articleFeedbackv5-filter-link' ).removeClass( 'filter-active' );
 			$.articleFeedbackv5special.loadFeedback( true );
+			// Track the filter change
+			$.articleFeedbackv5special.trackClick( 'feedback_page-click-' +
+				'f_' + $.articleFeedbackv5special.getFilterName( id ) + '-' +
+				$.articleFeedbackv5special.referral + '-' +
+				$.articleFeedbackv5special.userType );
 			return false;
 		} );
 
 		$( '.articleFeedbackv5-filter-link' ).bind( 'click', function( e ) {
+			e.preventDefault();
 			var	id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-filter-' );
 			$.articleFeedbackv5special.listControls.filter   = id;
 			$.articleFeedbackv5special.listControls.continue = null;
@@ -238,6 +309,11 @@
 			$( '.articleFeedbackv5-filter-link' ).removeClass( 'filter-active' );
 			$( '#articleFeedbackv5-special-filter-' + id).addClass( 'filter-active' );
 			$( '#articleFeedbackv5-filter-select' ).val( '' );
+			// Track the click
+			$.articleFeedbackv5special.trackClick( 'feedback_page-click-' +
+				'f_' + $.articleFeedbackv5special.getFilterName( id ) + '-' +
+				$.articleFeedbackv5special.referral + '-' +
+				$.articleFeedbackv5special.userType );
 		} );
 
 		$( '.articleFeedbackv5-sort-link' ).bind( 'click', function( e ) {
@@ -739,6 +815,97 @@
 		}
 		$.articleFeedbackv5special.activity[id][flag] = value;
 		$.articleFeedbackv5special.storeActivity();
+	};
+
+	// }}}
+	// {{{ prefix
+
+	/**
+	 * Utility method: Prefixes a key for cookies or events with extension and
+	 * version information
+	 *
+	 * @param  key    string name of event to prefix
+	 * @return string prefixed event name
+	 */
+	$.articleFeedbackv5special.prefix = function ( key ) {
+		var version = mw.config.get( 'wgArticleFeedbackv5Tracking' ).version || 0;
+		return 'ext.articleFeedbackv5@' + version + '-' + key;
+	};
+
+	// }}}
+	// {{{ trackClick
+
+	/**
+	 * Tracks a click
+	 *
+	 * @param trackingId string the tracking ID
+	 */
+	$.articleFeedbackv5special.trackClick = function ( trackingId ) {
+		if ( $.articleFeedbackv5special.clickTracking && $.isFunction( $.trackActionWithInfo ) ) {
+			$.trackActionWithInfo(
+				$.articleFeedbackv5special.prefix( trackingId ),
+				$.articleFeedbackv5special.page
+			);
+		}
+	};
+
+	// }}}
+	// {{{ trackActionURL
+
+	/**
+	 * Rewrites a URL to one that runs through the ClickTracking API module
+	 * which registers the event and redirects to the real URL
+	 *
+	 * This is a copy of the one out of the clicktracking javascript API
+	 * we have to do our OWN because there is no "additional" option in that
+	 * API which we MUST use for the article title
+	 *
+	 * @param {string} url URL to redirect to
+	 * @param {string} id Event identifier
+	 */
+	$.articleFeedbackv5special.trackActionURL = function( url, id ) {
+		return mw.config.get( 'wgScriptPath' ) + '/api.php?' + $.param( {
+			'action': 'clicktracking',
+			'format' : 'json',
+			'eventid': id,
+			'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
+			'token': $.cookie( 'clicktracking-session' ),
+			'additional': $.articleFeedbackv5special.page,
+			'redirectto': url
+		} );
+	};
+
+	// }}}
+	// {{{ trackingUrl
+
+	/**
+	 * Creates a URL that tracks a particular click
+	 *
+	 * @param url        string the url so far
+	 * @param trackingId string the tracking ID
+	 */
+	$.articleFeedbackv5special.trackingUrl = function ( url, trackingId ) {
+		if ( $.articleFeedbackv5special.clickTracking ) {
+			return $.articleFeedbackv5special.trackActionURL( url, $.articleFeedbackv5special.prefix( trackingId ) );
+		} else {
+			return url;
+		}
+	};
+
+	// }}}
+	// {{{ getFilterName
+
+	/**
+	 * Utility method: Gets the filter name from its internal-use ID
+	 *
+	 * @param  filter string the internal-use id of the filter
+	 * @return string the filter name for use in clicktracking
+	 */
+	$.articleFeedbackv5special.getFilterName = function ( filter ) {
+		filter = filter.replace( 'all-', '' );
+		filter = filter.replace( 'notdeleted-', '' );
+		filter = filter.replace( 'visible-', '' );
+		return filter;
 	};
 
 	// }}}

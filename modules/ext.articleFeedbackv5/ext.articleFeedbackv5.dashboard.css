@@ -15,15 +15,19 @@
 }
 
 /** Notices **/
-.articlefeedbackv5-beta-notice {
-	text-transform: uppercase;
-	color: #800;
-	font-size: 1.4em;
-	font-weight: normal;
+.articleFeedbackv5-survey-button {
+	clear: right;
+	float: right;
 	display: block;
-	position: relative;
-	top: 1.3em;
-	left: 3em;
+	width: 167px;
+	height: 22px;
+	margin-top: 10px;
+	/* @embed */
+	background: url(images/survey-button.png) no-repeat;
+	text-indent: -9999px;
+}
+#articlefeedbackv5-beta-message {
+	color: #444;
 }
 .articlefeedbackv5-special-disclaimer {
 	font-size: 1.125em;
