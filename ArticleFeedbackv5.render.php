@@ -366,7 +366,10 @@ class ArticleFeedbackv5Render {
 			$msg = 'articlefeedbackv5-form1-header-left-comment';
 		}
 		return $this->feedbackHead( $msg, $record[0] )
-			. $this->renderComment( $record['comment']->aa_response_text, $record[0]->af_id );
+			. $this->renderComment(
+				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
+				$record[0]->af_id
+			);
 	}
 
 	/**
@@ -383,7 +386,10 @@ class ArticleFeedbackv5Render {
 		// * articlefeedbackv5-form2-header-question
 		// * articlefeedbackv5-form2-header-suggestion
 		return $this->feedbackHead( "articlefeedbackv5-form2-header-$type", $record[0], $type )
-			. $this->renderComment( $record['comment']->aa_response_text, $record[0]->af_id );
+			. $this->renderComment(
+				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
+				$record[0]->af_id
+			);
 	}
 
 	/**
@@ -394,7 +400,10 @@ class ArticleFeedbackv5Render {
 	 */
 	private function renderBucket3( $record ) {
 		return $this->feedbackHead( 'articlefeedbackv5-form3-header', $record[0], $record['rating']->aa_response_rating )
-			. $this->renderComment( $record['comment']->aa_response_text, $record[0]->af_id );
+			. $this->renderComment(
+				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
+				$record[0]->af_id
+			);
 	}
 
 	/**
