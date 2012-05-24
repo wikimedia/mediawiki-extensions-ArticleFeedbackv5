@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn///Qo\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T12:24:36Z",
+      "side": 1,
+      "message": "This will double-escape the message, because ::element() already escapes its input. Either use -\u003etext() in combination with Html::element(), or use -\u003eescaped() in combination with Html::rawElement()",
+      "revId": "9b7853d34e9ea866112bb29cad808367b3326d73",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///Qk\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-05-24T12:24:36Z",
+      "side": 1,
+      "message": "And replace it with a .... what?",
+      "revId": "9b7853d34e9ea866112bb29cad808367b3326d73",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
