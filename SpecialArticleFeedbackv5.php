@@ -163,7 +163,10 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	 * @param $param string the parameter passed in the url
 	 */
 	public function execute( $param ) {
-		global $wgArticleFeedbackv5DashboardCategory, $wgArticleFeedbackv5DefaultSorts, $wgArticleFeedbackv5DefaultFilters, $wgUser;
+		global $wgArticleFeedbackv5DashboardCategory,
+			$wgArticleFeedbackv5DefaultSorts, $wgArticleFeedbackv5DefaultFilters,
+			$wgUser, $wgRequest;
+
 		$out = $this->getOutput();
 		$out->addModuleStyles( 'ext.articleFeedbackv5.dashboard' );
 		$out->addModuleStyles( 'jquery.articleFeedbackv5.special' );
@@ -274,6 +277,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 
 		// JS variables
 		$out->addJsConfigVars( 'afPageId', $this->pageId );
+		$out->addJsConfigVars( 'afReferral', $wgRequest->getText( 'ref', 'url' ) );
 		// Only show the abuse counts to editors (ie, anyone allowed to
 		// hide content).
 		if ( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
@@ -459,6 +463,15 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	public function outputNotices() {
 		$out = $this->getOutput();
 
+		// Beta message
+		$out->addHTML(
+			Html::element(
+				'p',
+				array( 'id' => 'articlefeedbackv5-beta-message' ),
+				$this->msg( 'articlefeedbackv5-beta-message' )->text()
+			)
+		);
+
 		// Showing {count} posts
 		$out->addHTML(
 			// <div id="articleFeedbackv5-showing-count-wrap">
@@ -497,17 +510,20 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			}
 		}
 
-		// BETA notice
-		$out->addHTML(
-			// <span class="articlefeedbackv5-beta-notice">
-			//   {msg:articlefeedbackv5-beta-notice}
-			// </span>
-		    Html::element( 'span', array(
-			    'class' => 'articlefeedbackv5-beta-notice'
-		    ), $this->msg( 'articlefeedbackv5-beta-notice' )->text() )
-			// <div class="float-clear"></div>
-			. Html::element( 'div', array( 'class' => 'float-clear' ) )
-		);
+		// Survey button
+		global $wgArticleFeedbackv5SpecialPageSurveyUrl;
+		if ( $wgArticleFeedbackv5SpecialPageSurveyUrl ) {
+			$out->addHTML(
+				// <a href="{survey-url}" target="_blank" class="articleFeedbackv5-survey-button">
+				//   {msg:articlefeedbackv5-special-survey-button-text}
+				// </span>
+				Html::element( 'a', array(
+					'href'   => $wgArticleFeedbackv5SpecialPageSurveyUrl,
+					'target' => '_blank',
+					'class'  => 'articleFeedbackv5-survey-button',
+				), $this->msg( 'articlefeedbackv5-special-survey-button-text' )->text() )
+			);
+		}
 
 		// Link to add feedback (view article)
 		if ( $this->pageId ) {
