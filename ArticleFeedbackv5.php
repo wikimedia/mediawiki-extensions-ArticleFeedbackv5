@@ -70,7 +70,7 @@ $wgArticleFeedbackv5RelevanceScoring = array(
 	);
 
 // Defines whether or not there should be a link to the corresponding feedback on the page's talk page
-$wgArticleFeedbackv5TalkPageLink = true;
+$wgArticleFeedbackv5TalkPageLink = false;
 
 // Email address to send oversight request emails to, if set to null no emails are sent
 $wgArticleFeedbackv5OversightEmails = null;
