@@ -6,10 +6,11 @@
 jQuery( function( $ ) {
 
 	var ua = navigator.userAgent.toLowerCase();
-	// Rule out MSIE 6, iPhone, iPod, iPad, Android
-	if (
+	// Rule out MSIE 6/7/8, iPhone, iPod, iPad, Android
+	if(
 		(ua.indexOf( 'msie 6' ) != -1) ||
-		/*(ua.indexOf( 'msie 7' ) != -1) ||*/
+		(ua.indexOf( 'msie 7' ) != -1) ||
+		(ua.indexOf( 'msie 8' ) != -1) ||
 		(ua.indexOf( 'firefox/2') != -1) ||
 		(ua.indexOf( 'firefox 2') != -1) ||
 		(ua.indexOf( 'android' ) != -1) ||
