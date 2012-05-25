@@ -293,7 +293,6 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			$out->addJsConfigVars( 'afContinue', $fetched->continue );
 		}
 		$out->addJsConfigVars( 'afShowMore', $fetched->showMore );
-		$out->addModules( 'ext.articleFeedbackv5.dashboard' );
 
 	}
 
