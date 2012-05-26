@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//+fE\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-05-26T09:58:50Z",
+      "side": 1,
+      "message": "Please use a different message key, as the translations are no longer compatible.",
+      "revId": "e98a5bdf695e77aedb2806ff03c3f27945f5904f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
