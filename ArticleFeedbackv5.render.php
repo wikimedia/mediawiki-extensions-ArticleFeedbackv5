@@ -101,9 +101,6 @@ class ArticleFeedbackv5Render {
 		// Build the footer
 		$footer = $this->renderFooter( $record );
 
-		// Build the tag block (featured/resolved markers)
-		$tagblock = $this->renderTagBlock( $record );
-
 		// Build the toolbox
 		$toolbox = $this->renderToolbox( $record );
 
@@ -157,9 +154,6 @@ class ArticleFeedbackv5Render {
 				. Html::closeElement( 'div' )
 				// {toolbox, e.g. feature, hide}
 				. $toolbox
-				// {tagblock, e.g. featured, resolved}
-				// (rendered second because it's float:right)
-				. $tagblock
 			// </div>
 			. Html::closeElement( 'div' )
 			// {info section for permalinks}
@@ -480,6 +474,8 @@ class ArticleFeedbackv5Render {
 				. Html::rawElement( 'h3', array(), $parsedMsg )
 				// {permalink/timestamp}
 				. $this->renderPermalinkTimestamp( $record )
+				// The tag block (featured/resolved markers)
+				. $this->renderTagBlock( $record )
 			// </div>
 			. Html::closeElement( 'div' );
 	}
@@ -695,19 +691,19 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the tag block
 	 *
-	 * @param  $record array the record, with keys 0 + answers
+	 * @param  $record stdClass the record (from the 0 index)
 	 * @return string  the rendered tag block
 	 */
 	private function renderTagBlock( $record ) {
 		global $wgLang;
-		$id = $record[0]->af_id;
+		$id = $record->af_id;
 
 		// <div class="articleFeedbackv5-comment-tags">
 		$html = Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-comment-tags',
 		) );
 
-		if ( $record[0]->af_is_featured ) {
+		if ( $record->af_is_featured ) {
 			// <span class="articleFeedbackv5-featured-marker">
 			//   {msg:articlefeedbackv5-featured-marker}
 			// </span>
@@ -716,7 +712,7 @@ class ArticleFeedbackv5Render {
 			), wfMessage( 'articlefeedbackv5-featured-marker' )->text() );
 		}
 
-		if ( $record[0]->af_is_resolved ) {
+		if ( $record->af_is_resolved ) {
 			// <span class="articleFeedbackv5-resolved-marker">
 			//   {msg:articlefeedbackv5-resolved-marker}
 			// </span>

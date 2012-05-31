@@ -420,8 +420,9 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5LearnToEdit,
 			$wgArticleFeedbackv5SurveyUrls,
 			$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay,
-			$wgUser,
-			$wgArticleFeedbackv5TalkPageLink;
+			$wgArticleFeedbackv5TalkPageLink,
+			$wgArticleFeedbackv5DefaultSorts,
+			$wgUser;
 		$vars['wgArticleFeedbackv5SMaxage'] = $wgArticleFeedbackv5SMaxage;
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
@@ -439,6 +440,9 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5TermsPage'] = wfMsgForContent( 'articlefeedbackv5-transparency-terms-url' );
 		$vars['wgArticleFeedbackv5SurveyUrls'] = $wgArticleFeedbackv5SurveyUrls;
 		$vars['wgArticleFeedbackv5InitialFeedbackPostCountToDisplay'] = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
+		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
+		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
+		$vars['wgArticleFeedbackv5DefaultSorts'] = $wgArticleFeedbackv5DefaultSorts;
 		$vars['wgArticleFeedbackv5Permissions'] = array(
 			'oversighter' => $wgUser->isAllowed( 'aftv5-delete-feedback' ),
 			'moderator' => $wgUser->isAllowed( 'aftv5-hide-feedback' ),
