@@ -101,9 +101,6 @@ class ArticleFeedbackv5Render {
 		// Build the footer
 		$footer = $this->renderFooter( $record );
 
-		// Build the tag block (featured/resolved markers)
-		$tagblock = $this->renderTagBlock( $record );
-
 		// Build the toolbox
 		$toolbox = $this->renderToolbox( $record );
 
@@ -157,9 +154,6 @@ class ArticleFeedbackv5Render {
 				. Html::closeElement( 'div' )
 				// {toolbox, e.g. feature, hide}
 				. $toolbox
-				// {tagblock, e.g. featured, resolved}
-				// (rendered second because it's float:right)
-				. $tagblock
 			// </div>
 			. Html::closeElement( 'div' )
 			// {info section for permalinks}
@@ -480,6 +474,8 @@ class ArticleFeedbackv5Render {
 				. Html::rawElement( 'h3', array(), $parsedMsg )
 				// {permalink/timestamp}
 				. $this->renderPermalinkTimestamp( $record )
+				// The tag block (featured/resolved markers)
+				. $this->renderTagBlock( $record )
 			// </div>
 			. Html::closeElement( 'div' );
 	}
@@ -644,6 +640,9 @@ class ArticleFeedbackv5Render {
 					)
 				)->escaped() )
 			->escaped();
+		$counts = wfMessage( 'articlefeedbackv5-form-helpful-votes-count',
+				$record[0]->af_helpful_count,
+				$record[0]->af_unhelpful_count )->text();
 		$footer .=
 			// <span class="articleFeedbackv5-helpful-votes"
 			//   id="articleFeedbackv5-helpful-votes-{$id}">
@@ -651,7 +650,8 @@ class ArticleFeedbackv5Render {
 			// </span>
 			Html::rawElement( 'span', array(
 				'class' => 'articleFeedbackv5-helpful-votes',
-				'id'    => "articleFeedbackv5-helpful-votes-$id"
+				'id'    => "articleFeedbackv5-helpful-votes-$id",
+				'title' => $counts,
 			), $percent );
 
 
@@ -660,30 +660,41 @@ class ArticleFeedbackv5Render {
 
 		// Add abuse flagging
 		if ( $this->hasPermission( 'can_flag' ) ) {
-			$aclass = 'articleFeedbackv5-abuse-link';
 			global $wgArticleFeedbackv5AbusiveThreshold;
-			if ( $record[0]->af_abuse_count >= $wgArticleFeedbackv5AbusiveThreshold ) {
-				$aclass .= ' abusive';
-			}
-			// Count masked if user cannot hide comments (as per Fabrice)
-			// Message can be:
-			//  * articlefeedbackv5-form-abuse
-			//  * articlefeedbackv5-form-abuse-masked
-			$msg = 'articlefeedbackv5-form-abuse';
-			if ( !$this->hasPermission( 'can_hide' ) ) {
-				$msg .= '-masked';
-			}
 			// <a id="articleFeedbackv5-abuse-link-{$id}"
-			//   class="articleFeedbackv5-abuse-link{-abusive?}"
+			//   class="articleFeedbackv5-abuse-link"
 			//   href="#" rel="{abuse count}">
-			//   {msg:articlefeedbackv5-form-abuse{-masked?}}
+			//   {msg:articlefeedbackv5-form-abuse}
 			// </a>
 			$footer .= Html::element( 'a', array(
-				'id'    => "articleFeedbackv5-abuse-link-$id",
-				'class' => $aclass,
-				'href'  => '#',
-				'rel'   => $record[0]->af_abuse_count
-			), wfMessage( $msg, $wgLang->formatNum( $record[0]->af_abuse_count ) )->text() );
+					'id'    => "articleFeedbackv5-abuse-link-$id",
+					'class' => 'articleFeedbackv5-abuse-link',
+					'href'  => '#',
+				), wfMessage(
+					'articlefeedbackv5-form-abuse',
+					$wgLang->formatNum( $record[0]->af_abuse_count ) )->text()
+			);
+
+			// Count not displayed if user cannot hide comments (as per Fabrice)
+			if ( $this->hasPermission( 'can_hide' ) ) {
+				$aclass = 'articleFeedbackv5-abuse-count';
+				if ( $record[0]->af_abuse_count >= $wgArticleFeedbackv5AbusiveThreshold ) {
+					$aclass .= ' abusive';
+				}
+				// <span id="articleFeedbackv5-abuse-count-{$id}"
+				//   class="articleFeedbackv5-abuse-link{-abusive?}"
+				//   href="#" rel="{abuse count}">
+				//   {msg:articlefeedbackv5-form-abuse-count}
+				// </span>
+				$footer .= Html::element( 'span', array(
+						'id'    => "articleFeedbackv5-abuse-count-$id",
+						'class' => $aclass,
+						'href'  => '#',
+					), wfMessage(
+						'articlefeedbackv5-form-abuse-count',
+						$wgLang->formatNum( $record[0]->af_abuse_count ) )->text()
+				);
+			}
 		}
 
 		// </div>
@@ -695,19 +706,19 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the tag block
 	 *
-	 * @param  $record array the record, with keys 0 + answers
+	 * @param  $record stdClass the record (from the 0 index)
 	 * @return string  the rendered tag block
 	 */
 	private function renderTagBlock( $record ) {
 		global $wgLang;
-		$id = $record[0]->af_id;
+		$id = $record->af_id;
 
 		// <div class="articleFeedbackv5-comment-tags">
 		$html = Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-comment-tags',
 		) );
 
-		if ( $record[0]->af_is_featured ) {
+		if ( $record->af_is_featured ) {
 			// <span class="articleFeedbackv5-featured-marker">
 			//   {msg:articlefeedbackv5-featured-marker}
 			// </span>
@@ -716,7 +727,7 @@ class ArticleFeedbackv5Render {
 			), wfMessage( 'articlefeedbackv5-featured-marker' )->text() );
 		}
 
-		if ( $record[0]->af_is_resolved ) {
+		if ( $record->af_is_resolved ) {
 			// <span class="articleFeedbackv5-resolved-marker">
 			//   {msg:articlefeedbackv5-resolved-marker}
 			// </span>
