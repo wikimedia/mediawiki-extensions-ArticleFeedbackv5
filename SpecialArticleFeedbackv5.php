@@ -27,6 +27,13 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	private $filters;
 
 	/**
+	 * The sorts available
+	 *
+	 * @var array
+	 */
+	private $sorts;
+
+	/**
 	 * Whether to show featured feedback
 	 *
 	 * @var bool
@@ -130,7 +137,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		$this->showDeleted = $wgUser->isAllowed( 'aftv5-see-deleted-feedback' );
 		$this->showFeatured = $wgUser->isAllowed( 'aftv5-feature-feedback' );
 		$this->filters = $this->defaultFilters;
-		$this->sorts = ArticleFeedbackv5Fetch::$knownSorts;
+		$this->sorts = array( 'relevance-asc', 'relevance-desc', 'helpful-desc', 'helpful-asc', 'age-desc', 'age-asc' );
 
 		if ( $this->showDeleted ) {
 			array_push( $this->filters,
@@ -208,41 +215,11 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			}
 		}
 
-		// Decide on our default filter key name
-		if ( $this->feedbackId ) {
-			$default = 'id';
-		} elseif ( $this->showDeleted ) {
-			$default = $wgArticleFeedbackv5DefaultFilters['deleted'];
-		} elseif ( $this->showHidden ) {
-			$default = $wgArticleFeedbackv5DefaultFilters['hidden'];
-		} elseif ( $this->showFeatured ) {
-			$default = $wgArticleFeedbackv5DefaultFilters['featured'];
-		} else {
-			$default = $wgArticleFeedbackv5DefaultFilters['all'];
-		}
-		if ( !isset( $counts[$default] ) || $counts[$default] == 0 ) {
-			if ( $default == 'visible-relevant' ) {
-				$default = 'visible-comment';
-			}
-		}
-		$this->startingFilter = $default;
-
-		// Decide on our default sort info
-		if ( $this->pageId ) {
-			if ( $this->showDeleted ) {
-				list( $default, $dir ) = $wgArticleFeedbackv5DefaultSorts['deleted'];
-			} elseif ( $this->showHidden ) {
-				list( $default, $dir ) = $wgArticleFeedbackv5DefaultSorts['hidden'];
-			} elseif ( $this->showFeatured ) {
-				list( $default, $dir ) = $wgArticleFeedbackv5DefaultSorts['featured'];
-			} else {
-				list( $default, $dir ) = $wgArticleFeedbackv5DefaultSorts['all'];
-			}
-		} else {
-			list( $default, $dir ) = $wgArticleFeedbackv5DefaultSorts['central'];
-		}
-		$this->startingSort = $default;
-		$this->startingSortDirection = $dir;
+		// Select filter, sort, and sort direction
+		$this->setFilterSortDirection(
+			$wgRequest->getText( 'filter' ),
+			$wgRequest->getText( 'sort' )
+		);
 
 		// Fetch
 		$fetch = new ArticleFeedbackv5Fetch( $this->startingFilter,
@@ -561,60 +538,6 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	public function outputControls() {
 		$out = $this->getOutput();
 
-		// Sorting
-		$sortLabels = array();
-		foreach ( $this->sorts as $sort ) {
-			if ( $this->startingSort == $sort ) {
-				$sort_class = 'articleFeedbackv5-sort-link sort-active';
-				$arrow_class = 'articleFeedbackv5-sort-arrow sort-' . $this->startingSortDirection;
-			} else {
-				$sort_class = 'articleFeedbackv5-sort-link';
-				$arrow_class = 'articleFeedbackv5-sort-arrow';
-			}
-			// <a href="#" id="articleFeedbackv5-special-sort-{$sort}"
-			//   class="articleFeedbackv5-sort-link">
-			$sortLabels[] = Html::openElement( 'a',
-					array(
-						'href'  => '#',
-						'id'    => 'articleFeedbackv5-special-sort-' . $sort,
-						'class' => $sort_class
-					)
-				)
-				// {msg:articlefeedbackv5-special-sort-{$sort}}
-				// Messages are:
-				//  * articlefeedbackv5-special-sort-relevance
-				//  * articlefeedbackv5-special-sort-helpful
-				//  * articlefeedbackv5-special-sort-rating
-				//  * articlefeedbackv5-special-sort-age
-				. $this->msg( 'articlefeedbackv5-special-sort-' . $sort )->escaped()
-				// <span id="articleFeedbackv5-sort-arrow-{$sort}"
-				//   class="articleFeedbackv5-sort-arrow">
-				// </span>
-				. Html::element( 'span',
-					array(
-					'id'    => 'articleFeedbackv5-sort-arrow-' . $sort,
-					'class' => $arrow_class
-					)
-				)
-			// </a>
-			. Html::closeElement( 'a' );
-		}
-		$sortBlock =
-			// <div id="articleFeedbackv5-sort">
-			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-sort' ) )
-				// <span class="articleFeedbackv5-sort-label">
-				. Html::openElement( 'span', array( 'class' => 'articleFeedbackv5-sort-label' ) )
-					// {msg:articlefeedbackv5-special-sort-label-before}
-					. $this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
-				// </span>
-				. Html::closeElement( 'span' )
-				// {pipe-separated sort labels}
-				. implode( $this->msg( 'pipe-separator' )->escaped(), $sortLabels )
-				// {msg:articlefeedbackv5-special-sort-label-after}
-				. $this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
-			// </div>
-			. Html::closeElement( 'div' );
-
 		// Filtering
 		$filterBlock = '';
 		$counts = $this->getFilterCounts();
@@ -649,7 +572,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			. Html::closeElement( 'a' );
 		}
 
-		$selectHtml = '';
+		$filterSelectHtml = '';
 		$opts = array();
 		foreach ( $this->filters as $filter ) {
 			$count = array_key_exists( $filter, $counts ) ? $counts[$filter] : 0;
@@ -671,8 +594,9 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			//   <option value="{each filter name}">{each filter message}</option>
 			// </select>
 			$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter-select' );
+			$filterSelect->setDefault( $this->startingFilter );
 			$filterSelect->addOptions( $opts );
-			$selectHtml = $this->msg( 'pipe-separator' )->escaped() . $filterSelect->getHTML();
+			$filterSelectHtml = $filterSelect->getHTML();
 		}
 
 		$filterBlock =
@@ -684,12 +608,50 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 					. $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
 				// </span>
 				. Html::closeElement( 'span' )
-				// {pipe-separated filter labels}
-				. implode( $this->msg( 'pipe-separator' )->escaped(), $filterLabels )
-				// {filter select}
-				. $selectHtml
+				// {filter labels}
+				. implode( ' ', $filterLabels )
+				// <div id="">
+				. Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-select-wrapper' ) )
+					// {filter select}
+					. $filterSelectHtml
+				// </div>
+				. Html::closeElement( 'div' )
 				// {msg:articlefeedbackv5-special-filter-label-after'}
 				. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
+			// </div>
+			. Html::closeElement( 'div' );
+
+		// Sorting
+		$opts = array();
+		foreach ( $this->sorts as $sort ) {
+			// Messages are:
+			//  * articlefeedbackv5-special-sort-relevance-desc
+			//  * articlefeedbackv5-special-sort-relevance-asc
+			//  * articlefeedbackv5-special-sort-age-desc
+			//  * articlefeedbackv5-special-sort-age-asc
+			$key = $this->msg( 'articlefeedbackv5-special-sort-' . $sort )->escaped();
+			$opts[ (string) $key ] = $sort;
+		}
+		// <select id="articleFeedbackv5-sort-select">
+		//   <option value="{each sort name}">{each sort message}</option>
+		// </select>
+		$sortSelect = new XmlSelect( false, 'articleFeedbackv5-sort-select' );
+		$sortSelect->setDefault( $this->startingSort . '-' . $this->startingSortDirection );
+		$sortSelect->addOptions( $opts );
+
+		$sortBlock =
+			// <div id="articleFeedbackv5-sort">
+			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-sort' ) )
+				// <span class="articleFeedbackv5-sort-label">
+				. Html::openElement( 'span', array( 'class' => 'articleFeedbackv5-sort-label' ) )
+					// {msg:articlefeedbackv5-special-sort-label-before}
+					. $this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
+				// </span>
+				. Html::closeElement( 'span' )
+				// {sort select}
+				. $sortSelect->getHTML()
+				// {msg:articlefeedbackv5-special-sort-label-after}
+				. $this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
 			// </div>
 			. Html::closeElement( 'div' );
 
@@ -763,26 +725,105 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	 * @return array the counts, as filter => count
 	 */
 	private function getFilterCounts() {
-		$rv   = array();
-		$dbr  = wfGetDB( DB_SLAVE );
-		$rows = $dbr->select(
-			'aft_article_filter_count',
-			array(
-				'afc_filter_name',
-				'afc_filter_count'
-			),
-			array(
-				'afc_page_id' => $this->pageId ? $this->pageId : 0
-			),
-			array(),
-			__METHOD__
-		);
+		if ( !isset( $this->filterCounts ) ) {
+			$rv   = array();
+			$dbr  = wfGetDB( DB_SLAVE );
+			$rows = $dbr->select(
+				'aft_article_filter_count',
+				array(
+					'afc_filter_name',
+					'afc_filter_count'
+				),
+				array(
+					'afc_page_id' => $this->pageId ? $this->pageId : 0
+				),
+				array(),
+				__METHOD__
+			);
+			foreach ( $rows as $row ) {
+				$rv[ $row->afc_filter_name ] = $row->afc_filter_count;
+			}
+			$this->filterCounts = $rv;
+		}
+		return $this->filterCounts;
+	}
 
-		foreach ( $rows as $row ) {
-			$rv[ $row->afc_filter_name ] = $row->afc_filter_count;
+	/**
+	 * Sets the filter, sort, and sort direction based on what was passed in
+	 *
+	 * @param $filter string the requested filter
+	 * @param $sort   string the requested sort
+	 */
+	public function setFilterSortDirection( $filter, $sort ) {
+		global $wgArticleFeedbackv5DefaultFilters,
+			$wgArticleFeedbackv5DefaultSorts;
+
+		// Was a filter requested?
+		if ( $filter ) {
+			if ( in_array( $filter, $this->filters ) ) {
+				// pass through;
+			} elseif ( in_array( 'all-' . $filter, $this->filters ) ) {
+				$filter = 'all-' . $filter;
+			} elseif ( in_array( 'notdeleted-' . $filter, $this->filters ) ) {
+				$filter = 'notdeleted-' . $filter;
+			} elseif ( in_array( 'visible-' . $filter, $this->filters ) ) {
+				$filter = 'visible-' . $filter;
+			} else {
+				$filter = false;
+			}
 		}
 
-		return $rv;
+		// Find the default filter
+		if ( !$filter ) {
+			if ( $this->feedbackId ) {
+				$filter = 'id';
+			} elseif ( $this->showDeleted ) {
+				$filter = $wgArticleFeedbackv5DefaultFilters['deleted'];
+			} elseif ( $this->showHidden ) {
+				$filter = $wgArticleFeedbackv5DefaultFilters['hidden'];
+			} elseif ( $this->showFeatured ) {
+				$filter = $wgArticleFeedbackv5DefaultFilters['featured'];
+			} else {
+				$filter = $wgArticleFeedbackv5DefaultFilters['all'];
+			}
+		}
+
+		// Switch from relevant to all comments if the count is zero
+		$counts = $this->getFilterCounts();
+		if ( !isset( $counts[$filter] ) || $counts[$filter] == 0 ) {
+			if ( $filter == 'visible-relevant' ) {
+				$filter = 'visible-comment';
+			}
+		}
+
+		// Was a sort requested?
+		if ( $sort ) {
+			if ( in_array( $sort, $this->sorts ) ) {
+				list( $sort, $dir ) = explode( '-', $sort );
+			} else {
+				$sort = false;
+			}
+		}
+
+		// Decide on our default sort info
+		if ( !$sort ) {
+			$key = $this->shortFilter( $filter );
+			list( $sort, $dir ) = $wgArticleFeedbackv5DefaultSorts[$key];
+		}
+
+		$this->startingFilter = $filter;
+		$this->startingSort = $sort;
+		$this->startingSortDirection = $dir;
+	}
+
+	/**
+	 * Returns the starting filter with permissions info stripped out
+	 *
+	 * @param  $filter string the long filter name
+	 * @return string  the short filter name
+	 */
+	public function shortFilter( $filter ) {
+		return str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
 	}
 
 }

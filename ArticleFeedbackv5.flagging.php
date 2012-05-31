@@ -788,6 +788,9 @@ class ArticleFeedbackv5Flagging {
 							ApiArticleFeedbackv5Utils::percentHelpful( $helpful, $unhelpful )
 						)->escaped() )
 					->escaped();
+				$results['helpful_counts'] = wfMessage( 'articlefeedbackv5-form-helpful-votes-count' )
+					->params( $helpful, $unhelpful )
+					->escaped();
 
 				// Update net_helpfulness after flagging as helpful/unhelpful.
 				$dbw->update(
