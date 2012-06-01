@@ -82,6 +82,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-error-abuse',
 				'articlefeedbackv5-error-abuse-link',
 				'articlefeedbackv5-error-abuse-linktext',
+				'articlefeedbackv5-error-throttled',
 				'articlefeedbackv5-cta-confirmation-followup',
 				'articlefeedbackv5-cta1-confirmation-title',
 				'articlefeedbackv5-cta1-confirmation-call',
@@ -435,6 +436,7 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5LearnToEdit,
 			$wgArticleFeedbackv5SurveyUrls,
 			$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay,
+			$wgArticleFeedbackv5ThrottleThresholdPostsPerHour,
 			$wgArticleFeedbackv5TalkPageLink,
 			$wgArticleFeedbackv5DefaultSorts,
 			$wgUser;
@@ -454,6 +456,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMsgForContent( 'articlefeedbackv5-bucket5-form-panel-explanation-link' );
 		$vars['wgArticleFeedbackv5SurveyUrls'] = $wgArticleFeedbackv5SurveyUrls;
 		$vars['wgArticleFeedbackv5InitialFeedbackPostCountToDisplay'] = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
+		$vars['wgArticleFeedbackv5ThrottleThresholdPostsPerHour'] = $wgArticleFeedbackv5ThrottleThresholdPostsPerHour;
 		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
 		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
 		$vars['wgArticleFeedbackv5DefaultSorts'] = $wgArticleFeedbackv5DefaultSorts;

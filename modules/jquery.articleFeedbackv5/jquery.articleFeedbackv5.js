@@ -204,6 +204,11 @@
 	 */
 	$.articleFeedbackv5.specialUrl = undefined;
 
+	/**
+	 * How many feedback posts per hour a given user should be allowed (site-wide).
+	 */
+	$.articleFeedbackv5.throttleThresholdPostsPerHour = mw.config.get( 'wgArticleFeedbackv5ThrottleThresholdPostsPerHour' );
+
 	// }}}
 	// {{{ Templates
 
@@ -2513,6 +2518,42 @@
 				$.articleFeedbackv5.markFormErrors( errors );
 				return;
 			}
+		}
+
+		// check throttling
+		if ( $.articleFeedbackv5.throttleThresholdPostsPerHour != -1 ) {
+			var now = Date.now();
+			var msInHour = 3600000;
+
+			var priorTimestamps = new Array();
+			var savedTimestamps = new Array();
+
+			var priorCookieValue = $.cookie( $.articleFeedbackv5.prefix( 'submission_timestamps' ) );
+			if ( priorCookieValue != null ) {
+				var priorTimestamps = priorCookieValue.split( ',' );
+			}
+
+			for ( var i = 0; i < priorTimestamps.length; i++ ) {
+				if ( now - priorTimestamps[i] <= msInHour ) {
+					savedTimestamps.push( priorTimestamps[i] );
+				}
+			}
+
+			var postsInLastHour = savedTimestamps.length;
+
+			if ( postsInLastHour >= $.articleFeedbackv5.throttleThresholdPostsPerHour ) {
+				// display throttling message
+				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-throttled' ) );
+
+				// re-store pruned post timestamp list
+				$.cookie( $.articleFeedbackv5.prefix( 'submission_timestamps' ), savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
+
+				return;
+			}
+
+			// if we get this far, they haven't been throttled, so update the post timestamp list with the current time and re-store it
+			savedTimestamps.push(now);
+			$.cookie( $.articleFeedbackv5.prefix( 'submission_timestamps' ), savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
 		}
 
 		// Lock the form
