@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//8ZM\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-06-01T20:25:51Z",
+      "side": 1,
+      "message": "Double space between sentences.",
+      "revId": "c84ce75c3107e58fc1f95e8264a011060f8f5fa7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//8Yk\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-06-01T20:25:51Z",
+      "side": 1,
+      "message": "This looks like a little verbose and cryptic. Maybe it\u0027s possible t formulate this slightly less detailed and more user friendly?\n\nHas double spaces between sentences.",
+      "revId": "c84ce75c3107e58fc1f95e8264a011060f8f5fa7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//8YI\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-06-01T20:25:51Z",
+      "side": 1,
+      "message": "Is this Message actually used? I don\u0027t see It referenced in this patch set.",
+      "revId": "c84ce75c3107e58fc1f95e8264a011060f8f5fa7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//8YQ\u003d",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-06-01T20:25:51Z",
+      "side": 1,
+      "message": "Trailing whitespace",
+      "revId": "c84ce75c3107e58fc1f95e8264a011060f8f5fa7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//8YM\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2273,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-06-01T20:25:51Z",
+      "side": 1,
+      "message": "Multiple lines containing trailing whitespace",
+      "revId": "c84ce75c3107e58fc1f95e8264a011060f8f5fa7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
