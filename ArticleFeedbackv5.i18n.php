@@ -34,9 +34,9 @@ $messages['en'] = array(
 	'articlefeedbackv5-cta3-button-text' => 'Start the survey',
 	'articlefeedbackv5-cta5-confirmation-followup' => 'Your feedback has been $1.',
 	'articlefeedbackv5-cta5-confirmation-followup-linktext' => 'posted here',
-	'articlefeedbackv5-cta5-confirmation-title' => 'Help improve Wikipedia',
-	'articlefeedbackv5-cta5-confirmation-call' => 'See what others are saying about this article. Then let us know what you think.',
-	'articlefeedbackv5-cta5-button-text' => 'View feedback',
+	'articlefeedbackv5-cta5-confirmation-title' => 'See what others are saying',
+	'articlefeedbackv5-cta5-confirmation-call' => 'View suggestions from other readers like you. Can you help pick the best ideas?',
+	'articlefeedbackv5-cta5-button-text' => 'See all comments',
 
 	/* Error Messages */
 	'articlefeedbackv5-error' => 'An error has occurred. Please try again later.',
