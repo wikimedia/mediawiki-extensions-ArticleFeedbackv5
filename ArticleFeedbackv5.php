@@ -281,6 +281,17 @@ $wgArticleFeedbackv5AbuseFiltering = false;
 $wgArticleFeedbackv5AbuseFilterGroup = 'feedback';
 
 /**
+ * How many feedback posts per hour before triggering a throttling response.
+ *
+ * This is per-user and is governed by last-posted timestamps stored in a cookie.
+ * If this is set to -1, the number of posts is not throttled.
+ *
+ * @var int
+ */
+
+$wgArticleFeedbackv5ThrottleThresholdPostsPerHour = 20;
+
+/**
  * The full URL for a discussion page about the Article Feedback Dashboard
  *
  * Since the dashboard is powered by a SpecialPage, we cannot rel on the built-in
@@ -345,6 +356,7 @@ $wgExtensionCredits['other'][] = array(
 		'Timo Tijhof',
 		'Ryan Kaldari',
 		'Elizabeth M Smith',
+		'Michael Jackson',
 	),
 	'version' => '0.0.1',
 	'descriptionmsg' => 'articlefeedbackv5-desc',
