@@ -283,7 +283,7 @@ $wgArticleFeedbackv5AbuseFilterGroup = 'feedback';
 /**
  * How many feedback posts per hour before triggering a throttling response.
  *
- * This is per-user and is governed by last-posted timestamps stored in a cookie.  
+ * This is per-user and is governed by last-posted timestamps stored in a cookie.
  * If this is set to -1, the number of posts is not throttled.
  *
  * @var int

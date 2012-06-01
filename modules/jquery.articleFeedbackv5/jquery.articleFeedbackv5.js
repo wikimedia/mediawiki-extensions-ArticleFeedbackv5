@@ -2270,17 +2270,17 @@
 			}
 
 			var postsInLastHour = savedTimestamps.length;
-			
+
 			if ( postsInLastHour >= $.articleFeedbackv5.throttleThresholdPostsPerHour ) {
 				// display throttling message
 				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-throttled' ) );
 
 				// re-store pruned post timestamp list
 				$.cookie( $.articleFeedbackv5.prefix( 'submission_timestamps' ), savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
-				
+
 				return;
 			}
-			
+
 			// if we get this far, they haven't been throttled, so update the post timestamp list with the current time and re-store it
 			savedTimestamps.push(now);
 			$.cookie( $.articleFeedbackv5.prefix( 'submission_timestamps' ), savedTimestamps.join( ',' ), { expires: 1, path: '/' } );

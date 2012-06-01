@@ -51,8 +51,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-submit' => 'Form submission error.',
 	'articlefeedbackv5-error-nofeedback' => 'Please enter your feedback.',
 	'articlefeedbackv5-error-flagging' => 'Error flagging feedback.',
-	'articlefeedbackv5-error-throttled' => 'Your post has been rejected because you have recently posted more feedback than recommended in Wikipedia\'s feedback guidelines.  Please do not post feedback repeatedly or excessively.',
-	'articlefeedbackv5-warning-abuse' => 'Your comment has been automatically identified as harmful.  If you believe this comment to be constructive, you may click the submit button again to confirm it. A brief description of the abuse rule which your action matched is: $1',
+	'articlefeedbackv5-error-throttled' => 'Your post has been rejected because you have recently posted more feedback than recommended in Wikipedia\'s feedback guidelines. Please do not post feedback repeatedly or excessively.',
 
 	/* Special Page */
 	'articlefeedbackv5-form-tools-label' => 'Tools',
