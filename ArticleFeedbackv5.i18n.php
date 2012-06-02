@@ -11719,7 +11719,7 @@ $messages['nl'] = array(
 	'articlefeedbackv5-cta5-confirmation-followup' => 'Uw terugkoppeling is $1 terug te vinden.',
 	'articlefeedbackv5-cta5-confirmation-followup-linktext' => 'hier',
 	'articlefeedbackv5-cta5-confirmation-title' => 'Bekijken wat anderen schrijven',
-	'articlefeedbackv5-cta5-confirmation-call' => 'Bekijk wat anderen zeggen over deze pagina en laat ons weten wat u ervan denkt.',
+	'articlefeedbackv5-cta5-confirmation-call' => 'Bekijk suggesties van andere lezers. Kunt u helpen de beste ideeën te kiezen?',
 	'articlefeedbackv5-cta5-button-text' => 'Terugkoppeling bekijken',
 	'articlefeedbackv5-error' => 'Er is een fout opgetreden.
 Probeer het later opnieuw.',
