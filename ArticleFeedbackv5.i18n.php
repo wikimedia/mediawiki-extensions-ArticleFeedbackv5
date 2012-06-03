@@ -1297,6 +1297,7 @@ $messages['az'] = array(
  * @author Assele
  * @author Haqmar
  * @author Roustammr
+ * @author ҒатаУлла
  */
 $messages['ba'] = array(
 	'articlefeedbackv5-error' => 'Хата килеп сыҡты. Зинһар, һуңыраҡ яңынан ҡабатлап ҡарағыҙ.',
@@ -1309,6 +1310,13 @@ $messages['ba'] = array(
 	'articleFeedbackv5-table-heading-page' => 'Бит',
 	'articlefeedbackv5' => 'Мәҡәләне баһалау',
 	'articlefeedbackv5-desc' => 'Мәҡәләне баһалау (һынау өсөн)',
+	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Эйе',
+	'articlefeedbackv5-bucket1-toggle-found-no' => 'Юҡ',
+	'articlefeedbackv5-bucket2-suggestion-label' => 'Тәҡдим',
+	'articlefeedbackv5-bucket2-question-label' => 'Һорау',
+	'articlefeedbackv5-bucket2-praise-label' => 'Маҡтау',
+	'articlefeedbackv5-bucket2-suggestion-comment-default' => 'Был битте нисек яҡшыраҡ итеп була? Тәҡдим яһағыҙ.',
+	'articlefeedbackv5-bucket2-question-comment-default' => 'Был бит тураһында һорау биргеҙ.',
 	'articlefeedbackv5-bucket5-form-switch-label' => 'Был битте баһалау',
 	'articlefeedbackv5-bucket5-form-panel-title' => 'Был битте баһалау',
 	'articlefeedbackv5-bucket5-form-panel-clear' => 'Был баһаламаны юйырға',
@@ -1739,7 +1747,7 @@ $messages['bn'] = array(
 	'articlefeedbackv5-disable-preference' => 'পাতায় নিবন্ধ প্রতিক্রিয়া উইজেটটি দেখিও না',
 );
 
-/** Breton (Brezhoneg)
+/** Breton (brezhoneg)
  * @author Fohanno
  * @author Fulup
  * @author Gwendal
@@ -1758,7 +1766,8 @@ $messages['br'] = array(
 	'articlefeedbackv5-cta3-confirmation-title' => "Respontit d'ur sontadeg vihan",
 	'articlefeedbackv5-cta3-confirmation-call' => 'Ne gemero nemet ur vunutenn hag hor skoazello da wellaat Wikipedia.',
 	'articlefeedbackv5-cta3-button-text' => 'Kregiñ gant ar sontadeg',
-	'articlefeedbackv5-cta5-confirmation-title' => 'Hor skoazellit da wellaat Wikipedia',
+	'articlefeedbackv5-cta5-confirmation-title' => 'Gwelet ar pezh a soñj ar re all',
+	'articlefeedbackv5-cta5-button-text' => 'Diskouez an holl evezhiadennoù',
 	'articlefeedbackv5-error' => "C'hoarvezet ez eus ur fazi. Esaeit en-dro diwezhtaoc'h, mar plij.",
 	'articlefeedbackv5-page-disabled' => "N'eo ket gweredekaet ar bajenn evezhiadennoù evit ar pennad-mañ.",
 	'articlefeedbackv5-error-email' => "Direizh eo ar chomlec'h postel.",
@@ -1780,6 +1789,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-special-filter-all' => 'An holl (evezhiañ) ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'An holl (kuzhet) ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'Evezhiadennoù hepken ($1)',
+	'articlefeedbackv5-special-filter-relevant' => 'An hini dedennusañ ($1)',
 	'articlefeedbackv5-special-filter-abusive' => 'Merket evel dizereat ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Talvoudus ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Didalvez ($1)',
@@ -1793,7 +1803,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-special-filter-resolved' => 'Diskoulmet ($1)',
 	'articlefeedbackv5-special-filter-unresolved' => 'Diziskoulm ($1)',
 	'articlefeedbackv5-special-sort-age' => 'Deiziad',
-	'articlefeedbackv5-special-sort-helpful' => 'Talvoudus',
+	'articlefeedbackv5-special-sort-helpful' => 'Talvoudusted',
 	'articlefeedbackv5-special-sort-rating' => 'Priziadenn',
 	'articlefeedbackv5-special-sort-label-before' => 'Urzhiañ dre :',
 	'articlefeedbackv5-special-filter-label-before' => 'O tiskouez :',
@@ -1866,10 +1876,14 @@ $messages['br'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL: $1|$1 miz|$1 miz}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL: $1|$1 sizhunvezh|$1 sizhunvezh}}',
 	'articlefeedbackv5-timestamp-seconds' => "nebeutoc'h eget ur vunutenn",
+	'articlefeedbackv5-mask-view-contents' => 'Diskouez an danvez',
 	'articlefeedbackv5-mask-text-hidden' => 'Kuzhet eo bet an notenn-mañ gant ur skridaozer aotreet',
 	'articlefeedbackv5-mask-text-oversight' => 'Evezhiet eo bet an notenn-mañ gant ur skridaozer aotreet',
 	'articlefeedbackv5-mask-postnumber' => 'Kemennadenn #$1',
+	'articlefeedbackv5-permalink-info-title' => 'Titouroù diwar-benn ar pennad-mañ',
 	'articlefeedbackv5-permalink-info-subtitle' => '(#$1)',
+	'articlefeedbackv5-permalink-info-revision-link' => 'Gwelet ar stumm kozh',
+	'articlefeedbackv5-permalink-info-posted' => "Postet d'an $1 da $2",
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Hed',
 	'articlefeedbackv5-permalink-activity-title' => 'Obererezh',
 	'articlefeedbackv5-noteflyover-feature-label' => 'Ouzhpennañ un notenn',
@@ -2555,8 +2569,8 @@ $messages['de'] = array(
 	'articlefeedbackv5-cta3-button-text' => 'Die Umfrage starten',
 	'articlefeedbackv5-cta5-confirmation-followup' => 'Deine Rückmeldung wurde $1.',
 	'articlefeedbackv5-cta5-confirmation-followup-linktext' => 'hier gespeichert',
-	'articlefeedbackv5-cta5-confirmation-title' => 'Sieh, was andere sagen',
-	'articlefeedbackv5-cta5-confirmation-call' => 'Sieh Vorschläge von anderen Lesern wie dir an. Kannst du mithelfen, die besten Ideen auszuwählen?',
+	'articlefeedbackv5-cta5-confirmation-title' => 'Sieh dir an, was andere sagen',
+	'articlefeedbackv5-cta5-confirmation-call' => 'Sieh dir Vorschläge von anderen Lesern wie dir an. Kannst du mithelfen, die besten Ideen auszuwählen?',
 	'articlefeedbackv5-cta5-button-text' => 'Alle Kommentare ansehen',
 	'articlefeedbackv5-error' => 'Ein Fehler ist aufgetreten. Bitte versuche es später erneut.',
 	'articlefeedbackv5-page-disabled' => 'Die Seite für Rückmeldungen ist zu diesem Artikel nicht aktiviert.',
@@ -2575,7 +2589,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-form-helpful-no-label' => 'Nein',
 	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 fand es hilfreich|$1 fanden es hilfreich}}',
 	'articlefeedbackv5-special-add-feedback' => 'Gib eine Rückmeldung',
-	'articlefeedbackv5-special-survey-button-text' => 'Was denkst du von diesem Rückmeldungswerkzeug?',
+	'articlefeedbackv5-special-survey-button-text' => 'Was hältst du von diesem Rückmeldewerkzeug?',
 	'articlefeedbackv5-special-filter-all' => 'Alle  ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'Alle (versteckt) ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'Alle Kommentare ($1)',
@@ -3015,10 +3029,13 @@ $messages['de-formal'] = array(
 	'articlefeedbackv5-cta2-confirmation-title' => 'Helfen Sie die Wikipedia zu verbessern',
 	'articlefeedbackv5-cta2-confirmation-call' => 'Diese Website wird von Menschen wie Ihnen erstellt. Können Sie uns helfen?',
 	'articlefeedbackv5-cta3-confirmation-title' => 'Bitte nehmen Sie an einer kurzen Umfrage teil',
+	'articlefeedbackv5-cta5-confirmation-title' => 'Sehen Sie sich an, was andere sagen',
+	'articlefeedbackv5-cta5-confirmation-call' => 'Sehen Sie sich Vorschläge von anderen Lesern wie Ihnen an. Können Sie mithelfen, die besten Ideen auszuwählen?',
 	'articlefeedbackv5-error' => 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.',
 	'articlefeedbackv5-error-abuse' => 'Ihr Beitrag wurde vom Softwarefilter zurückgewiesen, der nahelegt, dass er möglicherweise Wikipedias $1 verletzt. Bitte überarbeiten Sie Ihren Beitrag und versuchen es noch einmal.',
 	'articlefeedbackv5-error-nofeedback' => 'Bitte geben Sie Ihre Rückmeldung ein.',
 	'articlefeedbackv5-special-add-feedback' => 'Geben Sie ein Rückmeldung',
+	'articlefeedbackv5-special-survey-button-text' => 'Was halten Sie von diesem Rückmeldewerkzeug?',
 	'articlefeedbackv5-unsupported-message' => 'Ihr Browser unterstützt leider diesen Prototyp des Hilfsmittels nicht. Um diese Seite ansehen zu können, müssen Sie einen anderen Browser nutzen.',
 	'articlefeedbackv5-special-disclaimer' => 'Dies ist ein Prototyp. Nutzen Sie ihn nicht; es sei denn, Sie werden dazu eingeladen, es zu tun.',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Warum blenden Sie diese Rückmeldung aus?',
@@ -3788,7 +3805,7 @@ Koran dankon,
 La teamo {{SITENAME}}',
 );
 
-/** Spanish (Español)
+/** Spanish (español)
  * @author Armando-Martin
  * @author Dferg
  * @author Drini
@@ -3817,9 +3834,9 @@ $messages['es'] = array(
 	'articlefeedbackv5-cta3-button-text' => 'Iniciar la encuesta',
 	'articlefeedbackv5-cta5-confirmation-followup' => 'Tu comentario ha sido $1.',
 	'articlefeedbackv5-cta5-confirmation-followup-linktext' => 'publicado aquí',
-	'articlefeedbackv5-cta5-confirmation-title' => 'Ayudar a mejorar Wikipedia',
-	'articlefeedbackv5-cta5-confirmation-call' => 'Ver lo que otras personas están comentando sobre este artículo. Luego haznos saber lo que piensas.',
-	'articlefeedbackv5-cta5-button-text' => 'Ver comentarios',
+	'articlefeedbackv5-cta5-confirmation-title' => 'Ver lo que comentan otras personas',
+	'articlefeedbackv5-cta5-confirmation-call' => 'Ver sugerencias de otros lectores como tú. ¿Puedes ayudarnos a escoger las mejores ideas?',
+	'articlefeedbackv5-cta5-button-text' => 'Ver todos los comentarios',
 	'articlefeedbackv5-error' => 'Ha ocurrido un error. Por favor inténtalo de nuevo más tarde.',
 	'articlefeedbackv5-page-disabled' => 'La página de comentarios del artículo no ha sido habilitada para este artículo.',
 	'articlefeedbackv5-error-email' => 'La dirección de correo electrónico no es válida.',
@@ -3837,7 +3854,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-form-helpful-no-label' => 'No',
 	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 lo encontró útil|$1 lo encontraron útil}}',
 	'articlefeedbackv5-special-add-feedback' => 'Envíe su comentario',
-	'articlefeedbackv5-special-survey-button-text' => '¿Qué opinas de esta página?',
+	'articlefeedbackv5-special-survey-button-text' => '¿Qué opinas de esta herramienta de comentarios?',
 	'articlefeedbackv5-special-filter-all' => 'Todos (supervisión) ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'Todos (ocultos)  ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'Todos los comentarios ($1)',
@@ -4852,7 +4869,7 @@ Kiitos! Terveisin
 {{GRAMMAR:genitive|{{SITENAME}}}} tiimi',
 );
 
-/** French (Français)
+/** French (français)
  * @author Alno
  * @author Cquoi
  * @author Crochet.david
@@ -4887,9 +4904,9 @@ $messages['fr'] = array(
 	'articlefeedbackv5-cta3-button-text' => 'Commencer le sondage',
 	'articlefeedbackv5-cta5-confirmation-followup' => 'Votre avis a été $1.',
 	'articlefeedbackv5-cta5-confirmation-followup-linktext' => 'publié ici',
-	'articlefeedbackv5-cta5-confirmation-title' => 'Aidez à améliorer Wikipédia',
-	'articlefeedbackv5-cta5-confirmation-call' => "Voir ce que d'autres disent de cet article. Puis dites-nous ce que vous en pensez.",
-	'articlefeedbackv5-cta5-button-text' => 'Voir le commentaire',
+	'articlefeedbackv5-cta5-confirmation-title' => 'Voir ce que disent les autres',
+	'articlefeedbackv5-cta5-confirmation-call' => 'Afficher les suggestions des autres lecteurs comme vous. Pouvez-vous aider à choisir les meilleures idées ?',
+	'articlefeedbackv5-cta5-button-text' => 'Voir tous les commentaires',
 	'articlefeedbackv5-error' => 'Une erreur s’est produite. Veuillez réessayer plus tard.',
 	'articlefeedbackv5-page-disabled' => "La page de commentaire de l'article n'est pas activée pour cet article.",
 	'articlefeedbackv5-error-email' => 'Cette adresse de courriel n’est pas valide.',
@@ -4907,7 +4924,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-form-helpful-no-label' => 'Non',
 	'articlefeedbackv5-form-helpful-votes' => "{{PLURAL:$1|1 l'a trouvé utile|$1 l'ont trouvé utile}}",
 	'articlefeedbackv5-special-add-feedback' => 'Ajouter votre avis',
-	'articlefeedbackv5-special-survey-button-text' => 'Que pensez-vous de cette page ?',
+	'articlefeedbackv5-special-survey-button-text' => 'Que pensez-vous de cet outil de commentaire ?',
 	'articlefeedbackv5-special-filter-all' => 'Tous (surveillance) ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'Tous (caché) ( $1 )',
 	'articlefeedbackv5-special-filter-comment' => 'Tous les commentaires ($1)',
@@ -7423,7 +7440,7 @@ A legjobbakat kívánva
 A {{SITENAME}} csapata',
 );
 
-/** Interlingua (Interlingua)
+/** Interlingua (interlingua)
  * @author Catrope
  * @author McDutchie
  */
@@ -8230,7 +8247,7 @@ Kasayaatan a tarigagay, ken panagyaman,
 Ti timpuyog ti {{SITENAME}}',
 );
 
-/** Italian (Italiano)
+/** Italian (italiano)
  * @author Aushulz
  * @author Beta16
  * @author F. Cosoleto
@@ -8666,7 +8683,7 @@ Si ricorda che lo strumento di commento delle voci (v5) è ancora alle prime fas
  */
 $messages['ja'] = array(
 	'articlefeedbackv5-cta1-edit-linktext' => 'このページを編集',
-	'articlefeedbackv5-cta5-button-text' => 'フィードバックを表示',
+	'articlefeedbackv5-cta5-button-text' => 'すべてのコメントを見る',
 	'articlefeedbackv5-error' => 'エラーが発生しました。後でもう一度試してください。',
 	'articlefeedbackv5-error-email' => 'メールアドレスが正しくありません。',
 	'articlefeedbackv5-error-unknown' => '不明なエラーです。',
@@ -8932,14 +8949,14 @@ $messages['ko'] = array(
 	'articlefeedbackv5-cta2-confirmation-title' => '위키백과를 발전시키는 데 도움을 주세요',
 	'articlefeedbackv5-cta2-confirmation-call' => '이 웹사이트는 여러분같은 사람들에 의해 만들어집니다. 우리 손을 잡아주실래요?',
 	'articlefeedbackv5-cta2-button-text' => '더 알아보기',
-	'articlefeedbackv5-cta3-confirmation-title' => '간단한 설문 조사에 응해 주십시오.',
+	'articlefeedbackv5-cta3-confirmation-title' => '간단한 설문 조사에 응해주세요.',
 	'articlefeedbackv5-cta3-confirmation-call' => '설문 조사는 얼마 걸리지 않으며 위키백과 발전에 도움이 될 것입니다.',
 	'articlefeedbackv5-cta3-button-text' => '조사 시작하기',
 	'articlefeedbackv5-cta5-confirmation-followup' => '귀하의 $1 피드백이 왔습니다.',
 	'articlefeedbackv5-cta5-confirmation-followup-linktext' => '여기에 게시됨',
-	'articlefeedbackv5-cta5-confirmation-title' => '위키백과를 발전시키는 데 도움을 주세요',
-	'articlefeedbackv5-cta5-confirmation-call' => '다른 사람이 이 문서에 대해 어떤 말을 하는지 참고하세요. 그렇다면 어떻게 생각하는지 알려주세요.',
-	'articlefeedbackv5-cta5-button-text' => '피드백 보기',
+	'articlefeedbackv5-cta5-confirmation-title' => '다른 이들이 무엇을 말하는지 보기',
+	'articlefeedbackv5-cta5-confirmation-call' => '여러분과 같은 다른 독자의 의견을 봅니다. 최고의 아이디어를 선택할 수 있도록 도와줄까요?',
+	'articlefeedbackv5-cta5-button-text' => '모든 덧글 보기',
 	'articlefeedbackv5-error' => '오류가 발생했습니다. 나중에 다시 시도해주세요.',
 	'articlefeedbackv5-page-disabled' => '이 문서에는 문서 피드백 페이지가 활성화되어 있지 않습니다.',
 	'articlefeedbackv5-error-email' => '이메일 주소가 올바르지 않습니다.',
@@ -8957,7 +8974,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-form-helpful-no-label' => '아니오',
 	'articlefeedbackv5-form-helpful-votes' => '$1의 유용함을 발견함',
 	'articlefeedbackv5-special-add-feedback' => '피드백 더하기',
-	'articlefeedbackv5-special-survey-button-text' => '이 문서에 대해 어떻게 생각하십니까?',
+	'articlefeedbackv5-special-survey-button-text' => '이 피드백 도구에 대해 어떻게 생각하나요?',
 	'articlefeedbackv5-special-filter-all' => '모두 (오버사이트) ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => '모두 (숨김) ($1)',
 	'articlefeedbackv5-special-filter-comment' => '모든 덧글 ($1)',
@@ -9304,8 +9321,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-activity-count' => '이 게시물에 행동 $1',
 	'articlefeedbackv5-activity-more' => '더 많은 활동 보기',
 	'articlefeedbackv5-talk-view-feedback' => '피드백 보기 >>',
-	'articlefeedbackv5-emailcapture-response-body' => '
-안녕하세요!
+	'articlefeedbackv5-emailcapture-response-body' => '안녕하세요!
 
 {{SITENAME}} 개선하는 것을 돕는 데 관심을 보여주어서 감사합니다.
 
@@ -9325,7 +9341,7 @@ $3
 
 이 요청을 하지 않았다면 이 메일을 무시하세요. 그러면 그 밖의 어떤 것도 보내지 않을 것입니다.
 
-소원을 바라며 감사합니다.
+감사합니다.
 {{SITENAME}}팀',
 	'articlefeedbackv5-email-request-oversight-subject' => '오버사이트가 문서 피드백 페이지에 요청됨',
 	'articlefeedbackv5-email-request-oversight-body' => '안녕하세요, 오버사이트!
@@ -9488,8 +9504,8 @@ $messages['lb'] = array(
 	'articlefeedbackv5-cta3-confirmation-call' => 'Et dauert nëmmen eng Minutt an hëlleft Wikipedia ze verbesseren.',
 	'articlefeedbackv5-cta3-button-text' => 'Mat der Ëmfro ufänken',
 	'articlefeedbackv5-cta5-confirmation-followup' => 'Äre Feedback gouf $1.',
-	'articlefeedbackv5-cta5-confirmation-title' => 'Hëlleft Wikipedia ze verbesseren',
-	'articlefeedbackv5-cta5-button-text' => 'Feedback weisen',
+	'articlefeedbackv5-cta5-confirmation-title' => 'Kuckt wat Anerer soen',
+	'articlefeedbackv5-cta5-button-text' => 'Kuckt all Bemierkungen',
 	'articlefeedbackv5-error' => 'Et ass e Feeler geschitt. Probéiert w.e.g. méi spéit nach emol.',
 	'articlefeedbackv5-page-disabled' => "D'Säit fir Feedback ass fir dësen Artikel net aktivéiert.",
 	'articlefeedbackv5-error-email' => 'Déi Mailadress ass net valabel.',
@@ -9505,7 +9521,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-form-helpful-no-label' => 'Neen',
 	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1huet et nëtzlech fonnt|$1 hunn et nëtzlech fonnt}}',
 	'articlefeedbackv5-special-add-feedback' => 'Setzt Äre Feedback derbäi',
-	'articlefeedbackv5-special-survey-button-text' => 'Wat haalt Dir vun dëser Säit?',
+	'articlefeedbackv5-special-survey-button-text' => 'Wat haalt Dir vun dëser Feedback-Tool?',
 	'articlefeedbackv5-special-filter-all' => 'All (Iwwerwaachung) ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'All (verstoppt) ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'All Bemierkungen ($1)',
@@ -9587,8 +9603,10 @@ $messages['lb'] = array(
 	'articlefeedbackv5-timestamp-seconds' => 'manner wéi eng Minutt',
 	'articlefeedbackv5-mask-view-contents' => 'Inhalt weisen',
 	'articlefeedbackv5-special-goback' => "D'Säit mam Feedback weisen",
+	'articlefeedbackv5-permalink-info-subtitle' => '(#$1)',
 	'articlefeedbackv5-permalink-info-revision-link' => 'Déi al Versioun weisen',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Längt',
+	'articlefeedbackv5-permalink-info-stats-title-scores' => 'Bewäertungen',
 	'articlefeedbackv5-permalink-info-stats-subtitle-relevance' => 'Relevanz:',
 	'articlefeedbackv5-permalink-info-stats-subtitle-helpfulness' => 'Nëtzlechkeet:',
 	'articlefeedbackv5-permalink-activity-title' => 'Aktivitéit',
@@ -10236,7 +10254,7 @@ $messages['mg'] = array(
 	'articlefeedbackv5-bucket3-clear-rating' => 'Hanala ity fanamarihana ity',
 );
 
-/** Macedonian (Македонски)
+/** Macedonian (македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
@@ -11719,8 +11737,8 @@ $messages['nl'] = array(
 	'articlefeedbackv5-cta5-confirmation-followup' => 'Uw terugkoppeling is $1 terug te vinden.',
 	'articlefeedbackv5-cta5-confirmation-followup-linktext' => 'hier',
 	'articlefeedbackv5-cta5-confirmation-title' => 'Bekijken wat anderen schrijven',
-	'articlefeedbackv5-cta5-confirmation-call' => 'Bekijk wat anderen zeggen over deze pagina en laat ons weten wat u ervan denkt.',
-	'articlefeedbackv5-cta5-button-text' => 'Terugkoppeling bekijken',
+	'articlefeedbackv5-cta5-confirmation-call' => 'Bekijk suggesties van andere lezers. Kunt u helpen de beste ideeën te kiezen?',
+	'articlefeedbackv5-cta5-button-text' => 'Alle opmerkingen weergeven',
 	'articlefeedbackv5-error' => 'Er is een fout opgetreden.
 Probeer het later opnieuw.',
 	'articlefeedbackv5-page-disabled' => 'Terugkoppeling is niet ingeschakeld voor deze pagina.',
@@ -12392,11 +12410,12 @@ $messages['pfl'] = array(
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Audomadisch vaschdegld. Reschl: $1',
 );
 
-/** Polish (Polski)
+/** Polish (polski)
  * @author BeginaFelicysym
  * @author Odder
  * @author Olgak85
  * @author Sp5uhe
+ * @author Woytecr
  */
 $messages['pl'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Dzięki!',
@@ -12411,6 +12430,7 @@ $messages['pl'] = array(
 	'articlefeedbackv5-cta3-confirmation-title' => 'Poświęć chwilę czasu na wypełnienie krótkiej ankiety',
 	'articlefeedbackv5-cta3-confirmation-call' => 'To zajmie tylko minutę a pomoże w ulepszeniu Wikipedii.',
 	'articlefeedbackv5-cta3-button-text' => 'Początek ankiety',
+	'articlefeedbackv5-cta5-button-text' => 'Zobacz wszystkie komentarze',
 	'articlefeedbackv5-error' => 'Wystąpił błąd. Proszę spróbować ponownie później.',
 	'articlefeedbackv5-page-disabled' => 'Strona opinii o artykule nie została aktywowana dla tego artykułu.',
 	'articlefeedbackv5-error-email' => 'Adres e-mail nie jest prawidłowy.',
@@ -12442,7 +12462,7 @@ $messages['pl'] = array(
 	'articlefeedbackv5-special-filter-declined' => 'Cenzura odrzucona ($1)',
 	'articlefeedbackv5-special-filter-unhidden' => 'Odkryto ($1)',
 	'articlefeedbackv5-special-sort-age' => 'Data',
-	'articlefeedbackv5-special-sort-helpful' => 'Pomocne',
+	'articlefeedbackv5-special-sort-helpful' => 'Pomocny',
 	'articlefeedbackv5-special-sort-rating' => 'Ocena',
 	'articlefeedbackv5-special-sort-label-before' => 'Sortuj według:',
 	'articlefeedbackv5-special-filter-label-before' => 'Pokaż:',
@@ -12452,6 +12472,7 @@ $messages['pl'] = array(
 	'articlefeedbackv5-revision-link' => '(pokaż poprzednią wersję artykułu)',
 	'articlefeedbackv5-special-more' => 'Pokaż więcej wpisów',
 	'articlefeedbackv5-special-pagetitle' => 'Informacje zwrotne: $1',
+	'articlefeedbackv5-loading-tag' => 'Ładowanie...',
 	'articlefeedbackv5-form-optionid' => 'Opcja $1',
 	'articlefeedbackv5-form-hide' => 'Ukryj ten wpis',
 	'articlefeedbackv5-form-unhide' => 'Odkryj ten wpis',
@@ -12510,6 +12531,7 @@ $messages['pl'] = array(
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 miesiąc|$1 miesiące|$1 miesięcy}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 tydzień|$1 tygodnie|$1 tygodni}}',
 	'articlefeedbackv5-timestamp-seconds' => 'mniej niż 1 minuta',
+	'articlefeedbackv5-mask-view-contents' => 'Pokaż zawartość',
 	'articlefeedbackv5-mask-text-hidden' => 'Wpis #$1 {{GENDER:$2|został ukryty przez użytkownika $2}} $3 temu.',
 	'articlefeedbackv5-mask-text-oversight' => 'Wpis #$1 {{GENDER:$2|został zweryfikowany przez użytkownika $2}} $3 temu.',
 	'articlefeedbackv5-mask-postnumber' => 'Wpis #$1',
@@ -13798,7 +13820,7 @@ Statte bbuène e grazie,
 'A squadre de {{SITENAME}}",
 );
 
-/** Russian (Русский)
+/** Russian (русский)
  * @author AlexSm
  * @author Assele
  * @author Biathlon
@@ -14608,7 +14630,7 @@ $messages['sk'] = array(
 	'articlefeedbackv5-bucket5-wellwritten-tip' => 'Máte pocit, že táto stránka je dobre organizovaná a dobre napísaná?',
 );
 
-/** Slovenian (Slovenščina)
+/** Slovenian (slovenščina)
  * @author Dbc334
  * @author Eleassar
  * @author Irena Plahuta
@@ -16692,7 +16714,7 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-special-add-feedback' => '發布您的回饋',
 	'articlefeedbackv5-special-filter-all' => '全部（刪除）（$1）',
 	'articlefeedbackv5-special-filter-notdeleted' => '全部(隱藏) ($1)',
-	'articlefeedbackv5-special-filter-comment' => '評論而已（$1）',
+	'articlefeedbackv5-special-filter-comment' => '全部評論（$1）',
 	'articlefeedbackv5-special-filter-relevant' => '最相關 ( $1 )',
 	'articlefeedbackv5-special-filter-abusive' => '標記為濫用（$1）',
 	'articlefeedbackv5-special-filter-helpful' => '有幫助（$1）',
