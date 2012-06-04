@@ -94,7 +94,7 @@
 	 *
 	 * @var string
 	 */
-	$.articleFeedbackv5special.activityCookieName = 'activity-';
+	$.articleFeedbackv5special.activityCookieName = 'activity';
 
 	/**
 	 * Currently displayed panel host element id attribute value
@@ -193,7 +193,6 @@
 		$( '.articleFeedbackv5-sort-arrow').hide();
 
 		// Grab the user's activity out of the cookie
-		$.articleFeedbackv5special.activityCookieName += $.articleFeedbackv5special.page;
 		$.articleFeedbackv5special.loadActivity();
 
 		// set tipsy defaults, once
@@ -536,9 +535,20 @@
 	 */
 	$.articleFeedbackv5special.encodeActivity = function ( activity ) {
 		var encoded = '';
+		var sorted = [];
 		for ( var fb in activity ) {
 			var info = activity[fb];
-			var buffer = fb + ':';
+			info.id = fb;
+			sorted.push( info );
+		}
+		sorted = sorted.sort( function ( a, b ) {
+			if ( a.index > b.index ) { return 1; }
+			if ( a.index < b.index ) { return -1; }
+			return 0;
+		} );
+		for ( var i = 0; i < sorted.length; i++ ) {
+			var info = sorted[i];
+			var buffer = info.id + ':';
 			if ( info.helpful ) {
 				buffer += 'H';
 			} else if ( info.unhelpful ) {
@@ -553,7 +563,7 @@
 			if ( info.delete ) {
 				buffer += 'D';
 			}
-			encoded += encoded == '' ? buffer : ';' + buffer;
+			encoded += encoded == '' ? buffer : '|' + buffer;
 		}
 		return encoded;
 	};
@@ -568,7 +578,7 @@
 	 * @return object  the activity object
 	 */
 	$.articleFeedbackv5special.decodeActivity = function ( encoded ) {
-		var entries = encoded.split( ';' );
+		var entries = encoded.split( '|' );
 		var activity = {};
 		for ( var i = 0; i < entries.length; ++i ) {
 			var parts = entries[i].split( ':' );
@@ -577,7 +587,7 @@
 			}
 			var fb   = parts[0];
 			var info = parts[1];
-			var obj  = { helpful: false, unhelpful: false, abuse: false, hide: false, delete: false };
+			var obj  = { index: i, helpful: false, unhelpful: false, abuse: false, hide: false, delete: false };
 			if ( fb.length > 0 && info.length > 0 ) {
 				if ( info.search( /H/ ) != -1 ) {
 					obj.helpful = true;
@@ -1204,6 +1214,9 @@
 	 */
 	$.articleFeedbackv5special.storeActivity = function () {
 		var flatActivity = $.articleFeedbackv5special.encodeActivity( $.articleFeedbackv5special.activity );
+		while ( flatActivity.length > 4096 ) {
+			flatActivity = flatActivity.replace( /^\d+:[HUAID]+;/, '' );
+		}
 		$.cookie(
 			$.articleFeedbackv5special.prefix( $.articleFeedbackv5special.activityCookieName ),
 			flatActivity,
