@@ -294,7 +294,7 @@ class ArticleFeedbackv5Fetch {
 				'af_is_featured', 'af_is_resolved',
 				'af_last_status', 'af_last_status_user_id',
 				'af_last_status_timestamp', 'af_last_status_notes',
-				'af_activity_count'
+				'af_suppress_count', 'af_activity_count'
 			),
 			array( 'af_id' => $ids ),
 			__METHOD__,

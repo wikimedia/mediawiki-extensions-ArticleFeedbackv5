@@ -126,7 +126,7 @@ class ArticleFeedbackv5_RefreshLastActivity extends Maintenance {
 		// Select rows
 		$rows  = $dbw->select(
 			array( 'aft_article_feedback', 'page', 'logging' ),
-			array( 'af_id', 'log_id', 'log_action', 'log_timestamp', 'log_user', 'log_user_text', 'log_page', 'log_comment' ),
+			array( 'af_id', 'log_id', 'log_type', 'log_action', 'log_timestamp', 'log_user', 'log_user_text', 'log_page', 'log_comment' ),
 			array( 'af_id' => $ids ),
 			__METHOD__,
 			array(
@@ -139,7 +139,13 @@ class ArticleFeedbackv5_RefreshLastActivity extends Maintenance {
 				'logging' => array(
 					'LEFT JOIN',
 					array (
-						'log_type' => 'articlefeedbackv5',
+						0 => "(log_type = 'articlefeedbackv5')
+							OR (log_type = 'suppress' AND
+							(log_action = 'oversight' OR
+							 log_action = 'unoversight' OR
+							 log_action = 'decline' OR
+							 log_action = 'request' OR
+							 log_action = 'unrequest'))",
 						'log_namespace' => NS_SPECIAL,
 						"log_title = CONCAT('ArticleFeedbackv5/', page_title, '/', af_id)"
 					)
@@ -152,14 +158,19 @@ class ArticleFeedbackv5_RefreshLastActivity extends Maintenance {
 		foreach ( $rows as $row ) {
 			if ( !isset ( $updates[$row->af_id] ) ) {
 				$updates[$row->af_id] = array(
-					'log_count' => 0,
+					'normal_count' => 0,
+					'suppress_count' => 0,
 				);
 			}
 			$updates[$row->af_id]['log_action']    = $row->log_action;
 			$updates[$row->af_id]['log_user']      = $row->log_user;
 			$updates[$row->af_id]['log_timestamp'] = $row->log_timestamp;
 			$updates[$row->af_id]['log_comment']   = $row->log_comment;
-			$updates[$row->af_id]['log_count']++;
+			if ( $row->log_type == 'suppress' ) {
+				$updates[$row->af_id]['suppress_count']++;
+			} else {
+				$updates[$row->af_id]['normal_count']++;
+			}
 		}
 
 		// Update last status for each one
@@ -188,7 +199,8 @@ class ArticleFeedbackv5_RefreshLastActivity extends Maintenance {
 						'af_last_status_user_id'   => $row['log_user'],
 						'af_last_status_timestamp' => $row['log_timestamp'],
 						'af_last_status_notes'     => $row['log_comment'],
-						'af_activity_count'        => $row['log_count'],
+						'af_activity_count'        => $row['normal_count'],
+						'af_suppress_count'        => $row['suppress_count'],
 					),
 					array(
 						'af_id' => $af_id,
