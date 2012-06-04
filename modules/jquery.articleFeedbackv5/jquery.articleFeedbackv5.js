@@ -775,6 +775,9 @@
 				$block.find( '.articleFeedbackv5-button-placeholder' )
 					.click( function ( e ) {
 						var new_val = $( this ).parent().attr( 'rel' );
+						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-click_' + new_val +
+							'-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+
 						var $wrap = $.articleFeedbackv5.find( '#articleFeedbackv5-bucket6-toggle-wrapper-' + new_val );
 
 						// move on to step 2
@@ -1374,7 +1377,7 @@
 			afterBuild: function() {
 				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
 				// Track the impression
-				$.articleFeedbackv5.trackClick( 'cta_view_feedback-impression' );
+				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-cta_view_feedback-impression' );
 			}
 
 			// }}}
@@ -1953,15 +1956,7 @@
 		$.articleFeedbackv5.addTriggerLinks();
 		// Track init at 1%
 		if ( Math.random() * 100 < 1 ) {
-			var exp = $.articleFeedbackv5.experiment();
-			if ( $.articleFeedbackv5.bucketId == 4 ) {
-				exp = exp.replace('_edit', '');
-				exp = exp.replace('_learn_more', '');
-			}
-			if ( !$.articleFeedbackv5.editable ) {
-				exp += '-noedit';
-			}
-			$.articleFeedbackv5.trackClick( exp + '-init' );
+			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-init' );
 		}
 	};
 
@@ -2231,18 +2226,10 @@
 	/**
 	 * Utility method: Gets the name of the current experiment
 	 *
-	 * @return string the experiment (e.g. "option1A")
+	 * @return string the experiment (e.g. "optionM5_1_edit")
 	 */
 	$.articleFeedbackv5.experiment = function () {
-		var exp = 'optionSE_' + $.articleFeedbackv5.bucketId + $.articleFeedbackv5.floatingLinkId;
-		if ( $.articleFeedbackv5.bucketId == 4 ) {
-			if ( $.articleFeedbackv5.editable ) {
-				exp += '_edit';
-			} else {
-				exp += '_learn_more';
-			}
-		}
-		return exp;
+		return 'optionM5_' + $.articleFeedbackv5.bucketId;
 	};
 
 	// }}}
