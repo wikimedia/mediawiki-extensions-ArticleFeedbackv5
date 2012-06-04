@@ -94,7 +94,7 @@
 	 *
 	 * @var string
 	 */
-	$.articleFeedbackv5special.activityCookieName = 'activity-';
+	$.articleFeedbackv5special.activityCookieName = 'activity';
 
 	/**
 	 * Currently displayed panel host element id attribute value
@@ -193,7 +193,6 @@
 		$( '.articleFeedbackv5-sort-arrow').hide();
 
 		// Grab the user's activity out of the cookie
-		$.articleFeedbackv5special.activityCookieName += $.articleFeedbackv5special.page;
 		$.articleFeedbackv5special.loadActivity();
 
 		// set tipsy defaults, once
@@ -553,7 +552,7 @@
 			if ( info.delete ) {
 				buffer += 'D';
 			}
-			encoded += encoded == '' ? buffer : ';' + buffer;
+			encoded += encoded == '' ? buffer : '|' + buffer;
 		}
 		return encoded;
 	};
@@ -568,7 +567,7 @@
 	 * @return object  the activity object
 	 */
 	$.articleFeedbackv5special.decodeActivity = function ( encoded ) {
-		var entries = encoded.split( ';' );
+		var entries = encoded.split( '|' );
 		var activity = {};
 		for ( var i = 0; i < entries.length; ++i ) {
 			var parts = entries[i].split( ':' );
@@ -1204,6 +1203,9 @@
 	 */
 	$.articleFeedbackv5special.storeActivity = function () {
 		var flatActivity = $.articleFeedbackv5special.encodeActivity( $.articleFeedbackv5special.activity );
+		while ( flatActivity.length > 4096 ) {
+			flatActivity = flatActivity.replace( /^\d+:[HUAID]+;/, '' );
+		}
 		$.cookie(
 			$.articleFeedbackv5special.prefix( $.articleFeedbackv5special.activityCookieName ),
 			flatActivity,
