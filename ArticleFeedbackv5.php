@@ -149,12 +149,12 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 		'three' => 0,
 		'four'  => 0,
 		'five'  => 0,
-		'six'  => 50,
+		'six'   => 50,
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
 	// this when you want to start a new "experiment".
-	'version' => 3,
+	'version' => 4,
 	// Let users be tracked for a month, and then rebucket them, allowing some
 	// churn.
 	'expires' => 30,
@@ -177,7 +177,7 @@ $wgArticleFeedbackv5Tracking = array(
 	),
 	// This version number is added to all tracking event names, so that changes in the software
 	// don't corrupt the data being collected. Bump this when you want to start a new "experiment".
-	'version' => 4,
+	'version' => 5,
 	// Let users be tracked for a month, and then rebucket them, allowing some churn
 	'expires' => 30,
 	// Track the event of users being bucketed - so we can be sure the odds
