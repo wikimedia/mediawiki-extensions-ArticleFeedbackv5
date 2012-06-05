@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//6nw\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-05T17:46:16Z",
+      "side": 1,
+      "message": "You can do this with return a.index - b.index; as well.",
+      "revId": "52992250067bb97cfeea71b378e4473cfa468f75",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
