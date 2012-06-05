@@ -320,6 +320,7 @@ class ArticleFeedbackv5Hooks {
 				'mediawiki.util',
 				'jquery.tipsy',
 				'jquery.localize',
+				'jquery.json',
 			),
 		),
 	);
