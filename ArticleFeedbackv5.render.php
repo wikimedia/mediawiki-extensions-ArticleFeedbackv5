@@ -923,7 +923,7 @@ class ArticleFeedbackv5Render {
 		if ( $this->hasPermission( 'can_delete' ) || $this->hasPermission( 'can_hide' ) ) {
 			// if no activity has been logged yet, add the "inactive" class so we can display it accordingly
 			$activityClass = "articleFeedbackv5-activity-link";
-			if ( $record[0]->af_activity_count < 1 ) {
+			if ( $this->getActivityCount( $record[0] ) < 1 ) {
 				$activityClass .= " inactive";
 			}
 
@@ -1199,7 +1199,7 @@ class ArticleFeedbackv5Render {
 						// <span>{msg:articlefeedbackv5-permalink-activity-subtitle}</span>
 						. Html::rawElement( 'span', array(),
 							wfMessage( 'articlefeedbackv5-permalink-activity-subtitle' )
-								->params( $record[0]->af_activity_count )
+								->params( $this->getActivityCount( $record[0] ) )
 								->escaped()
 						)
 					// </h4>
@@ -1227,6 +1227,20 @@ class ArticleFeedbackv5Render {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * Returns the appropriate activity count
+	 *
+	 * @param  $record stdClass the record
+	 * @return int the activity count
+	 */
+	public function getActivityCount( stdClass $record ) {
+		$count = $record->af_activity_count;
+		if ( $this->hasPermission( 'can_delete' ) ) {
+			$count += $record->af_suppress_count;
+		}
+		return $count;
 	}
 
 }

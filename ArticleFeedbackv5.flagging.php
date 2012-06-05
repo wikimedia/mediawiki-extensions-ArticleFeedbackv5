@@ -711,9 +711,25 @@ class ArticleFeedbackv5Flagging {
 			$update[] = 'af_relevance_sort = - af_relevance_score';
 		}
 
-		// if we've added to the activity log, bump up the count
+		// if we've added to the activity log, bump up the counts
 		if ( count( $log ) > 0 ) {
-			$update[] = 'af_activity_count = af_activity_count + ' . count( $log );
+			global $wgLogActionsHandlers;
+			$suppress = 0;
+			$normal = 0;
+			foreach ( $log as $line ) {
+				$t = $line[0];
+				if ( isset( $wgLogActionsHandlers["suppress/$t"] ) ) {
+					++$suppress;
+				} else {
+					++$normal;
+				}
+			}
+			if ( $suppress > 0 ) {
+				$update[] = 'af_suppress_count = af_suppress_count + ' . $suppress;
+			}
+			if ( $normal > 0 ) {
+				$update[] = 'af_activity_count = af_activity_count + ' . $normal;
+			}
 		}
 
 		// we were valid
