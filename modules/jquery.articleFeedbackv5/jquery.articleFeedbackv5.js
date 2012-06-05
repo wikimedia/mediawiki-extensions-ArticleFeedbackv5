@@ -246,7 +246,7 @@
 		ctaTitleConfirm: '\
 			<div class="articleFeedbackv5-confirmation-text">\
 				<span class="articleFeedbackv5-confirmation-thanks"><html:msg key="cta-thanks" /></span>\
-				<span class="articleFeedbackv5-confirmation-follow-up"><html:msg key="cta-confirmation-followup" /></span>\
+				<span class="articleFeedbackv5-confirmation-follow-up"></span>\
 			</div>\
 			',
 
@@ -1427,16 +1427,6 @@
 			 * Pull out the markup so it's easy to find
 			 */
 			templates: {
-
-				/**
-				 * The template for the title
-				 */
-				title: '\
-					<div class="articleFeedbackv5-confirmation-text">\
-						<span class="articleFeedbackv5-confirmation-thanks"><html:msg key="cta-thanks" /></span>\
-						<span class="articleFeedbackv5-confirmation-follow-up"></span>\
-					</div>\
-					',
 
 				/**
 				 * The template for the whole block
@@ -2858,8 +2848,15 @@
 		} else {
 			var title = $( '<div></div>' )
 				.html( $.articleFeedbackv5.templates.ctaTitleConfirm )
-				.localize( { 'prefix': 'articlefeedbackv5-' } )
-				.html();
+				.localize( { 'prefix': 'articlefeedbackv5-' } );
+			var track_id = $.articleFeedbackv5.ctaName() + '-permalink_click-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
+			var link = $.articleFeedbackv5.trackingUrl(
+					$.articleFeedbackv5.permalink,
+					track_id
+			);
+			title.find( '.articleFeedbackv5-confirmation-follow-up' ).msg( 'articlefeedbackv5-cta-confirmation-message', link );
+			
+			title = title.html();
 		}
 		$.articleFeedbackv5.$dialog.dialog( 'option', 'title', title );
 		$.articleFeedbackv5.find( '.articleFeedbackv5-title' ).html( title );
