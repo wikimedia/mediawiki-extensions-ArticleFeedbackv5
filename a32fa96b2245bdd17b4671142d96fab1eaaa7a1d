@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//6lQ\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 2533,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-05T18:17:45Z",
+      "side": 1,
+      "message": "The \u0027var\u0027 here is extraneous, because priorTimestamps is already declared a few lines earlier",
+      "revId": "a32fa96b2245bdd17b4671142d96fab1eaaa7a1d",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
