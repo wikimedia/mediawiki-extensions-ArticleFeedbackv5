@@ -412,6 +412,22 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket5-wellwritten-tooltip-5' => 'Exceptional clarity',
 	'articlefeedbackv5-bucket5-toolbox-linktext' => 'Rate this page',
 
+	/* Feedback forms */
+	/* Option 6 ("Did you find what you were looking for?" - 2-step) */
+	'articlefeedbackv5-bucket6-title' => 'Help improve this page',
+	'articlefeedbackv5-bucket6-question-toggle' => 'Did you find what you were looking for?',
+	'articlefeedbackv5-bucket6-toggle-found-yes' => 'Yes',
+	'articlefeedbackv5-bucket6-toggle-found-no' => 'No',
+	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'Yes, I found what I was looking for.',
+	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'No, I did not find what I was looking for.',
+	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 character remaining)|($1 characters remaining)}}',
+	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Great. Would you like to add anything else?',
+	'articlefeedbackv5-bucket6-question-comment-yes' => 'What was most useful to you? How could this page be improved?',
+	'articlefeedbackv5-bucket6-question-instructions-no' => 'Sorry about that. How can we make it better for you?',
+	'articlefeedbackv5-bucket6-question-comment-no' => 'What\'s missing? Any suggestions for improvement?',
+	'articlefeedbackv5-bucket6-form-submit' => 'Post your feedback',
+	'articlefeedbackv5-bucket6-backlink-text' => 'Back to step 1',
+
 	/* Messages shared by all feedback form options */
 	'articlefeedbackv5-shared-on-feedback' => 'Your comment will be shared on this $1.',
 	'articlefeedbackv5-shared-on-feedback-linktext' => 'feedback page',
@@ -422,9 +438,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-help-tooltip-linkurl-editors' => '//en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help/Feedback_page_Editors',
 	'articlefeedbackv5-help-tooltip-linkurl-monitors' => '//en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help/Feedback_page_Monitors',
 	'articlefeedbackv5-help-tooltip-linkurl-oversighters' => '//en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help/Feedback_page_Oversighters',
-	'articlefeedbackv5-transparency-terms' => 'By posting, you agree to transparency under these $1.',
-	'articlefeedbackv5-transparency-terms-linktext' => 'terms',
-	'articlefeedbackv5-transparency-terms-url' => '//wikimediafoundation.org/wiki/Feedback_privacy_statement',
+	'articlefeedbackv5-help-transparency-terms' => 'Please post [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines helpful feedback]. By posting, you agree to transparency under these [//wikimediafoundation.org/wiki/Feedback_privacy_statement terms].',
 	'articlefeedbackv5-sitesub-linktext' => 'Improve this page',
 	'articlefeedbackv5-titlebar-linktext' => 'Help improve this page >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Improve this page',
@@ -921,6 +935,21 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 This message is used in JavaScript by module 'jquery.articleFeedback'.
 $1 is an integer, and the rating count.",
 	'articlefeedbackv5-bucket5-toolbox-linktext' => 'When a link to pop up the feedback tool appears at the bottom of the toolbox area in the sidebar, this will be the link text.  This should match AFTv4.',
+	'articlefeedbackv5-bucket6-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
+	'articlefeedbackv5-bucket6-question-toggle' => 'This is the question that appears before the yes/no buttons in option 1',
+	'articlefeedbackv5-bucket6-toggle-found-yes' => 'The text for the yes button in option 1.
+{{Identical|Yes}}',
+	'articlefeedbackv5-bucket6-toggle-found-no' => 'The text for the no button in option 1.
+{{Identical|No}}',
+	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'This is the text that appears when you roll over the yes button in option 1 ("Did you find what you were looking for?"); it clarifies what "yes" means in this context.',
+	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'This is the text that appears when you roll over the no button in option 1 ("Did you find what you were looking for?"); it clarifies what "no" means in this context.',
+	'articlefeedbackv5-bucket6-feedback-countdown' => 'This displays a countdown of the amount of characters feedback that will be allowed.',
+	'articlefeedbackv5-bucket6-question-instructions-yes' => 'This is the instructional text to be shown above the textarea where a user can leave feedback, to be shown when the user selected yes',
+	'articlefeedbackv5-bucket6-question-comment-yes' => 'This is the grey default text that appears in the comment box when the yes button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
+	'articlefeedbackv5-bucket6-question-instructions-no' => 'This is the instructional text to be shown above the textarea where a user can leave feedback, to be shown when the user selected no',
+	'articlefeedbackv5-bucket6-question-comment-no' => 'This is the grey default text that appears in the comment box when the no button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
+	'articlefeedbackv5-bucket6-form-submit' => 'This is the contents of the submit button for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
+	'articlefeedbackv5-bucket6-backlink-text' => 'This is a small link that allows users to go back to the first step of the form and change their mind on whether they find the article useful',
 	'articlefeedbackv5-shared-on-feedback' => 'This is the top line of the small text that goes beside the submit button and lets the user know that their comment will be posted on the feedback page. $1 is the link to the abuse policy, the text of which is {{msg-mw|articlefeedbackv5-shared-on-feedback-linktext}}.',
 	'articlefeedbackv5-shared-on-feedback-linktext' => 'The text for the feedback page link within {{msg-mw|articlefeedbackv5-shared-on-feedback}}.',
 	'articlefeedbackv5-help-tooltip-title' => 'The title for the help tooltip.
@@ -931,10 +960,7 @@ $1 is an integer, and the rating count.",
 	'articlefeedbackv5-help-tooltip-linkurl-editors' => 'Link to article with information specifically geared towards editors (= logged-in users)',
 	'articlefeedbackv5-help-tooltip-linkurl-monitors' => 'Link to article with information specifically geared towards monitors (= users with permission to hide feedback)',
 	'articlefeedbackv5-help-tooltip-linkurl-oversighters' => 'Link to article with information specifically geared towards oversighters (= users with permission to delete feedback)',
-	'articlefeedbackv5-transparency-terms' => "This is the bottom line of the small text that goes beside the submit button and tells the user about the terms they're agreeing to by posting a comment.  $1 will hold the link to the terms page, with the text from {{msg-mw|Articlefeedbackv5-transparency-terms-linktext}}",
-	'articlefeedbackv5-transparency-terms-linktext' => 'The text for the transparency terms link (see {{msg-mw|articlefeedbackv5-transparency-terms}})',
-	'articlefeedbackv5-transparency-terms-url' => '{{optional}}
-The URL for the transparency terms link (see {{msg-mw|articlefeedbackv5-transparency-terms}}).  Can be translated; defaults to Project:Privacy_policy; Do not translate "Project:".',
+	'articlefeedbackv5-help-transparency-terms' => "This is the bottom line of the small text that goes beside the submit button and informs the user on how to post helpful feedback & tells the user about the terms they're agreeing to by posting a comment.",
 	'articlefeedbackv5-sitesub-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far left, this will be the link text.',
 	'articlefeedbackv5-titlebar-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far right, this will be the link text.',
 	'articlefeedbackv5-fixedtab-linktext' => 'When a link to pop up the feedback tool appears as a fixed-positioned tab, this will be the link text',
