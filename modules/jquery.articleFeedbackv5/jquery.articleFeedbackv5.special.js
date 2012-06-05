@@ -76,7 +76,7 @@
 		sort: mw.config.get( 'afStartingSort' ),
 		sortDirection: mw.config.get( 'afStartingSortDirection' ),
 		limit: mw.config.get( 'afStartingLimit' ),
-		continue: null,
+		continueInfo: null,
 		disabled: false,	// Prevent (at least limit) a flood of ajax requests.
 		allowMultiple: false
 	};
@@ -88,6 +88,13 @@
 	 * @var object
 	 */
 	$.articleFeedbackv5special.activity = {};
+
+	/**
+	 * Filter cookie name (page id is appended on init)
+	 *
+	 * @var string
+	 */
+	$.articleFeedbackv5special.filterCookieName = 'last-filter';
 
 	/**
 	 * User activity cookie name (page id is appended on init)
@@ -279,53 +286,25 @@
 	 */
 	$.articleFeedbackv5special.setBinds = function() {
 		$( '#articleFeedbackv5-filter-select' ).bind( 'change', function( e ) {
-			if ( $(this).val() == '' ) {
-				$( '#articleFeedbackv5-select-wrapper' ).removeClass( 'filter-active' );
+			var id = $(this).val();
+			if ( id == '' ) {
 				return false;
 			}
-			var id = $(this).val();
-			$.articleFeedbackv5special.listControls.filter   = id;
-			$.articleFeedbackv5special.listControls.continue = null;
-			$.articleFeedbackv5special.setSortByFilter( id );
-			$( '.articleFeedbackv5-filter-link' ).removeClass( 'filter-active' );
-			$( '#articleFeedbackv5-select-wrapper' ).addClass( 'filter-active' );
+			$.articleFeedbackv5special.toggleFilter( id );
 			$.articleFeedbackv5special.loadFeedback( true );
-			// Track the filter change
-			$.articleFeedbackv5special.trackClick( 'feedback_page-click-' +
-				'f_' + $.articleFeedbackv5special.getFilterName( id ) + '-' +
-				$.articleFeedbackv5special.referral + '-' +
-				$.articleFeedbackv5special.userType );
 			return false;
 		} );
-		if ( $( '#articleFeedbackv5-filter-select' ).val() != $.articleFeedbackv5special.listControls.filter ) {
-			$( '#articleFeedbackv5-filter-select' ).val( '' );
-		} else {
-			$( '#articleFeedbackv5-select-wrapper' ).addClass( 'filter-active' );
-		}
 
 		$( '.articleFeedbackv5-filter-link' ).bind( 'click', function( e ) {
 			e.preventDefault();
 			var	id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-filter-' );
-			$.articleFeedbackv5special.listControls.filter   = id;
-			$.articleFeedbackv5special.listControls.continue = null;
-			$.articleFeedbackv5special.setSortByFilter( id );
+			$.articleFeedbackv5special.toggleFilter( id );
 			$.articleFeedbackv5special.loadFeedback( true );
-			$( '.articleFeedbackv5-filter-link' ).removeClass( 'filter-active' );
-			$( '#articleFeedbackv5-select-wrapper' ).removeClass( 'filter-active' );
-			$( '#articleFeedbackv5-special-filter-' + id).addClass( 'filter-active' );
-			$( '#articleFeedbackv5-filter-select' ).val( '' );
-			// Track the click
-			$.articleFeedbackv5special.trackClick( 'feedback_page-click-' +
-				'f_' + $.articleFeedbackv5special.getFilterName( id ) + '-' +
-				$.articleFeedbackv5special.referral + '-' +
-				$.articleFeedbackv5special.userType );
 		} );
 
 		$( '#articleFeedbackv5-sort-select' ).bind( 'change', function( e ) {
 			var sort = $(this).val().split( '-' );
-			$.articleFeedbackv5special.listControls.sort = sort[0];
-			$.articleFeedbackv5special.listControls.sortDirection = sort[1];
-			$.articleFeedbackv5special.listControls.continue = null;
+			$.articleFeedbackv5special.toggleSort( sort[0], sort[1] )
 			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
@@ -337,9 +316,9 @@
 
 		$( '.articleFeedbackv5-permalink' ).live( 'click', function( e ) {
 			var id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-permalink-' );
-			$.articleFeedbackv5special.listControls.filter      = 'id';
+			$.articleFeedbackv5special.listControls.filter = 'id';
 			$.articleFeedbackv5special.listControls.filterValue = id;
-			$.articleFeedbackv5special.listControls.continue    = null;
+			$.articleFeedbackv5special.listControls.continueInfo = null;
 			$.articleFeedbackv5special.loadFeedback( true );
 		} );
 
@@ -420,6 +399,55 @@
 	// }}}
 	// {{{ Utility methods
 
+	// {{{ toggleFilter
+
+	/**
+	 * Toggle on a certain filter
+	 * Please note that this will _not_ automatically fetch the new data, which requires a call to loadFeedback
+	 *
+	 * @param id The id of the filter to be enabled
+	 */
+	$.articleFeedbackv5special.toggleFilter = function( id ) {
+		$.articleFeedbackv5special.listControls.filter = id;
+		$.articleFeedbackv5special.listControls.continueInfo = null;
+		$.articleFeedbackv5special.setSortByFilter( id );
+
+		// track the filter change
+		$.articleFeedbackv5special.trackClick( 'feedback_page-click-' +
+				'f_' + $.articleFeedbackv5special.getFilterName( id ) + '-' +
+				$.articleFeedbackv5special.referral + '-' +
+				$.articleFeedbackv5special.userType );
+
+		// update filter in select (if present) & text-links (if any)
+		$( '#articleFeedbackv5-select-wrapper' ).removeClass( 'filter-active' );
+		$( '.articleFeedbackv5-filter-link' ).removeClass( 'filter-active' );
+		if ( $( '#articleFeedbackv5-filter-select option[value=' + id + ']' ).length > 0 ) {
+			$( '#articleFeedbackv5-select-wrapper' ).addClass( 'filter-active' );
+		} else {
+			$( '#articleFeedbackv5-filter-select' ).val( '' );
+		}
+		$( '#articleFeedbackv5-special-filter-' + id).addClass( 'filter-active' );
+	}
+
+	// }}}
+	// {{{ toggleSort
+
+	/**
+	 * Toggle on a certain sort
+	 * Please note that this will _not_ automatically fetch the new data, which requires a call to loadFeedback
+	 *
+	 * @param sort The sorting method
+	 * @param direction The direction to sort (asc/desc)
+	 */
+	$.articleFeedbackv5special.toggleSort = function( sort, direction ) {
+		$.articleFeedbackv5special.listControls.sort = sort;
+		$.articleFeedbackv5special.listControls.sortDirection = direction;
+		$.articleFeedbackv5special.listControls.continueInfo = null;
+
+		$( '#articleFeedbackv5-sort-select' ).val( sort + '-' + direction );
+	}
+
+	// }}}
 	// {{{ toggleTipsy
 
 	/**
@@ -532,7 +560,7 @@
 			if ( info.hide ) {
 				buffer += 'I';
 			}
-			if ( info.delete ) {
+			if ( info.deleted ) {
 				buffer += 'D';
 			}
 			encoded += encoded == '' ? buffer : '|' + buffer;
@@ -559,7 +587,7 @@
 			}
 			var fb   = parts[0];
 			var info = parts[1];
-			var obj  = { index: i, helpful: false, unhelpful: false, abuse: false, hide: false, delete: false };
+			var obj  = { index: i, helpful: false, unhelpful: false, abuse: false, hide: false, deleted: false };
 			if ( fb.length > 0 && info.length > 0 ) {
 				if ( info.search( /H/ ) != -1 ) {
 					obj.helpful = true;
@@ -574,7 +602,7 @@
 					obj.hide = true;
 				}
 				if ( info.search( /D/ ) != -1 ) {
-					obj.delete = true;
+					obj.deleted = true;
 				}
 				activity[fb] = obj;
 			}
@@ -593,7 +621,7 @@
 	 */
 	$.articleFeedbackv5special.getActivity = function ( fid ) {
 		if ( !( fid in $.articleFeedbackv5special.activity ) ) {
-			$.articleFeedbackv5special.activity[fid] = { helpful: false, unhelpful: false, abuse: false, hide: false, delete: false };
+			$.articleFeedbackv5special.activity[fid] = { helpful: false, unhelpful: false, abuse: false, hide: false, deleted: false };
 		}
 		return $.articleFeedbackv5special.activity[fid];
 	};
@@ -903,16 +931,10 @@
 		var short = $.articleFeedbackv5special.getFilterName( filter );
 		var defaults = mw.config.get( 'wgArticleFeedbackv5DefaultSorts' );
 		if ( short in defaults ) {
-			$.articleFeedbackv5special.listControls.sort = defaults[short][0];
-			$.articleFeedbackv5special.listControls.sortDirection = defaults[short][1];
+			$.articleFeedbackv5special.toggleSort( defaults[short][0], defaults[short][1] );
 		} else {
-			$.articleFeedbackv5special.listControls.sort = 'age';
-			$.articleFeedbackv5special.listControls.sortDirection = 'desc';
+			$.articleFeedbackv5special.toggleSort( 'age', 'desc' );
 		}
-		$( '#articleFeedbackv5-sort-select' ).val(
-			$.articleFeedbackv5special.listControls.sort + '-' +
-			$.articleFeedbackv5special.listControls.sortDirection
-		);
 	};
 
 	// }}}
@@ -1073,6 +1095,9 @@
 	 * @param resetContents bool whether to remove the existing responses
 	 */
 	$.articleFeedbackv5special.loadFeedback = function ( resetContents ) {
+		// save this filter state
+		$.articleFeedbackv5special.saveFilters();
+
 		if ( resetContents ) {
 			$( '#articleFeedbackv5-feedback-loading-top' ).fadeIn();
 		} else {
@@ -1089,7 +1114,7 @@
 				'afvfsort'          : $.articleFeedbackv5special.listControls.sort,
 				'afvfsortdirection' : $.articleFeedbackv5special.listControls.sortDirection,
 				'afvflimit'         : $.articleFeedbackv5special.listControls.limit,
-				'afvfcontinue'      : $.articleFeedbackv5special.listControls.continue,
+				'afvfcontinue'      : $.articleFeedbackv5special.listControls.continueInfo,
 				'action'  : 'query',
 				'format'  : 'json',
 				'list'    : 'articlefeedbackv5-view-feedback',
@@ -1102,9 +1127,9 @@
 					}
 					$( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback );
 					$.articleFeedbackv5special.processFeedback(
-						data['articlefeedbackv5-view-feedback'].count,
-						data['articlefeedbackv5-view-feedback'].continue,
-						data['articlefeedbackv5-view-feedback'].more
+						data['articlefeedbackv5-view-feedback']['count'],
+						data['articlefeedbackv5-view-feedback']['continue'],
+						data['articlefeedbackv5-view-feedback']['more']
 					);
 				} else {
 					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
@@ -1181,7 +1206,7 @@
 		} );
 
 		$( '#articleFeedbackv5-feedback-count-total' ).text( count );
-		$.articleFeedbackv5special.listControls.continue = continueInfo;
+		$.articleFeedbackv5special.listControls.continueInfo = continueInfo;
 		if ( showMore ) {
 			$( '#articleFeedbackv5-show-more').show();
 		} else {
@@ -1229,6 +1254,34 @@
 	 */
 	$.articleFeedbackv5special.canBeFlagged = function( $post ) {
 		return !$post.data( 'hidden' ) && !$post.data( 'deleted' );
+	};
+
+	// }}}
+	// {{{ saveFilters
+
+	/**
+	 * Saves the filters' current state to a cookie
+	 */
+	$.articleFeedbackv5special.saveFilters = function () {
+		// don't save on permalink page
+		if ( $.articleFeedbackv5special.listControls.filter == 'id' ) {
+			return false;
+		}
+
+		// stringify filters data
+		var filterParams = {
+			'page': $.articleFeedbackv5special.page,
+			'listControls': $.articleFeedbackv5special.listControls
+		};
+		filterParams = $.toJSON(filterParams);
+
+		// note: we're overwriting the same cookie for every page; assuming that they won't like to come
+		// back later to previous pages and find their previous settings again (plus less cookie size)
+		$.cookie(
+			$.articleFeedbackv5special.prefix( $.articleFeedbackv5special.filterCookieName ),
+			filterParams,
+			{ 'expires': 1, 'path': '/' }
+		);
 	};
 
 	// }}}
