@@ -21,27 +21,40 @@
  * oversighters (see deleted)
  */
 $wgArticleFeedbackv5DefaultFilters = array (
-	'all' => 'visible-relevant',
+	'all'      => 'visible-relevant',
 	'featured' => 'visible-relevant',
-	'hidden' => 'visible-comment',
-	'deleted' => 'visible-comment',
-	'central' => 'visible-comment',
+	'hidden'   => 'visible-comment',
+	'deleted'  => 'visible-comment',
+	'central'  => 'visible-comment',
 );
 
 /**
- * Default filter and direction settings for groups
+ * Default sorts by filter
  *
- * all
- * editors (autoconfirmed) (can-feature)
- * monitors (see hidden)
- * oversighters (see deleted)
+ * Because priviliges don't play a part in default sort, the visible-,
+ * notdeleted-, and all- prefixes have been removed.
  */
 $wgArticleFeedbackv5DefaultSorts = array (
-	'all' => array( 'relevance', 'asc'),
-	'featured' => array( 'relevance', 'asc'),
-	'hidden' => array( 'age', 'desc'),
-	'deleted' => array( 'age', 'desc'),
-	'central' => array( 'age', 'desc'),
+	'abusive'       => array( 'age', 'desc' ),
+	'all'           => array( 'age', 'desc' ),
+	'comment'       => array( 'age', 'desc' ),
+	'declined'      => array( 'age', 'desc' ),
+	'featured'      => array( 'relevance', 'asc' ),
+	'helpful'       => array( 'helpful', 'desc' ),
+	'hidden'        => array( 'age', 'desc' ),
+	'id'            => array( 'age', 'desc' ),
+	'notdeleted'    => array( 'age', 'desc' ),
+	'oversighted'   => array( 'age', 'desc' ),
+	'relevant'      => array( 'relevance', 'asc' ),
+	'requested'     => array( 'age', 'desc' ),
+	'resolved'      => array( 'age', 'desc' ),
+	'unfeatured'    => array( 'relevance', 'desc' ),
+	'unhelpful'     => array( 'helpful', 'asc' ),
+	'unhidden'      => array( 'age', 'desc' ),
+	'unoversighted' => array( 'age', 'desc' ),
+	'unrequested'   => array( 'age', 'desc' ),
+	'unresolved'    => array( 'age', 'desc' ),
+	'visible'       => array( 'age', 'desc' ),
 );
 
 /**

@@ -5,22 +5,23 @@
 	overflow: hidden;
 	position: relative;
 	min-height: 150px;
+	min-width: 850px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap {
-	padding: 0 0 20px 30px;
+	padding: 0 0 20px 0;
 	float: left;
 	width: 70%;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head {
 	line-height: 24px;
-	margin-top: 10px;
-	width: 70%;
+	margin: 10px 0 0 30px;
+	width: 95%;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap blockquote {
 	display: block;
 	font-size: 1.25em;
 	margin: 10px 0;
-	padding: 0 0 20px;
+	padding: 0 0 20px 30px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-vote-wrapper {
 	position: absolute;
@@ -30,7 +31,7 @@
 	width: 70%;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-tags {
-	padding: 10px 10px 0 0;
+	padding: 0 10px 0 0;
 	float: right;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools {
@@ -45,7 +46,6 @@
 
 /** Feedback row **/
 .articleFeedbackv5-feedback {
-	min-width: 650px;
 	padding: 0;
 	border-bottom: 2px solid #D6D7D5;
 	/* @embed */
@@ -129,7 +129,8 @@
 .articleFeedbackv5-comment-foot {
 	line-height: 22px;
 	float: left;
-	width: 450px;
+	width: auto;
+	margin-right: 45px;
 }
 .articleFeedbackv5-vote-wrapper {
 	float: left;
@@ -216,9 +217,12 @@
 	/* @embed */
 	background-image: url(images/flag_active.png);
 }
-.articleFeedbackv5-abuse-link.abusive,
-.articleFeedbackv5-unabuse-link.abusive {
-	color: red;
+.articleFeedbackv5-abuse-count {
+	padding-left: 10px;
+	color: #888;
+}
+.articleFeedbackv5-abuse-count.abusive {
+	color: #832831;
 }
 
 /** Tags Block (featured, resolved) **/
