@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//6ms\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-05T18:07:21Z",
+      "side": 1,
+      "message": "Why are you loading the module if $mainTitle \u003d\u003d\u003d null ? I\u0027d think you wouldn\u0027t want to load the module in that case, so you\u0027d want $mainTitle !\u003d\u003d null \u0026\u0026 self::blahblahblah instead",
+      "revId": "e30fb128d02cc85fbc44f5cdcf6dc3215b488220",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//6mU\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-05T18:07:21Z",
+      "side": 1,
+      "message": "You should use the Title object\u0027s functions for this instead:\n\n$catTitle \u003d Title::newFromDBkey( $category );\n$categoryWithoutPrefix \u003d $catTitle-\u003egetDBkey();",
+      "revId": "e30fb128d02cc85fbc44f5cdcf6dc3215b488220",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//6mQ\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-05T18:07:21Z",
+      "side": 1,
+      "message": "It\u0027d be better if you checked these things before the category loop, that allows you to skip the category check if the page is e.g. in the wrong namespace",
+      "revId": "e30fb128d02cc85fbc44f5cdcf6dc3215b488220",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
