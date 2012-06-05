@@ -20,7 +20,7 @@ $messages['en'] = array(
 
 	/* CTAs */
 	'articlefeedbackv5-cta-thanks' => 'Thanks!',
-	'articlefeedbackv5-cta-confirmation-followup' => 'Your feedback has been saved.',
+	'articlefeedbackv5-cta-confirmation-message' => 'Your feedback has been [$1 posted here].',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Did you know that you can edit this page?',
 	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia works because anyone can edit its pages. Go ahead, give it a try. Be bold!',
 	'articlefeedbackv5-cta1-learn-how' => 'Learn how to edit',
@@ -633,7 +633,7 @@ publicized to the community for this testing period.',
  */
 $messages['qqq'] = array(
 	'articlefeedbackv5-cta-thanks' => 'The bolded part of the message that appears at the top of every CTA (call to action)',
-	'articlefeedbackv5-cta-confirmation-followup' => 'The non-bolded part of the message that appears at the top of every CTA (call to action)',
+	'articlefeedbackv5-cta-confirmation-message' => 'The non-bolded part of the message that appears at the top of every CTA (call to action)',
 	'articlefeedbackv5-cta1-confirmation-title' => 'The title of the edit CTA (call to action)',
 	'articlefeedbackv5-cta1-confirmation-call' => 'The text of the edit CTA (call to action)',
 	'articlefeedbackv5-cta1-learn-how' => 'The link below the text on the edit CTA (call to action), pointing to the edit tutorial',

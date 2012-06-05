@@ -102,7 +102,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-error-abuse-link',
 				'articlefeedbackv5-error-abuse-linktext',
 				'articlefeedbackv5-error-throttled',
-				'articlefeedbackv5-cta-confirmation-followup',
+				'articlefeedbackv5-cta-confirmation-message',
 				'articlefeedbackv5-cta1-confirmation-title',
 				'articlefeedbackv5-cta1-confirmation-call',
 				'articlefeedbackv5-cta1-learn-how',
