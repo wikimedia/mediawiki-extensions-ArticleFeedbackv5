@@ -352,26 +352,125 @@ class ArticleFeedbackv5Hooks {
 	}
 
 	/**
-	 * BeforePageDisplay hook
+	 * BeforePageDisplay hook - this hook will determine if and what javascript will be loaded
+	 *
 	 * @param $out OutputPage
 	 * @return bool
 	 */
-	public static function beforePageDisplay( $out ) {
-		global $wgTitle;
+	public static function beforePageDisplay( OutputPage &$out, Skin &$skin ) {
+		$title = $out->getTitle();
+		$action = Action::getActionName( $out->getContext() );
+		$user = $out->getUser();
+		$request = $out->getRequest();
 
-		// Load modules
-		switch ( $wgTitle->getNamespace() ) {
-			case NS_SPECIAL:
-				// note: ext.articleFeedbackv5.dashboard is being loaded from SpecialArticleFeedbackv5.php
+		switch ( $title->getNamespace() ) {
+			// normal page
+			case NS_MAIN:
+				if (
+					self::allowForPage( $title )
+					// view pages
+					&& ( $action == 'view' || $action == 'purge' )
+					// if user is logged in, showing on action=purge is OK,
+					// but if user is logged out, action=purge shows a form instead of the article,
+					// so return false in that case.
+					&& !( $action == 'purge' && $user->isAnon() )
+					// current revision
+					&& $request->getVal( 'diff' ) == null
+					&& $request->getVal( 'oldid' ) == null
+					// not viewing a redirect
+					&& $request->getVal( 'redirect' ) != 'no'
+					// not viewing the printable version
+					&& $request->getVal( 'printable' ) != 'yes'
+				) {
+					// load module
+					$out->addModules( 'ext.articleFeedbackv5.startup' );
+				}
+
 				break;
+
+			// talk page
 			case NS_TALK:
-				$out->addModules( 'ext.articleFeedbackv5.talk' );
+				if ( self::allowForPage( $title->getSubjectPage() ) ) {
+					// load module
+					$out->addModules( 'ext.articleFeedbackv5.talk' );
+				}
 				break;
+
+			// special page
+			case NS_SPECIAL:
+				if ( $out->getTitle()->isSpecial( 'ArticleFeedbackv5' ) ) {
+					// fetch the title of the article this special page is related to
+					list( /* special */, $mainTitle) = SpecialPageFactory::resolveAlias( $out->getTitle()->getDBkey() );
+
+					// Permalinks: drop the feedback ID
+					$mainTitle = preg_replace( '/(\/[0-9]+)$/', '', $mainTitle );
+
+					// Central feedback page OR allowed page
+					$mainTitle = Title::newFromDBkey( $mainTitle );
+					if ( $mainTitle === null || self::allowForPage( $mainTitle ) ) {
+						// load module
+						$out->addModules( 'ext.articleFeedbackv5.dashboard' );
+					}
+				}
+
+				break;
+
+			// other, unknown
 			default:
-				$out->addModules( 'ext.articleFeedbackv5.startup' );
+ 				return true;
 		}
 
 		return true;
+	}
+
+	/**
+	 * Check if ArticleFeedbackv5 is allowed to show on a certain page, depending on:
+	 * - if the user has disabled articlefeedback
+	 * - if the article is in the allowed namespaces list
+	 * - if the article is an existing page
+	 * - if the article has the valid categories
+	 *
+	 * @param Title $title
+	 * @return boolean
+	 */
+	public static function allowForPage( Title $title ) {
+		global $wgUser,
+			$wgArticleFeedbackv5Namespaces,
+			$wgArticleFeedbackv5Categories,
+			$wgArticleFeedbackv5BlacklistCategories;
+
+		if (
+			// not disabled via preferences
+			!$wgUser->getOption( 'articlefeedback-disable' )
+			// only on pages in namespaces where it is enabled
+			&& in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces )
+			// existing pages
+			&& $title->getArticleId() > 0
+		) {
+			$allow = false;
+
+			// loop all categories linked to this page
+			foreach ( $title->getParentCategories() as $category => $page ) {
+				// get category title without prefix
+				$category = Title::newFromDBkey( $category );
+				$category = $category->getDBkey();
+
+				// check exclusion - exclusion overrides everything else
+				if ( in_array( $category, $wgArticleFeedbackv5BlacklistCategories ) ) {
+					return false;
+				}
+
+				if ( in_array( $category, $wgArticleFeedbackv5Categories ) ) {
+					// one match is enough for include, however we are iterating on the 'current'
+					// categories, and others might be blacklisted - so continue iterating
+					$allow = true;
+				}
+			}
+
+			return $allow;
+		}
+
+		return false;
 	}
 
 	/**
