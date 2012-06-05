@@ -20,7 +20,7 @@ $messages['en'] = array(
 
 	/* CTAs */
 	'articlefeedbackv5-cta-thanks' => 'Thanks!',
-	'articlefeedbackv5-cta-confirmation-followup' => 'Your feedback has been saved.',
+	'articlefeedbackv5-cta-confirmation-message' => 'Your feedback has been [$1 posted here].',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Did you know that you can edit this page?',
 	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia works because anyone can edit its pages. Go ahead, give it a try. Be bold!',
 	'articlefeedbackv5-cta1-learn-how' => 'Learn how to edit',
@@ -630,7 +630,7 @@ publicized to the community for this testing period.',
  */
 $messages['qqq'] = array(
 	'articlefeedbackv5-cta-thanks' => 'The bolded part of the message that appears at the top of every CTA (call to action)',
-	'articlefeedbackv5-cta-confirmation-followup' => 'The non-bolded part of the message that appears at the top of every CTA (call to action)',
+	'articlefeedbackv5-cta-confirmation-message' => 'The non-bolded part of the message that appears at the top of every CTA (call to action)',
 	'articlefeedbackv5-cta1-confirmation-title' => 'The title of the edit CTA (call to action)',
 	'articlefeedbackv5-cta1-confirmation-call' => 'The text of the edit CTA (call to action)',
 	'articlefeedbackv5-cta1-learn-how' => 'The link below the text on the edit CTA (call to action), pointing to the edit tutorial',
@@ -9868,7 +9868,7 @@ $messages['ko'] = array(
 	'articleFeedbackv5-table-heading-average' => '평균',
 	'articleFeedbackv5-copy-above-highlow-tables' => '실험적인 기능입니다. 기능에 대한 의견을 [$1 토론란]에 남겨 주세요.',
 	'articlefeedbackv5-dashboard-bottom' => "'''알림''': 우리는 이 평가 상자에서 문서를 다양하게 나타내는 실험을 계속할 것입니다. 지금 평가 상자는 다음 문서를 나타냅니다:
-* 최고/최저 평가를 받은 문서: 지난 24시간 이내에 평가를 10번 이상 받은 문서로  제출된 평가 모두의 산술평균을 구해 평균으로 합니다. 
+* 최고/최저 평가를 받은 문서: 지난 24시간 이내에 평가를 10번 이상 받은 문서로  제출된 평가 모두의 산술평균을 구해 평균으로 합니다.
 * 최근 낮은 평가를 받은 문서: 지난 24시간 이내에 분류에 상관 없이 70%이상이 낮게(별 2개 이하) 평가한 문서로  평가를 10번 이상 받은 문서만 나타납니다.",
 	'articlefeedbackv5' => '문서 평가 현황',
 	'articlefeedbackv5-desc' => '문서 평가',
