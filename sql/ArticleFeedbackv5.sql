@@ -1,17 +1,3 @@
--- TODO: Take the drops out before release, these are just for convenience while we're developing.
-DROP TABLE IF EXISTS /*_*/aft_article_feedback;
-DROP TABLE IF EXISTS /*_*/aft_article_field_group;
-DROP TABLE IF EXISTS /*_*/aft_article_field;
-DROP TABLE IF EXISTS /*_*/aft_article_field_option;
-DROP TABLE IF EXISTS /*_*/aft_article_answer;
-DROP TABLE IF EXISTS /*_*/aft_article_feedback_ratings_rollup;
-DROP TABLE IF EXISTS /*_*/aft_article_revision_feedback_ratings_rollup;
-DROP TABLE IF EXISTS /*_*/aft_article_feedback_select_rollup;
-DROP TABLE IF EXISTS /*_*/aft_article_revision_feedback_select_rollup;
-DROP TABLE IF EXISTS /*_*/aft_article_hits;
-DROP TABLE IF EXISTS /*_*/aft_article_feedback_properties;
-DROP TABLE IF EXISTS /*_*/aft_article_filter_count;
-
 -- Stores feedback records: "user X submitted feedback on page Y, at time Z"
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   -- Row ID (primary key)
@@ -209,7 +195,6 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback_properties (
   PRIMARY KEY (afp_feedback_id, afp_key)
 ) /*$wgDBTableOptions*/;
 
--- TODO: Add indicesafi_data_type);
 CREATE INDEX /*i*/af_page_revision ON /*_*/aft_article_feedback (af_page_id, af_revision_id);
 CREATE INDEX /*i*/afi_data_type ON /*_*/aft_article_field (afi_data_type);
 CREATE INDEX /*i*/aa_feedback_field_option ON /*_*/aft_article_answer (aa_feedback_id, aa_field_id, aa_response_option_id);
@@ -229,6 +214,8 @@ INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUE
 INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-profession', 'boolean', 5);
 INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-hobby', 'boolean', 5);
 INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('expertise-other', 'boolean', 5);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('found', 'boolean', 6);
+INSERT INTO /*_*/aft_article_field(afi_name, afi_data_type, afi_bucket_id) VALUES ('comment', 'text', 6);
 
 INSERT INTO /*_*/aft_article_field_option (afo_field_id, afo_name)
 	SELECT afi_id, 'suggestion' FROM /*_*/aft_article_field WHERE afi_name = 'tag' AND afi_bucket_id = 2;
