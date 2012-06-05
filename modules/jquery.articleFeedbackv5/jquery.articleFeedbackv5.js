@@ -1360,9 +1360,16 @@
 					$.articleFeedbackv5.permalink,
 					'cta_view_feedback-link_click'
 				);
-
-				$title.find( '.articleFeedbackv5-confirmation-follow-up' ).msg( 'articlefeedbackv5-cta5-confirmation-message', link );
-
+				$title.find( '.articleFeedbackv5-confirmation-follow-up' )
+					.html( $.articleFeedbackv5.buildLink(
+						'articlefeedbackv5-cta5-confirmation-followup',
+						{
+							href: $.articleFeedbackv5.trackingUrl(
+								$.articleFeedbackv5.permalink,
+								'cta_view_feedback-link_click'
+							),
+							text: 'articlefeedbackv5-cta5-confirmation-followup-linktext'
+						} ) );
 				return $title.html();
 			},
 
