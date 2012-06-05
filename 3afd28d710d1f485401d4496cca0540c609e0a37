@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//6pM\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-05T17:28:39Z",
+      "side": 1,
+      "message": "This needs PLURAL",
+      "revId": "3afd28d710d1f485401d4496cca0540c609e0a37",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//6pI\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-05T17:28:39Z",
+      "side": 1,
+      "message": "$count is implicitly a global variable here",
+      "revId": "3afd28d710d1f485401d4496cca0540c609e0a37",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
