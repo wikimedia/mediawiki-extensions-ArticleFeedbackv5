@@ -769,7 +769,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		global $wgArticleFeedbackv5DefaultFilters,
 			$wgArticleFeedbackv5DefaultSorts;
 
-		// Was a filter requested?
+		// Was a filter requested in the url?
 		if ( $filter ) {
 			if ( in_array( $filter, $this->filters ) ) {
 				// pass through;
@@ -781,6 +781,23 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 				$filter = 'visible-' . $filter;
 			} else {
 				$filter = false;
+			}
+		}
+
+		// Was a filter requested via cookie?
+		if ( !$filter && $this->feedbackId === null ) {
+			global $wgArticleFeedbackv5Tracking, $wgRequest, $wgCookiePrefix;
+			$version = isset($wgArticleFeedbackv5Tracking['version']) ? $wgArticleFeedbackv5Tracking['version'] : 0;
+			$cookie = json_decode( $wgRequest->getCookie( 'last-filter', 'ext.articleFeedbackv5@' . $version . '-' ) );
+			if ( $cookie !== null && is_object( $cookie )
+				&& isset( $cookie->page ) && $this->pageId == $cookie->page
+				&& isset( $cookie->listControls ) && is_object( $cookie->listControls ) ) {
+				$cookie_filter = $cookie->listControls->filter;
+				$cookie_sort   = $cookie->listControls->sort;
+				$cookie_dir    = $cookie->listControls->sortDirection;
+			}
+			if ( isset( $cookie_filter ) && in_array( $cookie_filter, $this->filters ) ) {
+				$filter = $cookie_filter;
 			}
 		}
 
@@ -813,6 +830,15 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 				list( $sort, $dir ) = explode( '-', $sort );
 			} else {
 				$sort = false;
+			}
+		}
+
+		// Was a sort included in the cookie?
+		if ( isset( $cookie_filter ) && $cookie_filter == $filter
+			&& isset( $cookie_sort ) && isset( $cookie_dir ) ) {
+			if ( in_array( $cookie_sort . '-' . $cookie_dir, $this->sorts ) ) {
+				$sort = $cookie_sort;
+				$dir  = $cookie_dir;
 			}
 		}
 
