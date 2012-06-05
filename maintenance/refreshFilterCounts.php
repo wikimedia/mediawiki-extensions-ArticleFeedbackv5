@@ -16,9 +16,6 @@ require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
  */
 class ArticleFeedbackv5_RefreshFilterCounts extends Maintenance {
 
-// UPDATE aft_article_feedback, aft_article_answer SET af_has_comment = TRUE WHERE af_form_id = 1 AND af_id = aa_feedback_id AND aa_response_text IS NOT NULL;
-// UPDATE aft_article_feedback SET af_net_helpfulness = CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED);
-
 	/**
 	 * Filter info
 	 *
@@ -69,7 +66,7 @@ class ArticleFeedbackv5_RefreshFilterCounts extends Maintenance {
 		$dbw->delete( 'aft_article_filter_count', '*', __METHOD__ );
 
 		foreach ( self::$filters as $filter => $info ) {
-			$where = array();
+			$where = array( '( af_form_id = 1 OR af_form_id = 6 )' );
 			if ( isset( $info['where'] ) ) {
 				$where[] = $info['where'];
 			}
@@ -78,9 +75,6 @@ class ArticleFeedbackv5_RefreshFilterCounts extends Maintenance {
 				$where[] = 'af_is_hidden IS FALSE';
 			} elseif ( substr( $filter, 0, 10 ) == 'notdeleted' ) {
 				$where[] = 'af_is_deleted IS FALSE';
-			}
-			if ( count( $where ) == 0 ) {
-				$where = '*';
 			}
 			// Page filters
 			$dbw->insertSelect(

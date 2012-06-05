@@ -94,6 +94,7 @@ class ArticleFeedbackv5Render {
 				case 1: $content = $this->renderBucket1( $record ); break;
 				case 2: $content = $this->renderBucket2( $record ); break;
 				case 3: $content = $this->renderBucket3( $record ); break;
+				case 6: $content = $this->renderBucket1( $record ); break;
 				default: $content = $this->renderNoBucket( $record ); break;
 			}
 		}

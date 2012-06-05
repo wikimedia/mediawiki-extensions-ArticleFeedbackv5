@@ -216,7 +216,7 @@ class ArticleFeedbackv5Fetch {
 			$where[] = $continueSql;
 		}
 		// Only show bucket 1 (per Fabrice on 1/25)
-		$where['af_form_id'] = 1;
+		$where[] = '( af_form_id = 1 OR af_form_id = 6 )';
 
 		// Fetch the feedback IDs we need.
 		/* I'd really love to do this in one big query, but MySQL

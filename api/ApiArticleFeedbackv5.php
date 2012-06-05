@@ -125,9 +125,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$feedbackId = $ratingIds['feedback_id'];
 		$this->saveUserProperties( $feedbackId );
 
-		// Per Fabrice 1/25, FeedbackPage only cares about option 1, so
-		// don't bother updating the rollups if this is a different one.
-		if ( $bucket == 1 ) {
+		// Per Fabrice 1/25, FeedbackPage only cares about options 1 and six,
+		// so don't bother updating the rollups if this is a different one.
+		if ( $bucket == 1 || $bucket == 6 ) {
 			$this->updateRollupTables( $pageId, $revisionId, $userAnswers );
 			$this->updateFilterCounts( $dbw, $pageId, $userAnswers );
 		}
