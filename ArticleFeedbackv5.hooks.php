@@ -329,6 +329,7 @@ class ArticleFeedbackv5Hooks {
 				'jquery.tipsy',
 				'jquery.localize',
 				'jquery.articleFeedbackv5.track',
+				'jquery.json',
 			),
 		),
 	);
