@@ -1383,9 +1383,9 @@
 			'apiFlagType': 'abuse',
 			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
-				$link = $( '#articleFeedbackv5-abuse-link-' + id );
+				var $link = $( '#articleFeedbackv5-abuse-link-' + id );
 				$link.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) );
-				$count = $( '#articleFeedbackv5-abuse-count-' + id );
+				var $count = $( '#articleFeedbackv5-abuse-count-' + id );
 				if ( $count.length ) {
 					$count.text( mw.msg( 'articlefeedbackv5-form-abuse-count', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
 					if ( data['articlefeedbackv5-flag-feedback'].abusive ) {
@@ -1421,9 +1421,9 @@
 			'apiFlagType': 'abuse',
 			'apiFlagDir': -1,
 			'onSuccess': function( id, data ) {
-				$link = $( '#articleFeedbackv5-unabuse-link-' + id );
+				var $link = $( '#articleFeedbackv5-unabuse-link-' + id );
 				$link.text( mw.msg( 'articlefeedbackv5-form-abuse' ) );
-				$count = $( '#articleFeedbackv5-abuse-count-' + id );
+				var $count = $( '#articleFeedbackv5-abuse-count-' + id );
 				if ( $count.length ) {
 					$count.text( mw.msg( 'articlefeedbackv5-form-abuse-count', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
 					if ( data['articlefeedbackv5-flag-feedback'].abusive ) {
