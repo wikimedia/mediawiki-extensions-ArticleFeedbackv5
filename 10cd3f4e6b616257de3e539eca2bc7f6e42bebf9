@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//6iM\u003d",
+        "filename": "ArticleFeedbackv5.fetch.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-05T19:55:49Z",
+      "side": 1,
+      "message": "FYI, $where[\u0027af_form_id\u0027] \u003d array( 1, 6 ); works too",
+      "revId": "10cd3f4e6b616257de3e539eca2bc7f6e42bebf9",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
