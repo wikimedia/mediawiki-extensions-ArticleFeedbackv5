@@ -29,10 +29,9 @@ jQuery( function( $ ) {
 		(ua.indexOf( 'ipod' ) != -1 ) ||
 		(ua.indexOf( 'ipad' ) != -1)
 	) {
-		// Remove the extension's output & replace it with a warning to the user that his browser isn't supported
+		// Remove the extension's output & replace it with a warning that the browser isn't supported
 		var warning = $( '#articlefeedbackv5-beta-message' ).text( mw.msg( 'articlefeedbackv5-unsupported-message' ) );
-		$( '#mw-content-text' ).empty().append( warning );
-
+		$( '#articleFeedbackv5-special-wrap' ).empty().append( warning );
 		return;
 	}
 

@@ -243,6 +243,12 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			$out->setPagetitle( $this->msg( 'articlefeedbackv5-special-central-pagetitle' )->escaped() );
 		}
 
+		// Wrap the whole thing in a div
+		$out->addHTML(
+			// <div id="articleFeedbackv5-special-wrap">
+			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-special-wrap' ) )
+		);
+
 		// Header links
 		$this->outputHeaderLinks();
 
@@ -251,6 +257,12 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		} else {
 			$this->outputListing( $renderer, $fetched );
 		}
+
+		// Close the wrapper
+		$out->addHTML(
+			// </div>
+			Html::closeElement( 'div' )
+		);
 
 		// JS variables
 		$out->addJsConfigVars( 'afPageId', $this->pageId );
