@@ -1,4 +1,4 @@
-/**
+/*
  * ArticleFeedback form plugin
  *
  * This file creates the plugin that will be used to build the Article Feedback
@@ -83,11 +83,6 @@
 	 * Are we in debug mode?
 	 */
 	$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' ) ? true : false;
-
-	/**
-	 * Are we tracking clicks?
-	 */
-	$.articleFeedbackv5.clickTracking = false;
 
 	/**
 	 * Have the containers been added?
@@ -603,7 +598,7 @@
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the button link
-				var track_id = $.articleFeedbackv5.experiment() + '-button_click-' + from;
+				var track_id = 'button_click-' + from;
 				if ( $.articleFeedbackv5.editable ) {
 					$block.find( '.articleFeedbackv5-cta-button' )
 						.attr( 'href', $.articleFeedbackv5.editUrl( track_id, from ) );
@@ -652,7 +647,7 @@
 			onModalToggle: function ( from ) {
 				// Fill in the button link
 				if ( $.articleFeedbackv5.editable ) {
-					var track_id = $.articleFeedbackv5.experiment() + '-button_click-' + from;
+					var track_id = 'button_click-' + from;
 					$.articleFeedbackv5.find( '.articleFeedbackv5-cta-button' )
 						.attr( 'href', $.articleFeedbackv5.editUrl( track_id, from ) );
 				}
@@ -780,7 +775,7 @@
 				$block.find( '.articleFeedbackv5-button-placeholder' )
 					.click( function ( e ) {
 						var new_val = $( this ).parent().attr( 'rel' );
-						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-click_' + new_val +
+						$.articleFeedbackv5.trackClick( 'click_' + new_val +
 							'-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 
 						var $wrap = $.articleFeedbackv5.find( '#articleFeedbackv5-bucket6-toggle-wrapper-' + new_val );
@@ -1057,8 +1052,7 @@
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the link
-				var edit_track_id = $.articleFeedbackv5.experiment() + '-' +
-					$.articleFeedbackv5.ctaName() + '-button_click-' +
+				var edit_track_id = $.articleFeedbackv5.ctaName() + '-button_click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.editUrl( edit_track_id ) );
@@ -1124,8 +1118,7 @@
 
 				// Fill in the button link
 				var learn_url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
-				var learn_track_id = $.articleFeedbackv5.experiment() + '-' +
-					$.articleFeedbackv5.ctaName() + '-button_click-' +
+				var learn_track_id = $.articleFeedbackv5.ctaName() + '-button_click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl( learn_url, learn_track_id ) );
@@ -1205,8 +1198,7 @@
 				// Fill in the go-to-survey link
 				var survey_url = $.articleFeedbackv5.currentCTA().getSurveyUrl();
 				if ( survey_url ) {
-					var survey_track_id = $.articleFeedbackv5.experiment() + '-' +
-						$.articleFeedbackv5.ctaName() + '-button_click-' +
+					var survey_track_id = $.articleFeedbackv5.ctaName() + '-button_click-' +
 						( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 					$block.find( '.articleFeedbackv5-cta-button' )
 						.attr( 'href', $.articleFeedbackv5.trackingUrl(
@@ -1337,7 +1329,8 @@
 
 				// Fill in the link
 				var feedback_url = $.articleFeedbackv5.specialUrl;
-				var feedback_track_id = 'cta_view_feedback-button_click';
+				var feedback_track_id = $.articleFeedbackv5.ctaName() + '-button_click-' +
+					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl( feedback_url, feedback_track_id ) );
 
@@ -1360,14 +1353,13 @@
 					$.articleFeedbackv5.permalink,
 					'cta_view_feedback-link_click'
 				);
+				var track_id = $.articleFeedbackv5.ctaName() + '-link_click-' +
+					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$title.find( '.articleFeedbackv5-confirmation-follow-up' )
 					.html( $.articleFeedbackv5.buildLink(
 						'articlefeedbackv5-cta5-confirmation-followup',
 						{
-							href: $.articleFeedbackv5.trackingUrl(
-								$.articleFeedbackv5.permalink,
-								'cta_view_feedback-link_click'
-							),
+							href: $.articleFeedbackv5.trackingUrl( $.articleFeedbackv5.permalink, track_id ),
 							text: 'articlefeedbackv5-cta5-confirmation-followup-linktext'
 						} ) );
 				return $title.html();
@@ -1381,8 +1373,6 @@
 			 */
 			afterBuild: function() {
 				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
-				// Track the impression
-				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-cta_view_feedback-impression' );
 			}
 
 			// }}}
@@ -1934,10 +1924,10 @@
 		if ( reqDebug ) {
 			$.articleFeedbackv5.debug = reqDebug == 'false' ? false : true;
 		}
-		// Are we tracking clicks?
-		$.articleFeedbackv5.clickTracking = $.articleFeedbackv5.checkClickTracking();
+		// Initialize clicktracking
+		$.aftTrack.init();
 		// Has the user already submitted ratings for this page at this revision?
-		$.articleFeedbackv5.alreadySubmitted = $.cookie( $.articleFeedbackv5.prefix( 'submitted' ) ) === 'true';
+		$.articleFeedbackv5.alreadySubmitted = $.cookie( $.aftTrack.prefix( 'submitted' ) ) === 'true';
 		// Can the user edit the page?
 		$.articleFeedbackv5.editable = $.articleFeedbackv5.userCanEdit();
 		// Go ahead and bucket right away
@@ -1952,7 +1942,7 @@
 		$.articleFeedbackv5.$holder.appear( function () {
 			if ( !$.articleFeedbackv5.isLoaded ) {
 				$.articleFeedbackv5.load( 'auto', 'bottom' );
-				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-impression-bottom' );
+				$.articleFeedbackv5.trackClick( 'impression-bottom' );
 			}
 		} );
 		// Keep track of links that must be removed after a successful submission
@@ -1961,7 +1951,7 @@
 		$.articleFeedbackv5.addTriggerLinks();
 		// Track init at 1%
 		if ( Math.random() * 100 < 1 ) {
-			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-init' );
+			$.articleFeedbackv5.trackClick( 'init' );
 		}
 	};
 
@@ -1993,27 +1983,6 @@
 		if ( $.articleFeedbackv5.debug ) {
 			aft5_debug( 'Using form option #' + $.articleFeedbackv5.bucketId );
 		}
-	};
-
-	// }}}
-	// {{{ checkClickTracking
-
-	/**
-	 * Checks whether click tracking is turned on
-	 *
-	 * Only track users who have been assigned to the tracking group; don't bucket
-	 * at all if we're set to always ignore or always track.
-	 */
-	$.articleFeedbackv5.checkClickTracking = function () {
-		var b = mw.config.get( 'wgArticleFeedbackv5Tracking' );
-		if ( b.buckets.ignore == 100 && b.buckets.track == 0 ) {
-			return false;
-		}
-		if ( b.buckets.ignore == 0 && b.buckets.track == 100 ) {
-			return true;
-		}
-		var key = 'ext.articleFeedbackv5@' + b.version + '-tracking'
-		return ( 'track' === mw.user.bucket( key, b ) );
 	};
 
 	// }}}
@@ -2083,21 +2052,6 @@
 	// }}}
 	// {{{ Utility methods
 
-	// {{{ prefix
-
-	/**
-	 * Utility method: Prefixes a key for cookies or events with extension and
-	 * version information
-	 *
-	 * @param  key    string name of event to prefix
-	 * @return string prefixed event name
-	 */
-	$.articleFeedbackv5.prefix = function ( key ) {
-		var version = mw.config.get( 'wgArticleFeedbackv5Tracking' ).version || 0;
-		return 'ext.articleFeedbackv5@' + version + '-' + key;
-	};
-
-	// }}}
 	// {{{ currentBucket
 
 	/**
@@ -2255,10 +2209,22 @@
 		} else if ( '3' == $.articleFeedbackv5.ctaId ) {
 			return 'cta_survey';
 		} else if ( '5' == $.articleFeedbackv5.ctaId ) {
-			return 'cta_feedback';
+			return 'cta_view_feedback';
 		} else {
 			return 'cta_unknown';
 		}
+	};
+
+	// }}}
+	// {{{ trackClick
+
+	/**
+	 * Tracks a click
+	 *
+	 * @param trackingId string the tracking ID
+	 */
+	$.articleFeedbackv5.trackClick = function ( trackingId ) {
+		$.aftTrack.trackClick( $.articleFeedbackv5.experiment() + '-' + trackingId );
 	};
 
 	// }}}
@@ -2271,11 +2237,7 @@
 	 * @param trackingId string the tracking ID
 	 */
 	$.articleFeedbackv5.trackingUrl = function ( url, trackingId ) {
-		if ( $.articleFeedbackv5.clickTracking ) {
-			return $.articleFeedbackv5.trackActionURL( url, $.articleFeedbackv5.prefix( trackingId ) );
-		} else {
-			return url;
-		}
+		return $.aftTrack.trackingUrl( url, $.articleFeedbackv5.experiment() + '-' + trackingId );
 	};
 
 	// }}}
@@ -2292,9 +2254,9 @@
 		var params = {
 			'title': mw.config.get( 'wgPageName' ),
 			'action': 'edit',
-			'articleFeedbackv5_click_tracking': $.articleFeedbackv5.clickTracking ? '1' : '0',
+			'articleFeedbackv5_click_tracking': $.aftTrack.clickTrackingOn ? '1' : '0',
 		};
-		if ( $.articleFeedbackv5.clickTracking ) {
+		if ( $.aftTrack.clickTrackingOn ) {
 			params.articleFeedbackv5_ct_token   = $.cookie( 'clicktracking-session' );
 			params.articleFeedbackv5_bucket_id  = $.articleFeedbackv5.bucketId;
 			params.articleFeedbackv5_cta_id     = $.articleFeedbackv5.ctaId;
@@ -2528,7 +2490,7 @@
 			var priorTimestamps = new Array();
 			var savedTimestamps = new Array();
 
-			var priorCookieValue = $.cookie( $.articleFeedbackv5.prefix( 'submission_timestamps' ) );
+			var priorCookieValue = $.cookie( $.aftTrack.prefix( 'submission_timestamps' ) );
 			if ( priorCookieValue != null ) {
 				var priorTimestamps = priorCookieValue.split( ',' );
 			}
@@ -2546,14 +2508,14 @@
 				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-throttled' ) );
 
 				// re-store pruned post timestamp list
-				$.cookie( $.articleFeedbackv5.prefix( 'submission_timestamps' ), savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
+				$.cookie( $.aftTrack.prefix( 'submission_timestamps' ), savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
 
 				return;
 			}
 
 			// if we get this far, they haven't been throttled, so update the post timestamp list with the current time and re-store it
 			savedTimestamps.push(now);
-			$.cookie( $.articleFeedbackv5.prefix( 'submission_timestamps' ), savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
+			$.cookie( $.aftTrack.prefix( 'submission_timestamps' ), savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
 		}
 
 		// Lock the form
@@ -2575,8 +2537,7 @@
 		} );
 
 		// Track the submit click
-		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-submit_attempt-' +
-			( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+		$.articleFeedbackv5.trackClick( 'submit_attempt-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 
 		// Send off the ajax request
 		$.ajax( {
@@ -2596,15 +2557,14 @@
 					$.articleFeedbackv5.unlockForm();
 					$.articleFeedbackv5.showCTA( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
 					// Drop a cookie for a successful submit
-					$.cookie( $.articleFeedbackv5.prefix( 'submitted' ), 'true', { 'expires': 365, 'path': '/' } );
+					$.cookie( $.aftTrack.prefix( 'submitted' ), 'true', { 'expires': 365, 'path': '/' } );
 					// Clear out anything that needs removing (usually trigger links)
 					// Comment this out and uncomment the clear on dialog close to switch to
 					// the trigger link replacing the form. _SWITCH_CLEAR_
 					$.articleFeedbackv5.$toRemove.remove();
 					$.articleFeedbackv5.$toRemove = $( [] );
 					// Track the success
-					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-submit_success-' +
-						( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+					$.articleFeedbackv5.trackClick( 'submit_success-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 				} else {
 					var code = 'unknown';
 					var msg;
@@ -2633,9 +2593,7 @@
 						msg = { info: mw.msg( 'articlefeedbackv5-error-unknown' ) };
 					}
 					// Track the error
-					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() +
-						'-submit_error_' + code + '-' +
-						( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+					$.articleFeedbackv5.trackClick( 'submit_error_' + code + '-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 					// Set up error state
 					$.articleFeedbackv5.markFormErrors( { _api : msg } );
 					$.articleFeedbackv5.unlockForm();
@@ -2646,9 +2604,7 @@
 			},
 			'error': function (xhr, tstatus, error) {
 				// Track the error
-				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() +
-					'-submit_error_jquery-' +
-					( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+				$.articleFeedbackv5.trackClick( 'submit_error_jquery-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
 				// Set up error state
 				var err = { _api: { info: mw.msg( 'articlefeedbackv5-error-submit' ) } };
 				$.articleFeedbackv5.markFormErrors( err );
@@ -2773,8 +2729,7 @@
 		$.articleFeedbackv5.setDialogDimensions();
 
 		// Track the event
-		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-' +
-			$.articleFeedbackv5.ctaName() + '-impression-' + from );
+		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-impression-' + from );
 
 		$.articleFeedbackv5.nowShowing = 'cta';
 	};
@@ -2897,9 +2852,8 @@
 					var prefLink = mw.config.get( 'wgScript' ) + '?' +
 						$.param( { title: 'Special:Preferences' } ) +
 						'#mw-prefsection-rendering';
-					var prefTrackId = $.articleFeedbackv5.experiment() + '-disable_gotoprefs_click';
 					$flyover.find( '.articleFeedbackv5-disable-flyover-button' )
-						.attr( 'href', $.articleFeedbackv5.trackingUrl( prefLink, prefTrackId ) )
+						.attr( 'href', $.articleFeedbackv5.trackingUrl( prefLink, 'disable_gotoprefs_click' ) )
 						.button()
 						.addClass( 'ui-button-blue' );
 
@@ -2907,7 +2861,7 @@
 						.attr( 'href', '#hello' )
 						.attr( 'rel', linkId );
 
-					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-disable_flyover-impression' );
+					$.articleFeedbackv5.trackClick( 'disable_flyover-impression' );
 					return $flyover.html();
 				}
 			} )
@@ -2921,7 +2875,7 @@
 				} else {
 					$host.tipsy( 'show' );
 					$wrap.addClass( 'articleFeedbackv5-tipsy-active' );
-					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-disable_button_click' );
+					$.articleFeedbackv5.trackClick( 'disable_button_click' );
 				}
 			} );
 	};
@@ -3132,7 +3086,7 @@
 			$.articleFeedbackv5.setLinkId( $link.data( 'linkId' ) );
 
 			// Track the impression
-			$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-impression-overlay' );
+			$.articleFeedbackv5.trackClick( 'impression-overlay' );
 
 			// Hide the panel
 			$.articleFeedbackv5.$holder.hide();
@@ -3150,10 +3104,9 @@
 	$.articleFeedbackv5.closeAsModal = function () {
 		if ( $.articleFeedbackv5.inDialog ) {
 			if ( 'form' == $.articleFeedbackv5.nowShowing ) {
-				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-close-overlay' );
+				$.articleFeedbackv5.trackClick( 'close-overlay' );
 			} else if ('cta' == $.articleFeedbackv5.nowShowing ) {
-				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.experiment() + '-' +
-					$.articleFeedbackv5.ctaName() + '-close-overlay' );
+				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-close-overlay' );
 			}
 			$.articleFeedbackv5.setLinkId( 'X' );
 			$.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-tooltip' ).hide();
@@ -3204,61 +3157,6 @@
 	};
 
 	// }}}
-	// {{{ clickTrackingOn
-
-	/**
-	 * Returns whether click tracking is on
-	 *
-	 * @bool whether click tracking is on
-	 */
-	$.articleFeedbackv5.clickTrackingOn = function () {
-		return $.articleFeedbackv5.clickTracking;
-	};
-
-	// }}}
-	// {{{ trackClick
-
-	/**
-	 * Tracks a click
-	 *
-	 * @param trackingId string the tracking ID
-	 */
-	$.articleFeedbackv5.trackClick = function ( trackingId ) {
-		if ( $.articleFeedbackv5.clickTracking && $.isFunction( $.trackActionWithInfo ) ) {
-			$.trackActionWithInfo(
-				$.articleFeedbackv5.prefix( trackingId ),
-				mw.config.get( 'wgPageName' ) + '|' + $.articleFeedbackv5.revisionId
-			);
-		}
-	};
-
-	// }}}
-	// {{{ trackActionURL
-
-	/**
-	 * Rewrites a URL to one that runs through the ClickTracking API module
-	 * which registers the event and redirects to the real URL
-	 *
-	 * This is a copy of the one out of the clicktracking javascript API
-	 * we have to do our OWN because there is no "additional" option in that
-	 * API which we MUST use for the article title
-	 *
-	 * @param {string} url URL to redirect to
-	 * @param {string} id Event identifier
-	 */
-	$.articleFeedbackv5.trackActionURL = function( url, id ) {
-		return mw.config.get( 'wgScriptPath' ) + '/api.php?' + $.param( {
-			'action': 'clicktracking',
-			'format' : 'json',
-			'eventid': id,
-			'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
-			'token': $.cookie( 'clicktracking-session' ),
-			'additional': mw.config.get( 'wgPageName' ) + '|' + $.articleFeedbackv5.revisionId,
-			'redirectto': url
-		} );
-	};
-
-	// }}}
 	// {{{ clickTriggerLink
 
 	/**
@@ -3267,12 +3165,12 @@
 	 * @param $link Element the trigger link
 	 */
 	$.articleFeedbackv5.clickTriggerLink = function( $link ) {
-		var tracking_id = $.articleFeedbackv5.experiment() +
-			'-trigger' + $link.data( 'linkId' ) +
-			'-click-overlay';
+		var tracking_id = 'trigger' + $link.data( 'linkId' ) + '-click-overlay';
 		$.articleFeedbackv5.trackClick( tracking_id );
 		$.articleFeedbackv5.toggleModal( $link );
 	};
+
+	// }}}
 
 	// }}}
 
@@ -3295,14 +3193,11 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 		getBucketId: { args: 0, ret: true },
 		inDebug: { args: 0, ret: true },
 		nowShowing: { args: 0, ret: true },
-		prefix: { args: 1, ret: true },
 		experiment: { args: 0, ret: true },
 		addToRemovalQueue: { args: 1, ret: false },
 		openAsModal: { args: 1, ret: false },
 		closeAsModal: { args: 0, ret: true },
 		toggleModal: { args: 1, ret: false },
-		clickTrackingOn: { args: 0, ret: true },
-		trackClick: { args: 1, ret: false }
 	};
 	if ( opts in public ) {
 		var r;

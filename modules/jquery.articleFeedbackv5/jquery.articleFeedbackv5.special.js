@@ -170,9 +170,6 @@
 	 * Sets up the page
 	 */
 	$.articleFeedbackv5special.setup = function() {
-		// Are we tracking clicks?
-		$.articleFeedbackv5special.clickTracking = $.articleFeedbackv5special.checkClickTracking();
-
 		// Get the user type
 		if ( mw.user.anonymous() ) {
 			$.articleFeedbackv5special.userType = 'anon';
@@ -185,8 +182,16 @@
 		// Get the referral
 		$.articleFeedbackv5special.referral = mw.config.get( 'afReferral' );
 
-		// Set up config vars, event binds, and do initial fetch.
+		// Set up config vars
 		$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
+
+		// Initialize clicktracking
+		$.aftTrack.init({
+			pageName: $.articleFeedbackv5special.page,
+			revisionId: 0
+		});
+
+		// Bind events
 		$.articleFeedbackv5special.setBinds();
 
 		// Grab the user's activity out of the cookie
@@ -245,7 +250,7 @@
 		);
 
 		// Track an impression
-		$.articleFeedbackv5special.trackClick( 'feedback_page-impression-' +
+		$.aftTrack.trackClick( 'feedback_page-impression-' +
 			$.articleFeedbackv5special.referral + '-' +
 			$.articleFeedbackv5special.userType );
 	};
@@ -479,21 +484,6 @@
 	 */
 	$.articleFeedbackv5special.stripID = function( object, toRemove ) {
 		return $( object ).attr( 'id' ).replace( toRemove, '' );
-	};
-
-	// }}}
-	// {{{ prefix
-
-	/**
-	 * Utility method: Prefixes a key for cookies or events with extension and
-	 * version information
-	 *
-	 * @param  key    string name of event to prefix
-	 * @return string prefixed event name
-	 */
-	$.articleFeedbackv5special.prefix = function ( key ) {
-		var version = mw.config.get( 'wgArticleFeedbackv5Tracking' ).version || 0;
-		return 'ext.articleFeedbackv5@' + version + '-' + key;
 	};
 
 	// }}}
@@ -797,81 +787,6 @@
 		}
 		$.articleFeedbackv5special.activity[id][flag] = value;
 		$.articleFeedbackv5special.storeActivity();
-	};
-
-	// }}}
-	// {{{ prefix
-
-	/**
-	 * Utility method: Prefixes a key for cookies or events with extension and
-	 * version information
-	 *
-	 * @param  key    string name of event to prefix
-	 * @return string prefixed event name
-	 */
-	$.articleFeedbackv5special.prefix = function ( key ) {
-		var version = mw.config.get( 'wgArticleFeedbackv5Tracking' ).version || 0;
-		return 'ext.articleFeedbackv5@' + version + '-' + key;
-	};
-
-	// }}}
-	// {{{ trackClick
-
-	/**
-	 * Tracks a click
-	 *
-	 * @param trackingId string the tracking ID
-	 */
-	$.articleFeedbackv5special.trackClick = function ( trackingId ) {
-		if ( $.articleFeedbackv5special.clickTracking && $.isFunction( $.trackActionWithInfo ) ) {
-			$.trackActionWithInfo(
-				$.articleFeedbackv5special.prefix( trackingId ),
-				$.articleFeedbackv5special.page
-			);
-		}
-	};
-
-	// }}}
-	// {{{ trackActionURL
-
-	/**
-	 * Rewrites a URL to one that runs through the ClickTracking API module
-	 * which registers the event and redirects to the real URL
-	 *
-	 * This is a copy of the one out of the clicktracking javascript API
-	 * we have to do our OWN because there is no "additional" option in that
-	 * API which we MUST use for the article title
-	 *
-	 * @param {string} url URL to redirect to
-	 * @param {string} id Event identifier
-	 */
-	$.articleFeedbackv5special.trackActionURL = function( url, id ) {
-		return mw.config.get( 'wgScriptPath' ) + '/api.php?' + $.param( {
-			'action': 'clicktracking',
-			'format' : 'json',
-			'eventid': id,
-			'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
-			'token': $.cookie( 'clicktracking-session' ),
-			'additional': $.articleFeedbackv5special.page,
-			'redirectto': url
-		} );
-	};
-
-	// }}}
-	// {{{ trackingUrl
-
-	/**
-	 * Creates a URL that tracks a particular click
-	 *
-	 * @param url        string the url so far
-	 * @param trackingId string the tracking ID
-	 */
-	$.articleFeedbackv5special.trackingUrl = function ( url, trackingId ) {
-		if ( $.articleFeedbackv5special.clickTracking ) {
-			return $.articleFeedbackv5special.trackActionURL( url, $.articleFeedbackv5special.prefix( trackingId ) );
-		} else {
-			return url;
-		}
 	};
 
 	// }}}
@@ -1197,7 +1112,7 @@
 	 * Loads the user activity from the cookie
 	 */
 	$.articleFeedbackv5special.loadActivity = function () {
-		var flatActivity = 	$.cookie( $.articleFeedbackv5special.prefix( $.articleFeedbackv5special.activityCookieName ) );
+		var flatActivity = 	$.cookie( $.aftTrack.prefix( $.articleFeedbackv5special.activityCookieName ) );
 		if ( flatActivity ) {
 			$.articleFeedbackv5special.activity = $.articleFeedbackv5special.decodeActivity( flatActivity );
 		}
@@ -1215,7 +1130,7 @@
 			flatActivity = flatActivity.replace( /^\d+:[HUAID]+;/, '' );
 		}
 		$.cookie(
-			$.articleFeedbackv5special.prefix( $.articleFeedbackv5special.activityCookieName ),
+			$.aftTrack.prefix( $.articleFeedbackv5special.activityCookieName ),
 			flatActivity,
 			{ 'expires': 365, 'path': '/' }
 		);
@@ -1251,7 +1166,8 @@
 	 */
 	$.articleFeedbackv5special.actions = {
 
-		// Vote helpful
+		// {{{ Vote helpful
+
 		'helpful': {
 			'hasTipsy': false,
 			'click': function( e ) {
@@ -1285,7 +1201,9 @@
 			}
 		},
 
-		// Un-vote helpful
+		// }}}
+		// {{{ Un-vote helpful
+
 		'reversehelpful': {
 			'hasTipsy': false,
 			'click': function( e ) {
@@ -1310,7 +1228,9 @@
 			}
 		},
 
-		// Vote unhelpful
+		// }}}
+		// {{{ Vote unhelpful
+
 		'unhelpful': {
 			'hasTipsy': false,
 			'click': function( e ) {
@@ -1344,7 +1264,9 @@
 			}
 		},
 
-		// Un-vote unhelpful
+		// }}}
+		// {{{ Un-vote unhelpful
+
 		'reverseunhelpful': {
 			'hasTipsy': false,
 			'click': function( e ) {
@@ -1369,7 +1291,9 @@
 			}
 		},
 
-		// Flag post as abusive
+		// }}}
+		// {{{ Flag post as abusive
+
 		'abuse': {
 			'hasTipsy': false,
 			'click': function( e ) {
@@ -1407,7 +1331,9 @@
 			}
 		},
 
-		// Unflag post as abusive
+		// }}}
+		// {{{ Unflag post as abusive
+
 		'unabuse': {
 			'hasTipsy': false,
 			'click': function( e ) {
@@ -1445,7 +1371,9 @@
 			}
 		},
 
-		// Feature post action
+		// }}}
+		// {{{ Feature post action
+
 		'feature': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
@@ -1465,7 +1393,9 @@
 			}
 		},
 
-		// Un-feature post action
+		// }}}
+		// {{{ Un-feature post action
+
 		'unfeature': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
@@ -1486,7 +1416,9 @@
 			}
 		},
 
-		// Mark resolved post action
+		// }}}
+		// {{{ Mark resolved post action
+
 		'resolve': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
@@ -1506,7 +1438,9 @@
 			}
 		},
 
-		// Unmark as resolved post action
+		// }}}
+		// {{{ Unmark as resolved post action
+
 		'unresolve': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
@@ -1527,7 +1461,9 @@
 			}
 		},
 
-		// Hide post action
+		// }}}
+		// {{{ Hide post action
+
 		'hide': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
@@ -1550,7 +1486,9 @@
 			}
 		},
 
-		// Show post action
+		// }}}
+		// {{{ Show post action
+
 		'show': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
@@ -1571,7 +1509,9 @@
 			}
 		},
 
-		// Request oversight action
+		// }}}
+		// {{{ Request oversight action
+
 		'requestoversight': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
@@ -1603,7 +1543,9 @@
 			}
 		},
 
-		// Cancel oversight request action
+		// }}}
+		// {{{ Cancel oversight request action
+
 		'unrequestoversight': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
@@ -1620,7 +1562,9 @@
 			}
 		},
 
-		// Oversight post action
+		// }}}
+		// {{{ Oversight post action
+
 		'oversight': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
@@ -1654,7 +1598,9 @@
 			}
 		},
 
-		// Un-oversight action
+		// }}}
+		// {{{ Un-oversight action
+
 		'unoversight': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
@@ -1678,7 +1624,9 @@
 			}
 		},
 
-		// Decline oversight action
+		// }}}
+		// {{{ Decline oversight action
+
 		'declineoversight': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
@@ -1691,7 +1639,9 @@
 			}
 		},
 
-		// View activity log action
+		// }}}
+		// {{{ View activity log action
+
 		'activity': {
 			'hasTipsy': true,
 			'tipsyHtml': '\
@@ -1710,7 +1660,9 @@
 			}
 		},
 
-		// View activity log action on permalink
+		// }}}
+		// {{{ View activity log action on permalink
+
 		'activity2': {
 			'click': function( e ) {
 				if ( $( e.target ).data( 'started' ) == true ) {
@@ -1725,6 +1677,8 @@
 				}
 			}
 		}
+
+		// }}}
 
 	};
 
