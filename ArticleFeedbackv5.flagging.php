@@ -572,6 +572,10 @@ class ArticleFeedbackv5Flagging {
 						'autoflag', 0, $timestamp );
 				}
 
+				$results['abuse_report'] = wfMessage( 'articlefeedbackv5-form-abuse-count' )
+					->params( $results['abuse_count'] )
+					->escaped();
+
 			} elseif ( $direction == 'decrease' ) {
 
 				$log[] = array('unflag', $notes, $this->isSystemCall());
@@ -691,6 +695,8 @@ class ArticleFeedbackv5Flagging {
 					$filters['visible-unhelpful'] = 1;
 				}
 			}
+
+			$results['vote_count'] = $helpful + $unhelpful;
 
 		} else {
 			$error = 'articlefeedbackv5-invalid-feedback-flag';

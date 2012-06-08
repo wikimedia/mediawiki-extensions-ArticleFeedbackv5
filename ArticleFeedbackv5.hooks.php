@@ -238,6 +238,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-permalink-activity-more',
 				'articlefeedbackv5-permalink-activity-fewer',
 
+				'articlefeedbackv5-hidden-marker',
 				'articlefeedbackv5-noteflyover-hide-caption',
 				'articlefeedbackv5-noteflyover-hide-label',
 				'articlefeedbackv5-noteflyover-hide-placeholder',
@@ -266,6 +267,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-unrequestoversight-help',
 				'articlefeedbackv5-noteflyover-unrequestoversight-help-link',
 
+				'articlefeedbackv5-deleted-marker',
 				'articlefeedbackv5-noteflyover-oversight-caption',
 				'articlefeedbackv5-noteflyover-oversight-label',
 				'articlefeedbackv5-noteflyover-oversight-placeholder',

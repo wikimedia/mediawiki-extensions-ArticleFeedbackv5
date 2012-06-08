@@ -632,29 +632,34 @@ class ArticleFeedbackv5Render {
 				), wfMessage( 'articlefeedbackv5-form-helpful-no-label' )->text() );
 		}
 
-		// Add helpful voting percentage
-		$percent = wfMessage( 'articlefeedbackv5-form-helpful-votes' )
-			->rawParams( wfMessage( 'percent',
-					ApiArticleFeedbackv5Utils::percentHelpful(
-						$record[0]->af_helpful_count,
-						$record[0]->af_unhelpful_count
-					)
-				)->escaped() )
-			->escaped();
-		$counts = wfMessage( 'articlefeedbackv5-form-helpful-votes-count',
-				$record[0]->af_helpful_count,
-				$record[0]->af_unhelpful_count )->text();
-		$footer .=
-			// <span class="articleFeedbackv5-helpful-votes"
-			//   id="articleFeedbackv5-helpful-votes-{$id}">
-			//   {msg:articlefeedbackv5-form-helpful-votes}
-			// </span>
-			Html::rawElement( 'span', array(
-				'class' => 'articleFeedbackv5-helpful-votes',
-				'id'    => "articleFeedbackv5-helpful-votes-$id",
-				'title' => $counts,
-			), $percent );
-
+		// Add helpful voting percentage for editors
+		if ( $this->hasPermission( 'can_feature' ) ) {
+			$percent = wfMessage( 'articlefeedbackv5-form-helpful-votes' )
+				->rawParams( wfMessage( 'percent',
+						ApiArticleFeedbackv5Utils::percentHelpful(
+							$record[0]->af_helpful_count,
+							$record[0]->af_unhelpful_count
+						)
+					)->escaped() )
+				->escaped();
+			$counts = wfMessage( 'articlefeedbackv5-form-helpful-votes-count',
+					$record[0]->af_helpful_count,
+					$record[0]->af_unhelpful_count )->text();
+			$votesClass = 'articleFeedbackv5-helpful-votes';
+			if ( ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ) > 0 ) {
+				$votesClass .= ' articleFeedbackv5-has-votes';
+			}
+			$footer .=
+				// <span class="articleFeedbackv5-helpful-votes"
+				//   id="articleFeedbackv5-helpful-votes-{$id}">
+				//   {msg:articlefeedbackv5-form-helpful-votes}
+				// </span>
+				Html::rawElement( 'span', array(
+					'class' => $votesClass,
+					'id'    => "articleFeedbackv5-helpful-votes-$id",
+					'title' => $counts,
+				), $percent );
+		}
 
 		// </div>
 		$footer .= Html::closeElement( 'div' );
@@ -676,11 +681,14 @@ class ArticleFeedbackv5Render {
 					$wgLang->formatNum( $record[0]->af_abuse_count ) )->text()
 			);
 
-			// Count not displayed if user cannot hide comments (as per Fabrice)
-			if ( $this->hasPermission( 'can_hide' ) ) {
+			// Add count for editors
+			if ( $this->hasPermission( 'can_feature' ) ) {
 				$aclass = 'articleFeedbackv5-abuse-count';
 				if ( $record[0]->af_abuse_count >= $wgArticleFeedbackv5AbusiveThreshold ) {
 					$aclass .= ' abusive';
+				}
+				if ( $record[0]->af_abuse_count > 0 ) {
+					$aclass .= ' articleFeedbackv5-has-abuse-flags';
 				}
 				// <span id="articleFeedbackv5-abuse-count-{$id}"
 				//   class="articleFeedbackv5-abuse-link{-abusive?}"
@@ -719,22 +727,34 @@ class ArticleFeedbackv5Render {
 			'class' => 'articleFeedbackv5-comment-tags',
 		) );
 
-		if ( $record->af_is_featured ) {
-			// <span class="articleFeedbackv5-featured-marker">
-			//   {msg:articlefeedbackv5-featured-marker}
+		if ( $this->hasPermission( 'can_feature' ) && $record->af_is_deleted ) {
+			// <span class="articleFeedbackv5-deleted-marker">
+			//   {msg:articlefeedbackv5-deleted-marker}
 			// </span>
 			$html .= Html::element( 'span', array(
-				'class' => 'articleFeedbackv5-featured-marker',
-			), wfMessage( 'articlefeedbackv5-featured-marker' )->text() );
-		}
-
-		if ( $record->af_is_resolved ) {
+				'class' => 'articleFeedbackv5-deleted-marker',
+			), wfMessage( 'articlefeedbackv5-deleted-marker' )->text() );
+		} elseif ( $this->hasPermission( 'can_feature' ) && $record->af_is_hidden ) {
+			// <span class="articleFeedbackv5-hidden-marker">
+			//   {msg:articlefeedbackv5-hidden-marker}
+			// </span>
+			$html .= Html::element( 'span', array(
+				'class' => 'articleFeedbackv5-hidden-marker',
+			), wfMessage( 'articlefeedbackv5-hidden-marker' )->text() );
+		} elseif ( $record->af_is_resolved ) {
 			// <span class="articleFeedbackv5-resolved-marker">
 			//   {msg:articlefeedbackv5-resolved-marker}
 			// </span>
 			$html .= Html::element( 'span', array(
 				'class' => 'articleFeedbackv5-resolved-marker',
 			), wfMessage( 'articlefeedbackv5-resolved-marker' )->text() );
+		} elseif ( $record->af_is_featured ) {
+			// <span class="articleFeedbackv5-featured-marker">
+			//   {msg:articlefeedbackv5-featured-marker}
+			// </span>
+			$html .= Html::element( 'span', array(
+				'class' => 'articleFeedbackv5-featured-marker',
+			), wfMessage( 'articlefeedbackv5-featured-marker' )->text() );
 		}
 
 		// </div>
@@ -776,7 +796,6 @@ class ArticleFeedbackv5Render {
 
 		// Feature/unfeature and mark/unmark resolved
 		if ( $this->hasPermission( 'can_feature' ) ) {
-
 			// Message can be:
 			//  * articlefeedbackv5-form-feature
 			//  * articlefeedbackv5-form-unfeature
@@ -799,35 +818,31 @@ class ArticleFeedbackv5Render {
 				'href' => '#',
 			), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 
-			// Unresolve always appears if the item is resolved
+			// Message can be:
+			//  * articlefeedbackv5-form-resolve
+			//  * articlefeedbackv5-form-unresolve
 			if ( $record[0]->af_is_resolved ) {
-				// <li>
-				//   <a id="articleFeedbackv5-{unresolve}-link-{$id}"
-				//     class="articleFeedbackv5-{unresolve}-link" href="#">
-				//     {msg:articlefeedbackv5-form-{unresolve}}
-				//   </a>
-				// </li>
-				$toolsFeature .= Html::rawElement( 'li', array(), Html::element( 'a', array(
-					'id'    => "articleFeedbackv5-unresolve-link-$id",
-					'class' => "articleFeedbackv5-unresolve-link",
-					'href' => '#',
-				), wfMessage( "articlefeedbackv5-form-unresolve" )->text() ) );
+				$type = 'unresolve';
+			} else {
+				$type = 'resolve';
 			}
-
-			// Resolve appears if item is featured and not resolved
-			if ( $record[0]->af_is_featured && !$record[0]->af_is_resolved ) {
-				// <li>
-				//   <a id="articleFeedbackv5-{resolve}-link-{$id}"
-				//     class="articleFeedbackv5-{resolve}-link" href="#">
-				//     {msg:articlefeedbackv5-form-{resolve}}
-				//   </a>
-				// </li>
-				$toolsFeature .= Html::rawElement( 'li', array(), Html::element( 'a', array(
-					'id'    => "articleFeedbackv5-resolve-link-$id",
-					'class' => "articleFeedbackv5-resolve-link",
-					'href' => '#',
-				), wfMessage( "articlefeedbackv5-form-resolve" )->text() ) );
+			$class = '';
+			if ( !$record[0]->af_is_featured && !$record[0]->af_is_resolved ) {
+				$class = 'articleFeedbackv5-tool-hidden';
 			}
+			// <li>
+			//   <a id="articleFeedbackv5-{resolve|unresolve}-link-{$id}"
+			//     class="articleFeedbackv5-{resolve|unresolve}-link" href="#">
+			//     {msg:articlefeedbackv5-form-{resolve|unresolve}}
+			//   </a>
+			// </li>
+			$toolsFeature .= Html::rawElement( 'li', array( 'class' => $class ),
+				Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-$type-link-$id",
+					'class' => "articleFeedbackv5-$type-link",
+					'href' => '#',
+				), wfMessage( "articlefeedbackv5-form-$type" )->text() )
+			);
 		}
 
 		// Hide/unhide
