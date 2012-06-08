@@ -537,8 +537,7 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay,
 			$wgArticleFeedbackv5ThrottleThresholdPostsPerHour,
 			$wgArticleFeedbackv5TalkPageLink,
-			$wgArticleFeedbackv5DefaultSorts,
-			$wgUser;
+			$wgArticleFeedbackv5DefaultSorts;
 		$vars['wgArticleFeedbackv5SMaxage'] = $wgArticleFeedbackv5SMaxage;
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
@@ -559,13 +558,25 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
 		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
 		$vars['wgArticleFeedbackv5DefaultSorts'] = $wgArticleFeedbackv5DefaultSorts;
+		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
+		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
+		return true;
+	}
+
+	/**
+	 * MakeGlobalVariablesScript hook - this does pretty much the same as the ResourceLoaderGetConfigVars
+	 * hook: it makes these variables accessible through JS. However, these are added on a per-page basis,
+	 * on the page itself (also setting us free from potential browser cache issues)
+	 * @param $vars array
+	 * @return bool
+	 */
+	public static function makeGlobalVariablesScript( &$vars ) {
+		global $wgUser;
 		$vars['wgArticleFeedbackv5Permissions'] = array(
 			'oversighter' => $wgUser->isAllowed( 'aftv5-delete-feedback' ),
 			'moderator' => $wgUser->isAllowed( 'aftv5-hide-feedback' ),
 			'editor' => !$wgUser->isAnon()
 		);
-		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
-		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
 		return true;
 	}
 
