@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMH///tc\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-09T04:29:31Z",
+      "side": 1,
+      "message": "We have the jquery.json module for this, which provides $.toJSON()",
+      "revId": "aaeceb7c91142ceef123df93335c4a4bb739ef1a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
