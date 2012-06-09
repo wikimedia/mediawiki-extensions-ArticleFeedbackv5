@@ -178,23 +178,28 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 
 // Bucket settings for click tracking across the plugin
 $wgArticleFeedbackv5Tracking = array(
-	// Not all users need to be tracked, but we do want to track some users over time - these
-	// buckets are used when deciding to track someone or not, placing them in one of two buckets:
-	// "ignore" or "track". When the 'version' key changes, users will be
-	// re-bucketed, so you should always increment the 'version' key when changing
-	// this number to ensure the new odds are applied to everyone, not just people who have yet to
-	// be placed in a bucket.
+	// Not all users need to be tracked, but we do want to track some users
+	// over time - these buckets are used when deciding to track someone or
+	// not, placing them in one of four buckets: "ignore" (no clicktracking),
+	// "track" (all clicktracking), "track-front" (clicktracking only on the
+	// front end widget), or "track-special" (clicktracking only on the special
+	// page. When the 'version' key changes, users will be re-bucketed, so you
+	// should always increment the 'version' key when changing this number to
+	// ensure the new odds are applied to everyone, not just people who have
+	// yet to be placed in a bucket.
 	'buckets' => array(
 		'ignore' => 0,
-		'track'  => 100,
+		'track' => 100,
+		'track-front' => 0,
+		'track-special' => 0,
 	),
-	// This version number is added to all tracking event names, so that changes in the software
-	// don't corrupt the data being collected. Bump this when you want to start a new "experiment".
-	'version' => 5,
+	// This version number is added to all tracking event names, and to all
+	// cookies, so that changes in the software don't corrupt the data being
+	// collected. Bump this when you want to start a new "experiment".
+	'version' => 6,
 	// Let users be tracked for a month, and then rebucket them, allowing some churn
 	'expires' => 30,
-	// Track the event of users being bucketed - so we can be sure the odds
-	// worked out right [LATER - depends on UDP logging being set up]
+	// Do not track the event of users being bucketed, at least for now.
 	'tracked' => false,
 );
 

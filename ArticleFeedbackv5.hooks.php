@@ -38,8 +38,8 @@ class ArticleFeedbackv5Hooks {
 				'jquery.ui.button',
 				'jquery.articleFeedbackv5',
 				'jquery.cookie',
-				'jquery.clickTracking',
 				'ext.articleFeedbackv5.ratingi18n',
+				'jquery.articleFeedbackv5.track',
 			),
 		),
 		'ext.articleFeedbackv5.ie' => array(
@@ -58,6 +58,14 @@ class ArticleFeedbackv5Hooks {
 				'jquery.articleFeedbackv5.special',
 			),
 		),
+		'jquery.articleFeedbackv5.track' => array(
+			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.track.js',
+			'dependencies' => array(
+				'mediawiki.util',
+				'mediawiki.user',
+				'jquery.clickTracking',
+			),
+		),
 		'ext.articleFeedbackv5.talk' => array(
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js',
 			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.talk.css',
@@ -66,7 +74,7 @@ class ArticleFeedbackv5Hooks {
 			),
 			'dependencies' => array(
 				'mediawiki.util',
-				'jquery.clickTracking',
+				'jquery.articleFeedbackv5.track',
 			),
 		),
 		'jquery.articleFeedbackv5' => array(
@@ -201,9 +209,9 @@ class ArticleFeedbackv5Hooks {
 				'jquery.ui.dialog',
 				'jquery.ui.button',
 				'jquery.cookie',
-				'jquery.clickTracking',
 				'jquery.placeholder',
 				'mediawiki.jqueryMsg',
+				'jquery.articleFeedbackv5.track',
 			),
 		),
 		'jquery.articleFeedbackv5.special' => array(
@@ -320,6 +328,7 @@ class ArticleFeedbackv5Hooks {
 				'mediawiki.util',
 				'jquery.tipsy',
 				'jquery.localize',
+				'jquery.articleFeedbackv5.track',
 			),
 		),
 	);
