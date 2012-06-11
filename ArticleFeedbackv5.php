@@ -189,14 +189,14 @@ $wgArticleFeedbackv5Tracking = array(
 	// yet to be placed in a bucket.
 	'buckets' => array(
 		'ignore' => 0,
-		'track' => 100,
+		'track' => 0,
 		'track-front' => 0,
-		'track-special' => 0,
+		'track-special' => 100,
 	),
 	// This version number is added to all tracking event names, and to all
 	// cookies, so that changes in the software don't corrupt the data being
 	// collected. Bump this when you want to start a new "experiment".
-	'version' => 6,
+	'version' => 7,
 	// Let users be tracked for a month, and then rebucket them, allowing some churn
 	'expires' => 30,
 	// Do not track the event of users being bucketed, at least for now.
@@ -277,13 +277,13 @@ $wgArticleFeedbackv5HideAbuseThreshold = 5;
  * @var int
  */
 $wgArticleFeedbackv5SelectedCTA = array(
-	0 => 1,
+	0 => 5,
 	1 => 5,
-	2 => 1,
-	3 => 1,
-	4 => 1,
-	5 => 1,
-	6 => 3,
+	2 => 5,
+	3 => 5,
+	4 => 5,
+	5 => 5,
+	6 => 5,
 );
 
 /**
