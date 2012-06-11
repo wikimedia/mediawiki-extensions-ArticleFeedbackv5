@@ -19,6 +19,11 @@ select {
 	font-size:1.2em;
 }
 
+/** Wrapper **/
+#articleFeedbackv5-special-wrap {
+	min-width: 900px;
+}
+
 /** Notices **/
 .articleFeedbackv5-survey-button {
 	clear: right;
@@ -43,7 +48,6 @@ select {
 /** Header section **/
 #articleFeedbackv5-header-wrap {
 	margin: 0 0 10px;
-	min-width: 850px;
 }
 #articleFeedbackv5-header-wrap:after {
 	clear: both;
@@ -112,10 +116,13 @@ select {
 /** Filtering **/
 #articleFeedbackv5-sort-filter-controls {
 	clear: both;
-	padding: 0 10px;
-	border-bottom: 2px solid #3465A4;
+	padding: 0;
+	/* @embed */
+	background-image: url(images/bg-feedbackpage-header.png);
+	background-position: bottom left;
+	background-repeat: repeat-x;
 	overflow: hidden;
-	min-width: 850px;
+	padding-bottom: 0.15em;
 }
 #articleFeedbackv5-sort-filter-controls:after {
 	clear: both;
@@ -123,13 +130,16 @@ select {
 .articleFeedbackv5-filter-link,.articleFeedbackv5-filter-link:visited {
 	font-size: 1.2em;
 	line-height: 2em;
-	color: #444;
 	padding-left: 5px;
 	padding-right: 5px;
 }
 .articleFeedbackv5-filter-link:hover {
-	border-bottom: 0.7em solid #b6cde6;
-	padding-bottom: 0.3em;
+	margin-bottom: -0.7em;
+	/* @embed */
+	background-image: url(images/bg-feedbackpage-header-on.png);
+	background-position: bottom left;
+	background-repeat: repeat-x;
+	padding-bottom: 0.5em;
 	text-decoration: none;
 }
 #articleFeedbackv5-filter {
@@ -140,13 +150,15 @@ select {
 	font-weight: bold;
 }
 .filter-active, .filter-active:hover, .articleFeedbackv5-filter-link.filter-active:hover {
-	color: #3465A4;
 	font-weight: bold;
-	padding-bottom: 0.3em;
-	border-bottom: 0.35em solid #3465A4;
+	padding-bottom: 0.5em;
+	/* @embed */
+	background-image: url(images/bg-feedbackpage-header-on.png);
+	background-position: bottom left;
+	background-repeat: repeat-x;
 }
 .filter-active, .filter-active:visited {
-	color: #3465A4;
+	color: #000;
 }
 #articleFeedbackv5-select-wrapper {
 	font-weight: bold;
@@ -155,8 +167,14 @@ select {
 	margin-left: 10px;
 	margin-right: 5px;
 }
+#articleFeedbackv5-select-wrapper:hover,
 #articleFeedbackv5-select-wrapper.filter-active {
-	border-bottom: 0.2em solid #3465A4;
+	/* @embed */
+	background-image: url(images/bg-feedbackpage-header-on.png);
+	background-position: bottom left;
+	background-repeat: repeat-x;
+	display: inline;
+	padding-bottom: 0.6em;
 }
 #articleFeedbackv5-filter-select {
 	margin-right: 0px;
@@ -168,7 +186,6 @@ select {
 	font-size: 1.2em;
 	top: 0px;
 	color: #444444;
-	width: 130px;
 }
 .filter-active #articleFeedbackv5-filter-select {
 	color: black;
@@ -189,6 +206,9 @@ select {
 	margin: 0 5px 0 0;
 	font-weight: bold;
 }
+#articleFeedbackv5-sort-select {
+	margin-top: -3px;
+}
 
 /** Show Feedback Results */
 #articleFeedbackv5-show-feedback {
@@ -203,13 +223,19 @@ select {
 a#articleFeedbackv5-show-more {
 	display: block;
 	width: 100%;
-	min-width: 850px;
 	height: 40px;
 	line-height: 40px;
 	text-align: center;
 	background: #d2e5f7;
 	font-size: 1.2em;
 	cursor: pointer;
+}
+
+/** Back to central page **/
+.articleFeedbackv5-feedback-central-goback {
+	font-size: 1.2em;
+	margin-top: 10px;
+	clear: both;
 }
 
 /** Permalink styles **/

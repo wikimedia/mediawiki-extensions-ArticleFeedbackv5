@@ -140,20 +140,26 @@
 		</div>';
 
 	/**
-	 * Featured marker HMTL template
+	 * Marker templates
 	 */
-	$.articleFeedbackv5special.featuredMarkerTemplate = '\
-		<span class="articleFeedbackv5-featured-marker">\
-			<html:msg key="featured-marker" />\
-		</span>';
-
-	/**
-	 * Resolved marker HMTL template
-	 */
-	$.articleFeedbackv5special.resolvedMarkerTemplate = '\
-		<span class="articleFeedbackv5-resolved-marker">\
-			<html:msg key="resolved-marker" />\
-		</span>';
+	$.articleFeedbackv5special.markerTemplates = {
+		featured: '\
+			<span class="articleFeedbackv5-featured-marker">\
+				<html:msg key="featured-marker" />\
+			</span>',
+		resolved: '\
+			<span class="articleFeedbackv5-resolved-marker">\
+				<html:msg key="resolved-marker" />\
+			</span>',
+		deleted: '\
+			<span class="articleFeedbackv5-deleted-marker">\
+				<html:msg key="deleted-marker" />\
+			</span>',
+		hidden: '\
+			<span class="articleFeedbackv5-hidden-marker">\
+				<html:msg key="hidden-marker" />\
+			</span>',
+	};
 
 	/**
 	 * Loading tag template
@@ -286,16 +292,22 @@
 	 * Binds events for each of the controls
 	 */
 	$.articleFeedbackv5special.setBinds = function() {
+
+		// Filter select
 		$( '#articleFeedbackv5-filter-select' ).bind( 'change', function( e ) {
 			var id = $(this).val();
-			if ( id == '' ) {
+			if ( id == '' || id == 'X' ) {
 				return false;
 			}
 			$.articleFeedbackv5special.toggleFilter( id );
 			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
+		// Disable the dividers
+		$( '#articleFeedbackv5-filter-select option[value=]' ).attr( 'disabled', true );
+		$( '#articleFeedbackv5-filter-select option[value=X]' ).attr( 'disabled', true );
 
+		// Filter links
 		$( '.articleFeedbackv5-filter-link' ).bind( 'click', function( e ) {
 			e.preventDefault();
 			var	id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-filter-' );
@@ -303,26 +315,26 @@
 			$.articleFeedbackv5special.loadFeedback( true );
 		} );
 
+		// Sort select
 		$( '#articleFeedbackv5-sort-select' ).bind( 'change', function( e ) {
 			var sort = $(this).val().split( '-' );
+			if ( sort == '' ) {
+				return false;
+			}
 			$.articleFeedbackv5special.toggleSort( sort[0], sort[1] )
 			$.articleFeedbackv5special.loadFeedback( true );
 			return false;
 		} );
+		// Disable the dividers
+		$( '#articleFeedbackv5-sort-select option[value=]' ).attr( 'disabled', true );
 
+		// Show more
 		$( '#articleFeedbackv5-show-more' ).bind( 'click', function( e ) {
 			$.articleFeedbackv5special.loadFeedback( false );
 			return false;
 		} );
 
-		$( '.articleFeedbackv5-permalink' ).live( 'click', function( e ) {
-			var id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-permalink-' );
-			$.articleFeedbackv5special.listControls.filter = 'id';
-			$.articleFeedbackv5special.listControls.filterValue = id;
-			$.articleFeedbackv5special.listControls.continueInfo = null;
-			$.articleFeedbackv5special.loadFeedback( true );
-		} );
-
+		// More/Less comment text
 		$( '.articleFeedbackv5-comment-toggle' ).live( 'click', function( e ) {
 			$.articleFeedbackv5special.toggleComment( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-comment-toggle-' ) );
 			return false;
@@ -613,6 +625,85 @@
 	};
 
 	// }}}
+	// {{{ refreshVoteReport
+
+	/**
+	 * Utility method: Refreshes the percent-helpful text
+	 *
+	 * @param id   int    the feedback ID
+	 * @param data object the data returned from flagging
+	 */
+	$.articleFeedbackv5special.refreshVoteReport = function ( id, data ) {
+		var $report = $( '#articleFeedbackv5-helpful-votes-' + id );
+		if ( $report.length < 1 ) {
+			return;
+		}
+		$report.text( data.helpful )
+			.attr( 'title', data.helpful_counts )
+			.removeClass( 'articleFeedbackv5-has-votes' );
+		if ( data.vote_count > 0 ) {
+			$report.addClass( 'articleFeedbackv5-has-votes' );
+		}
+	};
+
+	// }}}
+	// {{{ refreshAbuseReport
+
+	/**
+	 * Utility method: Refreshes the X-flags text
+	 *
+	 * @param id   int    the feedback ID
+	 * @param data object the data returned from flagging
+	 */
+	$.articleFeedbackv5special.refreshAbuseReport = function ( id, data ) {
+		var $count = $( '#articleFeedbackv5-abuse-count-' + id );
+		if ( $count.length < 1 ) {
+			return;
+		}
+		$count.html( data.abuse_report )
+			.removeClass( 'articleFeedbackv5-has-abuse-flags' )
+			.removeClass( 'abusive' );
+		if ( data.abuse_count > 0 ) {
+			$count.addClass( 'articleFeedbackv5-has-abuse-flags' );
+		}
+		if ( data.abusive ) {
+			$count.addClass( 'abusive' );
+		}
+	};
+
+	// }}}
+	// {{{ changeTags
+
+	/**
+	 * Utility method: Changes out the post tags
+	 *
+	 * @param $row  element the feedback row
+	 * @param tag   string  the tag to add/remove
+	 * @param which string  'add' or 'remove'; defaults to 'add'
+	 */
+	$.articleFeedbackv5special.changeTags = function ( $row, tag, which ) {
+		var $tags = $row.find( '.articleFeedbackv5-comment-tags' );
+		if ( which == 'remove' ) {
+			$tags.find( '.articleFeedbackv5-' + tag + '-marker' ).remove();
+			if ( mw.config.get( 'afCanEdit' ) && $row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
+				$.articleFeedbackv5special.changeTags( $row, 'deleted', 'add' );
+			} else if ( mw.config.get( 'afCanEdit' ) && $row.hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
+				$.articleFeedbackv5special.changeTags( $row, 'hidden', 'add' );
+			} else if ( $row.hasClass( 'articleFeedbackv5-feedback-resolved' ) ) {
+				$.articleFeedbackv5special.changeTags( $row, 'resolved', 'add' );
+			} else if ( $row.hasClass( 'articleFeedbackv5-feedback-featured' ) ) {
+				$.articleFeedbackv5special.changeTags( $row, 'featured', 'add' );
+			}
+		} else {
+			$tags.empty();
+			var $marker = $( '<span>' )
+				.addClass( 'articleFeedbackv5-' + tag + '-marker' )
+				.text( mw.msg( 'articlefeedbackv5-' + tag + '-marker' ) );
+			$tags.append( $marker );
+		}
+	};
+
+	// }}}
 	// {{{ markFeatured
 
 	/**
@@ -623,10 +714,9 @@
 	$.articleFeedbackv5special.markFeatured = function ( $row ) {
 		$row.addClass( 'articleFeedbackv5-feedback-featured' )
 			.data( 'featured', true );
-		$row.find( '.articleFeedbackv5-featured-marker' ).remove();
-		$marker = $( $.articleFeedbackv5special.featuredMarkerTemplate );
-		$marker.localize( { 'prefix': 'articlefeedbackv5-' } );
-		$row.find( '.articleFeedbackv5-comment-tags' ).append( $marker );
+		$.articleFeedbackv5special.changeTags( $row, 'featured', 'add' );
+		$row.find( '.articleFeedbackv5-unresolve-link, .articleFeedbackv5-resolve-link' ).closest( 'li' )
+			.removeClass( 'articleFeedbackv5-tool-hidden' );
 	};
 
 	// }}}
@@ -640,7 +730,13 @@
 	$.articleFeedbackv5special.unmarkFeatured = function ( $row ) {
 		$row.removeClass( 'articleFeedbackv5-feedback-featured' )
 			.data( 'featured', false );
-		$row.find( '.articleFeedbackv5-featured-marker' ).remove();
+		$.articleFeedbackv5special.changeTags( $row, 'featured', 'remove' );
+		$row.find( '.articleFeedbackv5-unresolve-link, .articleFeedbackv5-resolve-link' ).closest( 'li' )
+			.removeClass( 'articleFeedbackv5-tool-hidden' );
+		if ( !$row.hasClass( 'articleFeedbackv5-feedback-resolved' ) ) {
+			$row.find( '.articleFeedbackv5-unresolve-link, .articleFeedbackv5-resolve-link' ).closest( 'li' )
+				.addClass( 'articleFeedbackv5-tool-hidden' );
+		}
 	};
 
 	// }}}
@@ -654,10 +750,9 @@
 	$.articleFeedbackv5special.markResolved = function ( $row ) {
 		$row.addClass( 'articleFeedbackv5-feedback-resolved' )
 			.data( 'resolved', true );
-		$row.find( '.articleFeedbackv5-resolved-marker' ).remove();
-		$marker = $( $.articleFeedbackv5special.resolvedMarkerTemplate );
-		$marker.localize( { 'prefix': 'articlefeedbackv5-' } );
-		$row.find( '.articleFeedbackv5-comment-tags' ).append( $marker );
+		$.articleFeedbackv5special.changeTags( $row, 'resolved', 'add' );
+		$row.find( '.articleFeedbackv5-unresolve-link, .articleFeedbackv5-resolve-link' ).closest( 'li' )
+			.removeClass( 'articleFeedbackv5-tool-hidden' );
 	};
 
 	// }}}
@@ -671,7 +766,13 @@
 	$.articleFeedbackv5special.unmarkResolved = function ( $row ) {
 		$row.removeClass( 'articleFeedbackv5-feedback-resolved' )
 			.data( 'resolved', false );
-		$row.find( '.articleFeedbackv5-resolved-marker' ).remove();
+		$.articleFeedbackv5special.changeTags( $row, 'resolved', 'remove' );
+		$row.find( '.articleFeedbackv5-unresolve-link, .articleFeedbackv5-resolve-link' ).closest( 'li' )
+			.removeClass( 'articleFeedbackv5-tool-hidden' );
+		if ( !$row.hasClass( 'articleFeedbackv5-feedback-featured' ) ) {
+			$row.find( '.articleFeedbackv5-unresolve-link, .articleFeedbackv5-resolve-link' ).closest( 'li' )
+				.addClass( 'articleFeedbackv5-tool-hidden' );
+		}
 	};
 
 	// }}}
@@ -685,6 +786,7 @@
 	 */
 	$.articleFeedbackv5special.markHidden = function ( $row, line ) {
 		$row.addClass( 'articleFeedbackv5-feedback-hidden' );
+		$.articleFeedbackv5special.changeTags( $row, 'hidden', 'add' );
 		$.articleFeedbackv5special.maskPost( $row, line );
 	};
 
@@ -698,6 +800,7 @@
 	 */
 	$.articleFeedbackv5special.unmarkHidden = function ( $row ) {
 		$row.removeClass( 'articleFeedbackv5-feedback-hidden' );
+		$.articleFeedbackv5special.changeTags( $row, 'hidden', 'remove' );
 		if ( !$row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
 			$.articleFeedbackv5special.unmaskPost( $row );
 		}
@@ -776,6 +879,7 @@
 	 */
 	$.articleFeedbackv5special.markDeleted = function ( $row, line ) {
 		$row.addClass( 'articleFeedbackv5-feedback-deleted' );
+		$.articleFeedbackv5special.changeTags( $row, 'deleted', 'add' );
 		$.articleFeedbackv5special.maskPost( $row, line );
 	};
 
@@ -789,6 +893,7 @@
 	 */
 	$.articleFeedbackv5special.unmarkDeleted = function ( $row ) {
 		$row.removeClass( 'articleFeedbackv5-feedback-deleted' );
+		$.articleFeedbackv5special.changeTags( $row, 'deleted', 'remove' );
 		if ( !$row.hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
 			$.articleFeedbackv5special.unmaskPost( $row );
 		}
@@ -1096,11 +1201,7 @@
 				}
 				if ( activity.abuse ) {
 					var $l = $( this ).find( '#articleFeedbackv5-abuse-link-' + id );
-					if( mw.config.get( 'afCanEdit' ) == 1 ) {
-						$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', $l.attr( 'rel' ) ) );
-					} else {
-						$l.text( mw.msg( 'articlefeedbackv5-abuse-saved-masked', $l.attr( 'rel' ) ) );
-					}
+					$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', $l.attr( 'rel' ) ) );
 					$l.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
 						.removeClass( 'articleFeedbackv5-abuse-link' )
 						.addClass( 'articleFeedbackv5-unabuse-link' );
@@ -1231,8 +1332,6 @@
 			'apiFlagType': 'helpful',
 			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
-				$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
-				$( '#articleFeedbackv5-helpful-votes-' + id ).attr( 'title', data['articlefeedbackv5-flag-feedback'].helpful_counts );
 				$( '#articleFeedbackv5-helpful-link-' + id )
 					.addClass( 'helpful-active' )
 					.removeClass( 'articleFeedbackv5-helpful-link' )
@@ -1246,6 +1345,7 @@
 						.attr( 'id', 'articleFeedbackv5-unhelpful-link-' + id );
 					$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', false )
 				}
+				$.articleFeedbackv5special.refreshVoteReport( id, data['articlefeedbackv5-flag-feedback'] );
 				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', true );
 			}
 		},
@@ -1266,13 +1366,12 @@
 			'apiFlagType': 'helpful',
 			'apiFlagDir': -1,
 			'onSuccess': function( id, data ) {
-				$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
-				$( '#articleFeedbackv5-helpful-votes-' + id ).attr( 'title', data['articlefeedbackv5-flag-feedback'].helpful_counts );
 				$( '#articleFeedbackv5-reversehelpful-link-' + id )
 					.removeClass( 'helpful-active' )
 					.removeClass( 'articleFeedbackv5-reversehelpful-link')
 					.addClass( 'articleFeedbackv5-helpful-link' )
 					.attr( 'id', 'articleFeedbackv5-helpful-link-' + id );
+				$.articleFeedbackv5special.refreshVoteReport( id, data['articlefeedbackv5-flag-feedback'] );
 				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', false );
 			}
 		},
@@ -1294,8 +1393,6 @@
 			'apiFlagType': 'unhelpful',
 			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
-				$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
-				$( '#articleFeedbackv5-helpful-votes-' + id ).attr( 'title', data['articlefeedbackv5-flag-feedback'].helpful_counts );
 				$( '#articleFeedbackv5-unhelpful-link-' + id )
 					.addClass( 'helpful-active' )
 					.removeClass( 'articleFeedbackv5-unhelpful-link')
@@ -1309,6 +1406,7 @@
 						.attr( 'id', 'articleFeedbackv5-helpful-link-' + id );
 					$.articleFeedbackv5special.setActivityFlag( id, 'helpful', false )
 				}
+				$.articleFeedbackv5special.refreshVoteReport( id, data['articlefeedbackv5-flag-feedback'] );
 				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', true );
 			}
 		},
@@ -1329,13 +1427,12 @@
 			'apiFlagType': 'unhelpful',
 			'apiFlagDir': -1,
 			'onSuccess': function( id, data ) {
-				$( '#articleFeedbackv5-helpful-votes-' + id ).text( data['articlefeedbackv5-flag-feedback'].helpful );
-				$( '#articleFeedbackv5-helpful-votes-' + id ).attr( 'title', data['articlefeedbackv5-flag-feedback'].helpful_counts );
 				$( '#articleFeedbackv5-reverseunhelpful-link-' + id )
 					.removeClass( 'helpful-active' )
 					.removeClass( 'articleFeedbackv5-reverseunhelpful-link')
 					.addClass( 'articleFeedbackv5-unhelpful-link' )
 					.attr( 'id', 'articleFeedbackv5-unhelpful-link-' + id );
+				$.articleFeedbackv5special.refreshVoteReport( id, data['articlefeedbackv5-flag-feedback'] );
 				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', false );
 			}
 		},
@@ -1358,15 +1455,7 @@
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-abuse-link-' + id );
 				$link.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) );
-				var $count = $( '#articleFeedbackv5-abuse-count-' + id );
-				if ( $count.length ) {
-					$count.text( mw.msg( 'articlefeedbackv5-form-abuse-count', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
-					if ( data['articlefeedbackv5-flag-feedback'].abusive ) {
-						$count.addClass( 'abusive' );
-					} else {
-						$count.removeClass( 'abusive' );
-					}
-				}
+				$.articleFeedbackv5special.refreshAbuseReport( id, data['articlefeedbackv5-flag-feedback'] );
 				if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
 					$.articleFeedbackv5special.markHidden(
 						$link.closest( '.articleFeedbackv5-feedback' ),
@@ -1398,15 +1487,7 @@
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-unabuse-link-' + id );
 				$link.text( mw.msg( 'articlefeedbackv5-form-abuse' ) );
-				var $count = $( '#articleFeedbackv5-abuse-count-' + id );
-				if ( $count.length ) {
-					$count.text( mw.msg( 'articlefeedbackv5-form-abuse-count', data['articlefeedbackv5-flag-feedback'].abuse_count ) );
-					if ( data['articlefeedbackv5-flag-feedback'].abusive ) {
-						$count.addClass( 'abusive' );
-					} else {
-						$count.removeClass( 'abusive' );
-					}
-				}
+				$.articleFeedbackv5special.refreshAbuseReport( id, data['articlefeedbackv5-flag-feedback'] );
 				if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
 					$.articleFeedbackv5special.markHidden(
 						$link.closest( '.articleFeedbackv5-feedback' ),

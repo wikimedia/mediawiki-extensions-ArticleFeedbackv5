@@ -136,26 +136,30 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		$this->showHidden = $wgUser->isAllowed( 'aftv5-see-hidden-feedback' );
 		$this->showDeleted = $wgUser->isAllowed( 'aftv5-see-deleted-feedback' );
 		$this->showFeatured = $wgUser->isAllowed( 'aftv5-feature-feedback' );
-		$this->filters = $this->defaultFilters;
-		$this->sorts = array( 'relevance-asc', 'relevance-desc', 'helpful-desc', 'helpful-asc', 'age-desc', 'age-asc' );
 
+		$this->filters = $this->defaultFilters;
 		if ( $this->showDeleted ) {
 			array_push( $this->filters,
-				'visible-unhelpful', 'visible-abusive',  'visible-unfeatured', 'visible-resolved', 'visible-unresolved',
-				'all-hidden', 'all-unhidden',
-				'all-requested', 'all-unrequested', 'all-declined',
-				'all-oversighted', 'all-unoversighted', 'all'
+				'visible-unhelpful', 'visible-abusive', 'visible-resolved',
+				'all-hidden',
+				'all-requested', 'all-declined',
+				'all-oversighted', 'all'
 			);
 		} elseif ( $this->showHidden ) {
 			array_push( $this->filters,
-				'visible-unhelpful', 'visible-abusive', 'visible-unfeatured', 'visible-resolved', 'visible-unresolved',
-				'notdeleted-hidden', 'notdeleted-unhidden',
-				'notdeleted-requested', 'notdeleted-unrequested', 'notdeleted-declined','notdeleted'
+				'visible-unhelpful', 'visible-abusive', 'visible-resolved',
+				'notdeleted-hidden',
+				'notdeleted-requested', 'notdeleted-declined','notdeleted'
 			);
 		} elseif ( $this->showFeatured ) {
 			array_push( $this->filters,
-				'visible-unhelpful', 'visible-abusive', 'visible-unfeatured', 'visible-resolved', 'visible-unresolved'
+				'visible-unhelpful', 'visible-abusive', 'visible-resolved'
 			);
+		}
+
+		$this->sorts = array( 'relevance-asc', 'relevance-desc', 'age-desc', 'age-asc' );
+		if ( $this->showFeatured ) {
+			array_push( $this->sorts, 'helpful-desc', 'helpful-asc' );
 		}
 
 		global $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
@@ -443,6 +447,23 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 				$this->msg( 'articlefeedbackv5-special-more' )->text()
 			)
 		);
+
+		// Link back to the central page
+		if ( $this->pageId ) {
+			$out->addHTML(
+				// <div class="articleFeedbackv5-feedback-central-goback">
+				//   <a href="{page title}">{msg:articlefeedbackv5-special-central-goback}</a>
+				// </div>
+				Html::rawElement( 'div', array(
+						'class' => 'articleFeedbackv5-feedback-central-goback'
+					), Linker::link(
+						SpecialPage::getTitleFor( 'ArticleFeedbackv5' ),
+							wfMessage( 'articlefeedbackv5-special-central-goback'
+						)->escaped()
+					)
+				)
+			);
+		}
 	}
 
 	/**
@@ -584,30 +605,36 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		}
 
 		$filterSelectHtml = '';
-		$opts = array();
-		foreach ( $this->filters as $filter ) {
-			$count = array_key_exists( $filter, $counts ) ? $counts[$filter] : 0;
-			$msg_key = str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
-			$key   = $this->msg( 'articlefeedbackv5-special-filter-' . $msg_key, $count )->escaped();
-			if ( in_array( $filter, $this->topFilters ) ) {
-				continue;
-			}
-			if ( in_array( $filter, $this->defaultFilters ) ) {
+		// No dropdown for readers
+		if ( $this->showFeatured ) {
+			$opts = array();
+			$foundNonDefaults = false;
+			foreach ( $this->filters as $filter ) {
+				$count = array_key_exists( $filter, $counts ) ? $counts[$filter] : 0;
+				$msg_key = str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
+				$key   = $this->msg( 'articlefeedbackv5-special-filter-' . $msg_key, $count )->escaped();
+				if ( in_array( $filter, $this->topFilters ) ) {
+					continue;
+				}
+				if ( !$foundNonDefaults && !in_array( $filter, $this->defaultFilters ) ) {
+					// Add a divider between the defaults and the rest (use X,
+					// so that it can be distinguished from "More filters")
+					$opts[ '---------' ] = 'X';
+					$foundNonDefaults = true;
+				}
 				$opts[ (string) $key ] = $filter;
-			} else {
-				$opts[ '---------' ][ (string) $key ] = $filter;
 			}
-		}
-		if ( count( $opts ) > 0 ) {
-			// Put the "more filters" option at the beginning of the opts array
-			$opts = array( $this->msg( 'articlefeedbackv5-special-filter-select-more' )->text() => '' ) + $opts;
-			// <select id="articleFeedbackv5-filter-select">
-			//   <option value="{each filter name}">{each filter message}</option>
-			// </select>
-			$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter-select' );
-			$filterSelect->setDefault( $this->startingFilter );
-			$filterSelect->addOptions( $opts );
-			$filterSelectHtml = $filterSelect->getHTML();
+			if ( count( $opts ) > 0 ) {
+				// Put the "more filters" option at the beginning of the opts array
+				$opts = array( $this->msg( 'articlefeedbackv5-special-filter-select-more' )->text() => '' ) + $opts;
+				// <select id="articleFeedbackv5-filter-select">
+				//   <option value="{each filter name}">{each filter message}</option>
+				// </select>
+				$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter-select' );
+				$filterSelect->setDefault( $this->startingFilter );
+				$filterSelect->addOptions( $opts );
+				$filterSelectHtml = $filterSelect->getHTML();
+			}
 		}
 
 		$filterBlock =
@@ -634,12 +661,17 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 
 		// Sorting
 		$opts = array();
-		foreach ( $this->sorts as $sort ) {
+		foreach ( $this->sorts as $i => $sort ) {
 			// Messages are:
 			//  * articlefeedbackv5-special-sort-relevance-desc
 			//  * articlefeedbackv5-special-sort-relevance-asc
 			//  * articlefeedbackv5-special-sort-age-desc
 			//  * articlefeedbackv5-special-sort-age-asc
+			if ( $i % 2 == 0 && $i > 0 ) {
+				// Add dividers between each pair (append trailing spaces so
+				// that they all get added)
+				$opts[ '---------' . str_repeat( ' ', $i ) ] = '';
+			}
 			$key = $this->msg( 'articlefeedbackv5-special-sort-' . $sort )->escaped();
 			$opts[ (string) $key ] = $sort;
 		}
