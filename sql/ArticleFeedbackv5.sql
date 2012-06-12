@@ -74,6 +74,7 @@ CREATE INDEX /*i*/af_page_id ON /*_*/aft_article_feedback (af_page_id, af_create
 CREATE INDEX /*i*/af_page_feedback_id ON /*_*/aft_article_feedback (af_page_id, af_id);
 CREATE INDEX /*i*/af_page_net_helpfulness_af_id ON /*_*/aft_article_feedback (af_page_id, af_net_helpfulness, af_id);
 CREATE INDEX /*i*/af_relevance_sort_af_id ON /*_*/aft_article_feedback (af_relevance_sort, af_id);
+CREATE INDEX /*i*/af_user_id_user_ip_created ON /*_*/aft_article_feedback (af_user_id, af_user_ip, af_created);
 
 -- Allows for organizing fields into fieldsets, for reporting or rendering.
 -- A group is just a name and an ID.
