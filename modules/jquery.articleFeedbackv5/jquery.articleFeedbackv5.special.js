@@ -1290,7 +1290,7 @@
 		// note: we're overwriting the same cookie for every page; assuming that they won't like to come
 		// back later to previous pages and find their previous settings again (plus less cookie size)
 		$.cookie(
-			$.articleFeedbackv5special.prefix( $.articleFeedbackv5special.filterCookieName ),
+			$.aftTrack.prefix( $.articleFeedbackv5special.filterCookieName ),
 			filterParams,
 			{ 'expires': 1, 'path': '/' }
 		);
