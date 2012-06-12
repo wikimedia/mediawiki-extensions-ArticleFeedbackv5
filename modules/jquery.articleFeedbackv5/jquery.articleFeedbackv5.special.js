@@ -426,7 +426,7 @@
 		$.articleFeedbackv5special.setSortByFilter( id );
 
 		// track the filter change
-		$.articleFeedbackv5special.trackClick( 'feedback_page-click-' +
+		$.aftTrack.trackClick( 'feedback_page-click-' +
 				'f_' + $.articleFeedbackv5special.getFilterName( id ) + '-' +
 				$.articleFeedbackv5special.referral + '-' +
 				$.articleFeedbackv5special.userType );
