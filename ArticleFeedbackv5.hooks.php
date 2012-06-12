@@ -730,4 +730,108 @@ class ArticleFeedbackv5Hooks {
 		$api->execute();
 	}
 
+	/**
+	 * Intercept contribution entries and format those belonging to AFT
+	 *
+	 * @param $page SpecialPage object for contributions
+	 * @param $ret string the HTML line
+	 * @param $row Row the DB row for this line
+	 * @return bool
+	 */
+	public static function contributionsLineEnding( $page, $ret, $row ) {
+		if ( !isset( $row->af_id ) || $row->af_id === '' ) return true;
+
+		$lang = $page->getLanguage();
+		$user = $page->getUser();
+		$pageTitle = Title::newFromId( $row->af_page_id )->getPrefixedDBkey();
+		$page = SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$pageTitle/$row->af_id" );
+
+		// date
+		$date = $lang->userTimeAndDate( $row->af_created, $user );
+		$d = Linker::link(
+			$page,
+			htmlspecialchars( $date )
+		);
+		if ( $row->af_is_deleted ) {
+			$d = '<span class="history-deleted">' . $d . '</span>';
+		}
+
+		// chardiff
+		$chardiff = ' . . ' . ChangesList::showCharacterDifference( 0, strlen( $row->af_comment ) ) . ' . . ';
+
+		// link
+		$link = Linker::link(
+			$page,
+			htmlspecialchars( $page->getPrefixedText() )
+		);
+
+		// comment
+		$message = wfMessage( 'articlefeedbackv5-contribs-message', $lang->truncate( $row->af_comment, 250 ) );
+		$comment = $lang->getDirMark() . Linker::commentBlock( $message );
+
+		$ret = "{$d} {$chardiff} {$link} {$comment}";
+
+		return true;
+	}
+
+	/**
+	 * Adds a user's AFT-contributions to the My Contributions special page
+	 *
+	 * @param $queries array an array of other query parameters, to be merged to form all contributions data
+	 * @param $userId int the userId to fetch contributions for
+	 * @param $offset String: index offset, inclusive
+	 * @param $limit Integer: exact query limit
+	 * @param $descending Boolean: query direction, false for ascending, true for descending
+	 * @return bool
+	 */
+	public static function contributionsQuery( $queries, $userId, $offset, $limit, $descending ) {
+		$ratingField  = 0;
+		$commentField = 0;
+		// This is in memcache so I don't feel that bad re-fetching it.
+		// Needed to join in the comment and rating tables, for filtering
+		// and sorting, respectively.
+		foreach ( ApiArticleFeedbackv5Utils::getFields() as $field ) {
+			if ( $field['afi_bucket_id'] == 1 && $field['afi_name'] == 'comment' ) {
+				$commentField = $field['afi_id'];
+			}
+			if ( $field['afi_bucket_id'] == 1 && $field['afi_name'] == 'found' ) {
+				$ratingField = $field['afi_id'];
+			}
+		}
+
+		// build parameters for AFT-data
+		$tables = array(
+			'aft_article_feedback',
+			'rating'  => 'aft_article_answer',
+			'comment' => 'aft_article_answer',
+		);
+		$fields = array(
+			'af_id',
+			'af_page_id',
+			'af_created',
+			'af_is_deleted',
+			'rating.aa_response_boolean AS af_yes_no',
+			'comment.aa_response_text AS af_comment'
+		);
+		$conds = array( 'af_user_id' => $userId );
+		$fname = 'selectSQLText';
+		$options = array(
+			'ORDER BY' => array( 'af_created DESC' ),
+			'LIMIT' => $limit
+		);
+		$join_conds = array(
+			'rating'  => array(
+				'LEFT JOIN',
+				'rating.aa_feedback_id = af_id AND rating.aa_field_id = ' . intval( $ratingField )
+			),
+			'comment' => array(
+				'LEFT JOIN',
+				'comment.aa_feedback_id = af_id AND comment.aa_field_id = ' . intval( $commentField )
+			)
+		);
+		$parameters = array( $tables, $fields, $conds, $fname, $options, $join_conds );
+		$queries[] = $parameters;
+
+		return true;
+	}
 }
