@@ -730,4 +730,168 @@ class ArticleFeedbackv5Hooks {
 		$api->execute();
 	}
 
+	/**
+	 * Intercept contribution entries and format those belonging to AFT
+	 *
+	 * @param $page SpecialPage object for contributions
+	 * @param $ret string the HTML line
+	 * @param $row Row the DB row for this line
+	 * @return bool
+	 */
+	public static function contributionsLineEnding( $page, $ret, $row ) {
+		if ( !isset( $row->af_id ) || $row->af_id === '' ) return true;
+
+		$lang = $page->getLanguage();
+		$user = $page->getUser();
+		$pageTitle = Title::newFromId( $row->af_page_id );
+		$feedbackTitle = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() . "/$row->af_id" );
+
+		// date
+		$date = $lang->userTimeAndDate( $row->af_created, $user );
+		$d = Linker::link(
+			$feedbackTitle,
+			htmlspecialchars( $date )
+		);
+		if ( $row->af_is_deleted ) {
+			$d = '<span class="history-deleted">' . $d . '</span>';
+		}
+
+		// chardiff
+		$chardiff = ' . . ' . ChangesList::showCharacterDifference( 0, strlen( $row->af_comment ) ) . ' . . ';
+
+		// feedback
+		$feedback = $lang->getDirMark() . wfMessage( 'articlefeedbackv5-contribs-feedback', $feedbackTitle->getPrefixedDBkey(), $pageTitle->getPrefixedText() );
+		if ( $row->af_comment != '' ) {
+			$feedback .= Linker::commentBlock( $lang->truncate( $row->af_comment, 250 ) );
+		}
+
+		// status (vote)
+		if ( $row->af_yes_no === '1' ) {
+			$status = wfMessage( 'articlefeedbackv5-contribs-status-positive' );
+		} elseif ( $row->af_yes_no === '0' ) {
+			$status = wfMessage( 'articlefeedbackv5-contribs-status-negative' );
+		} else {
+			$status = wfMessage( 'articlefeedbackv5-contribs-status-neutral' );
+		}
+		$status = ' . . ' . wfMessage( 'articlefeedbackv5-contribs-status', $status );
+
+		// status (actions taken)
+		$actions = array();
+		if ( $row->af_net_helpfulness > 0 ) {
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-helpful' );
+		}
+		if ( $row->af_abuse_count > 0 ) {
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-flagged' );
+		}
+		if ( $row->af_is_featured > 0 ) {
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-featured' );
+		}
+		if ( $row->af_is_resolved > 0 ) {
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-resolved' );
+		}
+		if ( $row->af_oversight_count > 0 ) {
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-oversight-requested' );
+		}
+		if ( $row->af_is_deleted> 0 ) {
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-deleted' );
+		}
+		if ( !empty( $actions ) ) {
+			$status .= ' - ' . implode( ', ', $actions);
+		}
+
+		$ret = "{$d} {$chardiff} {$feedback} {$status}";
+
+		return true;
+	}
+
+	/**
+	 * Adds a user's AFT-contributions to the My Contributions special page
+	 *
+	 * @param $queries array an array of other query parameters, to be merged to form all contributions data
+	 * @param $pager: the ContribsPager object hooked into
+	 * @param $offset String: index offset, inclusive
+	 * @param $limit Integer: exact query limit
+	 * @param $descending Boolean: query direction, false for ascending, true for descending
+	 * @return bool
+	 */
+	public static function contributionsQuery( $queries, $pager, $offset, $limit, $descending ) {
+		// this is data that belongs to the ArticleFeedbackv5 namespace!
+		$namespaces = $pager->getLanguage()->getFormattedNamespaces();
+		$namespace = array_search( 'ArticleFeedbackv5', $namespaces );
+		if (
+			// all namespaces
+			$pager->namespace === '' ||
+			// AFT namespace
+			$pager->namespace === $namespace
+		) {
+			$ratingFields  = array( -1 );
+			$commentFields = array( -1 );
+			// This is in memcache so I don't feel that bad re-fetching it.
+			// Needed to join in the comment and rating tables, for filtering
+			// and sorting, respectively.
+			foreach ( ApiArticleFeedbackv5Utils::getFields() as $field ) {
+				if ( in_array( $field['afi_bucket_id'], array( 1, 6 ) ) && $field['afi_name'] == 'comment' ) {
+					$commentFields[] = $field['afi_id'];
+				}
+				if ( in_array( $field['afi_bucket_id'], array( 1, 6 ) ) && $field['afi_name'] == 'found' ) {
+					$ratingFields[] = $field['afi_id'];
+				}
+			}
+
+			// build parameters for AFT-data
+			$tables = array(
+				'aft_article_feedback',
+				'rating'  => 'aft_article_answer',
+				'comment' => 'aft_article_answer',
+			);
+
+			$fields = array(
+				'af_id',
+				'af_page_id',
+				'af_created',
+				'af_net_helpfulness',
+				'af_abuse_count',
+				'af_is_featured',
+				'af_is_resolved',
+				'af_is_hidden',
+				'af_oversight_count',
+				'af_is_deleted',
+				'rating.aa_response_boolean AS af_yes_no',
+				'comment.aa_response_text AS af_comment'
+			);
+
+			$conds = array();
+			if ( $pager->contribs != 'newbie' ) {
+				$uid = User::idFromName( $pager->target );
+				if ( $uid ) {
+					$conds['af_user_id'] = $uid;
+				} else {
+					$conds['af_user_ip'] = $pager->target;
+				}
+			}
+
+			$fname = 'selectSQLText';
+
+			$options = array(
+				'ORDER BY' => array( 'af_created DESC' ),
+				'LIMIT' => $limit
+			);
+
+			$join_conds = array(
+				'rating'  => array(
+					'LEFT JOIN',
+					'rating.aa_feedback_id = af_id AND rating.aa_field_id IN (' . implode( ',', $ratingFields ) . ')'
+				),
+				'comment' => array(
+					'LEFT JOIN',
+					'comment.aa_feedback_id = af_id AND comment.aa_field_id IN (' . implode( ',', $commentFields ) . ')'
+				)
+			);
+
+			$parameters = array( $tables, $fields, $conds, $fname, $options, $join_conds );
+			$queries[] = $parameters;
+		}
+
+		return true;
+	}
 }
