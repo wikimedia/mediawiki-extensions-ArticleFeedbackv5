@@ -3980,6 +3980,8 @@ $messages['es'] = array(
 	'articlefeedbackv5-status-unfeatured' => 'A esta entrada (post) le eliminó la marca de destacada $1 en $2 el $3',
 	'articlefeedbackv5-status-resolved' => 'Eswta entrada (post) fue marcada como resuelta por $1 en $2 el $3',
 	'articlefeedbackv5-status-unresolved' => 'A esta entrada le quitó la marca de resuelta $1 en $2 el $3',
+	'articlefeedbackv5-deleted-marker' => 'Supervisado',
+	'articlefeedbackv5-hidden-marker' => 'Oculto',
 	'articlefeedbackv5-featured-marker' => 'Destacado',
 	'articlefeedbackv5-form-feature' => 'Destacar esta entrada (post)',
 	'articlefeedbackv5-form-unfeature' => 'Quitar marca de destacada a esta entrada (post)',
@@ -4052,6 +4054,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-mask-postnumber' => "Mensaje (''post'') #$1",
 	'articlefeedbackv5-special-disclaimer' => 'Esto es un prototipo. Por favor no lo utilice a menos que ha sido invitado para hacerlo.',
 	'articlefeedbackv5-special-goback' => 'Ver la página de comentarios',
+	'articlefeedbackv5-special-central-goback' => 'Ver más comentarios de otras páginas',
 	'articlefeedbackv5-permalink-info-title' => 'Información acerca de este mensaje',
 	'articlefeedbackv5-permalink-info-subtitle' => '(#$1)',
 	'articlefeedbackv5-permalink-written-by-editor' => 'Escrito por un usuario registrado <span>utilizando el formulario de comentarios  $1</span>',
@@ -6371,6 +6374,7 @@ D Mitarbeiter vo {{SITENAME}}',
  * @author YaronSh
  * @author דניאל ב.
  * @author ערן
+ * @author פוילישער
  */
 $messages['he'] = array(
 	'articlefeedbackv5-cta-thanks' => 'תודה!',
@@ -6385,6 +6389,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-cta3-confirmation-title' => 'אנא השתתפו בסקר קצר',
 	'articlefeedbackv5-cta3-confirmation-call' => 'הוא יצריך רק דקה מזמנכם, ויעזור לנו לשפר את ויקיפדיה.',
 	'articlefeedbackv5-cta3-button-text' => 'התחלת הסקר',
+	'articlefeedbackv5-cta5-confirmation-followup' => 'המשוב שלך $1.',
 	'articlefeedbackv5-cta5-confirmation-title' => 'עזרו לשפר את ויקיפדיה',
 	'articlefeedbackv5-cta5-confirmation-call' => 'ראו מה אחרים אומרים על הערך הזה. ואז ספרו לנו מה אתם חושבים.',
 	'articlefeedbackv5-cta5-button-text' => 'הצגת משוב',
