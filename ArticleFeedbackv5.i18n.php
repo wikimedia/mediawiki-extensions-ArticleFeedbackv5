@@ -32,6 +32,13 @@ $messages['en'] = array(
 	'articlefeedbackv5-cta3-confirmation-title' => 'Please take a quick survey',
 	'articlefeedbackv5-cta3-confirmation-call' => 'It only takes a minute and will help improve Wikipedia.',
 	'articlefeedbackv5-cta3-button-text' => 'Start the survey',
+	'articlefeedbackv5-cta4-confirmation-title' => 'Join our community',
+	'articlefeedbackv5-cta4-confirmation-call-line1' => 'Sign up or log in, so editors can respond to your feedback.',
+	'articlefeedbackv5-cta4-confirmation-call-line2' => 'Your free account makes it easier to share what you know on Wikipedia.',
+	'articlefeedbackv5-cta4-button-text-signup' => 'Create an account',
+	'articlefeedbackv5-cta4-button-text-login' => 'Log in',
+	'articlefeedbackv5-cta4-button-text-later' => 'Maybe later',
+	'articlefeedbackv5-cta4-button-text-or' => 'or',
 	'articlefeedbackv5-cta5-confirmation-followup' => 'Your feedback has been $1.',
 	'articlefeedbackv5-cta5-confirmation-followup-linktext' => 'posted here',
 	'articlefeedbackv5-cta5-confirmation-title' => 'See what others are saying',
@@ -616,6 +623,12 @@ The link to the edit tutorial',
 	'articlefeedbackv5-cta3-confirmation-title' => 'The title of the survey CTA (call to action)',
 	'articlefeedbackv5-cta3-confirmation-call' => 'The explanatory text of the survey CTA (call to action)',
 	'articlefeedbackv5-cta3-button-text' => 'The text for the button on the survey CTA (call to action)',
+	'articlefeedbackv5-cta4-confirmation-title' => 'The title of the account CTA (call to action)',
+	'articlefeedbackv5-cta4-confirmation-call' => 'The explanatory text of the account CTA (call to action)',
+	'articlefeedbackv5-cta4-button-text-signup' => 'The text for the button encouraging people to create an account',
+	'articlefeedbackv5-cta4-button-text-login' => 'The text for the button encouraging people to login',
+	'articlefeedbackv5-cta4-button-text-later' => 'The text for the link allowing the user to discard this message',
+	'articlefeedbackv5-cta4-button-text-or' => 'The text dividing the 2 buttons (signup & login)',
 	'articlefeedbackv5-cta5-confirmation-followup' => 'The title of the feedback CTA (call to action) -- $1 is the permalink to feedback just posted, with link text {{msg-mw|articlefeedbackv5-cta5-confirmation-followup-linktext}}.',
 	'articlefeedbackv5-cta5-confirmation-followup-linktext' => 'The text of the link to the feedback just posted, in {{msg-mw|articlefeedbackv5-cta5-confirmation-followup}}',
 	'articlefeedbackv5-cta5-confirmation-title' => 'The title of the feedback CTA (call to action)',
@@ -9601,7 +9614,7 @@ $messages['ko'] = array(
 	'articleFeedbackv5-table-heading-average' => '평균',
 	'articleFeedbackv5-copy-above-highlow-tables' => '실험적인 기능입니다. 기능에 대한 의견을 [$1 토론란]에 남겨 주세요.',
 	'articlefeedbackv5-dashboard-bottom' => "'''알림''': 우리는 이 평가 상자에서 문서를 다양하게 나타내는 실험을 계속할 것입니다. 지금 평가 상자는 다음 문서를 나타냅니다:
-* 최고/최저 평가를 받은 문서: 지난 24시간 이내에 평가를 10번 이상 받은 문서로  제출된 평가 모두의 산술평균을 구해 평균으로 합니다. 
+* 최고/최저 평가를 받은 문서: 지난 24시간 이내에 평가를 10번 이상 받은 문서로  제출된 평가 모두의 산술평균을 구해 평균으로 합니다.
 * 최근 낮은 평가를 받은 문서: 지난 24시간 이내에 분류에 상관 없이 70%이상이 낮게(별 2개 이하) 평가한 문서로  평가를 10번 이상 받은 문서만 나타납니다.",
 	'articlefeedbackv5' => '문서 평가 현황',
 	'articlefeedbackv5-desc' => '문서 평가',
@@ -14811,7 +14824,7 @@ $3
 
 Если вы не отправляли подобного запроса, пожалуйста, проигнорируйте это сообщение, и мы больше не будем вас тревожить.
 
-С наилучшими пожеланиями и благодарностью — 
+С наилучшими пожеланиями и благодарностью —
 команда проекта {{SITENAME}}',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Запрошен надзор для страницы отзыва',
 );
