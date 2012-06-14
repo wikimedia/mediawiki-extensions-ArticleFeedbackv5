@@ -791,7 +791,7 @@
 						$wrap.find( 'span' ).addClass( 'articleFeedbackv5-button-placeholder-active' );
 
 						// check/uncheck radio buttons
-						$wrap.find( 'input' ).trigger( 'click' );
+						$wrap.find( 'input' ).trigger( 'click' ).attr( 'checked', true );
 
 						// set default comment message
 						var $element = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' );

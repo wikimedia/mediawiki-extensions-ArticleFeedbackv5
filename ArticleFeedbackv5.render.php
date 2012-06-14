@@ -328,6 +328,7 @@ class ArticleFeedbackv5Render {
 	public function getMood( $record ) {
 		switch( $record[0]->af_form_id ) {
 			case 1:
+			case 6:
 				if ( isset( $record['found'] ) && $record['found']->aa_response_boolean == 1 ) {
 					return 'positive';
 				} elseif ( isset( $record['found'] ) && $record['found']->aa_response_boolean !== null ) {

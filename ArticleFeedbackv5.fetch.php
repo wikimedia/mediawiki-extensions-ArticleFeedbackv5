@@ -154,17 +154,17 @@ class ArticleFeedbackv5Fetch {
 		$direction = strtolower( $this->sortOrder ) == 'asc' ? 'ASC' : 'DESC';
 		$continueDirection = ( $direction == 'ASC' ? '>' : '<' );
 
-		$ratingField  = 0;
-		$commentField = 0;
+		$ratingFields  = array( -1 );
+		$commentFields = array( -1 );
 		// This is in memcache so I don't feel that bad re-fetching it.
 		// Needed to join in the comment and rating tables, for filtering
 		// and sorting, respectively.
 		foreach ( ApiArticleFeedbackv5Utils::getFields() as $field ) {
-			if ( $field['afi_bucket_id'] == 1 && $field['afi_name'] == 'comment' ) {
-				$commentField = $field['afi_id'];
+			if ( in_array( $field['afi_bucket_id'], array( 1, 6 ) ) && $field['afi_name'] == 'comment' ) {
+				$commentFields[] = $field['afi_id'];
 			}
-			if ( $field['afi_bucket_id'] == 1 && $field['afi_name'] == 'found' ) {
-				$ratingField = $field['afi_id'];
+			if ( in_array( $field['afi_bucket_id'], array( 1, 6 ) ) && $field['afi_name'] == 'found' ) {
+				$ratingFields[] = $field['afi_id'];
 			}
 		}
 
@@ -245,11 +245,11 @@ class ArticleFeedbackv5Fetch {
 			array(
 				'rating'  => array(
 					'LEFT JOIN',
-					'rating.aa_feedback_id = af_id AND rating.aa_field_id = ' . intval( $ratingField )
+					'rating.aa_feedback_id = af_id AND rating.aa_field_id IN (' . implode( ',', $ratingFields ) . ')'
 				),
 				'comment' => array(
 					'LEFT JOIN',
-					'comment.aa_feedback_id = af_id AND comment.aa_field_id = ' . intval( $commentField )
+					'comment.aa_feedback_id = af_id AND comment.aa_field_id IN (' . implode( ',', $commentFields ) . ')'
 				)
 			)
 		);
@@ -302,23 +302,27 @@ class ArticleFeedbackv5Fetch {
 			array(
 				'rating' => array(
 					'LEFT JOIN',
-					'rating.aa_feedback_id = af_id AND rating.aa_field_id = ' . intval( $ratingField )
+					'rating.aa_feedback_id = af_id AND rating.aa_field_id IN (' . implode( ',', $ratingFields ) . ')'
 				),
 				'answer' => array(
-					'LEFT JOIN', 'af_id = answer.aa_feedback_id'
+					'LEFT JOIN',
+					'answer.aa_feedback_id = af_id'
 				),
 				'aft_article_field' => array(
-					'LEFT JOIN', 'afi_id = answer.aa_field_id'
+					'LEFT JOIN',
+					'afi_id = answer.aa_field_id'
 				),
 				'aft_article_field_option' => array(
 					'LEFT JOIN',
 					'answer.aa_response_option_id = afo_option_id'
 				),
 				'user' => array(
-					'LEFT JOIN', 'user_id = af_user_id'
+					'LEFT JOIN',
+					'user_id = af_user_id'
 				),
 				'page' => array(
-					'JOIN', 'page_id = af_page_id'
+					'JOIN',
+					'page_id = af_page_id'
 				),
 			)
 		);
