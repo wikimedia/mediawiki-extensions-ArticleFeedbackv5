@@ -30,6 +30,13 @@ class ArticleFeedbackv5Render {
 	private $isCentral;
 
 	/**
+	 * Whether this is a highlighted row
+	 *
+	 * @var bool
+	 */
+	private $isHighlighted;
+
+	/**
 	 * Permissions
 	 *
 	 * Keys: can_flag, can_vote, can_hide, can_delete, can_feature,
@@ -53,8 +60,9 @@ class ArticleFeedbackv5Render {
 	 * @param $user      User [optional] the current user
 	 * @param $permalink bool [optional] whether this is a permalink?
 	 * @param $central   bool [optional] whether this is on the central log?
+	 * @param $highlight bool [optional] whether this is a highlighted row?
 	 */
-	public function __construct( $user = null, $permalink = false, $central = false ) {
+	public function __construct( $user = null, $permalink = false, $central = false, $highlight = false ) {
 		if ( $user ) {
 			$this->setPermission( 'can_flag', !$user->isBlocked() );
 			$this->setPermission( 'can_vote', !$user->isBlocked() );
@@ -66,6 +74,7 @@ class ArticleFeedbackv5Render {
 		}
 		$this->setIsPermalink( $permalink );
 		$this->setIsCentral( $central );
+		$this->setIsHighlighted( $highlight );
 	}
 
 	/**
@@ -79,7 +88,7 @@ class ArticleFeedbackv5Render {
 
 		// Empty gray mask, for permalinks where the feedback is deleted or
 		// hidden, and the user doesn't have permission to see them
-		if  ( $this->isPermalink && (
+		if  ( ( $this->isPermalink || $this->isHighlighted ) && (
 				( $record[0]->af_is_deleted && !$this->hasPermission( 'see_deleted' ) )
 				|| ( $record[0]->af_is_hidden && !$this->hasPermission( 'see_hidden') )
 			) ) {
@@ -124,6 +133,9 @@ class ArticleFeedbackv5Render {
 		}
 		if ( $this->isPermalink ) {
 			$topClass .= ' articleFeedbackv5-feedback-permalink';
+		}
+		if ( $this->isHighlighted ) {
+			$topClass .= ' articleFeedbackv5-feedback-highlighted';
 		}
 
 		// Get the class for the comment wrap
@@ -202,6 +214,26 @@ class ArticleFeedbackv5Render {
 	}
 
 	/**
+	 * Gets whether this is is a highlighted row
+	 *
+	 * @return bool whether this is is a highlighted row
+	 */
+	public function getIsHighlighted() {
+		return $this->isHighlighted;
+	}
+
+	/**
+	 * Sets whether this is is a highlighted row
+	 *
+	 * @param  $isHighlighted bool whether this is is a highlighted row
+	 * @return bool       whether it passed validation and was set
+	 */
+	public function setIsHighlighted( $isHighlighted ) {
+		$this->isHighlighted = $isHighlighted ? true : false;
+		return true;
+	}
+
+	/**
 	 * Sets a permission
 	 *
 	 * @param  $key   string the key
@@ -253,7 +285,7 @@ class ArticleFeedbackv5Render {
 					. 'articleFeedbackv5-feedback-emptymask'
 				) )
 				// {gray mask}
-				. $this->grayMask( $record )
+				. $this->grayMask( $record, true )
 				// <div class="articleFeedbackv5-comment-wrap">
 				// </div>
 				. Html::element( 'div', array(
@@ -267,9 +299,11 @@ class ArticleFeedbackv5Render {
 	 * Returns a gray mask
 	 *
 	 * @param  $record array the record, with keys 0 + answers
+	 * @param  $empty  bool  [optional] whether the mask is empty; defaults to
+	 *                       false
 	 * @return string the gray mask
 	 */
-	private function grayMask( array $record ) {
+	private function grayMask( array $record, $empty = false ) {
 		global $wgLang;
 		if ( $record[0]->af_is_deleted ) {
 			$type = 'oversight';
@@ -278,6 +312,25 @@ class ArticleFeedbackv5Render {
 		} else {
 			return '';
 		}
+
+		$viewLink = '';
+		if ( !$empty ) {
+			$viewLink =
+				// <span class="articleFeedbackv5-mask-view">
+				Html::openElement( 'span', array( 'class' => 'articleFeedbackv5-mask-view' ) )
+					//   <a href="#" onclick="return false;">
+					//     {msg:articlefeedbackv5-mask-view-contents}
+					//   </a>
+					. Html::rawElement( 'a', array(
+							'href' => '#',
+							'onclick' => 'return false;',
+						),
+						wfMessage( 'articlefeedbackv5-mask-view-contents' )->escaped()
+					)
+				// </span>
+				. Html::closeElement( 'span' );
+		}
+
 		return
 			// <div class="articleFeedbackv5-post-screen">
 			Html::openElement( 'div', array(
@@ -298,19 +351,7 @@ class ArticleFeedbackv5Render {
 								$record[0]->af_last_status_user_id,
 								$record[0]->af_last_status_timestamp )
 						)
-						// <span class="articleFeedbackv5-mask-view">
-						. Html::openElement( 'span', array( 'class' => 'articleFeedbackv5-mask-view' ) )
-							//   <a href="#" onclick="return false;">
-							//     {msg:articlefeedbackv5-mask-view-contents}
-							//   </a>
-							. Html::rawElement( 'a', array(
-									'href' => '#',
-									'onclick' => 'return false;',
-								),
-								wfMessage( 'articlefeedbackv5-mask-view-contents' )->escaped()
-							)
-						// </span>
-						. Html::closeElement( 'span' )
+						. $viewLink
 					// </span>
 					. Html::closeElement( 'span' )
 				// </div>
@@ -727,7 +768,14 @@ class ArticleFeedbackv5Render {
 			'class' => 'articleFeedbackv5-comment-tags',
 		) );
 
-		if ( $this->hasPermission( 'can_feature' ) && $record->af_is_deleted ) {
+		if ( $this->isHighlighted ) {
+			// <span class="articleFeedbackv5-new-marker">
+			//   {msg:articlefeedbackv5-new-marker}
+			// </span>
+			$html .= Html::element( 'span', array(
+				'class' => 'articleFeedbackv5-new-marker',
+			), wfMessage( 'articlefeedbackv5-new-marker' )->text() );
+		} elseif ( $this->hasPermission( 'can_feature' ) && $record->af_is_deleted ) {
 			// <span class="articleFeedbackv5-deleted-marker">
 			//   {msg:articlefeedbackv5-deleted-marker}
 			// </span>

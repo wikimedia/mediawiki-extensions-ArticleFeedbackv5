@@ -106,6 +106,13 @@
 	$.articleFeedbackv5special.currentPanelHostId = undefined;
 
 	/**
+	 * Highlighted feedback ID
+	 *
+	 * @var int
+	 */
+	$.articleFeedbackv5special.highlightId = undefined;
+
+	/**
 	 * Action note flyover panel HTML template
 	 *
 	 * @var string
@@ -143,13 +150,9 @@
 	 * Marker templates
 	 */
 	$.articleFeedbackv5special.markerTemplates = {
-		featured: '\
-			<span class="articleFeedbackv5-featured-marker">\
-				<html:msg key="featured-marker" />\
-			</span>',
-		resolved: '\
-			<span class="articleFeedbackv5-resolved-marker">\
-				<html:msg key="resolved-marker" />\
+		new: '\
+			<span class="articleFeedbackv5-new-marker">\
+				<html:msg key="new-marker" />\
 			</span>',
 		deleted: '\
 			<span class="articleFeedbackv5-deleted-marker">\
@@ -159,6 +162,14 @@
 			<span class="articleFeedbackv5-hidden-marker">\
 				<html:msg key="hidden-marker" />\
 			</span>',
+		featured: '\
+			<span class="articleFeedbackv5-featured-marker">\
+				<html:msg key="featured-marker" />\
+			</span>',
+		resolved: '\
+			<span class="articleFeedbackv5-resolved-marker">\
+				<html:msg key="resolved-marker" />\
+			</span>'
 	};
 
 	/**
@@ -251,7 +262,14 @@
 		$loading2.hide();
 		$( '#articleFeedbackv5-show-more' ).before( $loading2 );
 
-		// Initial load
+		// Is there a highlighted ID?
+		var hash = window.location.hash.replace( '#', '' );
+		if ( hash.match( /^\d+$/ ) && $.articleFeedbackv5special.filter != 'id' ) {
+			$.articleFeedbackv5special.highlightId = parseInt( hash );
+			$.articleFeedbackv5special.pullHighlight();
+		}
+
+		// Process preloaded feedback
 		$.articleFeedbackv5special.processFeedback(
 			mw.config.get( 'afCount' ),
 			mw.config.get( 'afContinue' ),
@@ -300,7 +318,7 @@
 				return false;
 			}
 			$.articleFeedbackv5special.toggleFilter( id );
-			$.articleFeedbackv5special.loadFeedback( true );
+			$.articleFeedbackv5special.loadFeedback( true, false );
 			return false;
 		} );
 		// Disable the dividers
@@ -312,7 +330,7 @@
 			e.preventDefault();
 			var	id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-filter-' );
 			$.articleFeedbackv5special.toggleFilter( id );
-			$.articleFeedbackv5special.loadFeedback( true );
+			$.articleFeedbackv5special.loadFeedback( true, false );
 		} );
 
 		// Sort select
@@ -322,7 +340,7 @@
 				return false;
 			}
 			$.articleFeedbackv5special.toggleSort( sort[0], sort[1] )
-			$.articleFeedbackv5special.loadFeedback( true );
+			$.articleFeedbackv5special.loadFeedback( true, false );
 			return false;
 		} );
 		// Disable the dividers
@@ -330,7 +348,7 @@
 
 		// Show more
 		$( '#articleFeedbackv5-show-more' ).bind( 'click', function( e ) {
-			$.articleFeedbackv5special.loadFeedback( false );
+			$.articleFeedbackv5special.loadFeedback( false, false );
 			return false;
 		} );
 
@@ -685,7 +703,9 @@
 		var $tags = $row.find( '.articleFeedbackv5-comment-tags' );
 		if ( which == 'remove' ) {
 			$tags.find( '.articleFeedbackv5-' + tag + '-marker' ).remove();
-			if ( mw.config.get( 'afCanEdit' ) && $row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
+			if ( mw.config.get( 'afCanEdit' ) && $row.hasClass( 'articleFeedbackv5-feedback-highlighted' ) ) {
+				$.articleFeedbackv5special.changeTags( $row, 'new', 'add' );
+			} else if ( mw.config.get( 'afCanEdit' ) && $row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
 				$.articleFeedbackv5special.changeTags( $row, 'deleted', 'add' );
 			} else if ( mw.config.get( 'afCanEdit' ) && $row.hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
 				$.articleFeedbackv5special.changeTags( $row, 'hidden', 'add' );
@@ -815,8 +835,9 @@
 	 *
 	 * @param $row element the feedback row
 	 * @param line string  the mask line
+	 * @param empty bool   whether this mask is empty
 	 */
-	$.articleFeedbackv5special.maskPost = function( $row, line ) {
+	$.articleFeedbackv5special.maskPost = function( $row, line, empty ) {
 		var $screen = $row.find( '.articleFeedbackv5-post-screen' );
 		if ( 0 == $screen.length ) {
 			$screen = $( $.articleFeedbackv5special.maskHtmlTemplate );
@@ -830,11 +851,13 @@
 		if ( $screen.hasClass( 'articleFeedbackv5-post-screen-off' ) ) {
 			$screen.removeClass( 'articleFeedbackv5-post-screen-off' );
 		}
-		$screen.click( function( e ) {
-			$.articleFeedbackv5special.unmaskPost(
-				$( e.target ).closest( '.articleFeedbackv5-feedback' )
-			);
-		} );
+		if ( !empty ) {
+			$screen.click( function( e ) {
+				$.articleFeedbackv5special.unmaskPost(
+					$( e.target ).closest( '.articleFeedbackv5-feedback' )
+				);
+			} );
+		}
 		$.articleFeedbackv5special.adjustMask( $row, $screen );
 	}
 
@@ -1108,40 +1131,52 @@
 	 * sort or filter change, the existing responses are removed from the view
 	 * and replaced.
 	 *
-	 * @param resetContents bool whether to remove the existing responses
+	 * @param resetContents   bool whether to remove the existing responses
+	 * @param prependContents bool whether to prepend the results onto the existing feedback
 	 */
-	$.articleFeedbackv5special.loadFeedback = function ( resetContents ) {
+	$.articleFeedbackv5special.loadFeedback = function ( resetContents, prependContents ) {
 		// save this filter state
 		$.articleFeedbackv5special.saveFilters();
 
-		if ( resetContents ) {
+		if ( resetContents || prependContents ) {
 			$( '#articleFeedbackv5-feedback-loading-top' ).fadeIn();
 		} else {
 			$( '#articleFeedbackv5-feedback-loading-bottom' ).fadeIn();
 		}
+		var params = {
+			'afvfpageid':         $.articleFeedbackv5special.page,
+			'afvffilter':         $.articleFeedbackv5special.listControls.filter,
+			'afvffiltervalue':    $.articleFeedbackv5special.listControls.filterValue,
+			'afvfsort':           $.articleFeedbackv5special.listControls.sort,
+			'afvfsortdirection':  $.articleFeedbackv5special.listControls.sortDirection,
+			'afvflimit':          $.articleFeedbackv5special.listControls.limit,
+			'afvfcontinue':       $.articleFeedbackv5special.listControls.continueInfo,
+			'action':             'query',
+			'format':             'json',
+			'list':               'articlefeedbackv5-view-feedback',
+			'maxage':             0
+		};
 		$.ajax( {
 			'url'     : $.articleFeedbackv5special.apiUrl,
 			'type'    : 'GET',
 			'dataType': 'json',
-			'data'    : {
-				'afvfpageid'        : $.articleFeedbackv5special.page,
-				'afvffilter'        : $.articleFeedbackv5special.listControls.filter,
-				'afvffiltervalue'   : $.articleFeedbackv5special.listControls.filterValue,
-				'afvfsort'          : $.articleFeedbackv5special.listControls.sort,
-				'afvfsortdirection' : $.articleFeedbackv5special.listControls.sortDirection,
-				'afvflimit'         : $.articleFeedbackv5special.listControls.limit,
-				'afvfcontinue'      : $.articleFeedbackv5special.listControls.continueInfo,
-				'action'  : 'query',
-				'format'  : 'json',
-				'list'    : 'articlefeedbackv5-view-feedback',
-				'maxage'  : 0
-			},
+			'data'    : params,
+			'context': { info: params },
 			'success': function ( data ) {
 				if ( 'articlefeedbackv5-view-feedback' in data ) {
 					if ( resetContents ) {
 						$( '#articleFeedbackv5-show-feedback' ).empty();
 					}
-					$( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback );
+					if ( prependContents ) {
+						$( '#articleFeedbackv5-show-feedback' ).prepend( data['articlefeedbackv5-view-feedback'].feedback );
+					} else {
+						$( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback );
+					}
+					if ( this.info.afvffilter == 'highlight' ) {
+						$( '.articleFeedbackv5-feedback[rel=' + $.articleFeedbackv5special.highlightId + ']:not(.articleFeedbackv5-feedback-highlighted)' ).hide();
+					} else if ( $.articleFeedbackv5special.highlightId && !prependContents ) {
+						$.articleFeedbackv5special.pullHighlight();
+					}
 					$.articleFeedbackv5special.processFeedback(
 						data['articlefeedbackv5-view-feedback']['count'],
 						data['articlefeedbackv5-view-feedback']['continue'],
@@ -1150,7 +1185,7 @@
 				} else {
 					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
-				if ( resetContents ) {
+				if ( resetContents || prependContents ) {
 					$( '#articleFeedbackv5-feedback-loading-top' ).fadeOut();
 				} else {
 					$( '#articleFeedbackv5-feedback-loading-bottom' ).fadeOut();
@@ -1158,7 +1193,7 @@
 			},
 			'error': function ( data ) {
 				$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
-				if ( resetContents ) {
+				if ( resetContents || prependContents ) {
 					$( '#articleFeedbackv5-feedback-loading-top' ).fadeOut();
 				} else {
 					$( '#articleFeedbackv5-feedback-loading-bottom' ).fadeOut();
@@ -1167,6 +1202,32 @@
 		} );
 
 		return false;
+	};
+
+	// }}}
+	// {{{ pullHighlight
+
+	/**
+	 * Pulls in the highlighted feedback, if requested.
+	 */
+	$.articleFeedbackv5special.pullHighlight = function () {
+		var old = {
+			filter:         $.articleFeedbackv5special.listControls.filter,
+			filterValue:    $.articleFeedbackv5special.listControls.filterValue,
+			sort:           $.articleFeedbackv5special.listControls.sort,
+			sortDirection:  $.articleFeedbackv5special.listControls.sortDirection,
+			limit:          $.articleFeedbackv5special.listControls.limit,
+			continueInfo:   $.articleFeedbackv5special.listControls.continueInfo,
+			disabled:       $.articleFeedbackv5special.listControls.disabled,
+			allowMultiple:  $.articleFeedbackv5special.listControls.allowMultiple,
+			showMore:       $.articleFeedbackv5special.listControls.showMore
+		};
+		$.articleFeedbackv5special.listControls.filter = 'highlight';
+		$.articleFeedbackv5special.listControls.filterValue = $.articleFeedbackv5special.highlightId;
+		$.articleFeedbackv5special.loadFeedback( false, true );
+		for ( var key in old ) {
+			$.articleFeedbackv5special.listControls[key] = old[key];
+		}
 	};
 
 	// }}}
@@ -1209,7 +1270,7 @@
 			}
 
 			if ( $( this ).hasClass( 'articleFeedbackv5-feedback-emptymask' ) ) {
-				$.articleFeedbackv5special.adjustMask( $( this ) );
+				$.articleFeedbackv5special.maskPost( $( this ), '', true );
 			} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
 				$.articleFeedbackv5special.maskPost( $( this ) );
 			} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
