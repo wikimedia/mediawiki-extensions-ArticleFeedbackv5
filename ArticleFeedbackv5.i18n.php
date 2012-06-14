@@ -117,6 +117,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-status-unfeatured' => 'This post was un-featured by $1 on $2 at $3',
 	'articlefeedbackv5-status-resolved' => 'This post was marked as resolved by $1 on $2 at $3',
 	'articlefeedbackv5-status-unresolved' => 'This post was un-marked as resolved by $1 on $2 at $3',
+	'articlefeedbackv5-new-marker' => 'New',
 	'articlefeedbackv5-deleted-marker' => 'Oversighted',
 	'articlefeedbackv5-hidden-marker' => 'Hidden',
 	'articlefeedbackv5-featured-marker' => 'Featured',
@@ -702,6 +703,7 @@ The link to the edit tutorial',
 * $1 is a link to the faq about how autoflagging works
 * $2 is the date when the autoflag occurred
 * $3 is the time when the autoflag occurred',
+	'articlefeedbackv5-new-marker' => 'The marker that appears on a comment is new and highlighted.',
 	'articlefeedbackv5-deleted-marker' => 'The marker that appears on a comment if it has been oversighted (deleted).',
 	'articlefeedbackv5-hidden-marker' => 'The marker that appears on a comment if it has been hidden.',
 	'articlefeedbackv5-featured-marker' => 'The marker that appears on a comment if it has been featured.',

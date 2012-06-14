@@ -1328,7 +1328,7 @@
 				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
 
 				// Fill in the link
-				var feedback_url = $.articleFeedbackv5.specialUrl;
+				var feedback_url = $.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId;
 				var feedback_track_id = $.articleFeedbackv5.ctaName() + '-button_click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
