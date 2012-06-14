@@ -56,6 +56,9 @@
 .articleFeedbackv5-feedback.articleFeedbackv5-comment-notoolbox {
 	background: transparent;
 }
+.articleFeedbackv5-feedback.articleFeedbackv5-feedback-highlighted {
+	background-color: #EFF5FE;
+}
 .articleFeedbackv5-feedback:after {
 	clear: both;
 }
@@ -276,6 +279,17 @@
 	text-transform: uppercase;
 	/* @embed */
 	background: url(images/hidden.png) no-repeat;
+	background-position: -5px -6px;
+}
+.articleFeedbackv5-feedback .articleFeedbackv5-new-marker {
+	display: block;
+	line-height: 24px;
+	padding: 0 0 0 25px;
+	font-weight: bold;
+	color: #656763;
+	text-transform: uppercase;
+	/* @embed */
+	background: url(images/new.png) no-repeat;
 	background-position: -5px -6px;
 }
 
