@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAM3//+0Q\u003d",
+        "filename": "ArticleFeedbackv5.fetch.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-06-15T20:04:35Z",
+      "side": 1,
+      "message": "It\u0027s probably better to typecast $field[\u0027afi_id\u0027] to an integer so that it won\u0027t break the IN clause below in case this happens to be something else other than an integer",
+      "revId": "8f9ca57834b3f1fc22085c91f1b174e5f3e2cdb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAM3//+0M\u003d",
+        "filename": "ArticleFeedbackv5.fetch.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-06-15T20:04:35Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "8f9ca57834b3f1fc22085c91f1b174e5f3e2cdb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
