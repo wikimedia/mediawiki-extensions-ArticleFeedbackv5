@@ -445,7 +445,7 @@
 }
 
 .articleFeedbackv5-panel {
-	width: 598px;
+	width: 700px;
 	background: #f5faff;
 	border: 1px solid #ccc;
 	color: #000;
@@ -536,12 +536,14 @@
 .articleFeedbackv5-arrow-back {
 	/* @embed */
 	background: url(images/bg-arrow-back.png) no-repeat 0 50%;
-	height: 1em;
+	height: 2em;
 	width: 10px;
 	display: block;
 	text-indent: -90000px;
 	float: left;
 	margin-right: 3px;
+	padding-top: 0.5em;
+	padding-bottom: 0.17em;
 }
 
 .articleFeedbackv5-ui .form-row {
@@ -557,6 +559,8 @@
 #articlefeedbackv5-feedback-countdown {
 	float: right;
 	font-size: 0.8em;
+	margin-top: -1.6em;
+	margin-bottom: 0;
 }
 
 .articleFeedbackv5-ui .buttons {
@@ -615,7 +619,7 @@
 .articleFeedbackv5-ui .feedback-text {
 	background: #fff;
 	border: 1px solid #000;
-	width: 560px;
+	width: 660px;
 	height: 42px;
 	padding: 5px;
 	font-size: 1.1em;
@@ -845,7 +849,7 @@
 .articleFeedbackv5-confirmation-panel {}
 .articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent {
 	float: left;
-	width: 340px;
+	width: 440px;
 }
 .articleFeedbackv5-confirmation-text {
 	display: inline-block;

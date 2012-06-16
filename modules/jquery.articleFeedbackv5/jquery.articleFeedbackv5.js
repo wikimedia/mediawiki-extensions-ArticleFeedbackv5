@@ -416,8 +416,8 @@
 						$other_wrap.find( 'input' ).removeAttr( 'checked' );
 						// set default comment message
 						var $txt = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' );
-						var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
-						var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-comment-no' );
+						var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
+						var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
 						if ( $txt.val() == '' || $txt.val() == def_msg_yes || $txt.val() == def_msg_no ) {
 							$txt.val( new_val == 'yes' ? def_msg_yes : def_msg_no );
 							$.articleFeedbackv5.currentBucket().currentDefaultText = $txt.val();
@@ -443,9 +443,9 @@
 						var def_msg = '';
 						var val = $.articleFeedbackv5.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).val();
 						if ( val == 'yes' ) {
-							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
+							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
 						} else if ( val == 'no' ) {
-							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-comment-no' );
+							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
 						}
 						if ( $( this ).val() == '' ) {
 							$( this ).val( def_msg );
@@ -480,8 +480,8 @@
 					data.found = 0;
 				}
 				data.comment = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' ).val();
-				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-comment-yes' );
-				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-comment-no' );
+				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
+				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
 				if ( data.comment == def_msg_yes || data.comment == def_msg_no ) {
 					data.comment = '';
 				}
@@ -696,7 +696,6 @@
 							<div class="clear"></div>\
 						</div>\
 						<div class="articleFeedbackv5-comment">\
-							<p class="instructions-left" id="articlefeedbackv5-feedback-instructions"></p>\
 							<p id="articlefeedbackv5-feedback-countdown"></p>\
 							<textarea id="articleFeedbackv5-find-feedback" class="feedback-text" name="comment"></textarea>\
 						</div>\
@@ -784,7 +783,7 @@
 						$.articleFeedbackv5.currentBucket().displayStep2( $block );
 
 						// add instructional text for feedback
-						$( '#articlefeedbackv5-feedback-instructions' ).text( mw.msg( 'articlefeedbackv5-bucket6-question-instructions-' + new_val ) );
+						$( '.articleFeedbackv5-title' ).text( mw.msg( 'articlefeedbackv5-bucket6-question-instructions-' + new_val ) );
 
 						// make the button blue
 						$( 'span.articleFeedbackv5-button-placeholder-active' ).removeClass( 'articleFeedbackv5-button-placeholder-active' );
@@ -795,7 +794,7 @@
 
 						// set default comment message
 						var $element = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' );
-						var text = mw.msg( 'articlefeedbackv5-bucket6-question-comment-' + new_val );
+						var text = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-' + new_val );
 						$element.attr( 'placeholder', text ).placeholder();
 
 						// allow feedback submission if there is feedback (or if Y/N was positive)
@@ -845,8 +844,8 @@
 					data.found = 0;
 				}
 				data.comment = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' ).val();
-				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket6-question-comment-yes' );
-				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket6-question-comment-no' );
+				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-yes' );
+				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-no' );
 				if ( data.comment == def_msg_yes || data.comment == def_msg_no ) {
 					data.comment = '';
 				}
@@ -889,7 +888,10 @@
 				$step2.hide();
 
 				// remove back-arrow from title (if present)
-				$( '.articleFeedbackv5-title .articleFeedbackv5-arrow-back' ).remove();
+				$( '.articleFeedbackv5-arrow-back' ).remove();
+
+				// reset regular title
+				$( '.articleFeedbackv5-title' ).html( $.articleFeedbackv5.currentBucket().getTitle() );
 			},
 
 			// }}}
@@ -913,7 +915,7 @@
 				var $backLink = $( '<a href="#" class="articleFeedbackv5-arrow-back"></a>' );
 				$backLink.text( mw.msg( 'articlefeedbackv5-bucket6-backlink-text' ) );
 				$backLink.attr( 'title', mw.msg( 'articlefeedbackv5-bucket6-backlink-text' ) );
-				$( '.articleFeedbackv5-title' ).prepend( $backLink );
+				$( '.articleFeedbackv5-title' ).before( $backLink );
 			},
 
 			// }}}
@@ -929,17 +931,26 @@
 			 */
 			countdown: function ( $element ) {
 				var maxLength = 5000;
+				var displayLength = 200;
+
+				$countdown = $( '#articlefeedbackv5-feedback-countdown' );
 
 				// grab the current length of the form element (or set to 0 if the current text is bogus placeholder)
 				var length = maxLength - $element.val().length;
 
 				// display the amount of characters
 				var message = mw.msg( 'articlefeedbackv5-bucket6-feedback-countdown', length );
-				$( '#articlefeedbackv5-feedback-countdown' ).text( message );
+				$countdown.text( message );
 
 				// remove excessive characters
 				if ( length < 0 ) {
 					$element.val( $element.val().substr( 0, maxLength ) );
+				}
+
+				// display only display the countdown for the last X characters
+				$countdown.hide();
+				if ( length < displayLength ) {
+					$countdown.show();
 				}
 			}
 
