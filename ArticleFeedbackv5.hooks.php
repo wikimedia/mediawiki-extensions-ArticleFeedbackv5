@@ -394,6 +394,9 @@ class ArticleFeedbackv5Hooks {
 					// not viewing the printable version
 					&& $request->getVal( 'printable' ) != 'yes'
 				) {
+					// disable older AFT versions by making the odds 0 (for this request)
+					$out->addJsConfigVars( 'wgArticleFeedbackLotteryOdds', 0 );
+
 					// load module
 					$out->addModules( 'ext.articleFeedbackv5.startup' );
 				}
@@ -403,6 +406,9 @@ class ArticleFeedbackv5Hooks {
 			// talk page
 			case NS_TALK:
 				if ( self::allowForPage( $title->getSubjectPage() ) ) {
+					// disable older AFT versions by making the odds 0 (for this request)
+					$out->addJsConfigVars( 'wgArticleFeedbackLotteryOdds', 0 );
+
 					// load module
 					$out->addModules( 'ext.articleFeedbackv5.talk' );
 				}
@@ -420,6 +426,9 @@ class ArticleFeedbackv5Hooks {
 					// Central feedback page OR allowed page
 					$mainTitle = Title::newFromDBkey( $mainTitle );
 					if ( $mainTitle === null || self::allowForPage( $mainTitle ) ) {
+						// disable older AFT versions by making the odds 0 (for this request)
+						$out->addJsConfigVars( 'wgArticleFeedbackLotteryOdds', 0 );
+
 						// load module
 						$out->addModules( 'ext.articleFeedbackv5.dashboard' );
 					}
@@ -449,7 +458,8 @@ class ArticleFeedbackv5Hooks {
 		global $wgUser,
 			$wgArticleFeedbackv5Namespaces,
 			$wgArticleFeedbackv5Categories,
-			$wgArticleFeedbackv5BlacklistCategories;
+			$wgArticleFeedbackv5BlacklistCategories,
+			$wgArticleFeedbackv5LotteryOdds;
 
 		if (
 			// not disabled via preferences
@@ -459,7 +469,8 @@ class ArticleFeedbackv5Hooks {
 			// existing pages
 			&& $title->getArticleId() > 0
 		) {
-			$allow = false;
+			// check if this article wins the lottery
+			$allow = $title->getArticleId() % 1000 < $wgArticleFeedbackv5LotteryOdds * 10;
 
 			// loop all categories linked to this page
 			foreach ( $title->getParentCategories() as $category => $page ) {
