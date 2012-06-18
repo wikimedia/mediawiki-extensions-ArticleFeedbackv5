@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAANX///ws\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-18T20:46:30Z",
+      "side": 1,
+      "message": "You should check that $pageTitle isn\u0027t null before using it, newFromId() returns null if you give it a nonexistent page ID",
+      "revId": "c78bbd1bf70e40de1551de7bdd1c35d84c225ac5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAANX///wg\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-18T20:46:30Z",
+      "side": 1,
+      "message": "Don\u0027t use implicit string conversion of message objects, always call the method you need. In this case that would seem to be -\u003eescaped()",
+      "revId": "c78bbd1bf70e40de1551de7bdd1c35d84c225ac5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAANX///xg\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-18T20:46:30Z",
+      "side": 1,
+      "message": "Wait, is there an ArticleFeedback namespace?! Also, this is not how you should be getting the namespace number.",
+      "revId": "c78bbd1bf70e40de1551de7bdd1c35d84c225ac5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAANX///w8\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-18T20:46:30Z",
+      "side": 1,
+      "message": "There is no index on af_user_id directly, you\u0027d have to add one. Preferably you\u0027d add an index on (af_user_id, af_user_ip, af_created) and then issue queries like:\n\nWHERE af_user_id\u003d123 AND af_user_ip IS NULL ORDER BY af_created DESC\n\nor\n\nWHERE af_user_id\u003d0 AND af_user_ip\u003d\u00271.2.3.4\u0027 ORDER BY af_created DESC\n\ni.e. always set a WHERE clause for both the ID and the IP fields.",
+      "revId": "c78bbd1bf70e40de1551de7bdd1c35d84c225ac5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAANX///w0\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-18T20:46:30Z",
+      "side": 1,
+      "message": "?!? Why wouldn\u0027t you just use __METHOD__ here?",
+      "revId": "c78bbd1bf70e40de1551de7bdd1c35d84c225ac5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAANX///wU\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-18T20:46:30Z",
+      "side": 1,
+      "message": "Please also document what $1 and $2 are.",
+      "revId": "c78bbd1bf70e40de1551de7bdd1c35d84c225ac5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
