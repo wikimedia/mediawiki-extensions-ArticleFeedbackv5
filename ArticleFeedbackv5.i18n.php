@@ -321,8 +321,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'No',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Yes, I found what I was looking for.',
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'No, I did not find what I was looking for.',
-	'articlefeedbackv5-bucket1-question-comment-yes' => 'What was most useful to you? How could this page be improved?',
-	'articlefeedbackv5-bucket1-question-comment-no' => 'What\'s missing? Any suggestions for improvement?',
+	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'How could this article be improved?',
+	'articlefeedbackv5-bucket1-question-placeholder-no' => 'Any suggestion for improvement?',
 	'articlefeedbackv5-bucket1-form-submit' => 'Post your feedback',
 
 	/* Option 2 (getsatisfaction style) */
@@ -427,9 +427,9 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'No, I did not find what I was looking for.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 character remaining)|($1 characters remaining)}}',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Great. Would you like to add anything else?',
-	'articlefeedbackv5-bucket6-question-comment-yes' => 'What was most useful to you? How could this page be improved?',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'How could this article be improved?',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Sorry about that. How can we make it better for you?',
-	'articlefeedbackv5-bucket6-question-comment-no' => 'What\'s missing? Any suggestions for improvement?',
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Any suggestion for improvement?',
 	'articlefeedbackv5-bucket6-form-submit' => 'Post your feedback',
 	'articlefeedbackv5-bucket6-backlink-text' => 'Back to step 1',
 
@@ -895,8 +895,8 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 {{Identical|No}}',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'This is the text that appears when you roll over the yes button in option 1 ("Did you find what you were looking for?"); it clarifies what "yes" means in this context.',
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'This is the text that appears when you roll over the no button in option 1 ("Did you find what you were looking for?"); it clarifies what "no" means in this context.',
-	'articlefeedbackv5-bucket1-question-comment-yes' => 'This is the grey default text that appears in the comment box when the yes button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
-	'articlefeedbackv5-bucket1-question-comment-no' => 'This is the grey default text that appears in the comment box when the no button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
+	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'This is the grey default text that appears in the comment box when the yes button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
+	'articlefeedbackv5-bucket1-question-placeholder-no' => 'This is the grey default text that appears in the comment box when the no button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
 	'articlefeedbackv5-bucket1-form-submit' => 'This is the contents of the submit button for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
 	'articlefeedbackv5-bucket2-title' => 'This is the title of the feedback form for option 2 (a comment box that can be tagged as "Suggestion", "Question", "Praise", or "Problem")',
 	'articlefeedbackv5-bucket2-suggestion-label' => 'The label for the suggestion tag',
@@ -951,9 +951,9 @@ $1 is an integer, and the rating count.",
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'This is the text that appears when you roll over the no button in option 1 ("Did you find what you were looking for?"); it clarifies what "no" means in this context.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => 'This displays a countdown of the amount of characters feedback that will be allowed.',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'This is the instructional text to be shown above the textarea where a user can leave feedback, to be shown when the user selected yes',
-	'articlefeedbackv5-bucket6-question-comment-yes' => 'This is the grey default text that appears in the comment box when the yes button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'This is the grey default text that appears in the comment box when the yes button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'This is the instructional text to be shown above the textarea where a user can leave feedback, to be shown when the user selected no',
-	'articlefeedbackv5-bucket6-question-comment-no' => 'This is the grey default text that appears in the comment box when the no button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'This is the grey default text that appears in the comment box when the no button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
 	'articlefeedbackv5-bucket6-form-submit' => 'This is the contents of the submit button for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
 	'articlefeedbackv5-bucket6-backlink-text' => 'This is a small link that allows users to go back to the first step of the form and change their mind on whether they find the article useful',
 	'articlefeedbackv5-shared-on-feedback' => 'This is the top line of the small text that goes beside the submit button and lets the user know that their comment will be posted on the feedback page. $1 is the link to the abuse policy, the text of which is {{msg-mw|articlefeedbackv5-shared-on-feedback-linktext}}.',
@@ -9604,7 +9604,7 @@ $messages['ko'] = array(
 	'articleFeedbackv5-table-heading-average' => '평균',
 	'articleFeedbackv5-copy-above-highlow-tables' => '실험적인 기능입니다. 기능에 대한 의견을 [$1 토론란]에 남겨 주세요.',
 	'articlefeedbackv5-dashboard-bottom' => "'''알림''': 우리는 이 평가 상자에서 문서를 다양하게 나타내는 실험을 계속할 것입니다. 지금 평가 상자는 다음 문서를 나타냅니다:
-* 최고/최저 평가를 받은 문서: 지난 24시간 이내에 평가를 10번 이상 받은 문서로  제출된 평가 모두의 산술평균을 구해 평균으로 합니다. 
+* 최고/최저 평가를 받은 문서: 지난 24시간 이내에 평가를 10번 이상 받은 문서로  제출된 평가 모두의 산술평균을 구해 평균으로 합니다.
 * 최근 낮은 평가를 받은 문서: 지난 24시간 이내에 분류에 상관 없이 70%이상이 낮게(별 2개 이하) 평가한 문서로  평가를 10번 이상 받은 문서만 나타납니다.",
 	'articlefeedbackv5' => '문서 평가 현황',
 	'articlefeedbackv5-desc' => '문서 평가',
@@ -14845,7 +14845,7 @@ $3
 
 Если вы не отправляли подобного запроса, пожалуйста, проигнорируйте это сообщение, и мы больше не будем вас тревожить.
 
-С наилучшими пожеланиями и благодарностью — 
+С наилучшими пожеланиями и благодарностью —
 команда проекта {{SITENAME}}',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Запрошен надзор для страницы отзыва',
 );
