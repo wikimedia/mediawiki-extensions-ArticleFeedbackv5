@@ -933,7 +933,7 @@
 				var maxLength = 5000;
 				var displayLength = 200;
 
-				$countdown = $( '#articlefeedbackv5-feedback-countdown' );
+				var $countdown = $( '#articlefeedbackv5-feedback-countdown' );
 
 				// grab the current length of the form element (or set to 0 if the current text is bogus placeholder)
 				var length = maxLength - $element.val().length;
@@ -947,7 +947,7 @@
 					$element.val( $element.val().substr( 0, maxLength ) );
 				}
 
-				// display only display the countdown for the last X characters
+				// only display the countdown for the last X characters
 				$countdown.hide();
 				if ( length < displayLength ) {
 					$countdown.show();
