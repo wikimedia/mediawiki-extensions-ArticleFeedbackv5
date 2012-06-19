@@ -128,12 +128,6 @@ $wgArticleFeedbackv5DashboardCategory = 'Article_Feedback_5';
 // Default to $wgContentNamespaces (defaults to array( NS_MAIN ) ).
 $wgArticleFeedbackv5Namespaces = $wgContentNamespaces;
 
-// Articles not categorized as one of the values in $wgArticleFeedbackv5Categories can still have the
-// tool pseudo-randomly activated by applying the following odds to a lottery based on wgArticleId.
-// The value can be a floating point number (percentage) in range of 0 - 100. Tenths of a percent
-// are the smallest increments used.
-$wgArticleFeedbackv5LotteryOdds = 0;
-
 // This puts the JavaScript into debug mode. In debug mode, you can set your
 // own bucket by passing it in the url (e.g., ?bucket=1), and the showstopper
 // error mode will have a useful error message, if one exists, rather than the

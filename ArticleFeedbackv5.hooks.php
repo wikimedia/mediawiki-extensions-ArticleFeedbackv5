@@ -52,6 +52,10 @@ class ArticleFeedbackv5Hooks {
 		'ext.articleFeedbackv5.dashboard' => array(
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.js',
 			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.css',
+			'messages' => array(
+				'articlefeedbackv5-unsupported-message',
+				'articlefeedbackv5-page-disabled',
+			),
 			'dependencies' => array(
 				'mediawiki.util',
 				'mediawiki.user',
@@ -239,7 +243,6 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-form-unoversight',
 				'articlefeedbackv5-comment-more',
 				'articlefeedbackv5-comment-less',
-				'articlefeedbackv5-unsupported-message',
 				'articlefeedbackv5-error-loading-feedback',
 				'articlefeedbackv5-loading-tag',
 				'articlefeedbackv5-permalink-activity-more',
@@ -388,9 +391,8 @@ class ArticleFeedbackv5Hooks {
 			// normal page
 			case NS_MAIN:
 				if (
-					self::allowForPage( $title )
 					// view pages
-					&& ( $action == 'view' || $action == 'purge' )
+					( $action == 'view' || $action == 'purge' )
 					// if user is logged in, showing on action=purge is OK,
 					// but if user is logged out, action=purge shows a form instead of the article,
 					// so return false in that case.
@@ -403,22 +405,22 @@ class ArticleFeedbackv5Hooks {
 					// not viewing the printable version
 					&& $request->getVal( 'printable' ) != 'yes'
 				) {
-					// disable older AFT versions by making the odds 0 (for this request)
-					$out->addJsConfigVars( 'wgArticleFeedbackLotteryOdds', 0 );
-
-					// load module
-					$out->addModules( 'ext.articleFeedbackv5.startup' );
+					$res = self::allowForPage( $title );
+					if ( $res['allow'] ) {
+						// load module
+						$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
+						$out->addModules( 'ext.articleFeedbackv5.startup' );
+					}
 				}
-
 				break;
 
 			// talk page
 			case NS_TALK:
-				if ( self::allowForPage( $title->getSubjectPage() ) ) {
-					// disable older AFT versions by making the odds 0 (for this request)
-					$out->addJsConfigVars( 'wgArticleFeedbackLotteryOdds', 0 );
-
+				$res = self::allowForPage( $title->getSubjectPage() );
+				if ( $res['allow'] ) {
 					// load module
+					$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
+					$out->addJsConfigVars( 'aftv5PageId', $title->getSubjectPage()->getArticleID() );
 					$out->addModules( 'ext.articleFeedbackv5.talk' );
 				}
 				break;
@@ -434,15 +436,22 @@ class ArticleFeedbackv5Hooks {
 
 					// Central feedback page OR allowed page
 					$mainTitle = Title::newFromDBkey( $mainTitle );
-					if ( $mainTitle === null || self::allowForPage( $mainTitle ) ) {
-						// disable older AFT versions by making the odds 0 (for this request)
-						$out->addJsConfigVars( 'wgArticleFeedbackLotteryOdds', 0 );
-
+					if ( $mainTitle === null ) {
+						$res = array( 'allow' => true, 'whitelist' => true );
+					} else {
+						$res = self::allowForPage( $mainTitle );
+					}
+					if ( $res['allow'] ) {
 						// load module
+						$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
+						if ( $mainTitle !== null ) {
+							$out->addJsConfigVars( 'aftv5PageId', $mainTitle->getArticleID() );
+						} else {
+							$out->addJsConfigVars( 'aftv5PageId', 0 );
+						}
 						$out->addModules( 'ext.articleFeedbackv5.dashboard' );
 					}
 				}
-
 				break;
 
 			// other, unknown
@@ -460,16 +469,17 @@ class ArticleFeedbackv5Hooks {
 	 * - if the article is an existing page
 	 * - if the article has the valid categories
 	 *
-	 * @param Title $title
-	 * @return boolean
+	 * @param  Title $title the article to test
+	 * @return array the results of the tests: keys are allowed, blacklist, and
+	 *               whitelist
 	 */
 	public static function allowForPage( Title $title ) {
 		global $wgUser,
 			$wgArticleFeedbackv5Namespaces,
 			$wgArticleFeedbackv5Categories,
-			$wgArticleFeedbackv5BlacklistCategories,
-			$wgArticleFeedbackv5LotteryOdds;
+			$wgArticleFeedbackv5BlacklistCategories;
 
+		$result = array( 'allowed' => false, 'blacklist' => false, 'whitelist' => false );
 		if (
 			// not disabled via preferences
 			!$wgUser->getOption( 'articlefeedback-disable' )
@@ -478,8 +488,7 @@ class ArticleFeedbackv5Hooks {
 			// existing pages
 			&& $title->getArticleId() > 0
 		) {
-			// check if this article wins the lottery
-			$allow = $title->getArticleId() % 1000 < $wgArticleFeedbackv5LotteryOdds * 10;
+			$result['allow'] = true;
 
 			// loop all categories linked to this page
 			foreach ( $title->getParentCategories() as $category => $page ) {
@@ -489,20 +498,21 @@ class ArticleFeedbackv5Hooks {
 
 				// check exclusion - exclusion overrides everything else
 				if ( in_array( $category, $wgArticleFeedbackv5BlacklistCategories ) ) {
-					return false;
+					$result['blacklist'] = true;
+					$result['allow'] = false;
+					return $result;
 				}
 
 				if ( in_array( $category, $wgArticleFeedbackv5Categories ) ) {
 					// one match is enough for include, however we are iterating on the 'current'
 					// categories, and others might be blacklisted - so continue iterating
-					$allow = true;
+					$result['whitelist'] = true;
 				}
 			}
 
-			return $allow;
 		}
 
-		return false;
+		return $result;
 	}
 
 	/**
@@ -555,7 +565,6 @@ class ArticleFeedbackv5Hooks {
 		global $wgArticleFeedbackv5SMaxage,
 			$wgArticleFeedbackv5Categories,
 			$wgArticleFeedbackv5BlacklistCategories,
-			$wgArticleFeedbackv5LotteryOdds,
 			$wgArticleFeedbackv5Debug,
 			$wgArticleFeedbackv5Bucket2TagNames,
 			$wgArticleFeedbackv5Bucket5RatingCategories,
@@ -569,11 +578,11 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay,
 			$wgArticleFeedbackv5ThrottleThresholdPostsPerHour,
 			$wgArticleFeedbackv5TalkPageLink,
-			$wgArticleFeedbackv5DefaultSorts;
+			$wgArticleFeedbackv5DefaultSorts,
+			$wgArticleFeedbackLotteryOdds;
 		$vars['wgArticleFeedbackv5SMaxage'] = $wgArticleFeedbackv5SMaxage;
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
-		$vars['wgArticleFeedbackv5LotteryOdds'] = $wgArticleFeedbackv5LotteryOdds;
 		$vars['wgArticleFeedbackv5Debug'] = $wgArticleFeedbackv5Debug;
 		$vars['wgArticleFeedbackv5Bucket2TagNames'] = $wgArticleFeedbackv5Bucket2TagNames;
 		$vars['wgArticleFeedbackv5Bucket5RatingCategories'] = $wgArticleFeedbackv5Bucket5RatingCategories;
@@ -592,6 +601,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5DefaultSorts'] = $wgArticleFeedbackv5DefaultSorts;
 		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
 		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
+		$vars['wgArticleFeedbackLotteryOdds'] = $wgArticleFeedbackLotteryOdds;
 		return true;
 	}
 
