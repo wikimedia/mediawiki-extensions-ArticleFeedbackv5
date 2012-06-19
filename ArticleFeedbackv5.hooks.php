@@ -251,6 +251,11 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-featured-marker',
 				'articlefeedbackv5-resolved-marker',
 
+				'articlefeedbackv5-help-tooltip-linkurl',
+				'articlefeedbackv5-help-tooltip-linkurl-editors',
+				'articlefeedbackv5-help-tooltip-linkurl-monitors',
+				'articlefeedbackv5-help-tooltip-linkurl-oversighters',
+
 				'articlefeedbackv5-noteflyover-hide-caption',
 				'articlefeedbackv5-noteflyover-hide-label',
 				'articlefeedbackv5-noteflyover-hide-placeholder',

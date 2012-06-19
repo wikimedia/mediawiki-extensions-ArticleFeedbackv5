@@ -239,7 +239,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Why are you featuring this post?',
 	'articlefeedbackv5-noteflyover-feature-submit' => 'Feature this post',
 	'articlefeedbackv5-noteflyover-feature-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-feature-help-link' => '#',
+	'articlefeedbackv5-noteflyover-feature-help-link' => '#feature',
 
 	/* Unfeature this post panel */
 	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Unfeature this post',
@@ -247,7 +247,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Why are you unfeaturing this post?',
 	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Unfeature this post',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-unfeature-help-link' => '#',
+	'articlefeedbackv5-noteflyover-unfeature-help-link' => '#unfeature',
 
 	/* Mark as resolved panel */
 	'articlefeedbackv5-noteflyover-resolve-caption' => 'Mark as resolved',
@@ -255,7 +255,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Why are you marking this post resolved?',
 	'articlefeedbackv5-noteflyover-resolve-submit' => 'Mark as resolved',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-resolve-help-link' => '#',
+	'articlefeedbackv5-noteflyover-resolve-help-link' => '#resolve',
 
 	/* Unmark as resolved panel */
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Unmark as resolved',
@@ -263,7 +263,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Why are you unmarking this post as resolved?',
 	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Unmark as resolved',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-unresolve-help-link' => '#',
+	'articlefeedbackv5-noteflyover-unresolve-help-link' => '#unresolve',
 
 	/* Hide this post panel */
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
@@ -271,7 +271,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-hide-help-link' => '#',
+	'articlefeedbackv5-noteflyover-hide-help-link' => '#hide',
 
 	/* Show this post panel */
 	'articlefeedbackv5-noteflyover-show-caption' => 'Unhide this post',
@@ -279,7 +279,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-show-placeholder' => 'Why are you unhiding this post?',
 	'articlefeedbackv5-noteflyover-show-submit' => 'Unhide this post',
 	'articlefeedbackv5-noteflyover-show-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-show-help-link' => '#',
+	'articlefeedbackv5-noteflyover-show-help-link' => '#unhide',
 
 	/* Request oversight panel */
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Request oversight',
@@ -287,7 +287,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Why are you requesting oversight?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Request oversight',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-requestoversight-help-link' => '#',
+	'articlefeedbackv5-noteflyover-requestoversight-help-link' => '#oversight-request',
 
 	/* Un-request oversight panel */
 	'articlefeedbackv5-noteflyover-unrequestoversight-caption' => 'Cancel oversight request',
@@ -295,7 +295,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Why are you canceling the oversight request?',
 	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Cancel request',
 	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-unrequestoversight-help-link' => '#',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help-link' => '#unoversight-request',
 
 	/* Oversight this post panel */
 	'articlefeedbackv5-noteflyover-oversight-caption' => 'Oversight this post',
@@ -303,7 +303,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Why are you oversighting this post?',
 	'articlefeedbackv5-noteflyover-oversight-submit' => 'Oversight this post',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-oversight-help-link' => '#',
+	'articlefeedbackv5-noteflyover-oversight-help-link' => '#oversight',
 
 	/* Un-oversight this post panel */
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Un-oversight this post',
@@ -311,7 +311,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Why are you unoversighting this post?',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Un-oversight this post',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-unoversight-help-link' => '#',
+	'articlefeedbackv5-noteflyover-unoversight-help-link' => '#unoversight',
 
 	/* Decline oversight panel */
 	'articlefeedbackv5-noteflyover-declineoversight-caption' => 'Decline oversight',
@@ -319,7 +319,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'Why are you declining oversight?',
 	'articlefeedbackv5-noteflyover-declineoversight-submit' => 'Decline oversight',
 	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-declineoversight-help-link' => '#',
+	'articlefeedbackv5-noteflyover-declineoversight-help-link' => '#oversight-decline',
 
 	/* Feedback forms */
 	/* Option 1 ("Did you find what you were looking for?") */
@@ -855,53 +855,68 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-noteflyover-feature-label' => 'Feature post note flyover panel - text area label',
 	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Feature post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-feature-submit' => 'Feature post note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-feature-help' => 'Feature post note flyover panel - learn more text',
+	'articlefeedbackv5-noteflyover-feature-help-link' => 'Feature post note flyover panel - learn more link, hashtag part',
 	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Unfeature post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Unfeature post note flyover panel - text area label',
 	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Unfeature post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Unfeature post note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-unfeature-help' => 'Unfeature post note flyover panel - learn more text',
+	'articlefeedbackv5-noteflyover-unfeature-help-link' => 'Unfeature post note flyover panel - learn more link, hashtag part',
 	'articlefeedbackv5-noteflyover-resolve-caption' => 'Mark resolved post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Mark resolved post note flyover panel - text area label',
 	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Mark resolved post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-resolve-submit' => 'Mark resolved post note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-resolve-help' => 'Mark resolved post note flyover panel - learn more text',
+	'articlefeedbackv5-noteflyover-resolve-help-link' => 'Mark resolved post note flyover panel - learn more link, hashtag part',
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Un-mark resolved post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Un-mark resolved post note flyover panel - text area label',
 	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Un-mark resolved post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Un-mark resolved post note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-unresolve-help' => 'Un-mark resolved post note flyover panel - learn more text',
+	'articlefeedbackv5-noteflyover-unresolve-help-link' => 'Un-mark resolved post note flyover panel - learn more link, hashtag part',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Hide post note flyover panel - text area label',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Hide post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide post note flyover panel - submit button text',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Hide post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-hide-help-link' => 'Hide post note flyover panel - learn more link, hashtag part',
 	'articlefeedbackv5-noteflyover-show-caption' => 'Show post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-show-label' => 'Show post note flyover panel - text area label',
 	'articlefeedbackv5-noteflyover-show-placeholder' => 'Show post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-show-submit' => 'Show post note flyover panel - submit button text',
 	'articlefeedbackv5-noteflyover-show-help' => 'Show post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-show-help-link' => 'Show post note flyover panel - learn more link, hashtag part',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Request oversight note flyover panel - panel caption (request oversight asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Request oversight note flyover panel - text area label (request oversight asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Request oversight note flyover panel - text area placeholder text (request oversight asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Request oversight note flyover panel - submit button text (request oversight asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Request oversight note flyover panel - help link text (request oversight asks that an oversighter review the feedback item)',
+	'articlefeedbackv5-noteflyover-requestoversight-help-link' => 'Request oversight note flyover panel - learn more link, hashtag part',
 	'articlefeedbackv5-noteflyover-unrequestoversight-caption' => 'Un-request oversight note flyover panel - panel caption (remove the request for an oversighter to review the feedback item)',
 	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'Un-request oversight note flyover panel - text area label (remove the request for an oversighter to review the feedback item)',
 	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Un-request oversight note flyover panel - text area placeholder text (remove the request for an oversighter to review the feedback item)',
 	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Un-request oversight note flyover panel - submit button text (remove the request for an oversighter to review the feedback item)',
 	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Un-request oversight note flyover panel - help link text (remove the request for an oversighter to review the feedback item)',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help-link' => 'Un-request oversight note flyover panel - learn more link, hashtag part',
 	'articlefeedbackv5-noteflyover-oversight-caption' => 'Oversight note flyover panel - panel caption (oversight means an oversighter deleted the feedback item)',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Oversight note flyover panel - text area label (oversight means an oversighter deleted the feedback item)',
 	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Oversight note flyover panel - text area placeholder text (oversight means an oversighter deleted the feedback item)',
 	'articlefeedbackv5-noteflyover-oversight-submit' => 'Oversight note flyover panel - submit button text (oversight means an oversighter deleted the feedback item)',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Oversight note flyover panel - help link text (oversight means an oversighter deleted the feedback item)',
+	'articlefeedbackv5-noteflyover-oversight-help-link' => 'Oversight note flyover panel - learn more link, hashtag part',
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Un-oversight note flyover panel - panel caption (unoversight means an oversighter un-deleted the feedback)',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Un-oversight note flyover panel - text area label (unoversight means an oversighter un-deleted the feedback)',
 	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Un-oversight note flyover panel - text area placeholder text (unoversight means an oversighter un-deleted the feedback)',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Un-oversight note flyover panel - submit button text (unoversight means an oversighter un-deleted the feedback)',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Un-oversight note flyover panel - help link text (unoversight means an oversighter un-deleted the feedback)',
+	'articlefeedbackv5-noteflyover-unoversight-help-link' => 'Un-oversight note flyover panel - learn more link, hashtag part',
 	'articlefeedbackv5-noteflyover-declineoversight-caption' => 'Decline oversight note flyover panel - panel caption (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
 	'articlefeedbackv5-noteflyover-declineoversight-label' => 'Decline oversight note flyover panel - text area label (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
 	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'Decline oversight note flyover panel - text area placeholder text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
 	'articlefeedbackv5-noteflyover-declineoversight-submit' => 'Decline oversight note flyover panel - submit button text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
 	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Decline oversight note flyover panel - help link text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
+	'articlefeedbackv5-noteflyover-declineoversight-help-link' => 'Decline oversight note flyover panel - learn more link, hashtag part',
 	'articlefeedbackv5-bucket1-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
 	'articlefeedbackv5-bucket1-question-toggle' => 'This is the question that appears before the yes/no buttons in option 1',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'The text for the yes button in option 1.
