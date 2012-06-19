@@ -38,7 +38,7 @@ jQuery( function( $ ) {
 			var pageId = mw.config.get( 'aftv5PageId', -1 );
 			if ( pageId < 1 ) {
 				// Oops, we don't have that information after all
-				enable = true;
+				enable = false;
 			} else {
 				// Lottery inclusion (inverse of AFTv4, if we have a related article id)
 				var v4odds = mw.config.get( 'wgArticleFeedbackLotteryOdds', 0 );
