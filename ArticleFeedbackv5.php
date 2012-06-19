@@ -151,12 +151,12 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// placed in a bucket.
 	'buckets' => array(
 		'zero'  => 0,
-		'one'   => 50,
+		'one'   => 0,
 		'two'   => 0,
 		'three' => 0,
 		'four'  => 0,
 		'five'  => 0,
-		'six'   => 50,
+		'six'   => 100,
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
@@ -271,13 +271,13 @@ $wgArticleFeedbackv5HideAbuseThreshold = 5;
  * @var int
  */
 $wgArticleFeedbackv5SelectedCTA = array(
-	0 => 4,
-	1 => 4,
-	2 => 4,
-	3 => 4,
-	4 => 4,
-	5 => 4,
-	6 => 4,
+	0 => 5,
+	1 => 5,
+	2 => 5,
+	3 => 5,
+	4 => 5,
+	5 => 5,
+	6 => 5,
 );
 
 /**
