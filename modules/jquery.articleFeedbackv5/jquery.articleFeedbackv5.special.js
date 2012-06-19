@@ -232,6 +232,16 @@
 			trigger: 'manual'		// how tooltip is triggered - hover | focus | manual
 		};
 
+		// Link to help is dependent on the group the user belongs to
+		var helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' );
+		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['oversighter'] ) {
+			helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl-oversighters' );
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['monitor'] ) {
+			helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl-monitors' );
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'] ) {
+			helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' );
+		}
+
 		// i18n, create action-specific tipsy panels from template
 		var container = $( '<div></div>' );
 		container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
@@ -243,7 +253,7 @@
 				// will add an 'action' attribute to the link
 				container.find( '#articleFeedbackv5-noteflyover-submit' ).attr( 'action', action );
 				container.find( '#articleFeedbackv5-noteflyover-help' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help' ) );
-				container.find( '#articleFeedbackv5-noteflyover-help' ).attr( 'href', mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help-link' ) );
+				container.find( '#articleFeedbackv5-noteflyover-help' ).attr( 'href', helpLink + mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help-link' ) );
 				$.articleFeedbackv5special.actions[action].tipsyHtml = container.html();
 			}
 		}
