@@ -1343,7 +1343,7 @@
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button-signup' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl(
-					signup_url + '?c=' + $.articleFeedbackv5.feedbackId,
+					signup_url + '&c=' + $.articleFeedbackv5.feedbackId,
 					signup_track_id
 				) );
 
@@ -1356,7 +1356,7 @@
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button-login' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl(
-					login_url + '?c=' + $.articleFeedbackv5.feedbackId,
+					login_url + '&c=' + $.articleFeedbackv5.feedbackId,
 					login_track_id
 				) );
 
