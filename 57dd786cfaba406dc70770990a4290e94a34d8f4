@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAANX///mg\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-19T07:48:19Z",
+      "side": 1,
+      "message": "You almost always want to use parseInt( hash, 10 ), unless you really want \u0027011\u0027 to be interpreted as 9.",
+      "revId": "57dd786cfaba406dc70770990a4290e94a34d8f4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
