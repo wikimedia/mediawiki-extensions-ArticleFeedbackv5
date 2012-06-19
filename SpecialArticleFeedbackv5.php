@@ -202,21 +202,6 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 			}
 			$this->pageId = $title->getArticleID();
 			$this->title  = $title;
-			$t = $dbr->select(
-				'categorylinks',
-				'cl_from',
-				array(
-					'cl_from' => $this->pageId,
-					'cl_to'   => $wgArticleFeedbackv5DashboardCategory
-				),
-				__METHOD__,
-				array( 'LIMIT' => 1 )
-			);
-			// Page exists, but feedback is disabled.
-			if ( $dbr->numRows( $t ) == 0 ) {
-				$out->addWikiMsg( 'articlefeedbackv5-page-disabled' );
-				return;
-			}
 		}
 
 		// Select filter, sort, and sort direction
