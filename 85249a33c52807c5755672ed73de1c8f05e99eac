@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAANX///mM\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2766,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-19T07:51:34Z",
+      "side": 1,
+      "message": "Use \"var valid\", otherwise valid is a global variable",
+      "revId": "85249a33c52807c5755672ed73de1c8f05e99eac",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
