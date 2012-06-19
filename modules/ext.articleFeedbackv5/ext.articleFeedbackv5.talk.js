@@ -29,7 +29,7 @@ jQuery( function( $ ) {
 		var whitelist = mw.config.get( 'aftv5Whitelist', -1 );
 		if ( whitelist == -1 ) {
 			// The html is cached, so always on (we know it's whitelisted)
-			enable = true;
+			enable = false;
 		} else if ( whitelist ) {
 			// It's whitelisted, so always on
 			enable = true;
@@ -38,7 +38,7 @@ jQuery( function( $ ) {
 			var pageId = mw.config.get( 'aftv5PageId', -1 );
 			if ( pageId < 1 ) {
 				// Oops, we don't have that information after all
-				enable = true;
+				enable = false;
 			} else {
 				// Lottery inclusion (inverse of AFTv4, if we have a related article id)
 				var v4odds = mw.config.get( 'wgArticleFeedbackLotteryOdds', 0 );
