@@ -238,7 +238,12 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-permalink-activity-more',
 				'articlefeedbackv5-permalink-activity-fewer',
 
+				'articlefeedbackv5-new-marker',
+				'articlefeedbackv5-deleted-marker',
 				'articlefeedbackv5-hidden-marker',
+				'articlefeedbackv5-featured-marker',
+				'articlefeedbackv5-resolved-marker',
+
 				'articlefeedbackv5-noteflyover-hide-caption',
 				'articlefeedbackv5-noteflyover-hide-label',
 				'articlefeedbackv5-noteflyover-hide-placeholder',
@@ -267,7 +272,6 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-unrequestoversight-help',
 				'articlefeedbackv5-noteflyover-unrequestoversight-help-link',
 
-				'articlefeedbackv5-deleted-marker',
 				'articlefeedbackv5-noteflyover-oversight-caption',
 				'articlefeedbackv5-noteflyover-oversight-label',
 				'articlefeedbackv5-noteflyover-oversight-placeholder',
@@ -294,7 +298,6 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-mask-text-oversight',
 				'articlefeedbackv5-mask-postnumber',
 
-				'articlefeedbackv5-featured-marker',
 				'articlefeedbackv5-form-feature',
 				'articlefeedbackv5-form-unfeature',
 				'articlefeedbackv5-noteflyover-feature-caption',
@@ -310,7 +313,6 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-unfeature-help',
 				'articlefeedbackv5-noteflyover-unfeature-help-link',
 
-				'articlefeedbackv5-resolved-marker',
 				'articlefeedbackv5-form-resolve',
 				'articlefeedbackv5-form-unresolve',
 				'articlefeedbackv5-noteflyover-resolve-caption',

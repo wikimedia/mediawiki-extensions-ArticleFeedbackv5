@@ -84,12 +84,12 @@ class ArticleFeedbackv5Fetch {
 	 *
 	 * @var array
 	 */
-	public static $knownFilters = array( 'id', 'visible', 'visible-relevant',
-		'visible-comment', 'visible-helpful', 'visible-unhelpful',
-		'visible-abusive', 'visible-featured', 'visible-unfeatured',
-		'visible-resolved', 'visible-unresolved', 'notdeleted-hidden',
-		'all-hidden', 'notdeleted', 'notdeleted-unhidden', 'all-unhidden',
-		'notdeleted-requested', 'all', 'all-requested',
+	public static $knownFilters = array( 'id', 'highlight', 'visible',
+		'visible-relevant', 'visible-comment', 'visible-helpful',
+		'visible-unhelpful', 'visible-abusive', 'visible-featured',
+		'visible-unfeatured', 'visible-resolved', 'visible-unresolved',
+		'notdeleted-hidden', 'all-hidden', 'notdeleted', 'notdeleted-unhidden',
+		'all-unhidden', 'notdeleted-requested', 'all', 'all-requested',
 		'notdeleted-unrequested', 'all-unrequested', 'notdeleted-declined',
 		'all-declined', 'all-oversighted', 'all-unoversighted' );
 
@@ -124,7 +124,7 @@ class ArticleFeedbackv5Fetch {
 		if ( $filter ) {
 			$this->setFilter( $filter );
 		}
-		if ( $filter == 'id' && $filterValue ) {
+		if ( ( $filter == 'id' || $filter == 'highlight' ) && $filterValue ) {
 			$this->setFeedbackId( $filterValue );
 		}
 		if ( $pageId ) {
@@ -368,6 +368,11 @@ class ArticleFeedbackv5Fetch {
 		switch ( $this->filter ) {
 			// special case - doesn't get any hidden/deleted filtering and is used for permalinks
 			case 'id':
+				// overwrite any and all where conditions
+				$where = array('af_id' => $this->feedbackId);
+				break;
+			// special case - just get the highlighted post
+			case 'highlight':
 				// overwrite any and all where conditions
 				$where = array('af_id' => $this->feedbackId);
 				break;
