@@ -568,18 +568,6 @@
 			},
 
 			// }}}
-			// {{{ getTitle
-
-			/**
-			 * Gets the title
-			 *
-			 * @return string the title
-			 */
-			getTitle: function () {
-				return mw.msg( $.articleFeedbackv5.editable ? 'articlefeedbackv5-bucket4-title' : 'articlefeedbackv5-bucket4-noedit-title' );
-			},
-
-			// }}}
 			// {{{ buildForm
 
 			/**
@@ -1270,6 +1258,148 @@
 						}
 					} );
 
+			},
+
+			// }}}
+			// {{{ afterBuild
+
+			/**
+			 * Perform adjustments after build
+			 */
+			afterBuild: function() {
+				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
+			}
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ CTA 4: Sign up or login
+
+		'4': {
+
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The template for the whole block
+				 */
+				block: '\
+					<div class="clear"></div>\
+					<div class="articleFeedbackv5-confirmation-panel">\
+						<div class="articleFeedbackv5-panel-leftContent">\
+							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta4-confirmation-title" /></h3>\
+							<p class="articleFeedbackv5-confirmation-call"><html:msg key="cta4-confirmation-call-line1" /><br /><html:msg key="cta4-confirmation-call-line2" /></p>\
+						</div>\
+						<div class="articleFeedbackv5-panel-buttons">\
+							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-signup"><span class="ui-button-text"><html:msg key="cta4-button-text-signup" /></span></a>\
+							<span><html:msg key="cta4-button-text-or" /></span>\
+							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-login"><span class="ui-button-text"><html:msg key="cta4-button-text-login" /></span></a>\
+							<a href="#" class="articleFeedbackv5-cta-button-later"><html:msg key="cta4-button-text-later" /></a>\
+							<div class="clear"></div>\
+						</div>\
+					</div>\
+					'
+			},
+
+			// }}}
+			// {{{ verify
+
+			/**
+			 * Verifies that this CTA can be displayed
+			 *
+			 * @return bool whether the CTA can be displayed
+			 */
+			verify: function () {
+				return $.articleFeedbackv5.anonymous;
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the CTA
+			 *
+			 * @return Element the form
+			 */
+			build: function () {
+
+				// Start up the block to return
+				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
+
+				// Fill in the signup & login link
+				var signup_url = mw.config.get( 'wgScript' ) + '?' + $.param( {
+					'title': 'Special:UserLogin',
+					'returnto': mw.config.get( 'wgPageName' ),
+					'type': 'signup'
+				} );
+				var signup_track_id = $.articleFeedbackv5.experiment() + '-' +
+					$.articleFeedbackv5.ctaName() + '-button_signup_click-' +
+					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
+				$block.find( '.articleFeedbackv5-cta-button-signup' )
+					.attr( 'href', $.articleFeedbackv5.trackingUrl(
+					signup_url + '?c=' + $.articleFeedbackv5.feedbackId,
+					signup_track_id
+				) );
+
+				var login_url = mw.config.get( 'wgScript' ) + '?' + $.param( {
+					'title': 'Special:UserLogin',
+					'returnto': mw.config.get( 'wgPageName' )
+				} );
+				var login_track_id = $.articleFeedbackv5.experiment() + '-' +
+					$.articleFeedbackv5.ctaName() + '-button_login_click-' +
+					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
+				$block.find( '.articleFeedbackv5-cta-button-login' )
+					.attr( 'href', $.articleFeedbackv5.trackingUrl(
+					login_url + '?c=' + $.articleFeedbackv5.feedbackId,
+					login_track_id
+				) );
+
+				return $block;
+			},
+
+			// }}}
+			// {{{ getSurveyUrl
+
+			/**
+			 * Gets the appropriate survey url, or returns false if none was
+			 * found
+			 *
+			 * @return mixed the url, if one is availabe, or false if not
+			 */
+			getSurveyUrl: function () {
+				var base = mw.config.get( 'wgArticleFeedbackv5SurveyUrls' );
+				if ( typeof base != 'object' || !( $.articleFeedbackv5.bucketId in base ) ) {
+					return false;
+				}
+				return base[$.articleFeedbackv5.bucketId];
+			},
+
+			// }}}
+			// {{{ bindEvents
+
+			/**
+			 * Binds any events
+			 *
+			 * @param $block element the form block
+			 */
+			bindEvents: function ( $block ) {
+
+				$block.find( '.articleFeedbackv5-cta-button-later' )
+					.click( function ( e ) {
+						e.preventDefault();
+
+						if ( $.articleFeedbackv5.inDialog ) {
+							$.articleFeedbackv5.closeAsModal();
+						} else {
+							$.articleFeedbackv5.clear();
+						}
+					} );
 			},
 
 			// }}}
@@ -2643,33 +2773,45 @@
 	 * @return int       the selected id
 	 */
 	$.articleFeedbackv5.selectCTA = function ( requested ) {
+		// the check to verify a CTA is valid and can be shown
+		valid = function ( requested ) {
+			if (
+				// check if CTA exists
+				requested in $.articleFeedbackv5.ctas &&
+				// check if there's validation for this CTA
+				( !( 'verify' in $.articleFeedbackv5.ctas[requested] ) ||
+				// check if we pass validation
+				$.articleFeedbackv5.ctas[requested].verify() )
+			) {
+				return true;
+			}
+
+			return false;
+		}
 
 		// default CTA can be overridden using a GET-parameter
 		var parameter = mw.util.getParamValue( 'aftv5_cta' );
+		if ( parameter && valid( parameter ) ) {
+			$.articleFeedbackv5.ctaId = parameter;
+			return $.articleFeedbackv5.ctaId;
+		}
 
-		// since there's some validation to be done selecting the cta, we'll go recursive, only if
-		// the one coming in differs from the GET-parameter
-		if ( parameter && parameter != requested ) {
-			cta = $.articleFeedbackv5.selectCTA( parameter );
-
-			// verify that the returned CTA is actually the one we were validating, (if not, let's
-			// fallback to validating the one initially requested)
-			if ( cta == parameter ) {
-				return cta;
+		// if the selected CTA is invalid, let's loop the rest for a fallback
+		if ( !valid( requested ) ) {
+			for ( var i = 1; i < 5; i++ ) {
+				if ( valid( i ) ) {
+					$.articleFeedbackv5.ctaId = i;
+					return $.articleFeedbackv5.ctaId;
+				}
 			}
+
+			// no valid CTA found - return 0
+			$.articleFeedbackv5.ctaId = '0';
+			return $.articleFeedbackv5.ctaId;
 		}
 
-		if ( !( requested in $.articleFeedbackv5.ctas ) ) {
-			requested = '0';
-		}
-		var temp = $.articleFeedbackv5.ctas[requested];
-		if ( 'verify' in temp ) {
-			if ( !temp.verify() ) {
-				requested = requested == '1' ? '2' : '0';
-			}
-		}
 		$.articleFeedbackv5.ctaId = requested;
-		return requested;
+		return $.articleFeedbackv5.ctaId;
 	};
 
 	// }}}
