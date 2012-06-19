@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAANX///Vc\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-19T17:31:59Z",
+      "side": 1,
+      "message": "Should be loaded globally (through the ResourceLoaderGetConfigVars hook), not on a per-page basis like this.",
+      "revId": "474a9b5686cbb52e92dfd12fe993078323f7f627",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAANX///VI\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-19T17:31:59Z",
+      "side": 1,
+      "message": "Use var $aft",
+      "revId": "474a9b5686cbb52e92dfd12fe993078323f7f627",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
