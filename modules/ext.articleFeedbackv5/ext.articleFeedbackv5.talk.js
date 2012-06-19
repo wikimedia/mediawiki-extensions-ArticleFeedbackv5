@@ -24,6 +24,32 @@ jQuery( function( $ ) {
 	// Check if the talk page link can be shown
 	if ( mw.config.get( 'wgArticleFeedbackv5TalkPageLink' ) ) {
 
+		// Is this page enabled?
+		var enable = false;
+		var whitelist = mw.config.get( 'aftv5Whitelist', -1 );
+		if ( whitelist == -1 ) {
+			// The html is cached, so always on (we know it's whitelisted)
+			enable = true;
+		} else if ( whitelist ) {
+			// It's whitelisted, so always on
+			enable = true;
+		} else {
+			// It's a lottery article, so test that
+			var pageId = mw.config.get( 'aftv5PageId', -1 );
+			if ( pageId < 1 ) {
+				// Oops, we don't have that information after all
+				enable = true;
+			} else {
+				// Lottery inclusion (inverse of AFTv4, if we have a related article id)
+				var v4odds = mw.config.get( 'wgArticleFeedbackLotteryOdds', 0 );
+				enable = pageId == 0 || !( ( Number( pageId ) % 1000 )
+					< Number( v4odds ) * 10 );
+			}
+		}
+		if ( !enable ) {
+			return;
+		}
+
 		// Initialize clicktracking
 		// NB: Using the talk page's namespace, title, and rev id, not
 		// the article's as in the front end tracking
