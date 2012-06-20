@@ -478,34 +478,50 @@ class ArticleFeedbackv5Render {
 	 * @return string   the rendered feedback head
 	 */
 	private function feedbackHead( $message, $record, $extra = '' ) {
+		$userMessage = '';
+		$anonMessage = '';
 
 		// User info
-		$name = $record->user_name;
 		if ( $record->af_user_ip ) {
-			// Anonymous user, go to contributions page.
-			$title =  SpecialPage::getTitleFor( 'Contributions', $record->user_name );
+			// Anonymous user
+			$userName = wfMessage( 'articlefeedbackv5-form-anon-username' )->escaped();
+
+			// Link to contributions page
+			$title = SpecialPage::getTitleFor( 'Contributions', $record->user_name );
+			$userLink = Linker::link( $title, $record->user_name );
+			$anonMessage = wfMessage( 'articlefeedbackv5-form-anon-message', $userLink )->text();
 		} else {
 			// Registered user, go to user page.
 			$title = Title::makeTitleSafe( NS_USER, $record->user_name );
-		}
 
-		// If user page doesn't exist, go someplace else.
-		// Use the contributions page for now, but it's really up to Fabrice.
-		if ( !$title->exists() ) {
-			$title = SpecialPage::getTitleFor( 'Contributions', $record->user_name );
+			// If user page doesn't exist, go someplace else.
+			// Use the contributions page for now, but it's really up to Fabrice.
+			if ( !$title->exists() ) {
+				$title = SpecialPage::getTitleFor( 'Contributions', $record->user_name );
+			}
+
+			$userName = Linker::link( $title, $record->user_name );
 		}
 
 		if ( $this->isCentral ) {
 			$article = Title::newFromRow($record);
-			$parsedMsg = wfMessage( $message, $name )->rawParams(
-					Linker::link( $title, $name )
+			$userMessage = wfMessage( $message, $record->user_name )->rawParams(
+					$userName
 				)->rawParams(
 					Linker::link( $article )
 				)->escaped();
 		} else {
-			$parsedMsg = wfMessage( $message, $name )->rawParams(
-					Linker::link( $title, $name )
+			$userMessage = wfMessage( $message, $record->user_name )->rawParams(
+					$userName
 				)->escaped();
+		}
+
+		// build messages
+		$userMessage = Html::rawElement( 'h3', array(), $userMessage );
+		if ( $anonMessage ) {
+			$anonMessage = Html::rawElement( 'p', array(
+				'class' => 'articleFeedbackv5-comment-anon-message'
+			), $anonMessage );
 		}
 
 		return
@@ -514,11 +530,13 @@ class ArticleFeedbackv5Render {
 				'class' => 'articleFeedbackv5-comment-head'
 			) )
 				// <h3>{type-appropriate message}</h3>
-				. Html::rawElement( 'h3', array(), $parsedMsg )
+				. $userMessage
 				// {permalink/timestamp}
 				. $this->renderPermalinkTimestamp( $record )
 				// The tag block (featured/resolved markers)
 				. $this->renderTagBlock( $record )
+				// The message for anonymous feedback, displaying the user's ip
+				. $anonMessage
 			// </div>
 			. Html::closeElement( 'div' );
 	}
