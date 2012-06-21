@@ -363,20 +363,20 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function loadExtensionSchemaUpdates( $updater = null ) {
-		if ( $updater === null ) {
-			global $wgExtNewTables;
-			$wgExtNewTables[] = array(
-				'article_feedback',
-				dirname( __FILE__ ) . '/sql/ArticleFeedbackv5.sql'
-			);
-		} else {
-			$updater->addExtensionUpdate( array(
-				'addTable',
-				'article_feedback',
-				dirname( __FILE__ ) . '/sql/ArticleFeedbackv5.sql',
-				true
-			) );
-		}
+		$updater->addExtensionUpdate( array(
+			'addTable',
+			'article_feedback',
+			dirname( __FILE__ ) . '/sql/ArticleFeedbackv5.sql',
+			true
+		) );
+
+		$updater->addExtensionUpdate( array(
+			'addTable',
+			'aft_article_answer_text',
+			dirname( __FILE__ ) . '/sql/offload_large_feedback.sql',
+			true
+		) );
+
 		return true;
 	}
 
