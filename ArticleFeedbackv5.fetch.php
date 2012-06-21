@@ -278,11 +278,13 @@ class ArticleFeedbackv5Fetch {
 			array( 'aft_article_feedback',
 				'rating' => 'aft_article_answer',
 				'answer' => 'aft_article_answer',
+				'answer_text' => 'aft_article_answer_text',
 				'aft_article_field',
 				'aft_article_field_option', 'user', 'page'
 			),
 			array( 'af_id', 'af_page_id', 'af_form_id', 'af_experiment', 'afi_name', 'afo_name',
-				'answer.aa_response_text', 'answer.aa_response_boolean',
+				'answer.aa_response_text', 'answer_text.aat_response_text',
+				'answer.aa_response_boolean',
 				'answer.aa_response_rating', 'answer.aa_response_option_id',
 				'afi_data_type', 'af_created', 'user_name',
 				'af_user_id', 'af_user_ip', 'af_is_hidden', 'af_abuse_count',
@@ -307,6 +309,10 @@ class ArticleFeedbackv5Fetch {
 				'answer' => array(
 					'LEFT JOIN',
 					'answer.aa_feedback_id = af_id'
+				),
+				'answer_text' => array(
+					'LEFT JOIN',
+					'answer_text.aat_id = answer.aat_id'
 				),
 				'aft_article_field' => array(
 					'LEFT JOIN',

@@ -117,12 +117,23 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_answer (
   -- Only one of these four columns will be non-null, based on the afi_data_type
   -- of the aa_field_id related to this record.
   aa_response_rating    integer NULL,
-  aa_response_text      text NULL,
+  aa_response_text      varchar(255) NULL,
+  -- FKey to aft_article_answer_text.aat_id)
+  aat_id                integer unsigned NULL,
   aa_response_boolean   boolean NULL,
   -- FKey to article_field_options.afo_option_id)
   aa_response_option_id integer unsigned NULL,
   -- Only allow one answer per field per feedback ID.
   PRIMARY KEY (aa_feedback_id, aa_field_id)
+) /*$wgDBTableOptions*/;
+
+-- Stores only long feedback text (> 255 bytes) for a given feedback record.
+-- aat_response_text contains the content that under normal conditions (short
+-- comment of under 255 bytes) is inserted in aft_article_answer.aa_response_text
+CREATE TABLE IF NOT EXISTS /*_*/aft_article_answer_text (
+  aat_id            integer unsigned NOT NULL AUTO_INCREMENT,
+  aat_response_text text NOT NULL,
+  PRIMARY KEY (aat_id)
 ) /*$wgDBTableOptions*/;
 
 -- These next four are rollup tables used by the articlefeedback special page.
