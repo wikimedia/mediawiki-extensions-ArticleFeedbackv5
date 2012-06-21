@@ -697,7 +697,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @return int   the cta id
 	 */
 	private function saveUserRatings( $dbw, $data, $bucket, $params ) {
-		global $wgUser, $wgArticleFeedbackv5LinkBuckets;
+		global $wgUser, $wgArticleFeedbackv5LinkBuckets, $wgLanguageCode;
+		$lang = Language::factory( $wgLanguageCode );
 
 		$ctaId      = $this->getCTAId( $data, $bucket );
 		$revId      = $params['revid'];
@@ -762,6 +763,20 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		foreach ( $data as $key => $item ) {
 			$data[$key]['aa_feedback_id'] = $feedbackId;
+			$data[$key]['aat_id'] = null;
+
+			// move large texts to another table
+			if ( strlen( $data[$key]['aa_response_text'] ) > 255 ) {
+				// save full text in other table
+				$dbw->insert( 'aft_article_answer_text', array(
+					'aat_response_text' => $data[$key]['aa_response_text']
+				) );
+				$aatId = $dbw->insertId();
+
+				// save first 255 chars of long text in main table
+				$data[$key]['aa_response_text'] = $lang->truncate( $data[$key]['aa_response_text'], 255 );
+				$data[$key]['aat_id'] = $aatId;
+			}
 		}
 
 		$dbw->insert( 'aft_article_answer', $data, __METHOD__ );
