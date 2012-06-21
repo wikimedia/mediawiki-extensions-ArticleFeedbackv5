@@ -1526,6 +1526,7 @@
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-abuse-link-' + id );
 				$link.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) );
+				$link.attr( 'title', mw.msg( 'articlefeedbackv5-abuse-saved-tooltip' ) );
 				$.articleFeedbackv5special.refreshAbuseReport( id, data['articlefeedbackv5-flag-feedback'] );
 				if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
 					$.articleFeedbackv5special.markHidden(
@@ -1558,6 +1559,7 @@
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-unabuse-link-' + id );
 				$link.text( mw.msg( 'articlefeedbackv5-form-abuse' ) );
+				$link.attr( 'title', '' );
 				$.articleFeedbackv5special.refreshAbuseReport( id, data['articlefeedbackv5-flag-feedback'] );
 				if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
 					$.articleFeedbackv5special.markHidden(
