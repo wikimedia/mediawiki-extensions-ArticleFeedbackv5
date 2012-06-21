@@ -404,7 +404,7 @@ class ArticleFeedbackv5Render {
 		}
 		return $this->feedbackHead( $msg, $record[0] )
 			. $this->renderComment(
-				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
+				isset( $record['comment'] ) ? $record['comment'] : null,
 				$record[0]->af_id
 			);
 	}
@@ -424,7 +424,7 @@ class ArticleFeedbackv5Render {
 		// * articlefeedbackv5-form2-header-suggestion
 		return $this->feedbackHead( "articlefeedbackv5-form2-header-$type", $record[0], $type )
 			. $this->renderComment(
-				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
+				isset( $record['comment'] ) ? $record['comment'] : null,
 				$record[0]->af_id
 			);
 	}
@@ -438,7 +438,7 @@ class ArticleFeedbackv5Render {
 	private function renderBucket3( $record ) {
 		return $this->feedbackHead( 'articlefeedbackv5-form3-header', $record[0], $record['rating']->aa_response_rating )
 			. $this->renderComment(
-				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
+				isset( $record['comment'] ) ? $record['comment'] : null,
 				$record[0]->af_id
 			);
 	}
@@ -462,7 +462,7 @@ class ArticleFeedbackv5Render {
 	private function renderCentral( $record ) {
 		return $this->feedbackHead( 'articlefeedbackv5-central-header-left-comment', $record[0] )
 			. $this->renderComment(
-				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
+				isset( $record['comment'] ) ? $record['comment'] : null,
 				$record[0]->af_id
 			);
 	}
@@ -572,13 +572,14 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the marked-up feedback comment
 	 *
-	 * @param  $text       string the comment
+	 * @param  $comment    object|stdClass the comment record
 	 * @param  $feedbackId int    the feedback ID
 	 * @return string      the rendered comment
 	 */
-	private function renderComment( $text, $feedbackId ) {
+	private function renderComment( $comment, $feedbackId ) {
 		global $wgLang;
 
+		$text = $comment->aat_response_text ? $comment->aat_response_text : $comment->aa_response_text;
 		$short = $this->isPermalink ? $text : $wgLang->truncate( $text, 500 );
 
 		// <blockquote>
@@ -1087,6 +1088,8 @@ class ArticleFeedbackv5Render {
 				'class' => 'articleFeedbackv5-feedback-permalink-stats'
 			) );
 		if ( isset( $record['comment'] ) ) {
+			$commentText = $record['comment']->aat_response_text ? $record['comment']->aat_response_text : $record['comment']->aa_response_text;
+
 			$stats .=
 				// <dt>{msg:articlefeedbackv5-permalink-info-stats-title-length}</dt>
 				Html::rawElement( 'dt', array(),
@@ -1097,7 +1100,7 @@ class ArticleFeedbackv5Render {
 					// {msg:articlefeedbackv5-permalink-info-length-words}
 					. wfMessage(
 						'articlefeedbackv5-permalink-info-length-words',
-						str_word_count( $record['comment']->aa_response_text )
+						str_word_count( $commentText )
 					)->escaped()
 					// &nbsp;
 					. '&nbsp;'
@@ -1105,7 +1108,7 @@ class ArticleFeedbackv5Render {
 					. Html::rawElement( 'span', array(),
 						wfMessage(
 							'articlefeedbackv5-permalink-info-length-characters',
-							strlen( $record['comment']->aa_response_text )
+							strlen( $commentText )
 						)->escaped()
 					)
 				// </dd>
