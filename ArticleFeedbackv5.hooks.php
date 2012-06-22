@@ -484,7 +484,7 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5Categories,
 			$wgArticleFeedbackv5BlacklistCategories;
 
-		$result = array( 'allowed' => false, 'blacklist' => false, 'whitelist' => false );
+		$result = array( 'allow' => false, 'blacklist' => false, 'whitelist' => false );
 		if (
 			// not disabled via preferences
 			!$wgUser->getOption( 'articlefeedback-disable' )
