@@ -19,6 +19,9 @@
 	border: 1px solid #cccccc;
 	padding-bottom: 1px;
 	margin: 0 0 15px;
+	float: left;
+	width: 700px;
+	color: #000;
 }
 
 .articleFeedbackv5-error-message {
@@ -85,10 +88,6 @@
 
 .articleFeedbackv5-pitch .articleFeedbackv5-buffer {
 	padding: 0.75em 1em;
-}
-
-.articleFeedbackv5-panel {
-	float: left;
 }
 
 .articleFeedbackv5-panel .articleFeedbackv5-buffer {
@@ -442,13 +441,6 @@
 	float: none !important;
 	width: 100% !important;
 	border: none !important;
-}
-
-.articleFeedbackv5-panel {
-	width: 700px;
-	background: #f5faff;
-	border: 1px solid #ccc;
-	color: #000;
 }
 
 .articleFeedbackv5-panel .articleFeedback-buffer {
