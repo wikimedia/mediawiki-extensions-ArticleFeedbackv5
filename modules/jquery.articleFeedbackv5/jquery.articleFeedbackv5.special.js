@@ -275,7 +275,7 @@
 		// Is there a highlighted ID?
 		var hash = window.location.hash.replace( '#', '' );
 		if ( hash.match( /^\d+$/ ) && $.articleFeedbackv5special.filter != 'id' ) {
-			$.articleFeedbackv5special.highlightId = parseInt( hash );
+			$.articleFeedbackv5special.highlightId = parseInt( hash, 10 );
 			$.articleFeedbackv5special.pullHighlight();
 		}
 
