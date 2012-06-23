@@ -130,6 +130,8 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	 * Constructor
 	 */
 	public function __construct() {
+		wfProfileIn( __METHOD__ );
+
 		global $wgUser;
 		parent::__construct( 'ArticleFeedbackv5' );
 
@@ -166,6 +168,8 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		if ( $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay ) {
 			$this->startingLimit = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		}
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**

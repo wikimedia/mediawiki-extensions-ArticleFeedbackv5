@@ -28,6 +28,8 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 	 * Execute the API call: Pull the aggregated ratings
 	 */
 	public function execute() {
+		wfProfileIn( __METHOD__ );
+
 		$params = $this->extractRequestParams();
 		global $wgArticleFeedbackv5RatingTypes;
 
@@ -50,6 +52,8 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 			);
 		}
 		$result->addValue( $result_path, 'rollup', $info );
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**

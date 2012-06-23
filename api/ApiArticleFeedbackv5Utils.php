@@ -161,9 +161,11 @@ class ApiArticleFeedbackv5Utils {
 	 *                            direction 1 = increment, -1 = decrement
 	 */
 	public static function updateFilterCounts( $dbw, $pageId, $filters ) {
+		wfProfileIn( __METHOD__ );
 
 		// Don't do anything unless we have filters to process.
 		if ( empty( $filters ) || count( $filters ) < 1 ) {
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 
@@ -216,6 +218,8 @@ class ApiArticleFeedbackv5Utils {
 				__METHOD__
 			);
 		}
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -229,6 +233,7 @@ class ApiArticleFeedbackv5Utils {
 	 * @param $params    array  of parameters that can be passed into the msg thing - used for "perpetrator" for log entry
 	 */
 	public static function logActivity( $type, $pageId, $itemId, $notes, $doer = null, $params = array() ) {
+		wfProfileIn( __METHOD__ );
 
 		// These are our valid activity log actions
 		$valid = array( 'oversight', 'unoversight', 'hidden', 'unhidden',
@@ -240,6 +245,7 @@ class ApiArticleFeedbackv5Utils {
 
 		// if we do not have a valid action, return immediately
 		if ( !in_array( $type, $valid ) ) {
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 
@@ -257,6 +263,7 @@ class ApiArticleFeedbackv5Utils {
 
 		// no title object? no page? well then no logging
 		if ( !$title_object ) {
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 
@@ -281,6 +288,7 @@ class ApiArticleFeedbackv5Utils {
 			}
 			// I cannot see how this could fail, but if it does do not log
 			if ( !$doer ) {
+				wfProfileOut( __METHOD__ );
 				return;
 			}
 		} else {
@@ -305,6 +313,8 @@ class ApiArticleFeedbackv5Utils {
 		);
 
 		$dbw->commit();
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**

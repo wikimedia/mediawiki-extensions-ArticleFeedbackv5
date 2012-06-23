@@ -44,17 +44,21 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
-		// Blocked users are, well, blocked.
-		if ( $wgUser->isBlocked() ) {
-			$this->getResult()->addValue( null, 'error', 'articlefeedbackv5-error-blocked' );
-			return;
-		}
-
 		// Anon token check
 		$token = $this->getAnonToken( $params );
 
+		wfProfileIn( __METHOD__ );
+
+		// Blocked users are, well, blocked.
+		if ( $wgUser->isBlocked() ) {
+			$this->getResult()->addValue( null, 'error', 'articlefeedbackv5-error-blocked' );
+			wfProfileOut( __METHOD__ );
+			return;
+		}
+
 		// Is feedback enabled on this page check?
 		if ( !ApiArticleFeedbackv5Utils::isFeedbackEnabled( $params ) ) {
+			wfProfileOut( __METHOD__ );
 			$this->dieUsage( 'ArticleFeedback is not enabled on this page', 'invalidpage' );
 		}
 
@@ -108,10 +112,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 		if ( $error ) {
 			$this->getResult()->addValue( null, 'error', $error );
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 		if ( $warning ) {
 			$this->getResult()->addValue( null, 'warning', $warning );
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 
@@ -179,6 +185,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		// build url to permalink and special page
 		$page = Title::newFromID( $pageId );
 		if ( !$page ) {
+			wfProfileOut( __METHOD__ );
 			$this->dieUsage( "Page for feedback does not exist", "invalidfeedbackid" );
 		}
 		$stitle = Title::newFromText( "ArticleFeedbackv5/$page", NS_SPECIAL );
@@ -197,6 +204,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'permalink'   => $permalink,
 			)
 		);
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -474,8 +483,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 *
 	 */
 	private function updateRollup( $pageId, $revId, $type, $raw_data ) {
+		wfProfileIn( __METHOD__ );
+
 		# sanity check
 		if ( $type != 'rating' && $type != 'option_id' && $type != 'boolean' ) {
+			wfProfileOut( __METHOD__ );
 			return 0;
 		}
 
@@ -485,6 +497,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				$this->updateRollupRow( $pageId, $revId, $type, $row );
 			}
 		}
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -712,6 +726,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$this->dieUsage( 'User info is missing', 'missinguser' );
 		}
 
+		wfProfileIn( __METHOD__ );
+
 		// Only save IP address if the user isn't logged in.
 		if ( !$wgUser->isLoggedIn() ) {
 			$ip = wfGetIP();
@@ -719,6 +735,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		// Make sure we have a page ID
 		if ( !$params['pageid'] ) {
+			wfProfileOut( __METHOD__ );
 			$this->dieUsage( 'Page ID is missing or invalid', 'invalidpageid' );
 		}
 
@@ -726,6 +743,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		if ( !$revId ) {
 			$title = Title::newFromID( $params['pageid'] );
 			if ( !$title ) {
+				wfProfileOut( __METHOD__ );
 				$this->dieUsage( 'Page ID is missing or invalid', 'invalidpageid' );
 			}
 			$revId = $title->getLatestRevID();
@@ -772,6 +790,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			__METHOD__
 		);
 
+		wfProfileOut( __METHOD__ );
+
 		return array(
 			'cta_id'      => ( $ctaId ? $ctaId : 0 ),
 			'feedback_id' => ( $feedbackId ? $feedbackId : 0 )
@@ -783,6 +803,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param $revisionId int    Revision ID
 	 */
 	private function saveUserProperties( $feedbackId ) {
+		wfProfileIn( __METHOD__ );
+
 		global $wgUser;
 		$dbw  = wfGetDB( DB_MASTER );
 		$dbr  = wfGetDB( DB_SLAVE );
@@ -790,6 +812,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		// Only save data for logged-in users.
 		if ( !$wgUser->isLoggedIn() ) {
+			wfProfileOut( __METHOD__ );
 			return null;
 		}
 
@@ -829,6 +852,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$rows,
 			__METHOD__
 		);
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
