@@ -27,12 +27,15 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 * Execute the API call: Pull max 25 activity log items for page
 	 */
 	public function execute() {
+		wfProfileIn( __METHOD__ );
+
 		global $wgUser; // we need to check permissions in here
 		global $wgLang; // timestamp formats
 
 		// If we can't hide, we can't see activity, return an empty string
 		// front-end should never let you get here, but just in case
 		if ( !$wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
+			wfProfileOut( __METHOD__ );
 			$this->dieUsage( "You don't have permission to hide feedback", 'permissiondenied' );
 		}
 
@@ -52,12 +55,14 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		$feedback    = $this->fetchFeedback( $feedbackId );
 		// if this is false, this is bad feedback - move along
 		if ( !$feedback ) {
+			wfProfileOut( __METHOD__ );
 			$this->dieUsage( "Feedback does not exist", 'invalidfeedbackid' );
 		}
 
 		// get the string title for the page
 		$page = Title::newFromID( $feedback->af_page_id );
 		if ( !$page ) {
+			wfProfileOut( __METHOD__ );
 			$this->dieUsage( "Page for feedback does not exist", 'invalidfeedbackid' );
 		}
 		$title = $page->getDBKey();
@@ -206,6 +211,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		if ( $count > $limit ) {
 			$this->setContinueEnumParameter( 'continue', $this->getContinue( $item ) );
 		}
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
