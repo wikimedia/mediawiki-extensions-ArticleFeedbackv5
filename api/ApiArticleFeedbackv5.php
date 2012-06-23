@@ -39,6 +39,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * Execute the API call: Save the form values
 	 */
 	public function execute() {
+		wfProfileIn( __METHOD__ );
+
 		global $wgUser, $wgArticleFeedbackv5SMaxage,
 			$wgArticleFeedbackv5AbuseFiltering;
 
@@ -197,6 +199,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'permalink'   => $permalink,
 			)
 		);
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -474,6 +478,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 *
 	 */
 	private function updateRollup( $pageId, $revId, $type, $raw_data ) {
+		wfProfileIn( __METHOD__ );
+
 		# sanity check
 		if ( $type != 'rating' && $type != 'option_id' && $type != 'boolean' ) {
 			return 0;
@@ -485,6 +491,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				$this->updateRollupRow( $pageId, $revId, $type, $row );
 			}
 		}
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -697,6 +705,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @return int   the cta id
 	 */
 	private function saveUserRatings( $dbw, $data, $bucket, $params ) {
+		wfProfileIn( __METHOD__ );
+
 		global $wgUser, $wgArticleFeedbackv5LinkBuckets;
 
 		$ctaId      = $this->getCTAId( $data, $bucket );
@@ -772,6 +782,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			__METHOD__
 		);
 
+		wfProfileOut( __METHOD__ );
+
 		return array(
 			'cta_id'      => ( $ctaId ? $ctaId : 0 ),
 			'feedback_id' => ( $feedbackId ? $feedbackId : 0 )
@@ -783,6 +795,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param $revisionId int    Revision ID
 	 */
 	private function saveUserProperties( $feedbackId ) {
+		wfProfileIn( __METHOD__ );
+
 		global $wgUser;
 		$dbw  = wfGetDB( DB_MASTER );
 		$dbr  = wfGetDB( DB_SLAVE );
@@ -829,6 +843,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$rows,
 			__METHOD__
 		);
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**

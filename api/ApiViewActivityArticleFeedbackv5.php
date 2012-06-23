@@ -27,6 +27,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 * Execute the API call: Pull max 25 activity log items for page
 	 */
 	public function execute() {
+		wfProfileIn( __METHOD__ );
+
 		global $wgUser; // we need to check permissions in here
 		global $wgLang; // timestamp formats
 
@@ -206,6 +208,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		if ( $count > $limit ) {
 			$this->setContinueEnumParameter( 'continue', $this->getContinue( $item ) );
 		}
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**

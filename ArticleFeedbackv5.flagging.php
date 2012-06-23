@@ -192,6 +192,8 @@ class ArticleFeedbackv5Flagging {
 			return $this->errorResult( $res );
 		}
 
+		wfProfileIn( __METHOD__ . " for flag_$flag_$direction" );
+
 		// figure out if we have relevance_scores to adjust
 		if ( count($this->relevance) > 0 ) {
 			global $wgArticleFeedbackv5RelevanceScoring;
@@ -322,6 +324,9 @@ class ArticleFeedbackv5Flagging {
 
 		$this->results['result'] = 'Success';
 		$this->results['reason'] = null;
+
+		wfProfileOut( __METHOD__ . " for flag_$flag_$direction" );
+
 		return $this->results;
 	}
 

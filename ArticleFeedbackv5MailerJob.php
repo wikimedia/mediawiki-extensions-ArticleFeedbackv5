@@ -33,6 +33,8 @@ class ArticleFeedbackv5MailerJob extends Job {
 	 * @return boolean success
 	 */
 	function run() {
+		wfProfileIn( __METHOD__ );
+
 		global $wgArticleFeedbackv5OversightEmails, $wgArticleFeedbackv5OversightEmailName;
 		global $wgPasswordSender, $wgPasswordSenderName, $wgNoReplyAddress;
 
@@ -64,8 +66,11 @@ class ArticleFeedbackv5MailerJob extends Job {
 							   $params['page_url'],
 							   $params['permalink']);
 
-		return UserMailer::send( $to, $from, $subject, 
-						$body, $replyto );
+		$status = UserMailer::send( $to, $from, $subject, $body, $replyto );
+
+		wfProfileOut( __METHOD__ );
+
+		return $status;
 	}
 
 	/**
