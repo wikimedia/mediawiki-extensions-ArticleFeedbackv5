@@ -33,6 +33,8 @@ class ArticleFeedbackv5MailerJob extends Job {
 	 * @return boolean success
 	 */
 	function run() {
+		wfProfileIn( __METHOD__ );
+
 		global $wgArticleFeedbackv5OversightEmails, $wgArticleFeedbackv5OversightEmailName;
 		global $wgPasswordSender, $wgPasswordSenderName, $wgNoReplyAddress;
 
@@ -40,6 +42,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 
 		// if the oversight email address is empty we're going to just skip all this, but return true
 		if ( null === $wgArticleFeedbackv5OversightEmails ) {
+			wfProfileOut( __METHOD__ );
 			return true;
 		}
 
@@ -49,8 +52,9 @@ class ArticleFeedbackv5MailerJob extends Job {
 		    || !array_key_exists( 'page_name', $params)
 		    || !array_key_exists( 'page_url', $params)
 		    || !array_key_exists( 'permalink', $params)) {
+			wfProfileOut( __METHOD__ );
 			return false;
-		    }
+	    }
 
 		// get our addresses
 		$to = new MailAddress( $wgArticleFeedbackv5OversightEmails, $wgArticleFeedbackv5OversightEmailName );
@@ -64,8 +68,11 @@ class ArticleFeedbackv5MailerJob extends Job {
 							   $params['page_url'],
 							   $params['permalink']);
 
-		return UserMailer::send( $to, $from, $subject, 
-						$body, $replyto );
+		$status = UserMailer::send( $to, $from, $subject, $body, $replyto );
+
+		wfProfileOut( __METHOD__ );
+
+		return $status;
 	}
 
 	/**
