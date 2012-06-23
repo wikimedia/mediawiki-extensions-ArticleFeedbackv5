@@ -1393,7 +1393,7 @@ $messages['ba'] = array(
 	'articlefeedbackv5-bucket5-wellwritten-tip' => 'Һеҙ был бит яҡшы ойошторолған һәм яҡшы яҙылған, тип һанайһығыҙмы?',
 );
 
-/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Renessaince
@@ -3288,7 +3288,7 @@ $messages['diq'] = array(
 	'articlefeedbackv5-section-linktext' => 'peydrıstış',
 );
 
-/** Lower Sorbian (Dolnoserbski)
+/** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -6988,7 +6988,7 @@ Molimo, pokušajte ponovno kasnije.',
 	'articlefeedbackv5-bucket5-wellwritten-tip' => 'Mislite li da je ova stranica dobro organizirana i dobro napisana?',
 );
 
-/** Upper Sorbian (Hornjoserbsce)
+/** Upper Sorbian (hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
@@ -9542,6 +9542,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-cta3-button-text' => '조사 시작하기',
 	'articlefeedbackv5-cta4-confirmation-title' => '커뮤니티에 가입',
 	'articlefeedbackv5-cta4-confirmation-call-line1' => '가입하거나 로그인하고 나서 편집자는 당신의 피드백에 답할 수 있습니다.',
+	'articlefeedbackv5-cta4-confirmation-call-line2' => '무료 계정은 쉽게 위키백과에 알고 공유할 수 있습니다.',
 	'articlefeedbackv5-cta4-button-text-signup' => '계정 만들기',
 	'articlefeedbackv5-cta4-button-text-login' => '로그인',
 	'articlefeedbackv5-cta4-button-text-later' => '나중에 평가하기',
@@ -9884,10 +9885,10 @@ $messages['ko'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => '예, 제가 찾고 있던 내용을 찾았습니다.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => '아니오, 제가 찾고자 하는 내용을 찾지 못했습니다.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '(나머지 문자 $1)',
-	'articlefeedbackv5-bucket6-question-instructions-yes' => '좋군요. 다른 것도 추가하겠어요?',
+	'articlefeedbackv5-bucket6-question-instructions-yes' => '좋군요. 의견을 추가하겠어요?',
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => '이 문서는 어떻게 개선할 수 있습니까?',
-	'articlefeedbackv5-bucket6-question-instructions-no' => '죄송합니다. 어떻게 우리가 당신을 위해 더 할 수 있습니까?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => '어떠한 개선을 위한 제안이 있습니까?',
+	'articlefeedbackv5-bucket6-question-instructions-no' => '죄송합니다. 어떠한 개선을 위한 제안이 있습니까?',
+	'articlefeedbackv5-bucket6-question-placeholder-no' => '무엇을 찾고 있었습니까?',
 	'articlefeedbackv5-bucket6-form-submit' => '피드백 올리기',
 	'articlefeedbackv5-bucket6-backlink-text' => '1단계로 돌아가기',
 	'articlefeedbackv5-shared-on-feedback' => '덧글은 $1에 공유될 것입니다.',
@@ -10120,6 +10121,13 @@ $messages['ku-latn'] = array(
 	'articlefeedbackv5-bucket5-report-switch-label' => 'Encaman nîşan bide',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'Erê',
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'Na',
+);
+
+/** Kirghiz (Кыргызча)
+ * @author Chorobek
+ */
+$messages['ky'] = array(
+	'articlefeedbackv5-cta4-button-text-login' => 'Кирүү',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -11623,6 +11631,13 @@ $messages['ms'] = array(
 	'articlefeedbackv5-cta3-confirmation-title' => 'Sila sertai tinjauan yang ringkas ini',
 	'articlefeedbackv5-cta3-confirmation-call' => 'Ini hanya memakan masa seminit dan akan membantu memperbaiki Wikipedia.',
 	'articlefeedbackv5-cta3-button-text' => 'Mulakan tinjauan',
+	'articlefeedbackv5-cta4-confirmation-title' => 'Sertai komuniti kami',
+	'articlefeedbackv5-cta4-confirmation-call-line1' => 'Daftar atau log masuk supaya penyunting boleh membalas maklum balas anda.',
+	'articlefeedbackv5-cta4-confirmation-call-line2' => 'Akaun percuma anda memudahkan anda berkongsi pengetahuan anda di Wikipedia.',
+	'articlefeedbackv5-cta4-button-text-signup' => 'Buka akaun',
+	'articlefeedbackv5-cta4-button-text-login' => 'Log masuk',
+	'articlefeedbackv5-cta4-button-text-later' => 'Lain kalilah',
+	'articlefeedbackv5-cta4-button-text-or' => 'atau',
 	'articlefeedbackv5-cta5-confirmation-followup' => 'Maklum balas anda telah $1.',
 	'articlefeedbackv5-cta5-confirmation-followup-linktext' => 'diposkan di sini',
 	'articlefeedbackv5-cta5-confirmation-title' => 'Baca komen orang lain',
@@ -11702,6 +11717,7 @@ Sila semak pos anda dan cuba lagi',
 	'articlefeedbackv5-status-unfeatured' => 'Pos ini dibatalkan status sorotan oleh $1 pada $2, $3',
 	'articlefeedbackv5-status-resolved' => 'Pos ini ditandai sebagai selesai oleh $1 pada $2, $3',
 	'articlefeedbackv5-status-unresolved' => 'Pos ini dibatalkan tandanya sebagai selesai oleh $1 pada $2, $3',
+	'articlefeedbackv5-new-marker' => 'Baru',
 	'articlefeedbackv5-deleted-marker' => 'Dihapuskan',
 	'articlefeedbackv5-hidden-marker' => 'Disorokkan',
 	'articlefeedbackv5-featured-marker' => 'Sorotan',
@@ -11868,8 +11884,8 @@ Sila semak pos anda dan cuba lagi',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Tidak',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Ya, saya sudah menemui apa yang saya inginkan.',
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'Tidak, saya belum menemui apa yang saya ingin.',
-	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'Apakah yang paling berguna buat anda? Bagaimanakah laman ini boleh diperbaiki?',
-	'articlefeedbackv5-bucket1-question-placeholder-no' => 'Apa yang tak kena? Anda rasa macam mana nak perbaiki?',
+	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'Bagaimanakah rencana ini boleh diperbaiki?',
+	'articlefeedbackv5-bucket1-question-placeholder-no' => 'Adakah anda ada cadangan untuk memperbaikinya?',
 	'articlefeedbackv5-bucket1-form-submit' => 'Poskan maklum balas anda',
 	'articlefeedbackv5-bucket2-title' => 'Bantu perbaiki laman ini',
 	'articlefeedbackv5-bucket2-suggestion-label' => 'Cadangan',
@@ -11961,10 +11977,10 @@ Sila semak pos anda dan cuba lagi',
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'Ya, saya sudah menemui apa yang saya inginkan.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'Tidak, saya belum menemui apa yang saya inginkan.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '(tinggal $1 aksara)',
-	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Bagus. Ada apa-apa lagi untuk ditambah?',
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Apakah yang paling berguna buat anda? Bagaimanakah laman ini boleh diperbaiki?',
-	'articlefeedbackv5-bucket6-question-instructions-no' => 'Maaf tentang itu. Bagaimanakah boleh kami memperbaikinya untuk anda?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Apakah yang tertinggal? Adakah anda mempunyai cadangan untuk memperbaiki?',
+	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Bagus. Sudikah anda memberikan komen?',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Bagaimanakah rencana ini boleh diperbaiki?',
+	'articlefeedbackv5-bucket6-question-instructions-no' => 'Kami turut mengesalinya. Adakah anda ada cadangan untuk memperbaikinya?',
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Apakah yang anda sedang mencari?',
 	'articlefeedbackv5-bucket6-form-submit' => 'Poskan maklum balas anda',
 	'articlefeedbackv5-bucket6-backlink-text' => 'Kembali ke langkah 1',
 	'articlefeedbackv5-shared-on-feedback' => 'Ulasan anda akan dikongsikan di $1 ini.',
