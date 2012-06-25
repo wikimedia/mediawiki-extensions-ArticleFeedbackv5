@@ -22,7 +22,6 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 	 */
 	protected function getActionMessage() {
 		$entry           = $this->entry;
-		$type            = $entry->getType();
 		$action          = $entry->getSubtype();
 		$title           = $entry->getTarget();
 		$skin            = $this->plaintext ? null : $this->context->getSkin();
@@ -46,12 +45,12 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 
 		global $wgLang, $wgContLang;
 		$language = $skin === null ? $wgContLang : $wgLang;
-		$action = wfMessage( "$type-log-$action" )->params(
+		$action = wfMessage( "articlefeedbackv5-log-$action" )->params(
 				array( $fblink, $pagelink ) )->inLanguage( $language )->text();
 
 		$performer = $this->getPerformerElement();
 		if ( !$this->irctext ) {
-			$action = $performer .  $this->msg( 'word-separator' )->text() . $action;
+			$action = $performer . $this->msg( 'word-separator' )->text() . $action;
 		}
 
 		return $action;
