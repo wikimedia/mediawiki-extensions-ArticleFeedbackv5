@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAOn///9E\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-25T20:12:58Z",
+      "side": 1,
+      "message": "Why are you looking up the AFTv5 namespace?!?",
+      "revId": "b88abc763e9d0b1742869cb2c617f592ff91d452",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///84\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-25T20:12:58Z",
+      "side": 1,
+      "message": "Typo: the second $1 should be $2",
+      "revId": "b88abc763e9d0b1742869cb2c617f592ff91d452",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
