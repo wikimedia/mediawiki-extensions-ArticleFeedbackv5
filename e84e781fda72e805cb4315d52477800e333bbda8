@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAOn///98\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-06-25T20:05:38Z",
+      "side": 1,
+      "message": "msg-mw is a template, so that should be | instead of :.",
+      "revId": "e84e781fda72e805cb4315d52477800e333bbda8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
