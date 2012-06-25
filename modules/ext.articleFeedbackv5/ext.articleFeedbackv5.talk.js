@@ -24,28 +24,28 @@ jQuery( function( $ ) {
 	// Check if the talk page link can be shown
 	if ( mw.config.get( 'wgArticleFeedbackv5TalkPageLink' ) ) {
 
-		// Is this page enabled?
 		var enable = false;
 		var whitelist = mw.config.get( 'aftv5Whitelist', -1 );
-		if ( whitelist == -1 ) {
-			// The html is cached, so always on (we know it's whitelisted)
-			enable = false;
-		} else if ( whitelist ) {
-			// It's whitelisted, so always on
+		var v4odds = mw.config.get( 'wgArticleFeedbackLotteryOdds', -1 );
+		var pageId = mw.config.get( 'aftv5PageId', -1 );
+
+		// aftv5Whitelist true = show
+		if ( whitelist ) { 
 			enable = true;
-		} else {
-			// It's a lottery article, so test that
-			var pageId = mw.config.get( 'aftv5PageId', -1 );
-			if ( pageId < 1 ) {
-				// Oops, we don't have that information after all
-				enable = false;
-			} else {
-				// Lottery inclusion (inverse of AFTv4, if we have a related article id)
-				var v4odds = mw.config.get( 'wgArticleFeedbackLotteryOdds', 0 );
-				enable = pageId == 0 || !( ( Number( pageId ) % 1000 )
-					< Number( v4odds ) * 10 );
-			}
 		}
+
+		// aftv4 doesn't win lottery (AF5v5 is inverse of AFTv4 lottery, for now) = show
+		else if ( !(( Number( pageId ) % 1000 ) < Number( v4odds ) * 10) ) {
+			enable = true
+		}
+
+		// no vars = cached
+		// -> either it's really old, from when allowance code was only in JS = probably don't show
+		// -> either it's not too old, so PHP allowance let it through = show
+		// there's no way to know though, so we just won't show a thing, for now
+
+		// blacklist has been handled by PHP; if it's blacklisted, this JS won't be loaded
+
 		if ( !enable ) {
 			return;
 		}

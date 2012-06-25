@@ -32,93 +32,6 @@ jQuery( function( $ ) {
 		return;
 	}
 
-	// Is this page enabled?
-	var enable = false;
-	var whitelist = mw.config.get( 'aftv5Whitelist', -1 );
-	if ( whitelist == -1 ) {
-
-		// The html is cached, so double-check
-		if (
-			// Only on pages in namespaces where it is enabled
-			$.inArray( mw.config.get( 'wgNamespaceNumber' ), mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1
-			// Existing pages
-			&& mw.config.get( 'wgArticleId' ) > 0
-			// View pages
-			&& ( mw.config.get( 'wgAction' ) == 'view' || mw.config.get( 'wgAction' ) == 'purge' )
-			// If user is logged in, showing on action=purge is OK,
-			// but if user is logged out, action=purge shows a form instead of the article,
-			// so return false in that case.
-			&& !( mw.config.get( 'wgAction' ) == 'purge' && mw.user.anonymous() )
-			// Current revision
-			&& mw.util.getParamValue( 'diff' ) == null
-			&& mw.util.getParamValue( 'oldid' ) == null
-			// Not disabled via preferences
-			&& !mw.user.options.get( 'articlefeedback-disable' )
-			// Not viewing a redirect
-			&& mw.util.getParamValue( 'redirect' ) != 'no'
-			// Not viewing the printable version
-			&& mw.util.getParamValue( 'printable' ) != 'yes'
-		) {
-			// Collect categories for intersection tests
-			// Clone the arrays so we can safely modify them
-			var categories = {
-				'include': [].concat( mw.config.get( 'wgArticleFeedbackv5Categories', [] ) ),
-				'exclude': [].concat( mw.config.get( 'wgArticleFeedbackv5BlacklistCategories', [] ) ),
-				'current': [].concat( mw.config.get( 'wgCategories', [] ) )
-			};
-			for ( var i = 0; i < categories['current'].length; i++ ) {
-				// Categories are configured with underscores, but article's categories are returned with
-				// spaces instead. Revert to underscores here for sane comparison.
-				categories['current'][i] = categories['current'][i].replace(/\s/gi, '_');
-				// Check exclusion - exclusion overrides everything else
-				if ( $.inArray( categories['current'][i], categories.exclude ) > -1 ) {
-					// Blacklist overrides everything else
-					return;
-				}
-				if ( $.inArray( categories['current'][i], categories.include ) > -1 ) {
-					// One match is enough for include, however we are iterating on the 'current'
-					// categories, and others might be blacklisted - so continue iterating
-					enable = true;
-				}
-			}
-
-			// Lottery inclusion (inverse of AFTv4, if we have a related article id)
-			var v4odds = mw.config.get( 'wgArticleFeedbackLotteryOdds', 0 );
-			var pageId = mw.config.get( 'wgArticleId', 0 );
-			enable = !( ( Number( pageId ) % 1000 ) < Number( v4odds ) * 10 );
-		}
-
-	} else if ( whitelist ) {
-		// It's whitelisted, so always on
-		enable = true;
-
-	} else {
-		// It's a lottery article, so test that
-		var pageId = mw.config.get( 'wgArticleId', 0 );
-		// Lottery inclusion (inverse of AFTv4, if we have a related article id)
-		var v4odds = mw.config.get( 'wgArticleFeedbackLotteryOdds', 0 );
-		enable = !( ( Number( pageId ) % 1000 ) < Number( v4odds ) * 10 );
-	}
-
-	// Load if enabled
-	if ( enable ) {
-		var removeAft = function() {
-			var $aft = $( '#mw-articlefeedback' );
-			if ( $aft.length > 0 ) {
-				$aft.remove();
-			} else {
-				clearInterval( removeAftInterval );
-			}
-		}
-		var removeAftInterval = setInterval( removeAft, 100 );
-
-		mw.loader.load( 'ext.articleFeedbackv5' );
-		// Load the IE-specific module
-		if ( navigator.appVersion.indexOf( 'MSIE 7' ) != -1 ) {
-			mw.loader.load( 'ext.articleFeedbackv5.ie' );
-		}
-	}
-
 	// Load check, is this page ArticleFeedbackv5-enabled ?
 	// Keep in sync with ApiArticleFeedbackv5.php
 	if (
@@ -142,13 +55,9 @@ jQuery( function( $ ) {
 		// Not viewing the printable version
 		&& mw.util.getParamValue( 'printable' ) != 'yes'
 	) {
-		// Lottery inclusion (inverse of AFTv4)
 		var enable = false;
-		var pageId = mw.config.get( 'wgArticleId', -1 );
 		var v4odds = mw.config.get( 'wgArticleFeedbackLotteryOdds', -1 );
-		if ( pageId > -1 && v4odds > -1 ) {
-			enable = !( ( Number( pageId ) % 1000 ) < Number( v4odds ) * 10 );
-		}
+		var pageId = mw.config.get( 'wgArticleId', -1 );
 
 		// Collect categories for intersection tests
 		// Clone the arrays so we can safely modify them
@@ -173,18 +82,13 @@ jQuery( function( $ ) {
 			}
 		}
 
+		// aftv4 doesn't win lottery (AF5v5 is inverse of AFTv4 lottery, for now) = show
+		if ( !(( Number( pageId ) % 1000 ) < Number( v4odds ) * 10) ) {
+			enable = true
+		}
+
 		// Lazy loading
 		if ( enable ) {
-			var removeAft = function() {
-				$aft = $( '#mw-articlefeedback' );
-				if ( $aft.length > 0 ) {
-					$aft.remove();
-				} else {
-					clearInterval( removeAftInterval );
-				}
-			}
-			var removeAftInterval = setInterval( removeAft, 100 );
-
 			mw.loader.load( 'ext.articleFeedbackv5' );
 			// Load the IE-specific module
 			if ( navigator.appVersion.indexOf( 'MSIE 7' ) != -1 ) {
