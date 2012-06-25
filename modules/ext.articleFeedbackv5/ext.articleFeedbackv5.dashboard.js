@@ -21,7 +21,7 @@ jQuery( function( $ ) {
 	if(
 		(ua.indexOf( 'msie 6' ) != -1) ||
 		(ua.indexOf( 'msie 7' ) != -1) ||
-		(ua.indexOf( 'msie 8' ) != -1) ||
+		/* (ua.indexOf( 'msie 8' ) != -1) || */
 		(ua.indexOf( 'firefox/2') != -1) ||
 		(ua.indexOf( 'firefox 2') != -1) ||
 		(ua.indexOf( 'android' ) != -1) ||

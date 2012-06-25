@@ -76,16 +76,14 @@ select {
 }
 #articleFeedbackv5-percent-found-wrap .positive {
 	/* @embed */
-	background-image: url(images/type-happy-hovered.png);
+	background-image: url(images/large-positive.png);
 	background-repeat: no-repeat;
-	background-size: 28px;
 	background-position: left;
 }
 #articleFeedbackv5-percent-found-wrap .negative {
 	/* @embed */
-	background-image: url(images/type-sad-hovered.png);
+	background-image: url(images/large-negative.png);
 	background-repeat: no-repeat;
-	background-size: 28px;
 	background-position: left;
 }
 .aftv5-feedbackpage .aftv5-feedbackpage-comment-display-header {

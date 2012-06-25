@@ -150,23 +150,23 @@
 	 * Marker templates
 	 */
 	$.articleFeedbackv5special.markerTemplates = {
-		new: '\
+		'new': '\
 			<span class="articleFeedbackv5-new-marker">\
 				<html:msg key="new-marker" />\
 			</span>',
-		deleted: '\
+		'deleted': '\
 			<span class="articleFeedbackv5-deleted-marker">\
 				<html:msg key="deleted-marker" />\
 			</span>',
-		hidden: '\
+		'hidden': '\
 			<span class="articleFeedbackv5-hidden-marker">\
 				<html:msg key="hidden-marker" />\
 			</span>',
-		featured: '\
+		'featured': '\
 			<span class="articleFeedbackv5-featured-marker">\
 				<html:msg key="featured-marker" />\
 			</span>',
-		resolved: '\
+		'resolved': '\
 			<span class="articleFeedbackv5-resolved-marker">\
 				<html:msg key="resolved-marker" />\
 			</span>'
