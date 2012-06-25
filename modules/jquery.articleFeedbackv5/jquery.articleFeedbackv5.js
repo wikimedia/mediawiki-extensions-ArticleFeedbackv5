@@ -919,7 +919,7 @@
 			 */
 			countdown: function ( $element ) {
 				var maxLength = 5000;
-				var displayLength = 200;
+				var displayLength = 500;
 
 				var $countdown = $( '#articlefeedbackv5-feedback-countdown' );
 
