@@ -235,6 +235,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-form-abuse',
 				'articlefeedbackv5-form-abuse-count',
 				'articlefeedbackv5-abuse-saved',
+				'articlefeedbackv5-abuse-saved-tooltip',
 				'articlefeedbackv5-form-hide',
 				'articlefeedbackv5-form-unhide',
 				'articlefeedbackv5-form-delete',
