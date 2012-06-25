@@ -47,7 +47,7 @@
 /** Feedback row **/
 .articleFeedbackv5-feedback {
 	padding: 0;
-	border-bottom: 2px solid #D6D7D5;
+	border-bottom: 1px solid #D6D7D5;
 	/* @embed */
 	background-image: url(images/bg-special-row.png);
 	background-repeat: repeat-y;
