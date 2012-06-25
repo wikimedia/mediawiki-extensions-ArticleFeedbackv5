@@ -33,6 +33,24 @@
       "revId": "b88abc763e9d0b1742869cb2c617f592ff91d452",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///4c\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2012-06-25T20:36:55Z",
+      "side": 1,
+      "message": "Done in TWN directly: https://translatewiki.net/w/i.php?title\u003dMediaWiki:Articlefeedbackv5-contribs-feedback/qqq\u0026diff\u003d3980127\u0026oldid\u003d3980114\n\nWill be exported tomorrow.",
+      "parentUuid": "AAAAOn///84\u003d",
+      "revId": "b88abc763e9d0b1742869cb2c617f592ff91d452",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
