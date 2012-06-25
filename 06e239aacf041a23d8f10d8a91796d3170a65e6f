@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAOn///9k\u003d",
+        "filename": "ArticleFeedbackv5MailerJob.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-25T20:08:52Z",
+      "side": 1,
+      "message": "You need a wfProfileOut() for every return statement, otherwise the profiler will complain about unbalanced profile calls",
+      "revId": "06e239aacf041a23d8f10d8a91796d3170a65e6f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///9g\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-25T20:08:52Z",
+      "side": 1,
+      "message": "Needs wfProfileOut()",
+      "revId": "06e239aacf041a23d8f10d8a91796d3170a65e6f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///9Y\u003d",
+        "filename": "api/ApiArticleFeedbackv5Utils.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-25T20:08:52Z",
+      "side": 1,
+      "message": "Needs wfProfileOut()",
+      "revId": "06e239aacf041a23d8f10d8a91796d3170a65e6f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///9U\u003d",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-06-25T20:08:52Z",
+      "side": 1,
+      "message": "This also needs wfProfileOut()",
+      "revId": "06e239aacf041a23d8f10d8a91796d3170a65e6f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
