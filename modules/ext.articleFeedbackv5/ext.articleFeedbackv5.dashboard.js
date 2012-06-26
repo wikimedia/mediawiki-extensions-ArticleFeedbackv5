@@ -30,7 +30,7 @@ jQuery( function( $ ) {
 		(ua.indexOf( 'ipad' ) != -1)
 	) {
 		// Remove the extension's output & replace it with a warning that the browser isn't supported
-		var warning = $( '#articlefeedbackv5-beta-message' ).text( mw.msg( 'articlefeedbackv5-unsupported-message' ) );
+		var warning = $( '#articlefeedbackv5-header-message' ).text( mw.msg( 'articlefeedbackv5-unsupported-message' ) );
 		$( '#articleFeedbackv5-special-wrap' ).empty().append( warning );
 		return;
 	}
@@ -65,7 +65,7 @@ jQuery( function( $ ) {
 	if ( !enable ) {
 		// Remove the extension's output & replace it with a warning that
 		// feedback is disabled for the page.
-		var warning = $( '#articlefeedbackv5-beta-message' ).text( mw.msg( 'articlefeedbackv5-page-disabled' ) );
+		var warning = $( '#articlefeedbackv5-header-message' ).text( mw.msg( 'articlefeedbackv5-page-disabled' ) );
 		$( '#articleFeedbackv5-special-wrap' ).empty().append( warning );
 		return;
 	}
