@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAOn///co\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2012-06-26T18:21:24Z",
+      "side": 1,
+      "message": "I don\u0027t like raw \u003ca\u003e tags in messages.",
+      "revId": "e5a7746875bf335628c2fb3ae370ff56dd3ede67",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///ck\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2012-06-26T18:21:24Z",
+      "side": 1,
+      "message": "Why not use $this-\u003egetUser()? It\u0027s a SpecialPage, right?",
+      "revId": "e5a7746875bf335628c2fb3ae370ff56dd3ede67",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///cQ\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2012-06-26T18:21:24Z",
+      "side": 1,
+      "message": "Some code duplication, but whatever.",
+      "revId": "e5a7746875bf335628c2fb3ae370ff56dd3ede67",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///cI\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2012-06-26T18:21:24Z",
+      "side": 1,
+      "message": "I\u0027d get rid of these comments, but meh.",
+      "revId": "e5a7746875bf335628c2fb3ae370ff56dd3ede67",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///b4\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2012-06-26T18:21:24Z",
+      "side": 1,
+      "message": "Is that \u003c/a\u003e supposed to be there?",
+      "revId": "e5a7746875bf335628c2fb3ae370ff56dd3ede67",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
