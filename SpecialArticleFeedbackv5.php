@@ -291,6 +291,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		} elseif( !$wgUser->isAnon() ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' )->text();
 		}
+		$helpLink .= '#Feedback_page';
 
 		$out->addHTML(
 			// <div id="articleFeedbackv5-header-wrap">
@@ -457,15 +458,31 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	 * {% found}     BETA      Add Feedback
 	 */
 	public function outputNotices() {
+		global $wgUser;
 		$out = $this->getOutput();
 
-		// Beta message
+		$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl')->text();
+		if( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
+			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-oversighters' )->text();
+		} elseif( $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
+			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-monitors' )->text();
+		} elseif( !$wgUser->isAnon() ) {
+			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' )->text();
+		}
+		$helpLink = Html::openElement(
+			'a',
+			array( 'href' => $helpLink ) )
+				. $this->msg( 'articlefeedbackv5-header-message-link-text' )->escaped() . ' &raquo;'
+			.Html::closeElement( 'a' );
+
+		// Header message
 		$out->addHTML(
-			Html::element(
+			Html::openElement(
 				'p',
-				array( 'id' => 'articlefeedbackv5-beta-message' ),
-				$this->msg( 'articlefeedbackv5-beta-message' )->text()
+				array( 'id' => 'articlefeedbackv5-header-message' )
 			)
+				. $this->msg( 'articlefeedbackv5-header-message' )->rawParams( $helpLink )->text()
+			. Html::closeElement( 'p' )
 		);
 
 		// Showing {count} posts

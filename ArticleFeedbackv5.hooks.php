@@ -343,6 +343,8 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-unresolve-submit',
 				'articlefeedbackv5-noteflyover-unresolve-help',
 				'articlefeedbackv5-noteflyover-unresolve-help-link',
+
+				'articleFeedbackv5-beta-label',
 			),
 			'dependencies' => array(
 				'mediawiki.util',
