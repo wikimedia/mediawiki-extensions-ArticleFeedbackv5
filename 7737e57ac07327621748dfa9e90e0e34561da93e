@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAOn///dg\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2012-06-26T17:50:45Z",
+      "side": 1,
+      "message": "Please also remove the whitespace in the profile name.",
+      "revId": "7737e57ac07327621748dfa9e90e0e34561da93e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
