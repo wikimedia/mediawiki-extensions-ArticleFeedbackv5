@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAOn///aQ\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2012-06-26T19:00:44Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this use the header-message-link-text message?",
+      "revId": "3af1e71402542c091f1892fda409ae4fb99ac594",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
