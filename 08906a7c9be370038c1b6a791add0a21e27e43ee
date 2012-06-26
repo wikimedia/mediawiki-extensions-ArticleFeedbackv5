@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAOn///e8\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-06-26T17:17:59Z",
+      "side": 1,
+      "message": "you can also do rawParams( $param1, $param2, ....)",
+      "revId": "08906a7c9be370038c1b6a791add0a21e27e43ee",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
