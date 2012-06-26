@@ -858,15 +858,7 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function contributionsQuery( &$data, $pager, $offset, $limit, $descending ) {
-		// this is data that belongs to the ArticleFeedbackv5 namespace!
-		$namespaces = $pager->getLanguage()->getFormattedNamespaces();
-		$namespace = array_search( 'ArticleFeedbackv5', $namespaces );
-		if (
-			// all namespaces
-			$pager->namespace === '' ||
-			// AFT namespace
-			$pager->namespace === $namespace
-		) {
+		if ( $pager->namespace === '' ) {
 			$ratingFields  = array( -1 );
 			$commentFields = array( -1 );
 			// This is in memcache so I don't feel that bad re-fetching it.
