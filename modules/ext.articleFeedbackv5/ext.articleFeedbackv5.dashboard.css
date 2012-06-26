@@ -36,7 +36,12 @@ select {
 	background: url(images/survey-button.png) no-repeat;
 	text-indent: -9999px;
 }
-#articlefeedbackv5-beta-message {
+#articlefeedbackv5-header-message {
+	color: #444;
+}
+#articleFeedbackv5-beta-label {
+	float: right;
+	font-size: 14px;
 	color: #444;
 }
 .articlefeedbackv5-special-disclaimer {

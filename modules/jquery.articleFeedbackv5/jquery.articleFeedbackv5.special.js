@@ -290,6 +290,11 @@
 		$.aftTrack.trackClick( 'feedback_page-impression-' +
 			$.articleFeedbackv5special.referral + '-' +
 			$.articleFeedbackv5special.userType );
+
+		// Add BETA label next to the title
+		var label = $( '<p id="articleFeedbackv5-beta-label"></a>' );
+		label.text( mw.msg( 'articleFeedbackv5-beta-label' ) );
+		$( '#firstHeading' ).append( label );
 	};
 
 	// }}}
