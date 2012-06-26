@@ -844,7 +844,7 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		$ret = "{$d} {$chardiff} {$feedback} {$status}";
-		$ret = "<li>$ret</li>\n";
+		$ret = "$ret\n";
 
 		return true;
 	}
