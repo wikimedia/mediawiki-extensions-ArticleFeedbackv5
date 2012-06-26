@@ -30,6 +30,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 * Execute the API call: Pull the requested feedback
 	 */
 	public function execute() {
+		wfProfileIn( __METHOD__ );
+
 		global $wgUser;
 		$params   = $this->extractRequestParams();
 		$result   = $this->getResult();
@@ -69,6 +71,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$result->addValue( $this->getModuleName(), 'continue', $res->continue );
 		}
 		$result->addValue( $this->getModuleName(), 'feedback', $html );
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**

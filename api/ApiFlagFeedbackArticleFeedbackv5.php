@@ -29,6 +29,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 * 1.
 	 */
 	public function execute() {
+		wfProfileIn( __METHOD__ );
 
 		// get important values from our parameters
 		$params     = $this->extractRequestParams();
@@ -51,6 +52,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$this->getModuleName(),
 			$results
 		);
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
