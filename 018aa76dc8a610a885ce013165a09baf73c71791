@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAOn///es\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2012-06-26T17:23:01Z",
+      "side": 1,
+      "message": "Avoid spaces or english phrases in profile calls. Just use dashes. Also, how any $flag/$direction combinations are there? Dozens? I assume  direction is binary, I don\u0027t know how many tags there are. As long as it\u0027s not hundreds, it\u0027s fine. Otherwise the profile collector db can get too big and slow.",
+      "revId": "018aa76dc8a610a885ce013165a09baf73c71791",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///e0\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2012-06-26T17:23:01Z",
+      "side": 1,
+      "message": "Should be profileIn.",
+      "revId": "018aa76dc8a610a885ce013165a09baf73c71791",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
