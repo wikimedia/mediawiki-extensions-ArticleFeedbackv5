@@ -774,9 +774,10 @@ class ArticleFeedbackv5Hooks {
 	 * @param $page SpecialPage object for contributions
 	 * @param $ret string the HTML line
 	 * @param $row Row the DB row for this line
+	 * @param $classes the classes to add to the surrounding <li>
 	 * @return bool
 	 */
-	public static function contributionsLineEnding( &$page, &$ret, $row ) {
+	public static function contributionsLineEnding( $page, &$ret, $row, &$classes ) {
 		if ( !isset( $row->af_id ) || $row->af_id === '' ) {
 			return true;
 		}
@@ -843,8 +844,7 @@ class ArticleFeedbackv5Hooks {
 			$status .= ' - ' . implode( ', ', $actions);
 		}
 
-		$ret = "{$d} {$chardiff} {$feedback} {$status}";
-		$ret = "<li>$ret</li>\n";
+		$ret = "{$d} {$chardiff} {$feedback} {$status}\n";
 
 		return true;
 	}
