@@ -496,7 +496,7 @@ class ArticleFeedbackv5Render {
 
 			// If user page doesn't exist, go someplace else.
 			// Use the contributions page for now, but it's really up to Fabrice.
-			if ( !$title->exists() ) {
+			if ( !$title || !$title->exists() ) {
 				$title = SpecialPage::getTitleFor( 'Contributions', $record->user_name );
 			}
 
