@@ -604,7 +604,6 @@ class ArticleFeedbackv5Render {
 	private function renderComment( $text, $record ) {
 		global $wgLang;
 		$id = $record->af_id;
-		$title = Title::newFromRow( $record )->getPrefixedDBkey();
 
 		$short = $this->isPermalink ? $text : $wgLang->truncate( $text, 250 );
 
@@ -625,7 +624,9 @@ class ArticleFeedbackv5Render {
 		// If the short string is the same size as the original, no truncation
 		// happened, so no controls are needed.  If it's longer, show the short
 		// text, with the 'show more' control.
-		if ( $short != $text ) {
+		if ( strlen( $short ) != strlen( $text ) ) {
+			$title = Title::newFromRow( $record )->getPrefixedDBkey();
+
 			// <span class="articleFeedbackv5-comment-full"
 			//   id="articleFeedbackv5-comment-full-{$feedbackId}">
 			//   {full-length comment}
