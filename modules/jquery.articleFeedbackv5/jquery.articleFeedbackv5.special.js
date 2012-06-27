@@ -367,12 +367,6 @@
 			return false;
 		} );
 
-		// More/Less comment text
-		$( '.articleFeedbackv5-comment-toggle' ).live( 'click', function( e ) {
-			$.articleFeedbackv5special.toggleComment( $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-comment-toggle-' ) );
-			return false;
-		} );
-
 		// Bind actions
 		for ( var action in $.articleFeedbackv5special.actions ) {
 			$( '.articleFeedbackv5-' + action + '-link' ).live( 'click', function( e ) {
@@ -520,30 +514,6 @@
 			return true;
 		}
 	}
-
-	// }}}
-	// {{{ toggleComment
-
-	/**
-	 * Utility method: Toggles a comment between short and full displays
-	 *
-	 * @param id string the comment id
-	 */
-	$.articleFeedbackv5special.toggleComment = function( id ) {
-		if ( $( '#articleFeedbackv5-comment-toggle-' + id ).text() == mw.msg( 'articlefeedbackv5-comment-more' ) ) {
-			$( '#articleFeedbackv5-comment-short-' + id ).hide();
-			$( '#articleFeedbackv5-comment-full-' + id ).show();
-			$( '#articleFeedbackv5-comment-toggle-' + id ).text(
-				mw.msg( 'articlefeedbackv5-comment-less' )
-			);
-		} else {
-			$( '#articleFeedbackv5-comment-short-' + id ).show();
-			$( '#articleFeedbackv5-comment-full-' + id ).hide();
-			$( '#articleFeedbackv5-comment-toggle-' + id ).text(
-				mw.msg( 'articlefeedbackv5-comment-more' )
-			);
-		}
-	};
 
 	// }}}
 	// {{{ stripID

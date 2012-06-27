@@ -401,7 +401,7 @@ class ArticleFeedbackv5Render {
 		return $this->feedbackHead( $msg, $record[0] )
 			. $this->renderComment(
 				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
-				$record[0]->af_id
+				$record[0]
 			);
 	}
 
@@ -421,7 +421,7 @@ class ArticleFeedbackv5Render {
 		return $this->feedbackHead( "articlefeedbackv5-form2-header-$type", $record[0], $type )
 			. $this->renderComment(
 				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
-				$record[0]->af_id
+				$record[0]
 			);
 	}
 
@@ -435,7 +435,7 @@ class ArticleFeedbackv5Render {
 		return $this->feedbackHead( 'articlefeedbackv5-form3-header', $record[0], $record['rating']->aa_response_rating )
 			. $this->renderComment(
 				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
-				$record[0]->af_id
+				$record[0]
 			);
 	}
 
@@ -459,7 +459,7 @@ class ArticleFeedbackv5Render {
 		return $this->feedbackHead( 'articlefeedbackv5-central-header-left-comment', $record[0] )
 			. $this->renderComment(
 				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
-				$record[0]->af_id
+				$record[0]
 			);
 	}
 
@@ -544,7 +544,7 @@ class ArticleFeedbackv5Render {
 	 */
 	private function renderPermalinkTimestamp( $record ) {
 		$id    = $record->af_id;
-		$title = Title::newFromRow($record)->getPrefixedDBkey();
+		$title = Title::newFromRow( $record )->getPrefixedDBkey();
 
 		$date = ApiArticleFeedbackv5Utils::renderTimeAgo( $record->af_created );
 		$message = wfMessage( 'articleFeedbackv5-comment-ago' )
@@ -584,14 +584,16 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the marked-up feedback comment
 	 *
-	 * @param  $text       string the comment
-	 * @param  $feedbackId int    the feedback ID
-	 * @return string      the rendered comment
+	 * @param  $text   string the comment
+	 * @param  $record stdClass the record (from the 0 index)
+	 * @return string  the rendered comment
 	 */
-	private function renderComment( $text, $feedbackId ) {
+	private function renderComment( $text, $record ) {
 		global $wgLang;
+		$id = $record->af_id;
+		$title = Title::newFromRow( $record )->getPrefixedDBkey();
 
-		$short = $this->isPermalink ? $text : $wgLang->truncate( $text, 500 );
+		$short = $this->isPermalink ? $text : $wgLang->truncate( $text, 250 );
 
 		// <blockquote>
 		$rv = Html::openElement( 'blockquote' )
@@ -602,7 +604,7 @@ class ArticleFeedbackv5Render {
 			. Html::element( 'span',
 				array(
 					'class' => 'articleFeedbackv5-comment-short',
-					'id'    => "articleFeedbackv5-comment-short-$feedbackId"
+					'id'    => "articleFeedbackv5-comment-short-$id"
 				),
 				$short
 			);
@@ -618,7 +620,7 @@ class ArticleFeedbackv5Render {
 			$rv .= Html::element( 'span',
 					array(
 						'class' => 'articleFeedbackv5-comment-full',
-						'id'    => "articleFeedbackv5-comment-full-$feedbackId"
+						'id'    => "articleFeedbackv5-comment-full-$id"
 					),
 					$text
 				)
@@ -627,9 +629,9 @@ class ArticleFeedbackv5Render {
 				//   {articlefeedbackv5-comment-more}
 				// </a>
 				. Html::element( 'a', array(
-					'href'  => '#more',
+					'href'  => SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$id" )->getLinkURL(),
 					'class' => 'articleFeedbackv5-comment-toggle',
-					'id'    => "articleFeedbackv5-comment-toggle-$feedbackId"
+					'id'    => "articleFeedbackv5-comment-toggle-$id"
 				), wfMessage( 'articlefeedbackv5-comment-more' )->text() );
 		}
 
