@@ -192,7 +192,7 @@ class ArticleFeedbackv5Flagging {
 			return $this->errorResult( $res );
 		}
 
-		wfProfileIn( __METHOD__ . "-flag_$flag_$direction" );
+		wfProfileIn( __METHOD__ . "-flag_{$flag}_$direction" );
 
 		// figure out if we have relevance_scores to adjust
 		if ( count($this->relevance) > 0 ) {
@@ -325,7 +325,7 @@ class ArticleFeedbackv5Flagging {
 		$this->results['result'] = 'Success';
 		$this->results['reason'] = null;
 
-		wfProfileOut( __METHOD__ . "-flag_$flag_$direction" );
+		wfProfileOut( __METHOD__ . "-flag_{$flag}_$direction" );
 
 		return $this->results;
 	}
@@ -1391,7 +1391,7 @@ class ArticleFeedbackv5Flagging {
 	 */
 	public function errorResult( $message ) {
 		$this->results['result'] = 'Error';
-		$this->results['reason'] = $error;
+		$this->results['reason'] = $message;
 		return $this->results;
 	}
 

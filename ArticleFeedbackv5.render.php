@@ -84,8 +84,6 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered row
 	 */
 	public function run( $record ) {
-		global $wgLang;
-
 		// Empty gray mask, for permalinks where the feedback is deleted or
 		// hidden, and the user doesn't have permission to see them
 		if  ( ( $this->isPermalink || $this->isHighlighted ) && (
@@ -268,7 +266,6 @@ class ArticleFeedbackv5Render {
 	 * @return string the empty gray mask
 	 */
 	private function emptyGrayMask( array $record ) {
-		global $wgLang;
 		// hide or oversight?
 		if ( $record[0]->af_is_deleted ) {
 			$class = 'oversight';
@@ -304,7 +301,6 @@ class ArticleFeedbackv5Render {
 	 * @return string the gray mask
 	 */
 	private function grayMask( array $record, $empty = false ) {
-		global $wgLang;
 		if ( $record[0]->af_is_deleted ) {
 			$type = 'oversight';
 		} elseif ( $record[0]->af_is_hidden ) {
@@ -478,7 +474,6 @@ class ArticleFeedbackv5Render {
 	 * @return string   the rendered feedback head
 	 */
 	private function feedbackHead( $message, $record, $extra = '' ) {
-		$userMessage = '';
 		$anonMessage = '';
 
 		// User info
@@ -548,7 +543,6 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered permalink/timestamp
 	 */
 	private function renderPermalinkTimestamp( $record ) {
-		global $wgLang;
 		$id    = $record->af_id;
 		$title = Title::newFromRow($record)->getPrefixedDBkey();
 
@@ -779,9 +773,6 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered tag block
 	 */
 	private function renderTagBlock( $record ) {
-		global $wgLang;
-		$id = $record->af_id;
-
 		// <div class="articleFeedbackv5-comment-tags">
 		$html = Html::openElement( 'div', array(
 			'class' => 'articleFeedbackv5-comment-tags',
@@ -837,7 +828,6 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered toolbox
 	 */
 	private function renderToolbox( $record ) {
-		global $wgLang;
 		$id = $record[0]->af_id;
 
 		// Don't render the toolbox if they can't do anything with it.
@@ -1051,14 +1041,13 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered info section
 	 */
 	private function renderPermalinkInfo( $record ) {
-		global $wgLang, $wgArticleFeedbackv5LinkBuckets;
+		global $wgLang;
 
 		if ( !$this->hasPermission( 'see_hidden' ) ) {
 			return '';
 		}
 
 		$id = $record[0]->af_id;
-		$title = Title::newFromRow($record[0])->getPrefixedDBkey();
 
 		// Metadata section
 		$utype = $record[0]->af_user_id > 0 ? 'editor' : 'reader';
@@ -1294,8 +1283,6 @@ class ArticleFeedbackv5Render {
 
 			// </div>
 			. Html::closeElement( 'div' );
-
-		return $html;
 	}
 
 	/**

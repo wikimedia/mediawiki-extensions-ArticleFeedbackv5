@@ -178,9 +178,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 	 * @param $param string the parameter passed in the url
 	 */
 	public function execute( $param ) {
-		global $wgArticleFeedbackv5DashboardCategory,
-			$wgArticleFeedbackv5DefaultSorts, $wgArticleFeedbackv5DefaultFilters,
-			$wgUser, $wgRequest;
+		global $wgUser, $wgRequest;
 
 		$out = $this->getOutput();
 		$out->addModuleStyles( 'ext.articleFeedbackv5.dashboard' );
@@ -188,7 +186,6 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 
 		// set robot policy
 		$out->setIndexPolicy('noindex');
-		$dbr = wfGetDB( DB_SLAVE );
 
 		if ( !$param ) {
 			// No Page ID: do central log
@@ -577,7 +574,6 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		$out = $this->getOutput();
 
 		// Filtering
-		$filterBlock = '';
 		$counts = $this->getFilterCounts();
 
 		$filterLabels = array();
@@ -824,7 +820,7 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 
 		// Was a filter requested via cookie?
 		if ( !$filter && $this->feedbackId === null ) {
-			global $wgArticleFeedbackv5Tracking, $wgRequest, $wgCookiePrefix;
+			global $wgArticleFeedbackv5Tracking, $wgRequest;
 			$version = isset($wgArticleFeedbackv5Tracking['version']) ? $wgArticleFeedbackv5Tracking['version'] : 0;
 			$cookie = json_decode( $wgRequest->getCookie( 'last-filter', 'ext.articleFeedbackv5@' . $version . '-' ) );
 			if ( $cookie !== null && is_object( $cookie )

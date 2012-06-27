@@ -86,7 +86,6 @@ class ArticleFeedbackv5MailerJob extends Job {
 	 * @param string $feedback_permalink  permalink url to feedback
 	 */
 	protected function composeMail( $requestor_name, $requestor_url, $page_name, $page_url, $feedback_permalink ) {
-		global $wgPasswordSender, $wgPasswordSenderName, $wgNoReplyAddress, $wgRequest;
 		global $wgArticleFeedbackv5OversightEmailHelp;
 
 		// build the subject
