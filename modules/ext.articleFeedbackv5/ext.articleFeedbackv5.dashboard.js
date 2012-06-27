@@ -1,5 +1,6 @@
 /*
- * Script for Article Feedback Extension
+ * This script determines if Special:ArticleFeedbackv5/<Article> should display 
+ * the feedback dashboard or not.
  */
 
 /**
@@ -17,11 +18,10 @@ aft5_debug = function( any ) {
 jQuery( function( $ ) {
 
 	var ua = navigator.userAgent.toLowerCase();
-	// Rule out MSIE 6/7/8, iPhone, iPod, iPad, Android
+	// Rule out MSIE 6/7, iPhone, iPod, iPad, Android
 	if(
 		(ua.indexOf( 'msie 6' ) != -1) ||
 		(ua.indexOf( 'msie 7' ) != -1) ||
-		/* (ua.indexOf( 'msie 8' ) != -1) || */
 		(ua.indexOf( 'firefox/2') != -1) ||
 		(ua.indexOf( 'firefox 2') != -1) ||
 		(ua.indexOf( 'android' ) != -1) ||
@@ -40,17 +40,19 @@ jQuery( function( $ ) {
 	var v4odds = mw.config.get( 'wgArticleFeedbackLotteryOdds', -1 );
 	var pageId = mw.config.get( 'aftv5PageId', -1 );
 
-	// special page central feedback page = show
+	// If we're on the Central Feedback page (Special:ArticleFeedbackv5 with
+	// no specific article specified), show the feedback dashboard.
 	if ( mw.config.get( 'wgNamespaceNumber' ) == -1 && pageId == 0 ) {
 		enable = true;
 	}
 
-	// aftv5Whitelist true = show
+	// If the article is whitelisted, show the feedback dashboard.
 	else if ( whitelist ) { 
 		enable = true;
 	}
 
-	// aftv4 doesn't win lottery (AF5v5 is inverse of AFTv4 lottery, for now) = show
+	// If the article is an AFTv4 lottery loser, show the feedback dashboard.
+	// In other words, the AFTv5 lottery is the inverse of the AFTv4 lottery.
 	else if ( !(( Number( pageId ) % 1000 ) < Number( v4odds ) * 10) ) {
 		enable = true
 	}
