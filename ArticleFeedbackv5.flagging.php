@@ -1016,6 +1016,10 @@ class ArticleFeedbackv5Flagging {
 			$this->log[] = array( 'unhidden', 'Automatic un-hide', 0 );
 		}
 
+		$this->results['abuse_report'] = wfMessage( 'articlefeedbackv5-form-abuse-count' )
+			->params( $this->results['abuse_count'] )
+			->escaped();
+
 		return true;
 	}
 
