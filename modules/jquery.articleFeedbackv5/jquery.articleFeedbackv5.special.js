@@ -150,10 +150,6 @@
 	 * Marker templates
 	 */
 	$.articleFeedbackv5special.markerTemplates = {
-		'new': '\
-			<span class="articleFeedbackv5-new-marker">\
-				<html:msg key="new-marker" />\
-			</span>',
 		'deleted': '\
 			<span class="articleFeedbackv5-deleted-marker">\
 				<html:msg key="deleted-marker" />\
@@ -718,9 +714,7 @@
 		var $tags = $row.find( '.articleFeedbackv5-comment-tags' );
 		if ( which == 'remove' ) {
 			$tags.find( '.articleFeedbackv5-' + tag + '-marker' ).remove();
-			if ( mw.config.get( 'afCanEdit' ) && $row.hasClass( 'articleFeedbackv5-feedback-highlighted' ) ) {
-				$.articleFeedbackv5special.changeTags( $row, 'new', 'add' );
-			} else if ( mw.config.get( 'afCanEdit' ) && $row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
+			if ( mw.config.get( 'afCanEdit' ) && $row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
 				$.articleFeedbackv5special.changeTags( $row, 'deleted', 'add' );
 			} else if ( mw.config.get( 'afCanEdit' ) && $row.hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
 				$.articleFeedbackv5special.changeTags( $row, 'hidden', 'add' );
