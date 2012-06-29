@@ -577,6 +577,7 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5Bucket2TagNames,
 			$wgArticleFeedbackv5Bucket5RatingCategories,
 			$wgArticleFeedbackv5DisplayBuckets,
+			$wgArticleFeedbackv5CTABuckets,
 			$wgArticleFeedbackv5Tracking,
 			$wgArticleFeedbackv5Options,
 			$wgArticleFeedbackv5LinkBuckets,
@@ -595,6 +596,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5Bucket2TagNames'] = $wgArticleFeedbackv5Bucket2TagNames;
 		$vars['wgArticleFeedbackv5Bucket5RatingCategories'] = $wgArticleFeedbackv5Bucket5RatingCategories;
 		$vars['wgArticleFeedbackv5DisplayBuckets'] = $wgArticleFeedbackv5DisplayBuckets;
+		$vars['wgArticleFeedbackv5CTABuckets'] = $wgArticleFeedbackv5CTABuckets;
 		$vars['wgArticleFeedbackv5Tracking'] = $wgArticleFeedbackv5Tracking;
 		$vars['wgArticleFeedbackv5Options'] = $wgArticleFeedbackv5Options;
 		$vars['wgArticleFeedbackv5LinkBuckets'] = $wgArticleFeedbackv5LinkBuckets;

@@ -243,6 +243,35 @@ $wgArticleFeedbackv5LinkBuckets = array(
 	'tracked' => false
 );
 
+// Bucket settings for CTAs
+$wgArticleFeedbackv5CTABuckets = array(
+	// Users can fall into one of several CTAs (these are defined in
+	// modules/jquery.articlefeedbackv5/jquery.articlefeedbackv5.js).  When a
+	// user arrives at the page, this config will be used by core bucketing to
+	// decide which of the available CTAs they see.  Whenever there's
+	// an update to the available buckets, change the version number to ensure
+	// the new odds are applied to everyone, not just people who have yet to be
+	// placed in a bucket.
+	'buckets' => array(
+		'zero'  => 0,
+		'one'   => 50,
+		'two'   => 10,
+		'three' => 0,
+		'four'  => 20,
+		'five'  => 20,
+	),
+	// This version number is added to all tracking event names, so that
+	// changes in the software don't corrupt the data being collected. Bump
+	// this when you want to start a new "experiment".
+	'version' => 1,
+	// Let users be tracked for a month, and then rebucket them, allowing some
+	// churn.
+	'expires' => 30,
+	// Track the event of users being bucketed - so we can be sure the odds
+	// worked out right. [LATER - depends on UDP logging being set up]
+	'tracked' => false,
+);
+
 /**
  * Abusive threshold
  *
@@ -260,25 +289,6 @@ $wgArticleFeedbackv5AbusiveThreshold = 3;
  * @var int
  */
 $wgArticleFeedbackv5HideAbuseThreshold = 5;
-
-/**
- * Temporary hack: either one default CTA is allowed (integer value), or an
- * array of form_id => cta_id associations.
- *
- * Allowed values: 0 (just a confirm message), 1 (call to edit), 2 (learn
- * more), 3 (survey), or 5 (view feedback)
- *
- * @var int
- */
-$wgArticleFeedbackv5SelectedCTA = array(
-	0 => 5,
-	1 => 5,
-	2 => 5,
-	3 => 5,
-	4 => 5,
-	5 => 5,
-	6 => 5,
-);
 
 /**
  * Turn on abuse filtering
