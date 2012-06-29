@@ -2617,7 +2617,8 @@
 
 		// check throttling
 		if ( $.articleFeedbackv5.throttleThresholdPostsPerHour != -1 ) {
-			var now = Date.now();
+			// MSIE<9 does not support Date.now(), hence the workaround 
+			var now = (new Date()).getTime();
 			var msInHour = 3600000;
 
 			var priorTimestamps = new Array();
