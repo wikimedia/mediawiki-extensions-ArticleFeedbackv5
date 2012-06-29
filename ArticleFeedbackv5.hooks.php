@@ -14,11 +14,19 @@ class ArticleFeedbackv5Hooks {
 	 * @var array
 	 */
 	protected static $modules = array(
+		'jquery.articleFeedbackv5.verify' => array(
+			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js',
+			'dependencies' => array(
+				'mediawiki.util',
+				'mediawiki.user',
+			),
+		),
 		'ext.articleFeedbackv5.startup' => array(
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js',
 			'dependencies' => array(
 				'mediawiki.util',
 				'mediawiki.user',
+				'jquery.articleFeedbackv5.verify',
 			),
 		),
 		'ext.articleFeedbackv5' => array(
@@ -57,8 +65,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-page-disabled',
 			),
 			'dependencies' => array(
-				'mediawiki.util',
-				'mediawiki.user',
+				'jquery.articleFeedbackv5.verify',
 				'jquery.articleFeedbackv5.special',
 			),
 		),
@@ -77,7 +84,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-talk-view-feedback',
 			),
 			'dependencies' => array(
-				'mediawiki.util',
+				'jquery.articleFeedbackv5.verify',
 				'jquery.articleFeedbackv5.track',
 			),
 		),
