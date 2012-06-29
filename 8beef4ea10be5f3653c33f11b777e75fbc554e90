@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX///Rg\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-06-29T21:52:05Z",
+      "side": 1,
+      "message": "parameter cta is not defined in getAllowedParams()",
+      "revId": "8beef4ea10be5f3653c33f11b777e75fbc554e90",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPX///Q0\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2817,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-06-29T21:52:05Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand the logic here, $.articleFeedbackv5.ctaId is always set to \u00270\u0027 after the for loop, this makes the for loop redundant.  then $.articleFeedbackv5.ctaId is set to requested below, which overwrites the valid check",
+      "revId": "8beef4ea10be5f3653c33f11b777e75fbc554e90",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
