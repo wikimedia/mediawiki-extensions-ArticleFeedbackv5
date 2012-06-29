@@ -478,23 +478,33 @@ class ArticleFeedbackv5Render {
 
 		// User info
 		if ( $record->af_user_ip ) {
-			// Anonymous user
-			$userName = wfMessage( 'articlefeedbackv5-form-anon-username' )->escaped();
+			$title = SpecialPage::getTitleFor( 'Contributions', $record->af_user_ip );
 
-			// Link to contributions page
-			$title = SpecialPage::getTitleFor( 'Contributions', $record->user_name );
-			$userLink = Linker::link( $title, htmlspecialchars( $record->user_name ) );
-			$anonMessage = wfMessage( 'articlefeedbackv5-form-anon-message' )->rawParams( $userLink )->escaped();
+			if ( IP::isIPv4( $record->af_user_ip ) ) {
+				// IPv4 - display the same way regular users are displayed
+
+				// display name = visitor's ip
+				$userName = Linker::link( $title, htmlspecialchars( $record->af_user_ip ) );
+			} else {
+				// not IPv4 - display IP on next line (since IPv6 is rather long, it'd break our display)
+
+				// display name = "a reader" (without link to contributions)
+				$userName = wfMessage( 'articlefeedbackv5-form-anon-username' )->escaped();
+
+				// additional line to be printed with the IPv6 address (with link to contributions)
+				$userLink = Linker::link( $title, htmlspecialchars( $record->user_name ) );
+				$anonMessage = wfMessage( 'articlefeedbackv5-form-anon-message' )->rawParams( $userLink )->escaped();
+			}
 		} else {
-			// Registered user, go to user page.
+			// build link to user's page
 			$title = Title::makeTitleSafe( NS_USER, $record->user_name );
 
-			// If user page doesn't exist, go someplace else.
-			// Use the contributions page for now, but it's really up to Fabrice.
+			// no user page = build link to user's contributions
 			if ( !$title || !$title->exists() ) {
 				$title = SpecialPage::getTitleFor( 'Contributions', $record->user_name );
 			}
 
+			// display name = username
 			$userName = Linker::link( $title, htmlspecialchars( $record->user_name ) );
 		}
 
