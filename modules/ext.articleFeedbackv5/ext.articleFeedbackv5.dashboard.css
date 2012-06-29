@@ -169,6 +169,7 @@ select {
 	display: inline-block;
 	margin-left: 10px;
 	margin-right: 5px;
+	display: inline;
 }
 #articleFeedbackv5-select-wrapper:hover,
 #articleFeedbackv5-select-wrapper.filter-active {
@@ -176,7 +177,6 @@ select {
 	background-image: url(images/bg-feedbackpage-header-on.png);
 	background-position: bottom left;
 	background-repeat: repeat-x;
-	display: inline;
 	padding-bottom: 0.6em;
 }
 #articleFeedbackv5-filter-select {
