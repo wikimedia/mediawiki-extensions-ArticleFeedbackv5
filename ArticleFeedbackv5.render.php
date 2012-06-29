@@ -478,13 +478,23 @@ class ArticleFeedbackv5Render {
 
 		// User info
 		if ( $record->af_user_ip ) {
-			// Anonymous user
-			$userName = wfMessage( 'articlefeedbackv5-form-anon-username' )->escaped();
+			if ( IP::isIPv4( $record->af_user_ip ) ) {
+				// IPv4 - display the same way regular users are displayed
 
-			// Link to contributions page
-			$title = SpecialPage::getTitleFor( 'Contributions', $record->user_name );
-			$userLink = Linker::link( $title, htmlspecialchars( $record->user_name ) );
-			$anonMessage = wfMessage( 'articlefeedbackv5-form-anon-message' )->rawParams( $userLink )->escaped();
+				// Anonymous user, point to this ip's contibutions
+				$title = SpecialPage::getTitleFor( 'Contributions', $record->af_user_ip );
+				$userName = Linker::link( $title, htmlspecialchars( $record->af_user_ip ) );
+			} else {
+				// not IPv4 - display IP on next line (since IPv6 is rather long, it'd break our display)
+
+				// Anonymous user
+				$userName = wfMessage( 'articlefeedbackv5-form-anon-username' )->escaped();
+
+				// Link to contributions page
+				$title = SpecialPage::getTitleFor( 'Contributions', $record->user_name );
+				$userLink = Linker::link( $title, htmlspecialchars( $record->user_name ) );
+				$anonMessage = wfMessage( 'articlefeedbackv5-form-anon-message' )->rawParams( $userLink )->escaped();
+			}
 		} else {
 			// Registered user, go to user page.
 			$title = Title::makeTitleSafe( NS_USER, $record->user_name );
