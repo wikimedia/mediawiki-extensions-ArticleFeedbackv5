@@ -2073,6 +2073,7 @@
 		$.articleFeedbackv5.editable = $.articleFeedbackv5.userCanEdit();
 		// Go ahead and bucket right away
 		$.articleFeedbackv5.selectBucket();
+		$.articleFeedbackv5.selectCTA();
 		// Select the trigger link(s)
 		$.articleFeedbackv5.selectTriggerLinks();
 		// Anything the bucket needs to do?
@@ -2676,6 +2677,7 @@
 			'pageid': $.articleFeedbackv5.pageId,
 			'revid': $.articleFeedbackv5.revisionId,
 			'bucket': $.articleFeedbackv5.bucketId,
+			'cta': $.articleFeedbackv5.ctaId,
 			'experiment': $.articleFeedbackv5.experiment().replace( 'option', '' ),
 			'link': $.articleFeedbackv5.submittedLinkId
 		} );
@@ -2692,10 +2694,8 @@
 			'success': function( data ) {
 				if ( 'articlefeedbackv5' in data
 						&& 'feedback_id' in data.articlefeedbackv5
-						&& 'cta_id' in data.articlefeedbackv5
 						&& 'aft_url' in data.articlefeedbackv5 ) {
 					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
-					$.articleFeedbackv5.selectCTA( data.articlefeedbackv5.cta_id );
 					$.articleFeedbackv5.specialUrl = data.articlefeedbackv5.aft_url;
 					$.articleFeedbackv5.permalink = data.articlefeedbackv5.permalink;
 					$.articleFeedbackv5.unlockForm();
@@ -2767,12 +2767,13 @@
 	// {{{ selectCTA
 
 	/**
-	 * Chooses a CTA
+	 * Chooses a bucket
 	 *
-	 * @param  requested int the requested id
-	 * @return int       the selected id
+	 * If the plugin is in debug mode, you'll be able to pass in a particular
+	 * bucket in the url.  Otherwise, it will use the core bucketing
+	 * (configuration for this module passed in) to choose a bucket.
 	 */
-	$.articleFeedbackv5.selectCTA = function ( requested ) {
+	$.articleFeedbackv5.selectCTA= function () {
 		// the check to verify a CTA is valid and can be shown
 		valid = function ( requested ) {
 			if (
@@ -2789,29 +2790,36 @@
 			return false;
 		}
 
-		// default CTA can be overridden using a GET-parameter
-		var parameter = mw.util.getParamValue( 'aftv5_cta' );
-		if ( parameter && valid( parameter ) ) {
-			$.articleFeedbackv5.ctaId = parameter;
-			return $.articleFeedbackv5.ctaId;
-		}
+		// Find out which CTA bucket they go in:
+		// 1. Requested in query string (debug only)
+		// 2. Core bucketing
+		var requested = mw.util.getParamValue( 'aftv5_cta' );
+		if ( requested && valid( requested ) ) {
+			$.articleFeedbackv5.ctaId = requested;
+		} else {
+			var cfg = mw.config.get( 'wgArticleFeedbackv5CTABuckets' );
+			var key = 'ext.articleFeedbackv5@' + cfg.version + '-cta'
+			var bucketName = mw.user.bucket( key, cfg );
+			var nameMap = { zero: '0', one: '1', two: '2', three: '3', four: '4', five: '5' };
+			requested = nameMap[bucketName];
 
-		// if the selected CTA is invalid, let's loop the rest for a fallback
-		if ( !valid( requested ) ) {
-			for ( var i = 1; i < 5; i++ ) {
-				if ( valid( i ) ) {
-					$.articleFeedbackv5.ctaId = i;
-					return $.articleFeedbackv5.ctaId;
+			// if the selected CTA is invalid, let's loop the rest for a fallback
+			if ( !valid( requested ) ) {
+				for ( var i = 1; i < 5; i++ ) {
+					if ( valid( i ) ) {
+						$.articleFeedbackv5.ctaId = i;
+					}
 				}
+
+				// no valid CTA found - return 0
+				$.articleFeedbackv5.ctaId = '0';
 			}
 
-			// no valid CTA found - return 0
-			$.articleFeedbackv5.ctaId = '0';
-			return $.articleFeedbackv5.ctaId;
+			$.articleFeedbackv5.ctaId = requested;
 		}
-
-		$.articleFeedbackv5.ctaId = requested;
-		return $.articleFeedbackv5.ctaId;
+		if ( $.articleFeedbackv5.debug ) {
+			aft5_debug( 'Using cta option #' + $.articleFeedbackv5.ctaId );
+		}
 	};
 
 	// }}}

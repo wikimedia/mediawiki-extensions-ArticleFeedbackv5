@@ -127,7 +127,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		// Save the response data
 		$ratingIds  = $this->saveUserRatings( $dbw, $userAnswers, $bucket, $params );
-		$ctaId      = $ratingIds['cta_id'];
 		$feedbackId = $ratingIds['feedback_id'];
 		$this->saveUserProperties( $feedbackId );
 
@@ -199,7 +198,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			array(
 				'result'      => 'Success',
 				'feedback_id' => $feedbackId,
-				'cta_id'      => $ctaId,
 				'aft_url'     => $aftUrl,
 				'permalink'   => $permalink,
 			)
@@ -714,7 +712,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		global $wgUser, $wgArticleFeedbackv5LinkBuckets, $wgLanguageCode;
 		$lang = Language::factory( $wgLanguageCode );
 
-		$ctaId      = $this->getCTAId( $data, $bucket );
+		$ctaId      = $params['cta'];
 		$revId      = $params['revid'];
 		$bucket     = $params['bucket'];
 		$experiment = $params['experiment'];
@@ -808,7 +806,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		wfProfileOut( __METHOD__ );
 
 		return array(
-			'cta_id'      => ( $ctaId ? $ctaId : 0 ),
 			'feedback_id' => ( $feedbackId ? $feedbackId : 0 )
 		);
 	}
@@ -869,27 +866,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		);
 
 		wfProfileOut( __METHOD__ );
-	}
-
-	/**
-	 * Picks a CTA to send the user to
-	 *
-	 * @param  $answers array the user's answers
-	 * @param  $bucket  int   the bucket id
-	 * @return int the cta id
-	 */
-	public function getCTAId( $answers, $bucket ) {
-		global $wgArticleFeedbackv5SelectedCTA;
-
-		// 1 default value for all form_ids
-		if ( is_int( $wgArticleFeedbackv5SelectedCTA ) ) {
-			return $wgArticleFeedbackv5SelectedCTA;
-		// cta_id for this form specifically
-		} elseif ( isset( $wgArticleFeedbackv5SelectedCTA[$bucket] ) ) {
-			return $wgArticleFeedbackv5SelectedCTA[$bucket];
-		}
-
-		return 0;
 	}
 
 	/**
