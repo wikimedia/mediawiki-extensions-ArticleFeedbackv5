@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX///O0\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-06-30T00:10:38Z",
+      "side": 1,
+      "message": "The three lines above seem to be duplicated and the return statement is redundant",
+      "revId": "9cc4f007e0290b875604650131a359d51bb9985e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPX///O4\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-06-30T00:10:38Z",
+      "side": 1,
+      "message": "I prefer having variables and methods defined inside object literal.  also why not use this keyword instead of $.aftVerify?",
+      "revId": "9cc4f007e0290b875604650131a359d51bb9985e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPX///Og\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-06-30T00:10:38Z",
+      "side": 1,
+      "message": "It seems enable would never be set to false, probably it should be initialized with false?",
+      "revId": "9cc4f007e0290b875604650131a359d51bb9985e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
