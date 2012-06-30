@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPX///OE\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-06-30T00:46:20Z",
+      "side": 1,
+      "message": "Two different messages there, but I\u0027ll consolidate.  The return is so they quit there and don\u0027t get to $.articleFeedbackv5special.setup(); below.",
+      "parentUuid": "AAAAPX///O0\u003d",
+      "revId": "9cc4f007e0290b875604650131a359d51bb9985e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPX///O4\u003d",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPX///N8\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-06-30T00:46:20Z",
+      "side": 1,
+      "message": "Mostly because this is the way I\u0027ve already done the other three files, and consistency seemed like the way to go.",
+      "parentUuid": "AAAAPX///O4\u003d",
+      "revId": "9cc4f007e0290b875604650131a359d51bb9985e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPX///Og\u003d",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2012-06-30T00:10:38Z",
       "side": 1,
       "message": "It seems enable would never be set to false, probably it should be initialized with false?",
+      "revId": "9cc4f007e0290b875604650131a359d51bb9985e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPX///N4\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 126
+      },
+      "writtenOn": "2012-06-30T00:46:20Z",
+      "side": 1,
+      "message": "Hm, yeah, that should be initialized with false.  Will fix.",
+      "parentUuid": "AAAAPX///Og\u003d",
       "revId": "9cc4f007e0290b875604650131a359d51bb9985e",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
