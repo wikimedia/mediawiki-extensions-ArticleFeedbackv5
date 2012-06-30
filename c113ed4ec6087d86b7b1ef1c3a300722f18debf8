@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX///OY\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2526,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-06-30T00:16:43Z",
+      "side": 1,
+      "message": "Shouldn\u0027t \u0027close\u0027 be localized?",
+      "revId": "c113ed4ec6087d86b7b1ef1c3a300722f18debf8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
