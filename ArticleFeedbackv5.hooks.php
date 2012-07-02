@@ -81,7 +81,7 @@ class ArticleFeedbackv5Hooks {
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js',
 			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.talk.css',
 			'messages' => array(
-				'articlefeedbackv5-talk-view-feedback',
+				'articlefeedbackv5-talk-feedback-link',
 			),
 			'dependencies' => array(
 				'jquery.articleFeedbackv5.verify',
