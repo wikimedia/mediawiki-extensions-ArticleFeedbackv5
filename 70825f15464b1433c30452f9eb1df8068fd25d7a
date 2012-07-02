@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX//9+o\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 2853,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2012-07-02T20:49:10Z",
+      "side": 1,
+      "message": "I think there\u0027s some code missing here, it looks like you want title.find( \u0027.foo\u0027 ).text( mw.msg( \u0027bar\u0027, link ) ) . Using .msg() directly on a jQuery object won\u0027t work unless there\u0027s something that defines $.fn.msg , and I\u0027m not aware of anything that does that.",
+      "revId": "70825f15464b1433c30452f9eb1df8068fd25d7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
