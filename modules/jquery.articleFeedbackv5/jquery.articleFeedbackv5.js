@@ -2798,7 +2798,7 @@
 				for ( var i = 1; i < 5; i++ ) {
 					if ( valid( i ) ) {
 						$.articleFeedbackv5.ctaId = i;
-						return;
+						break;
 					}
 				}
 			}
