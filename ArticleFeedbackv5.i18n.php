@@ -207,7 +207,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-desc' => 'Article feedback',
 	'articlefeedbackv5-comment-more' => 'More',
 	'articlefeedbackv5-comment-less' => 'Less',
-	'articlefeedbackv5-header-message' => 'Please promote good feedback -- and help others improve this article. $1',
+	'articlefeedbackv5-header-message-text' => 'Please promote good feedback and help improve this article. $1',
 	'articlefeedbackv5-header-message-link-text' => 'Learn more',
 	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-unsupported-message' => 'Sorry, your browser is not supported by this prototype. To see this page, please use a different browser.',
@@ -810,8 +810,8 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-comment-more' => 'Label for the button to expand the truncated comment on feedback. Swaps to articlefeedbackv5-comment-less after being clicked.
 {{Identical|More}}',
 	'articlefeedbackv5-comment-less' => 'Previous label (articlefeedbackv5-comment-more) switches to this after being clicked. This is the label for collapsing the expanded comments.',
-	'articlefeedbackv5-header-message' => 'A message to be displayed on the special page, encouraging users to behave well. Parameters:
-* $1 is a link to read more about this.',
+	'articlefeedbackv5-header-message-text' => 'A message to be displayed on the special page, encouraging users to behave well. Parameters: * $1 is a link to read more about this.',
+	'articlefeedbackv5-header-message-link-text' => 'The link text to be displayed (at $1 on articlefeedbackv5-header-message-text)',
 	'articlefeedbackv5-beta-label' => 'A label to be displayed on the special page, warning users that this extension is still in beta.',
 	'articlefeedbackv5-unsupported-message' => 'A message to be displayed on the special page, when a visitor with an unsupported browser visits.',
 	'articlefeedbackv5-viewactivity' => 'View feedback post activity action text',
