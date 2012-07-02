@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX//+AQ\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-02T20:06:14Z",
+      "side": 1,
+      "message": "Looks like cta can only be integers 0 - 5, the type should be defined as array( 0, 1, 2, 3, 4, 5 ) or use PARAM_MIN, PARAM_MAX",
+      "revId": "fe2f7fe6522a3376faad3a83b71c44b0a5bd600e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
