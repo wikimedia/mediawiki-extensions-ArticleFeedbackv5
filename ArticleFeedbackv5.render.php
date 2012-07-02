@@ -84,13 +84,16 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered row
 	 */
 	public function run( $record ) {
-		// Empty gray mask, for permalinks where the feedback is deleted or
-		// hidden, and the user doesn't have permission to see them
-		if  ( ( $this->isPermalink || $this->isHighlighted ) && (
-				( $record[0]->af_is_deleted && !$this->hasPermission( 'see_deleted' ) )
-				|| ( $record[0]->af_is_hidden && !$this->hasPermission( 'see_hidden') )
-			) ) {
-			return $this->emptyGrayMask( $record );
+		// Special cases: when the record is deleted/hidden, but the user
+		// doesn't have permission to see it
+		if ( ( $record[0]->af_is_deleted && !$this->hasPermission( 'see_deleted' ) )
+			|| ( $record[0]->af_is_hidden && !$this->hasPermission( 'see_hidden') ) ) {
+			if ( $this->isPermalink ) {
+				// Called via permalink: show an empty gray mask
+				return $this->emptyGrayMask( $record );
+			} else {
+				return '';
+			}
 		}
 
 		// Build with the actual content of the feedback (header + comment)
@@ -792,14 +795,7 @@ class ArticleFeedbackv5Render {
 			'class' => 'articleFeedbackv5-comment-tags',
 		) );
 
-		if ( $this->isHighlighted ) {
-			// <span class="articleFeedbackv5-new-marker">
-			//   {msg:articlefeedbackv5-new-marker}
-			// </span>
-			$html .= Html::element( 'span', array(
-				'class' => 'articleFeedbackv5-new-marker',
-			), wfMessage( 'articlefeedbackv5-new-marker' )->text() );
-		} elseif ( $this->hasPermission( 'can_feature' ) && $record->af_is_deleted ) {
+		if ( $this->hasPermission( 'can_feature' ) && $record->af_is_deleted ) {
 			// <span class="articleFeedbackv5-deleted-marker">
 			//   {msg:articlefeedbackv5-deleted-marker}
 			// </span>
