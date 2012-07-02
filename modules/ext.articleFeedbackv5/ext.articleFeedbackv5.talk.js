@@ -63,10 +63,10 @@ jQuery( function( $ ) {
 			'?' + $.param( params );
 
 		// Add the link to the feedback-page next to the title
-		var link = $( '<a id="articleFeedbackv5-talk-view-feedback"></a>' );
-		link.text( mw.msg( 'articlefeedbackv5-talk-view-feedback' ) );
+		var link = $( '<a id="articlefeedbackv5-talk-feedback-link"></a>' );
+		link.text( mw.msg( 'articlefeedbackv5-talk-feedback-link' ) );
 		link.html( link.html() + ' &raquo;' );
-		link.attr( 'title', mw.msg( 'articlefeedbackv5-talk-view-feedback' ) );
+		link.attr( 'title', mw.msg( 'articlefeedbackv5-talk-feedback-link' ) );
 		link.attr( 'href', $.aftTrack.trackingUrl( url, track_id ) );
 		$( '#firstHeading' ).append( link );
 
