@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX//+Ck\u003d",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-02T19:57:57Z",
+      "side": 1,
+      "message": "shouldn\u0027t \u0027ignore\u0027 be set to 100 for no clicktracking?",
+      "revId": "b8d54e6834d2e1fe9e4b70459884d340b136d158",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
