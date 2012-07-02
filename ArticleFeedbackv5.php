@@ -182,7 +182,7 @@ $wgArticleFeedbackv5Tracking = array(
 	// ensure the new odds are applied to everyone, not just people who have
 	// yet to be placed in a bucket.
 	'buckets' => array(
-		'ignore' => 0,
+		'ignore' => 100,
 		'track' => 0,
 		'track-front' => 0,
 		'track-special' => 0,
