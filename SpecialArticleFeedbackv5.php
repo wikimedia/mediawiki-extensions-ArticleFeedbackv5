@@ -480,9 +480,9 @@ class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
 		$out->addHTML(
 			Html::openElement(
 				'p',
-				array( 'id' => 'articlefeedbackv5-header-message' )
+				array( 'id' => 'articlefeedbackv5-header-message-text' )
 			)
-				. $this->msg( 'articlefeedbackv5-header-message' )->rawParams( $helpLink )->text()
+				. $this->msg( 'articlefeedbackv5-header-message-text' )->rawParams( $helpLink )->text()
 			. Html::closeElement( 'p' )
 		);
 
