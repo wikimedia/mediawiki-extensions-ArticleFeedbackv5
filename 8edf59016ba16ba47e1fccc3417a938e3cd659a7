@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX//+Hw\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 2816,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-02T17:52:10Z",
+      "side": 1,
+      "message": "should it be a break in here since you may want it to go though the debug code below",
+      "revId": "8edf59016ba16ba47e1fccc3417a938e3cd659a7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
