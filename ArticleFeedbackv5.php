@@ -182,15 +182,15 @@ $wgArticleFeedbackv5Tracking = array(
 	// ensure the new odds are applied to everyone, not just people who have
 	// yet to be placed in a bucket.
 	'buckets' => array(
-		'ignore' => 0,
+		'ignore' => 100,
 		'track' => 0,
 		'track-front' => 0,
-		'track-special' => 100,
+		'track-special' => 0,
 	),
 	// This version number is added to all tracking event names, and to all
 	// cookies, so that changes in the software don't corrupt the data being
 	// collected. Bump this when you want to start a new "experiment".
-	'version' => 7,
+	'version' => 8,
 	// Let users be tracked for a month, and then rebucket them, allowing some churn
 	'expires' => 30,
 	// Do not track the event of users being bucketed, at least for now.
