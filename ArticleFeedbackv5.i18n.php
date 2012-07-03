@@ -76,6 +76,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-contribs-status-action-hidden' => 'Hidden',
 	'articlefeedbackv5-contribs-status-action-oversight-requested' => 'Oversight requested',
 	'articlefeedbackv5-contribs-status-action-deleted' => 'Oversighted',
+	'articlefeedbackv5-contribs-hidden-feedback' => 'hidden comment',
 
 	/* Special Page */
 	'articlefeedbackv5-form-tools-label' => 'Tools',
@@ -674,6 +675,7 @@ The link to the edit tutorial',
 	'articlefeedbackv5-contribs-status-action-hidden' => 'Status when feedback has been hidden',
 	'articlefeedbackv5-contribs-status-action-oversight-requested' => 'Status when oversight has been requested on feedback',
 	'articlefeedbackv5-contribs-status-action-deleted' => 'Status when feedback has been oversighted',
+	'articlefeedbackv5-contribs-hidden-feedback' => 'message to display in my contributions, instead of the actual feedback, when feedback has been hidden/oversight requested/oversighted',
 	'articlefeedbackv5-form-tools-label' => '{{Identical|Tools}}',
 	'articlefeedbackv5-form-helpful-yes-label' => '{{Identical|Yes}}',
 	'articlefeedbackv5-form-helpful-no-label' => '{{Identical|No}}',
