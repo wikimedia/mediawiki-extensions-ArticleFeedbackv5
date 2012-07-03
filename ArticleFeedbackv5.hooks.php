@@ -800,7 +800,7 @@ class ArticleFeedbackv5Hooks {
 			$feedbackTitle,
 			htmlspecialchars( $date )
 		);
-		if ( $row->af_is_deleted ) {
+		if ( $row->af_is_hidden > 0 || $row->af_oversight_count > 0 || $row->af_is_deleted > 0 ) {
 			$d = '<span class="history-deleted">' . $d . '</span>';
 		}
 
@@ -810,7 +810,12 @@ class ArticleFeedbackv5Hooks {
 		// feedback
 		$feedback = $lang->getDirMark() . wfMessage( 'articlefeedbackv5-contribs-feedback', $feedbackTitle->getPrefixedDBkey(), $pageTitle->getPrefixedText() )->parse();
 		if ( $row->af_comment != '' ) {
-			$feedback .= Linker::commentBlock( $lang->truncate( $row->af_comment, 250 ) );
+			if ( $row->af_is_hidden > 0 || $row->af_oversight_count > 0 || $row->af_is_deleted > 0 ) {
+				// (probably) abusive comment that has been hidden/oversight-requested/oversighted
+				$feedback .= Linker::commentBlock( wfMessage( 'articlefeedbackv5-contribs-hidden-feedback' )->escaped() );
+			} else {
+				$feedback .= Linker::commentBlock( $lang->truncate( $row->af_comment, 250 ) );
+			}
 		}
 
 		// status (vote)
@@ -837,10 +842,13 @@ class ArticleFeedbackv5Hooks {
 		if ( $row->af_is_resolved > 0 ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-resolved' )->escaped();
 		}
+		if ( $row->af_is_hidden > 0 ) {
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-hidden' )->escaped();
+		}
 		if ( $row->af_oversight_count > 0 ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-oversight-requested' )->escaped();
 		}
-		if ( $row->af_is_deleted> 0 ) {
+		if ( $row->af_is_deleted > 0 ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-deleted' )->escaped();
 		}
 		if ( !empty( $actions ) ) {
