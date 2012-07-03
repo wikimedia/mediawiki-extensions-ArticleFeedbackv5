@@ -989,12 +989,6 @@ class ArticleFeedbackv5Flagging {
 			$this->results['abusive'] = 1;
 		}
 
-		if ( $this->isSystemCall() ) {
-			$this->log[] = array('autoflag', $notes, $this->isSystemCall());
-		} else {
-			$this->log[] = array('flag', $notes, $this->isSystemCall());
-		}
-
 		$this->log[] = array('unflag', $notes, $this->isSystemCall());
 
 		// NOTE: we are bypassing traditional sql escaping here
