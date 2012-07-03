@@ -156,6 +156,18 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 				'class' => 'articleFeedbackv5-activity-item'
 			) );
 
+			// determine the class a log entry is to get, based on whether it's a positive/negative
+			// taken against the feedback entry
+			$positiveActions = array( 'feature', 'resolve', 'unhidden', 'decline', 'unoversight', 'unflag', 'unrequest' );
+			$negativeActions = array( 'oversight', 'autohide', 'hidden', 'request', 'unfeature', 'unresolve', 'flag', 'autoflag' );
+
+			$logClass = 'articleFeedbackv5-activity-item-action';
+			if ( in_array( $item->log_action, $positiveActions ) ) {
+				$logClass .= ' articleFeedbackv5-activity-item-action-positive';
+			} elseif ( in_array( $item->log_action, $negativeActions ) ) {
+				$logClass .= ' articleFeedbackv5-activity-item-action-negative';
+			}
+
 			// so because concatenation is evil, I have to figure out which format to use
 			// either the $user $did_something_on $date
 			// or the $user $did_something_on $date : $comment
@@ -166,7 +178,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 					->rawParams(
 						ApiArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
 						Html::element( 'span', array(
-							'class' => 'articleFeedbackv5-activity-item-action'
+							'class' => $logClass
 							),
 							wfMessage( 'articlefeedbackv5-activity-' . $item->log_action,
 								array() )->text() ),
@@ -177,7 +189,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 					->rawParams(
 						ApiArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
 						Html::element( 'span', array(
-						'class' => 'articleFeedbackv5-activity-item-action'
+						'class' => $logClass
 							),
 							wfMessage( 'articlefeedbackv5-activity-' . $item->log_action,
 								array() )->text() ),
