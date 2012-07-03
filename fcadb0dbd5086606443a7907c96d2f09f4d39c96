@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX//9fY\u003d",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-03T17:52:40Z",
+      "side": 1,
+      "message": "you can also do $valid \u003d array( \u0027decline\u0027, \u0027request\u0027, .... );",
+      "revId": "fcadb0dbd5086606443a7907c96d2f09f4d39c96",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
