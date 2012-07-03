@@ -32,17 +32,35 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		global $wgUser; // we need to check permissions in here
 		global $wgLang; // timestamp formats
 
-		// If we can't hide, we can't see activity, return an empty string
+		// If we can't feature, we can't see activity, return an empty string
 		// front-end should never let you get here, but just in case
-		if ( !$wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
+		if ( !$wgUser->isAllowed( 'aftv5-feature-feedback' ) ) {
 			wfProfileOut( __METHOD__ );
 			$this->dieUsage( "You don't have permission to hide feedback", 'permissiondenied' );
 		}
 
 		// These are our valid activity log actions
-		$valid = array( 'oversight', 'unoversight', 'hidden', 'unhidden',
-				'decline', 'request', 'unrequest', 'flag', 'unflag',
-				'resolve', 'unresolve', 'feature', 'unfeature');
+		$valid = array();
+		$valid[] = 'decline';
+		$valid[] = 'request';
+		$valid[] = 'unrequest';
+		$valid[] = 'flag';
+		$valid[] = 'unflag';
+		$valid[] = 'resolve';
+		$valid[] = 'unresolve';
+		$valid[] = 'feature';
+		$valid[] = 'unfeature';
+		$valid[] = 'helpful';
+		$valid[] = 'unhelpful';
+
+		// if we have hide permissions, we're allowed to see oversight-related
+		// actions as well
+		if ( $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
+			$valid[] = 'oversight';
+			$valid[] = 'unoversight';
+			$valid[] = 'hidden';
+			$valid[] = 'unhidden';
+		}
 
 		// get our parameter information
 		$params = $this->extractRequestParams();
@@ -117,7 +135,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			$html .= Html::closeElement( 'div' );
 
 			// <div class="articleFeedbackv5-activity-count">$n actions on this post</div>
-			if ( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
+			if ( $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
 				$activity_count = $feedback->af_activity_count + $feedback->af_suppress_count;
 			} else {
 				$activity_count = $feedback->af_activity_count;
@@ -258,9 +276,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	protected function fetchActivity( $title, $feedbackId, $limit = 25, $continue = null ) {
 		global $wgUser; // we need to check permissions in here for suppressionlog stuff
 
-
 		// get afv5 log items PLUS suppress log
-		if ( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
+		if ( $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
 			$where = array (
 				0 => "(log_type = 'articlefeedbackv5')
 					OR (log_type = 'suppress' AND
