@@ -2506,33 +2506,31 @@
 			.append( '<div class="articleFeedbackv5-lock"></div>' );
 
 		// Add an empty dialog
-		$.articleFeedbackv5.$dialog = $( '<div id="articleFeedbackv5-dialog-wrap"></div>' );
+		$.articleFeedbackv5.$dialog = $( '<div id="articleFeedbackv5-dialog-wrap" class="articleFeedbackv5-panel"></div>' );
 		$.articleFeedbackv5.$holder.after( $.articleFeedbackv5.$dialog );
 
 		// Set up the dialog
 		$.articleFeedbackv5.$dialog.dialog( {
-			width: 500,
-			height: 300,
 			dialogClass: 'articleFeedbackv5-dialog',
-			resizable: true,
-			draggable: true,
-			title: $.articleFeedbackv5.currentBucket().getTitle(),
+			resizable: false,
+			draggable: false,
 			modal: true,
 			autoOpen: false,
 			close: function ( event, ui ) {
 				$.articleFeedbackv5.closeAsModal();
 			}
 		} );
-		var $title = $( '#ui-dialog-title-articleFeedbackv5-dialog-wrap' );
-		var $titlebar = $title.parent();
-		$title.addClass( 'articleFeedbackv5-title' );
 
-		// Set up the tooltip trigger for the dialoag
-		$titlebar.append( $.articleFeedbackv5.templates.helpToolTipTrigger );
-		$titlebar.find( '.articleFeedbackv5-tooltip-trigger' ).click( function ( e ) {
-			$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip' ).toggle();
-		} );
-		$titlebar.localize( { 'prefix': 'articlefeedbackv5-' } );
+		// Add close button to dialog
+		var $close = $( '\
+			<a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button">\
+				<span class="ui-icon ui-icon-closethick">' + mw.msg( 'articlefeedbackv5-overlay-close' ) + '</span>\
+			</a>' )
+			.click( function (e) {
+				e.preventDefault();
+				$.articleFeedbackv5.$dialog.dialog( 'close' );
+			});
+		$.articleFeedbackv5.$dialog.append( $close );
 
 		// Mark that we have containers
 		$.articleFeedbackv5.hasContainers = true;
@@ -2568,7 +2566,7 @@
 		// Set the title
 		if ( 'getTitle' in bucket ) {
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title' ).html( bucket.getTitle() );
-			$.articleFeedbackv5.$dialog.dialog( 'option', 'title', bucket.getTitle() );
+//			$.articleFeedbackv5.$dialog.dialog( 'option', 'title', bucket.getTitle() );
 		}
 
 		// Link to help is dependent on the group the user belongs to
@@ -2741,9 +2739,6 @@
 					// Set up error state
 					$.articleFeedbackv5.markFormErrors( { _api : msg } );
 					$.articleFeedbackv5.unlockForm();
-					if ( $.articleFeedbackv5.inDialog ) {
-						$.articleFeedbackv5.setDialogDimensions();
-					}
 				}
 			},
 			'error': function (xhr, tstatus, error) {
@@ -2892,9 +2887,6 @@
 		if( !$.articleFeedbackv5.inDialog ) {
 			$close.hide();
 		}
-
-		// Reset the panel dimensions
-		$.articleFeedbackv5.setDialogDimensions();
 
 		// Track the event
 		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-impression-' + from );
@@ -3245,9 +3237,8 @@
 			$.articleFeedbackv5.load( 'auto', 'overlay' );
 		}
 		if ( !$.articleFeedbackv5.inDialog ) {
-			$.articleFeedbackv5.setDialogDimensions();
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).hide();
-			$inner = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' ).detach();
+			$inner = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-buffer' ).detach();
 			$.articleFeedbackv5.$dialog.append( $inner );
 			$.articleFeedbackv5.$dialog.dialog( 'option', 'position', [ 'center', 'center' ] );
 			$.articleFeedbackv5.$dialog.dialog( 'open' );
@@ -3280,8 +3271,8 @@
 			}
 			$.articleFeedbackv5.setLinkId( 'X' );
 			$.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-tooltip' ).hide();
-			$inner = $.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-ui' ).detach();
-			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-buffer' ).append( $inner );
+			$inner = $.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-buffer' ).detach();
+			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' ).append( $inner );
 			$.articleFeedbackv5.$holder.show();
 			$.articleFeedbackv5.inDialog = false;
 			if ( 'cta' == $.articleFeedbackv5.nowShowing ) {
@@ -3311,19 +3302,6 @@
 		if ( 'onModalToggle' in $.articleFeedbackv5.currentBucket() ) {
 			$.articleFeedbackv5.currentBucket().onModalToggle( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
 		}
-	};
-
-	// }}}
-	// {{{ setDialogDimensions
-
-	/**
-	 * Sets the dialog's dimensions
-	 */
-	$.articleFeedbackv5.setDialogDimensions = function () {
-		var w = $.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).width();
-		var h = $.articleFeedbackv5.find( '.articleFeedbackv5-ui' ).height();
-		$.articleFeedbackv5.$dialog.dialog( 'option', 'width', w + 25 );
-		$.articleFeedbackv5.$dialog.dialog( 'option', 'height', h + 85 );
 	};
 
 	// }}}

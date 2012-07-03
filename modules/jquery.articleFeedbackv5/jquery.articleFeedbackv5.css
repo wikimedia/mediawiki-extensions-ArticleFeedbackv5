@@ -14,14 +14,16 @@
 	}
 }
 
+#mw-articlefeedbackv5 {
+	margin-bottom: 15px;
+}
+
 .articleFeedbackv5-panel {
 	background-color: #f9f9f9;
 	border: 1px solid #cccccc;
 	padding-bottom: 1px;
-	margin: 0 0 15px;
-	float: left;
-	width: 700px;
-	color: #000;
+	margin: 0;
+	width: 700px !important;
 }
 
 .articleFeedbackv5-error-message {
@@ -913,8 +915,20 @@
 
 /*** Dialog ***/
 .articleFeedbackv5-dialog {
+	width: 700px !important;
+	height: auto !important;
+	min-height: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+}
+
+.articleFeedbackv5-dialog .articleFeedbackv5-panel {
 	border: 1px solid #cccccc;
-	padding: 0;
+	min-height: 0 !important;
+}
+
+.articleFeedbackv5-dialog .ui-dialog-titlebar {
+	display: none;
 }
 
 .articleFeedbackv5-dialog + .ui-widget-overlay {
@@ -927,8 +941,10 @@
 }
 
 .articleFeedbackv5-dialog #ui-dialog-title-articleFeedbackv5-dialog-wrap {
+/*
 	padding-bottom: 0.17em;
 	padding-top: 0.5em;
+*/
 }
 
 .articleFeedbackv5-dialog.ui-dialog .ui-dialog-content {
@@ -936,9 +952,11 @@
 }
 
 .articleFeedbackv5-dialog.ui-dialog .ui-widget-header {
+/*
 	margin-bottom: 0;
 	padding-top: .5em;
 	padding-bottom: .17em;
+*/
 }
 
 .articleFeedbackv5-dialog.ui-dialog .articleFeedbackv5-tooltip-wrap {

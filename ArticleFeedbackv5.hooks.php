@@ -119,6 +119,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-cta5-button-text',
 				'articlefeedbackv5-cta5-confirmation-followup',
 				'articlefeedbackv5-cta5-confirmation-followup-linktext',
+				'articlefeedbackv5-overlay-close',
 				'articlefeedbackv5-bucket1-title',
 				'articlefeedbackv5-bucket1-question-toggle',
 				'articlefeedbackv5-bucket1-toggle-found-yes',
