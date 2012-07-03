@@ -482,7 +482,7 @@ class ArticleFeedbackv5Render {
 		// User info
 		if ( $record->af_user_ip ) {
 			// This is an anonymous (IP) user
-			
+
 			$title = SpecialPage::getTitleFor( 'Contributions', $record->af_user_ip );
 
 			if ( IP::isIPv4( $record->af_user_ip ) ) {
@@ -502,7 +502,7 @@ class ArticleFeedbackv5Render {
 			}
 		} else {
 			// This is a logged in user
-			
+
 			// build link to user's page
 			$title = Title::makeTitleSafe( NS_USER, $record->user_name );
 
@@ -1027,15 +1027,21 @@ class ArticleFeedbackv5Render {
 		}
 
 		// create containers for 3 toolbox-groups
-		$tools .= Html::rawElement( 'li', array(
-			'class' => 'tools_feature'
-		), Html::rawElement( 'ul', array(), $toolsFeature));
-		$tools .= Html::rawElement( 'li', array(
-			'class' => 'tools_delete'
-		), Html::rawElement( 'ul', array(), $toolsDelete));
-		$tools .= Html::rawElement( 'li', array(
-			'class' => 'tools_activity'
-		), Html::rawElement( 'ul', array(), $toolsActivity));
+		if ( $toolsFeature ) {
+			$tools .= Html::rawElement( 'li', array(
+				'class' => 'tools_feature'
+			), Html::rawElement( 'ul', array(), $toolsFeature));
+		}
+		if ( $toolsDelete ) {
+			$tools .= Html::rawElement( 'li', array(
+				'class' => 'tools_delete'
+			), Html::rawElement( 'ul', array(), $toolsDelete));
+		}
+		if ( $toolsActivity ) {
+			$tools .= Html::rawElement( 'li', array(
+				'class' => 'tools_activity'
+			), Html::rawElement( 'ul', array(), $toolsActivity));
+		}
 
 		// Close
 		$tools .=
@@ -1056,7 +1062,7 @@ class ArticleFeedbackv5Render {
 	private function renderPermalinkInfo( $record ) {
 		global $wgLang;
 
-		if ( !$this->hasPermission( 'see_hidden' ) ) {
+		if ( !$this->hasPermission( 'can_feature' ) ) {
 			return '';
 		}
 
@@ -1320,11 +1326,10 @@ class ArticleFeedbackv5Render {
 	 */
 	public function getActivityCount( stdClass $record ) {
 		$count = $record->af_activity_count;
-		if ( $this->hasPermission( 'can_delete' ) ) {
+		if ( $this->hasPermission( 'can_hide' ) ) {
 			$count += $record->af_suppress_count;
 		}
 		return $count;
 	}
 
 }
-
