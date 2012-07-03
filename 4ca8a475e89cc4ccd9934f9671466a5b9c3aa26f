@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX//9PE\u003d",
+        "filename": "ArticleFeedbackv5.fetch.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-03T23:14:51Z",
+      "side": 1,
+      "message": "A better way would be to initialize a new array and use the new array to store the result, in that case, you don\u0027t need to do all the array_* function below",
+      "revId": "4ca8a475e89cc4ccd9934f9671466a5b9c3aa26f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
