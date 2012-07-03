@@ -553,8 +553,13 @@ form.articleFeedbackv5-form-flyover textarea {
 }
 .articleFeedbackv5-activity-item .articleFeedbackv5-activity-item-action {
 	font-weight: bold;
-	color: red;
 	padding: 0 5px;
+}
+.articleFeedbackv5-activity-item .articleFeedbackv5-activity-item-action.articleFeedbackv5-activity-item-action-positive {
+	color: green;
+}
+.articleFeedbackv5-activity-item .articleFeedbackv5-activity-item-action.articleFeedbackv5-activity-item-action-negative {
+	color: red;
 }
 
 /** Screen for hidden/deleted **/
