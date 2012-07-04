@@ -329,7 +329,10 @@ class ArticleFeedbackv5Fetch {
 
 		// our $ids array is the correct order for every id that we're doing
 		// so we want to graft the extra data here into the id value
+		$fetchedIds = array();
 		foreach ( $rows as $row ) {
+			$fetchedIds[] = (int) $row->af_id;
+
 			if ( !array_key_exists( $row->af_id, $ids ) ) {
 				continue; // something has gone dreadfully wrong actually
 			} elseif ( !is_array( $ids[$row->af_id] ) ) {
@@ -348,6 +351,17 @@ class ArticleFeedbackv5Fetch {
 				);
 			}
 		}
+
+		// doublecheck that we fetched info for all id's from the db; if not,
+		// we should remove them from our results array (since it is not enriched
+		// with newly fetched data
+		$originalIds = array_keys( $ids );
+		$fetchedIds = array_unique( $fetchedIds );
+		$missingIds = array_diff( $originalIds, $fetchedIds );
+		foreach ( $missingIds as $id ) {
+			unset( $ids[$id] );
+		}
+
 		$result->records = $ids;
 
 		return $result;

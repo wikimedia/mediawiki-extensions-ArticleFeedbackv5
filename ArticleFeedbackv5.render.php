@@ -481,6 +481,8 @@ class ArticleFeedbackv5Render {
 
 		// User info
 		if ( $record->af_user_ip ) {
+			// This is an anonymous (IP) user
+
 			$title = SpecialPage::getTitleFor( 'Contributions', $record->af_user_ip );
 
 			if ( IP::isIPv4( $record->af_user_ip ) ) {
@@ -499,6 +501,8 @@ class ArticleFeedbackv5Render {
 				$anonMessage = wfMessage( 'articlefeedbackv5-form-anon-message' )->rawParams( $userLink )->escaped();
 			}
 		} else {
+			// This is a logged in user
+
 			// build link to user's page
 			$title = Title::makeTitleSafe( NS_USER, $record->user_name );
 
