@@ -2852,11 +2852,12 @@
 				.localize( { 'prefix': 'articlefeedbackv5-' } );
 			var track_id = $.articleFeedbackv5.ctaName() + '-permalink_click-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
 			var link = $.articleFeedbackv5.trackingUrl(
-					$.articleFeedbackv5.permalink,
-					track_id
+				$.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId,
+				track_id
 			);
+
 			title.find( '.articleFeedbackv5-confirmation-follow-up' ).msg( 'articlefeedbackv5-cta-confirmation-message', link );
-			
+
 			title = title.html();
 		}
 		$.articleFeedbackv5.$dialog.dialog( 'option', 'title', title );
