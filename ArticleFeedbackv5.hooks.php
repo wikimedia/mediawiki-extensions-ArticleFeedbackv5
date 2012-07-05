@@ -814,28 +814,30 @@ class ArticleFeedbackv5Hooks {
 		// chardiff
 		$chardiff = ' . . ' . ChangesList::showCharacterDifference( 0, strlen( $row->af_comment ) ) . ' . . ';
 
-		// feedback
-		$feedback = $lang->getDirMark() . wfMessage( 'articlefeedbackv5-contribs-feedback', $feedbackTitle->getPrefixedDBkey(), $pageTitle->getPrefixedText() )->parse();
+		// article feedback is given on
+		$article = $lang->getDirMark() . wfMessage( 'articlefeedbackv5-contribs-feedback', $feedbackTitle->getPrefixedDBkey(), $pageTitle->getPrefixedText() )->parse();
+
+		// show user names for /newbies as there may be different users.
+		$userlink = '';
+		if ( $page->contribs == 'newbie' ) {
+			$userlink = ' . . ' . Linker::userLink( $row->af_user_id, User::whoIs( $row->af_user_id ) );
+			$userlink .= ' ' . wfMessage( 'parentheses' )->rawParams(
+				Linker::userTalkLink( $row->af_user_id, User::whoIs( $row->af_user_id ) ) )->escaped() . ' ';
+		}
+
+		// feedback (truncated)
+		$feedback = '';
 		if ( $row->af_comment != '' ) {
 			if ( $row->af_is_hidden > 0 || $row->af_oversight_count > 0 || $row->af_is_deleted > 0 ) {
 				// (probably) abusive comment that has been hidden/oversight-requested/oversighted
-				$feedback .= Linker::commentBlock( wfMessage( 'articlefeedbackv5-contribs-hidden-feedback' )->escaped() );
+				$feedback = Linker::commentBlock( wfMessage( 'articlefeedbackv5-contribs-hidden-feedback' )->escaped() );
 			} else {
-				$feedback .= Linker::commentBlock( $lang->truncate( $row->af_comment, 250 ) );
+				$feedback = Linker::commentBlock( $lang->truncate( $row->af_comment, 250 ) );
 			}
 		}
 
-		// status (vote)
-		if ( $row->af_yes_no === '1' ) {
-			$status = wfMessage( 'articlefeedbackv5-contribs-status-positive' )->escaped();
-		} elseif ( $row->af_yes_no === '0' ) {
-			$status = wfMessage( 'articlefeedbackv5-contribs-status-negative' )->escaped();
-		} else {
-			$status = wfMessage( 'articlefeedbackv5-contribs-status-neutral' )->escaped();
-		}
-		$status = ' . . ' . wfMessage( 'articlefeedbackv5-contribs-status', $status )->escaped();
-
 		// status (actions taken)
+		$status = '';
 		$actions = array();
 		if ( $row->af_net_helpfulness > 0 ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-helpful' )->escaped();
@@ -859,10 +861,10 @@ class ArticleFeedbackv5Hooks {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-deleted' )->escaped();
 		}
 		if ( !empty( $actions ) ) {
-			$status .= ' - ' . implode( ', ', $actions);
+			$status = ' . . ' . wfMessage( 'articlefeedbackv5-contribs-status', implode( ', ', $actions) )->escaped();
 		}
 
-		$ret = "{$d} {$chardiff} {$feedback} {$status}\n";
+		$ret = "{$d} {$chardiff} {$article} {$userlink} {$feedback} {$status}\n";
 
 		return true;
 	}
@@ -893,30 +895,26 @@ class ArticleFeedbackv5Hooks {
 				}
 			}
 
-			// build parameters for AFT-data
-			$tables = array(
-				'aft_article_feedback',
-				'rating'  => 'aft_article_answer',
-				'comment' => 'aft_article_answer',
-			);
+			$tables[] = 'aft_article_feedback';
+			$tables['rating'] = 'aft_article_answer';
+			$tables['comment'] = 'aft_article_answer';
 
-			$fields = array(
-				'af_id',
-				'af_page_id',
-				'af_created',
-				'af_net_helpfulness',
-				'af_abuse_count',
-				'af_is_featured',
-				'af_is_resolved',
-				'af_is_hidden',
-				'af_oversight_count',
-				'af_is_deleted',
-				'rating.aa_response_boolean AS af_yes_no',
-				'comment.aa_response_text AS af_comment',
-				'af_created AS ' . $pager->getIndexField() // used for navbar
-			);
+			$fields[] = 'af_id';
+			$fields[] = 'af_page_id';
+			$fields[] = 'af_created';
+			$fields[] = 'af_user_id';
+			$fields[] = 'af_user_ip';
+			$fields[] = 'af_net_helpfulness';
+			$fields[] = 'af_abuse_count';
+			$fields[] = 'af_is_featured';
+			$fields[] = 'af_is_resolved';
+			$fields[] = 'af_is_hidden';
+			$fields[] = 'af_oversight_count';
+			$fields[] = 'af_is_deleted';
+			$fields[] = 'rating.aa_response_boolean AS af_yes_no';
+			$fields[] = 'comment.aa_response_text AS af_comment';
+			$fields[] = 'af_created AS ' . $pager->getIndexField(); // used for navbar
 
-			$conds = array();
 			if ( $pager->contribs != 'newbie' ) {
 				$uid = User::idFromName( $pager->target );
 				if ( $uid ) {
@@ -926,30 +924,38 @@ class ArticleFeedbackv5Hooks {
 					$conds['af_user_id'] = 0;
 					$conds['af_user_ip'] = $pager->target;
 				}
-				if ( $offset ) {
-					$operator = $descending ? '>' : '<';
-					$conds[] = "af_created $operator " . $pager->mDb->addQuotes( $offset );
-				}
+			} else {
+				$tables[] = 'user_groups';
+
+				$max = $pager->mDb->selectField( 'user', 'max(user_id)', false, __METHOD__ );
+				$conds[] = 'af_user_id >' . (int)( $max - $max / 100 );
+				$conds[] = 'ug_group IS NULL';
+
+				$join_conds['user_groups'] = array(
+					'LEFT JOIN',
+					'ug_user = af_user_id AND ug_group = "bot"'
+				);
+			}
+			if ( $offset ) {
+				$operator = $descending ? '>' : '<';
+				$conds[] = "af_created $operator " . $pager->mDb->addQuotes( $offset );
 			}
 
 			$fname = __METHOD__;
 
 			$order = $descending ? 'ASC' : 'DESC'; // something's wrong with $descending - see logic applied in includes/Pager.php
-			$options = array(
-				'ORDER BY' => array( $pager->getIndexField() . " $order" ),
-				'LIMIT' => $limit
+			$options['ORDER BY'] = array( $pager->getIndexField() . " $order" );
+			$options['LIMIT'] = $limit;
+
+			$join_conds['rating'] = array(
+				'LEFT JOIN',
+				'rating.aa_feedback_id = af_id AND rating.aa_field_id IN (' . implode( ',', $ratingFields ) . ')'
+			);
+			$join_conds['comment'] = array(
+				'LEFT JOIN',
+				'comment.aa_feedback_id = af_id AND comment.aa_field_id IN (' . implode( ',', $commentFields ) . ')'
 			);
 
-			$join_conds = array(
-				'rating'  => array(
-					'LEFT JOIN',
-					'rating.aa_feedback_id = af_id AND rating.aa_field_id IN (' . implode( ',', $ratingFields ) . ')'
-				),
-				'comment' => array(
-					'LEFT JOIN',
-					'comment.aa_feedback_id = af_id AND comment.aa_field_id IN (' . implode( ',', $commentFields ) . ')'
-				)
-			);
 
 			$data[] = $pager->mDb->select( $tables, $fields, $conds, $fname, $options, $join_conds );
 		}
