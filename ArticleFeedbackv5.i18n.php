@@ -66,9 +66,6 @@ $messages['en'] = array(
 	/* My Contributions */
 	'articlefeedbackv5-contribs-feedback' => '[[$1|Feedback on $2]]',
 	'articlefeedbackv5-contribs-status' => 'Status: $1',
-	'articlefeedbackv5-contribs-status-positive' => 'Positive',
-	'articlefeedbackv5-contribs-status-negative' => 'Negative',
-	'articlefeedbackv5-contribs-status-neutral' => 'Neutral',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Helpful',
 	'articlefeedbackv5-contribs-status-action-flagged' => 'Flagged',
 	'articlefeedbackv5-contribs-status-action-featured' => 'Featured',
@@ -665,9 +662,6 @@ The link to the edit tutorial',
 	'articlefeedbackv5-error-nofeedback' => 'This error message will be displayed above the form (but below the title) if the user has attempted to submit a blank form.',
 	'articlefeedbackv5-contribs-feedback' => 'AFT entry permalinklink message displayed on My Contributions -- $1 is the feedback permalink, $2 the article title',
 	'articlefeedbackv5-contribs-status' => 'AFT entry status message displayed on My Contributions',
-	'articlefeedbackv5-contribs-status-positive' => 'Status when the person voted (s)he did found what (s)he was looking for',
-	'articlefeedbackv5-contribs-status-negative' => 'Status when the person voted (s)he did not find what (s)he was looking for',
-	'articlefeedbackv5-contribs-status-neutral' => 'Status when the person did not vote',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Status when feedback has been marked as helpful',
 	'articlefeedbackv5-contribs-status-action-flagged' => 'Status when feedback has been flagged',
 	'articlefeedbackv5-contribs-status-action-featured' => 'Status when feedback has been featured',
@@ -9919,7 +9913,7 @@ $messages['ko'] = array(
 	'articleFeedbackv5-table-heading-average' => '평균',
 	'articleFeedbackv5-copy-above-highlow-tables' => '실험적인 기능입니다. 기능에 대한 의견을 [$1 토론란]에 남겨 주세요.',
 	'articlefeedbackv5-dashboard-bottom' => "'''알림''': 우리는 이 평가 상자에서 문서를 다양하게 나타내는 실험을 계속할 것입니다. 지금 평가 상자는 다음 문서를 나타냅니다:
-* 최고/최저 평가를 받은 문서: 지난 24시간 이내에 평가를 10번 이상 받은 문서로  제출된 평가 모두의 산술평균을 구해 평균으로 합니다. 
+* 최고/최저 평가를 받은 문서: 지난 24시간 이내에 평가를 10번 이상 받은 문서로  제출된 평가 모두의 산술평균을 구해 평균으로 합니다.
 * 최근 낮은 평가를 받은 문서: 지난 24시간 이내에 분류에 상관 없이 70%이상이 낮게(별 2개 이하) 평가한 문서로  평가를 10번 이상 받은 문서만 나타납니다.",
 	'articlefeedbackv5' => '문서 평가 현황',
 	'articlefeedbackv5-desc' => '문서 평가',
