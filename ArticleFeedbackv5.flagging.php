@@ -209,26 +209,8 @@ class ArticleFeedbackv5Flagging {
 			$this->update[] = 'af_relevance_sort = - af_relevance_score';
 		}
 
-		// if we've added to the activity log, bump up the counts
-		if ( count( $this->log ) > 0 ) {
-			global $wgLogActionsHandlers;
-			$suppress = 0;
-			$normal = 0;
-			foreach ( $this->log as $line ) {
-				$t = $line[0];
-				if ( isset( $wgLogActionsHandlers["suppress/$t"] ) ) {
-					++$suppress;
-				} else {
-					++$normal;
-				}
-			}
-			if ( $suppress > 0 ) {
-				$this->update[] = 'af_suppress_count = af_suppress_count + ' . $suppress;
-			}
-			if ( $normal > 0 ) {
-				$this->update[] = 'af_activity_count = af_activity_count + ' . $normal;
-			}
-		}
+		// note: af_activity_count & af_suppress_count need to be updated as well
+		// ApiArticleFeedbackv5Utils::logActivity takes care of that
 
 		// we were valid
 		$success = $dbw->update(
@@ -1030,7 +1012,15 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_helpful( stdClass $record, $notes, $timestamp, $toggle, $direction ) {
-		return $this->vote( $record, 'helpful', $notes, $timestamp, $toggle, $direction );
+		$vote = $this->vote( $record, 'helpful', $notes, $timestamp, $toggle, $direction );
+
+		if ( $record->af_helpful_count < $this->helpfulCount ) {
+			$this->log[] = array('helpful', $notes, $this->isSystemCall());
+		} else {
+			$this->log[] = array('undo-helpful', $notes, $this->isSystemCall());
+		}
+
+		return $vote;
 	}
 
 	/**
@@ -1046,7 +1036,15 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_unhelpful( stdClass $record, $notes, $timestamp, $toggle, $direction ) {
-		return $this->vote( $record, 'unhelpful', $notes, $timestamp, $toggle, $direction );
+		$vote = $this->vote( $record, 'unhelpful', $notes, $timestamp, $toggle, $direction );
+
+		if ( $record->af_unhelpful_count < $this->unhelpfulCount ) {
+			$this->log[] = array('unhelpful', $notes, $this->isSystemCall());
+		} else {
+			$this->log[] = array('undo-unhelpful', $notes, $this->isSystemCall());
+		}
+
+		return $vote;
 	}
 
 	/**

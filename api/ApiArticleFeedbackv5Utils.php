@@ -235,27 +235,19 @@ class ApiArticleFeedbackv5Utils {
 	public static function logActivity( $type, $pageId, $itemId, $notes, $doer = null, $params = array() ) {
 		wfProfileIn( __METHOD__ );
 
-		// These are our valid activity log actions
-		$valid = array( 'oversight', 'unoversight', 'hidden', 'unhidden',
-				'decline', 'request', 'unrequest', 'flag', 'unflag', 'autoflag', 'autohide',
-				'feature', 'unfeature', 'resolve', 'unresolve' );
-
-		// suppress
-		$suppress = array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest');
-
-		// if we do not have a valid action, return immediately
-		if ( !in_array( $type, $valid ) ) {
-			wfProfileOut( __METHOD__ );
-			return;
-		}
+		global $wgLogActionsHandlers;
 
 		// log type might be afv5 or suppress
-		$logtype = 'articlefeedbackv5';
-		$increment = 'af_activity_count';
-
-		if ( in_array( $type, $suppress ) ) {
+		if ( isset( $wgLogActionsHandlers["suppress/$type"] ) ) {
 			$logtype = 'suppress';
 			$increment = 'af_suppress_count';
+		} elseif ( isset( $wgLogActionsHandlers["articlefeedbackv5/$type"] ) ) {
+			$logtype = 'articlefeedbackv5';
+			$increment = 'af_activity_count';
+		} else {
+			// if we do not have a valid action, return immediately
+			wfProfileOut( __METHOD__ );
+			return;
 		}
 
 		// we only have the page id, we need the string page name for the permalink
