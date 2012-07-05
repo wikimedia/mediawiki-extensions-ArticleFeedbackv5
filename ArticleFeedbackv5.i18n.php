@@ -514,6 +514,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-log-unfeature' => 'un-featured $1 on $2',
 	'articlefeedbackv5-log-resolve' => 'marked as resolved $1 on $2',
 	'articlefeedbackv5-log-unresolve' => 'un-marked as resolved $1 on $2',
+	'articlefeedbackv5-log-helpful' => 'marked as helpful $1 on $2',
+	'articlefeedbackv5-log-unhelpful' => 'marked as unhelpful $1 on $2',
+	'articlefeedbackv5-log-undo-helpful' => 'un-marked as helpful $1 on $2',
+	'articlefeedbackv5-log-undo-unhelpful' => 'un-marked as unhelpful $1 on $2',
 
 	/* Activity Pane phrases */
 	'articlefeedbackv5-activity-pane-header' => 'Activity Log',
@@ -533,6 +537,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-activity-unresolve' => 'un-marked this post as resolved on',
 	'articlefeedbackv5-activity-feature' => 'featured this post on',
 	'articlefeedbackv5-activity-unfeature' => 'un-featured this post on',
+	'articlefeedbackv5-activity-helpful' => 'marked this post as helpful on',
+	'articlefeedbackv5-activity-unhelpful' => 'marked this post as unhelpful on',
+	'articlefeedbackv5-activity-undo-helpful' => 'unmarked this post as helpful on',
+	'articlefeedbackv5-activity-undo-unhelpful' => 'unmarked this post as unhelpful on',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 action on this post|$1 actions on this post}}',
 	'articlefeedbackv5-activity-more' => 'Show more Activity',
 	'articlefeedbackv5-activity-item-comment' => '$1 $2 $3 : $4',
@@ -1077,6 +1085,30 @@ This URL can be changed to point to a translated version of the page if it exist
 	'articlefeedbackv5-log-autoflag' => 'Log entry for when a feedback post is automatically flagged as abuse (e.g., by an abuse filter):
 * <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
 * <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-feature' => 'Log entry for when a feedback post is marked as featured:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unfeature' => 'Log entry for when a feedback post is un-marked as featured:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-resolve' => 'Log entry for when a feedback post is marked as resolved:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unresolve' => 'Log entry for when a feedback post is un-markes as resolved:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-helpful' => 'Log entry for when a feedback post has been marked as helpful:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-undo-helpful' => 'Log entry for when a feedback post has been un-marked as helpful:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unhelpful' => 'Log entry for when a feedback post is marked as unhelpful:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-undo-unhelpful' => 'Log entry for when a feedback post is un-marked as unhelpful:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
 	'articlefeedbackv5-log-feedback-linktext' => 'The text for a link to the feedback ($1 is the ID)',
 	'articlefeedbackv5-activity-pane-header' => 'Flyover panel caption',
 	'articlefeedbackv5-activity-feedback-info' => 'Post information template. Parameters:
@@ -1097,6 +1129,10 @@ This URL can be changed to point to a translated version of the page if it exist
 	'articlefeedbackv5-activity-unresolve' => 'Un-mark feedback as resolved',
 	'articlefeedbackv5-activity-feature' => 'Feature feedback',
 	'articlefeedbackv5-activity-unfeature' => 'Un-feature feedback',
+	'articlefeedbackv5-activity-helpful' => 'Mark feedback as helpful',
+	'articlefeedbackv5-activity-undo-helpful' => 'Un-mark feedback as helpful',
+	'articlefeedbackv5-activity-unhelpful' => 'Mark feedback as unhelpful',
+	'articlefeedbackv5-activity-undo-unhelpful' => 'Un-mark feedback as unhelpful',
 	'articlefeedbackv5-activity-count' => 'Template for activity items count',
 	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
 	'articlefeedbackv5-activity-item-comment' => 'Text for the activity panel - user name link, activity action, date and comment',
@@ -3123,6 +3159,10 @@ $messages['de'] = array(
 	'articlefeedbackv5-log-unfeature' => 'nahm die Hervorhebung von $1 zu $2 zurück',
 	'articlefeedbackv5-log-resolve' => 'markierte $1 zu $2 als erledigt',
 	'articlefeedbackv5-log-unresolve' => 'nahm die Markierung als erledigt von $1 zu $2 zurück',
+	'articlefeedbackv5-log-helpful' => 'marked as helpful $1 on $2',
+	'articlefeedbackv5-log-unhelpful' => 'marked as unhelpful $1 on $2',
+	'articlefeedbackv5-log-undo-helpful' => 'un-marked as helpful $1 on $2',
+	'articlefeedbackv5-log-undo-unhelpful' => 'un-marked as unhelpful $1 on $2',
 	'articlefeedbackv5-activity-pane-header' => 'Aktivitäten-Logbuch',
 	'articlefeedbackv5-activity-feedback-info' => 'Rückmeldung Nr. $1 von $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Zu $1 verfasst',
@@ -10002,7 +10042,7 @@ $messages['ko'] = array(
 	'articleFeedbackv5-table-heading-average' => '평균',
 	'articleFeedbackv5-copy-above-highlow-tables' => '실험적인 기능입니다. 기능에 대한 의견을 [$1 토론란]에 남겨 주세요.',
 	'articlefeedbackv5-dashboard-bottom' => "'''알림''': 우리는 이 평가 상자에서 문서를 다양하게 나타내는 실험을 계속할 것입니다. 지금 평가 상자는 다음 문서를 나타냅니다:
-* 최고/최저 평가를 받은 문서: 지난 24시간 이내에 평가를 10번 이상 받은 문서로  제출된 평가 모두의 산술평균을 구해 평균으로 합니다. 
+* 최고/최저 평가를 받은 문서: 지난 24시간 이내에 평가를 10번 이상 받은 문서로  제출된 평가 모두의 산술평균을 구해 평균으로 합니다.
 * 최근 낮은 평가를 받은 문서: 지난 24시간 이내에 분류에 상관 없이 70%이상이 낮게(별 2개 이하) 평가한 문서로  평가를 10번 이상 받은 문서만 나타납니다.",
 	'articlefeedbackv5' => '문서 평가 현황',
 	'articlefeedbackv5-desc' => '문서 평가',
@@ -15443,7 +15483,7 @@ $3
 
 Если вы не отправляли подобного запроса, пожалуйста, проигнорируйте это сообщение, и мы больше не будем вас тревожить.
 
-С наилучшими пожеланиями и благодарностью — 
+С наилучшими пожеланиями и благодарностью —
 команда проекта {{SITENAME}}',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Запрошен надзор для страницы отзыва',
 );

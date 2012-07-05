@@ -457,7 +457,7 @@ $wgLogHeaders['articlefeedbackv5'] = 'articlefeedbackv5-log-header';
 foreach ( array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest' ) as $t) {
 	$wgLogActionsHandlers["suppress/$t"] = 'ArticleFeedbackv5LogFormatter';
 }
-foreach ( array( 'hidden', 'unhidden', 'flag', 'unflag', 'autoflag', 'autohide', 'feature', 'unfeature', 'resolve', 'unresolve' ) as $t) {
+foreach ( array( 'hidden', 'unhidden', 'flag', 'unflag', 'autoflag', 'autohide', 'feature', 'unfeature', 'resolve', 'unresolve', 'helpful', 'unhelpful', 'undo-helpful', 'undo-unhelpful' ) as $t) {
 	$wgLogActionsHandlers["articlefeedbackv5/$t"] = 'ArticleFeedbackv5LogFormatter';
 }
 

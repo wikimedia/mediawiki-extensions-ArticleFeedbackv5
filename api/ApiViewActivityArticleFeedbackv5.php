@@ -51,7 +51,9 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		$valid[] = 'feature';
 		$valid[] = 'unfeature';
 		$valid[] = 'helpful';
+		$valid[] = 'undo-helpful';
 		$valid[] = 'unhelpful';
+		$valid[] = 'undo-unhelpful';
 
 		// if we have hide permissions, we're allowed to see oversight-related
 		// actions as well
@@ -156,7 +158,6 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 		// divs of activity items
 		foreach ( $activities as $item ) {
-
 			// if we do not have a valid action, skip this item
 			if ( !in_array( $item->log_action, $valid ) ) {
 				continue;
@@ -176,8 +177,9 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 			// determine the class a log entry is to get, based on whether it's a positive/negative
 			// taken against the feedback entry
-			$positiveActions = array( 'feature', 'resolve', 'unhidden', 'decline', 'unoversight', 'unflag', 'unrequest' );
-			$negativeActions = array( 'oversight', 'autohide', 'hidden', 'request', 'unfeature', 'unresolve', 'flag', 'autoflag' );
+			$positiveActions = array( 'feature', 'resolve', 'unhidden', 'decline', 'unoversight', 'unflag', 'unrequest', 'helpful' );
+			$negativeActions = array( 'oversight', 'autohide', 'hidden', 'request', 'unfeature', 'unresolve', 'flag', 'autoflag', 'unhelpful' );
+			// neutral actions: undo-helpful, undo-unhelpful
 
 			$logClass = 'articleFeedbackv5-activity-item-action';
 			if ( in_array( $item->log_action, $positiveActions ) ) {
