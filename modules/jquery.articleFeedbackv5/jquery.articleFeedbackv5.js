@@ -1469,34 +1469,6 @@
 			},
 
 			// }}}
-			// {{{ getTitle
-
-			/**
-			 * Gets the title
-			 *
-			 * @return string the title
-			 */
-			getTitle: function () {
-				var $title = $( '<div></div>' )
-					.html( $.articleFeedbackv5.currentCTA().templates.title )
-					.localize( { 'prefix': 'articlefeedbackv5-' } );
-				var link = $.articleFeedbackv5.trackingUrl(
-					$.articleFeedbackv5.permalink,
-					'cta_view_feedback-link_click'
-				);
-				var track_id = $.articleFeedbackv5.ctaName() + '-link_click-' +
-					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
-				$title.find( '.articleFeedbackv5-confirmation-follow-up' )
-					.html( $.articleFeedbackv5.buildLink(
-						'articlefeedbackv5-cta5-confirmation-followup',
-						{
-							href: $.articleFeedbackv5.trackingUrl( $.articleFeedbackv5.permalink, track_id ),
-							text: 'articlefeedbackv5-cta5-confirmation-followup-linktext'
-						} ) );
-				return $title.html();
-			},
-
-			// }}}
 			// {{{ afterBuild
 
 			/**
