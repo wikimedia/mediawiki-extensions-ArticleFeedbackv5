@@ -1301,8 +1301,8 @@
 							<span><html:msg key="cta4-button-text-or" /></span>\
 							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-login"><span class="ui-button-text"><html:msg key="cta4-button-text-login" /></span></a>\
 							<a href="#" class="articleFeedbackv5-cta-button-later"><html:msg key="cta4-button-text-later" /></a>\
-							<div class="clear"></div>\
 						</div>\
+						<div class="clear"></div>\
 					</div>\
 					'
 			},
