@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQX///aA\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-06T22:58:30Z",
+      "side": 1,
+      "message": "User:whoIs() may return false, probably should check that first.  \n\nUser::whoIs( $row-\u003eaf_user_id ) is invoked twice, this will make one extra redundant database query, the result should be saved in a variable\n\nDon\u0027t you need to check $row-\u003eaf_user_id !\u003d 0 for anonymous feedback? or $row-\u003eaf_user_id is never 0 in this case?",
+      "revId": "9897a85805ee015312ca985ef5086456c4ea421b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
