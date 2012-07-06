@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQX///Zo\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 3165,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-06T23:31:30Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to add the message key to a non-English language",
+      "revId": "5784978ff8e17d83d3242a3a6bd06a07fd3dde7c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
