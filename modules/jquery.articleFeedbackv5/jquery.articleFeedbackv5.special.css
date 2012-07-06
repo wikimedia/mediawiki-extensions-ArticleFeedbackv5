@@ -7,32 +7,39 @@
 	min-height: 150px;
 	min-width: 850px;
 }
-.articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap {
-	padding: 0 0 20px 0;
+.articleFeedbackv5-feedback .articleFeedbackv5-comment-container {
 	float: left;
-	width: 70%;
+	width: 100%;
+	margin-left: -250px;
+}
+.articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap {
+	padding: 0 10px 20px 30px;
+	margin-left: 250px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head {
+	margin-top: 10px;
 	line-height: 24px;
-	margin: 10px 0 0 30px;
-	width: 95%;
+}
+.articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head h3 {
+	font-size: 1em;
+}
+.articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head h3 a {
+	font-size: 1.2em;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head .articleFeedbackv5-comment-anon-message {
 	margin-top: -3px;
-	font-size: 0.8em;
+	font-size: 0.9em;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap blockquote {
 	display: block;
-	font-size: 1.25em;
 	margin: 10px 0;
-	padding: 0 0 20px 30px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-vote-wrapper {
 	position: absolute;
 	bottom: 0;
-	left: 30px;
 	margin-bottom: 5px;
 	width: 70%;
+	font-size: 0.9em;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-tags {
 	padding: 0 10px 0 0;
@@ -76,32 +83,30 @@
 .articleFeedbackv5-comment-wrap.articleFeedbackv5-comment-positive {
 	/* @embed */
 	background-image: url(images/positive.png);
+	background-position: top left;
 }
 .articleFeedbackv5-comment-wrap.articleFeedbackv5-comment-negative {
 	/* @embed */
 	background-image: url(images/negative.png);
+	background-position: top left;
 }
 .articleFeedbackv5-comment-wrap.articleFeedbackv5-comment-neutral {
 	/* @embed */
 	background-image: url(images/neutral.png);
+	background-position: top left;
 }
 
 /** Comment block: top line **/
 .articleFeedbackv5-comment-wrap h3 {
 	font-weight: normal;
 	color: #444;
-	font-size: 1.1em;
 	padding-right: 10px;
-}
-.articleFeedbackv5-comment-wrap h3 a {
-	font-size: 1.2em;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap h3 {
 	display: inline;
 	width: 450px;
 }
 .articleFeedbackv5-comment-details {
-	line-height: 24px;
 	color: #888;
 }
 .articleFeedbackv5-comment-details-date, .articleFeedbackv5-comment-details-link {
@@ -116,19 +121,13 @@
 .articleFeedbackv5-feedback blockquote {
 	margin: 10px 0;
 	padding: 0;
-	font-size: 1.25em;
 	display: block;
-	float: left;
-	clear: left;
 }
 .articleFeedbackv5-feedback blockquote .articleFeedbackv5-comment-full {
 	display: none;
 }
 .articleFeedbackv5-comment-toggle {
 	margin-left: 7px;
-}
-.articleFeedbackv5-comment-wrap {
-	width: 100%;
 }
 .articleFeedbackv5-feedback-hidden .articleFeedbackv5-comment-wrap,
 .articleFeedbackv5-feedback-deleted .articleFeedbackv5-comment-wrap {
@@ -138,7 +137,6 @@
 
 /** Comment block: bottom line **/
 .articleFeedbackv5-comment-foot {
-	line-height: 22px;
 	float: left;
 	width: auto;
 	margin-right: 45px;
@@ -158,8 +156,6 @@
 .articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link {
 	display: inline-block;
 	height: 22px;
-	line-height: 22px;
-	font-size: .9em;
 	min-width: 34px;
 	padding: 0 8px;
 	margin: 0 10px 0 0;
@@ -303,7 +299,7 @@
 
 /** Tools **/
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools {
-	margin-top: 10px;
+	margin: 10px 0;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul {
 	margin: 0;
@@ -441,7 +437,7 @@ form.articleFeedbackv5-form-flyover textarea {
 	-khtml-border-radius: 3px 3px 0 0;
 }
 .articleFeedbackv5-flyover-header h3 {
-	font-size: 1.125em;
+	font-size: 1.1em;
 }
 .articleFeedbackv5-flyover-footer {
 	padding: 10px 10px 35px 10px;
@@ -494,7 +490,6 @@ form.articleFeedbackv5-form-flyover textarea {
 	float: left;
 	height: 22px;
 	line-height: 22px;
-	font-size: .9em;
 	min-width: 34px;
 	padding: 0 8px;
 	margin: 0 10px 0 0;
@@ -575,7 +570,7 @@ form.articleFeedbackv5-form-flyover textarea {
 	width: 100%;
 	height: 100%;
 	background-color: #dae2eb;
-	padding: 10px;
+	padding: 10px 30px;
 }
 .articleFeedbackv5-post-screen-on .articleFeedbackv5-mask-text-wrapper {
 	position: absolute;
@@ -638,7 +633,6 @@ form.articleFeedbackv5-form-flyover textarea {
 
 /** Permalink info box **/
 #articleFeedbackv5-feedback-permalink-info {
-	font-size: 1.05em;
 	padding: 20px 8px;
 	border-bottom: 2px solid #D6D7D5;
 	margin-bottom: 20px;
@@ -691,7 +685,6 @@ form.articleFeedbackv5-form-flyover textarea {
 
 #articleFeedbackv5-feedback-permalink-info dl.articleFeedbackv5-feedback-permalink-stats {
 	overflow: auto;
-	font-size: 1.2em;
 }
 #articleFeedbackv5-feedback-permalink-info dt {
 	float: left;
@@ -699,9 +692,6 @@ form.articleFeedbackv5-form-flyover textarea {
 }
 #articleFeedbackv5-feedback-permalink-info dd {
 	margin-left: 8em;
-}
-#articleFeedbackv5-feedback-permalink-info dd span {
-	font-size: 0.875em;
 }
 #articleFeedbackv5-feedback-permalink-info dd.articleFeedbackv5-feedback-permalink-scores dl {
 	overflow: auto;
@@ -718,11 +708,9 @@ form.articleFeedbackv5-form-flyover textarea {
 }
 #articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-status strong {
 	color: #000;
-	font-size: 1.125em;
 }
 
-/** Stuff I haven't finished **/
-#articleFeedbackv5-feedback-permalink-info .notdone {
-	background-color: LavenderBlush;
+.articleFeedbackv5-comment-short {
+	font-size: 1.2em;
+	line-height: 1.5em;
 }
-
