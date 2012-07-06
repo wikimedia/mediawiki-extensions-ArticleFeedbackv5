@@ -16,7 +16,6 @@
 select {
 	vertical-align: baseline;
 	height: 1.5em;
-	font-size:1.2em;
 }
 
 /** Wrapper **/
@@ -41,13 +40,8 @@ select {
 }
 #articleFeedbackv5-beta-label {
 	float: right;
-	font-size: 14px;
+	font-size: 0.5em;
 	color: #444;
-}
-.articlefeedbackv5-special-disclaimer {
-	font-size: 1.125em;
-	color: red;
-	font-weight: bold;
 }
 
 /** Header section **/
@@ -76,7 +70,6 @@ select {
 }
 #articleFeedbackv5-percent-found-wrap .stat-marker {
 	font-weight: bold;
-	line-height: 32px;
 	padding: 11px 0 8px 40px;
 }
 #articleFeedbackv5-percent-found-wrap .positive {
@@ -118,6 +111,8 @@ select {
 
 /** Filtering **/
 #articleFeedbackv5-sort-filter-controls {
+	font-size: 1.1em;
+	line-height: 2em;
 	clear: both;
 	padding: 0;
 	/* @embed */
@@ -131,8 +126,6 @@ select {
 	clear: both;
 }
 .articleFeedbackv5-filter-link,.articleFeedbackv5-filter-link:visited {
-	font-size: 1.2em;
-	line-height: 2em;
 	padding-left: 5px;
 	padding-right: 5px;
 }
@@ -177,7 +170,7 @@ select {
 	background-image: url(images/bg-feedbackpage-header-on.png);
 	background-position: bottom left;
 	background-repeat: repeat-x;
-	padding-bottom: 0.6em;
+	padding-bottom: 0.5em;
 }
 #articleFeedbackv5-filter-select {
 	margin-right: 0px;
@@ -186,7 +179,6 @@ select {
 	left: 0;
 	float: none;
 	display: inline-block;
-	font-size: 1.2em;
 	top: 0px;
 	color: #444444;
 }
@@ -195,14 +187,12 @@ select {
 	font-weight: bold;
 }
 .articleFeedbackv5-filter-label, .articleFeedbackv5-sort-label {
-	font-size: 1.2em;
 	color: #333;
 }
 
 /** Sorting **/
 #articleFeedbackv5-sort {
 	float: right;
-	padding-top: 0.35em;
 }
 #articleFeedbackv5-sort .articleFeedbackv5-sort-label {
 	display: inline-block;
@@ -245,7 +235,5 @@ a#articleFeedbackv5-show-more {
 .articleFeedbackv5-feedback-permalink-goback {
 	font-size: 1.2em;
 	margin-top: 10px;
-	clear: both;
 }
-
 

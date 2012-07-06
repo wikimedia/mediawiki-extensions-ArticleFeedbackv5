@@ -156,18 +156,22 @@ class ArticleFeedbackv5Render {
 				'class' => $topClass,
 				'rel'   => $record[0]->af_id )
 			)
-				// {gray mask, if applicable}
-				. $this->grayMask( $record )
-				// <div class="{$wrapClass}">
-				. Html::openElement( 'div', array( 'class' => $wrapClass ) )
-					// {feedback content}
-					. $content
-					// {footer links, e.g. helpful, abuse}
-					. $footer
-				// </div>
-				. Html::closeElement( 'div' )
 				// {toolbox, e.g. feature, hide}
 				. $toolbox
+				// {gray mask, if applicable}
+				. $this->grayMask( $record )
+				// <div class="articleFeedbackv5-comment-container">
+				. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-container' ) )
+					// <div class="{$wrapClass}">
+					. Html::openElement( 'div', array( 'class' => $wrapClass ) )
+						// {feedback content}
+						. $content
+						// {footer links, e.g. helpful, abuse}
+						. $footer
+					// </div>
+					. Html::closeElement( 'div' )
+				// </div>
+				. Html::closeElement( 'div' )
 			// </div>
 			. Html::closeElement( 'div' )
 			// {info section for permalinks}
