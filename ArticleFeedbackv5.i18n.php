@@ -4991,7 +4991,6 @@ $3
  */
 $messages['fi'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Kiitos!',
-	'articlefeedbackv5-cta-confirmation-followup' => 'Palautteesi on tallennettu.',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Tiesitkö, että voit muokata tätä sivua?',
 	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia toimii, koska kuka tahansa voi muokata sen sivuja. Muokkaa rohkeasti!',
 	'articlefeedbackv5-cta1-learn-how' => 'Opi muokkaamaan',
