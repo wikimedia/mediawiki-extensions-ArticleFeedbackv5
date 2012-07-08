@@ -13624,7 +13624,7 @@ $messages['pfl'] = array(
  * @author Woytecr
  */
 $messages['pl'] = array(
-	'articlefeedbackv5-cta-thanks' => 'Dzięki!',
+	'articlefeedbackv5-cta-thanks' => 'Dziękujemy!',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Czy wiesz, że możesz edytować tę stronę?',
 	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia działa, ponieważ każdy może edytować jej zawartość. Śmiało, spróbuj! Bądź odważny!',
 	'articlefeedbackv5-cta1-learn-how' => 'Naucz się, jak edytować',
@@ -13647,6 +13647,7 @@ $messages['pl'] = array(
 	'articlefeedbackv5-cta5-confirmation-title' => 'Zobacz co napisali inni',
 	'articlefeedbackv5-cta5-confirmation-call' => 'Zobacz sugestie od innych czytelników takich jak ty. Pomożesz wybrać najlepsze pomysły?',
 	'articlefeedbackv5-cta5-button-text' => 'Zobacz wszystkie komentarze',
+	'articlefeedbackv5-overlay-close' => 'Zamknij',
 	'articlefeedbackv5-error' => 'Wystąpił błąd. Proszę spróbować ponownie później.',
 	'articlefeedbackv5-page-disabled' => 'Strona opinii o artykule nie została aktywowana dla tego artykułu.',
 	'articlefeedbackv5-error-email' => 'Adres e-mail nie jest prawidłowy.',
@@ -13670,8 +13671,9 @@ $messages['pl'] = array(
 	'articlefeedbackv5-contribs-status-action-hidden' => 'Ukryty',
 	'articlefeedbackv5-contribs-status-action-oversight-requested' => 'Wymagane sprawdzenie',
 	'articlefeedbackv5-contribs-status-action-deleted' => 'Sprawdzony',
+	'articlefeedbackv5-contribs-hidden-feedback' => 'ukryty komentarz',
 	'articlefeedbackv5-form-tools-label' => 'Narzędzia',
-	'articlefeedbackv5-form-helpful-label' => 'Czy ta opinii była pomocna?',
+	'articlefeedbackv5-form-helpful-label' => 'Czy ta opinia jest pomocna?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Tak',
 	'articlefeedbackv5-form-helpful-no-label' => 'Nie',
 	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 użytkownik uznał za pomocne|$1. użytkowników uznało za pomocne}}',
