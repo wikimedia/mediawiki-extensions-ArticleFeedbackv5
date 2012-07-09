@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQX//+rY\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-09T19:31:59Z",
+      "side": 1,
+      "message": "These message keys don\u0027t seem to be used anywhere, are they reserved for future development? the same for the *-activity-* keys below",
+      "revId": "1123af7a9ac4a0522e143fdc277aa78773d75199",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
