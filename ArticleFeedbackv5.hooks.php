@@ -820,9 +820,12 @@ class ArticleFeedbackv5Hooks {
 		// show user names for /newbies as there may be different users.
 		$userlink = '';
 		if ( $page->contribs == 'newbie' ) {
-			$userlink = ' . . ' . Linker::userLink( $row->af_user_id, User::whoIs( $row->af_user_id ) );
-			$userlink .= ' ' . wfMessage( 'parentheses' )->rawParams(
-				Linker::userTalkLink( $row->af_user_id, User::whoIs( $row->af_user_id ) ) )->escaped() . ' ';
+			$username = User::whoIs( $row->af_user_id );
+			if ( $username !== false ) {
+				$userlink = ' . . ' . Linker::userLink( $row->af_user_id, $username );
+				$userlink .= ' ' . wfMessage( 'parentheses' )->rawParams(
+					Linker::userTalkLink( $row->af_user_id, $username ) )->escaped() . ' ';
+			}
 		}
 
 		// feedback (truncated)
