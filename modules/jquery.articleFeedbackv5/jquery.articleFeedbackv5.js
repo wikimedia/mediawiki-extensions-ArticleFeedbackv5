@@ -284,7 +284,7 @@
 		/**
 		 * Bucket 0: No form
 		 */
-		'0': { },
+		'0': {},
 
 		// }}}
 		// {{{ Bucket 1
@@ -944,7 +944,7 @@
 
 			// }}}
 
-		},
+		}
 
 		// }}}
 
@@ -1014,7 +1014,7 @@
 							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta1-confirmation-call" /></p>\
 							<p class="articleFeedbackv5-confirmation-learnHow"><a target="_blank" href="#"><html:msg key="cta1-learn-how" /> &raquo;</a></p>\
 						</div>\
-						<a href="&amp;action=edit" class="articleFeedbackv5-cta-button"><span class="ui-button-text"><html:msg key="cta1-edit-linktext" /></span></a>\
+						<a href="&amp;action=edit" class="articleFeedbackv5-cta-button"><html:msg key="cta1-edit-linktext" /></a>\
 						<div class="clear"></div>\
 					</div>\
 					'
@@ -1054,7 +1054,9 @@
 				var edit_track_id = $.articleFeedbackv5.ctaName() + '-button_click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
-					.attr( 'href', $.articleFeedbackv5.editUrl( edit_track_id ) );
+					.attr( 'href', $.articleFeedbackv5.editUrl( edit_track_id ) )
+					.button()
+					.addClass( 'ui-button-blue' );
 
 				return $block;
 			},
@@ -1095,7 +1097,7 @@
 							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta2-confirmation-title" /></h3>\
 							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta2-confirmation-call" /></p>\
 						</div>\
-						<a href="&amp;action=edit" class="articleFeedbackv5-cta-button"><span class="ui-button-text"><html:msg key="cta2-button-text" /></span></a>\
+						<a href="&amp;action=edit" class="articleFeedbackv5-cta-button"><html:msg key="cta2-button-text" /></a>\
 						<div class="clear"></div>\
 					</div>\
 					'
@@ -1120,7 +1122,9 @@
 				var learn_track_id = $.articleFeedbackv5.ctaName() + '-button_click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
-					.attr( 'href', $.articleFeedbackv5.trackingUrl( learn_url, learn_track_id ) );
+					.attr( 'href', $.articleFeedbackv5.trackingUrl( learn_url, learn_track_id ) )
+					.button()
+					.addClass( 'ui-button-blue' );
 
 				return $block;
 			},
@@ -1161,7 +1165,7 @@
 							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta3-confirmation-title" /></h3>\
 							<p class="articleFeedbackv5-confirmation-call"><html:msg key="cta3-confirmation-call" /></p>\
 						</div>\
-						<a href="#" class="articleFeedbackv5-cta-button" target="_blank"><span class="ui-button-text"><html:msg key="cta3-button-text" /></span></a>\
+						<a href="#" class="articleFeedbackv5-cta-button" target="_blank"><html:msg key="cta3-button-text" /></a>\
 						<div class="clear"></div>\
 					</div>\
 					'
@@ -1203,9 +1207,11 @@
 						.attr( 'href', $.articleFeedbackv5.trackingUrl(
 							survey_url + '?c=' + $.articleFeedbackv5.feedbackId,
 							survey_track_id
-						) );
+						) )
+						.button()
+						.addClass( 'ui-button-blue' );
 				}
-
+				
 				return $block;
 			},
 
@@ -1297,9 +1303,9 @@
 							<p class="articleFeedbackv5-confirmation-call"><html:msg key="cta4-confirmation-call-line1" /><br /><html:msg key="cta4-confirmation-call-line2" /></p>\
 						</div>\
 						<div class="articleFeedbackv5-panel-buttons">\
-							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-signup"><span class="ui-button-text"><html:msg key="cta4-button-text-signup" /></span></a>\
+							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-signup"><html:msg key="cta4-button-text-signup" /></a>\
 							<span><html:msg key="cta4-button-text-or" /></span>\
-							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-login"><span class="ui-button-text"><html:msg key="cta4-button-text-login" /></span></a>\
+							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-login"><html:msg key="cta4-button-text-login" /></a>\
 							<a href="#" class="articleFeedbackv5-cta-button-later"><html:msg key="cta4-button-text-later" /></a>\
 						</div>\
 						<div class="clear"></div>\
@@ -1359,6 +1365,10 @@
 					login_url + '&c=' + $.articleFeedbackv5.feedbackId,
 					login_track_id
 				) );
+
+				$block.find( '.articleFeedbackv5-cta-button' )
+					.button()
+					.addClass( 'ui-button-blue' );
 
 				return $block;
 			},
@@ -1438,7 +1448,7 @@
 							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta5-confirmation-title" /></h3>\
 							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta5-confirmation-call" /></p>\
 						</div>\
-						<a href="#" class="articleFeedbackv5-cta-button"><span class="ui-button-text"><html:msg key="cta5-button-text" /></span></a>\
+						<a href="#" class="articleFeedbackv5-cta-button"><html:msg key="cta5-button-text" /></a>\
 						<div class="clear"></div>\
 					</div>\
 					'
@@ -1463,7 +1473,9 @@
 				var feedback_track_id = $.articleFeedbackv5.ctaName() + '-button_click-' +
 					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
 				$block.find( '.articleFeedbackv5-cta-button' )
-					.attr( 'href', $.articleFeedbackv5.trackingUrl( feedback_url, feedback_track_id ) );
+					.attr( 'href', $.articleFeedbackv5.trackingUrl( feedback_url, feedback_track_id ) )
+					.button()
+					.addClass( 'ui-button-blue' );
 
 				return $block;
 			},
@@ -2361,7 +2373,7 @@
 		var params = {
 			'title': mw.config.get( 'wgPageName' ),
 			'action': 'edit',
-			'articleFeedbackv5_click_tracking': $.aftTrack.clickTrackingOn ? '1' : '0',
+			'articleFeedbackv5_click_tracking': $.aftTrack.clickTrackingOn ? '1' : '0'
 		};
 		if ( $.aftTrack.clickTrackingOn ) {
 			params.articleFeedbackv5_ct_token   = $.cookie( 'clicktracking-session' );
@@ -2731,7 +2743,7 @@
 	 * bucket in the url.  Otherwise, it will use the core bucketing
 	 * (configuration for this module passed in) to choose a bucket.
 	 */
-	$.articleFeedbackv5.selectCTA= function () {
+	$.articleFeedbackv5.selectCTA = function () {
 		// the check to verify a CTA is valid and can be shown
 		valid = function ( requested ) {
 			if (
@@ -2974,10 +2986,10 @@
 								text: 'articlefeedbackv5-disable-flyover-help-emphasis-text'
 							}, {
 								tag: 'quotes',
-								text: 'articlefeedbackv5-disable-flyover-help-location',
+								text: 'articlefeedbackv5-disable-flyover-help-location'
 							}, {
 								tag: 'quotes',
-								text: 'articlefeedbackv5-disable-preference',
+								text: 'articlefeedbackv5-disable-preference'
 							} ) );
 
 					var prefLink = mw.config.get( 'wgScript' ) + '?' +
@@ -3316,7 +3328,7 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 		addToRemovalQueue: { args: 1, ret: false },
 		openAsModal: { args: 1, ret: false },
 		closeAsModal: { args: 0, ret: true },
-		toggleModal: { args: 1, ret: false },
+		toggleModal: { args: 1, ret: false }
 	};
 	if ( opts in public ) {
 		var r;
