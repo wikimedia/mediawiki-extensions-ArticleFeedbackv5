@@ -545,12 +545,12 @@ class ArticleFeedbackv5Render {
 			Html::openElement( 'div', array(
 				'class' => 'articleFeedbackv5-comment-head'
 			) )
+				// The tag block (featured/resolved markers)
+				. $this->renderTagBlock( $record )
 				// <h3>{type-appropriate message}</h3>
 				. $userMessage
 				// {permalink/timestamp}
 				. $this->renderPermalinkTimestamp( $record )
-				// The tag block (featured/resolved markers)
-				. $this->renderTagBlock( $record )
 				// The message for anonymous feedback, displaying the user's ip
 				. $anonMessage
 			// </div>
@@ -679,8 +679,8 @@ class ArticleFeedbackv5Render {
 			Html::openElement( 'div', array(
 				'class' => 'articleFeedbackv5-vote-wrapper'
 			) )
-				// <div class="articleFeedbackv5-comment-foot">
-				. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot' ) );
+				// <div class="articleFeedbackv5-comment-foot-helpful">
+				. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot-helpful' ) );
 
 		// Add helpful/unhelpful voting links
 		if ( $this->hasPermission( 'can_vote' ) ) {
@@ -744,6 +744,9 @@ class ArticleFeedbackv5Render {
 
 		// Add abuse flagging
 		if ( $this->hasPermission( 'can_flag' ) ) {
+			// <div class="articleFeedbackv5-comment-foot-abuse">
+			$footer .= Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot-abuse' ) );
+
 			global $wgArticleFeedbackv5AbusiveThreshold;
 			// <a id="articleFeedbackv5-abuse-link-{$id}"
 			//   class="articleFeedbackv5-abuse-link"
@@ -782,7 +785,13 @@ class ArticleFeedbackv5Render {
 						$wgLang->formatNum( $record[0]->af_abuse_count ) )->text()
 				);
 			}
+
+			// </div>
+			$footer .= Html::closeElement( 'div' );
 		}
+
+		// </div>
+		$footer .= Html::element( 'div', array( 'class' => 'clear' ) );
 
 		// </div>
 		$footer .= Html::closeElement( 'div' );

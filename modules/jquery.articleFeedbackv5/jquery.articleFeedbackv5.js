@@ -284,7 +284,7 @@
 		/**
 		 * Bucket 0: No form
 		 */
-		'0': { },
+		'0': {},
 
 		// }}}
 		// {{{ Bucket 1
@@ -944,7 +944,7 @@
 
 			// }}}
 
-		},
+		}
 
 		// }}}
 
@@ -2361,7 +2361,7 @@
 		var params = {
 			'title': mw.config.get( 'wgPageName' ),
 			'action': 'edit',
-			'articleFeedbackv5_click_tracking': $.aftTrack.clickTrackingOn ? '1' : '0',
+			'articleFeedbackv5_click_tracking': $.aftTrack.clickTrackingOn ? '1' : '0'
 		};
 		if ( $.aftTrack.clickTrackingOn ) {
 			params.articleFeedbackv5_ct_token   = $.cookie( 'clicktracking-session' );
@@ -2731,7 +2731,7 @@
 	 * bucket in the url.  Otherwise, it will use the core bucketing
 	 * (configuration for this module passed in) to choose a bucket.
 	 */
-	$.articleFeedbackv5.selectCTA= function () {
+	$.articleFeedbackv5.selectCTA = function () {
 		// the check to verify a CTA is valid and can be shown
 		valid = function ( requested ) {
 			if (
@@ -2974,10 +2974,10 @@
 								text: 'articlefeedbackv5-disable-flyover-help-emphasis-text'
 							}, {
 								tag: 'quotes',
-								text: 'articlefeedbackv5-disable-flyover-help-location',
+								text: 'articlefeedbackv5-disable-flyover-help-location'
 							}, {
 								tag: 'quotes',
-								text: 'articlefeedbackv5-disable-preference',
+								text: 'articlefeedbackv5-disable-preference'
 							} ) );
 
 					var prefLink = mw.config.get( 'wgScript' ) + '?' +
@@ -3316,7 +3316,7 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 		addToRemovalQueue: { args: 1, ret: false },
 		openAsModal: { args: 1, ret: false },
 		closeAsModal: { args: 0, ret: true },
-		toggleModal: { args: 1, ret: false },
+		toggleModal: { args: 1, ret: false }
 	};
 	if ( opts in public ) {
 		var r;
