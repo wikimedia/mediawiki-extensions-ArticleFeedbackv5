@@ -5,7 +5,7 @@
 	overflow: hidden;
 	position: relative;
 	min-height: 150px;
-	min-width: 850px;
+	min-width: 75px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-container {
 	float: left;
@@ -18,10 +18,10 @@
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head {
 	margin-top: 10px;
+	line-height: 24px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head h3 {
 	font-size: 1em;
-	line-height: 24px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head h3 a {
 	font-size: 1.2em;
@@ -33,12 +33,15 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap blockquote {
 	display: block;
 	margin: 10px 0;
+	padding-bottom: 1.5em;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-vote-wrapper {
 	position: absolute;
 	bottom: 0;
+	right: 250px; /* toolbox width */
+	left: 0;
+	margin-left: 30px;
 	margin-bottom: 5px;
-	width: 70%;
 	font-size: 0.9em;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-tags {
@@ -50,9 +53,9 @@
 	width: 250px;
 }
 .articleFeedbackv5-feedback.articleFeedbackv5-comment-notoolbox .articleFeedbackv5-comment-wrap,
-.articleFeedbackv5-feedback.articleFeedbackv5-comment-notoolbox  .articleFeedbackv5-comment-head,
-.articleFeedbackv5-feedback.articleFeedbackv5-comment-notoolbox  .articleFeedbackv5-vote-wrapper {
-	width: 85%;
+.articleFeedbackv5-feedback.articleFeedbackv5-comment-notoolbox .articleFeedbackv5-comment-head,
+.articleFeedbackv5-feedback.articleFeedbackv5-comment-notoolbox .articleFeedbackv5-vote-wrapper {
+	width: 85%; /* @todo: fix this */
 }
 
 /** Feedback row **/
@@ -100,7 +103,7 @@
 .articleFeedbackv5-comment-wrap h3 {
 	font-weight: normal;
 	color: #444;
-	padding-right: 10px;
+	padding-right: 15px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap h3 {
 	display: inline;
@@ -108,9 +111,7 @@
 }
 .articleFeedbackv5-comment-details {
 	color: #888;
-}
-.articleFeedbackv5-comment-details-date, .articleFeedbackv5-comment-details-link {
-	padding: 0 3px;
+	display: inline-block;
 }
 .articleFeedbackv5-feedback.articleFeedbackv5-feedback-highlighted .articleFeedbackv5-comment-details-date {
 	font-weight: bold;
@@ -136,66 +137,64 @@
 }
 
 /** Comment block: bottom line **/
-.articleFeedbackv5-comment-foot {
-	float: left;
-	width: auto;
+.articleFeedbackv5-comment-foot-helpful,
+.articleFeedbackv5-comment-foot-abuse {
+	display: inline-block;
+	/* IE7 inline-block hack */
+	zoom: 1;
+	*display: inline;
+}
+.articleFeedbackv5-comment-foot-helpful {
 	margin-right: 45px;
 }
-.articleFeedbackv5-vote-wrapper {
-	float: left;
-	width: 100%;
-}
-.articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-caption {
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-helpful-caption {
 	margin: 0 15px 0 0;
 }
 
 /** Comment block: bottom line: Helpful/unhelpful **/
-.articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link {
-	display: inline-block;
-	height: 22px;
-	min-width: 34px;
-	padding: 0 8px;
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-helpful-link,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reversehelpful-link,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reverseunhelpful-link {
+	padding: 2px 0 0 15px;
 	margin: 0 10px 0 0;
-	text-align: center;
+	text-align: left;
 	color: #333;
 	font-weight: bold;
 	/* @embed */
 	background: url(images/thumbup.png) no-repeat;
 }
-.articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link {
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reverseunhelpful-link {
 	/* @embed */
 	background: url(images/thumbdwn.png) no-repeat;
 }
-.articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link:hover,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link:hover,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link:hover,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link:hover {
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-helpful-link:hover,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link:hover,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reversehelpful-link:hover,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reverseunhelpful-link:hover {
 	/* @embed */
 	background-image: url(images/thumbup_hover.png);
 	cursor: pointer;
 	color: #333;
 	text-decoration: none;
 }
-.articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link:hover,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link:hover {
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link:hover,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reverseunhelpful-link:hover {
 	/* @embed */
 	background-image: url(images/thumbdwn_hover.png);
 }
-.articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link.helpful-active,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-helpful-link.helpful-active:hover,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link.helpful-active,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-reversehelpful-link.helpful-active:hover {
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-helpful-link.helpful-active,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-helpful-link.helpful-active:hover,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reversehelpful-link.helpful-active,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reversehelpful-link.helpful-active:hover {
 	/* @embed */
 	background-image: url(images/thumbup_active.png);
 }
-.articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link.helpful-active,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-unhelpful-link.helpful-active:hover,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link.helpful-active,
-.articleFeedbackv5-comment-foot .articleFeedbackv5-reverseunhelpful-link.helpful-active:hover {
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link.helpful-active,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link.helpful-active:hover,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reverseunhelpful-link.helpful-active,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reverseunhelpful-link.helpful-active:hover {
 	/* @embed */
 	background-image: url(images/thumbdwn_active.png);
 }
@@ -210,15 +209,12 @@
 /** Comment block: bottom line: Flag as abuse **/
 .articleFeedbackv5-abuse-link,
 .articleFeedbackv5-unabuse-link {
-	cursor: pointer;
-	display: inline-block;
 	height: 16px;
 	padding-left: 16px;
 	/* @embed */
 	background-image: url(images/flag.png);
 	background-repeat: no-repeat;
 	background-position: left bottom;
-	float: left;
 }
 .articleFeedbackv5-abuse-link:hover {
 	/* @embed */
@@ -307,6 +303,11 @@
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul li.articleFeedbackv5-tool-hidden {
 	display: none;
+}
+.articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul li.tools_feature,
+.articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul li.tools_activity,
+.articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul li.tools_delete {
+	zoom: 1; /* trigger IE hasLayout */
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul li.tools_feature,
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul li.tools_delete {
@@ -440,8 +441,8 @@ form.articleFeedbackv5-form-flyover textarea {
 	font-size: 1.1em;
 }
 .articleFeedbackv5-flyover-footer {
-	padding: 10px 10px 35px 10px;
 	width: 100%;
+	padding: 10px;
 }
 .articleFeedbackv5-flyover-help {
 	margin: 0 0 0 10px;
@@ -605,6 +606,7 @@ form.articleFeedbackv5-form-flyover textarea {
 	color: #A55858;
 	border: 1px solid #A55858;
 	border-top: none;
+	zoom: 1; /* trigger IE hasLayout */
 }
 #articleFeedbackv5-feedback-loading-bottom {
 	position: absolute;
@@ -618,6 +620,7 @@ form.articleFeedbackv5-form-flyover textarea {
 	color: #A55858;
 	border: 1px solid #A55858;
 	border-bottom: none;
+	zoom: 1; /* trigger IE hasLayout */
 }
 
 /** Permalink overrides **/
@@ -713,4 +716,14 @@ form.articleFeedbackv5-form-flyover textarea {
 .articleFeedbackv5-comment-short {
 	font-size: 1.2em;
 	line-height: 1.5em;
+}
+
+.clear {
+	display: block !important;
+	height: 0 !important;
+	overflow: hidden !important;
+	clear: both !important;
+	float: none !important;
+	width: 100% !important;
+	border: none !important;
 }
