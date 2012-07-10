@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQX//+HI\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-10T17:34:41Z",
+      "side": 1,
+      "message": "selectField() may return false, should check that first\n\nselectField is expecting the 3rd argument to be a string or array\n\nI would prefer storing the result in cache for 1 hour or so",
+      "revId": "7550ea83d7bbe9236f47914e6cec95d0af306f9c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
