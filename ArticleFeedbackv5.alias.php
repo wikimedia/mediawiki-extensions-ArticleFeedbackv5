@@ -58,6 +58,11 @@ $specialPageAliases['tl'] = array(
 	'ArticleFeedbackv5' => array( 'Tugon_sa_Artikulo_v5' ),
 );
 
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'ArticleFeedbackv5' => array( 'MaddeGeribildirimiv5' ),
+);
+
 /** Vietnamese (Tiếng Việt) */
 $specialPageAliases['vi'] = array(
 	'ArticleFeedbackv5' => array( 'Phản_hồi_bài_v5' ),
