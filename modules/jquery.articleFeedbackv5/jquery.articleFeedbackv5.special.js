@@ -128,6 +128,7 @@
 			<div class="articleFeedbackv5-flyover-footer">\
 				<a id="articleFeedbackv5-noteflyover-submit" class="articleFeedbackv5-flyover-button" href="#"></a>\
 				<a class="articleFeedbackv5-flyover-help" id="articleFeedbackv5-noteflyover-help" href="#"></a>\
+				<div class="clear"></div>\
 			</div>\
 		</form>';
 
@@ -290,7 +291,7 @@
 		// Add BETA label next to the title
 		var label = $( '<p id="articleFeedbackv5-beta-label"></p>' );
 		label.text( mw.msg( 'articlefeedbackv5-beta-label' ) );
-		$( '#firstHeading' ).append( label );
+		$( '#firstHeading' ).prepend( label );
 	};
 
 	// }}}
