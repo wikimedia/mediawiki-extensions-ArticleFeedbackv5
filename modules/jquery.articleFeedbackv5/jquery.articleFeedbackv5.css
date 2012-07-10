@@ -631,16 +631,18 @@
 
 .articleFeedbackv5-ui .articleFeedbackv5-disclosure p {
 	margin: 0;
-	font-size: 0.75em;
+	font-size: 0.85em;
+	color: #333;
 }
 
-.articleFeedbackv5-ui .articleFeedbackv5-submit {
+.articleFeedbackv5-ui .articleFeedbackv5-submit,
+.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
 	float: none;
 	height: 35px !important;
 	width: auto;
 	text-align: center;
 	padding: 0 10px;
-	margin: 0 30px 0 0 !important;
+	margin: 0 !important;
 	border: none !important;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -651,18 +653,15 @@
 	box-shadow: -2px 2px 1px #999;
 }
 
-.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
-	float: right;
-	position: relative;
-	bottom: 10px;
-	margin: 105px 0 0 !important;
-}
-
-.articleFeedbackv5-ui .articleFeedbackv5-submit span {
+.articleFeedbackv5-ui .articleFeedbackv5-submit span,
+.articleFeedbackv5-ui .articleFeedbackv5-cta-button span {
 	font-size: 14px;
 	font-weight: bold;
 	display: inline-block;
-	height: 19px;
+	height: 35px;
+	line-height: 35px;
+	padding-top: 0;
+	padding-bottom: 0;
 	text-align: center;
 	color: #fff;
 	/*text-shadow: 1px 1px 1px #000;*/
@@ -805,7 +804,7 @@
 
 /*** Option 4 ***/
 .articleFeedbackv5-option-4.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
-	margin-top: 10px !important;
+	margin-top: 10px !important; /* @todo: niet nodig, gok ik? */
 }
 .articleFeedbackv5-option-4 .articleFeedbackv5-disclosure {
 	float: left;
@@ -840,9 +839,10 @@
 }
 
 /*** Confirmation and Call to Action ***/
-.articleFeedbackv5-confirmation-panel {}
+.articleFeedbackv5-confirmation-panel {
+	position: relative;
+}
 .articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent {
-	float: left;
 	width: 440px;
 }
 .articleFeedbackv5-confirmation-text {
@@ -867,138 +867,17 @@
 .articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent .articleFeedbackv5-confirmation-learnHow {
 	font-weight: bold;
 }
-.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
-	float: left;
-	height: 35px !important;
-	width: auto;
-	text-align: center;
-	padding: 0 10px;
-	/* @embed */
-	background: url(images/bg-submit.png) repeat-x !important;
-	margin: 10px 30px 0 0 !important;
-	border: none !important;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px; /* future proofing */
-	-khtml-border-radius: 3px; /* for old Konqueror browsers */
-	-moz-box-shadow: -2px 2px 1px #999;
-	-webkit-box-shadow: -2px 2px 1px #999;
-	box-shadow: -2px 2px 1px #999;
-}
-/*.articleFeedbackv5-option-4 .articleFeedbackv5-submit,*/
-.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
-	bottom: 35px;
-	margin: 0 !important;
-	position: absolute;
-	right: 1em;
-}
 
-.articleFeedbackv5-ui .articleFeedbackv5-cta-button span {
-	font-size: 14px;
-	font-weight: bold;
-	display: inline-block;
-	height: 19px;
-	text-align: center;
-	color: #fff;
-	/*text-shadow: 1px 1px 1px #000;*/
-	padding: 1px 30px 0 0;
-	margin: 8px 0 0;
-	/* @embed */
-	background: url(images/bg-submit-icon.png) right center no-repeat;
+.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
+	position: absolute;
+	bottom: 10px;
+	right: 0;
 }
 
 /*** Top error ***/
 .articleFeedbackv5-top-error {
 	color: #8b0000;
 	margin-bottom: 5px;
-}
-
-/*** Dialog ***/
-.articleFeedbackv5-dialog {
-	width: 700px !important;
-	height: auto !important;
-	min-height: 0 !important;
-	padding: 0 !important;
-	border: 0 !important;
-}
-
-.articleFeedbackv5-dialog .articleFeedbackv5-panel {
-	border: 1px solid #cccccc;
-	min-height: 0 !important;
-}
-
-.articleFeedbackv5-dialog .ui-dialog-titlebar {
-	display: none;
-}
-
-.articleFeedbackv5-dialog + .ui-widget-overlay {
-	opacity: .45;
-}
-
-.articleFeedbackv5-dialog.ui-dialog .ui-widget-header {
-	background: #f5faff !important;
-	border: none;
-}
-
-.articleFeedbackv5-dialog #ui-dialog-title-articleFeedbackv5-dialog-wrap {
-/*
-	padding-bottom: 0.17em;
-	padding-top: 0.5em;
-*/
-}
-
-.articleFeedbackv5-dialog.ui-dialog .ui-dialog-content {
-	background: #f5faff;
-}
-
-.articleFeedbackv5-dialog.ui-dialog .ui-widget-header {
-/*
-	margin-bottom: 0;
-	padding-top: .5em;
-	padding-bottom: .17em;
-*/
-}
-
-.articleFeedbackv5-dialog.ui-dialog .articleFeedbackv5-tooltip-wrap {
-	position: static;
-}
-
-.articleFeedbackv5-dialog.ui-dialog .articleFeedbackv5-tooltip {
-	top: -170px;
-	right: -53px;
-}
-
-.articleFeedbackv5-dialog.ui-dialog .ui-icon-closethick {
-	text-indent: -90000px;
-	width: 23px;
-	height: 22px;
-	/* @embed */
-	background: url(images/bg-close-off.png) no-repeat !important;
-}
-
-.articleFeedbackv5-dialog.ui-dialog .ui-icon-closethick:hover {
-	/* @embed */
-	background: url(images/bg-close-hov.png) no-repeat !important;
-	border: none !important;
-}
-
-.articleFeedbackv5-dialog.ui-dialog .ui-state-hover {
-	background: transparent;
-}
-
-.articleFeedbackv5-dialog.ui-dialog .ui-dialog-titlebar-close {
-	float: right;
-	position: static !important;
-	right: auto !important;
-	top: auto !important;
-	width: 23px !important;
-	margin: 0 0 0 10px!important;
-	padding: 0 !important;
-	height: auto !important;
-}
-
-.articleFeedbackv5-dialog.ui-dialog .ui-dialog-titlebar-close.ui-state-hover {
-	border: none !important;
 }
 
 /*** CTA overrides ***/
@@ -1049,30 +928,18 @@
 
 .articleFeedbackv5-ui.articleFeedbackv5-cta-4 .articleFeedbackv5-panel-buttons {
 	float: left;
-	margin: 10px 0 15px 0;
+	margin: 10px 0 0 0;
 }
 
-.articleFeedbackv5-ui.articleFeedbackv5-cta-4 .articleFeedbackv5-panel-buttons > * {
-	float: left;
+.articleFeedbackv5-ui.articleFeedbackv5-cta-4 .articleFeedbackv5-panel-buttons .articleFeedbackv5-panel-buttons-child {
 	position: relative;
 	top: 0;
 	left: 0;
 	margin: 0 20px;
 	line-height: 3em;
 }
-.articleFeedbackv5-ui.articleFeedbackv5-cta-4 .articleFeedbackv5-panel-buttons > .articleFeedbackv5-cta-button {
+.articleFeedbackv5-ui.articleFeedbackv5-cta-4 .articleFeedbackv5-panel-buttons .articleFeedbackv5-cta-button {
 	line-height: 1.5em;
-}
-
-/* Skin-specific styles */
-body.skin-vector .articleFeedbackv5-dialog.ui-dialog .ui-dialog-content a,
-body.skin-monobook .articleFeedbackv5-dialog.ui-dialog .ui-dialog-content a {
-	color: #0645AD;
-}
-
-body.skin-monobook .articleFeedbackv5-dialog {
-	font: small sans-serif;
-	border-radius: 0;
 }
 
 /** Styles for feedback links **/
