@@ -224,7 +224,6 @@
 		// Rule out MSIE 6/7, FF2, iPhone, iPod, iPad, Android
 		if (
 			(ua.indexOf( 'msie 6' ) != -1) ||
-			(ua.indexOf( 'msie 7' ) != -1) ||
 			(ua.indexOf( 'firefox/2') != -1) ||
 			(ua.indexOf( 'firefox 2') != -1) ||
 			(ua.indexOf( 'android' ) != -1) ||

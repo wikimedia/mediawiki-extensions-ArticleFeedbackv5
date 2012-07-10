@@ -634,13 +634,14 @@
 	font-size: 0.75em;
 }
 
-.articleFeedbackv5-ui .articleFeedbackv5-submit {
+.articleFeedbackv5-ui .articleFeedbackv5-submit,
+.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
 	float: none;
 	height: 35px !important;
 	width: auto;
 	text-align: center;
 	padding: 0 10px;
-	margin: 0 30px 0 0 !important;
+	margin: 0 !important;
 	border: none !important;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -651,18 +652,15 @@
 	box-shadow: -2px 2px 1px #999;
 }
 
-.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
-	float: right;
-	position: relative;
-	bottom: 10px;
-	margin: 105px 0 0 !important;
-}
-
-.articleFeedbackv5-ui .articleFeedbackv5-submit span {
+.articleFeedbackv5-ui .articleFeedbackv5-submit span,
+.articleFeedbackv5-ui .articleFeedbackv5-cta-button span {
 	font-size: 14px;
 	font-weight: bold;
 	display: inline-block;
-	height: 19px;
+	height: 35px;
+	line-height: 35px;
+	padding-top: 0;
+	padding-bottom: 0;
 	text-align: center;
 	color: #fff;
 	/*text-shadow: 1px 1px 1px #000;*/
@@ -805,7 +803,7 @@
 
 /*** Option 4 ***/
 .articleFeedbackv5-option-4.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
-	margin-top: 10px !important;
+	margin-top: 10px !important; /* @todo: niet nodig, gok ik? */
 }
 .articleFeedbackv5-option-4 .articleFeedbackv5-disclosure {
 	float: left;
@@ -840,9 +838,10 @@
 }
 
 /*** Confirmation and Call to Action ***/
-.articleFeedbackv5-confirmation-panel {}
+.articleFeedbackv5-confirmation-panel {
+	position: relative;
+}
 .articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent {
-	float: left;
 	width: 440px;
 }
 .articleFeedbackv5-confirmation-text {
@@ -867,44 +866,11 @@
 .articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent .articleFeedbackv5-confirmation-learnHow {
 	font-weight: bold;
 }
-.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
-	float: left;
-	height: 35px !important;
-	width: auto;
-	text-align: center;
-	padding: 0 10px;
-	/* @embed */
-	background: url(images/bg-submit.png) repeat-x !important;
-	margin: 10px 30px 0 0 !important;
-	border: none !important;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px; /* future proofing */
-	-khtml-border-radius: 3px; /* for old Konqueror browsers */
-	-moz-box-shadow: -2px 2px 1px #999;
-	-webkit-box-shadow: -2px 2px 1px #999;
-	box-shadow: -2px 2px 1px #999;
-}
-/*.articleFeedbackv5-option-4 .articleFeedbackv5-submit,*/
-.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
-	bottom: 35px;
-	margin: 0 !important;
-	position: absolute;
-	right: 1em;
-}
 
-.articleFeedbackv5-ui .articleFeedbackv5-cta-button span {
-	font-size: 14px;
-	font-weight: bold;
-	display: inline-block;
-	height: 19px;
-	text-align: center;
-	color: #fff;
-	/*text-shadow: 1px 1px 1px #000;*/
-	padding: 1px 30px 0 0;
-	margin: 8px 0 0;
-	/* @embed */
-	background: url(images/bg-submit-icon.png) right center no-repeat;
+.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
+	position: absolute;
+	bottom: 10px;
+	right: 0;
 }
 
 /*** Top error ***/
@@ -1049,11 +1015,10 @@
 
 .articleFeedbackv5-ui.articleFeedbackv5-cta-4 .articleFeedbackv5-panel-buttons {
 	float: left;
-	margin: 10px 0 15px 0;
+	margin: 10px 0 0 0;
 }
 
 .articleFeedbackv5-ui.articleFeedbackv5-cta-4 .articleFeedbackv5-panel-buttons > * {
-	float: left;
 	position: relative;
 	top: 0;
 	left: 0;
