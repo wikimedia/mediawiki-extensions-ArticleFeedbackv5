@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQX//9Zo\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 78
+      },
+      "writtenOn": "2012-07-10T20:46:32Z",
+      "side": 1,
+      "message": "Is this actually necessary?",
+      "revId": "c97b89922c44ebafdc25ddd5986d593b34fc5593",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQX//9Zk\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 78
+      },
+      "writtenOn": "2012-07-10T20:46:32Z",
+      "side": 1,
+      "message": "You shouldn\u0027t combine a pixel line height with an em font-size. Choose one or the other.",
+      "revId": "c97b89922c44ebafdc25ddd5986d593b34fc5593",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
