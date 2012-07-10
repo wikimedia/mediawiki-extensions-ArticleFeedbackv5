@@ -11,13 +11,17 @@
 	float: left;
 	width: 100%;
 	margin-left: -250px;
+	padding: 10px 0 5px 0;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap {
 	padding: 0 10px 20px 30px;
 	margin-left: 250px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head {
+<<<<<<< HEAD
 	margin-top: 10px;
+=======
+>>>>>>> 579d1cc... Article Feedback Tool - Internet Explorer 7 Display Issues
 	line-height: 24px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head h3 {
@@ -80,23 +84,20 @@
 
 /** Comment block: icon **/
 .articleFeedbackv5-comment-wrap {
-	background-position: 2px 10px;
+	background-position: top left;
 	background-repeat: no-repeat;
 }
 .articleFeedbackv5-comment-wrap.articleFeedbackv5-comment-positive {
 	/* @embed */
 	background-image: url(images/positive.png);
-	background-position: top left;
 }
 .articleFeedbackv5-comment-wrap.articleFeedbackv5-comment-negative {
 	/* @embed */
 	background-image: url(images/negative.png);
-	background-position: top left;
 }
 .articleFeedbackv5-comment-wrap.articleFeedbackv5-comment-neutral {
 	/* @embed */
 	background-image: url(images/neutral.png);
-	background-position: top left;
 }
 
 /** Comment block: top line **/

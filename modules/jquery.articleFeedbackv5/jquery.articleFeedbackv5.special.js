@@ -291,7 +291,7 @@
 		// Add BETA label next to the title
 		var label = $( '<p id="articleFeedbackv5-beta-label"></p>' );
 		label.text( mw.msg( 'articlefeedbackv5-beta-label' ) );
-		$( '#firstHeading' ).append( label );
+		$( '#firstHeading' ).prepend( label );
 	};
 
 	// }}}
