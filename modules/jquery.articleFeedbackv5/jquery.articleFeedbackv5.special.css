@@ -297,6 +297,7 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul {
 	margin: 0;
 	list-style: none;
+	list-style-image: none; /* IE7 is stubborn & specifically needs it like this */
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul li.articleFeedbackv5-tool-hidden {
 	display: none;
