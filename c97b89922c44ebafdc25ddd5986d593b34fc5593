@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQX//8vU\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-07-11T13:01:01Z",
+      "side": 1,
+      "message": "The 100% (minus 250px negative margin) width? Yes it is; articleFeedbackv5-comment-tags is right-floated, so without this width, they won\u0027t consistently line up exactly underneath one another.",
+      "parentUuid": "AAAAQX//9Zo\u003d",
+      "revId": "c97b89922c44ebafdc25ddd5986d593b34fc5593",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQX//9Zk\u003d",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-07-10T20:46:32Z",
       "side": 1,
       "message": "You shouldn\u0027t combine a pixel line height with an em font-size. Choose one or the other.",
+      "revId": "c97b89922c44ebafdc25ddd5986d593b34fc5593",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQX//8vQ\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-07-11T13:01:01Z",
+      "side": 1,
+      "message": "the line-height is in px to make sure the text nicely aligns with the 24px image leading the text. Should be on the parent though, not in this h3.\nOr should I go about this another way?",
+      "parentUuid": "AAAAQX//9Zk\u003d",
       "revId": "c97b89922c44ebafdc25ddd5986d593b34fc5593",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
