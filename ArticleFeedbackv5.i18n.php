@@ -249,6 +249,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-permalink-status-unfeatured' => '{{GENDER:$1|<strong>Un-featured</strong> by $1}} $2 ago',
 	'articlefeedbackv5-permalink-status-resolved' => '{{GENDER:$1|<strong>Marked as resolved</strong> by $1}} $2 ago',
 	'articlefeedbackv5-permalink-status-unresolved' => '{{GENDER:$1|<strong>Un-marked as resolved</strong> by $1}} $2 ago',
+	'articlefeedbackv5-permalink-status-helpful' => '{{GENDER:$1|<strong>Marked as helpful</strong> by $1}} $2 ago',
+	'articlefeedbackv5-permalink-status-undo-helpful' => '{{GENDER:$1|<strong>Un-marked as helpful</strong> by $1}} $2 ago',
+	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Marked as unhelpful</strong> by $1}} $2 ago',
+	'articlefeedbackv5-permalink-status-undo-unhelpful' => '{{GENDER:$1|<strong>Un-marked as unhelpful</strong> by $1}} $2 ago',
 	'articlefeedbackv5-permalink-activity-more' => 'View more actions...',
 	'articlefeedbackv5-permalink-activity-fewer' => 'View fewer actions...',
 
@@ -891,6 +895,18 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 * <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
 	'articlefeedbackv5-permalink-status-unresolved' => 'Permalink info block, last activity line:
 * <code>$1</code>: A link to the user who un-marked the post as resolved
+* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+	'articlefeedbackv5-permalink-status-helpful' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who marked the post as helpful
+* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+	'articlefeedbackv5-permalink-status-undo-helpful' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who un-marked the post as helpful
+* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+	'articlefeedbackv5-permalink-status-unhelpful' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who marked the post as unhelpful
+* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+	'articlefeedbackv5-permalink-status-undo-unhelpful' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who un-marked the post as unhelpful
 * <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
 	'articlefeedbackv5-permalink-activity-more' => 'Permalink activity block, text for the link to open the rest of the activity on the feedback',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Permalink activity block, text for the link to close the rest of the activity on the feedback',
