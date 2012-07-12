@@ -15,7 +15,7 @@
  * @package    ArticleFeedback
  * @subpackage Special
  */
-class SpecialArticleFeedbackv5 extends UnlistedSpecialPage {
+class SpecialArticleFeedbackv5 extends SpecialPage {
 
 	/**
 	 * The filters available
