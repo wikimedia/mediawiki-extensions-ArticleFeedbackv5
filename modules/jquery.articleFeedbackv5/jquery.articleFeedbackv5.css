@@ -631,7 +631,8 @@
 
 .articleFeedbackv5-ui .articleFeedbackv5-disclosure p {
 	margin: 0;
-	font-size: 0.75em;
+	font-size: 0.85em;
+	color: #333;
 }
 
 .articleFeedbackv5-ui .articleFeedbackv5-submit {
