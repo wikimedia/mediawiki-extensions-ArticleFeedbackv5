@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQX//75Q\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-13T20:24:26Z",
+      "side": 1,
+      "message": "flag_unhelpful() and flag_helpful() can be combined into one function with helpful/unhelpful as extra parameter",
+      "revId": "4d70527325e041d9d70b6f1829c66e13927f376a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
