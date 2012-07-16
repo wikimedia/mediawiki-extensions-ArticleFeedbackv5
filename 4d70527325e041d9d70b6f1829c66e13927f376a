@@ -16,6 +16,24 @@
       "revId": "4d70527325e041d9d70b6f1829c66e13927f376a",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQX//7eI\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-07-16T13:45:07Z",
+      "side": 1,
+      "message": "It can indeed, but the call to these functions is dynamic: L186: $res \u003d call_user_func_array( array( $this, \u0027flag_\u0027 . $flag ), array( $record, $notes, $timestamp, $toggle, $direction ) );\nChanging this to 1 function would also require a change to this call, which would also require me to change/combine all functions for the other actions, which are a bit more complicated, so I can\u0027t really change this.",
+      "parentUuid": "AAAAQX//75Q\u003d",
+      "revId": "4d70527325e041d9d70b6f1829c66e13927f376a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
