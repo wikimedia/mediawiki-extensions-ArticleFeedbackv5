@@ -5,7 +5,7 @@
  * form.  The flow goes like this:
  *
  * User arrives at page -> build appropriate form and trigger link(s)
- *  -> User clicks trigger link -> open form in modal window
+ *  -> User clicks trigger link -> scroll down to bottom form & briefly highlight
  *  -> User scrolls to end of article -> open form below article
  *  -> User submits form -> submit to API
  *      -> has errors -> show errors
@@ -68,6 +68,7 @@
  * @package    ArticleFeedback
  * @subpackage Resources
  * @author     Reha Sterbin <reha@omniti.com>
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @version    $Id$
  */
 
@@ -85,19 +86,9 @@
 	$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' ) ? true : false;
 
 	/**
-	 * Have the containers been added?
-	 */
-	$.articleFeedbackv5.hasContainers = false;
-
-	/**
 	 * Has the form been loaded yet?
 	 */
 	$.articleFeedbackv5.isLoaded = false;
-
-	/**
-	 * Are we currently in a dialog?
-	 */
-	$.articleFeedbackv5.inDialog = false;
 
 	/**
 	 * Is form submission enabled?
@@ -406,8 +397,8 @@
 					.click( function ( e ) {
 						var new_val = $( this ).parent().attr( 'rel' );
 						var old_val = ( new_val == 'yes' ? 'no' : 'yes' );
-						var $wrap = $.articleFeedbackv5.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + new_val );
-						var $other_wrap = $.articleFeedbackv5.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + old_val );
+						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + new_val );
+						var $other_wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + old_val );
 						// make the button blue
 						$wrap.find( 'span' ).addClass( 'articleFeedbackv5-button-placeholder-active' );
 						$other_wrap.find( 'span' ).removeClass( 'articleFeedbackv5-button-placeholder-active' );
@@ -415,7 +406,7 @@
 						$wrap.find( 'input' ).attr( 'checked', 'checked' );
 						$other_wrap.find( 'input' ).removeAttr( 'checked' );
 						// set default comment message
-						var $txt = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' );
+						var $txt = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
 						var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
 						var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
 						if ( $txt.val() == '' || $txt.val() == def_msg_yes || $txt.val() == def_msg_no ) {
@@ -441,7 +432,7 @@
 					} )
 					.blur( function () {
 						var def_msg = '';
-						var val = $.articleFeedbackv5.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).val();
+						var val = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).val();
 						if ( val == 'yes' ) {
 							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
 						} else if ( val == 'no' ) {
@@ -473,13 +464,13 @@
 			 */
 			getFormData: function () {
 				var data = {};
-				var $check = $.articleFeedbackv5.find( '.articleFeedbackv5-bucket1-toggle input[checked]' );
+				var $check = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' );
 				if ( $check.val() == 'yes' ) {
 					data.found = 1;
 				} else if ( $check.val() == 'no' ) {
 					data.found = 0;
 				}
-				data.comment = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' ).val();
+				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
 				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
 				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
 				if ( data.comment == def_msg_yes || data.comment == def_msg_no ) {
@@ -573,10 +564,9 @@
 			/**
 			 * Builds the empty form
 			 *
-			 * @param from string from whence came the request ("bottom" or "overlay")
 			 * @return Element the form
 			 */
-			buildForm: function ( from ) {
+			buildForm: function () {
 
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.editable ? $.articleFeedbackv5.currentBucket().templates.editable : $.articleFeedbackv5.currentBucket().templates.noneditable );
@@ -586,10 +576,10 @@
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the button link
-				var track_id = 'button_click-' + from;
+				var track_id = 'button_click';
 				if ( $.articleFeedbackv5.editable ) {
 					$block.find( '.articleFeedbackv5-cta-button' )
-						.attr( 'href', $.articleFeedbackv5.editUrl( track_id, from ) );
+						.attr( 'href', $.articleFeedbackv5.editUrl( track_id ) );
 				} else {
 					var learn_url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
 					$block.find( '.articleFeedbackv5-cta-button' )
@@ -614,30 +604,13 @@
 			afterBuild: function () {
 				// Set a custom message
 				$.articleFeedbackv5.$holder
-					.add( $.articleFeedbackv5.$dialog)
 					.find( '.articleFeedbackv5-tooltip-info' )
 					.text( mw.msg( 'articlefeedbackv5-bucket4-help-tooltip-info' ) );
 				// Add a class so we can drop the tooltip down a bit for the
 				// learn-more version
 				if ( !$.articleFeedbackv5.editable ) {
-					$.articleFeedbackv5.find( '.articleFeedbackv5-ui' )
+					$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' )
 						.addClass( 'articleFeedbackv5-option-4-noedit' );
-				}
-			},
-
-			// }}}
-			// {{{ onModalToggle
-
-			/**
-			 * Handles any setup that has to be done when the modal window gets
-			 * toggled on or off
-			 */
-			onModalToggle: function ( from ) {
-				// Fill in the button link
-				if ( $.articleFeedbackv5.editable ) {
-					var track_id = 'button_click-' + from;
-					$.articleFeedbackv5.find( '.articleFeedbackv5-cta-button' )
-						.attr( 'href', $.articleFeedbackv5.editUrl( track_id, from ) );
 				}
 			}
 
@@ -762,10 +735,9 @@
 				$block.find( '.articleFeedbackv5-button-placeholder' )
 					.click( function ( e ) {
 						var new_val = $( this ).parent().attr( 'rel' );
-						$.articleFeedbackv5.trackClick( 'click_' + new_val +
-							'-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+						$.articleFeedbackv5.trackClick( 'click_' + new_val );
 
-						var $wrap = $.articleFeedbackv5.find( '#articleFeedbackv5-bucket6-toggle-wrapper-' + new_val );
+						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket6-toggle-wrapper-' + new_val );
 
 						// move on to step 2
 						$.articleFeedbackv5.currentBucket().displayStep2( $block );
@@ -781,7 +753,7 @@
 						$wrap.find( 'input' ).trigger( 'click' ).attr( 'checked', true );
 
 						// set default comment message
-						var $element = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' );
+						var $element = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
 						var text = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-' + new_val );
 						$element.attr( 'placeholder', text ).placeholder();
 
@@ -825,13 +797,13 @@
 			 */
 			getFormData: function () {
 				var data = {};
-				var $check = $.articleFeedbackv5.find( '.articleFeedbackv5-bucket6-toggle input[checked]' );
+				var $check = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket6-toggle input[checked]' );
 				if ( $check.val() == 'yes' ) {
 					data.found = 1;
 				} else if ( $check.val() == 'no' ) {
 					data.found = 0;
 				}
-				data.comment = $.articleFeedbackv5.find( '.articleFeedbackv5-comment textarea' ).val();
+				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
 				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-yes' );
 				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-no' );
 				if ( data.comment == def_msg_yes || data.comment == def_msg_no ) {
@@ -983,7 +955,6 @@
 			afterBuild: function () {
 				// Drop the tooltip trigger
 				$.articleFeedbackv5.$holder
-					.add( $.articleFeedbackv5.$dialog)
 					.find( '.articleFeedbackv5-tooltip-trigger' ).hide();
 			}
 
@@ -1051,8 +1022,7 @@
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the link
-				var edit_track_id = $.articleFeedbackv5.ctaName() + '-button_click-' +
-					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
+				var edit_track_id = $.articleFeedbackv5.ctaName() + '-button_click';
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.editUrl( edit_track_id ) )
 					.button()
@@ -1119,8 +1089,7 @@
 
 				// Fill in the button link
 				var learn_url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
-				var learn_track_id = $.articleFeedbackv5.ctaName() + '-button_click-' +
-					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
+				var learn_track_id = $.articleFeedbackv5.ctaName() + '-button_click';
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl( learn_url, learn_track_id ) )
 					.button()
@@ -1201,8 +1170,7 @@
 				// Fill in the go-to-survey link
 				var survey_url = $.articleFeedbackv5.currentCTA().getSurveyUrl();
 				if ( survey_url ) {
-					var survey_track_id = $.articleFeedbackv5.ctaName() + '-button_click-' +
-						( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
+					var survey_track_id = $.articleFeedbackv5.ctaName() + '-button_click';
 					$block.find( '.articleFeedbackv5-cta-button' )
 						.attr( 'href', $.articleFeedbackv5.trackingUrl(
 							survey_url + '?c=' + $.articleFeedbackv5.feedbackId,
@@ -1257,11 +1225,7 @@
 							height=800,\
 							width=600';
 						var survey = window.open( link, 'survey', params );
-						if ( $.articleFeedbackv5.inDialog ) {
-							$.articleFeedbackv5.closeAsModal();
-						} else {
-							$.articleFeedbackv5.clear();
-						}
+						$.articleFeedbackv5.clear();
 					} );
 
 			},
@@ -1345,8 +1309,7 @@
 					'type': 'signup'
 				} );
 				var signup_track_id = $.articleFeedbackv5.experiment() + '-' +
-					$.articleFeedbackv5.ctaName() + '-button_signup_click-' +
-					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
+					$.articleFeedbackv5.ctaName() + '-button_signup_click';
 				$block.find( '.articleFeedbackv5-cta-button-signup' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl(
 					signup_url + '&c=' + $.articleFeedbackv5.feedbackId,
@@ -1358,8 +1321,7 @@
 					'returnto': mw.config.get( 'wgPageName' )
 				} );
 				var login_track_id = $.articleFeedbackv5.experiment() + '-' +
-					$.articleFeedbackv5.ctaName() + '-button_login_click-' +
-					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
+					$.articleFeedbackv5.ctaName() + '-button_login_click';
 				$block.find( '.articleFeedbackv5-cta-button-login' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl(
 					login_url + '&c=' + $.articleFeedbackv5.feedbackId,
@@ -1403,12 +1365,7 @@
 				$block.find( '.articleFeedbackv5-cta-button-later' )
 					.click( function ( e ) {
 						e.preventDefault();
-
-						if ( $.articleFeedbackv5.inDialog ) {
-							$.articleFeedbackv5.closeAsModal();
-						} else {
-							$.articleFeedbackv5.clear();
-						}
+						$.articleFeedbackv5.clear();
 					} );
 			},
 
@@ -1470,8 +1427,7 @@
 
 				// Fill in the link
 				var feedback_url = $.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId;
-				var feedback_track_id = $.articleFeedbackv5.ctaName() + '-button_click-' +
-					( $.articleFeedbackv5.inDialog ? 'overlay': 'bottom' );
+				var feedback_track_id = $.articleFeedbackv5.ctaName() + '-button_click';
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl( feedback_url, feedback_track_id ) )
 					.button()
@@ -2057,10 +2013,10 @@
 		// When the tool is visible, load the form
 		$.articleFeedbackv5.$holder.appear( function () {
 			if ( !$.articleFeedbackv5.isLoaded ) {
-				$.articleFeedbackv5.load( 'auto', 'bottom' );
+				$.articleFeedbackv5.load( 'auto' );
 				// Track form impressions at 1%
 				if ( Math.random() * 100 < 1 ) {
-					$.articleFeedbackv5.trackClick( 'impression-bottom' );
+					$.articleFeedbackv5.trackClick( 'impression' );
 				}
 			}
 		} );
@@ -2268,9 +2224,9 @@
 		}
 
 		if ( state ) {
-			$.articleFeedbackv5.find( '.articleFeedbackv5-submit' ).button( 'enable' );
+			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-submit' ).button( 'enable' );
 		} else {
-			$.articleFeedbackv5.find( '.articleFeedbackv5-submit' ).button( 'disable' );
+			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-submit' ).button( 'disable' );
 		}
 		var bucket = $.articleFeedbackv5.currentBucket();
 		if ( 'enableSubmission' in bucket ) {
@@ -2279,23 +2235,6 @@
 		$.articleFeedbackv5.submissionEnabled = state;
 		$( '#articleFeedbackv5-submit-bttn span' ).text( mw.msg( 'articlefeedbackv5-bucket1-form-submit' ) );
 		$( '#articleFeedbackv5-submit-bttn5 span' ).text( mw.msg( 'articlefeedbackv5-bucket5-form-panel-submit' ) );
-	};
-
-	// }}}
-	// {{{ find
-
-	/**
-	 * Utility method: Find an element, whether it's in the dialog or not
-	 *
-	 * @param  query mixed what to pass to the appropriate jquery element
-	 * @return array the list of elements found
-	 */
-	$.articleFeedbackv5.find = function ( query ) {
-		if ( $.articleFeedbackv5.inDialog ) {
-			return $.articleFeedbackv5.$dialog.find( query );
-		} else {
-			return $.articleFeedbackv5.$holder.find( query );
-		}
 	};
 
 	// }}}
@@ -2366,10 +2305,9 @@
 	 * Builds the edit URL, with tracking if appropriate
 	 *
 	 * @param trackingId string the tracking ID
-	 * @param from string from whence came the request ("bottom" or "overlay"),
-	 *                    since the build process happens before inDialog gets set
 	 */
-	$.articleFeedbackv5.editUrl = function ( trackingId, from ) {
+	$.articleFeedbackv5.editUrl = function ( trackingId ) {
+
 		var params = {
 			'title': mw.config.get( 'wgPageName' ),
 			'action': 'edit',
@@ -2382,11 +2320,7 @@
 			params.articleFeedbackv5_link_id    = $.articleFeedbackv5.submittedLinkId;
 			params.articleFeedbackv5_f_link_id  = $.articleFeedbackv5.floatingLinkId;
 			params.articleFeedbackv5_experiment = $.articleFeedbackv5.experiment();
-			if ( from ) {
-				params.articleFeedbackv5_location = from;
-			} else {
-				params.articleFeedbackv5_location = $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom';
-			}
+			params.articleFeedbackv5_location   = 'bottom';
 		}
 		var url = mw.config.get( 'wgScript' ) + '?' + $.param( params );
 		if ( trackingId ) {
@@ -2407,9 +2341,8 @@
 	 * Loads the tool onto the page
 	 *
 	 * @param display string what to load ("form", "cta", or "auto")
-	 * @param from    string from whence came the request ("bottom" or "overlay")
 	 */
-	$.articleFeedbackv5.load = function ( display, from ) {
+	$.articleFeedbackv5.load = function ( display ) {
 
 		if ( display && 'auto' != display ) {
 			$.articleFeedbackv5.toDisplay = ( display == 'cta' ? 'cta' : 'form' );
@@ -2425,7 +2358,7 @@
 				return;
 			}
 			$.articleFeedbackv5.loadContainers();
-			$.articleFeedbackv5.showForm( from );
+			$.articleFeedbackv5.showForm();
 		}
 
 		else if ( 'cta' == $.articleFeedbackv5.toDisplay ) {
@@ -2435,7 +2368,7 @@
 				return;
 			}
 			$.articleFeedbackv5.loadContainers();
-			$.articleFeedbackv5.showCTA( from );
+			$.articleFeedbackv5.showCTA();
 		}
 
 		$.articleFeedbackv5.isLoaded = true;
@@ -2459,14 +2392,14 @@
 				window.open( $( e.target ).attr( 'href' ) );
 			} );
 		$wrapper.find( '.articleFeedbackv5-tooltip-close' ).click( function () {
-			$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip' ).toggle();
+			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
 		} );
 		$wrapper.find( '.articleFeedbackv5-tooltip' ).hide();
 
 		// Set up the tooltip trigger for the panel version
 		$wrapper.find( '.articleFeedbackv5-title-wrap' ).append( $.articleFeedbackv5.templates.helpToolTipTrigger );
 		$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
-			$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip' ).toggle();
+			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
 		} );
 
 		// Localize
@@ -2478,36 +2411,6 @@
 			.addClass( 'articleFeedbackv5' )
 			.append( $( $.articleFeedbackv5.templates.errorPanel ) )
 			.append( '<div class="articleFeedbackv5-lock"></div>' );
-
-		// Add an empty dialog
-		$.articleFeedbackv5.$dialog = $( '<div id="articleFeedbackv5-dialog-wrap" class="articleFeedbackv5-panel"></div>' );
-		$.articleFeedbackv5.$holder.after( $.articleFeedbackv5.$dialog );
-
-		// Set up the dialog
-		$.articleFeedbackv5.$dialog.dialog( {
-			dialogClass: 'articleFeedbackv5-dialog',
-			resizable: false,
-			draggable: false,
-			modal: true,
-			autoOpen: false,
-			close: function ( event, ui ) {
-				$.articleFeedbackv5.closeAsModal();
-			}
-		} );
-
-		// Add close button to dialog
-		var $close = $( '\
-			<a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button">\
-				<span class="ui-icon ui-icon-closethick">' + mw.msg( 'articlefeedbackv5-overlay-close' ) + '</span>\
-			</a>' )
-			.click( function (e) {
-				e.preventDefault();
-				$.articleFeedbackv5.$dialog.dialog( 'close' );
-			});
-		$.articleFeedbackv5.$dialog.append( $close );
-
-		// Mark that we have containers
-		$.articleFeedbackv5.hasContainers = true;
 	};
 
 	// }}}
@@ -2515,32 +2418,29 @@
 
 	/**
 	 * Builds the form and loads it into the document
-	 *
-	 * @param from string from whence came the request ("bottom" or "overlay")
 	 */
-	$.articleFeedbackv5.showForm = function ( from ) {
+	$.articleFeedbackv5.showForm = function () {
 
 		// Build the form
 		var bucket = $.articleFeedbackv5.currentBucket();
-		var $block = bucket.buildForm( from );
+		var $block = bucket.buildForm();
 		if ( 'bindEvents' in bucket ) {
 			bucket.bindEvents( $block );
 		}
 		$block.localize( { 'prefix': 'articlefeedbackv5-' } );
 
 		// Add it to the appropriate container
-		$.articleFeedbackv5.find( '.articleFeedbackv5-ui-inner' )
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui-inner' )
 			.append( $block );
 
 		// Set the appropriate class on the ui block
-		$.articleFeedbackv5.find( '.articleFeedbackv5-ui' )
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' )
 			.addClass( 'articleFeedbackv5-option-' + $.articleFeedbackv5.bucketId )
 			.removeClass( 'articleFeedbackv5-cta-' + $.articleFeedbackv5.ctaId );
 
 		// Set the title
 		if ( 'getTitle' in bucket ) {
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title' ).html( bucket.getTitle() );
-//			$.articleFeedbackv5.$dialog.dialog( 'option', 'title', bucket.getTitle() );
 		}
 
 		// Link to help is dependent on the group the user belongs to
@@ -2554,7 +2454,7 @@
 		}
 
 		// Set the tooltip link
-		$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip-link' )
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip-link' )
 			.attr( 'href', helpLink );
 
 		// Do anything special the bucket requires
@@ -2656,7 +2556,7 @@
 		} );
 
 		// Track the submit click
-		$.articleFeedbackv5.trackClick( 'submit_attempt-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+		$.articleFeedbackv5.trackClick( 'submit_attempt' );
 
 		// Send off the ajax request
 		$.ajax( {
@@ -2672,16 +2572,14 @@
 					$.articleFeedbackv5.specialUrl = data.articlefeedbackv5.aft_url;
 					$.articleFeedbackv5.permalink = data.articlefeedbackv5.permalink;
 					$.articleFeedbackv5.unlockForm();
-					$.articleFeedbackv5.showCTA( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
+					$.articleFeedbackv5.showCTA();
 					// Drop a cookie for a successful submit
 					$.cookie( $.aftTrack.prefix( 'submitted' ), 'true', { 'expires': 365, 'path': '/' } );
 					// Clear out anything that needs removing (usually trigger links)
-					// Comment this out and uncomment the clear on dialog close to switch to
-					// the trigger link replacing the form. _SWITCH_CLEAR_
 					$.articleFeedbackv5.$toRemove.remove();
 					$.articleFeedbackv5.$toRemove = $( [] );
 					// Track the success
-					$.articleFeedbackv5.trackClick( 'submit_success-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+					$.articleFeedbackv5.trackClick( 'submit_success' );
 				} else {
 					var code = 'unknown';
 					var msg;
@@ -2706,7 +2604,7 @@
 						msg = { info: mw.msg( 'articlefeedbackv5-error-unknown' ) };
 					}
 					// Track the error
-					$.articleFeedbackv5.trackClick( 'submit_error_' + code + '-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+					$.articleFeedbackv5.trackClick( 'submit_error_' + code );
 					// Set up error state
 					$.articleFeedbackv5.markFormErrors( { _api : msg } );
 					$.articleFeedbackv5.unlockForm();
@@ -2714,7 +2612,7 @@
 			},
 			'error': function (xhr, tstatus, error) {
 				// Track the error
-				$.articleFeedbackv5.trackClick( 'submit_error_jquery-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' ) );
+				$.articleFeedbackv5.trackClick( 'submit_error_jquery' );
 				// Set up error state
 				var err = { _api: { info: mw.msg( 'articlefeedbackv5-error-submit' ) } };
 				$.articleFeedbackv5.markFormErrors( err );
@@ -2794,10 +2692,8 @@
 
 	/**
 	 * Shows a CTA
-	 *
-	 * @param from string from whence came the request ("bottom" or "overlay")
 	 */
-	$.articleFeedbackv5.showCTA = function ( from ) {
+	$.articleFeedbackv5.showCTA = function () {
 
 		// Build the cta
 		var cta = $.articleFeedbackv5.currentCTA();
@@ -2811,12 +2707,12 @@
 		$block.localize( { 'prefix': 'articlefeedbackv5-' } );
 
 		// Add it to the appropriate container
-		$.articleFeedbackv5.find( '.articleFeedbackv5-ui-inner' ).empty();
-		$.articleFeedbackv5.find( '.articleFeedbackv5-ui-inner' )
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui-inner' ).empty();
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui-inner' )
 			.append( $block );
 
 		// Set the appropriate class on the ui block
-		$.articleFeedbackv5.find( '.articleFeedbackv5-ui' )
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' )
 			.removeClass( 'articleFeedbackv5-option-' + $.articleFeedbackv5.bucketId )
 			.addClass( 'articleFeedbackv5-cta-' + $.articleFeedbackv5.ctaId );
 
@@ -2830,7 +2726,7 @@
 			var title = $( '<div></div>' )
 				.html( $.articleFeedbackv5.templates.ctaTitleConfirm )
 				.localize( { 'prefix': 'articlefeedbackv5-' } );
-			var track_id = $.articleFeedbackv5.ctaName() + '-permalink_click-' + ( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
+			var track_id = $.articleFeedbackv5.ctaName() + '-permalink_click';
 			var link = $.articleFeedbackv5.trackingUrl(
 				$.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId,
 				track_id
@@ -2840,11 +2736,10 @@
 
 			title = title.html();
 		}
-		$.articleFeedbackv5.$dialog.dialog( 'option', 'title', title );
-		$.articleFeedbackv5.find( '.articleFeedbackv5-title' ).html( title );
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title' ).html( title );
 
 		// Set the tooltip link
-		$.articleFeedbackv5.find( '.articleFeedbackv5-tooltip-link' )
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip-link' )
 			.attr( 'href', mw.config.get( 'wgArticleFeedbackv5LearnToEdit' ) );
 
 		// Add a close button to clear out the panel
@@ -2861,14 +2756,11 @@
 			cta.afterBuild();
 		}
 
-		// The close element needs to be created anyway, to serve as an anchor. However, it needs
-		// to be hidden when the CTA is not displayed in a dialog
-		if( !$.articleFeedbackv5.inDialog ) {
-			$close.hide();
-		}
+		// The close element needs to be created anyway, to serve as an anchor, but needs to be hidden
+		$close.hide();
 
 		// Track the event
-		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-impression-' + from );
+		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-impression' );
 
 		$.articleFeedbackv5.nowShowing = 'cta';
 	};
@@ -2881,7 +2773,6 @@
 	 */
 	$.articleFeedbackv5.clear = function () {
 		$.articleFeedbackv5.isLoaded = false;
-		$.articleFeedbackv5.inDialog = false;
 		$.articleFeedbackv5.submissionEnabled = false;
 		$.articleFeedbackv5.feedbackId = 0;
 		$.articleFeedbackv5.clearContainers();
@@ -2896,9 +2787,6 @@
 	 */
 	$.articleFeedbackv5.clearContainers = function () {
 		$.articleFeedbackv5.$holder.empty();
-		if ( $.articleFeedbackv5.$dialog ) {
-			$.articleFeedbackv5.$dialog.remove();
-		}
 	};
 
 	// }}}
@@ -3033,28 +2921,18 @@
 	 */
 	$.articleFeedbackv5.markShowstopperError = function ( message ) {
 		aft5_debug( message );
-		if ( $.articleFeedbackv5.inDialog ) {
-			$.articleFeedbackv5.$dialog.dialog( 'option', 'title', '' );
-			$.articleFeedbackv5.$dialog.dialog( 'option', 'close', function () {
-				$.articleFeedbackv5.clear();
-			} );
-			$.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-ui' ).remove();
-			$( '#ui-dialog-title-articleFeedbackv5-dialog-wrap' ).parent()
-				.find( '.articleFeedbackv5-tooltip-trigger' ).remove();
-			$.articleFeedbackv5.$dialog.append( $( '<div class="articleFeedbackv5-error-message"></div>' ) );
-			$.articleFeedbackv5.find( '.articleFeedbackv5-error' ).show();
-		} else {
-			var $veil = $.articleFeedbackv5.find( '.articleFeedbackv5-error' );
-			var $box  = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' );
-			$veil.css( 'top', '-' + $box.height() );
-			$veil.css( 'width', $box.width() );
-			$veil.css( 'height', $box.height() );
-			$veil.show();
-			$box.css( 'width', $box.width() );
-			$box.css( 'height', $box.height() );
-			$box.html( '' );
-		}
-		var $err = $.articleFeedbackv5.find( '.articleFeedbackv5-error-message' );
+
+		var $veil = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' );
+		var $box  = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' );
+		$veil.css( 'top', '-' + $box.height() );
+		$veil.css( 'width', $box.width() );
+		$veil.css( 'height', $box.height() );
+		$veil.show();
+		$box.css( 'width', $box.width() );
+		$box.css( 'height', $box.height() );
+		$box.html( '' );
+
+		var $err = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error-message' );
 		$err.text( $.articleFeedbackv5.debug && message ? message : mw.msg( 'articlefeedbackv5-error' ) );
 		$err.html( $err.html().replace( "\n", '<br />' ) );
 		$.articleFeedbackv5.$toRemove.remove();
@@ -3071,7 +2949,7 @@
 	 * @param msg string the error message
 	 */
 	$.articleFeedbackv5.markTopError = function ( msg ) {
-		$.articleFeedbackv5.find( '.articleFeedbackv5-top-error' ).html( msg );
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-top-error' ).html( msg );
 	};
 
 	// }}}
@@ -3199,91 +3077,6 @@
 	};
 
 	// }}}
-	// {{{ openAsModal
-
-	/**
-	 * Opens the feedback tool as a modal window
-	 *
-	 * @param $link Element the trigger link
-	 */
-	$.articleFeedbackv5.openAsModal = function ( $link ) {
-		if ( 'cta' == $.articleFeedbackv5.nowShowing ) {
-			// Uncomment here and comment out link removal to switch to the feedback
-			// link replacing the form.  _SWITCH_CLEAR_
-			// $.articleFeedbackv5.clear();
-		}
-		if ( !$.articleFeedbackv5.isLoaded ) {
-			$.articleFeedbackv5.load( 'auto', 'overlay' );
-		}
-		if ( !$.articleFeedbackv5.inDialog ) {
-			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).hide();
-			$inner = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-buffer' ).detach();
-			$.articleFeedbackv5.$dialog.append( $inner );
-			$.articleFeedbackv5.$dialog.dialog( 'option', 'position', [ 'center', 'center' ] );
-			$.articleFeedbackv5.$dialog.dialog( 'open' );
-			$.articleFeedbackv5.setLinkId( $link.data( 'linkId' ) );
-
-			// Track form impressions at 1%
-			if ( Math.random() * 100 < 1 ) {
-				$.articleFeedbackv5.trackClick( 'impression-overlay' );
-			}
-
-			// Hide the panel
-			$.articleFeedbackv5.$holder.hide();
-
-			$.articleFeedbackv5.inDialog = true;
-		}
-	};
-
-	// }}}
-	// {{{ closeAsModal
-
-	/**
-	 * Closes the feedback tool as a modal window
-	 */
-	$.articleFeedbackv5.closeAsModal = function () {
-		if ( $.articleFeedbackv5.inDialog ) {
-			if ( 'form' == $.articleFeedbackv5.nowShowing ) {
-				$.articleFeedbackv5.trackClick( 'close-overlay' );
-			} else if ('cta' == $.articleFeedbackv5.nowShowing ) {
-				$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-close-overlay' );
-			}
-			$.articleFeedbackv5.setLinkId( 'X' );
-			$.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-tooltip' ).hide();
-			$inner = $.articleFeedbackv5.$dialog.find( '.articleFeedbackv5-buffer' ).detach();
-			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' ).append( $inner );
-			$.articleFeedbackv5.$holder.show();
-			$.articleFeedbackv5.inDialog = false;
-			if ( 'cta' == $.articleFeedbackv5.nowShowing ) {
-				$.articleFeedbackv5.clear();
-			}
-			if ( 'onModalToggle' in $.articleFeedbackv5.currentBucket() ) {
-				$.articleFeedbackv5.currentBucket().onModalToggle( 'bottom' );
-			}
-		}
-	};
-
-	// }}}
-	// {{{ toggleModal
-
-	/**
-	 * Toggles the modal state
-	 *
-	 * @param $link Element the trigger link
-	 */
-	$.articleFeedbackv5.toggleModal = function ( $link ) {
-		if ( $.articleFeedbackv5.inDialog ) {
-			$.articleFeedbackv5.closeAsModal();
-			$.articleFeedbackv5.$dialog.dialog( 'close' );
-		} else {
-			$.articleFeedbackv5.openAsModal( $link );
-		}
-		if ( 'onModalToggle' in $.articleFeedbackv5.currentBucket() ) {
-			$.articleFeedbackv5.currentBucket().onModalToggle( $.articleFeedbackv5.inDialog ? 'overlay' : 'bottom' );
-		}
-	};
-
-	// }}}
 	// {{{ clickTriggerLink
 
 	/**
@@ -3302,9 +3095,6 @@
 		$( '#articleFeedbackv5-panel' )
 			.effect( 'highlight', {}, 2000 )
 			.get( 0 ).scrollIntoView();
-
-		// completely disable overlay for now; everything should now highlight bottom form
-//		$.articleFeedbackv5.toggleModal( $link );
 	};
 
 	// }}}
@@ -3331,10 +3121,7 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 		inDebug: { args: 0, ret: true },
 		nowShowing: { args: 0, ret: true },
 		experiment: { args: 0, ret: true },
-		addToRemovalQueue: { args: 1, ret: false },
-		openAsModal: { args: 1, ret: false },
-		closeAsModal: { args: 0, ret: true },
-		toggleModal: { args: 1, ret: false }
+		addToRemovalQueue: { args: 1, ret: false }
 	};
 	if ( opts in public ) {
 		var r;
