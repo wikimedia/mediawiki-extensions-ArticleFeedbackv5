@@ -98,7 +98,9 @@ class ArticleFeedbackv5Flagging {
 	private $netHelpfulness;
 
 	/**
-	 * The map of flags to permissions
+	 * The map of flags to permissions.
+	 * If an action is not mentionned here, it is not tied to specific permissions
+	 * and everyone is able to perform the action.
 	 *
 	 * @var array
 	 */
@@ -169,7 +171,7 @@ class ArticleFeedbackv5Flagging {
 		if ( isset( $this->flagPermissionMap[$flag] ) ) {
 			foreach ( $this->flagPermissionMap[$flag] as $permission ) {
 				if ( !$this->isAllowed( $permission ) ) {
-					return $this->errorResult( 'articlefeedbackv5-invalid-feedback-id' );
+					return $this->errorResult( 'articlefeedbackv5-invalid-feedback-flag' );
 				}
 			}
 		}
@@ -429,7 +431,7 @@ class ArticleFeedbackv5Flagging {
 
 		$this->update['af_last_status'] = 'undeleted';
 		$this->update['af_last_status_user_id'] = $this->getUserId();
-		$update['af_last_status_timestamp'] = $timestamp;
+		$this->update['af_last_status_timestamp'] = $timestamp;
 		if ( $notes ) {
 			$this->update['af_last_status_notes'] = $notes;
 		}
@@ -1015,9 +1017,18 @@ class ArticleFeedbackv5Flagging {
 		$vote = $this->vote( $record, 'helpful', $notes, $timestamp, $toggle, $direction );
 
 		if ( $record->af_helpful_count < $this->helpfulCount ) {
-			$this->log[] = array('helpful', $notes, $this->isSystemCall());
+			$type = 'helpful';
 		} else {
-			$this->log[] = array('undo-helpful', $notes, $this->isSystemCall());
+			$type = 'undo-helpful';
+		}
+
+		$this->log[] = array( $type, $notes, $this->isSystemCall() );
+
+		$this->update['af_last_status'] = $type;
+		$this->update['af_last_status_user_id'] = $this->getUserId();
+		$this->update['af_last_status_timestamp'] = $timestamp;
+		if ( $notes ) {
+			$this->update['af_last_status_notes'] = $notes;
 		}
 
 		return $vote;
@@ -1039,9 +1050,18 @@ class ArticleFeedbackv5Flagging {
 		$vote = $this->vote( $record, 'unhelpful', $notes, $timestamp, $toggle, $direction );
 
 		if ( $record->af_unhelpful_count < $this->unhelpfulCount ) {
-			$this->log[] = array('unhelpful', $notes, $this->isSystemCall());
+			$type = 'unhelpful';
 		} else {
-			$this->log[] = array('undo-unhelpful', $notes, $this->isSystemCall());
+			$type = 'undo-unhelpful';
+		}
+
+		$this->log[] = array( $type, $notes, $this->isSystemCall() );
+
+		$this->update['af_last_status'] = $type;
+		$this->update['af_last_status_user_id'] = $this->getUserId();
+		$this->update['af_last_status_timestamp'] = $timestamp;
+		if ( $notes ) {
+			$this->update['af_last_status_notes'] = $notes;
 		}
 
 		return $vote;
