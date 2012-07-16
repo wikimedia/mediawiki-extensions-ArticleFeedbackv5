@@ -210,7 +210,7 @@
 	$.articleFeedbackv5.templates = {
 
 		panelOuter: '\
-			<div class="articleFeedbackv5-panel">\
+			<div id="articleFeedbackv5-panel" class="articleFeedbackv5-panel">\
 				<div class="articleFeedbackv5-buffer">\
 					<div class="articleFeedbackv5-title-wrap">\
 						<h2 class="articleFeedbackv5-title"></h2>\
@@ -3292,9 +3292,19 @@
 	 * @param $link Element the trigger link
 	 */
 	$.articleFeedbackv5.clickTriggerLink = function( $link ) {
+
 		var tracking_id = 'trigger' + $link.data( 'linkId' ) + '-click-overlay';
 		$.articleFeedbackv5.trackClick( tracking_id );
-		$.articleFeedbackv5.toggleModal( $link );
+
+		if ( !$.articleFeedbackv5.isLoaded ) {
+			$.articleFeedbackv5.$holder.trigger( 'appear' );
+		}
+		$( '#articleFeedbackv5-panel' )
+			.effect( 'highlight', {}, 2000 )
+			.get( 0 ).scrollIntoView();
+
+		// completely disable overlay for now; everything should now highlight bottom form
+//		$.articleFeedbackv5.toggleModal( $link );
 	};
 
 	// }}}
