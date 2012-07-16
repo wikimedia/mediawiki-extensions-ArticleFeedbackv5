@@ -42,7 +42,6 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-bucket5-toolbox-linktext',
 			),
 			'dependencies' => array(
-				'jquery.ui.dialog',
 				'jquery.ui.button',
 				'jquery.articleFeedbackv5',
 				'jquery.cookie',
@@ -225,7 +224,6 @@ class ArticleFeedbackv5Hooks {
 				'jquery.tipsy',
 				'jquery.json',
 				'jquery.localize',
-				'jquery.ui.dialog',
 				'jquery.ui.button',
 				'jquery.cookie',
 				'jquery.placeholder',
