@@ -39,8 +39,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-cta4-button-text-login' => 'Log in',
 	'articlefeedbackv5-cta4-button-text-later' => 'Maybe later',
 	'articlefeedbackv5-cta4-button-text-or' => 'or',
-	'articlefeedbackv5-cta5-confirmation-followup' => 'Your feedback has been $1.', // @todo FIXME: Patchwork message.
-	'articlefeedbackv5-cta5-confirmation-followup-linktext' => 'posted here', // @todo FIXME: Patchwork message.
 	'articlefeedbackv5-cta5-confirmation-title' => 'See what others are saying',
 	'articlefeedbackv5-cta5-confirmation-call' => 'View suggestions from other readers like you. Can you help pick the best ideas?',
 	'articlefeedbackv5-cta5-button-text' => 'See all comments',
@@ -54,9 +52,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-email' => 'That e-mail address is not valid.',
 	'articlefeedbackv5-error-blocked' => 'Blocked users may not submit feedback.',
 	'articlefeedbackv5-error-validation' => 'Validation error.',
-	'articlefeedbackv5-error-abuse' => 'Your post has been rejected by a software filter that suggests it may have violated Wikipedia\'s $1. Please revise your post and try again.',  // @todo FIXME: Patchwork message.
-	'articlefeedbackv5-error-abuse-linktext' => 'feedback guidelines',  // @todo FIXME: Patchwork message.
-	'articlefeedbackv5-error-abuse-link' => '//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines',
+	'articlefeedbackv5-error-abuse' => 'Your post has been rejected by a software filter that suggests it may have violated Wikipedia\'s [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines feedback guidelines]. Please revise your post and try again.',
 	'articlefeedbackv5-error-unknown' => 'Unknown error.',
 	'articlefeedbackv5-error-submit' => 'Form submission error.',
 	'articlefeedbackv5-error-nofeedback' => 'Please enter your feedback.',
@@ -657,8 +653,6 @@ The link to the edit tutorial',
 	'articlefeedbackv5-cta4-button-text-login' => 'The text for the button encouraging people to login',
 	'articlefeedbackv5-cta4-button-text-later' => 'The text for the link allowing the user to discard this message',
 	'articlefeedbackv5-cta4-button-text-or' => 'The text dividing the 2 buttons (signup & login)',
-	'articlefeedbackv5-cta5-confirmation-followup' => 'The title of the feedback CTA (call to action) -- $1 is the permalink to feedback just posted, with link text {{msg-mw|articlefeedbackv5-cta5-confirmation-followup-linktext}}.',
-	'articlefeedbackv5-cta5-confirmation-followup-linktext' => 'The text of the link to the feedback just posted, in {{msg-mw|articlefeedbackv5-cta5-confirmation-followup}}',
 	'articlefeedbackv5-cta5-confirmation-title' => 'The title of the feedback CTA (call to action)',
 	'articlefeedbackv5-cta5-confirmation-call' => 'The explanatory text of the feedback CTA (call to action)',
 	'articlefeedbackv5-cta5-button-text' => 'The text for the button on the feedback CTA (call to action)',
@@ -15605,7 +15599,7 @@ $3
 
 Если вы не отправляли подобного запроса, пожалуйста, проигнорируйте это сообщение, и мы больше не будем вас тревожить.
 
-С наилучшими пожеланиями и благодарностью — 
+С наилучшими пожеланиями и благодарностью —
 команда проекта {{SITENAME}}',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Запрошен надзор для страницы отзыва',
 	'articlefeedbackv5-email-request-oversight-body' => 'Здравствуйте, ревизоры!

@@ -2680,11 +2680,7 @@
 								code = data.error.code;
 							}
 						} else if ( 'articlefeedbackv5-error-abuse' == data.error ) {
-							msg = $.articleFeedbackv5.buildLink( data.error, {
-								href: mw.msg( 'articlefeedbackv5-error-abuse-link' ),
-								text: 'articlefeedbackv5-error-abuse-linktext',
-								target: '_blank'
-							});
+							msg = mw.msg( data.error );
 							code = 'afreject';
 						} else {
 							msg = mw.msg( data.error );
