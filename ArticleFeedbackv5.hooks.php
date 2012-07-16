@@ -231,6 +231,7 @@ class ArticleFeedbackv5Hooks {
 				'jquery.placeholder',
 				'mediawiki.jqueryMsg',
 				'jquery.articleFeedbackv5.track',
+				'jquery.effects.highlight',
 			),
 		),
 		'jquery.articleFeedbackv5.special' => array(
