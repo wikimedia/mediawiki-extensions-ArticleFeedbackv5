@@ -197,7 +197,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-dashboard-bottom' => "'''Note''': We will continue to experiment with different ways of surfacing pages in these dashboards.  At present, the dashboards include the following pages:
 * Pages with highest/lowest ratings: pages that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.
 * Recent lows: pages that got 70% or more low (2 stars or lower) ratings in any category in the last 24 hours. Only pages that have received at least 10 ratings in the last 24 hours are included.",
-	'articlefeedbackv5' => 'Article feedback dashboard',
+	'articlefeedbackv5' => 'Article feedback - Central page (New: AFT5)',
 	'articlefeedbackv5-desc' => 'Article feedback',
 	'articlefeedbackv5-comment-more' => 'More',
 	'articlefeedbackv5-comment-less' => 'Less',
