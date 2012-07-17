@@ -18,11 +18,6 @@ select {
 	height: 1.5em;
 }
 
-/** Wrapper **/
-#articleFeedbackv5-special-wrap {
-	min-width: 900px;
-}
-
 /** Notices **/
 .articleFeedbackv5-survey-button {
 	clear: right;
@@ -55,18 +50,25 @@ select {
 	float: right;
 }
 #articleFeedbackv5-showing-count-wrap {
-	float: left;
+	display: inline-block;
+	/* IE7 inline-block hack */
+	zoom: 1;
+	*display: inline;
 	font-size: 1.4em;
 	margin: 15px 50px 5px 0;
-	padding-top: 6px;
+	line-height: 28px;
 }
 #articleFeedbackv5-feedback-count-total {
 	font-weight: bold;
 }
 #articleFeedbackv5-percent-found-wrap {
+	display: inline;
+	/* IE7 inline-block hack */
+	zoom: 1;
+	*display: inline;
 	font-size: 1.4em;
 	margin: 15px 0 5px 0;
-	float: left;
+	line-height: 28px;
 }
 #articleFeedbackv5-percent-found-wrap .stat-marker {
 	font-weight: bold;
@@ -109,6 +111,17 @@ select {
 	clear:both;
 }
 
+/** Filter & sort line **/
+#articleFeedbackv5-sort > div, #articleFeedbackv5-sort > span, #articleFeedbackv5-sort > a,
+#articleFeedbackv5-filter > div, #articleFeedbackv5-filter > span, #articleFeedbackv5-filter > a {
+	display: inline-block;
+	/* IE7 inline-block hack */
+	zoom: 1;
+	*display: inline;
+	height: 2em;
+	vertical-align: bottom;
+}
+
 /** Filtering **/
 #articleFeedbackv5-sort-filter-controls {
 	font-size: 1.1em;
@@ -120,7 +133,6 @@ select {
 	background-position: bottom left;
 	background-repeat: repeat-x;
 	overflow: hidden;
-	padding-bottom: 0.15em;
 }
 #articleFeedbackv5-sort-filter-controls:after {
 	clear: both;
@@ -130,12 +142,10 @@ select {
 	padding-right: 5px;
 }
 .articleFeedbackv5-filter-link:hover {
-	margin-bottom: -0.7em;
 	/* @embed */
 	background-image: url(images/bg-feedbackpage-header-on.png);
 	background-position: bottom left;
 	background-repeat: repeat-x;
-	padding-bottom: 0.5em;
 	text-decoration: none;
 }
 #articleFeedbackv5-filter {
@@ -147,7 +157,6 @@ select {
 }
 .filter-active, .filter-active:hover, .articleFeedbackv5-filter-link.filter-active:hover {
 	font-weight: bold;
-	padding-bottom: 0.5em;
 	/* @embed */
 	background-image: url(images/bg-feedbackpage-header-on.png);
 	background-position: bottom left;
@@ -158,11 +167,8 @@ select {
 }
 #articleFeedbackv5-select-wrapper {
 	font-weight: bold;
-	padding-bottom: 0.25em;
-	display: inline-block;
-	margin-left: 10px;
-	margin-right: 5px;
-	display: inline;
+	margin: 0 0 0 4px;
+	padding: 0 5px;
 }
 #articleFeedbackv5-select-wrapper:hover,
 #articleFeedbackv5-select-wrapper.filter-active {
@@ -170,16 +176,9 @@ select {
 	background-image: url(images/bg-feedbackpage-header-on.png);
 	background-position: bottom left;
 	background-repeat: repeat-x;
-	padding-bottom: 0.5em;
 }
 #articleFeedbackv5-filter-select {
 	margin-right: 0px;
-	position: relative;
-	top: 9px;
-	left: 0;
-	float: none;
-	display: inline-block;
-	top: 0px;
 	color: #444444;
 }
 .filter-active #articleFeedbackv5-filter-select {
@@ -195,12 +194,8 @@ select {
 	float: right;
 }
 #articleFeedbackv5-sort .articleFeedbackv5-sort-label {
-	display: inline-block;
 	margin: 0 5px 0 0;
 	font-weight: bold;
-}
-#articleFeedbackv5-sort-select {
-	margin-top: -3px;
 }
 
 /** Show Feedback Results */
