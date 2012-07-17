@@ -758,18 +758,13 @@
 						$element.attr( 'placeholder', text ).placeholder();
 
 						// allow feedback submission if there is feedback (or if Y/N was positive)
-						var enable = $( '.articleFeedbackv5-comment textarea' ).val().length > 0 || $( '#articleFeedbackv5-bucket6-toggle-yes').is( ':checked' );
-						$.articleFeedbackv5.enableSubmission( enable );
+						$.articleFeedbackv5.enableSubmission( true );
 					} );
 
 				// add character-countdown on feedback-field
 				$( document )
 					.on( 'keyup', '.articleFeedbackv5-comment textarea', function () {
 						$.articleFeedbackv5.currentBucket().countdown( $( this ) );
-
-						// allow feedback submission if there is feedback (or if Y/N was positive)
-						var enable = $( this ).val().length > 0 || $( '#articleFeedbackv5-bucket6-toggle-yes').is( ':checked' );
-						$.articleFeedbackv5.enableSubmission( enable );
 					} );
 
 				// clicking the back-link on step 2 should show step 1 again
