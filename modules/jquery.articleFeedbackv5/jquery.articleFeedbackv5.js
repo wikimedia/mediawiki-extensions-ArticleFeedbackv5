@@ -3082,9 +3082,15 @@
 		if ( !$.articleFeedbackv5.isLoaded ) {
 			$.articleFeedbackv5.$holder.trigger( 'appear' );
 		}
-		$( '#articleFeedbackv5-panel' )
-			.effect( 'highlight', {}, 2000 )
-			.get( 0 ).scrollIntoView();
+
+		$panel = $( '#articleFeedbackv5-panel' );
+
+		if ( !$panel.is( ':animated' ) )
+		{
+			$panel
+				.effect( 'highlight', {}, 2000 )
+				.get( 0 ).scrollIntoView();
+		}
 	};
 
 	// }}}
