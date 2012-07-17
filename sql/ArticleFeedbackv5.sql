@@ -132,9 +132,8 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_answer (
 -- aat_response_text contains the content that under normal conditions (short
 -- comment of under 255 bytes) is inserted in aft_article_answer.aa_response_text
 CREATE TABLE IF NOT EXISTS /*_*/aft_article_answer_text (
-  aat_id            integer unsigned NOT NULL AUTO_INCREMENT,
-  aat_response_text text NOT NULL,
-  PRIMARY KEY (aat_id)
+  aat_id            integer unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  aat_response_text text NOT NULL
 ) /*$wgDBTableOptions*/;
 
 -- These next four are rollup tables used by the articlefeedback special page.

@@ -377,7 +377,7 @@ class ArticleFeedbackv5Hooks {
 	public static function loadExtensionSchemaUpdates( $updater = null ) {
 		$updater->addExtensionUpdate( array(
 			'addTable',
-			'article_feedback',
+			'aft_article_feedback',
 			dirname( __FILE__ ) . '/sql/ArticleFeedbackv5.sql',
 			true
 		) );
