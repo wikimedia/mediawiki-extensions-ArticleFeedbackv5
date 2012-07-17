@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQX//6/w\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 3088,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-17T17:34:02Z",
+      "side": 1,
+      "message": "Missing var here?",
+      "revId": "f8cea173021dc3734ce1abce41654e3302c5208f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
