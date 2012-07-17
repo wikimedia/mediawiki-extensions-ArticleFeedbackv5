@@ -931,14 +931,14 @@
 	margin: 10px 0 0 0;
 }
 
-.articleFeedbackv5-ui.articleFeedbackv5-cta-4 .articleFeedbackv5-panel-buttons > * {
+.articleFeedbackv5-ui.articleFeedbackv5-cta-4 .articleFeedbackv5-panel-buttons .articleFeedbackv5-panel-buttons-child {
 	position: relative;
 	top: 0;
 	left: 0;
 	margin: 0 20px;
 	line-height: 3em;
 }
-.articleFeedbackv5-ui.articleFeedbackv5-cta-4 .articleFeedbackv5-panel-buttons > .articleFeedbackv5-cta-button {
+.articleFeedbackv5-ui.articleFeedbackv5-cta-4 .articleFeedbackv5-panel-buttons .articleFeedbackv5-cta-button {
 	line-height: 1.5em;
 }
 
