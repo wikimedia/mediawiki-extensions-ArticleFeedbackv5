@@ -1267,10 +1267,10 @@
 							<p class="articleFeedbackv5-confirmation-call"><html:msg key="cta4-confirmation-call-line1" /><br /><html:msg key="cta4-confirmation-call-line2" /></p>\
 						</div>\
 						<div class="articleFeedbackv5-panel-buttons">\
-							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-signup"><html:msg key="cta4-button-text-signup" /></a>\
-							<span><html:msg key="cta4-button-text-or" /></span>\
-							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-login"><html:msg key="cta4-button-text-login" /></a>\
-							<a href="#" class="articleFeedbackv5-cta-button-later"><html:msg key="cta4-button-text-later" /></a>\
+							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-signup articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-signup" /></a>\
+							<span class="articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-or" /></span>\
+							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-login articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-login" /></a>\
+							<a href="#" class="articleFeedbackv5-cta-button-later articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-later" /></a>\
 						</div>\
 						<div class="clear"></div>\
 					</div>\
