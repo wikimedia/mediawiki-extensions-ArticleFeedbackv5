@@ -20,7 +20,7 @@ $messages['en'] = array(
 
 	/* CTAs */
 	'articlefeedbackv5-cta-thanks' => 'Thanks!',
-	'articlefeedbackv5-cta-confirmation-message' => 'Your feedback has been [$1 posted here].',
+	'articlefeedbackv5-cta-confirmation-message' => 'Your post can be viewed on this [$1 feedback page].',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Did you know that you can edit this page?',
 	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia works because anyone can edit its pages. Go ahead, give it a try. Be bold!',
 	'articlefeedbackv5-cta1-learn-how' => 'Learn how to edit',

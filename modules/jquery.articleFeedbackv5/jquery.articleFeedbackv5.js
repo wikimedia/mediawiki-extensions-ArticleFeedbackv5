@@ -978,7 +978,6 @@
 						<div class="articleFeedbackv5-panel-leftContent">\
 							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta1-confirmation-title" /></h3>\
 							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta1-confirmation-call" /></p>\
-							<p class="articleFeedbackv5-confirmation-learnHow"><a target="_blank" href="#"><html:msg key="cta1-learn-how" /> &raquo;</a></p>\
 						</div>\
 						<a href="&amp;action=edit" class="articleFeedbackv5-cta-button"><html:msg key="cta1-edit-linktext" /></a>\
 						<div class="clear"></div>\
@@ -1011,10 +1010,6 @@
 
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
-
-				// Fill in the tutorial link
-				$block.find( '.articleFeedbackv5-confirmation-learnHow a' )
-					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the link
 				var edit_track_id = $.articleFeedbackv5.ctaName() + '-button_click';
