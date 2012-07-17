@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQX//6/8\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-17T17:26:53Z",
+      "side": 0,
+      "message": "The message should be removed from \u0027qqq\u0027 section as well",
+      "revId": "ccbc585a1025d6958906cec9b87647654785ca4b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
