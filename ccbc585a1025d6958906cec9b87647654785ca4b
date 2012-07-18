@@ -34,6 +34,24 @@
       "revId": "ccbc585a1025d6958906cec9b87647654785ca4b",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQX//6W4\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-18T21:04:26Z",
+      "side": 0,
+      "message": "Thanks for the explanation, I will make sure that I won\u0027t remove any message from qqq section in the future",
+      "parentUuid": "AAAAQX//6uM\u003d",
+      "revId": "ccbc585a1025d6958906cec9b87647654785ca4b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
