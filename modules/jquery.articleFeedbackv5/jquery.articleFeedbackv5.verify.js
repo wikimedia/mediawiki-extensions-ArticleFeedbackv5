@@ -83,7 +83,7 @@
 			$.aftVerify.pageId = mw.config.get( 'aftv5PageId', -1 );
 		}
 
-		// Case 1: the html is cached
+		// Case 1: the html is cached and we don't know if it's whitelisted
 		if ( $.aftVerify.whitelist == -1 ) {
 			if ( $.aftVerify.location == 'article' ) {
 				// We can double-check, so do that
