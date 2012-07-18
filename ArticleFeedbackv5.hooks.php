@@ -42,6 +42,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-bucket5-toolbox-linktext',
 			),
 			'dependencies' => array(
+				'jquery.ui.dialog',
 				'jquery.ui.button',
 				'jquery.articleFeedbackv5',
 				'jquery.cookie',
@@ -98,6 +99,8 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-error-submit',
 				'articlefeedbackv5-cta-thanks',
 				'articlefeedbackv5-error-abuse',
+				'articlefeedbackv5-error-abuse-link',
+				'articlefeedbackv5-error-abuse-linktext',
 				'articlefeedbackv5-error-throttled',
 				'articlefeedbackv5-cta-confirmation-message',
 				'articlefeedbackv5-cta1-confirmation-title',
@@ -121,6 +124,8 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-cta5-confirmation-title',
 				'articlefeedbackv5-cta5-confirmation-call',
 				'articlefeedbackv5-cta5-button-text',
+				'articlefeedbackv5-cta5-confirmation-followup',
+				'articlefeedbackv5-cta5-confirmation-followup-linktext',
 				'articlefeedbackv5-overlay-close',
 				'articlefeedbackv5-bucket1-title',
 				'articlefeedbackv5-bucket1-question-toggle',
@@ -220,6 +225,7 @@ class ArticleFeedbackv5Hooks {
 				'jquery.tipsy',
 				'jquery.json',
 				'jquery.localize',
+				'jquery.ui.dialog',
 				'jquery.ui.button',
 				'jquery.cookie',
 				'jquery.placeholder',
@@ -371,7 +377,7 @@ class ArticleFeedbackv5Hooks {
 	public static function loadExtensionSchemaUpdates( $updater = null ) {
 		$updater->addExtensionUpdate( array(
 			'addTable',
-			'article_feedback',
+			'aft_article_feedback',
 			dirname( __FILE__ ) . '/sql/ArticleFeedbackv5.sql',
 			true
 		) );
@@ -923,9 +929,18 @@ class ArticleFeedbackv5Hooks {
 					$conds['af_user_ip'] = $pager->target;
 				}
 			} else {
-				$tables[] = 'user_groups';
+				// fetch max user id from cache (if present)
+				global $wgMemc;
+				$key = wfMemcKey( 'articlefeedbackv5', 'maxUserId' );
+				$max = $wgMemc->get( $key );
+				if ( $max === false ) {
+					// max user id not present in cache; fetch from db & save to cache for 1h
+					$max = (int) $pager->mDb->selectField( 'user', 'max(user_id)', '', __METHOD__ );
+					$wgMemc->set( $key, $max, 60 * 60 );
+				}
 
-				$max = $pager->mDb->selectField( 'user', 'max(user_id)', false, __METHOD__ );
+				// newbie = last 1% of users, without usergroup
+				$tables[] = 'user_groups';
 				$conds[] = 'af_user_id >' . (int)( $max - $max / 100 );
 				$conds[] = 'ug_group IS NULL';
 
