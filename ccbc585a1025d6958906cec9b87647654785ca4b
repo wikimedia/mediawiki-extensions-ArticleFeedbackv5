@@ -16,6 +16,24 @@
       "revId": "ccbc585a1025d6958906cec9b87647654785ca4b",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQX//6uM\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-07-18T05:55:52Z",
+      "side": 0,
+      "message": "No need to do that. It will only increase chances of merge conflicts, and once qqq is exported from translatewiki.net, it will be cleaned up.",
+      "parentUuid": "AAAAQX//6/8\u003d",
+      "revId": "ccbc585a1025d6958906cec9b87647654785ca4b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
