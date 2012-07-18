@@ -22,7 +22,7 @@
  */
 $wgArticleFeedbackv5DefaultFilters = array (
 	'all'      => 'visible-relevant',
-	'featured' => 'visible-relevant',
+	'featured' => 'visible-comment',
 	'hidden'   => 'visible-comment',
 	'deleted'  => 'visible-comment',
 	'central'  => 'visible-comment',
