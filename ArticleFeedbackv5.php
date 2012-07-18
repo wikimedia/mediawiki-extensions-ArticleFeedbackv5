@@ -392,7 +392,7 @@ $wgExtensionCredits['other'][] = array(
 		'Michael Jackson',
 		'Matthias Mullie',
 	),
-	'version' => '0.0.1',
+	'version' => '1.5.0',
 	'descriptionmsg' => 'articlefeedbackv5-desc',
 	'url' => '//www.mediawiki.org/wiki/Extension:ArticleFeedbackv5'
 );
