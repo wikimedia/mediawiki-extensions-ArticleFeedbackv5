@@ -1120,6 +1120,18 @@
 			},
 
 			// }}}
+			// {{{ verify
+
+			/**
+			 * Verifies that this CTA can be displayed
+			 *
+			 * @return bool whether the CTA can be displayed
+			 */
+			verify: function () {
+				return !mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'];
+			},
+
+			// }}}
 			// {{{ afterBuild
 
 			/**
