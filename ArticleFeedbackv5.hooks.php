@@ -630,7 +630,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5Permissions'] = array(
 			'oversighter' => $wgUser->isAllowed( 'aftv5-delete-feedback' ),
 			'moderator' => $wgUser->isAllowed( 'aftv5-hide-feedback' ),
-			'editor' => !$wgUser->isAnon()
+			'editor' => $wgUser->isAllowed( 'aftv5-feature-feedback' )
 		);
 		return true;
 	}
