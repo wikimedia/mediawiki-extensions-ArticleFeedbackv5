@@ -220,7 +220,7 @@
 							<div class="articleFeedbackv5-tooltip">\
 								<div class="tooltip-top"></div>\
 								<div class="tooltip-repeat">\
-									<h3><html:msg key="help-tooltip-title" /></h3><span class="articleFeedbackv5-tooltip-close">X</span>\
+									<h3><html:msg key="help-tooltip-title" /></h3><span class="articleFeedbackv5-tooltip-close">&times;</span>\
 									<div class="clear"></div>\
 									<p class="articleFeedbackv5-tooltip-info"><html:msg key="help-tooltip-info" /></p>\
 									<p><a target="_blank" class="articleFeedbackv5-tooltip-link"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
@@ -1201,7 +1201,7 @@
 						.button()
 						.addClass( 'ui-button-blue' );
 				}
-				
+
 				return $block;
 			},
 
@@ -2591,7 +2591,7 @@
 
 		// check throttling
 		if ( $.articleFeedbackv5.throttleThresholdPostsPerHour != -1 ) {
-			// MSIE<9 does not support Date.now(), hence the workaround 
+			// MSIE<9 does not support Date.now(), hence the workaround
 			var now = (new Date()).getTime();
 			var msInHour = 3600000;
 

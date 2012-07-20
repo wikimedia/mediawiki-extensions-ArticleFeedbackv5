@@ -503,6 +503,7 @@
 	float: right;
 	cursor: pointer;
 	margin: -5px -5px 0 0;
+	font-size: 1.5em;
 }
 
 .articleFeedbackv5-tooltip .tooltip-repeat .articleFeedbackv5-tooltip-close:hover {
