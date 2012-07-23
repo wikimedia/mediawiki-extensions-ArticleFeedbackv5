@@ -132,12 +132,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	public function __construct() {
 		wfProfileIn( __METHOD__ );
 
-		global $wgUser;
 		parent::__construct( 'ArticleFeedbackv5' );
 
-		$this->showHidden = $wgUser->isAllowed( 'aftv5-see-hidden-feedback' );
-		$this->showDeleted = $wgUser->isAllowed( 'aftv5-see-deleted-feedback' );
-		$this->showFeatured = $wgUser->isAllowed( 'aftv5-feature-feedback' );
+		$user = $this->getUser();
+		$this->showHidden = $user->isAllowed( 'aftv5-see-hidden-feedback' );
+		$this->showDeleted = $user->isAllowed( 'aftv5-see-deleted-feedback' );
+		$this->showFeatured = $user->isAllowed( 'aftv5-feature-feedback' );
 
 		$this->filters = $this->defaultFilters;
 		if ( $this->showDeleted ) {
@@ -178,7 +178,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @param $param string the parameter passed in the url
 	 */
 	public function execute( $param ) {
-		global $wgUser, $wgRequest;
+		$user = $this->getUser();
+		$request = $this->getRequest();
 
 		$out = $this->getOutput();
 		$out->addModuleStyles( 'ext.articleFeedbackv5.dashboard' );
@@ -207,8 +208,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Select filter, sort, and sort direction
 		$this->setFilterSortDirection(
-			$wgRequest->getText( 'filter' ),
-			$wgRequest->getText( 'sort' )
+			$request->getText( 'filter' ),
+			$request->getText( 'sort' )
 		);
 
 		// Fetch
@@ -222,7 +223,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// Build renderer
 		$permalink = ( 'id' == $fetch->getFilter() );
 		$central   = ( $this->pageId ? false : true );
-		$renderer  = new ArticleFeedbackv5Render( $wgUser, $permalink, $central );
+		$renderer  = new ArticleFeedbackv5Render( $user, $permalink, $central );
 
 		// Title
 		if ( $permalink ) {
@@ -256,10 +257,10 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// JS variables
 		$out->addJsConfigVars( 'afPageId', $this->pageId );
-		$out->addJsConfigVars( 'afReferral', $wgRequest->getText( 'ref', 'url' ) );
+		$out->addJsConfigVars( 'afReferral', $request->getText( 'ref', 'url' ) );
 		// Only show the abuse counts to editors (ie, anyone allowed to
 		// hide content).
-		if ( $wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
+		if ( $user->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
 			$out->addJsConfigVars( 'afCanEdit', 1 );
 		}
 		$out->addJsConfigVars( 'afStartingFilter', $this->startingFilter );
@@ -281,15 +282,15 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * View Article | Discussion | Help
 	 */
 	public function outputHeaderLinks() {
-		global $wgUser;
+		$user = $this->getUser();
 		$out = $this->getOutput();
 
 		$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl')->text();
-		if( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
+		if( $user->isAllowed( 'aftv5-delete-feedback' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-oversighters' )->text();
-		} elseif( $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
+		} elseif( $user->isAllowed( 'aftv5-hide-feedback' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-monitors' )->text();
-		} elseif( !$wgUser->isAnon() ) {
+		} elseif( $user->isAllowed( 'aftv5-feature-feedback' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' )->text();
 		}
 		$helpLink .= '#Feedback_page';
@@ -391,6 +392,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @param $fetched  stdClass                the fetched records &etc.
 	 */
 	public function outputListing( $renderer, $fetched ) {
+		$user = $this->getUser();
 		$out = $this->getOutput();
 
 		// Notices
@@ -435,8 +437,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			)
 		);
 
-		// Link back to the central page
-		if ( $this->pageId ) {
+		// Link back to the central page - only for editors
+		if ( $this->pageId && $user->isAllowed( 'aftv5-feature-feedback' ) ) {
 			$out->addHTML(
 				// <div class="articleFeedbackv5-feedback-central-goback">
 				//   <a href="{page title}">{msg:articlefeedbackv5-special-central-goback}</a>
@@ -459,15 +461,15 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * {% found}     BETA      Add Feedback
 	 */
 	public function outputNotices() {
-		global $wgUser;
+		$user = $this->getUser();
 		$out = $this->getOutput();
 
 		$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl')->text();
-		if( $wgUser->isAllowed( 'aftv5-delete-feedback' ) ) {
+		if( $user->isAllowed( 'aftv5-delete-feedback' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-oversighters' )->text();
-		} elseif( $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
+		} elseif( $user->isAllowed( 'aftv5-hide-feedback' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-monitors' )->text();
-		} elseif( !$wgUser->isAnon() ) {
+		} elseif( $user->isAllowed( 'aftv5-feature-feedback' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' )->text();
 		}
 		$helpLink = Html::openElement(
@@ -820,9 +822,10 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Was a filter requested via cookie?
 		if ( !$filter && $this->feedbackId === null ) {
-			global $wgArticleFeedbackv5Tracking, $wgRequest;
+			$request = $this->getRequest();
+			global $wgArticleFeedbackv5Tracking;
 			$version = isset($wgArticleFeedbackv5Tracking['version']) ? $wgArticleFeedbackv5Tracking['version'] : 0;
-			$cookie = json_decode( $wgRequest->getCookie( 'last-filter', 'ext.articleFeedbackv5@' . $version . '-' ) );
+			$cookie = json_decode( $request->getCookie( 'last-filter', 'ext.articleFeedbackv5@' . $version . '-' ) );
 			if ( $cookie !== null && is_object( $cookie )
 				&& isset( $cookie->page ) && $this->pageId == $cookie->page
 				&& isset( $cookie->listControls ) && is_object( $cookie->listControls ) ) {
