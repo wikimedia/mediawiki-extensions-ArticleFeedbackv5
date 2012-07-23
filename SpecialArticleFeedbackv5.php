@@ -289,7 +289,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-oversighters' )->text();
 		} elseif( $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-monitors' )->text();
-		} elseif( !$wgUser->isAnon() ) {
+		} elseif( $wgUser->isAllowed( 'aftv5-feature-feedback' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' )->text();
 		}
 		$helpLink .= '#Feedback_page';
@@ -391,6 +391,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @param $fetched  stdClass                the fetched records &etc.
 	 */
 	public function outputListing( $renderer, $fetched ) {
+		global $wgUser;
+
 		$out = $this->getOutput();
 
 		// Notices
@@ -435,8 +437,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			)
 		);
 
-		// Link back to the central page
-		if ( $this->pageId ) {
+		// Link back to the central page - only for editors
+		if ( $this->pageId && $wgUser->isAllowed( 'aftv5-feature-feedback' ) ) {
 			$out->addHTML(
 				// <div class="articleFeedbackv5-feedback-central-goback">
 				//   <a href="{page title}">{msg:articlefeedbackv5-special-central-goback}</a>
@@ -467,7 +469,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-oversighters' )->text();
 		} elseif( $wgUser->isAllowed( 'aftv5-hide-feedback' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-monitors' )->text();
-		} elseif( !$wgUser->isAnon() ) {
+		} elseif( $wgUser->isAllowed( 'aftv5-feature-feedback' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' )->text();
 		}
 		$helpLink = Html::openElement(
