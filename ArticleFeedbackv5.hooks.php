@@ -357,6 +357,7 @@ class ArticleFeedbackv5Hooks {
 				'jquery.localize',
 				'jquery.articleFeedbackv5.track',
 				'jquery.json',
+				'jquery.ui.button',
 			),
 		),
 	);
