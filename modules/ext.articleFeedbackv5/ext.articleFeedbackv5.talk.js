@@ -8,9 +8,9 @@ jQuery( function( $ ) {
 	// Check if the talk page link can be shown
 	if ( mw.config.get( 'wgArticleFeedbackv5TalkPageLink' ) ) {
 
-		// Is AFT enabled here?
+		// Check if AFT is enabled & we're not dealing with anon user
 		var enable = $.aftVerify.verify( 'talk' );
-		if ( !enable ) {
+		if ( !enable || mw.user.anonymous() ) {
 			return;
 		}
 
