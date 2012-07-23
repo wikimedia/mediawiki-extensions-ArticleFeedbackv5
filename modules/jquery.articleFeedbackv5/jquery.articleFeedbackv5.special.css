@@ -595,7 +595,9 @@ form.articleFeedbackv5-form-flyover textarea {
 /** Loading tag **/
 #articleFeedbackv5-feedback-loading-top {
 	position: absolute;
-	left: 46%;
+	left: 50%;
+	width: 200px;
+	margin-left: -100px;
 	margin-top: 3px;
 	z-index: 100;
 }
@@ -609,8 +611,10 @@ form.articleFeedbackv5-form-flyover textarea {
 }
 #articleFeedbackv5-feedback-loading-bottom {
 	position: absolute;
-	left: 46%;
-	margin-top: -23px;
+	left: 50%;
+	width: 200px;
+	margin-left: -100px;
+	margin-top: -40px;
 	z-index: 100;
 }
 #articleFeedbackv5-feedback-loading-bottom span {

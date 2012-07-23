@@ -268,6 +268,7 @@
 		$loading2.localize( { 'prefix': 'articlefeedbackv5-' } );
 		$loading2.hide();
 		$( '#articleFeedbackv5-show-more' ).before( $loading2 );
+		$( '#articleFeedbackv5-refresh-list' ).button();
 
 		// Is there a highlighted ID?
 		var hash = window.location.hash.replace( '#', '' );
@@ -357,10 +358,17 @@
 		} );
 		// Disable the dividers
 		$( '#articleFeedbackv5-sort-select option[value=]' ).attr( 'disabled', true );
-
+		
 		// Show more
 		$( '#articleFeedbackv5-show-more' ).bind( 'click', function( e ) {
 			$.articleFeedbackv5special.loadFeedback( false, false );
+			return false;
+		} );
+
+		// Refresh list
+		$( '#articleFeedbackv5-refresh-list' ).bind( 'click', function( e ) {
+			$.articleFeedbackv5special.listControls.continueInfo = null;
+			$.articleFeedbackv5special.loadFeedback( true, false );
 			return false;
 		} );
 
