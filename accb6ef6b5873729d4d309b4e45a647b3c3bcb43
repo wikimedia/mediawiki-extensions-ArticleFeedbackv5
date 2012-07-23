@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//+6Q\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-23T21:27:55Z",
+      "side": 1,
+      "message": "Should be // \u003cdiv class\u003d\"clear\"\u003e\u003c/div\u003e",
+      "revId": "accb6ef6b5873729d4d309b4e45a647b3c3bcb43",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
