@@ -422,17 +422,43 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->addHTML(
 			// </div>
 			Html::closeElement( 'div' )
-			// <a href="#" id="articleFeedbackv5-show-more">
-			//   {msg:articlefeedbackv5-special-more}
-			// </a>
-			. Html::element(
-				'a',
+
+			// <div id="articleFeedbackv5-footer">
+			. Html::openElement(
+				'div',
 				array(
-					'href' => '#more-feedback',
-					'id'   => 'articleFeedbackv5-show-more'
-				),
-				$this->msg( 'articlefeedbackv5-special-more' )->text()
-			)
+					'id' => 'articleFeedbackv5-footer'
+				) )
+
+				// <a href="#" id="articleFeedbackv5-show-more">
+				//   {msg:articlefeedbackv5-special-more}
+				// </a>
+				. Html::element(
+					'a',
+					array(
+						'href' => '#more-feedback',
+						'id'   => 'articleFeedbackv5-show-more'
+					),
+					$this->msg( 'articlefeedbackv5-special-more' )->text()
+				)
+
+				// <a href="#" id="articleFeedbackv5-refresh-list">
+				//   {msg:articlefeedbackv5-refresh-list}
+				// </a>
+				. Html::element(
+					'a',
+					array(
+						'href' => '#refresh-feedback',
+						'id'   => 'articleFeedbackv5-refresh-list'
+					),
+					$this->msg( 'articlefeedbackv5-special-refresh' )->text()
+				)
+
+			// </div>
+			. Html::element( 'div', array( 'class' => 'clear' ) )
+
+			// </div>
+			. Html::closeElement( 'div' )
 		);
 
 		// Link back to the central page
