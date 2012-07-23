@@ -1275,7 +1275,7 @@
 	 * Loads the user activity from the cookie
 	 */
 	$.articleFeedbackv5special.loadActivity = function () {
-		var flatActivity = 	$.cookie( $.aftTrack.prefix( $.articleFeedbackv5special.activityCookieName ) );
+		var flatActivity = $.cookie( $.aftTrack.prefix( $.articleFeedbackv5special.activityCookieName ) );
 		if ( flatActivity ) {
 			$.articleFeedbackv5special.activity = $.articleFeedbackv5special.decodeActivity( flatActivity );
 		}
