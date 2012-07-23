@@ -846,7 +846,6 @@
 				);
 			} );
 		}
-		$.articleFeedbackv5special.adjustMask( $row, $screen );
 	}
 
 	// }}}
@@ -862,21 +861,6 @@
 		$row.find( '.articleFeedbackv5-post-screen' )
 			.addClass( 'articleFeedbackv5-post-screen-off' )
 			.removeClass( 'articleFeedbackv5-post-screen-on' );
-	}
-
-	// }}}
-	// {{{ adjustMask
-
-	/**
-	 * Utility method: Adjusts the mask on a comment to match its height
-	 *
-	 * @param $row element the feedback row
-	 */
-	$.articleFeedbackv5special.adjustMask = function( $row ) {
-		var $screen = $row.find( '.articleFeedbackv5-post-screen' );
-		$screen.height( $row.innerHeight() );
-		$screen.find( '.articleFeedbackv5-mask-text-wrapper')
-			.css( 'top', $screen.innerHeight() / 2 - 12 );
 	}
 
 	// }}}

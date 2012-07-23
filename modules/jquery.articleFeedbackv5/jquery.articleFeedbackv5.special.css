@@ -563,21 +563,22 @@ form.articleFeedbackv5-form-flyover textarea {
 }
 .articleFeedbackv5-post-screen-on {
 	z-index: 99;
-	margin: 0 -10px 0 0;
 	position: absolute;
 	top: 0;
+	bottom: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
+	right: 0;
 	background-color: #dae2eb;
 	padding: 10px 30px;
 }
 .articleFeedbackv5-post-screen-on .articleFeedbackv5-mask-text-wrapper {
-	position: absolute;
 	width: 100%;
 	color: #777;
 	font-size: 1.4em;
-	vertical-align: middle;
+	position: absolute;
+	line-height: 2em;
+	top: 50%;
+	margin-top: -1em;
 }
 .articleFeedbackv5-mask-view {
 	padding-left: 10px;
