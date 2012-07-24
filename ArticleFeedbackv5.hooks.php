@@ -423,12 +423,15 @@ class ArticleFeedbackv5Hooks {
 					&& $request->getVal( 'redirect' ) != 'no'
 					// not viewing the printable version
 					&& $request->getVal( 'printable' ) != 'yes'
+					// actually fetched article content
+					&& $out->getRevisionTimestamp() != null
 				) {
 					$res = self::allowForPage( $title );
 					if ( $res['allow'] ) {
-						// load module
-						$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
-						$out->addModules( 'ext.articleFeedbackv5.startup' );
+							// load module
+							$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
+							$out->addModules( 'ext.articleFeedbackv5.startup' );
+						}
 					}
 				}
 				break;
