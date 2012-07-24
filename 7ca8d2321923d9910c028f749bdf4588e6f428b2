@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//+UA\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2012-07-24T18:45:18Z",
+      "side": 1,
+      "message": "Besides an exception, the only other other case of errorbox on a page is during a problematic edit, I would say this is a fair solution to the bug.",
+      "revId": "7ca8d2321923d9910c028f749bdf4588e6f428b2",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
