@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//+zs\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-24T01:01:22Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be $feedbackCentralPageTitle-\u003egetFullText() since you want to get the fragment \u0027#id\u0027 for the anchoring",
+      "revId": "82b0a7242c7fd280cc8b1d96ea41d5ade383ee75",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
