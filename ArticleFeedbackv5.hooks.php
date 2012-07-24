@@ -866,7 +866,7 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		$ret = "{$d} {$chardiff} {$article} {$userlink} {$feedback} {$status}\n";
-		$classes[] = 'articlefeedbackv5';
+		$classes[] = 'mw-aft-contribution';
 
 		return true;
 	}
