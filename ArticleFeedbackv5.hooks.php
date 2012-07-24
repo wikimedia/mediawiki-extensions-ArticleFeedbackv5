@@ -796,7 +796,6 @@ class ArticleFeedbackv5Hooks {
 		$lang = $page->getLanguage();
 		$user = $page->getUser();
 		$feedbackTitle = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() . "/$row->af_id" );
-		$feedbackCentralPageTitle = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() . "#$row->af_id" );
 
 		// date
 		$date = $lang->userTimeAndDate( $row->af_created, $user );
@@ -812,7 +811,7 @@ class ArticleFeedbackv5Hooks {
 		$chardiff = ' . . ' . ChangesList::showCharacterDifference( 0, strlen( $row->af_comment ) ) . ' . . ';
 
 		// article feedback is given on
-		$article = $lang->getDirMark() . wfMessage( 'articlefeedbackv5-contribs-feedback', $feedbackCentralPageTitle->getPrefixedDBkey(), $pageTitle->getPrefixedText() )->parse();
+		$article = $lang->getDirMark() . wfMessage( 'articlefeedbackv5-contribs-feedback', $feedbackTitle->getPrefixedDBkey(), $pageTitle->getPrefixedText() )->parse();
 
 		// show user names for /newbies as there may be different users.
 		$userlink = '';
@@ -865,7 +864,7 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		$ret = "{$d} {$chardiff} {$article} {$userlink} {$feedback} {$status}\n";
-		$classes[] = 'articlefeedbackv5';
+		$classes[] = 'mw-aft-contribution';
 
 		return true;
 	}
