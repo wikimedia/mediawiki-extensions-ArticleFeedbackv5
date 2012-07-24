@@ -109,6 +109,11 @@
 			$.aftVerify.enabled = $.aftVerify.checkUserAgent();
 		}
 
+		// Check if no error is being displayed
+		if ( $( '.errorbox' ).length > 0 ) {
+			$.aftVerify.enabled = false;
+		}
+
 		return $.aftVerify.enabled;
 	};
 
