@@ -390,6 +390,7 @@ $wgExtensionCredits['other'][] = array(
 		'Ryan Kaldari',
 		'Elizabeth M Smith',
 		'Michael Jackson',
+		'Matthias Mullie',
 	),
 	'version' => '1.5.0',
 	'descriptionmsg' => 'articlefeedbackv5-desc',
