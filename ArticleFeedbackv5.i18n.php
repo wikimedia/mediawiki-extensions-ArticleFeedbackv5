@@ -710,7 +710,7 @@ The link to the edit tutorial',
 	'articleFeedbackv5-details-link' => 'Text for the link to the details/permalink page for that feedback post',
 	'articlefeedbackv5-revision-link' => 'Link to view the exact revision this user commented on (may be the current live page, or a historical revision).',
 	'articlefeedbackv5-special-more' => '{{Identical|More}}',
-	'articlefeedbackv5-special-refresh' => 'A label for a button that refreshes the list of feedback',
+	'articlefeedbackv5-special-refresh' => 'The text on a button that refreshes the list of feedback',
 	'articlefeedbackv5-special-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]]. Parameters:
 * $1 is the title of the article for which we show the feedback',
 	'articlefeedbackv5-special-permalink-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]]. Parameters:
@@ -15961,7 +15961,7 @@ $3
 
 Если вы не отправляли подобного запроса, пожалуйста, проигнорируйте это сообщение, и мы больше не будем вас тревожить.
 
-С наилучшими пожеланиями и благодарностью — 
+С наилучшими пожеланиями и благодарностью —
 команда проекта {{SITENAME}}',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Запрошен надзор для страницы отзыва',
 	'articlefeedbackv5-email-request-oversight-body' => 'Здравствуйте, ревизоры!
