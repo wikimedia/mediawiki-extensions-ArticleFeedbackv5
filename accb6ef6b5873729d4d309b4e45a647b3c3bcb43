@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAQ3//+p8\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 93
+      },
+      "writtenOn": "2012-07-24T11:08:19Z",
+      "side": 1,
+      "message": "Buttons usually don\u0027t have labels. Do you mean the text of the button?",
+      "revId": "accb6ef6b5873729d4d309b4e45a647b3c3bcb43",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQ3//+6Q\u003d",
         "filename": "SpecialArticleFeedbackv5.php",
         "patchSetId": 1
@@ -13,6 +30,41 @@
       "writtenOn": "2012-07-23T21:27:55Z",
       "side": 1,
       "message": "Should be // \u003cdiv class\u003d\"clear\"\u003e\u003c/div\u003e",
+      "revId": "accb6ef6b5873729d4d309b4e45a647b3c3bcb43",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//+p4\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 93
+      },
+      "writtenOn": "2012-07-24T11:08:19Z",
+      "side": 1,
+      "message": "What\u0027s up with the commented code anyway?",
+      "parentUuid": "AAAAQ3//+6Q\u003d",
+      "revId": "accb6ef6b5873729d4d309b4e45a647b3c3bcb43",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//+p0\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 93
+      },
+      "writtenOn": "2012-07-24T11:08:19Z",
+      "side": 1,
+      "message": "Minor: trailing tabs",
       "revId": "accb6ef6b5873729d4d309b4e45a647b3c3bcb43",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
