@@ -6,6 +6,7 @@
  * @subpackage Special
  * @author     Greg Chiasson <gchiasson@omniti.com>
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @version    $Id$
  */
 
@@ -24,14 +25,14 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 *
 	 * @var array
 	 */
-	private $filters;
+	protected $filters;
 
 	/**
 	 * The sorts available
 	 *
 	 * @var array
 	 */
-	private $sorts;
+	protected $sorts;
 
 	/**
 	 * Whether to show featured feedback
@@ -129,10 +130,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	public function __construct(
+		$name = 'ArticleFeedbackv5', $restriction = '', $listed = true,
+		$function = false, $file = 'default', $includable = false
+	) {
 		wfProfileIn( __METHOD__ );
 
-		parent::__construct( 'ArticleFeedbackv5' );
+		parent::__construct( $name, $restriction, $listed, $function, $file, $includable );
 
 		$user = $this->getUser();
 		$this->showHidden = $user->isAllowed( 'aftv5-see-hidden-feedback' );
@@ -213,11 +217,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		);
 
 		// Fetch
-		$fetch = new ArticleFeedbackv5Fetch( $this->startingFilter,
-			$this->feedbackId, $this->pageId );
-		$fetch->setSort( $this->startingSort );
-		$fetch->setSortOrder( $this->startingSortDirection );
-		$fetch->setLimit( $this->startingLimit );
+		$fetch = $this->fetchData();
 		$fetched = $fetch->run();
 
 		// Build renderer
@@ -270,11 +270,25 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	}
 
 	/**
+	 * Fetch the requested data
+	 *
+	 * @return	ArticleFeedbackv5Fetch	The fetch-object
+	 */
+	protected function fetchData() {
+		$fetch = new ArticleFeedbackv5Fetch( $this->startingFilter, $this->feedbackId, $this->pageId );
+		$fetch->setSort( $this->startingSort );
+		$fetch->setSortOrder( $this->startingSortDirection );
+		$fetch->setLimit( $this->startingLimit );
+
+		return $fetch;
+	}
+
+	/**
 	 * Outputs the header links in the top right corner
 	 *
 	 * View Article | Discussion | Help
 	 */
-	public function outputHeaderLinks() {
+	protected function outputHeaderLinks() {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
@@ -325,7 +339,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @param $renderer ArticleFeedbackv5Render the renderer
 	 * @param $fetched  stdClass                the fetched records &etc.
 	 */
-	public function outputPermalink( $renderer, $fetched ) {
+	protected function outputPermalink( $renderer, $fetched ) {
 		$out = $this->getOutput();
 		$record = array_pop( $fetched->records );
 
@@ -366,15 +380,18 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @param $renderer ArticleFeedbackv5Render the renderer
 	 * @param $fetched  stdClass                the fetched records &etc.
 	 */
-	public function outputListing( $renderer, $fetched ) {
+	protected function outputListing( $renderer, $fetched ) {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
 		// Notices
 		$this->outputNotices();
 
-		// Controls
-		$this->outputControls();
+		// Add controls block
+		$out->addHTML( Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-sort-filter-controls' ) ) );
+		$this->outputFilters();
+		$this->outputSort();
+		$out->addHTML( Html::closeElement( 'div' ) );
 
 		// Open feedback output
 		$class = '';
@@ -446,7 +463,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 *
 	 * {% found}     BETA      Add Feedback
 	 */
-	public function outputNotices() {
+	protected function outputNotices() {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
@@ -474,36 +491,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			. Html::closeElement( 'p' )
 		);
 
-		// Showing {count} posts
-		$out->addHTML(
-			Html::openElement(
-				'div',
-				array( 'id' => 'articleFeedbackv5-showing-count-wrap' )
-			)
-				. $this->msg(
-					$this->pageId ? 'articlefeedbackv5-special-showing' : 'articlefeedbackv5-special-central-showing',
-					Html::element( 'span', array( 'id' => 'articleFeedbackv5-feedback-count-total' ), '0' )
-				)
-			. Html::closeElement( 'div' )
-		);
-
-		// % found
-		if ( $this->pageId ) {
-			$ratings = $this->fetchOverallRating( $this->pageId );
-			$found   = isset( $ratings['found'] ) ? $ratings['found'] : null;
-			if ( $found ) {
-				$class = $found > 50 ? 'positive' : 'negative';
-
-				$span = Html::rawElement( 'span', array(
-					'class' => "stat-marker $class"
-				), wfMsg( 'percent', $found ) );
-				$out->addHtml(
-					Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-percent-found-wrap' ) )
-						. $this->msg( 'articlefeedbackv5-percent-found' )->rawParams( $span )->escaped()
-					. Html::closeElement( 'div' )
-				);
-			}
-		}
+		$this->outputSummary();
 
 		// Survey button
 		global $wgArticleFeedbackv5SpecialPageSurveyUrl;
@@ -539,11 +527,75 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	}
 
 	/**
-	 * Outputs the page controls
-	 *
-	 * Showing: [filters...]  Sort by: Relevance | Helpful | Rating | Date
+	 * Display the feedback page's summary information in header
 	 */
-	public function outputControls() {
+	protected function outputSummary() {
+		$out = $this->getOutput();
+		$user = $this->getUser();
+
+		// if we have a logged in user and are currently browsing the central feedback page,
+		// check if there is feedback on his/her watchlisted pages
+		$watchlistLink = '';
+		if ( $user->getId() ) {
+			$fetch = new ArticleFeedbackv5Fetch( null,
+				null, null, $user->getId() );
+			$fetch->setLimit( 1 );
+			$fetched = $fetch->run();
+
+			if ( count( $fetched->records ) > 0 ) {
+				$watchlistLink =
+					Html::openElement(
+						'span',
+						array( 'id' => 'articlefeedbackv5-special-central-watchlist-link' )
+					)
+						. $this->msg( 'articlefeedbackv5-special-central-watchlist-link',
+							SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getFullText(),
+							$user->getUserPage()->getFullText(),
+							$user->getName()
+						)->parse()
+					. Html::closeElement( 'span' );
+			}
+		}
+
+		// Showing {count} posts
+		$out->addHTML(
+			Html::openElement(
+				'div',
+				array( 'id' => 'articleFeedbackv5-showing-count-wrap' )
+			)
+				. $this->msg(
+					$this->pageId ? 'articlefeedbackv5-special-showing' : 'articlefeedbackv5-special-central-showing',
+					Html::element( 'span', array( 'id' => 'articleFeedbackv5-feedback-count-total' ), '0' )
+				)
+				. $watchlistLink
+			. Html::closeElement( 'div' )
+		);
+
+		// % found
+		if ( $this->pageId ) {
+			$ratings = $this->fetchOverallRating( $this->pageId );
+			$found   = isset( $ratings['found'] ) ? $ratings['found'] : null;
+			if ( $found ) {
+				$class = $found > 50 ? 'positive' : 'negative';
+
+				$span = Html::rawElement( 'span', array(
+					'class' => "stat-marker $class"
+				), wfMsg( 'percent', $found ) );
+				$out->addHtml(
+					Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-percent-found-wrap' ) )
+						. $this->msg( 'articlefeedbackv5-percent-found' )->rawParams( $span )->escaped()
+						. Html::closeElement( 'div' )
+				);
+			}
+		}
+	}
+
+	/**
+	 * Outputs the page filter controls
+	 *
+	 * Showing: [filters...]
+	 */
+	protected function outputFilters() {
 		$out = $this->getOutput();
 
 		// Filtering
@@ -586,6 +638,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			foreach ( $this->filters as $filter ) {
 				$count = array_key_exists( $filter, $counts ) ? $counts[$filter] : 0;
 				$msg_key = str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
+
 				$key   = $this->msg( 'articlefeedbackv5-special-filter-' . $msg_key, $count )->escaped();
 				if ( in_array( $filter, $this->topFilters ) ) {
 					continue;
@@ -609,7 +662,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			}
 		}
 
-		$filterBlock =
+		$out->addHTML(
 			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-filter' ) )
 				. Html::openElement( 'span', array( 'class' => 'articleFeedbackv5-filter-label' ) )
 					. $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
@@ -622,7 +675,17 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				. Html::closeElement( 'div' )
 
 				. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
-			. Html::closeElement( 'div' );
+			. Html::closeElement( 'div' )
+		);
+	}
+
+	/**
+	 * Outputs the page sort controls
+	 *
+	 * Showing: Sort by: Relevance | Helpful | Rating | Date
+	 */
+	protected function outputSort() {
+		$out = $this->getOutput();
 
 		// Sorting
 		$opts = array();
@@ -645,7 +708,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$sortSelect->setDefault( $this->startingSort . '-' . $this->startingSortDirection );
 		$sortSelect->addOptions( $opts );
 
-		$sortBlock =
+		$out->addHTML(
 			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-sort' ) )
 				. Html::openElement( 'span', array( 'class' => 'articleFeedbackv5-sort-label' ) )
 					. $this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
@@ -654,13 +717,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				. $sortSelect->getHTML()
 
 				. $this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
-			. Html::closeElement( 'div' );
-
-		// Add controls block
-		$out->addHTML(
-			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-sort-filter-controls' ) )
-				. $filterBlock
-				. $sortBlock
 			. Html::closeElement( 'div' )
 		);
 	}
@@ -750,7 +806,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @param $filter string the requested filter
 	 * @param $sort   string the requested sort
 	 */
-	public function setFilterSortDirection( $filter, $sort ) {
+	protected function setFilterSortDirection( $filter, $sort ) {
 		global $wgArticleFeedbackv5DefaultFilters,
 			$wgArticleFeedbackv5DefaultSorts;
 
@@ -845,7 +901,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @param  $filter string the long filter name
 	 * @return string  the short filter name
 	 */
-	public function shortFilter( $filter ) {
+	protected function shortFilter( $filter ) {
 		return str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
 	}
 
