@@ -810,7 +810,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				array(
 					'afc_page_id' => $this->pageId ? $this->pageId : 0
 				),
-				array(),
 				__METHOD__
 			);
 			foreach ( $rows as $row ) {
