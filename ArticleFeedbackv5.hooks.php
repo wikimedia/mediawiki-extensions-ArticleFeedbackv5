@@ -87,6 +87,16 @@ class ArticleFeedbackv5Hooks {
 				'jquery.articleFeedbackv5.track',
 			),
 		),
+		'ext.articleFeedbackv5.watchlist' => array(
+			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.watchlist.js',
+			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.watchlist.css',
+			'messages' => array(
+				'articlefeedbackv5-watchlist-view-feedback',
+			),
+			'dependencies' => array(
+				'jquery.articleFeedbackv5.track',
+			),
+		),
 		'jquery.articleFeedbackv5' => array(
 			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.js',
 			'styles' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.css',
@@ -445,7 +455,8 @@ class ArticleFeedbackv5Hooks {
 
 			// special page
 			case NS_SPECIAL:
-				if ( $out->getTitle()->isSpecial( 'ArticleFeedbackv5' ) ) {
+				// central feedback page, article feedback page, permalink page & watchlist feedback page
+				if ( $out->getTitle()->isSpecial( 'ArticleFeedbackv5' ) ||  $out->getTitle()->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
 					// fetch the title of the article this special page is related to
 					list( /* special */, $mainTitle) = SpecialPageFactory::resolveAlias( $out->getTitle()->getDBkey() );
 
@@ -468,6 +479,20 @@ class ArticleFeedbackv5Hooks {
 							$out->addJsConfigVars( 'aftv5PageId', 0 );
 						}
 						$out->addModules( 'ext.articleFeedbackv5.dashboard' );
+					}
+				}
+
+				// watchlist page
+				elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
+					if ( $user->getId() ) {
+						// check if there is feedback on the user's watchlist
+						$fetch = new ArticleFeedbackv5Fetch( null,
+							null, null, $user->getId() );
+						$fetch->setLimit( 1 );
+						$fetched = $fetch->run();
+						if ( count( $fetched->records ) > 0 ) {
+							$out->addModules( 'ext.articleFeedbackv5.watchlist' );
+						}
 					}
 				}
 				break;
@@ -597,6 +622,7 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay,
 			$wgArticleFeedbackv5ThrottleThresholdPostsPerHour,
 			$wgArticleFeedbackv5TalkPageLink,
+			$wgArticleFeedbackv5WatchlistLink,
 			$wgArticleFeedbackv5DefaultSorts,
 			$wgArticleFeedbackLotteryOdds;
 		$vars['wgArticleFeedbackv5SMaxage'] = $wgArticleFeedbackv5SMaxage;
@@ -615,10 +641,10 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5InitialFeedbackPostCountToDisplay'] = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		$vars['wgArticleFeedbackv5ThrottleThresholdPostsPerHour'] = $wgArticleFeedbackv5ThrottleThresholdPostsPerHour;
 		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
+		$vars['wgArticleFeedbackv5SpecialWatchlistUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getLinkUrl();
 		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
+		$vars['wgArticleFeedbackv5WatchlistLink'] = $wgArticleFeedbackv5WatchlistLink;
 		$vars['wgArticleFeedbackv5DefaultSorts'] = $wgArticleFeedbackv5DefaultSorts;
-		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
-		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
 		$vars['wgArticleFeedbackLotteryOdds'] = $wgArticleFeedbackLotteryOdds;
 
 		// encode here to force the bucket keys to be encoded ad object rather than as an associative array
