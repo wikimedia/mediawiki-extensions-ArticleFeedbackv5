@@ -11,6 +11,7 @@ $specialPageAliases = array();
 /** English (English) */
 $specialPageAliases['en'] = array(
 	'ArticleFeedbackv5' => array( 'ArticleFeedbackv5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'ArticleFeedbackv5Watchlist' ),
 );
 
 /** Arabic (العربية) */
