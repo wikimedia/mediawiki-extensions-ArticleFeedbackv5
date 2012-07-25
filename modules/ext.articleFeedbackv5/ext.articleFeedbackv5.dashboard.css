@@ -49,6 +49,14 @@ select {
 #articleFeedbackv5-header-links {
 	float: right;
 }
+#articlefeedbackv5-special-central-watchlist-link {
+	font-size: 0.8em;
+	margin-left: 10px;
+}
+#articlefeedbackv5-special-central-watchlist-link:before {
+	content: '•';
+	margin-right: 10px;
+}
 #articleFeedbackv5-showing-count-wrap {
 	display: inline-block;
 	/* IE7 inline-block hack */
