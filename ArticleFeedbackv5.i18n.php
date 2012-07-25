@@ -129,10 +129,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-filter-label-before' => 'Showing:',
 	'articlefeedbackv5-special-filter-label-after' => '',
 	'articlefeedbackv5-special-filter-select-more' => 'More filters',
-	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|1 post|$1 posts}} about this page',
-	'articlefeedbackv5-special-central-showing' => '{{PLURAL:$1|1 feedback post|$1 feedback posts}} from all pages',
-	'articlefeedbackv5-special-watchlist-showing' => 'Feedback on pages watched by [[$1|$2]]',
-	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Feedback on my watched pages]]',
+	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|$1 post|$1 posts}} about this page',
+	'articlefeedbackv5-special-central-showing' => '{{PLURAL:$1|$1 feedback post|$1 feedback posts}} from all pages',
+	'articlefeedbackv5-special-watchlist-showing' => 'Feedback for pages watched by [[$1|$2]]',
+	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Feedback from my watched pages]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|View feedback from all pages]]',
 	'articleFeedbackv5-comment-ago'  => '$1 ago',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edit|$1 edits}} since post',
@@ -142,7 +142,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-refresh' => 'Refresh list',
 	'articlefeedbackv5-special-pagetitle' => 'Feedback on $1',
 	'articlefeedbackv5-special-permalink-pagetitle' => 'Feedback post on $1',
-	'articlefeedbackv5-special-watchlist-pagetitle' => 'Feedback from my watchlist pages',
+	'articlefeedbackv5-special-watchlist-pagetitle' => 'Feedback from my watched pages',
 	'articlefeedbackv5-special-central-pagetitle' => 'Central Feedback Page',
 	'articlefeedbackv5-loading-tag' => 'Loading...',
 	'articlefeedbackv5-form-optionid' => 'Option $1',
@@ -221,7 +221,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-dashboard-bottom' => "'''Note''': We will continue to experiment with different ways of surfacing pages in these dashboards.  At present, the dashboards include the following pages:
 * Pages with highest/lowest ratings: pages that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.
 * Recent lows: pages that got 70% or more low (2 stars or lower) ratings in any category in the last 24 hours. Only pages that have received at least 10 ratings in the last 24 hours are included.",
-	'articlefeedbackv5' => 'Article feedback - Central page (New: AFT5)',
+	'articlefeedbackv5' => 'Article feedback - Central page',
+	'articlefeedbackv5watchlist' => 'Article feedback - My watched pages',
 	'articlefeedbackv5-desc' => 'Article feedback',
 	'articlefeedbackv5-comment-more' => 'More',
 	'articlefeedbackv5-comment-less' => 'Less',
@@ -572,7 +573,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-talk-view-feedback' => 'View reader feedback',
 
 	/* Watchlist page */
-	'articlefeedbackv5-watchlist-view-feedback' => 'Feedback on my watched pages',
+	'articlefeedbackv5-watchlist-view-feedback' => 'Feedback from my watched pages',
 
 	/* Our fake/default user */
 	'articlefeedbackv5-default-user' => 'Article Feedback V5',

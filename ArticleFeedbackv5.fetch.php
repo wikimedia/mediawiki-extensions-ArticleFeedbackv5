@@ -279,7 +279,7 @@ class ArticleFeedbackv5Fetch {
 			$conds[] = $continueSql;
 		}
 		// Only show bucket 1 (per Fabrice on 1/25)
-		$conds[] = '( af_form_id = 1 OR af_form_id = 6 )';
+		$conds['af_form_id'] = array( 1, 6 );
 
 		// Fetch the feedback IDs we need.
 		/* I'd really love to do this in one big query, but MySQL
@@ -533,7 +533,7 @@ class ArticleFeedbackv5Fetch {
 	 * @return bool    whether it passed validation and was set
 	 */
 	public function setPageId( $pageId ) {
-		if ( is_int( $pageId ) || is_numeric( $pageId ) ) {
+		if ( is_numeric( $pageId ) ) {
 			$this->pageId = intval( $pageId );
 			return true;
 		}
@@ -556,7 +556,7 @@ class ArticleFeedbackv5Fetch {
 	 * @return bool    whether it passed validation and was set
 	 */
 	public function setUserId( $userId ) {
-		if ( is_int( $userId ) || is_numeric( $userId ) ) {
+		if ( is_numeric( $userId ) ) {
 			$this->userId = intval( $userId );
 			return true;
 		}
@@ -579,7 +579,7 @@ class ArticleFeedbackv5Fetch {
 	 * @return bool        whether it passed validation and was set
 	 */
 	public function setFeedbackId( $feedbackId ) {
-		if ( is_int( $feedbackId ) || is_numeric( $feedbackId ) ) {
+		if ( is_numeric( $feedbackId ) ) {
 			$this->feedbackId = intval( $feedbackId );
 			return true;
 		}
@@ -675,7 +675,7 @@ class ArticleFeedbackv5Fetch {
 	 * @return bool   whether it passed validation and was set
 	 */
 	public function setLimit( $limit ) {
-		if ( is_int( $limit ) || is_numeric( $limit ) ) {
+		if ( is_numeric( $limit ) ) {
 			$this->limit = intval( $limit );
 			return true;
 		}

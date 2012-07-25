@@ -487,8 +487,8 @@ class ArticleFeedbackv5Hooks {
 				elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
 					if ( $user->getId() ) {
 						// check if there is feedback on the user's watchlist
-						$fetch = new ArticleFeedbackv5Fetch( null,
-							null, null, $user->getId() );
+						$fetch = new ArticleFeedbackv5Fetch();
+						$fetch->setUserId( $user->getId() );
 						$fetch->setLimit( 1 );
 						$fetched = $fetch->run();
 						if ( count( $fetched->records ) > 0 ) {

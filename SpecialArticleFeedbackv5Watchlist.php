@@ -59,7 +59,9 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 	 * @return	ArticleFeedbackv5Fetch	The fetch-object
 	 */
 	protected function fetchData() {
-		$fetch = new ArticleFeedbackv5Fetch( $this->startingFilter, null, null, $this->userId );
+		$fetch = new ArticleFeedbackv5Fetch();
+		$fetch->setFilter( $this->startingFilter );
+		$fetch->setUserId( $this->userId );
 		$fetch->setSort( $this->startingSort );
 		$fetch->setSortOrder( $this->startingSortDirection );
 		$fetch->setLimit( $this->startingLimit );
