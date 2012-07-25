@@ -50,9 +50,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 
 		parent::execute( $param );
 
-		// @todo: what with anons?
-
-		$out->setPagetitle( $this->msg( 'articlefeedbackv5-special-watchlist-pagetitle', $user->getName() )->escaped() );
+		$out->setPagetitle( $this->msg( 'articlefeedbackv5-special-watchlist-pagetitle' )->escaped() );
 	}
 
 	/**
@@ -73,6 +71,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 	 * Don't display totals for watchlist feedback
 	 */
 	protected function outputSummary() {
+		$user = $this->getUser();
 		$out = $this->getOutput();
 
 		// Showing {count} posts
@@ -81,7 +80,10 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 				'div',
 				array( 'id' => 'articleFeedbackv5-showing-count-wrap' )
 			)
-				. $this->msg( 'articlefeedbackv5-special-watchlist-showing' )
+				. $this->msg( 'articlefeedbackv5-special-watchlist-showing',
+					$user->getUserPage()->getFullText(),
+					$user->getName()
+				)
 				. Html::openElement(
 						'span',
 						array( 'id' => 'articlefeedbackv5-special-central-watchlist-link' )

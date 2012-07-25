@@ -542,7 +542,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// if we have a logged in user and are currently browsing the central feedback page,
 		// check if there is feedback on his/her watchlisted pages
 		$watchlistLink = '';
-		if ( $user->getId() ) {
+		if ( !$this->pageId && $user->getId() ) {
 			$fetch = new ArticleFeedbackv5Fetch( null,
 				null, null, $user->getId() );
 			$fetch->setLimit( 1 );
@@ -555,9 +555,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 						array( 'id' => 'articlefeedbackv5-special-central-watchlist-link' )
 					)
 						. $this->msg( 'articlefeedbackv5-special-central-watchlist-link',
-							SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getFullText(),
-							$user->getUserPage()->getFullText(),
-							$user->getName()
+							SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getFullText()
 						)->parse()
 					. Html::closeElement( 'span' );
 			}

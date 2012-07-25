@@ -131,8 +131,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-filter-select-more' => 'More filters',
 	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|1 post|$1 posts}} about this page',
 	'articlefeedbackv5-special-central-showing' => '{{PLURAL:$1|1 feedback post|$1 feedback posts}} from all pages',
-	'articlefeedbackv5-special-watchlist-showing' => 'Feedback from pages on my watchlist',
-	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Feedback from my watchlist pages]] (for [[$2|$3]])',
+	'articlefeedbackv5-special-watchlist-showing' => 'Feedback on pages watched by [[$1|$2]]',
+	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Feedback on my watched pages]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|View feedback from all pages]]',
 	'articleFeedbackv5-comment-ago'  => '$1 ago',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edit|$1 edits}} since post',
@@ -142,7 +142,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-refresh' => 'Refresh list',
 	'articlefeedbackv5-special-pagetitle' => 'Feedback on $1',
 	'articlefeedbackv5-special-permalink-pagetitle' => 'Feedback post on $1',
-	'articlefeedbackv5-special-watchlist-pagetitle' => 'Feedback from my watchlist pages (for $1)',
+	'articlefeedbackv5-special-watchlist-pagetitle' => 'Feedback from my watchlist pages',
 	'articlefeedbackv5-special-central-pagetitle' => 'Central Feedback Page',
 	'articlefeedbackv5-loading-tag' => 'Loading...',
 	'articlefeedbackv5-form-optionid' => 'Option $1',
@@ -572,7 +572,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-talk-view-feedback' => 'View reader feedback',
 
 	/* Watchlist page */
-	'articlefeedbackv5-watchlist-view-feedback' => 'Feedback from my watchlist pages',
+	'articlefeedbackv5-watchlist-view-feedback' => 'Feedback on my watched pages',
 
 	/* Our fake/default user */
 	'articlefeedbackv5-default-user' => 'Article Feedback V5',
@@ -758,9 +758,9 @@ The link to the edit tutorial',
 	'articlefeedbackv5-special-filter-select-more' => 'Default text for the more-filters select box',
 	'articlefeedbackv5-special-showing' => 'Text to show how many feedback posts have been posted to this article. $1 is the number of posts (needs plural support)',
 	'articlefeedbackv5-special-central-showing' => 'Text to show how many feedback posts have been posted across the wiki. $1 is the number of posts (needs plural support)',
-	'articlefeedbackv5-special-watchlist-showing' => 'Text to show we\'re at the page containing feedback on watchlisted articles. $1 is the username',
-	'articlefeedbackv5-special-central-watchlist-link' => 'Text to show on the link on the central feedback page to the watchlist-page',
-	'articlefeedbackv5-special-watchlist-central-link' => 'Text to show on the link on the watchlist-page to the central feedback page',
+	'articlefeedbackv5-special-watchlist-showing' => 'Text to show we\'re at the page containing feedback on watchlisted articles. $1 is the link to the user page, $2 is the username, ',
+	'articlefeedbackv5-special-central-watchlist-link' => 'Text to show on the link on the central feedback page to the watchlist-page. $1 is the link',
+	'articlefeedbackv5-special-watchlist-central-link' => 'Text to show on the link on the watchlist-page to the central feedback page. $1 is the link',
 	'articleFeedbackv5-comment-ago' => 'For posts less than 48 hours old, display a relative timestamp ("2 hours 19 minutes ago", eg). Formatting timestamp is in $1',
 	'articlefeedbackv5-updates-since' => 'Number of edits made to this article since this feedback was posted. $1 is the number of edits. Requires plural support',
 	'articleFeedbackv5-details-link' => 'Text for the link to the details/permalink page for that feedback post',
@@ -771,8 +771,7 @@ The link to the edit tutorial',
 * $1 is the title of the article for which we show the feedback',
 	'articlefeedbackv5-special-permalink-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]]. Parameters:
 * $1 is the title of the article for which we show the feedback',
-	'articlefeedbackv5-special-watchlist-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]]. Parameters:
-* $1 is the username of the user for which we show the feedback on his/her watchlist',
+	'articlefeedbackv5-special-watchlist-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]].',
 	'articlefeedbackv5-special-central-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]] when viewing the central log (all pages)',
 	'articlefeedbackv5-loading-tag' => 'The text that appears to let the user know that feedbac is being loaded',
 	'articlefeedbackv5-status-hidden' => 'The marker that appears on a comment if it has been hidden by a monitor.
