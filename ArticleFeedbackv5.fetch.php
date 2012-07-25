@@ -5,6 +5,7 @@
  * @package    ArticleFeedback
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
  * @author     Reha Sterbin <reha@omniti.com>
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @version    $Id$
  */
 
@@ -21,6 +22,13 @@ class ArticleFeedbackv5Fetch {
 	 * @var int
 	 */
 	private $pageId;
+
+	/**
+	 * The user ID
+	 *
+	 * @var int
+	 */
+	private $userId;
 
 	/**
 	 * The feedback ID
@@ -119,8 +127,9 @@ class ArticleFeedbackv5Fetch {
 	 * @param string $filter      the filter
 	 * @param mixed  $filterValue the filter value (only for filter "id")
 	 * @param int    $pageId      the page ID
+	 * @param int    $userId      the user ID
 	 */
-	public function __construct( $filter = null, $filterValue = null, $pageId = null ) {
+	public function __construct( $filter = null, $filterValue = null, $pageId = null, $userId = null ) {
 		if ( $filter ) {
 			$this->setFilter( $filter );
 		}
@@ -129,6 +138,9 @@ class ArticleFeedbackv5Fetch {
 		}
 		if ( $pageId ) {
 			$this->setPageId( $pageId );
+		}
+		if ( $userId ) {
+			$this->setUserId( $userId );
 		}
 		global $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		if ( $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay ) {
@@ -204,19 +216,70 @@ class ArticleFeedbackv5Fetch {
 				break;
 		}
 
+		/* Build the basic query parameters */
+		$tables = array(
+			'aft_article_feedback',
+			'rating'  => 'aft_article_answer',
+			'comment' => 'aft_article_answer',
+		);
+		$vars = array(
+			'af_id',
+			'af_net_helpfulness',
+			'af_relevance_sort',
+			'rating.aa_response_boolean AS yes_no'
+		);
+		$conds = $this->getFilterCriteria();
+		$options = array(
+			'LIMIT'    => ( $this->limit + 1 ),
+			'ORDER BY' => $order
+		);
+		$join_conds = array(
+			'rating'  => array(
+				'LEFT JOIN',
+				array(
+					'rating.aa_feedback_id = af_id',
+					'rating.aa_field_id' => $ratingFields
+				)
+			),
+			'comment' => array(
+				'LEFT JOIN',
+				array(
+					'comment.aa_feedback_id = af_id',
+					'comment.aa_field_id' => $commentFields,
+				)
+			)
+		);
+
 		// Build WHERE clause.
 		// Filter applied:
-		$where = $this->getFilterCriteria();
 		// PageID:
 		if ( $this->pageId ) {
-			$where['af_page_id'] = $this->pageId;
+			$conds['af_page_id'] = $this->pageId;
+		}
+		// UserID:
+		if ( $this->userId ) {
+			$tables[] = 'page';
+			$tables[] = 'watchlist';
+
+			$join_conds['page'] = array(
+				'INNER JOIN',
+				'page_id = af_page_id'
+			);
+			$join_conds['watchlist'] = array(
+				'INNER JOIN',
+				array(
+					'wl_user' => $this->userId,
+					'wl_namespace = page_namespace',
+					'wl_title = page_title'
+				)
+			);
 		}
 		// Continue SQL, if any:
 		if ( $this->continue !== null ) {
-			$where[] = $continueSql;
+			$conds[] = $continueSql;
 		}
 		// Only show bucket 1 (per Fabrice on 1/25)
-		$where[] = '( af_form_id = 1 OR af_form_id = 6 )';
+		$conds['af_form_id'] = array( 1, 6 );
 
 		// Fetch the feedback IDs we need.
 		/* I'd really love to do this in one big query, but MySQL
@@ -224,41 +287,7 @@ class ArticleFeedbackv5Fetch {
 		   we don't know the number of answers for each feedback
 		   record until we fetch them, this is the only way to make
 		   sure we get all answers for the exact IDs we want. */
-		$id_query = $dbr->select(
-			array(
-				'aft_article_feedback',
-				'rating'  => 'aft_article_answer',
-				'comment' => 'aft_article_answer',
-			),
-			array(
-				'af_id',
-				'af_net_helpfulness',
-				'af_relevance_sort',
-				'rating.aa_response_boolean AS yes_no'
-			),
-			$where,
-			__METHOD__,
-			array(
-				'LIMIT'    => ( $this->limit + 1 ),
-				'ORDER BY' => $order
-			),
-			array(
-				'rating'  => array(
-					'LEFT JOIN',
-					array(
-						'rating.aa_feedback_id = af_id',
-						'rating.aa_field_id' => $ratingFields
-					)
-				),
-				'comment' => array(
-					'LEFT JOIN',
-					array(
-						'comment.aa_feedback_id = af_id',
-						'comment.aa_field_id' => $commentFields,
-					)
-				)
-			)
-		);
+		$id_query = $dbr->select( $tables, $vars, $conds, __METHOD__, $options, $join_conds );
 
 		$ids = array();
 		foreach ( $id_query as $id ) {
@@ -504,8 +533,31 @@ class ArticleFeedbackv5Fetch {
 	 * @return bool    whether it passed validation and was set
 	 */
 	public function setPageId( $pageId ) {
-		if ( is_int( $pageId ) || is_numeric( $pageId ) ) {
+		if ( is_numeric( $pageId ) ) {
 			$this->pageId = intval( $pageId );
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Gets the user ID
+	 *
+	 * @return int the user ID
+	 */
+	public function getUserId() {
+		return $this->userId;
+	}
+
+	/**
+	 * Sets the user ID
+	 *
+	 * @param  $userId int the user ID
+	 * @return bool    whether it passed validation and was set
+	 */
+	public function setUserId( $userId ) {
+		if ( is_numeric( $userId ) ) {
+			$this->userId = intval( $userId );
 			return true;
 		}
 		return false;
@@ -527,7 +579,7 @@ class ArticleFeedbackv5Fetch {
 	 * @return bool        whether it passed validation and was set
 	 */
 	public function setFeedbackId( $feedbackId ) {
-		if ( is_int( $feedbackId ) || is_numeric( $feedbackId ) ) {
+		if ( is_numeric( $feedbackId ) ) {
 			$this->feedbackId = intval( $feedbackId );
 			return true;
 		}
@@ -623,7 +675,7 @@ class ArticleFeedbackv5Fetch {
 	 * @return bool   whether it passed validation and was set
 	 */
 	public function setLimit( $limit ) {
-		if ( is_int( $limit ) || is_numeric( $limit ) ) {
+		if ( is_numeric( $limit ) ) {
 			$this->limit = intval( $limit );
 			return true;
 		}
