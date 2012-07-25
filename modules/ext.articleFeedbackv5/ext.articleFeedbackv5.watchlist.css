@@ -1,0 +1,8 @@
+#articlefeedbackv5-watchlist-feedback-link {
+	/* @embed */
+	background-image: url(images/feedback-post.png);
+	background-repeat: no-repeat;
+	background-position: left;
+	margin-left: 20px;
+	padding-left: 15px;
+}

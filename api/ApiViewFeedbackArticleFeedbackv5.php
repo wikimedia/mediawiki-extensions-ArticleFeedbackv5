@@ -32,7 +32,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	public function execute() {
 		wfProfileIn( __METHOD__ );
 
-		global $wgUser;
+		$user = $this->getUser();
+
 		$params   = $this->extractRequestParams();
 		$result   = $this->getResult();
 		$pageId   = $params['pageid'];
@@ -40,14 +41,21 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$length   = 0;
 
 		// Build fetch object
-		$fetch = new ArticleFeedbackv5Fetch( $params['filter'],
-			$params['filtervalue'], $params['pageid'] );
+		$fetch = new ArticleFeedbackv5Fetch();
+		$fetch->setFilter( $params['filter'] );
+		$fetch->setFeedbackId( $params['filtervalue'] );
+		$fetch->setPageId( $params['pageid'] );
+		if ( $params['watchlist'] ) {
+			$fetch->setUserId( $user->getId() );
+		}
+
 		$fetch->setSort( $params['sort'] );
 		$fetch->setSortOrder( $params['sortdirection'] );
 		$fetch->setLimit( $params['limit'] );
 		if ( $params['continue'] !== 'null' ) {
 			$fetch->setContinue( $params['continue'] );
 		}
+
 		$count = $fetch->overallCount();
 
 		// Run
@@ -57,7 +65,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$permalink = ( 'id' == $fetch->getFilter() );
 		$highlight = ( 'highlight' == $fetch->getFilter() );
 		$central   = ( $params['pageid'] ? false : true );
-		$renderer  = new ArticleFeedbackv5Render( $wgUser, $permalink, $central, $highlight );
+		$renderer  = new ArticleFeedbackv5Render( $user, $permalink, $central, $highlight );
 		foreach ( $res->records as $record ) {
 			$html .= $renderer->run( $record );
 			$length++;
@@ -105,6 +113,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	public function getAllowedParams() {
 		return array(
 			'pageid'        => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_TYPE     => 'integer'
+			),
+			'watchlist'     => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'

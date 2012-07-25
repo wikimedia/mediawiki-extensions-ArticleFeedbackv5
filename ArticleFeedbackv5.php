@@ -93,6 +93,9 @@ $wgArticleFeedbackv5RelevanceScoring = array(
 // Defines whether or not there should be a link to the corresponding feedback on the page's talk page
 $wgArticleFeedbackv5TalkPageLink = true;
 
+// Defines whether or not there should be a link to the watchlisted feedback on the watchlist page
+$wgArticleFeedbackv5WatchlistLink = true;
+
 // Email address to send oversight request emails to, if set to null no emails are sent
 $wgArticleFeedbackv5OversightEmails = null;
 
@@ -407,21 +410,22 @@ $wgExtensionCredits['other'][] = array(
 
 // Autoloading
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['ApiArticleFeedbackv5Utils']        = $dir . 'api/ApiArticleFeedbackv5Utils.php';
-$wgAutoloadClasses['ApiArticleFeedbackv5']             = $dir . 'api/ApiArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5']  = $dir . 'api/ApiViewRatingsArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5'] = $dir . 'api/ApiViewFeedbackArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5'] = $dir . 'api/ApiFlagFeedbackArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiViewActivityArticleFeedbackv5'] = $dir . 'api/ApiViewActivityArticleFeedbackv5.php';
-$wgAutoloadClasses['ArticleFeedbackv5Hooks']           = $dir . 'ArticleFeedbackv5.hooks.php';
-$wgAutoloadClasses['ArticleFeedbackv5LogFormatter']    = $dir . 'ArticleFeedbackv5.logFormatter.php';
-$wgAutoloadClasses['ArticleFeedbackv5Fetch']           = $dir . 'ArticleFeedbackv5.fetch.php';
-$wgAutoloadClasses['ArticleFeedbackv5Flagging']        = $dir . 'ArticleFeedbackv5.flagging.php';
-$wgAutoloadClasses['ArticleFeedbackv5MailerJob']       = $dir . 'ArticleFeedbackv5MailerJob.php';
-$wgAutoloadClasses['ArticleFeedbackv5Render']          = $dir . 'ArticleFeedbackv5.render.php';
-$wgAutoloadClasses['SpecialArticleFeedbackv5']         = $dir . 'SpecialArticleFeedbackv5.php';
-$wgExtensionMessagesFiles['ArticleFeedbackv5']         = $dir . 'ArticleFeedbackv5.i18n.php';
-$wgExtensionMessagesFiles['ArticleFeedbackv5Alias']    = $dir . 'ArticleFeedbackv5.alias.php';
+$wgAutoloadClasses['ApiArticleFeedbackv5Utils']         = $dir . 'api/ApiArticleFeedbackv5Utils.php';
+$wgAutoloadClasses['ApiArticleFeedbackv5']              = $dir . 'api/ApiArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5']   = $dir . 'api/ApiViewRatingsArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5']  = $dir . 'api/ApiViewFeedbackArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5']  = $dir . 'api/ApiFlagFeedbackArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiViewActivityArticleFeedbackv5']  = $dir . 'api/ApiViewActivityArticleFeedbackv5.php';
+$wgAutoloadClasses['ArticleFeedbackv5Hooks']            = $dir . 'ArticleFeedbackv5.hooks.php';
+$wgAutoloadClasses['ArticleFeedbackv5LogFormatter']     = $dir . 'ArticleFeedbackv5.logFormatter.php';
+$wgAutoloadClasses['ArticleFeedbackv5Fetch']            = $dir . 'ArticleFeedbackv5.fetch.php';
+$wgAutoloadClasses['ArticleFeedbackv5Flagging']         = $dir . 'ArticleFeedbackv5.flagging.php';
+$wgAutoloadClasses['ArticleFeedbackv5MailerJob']        = $dir . 'ArticleFeedbackv5MailerJob.php';
+$wgAutoloadClasses['ArticleFeedbackv5Render']           = $dir . 'ArticleFeedbackv5.render.php';
+$wgAutoloadClasses['SpecialArticleFeedbackv5']          = $dir . 'SpecialArticleFeedbackv5.php';
+$wgAutoloadClasses['SpecialArticleFeedbackv5Watchlist'] = $dir . 'SpecialArticleFeedbackv5Watchlist.php';
+$wgExtensionMessagesFiles['ArticleFeedbackv5']          = $dir . 'ArticleFeedbackv5.i18n.php';
+$wgExtensionMessagesFiles['ArticleFeedbackv5Alias']     = $dir . 'ArticleFeedbackv5.alias.php';
 
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleFeedbackv5Hooks::loadExtensionSchemaUpdates';
@@ -446,6 +450,7 @@ $wgAPIModules['articlefeedbackv5']                   = 'ApiArticleFeedbackv5';
 
 // Special Page
 $wgSpecialPages['ArticleFeedbackv5'] = 'SpecialArticleFeedbackv5';
+$wgSpecialPages['ArticleFeedbackv5Watchlist'] = 'SpecialArticleFeedbackv5Watchlist';
 $wgSpecialPageGroups['ArticleFeedbackv5'] = 'other';
 
 $wgAvailableRights[] = 'aftv5-hide-feedback';
