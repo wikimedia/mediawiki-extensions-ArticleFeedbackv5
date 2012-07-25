@@ -236,7 +236,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Wrap the whole thing in a div
 		$out->addHTML(
-			// <div id="articleFeedbackv5-special-wrap">
 			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-special-wrap' ) )
 		);
 
@@ -251,7 +250,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Close the wrapper
 		$out->addHTML(
-			// </div>
 			Html::closeElement( 'div' )
 		);
 
@@ -296,26 +294,18 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$helpLink .= '#Feedback_page';
 
 		$out->addHTML(
-			// <div id="articleFeedbackv5-header-wrap">
 			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-header-wrap' ) )
-				// <div id="articleFeedbackv5-header-links">
 				. Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-header-links' ) )
 			);
 
 		// Only add the links to the article and its talk page if there is one
 		if ( $this->pageId ) {
 			$out->addHTML(
-					// <a href="{article link}">
-					//   {msg:articlefeedbackv5-go-to-article}
-					// </a>
 					Linker::link(
 						$this->title,
 						$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
 					)
 					. ' | ' .
-					// <a href="{talk page link}">
-					//   {msg:articlefeedbackv5-discussion-page}
-					// </a>
 					Linker::link(
 						$this->title->getTalkPage(),
 						$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
@@ -325,15 +315,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		$out->addHTML(
-				// <a href="{help link}">
-				//   {msg:articlefeedbackv5-whats-this}
-				// </a>
 				Html::element(
 					'a',
 					array( 'href' => $helpLink ),
 					$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
 				)
-			// </div>
 			. Html::closeElement( 'div' )
 		);
 	}
@@ -353,9 +339,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Top linkback
 		$out->addHTML(
-			// <div class="articleFeedbackv5-feedback-permalink-goback">
-			//   <a href="{page title}">&laquo; {msg:articlefeedbackv5-special-goback}</a>
-			// </div>
 			Html::rawElement( 'div', array(
 					'class' => 'articleFeedbackv5-feedback-permalink-goback'
 				), Linker::link(
@@ -372,9 +355,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Bottom linkback
 		$out->addHTML(
-			// <div class="articleFeedbackv5-feedback-permalink-goback">
-			//   <a href="{page title}">&laquo; {msg:articlefeedbackv5-special-goback}</a>
-			// </div>
 			Html::rawElement( 'div', array(
 					'class' => 'articleFeedbackv5-feedback-permalink-goback'
 				), Linker::link(
@@ -407,8 +387,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$class = 'articleFeedbackv5-central-feedback-log';
 		}
 		$out->addHTML(
-			// <div id="articleFeedbackv5-show-feedback"
-			//   {class="articleFeedbackv5-central-feedback"?}>
 			Html::openElement( 'div', array(
 				'id'    => 'articleFeedbackv5-show-feedback',
 				'class' => $class
@@ -422,19 +400,14 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Close feedback output
 		$out->addHTML(
-			// </div>
 			Html::closeElement( 'div' )
 
-			// <div id="articleFeedbackv5-footer">
 			. Html::openElement(
 				'div',
 				array(
 					'id' => 'articleFeedbackv5-footer'
 				) )
 
-				// <a href="#" id="articleFeedbackv5-show-more">
-				//   {msg:articlefeedbackv5-special-more}
-				// </a>
 				. Html::element(
 					'a',
 					array(
@@ -444,9 +417,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					$this->msg( 'articlefeedbackv5-special-more' )->text()
 				)
 
-				// <a href="#" id="articleFeedbackv5-refresh-list">
-				//   {msg:articlefeedbackv5-refresh-list}
-				// </a>
 				. Html::element(
 					'a',
 					array(
@@ -456,19 +426,14 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					$this->msg( 'articlefeedbackv5-special-refresh' )->text()
 				)
 
-			// </div>
 			. Html::element( 'div', array( 'class' => 'clear' ) )
 
-			// </div>
 			. Html::closeElement( 'div' )
 		);
 
 		// Link back to the central page - only for editors
 		if ( $this->pageId && $user->isAllowed( 'aftv5-feature-feedback' ) ) {
 			$out->addHTML(
-				// <div class="articleFeedbackv5-feedback-central-goback">
-				//   <a href="{page title}">{msg:articlefeedbackv5-special-central-goback}</a>
-				// </div>
 				Html::rawElement( 'div', array(
 						'class' => 'articleFeedbackv5-feedback-central-goback'
 					), Linker::link(
@@ -516,18 +481,14 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Showing {count} posts
 		$out->addHTML(
-			// <div id="articleFeedbackv5-showing-count-wrap">
 			Html::openElement(
 				'div',
 				array( 'id' => 'articleFeedbackv5-showing-count-wrap' )
 			)
-				// {msg:articlefeedbackv5-special-showing} with
-				// <span id="articleFeedbackv5-feedback-count-total">{count}</span>
 				. $this->msg(
 					$this->pageId ? 'articlefeedbackv5-special-showing' : 'articlefeedbackv5-special-central-showing',
 					Html::element( 'span', array( 'id' => 'articleFeedbackv5-feedback-count-total' ), '0' )
 				)
-			// </div>
 			. Html::closeElement( 'div' )
 		);
 
@@ -537,16 +498,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$found   = isset( $ratings['found'] ) ? $ratings['found'] : null;
 			if ( $found ) {
 				$class = $found > 50 ? 'positive' : 'negative';
-				// <span class="stat-marker {positive|negative}">{msg:percent}</span>
+
 				$span = Html::rawElement( 'span', array(
 					'class' => "stat-marker $class"
 				), wfMsg( 'percent', $found ) );
 				$out->addHtml(
-					// <div id="articleFeedbackv5-percent-found-wrap">
 					Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-percent-found-wrap' ) )
-						// {msg:articlefeedbackv5-percent-found} with span above
 						. $this->msg( 'articlefeedbackv5-percent-found' )->rawParams( $span )->escaped()
-					// </div>
 					. Html::closeElement( 'div' )
 				);
 			}
@@ -556,9 +514,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		global $wgArticleFeedbackv5SpecialPageSurveyUrl;
 		if ( $wgArticleFeedbackv5SpecialPageSurveyUrl ) {
 			$out->addHTML(
-				// <a href="{survey-url}" target="_blank" class="articleFeedbackv5-survey-button">
-				//   {msg:articlefeedbackv5-special-survey-button-text}
-				// </span>
 				Html::element( 'a', array(
 					'href'   => $wgArticleFeedbackv5SpecialPageSurveyUrl,
 					'target' => '_blank',
@@ -570,9 +525,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// Link to add feedback (view article)
 		if ( $this->pageId ) {
 			$out->addHtml(
-				// <a href="#" id="articleFeedbackv5-special-add-feedback">
-				//   {msg:articlefeedbackv5-special-add-feedback}
-				// </a>
 				Html::element(
 					'a',
 					array(
@@ -586,9 +538,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Close the section
 		$out->addHtml(
-				// <div class="float-clear"></div>
 				Html::element( 'div', array( 'class' => 'float-clear' ) )
-			// </div>
 			. Html::closeElement( 'div' )
 		);
 	}
@@ -613,8 +563,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			}
 			$count = array_key_exists( $filter, $counts ) ? $counts[$filter] : 0;
 			$msg_key = str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
-			// <a href="#" id="articleFeedbackv5-special-filter-{$filter}"
-			//   class="articleFeedbackv5-filter-link">
+
 			$filterLabels[] = Html::openElement( 'a',
 					array(
 						'href'  => '#',
@@ -630,7 +579,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				//  * articlefeedbackv5-special-filter-comment
 				//  * articlefeedbackv5-special-filter-visible
 				. $this->msg( "articlefeedbackv5-special-filter-$msg_key", $count )->escaped()
-			// </a>
+
 			. Html::closeElement( 'a' );
 		}
 
@@ -657,9 +606,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			if ( count( $opts ) > 0 ) {
 				// Put the "more filters" option at the beginning of the opts array
 				$opts = array( $this->msg( 'articlefeedbackv5-special-filter-select-more' )->text() => '' ) + $opts;
-				// <select id="articleFeedbackv5-filter-select">
-				//   <option value="{each filter name}">{each filter message}</option>
-				// </select>
+
 				$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter-select' );
 				$filterSelect->setDefault( $this->startingFilter );
 				$filterSelect->addOptions( $opts );
@@ -668,25 +615,18 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		$filterBlock =
-			// <div id="articleFeedbackv5-filter">
 			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-filter' ) )
-				// <span class="articleFeedbackv5-filter-label">
 				. Html::openElement( 'span', array( 'class' => 'articleFeedbackv5-filter-label' ) )
-					// {msg:articlefeedbackv5-special-filter-label-before}
 					. $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
-				// </span>
 				. Html::closeElement( 'span' )
-				// {filter labels}
+
 				. implode( ' ', $filterLabels )
-				// <div id="">
+
 				. Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-select-wrapper' ) )
-					// {filter select}
 					. $filterSelectHtml
-				// </div>
 				. Html::closeElement( 'div' )
-				// {msg:articlefeedbackv5-special-filter-label-after'}
+
 				. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
-			// </div>
 			. Html::closeElement( 'div' );
 
 		// Sorting
@@ -705,38 +645,27 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$key = $this->msg( 'articlefeedbackv5-special-sort-' . $sort )->escaped();
 			$opts[ (string) $key ] = $sort;
 		}
-		// <select id="articleFeedbackv5-sort-select">
-		//   <option value="{each sort name}">{each sort message}</option>
-		// </select>
+
 		$sortSelect = new XmlSelect( false, 'articleFeedbackv5-sort-select' );
 		$sortSelect->setDefault( $this->startingSort . '-' . $this->startingSortDirection );
 		$sortSelect->addOptions( $opts );
 
 		$sortBlock =
-			// <div id="articleFeedbackv5-sort">
 			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-sort' ) )
-				// <span class="articleFeedbackv5-sort-label">
 				. Html::openElement( 'span', array( 'class' => 'articleFeedbackv5-sort-label' ) )
-					// {msg:articlefeedbackv5-special-sort-label-before}
 					. $this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
-				// </span>
 				. Html::closeElement( 'span' )
-				// {sort select}
+
 				. $sortSelect->getHTML()
-				// {msg:articlefeedbackv5-special-sort-label-after}
+
 				. $this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
-			// </div>
 			. Html::closeElement( 'div' );
 
 		// Add controls block
 		$out->addHTML(
-			// <div id="articleFeedbackv5-sort-filter-controls">
 			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-sort-filter-controls' ) )
-				// {filter label and select list}
 				. $filterBlock
-				// {sort label and select list}
 				. $sortBlock
-			// </div>
 			. Html::closeElement( 'div' )
 		);
 	}
@@ -810,6 +739,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				array(
 					'afc_page_id' => $this->pageId ? $this->pageId : 0
 				),
+				array(),
 				__METHOD__
 			);
 			foreach ( $rows as $row ) {
