@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//7v0\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 93
+      },
+      "writtenOn": "2012-07-30T10:11:55Z",
+      "side": 1,
+      "message": "Line over 100 chars long.",
+      "revId": "983a92379746fe95e63cb8e8e0b625f395d8a203",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
