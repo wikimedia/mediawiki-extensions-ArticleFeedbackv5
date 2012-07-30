@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQ3//7k0\u003d",
+        "filename": "sql/index_user_data.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-07-30T16:45:25Z",
+      "side": 1,
+      "message": "af_user_id_user_ip_created is getting dropped just above this",
+      "parentUuid": "AAAAQ3//7oU\u003d",
+      "revId": "e58baa24b65266d9b6f4a859362eca429b5e9a77",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQ3//7oY\u003d",
         "filename": "sql/index_user_data.sql",
         "patchSetId": 1
