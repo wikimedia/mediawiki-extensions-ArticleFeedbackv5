@@ -384,6 +384,12 @@ class ArticleFeedbackv5Hooks {
 			true
 		) );
 
+		$updater->addExtensionIndex(
+			'aft_article_answer_text',
+			'af_user_id_user_ip',
+			dirname( __FILE__ ) . '/sql/index_user_data.sql'
+		);
+
 		return true;
 	}
 
