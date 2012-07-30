@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//7oU\u003d",
+        "filename": "sql/index_user_data.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2012-07-30T15:46:37Z",
+      "side": 1,
+      "message": "Exists in\n\nCREATE INDEX /*i*/af_user_id_user_ip_created ON /*_*/aft_article_feedback (af_user_id, af_user_ip, af_created);",
+      "revId": "e58baa24b65266d9b6f4a859362eca429b5e9a77",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//7oY\u003d",
+        "filename": "sql/index_user_data.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2012-07-30T15:46:37Z",
+      "side": 1,
+      "message": "Duplicate index\n\nCREATE INDEX /*i*/article_feedback_timestamp ON /*_*/aft_article_feedback (af_created);",
+      "revId": "e58baa24b65266d9b6f4a859362eca429b5e9a77",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
