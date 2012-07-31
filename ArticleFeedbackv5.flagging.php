@@ -618,7 +618,7 @@ class ArticleFeedbackv5Flagging {
 
 		// IF the previous setting was 0, send an email
 		if ( $record->af_oversight_count < 1 ) {
-			 $this->sendOversightEmail();
+			$this->sendOversightEmail( $record );
 		}
 		return true;
 	}
@@ -1358,12 +1358,14 @@ class ArticleFeedbackv5Flagging {
 	 * requestor page url and name - if all this data can be retrieved properly
 	 * it shoves an email job into the queue for sending to the oversighters'
 	 * mailing list - only called for NEW oversight requests
+	 *
+	 * @param  $record    stdClass the record
 	 */
-	protected function sendOversightEmail() {
+	protected function sendOversightEmail( stdClass $record ) {
 		global $wgUser;
 
 		// jobs need a title object
-		$title_object = Title::newFromID( $this->pageId );
+		$title_object = Title::newFromID( $record->af_page_id );
 
 		if ( !$title_object ) {
 			return; // no title object, no mail
@@ -1412,4 +1414,3 @@ class ArticleFeedbackv5Flagging {
 	}
 
 }
-
