@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<testdata>
-	<vars key="baseUrl" value="http://localhost/~yoni/mediawiki/index.php" />
-	<vars key="testArticle" value="Test" />
-	<vars key="hiderUserName" value="Hider" />
-	<vars key="hiderUserPassword" value="123" />
-	<vars key="oversighterUserName" value="Yoni" />
-	<vars key="oversighterUserPassword" value="123" />
-</testdata>
