@@ -245,11 +245,17 @@ class ArticleFeedbackv5Fetch {
 			array(
 				'rating'  => array(
 					'LEFT JOIN',
-					'rating.aa_feedback_id = af_id AND rating.aa_field_id IN (' . implode( ',', $ratingFields ) . ')'
+					array(
+						'rating.aa_feedback_id = af_id',
+						'rating.aa_field_id' => $ratingFields
+					)
 				),
 				'comment' => array(
 					'LEFT JOIN',
-					'comment.aa_feedback_id = af_id AND comment.aa_field_id IN (' . implode( ',', $commentFields ) . ')'
+					array(
+						'comment.aa_feedback_id = af_id',
+						'comment.aa_field_id' => $commentFields,
+					)
 				)
 			)
 		);
@@ -302,7 +308,10 @@ class ArticleFeedbackv5Fetch {
 			array(
 				'rating' => array(
 					'LEFT JOIN',
-					'rating.aa_feedback_id = af_id AND rating.aa_field_id IN (' . implode( ',', $ratingFields ) . ')'
+					array(
+						'rating.aa_feedback_id = af_id',
+						'rating.aa_field_id' => $ratingFields
+					)
 				),
 				'answer' => array(
 					'LEFT JOIN',

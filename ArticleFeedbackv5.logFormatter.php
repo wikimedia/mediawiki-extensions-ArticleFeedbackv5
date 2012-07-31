@@ -33,21 +33,15 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 			$fbid = '?';
 		}
 
+		$fbtext = wfMessage( 'articlefeedbackv5-log-feedback-linktext',
+				$fbid )->escaped();
+		$fblink = Message::rawParam( Linker::link( $title, $fbtext ) );
+
 		if ( $page ) {
 			$pagelink = Message::rawParam( Linker::link( $page ) );
 		} else {
 			$pagelink = '?';
 		}
-
-		// @todo: these 2 lines will spoof a new url which will lead to the central feedback page with the
-		// selected post on top; this is due to a couple of oversighters reporting issues with the permalink page.
-		// once these issues have been solved, these lines should be removed
-		$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5' );
-		$title = Title::makeTitle( NS_SPECIAL, $centralPageName, "$fbid" );
-
-		$fbtext = wfMessage( 'articlefeedbackv5-log-feedback-linktext',
-				$fbid )->escaped();
-		$fblink = Message::rawParam( Linker::link( $title, $fbtext ) );
 
 		global $wgLang, $wgContLang;
 		$language = $skin === null ? $wgContLang : $wgLang;

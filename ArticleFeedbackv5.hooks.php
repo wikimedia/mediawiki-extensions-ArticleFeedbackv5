@@ -384,6 +384,12 @@ class ArticleFeedbackv5Hooks {
 			true
 		) );
 
+		$updater->addExtensionIndex(
+			'aft_article_answer_text',
+			'af_user_id_user_ip_created',
+			dirname( __FILE__ ) . '/sql/index_user_data.sql'
+		);
+
 		return true;
 	}
 
@@ -796,7 +802,7 @@ class ArticleFeedbackv5Hooks {
 		$lang = $page->getLanguage();
 		$user = $page->getUser();
 		$feedbackTitle = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() . "/$row->af_id" );
-		$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() );
+		$centralPageName= SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() );
 		$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$row->af_id" );
 
 		// date
@@ -875,7 +881,7 @@ class ArticleFeedbackv5Hooks {
 	 * Adds a user's AFT-contributions to the My Contributions special page
 	 *
 	 * @param $data array an array of results of all contribs queries, to be merged to form all contributions data
-	 * @param $pager: the ContribsPager object hooked into
+	 * @param $pager ContribsPager object hooked into
 	 * @param $offset String: index offset, inclusive
 	 * @param $limit Integer: exact query limit
 	 * @param $descending Boolean: query direction, false for ascending, true for descending
@@ -933,7 +939,7 @@ class ArticleFeedbackv5Hooks {
 				$max = $wgMemc->get( $key );
 				if ( $max === false ) {
 					// max user id not present in cache; fetch from db & save to cache for 1h
-					$max = (int) $pager->mDb->selectField( 'user', 'max(user_id)', '', __METHOD__ );
+					$max = (int) $pager->getDatabase()->selectField( 'user', 'max(user_id)', '', __METHOD__ );
 					$wgMemc->set( $key, $max, 60 * 60 );
 				}
 
@@ -944,12 +950,15 @@ class ArticleFeedbackv5Hooks {
 
 				$join_conds['user_groups'] = array(
 					'LEFT JOIN',
-					'ug_user = af_user_id AND ug_group = "bot"'
+					array(
+						'ug_user = af_user_id',
+						'ug_group' => 'bot',
+					)
 				);
 			}
 			if ( $offset ) {
 				$operator = $descending ? '>' : '<';
-				$conds[] = "af_created $operator " . $pager->mDb->addQuotes( $offset );
+				$conds[] = "af_created $operator " . $pager->getDatabase()->addQuotes( $offset );
 			}
 
 			$fname = __METHOD__;
@@ -960,15 +969,20 @@ class ArticleFeedbackv5Hooks {
 
 			$join_conds['rating'] = array(
 				'LEFT JOIN',
-				'rating.aa_feedback_id = af_id AND rating.aa_field_id IN (' . implode( ',', $ratingFields ) . ')'
+				array(
+					'rating.aa_feedback_id = af_id',
+					'rating.aa_field_id' => $ratingFields
+				)
 			);
 			$join_conds['comment'] = array(
 				'LEFT JOIN',
-				'comment.aa_feedback_id = af_id AND comment.aa_field_id IN (' . implode( ',', $commentFields ) . ')'
+				array(
+					'comment.aa_feedback_id = af_id',
+					'comment.aa_field_id' => $commentFields,
+				)
 			);
 
-
-			$data[] = $pager->mDb->select( $tables, $fields, $conds, $fname, $options, $join_conds );
+			$data[] = $pager->getDatabase()->select( $tables, $fields, $conds, $fname, $options, $join_conds );
 		}
 
 		return true;

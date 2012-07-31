@@ -28,13 +28,6 @@ class ArticleFeedbackv5Flagging {
 	private $user;
 
 	/**
-	 * The page ID
-	 *
-	 * @var int
-	 */
-	private $pageId;
-
-	/**
 	 * The feedback ID
 	 *
 	 * @var int
@@ -118,12 +111,10 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param mixed $user       the user performing the action ($wgUser), or
 	 *                          zero if it's a system call
-	 * @param int   $pageId     the page ID
 	 * @param int   $feedbackId the feedback ID
 	 */
-	public function __construct( $user, $pageId, $feedbackId ) {
+	public function __construct( $user, $feedbackId ) {
 		$this->user       = $user;
-		$this->pageId     = $pageId;
 		$this->feedbackId = $feedbackId;
 	}
 
@@ -1383,12 +1374,6 @@ class ArticleFeedbackv5Flagging {
 
 		// to build our permalink, use the feedback entry key + the page name (isn't page name a title? but title is an object? confusing)
 		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$page_name/" . $this->feedbackId );
-
-		// @todo: these 2 lines will spoof a new url which will lead to the central feedback page with the
-		// selected post on top; this is due to a couple of oversighters reporting issues with the permalink page.
-		// once these issues have been solved, these lines should be removed
-		$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5' );
-		$permalink = Title::makeTitle( NS_SPECIAL, $centralPageName, "$this->feedbackId" );
 
 		if ( !$permalink ) {
 			return; // no proper permalink? no mail
