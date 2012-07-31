@@ -2669,7 +2669,7 @@
 			var cfg = mw.config.get( 'wgArticleFeedbackv5CTABuckets' );
 			var key = 'ext.articleFeedbackv5@' + cfg.version + '-cta'
 			var bucketName = mw.user.bucket( key, cfg );
-			var nameMap = { zero: '0', one: '1', two: '2', three: '3', four: '4', five: '5' };
+			var nameMap = { zero: '0', one: '1', two: '2', four: '4', five: '5' };
 			requested = nameMap[bucketName];
 
 			if ( valid( requested ) ) {
@@ -2677,7 +2677,7 @@
 			} else {
 				// if the selected CTA is invalid, let's loop the rest for a fallback
 				for ( var i = 1; i < 5; i++ ) {
-					if ( valid( i ) ) {
+					if ( i != 3 && valid( i ) ) {
 						$.articleFeedbackv5.ctaId = i;
 						break;
 					}
