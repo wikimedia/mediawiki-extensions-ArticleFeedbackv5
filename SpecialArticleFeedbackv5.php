@@ -256,11 +256,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// JS variables
 		$out->addJsConfigVars( 'afPageId', $this->pageId );
 		$out->addJsConfigVars( 'afReferral', $request->getText( 'ref', 'url' ) );
-		// Only show the abuse counts to editors (ie, anyone allowed to
-		// hide content).
-		if ( $user->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
-			$out->addJsConfigVars( 'afCanEdit', 1 );
-		}
 		$out->addJsConfigVars( 'afStartingFilter', $this->startingFilter );
 		$out->addJsConfigVars( 'afStartingFilterValue', $this->startingFilter == 'id' ? $this->feedbackId : null );
 		$out->addJsConfigVars( 'afStartingSort', $this->startingSort );

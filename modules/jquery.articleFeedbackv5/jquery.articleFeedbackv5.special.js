@@ -45,11 +45,15 @@
 	$.articleFeedbackv5special.apiUrl = mw.util.wikiScript( 'api' );
 
 	/**
-	 * The current user type (anon|reg|mon)
+	 * The current user type
 	 *
-	 * anon = Anonymous user
-	 * reg  = Registered user
-	 * mon  = Monitor (can see hidden feedback)
+	 * anon = Unregistered
+	 * registered = Registered
+	 * editor = Autoconfirmed
+	 * monitor = Rollbacker / Reviewer
+	 * oversighter = Oversighter
+	 *
+	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
 	 */
 	$.articleFeedbackv5special.userType = undefined;
 
@@ -189,10 +193,14 @@
 		// Get the user type
 		if ( mw.user.anonymous() ) {
 			$.articleFeedbackv5special.userType = 'anon';
-		} else if ( mw.config.get( 'afCanEdit' ) ) {
-			$.articleFeedbackv5special.userType = 'mon';
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['oversighter'] ) {
+			$.articleFeedbackv5special.userType = 'oversighter';
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['monitor'] ) {
+			$.articleFeedbackv5special.userType = 'monitor';
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'] ) {
+			$.articleFeedbackv5special.userType = 'editor';
 		} else {
-			$.articleFeedbackv5special.userType = 'reg';
+			$.articleFeedbackv5special.userType = 'registered';
 		}
 
 		// Get the referral
@@ -693,9 +701,9 @@
 		var $tags = $row.find( '.articleFeedbackv5-comment-tags' );
 		if ( which == 'remove' ) {
 			$tags.find( '.articleFeedbackv5-' + tag + '-marker' ).remove();
-			if ( mw.config.get( 'afCanEdit' ) && $row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
+			if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['oversighter'] && $row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
 				$.articleFeedbackv5special.changeTags( $row, 'deleted', 'add' );
-			} else if ( mw.config.get( 'afCanEdit' ) && $row.hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
+			} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['monitor'] && $row.hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
 				$.articleFeedbackv5special.changeTags( $row, 'hidden', 'add' );
 			} else if ( $row.hasClass( 'articleFeedbackv5-feedback-resolved' ) ) {
 				$.articleFeedbackv5special.changeTags( $row, 'resolved', 'add' );
