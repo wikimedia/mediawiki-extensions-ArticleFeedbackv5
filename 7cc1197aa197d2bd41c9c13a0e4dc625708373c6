@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//68g\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-07-31T17:33:40Z",
+      "side": 1,
+      "message": "should this be $record-\u003eaf_id?",
+      "revId": "7cc1197aa197d2bd41c9c13a0e4dc625708373c6",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
