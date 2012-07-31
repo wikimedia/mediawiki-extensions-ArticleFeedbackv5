@@ -995,7 +995,7 @@
 			 * @return bool whether the CTA can be displayed
 			 */
 			verify: function () {
-				return $.articleFeedbackv5.editable;
+				return $.articleFeedbackv5.editable && !mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'];
 			},
 
 			// }}}
