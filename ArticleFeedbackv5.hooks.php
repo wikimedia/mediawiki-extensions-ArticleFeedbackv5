@@ -802,7 +802,7 @@ class ArticleFeedbackv5Hooks {
 		$lang = $page->getLanguage();
 		$user = $page->getUser();
 		$feedbackTitle = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() . "/$row->af_id" );
-		$centralPageName= SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() );
+		$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() );
 		$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$row->af_id" );
 
 		// date
