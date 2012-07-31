@@ -2677,7 +2677,7 @@
 			} else {
 				// if the selected CTA is invalid, let's loop the rest for a fallback
 				for ( var i = 1; i < 5; i++ ) {
-					if ( valid( i ) ) {
+					if ( i != 3 && valid( i ) ) {
 						$.articleFeedbackv5.ctaId = i;
 						break;
 					}
