@@ -16,6 +16,24 @@
       "revId": "7cc1197aa197d2bd41c9c13a0e4dc625708373c6",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//67s\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-07-31T17:45:11Z",
+      "side": 1,
+      "message": "both will work - this-\u003efeedbackId will be correctly set on flagging feedback\nI should cleanup this-\u003epageId though, which is no longer being used",
+      "parentUuid": "AAAAQ3//68g\u003d",
+      "revId": "7cc1197aa197d2bd41c9c13a0e4dc625708373c6",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
