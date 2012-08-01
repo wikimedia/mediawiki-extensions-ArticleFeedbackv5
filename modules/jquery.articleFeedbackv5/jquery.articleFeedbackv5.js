@@ -1990,6 +1990,11 @@
 	 * @param config object  the config object
 	 */
 	$.articleFeedbackv5.init = function ( $el, config ) {
+		// these were already parsed to json to preserve their bucket keys as object (rather than as)
+		// associative array - prior to using them, this will turn them into an object again
+		mw.config.set( 'wgArticleFeedbackv5DisplayBuckets', $.parseJSON( mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' ) ) );
+		mw.config.set( 'wgArticleFeedbackv5CTABuckets', $.parseJSON( mw.config.get( 'wgArticleFeedbackv5CTABuckets' ) ) );
+
 		$.articleFeedbackv5.$holder = $el;
 		$.articleFeedbackv5.config = config;
 		// Debug mode
@@ -2049,13 +2054,12 @@
 		var knownBuckets = { '0': true, '1': true, '4': true, '6': true };
 		var requested = mw.util.getParamValue( 'aftv5_form' );
 		var cfg = mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' );
-		if ( requested in knownBuckets ) {
+
+		if ( requested in cfg.buckets && cfg.buckets[requested] > 0 ) {
 			$.articleFeedbackv5.bucketId = requested;
 		} else {
 			var key = 'ext.articleFeedbackv5@' + cfg.version + '-form'
-			var bucketName = mw.user.bucket( key, cfg );
-			var nameMap = { zero: '0', one: '1', four: '4', six: '6' };
-			$.articleFeedbackv5.bucketId = nameMap[bucketName];
+			$.articleFeedbackv5.bucketId = mw.user.bucket( key, cfg );
 		}
 		if ( $.articleFeedbackv5.debug ) {
 			aft5_debug( 'Using form option #' + $.articleFeedbackv5.bucketId );
@@ -2640,9 +2644,13 @@
 	 * (configuration for this module passed in) to choose a bucket.
 	 */
 	$.articleFeedbackv5.selectCTA = function () {
+		var cfg = mw.config.get( 'wgArticleFeedbackv5CTABuckets' );
+
 		// the check to verify a CTA is valid and can be shown
 		valid = function ( requested ) {
 			if (
+				// check if the CTA is bucketed
+				requested in cfg.buckets && cfg.buckets[requested] > 0 &&
 				// check if CTA exists
 				requested in $.articleFeedbackv5.ctas &&
 				// check if there's validation for this CTA
@@ -2666,18 +2674,15 @@
 		if ( requested && valid( requested ) ) {
 			$.articleFeedbackv5.ctaId = requested;
 		} else {
-			var cfg = mw.config.get( 'wgArticleFeedbackv5CTABuckets' );
 			var key = 'ext.articleFeedbackv5@' + cfg.version + '-cta'
-			var bucketName = mw.user.bucket( key, cfg );
-			var nameMap = { zero: '0', one: '1', two: '2', three: '3', four: '4', five: '5' };
-			requested = nameMap[bucketName];
+			var requested = mw.user.bucket( key, cfg );
 
 			if ( valid( requested ) ) {
 				$.articleFeedbackv5.ctaId = requested;
 			} else {
 				// if the selected CTA is invalid, let's loop the rest for a fallback
-				for ( var i = 1; i < 5; i++ ) {
-					if ( i != 3 && valid( i ) ) {
+				for ( var i in cfg.buckets ) {
+					if ( valid( i ) ) {
 						$.articleFeedbackv5.ctaId = i;
 						break;
 					}
