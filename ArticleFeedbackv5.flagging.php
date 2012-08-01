@@ -28,13 +28,6 @@ class ArticleFeedbackv5Flagging {
 	private $user;
 
 	/**
-	 * The page ID
-	 *
-	 * @var int
-	 */
-	private $pageId;
-
-	/**
 	 * The feedback ID
 	 *
 	 * @var int
@@ -118,12 +111,10 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param mixed $user       the user performing the action ($wgUser), or
 	 *                          zero if it's a system call
-	 * @param int   $pageId     the page ID
 	 * @param int   $feedbackId the feedback ID
 	 */
-	public function __construct( $user, $pageId, $feedbackId ) {
+	public function __construct( $user, $feedbackId ) {
 		$this->user       = $user;
-		$this->pageId     = $pageId;
 		$this->feedbackId = $feedbackId;
 	}
 
