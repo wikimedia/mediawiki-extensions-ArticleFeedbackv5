@@ -44,7 +44,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		global $wgUser;
 
 		// Fire up the flagging object
-		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId );
+		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $pageId, $feedbackId );
 		$results = $flagger->run( $flag, $notes, $direction, $toggle );
 
 		$this->getResult()->addValue(

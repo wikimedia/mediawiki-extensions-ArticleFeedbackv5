@@ -162,7 +162,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		wfRunHooks( 'ArticleFeedbackChangeRating', array( $params ) );
 
 		// Are we set to auto-flag?
-		$flagger = new ArticleFeedbackv5Flagging( 0, $feedbackId );
+		$flagger = new ArticleFeedbackv5Flagging( 0, $pageId, $feedbackId );
 		foreach ( $this->autoFlag as $flag => $rule_desc ) {
 			$msg = 'articlefeedbackv5-abusefilter-note-aftv5';
 			if ( $flag == 'abuse' ) {
