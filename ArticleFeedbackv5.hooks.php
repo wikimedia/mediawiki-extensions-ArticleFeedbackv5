@@ -605,8 +605,6 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5Debug'] = $wgArticleFeedbackv5Debug;
 		$vars['wgArticleFeedbackv5Bucket2TagNames'] = $wgArticleFeedbackv5Bucket2TagNames;
 		$vars['wgArticleFeedbackv5Bucket5RatingCategories'] = $wgArticleFeedbackv5Bucket5RatingCategories;
-		$vars['wgArticleFeedbackv5DisplayBuckets'] = $wgArticleFeedbackv5DisplayBuckets;
-		$vars['wgArticleFeedbackv5CTABuckets'] = $wgArticleFeedbackv5CTABuckets;
 		$vars['wgArticleFeedbackv5Tracking'] = $wgArticleFeedbackv5Tracking;
 		$vars['wgArticleFeedbackv5Options'] = $wgArticleFeedbackv5Options;
 		$vars['wgArticleFeedbackv5LinkBuckets'] = $wgArticleFeedbackv5LinkBuckets;
@@ -622,6 +620,11 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
 		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
 		$vars['wgArticleFeedbackLotteryOdds'] = $wgArticleFeedbackLotteryOdds;
+
+		// encode here to force the bucket keys to be encoded ad object rather than as an associative array
+		$vars['wgArticleFeedbackv5DisplayBuckets'] = json_encode( $wgArticleFeedbackv5DisplayBuckets, JSON_FORCE_OBJECT );
+		$vars['wgArticleFeedbackv5CTABuckets'] = json_encode( $wgArticleFeedbackv5CTABuckets, JSON_FORCE_OBJECT );
+
 		return true;
 	}
 
