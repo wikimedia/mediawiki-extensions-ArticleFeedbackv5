@@ -327,6 +327,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 */
 	public function outputPermalink( $renderer, $fetched ) {
 		$out = $this->getOutput();
+
+		// validate that data was found
+		if ( count( $fetched->records ) != 1 ) {
+			return;
+		}
+
 		$record = array_pop( $fetched->records );
 
 		// Close the header
