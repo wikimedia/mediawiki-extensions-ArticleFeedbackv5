@@ -7,7 +7,6 @@ jQuery( function( $ ) {
 
 	// Check if the talk page link can be shown
 	if ( mw.config.get( 'wgArticleFeedbackv5WatchlistLink' ) ) {
-console.log('test');
 
 		// Check if we're not dealing with anon user
 		if ( mw.user.anonymous() ) {
