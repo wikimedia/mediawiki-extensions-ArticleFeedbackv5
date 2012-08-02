@@ -478,7 +478,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-fixedtab-linktext' => 'Improve this page',
 	'articlefeedbackv5-bottomrighttab-linktext' => 'Improve this page',
 	'articlefeedbackv5-section-linktext' => 'feedback',
-	'articlefeedbackv5-toolbox-linktext' => 'Improve this page',
+	'articlefeedbackv5-toolbox-view' => 'View feedback',
+	'articlefeedbackv5-toolbox-add' => 'Add your feedback',
 
 	/* Not sure */
 	'articlefeedbackv5-privacyurl' => '//wikimediafoundation.org/wiki/Feedback_privacy_statement',
@@ -1046,7 +1047,8 @@ $1 is an integer, and the rating count.",
 	'articlefeedbackv5-bottomrighttab-linktext' => 'When a link to pop up the feedback tool appears as a fixed-positioned tab at the bottom right, this will be the link text',
 	'articlefeedbackv5-section-linktext' => 'When a link to pop up the feedback tool appears on the article section headers, next to [edit], this will be the text inside the brackets immediately following (e.g. "[edit] [feedback]").
 {{Identical|Feedback}}',
-	'articlefeedbackv5-toolbox-linktext' => 'When a link to pop up the feedback tool appears at the bottom of the toolbox area in the sidebar, this will be the link text.',
+	'articlefeedbackv5-toolbox-view' => 'This link will take users to the feedback page of article currently being read',
+	'articlefeedbackv5-toolbox-add' => 'This link will scroll down the screen and make the form flash, pointing users to the feedback form',
 	'articlefeedbackv5-privacyurl' => '{{optional}}
 This URL can be changed to point to a translated version of the page if it exists.',
 	'articlefeedbackv5-disable-preference' => 'Preference name/description for disabling AFTv5',

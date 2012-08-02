@@ -1934,35 +1934,55 @@
 			 * @return Element the link
 			 */
 			build: function () {
-				var $link = $( '<li id="t-articlefeedbackv5"><a href="#mw-articlefeedbackv5"></a></li>' );
-				$link.find( 'a' ).text( mw.msg( 'articlefeedbackv5-toolbox-linktext' ) );
+				// build link to "add feedback" form
+				var $linkAdd = $( '<li id="t-articlefeedbackv5-add"><a href="#"></a></li>' );
+				$linkAdd.find( 'a' )
+						.text( mw.msg( 'articlefeedbackv5-toolbox-add' ) );
+
 				if ( '5' == $.articleFeedbackv5.bucketId ) {
-					$link.find( 'a' )
+					$linkAdd.find( 'a' )
 						.click( function ( e ) {
+							e.preventDefault();
 							// Just set the link ID -- this should act just like AFTv4
 							$.articleFeedbackv5.setLinkId( 'TBX' );
 						} );
 				} else {
-					$link.find( 'a' )
+					$linkAdd.find( 'a' )
 						.data( 'linkId', 'TBX' )
 						.click( function ( e ) {
 							e.preventDefault();
 							$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
 						} );
 				}
-				return $link;
+
+				// build link to article feedback page
+				var title = $( '<div></div>' )
+					.html( $.articleFeedbackv5.templates.ctaTitleConfirm )
+					.localize( { 'prefix': 'articlefeedbackv5-' } );
+				var track_id = $.articleFeedbackv5.ctaName() + '-toolbar_click';
+				var link = $.articleFeedbackv5.trackingUrl(
+					mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' ),
+					track_id
+				);
+
+				var $linkView = $( '<li id="t-articlefeedbackv5-view"><a href="#"></a></li>' );
+				$linkView.find( 'a' )
+						.text( mw.msg( 'articlefeedbackv5-toolbox-view' ) )
+						.attr( 'href', link );
+
+				return $linkAdd.add( $linkView );
 			},
 
 			// }}}
 			// {{{ insert
 
 			/**
-			 * Inserts the link into the page
+			 * Inserts the links into the page
 			 *
-			 * @param Element $link the link
+			 * @param Element $links the links
 			 */
-			insert: function ( $link ) {
-				$( '#p-tb' ).find( 'ul' ).append( $link );
+			insert: function ( $links ) {
+				$( '#p-tb' ).find( 'ul' ).append( $links );
 			}
 
 			// }}}
