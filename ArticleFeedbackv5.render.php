@@ -525,7 +525,7 @@ class ArticleFeedbackv5Render {
 			$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$record->af_id" );
 
 			$userMessage = wfMessage( $message, $record->user_name )
-				->rawParams( $userName, Linker::link( $article ) )
+				->rawParams( $userName, Linker::linkKnown( $article ) )
 				->params( $feedbackCentralPageTitle->getFullText() )
 				->parse();
 		} else {
