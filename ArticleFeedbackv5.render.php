@@ -521,11 +521,13 @@ class ArticleFeedbackv5Render {
 
 		if ( $this->isCentral ) {
 			$article = Title::newFromRow($record);
-			$userMessage = wfMessage( $message, $record->user_name )->rawParams(
-					$userName
-				)->rawParams(
-					Linker::link( $article )
-				)->escaped();
+			$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5', $article->getPrefixedDBkey() );
+			$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$record->af_id" );
+
+			$userMessage = wfMessage( $message, $record->user_name )
+				->rawParams( $userName, Linker::link( $article ) )
+				->params( $feedbackCentralPageTitle->getFullText() )
+				->parse();
 		} else {
 			$userMessage = wfMessage( $message, $record->user_name )->rawParams(
 					$userName
