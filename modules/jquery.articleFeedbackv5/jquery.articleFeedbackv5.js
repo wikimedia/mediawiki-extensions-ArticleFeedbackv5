@@ -524,7 +524,7 @@
 				 * article
 				 */
 				editable: '\
-					<div>\
+					<div id="articleFeedbackv5-bucket4">\
 						<div class="form-row articleFeedbackv5-bucket4-toggle">\
 							<p class="sub-header"><strong><html:msg key="bucket4-subhead" /></strong></p>\
 							<p class="instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
@@ -543,7 +543,7 @@
 				 * article
 				 */
 				noneditable: '\
-					<div>\
+					<div id="articleFeedbackv5-bucket4">\
 						<div class="form-row articleFeedbackv5-bucket4-toggle">\
 							<p class="instructions-left"><html:msg key="bucket4-noedit-teaser-line1" /><br />\
 							<html:msg key="bucket4-noedit-teaser-line2" /></p>\
@@ -557,6 +557,19 @@
 					'
 
 			},
+
+			// }}}
+			// {{{ getTitle
+
+			/**
+			 * Gets the title
+			 *
+			 * @return string the title
+			 */
+			getTitle: function () {
+				return mw.msg( 'articlefeedbackv5-bucket4-title' );
+			},
+
 
 			// }}}
 			// {{{ buildForm
