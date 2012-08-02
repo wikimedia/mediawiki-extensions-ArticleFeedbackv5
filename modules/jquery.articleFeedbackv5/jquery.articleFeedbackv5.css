@@ -804,8 +804,8 @@
 }
 
 /*** Option 4 ***/
-.articleFeedbackv5-option-4.articleFeedbackv5-ui .articleFeedbackv5-cta-button {
-	margin-top: 10px !important; /* @todo: niet nodig, gok ik? */
+#articleFeedbackv5-bucket4 {
+	position: relative;
 }
 .articleFeedbackv5-option-4 .articleFeedbackv5-disclosure {
 	float: left;

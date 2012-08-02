@@ -53,11 +53,6 @@
 	float: right;
 	width: 250px;
 }
-.articleFeedbackv5-feedback.articleFeedbackv5-comment-notoolbox .articleFeedbackv5-comment-wrap,
-.articleFeedbackv5-feedback.articleFeedbackv5-comment-notoolbox .articleFeedbackv5-comment-head,
-.articleFeedbackv5-feedback.articleFeedbackv5-comment-notoolbox .articleFeedbackv5-vote-wrapper {
-	width: 85%; /* @todo: fix this */
-}
 
 /** Feedback row **/
 .articleFeedbackv5-feedback {
