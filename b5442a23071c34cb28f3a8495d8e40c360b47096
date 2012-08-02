@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARH///10\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 1946,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-02T23:51:22Z",
+      "side": 1,
+      "message": "you may want to add a return false here otherwise it will produce a # on the url",
+      "revId": "b5442a23071c34cb28f3a8495d8e40c360b47096",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
