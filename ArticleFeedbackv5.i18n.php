@@ -193,7 +193,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-anon-message' => 'Posted anonymously from {{GENDER:$1|$1}}.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} was not shown a feedback form.',
 	'articlefeedbackv5-form-invalid' => 'Invalid feedback form ID.',
-	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} posted feedback to $3',
+	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$3}} posted [[$2|feedback]] to $4',
 	'articlefeedbackv5-abuse-saved' => 'Flagged as abuse',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Remove the flag you set',
 	'articlefeedbackv5-oversight-saved' => 'Marked for oversight',
@@ -848,8 +848,9 @@ The link to the edit tutorial',
 * $1 - user name',
 	'articlefeedbackv5-central-header-left-comment' => 'Comment header indicating that the user posted feedback (central feedback page only). Parameters:
 * $1 is a username.
-* $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text
-* $3 is a link to the article to which the feedback was posted',
+* $2 is a link to the article\'s feedback page with the selected feedback on top
+* $3 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text
+* $4 is a link to the article to which the feedback was posted',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Tooltip shown on the un-flag as abuse link, to indicate what clicking on it will do (the link text -- {{msg-mw|articlefeedbackv5-abuse-saved}} -- is used to indicate state).',
 	'articlefeedbackv5-oversight-saved' => 'Oversight request saved successfully (oversight request asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-unoversight-saved' => 'Request for oversight removed successfully oversight request asks that an oversighter review the feedback item)',
