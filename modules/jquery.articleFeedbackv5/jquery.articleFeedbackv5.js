@@ -2009,11 +2009,6 @@
 	 * @param config object  the config object
 	 */
 	$.articleFeedbackv5.init = function ( $el, config ) {
-		// these were already parsed to json to preserve their bucket keys as object (rather than as)
-		// associative array - prior to using them, this will turn them into an object again
-		mw.config.set( 'wgArticleFeedbackv5DisplayBuckets', $.parseJSON( mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' ) ) );
-		mw.config.set( 'wgArticleFeedbackv5CTABuckets', $.parseJSON( mw.config.get( 'wgArticleFeedbackv5CTABuckets' ) ) );
-
 		$.articleFeedbackv5.$holder = $el;
 		$.articleFeedbackv5.config = config;
 		// Debug mode

@@ -648,9 +648,11 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5DefaultSorts'] = $wgArticleFeedbackv5DefaultSorts;
 		$vars['wgArticleFeedbackLotteryOdds'] = $wgArticleFeedbackLotteryOdds;
 
-		// encode here to force the bucket keys to be encoded ad object rather than as an associative array
-		$vars['wgArticleFeedbackv5DisplayBuckets'] = json_encode( $wgArticleFeedbackv5DisplayBuckets, JSON_FORCE_OBJECT );
-		$vars['wgArticleFeedbackv5CTABuckets'] = json_encode( $wgArticleFeedbackv5CTABuckets, JSON_FORCE_OBJECT );
+		// make sure that these keys are being encoded to an object rather than to an array
+		$wgArticleFeedbackv5DisplayBuckets['buckets'] = (object) $wgArticleFeedbackv5DisplayBuckets['buckets'];
+		$wgArticleFeedbackv5CTABuckets['buckets'] = (object) $wgArticleFeedbackv5CTABuckets['buckets'];
+		$vars['wgArticleFeedbackv5DisplayBuckets'] = $wgArticleFeedbackv5DisplayBuckets;
+		$vars['wgArticleFeedbackv5CTABuckets'] = (object) $wgArticleFeedbackv5CTABuckets;
 
 		return true;
 	}
