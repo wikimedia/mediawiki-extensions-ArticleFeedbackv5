@@ -38,7 +38,8 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-fixedtab-linktext',
 				'articlefeedbackv5-bottomrighttab-linktext',
 				'articlefeedbackv5-section-linktext',
-				'articlefeedbackv5-toolbox-linktext',
+				'articlefeedbackv5-toolbox-view',
+				'articlefeedbackv5-toolbox-add',
 				'articlefeedbackv5-bucket5-toolbox-linktext',
 			),
 			'dependencies' => array(
