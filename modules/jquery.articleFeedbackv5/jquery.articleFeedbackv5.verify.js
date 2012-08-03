@@ -159,7 +159,7 @@
 				// Check exclusion - exclusion overrides everything else
 				if ( $.inArray( categories['current'][i], categories.exclude ) > -1 ) {
 					// Blacklist overrides everything else
-					return;
+					return false;
 				}
 				if ( $.inArray( categories['current'][i], categories.include ) > -1 ) {
 					// One match is enough for include, however we are iterating on the 'current'
