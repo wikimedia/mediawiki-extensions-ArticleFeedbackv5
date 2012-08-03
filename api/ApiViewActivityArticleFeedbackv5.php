@@ -54,6 +54,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		$valid[] = 'undo-helpful';
 		$valid[] = 'unhelpful';
 		$valid[] = 'undo-unhelpful';
+		$valid[] = 'clear-flags';
 
 		// if we have hide permissions, we're allowed to see oversight-related
 		// actions as well
@@ -177,7 +178,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 			// determine the class a log entry is to get, based on whether it's a positive/negative
 			// taken against the feedback entry
-			$positiveActions = array( 'feature', 'resolve', 'unhidden', 'decline', 'unoversight', 'unflag', 'unrequest', 'helpful' );
+			$positiveActions = array( 'feature', 'resolve', 'unhidden', 'decline', 'unoversight', 'unflag', 'unrequest', 'helpful', 'clear-flags' );
 			$negativeActions = array( 'oversight', 'autohide', 'hidden', 'request', 'unfeature', 'unresolve', 'flag', 'autoflag', 'unhelpful' );
 			// neutral actions: undo-helpful, undo-unhelpful
 
