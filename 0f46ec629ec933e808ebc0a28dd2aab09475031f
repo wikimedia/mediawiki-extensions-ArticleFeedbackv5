@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAARH///uU\u003d",
+        "filename": "ArticleFeedbackv5.fetch.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-08-03T10:34:57Z",
+      "side": 1,
+      "message": "This was like that before this commit already. You are very right though (and some other combinations are not optimal as well), I\u0027ll be working on that in another commit soon.",
+      "parentUuid": "AAAARH///9E\u003d",
+      "revId": "0f46ec629ec933e808ebc0a28dd2aab09475031f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAARH///8I\u003d",
         "filename": "ArticleFeedbackv5.fetch.php",
         "patchSetId": 4
