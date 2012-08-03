@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARH///Xw\u003d",
+        "filename": "ArticleFeedbackv5.fetch.php",
+        "patchSetId": 9
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-03T18:12:52Z",
+      "side": 1,
+      "message": "It looks like the caller of this function doesn\u0027t check true/false ( same for setFeedbackId(), setLimit() ).  If the value doesn\u0027t pass the validation, userId, feedbackId, limit will be left null and used in the queries. The code should either:\n\n1. check true/false in caller before further processing the rest of the code\n\n2. instead of returning true/false, just typecast the value:\n\npublic function setUserId( $userId ) {\n    $this-\u003euserId \u003d intval( $userId );\n}",
+      "revId": "3338de5e6e64cc6fab4e65f738b07e8abf5451b5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
