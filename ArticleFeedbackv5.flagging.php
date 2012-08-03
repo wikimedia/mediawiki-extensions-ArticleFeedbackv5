@@ -335,6 +335,8 @@ class ArticleFeedbackv5Flagging {
 		$this->update['af_is_deleted'] = true;
 		$this->update['af_is_undeleted'] = false;
 
+		$this->relevance[] = 'oversight';
+
 		$this->log[] = array('oversight', $notes, $this->isSystemCall());
 
 		// always increment oversighted count and decrement notdeleted
@@ -380,6 +382,8 @@ class ArticleFeedbackv5Flagging {
 			if ( $notes ) {
 				$this->update['af_last_status_notes'] = $notes;
 			}
+
+			$this->relevance[] = 'autohide';
 
 			$this->log[] = array( 'autohide', '', $this->getUserId() );
 
@@ -435,6 +439,8 @@ class ArticleFeedbackv5Flagging {
 		if ( $notes ) {
 			$this->update['af_last_status_notes'] = $notes;
 		}
+
+		$this->relevance[] = 'unoversight';
 
 		$this->log[] = array('unoversight', $notes, $this->isSystemCall());
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
@@ -496,11 +502,14 @@ class ArticleFeedbackv5Flagging {
 		$this->hideCounts( $record, 'hide' );
 		$this->visibleCounts( $record, 'invisible' );
 
+		$this->relevance[] = 'hidden';
+
 		$this->log[] = array('hidden', $notes, $this->isSystemCall());
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'hidden', $this->getUserId(), $timestamp );
 		$this->results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
 			'hidden', $record->af_id, $this->getUserId(), $timestamp );
+
 		return true;
 	}
 
@@ -521,6 +530,9 @@ class ArticleFeedbackv5Flagging {
 		if ( !$record->af_is_hidden ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
+
+		$record->af_is_hidden = false;
+
 		$this->update['af_is_hidden'] = false;
 		$this->update['af_is_unhidden'] = true;
 
@@ -536,9 +548,17 @@ class ArticleFeedbackv5Flagging {
 		$this->hideCounts( $record, 'show' );
 		$this->visibleCounts( $record, 'visible' );
 
+		$this->relevance[] = 'unhidden';
+
 		$this->log[] = array('unhidden', $notes, $this->isSystemCall());
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'unhidden', $this->getUserId(), $timestamp );
+
+		// clear all abuse flags when un-hiding feedback that was auto-hidden because of abuse flags
+		if ( $record->af_is_autohide == true ) {
+			$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
+		}
+
 		return true;
 	}
 
@@ -555,6 +575,8 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_oversight_increase( stdClass $record, $notes, $timestamp, $toggle ) {
+		$this->relevance[] = 'request';
+
 		$this->log[] = array('request', $notes, $this->isSystemCall());
 
 		// NOTE: we are bypassing traditional sql escaping here
@@ -593,6 +615,8 @@ class ArticleFeedbackv5Flagging {
 				$this->update['af_last_status_notes'] = $notes;
 			}
 
+			$this->relevance[] = 'autohide';
+
 			$this->log[] = array( 'autohide', '', $this->getUserId() );
 
 			$this->results['autohidden'] = 1;
@@ -620,6 +644,7 @@ class ArticleFeedbackv5Flagging {
 		if ( $record->af_oversight_count < 1 ) {
 			$this->sendOversightEmail( $record );
 		}
+
 		return true;
 	}
 
@@ -633,6 +658,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_oversight_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
+		$this->relevance[] = 'unrequest';
 		$this->log[] = array('unrequest', $notes, $this->isSystemCall());
 		$this->filters = array();
 
@@ -697,6 +723,11 @@ class ArticleFeedbackv5Flagging {
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'featured', $this->getUserId(), $timestamp );
+
+		// clear all abuse flags when un-hiding feedback that was auto-hidden because of abuse flags
+		if ( $record->af_is_autohide == true ) {
+			$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
+		}
 
 		return true;
 	}
@@ -826,6 +857,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_resetoversight( stdClass $record, $notes, $timestamp, $toggle, $direction ) {
+		$this->relevance[] = 'decline';
 		$this->log[] = array('decline', $notes, $this->isSystemCall());
 
 		// oversight request count becomes 0
@@ -914,6 +946,8 @@ class ArticleFeedbackv5Flagging {
 				$this->update['af_last_status_notes'] = $notes;
 			}
 
+			$this->relevance[] = 'autohide';
+
 			$this->log[] = array( 'autohide', '', $this->getUserId );
 
 			$this->results['autohidden'] = 1;
@@ -991,12 +1025,63 @@ class ArticleFeedbackv5Flagging {
 			$this->hideCounts( $record, 'show' );
 			$this->visibleCounts( $record, 'visible' );
 
+			$this->relevance[] = 'unhidden';
+
 			$this->log[] = array( 'unhidden', 'Automatic un-hide', 0 );
 		}
 
 		$this->results['abuse_report'] = wfMessage( 'articlefeedbackv5-form-abuse-count' )
 			->params( $this->results['abuse_count'] )
 			->escaped();
+
+		return true;
+	}
+
+	/**
+	 * Flag: clear all abuse flags
+	 *
+	 * @param  $record    stdClass the record
+	 * @param  $notes     string   any notes passed in
+	 * @param  $timestamp string   the timestamp
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return mixed      true if success, message key (string) if not
+	 */
+	private function flag_clearflags( stdClass $record, $notes, $timestamp, $toggle ) {
+		// when un-hiding a port, reset abuse count to 0 as well
+		$this->results['abuse_count'] = 0;
+
+		// return a flag in the JSON, that should no longer turn the link red
+		$this->results['abusive'] = 0;
+
+		// update relevance score, undo all previous flags
+		for ( $i = 0; $i < $this->results['abuse_count']; $i++ ) {
+			$this->relevance[] = 'unflagged';
+		}
+
+		// add entry to log
+		$this->log[] = array( 'clear-flags', $notes, $this->isSystemCall() );
+
+		// update filter totals
+//		$this->filters['visible-abusive'] = -1;
+
+		// update entry in db
+		$this->update['af_abuse_count'] = $this->results['abuse_count'];
+
+		// un-hide if the record was auto-hidden because of flags
+		if ( $record->af_is_hidden == true && $record->af_is_autohide == true ) {
+			$this->update['af_is_hidden'] = false;
+			$this->update['af_is_unhidden'] = true;
+
+			$this->hideCounts( $record, 'show' );
+			$this->visibleCounts( $record, 'visible' );
+
+			$this->relevance[] = 'unhidden';
+
+			$this->log[] = array( 'unhidden', 'Automatic un-hide', 0 );
+		}
+
+		$this->results['abuse_cleared'] = true;
+		$this->results['abuse_report'] = wfMessage( 'articlefeedbackv5-form-abuse-cleared' )->escaped();
 
 		return true;
 	}
