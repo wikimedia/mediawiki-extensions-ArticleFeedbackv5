@@ -131,6 +131,9 @@ $wgArticleFeedbackv5DashboardCategory = 'Article_Feedback_5';
 // Default to $wgContentNamespaces (defaults to array( NS_MAIN ) ).
 $wgArticleFeedbackv5Namespaces = $wgContentNamespaces;
 
+// Only load the module / enable the talk-link in these namespaces
+$wgArticleFeedbackv5TalkNamespaces = array( NS_TALK );
+
 // This puts the JavaScript into debug mode. In debug mode, you can set your
 // own bucket by passing it in the url (e.g., ?bucket=1), and the showstopper
 // error mode will have a useful error message, if one exists, rather than the
