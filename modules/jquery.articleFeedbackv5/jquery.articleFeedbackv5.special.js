@@ -213,7 +213,7 @@
 
 		// Set up config vars
 		$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
-		$.articleFeedbackv5special.watchlist = mw.config.get( 'wgCanonicalSpecialPageName' ) == 'ArticleFeedbackv5Watchlist';
+		$.articleFeedbackv5special.watchlist = mw.config.get( 'wgCanonicalSpecialPageName' ) == 'ArticleFeedbackv5Watchlist' ? 1 : 0;
 
 		// Initialize clicktracking
 		$.aftTrack.init({

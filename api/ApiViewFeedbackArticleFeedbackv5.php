@@ -120,7 +120,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'watchlist'     => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'boolean'
+				ApiBase::PARAM_TYPE     => 'integer'
 			),
 			'sort'          => array(
 				ApiBase::PARAM_REQUIRED => false,
