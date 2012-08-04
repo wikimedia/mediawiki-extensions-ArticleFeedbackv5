@@ -16,6 +16,23 @@
       "revId": "02821974eaf57c71d8ef86cb78acf166c5d6f93c",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARH///DU\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-08-04T11:10:57Z",
+      "side": 1,
+      "message": "It is used in ApiViewActivityArticleFeedback.php at lines 203 or 214, like this: wfMessage( \u0027articlefeedbackv5-activity-\u0027 . $item-\u003elog_action, array() )-\u003etext() ),",
+      "revId": "02821974eaf57c71d8ef86cb78acf166c5d6f93c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
