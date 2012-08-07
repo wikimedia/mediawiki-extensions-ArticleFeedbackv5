@@ -663,7 +663,7 @@
 	};
 
 	// }}}
-	// {{{ refreshAbuseReport
+	// {{{ setAbuse
 
 	/**
 	 * Utility method: Refreshes the X-flags text
@@ -671,20 +671,47 @@
 	 * @param id   int    the feedback ID
 	 * @param data object the data returned from flagging
 	 */
-	$.articleFeedbackv5special.refreshAbuseReport = function ( id, data ) {
+	$.articleFeedbackv5special.setAbuse = function ( id, data ) {
+		// refresh abuse report
 		var $count = $( '#articleFeedbackv5-abuse-count-' + id );
 		if ( $count.length < 1 ) {
 			return;
 		}
-		$count.html( data.abuse_report )
+		$count.html( data['articlefeedbackv5-flag-feedback']['abuse_report'] )
 			.removeClass( 'articleFeedbackv5-has-abuse-flags' )
 			.removeClass( 'abusive' );
-		if ( data.abuse_count > 0 ) {
+		if ( data['articlefeedbackv5-flag-feedback']['abuse_count'] > 0 || data['articlefeedbackv5-flag-feedback']['abuse_cleared'] ) {
 			$count.addClass( 'articleFeedbackv5-has-abuse-flags' );
 		}
 		if ( data.abusive ) {
 			$count.addClass( 'abusive' );
 		}
+
+		$link = $( '#articleFeedbackv5-abuse-link-' + id ).add( $( '#articleFeedbackv5-unabuse-link-' + id ) );
+
+		if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
+			$.articleFeedbackv5special.markHidden(
+				$link.closest( '.articleFeedbackv5-feedback' ),
+				data['articlefeedbackv5-flag-feedback']['mask-line']
+			);
+		}
+
+		if ( data['articlefeedbackv5-flag-feedback']['abuse_count'] > 0 ) {
+			$link.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
+				.removeClass( 'articleFeedbackv5-abuse-link' )
+				.addClass( 'articleFeedbackv5-unabuse-link' )
+				.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) )
+				.attr( 'title', mw.msg( 'articlefeedbackv5-abuse-saved-tooltip' ) );
+		} else {
+			$link.attr( 'id', 'articleFeedbackv5-abuse-link-' + id )
+				.removeClass( 'articleFeedbackv5-unabuse-link' )
+				.addClass( 'articleFeedbackv5-abuse-link' )
+				.text( mw.msg( 'articlefeedbackv5-form-abuse' ) )
+				.attr( 'title', '' );
+		}
+
+		$.articleFeedbackv5special.setActivityFlag( id, 'abuse', data['articlefeedbackv5-flag-feedback']['abuse_count'] > 0 );
+
 	};
 
 	// }}}
@@ -1494,20 +1521,7 @@
 			'apiFlagType': 'abuse',
 			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
-				var $link = $( '#articleFeedbackv5-abuse-link-' + id );
-				$link.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) );
-				$link.attr( 'title', mw.msg( 'articlefeedbackv5-abuse-saved-tooltip' ) );
-				$.articleFeedbackv5special.refreshAbuseReport( id, data['articlefeedbackv5-flag-feedback'] );
-				if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
-					$.articleFeedbackv5special.markHidden(
-						$link.closest( '.articleFeedbackv5-feedback' ),
-						data['articlefeedbackv5-flag-feedback']['mask-line']
-					);
-				}
-				$link.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
-					.removeClass( 'articleFeedbackv5-abuse-link' )
-					.addClass( 'articleFeedbackv5-unabuse-link' );
-				$.articleFeedbackv5special.setActivityFlag( id, 'abuse', true );
+				$.articleFeedbackv5special.setAbuse( id, data );
 			}
 		},
 
@@ -1527,20 +1541,7 @@
 			'apiFlagType': 'abuse',
 			'apiFlagDir': -1,
 			'onSuccess': function( id, data ) {
-				var $link = $( '#articleFeedbackv5-unabuse-link-' + id );
-				$link.text( mw.msg( 'articlefeedbackv5-form-abuse' ) );
-				$link.attr( 'title', '' );
-				$.articleFeedbackv5special.refreshAbuseReport( id, data['articlefeedbackv5-flag-feedback'] );
-				if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
-					$.articleFeedbackv5special.markHidden(
-						$link.closest( '.articleFeedbackv5-feedback' ),
-						data['articlefeedbackv5-flag-feedback']['mask-line']
-					);
-				}
-				$link.attr( 'id', 'articleFeedbackv5-abuse-link-' + id )
-					.removeClass( 'articleFeedbackv5-unabuse-link' )
-					.addClass( 'articleFeedbackv5-abuse-link' );
-				$.articleFeedbackv5special.setActivityFlag( id, 'abuse', false );
+				$.articleFeedbackv5special.setAbuse( id, data );
 			}
 		},
 
@@ -1563,6 +1564,7 @@
 
 				$.articleFeedbackv5special.markFeatured( $link.closest( '.articleFeedbackv5-feedback' ) );
 				$.articleFeedbackv5special.setActivityFlag( id, 'feature', true );
+				$.articleFeedbackv5special.setAbuse( id, data );
 			}
 		},
 
@@ -1679,6 +1681,7 @@
 				var $row = $link.closest( '.articleFeedbackv5-feedback' );
 				$.articleFeedbackv5special.unmarkHidden( $row );
 				$.articleFeedbackv5special.setActivityFlag( id, 'hide', false );
+				$.articleFeedbackv5special.setAbuse( id, data );
 			}
 		},
 

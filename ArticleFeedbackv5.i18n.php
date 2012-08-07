@@ -150,6 +150,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-helpful' => 'Mark as helpful ($1)',
 	'articlefeedbackv5-form-abuse' => 'Flag as abuse',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 flag|$1 flags}}',
+	'articlefeedbackv5-form-abuse-cleared' => 'Flags cleared',
 	'articlefeedbackv5-form-delete' => 'Oversight',
 	'articlefeedbackv5-form-oversight' => 'Request oversight',
 	'articlefeedbackv5-form-unoversight' => 'Unrequest oversight',
@@ -517,6 +518,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-log-unhelpful' => 'marked as unhelpful $1 on $2',
 	'articlefeedbackv5-log-undo-helpful' => 'un-marked as helpful $1 on $2',
 	'articlefeedbackv5-log-undo-unhelpful' => 'un-marked as unhelpful $1 on $2',
+	'articlefeedbackv5-log-clear-flags' => 'cleared all flags $1 on $2',
 
 	/* Activity Pane phrases */
 	'articlefeedbackv5-activity-pane-header' => 'Activity Log',
@@ -540,6 +542,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-activity-unhelpful' => 'marked this post as unhelpful on',
 	'articlefeedbackv5-activity-undo-helpful' => 'unmarked this post as helpful on',
 	'articlefeedbackv5-activity-undo-unhelpful' => 'unmarked this post as unhelpful on',
+	'articlefeedbackv5-activity-clear-flags' => 'cleared all flags for this post on',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 action on this post|$1 actions on this post}}',
 	'articlefeedbackv5-activity-more' => 'Show more Activity',
 	'articlefeedbackv5-activity-item-comment' => '$1 $2 $3 : $4',
@@ -765,7 +768,8 @@ The link to the edit tutorial',
 	'articlefeedbackv5-form-resolve' => 'Link text for marking the post resolved (in the toolbox)',
 	'articlefeedbackv5-form-unresolve' => 'Link text for un-marking the post resolved (in the toolbox)',
 	'articlefeedbackv5-form-abuse' => 'Link text allowing the user to flag feedback as abuse.',
-	'articlefeedbackv5-form-abuse-count' => 'Shows how many times the feeback has been flagged as abuse.  $1 is the count.',
+	'articlefeedbackv5-form-abuse-count' => 'Shows how many times the feedback has been flagged as abuse.  $1 is the count.',
+	'articlefeedbackv5-form-abuse-cleared' => 'Displayed when abuse flags have been cleared on feedback.',
 	'articlefeedbackv5-form-delete' => '{{Identical|Delete}}',
 	'articlefeedbackv5-form-oversight' => 'Request that an oversighter review this feedback',
 	'articlefeedbackv5-form-unoversight' => 'Remove request for oversight (request that an oversighter review the feedback)',
@@ -1121,6 +1125,9 @@ Name of the AFTv5 log filter on the Special:Log page',
 	'articlefeedbackv5-log-undo-unhelpful' => 'Log entry for when a feedback post is un-marked as unhelpful:
 * <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
 * <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-clear-flags' => 'Log entry for when a feedback post is cleared of all abuse flags:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
 	'articlefeedbackv5-activity-pane-header' => 'Flyover panel caption',
 	'articlefeedbackv5-activity-feedback-info' => 'Post information template. Parameters:
 * $1 is the feedback post ID,
@@ -1144,6 +1151,7 @@ Name of the AFTv5 log filter on the Special:Log page',
 	'articlefeedbackv5-activity-unhelpful' => 'Mark feedback as unhelpful',
 	'articlefeedbackv5-activity-undo-helpful' => 'Un-mark feedback as helpful',
 	'articlefeedbackv5-activity-undo-unhelpful' => 'Un-mark feedback as unhelpful',
+	'articlefeedbackv5-activity-clear-flags' => 'Clear feedback from abuse flags',
 	'articlefeedbackv5-activity-count' => 'Template for activity items count',
 	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
 	'articlefeedbackv5-activity-item-comment' => 'Text for the activity panel - user name link, activity action, date and comment',

@@ -80,7 +80,15 @@ $wgArticleFeedbackv5RelevanceScoring = array(
 	'unresolved' => 45,
 	'flagged' => -5,
 	'unflagged' => 5,
-	);
+	'autohide' => -100,
+	'hidden' => -100,
+	'unhidden' => 100,
+	'request' => -150,
+	'unrequest' => 150,
+	'decline' => 150,
+	'oversight' => -750,
+	'unoversight' => 750,
+);
 
 // Defines whether or not there should be a link to the corresponding feedback on the page's talk page
 $wgArticleFeedbackv5TalkPageLink = true;
@@ -458,7 +466,7 @@ $wgLogHeaders['articlefeedbackv5'] = 'articlefeedbackv5-log-header';
 foreach ( array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest' ) as $t) {
 	$wgLogActionsHandlers["suppress/$t"] = 'ArticleFeedbackv5LogFormatter';
 }
-foreach ( array( 'hidden', 'unhidden', 'flag', 'unflag', 'autoflag', 'autohide', 'feature', 'unfeature', 'resolve', 'unresolve', 'helpful', 'unhelpful', 'undo-helpful', 'undo-unhelpful' ) as $t) {
+foreach ( array( 'hidden', 'unhidden', 'flag', 'unflag', 'autoflag', 'autohide', 'feature', 'unfeature', 'resolve', 'unresolve', 'helpful', 'unhelpful', 'undo-helpful', 'undo-unhelpful', 'clear-flags' ) as $t) {
 	$wgLogActionsHandlers["articlefeedbackv5/$t"] = 'ArticleFeedbackv5LogFormatter';
 }
 
