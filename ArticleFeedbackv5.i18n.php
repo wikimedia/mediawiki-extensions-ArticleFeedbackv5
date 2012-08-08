@@ -4462,6 +4462,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-form-helpful' => 'Marcar como útil ($1)',
 	'articlefeedbackv5-form-abuse' => 'Marcar como inadecuado',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 indicador|$1 indicadores}}',
+	'articlefeedbackv5-form-abuse-cleared' => 'Marcas borradas',
 	'articlefeedbackv5-form-delete' => 'Supervisar',
 	'articlefeedbackv5-form-oversight' => 'Solicitud de supervisión',
 	'articlefeedbackv5-form-unoversight' => 'Supervisión no solicitada',
@@ -4765,6 +4766,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-log-unhelpful' => 'marcado como inútil $1 en $2',
 	'articlefeedbackv5-log-undo-helpful' => 'desmarcado como útil $1 en $2',
 	'articlefeedbackv5-log-undo-unhelpful' => 'desmarcado como inútil $1 en $2',
+	'articlefeedbackv5-log-clear-flags' => 'ha borrado todas las marcas de $1 en $2',
 	'articlefeedbackv5-activity-pane-header' => 'Registro de actividad',
 	'articlefeedbackv5-activity-feedback-info' => 'Comentario de post #$1 emitido por $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Publicado el $1',
@@ -4786,6 +4788,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-activity-unhelpful' => 'ha marcado esta entrada (post) como inútil en',
 	'articlefeedbackv5-activity-undo-helpful' => 'ha desmarcado esta entrada (post) como útil en',
 	'articlefeedbackv5-activity-undo-unhelpful' => 'ha desmarcado esta entrada (post) como inútil en',
+	'articlefeedbackv5-activity-clear-flags' => 'ha borrado todas las marcas para este mensaje (post)',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 acción|$1 acciones}} en esta entrada (post)',
 	'articlefeedbackv5-activity-more' => 'Mostrar más actividad',
 	'articlefeedbackv5-talk-view-feedback' => 'Ver sugerencias del lector',
@@ -6355,6 +6358,7 @@ $messages['gl'] = array(
 	'articlefeedbackv5-form-helpful' => 'Marcar como útil ($1)',
 	'articlefeedbackv5-form-abuse' => 'Marcar como abusivo',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 marca|$1 marcas}}',
+	'articlefeedbackv5-form-abuse-cleared' => 'Marcas limpadas',
 	'articlefeedbackv5-form-delete' => 'Supervisar',
 	'articlefeedbackv5-form-oversight' => 'Pedir a supervisión',
 	'articlefeedbackv5-form-unoversight' => 'Cancelar a petición de supervisión',
@@ -6659,6 +6663,7 @@ $messages['gl'] = array(
 	'articlefeedbackv5-log-unhelpful' => 'marcou o $1 sobre "$2" como inútil',
 	'articlefeedbackv5-log-undo-helpful' => 'desmarcou o $1 sobre "$2" como útil',
 	'articlefeedbackv5-log-undo-unhelpful' => 'desmarcou o $1 sobre "$2" como inútil',
+	'articlefeedbackv5-log-clear-flags' => 'limpou todas as marcas do $1 en "$2"',
 	'articlefeedbackv5-activity-pane-header' => 'Rexistro de actividade',
 	'articlefeedbackv5-activity-feedback-info' => 'Comentario nº$1 deixado por $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Publicado o $1',
@@ -6680,6 +6685,7 @@ $messages['gl'] = array(
 	'articlefeedbackv5-activity-unhelpful' => 'marcou como inútil esta mensaxe o',
 	'articlefeedbackv5-activity-undo-helpful' => 'eliminou a marca de útil desta mensaxe o',
 	'articlefeedbackv5-activity-undo-unhelpful' => 'eliminou a marca de inútil desta mensaxe o',
+	'articlefeedbackv5-activity-clear-flags' => 'limpou todas as marcas desta mensaxe o',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 acción nesta mensaxe|$1 accións nesta mensaxe}}',
 	'articlefeedbackv5-activity-more' => 'Mostrar máis actividade',
 	'articlefeedbackv5-talk-view-feedback' => 'Ollar as suxestións dos lectores',
@@ -7762,6 +7768,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-form-helpful' => 'Jako pomocliwy markěrować ($1)',
 	'articlefeedbackv5-form-abuse' => 'Jako znjewužiwanje woznamjenić',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 chorhojčka|$1 chorhojčce|$1 chorhojčki|$1 chorhojčkow}}',
+	'articlefeedbackv5-form-abuse-cleared' => 'Chorhojčki wotstronjene',
 	'articlefeedbackv5-form-delete' => 'Dohladowanje',
 	'articlefeedbackv5-form-oversight' => 'Dohladowanje požadać',
 	'articlefeedbackv5-form-unoversight' => 'Požadanje za dohladowanjom anulować',
@@ -8064,6 +8071,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-log-unhelpful' => 'je $1 k $2 jako njewužitny markěrował',
 	'articlefeedbackv5-log-undo-helpful' => 'je markěrowanje jako wužitny $1 k $2 cofnył',
 	'articlefeedbackv5-log-undo-unhelpful' => 'je markěrowanje jako njewužitny $1 k $2 cofnył',
+	'articlefeedbackv5-log-clear-flags' => 'je wšě chorhojški za $1 na $2 wotstronił',
 	'articlefeedbackv5-activity-pane-header' => 'Protokol aktiwity',
 	'articlefeedbackv5-activity-feedback-info' => 'Komentar čo. $1 wot $2',
 	'articlefeedbackv5-activity-feedback-date' => '$1 pósłany',
@@ -8085,6 +8093,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-activity-unhelpful' => 'je tutón přinošk jako njewužitny markěrował',
 	'articlefeedbackv5-activity-undo-helpful' => 'je markěrowanje tutoho přinoška jako wužitny cofnył',
 	'articlefeedbackv5-activity-undo-unhelpful' => 'je markěrowanje tutoho přinoška jako njewužitny cofnył',
+	'articlefeedbackv5-activity-clear-flags' => 'wotstroni  wšě chorhojčki za tutón přinošk na',
 	'articlefeedbackv5-activity-count' => '$1 {{PLURAL:$1|akcija|akciji|akcije|akcijow}} k tutomu komentarej',
 	'articlefeedbackv5-activity-more' => 'Dalše aktiwity pokazać',
 	'articlefeedbackv5-talk-view-feedback' => 'Namjety čitarja pokazać',
@@ -10390,7 +10399,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-special-filter-label-before' => '보이기:',
 	'articlefeedbackv5-special-filter-select-more' => '더 많은 필터',
 	'articlefeedbackv5-special-showing' => '이 문서에 대한 게시물 $1개',
-	'articlefeedbackv5-special-central-showing' => '2011년 12월 이후의 피드백 게시물 $1',
+	'articlefeedbackv5-special-central-showing' => '2011년 12월 이후의 피드백 게시물 $1개',
 	'articleFeedbackv5-comment-ago' => '$1 전',
 	'articlefeedbackv5-updates-since' => '$1 편집 이후 게시물',
 	'articleFeedbackv5-details-link' => '자세한 사항',
@@ -10399,7 +10408,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-special-refresh' => '목록 새로 고침',
 	'articlefeedbackv5-special-pagetitle' => '$1에 대한 피드백',
 	'articlefeedbackv5-special-permalink-pagetitle' => '$1에 대한 피드백 게시물',
-	'articlefeedbackv5-special-central-pagetitle' => '중심적인 피드백 문서',
+	'articlefeedbackv5-special-central-pagetitle' => '중앙 피드백 문서',
 	'articlefeedbackv5-loading-tag' => '로드 중...',
 	'articlefeedbackv5-form-optionid' => '옵션 $1',
 	'articlefeedbackv5-status-hidden' => '이 게시물은 $2 $3에 $1에 의해 숨겨졌습니다',
@@ -10429,6 +10438,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-form-helpful' => '유용한 것으로 표시 ($1)',
 	'articlefeedbackv5-form-abuse' => '부정 행위로 플래그함',
 	'articlefeedbackv5-form-abuse-count' => '플래그 $1개',
+	'articlefeedbackv5-form-abuse-cleared' => '플래그를 지움',
 	'articlefeedbackv5-form-delete' => '오버사이트',
 	'articlefeedbackv5-form-oversight' => '오버사이트 요청',
 	'articlefeedbackv5-form-unoversight' => '오버사이트 요청 취소하기',
@@ -10731,6 +10741,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-log-unhelpful' => '$2에 $1(이)가 유용하지 않은 것으로 표시',
 	'articlefeedbackv5-log-undo-helpful' => '$2에 $1(이)가 유용한 것으로 표시하지 않음',
 	'articlefeedbackv5-log-undo-unhelpful' => '$2에 $1(이)가 유용하지 않은 것으로 표시하지 않음',
+	'articlefeedbackv5-log-clear-flags' => '$2에 $1의 모든 플래그를 지움',
 	'articlefeedbackv5-activity-pane-header' => '활동 기록',
 	'articlefeedbackv5-activity-feedback-info' => '피드백 #$1이 $2에 의해 게시됨',
 	'articlefeedbackv5-activity-feedback-date' => '$1에 게시됨',
@@ -10752,14 +10763,15 @@ $messages['ko'] = array(
 	'articlefeedbackv5-activity-unhelpful' => '이 게시물이 유용하지 않은 것으로 표시',
 	'articlefeedbackv5-activity-undo-helpful' => '이 게시물이 유용한 것으로 표시하지 않음',
 	'articlefeedbackv5-activity-undo-unhelpful' => '이 게시물이 유용하지 않은 것으로 표시하지 않음',
+	'articlefeedbackv5-activity-clear-flags' => '이 게시물에 대한 모든 플래그를 지움',
 	'articlefeedbackv5-activity-count' => '이 게시물에 행동 $1',
 	'articlefeedbackv5-activity-more' => '더 많은 활동 보기',
 	'articlefeedbackv5-talk-view-feedback' => '독자 제안 보기',
 	'articlefeedbackv5-emailcapture-response-body' => '안녕하세요!
 
-{{SITENAME}} 개선하는 것을 돕는 데 관심을 보여주어서 감사합니다.
+{{SITENAME}}에 개선하는 것을 돕는 데 관심을 보여주어서 감사합니다.
 
-잠시 시간을 내어 아래의 링크를 클릭하여 이메일을 확인해 주십시오:
+잠시 시간을 내어 아래의 링크를 클릭하여 이메일을 확인하세요:
 
 $1
 
@@ -10767,7 +10779,7 @@ $1
 
 $2
 
-그리고 다음 확인 코드를 입력하십시오:
+그리고 다음 확인 코드를 입력하세요:
 
 $3
 
@@ -11972,6 +11984,7 @@ $messages['mk'] = array(
 	'articlefeedbackv5-form-helpful' => 'Означи како корисно ($1)',
 	'articlefeedbackv5-form-abuse' => 'Означи како злоупотреба',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 означување|$1 означувања}}',
+	'articlefeedbackv5-form-abuse-cleared' => 'Ознаките се отстранети',
 	'articlefeedbackv5-form-delete' => 'Завери',
 	'articlefeedbackv5-form-oversight' => 'Побарај заверка',
 	'articlefeedbackv5-form-unoversight' => 'Тргни барање за заверка',
@@ -12281,6 +12294,7 @@ $messages['mk'] = array(
 	'articlefeedbackv5-log-unhelpful' => 'означено како некорисно $1 на $2',
 	'articlefeedbackv5-log-undo-helpful' => 'тргнато од корисни $1 на $2',
 	'articlefeedbackv5-log-undo-unhelpful' => 'тргнато од некорисни $1 на $2',
+	'articlefeedbackv5-log-clear-flags' => 'отстраните сите ознаки на $1 on $2',
 	'articlefeedbackv5-activity-pane-header' => 'Дневник на активности',
 	'articlefeedbackv5-activity-feedback-info' => 'Мислење бр. $1 од $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Објавено на $1',
@@ -12302,6 +12316,7 @@ $messages['mk'] = array(
 	'articlefeedbackv5-activity-unhelpful' => 'го означи мислењево како некорисна на',
 	'articlefeedbackv5-activity-undo-helpful' => 'го тргна мислењево од скорисни на',
 	'articlefeedbackv5-activity-undo-unhelpful' => 'го тргна мислењево од некорисни на',
+	'articlefeedbackv5-activity-clear-flags' => 'отстранети сите ознаки од објавава на',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 дејство врз мислењево|$1 дејства врз мислењево}}',
 	'articlefeedbackv5-activity-more' => 'Уште активности',
 	'articlefeedbackv5-talk-view-feedback' => 'Погл. предлози од читателите',
@@ -18356,6 +18371,7 @@ $messages['tl'] = array(
 	'articlefeedbackv5-form-helpful' => 'Markahan bilang nakakatulong ($1)',
 	'articlefeedbackv5-form-abuse' => 'Ibandila bilang pagmamalabis',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 watawat|$1 mga watawat}}',
+	'articlefeedbackv5-form-abuse-cleared' => 'Nahawi ang mga watawat',
 	'articlefeedbackv5-form-delete' => 'Pangangalingat',
 	'articlefeedbackv5-form-oversight' => 'Humiling ng pangangalingat',
 	'articlefeedbackv5-form-unoversight' => 'Huwag hilingin ang pangangalingat',
@@ -18665,6 +18681,7 @@ $messages['tl'] = array(
 	'articlefeedbackv5-log-unhelpful' => 'minarkahan bilang hindi nakakatulong ang $1 doon sa $2',
 	'articlefeedbackv5-log-undo-helpful' => 'hindi na minarkahan bilang nakakatulong ang $1 doon sa $2',
 	'articlefeedbackv5-log-undo-unhelpful' => 'hindi na minarkahan bilang hindi nakakatulong ang $1 doon sa $2',
+	'articlefeedbackv5-log-clear-flags' => 'hinawi ang lahat ng mga watawat ng $1 na nasa $2',
 	'articlefeedbackv5-activity-pane-header' => 'Talaan ng Paggalaw',
 	'articlefeedbackv5-activity-feedback-info' => 'Paskil ng Pagtugon na #$1 ni $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Ipinaskil noong $1',
@@ -18686,6 +18703,7 @@ $messages['tl'] = array(
 	'articlefeedbackv5-activity-unhelpful' => 'minarkahan ang paskil na ito bilang hindi nakakatulong sa',
 	'articlefeedbackv5-activity-undo-helpful' => 'hindi na minarkahan ang paskil na ito bilang nakakatulong doon sa',
 	'articlefeedbackv5-activity-undo-unhelpful' => 'hindi na minarkahan ang paskil na ito bilang hindi nakakatulong doon sa',
+	'articlefeedbackv5-activity-clear-flags' => 'hinawi ang lahat ng mga watawat para sa paskil na ito na nasa',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 kilos hinggil sa paskil na ito|$1 mga kilos hinggil sa paskil na ito}}',
 	'articlefeedbackv5-activity-more' => 'Magpakita ng mas marami pang Mga Gawain',
 	'articlefeedbackv5-activity-item-comment' => '$1 $2 $3 : $4',
