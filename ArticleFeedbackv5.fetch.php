@@ -185,26 +185,32 @@ class ArticleFeedbackv5Fetch {
 			case 'relevance':
 				$sortField = 'af_relevance_sort';
 				$order       = "af_relevance_sort $direction, af_id $direction";
-				$continueSql = "(af_relevance_sort $continueDirection " . intVal( $this->continue['af_relevance_sort'] )
-				 . " OR (af_relevance_sort = " . intVal( $this->continue['af_relevance_sort'] )
-				 . " AND af_id $continueDirection " . intval( $this->continue['af_id'] ) . ") )";
+				if ( $this->continue['af_id'] != '' ) {
+					$continueSql = "(af_relevance_sort $continueDirection " . intVal( $this->continue['af_relevance_sort'] )
+					 . " OR (af_relevance_sort = " . intVal( $this->continue['af_relevance_sort'] )
+					 . " AND af_id $continueDirection " . intval( $this->continue['af_id'] ) . ") )";
+				}
 				break;
 
 			case 'helpful':
 				$sortField   = 'af_net_helpfulness';
 				$order       = "af_net_helpfulness $direction, af_id $direction";
-				$continueSql = "(af_net_helpfulness $continueDirection " . intVal( $this->continue['af_net_helpfulness'] )
-				 . " OR (af_net_helpfulness = " . intVal( $this->continue['af_net_helpfulness'] )
-				 . " AND af_id $continueDirection " . intval( $this->continue['af_id'] ) . ") )";
+				if ( $this->continue['af_id'] != '' ) {
+					$continueSql = "(af_net_helpfulness $continueDirection " . intVal( $this->continue['af_net_helpfulness'] )
+					 . " OR (af_net_helpfulness = " . intVal( $this->continue['af_net_helpfulness'] )
+					 . " AND af_id $continueDirection " . intval( $this->continue['af_id'] ) . ") )";
+				}
 				break;
 
 			case 'rating':
 				# TODO: null ratings don't seem to show up at all. Need to sort that one out.
 				$sortField   = 'rating';
 				$order       = "yes_no $direction, af_id $direction";
-				$continueSql = "(rating.aa_response_boolean $continueDirection " . intVal( $this->continue['aa_response_boolean'] )
-				 . " OR (rating.aa_response_boolean = " . intVal( $this->continue['aa_response_boolean'] )
-				 . " AND af_id $continueDirection " . intval( $this->continue['af_id'] ) . ") )";
+				if ( $this->continue['af_id'] != '' ) {
+					$continueSql = "(rating.aa_response_boolean $continueDirection " . intVal( $this->continue['aa_response_boolean'] )
+					 . " OR (rating.aa_response_boolean = " . intVal( $this->continue['aa_response_boolean'] )
+					 . " AND af_id $continueDirection " . intval( $this->continue['af_id'] ) . ") )";
+				}
 				break;
 
 			case 'age':
@@ -212,7 +218,9 @@ class ArticleFeedbackv5Fetch {
 			default:
 				$sortField   = 'af_id';
 				$order       = "af_id $direction";
-				$continueSql = "af_id $continueDirection " . intVal( $this->continue['af_id'] );
+				if ( $this->continue['af_id'] != '' ) {
+					$continueSql = "af_id $continueDirection " . intVal( $this->continue['af_id'] );
+				}
 				break;
 		}
 
@@ -275,7 +283,7 @@ class ArticleFeedbackv5Fetch {
 			);
 		}
 		// Continue SQL, if any:
-		if ( $this->continue !== null ) {
+		if ( $this->continue !== null && $continueSql ) {
 			$conds[] = $continueSql;
 		}
 		// Only show bucket 1 (per Fabrice on 1/25)
