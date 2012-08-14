@@ -202,9 +202,21 @@
 				return false;
 			}
 		}
+
 		// Lottery
 		var v4odds = mw.config.get( 'wgArticleFeedbackLotteryOdds', 0 );
-		if ( !( ( Number( $.aftVerify.pageId ) % 1000 ) < Number( v4odds ) * 10 ) ) {
+		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
+
+		// odds defined per namespace
+		if ( isNaN( odds ) ) {
+			if ( $.aftVerify.namespace in odds ) {
+				odds = odds[$.aftVerify.namespace];
+			} else {
+				odds = 0;
+			}
+		}
+
+		if ( ( Number( $.aftVerify.pageId ) % 1000 ) > ( 1000 - ( Number( odds ) * 10 ) ) ) {
 			$.aftVerify.checks.lottery = true;
 			return true;
 		} else {
