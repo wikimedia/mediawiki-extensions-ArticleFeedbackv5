@@ -411,7 +411,7 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function beforePageDisplay( OutputPage &$out, Skin &$skin ) {
-		global $wgArticleFeedbackv5Namespaces, $wgArticleFeedbackv5TalkNamespaces;
+		global $wgArticleFeedbackv5Namespaces;
 		$title = $out->getTitle();
 		$action = Action::getActionName( $out->getContext() );
 		$user = $out->getUser();
@@ -445,7 +445,7 @@ class ArticleFeedbackv5Hooks {
 			}
 
 		// talk page
-		} elseif ( in_array( $title->getNamespace(), $wgArticleFeedbackv5TalkNamespaces ) ) {
+		} elseif ( in_array( $title->getSubjectPage()->getNameSpace(), $wgArticleFeedbackv5Namespaces ) ) {
 			$res = self::allowForPage( $title->getSubjectPage() );
 			if ( $res['allow'] ) {
 				// load module
@@ -624,7 +624,7 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5TalkPageLink,
 			$wgArticleFeedbackv5WatchlistLink,
 			$wgArticleFeedbackv5DefaultSorts,
-			$wgArticleFeedbackLotteryOdds;
+			$wgArticleFeedbackv5LotteryOdds;
 		$vars['wgArticleFeedbackv5SMaxage'] = $wgArticleFeedbackv5SMaxage;
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
@@ -645,7 +645,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
 		$vars['wgArticleFeedbackv5WatchlistLink'] = $wgArticleFeedbackv5WatchlistLink;
 		$vars['wgArticleFeedbackv5DefaultSorts'] = $wgArticleFeedbackv5DefaultSorts;
-		$vars['wgArticleFeedbackLotteryOdds'] = $wgArticleFeedbackLotteryOdds;
+		$vars['wgArticleFeedbackv5LotteryOdds'] = $wgArticleFeedbackv5LotteryOdds;
 
 		// make sure that these keys are being encoded to an object rather than to an array
 		$wgArticleFeedbackv5DisplayBuckets['buckets'] = (object) $wgArticleFeedbackv5DisplayBuckets['buckets'];
