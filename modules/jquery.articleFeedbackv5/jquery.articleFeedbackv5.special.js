@@ -764,8 +764,6 @@
 		$row.addClass( 'articleFeedbackv5-feedback-featured' )
 			.data( 'featured', true );
 		$.articleFeedbackv5special.changeTags( $row, 'featured', 'add' );
-		$row.find( '.articleFeedbackv5-unresolve-link, .articleFeedbackv5-resolve-link' ).closest( 'li' )
-			.removeClass( 'articleFeedbackv5-tool-hidden' );
 	};
 
 	// }}}
@@ -780,12 +778,6 @@
 		$row.removeClass( 'articleFeedbackv5-feedback-featured' )
 			.data( 'featured', false );
 		$.articleFeedbackv5special.changeTags( $row, 'featured', 'remove' );
-		$row.find( '.articleFeedbackv5-unresolve-link, .articleFeedbackv5-resolve-link' ).closest( 'li' )
-			.removeClass( 'articleFeedbackv5-tool-hidden' );
-		if ( !$row.hasClass( 'articleFeedbackv5-feedback-resolved' ) ) {
-			$row.find( '.articleFeedbackv5-unresolve-link, .articleFeedbackv5-resolve-link' ).closest( 'li' )
-				.addClass( 'articleFeedbackv5-tool-hidden' );
-		}
 	};
 
 	// }}}
@@ -800,8 +792,6 @@
 		$row.addClass( 'articleFeedbackv5-feedback-resolved' )
 			.data( 'resolved', true );
 		$.articleFeedbackv5special.changeTags( $row, 'resolved', 'add' );
-		$row.find( '.articleFeedbackv5-unresolve-link, .articleFeedbackv5-resolve-link' ).closest( 'li' )
-			.removeClass( 'articleFeedbackv5-tool-hidden' );
 	};
 
 	// }}}
@@ -816,12 +806,6 @@
 		$row.removeClass( 'articleFeedbackv5-feedback-resolved' )
 			.data( 'resolved', false );
 		$.articleFeedbackv5special.changeTags( $row, 'resolved', 'remove' );
-		$row.find( '.articleFeedbackv5-unresolve-link, .articleFeedbackv5-resolve-link' ).closest( 'li' )
-			.removeClass( 'articleFeedbackv5-tool-hidden' );
-		if ( !$row.hasClass( 'articleFeedbackv5-feedback-featured' ) ) {
-			$row.find( '.articleFeedbackv5-unresolve-link, .articleFeedbackv5-resolve-link' ).closest( 'li' )
-				.addClass( 'articleFeedbackv5-tool-hidden' );
-		}
 	};
 
 	// }}}
