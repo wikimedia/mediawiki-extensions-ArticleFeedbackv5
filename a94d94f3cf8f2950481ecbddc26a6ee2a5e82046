@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//7S8\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.css",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 78
+      },
+      "writtenOn": "2012-08-14T17:28:11Z",
+      "side": 1,
+      "message": "small icons need to use /* @embed */",
+      "revId": "a94d94f3cf8f2950481ecbddc26a6ee2a5e82046",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
