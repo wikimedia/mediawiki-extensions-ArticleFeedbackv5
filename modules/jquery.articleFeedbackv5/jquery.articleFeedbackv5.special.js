@@ -40,6 +40,11 @@
 	$.articleFeedbackv5special.page = undefined;
 
 	/**
+	 * Are we at the watchlist page?
+	 */
+	$.articleFeedbackv5special.watchlist = undefined;
+
+	/**
 	 * The url to which to send the pull request
 	 */
 	$.articleFeedbackv5special.apiUrl = mw.util.wikiScript( 'api' );
@@ -185,6 +190,7 @@
 
 		// Set up config vars
 		$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
+		$.articleFeedbackv5special.watchlist = mw.config.get( 'wgCanonicalSpecialPageName' ) == 'ArticleFeedbackv5Watchlist' ? 1 : 0;
 
 		// Initialize clicktracking
 		$.aftTrack.init({
@@ -1135,6 +1141,7 @@
 			'afvfsortdirection':  $.articleFeedbackv5special.listControls.sortDirection,
 			'afvflimit':          $.articleFeedbackv5special.listControls.limit,
 			'afvfcontinue':       $.articleFeedbackv5special.listControls.continueInfo,
+			'afvfwatchlist':      $.articleFeedbackv5special.watchlist,
 			'action':             'query',
 			'format':             'json',
 			'list':               'articlefeedbackv5-view-feedback',
