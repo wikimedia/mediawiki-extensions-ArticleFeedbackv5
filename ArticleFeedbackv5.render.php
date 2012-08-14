@@ -5,6 +5,7 @@
  * @package    ArticleFeedback
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
  * @author     Reha Sterbin <reha@omniti.com>
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @version    $Id$
  */
 
@@ -911,17 +912,13 @@ class ArticleFeedbackv5Render {
 			} else {
 				$type = 'resolve';
 			}
-			$class = '';
-			if ( !$record[0]->af_is_featured && !$record[0]->af_is_resolved ) {
-				$class = 'articleFeedbackv5-tool-hidden';
-			}
 			// <li>
 			//   <a id="articleFeedbackv5-{resolve|unresolve}-link-{$id}"
 			//     class="articleFeedbackv5-{resolve|unresolve}-link" href="#">
 			//     {msg:articlefeedbackv5-form-{resolve|unresolve}}
 			//   </a>
 			// </li>
-			$toolsFeature .= Html::rawElement( 'li', array( 'class' => $class ),
+			$toolsFeature .= Html::rawElement( 'li', array(),
 				Html::element( 'a', array(
 					'id'    => "articleFeedbackv5-$type-link-$id",
 					'class' => "articleFeedbackv5-$type-link",
