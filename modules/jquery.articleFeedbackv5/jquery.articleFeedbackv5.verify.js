@@ -228,15 +228,12 @@
 	 */
 	$.aftVerify.checkUserAgent = function () {
 		var ua = navigator.userAgent.toLowerCase();
-		// Rule out MSIE 6/7, FF2, iPhone, iPod, iPad, Android
+		// Rule out MSIE 6, FF2, Android
 		if (
 			(ua.indexOf( 'msie 6' ) != -1) ||
 			(ua.indexOf( 'firefox/2') != -1) ||
 			(ua.indexOf( 'firefox 2') != -1) ||
-			(ua.indexOf( 'android' ) != -1) ||
-			(ua.indexOf( 'iphone' ) != -1) ||
-			(ua.indexOf( 'ipod' ) != -1 ) ||
-			(ua.indexOf( 'ipad' ) != -1)
+			(ua.indexOf( 'android' ) != -1)
 		) {
 			$.aftVerify.checks.useragent = false;
 			return false;

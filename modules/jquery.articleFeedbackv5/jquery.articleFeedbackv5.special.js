@@ -365,7 +365,7 @@
 
 		// Bind actions
 		for ( var action in $.articleFeedbackv5special.actions ) {
-			$( '.articleFeedbackv5-' + action + '-link' ).live( 'click', function( e ) {
+			$( document ).on( 'click touchstart', '.articleFeedbackv5-' + action + '-link', function( e ) {
 				e.preventDefault();
 				var $link = $( e.target );
 				var classes = $link.attr( 'class' ).split( ' ' );
@@ -383,7 +383,7 @@
 		}
 
 		// Bind submit actions on flyover panels (flag actions)
-		$( '#articleFeedbackv5-noteflyover-submit' ).live( 'click', function( e ) {
+		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-submit', function( e ) {
 			e.preventDefault();
 			$.articleFeedbackv5special.flagFeedback(
 				$( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ),
@@ -397,7 +397,7 @@
 		} );
 
 		// bind flyover panel close button
-		$( '#articleFeedbackv5-noteflyover-close' ).live( 'click', function( e ) {
+		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-close', function( e ) {
 			e.preventDefault();
 			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
