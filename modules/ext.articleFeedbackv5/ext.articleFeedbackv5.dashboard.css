@@ -19,17 +19,6 @@ select {
 }
 
 /** Notices **/
-.articleFeedbackv5-survey-button {
-	clear: right;
-	float: right;
-	display: block;
-	width: 273px;
-	height: 30px;
-	margin-top: 10px;
-	/* @embed */
-	background: url(images/survey-button.png) no-repeat;
-	text-indent: -9999px;
-}
 #articlefeedbackv5-header-message {
 	color: #444;
 }
