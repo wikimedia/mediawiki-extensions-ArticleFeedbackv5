@@ -545,10 +545,8 @@ class ArticleFeedbackv5Flagging {
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'unhidden', $this->getUserId(), $timestamp );
 
-		// clear all abuse flags when un-hiding feedback that was auto-hidden because of abuse flags
-		if ( $record->af_is_autohide == true ) {
-			$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
-		}
+		// clear all abuse flags
+		$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
 
 		return true;
 	}
@@ -715,10 +713,8 @@ class ArticleFeedbackv5Flagging {
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'featured', $this->getUserId(), $timestamp );
 
-		// clear all abuse flags when un-hiding feedback that was auto-hidden because of abuse flags
-		if ( $record->af_is_autohide == true ) {
-			$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
-		}
+		// clear all abuse flags
+		$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
 
 		return true;
 	}
@@ -1053,7 +1049,7 @@ class ArticleFeedbackv5Flagging {
 		$this->log[] = array( 'clear-flags', $notes, $this->isSystemCall() );
 
 		// update filter totals
-//		$this->filters['visible-abusive'] = -1;
+		$this->filters['visible-abusive'] = -1;
 
 		// update entry in db
 		$this->update['af_abuse_count'] = $this->results['abuse_count'];
