@@ -386,7 +386,7 @@ class ArticleFeedbackv5Hooks {
 		) );
 
 		$updater->addExtensionIndex(
-			'aft_article_answer_text',
+			'aft_article_feedback',
 			'af_user_id_user_ip_created',
 			dirname( __FILE__ ) . '/sql/index_user_data.sql'
 		);
