@@ -145,40 +145,17 @@
 				<span class="articleFeedbackv5-mask-text">\
 					<span class="articleFeedbackv5-mask-info"></span>\
 					<span class="articleFeedbackv5-mask-view"><a href="#" onclick="return false;">\
-						<html:msg key="mask-view-contents"/ >\
 					</a></span>\
 				</span>\
 			</div>\
 		</div>';
 
 	/**
-	 * Marker templates
-	 */
-	$.articleFeedbackv5special.markerTemplates = {
-		'deleted': '\
-			<span class="articleFeedbackv5-deleted-marker">\
-				<html:msg key="deleted-marker" />\
-			</span>',
-		'hidden': '\
-			<span class="articleFeedbackv5-hidden-marker">\
-				<html:msg key="hidden-marker" />\
-			</span>',
-		'featured': '\
-			<span class="articleFeedbackv5-featured-marker">\
-				<html:msg key="featured-marker" />\
-			</span>',
-		'resolved': '\
-			<span class="articleFeedbackv5-resolved-marker">\
-				<html:msg key="resolved-marker" />\
-			</span>'
-	};
-
-	/**
 	 * Loading tag template
 	 */
 	$.articleFeedbackv5special.loadingTemplate = '\
 		<div id="articleFeedbackv5-feedback-loading">\
-			<span class="articleFeedbackv5-loading-message"><html:msg key="loading-tag" /></span>\
+			<span class="articleFeedbackv5-loading-message"></span>\
 		</div>'
 
 	// }}}
@@ -266,14 +243,14 @@
 		// Add a loading tag to the top and hide it
 		var $loading1 = $( $.articleFeedbackv5special.loadingTemplate );
 		$loading1.attr( 'id', $loading1.attr( 'id' ) + '-top' );
-		$loading1.localize( { 'prefix': 'articlefeedbackv5-' } );
+		$loading1.find( 'articleFeedbackv5-loading-message' ).text( mw.msg( 'articlefeedbackv5-loading-tag' ) );
 		$loading1.hide();
 		$( '#articleFeedbackv5-show-feedback' ).before( $loading1 );
 
 		// Add a loading tag to the bottom and hide it
 		var $loading2 = $( $.articleFeedbackv5special.loadingTemplate );
 		$loading2.attr( 'id', $loading2.attr( 'id' ) + '-bottom' );
-		$loading2.localize( { 'prefix': 'articlefeedbackv5-' } );
+		$loading2.find( 'articleFeedbackv5-loading-message' ).text( mw.msg( 'articlefeedbackv5-loading-tag' ) );
 		$loading2.hide();
 		$( '#articleFeedbackv5-show-more' ).before( $loading2 );
 		$( '#articleFeedbackv5-refresh-list' ).button();
@@ -864,7 +841,7 @@
 		var $screen = $row.find( '.articleFeedbackv5-post-screen' );
 		if ( 0 == $screen.length ) {
 			$screen = $( $.articleFeedbackv5special.maskHtmlTemplate );
-			$screen.localize( { 'prefix': 'articlefeedbackv5-' } );
+			$screen.find( '.articleFeedbackv5-mask-view a' ).text( mw.msg( 'articlefeedbackv5-mask-view-contents' ) );
 			$screen.find( '.articleFeedbackv5-mask-info' ).html( line );
 			$row.prepend( $screen );
 		}
