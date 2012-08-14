@@ -433,6 +433,8 @@ class ArticleFeedbackv5Hooks {
 					&& $request->getVal( 'redirect' ) != 'no'
 					// not viewing the printable version
 					&& $request->getVal( 'printable' ) != 'yes'
+					// actually fetched article content
+					&& $out->getRevisionTimestamp() != null
 				) {
 					$res = self::allowForPage( $title );
 					if ( $res['allow'] ) {
