@@ -504,18 +504,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		$this->outputSummary();
 
-		// Survey button
-		global $wgArticleFeedbackv5SpecialPageSurveyUrl;
-		if ( $wgArticleFeedbackv5SpecialPageSurveyUrl ) {
-			$out->addHTML(
-				Html::element( 'a', array(
-					'href'   => $wgArticleFeedbackv5SpecialPageSurveyUrl,
-					'target' => '_blank',
-					'class'  => 'articleFeedbackv5-survey-button',
-				), $this->msg( 'articlefeedbackv5-special-survey-button-text' )->text() )
-			);
-		}
-
 		// Link to add feedback (view article)
 		if ( $this->pageId ) {
 			$out->addHtml(
