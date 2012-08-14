@@ -226,7 +226,10 @@
 			(ua.indexOf( 'msie 6' ) != -1) ||
 			(ua.indexOf( 'firefox/2') != -1) ||
 			(ua.indexOf( 'firefox 2') != -1) ||
-			(ua.indexOf( 'android' ) != -1)
+			(ua.indexOf( 'android' ) != -1) ||
+			(ua.indexOf( 'iphone' ) != -1) ||
+			(ua.indexOf( 'ipod' ) != -1 ) ||
+			(ua.indexOf( 'ipad' ) != -1)
 		) {
 			$.aftVerify.checks.useragent = false;
 			return false;

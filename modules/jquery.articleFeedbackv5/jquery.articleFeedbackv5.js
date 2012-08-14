@@ -1955,6 +1955,7 @@
 				if ( '5' == $.articleFeedbackv5.bucketId ) {
 					$linkAdd.find( 'a' )
 						.click( function ( e ) {
+							e.preventDefault();
 							// Just set the link ID -- this should act just like AFTv4
 							$.articleFeedbackv5.setLinkId( 'TBX' );
 						} );

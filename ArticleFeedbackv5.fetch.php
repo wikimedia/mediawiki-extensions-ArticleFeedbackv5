@@ -185,32 +185,26 @@ class ArticleFeedbackv5Fetch {
 			case 'relevance':
 				$sortField = 'af_relevance_sort';
 				$order       = "af_relevance_sort $direction, af_id $direction";
-				if ( $this->continue['af_id'] != '' ) {
-					$continueSql = "(af_relevance_sort $continueDirection " . intVal( $this->continue['af_relevance_sort'] )
-					 . " OR (af_relevance_sort = " . intVal( $this->continue['af_relevance_sort'] )
-					 . " AND af_id $continueDirection " . intval( $this->continue['af_id'] ) . ") )";
-				}
+				$continueSql = "(af_relevance_sort $continueDirection " . intVal( $this->continue['af_relevance_sort'] )
+				 . " OR (af_relevance_sort = " . intVal( $this->continue['af_relevance_sort'] )
+				 . " AND af_id $continueDirection " . intval( $this->continue['af_id'] ) . ") )";
 				break;
 
 			case 'helpful':
 				$sortField   = 'af_net_helpfulness';
 				$order       = "af_net_helpfulness $direction, af_id $direction";
-				if ( $this->continue['af_id'] != '' ) {
-					$continueSql = "(af_net_helpfulness $continueDirection " . intVal( $this->continue['af_net_helpfulness'] )
-					 . " OR (af_net_helpfulness = " . intVal( $this->continue['af_net_helpfulness'] )
-					 . " AND af_id $continueDirection " . intval( $this->continue['af_id'] ) . ") )";
-				}
+				$continueSql = "(af_net_helpfulness $continueDirection " . intVal( $this->continue['af_net_helpfulness'] )
+				 . " OR (af_net_helpfulness = " . intVal( $this->continue['af_net_helpfulness'] )
+				 . " AND af_id $continueDirection " . intval( $this->continue['af_id'] ) . ") )";
 				break;
 
 			case 'rating':
 				# TODO: null ratings don't seem to show up at all. Need to sort that one out.
 				$sortField   = 'rating';
 				$order       = "yes_no $direction, af_id $direction";
-				if ( $this->continue['af_id'] != '' ) {
-					$continueSql = "(rating.aa_response_boolean $continueDirection " . intVal( $this->continue['aa_response_boolean'] )
-					 . " OR (rating.aa_response_boolean = " . intVal( $this->continue['aa_response_boolean'] )
-					 . " AND af_id $continueDirection " . intval( $this->continue['af_id'] ) . ") )";
-				}
+				$continueSql = "(rating.aa_response_boolean $continueDirection " . intVal( $this->continue['aa_response_boolean'] )
+				 . " OR (rating.aa_response_boolean = " . intVal( $this->continue['aa_response_boolean'] )
+				 . " AND af_id $continueDirection " . intval( $this->continue['af_id'] ) . ") )";
 				break;
 
 			case 'age':
@@ -218,9 +212,7 @@ class ArticleFeedbackv5Fetch {
 			default:
 				$sortField   = 'af_id';
 				$order       = "af_id $direction";
-				if ( $this->continue['af_id'] != '' ) {
-					$continueSql = "af_id $continueDirection " . intVal( $this->continue['af_id'] );
-				}
+				$continueSql = "af_id $continueDirection " . intVal( $this->continue['af_id'] );
 				break;
 		}
 
@@ -283,7 +275,7 @@ class ArticleFeedbackv5Fetch {
 			);
 		}
 		// Continue SQL, if any:
-		if ( $this->continue !== null && $continueSql ) {
+		if ( $this->continue !== null ) {
 			$conds[] = $continueSql;
 		}
 		// Only show bucket 1 (per Fabrice on 1/25)
@@ -538,14 +530,11 @@ class ArticleFeedbackv5Fetch {
 	 * Sets the page ID
 	 *
 	 * @param  $pageId int the page ID
-	 * @return bool    whether it passed validation and was set
 	 */
 	public function setPageId( $pageId ) {
 		if ( is_numeric( $pageId ) ) {
 			$this->pageId = intval( $pageId );
-			return true;
 		}
-		return false;
 	}
 
 	/**
@@ -561,14 +550,11 @@ class ArticleFeedbackv5Fetch {
 	 * Sets the user ID
 	 *
 	 * @param  $userId int the user ID
-	 * @return bool    whether it passed validation and was set
 	 */
 	public function setUserId( $userId ) {
 		if ( is_numeric( $userId ) ) {
 			$this->userId = intval( $userId );
-			return true;
 		}
-		return false;
 	}
 
 	/**
@@ -584,14 +570,11 @@ class ArticleFeedbackv5Fetch {
 	 * Sets the feedback ID
 	 *
 	 * @param  $feedbackId int the feedback ID
-	 * @return bool        whether it passed validation and was set
 	 */
 	public function setFeedbackId( $feedbackId ) {
 		if ( is_numeric( $feedbackId ) ) {
 			$this->feedbackId = intval( $feedbackId );
-			return true;
 		}
-		return false;
 	}
 
 	/**
@@ -607,14 +590,11 @@ class ArticleFeedbackv5Fetch {
 	 * Sets the filter
 	 *
 	 * @param  $filter string the filter
-	 * @return bool    whether it passed validation and was set
 	 */
 	public function setFilter( $filter ) {
 		if ( in_array( $filter, self::$knownFilters ) ) {
 			$this->filter = $filter;
-			return true;
 		}
-		return false;
 	}
 
 	/**
@@ -630,14 +610,11 @@ class ArticleFeedbackv5Fetch {
 	 * Sets the sort method
 	 *
 	 * @param  $sort string the sort method
-	 * @return bool  whether it passed validation and was set
 	 */
 	public function setSort( $sort ) {
 		if ( in_array( $sort, self::$knownSorts ) ) {
 			$this->sort = $sort;
-			return true;
 		}
-		return false;
 	}
 
 	/**
@@ -653,18 +630,14 @@ class ArticleFeedbackv5Fetch {
 	 * Sets the sort order
 	 *
 	 * @param  $sortOrder string the sort order
-	 * @return bool       whether it passed validation and was set
 	 */
 	public function setSortOrder( $sortOrder ) {
 		if ( strtolower( $sortOrder ) == 'asc' ) {
 			$this->sortOrder = 'asc';
-			return true;
 		}
-		if ( strtolower( $sortOrder ) == 'desc' ) {
+		elseif ( strtolower( $sortOrder ) == 'desc' ) {
 			$this->sortOrder = 'desc';
-			return true;
 		}
-		return false;
 	}
 
 	/**
@@ -680,21 +653,17 @@ class ArticleFeedbackv5Fetch {
 	 * Sets the limit
 	 *
 	 * @param  $limit int the limit
-	 * @return bool   whether it passed validation and was set
 	 */
 	public function setLimit( $limit ) {
 		if ( is_numeric( $limit ) ) {
 			$this->limit = intval( $limit );
-			return true;
 		}
-		return false;
 	}
 
 	/**
 	 * Sets the continue information
 	 *
 	 * @param  $continue   string the continue info, as val1|val2
-	 * @return bool        whether it passed validation and was set
 	 */
 	public function setContinue( $continue ) {
 		$this->continue = array();
@@ -719,7 +688,6 @@ class ArticleFeedbackv5Fetch {
 				$this->continue['af_id'] = $continue;
 				break;
 		}
-		return true;
 	}
 
 	/**
