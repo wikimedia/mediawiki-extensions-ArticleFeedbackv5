@@ -484,6 +484,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		} elseif( $user->isAllowed( 'aftv5-feature-feedback' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' )->text();
 		}
+		$helpLink .= '#Feedback_page';
+
 		$helpLink = Html::openElement(
 			'a',
 			array( 'href' => $helpLink ) )
