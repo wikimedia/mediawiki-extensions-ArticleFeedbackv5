@@ -130,6 +130,8 @@ class ArticleFeedbackv5Flagging {
 	 *                    message key)
 	 */
 	public function run( $flag, $notes = '', $direction = 'increase', $toggle = false ) {
+		global $wgUser;
+
 		$flag       = $flag;
 		$notes      = $notes;
 		$direction  = $direction == 'increase' ? 'increase' : 'decrease';
@@ -158,10 +160,14 @@ class ArticleFeedbackv5Flagging {
 			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-id' );
 		}
 
+		// check if a user is operating on his/her own feedback
+		$ownFeedback = $wgUser->getId() && $wgUser->getId() == intval( $record->af_user_id );
+
 		// check permissions
 		if ( isset( $this->flagPermissionMap[$flag] ) ) {
 			foreach ( $this->flagPermissionMap[$flag] as $permission ) {
-				if ( !$this->isAllowed( $permission ) ) {
+				// regardless of permissions, users are always allowed to flag their own feedback
+				if ( !$this->isAllowed( $permission ) && !$ownFeedback ) {
 					return $this->errorResult( 'articlefeedbackv5-invalid-feedback-flag' );
 				}
 			}
@@ -1308,6 +1314,7 @@ class ArticleFeedbackv5Flagging {
 			array(
 				'af_id',
 				'af_page_id',
+				'af_user_id',
 				'af_abuse_count',
 				'af_is_hidden',
 				'af_helpful_count',
