@@ -711,7 +711,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					. $this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
 				. Html::closeElement( 'span' )
 
+				. Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-sort-wrapper' ) )
 				. $sortSelect->getHTML()
+				. Html::closeElement( 'div' )
 
 				. $this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
 			. Html::closeElement( 'div' )
