@@ -973,7 +973,7 @@ class ArticleFeedbackv5Render {
 			}
 			// change message for own feedback
 			if ( $ownFeedback ) {
-				$msg .= '-mine';
+				$msg .= '-own';
 			}
 
 			// <li>
