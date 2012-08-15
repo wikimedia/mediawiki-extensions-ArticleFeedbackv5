@@ -22,6 +22,13 @@ $specialPageAliases['ar'] = array(
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'ArticleFeedbackv5' => array( 'Artikelrückmeldungen_v5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'Artikelrückmeldungen_v5_Beobachtungsliste' ),
+);
+
+/** Zazaki (Zazaki) */
+$specialPageAliases['diq'] = array(
+	'ArticleFeedbackv5' => array( 'PeydrıştenaWesiqanv5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'PeydrıştenaWesiqanv5Listaseyri' ),
 );
 
 /** Galician (galego) */
