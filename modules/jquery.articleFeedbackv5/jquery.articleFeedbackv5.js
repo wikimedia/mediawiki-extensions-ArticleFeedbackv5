@@ -2478,13 +2478,13 @@
 		}
 
 		// Link to help is dependent on the group the user belongs to
-		var helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl' );
+		var helpLink = mw.msg( 'articlefeedbackv5-help-form-linkurl' );
 		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['oversighter'] ) {
-			helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl-oversighters' );
+			helpLink = mw.msg( 'articlefeedbackv5-help-form-linkurl-oversighters' );
 		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['monitor'] ) {
-			helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl-monitors' );
+			helpLink = mw.msg( 'articlefeedbackv5-help-form-linkurl-monitors' );
 		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'] ) {
-			helpLink = mw.msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' );
+			helpLink = mw.msg( 'articlefeedbackv5-help-form-linkurl-editors' );
 		}
 
 		// Set the tooltip link
