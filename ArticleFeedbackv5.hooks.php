@@ -472,17 +472,19 @@ class ArticleFeedbackv5Hooks {
 						$res = array( 'allow' => true, 'whitelist' => true );
 					} else {
 						$res = self::allowForPage( $mainTitle );
+
+						// always allow Special page, regardless of black-/whitelist or lottery
+						$res['allow'] = true;
 					}
-					if ( $res['allow'] ) {
-						// load module
-						$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
-						if ( $mainTitle !== null ) {
-							$out->addJsConfigVars( 'aftv5PageId', $mainTitle->getArticleID() );
-						} else {
-							$out->addJsConfigVars( 'aftv5PageId', 0 );
-						}
-						$out->addModules( 'ext.articleFeedbackv5.dashboard' );
+
+					// load module
+					$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
+					if ( $mainTitle !== null ) {
+						$out->addJsConfigVars( 'aftv5PageId', $mainTitle->getArticleID() );
+					} else {
+						$out->addJsConfigVars( 'aftv5PageId', 0 );
 					}
+					$out->addModules( 'ext.articleFeedbackv5.dashboard' );
 				}
 
 				// watchlist page
