@@ -1065,30 +1065,31 @@
 			'context': { location: location },
 			'success': function( data ) {
 				if ( data['articlefeedbackv5-view-activity'].hasHeader ) {
-					$( this.location ).html( data['articlefeedbackv5-view-activity'].activity );
+					$( location ).html( data['articlefeedbackv5-view-activity'].activity );
 				} else {
-					var $place = $( this.location ).find( '.articleFeedbackv5-activity-more' );
+					var $place = $( location ).find( '.articleFeedbackv5-activity-more' );
 					if ( $place.length > 0 ) {
 						$place.replaceWith( data['articlefeedbackv5-view-activity'].activity );
 					} else {
-						$( this.location ).html( data['articlefeedbackv5-view-activity'].activity );
+						$( location ).html( data['articlefeedbackv5-view-activity'].activity );
 					}
 				}
 				if ( data['query-continue'] && data['query-continue']['articlefeedbackv5-view-activity'] ) {
-					$( this.location ).find( '.articleFeedbackv5-activity-more' )
+					$( location ).find( '.articleFeedbackv5-activity-more' )
 						.attr( 'rel', data['query-continue']['articlefeedbackv5-view-activity'].aacontinue )
 						.click( function( e ) {
+							e.preventDefault();
 							$.articleFeedbackv5special.loadActivityLog(
-								$( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ),
+								id,
 								$( e.target ).attr( 'rel'),
-								this.location
+								location
 							);
 						} );
 				}
 			},
 			'error': function( data ) {
 				// FIXME this messages isn't defined
-				$( this.location ).text( mw.msg( 'articleFeedbackv5-view-activity-error' ) );
+				$( location ).text( mw.msg( 'articleFeedbackv5-view-activity-error' ) );
 			}
 		} );
 
