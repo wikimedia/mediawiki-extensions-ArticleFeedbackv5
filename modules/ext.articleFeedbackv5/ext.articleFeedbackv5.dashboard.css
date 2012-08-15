@@ -162,7 +162,8 @@ select {
 .filter-active, .filter-active:visited {
 	color: #000;
 }
-#articleFeedbackv5-select-wrapper {
+#articleFeedbackv5-select-wrapper,
+#articleFeedbackv5-sort-wrapper {
 	font-weight: bold;
 	margin: 0 0 0 4px;
 	padding: 0 5px;
@@ -174,11 +175,13 @@ select {
 	background-position: bottom left;
 	background-repeat: repeat-x;
 }
-#articleFeedbackv5-filter-select {
+#articleFeedbackv5-filter-select,
+#articleFeedbackv5-sort-select {
 	margin-right: 0px;
 	color: #444444;
 }
-.filter-active #articleFeedbackv5-filter-select {
+.filter-active #articleFeedbackv5-filter-select,
+.filter-active #articleFeedbackv5-sort-select {
 	color: black;
 	font-weight: bold;
 }
