@@ -104,6 +104,11 @@
 			$.aftVerify.enabled = $.aftVerify.checkLottery();
 		}
 
+		// Regardless of black-/whitelisting or lottery, always display the special page
+		if ( $.aftVerify.location == 'special' ) {
+			$.aftVerify.enabled = true;
+		}
+
 		// Check the user agent
 		if ( $.aftVerify.enabled ) {
 			$.aftVerify.enabled = $.aftVerify.checkUserAgent();
