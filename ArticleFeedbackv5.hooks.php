@@ -471,6 +471,9 @@ class ArticleFeedbackv5Hooks {
 					$res = array( 'allow' => true, 'whitelist' => true );
 				} else {
 					$res = self::allowForPage( $mainTitle );
+
+					// always allow Special page, regardless of black-/whitelist or lottery
+					$res['allow'] = true;
 				}
 				if ( $res['allow'] ) {
 					// load module
