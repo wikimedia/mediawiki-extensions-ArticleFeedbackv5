@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//5O4\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-08-16T16:23:12Z",
+      "side": 1,
+      "message": "Is $2 a timestamp? If so, please consult https://www.mediawiki.org/wiki/I18n#Separate_times_from_dates_in_sentences. This would require changes in all below messages.\n\nDoes $3 have any formatting? Like a colon followed by the comment, or quotes, ...? Now you have the opportunity to do it right, please ensure you don\u0027t hardcode anything but CSS classes, links, etc.",
+      "revId": "2575d4addbf9d1e9a707ed4869a965d8157be340",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
