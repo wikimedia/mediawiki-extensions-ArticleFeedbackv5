@@ -34,6 +34,24 @@
       "revId": "2575d4addbf9d1e9a707ed4869a965d8157be340",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//5OQ\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-08-16T16:45:54Z",
+      "side": 1,
+      "message": "Linker::commentBlock() appears to be just fine. Thanks. Please give the i18n page a good read-over. It\u0027s worth spending an hour on. You\u0027ll be much more aware of bad i18n while coding, which saves loads of time later on.",
+      "parentUuid": "AAAARX//5Oc\u003d",
+      "revId": "2575d4addbf9d1e9a707ed4869a965d8157be340",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
