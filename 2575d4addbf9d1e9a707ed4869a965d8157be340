@@ -16,6 +16,24 @@
       "revId": "2575d4addbf9d1e9a707ed4869a965d8157be340",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//5Oc\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-08-16T16:43:20Z",
+      "side": 1,
+      "message": "$3 is \"the comment\" wrapped in Linker::commentBlock() - which I\u0027m assuming is fine?\n$2 is indeed a timestamp, which I\u0027ll split up",
+      "parentUuid": "AAAARX//5O4\u003d",
+      "revId": "2575d4addbf9d1e9a707ed4869a965d8157be340",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
