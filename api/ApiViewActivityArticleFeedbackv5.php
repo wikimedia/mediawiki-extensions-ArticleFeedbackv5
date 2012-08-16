@@ -36,7 +36,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		// front-end should never let you get here, but just in case
 		if ( !$wgUser->isAllowed( 'aftv5-feature-feedback' ) ) {
 			wfProfileOut( __METHOD__ );
-			$this->dieUsage( "You don't have permission to hide feedback", 'permissiondenied' );
+			$this->dieUsage( "You don't have permission to view feedback activity", 'permissiondenied' );
 		}
 
 		// These are our valid activity log actions
@@ -198,6 +198,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 							Html::element( 'span', array(), $wgLang->date( $item->log_timestamp ) ),
 							Html::element( 'span', array(), $wgLang->time( $item->log_timestamp ) )
 						)
+						->params( User::newFromId( $item->log_user ) )
 						->text();
 			$html .= Html::closeElement( 'span' );
 

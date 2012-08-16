@@ -1217,109 +1217,127 @@ $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-unrequest' => 'Activity log entry when oversight was unrequested (an oversight request asks an oversighter to delete feedback)
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-decline' => 'Activity log entry when an oversight request was declined (an oversight request asks an oversighter to delete feedback)
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-hidden' => 'Activity log entry when feedback was hidden
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-flag' => 'Activity log entry when feedback was flagged as abusive
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-unhidden' => 'Activity log entry when feedback was un-hidden
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-unflag' => 'Activity log entry when feedback was un-flagged as abusive
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-oversight' => 'Activity log entry when feedback was oversighted
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-unoversight' => 'Activity log entry when feedback was unoversighted
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-resolve' => 'Activity log entry when feedback was resolved
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-unresolve' => 'Activity log entry when feedback was unresolved
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-feature' => 'Activity log entry when feedback was featured
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-unfeature' => 'Activity log entry when feedback was unfeatured
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-helpful' => 'Activity log entry when feedback was marked as helpful
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-unhelpful' => 'Activity log entry when feedback was marked as unhelpful
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-undo-helpful' => 'Activity log entry when feedback was un-marked as helpful
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-undo-unhelpful' => 'Activity log entry when feedback was un-marked as unhelpful
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-item-clear-flags' => 'Activity log entry when all abuse flags were cleared on feedback
 $1 is a link to the user who performed the action
 $2 is the informational comment left upon performing the action
 $3 is the date & time the action was performed
 $4 is the date the action was performed
-$5 is the time the action was performed',
+$5 is the time the action was performed
+$6 is the user object (gender support)',
 	'articlefeedbackv5-activity-count' => 'Template for activity items count',
 	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
 	'articlefeedbackv5-activity-item-comment' => 'Text for the activity panel - user name link, activity action, date and comment',
