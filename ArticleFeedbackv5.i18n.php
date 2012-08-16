@@ -42,10 +42,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-cta5-confirmation-title' => 'See what others are saying',
 	'articlefeedbackv5-cta5-confirmation-call' => 'View suggestions from other readers like you. Can you help pick the best ideas?',
 	'articlefeedbackv5-cta5-button-text' => 'See all comments',
-	'articlefeedbackv5-cta6-confirmation-title' => 'Meet other editors',
+	'articlefeedbackv5-cta6-confirmation-title' => 'Need help editing Wikipedia?',
 	'articlefeedbackv5-cta6-confirmation-call' => 'To discuss editing on Wikipedia, come to the Teahouse, where new and experienced editors gather to exchange helpful tips.',
 	'articlefeedbackv5-cta6-button-text' => 'Visit Teahouse',
-	'articlefeedbackv5-cta6-button-link' => '//en.wikipedia.org/wiki/Wikipedia:Teahouse',
+	'articlefeedbackv5-cta6-button-link' => '//en.wikipedia.org/wiki/Wikipedia:Teahouse?ref=aft',
 
 	/* Overlay */
 	'articlefeedbackv5-overlay-close' => 'Close',
