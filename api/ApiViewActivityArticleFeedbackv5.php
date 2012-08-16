@@ -193,8 +193,10 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			$html .= wfMessage( 'articlefeedbackv5-activity-item-' . $item->log_action )
 						->rawParams(
 							ApiArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
+							Linker::commentBlock( $item->log_comment ),
 							Html::element( 'span', array(), $wgLang->timeanddate( $item->log_timestamp ) ),
-							Linker::commentBlock( $item->log_comment )
+							Html::element( 'span', array(), $wgLang->date( $item->log_timestamp ) ),
+							Html::element( 'span', array(), $wgLang->time( $item->log_timestamp ) )
 						)
 						->text();
 			$html .= Html::closeElement( 'span' );
