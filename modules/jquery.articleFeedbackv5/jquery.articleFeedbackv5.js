@@ -1463,6 +1463,85 @@
 
 			// }}}
 
+		},
+
+		// }}}
+		// {{{ CTA 6: Visit Teahouse
+
+		'6': {
+
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The template for the whole block
+				 */
+				block: '\
+					<div class="clear"></div>\
+					<div class="articleFeedbackv5-confirmation-panel">\
+						<div class="articleFeedbackv5-panel-leftContent">\
+							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta6-confirmation-title" /></h3>\
+							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta6-confirmation-call" /></p>\
+						</div>\
+						<a href="#" class="articleFeedbackv5-cta-button"><html:msg key="cta6-button-text" /></a>\
+						<div class="clear"></div>\
+					</div>\
+					'
+
+			},
+
+			// }}}
+			// {{{ build
+
+			/**
+			 * Builds the CTA
+			 *
+			 * @return Element the form
+			 */
+			build: function () {
+
+				// Start up the block to return
+				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
+
+				// Fill in the link
+				var feedback_url = mw.msg( 'articlefeedbackv5-cta6-button-link' );
+				var feedback_track_id = $.articleFeedbackv5.ctaName() + '-button_click';
+				$block.find( '.articleFeedbackv5-cta-button' )
+					.attr( 'href', $.articleFeedbackv5.trackingUrl( feedback_url, feedback_track_id ) )
+					.button()
+					.addClass( 'ui-button-blue' );
+
+				return $block;
+			},
+
+			// }}}
+			// {{{ verify
+
+			/**
+			 * Verifies that this CTA can be displayed
+			 *
+			 * @return bool whether the CTA can be displayed
+			 */
+			verify: function () {
+				return mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'];
+			},
+
+			// }}}
+			// {{{ afterBuild
+
+			/**
+			 * Perform adjustments after build
+			 */
+			afterBuild: function() {
+				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
+			}
+
+			// }}}
+
 		}
 
 		// }}}
