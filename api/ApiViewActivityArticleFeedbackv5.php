@@ -189,37 +189,17 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 				$logClass .= ' articleFeedbackv5-activity-item-action-negative';
 			}
 
-			// so because concatenation is evil, I have to figure out which format to use
-			// either the $user $did_something_on $date
-			// or the $user $did_something_on $date : $comment
-			// because the colon hanging around would look utterly stupid
-
-			if ( $item->log_comment == '' ) {
-				$html .= wfMessage( 'articlefeedbackv5-activity-item' )
-					->rawParams(
-						ApiArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
-						Html::element( 'span', array(
-							'class' => $logClass
-							),
-							wfMessage( 'articlefeedbackv5-activity-' . $item->log_action,
-								array() )->text() ),
-						$wgLang->timeanddate( $item->log_timestamp ) )
-					->text();
-			} else {
-				$html .= wfMessage( 'articlefeedbackv5-activity-item-comment' )
-					->rawParams(
-						ApiArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
-						Html::element( 'span', array(
-						'class' => $logClass
-							),
-							wfMessage( 'articlefeedbackv5-activity-' . $item->log_action,
-								array() )->text() ),
-						$wgLang->timeanddate( $item->log_timestamp ),
-						Html::element( 'span',
-							array( 'class' => 'articlefeedbackv5-activity-notes' ),
-							$item->log_comment ) )
-					->text();
-			}
+			$html .= Html::openElement( 'span', array( 'class' => $logClass ) );
+			$html .= wfMessage( 'articlefeedbackv5-activity-item-' . $item->log_action )
+						->rawParams(
+							ApiArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
+							Linker::commentBlock( $item->log_comment ),
+							Html::element( 'span', array(), $wgLang->timeanddate( $item->log_timestamp ) ),
+							Html::element( 'span', array(), $wgLang->date( $item->log_timestamp ) ),
+							Html::element( 'span', array(), $wgLang->time( $item->log_timestamp ) )
+						)
+						->text();
+			$html .= Html::closeElement( 'span' );
 
 			// </div> for class="articleFeedbackv5-activity-item"
 			$html .= Html::closeElement( 'div' );
