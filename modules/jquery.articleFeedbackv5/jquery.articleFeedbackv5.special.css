@@ -542,6 +542,10 @@ form.articleFeedbackv5-form-flyover textarea {
 	font-weight: bold;
 	padding: 0 5px;
 }
+.articleFeedbackv5-activity-item .articleFeedbackv5-activity-item-action span {
+	font-weight: normal;
+	color: #555555;
+}
 .articleFeedbackv5-activity-item .articleFeedbackv5-activity-item-action.articleFeedbackv5-activity-item-action-positive {
 	color: green;
 }
