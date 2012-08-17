@@ -322,15 +322,15 @@ class ApiArticleFeedbackv5Utils {
 			$userId = (int) $user_id;
 			if ( $userId !== 0 ) { // logged-in users
 				$user = User::newFromId( $userId );
-			} elseif ( is_null($user_ip) || $userId == 0 ) { // magic user
+			} elseif ( !is_null( $user_ip ) ) { // IP users
+				$userText = $user_ip;
+				$user = User::newFromName( $userText, false );
+			} else { // magic user
 				global $wgArticleFeedbackv5AutoHelp;
 				$element = Linker::makeExternalLink(
 					$wgArticleFeedbackv5AutoHelp,
 					wfMessage( 'articlefeedbackv5-default-user' )->text());
 					return $element;
-			} else { // IP users
-				$userText = $user_ip;
-				$user = User::newFromName( $userText, false );
 			}
 		} else {
 			// user is an object, all good, make link
