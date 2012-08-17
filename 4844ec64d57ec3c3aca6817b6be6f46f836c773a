@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//3+I\u003d",
+        "filename": "api/ApiArticleFeedbackv5Utils.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-17T18:49:26Z",
+      "side": 1,
+      "message": "Variables should use CamelCase.",
+      "revId": "4844ec64d57ec3c3aca6817b6be6f46f836c773a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
