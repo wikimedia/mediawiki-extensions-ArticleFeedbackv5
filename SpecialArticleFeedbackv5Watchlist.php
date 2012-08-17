@@ -80,7 +80,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		$out->addHTML(
 			Html::openElement(
 				'div',
-				array( 'id' => 'articleFeedbackv5-showing-count-wrap' )
+				array( 'id' => 'articleFeedbackv5-special-watchlist-showing-wrap' )
 			)
 				. $this->msg( 'articlefeedbackv5-special-watchlist-showing',
 					$user->getUserPage()->getFullText(),

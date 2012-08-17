@@ -39,21 +39,26 @@ select {
 	float: right;
 }
 #articlefeedbackv5-special-central-watchlist-link {
-	font-size: 0.8em;
 	margin-left: 10px;
 }
 #articlefeedbackv5-special-central-watchlist-link:before {
 	content: '•';
 	margin-right: 10px;
 }
-#articleFeedbackv5-showing-count-wrap {
+#articleFeedbackv5-showing-count-wrap,
+#articleFeedbackv5-special-watchlist-showing-wrap {
 	display: inline-block;
 	/* IE7 inline-block hack */
 	zoom: 1;
 	*display: inline;
-	font-size: 1.4em;
 	margin: 15px 50px 5px 0;
 	line-height: 28px;
+}
+#articleFeedbackv5-showing-count-wrap {
+	font-size: 1.4em;
+}
+#articleFeedbackv5-special-watchlist-showing-wrap {
+	font-size: 1.2em;
 }
 #articleFeedbackv5-feedback-count-total {
 	font-weight: bold;
