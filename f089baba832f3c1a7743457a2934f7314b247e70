@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//36s\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-17T20:29:15Z",
+      "side": 1,
+      "message": "I don\u0027t see any of these -page- messages defined in i18n file",
+      "revId": "f089baba832f3c1a7743457a2934f7314b247e70",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
