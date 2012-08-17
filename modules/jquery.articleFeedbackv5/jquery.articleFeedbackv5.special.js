@@ -249,14 +249,14 @@
 		// Add a loading tag to the top and hide it
 		var $loading1 = $( $.articleFeedbackv5special.loadingTemplate );
 		$loading1.attr( 'id', $loading1.attr( 'id' ) + '-top' );
-		$loading1.find( 'articleFeedbackv5-loading-message' ).text( mw.msg( 'articlefeedbackv5-loading-tag' ) );
+		$loading1.find( '.articleFeedbackv5-loading-message' ).text( mw.msg( 'articlefeedbackv5-loading-tag' ) );
 		$loading1.hide();
 		$( '#articleFeedbackv5-show-feedback' ).before( $loading1 );
 
 		// Add a loading tag to the bottom and hide it
 		var $loading2 = $( $.articleFeedbackv5special.loadingTemplate );
 		$loading2.attr( 'id', $loading2.attr( 'id' ) + '-bottom' );
-		$loading2.find( 'articleFeedbackv5-loading-message' ).text( mw.msg( 'articlefeedbackv5-loading-tag' ) );
+		$loading2.find( '.articleFeedbackv5-loading-message' ).text( mw.msg( 'articlefeedbackv5-loading-tag' ) );
 		$loading2.hide();
 		$( '#articleFeedbackv5-show-more' ).before( $loading2 );
 		$( '#articleFeedbackv5-refresh-list' ).button();
