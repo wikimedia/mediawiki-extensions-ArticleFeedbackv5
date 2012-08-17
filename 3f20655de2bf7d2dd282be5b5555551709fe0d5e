@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//35I\u003d",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-17T21:06:25Z",
+      "side": 1,
+      "message": "I think you only need to pass user name for gender support",
+      "revId": "3f20655de2bf7d2dd282be5b5555551709fe0d5e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
