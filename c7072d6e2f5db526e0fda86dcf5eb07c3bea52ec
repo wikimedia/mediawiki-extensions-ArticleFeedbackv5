@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//37Y\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-17T20:22:24Z",
+      "side": 1,
+      "message": "Wikipedia should not be hardcoded in the language file and be made generic",
+      "revId": "c7072d6e2f5db526e0fda86dcf5eb07c3bea52ec",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
