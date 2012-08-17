@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//4Bo\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 78
+      },
+      "writtenOn": "2012-08-17T17:27:51Z",
+      "side": 1,
+      "message": "Please add a comment here or above explaining that users are allowed to flag their own posts.",
+      "revId": "abfd44cce1107b19700dabc696280b6645c01317",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//4Bk\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 78
+      },
+      "writtenOn": "2012-08-17T17:27:51Z",
+      "side": 1,
+      "message": "Why is the can_feature permission important here? Perhaps you could explain in the comments.",
+      "revId": "abfd44cce1107b19700dabc696280b6645c01317",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//4Bg\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 78
+      },
+      "writtenOn": "2012-08-17T17:27:51Z",
+      "side": 1,
+      "message": "This is a very helpful comment :)",
+      "revId": "abfd44cce1107b19700dabc696280b6645c01317",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
