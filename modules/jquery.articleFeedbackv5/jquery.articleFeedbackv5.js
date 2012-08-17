@@ -2102,6 +2102,13 @@
 	 * @param config object  the config object
 	 */
 	$.articleFeedbackv5.init = function ( $el, config ) {
+		// Can the user edit the page?
+		$.articleFeedbackv5.editable = $.articleFeedbackv5.userCanEdit();
+		// if the page is not editable and the user is anon, don't display AFT
+		if ( !$.articleFeedbackv5.editable && $.articleFeedbackv5.anonymous ) {
+			return;
+		}
+
 		$.articleFeedbackv5.$holder = $el;
 		$.articleFeedbackv5.config = config;
 		// Debug mode
@@ -2113,8 +2120,6 @@
 		$.aftTrack.init();
 		// Has the user already submitted ratings for this page at this revision?
 		$.articleFeedbackv5.alreadySubmitted = $.cookie( $.aftTrack.prefix( 'submitted' ) ) === 'true';
-		// Can the user edit the page?
-		$.articleFeedbackv5.editable = $.articleFeedbackv5.userCanEdit();
 		// Go ahead and bucket right away
 		$.articleFeedbackv5.selectBucket();
 		$.articleFeedbackv5.selectCTA();
