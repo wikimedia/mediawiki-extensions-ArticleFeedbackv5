@@ -39,6 +39,7 @@ $specialPageAliases['gl'] = array(
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
 	'ArticleFeedbackv5' => array( '문서피드백v5' ),
+	'ArticleFeedbackv5Watchlist' => array( '문서피드백v5주시문서목록', '문서피드백v5주시목록' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
