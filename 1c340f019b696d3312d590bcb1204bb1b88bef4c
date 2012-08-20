@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//2x4\u003d",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-20T19:37:41Z",
+      "side": 1,
+      "message": "why not escape it?",
+      "revId": "1c340f019b696d3312d590bcb1204bb1b88bef4c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
