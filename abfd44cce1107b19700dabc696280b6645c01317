@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAARX//3K4\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-08-20T09:43:15Z",
+      "side": 1,
+      "message": "It\u0027s caused by a weird use of permissions - it occurs in multiple files.\nI\u0027ve created a new ticket for it: https://bugzilla.wikimedia.org/show_bug.cgi?id\u003d39497 and will tackle it later",
+      "parentUuid": "AAAARX//4Bk\u003d",
+      "revId": "abfd44cce1107b19700dabc696280b6645c01317",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAARX//4Bg\u003d",
         "filename": "ArticleFeedbackv5.render.php",
         "patchSetId": 2
