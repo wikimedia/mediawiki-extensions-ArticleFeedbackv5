@@ -295,13 +295,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
-		$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl')->text();
+		$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl')->text();
 		if( $user->isAllowed( 'aftv5-delete-feedback' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-oversighters' )->text();
+			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-oversighters' )->text();
 		} elseif( $user->isAllowed( 'aftv5-hide-feedback' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-monitors' )->text();
+			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-monitors' )->text();
 		} elseif( $user->isAllowed( 'aftv5-feature-feedback' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' )->text();
+			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-editors' )->text();
 		}
 		$helpLink .= '#Feedback_page';
 
@@ -476,13 +476,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
-		$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl')->text();
+		$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl')->text();
 		if( $user->isAllowed( 'aftv5-delete-feedback' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-oversighters' )->text();
+			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-oversighters' )->text();
 		} elseif( $user->isAllowed( 'aftv5-hide-feedback' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-monitors' )->text();
+			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-monitors' )->text();
 		} elseif( $user->isAllowed( 'aftv5-feature-feedback' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-linkurl-editors' )->text();
+			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-editors' )->text();
 		}
 		$helpLink .= '#Feedback_page';
 
