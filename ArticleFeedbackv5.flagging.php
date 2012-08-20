@@ -130,8 +130,6 @@ class ArticleFeedbackv5Flagging {
 	 *                    message key)
 	 */
 	public function run( $flag, $notes = '', $direction = 'increase', $toggle = false ) {
-		$flag       = $flag;
-		$notes      = $notes;
 		$direction  = $direction == 'increase' ? 'increase' : 'decrease';
 		$toggle     = $toggle ? true : false;
 
