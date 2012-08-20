@@ -73,35 +73,42 @@
 
 		// Pull info passed in
 		$.aftVerify.location = location;
-		$.aftVerify.namespace = mw.config.get( 'wgNamespaceNumber', -2 );
-		$.aftVerify.whitelist = mw.config.get( 'aftv5Whitelist', -1 );
-		if ( $.aftVerify.location == 'article' ) {
-			// Articles use the built-in page ID
-			$.aftVerify.pageId = mw.config.get( 'wgArticleId', -1 );
-		} else {
-			// Talk and special pages have one passed in
-			$.aftVerify.pageId = mw.config.get( 'aftv5PageId', -1 );
-		}
 
-		// Case 1: the html is cached and we don't know if it's whitelisted
-		if ( $.aftVerify.whitelist == -1 ) {
+		// Regardless of black-/whitelisting or lottery, always display the special page
+		if ( $.aftVerify.location == 'special' ) {
+			$.aftVerify.enabled = true;
+		} else {
+			$.aftVerify.namespace = mw.config.get( 'wgNamespaceNumber', -2 );
+			$.aftVerify.whitelist = mw.config.get( 'aftv5Whitelist', -1 );
+
 			if ( $.aftVerify.location == 'article' ) {
-				// We can double-check, so do that
-				$.aftVerify.enabled = $.aftVerify.checkFull();
+				// Articles use the built-in page ID
+				$.aftVerify.pageId = mw.config.get( 'wgArticleId', -1 );
 			} else {
-				// Everywhere else: don't show it
-				$.aftVerify.enabled = false;
+				// Talk and special pages have one passed in
+				$.aftVerify.pageId = mw.config.get( 'aftv5PageId', -1 );
 			}
 
-		// Case 2: the article is whitelisted
-		} else if ( $.aftVerify.whitelist ) {
-			$.aftVerify.checks.whitelist = true;
-			$.aftVerify.enabled = true;
+			// Case 1: the html is cached and we don't know if it's whitelisted
+			if ( $.aftVerify.whitelist == -1 ) {
+				if ( $.aftVerify.location == 'article' ) {
+					// We can double-check, so do that
+					$.aftVerify.enabled = $.aftVerify.checkFull();
+				} else {
+					// Everywhere else: don't show it
+					$.aftVerify.enabled = false;
+				}
 
-		// Case 3: the article is not whitelisted
-		} else {
-			$.aftVerify.checks.whitelist = false;
-			$.aftVerify.enabled = $.aftVerify.checkLottery();
+			// Case 2: the article is whitelisted
+			} else if ( $.aftVerify.whitelist ) {
+				$.aftVerify.checks.whitelist = true;
+				$.aftVerify.enabled = true;
+
+			// Case 3: the article is not whitelisted
+			} else {
+				$.aftVerify.checks.whitelist = false;
+				$.aftVerify.enabled = $.aftVerify.checkLottery();
+			}
 		}
 
 		// Check the user agent
