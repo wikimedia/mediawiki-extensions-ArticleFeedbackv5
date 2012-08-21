@@ -58,13 +58,13 @@ class ArticleFeedbackv5Permissions {
 			array(
 				'pr_page' => $articleId,
 				'pr_type' => 'aft',
-				'pr_expiry = "infinity" OR pr_expiry >= ' . $dbr->addQuotes( $dbr->encodeExpiry( wfTimestamp( TS_MW, strtotime( 'now' ) ) ) )
+				'pr_expiry = "infinity" OR pr_expiry >= ' . $dbr->addQuotes( $dbr->encodeExpiry( wfTimestamp( TS_MW ) ) )
 			),
 			__METHOD__
 		);
 
 		// check if valid result; if not, return defaults
-		if ( !isset( $permission->pr_level ) || !self::isValidPermission( $permission->pr_level ) ) {
+		if ( !$permission || !isset( $permission->pr_level ) || !self::isValidPermission( $permission->pr_level ) ) {
 			$permission = (object) array( 'pr_level' => self::$permissions[0], 'pr_expiry' => 'infinity' );
 		}
 
