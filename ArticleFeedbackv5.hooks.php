@@ -1023,4 +1023,28 @@ class ArticleFeedbackv5Hooks {
 
 		return true;
 	}
+
+	/**
+	 * Rather than having LogPage fill log_page with the page id of the feedback permalink page (which
+	 * will be 0), let's add in a real page id.
+	 *
+	 * @param array $data
+	 * @param LogPage $logPage
+	 * @return boolean
+	 */
+	public static function saveLogContent( array &$data, LogPage $logPage ) {
+		// check if dealing with an AFT entry
+		if ( $logPage->target->isSpecial( 'ArticleFeedbackv5' ) ) {
+			// fetch the title of the article this special page is related to
+			list( /* special */, $mainTitle) = SpecialPageFactory::resolveAlias( $logPage->target->getDBkey() );
+
+			// Permalinks: drop the feedback ID
+			$mainTitle = preg_replace( '/(\/[0-9]+)$/', '', $mainTitle );
+
+			$mainTitle = Title::newFromDBkey( $mainTitle );
+			$data['log_page'] = $mainTitle->getArticleID();
+		}
+
+		return true;
+	}
 }
