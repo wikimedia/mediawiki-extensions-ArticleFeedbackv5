@@ -539,6 +539,8 @@ class ArticleFeedbackv5Hooks {
 			&& in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces )
 			// existing pages
 			&& $title->getArticleId() > 0
+			// check if user has sufficient permissions
+			&& $wgUser->isAllowed( ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() )->pr_level )
 		) {
 			$result['allow'] = true;
 
@@ -561,7 +563,6 @@ class ArticleFeedbackv5Hooks {
 					$result['whitelist'] = true;
 				}
 			}
-
 		}
 
 		return $result;
@@ -674,11 +675,13 @@ class ArticleFeedbackv5Hooks {
 	 */
 	public static function makeGlobalVariablesScript( &$vars ) {
 		global $wgUser;
-		$vars['wgArticleFeedbackv5Permissions'] = array(
-			'oversighter' => $wgUser->isAllowed( 'aftv5-delete-feedback' ),
-			'moderator' => $wgUser->isAllowed( 'aftv5-hide-feedback' ),
-			'editor' => $wgUser->isAllowed( 'aftv5-feature-feedback' )
-		);
+
+		// expose AFT permissions for this user to JS
+		$vars['wgArticleFeedbackv5Permissions'] = array();
+		foreach ( ArticleFeedbackv5Permissions::$permissions as $permission ) {
+			$vars['wgArticleFeedbackv5Permissions'][$permission] = $wgUser->isAllowed( $permission );
+		}
+
 		return true;
 	}
 
@@ -1026,5 +1029,209 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Add an AFT entry to article's protection levels
+	 *
+	 * Basically, all this code will do the same as adding a value to $wgRestrictionTypes
+	 * However, that would use the same permission types as the other entries, whereas the
+	 * AFT permission levels should be different.
+	 *
+	 * Parts of code are heavily "inspired" by ProtectionForm.
+	 *
+	 * @param Page $article
+	 * @param $output
+	 * @return bool
+	 */
+	public static function onProtectionForm( Page $article, &$output ) {
+		global $wgLang;
+
+		$articleId = $article->getId();
+
+		// on a per-page basis, AFT can only be restricted from these levels
+		$levels = array(
+			'aft-reader' => 'articlefeedbackv5-protection-permission-reader',
+			'aft-member' => 'articlefeedbackv5-protection-permission-member',
+			'aft-editor' => 'articlefeedbackv5-protection-permission-editor',
+			'aft-administrator' => 'articlefeedbackv5-protection-permission-administrator'
+		);
+
+		// build permissions dropdown
+		$existingPermissions = ArticleFeedbackv5Permissions::getRestriction( $articleId )->pr_level;
+		$id = 'articlefeedbackv5-protection-level';
+		$attribs = array(
+			'id' => $id,
+			'name' => $id,
+			'size' => count( $levels )
+		);
+		$permissionsDropdown = Xml::openElement( 'select', $attribs );
+		foreach( $levels as $key => $label ) {
+			// possible labels: articlefeedbackv5-protection-permission-(all|reader|editor)
+			$permissionsDropdown .= Xml::option( wfMessage( $label )->escaped(), $key, $key == $existingPermissions );
+		}
+		$permissionsDropdown .= Xml::closeElement( 'select' );
+
+		$scExpiryOptions = wfMessage( 'protect-expiry-options' )->inContentLanguage()->text();
+		$showProtectOptions = ( $scExpiryOptions !== '-' );
+
+		list(
+			$mExistingExpiry,
+			$mExpiry,
+			$mExpirySelection
+			) = ArticleFeedbackv5Permissions::getExpiry( $articleId );
+
+		if( $showProtectOptions ) {
+			$expiryFormOptions = '';
+
+			// add option to re-use existing expiry
+			if ( $mExistingExpiry && $mExistingExpiry != 'infinity' ) {
+				$timestamp = $wgLang->timeanddate( $mExistingExpiry, true );
+				$d = $wgLang->date( $mExistingExpiry, true );
+				$t = $wgLang->time( $mExistingExpiry, true );
+				$expiryFormOptions .=
+					Xml::option(
+						wfMessage( 'protect-existing-expiry', $timestamp, $d, $t )->escaped(),
+						'existing',
+						$mExpirySelection == 'existing'
+					);
+			}
+
+			// add regular expiry options
+			$expiryFormOptions .= Xml::option( wfMessage( 'protect-othertime-op' )->escaped(), 'othertime' );
+			foreach( explode( ',', $scExpiryOptions ) as $option ) {
+				if ( strpos( $option, ':' ) === false ) {
+					$show = $value = $option;
+				} else {
+					list( $show, $value ) = explode( ':', $option );
+				}
+
+				$expiryFormOptions .= Xml::option(
+					htmlspecialchars( $show ),
+					htmlspecialchars( $value ),
+					$mExpirySelection == $value
+				);
+			}
+
+			// build expiry dropdown
+			$protectExpiry = Xml::tags( 'select',
+				array(
+					'id' => 'articlefeedbackv5-protection-expiration-selection',
+					'name' => 'articlefeedbackv5-protection-expiration-selection',
+					// when selecting anything other than "othertime", clear the input field for other time
+					'onchange' => 'javascript:if ( $( this ).val() != "othertime" ) $( "#articlefeedbackv5-protection-expiration" ).val( "" );',
+				),
+				$expiryFormOptions );
+			$mProtectExpiry = Xml::label( wfMessage( 'protectexpiry' )->escaped(), 'mwProtectExpirySelection-aft' );
+		}
+
+		// build custom expiry field
+		$attribs = array(
+			'id' => 'articlefeedbackv5-protection-expiration',
+			// when entering an other time, make sure "othertime" is selected in the dropdown
+			'onkeyup' => 'javascript:if ( $( this ).val() ) $( "#articlefeedbackv5-protection-expiration-selection" ).val( "othertime" );',
+			'onchange' => 'javascript:if ( $( this ).val() ) $( "#articlefeedbackv5-protection-expiration-selection" ).val( "othertime" );'
+		);
+
+		$protectOther = Xml::input( 'articlefeedbackv5-protection-expiration', 50, $mExpiry, $attribs );
+		$mProtectOther = Xml::label( wfMessage( 'protect-othertime' )->escaped(), "mwProtect-aft-expires" );
+
+		// build output
+		$output .= "
+				<tr>
+					<td>".
+			Xml::openElement( 'fieldset' ) .
+			Xml::element( 'legend', null, wfMessage( 'articlefeedbackv5-protection-level' )->text() ) .
+			Xml::openElement( 'table', array( 'id' => 'mw-protect-table-aft' ) ) . "
+								<tr>
+									<td>$permissionsDropdown</td>
+								</tr>
+								<tr>
+									<td>";
+
+		if( $showProtectOptions ) {
+			$output .= "				<table>
+											<tr>
+												<td class='mw-label'>$mProtectExpiry</td>
+												<td class='mw-input'>$protectExpiry</td>
+											</tr>
+										</table>";
+		}
+
+		$output .= "					<table>
+											<tr>
+												<td class='mw-label'>$mProtectOther</td>
+												<td class='mw-input'>$protectOther</td>
+											</tr>
+										</table>
+									</td>
+								</tr>" .
+			Xml::closeElement( 'table' ) .
+			Xml::closeElement( 'fieldset' ) . "
+					</td>
+				</tr>";
+
+		return true;
+	}
+
+	/**
+	 * Write AFT's article's protection levels to DB
+	 *
+	 * Parts of code are heavily "inspired" by ProtectionForm.
+	 *
+	 * @param Page $article
+	 * @param string $errorMsg
+	 * @return bool
+	 */
+	public static function onProtectionSave( Page $article, &$errorMsg ) {
+		global $wgRequest;
+
+		$requestPermission = $wgRequest->getVal( 'articlefeedbackv5-protection-level' );
+		$requestExpiry = $wgRequest->getText( 'articlefeedbackv5-protection-expiration' );
+		$requestExpirySelection = $wgRequest->getVal( 'articlefeedbackv5-protection-expiration-selection' );
+
+		// fetch permissions set to edit page ans make sure that AFT permissions are no tighter than these
+		$editPermission = $article->getTitle()->getRestrictions( 'edit' );
+		if ( !$editPermission ) {
+			$editPermission[] = '*';
+		}
+		$availablePermissions = User::getGroupPermissions( $editPermission );
+		if ( !in_array( $requestPermission, $availablePermissions ) ) {
+			$errorMsg .= wfMessage( 'articlefeedbackv5-protection-level-error' )->escaped();
+			return false;
+		}
+
+		if ( $requestExpirySelection == 'existing' ) {
+			$expirationTime = ArticleFeedbackv5Permissions::getRestriction( $article->getId() )->pr_expiry;
+		} else {
+			if ( $requestExpirySelection == 'othertime' ) {
+				$value = $requestExpiry;
+			} else {
+				$value = $requestExpirySelection;
+			}
+
+			if ( $value == 'infinite' || $value == 'indefinite' || $value == 'infinity' ) {
+				$expirationTime = wfGetDB( DB_SLAVE )->getInfinity();
+			} else {
+				$unix = strtotime( $value );
+
+				if ( !$unix || $unix === -1 ) {
+					$errorMsg .= wfMessage( 'protect_expiry_invalid' )->escaped();
+					return false;
+				} else {
+					// @todo FIXME: Non-qualified absolute times are not in users specified timezone
+					// and there isn't notice about it in the ui
+					$expirationTime = wfTimestamp( TS_MW, $unix );
+				}
+			}
+		}
+
+		$success = ArticleFeedbackv5Permissions::setRestriction(
+			$article->getId(),
+			$requestPermission,
+			$expirationTime
+		);
+
+		return $success;
 	}
 }
