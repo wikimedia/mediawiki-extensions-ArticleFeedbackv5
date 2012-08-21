@@ -320,12 +320,13 @@ class ArticleFeedbackv5Permissions {
 
 		// fetch permissions set to edit page ans make sure that AFT permissions are no tighter than these
 		$editPermission = $article->getTitle()->getRestrictions( 'edit' );
-		if ( $editPermission ) {
-			$availablePermissions = User::getGroupPermissions( $editPermission );
-			if ( !in_array( $requestPermission, $availablePermissions ) ) {
-				$errorMsg .= wfMessage( 'articlefeedbackv5-protection-level-error' )->escaped();
-				return false;
-			}
+		if ( !$editPermission ) {
+			$editPermission[] = '*';
+		}
+		$availablePermissions = User::getGroupPermissions( $editPermission );
+		if ( !in_array( $requestPermission, $availablePermissions ) ) {
+			$errorMsg .= wfMessage( 'articlefeedbackv5-protection-level-error' )->escaped();
+			return false;
 		}
 
 		if ( $requestExpirySelection == 'existing' ) {
