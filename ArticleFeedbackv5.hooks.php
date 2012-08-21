@@ -535,6 +535,8 @@ class ArticleFeedbackv5Hooks {
 			&& in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces )
 			// existing pages
 			&& $title->getArticleId() > 0
+			// check if user has sufficient permissions
+			&& $wgUser->isAllowed( ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() )->pr_level )
 		) {
 			$result['allow'] = true;
 
@@ -557,7 +559,6 @@ class ArticleFeedbackv5Hooks {
 					$result['whitelist'] = true;
 				}
 			}
-
 		}
 
 		return $result;
@@ -670,11 +671,13 @@ class ArticleFeedbackv5Hooks {
 	 */
 	public static function makeGlobalVariablesScript( &$vars ) {
 		global $wgUser;
-		$vars['wgArticleFeedbackv5Permissions'] = array(
-			'oversighter' => $wgUser->isAllowed( 'aftv5-delete-feedback' ),
-			'moderator' => $wgUser->isAllowed( 'aftv5-hide-feedback' ),
-			'editor' => $wgUser->isAllowed( 'aftv5-feature-feedback' )
-		);
+
+		// expose AFT permissions for this user to JS
+		$vars['wgArticleFeedbackv5Permissions'] = array();
+		foreach ( ArticleFeedbackv5Permissions::$permissions as $permission ) {
+			$vars['wgArticleFeedbackv5Permissions'][$permission] = $wgUser->isAllowed( $permission );
+		}
+
 		return true;
 	}
 
