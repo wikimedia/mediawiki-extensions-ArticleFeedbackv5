@@ -535,7 +535,7 @@ class ArticleFeedbackv5Hooks {
 			// existing pages
 			&& $title->getArticleId() > 0
 			// check if user has sufficient permissions
-			&& self::allowForPageAndUser( $title, $wgUser )
+			&& $wgUser->isAllowed( ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() )->pr_level )
 		) {
 			$result['allow'] = true;
 

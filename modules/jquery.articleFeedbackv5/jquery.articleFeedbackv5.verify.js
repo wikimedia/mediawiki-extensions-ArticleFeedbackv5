@@ -55,27 +55,6 @@
 	};
 
 	// }}}
-	// {{{ hasPermission
-
-	/**
-	 * Returns whether the user has permission to view the feedback form
-	 */
-	$.aftVerify.hasPermission = function () {
-		// An empty restrictions array means anyone can edit
-		var restrictions =  mw.config.get( 'wgRestrictionAft', [] );
-		if ( restrictions.length ) {
-			var groups =  mw.config.get( 'wgUserGroups' );
-			// Verify that each restriction exists in the user's groups
-			for ( var i = 0; i < restrictions.length; i++ ) {
-				if ( $.inArray( restrictions[i], groups ) < 0 ) {
-					return false;
-				}
-			}
-		}
-		return true;
-	};
-
-	// }}}
 	// {{{ verify
 
 	/**
@@ -169,8 +148,6 @@
 			&& mw.util.getParamValue( 'redirect' ) != 'no'
 			// Not viewing the printable version
 			&& mw.util.getParamValue( 'printable' ) != 'yes'
-			// Check if user has sufficient permissions
-			&& $.aftVerify.hasPermission()
 		) {
 			$.aftVerify.checks.article = true;
 
