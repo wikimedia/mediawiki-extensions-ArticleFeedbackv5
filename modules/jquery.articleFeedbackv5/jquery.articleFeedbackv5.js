@@ -2104,10 +2104,6 @@
 	$.articleFeedbackv5.init = function ( $el, config ) {
 		// Can the user edit the page?
 		$.articleFeedbackv5.editable = $.articleFeedbackv5.userCanEdit();
-		// if the page is not editable and the user is anon, don't display AFT
-		if ( !$.articleFeedbackv5.editable && $.articleFeedbackv5.anonymous ) {
-			return;
-		}
 
 		$.articleFeedbackv5.$holder = $el;
 		$.articleFeedbackv5.config = config;

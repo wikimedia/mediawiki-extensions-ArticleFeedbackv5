@@ -63,6 +63,9 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-flagging' => 'Error flagging feedback.',
 	'articlefeedbackv5-error-throttled' => 'Your post has been rejected because you have recently posted more feedback than recommended in Wikipedia\'s feedback guidelines. Please do not post feedback repeatedly or excessively.',
 
+	/* Page protection */
+	'restriction-aft' => 'Article feedback',
+
 	/* My Contributions */
 	'articlefeedbackv5-contribs-feedback' => '[[$1|Feedback on $2]]',
 	'articlefeedbackv5-contribs-status' => 'Status: $1',
@@ -710,6 +713,7 @@ The link to the edit tutorial',
 	'articlefeedbackv5-error-blocked' => 'This error message will be displayed on the form if the user is blocked from submitting feedback.',
 	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters. $1 is the link to the abuse policy, the text of which is {{msg-mw|articlefeedbackv5-error-abuse-linktext}} and the url of which is {{msg-mw|articlefeedbackv5-error-abuse-link}}.',
 	'articlefeedbackv5-error-nofeedback' => 'This error message will be displayed above the form (but below the title) if the user has attempted to submit a blank form.',
+	'restriction-aft' => 'Fieldset label to be used for AFT page protection levels',
 	'articlefeedbackv5-contribs-feedback' => 'AFT entry permalinklink message displayed on My Contributions -- $1 is the feedback permalink, $2 the article title',
 	'articlefeedbackv5-contribs-status' => 'AFT entry status message displayed on My Contributions',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Status when feedback has been marked as helpful',
