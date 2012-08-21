@@ -553,28 +553,26 @@ $messages['en'] = array(
 	'articlefeedbackv5-activity-feedback-info' => 'Feedback Post #$1 by $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Posted on $1',
 	'articlefeedbackv5-activity-permalink' => 'permalink',
-	'articlefeedbackv5-activity-request' => 'requested oversight on',
-	'articlefeedbackv5-activity-unrequest' => 'unrequested oversight on',
-	'articlefeedbackv5-activity-decline' => 'declined oversight on',
-	'articlefeedbackv5-activity-hidden' => 'hid this post on',
-	'articlefeedbackv5-activity-flag' => 'flagged this post on',
-	'articlefeedbackv5-activity-unhidden' => 'unhid this post on',
-	'articlefeedbackv5-activity-unflag' => 'unflagged this post on',
-	'articlefeedbackv5-activity-oversight' => 'oversighted this post on',
-	'articlefeedbackv5-activity-unoversight' => 'removed oversight on this post on',
-	'articlefeedbackv5-activity-resolve' => 'marked this post as resolved on',
-	'articlefeedbackv5-activity-unresolve' => 'un-marked this post as resolved on',
-	'articlefeedbackv5-activity-feature' => 'featured this post on',
-	'articlefeedbackv5-activity-unfeature' => 'un-featured this post on',
-	'articlefeedbackv5-activity-helpful' => 'marked this post as helpful on',
-	'articlefeedbackv5-activity-unhelpful' => 'marked this post as unhelpful on',
-	'articlefeedbackv5-activity-undo-helpful' => 'unmarked this post as helpful on',
-	'articlefeedbackv5-activity-undo-unhelpful' => 'unmarked this post as unhelpful on',
-	'articlefeedbackv5-activity-clear-flags' => 'cleared all flags for this post on',
+	'articlefeedbackv5-activity-item-request' => '$1 requested oversight on $3 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 unrequested oversight on $3 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 declined oversight on $3 $2',
+	'articlefeedbackv5-activity-item-hidden' => '$1 hid this post on $3 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 flagged this post on $3 $2',
+	'articlefeedbackv5-activity-item-unhidden' => '$1 unhid this post on $3 $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 unflagged this post on $3 $2 $3',
+	'articlefeedbackv5-activity-item-oversight' => '$1 oversighted this post on $3 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 removed oversight on this post on $3 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 marked this post as resolved on $3 $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 un-marked this post as resolved on $3 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 featured this post on $3 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 un-featured this post on $3 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 marked this post as helpful on $3 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 marked this post as unhelpful on $3 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 unmarked this post as helpful on $3 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 unmarked this post as unhelpful on $3 $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 cleared all flags for this post on $3 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 action on this post|$1 actions on this post}}',
 	'articlefeedbackv5-activity-more' => 'Show more Activity',
-	'articlefeedbackv5-activity-item-comment' => '$1 $2 $3 : $4',
-	'articlefeedbackv5-activity-item' => '$1 $2 $3',
 
 	/* Talk page */
 	'articlefeedbackv5-talk-view-feedback' => 'View reader feedback',
@@ -1203,24 +1201,132 @@ Name of the AFTv5 log filter on the Special:Log page',
 * $2 is a username',
 	'articlefeedbackv5-activity-feedback-date' => 'Post information timestamp template',
 	'articlefeedbackv5-activity-permalink' => '[Permalink] link text',
-	'articlefeedbackv5-activity-request' => 'Request oversight display template (an oversight request asks an oversighter to delete feedback)',
-	'articlefeedbackv5-activity-unrequest' => 'Un-request oversight display template (an oversight request asks an oversighter to delete feedback)',
-	'articlefeedbackv5-activity-decline' => 'Decline oversight request display template (an oversight request asks an oversighter to delete feedback)',
-	'articlefeedbackv5-activity-hidden' => 'Hide post display template',
-	'articlefeedbackv5-activity-flag' => 'Flag as abuse display template',
-	'articlefeedbackv5-activity-unhidden' => 'Show post display template',
-	'articlefeedbackv5-activity-unflag' => 'Unflag as abuse display template',
-	'articlefeedbackv5-activity-oversight' => 'Oversight display template (oversight means an oversighter deletes the feedback)',
-	'articlefeedbackv5-activity-unoversight' => 'Un-oversight display template (un-oversight means an oversighter un-deletes the feedback)',
-	'articlefeedbackv5-activity-resolve' => 'Mark feedback as resolved',
-	'articlefeedbackv5-activity-unresolve' => 'Un-mark feedback as resolved',
-	'articlefeedbackv5-activity-feature' => 'Feature feedback',
-	'articlefeedbackv5-activity-unfeature' => 'Un-feature feedback',
-	'articlefeedbackv5-activity-helpful' => 'Mark feedback as helpful',
-	'articlefeedbackv5-activity-unhelpful' => 'Mark feedback as unhelpful',
-	'articlefeedbackv5-activity-undo-helpful' => 'Un-mark feedback as helpful',
-	'articlefeedbackv5-activity-undo-unhelpful' => 'Un-mark feedback as unhelpful',
-	'articlefeedbackv5-activity-clear-flags' => 'Clear feedback from abuse flags',
+	'articlefeedbackv5-activity-item-request' => 'Activity log entry when oversight was requested (an oversight request asks an oversighter to delete feedback).
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-unrequest' => 'Activity log entry when oversight was unrequested (an oversight request asks an oversighter to delete feedback)
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-decline' => 'Activity log entry when an oversight request was declined (an oversight request asks an oversighter to delete feedback)
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-hidden' => 'Activity log entry when feedback was hidden
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-flag' => 'Activity log entry when feedback was flagged as abusive
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-unhidden' => 'Activity log entry when feedback was un-hidden
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-unflag' => 'Activity log entry when feedback was un-flagged as abusive
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-oversight' => 'Activity log entry when feedback was oversighted
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-unoversight' => 'Activity log entry when feedback was unoversighted
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-resolve' => 'Activity log entry when feedback was resolved
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-unresolve' => 'Activity log entry when feedback was unresolved
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-feature' => 'Activity log entry when feedback was featured
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-unfeature' => 'Activity log entry when feedback was unfeatured
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-helpful' => 'Activity log entry when feedback was marked as helpful
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-unhelpful' => 'Activity log entry when feedback was marked as unhelpful
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-undo-helpful' => 'Activity log entry when feedback was un-marked as helpful
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => 'Activity log entry when feedback was un-marked as unhelpful
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-clear-flags' => 'Activity log entry when all abuse flags were cleared on feedback
+$1 is a link to the user who performed the action
+$2 is the informational comment left upon performing the action
+$3 is the date & time the action was performed
+$4 is the date the action was performed
+$5 is the time the action was performed
+$6 is the user name (gender support)',
 	'articlefeedbackv5-activity-count' => 'Template for activity items count',
 	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
 	'articlefeedbackv5-activity-item-comment' => 'Text for the activity panel - user name link, activity action, date and comment',
