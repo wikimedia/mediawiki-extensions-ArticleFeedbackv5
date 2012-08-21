@@ -94,7 +94,7 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 
 		$entry           = $this->entry;
 		$action          = $entry->getSubtype();
-		$title           = $entry->getTarget();
+		$target          = $entry->getTarget();
 		$skin            = $this->plaintext ? null : $this->context->getSkin();
 		$parameters      = $this->entry->getParameters();
 
@@ -103,31 +103,23 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 			return '';
 		}
 
-		$page = Title::newFromID( $parameters['pageId'] );
-		$pagelink = '#';
-		if ( $page ) {
-			$pagelink = Message::rawParam( Linker::link( $page ) );
-		}
-
 		// @todo: these 2 lines will spoof a new url which will lead to the central feedback page with the
 		// selected post on top; this is due to a couple of oversighters reporting issues with the permalink page.
 		// once these issues have been solved, these lines should be removed
 		$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5' );
-		$title = Title::makeTitle( NS_SPECIAL, $centralPageName, $parameters['feedbackId'] );
-
-		$fbtext = wfMessage( 'articlefeedbackv5-log-feedback-linktext', $parameters['feedbackId'] )->escaped();
-		$fblink = Message::rawParam( Linker::link( $title, $fbtext ) );
+		$target = Title::makeTitle( NS_SPECIAL, $centralPageName, $parameters['feedbackId'] )->getFullText();
 
 		$language = $skin === null ? $wgContLang : $wgLang;
-		$action = wfMessage( "articlefeedbackv5-log-$action" )
-			->params( array( $fblink, $pagelink ) )
+		$action = wfMessage( "logentry-articlefeedbackv5-$action" )
+			->params( array(
+				Message::rawParam( $this->getPerformerElement() ),
+				$entry->getPerformer()->getId(),
+				$target,
+				$parameters['feedbackId'],
+				Title::newFromID( $parameters['pageId'] )
+			) )
 			->inLanguage( $language )
-			->text();
-
-		$performer = $this->getPerformerElement();
-		if ( !$this->irctext ) {
-			$action = $performer . $this->msg( 'word-separator' )->text() . $action;
-		}
+			->parse();
 
 		return $action;
 	}

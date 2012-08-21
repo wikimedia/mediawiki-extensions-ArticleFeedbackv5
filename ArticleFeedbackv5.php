@@ -469,8 +469,6 @@ $wgJobClasses['ArticleFeedbackv5MailerJob'] = 'ArticleFeedbackv5MailerJob';
 
 // Logging
 $wgLogTypes[] = 'articlefeedbackv5';
-$wgLogNames['articlefeedbackv5'] = 'articlefeedbackv5-log-name';
-$wgLogHeaders['articlefeedbackv5'] = 'articlefeedbackv5-log-header';
 
 // register activity log formatter hooks
 foreach ( array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest' ) as $t) {
