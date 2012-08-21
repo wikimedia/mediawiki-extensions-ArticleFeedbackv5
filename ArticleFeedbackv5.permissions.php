@@ -181,7 +181,8 @@ class ArticleFeedbackv5Permissions {
 		$levels = array(
 			'aft-reader' => 'articlefeedbackv5-protection-permission-reader',
 			'aft-member' => 'articlefeedbackv5-protection-permission-member',
-			'aft-editor' => 'articlefeedbackv5-protection-permission-editor'
+			'aft-editor' => 'articlefeedbackv5-protection-permission-editor',
+			'aft-administrator' => 'articlefeedbackv5-protection-permission-administrator'
 		);
 
 		// build permissions dropdown
@@ -316,6 +317,16 @@ class ArticleFeedbackv5Permissions {
 		$requestPermission = $wgRequest->getVal( 'articlefeedbackv5-protection-level' );
 		$requestExpiry = $wgRequest->getText( 'articlefeedbackv5-protection-expiration' );
 		$requestExpirySelection = $wgRequest->getVal( 'articlefeedbackv5-protection-expiration-selection' );
+
+		// fetch permissions set to edit page ans make sure that AFT permissions are no tighter than these
+		$editPermission = $article->getTitle()->getRestrictions( 'edit' );
+		if ( $editPermission ) {
+			$availablePermissions = User::getGroupPermissions( $editPermission );
+			if ( !in_array( $requestPermission, $availablePermissions ) ) {
+				$errorMsg .= wfMessage( 'articlefeedbackv5-protection-level-error' )->escaped();
+				return false;
+			}
+		}
 
 		if ( $requestExpirySelection == 'existing' ) {
 			$expirationTime = self::getRestriction( $article->getTitle()->getArticleId() )->pr_expiry;
