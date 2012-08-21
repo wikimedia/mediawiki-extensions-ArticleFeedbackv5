@@ -535,6 +535,8 @@ class ArticleFeedbackv5Hooks {
 			&& in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces )
 			// existing pages
 			&& $title->getArticleId() > 0
+			// check if user has sufficient permissions
+			&& self::allowForPageAndUser( $title, $wgUser )
 		) {
 			$result['allow'] = true;
 
@@ -557,10 +559,30 @@ class ArticleFeedbackv5Hooks {
 					$result['whitelist'] = true;
 				}
 			}
-
 		}
 
 		return $result;
+	}
+
+	/**
+	 * Check if ArticleFeedbackv5 is allowed to show on a certain page, for a certain user,
+	 * as defined by the page's protection levels.
+	 *
+	 * @param  Title $title the article to test
+	 * @param  User $user the user to test
+	 * @return bool
+	 */
+	public static function allowForPageAndUser( Title $title, User $user ) {
+		foreach ( $title->getRestrictions( 'aft' ) as $right ) {
+			// Backwards compatibility, rewrite sysop -> protect
+			if ( $right == 'sysop' ) {
+				$right = 'protect';
+			}
+			if ( $right != '' && !$user->isAllowed( $right ) ) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**

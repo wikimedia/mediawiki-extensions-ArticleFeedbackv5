@@ -486,3 +486,5 @@ $wgAbuseFilterAvailableActions[] = 'aftv5flagabuse';
 // $wgAbuseFilterAvailableActions[] = 'aftv5hide';
 // $wgAbuseFilterAvailableActions[] = 'aftv5requestoversight';
 
+// Enable per-page protection level for AFT
+$wgRestrictionTypes[] = 'aft';
