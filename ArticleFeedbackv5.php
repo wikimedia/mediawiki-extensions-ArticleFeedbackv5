@@ -265,16 +265,17 @@ $wgArticleFeedbackv5CTABuckets = array(
 	// placed in a bucket.
 	'buckets' => array(
 		'0' => 0,
-		'1' => 50,
+		'1' => 40,
 		'2' => 10,
 		'3' => 0,
 		'4' => 20,
 		'5' => 20,
+		'6' => 10,
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
 	// this when you want to start a new "experiment".
-	'version' => 2,
+	'version' => 3,
 	// Let users be tracked for a month, and then rebucket them, allowing some
 	// churn.
 	'expires' => 30,
