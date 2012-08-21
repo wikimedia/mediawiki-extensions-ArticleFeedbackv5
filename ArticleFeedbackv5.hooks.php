@@ -535,6 +535,8 @@ class ArticleFeedbackv5Hooks {
 			&& in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces )
 			// existing pages
 			&& $title->getArticleId() > 0
+			// check if user has sufficient permissions
+			&& $wgUser->isAllowed( ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() )->pr_level )
 		) {
 			$result['allow'] = true;
 
@@ -557,7 +559,6 @@ class ArticleFeedbackv5Hooks {
 					$result['whitelist'] = true;
 				}
 			}
-
 		}
 
 		return $result;
