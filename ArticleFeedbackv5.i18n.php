@@ -65,10 +65,10 @@ $messages['en'] = array(
 
 	/* Page protection */
 	'articlefeedbackv5-protection-level' => 'Article feedback',
-	'articlefeedbackv5-protection-level-error' => 'Article feedback protection level can not be tighter than Edit protection level',
+	'articlefeedbackv5-protection-level-error' => 'Article feedback protection level can not be higher than Edit protection level',
 	'articlefeedbackv5-protection-permission-reader' => 'Enable for all users',
-	'articlefeedbackv5-protection-permission-member' => 'Enable for registered users only',
-	'articlefeedbackv5-protection-permission-editor' => 'Enable for editors only',
+	'articlefeedbackv5-protection-permission-member' => 'Enable for logged-in users only',
+	'articlefeedbackv5-protection-permission-editor' => 'Enable for autoconfirmed users',
 	'articlefeedbackv5-protection-permission-administrator' => 'Enable for administrators only',
 
 	/* My Contributions */
@@ -719,7 +719,7 @@ The link to the edit tutorial',
 	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters. $1 is the link to the abuse policy, the text of which is {{msg-mw|articlefeedbackv5-error-abuse-linktext}} and the url of which is {{msg-mw|articlefeedbackv5-error-abuse-link}}.',
 	'articlefeedbackv5-error-nofeedback' => 'This error message will be displayed above the form (but below the title) if the user has attempted to submit a blank form.',
 	'articlefeedbackv5-protection-level' => 'Fieldset label to be used for AFT page protection levels',
-	'articlefeedbackv5-protection-level-error' => 'Error message when protection level is too tight compared to article edit protection level',
+	'articlefeedbackv5-protection-level-error' => 'Error message when protection level is too high compared to article edit protection level',
 	'articlefeedbackv5-protection-permission-reader' => 'Dropdown menu option to enable AFT for all users',
 	'articlefeedbackv5-protection-permission-member' => 'Dropdown menu option to enable AFT for registered users only',
 	'articlefeedbackv5-protection-permission-editor' => 'Dropdown menu option to enable AFT for editors only',
