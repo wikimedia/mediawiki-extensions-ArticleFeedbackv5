@@ -251,19 +251,13 @@ class ApiArticleFeedbackv5Utils {
 		}
 
 		// we only have the page id, we need the string page name for the permalink
-		$title_object = Title::newFromID( $pageId );
+		$pageTitle = Title::newFromID( $pageId );
 
 		// no title object? no page? well then no logging
-		if ( !$title_object ) {
+		if ( !$pageTitle ) {
 			wfProfileOut( __METHOD__ );
 			return;
 		}
-
-		// get the string name of the page
-		$page_name = $title_object->getDBKey();
-
-		// to build our permalink, use the feedback entry key + the page name (isn't page name a title? but title is an object? confusing)
-		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$page_name/$itemId" );
 
 		// Make sure our notes are not too long - we won't error, just hard substr it
 		global $wgArticleFeedbackv5MaxActivityNoteLength, $wgLang;
@@ -287,9 +281,12 @@ class ApiArticleFeedbackv5Utils {
 			$doer = null;
 		}
 
+		// add feedback id to params
+		$params[] = $itemId;
+
 		$log = new LogPage( $logtype, false );
 		// comments become the notes section from the feedback
-		$log->addEntry( $type, $permalink, $notes, $params, $doer );
+		$log->addEntry( $type, $pageTitle, $notes, $params, $doer );
 
 		// update our log count by 1
 		$dbw = wfGetDB( DB_MASTER );

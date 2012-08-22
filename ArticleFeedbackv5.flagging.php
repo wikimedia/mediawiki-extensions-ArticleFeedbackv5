@@ -292,7 +292,7 @@ class ArticleFeedbackv5Flagging {
 
 		// activity logging
 		foreach( $this->log as $entry ) {
-			ApiArticleFeedbackv5Utils::logActivity( $entry[0], $record->af_page_id, $this->feedbackId, $entry[1], $entry[2], array( $this->feedbackId ) );
+			ApiArticleFeedbackv5Utils::logActivity( $entry[0], $record->af_page_id, $this->feedbackId, $entry[1], $entry[2]);
 		}
 
 		$this->results['result'] = 'Success';
