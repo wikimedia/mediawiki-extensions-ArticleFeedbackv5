@@ -68,7 +68,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-protection-level-error' => 'Article feedback protection level can not be higher than Edit protection level',
 	'articlefeedbackv5-protection-permission-reader' => 'Enable for all users',
 	'articlefeedbackv5-protection-permission-member' => 'Enable for logged-in users only',
-	'articlefeedbackv5-protection-permission-editor' => 'Enable for autoconfirmed users',
+	'articlefeedbackv5-protection-permission-editor' => 'Enable for autoconfirmed users only',
 	'articlefeedbackv5-protection-permission-administrator' => 'Enable for administrators only',
 
 	/* My Contributions */
