@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//0d8\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-24T18:03:52Z",
+      "side": 1,
+      "message": "Looks like it only returns object",
+      "revId": "db59895211432f44bd4d63728197526e4fbe4747",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//0eI\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-24T18:03:52Z",
+      "side": 1,
+      "message": "I think you can use isset() here since self::$current would never include null value, isset is slightly faster",
+      "revId": "db59895211432f44bd4d63728197526e4fbe4747",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//0tY\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-24T18:03:52Z",
+      "side": 1,
+      "message": "pr_expiry is defined as varchar, it\u0027s better to do a string to string comparison and should be quoted using $dbr-\u003eaddQuotes().",
+      "revId": "db59895211432f44bd4d63728197526e4fbe4747",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//0t8\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-24T18:03:52Z",
+      "side": 1,
+      "message": "$permission may be false from $dbr-\u003eselectRow(), needs further checking before proceeding",
+      "revId": "db59895211432f44bd4d63728197526e4fbe4747",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//0sg\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-24T18:03:52Z",
+      "side": 1,
+      "message": "$expiry may be a boolean, see the return value from onProtectionSave()",
+      "revId": "db59895211432f44bd4d63728197526e4fbe4747",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//0tM\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-24T18:03:52Z",
+      "side": 1,
+      "message": "looks like it only returns bool",
+      "revId": "db59895211432f44bd4d63728197526e4fbe4747",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//0r8\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-24T18:03:52Z",
+      "side": 1,
+      "message": "This code is fine but it would execute at least two queries to master database if the permission is a non-default permission.\n\nI\u0027d rather try to get the page record from slave database and compare it with the new value then do insert/update/no action based on the result",
+      "revId": "db59895211432f44bd4d63728197526e4fbe4747",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//0dw\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-24T18:03:52Z",
+      "side": 1,
+      "message": "The else looks redundant to me since the result from self::getRestriction( $articleId ) is always a std object",
+      "revId": "db59895211432f44bd4d63728197526e4fbe4747",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//0s0\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-24T18:03:52Z",
+      "side": 1,
+      "message": "$articleId \u003d $article-\u003egetId();",
+      "revId": "db59895211432f44bd4d63728197526e4fbe4747",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//0sw\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-24T18:03:52Z",
+      "side": 1,
+      "message": "$article-\u003egetId();",
+      "revId": "db59895211432f44bd4d63728197526e4fbe4747",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//0tA\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-24T18:03:52Z",
+      "side": 1,
+      "message": "self::setRestriction() may return false, shouldn\u0027t the code check the return value?",
+      "revId": "db59895211432f44bd4d63728197526e4fbe4747",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//0dg\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-24T18:03:52Z",
+      "side": 1,
+      "message": "Both onProtectionForm \u0026\u0026 onProtectionSave are hook functions, you should move them to ArticleFeedbackv5.hooks.php for code consistency",
+      "revId": "db59895211432f44bd4d63728197526e4fbe4747",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
