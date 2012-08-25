@@ -3,17 +3,6 @@
  * the feedback dashboard or not.
  */
 
-/**
- * Global debug function
- *
- * @param any Output message
- */
-aft5_debug = function( any ) {
-	if ( typeof console != 'undefined' ) {
-		console.log( any );
-	}
-}
-
 /*** Main entry point ***/
 jQuery( function( $ ) {
 

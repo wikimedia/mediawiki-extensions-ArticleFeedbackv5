@@ -204,7 +204,7 @@ class ArticleFeedbackv5Flagging {
 		// ApiArticleFeedbackv5Utils::logActivity takes care of that
 
 		// we were valid
-		$success = $dbw->update(
+		$dbw->update(
 			'aft_article_feedback',
 			$this->update,
 			$where,
@@ -263,11 +263,6 @@ class ArticleFeedbackv5Flagging {
 
 		// Update helpful/unhelpful display count after submission but BEFORE db commit to stay in the transaction
 		if ( $flag == 'helpful' || $flag == 'unhelpful' ) {
-
-			// no negative numbers please
-			$helpful = max( 0, $this->helpfulCount );
-			$unhelpful = max( 0, $this->unhelpfulCount );
-
 			$this->results['helpful'] = wfMessage( 'articlefeedbackv5-form-helpful-votes' )
 				->rawParams( wfMessage( 'percent',
 						ApiArticleFeedbackv5Utils::percentHelpful( $this->helpfulCount, $this->unhelpfulCount )
@@ -706,8 +701,6 @@ class ArticleFeedbackv5Flagging {
 		}
 		$this->relevance[] = 'featured';
 
-		$is_featured = true;
-
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'featured', $this->getUserId(), $timestamp );
 
@@ -744,8 +737,6 @@ class ArticleFeedbackv5Flagging {
 		$this->filters['visible-featured'] = -1;
 		$this->filters['visible-unfeatured'] = 1;
 		$this->relevance[] = 'unfeatured';
-
-		$is_featured = false;
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'unfeatured', $this->getUserId(), $timestamp );
@@ -976,7 +967,7 @@ class ArticleFeedbackv5Flagging {
 	 */
 	private function flag_abuse_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
 		global $wgArticleFeedbackv5AbusiveThreshold,
-			$wgArticleFeedbackv5HideAbuseThreshold;
+			   $wgArticleFeedbackv5HideAbuseThreshold;
 
 		$this->results['abuse_count'] = $record->af_abuse_count;
 		$this->filters = array();
@@ -1003,7 +994,7 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		// Un-hide if we don't have threshold flags anymore
-		if ( $record->af_abuse_count < $wgArticleFeedbackv5AbusiveThreshold && true == $record->af_is_autohide ) {
+		if ( $record->af_abuse_count < $wgArticleFeedbackv5HideAbuseThreshold && true == $record->af_is_autohide ) {
 			$this->update['af_is_hidden'] = false;
 			$this->update['af_is_unhidden'] = true;
 
@@ -1435,24 +1426,20 @@ class ArticleFeedbackv5Flagging {
 		global $wgUser;
 
 		// jobs need a title object
-		$title_object = Title::newFromID( $record->af_page_id );
-
-		if ( !$title_object ) {
-			return; // no title object, no mail
+		$page = Title::newFromID( $record->af_page_id );
+		if ( !$page ) {
+			return;
 		}
 
-		// get the string name of the page
-		$page_name = $title_object->getDBKey();
-
 		// make a title out of our user (sigh)
-		$user_page = $wgUser->getUserPage();
+		$userPage = $wgUser->getUserPage();
 
-		if ( !$user_page ) {
+		if ( !$userPage ) {
 			return; // no user title object, no mail
 		}
 
 		// to build our permalink, use the feedback entry key + the page name (isn't page name a title? but title is an object? confusing)
-//		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$page_name/" . $this->feedbackId );
+//		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getDBKey() . '/' . $this->feedbackId );
 
 		// @todo: these 2 lines will spoof a new url which will lead to the central feedback page with the
 		// selected post on top; this is due to a couple of oversighters reporting issues with the permalink page.
@@ -1461,13 +1448,15 @@ class ArticleFeedbackv5Flagging {
 		$permalink = Title::makeTitle( NS_SPECIAL, $centralPageName, "$this->feedbackId" );
 
 		// build our params
-		$params = array( 'user_name' => $wgUser->getName(),
-				'user_url' => $user_page->getCanonicalUrl(),
-				'page_name' => $title_object->getPrefixedText(),
-				'page_url' => $title_object->getCanonicalUrl(),
-				'permalink' => $permalink->getCanonicalUrl() );
+		$params = array(
+			'user_name' => $wgUser->getName(),
+			'user_url' => $userPage->getCanonicalUrl(),
+			'page_name' => $page->getPrefixedText(),
+			'page_url' => $page->getCanonicalUrl(),
+			'permalink' => $permalink->getCanonicalUrl()
+		);
 
-		$job = new ArticleFeedbackv5MailerJob( $title_object, $params );
+		$job = new ArticleFeedbackv5MailerJob( $page, $params );
 		$job->insert();
 	}
 
