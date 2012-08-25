@@ -16,6 +16,24 @@
       "revId": "bd5abb945e0a87ea993dfb22e838ef84761b21bc",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//0QA\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-08-25T08:30:06Z",
+      "side": 1,
+      "message": "$class will be \u0027hide\u0027 or \u0027unhide\u0027, making the object\u0027s class \u0027articleFeedbackv5-hide-link\u0027 or \u0027articleFeedbackv5-unhide-link\u0027.\nAn event is hooked to this in jquery.articleFeedbackv5.special.js, around L368",
+      "parentUuid": "AAAARX//0cI\u003d",
+      "revId": "bd5abb945e0a87ea993dfb22e838ef84761b21bc",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
