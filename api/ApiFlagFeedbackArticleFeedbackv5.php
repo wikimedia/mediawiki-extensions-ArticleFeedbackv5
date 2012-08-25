@@ -33,7 +33,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 		// get important values from our parameters
 		$params     = $this->extractRequestParams();
-		$pageId     = $params['pageid'];
 		$feedbackId = $params['feedbackid'];
 		$flag       = $params['flagtype'];
 		$notes      = $params['note'];

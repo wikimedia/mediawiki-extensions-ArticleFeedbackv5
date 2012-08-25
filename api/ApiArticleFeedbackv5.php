@@ -65,7 +65,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$dbw          = wfGetDB( DB_MASTER );
 		$pageId       = $params['pageid'];
 		$bucket       = $params['bucket'];
-		$experiment   = $params['experiment'];
 		$revisionId   = $params['revid'];
 		$error        = null;
 		$warning      = null;
@@ -147,6 +146,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			) );
 		}
 
+		// @todo wfAppendQuery() is deprecated. Use Uri class.
 		$squidUpdate = new SquidUpdate( array(
 			wfAppendQuery( wfScript( 'api' ), array(
 				'action'       => 'query',
@@ -174,7 +174,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			} else {
 				continue;
 			}
-			$notes = wfMsgExt( $msg, 'parseinline', array( $rule_desc ) );
+			$notes = wfMessage( $msg, array( $rule_desc ) )->parse();
 			$res = $flagger->run( $flag, $notes );
 			if ( 'Error' == $res['result'] ) {
 				// TODO: Log somewhere?
@@ -290,7 +290,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @param $pageId int    the page ID
 	 */
 	private function findAbuse( &$value, $pageId ) {
-
 		// Respect $wgSpamRegex
 		global $wgSpamRegex;
 		if ( ( is_array( $wgSpamRegex ) && count( $wgSpamRegex ) > 0 )
@@ -357,13 +356,14 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 			// Send to the abuse filter log
 			$dbr = wfGetDB( DB_SLAVE );
+			global $wgRequest;
 			$log_template = array(
 				'afl_user' => $wgUser->getId(),
 				'afl_user_text' => $wgUser->getName(),
 				'afl_timestamp' => $dbr->timestamp( wfTimestampNow() ),
 				'afl_namespace' => $title->getNamespace(),
 				'afl_title' => $title->getDBkey(),
-				'afl_ip' => wfGetIP()
+				'afl_ip' => $wgRequest->getIP()
 			);
 			$action = $vars->getVar( 'ACTION' )->toString();
 			AbuseFilter::addLogEntries( $actions_taken, $log_template, $action, $vars );
@@ -486,7 +486,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		# sanity check
 		if ( $type != 'rating' && $type != 'option_id' && $type != 'boolean' ) {
 			wfProfileOut( __METHOD__ );
-			return 0;
+			return;
 		}
 
 		// Strip out the data not of this type.
@@ -729,7 +729,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		// Only save IP address if the user isn't logged in.
 		if ( !$wgUser->isLoggedIn() ) {
-			$ip = wfGetIP();
+			global $wgRequest;
+			$ip = $wgRequest->getIP();
 		}
 
 		// Make sure we have a page ID
@@ -819,7 +820,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		global $wgUser;
 		$dbw  = wfGetDB( DB_MASTER );
-		$dbr  = wfGetDB( DB_SLAVE );
 		$rows = array();
 
 		// Only save data for logged-in users.
