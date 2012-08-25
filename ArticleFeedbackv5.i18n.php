@@ -660,6 +660,7 @@ publicized to the community for this testing period.',
  * @author Arthur Richards
  * @author Beta16
  * @author Brandon Harris
+ * @author Darth Kule
  * @author EugeneZelenko
  * @author Kghbln
  * @author Krinkle
@@ -1211,47 +1212,47 @@ Name of the AFTv5 log filter on the Special:Log page',
 	'articlefeedbackv5-activity-feedback-date' => 'Post information timestamp template',
 	'articlefeedbackv5-activity-permalink' => '[Permalink] link text',
 	'articlefeedbackv5-activity-item-request' => 'Activity log entry when oversight was requested (an oversight request asks an oversighter to delete feedback).
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-unrequest' => 'Activity log entry when oversight was unrequested (an oversight request asks an oversighter to delete feedback)
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-decline' => 'Activity log entry when an oversight request was declined (an oversight request asks an oversighter to delete feedback)
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-hidden' => 'Activity log entry when feedback was hidden
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-flag' => 'Activity log entry when feedback was flagged as abusive
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-unhidden' => 'Activity log entry when feedback was un-hidden
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-unflag' => 'Activity log entry when feedback was un-flagged as abusive.
 * $1 is a link to the user who performed the action
 * $2 is the informational comment left upon performing the action
@@ -1260,82 +1261,82 @@ $6 is the user name (gender support)',
 * $5 is the time the action was performed
 * $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-oversight' => 'Activity log entry when feedback was oversighted
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-unoversight' => 'Activity log entry when feedback was unoversighted
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-resolve' => 'Activity log entry when feedback was resolved
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-unresolve' => 'Activity log entry when feedback was unresolved
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-feature' => 'Activity log entry when feedback was featured
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-unfeature' => 'Activity log entry when feedback was unfeatured
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-helpful' => 'Activity log entry when feedback was marked as helpful
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-unhelpful' => 'Activity log entry when feedback was marked as unhelpful
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-undo-helpful' => 'Activity log entry when feedback was un-marked as helpful
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-undo-unhelpful' => 'Activity log entry when feedback was un-marked as unhelpful
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-clear-flags' => 'Activity log entry when all abuse flags were cleared on feedback
-$1 is a link to the user who performed the action
-$2 is the informational comment left upon performing the action
-$3 is the date & time the action was performed
-$4 is the date the action was performed
-$5 is the time the action was performed
-$6 is the user name (gender support)',
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-count' => 'Template for activity items count',
 	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
 	'articlefeedbackv5-talk-view-feedback' => 'A link on the talk page to encourage people to visit the feedback page',
@@ -8308,10 +8309,10 @@ Notez bien que cette fonctionnalité de commentaire d’article v5 est encore da
 $messages['frp'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Grant-marci !',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Saviâd-vos que vos pouede changiér cela pâge ?',
-	'articlefeedbackv5-cta1-confirmation-call' => 'Vouiquipèdia fonccione perce que quint que seye pôt changiér ses pâges. Alâds-y, féte una èprôva. Seyâd coragiox !',
+	'articlefeedbackv5-cta1-confirmation-call' => '{{SITENAME}} fonccione perce que quint que seye pôt changiér les sines pâges. Alâds-y, féte n’èprôva. Seyâd coragiox !',
 	'articlefeedbackv5-cta1-learn-how' => 'Apregnéd a changiér una pâge',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Changiér ceta pâge',
-	'articlefeedbackv5-cta2-confirmation-title' => 'Édiéd a mèlyorar Vouiquipèdia',
+	'articlefeedbackv5-cta2-confirmation-title' => 'Édiéd a bônar {{SITENAME}}',
 	'articlefeedbackv5-cta2-confirmation-call' => 'Cél seto est rèalisâ per des gens coment vos. Nos pouede-vos balyér un côp de man ?',
 	'articlefeedbackv5-cta2-button-text' => 'Nen savêr més',
 	'articlefeedbackv5-cta4-button-text-signup' => 'Fâre un compto',
@@ -8405,7 +8406,7 @@ $messages['frp'] = array(
 	'articlefeedbackv5-dashboard-bottom' => "'''Nota :''' nos volens continuar a èxpèrimentar difèrentes façons de reprèsentar los articllos dens celos tablôs de bôrd.  Ora, celos contegnont cetos articllos :
 * pâges qu’ont les quotes les ples hôtes / fêbles : sont los articllos qu’ont reçus u muens 10 èstimacions dens les 24 hores passâs.  Les moyenes sont avues en calculent la moyena de totes les èstimacions de les 24 hores passâs.
 * bâs novéls : sont los articllos qu’ont reçus 70 % ou ben una quota ples fêbla (2 ètêles ou ben muens) dens una catègorie quinta que seye dens les 24 hores passâs. Cen s’aplique ren qu’ux articllos qu’ont reçus u muens 10 èstimacions dens les 24 hores passâs.",
-	'articlefeedbackv5' => 'Tablô de bôrd de l’èstimacion d’articllo',
+	'articlefeedbackv5' => 'Èvaluacion d’articllo - Pâge centrâla',
 	'articlefeedbackv5-desc' => 'Èstimacion d’articllo',
 	'articlefeedbackv5-comment-more' => 'Més',
 	'articlefeedbackv5-comment-less' => 'Muens',
@@ -8493,11 +8494,11 @@ $messages['frp'] = array(
 	'articlefeedbackv5-bucket3-form-submit' => 'Postâd voutron avis',
 	'articlefeedbackv5-bucket4-title' => 'Édiéd a mèlyorar cela pâge',
 	'articlefeedbackv5-bucket4-subhead' => 'Saviâd-vos que vos pouede changiér cela pâge ?',
-	'articlefeedbackv5-bucket4-teaser-line1' => 'Vouiquipèdia fonccione perce que quint que seye pôt changiér ses pâges.',
+	'articlefeedbackv5-bucket4-teaser-line1' => '{{SITENAME}} fonccione perce que quint que seye pôt changiér les sines pâges.',
 	'articlefeedbackv5-bucket4-teaser-line2' => 'Alâds-y, féte una èprôva. Seyâd coragiox !',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Apregnéd a changiér una pâge',
 	'articlefeedbackv5-bucket4-form-submit' => 'Changiér ceta pâge',
-	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Vouiquipèdia vodrêt savêr cen que vos pensâd. Édiéd a mèlyorar cela pâge en sè fassent un èditor.',
+	'articlefeedbackv5-bucket4-help-tooltip-info' => '{{SITENAME}} vodrêt savêr cen que vos pensâd. Édiéd a bônar cela pâge en sè fassent changior.',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Nen savêr més',
 	'articlefeedbackv5-bucket5-form-switch-label' => 'Èstimar cela pâge',
 	'articlefeedbackv5-bucket5-form-panel-title' => 'Èstimar cela pâge',
@@ -8509,7 +8510,7 @@ $messages['frp'] = array(
 	'articlefeedbackv5-bucket5-form-panel-expertise-profession' => 'Cen fât partia de mon metiér',
 	'articlefeedbackv5-bucket5-form-panel-expertise-hobby' => 'O est una passion provonda a mè',
 	'articlefeedbackv5-bucket5-form-panel-expertise-other' => 'La sôrsa de ma cognessence est pas listâ ique',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'J’amerê édiér a mèlyorar Vouiquipèdia, mandâd-mè un mèssâjo (u chouèx)',
+	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'J’amerê édiér a bônar {{SITENAME}}, mandâd-mè un mèssâjo (u chouèx)',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-note' => 'Nos vos manderens un mèssâjo de confirmacion. Nos partagierens pas voutra adrèce avouéc pèrsona. $1',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-email-placeholder' => 'mèssâjo@ègzemplo.org',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy' => 'Politica de confidencialitât',
@@ -8559,7 +8560,7 @@ $messages['frp'] = array(
 	'articlefeedbackv5-shared-on-feedback' => 'Voutron comentèro serat partagiê sur cela $1.',
 	'articlefeedbackv5-shared-on-feedback-linktext' => 'pâge d’avis',
 	'articlefeedbackv5-help-tooltip-title' => 'Qu’est-o qu’il est ?',
-	'articlefeedbackv5-help-tooltip-info' => 'Vouiquipèdia amerêt aouire cen que vos pensâd de cela pâge. Partagiéd voutron avis avouéc los èditors&nbsp;— et pués édiéd a mèlyorar cela pâge.',
+	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} amerêt aouire cen que vos pensâd de cela pâge. Partagiéd voutron avis avouéc los changiors — et pués édiéd a bônar cela pâge.',
 	'articlefeedbackv5-help-tooltip-linktext' => 'Nen savêr més',
 	'articlefeedbackv5-sitesub-linktext' => 'Bônar cela pâge',
 	'articlefeedbackv5-titlebar-linktext' => 'Édiéd a mèlyorar cela pâge &gt;&gt;',
@@ -11665,6 +11666,13 @@ $messages['ia'] = array(
 	'articlefeedbackv5-activity-item-unoversight' => '$1 removeva le supervision sur iste message le $3 $2',
 	'articlefeedbackv5-activity-item-resolve' => '$1 marcava iste message como resolvite le $3 $2',
 	'articlefeedbackv5-activity-item-unresolve' => '$1 dismarcava iste message como resolvite le $3 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 marcava iste message como eminente le $3 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 dismarcava iste message como eminente le $3 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 marcava iste message como utile le $3 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 marcava iste message como inutile le $3 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 dismarcava iste message como utile le $3 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 dismarcava iste message como inutile le $3 $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 radeva tote le marcas de iste message le $3 $2',
 	'articlefeedbackv5-activity-count' => '$1 {{PLURAL:$1|action|actiones}} sur iste message',
 	'articlefeedbackv5-activity-more' => 'Monstrar plus activitate',
 	'articlefeedbackv5-talk-view-feedback' => 'Vider suggestiones de lectores',
@@ -12355,6 +12363,8 @@ Riprova più tardi.',
 	'articlefeedbackv5-special-filter-unfeatured' => 'Tolto particolare ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'Risolti ($1)',
 	'articlefeedbackv5-special-filter-unresolved' => 'Tolto risolto ($1)',
+	'articlefeedbackv5-special-filter-all-watchlist' => 'Tutti (soppressi)',
+	'articlefeedbackv5-special-filter-notdeleted-watchlist' => 'Tutti (nascosti)',
 	'articlefeedbackv5-special-filter-comment-watchlist' => 'Tutti i commenti',
 	'articlefeedbackv5-special-filter-relevant-watchlist' => 'Più rilevanti',
 	'articlefeedbackv5-special-filter-abusive-watchlist' => 'Segnalato come abuso',
@@ -12389,7 +12399,7 @@ Riprova più tardi.',
 	'articlefeedbackv5-special-permalink-pagetitle' => 'Commenti postati su $1',
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'Feedback dalle mie pagine osservate',
 	'articlefeedbackv5-special-central-pagetitle' => 'Pagina centrale commenti',
-	'articlefeedbackv5-loading-tag' => 'Caricamento in corso…',
+	'articlefeedbackv5-loading-tag' => 'Caricamento in corso...',
 	'articlefeedbackv5-form-optionid' => 'Opzione $1',
 	'articlefeedbackv5-status-hidden' => 'Questo post è stato nascosto da $1 il $2 alle $3',
 	'articlefeedbackv5-status-unhidden' => 'Questo post è stato scoperto da $1 il $2 alle $3',
@@ -14748,14 +14758,14 @@ $messages['lb'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Merci!',
 	'articlefeedbackv5-cta-confirmation-message' => 'Äre Reaktioun ass op dëser [$1 Feedbacksäit ze gesinn].',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Wosst Dir datt Dir dës Säit ännere kënnt?',
-	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia fonctionnéiert well jiddereen do Säiten ännere kann. Maacht weider, probéiert et. Sidd king!',
+	'articlefeedbackv5-cta1-confirmation-call' => '{{SITENAME}} fonctionnéiert well jiddereen do Säiten ännere kann. Maacht weider, probéiert et. Sidd king!',
 	'articlefeedbackv5-cta1-learn-how' => 'Wéi een ännere kann',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Dës Säit änneren',
-	'articlefeedbackv5-cta2-confirmation-title' => 'Hëlleft Wikipedia ze verbesseren',
+	'articlefeedbackv5-cta2-confirmation-title' => 'Hëlleft {{SITENAME}} ze verbesseren',
 	'articlefeedbackv5-cta2-confirmation-call' => 'Dësen Internet-Site ass vu Leit esou wéi Dir gemaach. Kënnt dir eis eng Hand upaken?',
 	'articlefeedbackv5-cta2-button-text' => 'Fir méi ze wëssen',
 	'articlefeedbackv5-cta3-confirmation-title' => 'Maacht w.e.g. bäi enger kuerzer Ëmfro mat',
-	'articlefeedbackv5-cta3-confirmation-call' => 'Et dauert nëmmen eng Minutt an hëlleft Wikipedia ze verbesseren.',
+	'articlefeedbackv5-cta3-confirmation-call' => 'Et dauert nëmmen eng Minutt an hëlleft {{SITENAME}} ze verbesseren.',
 	'articlefeedbackv5-cta3-button-text' => 'Mat der Ëmfro ufänken',
 	'articlefeedbackv5-cta4-confirmation-title' => 'Maacht bei eis mat',
 	'articlefeedbackv5-cta4-button-text-signup' => 'E Benotzerkont uleeën',
@@ -14765,6 +14775,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-cta5-confirmation-title' => 'Kuckt wat Anerer soen',
 	'articlefeedbackv5-cta5-confirmation-call' => "Kuckt d'Virschléi vun anere Lieser. Dir kënnt hëllefen déi bescht Iddien erauszesichen!",
 	'articlefeedbackv5-cta5-button-text' => 'Kuckt all Bemierkungen',
+	'articlefeedbackv5-cta6-button-text' => 'Besicht den Téisalon',
 	'articlefeedbackv5-overlay-close' => 'Zoumaachen',
 	'articlefeedbackv5-error' => 'Et ass e Feeler geschitt. Probéiert w.e.g. méi spéit nach emol.',
 	'articlefeedbackv5-page-disabled' => "D'Säit fir Feedback ass fir dësen Artikel net aktivéiert.",
@@ -14885,6 +14896,7 @@ $messages['lb'] = array(
 * Säite mat de beschten / schlechtste Bewäertungen: Artikel déi mindestens zéng Bewäertungen während de leschte 24 Stonne kritt hunn. D'Durchschnëttswäerter sinn dobäi de Mëttelwäert vun alle Bewäertunge vun de leschte 24 Stonnen.
 * Aktuell schlechte Bewäertungen: Artikel déi während de leschte 24 Stonne 70 % oder méi schlecht Bewäertungen (zwee Stären oder manner) an enger Kategorien kritt hunn. Nëmmen Artikel mat mindestens zéng Bewäertunge während de leschte 24 Stonne ginn dobäi berücksichtegt",
 	'articlefeedbackv5' => 'Artikel-Feedback - Haaptsäit',
+	'articlefeedbackv5watchlist' => 'Artikel Feedback - Meng iwwerwaachte Säiten',
 	'articlefeedbackv5-desc' => 'Artikel Feedback',
 	'articlefeedbackv5-comment-more' => 'Méi',
 	'articlefeedbackv5-comment-less' => 'Manner',
@@ -14972,12 +14984,12 @@ $messages['lb'] = array(
 	'articlefeedbackv5-bucket3-form-submit' => 'Publizéiert Äre Feedback',
 	'articlefeedbackv5-bucket4-title' => 'Hëlleft dës Säit ze verbesseren',
 	'articlefeedbackv5-bucket4-subhead' => 'Wosst Dir datt Dir dës Säit ännere kënnt?',
-	'articlefeedbackv5-bucket4-teaser-line1' => 'Wikipedia fonctionnéiert, well jidderee hir Säiten ännere kann.',
+	'articlefeedbackv5-bucket4-teaser-line1' => '{{SITENAME}} fonctionnéiert, well jidderee hir Säiten ännere kann.',
 	'articlefeedbackv5-bucket4-teaser-line2' => 'Maacht weider, probéiert et. Sidd king!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Wéi een ännere kann',
 	'articlefeedbackv5-bucket4-form-submit' => 'Dës Säit änneren',
-	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Wikipedia wëllt wësse wat Dir denkt. Hëlleft dës Säit ze verbesseren an deem och Dir en Auteur gitt.',
-	'articlefeedbackv5-bucket4-noedit-title' => 'Hëlleft Wikipedia ze verbesseren',
+	'articlefeedbackv5-bucket4-help-tooltip-info' => '{{SITENAME}} wëllt wësse wat Dir denkt. Hëlleft dës Säit ze verbesseren an deem och Dir en Auteur gitt.',
+	'articlefeedbackv5-bucket4-noedit-title' => 'Hëlleft {{SITENAME}} ze verbesseren',
 	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'Dësen Internetsite gëtt vu Leit wéi Iech gemaach.',
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'Kënnt Dir eis eng Hand upaken?',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Fir méi ze wëssen',
@@ -14991,7 +15003,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-bucket5-form-panel-expertise-profession' => 'Et ass en Deel vu mengem Beruff',
 	'articlefeedbackv5-bucket5-form-panel-expertise-hobby' => 'Ech si passionéiert vun deem Sujet',
 	'articlefeedbackv5-bucket5-form-panel-expertise-other' => "D'Quell vu mengem Wëssen ass hei net opgezielt",
-	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'Ech wëll hëllefe fir Wikipedia ze verbesseren, schéckt mir eng E-Mail (fakultativ)',
+	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'Ech wëll hëllefe fir {{SITENAME}} ze verbesseren, schéckt mir eng E-Mail (fakultativ)',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-note' => 'Mir schécken Iech eng Confirmatiouns-Mail. Mir ginn Är E-Mailadress u kee weider esou wéi an eise(n) $1 virgesinn ass.',
 	'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy' => 'Dateschutz vum Feedback',
 	'articlefeedbackv5-bucket5-form-panel-submit' => 'Bewäertunge schécken',
@@ -15048,7 +15060,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-shared-on-feedback' => 'Är Bemierkung gëtt op $1 verëffentlecht.',
 	'articlefeedbackv5-shared-on-feedback-linktext' => 'Feedback-Säit',
 	'articlefeedbackv5-help-tooltip-title' => 'Wat ass dat?',
-	'articlefeedbackv5-help-tooltip-info' => 'Wikipedia wëllt wësse wat Dir vun dëser Säit denkt. Deelt Äre Feedback mat den Auteuren -- an hëlleft dës Säit ze verbesseren.',
+	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} wëllt wësse wat Dir vun dëser Säit denkt. Deelt Äre Feedback mat den Auteuren -- an hëlleft dës Säit ze verbesseren.',
 	'articlefeedbackv5-help-tooltip-linktext' => 'Fir méi ze wëssen',
 	'articlefeedbackv5-sitesub-linktext' => 'Dës Säit verbesseren',
 	'articlefeedbackv5-titlebar-linktext' => 'Hëlleft dës Säit ze verbesseren >>',
@@ -18131,6 +18143,9 @@ $messages['nl'] = array(
 	'articlefeedbackv5-cta5-confirmation-call' => 'Bekijk suggesties van andere lezers. Kunt u helpen de beste ideeën te kiezen?',
 	'articlefeedbackv5-cta5-button-text' => 'Alle opmerkingen weergeven',
 	'articlefeedbackv5-cta6-confirmation-title' => 'Hulp nodig bij het bewerken van {{SITENAME}}?',
+	'articlefeedbackv5-cta6-confirmation-call' => 'Kom naar het Theehuis om bewerken op {{SITENAME}} te bespreken, waar nieuwe en ervaren redacteuren samenkomen om tips uit te wisselen.',
+	'articlefeedbackv5-cta6-button-text' => 'Theehuis bezoeken',
+	'articlefeedbackv5-cta6-button-link' => '//en.wikipedia.org/wiki/Wikipedia:Teahouse?ref=aft',
 	'articlefeedbackv5-overlay-close' => 'Sluiten',
 	'articlefeedbackv5-error' => 'Er is een fout opgetreden.
 Probeer het later opnieuw.',
@@ -18442,7 +18457,7 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-bucket3-form-submit' => 'Terugkoppeling opslaan',
 	'articlefeedbackv5-bucket4-title' => 'Help deze pagina te verbeteren',
 	'articlefeedbackv5-bucket4-subhead' => 'Wist u dat u deze pagina kunt bewerken?',
-	'articlefeedbackv5-bucket4-teaser-line1' => '{{SITENAME}} werkt omdat iedereen de pagina van de site kan bewerken.',
+	'articlefeedbackv5-bucket4-teaser-line1' => "{{SITENAME}} werkt omdat iedereen de pagina's van de site kan bewerken.",
 	'articlefeedbackv5-bucket4-teaser-line2' => 'Ga uw gang. Probeer het eens!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Leren hoe u kunt bewerken',
 	'articlefeedbackv5-bucket4-form-submit' => 'Deze pagina bewerken',
@@ -18563,6 +18578,24 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-activity-feedback-info' => 'Terugkoppelingsbericht #$1 door $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Geplaatst op $1',
 	'articlefeedbackv5-activity-permalink' => 'permanente verwijzing',
+	'articlefeedbackv5-activity-item-request' => '$1 heeft toezicht aangevraagd op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 heeft een aanvraag voor toezicht ingetrokken op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 heeft een aanvraag voor toezicht afgewezen op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-hidden' => '$1 heeft dit bericht verborgen op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 heeft dit bericht gemarkeerd op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-unhidden' => '$1 heeft dit bericht weer zichtbaar gemaakt op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 heeft de markering voor dit bericht verwijderd op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 heeft dit bericht onder toezicht geplaatst op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 heeft toezicht voor dit bericht verwijderd op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 heeft dit bericht gemarkeerd als opgelost op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 heeft de markering opgelost voor dit bericht verwijderd op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 heeft dit bericht uitgelicht op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 heeft de markering uitgelicht voor dit bericht verwijderd op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 heeft dit bericht gemarkeerd als nuttig op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 heeft dit bericht gemarkeerd als niet nuttig op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 heeft de markering nuttig voor dit bericht verwijderd op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 heeft de markering niet nuttig voor dit bericht verwijderd op $4 om $5 $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 heeft alle markeringen voor dit bericht verwijderd op $4 om $5 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|Eén handeling|$1 handelingen}} op dit bericht',
 	'articlefeedbackv5-activity-more' => 'Meer activiteit weergeven',
 	'articlefeedbackv5-talk-view-feedback' => 'Suggesties van lezers bekijken',
@@ -23469,10 +23502,11 @@ Tack och lycka till!
 
 /** Swahili (Kiswahili)
  * @author Kwisha
+ * @author Lloffiwr
  */
 $messages['sw'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Asante!',
-	'articlefeedbackv5-cta1-learn-how' => 'Soma jinsi ya kuhariri',
+	'articlefeedbackv5-cta1-learn-how' => 'Jifunza kuhariri',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Hariri ukurasa huu',
 	'articlefeedbackv5-cta2-confirmation-title' => 'Saidia kuboresha Wikipedia',
 	'articlefeedbackv5-cta2-confirmation-call' => 'Wavuti hu umetengenezwa na watu kama wewe. Unaweza tupa mkono?',
