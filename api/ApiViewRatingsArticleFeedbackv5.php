@@ -30,9 +30,6 @@ class ApiViewRatingsArticleFeedbackv5 extends ApiQueryBase {
 	public function execute() {
 		wfProfileIn( __METHOD__ );
 
-		$params = $this->extractRequestParams();
-		global $wgArticleFeedbackv5RatingTypes;
-
 		$params        = $this->extractRequestParams();
 		$result        = $this->getResult();
 		$result_path   = array( 'query', $this->getModuleName() );

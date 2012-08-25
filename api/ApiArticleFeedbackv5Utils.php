@@ -417,7 +417,6 @@ class ApiArticleFeedbackv5Utils {
 			}
 		}
 
-		$date = '';
 		if ( $displayTime > 0 ) {
 			if ( in_array( $displayBlock, array( 'years', 'months', 'weeks' ) ) ) {
 				$messageKey = 'articlefeedbackv5-timestamp-' . $displayBlock;
@@ -442,7 +441,6 @@ class ApiArticleFeedbackv5Utils {
 	 * @return string     the mask line
 	 */
 	public static function renderMaskLine( $type, $post_id, $user_id, $timestamp ) {
-		global $wgLang;
 		if ( (int) $user_id !== 0 ) { // logged-in users
 			$username = User::newFromId( $user_id )->getName();
 		} else { // magic user

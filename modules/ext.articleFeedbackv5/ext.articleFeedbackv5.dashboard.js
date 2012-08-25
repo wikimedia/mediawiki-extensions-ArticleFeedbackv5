@@ -12,7 +12,7 @@ aft5_debug = function( any ) {
 	if ( typeof console != 'undefined' ) {
 		console.log( any );
 	}
-}
+};
 
 /*** Main entry point ***/
 jQuery( function( $ ) {

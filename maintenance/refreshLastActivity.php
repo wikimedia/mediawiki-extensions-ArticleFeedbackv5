@@ -33,6 +33,7 @@ class ArticleFeedbackv5_RefreshLastActivity extends Maintenance {
 		'resolve' => 'resolved',
 		'unfeature' => 'unfeatured',
 		'unflag' => 'autounflag',
+		// @todo FIXME: Duplicate array key.
 		'unhidden' => 'autounhide',
 		'unhidden' => 'unhidden',
 		'unoversight' => 'undeleted',

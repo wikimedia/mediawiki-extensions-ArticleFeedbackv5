@@ -602,7 +602,7 @@
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.button()
-					.addClass( 'ui-button-blue' )
+					.addClass( 'ui-button-blue' );
 
 				return $block;
 			},
@@ -1606,7 +1606,7 @@
 			 */
 			build: function () {
 				var self = $.articleFeedbackv5.triggerLinks['A'];
-				var $link = $( self.closeable() ? self.templates.closeable : self.templates.basic )
+				var $link = $( self.closeable() ? self.templates.closeable : self.templates.basic );
 				$link.find('#articleFeedbackv5-sitesublink')
 					.data( 'linkId', 'A' )
 					.text( mw.msg( 'articlefeedbackv5-sitesub-linktext' ) )
@@ -2170,7 +2170,7 @@
 		if ( requested in cfg.buckets && cfg.buckets[requested] > 0 ) {
 			$.articleFeedbackv5.bucketId = requested;
 		} else {
-			var key = 'ext.articleFeedbackv5@' + cfg.version + '-form'
+			var key = 'ext.articleFeedbackv5@' + cfg.version + '-form';
 			$.articleFeedbackv5.bucketId = mw.user.bucket( key, cfg );
 		}
 		if ( $.articleFeedbackv5.debug ) {
@@ -2203,7 +2203,7 @@
 				if ( requested in knownBuckets || requested == 'X' ) {
 					bucketedLink = requested;
 				} else {
-					var key = 'ext.articleFeedbackv5@' + cfg.version + '-links'
+					var key = 'ext.articleFeedbackv5@' + cfg.version + '-links';
 					bucketedLink = mw.user.bucket( key, cfg );
 				}
 			}
@@ -2774,7 +2774,7 @@
 			}
 
 			return false;
-		}
+		};
 
 		// default = no CTA
 		$.articleFeedbackv5.ctaId = '0';
@@ -2786,7 +2786,7 @@
 		if ( requested && valid( requested ) ) {
 			$.articleFeedbackv5.ctaId = requested;
 		} else {
-			var key = 'ext.articleFeedbackv5@' + cfg.version + '-cta'
+			var key = 'ext.articleFeedbackv5@' + cfg.version + '-cta';
 			var requested = mw.user.bucket( key, cfg );
 
 			if ( valid( requested ) ) {
@@ -2938,7 +2938,7 @@
 		if ( hasTipsy ) {
 			$( '.articleFeedbackv5-form-flyover-closebutton' ).live( 'click', function( e ) {
 				e.preventDefault();
-				var $host = $( '.articleFeedbackv5-trigger-link-' + $( e.target ).attr( 'rel' ) )
+				var $host = $( '.articleFeedbackv5-trigger-link-' + $( e.target ).attr( 'rel' ) );
 				$host.tipsy( 'hide' );
 				$host.closest( '.articleFeedbackv5-trigger-link-holder' )
 					.removeClass( 'articleFeedbackv5-tipsy-active' );
@@ -3014,7 +3014,7 @@
 			.click( function ( e ) {
 				e.preventDefault();
 				var $host = $( e.target );
-				var $wrap = $host.closest( '.articleFeedbackv5-trigger-link-holder' )
+				var $wrap = $host.closest( '.articleFeedbackv5-trigger-link-holder' );
 				if ( $wrap.hasClass( 'articleFeedbackv5-tipsy-active' ) ) {
 					$host.tipsy( 'hide' );
 					$wrap.removeClass( 'articleFeedbackv5-tipsy-active' );
@@ -3238,6 +3238,7 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 		$.articleFeedbackv5.init( $( this ), opts );
 		return $( this );
 	}
+	// @todo Use of reserved word as name? (public)
 	var public = {
 		setLinkId: { args: 1, ret: false },
 		getBucketId: { args: 0, ret: true },

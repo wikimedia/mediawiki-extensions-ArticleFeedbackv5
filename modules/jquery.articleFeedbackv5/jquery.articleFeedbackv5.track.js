@@ -62,7 +62,7 @@
 		}
 		// Are we tracking clicks?
 		var b = mw.config.get( 'wgArticleFeedbackv5Tracking' );
-		var key = 'ext.articleFeedbackv5@' + b.version + '-tracking'
+		var key = 'ext.articleFeedbackv5@' + b.version + '-tracking';
 		var setting = mw.user.bucket( key, b );
 		if ( setting == 'track' ||
 			( setting == 'track-special' && $.aftTrack.isSpecial ) ||

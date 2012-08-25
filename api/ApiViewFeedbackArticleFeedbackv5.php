@@ -36,7 +36,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		$params   = $this->extractRequestParams();
 		$result   = $this->getResult();
-		$pageId   = $params['pageid'];
 		$html     = '';
 		$length   = 0;
 

@@ -204,7 +204,7 @@ class ArticleFeedbackv5Flagging {
 		// ApiArticleFeedbackv5Utils::logActivity takes care of that
 
 		// we were valid
-		$success = $dbw->update(
+		$dbw->update(
 			'aft_article_feedback',
 			$this->update,
 			$where,
@@ -263,11 +263,6 @@ class ArticleFeedbackv5Flagging {
 
 		// Update helpful/unhelpful display count after submission but BEFORE db commit to stay in the transaction
 		if ( $flag == 'helpful' || $flag == 'unhelpful' ) {
-
-			// no negative numbers please
-			$helpful = max( 0, $this->helpfulCount );
-			$unhelpful = max( 0, $this->unhelpfulCount );
-
 			$this->results['helpful'] = wfMessage( 'articlefeedbackv5-form-helpful-votes' )
 				->rawParams( wfMessage( 'percent',
 						ApiArticleFeedbackv5Utils::percentHelpful( $this->helpfulCount, $this->unhelpfulCount )
@@ -706,8 +701,6 @@ class ArticleFeedbackv5Flagging {
 		}
 		$this->relevance[] = 'featured';
 
-		$is_featured = true;
-
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'featured', $this->getUserId(), $timestamp );
 
@@ -744,8 +737,6 @@ class ArticleFeedbackv5Flagging {
 		$this->filters['visible-featured'] = -1;
 		$this->filters['visible-unfeatured'] = 1;
 		$this->relevance[] = 'unfeatured';
-
-		$is_featured = false;
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'unfeatured', $this->getUserId(), $timestamp );
@@ -975,8 +966,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_abuse_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
-		global $wgArticleFeedbackv5AbusiveThreshold,
-			$wgArticleFeedbackv5HideAbuseThreshold;
+		global $wgArticleFeedbackv5AbusiveThreshold;
 
 		$this->results['abuse_count'] = $record->af_abuse_count;
 		$this->filters = array();
@@ -1441,18 +1431,12 @@ class ArticleFeedbackv5Flagging {
 			return; // no title object, no mail
 		}
 
-		// get the string name of the page
-		$page_name = $title_object->getDBKey();
-
 		// make a title out of our user (sigh)
 		$user_page = $wgUser->getUserPage();
 
 		if ( !$user_page ) {
 			return; // no user title object, no mail
 		}
-
-		// to build our permalink, use the feedback entry key + the page name (isn't page name a title? but title is an object? confusing)
-//		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$page_name/" . $this->feedbackId );
 
 		// @todo: these 2 lines will spoof a new url which will lead to the central feedback page with the
 		// selected post on top; this is due to a couple of oversighters reporting issues with the permalink page.
