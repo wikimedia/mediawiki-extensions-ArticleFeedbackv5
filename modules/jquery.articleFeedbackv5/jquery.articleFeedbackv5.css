@@ -863,7 +863,7 @@
 	margin: 0 10px 0 0;
 	height: 25px;
 	/* @embed */
-	background: url(images/bg-confirmation-thanks.png) 0 center no-repeat;
+	background: url(images/bg-confirmation-thanks.png) left center no-repeat;
 }
 .articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent .articleFeedbackv5-confirmation-learnHow {
 	font-weight: bold;
