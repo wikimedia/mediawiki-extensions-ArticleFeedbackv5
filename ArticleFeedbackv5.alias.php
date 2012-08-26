@@ -60,6 +60,7 @@ $specialPageAliases['nb'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'ArticleFeedbackv5' => array( 'Terugkoppelingv5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'Terugkoppelingv5Volglijst' ),
 );
 
 /** Tagalog (Tagalog) */
