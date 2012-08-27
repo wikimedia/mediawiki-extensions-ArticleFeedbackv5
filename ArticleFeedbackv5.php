@@ -125,6 +125,9 @@ $wgArticleFeedbackv5Dashboard = true;
 // Number of revisions to keep a rating alive for
 $wgArticleFeedbackv5RatingLifetime = 30;
 
+// Percentage of article AFT should be enabled on
+$wgArticleFeedbackv5LotteryOdds = 100;
+
 // Which categories the pages must belong to have the rating widget added (with _ in text)
 // Extension is "disabled" if this field is an empty array (as per default configuration)
 $wgArticleFeedbackv5Categories = array( 'Article_Feedback_5' );
