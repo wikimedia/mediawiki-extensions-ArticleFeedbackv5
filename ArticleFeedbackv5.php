@@ -125,6 +125,9 @@ $wgArticleFeedbackv5Dashboard = true;
 // Number of revisions to keep a rating alive for
 $wgArticleFeedbackv5RatingLifetime = 30;
 
+// Percentage of article AFT should be enabled on
+$wgArticleFeedbackv5LotteryOdds = 100;
+
 // Which categories the pages must belong to have the rating widget added (with _ in text)
 // Extension is "disabled" if this field is an empty array (as per default configuration)
 $wgArticleFeedbackv5Categories = array( 'Article_Feedback_5' );
@@ -480,7 +483,27 @@ if ( $wgArticleFeedbackv5AbuseFilterGroup != 'default' ) {
 
 // Add custom action handlers for AbuseFilter
 $wgAbuseFilterAvailableActions[] = 'aftv5flagabuse';
-// Not for this release
-// $wgAbuseFilterAvailableActions[] = 'aftv5hide';
-// $wgAbuseFilterAvailableActions[] = 'aftv5requestoversight';
+$wgAbuseFilterAvailableActions[] = 'aftv5hide';
+$wgAbuseFilterAvailableActions[] = 'aftv5requestoversight';
 
+// Permissions: 6 levels of permissions are built into ArticleFeedbackv5: reader, member, editor,
+// monitor, administrator, oversighter. The default (below-configured) permissions scheme can be seen at
+// http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
+foreach ( array( '*', 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
+	$wgGroupPermissions[$group]['aft-reader'] = true;
+}
+foreach ( array( 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
+	$wgGroupPermissions[$group]['aft-member'] = true;
+}
+foreach ( array( 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
+	$wgGroupPermissions[$group]['aft-editor'] = true;
+}
+foreach ( array( 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
+	$wgGroupPermissions[$group]['aft-monitor'] = true;
+}
+foreach ( array( 'sysop', 'oversight' ) as $group ) {
+	$wgGroupPermissions[$group]['aft-administrator'] = true;
+}
+foreach ( array( 'oversight' ) as $group ) {
+	$wgGroupPermissions[$group]['aft-oversighter'] = true;
+}
