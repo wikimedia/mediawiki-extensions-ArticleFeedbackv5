@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//zNg\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-27T19:31:20Z",
+      "side": 1,
+      "message": "is this variable updated in config file as well?",
+      "revId": "cf879f6d0304b4cb27a0cf5e83ac20115344cd45",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
