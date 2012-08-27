@@ -673,8 +673,10 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered footer
 	 */
 	private function renderFooter( $record ) {
-		global $wgLang;
+		global $wgLang, $wgUser;
+
 		$id = $record[0]->af_id;
+		$ownFeedback = $wgUser->getId() && $wgUser->getId() == intval( $record[0]->af_user_id );
 
 		// Start the footer
 		$footer =
@@ -793,6 +795,34 @@ class ArticleFeedbackv5Render {
 			$footer .= Html::closeElement( 'div' );
 		}
 
+		// Add ability to hide own posts for readers
+		if ( !$this->hasPermission( 'can_feature' ) && $ownFeedback ) {
+			// Message can be:
+			//  * articlefeedbackv5-form-(hide|unhide)[-own]
+			if ( $record[0]->af_is_hidden ) {
+				$msg = 'unhide';
+				$class = 'show';
+			} else {
+				$msg = 'hide';
+				$class = 'hide';
+			}
+			// change message for own feedback
+			if ( $ownFeedback ) {
+				$msg .= '-own';
+			}
+
+			$footer .= Html::rawElement(
+				'div',
+				array( 'class' => 'articleFeedbackv5-comment-foot-hide' ),
+				Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-$class-link-$id",
+					'class' => "articleFeedbackv5-$class-link",
+					'href' => '#',
+				),
+				wfMessage( "articlefeedbackv5-form-" . $msg )->text() )
+			);
+		}
+
 		// </div>
 		$footer .= Html::element( 'div', array( 'class' => 'clear' ) );
 
@@ -857,12 +887,15 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered toolbox
 	 */
 	private function renderToolbox( $record ) {
-		$id = $record[0]->af_id;
-
 		// Don't render the toolbox if they can't do anything with it.
 		if ( !$this->hasToolbox() ) {
 			return '';
 		}
+
+		global $wgUser;
+		$ownFeedback = $wgUser->getId() && $wgUser->getId() == intval( $record[0]->af_user_id );
+
+		$id = $record[0]->af_id;
 
 		// Begin toolbox
 		$tools =
@@ -928,10 +961,9 @@ class ArticleFeedbackv5Render {
 		}
 
 		// Hide/unhide
-		if ( $this->hasPermission( 'can_hide' ) ) {
+		if ( $this->hasPermission( 'can_hide' ) || $ownFeedback ) {
 			// Message can be:
-			//  * articlefeedbackv5-form-hide
-			//  * articlefeedbackv5-form-unhide
+			//  * articlefeedbackv5-form-(hide|unhide)[-own]
 			if ( $record[0]->af_is_hidden ) {
 				$msg = 'unhide';
 				$class = 'show';
@@ -939,6 +971,11 @@ class ArticleFeedbackv5Render {
 				$msg = 'hide';
 				$class = 'hide';
 			}
+			// change message for own feedback
+			if ( $ownFeedback ) {
+				$msg .= '-own';
+			}
+
 			// <li>
 			//   <a id="articleFeedbackv5-{hide|unhide}-link-{$id}"
 			//     class="articleFeedbackv5-{hide|unhide}-link" href="#">
