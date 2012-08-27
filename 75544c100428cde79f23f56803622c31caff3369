@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//zs8\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-08-27T09:30:14Z",
+      "side": 0,
+      "message": "This var shouldn\u0027t be removed, rather a wrong var was used further in the code where this one should\u0027ve been used.",
+      "revId": "75544c100428cde79f23f56803622c31caff3369",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//ztE\u003d",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 1455,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-08-27T09:30:14Z",
+      "side": 0,
+      "message": "Although currently unused, this line shouldn\u0027t be removed. The 2 lines below will some day be removed and this line uncommented, but the 2 lines below is currently a hotfix for an issue we can not yet reproduce.",
+      "revId": "75544c100428cde79f23f56803622c31caff3369",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
