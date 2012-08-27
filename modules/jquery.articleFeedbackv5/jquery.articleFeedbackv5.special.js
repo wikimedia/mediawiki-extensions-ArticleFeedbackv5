@@ -655,21 +655,6 @@
 	 * @param data object the data returned from flagging
 	 */
 	$.articleFeedbackv5special.setAbuse = function ( id, data ) {
-		// refresh abuse report
-		var $count = $( '#articleFeedbackv5-abuse-count-' + id );
-		if ( $count.length < 1 ) {
-			return;
-		}
-		$count.html( data['articlefeedbackv5-flag-feedback']['abuse_report'] )
-			.removeClass( 'articleFeedbackv5-has-abuse-flags' )
-			.removeClass( 'abusive' );
-		if ( data['articlefeedbackv5-flag-feedback']['abuse_count'] > 0 || data['articlefeedbackv5-flag-feedback']['abuse_cleared'] ) {
-			$count.addClass( 'articleFeedbackv5-has-abuse-flags' );
-		}
-		if ( data.abusive ) {
-			$count.addClass( 'abusive' );
-		}
-
 		$link = $( '#articleFeedbackv5-abuse-link-' + id ).add( $( '#articleFeedbackv5-unabuse-link-' + id ) );
 
 		if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
@@ -695,6 +680,19 @@
 
 		$.articleFeedbackv5special.setActivityFlag( id, 'abuse', data['articlefeedbackv5-flag-feedback']['abuse_count'] > 0 );
 
+		// refresh abuse report
+		var $count = $( '#articleFeedbackv5-abuse-count-' + id );
+		if ( $count.length > 0 ) {
+			$count.html( data['articlefeedbackv5-flag-feedback']['abuse_report'] )
+				.removeClass( 'articleFeedbackv5-has-abuse-flags' )
+				.removeClass( 'abusive' );
+			if ( data['articlefeedbackv5-flag-feedback']['abuse_count'] > 0 || data['articlefeedbackv5-flag-feedback']['abuse_cleared'] ) {
+				$count.addClass( 'articleFeedbackv5-has-abuse-flags' );
+			}
+			if ( data.abusive ) {
+				$count.addClass( 'abusive' );
+			}
+		}
 	};
 
 	// }}}
