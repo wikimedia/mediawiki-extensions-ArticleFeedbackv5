@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//y6c\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-27T21:19:59Z",
+      "side": 1,
+      "message": "One more nitpicking which I have missed, you can use wfTimestampNow() in here",
+      "revId": "b3a014a829410a16d3f7c854f96113381c074b0c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
