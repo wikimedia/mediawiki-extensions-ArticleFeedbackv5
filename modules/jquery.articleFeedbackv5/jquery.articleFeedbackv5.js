@@ -602,7 +602,7 @@
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.button()
-					.addClass( 'ui-button-blue' )
+					.addClass( 'ui-button-blue' );
 
 				return $block;
 			},
@@ -1606,7 +1606,7 @@
 			 */
 			build: function () {
 				var self = $.articleFeedbackv5.triggerLinks['A'];
-				var $link = $( self.closeable() ? self.templates.closeable : self.templates.basic )
+				var $link = $( self.closeable() ? self.templates.closeable : self.templates.basic );
 				$link.find('#articleFeedbackv5-sitesublink')
 					.data( 'linkId', 'A' )
 					.text( mw.msg( 'articlefeedbackv5-sitesub-linktext' ) )
@@ -2170,11 +2170,8 @@
 		if ( requested in cfg.buckets && cfg.buckets[requested] > 0 ) {
 			$.articleFeedbackv5.bucketId = requested;
 		} else {
-			var key = 'ext.articleFeedbackv5@' + cfg.version + '-form'
+			var key = 'ext.articleFeedbackv5@' + cfg.version + '-form';
 			$.articleFeedbackv5.bucketId = mw.user.bucket( key, cfg );
-		}
-		if ( $.articleFeedbackv5.debug ) {
-			aft5_debug( 'Using form option #' + $.articleFeedbackv5.bucketId );
 		}
 	};
 
@@ -2203,13 +2200,10 @@
 				if ( requested in knownBuckets || requested == 'X' ) {
 					bucketedLink = requested;
 				} else {
-					var key = 'ext.articleFeedbackv5@' + cfg.version + '-links'
+					var key = 'ext.articleFeedbackv5@' + cfg.version + '-links';
 					bucketedLink = mw.user.bucket( key, cfg );
 				}
 			}
-		}
-		if ( $.articleFeedbackv5.debug ) {
-			aft5_debug( 'Using link option ' + bucketedLink );
 		}
 		$.articleFeedbackv5.floatingLinkId = bucketedLink;
 		if ('X' != bucketedLink) {
@@ -2774,7 +2768,7 @@
 			}
 
 			return false;
-		}
+		};
 
 		// default = no CTA
 		$.articleFeedbackv5.ctaId = '0';
@@ -2786,7 +2780,7 @@
 		if ( requested && valid( requested ) ) {
 			$.articleFeedbackv5.ctaId = requested;
 		} else {
-			var key = 'ext.articleFeedbackv5@' + cfg.version + '-cta'
+			var key = 'ext.articleFeedbackv5@' + cfg.version + '-cta';
 			var requested = mw.user.bucket( key, cfg );
 
 			if ( valid( requested ) ) {
@@ -2800,9 +2794,6 @@
 					}
 				}
 			}
-		}
-		if ( $.articleFeedbackv5.debug ) {
-			aft5_debug( 'Using cta option #' + $.articleFeedbackv5.ctaId );
 		}
 	};
 
@@ -2938,7 +2929,7 @@
 		if ( hasTipsy ) {
 			$( '.articleFeedbackv5-form-flyover-closebutton' ).live( 'click', function( e ) {
 				e.preventDefault();
-				var $host = $( '.articleFeedbackv5-trigger-link-' + $( e.target ).attr( 'rel' ) )
+				var $host = $( '.articleFeedbackv5-trigger-link-' + $( e.target ).attr( 'rel' ) );
 				$host.tipsy( 'hide' );
 				$host.closest( '.articleFeedbackv5-trigger-link-holder' )
 					.removeClass( 'articleFeedbackv5-tipsy-active' );
@@ -3014,7 +3005,7 @@
 			.click( function ( e ) {
 				e.preventDefault();
 				var $host = $( e.target );
-				var $wrap = $host.closest( '.articleFeedbackv5-trigger-link-holder' )
+				var $wrap = $host.closest( '.articleFeedbackv5-trigger-link-holder' );
 				if ( $wrap.hasClass( 'articleFeedbackv5-tipsy-active' ) ) {
 					$host.tipsy( 'hide' );
 					$wrap.removeClass( 'articleFeedbackv5-tipsy-active' );
@@ -3039,8 +3030,6 @@
 	 * @param string message the message to display, if in dev
 	 */
 	$.articleFeedbackv5.markShowstopperError = function ( message ) {
-		aft5_debug( message );
-
 		var $veil = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' );
 		var $box  = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' );
 		$veil.css( 'top', '-' + $box.height() );
@@ -3097,9 +3086,6 @@
 			if ( 'nofeedback' in errors ) {
 				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-nofeedback' ) );
 			}
-		}
-		if ( $.articleFeedbackv5.debug ) {
-			aft5_debug( errors );
 		}
 		if ( 'markFormErrors' in $.articleFeedbackv5.currentBucket() ) {
 			$.articleFeedbackv5.currentBucket().markFormErrors( errors );
@@ -3238,7 +3224,8 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 		$.articleFeedbackv5.init( $( this ), opts );
 		return $( this );
 	}
-	var public = {
+
+	var publicFunction = {
 		setLinkId: { args: 1, ret: false },
 		getBucketId: { args: 0, ret: true },
 		inDebug: { args: 0, ret: true },
@@ -3246,14 +3233,14 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 		experiment: { args: 0, ret: true },
 		addToRemovalQueue: { args: 1, ret: false }
 	};
-	if ( opts in public ) {
+	if ( opts in publicFunction ) {
 		var r;
-		if ( 1 == public[opts].args ) {
+		if ( 1 == publicFunction[opts].args ) {
 			r = $.articleFeedbackv5[opts]( arg );
-		} else if ( 0 == public[opts].args ) {
+		} else if ( 0 == publicFunction[opts].args ) {
 			r = $.articleFeedbackv5[opts]();
 		}
-		if ( public[opts].ret) {
+		if ( publicFunction[opts].ret) {
 			return r;
 		}
 	}
