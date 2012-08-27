@@ -415,71 +415,72 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function beforePageDisplay( OutputPage &$out, Skin &$skin ) {
-		global $wgArticleFeedbackv5Namespaces;
 		$title = $out->getTitle();
 		$action = Action::getActionName( $out->getContext() );
 		$user = $out->getUser();
 		$request = $out->getRequest();
 
-		// normal page where form can be displayed
-		if ( in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces ) ) {
-			if (
-				// view pages
-				( $action == 'view' || $action == 'purge' )
-				// if user is logged in, showing on action=purge is OK,
-				// but if user is logged out, action=purge shows a form instead of the article,
-				// so return false in that case.
-				&& !( $action == 'purge' && $user->isAnon() )
-				// current revision
-				&& $request->getVal( 'diff' ) == null
-				&& $request->getVal( 'oldid' ) == null
-				// not viewing a redirect
-				&& $request->getVal( 'redirect' ) != 'no'
-				// not viewing the printable version
-				&& $request->getVal( 'printable' ) != 'yes'
-				// actually fetched article content
-				&& $out->getRevisionTimestamp() != null
-			) {
-				$res = self::allowForPage( $title );
+		switch ( $title->getNamespace() ) {
+			// normal page
+			case NS_MAIN:
+				if (
+					// view pages
+					( $action == 'view' || $action == 'purge' )
+					// if user is logged in, showing on action=purge is OK,
+					// but if user is logged out, action=purge shows a form instead of the article,
+					// so return false in that case.
+					&& !( $action == 'purge' && $user->isAnon() )
+					// current revision
+					&& $request->getVal( 'diff' ) == null
+					&& $request->getVal( 'oldid' ) == null
+					// not viewing a redirect
+					&& $request->getVal( 'redirect' ) != 'no'
+					// not viewing the printable version
+					&& $request->getVal( 'printable' ) != 'yes'
+					// actually fetched article content
+					&& $out->getRevisionTimestamp() != null
+				) {
+					$res = self::allowForPage( $title );
+					if ( $res['allow'] ) {
+						// load module
+						$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
+						$out->addModules( 'ext.articleFeedbackv5.startup' );
+					}
+				}
+				break;
+
+			// talk page
+			case NS_TALK:
+				$res = self::allowForPage( $title->getSubjectPage() );
 				if ( $res['allow'] ) {
 					// load module
 					$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
-					$out->addModules( 'ext.articleFeedbackv5.startup' );
+					$out->addJsConfigVars( 'aftv5PageId', $title->getSubjectPage()->getArticleID() );
+					$out->addModules( 'ext.articleFeedbackv5.talk' );
 				}
-			}
+				break;
 
-		// talk page
-		} elseif ( in_array( $title->getSubjectPage()->getNameSpace(), $wgArticleFeedbackv5Namespaces ) ) {
-			$res = self::allowForPage( $title->getSubjectPage() );
-			if ( $res['allow'] ) {
-				// load module
-				$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
-				$out->addJsConfigVars( 'aftv5PageId', $title->getSubjectPage()->getArticleID() );
-				$out->addJsConfigVars( 'aftv5PageTitle', $title->getSubjectPage()->getFullText() );
-				$out->addModules( 'ext.articleFeedbackv5.talk' );
-			}
+			// special page
+			case NS_SPECIAL:
+				// central feedback page, article feedback page, permalink page & watchlist feedback page
+				if ( $out->getTitle()->isSpecial( 'ArticleFeedbackv5' ) ||  $out->getTitle()->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
+					// fetch the title of the article this special page is related to
+					list( /* special */, $mainTitle) = SpecialPageFactory::resolveAlias( $out->getTitle()->getDBkey() );
 
-		// special page
-		} elseif ( $title->getNamespace() == NS_SPECIAL) {
-			// central feedback page, article feedback page, permalink page & watchlist feedback page
-			if ( $out->getTitle()->isSpecial( 'ArticleFeedbackv5' ) ||  $out->getTitle()->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
-				// fetch the title of the article this special page is related to
-				list( /* special */, $mainTitle) = SpecialPageFactory::resolveAlias( $out->getTitle()->getDBkey() );
+					// Permalinks: drop the feedback ID
+					$mainTitle = preg_replace( '/(\/[0-9]+)$/', '', $mainTitle );
 
-				// Permalinks: drop the feedback ID
-				$mainTitle = preg_replace( '/(\/[0-9]+)$/', '', $mainTitle );
+					// Central feedback page OR allowed page
+					$mainTitle = Title::newFromDBkey( $mainTitle );
+					if ( $mainTitle === null ) {
+						$res = array( 'allow' => true, 'whitelist' => true );
+					} else {
+						$res = self::allowForPage( $mainTitle );
 
-				// Central feedback page OR allowed page
-				$mainTitle = Title::newFromDBkey( $mainTitle );
-				if ( $mainTitle === null ) {
-					$res = array( 'allow' => true, 'whitelist' => true );
-				} else {
-					$res = self::allowForPage( $mainTitle );
+						// always allow Special page, regardless of black-/whitelist or lottery
+						$res['allow'] = true;
+					}
 
-					// always allow Special page, regardless of black-/whitelist or lottery
-					$res['allow'] = true;
-				}
-				if ( $res['allow'] ) {
 					// load module
 					$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
 					if ( $mainTitle !== null ) {
@@ -489,21 +490,25 @@ class ArticleFeedbackv5Hooks {
 					}
 					$out->addModules( 'ext.articleFeedbackv5.dashboard' );
 				}
-			}
 
-			// watchlist page
-			elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
-				if ( $user->getId() ) {
-					// check if there is feedback on the user's watchlist
-					$fetch = new ArticleFeedbackv5Fetch();
-					$fetch->setUserId( $user->getId() );
-					$fetch->setLimit( 1 );
-					$fetched = $fetch->run();
-					if ( count( $fetched->records ) > 0 ) {
-						$out->addModules( 'ext.articleFeedbackv5.watchlist' );
+				// watchlist page
+				elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
+					if ( $user->getId() ) {
+						// check if there is feedback on the user's watchlist
+						$fetch = new ArticleFeedbackv5Fetch();
+						$fetch->setUserId( $user->getId() );
+						$fetch->setLimit( 1 );
+						$fetched = $fetch->run();
+						if ( count( $fetched->records ) > 0 ) {
+							$out->addModules( 'ext.articleFeedbackv5.watchlist' );
+						}
 					}
 				}
-			}
+				break;
+
+			// other, unknown
+			default:
+ 				return true;
 		}
 
 		return true;
@@ -534,8 +539,6 @@ class ArticleFeedbackv5Hooks {
 			&& in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces )
 			// existing pages
 			&& $title->getArticleId() > 0
-			// check if user has sufficient permissions
-			&& $wgUser->isAllowed( ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() )->pr_level )
 		) {
 			$result['allow'] = true;
 
@@ -558,30 +561,10 @@ class ArticleFeedbackv5Hooks {
 					$result['whitelist'] = true;
 				}
 			}
+
 		}
 
 		return $result;
-	}
-
-	/**
-	 * Check if ArticleFeedbackv5 is allowed to show on a certain page, for a certain user,
-	 * as defined by the page's protection levels.
-	 *
-	 * @param  Title $title the article to test
-	 * @param  User $user the user to test
-	 * @return bool
-	 */
-	public static function allowForPageAndUser( Title $title, User $user ) {
-		foreach ( $title->getRestrictions( 'aft' ) as $right ) {
-			// Backwards compatibility, rewrite sysop -> protect
-			if ( $right == 'sysop' ) {
-				$right = 'protect';
-			}
-			if ( $right != '' && !$user->isAllowed( $right ) ) {
-				return false;
-			}
-		}
-		return true;
 	}
 
 	/**
@@ -650,7 +633,7 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5TalkPageLink,
 			$wgArticleFeedbackv5WatchlistLink,
 			$wgArticleFeedbackv5DefaultSorts,
-			$wgArticleFeedbackv5LotteryOdds;
+			$wgArticleFeedbackLotteryOdds;
 		$vars['wgArticleFeedbackv5SMaxage'] = $wgArticleFeedbackv5SMaxage;
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
@@ -662,7 +645,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5LinkBuckets'] = $wgArticleFeedbackv5LinkBuckets;
 		$vars['wgArticleFeedbackv5Namespaces'] = $wgArticleFeedbackv5Namespaces;
 		$vars['wgArticleFeedbackv5LearnToEdit'] = $wgArticleFeedbackv5LearnToEdit;
-		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMsgForContent( 'articlefeedbackv5-bucket5-form-panel-explanation-link' );
+		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMessage( 'articlefeedbackv5-bucket5-form-panel-explanation-link' )->inContentLanguage()->text();
 		$vars['wgArticleFeedbackv5SurveyUrls'] = $wgArticleFeedbackv5SurveyUrls;
 		$vars['wgArticleFeedbackv5InitialFeedbackPostCountToDisplay'] = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		$vars['wgArticleFeedbackv5ThrottleThresholdPostsPerHour'] = $wgArticleFeedbackv5ThrottleThresholdPostsPerHour;
@@ -671,7 +654,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
 		$vars['wgArticleFeedbackv5WatchlistLink'] = $wgArticleFeedbackv5WatchlistLink;
 		$vars['wgArticleFeedbackv5DefaultSorts'] = $wgArticleFeedbackv5DefaultSorts;
-		$vars['wgArticleFeedbackv5LotteryOdds'] = $wgArticleFeedbackv5LotteryOdds;
+		$vars['wgArticleFeedbackLotteryOdds'] = $wgArticleFeedbackLotteryOdds;
 
 		// make sure that these keys are being encoded to an object rather than to an array
 		$wgArticleFeedbackv5DisplayBuckets['buckets'] = (object) $wgArticleFeedbackv5DisplayBuckets['buckets'];
@@ -691,13 +674,11 @@ class ArticleFeedbackv5Hooks {
 	 */
 	public static function makeGlobalVariablesScript( &$vars ) {
 		global $wgUser;
-
-		// expose AFT permissions for this user to JS
-		$vars['wgArticleFeedbackv5Permissions'] = array();
-		foreach ( ArticleFeedbackv5Permissions::$permissions as $permission ) {
-			$vars['wgArticleFeedbackv5Permissions'][$permission] = $wgUser->isAllowed( $permission );
-		}
-
+		$vars['wgArticleFeedbackv5Permissions'] = array(
+			'oversighter' => $wgUser->isAllowed( 'aftv5-delete-feedback' ),
+			'moderator' => $wgUser->isAllowed( 'aftv5-hide-feedback' ),
+			'editor' => $wgUser->isAllowed( 'aftv5-feature-feedback' )
+		);
 		return true;
 	}
 

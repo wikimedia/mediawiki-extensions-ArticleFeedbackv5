@@ -33,7 +33,6 @@ class ArticleFeedbackv5_RefreshLastActivity extends Maintenance {
 		'resolve' => 'resolved',
 		'unfeature' => 'unfeatured',
 		'unflag' => 'autounflag',
-		'unhidden' => 'autounhide',
 		'unhidden' => 'unhidden',
 		'unoversight' => 'undeleted',
 		'unrequest' => 'unrequest',

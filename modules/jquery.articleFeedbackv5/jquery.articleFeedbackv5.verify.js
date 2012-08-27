@@ -209,21 +209,9 @@
 				return false;
 			}
 		}
-
 		// Lottery
 		var v4odds = mw.config.get( 'wgArticleFeedbackLotteryOdds', 0 );
-		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
-
-		// odds defined per namespace
-		if ( isNaN( odds ) ) {
-			if ( $.aftVerify.namespace in odds ) {
-				odds = odds[$.aftVerify.namespace];
-			} else {
-				odds = 0;
-			}
-		}
-
-		if ( ( Number( $.aftVerify.pageId ) % 1000 ) > ( 1000 - ( Number( odds ) * 10 ) ) ) {
+		if ( !( ( Number( $.aftVerify.pageId ) % 1000 ) < Number( v4odds ) * 10 ) ) {
 			$.aftVerify.checks.lottery = true;
 			return true;
 		} else {
@@ -240,12 +228,15 @@
 	 */
 	$.aftVerify.checkUserAgent = function () {
 		var ua = navigator.userAgent.toLowerCase();
-		// Rule out MSIE 6, FF2, Android
+		// Rule out MSIE 6/7, FF2, iPhone, iPod, iPad, Android
 		if (
 			(ua.indexOf( 'msie 6' ) != -1) ||
 			(ua.indexOf( 'firefox/2') != -1) ||
 			(ua.indexOf( 'firefox 2') != -1) ||
-			(ua.indexOf( 'android' ) != -1)
+			(ua.indexOf( 'android' ) != -1) ||
+			(ua.indexOf( 'iphone' ) != -1) ||
+			(ua.indexOf( 'ipod' ) != -1 ) ||
+			(ua.indexOf( 'ipad' ) != -1)
 		) {
 			$.aftVerify.checks.useragent = false;
 			return false;

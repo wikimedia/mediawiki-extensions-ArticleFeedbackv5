@@ -22,6 +22,13 @@ $specialPageAliases['ar'] = array(
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'ArticleFeedbackv5' => array( 'Artikelrückmeldungen_v5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'Artikelrückmeldungen_v5_Beobachtungsliste' ),
+);
+
+/** Zazaki (Zazaki) */
+$specialPageAliases['diq'] = array(
+	'ArticleFeedbackv5' => array( 'PeydrıştenaWesiqanv5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'PeydrıştenaWesiqanv5Listaseyri' ),
 );
 
 /** Galician (galego) */
@@ -32,6 +39,7 @@ $specialPageAliases['gl'] = array(
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
 	'ArticleFeedbackv5' => array( '문서피드백v5' ),
+	'ArticleFeedbackv5Watchlist' => array( '문서피드백v5주시문서목록', '문서피드백v5주시목록' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -52,6 +60,7 @@ $specialPageAliases['nb'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'ArticleFeedbackv5' => array( 'Terugkoppelingv5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'Terugkoppelingv5Volglijst' ),
 );
 
 /** Tagalog (Tagalog) */

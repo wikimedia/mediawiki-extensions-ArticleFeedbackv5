@@ -132,15 +132,9 @@ $wgArticleFeedbackv5Categories = array( 'Article_Feedback_5' );
 // Which categories the pages must not belong to have the rating widget added (with _ in text)
 $wgArticleFeedbackv5BlacklistCategories = array( 'Article_Feedback_Blacklist' );
 
-// Which category's pages can be shown on the feedback dashboard
-$wgArticleFeedbackv5DashboardCategory = 'Article_Feedback_5';
-
 // Only load the module / enable the tool in these namespaces
 // Default to $wgContentNamespaces (defaults to array( NS_MAIN ) ).
 $wgArticleFeedbackv5Namespaces = $wgContentNamespaces;
-
-// Only load the module / enable the talk-link in these namespaces
-$wgArticleFeedbackv5TalkNamespaces = array( NS_TALK );
 
 // This puts the JavaScript into debug mode. In debug mode, you can set your
 // own bucket by passing it in the url (e.g., ?bucket=1), and the showstopper
@@ -422,7 +416,6 @@ $wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5']  = $dir . 'api/ApiFlagFee
 $wgAutoloadClasses['ApiViewActivityArticleFeedbackv5']  = $dir . 'api/ApiViewActivityArticleFeedbackv5.php';
 $wgAutoloadClasses['ArticleFeedbackv5Hooks']            = $dir . 'ArticleFeedbackv5.hooks.php';
 $wgAutoloadClasses['ArticleFeedbackv5LogFormatter']     = $dir . 'ArticleFeedbackv5.logFormatter.php';
-$wgAutoloadClasses['ArticleFeedbackv5Permissions']      = $dir . 'ArticleFeedbackv5.permissions.php';
 $wgAutoloadClasses['ArticleFeedbackv5Fetch']            = $dir . 'ArticleFeedbackv5.fetch.php';
 $wgAutoloadClasses['ArticleFeedbackv5Flagging']         = $dir . 'ArticleFeedbackv5.flagging.php';
 $wgAutoloadClasses['ArticleFeedbackv5MailerJob']        = $dir . 'ArticleFeedbackv5MailerJob.php';
@@ -445,8 +438,6 @@ $wgHooks['EditPage::attemptSave'][] = 'ArticleFeedbackv5Hooks::trackEditAttempt'
 $wgHooks['ArticleSaveComplete'][] = 'ArticleFeedbackv5Hooks::trackEditSuccess';
 $wgHooks['ContribsPager::reallyDoQuery'][] = 'ArticleFeedbackv5Hooks::contributionsData';
 $wgHooks['ContributionsLineEnding'][] = 'ArticleFeedbackv5Hooks::contributionsLineEnding';
-$wgHooks['ProtectionForm::buildForm'][] = 'ArticleFeedbackv5Permissions::onProtectionForm';
-$wgHooks['ProtectionForm::save'][] = 'ArticleFeedbackv5Permissions::onProtectionSave';
 
 // API Registration
 $wgAPIListModules['articlefeedbackv5-view-ratings']  = 'ApiViewRatingsArticleFeedbackv5';
@@ -492,3 +483,4 @@ $wgAbuseFilterAvailableActions[] = 'aftv5flagabuse';
 // Not for this release
 // $wgAbuseFilterAvailableActions[] = 'aftv5hide';
 // $wgAbuseFilterAvailableActions[] = 'aftv5requestoversight';
+

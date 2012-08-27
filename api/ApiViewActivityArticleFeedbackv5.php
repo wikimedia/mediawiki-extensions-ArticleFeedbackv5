@@ -198,8 +198,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 							Html::element( 'span', array(), $wgLang->date( $item->log_timestamp ) ),
 							Html::element( 'span', array(), $wgLang->time( $item->log_timestamp ) )
 						)
-						->params( User::newFromId( $item->log_user ) )
-						->text();
+						->params( $item->log_user_text )
+						->escaped();
 			$html .= Html::closeElement( 'span' );
 
 			// </div> for class="articleFeedbackv5-activity-item"

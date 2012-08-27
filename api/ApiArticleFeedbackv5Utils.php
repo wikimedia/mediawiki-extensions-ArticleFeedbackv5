@@ -312,35 +312,34 @@ class ApiArticleFeedbackv5Utils {
 	/**
 	 * Creates a user link for a log row
 	 *
-	 * @param int $user_id can be null or a user object
-	 * @param string $user_ip (name works too)
+	 * @param int $userId can be null or a user object
+	 * @param string $userIp (name works too)
 	 * @return anchor tag link to user
 	 */
-	public static function getUserLink( $user_id, $user_ip = null ) {
-		// if $user is not an object
-		if ( !( $user_id instanceof User ) ) {
-			$userId = (int) $user_id;
+	public static function getUserLink( $userId, $userIp = null ) {
+		if ( ( $userId instanceof User ) ) {
+			// user is an object, all good, make link
+			$user = $userId;
+		} else {
+			// if $userId is not an object
+			$userId = (int) $userId;
 			if ( $userId !== 0 ) { // logged-in users
 				$user = User::newFromId( $userId );
-			} elseif ( !is_null( $user_ip ) ) { // IP users
-				$userText = $user_ip;
+			} elseif ( !is_null( $userIp ) ) { // IP users
+				$userText = $userIp;
 				$user = User::newFromName( $userText, false );
 			} else { // magic user
 				global $wgArticleFeedbackv5AutoHelp;
 				$element = Linker::makeExternalLink(
 					$wgArticleFeedbackv5AutoHelp,
-					wfMessage( 'articlefeedbackv5-default-user' )->text());
-					return $element;
+					wfMessage( 'articlefeedbackv5-default-user' )->text()
+				);
+				return $element;
 			}
-		} else {
-			// user is an object, all good, make link
-			$user = $user_id;
 		}
 
-		$element = Linker::userLink(
-				$user->getId(),
-				$user->getName()
-			);
+		$element = Linker::userLink( $user->getId(), $user->getName() );
+
 		return $element;
 	}
 
@@ -418,7 +417,6 @@ class ApiArticleFeedbackv5Utils {
 			}
 		}
 
-		$date = '';
 		if ( $displayTime > 0 ) {
 			if ( in_array( $displayBlock, array( 'years', 'months', 'weeks' ) ) ) {
 				$messageKey = 'articlefeedbackv5-timestamp-' . $displayBlock;
@@ -443,7 +441,6 @@ class ApiArticleFeedbackv5Utils {
 	 * @return string     the mask line
 	 */
 	public static function renderMaskLine( $type, $post_id, $user_id, $timestamp ) {
-		global $wgLang;
 		if ( (int) $user_id !== 0 ) { // logged-in users
 			$username = User::newFromId( $user_id )->getName();
 		} else { // magic user

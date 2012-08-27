@@ -297,11 +297,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl')->text();
 		if( $user->isAllowed( 'aftv5-delete-feedback' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-page-oversighters' )->text();
+			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-oversighters' )->text();
 		} elseif( $user->isAllowed( 'aftv5-hide-feedback' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-page-monitors' )->text();
+			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-monitors' )->text();
 		} elseif( $user->isAllowed( 'aftv5-feature-feedback' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-tooltip-page-editors' )->text();
+			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-editors' )->text();
 		}
 		$helpLink .= '#Feedback_page';
 
@@ -577,7 +577,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 				$span = Html::rawElement( 'span', array(
 					'class' => "stat-marker $class"
-				), wfMsg( 'percent', $found ) );
+				), wfMessage( 'percent', $found )->escaped() );
 				$out->addHtml(
 					Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-percent-found-wrap' ) )
 						. $this->msg( 'articlefeedbackv5-percent-found' )->rawParams( $span )->escaped()

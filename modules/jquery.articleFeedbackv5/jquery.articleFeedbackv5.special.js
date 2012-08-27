@@ -161,7 +161,7 @@
 	$.articleFeedbackv5special.loadingTemplate = '\
 		<div id="articleFeedbackv5-feedback-loading">\
 			<span class="articleFeedbackv5-loading-message"></span>\
-		</div>'
+		</div>';
 
 	// }}}
 	// {{{ Init methods
@@ -303,7 +303,7 @@
 		if ( b.buckets.ignore == 0 && b.buckets.track == 100 ) {
 			return true;
 		}
-		var key = 'ext.articleFeedbackv5@' + b.version + '-tracking'
+		var key = 'ext.articleFeedbackv5@' + b.version + '-tracking';
 		return ( 'track' === mw.user.bucket( key, b ) );
 	};
 
@@ -343,7 +343,7 @@
 			if ( sort == '' ) {
 				return false;
 			}
-			$.articleFeedbackv5special.toggleSort( sort[0], sort[1] )
+			$.articleFeedbackv5special.toggleSort( sort[0], sort[1] );
 			$.articleFeedbackv5special.loadFeedback( true, false );
 			return false;
 		} );
@@ -365,7 +365,7 @@
 
 		// Bind actions
 		for ( var action in $.articleFeedbackv5special.actions ) {
-			$( document ).on( 'click touchstart', '.articleFeedbackv5-' + action + '-link', function( e ) {
+			$( '.articleFeedbackv5-' + action + '-link' ).live( 'click', function( e ) {
 				e.preventDefault();
 				var $link = $( e.target );
 				var classes = $link.attr( 'class' ).split( ' ' );
@@ -383,7 +383,7 @@
 		}
 
 		// Bind submit actions on flyover panels (flag actions)
-		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-submit', function( e ) {
+		$( '#articleFeedbackv5-noteflyover-submit' ).live( 'click', function( e ) {
 			e.preventDefault();
 			$.articleFeedbackv5special.flagFeedback(
 				$( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ),
@@ -397,12 +397,12 @@
 		} );
 
 		// bind flyover panel close button
-		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-close', function( e ) {
+		$( '#articleFeedbackv5-noteflyover-close' ).live( 'click', function( e ) {
 			e.preventDefault();
 			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
 		} );
-	}
+	};
 
 	// }}}
 	// {{{ bindPanels
@@ -428,7 +428,7 @@
 					}
 				} );
 		}
-	}
+	};
 
 	// }}}
 
@@ -463,7 +463,7 @@
 			$( '#articleFeedbackv5-filter-select' ).val( '' );
 		}
 		$( '#articleFeedbackv5-special-filter-' + id).addClass( 'filter-active' );
-	}
+	};
 
 	// }}}
 	// {{{ toggleSort
@@ -481,7 +481,7 @@
 		$.articleFeedbackv5special.listControls.continueInfo = null;
 
 		$( '#articleFeedbackv5-sort-select' ).val( sort + '-' + direction );
-	}
+	};
 
 	// }}}
 	// {{{ toggleTipsy
@@ -509,7 +509,7 @@
 			$.articleFeedbackv5special.currentPanelHostId = $l.attr( 'id' );
 			return true;
 		}
-	}
+	};
 
 	// }}}
 	// {{{ stripID
@@ -848,7 +848,7 @@
 				);
 			} );
 		}
-	}
+	};
 
 	// }}}
 	// {{{ unmaskPost
@@ -863,7 +863,7 @@
 		$row.find( '.articleFeedbackv5-post-screen' )
 			.addClass( 'articleFeedbackv5-post-screen-off' )
 			.removeClass( 'articleFeedbackv5-post-screen-on' );
-	}
+	};
 
 	// }}}
 	// {{{ markDeleted
@@ -941,10 +941,10 @@
 	 * @param filter string the internal-use id of the filter
 	 */
 	$.articleFeedbackv5special.setSortByFilter = function ( filter ) {
-		var short = $.articleFeedbackv5special.getFilterName( filter );
+		var shortName = $.articleFeedbackv5special.getFilterName( filter );
 		var defaults = mw.config.get( 'wgArticleFeedbackv5DefaultSorts' );
-		if ( short in defaults ) {
-			$.articleFeedbackv5special.toggleSort( defaults[short][0], defaults[short][1] );
+		if ( shortName in defaults ) {
+			$.articleFeedbackv5special.toggleSort( defaults[shortName][0], defaults[shortName][1] );
 		} else {
 			$.articleFeedbackv5special.toggleSort( 'age', 'desc' );
 		}
@@ -1032,7 +1032,7 @@
 			}
 		} );
 		return false;
-	}
+	};
 
 	// }}}
 	// {{{ loadActivityLog
