@@ -132,9 +132,6 @@ $wgArticleFeedbackv5Categories = array( 'Article_Feedback_5' );
 // Which categories the pages must not belong to have the rating widget added (with _ in text)
 $wgArticleFeedbackv5BlacklistCategories = array( 'Article_Feedback_Blacklist' );
 
-// Which category's pages can be shown on the feedback dashboard
-$wgArticleFeedbackv5DashboardCategory = 'Article_Feedback_5';
-
 // Only load the module / enable the tool in these namespaces
 // Default to $wgContentNamespaces (defaults to array( NS_MAIN ) ).
 $wgArticleFeedbackv5Namespaces = $wgContentNamespaces;
