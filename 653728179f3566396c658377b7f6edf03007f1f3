@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//zBE\u003d",
+        "filename": "ArticleFeedbackv5.log.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-27T20:34:03Z",
+      "side": 1,
+      "message": "I think you also need to change the i18n files because the new log has different requirements for header and messages, see: https://www.mediawiki.org/wiki/Logging_to_Special:Log",
+      "revId": "653728179f3566396c658377b7f6edf03007f1f3",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//zCQ\u003d",
+        "filename": "sql/update_logging.sql",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-27T20:34:03Z",
+      "side": 1,
+      "message": "1. Some wikis may have prefix for each table names\n\n2. I am not sure if it\u0027s a good idea to run an ad-hoc query against the database in this case, especially if the number of affected row is big.  You probably should ask Asher if this is okay.  I think this should be handled by a maintenance script that processes a reasonable number ( maybe 100 ) of records at a time.",
+      "revId": "653728179f3566396c658377b7f6edf03007f1f3",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
