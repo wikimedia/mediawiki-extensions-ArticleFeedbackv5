@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//zO0\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-27T18:20:02Z",
+      "side": 1,
+      "message": "default is now for wfTimestamp, strtotime( \u0027now\u0027 ) is redundant",
+      "revId": "cf5809cd750237fbf49d6a6e8bf212f3a39b85b0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//zPI\u003d",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-27T18:20:02Z",
+      "side": 1,
+      "message": "$permission may just be false",
+      "revId": "cf5809cd750237fbf49d6a6e8bf212f3a39b85b0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
