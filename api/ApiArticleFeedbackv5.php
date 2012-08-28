@@ -44,30 +44,28 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
-		// Anon token check
-		$token = $this->getAnonToken( $params );
-
 		wfProfileIn( __METHOD__ );
 
 		// Blocked users are, well, blocked.
 		if ( $wgUser->isBlocked() ) {
-			$this->getResult()->addValue( null, 'error', 'articlefeedbackv5-error-blocked' );
-			wfProfileOut( __METHOD__ );
-			return;
+			$this->dieUsage(
+				wfMessage( 'articlefeedbackv5-error-blocked' )->escaped(),
+				'userblocked'
+			);
 		}
 
-		// Is feedback enabled on this page check?
+		// Check if feedback is enabled on this page
 		if ( !ApiArticleFeedbackv5Utils::isFeedbackEnabled( $params ) ) {
-			wfProfileOut( __METHOD__ );
-			$this->dieUsage( 'ArticleFeedback is not enabled on this page', 'invalidpage' );
+			$this->dieUsage(
+				wfMessage( 'articlefeedbackv5-page-disabled' )->escaped(),
+				'invalidpage'
+			);
 		}
 
 		$dbw          = wfGetDB( DB_MASTER );
 		$pageId       = $params['pageid'];
 		$bucket       = $params['bucket'];
 		$revisionId   = $params['revid'];
-		$error        = null;
-		$warning      = null;
 		$userAnswers  = array();
 		$fields       = ApiArticleFeedbackv5Utils::getFields();
 		$emailData    = array(
@@ -89,17 +87,25 @@ class ApiArticleFeedbackv5 extends ApiBase {
 					continue;
 				}
 				if ( !$this->validateParam( $value, $type, $field['afi_id'], $pageId ) ) {
-					$error = 'articlefeedbackv5-error-validation';
-					break;
+					$this->dieUsage(
+						$this->msg( 'articlefeedbackv5-error-validation' )->escaped(),
+						'paramvalidationfailed'
+					);
 				}
-				if ( $wgArticleFeedbackv5AbuseFiltering && 'text' == $type
-					&& $this->findAbuse( $value, $pageId ) ) {
+				if ( $wgArticleFeedbackv5AbuseFiltering && 'text' == $type && $this->findAbuse( $value, $pageId ) ) {
 					if ( $this->warnForAbuse ) {
-						$warning = $this->warnForAbuse;
+						$this->dieUsage(
+							$this->warnForAbuse,
+							'afwarn'
+						);
 					} else {
-						$error = 'articlefeedbackv5-error-abuse';
+						$target = wfMessage( 'articlefeedbackv5-error-abuse-link' )->inContentLanguage()->plain();
+
+						$this->dieUsage(
+							wfMessage( 'articlefeedbackv5-error-abuse', $target )->parse(),
+							'afreject'
+						);
 					}
-					break;
 				}
 				$data = array( 'aa_field_id' => $field['afi_id'] );
 				foreach ( array( 'rating', 'text', 'boolean', 'option_id' ) as $t ) {
@@ -108,16 +114,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				$userAnswers[] = $data;
 				$emailData['ratingData'][$field_name] = $value;
 			}
-		}
-		if ( $error ) {
-			$this->getResult()->addValue( null, 'error', $error );
-			wfProfileOut( __METHOD__ );
-			return;
-		}
-		if ( $warning ) {
-			$this->getResult()->addValue( null, 'warning', $warning );
-			wfProfileOut( __METHOD__ );
-			return;
 		}
 
 		// all write actions should be done under the same transaction
@@ -183,10 +179,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		// build url to permalink and special page
 		$page = Title::newFromID( $pageId );
-		if ( !$page ) {
-			wfProfileOut( __METHOD__ );
-			$this->dieUsage( "Page for feedback does not exist", "invalidfeedbackid" );
-		}
 		$stitle = Title::newFromText( "ArticleFeedbackv5/$page", NS_SPECIAL );
 		$aftUrl = $stitle->getLinkUrl( array( 'ref' => 'cta' ) );
 		$ptitle = Title::newFromText( "ArticleFeedbackv5/$page/$feedbackId", NS_SPECIAL );
