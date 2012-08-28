@@ -108,7 +108,7 @@ class ArticleFeedbackv5Fetch {
 	 */
 	public static $hiddenFilters  = array( 'all-hidden', 'notdeleted-hidden',
 		'all-unhidden', 'notdeleted-unhidden', 'all-requested',
-		'notdeleted-requested', 'all-unrequested', 'notdeleted-unrequested',
+		'all-unrequested', 'notdeleted-unrequested',
 		'all-declined', 'notdeleted-declined', 'all-oversighted',
 		'all-unoversighted', 'notdeleted', 'all' );
 
@@ -119,7 +119,7 @@ class ArticleFeedbackv5Fetch {
 	 */
 	public static $deletedFilters = array( 'all', 'all-unoversighted',
 		'all-oversighted', 'all-hidden', 'all-unhidden', 'all-requested',
-		'all-unrequested', 'all-declined');
+		'notdeleted-requested', 'all-unrequested', 'all-declined');
 
 	/**
 	 * Constructor
@@ -428,6 +428,7 @@ class ArticleFeedbackv5Fetch {
 		if ( !in_array( $this->filter, self::$deletedFilters )
 		 || !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
 			$where[] = 'af_is_deleted IS FALSE';
+			$where[] = 'af_oversight_count = 0';
 		}
 		if ( !in_array( $this->filter, self::$hiddenFilters )
 		 || !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {

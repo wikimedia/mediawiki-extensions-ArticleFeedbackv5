@@ -149,13 +149,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				'visible-unhelpful', 'visible-abusive', 'visible-resolved',
 				'all-hidden',
 				'all-requested', 'all-declined',
-				'all-oversighted', 'all'
+				'notdeleted-requested', 'all-oversighted', 'all'
 			);
 		} elseif ( $this->showHidden ) {
 			array_push( $this->filters,
 				'visible-unhelpful', 'visible-abusive', 'visible-resolved',
 				'notdeleted-hidden',
-				'notdeleted-requested', 'notdeleted-declined','notdeleted'
+				'notdeleted-declined','notdeleted'
 			);
 		} elseif ( $this->showFeatured ) {
 			array_push( $this->filters,
