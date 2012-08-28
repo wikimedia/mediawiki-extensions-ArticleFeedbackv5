@@ -127,7 +127,7 @@ select {
 /** Filtering **/
 #articleFeedbackv5-sort-filter-controls {
 	font-size: 1.1em;
-	line-height: 2em;
+	line-height: 1.5em;
 	clear: both;
 	padding: 0;
 	/* @embed */
