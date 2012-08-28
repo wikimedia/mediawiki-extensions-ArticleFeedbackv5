@@ -510,4 +510,3 @@ foreach ( array( 'sysop', 'oversight' ) as $group ) {
 foreach ( array( 'oversight' ) as $group ) {
 	$wgGroupPermissions[$group]['aft-oversighter'] = true;
 }
->>>>>>> Cleanup AFT config
