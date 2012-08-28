@@ -151,25 +151,24 @@
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link,
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reversehelpful-link,
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reverseunhelpful-link {
-	padding: 2px 0 0 15px;
-	margin: 0 10px 0 0;
+	padding: 2px 15px 0 15px;
 	text-align: left;
 	color: #333;
 	font-weight: bold;
 	/* @embed */
-	background: url(images/thumbup.png) no-repeat;
+	background: url(images/thumbup.png) left no-repeat;
 }
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link,
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reverseunhelpful-link {
 	/* @embed */
-	background: url(images/thumbdwn.png) no-repeat;
+	background: url(images/thumbdwn.png) left no-repeat;
 }
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-helpful-link:hover,
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link:hover,
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reversehelpful-link:hover,
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reverseunhelpful-link:hover {
 	/* @embed */
-	background-image: url(images/thumbup_hover.png);
+	background: url(images/thumbup_hover.png) left no-repeat;
 	cursor: pointer;
 	color: #333;
 	text-decoration: none;
@@ -177,21 +176,21 @@
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link:hover,
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reverseunhelpful-link:hover {
 	/* @embed */
-	background-image: url(images/thumbdwn_hover.png);
+	background: url(images/thumbdwn_hover.png) left no-repeat;
 }
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-helpful-link.helpful-active,
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-helpful-link.helpful-active:hover,
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reversehelpful-link.helpful-active,
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reversehelpful-link.helpful-active:hover {
 	/* @embed */
-	background-image: url(images/thumbup_active.png);
+	background: url(images/thumbup_active.png) left no-repeat;
 }
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link.helpful-active,
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link.helpful-active:hover,
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reverseunhelpful-link.helpful-active,
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-reverseunhelpful-link.helpful-active:hover {
 	/* @embed */
-	background-image: url(images/thumbdwn_active.png);
+	background: url(images/thumbdwn_active.png) left no-repeat;
 }
 .articleFeedbackv5-helpful-votes {
 	color: #888;
