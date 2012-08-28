@@ -175,11 +175,11 @@
 		// Get the user type
 		if ( mw.user.anonymous() ) {
 			$.articleFeedbackv5special.userType = 'anon';
-		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['oversighter'] ) {
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'] ) {
 			$.articleFeedbackv5special.userType = 'oversighter';
-		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['monitor'] ) {
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-monitor'] ) {
 			$.articleFeedbackv5special.userType = 'monitor';
-		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'] ) {
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'] ) {
 			$.articleFeedbackv5special.userType = 'editor';
 		} else {
 			$.articleFeedbackv5special.userType = 'registered';
@@ -222,11 +222,11 @@
 
 		// Link to help is dependent on the group the user belongs to
 		var helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl' );
-		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['oversighter'] ) {
+		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'] ) {
 			helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl-oversighters' );
-		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['monitor'] ) {
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-monitor'] ) {
 			helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl-monitors' );
-		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'] ) {
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'] ) {
 			helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl-editors' );
 		}
 
@@ -709,9 +709,9 @@
 		var $tags = $row.find( '.articleFeedbackv5-comment-tags' );
 		if ( which == 'remove' ) {
 			$tags.find( '.articleFeedbackv5-' + tag + '-marker' ).remove();
-			if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['oversighter'] && $row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
+			if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'] && $row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
 				$.articleFeedbackv5special.changeTags( $row, 'deleted', 'add' );
-			} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['monitor'] && $row.hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
+			} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-monitor'] && $row.hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
 				$.articleFeedbackv5special.changeTags( $row, 'hidden', 'add' );
 			} else if ( $row.hasClass( 'articleFeedbackv5-feedback-resolved' ) ) {
 				$.articleFeedbackv5special.changeTags( $row, 'resolved', 'add' );

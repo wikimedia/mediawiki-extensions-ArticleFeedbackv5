@@ -1008,7 +1008,7 @@
 			 * @return bool whether the CTA can be displayed
 			 */
 			verify: function () {
-				return $.articleFeedbackv5.editable && !mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'];
+				return $.articleFeedbackv5.editable && !mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'];
 			},
 
 			// }}}
@@ -1110,7 +1110,7 @@
 			 * @return bool whether the CTA can be displayed
 			 */
 			verify: function () {
-				return !mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'];
+				return !mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'];
 			},
 
 			// }}}
@@ -1527,7 +1527,7 @@
 			 * @return bool whether the CTA can be displayed
 			 */
 			verify: function () {
-				return mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'];
+				return mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'];
 			},
 
 			// }}}
@@ -2553,11 +2553,11 @@
 
 		// Link to help is dependent on the group the user belongs to
 		var helpLink = mw.msg( 'articlefeedbackv5-help-form-linkurl' );
-		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['oversighter'] ) {
+		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'] ) {
 			helpLink = mw.msg( 'articlefeedbackv5-help-form-linkurl-oversighters' );
-		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['monitor'] ) {
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-monitor'] ) {
 			helpLink = mw.msg( 'articlefeedbackv5-help-form-linkurl-monitors' );
-		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'] ) {
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'] ) {
 			helpLink = mw.msg( 'articlefeedbackv5-help-form-linkurl-editors' );
 		}
 
