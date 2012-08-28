@@ -489,15 +489,12 @@
 			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
 			localValidation: function ( formdata ) {
-				var error = {};
-				var ok = true;
 				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
 					&& !( 'found' in formdata ) ) {
 					$.articleFeedbackv5.enableSubmission( false );
-					error.nofeedback = mw.msg( 'articlefeedbackv5-error-nofeedback' );
-					ok = false;
+					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
 				}
-				return ok ? false : error;
+				return false;
 			}
 
 			// }}}
@@ -830,15 +827,12 @@
 			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
 			localValidation: function ( formdata ) {
-				var error = {};
-				var ok = true;
 				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
 					&& !( 'found' in formdata ) && !$( '#articleFeedbackv5-bucket6-toggle-yes').is( ':checked' ) ) {
 					$.articleFeedbackv5.enableSubmission( false );
-					error.nofeedback = mw.msg( 'articlefeedbackv5-error-nofeedback' );
-					ok = false;
+					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
 				}
-				return ok ? false : error;
+				return false;
 			},
 
 			// }}}
@@ -2683,51 +2677,49 @@
 					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
 					$.articleFeedbackv5.specialUrl = data.articlefeedbackv5.aft_url;
 					$.articleFeedbackv5.permalink = data.articlefeedbackv5.permalink;
+
 					$.articleFeedbackv5.unlockForm();
 					$.articleFeedbackv5.showCTA();
+
 					// Drop a cookie for a successful submit
 					$.cookie( $.aftTrack.prefix( 'submitted' ), 'true', { 'expires': 365, 'path': '/' } );
+
 					// Clear out anything that needs removing (usually trigger links)
 					$.articleFeedbackv5.$toRemove.remove();
 					$.articleFeedbackv5.$toRemove = $( [] );
+
 					// Track the success
 					$.articleFeedbackv5.trackClick( 'submit_success' );
 				} else {
+					var msg = mw.msg( 'articlefeedbackv5-error-unknown' );
 					var code = 'unknown';
-					var msg;
+
+					// fetch error information
 					if ( 'error' in data ) {
-						if ( typeof( data.error ) == 'object' ) {
-							msg = data.error;
-							if ( 'code' in data.error ) {
-								code = data.error.code;
-							}
-						} else if ( 'articlefeedbackv5-error-abuse' == data.error ) {
-							msg = mw.msg( data.error );
-							code = 'afreject';
-						} else {
-							msg = mw.msg( data.error );
-						}
+						msg = data.error.msg;
+						code = data.error.code;
 					} else if ( 'warning' in data ) {
-						// NB: Warnings come from the AbuseFilter and are
-						// already translated.
-						msg = data.warning;
-						code = 'afwarn';
-					} else {
-						msg = { info: mw.msg( 'articlefeedbackv5-error-unknown' ) };
+						msg = data.warning.msg;
+						code = data.warning.code;
 					}
+
 					// Track the error
 					$.articleFeedbackv5.trackClick( 'submit_error_' + code );
+
 					// Set up error state
-					$.articleFeedbackv5.markFormErrors( { _api : msg } );
+					$.articleFeedbackv5.markFormErrors( msg );
 					$.articleFeedbackv5.unlockForm();
 				}
 			},
 			'error': function (xhr, tstatus, error) {
+				var msg = mw.msg( 'articlefeedbackv5-error-submit' );
+				var code = 'jquery';
+
 				// Track the error
-				$.articleFeedbackv5.trackClick( 'submit_error_jquery' );
+				$.articleFeedbackv5.trackClick( 'submit_error_' + code );
+
 				// Set up error state
-				var err = { _api: { info: mw.msg( 'articlefeedbackv5-error-submit' ) } };
-				$.articleFeedbackv5.markFormErrors( err );
+				$.articleFeedbackv5.markFormErrors( msg );
 				$.articleFeedbackv5.unlockForm();
 			}
 		} );
@@ -3068,27 +3060,12 @@
 	 *
 	 * @param object errors errors, indexed by field name
 	 */
-	$.articleFeedbackv5.markFormErrors = function ( errors ) {
-		if ( '_api' in errors ) {
-			if ( typeof errors._api == 'object' ) {
-				if ( 'info' in errors._api ) {
-					mw.log( mw.msg( errors._api.info ) );
-				} else {
-					mw.log( mw.msg( 'articlefeedbackv5-error-submit' ) );
-				}
-				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-submit' ) );
-			} else {
-				mw.log( mw.msg( errors._api ) );
-				$.articleFeedbackv5.markTopError( errors._api );
-			}
-		} else {
-			mw.log( mw.msg( 'articlefeedbackv5-error-validation' ) );
-			if ( 'nofeedback' in errors ) {
-				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-nofeedback' ) );
-			}
-		}
+	$.articleFeedbackv5.markFormErrors = function ( error ) {
+		mw.log( error );
+		$.articleFeedbackv5.markTopError( error );
+
 		if ( 'markFormErrors' in $.articleFeedbackv5.currentBucket() ) {
-			$.articleFeedbackv5.currentBucket().markFormErrors( errors );
+			$.articleFeedbackv5.currentBucket().markFormErrors( error );
 		}
 	};
 

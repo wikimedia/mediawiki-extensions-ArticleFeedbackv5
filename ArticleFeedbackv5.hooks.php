@@ -109,6 +109,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-error-submit',
 				'articlefeedbackv5-cta-thanks',
 				'articlefeedbackv5-error-abuse',
+				'articlefeedbackv5-error-abuse-link',
 				'articlefeedbackv5-error-throttled',
 				'articlefeedbackv5-cta-confirmation-message',
 				'articlefeedbackv5-cta1-confirmation-title',
