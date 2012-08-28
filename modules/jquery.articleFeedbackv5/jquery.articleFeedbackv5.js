@@ -2698,7 +2698,9 @@
 								code = data.error.code;
 							}
 						} else if ( 'articlefeedbackv5-error-abuse' == data.error ) {
-							msg = mw.msg( data.error );
+							// Note: using jqueryMsg here instead of mw.msg because jqueryMsg has a more advanced
+							// parser, which will not only replace params but also interpret [] as link etc.
+							msg = $( '<span />' ).msg( data.error, mw.msg( 'articlefeedbackv5-error-abuse-link' ) ).html();
 							code = 'afreject';
 						} else {
 							msg = mw.msg( data.error );
