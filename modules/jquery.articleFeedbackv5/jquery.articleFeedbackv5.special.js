@@ -205,13 +205,14 @@
 		// Grab the user's activity out of the cookie
 		$.articleFeedbackv5special.loadActivity();
 
+		var tipsyGravity = $( "body" ).hasClass( "rtl" ) ? "w" : "e";
 		// set tipsy defaults, once
 		$.fn.tipsy.defaults = {
 			delayIn: 0,				// delay before showing tooltip (ms)
 			delayOut: 0,			// delay before hiding tooltip (ms)
 			fade: false,			// fade tooltips in/out?
 			fallback: '',			// fallback text to use when no tooltip text
-			gravity: 'e',			// gravity
+			gravity: tipsyGravity,	// gravity according to directionality
 			html: true,				// is tooltip content HTML?
 			live: false,			// use live event support?
 			offset: 10,				// pixel offset of tooltip from element
