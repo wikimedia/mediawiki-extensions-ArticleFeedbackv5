@@ -854,15 +854,17 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		$ret = wfMessage( 'articlefeedbackv5-contribs-entry' )
-			->params( array(
-				Message::rawParam( $date ), // date + time
+			->rawParams( $date ) // date + time
+			->params(
 				ChangesList::showCharacterDifference( 0, strlen( $row->af_comment ) ), // chardiff
 				$feedbackCentralPageTitle->getFullText(), // feedback link
-				$pageTitle->getPrefixedText(), // article title
-				Message::rawParam( $userlink ), // userlink (for newbies)
+				$pageTitle->getPrefixedText() // article title
+			)
+			->rawParams( $userlink ) // userlink (for newbies)
+			->params(
 				$feedback, // comment
-				implode( ', ', $actions) // status
-			))
+				$lang->listToText( $actions ) // status
+			)
 			->parse();
 
 		$classes[] = 'mw-aft-contribution';
