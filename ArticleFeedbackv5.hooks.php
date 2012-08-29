@@ -853,6 +853,13 @@ class ArticleFeedbackv5Hooks {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-deleted' )->escaped();
 		}
 
+		$status = '';
+		if ( $actions ) {
+			$status = wfMessage( 'articlefeedbackv5-contribs-entry-status' )
+				->params( $lang->listToText( $actions ) )
+				->escaped();
+		}
+
 		$ret = wfMessage( 'articlefeedbackv5-contribs-entry' )
 			->rawParams( $date ) // date + time
 			->params(
@@ -863,7 +870,7 @@ class ArticleFeedbackv5Hooks {
 			->rawParams( $userlink ) // userlink (for newbies)
 			->params(
 				$feedback, // comment
-				$lang->listToText( $actions ) // status
+				$status // status
 			)
 			->parse();
 
