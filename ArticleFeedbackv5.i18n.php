@@ -52,7 +52,6 @@ $messages['en'] = array(
 
 	/* Error Messages */
 	'articlefeedbackv5-error' => 'An error has occurred. Please try again later.',
-	'articlefeedbackv5-page-disabled' => 'Article Feedback page not enabled for this article.',
 	'articlefeedbackv5-error-email' => 'That e-mail address is not valid.',
 	'articlefeedbackv5-error-blocked' => 'Blocked users may not submit feedback.',
 	'articlefeedbackv5-error-validation' => 'Validation error.',
@@ -230,6 +229,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-header-message-link-text' => 'Learn more',
 	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-unsupported-message' => 'Sorry, your browser is not supported by this prototype. To see this page, please use a different browser.',
+	'articlefeedbackv5-page-disabled' => 'Article Feedback page not enabled for this page.',
+	'articlefeedbackv5-no-feedback' => 'No feedback has been posted for this page yet.',
 	'articlefeedbackv5-viewactivity' => 'View activity',
 	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 year|$1 years}}',
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 month|$1 months}}',
@@ -804,7 +805,9 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-header-message-link-text' => 'The link text to be displayed (at $1 on articlefeedbackv5-header-message-text)',
 	'articlefeedbackv5-beta-label' => 'A label to be displayed on the special page, warning users that this extension is still in beta.',
 	'articlefeedbackv5-unsupported-message' => 'A message to be displayed on the special page, when a visitor with an unsupported browser visits.',
-	'articlefeedbackv5-viewactivity' => "Text for the link to see the feedback entrie's activity log",
+	'articlefeedbackv5-viewactivity' => "Text for the link to see the feedback entry's activity log",
+	'articlefeedbackv5-page-disabled' => 'A message to be displayed on the article feedback page when AFT is not enabled for that page',
+	'articlefeedbackv5-no-feedback' => 'A message to be displayed on the article feedback page when there is no feedback yet.',
 	'articlefeedbackv5-timestamp-years' => 'Years part - $1 is the years parameter',
 	'articlefeedbackv5-timestamp-months' => 'Months part - $1 is the months parameter',
 	'articlefeedbackv5-timestamp-weeks' => 'Weeks part - $1 is the weeks parameter',
