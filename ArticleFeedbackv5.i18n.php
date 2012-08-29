@@ -72,8 +72,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-protection-permission-administrator' => 'Enable for administrators only',
 
 	/* My Contributions */
-	'articlefeedbackv5-contribs-feedback' => '[[$1|Feedback on $2]]',
-	'articlefeedbackv5-contribs-status' => 'Status: $1',
+	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Feedback: $4]] $5 $6 {{#if:$7|. . Status: $7}}',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Helpful',
 	'articlefeedbackv5-contribs-status-action-flagged' => 'Flagged',
 	'articlefeedbackv5-contribs-status-action-featured' => 'Featured',
@@ -729,8 +728,14 @@ The link to the edit tutorial',
 	'articlefeedbackv5-protection-permission-member' => 'Dropdown menu option to enable AFT for registered users only',
 	'articlefeedbackv5-protection-permission-editor' => 'Dropdown menu option to enable AFT for editors only',
 	'articlefeedbackv5-protection-permission-administrator' => 'Dropdown menu option to enable AFT for administrators only',
-	'articlefeedbackv5-contribs-feedback' => 'AFT entry permalinklink message displayed on My Contributions -- $1 is the feedback permalink, $2 the article title',
-	'articlefeedbackv5-contribs-status' => 'AFT entry status message displayed on My Contributions',
+	'articlefeedbackv5-contribs-entry' => 'AFT entry line displayed on My Contributions
+$1 is the date with link to feedback permalink
+$2 is the comment character count
+$3 is the feedback permalink
+$4 is the page title
+$5 is the username (only set in the case of newbie log)
+$6 is the comment
+$7 is a list of the feedback\'s current statusses',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Status when feedback has been marked as helpful',
 	'articlefeedbackv5-contribs-status-action-flagged' => 'Status when feedback has been flagged',
 	'articlefeedbackv5-contribs-status-action-featured' => 'Status when feedback has been featured',
