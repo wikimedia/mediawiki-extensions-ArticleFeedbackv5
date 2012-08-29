@@ -72,8 +72,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-protection-permission-administrator' => 'Enable for administrators only',
 
 	/* My Contributions */
-	'articlefeedbackv5-contribs-feedback' => '[[$1|Feedback on $2]]',
-	'articlefeedbackv5-contribs-status' => 'Status: $1',
+	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Feedback: $4]] $5 $6 $7',
+	'articlefeedbackv5-contribs-entry-status' => '. . Status: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Helpful',
 	'articlefeedbackv5-contribs-status-action-flagged' => 'Flagged',
 	'articlefeedbackv5-contribs-status-action-featured' => 'Featured',
@@ -727,8 +727,15 @@ The link to the edit tutorial',
 	'articlefeedbackv5-protection-permission-member' => 'Dropdown menu option to enable AFT for registered users only',
 	'articlefeedbackv5-protection-permission-editor' => 'Dropdown menu option to enable AFT for editors only',
 	'articlefeedbackv5-protection-permission-administrator' => 'Dropdown menu option to enable AFT for administrators only',
-	'articlefeedbackv5-contribs-feedback' => 'AFT entry permalinklink message displayed on My Contributions -- $1 is the feedback permalink, $2 the article title',
-	'articlefeedbackv5-contribs-status' => 'AFT entry status message displayed on My Contributions',
+	'articlefeedbackv5-contribs-entry' => 'AFT entry line displayed on My Contributions. An example of this line could be: 10:59, 30 August 2012 . . (+55)‎ . . Feedback: Main Page (This is some more feedback, using the AFT feedback form) . . Status: Helpful and Featured
+* $1 is the date with link to feedback permalink - in the example: "10:59, 30 August 2012"
+* $2 is the comment character count - in the example: "(+55)"
+* $3 is the feedback permalink - in the example: the link behind "Feedback: Main Page"
+* $4 is the page title - in the example: "Main Page"
+* $5 is the username (only set in the case of newbie log) - not in the example, this will only show up in the newbie log
+* $6 is the comment - in the example: "(This is some more feedback, using the AFT feedback form)"
+* $7 is a list of the feedback\'s current statusses, built out of {{msg-mw|articlefeedbackv5-contribs-entry-status}, if the status is not empty - in the example: "Status: Helpful and Featured"',
+	'articlefeedbackv5-contribs-entry-status' => 'The status part of {{msg-mw|articlefeedbackv5-contribs-entry}}. Statussen can be any combination of helpful, flagged, featured, resolved, hidden, oversight-requested, deleted',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Status when feedback has been marked as helpful',
 	'articlefeedbackv5-contribs-status-action-flagged' => 'Status when feedback has been flagged',
 	'articlefeedbackv5-contribs-status-action-featured' => 'Status when feedback has been featured',
