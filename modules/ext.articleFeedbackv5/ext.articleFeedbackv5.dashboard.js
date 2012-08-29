@@ -10,7 +10,7 @@ jQuery( function( $ ) {
 	var enable = $.aftVerify.verify( 'special' );
 	if ( !enable ) {
 		// Remove the extension's output & replace it with a warning
-		if ( $.aftVerify.checks.useragent === false ) {
+		if ( $.aftVerify.useragent() === false ) {
 			// The browser isn't supported
 			var msg = 'articlefeedbackv5-unsupported-message';
 		} else {

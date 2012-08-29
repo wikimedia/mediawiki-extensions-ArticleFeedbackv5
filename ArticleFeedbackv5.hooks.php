@@ -423,41 +423,18 @@ class ArticleFeedbackv5Hooks {
 
 		// normal page where form can be displayed
 		if ( in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces ) ) {
-			if (
-				// view pages
-				( $action == 'view' || $action == 'purge' )
-				// if user is logged in, showing on action=purge is OK,
-				// but if user is logged out, action=purge shows a form instead of the article,
-				// so return false in that case.
-				&& !( $action == 'purge' && $user->isAnon() )
-				// current revision
-				&& $request->getVal( 'diff' ) == null
-				&& $request->getVal( 'oldid' ) == null
-				// not viewing a redirect
-				&& $request->getVal( 'redirect' ) != 'no'
-				// not viewing the printable version
-				&& $request->getVal( 'printable' ) != 'yes'
-				// actually fetched article content
-				&& $out->getRevisionTimestamp() != null
-			) {
-				$res = self::allowForPage( $title );
-				if ( $res['allow'] ) {
-					// load module
-					$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
-					$out->addModules( 'ext.articleFeedbackv5.startup' );
-				}
+			// check if we actually fetched article content & no error page
+			if ( $out->getRevisionTimestamp() != null ) {
+				// load module
+				$out->addJsConfigVars( 'aftv5Article', self::getPageInformation( $title ) );
+				$out->addModules( 'ext.articleFeedbackv5.startup' );
 			}
 
 		// talk page
 		} elseif ( in_array( $title->getSubjectPage()->getNameSpace(), $wgArticleFeedbackv5Namespaces ) ) {
-			$res = self::allowForPage( $title->getSubjectPage() );
-			if ( $res['allow'] ) {
-				// load module
-				$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
-				$out->addJsConfigVars( 'aftv5PageId', $title->getSubjectPage()->getArticleID() );
-				$out->addJsConfigVars( 'aftv5PageTitle', $title->getSubjectPage()->getFullText() );
-				$out->addModules( 'ext.articleFeedbackv5.talk' );
-			}
+			// load module
+			$out->addJsConfigVars( 'aftv5Article', self::getPageInformation( $title->getSubjectPage() ) );
+			$out->addModules( 'ext.articleFeedbackv5.talk' );
 
 		// special page
 		} elseif ( $title->getNamespace() == NS_SPECIAL) {
@@ -468,25 +445,25 @@ class ArticleFeedbackv5Hooks {
 
 				// Permalinks: drop the feedback ID
 				$mainTitle = preg_replace( '/(\/[0-9]+)$/', '', $mainTitle );
-
-				// Central feedback page OR allowed page
 				$mainTitle = Title::newFromDBkey( $mainTitle );
-				if ( $mainTitle === null ) {
-					$res = array( 'allow' => true, 'whitelist' => true );
-				} else {
-					$res = self::allowForPage( $mainTitle );
 
-					// always allow Special page, regardless of black-/whitelist or lottery
-					$res['allow'] = true;
+				// Central feedback page
+				if ( $mainTitle === null ) {
+					$article = array(
+						'id' => 0,
+						'title' => '',
+						'namespace' => '-1',
+						'categories' => array(),
+						'permissionLevel' => ''
+					);
+
+				// Article feedback page
+				} else {
+					$article = self::getPageInformation( $mainTitle );
 				}
 
 				// load module
-				$out->addJsConfigVars( 'aftv5Whitelist', $res['whitelist'] );
-				if ( $mainTitle !== null ) {
-					$out->addJsConfigVars( 'aftv5PageId', $mainTitle->getArticleID() );
-				} else {
-					$out->addJsConfigVars( 'aftv5PageId', 0 );
-				}
+				$out->addJsConfigVars( 'aftv5Article', $article );
 				$out->addModules( 'ext.articleFeedbackv5.dashboard' );
 			}
 
@@ -509,57 +486,35 @@ class ArticleFeedbackv5Hooks {
 	}
 
 	/**
-	 * Check if ArticleFeedbackv5 is allowed to show on a certain page, depending on:
-	 * - if the user has disabled articlefeedback
-	 * - if the article is in the allowed namespaces list
-	 * - if the article is an existing page
-	 * - if the article has the valid categories
+	 * This will fetch some page information: the actual check if AFT can be loaded
+	 * will be done JS-side (because PHP output may be cached and thus not completely
+	 * up-to-date)
+	 * However, not all checks can be performed on JS-side - well, they can only be
+	 * performed on the article page, not on the talk page & special page. Since these
+	 * pages don't have the appropriate information available for Javascript, this
+	 * method will build the relevant info.
 	 *
-	 * @param  Title $title the article to test
-	 * @return array the results of the tests: keys are allowed, blacklist, and
-	 *               whitelist
+	 * @param  Title $title the article
+	 * @return array the article's info, to be exposed to JS
 	 */
-	public static function allowForPage( Title $title ) {
-		global $wgUser,
-			$wgArticleFeedbackv5Namespaces,
-			$wgArticleFeedbackv5Categories,
-			$wgArticleFeedbackv5BlacklistCategories;
+	public static function getPageInformation( Title $title ) {
+		$article = array(
+			'id' => $title->getArticleID(),
+			'title' => $title->getFullText(),
+			'namespace' => $title->getNamespace(),
+			'categories' => array(),
+			'permissionLevel' => ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() )->pr_level
+		);
 
-		$result = array( 'allow' => false, 'blacklist' => false, 'whitelist' => false );
-		if (
-			// not disabled via preferences
-			!$wgUser->getOption( 'articlefeedback-disable' )
-			// only on pages in namespaces where it is enabled
-			&& in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces )
-			// existing pages
-			&& $title->getArticleId() > 0
-			// check if user has sufficient permissions
-			&& $wgUser->isAllowed( ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() )->pr_level )
-		) {
-			$result['allow'] = true;
-
-			// loop all categories linked to this page
-			foreach ( $title->getParentCategories() as $category => $page ) {
-				// get category title without prefix
-				$category = Title::newFromDBkey( $category );
-				$category = $category->getDBkey();
-
-				// check exclusion - exclusion overrides everything else
-				if ( in_array( $category, $wgArticleFeedbackv5BlacklistCategories ) ) {
-					$result['blacklist'] = true;
-					$result['allow'] = false;
-					return $result;
-				}
-
-				if ( in_array( $category, $wgArticleFeedbackv5Categories ) ) {
-					// one match is enough for include, however we are iterating on the 'current'
-					// categories, and others might be blacklisted - so continue iterating
-					$result['whitelist'] = true;
-				}
+		foreach ( $title->getParentCategories() as $category => $page ) {
+			// get category title without prefix
+			$category = Title::newFromDBkey( $category );
+			if ( $category ) {
+				$article['categories'][] = str_replace( '_', ' ', $category->getDBkey() );
 			}
 		}
 
-		return $result;
+		return $article;
 	}
 
 	/**
