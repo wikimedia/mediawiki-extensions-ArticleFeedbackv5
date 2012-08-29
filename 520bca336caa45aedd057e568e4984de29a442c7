@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//xjg\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-08-29T16:23:54Z",
+      "side": 1,
+      "message": "Parameters addition looks strange to me.\n\nWhy not:\n-\u003erawParams( $date )\n-\u003eparams( ChangesList..., feedback_link, article_title )\n-\u003e rawParams( $userlink )\n-\u003e params ( $feedback, actions_string )\n\n?",
+      "revId": "520bca336caa45aedd057e568e4984de29a442c7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//xjc\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-08-29T16:23:54Z",
+      "side": 1,
+      "message": "Should this use $wgLang-\u003elistToText() so you\u0027d get \"a, b and c\"? Not every language uses \", \" as comma separator.",
+      "revId": "520bca336caa45aedd057e568e4984de29a442c7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
