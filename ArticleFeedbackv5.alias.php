@@ -71,6 +71,7 @@ $specialPageAliases['tl'] = array(
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'ArticleFeedbackv5' => array( 'MaddeGeribildirimiv5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'MaddeGeribildirimiv5İzlemeListesi' ),
 );
 
 /** Vietnamese (Tiếng Việt) */

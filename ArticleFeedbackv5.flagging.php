@@ -295,17 +295,7 @@ class ArticleFeedbackv5Flagging {
 
 		// activity logging
 		foreach( $this->log as $entry ) {
-			$userId = $entry[2];
-
-			// if this is an automatic action, use general 'Article Feedback' doer
-			if ( $userId === 0) {
-				$defaultUser = wfMessage( 'articlefeedbackv5-default-user' )->text();
-				$doer = User::newFromName( $defaultUser );
-			} else {
-				$doer = User::newFromId( $userId );
-			}
-
-			ArticleFeedbackv5Log::logActivity( $entry[0], $record->af_page_id, $this->feedbackId, $entry[1], $doer );
+			ApiArticleFeedbackv5Utils::logActivity( $entry[0], $record->af_page_id, $this->feedbackId, $entry[1], $entry[2], array( $this->feedbackId ) );
 		}
 
 		$this->results['result'] = 'Success';
@@ -339,7 +329,7 @@ class ArticleFeedbackv5Flagging {
 
 		$this->relevance[] = 'oversight';
 
-		$this->log[] = array('oversight', $notes, $this->getUserId());
+		$this->log[] = array('oversight', $notes, $this->isSystemCall());
 
 		// always increment oversighted count and decrement notdeleted
 		$this->filters = array('all-oversighted' => 1, 'notdeleted' => -1);
@@ -444,7 +434,7 @@ class ArticleFeedbackv5Flagging {
 
 		$this->relevance[] = 'unoversight';
 
-		$this->log[] = array('unoversight', $notes, $this->getUserId());
+		$this->log[] = array('unoversight', $notes, $this->isSystemCall());
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'undeleted', $this->getUserId(), $timestamp );
 
@@ -506,7 +496,7 @@ class ArticleFeedbackv5Flagging {
 
 		$this->relevance[] = 'hidden';
 
-		$this->log[] = array('hidden', $notes, $this->getUserId());
+		$this->log[] = array('hidden', $notes, $this->isSystemCall());
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'hidden', $this->getUserId(), $timestamp );
 		$this->results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
@@ -552,7 +542,7 @@ class ArticleFeedbackv5Flagging {
 
 		$this->relevance[] = 'unhidden';
 
-		$this->log[] = array('unhidden', $notes, $this->getUserId());
+		$this->log[] = array('unhidden', $notes, $this->isSystemCall());
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'unhidden', $this->getUserId(), $timestamp );
 
@@ -577,7 +567,7 @@ class ArticleFeedbackv5Flagging {
 	private function flag_oversight_increase( stdClass $record, $notes, $timestamp, $toggle ) {
 		$this->relevance[] = 'request';
 
-		$this->log[] = array('request', $notes, $this->getUserId());
+		$this->log[] = array('request', $notes, $this->isSystemCall());
 
 		// NOTE: we are bypassing traditional sql escaping here
 		$this->update[] = "af_oversight_count = af_oversight_count + 1";
@@ -659,7 +649,7 @@ class ArticleFeedbackv5Flagging {
 	 */
 	private function flag_oversight_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
 		$this->relevance[] = 'unrequest';
-		$this->log[] = array('unrequest', $notes, $this->getUserId());
+		$this->log[] = array('unrequest', $notes, $this->isSystemCall());
 		$this->filters = array();
 
 		if( ( $record->af_oversight_count - 1 ) < 1) {
@@ -701,7 +691,7 @@ class ArticleFeedbackv5Flagging {
 		if ( $record->af_is_featured ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
-		$this->log[] = array('feature', $notes, $this->getUserId());
+		$this->log[] = array('feature', $notes, $this->isSystemCall());
 
 		$this->update['af_is_featured'] = true;
 		$this->update['af_is_unfeatured'] = false;
@@ -741,7 +731,7 @@ class ArticleFeedbackv5Flagging {
 		if ( !$record->af_is_featured ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
-		$this->log[] = array('unfeature', $notes, $this->getUserId());
+		$this->log[] = array('unfeature', $notes, $this->isSystemCall());
 
 		$this->update['af_is_featured'] = false;
 		$this->update['af_is_unfeatured'] = true;
@@ -778,7 +768,7 @@ class ArticleFeedbackv5Flagging {
 		if ( $record->af_is_resolved ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
-		$this->log[] = array('resolve', $notes, $this->getUserId());
+		$this->log[] = array('resolve', $notes, $this->isSystemCall());
 
 		$this->update['af_is_resolved'] = true;
 		$this->update['af_is_unresolved'] = false;
@@ -816,7 +806,7 @@ class ArticleFeedbackv5Flagging {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
 		// decrease means "unresolve" this
-		$this->log[] = array('unresolve', $notes, $this->getUserId());
+		$this->log[] = array('unresolve', $notes, $this->isSystemCall());
 
 		$this->update['af_is_resolved'] = false;
 		$this->update['af_is_unresolved'] = true;
@@ -852,7 +842,7 @@ class ArticleFeedbackv5Flagging {
 	 */
 	private function flag_resetoversight( stdClass $record, $notes, $timestamp, $toggle, $direction ) {
 		$this->relevance[] = 'decline';
-		$this->log[] = array('decline', $notes, $this->getUserId());
+		$this->log[] = array('decline', $notes, $this->isSystemCall());
 
 		// oversight request count becomes 0
 		$this->update['af_oversight_count'] = 0;
@@ -913,9 +903,9 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		if ( $this->isSystemCall() ) {
-			$this->log[] = array('autoflag', $notes, $this->getUserId());
+			$this->log[] = array('autoflag', $notes, $this->isSystemCall());
 		} else {
-			$this->log[] = array('flag', $notes, $this->getUserId());
+			$this->log[] = array('flag', $notes, $this->isSystemCall());
 		}
 
 		$this->update[] = "af_abuse_count = af_abuse_count + 1";
@@ -1001,7 +991,7 @@ class ArticleFeedbackv5Flagging {
 			$this->results['abusive'] = 1;
 		}
 
-		$this->log[] = array('unflag', $notes, $this->getUserId());
+		$this->log[] = array('unflag', $notes, $this->isSystemCall());
 
 		// NOTE: we are bypassing traditional sql escaping here
 		$this->update[] = "af_abuse_count = GREATEST(CONVERT(af_abuse_count, SIGNED) -1, 0)";
@@ -1053,7 +1043,7 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		// add entry to log
-		$this->log[] = array( 'clear-flags', $notes, $this->getUserId() );
+		$this->log[] = array( 'clear-flags', $notes, $this->isSystemCall() );
 
 		// update filter totals
 		$this->filters['visible-abusive'] = -1;
@@ -1101,7 +1091,7 @@ class ArticleFeedbackv5Flagging {
 			$type = 'undo-helpful';
 		}
 
-		$this->log[] = array( $type, $notes, $this->getUserId() );
+		$this->log[] = array( $type, $notes, $this->isSystemCall() );
 
 		$this->update['af_last_status'] = $type;
 		$this->update['af_last_status_user_id'] = $this->getUserId();
@@ -1134,7 +1124,7 @@ class ArticleFeedbackv5Flagging {
 			$type = 'undo-unhelpful';
 		}
 
-		$this->log[] = array( $type, $notes, $this->getUserId() );
+		$this->log[] = array( $type, $notes, $this->isSystemCall() );
 
 		$this->update['af_last_status'] = $type;
 		$this->update['af_last_status_user_id'] = $this->getUserId();
@@ -1283,6 +1273,9 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed the user's ID, or zero if it's a system call
 	 */
 	public function getUserId() {
+		if ( $this->isSystemCall() ) {
+			return 0;
+		}
 		return $this->user->getId();
 	}
 
@@ -1292,7 +1285,10 @@ class ArticleFeedbackv5Flagging {
 	 * @return string the link
 	 */
 	public function getUserLink() {
-		return ApiArticleFeedbackv5Utils::getUserLink( $this->getUserId() );
+		if ( $this->isSystemCall() ) {
+			return ApiArticleFeedbackv5Utils::getUserLink( 0, null );
+		}
+		return ApiArticleFeedbackv5Utils::getUserLink( $this->user );
 	}
 
 	/**

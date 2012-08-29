@@ -56,8 +56,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-email' => 'That e-mail address is not valid.',
 	'articlefeedbackv5-error-blocked' => 'Blocked users may not submit feedback.',
 	'articlefeedbackv5-error-validation' => 'Validation error.',
-	'articlefeedbackv5-error-abuse' => 'Your post has been rejected by a software filter that suggests it may have violated {{SITENAME}}\'s [$1 feedback guidelines]. Please revise your post and try again.',
-	'articlefeedbackv5-error-abuse-link' => '//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines',
+	'articlefeedbackv5-error-abuse' => 'Your post has been rejected by a software filter that suggests it may have violated {{SITENAME}}\'s [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines feedback guidelines]. Please revise your post and try again.',
 	'articlefeedbackv5-error-unknown' => 'Unknown error.',
 	'articlefeedbackv5-error-submit' => 'Form submission error.',
 	'articlefeedbackv5-error-nofeedback' => 'Please enter your feedback.',
@@ -539,28 +538,29 @@ $messages['en'] = array(
 	'right-aftv5-feature-feedback' => 'Feature/Resolve feedback',
 
 	/* Log types */
-	'log-name-articlefeedbackv5' => 'Article Feedback Activity Log',
-	'log-description-articlefeedbackv5' => 'This is the log of activity taken on feedback items collected for articles using Article Feedback.',
-	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|changed the status to oversight of}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|removed the oversight status of}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-hidden' => '$1 {{GENDER:$2|hid}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-unhidden' => '$1 {{GENDER:$2|un-hid}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|declined oversight for}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-request' => '$1 {{GENDER:$2|requested oversight for}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-unrequest' => '$1 {{GENDER:$2|un-requested oversight for}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-flag' => '$1 {{GENDER:$2|flagged as abuse}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-unflag' => '$1 {{GENDER:$2|un-flagged as abuse}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-autohide' => '$1 {{GENDER:$2|auto-hid}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-autoflag' => '$1 {{GENDER:$2|auto-flagged as abuse}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-feature' => '$1 {{GENDER:$2|featured}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-unfeature' => '$1 {{GENDER:$2|un-featured}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-resolve' => '$1 {{GENDER:$2|marked as resolved}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-unresolve' => '$1 {{GENDER:$2|un-marked as resolved}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-helpful' => '$1 {{GENDER:$2|marked as helpful}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-unhelpful' => '$1 {{GENDER:$2|marked as unhelpful}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|un-marked as helpful}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|un-marked as unhelpful}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|cleared all flags}} [[$3|feedback post #$4]] on [[$5]]',
+	'articlefeedbackv5-log-name' => 'Article Feedback Activity Log',
+	'articlefeedbackv5-log-header' => 'This is the log of activity taken on feedback items collected for articles using Article Feedback.',
+	'articlefeedbackv5-log-oversight' => 'changed the status of $1 to oversight on $2',
+	'articlefeedbackv5-log-unoversight' => 'removed the oversight status of $1 on $2',
+	'articlefeedbackv5-log-hidden' => 'hid $1 on $2',
+	'articlefeedbackv5-log-unhidden' => 'un-hid $1 on $2',
+	'articlefeedbackv5-log-decline' => 'declined oversight for $1 on $2',
+	'articlefeedbackv5-log-request' => 'requested oversight for $1 on $2',
+	'articlefeedbackv5-log-unrequest' => 'un-requested oversight for $1 on $2',
+	'articlefeedbackv5-log-flag' => 'flagged $1 as abuse on $2',
+	'articlefeedbackv5-log-unflag' => 'un-flagged $1 as abuse on $2',
+	'articlefeedbackv5-log-autohide' => 'auto-hid $1 on $2',
+	'articlefeedbackv5-log-autoflag' => 'auto-flagged $1 as abuse on $2',
+	'articlefeedbackv5-log-feedback-linktext' => 'feedback post #$1',
+	'articlefeedbackv5-log-feature' => 'featured $1 on $2',
+	'articlefeedbackv5-log-unfeature' => 'un-featured $1 on $2',
+	'articlefeedbackv5-log-resolve' => 'marked as resolved $1 on $2',
+	'articlefeedbackv5-log-unresolve' => 'un-marked as resolved $1 on $2',
+	'articlefeedbackv5-log-helpful' => 'marked as helpful $1 on $2',
+	'articlefeedbackv5-log-unhelpful' => 'marked as unhelpful $1 on $2',
+	'articlefeedbackv5-log-undo-helpful' => 'un-marked as helpful $1 on $2',
+	'articlefeedbackv5-log-undo-unhelpful' => 'un-marked as unhelpful $1 on $2',
+	'articlefeedbackv5-log-clear-flags' => 'cleared all flags $1 on $2',
 
 	/* Activity Pane phrases */
 	'articlefeedbackv5-activity-pane-header' => 'Activity Log',
@@ -719,8 +719,7 @@ The link to the edit tutorial',
 	'articlefeedbackv5-overlay-close' => 'The alt-text for the close button in overlay-mode',
 	'articlefeedbackv5-error' => 'This error message will be displayed in a grey box replacing the form if there was an unrecoverable error.',
 	'articlefeedbackv5-error-blocked' => 'This error message will be displayed on the form if the user is blocked from submitting feedback.',
-	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters. $1 is the url to the abuse policy.',
-	'articlefeedbackv5-error-abuse-link' => 'The url to the abuse policy',
+	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters. $1 is the link to the abuse policy, the text of which is {{msg-mw|articlefeedbackv5-error-abuse-linktext}} and the url of which is {{msg-mw|articlefeedbackv5-error-abuse-link}}.',
 	'articlefeedbackv5-error-nofeedback' => 'This error message will be displayed above the form (but below the title) if the user has attempted to submit a blank form.',
 	'articlefeedbackv5-protection-level' => 'Fieldset label to be used for AFT page protection levels',
 	'articlefeedbackv5-protection-level-error' => 'Error message when protection level is too high compared to article edit protection level',
@@ -1161,130 +1160,71 @@ This URL can be changed to point to a translated version of the page if it exist
 	'right-aftv5-see-deleted-feedback' => '{{doc-right|aftv5-see-deleted-feedback}}',
 	'right-aftv5-see-hidden-feedback' => '{{doc-right|aftv5-see-hidden-feedback}}',
 	'right-aftv5-feature-feedback' => '{{doc-right|aftv5-feature-feedback}}',
-	'log-name-articlefeedbackv5' => '{{doc-logpage}}
+	'articlefeedbackv5-log-name' => '{{doc-logpage}}
 
 Name of the AFTv5 log filter on the Special:Log page',
-	'log-description-articlefeedbackv5' => 'Description (header) of the AFTv5 activity log on the Special:Log page',
-	'logentry-articlefeedbackv5-oversight' => 'Log entry for when a user "oversights" (deletes; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page) a feedback post:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-unoversight' => 'Log entry for when a user un-"oversights" (un-deletes; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page) a feedback post:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-hidden' => 'Log entry for when a user hides a feedback post:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-unhidden' => 'Log entry for when a user un-hides (shows) a feedback post:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-decline' => 'Log entry for when a user declines an oversight request on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-request' => 'Log entry for when a user requests oversight on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-unrequest' => 'Log entry for when a user un-requests oversight on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-flag' => 'Log entry for when a user flags a feedback post as abuse:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-unflag' => 'Log entry for when a user un-flags a feedback post as abuse:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-autohide' => 'Log entry for when a feedback post is automatically hidden (e.g., when it gets too many abuse flags, or when oversight is requested; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-autoflag' => 'Log entry for when a feedback post is automatically flagged as abuse (e.g., by an abuse filter):
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-feature' => 'Log entry for when a feedback post is marked as featured:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-unfeature' => 'Log entry for when a feedback post is un-marked as featured:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-resolve' => 'Log entry for when a feedback post is marked as resolved:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-unresolve' => 'Log entry for when a feedback post is un-markes as resolved:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-helpful' => 'Log entry for when a feedback post has been marked as helpful:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-unhelpful' => 'Log entry for when a feedback post is marked as unhelpful:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-undo-helpful' => 'Log entry for when a feedback post has been un-marked as helpful:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-undo-unhelpful' => 'Log entry for when a feedback post is un-marked as unhelpful:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-clear-flags' => 'Log entry for when a feedback post is cleared of all abuse flags:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer\'s id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback\'s id
-* <code>$5</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-header' => 'Description (header) of the AFTv5 activity log on the Special:Log page',
+	'articlefeedbackv5-log-oversight' => 'Log entry for when a user "oversights" (deletes; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page) a feedback post:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unoversight' => 'Log entry for when a user un-"oversights" (un-deletes; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page) a feedback post:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-hidden' => 'Log entry for when a user hides a feedback post:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unhidden' => 'Log entry for when a user un-hides (shows) a feedback post:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-decline' => 'Log entry for when a user declines an oversight request on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-request' => 'Log entry for when a user requests oversight on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unrequest' => 'Log entry for when a user un-requests oversight on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-flag' => 'Log entry for when a user flags a feedback post as abuse:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unflag' => 'Log entry for when a user un-flags a feedback post as abuse:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-autohide' => 'Log entry for when a feedback post is automatically hidden (e.g., when it gets too many abuse flags, or when oversight is requested; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-autoflag' => 'Log entry for when a feedback post is automatically flagged as abuse (e.g., by an abuse filter):
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-feedback-linktext' => 'The text for a link to the feedback ($1 is the ID)',
+	'articlefeedbackv5-log-feature' => 'Log entry for when a feedback post is marked as featured:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unfeature' => 'Log entry for when a feedback post is un-marked as featured:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-resolve' => 'Log entry for when a feedback post is marked as resolved:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unresolve' => 'Log entry for when a feedback post is un-markes as resolved:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-helpful' => 'Log entry for when a feedback post has been marked as helpful:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-unhelpful' => 'Log entry for when a feedback post is marked as unhelpful:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-undo-helpful' => 'Log entry for when a feedback post has been un-marked as helpful:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-undo-unhelpful' => 'Log entry for when a feedback post is un-marked as unhelpful:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
+	'articlefeedbackv5-log-clear-flags' => 'Log entry for when a feedback post is cleared of all abuse flags:
+* <code>$1</code>: A link to the feedback (text is {{msg-mw|articlefeedbackv5-log-feedback-linktext}})
+* <code>$2</code>: A link to the article the feedback was posted to',
 	'articlefeedbackv5-activity-pane-header' => 'Flyover panel caption',
 	'articlefeedbackv5-activity-feedback-info' => 'Post information template. Parameters:
 * $1 is the feedback post ID,
@@ -4265,6 +4205,12 @@ $messages['de'] = array(
 	'articlefeedbackv5-error-nofeedback' => 'Bitte gib Deine Rückmeldung ein.',
 	'articlefeedbackv5-error-flagging' => 'Fehler beim Kennzeichnen der Rückmeldung.',
 	'articlefeedbackv5-error-throttled' => 'Dein Beitrag wurde zurückgewiesen, da du in jüngster Vergangenheit mehr als die empfohlene Anzahl an Rückmeldungen, gemäß der Rückmeldungsrichtlinien von {{SITENAME}}, hinterlassen hast. Bitte hinterlasse nicht zu viele Rückmeldungen.',
+	'articlefeedbackv5-protection-level' => 'Rückmeldungen zu Artikeln',
+	'articlefeedbackv5-protection-level-error' => 'Die Rückmeldungsschutzhöhe kann nicht höher sein als die Bearbeitungsschutzhöhe.',
+	'articlefeedbackv5-protection-permission-reader' => 'Für alle Benutzer aktivieren',
+	'articlefeedbackv5-protection-permission-member' => 'Nur für angemeldete Benutzer aktivieren',
+	'articlefeedbackv5-protection-permission-editor' => 'Nur für automatisch bestätigte Benutzer aktivieren',
+	'articlefeedbackv5-protection-permission-administrator' => 'Nur für Administratoren aktivieren',
 	'articlefeedbackv5-contribs-feedback' => '[[$1|Rückmeldungen zu $2]]',
 	'articlefeedbackv5-contribs-status' => 'Status: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Hilfreich',
@@ -4371,6 +4317,8 @@ $messages['de'] = array(
 	'articlefeedbackv5-form-unresolve' => 'Markierung als erledigt zurücknehmen',
 	'articlefeedbackv5-form-hide' => 'Diese Rückmeldung ausblenden',
 	'articlefeedbackv5-form-unhide' => 'Diesen Beitrag einblenden',
+	'articlefeedbackv5-form-hide-own' => 'Meinen Beitrag verstecken',
+	'articlefeedbackv5-form-unhide-own' => 'Meinen Beitrag anzeigen',
 	'articlefeedbackv5-form-helpful' => 'Als hilfreich markieren ($1)',
 	'articlefeedbackv5-form-abuse' => 'Als missbräuchliche Nutzung kennzeichnen',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 Kennzeichnung|$1 Kennzeichnungen}}',
@@ -6057,6 +6005,8 @@ $messages['es'] = array(
 	'articlefeedbackv5-form-unresolve' => 'Desmarcar como resuelto',
 	'articlefeedbackv5-form-hide' => 'Ocultar esta entrada (post)',
 	'articlefeedbackv5-form-unhide' => 'Descubrir esta entrada (post)',
+	'articlefeedbackv5-form-hide-own' => 'Ocultar mi comentario',
+	'articlefeedbackv5-form-unhide-own' => 'Desocultar mi comentario',
 	'articlefeedbackv5-form-helpful' => 'Marcar como útil ($1)',
 	'articlefeedbackv5-form-abuse' => 'Marcar como inadecuado',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 indicador|$1 indicadores}}',
@@ -8853,6 +8803,8 @@ $messages['gl'] = array(
 	'articlefeedbackv5-form-unresolve' => 'Eliminar a marca de resolto',
 	'articlefeedbackv5-form-hide' => 'Agochar esta mensaxe',
 	'articlefeedbackv5-form-unhide' => 'Descubrir esta mensaxe',
+	'articlefeedbackv5-form-hide-own' => 'Agochar a miña mensaxe',
+	'articlefeedbackv5-form-unhide-own' => 'Descubrir a miña mensaxe',
 	'articlefeedbackv5-form-helpful' => 'Marcar como útil ($1)',
 	'articlefeedbackv5-form-abuse' => 'Marcar como abusivo',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 marca|$1 marcas}}',
@@ -10480,6 +10432,8 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-form-unresolve' => 'Markěrowanje jako sčinjene cofnyć',
 	'articlefeedbackv5-form-hide' => 'Tutón komentar schować',
 	'articlefeedbackv5-form-unhide' => 'Tutu powěsć pokazać',
+	'articlefeedbackv5-form-hide-own' => 'Mój přinošk schować',
+	'articlefeedbackv5-form-unhide-own' => 'Mój přinošk pokazać',
 	'articlefeedbackv5-form-helpful' => 'Jako pomocliwy markěrować ($1)',
 	'articlefeedbackv5-form-abuse' => 'Jako znjewužiwanje woznamjenić',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 chorhojčka|$1 chorhojčce|$1 chorhojčki|$1 chorhojčkow}}',
@@ -12577,6 +12531,7 @@ Riprova più tardi.',
 * Le pagine con il rating più alto/basso: ossia le pagine che hanno ricevuto almeno 10 voti nelle ultime 24 ore. Le medie vengono calcolate facendo la media di tutte le valutazioni inviate nelle ultime 24 ore.
 * Minimi recenti: le pagine che hanno ottenuto il 70% o meno (da 2 stelle in giù) dei voti più bassi in qualsiasi categoria nelle ultime 24 ore. Sono incluse solo le pagine che hanno ricevuto almeno 10 voti nelle ultime 24 ore.",
 	'articlefeedbackv5' => 'Cruscotto valutazione pagine',
+	'articlefeedbackv5watchlist' => 'Article feedback - I miei osservati speciali',
 	'articlefeedbackv5-desc' => 'Valutazione pagina',
 	'articlefeedbackv5-comment-more' => 'Altro',
 	'articlefeedbackv5-comment-less' => 'Meno',
@@ -13039,6 +12994,8 @@ $messages['ja'] = array(
 	'articlefeedbackv5-form-unresolve' => '解決済の印を除去',
 	'articlefeedbackv5-form-hide' => 'この投稿を隠す',
 	'articlefeedbackv5-form-unhide' => 'この投稿を表示',
+	'articlefeedbackv5-form-hide-own' => '自分の投稿を隠す',
+	'articlefeedbackv5-form-unhide-own' => '自分の投稿を表示',
 	'articlefeedbackv5-form-helpful' => '役に立つの印を付ける ($1)',
 	'articlefeedbackv5-form-abuse' => '荒らしであると標識する',
 	'articlefeedbackv5-form-abuse-count' => '被標識$1回',
@@ -13277,7 +13234,7 @@ $messages['ja'] = array(
 	'articlefeedbackv5-bucket6-backlink-text' => '手順1に戻る',
 	'articlefeedbackv5-shared-on-feedback' => 'あなたのコメントはこの $1 で共有されます。',
 	'articlefeedbackv5-shared-on-feedback-linktext' => 'フィードバック ページ',
-	'articlefeedbackv5-help-tooltip-title' => 'これは何ですか?',
+	'articlefeedbackv5-help-tooltip-title' => 'これは何?',
 	'articlefeedbackv5-help-tooltip-info' => 'このページについてのあなたの考えを、{{SITENAME}}にお聞かせください。編集者たちにフィードバックをお送りください。そして、このページの改善にご協力ください。',
 	'articlefeedbackv5-help-tooltip-linktext' => '詳細',
 	'articlefeedbackv5-help-special-linkurl' => '//en.wikipedia.org/wiki/Wikipedia:Article_Feedback/Help',
@@ -15977,6 +15934,8 @@ $messages['mk'] = array(
 	'articlefeedbackv5-form-unresolve' => 'Тргни од решени',
 	'articlefeedbackv5-form-hide' => 'Скриј го мислењево',
 	'articlefeedbackv5-form-unhide' => 'Откриј го мислењево',
+	'articlefeedbackv5-form-hide-own' => 'Скриј го моето мислење',
+	'articlefeedbackv5-form-unhide-own' => 'Откриј го моето мислење',
 	'articlefeedbackv5-form-helpful' => 'Означи како корисно ($1)',
 	'articlefeedbackv5-form-abuse' => 'Означи како злоупотреба',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 означување|$1 означувања}}',
@@ -18392,6 +18351,8 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-form-unresolve' => 'Niet opgelost',
 	'articlefeedbackv5-form-hide' => 'Bericht verbergen',
 	'articlefeedbackv5-form-unhide' => 'Bericht niet langer verbergen',
+	'articlefeedbackv5-form-hide-own' => 'Mijn bericht verbergen',
+	'articlefeedbackv5-form-unhide-own' => 'Mijn bericht weer weergeven',
 	'articlefeedbackv5-form-helpful' => 'Als nuttig markeren ($1)',
 	'articlefeedbackv5-form-abuse' => 'Als misbruik markeren',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 markering|$1 markeringen}}',
@@ -24465,6 +24426,8 @@ $messages['tl'] = array(
 	'articlefeedbackv5-form-unresolve' => 'Huwag markahan bilang nalutas na',
 	'articlefeedbackv5-form-hide' => 'Itago ang paskil na ito',
 	'articlefeedbackv5-form-unhide' => 'Huwag nang itago ang paskil na ito',
+	'articlefeedbackv5-form-hide-own' => 'Itago ang paskil ko',
+	'articlefeedbackv5-form-unhide-own' => 'Huwag itago ang paskil ko',
 	'articlefeedbackv5-form-helpful' => 'Markahan bilang nakakatulong ($1)',
 	'articlefeedbackv5-form-abuse' => 'Ibandila bilang pagmamalabis',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 watawat|$1 mga watawat}}',
@@ -25813,7 +25776,7 @@ $messages['zh-hans'] = array(
 	'articlefeedbackv5-cta1-confirmation-call' => '维基百科之所以存在，因为任何人都可以编辑其页面。继续吧，试一试，勇敢一些！',
 	'articlefeedbackv5-cta1-learn-how' => '学习如何编辑',
 	'articlefeedbackv5-cta1-edit-linktext' => '编辑此页',
-	'articlefeedbackv5-cta2-confirmation-title' => '帮助改善维基百科',
+	'articlefeedbackv5-cta2-confirmation-title' => '帮助改善{{SITENAME}}',
 	'articlefeedbackv5-cta2-confirmation-call' => '这个网站由像您一样的人创建。您愿意帮一把吗？',
 	'articlefeedbackv5-cta2-button-text' => '了解更多',
 	'articlefeedbackv5-cta3-confirmation-title' => '请完成一下一张简短的问卷',
@@ -25878,6 +25841,8 @@ $messages['zh-hans'] = array(
 	'articlefeedbackv5-special-filter-unfeatured' => '取消特色（$1）',
 	'articlefeedbackv5-special-filter-resolved' => '已解决（$1）',
 	'articlefeedbackv5-special-filter-unresolved' => '未解决（$1）',
+	'articlefeedbackv5-special-filter-comment-watchlist' => '全部评论',
+	'articlefeedbackv5-special-filter-helpful-watchlist' => '有帮助',
 	'articlefeedbackv5-special-sort-relevance-asc' => '有关',
 	'articlefeedbackv5-special-sort-relevance-desc' => '无关',
 	'articlefeedbackv5-special-sort-helpful-desc' => '有帮助',

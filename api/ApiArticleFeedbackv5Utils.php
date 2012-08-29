@@ -223,6 +223,93 @@ class ApiArticleFeedbackv5Utils {
 	}
 
 	/**
+	 * Adds an activity item to the global log under the articlefeedbackv5
+	 *
+	 * @param $type      string the type of activity we'll be logging
+	 * @param $pageId    int    the id of the page so we can look it up
+	 * @param $itemId    int    the id of the feedback item, used to build permalinks
+	 * @param $notes     string any notes that were stored with the activity
+	 * @param $doer      int    id of user who did the action, null will use currently logged in user
+	 * @param $params    array  of parameters that can be passed into the msg thing - used for "perpetrator" for log entry
+	 */
+	public static function logActivity( $type, $pageId, $itemId, $notes, $doer = null, $params = array() ) {
+		wfProfileIn( __METHOD__ );
+
+		global $wgLogActionsHandlers;
+
+		// log type might be afv5 or suppress
+		if ( isset( $wgLogActionsHandlers["suppress/$type"] ) ) {
+			$logtype = 'suppress';
+			$increment = 'af_suppress_count';
+		} elseif ( isset( $wgLogActionsHandlers["articlefeedbackv5/$type"] ) ) {
+			$logtype = 'articlefeedbackv5';
+			$increment = 'af_activity_count';
+		} else {
+			// if we do not have a valid action, return immediately
+			wfProfileOut( __METHOD__ );
+			return;
+		}
+
+		// we only have the page id, we need the string page name for the permalink
+		$title_object = Title::newFromID( $pageId );
+
+		// no title object? no page? well then no logging
+		if ( !$title_object ) {
+			wfProfileOut( __METHOD__ );
+			return;
+		}
+
+		// get the string name of the page
+		$page_name = $title_object->getDBKey();
+
+		// to build our permalink, use the feedback entry key + the page name (isn't page name a title? but title is an object? confusing)
+		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$page_name/$itemId" );
+
+		// Make sure our notes are not too long - we won't error, just hard substr it
+		global $wgArticleFeedbackv5MaxActivityNoteLength, $wgLang;
+
+		$notes = $wgLang->truncate( $notes, $wgArticleFeedbackv5MaxActivityNoteLength );
+
+		// if this is an automatic action, we create our special extension doer and send
+		if ( $doer ) {
+			if ( $doer > 0) {
+				$default_user = wfMessage( 'articlefeedbackv5-default-user' )->text();
+				$doer = User::newFromName( $default_user );
+			} else {
+				$doer = User::newFromId( $doer );
+			}
+			// I cannot see how this could fail, but if it does do not log
+			if ( !$doer ) {
+				wfProfileOut( __METHOD__ );
+				return;
+			}
+		} else {
+			$doer = null;
+		}
+
+		$log = new LogPage( $logtype, false );
+		// comments become the notes section from the feedback
+		$log->addEntry( $type, $permalink, $notes, $params, $doer );
+
+		// update our log count by 1
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin();
+
+		$dbw->update(
+			'aft_article_feedback',
+			array( $increment .' = ' .$increment . ' + 1' ),
+			array(
+				'af_id' => $itemId
+			),
+			__METHOD__
+		);
+
+		$dbw->commit();
+
+		wfProfileOut( __METHOD__ );
+	}
+
+	/**
 	 * Creates a user link for a log row
 	 *
 	 * @param int $userId can be null or a user object

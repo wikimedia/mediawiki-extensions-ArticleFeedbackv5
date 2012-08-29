@@ -489,12 +489,15 @@
 			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
 			localValidation: function ( formdata ) {
+				var error = {};
+				var ok = true;
 				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
 					&& !( 'found' in formdata ) ) {
 					$.articleFeedbackv5.enableSubmission( false );
-					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
+					error.nofeedback = mw.msg( 'articlefeedbackv5-error-nofeedback' );
+					ok = false;
 				}
-				return false;
+				return ok ? false : error;
 			}
 
 			// }}}
@@ -827,12 +830,15 @@
 			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
 			localValidation: function ( formdata ) {
+				var error = {};
+				var ok = true;
 				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
 					&& !( 'found' in formdata ) && !$( '#articleFeedbackv5-bucket6-toggle-yes').is( ':checked' ) ) {
 					$.articleFeedbackv5.enableSubmission( false );
-					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
+					error.nofeedback = mw.msg( 'articlefeedbackv5-error-nofeedback' );
+					ok = false;
 				}
-				return false;
+				return ok ? false : error;
 			},
 
 			// }}}
@@ -1002,7 +1008,7 @@
 			 * @return bool whether the CTA can be displayed
 			 */
 			verify: function () {
-				return $.articleFeedbackv5.editable && !mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'];
+				return $.articleFeedbackv5.editable && !mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'];
 			},
 
 			// }}}
@@ -1104,7 +1110,7 @@
 			 * @return bool whether the CTA can be displayed
 			 */
 			verify: function () {
-				return !mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'];
+				return !mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'];
 			},
 
 			// }}}
@@ -1521,7 +1527,7 @@
 			 * @return bool whether the CTA can be displayed
 			 */
 			verify: function () {
-				return mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'];
+				return mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'];
 			},
 
 			// }}}
@@ -2547,11 +2553,11 @@
 
 		// Link to help is dependent on the group the user belongs to
 		var helpLink = mw.msg( 'articlefeedbackv5-help-form-linkurl' );
-		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['oversighter'] ) {
+		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'] ) {
 			helpLink = mw.msg( 'articlefeedbackv5-help-form-linkurl-oversighters' );
-		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['monitor'] ) {
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-monitor'] ) {
 			helpLink = mw.msg( 'articlefeedbackv5-help-form-linkurl-monitors' );
-		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['editor'] ) {
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'] ) {
 			helpLink = mw.msg( 'articlefeedbackv5-help-form-linkurl-editors' );
 		}
 
@@ -2673,49 +2679,51 @@
 					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
 					$.articleFeedbackv5.specialUrl = data.articlefeedbackv5.aft_url;
 					$.articleFeedbackv5.permalink = data.articlefeedbackv5.permalink;
-
 					$.articleFeedbackv5.unlockForm();
 					$.articleFeedbackv5.showCTA();
-
 					// Drop a cookie for a successful submit
 					$.cookie( $.aftTrack.prefix( 'submitted' ), 'true', { 'expires': 365, 'path': '/' } );
-
 					// Clear out anything that needs removing (usually trigger links)
 					$.articleFeedbackv5.$toRemove.remove();
 					$.articleFeedbackv5.$toRemove = $( [] );
-
 					// Track the success
 					$.articleFeedbackv5.trackClick( 'submit_success' );
 				} else {
-					var msg = mw.msg( 'articlefeedbackv5-error-unknown' );
 					var code = 'unknown';
-
-					// fetch error information
+					var msg;
 					if ( 'error' in data ) {
-						msg = data.error.msg;
-						code = data.error.code;
+						if ( typeof( data.error ) == 'object' ) {
+							msg = data.error;
+							if ( 'code' in data.error ) {
+								code = data.error.code;
+							}
+						} else if ( 'articlefeedbackv5-error-abuse' == data.error ) {
+							msg = mw.msg( data.error );
+							code = 'afreject';
+						} else {
+							msg = mw.msg( data.error );
+						}
 					} else if ( 'warning' in data ) {
-						msg = data.warning.msg;
-						code = data.warning.code;
+						// NB: Warnings come from the AbuseFilter and are
+						// already translated.
+						msg = data.warning;
+						code = 'afwarn';
+					} else {
+						msg = { info: mw.msg( 'articlefeedbackv5-error-unknown' ) };
 					}
-
 					// Track the error
 					$.articleFeedbackv5.trackClick( 'submit_error_' + code );
-
 					// Set up error state
-					$.articleFeedbackv5.markFormErrors( msg );
+					$.articleFeedbackv5.markFormErrors( { _api : msg } );
 					$.articleFeedbackv5.unlockForm();
 				}
 			},
 			'error': function (xhr, tstatus, error) {
-				var msg = mw.msg( 'articlefeedbackv5-error-submit' );
-				var code = 'jquery';
-
 				// Track the error
-				$.articleFeedbackv5.trackClick( 'submit_error_' + code );
-
+				$.articleFeedbackv5.trackClick( 'submit_error_jquery' );
 				// Set up error state
-				$.articleFeedbackv5.markFormErrors( msg );
+				var err = { _api: { info: mw.msg( 'articlefeedbackv5-error-submit' ) } };
+				$.articleFeedbackv5.markFormErrors( err );
 				$.articleFeedbackv5.unlockForm();
 			}
 		} );
@@ -3056,12 +3064,27 @@
 	 *
 	 * @param object errors errors, indexed by field name
 	 */
-	$.articleFeedbackv5.markFormErrors = function ( error ) {
-		mw.log( error );
-		$.articleFeedbackv5.markTopError( error );
-
+	$.articleFeedbackv5.markFormErrors = function ( errors ) {
+		if ( '_api' in errors ) {
+			if ( typeof errors._api == 'object' ) {
+				if ( 'info' in errors._api ) {
+					mw.log( mw.msg( errors._api.info ) );
+				} else {
+					mw.log( mw.msg( 'articlefeedbackv5-error-submit' ) );
+				}
+				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-submit' ) );
+			} else {
+				mw.log( mw.msg( errors._api ) );
+				$.articleFeedbackv5.markTopError( errors._api );
+			}
+		} else {
+			mw.log( mw.msg( 'articlefeedbackv5-error-validation' ) );
+			if ( 'nofeedback' in errors ) {
+				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-nofeedback' ) );
+			}
+		}
 		if ( 'markFormErrors' in $.articleFeedbackv5.currentBucket() ) {
-			$.articleFeedbackv5.currentBucket().markFormErrors( error );
+			$.articleFeedbackv5.currentBucket().markFormErrors( errors );
 		}
 	};
 
