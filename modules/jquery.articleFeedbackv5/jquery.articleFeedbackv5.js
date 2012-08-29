@@ -1034,7 +1034,7 @@
 			/**
 			 * Perform adjustments after build
 			 */
-			afterBuild: function() {
+			afterBuild: function () {
 				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
 			}
 
@@ -1113,7 +1113,7 @@
 			/**
 			 * Perform adjustments after build
 			 */
-			afterBuild: function() {
+			afterBuild: function () {
 				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
 			}
 
@@ -1245,7 +1245,7 @@
 			/**
 			 * Perform adjustments after build
 			 */
-			afterBuild: function() {
+			afterBuild: function () {
 				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
 			}
 
@@ -1384,7 +1384,7 @@
 			/**
 			 * Perform adjustments after build
 			 */
-			afterBuild: function() {
+			afterBuild: function () {
 				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
 			}
 
@@ -1451,7 +1451,7 @@
 			/**
 			 * Perform adjustments after build
 			 */
-			afterBuild: function() {
+			afterBuild: function () {
 				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
 			}
 
@@ -1530,7 +1530,7 @@
 			/**
 			 * Perform adjustments after build
 			 */
-			afterBuild: function() {
+			afterBuild: function () {
 				$( '.articleFeedbackv5-tooltip-trigger' ).remove();
 			}
 
@@ -1587,7 +1587,7 @@
 			 * @return boolean
 			 */
 			closeable: function () {
-				return mw.user.name() != null;
+				return !mw.user.isAnon();
 			},
 
 			// }}}
@@ -1599,7 +1599,7 @@
 			 * @return Element the link
 			 */
 			build: function () {
-				var self = $.articleFeedbackv5.triggerLinks['A'];
+				var self = $.articleFeedbackv5.triggerLinks.A;
 				var $link = $( self.closeable() ? self.templates.closeable : self.templates.basic );
 				$link.find('#articleFeedbackv5-sitesublink')
 					.data( 'linkId', 'A' )
@@ -1727,11 +1727,11 @@
 			 * @return Element the link
 			 */
 			build: function () {
-				var $link = $( $.articleFeedbackv5.triggerLinks['C'].templates.block );
+				var $link = $( $.articleFeedbackv5.triggerLinks.C.templates.block );
 				$link.find( '#articleFeedbackv5-fixedtablink' )
 					.data( 'linkId', 'C' )
 					.attr( 'title', mw.msg( 'articlefeedbackv5-fixedtab-linktext' ) )
-					.click( function( e ) {
+					.click( function ( e ) {
 						e.preventDefault();
 						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
 					} );
@@ -1787,11 +1787,11 @@
 			 * @return Element the link
 			 */
 			build: function () {
-				var $link = $( $.articleFeedbackv5.triggerLinks['D'].templates.block );
+				var $link = $( $.articleFeedbackv5.triggerLinks.D.templates.block );
 				$link.find( '#articleFeedbackv5-bottomrighttablink' )
 					.data( 'linkId', 'D' )
 					.text( mw.msg( 'articlefeedbackv5-bottomrighttab-linktext' ) )
-					.click( function( e ) {
+					.click( function ( e ) {
 						e.preventDefault();
 						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
 					} );
@@ -1852,7 +1852,7 @@
 			 * @return boolean
 			 */
 			closeable: function () {
-				return mw.user.name() != null;
+				return !mw.user.isAnon();
 			},
 
 			// }}}
@@ -1864,12 +1864,12 @@
 			 * @return Element the link
 			 */
 			build: function () {
-				var self = $.articleFeedbackv5.triggerLinks['E'];
+				var self = $.articleFeedbackv5.triggerLinks.E;
 				var $link = $( self.closeable() ? self.templates.closeable : self.templates.basic );
 				$link.find( '#articleFeedbackv5-bottomrighttablink' )
 					.data( 'linkId', 'E' )
 					.text( mw.msg( 'articlefeedbackv5-bottomrighttab-linktext' ) )
-					.click( function( e ) {
+					.click( function ( e ) {
 						e.preventDefault();
 						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
 					} );
@@ -2271,7 +2271,7 @@
 	$.articleFeedbackv5.buildLink = function ( fulltext, link1, link2, link3 ) {
 		var full = mw.html.escape( mw.msg( fulltext ) );
 		var args = arguments;
-		return full.replace( /\$(\d+)/g, function( str, number ) {
+		return full.replace( /\$(\d+)/g, function ( str, number ) {
 			var i = parseInt( number, 10 );
 			var sub = args[i];
 			var replacement = '';
@@ -2321,7 +2321,7 @@
 		// this is actually required to resolve jQuery behavior of not triggering the
 		// click event when .blur() occurs on the textarea and .click() is supposed to
 		// be triggered on the button.
-		if($.articleFeedbackv5.submissionEnabled == state ) {
+		if ( $.articleFeedbackv5.submissionEnabled == state ) {
 			return;
 		}
 
@@ -2666,7 +2666,7 @@
 			'type': 'POST',
 			'dataType': 'json',
 			'data': data,
-			'success': function( data ) {
+			'success': function ( data ) {
 				if ( 'articlefeedbackv5' in data
 						&& 'feedback_id' in data.articlefeedbackv5
 						&& 'aft_url' in data.articlefeedbackv5 ) {
@@ -2915,7 +2915,7 @@
 			}
 		}
 		if ( hasTipsy ) {
-			$( '.articleFeedbackv5-form-flyover-closebutton' ).live( 'click', function( e ) {
+			$( '.articleFeedbackv5-form-flyover-closebutton' ).live( 'click', function ( e ) {
 				e.preventDefault();
 				var $host = $( '.articleFeedbackv5-trigger-link-' + $( e.target ).attr( 'rel' ) );
 				$host.tipsy( 'hide' );
@@ -3020,17 +3020,21 @@
 	$.articleFeedbackv5.markShowstopperError = function ( message ) {
 		var $veil = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error' );
 		var $box  = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-panel' );
-		$veil.css( 'top', '-' + $box.height() );
-		$veil.css( 'width', $box.width() );
-		$veil.css( 'height', $box.height() );
+		$veil.css( {
+			top: '-' + $box.height(),
+			width: $box.width(),
+			height: $box.height()
+		} );
 		$veil.show();
-		$box.css( 'width', $box.width() );
-		$box.css( 'height', $box.height() );
+		$box.css( {
+			width: $box.width(),
+			height: $box.height()
+		} );
 		$box.html( '' );
 
 		var $err = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error-message' );
 		$err.text( $.articleFeedbackv5.debug && message ? message : mw.msg( 'articlefeedbackv5-error' ) );
-		$err.html( $err.html().replace( "\n", '<br />' ) );
+		$err.html( $err.html().replace( '\n', '<br />' ) );
 		$.articleFeedbackv5.$toRemove.remove();
 		$.articleFeedbackv5.$toRemove = $( [] );
 		$.articleFeedbackv5.nowShowing = 'error';
@@ -3162,7 +3166,7 @@
 	 *
 	 * @param $link Element the trigger link
 	 */
-	$.articleFeedbackv5.clickTriggerLink = function( $link ) {
+	$.articleFeedbackv5.clickTriggerLink = function ( $link ) {
 
 		var tracking_id = 'trigger' + $link.data( 'linkId' ) + '-click-overlay';
 		$.articleFeedbackv5.trackClick( tracking_id );
@@ -3193,7 +3197,7 @@
  * If a string is passed in, it's considered a public function
  */
 $.fn.articleFeedbackv5 = function ( opts, arg ) {
-	if ( typeof ( opts ) == 'undefined' || typeof ( opts ) == 'object' ) {
+	if ( typeof opts === 'undefined' || typeof opts === 'object' ) {
 		$.articleFeedbackv5.init( $( this ), opts );
 		return $( this );
 	}
