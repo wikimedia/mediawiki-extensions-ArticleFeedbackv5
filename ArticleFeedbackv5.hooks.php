@@ -844,19 +844,13 @@ class ArticleFeedbackv5Hooks {
 
 		// date
 		$date = $lang->userTimeAndDate( $row->af_created, $user );
-		$d = Linker::link(
+		$date = Linker::link(
 			$feedbackTitle,
 			htmlspecialchars( $date )
 		);
 		if ( $row->af_is_hidden > 0 || $row->af_oversight_count > 0 || $row->af_is_deleted > 0 ) {
-			$d = '<span class="history-deleted">' . $d . '</span>';
+			$date = '<span class="history-deleted">' . $date . '</span>';
 		}
-
-		// chardiff
-		$chardiff = ' . . ' . ChangesList::showCharacterDifference( 0, strlen( $row->af_comment ) ) . ' . . ';
-
-		// article feedback is given on
-		$article = $lang->getDirMark() . wfMessage( 'articlefeedbackv5-contribs-feedback', $feedbackCentralPageTitle->getFullText(), $pageTitle->getPrefixedText() )->parse();
 
 		// show user names for /newbies as there may be different users.
 		$userlink = '';
@@ -876,12 +870,11 @@ class ArticleFeedbackv5Hooks {
 				// (probably) abusive comment that has been hidden/oversight-requested/oversighted
 				$feedback = Linker::commentBlock( wfMessage( 'articlefeedbackv5-contribs-hidden-feedback' )->escaped() );
 			} else {
-				$feedback = Linker::commentBlock( $lang->truncate( $row->af_comment, 250 ) );
+				$feedback = Linker::commentBlock( $lang->truncate( $row->af_comment, 75 ) );
 			}
 		}
 
 		// status (actions taken)
-		$status = '';
 		$actions = array();
 		if ( $row->af_net_helpfulness > 0 ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-helpful' )->escaped();
@@ -904,11 +897,19 @@ class ArticleFeedbackv5Hooks {
 		if ( $row->af_is_deleted > 0 ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-deleted' )->escaped();
 		}
-		if ( !empty( $actions ) ) {
-			$status = ' . . ' . wfMessage( 'articlefeedbackv5-contribs-status', implode( ', ', $actions) )->escaped();
-		}
 
-		$ret = "{$d} {$chardiff} {$article} {$userlink} {$feedback} {$status}\n";
+		$ret = wfMessage( 'articlefeedbackv5-contribs-entry' )
+			->params( array(
+				Message::rawParam( $date ), // date + time
+				ChangesList::showCharacterDifference( 0, strlen( $row->af_comment ) ), // chardiff
+				$feedbackCentralPageTitle->getFullText(), // feedback link
+				$pageTitle->getPrefixedText(), // article title
+				Message::rawParam( $userlink ), // userlink (for newbies)
+				$feedback, // comment
+				implode( ', ', $actions) // status
+			))
+			->parse();
+
 		$classes[] = 'mw-aft-contribution';
 
 		return true;
