@@ -6,24 +6,33 @@
 /*** Main entry point ***/
 jQuery( function( $ ) {
 
-	// Is AFT enabled here?
-	var enable = $.aftVerify.verify( 'special' );
-	if ( !enable ) {
-		// Remove the extension's output & replace it with a warning
-		if ( $.aftVerify.checks.useragent === false ) {
-			// The browser isn't supported
-			var msg = 'articlefeedbackv5-unsupported-message';
-		} else {
-			// Feedback is disabled for the page
-			var msg = 'articlefeedbackv5-page-disabled';
-		}
-		var warning = $( '#articlefeedbackv5-header-message' ).text( mw.msg( msg ) );
+	var showError = function( message ) {
+		var warning = $( '#articlefeedbackv5-header-message' ).text( message );
 		$( '#articleFeedbackv5-special-wrap' ).empty().append( warning );
-		return;
 	}
 
-	// Otherwise, we're good to go!
-	$.articleFeedbackv5special.setup();
+	// AFT is enabled
+	if ( $.aftVerify.verify( 'special' ) ) {
+		// no entries yet for this page
+		if ( $( '#articleFeedbackv5-show-feedback' ).children().length == 0 ) {
+			showError( mw.msg( 'articlefeedbackv5-no-feedback' ) );
+
+		// launch AFT
+		} else {
+			$.articleFeedbackv5special.setup();
+		}
+
+	// AFT is not enabled
+	} else {
+		// unsupported browser
+		if ( $.aftVerify.useragent() === false ) {
+			showError( mw.msg( 'articlefeedbackv5-unsupported-message' ) );
+
+		// AFT disabled for this page
+		} else {
+			showError( mw.msg( 'articlefeedbackv5-page-disabled' ) );
+		}
+	}
 
 } );
 
