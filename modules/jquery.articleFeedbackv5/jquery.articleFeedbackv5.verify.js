@@ -211,7 +211,6 @@
 		}
 
 		// Lottery
-		var v4odds = mw.config.get( 'wgArticleFeedbackLotteryOdds', 0 );
 		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
 
 		// odds defined per namespace
