@@ -88,6 +88,7 @@
 				// Talk and special pages have one passed in
 				$.aftVerify.pageId = mw.config.get( 'aftv5PageId', -1 );
 			}
+console.log($.aftVerify.pageId);
 
 			// Case 1: the html is cached and we don't know if it's whitelisted
 			if ( $.aftVerify.whitelist == -1 ) {
@@ -211,7 +212,6 @@
 		}
 
 		// Lottery
-		var v4odds = mw.config.get( 'wgArticleFeedbackLotteryOdds', 0 );
 		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
 
 		// odds defined per namespace
