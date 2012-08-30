@@ -1353,7 +1353,7 @@ Name of the AFTv5 log filter on the Special:Log page',
 * $4 is the date the action was performed
 * $5 is the time the action was performed
 * $6 is the user name (gender support)',
-	'articlefeedbackv5-activity-count' => 'Template for activity items count',
+	'articlefeedbackv5-activity-count' => 'Shows the amount of actions performed on a feedback entry. $1 is the number',
 	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
 	'articlefeedbackv5-talk-view-feedback' => 'A link on the talk page to encourage people to visit the feedback page',
 	'articlefeedbackv5-watchlist-view-feedback' => 'A link on the watchlist page to encourage people to visit the feedback page for articles on their watchlist',
