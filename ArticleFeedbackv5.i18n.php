@@ -157,7 +157,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'Feedback from my watched pages',
 	'articlefeedbackv5-special-central-pagetitle' => 'Central Feedback Page',
 	'articlefeedbackv5-loading-tag' => 'Loading...',
-	'articlefeedbackv5-form-optionid' => 'Option $1',
 	'articlefeedbackv5-status-hidden' => 'This post was hidden by $1 on $2 at $3',
 	'articlefeedbackv5-status-unhidden' => 'This post was unhidden by $1 on $2 at $3',
 	'articlefeedbackv5-status-request' => 'Oversight for this post was requested by $1 on $2 at $3',
@@ -193,7 +192,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-unoversight' => 'Unrequest oversight',
 	'articlefeedbackv5-form-undelete' => 'Un-oversight',
 	'articlefeedbackv5-form-decline' => 'Decline oversight',
-	'articlefeedbackv5-form-header' => 'Feedback #$1, at $2',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 found what they were looking for.}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 did not find what they were looking for.}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 posted a comment.}}',
@@ -223,19 +221,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-invalid-page-id' => 'Invalid page ID',
 	'articlefeedbackv5-percent-found' => '$1 found what they were looking for',
 	'articlefeedbackv5-overall-rating' => 'Rating: $1/5',
-	'articlefeedbackv5-special-title' => '==Feedback==',
-	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Today\'s highs and lows',
-	'articleFeedbackv5-table-caption-dailyhighs' => 'Pages with highest ratings: $1',
-	'articleFeedbackv5-table-caption-dailylows' => 'Pages with lowest ratings: $1',
-	'articleFeedbackv5-table-caption-weeklymostchanged' => 'This week\'s most changed',
-	'articleFeedbackv5-table-caption-recentlows' => 'Recent lows',
-	'articleFeedbackv5-table-heading-page' => 'Page',
-	'articleFeedbackv5-table-heading-average' => 'Average',
-	'articlefeedbackv5-table-noratings' => '-',
-	'articleFeedbackv5-copy-above-highlow-tables' => 'This is an experimental feature. Please provide feedback on the [$1 discussion page].',
-	'articlefeedbackv5-dashboard-bottom' => "'''Note''': We will continue to experiment with different ways of surfacing pages in these dashboards.  At present, the dashboards include the following pages:
-* Pages with highest/lowest ratings: pages that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.
-* Recent lows: pages that got 70% or more low (2 stars or lower) ratings in any category in the last 24 hours. Only pages that have received at least 10 ratings in the last 24 hours are included.",
 	'articlefeedbackv5' => 'Article feedback - Central page',
 	'articlefeedbackv5watchlist' => 'Article feedback - My watched pages',
 	'articlefeedbackv5-desc' => 'Article feedback',
@@ -524,9 +509,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-toolbox-view' => 'View feedback',
 	'articlefeedbackv5-toolbox-add' => 'Add your feedback',
 
-	/* Not sure */
-	'articlefeedbackv5-privacyurl' => '//wikimediafoundation.org/wiki/Feedback_privacy_statement',
-
 	/* Special:Preferences */
 	'articlefeedbackv5-disable-preference' => "Don't show the Article feedback widget on pages",
 
@@ -715,7 +697,7 @@ The link to the edit tutorial',
 	'articlefeedbackv5-overlay-close' => 'The alt-text for the close button in overlay-mode',
 	'articlefeedbackv5-error' => 'This error message will be displayed in a grey box replacing the form if there was an unrecoverable error.',
 	'articlefeedbackv5-error-blocked' => 'This error message will be displayed on the form if the user is blocked from submitting feedback.',
-	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters. $1 is the link to the abuse policy, the text of which is {{msg-mw|articlefeedbackv5-error-abuse-linktext}} and the url of which is {{msg-mw|articlefeedbackv5-error-abuse-link}}.',
+	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters.',
 	'articlefeedbackv5-error-nofeedback' => 'This error message will be displayed above the form (but below the title) if the user has attempted to submit a blank form.',
 	'articlefeedbackv5-protection-level' => 'Fieldset label to be used for AFT page protection levels',
 	'articlefeedbackv5-protection-level-error' => 'Error message when protection level is too high compared to article edit protection level',
@@ -894,8 +876,6 @@ The link to the edit tutorial',
 	'articlefeedbackv5-error-loading-feedback' => 'Message displayed when there was an error loading feedback - result is a largely-blank page.',
 	'articlefeedbackv5-discussion-page' => '{{Identical|Discussion}}',
 	'articlefeedbackv5-whats-this' => '{{Identical|Help}}',
-	'articlefeedbackv5-special-title' => 'don\'t touch "== ==".
-{{Identical|Feedback}}',
 	'articleFeedbackv5-table-heading-page' => 'This is used in the [[mw:Extension:ArticleFeedback|Article Feedback extension]].
 {{Identical|Page}}',
 	'articleFeedbackv5-table-heading-average' => '{{Identical|Average}}',
@@ -1148,8 +1128,6 @@ $1 is an integer, and the rating count.",
 {{Identical|Feedback}}',
 	'articlefeedbackv5-toolbox-view' => 'This link will take users to the feedback page of article currently being read',
 	'articlefeedbackv5-toolbox-add' => 'This link will scroll down the screen and make the form flash, pointing users to the feedback form',
-	'articlefeedbackv5-privacyurl' => '{{optional}}
-This URL can be changed to point to a translated version of the page if it exists.',
 	'articlefeedbackv5-disable-preference' => 'Preference name/description for disabling AFTv5',
 	'right-aftv5-hide-feedback' => '{{doc-right|aftv5-hide-feedback}}',
 	'right-aftv5-delete-feedback' => '{{doc-right|aftv5-delete-feedback}}',
