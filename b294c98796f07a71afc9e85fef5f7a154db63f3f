@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARn///sY\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-08-30T12:50:27Z",
+      "side": 1,
+      "message": "This looks like the actions will be double escaped. From lines 879-898, the messages should probably be -\u003eplain() instead of escaped(). Alternatively, you can use rawParams() here instead of params().",
+      "revId": "b294c98796f07a71afc9e85fef5f7a154db63f3f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
