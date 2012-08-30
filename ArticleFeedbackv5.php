@@ -145,12 +145,6 @@ $wgArticleFeedbackv5Namespaces = $wgContentNamespaces;
 // default message.
 $wgArticleFeedbackv5Debug = false;
 
-// The rating categories for bucket 5 -- these MUST match the field names in the database.
-$wgArticleFeedbackv5Bucket5RatingCategories = array( 'trustworthy', 'objective', 'complete', 'wellwritten' );
-
-// The tag names and values for bucket 2 -- these MUST match the option names in the database.
-$wgArticleFeedbackv5Bucket2TagNames = array( 'suggestion', 'praise', 'problem', 'question' );
-
 // Bucket settings for display options
 $wgArticleFeedbackv5DisplayBuckets = array(
 	// Users can fall into one of several display buckets (these are defined in
