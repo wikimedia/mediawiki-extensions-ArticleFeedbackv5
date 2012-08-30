@@ -915,7 +915,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-header-message-link-text' => 'The link text to be displayed (at $1 on articlefeedbackv5-header-message-text)',
 	'articlefeedbackv5-beta-label' => 'A label to be displayed on the special page, warning users that this extension is still in beta.',
 	'articlefeedbackv5-unsupported-message' => 'A message to be displayed on the special page, when a visitor with an unsupported browser visits.',
-	'articlefeedbackv5-viewactivity' => 'View feedback post activity action text',
+	'articlefeedbackv5-viewactivity' => 'Text for the link to see the feedback entrie\'s activity log',
 	'articlefeedbackv5-timestamp-years' => 'Years part - $1 is the years parameter',
 	'articlefeedbackv5-timestamp-months' => 'Months part - $1 is the months parameter',
 	'articlefeedbackv5-timestamp-weeks' => 'Weeks part - $1 is the weeks parameter',
