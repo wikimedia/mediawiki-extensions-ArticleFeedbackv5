@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARn///zY\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 93
+      },
+      "writtenOn": "2012-08-30T08:57:19Z",
+      "side": 1,
+      "message": "Is ParserFunctions listed as requirement for this extension?",
+      "revId": "c7b71d2df655613a987711a2771ad33f7f826d3f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn///zc\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 93
+      },
+      "writtenOn": "2012-08-30T08:57:19Z",
+      "side": 1,
+      "message": "Prefix these lines with *, wikitext eats linebreaks.",
+      "revId": "c7b71d2df655613a987711a2771ad33f7f826d3f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn///zU\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 93
+      },
+      "writtenOn": "2012-08-30T08:57:19Z",
+      "side": 1,
+      "message": "Example (in a screenshot perhaps?) could be useful.",
+      "revId": "c7b71d2df655613a987711a2771ad33f7f826d3f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
