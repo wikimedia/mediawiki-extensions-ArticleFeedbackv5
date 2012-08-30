@@ -643,11 +643,7 @@ The {{SITENAME}} Team
 P.S.: If you have any questions about using the oversight features of the
 article feedback page, please check this oversighter FAQ:
 
-$4
-
-Please note that the article feedback tool v5 is still in early stages of
-testing on the English Encyclopedia and that the feedback page has not been
-publicized to the community for this testing period.',
+$4',
 
 	/* Front-end: feedback link close button */
 	'articlefeedbackv5-disable-flyover-title' => 'Remove this tool?',
