@@ -502,8 +502,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket6-backlink-text' => 'Back to step 1',
 
 	/* Messages shared by all feedback form options */
-	'articlefeedbackv5-shared-on-feedback' => 'Your comment will be shared on this $1.',
-	'articlefeedbackv5-shared-on-feedback-linktext' => 'feedback page',
 	'articlefeedbackv5-help-tooltip-title' => 'What\'s this?',
 	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} would like to hear what you think of this page. Share your feedback with the editors — and help improve this page.',
 	'articlefeedbackv5-help-tooltip-linktext' => 'Learn more',
@@ -1129,8 +1127,6 @@ $1 is an integer, and the rating count.",
 	'articlefeedbackv5-bucket6-question-placeholder-no' => 'This is the grey default text that appears in the comment box when the no button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
 	'articlefeedbackv5-bucket6-form-submit' => 'This is the contents of the submit button for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
 	'articlefeedbackv5-bucket6-backlink-text' => 'This is a small link that allows users to go back to the first step of the form and change their mind on whether they find the article useful',
-	'articlefeedbackv5-shared-on-feedback' => 'This is the top line of the small text that goes beside the submit button and lets the user know that their comment will be posted on the feedback page. $1 is the link to the abuse policy, the text of which is {{msg-mw|articlefeedbackv5-shared-on-feedback-linktext}}.',
-	'articlefeedbackv5-shared-on-feedback-linktext' => 'The text for the feedback page link within {{msg-mw|articlefeedbackv5-shared-on-feedback}}.',
 	'articlefeedbackv5-help-tooltip-title' => 'The title for the help tooltip.
 {{Identical|What is this}}',
 	'articlefeedbackv5-help-tooltip-info' => 'The contents of the help tooltip',

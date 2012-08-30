@@ -325,7 +325,6 @@
 							<textarea id="articleFeedbackv5-find-feedback" class="feedback-text" name="comment"></textarea>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
-							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket1-form-submit" /></button>\
@@ -361,17 +360,6 @@
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
 				// Fill in the disclosure text
-				$block.find( '.articlefeedbackv5-shared-on-feedback' )
-					.html( $.articleFeedbackv5.buildLink(
-						'articlefeedbackv5-shared-on-feedback',
-						{
-							href: mw.config.get( 'wgScript' ) + '?' + $.param( {
-								title: mw.config.get( 'wgPageName' ),
-								action: 'feedback'
-							} ),
-							text: 'articlefeedbackv5-shared-on-feedback-linktext',
-							target: '_blank'
-						} ) );
 				$block.find( '.articlefeedbackv5-help-transparency-terms' ).msg( 'articlefeedbackv5-help-transparency-terms' );
 
 				// Turn the submit into a slick button
@@ -674,7 +662,6 @@
 							<textarea id="articleFeedbackv5-find-feedback" class="feedback-text" name="comment"></textarea>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
-							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket6-form-submit" /></button>\
@@ -710,17 +697,6 @@
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
 				// Fill in the disclosure text
-				$block.find( '.articlefeedbackv5-shared-on-feedback' )
-					.html( $.articleFeedbackv5.buildLink(
-						'articlefeedbackv5-shared-on-feedback',
-						{
-							href: mw.config.get( 'wgScript' ) + '?' + $.param( {
-								title: mw.config.get( 'wgPageName' ),
-								action: 'feedback'
-							} ),
-							text: 'articlefeedbackv5-shared-on-feedback-linktext',
-							target: '_blank'
-						} ) );
 				$block.find( '.articlefeedbackv5-help-transparency-terms' ).msg( 'articlefeedbackv5-help-transparency-terms' );
 
 				// Turn the submit into a slick button
