@@ -269,10 +269,9 @@ $wgArticleFeedbackv5CTABuckets = array(
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
 	// this when you want to start a new "experiment".
-	'version' => 3,
-	// Let users be tracked for a month, and then rebucket them, allowing some
-	// churn.
-	'expires' => 30,
+	'version' => 4,
+	// Users may constantly be rebucketed, giving them new CTA's each time.
+	'expires' => 0,
 	// Track the event of users being bucketed - so we can be sure the odds
 	// worked out right. [LATER - depends on UDP logging being set up]
 	'tracked' => false,
