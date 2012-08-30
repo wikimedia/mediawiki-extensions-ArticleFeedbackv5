@@ -205,7 +205,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} was presented with the CTA-only form.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} rated this page:',
 	'articlefeedbackv5-form-anon-username' => 'A reader',
-	'articlefeedbackv5-form-anon-message' => 'Posted anonymously from {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Posted anonymously from $1.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} was not shown a feedback form.',
 	'articlefeedbackv5-form-invalid' => 'Invalid feedback form ID.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} posted [[$4|feedback]] to $3',
@@ -886,7 +886,7 @@ The link to the edit tutorial',
 * $1 is a user name.',
 	'articlefeedbackv5-form4-header' => 'Messages in the feedback dashboard to indicate that a user was only presented with a Call To Action (CTA) form. This is a feedback form that asks a user to do something, rather than provide feedback.',
 	'articlefeedbackv5-form-anon-message' => 'Parameters:
-* $1 - user name',
+* $1 - Link to the IP\'s contibutions, with the IP as link text',
 	'articlefeedbackv5-central-header-left-comment' => "Comment header indicating that the user posted feedback (central feedback page only). Parameters:
 * $1 is a username.
 * $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text
