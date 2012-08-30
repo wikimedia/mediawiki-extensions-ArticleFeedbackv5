@@ -2336,7 +2336,6 @@
 		}
 		$.articleFeedbackv5.submissionEnabled = state;
 		$( '#articleFeedbackv5-submit-bttn span' ).text( mw.msg( 'articlefeedbackv5-bucket1-form-submit' ) );
-		$( '#articleFeedbackv5-submit-bttn5 span' ).text( mw.msg( 'articlefeedbackv5-bucket5-form-panel-submit' ) );
 	};
 
 	// }}}

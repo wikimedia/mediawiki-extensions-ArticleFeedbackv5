@@ -102,11 +102,15 @@ class ArticleFeedbackv5Render {
 			$content = $this->renderCentral( $record );
 		} else {
 			switch( $record[0]->af_form_id ) {
-				case 1: $content = $this->renderBucket1( $record ); break;
-				case 2: $content = $this->renderBucket2( $record ); break;
-				case 3: $content = $this->renderBucket3( $record ); break;
-				case 6: $content = $this->renderBucket1( $record ); break;
-				default: $content = $this->renderNoBucket( $record ); break;
+				case 1:
+				case 2:
+				case 3:
+				case 6:
+					$content = $this->renderBucket1( $record );
+					break;
+				default:
+					$content = $this->renderNoBucket( $record );
+					break;
 			}
 		}
 
@@ -407,40 +411,6 @@ class ArticleFeedbackv5Render {
 			$msg = 'articlefeedbackv5-form1-header-left-comment';
 		}
 		return $this->feedbackHead( $msg, $record[0] )
-			. $this->renderComment(
-				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
-				$record[0]
-			);
-	}
-
-	/**
-	 * Returns the feedback head and comment for form #2
-	 *
-	 * @param  $record array the record, with keys 0 + answers
-	 * @return string  the rendered feedback info
-	 */
-	private function renderBucket2( $record ) {
-		$type  = $record['tag']->afo_name;
-		// Document for grepping. Uses any of the messages:
-		// * articlefeedbackv5-form2-header-praise
-		// * articlefeedbackv5-form2-header-problem
-		// * articlefeedbackv5-form2-header-question
-		// * articlefeedbackv5-form2-header-suggestion
-		return $this->feedbackHead( "articlefeedbackv5-form2-header-$type", $record[0], $type )
-			. $this->renderComment(
-				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
-				$record[0]
-			);
-	}
-
-	/**
-	 * Returns the feedback head and comment for form #3
-	 *
-	 * @param  $record array the record, with keys 0 + answers
-	 * @return string  the rendered feedback info
-	 */
-	private function renderBucket3( $record ) {
-		return $this->feedbackHead( 'articlefeedbackv5-form3-header', $record[0], $record['rating']->aa_response_rating )
 			. $this->renderComment(
 				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
 				$record[0]
