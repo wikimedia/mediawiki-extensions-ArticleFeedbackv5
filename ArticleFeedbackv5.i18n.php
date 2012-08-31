@@ -862,7 +862,7 @@ The link to the edit tutorial',
 * $1 is a user name.',
 	'articlefeedbackv5-form4-header' => 'Messages in the feedback dashboard to indicate that a user was only presented with a Call To Action (CTA) form. This is a feedback form that asks a user to do something, rather than provide feedback.',
 	'articlefeedbackv5-form-anon-message' => "Parameters:
-* $1 - Link to the IP's contibutions, with the IP as link text",
+* $1 is a link to the IP's contibutions, with the IP as link text",
 	'articlefeedbackv5-central-header-left-comment' => "Comment header indicating that the user posted feedback (central feedback page only). Parameters:
 * $1 is a username.
 * $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text
@@ -1681,7 +1681,7 @@ $messages['ar'] = array(
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} تم عرضها بواسطة وثيقة CTA فقط.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} قيم هذه الصفحة:',
 	'articlefeedbackv5-form-anon-username' => 'قارئ',
-	'articlefeedbackv5-form-anon-message' => 'أرسل بشكل مجهول من {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'أرسل بشكل مجهول من $1.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} لم يعرض له صفحة التعليق.',
 	'articlefeedbackv5-form-invalid' => 'تعليق غير مقبول لصفحة ID.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} أرسل [[$4|تعليق]] إلى $3',
@@ -3315,7 +3315,7 @@ $messages['ca'] = array(
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} fou {{GENDER:$1|presentat|presentada}} amb el formulari només per CTA.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} ha qualificat aquesta pàgina:',
 	'articlefeedbackv5-form-anon-username' => 'Un lector',
-	'articlefeedbackv5-form-anon-message' => 'Publicat anònimament des de {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Publicat anònimament des de $1.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} no ha estat mostrat en el formulari de comentaris.',
 	'articlefeedbackv5-form-invalid' => 'ID de formulari de comentaris invàlida.',
 	'articlefeedbackv5-abuse-saved' => 'Marcat com abús',
@@ -4607,14 +4607,14 @@ Sofern du diese Anfrage nicht ausgelöst hast, ignoriere einfach diese E-Mail. W
 Viele Grüße und vielen Dank,
 Das {{SITENAME}}-Team',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Das Verstecken der Rückmeldungsseite wurde beantragt',
-	'articlefeedbackv5-email-request-oversight-body' => 'Hallo Oversighter!
+	'articlefeedbackv5-email-request-oversight-body' => 'Hallo Oversighter,
 
-Ein Antrag auf Verstecken wurde von $1 zu einer Rückmeldung bezüglich des
-folgenden Artikels beantragt:
+von $1 wurde ein Antrag auf Verstecken zu einer Rückmeldung bezüglich des
+folgenden Artikels gestellt:
 
 $2
 
-Bitte prüfe diese Rückmeldung und akzeptiere diesen Antrag oder lehne ihn ab:
+Bitte prüfe diese Rückmeldung und akzeptiere diesen Antrag bzw. lehne ihn ab:
 
 $3
 
@@ -4623,7 +4623,7 @@ Vielen Dank,
 das Team von {{SITENAME}}
 
 PS Sofern du Fragen zur Nutzung der Oversightfunktion auf Seiten mit Rückmeldungen
-hast, besuche bitte die Seite mit den Häufigen Fragen:
+haben, besuche bitte die Seite mit den Häufigen Fragen:
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Diese Funktion entfernen?',
@@ -4747,14 +4747,14 @@ Sofern Sie diese Anfrage nicht ausgelöst haben, ignorieren Sie einfach diese E-
 
 Viele Grüße und vielen Dank,
 Das {{SITENAME}}-Team',
-	'articlefeedbackv5-email-request-oversight-body' => 'Hallo Oversighter!
+	'articlefeedbackv5-email-request-oversight-body' => 'Hallo Oversighter,
 
-Ein Antrag auf Verstecken wurde von $1 zu einer Rückmeldung bezüglich des
-folgenden Artikels beantragt:
+von $1 wurde ein Antrag auf Verstecken zu einer Rückmeldung bezüglich des
+folgenden Artikels gestellt:
 
 $2
 
-Bitte prüfen Sie diese Rückmeldung und akzeptiere diesen Antrag oder lehnen
+Bitte prüfen Sie diese Rückmeldung und akzeptieren Sie diesen Antrag bzw. lehnen
 Sie ihn ab:
 
 $3
@@ -4764,13 +4764,9 @@ Vielen Dank,
 das Team von {{SITENAME}}
 
 PS Sofern Sie Fragen zur Nutzung der Oversightfunktion auf Seiten mit Rückmeldungen
-hast, besuchen Sie bitte die Seite mit den Häufigen Fragen:
+haben, besuchen Sie bitte die Seite mit den Häufigen Fragen:
 
-$4
-
-Dieses Hilfsmittel für Rückmeldungen befindet sich noch in den Anfängen seiner
-Erprobung auf der englischsprachigen Wikipedia. Zudem wurde niemand über diese
-Erprobungsphase informiert.',
+$4',
 	'articlefeedbackv5-disable-flyover-help' => 'Um $1 zu deaktivieren, gehen Sie zu $2 und klicken Sie die Option $3 an',
 );
 
@@ -6039,7 +6035,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} fue presentado con el formulario solo para CTA.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} puntuó esta página:',
 	'articlefeedbackv5-form-anon-username' => 'Un lector',
-	'articlefeedbackv5-form-anon-message' => 'Publicado anónimamente desde {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Publicado anónimamente desde $1.',
 	'articlefeedbackv5-form-not-shown' => 'A {{GENDER:$1|$1}} no le fue mostrado un formulario de comentarios.',
 	'articlefeedbackv5-form-invalid' => 'ID del formulario de opinión no válido',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} ha publicado [[$4|comentarios]] sobre $3',
@@ -6366,11 +6362,11 @@ El equipo de {{SITENAME}}.',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Se ha solicitado supervisión en página de comentarios de un artículo',
 	'articlefeedbackv5-email-request-oversight-body' => '¡Hola, supervisores!
 
-Una solicitud para supervisión ha sido presentada por $1 para un comentario publicado en este artículo
+Una solicitud para supervisión ha sido presentada por $1 para un comentario publicado en este artículo:
 
 $2
 
-Por favor, revise este comentario, luego apruebe o rechace esta petición de supervisión.
+Por favor, revise este comentario, luego apruebe o rechace esta petición de supervisión:
 
 $3
 
@@ -6380,9 +6376,7 @@ El equipo de {{SITENAME}}
 
 PD: Si tienes alguna pregunta acerca de cómo utilizar las funciones de supervisión de la página de comentarios del artículo, por favor compruebe esta FAQ del supervisor:
 
-$4
-
-Tenga en cuenta que la herramienta de comentario de artículo v5 se encuentra todavía en las primeras etapas de prueba en la Enciclopedia Inglesa y que la página de comentarios no se ha publicado para la comunidad durante este período de pruebas.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => '¿Eliminar esta herramienta?',
 	'articlefeedbackv5-disable-flyover-help' => 'Para eliminar $1, vaya a $2 y compruebe $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Comentario de artículo',
@@ -6566,7 +6560,7 @@ $messages['et'] = array(
 	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} andis sellele leheküljele hinnangu $2/5',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} andis sellele leheküljele hinnangu:',
 	'articlefeedbackv5-form-anon-username' => 'Lugeja',
-	'articlefeedbackv5-form-anon-message' => 'Postitatud anonüümselt nime {{GENDER:$1|$1}} all',
+	'articlefeedbackv5-form-anon-message' => 'Postitatud anonüümselt nime $1 all',
 	'articlefeedbackv5-form-invalid' => 'Vigane tagasiside vormi identifikaator.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} postitas [[$4|tagasiside]] artiklile $3',
 	'articlefeedbackv5-abuse-saved' => 'Sildistatud kui väärtarvitus',
@@ -6907,9 +6901,7 @@ Meeskond
 
 PS Kui sul on artikli tagasiside lehekülje varjamisfunktsiooni kasutamise kohta küsimusi, vaata varjamise korduma kippuvaid küsimusi:
 
-$4
-
-Pane tähele, artikli tagasiside tööriist v5 on veel inglise Vikipeedias varases katsetusjärgus ja tagasiside lehekülg pole käesoleval katseajal avalik.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Eemalda see tööriist?',
 	'articlefeedbackv5-disable-flyover-help' => 'Et eemaldada $1, mine $2 ja vali "$3"',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'artikli tagasiside',
@@ -7018,11 +7010,13 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Dalba
  * @author Ebraminio
  * @author Hooshmand.hasannia
  * @author Huji
  * @author Leyth
  * @author Mjbmr
+ * @author PHoBiA
  * @author Reza1615
  * @author Rmashhadi
  * @author ZxxZxxZ
@@ -7042,6 +7036,7 @@ $messages['fa'] = array(
 	'articlefeedbackv5-cta3-confirmation-call' => 'فقط یک دقیقه طول می‌کشد و به بهبود ویکی‌پدیا کمک خواهد کرد.',
 	'articlefeedbackv5-cta3-button-text' => 'شروع نظرسنجی',
 	'articlefeedbackv5-cta4-confirmation-title' => 'به جامعهٔ ما بپیوندید',
+	'articlefeedbackv5-cta4-confirmation-call-line1' => 'وارد سیستم شوید یا ثبت نام کنید، تا ویرایشگران بتوانند به انتقادات و پیشنهادات شما پاسخ دهند.',
 	'articlefeedbackv5-cta4-button-text-signup' => 'یک حساب کاربری بسازید',
 	'articlefeedbackv5-cta4-button-text-login' => 'ورود',
 	'articlefeedbackv5-cta4-button-text-later' => 'شاید بعداً',
@@ -7083,6 +7078,14 @@ $messages['fa'] = array(
 	'articlefeedbackv5-special-filter-hidden' => 'پنهان ($1)',
 	'articlefeedbackv5-special-filter-unhidden' => 'عدم پنهان ($1)',
 	'articlefeedbackv5-special-filter-featured' => 'برگزیده‌ها  ($1)',
+	'articlefeedbackv5-special-filter-helpful-watchlist' => 'مفید',
+	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'غیر مفید',
+	'articlefeedbackv5-special-filter-hidden-watchlist' => 'مخفی',
+	'articlefeedbackv5-special-filter-unhidden-watchlist' => 'غیر مخفی',
+	'articlefeedbackv5-special-filter-featured-watchlist' => 'برگزیده',
+	'articlefeedbackv5-special-filter-unfeatured-watchlist' => 'غیر برگزیده',
+	'articlefeedbackv5-special-filter-resolved-watchlist' => 'حل شده',
+	'articlefeedbackv5-special-filter-unresolved-watchlist' => 'حل نشده',
 	'articlefeedbackv5-special-sort-relevance-asc' => 'مرتبط',
 	'articlefeedbackv5-special-sort-relevance-desc' => 'غیرمرتبط',
 	'articlefeedbackv5-special-sort-helpful-desc' => 'سودمند',
@@ -7100,6 +7103,7 @@ $messages['fa'] = array(
 	'articlefeedbackv5-special-more' => 'نمایش پست‌های بیشتر',
 	'articlefeedbackv5-special-refresh' => 'تازه کردن فهرست',
 	'articlefeedbackv5-special-pagetitle' => 'بازخورد $1',
+	'articlefeedbackv5-special-central-pagetitle' => 'صفحهٔ مرکزی بازخورد',
 	'articlefeedbackv5-loading-tag' => 'در حال بارگذاری...',
 	'articlefeedbackv5-new-marker' => 'جديد',
 	'articlefeedbackv5-deleted-marker' => 'پنهان‌شده',
@@ -7125,7 +7129,7 @@ $messages['fa'] = array(
 	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} به این صفحه امتیاز $2/۵ داد',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} به این صفحه امتیاز داد:',
 	'articlefeedbackv5-form-anon-username' => 'یک خواننده',
-	'articlefeedbackv5-form-anon-message' => 'به صورت ناشناس ارسال شده از {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'به صورت ناشناس ارسال شده از $1.',
 	'articlefeedbackv5-form-not-shown' => 'فرم بازخورد برای {{GENDER:$1|$1}} نمایش داده نشد.',
 	'articlefeedbackv5-form-invalid' => 'شناسهٔ فرم بازخورد نامعتبر است.',
 	'articlefeedbackv5-abuse-saved' => 'مشخص‌شده به عنوان استفادهٔ نادرست',
@@ -7249,6 +7253,7 @@ $messages['fa'] = array(
 	'articlefeedbackv5-bucket3-form-submit' => 'بازخورد خود را بفرستید',
 	'articlefeedbackv5-bucket4-title' => 'به بهبود این صفحه کمک کنید',
 	'articlefeedbackv5-bucket4-subhead' => 'آیا می‌دانید که می‌توانید این صفحه را ویرایش کنید؟',
+	'articlefeedbackv5-bucket4-teaser-line1' => '{{SITENAME}} پیشرفت می‌کند، چون هرکسی می‌تواند آن را ویرایش کند.',
 	'articlefeedbackv5-bucket4-teaser-line2' => 'پیش بروید، امتحانش کنید. پررنگ باشید!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'بیاموزید چگونه ویرایش کنید.',
 	'articlefeedbackv5-bucket4-form-submit' => 'این صفحه را ویرایش کنید',
@@ -7523,7 +7528,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-form4-header' => 'Käyttäjälle {{GENDER:$1|$1}} esitettiin vain-CTA-lomake.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} arvosteli tämän sivun:',
 	'articlefeedbackv5-form-anon-username' => 'Lukija',
-	'articlefeedbackv5-form-anon-message' => 'Lähetti nimettömästi {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Lähetti nimettömästi $1.',
 	'articlefeedbackv5-form-not-shown' => 'Käyttäjälle {{GENDER:$1|$1}} ei näytetty palautelomaketta.',
 	'articlefeedbackv5-form-invalid' => 'Kelpaamaton palautelomakkeen tunnistenumero.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} lähetti [[$4|palautteen]] artikkeliin $3',
@@ -7975,7 +7980,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-form4-header' => "{{GENDER:$1|$1}} a été présenté à l’utilisateur uniquement comme un formulaire de demande d'action.",
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} a évalué cette page :',
 	'articlefeedbackv5-form-anon-username' => 'Un lecteur',
-	'articlefeedbackv5-form-anon-message' => 'Posté anonymement par {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Posté anonymement par $1.',
 	'articlefeedbackv5-form-not-shown' => "{{GENDER:$1|$1}} n'a pas affiché de formulaire de commentaire.",
 	'articlefeedbackv5-form-invalid' => 'Identifiant de formulaire d’avis non valide.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} a publié un [[$4|commentaire]] sur $3',
@@ -8299,9 +8304,7 @@ L’équipe de {{SITENAME}}
 
 P.S. : Si vous avez des questions sur la fonctionnalité de surveillance de la page de commentaires, veuillez regarder cette FAQ du surveillant :
 
-$4
-
-Notez bien que cette fonctionnalité de commentaire d’article v5 est encore dans ses premières phases de test sur l’encyclopédie anglaise et que la page de commentaires n’a pas été communiquée à la communauté durant cette phase de test.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Supprimer cet outil?',
 	'articlefeedbackv5-disable-flyover-help' => 'Pour supprimer $1, allez sur $2 et cochez $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Évaluation de l’article',
@@ -8798,7 +8801,7 @@ $messages['gl'] = array(
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} usuario unicamente viu o formulario CTA.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} avaliou esta páxina:',
 	'articlefeedbackv5-form-anon-username' => 'Un lector',
-	'articlefeedbackv5-form-anon-message' => 'Publicado anonimamente desde {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Publicado anonimamente desde o enderezo $1.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} non viu ningún formulario de comentarios.',
 	'articlefeedbackv5-form-invalid' => 'O identificador do formulario de comentarios é incorrecto.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} deixou [[$4|un comentario]] sobre "$3"',
@@ -9142,11 +9145,7 @@ O equipo de {{SITENAME}}
 P.S.: Se tedes algunha pregunta sobre o uso das ferramentas de supervisión,
 consultade as preguntas máis frecuentes dos supervisores:
 
-$4
-
-Tede en conta que a versión 5 da ferramenta de avaliación de artigos
-está en probas na Wikipedia en inglés e que a páxina de comentarios
-non a pode ver a comunidade durante este período de probas.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Quere eliminar a ferramenta?',
 	'articlefeedbackv5-disable-flyover-help' => 'Para eliminar a $1, vaia ata $2 e marque a caixa "$3"',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'ferramenta de avaliación de artigos',
@@ -9981,9 +9980,7 @@ $3
 
 נ"ב: אם יש לכם שלאות לגבי יכולות ההסתרה של דף המשוב, אנא קראו את השו"ת למסתירים:
 
-$4
-
-אנא שימו לב שגרסה 5 של כלי המשוב כדיין בשלבים מוקדמים של בדיקות בוויקיפדיה האגנלית, ושדף המשוב עדיין לא מפורסם לכל הקהילה בזמן הבדיקות האלו.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'להסיר את הכלי הזה?',
 	'articlefeedbackv5-disable-flyover-help' => 'כדי להסיר את $1, יש לעבור אל $2 ולסמן את האפשרות $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'כלי המשוב על ערכים',
@@ -10403,7 +10400,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} je so formular "Jenož CTA" {{GENDER:$1|pokazał|pokazała}}.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} je tutu stronu {{GENDER:$1|pohódnoćił|pohódnoćiła}}:',
 	'articlefeedbackv5-form-anon-username' => 'Čitar',
-	'articlefeedbackv5-form-anon-message' => 'Anonymnje wot {{GENDER:$1|$1}} přinošowany.',
+	'articlefeedbackv5-form-anon-message' => 'Anonymnje wot $1 přinošowany.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} njeje so komentarowy formular {{GENDER:$1|pokazał|pokazała}}.',
 	'articlefeedbackv5-form-invalid' => 'Njepłaćiwy ID komentaroweho formulara.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} je wo $3 [[$4|komentar]] {{GENDER:$1|zawostajił|zawostajiła}}',
@@ -10751,9 +10748,7 @@ Team {{SITENAME}}
 
 P.S. Jeli maš prašenja wo wužiwanju dohladowanskich funkcijow komentaroweje strony, přečitaj prošu tute
 
-$4
-
-Prošu wobkedźbuj, zo nastroj wo nastawkowych komentarch  wersije 5 je hišće w zažnym testowym stadiju na jendźelskej encyklopediji a zo strona komentarow hišće njeje so za testowu periodu wozjewiła.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Tutón nastroj wotstronić?',
 	'articlefeedbackv5-disable-flyover-help' => 'Zo by $1 wotstronił, dźi k $2 a klikń na $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Komentary wo nastawkach',
@@ -11350,7 +11345,7 @@ $messages['ia'] = array(
 	'articlefeedbackv5-form4-header' => 'A {{GENDER:$1|$1}} esseva presentate le formulario "CTA solmente".',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} evalutava iste pagina:',
 	'articlefeedbackv5-form-anon-username' => 'Un lector',
-	'articlefeedbackv5-form-anon-message' => 'Publicate anonymemente ab {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Publicate anonymemente ab $1.',
 	'articlefeedbackv5-form-not-shown' => 'A {{GENDER:$1|$1}} non esseva monstrate un formulario de evalutation.',
 	'articlefeedbackv5-form-invalid' => 'ID de formulario de evalutation invalide.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} dava un [[$4|commentario]] sur $3',
@@ -11692,9 +11687,7 @@ Le equipa de {{SITENAME}}
 
 P.S.: Si tu ha questiones sur le uso del functionalitate de supervision del pagina de evalutation, per favor lege iste FAQ pro supervisores:
 
-$4
-
-Per favor nota que le version 5 del functionalitate de evalutation es ancora in le prime stadios de test in le encyclopedia anglophone e que le pagina de evalutation non ha essite promovite al communitate durante iste periodo de test.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Remover iste instrumento?',
 	'articlefeedbackv5-disable-flyover-help' => 'Pro remover $1, vade a $2 e marca $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Evalutation de articulos',
@@ -11832,7 +11825,7 @@ $messages['id'] = array(
 	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} menilai halaman ini $2/5',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} menilai halaman ini:',
 	'articlefeedbackv5-form-anon-username' => 'Seorang pembaca',
-	'articlefeedbackv5-form-anon-message' => 'Dikirimkan secara anonim dari {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Dikirimkan secara anonim dari $1.',
 	'articlefeedbackv5-error-loading-feedback' => 'Gagal memuat umpan balik',
 	'articlefeedbackv5-go-to-article' => 'Lihat artikel',
 	'articlefeedbackv5-discussion-page' => 'Pembicaraan',
@@ -12426,7 +12419,7 @@ Riprova più tardi.',
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} è stato presentato solo con il modulo CTA.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} ha valutato questa pagina:',
 	'articlefeedbackv5-form-anon-username' => 'Un lettore',
-	'articlefeedbackv5-form-anon-message' => 'Pubblicato in forma anonima da {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Pubblicato in forma anonima da $1.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} non è stato mostrato un modulo di feedback.',
 	'articlefeedbackv5-form-invalid' => 'ID del modulo feedback non valido.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} ha scritto un [[$4|commento]] su $3',
@@ -12745,13 +12738,13 @@ Nel caso non fossi stato tu ad attivare questa richiesta, ti preghiamo d'ignorar
 
 Grazie ancora e un saluto da {{SITENAME}}.",
 	'articlefeedbackv5-email-request-oversight-subject' => 'Richiesta soppressione per la pagina dei commenti sulle voci',
-	'articlefeedbackv5-email-request-oversight-body' => "Ciao, oversighters!
+	'articlefeedbackv5-email-request-oversight-body' => 'Ciao, oversighters!
 
-E' stato richiesta la soppressione da $1 per il commento postato su questa voce:
+È stato richiesta la soppressione da $1 per il commento postato su questa voce:
 
 $2
 
-Per favore rivedi questo commento, e quindi approva o declina questa richiesta di soppressione:
+Per favore rivedi questo commento e quindi approva o declina questa richiesta di soppressione:
 
 $3
 
@@ -12762,9 +12755,7 @@ Il team di {{SITENAME}}
 
 P.S.: se hai domande riguardo la funzionalità di soppressione per i commenti alle voci, controlla queste domande frequenti:
 
-$4
-
-Si ricorda che lo strumento di commento delle voci (v5) è ancora alle prime fasi di test sull'enciclopedia inglese e che la pagina dei commenti non è stata pubblicizzata alla comunità per questo periodo di prova.",
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Rimuovere questo strumento?',
 	'articlefeedbackv5-disable-flyover-help' => 'Per rimuovere $1, vai in $2 e seleziona $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Article Feedback',
@@ -12820,7 +12811,7 @@ $messages['ja'] = array(
 	'articlefeedbackv5-error-email' => 'メールアドレスが正しくありません。',
 	'articlefeedbackv5-error-blocked' => 'ブロックされている利用者はフィードバックを送信できません。',
 	'articlefeedbackv5-error-validation' => '検証エラーです。',
-	'articlefeedbackv5-error-abuse' => 'ソフトウェアフィルターが、あなたの投稿がウィキペディアの$1に違反している可能性があると判定して、これを却下しました。投稿を見直して、再試行してください。',
+	'articlefeedbackv5-error-abuse' => 'ソフトウェアフィルターが、あなたの投稿が{{SITENAME}}の[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines フィードバック指針]に違反している可能性があると判定して、これを却下しました。投稿を見直してから再試行してください。',
 	'articlefeedbackv5-error-unknown' => '不明なエラーです。',
 	'articlefeedbackv5-error-submit' => 'フォームの送信エラーです。',
 	'articlefeedbackv5-error-nofeedback' => 'フィードバックを入力してください。',
@@ -12930,6 +12921,7 @@ $messages['ja'] = array(
 	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} がこのページを $2/5 と評価しました',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} がこのページを評価しました：',
 	'articlefeedbackv5-form-anon-username' => '読者',
+	'articlefeedbackv5-form-anon-message' => '$1 から匿名で投稿されました。',
 	'articlefeedbackv5-form-invalid' => '反応フォームIDが無効です。',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}}が$3への[[$4|フィードバック]]を投稿しました',
 	'articlefeedbackv5-abuse-saved' => '荒らしとして標識',
@@ -13343,7 +13335,7 @@ Aja bolan-balèni lan kakèhan ngirim lebon saran.',
 	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} mbiji kaca iki $2/5',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} mbiji kaca iki:',
 	'articlefeedbackv5-form-anon-username' => 'Pamaca',
-	'articlefeedbackv5-form-anon-message' => 'Dikirim sacara anonim saka {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Dikirim sacara anonim saka $1.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} ora nuduhaké pormulir lebon saran.',
 	'articlefeedbackv5-form-invalid' => 'ID pormulir lebon saran ora sah.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} ngirim [[$4|lebon saran]] nèng $3',
@@ -14148,7 +14140,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}}(이)가 CTA-전용 양식으로 제시했습니다.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} 사용자가 이 문서를 평가했습니다:',
 	'articlefeedbackv5-form-anon-username' => '독자',
-	'articlefeedbackv5-form-anon-message' => '{{GENDER:$1|$1}}에서 익명으로 게시함.',
+	'articlefeedbackv5-form-anon-message' => '$1에 익명으로 게시함.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}}에게 피드백 양식이 표시되지 않았습니다.',
 	'articlefeedbackv5-form-invalid' => '잘못된 피드백 양식 ID.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}}(이)가 $3에 [[$4|피드백]]을 게시함',
@@ -14489,11 +14481,7 @@ $3
 
 추신: 만약 문서 피드백 페이지의 오버사이트 기능을 사용하는 것에 대한 질문이 있다면, 오버사이트 FAQ를 참고하세요:
 
-$4
-
-문서 피드백 도구 V5는 아직 영어 백과사전과 피드백 페이지가
-이 테스트 기간 동안 커뮤니티에 공개되지 않은 그 테스트는
-아직 초기 단계에 있다는 점에 유의하기 바랍니다.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => '이 도구를 제거하겠습니까?',
 	'articlefeedbackv5-disable-flyover-help' => '$1를(을) 제거하려면 $2로 이동하고 $3를(을) 표시하세요',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => '문서 평가',
@@ -14551,7 +14539,7 @@ Versöhg et shpääder norr_ens.',
 	'articlefeedbackv5-form-hide' => 'Donn heh di Röckmäldong verschteische',
 	'articlefeedbackv5-form-unhide' => 'Donn heh di Röckmäldong wider aanzeije',
 	'articlefeedbackv5-form-abuse' => 'Donn heh di Röckmäldong als ene Meßbruch makeeere',
-	'articlefeedbackv5-form-anon-message' => 'Namelos {{GENDER:$1|vum|vum|vum Metmaacher|vun dä|vum}} [[User:$1]] derbeijedonn.',
+	'articlefeedbackv5-form-anon-message' => 'Namelos vum $1 derbeijedonn.',
 	'articlefeedbackv5-discussion-page' => 'Klaaf',
 	'articlefeedbackv5-whats-this' => 'Hölp',
 	'articlefeedbackv5' => 'Enschäzonge för Sigge — Övverbleck',
@@ -15839,7 +15827,7 @@ $messages['mk'] = array(
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} доби образец само за покана.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} ја оцени страницава:',
 	'articlefeedbackv5-form-anon-username' => 'Читач',
-	'articlefeedbackv5-form-anon-message' => 'Објавено анонимно од {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Објавено анонимно од $1.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} не доби образец за мислење.',
 	'articlefeedbackv5-form-invalid' => 'Неважечка назнака на образецот за мислење.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} искажа [[$4|мислење]] за $3',
@@ -16187,9 +16175,7 @@ $3
 
 П.С.: Доколку имате прашања во врска со употребата на функциите за заверка, погледајте ја страницата за ЧПП.
 
-$4
-
-Имајте на ум дека верзијата 5 на функцијата за заверка е сè уште во рана фаза на испробување на англиската енциклопедија (0,6%, или 22.000 статии) и дека страницата за оценка не е на јавен увид за заедницата во текот на овој пробен период.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Да ја отстранам алаткава?',
 	'articlefeedbackv5-disable-flyover-help' => 'За да ја отстраните алатката „$1“, појдете на $2 и штиклирајте го $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Оценување на статии',
@@ -16753,7 +16739,7 @@ Sila semak pos anda dan cuba lagi',
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} diberi borang CTA sahaja.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} menilai halaman ini:',
 	'articlefeedbackv5-form-anon-username' => 'Seorang pembaca',
-	'articlefeedbackv5-form-anon-message' => 'Pos awanama daripada {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Pos awanama daripada $1.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} tidak ditunjukkan borang maklum balas.',
 	'articlefeedbackv5-form-invalid' => 'ID borang maklum balas tidak sah.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} menghantar [[$4|maklum balas]] ke $3',
@@ -17077,9 +17063,7 @@ Pasukan {{SITENAME}}
 
 P.S.: Jika anda ada sebarang soalah tentang penggunaan ciri-ciri penghapusan pada laman maklum balas rencana, sila meneliti Soalan Lazim penghapus ini:
 
-$4
-
-Sila ambil perhatian bahawa alat maklum balas rencana v5 masih di peringkat awal percubaan di ensiklopedia ini, apalagi laman maklum balas belum dibuka kepada komuniti umum pada tempoh percubaan ini.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Gugurkan alat ini?',
 	'articlefeedbackv5-disable-flyover-help' => 'Untuk menggugurkan $1, pergi ke $2 dan raitkan $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Maklum Balas Rencana',
@@ -17256,7 +17240,7 @@ $messages['mt'] = array(
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} ġie ppreżentat biss bil-formola CTA.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1 ivvaluta|$1 ivvalutat}} din il-paġna:',
 	'articlefeedbackv5-form-anon-username' => 'Qarrej',
-	'articlefeedbackv5-form-anon-message' => "Ippubblikat b'mod anoninimu minn {{GENDER:$1|$1}}.",
+	'articlefeedbackv5-form-anon-message' => "Ippubblikat b'mod anoninimu minn $1.",
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1 ma ġiex muri|ma ġietx murija}} formola tal-kummenti',
 	'articlefeedbackv5-form-invalid' => 'ID tal-formola tal-kummenti invalida.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2 bagħat|bagħtet}} [[$4|kumment]] fuq $3',
@@ -17670,7 +17654,7 @@ $messages['nb'] = array(
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} ble kun fremvist «kun-CTA»-skjema.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} karaktersatte denne siden:',
 	'articlefeedbackv5-form-anon-username' => 'En leser',
-	'articlefeedbackv5-form-anon-message' => 'Lagt inn anonymt av {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Lagt inn anonymt av $1.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} ble ikke vist tilbakemeldingsskjema.',
 	'articlefeedbackv5-form-invalid' => 'Ugyldig ID for tilbakemeldingsskjema.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} la igjen [[$4|tilbakemelding]] til $3',
@@ -18207,7 +18191,7 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} heeft een "Alleen CTA"-formulier te zien gekregen.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} heeft deze pagina gewaardeerd:',
 	'articlefeedbackv5-form-anon-username' => 'Een lezer',
-	'articlefeedbackv5-form-anon-message' => 'Anoniem geplaatst door {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Anoniem geplaatst door $1.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} heeft geen terugkoppelingsformulier te zien gekregen.',
 	'articlefeedbackv5-form-invalid' => 'Ongeldig terugkoppelingsformulier-ID.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} heeft [[$4|terugkoppeling]] gegeven over $3',
@@ -18550,9 +18534,7 @@ Het team van {{SITENAME}}
 
 PS Als u vragen hebt over het gebruik van de functie toezicht op de terugkoppelingspagina, raadpleeg dan de veel gestelde vragen over toezicht:
 
-$4
-
-Bedenk u dat "paginaterugkoppeling v5" nog steeds in een vroeg stadium van ontwikkeling is en wordt getest in de Engelstalige Wikipedia. De pagina voor terugkoppeling wordt nog niet beschikbaar gesteld aan de gemeenschap gedurende deze testperiode.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Dit hulpprogramma verwijderen?',
 	'articlefeedbackv5-disable-flyover-help' => 'Ga naar $2 en vink $3 aan om $1 te verwijderen',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Paginabeoordeling',
@@ -18625,9 +18607,7 @@ Het team van {{SITENAME}}
 
 PS Als je vragen hebt over het gebruik van de functie toezicht op de terugkoppelingspagina, raadpleeg dan de veel gestelde vragen over toezicht:
 
-$4
-
-Bedenk je dat "paginaterugkoppeling v5" nog steeds in een vroeg stadium van ontwikkeling is en wordt getest in de Engelstalige Wikipedia. De pagina voor terugkoppeling wordt nog niet beschikbaar gesteld aan de gemeenschap gedurende deze testperiode.',
+$4',
 );
 
 /** Norwegian Nynorsk (‪norsk (nynorsk)‬)
@@ -19059,7 +19039,7 @@ $messages['pl'] = array(
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1 został zaprezentowany|$1 została zaprezentowana}} wyłącznie w formie CTA.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1 ocenił|$1 oceniła}} tą stronę:',
 	'articlefeedbackv5-form-anon-username' => 'Czytający',
-	'articlefeedbackv5-form-anon-message' => 'Przesłany anonimowo przez {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Przesłany anonimowo przez $1.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1 nie wypełnił|$1 nie wypełniła}} formularza z opinią.',
 	'articlefeedbackv5-form-invalid' => 'Niepoprawny numer formularza opinii.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} {{GENDER:$1|wysłał|wysłała}} [[$4|opinię]] dla $3',
@@ -19493,7 +19473,7 @@ $messages['pms'] = array(
 	'articlefeedbackv5-form4-header' => "{{GENDER:$1|$1}} a l'era stàit presentà mach con ël formolari CTA.",
 	'articlefeedbackv5-form5-header' => "{{GENDER:$1|$1}} a l'ha valutà sta pàgina:",
 	'articlefeedbackv5-form-anon-username' => 'Un letor',
-	'articlefeedbackv5-form-anon-message' => 'Spedì anonimament da {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Spedì anonimament da $1.',
 	'articlefeedbackv5-form-not-shown' => "A {{GENDER:$1|$1}} a l'era pa stàit smonù gnun formolari ëd sugeriment.",
 	'articlefeedbackv5-form-invalid' => "Identificativ dël formolari d'opinion pa bon.",
 	'articlefeedbackv5-central-header-left-comment' => "{{GENDER:$1|$2}} a l'ha publicà un [[$4|coment]] a $3",
@@ -19814,9 +19794,7 @@ L'Echip ëd {{SITENAME}}
 
 P.S.: S'a l'èissa dle chestion a propòsit ëd 'me ch'as deuvra la fonsionalità ëd dzorvejansa ëd la pàgina ëd coment ëd l'artìcol, për piasì, ch'a contròla coste chestion frequente dlë dzorvejant:
 
-$4
-
-Për piasì, ch'a nòta che l'utiss v5 ëd coment d'artìcol a l'é ancor an soe prime fas ëd preuva dzora a l'enciclopedìa Anglèisa e che la pàgina ëd coment a l'é pa anco' stàita publicisà ant la comunità durant ës temp ëd preuva.",
+$4",
 	'articlefeedbackv5-disable-flyover-title' => "Gavé st'utiss?",
 	'articlefeedbackv5-disable-flyover-help' => 'Për gavé $1, và a $2 e selession-a $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Coment ëd la Vos',
@@ -21246,7 +21224,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-form4-header' => 'Пользователю {{GENDER:$1|$1}} была представлена только CTA-форма.',
 	'articlefeedbackv5-form5-header' => '$1 {{GENDER:$1|оценил|оценила}} эту страницу:',
 	'articlefeedbackv5-form-anon-username' => 'Читатель',
-	'articlefeedbackv5-form-anon-message' => 'Опубликовано анонимно {{GENDER:$1|участником $1| участницей $1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Опубликовано анонимно участником $1.',
 	'articlefeedbackv5-form-not-shown' => 'Пользователю {{GENDER:$1|$1}} не была показана форма обратной связи.',
 	'articlefeedbackv5-form-invalid' => 'Неверный идентификатор формы отзыва.',
 	'articlefeedbackv5-central-header-left-comment' => '$2 {{GENDER:$1|написал|написала}} отзыв на $3',
@@ -21569,11 +21547,7 @@ $3
 P.S.: Если у Вас возникли вопросы по использованию функции ревизора
 отзывов на страницы статьи, то прочитай следующее FAQ:
 
-$4
-
-Пожалуйста, обратите внимание, что данный инструмент находится на
-ранних стадиях тестирования на английском энциклопедии и на период
-тестирования не опубликован общественно.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Удалить этот инструмент?',
 	'articlefeedbackv5-disable-flyover-help' => 'Чтобы убрать отображение $1, перейдите на $2 и отметьте опцию «$3»',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'отзывов о статьях',
@@ -22526,11 +22500,7 @@ Ekipa {{GRAMMAR:rodilni|{{SITENAME}}}}
 P.S.: Če imate katero koli vprašanje o uporabi možnosti brisanja na
 strani s povratnimi sporočili, preverite naslednja vprašanja z odgovori:
 
-$4
-
-Prosimo, upoštevajte, daje orodje za povratna sporočila v5 še vedno v zgodnjih
-fazah razvoja in da stran s povratnimi sporočili za obdobje preizkušanja ni na
-razpolago celotnemu občestvu.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Odstranim orodje?',
 	'articlefeedbackv5-disable-flyover-help' => 'Za odstranitev $1 pojdite na $2 in odkljukajte $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Povratna informacija članka',
@@ -22647,7 +22617,7 @@ $messages['sr-ec'] = array(
 	'articlefeedbackv5-form4-header' => '$1 {{GENDER:$1|је добио|је добила|је добио}} образац само за позване.',
 	'articlefeedbackv5-form5-header' => '$1 {{GENDER:$1|је оценио|је оценила|је оценио}} страницу:',
 	'articlefeedbackv5-form-anon-username' => 'Читач',
-	'articlefeedbackv5-form-anon-message' => 'Постављено анонимно од {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Постављено анонимно од $1.',
 	'articlefeedbackv5-form-not-shown' => '$1 {{GENDER:$1|није добио|није добила|није добио}} образац за повратне информације.',
 	'articlefeedbackv5-form-invalid' => 'Неисправна назнака обрасца за повратне информације.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2 је поставио|$2 је поставила|$2 је поставио}} [[$4|повратну информацију]] за $3',
@@ -23062,7 +23032,7 @@ $messages['sv'] = array(
 	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} betygsatte denna sida $2/5',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} betygsatte denna sida:',
 	'articlefeedbackv5-form-anon-username' => 'En läsare',
-	'articlefeedbackv5-form-anon-message' => 'Postade anonymt från {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Postade anonymt från $1.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} visades inte ett feedback-formulär.',
 	'articlefeedbackv5-form-invalid' => 'Ogiltig feedback-formulär-ID.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} gav [[$4|feedback]] till $3',
@@ -23554,7 +23524,7 @@ $messages['ta'] = array(
 	'articlefeedbackv5-form4-header' => 'CTA-மட்டும் படிவம் கொண்டு {{GENDER:$1|$1}} செய்யப்பட்டது.',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} இந்தப் பக்கத்தை மதிப்பிட்டுள்ளார்:',
 	'articlefeedbackv5-form-anon-username' => 'ஒரு படிப்பாளர்',
-	'articlefeedbackv5-form-anon-message' => '{{GENDER:$1|$1}} லிருந்து அநாமதேயமாக பதிவிடப்பட்டது.',
+	'articlefeedbackv5-form-anon-message' => '$1 லிருந்து அநாமதேயமாக பதிவிடப்பட்டது.',
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} பின்னூட்ட படிவத்தை காண்பிக்கவில்லை.',
 	'articlefeedbackv5-form-invalid' => 'செல்லாத பின்னூட்ட படிவ அடையாள எண்.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} பயனரால்  $3ல் பின்னூட்டம் பதிவு செய்யப்பட்டது',
@@ -23875,11 +23845,7 @@ $3
 
 பி.கு.: கட்டுரை பின்னூட்ட பக்கத்தின் மேற்பார்வை அம்சத்தை பயன்படுத்துவது பற்றி உங்களுக்கு ஏதாவது கேள்விகள் இருந்தால், தயவுசெய்து இந்த மேற்பார்வையாளர் அ.கே.கேவை  பார்க்கவும்:
 
-$4
-
-Please note that the article feedback tool v5 is still in early stages of
-testing on the English Encyclopedia and that the feedback page has not been
-publicized to the community for this testing period.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'இந்த கருவியை நீக்க வேண்டுமா?',
 	'articlefeedbackv5-disable-flyover-help' => '$1ஐ நீக்க, $2க்கு சென்று $3ஐ குறியிடவும்',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'கட்டுரையைப் பற்றி கருத்து',
@@ -24172,7 +24138,7 @@ $messages['tl'] = array(
 	'articlefeedbackv5-form4-header' => 'Iniharap kay {{GENDER:$1|$1}} ang isang CTA lamang na pormularyo.',
 	'articlefeedbackv5-form5-header' => 'Inantasan ni {{GENDER:$1|$1}} ang pahinang ito:',
 	'articlefeedbackv5-form-anon-username' => 'Isang mambabasa',
-	'articlefeedbackv5-form-anon-message' => 'Ipinaskil na hindi nagpapakilala magmula kay {{GENDER:$1|$1}}.',
+	'articlefeedbackv5-form-anon-message' => 'Ipinaskil na hindi nagpapakilala magmula kay $1.',
 	'articlefeedbackv5-form-not-shown' => 'Hindi pinagpakitaan si {{GENDER:$1|$1}} ng isang pormularyo ng tugon.',
 	'articlefeedbackv5-form-invalid' => 'Hindi katanggap-tanggap na ID ng pormularyo ng tugon.',
 	'articlefeedbackv5-central-header-left-comment' => 'Nagpaskil ng [[$4|tugon]] si {{GENDER:$1|$2}} sa $3',
@@ -24525,11 +24491,7 @@ Ang Pangkat ng {{SITENAME}}
 Pahabol: Kung mayroong kang anumang mga katangunan hinggil sa paggamit ng mga katampukan sa pangangalingat ng
 pahina ng tugon sa artikulo, paki siyasatin ang mga madalas na itanong ukol sa mangangalingat:
 
-$4
-
-Paki tandaan na ang bersiyong ika-5 ng kasangkapan na pangtugon sa artikulo ay nasa maaagang mga hakbang pa rin ng
-pagsusubok sa Ingles na Ensiklopedya at ang pahina ng pagtugon ay hindi pa nailalathala sa pamayanan para sa kapanahunang
-ito ng pagsusubok.',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Tanggalin ang kasangkapang ito?',
 	'articlefeedbackv5-disable-flyover-help' => 'Upang matanggal ang $1, pumunta sa $2 at tsekan ang $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Tugon sa Artikulo',
@@ -25617,7 +25579,7 @@ $messages['zh-hans'] = array(
 	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}}得到只限于行动呼吁的表单。',
 	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}}评价了这个页面：',
 	'articlefeedbackv5-form-anon-username' => '一位读者',
-	'articlefeedbackv5-form-anon-message' => '由{{GENDER:$1|$1}}匿名发布。',
+	'articlefeedbackv5-form-anon-message' => '由$1匿名发布。',
 	'articlefeedbackv5-form-not-shown' => '反馈表单没有显示给{{GENDER:$1|$1}}。',
 	'articlefeedbackv5-form-invalid' => '无效反馈表单ID。',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}}在$3上发表了[[$4|反馈]]',
@@ -25956,9 +25918,7 @@ $3
 
 注：如果您有关于在条目反馈页使用删除功能任何疑问，请阅读此删除常见问题解答：
 
-$4
-
-请注意条目反馈工具版本5仍处于在英文百科全书的早期测试阶段，其间社群无法看到反馈页。',
+$4',
 	'articlefeedbackv5-disable-flyover-title' => '移除此工具吗？',
 	'articlefeedbackv5-disable-flyover-help' => '若要移除$1，请转至$2，并勾选$3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => '条目反馈',
