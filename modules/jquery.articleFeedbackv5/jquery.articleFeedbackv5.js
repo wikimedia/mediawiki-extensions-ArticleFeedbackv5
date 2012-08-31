@@ -2108,8 +2108,6 @@
 		}
 		// Initialize clicktracking
 		$.aftTrack.init();
-		// Has the user already submitted ratings for this page at this revision?
-		$.articleFeedbackv5.alreadySubmitted = $.cookie( $.aftTrack.prefix( 'submitted' ) ) === 'true';
 		// Go ahead and bucket right away
 		$.articleFeedbackv5.selectBucket();
 		$.articleFeedbackv5.selectCTA();
@@ -2676,8 +2674,10 @@
 					$.articleFeedbackv5.unlockForm();
 					$.articleFeedbackv5.showCTA();
 
-					// Drop a cookie for a successful submit
-					$.cookie( $.aftTrack.prefix( 'submitted' ), 'true', { 'expires': 365, 'path': '/' } );
+					// save add feedback id to cookie (only most recent 10)
+					var feedbackIds = $.extend( [], $.parseJSON( $.cookie( $.aftTrack.prefix( 'feedback-ids' ) ) ) );
+					feedbackIds.unshift( data.articlefeedbackv5.feedback_id );
+					$.cookie( $.aftTrack.prefix( 'feedback-ids' ), $.toJSON( feedbackIds.splice( 0, 9 ) ), { expires: 30, path: '/' } );
 
 					// Clear out anything that needs removing (usually trigger links)
 					$.articleFeedbackv5.$toRemove.remove();
