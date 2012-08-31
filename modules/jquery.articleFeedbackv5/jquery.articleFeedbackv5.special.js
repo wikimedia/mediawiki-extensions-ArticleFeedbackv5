@@ -205,20 +205,19 @@
 		// Grab the user's activity out of the cookie
 		$.articleFeedbackv5special.loadActivity();
 
-		var tipsyGravity = $( "body" ).hasClass( "rtl" ) ? "w" : "e";
 		// set tipsy defaults, once
 		$.fn.tipsy.defaults = {
-			delayIn: 0,				// delay before showing tooltip (ms)
-			delayOut: 0,			// delay before hiding tooltip (ms)
-			fade: false,			// fade tooltips in/out?
-			fallback: '',			// fallback text to use when no tooltip text
-			gravity: tipsyGravity,	// gravity according to directionality
-			html: true,				// is tooltip content HTML?
-			live: false,			// use live event support?
-			offset: 10,				// pixel offset of tooltip from element
-			opacity: 1.0,			// opacity of tooltip
-			title: 'title',			// attribute/callback containing tooltip text
-			trigger: 'manual'		// how tooltip is triggered - hover | focus | manual
+			delayIn: 0,					// delay before showing tooltip (ms)
+			delayOut: 0,				// delay before hiding tooltip (ms)
+			fade: false,				// fade tooltips in/out?
+			fallback: '',				// fallback text to use when no tooltip text
+			gravity: $.fn.tipsy.autoWE,	// gravity according to directionality
+			html: true,					// is tooltip content HTML?
+			live: false,				// use live event support?
+			offset: 10,					// pixel offset of tooltip from element
+			opacity: 1.0,				// opacity of tooltip
+			title: 'title',				// attribute/callback containing tooltip text
+			trigger: 'manual'			// how tooltip is triggered - hover | focus | manual
 		};
 
 		// Link to help is dependent on the group the user belongs to
