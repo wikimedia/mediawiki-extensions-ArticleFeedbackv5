@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARn//+nA\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-31T20:11:54Z",
+      "side": 1,
+      "message": ".A?",
+      "revId": "06c0b2d719f225ac31d8be4c3ead03c9699893a0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn//+ng\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-31T20:11:54Z",
+      "side": 1,
+      "message": "missing ;",
+      "revId": "06c0b2d719f225ac31d8be4c3ead03c9699893a0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
