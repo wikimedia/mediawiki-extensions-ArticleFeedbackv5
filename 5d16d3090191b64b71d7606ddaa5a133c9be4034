@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARn//+mk\u003d",
+        "filename": "api/ApiArticleFeedbackv5Utils.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-31T21:00:27Z",
+      "side": 1,
+      "message": "you need to pass TRUE as a 2nd argument to json_decode in order to get array, otherwise, it will return a std object",
+      "revId": "5d16d3090191b64b71d7606ddaa5a133c9be4034",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn//+j8\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 2687,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-31T21:00:27Z",
+      "side": 1,
+      "message": "splice( 0, 10 )?",
+      "revId": "5d16d3090191b64b71d7606ddaa5a133c9be4034",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
