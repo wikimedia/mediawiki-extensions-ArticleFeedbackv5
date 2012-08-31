@@ -16,6 +16,24 @@
       "revId": "8cee17229fd06553213111fd448b5ad46b23893c",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn//+dA\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-08-31T22:47:59Z",
+      "side": 1,
+      "message": "WikiData started doing it, but I think that if we are to do it, we should have an implementation for it in core, so that the ugle wfMessage() doesn\u0027t show up everywhere.\n\nAlso, this is a ContextSource, so you can use $this-\u003emsg() instead of wfMessage().",
+      "parentUuid": "AAAARn//+f4\u003d",
+      "revId": "8cee17229fd06553213111fd448b5ad46b23893c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
