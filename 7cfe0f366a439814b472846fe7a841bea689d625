@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARn///I0\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-31T23:06:57Z",
+      "side": 1,
+      "message": "Looks like Special:Logs is automatically converting $3 to a linked title, [[$3]] would make it look like this [[\u003ca href\u003d\"\"\u003etitle\u003c/a\u003e]]",
+      "revId": "7cfe0f366a439814b472846fe7a841bea689d625",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn///Ig\u003d",
+        "filename": "ArticleFeedbackv5.log.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-31T23:06:57Z",
+      "side": 1,
+      "message": "The parameter should be done in this way:\n$logEntry-\u003esetParameters( array(\n\u00274::paramname\u0027 \u003d\u003e \u0027customparam\u0027\n) );",
+      "revId": "7cfe0f366a439814b472846fe7a841bea689d625",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn//+ds\u003d",
+        "filename": "ArticleFeedbackv5.log.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-31T23:06:57Z",
+      "side": 1,
+      "message": "$entry? should make it consistent",
+      "revId": "7cfe0f366a439814b472846fe7a841bea689d625",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn//+dc\u003d",
+        "filename": "maintenance/loggingUpdate.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-31T23:06:57Z",
+      "side": 1,
+      "message": "you should use $dbr in here",
+      "revId": "7cfe0f366a439814b472846fe7a841bea689d625",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn//+cU\u003d",
+        "filename": "maintenance/loggingUpdate.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-31T23:06:57Z",
+      "side": 1,
+      "message": "limit + 1 looks redundant to me, or you should add this code for additional check:\nelse {\n      $continue \u003d null; // no more record\n}",
+      "revId": "7cfe0f366a439814b472846fe7a841bea689d625",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn//+dY\u003d",
+        "filename": "maintenance/loggingUpdate.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-31T23:06:57Z",
+      "side": 1,
+      "message": "$dbr",
+      "revId": "7cfe0f366a439814b472846fe7a841bea689d625",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
