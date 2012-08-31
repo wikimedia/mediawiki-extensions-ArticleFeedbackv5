@@ -40,22 +40,17 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-section-linktext',
 				'articlefeedbackv5-toolbox-view',
 				'articlefeedbackv5-toolbox-add',
-				'articlefeedbackv5-bucket5-toolbox-linktext',
 			),
 			'dependencies' => array(
 				'jquery.ui.button',
 				'jquery.articleFeedbackv5',
 				'jquery.cookie',
-				'ext.articleFeedbackv5.ratingi18n',
 				'jquery.articleFeedbackv5.track',
 			),
 		),
 		'ext.articleFeedbackv5.ie' => array(
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.ie.js',
 			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.ie.css'
-		),
-		'ext.articleFeedbackv5.ratingi18n' => array(
-			'messages' => null, // Filled in by the resourceLoaderRegisterModules() hook function later
 		),
 		'ext.articleFeedbackv5.dashboard' => array(
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.js',
@@ -148,18 +143,6 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-bucket1-form-pending',
 				'articlefeedbackv5-bucket1-form-success',
 				'articlefeedbackv5-bucket1-form-submit',
-				'articlefeedbackv5-bucket2-title',
-				'articlefeedbackv5-bucket2-form-submit',
-				'articlefeedbackv5-bucket3-title',
-				'articlefeedbackv5-bucket3-rating-question',
-				'articlefeedbackv5-bucket3-clear-rating',
-				'articlefeedbackv5-bucket3-rating-tooltip-1',
-				'articlefeedbackv5-bucket3-rating-tooltip-2',
-				'articlefeedbackv5-bucket3-rating-tooltip-3',
-				'articlefeedbackv5-bucket3-rating-tooltip-4',
-				'articlefeedbackv5-bucket3-rating-tooltip-5',
-				'articlefeedbackv5-bucket3-comment-default',
-				'articlefeedbackv5-bucket3-form-submit',
 				'articlefeedbackv5-bucket4-title',
 				'articlefeedbackv5-bucket4-subhead',
 				'articlefeedbackv5-bucket4-teaser-line1',
@@ -171,29 +154,6 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-bucket4-noedit-teaser-line1',
 				'articlefeedbackv5-bucket4-noedit-teaser-line2',
 				'articlefeedbackv5-bucket4-noedit-form-submit',
-				'articlefeedbackv5-bucket5-form-switch-label',
-				'articlefeedbackv5-bucket5-form-panel-title',
-				'articlefeedbackv5-bucket5-form-panel-explanation',
-				'articlefeedbackv5-bucket5-form-panel-clear',
-				'articlefeedbackv5-bucket5-form-panel-expertise',
-				'articlefeedbackv5-bucket5-form-panel-expertise-studies',
-				'articlefeedbackv5-bucket5-form-panel-expertise-profession',
-				'articlefeedbackv5-bucket5-form-panel-expertise-hobby',
-				'articlefeedbackv5-bucket5-form-panel-expertise-other',
-				'articlefeedbackv5-bucket5-form-panel-helpimprove',
-				'articlefeedbackv5-bucket5-form-panel-helpimprove-note',
-				'articlefeedbackv5-bucket5-form-panel-helpimprove-email-placeholder',
-				'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy',
-				'articlefeedbackv5-bucket5-form-panel-submit',
-				'articlefeedbackv5-bucket5-form-panel-pending',
-				'articlefeedbackv5-bucket5-form-panel-success',
-				'articlefeedbackv5-bucket5-form-panel-expiry-title',
-				'articlefeedbackv5-bucket5-form-panel-expiry-message',
-				'articlefeedbackv5-bucket5-report-switch-label',
-				'articlefeedbackv5-bucket5-report-panel-title',
-				'articlefeedbackv5-bucket5-report-panel-description',
-				'articlefeedbackv5-bucket5-report-empty',
-				'articlefeedbackv5-bucket5-report-ratings',
 				'articlefeedbackv5-bucket6-title',
 				'articlefeedbackv5-bucket6-question-toggle',
 				'articlefeedbackv5-bucket6-toggle-found-yes',
@@ -566,39 +526,18 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
-		global $wgExtensionAssetsPath,
-			$wgArticleFeedbackv5Bucket5RatingCategories,
-			$wgArticleFeedbackv5Bucket2TagNames;
+		global $wgExtensionAssetsPath;
 
-		$localpath = dirname( __FILE__ ) . '/modules';
-		$remotepath = "$wgExtensionAssetsPath/ArticleFeedbackv5/modules";
+			$localpath = dirname( __FILE__ ) . '/modules';
+			$remotepath = "$wgExtensionAssetsPath/ArticleFeedbackv5/modules";
 
-		foreach ( self::$modules as $name => $resources ) {
-			if ( $name == 'jquery.articleFeedbackv5' ) {
-				// Bucket 2: labels and comment defaults
-				$prefix = 'articlefeedbackv5-bucket2-';
-				foreach ( $wgArticleFeedbackv5Bucket2TagNames as $tag ) {
-					$resources['messages'][] = $prefix . $tag . '-label';
-					$resources['messages'][] = $prefix . $tag . '-comment-default';
-				}
-				// Bucket 5: labels and tooltips
-				$prefix = 'articlefeedbackv5-bucket5-';
-				foreach ( $wgArticleFeedbackv5Bucket5RatingCategories as $field ) {
-					$resources['messages'][] = $prefix . $field . '-label';
-					$resources['messages'][] = $prefix . $field . '-tip';
-					$resources['messages'][] = $prefix . $field . '-tooltip-1';
-					$resources['messages'][] = $prefix . $field . '-tooltip-2';
-					$resources['messages'][] = $prefix . $field . '-tooltip-3';
-					$resources['messages'][] = $prefix . $field . '-tooltip-4';
-					$resources['messages'][] = $prefix . $field . '-tooltip-5';
-				}
+			foreach ( self::$modules as $name => $resources ) {
+				$resourceLoader->register(
+					$name,
+					new ResourceLoaderFileModule( $resources, $localpath, $remotepath )
+				);
 			}
-
-			$resourceLoader->register(
-				$name, new ResourceLoaderFileModule( $resources, $localpath, $remotepath )
-			);
-		}
-		return true;
+			return true;
 	}
 
 	/**
@@ -611,8 +550,6 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5Categories,
 			$wgArticleFeedbackv5BlacklistCategories,
 			$wgArticleFeedbackv5Debug,
-			$wgArticleFeedbackv5Bucket2TagNames,
-			$wgArticleFeedbackv5Bucket5RatingCategories,
 			$wgArticleFeedbackv5DisplayBuckets,
 			$wgArticleFeedbackv5CTABuckets,
 			$wgArticleFeedbackv5Tracking,
@@ -631,14 +568,11 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
 		$vars['wgArticleFeedbackv5Debug'] = $wgArticleFeedbackv5Debug;
-		$vars['wgArticleFeedbackv5Bucket2TagNames'] = $wgArticleFeedbackv5Bucket2TagNames;
-		$vars['wgArticleFeedbackv5Bucket5RatingCategories'] = $wgArticleFeedbackv5Bucket5RatingCategories;
 		$vars['wgArticleFeedbackv5Tracking'] = $wgArticleFeedbackv5Tracking;
 		$vars['wgArticleFeedbackv5Options'] = $wgArticleFeedbackv5Options;
 		$vars['wgArticleFeedbackv5LinkBuckets'] = $wgArticleFeedbackv5LinkBuckets;
 		$vars['wgArticleFeedbackv5Namespaces'] = $wgArticleFeedbackv5Namespaces;
 		$vars['wgArticleFeedbackv5LearnToEdit'] = $wgArticleFeedbackv5LearnToEdit;
-		$vars['wgArticleFeedbackv5WhatsThisPage'] = wfMessage( 'articlefeedbackv5-bucket5-form-panel-explanation-link' )->inContentLanguage()->text();
 		$vars['wgArticleFeedbackv5SurveyUrls'] = $wgArticleFeedbackv5SurveyUrls;
 		$vars['wgArticleFeedbackv5InitialFeedbackPostCountToDisplay'] = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		$vars['wgArticleFeedbackv5ThrottleThresholdPostsPerHour'] = $wgArticleFeedbackv5ThrottleThresholdPostsPerHour;
