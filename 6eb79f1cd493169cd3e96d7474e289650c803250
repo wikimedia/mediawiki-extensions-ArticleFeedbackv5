@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARn//+aI\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-31T23:32:34Z",
+      "side": 1,
+      "message": "wgArticleFeedbackv5SpecialUrl could be \"/index.php?title\u003dSpecial:ArticleFeedbackv5\", it\u0027s better to check if there is ? already",
+      "revId": "6eb79f1cd493169cd3e96d7474e289650c803250",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
