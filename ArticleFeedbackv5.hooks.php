@@ -210,8 +210,6 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-bucket6-form-submit',
 				'articlefeedbackv5-bucket6-backlink-text',
 				'articlefeedbackv5-error',
-				'articlefeedbackv5-shared-on-feedback',
-				'articlefeedbackv5-shared-on-feedback-linktext',
 				'articlefeedbackv5-help-tooltip-title',
 				'articlefeedbackv5-help-tooltip-info',
 				'articlefeedbackv5-help-tooltip-linktext',
