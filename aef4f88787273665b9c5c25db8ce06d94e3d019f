@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARn//+ho\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-08-31T21:11:03Z",
+      "side": 1,
+      "message": "http://www.mediawiki.org/wiki/Localisation#Separate_times_from_dates_in_sentences",
+      "revId": "aef4f88787273665b9c5c25db8ce06d94e3d019f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
