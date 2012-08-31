@@ -673,10 +673,10 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered footer
 	 */
 	private function renderFooter( $record ) {
-		global $wgLang, $wgUser;
+		global $wgLang;
 
 		$id = $record[0]->af_id;
-		$ownFeedback = $wgUser->getId() && $wgUser->getId() == intval( $record[0]->af_user_id );
+		$ownFeedback = ApiArticleFeedbackv5Utils::isOwnFeedback( $record[0] );
 
 		// Start the footer
 		$footer =
@@ -687,8 +687,8 @@ class ArticleFeedbackv5Render {
 				// <div class="articleFeedbackv5-comment-foot-helpful">
 				. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot-helpful' ) );
 
-		// Add helpful/unhelpful voting links
-		if ( $this->hasPermission( 'can_vote' ) ) {
+		// Add helpful/unhelpful voting links (for posts other than your own)
+		if ( $this->hasPermission( 'can_vote' ) && !$ownFeedback ) {
 			$footer .=
 				// <span class="articleFeedbackv5-helpful-caption">
 				//   {msg:articlefeedbackv5-form-helpful-label}
@@ -747,8 +747,8 @@ class ArticleFeedbackv5Render {
 		// </div>
 		$footer .= Html::closeElement( 'div' );
 
-		// Add abuse flagging
-		if ( $this->hasPermission( 'can_flag' ) ) {
+		// Add abuse flagging (for posts other than your own)
+		if ( $this->hasPermission( 'can_flag' ) && !$ownFeedback ) {
 			// <div class="articleFeedbackv5-comment-foot-abuse">
 			$footer .= Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot-abuse' ) );
 
@@ -892,8 +892,7 @@ class ArticleFeedbackv5Render {
 			return '';
 		}
 
-		global $wgUser;
-		$ownFeedback = $wgUser->getId() && $wgUser->getId() == intval( $record[0]->af_user_id );
+		$ownFeedback = ApiArticleFeedbackv5Utils::isOwnFeedback( $record[0] );
 
 		$id = $record[0]->af_id;
 
@@ -913,8 +912,8 @@ class ArticleFeedbackv5Render {
 		$toolsDelete = '';
 		$toolsActivity = '';
 
-		// Feature/unfeature and mark/unmark resolved
-		if ( $this->hasPermission( 'can_feature' ) ) {
+		// Feature/unfeature and mark/unmark resolved (for posts other than your own)
+		if ( $this->hasPermission( 'can_feature' ) && !$ownFeedback ) {
 			// Message can be:
 			//  * articlefeedbackv5-form-feature
 			//  * articlefeedbackv5-form-unfeature
