@@ -54,8 +54,8 @@ class ApiArticleFeedbackv5Utils {
 		global $wgRequest, $wgUser, $wgArticleFeedbackv5Tracking;
 
 		// if logged in user, we can know for certain if feedback was posted when logged in
-		if ( $wgUser->getId() && isset( $record->af_user_id ) ) {
-			return $wgUser->getId() == intval( $record->af_user_id );
+		if ( $wgUser->getId() && isset( $record->af_user_id )&& $wgUser->getId() == intval( $record->af_user_id )) {
+			return true;
 		}
 
 		// if either the feedback was posted when not logged in, or the visitor is now not
