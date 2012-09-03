@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAARn//98A\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-09-03T07:57:43Z",
+      "side": 1,
+      "message": "The default LogFormatter isn\u0027t used, but ArticleFeedbackv5LogFormatter, which doesn\u0027t assign it as a linked title",
+      "parentUuid": "AAAARn///I0\u003d",
+      "revId": "7cfe0f366a439814b472846fe7a841bea689d625",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAARn///Ig\u003d",
         "filename": "ArticleFeedbackv5.log.php",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-31T23:06:57Z",
       "side": 1,
       "message": "The parameter should be done in this way:\n$logEntry-\u003esetParameters( array(\n\u00274::paramname\u0027 \u003d\u003e \u0027customparam\u0027\n) );",
+      "revId": "7cfe0f366a439814b472846fe7a841bea689d625",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn//98E\u003d",
+        "filename": "ArticleFeedbackv5.log.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-09-03T07:57:43Z",
+      "side": 1,
+      "message": "Don\u0027t really need them to be 4:: \u0026 5:: since the default LogFormatter isn\u0027t used. I\u0027ve added it in anyhow, won\u0027t hurt :p",
+      "parentUuid": "AAAARn///Ig\u003d",
       "revId": "7cfe0f366a439814b472846fe7a841bea689d625",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
