@@ -56,12 +56,12 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-email' => 'That e-mail address is not valid.',
 	'articlefeedbackv5-error-blocked' => 'Blocked users may not submit feedback.',
 	'articlefeedbackv5-error-validation' => 'Validation error.',
-	'articlefeedbackv5-error-abuse' => 'Your post has been rejected by a software filter that suggests it may have violated {{SITENAME}}\'s [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines feedback guidelines]. Please revise your post and try again.',
+	'articlefeedbackv5-error-abuse' => "Your post has been rejected by a software filter that suggests it may have violated {{SITENAME}}'s [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines feedback guidelines]. Please revise your post and try again.",
 	'articlefeedbackv5-error-unknown' => 'Unknown error.',
 	'articlefeedbackv5-error-submit' => 'Form submission error.',
 	'articlefeedbackv5-error-nofeedback' => 'Please enter your feedback.',
 	'articlefeedbackv5-error-flagging' => 'Error flagging feedback.',
-	'articlefeedbackv5-error-throttled' => 'Your post has been rejected because you have recently posted more feedback than recommended in {{SITENAME}}\'s feedback guidelines. Please do not post feedback repeatedly or excessively.',
+	'articlefeedbackv5-error-throttled' => "Your post has been rejected because you have recently posted more feedback than recommended in {{SITENAME}}'s feedback guidelines. Please do not post feedback repeatedly or excessively.",
 
 	/* Page protection */
 	'articlefeedbackv5-protection-level' => 'Article feedback',
@@ -401,14 +401,14 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'No, I did not find what I was looking for.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 character remaining)|($1 characters remaining)}}',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Great. Any suggestion for improvement?',
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Write your suggestion here (e.g.: \'This article needs a picture\')',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => "Write your suggestion here (e.g.: 'This article needs a picture')",
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Sorry about that. Any suggestion for improvement?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Write your suggestion here (e.g.: \'This article needs a picture\')',
+	'articlefeedbackv5-bucket6-question-placeholder-no' => "Write your suggestion here (e.g.: 'This article needs a picture')",
 	'articlefeedbackv5-bucket6-form-submit' => 'Post your feedback',
 	'articlefeedbackv5-bucket6-backlink-text' => 'Back to step 1',
 
 	/* Messages shared by all feedback form options */
-	'articlefeedbackv5-help-tooltip-title' => 'What\'s this?',
+	'articlefeedbackv5-help-tooltip-title' => "What's this?",
 	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} would like to hear what you think of this page. Share your feedback with the editors — and help improve this page.',
 	'articlefeedbackv5-help-tooltip-linktext' => 'Learn more',
 	'articlefeedbackv5-help-special-linkurl' => '//en.wikipedia.org/wiki/Wikipedia:Article_Feedback/Help',
