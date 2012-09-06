@@ -2090,8 +2090,6 @@
 		}
 		// Initialize clicktracking
 		$.aftTrack.init();
-		// Has the user already submitted ratings for this page at this revision?
-		$.articleFeedbackv5.alreadySubmitted = $.cookie( $.aftTrack.prefix( 'submitted' ) ) === 'true';
 		// Go ahead and bucket right away
 		$.articleFeedbackv5.selectBucket();
 		$.articleFeedbackv5.selectCTA();
@@ -2654,13 +2652,22 @@
 					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
 					$.articleFeedbackv5.specialUrl = data.articlefeedbackv5.aft_url;
 					$.articleFeedbackv5.permalink = data.articlefeedbackv5.permalink;
+
 					$.articleFeedbackv5.unlockForm();
 					$.articleFeedbackv5.showCTA();
-					// Drop a cookie for a successful submit
-					$.cookie( $.aftTrack.prefix( 'submitted' ), 'true', { 'expires': 365, 'path': '/' } );
+
+					// save add feedback id to cookie (only most recent 20)
+					var feedbackIds = $.parseJSON( $.cookie( $.aftTrack.prefix( 'feedback-ids' ) ) );
+					if ( !$.isArray( feedbackIds ) ) {
+						feedbackIds = [];
+					}
+					feedbackIds.unshift( data.articlefeedbackv5.feedback_id );
+					$.cookie( $.aftTrack.prefix( 'feedback-ids' ), $.toJSON( feedbackIds.splice( 0, 20 ) ), { expires: 30, path: '/' } );
+
 					// Clear out anything that needs removing (usually trigger links)
 					$.articleFeedbackv5.$toRemove.remove();
 					$.articleFeedbackv5.$toRemove = $( [] );
+
 					// Track the success
 					$.articleFeedbackv5.trackClick( 'submit_success' );
 				} else {

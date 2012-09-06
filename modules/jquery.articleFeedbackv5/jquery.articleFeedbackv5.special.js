@@ -1320,7 +1320,7 @@
 			'page': $.articleFeedbackv5special.page,
 			'listControls': $.articleFeedbackv5special.listControls
 		};
-		filterParams = $.toJSON(filterParams);
+		filterParams = $.toJSON( filterParams );
 
 		// note: we're overwriting the same cookie for every page; assuming that they won't like to come
 		// back later to previous pages and find their previous settings again (plus less cookie size)
