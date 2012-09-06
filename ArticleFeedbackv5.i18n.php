@@ -400,10 +400,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'Yes, I found what I was looking for.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'No, I did not find what I was looking for.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 character remaining)|($1 characters remaining)}}',
-	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Great. Would you like to add a comment?',
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'How could this article be improved?',
+	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Great. Any suggestion for improvement?',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Write your suggestion here (e.g.: \'This article needs a picture\')',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Sorry about that. Any suggestion for improvement?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'What were you looking for?',
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Write your suggestion here (e.g.: \'This article needs a picture\')',
 	'articlefeedbackv5-bucket6-form-submit' => 'Post your feedback',
 	'articlefeedbackv5-bucket6-backlink-text' => 'Back to step 1',
 
