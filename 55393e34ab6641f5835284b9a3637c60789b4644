@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAASn///Jc\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-09-06T23:36:46Z",
+      "side": 1,
+      "message": "$category may be null",
+      "revId": "55393e34ab6641f5835284b9a3637c60789b4644",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAASn///I8\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-09-06T23:36:46Z",
+      "side": 1,
+      "message": "looks like these two lines can be done in one line:\n\n$article[\u0027categories\u0027][] \u003d str_replace(  \u0027_\u0027,  \u0027 \u0027, $category );",
+      "revId": "55393e34ab6641f5835284b9a3637c60789b4644",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAASn///K4\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-09-06T23:36:46Z",
+      "side": 1,
+      "message": "missing ;",
+      "revId": "55393e34ab6641f5835284b9a3637c60789b4644",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
