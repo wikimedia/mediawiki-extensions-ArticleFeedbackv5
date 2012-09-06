@@ -643,7 +643,7 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered footer
 	 */
 	private function renderFooter( $record ) {
-		global $wgLang;
+		global $wgLang, $wgUser;
 
 		$id = $record[0]->af_id;
 		$ownFeedback = ApiArticleFeedbackv5Utils::isOwnFeedback( $record[0] );
@@ -765,8 +765,9 @@ class ArticleFeedbackv5Render {
 			$footer .= Html::closeElement( 'div' );
 		}
 
-		// Add ability to hide own posts for readers
-		if ( !$this->hasPermission( 'can_feature' ) && $ownFeedback ) {
+		// Add ability to hide own posts for readers, only when we're
+		// certain that the feedback was posted by the current user
+		if ( !$this->hasPermission( 'can_feature' ) && ( $wgUser->getId() && $wgUser->getId() == intval( $record[0]->af_user_id ) ) ) {
 			// Message can be:
 			//  * articlefeedbackv5-form-(hide|unhide)[-own]
 			if ( $record[0]->af_is_hidden ) {
@@ -857,6 +858,8 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered toolbox
 	 */
 	private function renderToolbox( $record ) {
+		global $wgUser;
+
 		// Don't render the toolbox if they can't do anything with it.
 		if ( !$this->hasToolbox() ) {
 			return '';
@@ -929,8 +932,9 @@ class ArticleFeedbackv5Render {
 			);
 		}
 
-		// Hide/unhide
-		if ( $this->hasPermission( 'can_hide' ) || $ownFeedback ) {
+		// Hide/unhide - either for people with hide-permissions, or when we're
+		// certain that the feedback was posted by the current user
+		if ( $this->hasPermission( 'can_hide' ) || ( $wgUser->getId() && $wgUser->getId() == intval( $record[0]->af_user_id ) ) ) {
 			// Message can be:
 			//  * articlefeedbackv5-form-(hide|unhide)[-own]
 			if ( $record[0]->af_is_hidden ) {
