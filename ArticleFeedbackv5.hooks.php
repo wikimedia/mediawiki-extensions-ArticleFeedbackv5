@@ -56,6 +56,7 @@ class ArticleFeedbackv5Hooks {
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.js',
 			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.css',
 			'messages' => array(
+				'articlefeedbackv5-no-feedback',
 				'articlefeedbackv5-unsupported-message',
 				'articlefeedbackv5-page-disabled',
 			),
