@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAASn///aM\u003d",
+        "filename": "api/ApiArticleFeedbackv5Utils.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 78
+      },
+      "writtenOn": "2012-09-06T19:32:05Z",
+      "side": 1,
+      "message": "missing a space in front of the \u0027\u0026\u0026\u0027 and after \u0027af_user_id )\u0027",
+      "revId": "43ca238adec09697d92e24a86ef0f4a338e1dabe",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
