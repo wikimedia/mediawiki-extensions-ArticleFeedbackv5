@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAASn///Gk\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-09-07T00:44:39Z",
+      "side": 1,
+      "message": "Localized API error messages work in most cases but would break in case like ?uselang\u003dxx is used",
+      "revId": "b3230015d037cff5fe0ac3d69228e6f3e4f6da11",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
