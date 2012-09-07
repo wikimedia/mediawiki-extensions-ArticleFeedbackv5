@@ -51,6 +51,24 @@
       "revId": "aef4f88787273665b9c5c25db8ce06d94e3d019f",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAASn//++U\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 93
+      },
+      "writtenOn": "2012-09-07T11:11:27Z",
+      "side": 1,
+      "message": "Ideally yes, however all recent changes chardiffs are in bytes for now.",
+      "parentUuid": "AAAASn///GU\u003d",
+      "revId": "aef4f88787273665b9c5c25db8ce06d94e3d019f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
