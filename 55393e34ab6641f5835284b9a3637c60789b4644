@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAASn//+5Y\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-09-07T14:07:38Z",
+      "side": 1,
+      "message": "No - initially, the value of $category will be \"Category:The_category_name\" (with prefix), after turning it into title \u0026 -\u003egetDBKey(), we\u0027re left with only \"The_category_name\"",
+      "parentUuid": "AAAASn///I8\u003d",
+      "revId": "55393e34ab6641f5835284b9a3637c60789b4644",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAASn///K4\u003d",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js",
         "patchSetId": 2
