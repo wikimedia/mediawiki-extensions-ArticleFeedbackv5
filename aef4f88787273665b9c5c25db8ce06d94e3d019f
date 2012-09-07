@@ -34,6 +34,23 @@
       "revId": "aef4f88787273665b9c5c25db8ce06d94e3d019f",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAASn///GU\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-09-07T00:57:46Z",
+      "side": 1,
+      "message": "probably use mb_strlen() here? strlen would count a non-ascci character as multi-byte",
+      "revId": "aef4f88787273665b9c5c25db8ce06d94e3d019f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
