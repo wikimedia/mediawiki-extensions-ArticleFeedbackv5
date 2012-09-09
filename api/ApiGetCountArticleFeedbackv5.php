@@ -31,8 +31,7 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 		$result   = $this->getResult();
 
 		// Add metadata
-		$counts = ApiArticleFeedbackv5Utils::getFilterCounts( $params['pageid'] );
-		$count = isset( $counts[$params['filter']] ) ? $counts[$params['filter']] : 0;
+		$count = ArticleFeedbackv5Model::getCount( $params['filter'], $params['pageid'] );
 
 		$result->addValue( $this->getModuleName(), 'pageid', $params['pageid'] );
 		$result->addValue( $this->getModuleName(), 'filter', $params['filter'] );
@@ -57,7 +56,7 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 			'filter'        => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => ArticleFeedbackv5Fetch::$knownFilters,
+				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Model::$lists )
 			),
 		);
 	}
