@@ -28,11 +28,11 @@ class ArticleFeedbackv5Flagging {
 	private $user;
 
 	/**
-	 * The feedback ID
+	 * The feedback object
 	 *
-	 * @var int
+	 * @var ArticleFeedbackv5Model
 	 */
-	private $feedbackId;
+	private $feedback;
 
 	/**
 	 * The filters to be changed
@@ -112,10 +112,14 @@ class ArticleFeedbackv5Flagging {
 	 * @param mixed $user       the user performing the action ($wgUser), or
 	 *                          zero if it's a system call
 	 * @param int   $feedbackId the feedback ID
+	 * @param int   $pageId     the page ID
 	 */
-	public function __construct( $user, $feedbackId ) {
+	public function __construct( $user, $feedbackId, $pageId ) {
 		$this->user       = $user;
-		$this->feedbackId = $feedbackId;
+		$this->feedback   = ArticleFeedbackv5Model::loadFromId( $feedbackId, $pageId );
+		if ( !$this->feedback ) {
+			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-id' );
+		}
 	}
 
 	/**
@@ -192,6 +196,11 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		wfProfileIn( __METHOD__ . "-flag_{$flag}_$direction" );
+
+		// @todo: all rollup data, relevance score stuff, etc etc, should be removed in here
+		// all of it should move to AFT model. AFT model will, upon ->save(), calculate relevance
+		// score based on the amount that is saved for every action column
+		// This file basically only has to do stuff like $this->feedback->helpful++; $this->feedback->save();
 
 		// figure out if we have relevance_scores to adjust
 		if ( count($this->relevance) > 0 ) {
