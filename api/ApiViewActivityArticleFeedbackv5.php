@@ -29,51 +29,21 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	public function execute() {
 		wfProfileIn( __METHOD__ );
 
-		global $wgUser; // we need to check permissions in here
-		global $wgLang; // timestamp formats
+		global $wgUser, $wgLang;
 
-		// If we can't feature, we can't see activity, return an empty string
-		// front-end should never let you get here, but just in case
 		if ( !$wgUser->isAllowed( 'aft-editor' ) ) {
 			wfProfileOut( __METHOD__ );
 			$this->dieUsage( "You don't have permission to view feedback activity", 'permissiondenied' );
 		}
 
-		// These are our valid activity log actions
-		$valid = array();
-		$valid[] = 'decline';
-		$valid[] = 'request';
-		$valid[] = 'unrequest';
-		$valid[] = 'flag';
-		$valid[] = 'unflag';
-		$valid[] = 'resolve';
-		$valid[] = 'unresolve';
-		$valid[] = 'feature';
-		$valid[] = 'unfeature';
-		$valid[] = 'helpful';
-		$valid[] = 'undo-helpful';
-		$valid[] = 'unhelpful';
-		$valid[] = 'undo-unhelpful';
-		$valid[] = 'clear-flags';
-
-		// if we have hide permissions, we're allowed to see oversight-related
-		// actions as well
-		if ( $wgUser->isAllowed( 'aft-monitor' ) ) {
-			$valid[] = 'oversight';
-			$valid[] = 'unoversight';
-			$valid[] = 'hidden';
-			$valid[] = 'unhidden';
-		}
-
 		// get our parameter information
 		$params = $this->extractRequestParams();
-		$feedbackId = $params['feedbackid'];
 		$limit = $params['limit'];
 		$continue = $params['continue'];
 		$result = $this->getResult();
 
 		// fetch our activity database information
-		$feedback    = $this->fetchFeedback( $feedbackId );
+		$feedback = ArticleFeedbackv5Model::get( $params['feedbackid'], $params['pageid'] );
 		// if this is false, this is bad feedback - move along
 		if ( !$feedback ) {
 			wfProfileOut( __METHOD__ );
@@ -81,15 +51,19 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		}
 
 		// get the string title for the page
-		$page = Title::newFromID( $feedback->af_page_id );
+		$page = Title::newFromID( $feedback->page );
 		if ( !$page ) {
 			wfProfileOut( __METHOD__ );
 			$this->dieUsage( "Page for feedback does not exist", 'invalidfeedbackid' );
 		}
-		$title = $page->getDBKey();
 
 		// get our activities
-		$activities = $this->fetchActivity( $title, $feedbackId, $limit, $continue );
+		try {
+			$activities = ArticleFeedbackv5Activity::getList( $feedback, $wgUser, $limit, $continue );
+		} catch ( Exception $e ) {
+			wfProfileOut( __METHOD__ );
+			$this->dieUsage( $e->getMessage(), $e->getCode() );
+		}
 
 		// generate our html
 		$html = '';
@@ -98,123 +72,98 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		if ( !$continue && !$params['noheader'] ) {
 			$result->addValue( $this->getModuleName(), 'hasHeader', true );
 
-			// <div class="articleFeedbackv5-activity-pane">
-			$html .= Html::openElement( 'div', array(
-				'class' => 'articleFeedbackv5-activity-pane'
-			) );
+			$html .=
+				Html::rawElement(
+					'div',
+					array( 'class' => 'articleFeedbackv5-activity-pane' ),
+					Html::rawElement(
+						'div',
+						array( 'class' => 'articleFeedbackv5-activity-feedback' ),
+						Html::rawElement(
+							'div',
+							array(),
+							wfMessage( 'articlefeedbackv5-activity-feedback-info', array( $feedback->id ) )
+								->rawParams( ApiArticleFeedbackv5Utils::getUserLink( $feedback->user, $feedback->user_text ) )
+								->text()
+						) .
+						Html::element(
+							'div',
+							array(),
+							wfMessage( 'articlefeedbackv5-activity-feedback-date', array( $wgLang->timeanddate( $feedback->timestamp ) ) )->text()
+						) .
+						Html::rawElement(
+							'div',
+							array( 'class' => 'articleFeedbackv5-activity-feedback-permalink' ),
+							Linker::link(
+								SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getDBKey() . '/' . $feedback->id ),
+								wfMessage( 'articlefeedbackv5-activity-permalink' )->text()
+							)
+						)
+					) .
+					Html::element(
+						'div',
+						array( 'class' => 'articleFeedbackv5-activity-count' ),
+						wfMessage( 'articlefeedbackv5-activity-count' )->numParams( ApiArticleFeedbackv5Utils::getActivityCount( $feedback ) )->text()
+					)
+				);
 
-			// <div class="articleFeedbackv5-activity-feedback">
-			$html .= Html::openElement( 'div', array(
-				'class' => 'articleFeedbackv5-activity-feedback'
-			) );
-
-			// <div>Feedback Post #{$feedbackid} by {$user_link}</div>
-			$html .= Html::openElement( 'div', array() );
-			$html .= wfMessage( 'articlefeedbackv5-activity-feedback-info',
-						array( $feedback->af_id ) )
-					->rawParams( ApiArticleFeedbackv5Utils::getUserLink( $feedback->af_user_id, $feedback->af_user_ip ) )
-					->text();
-			$html .= Html::closeElement( 'div' );
-
-			// <div>Posted on {$date} (UTC)</div>
-			$html .= Html::element( 'div', array(),
-				wfMessage( 'articlefeedbackv5-activity-feedback-date',
-						array( $wgLang->timeanddate( $feedback->af_created ) ) )->text() );
-
-			// <div class="articleFeedbackv5-activity-feedback-permalink">
-			$html .= Html::openElement( 'div', array(
-				'class' => 'articleFeedbackv5-activity-feedback-permalink'
-			) );
-
-			// <a href="{$permalink}">permalink</a>
-			$html .= Linker::link(
-				SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title . '/' . $feedback->af_id ),
-				wfMessage( 'articlefeedbackv5-activity-permalink' )->text() );
-
-			// </div> for class="articleFeedbackv5-activity-feedback-permalink"
-			$html .= Html::closeElement( 'div' );
-
-			// </div> for class="articleFeedbackv5-activity-feedback"
-			$html .= Html::closeElement( 'div' );
-
-			// <div class="articleFeedbackv5-activity-count">$n actions on this post</div>
-			if ( $wgUser->isAllowed( 'aft-monitor' ) ) {
-				$activity_count = $feedback->af_activity_count + $feedback->af_suppress_count;
-			} else {
-				$activity_count = $feedback->af_activity_count;
-			}
-			$html .= Html::element( 'div', array( 'class' => 'articleFeedbackv5-activity-count' ),
-					wfMessage( 'articlefeedbackv5-activity-count' )->numParams( $activity_count )->text() );
-
-			// </div> for class="articleFeedbackv5-activity-pane"
-			$html .= Html::closeElement( 'div' );
-
-			// <div class="articleFeedbackv5-activity-log-items">
-			$html .= Html::openElement( 'div', array(
-				'class' => 'articleFeedbackv5-activity-log-items'
-			) );
+			$html .=
+				Html::openElement(
+					'div',
+					array( 'class' => 'articleFeedbackv5-activity-log-items' )
+				);
 		}
 
 		$count = 0;
 
 		// divs of activity items
 		foreach ( $activities as $item ) {
-			// if we do not have a valid action, skip this item
-			if ( !in_array( $item->log_action, $valid ) ) {
+			// skip item if user is not permitted to see it
+			if ( !ArticleFeedbackv5Model::canPerformAction( $item->log_action, $wgUser ) ) {
 				continue;
 			}
 
-			$count++;
-
 			// figure out if we have more if we have another row past our limit
+			$count++;
 			if ( $count > $limit ) {
 				break;
 			}
 
-			// <div class="articleFeedbackv5-activity-item">
-			$html .= Html::openElement( 'div', array(
-				'class' => 'articleFeedbackv5-activity-item'
-			) );
+			$sentiment = ArticleFeedbackv5Model::$actions[$item->log_action]['sentiment'];
 
-			// determine the class a log entry is to get, based on whether it's a positive/negative
-			// taken against the feedback entry
-			$positiveActions = array( 'feature', 'resolve', 'unhidden', 'decline', 'unoversight', 'unflag', 'unrequest', 'helpful', 'clear-flags' );
-			$negativeActions = array( 'oversight', 'autohide', 'hidden', 'request', 'unfeature', 'unresolve', 'flag', 'autoflag', 'unhelpful' );
-			// neutral actions: undo-helpful, undo-unhelpful
-
-			$logClass = 'articleFeedbackv5-activity-item-action';
-			if ( in_array( $item->log_action, $positiveActions ) ) {
-				$logClass .= ' articleFeedbackv5-activity-item-action-positive';
-			} elseif ( in_array( $item->log_action, $negativeActions ) ) {
-				$logClass .= ' articleFeedbackv5-activity-item-action-negative';
-			}
-
-			$html .= Html::openElement( 'span', array( 'class' => $logClass ) );
-			$html .= wfMessage( 'articlefeedbackv5-activity-item-' . $item->log_action )
-						->rawParams(
-							ApiArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
-							Linker::commentBlock( $item->log_comment ),
-							Html::element( 'span', array(), $wgLang->timeanddate( $item->log_timestamp ) ),
-							Html::element( 'span', array(), $wgLang->date( $item->log_timestamp ) ),
-							Html::element( 'span', array(), $wgLang->time( $item->log_timestamp ) )
-						)
-						->params( $item->log_user_text )
-						->escaped();
-			$html .= Html::closeElement( 'span' );
-
-			// </div> for class="articleFeedbackv5-activity-item"
-			$html .= Html::closeElement( 'div' );
+			$html .=
+				Html::rawElement(
+					'div',
+					array( 'class' => 'articleFeedbackv5-activity-item' ),
+					Html::rawElement(
+						'span',
+						array( 'class' => "articleFeedbackv5-activity-item-action articleFeedbackv5-activity-item-action-$sentiment" ),
+						wfMessage( 'articlefeedbackv5-activity-item-' . $item->log_action )
+							->rawParams(
+								ApiArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
+								Linker::commentBlock( $item->log_comment ),
+								Html::element( 'span', array(), $wgLang->timeanddate( $item->log_timestamp ) ),
+								Html::element( 'span', array(), $wgLang->date( $item->log_timestamp ) ),
+								Html::element( 'span', array(), $wgLang->time( $item->log_timestamp ) )
+							)
+							->params( $item->log_user_text )
+							->escaped()
+					)
+				);
 		}
 
-		// optional <a href="#" class="articleFeedbackv5-activity-more">Show more Activity</a>
 		if ( $count > $limit ) {
-			$html .= Html::element( 'a', array(
-					'class' => "articleFeedbackv5-activity-more",
-					'href' => '#',
-				), wfMessage( "articlefeedbackv5-activity-more" )->text() );
+			$html .=
+				Html::element(
+					'a',
+					array(
+						'class' => "articleFeedbackv5-activity-more",
+						'href' => '#',
+					),
+					wfMessage( "articlefeedbackv5-activity-more" )->text()
+				);
 		}
 
-		// </div> for class="acticleFeedbackv5-activity-log-items"
 		$html .= Html::closeElement( 'div' );
 
 		// finally add our generated html data
@@ -223,104 +172,10 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 		// continue only goes in if it's not empty
 		if ( $count > $limit ) {
-			$this->setContinueEnumParameter( 'continue', $this->getContinue( $item ) );
+			$this->setContinueEnumParameter( 'continue', ArticleFeedbackv5Activity::getContinue( $item ) );
 		}
 
 		wfProfileOut( __METHOD__ );
-	}
-
-	/**
-	 * Gets some base feedback information
-	 *
-	 * @param int $feedbackId identifier for the feedback item we are fetching activity for
-	 * @return int total number of activity items for feedback item
-	 */
-	protected function fetchFeedback( $feedbackId ) {
-		$dbr   = wfGetDB( DB_SLAVE );
-
-		$feedback = $dbr->selectRow(
-			array( 'aft_article_feedback' ),
-			array( 'af_id',
-				'af_page_id',
-				'af_user_id',
-				'af_user_ip',
-				'af_created',
-				'af_activity_count',
-				'af_suppress_count' ),
-			array(
-				'af_id'     => $feedbackId,
-			),
-			__METHOD__,
-			array(
-				'LIMIT'    => 1
-			)
-		);
-
-		return $feedback;
-	}
-
-	/**
-	 * Gets the last 25 (or a requested continuance) of activity rows taken
-	 * from the log table
-	 *
-	 * @param string $title the title of the page
-	 * @param int $feedbackId identifier for the feedback item we are fetching activity for
-	 * @param int $limit total limit number
-	 * @param mixed $continue used for offsets
-	 * @return array db record rows
-	 */
-	protected function fetchActivity( $title, $feedbackId, $limit = 25, $continue = null ) {
-		global $wgUser; // we need to check permissions in here for suppressionlog stuff
-
-		// get afv5 log items PLUS suppress log
-		if ( $wgUser->isAllowed( 'aft-monitor' ) ) {
-			$where = array (
-				0 => "(log_type = 'articlefeedbackv5')
-					OR (log_type = 'suppress' AND
-					(log_action = 'oversight' OR
-					 log_action = 'unoversight' OR
-					 log_action = 'decline' OR
-					 log_action = 'request' OR
-					 log_action = 'unrequest'))",
-				'log_namespace' => NS_SPECIAL,
-				'log_title' => "ArticleFeedbackv5/$title/$feedbackId"
-			);
-		// get only afv5 log items
-		} else {
-			$where = array (
-				'log_type' => 'articlefeedbackv5',
-				'log_namespace' => NS_SPECIAL,
-				'log_title' => "ArticleFeedbackv5/$title/$feedbackId"
-			);
-		}
-
-		$where = $this->applyContinue( $continue, $where );
-
-		$dbr   = wfGetDB( DB_SLAVE );
-		$activity = $dbr->select(
-			array( 'logging' ),
-			array( 'log_id',
-				'log_action',
-				'log_timestamp',
-				'log_user',
-				'log_user_text',
-				'log_title',
-				'log_comment' ),
-			$where,
-			__METHOD__,
-			array(
-				'LIMIT'    => $limit + 1,
-				'ORDER BY' => 'log_timestamp DESC',
-				// Force the page_time index (on _namespace, _title, _timestamp)
-				// We don't expect many if any rows for Special:ArticleFeedbackv5/foo that
-				// don't match log_type='articlefeedbackv5' , so we can afford to have that
-				// clause be unindexed. The alternative is to have the log_type clause be indexed
-				// and the namespace/title clauses unindexed, that would be bad.
-				'USE INDEX' => 'page_time'
-			)
-		);
-
-		return $activity;
 	}
 
 	/**
@@ -331,6 +186,10 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	public function getAllowedParams() {
 		return array(
 			'feedbackid' => array(
+				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_TYPE     => 'integer',
+			),
+			'pageid' => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE     => 'integer',
 			),
@@ -356,6 +215,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	public function getParamDescription() {
 		return array(
 			'feedbackid' => 'ID to get feedback activity for',
+			'pageid' => 'ID to of the page the feedback was given for',
 			'limit' => 'How many activity results to return',
 			'continue' => 'When more results are available, use this to continue',
 			'noheader' => 'Skip the header markup, even if this is the first page',
@@ -391,35 +251,6 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
-	}
-
-	/**
-	 * Creates a timestamp/id tuple for continue
-	 */
-	protected function getContinue( $row ) {
-		$ts = wfTimestamp( TS_MW, $row->log_timestamp );
-		return "$ts|{$row->log_id}";
-	}
-
-	/**
-	 * gets timestamp and id pair for continue
-	 */
-	protected function applyContinue( $continue, $where ) {
-		if ( !$continue ) {
-			return $where;
-		}
-
-		$vals = explode( '|', $continue, 3 );
-		if ( count( $vals ) !== 2 ) {
-			$this->dieUsage( 'Invalid continue param. You should pass the original value returned by the previous query', 'badcontinue' );
-		}
-
-		$db = $this->getDB();
-		$ts = $db->addQuotes( $db->timestamp( $vals[0] ) );
-		$id = intval( $vals[1] );
-		$where[] = '(log_id = ' . $id . ' AND log_timestamp <= ' . $ts . ') OR log_timestamp < ' . $ts;
-
-		return $where;
 	}
 }
 

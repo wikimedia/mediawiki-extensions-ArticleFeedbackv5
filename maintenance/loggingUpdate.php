@@ -75,6 +75,7 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 				'feedback_id' => 'SUBSTRING_INDEX(log_title, "/", -1)',
 				'page_id',
 				'log_type',
+				'log_params'
 			),
 			array(
 				"log_id > $continue",
@@ -102,10 +103,13 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 			$continue = $row->log_id;
 
 			// build params
-			$params = array(
-				'feedbackId' => (int) $row->feedback_id,
-				'pageId' => (int) $row->page_id
-			);
+			$params = @unserialize( $row->log_params );
+			if ( !$params ) {
+				$params = array();
+			}
+			$params['source'] = isset( $params['source'] ) ? $params['source'] : 'unknown';
+			$params['feedbackId'] = (int) $row->feedback_id;
+			$params['pageId'] = (int) $row->page_id;
 
 			// fix log type
 			switch ( $row->log_type ) {
