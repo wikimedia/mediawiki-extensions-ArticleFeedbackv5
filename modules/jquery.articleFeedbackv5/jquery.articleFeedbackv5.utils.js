@@ -12,47 +12,9 @@
 
 ( function ( $ ) {
 
-// {{{ aftVerify definition
+// {{{ aftUtils definition
 
-	$.aftVerify = {};
-
-	// {{{ legacyCorrection
-
-	/**
-	 * During cleanup, some javascript variables have been tossed around.
-	 * It may occur that page output will still be cached, but new (= this)
-	 * javascript will already be served. In these cached cases, this
-	 * javascript will lack the variables it assumes.
-	 *
-	 * This function will pre-fill this data with what we used to be able
-	 * to fetch (and might still be hit with due to cache)
-	 */
-	$.aftVerify.legacyCorrection = function () {
-		// check if data is already present
-		if ( mw.config.get( 'aftv5Article' ) ) {
-			return;
-		}
-
-		var article = {};
-
-		// these had an older equivalent
-		article.id = mw.config.get( 'aftv5PageId', -1 );
-		article.title = mw.config.get( 'aftv5PageTitle', '' );
-
-		// article were only supported on NS_MAIN, so assume the default
-		article.namespace = 0;
-
-		// we have no idea about the categories, but we did know if an article
-		// was whitelisted, so in that case: fill it with whitelisted categories
-		if ( mw.config.get( 'aftv5Whitelist' ) ) {
-			article.categories = mw.config.get( 'wgArticleFeedbackv5Categories', [] );
-		}
-
-		// permission levels had not yet been introduced, so assume the default
-		article.permissionLevel = 'aft-reader';
-
-		mw.config.set( 'aftv5Article', article );
-	};
+	$.aftUtils = {};
 
 	// }}}
 	// {{{ verify
@@ -63,9 +25,9 @@
 	 * @param  location string  the place from which this is being called
 	 * @return bool     whether AFTv5 is enabled for this page
 	 */
-	$.aftVerify.verify = function ( location ) {
-		// make sure we have all data - even on old cached pages
-		$.aftVerify.legacyCorrection();
+	$.aftUtils.verify = function ( location ) {
+		// remove obsolete cookies
+		$.aftUtils.removeLegacyCookies();
 
 		var article = mw.config.get( 'aftv5Article' );
 
@@ -80,7 +42,7 @@
 		var enable = true;
 
 		// supported browser
-		enable &= $.aftVerify.useragent();
+		enable &= $.aftUtils.useragent();
 
 		if ( location != 'special' || article.id != 0 ) {
 			// only on pages in namespaces where it is enabled
@@ -90,13 +52,13 @@
 		// for special page, it doesn't matter if the article has AFT applied
 		if ( location != 'special' ) {
 			// check if user has the required permissions
-			enable &= $.aftVerify.permissions( article );
+			enable &= $.aftUtils.permissions( article );
 
 			// category is not blacklisted
-			enable &= !$.aftVerify.blacklist( article );
+			enable &= !$.aftUtils.blacklist( article );
 
 			// category is whitelisted or article is in lottery
-			enable &= ( $.aftVerify.whitelist( article ) || $.aftVerify.lottery( article ) );
+			enable &= ( $.aftUtils.whitelist( article ) || $.aftUtils.lottery( article ) );
 		}
 
 		// stricter validation for article: make sure we're at the right article view
@@ -121,6 +83,9 @@
 
 			// not viewing the printable version
 			enable &= mw.util.getParamValue( 'printable' ) != 'yes';
+
+			// article has not just been edited
+			enable &= !mw.config.get( 'wgPostEdit', false );
 		}
 
 		return enable;
@@ -136,7 +101,7 @@
 	 * @param object article
 	 * @return bool
 	 */
-	$.aftVerify.permissions = function ( article ) {
+	$.aftUtils.permissions = function ( article ) {
 		var permissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 		return article.permissionLevel in permissions && permissions[article.permissionLevel];
 	};
@@ -154,7 +119,7 @@
 	 * @param object article
 	 * @return bool
 	 */
-	$.aftVerify.blacklist = function ( article ) {
+	$.aftUtils.blacklist = function ( article ) {
 		var blacklistCategories = mw.config.get( 'wgArticleFeedbackv5BlacklistCategories', [] );
 		var intersect = $.map( blacklistCategories, function( category ) {
 			return $.inArray( category.replace(/_/g, ' '), article.categories ) < 0 ? null : category;
@@ -175,7 +140,7 @@
 	 * @param object article
 	 * @return bool
 	 */
-	$.aftVerify.whitelist = function ( article ) {
+	$.aftUtils.whitelist = function ( article ) {
 		var whitelistCategories = mw.config.get( 'wgArticleFeedbackv5Categories', [] );
 		var intersect = $.map( whitelistCategories, function( category ) {
 			return $.inArray( category.replace(/_/g, ' '), article.categories ) < 0 ? null : category;
@@ -195,7 +160,7 @@
 	 * @param object article
 	 * @return bool
 	 */
-	$.aftVerify.lottery = function ( article ) {
+	$.aftUtils.lottery = function ( article ) {
 		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
 		if ( typeof odds === 'object' && article.namespace in odds ) {
 			odds = odds[article.namespace];
@@ -212,7 +177,7 @@
 	 *
 	 * @return bool
 	 */
-	$.aftVerify.useragent = function () {
+	$.aftUtils.useragent = function () {
 		var ua = navigator.userAgent.toLowerCase();
 
 		// Rule out MSIE 6, FF2, Android
@@ -223,6 +188,52 @@
 			ua.indexOf( 'android' ) != -1
 		);
 	};
+
+	// }}}
+	// {{{ getCookieName
+
+	/**
+	 * Get the full, prefixed, name that data is saved at in cookie.
+	 * The cookie name is prefixed by the extension name and a version number,
+	 * to avoid collisions with other extensions or code versions.
+	 *
+	 * @param string $suffix
+	 * @return string
+	 */
+	$.aftUtils.getCookieName = function ( suffix ) {
+		return 'AFTv5-' + suffix;
+	};
+
+	// }}}
+	// {{{ removeLegacyCookies
+
+	/**
+	 * Before the current getCookieName() function, cookie names were:
+	 * * really long
+	 * * incorrect using the tracking version number to differentiate JS/cookie versions
+	 * * not being prefixed by wgCookiePrefix
+	 *
+	 * These issues have since been fixed, but this will make sure that lingering old
+	 * cookie are cleaned up. This function will not merge the old cookies to the new
+	 * cookie name though.
+	 *
+	 * @deprecated Function is only intended to bridge a temporary "gap" while old
+	 *             data persists in cookie. After awhile, cookies have either expired
+	 *             by themselves or this will have cleaned them up, so this function
+	 *             (and where it's being called) can be cleaned up at will.
+	 */
+	$.aftUtils.removeLegacyCookies = function() {
+		// old cookie names
+		var legacyCookieName = function( suffix ) {
+			return 'ext.articleFeedbackv5@11-' + suffix;
+		}
+
+		// remove old cookie names
+		$.cookie( legacyCookieName( 'activity' ), null, { expires: -1, path: '/' } );
+		$.cookie( legacyCookieName( 'last-filter' ), null, { expires: -1, path: '/' } );
+		$.cookie( legacyCookieName( 'submission_timestamps' ), null, { expires: -1, path: '/' } );
+		$.cookie( legacyCookieName( 'feedback-ids' ), null, { expires: -1, path: '/' } );
+	}
 
 	// }}}
 
