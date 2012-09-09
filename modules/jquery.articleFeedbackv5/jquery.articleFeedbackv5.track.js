@@ -81,21 +81,6 @@
 	};
 
 	// }}}
-	// {{{ prefix
-
-	/**
-	 * Utility method: Prefixes a key for tracking event names with extension and
-	 * version information
-	 *
-	 * @param  key    string name of event to prefix
-	 * @return string prefixed event name
-	 */
-	$.aftTrack.prefix = function ( key ) {
-		var version = mw.config.get( 'wgArticleFeedbackv5Tracking' ).version || 0;
-		return 'ext.articleFeedbackv5@' + version + '-' + key;
-	};
-
-	// }}}
 	// {{{ additional
 
 	/**

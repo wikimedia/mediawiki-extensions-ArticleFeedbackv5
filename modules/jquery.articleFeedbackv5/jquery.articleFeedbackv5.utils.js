@@ -12,9 +12,9 @@
 
 ( function ( $ ) {
 
-// {{{ aftVerify definition
+// {{{ aftUtils definition
 
-	$.aftVerify = {};
+	$.aftUtils = {};
 
 	// {{{ legacyCorrection
 
@@ -27,7 +27,7 @@
 	 * This function will pre-fill this data with what we used to be able
 	 * to fetch (and might still be hit with due to cache)
 	 */
-	$.aftVerify.legacyCorrection = function () {
+	$.aftUtils.legacyCorrection = function () {
 		// check if data is already present
 		if ( mw.config.get( 'aftv5Article' ) ) {
 			return;
@@ -63,9 +63,9 @@
 	 * @param  location string  the place from which this is being called
 	 * @return bool     whether AFTv5 is enabled for this page
 	 */
-	$.aftVerify.verify = function ( location ) {
+	$.aftUtils.verify = function ( location ) {
 		// make sure we have all data - even on old cached pages
-		$.aftVerify.legacyCorrection();
+		$.aftUtils.legacyCorrection();
 
 		var article = mw.config.get( 'aftv5Article' );
 
@@ -80,7 +80,7 @@
 		var enable = true;
 
 		// supported browser
-		enable &= $.aftVerify.useragent();
+		enable &= $.aftUtils.useragent();
 
 		if ( location != 'special' || article.id != 0 ) {
 			// only on pages in namespaces where it is enabled
@@ -90,13 +90,13 @@
 		// for special page, it doesn't matter if the article has AFT applied
 		if ( location != 'special' ) {
 			// check if user has the required permissions
-			enable &= $.aftVerify.permissions( article );
+			enable &= $.aftUtils.permissions( article );
 
 			// category is not blacklisted
-			enable &= !$.aftVerify.blacklist( article );
+			enable &= !$.aftUtils.blacklist( article );
 
 			// category is whitelisted or article is in lottery
-			enable &= ( $.aftVerify.whitelist( article ) || $.aftVerify.lottery( article ) );
+			enable &= ( $.aftUtils.whitelist( article ) || $.aftUtils.lottery( article ) );
 		}
 
 		// stricter validation for article: make sure we're at the right article view
@@ -121,6 +121,9 @@
 
 			// not viewing the printable version
 			enable &= mw.util.getParamValue( 'printable' ) != 'yes';
+
+			// article has not just been edited
+			enable &= !mw.config.get( 'wgPostEdit', false );
 		}
 
 		return enable;
@@ -136,7 +139,7 @@
 	 * @param object article
 	 * @return bool
 	 */
-	$.aftVerify.permissions = function ( article ) {
+	$.aftUtils.permissions = function ( article ) {
 		var permissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 		return article.permissionLevel in permissions && permissions[article.permissionLevel];
 	};
@@ -154,7 +157,7 @@
 	 * @param object article
 	 * @return bool
 	 */
-	$.aftVerify.blacklist = function ( article ) {
+	$.aftUtils.blacklist = function ( article ) {
 		var blacklistCategories = mw.config.get( 'wgArticleFeedbackv5BlacklistCategories', [] );
 		var intersect = $.map( blacklistCategories, function( category ) {
 			return $.inArray( category.replace(/_/g, ' '), article.categories ) < 0 ? null : category;
@@ -175,7 +178,7 @@
 	 * @param object article
 	 * @return bool
 	 */
-	$.aftVerify.whitelist = function ( article ) {
+	$.aftUtils.whitelist = function ( article ) {
 		var whitelistCategories = mw.config.get( 'wgArticleFeedbackv5Categories', [] );
 		var intersect = $.map( whitelistCategories, function( category ) {
 			return $.inArray( category.replace(/_/g, ' '), article.categories ) < 0 ? null : category;
@@ -195,7 +198,7 @@
 	 * @param object article
 	 * @return bool
 	 */
-	$.aftVerify.lottery = function ( article ) {
+	$.aftUtils.lottery = function ( article ) {
 		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
 		if ( typeof odds === 'object' && article.namespace in odds ) {
 			odds = odds[article.namespace];
@@ -212,7 +215,7 @@
 	 *
 	 * @return bool
 	 */
-	$.aftVerify.useragent = function () {
+	$.aftUtils.useragent = function () {
 		var ua = navigator.userAgent.toLowerCase();
 
 		// Rule out MSIE 6, FF2, Android
@@ -222,6 +225,22 @@
 			ua.indexOf( 'firefox 2.') != -1 ||
 			ua.indexOf( 'android' ) != -1
 		);
+	};
+
+	// }}}
+	// {{{ getCookieName
+
+	/**
+	 * Get the full, prefixed, name that data is saved at in cookie.
+	 * The cookie name is prefixed by the extension name and a version number,
+	 * to avoid collisions with other extensions or code versions.
+	 *
+	 * @param string $suffix
+	 * @return string
+	 */
+	$.aftUtils.getCookieName = function ( suffix ) {
+		var version = mw.config.get( 'wgArticleFeedbackv5Credits' ).version || 0;
+		return 'AFT' + version + '-' + suffix;
 	};
 
 	// }}}

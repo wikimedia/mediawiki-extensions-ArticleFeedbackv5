@@ -9,7 +9,7 @@ jQuery( function( $ ) {
 	if ( mw.config.get( 'wgArticleFeedbackv5TalkPageLink' ) ) {
 
 		// Check if AFT is enabled
-		var enable = $.aftVerify.verify( 'talk' );
+		var enable = $.aftUtils.verify( 'talk' );
 		if ( !enable ) {
 			return;
 		}

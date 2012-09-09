@@ -14,11 +14,6 @@
  * @subpackage Api
  */
 class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
-	private $continue   = null;
-	private $continueId = null;
-	private $showMore   = false;
-	private $isPermalink = false;
-
 	/**
 	 * Constructor
 	 */
@@ -32,81 +27,98 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	public function execute() {
 		wfProfileIn( __METHOD__ );
 
-		$user = $this->getUser();
-
 		$params   = $this->extractRequestParams();
 		$result   = $this->getResult();
 		$html     = '';
 		$length   = 0;
+
+		// no page id = central feedback page = null (getAllowedParams will have messed up null values)
+		if ( !$params['pageid'] ) {
+			$params['pageid'] = null;
+		}
 
 		// Save filter in user preference
 		$user = $this->getUser();
 		$user->setOption( 'aftv5-last-filter', $params['filter'] );
 		$user->saveSettings();
 
-		// Build fetch object
-		$fetch = new ArticleFeedbackv5Fetch();
-		$fetch->setFilter( $params['filter'] );
+		$records = $this->fetchData( $params );
 
-		$fetch->setFeedbackId( $params['feedbackid'] );
-		$fetch->setPageId( $params['pageid'] );
-		if ( $params['watchlist'] ) {
-			$fetch->setUserId( $user->getId() );
-		}
-
-		$fetch->setSort( $params['sort'] );
-		$fetch->setSortOrder( $params['sortdirection'] );
-		$fetch->setLimit( $params['limit'] );
-		if ( $params['continue'] !== 'null' ) {
-			$fetch->setContinue( $params['continue'] );
-		}
-
-		$count = $fetch->overallCount();
-
-		// Run
-		$res = $fetch->run();
+		// build renderer
+		$highlight = (bool) $params['feedbackid'];
+		$central = !(bool) $params['pageid'];
+		$renderer = new ArticleFeedbackv5Render( false, $central, $highlight );
 
 		// Build html
-		$highlight = (bool) $params['feedbackid'];
-		$central   = ( $params['pageid'] ? false : true );
-		$renderer  = new ArticleFeedbackv5Render( $user, false, $central, $highlight );
-		foreach ( $res->records as $record ) {
-			$html .= $renderer->run( $record );
-			$length++;
+		if ( $records ) {
+			foreach ( $records as $record ) {
+				$html .= $renderer->run( $record );
+				$length++;
+			}
 		}
+
+		$totalCount = ArticleFeedbackv5Model::getCount( '*', $params['pageid'] );
 
 		// Add metadata
 		$result->addValue( $this->getModuleName(), 'length', $length );
-		$result->addValue( $this->getModuleName(), 'count', $count );
-		$result->addValue( $this->getModuleName(), 'more', $res->showMore );
-		if ( isset( $res->continue ) ) {
-			$result->addValue( $this->getModuleName(), 'continue', $res->continue );
-		}
+		$result->addValue( $this->getModuleName(), 'count', $totalCount );
+		$result->addValue( $this->getModuleName(), 'offset', $records ? $records->nextOffset() : 0 );
+		$result->addValue( $this->getModuleName(), 'more', $records ? $records->hasMore() : false );
 		$result->addValue( $this->getModuleName(), 'feedback', $html );
 
 		wfProfileOut( __METHOD__ );
 	}
 
 	/**
-	 * Get the total number of responses
-	 *
-	 * @param  $pageId int [optional] the page ID
-	 * @return int     the count
+	 * @param array $params
+	 * @return DataModelList
 	 */
-	public function fetchFeedbackCount( $pageId = null ) {
-		$dbr   = wfGetDB( DB_SLAVE );
-		$where = array( 'afc_filter_name' => 'all' );
-		if ( $pageId ) {
-			$where['afc_page_id'] = $pageId;
+	protected function fetchData( $params ) {
+		// permalink page
+		if ( $params['feedbackid'] ) {
+			$record = ArticleFeedbackv5Model::get( $params['feedbackid'], $params['pageid'] );
+			if ( $record ) {
+				return new DataModelList(
+					array( array( 'id' => $record->aft_id, 'shard' => $record->aft_page ) ),
+					'ArticleFeedbackv5Model'
+				);
+			}
+
+		} else {
+			/*
+			 * Because a lot of the arguments for both getWatchlistList & getList
+			 * are optional, they'll be built using Reflection to ensure that every
+			 * arguments is optional, even if another one (e.g. the last one) is
+			 * specified (e.g. through reflection, we can read the default values
+			 * for all other parameters).
+			 * $map will serve as an temporary aid to overcome the differences
+			 * between this API's parameter names and the methods' argument names.
+			 */
+			$arguments = array();
+			$map = array(
+				'name' => $params['filter'],
+				'shard' => $params['pageid'],
+				'user' => $this->getUser(),
+				'offset' => $params['offset'],
+				'sort' => $params['sort'],
+				'order' => $params['sortdirection']
+			);
+
+			$method = $params['watchlist'] ? 'getWatchlistList' : 'getList';
+			$function = new ReflectionMethod( 'ArticleFeedbackv5Model', $method );
+			foreach ( $function->getParameters() as $parameter ) {
+				$name = $parameter->getName();
+				if ( $map[$name] === null && $parameter->isOptional() ) {
+					$arguments[] = $parameter->getDefaultValue();
+				} else {
+					$arguments[] = $map[$name];
+				}
+			}
+
+			return call_user_func_array( array( 'ArticleFeedbackv5Model', $method ), $arguments );
 		}
-		$count = $dbr->selectField(
-			array( 'aft_article_filter_count' ),
-			array( 'afc_filter_count' ),
-			$where,
-			__METHOD__
-		);
-		// selectField returns false if there's no row, so make that 0
-		return $count ? $count : 0;
+
+		return array();
 	}
 
 	/**
@@ -129,29 +141,24 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'sort'          => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => ArticleFeedbackv5Fetch::$knownSorts,
+				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Model::$sorts )
 			),
 			'sortdirection' => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array( 'desc', 'asc' )
+				ApiBase::PARAM_TYPE     => array( 'DESC', 'ASC' )
 			),
 			'filter'        => array(
-				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => ArticleFeedbackv5Fetch::$knownFilters,
+				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Model::$lists )
 			),
 			'feedbackid'   => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'integer'
+				ApiBase::PARAM_TYPE     => 'string'
 			),
-			'limit'         => array(
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'integer'
-			),
-			'continue'      => array(
+			'offset'       => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'
@@ -166,12 +173,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getParamDescription() {
 		return array(
-			'pageid'      => 'Page ID to get feedback ratings for',
-			'sort'        => 'Key to sort records by',
-			'filter'      => 'What filtering to apply to list',
-			'feedbackid'  => 'A specific id to fetch',
-			'limit'       => 'Number of records to show',
-			'continue'    => 'Sort value at which to continue, pipe-separated if multiple',
+			'pageid'        => 'Page ID to get feedback ratings for',
+			'watchlist'     => "Load feedback from user's watchlisted pages (1) or from all pages (0)",
+			'sort'          => 'Key to sort records by',
+			'sortdirection' => 'Direction (ASC|DESC) to sort the feedback by',
+			'filter'        => 'What filtering to apply to list',
+			'feedbackid'    => 'The ID of a specific feedback item to fetch',
+			'offset'        => 'Offset to start grabbing data at',
 		);
 	}
 
@@ -206,7 +214,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getExamples() {
 		return array(
-			'api.php?action=query&list=articlefeedbackv5-view-feedback&afpageid=1',
+			'api.php?action=query&list=articlefeedbackv5-view-feedback&afvfpageid=1&afvfsort=relevance&afvfsortdirection=ASC&afvffilter=visible-relevant',
 		);
 	}
 
