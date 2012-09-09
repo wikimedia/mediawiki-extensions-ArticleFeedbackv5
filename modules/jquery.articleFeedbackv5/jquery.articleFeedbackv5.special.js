@@ -23,6 +23,7 @@
  * @author     Greg Chiasson <gchiasson@omniti.com>
  * @author     Yoni Shostak <yoni@omniti.com>
  * @author     Reha Sterbin <reha@omniti.com>
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @version    $Id$
  */
 
@@ -984,7 +985,7 @@
 
 		// Merge request data and options objects (flat)
 		var requestData = {
-			'pageid'    : $.articleFeedbackv5special.page,
+			'pageid'    : $.articleFeedbackv5special.page, // @todo: this 'pageid' param should always be the page id of the feedback (which it currently is not for the central feedback page)
 			'feedbackid': id,
 			'flagtype'  : $.articleFeedbackv5special.actions[action].apiFlagType,
 			'direction' : $.articleFeedbackv5special.actions[action].apiFlagDir > 0 ? 'increase' : 'decrease',
@@ -1485,7 +1486,7 @@
 					$.articleFeedbackv5special.flagFeedback( id, 'abuse', '', { } );
 				}
 			},
-			'apiFlagType': 'abuse',
+			'apiFlagType': 'flag',
 			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				$.articleFeedbackv5special.setAbuse( id, data );
@@ -1505,7 +1506,7 @@
 					$.articleFeedbackv5special.flagFeedback( id, 'unabuse', '', { } );
 				}
 			},
-			'apiFlagType': 'abuse',
+			'apiFlagType': 'flag',
 			'apiFlagDir': -1,
 			'onSuccess': function( id, data ) {
 				$.articleFeedbackv5special.setAbuse( id, data );
@@ -1659,7 +1660,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'oversight',
+			'apiFlagType': 'request',
 			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-requestoversight-link-' + id )
@@ -1693,7 +1694,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'oversight',
+			'apiFlagType': 'request',
 			'apiFlagDir': -1,
 			'onSuccess': function( id, data ) {
 				$( '#articleFeedbackv5-unrequestoversight-link-' + id )
@@ -1712,7 +1713,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'delete',
+			'apiFlagType': 'oversight',
 			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				// if there is a "decline oversight" just hide it
@@ -1748,7 +1749,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'delete',
+			'apiFlagType': 'oversight',
 			'apiFlagDir': -1,
 			'onSuccess': function( id, data ) {
 				// if there is a "decline oversight" just show it
@@ -1774,7 +1775,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'resetoversight',
+			'apiFlagType': 'decline',
 			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				var $row = $( '#articleFeedbackv5-declineoversight-link-' + id )

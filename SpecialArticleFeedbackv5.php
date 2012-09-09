@@ -134,6 +134,40 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$name = 'ArticleFeedbackv5', $restriction = '', $listed = true,
 		$function = false, $file = 'default', $includable = false
 	) {
+		$feedback = new ArticleFeedbackv5Model();
+
+		$feedback->page = 1;
+		$feedback->page_revision = 1;
+		$feedback->user = 1;
+		$feedback->user_text = 'mlitn';
+		$feedback->user_token = 'blabla';
+		$feedback->form = 5;
+		$feedback->cta = 1;
+		$feedback->link = 'X';
+		$feedback->rating = 1;
+		$feedback->comment = 'i like this';
+
+		$feedback->oversight = 0;
+		$feedback->unoversight = 0;
+		$feedback->decline = 0;
+		$feedback->request = 0;
+		$feedback->unrequest = 0;
+		$feedback->hide = 0;
+		$feedback->unhide = 0;
+		$feedback->flag = 1;
+		$feedback->unflag = 1;
+		$feedback->feature = 1;
+		$feedback->unfeature = 0;
+		$feedback->resolve = 0;
+		$feedback->unresolve = 0;
+		$feedback->helpful = 4;
+		$feedback->unhelpful = 1;
+
+		$feedback->updateLists();
+exit('test');
+
+		// @todo: above = tests
+
 		wfProfileIn( __METHOD__ );
 
 		parent::__construct( $name, $restriction, $listed, $function, $file, $includable );
