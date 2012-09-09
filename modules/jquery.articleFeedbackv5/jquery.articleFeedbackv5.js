@@ -874,7 +874,7 @@
 			 * @param $element the form element to count the characters down for
 			 */
 			countdown: function ( $element ) {
-				var maxLength = 5000;
+				var maxLength = mw.config.get( 'wgArticleFeedbackv5MaxCommentLength' );
 				var displayLength = 500;
 
 				var $countdown = $( '#articlefeedbackv5-feedback-countdown' );
@@ -2627,12 +2627,12 @@
 		var data = $.extend( formdata, {
 			'action': 'articlefeedbackv5',
 			'format': 'json',
-			'anontoken': $.articleFeedbackv5.userId,
+			'anontoken': $.articleFeedbackv5.userId, // @todo: this is no longer used (why on earth was it ever..)
 			'pageid': $.articleFeedbackv5.pageId,
 			'revid': $.articleFeedbackv5.revisionId,
 			'bucket': $.articleFeedbackv5.bucketId,
 			'cta': $.articleFeedbackv5.ctaId,
-			'experiment': $.articleFeedbackv5.experiment().replace( 'option', '' ),
+			'experiment': $.articleFeedbackv5.experiment().replace( 'option', '' ), // @todo: this is no longer used
 			'link': $.articleFeedbackv5.submittedLinkId
 		} );
 
