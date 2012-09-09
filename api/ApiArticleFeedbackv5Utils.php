@@ -1,11 +1,12 @@
 <?php
 /**
- * ApiViewRatingsArticleFeedbackv5 class
+ * ApiArticleFeedbackv5Utils class
  *
  * @package    ArticleFeedback
  * @subpackage Api
  * @author     Greg Chiasson <greg@omniti.com>
  * @author     Reha Sterbin <reha@omniti.com>
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @version    $Id$
  */
 
@@ -67,28 +68,6 @@ class ApiArticleFeedbackv5Utils {
 		}
 
 		return false;
-	}
-
-	/**
-	 * Returns the revision limit for a page
-	 *
-	 * @param  $pageId int the page id
-	 * @return int the revision limit
-	 */
-	public static function getRevisionLimit( $pageId ) {
-		global $wgArticleFeedbackv5RatingLifetime;
-		$dbr = wfGetDB( DB_SLAVE );
-		$revision = $dbr->selectField(
-			'revision', 'rev_id',
-			array( 'rev_page' => $pageId ),
-			__METHOD__,
-			array(
-				'ORDER BY' => 'rev_id DESC',
-				'LIMIT' => 1,
-				'OFFSET' => $wgArticleFeedbackv5RatingLifetime - 1
-			)
-		);
-		return $revision ? intval( $revision ) : 0;
 	}
 
 	/**
@@ -391,5 +370,136 @@ class ApiArticleFeedbackv5Utils {
 			->escaped();
 	}
 
-}
+	/**
+	 * Check for abusive or spammy content
+	 *
+	 *
+	 * @param $value  string the text to check
+	 * @param $pageId int    the page ID
+	 */
+	public static function findAbuse( $value, $pageId ) { // @todo: I don't see how we'd need pageId, check if we can get rid of it
 
+	}
+
+	/**
+	 * Run comment through SpamRegex
+	 *
+	 * @param $value
+	 * @param $pageId
+	 * @return bool Will return boolean false if valid or true if flagged
+	 */
+	public static function validateSpamRegex( $value ) {
+		// Respect $wgSpamRegex
+		global $wgSpamRegex;
+		if ( ( is_array( $wgSpamRegex ) && count( $wgSpamRegex ) > 0 )
+			|| ( is_string( $wgSpamRegex ) && strlen( $wgSpamRegex ) > 0 ) ) {
+			// In older versions, $wgSpamRegex may be a single string rather than
+			// an array of regexes, so make it compatible.
+			$regexes = ( array ) $wgSpamRegex;
+			foreach ( $regexes as $regex ) {
+				if ( preg_match( $regex, $value ) ) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Run comment through SpamBlacklist
+	 *
+	 * @param $value
+	 * @param $pageId
+	 * @return bool Will return boolean false if valid or true if flagged
+	 */
+	public static function validateSpamBlacklist( $value, $pageId ) {
+		// Check SpamBlacklist, if installed
+		if ( function_exists( 'wfSpamBlacklistObject' ) ) {
+			$spam = wfSpamBlacklistObject();
+		} elseif ( class_exists( 'BaseBlacklist' ) ) {
+			$spam = BaseBlacklist::getInstance( 'spam' );
+		}
+		if ( $spam ) {
+			$title = Title::newFromText( 'ArticleFeedbackv5_' . $pageId );
+			$ret = $spam->filter( $title, $value, '' );
+			if ( $ret !== false ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Run comment through AbuseFilter extension
+	 *
+	 * @param $value
+	 * @param $pageId
+	 * @param $callback Callback function to be called by AbuseFilter
+	 * @return bool|string Will return boolean false if valid or error message (string) if flagged
+	 */
+	public static function validateAbuseFilter( $value, $pageId, $callback = null ) {
+		// Check AbuseFilter, if installed
+		if ( class_exists( 'AbuseFilter' ) ) {
+			global $wgUser;
+
+			// Set up variables
+			$title = Title::newFromID( $pageId );
+			$vars = new AbuseFilterVariableHolder;
+			$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
+			$vars->addHolder( AbuseFilter::generateTitleVars( $title , 'ARTICLE' ) );
+			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
+			$vars->setVar( 'ACTION', 'feedback' );
+			$vars->setVar( 'new_wikitext', $value );
+			$vars->setLazyLoadVar( 'new_size', 'length', array( 'length-var' => 'new_wikitext' ) );
+
+			// Add custom action handlers
+			if ( $callback && is_callable( $callback ) ) {
+				global $wgAbuseFilterCustomActionsHandlers;
+
+				$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $callback;
+				$wgAbuseFilterCustomActionsHandlers['aftv5hide'] = $callback;
+				$wgAbuseFilterCustomActionsHandlers['aftv5requestoversight'] = $callback;
+			}
+
+			// Check the filters (mimics AbuseFilter::filterAction)
+			global $wgArticleFeedbackv5AbuseFilterGroup;
+			$vars->setVar( 'context', 'filter' );
+			$vars->setVar( 'timestamp', time() );
+			$results = AbuseFilter::checkAllFilters( $vars, $wgArticleFeedbackv5AbuseFilterGroup );
+			if ( count( array_filter( $results ) ) == 0 ) {
+				return false;
+			}
+
+			// Abuse filter consequences
+			$matched = array_keys( array_filter( $results ) );
+			list( $actionsTaken, $errorMsg ) = AbuseFilter::executeFilterActions( $matched, $title, $vars );
+
+			// Send to the abuse filter log
+			$dbr = wfGetDB( DB_SLAVE );
+			global $wgRequest;
+			$logTemplate = array(
+				'afl_user' => $wgUser->getId(),
+				'afl_user_text' => $wgUser->getName(),
+				'afl_timestamp' => $dbr->timestamp( wfTimestampNow() ),
+				'afl_namespace' => $title->getNamespace(),
+				'afl_title' => $title->getDBkey(),
+				'afl_ip' => $wgRequest->getIP()
+			);
+			$action = $vars->getVar( 'ACTION' )->toString();
+			AbuseFilter::addLogEntries( $actionsTaken, $logTemplate, $action, $vars );
+
+			// Local consequences
+			foreach ( $actionsTaken as $id => $actions ) {
+				foreach ( array( 'disallow', 'warn' ) as $level ) {
+					if ( in_array( $level, $actions ) ) {
+						return $errorMsg;
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+}
