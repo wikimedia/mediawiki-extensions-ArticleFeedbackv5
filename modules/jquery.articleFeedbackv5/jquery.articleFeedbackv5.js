@@ -2609,7 +2609,6 @@
 			'revid': $.articleFeedbackv5.revisionId,
 			'bucket': $.articleFeedbackv5.bucketId,
 			'cta': $.articleFeedbackv5.ctaId,
-			'experiment': $.articleFeedbackv5.experiment().replace( 'option', '' ),
 			'link': $.articleFeedbackv5.submittedLinkId
 		} );
 

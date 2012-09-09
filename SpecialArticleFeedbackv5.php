@@ -70,41 +70,18 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	protected $startingSort;
 
 	/**
+	 * The starting offset
+	 *
+	 * @var int
+	 */
+	protected $startingOffset = 0;
+
+	/**
 	 * The starting sort direction
 	 *
 	 * @var string
 	 */
 	protected $startingSortDirection;
-
-	/**
-	 * The starting limit
-	 *
-	 * @var int
-	 */
-	protected $startingLimit;
-
-	/**
-	 * The filters available to users without special privileges
-	 *
-	 * @var bool
-	 */
-	protected $defaultFilters = array(
-		'visible-relevant',
-		'visible-featured',
-		'visible-helpful',
-		'visible-comment',
-		'visible'
-	);
-
-	/**
-	 * The filters available outside of the select
-	 *
-	 * @var bool
-	 */
-	protected $topFilters = array(
-		'visible-relevant',
-		'visible-comment',
-	);
 
 	/**
 	 * Constructor
@@ -117,34 +94,16 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		parent::__construct( $name, $restriction, $listed, $function, $file, $includable );
 
-		$this->filters = $this->defaultFilters;
-		if ( $this->isAllowed( 'aft-oversighter' ) ) {
-			array_push( $this->filters,
-				'visible-unhelpful', 'visible-abusive', 'visible-resolved',
-				'all-hidden',
-				'all-declined',
-				'notdeleted-requested', 'all-oversighted', 'all'
-			);
-		} elseif ( $this->isAllowed( 'aft-monitor' ) ) {
-			array_push( $this->filters,
-				'visible-unhelpful', 'visible-abusive', 'visible-resolved',
-				'notdeleted-hidden',
-				'notdeleted-declined','notdeleted'
-			);
-		} elseif ( $this->isAllowed( 'aft-editor' ) ) {
-			array_push( $this->filters,
-				'visible-unhelpful', 'visible-abusive', 'visible-resolved'
-			);
+		$this->filters = array();
+		foreach ( ArticleFeedbackv5Model::$lists as $filter => $data ) {
+			if ( $this->isAllowed( $data['permissions'] ) ) {
+				$this->filters[] = $filter;
+			}
 		}
 
-		$this->sorts = array( 'relevance-asc', 'relevance-desc', 'age-desc', 'age-asc' );
+		$this->sorts = array( 'relevance-desc', 'relevance-asc', 'age-desc', 'age-asc' );
 		if ( $this->isAllowed( 'aft-editor' ) ) {
 			array_push( $this->sorts, 'helpful-desc', 'helpful-asc' );
-		}
-
-		global $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
-		if ( $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay ) {
-			$this->startingLimit = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		}
 
 		// these are messages that require some parsing that the current JS mw.msg does not yet support
@@ -179,13 +138,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->addModuleStyles( 'jquery.articleFeedbackv5.special' );
 
 		// set robot policy
-		$out->setIndexPolicy('noindex');
+		$out->setIndexPolicy( 'noindex' );
 
 		if ( !$param ) {
 			// No Page ID: do central log
 		} else {
 			// Permalink
-			if ( preg_match('/^(.+)\/(\d+)$/', $param, $m ) ) {
+			if ( preg_match( '/^(.+)\/(\w+)$/', $param, $m ) ) {
 				$param = $m[1];
 				$this->feedbackId = $m[2];
 			}
@@ -196,25 +155,23 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				return;
 			}
 			$this->pageId = $title->getArticleID();
-			$this->title  = $title;
+			$this->title = $title;
 		}
 
-		// Select filter, sort, and sort direction
+		// select filter, sort, and sort direction
 		$this->setFilterSortDirection(
 			$request->getText( 'filter' ),
 			$request->getText( 'sort' )
 		);
 
-		// Fetch
-		$fetch = $this->fetchData();
-		$fetched = $fetch->run();
+		$records = $this->fetchData();
 
-		// Build renderer
+		// build renderer
 		$permalink = (bool) $this->feedbackId;
-		$central   = ( $this->pageId ? false : true );
-		$renderer  = new ArticleFeedbackv5Render( $user, $permalink, $central );
+		$central = !(bool) $this->pageId;
+		$renderer = new ArticleFeedbackv5Render( $user, $permalink, $central );
 
-		// Title
+		// build title
 		if ( $permalink ) {
 			$out->setPagetitle( $this->msg( 'articlefeedbackv5-special-permalink-pagetitle', $this->title )->escaped() );
 		} elseif ( $this->pageId ) {
@@ -223,417 +180,371 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$out->setPagetitle( $this->msg( 'articlefeedbackv5-special-central-pagetitle' )->escaped() );
 		}
 
-		// Wrap the whole thing in a div
+		// output content
 		$out->addHTML(
-			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-special-wrap' ) )
+			Html::rawElement(
+				'div',
+				array( 'id' => 'articleFeedbackv5-special-wrap' ),
+				$this->buildHeaderLinks() . $this->buildContent( $renderer, $records )
+			)
 		);
 
-		// Header links
-		$this->outputHeaderLinks();
-
-		if ( $permalink ) {
-			$this->outputPermalink( $renderer, $fetched );
-		} else {
-			$this->outputListing( $renderer, $fetched );
-		}
-
-		// Close the wrapper
-		$out->addHTML(
-			Html::closeElement( 'div' )
-		);
+		$totalCount = ArticleFeedbackv5Model::getCount( '*', $this->pageId );
 
 		// JS variables
 		$out->addJsConfigVars( 'afPageId', $this->pageId );
 		$out->addJsConfigVars( 'afReferral', $request->getText( 'ref', 'url' ) );
 		$out->addJsConfigVars( 'afStartingFilter', $this->startingFilter );
-		$out->addJsConfigVars( 'afStartingFeedbackId', $this->startingFilter == 'id' ? $this->feedbackId : null );
+		$out->addJsConfigVars( 'afStartingFeedbackId', $permalink ? $this->feedbackId : null );
 		$out->addJsConfigVars( 'afStartingSort', $this->startingSort );
 		$out->addJsConfigVars( 'afStartingSortDirection', $this->startingSortDirection );
-		$out->addJsConfigVars( 'afStartingLimit', $this->startingLimit );
-		$out->addJsConfigVars( 'afCount', $fetch->overallCount() );
-		if ( isset( $fetched->continue ) ) {
-			$out->addJsConfigVars( 'afContinue', $fetched->continue );
-		}
-		$out->addJsConfigVars( 'afShowMore', $fetched->showMore );
-
+		$out->addJsConfigVars( 'afCount', $totalCount );
+		$out->addJsConfigVars( 'afOffset', $records ? $records->nextOffset() : 0 );
+		$out->addJsConfigVars( 'afShowMore', $records ? $records->hasMore() : false );
 	}
 
 	/**
-	 * Fetch the requested data
-	 *
-	 * @return	ArticleFeedbackv5Fetch	The fetch-object
+	 * @return DataModelList
 	 */
 	protected function fetchData() {
-		$fetch = new ArticleFeedbackv5Fetch();
-		$fetch->setFilter( $this->startingFilter );
-		$fetch->setFeedbackId( $this->feedbackId );
-		$fetch->setPageId( $this->pageId );
-		$fetch->setSort( $this->startingSort );
-		$fetch->setSortOrder( $this->startingSortDirection );
-		$fetch->setLimit( $this->startingLimit );
+		// permalink page
+		if ( $this->feedbackId ) {
+			$record = ArticleFeedbackv5Model::get( $this->feedbackId, $this->pageId );
+			if ( $record ) {
+				return new DataModelList(
+					array( array( 'id' => $record->aft_id, 'shard' => $record->aft_page ) ),
+					'ArticleFeedbackv5Model'
+				);
+			}
 
-		return $fetch;
+		// list page
+		} else {
+			return ArticleFeedbackv5Model::getList(
+				$this->startingFilter,
+				$this->pageId,
+				$this->startingOffset,
+				$this->startingSort,
+				$this->startingSortDirection
+			);
+		}
+
+		return false;
 	}
 
 	/**
 	 * Outputs the header links in the top right corner
 	 *
 	 * View Article | Discussion | Help
+	 * @return string
 	 */
-	protected function outputHeaderLinks() {
-		$out = $this->getOutput();
-
-		$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl')->text();
-		if( $this->isAllowed( 'aft-oversighter' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-oversighters' )->text();
-		} elseif( $this->isAllowed( 'aft-monitor' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-monitors' )->text();
-		} elseif( $this->isAllowed( 'aft-editor' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-editors' )->text();
-		}
-		$helpLink .= '#Feedback_page';
-
-		$out->addHTML(
-			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-header-wrap' ) )
-				. Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-header-links' ) )
-			);
-
-		// Only add the links to the article and its talk page if there is one
+	protected function buildHeaderLinks() {
+		// build link to page & talk page
+		$pageLinks = '';
 		if ( $this->pageId ) {
-			$out->addHTML(
-					Linker::link(
-						$this->title,
-						$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
-					)
-					. ' | ' .
+			$pageLinks =
+				Linker::link(
+					$this->title,
+					$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
+				) .
+					' | ' .
 					Linker::link(
 						$this->title->getTalkPage(),
 						$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
-					)
-					. ' | '
-				);
+					) .
+					' | ';
 		}
 
-		$out->addHTML(
-				Html::element(
-					'a',
-					array( 'href' => $helpLink ),
-					$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
-				)
-			. Html::closeElement( 'div' )
-		);
+		// build header for list-views
+		$listHeader = '';
+		if ( !$this->feedbackId ) {
+			$listHeader = $this->buildListHeader();
+		}
+
+		return
+			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-header-wrap' ) ) .
+				Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-header-links' ) ) .
+					$pageLinks .
+					Html::element(
+						'a',
+						array( 'href' => $this->getHelpLink().'#Feedback_page' ),
+						$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
+					) .
+				Html::closeElement( 'div' ) .
+				$listHeader .
+			Html::closeElement( 'div' );
 	}
 
 	/**
-	 * Outputs a permalink
+	 * Outputs additional info in header for list-views
 	 *
-	 * @param $renderer ArticleFeedbackv5Render the renderer
-	 * @param $fetched  stdClass                the fetched records &etc.
+	 * @return string
 	 */
-	protected function outputPermalink( $renderer, $fetched ) {
-		$out = $this->getOutput();
-
-		// validate that data was found
-		if ( count( $fetched->records ) != 1 ) {
-			return;
-		}
-
-		$record = array_pop( $fetched->records );
-
-		// Close the header
-		$out->addHTML( Html::closeElement( 'div' ) );
-
-		// Top linkback
-		$out->addHTML(
-			Html::rawElement( 'div', array(
-					'class' => 'articleFeedbackv5-feedback-permalink-goback'
-				), Linker::link(
-					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedText() ),
-					'&lsaquo; ' . wfMessage( 'articlefeedbackv5-special-goback' )->escaped()
-				)
-			)
-		);
-
-		// Render
-		$out->addHTML( Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-show-feedback' ) ) );
-		$out->addHTML( $renderer->run( $record ) );
-		$out->addHTML( Html::closeElement( 'div' ) );
-
-		// Bottom linkback
-		$out->addHTML(
-			Html::rawElement( 'div', array(
-					'class' => 'articleFeedbackv5-feedback-permalink-goback'
-				), Linker::link(
-					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedText() ),
-					'&lsaquo; ' . wfMessage( 'articlefeedbackv5-special-goback' )->escaped()
-				)
-			)
-		);
-	}
-
-	/**
-	 * Outputs a listing
-	 *
-	 * @param $renderer ArticleFeedbackv5Render the renderer
-	 * @param $fetched  stdClass                the fetched records &etc.
-	 */
-	protected function outputListing( $renderer, $fetched ) {
-		$out = $this->getOutput();
-
-		// Notices
-		$this->outputNotices();
-
-		// Add controls block
-		$out->addHTML( Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-sort-filter-controls' ) ) );
-		$this->outputFilters();
-		$this->outputSort();
-		$out->addHTML( Html::closeElement( 'div' ) );
-
-		// Open feedback output
-		$class = '';
-		if ( !$this->pageId ) {
-			$class = 'articleFeedbackv5-central-feedback-log';
-		}
-		$out->addHTML(
-			Html::openElement( 'div', array(
-				'id'    => 'articleFeedbackv5-show-feedback',
-				'class' => $class
-			) )
-		);
-
-		// Rows
-		foreach ( $fetched->records as $record ) {
-			$out->addHTML( $renderer->run( $record ) );
-		}
-
-		// Close feedback output
-		$out->addHTML(
-			Html::closeElement( 'div' )
-
-			. Html::openElement(
-				'div',
-				array(
-					'id' => 'articleFeedbackv5-footer'
-				) )
-
-				. Html::element(
-					'a',
-					array(
-						'href' => '#more-feedback',
-						'id'   => 'articleFeedbackv5-show-more'
-					),
-					$this->msg( 'articlefeedbackv5-special-more' )->text()
-				)
-
-				. Html::element(
-					'a',
-					array(
-						'href' => '#refresh-feedback',
-						'id'   => 'articleFeedbackv5-refresh-list'
-					),
-					$this->msg( 'articlefeedbackv5-special-refresh' )->text()
-				)
-
-			. Html::element( 'div', array( 'class' => 'clear' ) )
-
-			. Html::closeElement( 'div' )
-		);
-
-		// Link back to the central page - only for editors
-		if ( $this->pageId && $this->isAllowed( 'aft-editor' ) ) {
-			$out->addHTML(
-				Html::rawElement( 'div', array(
-						'class' => 'articleFeedbackv5-feedback-central-goback'
-					), Linker::link(
-						SpecialPage::getTitleFor( 'ArticleFeedbackv5' ),
-							wfMessage( 'articlefeedbackv5-special-central-goback'
-						)->escaped()
-					)
-				)
-			);
-		}
-	}
-
-	/**
-	 * Outputs the notices above the controls
-	 *
-	 * {% found}     BETA      Add Feedback
-	 */
-	protected function outputNotices() {
-		$out = $this->getOutput();
-
-		$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl')->text();
-		if( $this->isAllowed( 'aft-oversighter' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-oversighters' )->text();
-		} elseif( $this->isAllowed( 'aft-monitor' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-monitors' )->text();
-		} elseif( $this->isAllowed( 'aft-editor' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-editors' )->text();
-		}
-		$helpLink .= '#Feedback_page';
-
-		$helpLink = Html::openElement(
-			'a',
-			array( 'href' => $helpLink ) )
-				. $this->msg( 'articlefeedbackv5-header-message-link-text' )->escaped() . ' &raquo;'
-			.Html::closeElement( 'a' );
-
-		// Header message
-		$out->addHTML(
-			Html::openElement(
+	protected function buildListHeader() {
+		return
+			Html::rawElement(
 				'p',
-				array( 'id' => 'articlefeedbackv5-header-message' )
-			)
-				. $this->msg( 'articlefeedbackv5-header-message' )->rawParams( $helpLink )->text()
-			. Html::closeElement( 'p' )
-		);
-
-		$this->outputSummary();
-
-		// Link to add feedback (view article)
-		if ( $this->pageId ) {
-			$out->addHtml(
-				Html::element(
-					'a',
-					array(
-						'href'  => '#',
-						'id'    => 'articleFeedbackv5-special-add-feedback',
-					),
-					$this->msg( 'articlefeedbackv5-special-add-feedback' )->text()
-				)
-			);
-		}
-
-		// Close the section
-		$out->addHtml(
-				Html::element( 'div', array( 'class' => 'float-clear' ) )
-			. Html::closeElement( 'div' )
-		);
+				array( 'id' => 'articlefeedbackv5-header-message' ),
+				$this->msg( 'articlefeedbackv5-header-message' )->rawParams(
+					Html::rawElement(
+						'a',
+						array( 'href' => $this->getHelpLink().'#Feedback_page' ),
+						$this->msg( 'articlefeedbackv5-header-message-link-text' )->escaped() . ' &raquo;'
+					)
+				)->text()
+			) .
+			$this->buildSummary() .
+			Html::element( 'div', array( 'class' => 'float-clear' ) );
 	}
 
 	/**
 	 * Display the feedback page's summary information in header
+	 *
+	 * @return string
 	 */
-	protected function outputSummary() {
-		$out = $this->getOutput();
+	protected function buildSummary() {
 		$user = $this->getUser();
 
 		// if we have a logged in user and are currently browsing the central feedback page,
 		// check if there is feedback on his/her watchlisted pages
 		$watchlistLink = '';
 		if ( !$this->pageId && $user->getId() ) {
-			$fetch = new ArticleFeedbackv5Fetch();
-			$fetch->setUserId( $user->getId() );
-			$fetch->setLimit( 1 );
-			$fetched = $fetch->run();
+			$records = ArticleFeedbackv5Model::getWatchlistList(
+				'visible-relevant',
+				$user
+			);
 
-			if ( count( $fetched->records ) > 0 ) {
+			if ( count( $records ) > 0 ) {
 				$watchlistLink =
-					Html::openElement(
+					Html::rawElement(
 						'span',
-						array( 'id' => 'articlefeedbackv5-special-central-watchlist-link' )
-					)
-						. $this->msg( 'articlefeedbackv5-special-central-watchlist-link',
+						array( 'id' => 'articlefeedbackv5-special-central-watchlist-link' ),
+						$this->msg(
+							'articlefeedbackv5-special-central-watchlist-link',
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getFullText()
 						)->parse()
-					. Html::closeElement( 'span' );
+					);
 			}
 		}
 
 		// Showing {count} posts
-		$out->addHTML(
-			Html::openElement(
+		$amount = ArticleFeedbackv5Model::getCount( '*', $this->pageId );
+		$count =
+			Html::rawElement(
 				'div',
-				array( 'id' => 'articleFeedbackv5-showing-count-wrap' )
-			)
-				. $this->msg(
+				array( 'id' => 'articleFeedbackv5-showing-count-wrap' ),
+				$this->msg(
 					$this->pageId ? 'articlefeedbackv5-special-showing' : 'articlefeedbackv5-special-central-showing',
-					Html::element( 'span', array( 'id' => 'articleFeedbackv5-feedback-count-total' ), '0' )
-				)
-				. $watchlistLink
-			. Html::closeElement( 'div' )
-		);
+					Html::element(
+						'span',
+						array( 'id' => 'articleFeedbackv5-feedback-count-total' ),
+						$amount // this figure will be filled out through JS
+					)
+				)->text() .
+					$watchlistLink
+			);
 
 		// % found
+		$percent = '';
 		if ( $this->pageId ) {
-			$ratings = $this->fetchOverallRating( $this->pageId );
-			$found   = isset( $ratings['found'] ) ? $ratings['found'] : null;
+			$found = ArticleFeedbackv5Model::getCountFound( $this->pageId ) / ( $amount ?: 1 ) * 100;
 			if ( $found ) {
-				$class = $found > 50 ? 'positive' : 'negative';
+				$class = $found >= 50 ? 'positive' : 'negative';
 
-				$span = Html::rawElement( 'span', array(
-					'class' => "stat-marker $class"
-				), wfMessage( 'percent', $found )->escaped() );
-				$out->addHtml(
-					Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-percent-found-wrap' ) )
-						. $this->msg( 'articlefeedbackv5-percent-found' )->rawParams( $span )->escaped()
-						. Html::closeElement( 'div' )
-				);
+				$percent =
+					Html::rawElement(
+						'div',
+						array( 'id' => 'articleFeedbackv5-percent-found-wrap' ),
+						$this->msg( 'articlefeedbackv5-percent-found' )->rawParams(
+							Html::rawElement(
+								'span',
+								array( 'class' => "stat-marker $class" ),
+								$this->msg( 'percent', round( $found ) )->escaped()
+							)
+						)->escaped()
+					);
 			}
 		}
+
+		return $count . $percent;
+	}
+
+	/**
+	 * Get link to help-page, based on user's permission level
+	 *
+	 * @return string
+	 */
+	protected function getHelpLink() {
+		$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl' )->text();
+		if( $this->isAllowed( 'aft-oversighter' ) ) {
+			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-oversighters' )->text();
+		} elseif( $this->isAllowed( 'aft-monitor' ) ) {
+			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-monitors' )->text();
+		} elseif( $this->isAllowed( 'aft-editor' ) ) {
+			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-editors' )->text();
+		}
+
+		return $helpLink;
+	}
+
+	/**
+	 * @param ArticleFeedbackv5Render $renderer the renderer
+	 * @param DataModelList $record the fetched records
+	 * @return string
+	 */
+	protected function buildContent( $renderer, $records ) {
+		if ( !$records ) {
+			return '';
+		}
+
+		if ( $this->feedbackId ) {
+			$record = $records->fetchObject();
+			return $this->buildPermalink( $renderer, $record );
+		} else {
+			return $this->buildListing( $renderer, $records );
+		}
+	}
+
+	/**
+	 * Outputs a permalink
+	 *
+	 * @param $renderer ArticleFeedbackv5Render the renderer
+	 * @param $record ArticleFeedbackv5Model the fetched record
+	 * @return string
+	 */
+	protected function buildPermalink( $renderer, $record ) {
+		return
+			Html::rawElement(
+				'div',
+				array( 'class' => 'articleFeedbackv5-feedback-permalink-goback' ),
+				Linker::link(
+					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedText() ),
+					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->escaped()
+				)
+			) .
+			Html::rawElement(
+				'div',
+				array( 'id' => 'articleFeedbackv5-show-feedback' ),
+				$renderer->run( $record )
+			) .
+			Html::rawElement(
+				'div',
+				array( 'class' => 'articleFeedbackv5-feedback-permalink-goback' ),
+				Linker::link(
+					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedText() ),
+					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->escaped()
+				)
+			);
+	}
+
+	/**
+	 * Outputs a listing
+	 *
+	 * @param ArticleFeedbackv5Render $renderer the renderer
+	 * @param DataModelList $records the fetched records &etc.
+	 * @return string
+	 */
+	protected function buildListing( $renderer, $records ) {
+		// build rows output
+		$rows = '';
+		foreach ( $records as $record ) {
+			$rows .= $renderer->run( $record );
+		}
+
+		// link back to the central page (only for editors)
+		$centralPageLink = '';
+		if ( $this->pageId && $this->isAllowed( 'aft-editor' ) ) {
+			$centralPageLink =
+				Html::rawElement(
+					'div',
+					array( 'class' => 'articleFeedbackv5-feedback-central-goback' ),
+					Linker::link(
+						SpecialPage::getTitleFor( 'ArticleFeedbackv5' ),
+						$this->msg( 'articlefeedbackv5-special-central-goback' )->escaped()
+					)
+				);
+		}
+
+		return
+			Html::rawElement(
+				'div',
+				array( 'id' => 'articleFeedbackv5-sort-filter-controls' ),
+				$this->buildFilters() .
+				$this->buildSort()
+			) .
+			Html::rawElement(
+				'div',
+				array(
+					'id'    => 'articleFeedbackv5-show-feedback',
+					'class' => $this->pageId ? '' : 'articleFeedbackv5-central-feedback-log'
+				),
+				$rows
+			) .
+			Html::rawElement(
+				'div',
+				array( 'id' => 'articleFeedbackv5-footer' ),
+				Html::element(
+					'a',
+					array(
+						'href' => '#more-feedback',
+						'id'   => 'articleFeedbackv5-show-more'
+					),
+					$this->msg( 'articlefeedbackv5-special-more' )->text()
+				) .
+				Html::element(
+					'a',
+					array(
+						'href' => '#refresh-feedback',
+						'id'   => 'articleFeedbackv5-refresh-list'
+					),
+					$this->msg( 'articlefeedbackv5-special-refresh' )->text()
+				) .
+				Html::element( 'div', array( 'class' => 'clear' ) )
+			) .
+			$centralPageLink;
 	}
 
 	/**
 	 * Outputs the page filter controls
 	 *
 	 * Showing: [filters...]
+	 * @return string
 	 */
-	protected function outputFilters() {
-		$out = $this->getOutput();
-
-		// Filtering
-		$counts = $this->getFilterCounts();
-
+	protected function buildFilters() {
+		// filter to be displayed as link
 		$filterLabels = array();
-		foreach ( $this->topFilters as $filter ) {
-			if ( $this->startingFilter == $filter ) {
-				$class = 'articleFeedbackv5-filter-link filter-active';
-			} else {
-				$class = 'articleFeedbackv5-filter-link';
-			}
-			$count = array_key_exists( $filter, $counts ) ? $counts[$filter] : 0;
-			$msg_key = str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
+		foreach ( array( 'visible-relevant', 'visible' ) as $filter ) {
+			$count = ArticleFeedbackv5Model::getCount( $filter, $this->pageId );
+			$msg_key = str_replace( array( 'all-', 'visible-', 'notdeleted-' ), '', $filter );
 
-			$filterLabels[] = Html::openElement( 'a',
+			$filterLabels[$filter] =
+				Html::rawElement(
+					'a',
 					array(
-						'href'  => '#',
-						'id'    => 'articleFeedbackv5-special-filter-' . $filter,
-						'class' => $class
-					)
-				)
-				// {msg:articlefeedbackv5-special-filter-{$filter}}
-				// Messages are:
-				//  * articlefeedbackv5-special-filter-relevant
-				//  * articlefeedbackv5-special-filter-featured
-				//  * articlefeedbackv5-special-filter-helpful
-				//  * articlefeedbackv5-special-filter-comment
-				//  * articlefeedbackv5-special-filter-visible
-				. $this->msg( "articlefeedbackv5-special-filter-$msg_key", $count )->escaped()
-
-			. Html::closeElement( 'a' );
+						'href' => '#',
+						'id' => "articleFeedbackv5-special-filter-$filter",
+						'class' => 'articleFeedbackv5-filter-link' . ( $this->startingFilter == $filter ? ' filter-active' : '' )
+					),
+					$this->msg( "articlefeedbackv5-special-filter-$msg_key", $count )->escaped()
+				);
 		}
 
+		// filters to be displayed in dropdown (only for editors)
 		$filterSelectHtml = '';
-		// No dropdown for readers
 		if ( $this->isAllowed( 'aft-editor' ) ) {
 			$opts = array();
-			$foundNonDefaults = false;
-			foreach ( $this->filters as $filter ) {
-				$count = array_key_exists( $filter, $counts ) ? $counts[$filter] : 0;
-				$msg_key = str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
 
-				$key   = $this->msg( 'articlefeedbackv5-special-filter-' . $msg_key, $count )->escaped();
-				if ( in_array( $filter, $this->topFilters ) ) {
+			foreach ( $this->filters as $filter ) {
+				if ( in_array( $filter, array_keys( $filterLabels ) ) ) {
 					continue;
 				}
-				if ( !$foundNonDefaults && !in_array( $filter, $this->defaultFilters ) ) {
-					// Add a divider between the defaults and the rest (use X,
-					// so that it can be distinguished from "More filters")
-					$opts[ '---------' ] = 'X';
-					$foundNonDefaults = true;
-				}
-				$opts[ (string) $key ] = $filter;
+
+				$count = ArticleFeedbackv5Model::getCount( $filter, $this->pageId );
+				$msg_key = str_replace( array( 'all-', 'visible-', 'notdeleted-' ), '', $filter );
+
+				$key = $this->msg( "articlefeedbackv5-special-filter-$msg_key", $count )->escaped();
+				$opts[(string) $key] = $filter;
 			}
+
 			if ( count( $opts ) > 0 ) {
 				// Put the "more filters" option at the beginning of the opts array
 				$opts = array( $this->msg( 'articlefeedbackv5-special-filter-select-more' )->text() => '' ) + $opts;
@@ -645,144 +556,64 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			}
 		}
 
-		$out->addHTML(
-			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-filter' ) )
-				. Html::openElement( 'span', array( 'class' => 'articleFeedbackv5-filter-label' ) )
-					. $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
-				. Html::closeElement( 'span' )
-
-				. implode( ' ', $filterLabels )
-
-				. Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-select-wrapper' ) )
-					. $filterSelectHtml
-				. Html::closeElement( 'div' )
-
-				. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
-			. Html::closeElement( 'div' )
-		);
+		return
+			Html::rawElement(
+				'div',
+				array( 'id' => 'articleFeedbackv5-filter' ),
+				Html::rawElement(
+					'span',
+					array( 'class' => 'articleFeedbackv5-filter-label' ),
+					$this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
+				) .
+				implode( ' ', $filterLabels ) .
+				Html::rawElement(
+					'div',
+					array( 'id' => 'articleFeedbackv5-select-wrapper' ),
+					$filterSelectHtml
+				) .
+				$this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
+			);
 	}
 
 	/**
 	 * Outputs the page sort controls
 	 *
 	 * Showing: Sort by: Relevance | Helpful | Rating | Date
+	 * @return string
 	 */
-	protected function outputSort() {
-		$out = $this->getOutput();
-
+	protected function buildSort() {
 		// Sorting
 		$opts = array();
 		foreach ( $this->sorts as $i => $sort ) {
-			// Messages are:
-			//  * articlefeedbackv5-special-sort-relevance-desc
-			//  * articlefeedbackv5-special-sort-relevance-asc
-			//  * articlefeedbackv5-special-sort-age-desc
-			//  * articlefeedbackv5-special-sort-age-asc
 			if ( $i % 2 == 0 && $i > 0 ) {
 				// Add dividers between each pair (append trailing spaces so
 				// that they all get added)
 				$opts[ '---------' . str_repeat( ' ', $i ) ] = '';
 			}
-			$key = $this->msg( 'articlefeedbackv5-special-sort-' . $sort )->escaped();
-			$opts[ (string) $key ] = $sort;
+			$key = $this->msg( "articlefeedbackv5-special-sort-$sort" )->escaped();
+			$opts[(string) $key] = $sort;
 		}
 
 		$sortSelect = new XmlSelect( false, 'articleFeedbackv5-sort-select' );
 		$sortSelect->setDefault( $this->startingSort . '-' . $this->startingSortDirection );
 		$sortSelect->addOptions( $opts );
 
-		$out->addHTML(
-			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-sort' ) )
-				. Html::openElement( 'span', array( 'class' => 'articleFeedbackv5-sort-label' ) )
-					. $this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
-				. Html::closeElement( 'span' )
-
-				. Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-sort-wrapper' ) )
-				. $sortSelect->getHTML()
-				. Html::closeElement( 'div' )
-
-				. $this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
-			. Html::closeElement( 'div' )
-		);
-	}
-
-	/**
-	 * Takes an associative array of label to value and converts the message
-	 * names into localized strings
-	 *
-	 * @param  $options array the options, indexed by label
-	 * @return array    the options, indexed by localized and escaped text
-	 */
-	private function selectMsg( array $options ) {
-		$newOpts = array();
-		foreach ( $options as $label => $value ) {
-			$newOpts[$this->msg( $label )->escaped()] = $value;
-		}
-		return $newOpts;
-	}
-
-	/**
-	 * Grabs the overall rating for a page
-	 *
-	 * @param  $pageId int the page id
-	 * @return array   the overall rating, as array (found => %, rating => avg)
-	 */
-	private function fetchOverallRating( $pageId ) {
-		$rv = array();
-		$dbr = wfGetDB( DB_SLAVE );
-		$rows = $dbr->select(
-			array(
-				'aft_article_feedback_ratings_rollup',
-				'aft_article_field'
-			),
-			array(
-				'arr_total / arr_count AS rating',
-				'afi_name'
-			),
-			array(
-				'arr_page_id' => $pageId,
-				'arr_field_id = afi_id',
-				'afi_name' => array( 'found', 'rating' )
-			)
-		);
-
-		foreach ( $rows as $row ) {
-			if ( $row->afi_name == 'found' ) {
-				$rv['found'] = ( int ) ( 100 * $row->rating );
-			} elseif ( $row->afi_name == 'rating' ) {
-				$rv['rating'] = ( int ) $row->rating;
-			}
-		}
-
-		return $rv;
-	}
-
-	/**
-	 * Gets the counts for the filter
-	 *
-	 * @return array the counts, as filter => count
-	 */
-	private function getFilterCounts() {
-		if ( !isset( $this->filterCounts ) ) {
-			$rv   = array();
-			$dbr  = wfGetDB( DB_SLAVE );
-			$rows = $dbr->select(
-				'aft_article_filter_count',
-				array(
-					'afc_filter_name',
-					'afc_filter_count'
-				),
-				array(
-					'afc_page_id' => $this->pageId ? $this->pageId : 0
-				),
-				__METHOD__
+		return
+			Html::rawElement(
+				'div',
+				array( 'id' => 'articleFeedbackv5-sort' ),
+				Html::rawElement(
+					'span',
+					array( 'class' => 'articleFeedbackv5-sort-label' ),
+					$this->msg( 'articlefeedbackv5-special-sort-label-before' )->escaped()
+				) .
+				Html::rawElement(
+					'div',
+					array( 'id' => 'articleFeedbackv5-sort-wrapper' ),
+					$sortSelect->getHTML()
+				) .
+				$this->msg( 'articlefeedbackv5-special-sort-label-after' )->escaped()
 			);
-			foreach ( $rows as $row ) {
-				$rv[ $row->afc_filter_name ] = $row->afc_filter_count;
-			}
-			$this->filterCounts = $rv;
-		}
-		return $this->filterCounts;
 	}
 
 	/**
@@ -834,9 +665,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Find the default filter
 		if ( !$filter ) {
-			if ( $this->feedbackId ) {
-				$filter = 'id';
-			} elseif ( $this->isAllowed( 'aft-oversighter' ) ) {
+			if ( $this->isAllowed( 'aft-oversighter' ) ) {
 				$filter = $wgArticleFeedbackv5DefaultFilters['aft-oversighter'];
 			} elseif ( $this->isAllowed( 'aft-monitor' ) ) {
 				$filter = $wgArticleFeedbackv5DefaultFilters['aft-monitor'];
@@ -844,14 +673,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				$filter = $wgArticleFeedbackv5DefaultFilters['aft-editor'];
 			} else {
 				$filter = $wgArticleFeedbackv5DefaultFilters['aft-reader'];
-			}
-		}
-
-		// Switch from relevant to all comments if the count is zero
-		$counts = $this->getFilterCounts();
-		if ( !isset( $counts[$filter] ) || $counts[$filter] == 0 ) {
-			if ( $filter == 'visible-relevant' ) {
-				$filter = 'visible-comment';
 			}
 		}
 
@@ -891,7 +712,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @return string  the short filter name
 	 */
 	protected function shortFilter( $filter ) {
-		return str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
+		return str_replace( array( 'all-', 'visible-', 'notdeleted-' ), '', $filter );
 	}
 
 	/**
@@ -904,6 +725,4 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$user = $this->getUser();
 		return $user->isAllowed( $permission ) && !$user->isBlocked();
 	}
-
 }
-
