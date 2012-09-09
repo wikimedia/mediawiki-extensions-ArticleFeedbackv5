@@ -156,6 +156,42 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @param $param string the parameter passed in the url
 	 */
 	public function execute( $param ) {
+		new DataModelSampleTest();
+		exit;
+
+
+		$feedback = new ArticleFeedbackv5Model();
+
+		$feedback->page = 1;
+		$feedback->page_revision = 1;
+		$feedback->user = 1;
+		$feedback->user_text = 'mlitn';
+		$feedback->user_token = 'blabla';
+		$feedback->form = 5;
+		$feedback->cta = 1;
+		$feedback->link = 'X';
+		$feedback->rating = 1;
+		$feedback->comment = 'I like this';
+
+		$feedback->oversight = 0;
+		$feedback->unoversight = 0;
+		$feedback->decline = 0;
+		$feedback->request = 0;
+		$feedback->unrequest = 0;
+		$feedback->hide = 0;
+		$feedback->unhide = 0;
+		$feedback->flag = 1;
+		$feedback->unflag = 1;
+		$feedback->feature = 1;
+		$feedback->unfeature = 0;
+		$feedback->resolve = 0;
+		$feedback->unresolve = 0;
+		$feedback->helpful = 4;
+		$feedback->unhelpful = 1;
+		exit('test');
+
+		// @todo: above = tests
+
 		$user = $this->getUser();
 		$request = $this->getRequest();
 

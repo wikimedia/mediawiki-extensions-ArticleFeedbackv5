@@ -18,7 +18,7 @@ class ArticleFeedbackv5Log {
 	 * @param $doer      User   user who did the action
 	 * @param $params    array  of parameters that can be passed into the msg thing - used for "perpetrator" for log entry
 	 */
-	public static function logActivity( $type, $pageId, $itemId, $notes, $doer = null, array $params = array() ) {
+	public static function logActivity( $type, $pageId, $itemId, $notes, $doer, array $params = array() ) {
 		wfProfileIn( __METHOD__ );
 
 		global $wgLogActionsHandlers, $wgArticleFeedbackv5MaxActivityNoteLength, $wgLang;
@@ -42,6 +42,12 @@ class ArticleFeedbackv5Log {
 			return;
 		}
 		$target = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getDBKey() . "/$itemId" );
+
+		// if no doer specified, use default AFT user
+		if ( !( $doer instanceof User ) ) {
+			$defaultUser = wfMessage( 'articlefeedbackv5-default-user' )->text();
+			$doer->user = User::newFromName( $defaultUser );
+		}
 
 		// truncate comment
 		$note = $wgLang->truncate( $notes, $wgArticleFeedbackv5MaxActivityNoteLength );
