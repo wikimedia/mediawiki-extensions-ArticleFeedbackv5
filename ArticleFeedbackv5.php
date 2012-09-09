@@ -46,15 +46,16 @@ $wgArticleFeedbackv5DefaultSorts = array (
 	'all'           => array( 'age', 'desc' ),
 	'comment'       => array( 'age', 'desc' ),
 	'declined'      => array( 'age', 'desc' ),
-	'featured'      => array( 'relevance', 'asc' ),
+	'featured'      => array( 'relevance', 'desc' ),
 	'helpful'       => array( 'helpful', 'desc' ),
 	'hidden'        => array( 'age', 'desc' ),
 	'id'            => array( 'age', 'desc' ),
 	'notdeleted'    => array( 'age', 'desc' ),
 	'oversighted'   => array( 'age', 'desc' ),
-	'relevant'      => array( 'relevance', 'asc' ),
+	'relevant'      => array( 'relevance', 'desc' ),
 	'requested'     => array( 'age', 'desc' ),
 	'resolved'      => array( 'age', 'desc' ),
+	'unresolved'      => array( 'age', 'desc' ),
 	'unfeatured'    => array( 'relevance', 'desc' ),
 	'unhelpful'     => array( 'helpful', 'asc' ),
 	'unhidden'      => array( 'age', 'desc' ),
@@ -68,8 +69,12 @@ $wgArticleFeedbackv5DefaultSorts = array (
  * Relevance Cutoff value
  * A signed integer controlling the point at which items are "cutoff" from the relevant filter
  * That means anything > value is in the relevant filter, anything <= is "cutoff"
+ *
+ * This value used to be configurable, but the current code makes that pretty much impossible.
+ * If you want to change this value, you should alter ArticleFeedbackv5.model; search for
+ * "$wgArticleFeedbackv5Cutoff" - I commented where you should change it ;)
  */
-$wgArticleFeedbackv5Cutoff = -5;
+$wgArticleFeedbackv5Cutoff;
 
 /**
  * Relevance Scoring
@@ -82,7 +87,9 @@ $wgArticleFeedbackv5RelevanceScoring = array(
 	'feature' => 50,
 	'unfeature' => -50,
 	'helpful' => 1,
+	'undo-helpful' => -1,
 	'unhelpful' => -1,
+	'undo-unhelpful' => 1,
 	'resolve' => -5,
 	'unresolve' => 5,
 	'flag' => -5,
@@ -122,9 +129,6 @@ $wgArticleFeedbackv5MaxCommentLength = 5000;
 // How long text-based activity items are allowed to be - note this will not return
 // an error but simply chop notes that are too long
 $wgArticleFeedbackv5MaxActivityNoteLength =  5000;
-
-// How long to keep ratings in the squids (they will also be purged when needed)
-$wgArticleFeedbackv5SMaxage = 2592000;
 
 // Number of revisions to keep a rating alive for
 $wgArticleFeedbackv5RatingLifetime = 30;
@@ -340,13 +344,6 @@ $wgArticleFeedbackv5SpecialPageSurveyUrl = 'https://www.surveymonkey.com/s/aft5-
 // Replace default emailcapture message
 $wgEmailCaptureAutoResponse['body-msg'] = 'articlefeedbackv5-emailcapture-response-body';
 
-/**
- * How many feedback posts to display initially.
- *
- * @var int
- */
-$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay = 50;
-
 /* Setup */
 
 $wgExtensionCredits['other'][] = array(
@@ -375,22 +372,28 @@ $wgExtensionCredits['other'][] = array(
 
 // Autoloading
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['ApiArticleFeedbackv5Utils']         = $dir . 'api/ApiArticleFeedbackv5Utils.php';
 $wgAutoloadClasses['ApiArticleFeedbackv5']              = $dir . 'api/ApiArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5']   = $dir . 'api/ApiViewRatingsArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5']  = $dir . 'api/ApiViewFeedbackArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5']  = $dir . 'api/ApiFlagFeedbackArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewActivityArticleFeedbackv5']  = $dir . 'api/ApiViewActivityArticleFeedbackv5.php';
+$wgAutoloadClasses['DataModel']                         = $dir . 'data/DataModel.php';
+$wgAutoloadClasses['DataModelBackend']                  = $dir . 'data/DataModelBackend.php';
+$wgAutoloadClasses['DataModelBackendLBFactory']         = $dir . 'data/DataModelBackend.LBFactory.php';
+$wgAutoloadClasses['DataModelList']                     = $dir . 'data/DataModelList.php';
+$wgAutoloadClasses['ArticleFeedbackv5Utils']            = $dir . 'ArticleFeedbackv5.utils.php';
 $wgAutoloadClasses['ArticleFeedbackv5Hooks']            = $dir . 'ArticleFeedbackv5.hooks.php';
 $wgAutoloadClasses['ArticleFeedbackv5Permissions']      = $dir . 'ArticleFeedbackv5.permissions.php';
 $wgAutoloadClasses['ArticleFeedbackv5Log']              = $dir . 'ArticleFeedbackv5.log.php';
 $wgAutoloadClasses['ArticleFeedbackv5LogFormatter']     = $dir . 'ArticleFeedbackv5.log.php';
-$wgAutoloadClasses['ArticleFeedbackv5Fetch']            = $dir . 'ArticleFeedbackv5.fetch.php';
 $wgAutoloadClasses['ArticleFeedbackv5Flagging']         = $dir . 'ArticleFeedbackv5.flagging.php';
-$wgAutoloadClasses['ArticleFeedbackv5MailerJob']        = $dir . 'ArticleFeedbackv5MailerJob.php';
+$wgAutoloadClasses['ArticleFeedbackv5MailerJob']        = $dir . 'ArticleFeedbackv5.mailerJob.php';
 $wgAutoloadClasses['ArticleFeedbackv5Render']           = $dir . 'ArticleFeedbackv5.render.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5']          = $dir . 'SpecialArticleFeedbackv5.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5Watchlist'] = $dir . 'SpecialArticleFeedbackv5Watchlist.php';
+$wgAutoloadClasses['ArticleFeedbackv5Model']            = $dir . 'ArticleFeedbackv5.model.php';
+$wgAutoloadClasses['ArticleFeedbackv5BackendLBFactory'] = $dir . 'ArticleFeedbackv5.backend.LBFactory.php';
+$wgAutoloadClasses['ArticleFeedbackv5Activity']         = $dir . 'ArticleFeedbackv5.activity.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5']          = $dir . 'ArticleFeedbackv5.i18n.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5Alias']     = $dir . 'ArticleFeedbackv5.alias.php';
 
@@ -409,7 +412,6 @@ $wgHooks['ProtectionForm::buildForm'][] = 'ArticleFeedbackv5Hooks::onProtectionF
 $wgHooks['ProtectionForm::save'][] = 'ArticleFeedbackv5Hooks::onProtectionSave';
 
 // API Registration
-$wgAPIListModules['articlefeedbackv5-view-ratings']  = 'ApiViewRatingsArticleFeedbackv5';
 $wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';
 $wgAPIListModules['articlefeedbackv5-view-activity'] = 'ApiViewActivityArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-flag-feedback']     = 'ApiFlagFeedbackArticleFeedbackv5';
@@ -420,18 +422,22 @@ $wgSpecialPages['ArticleFeedbackv5'] = 'SpecialArticleFeedbackv5';
 $wgSpecialPages['ArticleFeedbackv5Watchlist'] = 'SpecialArticleFeedbackv5Watchlist';
 $wgSpecialPageGroups['ArticleFeedbackv5'] = 'other';
 
-$wgAvailableRights[] = 'aft-reader';
-$wgAvailableRights[] = 'aft-member';
-$wgAvailableRights[] = 'aft-editor';
-$wgAvailableRights[] = 'aft-monitor';
-$wgAvailableRights[] = 'aft-administrator';
-$wgAvailableRights[] = 'aft-oversighter';
+$wgArticleFeedbackv5Permissions = array(
+	'aft-reader',
+	'aft-member',
+	'aft-editor',
+	'aft-monitor',
+	'aft-administrator',
+	'aft-oversighter',
+);
+$wgAvailableRights += $wgArticleFeedbackv5Permissions;
 
 // Jobs
 $wgJobClasses['ArticleFeedbackv5MailerJob'] = 'ArticleFeedbackv5MailerJob';
 
 // Logging
 $wgLogTypes[] = 'articlefeedbackv5';
+$wgLogTypes[] = 'suppress';
 
 // register activity log formatter hooks
 foreach ( array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest' ) as $t) {
@@ -699,10 +705,10 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-permalink-activity-fewer',
 
 		'articlefeedbackv5-new-marker',
-		'articlefeedbackv5-deleted-marker',
-		'articlefeedbackv5-hidden-marker',
-		'articlefeedbackv5-featured-marker',
-		'articlefeedbackv5-resolved-marker',
+		'articlefeedbackv5-oversight-marker',
+		'articlefeedbackv5-hide-marker',
+		'articlefeedbackv5-feature-marker',
+		'articlefeedbackv5-resolve-marker',
 
 		'articlefeedbackv5-help-special-linkurl',
 		'articlefeedbackv5-help-special-linkurl-editors',
@@ -818,3 +824,19 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'jquery.ui.button',
 	),
 ) + $wgArticleFeedbackResourcePaths;
+
+/*
+ * Database setup.
+ *
+ * $wgArticleFeedbackv5BackendClass defines that backend class to be used by
+ * AFT's DataModel. Currently, only 1 (ArticleFeedbackv5BackendLBFactory)
+ * backend is supported, so better don't touch that ;)
+ *
+ * $wgArticleFeedbackv5Cluster will define what external server should be used.
+ * If set to false, the current database (wfGetDB) will be used to read/write
+ * data from/to. If AFT data is supposed to be stored on an external database,
+ * set the value of this variable to the $wgExternalServers key representing
+ * that external connection.
+ */
+$wgArticleFeedbackv5BackendClass = 'ArticleFeedbackv5BackendLBFactory';
+$wgArticleFeedbackv5Cluster = false;
