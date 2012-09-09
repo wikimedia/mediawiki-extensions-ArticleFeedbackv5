@@ -156,6 +156,123 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @param $param string the parameter passed in the url
 	 */
 	public function execute( $param ) {
+		// attempt inserting a couple of valid entries, using insert()
+		for ( $i = 1; $i <= 5; $i++ ) {
+			$sample = new DataModelSample;
+			$sample->shard = $i % 3;
+			$sample->title = "Test #$i";
+			$sample->email = "mmullie@wikimedia.org";
+			$sample->visible = rand( 0, 1 );
+
+			$sample->insert();
+		}
+
+		// attempt inserting a couple of valid entries, using save()
+		for ( $i = 6; $i <= 10; $i++ ) {
+			$sample = new DataModelSample;
+			$sample->shard = $i % 3;
+			$sample->title = "Test #$i";
+			$sample->email = "mmullie@wikimedia.org";
+			$sample->visible = rand( 0, 1 );
+
+			$sample->save();
+		}
+
+		// attempt fetching a couple of entries
+		echo 'fetching 3 entries:';
+		for ( $i = 1; $i <= 3; $i++ ) {
+			$sample = DataModelSample::get( $i, $i % 3 );
+			var_dump($sample);
+		}
+
+		// attempt updating a couple of valid entries, using update()
+		for ( $i = 1; $i <= 3; $i++ ) {
+			$sample = DataModelSample::get( $i, $i % 3 );
+
+			if ( $sample ) {
+				$sample->title = "Test #$i, revised";
+
+				$sample->update();
+			}
+		}
+
+		// attempt updating a couple of valid entries, using save()
+		for ( $i = 5; $i < 8; $i++ ) {
+			$sample = DataModelSample::get( $i, $i % 3 );
+
+			if ( $sample ) {
+				$sample->title = "Test #$i, revised";
+
+				$sample->save();
+			}
+		}
+
+		// attempt fetching a batch of hidden entries, sorted by timestamp DESC
+		echo 'fetching a batch of hidden entries (should contain some):';
+		$list = DataModelSample::getList( 'hidden', null, 0, 'DESC' );
+		var_dump( $list );
+
+		// attempt to change all hidden entries to visible
+		foreach ( $list as $sample ) {
+			$sample->visible = 1;
+
+			$sample->save();
+		}
+
+		// attempt fetching a batch of hidden entries, sorted by timestamp DESC
+		echo 'fetching a batch of hidden entries: (should contain none)';
+		$list = DataModelSample::getList( 'hidden', null, 0, 'DESC' );
+		var_dump( $list );
+
+		// attempt fetching all entries on shard 1, sorted by title ASC
+		echo 'fetching a batch of entries on shard 1: (should contain 4)';
+		$list = DataModelSample::getList( 'all', 1, 0, 'ASC' );
+		var_dump( $list );
+
+		// attempt to get the amount of entries
+		echo 'fetching the total amount of entries: (should be 10)';
+		$count = DataModelSample::getCount( 'all' );
+		var_dump( $count );
+
+		// attempt to get the amount of visible entries on shard 1
+		echo 'fetching the total amount of visible entries on shard 1: (should be 4)';
+		$count = DataModelSample::getCount( 'visible', 1 );
+		var_dump( $count );
+		exit;
+
+
+		$feedback = new ArticleFeedbackv5Model();
+
+		$feedback->page = 1;
+		$feedback->page_revision = 1;
+		$feedback->user = 1;
+		$feedback->user_text = 'mlitn';
+		$feedback->user_token = 'blabla';
+		$feedback->form = 5;
+		$feedback->cta = 1;
+		$feedback->link = 'X';
+		$feedback->rating = 1;
+		$feedback->comment = 'I like this';
+
+		$feedback->oversight = 0;
+		$feedback->unoversight = 0;
+		$feedback->decline = 0;
+		$feedback->request = 0;
+		$feedback->unrequest = 0;
+		$feedback->hide = 0;
+		$feedback->unhide = 0;
+		$feedback->flag = 1;
+		$feedback->unflag = 1;
+		$feedback->feature = 1;
+		$feedback->unfeature = 0;
+		$feedback->resolve = 0;
+		$feedback->unresolve = 0;
+		$feedback->helpful = 4;
+		$feedback->unhelpful = 1;
+		exit('test');
+
+		// @todo: above = tests
+
 		$user = $this->getUser();
 		$request = $this->getRequest();
 

@@ -75,7 +75,9 @@ $wgArticleFeedbackv5RelevanceScoring = array(
 	'feature' => 50,
 	'unfeature' => -50,
 	'helpful' => 1,
+	'undo-helpful' => -1,
 	'unhelpful' => -1,
+	'undo-unhelpful' => 1,
 	'resolve' => -5,
 	'unresolve' => 5,
 	'flag' => -5,
@@ -393,6 +395,7 @@ $wgAutoloadClasses['ArticleFeedbackv5MailerJob']        = $dir . 'ArticleFeedbac
 $wgAutoloadClasses['ArticleFeedbackv5Render']           = $dir . 'ArticleFeedbackv5.render.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5']          = $dir . 'SpecialArticleFeedbackv5.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5Watchlist'] = $dir . 'SpecialArticleFeedbackv5Watchlist.php';
+$wgAutoloadClasses['ArticleFeedbackv5Model']            = $dir . 'ArticleFeedbackv5.model.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5']          = $dir . 'ArticleFeedbackv5.i18n.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5Alias']     = $dir . 'ArticleFeedbackv5.alias.php';
 
