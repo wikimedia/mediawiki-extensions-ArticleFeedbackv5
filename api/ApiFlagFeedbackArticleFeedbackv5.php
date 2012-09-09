@@ -25,28 +25,41 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 *
 	 * This single api call covers all cases where flags are being applied to
 	 * a piece of feedback
-	 *
-	 * A feedback request consists of
-	 * 1.
 	 */
 	public function execute() {
 		wfProfileIn( __METHOD__ );
 
+		global $wgUser;
+
 		// get important values from our parameters
 		$params     = $this->extractRequestParams();
 		$feedbackId = $params['feedbackid'];
+		$pageId     = $params['pageid'];
 		$flag       = $params['flagtype'];
 		$notes      = $params['note'];
-		$direction  = isset( $params['direction'] ) ? $params['direction'] : 'increase';
 		$toggle     = $params['toggle'];
 		$source     = $params['source'];
 
-		// woah, we were not checking for permissions (that could have been script kiddy bad)
-		global $wgUser;
+		/*
+		 * fallback when dealing with outdated javascript:
+		 * a "decrease" direction used to be passed on for the reverse action,
+		 * rather than kist calling the reverse action name itself (as is now)
+		 */
+		if ( isset( $params['direction'] ) && $params['direction'] == 'decrease' ) {
+			switch ( $flag ) {
+				case 'helpful':
+				case 'unhelpful':
+					$flag = "undo-$flag";
+					break;
+				default:
+					$flag = "un$flag";
+					break;
+			}
+		}
 
 		// Fire up the flagging object
-		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId );
-		$results = $flagger->run( $flag, $notes, $direction, $toggle, $source );
+		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId, $pageId );
+		$results = $flagger->run( $flag, $notes, $toggle, $source );
 
 		$this->getResult()->addValue(
 			null,
@@ -79,12 +92,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
 				 'flag', 'hide', 'helpful', 'unhelpful', 'oversight', 'request', 'decline', 'resolve', 'feature' )
-			),
-			'direction' => array(
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array(
-				 'increase', 'decrease' )
 			),
 			'note' => array(
 				ApiBase::PARAM_REQUIRED => false,

@@ -231,7 +231,7 @@
 }
 
 /** Tags Block (featured, resolved) **/
-.articleFeedbackv5-feedback .articleFeedbackv5-featured-marker {
+.articleFeedbackv5-feedback .articleFeedbackv5-feature-marker {
 	display: block;
 	line-height: 24px;
 	padding: 0 0 0 30px;
@@ -242,7 +242,7 @@
 	background: url(images/featured.png) no-repeat;
 	background-position: left -6px;
 }
-.articleFeedbackv5-feedback .articleFeedbackv5-resolved-marker {
+.articleFeedbackv5-feedback .articleFeedbackv5-resolve-marker {
 	display: block;
 	line-height: 24px;
 	padding: 0 0 0 30px;
@@ -253,7 +253,7 @@
 	background: url(images/resolved.png) no-repeat;
 	background-position: left -6px;
 }
-.articleFeedbackv5-feedback .articleFeedbackv5-deleted-marker {
+.articleFeedbackv5-feedback .articleFeedbackv5-oversight-marker {
 	display: block;
 	line-height: 24px;
 	padding: 0 0 0 30px;
@@ -264,7 +264,7 @@
 	background: url(images/deleted.png) no-repeat;
 	background-position: left -6px;
 }
-.articleFeedbackv5-feedback .articleFeedbackv5-hidden-marker {
+.articleFeedbackv5-feedback .articleFeedbackv5-hide-marker {
 	display: block;
 	line-height: 24px;
 	padding: 0 0 0 30px;

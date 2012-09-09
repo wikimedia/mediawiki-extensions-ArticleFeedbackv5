@@ -1,11 +1,12 @@
 <?php
 /**
- * ApiViewRatingsArticleFeedbackv5 class
+ * ApiArticleFeedbackv5Utils class
  *
  * @package    ArticleFeedback
  * @subpackage Api
  * @author     Greg Chiasson <greg@omniti.com>
  * @author     Reha Sterbin <reha@omniti.com>
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @version    $Id$
  */
 
@@ -54,7 +55,7 @@ class ApiArticleFeedbackv5Utils {
 		global $wgRequest, $wgUser, $wgArticleFeedbackv5Tracking;
 
 		// if logged in user, we can know for certain if feedback was posted when logged in
-		if ( $wgUser->getId() && isset( $record->af_user_id ) && $wgUser->getId() == intval( $record->af_user_id )) {
+		if ( $wgUser->getId() && isset( $record->user ) && $wgUser->getId() == intval( $record->user ) ) {
 			return true;
 		}
 
@@ -62,33 +63,11 @@ class ApiArticleFeedbackv5Utils {
 		// logged in, compare the feedback's id with what's stored in a cookie
 		$version = isset( $wgArticleFeedbackv5Tracking['version'] ) ? $wgArticleFeedbackv5Tracking['version'] : 0;
 		$cookie = json_decode( $wgRequest->getCookie( 'feedback-ids', 'ext_articleFeedbackv5@' . $version . '-' ), true );
-		if ( $cookie !== null && is_array( $cookie ) && isset( $record->af_id ) ) {
-			return in_array( $record->af_id, $cookie );
+		if ( $cookie !== null && is_array( $cookie ) && isset( $record->id ) ) {
+			return in_array( $record->id, $cookie );
 		}
 
 		return false;
-	}
-
-	/**
-	 * Returns the revision limit for a page
-	 *
-	 * @param  $pageId int the page id
-	 * @return int the revision limit
-	 */
-	public static function getRevisionLimit( $pageId ) {
-		global $wgArticleFeedbackv5RatingLifetime;
-		$dbr = wfGetDB( DB_SLAVE );
-		$revision = $dbr->selectField(
-			'revision', 'rev_id',
-			array( 'rev_page' => $pageId ),
-			__METHOD__,
-			array(
-				'ORDER BY' => 'rev_id DESC',
-				'LIMIT' => 1,
-				'OFFSET' => $wgArticleFeedbackv5RatingLifetime - 1
-			)
-		);
-		return $revision ? intval( $revision ) : 0;
 	}
 
 	/**
@@ -310,18 +289,22 @@ class ApiArticleFeedbackv5Utils {
 	/**
 	 * Helper function to create a new red status line based on the last status line created
 	 * action performed
+	 *
+	 * @param string $status
+	 * @param int $userId
+	 * @param string $timestamp
+	 * @return string
 	 */
-	public static function renderStatusLine( $status, $user_id, $timestamp ) {
+	public static function renderStatusLine( $status, $userId, $timestamp ) {
 		global $wgLang;
-		return Html::rawElement( 'span', array(
-			'class' => 'articleFeedbackv5-feedback-status-marker ' .
-				'articleFeedbackv5-laststatus-' . $status
-			),
+		return Html::rawElement(
+			'span',
+			array( 'class' => 'articleFeedbackv5-feedback-status-marker articleFeedbackv5-laststatus-' . $status ),
 			wfMessage( 'articlefeedbackv5-status-' . $status )
-				->rawParams( ApiArticleFeedbackv5Utils::getUserLink( $user_id ) )
+				->rawParams( ApiArticleFeedbackv5Utils::getUserLink( $userId ) )
 				->params( $wgLang->date( $timestamp ), $wgLang->time( $timestamp ) )
 				->escaped()
-			);
+		);
 	}
 
 	/**
@@ -339,63 +322,6 @@ class ApiArticleFeedbackv5Utils {
 	}
 
 	/**
-	 * Helper function to create an "X ago" timestamp from a date
-	 *
-	 * @param  $timestamp string the timestamp, from the db
-	 * @return string     the x-ago timestamp string
-	 */
-	public static function renderTimeAgo( $timestamp ) {
-		global $wgLang;
-
-		$blocks = array(
-			array( 'total' => 60 * 60 * 24 * 365, 'name' => 'years' ),
-			array( 'total' => 60 * 60 * 24 * 30, 'name' => 'months' ),
-			array( 'total' => 60 * 60 * 24 * 7, 'name' => 'weeks' ),
-			array( 'total' => 60 * 60 * 24, 'name' => 'days' ),
-			array( 'total' => 60 * 60, 'name' => 'hours' ),
-			array( 'total' => 60, 'name' => 'minutes' ) );
-
-		$since = wfTimestamp( TS_UNIX ) - wfTimestamp( TS_UNIX, $timestamp );
-		$displayTime = 0;
-		$displayBlock = '';
-
-		// get the largest time block, 1 minute 35 seconds -> 2 minutes
-		for ( $i = 0, $count = count( $blocks ); $i < $count; $i++ ) {
-			$seconds = $blocks[$i]['total'];
-			$displayTime = floor( $since / $seconds );
-
-			if ( $displayTime > 0 ) {
-				$displayBlock = $blocks[$i]['name'];
-				// round up if the remaining time is greater than
-				// half of the time unit
-				if ( ( $since % $seconds ) >= ( $seconds / 2 ) ) {
-					$displayTime++;
-
-					// advance to upper unit if possible, eg, 24 hours to 1 day
-					if ( isset( $blocks[$i -1] ) && $displayTime * $seconds ==  $blocks[$i -1]['total'] ) {
-						$displayTime = 1;
-						$displayBlock = $blocks[$i -1]['name'];
-					}
-				}
-				break;
-			}
-		}
-
-		if ( $displayTime > 0 ) {
-			if ( in_array( $displayBlock, array( 'years', 'months', 'weeks' ) ) ) {
-				$messageKey = 'articlefeedbackv5-timestamp-' . $displayBlock;
-			} else {
-				$messageKey = $displayBlock;
-			}
-			$date = wfMessage( $messageKey )->params( $wgLang->formatNum( $displayTime ) )->escaped();
-		} else {
-			$date = wfMessage( 'articlefeedbackv5-timestamp-seconds' )->escaped();
-		}
-
-		return $date;
-	}
-
-	/**
 	 * Helper function to create a mask line
 	 *
 	 * @param  $type      string the type (hidden or oversight)
@@ -410,12 +336,134 @@ class ApiArticleFeedbackv5Utils {
 		} else { // magic user
 			$username = wfMessage( 'articlefeedbackv5-default-user' )->text();
 		}
+		$timestamp = new MWTimestamp( $timestamp );
+
 		return wfMessage( 'articlefeedbackv5-mask-text-' . $type )
 			->numParams( $post_id )
 			->params( $username )
-			->rawParams( ApiArticleFeedbackv5Utils::renderTimeAgo( $timestamp ) )
+			->rawParams( $timestamp->getHumanTimestamp()->escaped() )
 			->escaped();
 	}
 
-}
+	/**
+	 * Run comment through SpamRegex
+	 *
+	 * @param $value
+	 * @param $pageId
+	 * @return bool Will return boolean false if valid or true if flagged
+	 */
+	public static function validateSpamRegex( $value ) {
+		// Respect $wgSpamRegex
+		global $wgSpamRegex;
+		if ( ( is_array( $wgSpamRegex ) && count( $wgSpamRegex ) > 0 )
+			|| ( is_string( $wgSpamRegex ) && strlen( $wgSpamRegex ) > 0 ) ) {
+			// In older versions, $wgSpamRegex may be a single string rather than
+			// an array of regexes, so make it compatible.
+			$regexes = ( array ) $wgSpamRegex;
+			foreach ( $regexes as $regex ) {
+				if ( preg_match( $regex, $value ) ) {
+					return true;
+				}
+			}
+		}
 
+		return false;
+	}
+
+	/**
+	 * Run comment through SpamBlacklist
+	 *
+	 * @param $value
+	 * @param $pageId
+	 * @return bool Will return boolean false if valid or true if flagged
+	 */
+	public static function validateSpamBlacklist( $value, $pageId ) {
+		// Check SpamBlacklist, if installed
+		if ( function_exists( 'wfSpamBlacklistObject' ) ) {
+			$spam = wfSpamBlacklistObject();
+		} elseif ( class_exists( 'BaseBlacklist' ) ) {
+			$spam = BaseBlacklist::getInstance( 'spam' );
+		}
+		if ( $spam ) {
+			$title = Title::newFromText( 'ArticleFeedbackv5_' . $pageId );
+			$ret = $spam->filter( $title, $value, '' );
+			if ( $ret !== false ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Run comment through AbuseFilter extension
+	 *
+	 * @param $value
+	 * @param $pageId
+	 * @param $callback Callback function to be called by AbuseFilter
+	 * @return bool|string Will return boolean false if valid or error message (string) if flagged
+	 */
+	public static function validateAbuseFilter( $value, $pageId, $callback = null ) {
+		// Check AbuseFilter, if installed
+		if ( class_exists( 'AbuseFilter' ) ) {
+			global $wgUser;
+
+			// Set up variables
+			$title = Title::newFromID( $pageId );
+			$vars = new AbuseFilterVariableHolder;
+			$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
+			$vars->addHolder( AbuseFilter::generateTitleVars( $title , 'ARTICLE' ) );
+			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
+			$vars->setVar( 'ACTION', 'feedback' );
+			$vars->setVar( 'new_wikitext', $value );
+			$vars->setLazyLoadVar( 'new_size', 'length', array( 'length-var' => 'new_wikitext' ) );
+
+			// Add custom action handlers
+			if ( $callback && is_callable( $callback ) ) {
+				global $wgAbuseFilterCustomActionsHandlers;
+
+				$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $callback;
+				$wgAbuseFilterCustomActionsHandlers['aftv5hide'] = $callback;
+				$wgAbuseFilterCustomActionsHandlers['aftv5requestoversight'] = $callback;
+			}
+
+			// Check the filters (mimics AbuseFilter::filterAction)
+			global $wgArticleFeedbackv5AbuseFilterGroup;
+			$vars->setVar( 'context', 'filter' );
+			$vars->setVar( 'timestamp', time() );
+			$results = AbuseFilter::checkAllFilters( $vars, $wgArticleFeedbackv5AbuseFilterGroup );
+			if ( count( array_filter( $results ) ) == 0 ) {
+				return false;
+			}
+
+			// Abuse filter consequences
+			$matched = array_keys( array_filter( $results ) );
+			list( $actionsTaken, $errorMsg ) = AbuseFilter::executeFilterActions( $matched, $title, $vars );
+
+			// Send to the abuse filter log
+			$dbr = wfGetDB( DB_SLAVE );
+			global $wgRequest;
+			$logTemplate = array(
+				'afl_user' => $wgUser->getId(),
+				'afl_user_text' => $wgUser->getName(),
+				'afl_timestamp' => $dbr->timestamp( wfTimestampNow() ),
+				'afl_namespace' => $title->getNamespace(),
+				'afl_title' => $title->getDBkey(),
+				'afl_ip' => $wgRequest->getIP()
+			);
+			$action = $vars->getVar( 'ACTION' )->toString();
+			AbuseFilter::addLogEntries( $actionsTaken, $logTemplate, $action, $vars, $wgArticleFeedbackv5AbuseFilterGroup );
+
+			// Local consequences
+			foreach ( $actionsTaken as $id => $actions ) {
+				foreach ( array( 'disallow', 'warn' ) as $level ) {
+					if ( in_array( $level, $actions ) ) {
+						return $errorMsg;
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+}

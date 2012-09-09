@@ -237,10 +237,10 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-permalink-activity-fewer',
 
 				'articlefeedbackv5-new-marker',
-				'articlefeedbackv5-deleted-marker',
-				'articlefeedbackv5-hidden-marker',
-				'articlefeedbackv5-featured-marker',
-				'articlefeedbackv5-resolved-marker',
+				'articlefeedbackv5-oversight-marker',
+				'articlefeedbackv5-hide-marker',
+				'articlefeedbackv5-feature-marker',
+				'articlefeedbackv5-resolve-marker',
 
 				'articlefeedbackv5-help-special-linkurl',
 				'articlefeedbackv5-help-special-linkurl-editors',
@@ -392,6 +392,8 @@ class ArticleFeedbackv5Hooks {
 			true
 		);
 
+		// @todo: sharding schema update! (also: create maintenance script to convert all existing to new schema)
+
 		return true;
 	}
 
@@ -457,11 +459,17 @@ class ArticleFeedbackv5Hooks {
 			// watchlist page
 			elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
 				if ( $user->getId() ) {
+					// @todo: this will have to change
+/*
 					// check if there is feedback on the user's watchlist
 					$fetch = new ArticleFeedbackv5Fetch();
 					$fetch->setUserId( $user->getId() );
 					$fetch->setLimit( 1 );
 					$fetched = $fetch->run();
+*/
+					$fetched = new StdClass;
+					$fetched->records = array();
+
 					if ( count( $fetched->records ) > 0 ) {
 						$out->addModules( 'ext.articleFeedbackv5.watchlist' );
 					}
@@ -541,7 +549,6 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5Namespaces,
 			$wgArticleFeedbackv5LearnToEdit,
 			$wgArticleFeedbackv5SurveyUrls,
-			$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay,
 			$wgArticleFeedbackv5ThrottleThresholdPostsPerHour,
 			$wgArticleFeedbackv5ArticlePageLink,
 			$wgArticleFeedbackv5TalkPageLink,
@@ -558,7 +565,6 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5Namespaces'] = $wgArticleFeedbackv5Namespaces;
 		$vars['wgArticleFeedbackv5LearnToEdit'] = $wgArticleFeedbackv5LearnToEdit;
 		$vars['wgArticleFeedbackv5SurveyUrls'] = $wgArticleFeedbackv5SurveyUrls;
-		$vars['wgArticleFeedbackv5InitialFeedbackPostCountToDisplay'] = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		$vars['wgArticleFeedbackv5ThrottleThresholdPostsPerHour'] = $wgArticleFeedbackv5ThrottleThresholdPostsPerHour;
 		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
 		$vars['wgArticleFeedbackv5SpecialWatchlistUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getLinkUrl();
@@ -727,74 +733,79 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function contributionsLineEnding( $page, &$ret, $row, &$classes ) {
-		if ( !isset( $row->af_id ) || $row->af_id === '' ) {
+		if ( !isset( $row->contribution ) || $row->contribution === 'AFT' ) {
 			return true;
 		}
 
-		$pageTitle = Title::newFromId( $row->af_page_id );
+		$pageTitle = Title::newFromId( $row->page );
 		if ( $pageTitle === null ) {
+			return true;
+		}
+
+		$record = ArticleFeedbackv5Model::get( $row->id, $row->page );
+		if ( !$record ) {
 			return true;
 		}
 
 		$lang = $page->getLanguage();
 		$user = $page->getUser();
-		$feedbackTitle = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() . "/$row->af_id" );
+		$feedbackTitle = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() . "/$record->id" );
 		$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() );
-		$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$row->af_id" );
+		$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$record->id" );
 
 		// date
-		$date = $lang->userTimeAndDate( $row->af_created, $user );
+		$date = $lang->userTimeAndDate( $record->timestamp, $user );
 		$date = Linker::link(
 			$feedbackTitle,
 			htmlspecialchars( $date )
 		);
-		if ( $row->af_is_hidden > 0 || $row->af_oversight_count > 0 || $row->af_is_deleted > 0 ) {
+		if ( $record->isHidden() || $record->isRequested() || $record->isOversighted() ) {
 			$date = '<span class="history-deleted">' . $date . '</span>';
 		}
 
 		// show user names for /newbies as there may be different users.
 		$userlink = '';
 		if ( $page->contribs == 'newbie' ) {
-			$username = User::whoIs( $row->af_user_id );
+			$username = User::whoIs( $record->user );
 			if ( $username !== false ) {
-				$userlink = ' . . ' . Linker::userLink( $row->af_user_id, $username );
+				$userlink = ' . . ' . Linker::userLink( $record->user, $username );
 				$userlink .= ' ' . wfMessage( 'parentheses' )->rawParams(
-					Linker::userTalkLink( $row->af_user_id, $username ) )->escaped() . ' ';
+					Linker::userTalkLink( $record->user, $username ) )->escaped() . ' ';
 			}
 		}
 
 		// feedback (truncated)
 		$feedback = '';
-		if ( $row->af_comment != '' ) {
-			if ( $row->af_is_hidden > 0 || $row->af_oversight_count > 0 || $row->af_is_deleted > 0 ) {
+		if ( $record->comment != '' ) {
+			if ( $record->isHidden() || $record->isRequested() || $record->isOversighted() ) {
 				// (probably) abusive comment that has been hidden/oversight-requested/oversighted
 				$feedback = Linker::commentBlock( wfMessage( 'articlefeedbackv5-contribs-hidden-feedback' )->escaped() );
 			} else {
-				$feedback = Linker::commentBlock( $lang->truncate( $row->af_comment, 75 ) );
+				$feedback = Linker::commentBlock( $lang->truncate( $record->comment, 75 ) );
 			}
 		}
 
 		// status (actions taken)
 		$actions = array();
-		if ( $row->af_net_helpfulness > 0 ) {
+		if ( $record->helpful > $record->unhelpful ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-helpful' )->escaped();
 		}
-		if ( $row->af_abuse_count > 0 ) {
+		if ( $record->isFlagged() ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-flag' )->escaped();
 		}
-		if ( $row->af_is_featured > 0 ) {
+		if ( $record->isFeatured() ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-feature' )->escaped();
 		}
-		if ( $row->af_is_resolved > 0 ) {
+		if ( $record->isResolved() ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-resolve' )->escaped();
 		}
-		if ( $row->af_is_hidden > 0 ) {
+		if ( $record->isHidden() ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-hide' )->escaped();
 		}
-		if ( $row->af_oversight_count > 0 ) {
+		if ( $record->isRequested() ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-request' )->escaped();
 		}
-		if ( $row->af_is_deleted > 0 ) {
+		if ( $record->isOversighted() ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-oversight' )->escaped();
 		}
 
@@ -808,7 +819,7 @@ class ArticleFeedbackv5Hooks {
 		$ret = wfMessage( 'articlefeedbackv5-contribs-entry' )
 			->rawParams( $date ) // date + time
 			->params(
-				ChangesList::showCharacterDifference( 0, strlen( $row->af_comment ) ), // chardiff
+				ChangesList::showCharacterDifference( 0, strlen( $record->comment ) ), // chardiff
 				$feedbackCentralPageTitle->getFullText(), // feedback link
 				$pageTitle->getPrefixedText() // article title
 			)
@@ -835,102 +846,64 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function contributionsData( &$data, $pager, $offset, $limit, $descending ) {
-		if ( $pager->namespace === '' ) {
-			$ratingFields  = array( -1 );
-			$commentFields = array( -1 );
-			// This is in memcache so I don't feel that bad re-fetching it.
-			// Needed to join in the comment and rating tables, for filtering
-			// and sorting, respectively.
-			foreach ( ApiArticleFeedbackv5Utils::getFields() as $field ) {
-				if ( in_array( $field['afi_bucket_id'], array( 1, 6 ) ) && $field['afi_name'] == 'comment' ) {
-					$commentFields[] = (int) $field['afi_id'];
-				}
-				if ( in_array( $field['afi_bucket_id'], array( 1, 6 ) ) && $field['afi_name'] == 'found' ) {
-					$ratingFields[] = (int) $field['afi_id'];
-				}
-			}
+		// @todo: this is untested
 
-			$tables[] = 'aft_article_feedback';
-			$tables['rating'] = 'aft_article_answer';
-			$tables['comment'] = 'aft_article_answer';
-
-			$fields[] = 'af_id';
-			$fields[] = 'af_page_id';
-			$fields[] = 'af_created';
-			$fields[] = 'af_user_id';
-			$fields[] = 'af_user_ip';
-			$fields[] = 'af_net_helpfulness';
-			$fields[] = 'af_abuse_count';
-			$fields[] = 'af_is_featured';
-			$fields[] = 'af_is_resolved';
-			$fields[] = 'af_is_hidden';
-			$fields[] = 'af_oversight_count';
-			$fields[] = 'af_is_deleted';
-			$fields[] = 'rating.aa_response_boolean AS af_yes_no';
-			$fields[] = 'comment.aa_response_text AS af_comment';
-			$fields[] = 'af_created AS ' . $pager->getIndexField(); // used for navbar
-
-			if ( $pager->contribs != 'newbie' ) {
-				$uid = User::idFromName( $pager->target );
-				if ( $uid ) {
-					$conds['af_user_id'] = $uid;
-					$conds['af_user_ip'] = null;
-				} else {
-					$conds['af_user_id'] = 0;
-					$conds['af_user_ip'] = $pager->target;
-				}
-			} else {
-				// fetch max user id from cache (if present)
-				global $wgMemc;
-				$key = wfMemcKey( 'articlefeedbackv5', 'maxUserId' );
-				$max = $wgMemc->get( $key );
-				if ( $max === false ) {
-					// max user id not present in cache; fetch from db & save to cache for 1h
-					$max = (int) $pager->getDatabase()->selectField( 'user', 'max(user_id)', '', __METHOD__ );
-					$wgMemc->set( $key, $max, 60 * 60 );
-				}
-
-				// newbie = last 1% of users, without usergroup
-				$tables[] = 'user_groups';
-				$conds[] = 'af_user_id >' . (int)( $max - $max / 100 );
-				$conds[] = 'ug_group IS NULL';
-
-				$join_conds['user_groups'] = array(
-					'LEFT JOIN',
-					array(
-						'ug_user = af_user_id',
-						'ug_group' => 'bot',
-					)
-				);
-			}
-			if ( $offset ) {
-				$operator = $descending ? '>' : '<';
-				$conds[] = "af_created $operator " . $pager->getDatabase()->addQuotes( $offset );
-			}
-
-			$fname = __METHOD__;
-
-			$order = $descending ? 'ASC' : 'DESC'; // something's wrong with $descending - see logic applied in includes/Pager.php
-			$options['ORDER BY'] = array( $pager->getIndexField() . " $order" );
-			$options['LIMIT'] = $limit;
-
-			$join_conds['rating'] = array(
-				'LEFT JOIN',
-				array(
-					'rating.aa_feedback_id = af_id',
-					'rating.aa_field_id' => $ratingFields
-				)
-			);
-			$join_conds['comment'] = array(
-				'LEFT JOIN',
-				array(
-					'comment.aa_feedback_id = af_id',
-					'comment.aa_field_id' => $commentFields,
-				)
-			);
-
-			$data[] = $pager->getDatabase()->select( $tables, $fields, $conds, $fname, $options, $join_conds );
+		if ( $pager->namespace !== '' ) {
+			return true;
 		}
+
+		$tables[] = 'aft_feedback';
+
+		$fields[] = 'aft_feedback.id';
+		$fields[] = 'aft_feedback.page';
+		$fields[] = '"AFT" AS contribution';
+		$fields[] = 'aft_feedback.timestamp AS ' . $pager->getIndexField(); // used for navbar
+
+		if ( $pager->contribs != 'newbie' ) {
+			$uid = User::idFromName( $pager->target );
+			if ( $uid ) {
+				$conds['aft_feedback.user'] = $uid;
+				$conds['aft_feedback.user_text'] = null;
+			} else {
+				$conds['aft_feedback.user'] = 0;
+				$conds['aft_feedback.user_text'] = $pager->target;
+			}
+		} else {
+			// fetch max user id from cache (if present)
+			global $wgMemc;
+			$key = wfMemcKey( 'articlefeedbackv5', 'maxUserId' );
+			$max = $wgMemc->get( $key );
+			if ( $max === false ) {
+				// max user id not present in cache; fetch from db & save to cache for 1h
+				$max = (int) $pager->getDatabase()->selectField( 'user', 'max(user_id)', '', __METHOD__ );
+				$wgMemc->set( $key, $max, 60 * 60 );
+			}
+
+			// newbie = last 1% of users, without usergroup
+			$tables[] = 'user_groups';
+			$conds[] = 'aft_feedback.user >' . (int)( $max - $max / 100 );
+			$conds[] = 'ug_group IS NULL';
+
+			$join_conds['user_groups'] = array(
+				'LEFT JOIN',
+				array(
+					'ug_user = aft_feedback.user',
+					'ug_group' => 'bot',
+				)
+			);
+		}
+		if ( $offset ) {
+			$operator = $descending ? '>' : '<';
+			$conds[] = "aft_feedback.timestamp $operator " . $pager->getDatabase()->addQuotes( $offset );
+		}
+
+		$fname = __METHOD__;
+
+		$order = $descending ? 'ASC' : 'DESC'; // something's wrong with $descending - see logic applied in includes/Pager.php
+		$options['ORDER BY'] = array( $pager->getIndexField() . " $order" );
+		$options['LIMIT'] = $limit;
+
+		$data[] = $pager->getDatabase()->select( $tables, $fields, $conds, $fname, $options, $join_conds );
 
 		return true;
 	}

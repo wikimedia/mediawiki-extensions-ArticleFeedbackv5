@@ -30,6 +30,9 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		$name = 'ArticleFeedbackv5Watchlist', $restriction = '', $listed = true,
 		$function = false, $file = 'default', $includable = false
 	) {
+		// @todo: this thingy will have to change, but I don't yet know how to handle watchlist (= user) stuff
+
+
 		parent::__construct( $name, $restriction, $listed, $function, $file, $includable );
 	}
 

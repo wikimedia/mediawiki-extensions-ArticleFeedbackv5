@@ -75,7 +75,9 @@ $wgArticleFeedbackv5RelevanceScoring = array(
 	'feature' => 50,
 	'unfeature' => -50,
 	'helpful' => 1,
+	'undo-helpful' => -1,
 	'unhelpful' => -1,
+	'undo-unhelpful' => 1,
 	'resolve' => -5,
 	'unresolve' => 5,
 	'flag' => -5,
@@ -347,13 +349,6 @@ $wgArticleFeedbackv5SpecialPageSurveyUrl = 'https://www.surveymonkey.com/s/aft5-
 // Replace default emailcapture message
 $wgEmailCaptureAutoResponse['body-msg'] = 'articlefeedbackv5-emailcapture-response-body';
 
-/**
- * How many feedback posts to display initially.
- *
- * @var int
- */
-$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay = 50;
-
 /* Setup */
 
 $wgExtensionCredits['other'][] = array(
@@ -393,12 +388,12 @@ $wgAutoloadClasses['ArticleFeedbackv5Hooks']            = $dir . 'ArticleFeedbac
 $wgAutoloadClasses['ArticleFeedbackv5Permissions']      = $dir . 'ArticleFeedbackv5.permissions.php';
 $wgAutoloadClasses['ArticleFeedbackv5Log']              = $dir . 'ArticleFeedbackv5.log.php';
 $wgAutoloadClasses['ArticleFeedbackv5LogFormatter']     = $dir . 'ArticleFeedbackv5.log.php';
-$wgAutoloadClasses['ArticleFeedbackv5Fetch']            = $dir . 'ArticleFeedbackv5.fetch.php';
 $wgAutoloadClasses['ArticleFeedbackv5Flagging']         = $dir . 'ArticleFeedbackv5.flagging.php';
 $wgAutoloadClasses['ArticleFeedbackv5MailerJob']        = $dir . 'ArticleFeedbackv5MailerJob.php';
 $wgAutoloadClasses['ArticleFeedbackv5Render']           = $dir . 'ArticleFeedbackv5.render.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5']          = $dir . 'SpecialArticleFeedbackv5.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5Watchlist'] = $dir . 'SpecialArticleFeedbackv5Watchlist.php';
+$wgAutoloadClasses['ArticleFeedbackv5Model']            = $dir . 'ArticleFeedbackv5.model.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5']          = $dir . 'ArticleFeedbackv5.i18n.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5Alias']     = $dir . 'ArticleFeedbackv5.alias.php';
 
