@@ -564,7 +564,8 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5TalkPageLink,
 			$wgArticleFeedbackv5WatchlistLink,
 			$wgArticleFeedbackv5DefaultSorts,
-			$wgArticleFeedbackv5LotteryOdds;
+			$wgArticleFeedbackv5LotteryOdds,
+			$wgArticleFeedbackv5MaxCommentLength;
 		$vars['wgArticleFeedbackv5SMaxage'] = $wgArticleFeedbackv5SMaxage;
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
@@ -583,6 +584,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5WatchlistLink'] = $wgArticleFeedbackv5WatchlistLink;
 		$vars['wgArticleFeedbackv5DefaultSorts'] = $wgArticleFeedbackv5DefaultSorts;
 		$vars['wgArticleFeedbackv5LotteryOdds'] = $wgArticleFeedbackv5LotteryOdds;
+		$vars['wgArticleFeedbackv5MaxCommentLength'] = $wgArticleFeedbackv5MaxCommentLength;
 
 		// make sure that these keys are being encoded to an object rather than to an array
 		$wgArticleFeedbackv5DisplayBuckets['buckets'] = (object) $wgArticleFeedbackv5DisplayBuckets['buckets'];
