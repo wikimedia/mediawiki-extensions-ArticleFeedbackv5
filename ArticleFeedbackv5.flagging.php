@@ -26,25 +26,11 @@ class ArticleFeedbackv5Flagging {
 	private $user;
 
 	/**
-	 * The feedback ID
+	 * The feedback object
 	 *
-	 * @var int
+	 * @var ArticleFeedbackv5Model
 	 */
-	private $feedbackId;
-
-	/**
-	 * The filters to be changed
-	 *
-	 * @var array
-	 */
-	private $filters;
-
-	/**
-	 * The updates to be run
-	 *
-	 * @var array
-	 */
-	private $updates;
+	private $feedback;
 
 	/**
 	 * The results to return
@@ -54,41 +40,6 @@ class ArticleFeedbackv5Flagging {
 	private $results;
 
 	/**
-	 * The log lines to add
-	 *
-	 * @var array
-	 */
-	private $log;
-
-	/**
-	 * The adjustments to be made to the relevance score
-	 *
-	 * @var array
-	 */
-	private $relevance;
-
-	/**
-	 * The helpful count
-	 *
-	 * @var int
-	 */
-	private $helpfulCount;
-
-	/**
-	 * The unhelpful count
-	 *
-	 * @var int
-	 */
-	private $unhelpfulCount;
-
-	/**
-	 * The helpful count minus the unhelpful count
-	 *
-	 * @var int
-	 */
-	private $netHelpfulness;
-
-	/**
 	 * The map of flags to permissions.
 	 * If an action is not mentioned here, it is not tied to specific permissions
 	 * and everyone is able to perform the action.
@@ -96,16 +47,24 @@ class ArticleFeedbackv5Flagging {
 	 * @var array
 	 */
 	private $flagPermissionMap = array(
-		'oversight' => 'aft-oversighter', // includes unoversight
+		'oversight' => 'aft-oversighter',
+		'unoversight' => 'aft-oversighter',
 		'decline' => 'aft-oversighter',
-		'request' => 'aft-monitor', // includes unrequest
-		'hide' => 'aft-monitor', // includes unhide
-		'flag' => 'aft-reader', // includes unflag
-		'clearflags' => 'aft-monitor',
-		'feature' => 'aft-editor', // includes unfeature
-		'resolve' => 'aft-editor', // includes unresolve
-		'helpful' => 'aft-reader', // includes undo-helpful
-		'unhelpful' => 'aft-reader', // includes undo-unhelpful
+		'request' => 'aft-monitor',
+		'unrequest' => 'aft_monitor',
+		'hide' => 'aft-monitor',
+		'unhide' => 'aft-monitor',
+		'flag' => 'aft-reader',
+		'unflag' => 'aft-reader',
+		'clear-flags' => 'aft-monitor',
+		'feature' => 'aft-editor',
+		'unfeature' => 'aft-editor',
+		'resolve' => 'aft-editor',
+		'unresolve' => 'aft-editor',
+		'helpful' => 'aft-reader',
+		'undo-helpful' => 'aft-reader',
+		'unhelpful' => 'aft-reader',
+		'undo-unhelpful' => 'aft-reader',
 	);
 
 	/**
@@ -114,10 +73,19 @@ class ArticleFeedbackv5Flagging {
 	 * @param mixed $user       the user performing the action ($wgUser), or
 	 *                          zero if it's a system call
 	 * @param int   $feedbackId the feedback ID
+	 * @param int   $pageId     the page ID
 	 */
-	public function __construct( $user, $feedbackId ) {
-		$this->user       = $user;
-		$this->feedbackId = $feedbackId;
+	public function __construct( $user, $feedbackId, $pageId ) {
+		$this->user = $user;
+		if ( !( $this->user instanceof User ) ) {
+			$defaultUser = wfMessage( 'articlefeedbackv5-default-user' )->text();
+			$this->user = User::newFromName( $defaultUser );
+		}
+
+		$this->feedback = ArticleFeedbackv5Model::loadFromId( $feedbackId, $pageId );
+		if ( !$this->feedback ) {
+			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-id' );
+		}
 	}
 
 	/**
@@ -125,45 +93,16 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param  $flag      string the flag
 	 * @param  $notes     string [optional] any notes to send to the activity log
-	 * @param  $direction string [optional] the direction of the request ('increase' / 'decrease')
 	 * @param  $toggle    bool   [optional] whether to toggle the flag
 	 * @return array      information about the run, containing at least the
 	 *                    keys 'result' ('Error' / 'Success') and 'reason' (a
 	 *                    message key)
 	 */
-	public function run( $flag, $notes = '', $direction = 'increase', $toggle = false ) {
-		global $wgUser;
-
-		$flag       = $flag;
-		$notes      = $notes;
-		$direction  = $direction == 'increase' ? 'increase' : 'decrease';
-		$toggle     = $toggle ? true : false;
-
-		// default values for information to be filled in
-		$this->filters = array();
-		$this->update  = array();
-		$this->results = array();
-		$this->log     = array();
-		$this->relevance = array();
-
-		// start
-		$where = array( 'af_id' => $this->feedbackId );
-
-		// we use ONE db connection that talks to master
-		$dbw     = wfGetDB( DB_MASTER );
-		$dbw->begin();
-		$timestamp = $dbw->timestamp();
-
-		// load feedback record, bail if we don't have one
-		$record = $this->fetchRecord( $dbw, $this->feedbackId );
-
-		// if there's no record, this is already broken
-		if ( $record === false || !$record->af_id ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-id' );
-		}
+	public function run( $flag, $notes = '', $toggle = false ) {
+		wfProfileIn( __METHOD__ . "-{$flag}" );
 
 		// check if a user is operating on his/her own feedback
-		$ownFeedback = $wgUser->getId() && $wgUser->getId() == intval( $record->af_user_id );
+		$ownFeedback = $this->user->getId() && $this->user->getId() == intval( $this->feedback->user );
 
 		// check permissions
 		if ( isset( $this->flagPermissionMap[$flag] ) ) {
@@ -172,167 +111,58 @@ class ArticleFeedbackv5Flagging {
 				return $this->errorResult( 'articlefeedbackv5-invalid-feedback-flag' );
 			}
 		}
+/*
+		// log activity
+		ArticleFeedbackv5Log::logActivity( $flag, $this->feedback->page, $this->feedback->id, $notes, $this->user );
+
+		// perform action
+		switch ( $flag ) {
+			case 'undo-helpful':
+			case 'undo-unhelpful':
+				$realFlag = str_replace( 'undo-', '', $flag );
+				if ( property_exists( $this->feedback, $realFlag ) ) {
+					$this->feedback->{$realFlag}--;
+				}
+				break;
+			default:
+				if ( property_exists( $this->feedback, $flag ) ) {
+					$this->feedback->{$flag}++;
+				}
+				break;
+		}
+*/
+		// @todo: get all little rules from the specific functions, see what can be generalized, blahblah improve it
+
+		$toggle     = $toggle ? true : false;
 
 		// run the appropriate method
-		if ( method_exists( $this, 'flag_' . $flag . '_' . $direction ) ) {
-			$res = call_user_func_array(
-				array( $this, 'flag_' . $flag . '_' . $direction ),
-				array( $record, $notes, $timestamp, $toggle )
+		$method = str_replace( '-', '_', $flag );
+		if ( method_exists( $this, $method ) ) {
+			$this->{$method}( $notes, $toggle );
+		}
+
+		// update feedback entry
+		$this->feedback->save();
+
+		// update helpful/unhelpful display count after submission
+		if ( in_array( $flag, array( 'helpful', 'undo-helpful', 'unhelpful', 'undo-unhelpful' ) ) ) {
+			$percentHelpful = ApiArticleFeedbackv5Utils::percentHelpful(
+				$this->feedback->helpful,
+				$this->feedback->unhelpful
 			);
-		} elseif ( method_exists( $this, 'flag_' . $flag ) ) {
-			$res = call_user_func_array(
-				array( $this, 'flag_' . $flag ),
-				array( $record, $notes, $timestamp, $toggle, $direction )
-			);
-		} else {
-			$res = 'articlefeedbackv5-invalid-feedback-flag';
-		}
-		if ( $res !== true ) {
-			return $this->errorResult( $res );
-		}
 
-		wfProfileIn( __METHOD__ . "-flag_{$flag}_$direction" );
-
-		// figure out if we have relevance_scores to adjust
-		if ( count( $this->relevance ) > 0 ) {
-			global $wgArticleFeedbackv5RelevanceScoring;
-			$math = array();
-
-			foreach( $this->relevance as $item ) {
-				// resolving/hiding an article should reset the relevance score
-				if ( in_array( $item, array( 'resolve', 'hide', 'autohide' ) ) ) {
-					$math[] = -$record->af_relevance_score;
-
-				// unresolve/unhide = try to rebuild relevance score
-				} elseif ( in_array( $item, array( 'unresolve', 'unhide' ) ) ) {
-					$math[] = -$record->af_relevance_score;
-					$math[] = $wgArticleFeedbackv5RelevanceScoring['flag'] * $record->af_abuse_count;
-					$math[] = $wgArticleFeedbackv5RelevanceScoring['helpful'] * $record->af_helpful_count;
-					$math[] = $wgArticleFeedbackv5RelevanceScoring['unhelpful'] * $record->af_unhelpful_count;
-					$math[] = $wgArticleFeedbackv5RelevanceScoring['request'] * $record->af_oversight_count;
-					$math[] = $wgArticleFeedbackv5RelevanceScoring['oversight'] * $record->af_is_deleted;
-					$math[] = $wgArticleFeedbackv5RelevanceScoring['hidden'] * $record->af_is_hidden;
-					$math[] = $wgArticleFeedbackv5RelevanceScoring['autohide'] * $record->af_is_autohide;
-					$math[] = $wgArticleFeedbackv5RelevanceScoring['decline'] * $record->af_is_declined;
-					$math[] = $wgArticleFeedbackv5RelevanceScoring['feature'] * $record->af_is_featured;
-					$math[] = $wgArticleFeedbackv5RelevanceScoring['resolve'] * $record->af_is_resolved;
-				}
-			}
-
-			foreach( $this->relevance as $item ) {
-				if ( array_key_exists( $item, $wgArticleFeedbackv5RelevanceScoring ) ) {
-					$math[] = $wgArticleFeedbackv5RelevanceScoring[$item];
-				}
-			}
-
-			$this->update[] = 'af_relevance_score = af_relevance_score + (' . implode (' + ', $math) . ')';
-			$this->update[] = 'af_relevance_sort = - af_relevance_score';
-		}
-
-		// note: af_activity_count & af_suppress_count need to be updated as well
-		// ApiArticleFeedbackv5Utils::logActivity takes care of that
-
-		// we were valid
-		$dbw->update(
-			'aft_article_feedback',
-			$this->update,
-			$where,
-			__METHOD__
-		);
-
-		// if we've changed helpfulness, featured, or relevance_score we adjust the relevance filter
-		if ( count($this->relevance) > 0 || $flag == 'helpful' || $flag == 'unhelpful' || $flag == 'feature' ) {
-			global $wgArticleFeedbackv5Cutoff;
-
-			// we might have changed the featured status or helpfulness score here
-			if ( !isset( $this->netHelpfulness ) ) {
-				$this->netHelpfulness = $record->af_net_helpfulness;
-			}
-			if ( !isset( $is_featured ) ) {
-				$is_featured = $record->af_is_featured;
-			}
-			// grab our shiny new relevance score
-			$new_score = $dbw->selectField( 'aft_article_feedback', 'af_relevance_score', $where, __METHOD__ );
-
-			// we add 1 if
-
-			// 1. we're newly featured, don't have a comment, and nethelpfulness is not at threshold and greater then cutoff
-			if ( !$record->af_has_comment && $this->netHelpfulness <= 0
-				&& !$record->af_is_featured && $is_featured
-				&& $new_score > $wgArticleFeedbackv5Cutoff ) {
-				$this->filters['visible-relevant'] = 1;
-			// 2. we're newly net_helpful, don't have a comment, and aren't featured and greater then cutoff
-			} elseif ( !$record->af_has_comment && !$is_featured
-				  && $record->af_net_helpfulness <= 0 && $this->netHelpfulness > 0
-				  && $new_score > $wgArticleFeedbackv5Cutoff ) {
-				$this->filters['visible-relevant'] = 1;
-			// 3. we're newly above the cutoff and qualify as relevant in any way
-			} elseif ( ( $record->af_has_comment || $this->netHelpfulness > 0 || $is_featured )
-				&& $new_score > $wgArticleFeedbackv5Cutoff
-				&& $record->af_relevance_score <= $wgArticleFeedbackv5Cutoff ) {
-				$this->filters['visible-relevant'] = 1;
-
-			// we subtract 1 if
-
-			// we used to be in the relevant filter but are now below the cutoff
-			} elseif ( ( $record->af_has_comment || $record->af_new_helpfulness > 0 || $record->af_is_featured )
-				  && $new_score <= $wgArticleFeedbackv5Cutoff
-				  && $record->af_relevance_score > $wgArticleFeedbackv5Cutoff ) {
-				$this->filters['visible-relevant'] = -1;
-			// we used to be in the relevant filter via featured or helpfulness and are now not
-			} elseif ( !$record->af_has_comment
-				  && ( ( $record->af_new_helpfulness > 0 && $this->netHelpfulness <= 0 )
-					|| ( $record->af_is_featured && !$is_featured ) ) ) {
-					$this->filters['visible-relevant'] = -1;
-			}
-		}
-
-		// Update the filter count rollups.
-		ApiArticleFeedbackv5Utils::updateFilterCounts( $dbw, $record->af_page_id, $this->filters );
-
-		// Update helpful/unhelpful display count after submission but BEFORE db commit to stay in the transaction
-		if ( $flag == 'helpful' || $flag == 'unhelpful' ) {
-			$this->results['helpful'] = wfMessage( 'articlefeedbackv5-form-helpful-votes' )
-				->rawParams( wfMessage( 'percent',
-						ApiArticleFeedbackv5Utils::percentHelpful( $this->helpfulCount, $this->unhelpfulCount )
-					)->text() )
+			$this->results['helpful'] = wfMessage( 'articlefeedbackv5-form-helpful-votes-percent' )
+				->params( $percentHelpful )
 				->escaped();
 			$this->results['helpful_counts'] = wfMessage( 'articlefeedbackv5-form-helpful-votes-count' )
-				->params( $this->helpfulCount, $this->unhelpfulCount )
+				->params( $this->feedback->helpful, $this->feedback->unhelpful )
 				->escaped();
-
-			// Update net_helpfulness after flagging as helpful/unhelpful.
-			$dbw->update(
-				'aft_article_feedback',
-				array( 'af_net_helpfulness = CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED)' ),
-				array(
-					'af_id' => $this->feedbackId,
-				),
-				__METHOD__
-			);
-		}
-
-		$dbw->commit(); // everything went well, so we commit our db changes
-
-		// activity logging
-		foreach( $this->log as $entry ) {
-			$user = $entry[2];
-
-			// if this is an automatic action, use general 'Article Feedback' doer
-			if ( $user === null ) {
-				$defaultUser = wfMessage( 'articlefeedbackv5-default-user' )->text();
-				$doer = User::newFromName( $defaultUser );
-			} else {
-				$doer = $user;
-			}
-
-			ArticleFeedbackv5Log::logActivity( $entry[0], $record->af_page_id, $this->feedbackId, $entry[1], $doer );
 		}
 
 		$this->results['result'] = 'Success';
 		$this->results['reason'] = null;
 
-		wfProfileOut( __METHOD__ . "-flag_{$flag}_$direction" );
+		wfProfileOut( __METHOD__ . "-{$flag}" );
 
 		return $this->results;
 	}
@@ -344,96 +174,40 @@ class ArticleFeedbackv5Flagging {
 	 * filters (i.e., any filter not prefixed with "notdeleted-").  No data is
 	 * removed from the database.  Deleting a post also hides it.
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_oversight_increase( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( $record->af_is_deleted ) {
-			return 'articlefeedbackv5-invalid-feedback-state';
+	private function oversight( $notes, $toggle ) {
+		// already oversighted?
+		if ( $this->feedback->oversight > $this->feedback->unoversight ) {
+			$this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
 		}
 
-		$this->update['af_is_deleted'] = true;
-		$this->update['af_is_undeleted'] = false;
+		$this->feedback->{__FUNCTION__}++;
+		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->page, $this->feedback->id, $notes, $this->user );
 
-		$this->relevance[] = 'oversight';
+		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+			__FUNCTION__,
+			$this->getUserId(),
+			$this->getTimestamp()
+		);
+		$this->results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
+			__FUNCTION__,
+			$this->feedback->id,
+			$this->getUserId(),
+			$this->getTimestamp()
+		);
 
-		$this->log[] = array( 'oversight', $notes, $this->user );
+		// autohide if not yet hidden
+		if ( $this->feedback->hide <= $this->feedback->unhide ) {
+			$this->feedback->hide = $this->feedback->unhide + 1;
+			ArticleFeedbackv5Log::logActivity( 'autohide', $this->feedback->page, $this->feedback->id, $notes, $this->user );
 
-		// always increment oversighted count and decrement notdeleted
-		$this->filters = array('all-oversighted' => 1, 'notdeleted' => -1);
-
-		// if this was previously visible, adjust counts
-		$this->visibleCounts( $record, 'invisible' );
-
-		// adjust notdeleted counts
-		if ( $record->af_is_hidden ) {
-			$this->filters['notdeleted-hidden'] = -1;
-		}
-		if ( $record->af_is_unhidden ) {
-			$this->filters['notdeleted-unhidden'] = -1;
-		}
-		if ( $record->af_oversight_count > 0 ) {
-			$this->filters['notdeleted-requested'] = -1;
-		}
-		if ( $record->af_is_unrequested ) {
-			$this->filters['notdeleted-unrequested'] = -1;
-		}
-		if ( $record->af_is_declined ) {
-			$this->filters['notdeleted-declined'] = -1;
+			$this->results['autohide'] = 1;
 		}
 
-		// adjust undeleted count if necessary
-		if ( $record->af_is_undeleted ) {
-			$this->filters['all-unoversighted'] = -1;
-		}
-
-		// autohide if not hidden
-		if ( false == $record->af_is_hidden ) {
-			// we must tell the helper method this record is deleted for filter purposes
-			$record->af_is_deleted = true;
-
-			$this->update['af_is_hidden'] = true;
-			$this->update['af_is_unhidden'] = false;
-			$this->update['af_is_autohide'] = true;
-
-			$this->update['af_last_status'] = 'autohide';
-			$this->update['af_last_status_user_id'] = $this->getUserId();
-			$this->update['af_last_status_timestamp'] = $timestamp;
-			if ( $notes ) {
-				$this->update['af_last_status_notes'] = $notes;
-			}
-
-			$this->relevance[] = 'autohide';
-
-			$this->log[] = array( 'autohide', '', $this->user );
-
-			$this->results['autohidden'] = 1;
-			$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-				'autohide', $this->getUserId(), $timestamp );
-			$this->results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
-				'hidden', $record->af_id, $this->getUserId(), $timestamp );
-
-			// NOTE: we've already adjusted all visiblity counts above so we only do hide specific ones
-			$this->hideCounts( $record, 'hide' );
-
-		} else {
-
-			$this->update['af_last_status'] = 'deleted';
-			$this->update['af_last_status_user_id'] = $this->getUserId();
-			$this->update['af_last_status_timestamp'] = $timestamp;
-			if ( $notes ) {
-				$this->update['af_last_status_notes'] = $notes;
-			}
-
-			$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-				'deleted', $this->getUserId(), $timestamp );
-			$this->results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
-				'oversight', $record->af_id, $this->getUserId(), $timestamp );
-		}
-		return true;
+		return $this;
 	}
 
 	/**
@@ -442,55 +216,26 @@ class ArticleFeedbackv5Flagging {
 	 * Un-deleting means to remove the "oversighted" mark from a post.  It
 	 * leaves the feedback hidden, even if it was auto-hidden when deleted.
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_oversight_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( !$record->af_is_deleted ) {
-			return 'articlefeedbackv5-invalid-feedback-state';
+	private function unoversight( $notes, $toggle ) {
+		// not yet oversighted?
+		if ( $this->feedback->oversight <= $this->feedback->unoversight ) {
+			$this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
 		}
 
-		$this->update['af_is_deleted'] = false;
-		$this->update['af_is_undeleted'] = true;
+		$this->feedback->{__FUNCTION__}++;
+		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->page, $this->feedback->id, $notes, $this->user );
 
-		$this->update['af_last_status'] = 'undeleted';
-		$this->update['af_last_status_user_id'] = $this->getUserId();
-		$this->update['af_last_status_timestamp'] = $timestamp;
-		if ( $notes ) {
-			$this->update['af_last_status_notes'] = $notes;
-		}
-
-		$this->relevance[] = 'unoversight';
-
-		$this->log[] = array( 'unoversight', $notes, $this->user );
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-			'undeleted', $this->getUserId(), $timestamp );
+			__FUNCTION__,
+			$this->getUserId(),
+			$this->getTimestamp()
+		);
 
-		$this->filters = array('all-unoversighted' => 1,
-				 'all-oversighted' => -1);
-
-		$this->visibleCounts( $record, 'visible' );
-
-		// adjust notdeleted counts
-		if ( $record->af_is_hidden ) {
-			$this->filters['notdeleted-hidden'] = 1;
-		}
-		if ( $record->af_is_unhidden ) {
-			$this->filters['notdeleted-unhidden'] = 1;
-		}
-		if ( $record->af_oversight_count > 0 ) {
-			$this->filters['notdeleted-requested'] = 1;
-		}
-		if ( $record->af_is_unrequested ) {
-			$this->filters['notdeleted-unrequested'] = 1;
-		}
-		if ( $record->af_is_declined ) {
-			$this->filters['notdeleted-declined'] = 1;
-		}
-		return true;
+		return $this;
 	}
 
 	/**
@@ -500,40 +245,32 @@ class ArticleFeedbackv5Flagging {
 	 * filters (i.e., any filter prefixed with "visible-").  Hidden feedback is
 	 * only visible to monitors or oversighters.
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_hide_increase( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( $record->af_is_hidden ) {
-			return 'articlefeedbackv5-invalid-feedback-state';
-		}
-		$this->update['af_is_hidden'] = true;
-		$this->update['af_is_unhidden'] = false;
-
-		$this->update['af_last_status'] = 'hidden';
-		$this->update['af_last_status_user_id'] = $this->getUserId();
-		$this->update['af_last_status_timestamp'] = $timestamp;
-		if ( $notes ) {
-			$this->update['af_last_status_notes'] = $notes;
+	private function hide( $notes, $toggle ) {
+		// already hidden?
+		if ( $this->feedback->hide > $this->feedback->unhide ) {
+			$this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
 		}
 
-		$this->filters = array();
+		$this->feedback->{__FUNCTION__}++;
+		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->page, $this->feedback->id, $notes, $this->user );
 
-		$this->hideCounts( $record, 'hide' );
-		$this->visibleCounts( $record, 'invisible' );
-
-		$this->relevance[] = 'hide';
-
-		$this->log[] = array( 'hidden', $notes, $this->user );
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-			'hidden', $this->getUserId(), $timestamp );
+			__FUNCTION__,
+			$this->getUserId(),
+			$this->getTimestamp()
+		);
 		$this->results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
-			'hidden', $record->af_id, $this->getUserId(), $timestamp );
+			__FUNCTION__,
+			$this->feedback->id,
+			$this->getUserId(),
+			$this->getTimestamp()
+		);
 
-		return true;
+		return $this;
 	}
 
 	/**
@@ -543,46 +280,31 @@ class ArticleFeedbackv5Flagging {
 	 * in the visible filters (i.e., any filter prefixed with "visible-")
 	 * again.
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_hide_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( !$record->af_is_hidden ) {
+	private function unhide( $notes, $toggle ) {
+		// not yet hidden?
+		if ( $this->feedback->hide <= $this->feedback->unhide ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
 
-		$record->af_is_hidden = false;
+		$this->feedback->{__FUNCTION__}++;
+		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->page, $this->feedback->id, $notes, $this->user );
 
-		$this->update['af_is_hidden'] = false;
-		$this->update['af_is_unhidden'] = true;
-
-		$this->update['af_last_status'] = 'unhidden';
-		$this->update['af_last_status_user_id'] = $this->getUserId();
-		$this->update['af_last_status_timestamp'] = $timestamp;
-		if ( $notes ) {
-			$this->update['af_last_status_notes'] = $notes;
-		}
-
-		$this->filters = array();
-
-		$this->hideCounts( $record, 'show' );
-		$this->visibleCounts( $record, 'visible' );
-
-		$this->relevance[] = 'unhide';
-
-		$this->log[] = array( 'unhidden', $notes, $this->user );
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-			'unhidden', $this->getUserId(), $timestamp );
+			__FUNCTION__,
+			$this->getUserId(),
+			$this->getTimestamp()
+		);
 
 		// clear all abuse flags
-		if ( $record->af_abuse_count > 0 ) {
-			$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
+		if ( $this->feedback->flag <= $this->feedback->unflag ) {
+			$this->clear_flags( $notes, $toggle );
 		}
 
-		return true;
+		return $this;
 	}
 
 	/**
@@ -591,121 +313,65 @@ class ArticleFeedbackv5Flagging {
 	 * This flag allows monitors (who can hide feedback but not delete it) to
 	 * submit a post for deletion.
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_request_increase( stdClass $record, $notes, $timestamp, $toggle ) {
-		$this->relevance[] = 'request';
-
-		$this->log[] = array( 'request', $notes, $this->user );
-
-		// NOTE: we are bypassing traditional sql escaping here
-		$this->update[] = "af_oversight_count = af_oversight_count + 1";
-
-		// we do not increment anything by default
-		$this->filters = array();
-
-		// if this is a NEW request, increment our counters
-		if ( $record->af_oversight_count < 1 ) {
-			$this->filters['all-requested'] = 1;
-			if ( $record->af_is_deleted == false ) {
-				$this->filters['notdeleted-requested'] = 1;
-			}
+	private function request( $notes, $toggle ) {
+		// already requested?
+		if ( $this->feedback->request > $this->feedback->unrequest ) {
+			$this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
 		}
 
-		// turn off unrequested if necessary
-		if ( $record->af_is_unrequested ) {
-			$this->filters['all-unrequested'] = -1;
-			$this->update['af_is_unrequested'] = false;
-			if ( $record->af_is_deleted == false ) {
-				$this->filters['notdeleted-unrequested'] = -1;
-			}
+		$this->feedback->{__FUNCTION__}++;
+		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->page, $this->feedback->id, $notes, $this->user );
+
+		// autohide if not yet hidden
+		if ( $this->feedback->hide <= $this->feedback->unhide ) {
+			$this->feedback->hide = $this->feedback->unhide + 1;
+			ArticleFeedbackv5Log::logActivity( 'autohide', $this->feedback->page, $this->feedback->id, $notes, $this->user );
+
+			$this->results['autohide'] = 1;
 		}
 
-		if ( false == $record->af_is_hidden ) {
+		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+			__FUNCTION__,
+			$this->getUserId(),
+			$this->getTimestamp()
+		);
 
-			$this->update['af_is_hidden'] = true;
-			$this->update['af_is_unhidden'] = false;
-			$this->update['af_is_autohide'] = true;
-
-			$this->update['af_last_status'] = 'autohide';
-			$this->update['af_last_status_user_id'] = $this->getUserId();
-			$this->update['af_last_status_timestamp'] = $timestamp;
-			if ( $notes ) {
-				$this->update['af_last_status_notes'] = $notes;
-			}
-
-			$this->relevance[] = 'autohide';
-
-			$this->log[] = array( 'autohide', '', $this->user );
-
-			$this->results['autohidden'] = 1;
-			$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-				'hidden', $this->getUserId(), $timestamp );
-			$this->results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
-				'hidden', $record->af_id, $this->getUserId(), $timestamp );
-
-			$this->hideCounts( $record, 'hide' );
-			// NOTE: unlike autohide after oversight, we must do the visiblity filter
-			$this->visibleCounts( $record, 'invisible' );
-
-		} else {
-			$this->update['af_last_status'] = 'request';
-			$this->update['af_last_status_user_id'] = $this->getUserId();
-			$this->update['af_last_status_timestamp'] = $timestamp;
-			if ( $notes ) {
-				$this->update['af_last_status_notes'] = $notes;
-			}
-			$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-				'request', $this->getUserId(), $timestamp );
+		// send an email if this is the first (new) request
+		if ( $this->feedback->request > $this->feedback->request &&
+			$this->feedback->request - 1 <= $this->feedback->request ) {
+			$this->sendOversightEmail();
 		}
 
-		// IF the previous setting was 0, send an email
-		if ( $record->af_oversight_count < 1 ) {
-			$this->sendOversightEmail( $record );
-		}
-
-		return true;
+		return $this;
 	}
 
 	/**
 	 * Flag: un-request oversight
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_request_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
-		$this->relevance[] = 'unrequest';
-		$this->log[] = array( 'unrequest', $notes, $this->user );
-		$this->filters = array();
-
-		if( ( $record->af_oversight_count - 1 ) < 1) {
-			$this->update['af_is_unrequested'] = true;
-			$this->filters['all-unrequested'] = 1;
-			$this->filters['all-requested'] = -1;
-			if ( $record->af_is_deleted == false ) {
-				$this->filters['notdeleted-unrequested'] = 1;
-				$this->filters['notdeleted-requested'] = -1;
-			}
+	private function unrequest( $notes, $toggle ) {
+		// not yet requested?
+		if ( $this->feedback->request <= $this->feedback->unrequest ) {
+			return 'articlefeedbackv5-invalid-feedback-state';
 		}
 
-		// NOTE: we are bypassing traditional sql escaping here
-		$this->update[] = "af_oversight_count = GREATEST(CONVERT(af_oversight_count, SIGNED) - 1, 0)";
-		$this->update['af_last_status'] = 'unrequest';
-		$this->update['af_last_status_user_id'] = $this->getUserId();
-		$this->update['af_last_status_timestamp'] = $timestamp;
-		if ( $notes ) {
-			$this->update['af_last_status_notes'] = $notes;
-		}
+		$this->feedback->{__FUNCTION__}++;
+		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->page, $this->feedback->id, $notes, $this->user );
+
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-			'unrequest', $this->getUserId(), $timestamp );
-		return true;
+			__FUNCTION__,
+			$this->getUserId(),
+			$this->getTimestamp()
+		);
+
+		return $this;
 	}
 
 	/**
@@ -714,77 +380,56 @@ class ArticleFeedbackv5Flagging {
 	 * This flag allows monitors to highlight a particularly useful or
 	 * interesting post.
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_feature_increase( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( $record->af_is_featured ) {
-			return 'articlefeedbackv5-invalid-feedback-state';
-		}
-		$this->log[] = array( 'feature', $notes, $this->user );
-
-		$this->update['af_is_featured'] = true;
-		$this->update['af_is_unfeatured'] = false;
-		$this->update['af_last_status'] = 'featured';
-		$this->update['af_last_status_user_id'] = $this->getUserId();
-		$this->update['af_last_status_timestamp'] = $timestamp;
-		if ( $notes ) {
-			$this->update['af_last_status_notes'] = $notes;
+	private function feature( $notes, $toggle ) {
+		// already featured?
+		if ( $this->feedback->feature > $this->feedback->unfeature ) {
+			$this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
 		}
 
-		// filter adjustments
-		$this->filters['visible-featured'] = 1;
-		if ( true == $record->af_is_unfeatured) {
-			$this->filters['visible-unfeatured'] = -1;
-		}
-		$this->relevance[] = 'feature';
+		$this->feedback->{__FUNCTION__}++;
+		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->page, $this->feedback->id, $notes, $this->user );
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-			'featured', $this->getUserId(), $timestamp );
+			__FUNCTION__,
+			$this->getUserId(),
+			$this->getTimestamp()
+		);
 
 		// clear all abuse flags
-		if ( $record->af_abuse_count > 0 ) {
-			$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
+		if ( $this->feedback->flag <= $this->feedback->unflag ) {
+			$this->clear_flags( $notes, $toggle );
 		}
 
-		return true;
+		return $this;
 	}
 
 	/**
 	 * Flag: un-feature
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_feature_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( !$record->af_is_featured ) {
+	private function unfeature( $notes, $toggle ) {
+		// not yet featured?
+		if ( $this->feedback->feature <= $this->feedback->unfeature ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
-		$this->log[] = array( 'unfeature', $notes, $this->user );
 
-		$this->update['af_is_featured'] = false;
-		$this->update['af_is_unfeatured'] = true;
-		$this->update['af_last_status'] = 'unfeatured';
-		$this->update['af_last_status_user_id'] = $this->getUserId();
-		$this->update['af_last_status_timestamp'] = $timestamp;
-		if ( $notes ) {
-			$this->update['af_last_status_notes'] = $notes;
-		}
-		// filter adjustments
-		$this->filters['visible-featured'] = -1;
-		$this->filters['visible-unfeatured'] = 1;
-		$this->relevance[] = 'unfeature';
+		$this->feedback->{__FUNCTION__}++;
+		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->page, $this->feedback->id, $notes, $this->user );
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-			'unfeatured', $this->getUserId(), $timestamp );
+			__FUNCTION__,
+			$this->getUserId(),
+			$this->getTimestamp()
+		);
 
-		return true;
+		return $this;
 	}
 
 	/**
@@ -793,73 +438,51 @@ class ArticleFeedbackv5Flagging {
 	 * This flag allows monitors to mark a featured post as resolved, when the
 	 * suggestion has been implemented.
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_resolve_increase( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( $record->af_is_resolved ) {
-			return 'articlefeedbackv5-invalid-feedback-state';
-		}
-		$this->log[] = array( 'resolve', $notes, $this->user );
-
-		$this->update['af_is_resolved'] = true;
-		$this->update['af_is_unresolved'] = false;
-		$this->update['af_last_status'] = 'resolved';
-		$this->update['af_last_status_user_id'] = $this->getUserId();
-		$this->update['af_last_status_timestamp'] = $timestamp;
-		if ( $notes ) {
-			$this->update['af_last_status_notes'] = $notes;
+	private function resolve( $notes, $toggle ) {
+		// already resolved?
+		if ( $this->feedback->resolve > $this->feedback->unresolve ) {
+			$this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
 		}
 
-		// filter adjustments
-		$this->filters['visible-resolved'] = 1;
-		if ( true == $record->af_is_unresolved) {
-			$this->filters['visible-unresolved'] = -1;
-		}
-		$this->relevance[] = 'resolve';
+		$this->feedback->{__FUNCTION__}++;
+		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->page, $this->feedback->id, $notes, $this->user );
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-			'resolved', $this->getUserId(), $timestamp );
+			__FUNCTION__,
+			$this->getUserId(),
+			$this->getTimestamp()
+		);
 
-		return true;
+		return $this;
 	}
 
 	/**
 	 * Flag: un-mark a post as resolved
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_resolve_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( !$record->af_is_resolved ) {
+	private function unresolve( $notes, $toggle ) {
+		// not yet resolved?
+		if ( $this->feedback->resolve <= $this->feedback->unresolve ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
-		// decrease means "unresolve" this
-		$this->log[] = array( 'unresolve', $notes, $this->user );
 
-		$this->update['af_is_resolved'] = false;
-		$this->update['af_is_unresolved'] = true;
-		$this->update['af_last_status'] = 'unresolved';
-		$this->update['af_last_status_user_id'] = $this->getUserId();
-		$this->update['af_last_status_timestamp'] = $timestamp;
-		if ( $notes ) {
-			$this->update['af_last_status_notes'] = $notes;
-		}
-		// filter adjustments
-		$this->filters['visible-resolved'] = -1;
-		$this->filters['visible-unresolved'] = 1;
-		$this->relevance[] = 'unresolve';
+		$this->feedback->{__FUNCTION__}++;
+		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->page, $this->feedback->id, $notes, $this->user );
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-			'unresolved', $this->getUserId(), $timestamp );
+			__FUNCTION__,
+			$this->getUserId(),
+			$this->getTimestamp()
+		);
 
-		return true;
+		return $this;
 	}
 
 	/**
@@ -868,44 +491,26 @@ class ArticleFeedbackv5Flagging {
 	 * This flag allows oversighters to decline a request for oversight.  It
 	 * unsets all request/unrequest on a piece of feedback.
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @param  $direction string   increase/decrease
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_decline( stdClass $record, $notes, $timestamp, $toggle, $direction ) {
-		$this->relevance[] = 'decline';
-		$this->log[] = array( 'decline', $notes, $this->user );
-
-		// oversight request count becomes 0
-		$this->update['af_oversight_count'] = 0;
-		$this->update['af_is_declined'] = true;
-		$this->update['af_last_status'] = 'declined';
-		$this->update['af_last_status_user_id'] = $this->getUserId();
-		$this->update['af_last_status_timestamp'] = $timestamp;
-		if ( $notes ) {
-			$this->update['af_last_status_notes'] = $notes;
+	private function decline( $notes, $toggle ) {
+		// not requested?
+		if ( $this->feedback->request <= 0 ) {
+			return 'articlefeedbackv5-invalid-feedback-state';
 		}
 
-		// always increment our all declined
-		$this->filters = array('all-declined' => 1);
-		if ( $record->af_oversight_count > 0 ) {
-			$this->filters['all-requested'] = -1;
-		}
-
-		// if this is NOT deleted, change our notdeleted request items
-		if( $record->af_is_deleted == false) {
-			$this->filters['notdeleted-declined'] = 1;
-			if ( $record->af_oversight_count > 0 ) {
-				$this->filters['notdeleted-requested'] = -1;
-			}
-		}
+		$this->feedback->{__FUNCTION__}++;
+		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->page, $this->feedback->id, $notes, $this->user );
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-			'declined', $this->getUserId(), $timestamp );
-		return true;
+			__FUNCTION__,
+			$this->getUserId(),
+			$this->getTimestamp()
+		);
+
+		return $this;
 	}
 
 	/**
@@ -913,88 +518,51 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * This flag allows readers to flag a piece of feedback as abusive.
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_flag_increase( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function flag( $notes, $toggle ) {
+		$this->feedback->{__FUNCTION__}++;
+
+		$flag = $this->isSystemCall() ? 'autoflag' : __FUNCTION__;
+		ArticleFeedbackv5Log::logActivity( $flag, $this->feedback->page, $this->feedback->id, $notes, $this->user );
+
 		global $wgArticleFeedbackv5AbusiveThreshold,
 			$wgArticleFeedbackv5HideAbuseThreshold;
 
-		$this->results['abuse_count'] = $record->af_abuse_count;
-		$this->filters = array();
-
-		$this->results['abuse_count']++;
-		$this->relevance[] = 'flag';
-
-		// Don't allow negative numbers
+		// return a flag in the JSON, that turns the link red.
+		$this->results['abuse_count'] = $this->feedback->flag - $this->feedback->unflag;
 		$this->results['abuse_count'] = max( 0, $this->results['abuse_count'] );
-
-		// Return a flag in the JSON, that turns the link red.
 		if ( $this->results['abuse_count'] >= $wgArticleFeedbackv5AbusiveThreshold ) {
 			$this->results['abusive'] = 1;
 		}
-
-		if ( $this->isSystemCall() ) {
-			$this->log[] = array( 'autoflag', $notes, null );
-		} else {
-			$this->log[] = array( 'flag', $notes, $this->user );
-		}
-
-		$this->update[] = "af_abuse_count = af_abuse_count + 1";
-
-		if ( $this->results['abuse_count'] > 0
-			&& $record->af_is_hidden == false && $record->af_is_deleted == false ) {
-			$this->filters['visible-abusive'] = 1;
-		}
-
-		// Auto-hide after threshold flags
-		if ( $record->af_abuse_count > $wgArticleFeedbackv5HideAbuseThreshold
-		   && false == $record->af_is_hidden ) {
-
-			$this->update['af_is_hidden'] = true;
-			$this->update['af_is_unhidden'] = false;
-			$this->update['af_is_autohide'] = true;
-
-			$this->update['af_last_status'] = 'autohide';
-			$this->update['af_last_status_user_id'] = $this->getUserId();
-			$this->update['af_last_status_timestamp'] = $timestamp;
-			if ( $notes ) {
-				$this->update['af_last_status_notes'] = $notes;
-			}
-
-			$this->relevance[] = 'autohide';
-
-			$this->log[] = array( 'autohide', '', $this->user );
-
-			$this->results['autohidden'] = 1;
-			$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-				'autohide', $this->getUserId(), $timestamp );
-			$this->results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
-				'hidden', $record->af_id, $this->getUserId(), $timestamp );
-
-			$this->hideCounts( $record, 'hide' );
-			// NOTE: unlike autohide after oversight, we must do the visiblity filter
-			$this->visibleCounts( $record, 'invisible' );
-
-		} elseif ( $this->getUserId() < 1 ) {
-			$this->update['af_last_status'] = 'autoflag';
-			$this->update['af_last_status_user_id'] = 0;
-			$this->update['af_last_status_timestamp'] = $timestamp;
-			if ( $notes ) {
-				$this->update['af_last_status_notes'] = $notes;
-			}
-			$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
-				'autoflag', 0, $timestamp );
-		}
-
 		$this->results['abuse_report'] = wfMessage( 'articlefeedbackv5-form-abuse-count' )
 			->params( $this->results['abuse_count'] )
 			->escaped();
 
-		return true;
+		// auto-hide after threshold flags
+		if ( $this->results['abuse_count'] > $wgArticleFeedbackv5HideAbuseThreshold &&
+			$this->feedback->hide <= $this->feedback->unhide ) {
+			$this->feedback->hide = $this->feedback->unhide + 1;
+			ArticleFeedbackv5Log::logActivity( 'autohide', $this->feedback->page, $this->feedback->id, $notes, $this->user );
+
+			$this->results['autohide'] = 1;
+			$this->results['mask-line'] = ApiArticleFeedbackv5Utils::renderMaskLine(
+				'hide',
+				$this->feedback->id,
+				$this->getUserId(),
+				$this->getTimestamp()
+			);
+		} elseif ( $this->getUserId() < 1 ) {
+			$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
+				'autoflag',
+				$this->getUserId(),
+				$this->getTimestamp()
+			);
+		}
+
+		return $this;
 	}
 
 	/**
@@ -1002,107 +570,54 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * This flag allows readers to remove an abuse flag on a piece of feedback.
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_flag_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function unflag( $notes, $toggle ) {
+		$this->feedback->{__FUNCTION__}++;
+		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->page, $this->feedback->id, $notes, $this->user );
+
 		global $wgArticleFeedbackv5AbusiveThreshold,
 			   $wgArticleFeedbackv5HideAbuseThreshold;
 
-		$this->results['abuse_count'] = $record->af_abuse_count;
-		$this->filters = array();
-
-		$this->results['abuse_count']--;
-		$this->relevance[] = 'unflag';
-
-		// Don't allow negative numbers
+		// return a flag in the JSON, that turns the link red.
+		$this->results['abuse_count'] = $this->feedback->flag - $this->feedback->unflag;
 		$this->results['abuse_count'] = max( 0, $this->results['abuse_count'] );
-
-		// Return a flag in the JSON, that turns the link red.
 		if ( $this->results['abuse_count'] >= $wgArticleFeedbackv5AbusiveThreshold ) {
 			$this->results['abusive'] = 1;
 		}
-
-		$this->log[] = array( 'unflag', $notes, $this->user );
-
-		// NOTE: we are bypassing traditional sql escaping here
-		$this->update[] = "af_abuse_count = GREATEST(CONVERT(af_abuse_count, SIGNED) -1, 0)";
-
-		if ( $this->results['abuse_count'] < 1
-			&& $record->af_is_hidden == false && $record->af_is_deleted == false ) {
-			$this->filters['visible-abusive'] = -1;
-		}
-
-		// Un-hide if we don't have threshold flags anymore
-		if ( $record->af_abuse_count < $wgArticleFeedbackv5HideAbuseThreshold && true == $record->af_is_autohide ) {
-			$this->update['af_is_hidden'] = false;
-			$this->update['af_is_unhidden'] = true;
-
-			$this->hideCounts( $record, 'show' );
-			$this->visibleCounts( $record, 'visible' );
-
-			$this->relevance[] = 'unhide';
-
-			$this->log[] = array( 'unhidden', 'Automatic un-hide', null );
-		}
-
 		$this->results['abuse_report'] = wfMessage( 'articlefeedbackv5-form-abuse-count' )
 			->params( $this->results['abuse_count'] )
 			->escaped();
 
-		return true;
+		// un-hide if we don't have threshold flags anymore
+		if ( $this->results['abuse_count'] < $wgArticleFeedbackv5HideAbuseThreshold &&
+			true == $record->af_is_autohide ) { // @todo: there is no way to know if autohide ATM
+			$this->feedback->unhide = $this->feedback->hide;
+			ArticleFeedbackv5Log::logActivity( 'unhide', $this->feedback->page, $this->feedback->id, $notes, $this->user );
+		}
+
+		return $this;
 	}
 
 	/**
 	 * Flag: clear all abuse flags
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return mixed      true if success, message key (string) if not
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	private function flag_clearflags( stdClass $record, $notes, $timestamp, $toggle ) {
-		// when un-hiding a port, reset abuse count to 0 as well
+	private function clear_flags( $notes, $toggle ) {
+		$this->feedback->unflag = $this->feedback->flag;
+		ArticleFeedbackv5Log::logActivity( 'clear-flags', $this->feedback->page, $this->feedback->id, $notes, $this->user );
+
 		$this->results['abuse_count'] = 0;
-
-		// return a flag in the JSON, that should no longer turn the link red
 		$this->results['abusive'] = 0;
-
-		// update relevance score, undo all previous flags
-		for ( $i = 0; $i < $this->results['abuse_count']; $i++ ) {
-			$this->relevance[] = 'unflag';
-		}
-
-		// add entry to log
-		$this->log[] = array( 'clear-flags', $notes, $this->user );
-
-		// update filter totals
-		$this->filters['visible-abusive'] = -1;
-
-		// update entry in db
-		$this->update['af_abuse_count'] = $this->results['abuse_count'];
-
-		// un-hide if the record was auto-hidden because of flags
-		if ( $record->af_is_hidden == true && $record->af_is_autohide == true ) {
-			$this->update['af_is_hidden'] = false;
-			$this->update['af_is_unhidden'] = true;
-
-			$this->hideCounts( $record, 'show' );
-			$this->visibleCounts( $record, 'visible' );
-
-			$this->relevance[] = 'unhide';
-
-			$this->log[] = array( 'unhidden', 'Automatic un-hide', null );
-		}
-
 		$this->results['abuse_cleared'] = true;
 		$this->results['abuse_report'] = wfMessage( 'articlefeedbackv5-form-abuse-cleared' )->escaped();
 
-		return true;
+		return $this;
 	}
 
 	/**
@@ -1110,21 +625,50 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * This flag allows readers to vote a piece of feedback up.
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @param  $direction string   increase/decrease
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_helpful( stdClass $record, $notes, $timestamp, $toggle, $direction ) {
-		$vote = $this->vote( $record, 'helpful', $notes, $timestamp, $toggle, $direction );
+	private function helpful( $notes, $toggle ) {
+		$this->feedback->{__FUNCTION__}++;
 
-		if ( $record->af_helpful_count < $this->helpfulCount ) {
-			$type = 'helpful';
-		} else {
-			$type = 'undo-helpful';
+		return true;
+		// @todo: below is legacy code and needs refactoring
+
+		$vote = $this->vote( $record, 'helpful', $notes, $timestamp, $toggle, 'increase' );
+
+		$type = 'helpful';
+
+		$this->log[] = array( $type, $notes, $this->user );
+
+		$this->update['af_last_status'] = $type;
+		$this->update['af_last_status_user_id'] = $this->getUserId();
+		$this->update['af_last_status_timestamp'] = $timestamp;
+		if ( $notes ) {
+			$this->update['af_last_status_notes'] = $notes;
 		}
+
+		return $vote;
+	}
+
+	/**
+	 * Flag: un-mark as helpful
+	 *
+	 * This flag allows readers to un-vote a piece of feedback up.
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return mixed      true if success, message key (string) if not
+	 */
+	private function undo_helpful( $notes, $toggle ) {
+		$this->feedback->helpful--;
+
+		return true;
+		// @todo: below is legacy code and needs refactoring
+
+		$vote = $this->vote( $record, 'undo-helpful', $notes, $timestamp, $toggle, 'decrease' );
+
+		$type = 'undo-helpful';
 
 		$this->log[] = array( $type, $notes, $this->user );
 
@@ -1143,21 +687,50 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * This flag allows readers to vote a piece of feedback down.
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @param  $direction string   increase/decrease
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_unhelpful( stdClass $record, $notes, $timestamp, $toggle, $direction ) {
-		$vote = $this->vote( $record, 'unhelpful', $notes, $timestamp, $toggle, $direction );
+	private function unhelpful( $notes, $toggle ) {
+		$this->feedback->{__FUNCTION__}++;
 
-		if ( $record->af_unhelpful_count < $this->unhelpfulCount ) {
-			$type = 'unhelpful';
-		} else {
-			$type = 'undo-unhelpful';
+		return true;
+		// @todo: below is legacy code and needs refactoring
+
+		$vote = $this->vote( $record, 'unhelpful', $notes, $timestamp, $toggle, 'increase' );
+
+		$type = 'unhelpful';
+
+		$this->log[] = array( $type, $notes, $this->user );
+
+		$this->update['af_last_status'] = $type;
+		$this->update['af_last_status_user_id'] = $this->getUserId();
+		$this->update['af_last_status_timestamp'] = $timestamp;
+		if ( $notes ) {
+			$this->update['af_last_status_notes'] = $notes;
 		}
+
+		return $vote;
+	}
+
+	/**
+	 * Flag: un-mark as unhelpful
+	 *
+	 * This flag allows readers to un-vote a piece of feedback down.
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return mixed      true if success, message key (string) if not
+	 */
+	private function undo_unhelpful( $notes, $toggle ) {
+		$this->feedback->unhelpful--;
+
+		return true;
+		// @todo: below is legacy code and needs refactoring
+
+		$vote = $this->vote( $record, 'undo-unhelpful', $notes, $timestamp, $toggle, 'decrease' );
+
+		$type = 'undo-unhelpful';
 
 		$this->log[] = array( $type, $notes, $this->user );
 
@@ -1176,15 +749,12 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * This flag allows readers to vote a piece of feedback up.
 	 *
-	 * @param  $record    stdClass the record
 	 * @param  $flag      string   the flag (helpful/unhelpful)
 	 * @param  $notes     string   any notes passed in
-	 * @param  $timestamp string   the timestamp
 	 * @param  $toggle    bool     whether to toggle the flag
-	 * @param  $direction string   increase/decrease
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function vote( stdClass $record, $flag, $notes, $timestamp, $toggle, $direction ) {
+	private function vote( $flag, $notes, $toggle ) {
 		$this->results['toggle'] = $toggle;
 		$this->helpfulCount = $record->af_helpful_count;
 		$this->unhelpfulCount = $record->af_unhelpful_count;
@@ -1194,9 +764,7 @@ class ArticleFeedbackv5Flagging {
 		// means one less http request and the counts don't mess up
 		if ( true == $toggle ) {
 
-			if ( ( ( $flag == 'helpful' && $direction == 'increase' )
-			 || ( $flag == 'unhelpful' && $direction == 'decrease' ) )
-			) {
+			if ( in_array( $flag, array( 'helpful', 'undo-unhelpful' ) ) ) {
 				// NOTE: we are bypassing traditional sql escaping here
 				$this->update[] = "af_helpful_count = af_helpful_count + 1";
 				$this->update[] = "af_unhelpful_count = GREATEST(0, CONVERT(af_unhelpful_count, SIGNED) - 1)";
@@ -1204,41 +772,36 @@ class ArticleFeedbackv5Flagging {
 				$this->helpfulCount++;
 				$this->unhelpfulCount = max(0, --$this->unhelpfulCount);
 
-			} elseif ( ( ( $flag == 'unhelpful' && $direction == 'increase' )
-			 || ( $flag == 'helpful' && $direction == 'decrease' ) )
-			) {
+			} elseif ( in_array( $flag, array( 'unfo-helpful', 'unhelpful' ) ) ) {
 				// NOTE: we are bypassing traditional sql escaping here
 				$this->update[] = "af_unhelpful_count = af_unhelpful_count + 1";
 				$this->update[] = "af_helpful_count = GREATEST(0, CONVERT(af_helpful_count, SIGNED) - 1)";
+
 				$this->helpfulCount = max(0, --$this->helpfulCount);
 				$this->unhelpfulCount++;
 			}
-			$this->relevance[] = 'helpful';
-			$this->relevance[] = 'unhelpful';
 
 		} else {
 
-			if ( 'unhelpful' === $flag && $direction == 'increase' ) {
+			if ( $flag == 'unhelpful' ) {
 				// NOTE: we are bypassing traditional sql escaping here
 				$this->update[] = "af_unhelpful_count = af_unhelpful_count + 1";
 				$this->unhelpfulCount++;
-				$this->relevance[] = 'unhelpful';
-			} elseif ( 'unhelpful' === $flag && $direction == 'decrease' ) {
+			} elseif ( $flag == 'undo-unhelpful' ) {
 				// NOTE: we are bypassing traditional sql escaping here
 				$this->update[] = "af_unhelpful_count = GREATEST(0, CONVERT(af_unhelpful_count, SIGNED) - 1)";
 				$this->unhelpfulCount = max(0, --$this->unhelpfulCount);
-				$this->relevance[] = 'unhelpful';
-			} elseif ( $flag == 'helpful' && $direction == 'increase' ) {
+			} elseif ( $flag == 'helpful' ) {
 				// NOTE: we are bypassing traditional sql escaping here
 				$this->update[] = "af_helpful_count = af_helpful_count + 1";
 				$this->helpfulCount++;
-				$this->relevance[] = 'helpful';
-			} elseif ( $flag == 'helpful' && $direction == 'decrease' ) {
+			} elseif ( $flag == 'undo-helpful' ) {
 				// NOTE: we are bypassing traditional sql escaping here
 				$this->update[] = "af_helpful_count = GREATEST(0, CONVERT(af_helpful_count, SIGNED) - 1)";
 				$this->helpfulCount = max(0, --$this->helpfulCount);
-				$this->relevance[] = 'helpful';
 			}
+
+			$this->relevance[] = $flag;
 
 		}
 
@@ -1319,44 +882,6 @@ class ArticleFeedbackv5Flagging {
 	 */
 	public function getUserLink() {
 		return ApiArticleFeedbackv5Utils::getUserLink( $this->getUserId() );
-	}
-
-	/**
-	 * Helper function to grab a record from the database with information
-	 * about the current feedback row
-	 *
-	 * @param  object $dbw     connection to database
-	 * @param  int    $id      id of the feedback to fetch
-	 * @return object database record
-	 */
-	private function fetchRecord( $dbw, $id ) {
-		$record = $dbw->selectRow(
-			'aft_article_feedback',
-			array(
-				'af_id',
-				'af_page_id',
-				'af_user_id',
-				'af_abuse_count',
-				'af_is_hidden',
-				'af_helpful_count',
-				'af_unhelpful_count',
-				'af_is_deleted',
-				'af_net_helpfulness',
-				'af_is_unhidden',
-				'af_is_undeleted',
-				'af_is_declined',
-				'af_has_comment',
-				'af_oversight_count',
-				'af_is_unrequested',
-				'af_is_autohide',
-				'af_is_featured',
-				'af_is_unfeatured',
-				'af_is_resolved',
-				'af_is_unresolved',
-				'af_relevance_score'),
-			array( 'af_id' => $id )
-		);
-		return $record;
 	}
 
 	/**
@@ -1459,32 +984,31 @@ class ArticleFeedbackv5Flagging {
 	 * it shoves an email job into the queue for sending to the oversighters'
 	 * mailing list - only called for NEW oversight requests
 	 *
-	 * @param  $record    stdClass the record
+	 * @return ArticleFeedbackv5Flagging
 	 */
-	protected function sendOversightEmail( stdClass $record ) {
+	protected function sendOversightEmail() {
 		global $wgUser;
 
 		// jobs need a title object
-		$page = Title::newFromID( $record->af_page_id );
+		$page = Title::newFromID( $this->feedback->page );
 		if ( !$page ) {
 			return;
 		}
 
 		// make a title out of our user (sigh)
 		$userPage = $wgUser->getUserPage();
-
 		if ( !$userPage ) {
 			return; // no user title object, no mail
 		}
 
 		// to build our permalink, use the feedback entry key + the page name (isn't page name a title? but title is an object? confusing)
-//		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getDBKey() . '/' . $this->feedbackId );
+//		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getDBKey() . '/' . $this->feedback->id );
 
 		// @todo: these 2 lines will spoof a new url which will lead to the central feedback page with the
 		// selected post on top; this is due to a couple of oversighters reporting issues with the permalink page.
 		// once these issues have been solved, these lines should be removed & above line uncommented
 		$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5' );
-		$permalink = Title::makeTitle( NS_SPECIAL, $centralPageName, "$this->feedbackId" );
+		$permalink = Title::makeTitle( NS_SPECIAL, $centralPageName, $this->feedback->id );
 
 		// build our params
 		$params = array(
@@ -1497,6 +1021,8 @@ class ArticleFeedbackv5Flagging {
 
 		$job = new ArticleFeedbackv5MailerJob( $page, $params );
 		$job->insert();
+
+		return $this;
 	}
 
 	/**
@@ -1513,4 +1039,13 @@ class ArticleFeedbackv5Flagging {
 		return $this->results;
 	}
 
+	/**
+	 * Get current timestamp
+	 *
+	 * @return string
+	 */
+	public function getTimestamp() {
+		$dbr = wfGetDB( DB_SLAVE );
+		return $dbr->timestamp();
+	}
 }
