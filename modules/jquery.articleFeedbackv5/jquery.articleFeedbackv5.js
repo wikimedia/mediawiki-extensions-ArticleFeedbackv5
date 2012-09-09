@@ -2581,7 +2581,8 @@
 
 			if ( postsInLastHour >= $.articleFeedbackv5.throttleThresholdPostsPerHour ) {
 				// display throttling message
-				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-throttled' ) );
+				var message = $( '<span />' ).msg( 'articlefeedbackv5-error-throttled' ).text();
+				$.articleFeedbackv5.markTopError( message );
 
 				// re-store pruned post timestamp list
 				$.cookie( $.aftTrack.prefix( 'submission_timestamps' ), savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
@@ -2609,7 +2610,6 @@
 			'revid': $.articleFeedbackv5.revisionId,
 			'bucket': $.articleFeedbackv5.bucketId,
 			'cta': $.articleFeedbackv5.ctaId,
-			'experiment': $.articleFeedbackv5.experiment().replace( 'option', '' ),
 			'link': $.articleFeedbackv5.submittedLinkId
 		} );
 
