@@ -5,14 +5,12 @@
  * @package    ArticleFeedback
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
  * @author     Reha Sterbin <reha@omniti.com>
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @version    $Id$
  */
 
 /**
  * Handles flagging of feedback
- *
- * Known flags are: 'delete', 'hide', 'resetoversight', 'abuse', 'oversight',
- * 'unhelpful', and 'helpful'
  *
  * @package    ArticleFeedback
  */
@@ -28,11 +26,11 @@ class ArticleFeedbackv5Flagging {
 	private $user;
 
 	/**
-	 * The feedback ID
+	 * The feedback object
 	 *
-	 * @var int
+	 * @var ArticleFeedbackv5Model
 	 */
-	private $feedbackId;
+	private $feedback;
 
 	/**
 	 * The filters to be changed
@@ -46,7 +44,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @var array
 	 */
-	private $updates;
+	private $update; // @todo: I want to make this obsolete
 
 	/**
 	 * The results to return
@@ -92,18 +90,22 @@ class ArticleFeedbackv5Flagging {
 
 	/**
 	 * The map of flags to permissions.
-	 * If an action is not mentionned here, it is not tied to specific permissions
+	 * If an action is not mentioned here, it is not tied to specific permissions
 	 * and everyone is able to perform the action.
 	 *
 	 * @var array
 	 */
 	private $flagPermissionMap = array(
-		'delete'         => array( 'aftv5-delete-feedback' ),
-		'hide'           => array( 'aftv5-hide-feedback' ),
-		'oversight'      => array( 'aftv5-hide-feedback' ),
-		'feature'        => array( 'aftv5-feature-feedback' ),
-		'resolve'        => array( 'aftv5-feature-feedback' ),
-		'resetoversight' => array( 'aftv5-delete-feedback' ),
+		'oversight' => 'aft-oversighter', // includes unoversight
+		'decline' => 'aft-oversighter',
+		'request' => 'aft-monitor', // includes unrequest
+		'hide' => 'aft-monitor', // includes unhide
+		'flag' => 'aft-reader', // includes unflag
+		'clear-flags' => 'aft-monitor',
+		'feature' => 'aft-editor', // includes unfeature
+		'resolve' => 'aft-editor', // includes unresolve
+		'helpful' => 'aft-reader', // includes undo-helpful
+		'unhelpful' => 'aft-reader', // includes undo-unhelpful
 	);
 
 	/**
@@ -112,10 +114,14 @@ class ArticleFeedbackv5Flagging {
 	 * @param mixed $user       the user performing the action ($wgUser), or
 	 *                          zero if it's a system call
 	 * @param int   $feedbackId the feedback ID
+	 * @param int   $pageId     the page ID
 	 */
-	public function __construct( $user, $feedbackId ) {
+	public function __construct( $user, $feedbackId, $pageId ) {
 		$this->user       = $user;
-		$this->feedbackId = $feedbackId;
+		$this->feedback   = ArticleFeedbackv5Model::loadFromId( $feedbackId, $pageId );
+		if ( !$this->feedback ) {
+			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-id' );
+		}
 	}
 
 	/**
@@ -145,7 +151,7 @@ class ArticleFeedbackv5Flagging {
 		$this->relevance = array();
 
 		// start
-		$where = array( 'af_id' => $this->feedbackId );
+		$where = array( 'af_id' => $this->feedback->id );
 
 		// we use ONE db connection that talks to master
 		$dbw     = wfGetDB( DB_MASTER );
@@ -153,7 +159,7 @@ class ArticleFeedbackv5Flagging {
 		$timestamp = $dbw->timestamp();
 
 		// load feedback record, bail if we don't have one
-		$record = $this->fetchRecord( $dbw, $this->feedbackId );
+		$record = $this->fetchRecord( $dbw, $this->feedback->id );
 
 		// if there's no record, this is already broken
 		if ( $record === false || !$record->af_id ) {
@@ -161,15 +167,13 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		// check if a user is operating on his/her own feedback
-		$ownFeedback = $wgUser->getId() && $wgUser->getId() == intval( $record->af_user_id );
+		$ownFeedback = $wgUser->getId() && $wgUser->getId() == intval( $this->feedback->user );
 
 		// check permissions
 		if ( isset( $this->flagPermissionMap[$flag] ) ) {
-			foreach ( $this->flagPermissionMap[$flag] as $permission ) {
-				// regardless of permissions, users are always allowed to flag their own feedback
-				if ( !$this->isAllowed( $permission ) && !$ownFeedback ) {
-					return $this->errorResult( 'articlefeedbackv5-invalid-feedback-flag' );
-				}
+			// regardless of permissions, users are always allowed to flag their own feedback
+			if ( !$this->isAllowed( $this->flagPermissionMap[$flag] ) && !$ownFeedback ) {
+				return $this->errorResult( 'articlefeedbackv5-invalid-feedback-flag' );
 			}
 		}
 
@@ -192,6 +196,11 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		wfProfileIn( __METHOD__ . "-flag_{$flag}_$direction" );
+
+		// @todo: all rollup data, relevance score stuff, etc etc, should be removed in here
+		// all of it should move to AFT model. AFT model will, upon ->save(), calculate relevance
+		// score based on the amount that is saved for every action column
+		// This file basically only has to do stuff like $this->feedback->helpful++; $this->feedback->save();
 
 		// figure out if we have relevance_scores to adjust
 		if ( count($this->relevance) > 0 ) {
@@ -285,7 +294,7 @@ class ArticleFeedbackv5Flagging {
 				'aft_article_feedback',
 				array( 'af_net_helpfulness = CONVERT(af_helpful_count, SIGNED) - CONVERT(af_unhelpful_count, SIGNED)' ),
 				array(
-					'af_id' => $this->feedbackId,
+					'af_id' => $this->feedback->id,
 				),
 				__METHOD__
 			);
@@ -305,7 +314,7 @@ class ArticleFeedbackv5Flagging {
 				$doer = $user;
 			}
 
-			ArticleFeedbackv5Log::logActivity( $entry[0], $record->af_page_id, $this->feedbackId, $entry[1], $doer );
+			ArticleFeedbackv5Log::logActivity( $entry[0], $record->af_page_id, $this->feedback->id, $entry[1], $doer );
 		}
 
 		$this->results['result'] = 'Success';
@@ -329,7 +338,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $toggle    bool     whether to toggle the flag
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_delete_increase( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function flag_oversight_increase( stdClass $record, $notes, $timestamp, $toggle ) {
 		if ( $record->af_is_deleted ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
@@ -427,7 +436,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $toggle    bool     whether to toggle the flag
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_delete_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function flag_oversight_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
 		if ( !$record->af_is_deleted ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
@@ -574,7 +583,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $toggle    bool     whether to toggle the flag
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_oversight_increase( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function flag_request_increase( stdClass $record, $notes, $timestamp, $toggle ) {
 		$this->relevance[] = 'request';
 
 		$this->log[] = array( 'request', $notes, $this->user );
@@ -657,7 +666,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $toggle    bool     whether to toggle the flag
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_oversight_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function flag_request_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
 		$this->relevance[] = 'unrequest';
 		$this->log[] = array( 'unrequest', $notes, $this->user );
 		$this->filters = array();
@@ -850,7 +859,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $direction string   increase/decrease
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_resetoversight( stdClass $record, $notes, $timestamp, $toggle, $direction ) {
+	private function flag_decline( stdClass $record, $notes, $timestamp, $toggle, $direction ) {
 		$this->relevance[] = 'decline';
 		$this->log[] = array( 'decline', $notes, $this->user );
 
@@ -894,7 +903,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $toggle    bool     whether to toggle the flag
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_abuse_increase( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function flag_flag_increase( stdClass $record, $notes, $timestamp, $toggle ) {
 		global $wgArticleFeedbackv5AbusiveThreshold,
 			$wgArticleFeedbackv5HideAbuseThreshold;
 
@@ -983,7 +992,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $toggle    bool     whether to toggle the flag
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_abuse_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function flag_flag_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
 		global $wgArticleFeedbackv5AbusiveThreshold,
 			   $wgArticleFeedbackv5HideAbuseThreshold;
 
@@ -1270,11 +1279,12 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $action string the name of the action
 	 * @return bool whether it's allowed
 	 */
-	public function isAllowed( $action ) {
+	public function isAllowed( $permission ) {
 		if ( $this->isSystemCall() ) {
 			return true;
 		}
-		return $this->user->isAllowed( $action );
+
+		return $this->user->isAllowed( $permission );
 	}
 
 	/**
@@ -1452,13 +1462,13 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		// to build our permalink, use the feedback entry key + the page name (isn't page name a title? but title is an object? confusing)
-//		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getDBKey() . '/' . $this->feedbackId );
+//		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getDBKey() . '/' . $this->feedback->id );
 
 		// @todo: these 2 lines will spoof a new url which will lead to the central feedback page with the
 		// selected post on top; this is due to a couple of oversighters reporting issues with the permalink page.
 		// once these issues have been solved, these lines should be removed & above line uncommented
 		$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5' );
-		$permalink = Title::makeTitle( NS_SPECIAL, $centralPageName, "$this->feedbackId" );
+		$permalink = Title::makeTitle( NS_SPECIAL, $centralPageName, "$this->feedback->id" );
 
 		// build our params
 		$params = array(

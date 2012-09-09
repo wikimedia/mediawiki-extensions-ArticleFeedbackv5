@@ -9,6 +9,8 @@
  * @version    $Id$
  */
 
+// @todo: I think this class is unused - delete it
+
 /**
  * This class pulls the aggregated ratings for display in Bucket #5
  *
