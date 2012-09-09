@@ -7,7 +7,9 @@
  * @version    $Id$
  */
 
-require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
+	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
+	: dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
 
 /**
  * Refresh the filter counts
@@ -74,7 +76,8 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 				'log_id',
 				'feedback_id' => 'SUBSTRING_INDEX(log_title, "/", -1)',
 				'page_id',
-				'log_type',
+				'log_action',
+				'log_params'
 			),
 			array(
 				"log_id > $continue",
@@ -102,21 +105,24 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 			$continue = $row->log_id;
 
 			// build params
-			$params = array(
-				'feedbackId' => (int) $row->feedback_id,
-				'pageId' => (int) $row->page_id
-			);
+			$params = @unserialize( $row->log_params );
+			if ( !$params ) {
+				$params = array();
+			}
+			$params['source'] = isset( $params['source'] ) ? $params['source'] : 'unknown';
+			$params['feedbackId'] = (int) $row->feedback_id;
+			$params['pageId'] = (int) $row->page_id;
 
 			// fix log type
-			switch ( $row->log_type ) {
+			switch ( $row->log_action ) {
 				case 'hidden':
-					$type = 'hide';
+					$action = 'hide';
 					break;
 				case 'unhidden':
-					$type = 'unhide';
+					$action = 'unhide';
 					break;
 				default:
-					$type = $row->log_type;
+					$action = $row->log_action;
 					break;
 			}
 
@@ -124,7 +130,7 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 			$dbw->update(
 				'logging',
 				array(
-					'log_type' => $type,
+					'log_action' => $action,
 					'log_params' => serialize( $params )
 				),
 				array( 'log_id' => $row->log_id )
