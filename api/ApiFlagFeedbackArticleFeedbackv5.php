@@ -35,6 +35,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		// get important values from our parameters
 		$params     = $this->extractRequestParams();
 		$feedbackId = $params['feedbackid'];
+		$pageId     = $params['pageid'];
 		$flag       = $params['flagtype'];
 		$notes      = $params['note'];
 		$direction  = isset( $params['direction'] ) ? $params['direction'] : 'increase';
@@ -44,7 +45,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		global $wgUser;
 
 		// Fire up the flagging object
-		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId );
+		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId, $pageId );
 		$results = $flagger->run( $flag, $notes, $direction, $toggle );
 
 		$this->getResult()->addValue(

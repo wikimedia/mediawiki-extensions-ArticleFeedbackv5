@@ -985,7 +985,7 @@
 
 		// Merge request data and options objects (flat)
 		var requestData = {
-			'pageid'    : $.articleFeedbackv5special.page,
+			'pageid'    : $.articleFeedbackv5special.page, // @todo: this 'pageid' param should always be the page id of the feedback (which it currently is not for the central feedback page)
 			'feedbackid': id,
 			'flagtype'  : $.articleFeedbackv5special.actions[action].apiFlagType,
 			'direction' : $.articleFeedbackv5special.actions[action].apiFlagDir > 0 ? 'increase' : 'decrease',
