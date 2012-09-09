@@ -46,15 +46,16 @@ $wgArticleFeedbackv5DefaultSorts = array (
 	'all'           => array( 'age', 'desc' ),
 	'comment'       => array( 'age', 'desc' ),
 	'declined'      => array( 'age', 'desc' ),
-	'featured'      => array( 'relevance', 'asc' ),
+	'featured'      => array( 'relevance', 'desc' ),
 	'helpful'       => array( 'helpful', 'desc' ),
 	'hidden'        => array( 'age', 'desc' ),
 	'id'            => array( 'age', 'desc' ),
 	'notdeleted'    => array( 'age', 'desc' ),
 	'oversighted'   => array( 'age', 'desc' ),
-	'relevant'      => array( 'relevance', 'asc' ),
+	'relevant'      => array( 'relevance', 'desc' ),
 	'requested'     => array( 'age', 'desc' ),
 	'resolved'      => array( 'age', 'desc' ),
+	'unresolved'      => array( 'age', 'desc' ),
 	'unfeatured'    => array( 'relevance', 'desc' ),
 	'unhelpful'     => array( 'helpful', 'asc' ),
 	'unhidden'      => array( 'age', 'desc' ),
@@ -82,7 +83,9 @@ $wgArticleFeedbackv5RelevanceScoring = array(
 	'feature' => 50,
 	'unfeature' => -50,
 	'helpful' => 1,
+	'undo-helpful' => -1,
 	'unhelpful' => -1,
+	'undo-unhelpful' => 1,
 	'resolve' => -5,
 	'unresolve' => 5,
 	'flag' => -5,
@@ -351,13 +354,6 @@ $wgArticleFeedbackv5SpecialPageSurveyUrl = 'https://www.surveymonkey.com/s/aft5-
 // Replace default emailcapture message
 $wgEmailCaptureAutoResponse['body-msg'] = 'articlefeedbackv5-emailcapture-response-body';
 
-/**
- * How many feedback posts to display initially.
- *
- * @var int
- */
-$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay = 50;
-
 /* Setup */
 
 $wgExtensionCredits['other'][] = array(
@@ -396,12 +392,15 @@ $wgAutoloadClasses['ArticleFeedbackv5Hooks']            = $dir . 'ArticleFeedbac
 $wgAutoloadClasses['ArticleFeedbackv5Permissions']      = $dir . 'ArticleFeedbackv5.permissions.php';
 $wgAutoloadClasses['ArticleFeedbackv5Log']              = $dir . 'ArticleFeedbackv5.log.php';
 $wgAutoloadClasses['ArticleFeedbackv5LogFormatter']     = $dir . 'ArticleFeedbackv5.log.php';
-$wgAutoloadClasses['ArticleFeedbackv5Fetch']            = $dir . 'ArticleFeedbackv5.fetch.php';
 $wgAutoloadClasses['ArticleFeedbackv5Flagging']         = $dir . 'ArticleFeedbackv5.flagging.php';
 $wgAutoloadClasses['ArticleFeedbackv5MailerJob']        = $dir . 'ArticleFeedbackv5MailerJob.php';
 $wgAutoloadClasses['ArticleFeedbackv5Render']           = $dir . 'ArticleFeedbackv5.render.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5']          = $dir . 'SpecialArticleFeedbackv5.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5Watchlist'] = $dir . 'SpecialArticleFeedbackv5Watchlist.php';
+$wgAutoloadClasses['ArticleFeedbackv5Model']            = $dir . 'ArticleFeedbackv5.model.php';
+$wgAutoloadClasses['ArticleFeedbackv5BackendRDBStore']  = $dir . 'ArticleFeedbackv5.backend.RDBStore.php';
+$wgAutoloadClasses['ArticleFeedbackv5BackendLBFactory'] = $dir . 'ArticleFeedbackv5.backend.LBFactory.php';
+$wgAutoloadClasses['ArticleFeedbackv5Activity']         = $dir . 'ArticleFeedbackv5.activity.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5']          = $dir . 'ArticleFeedbackv5.i18n.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5Alias']     = $dir . 'ArticleFeedbackv5.alias.php';
 
@@ -421,7 +420,6 @@ $wgHooks['ProtectionForm::buildForm'][] = 'ArticleFeedbackv5Hooks::onProtectionF
 $wgHooks['ProtectionForm::save'][] = 'ArticleFeedbackv5Hooks::onProtectionSave';
 
 // API Registration
-$wgAPIListModules['articlefeedbackv5-view-ratings']  = 'ApiViewRatingsArticleFeedbackv5';
 $wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';
 $wgAPIListModules['articlefeedbackv5-view-activity'] = 'ApiViewActivityArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-flag-feedback']     = 'ApiFlagFeedbackArticleFeedbackv5';
@@ -432,18 +430,22 @@ $wgSpecialPages['ArticleFeedbackv5'] = 'SpecialArticleFeedbackv5';
 $wgSpecialPages['ArticleFeedbackv5Watchlist'] = 'SpecialArticleFeedbackv5Watchlist';
 $wgSpecialPageGroups['ArticleFeedbackv5'] = 'other';
 
-$wgAvailableRights[] = 'aft-reader';
-$wgAvailableRights[] = 'aft-member';
-$wgAvailableRights[] = 'aft-editor';
-$wgAvailableRights[] = 'aft-monitor';
-$wgAvailableRights[] = 'aft-administrator';
-$wgAvailableRights[] = 'aft-oversighter';
+$wgArticleFeedbackv5Permissions = array(
+	'aft-reader',
+	'aft-member',
+	'aft-editor',
+	'aft-monitor',
+	'aft-administrator',
+	'aft-oversighter',
+);
+$wgAvailableRights += $wgArticleFeedbackv5Permissions;
 
 // Jobs
 $wgJobClasses['ArticleFeedbackv5MailerJob'] = 'ArticleFeedbackv5MailerJob';
 
 // Logging
 $wgLogTypes[] = 'articlefeedbackv5';
+$wgLogTypes[] = 'suppress';
 
 // register activity log formatter hooks
 foreach ( array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest' ) as $t) {
@@ -489,3 +491,8 @@ foreach ( array( 'sysop', 'oversight' ) as $group ) {
 foreach ( array( 'oversight' ) as $group ) {
 	$wgGroupPermissions[$group]['aft-oversighter'] = true;
 }
+
+// Database setup
+$wgArticleFeedbackv5BackendClass = 'ArticleFeedbackv5BackendLBFactory';
+$wgArticleFeedbackv5Cluster = false;
+// @todo: add cluster to $wgExternalServers
