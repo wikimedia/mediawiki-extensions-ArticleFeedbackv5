@@ -121,6 +121,9 @@
 
 			// not viewing the printable version
 			enable &= mw.util.getParamValue( 'printable' ) != 'yes';
+
+			// article has not just been edited
+			enable &= !mw.config.get( 'wgPostEdit', false );
 		}
 
 		return enable;
