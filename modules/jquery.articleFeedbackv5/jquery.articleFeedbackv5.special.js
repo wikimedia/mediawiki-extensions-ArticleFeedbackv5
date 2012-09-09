@@ -985,10 +985,9 @@
 
 		// Merge request data and options objects (flat)
 		var requestData = {
-			'pageid'    : $.articleFeedbackv5special.page,
+			'pageid'    : $.articleFeedbackv5special.page, // @todo: this 'pageid' param should always be the page id of the feedback (which it currently is not for the central feedback page)
 			'feedbackid': id,
 			'flagtype'  : $.articleFeedbackv5special.actions[action].apiFlagType,
-			'direction' : $.articleFeedbackv5special.actions[action].apiFlagDir > 0 ? 'increase' : 'decrease',
 			'note'		: note,
 			'format'    : 'json',
 			'action'    : 'articlefeedbackv5-flag-feedback'
@@ -1345,7 +1344,6 @@
 	 * 		tipsyHtml - html for the corresponding flyover panel
 	 * 		click - click action
 	 * 		apiFlagType - flag type for api call
-	 * 		apiFlagDir - flag direction for api call (+/-1)
 	 * 		onSuccess - callback to execute after action success. Callback parameters:
 	 * 			id - respective post id
 	 * 			data - any data returned by the AJAX call
@@ -1366,7 +1364,6 @@
 				}
 			},
 			'apiFlagType': 'helpful',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				$( '#articleFeedbackv5-helpful-link-' + id )
 					.addClass( 'helpful-active' )
@@ -1399,8 +1396,7 @@
 						$link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ), 'reversehelpful', '', { } );
 				}
 			},
-			'apiFlagType': 'helpful',
-			'apiFlagDir': -1,
+			'apiFlagType': 'undo-helpful',
 			'onSuccess': function( id, data ) {
 				$( '#articleFeedbackv5-reversehelpful-link-' + id )
 					.removeClass( 'helpful-active' )
@@ -1427,7 +1423,6 @@
 				}
 			},
 			'apiFlagType': 'unhelpful',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				$( '#articleFeedbackv5-unhelpful-link-' + id )
 					.addClass( 'helpful-active' )
@@ -1460,8 +1455,7 @@
 						$link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ), 'reverseunhelpful', '', { } );
 				}
 			},
-			'apiFlagType': 'unhelpful',
-			'apiFlagDir': -1,
+			'apiFlagType': 'undo-unhelpful',
 			'onSuccess': function( id, data ) {
 				$( '#articleFeedbackv5-reverseunhelpful-link-' + id )
 					.removeClass( 'helpful-active' )
@@ -1487,7 +1481,6 @@
 				}
 			},
 			'apiFlagType': 'flag',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				$.articleFeedbackv5special.setAbuse( id, data );
 			}
@@ -1506,8 +1499,7 @@
 					$.articleFeedbackv5special.flagFeedback( id, 'unabuse', '', { } );
 				}
 			},
-			'apiFlagType': 'flag',
-			'apiFlagDir': -1,
+			'apiFlagType': 'unflag',
 			'onSuccess': function( id, data ) {
 				$.articleFeedbackv5special.setAbuse( id, data );
 			}
@@ -1521,7 +1513,6 @@
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
 			'apiFlagType': 'feature',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-feature-link-' + id )
 					.attr( 'action', 'unfeature' )
@@ -1543,8 +1534,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'feature',
-			'apiFlagDir': -1,
+			'apiFlagType': 'unfeature',
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-unfeature-link-' + id )
 					.attr( 'action', 'feature' )
@@ -1567,7 +1557,6 @@
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
 			'apiFlagType': 'resolve',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-resolve-link-' + id )
 					.attr( 'action', 'unresolve' )
@@ -1588,8 +1577,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'resolve',
-			'apiFlagDir': -1,
+			'apiFlagType': 'unresolve',
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-unresolve-link-' + id )
 					.attr( 'action', 'resolve' )
@@ -1612,7 +1600,6 @@
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
 			'apiFlagType': 'hide',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-hide-link-' + id )
 					.attr( 'action', 'show' )
@@ -1636,8 +1623,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'hide',
-			'apiFlagDir': -1,
+			'apiFlagType': 'unhide',
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-show-link-' + id )
 					.attr( 'action', 'hide' )
@@ -1661,7 +1647,6 @@
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
 			'apiFlagType': 'request',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-requestoversight-link-' + id )
 					.attr( 'action', 'unrequestoversight' )
@@ -1694,8 +1679,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'request',
-			'apiFlagDir': -1,
+			'apiFlagType': 'unrequest',
 			'onSuccess': function( id, data ) {
 				$( '#articleFeedbackv5-unrequestoversight-link-' + id )
 					.attr( 'action', 'requestoversight' )
@@ -1714,7 +1698,6 @@
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
 			'apiFlagType': 'oversight',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				// if there is a "decline oversight" just hide it
 				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id ).hide();
@@ -1749,8 +1732,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'oversight',
-			'apiFlagDir': -1,
+			'apiFlagType': 'unoversight',
 			'onSuccess': function( id, data ) {
 				// if there is a "decline oversight" just show it
 				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id ).show();
@@ -1776,7 +1758,6 @@
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
 			'apiFlagType': 'decline',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				var $row = $( '#articleFeedbackv5-declineoversight-link-' + id )
 					.closest( '.articleFeedbackv5-feedback' );

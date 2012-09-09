@@ -35,17 +35,34 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		// get important values from our parameters
 		$params     = $this->extractRequestParams();
 		$feedbackId = $params['feedbackid'];
+		$pageId     = $params['pageid'];
 		$flag       = $params['flagtype'];
 		$notes      = $params['note'];
-		$direction  = isset( $params['direction'] ) ? $params['direction'] : 'increase';
 		$toggle     = $params['toggle'];
+
+		/*
+		 * fallback when dealing with outdated javascript:
+		 * a "decrease" direction used to be passed on for the reverse action,
+		 * rather than kist calling the reverse action name itself (as is now)
+		 */
+		if ( isset( $params['direction'] ) && $params['direction'] == 'decrease' ) {
+			switch ( $flag ) {
+				case 'helpful':
+				case 'unhelpful':
+					$flag = "undo-$flag";
+					break;
+				default:
+					$flag = "un$flag";
+					break;
+			}
+		}
 
 		// woah, we were not checking for permissions (that could have been script kiddy bad)
 		global $wgUser;
 
 		// Fire up the flagging object
-		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId );
-		$results = $flagger->run( $flag, $notes, $direction, $toggle );
+		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId, $pageId );
+		$results = $flagger->run( $flag, $notes, $toggle );
 
 		$this->getResult()->addValue(
 			null,
