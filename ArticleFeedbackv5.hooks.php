@@ -237,10 +237,10 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-permalink-activity-fewer',
 
 				'articlefeedbackv5-new-marker',
-				'articlefeedbackv5-deleted-marker',
-				'articlefeedbackv5-hidden-marker',
-				'articlefeedbackv5-featured-marker',
-				'articlefeedbackv5-resolved-marker',
+				'articlefeedbackv5-oversight-marker',
+				'articlefeedbackv5-hide-marker',
+				'articlefeedbackv5-feature-marker',
+				'articlefeedbackv5-resolve-marker',
 
 				'articlefeedbackv5-help-special-linkurl',
 				'articlefeedbackv5-help-special-linkurl-editors',
@@ -457,6 +457,8 @@ class ArticleFeedbackv5Hooks {
 			// watchlist page
 			elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
 				if ( $user->getId() ) {
+					// @todo: this will have to change
+
 					// check if there is feedback on the user's watchlist
 					$fetch = new ArticleFeedbackv5Fetch();
 					$fetch->setUserId( $user->getId() );
@@ -541,7 +543,6 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5Namespaces,
 			$wgArticleFeedbackv5LearnToEdit,
 			$wgArticleFeedbackv5SurveyUrls,
-			$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay,
 			$wgArticleFeedbackv5ThrottleThresholdPostsPerHour,
 			$wgArticleFeedbackv5ArticlePageLink,
 			$wgArticleFeedbackv5TalkPageLink,
@@ -558,7 +559,6 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5Namespaces'] = $wgArticleFeedbackv5Namespaces;
 		$vars['wgArticleFeedbackv5LearnToEdit'] = $wgArticleFeedbackv5LearnToEdit;
 		$vars['wgArticleFeedbackv5SurveyUrls'] = $wgArticleFeedbackv5SurveyUrls;
-		$vars['wgArticleFeedbackv5InitialFeedbackPostCountToDisplay'] = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		$vars['wgArticleFeedbackv5ThrottleThresholdPostsPerHour'] = $wgArticleFeedbackv5ThrottleThresholdPostsPerHour;
 		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
 		$vars['wgArticleFeedbackv5SpecialWatchlistUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getLinkUrl();

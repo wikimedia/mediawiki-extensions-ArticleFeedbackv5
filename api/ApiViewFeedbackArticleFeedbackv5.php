@@ -30,6 +30,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 * Execute the API call: Pull the requested feedback
 	 */
 	public function execute() {
+		// @todo: continue should become offset-implementation
+
 		wfProfileIn( __METHOD__ );
 
 		$user = $this->getUser();
@@ -51,7 +53,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		$fetch->setSort( $params['sort'] );
 		$fetch->setSortOrder( $params['sortdirection'] );
-		$fetch->setLimit( $params['limit'] );
 		if ( $params['continue'] !== 'null' ) {
 			$fetch->setContinue( $params['continue'] );
 		}
@@ -142,11 +143,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
 			),
-			'limit'         => array(
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'integer'
-			),
 			'continue'      => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
@@ -166,7 +162,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'sort'        => 'Key to sort records by',
 			'filter'      => 'What filtering to apply to list',
 			'feedbackid'  => 'A specific id to fetch',
-			'limit'       => 'Number of records to show',
 			'continue'    => 'Sort value at which to continue, pipe-separated if multiple',
 		);
 	}

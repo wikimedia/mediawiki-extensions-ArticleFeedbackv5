@@ -59,13 +59,6 @@ class ArticleFeedbackv5Fetch {
 	private $sortOrder = 'desc';
 
 	/**
-	 * The limit
-	 *
-	 * @var int
-	 */
-	private $limit = 25;
-
-	/**
 	 * Continue information
 	 *
 	 * Instead of using offset (which would break if, for example, there was a
@@ -130,8 +123,11 @@ class ArticleFeedbackv5Fetch {
 	 * @param int    $userId      the user ID
 	 */
 	public function __construct( $filter = null, $feedbackId = null, $pageId = null, $userId = null ) {
+		// @todo: at some point, this needs to be cleaned up; doesn't make sense to fetch non-filter stuff from here, get it straight from Model, then $feedbackId can be removed,
 		if ( $filter ) {
-			$this->setFilter( $filter );
+			if ( !$this->setFilter( $filter ) ) {
+				// @todo: return some error
+			}
 		}
 		if ( $feedbackId ) {
 			$this->setFeedbackId( $feedbackId );
@@ -141,10 +137,6 @@ class ArticleFeedbackv5Fetch {
 		}
 		if ( $userId ) {
 			$this->setUserId( $userId );
-		}
-		global $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
-		if ( $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay ) {
-			$this->limit = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		}
 	}
 
@@ -157,6 +149,16 @@ class ArticleFeedbackv5Fetch {
 	 *                  }
 	 */
 	public function run() {
+		ArticleFeedbackv5Model::getList( $this->getFilter(), $this->getPageId(), 'offset', 'sort (ASC/DESC)' );
+
+
+
+
+
+
+
+
+
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$result = new stdClass;
@@ -238,7 +240,7 @@ class ArticleFeedbackv5Fetch {
 		);
 		$conds = $this->getFilterCriteria();
 		$options = array(
-			'LIMIT'    => ( $this->limit + 1 ),
+			'LIMIT'    => ( ArticleFeedbackv5Model::LIST_LIMIT + 1 ),
 			'ORDER BY' => $order
 		);
 		$join_conds = array(
@@ -301,7 +303,7 @@ class ArticleFeedbackv5Fetch {
 		foreach ( $id_query as $id ) {
 			$ids[$id->af_id] = $id->af_id;
 			// Get the continue values from the last counted item.
-			if ( count( $ids ) == $this->limit ) {
+			if ( count( $ids ) == ArticleFeedbackv5Model::LIST_LIMIT ) {
 				$result->continue = $this->buildContinue($id);
 			}
 		}
@@ -311,7 +313,7 @@ class ArticleFeedbackv5Fetch {
 
 		// Returned an extra row, meaning there's more to show.
 		// Also, pop that extra one off, so we don't render it.
-		if ( count( $ids ) > $this->limit ) {
+		if ( count( $ids ) > ArticleFeedbackv5Model::LIST_LIMIT ) {
 			$result->showMore = true;
 			array_pop( $ids );
 		}
@@ -599,12 +601,18 @@ class ArticleFeedbackv5Fetch {
 	/**
 	 * Sets the filter
 	 *
-	 * @param  $filter string the filter
+	 * @param $filter string the filter
+	 * @return bool
 	 */
 	public function setFilter( $filter ) {
-		if ( in_array( $filter, self::$knownFilters ) ) {
-			$this->filter = $filter;
+		$filters = array_keys( ArticleFeedbackv5Model::$lists );
+
+		if ( !in_array( $filter, $filters ) ) {
+			return false;
 		}
+
+		$this->filter = $filter;
+		return true;
 	}
 
 	/**
@@ -656,18 +664,7 @@ class ArticleFeedbackv5Fetch {
 	 * @return int the limit
 	 */
 	public function getLimit() {
-		return $this->limit;
-	}
-
-	/**
-	 * Sets the limit
-	 *
-	 * @param  $limit int the limit
-	 */
-	public function setLimit( $limit ) {
-		if ( is_numeric( $limit ) ) {
-			$this->limit = intval( $limit );
-		}
+		return ArticleFeedbackv5Model::LIST_LIMIT;
 	}
 
 	/**
