@@ -17,11 +17,11 @@
 class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 
 	/**
-	 * The user ID we're operating on (null for no watchlist)
+	 * The user we're operating on (null for no watchlist)
 	 *
-	 * @var int
+	 * @var User
 	 */
-	protected $userId;
+	protected $user;
 
 	/**
 	 * Constructor
@@ -30,6 +30,9 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		$name = 'ArticleFeedbackv5Watchlist', $restriction = '', $listed = true,
 		$function = false, $file = 'default', $includable = false
 	) {
+		// @todo: this thingy will have to change, but I don't yet know how to handle watchlist (= user) stuff
+
+
 		parent::__construct( $name, $restriction, $listed, $function, $file, $includable );
 	}
 
@@ -42,8 +45,8 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
-		if ( $user->getId() ) {
-			$this->userId = $user->getId();
+		if ( $user ) {
+			$this->user = $user;
 		} else {
 			$out->redirect(SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullUrl());
 		}
@@ -59,14 +62,13 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 	 * @return	ArticleFeedbackv5Fetch	The fetch-object
 	 */
 	protected function fetchData() {
-		$fetch = new ArticleFeedbackv5Fetch();
-		$fetch->setFilter( $this->startingFilter );
-		$fetch->setUserId( $this->userId );
-		$fetch->setSort( $this->startingSort );
-		$fetch->setSortOrder( $this->startingSortDirection );
-		$fetch->setLimit( $this->startingLimit );
-
-		return $fetch;
+		return ArticleFeedbackv5Model::getWatchlistList(
+			$this->startingFilter,
+			$this->user,
+			$this->startingOffset,
+			$this->startingSort,
+			$this->startingSortDirection
+		);
 	}
 
 	/**
@@ -180,14 +182,5 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 				. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
 				. Html::closeElement( 'div' )
 		);
-	}
-
-	/**
-	 * Don't display totals for watchlist feedback
-	 *
-	 * @return array the counts, as filter => count
-	 */
-	protected function getFilterCounts() {
-		return array();
 	}
 }
