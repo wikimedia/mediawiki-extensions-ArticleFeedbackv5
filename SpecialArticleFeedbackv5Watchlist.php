@@ -17,11 +17,11 @@
 class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 
 	/**
-	 * The user ID we're operating on (null for no watchlist)
+	 * The user we're operating on (null for no watchlist)
 	 *
-	 * @var int
+	 * @var User
 	 */
-	protected $userId;
+	protected $user;
 
 	/**
 	 * Constructor
@@ -42,9 +42,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
-		if ( $user->getId() ) {
-			$this->userId = $user->getId();
-		} else {
+		if ( $user->isAnon() ) {
 			$out->redirect(SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullUrl());
 		}
 
@@ -54,106 +52,85 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 	}
 
 	/**
-	 * Fetch the requested data
-	 *
-	 * @return	ArticleFeedbackv5Fetch	The fetch-object
+	 * @return array
 	 */
 	protected function fetchData() {
-		$fetch = new ArticleFeedbackv5Fetch();
-		$fetch->setFilter( $this->startingFilter );
-		$fetch->setUserId( $this->userId );
-		$fetch->setSort( $this->startingSort );
-		$fetch->setSortOrder( $this->startingSortDirection );
-		$fetch->setLimit( $this->startingLimit );
-
-		return $fetch;
-	}
-
-	/**
-	 * Don't display totals for watchlist feedback
-	 */
-	protected function outputSummary() {
-		$user = $this->getUser();
-		$out = $this->getOutput();
-
-		// Showing {count} posts
-		$out->addHTML(
-			Html::openElement(
-				'div',
-				array( 'id' => 'articleFeedbackv5-special-watchlist-showing-wrap' )
-			)
-				. $this->msg( 'articlefeedbackv5-special-watchlist-showing',
-					$user->getUserPage()->getFullText(),
-					$user->getName()
-				)
-				. Html::openElement(
-						'span',
-						array( 'id' => 'articlefeedbackv5-special-central-watchlist-link' )
-					)
-					. $this->msg( 'articlefeedbackv5-special-watchlist-central-link',
-						SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullText()
-					)->parse()
-				. Html::closeElement( 'span' )
-			. Html::closeElement( 'div' )
+		return ArticleFeedbackv5Model::getWatchlistList(
+			$this->startingFilter,
+			$this->getUser(),
+			$this->startingOffset,
+			$this->startingSort,
+			$this->startingSortDirection
 		);
 	}
 
 	/**
-	 * Outputs the page controls
+	 * Display the feedback page's summary information in header
 	 *
-	 * Showing: [filters...]  Sort by: Relevance | Helpful | Rating | Date
+	 * @return string
 	 */
-	protected function outputFilters() {
-		$out = $this->getOutput();
+	protected function buildSummary() {
+		$user = $this->getUser();
 
+		// Showing {count} posts
+		return
+			Html::rawElement(
+				'div',
+				array( 'id' => 'articleFeedbackv5-special-watchlist-showing-wrap' ),
+				$this->msg( 'articlefeedbackv5-special-watchlist-showing',
+					$user->getUserPage()->getFullText(),
+					$user->getName()
+				) .
+					Html::rawElement(
+						'span',
+						array( 'id' => 'articlefeedbackv5-special-central-watchlist-link' ),
+						$this->msg( 'articlefeedbackv5-special-watchlist-central-link',
+							SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullText()
+						)->parse()
+					)
+			);
+	}
+
+	/**
+	 * Outputs the page filter controls
+	 *
+	 * Showing: [filters...]
+	 * @return string
+	 */
+	protected function buildFilters() {
+		// filter to be displayed as link
 		$filterLabels = array();
-		foreach ( $this->topFilters as $filter ) {
-			if ( $this->startingFilter == $filter ) {
-				$class = 'articleFeedbackv5-filter-link filter-active';
-			} else {
-				$class = 'articleFeedbackv5-filter-link';
-			}
-			$msg_key = str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
+		foreach ( array( 'visible-relevant', 'visible' ) as $filter ) {
+			$msg_key = str_replace( array( 'all-', 'visible-', 'notdeleted-' ), '', $filter );
 
-			$filterLabels[] = Html::openElement( 'a',
-				array(
-					'href'  => '#',
-					'id'    => 'articleFeedbackv5-special-filter-' . $filter,
-					'class' => $class
-				)
-			)
-				// {msg:articlefeedbackv5-special-filter-{$filter}-watchlist}
-				// Messages are:
-				//  * articlefeedbackv5-special-filter-relevant-watchlist
-				//  * articlefeedbackv5-special-filter-featured-watchlist
-				//  * articlefeedbackv5-special-filter-helpful-watchlist
-				//  * articlefeedbackv5-special-filter-comment-watchlist
-				//  * articlefeedbackv5-special-filter-visible-watchlist
-				. $this->msg( "articlefeedbackv5-special-filter-$msg_key-watchlist" )->escaped()
-
-				. Html::closeElement( 'a' );
+			$filterLabels[$filter] =
+				Html::rawElement(
+					'a',
+					array(
+						'href' => '#',
+						'id' => "articleFeedbackv5-special-filter-$filter",
+						'class' => 'articleFeedbackv5-filter-link' . ( $this->startingFilter == $filter ? ' filter-active' : '' )
+					),
+					$this->msg( "articlefeedbackv5-special-filter-$msg_key-watchlist" )->escaped()
+				);
 		}
 
+		// filters to be displayed in dropdown (only for editors)
 		$filterSelectHtml = '';
-		// No dropdown for readers
 		if ( $this->isAllowed( 'aft-editor' ) ) {
 			$opts = array();
-			$foundNonDefaults = false;
-			foreach ( $this->filters as $filter ) {
-				$msg_key = str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
 
-				$key   = $this->msg( "articlefeedbackv5-special-filter-$msg_key-watchlist" )->escaped();
-				if ( in_array( $filter, $this->topFilters ) ) {
+			foreach ( $this->filters as $filter ) {
+				if ( in_array( $filter, array_keys( $filterLabels ) ) ) {
 					continue;
 				}
-				if ( !$foundNonDefaults && !in_array( $filter, $this->defaultFilters ) ) {
-					// Add a divider between the defaults and the rest (use X,
-					// so that it can be distinguished from "More filters")
-					$opts[ '---------' ] = 'X';
-					$foundNonDefaults = true;
-				}
-				$opts[ (string) $key ] = $filter;
+
+				$msg_key = str_replace( array( 'all-', 'visible-', 'notdeleted-' ), '', $filter );
+
+				$key = $this->msg( "articlefeedbackv5-special-filter-$msg_key-watchlist" )->escaped();
+				$opts[(string) $key] = $filter;
 			}
+
 			if ( count( $opts ) > 0 ) {
 				// Put the "more filters" option at the beginning of the opts array
 				$opts = array( $this->msg( 'articlefeedbackv5-special-filter-select-more' )->text() => '' ) + $opts;
@@ -165,29 +142,22 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 			}
 		}
 
-		$out->addHTML(
-			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-filter' ) )
-				. Html::openElement( 'span', array( 'class' => 'articleFeedbackv5-filter-label' ) )
-				. $this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
-				. Html::closeElement( 'span' )
-
-				. implode( ' ', $filterLabels )
-
-				. Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-select-wrapper' ) )
-				. $filterSelectHtml
-				. Html::closeElement( 'div' )
-
-				. $this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
-				. Html::closeElement( 'div' )
-		);
-	}
-
-	/**
-	 * Don't display totals for watchlist feedback
-	 *
-	 * @return array the counts, as filter => count
-	 */
-	protected function getFilterCounts() {
-		return array();
+		return
+			Html::rawElement(
+				'div',
+				array( 'id' => 'articleFeedbackv5-filter' ),
+				Html::rawElement(
+					'span',
+					array( 'class' => 'articleFeedbackv5-filter-label' ),
+					$this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
+				) .
+					implode( ' ', $filterLabels ) .
+					Html::rawElement(
+						'div',
+						array( 'id' => 'articleFeedbackv5-select-wrapper' ),
+						$filterSelectHtml
+					) .
+					$this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
+			);
 	}
 }
