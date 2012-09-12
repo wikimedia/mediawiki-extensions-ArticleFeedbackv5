@@ -404,21 +404,14 @@
 	box-shadow: -2px 2px 1px #999;
 	overflow: hidden;
 }
-.tipsy-e .tipsy-arrow {
-	/* @embed */
-	background-image: url(images/tipsy-flyover.png);
-	width: 11px;
-	height: 23px;
-	margin-top: -11px;
-}
+.tipsy-e .tipsy-arrow,
 .tipsy-w .tipsy-arrow {
 	/* @embed */
 	background-image: url(images/tipsy-flyover.png);
 	width: 11px;
 	height: 23px;
 	margin-top: -11px;
-	background-position: left;
-	/* @noflip */ margin-left: 1px;
+	background-position: right;
 }
 form.articleFeedbackv5-form-flyover {
 	padding: 0 25px 0 0;
