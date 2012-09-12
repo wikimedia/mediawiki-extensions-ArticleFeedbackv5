@@ -105,6 +105,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	protected $startingLimit;
 
 	/**
+	 * Are we on mobile display?
+	 *
+	 * @var bool
+	 */
+	protected $isMobile = false;
+
+	/**
 	 * The filters available to users without special privileges
 	 *
 	 * @var bool
@@ -142,6 +149,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$this->showHidden = $user->isAllowed( 'aftv5-see-hidden-feedback' );
 		$this->showDeleted = $user->isAllowed( 'aftv5-see-deleted-feedback' );
 		$this->showFeatured = $user->isAllowed( 'aftv5-feature-feedback' );
+
+		if ( class_exists( 'MobileContext' ) ) {
+			$context = MobileContext::singleton();
+			$this->isMobile = $context->shouldDisplayMobileView();
+		}
 
 		$this->filters = $this->defaultFilters;
 		if ( $this->showDeleted ) {
@@ -235,8 +247,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		// Wrap the whole thing in a div
+		$class = '';
+		if ( $this->isMobile ) {
+			$class .= 'articleFeedbackv5-mobile';
+		}
 		$out->addHTML(
-			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-special-wrap' ) )
+			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-special-wrap', 'class' => $class ) )
 		);
 
 		// Header links
@@ -405,7 +421,10 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// Open feedback output
 		$class = '';
 		if ( !$this->pageId ) {
-			$class = 'articleFeedbackv5-central-feedback-log';
+			$class .= ' articleFeedbackv5-central-feedback-log';
+		}
+		if ( $renderer->hasToolbox() ) {
+			$class .= ' articleFeedbackv5-has-toolbox';
 		}
 		$out->addHTML(
 			Html::openElement( 'div', array(
@@ -595,6 +614,17 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	protected function outputFilters() {
 		$out = $this->getOutput();
 
+		// no dropdown for readers, get rid of the lists in the dropdown
+		if ( $this->showFeatured ) {
+			$this->filters = array();
+		}
+
+		// mobile view should display available filters in dropdown
+		if ( $this->isMobile ) {
+			$this->filters = array_merge( $this->topFilters, $this->filters );
+			$this->topFilters = array();
+		}
+
 		// Filtering
 		$counts = $this->getFilterCounts();
 
@@ -628,35 +658,32 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		$filterSelectHtml = '';
-		// No dropdown for readers
-		if ( $this->showFeatured ) {
-			$opts = array();
-			$foundNonDefaults = false;
-			foreach ( $this->filters as $filter ) {
-				$count = array_key_exists( $filter, $counts ) ? $counts[$filter] : 0;
-				$msg_key = str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
+		$opts = array();
+		$foundNonDefaults = false;
+		foreach ( $this->filters as $filter ) {
+			$count = array_key_exists( $filter, $counts ) ? $counts[$filter] : 0;
+			$msg_key = str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
 
-				$key   = $this->msg( 'articlefeedbackv5-special-filter-' . $msg_key, $count )->escaped();
-				if ( in_array( $filter, $this->topFilters ) ) {
-					continue;
-				}
-				if ( !$foundNonDefaults && !in_array( $filter, $this->defaultFilters ) ) {
-					// Add a divider between the defaults and the rest (use X,
-					// so that it can be distinguished from "More filters")
-					$opts[ '---------' ] = 'X';
-					$foundNonDefaults = true;
-				}
-				$opts[ (string) $key ] = $filter;
+			$key   = $this->msg( 'articlefeedbackv5-special-filter-' . $msg_key, $count )->escaped();
+			if ( in_array( $filter, $this->topFilters ) ) {
+				continue;
 			}
-			if ( count( $opts ) > 0 ) {
-				// Put the "more filters" option at the beginning of the opts array
-				$opts = array( $this->msg( 'articlefeedbackv5-special-filter-select-more' )->text() => '' ) + $opts;
+			if ( !$foundNonDefaults && !in_array( $filter, $this->defaultFilters ) ) {
+				// Add a divider between the defaults and the rest (use X,
+				// so that it can be distinguished from "More filters")
+				$opts[ '---------' ] = 'X';
+				$foundNonDefaults = true;
+			}
+			$opts[ (string) $key ] = $filter;
+		}
+		if ( count( $opts ) > 0 ) {
+			// Put the "more filters" option at the beginning of the opts array
+			$opts = array( $this->msg( 'articlefeedbackv5-special-filter-select-more' )->text() => '' ) + $opts;
 
-				$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter-select' );
-				$filterSelect->setDefault( $this->startingFilter );
-				$filterSelect->addOptions( $opts );
-				$filterSelectHtml = $filterSelect->getHTML();
-			}
+			$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter-select' );
+			$filterSelect->setDefault( $this->startingFilter );
+			$filterSelect->addOptions( $opts );
+			$filterSelectHtml = $filterSelect->getHTML();
 		}
 
 		$out->addHTML(

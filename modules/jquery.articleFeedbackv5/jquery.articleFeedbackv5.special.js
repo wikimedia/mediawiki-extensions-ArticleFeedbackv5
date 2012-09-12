@@ -122,6 +122,13 @@
 	$.articleFeedbackv5special.highlightId = undefined;
 
 	/**
+	 * Are we on mobile display?
+	 *
+	 * @var bool
+	 */
+	$.articleFeedbackv5special.isMobile = false;
+
+	/**
 	 * Action note flyover panel HTML template
 	 *
 	 * @var string
@@ -172,6 +179,8 @@
 	 * Sets up the page
 	 */
 	$.articleFeedbackv5special.setup = function() {
+		$.articleFeedbackv5special.isMobile = $( '.articleFeedbackv5-mobile' ).length > 0;
+
 		// Get the user type
 		if ( mw.user.anonymous() ) {
 			$.articleFeedbackv5special.userType = 'anon';
@@ -668,13 +677,13 @@
 			$link.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
 				.removeClass( 'articleFeedbackv5-abuse-link' )
 				.addClass( 'articleFeedbackv5-unabuse-link' )
-				.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) )
+				.text( mw.msg( 'articlefeedbackv5-abuse-saved' + ( $.articleFeedbackv5special.isMobile ? '-mobile' : '' ) ) )
 				.attr( 'title', mw.msg( 'articlefeedbackv5-abuse-saved-tooltip' ) );
 		} else {
 			$link.attr( 'id', 'articleFeedbackv5-abuse-link-' + id )
 				.removeClass( 'articleFeedbackv5-unabuse-link' )
 				.addClass( 'articleFeedbackv5-abuse-link' )
-				.text( mw.msg( 'articlefeedbackv5-form-abuse' ) )
+				.text( mw.msg( 'articlefeedbackv5-form-abuse' + ( $.articleFeedbackv5special.isMobile ? '-mobile' : '' ) ) )
 				.attr( 'title', '' );
 		}
 
@@ -1236,7 +1245,7 @@
 				}
 				if ( activity.abuse ) {
 					var $l = $( this ).find( '#articleFeedbackv5-abuse-link-' + id );
-					$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', $l.attr( 'rel' ) ) );
+					$l.text( mw.msg( 'articlefeedbackv5-abuse-saved' + ( $.articleFeedbackv5special.isMobile ? '-mobile' : '' ), $l.attr( 'rel' ) ) );
 					$l.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
 						.removeClass( 'articleFeedbackv5-abuse-link' )
 						.addClass( 'articleFeedbackv5-unabuse-link' );
