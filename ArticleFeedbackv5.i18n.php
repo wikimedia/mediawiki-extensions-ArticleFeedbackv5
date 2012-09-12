@@ -87,6 +87,7 @@ $messages['en'] = array(
 	/* Special Page */
 	'articlefeedbackv5-form-tools-label' => 'Tools',
 	'articlefeedbackv5-form-helpful-label' => 'Is this feedback helpful?',
+	'articlefeedbackv5-form-helpful-label-mobile' => 'Helpful?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Yes',
 	'articlefeedbackv5-form-helpful-no-label' => 'No',
 	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 found it helpful|$1 found it helpful}}',
@@ -186,6 +187,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-unhide-own' => 'Unhide my post',
 	'articlefeedbackv5-form-helpful' => 'Mark as helpful ($1)',
 	'articlefeedbackv5-form-abuse' => 'Flag as abuse',
+	'articlefeedbackv5-form-abuse-mobile' => 'Flag',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 flag|$1 flags}}',
 	'articlefeedbackv5-form-abuse-cleared' => 'Flags cleared',
 	'articlefeedbackv5-form-delete' => 'Oversight',
@@ -209,7 +211,9 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} was not shown a feedback form.',
 	'articlefeedbackv5-form-invalid' => 'Invalid feedback form ID.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} posted [[$4|feedback]] to $3',
+	'articlefeedbackv5-central-header-left-comment-mobile' => '{{GENDER:$1|$2}} on $3',
 	'articlefeedbackv5-abuse-saved' => 'Flagged as abuse',
+	'articlefeedbackv5-abuse-saved-mobile' => 'Flagged',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Remove the flag you set',
 	'articlefeedbackv5-oversight-saved' => 'Marked for oversight',
 	'articlefeedbackv5-unoversight-saved' => 'Oversight flag removed',
@@ -667,6 +671,8 @@ The abuse policy link.',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Status when feedback has been oversighted',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'message to display in my contributions, instead of the actual feedback, when feedback has been hidden/oversight requested/oversighted',
 	'articlefeedbackv5-form-tools-label' => '{{Identical|Tools}}',
+	'articlefeedbackv5-form-helpful-label' => 'Label to ask the user if the feedback was helpful',
+	'articlefeedbackv5-form-helpful-label-mobile' => 'Label to ask the user if the feedback was helpful (on the mobile view)',
 	'articlefeedbackv5-form-helpful-yes-label' => '{{Identical|Yes}}',
 	'articlefeedbackv5-form-helpful-no-label' => '{{Identical|No}}',
 	'articlefeedbackv5-form-helpful-votes' => 'Text explaining how many people found the feedback helpful.  $1 is the percentage of helpful votes.',
@@ -791,6 +797,7 @@ The abuse policy link.',
 	'articlefeedbackv5-form-hide-own' => 'Link text for hiding your own post',
 	'articlefeedbackv5-form-unhide-own' => 'Link text for un-hiding your ownpost',
 	'articlefeedbackv5-form-abuse' => 'Link text allowing the user to flag feedback as abuse.',
+	'articlefeedbackv5-form-abuse-mobile' => 'Link text allowing the user to flag feedback as abuse (on mobile view).',
 	'articlefeedbackv5-form-abuse-count' => 'Shows how many times the feedback has been flagged as abuse.  $1 is the count.',
 	'articlefeedbackv5-form-abuse-cleared' => 'Displayed when abuse flags have been cleared on feedback.',
 	'articlefeedbackv5-form-delete' => '{{Identical|Delete}}',
@@ -819,6 +826,11 @@ The abuse policy link.',
 	'articlefeedbackv5-form-anon-message' => "Parameters:
 * $1 is a link to the IP's contibutions, with the IP as link text",
 	'articlefeedbackv5-central-header-left-comment' => "Comment header indicating that the user posted feedback (central feedback page only). Parameters:
+* $1 is a username.
+* $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text
+* $3 is a link to the article to which the feedback was posted
+* $4 is a link to the article's feedback page with the selected feedback on top",
+	'articlefeedbackv5-central-header-left-comment-mobile' => "Comment header indicating (on the mobile display) that the user posted feedback (central feedback page only). Parameters:
 * $1 is a username.
 * $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text
 * $3 is a link to the article to which the feedback was posted

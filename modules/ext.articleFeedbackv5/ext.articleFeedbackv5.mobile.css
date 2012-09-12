@@ -1,0 +1,36 @@
+.articleFeedbackv5, .articleFeedbackv5-disclosure {
+	width: 100% !important;
+}
+
+.articleFeedbackv5-mobile .articlefeedbackv5-help-transparency-terms,
+.articleFeedbackv5-mobile .articleFeedbackv5-confirmation-wikipediaWorks,
+.articleFeedbackv5-mobile .articleFeedbackv5-title{
+	display: none;	
+}
+
+.articleFeedbackv5-mobile .articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent {
+	width: 100%;
+	clear: both;
+}
+
+.articleFeedbackv5-mobile .articleFeedbackv5-ui .articleFeedbackv5-cta-button {
+	position: relative;
+}
+
+.articleFeedbackv5-mobile .articleFeedbackv5-panel {
+	background-color: #F5FAFF;
+	border: 1px solid #CCCCCC;
+	margin: 0;
+	padding-bottom: 1px;
+	width: 100% !important;
+}
+
+.articleFeedbackv5-mobile .articleFeedbackv5-ui .feedback-text {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #000000;
+	font-family: sans-serif !important;
+	font-size: 1.1em;
+	height: 42px;
+	padding: 5px;
+	width: 100%;
+}

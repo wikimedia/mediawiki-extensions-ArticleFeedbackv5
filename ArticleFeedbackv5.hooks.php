@@ -14,12 +14,20 @@ class ArticleFeedbackv5Hooks {
 	 * @var array
 	 */
 	protected static $modules = array(
+		'ext.articleFeedbackv5.mobile' => array(
+			'styles' => array(
+				'ext.articleFeedbackv5/ext.articleFeedbackv5.mobile.css',
+				'ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.mobile.css'
+			),
+			'targets' => array( 'mobile' ),
+		),
 		'jquery.articleFeedbackv5.verify' => array(
 			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js',
 			'dependencies' => array(
 				'mediawiki.util',
 				'mediawiki.user',
 			),
+			'targets' => array( 'desktop', 'mobile' ),
 		),
 		'ext.articleFeedbackv5.startup' => array(
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js',
@@ -28,6 +36,7 @@ class ArticleFeedbackv5Hooks {
 				'mediawiki.user',
 				'jquery.articleFeedbackv5.verify',
 			),
+			'targets' => array( 'desktop', 'mobile' ),
 		),
 		'ext.articleFeedbackv5' => array(
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.js',
@@ -48,6 +57,7 @@ class ArticleFeedbackv5Hooks {
 				'jquery.cookie',
 				'jquery.articleFeedbackv5.track',
 			),
+			'targets' => array( 'desktop', 'mobile' ),
 		),
 		'ext.articleFeedbackv5.ie' => array(
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.ie.js',
@@ -65,6 +75,7 @@ class ArticleFeedbackv5Hooks {
 				'jquery.articleFeedbackv5.verify',
 				'jquery.articleFeedbackv5.special',
 			),
+			'targets' => array( 'desktop', 'mobile' ),
 		),
 		'jquery.articleFeedbackv5.track' => array(
 			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.track.js',
@@ -73,6 +84,7 @@ class ArticleFeedbackv5Hooks {
 				'mediawiki.user',
 				'jquery.clickTracking',
 			),
+			'targets' => array( 'desktop', 'mobile' ),
 		),
 		'ext.articleFeedbackv5.talk' => array(
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js',
@@ -85,6 +97,7 @@ class ArticleFeedbackv5Hooks {
 				'jquery.articleFeedbackv5.verify',
 				'jquery.articleFeedbackv5.track',
 			),
+			'targets' => array( 'desktop', 'mobile' ),
 		),
 		'ext.articleFeedbackv5.watchlist' => array(
 			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.watchlist.js',
@@ -96,6 +109,7 @@ class ArticleFeedbackv5Hooks {
 				'ext.Experiments.lib',
 				'jquery.articleFeedbackv5.track',
 			),
+			'targets' => array( 'desktop', 'mobile' ),
 		),
 		'jquery.articleFeedbackv5' => array(
 			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.js',
@@ -207,6 +221,7 @@ class ArticleFeedbackv5Hooks {
 				'jquery.effects.highlight',
 				'mediawiki.Uri',
 			),
+			'targets' => array( 'desktop', 'mobile' ),
 		),
 		'jquery.articleFeedbackv5.special' => array(
 			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js',
@@ -216,8 +231,10 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-invalid-feedback-id',
 				'articlefeedbackv5-invalid-feedback-flag',
 				'articlefeedbackv5-form-abuse',
+				'articlefeedbackv5-form-abuse-mobile',
 				'articlefeedbackv5-form-abuse-count',
 				'articlefeedbackv5-abuse-saved',
+				'articlefeedbackv5-abuse-saved-mobile',
 				'articlefeedbackv5-abuse-saved-tooltip',
 				'articlefeedbackv5-form-hide',
 				'articlefeedbackv5-form-unhide',
@@ -350,6 +367,7 @@ class ArticleFeedbackv5Hooks {
 				'jquery.json',
 				'jquery.ui.button',
 			),
+			'targets' => array( 'desktop', 'mobile' ),
 		),
 	);
 
@@ -394,9 +412,11 @@ class ArticleFeedbackv5Hooks {
 	}
 
 	/**
-	 * BeforePageDisplay hook - this hook will determine if and what javascript will be loaded
+	 * BeforePageDisplay hook - this hook will determine if and what
+	 * resources will be loaded.
 	 *
-	 * @param $out OutputPage
+	 * @param OutputPage $out
+	 * @param Skin $skin
 	 * @return bool
 	 */
 	public static function beforePageDisplay( OutputPage &$out, Skin &$skin ) {
@@ -424,9 +444,9 @@ class ArticleFeedbackv5Hooks {
 		// special page
 		} elseif ( $title->getNamespace() == NS_SPECIAL) {
 			// central feedback page, article feedback page, permalink page & watchlist feedback page
-			if ( $out->getTitle()->isSpecial( 'ArticleFeedbackv5' ) ||  $out->getTitle()->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
+			if ( $title->isSpecial( 'ArticleFeedbackv5' ) || $title->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
 				// fetch the title of the article this special page is related to
-				list( /* special */, $mainTitle) = SpecialPageFactory::resolveAlias( $out->getTitle()->getDBkey() );
+				list( /* special */, $mainTitle) = SpecialPageFactory::resolveAlias( $title->getDBkey() );
 
 				// Permalinks: drop the feedback ID
 				$mainTitle = preg_replace( '/(\/[0-9]+)$/', '', $mainTitle );
@@ -453,7 +473,7 @@ class ArticleFeedbackv5Hooks {
 			}
 
 			// watchlist page
-			elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
+			elseif ( $title->isSpecial( 'Watchlist' ) ) {
 				if ( $user->getId() ) {
 					// check if there is feedback on the user's watchlist
 					$fetch = new ArticleFeedbackv5Fetch();
@@ -510,16 +530,16 @@ class ArticleFeedbackv5Hooks {
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
 		global $wgExtensionAssetsPath;
 
-			$localpath = dirname( __FILE__ ) . '/modules';
-			$remotepath = "$wgExtensionAssetsPath/ArticleFeedbackv5/modules";
+		$localpath = dirname( __FILE__ ) . '/modules';
+		$remotepath = "$wgExtensionAssetsPath/ArticleFeedbackv5/modules";
 
-			foreach ( self::$modules as $name => $resources ) {
-				$resourceLoader->register(
-					$name,
-					new ResourceLoaderFileModule( $resources, $localpath, $remotepath )
-				);
-			}
-			return true;
+		foreach ( self::$modules as $name => $options ) {
+			$resourceLoader->register(
+				$name,
+				new ResourceLoaderFileModule( $options, $localpath, $remotepath )
+			);
+		}
+		return true;
 	}
 
 	/**

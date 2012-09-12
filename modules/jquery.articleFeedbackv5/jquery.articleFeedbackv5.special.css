@@ -6,15 +6,20 @@
 	position: relative;
 	min-height: 150px;
 	min-width: 75px;
+	word-break: normal;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-container {
 	float: left;
 	width: 100%;
-	margin-left: -250px;
 	padding: 10px 0 5px 0;
+}
+.articleFeedbackv5-has-toolbox .articleFeedbackv5-feedback .articleFeedbackv5-comment-container {
+	margin-left: -250px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap {
 	padding: 0 10px 20px 30px;
+}
+.articleFeedbackv5-has-toolbox .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap {
 	margin-left: 250px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head {
@@ -39,11 +44,13 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-vote-wrapper {
 	position: absolute;
 	bottom: 0;
-	right: 250px; /* toolbox width */
 	left: 0;
 	margin-left: 30px;
 	margin-bottom: 5px;
 	font-size: 0.9em;
+}
+.articleFeedbackv5-has-toolbox .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-vote-wrapper {
+	right: 250px; /* toolbox width */
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-tags {
 	padding: 0 10px 0 0;

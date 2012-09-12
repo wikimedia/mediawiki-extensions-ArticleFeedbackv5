@@ -1,0 +1,11 @@
+.articleFeedbackv5-mobile .articleFeedbackv5-comment-foot-helpful,
+.articleFeedbackv5-mobile .articleFeedbackv5-comment-foot-abuse {
+	margin-right: 15px;
+}
+.articleFeedbackv5-mobile #articleFeedbackv5-select-wrapper:hover,
+.articleFeedbackv5-mobile #articleFeedbackv5-select-wrapper.filter-active {
+	background-image: none;
+}
+.articleFeedbackv5-mobile #articleFeedbackv5-sort {
+	float: left;
+}
