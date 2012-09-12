@@ -11,9 +11,12 @@ var $aftDiv = $( '<div id="mw-articlefeedbackv5"></div>' );
 var legacyskins = [ 'standard', 'cologneblue', 'nostalgia' ];
 if ( $( '#catlinks' ).length && $.inArray( mw.config.get( 'skin' ), legacyskins ) < 0 ) {
 	$aftDiv.insertBefore( '#catlinks' );
-} else {
+} else if ( mw.util.$content ) {
 	// CologneBlue, Nostalgia, ...
 	mw.util.$content.append( $aftDiv );
+} else if ($( '#content_wrapper' ).length ) {
+	// Mobile
+	$( '#content_wrapper' ).append( $aftDiv ).addClass( 'articleFeedbackv5-mobile' );
 }
 
 $aftDiv.articleFeedbackv5();

@@ -14,6 +14,9 @@ class ArticleFeedbackv5Hooks {
 	 * @var array
 	 */
 	protected static $modules = array(
+		'ext.articleFeedbackv5.mobile.styles' => array(
+			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.mobile.css',
+		),
 		'jquery.articleFeedbackv5.verify' => array(
 			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js',
 			'dependencies' => array(
@@ -368,9 +371,27 @@ class ArticleFeedbackv5Hooks {
 	}
 
 	/**
-	 * BeforePageDisplay hook - this hook will determine if and what javascript will be loaded
+	 * MobileFrontend extension has reset modules to be loaded. The AFT
+	 * special page is another context than article pages, and is semi-
+	 * optimized for mobile viewing, so let's re-load the modules
 	 *
-	 * @param $out OutputPage
+	 * @param OutputPage $out
+	 * @param array $options
+	 * @return bool
+	 */
+	public static function beforePageDisplayMobile( &$out, &$options ) {
+		$skin = $out->getSkin();
+		self::beforePageDisplay( $out, $skin );
+		$out->addModuleStyles( 'ext.articleFeedbackv5.mobile.styles' );
+		return true;
+	}
+
+	/**
+	 * BeforePageDisplay hook - this hook will determine if and what
+	 * resources will be loaded.
+	 *
+	 * @param OutputPage $out
+	 * @param Skin $skin
 	 * @return bool
 	 */
 	public static function beforePageDisplay( OutputPage &$out, Skin &$skin ) {
@@ -421,9 +442,9 @@ class ArticleFeedbackv5Hooks {
 		// special page
 		} elseif ( $title->getNamespace() == NS_SPECIAL) {
 			// central feedback page, article feedback page, permalink page & watchlist feedback page
-			if ( $out->getTitle()->isSpecial( 'ArticleFeedbackv5' ) ||  $out->getTitle()->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
+			if ( $title->isSpecial( 'ArticleFeedbackv5' ) || $title->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
 				// fetch the title of the article this special page is related to
-				list( /* special */, $mainTitle) = SpecialPageFactory::resolveAlias( $out->getTitle()->getDBkey() );
+				list( /* special */, $mainTitle) = SpecialPageFactory::resolveAlias( $title->getDBkey() );
 
 				// Permalinks: drop the feedback ID
 				$mainTitle = preg_replace( '/(\/[0-9]+)$/', '', $mainTitle );
@@ -450,7 +471,7 @@ class ArticleFeedbackv5Hooks {
 			}
 
 			// watchlist page
-			elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
+			elseif ( $title->isSpecial( 'Watchlist' ) ) {
 				if ( $user->getId() ) {
 					// check if there is feedback on the user's watchlist
 					$fetch = new ArticleFeedbackv5Fetch();
