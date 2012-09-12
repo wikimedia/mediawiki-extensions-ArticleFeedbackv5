@@ -47,8 +47,8 @@ class ArticleFeedbackv5Log {
 		$note = $wgLang->truncate( $notes, $wgArticleFeedbackv5MaxActivityNoteLength );
 
 		// add page id & feedback id to params
-		$params['4::feedbackId'] = (int) $itemId;
-		$params['5::pageId'] = (int) $pageId;
+		$params['feedbackId'] = (int) $itemId;
+		$params['pageId'] = (int) $pageId;
 
 		// insert logging entry
 		$logEntry = new ManualLogEntry( $logType, $type );
@@ -98,12 +98,12 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 		$parameters      = $this->entry->getParameters();
 
 		// this should not happen, but might occur for legacy entries
-		if ( !isset( $parameters['4::feedbackId'] ) || !isset( $parameters['5::pageId'] ) ) {
+		if ( !isset( $parameters['feedbackId'] ) || !isset( $parameters['pageId'] ) ) {
 			return '';
 		}
 
 		// this could happen when a page has since been removed
-		$page = Title::newFromID( $parameters['5::pageId'] );
+		$page = Title::newFromID( $parameters['pageId'] );
 		if ( !$page ) {
 			return '';
 		}
@@ -112,7 +112,7 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 		// selected post on top; this is due to a couple of oversighters reporting issues with the permalink page.
 		// once these issues have been solved, these lines should be removed
 		$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5' );
-		$target = Title::makeTitle( NS_SPECIAL, $centralPageName, $parameters['4::feedbackId'] )->getFullText();
+		$target = Title::makeTitle( NS_SPECIAL, $centralPageName, $parameters['feedbackId'] )->getFullText();
 
 		$language = $skin === null ? $wgContLang : $wgLang;
 		$action = wfMessage( "logentry-articlefeedbackv5-$action" )
@@ -120,7 +120,7 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 				Message::rawParam( $this->getPerformerElement() ),
 				$this->entry->getPerformer()->getId(),
 				$target,
-				$parameters['4::feedbackId'],
+				$parameters['feedbackId'],
 				$page
 			) )
 			->inLanguage( $language )

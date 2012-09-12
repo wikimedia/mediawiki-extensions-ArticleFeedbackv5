@@ -102,8 +102,8 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 
 			// build params
 			$params = array(
-				'4::feedbackId' => (int) $row->feedback_id,
-				'5::pageId' => (int) $row->page_id
+				'feedbackId' => (int) $row->feedback_id,
+				'pageId' => (int) $row->page_id
 			);
 
 			// update log entry
