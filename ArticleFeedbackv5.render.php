@@ -38,6 +38,13 @@ class ArticleFeedbackv5Render {
 	private $isHighlighted;
 
 	/**
+	 * Are we on mobile display?
+	 *
+	 * @var bool
+	 */
+	protected $isMobile = false;
+
+	/**
 	 * Permissions
 	 *
 	 * Keys: can_flag, can_vote, can_hide, can_delete, can_feature,
@@ -64,6 +71,11 @@ class ArticleFeedbackv5Render {
 	 * @param $highlight bool [optional] whether this is a highlighted row?
 	 */
 	public function __construct( $user = null, $permalink = false, $central = false, $highlight = false ) {
+		if ( class_exists( 'MobileContext' ) ) {
+			$context = MobileContext::singleton();
+			$this->isMobile = $context->shouldDisplayMobileView();
+		}
+
 		if ( $user ) {
 			$this->setPermission( 'can_flag', !$user->isBlocked() );
 			$this->setPermission( 'can_vote', !$user->isBlocked() );
@@ -73,6 +85,7 @@ class ArticleFeedbackv5Render {
 			$this->setPermission( 'see_deleted', $user->isAllowed( 'aftv5-see-deleted-feedback' ) );
 			$this->setPermission( 'see_hidden', $user->isAllowed( 'aftv5-see-hidden-feedback' ) );
 		}
+
 		$this->setIsPermalink( $permalink );
 		$this->setIsCentral( $central );
 		$this->setIsHighlighted( $highlight );
@@ -434,7 +447,8 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered feedback info
 	 */
 	private function renderCentral( $record ) {
-		return $this->feedbackHead( 'articlefeedbackv5-central-header-left-comment', $record[0] )
+		$message = 'articlefeedbackv5-central-header-left-comment' . ( $this->isMobile ? '-mobile' : '' );
+		return $this->feedbackHead( $message, $record[0] )
 			. $this->renderComment(
 				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
 				$record[0]
@@ -554,7 +568,7 @@ class ArticleFeedbackv5Render {
 				. Html::rawElement( 'span', array(
 					'class' => 'articleFeedbackv5-comment-details-date'
 				), $message );
-		if ( !$this->isPermalink ) {
+		if ( !$this->isPermalink && !$this->isMobile ) {
 			$html .= wfMessage( 'pipe-separator' )->escaped()
 				// <span class="articleFeedbackv5-comment-details-link">
 				. Html::openElement( 'span', array(
@@ -665,7 +679,7 @@ class ArticleFeedbackv5Render {
 				// </span>
 				Html::element( 'span', array(
 					'class' => 'articleFeedbackv5-helpful-caption'
-				), wfMessage( 'articlefeedbackv5-form-helpful-label' )->text()
+				), wfMessage( 'articlefeedbackv5-form-helpful-label' . ( $this->isMobile ? '-mobile' : '' ) )->text()
 				)
 				// <a id="articleFeedbackv5-helpful-link-{$id}"
 				//   class="articleFeedbackv5-helpful-link">
@@ -733,7 +747,7 @@ class ArticleFeedbackv5Render {
 					'class' => 'articleFeedbackv5-abuse-link',
 					'href'  => '#',
 				), wfMessage(
-					'articlefeedbackv5-form-abuse',
+					'articlefeedbackv5-form-abuse' . ( $this->isMobile ? '-mobile' : '' ),
 					$wgLang->formatNum( $record[0]->af_abuse_count ) )->text()
 			);
 
