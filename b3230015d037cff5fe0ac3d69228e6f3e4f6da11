@@ -16,6 +16,24 @@
       "revId": "b3230015d037cff5fe0ac3d69228e6f3e4f6da11",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAASn//6UE\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-09-18T16:58:04Z",
+      "side": 1,
+      "message": "How does it break in such case?",
+      "parentUuid": "AAAASn///Gk\u003d",
+      "revId": "b3230015d037cff5fe0ac3d69228e6f3e4f6da11",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
