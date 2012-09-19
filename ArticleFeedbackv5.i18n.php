@@ -20873,6 +20873,13 @@ $messages['tly'] = array(
 	'articlefeedbackv5-whats-this' => 'Арајиш',
 );
 
+/** Tok Pisin (Tok Pisin)
+ * @author Iketsi
+ */
+$messages['tpi'] = array(
+	'articlefeedbackv5-discussion-page' => 'Toktok',
+);
+
 /** Turkish (Türkçe)
  * @author 82-145
  * @author Bilalokms
