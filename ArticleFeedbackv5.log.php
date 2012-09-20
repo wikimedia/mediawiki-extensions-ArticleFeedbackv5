@@ -92,14 +92,19 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 	protected function getActionMessage() {
 		global $wgLang, $wgContLang;
 
-		$entry           = $this->entry;
-		$action          = $entry->getSubtype();
-		$target          = $entry->getTarget();
+		$action          = $this->entry->getSubtype();
+		$target          = $this->entry->getTarget();
 		$skin            = $this->plaintext ? null : $this->context->getSkin();
 		$parameters      = $this->entry->getParameters();
 
 		// this should not happen, but might occur for legacy entries
 		if ( !isset( $parameters['feedbackId'] ) || !isset( $parameters['pageId'] ) ) {
+			return '';
+		}
+
+		// this could happen when a page has since been removed
+		$page = Title::newFromID( $parameters['pageId'] );
+		if ( !$page ) {
 			return '';
 		}
 
@@ -113,10 +118,10 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 		$action = wfMessage( "logentry-articlefeedbackv5-$action" )
 			->params( array(
 				Message::rawParam( $this->getPerformerElement() ),
-				$entry->getPerformer()->getId(),
+				$this->entry->getPerformer()->getId(),
 				$target,
 				$parameters['feedbackId'],
-				Title::newFromID( $parameters['pageId'] )
+				$page
 			) )
 			->inLanguage( $language )
 			->parse();

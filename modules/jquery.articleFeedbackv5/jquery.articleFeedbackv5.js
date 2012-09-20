@@ -325,7 +325,6 @@
 							<textarea id="articleFeedbackv5-find-feedback" class="feedback-text" name="comment"></textarea>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
-							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket1-form-submit" /></button>\
@@ -361,17 +360,6 @@
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
 				// Fill in the disclosure text
-				$block.find( '.articlefeedbackv5-shared-on-feedback' )
-					.html( $.articleFeedbackv5.buildLink(
-						'articlefeedbackv5-shared-on-feedback',
-						{
-							href: mw.config.get( 'wgScript' ) + '?' + $.param( {
-								title: mw.config.get( 'wgPageName' ),
-								action: 'feedback'
-							} ),
-							text: 'articlefeedbackv5-shared-on-feedback-linktext',
-							target: '_blank'
-						} ) );
 				$block.find( '.articlefeedbackv5-help-transparency-terms' ).msg( 'articlefeedbackv5-help-transparency-terms' );
 
 				// Turn the submit into a slick button
@@ -489,12 +477,15 @@
 			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
 			localValidation: function ( formdata ) {
+				var error = {};
+				var ok = true;
 				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
 					&& !( 'found' in formdata ) ) {
 					$.articleFeedbackv5.enableSubmission( false );
-					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
+					error.nofeedback = mw.msg( 'articlefeedbackv5-error-nofeedback' );
+					ok = false;
 				}
-				return false;
+				return ok ? false : error;
 			}
 
 			// }}}
@@ -671,7 +662,6 @@
 							<textarea id="articleFeedbackv5-find-feedback" class="feedback-text" name="comment"></textarea>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
-							<!-- <p class="articlefeedbackv5-shared-on-feedback"></p> -->\
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket6-form-submit" /></button>\
@@ -707,17 +697,6 @@
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
 				// Fill in the disclosure text
-				$block.find( '.articlefeedbackv5-shared-on-feedback' )
-					.html( $.articleFeedbackv5.buildLink(
-						'articlefeedbackv5-shared-on-feedback',
-						{
-							href: mw.config.get( 'wgScript' ) + '?' + $.param( {
-								title: mw.config.get( 'wgPageName' ),
-								action: 'feedback'
-							} ),
-							text: 'articlefeedbackv5-shared-on-feedback-linktext',
-							target: '_blank'
-						} ) );
 				$block.find( '.articlefeedbackv5-help-transparency-terms' ).msg( 'articlefeedbackv5-help-transparency-terms' );
 
 				// Turn the submit into a slick button
@@ -827,12 +806,15 @@
 			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
 			localValidation: function ( formdata ) {
+				var error = {};
+				var ok = true;
 				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
 					&& !( 'found' in formdata ) && !$( '#articleFeedbackv5-bucket6-toggle-yes').is( ':checked' ) ) {
 					$.articleFeedbackv5.enableSubmission( false );
-					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
+					error.nofeedback = mw.msg( 'articlefeedbackv5-error-nofeedback' );
+					ok = false;
 				}
-				return false;
+				return ok ? false : error;
 			},
 
 			// }}}
@@ -2674,10 +2656,13 @@
 					$.articleFeedbackv5.unlockForm();
 					$.articleFeedbackv5.showCTA();
 
-					// save add feedback id to cookie (only most recent 10)
-					var feedbackIds = $.extend( [], $.parseJSON( $.cookie( $.aftTrack.prefix( 'feedback-ids' ) ) ) );
+					// save add feedback id to cookie (only most recent 20)
+					var feedbackIds = $.parseJSON( $.cookie( $.aftTrack.prefix( 'feedback-ids' ) ) );
+					if ( !$.isArray( feedbackIds ) ) {
+						feedbackIds = [];
+					}
 					feedbackIds.unshift( data.articlefeedbackv5.feedback_id );
-					$.cookie( $.aftTrack.prefix( 'feedback-ids' ), $.toJSON( feedbackIds.splice( 0, 9 ) ), { expires: 30, path: '/' } );
+					$.cookie( $.aftTrack.prefix( 'feedback-ids' ), $.toJSON( feedbackIds.splice( 0, 20 ) ), { expires: 30, path: '/' } );
 
 					// Clear out anything that needs removing (usually trigger links)
 					$.articleFeedbackv5.$toRemove.remove();
@@ -2686,35 +2671,41 @@
 					// Track the success
 					$.articleFeedbackv5.trackClick( 'submit_success' );
 				} else {
-					var msg = mw.msg( 'articlefeedbackv5-error-unknown' );
 					var code = 'unknown';
-
-					// fetch error information
+					var msg;
 					if ( 'error' in data ) {
-						msg = data.error.msg;
-						code = data.error.code;
+						if ( typeof data.error === 'object' ) {
+							msg = data.error;
+							if ( 'code' in data.error ) {
+								code = data.error.code;
+							}
+						} else if ( 'articlefeedbackv5-error-abuse' == data.error ) {
+							msg = mw.msg( data.error );
+							code = 'afreject';
+						} else {
+							msg = mw.msg( data.error );
+						}
 					} else if ( 'warning' in data ) {
-						msg = data.warning.msg;
-						code = data.warning.code;
+						// NB: Warnings come from the AbuseFilter and are
+						// already translated.
+						msg = data.warning;
+						code = 'afwarn';
+					} else {
+						msg = { info: mw.msg( 'articlefeedbackv5-error-unknown' ) };
 					}
-
 					// Track the error
 					$.articleFeedbackv5.trackClick( 'submit_error_' + code );
-
 					// Set up error state
-					$.articleFeedbackv5.markFormErrors( msg );
+					$.articleFeedbackv5.markFormErrors( { _api : msg } );
 					$.articleFeedbackv5.unlockForm();
 				}
 			},
 			'error': function (xhr, tstatus, error) {
-				var msg = mw.msg( 'articlefeedbackv5-error-submit' );
-				var code = 'jquery';
-
 				// Track the error
-				$.articleFeedbackv5.trackClick( 'submit_error_' + code );
-
+				$.articleFeedbackv5.trackClick( 'submit_error_jquery' );
 				// Set up error state
-				$.articleFeedbackv5.markFormErrors( msg );
+				var err = { _api: { info: mw.msg( 'articlefeedbackv5-error-submit' ) } };
+				$.articleFeedbackv5.markFormErrors( err );
 				$.articleFeedbackv5.unlockForm();
 			}
 		} );
@@ -3059,12 +3050,27 @@
 	 *
 	 * @param object errors errors, indexed by field name
 	 */
-	$.articleFeedbackv5.markFormErrors = function ( error ) {
-		mw.log( error );
-		$.articleFeedbackv5.markTopError( error );
-
+	$.articleFeedbackv5.markFormErrors = function ( errors ) {
+		if ( '_api' in errors ) {
+			if ( typeof errors._api == 'object' ) {
+				if ( 'info' in errors._api ) {
+					mw.log( mw.msg( errors._api.info ) );
+				} else {
+					mw.log( mw.msg( 'articlefeedbackv5-error-submit' ) );
+				}
+				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-submit' ) );
+			} else {
+				mw.log( mw.msg( errors._api ) );
+				$.articleFeedbackv5.markTopError( errors._api );
+			}
+		} else {
+			mw.log( mw.msg( 'articlefeedbackv5-error-validation' ) );
+			if ( 'nofeedback' in errors ) {
+				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-nofeedback' ) );
+			}
+		}
 		if ( 'markFormErrors' in $.articleFeedbackv5.currentBucket() ) {
-			$.articleFeedbackv5.currentBucket().markFormErrors( error );
+			$.articleFeedbackv5.currentBucket().markFormErrors( errors );
 		}
 	};
 

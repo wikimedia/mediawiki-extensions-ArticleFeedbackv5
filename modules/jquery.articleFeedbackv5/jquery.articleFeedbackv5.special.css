@@ -399,17 +399,9 @@
 	padding: 0;
 	border-color: #888;
 	max-width: 40em;
-}
-.tipsy-e .tipsy-inner {
 	-moz-box-shadow: -2px 2px 1px #999;
 	-webkit-box-shadow: -2px 2px 1px #999;
 	box-shadow: -2px 2px 1px #999;
-	overflow: hidden;
-}
-.tipsy-w .tipsy-inner {
-	-moz-box-shadow: 2px 2px 1px #999;
-	-webkit-box-shadow: 2px 2px 1px #999;
-	box-shadow: 2px 2px 1px #999;
 	overflow: hidden;
 }
 .tipsy-e .tipsy-arrow {
@@ -426,7 +418,7 @@
 	height: 23px;
 	margin-top: -11px;
 	background-position: left;
-	/* @noflip */ margin-left: -5px;
+	/* @noflip */ margin-left: 1px;
 }
 form.articleFeedbackv5-form-flyover {
 	padding: 0 25px 0 0;

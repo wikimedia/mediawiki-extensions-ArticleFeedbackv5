@@ -52,7 +52,7 @@
 		article.permissionLevel = 'aft-reader';
 
 		mw.config.set( 'aftv5Article', article );
-	}
+	};
 
 	// }}}
 	// {{{ verify

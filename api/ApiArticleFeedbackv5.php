@@ -51,10 +51,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		// Blocked users are, well, blocked.
 		if ( $wgUser->isBlocked() ) {
-			$this->getResult()->addValue( null, 'error', array(
-				'msg' => wfMessage( 'articlefeedbackv5-error-blocked' )->escaped(),
-				'code' => 'userblocked'
-			) );
+			$this->getResult()->addValue( null, 'error', 'articlefeedbackv5-error-blocked' );
 			wfProfileOut( __METHOD__ );
 			return;
 		}
@@ -92,25 +89,15 @@ class ApiArticleFeedbackv5 extends ApiBase {
 					continue;
 				}
 				if ( !$this->validateParam( $value, $type, $field['afi_id'], $pageId ) ) {
-					$error = array(
-						'msg' => wfMessage( 'articlefeedbackv5-error-validation' )->escaped(),
-						'code' => 'paramvalidationfailed'
-					);
+					$error = 'articlefeedbackv5-error-validation';
 					break;
 				}
-				if ( $wgArticleFeedbackv5AbuseFiltering && 'text' == $type && $this->findAbuse( $value, $pageId ) ) {
+				if ( $wgArticleFeedbackv5AbuseFiltering && 'text' == $type
+					&& $this->findAbuse( $value, $pageId ) ) {
 					if ( $this->warnForAbuse ) {
-						$warning = array(
-							'msg' => $this->warnForAbuse,
-							'code' => 'afwarn'
-						);
+						$warning = $this->warnForAbuse;
 					} else {
-						$target = wfMessage( 'articlefeedbackv5-error-abuse-link' )->inContentLanguage()->plain();
-
-						$error = array(
-							'msg' => wfMessage( 'articlefeedbackv5-error-abuse', $target )->parse(),
-							'code' => 'afreject'
-						);
+						$error = 'articlefeedbackv5-error-abuse';
 					}
 					break;
 				}
@@ -175,7 +162,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		wfRunHooks( 'ArticleFeedbackChangeRating', array( $params ) );
 
 		// Are we set to auto-flag?
-		$flagger = new ArticleFeedbackv5Flagging( 0, $feedbackId );
+		$flagger = new ArticleFeedbackv5Flagging( null, $feedbackId );
 		foreach ( $this->autoFlag as $flag => $rule_desc ) {
 			$msg = 'articlefeedbackv5-abusefilter-note-aftv5';
 			if ( $flag == 'abuse' ) {

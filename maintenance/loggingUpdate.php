@@ -45,10 +45,9 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 		$this->output( "Updating log entries\n" );
 
 		$continue = 0;
-		$dbw = wfGetDB( DB_MASTER );
 
 		while ( $continue !== null ) {
-			$continue = $this->refreshBatch( $dbw, $continue );
+			$continue = $this->refreshBatch( $continue );
 			wfWaitForSlaves();
 
 			if ( $continue ) {
@@ -62,69 +61,49 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 	/**
 	 * Refreshes a batch of logging entries
 	 *
-	 * @param $dbw      Database master database connection
 	 * @param $continue int      [optional] the pull the next batch starting at
 	 *                           this log_id
 	 */
-	public function refreshBatch( $dbw, $continue ) {
-		// fetch the log IDs we need.
-		$id_query = $dbw->select(
-			array( 'logging' ),
-			array( 'log_id' ),
-			array(
-				"log_id > $continue",
-				'log_title LIKE "ArticleFeedbackv5/%"'
-			),
-			__METHOD__,
-			array(
-				'LIMIT'    => ( $this->limit + 1 ),
-				'ORDER BY' => 'log_id',
-			)
-		);
+	public function refreshBatch( $continue ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_SLAVE );
 
-		// Pull the continue for the next set
-		$ids = array();
-		$continue = null;
-		foreach ( $id_query as $id ) {
-			$ids[$id->log_id] = $id->log_id;
-			// Get the continue values from the last counted item.
-			if ( count( $ids ) == $this->limit ) {
-				$continue = $id->log_id;
-			}
-		}
-		if ( !count( $ids ) ) {
-			return null;
-		}
-		if ( count( $ids ) > $this->limit ) {
-			array_pop( $ids );
-		}
-
-		// select rows
-		$rows  = $dbw->select(
+		$rows = $dbr->select(
 			array( 'logging', 'page' ),
 			array(
 				'log_id',
 				'feedback_id' => 'SUBSTRING_INDEX(log_title, "/", -1)',
 				'page_id'
 			),
-			array( 'log_id' => $ids ),
+			array(
+				"log_id > $continue",
+				'log_title LIKE "ArticleFeedbackv5/%"',
+				'log_namespace' => NS_SPECIAL
+			),
 			__METHOD__,
-			array(),
+			array(
+				'LIMIT'    => $this->limit,
+				'ORDER BY' => 'log_id',
+			),
 			array(
 				'page' => array(
 					'INNER JOIN', array(
 						'page_namespace = 0', // this maintenance only supports NS_MAIN
 						'page_title = SUBSTRING_INDEX(REPLACE(log_title, "ArticleFeedbackv5/", ""), "/", 1)'
 					)
-				),
+				)
 			)
 		);
 
+		$continue = null;
+
 		foreach ( $rows as $row ) {
+			$continue = $row->log_id;
+
 			// build params
 			$params = array(
-				'feedbackId' => $row->feedback_id,
-				'pageId' => $row->page_id
+				'feedbackId' => (int) $row->feedback_id,
+				'pageId' => (int) $row->page_id
 			);
 
 			// update log entry

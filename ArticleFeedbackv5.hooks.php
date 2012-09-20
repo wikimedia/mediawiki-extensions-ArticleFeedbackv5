@@ -105,7 +105,6 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-error-submit',
 				'articlefeedbackv5-cta-thanks',
 				'articlefeedbackv5-error-abuse',
-				'articlefeedbackv5-error-abuse-link',
 				'articlefeedbackv5-error-throttled',
 				'articlefeedbackv5-cta-confirmation-message',
 				'articlefeedbackv5-cta1-confirmation-title',
@@ -172,8 +171,6 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-bucket6-form-submit',
 				'articlefeedbackv5-bucket6-backlink-text',
 				'articlefeedbackv5-error',
-				'articlefeedbackv5-shared-on-feedback',
-				'articlefeedbackv5-shared-on-feedback-linktext',
 				'articlefeedbackv5-help-tooltip-title',
 				'articlefeedbackv5-help-tooltip-info',
 				'articlefeedbackv5-help-tooltip-linktext',
@@ -471,7 +468,9 @@ class ArticleFeedbackv5Hooks {
 		foreach ( $title->getParentCategories() as $category => $page ) {
 			// get category title without prefix
 			$category = Title::newFromDBkey( $category );
-			$article['categories'][] = str_replace( '_', ' ', $category->getDBkey() );
+			if ( $category ) {
+				$article['categories'][] = str_replace( '_', ' ', $category->getDBkey() );
+			}
 		}
 
 		return $article;
@@ -733,13 +732,19 @@ class ArticleFeedbackv5Hooks {
 
 		// date
 		$date = $lang->userTimeAndDate( $row->af_created, $user );
-		$date = Linker::link(
+		$d = Linker::link(
 			$feedbackTitle,
 			htmlspecialchars( $date )
 		);
 		if ( $row->af_is_hidden > 0 || $row->af_oversight_count > 0 || $row->af_is_deleted > 0 ) {
-			$date = '<span class="history-deleted">' . $date . '</span>';
+			$d = '<span class="history-deleted">' . $d . '</span>';
 		}
+
+		// chardiff
+		$chardiff = ' . . ' . ChangesList::showCharacterDifference( 0, strlen( $row->af_comment ) ) . ' . . ';
+
+		// article feedback is given on
+		$article = $lang->getDirMark() . wfMessage( 'articlefeedbackv5-contribs-feedback', $feedbackCentralPageTitle->getFullText(), $pageTitle->getPrefixedText() )->parse();
 
 		// show user names for /newbies as there may be different users.
 		$userlink = '';
@@ -759,11 +764,12 @@ class ArticleFeedbackv5Hooks {
 				// (probably) abusive comment that has been hidden/oversight-requested/oversighted
 				$feedback = Linker::commentBlock( wfMessage( 'articlefeedbackv5-contribs-hidden-feedback' )->escaped() );
 			} else {
-				$feedback = Linker::commentBlock( $lang->truncate( $row->af_comment, 75 ) );
+				$feedback = Linker::commentBlock( $lang->truncate( $row->af_comment, 250 ) );
 			}
 		}
 
 		// status (actions taken)
+		$status = '';
 		$actions = array();
 		if ( $row->af_net_helpfulness > 0 ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-helpful' )->escaped();
@@ -786,28 +792,11 @@ class ArticleFeedbackv5Hooks {
 		if ( $row->af_is_deleted > 0 ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-deleted' )->escaped();
 		}
-
-		$status = '';
-		if ( $actions ) {
-			$status = wfMessage( 'articlefeedbackv5-contribs-entry-status' )
-				->params( $lang->listToText( $actions ) )
-				->escaped();
+		if ( !empty( $actions ) ) {
+			$status = ' . . ' . wfMessage( 'articlefeedbackv5-contribs-status', implode( ', ', $actions) )->escaped();
 		}
 
-		$ret = wfMessage( 'articlefeedbackv5-contribs-entry' )
-			->rawParams( $date ) // date + time
-			->params(
-				ChangesList::showCharacterDifference( 0, strlen( $row->af_comment ) ), // chardiff
-				$feedbackCentralPageTitle->getFullText(), // feedback link
-				$pageTitle->getPrefixedText() // article title
-			)
-			->rawParams( $userlink ) // userlink (for newbies)
-			->params(
-				$feedback, // comment
-				$status // status
-			)
-			->parse();
-
+		$ret = "{$d} {$chardiff} {$article} {$userlink} {$feedback} {$status}\n";
 		$classes[] = 'mw-aft-contribution';
 
 		return true;

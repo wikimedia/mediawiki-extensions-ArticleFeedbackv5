@@ -23,8 +23,8 @@ jQuery( function( $ ) {
 		var params = { ref: 'talk' };
 		var track_id = 'talk_page_view_feedback-button_click';
 		var url = mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' +
-			mw.util.wikiUrlencode( mw.config.get( 'aftv5Article' ).title ) +
-			'?' + $.param( params );
+			mw.util.wikiUrlencode( mw.config.get( 'aftv5Article' ).title );
+		url = url + ( url.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( params );
 
 		// Add the link to the feedback-page next to the title
 		var link = $( '<a id="articlefeedbackv5-talk-feedback-link"></a>' );

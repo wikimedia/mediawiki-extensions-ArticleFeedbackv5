@@ -54,14 +54,14 @@ class ApiArticleFeedbackv5Utils {
 		global $wgRequest, $wgUser, $wgArticleFeedbackv5Tracking;
 
 		// if logged in user, we can know for certain if feedback was posted when logged in
-		if ( $wgUser->getId() && isset( $record->af_user_id )&& $wgUser->getId() == intval( $record->af_user_id )) {
+		if ( $wgUser->getId() && isset( $record->af_user_id ) && $wgUser->getId() == intval( $record->af_user_id )) {
 			return true;
 		}
 
 		// if either the feedback was posted when not logged in, or the visitor is now not
 		// logged in, compare the feedback's id with what's stored in a cookie
 		$version = isset( $wgArticleFeedbackv5Tracking['version'] ) ? $wgArticleFeedbackv5Tracking['version'] : 0;
-		$cookie = json_decode( $wgRequest->getCookie( 'feedback-ids', 'ext_articleFeedbackv5@' . $version . '-' ) );
+		$cookie = json_decode( $wgRequest->getCookie( 'feedback-ids', 'ext_articleFeedbackv5@' . $version . '-' ), true );
 		if ( $cookie !== null && is_array( $cookie ) && isset( $record->af_id ) ) {
 			return in_array( $record->af_id, $cookie );
 		}
