@@ -1303,7 +1303,9 @@
 					$.articleFeedbackv5.ctaName() + '-button_signup_click';
 				$block.find( '.articleFeedbackv5-cta-button-signup' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl(
-					signup_url + '&c=' + $.articleFeedbackv5.feedbackId,
+					signup_url
+						+ '&campaign=aftv5_cta4'
+						+ '&c=' + $.articleFeedbackv5.feedbackId,
 					signup_track_id
 				) );
 
