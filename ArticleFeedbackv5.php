@@ -110,7 +110,7 @@ $wgArticleFeedbackv5AutoHelp = 'http://en.wikipedia.org/wiki/Wikipedia:Article_F
 
 // How long text-based feedback is allowed to be before returning an error.
 // Set to 0 to disable length checking entirely.
-$wgArticleFeedbackv5MaxCommentLength =  0;
+$wgArticleFeedbackv5MaxCommentLength = 5000;
 
 // How long text-based activity items are allowed to be - note this will not return
 // an error but simply chop notes that are too long
