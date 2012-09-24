@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAATH//+ng\u003d",
+        "filename": "maintenance/loggingUpdate.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-09-24T21:12:18Z",
+      "side": 1,
+      "message": "align the comment as well",
+      "revId": "7e9077b26c350e781d1840719133703f4b75600e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATH//+s0\u003d",
+        "filename": "maintenance/rebuildCheckUser.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-09-24T21:12:18Z",
+      "side": 1,
+      "message": "It\u0027s better to use \u0027log_timestamp\u0027 and \u0027log_id\u0027 than just log_id since (log_namespace`,`log_title`,`log_timestamp) is a key, for example:\n\n( log_timestamp \u003e xxxxx or log_timestamp \u003d \u0027xxxxx\u0027 and log_id \u003e xxxxx ) order by log_timestamp, log_id",
+      "revId": "7e9077b26c350e781d1840719133703f4b75600e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
