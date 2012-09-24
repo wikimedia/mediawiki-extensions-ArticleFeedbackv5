@@ -93,9 +93,6 @@
 
 		// for special page, it doesn't matter if the article has AFT applied
 		if ( location != 'special' ) {
-			// not disabled via preferences
-			enable &= !mw.user.options.get( 'articlefeedback-disable' );
-
 			// category is not blacklisted
 			enable &= !$.aftVerify.blacklist( article );
 
@@ -105,6 +102,9 @@
 
 		// stricter validation for article: make sure we're at the right article view
 		if ( location == 'article' ) {
+			// not disabled via preferences
+			enable &= !mw.user.options.get( 'articlefeedback-disable' );
+
 			// view pages
 			enable &= ( mw.config.get( 'wgAction' ) == 'view' || mw.config.get( 'wgAction' ) == 'purge' );
 
