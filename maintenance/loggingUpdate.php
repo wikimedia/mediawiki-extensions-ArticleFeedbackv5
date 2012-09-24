@@ -1,13 +1,13 @@
 <?php
-	/**
-	 * ArticleFeedbackv5_LoggingUpdate class
-	 *
-	 * @package    ArticleFeedbackv5
-	 * @author     Matthias Mullie <mmullie@wikimedia.org>
-	 * @version    $Id$
-	 */
+/**
+ * ArticleFeedbackv5_LoggingUpdate class
+ *
+ * @package    ArticleFeedbackv5
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
+ * @version    $Id$
+ */
 
-	require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
 
 	/**
 	 * Refresh the filter counts

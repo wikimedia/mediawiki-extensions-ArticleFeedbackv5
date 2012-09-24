@@ -55,7 +55,7 @@ class ArticleFeedbackv5Log {
 		$logEntry->setTarget( $target );
 		$logEntry->setPerformer( $doer );
 		$logEntry->setParameters( $params );
-		$logEntry->setComment( $note);
+		$logEntry->setComment( $note );
 		$logEntry->publish( $logEntry->insert() );
 
 		// denormalized db: update log count in AFT table
@@ -127,5 +127,17 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 			->parse();
 
 		return $action;
+	}
+
+	/**
+	 * The native LogFormatter::getActionText provides no clean way of
+	 * handling the AFT action text in a plain text format (e.g. as
+	 * used by CheckUser)
+	 *
+	 * @return string
+	 */
+	public function getActionText() {
+		$text = $this->getActionMessage();
+		return $this->plaintext ? strip_tags( $text ) : $text;
 	}
 }
