@@ -82,9 +82,6 @@
 		// supported browser
 		enable &= $.aftVerify.useragent();
 
-		// not disabled via preferences
-		enable &= !mw.user.options.get( 'articlefeedback-disable' );
-
 		// page permission check is not applicable for central feedback page
 		if ( location != 'special' || article.id != 0 ) {
 			// only on pages in namespaces where it is enabled
@@ -96,6 +93,9 @@
 
 		// for special page, it doesn't matter if the article has AFT applied
 		if ( location != 'special' ) {
+			// not disabled via preferences
+			enable &= !mw.user.options.get( 'articlefeedback-disable' );
+
 			// category is not blacklisted
 			enable &= !$.aftVerify.blacklist( article );
 
