@@ -119,12 +119,6 @@ $wgArticleFeedbackv5MaxActivityNoteLength =  5000;
 // How long to keep ratings in the squids (they will also be purged when needed)
 $wgArticleFeedbackv5SMaxage = 2592000;
 
-// Enable/disable dashboard page
-$wgArticleFeedbackv5Dashboard = true;
-
-// Number of revisions to keep a rating alive for
-$wgArticleFeedbackv5RatingLifetime = 30;
-
 // Percentage of article AFT should be enabled on
 $wgArticleFeedbackv5LotteryOdds = 100;
 
@@ -155,13 +149,13 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// the new odds are applied to everyone, not just people who have yet to be
 	// placed in a bucket.
 	'buckets' => array(
-		'0'  => 0,
-		'1'   => 0,
-		'2'   => 0,
-		'3' => 0,
-		'4'  => 0,
-		'5'  => 0,
-		'6'   => 100,
+		'0'  => 0, // display nothing
+		'1'   => 0, // display 1-step feedback form
+//		'2'   => 0, // abandoned
+//		'3' => 0, // abandoned
+		'4'  => 0, // display encouragement to edit page
+//		'5'  => 0, // abandoned
+		'6'   => 100, // display 2-step feedback form
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
@@ -199,17 +193,6 @@ $wgArticleFeedbackv5Tracking = array(
 	// Let users be tracked for a month, and then rebucket them, allowing some churn
 	'expires' => 30,
 	// Do not track the event of users being bucketed, at least for now.
-	'tracked' => false,
-);
-
-// Bucket settings for extra expertise checkboxes in the Option 5 feedback form
-$wgArticleFeedbackv5Options = array(
-	'buckets' => array(
-		'show' => 100,
-		'hide' => 0,
-	),
-	'version' => 0,
-	'expires' => 30,
 	'tracked' => false,
 );
 
@@ -258,13 +241,13 @@ $wgArticleFeedbackv5CTABuckets = array(
 	// the new odds are applied to everyone, not just people who have yet to be
 	// placed in a bucket.
 	'buckets' => array(
-		'0' => 0,
-		'1' => 40,
-		'2' => 10,
-		'3' => 0,
-		'4' => 20,
-		'5' => 20,
-		'6' => 10,
+		'0' => 0, // display nothing
+		'1' => 40, // display "Enticement to edit"
+		'2' => 10, // display "Learn more"
+		'3' => 0, // display "Take a survey"
+		'4' => 20, // display "Sign up or login"
+		'5' => 20, // display "View feedback"
+		'6' => 10, // display "Visit Teahouse"
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
@@ -325,20 +308,7 @@ $wgArticleFeedbackv5AbuseFilterGroup = 'feedback';
  *
  * @var int
  */
-
 $wgArticleFeedbackv5ThrottleThresholdPostsPerHour = 20;
-
-/**
- * The full URL for a discussion page about the Article Feedback Dashboard
- *
- * Since the dashboard is powered by a SpecialPage, we cannot rel on the built-in
- * MW talk page for this, so we must expose our own page - internally or externally.
- *
- * This value will be passed into an i18n message which will parse the URL as an
- * external link using wikitext, so this must be a full URL.
- * @var string
- */
-$wgArticleFeedbackv5DashboardTalkPage = "//www.mediawiki.org/wiki/Talk:Article_feedback";
 
 /**
  * The full URL for the "Learn to Edit" link

@@ -509,7 +509,6 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5DisplayBuckets,
 			$wgArticleFeedbackv5CTABuckets,
 			$wgArticleFeedbackv5Tracking,
-			$wgArticleFeedbackv5Options,
 			$wgArticleFeedbackv5LinkBuckets,
 			$wgArticleFeedbackv5Namespaces,
 			$wgArticleFeedbackv5LearnToEdit,
@@ -525,7 +524,6 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
 		$vars['wgArticleFeedbackv5Debug'] = $wgArticleFeedbackv5Debug;
 		$vars['wgArticleFeedbackv5Tracking'] = $wgArticleFeedbackv5Tracking;
-		$vars['wgArticleFeedbackv5Options'] = $wgArticleFeedbackv5Options;
 		$vars['wgArticleFeedbackv5LinkBuckets'] = $wgArticleFeedbackv5LinkBuckets;
 		$vars['wgArticleFeedbackv5Namespaces'] = $wgArticleFeedbackv5Namespaces;
 		$vars['wgArticleFeedbackv5LearnToEdit'] = $wgArticleFeedbackv5LearnToEdit;
