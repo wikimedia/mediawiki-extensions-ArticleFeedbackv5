@@ -33,6 +33,24 @@
       "revId": "7e9077b26c350e781d1840719133703f4b75600e",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATH//+ak\u003d",
+        "filename": "maintenance/rebuildCheckUser.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-09-25T04:40:41Z",
+      "side": 1,
+      "message": "Not really sure what you mean. log_id is primary key and thus already indexed as well - right?",
+      "parentUuid": "AAAATH//+s0\u003d",
+      "revId": "7e9077b26c350e781d1840719133703f4b75600e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
