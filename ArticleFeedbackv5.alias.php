@@ -52,7 +52,7 @@ $specialPageAliases['mk'] = array(
 	'ArticleFeedbackv5' => array( 'ОценувањеНаСтатиив5' ),
 );
 
-/** Norwegian Bokmål (‪norsk (bokmål)‬) */
+/** Norwegian Bokmål (norsk (bokmål)‎) */
 $specialPageAliases['nb'] = array(
 	'ArticleFeedbackv5' => array( 'Artikkeltilbakemelding_v5' ),
 );
