@@ -198,7 +198,9 @@
 	 */
 	$.aftVerify.lottery = function ( article ) {
 		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
-		odds = article.namespace in odds ? odds[article.namespace] : parseInt( odds );
+		if ( typeof odds === 'object' && article.namespace in odds ) {
+			odds = odds[article.namespace];
+		}
 		return ( Number( article.id ) % 1000 ) > ( 1000 - ( Number( odds ) * 10 ) );
 	};
 
