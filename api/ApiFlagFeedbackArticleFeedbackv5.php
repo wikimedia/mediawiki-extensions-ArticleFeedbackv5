@@ -6,6 +6,7 @@
  * @subpackage Api
  * @author     Greg Chiasson <greg@omniti.com>
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
 /**
@@ -76,7 +77,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array(
-				 'abuse', 'hide', 'helpful', 'unhelpful', 'delete', 'oversight', 'resetoversight', 'resolve', 'feature' )
+				 'flag', 'hide', 'helpful', 'unhelpful', 'oversight', 'request', 'decline', 'resolve', 'feature' )
 			),
 			'direction' => array(
 				ApiBase::PARAM_REQUIRED => false,
