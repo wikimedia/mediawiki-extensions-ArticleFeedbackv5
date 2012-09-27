@@ -35,27 +35,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	protected $sorts;
 
 	/**
-	 * Whether to show featured feedback
-	 *
-	 * @var bool
-	 */
-	protected $showFeatured;
-
-	/**
-	 * Whether to show hidden feedback
-	 *
-	 * @var bool
-	 */
-	protected $showHidden;
-
-	/**
-	 * Whether to show deleted feedback
-	 *
-	 * @var bool
-	 */
-	protected $showDeleted;
-
-	/**
 	 * The page ID we're operating on (null for central log)
 	 *
 	 * @var int
@@ -138,33 +117,28 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		parent::__construct( $name, $restriction, $listed, $function, $file, $includable );
 
-		$user = $this->getUser();
-		$this->showHidden = $user->isAllowed( 'aftv5-see-hidden-feedback' );
-		$this->showDeleted = $user->isAllowed( 'aftv5-see-deleted-feedback' );
-		$this->showFeatured = $user->isAllowed( 'aftv5-feature-feedback' );
-
 		$this->filters = $this->defaultFilters;
-		if ( $this->showDeleted ) {
+		if ( $this->isAllowed( 'aft-oversighter' ) ) {
 			array_push( $this->filters,
 				'visible-unhelpful', 'visible-abusive', 'visible-resolved',
 				'all-hidden',
 				'all-requested', 'all-declined',
 				'notdeleted-requested', 'all-oversighted', 'all'
 			);
-		} elseif ( $this->showHidden ) {
+		} elseif ( $this->isAllowed( 'aft-monitor' ) ) {
 			array_push( $this->filters,
 				'visible-unhelpful', 'visible-abusive', 'visible-resolved',
 				'notdeleted-hidden',
 				'notdeleted-declined','notdeleted'
 			);
-		} elseif ( $this->showFeatured ) {
+		} elseif ( $this->isAllowed( 'aft-editor' ) ) {
 			array_push( $this->filters,
 				'visible-unhelpful', 'visible-abusive', 'visible-resolved'
 			);
 		}
 
 		$this->sorts = array( 'relevance-asc', 'relevance-desc', 'age-desc', 'age-asc' );
-		if ( $this->showFeatured ) {
+		if ( $this->isAllowed( 'aft-editor' ) ) {
 			array_push( $this->sorts, 'helpful-desc', 'helpful-asc' );
 		}
 
@@ -292,15 +266,14 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * View Article | Discussion | Help
 	 */
 	protected function outputHeaderLinks() {
-		$user = $this->getUser();
 		$out = $this->getOutput();
 
 		$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl')->text();
-		if( $user->isAllowed( 'aftv5-delete-feedback' ) ) {
+		if( $this->isAllowed( 'aft-oversighter' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-oversighters' )->text();
-		} elseif( $user->isAllowed( 'aftv5-hide-feedback' ) ) {
+		} elseif( $this->isAllowed( 'aft-monitor' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-monitors' )->text();
-		} elseif( $user->isAllowed( 'aftv5-feature-feedback' ) ) {
+		} elseif( $this->isAllowed( 'aft-editor' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-editors' )->text();
 		}
 		$helpLink .= '#Feedback_page';
@@ -390,7 +363,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @param $fetched  stdClass                the fetched records &etc.
 	 */
 	protected function outputListing( $renderer, $fetched ) {
-		$user = $this->getUser();
 		$out = $this->getOutput();
 
 		// Notices
@@ -453,7 +425,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		);
 
 		// Link back to the central page - only for editors
-		if ( $this->pageId && $user->isAllowed( 'aftv5-feature-feedback' ) ) {
+		if ( $this->pageId && $this->isAllowed( 'aft-editor' ) ) {
 			$out->addHTML(
 				Html::rawElement( 'div', array(
 						'class' => 'articleFeedbackv5-feedback-central-goback'
@@ -473,15 +445,14 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * {% found}     BETA      Add Feedback
 	 */
 	protected function outputNotices() {
-		$user = $this->getUser();
 		$out = $this->getOutput();
 
 		$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl')->text();
-		if( $user->isAllowed( 'aftv5-delete-feedback' ) ) {
+		if( $this->isAllowed( 'aft-oversighter' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-oversighters' )->text();
-		} elseif( $user->isAllowed( 'aftv5-hide-feedback' ) ) {
+		} elseif( $this->isAllowed( 'aft-monitor' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-monitors' )->text();
-		} elseif( $user->isAllowed( 'aftv5-feature-feedback' ) ) {
+		} elseif( $this->isAllowed( 'aft-editor' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-editors' )->text();
 		}
 		$helpLink .= '#Feedback_page';
@@ -629,7 +600,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		$filterSelectHtml = '';
 		// No dropdown for readers
-		if ( $this->showFeatured ) {
+		if ( $this->isAllowed( 'aft-editor' ) ) {
 			$opts = array();
 			$foundNonDefaults = false;
 			foreach ( $this->filters as $filter ) {
@@ -846,11 +817,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		if ( !$filter ) {
 			if ( $this->feedbackId ) {
 				$filter = 'id';
-			} elseif ( $this->showDeleted ) {
+			} elseif ( $this->isAllowed( 'aft-oversighter' ) ) {
 				$filter = $wgArticleFeedbackv5DefaultFilters['deleted'];
-			} elseif ( $this->showHidden ) {
+			} elseif ( $this->isAllowed( 'aft-monitor' ) ) {
 				$filter = $wgArticleFeedbackv5DefaultFilters['hidden'];
-			} elseif ( $this->showFeatured ) {
+			} elseif ( $this->isAllowed( 'aft-editor' ) ) {
 				$filter = $wgArticleFeedbackv5DefaultFilters['featured'];
 			} else {
 				$filter = $wgArticleFeedbackv5DefaultFilters['all'];
@@ -902,6 +873,17 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 */
 	protected function shortFilter( $filter ) {
 		return str_replace(array('all-', 'visible-', 'notdeleted-'), '', $filter);
+	}
+
+	/**
+	 * Returns whether an action is allowed
+	 *
+	 * @param  $action string the name of the action
+	 * @return bool whether it's allowed
+	 */
+	public function isAllowed( $permission ) {
+		$user = $this->getUser();
+		return $user->isAllowed( $permission ) && !$user->isBlocked();
 	}
 
 }

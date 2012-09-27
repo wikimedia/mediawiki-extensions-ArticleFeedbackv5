@@ -561,7 +561,7 @@ class ArticleFeedbackv5Hooks {
 		// expose AFT permissions for this user to JS
 		$vars['wgArticleFeedbackv5Permissions'] = array();
 		foreach ( ArticleFeedbackv5Permissions::$permissions as $permission ) {
-			$vars['wgArticleFeedbackv5Permissions'][$permission] = $wgUser->isAllowed( $permission );
+			$vars['wgArticleFeedbackv5Permissions'][$permission] = $wgUser->isAllowed( $permission ) && !$wgUser->isBlocked();
 		}
 
 		return true;
