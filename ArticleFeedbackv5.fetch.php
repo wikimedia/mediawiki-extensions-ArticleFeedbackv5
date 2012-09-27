@@ -426,12 +426,12 @@ class ArticleFeedbackv5Fetch {
 		// Never show hidden or deleted posts unless specifically requested
 		// and user has access.
 		if ( !in_array( $this->filter, self::$deletedFilters )
-		 || !$wgUser->isAllowed( 'aftv5-see-deleted-feedback' ) ) {
+		 || !$wgUser->isAllowed( 'aft-oversighter' ) ) {
 			$where[] = 'af_is_deleted IS FALSE';
 			$where[] = 'af_oversight_count = 0';
 		}
 		if ( !in_array( $this->filter, self::$hiddenFilters )
-		 || !$wgUser->isAllowed( 'aftv5-see-hidden-feedback' ) ) {
+		 || !$wgUser->isAllowed( 'aft-monitor' ) ) {
 			$where[] = 'af_is_hidden IS FALSE';
 		}
 

@@ -82,6 +82,9 @@
 		// supported browser
 		enable &= $.aftVerify.useragent();
 
+		// not disabled via preferences
+		enable &= !mw.user.options.get( 'articlefeedback-disable' );
+
 		// page permission check is not applicable for central feedback page
 		if ( location != 'special' || article.id != 0 ) {
 			// only on pages in namespaces where it is enabled
@@ -102,9 +105,6 @@
 
 		// stricter validation for article: make sure we're at the right article view
 		if ( location == 'article' ) {
-			// not disabled via preferences
-			enable &= !mw.user.options.get( 'articlefeedback-disable' );
-
 			// view pages
 			enable &= ( mw.config.get( 'wgAction' ) == 'view' || mw.config.get( 'wgAction' ) == 'purge' );
 
@@ -198,7 +198,9 @@
 	 */
 	$.aftVerify.lottery = function ( article ) {
 		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
-		odds = article.namespace in odds ? odds[article.namespace] : parseInt( odds );
+		if ( typeof odds === 'object' && article.namespace in odds ) {
+			odds = odds[article.namespace];
+		}
 		return ( Number( article.id ) % 1000 ) > ( 1000 - ( Number( odds ) * 10 ) );
 	};
 

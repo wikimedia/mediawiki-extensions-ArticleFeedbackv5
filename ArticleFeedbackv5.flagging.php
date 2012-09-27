@@ -5,14 +5,12 @@
  * @package    ArticleFeedback
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
  * @author     Reha Sterbin <reha@omniti.com>
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @version    $Id$
  */
 
 /**
  * Handles flagging of feedback
- *
- * Known flags are: 'delete', 'hide', 'resetoversight', 'abuse', 'oversight',
- * 'unhelpful', and 'helpful'
  *
  * @package    ArticleFeedback
  */
@@ -92,18 +90,22 @@ class ArticleFeedbackv5Flagging {
 
 	/**
 	 * The map of flags to permissions.
-	 * If an action is not mentionned here, it is not tied to specific permissions
+	 * If an action is not mentioned here, it is not tied to specific permissions
 	 * and everyone is able to perform the action.
 	 *
 	 * @var array
 	 */
 	private $flagPermissionMap = array(
-		'delete'         => array( 'aftv5-delete-feedback' ),
-		'hide'           => array( 'aftv5-hide-feedback' ),
-		'oversight'      => array( 'aftv5-hide-feedback' ),
-		'feature'        => array( 'aftv5-feature-feedback' ),
-		'resolve'        => array( 'aftv5-feature-feedback' ),
-		'resetoversight' => array( 'aftv5-delete-feedback' ),
+		'oversight' => 'aft-oversighter', // includes unoversight
+		'decline' => 'aft-oversighter',
+		'request' => 'aft-monitor', // includes unrequest
+		'hide' => 'aft-monitor', // includes unhide
+		'flag' => 'aft-reader', // includes unflag
+		'clearflags' => 'aft-monitor',
+		'feature' => 'aft-editor', // includes unfeature
+		'resolve' => 'aft-editor', // includes unresolve
+		'helpful' => 'aft-reader', // includes undo-helpful
+		'unhelpful' => 'aft-reader', // includes undo-unhelpful
 	);
 
 	/**
@@ -165,11 +167,9 @@ class ArticleFeedbackv5Flagging {
 
 		// check permissions
 		if ( isset( $this->flagPermissionMap[$flag] ) ) {
-			foreach ( $this->flagPermissionMap[$flag] as $permission ) {
-				// regardless of permissions, users are always allowed to flag their own feedback
-				if ( !$this->isAllowed( $permission ) && !$ownFeedback ) {
-					return $this->errorResult( 'articlefeedbackv5-invalid-feedback-flag' );
-				}
+			// regardless of permissions, users are always allowed to flag their own feedback
+			if ( !$this->isAllowed( $this->flagPermissionMap[$flag] ) && !$ownFeedback ) {
+				return $this->errorResult( 'articlefeedbackv5-invalid-feedback-flag' );
 			}
 		}
 
@@ -329,7 +329,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $toggle    bool     whether to toggle the flag
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_delete_increase( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function flag_oversight_increase( stdClass $record, $notes, $timestamp, $toggle ) {
 		if ( $record->af_is_deleted ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
@@ -427,7 +427,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $toggle    bool     whether to toggle the flag
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_delete_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function flag_oversight_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
 		if ( !$record->af_is_deleted ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
@@ -557,7 +557,9 @@ class ArticleFeedbackv5Flagging {
 			'unhidden', $this->getUserId(), $timestamp );
 
 		// clear all abuse flags
-		$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
+		if ( $record->af_abuse_count > 0 ) {
+			$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
+		}
 
 		return true;
 	}
@@ -574,7 +576,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $toggle    bool     whether to toggle the flag
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_oversight_increase( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function flag_request_increase( stdClass $record, $notes, $timestamp, $toggle ) {
 		$this->relevance[] = 'request';
 
 		$this->log[] = array( 'request', $notes, $this->user );
@@ -657,7 +659,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $toggle    bool     whether to toggle the flag
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_oversight_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function flag_request_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
 		$this->relevance[] = 'unrequest';
 		$this->log[] = array( 'unrequest', $notes, $this->user );
 		$this->filters = array();
@@ -723,7 +725,9 @@ class ArticleFeedbackv5Flagging {
 			'featured', $this->getUserId(), $timestamp );
 
 		// clear all abuse flags
-		$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
+		if ( $record->af_abuse_count > 0 ) {
+			$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
+		}
 
 		return true;
 	}
@@ -850,7 +854,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $direction string   increase/decrease
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_resetoversight( stdClass $record, $notes, $timestamp, $toggle, $direction ) {
+	private function flag_decline( stdClass $record, $notes, $timestamp, $toggle, $direction ) {
 		$this->relevance[] = 'decline';
 		$this->log[] = array( 'decline', $notes, $this->user );
 
@@ -894,7 +898,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $toggle    bool     whether to toggle the flag
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_abuse_increase( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function flag_flag_increase( stdClass $record, $notes, $timestamp, $toggle ) {
 		global $wgArticleFeedbackv5AbusiveThreshold,
 			$wgArticleFeedbackv5HideAbuseThreshold;
 
@@ -983,7 +987,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $toggle    bool     whether to toggle the flag
 	 * @return mixed      true if success, message key (string) if not
 	 */
-	private function flag_abuse_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
+	private function flag_flag_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
 		global $wgArticleFeedbackv5AbusiveThreshold,
 			   $wgArticleFeedbackv5HideAbuseThreshold;
 
@@ -1270,11 +1274,12 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $action string the name of the action
 	 * @return bool whether it's allowed
 	 */
-	public function isAllowed( $action ) {
+	public function isAllowed( $permission ) {
 		if ( $this->isSystemCall() ) {
 			return true;
 		}
-		return $this->user->isAllowed( $action );
+
+		return $this->user->isAllowed( $permission ) && !$this->user->isBlocked();
 	}
 
 	/**
