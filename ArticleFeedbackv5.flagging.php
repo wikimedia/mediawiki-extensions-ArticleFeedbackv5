@@ -194,9 +194,30 @@ class ArticleFeedbackv5Flagging {
 		wfProfileIn( __METHOD__ . "-flag_{$flag}_$direction" );
 
 		// figure out if we have relevance_scores to adjust
-		if ( count($this->relevance) > 0 ) {
+		if ( count( $this->relevance ) > 0 ) {
 			global $wgArticleFeedbackv5RelevanceScoring;
 			$math = array();
+
+			foreach( $this->relevance as $item ) {
+				// resolving/hiding an article should reset the relevance score
+				if ( in_array( $item, array( 'resolve', 'hide', 'autohide' ) ) ) {
+					$math[] = -$record->af_relevance_score;
+
+				// unresolve/unhide = try to rebuild relevance score
+				} elseif ( in_array( $item, array( 'unresolve', 'unhide' ) ) ) {
+					$math[] = -$record->af_relevance_score;
+					$math[] = $wgArticleFeedbackv5RelevanceScoring['flag'] * $record->af_abuse_count;
+					$math[] = $wgArticleFeedbackv5RelevanceScoring['helpful'] * $record->af_helpful_count;
+					$math[] = $wgArticleFeedbackv5RelevanceScoring['unhelpful'] * $record->af_unhelpful_count;
+					$math[] = $wgArticleFeedbackv5RelevanceScoring['request'] * $record->af_oversight_count;
+					$math[] = $wgArticleFeedbackv5RelevanceScoring['oversight'] * $record->af_is_deleted;
+					$math[] = $wgArticleFeedbackv5RelevanceScoring['hidden'] * $record->af_is_hidden;
+					$math[] = $wgArticleFeedbackv5RelevanceScoring['autohide'] * $record->af_is_autohide;
+					$math[] = $wgArticleFeedbackv5RelevanceScoring['decline'] * $record->af_is_declined;
+					$math[] = $wgArticleFeedbackv5RelevanceScoring['feature'] * $record->af_is_featured;
+					$math[] = $wgArticleFeedbackv5RelevanceScoring['resolve'] * $record->af_is_resolved;
+				}
+			}
 
 			foreach( $this->relevance as $item ) {
 				if ( array_key_exists( $item, $wgArticleFeedbackv5RelevanceScoring ) ) {
@@ -504,7 +525,7 @@ class ArticleFeedbackv5Flagging {
 		$this->hideCounts( $record, 'hide' );
 		$this->visibleCounts( $record, 'invisible' );
 
-		$this->relevance[] = 'hidden';
+		$this->relevance[] = 'hide';
 
 		$this->log[] = array( 'hidden', $notes, $this->user );
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
@@ -550,7 +571,7 @@ class ArticleFeedbackv5Flagging {
 		$this->hideCounts( $record, 'show' );
 		$this->visibleCounts( $record, 'visible' );
 
-		$this->relevance[] = 'unhidden';
+		$this->relevance[] = 'unhide';
 
 		$this->log[] = array( 'unhidden', $notes, $this->user );
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
@@ -717,7 +738,7 @@ class ArticleFeedbackv5Flagging {
 		if ( true == $record->af_is_unfeatured) {
 			$this->filters['visible-unfeatured'] = -1;
 		}
-		$this->relevance[] = 'featured';
+		$this->relevance[] = 'feature';
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'featured', $this->getUserId(), $timestamp );
@@ -754,7 +775,7 @@ class ArticleFeedbackv5Flagging {
 		// filter adjustments
 		$this->filters['visible-featured'] = -1;
 		$this->filters['visible-unfeatured'] = 1;
-		$this->relevance[] = 'unfeatured';
+		$this->relevance[] = 'unfeature';
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'unfeatured', $this->getUserId(), $timestamp );
@@ -794,7 +815,7 @@ class ArticleFeedbackv5Flagging {
 		if ( true == $record->af_is_unresolved) {
 			$this->filters['visible-unresolved'] = -1;
 		}
-		$this->relevance[] = 'resolved';
+		$this->relevance[] = 'resolve';
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'resolved', $this->getUserId(), $timestamp );
@@ -829,7 +850,7 @@ class ArticleFeedbackv5Flagging {
 		// filter adjustments
 		$this->filters['visible-resolved'] = -1;
 		$this->filters['visible-unresolved'] = 1;
-		$this->relevance[] = 'unresolved';
+		$this->relevance[] = 'unresolve';
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'unresolved', $this->getUserId(), $timestamp );
@@ -902,7 +923,7 @@ class ArticleFeedbackv5Flagging {
 		$this->filters = array();
 
 		$this->results['abuse_count']++;
-		$this->relevance[] = 'flagged';
+		$this->relevance[] = 'flag';
 
 		// Don't allow negative numbers
 		$this->results['abuse_count'] = max( 0, $this->results['abuse_count'] );
@@ -991,7 +1012,7 @@ class ArticleFeedbackv5Flagging {
 		$this->filters = array();
 
 		$this->results['abuse_count']--;
-		$this->relevance[] = 'unflagged';
+		$this->relevance[] = 'unflag';
 
 		// Don't allow negative numbers
 		$this->results['abuse_count'] = max( 0, $this->results['abuse_count'] );
@@ -1019,7 +1040,7 @@ class ArticleFeedbackv5Flagging {
 			$this->hideCounts( $record, 'show' );
 			$this->visibleCounts( $record, 'visible' );
 
-			$this->relevance[] = 'unhidden';
+			$this->relevance[] = 'unhide';
 
 			$this->log[] = array( 'unhidden', 'Automatic un-hide', null );
 		}
@@ -1049,7 +1070,7 @@ class ArticleFeedbackv5Flagging {
 
 		// update relevance score, undo all previous flags
 		for ( $i = 0; $i < $this->results['abuse_count']; $i++ ) {
-			$this->relevance[] = 'unflagged';
+			$this->relevance[] = 'unflag';
 		}
 
 		// add entry to log
@@ -1069,7 +1090,7 @@ class ArticleFeedbackv5Flagging {
 			$this->hideCounts( $record, 'show' );
 			$this->visibleCounts( $record, 'visible' );
 
-			$this->relevance[] = 'unhidden';
+			$this->relevance[] = 'unhide';
 
 			$this->log[] = array( 'unhidden', 'Automatic un-hide', null );
 		}
