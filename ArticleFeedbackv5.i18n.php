@@ -433,11 +433,12 @@ $messages['en'] = array(
 	'articlefeedbackv5-disable-preference' => "Don't show the Article feedback widget on pages",
 
 	/* User rights: Special:ListGroupRights */
-	'right-aftv5-hide-feedback' => 'Hide feedback',
-	'right-aftv5-delete-feedback' => 'Delete feedback',
-	'right-aftv5-see-deleted-feedback' => 'View deleted feedback',
-	'right-aftv5-see-hidden-feedback' => 'View hidden feedback',
-	'right-aftv5-feature-feedback' => 'Feature/Resolve feedback',
+	'right-aft-reader' => 'Post feedback & mark as (un)helpful',
+	'right-aft-member' => 'Post feedback & mark as (un)helpful',
+	'right-aft-editor' => 'Feature & resolve feedback',
+	'right-aft-monitor' => 'Hide feedback & request oversight',
+	'right-aft-administrator' => 'See AFT on protected pages',
+	'right-aft-oversighter' => 'Oversight feedback',
 
 	/* Log types */
 	'log-name-articlefeedbackv5' => 'Article Feedback Activity Log',
@@ -1016,11 +1017,12 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-toolbox-view' => 'This link will take users to the feedback page of article currently being read',
 	'articlefeedbackv5-toolbox-add' => 'This link will scroll down the screen and make the form flash, pointing users to the feedback form',
 	'articlefeedbackv5-disable-preference' => 'Preference name/description for disabling AFTv5',
-	'right-aftv5-hide-feedback' => '{{doc-right|aftv5-hide-feedback}}',
-	'right-aftv5-delete-feedback' => '{{doc-right|aftv5-delete-feedback}}',
-	'right-aftv5-see-deleted-feedback' => '{{doc-right|aftv5-see-deleted-feedback}}',
-	'right-aftv5-see-hidden-feedback' => '{{doc-right|aftv5-see-hidden-feedback}}',
-	'right-aftv5-feature-feedback' => '{{doc-right|aftv5-feature-feedback}}',
+	'right-aft-reader' => 'Permission to post feedback & mark as (un)helpful (see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions)',
+	'right-aft-member' => 'Permission to post feedback & mark as (un)helpful (see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions)',
+	'right-aft-editor' => 'FPermission to feature & resolve feedback (see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions)',
+	'right-aft-monitor' => 'Permission to hide feedback & request oversight (see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions)',
+	'right-aft-administrator' => 'Permission to see AFT on protected pages (see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions)',
+	'right-aft-oversighter' => 'Permission to oversight feedback (see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions)',
 	'log-name-articlefeedbackv5' => '{{doc-logpage}}
 
 Name of the AFTv5 log filter on the Special:Log page',
