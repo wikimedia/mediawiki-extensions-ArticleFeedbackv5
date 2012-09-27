@@ -433,11 +433,12 @@ $messages['en'] = array(
 	'articlefeedbackv5-disable-preference' => "Don't show the Article feedback widget on pages",
 
 	/* User rights: Special:ListGroupRights */
-	'right-aftv5-hide-feedback' => 'Hide feedback',
-	'right-aftv5-delete-feedback' => 'Delete feedback',
-	'right-aftv5-see-deleted-feedback' => 'View deleted feedback',
-	'right-aftv5-see-hidden-feedback' => 'View hidden feedback',
-	'right-aftv5-feature-feedback' => 'Feature/Resolve feedback',
+	'right-aft-reader' => 'Post feedback & mark as (un)helpful',
+	'right-aft-member' => 'Post feedback & mark as (un)helpful',
+	'right-aft-editor' => 'Feature & resolve feedback',
+	'right-aft-monitor' => 'Hide feedback & request oversight',
+	'right-aft-administrator' => 'See AFT on protected pages',
+	'right-aft-oversighter' => 'Oversight feedback',
 
 	/* Log types */
 	'log-name-articlefeedbackv5' => 'Article Feedback Activity Log',
