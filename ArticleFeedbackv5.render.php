@@ -17,6 +17,13 @@
 class ArticleFeedbackv5Render {
 
 	/**
+	 * The user
+	 *
+	 * @var User
+	 */
+	private $user;
+
+	/**
 	 * Whether this is a permalink
 	 *
 	 * @var bool
@@ -38,24 +45,6 @@ class ArticleFeedbackv5Render {
 	private $isHighlighted;
 
 	/**
-	 * Permissions
-	 *
-	 * Keys: can_flag, can_vote, can_hide, can_delete, can_feature,
-	 * see_deleted, and see_hidden
-	 *
-	 * @var array
-	 */
-	private $permissions = array(
-		'can_flag'    => false,
-		'can_vote'    => false,
-		'can_hide'    => false,
-		'can_delete'  => false,
-		'can_feature' => false,
-		'see_deleted' => false,
-		'see_hidden'  => false,
-	);
-
-	/**
 	 * Constructor
 	 *
 	 * @param $user      User [optional] the current user
@@ -64,15 +53,13 @@ class ArticleFeedbackv5Render {
 	 * @param $highlight bool [optional] whether this is a highlighted row?
 	 */
 	public function __construct( $user = null, $permalink = false, $central = false, $highlight = false ) {
-		if ( $user ) {
-			$this->setPermission( 'can_flag', !$user->isBlocked() );
-			$this->setPermission( 'can_vote', !$user->isBlocked() );
-			$this->setPermission( 'can_hide', $user->isAllowed( 'aftv5-hide-feedback' ) );
-			$this->setPermission( 'can_delete', $user->isAllowed( 'aftv5-delete-feedback' ) );
-			$this->setPermission( 'can_feature', $user->isAllowed( 'aftv5-feature-feedback' ) );
-			$this->setPermission( 'see_deleted', $user->isAllowed( 'aftv5-see-deleted-feedback' ) );
-			$this->setPermission( 'see_hidden', $user->isAllowed( 'aftv5-see-hidden-feedback' ) );
+		if ( $user instanceof User ) {
+			$this->user = $user;
+		} else {
+			global $wgUser;
+			$this->user = $wgUser;
 		}
+
 		$this->setIsPermalink( $permalink );
 		$this->setIsCentral( $central );
 		$this->setIsHighlighted( $highlight );
@@ -87,8 +74,8 @@ class ArticleFeedbackv5Render {
 	public function run( $record ) {
 		// Special cases: when the record is deleted/hidden, but the user
 		// doesn't have permission to see it
-		if ( ( $record[0]->af_is_deleted && !$this->hasPermission( 'see_deleted' ) )
-			|| ( $record[0]->af_is_hidden && !$this->hasPermission( 'see_hidden') ) ) {
+		if ( ( $record[0]->af_is_deleted && !$this->isAllowed( 'aft-oversighter' ) )
+			|| ( $record[0]->af_is_hidden && !$this->isAllowed( 'aft-monitor' ) ) ) {
 			if ( $this->isPermalink ) {
 				// Called via permalink: show an empty gray mask
 				return $this->emptyGrayMask( $record );
@@ -658,7 +645,7 @@ class ArticleFeedbackv5Render {
 				. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot-helpful' ) );
 
 		// Add helpful/unhelpful voting links (for posts other than your own)
-		if ( $this->hasPermission( 'can_vote' ) && !$ownFeedback ) {
+		if ( $this->isAllowed( 'aft-reader' ) && !$this->user->isBlocked() && !$ownFeedback ) {
 			$footer .=
 				// <span class="articleFeedbackv5-helpful-caption">
 				//   {msg:articlefeedbackv5-form-helpful-label}
@@ -686,7 +673,7 @@ class ArticleFeedbackv5Render {
 		}
 
 		// Add helpful voting percentage for editors
-		if ( $this->hasPermission( 'can_feature' ) ) {
+		if ( $this->isAllowed( 'aft-editor' ) ) {
 			$percent = wfMessage( 'articlefeedbackv5-form-helpful-votes' )
 				->rawParams( wfMessage( 'percent',
 						ApiArticleFeedbackv5Utils::percentHelpful(
@@ -718,7 +705,7 @@ class ArticleFeedbackv5Render {
 		$footer .= Html::closeElement( 'div' );
 
 		// Add abuse flagging (for posts other than your own)
-		if ( $this->hasPermission( 'can_flag' ) && !$ownFeedback ) {
+		if ( $this->isAllowed( 'aft-reader' ) && !$this->user->isBlocked() && !$ownFeedback ) {
 			// <div class="articleFeedbackv5-comment-foot-abuse">
 			$footer .= Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot-abuse' ) );
 
@@ -738,7 +725,7 @@ class ArticleFeedbackv5Render {
 			);
 
 			// Add count for editors
-			if ( $this->hasPermission( 'can_feature' ) ) {
+			if ( $this->isAllowed( 'aft-editor' ) ) {
 				$aclass = 'articleFeedbackv5-abuse-count';
 				if ( $record[0]->af_abuse_count >= $wgArticleFeedbackv5AbusiveThreshold ) {
 					$aclass .= ' abusive';
@@ -767,7 +754,7 @@ class ArticleFeedbackv5Render {
 
 		// Add ability to hide own posts for readers, only when we're
 		// certain that the feedback was posted by the current user
-		if ( !$this->hasPermission( 'can_feature' ) && ( $wgUser->getId() && $wgUser->getId() == intval( $record[0]->af_user_id ) ) ) {
+		if ( !$this->isAllowed( 'aft-editor' ) && ( $wgUser->getId() && $wgUser->getId() == intval( $record[0]->af_user_id ) ) ) {
 			// Message can be:
 			//  * articlefeedbackv5-form-(hide|unhide)[-own]
 			if ( $record[0]->af_is_hidden ) {
@@ -815,14 +802,14 @@ class ArticleFeedbackv5Render {
 			'class' => 'articleFeedbackv5-comment-tags',
 		) );
 
-		if ( $this->hasPermission( 'can_feature' ) && $record->af_is_deleted ) {
+		if ( $this->isAllowed( 'aft-editor' ) && $record->af_is_deleted ) {
 			// <span class="articleFeedbackv5-deleted-marker">
 			//   {msg:articlefeedbackv5-deleted-marker}
 			// </span>
 			$html .= Html::element( 'span', array(
 				'class' => 'articleFeedbackv5-deleted-marker',
 			), wfMessage( 'articlefeedbackv5-deleted-marker' )->text() );
-		} elseif ( $this->hasPermission( 'can_feature' ) && $record->af_is_hidden ) {
+		} elseif ( $this->isAllowed( 'aft-editor' ) && $record->af_is_hidden ) {
 			// <span class="articleFeedbackv5-hidden-marker">
 			//   {msg:articlefeedbackv5-hidden-marker}
 			// </span>
@@ -886,7 +873,7 @@ class ArticleFeedbackv5Render {
 		$toolsActivity = '';
 
 		// Feature/unfeature and mark/unmark resolved (for posts other than your own)
-		if ( $this->hasPermission( 'can_feature' ) && !$ownFeedback ) {
+		if ( $this->isAllowed( 'aft-editor' ) && !$ownFeedback ) {
 			// Message can be:
 			//  * articlefeedbackv5-form-feature
 			//  * articlefeedbackv5-form-unfeature
@@ -934,7 +921,7 @@ class ArticleFeedbackv5Render {
 
 		// Hide/unhide - either for people with hide-permissions, or when we're
 		// certain that the feedback was posted by the current user
-		if ( $this->hasPermission( 'can_hide' ) || ( $wgUser->getId() && $wgUser->getId() == intval( $record[0]->af_user_id ) ) ) {
+		if ( $this->isAllowed( 'aft-monitor' ) || ( $wgUser->getId() && $wgUser->getId() == intval( $record[0]->af_user_id ) ) ) {
 			// Message can be:
 			//  * articlefeedbackv5-form-(hide|unhide)[-own]
 			if ( $record[0]->af_is_hidden ) {
@@ -963,7 +950,7 @@ class ArticleFeedbackv5Render {
 		}
 
 		// Request oversight
-		if ( $this->hasPermission( 'can_hide' ) && !$this->hasPermission( 'can_delete' ) ) {
+		if ( $this->isAllowed( 'aft-monitor' ) && !$this->isAllowed( 'aft-oversighter' ) ) {
 			// Message can be:
 			//  * articlefeedbackv5-form-oversight
 			//  * articlefeedbackv5-form-unoversight
@@ -988,7 +975,7 @@ class ArticleFeedbackv5Render {
 		}
 
 		// Delete (a.k.a. oversight)
-		if ( $this->hasPermission( 'can_delete' ) ) {
+		if ( $this->isAllowed( 'aft-oversighter' ) ) {
 			// if we have oversight requested, add "decline oversight" link
 			if ( $record[0]->af_oversight_count > 0 ) {
 				// <li>
@@ -1028,7 +1015,7 @@ class ArticleFeedbackv5Render {
 		}
 
 		// View Activity
-		if ( $this->hasPermission( 'can_feature' ) ) {
+		if ( $this->isAllowed( 'aft-editor' ) ) {
 			// if no activity has been logged yet, add the "inactive" class so we can display it accordingly
 			$activityClass = "articleFeedbackv5-activity-link";
 			if ( $this->getActivityCount( $record[0] ) < 1 ) {
@@ -1084,7 +1071,7 @@ class ArticleFeedbackv5Render {
 	private function renderPermalinkInfo( $record ) {
 		global $wgLang;
 
-		if ( !$this->hasPermission( 'can_feature' ) ) {
+		if ( !$this->isAllowed( 'aft-editor' ) ) {
 			return '';
 		}
 
@@ -1332,9 +1319,9 @@ class ArticleFeedbackv5Render {
 	 * @return bool
 	 */
 	public function hasToolbox() {
-		if ( !$this->hasPermission( 'can_feature' )
-			&& !$this->hasPermission( 'can_hide' )
-			&& !$this->hasPermission( 'can_delete' ) ) {
+		if ( !$this->isAllowed( 'aft-editor' )
+			&& !$this->isAllowed( 'aft-monitor' )
+			&& !$this->isAllowed( 'aft-oversighter' ) ) {
 			return false;
 		}
 		return true;
@@ -1348,10 +1335,20 @@ class ArticleFeedbackv5Render {
 	 */
 	public function getActivityCount( stdClass $record ) {
 		$count = $record->af_activity_count;
-		if ( $this->hasPermission( 'can_hide' ) ) {
+		if ( $this->isAllowed( 'aft-monitor' ) ) {
 			$count += $record->af_suppress_count;
 		}
 		return $count;
+	}
+
+	/**
+	 * Returns whether an action is allowed
+	 *
+	 * @param  $action string the name of the action
+	 * @return bool whether it's allowed
+	 */
+	public function isAllowed( $permission ) {
+		return $this->user->isAllowed( $permission ) && !$this->user->isBlocked();
 	}
 
 }
