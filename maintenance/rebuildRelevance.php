@@ -102,15 +102,19 @@ class ArticleFeedbackv5_RebuildRelevance extends Maintenance {
 
 			// calculate relevance score
 			$score = 0;
-			$score += $wgArticleFeedbackv5RelevanceScoring['flag'] * $row->af_abuse_count;
-			$score += $wgArticleFeedbackv5RelevanceScoring['helpful'] * $row->af_helpful_count;
-			$score += $wgArticleFeedbackv5RelevanceScoring['unhelpful'] * $row->af_unhelpful_count;
-			$score += $wgArticleFeedbackv5RelevanceScoring['request'] * $row->af_oversight_count;
-			$score += $wgArticleFeedbackv5RelevanceScoring['oversight'] * $row->af_is_deleted;
+
+			// when hidden/resolved, other scores should be ignored
+			if ( !$row->af_is_resolved && !$row->af_is_hidden ) {
+				$score += $wgArticleFeedbackv5RelevanceScoring['flag'] * $row->af_abuse_count;
+				$score += $wgArticleFeedbackv5RelevanceScoring['helpful'] * $row->af_helpful_count;
+				$score += $wgArticleFeedbackv5RelevanceScoring['unhelpful'] * $row->af_unhelpful_count;
+				$score += $wgArticleFeedbackv5RelevanceScoring['request'] * $row->af_oversight_count;
+				$score += $wgArticleFeedbackv5RelevanceScoring['oversight'] * $row->af_is_deleted;
+				$score += $wgArticleFeedbackv5RelevanceScoring['autohide'] * $row->af_is_autohide;
+				$score += $wgArticleFeedbackv5RelevanceScoring['decline'] * $row->af_is_declined;
+				$score += $wgArticleFeedbackv5RelevanceScoring['feature'] * $row->af_is_featured;
+			}
 			$score += $wgArticleFeedbackv5RelevanceScoring['hide'] * $row->af_is_hidden;
-			$score += $wgArticleFeedbackv5RelevanceScoring['autohide'] * $row->af_is_autohide;
-			$score += $wgArticleFeedbackv5RelevanceScoring['decline'] * $row->af_is_declined;
-			$score += $wgArticleFeedbackv5RelevanceScoring['feature'] * $row->af_is_featured;
 			$score += $wgArticleFeedbackv5RelevanceScoring['resolve'] * $row->af_is_resolved;
 
 			// update log entry
