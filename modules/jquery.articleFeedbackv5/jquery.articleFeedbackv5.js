@@ -874,8 +874,11 @@
 			 * @param $element the form element to count the characters down for
 			 */
 			countdown: function ( $element ) {
-				var maxLength = 5000;
 				var displayLength = 500;
+				var maxLength = mw.config.get( 'wgArticleFeedbackv5MaxCommentLength' );
+				if ( maxLength == 0 ) {
+					return;
+				}
 
 				var $countdown = $( '#articlefeedbackv5-feedback-countdown' );
 
