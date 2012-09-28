@@ -238,6 +238,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-help-special-linkurl-oversighters',
 
 				'articlefeedbackv5-noteflyover-hide-caption',
+//				'articlefeedbackv5-noteflyover-hide-description',
 				'articlefeedbackv5-noteflyover-hide-label',
 				'articlefeedbackv5-noteflyover-hide-placeholder',
 				'articlefeedbackv5-noteflyover-hide-submit',
@@ -245,6 +246,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-hide-help-link',
 
 				'articlefeedbackv5-noteflyover-show-caption',
+//				'articlefeedbackv5-noteflyover-show-description',
 				'articlefeedbackv5-noteflyover-show-label',
 				'articlefeedbackv5-noteflyover-show-placeholder',
 				'articlefeedbackv5-noteflyover-show-submit',
@@ -252,6 +254,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-show-help-link',
 
 				'articlefeedbackv5-noteflyover-requestoversight-caption',
+//				'articlefeedbackv5-noteflyover-requestoversight-description',
 				'articlefeedbackv5-noteflyover-requestoversight-label',
 				'articlefeedbackv5-noteflyover-requestoversight-placeholder',
 				'articlefeedbackv5-noteflyover-requestoversight-submit',
@@ -259,6 +262,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-requestoversight-help-link',
 
 				'articlefeedbackv5-noteflyover-unrequestoversight-caption',
+//				'articlefeedbackv5-noteflyover-unrequestoversight-description',
 				'articlefeedbackv5-noteflyover-unrequestoversight-label',
 				'articlefeedbackv5-noteflyover-unrequestoversight-placeholder',
 				'articlefeedbackv5-noteflyover-unrequestoversight-submit',
@@ -266,6 +270,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-unrequestoversight-help-link',
 
 				'articlefeedbackv5-noteflyover-oversight-caption',
+//				'articlefeedbackv5-noteflyover-oversight-description',
 				'articlefeedbackv5-noteflyover-oversight-label',
 				'articlefeedbackv5-noteflyover-oversight-placeholder',
 				'articlefeedbackv5-noteflyover-oversight-submit',
@@ -273,6 +278,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-oversight-help-link',
 
 				'articlefeedbackv5-noteflyover-unoversight-caption',
+//				'articlefeedbackv5-noteflyover-unoversight-description',
 				'articlefeedbackv5-noteflyover-unoversight-label',
 				'articlefeedbackv5-noteflyover-unoversight-placeholder',
 				'articlefeedbackv5-noteflyover-unoversight-submit',
@@ -280,6 +286,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-unoversight-help-link',
 
 				'articlefeedbackv5-noteflyover-declineoversight-caption',
+//				'articlefeedbackv5-noteflyover-declineoversight-description',
 				'articlefeedbackv5-noteflyover-declineoversight-label',
 				'articlefeedbackv5-noteflyover-declineoversight-placeholder',
 				'articlefeedbackv5-noteflyover-declineoversight-submit',
@@ -294,12 +301,14 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-form-feature',
 				'articlefeedbackv5-form-unfeature',
 				'articlefeedbackv5-noteflyover-feature-caption',
+//				'articlefeedbackv5-noteflyover-feature-description',
 				'articlefeedbackv5-noteflyover-feature-label',
 				'articlefeedbackv5-noteflyover-feature-placeholder',
 				'articlefeedbackv5-noteflyover-feature-submit',
 				'articlefeedbackv5-noteflyover-feature-help',
 				'articlefeedbackv5-noteflyover-feature-help-link',
 				'articlefeedbackv5-noteflyover-unfeature-caption',
+//				'articlefeedbackv5-noteflyover-unfeature-description',
 				'articlefeedbackv5-noteflyover-unfeature-label',
 				'articlefeedbackv5-noteflyover-unfeature-placeholder',
 				'articlefeedbackv5-noteflyover-unfeature-submit',
@@ -309,12 +318,14 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-form-resolve',
 				'articlefeedbackv5-form-unresolve',
 				'articlefeedbackv5-noteflyover-resolve-caption',
+//				'articlefeedbackv5-noteflyover-resolve-description',
 				'articlefeedbackv5-noteflyover-resolve-label',
 				'articlefeedbackv5-noteflyover-resolve-placeholder',
 				'articlefeedbackv5-noteflyover-resolve-submit',
 				'articlefeedbackv5-noteflyover-resolve-help',
 				'articlefeedbackv5-noteflyover-resolve-help-link',
 				'articlefeedbackv5-noteflyover-unresolve-caption',
+//				'articlefeedbackv5-noteflyover-unresolve-description',
 				'articlefeedbackv5-noteflyover-unresolve-label',
 				'articlefeedbackv5-noteflyover-unresolve-placeholder',
 				'articlefeedbackv5-noteflyover-unresolve-submit',
@@ -544,6 +555,17 @@ class ArticleFeedbackv5Hooks {
 		$wgArticleFeedbackv5CTABuckets['buckets'] = (object) $wgArticleFeedbackv5CTABuckets['buckets'];
 		$vars['wgArticleFeedbackv5DisplayBuckets'] = $wgArticleFeedbackv5DisplayBuckets;
 		$vars['wgArticleFeedbackv5CTABuckets'] = (object) $wgArticleFeedbackv5CTABuckets;
+
+		// these are messages that require some parsing that the current JS mw.msg does not yet support
+		$flyovers = array(
+			'hide', 'show', 'requestoversight', 'unrequestoversight',
+			'oversight', 'unoversight', 'declineoversight', 'feature',
+			'unfeature', 'resolve', 'unresolve'
+		);
+		foreach ( $flyovers as $flyover ) {
+			$message = wfMessage( "articlefeedbackv5-noteflyover-$flyover-description" )->parse();
+			$vars["mw.msg.articlefeedbackv5-noteflyover-$flyover-description"] = $message;
+		}
 
 		return true;
 	}
