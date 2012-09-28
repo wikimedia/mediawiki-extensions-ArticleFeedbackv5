@@ -947,7 +947,7 @@
 		},
 
 		// }}}
-		// {{{ CTA 1: Encticement to edit
+		// {{{ CTA 1: Enticement to edit
 
 		'1': {
 
