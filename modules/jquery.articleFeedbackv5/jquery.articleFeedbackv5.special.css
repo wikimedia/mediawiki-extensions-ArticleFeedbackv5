@@ -393,7 +393,7 @@
 /* Flyover Panels */
 .tipsy {
 	padding: 5px 11px 5px 5px;
-	width: 350px;
+	width: 375px;
 }
 .tipsy-inner {
 	padding: 0;
@@ -479,6 +479,9 @@ form.articleFeedbackv5-form-flyover textarea {
 #articleFeedbackv5-noteflyover-helpbutton:hover {
 	/* @embed */
 	background-image: url(images/bg-tooltip-trigger-hov-20.png);
+}
+#articleFeedbackv5-noteflyover-description {
+	padding: 0 10px;
 }
 .articleFeedbackv5-flyover-button {
 	display: inline-block;
