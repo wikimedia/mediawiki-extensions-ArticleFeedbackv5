@@ -423,11 +423,12 @@ $wgSpecialPages['ArticleFeedbackv5'] = 'SpecialArticleFeedbackv5';
 $wgSpecialPages['ArticleFeedbackv5Watchlist'] = 'SpecialArticleFeedbackv5Watchlist';
 $wgSpecialPageGroups['ArticleFeedbackv5'] = 'other';
 
-$wgAvailableRights[] = 'aftv5-hide-feedback';
-$wgAvailableRights[] = 'aftv5-delete-feedback';
-$wgAvailableRights[] = 'aftv5-see-deleted-feedback';
-$wgAvailableRights[] = 'aftv5-see-hidden-feedback';
-$wgAvailableRights[] = 'aftv5-feature-feedback';
+$wgAvailableRights[] = 'aft-reader';
+$wgAvailableRights[] = 'aft-member';
+$wgAvailableRights[] = 'aft-editor';
+$wgAvailableRights[] = 'aft-monitor';
+$wgAvailableRights[] = 'aft-administrator';
+$wgAvailableRights[] = 'aft-oversighter';
 
 // Jobs
 $wgJobClasses['ArticleFeedbackv5MailerJob'] = 'ArticleFeedbackv5MailerJob';

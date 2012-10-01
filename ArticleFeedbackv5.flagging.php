@@ -101,7 +101,7 @@ class ArticleFeedbackv5Flagging {
 		'request' => 'aft-monitor', // includes unrequest
 		'hide' => 'aft-monitor', // includes unhide
 		'flag' => 'aft-reader', // includes unflag
-		'clear-flags' => 'aft-monitor',
+		'clearflags' => 'aft-monitor',
 		'feature' => 'aft-editor', // includes unfeature
 		'resolve' => 'aft-editor', // includes unresolve
 		'helpful' => 'aft-reader', // includes undo-helpful
@@ -578,7 +578,9 @@ class ArticleFeedbackv5Flagging {
 			'unhidden', $this->getUserId(), $timestamp );
 
 		// clear all abuse flags
-		$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
+		if ( $record->af_abuse_count > 0 ) {
+			$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
+		}
 
 		return true;
 	}
@@ -744,7 +746,9 @@ class ArticleFeedbackv5Flagging {
 			'featured', $this->getUserId(), $timestamp );
 
 		// clear all abuse flags
-		$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
+		if ( $record->af_abuse_count > 0 ) {
+			$this->flag_clearflags( $record, $notes, $timestamp, $toggle );
+		}
 
 		return true;
 	}
@@ -1296,7 +1300,7 @@ class ArticleFeedbackv5Flagging {
 			return true;
 		}
 
-		return $this->user->isAllowed( $permission );
+		return $this->user->isAllowed( $permission ) && !$this->user->isBlocked();
 	}
 
 	/**
