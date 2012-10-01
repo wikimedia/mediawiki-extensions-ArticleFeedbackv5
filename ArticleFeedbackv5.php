@@ -119,6 +119,9 @@ $wgArticleFeedbackv5MaxActivityNoteLength =  5000;
 // How long to keep ratings in the squids (they will also be purged when needed)
 $wgArticleFeedbackv5SMaxage = 2592000;
 
+// Number of revisions to keep a rating alive for
+$wgArticleFeedbackv5RatingLifetime = 30;
+
 // Percentage of article AFT should be enabled on
 $wgArticleFeedbackv5LotteryOdds = 100;
 
