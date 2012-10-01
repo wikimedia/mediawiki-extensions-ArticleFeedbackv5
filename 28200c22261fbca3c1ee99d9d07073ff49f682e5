@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAATn///9M\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-10-01T17:44:49Z",
+      "side": 1,
+      "message": "isBlocked() is redundant since it is already checked in isAllowed()",
+      "revId": "28200c22261fbca3c1ee99d9d07073ff49f682e5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATn///9E\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-10-01T17:44:49Z",
+      "side": 1,
+      "message": "isBlocked() is redundant since it is already checked in isAllowed()",
+      "revId": "28200c22261fbca3c1ee99d9d07073ff49f682e5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
