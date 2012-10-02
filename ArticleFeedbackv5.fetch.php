@@ -97,7 +97,7 @@ class ArticleFeedbackv5Fetch {
 		'visible-unhelpful', 'visible-abusive', 'visible-featured',
 		'visible-unfeatured', 'visible-resolved', 'visible-unresolved',
 		'notdeleted-hidden', 'all-hidden', 'notdeleted', 'notdeleted-unhidden',
-		'all-unhidden', 'notdeleted-requested', 'all', 'all-requested',
+		'all-unhidden', 'notdeleted-requested', 'all',
 		'notdeleted-unrequested', 'all-unrequested', 'notdeleted-declined',
 		'all-declined', 'all-oversighted', 'all-unoversighted' );
 
@@ -107,7 +107,7 @@ class ArticleFeedbackv5Fetch {
 	 * @var array
 	 */
 	public static $hiddenFilters  = array( 'all-hidden', 'notdeleted-hidden',
-		'all-unhidden', 'notdeleted-unhidden', 'all-requested',
+		'all-unhidden', 'notdeleted-unhidden',
 		'all-unrequested', 'notdeleted-unrequested',
 		'all-declined', 'notdeleted-declined', 'all-oversighted',
 		'all-unoversighted', 'notdeleted', 'all' );
@@ -118,7 +118,7 @@ class ArticleFeedbackv5Fetch {
 	 * @var array
 	 */
 	public static $deletedFilters = array( 'all', 'all-unoversighted',
-		'all-oversighted', 'all-hidden', 'all-unhidden', 'all-requested',
+		'all-oversighted', 'all-hidden', 'all-unhidden',
 		'notdeleted-requested', 'all-unrequested', 'all-declined');
 
 	/**
@@ -483,7 +483,6 @@ class ArticleFeedbackv5Fetch {
 				$where[] = 'af_is_unhidden IS TRUE';
 				break;
 			case 'notdeleted-requested':
-			case 'all-requested':
 				$where[] = 'af_oversight_count > 0';
 				break;
 			case 'notdeleted-unrequested':
