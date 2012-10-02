@@ -22,10 +22,10 @@
  */
 $wgArticleFeedbackv5DefaultFilters = array (
 	'all'      => 'visible-relevant',
-	'featured' => 'visible-comment',
-	'hidden'   => 'visible-comment',
-	'deleted'  => 'visible-comment',
-	'central'  => 'visible-comment',
+	'featured' => 'visible-relevant',
+	'hidden'   => 'visible-relevant',
+	'deleted'  => 'visible-relevant',
+	'central'  => 'visible-relevant',
 );
 
 /**
