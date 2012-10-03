@@ -122,7 +122,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			array_push( $this->filters,
 				'visible-unhelpful', 'visible-abusive', 'visible-resolved',
 				'all-hidden',
-				'all-declined',
+				'all-requested', 'all-declined',
 				'notdeleted-requested', 'all-oversighted', 'all'
 			);
 		} elseif ( $this->isAllowed( 'aft-monitor' ) ) {

@@ -234,57 +234,57 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-featured-marker {
 	display: block;
 	line-height: 24px;
-	padding: 0 0 0 25px;
+	padding: 0 0 0 30px;
 	font-weight: bold;
 	color: #656763;
 	text-transform: uppercase;
 	/* @embed */
 	background: url(images/featured.png) no-repeat;
-	background-position: -5px -6px;
+	background-position: left -6px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-resolved-marker {
 	display: block;
 	line-height: 24px;
-	padding: 0 0 0 25px;
+	padding: 0 0 0 30px;
 	font-weight: bold;
 	color: #656763;
 	text-transform: uppercase;
 	/* @embed */
 	background: url(images/resolved.png) no-repeat;
-	background-position: -5px -6px;
+	background-position: left -6px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-deleted-marker {
 	display: block;
 	line-height: 24px;
-	padding: 0 0 0 25px;
+	padding: 0 0 0 30px;
 	font-weight: bold;
 	color: #656763;
 	text-transform: uppercase;
 	/* @embed */
 	background: url(images/deleted.png) no-repeat;
-	background-position: -5px -6px;
+	background-position: left -6px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-hidden-marker {
 	display: block;
 	line-height: 24px;
-	padding: 0 0 0 25px;
+	padding: 0 0 0 30px;
 	font-weight: bold;
 	color: #656763;
 	text-transform: uppercase;
 	/* @embed */
 	background: url(images/hidden.png) no-repeat;
-	background-position: -5px -6px;
+	background-position: left -6px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-new-marker {
 	display: block;
 	line-height: 24px;
-	padding: 0 0 0 25px;
+	padding: 0 0 0 30px;
 	font-weight: bold;
 	color: #656763;
 	text-transform: uppercase;
 	/* @embed */
 	background: url(images/new.png) no-repeat;
-	background-position: -5px -6px;
+	background-position: left -6px;
 }
 
 /** Tools **/
@@ -393,7 +393,7 @@
 /* Flyover Panels */
 .tipsy {
 	padding: 5px 11px 5px 5px;
-	width: 375px;
+	width: 350px;
 }
 .tipsy-inner {
 	padding: 0;
@@ -479,9 +479,6 @@ form.articleFeedbackv5-form-flyover textarea {
 #articleFeedbackv5-noteflyover-helpbutton:hover {
 	/* @embed */
 	background-image: url(images/bg-tooltip-trigger-hov-20.png);
-}
-#articleFeedbackv5-noteflyover-description {
-	padding: 0 10px;
 }
 .articleFeedbackv5-flyover-button {
 	display: inline-block;

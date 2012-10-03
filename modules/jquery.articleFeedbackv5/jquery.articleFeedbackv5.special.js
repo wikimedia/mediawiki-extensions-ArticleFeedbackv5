@@ -133,7 +133,6 @@
 			<a id="articleFeedbackv5-noteflyover-close" href="#"></a>\
 		</div>\
 		<form class="articleFeedbackv5-form-flyover">\
-			<div id="articleFeedbackv5-noteflyover-description"></div>\
 			<label id="articleFeedbackv5-noteflyover-label" for="articleFeedbackv5-noteflyover-note"></label>\
 			<textarea id="articleFeedbackv5-noteflyover-note" name="articleFeedbackv5-noteflyover-note"></textarea>\
 			<div class="articleFeedbackv5-flyover-footer">\
@@ -238,7 +237,6 @@
 		for ( var action in $.articleFeedbackv5special.actions ) {
 			if ( $.articleFeedbackv5special.actions[action].hasTipsy && (undefined == $.articleFeedbackv5special.actions[action].tipsyHtml) ) {
 				container.find( '#articleFeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
-				container.find( '#articleFeedbackv5-noteflyover-description' ).html( mw.config.get( 'mw.msg.articlefeedbackv5-noteflyover-' + action + '-description' ) );
 				container.find( '#articleFeedbackv5-noteflyover-label' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
 				container.find( '#articleFeedbackv5-noteflyover-submit' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-submit' ) );
 				// will add an 'action' attribute to the link

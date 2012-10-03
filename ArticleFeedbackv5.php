@@ -22,10 +22,10 @@
  */
 $wgArticleFeedbackv5DefaultFilters = array (
 	'all'      => 'visible-relevant',
-	'featured' => 'visible-relevant',
-	'hidden'   => 'visible-relevant',
-	'deleted'  => 'visible-relevant',
-	'central'  => 'visible-relevant',
+	'featured' => 'visible-comment',
+	'hidden'   => 'visible-comment',
+	'deleted'  => 'visible-comment',
+	'central'  => 'visible-comment',
 );
 
 /**
@@ -72,17 +72,17 @@ $wgArticleFeedbackv5Cutoff = -5;
  * @var array
  */
 $wgArticleFeedbackv5RelevanceScoring = array(
-	'featured' => 50,
-	'unfeatured' => -50,
+	'feature' => 50,
+	'unfeature' => -50,
 	'helpful' => 1,
 	'unhelpful' => -1,
-	'resolved' => -5,
-	'unresolved' => 5,
-	'flagged' => -5,
-	'unflagged' => 5,
+	'resolve' => -5,
+	'unresolve' => 5,
+	'flag' => -5,
+	'unflag' => 5,
 	'autohide' => -100,
-	'hidden' => -100,
-	'unhidden' => 100,
+	'hide' => -100,
+	'unhide' => 100,
 	'request' => -150,
 	'unrequest' => 150,
 	'decline' => 150,
@@ -110,7 +110,7 @@ $wgArticleFeedbackv5AutoHelp = 'http://en.wikipedia.org/wiki/Wikipedia:Article_F
 
 // How long text-based feedback is allowed to be before returning an error.
 // Set to 0 to disable length checking entirely.
-$wgArticleFeedbackv5MaxCommentLength =  0;
+$wgArticleFeedbackv5MaxCommentLength = 5000;
 
 // How long text-based activity items are allowed to be - note this will not return
 // an error but simply chop notes that are too long
@@ -118,9 +118,6 @@ $wgArticleFeedbackv5MaxActivityNoteLength =  5000;
 
 // How long to keep ratings in the squids (they will also be purged when needed)
 $wgArticleFeedbackv5SMaxage = 2592000;
-
-// Enable/disable dashboard page
-$wgArticleFeedbackv5Dashboard = true;
 
 // Number of revisions to keep a rating alive for
 $wgArticleFeedbackv5RatingLifetime = 30;
@@ -155,13 +152,13 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// the new odds are applied to everyone, not just people who have yet to be
 	// placed in a bucket.
 	'buckets' => array(
-		'0'  => 0,
-		'1'   => 0,
-		'2'   => 0,
-		'3' => 0,
-		'4'  => 0,
-		'5'  => 0,
-		'6'   => 100,
+		'0'  => 0, // display nothing
+		'1'   => 0, // display 1-step feedback form
+//		'2'   => 0, // abandoned
+//		'3' => 0, // abandoned
+		'4'  => 0, // display encouragement to edit page
+//		'5'  => 0, // abandoned
+		'6'   => 100, // display 2-step feedback form
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
@@ -199,17 +196,6 @@ $wgArticleFeedbackv5Tracking = array(
 	// Let users be tracked for a month, and then rebucket them, allowing some churn
 	'expires' => 30,
 	// Do not track the event of users being bucketed, at least for now.
-	'tracked' => false,
-);
-
-// Bucket settings for extra expertise checkboxes in the Option 5 feedback form
-$wgArticleFeedbackv5Options = array(
-	'buckets' => array(
-		'show' => 100,
-		'hide' => 0,
-	),
-	'version' => 0,
-	'expires' => 30,
 	'tracked' => false,
 );
 
@@ -258,13 +244,13 @@ $wgArticleFeedbackv5CTABuckets = array(
 	// the new odds are applied to everyone, not just people who have yet to be
 	// placed in a bucket.
 	'buckets' => array(
-		'0' => 0,
-		'1' => 40,
-		'2' => 10,
-		'3' => 0,
-		'4' => 20,
-		'5' => 20,
-		'6' => 10,
+		'0' => 0, // display nothing
+		'1' => 40, // display "Enticement to edit"
+		'2' => 10, // display "Learn more"
+		'3' => 0, // display "Take a survey"
+		'4' => 20, // display "Sign up or login"
+		'5' => 20, // display "View feedback"
+		'6' => 10, // display "Visit Teahouse"
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
@@ -325,20 +311,7 @@ $wgArticleFeedbackv5AbuseFilterGroup = 'feedback';
  *
  * @var int
  */
-
 $wgArticleFeedbackv5ThrottleThresholdPostsPerHour = 20;
-
-/**
- * The full URL for a discussion page about the Article Feedback Dashboard
- *
- * Since the dashboard is powered by a SpecialPage, we cannot rel on the built-in
- * MW talk page for this, so we must expose our own page - internally or externally.
- *
- * This value will be passed into an i18n message which will parse the URL as an
- * external link using wikitext, so this must be a full URL.
- * @var string
- */
-$wgArticleFeedbackv5DashboardTalkPage = "//www.mediawiki.org/wiki/Talk:Article_feedback";
 
 /**
  * The full URL for the "Learn to Edit" link
@@ -425,7 +398,6 @@ $wgExtensionMessagesFiles['ArticleFeedbackv5Alias']     = $dir . 'ArticleFeedbac
 
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleFeedbackv5Hooks::loadExtensionSchemaUpdates';
-$wgHooks['ParserTestTables'][] = 'ArticleFeedbackv5Hooks::parserTestTables';
 $wgHooks['BeforePageDisplay'][] = 'ArticleFeedbackv5Hooks::beforePageDisplay';
 $wgHooks['ResourceLoaderRegisterModules'][] = 'ArticleFeedbackv5Hooks::resourceLoaderRegisterModules';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'ArticleFeedbackv5Hooks::resourceLoaderGetConfigVars';

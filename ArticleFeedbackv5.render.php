@@ -645,7 +645,7 @@ class ArticleFeedbackv5Render {
 				. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot-helpful' ) );
 
 		// Add helpful/unhelpful voting links (for posts other than your own)
-		if ( $this->isAllowed( 'aft-reader' ) && !$this->user->isBlocked() && !$ownFeedback ) {
+		if ( $this->isAllowed( 'aft-reader' ) && !$ownFeedback ) {
 			$footer .=
 				// <span class="articleFeedbackv5-helpful-caption">
 				//   {msg:articlefeedbackv5-form-helpful-label}
@@ -705,7 +705,7 @@ class ArticleFeedbackv5Render {
 		$footer .= Html::closeElement( 'div' );
 
 		// Add abuse flagging (for posts other than your own)
-		if ( $this->isAllowed( 'aft-reader' ) && !$this->user->isBlocked() && !$ownFeedback ) {
+		if ( $this->isAllowed( 'aft-reader' ) && !$ownFeedback ) {
 			// <div class="articleFeedbackv5-comment-foot-abuse">
 			$footer .= Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot-abuse' ) );
 
@@ -1350,5 +1350,4 @@ class ArticleFeedbackv5Render {
 	public function isAllowed( $permission ) {
 		return $this->user->isAllowed( $permission ) && !$this->user->isBlocked();
 	}
-
 }

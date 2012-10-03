@@ -874,8 +874,11 @@
 			 * @param $element the form element to count the characters down for
 			 */
 			countdown: function ( $element ) {
-				var maxLength = 5000;
 				var displayLength = 500;
+				var maxLength = mw.config.get( 'wgArticleFeedbackv5MaxCommentLength' );
+				if ( maxLength == 0 ) {
+					return;
+				}
 
 				var $countdown = $( '#articlefeedbackv5-feedback-countdown' );
 
@@ -947,7 +950,7 @@
 		},
 
 		// }}}
-		// {{{ CTA 1: Encticement to edit
+		// {{{ CTA 1: Enticement to edit
 
 		'1': {
 
@@ -1303,7 +1306,9 @@
 					$.articleFeedbackv5.ctaName() + '-button_signup_click';
 				$block.find( '.articleFeedbackv5-cta-button-signup' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl(
-					signup_url + '&c=' + $.articleFeedbackv5.feedbackId,
+					signup_url
+						+ '&campaign=aftv5_cta4'
+						+ '&c=' + $.articleFeedbackv5.feedbackId,
 					signup_track_id
 				) );
 
