@@ -802,7 +802,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$version = isset($wgArticleFeedbackv5Tracking['version']) ? $wgArticleFeedbackv5Tracking['version'] : 0;
 			$cookie = json_decode( $request->getCookie( 'last-filter', 'ext.articleFeedbackv5@' . $version . '-' ) );
 			if ( $cookie !== null && is_object( $cookie )
-				&& $this->pageId == $cookie->page
 				&& isset( $cookie->listControls ) && is_object( $cookie->listControls ) ) {
 				$cookie_filter = $cookie->listControls->filter;
 				$cookie_sort   = $cookie->listControls->sort;
