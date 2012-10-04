@@ -17,29 +17,6 @@ require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
 class ArticleFeedbackv5_RefreshLastActivity extends Maintenance {
 
 	/**
-	 * Map of log actions to statuses
-	 *
-	 * @var array
-	 */
-	public static $logActionToStatus = array(
-		'autoflag' => 'autoflag',
-		'autohide' => 'autohide',
-		'decline' => 'declined',
-		'feature' => 'featured',
-		'flag' => 'autoflag',
-		'hidden' => 'hidden',
-		'oversight' => 'deleted',
-		'request' => 'request',
-		'resolve' => 'resolved',
-		'unfeature' => 'unfeatured',
-		'unflag' => 'autounflag',
-		'unhidden' => 'unhidden',
-		'unoversight' => 'undeleted',
-		'unrequest' => 'unrequest',
-		'unresolve' => 'unresolved',
-	);
-
-	/**
 	 * Batch size
 	 *
 	 * @var int
@@ -175,38 +152,22 @@ class ArticleFeedbackv5_RefreshLastActivity extends Maintenance {
 		// Update last status for each one
 		$batchCount = 0;
 		foreach ( $updates as $af_id => $row ) {
-			if ( !isset( self::$logActionToStatus[$row['log_action']] ) ) {
-				$dbw->update(
-					'aft_article_feedback',
-					array(
-						'af_last_status'           => null,
-						'af_last_status_user_id'   => null,
-						'af_last_status_timestamp' => null,
-						'af_last_status_notes'     => null,
-						'af_activity_count'        => null,
-					),
-					array(
-						'af_id' => $af_id,
-					),
-					__METHOD__
-				);
-			} else {
-				$dbw->update(
-					'aft_article_feedback',
-					array(
-						'af_last_status'           => self::$logActionToStatus[$row['log_action']],
-						'af_last_status_user_id'   => $row['log_user'],
-						'af_last_status_timestamp' => $row['log_timestamp'],
-						'af_last_status_notes'     => $row['log_comment'],
-						'af_activity_count'        => $row['normal_count'],
-						'af_suppress_count'        => $row['suppress_count'],
-					),
-					array(
-						'af_id' => $af_id,
-					),
-					__METHOD__
-				);
-			}
+			$dbw->update(
+				'aft_article_feedback',
+				array(
+					'af_last_status'           => $row['log_action'],
+					'af_last_status_user_id'   => $row['log_user'],
+					'af_last_status_timestamp' => $row['log_timestamp'],
+					'af_last_status_notes'     => $row['log_comment'],
+					'af_activity_count'        => $row['normal_count'],
+					'af_suppress_count'        => $row['suppress_count'],
+				),
+				array(
+					'af_id' => $af_id,
+				),
+				__METHOD__
+			);
+
 			++$batchCount;
 		}
 		$this->completeCount += $batchCount;

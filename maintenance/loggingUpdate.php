@@ -106,10 +106,26 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 				'pageId' => (int) $row->page_id
 			);
 
+			// fix log type
+			switch ( $row->log_type ) {
+				case 'hidden':
+					$type = 'hide';
+					break;
+				case 'unhidden':
+					$type = 'unhide';
+					break;
+				default:
+					$type = $row->log_type;
+					break;
+			}
+
 			// update log entry
 			$dbw->update(
 				'logging',
-				array( 'log_params' => serialize( $params ) ),
+				array(
+					'log_type' => $type,
+					'log_params' => serialize( $params )
+				),
 				array( 'log_id' => $row->log_id )
 			);
 
