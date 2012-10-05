@@ -1144,7 +1144,6 @@
 			 * @return bool whether the CTA can be displayed
 			 */
 			verify: function () {
-
 				return $.articleFeedbackv5.ctas['3'].getSurveyUrl() !== false;
 			},
 
@@ -1184,7 +1183,7 @@
 			 * Gets the appropriate survey url, or returns false if none was
 			 * found
 			 *
-			 * @return mixed the url, if one is availabe, or false if not
+			 * @return mixed the url, if one is available, or false if not
 			 */
 			getSurveyUrl: function () {
 				var base = mw.config.get( 'wgArticleFeedbackv5SurveyUrls' );
@@ -2120,7 +2119,11 @@
 		$.articleFeedbackv5.addTriggerLinks();
 		// Track init at 1%
 		if ( Math.random() * 100 < 1 ) {
-			$.articleFeedbackv5.trackClick( 'init' );
+			if ( $.articleFeedbackv5.editable ) {
+				$.articleFeedbackv5.trackClick( 'init' );
+			} else {
+				$.articleFeedbackv5.trackClick( 'noedit-init' );
+			}
 		}
 	};
 
@@ -2332,7 +2335,7 @@
 	 * @return string the experiment (e.g. "optionM5_1_edit")
 	 */
 	$.articleFeedbackv5.experiment = function () {
-		return 'optionM5_' + $.articleFeedbackv5.bucketId;
+		return 'option' + $.articleFeedbackv5.bucketId + $.articleFeedbackv5.submittedLinkId + '_';
 	};
 
 	// }}}
@@ -2344,19 +2347,17 @@
 	 * @return string the CTA name
 	 */
 	$.articleFeedbackv5.ctaName = function () {
-		if ( '0' == $.articleFeedbackv5.ctaId ) {
-			return 'cta_none';
-		} else if ( '1' == $.articleFeedbackv5.ctaId ) {
-			return 'cta_edit';
-		} else if ( '2' == $.articleFeedbackv5.ctaId ) {
-			return 'cta_learn_more';
-		} else if ( '3' == $.articleFeedbackv5.ctaId ) {
-			return 'cta_survey';
-		} else if ( '5' == $.articleFeedbackv5.ctaId ) {
-			return 'cta_view_feedback';
-		} else {
-			return 'cta_unknown';
-		}
+		var	ctas = [
+			'none',
+			'edit',
+			'learn_more',
+			'survey',
+			'signup_login',
+			'view_feedback',
+			'teahouse'
+		];
+
+		return 'cta_' + ( ctas[$.articleFeedbackv5.ctaId] || 'unknown' );
 	};
 
 	// }}}
