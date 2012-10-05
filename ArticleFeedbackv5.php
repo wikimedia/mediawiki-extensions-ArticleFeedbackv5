@@ -184,15 +184,15 @@ $wgArticleFeedbackv5Tracking = array(
 	// ensure the new odds are applied to everyone, not just people who have
 	// yet to be placed in a bucket.
 	'buckets' => array(
-		'ignore' => 100,
+		'ignore' => 0,
 		'track' => 0,
-		'track-front' => 0,
+		'track-front' => 100,
 		'track-special' => 0,
 	),
 	// This version number is added to all tracking event names, and to all
 	// cookies, so that changes in the software don't corrupt the data being
 	// collected. Bump this when you want to start a new "experiment".
-	'version' => 9,
+	'version' => 10,
 	// Let users be tracked for a month, and then rebucket them, allowing some churn
 	'expires' => 30,
 	// Do not track the event of users being bucketed, at least for now.
@@ -245,17 +245,17 @@ $wgArticleFeedbackv5CTABuckets = array(
 	// placed in a bucket.
 	'buckets' => array(
 		'0' => 0, // display nothing
-		'1' => 40, // display "Enticement to edit"
-		'2' => 10, // display "Learn more"
+		'1' => 100, // display "Enticement to edit"
+		'2' => 0, // display "Learn more"
 		'3' => 0, // display "Take a survey"
-		'4' => 20, // display "Sign up or login"
-		'5' => 20, // display "View feedback"
-		'6' => 10, // display "Visit Teahouse"
+		'4' => 0, // display "Sign up or login"
+		'5' => 0, // display "View feedback"
+		'6' => 0, // display "Visit Teahouse"
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
 	// this when you want to start a new "experiment".
-	'version' => 4,
+	'version' => 5,
 	// Users may constantly be rebucketed, giving them new CTA's each time.
 	'expires' => 0,
 	// Track the event of users being bucketed - so we can be sure the odds
