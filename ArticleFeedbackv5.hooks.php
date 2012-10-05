@@ -770,22 +770,22 @@ class ArticleFeedbackv5Hooks {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-helpful' )->escaped();
 		}
 		if ( $row->af_abuse_count > 0 ) {
-			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-flagged' )->escaped();
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-flag' )->escaped();
 		}
 		if ( $row->af_is_featured > 0 ) {
-			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-featured' )->escaped();
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-feature' )->escaped();
 		}
 		if ( $row->af_is_resolved > 0 ) {
-			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-resolved' )->escaped();
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-resolve' )->escaped();
 		}
 		if ( $row->af_is_hidden > 0 ) {
-			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-hidden' )->escaped();
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-hide' )->escaped();
 		}
 		if ( $row->af_oversight_count > 0 ) {
-			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-oversight-requested' )->escaped();
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-request' )->escaped();
 		}
 		if ( $row->af_is_deleted > 0 ) {
-			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-deleted' )->escaped();
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-oversight' )->escaped();
 		}
 
 		$status = '';

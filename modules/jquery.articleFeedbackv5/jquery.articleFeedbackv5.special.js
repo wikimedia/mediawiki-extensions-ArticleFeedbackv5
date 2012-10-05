@@ -1670,7 +1670,7 @@
 					.removeClass( 'articleFeedbackv5-requestoversight-link' )
 					.addClass( 'articleFeedbackv5-unrequestoversight-link');
 
-				if ( data['articlefeedbackv5-flag-feedback']['autohidden'] ) {
+				if ( data['articlefeedbackv5-flag-feedback']['autohide'] ) {
 					var $new_link = $( '#articleFeedbackv5-hide-link-' + id )
 						.attr( 'action', 'show' )
 						.attr( 'id', 'articleFeedbackv5-show-link-' + id )
