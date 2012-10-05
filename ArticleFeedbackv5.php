@@ -245,12 +245,12 @@ $wgArticleFeedbackv5CTABuckets = array(
 	// placed in a bucket.
 	'buckets' => array(
 		'0' => 0, // display nothing
-		'1' => 98, // display "Enticement to edit"
-		'2' => 1, // display "Learn more"
+		'1' => 50, // display "Enticement to edit"
+		'2' => 0, // display "Learn more"
 		'3' => 0, // display "Take a survey"
-		'4' => 1, // display "Sign up or login"
+		'4' => 0, // display "Sign up or login"
 		'5' => 0, // display "View feedback"
-		'6' => 0, // display "Visit Teahouse"
+		'6' => 50, // display "Visit Teahouse"
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
