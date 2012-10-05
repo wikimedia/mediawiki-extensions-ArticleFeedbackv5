@@ -20,11 +20,13 @@ $aftDiv.articleFeedbackv5();
 
 /* Add basic edit tracking, making use of $.aftTrack() already being set up */
 if ( $.aftTrack.clickTrackingOn ) {
-	var clickTrackingSession = $.cookie( 'clicktracking-session' );
+	var clickTrackingSession = mw.user.id();
 	var editEventBase = $.aftTrack.prefix( $aftDiv.articleFeedbackv5( 'experiment' ) );
-	$( 'span.editsection a, #ca-edit a' ).each( function() {
+	$( 'span.editsection a, #ca-edit a, #ca-viewsource a' ).each( function() {
 		if ( $(this).is( '#ca-edit a' ) ) {
 			var event = 'edit_tab_link';
+		} else if ( $(this).is( '#ca-viewsource a' ) ) {
+			var event = 'view_source_tab_link';
 		} else {
 			var event = 'section_edit_link';
 		}
