@@ -2395,7 +2395,7 @@
 			'articleFeedbackv5_click_tracking': $.aftTrack.clickTrackingOn ? '1' : '0'
 		};
 		if ( $.aftTrack.clickTrackingOn ) {
-			params.articleFeedbackv5_ct_token   = $.cookie( 'clicktracking-session' );
+			params.articleFeedbackv5_ct_token   = mw.user.id();
 			params.articleFeedbackv5_bucket_id  = $.articleFeedbackv5.bucketId;
 			params.articleFeedbackv5_cta_id     = $.articleFeedbackv5.ctaId;
 			params.articleFeedbackv5_link_id    = $.articleFeedbackv5.submittedLinkId;
