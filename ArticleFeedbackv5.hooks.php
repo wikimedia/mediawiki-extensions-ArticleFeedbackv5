@@ -687,13 +687,13 @@ class ArticleFeedbackv5Hooks {
 	private static function trackEvent( $event, $title, $rev_id ) {
 		global $wgArticleFeedbackv5Tracking;
 		$ctas = array(
-			0 => 'cta_none',
-			1 => 'cta_edit',
-			2 => 'cta_learn_more',
-			3 => 'cta_survey',
-			4 => 'cta_signup_login',
-			5 => 'cta_view_feedback',
-			6 => 'cta_teahouse'
+			'none',
+			'edit',
+			'learn_more',
+			'survey',
+			'signup_login',
+			'view_feedback',
+			'teahouse'
 		);
 
 		$request = RequestContext::getMain()->getRequest();
@@ -721,7 +721,7 @@ class ArticleFeedbackv5Hooks {
 			} else {
 				$trackingId .= '-option' . $bucketId . $flinkId; // Prior to stage 3; handles cached js
 			}
-			$trackingId .= '-' . ( isset( $ctas[$ctaId] ) ? $ctas[$ctaId] : 'cta_unknown' )
+			$trackingId .= '-cta_' . ( isset( $ctas[$ctaId] ) ? $ctas[$ctaId] : 'unknown' )
 				. '-' . $event
 				. '-' . $location;
 		}

@@ -2341,23 +2341,17 @@
 	 * @return string the CTA name
 	 */
 	$.articleFeedbackv5.ctaName = function () {
-		if ( '0' == $.articleFeedbackv5.ctaId ) {
-			return 'cta_none';
-		} else if ( '1' == $.articleFeedbackv5.ctaId ) {
-			return 'cta_edit';
-		} else if ( '2' == $.articleFeedbackv5.ctaId ) {
-			return 'cta_learn_more';
-		} else if ( '3' == $.articleFeedbackv5.ctaId ) {
-			return 'cta_survey';
-		} else if ( '4' == $.articleFeedbackv5.ctaId ) {
-			return 'cta_signup_login';
-		} else if ( '5' == $.articleFeedbackv5.ctaId ) {
-			return 'cta_view_feedback';
-		} else if ( '6' == $.articleFeedbackv5.ctaId ) {
-			return 'cta_teahouse';
-		} else {
-			return 'cta_unknown';
-		}
+		var	ctas = [
+			'none',
+			'edit',
+			'learn_more',
+			'survey',
+			'signup_login',
+			'view_feedback',
+			'teahouse'
+		];
+
+		return 'cta_' + ( ctas[$.articleFeedbackv5.ctaId] || 'unknown' );
 	};
 
 	// }}}
