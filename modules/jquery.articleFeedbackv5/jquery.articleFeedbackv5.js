@@ -2352,8 +2352,12 @@
 			return 'cta_learn_more';
 		} else if ( '3' == $.articleFeedbackv5.ctaId ) {
 			return 'cta_survey';
+		} else if ( '4' == $.articleFeedbackv5.ctaId ) {
+			return 'cta_signup_login';
 		} else if ( '5' == $.articleFeedbackv5.ctaId ) {
 			return 'cta_view_feedback';
+		} else if ( '6' == $.articleFeedbackv5.ctaId ) {
+			return 'cta_teahouse';
 		} else {
 			return 'cta_unknown';
 		}
