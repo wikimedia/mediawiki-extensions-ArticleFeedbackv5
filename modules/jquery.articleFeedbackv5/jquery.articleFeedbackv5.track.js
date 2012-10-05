@@ -161,7 +161,7 @@
 			'format' : 'json',
 			'eventid': id,
 			'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
-			'token': $.cookie( 'clicktracking-session' ),
+			'token': mw.user.id(),
 			'additional': $.aftTrack.additional(),
 			'redirectto': url
 		} );
@@ -172,5 +172,3 @@
 // }}}
 
 } )( jQuery );
-
-
