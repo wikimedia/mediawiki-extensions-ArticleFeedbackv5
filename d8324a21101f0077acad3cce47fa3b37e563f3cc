@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA1n////g\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 2358,
+      "author": {
+        "id": 255
+      },
+      "writtenOn": "2012-10-09T07:22:50Z",
+      "side": 1,
+      "message": "You can replace the entire function with this:\n\nvar ctas \u003d [ \u0027none\u0027, \u0027edit\u0027, \u0027learn_more\u0027, \u0027survey\u0027, \u0027signup_login\u0027, \u0027view_feedback\u0027 ];\nreturn \u0027cta_\u0027 + ( ctas[ $.articleFeedbackv5.ctaId ] || \u0027unknown\u0027 );",
+      "revId": "d8324a21101f0077acad3cce47fa3b37e563f3cc",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
