@@ -888,6 +888,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @return array the params info, indexed by allowed key
 	 */
 	public function getAllowedParams() {
+		global $wgArticleFeedbackv5DisplayBuckets, $wgArticleFeedbackv5CTABuckets;
+		$formIds = array_keys( $wgArticleFeedbackv5DisplayBuckets['buckets'] );
+		$ctaIds = array_keys( $wgArticleFeedbackv5CTABuckets['buckets'] );
+
 		$ret = array(
 			'pageid' => array(
 				ApiBase::PARAM_TYPE     => 'integer',
@@ -901,7 +905,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'bucket' => array(
 				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_MIN      => 0
+				ApiBase::PARAM_MIN      => min( $formIds ),
+				ApiBase::PARAM_MAX      => max( $formIds )
 			),
 			'link' => array(
 				ApiBase::PARAM_TYPE     => 'string',
@@ -916,8 +921,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'cta' => array(
 				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_MIN      => 0,
-				ApiBase::PARAM_MAX      => 4,
+				ApiBase::PARAM_MIN      => min( $ctaIds ),
+				ApiBase::PARAM_MAX      => max( $ctaIds ),
 			)
 		);
 
