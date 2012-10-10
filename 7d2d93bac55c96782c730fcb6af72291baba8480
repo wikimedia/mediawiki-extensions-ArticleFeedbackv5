@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA8n///7s\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-10-10T20:32:07Z",
+      "side": 1,
+      "message": "The abandoned bucket ids should be excluded, probably define it as:\n\u0027bucket\u0027 \u003d\u003e array (\n     ApiBase::PARAM_TYPE  \u003d\u003e $formIds,\n     ApiBase::PARAM_REQUIRED  \u003d\u003e true\n);",
+      "revId": "7d2d93bac55c96782c730fcb6af72291baba8480",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA8n///7o\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-10-10T20:32:07Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "7d2d93bac55c96782c730fcb6af72291baba8480",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
