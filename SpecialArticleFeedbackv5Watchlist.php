@@ -136,7 +136,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 
 		$filterSelectHtml = '';
 		// No dropdown for readers
-		if ( $this->showFeatured ) {
+		if ( $this->isAllowed( 'aft-editor' ) ) {
 			$opts = array();
 			$foundNonDefaults = false;
 			foreach ( $this->filters as $filter ) {
