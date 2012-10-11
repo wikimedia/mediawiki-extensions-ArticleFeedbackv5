@@ -673,9 +673,17 @@ class ArticleFeedbackv5Hooks {
 	 * @param $context IContextSource
 	 * @return
 	 */
-	private static function trackEvent( $event, $title, $rev_id) {
+	private static function trackEvent( $event, $title, $rev_id ) {
 		global $wgArticleFeedbackv5Tracking;
-		$ctas = array( 'none', 'edit', 'learn_more' );
+		$ctas = array(
+			'none',
+			'edit',
+			'learn_more',
+			'survey',
+			'signup_login',
+			'view_feedback',
+			'teahouse'
+		);
 
 		$request = RequestContext::getMain()->getRequest();
 
