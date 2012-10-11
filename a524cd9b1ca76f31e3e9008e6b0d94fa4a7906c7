@@ -16,6 +16,24 @@
       "revId": "a524cd9b1ca76f31e3e9008e6b0d94fa4a7906c7",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/3///9M\u003d",
+        "filename": "SpecialArticleFeedbackv5Watchlist.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-10-11T17:53:29Z",
+      "side": 1,
+      "message": "SpecialArticleFeedbackv5 (which this class is extending from) has this class:\n\n    public function isAllowed( $permission ) {\n        $user \u003d $this-\u003egetUser();\n        return $user-\u003eisAllowed( $permission ) \u0026\u0026 !$user-\u003eisBlocked();\n    }\n\nSo $this-\u003eisAllowed() actually works and adds in an extra check against blocked users :)",
+      "parentUuid": "AAAA/3///9s\u003d",
+      "revId": "a524cd9b1ca76f31e3e9008e6b0d94fa4a7906c7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
