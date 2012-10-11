@@ -455,6 +455,8 @@
 						mw.msg( 'articlefeedbackv5-no-feedback' )
 					)
 				);
+		} else {
+			$( '#articlefeedbackv5-no-feedback' ).remove();
 		}
 	};
 
@@ -1169,7 +1171,7 @@
 					} else {
 						$( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback );
 					}
-					if ( this.info.afvffeedbackId == $.articleFeedbackv5special.highlightId ) {
+					if ( this.info.afvffeedbackid == $.articleFeedbackv5special.highlightId ) {
 						$( '.articleFeedbackv5-feedback[rel=' + $.articleFeedbackv5special.highlightId + ']:not(.articleFeedbackv5-feedback-highlighted)' ).hide();
 					} else if ( $.articleFeedbackv5special.highlightId && !prependContents ) {
 						$.articleFeedbackv5special.pullHighlight();
