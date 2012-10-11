@@ -212,6 +212,11 @@ select {
 	padding: 0;
 }
 
+/** No feedback message */
+#articlefeedbackv5-no-feedback {
+	padding-top: 10px;
+}
+
 /** List footer **/
 #articleFeedbackv5-footer {
 	width: 100%;

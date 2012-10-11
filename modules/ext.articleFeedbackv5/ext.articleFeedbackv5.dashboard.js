@@ -13,14 +13,7 @@ jQuery( function( $ ) {
 
 	// AFT is enabled
 	if ( $.aftVerify.verify( 'special' ) ) {
-		// no entries yet for this page
-		if ( $( '#articleFeedbackv5-show-feedback' ).children().length == 0 ) {
-			showError( mw.msg( 'articlefeedbackv5-no-feedback' ) );
-
-		// launch AFT
-		} else {
-			$.articleFeedbackv5special.setup();
-		}
+		$.articleFeedbackv5special.setup();
 
 	// AFT is not enabled
 	} else {
@@ -35,4 +28,3 @@ jQuery( function( $ ) {
 	}
 
 } );
-

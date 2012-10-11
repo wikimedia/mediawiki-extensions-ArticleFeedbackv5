@@ -42,7 +42,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// Build fetch object
 		$fetch = new ArticleFeedbackv5Fetch();
 		$fetch->setFilter( $params['filter'] );
-		$fetch->setFeedbackId( $params['filtervalue'] );
+
+		$fetch->setFeedbackId( $params['feedbackid'] );
 		$fetch->setPageId( $params['pageid'] );
 		if ( $params['watchlist'] ) {
 			$fetch->setUserId( $user->getId() );
@@ -61,8 +62,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$res = $fetch->run();
 
 		// Build html
-		$permalink = ( 'id' == $fetch->getFilter() );
-		$highlight = ( 'highlight' == $fetch->getFilter() );
+		$permalink = ( $fetch->getFilter() == 'id' );
+		$highlight = ( $fetch->getFilter() != 'id' && $fetch->getFeedbackId() );
 		$central   = ( $params['pageid'] ? false : true );
 		$renderer  = new ArticleFeedbackv5Render( $user, $permalink, $central, $highlight );
 		foreach ( $res->records as $record ) {
@@ -136,10 +137,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => ArticleFeedbackv5Fetch::$knownFilters,
 			),
-			'filtervalue'   => array(
+			'feedbackid'   => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'string'
+				ApiBase::PARAM_TYPE     => 'integer'
 			),
 			'limit'         => array(
 				ApiBase::PARAM_REQUIRED => false,
@@ -164,7 +165,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'pageid'      => 'Page ID to get feedback ratings for',
 			'sort'        => 'Key to sort records by',
 			'filter'      => 'What filtering to apply to list',
-			'filtervalue' => 'Optional param to pass to filter',
+			'feedbackid'  => 'A specific id to fetch',
 			'limit'       => 'Number of records to show',
 			'continue'    => 'Sort value at which to continue, pipe-separated if multiple',
 		);
