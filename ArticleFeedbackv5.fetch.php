@@ -92,7 +92,7 @@ class ArticleFeedbackv5Fetch {
 	 *
 	 * @var array
 	 */
-	public static $knownFilters = array( 'id', 'highlight', 'visible',
+	public static $knownFilters = array( 'id', 'visible',
 		'visible-relevant', 'visible-comment', 'visible-helpful',
 		'visible-unhelpful', 'visible-abusive', 'visible-featured',
 		'visible-unfeatured', 'visible-resolved', 'visible-unresolved',
@@ -125,16 +125,16 @@ class ArticleFeedbackv5Fetch {
 	 * Constructor
 	 *
 	 * @param string $filter      the filter
-	 * @param mixed  $filterValue the filter value (only for filter "id")
+	 * @param int    $feedbackId  a specific id to fetch
 	 * @param int    $pageId      the page ID
 	 * @param int    $userId      the user ID
 	 */
-	public function __construct( $filter = null, $filterValue = null, $pageId = null, $userId = null ) {
+	public function __construct( $filter = null, $feedbackId = null, $pageId = null, $userId = null ) {
 		if ( $filter ) {
 			$this->setFilter( $filter );
 		}
-		if ( ( $filter == 'id' || $filter == 'highlight' ) && $filterValue ) {
-			$this->setFeedbackId( $filterValue );
+		if ( $feedbackId ) {
+			$this->setFeedbackId( $feedbackId );
 		}
 		if ( $pageId ) {
 			$this->setPageId( $pageId );
@@ -423,26 +423,28 @@ class ArticleFeedbackv5Fetch {
 
 		$where = array();
 
-		// Never show hidden or deleted posts unless specifically requested
-		// and user has access.
-		if ( !in_array( $this->filter, self::$deletedFilters )
-		 || !$wgUser->isAllowed( 'aft-oversighter' ) ) {
+		// failsafe: never show hidden or deleted posts unless specifically
+		// requested and user has access.
+		if ( !$wgUser->isAllowed( 'aft-oversighter' ) || !in_array( $this->filter, self::$deletedFilters ) ) {
 			$where[] = 'af_is_deleted IS FALSE';
 			$where[] = 'af_oversight_count = 0';
+
+			// the hidden failsafe should only be added id it's been established
+			// we're _not_ browsing oversighted feedback, otherwise we'll be locked
+			// out of hidden feedback even though we do want to see it
+			if ( !$wgUser->isAllowed( 'aft-monitor' ) || !in_array( $this->filter, self::$hiddenFilters ) ) {
+				$where[] = 'af_is_hidden IS FALSE';
+			}
 		}
-		if ( !in_array( $this->filter, self::$hiddenFilters )
-		 || !$wgUser->isAllowed( 'aft-monitor' ) ) {
-			$where[] = 'af_is_hidden IS FALSE';
+
+		// get the feedback id
+		if ( $this->getFeedbackId() ) {
+			$where['af_id'] = $this->feedbackId;
 		}
 
 		switch ( $this->filter ) {
 			// special case - doesn't get any hidden/deleted filtering and is used for permalinks
 			case 'id':
-				// overwrite any and all where conditions
-				$where = array('af_id' => $this->feedbackId);
-				break;
-			// special case - just get the highlighted post
-			case 'highlight':
 				// overwrite any and all where conditions
 				$where = array('af_id' => $this->feedbackId);
 				break;
