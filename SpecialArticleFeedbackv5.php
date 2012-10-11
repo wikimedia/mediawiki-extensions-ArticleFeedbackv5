@@ -147,6 +147,18 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$this->startingLimit = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		}
 
+		// these are messages that require some parsing that the current JS mw.msg does not yet support
+		$flyovers = array(
+			'hide', 'show', 'requestoversight', 'unrequestoversight',
+			'oversight', 'unoversight', 'declineoversight', 'feature',
+			'unfeature', 'resolve', 'unresolve'
+		);
+		foreach ( $flyovers as $flyover ) {
+			$message = wfMessage( "articlefeedbackv5-noteflyover-$flyover-description" )->parse();
+			$vars["mw.msg.articlefeedbackv5-noteflyover-$flyover-description"] = $message;
+		}
+		$this->getOutput()->addJsConfigVars( $vars );
+
 		wfProfileOut( __METHOD__ );
 	}
 
