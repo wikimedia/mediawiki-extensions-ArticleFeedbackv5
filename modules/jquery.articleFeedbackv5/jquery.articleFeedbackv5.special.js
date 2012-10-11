@@ -77,7 +77,7 @@
 	 */
 	$.articleFeedbackv5special.listControls = {
 		filter: mw.config.get( 'afStartingFilter' ),
-		filterValue: mw.config.get( 'afStartingFilterValue' ), // Permalinks require a feedback ID
+		feedbackId: mw.config.get( 'afStartingFeedbackId' ), // Permalinks require a feedback ID
 		sort: mw.config.get( 'afStartingSort' ),
 		sortDirection: mw.config.get( 'afStartingSortDirection' ),
 		limit: mw.config.get( 'afStartingLimit' ),
@@ -192,6 +192,9 @@
 		// Set up config vars
 		$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
 		$.articleFeedbackv5special.watchlist = mw.config.get( 'wgCanonicalSpecialPageName' ) == 'ArticleFeedbackv5Watchlist' ? 1 : 0;
+
+		// check if there is feedback
+		$.articleFeedbackv5special.emptyMessage();
 
 		// Initialize clicktracking
 		$.aftTrack.init({
@@ -435,6 +438,23 @@
 
 	// }}}
 	// {{{ Utility methods
+
+	// {{{ emptyMessage
+
+	/**
+	 * Checks if there is feedback loaded and outputs a message if not
+	 */
+	$.articleFeedbackv5special.emptyMessage = function() {
+		var $feedbackContainer = $( '#articleFeedbackv5-show-feedback' );
+		if ( $feedbackContainer.children().length == 0 ) {
+			var $message =
+				$feedbackContainer.append(
+					$( '<div id="articlefeedbackv5-no-feedback" />' ).text(
+						mw.msg( 'articlefeedbackv5-no-feedback' )
+					)
+				);
+		}
+	};
 
 	// {{{ toggleFilter
 
@@ -1120,7 +1140,7 @@
 		var params = {
 			'afvfpageid':         $.articleFeedbackv5special.page,
 			'afvffilter':         $.articleFeedbackv5special.listControls.filter,
-			'afvffiltervalue':    $.articleFeedbackv5special.listControls.filterValue,
+			'afvffeedbackid':     $.articleFeedbackv5special.listControls.feedbackId,
 			'afvfsort':           $.articleFeedbackv5special.listControls.sort,
 			'afvfsortdirection':  $.articleFeedbackv5special.listControls.sortDirection,
 			'afvflimit':          $.articleFeedbackv5special.listControls.limit,
@@ -1147,7 +1167,7 @@
 					} else {
 						$( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback );
 					}
-					if ( this.info.afvffilter == 'highlight' ) {
+					if ( this.info.afvffeedbackId == $.articleFeedbackv5special.highlightId ) {
 						$( '.articleFeedbackv5-feedback[rel=' + $.articleFeedbackv5special.highlightId + ']:not(.articleFeedbackv5-feedback-highlighted)' ).hide();
 					} else if ( $.articleFeedbackv5special.highlightId && !prependContents ) {
 						$.articleFeedbackv5special.pullHighlight();
@@ -1165,6 +1185,8 @@
 				} else {
 					$( '#articleFeedbackv5-feedback-loading-bottom' ).fadeOut();
 				}
+
+				$.articleFeedbackv5special.emptyMessage();
 			},
 			'error': function ( data ) {
 				$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
@@ -1188,7 +1210,7 @@
 	$.articleFeedbackv5special.pullHighlight = function () {
 		var old = {
 			filter:         $.articleFeedbackv5special.listControls.filter,
-			filterValue:    $.articleFeedbackv5special.listControls.filterValue,
+			feedbackId:     $.articleFeedbackv5special.listControls.feedbackId,
 			sort:           $.articleFeedbackv5special.listControls.sort,
 			sortDirection:  $.articleFeedbackv5special.listControls.sortDirection,
 			limit:          $.articleFeedbackv5special.listControls.limit,
@@ -1197,8 +1219,7 @@
 			allowMultiple:  $.articleFeedbackv5special.listControls.allowMultiple,
 			showMore:       $.articleFeedbackv5special.listControls.showMore
 		};
-		$.articleFeedbackv5special.listControls.filter = 'highlight';
-		$.articleFeedbackv5special.listControls.filterValue = $.articleFeedbackv5special.highlightId;
+		$.articleFeedbackv5special.listControls.feedbackId = $.articleFeedbackv5special.highlightId;
 		$.articleFeedbackv5special.loadFeedback( false, true );
 		for ( var key in old ) {
 			$.articleFeedbackv5special.listControls[key] = old[key];

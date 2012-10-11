@@ -231,7 +231,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->addJsConfigVars( 'afPageId', $this->pageId );
 		$out->addJsConfigVars( 'afReferral', $request->getText( 'ref', 'url' ) );
 		$out->addJsConfigVars( 'afStartingFilter', $this->startingFilter );
-		$out->addJsConfigVars( 'afStartingFilterValue', $this->startingFilter == 'id' ? $this->feedbackId : null );
+		$out->addJsConfigVars( 'afStartingFeedbackId', $this->startingFilter == 'id' ? $this->feedbackId : null );
 		$out->addJsConfigVars( 'afStartingSort', $this->startingSort );
 		$out->addJsConfigVars( 'afStartingSortDirection', $this->startingSortDirection );
 		$out->addJsConfigVars( 'afStartingLimit', $this->startingLimit );
