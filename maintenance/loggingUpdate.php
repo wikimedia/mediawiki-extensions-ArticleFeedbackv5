@@ -73,7 +73,8 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 			array(
 				'log_id',
 				'feedback_id' => 'SUBSTRING_INDEX(log_title, "/", -1)',
-				'page_id'
+				'page_id',
+				'log_type',
 			),
 			array(
 				"log_id > $continue",
