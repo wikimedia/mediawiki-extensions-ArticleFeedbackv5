@@ -976,19 +976,25 @@ class ArticleFeedbackv5Render {
 
 		// Delete (a.k.a. oversight)
 		if ( $this->isAllowed( 'aft-oversighter' ) ) {
-			// if we have oversight requested, add "decline oversight" link
-			if ( $record[0]->af_oversight_count > 0 ) {
+			if ( $record[0]->af_oversight_count > 0 || $record[0]->af_is_declined > 0 ) {
 				// <li>
 				//   <a id="articleFeedbackv5-declineoversight-link-{$id}"
 				//     class="articleFeedbackv5-declineoversight-link" href="#">
 				//     {msg:articlefeedbackv5-form-decline}
 				//   </a>
 				// </li>
+				$class = 'articleFeedbackv5-declineoversight-link';
+				$message = wfMessage( "articlefeedbackv5-form-decline" )->text();
+				if ( $record[0]->af_is_declined > 0 ) {
+					$message = wfMessage( "articlefeedbackv5-form-declined" )->text();
+					$class .= ' inactive';
+				}
+
 				$toolsDelete .= Html::rawElement( 'li', array(), Html::element( 'a', array(
 					'id'    => "articleFeedbackv5-declineoversight-link-$id",
-					'class' => "articleFeedbackv5-declineoversight-link",
+					'class' => $class,
 					'href' => '#',
-					), wfMessage( "articlefeedbackv5-form-decline" )->text() ) );
+				), $message ) );
 			}
 
 			// Message can be:

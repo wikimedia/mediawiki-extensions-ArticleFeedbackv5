@@ -1742,7 +1742,9 @@
 			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				// if there is a "decline oversight" just hide it
-				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id ).hide();
+				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id )
+					.addClass( 'inactive' )
+					.text( mw.msg( 'articlefeedbackv5-form-declined' ) );
 
 				// Oversight is going to hide this as well, do the unhide/hide toggle
 				var $link = $( '#articleFeedbackv5-hide-link-' + id )
@@ -1778,7 +1780,9 @@
 			'apiFlagDir': -1,
 			'onSuccess': function( id, data ) {
 				// if there is a "decline oversight" just show it
-				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id ).show();
+				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id )
+					.removeClass( 'inactive' )
+					.text( mw.msg( 'articlefeedbackv5-form-decline' ) );
 
 				var $link = $( '#articleFeedbackv5-unoversight-link-' + id )
 					.attr( 'action', 'oversight' )
@@ -1803,8 +1807,14 @@
 			'apiFlagType': 'decline',
 			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
+				// if there is a "decline oversight" just show it
+				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id )
+					.addClass( 'inactive' )
+					.text( mw.msg( 'articlefeedbackv5-form-declined' ) );
+
 				var $row = $( '#articleFeedbackv5-declineoversight-link-' + id )
 					.closest( '.articleFeedbackv5-feedback' );
+				$.articleFeedbackv5special.unmarkDeleted( $row );
 			}
 		},
 

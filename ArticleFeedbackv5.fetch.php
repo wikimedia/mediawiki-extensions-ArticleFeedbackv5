@@ -330,7 +330,7 @@ class ArticleFeedbackv5Fetch {
 				'afi_data_type', 'af_created', 'user_name',
 				'af_user_id', 'af_user_ip', 'af_is_hidden', 'af_abuse_count',
 				'af_helpful_count', 'af_unhelpful_count',
-				'af_is_deleted', 'af_oversight_count', 'af_revision_id',
+				'af_is_deleted', 'af_oversight_count', 'af_is_declined', 'af_revision_id',
 				'af_net_helpfulness', 'af_relevance_score', 'af_revision_id',
 				'page_latest', 'page_title', 'page_namespace',
 				'rating.aa_response_boolean AS yes_no',
