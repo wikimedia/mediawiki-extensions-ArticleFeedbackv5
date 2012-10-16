@@ -221,6 +221,8 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-form-undelete',
 				'articlefeedbackv5-form-oversight',
 				'articlefeedbackv5-form-unoversight',
+				'articlefeedbackv5-form-decline',
+				'articlefeedbackv5-form-declined',
 				'articlefeedbackv5-comment-more',
 				'articlefeedbackv5-comment-less',
 				'articlefeedbackv5-error-loading-feedback',
