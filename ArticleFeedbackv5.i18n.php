@@ -192,6 +192,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-unoversight' => 'Unrequest oversight',
 	'articlefeedbackv5-form-undelete' => 'Un-oversight',
 	'articlefeedbackv5-form-decline' => 'Decline oversight',
+	'articlefeedbackv5-form-declined' => 'Oversight declined',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 found what they were looking for.}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 did not find what they were looking for.}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 posted a comment.}}',
@@ -790,6 +791,8 @@ The link to the edit tutorial',
 	'articlefeedbackv5-form-delete' => '{{Identical|Delete}}',
 	'articlefeedbackv5-form-oversight' => 'Request that an oversighter review this feedback',
 	'articlefeedbackv5-form-unoversight' => 'Remove request for oversight (request that an oversighter review the feedback)',
+	'articlefeedbackv5-form-decline' => 'Link text for declining oversight',
+	'articlefeedbackv5-form-declined' => 'Link text when oversight has already been declined',
 	'articlefeedbackv5-form1-header-found' => 'Parameters
 * $1 is a username.
 * $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text',
