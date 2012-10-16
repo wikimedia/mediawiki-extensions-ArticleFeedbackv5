@@ -7700,6 +7700,13 @@ $messages['gl'] = array(
 	'articlefeedbackv5-noteflyover-show-submit' => 'Descubrir esta mensaxe',
 	'articlefeedbackv5-noteflyover-show-help' => 'Máis información',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Pedir a supervisión',
+	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Antes de pedir a supervisión, comprobe que esta mensaxe
+inclúe algún dos seguintes problemas:
+* números de teléfono
+* enderezos de correo electrónico
+* ligazóns a sitios web pornográficos
+* comentarios difamatorios ou calumniosos sobre unha persoa
+* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy outos criterios para a supervisión]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Engadir unha nota para explicar o motivo da petición de supervisión',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Por que pide a supervisión?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Pedir a supervisión',
