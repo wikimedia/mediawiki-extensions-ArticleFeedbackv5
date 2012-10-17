@@ -377,6 +377,13 @@ class ArticleFeedbackv5Hooks {
 			dirname( __FILE__ ) . '/sql/index_user_data.sql'
 		);
 
+		$updater->modifyField(
+			'aft_article_feedback',
+			'af_user_ip',
+			dirname( __FILE__ ) . '/sql/userip_length.sql',
+			true
+		);
+
 		return true;
 	}
 
