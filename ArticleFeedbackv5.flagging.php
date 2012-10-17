@@ -126,12 +126,13 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $flag      string the flag
 	 * @param  $notes     string [optional] any notes to send to the activity log
 	 * @param  $direction string [optional] the direction of the request ('increase' / 'decrease')
+	 * @param  $source    string [optional] the origin of the flag (article, central, watchlist, permalink)
 	 * @param  $toggle    bool   [optional] whether to toggle the flag
 	 * @return array      information about the run, containing at least the
 	 *                    keys 'result' ('Error' / 'Success') and 'reason' (a
 	 *                    message key)
 	 */
-	public function run( $flag, $notes = '', $direction = 'increase', $toggle = false ) {
+	public function run( $flag, $notes = '', $direction = 'increase', $toggle = false, $source = 'unknown' ) {
 		global $wgUser;
 
 		$flag       = $flag;
@@ -326,7 +327,11 @@ class ArticleFeedbackv5Flagging {
 				$doer = $user;
 			}
 
-			ArticleFeedbackv5Log::logActivity( $entry[0], $record->af_page_id, $this->feedbackId, $entry[1], $doer );
+			// save origin
+			$params = array();
+			$params['source'] = $source;
+
+			ArticleFeedbackv5Log::logActivity( $entry[0], $record->af_page_id, $this->feedbackId, $entry[1], $doer, $params );
 		}
 
 		$this->results['result'] = 'Success';

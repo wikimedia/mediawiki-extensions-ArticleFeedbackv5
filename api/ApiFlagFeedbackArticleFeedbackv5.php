@@ -39,13 +39,14 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$notes      = $params['note'];
 		$direction  = isset( $params['direction'] ) ? $params['direction'] : 'increase';
 		$toggle     = $params['toggle'];
+		$source     = $params['source'];
 
 		// woah, we were not checking for permissions (that could have been script kiddy bad)
 		global $wgUser;
 
 		// Fire up the flagging object
 		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId );
-		$results = $flagger->run( $flag, $notes, $direction, $toggle );
+		$results = $flagger->run( $flag, $notes, $direction, $toggle, $source );
 
 		$this->getResult()->addValue(
 			null,
@@ -95,6 +96,11 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'boolean'
 			),
+			'source' => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_TYPE     => array( 'article', 'central', 'watchlist', 'permalink', 'unknown' )
+			),
 		);
 	}
 
@@ -109,6 +115,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			'type'        => 'Type of flag to apply - hide or abuse',
 			'note'        => 'Information on why the feedback activity occurred',
 			'toggle'      => 'The flag is being toggled atomically, only useful for (un)helpful',
+			'source'      => 'The origin of the flag: article (page), central (feedback page), watchlist (page), permalink',
 		);
 	}
 
