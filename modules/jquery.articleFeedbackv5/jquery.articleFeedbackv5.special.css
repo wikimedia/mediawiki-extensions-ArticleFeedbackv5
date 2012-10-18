@@ -374,6 +374,13 @@
 	/* @embed */
 	background-image: url(images/toolbox_decline_hover.png);
 }
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-declineoversight-link.inactive {
+	color: #444;
+	cursor: default;
+	text-decoration: none;
+	/* @embed */
+	background-image: url(images/toolbox_decline_inactive.png);
+}
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-activity-link {
 	/* @embed */
 	background-image: url(images/toolbox_activity.png);

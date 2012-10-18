@@ -903,6 +903,19 @@ class ArticleFeedbackv5Flagging {
 			}
 		}
 
+		// Un-hide if it was auto-hidden
+		if ( $record->af_is_hidden == true && $record->af_is_autohide == true ) {
+			$this->update['af_is_hidden'] = false;
+			$this->update['af_is_unhidden'] = true;
+
+			$this->hideCounts( $record, 'show' );
+			$this->visibleCounts( $record, 'visible' );
+
+			$this->relevance[] = 'unhide';
+
+			$this->log[] = array( 'unhide', 'Automatic un-hide', null );
+		}
+
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'decline', $this->getUserId(), $timestamp );
 		return true;
