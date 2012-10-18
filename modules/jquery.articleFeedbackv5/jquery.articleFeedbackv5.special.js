@@ -1007,6 +1007,18 @@
 			$.articleFeedbackv5special.listControls.disabled = true;
 		}
 
+		// origin of the flag
+		var source = 'unknown';
+		if ( $.articleFeedbackv5special.watchlist ) {
+			source = 'watchlist';
+		} else if ( $.articleFeedbackv5special.listControls.filter == 'id' ) {
+			source = 'permalink';
+		} else if ( $.articleFeedbackv5special.page ) {
+			source = 'article';
+		} else {
+			source = 'central';
+		}
+
 		// Merge request data and options objects (flat)
 		var requestData = {
 			'pageid'    : $.articleFeedbackv5special.page,
@@ -1015,7 +1027,8 @@
 			'direction' : $.articleFeedbackv5special.actions[action].apiFlagDir > 0 ? 'increase' : 'decrease',
 			'note'		: note,
 			'format'    : 'json',
-			'action'    : 'articlefeedbackv5-flag-feedback'
+			'action'    : 'articlefeedbackv5-flag-feedback',
+			'source'    : source
 		};
 		$.extend( requestData, options );
 

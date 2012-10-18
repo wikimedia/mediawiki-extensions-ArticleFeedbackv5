@@ -171,7 +171,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				continue;
 			}
 			$notes = $this->msg( $msg, array( $rule_desc ) )->parse();
-			$res = $flagger->run( $flag, $notes );
+			$res = $flagger->run( $flag, $notes, 'increase', false, 'abusefilter' );
 			if ( 'Error' == $res['result'] ) {
 				// TODO: Log somewhere?
 			}
