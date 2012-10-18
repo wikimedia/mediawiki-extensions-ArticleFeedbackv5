@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAABFX///cM\u003d",
+        "filename": "api/ApiFlagFeedbackArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-10-18T17:49:47Z",
+      "side": 1,
+      "message": "should be ApiBase::PARAM_TYPE \u003d\u003e array( \u0027article\u0027, \u0027central\u0027, \u0027watchlist\u0027, \u0027permalink\u0027, \u0027known\u0027)",
+      "revId": "014826f2432c1dafbe1f01063012c99c6421a6fe",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
