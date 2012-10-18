@@ -82,17 +82,16 @@
 		// supported browser
 		enable &= $.aftVerify.useragent();
 
-		// page permission check is not applicable for central feedback page
 		if ( location != 'special' || article.id != 0 ) {
 			// only on pages in namespaces where it is enabled
 			enable &= $.inArray( article.namespace, mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1;
-
-			// check if user has the required permissions
-			enable &= $.aftVerify.permissions( article );
 		}
 
 		// for special page, it doesn't matter if the article has AFT applied
 		if ( location != 'special' ) {
+			// check if user has the required permissions
+			enable &= $.aftVerify.permissions( article );
+
 			// category is not blacklisted
 			enable &= !$.aftVerify.blacklist( article );
 
