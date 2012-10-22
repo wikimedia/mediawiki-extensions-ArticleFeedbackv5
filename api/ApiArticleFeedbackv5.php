@@ -903,10 +903,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			),
 			'anontoken' => null,
 			'bucket' => array(
-				ApiBase::PARAM_TYPE     => 'integer',
+				ApiBase::PARAM_TYPE     => $formIds,
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_MIN      => min( $formIds ),
-				ApiBase::PARAM_MAX      => max( $formIds )
 			),
 			'link' => array(
 				ApiBase::PARAM_TYPE     => 'string',
@@ -919,10 +917,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_TYPE     => 'string',
 			),
 			'cta' => array(
-				ApiBase::PARAM_TYPE     => 'integer',
+				ApiBase::PARAM_TYPE     => $ctaIds,
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_MIN      => min( $ctaIds ),
-				ApiBase::PARAM_MAX      => max( $ctaIds ),
 			)
 		);
 

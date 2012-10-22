@@ -2329,7 +2329,7 @@
 	 * @return string the experiment (e.g. "optionM5_1_edit")
 	 */
 	$.articleFeedbackv5.experiment = function () {
-		return 'option' + $.articleFeedbackv5.bucketId + $.articleFeedbackv5.submittedLinkId + '_';
+		return 'option' + $.articleFeedbackv5.bucketId + $.articleFeedbackv5.submittedLinkId;
 	};
 
 	// }}}
@@ -2401,7 +2401,6 @@
 			params.articleFeedbackv5_link_id    = $.articleFeedbackv5.submittedLinkId;
 			params.articleFeedbackv5_f_link_id  = $.articleFeedbackv5.floatingLinkId;
 			params.articleFeedbackv5_experiment = $.articleFeedbackv5.experiment();
-			params.articleFeedbackv5_location   = 'bottom';
 		}
 		var url = mw.config.get( 'wgScript' ) + '?' + $.param( params );
 		if ( trackingId ) {

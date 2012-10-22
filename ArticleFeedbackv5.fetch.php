@@ -437,11 +437,6 @@ class ArticleFeedbackv5Fetch {
 			}
 		}
 
-		// get the feedback id
-		if ( $this->getFeedbackId() ) {
-			$where['af_id'] = $this->feedbackId;
-		}
-
 		switch ( $this->filter ) {
 			// special case - doesn't get any hidden/deleted filtering and is used for permalinks
 			case 'id':
@@ -503,6 +498,11 @@ class ArticleFeedbackv5Fetch {
 				break;
 			default:
 				break;
+		}
+
+		// when fetching a specific id, ignore filters
+		if ( $this->getFeedbackId() ) {
+			$where = array('af_id' => $this->feedbackId);
 		}
 
 		return $where;

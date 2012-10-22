@@ -379,6 +379,13 @@ class ArticleFeedbackv5Hooks {
 			dirname( __FILE__ ) . '/sql/index_user_data.sql'
 		);
 
+		$updater->modifyField(
+			'aft_article_feedback',
+			'af_user_ip',
+			dirname( __FILE__ ) . '/sql/userip_length.sql',
+			true
+		);
+
 		return true;
 	}
 
@@ -560,17 +567,6 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5DisplayBuckets'] = $wgArticleFeedbackv5DisplayBuckets;
 		$vars['wgArticleFeedbackv5CTABuckets'] = (object) $wgArticleFeedbackv5CTABuckets;
 
-		// these are messages that require some parsing that the current JS mw.msg does not yet support
-		$flyovers = array(
-			'hide', 'show', 'requestoversight', 'unrequestoversight',
-			'oversight', 'unoversight', 'declineoversight', 'feature',
-			'unfeature', 'resolve', 'unresolve'
-		);
-		foreach ( $flyovers as $flyover ) {
-			$message = wfMessage( "articlefeedbackv5-noteflyover-$flyover-description" )->parse();
-			$vars["mw.msg.articlefeedbackv5-noteflyover-$flyover-description"] = $message;
-		}
-
 		return true;
 	}
 
@@ -626,7 +622,6 @@ class ArticleFeedbackv5Hooks {
 		$ctaId      = $request->getVal( 'articleFeedbackv5_cta_id' );
 		$flinkId    = $request->getVal( 'articleFeedbackv5_f_link_id' );
 		$experiment = $request->getVal( 'articleFeedbackv5_experiment' );
-		$location   = $request->getVal( 'articleFeedbackv5_location' );
 		$token      = $request->getVal( 'articleFeedbackv5_ct_token' );
 		$ctEvent    = $request->getVal( 'articleFeedbackv5_ct_event' );
 
@@ -635,7 +630,6 @@ class ArticleFeedbackv5Hooks {
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_cta_id', $ctaId );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_f_link_id', $flinkId );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_experiment', $experiment );
-		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_location', $location );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_ct_token', $token );
 		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_ct_event', $ctEvent );
 
@@ -710,7 +704,6 @@ class ArticleFeedbackv5Hooks {
 		$ctaId      = $request->getVal( 'articleFeedbackv5_cta_id' );
 		$flinkId    = $request->getVal( 'articleFeedbackv5_f_link_id' );
 		$experiment = $request->getVal( 'articleFeedbackv5_experiment' );
-		$location   = $request->getVal( 'articleFeedbackv5_location' );
 		$token      = $request->getVal( 'articleFeedbackv5_ct_token' );
 		$ctEvent    = $request->getVal( 'articleFeedbackv5_ct_event' );
 
@@ -724,8 +717,7 @@ class ArticleFeedbackv5Hooks {
 				$trackingId .= '-option' . $bucketId . $flinkId; // Prior to stage 3; handles cached js
 			}
 			$trackingId .= '-cta_' . ( isset( $ctas[$ctaId] ) ? $ctas[$ctaId] : 'unknown' )
-				. '-' . $event
-				. '-' . $location;
+				. '-' . $event;
 		}
 
 		$params = new FauxRequest( array(
@@ -802,22 +794,22 @@ class ArticleFeedbackv5Hooks {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-helpful' )->escaped();
 		}
 		if ( $row->af_abuse_count > 0 ) {
-			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-flagged' )->escaped();
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-flag' )->escaped();
 		}
 		if ( $row->af_is_featured > 0 ) {
-			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-featured' )->escaped();
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-feature' )->escaped();
 		}
 		if ( $row->af_is_resolved > 0 ) {
-			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-resolved' )->escaped();
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-resolve' )->escaped();
 		}
 		if ( $row->af_is_hidden > 0 ) {
-			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-hidden' )->escaped();
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-hide' )->escaped();
 		}
 		if ( $row->af_oversight_count > 0 ) {
-			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-oversight-requested' )->escaped();
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-request' )->escaped();
 		}
 		if ( $row->af_is_deleted > 0 ) {
-			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-deleted' )->escaped();
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-oversight' )->escaped();
 		}
 
 		$status = '';

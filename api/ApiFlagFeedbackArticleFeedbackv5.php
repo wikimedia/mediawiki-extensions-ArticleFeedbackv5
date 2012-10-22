@@ -99,7 +99,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			'source' => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'string'
+				ApiBase::PARAM_TYPE     => array( 'article', 'central', 'watchlist', 'permalink', 'unknown' )
 			),
 		);
 	}

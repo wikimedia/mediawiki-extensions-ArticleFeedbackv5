@@ -73,7 +73,8 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 			array(
 				'log_id',
 				'feedback_id' => 'SUBSTRING_INDEX(log_title, "/", -1)',
-				'page_id'
+				'page_id',
+				'log_type',
 			),
 			array(
 				"log_id > $continue",
@@ -106,10 +107,26 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 				'pageId' => (int) $row->page_id
 			);
 
+			// fix log type
+			switch ( $row->log_type ) {
+				case 'hidden':
+					$type = 'hide';
+					break;
+				case 'unhidden':
+					$type = 'unhide';
+					break;
+				default:
+					$type = $row->log_type;
+					break;
+			}
+
 			// update log entry
 			$dbw->update(
 				'logging',
-				array( 'log_params' => serialize( $params ) ),
+				array(
+					'log_type' => $type,
+					'log_params' => serialize( $params )
+				),
 				array( 'log_id' => $row->log_id )
 			);
 
