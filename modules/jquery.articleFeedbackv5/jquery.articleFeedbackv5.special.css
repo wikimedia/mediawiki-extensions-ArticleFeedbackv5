@@ -427,8 +427,9 @@ form.articleFeedbackv5-form-flyover label {
 	display: block;
 	margin: 5px 10px;
 }
-form.articleFeedbackv5-form-flyover textarea {
+form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	margin: 0 0 0 10px;
+	width: 100%;
 }
 .articleFeedbackv5-flyover-header {
 	background-color: #d2e5f7;

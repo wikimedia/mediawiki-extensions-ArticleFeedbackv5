@@ -135,7 +135,7 @@
 		<form class="articleFeedbackv5-form-flyover">\
 			<div id="articleFeedbackv5-noteflyover-description"></div>\
 			<label id="articleFeedbackv5-noteflyover-label" for="articleFeedbackv5-noteflyover-note"></label>\
-			<textarea id="articleFeedbackv5-noteflyover-note" name="articleFeedbackv5-noteflyover-note"></textarea>\
+			<input type="text" id="articleFeedbackv5-noteflyover-note" name="articleFeedbackv5-noteflyover-note" />\
 			<div class="articleFeedbackv5-flyover-footer">\
 				<a id="articleFeedbackv5-noteflyover-submit" class="articleFeedbackv5-flyover-button" href="#"></a>\
 				<a class="articleFeedbackv5-flyover-help" id="articleFeedbackv5-noteflyover-help" href="#"></a>\
