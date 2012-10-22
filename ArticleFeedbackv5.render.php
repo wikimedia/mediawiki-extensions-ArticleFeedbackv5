@@ -873,7 +873,7 @@ class ArticleFeedbackv5Render {
 		$toolsActivity = '';
 
 		// Feature/unfeature and mark/unmark resolved (for posts other than your own)
-		if ( $this->isAllowed( 'aft-editor' ) && !$ownFeedback ) {
+		if ( $this->isAllowed( 'aft-editor' ) && !$ownFeedback && !$record[0]->af_is_hidden && !$record[0]->af_is_deleted ) {
 			// Message can be:
 			//  * articlefeedbackv5-form-feature
 			//  * articlefeedbackv5-form-unfeature
