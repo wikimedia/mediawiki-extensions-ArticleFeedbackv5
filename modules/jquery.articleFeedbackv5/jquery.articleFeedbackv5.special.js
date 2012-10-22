@@ -866,7 +866,7 @@
 		}
 
 		// hide feature/unfeature/resolve/unresolve
-		$( '.tools_feature', $row ).hide();
+		$row.find( '.tools_feature' ).hide();
 
 		if ( !empty ) {
 			$screen.click( function( e ) {
@@ -892,7 +892,7 @@
 			.removeClass( 'articleFeedbackv5-post-screen-on' );
 
 		// show feature/unfeature/resolve/unresolve
-		$( '.tools_feature', $row ).show();
+		$row.find( '.tools_feature' ).show();
 	};
 
 	// }}}
