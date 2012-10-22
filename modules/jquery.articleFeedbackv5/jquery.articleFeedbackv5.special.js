@@ -862,6 +862,10 @@
 		if ( $screen.hasClass( 'articleFeedbackv5-post-screen-off' ) ) {
 			$screen.removeClass( 'articleFeedbackv5-post-screen-off' );
 		}
+
+		// hide feature/unfeature/resolve/unresolve
+		$( '.tools_feature', $row ).hide();
+
 		if ( !empty ) {
 			$screen.click( function( e ) {
 				$.articleFeedbackv5special.unmaskPost(
@@ -884,6 +888,9 @@
 		$row.find( '.articleFeedbackv5-post-screen' )
 			.addClass( 'articleFeedbackv5-post-screen-off' )
 			.removeClass( 'articleFeedbackv5-post-screen-on' );
+
+		// show feature/unfeature/resolve/unresolve
+		$( '.tools_feature', $row ).show();
 	};
 
 	// }}}
@@ -1706,8 +1713,8 @@
 					.removeClass( 'articleFeedbackv5-requestoversight-link' )
 					.addClass( 'articleFeedbackv5-unrequestoversight-link');
 
-				if ( data['articlefeedbackv5-flag-feedback']['autohidden'] ) {
-					var $new_link = $( '#articleFeedbackv5-hide-link-' + id )
+				if ( data['articlefeedbackv5-flag-feedback']['autohide'] ) {
+					$( '#articleFeedbackv5-hide-link-' + id )
 						.attr( 'action', 'show' )
 						.attr( 'id', 'articleFeedbackv5-show-link-' + id )
 						.text( mw.msg( 'articlefeedbackv5-form-unhide' ) )
