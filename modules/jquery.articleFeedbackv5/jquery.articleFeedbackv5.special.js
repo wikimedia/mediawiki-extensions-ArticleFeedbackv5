@@ -821,6 +821,9 @@
 		$row.addClass( 'articleFeedbackv5-feedback-hidden' );
 		$.articleFeedbackv5special.changeTags( $row, 'hidden', 'add' );
 		$.articleFeedbackv5special.maskPost( $row, line );
+
+		// hide feature/unfeature/resolve/unresolve
+		$row.find( '.tools_feature' ).hide();
 	};
 
 	// }}}
@@ -837,6 +840,9 @@
 		if ( !$row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
 			$.articleFeedbackv5special.unmaskPost( $row );
 		}
+
+		// show feature/unfeature/resolve/unresolve
+		$row.find( '.tools_feature' ).show();
 	};
 
 	// }}}
@@ -865,9 +871,6 @@
 			$screen.removeClass( 'articleFeedbackv5-post-screen-off' );
 		}
 
-		// hide feature/unfeature/resolve/unresolve
-		$row.find( '.tools_feature' ).hide();
-
 		if ( !empty ) {
 			$screen.click( function( e ) {
 				$.articleFeedbackv5special.unmaskPost(
@@ -890,9 +893,6 @@
 		$row.find( '.articleFeedbackv5-post-screen' )
 			.addClass( 'articleFeedbackv5-post-screen-off' )
 			.removeClass( 'articleFeedbackv5-post-screen-on' );
-
-		// show feature/unfeature/resolve/unresolve
-		$row.find( '.tools_feature' ).show();
 	};
 
 	// }}}
@@ -1742,12 +1742,16 @@
 			'apiFlagType': 'request',
 			'apiFlagDir': -1,
 			'onSuccess': function( id, data ) {
-				$( '#articleFeedbackv5-unrequestoversight-link-' + id )
+				var $link = $( '#articleFeedbackv5-unrequestoversight-link-' + id )
 					.attr( 'action', 'requestoversight' )
 					.attr( 'id', 'articleFeedbackv5-requestoversight-link-' + id )
 					.text( mw.msg( 'articlefeedbackv5-form-oversight' ) )
 					.removeClass( 'articleFeedbackv5-unrequestoversight-link' )
 					.addClass( 'articleFeedbackv5-requestoversight-link');
+
+				$.articleFeedbackv5special.unmarkHidden(
+					$link.closest( '.articleFeedbackv5-feedback' )
+				);
 			}
 		},
 
