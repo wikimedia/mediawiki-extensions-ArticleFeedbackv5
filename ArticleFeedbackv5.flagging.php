@@ -726,7 +726,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_feature_increase( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( $record->af_is_featured ) {
+		if ( $record->af_is_featured || $record->af_is_hidden || $record->af_is_deleted ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
 		$this->log[] = array( 'feature', $notes, $this->user );
@@ -768,7 +768,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_feature_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( !$record->af_is_featured ) {
+		if ( !$record->af_is_featured || $record->af_is_hidden || $record->af_is_deleted ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
 		$this->log[] = array( 'unfeature', $notes, $this->user );
@@ -805,7 +805,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_resolve_increase( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( $record->af_is_resolved ) {
+		if ( $record->af_is_resolved || $record->af_is_hidden || $record->af_is_deleted ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
 		$this->log[] = array( 'resolve', $notes, $this->user );
@@ -842,7 +842,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_resolve_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( !$record->af_is_resolved ) {
+		if ( !$record->af_is_resolved || $record->af_is_hidden || $record->af_is_deleted ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
 		// decrease means "unresolve" this
