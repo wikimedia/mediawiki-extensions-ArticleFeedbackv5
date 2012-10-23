@@ -245,10 +245,10 @@ $wgArticleFeedbackv5CTABuckets = array(
 	// placed in a bucket.
 	'buckets' => array(
 		'0' => 0, // display nothing
-		'1' => 50, // display "Enticement to edit"
+		'1' => 0, // display "Enticement to edit"
 		'2' => 0, // display "Learn more"
 		'3' => 0, // display "Take a survey"
-		'4' => 0, // display "Sign up or login"
+		'4' => 50, // display "Sign up or login"
 		'5' => 0, // display "View feedback"
 		'6' => 50, // display "Visit Teahouse"
 	),
