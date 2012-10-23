@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAABFX//7lU\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.track.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2012-10-23T20:58:06Z",
+      "side": 1,
+      "message": "if ( mw.user.isAnon() ) {\n    tmp.push( mw.user.id() );\n} else {\n    Check with Dario\n}",
+      "revId": "b1d9ecb15e448dc3f846895e37c6e74faaea5721",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAABFX//7mQ\u003d",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.track.js",
         "patchSetId": 1
