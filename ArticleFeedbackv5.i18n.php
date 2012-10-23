@@ -342,7 +342,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Before requesting oversight, please check that this post
 includes one of these issues:
 * phone numbers
-* email addresses
+* e-mail addresses
 * pornographic links
 * defamatory/libelous comments about a person
 * [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy other criteria for oversight]',
