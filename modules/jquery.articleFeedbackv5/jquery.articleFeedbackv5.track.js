@@ -116,11 +116,20 @@
 	 * @param trackingId string the tracking ID
 	 */
 	$.aftTrack.trackClick = function ( trackingId ) {
-		if ( $.aftTrack.clickTrackingOn && $.isFunction( $.trackActionWithInfo ) ) {
-			$.trackActionWithInfo(
-				$.aftTrack.prefix( trackingId ),
-				$.aftTrack.additional()
-			);
+		if ( $.aftTrack.clickTrackingOn ) {
+			var data = {
+				'action': 'clicktracking',
+				'format' : 'json',
+				'eventid': trackingId,
+				'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
+				'token': mw.user.id(),
+				'additional': $.aftTrack.additional()
+			};
+
+			$( document ).trigger( 'clicktrack.mediawiki', data );
+			if ( !$.cookie( 'clicktrackingDebug' ) ) {
+				return $.post( mw.util.wikiScript( 'api' ), data );
+			}
 		}
 	};
 
