@@ -1295,8 +1295,7 @@
 					'returnto': mw.config.get( 'wgPageName' ),
 					'type': 'signup'
 				} );
-				var signup_track_id = $.articleFeedbackv5.experiment() + '-' +
-					$.articleFeedbackv5.ctaName() + '-button_signup_click';
+				var signup_track_id = $.articleFeedbackv5.ctaName() + '-button_signup_click';
 				$block.find( '.articleFeedbackv5-cta-button-signup' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl(
 					signup_url
@@ -1305,12 +1304,12 @@
 					signup_track_id
 				) );
 
+
 				var login_url = mw.config.get( 'wgScript' ) + '?' + $.param( {
 					'title': 'Special:UserLogin',
 					'returnto': mw.config.get( 'wgPageName' )
 				} );
-				var login_track_id = $.articleFeedbackv5.experiment() + '-' +
-					$.articleFeedbackv5.ctaName() + '-button_login_click';
+				var login_track_id = $.articleFeedbackv5.ctaName() + '-button_login_click';
 				$block.find( '.articleFeedbackv5-cta-button-login' )
 					.attr( 'href', $.articleFeedbackv5.trackingUrl(
 					login_url + '&c=' + $.articleFeedbackv5.feedbackId,
