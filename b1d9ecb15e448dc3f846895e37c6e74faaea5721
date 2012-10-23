@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAABFX//7mQ\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.track.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2012-10-23T20:42:52Z",
+      "side": 1,
+      "message": "Just append or join mw.user.id() to the string of info in aftTrack.additonal() and continue to call trackActionWithInfo().",
+      "revId": "b1d9ecb15e448dc3f846895e37c6e74faaea5721",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
