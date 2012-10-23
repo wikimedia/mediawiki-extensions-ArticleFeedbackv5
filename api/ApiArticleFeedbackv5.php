@@ -872,8 +872,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		if ( $wgUser->isAnon() ) {
 			if ( !isset( $params['anontoken'] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', 'anontoken' ) );
-			} elseif ( strlen( $params['anontoken'] ) != 32 ) {
-				$this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
+//			} elseif ( strlen( $params['anontoken'] ) != 32 ) {
+//				$this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
 			}
 			$token = $params['anontoken'];
 		} else {
