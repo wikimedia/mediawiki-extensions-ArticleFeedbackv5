@@ -10312,6 +10312,12 @@ Riprova più tardi.',
 	'articlefeedbackv5-noteflyover-show-submit' => 'Scopri questo post',
 	'articlefeedbackv5-noteflyover-show-help' => 'Ulteriori informazioni',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Richiedi soppressione',
+	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Prima di richiedere la soppressione, controlla che questo commento include almeno uno dei seguenti problemi:
+* numeri telefonici
+* indirizzi di posta elettronica
+* collegamenti pornografici
+* commenti diffamatori/calunniosi su una persona
+* [http://it.wikipedia.org/wiki/Wikipedia:Oversight altri criteri per la soppressione]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Aggiungi una nota per spiegare perché stai richiedendo la soppressione',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Perché stai richiedendo la soppressione?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Richiedi soppressione',
@@ -10381,6 +10387,12 @@ Riprova più tardi.',
 	'articlefeedbackv5-toolbox-view' => 'Vedi feedback',
 	'articlefeedbackv5-toolbox-add' => 'Aggiungi il tuo commento',
 	'articlefeedbackv5-disable-preference' => 'Non mostrare il widget di valutazione sulle pagine (Article Feedback)',
+	'right-aft-reader' => 'Inserisce i commenti e li contrassegna come utili\\inutili',
+	'right-aft-member' => 'Inserisce i commenti e li contrassegna come utili\\inutili',
+	'right-aft-editor' => 'Rende particolare e risolve i commenti',
+	'right-aft-monitor' => 'Nasconde i commenti e richiede la soppressione',
+	'right-aft-administrator' => 'Visualizza AFT (Article Feedback Tool) sulle pagine protette',
+	'right-aft-oversighter' => 'Effettua la soppressione dei commenti',
 	'log-name-articlefeedbackv5' => 'Registro attività Article Feedback',
 	'log-description-articlefeedbackv5' => 'Questo è il registro delle attività eseguite sui commenti delle voci raccolti usando Article Feedback.',
 	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|ha cambiato}} lo stato di soppressione del [[$3|commento #$4]] su [[$5]]',
