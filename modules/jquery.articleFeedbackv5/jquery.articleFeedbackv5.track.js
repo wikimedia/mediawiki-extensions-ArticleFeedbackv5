@@ -98,6 +98,7 @@
 	 */
 	$.aftTrack.additional = function () {
 		var tmp = new Array();
+		tmp.push( mw.user.id() );
 		if ( $.aftTrack.pageName != '' ) {
 			tmp.push( $.aftTrack.pageName );
 		}
@@ -117,54 +118,13 @@
 	 */
 	$.aftTrack.trackClick = function ( trackingId ) {
 		if ( $.aftTrack.clickTrackingOn && $.isFunction( $.trackActionWithInfo ) ) {
-			$.trackActionWithInfo(
+			return $.trackActionWithInfo(
 				$.aftTrack.prefix( trackingId ),
 				$.aftTrack.additional()
 			);
 		}
-	};
 
-	// }}}
-	// {{{ trackingUrl
-
-	/**
-	 * Creates a URL that tracks a particular click
-	 *
-	 * @param url        string the url so far
-	 * @param trackingId string the tracking ID
-	 */
-	$.aftTrack.trackingUrl = function ( url, trackingId ) {
-		if ( $.aftTrack.clickTrackingOn ) {
-			return $.aftTrack.trackActionURL( url, $.aftTrack.prefix( trackingId ) );
-		} else {
-			return url;
-		}
-	};
-
-	// }}}
-	// {{{ trackActionURL
-
-	/**
-	 * Rewrites a URL to one that runs through the ClickTracking API module
-	 * which registers the event and redirects to the real URL
-	 *
-	 * This is a copy of the one out of the clicktracking javascript API
-	 * we have to do our own because there is no "additional" option in that
-	 * API which we need for the article title
-	 *
-	 * @param string url url to redirect to
-	 * @param string id  the tracking id
-	 */
-	$.aftTrack.trackActionURL = function( url, id ) {
-		return mw.config.get( 'wgScriptPath' ) + '/api.php?' + $.param( {
-			'action': 'clicktracking',
-			'format' : 'json',
-			'eventid': id,
-			'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
-			'token': mw.user.id(),
-			'additional': $.aftTrack.additional(),
-			'redirectto': url
-		} );
+		return true;
 	};
 
 	// }}}

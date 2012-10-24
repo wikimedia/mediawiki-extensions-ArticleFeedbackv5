@@ -574,15 +574,17 @@
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the button link
-				var track_id = 'button_click';
 				if ( $.articleFeedbackv5.editable ) {
-					$block.find( '.articleFeedbackv5-cta-button' )
-						.attr( 'href', $.articleFeedbackv5.editUrl( track_id ) );
+					var url = $.articleFeedbackv5.editUrl();
 				} else {
-					var learn_url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
-					$block.find( '.articleFeedbackv5-cta-button' )
-						.attr( 'href', $.articleFeedbackv5.trackingUrl( learn_url, track_id ) );
+					var url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
 				}
+
+				$block.find( '.articleFeedbackv5-cta-button' )
+					.attr( 'href', url )
+					.click( function() {
+						$.articleFeedbackv5.trackClick( 'button_click' );
+					} );
 
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-cta-button' )
@@ -998,9 +1000,11 @@
 				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
 
 				// Fill in the link
-				var edit_track_id = $.articleFeedbackv5.ctaName() + '-button_click';
 				$block.find( '.articleFeedbackv5-cta-button' )
-					.attr( 'href', $.articleFeedbackv5.editUrl( edit_track_id ) )
+					.attr( 'href', $.articleFeedbackv5.editUrl() )
+					.click( function() {
+						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
+					} )
 					.button()
 					.addClass( 'ui-button-blue' );
 
@@ -1064,10 +1068,12 @@
 				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
 
 				// Fill in the button link
-				var learn_url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
-				var learn_track_id = $.articleFeedbackv5.ctaName() + '-button_click';
-				$block.find( '.articleFeedbackv5-cta-button' )
-					.attr( 'href', $.articleFeedbackv5.trackingUrl( learn_url, learn_track_id ) )
+				$block
+					.find( '.articleFeedbackv5-cta-button' )
+					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) )
+					.click( function() {
+						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
+					} )
 					.button()
 					.addClass( 'ui-button-blue' );
 
@@ -1157,12 +1163,12 @@
 				// Fill in the go-to-survey link
 				var survey_url = $.articleFeedbackv5.currentCTA().getSurveyUrl();
 				if ( survey_url ) {
-					var survey_track_id = $.articleFeedbackv5.ctaName() + '-button_click';
-					$block.find( '.articleFeedbackv5-cta-button' )
-						.attr( 'href', $.articleFeedbackv5.trackingUrl(
-							survey_url + '?c=' + $.articleFeedbackv5.feedbackId,
-							survey_track_id
-						) )
+					$block
+						.find( '.articleFeedbackv5-cta-button' )
+						.attr( 'href', survey_url + '?c=' + $.articleFeedbackv5.feedbackId )
+						.click( function() {
+							$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
+						} )
 						.button()
 						.addClass( 'ui-button-blue' );
 				}
@@ -1293,28 +1299,26 @@
 				var signup_url = mw.config.get( 'wgScript' ) + '?' + $.param( {
 					'title': 'Special:UserLogin',
 					'returnto': mw.config.get( 'wgPageName' ),
-					'type': 'signup'
+					'type': 'signup',
+					'campaign': 'aftv5_cta4',
+					'c': $.articleFeedbackv5.feedbackId
 				} );
-				var signup_track_id = $.articleFeedbackv5.ctaName() + '-button_signup_click';
 				$block.find( '.articleFeedbackv5-cta-button-signup' )
-					.attr( 'href', $.articleFeedbackv5.trackingUrl(
-					signup_url
-						+ '&campaign=aftv5_cta4'
-						+ '&c=' + $.articleFeedbackv5.feedbackId,
-					signup_track_id
-				) );
-
+					.attr( 'href', signup_url )
+					.click( function() {
+						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_signup_click' );
+					} );
 
 				var login_url = mw.config.get( 'wgScript' ) + '?' + $.param( {
 					'title': 'Special:UserLogin',
-					'returnto': mw.config.get( 'wgPageName' )
+					'returnto': mw.config.get( 'wgPageName' ),
+					'c': $.articleFeedbackv5.feedbackId
 				} );
-				var login_track_id = $.articleFeedbackv5.ctaName() + '-button_login_click';
 				$block.find( '.articleFeedbackv5-cta-button-login' )
-					.attr( 'href', $.articleFeedbackv5.trackingUrl(
-					login_url + '&c=' + $.articleFeedbackv5.feedbackId,
-					login_track_id
-				) );
+					.attr( 'href', login_url )
+					.click( function() {
+						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_login_click' );
+					} );
 
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.button()
@@ -1414,10 +1418,11 @@
 				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
 
 				// Fill in the link
-				var feedback_url = $.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId;
-				var feedback_track_id = $.articleFeedbackv5.ctaName() + '-button_click';
 				$block.find( '.articleFeedbackv5-cta-button' )
-					.attr( 'href', $.articleFeedbackv5.trackingUrl( feedback_url, feedback_track_id ) )
+					.attr( 'href', $.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId )
+					.click( function() {
+						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
+					} )
 					.button()
 					.addClass( 'ui-button-blue' );
 
@@ -1481,10 +1486,11 @@
 				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
 
 				// Fill in the link
-				var feedback_url = mw.msg( 'articlefeedbackv5-cta6-button-link' );
-				var feedback_track_id = $.articleFeedbackv5.ctaName() + '-button_click';
 				$block.find( '.articleFeedbackv5-cta-button' )
-					.attr( 'href', $.articleFeedbackv5.trackingUrl( feedback_url, feedback_track_id ) )
+					.attr( 'href', mw.msg( 'articlefeedbackv5-cta6-button-link' ) )
+					.click( function() {
+						$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
+					} )
 					.button()
 					.addClass( 'ui-button-blue' );
 
@@ -2024,16 +2030,14 @@
 				var title = $( '<div></div>' )
 					.html( $.articleFeedbackv5.templates.ctaTitleConfirm )
 					.localize( { 'prefix': 'articlefeedbackv5-' } );
-				var track_id = $.articleFeedbackv5.ctaName() + '-toolbar_click';
-				var link = $.articleFeedbackv5.trackingUrl(
-					mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' ),
-					track_id
-				);
 
 				var $linkView = $( '<li id="t-articlefeedbackv5-view"><a href="#"></a></li>' );
 				$linkView.find( 'a' )
 						.text( mw.msg( 'articlefeedbackv5-toolbox-view' ) )
-						.attr( 'href', link );
+						.attr( 'href', mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' ) )
+						.click( function() {
+							$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-toolbar_click' );
+						} );
 
 				return $linkAdd.add( $linkView );
 			},
@@ -2362,20 +2366,7 @@
 	 * @param trackingId string the tracking ID
 	 */
 	$.articleFeedbackv5.trackClick = function ( trackingId ) {
-		$.aftTrack.trackClick( $.articleFeedbackv5.experiment() + '-' + trackingId );
-	};
-
-	// }}}
-	// {{{ trackingUrl
-
-	/**
-	 * Creates a URL that tracks a particular click
-	 *
-	 * @param url        string the url so far
-	 * @param trackingId string the tracking ID
-	 */
-	$.articleFeedbackv5.trackingUrl = function ( url, trackingId ) {
-		return $.aftTrack.trackingUrl( url, $.articleFeedbackv5.experiment() + '-' + trackingId );
+		return $.aftTrack.trackClick( $.articleFeedbackv5.experiment() + '-' + trackingId );
 	};
 
 	// }}}
@@ -2386,27 +2377,20 @@
 	 *
 	 * @param trackingId string the tracking ID
 	 */
-	$.articleFeedbackv5.editUrl = function ( trackingId ) {
-
+	$.articleFeedbackv5.editUrl = function () {
 		var params = {
 			'title': mw.config.get( 'wgPageName' ),
 			'action': 'edit',
 			'articleFeedbackv5_click_tracking': $.aftTrack.clickTrackingOn ? '1' : '0'
 		};
 		if ( $.aftTrack.clickTrackingOn ) {
-			params.articleFeedbackv5_ct_token   = mw.user.id();
-			params.articleFeedbackv5_bucket_id  = $.articleFeedbackv5.bucketId;
-			params.articleFeedbackv5_cta_id     = $.articleFeedbackv5.ctaId;
-			params.articleFeedbackv5_link_id    = $.articleFeedbackv5.submittedLinkId;
-			params.articleFeedbackv5_f_link_id  = $.articleFeedbackv5.floatingLinkId;
-			params.articleFeedbackv5_experiment = $.articleFeedbackv5.experiment();
+			var event = $.articleFeedbackv5.experiment() + $.articleFeedbackv5.ctaName();
+
+			params.articleFeedbackv5_ct_cttoken   = $.cookie( 'clicktracking-session' );
+			params.articleFeedbackv5_ct_usertoken = mw.user.id();
+			params.articleFeedbackv5_ct_event     = $.aftTrack.prefix( event );
 		}
 		var url = mw.config.get( 'wgScript' ) + '?' + $.param( params );
-		if ( trackingId ) {
-			return $.articleFeedbackv5.trackingUrl( url, trackingId );
-		} else {
-			return url;
-		}
 	};
 
 	// }}}
@@ -2813,17 +2797,16 @@
 			var title = $( '<div></div>' )
 				.html( $.articleFeedbackv5.templates.ctaTitleConfirm )
 				.localize( { 'prefix': 'articlefeedbackv5-' } );
-			var track_id = $.articleFeedbackv5.ctaName() + '-permalink_click';
-			var link = $.articleFeedbackv5.trackingUrl(
-				$.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId,
-				track_id
-			);
 
-			title.find( '.articleFeedbackv5-confirmation-follow-up' ).msg( 'articlefeedbackv5-cta-confirmation-message', link );
-
-			title = title.html();
+			title
+				.find( '.articleFeedbackv5-confirmation-follow-up' ).msg( 'articlefeedbackv5-cta-confirmation-message', $.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId )
+				.find( 'a' ).click( function() {
+					$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-permalink_click' );
+				} );
 		}
-		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title' ).html( title );
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title' )
+			.empty()
+			.append( title );
 
 		// Set the tooltip link
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip-link' )
@@ -2967,7 +2950,10 @@
 						$.param( { title: 'Special:Preferences' } ) +
 						'#mw-prefsection-rendering';
 					$flyover.find( '.articleFeedbackv5-disable-flyover-button' )
-						.attr( 'href', $.articleFeedbackv5.trackingUrl( prefLink, 'disable_gotoprefs_click' ) )
+						.attr( 'href', prefLink )
+						.click( function() {
+							$.articleFeedbackv5.trackClick( 'disable_gotoprefs_click' );
+						} )
 						.button()
 						.addClass( 'ui-button-blue' );
 
