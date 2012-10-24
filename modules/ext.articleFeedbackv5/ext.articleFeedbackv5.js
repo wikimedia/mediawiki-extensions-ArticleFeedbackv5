@@ -20,8 +20,8 @@ $aftDiv.articleFeedbackv5();
 
 /* Add basic edit tracking, making use of $.aftTrack() already being set up */
 if ( $.aftTrack.clickTrackingOn ) {
-	var clickTrackingSession = mw.user.id();
 	var editEventBase = $.aftTrack.prefix( $aftDiv.articleFeedbackv5( 'experiment' ) );
+
 	$( 'span.editsection a, #ca-edit a, #ca-viewsource a' ).each( function() {
 		if ( $(this).is( '#ca-edit a' ) ) {
 			var event = 'edit_tab_link';
@@ -30,13 +30,20 @@ if ( $.aftTrack.clickTrackingOn ) {
 		} else {
 			var event = 'section_edit_link';
 		}
+
 		var href = $( this ).attr( 'href' );
 		var editUrl = href + ( href.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( {
 			'articleFeedbackv5_click_tracking': 1,
-			'articleFeedbackv5_ct_token': clickTrackingSession,
+			'articleFeedbackv5_ct_cttoken': $.cookie( 'clicktracking-session' ),
+			'articleFeedbackv5_ct_usertoken': mw.user.id(),
 			'articleFeedbackv5_ct_event': editEventBase + '-' + event
 		} );
-		$(this).attr( 'href', $.articleFeedbackv5.trackingUrl( editUrl, event + '-click' ) );
+
+		$(this)
+			.attr( 'href', editUrl )
+			.stall( 'click', function() {
+				return $.articleFeedbackv5.trackClick( event + '-click' );
+			} );
 	} );
 }
 
