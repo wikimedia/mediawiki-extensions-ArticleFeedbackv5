@@ -2382,7 +2382,7 @@
 			'articleFeedbackv5_click_tracking': $.aftTrack.clickTrackingOn ? '1' : '0'
 		};
 		if ( $.aftTrack.clickTrackingOn ) {
-			var event = $.articleFeedbackv5.experiment() + $.articleFeedbackv5.ctaName();
+			var event = $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName();
 
 			params.articleFeedbackv5_ct_cttoken   = $.cookie( 'clicktracking-session' );
 			params.articleFeedbackv5_ct_usertoken = mw.user.id();
