@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAABLX///9w\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-10-25T11:41:47Z",
+      "side": 1,
+      "message": "It\u0027s ok that it only returns the token for anons \u0026 username for logged-in :)",
+      "parentUuid": "AAABLH////g\u003d",
+      "revId": "36337498f6f4831afd3f5cdca452d6c2f97ca3d3",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAABLH////Q\u003d",
         "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2012-10-25T09:46:25Z",
       "side": 1,
       "message": "The problem with this as I understand it is if the trackClick() takes time, the user is stuck waiting for it to complete (or timeout) before anything happens.  That\u0027s why E3Experiments/experiments/openTask.js and other click-tracking we\u0027ve done uses         $( \u0027#Todo ul a\u0027 ).stall( \u0027click\u0027, function () {\n\nThis fires the API call to log the click, but if it takes more than 600 ms, the event goes ahead.\n\nOri-l is the master of this.",
+      "revId": "36337498f6f4831afd3f5cdca452d6c2f97ca3d3",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAABLn////4\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-10-25T11:41:47Z",
+      "side": 1,
+      "message": "Well, I didn\u0027t implement .stall() because I don\u0027t understand it (and still don\u0027t) :)\n\n* Clicktracking does an AJAX-call, which is asynchronous and, as a result, does not block anything. I\u0027ve also tested this by having the API endpoint PHP script sleep for 30 seconds, and the calling javascript just proceeds, even though the call takes a long time.\n\n* What the stall could be doing, is actually blocking any follow-up event (like moving on to the next page, in the event of having clicked a link), so that we\u0027re still able to fetch the result of the AJAX call. We don\u0027t need the result though.\n\n* Unless the Apaches kill off PHP processes (the API endpoint in this case) that have no parent expecting any output (because we\u0027ve moved on to another page already), in which case it does make sense to actually stall any natural event going forward.",
+      "parentUuid": "AAABLH////Q\u003d",
       "revId": "36337498f6f4831afd3f5cdca452d6c2f97ca3d3",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
