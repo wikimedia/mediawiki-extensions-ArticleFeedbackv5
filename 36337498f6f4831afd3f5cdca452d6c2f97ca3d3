@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAABLH////k\u003d",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2012-10-25T09:46:25Z",
+      "side": 1,
+      "message": "\"need fixed CTAs for now\".  Also \"CTAs\" on line above",
+      "revId": "36337498f6f4831afd3f5cdca452d6c2f97ca3d3",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAABLH////g\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2012-10-25T09:46:25Z",
+      "side": 1,
+      "message": "You\u0027re aware that mw.user.id() only returns a 32-char token if the user is anonymous (not logged in)?\nOtherwise it returns the mw.user.name() (it\u0027s a poorly-named function!).  If you want to consistently supply the token even for logged in user, you can either ask for the mediaWiki.user.id cookie, which E3 currently sets pretty aggressively (see E3Experiments/experiments/openTask.js) , or join E3  in getting and setting it.",
+      "revId": "36337498f6f4831afd3f5cdca452d6c2f97ca3d3",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAABLH////Q\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2012-10-25T09:46:25Z",
+      "side": 1,
+      "message": "The problem with this as I understand it is if the trackClick() takes time, the user is stuck waiting for it to complete (or timeout) before anything happens.  That\u0027s why E3Experiments/experiments/openTask.js and other click-tracking we\u0027ve done uses         $( \u0027#Todo ul a\u0027 ).stall( \u0027click\u0027, function () {\n\nThis fires the API call to log the click, but if it takes more than 600 ms, the event goes ahead.\n\nOri-l is the master of this.",
+      "revId": "36337498f6f4831afd3f5cdca452d6c2f97ca3d3",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAABLH////A\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2390,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2012-10-25T09:46:25Z",
+      "side": 1,
+      "message": "same caution I had about mw.user.id() elsewhere: if user is logged in, this returns \"mlitn\", not a 32-char random array.",
+      "revId": "36337498f6f4831afd3f5cdca452d6c2f97ca3d3",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
