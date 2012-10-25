@@ -444,9 +444,14 @@ foreach ( array( 'hide', 'unhide', 'flag', 'unflag', 'autoflag', 'autohide', 'fe
 	$wgLogActionsHandlers["articlefeedbackv5/$t"] = 'ArticleFeedbackv5LogFormatter';
 }
 
-// Add a custom filter group for AbuseFilter
 if ( $wgArticleFeedbackv5AbuseFilterGroup != 'default' ) {
+	// Add a custom filter group for AbuseFilter
 	$wgAbuseFilterValidGroups[] = $wgArticleFeedbackv5AbuseFilterGroup;
+
+	// set abusefilter emergency disable values for AFT feedback
+	$wgAbuseFilterEmergencyDisableThreshold[$wgArticleFeedbackv5AbuseFilterGroup] = 0.10;
+	$wgAbuseFilterEmergencyDisableCount[$wgArticleFeedbackv5AbuseFilterGroup] = 50;
+	$wgAbuseFilterEmergencyDisableAge[$wgArticleFeedbackv5AbuseFilterGroup] = 86400; // One day.
 }
 
 // Add custom action handlers for AbuseFilter
