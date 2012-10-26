@@ -42,6 +42,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-toolbox-add',
 			),
 			'dependencies' => array(
+				'ext.Experiments.lib',
 				'jquery.ui.button',
 				'jquery.articleFeedbackv5',
 				'jquery.cookie',
@@ -80,6 +81,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-talk-view-feedback',
 			),
 			'dependencies' => array(
+				'ext.Experiments.lib',
 				'jquery.articleFeedbackv5.verify',
 				'jquery.articleFeedbackv5.track',
 			),
@@ -91,6 +93,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-watchlist-view-feedback',
 			),
 			'dependencies' => array(
+				'ext.Experiments.lib',
 				'jquery.articleFeedbackv5.track',
 			),
 		),
@@ -191,6 +194,7 @@ class ArticleFeedbackv5Hooks {
 				'pipe-separator',
 			),
 			'dependencies' => array(
+				'ext.Experiments.lib',
 				'jquery.appear',
 				'jquery.tipsy',
 				'jquery.json',
