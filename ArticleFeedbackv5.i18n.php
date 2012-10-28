@@ -1831,7 +1831,7 @@ $messages['as'] = array(
 	'articlefeedbackv5-cta-thanks' => 'ধন্যবাদ!',
 	'articlefeedbackv5-cta1-learn-how' => 'সম্পাদনা কেনেকে কৰে শিকক',
 	'articlefeedbackv5-cta1-edit-linktext' => 'এই পৃষ্ঠা সম্পাদনা কৰক',
-	'articlefeedbackv5-cta2-confirmation-title' => 'ৱিকিপিডিয়াক বিকশিত হোৱাত সহায় কৰক',
+	'articlefeedbackv5-cta2-confirmation-title' => 'ৱিকিপিডিয়াক বিকশিত হোৱাত সহায় কৰক', # Fuzzy
 	'articlefeedbackv5-cta2-button-text' => 'আৰু পঢ়ক।',
 	'articlefeedbackv5-cta4-button-text-signup' => 'নতুন একাউণ্ট খোলক',
 	'articlefeedbackv5-cta4-button-text-login' => 'প্ৰৱেশ',
@@ -1840,7 +1840,7 @@ $messages['as'] = array(
 	'articlefeedbackv5-cta5-button-text' => 'সকলোবোৰ মন্তৱ্য চাওক',
 	'articlefeedbackv5-overlay-close' => 'বন্ধ কৰক',
 	'articlefeedbackv5-error-unknown' => 'অপৰিচিত ত্ৰুটি',
-	'articlefeedbackv5-contribs-entry-status' => 'স্থিতি: $1',
+	'articlefeedbackv5-contribs-entry-status' => 'স্থিতি: $1', # Fuzzy
 	'articlefeedbackv5-contribs-status-action-helpful' => 'সহায়ক',
 	'articlefeedbackv5-contribs-status-action-hide' => 'অদৃশ্য',
 	'articlefeedbackv5-form-tools-label' => 'সঁজুলিসমূহ:',
@@ -1875,7 +1875,7 @@ $messages['as'] = array(
 	'articlefeedbackv5-noteflyover-hide-help' => 'আৰু পঢ়ক।',
 	'articlefeedbackv5-noteflyover-show-label' => 'এটা টোকা যোগ কৰক',
 	'articlefeedbackv5-noteflyover-show-help' => 'আৰু পঢ়ক।',
-	'articlefeedbackv5-noteflyover-requestoversight-label' => 'এটা টোকা যোগ কৰক',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'এটা টোকা যোগ কৰক', # Fuzzy
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'হয়',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'নহয়',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'আৰু পঢ়ক।',
@@ -1894,17 +1894,9 @@ $messages['az'] = array(
 	'articlefeedbackv5-new-marker' => 'Yeni',
 	'articlefeedbackv5-hidden-marker' => 'Gizlədilib',
 	'articlefeedbackv5-whats-this' => 'Kömək',
-	'articleFeedbackv5-table-heading-page' => 'Səhifə',
 	'articlefeedbackv5-permalink-info-subtitle' => '(#$1)',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Bəli',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Xeyr',
-	'articlefeedbackv5-bucket2-problem-label' => 'Problem',
-	'articlefeedbackv5-bucket5-form-panel-explanation' => 'Bu nədir?',
-	'articlefeedbackv5-bucket5-report-panel-title' => 'Səhifənin qiyməti',
-	'articlefeedbackv5-bucket5-report-empty' => 'Qiymət yoxdur',
-	'articlefeedbackv5-bucket5-trustworthy-tooltip-4' => 'Yaxşı etibarlı mənbələr',
-	'articlefeedbackv5-bucket5-trustworthy-tooltip-5' => 'Əla etibarlı mənbələr',
-	'articlefeedbackv5-bucket5-complete-tooltip-1' => 'Məlumatın böyük hissəsi yoxdur',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'Bəli',
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'Xeyr',
 );
@@ -2601,50 +2593,8 @@ Skipailh {{SITENAME}}",
  */
 $messages['bs'] = array(
 	'articlefeedbackv5-error' => 'Desila se greška. Molimo pokušajte kasnije.',
-	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Današnji najviši i najniži',
-	'articleFeedbackv5-table-caption-dailyhighs' => 'Stranice sa najvišim ocjenama: $1',
-	'articleFeedbackv5-table-caption-dailylows' => 'Stranice sa najnižim ocjenama: $1',
-	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Najviše mijenjano ove sedmice',
-	'articleFeedbackv5-table-caption-recentlows' => 'Nedavne najniže ocjene',
-	'articleFeedbackv5-table-heading-page' => 'Stranica',
-	'articleFeedbackv5-table-heading-average' => 'Prosjek',
-	'articleFeedbackv5-copy-above-highlow-tables' => 'Ovo je probna osobina. Molimo da nam pošaljete povratne informacije na [$1 stranicu za razgovor].',
-	'articlefeedbackv5-dashboard-bottom' => "'''Napomena''': Mi ćemo nastaviti da probavamo sa raznim načinima prikaza članaka na ovim tablama.  Trenutno, table uključuju slijedeće članke:
-* Stranice sa najboljim/najslabijim ocjenama: članke koji imaju najmanje 10 ocjena u posljednja 24 sata.  Prosjeci su računati tako što su izračunati prosjeci svih poslanih ocjena u posljednja 24 sata.
-* Nedavne padovi: članci koji su dobili 70% ili manje (2 zvijezde ili niže) ocjene u bilo kojoj kategoriji u posljednja 24 sata. Samo članci koji su dobili najmanje 10 ocjena u posljednja 24 sata su ovdje uključeni.",
-	'articlefeedbackv5' => 'Tabla za ocjenjivanje članaka',
-	'articlefeedbackv5-desc' => 'Ocjenjivanje članaka (probna verzija)',
-	'articlefeedbackv5-bucket5-form-switch-label' => 'Ocijeni ovu stranicu',
-	'articlefeedbackv5-bucket5-form-panel-title' => 'Ocijeni ovu stranicu',
-	'articlefeedbackv5-bucket5-form-panel-explanation' => 'Šta je ovo?',
-	'articlefeedbackv5-bucket5-form-panel-explanation-link' => 'Project:OcjenjivanjeČlanaka',
-	'articlefeedbackv5-bucket5-form-panel-clear' => 'Ukloni ovu ocjenu',
-	'articlefeedbackv5-bucket5-form-panel-expertise' => 'Visoko sam obrazovan o ovoj temi (neobavezno)',
-	'articlefeedbackv5-bucket5-form-panel-expertise-studies' => 'Imam odgovarajući fakultetsku/univerzitetsku diplomu',
-	'articlefeedbackv5-bucket5-form-panel-expertise-profession' => 'Ovo je dio moje struke',
-	'articlefeedbackv5-bucket5-form-panel-expertise-hobby' => 'Ovo je moja duboka lična strast',
-	'articlefeedbackv5-bucket5-form-panel-expertise-other' => 'Izvor mog znanja nije prikazan ovdje',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'Želio bih pomoći da unaprijedim Wikipediju, pošalji mi e-mail (neobavezno)',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-note' => 'Poslat ćemo vam e-mail potvrde. Nećemo dijeliti vašu adresu ni s kim. $1',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy' => 'Politika privatnosti',
-	'articlefeedbackv5-bucket5-form-panel-submit' => 'Pošalji ocjene',
-	'articlefeedbackv5-bucket5-form-panel-pending' => 'Vaše ocjene još nisu poslane',
-	'articlefeedbackv5-bucket5-form-panel-success' => 'Uspješno sačuvano',
-	'articlefeedbackv5-bucket5-form-panel-expiry-title' => 'Vaše ocjene su istekle',
-	'articlefeedbackv5-bucket5-form-panel-expiry-message' => 'Molimo ponovo ocijenite ovu stranicu i pošaljite nove ocjene.',
-	'articlefeedbackv5-bucket5-report-switch-label' => 'Prikaži ocjene stranice',
-	'articlefeedbackv5-bucket5-report-panel-title' => 'Ocjene stranice',
-	'articlefeedbackv5-bucket5-report-panel-description' => 'Trenutni prosječni rejtinzi.',
-	'articlefeedbackv5-bucket5-report-empty' => 'Bez ocjena',
-	'articlefeedbackv5-bucket5-report-ratings' => '$1 ocjena',
-	'articlefeedbackv5-bucket5-trustworthy-label' => 'Vjerodostojno',
-	'articlefeedbackv5-bucket5-trustworthy-tip' => 'Da li smatrate da ova stranica ima dovoljno izvora i da su oni iz provjerljivih izvora?',
-	'articlefeedbackv5-bucket5-complete-label' => 'Završeno',
-	'articlefeedbackv5-bucket5-complete-tip' => 'Da li mislite da ova stranica pokriva osnovna područja teme koja bi trebala?',
-	'articlefeedbackv5-bucket5-objective-label' => 'Nepristrano',
-	'articlefeedbackv5-bucket5-objective-tip' => 'Da li smatrate da ova stranica prikazuje neutralni prikaz iz svih perspektiva o temi?',
-	'articlefeedbackv5-bucket5-wellwritten-label' => 'Dobro napisano',
-	'articlefeedbackv5-bucket5-wellwritten-tip' => 'Da li mislite da je ova stranica dobro organizirana i dobro napisana?',
+	'articlefeedbackv5' => 'Tabla za ocjenjivanje članaka', # Fuzzy
+	'articlefeedbackv5-desc' => 'Ocjenjivanje članaka (probna verzija)', # Fuzzy
 	'articlefeedbackv5-disable-preference' => 'Ne prikazuj dodatak Povratne informacije o članku na stranicama',
 	'articlefeedbackv5-emailcapture-response-body' => 'Zdravo!
 
@@ -3201,70 +3151,8 @@ tým {{grammar:2sg|{{SITENAME}}}}',
  */
 $messages['cy'] = array(
 	'articlefeedbackv5-error' => 'Cafwyd gwall. Ceisiwch eto nes ymlaen os gwelwch yn dda.',
-	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Uchafbwyntiau ac iselfannau heddiw',
-	'articleFeedbackv5-table-caption-dailyhighs' => "Tudalennau gyda'r sgôrau uchaf: $1",
-	'articleFeedbackv5-table-caption-dailylows' => "Tudalennau gyda'r sgôrau isaf: $1",
-	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Newidiadau mwyaf yr wythnos hon',
-	'articleFeedbackv5-table-caption-recentlows' => 'Iselfannau diweddar',
-	'articleFeedbackv5-table-heading-page' => 'Tudalen',
-	'articleFeedbackv5-table-heading-average' => 'Cyfartaledd',
-	'articleFeedbackv5-copy-above-highlow-tables' => 'Nodwedd arbrofol yw hon. Darparwch adborth ar [dudalen sgwrs $1] os gwelwch yn dda.',
-	'articlefeedbackv5-dashboard-bottom' => "'''Noder''': Byddwn yn parhau i arbrofi gyda ffyrdd gwahanol o gyflwyno erthyglau ar y dangosfyrddau hyn. Ar hyn o bryd, mae'r dangosfyrddau'n cynnwys yr erthyglau canlynol:
-* Tudalennau gyda'r sgôrau uchaf/isaf: erthyglau sydd wedi derbyn 10 sgôr o leiaf yn ystod y 24 awr diwethaf. Daw'r cyfartaleddau trwy gymryd y cymedr o'r holl sgôrau a gyflwynwyd yn ystod y 24 awr diwethaf.
-* Iselfannau diweddar: erthyglau a gafodd sgôrau o 70% neu'n is (2 seren neu'n is) mewn unrhyw gategori yn ystod y 24 awr diwethaf. Dim ond erthyglau a dderbyniodd 10 sgôr o leiaf yn ystod y 24 awr diwethaf sy'n cael eu cynnwys.",
-	'articlefeedbackv5' => 'Dangosfwrdd adborth erthygl',
+	'articlefeedbackv5' => 'Dangosfwrdd adborth erthygl', # Fuzzy
 	'articlefeedbackv5-desc' => 'Adborth am erthygl',
-	'articlefeedbackv5-bucket5-form-switch-label' => "Rhowch sgôr i'r dudalen hon.",
-	'articlefeedbackv5-bucket5-form-panel-title' => "Rhowch sgôr i'r dudalen hon.",
-	'articlefeedbackv5-bucket5-form-panel-explanation' => 'Beth yw hwn?',
-	'articlefeedbackv5-bucket5-form-panel-explanation-link' => 'Project:ArticleFeedback',
-	'articlefeedbackv5-bucket5-form-panel-clear' => 'Dilëer y sgôr hwn.',
-	'articlefeedbackv5-bucket5-form-panel-expertise' => 'Rwyf yn hynod wybodus am y pwnc hwn (dewisol).',
-	'articlefeedbackv5-bucket5-form-panel-expertise-studies' => 'Mae gennyf radd coleg/prifysgol perthnasol.',
-	'articlefeedbackv5-bucket5-form-panel-expertise-profession' => "Mae'n rhan o'm swyddogaeth",
-	'articlefeedbackv5-bucket5-form-panel-expertise-hobby' => "Mae'n ddiddordeb personol, dwfn.",
-	'articlefeedbackv5-bucket5-form-panel-expertise-other' => 'Ni rhestrir ffynhonnell fy ngwybodaeth yn y fan hon',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'Hoffwn gynorthwyo i wella Wicipedia, danfonwch e-bost ataf (dewisol)',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-note' => "Byddwn yn danfon e-bost atoch i gadarnhau. Ni fyddwn yn rhannu'ch cyfeiriad e-bost gydag unrhyw un. $1",
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy' => 'Polisi preifatrwydd',
-	'articlefeedbackv5-bucket5-form-panel-submit' => 'Cyflwyno sgôr',
-	'articlefeedbackv5-bucket5-form-panel-pending' => "Nid yw'ch sgôr wedi cael ei gyflwyno eto",
-	'articlefeedbackv5-bucket5-form-panel-success' => 'Cadwyd yn llwyddiannus',
-	'articlefeedbackv5-bucket5-form-panel-expiry-title' => "Mae'ch sgôr wedi dirwyn i ben",
-	'articlefeedbackv5-bucket5-form-panel-expiry-message' => 'Ail-werthuswch y dudalen hon a chyflwynwch sgôr newydd os gwelwch yn dda',
-	'articlefeedbackv5-bucket5-report-switch-label' => "Gweld sgôrau'r dudalen",
-	'articlefeedbackv5-bucket5-report-panel-title' => "Sgôrau'r dudalen",
-	'articlefeedbackv5-bucket5-report-panel-description' => 'Sgôrau cyfartalog ar hyn o bryd',
-	'articlefeedbackv5-bucket5-report-empty' => 'Dim sgôr',
-	'articlefeedbackv5-bucket5-report-ratings' => '$1 sgôr',
-	'articlefeedbackv5-bucket5-trustworthy-label' => 'Dibynadwy',
-	'articlefeedbackv5-bucket5-trustworthy-tip' => "Ydych chi'n credu fod gan y dudalen hon ddigon o gyfeiriadau a bod y cyfeiriadau hynny'n dod o ffynonnellau dibynadwy?",
-	'articlefeedbackv5-bucket5-trustworthy-tooltip-1' => 'Heb ddigon o ffynonnellau dibynadwy',
-	'articlefeedbackv5-bucket5-trustworthy-tooltip-2' => 'Ambell ffynhonnell ddibynadwy',
-	'articlefeedbackv5-bucket5-trustworthy-tooltip-3' => 'Ffynonnellau dibynadwy digonol',
-	'articlefeedbackv5-bucket5-trustworthy-tooltip-4' => 'Ffynonnellau dibynadwy da',
-	'articlefeedbackv5-bucket5-trustworthy-tooltip-5' => 'Ffynonnellau dibynadwy rhagorol',
-	'articlefeedbackv5-bucket5-complete-label' => 'Cyflawn',
-	'articlefeedbackv5-bucket5-complete-tip' => "Ydych chi'n teimlo fod y dudalen hon yn ymdrin â'r meysydd pynciol allweddol a ddylai fod yno?",
-	'articlefeedbackv5-bucket5-complete-tooltip-1' => "Gyda'r mwyaf o wybodaeth coll",
-	'articlefeedbackv5-bucket5-complete-tooltip-2' => 'Yn cynnwys peth gwybodaeth',
-	'articlefeedbackv5-bucket5-complete-tooltip-3' => 'Yn cynnwys y prif wybodaeth, ond gyda bylchau',
-	'articlefeedbackv5-bucket5-complete-tooltip-4' => "Yn cynnwys y rhan fwyaf o'r prif wybodaeth",
-	'articlefeedbackv5-bucket5-complete-tooltip-5' => 'Ymdriniaeth gynhwysfawr',
-	'articlefeedbackv5-bucket5-objective-label' => 'Gwrthrychol',
-	'articlefeedbackv5-bucket5-objective-tip' => "Ydych chi'n teimlo fod y dudalen yn ddarlun teg o'r holl safbwyntiau am y pwnc?",
-	'articlefeedbackv5-bucket5-objective-tooltip-1' => 'Yn llawn tuedd',
-	'articlefeedbackv5-bucket5-objective-tooltip-2' => 'Peth tuedd',
-	'articlefeedbackv5-bucket5-objective-tooltip-3' => 'Ychydig bach o duedd',
-	'articlefeedbackv5-bucket5-objective-tooltip-4' => 'Dim tuedd amlwg',
-	'articlefeedbackv5-bucket5-objective-tooltip-5' => 'Yn gwbl ddi-duedd',
-	'articlefeedbackv5-bucket5-wellwritten-label' => "Wedi'i ysgrifennu'n dda",
-	'articlefeedbackv5-bucket5-wellwritten-tip' => "Ydych chi'n teimlo fod y dudalen hon wedi'i threfnu a'i hysgrifennu'n llwyddiannus?",
-	'articlefeedbackv5-bucket5-wellwritten-tooltip-1' => 'Annealladwy',
-	'articlefeedbackv5-bucket5-wellwritten-tooltip-2' => "Anodd i'w deall",
-	'articlefeedbackv5-bucket5-wellwritten-tooltip-3' => 'Eglurder boddhaol',
-	'articlefeedbackv5-bucket5-wellwritten-tooltip-4' => 'Eglurder da',
-	'articlefeedbackv5-bucket5-wellwritten-tooltip-5' => 'Hynod eglur',
 	'articlefeedbackv5-disable-preference' => 'Peidiwch dangos y teclyn adborth erthygl ar dudalennau.',
 	'articlefeedbackv5-emailcapture-response-body' => "Helo!
 Diolch am ddangos eich diddordeb i wella {{SITENAME}}.
@@ -5752,21 +5640,14 @@ $messages['eu'] = array(
 	'articlefeedbackv5-form-tools-label' => 'Tresnak',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Bai',
 	'articlefeedbackv5-form-helpful-no-label' => 'Ez',
-	'articlefeedbackv5-special-filter-notdeleted' => 'Denak ($1)',
+	'articlefeedbackv5-special-filter-notdeleted' => 'Denak ($1)', # Fuzzy
 	'articlefeedbackv5-special-sort-age-desc' => 'berrienak',
 	'articlefeedbackv5-special-sort-age-asc' => 'zaharrenak',
 	'articleFeedbackv5-details-link' => 'Xehetasunak',
-	'articlefeedbackv5-special-more' => 'Gehiago',
+	'articlefeedbackv5-special-more' => 'Gehiago', # Fuzzy
 	'articlefeedbackv5-new-marker' => 'Berria',
 	'articlefeedbackv5-discussion-page' => 'Eztabaida',
 	'articlefeedbackv5-whats-this' => 'Laguntza',
-	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Gaurko goi eta beheak',
-	'articleFeedbackv5-table-caption-dailyhighs' => 'Baloraziorik altuena duten orrialdeak: $1',
-	'articleFeedbackv5-table-caption-dailylows' => 'Balorazio eskasena duten orrialdeak: $1',
-	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Aste honetan gehien aldatu direnak',
-	'articleFeedbackv5-table-caption-recentlows' => 'Balorazio eskasa izan duten azkenak',
-	'articleFeedbackv5-table-heading-page' => 'Orrialdea',
-	'articleFeedbackv5-table-heading-average' => 'Bataz bestekoa',
 	'articlefeedbackv5' => 'Artikuluaren feedbacka - Orrialde nagusia',
 	'articlefeedbackv5-desc' => 'Artikuluaren feedbacka',
 	'articlefeedbackv5-comment-more' => 'Gehiago',
@@ -5788,37 +5669,8 @@ $messages['eu'] = array(
 	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Gehiago ikasi',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Bai',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Ez',
-	'articlefeedbackv5-bucket2-suggestion-label' => 'Iradokizunak',
-	'articlefeedbackv5-bucket2-question-label' => 'Galdera',
-	'articlefeedbackv5-bucket3-rating-tooltip-3' => 'Bataz bestekoa',
 	'articlefeedbackv5-bucket4-form-submit' => 'Orrialde hau aldatu',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Gehiago ikasi',
-	'articlefeedbackv5-bucket5-form-switch-label' => 'Kalifikatu orri hau',
-	'articlefeedbackv5-bucket5-form-panel-title' => 'Kalifikatu orri hau',
-	'articlefeedbackv5-bucket5-form-panel-explanation' => 'Zer da hau?',
-	'articlefeedbackv5-bucket5-form-panel-clear' => 'Balorazio hau ezabatu',
-	'articlefeedbackv5-bucket5-form-panel-expertise' => 'Gai honen inguruko ezagutza handia dut (aukerazkoa)',
-	'articlefeedbackv5-bucket5-form-panel-expertise-studies' => 'Unibertsitateko titulazio bat dut gai honetan',
-	'articlefeedbackv5-bucket5-form-panel-expertise-profession' => 'Nire ogibidearen parte da',
-	'articlefeedbackv5-bucket5-form-panel-expertise-hobby' => 'Oso gogoko dudan gai bat da',
-	'articlefeedbackv5-bucket5-form-panel-expertise-other' => 'Nire ezagutzaren jatorria ez da goiko aukeren artean agertzen',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove' => '{{SITENAME}} hobetzen lagundu nahi dut, bidalidazue e-posta bat (aukerazkoa)',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-note' => 'E-posta bat bidaliko dizugu konfirmaziorako. Ez diogu zure helbidea beste inori bidaliko. $1',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy' => 'Pribazitate arauak',
-	'articlefeedbackv5-bucket5-form-panel-submit' => 'Bidali balorazioa',
-	'articlefeedbackv5-bucket5-form-panel-pending' => 'Zure balorazioak ez dira oraindik bidali',
-	'articlefeedbackv5-bucket5-form-panel-success' => 'Ondo gorde da',
-	'articlefeedbackv5-bucket5-form-panel-expiry-title' => 'Zure balorazioak iraungi du',
-	'articlefeedbackv5-bucket5-form-panel-expiry-message' => 'Mesedez, berriro ebaluatu orrialde hau eta bidali zure balorazio berria.',
-	'articlefeedbackv5-bucket5-report-switch-label' => 'Ikus orriaren balorazioak',
-	'articlefeedbackv5-bucket5-report-panel-title' => 'Orrialdearen balorazioak',
-	'articlefeedbackv5-bucket5-report-panel-description' => 'Oraingo bataz besteko balorazioa.',
-	'articlefeedbackv5-bucket5-report-empty' => 'Ez dago baloraziorik',
-	'articlefeedbackv5-bucket5-report-ratings' => '$1 balorazio',
-	'articlefeedbackv5-bucket5-trustworthy-label' => 'Sinisgarria',
-	'articlefeedbackv5-bucket5-complete-label' => 'Osorik',
-	'articlefeedbackv5-bucket5-objective-label' => 'Helburua',
-	'articlefeedbackv5-bucket5-wellwritten-label' => 'Ondo idatzia',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'Bai',
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'Ez',
 	'articlefeedbackv5-help-tooltip-title' => 'Zer da hau?',
@@ -6518,6 +6370,7 @@ Kiitos! Terveisin
  * @author Trizek
  * @author Urhixidur
  * @author Verdy p
+ * @author Wikifan
  */
 $messages['fr'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Merci !',
@@ -6797,6 +6650,13 @@ $messages['fr'] = array(
 	'articlefeedbackv5-noteflyover-show-submit' => 'Ne plus cacher cette note',
 	'articlefeedbackv5-noteflyover-show-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Demander une surveillance',
+	'articlefeedbackv5-noteflyover-requestoversight-description' => "Avant de demander la masqueur, s'il vous plaît vérifier que ce poste
+comprend l'une de ces questions:
+*Numéros de téléphone
+* Adresses e-mail
+* Liens Web pornographiques
+* Commentaires diffamatoires sur une personne
+* [http://fr.wikipedia.org/wiki/Wikipedia:Masqueur_de_modifications#Masqueur de modifications]",
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Ajouter une note', # Fuzzy
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Pourquoi demandez-vous une surveillance ?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Demander une surveillance',
@@ -7160,7 +7020,6 @@ $messages['ga'] = array(
 	'articlefeedbackv5-form-helpful-no-label' => 'Ní',
 	'articlefeedbackv5-loading-tag' => 'Ag Lódáil....',
 	'articlefeedbackv5-discussion-page' => 'Plé',
-	'articleFeedbackv5-table-heading-page' => 'Leathanach',
 	'articlefeedbackv5-comment-more' => 'Níos mó',
 	'articlefeedbackv5-comment-less' => 'Níos lú',
 	'articlefeedbackv5-permalink-info-subtitle' => '(#$1)',
@@ -7942,7 +7801,7 @@ $messages['gu'] = array(
 	'articlefeedbackv5-error-email' => 'ઇ-મેલ સરનામું યોગ્ય નથી.',
 	'articlefeedbackv5-error-validation' => 'યોગ્યતા ક્ષતિ.',
 	'articlefeedbackv5-error-unknown' => 'અજાણી ક્ષતિ.',
-	'articlefeedbackv5-contribs-entry-status' => 'સ્થિતિ: $1',
+	'articlefeedbackv5-contribs-entry-status' => 'સ્થિતિ: $1', # Fuzzy
 	'articlefeedbackv5-contribs-status-action-helpful' => 'મદદકર્તા',
 	'articlefeedbackv5-contribs-status-action-hide' => 'છુપાયેલ',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'છુપાયેલ ટીપ્પણી',
@@ -7986,7 +7845,7 @@ $messages['gu'] = array(
 	'articlefeedbackv5-noteflyover-hide-help' => 'વધુ જાણો',
 	'articlefeedbackv5-noteflyover-show-label' => 'નોંધ ઉમેરો',
 	'articlefeedbackv5-noteflyover-show-help' => 'વધુ જાણો',
-	'articlefeedbackv5-noteflyover-requestoversight-label' => 'નોંધ ઉમેરો',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'નોંધ ઉમેરો', # Fuzzy
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'વધુ જાણો',
 	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'નોંધ ઉમેરો',
 	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'વધુ જાણો',
@@ -8523,34 +8382,8 @@ $messages['hif-latn'] = array(
 $messages['hr'] = array(
 	'articlefeedbackv5-error' => 'Došlo je do pogrješke.
 Molimo, pokušajte ponovno kasnije.',
-	'articlefeedbackv5' => 'Ocjenjivanje članaka',
-	'articlefeedbackv5-desc' => 'Ocjenjivanje članaka (probna inačica)',
-	'articlefeedbackv5-bucket5-form-switch-label' => 'Ocijeni ovu stranicu',
-	'articlefeedbackv5-bucket5-form-panel-title' => 'Ocijeni ovu stranicu',
-	'articlefeedbackv5-bucket5-form-panel-clear' => 'Ukloni ovu ocijenu',
-	'articlefeedbackv5-bucket5-form-panel-expertise' => 'Visoko sam obrazovan o ovoj temi',
-	'articlefeedbackv5-bucket5-form-panel-expertise-studies' => 'Imam odgovarajući fakultetski/sveučilišni stupanj',
-	'articlefeedbackv5-bucket5-form-panel-expertise-profession' => 'To je dio moje struke',
-	'articlefeedbackv5-bucket5-form-panel-expertise-hobby' => 'To je duboka osobna strast',
-	'articlefeedbackv5-bucket5-form-panel-expertise-other' => 'Izvor moga znanja nije na ovom popisu',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy' => 'Zaštita privatnosti',
-	'articlefeedbackv5-bucket5-form-panel-submit' => 'Pošaljite povratnu informaciju',
-	'articlefeedbackv5-bucket5-form-panel-success' => 'Uspješno spremljeno',
-	'articlefeedbackv5-bucket5-form-panel-expiry-title' => 'Vaše su ocjene istekle',
-	'articlefeedbackv5-bucket5-form-panel-expiry-message' => 'Molimo ponovno ocijenite ovu stranicu te pošaljite nove ocjene.',
-	'articlefeedbackv5-bucket5-report-switch-label' => 'Prikaži ocjene ove stranice',
-	'articlefeedbackv5-bucket5-report-panel-title' => 'Ocjene stranice',
-	'articlefeedbackv5-bucket5-report-panel-description' => 'Trenutačni prosjek ocjena.',
-	'articlefeedbackv5-bucket5-report-empty' => 'Nema ocjena',
-	'articlefeedbackv5-bucket5-report-ratings' => '$1 ocjena',
-	'articlefeedbackv5-bucket5-trustworthy-label' => 'Vjerodostojno',
-	'articlefeedbackv5-bucket5-trustworthy-tip' => 'Smatrate li da ova stranica ima dovoljno izvora i da su oni iz vjerodostojnih izvora?',
-	'articlefeedbackv5-bucket5-complete-label' => 'Zaokružena cjelina teme',
-	'articlefeedbackv5-bucket5-complete-tip' => 'Mislite li da ova stranica pokriva osnovna područja teme koja bi trebala?',
-	'articlefeedbackv5-bucket5-objective-label' => 'Nepristrano',
-	'articlefeedbackv5-bucket5-objective-tip' => 'Da li smatrate da ova stranica prikazuje neutralni prikaz iz svih perspektiva o temi?',
-	'articlefeedbackv5-bucket5-wellwritten-label' => 'Dobro napisano',
-	'articlefeedbackv5-bucket5-wellwritten-tip' => 'Mislite li da je ova stranica dobro organizirana i dobro napisana?',
+	'articlefeedbackv5' => 'Ocjenjivanje članaka', # Fuzzy
+	'articlefeedbackv5-desc' => 'Ocjenjivanje članaka (probna inačica)', # Fuzzy
 );
 
 /** Upper Sorbian (hornjoserbsce)
@@ -11404,7 +11237,7 @@ $messages['ka'] = array(
 	'articlefeedbackv5-error-unknown' => 'უცნობი შეცდომა.',
 	'articlefeedbackv5-error-nofeedback' => 'გთხოვთ, დატოვოთ თქვენი გამოხმაურება.',
 	'articlefeedbackv5-protection-level' => 'სტატიის შეფასება',
-	'articlefeedbackv5-contribs-entry-status' => 'სტატუსი: $1',
+	'articlefeedbackv5-contribs-entry-status' => 'სტატუსი: $1', # Fuzzy
 	'articlefeedbackv5-contribs-status-action-helpful' => 'სასარგებლო',
 	'articlefeedbackv5-contribs-status-action-flag' => 'მონიშნული',
 	'articlefeedbackv5-contribs-status-action-feature' => 'რჩეული',
@@ -11549,7 +11382,7 @@ $messages['ka'] = array(
 	'articlefeedbackv5-noteflyover-show-placeholder' => 'რატომ გამოაჩინეთ ეს გამოხმაურება?',
 	'articlefeedbackv5-noteflyover-show-submit' => 'ამ გამოხმაურების ჩვენება',
 	'articlefeedbackv5-noteflyover-show-help' => 'გაიგეთ მეტი',
-	'articlefeedbackv5-noteflyover-requestoversight-label' => 'შენიშვნის დამატება',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'შენიშვნის დამატება', # Fuzzy
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'გაიგეთ მეტი',
 	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'შენიშვნის დამატება',
 	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'მოთხოვნის გაუქმება',
@@ -12085,7 +11918,7 @@ $messages['ksh'] = array(
 	'articlefeedbackv5-cta1-learn-how' => 'Wie mer jät beärbeit',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Heh di Sigg ändere',
 	'articlefeedbackv5-cta2-button-text' => 'Fengk mieh erus.',
-	'articlefeedbackv5-cta3-confirmation-call' => 'Et bruch bloos_en Menutt un hellef, de Wikipeedija bäßer ze maache.',
+	'articlefeedbackv5-cta3-confirmation-call' => 'Et bruch bloos_en Menutt un hellef, de Wikipeedija bäßer ze maache.', # Fuzzy
 	'articlefeedbackv5-cta4-button-text-signup' => 'Ene neue Metmaacher aanmelde',
 	'articlefeedbackv5-cta4-button-text-login' => 'Enlogge',
 	'articlefeedbackv5-cta4-button-text-later' => 'Shpääder velleish',
@@ -12097,7 +11930,7 @@ Versöhg et shpääder norr_ens.',
 	'articlefeedbackv5-error-email' => 'Di Adräß för de <i lang="en">e-mail</i> es nit jöltesch.',
 	'articlefeedbackv5-error-unknown' => 'Ene Fähler, dä mer nit kenne.',
 	'articlefeedbackv5-error-nofeedback' => 'Bes_esu jood_un jif Ding Räckmäldong en.',
-	'articlefeedbackv5-contribs-entry-status' => 'Der Zohschtand es: $1',
+	'articlefeedbackv5-contribs-entry-status' => 'Der Zohschtand es: $1', # Fuzzy
 	'articlefeedbackv5-contribs-status-action-feature' => 'Äxzälänt',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Jedonn',
 	'articlefeedbackv5-contribs-status-action-hide' => 'Verschtoche',
@@ -12123,7 +11956,7 @@ Versöhg et shpääder norr_ens.',
 	'articlefeedbackv5-form-anon-message' => 'Namelos vum $1 derbeijedonn.',
 	'articlefeedbackv5-discussion-page' => 'Klaaf',
 	'articlefeedbackv5-whats-this' => 'Hölp',
-	'articlefeedbackv5' => 'Enschäzonge för Sigge — Övverbleck',
+	'articlefeedbackv5' => 'Enschäzonge för Sigge — Övverbleck', # Fuzzy
 	'articlefeedbackv5-desc' => 'Enschäzonge för Sigge',
 	'articlefeedbackv5-comment-more' => 'Mieh',
 	'articlefeedbackv5-comment-less' => 'Winnijer',
@@ -12149,7 +11982,7 @@ Versöhg et shpääder norr_ens.',
 	'articlefeedbackv5-noteflyover-show-label' => 'Donn en Aanmärkong derbei',
 	'articlefeedbackv5-noteflyover-show-submit' => 'Donn heh di Röckmäldong wider aanzeije',
 	'articlefeedbackv5-noteflyover-show-help' => 'Fengk mieh erus.',
-	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Donn en Aanmärkong derbei',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Donn en Aanmärkong derbei', # Fuzzy
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Fengk mieh erus.',
 	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'Donn en Aanmärkong derbei',
 	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Fengk mieh erus.',
@@ -12166,7 +11999,7 @@ Versöhg et shpääder norr_ens.',
 	'articlefeedbackv5-bucket1-form-submit' => 'Donn Ding Röckmäldong derbei',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Wie mer jät beärbeit',
 	'articlefeedbackv5-bucket4-form-submit' => 'Donn heh di Sigg ändere',
-	'articlefeedbackv5-bucket4-noedit-title' => 'De Wikkipeedija bäßer maache',
+	'articlefeedbackv5-bucket4-noedit-title' => 'De Wikkipeedija bäßer maache', # Fuzzy
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Fengk mieh erus.',
 	'articlefeedbackv5-bucket6-title' => 'Hellef met, di Sigg bäßer ze maache',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'Joh',
@@ -12204,7 +12037,7 @@ De Jemeinschaff vun {{GRAMMAR:Nominativ|{{SITENAME}}}}',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Enschtällonge',
 );
 
-/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+/** Kurdish (Latin script) (Kurdî (latînî)‎)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -12214,12 +12047,7 @@ $messages['ku-latn'] = array(
 	'articlefeedbackv5-form-helpful-yes-label' => 'Erê',
 	'articlefeedbackv5-form-helpful-no-label' => 'Na',
 	'articlefeedbackv5-whats-this' => 'Alîkarî',
-	'articleFeedbackv5-table-heading-page' => 'Rûpel',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Na',
-	'articlefeedbackv5-bucket2-question-label' => 'Pirs',
-	'articlefeedbackv5-bucket2-problem-label' => 'Pirsgirêk',
-	'articlefeedbackv5-bucket5-form-panel-explanation' => 'Ev çi ye?',
-	'articlefeedbackv5-bucket5-report-switch-label' => 'Encaman nîşan bide',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'Erê',
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'Na',
 );
@@ -15292,14 +15120,14 @@ $4',
 	'articlefeedbackv5-abusefilter-note-aftv5requestoversight' => 'Toezichtaanvraag is automatisch gemaakt. Regel: $1',
 );
 
-/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+/** Nederlands (informeel)‎ (Nederlands (informeel)‎)
  * @author Siebrand
  */
 $messages['nl-informal'] = array(
 	'articlefeedbackv5-bucket6-question-toggle' => 'Heb je gevonden wat je zocht?',
-	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Bedankt. Heb je nog opmerkingen?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Waar zocht je naar?',
-	'articlefeedbackv5-help-tooltip-info' => 'Wikipedia wil graag weten wat je vindt van deze pagina. Deel je terugkoppeling met de redacteuren en help deze pagina te verbeteren.',
+	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Bedankt. Heb je nog opmerkingen?', # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Waar zocht je naar?', # Fuzzy
+	'articlefeedbackv5-help-tooltip-info' => 'Wikipedia wil graag weten wat je vindt van deze pagina. Deel je terugkoppeling met de redacteuren en help deze pagina te verbeteren.', # Fuzzy
 	'articlefeedbackv5-help-transparency-terms' => 'Geef alsjeblieft [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines nuttige terugkoppeling]. Door op te slaan ga je akkoord met transparantie onder deze [//wikimediafoundation.org/wiki/Feedback_privacy_statement/nl voorwaarden].',
 	'articlefeedbackv5-toolbox-add' => 'Geef ons je terugkoppeling',
 	'articlefeedbackv5-emailcapture-response-body' => 'Hallo!
@@ -15353,13 +15181,13 @@ $messages['nn'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Takk!',
 	'articlefeedbackv5-cta-confirmation-message' => 'Du kan sjå innlegget ditt på denne [$1 attendemeldingssida].',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Visste du at du kan endra sida?',
-	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia verkar av di kven som helst kan endra alle sidene. Sett i gang og freista sjølv. Ver djerv!',
+	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia verkar av di kven som helst kan endra alle sidene. Sett i gang og freista sjølv. Ver djerv!', # Fuzzy
 	'articlefeedbackv5-cta1-learn-how' => 'Lær å endra',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Endra sida',
-	'articlefeedbackv5-cta2-confirmation-title' => 'Hjelp til med å betra Wikipedia',
+	'articlefeedbackv5-cta2-confirmation-title' => 'Hjelp til med å betra Wikipedia', # Fuzzy
 	'articlefeedbackv5-cta2-confirmation-call' => 'Nettstaden er laga av folk som deg. Kan du gjeva oss ei hand?',
 	'articlefeedbackv5-cta2-button-text' => 'Lær meir',
-	'articlefeedbackv5-cta3-confirmation-call' => 'Det tek berre eit minutt og vil hjelpa til med å betra Wikipedia.',
+	'articlefeedbackv5-cta3-confirmation-call' => 'Det tek berre eit minutt og vil hjelpa til med å betra Wikipedia.', # Fuzzy
 	'articlefeedbackv5-cta3-button-text' => 'Byrja undersøkinga',
 	'articlefeedbackv5-cta4-confirmation-title' => 'Vert med i fellesskapen',
 	'articlefeedbackv5-cta4-button-text-signup' => 'Oppretta ein konto',
@@ -15370,7 +15198,7 @@ $messages['nn'] = array(
 	'articlefeedbackv5-cta5-button-text' => 'Sjå alle kommentarane',
 	'articlefeedbackv5-overlay-close' => 'Lat att',
 	'articlefeedbackv5-error-unknown' => 'Ukjend feil.',
-	'articlefeedbackv5-contribs-entry-status' => 'Stode: $1',
+	'articlefeedbackv5-contribs-entry-status' => 'Stode: $1', # Fuzzy
 	'articlefeedbackv5-form-tools-label' => 'Verktøy',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Ja',
 	'articlefeedbackv5-form-helpful-no-label' => 'Nei',
@@ -15530,11 +15358,9 @@ $messages['pfl'] = array(
 	'articlefeedbackv5-discussion-page' => 'Dischbediere',
 	'articlefeedbackv5-whats-this' => 'Hilf',
 	'articlefeedbackv5-percent-found' => '$1 hawen gfune, wasse gsuchd hawen',
-	'articleFeedbackv5-table-heading-page' => 'Said',
 	'articlefeedbackv5-comment-less' => 'Wenischa',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Ja',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Nä',
-	'articlefeedbackv5-bucket2-question-label' => 'Frooch',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Audomadisch vaschdegld. Reschl: $1',
 );
 
@@ -16413,10 +16239,10 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Obrigado!',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Sabia que podes editar esta página?',
-	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipédia funciona porque qualquer um pode editar suas páginas. Vá em frente, experimente. Seja ousado!',
+	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipédia funciona porque qualquer um pode editar suas páginas. Vá em frente, experimente. Seja ousado!', # Fuzzy
 	'articlefeedbackv5-cta1-learn-how' => 'Aprenda a editar',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Editar esta página.',
-	'articlefeedbackv5-cta2-confirmation-title' => 'Ajude a melhorar a Wikipédia',
+	'articlefeedbackv5-cta2-confirmation-title' => 'Ajude a melhorar a Wikipédia', # Fuzzy
 	'articlefeedbackv5-cta2-button-text' => 'Saiba mais',
 	'articlefeedbackv5-cta3-confirmation-title' => 'Responda um inquérito rápido, por favor',
 	'articlefeedbackv5-cta3-button-text' => 'Começar o inquérito',
@@ -16431,23 +16257,23 @@ $messages['pt'] = array(
 	'articlefeedbackv5-error-email' => 'Esse endereço de correio electrónico não é válido.',
 	'articlefeedbackv5-error-blocked' => 'Os utilizadores bloqueados não podem enviar comentários.',
 	'articlefeedbackv5-error-validation' => 'Erro de validação.',
-	'articlefeedbackv5-error-abuse' => 'O seu comentário foi rejeitado por um filtro do software que sugere que ele viola a $1 da Wikipédia. Por favor, reveja o seu comentário e tente novamente.',
+	'articlefeedbackv5-error-abuse' => 'O seu comentário foi rejeitado por um filtro do software que sugere que ele viola a $1 da Wikipédia. Por favor, reveja o seu comentário e tente novamente.', # Fuzzy
 	'articlefeedbackv5-error-unknown' => 'Erro desconhecido.',
 	'articlefeedbackv5-error-submit' => 'Erro no envio do formulário.',
-	'articlefeedbackv5-contribs-entry-status' => 'Estado: $1',
+	'articlefeedbackv5-contribs-entry-status' => 'Estado: $1', # Fuzzy
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Útil',
-	'articlefeedbackv5-contribs-status-action-flagged' => 'Sinalizado',
-	'articlefeedbackv5-contribs-status-action-featured' => 'Destacado',
-	'articlefeedbackv5-contribs-status-action-resolved' => 'Resolvido',
-	'articlefeedbackv5-contribs-status-action-hidden' => 'Oculto',
+	'articlefeedbackv5-contribs-status-action-flag' => 'Sinalizado',
+	'articlefeedbackv5-contribs-status-action-feature' => 'Destacado',
+	'articlefeedbackv5-contribs-status-action-resolve' => 'Resolvido',
+	'articlefeedbackv5-contribs-status-action-hide' => 'Oculto',
 	'articlefeedbackv5-form-tools-label' => 'Ferramentas',
 	'articlefeedbackv5-form-helpful-label' => 'Este comentário é útil?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Sim',
 	'articlefeedbackv5-form-helpful-no-label' => 'Não',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 sim|$1 sins}} / {{PLURAL:$2|1 não|$2 nãos}}',
+	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 sim|$1 sins}} / {{PLURAL:$2|1 não|$2 nãos}}', # Fuzzy
 	'articlefeedbackv5-special-add-feedback' => 'Enviar seu comentário',
 	'articlefeedbackv5-special-filter-notdeleted' => 'Todos (ocultos)  ($1)',
-	'articlefeedbackv5-special-filter-comment' => 'Apenas comentários ($1)',
+	'articlefeedbackv5-special-filter-comment' => 'Apenas comentários ($1)', # Fuzzy
 	'articlefeedbackv5-special-filter-abusive' => 'Marcado como abusivo ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Útil ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Inútil ($1)',
@@ -16461,8 +16287,8 @@ $messages['pt'] = array(
 	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} avaliou esta página $2/5',
 	'articlefeedbackv5-whats-this' => 'Ajuda',
 	'articlefeedbackv5-overall-rating' => 'Avaliação: $1/5',
-	'articlefeedbackv5' => 'Painel de avaliação de artigos',
-	'articlefeedbackv5-desc' => 'Avaliação de artigos',
+	'articlefeedbackv5' => 'Painel de avaliação de artigos', # Fuzzy
+	'articlefeedbackv5-desc' => 'Avaliação de artigos', # Fuzzy
 	'articlefeedbackv5-page-disabled' => 'A página de comentários do artigo não foi habilitada para este artigo.',
 	'articlefeedbackv5-disable-preference' => 'Não mostrar nas páginas o widget da avaliação de artigos',
 	'articlefeedbackv5-emailcapture-response-body' => 'Olá,
@@ -17597,7 +17423,7 @@ $messages['rue'] = array(
 	'articlefeedbackv5-noteflyover-show-placeholder' => 'Чом вказуєте тот приспівок?',
 	'articlefeedbackv5-noteflyover-show-submit' => 'Зобразити тот приспівок',
 	'articlefeedbackv5-noteflyover-show-help' => 'Далшы інформації',
-	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Придати позначку',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Придати позначку', # Fuzzy
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Далшы інформації',
 	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'Придати позначку',
 	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Зрушыти пожадавку',
@@ -17701,46 +17527,8 @@ $messages['sa'] = array(
  */
 $messages['sah'] = array(
 	'articlefeedbackv5-error' => 'Туох эрэ алҕас таҕыста. Хойутуу боруобалаар.',
-	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Бүгүү тахсыылар уонна түһүүлэр',
-	'articleFeedbackv5-table-caption-dailyhighs' => 'Уһулуччу сыанабылы ылбыт ыстатыйалар: $1',
-	'articleFeedbackv5-table-caption-dailylows' => 'Саамай намыһах сыанабылы ылбыт ыстатыйалар: $1',
-	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Бу нэдиэлэҕэ саамай элбэхтэ уларыйбыттар',
-	'articleFeedbackv5-table-caption-recentlows' => 'Соторутааҥы түһүүлэр',
-	'articleFeedbackv5-table-heading-page' => 'Сирэй',
-	'articleFeedbackv5-table-heading-average' => 'Орто',
-	'articleFeedbackv5-copy-above-highlow-tables' => 'Бу кыах тургутулла турар. Бука диэн, санааҕын [$1 сирэйгэ] суруй.',
-	'articlefeedbackv5' => 'Ыстатыйаны сыаналааһын хаптаһына',
-	'articlefeedbackv5-desc' => 'Ыстатыйаны сыаналааһын (тургутуллар барыла)',
-	'articlefeedbackv5-bucket5-form-switch-label' => 'Бу сирэйи сыаналаа',
-	'articlefeedbackv5-bucket5-form-panel-title' => 'Бу сирэйи сыаналаа',
-	'articlefeedbackv5-bucket5-form-panel-explanation' => 'Бу тугуй?',
-	'articlefeedbackv5-bucket5-form-panel-explanation-link' => 'Project:ArticleFeedback',
-	'articlefeedbackv5-bucket5-form-panel-clear' => 'Бу сыананы сот',
-	'articlefeedbackv5-bucket5-form-panel-expertise' => 'Бу тиэмэни бэркэ билэбин (толоруу булгуччута суох)',
-	'articlefeedbackv5-bucket5-form-panel-expertise-studies' => 'Бу тиэмэни колледжка/университекка үөрэппитим',
-	'articlefeedbackv5-bucket5-form-panel-expertise-profession' => 'Идэм сорҕото',
-	'articlefeedbackv5-bucket5-form-panel-expertise-hobby' => 'Мин дьарыктанар үлүһүйүүм, сүрүн дьулҕаным',
-	'articlefeedbackv5-bucket5-form-panel-expertise-other' => 'Туох сыһыаннааҕым туһунан манна ыйыллыбатах',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'Бикипиэдьийэни тупсарарга көмө буолуом этэ, сурукта ыытыҥ (толорор булгуччута суох)',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-note' => 'Бигэргэтэр сурук ыытыахпыт. Аадырыскын кимиэхэ да биэриэхпит суоҕа. $1',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy' => 'Кистээһин сиэрэ',
-	'articlefeedbackv5-bucket5-form-panel-submit' => 'Сыанабылы ыытыы',
-	'articlefeedbackv5-bucket5-form-panel-pending' => 'Эн сыанабылыҥ өссө да ыытылла илик',
-	'articlefeedbackv5-bucket5-form-panel-success' => 'Бигэргэтилиннэ',
-	'articlefeedbackv5-bucket5-form-panel-expiry-title' => 'Сыанабылыҥ эргэрбит',
-	'articlefeedbackv5-bucket5-form-panel-expiry-message' => 'Бука диэн бу сирэйи хат көр уонна саҥа сыаната быс.',
-	'articlefeedbackv5-bucket5-report-switch-label' => 'Сирэй сыанабылларын көрдөр',
-	'articlefeedbackv5-bucket5-report-panel-title' => 'Сирэйи сыаналааһын',
-	'articlefeedbackv5-bucket5-report-panel-description' => 'Билиҥҥи орто сыанабыллар.',
-	'articlefeedbackv5-bucket5-report-empty' => 'Сыанабыл суох',
-	'articlefeedbackv5-bucket5-report-ratings' => '$1 сыанабыл',
-	'articlefeedbackv5-bucket5-trustworthy-label' => 'Итэҕэтиилээҕэ',
-	'articlefeedbackv5-bucket5-complete-label' => 'Толорута',
-	'articlefeedbackv5-bucket5-complete-tip' => 'Бу сирэй тиэмэ сүрүн ис хоһоонун арыйар дуо?',
-	'articlefeedbackv5-bucket5-objective-label' => 'Тутулуга суоҕа',
-	'articlefeedbackv5-bucket5-objective-tip' => 'Бу сирэй араас көрүүлэри тэҥҥэ, тугу да күөмчүлээбэккэ көрдөрөр дии саныыгын дуо?',
-	'articlefeedbackv5-bucket5-wellwritten-label' => 'Суруйуу истиилэ',
-	'articlefeedbackv5-bucket5-wellwritten-tip' => 'Бу сирэй бэркэ сааһыланан суруллубут дии саныыгын дуо?',
+	'articlefeedbackv5' => 'Ыстатыйаны сыаналааһын хаптаһына', # Fuzzy
+	'articlefeedbackv5-desc' => 'Ыстатыйаны сыаналааһын (тургутуллар барыла)', # Fuzzy
 );
 
 /** Sicilian (sicilianu)
@@ -18001,42 +17789,8 @@ $3
  */
 $messages['sk'] = array(
 	'articlefeedbackv5-error' => 'Vyskytla sa chyba. Prosím, skúste to neskôr.',
-	'articleFeedbackv5-table-caption-dailyhighsandlows' => 'Dnešné maximá a minimá',
-	'articleFeedbackv5-table-caption-weeklymostchanged' => 'Tento týždeň sa najviac menil',
-	'articleFeedbackv5-table-caption-recentlows' => 'Nedávne minimá',
-	'articleFeedbackv5-table-heading-page' => 'Stránka',
-	'articleFeedbackv5-table-heading-average' => 'Priemer',
-	'articlefeedbackv5' => 'Hodnotenie článku',
-	'articlefeedbackv5-desc' => 'Hodnotenie článku (pilotná verzia)',
-	'articlefeedbackv5-bucket5-form-switch-label' => 'Ohodnotiť túto stránku',
-	'articlefeedbackv5-bucket5-form-panel-title' => 'Ohodnotiť túto stránku',
-	'articlefeedbackv5-bucket5-form-panel-explanation' => 'Čo je toto?',
-	'articlefeedbackv5-bucket5-form-panel-clear' => 'Odstrániť toto hodnotenie',
-	'articlefeedbackv5-bucket5-form-panel-expertise' => 'Mám veľké vedomosti o tejto téme (nepovinné)',
-	'articlefeedbackv5-bucket5-form-panel-expertise-studies' => 'Mám v tejto oblasti univerzitný titul',
-	'articlefeedbackv5-bucket5-form-panel-expertise-profession' => 'Je to súčasť mojej profesie',
-	'articlefeedbackv5-bucket5-form-panel-expertise-hobby' => 'Je to moja hlboká osobná vášeň',
-	'articlefeedbackv5-bucket5-form-panel-expertise-other' => 'Zdroj mojich vedomostí tu nie je uvedený',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove' => 'Chcel by som pomôcť zlepšeniu Wikipédie, pošlite mi e-mail (nepovinné)',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-note' => 'Pošleme vám potvrdzovací email. Vašu adresu neposkytneme nikomu inému. $1',
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-privacy' => 'Ochrana súkromia',
-	'articlefeedbackv5-bucket5-form-panel-submit' => 'Odoslať hodnotenie',
-	'articlefeedbackv5-bucket5-form-panel-success' => 'Úspešne uložené',
-	'articlefeedbackv5-bucket5-form-panel-expiry-title' => 'Platnosť vášho hodnotenia vypršala',
-	'articlefeedbackv5-bucket5-form-panel-expiry-message' => 'Prosím, znova vyhodnoťte túto stránku a odošlite nové hodnotenie.',
-	'articlefeedbackv5-bucket5-report-switch-label' => 'Zobraziť hodnotenia stránky',
-	'articlefeedbackv5-bucket5-report-panel-title' => 'Hodnotenia stránky',
-	'articlefeedbackv5-bucket5-report-panel-description' => 'Súčasné priemerné hodnotenie.',
-	'articlefeedbackv5-bucket5-report-empty' => 'Bez hodnotenia',
-	'articlefeedbackv5-bucket5-report-ratings' => '$1 {{PLURAL:$1|hodnotenie|hodnotenia|hodnotení}}',
-	'articlefeedbackv5-bucket5-trustworthy-label' => 'Dôveryhodná',
-	'articlefeedbackv5-bucket5-trustworthy-tip' => 'Máte pocit, že táto stránka má dostatočné citácie a že tieto citácie pochádzajú z dôveryhodných zdrojov?',
-	'articlefeedbackv5-bucket5-complete-label' => 'Úplná',
-	'articlefeedbackv5-bucket5-complete-tip' => 'Máte pocit, že táto stránka pokrýva základné tematické oblasti, ktoré by mala?',
-	'articlefeedbackv5-bucket5-objective-label' => 'Objektívna',
-	'articlefeedbackv5-bucket5-objective-tip' => 'Máte pocit, že táto stránka zobrazuje spravodlivé zastúpenie všetkých pohľadov na problematiku?',
-	'articlefeedbackv5-bucket5-wellwritten-label' => 'Dobre napísaná',
-	'articlefeedbackv5-bucket5-wellwritten-tip' => 'Máte pocit, že táto stránka je dobre organizovaná a dobre napísaná?',
+	'articlefeedbackv5' => 'Hodnotenie článku', # Fuzzy
+	'articlefeedbackv5-desc' => 'Hodnotenie článku (pilotná verzia)', # Fuzzy
 );
 
 /** Slovenian (slovenščina)
@@ -19074,9 +18828,9 @@ Tack och lycka till!
  */
 $messages['sw'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Asante!',
-	'articlefeedbackv5-cta1-learn-how' => 'Jifunza kuhariri',
+	'articlefeedbackv5-cta1-learn-how' => 'Jifunza kuhariri', # Fuzzy
 	'articlefeedbackv5-cta1-edit-linktext' => 'Hariri ukurasa huu',
-	'articlefeedbackv5-cta2-confirmation-title' => 'Saidia kuboresha Wikipedia',
+	'articlefeedbackv5-cta2-confirmation-title' => 'Saidia kuboresha Wikipedia', # Fuzzy
 	'articlefeedbackv5-cta2-confirmation-call' => 'Wavuti hu umetengenezwa na watu kama wewe. Unaweza tupa mkono?',
 	'articlefeedbackv5-cta2-button-text' => 'Soma zaidi',
 	'articlefeedbackv5-cta4-confirmation-title' => 'Ungana na jumuia yetu',
@@ -19086,7 +18840,7 @@ $messages['sw'] = array(
 	'articlefeedbackv5-cta4-button-text-or' => 'au',
 	'articlefeedbackv5-cta5-button-text' => 'Ona maoni yote',
 	'articlefeedbackv5-overlay-close' => 'Funga',
-	'articlefeedbackv5-contribs-entry-status' => 'Hali: $1',
+	'articlefeedbackv5-contribs-entry-status' => 'Hali: $1', # Fuzzy
 	'articlefeedbackv5-contribs-hidden-feedback' => 'maoni yaliyofichwa',
 	'articlefeedbackv5-form-tools-label' => 'Zana',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Ndiyo',
@@ -19131,7 +18885,7 @@ $messages['sw'] = array(
 	'articlefeedbackv5-bucket4-subhead' => 'Je ulijua kwamba unaweza kuhariri ukurasa huu?',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Soma jinsi ya kuhariri',
 	'articlefeedbackv5-bucket4-form-submit' => 'Hariri ukurasa huu',
-	'articlefeedbackv5-bucket4-noedit-title' => 'Saidia kuboresha Wikipedia',
+	'articlefeedbackv5-bucket4-noedit-title' => 'Saidia kuboresha Wikipedia', # Fuzzy
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Soma zaidi',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'Ndiyo',
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'La',
@@ -19546,7 +19300,7 @@ $messages['te'] = array(
 	'articlefeedbackv5-new-marker' => 'కొత్తది',
 	'articlefeedbackv5-discussion-page' => 'చర్చ',
 	'articlefeedbackv5-whats-this' => 'సహాయం',
-	'articlefeedbackv5' => 'వ్యాసపు మూల్యాంకన',
+	'articlefeedbackv5' => 'వ్యాసపు మూల్యాంకన', # Fuzzy
 	'articlefeedbackv5-header-message-link-text' => 'మరింత తెలుసుకోండి',
 	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 సంవత్సరం|$1 సంవత్సరాలు}}',
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 నెల|$1 నెలలు}}',
@@ -19596,8 +19350,8 @@ $messages['tet'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
-	'articlefeedbackv5' => 'Makala berlen baha',
-	'articlefeedbackv5-desc' => 'Makala berlen baha (synag warianty)',
+	'articlefeedbackv5' => 'Makala berlen baha', # Fuzzy
+	'articlefeedbackv5-desc' => 'Makala berlen baha (synag warianty)', # Fuzzy
 );
 
 /** Tagalog (Tagalog)
@@ -20284,18 +20038,18 @@ $3
 $messages['ur'] = array(
 	'articlefeedbackv5-cta-thanks' => 'شکریہ!',
 	'articlefeedbackv5-cta1-confirmation-title' => 'کیا آپ جانتے ہیں کہ آپ اس صفحے میں ترمیم کر سکتے ہیں ؟',
-	'articlefeedbackv5-cta1-confirmation-call' => 'وکی پیڈیا کا کام کرتا ہے کیونکہ کوئی بھی اس کے صفحات میں ترمیم کر سکتے ہیں. آگے بڑھو, یہ ایک کی کوشش کریں دے. بولڈ ہو!',
+	'articlefeedbackv5-cta1-confirmation-call' => 'وکی پیڈیا کا کام کرتا ہے کیونکہ کوئی بھی اس کے صفحات میں ترمیم کر سکتے ہیں. آگے بڑھو, یہ ایک کی کوشش کریں دے. بولڈ ہو!', # Fuzzy
 	'articlefeedbackv5-cta1-learn-how' => 'جانیں کہ کس طرح ترميم کريں',
 	'articlefeedbackv5-cta1-edit-linktext' => 'اس صفحے میں ترمیم کریں',
-	'articlefeedbackv5-cta2-confirmation-title' => 'وکی پیڈیا کو بہتر بنانے میں مدد',
+	'articlefeedbackv5-cta2-confirmation-title' => 'وکی پیڈیا کو بہتر بنانے میں مدد', # Fuzzy
 	'articlefeedbackv5-cta2-confirmation-call' => 'اس ویب سائٹ آپ کی طرح لوگوں کی طرف سے بنائی ہے. آپ دے سکتے ہیں ہم ایک ہاتھ?',
 	'articlefeedbackv5-cta2-button-text' => 'مزید جانیں',
 	'articlefeedbackv5-cta3-confirmation-title' => 'براہ مہربانی ایک فوری سروے لے',
-	'articlefeedbackv5-cta3-confirmation-call' => 'یہ صرف ایک منٹ لیتا ہے اور میں مدد ملے گی وکی پیڈیا کو بہتر بنانے.',
+	'articlefeedbackv5-cta3-confirmation-call' => 'یہ صرف ایک منٹ لیتا ہے اور میں مدد ملے گی وکی پیڈیا کو بہتر بنانے.', # Fuzzy
 	'articlefeedbackv5-cta3-button-text' => 'شروع کے سروے',
 	'articlefeedbackv5-cta4-confirmation-title' => 'ہماری کمیونٹی میں شامل',
 	'articlefeedbackv5-cta4-confirmation-call-line1' => 'سائن اپ کریں یا میں لاگ ان کریں, تو ایڈیٹرز آپ کی آراء کے ردعمل کا اظہار کر سکتے ہیں.',
-	'articlefeedbackv5-cta4-confirmation-call-line2' => 'آپ کے مفت اکاؤنٹ یہ کرتا ہے کیا آپ جانتے ہیں کہ وکی پیڈیا پر اشتراک کرنے کے لئے آسان.',
+	'articlefeedbackv5-cta4-confirmation-call-line2' => 'آپ کے مفت اکاؤنٹ یہ کرتا ہے کیا آپ جانتے ہیں کہ وکی پیڈیا پر اشتراک کرنے کے لئے آسان.', # Fuzzy
 	'articlefeedbackv5-cta4-button-text-signup' => 'ایک اکاؤنٹ بنائیں',
 	'articlefeedbackv5-cta4-button-text-login' => 'میں لاگ ان کریں',
 	'articlefeedbackv5-cta4-button-text-later' => 'صالحہ كا علم بعد میں',
@@ -20308,9 +20062,9 @@ $messages['ur'] = array(
 	'articlefeedbackv5-error-unknown' => 'نامعلوم کی خرابی.',
 	'articlefeedbackv5-error-submit' => 'فارم پیش کی خرابی.',
 	'articlefeedbackv5-error-nofeedback' => 'براہ مہربانی آپ کی رائے درج کریں ۔',
-	'articlefeedbackv5-contribs-status-action-featured' => 'نمایاں',
-	'articlefeedbackv5-contribs-status-action-resolved' => 'حل',
-	'articlefeedbackv5-contribs-status-action-hidden' => 'پوشیدہ',
+	'articlefeedbackv5-contribs-status-action-feature' => 'نمایاں',
+	'articlefeedbackv5-contribs-status-action-resolve' => 'حل',
+	'articlefeedbackv5-contribs-status-action-hide' => 'پوشیدہ',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'خفیہ تبصرہ',
 	'articlefeedbackv5-form-tools-label' => 'فورم کے اوزار',
 	'articlefeedbackv5-form-helpful-yes-label' => 'جی ہاں',
@@ -20393,17 +20147,17 @@ $messages['ur'] = array(
 	'articlefeedbackv5-bucket1-form-submit' => 'پوسٹ آپ کی رائے',
 	'articlefeedbackv5-bucket4-title' => 'اس صفحے کو بہتر بنانے میں مدد',
 	'articlefeedbackv5-bucket4-subhead' => 'کیا آپ جانتے ہیں کہ آپ اس صفحے میں ترمیم کر سکتے ہیں ؟',
-	'articlefeedbackv5-bucket4-teaser-line1' => 'وکی پیڈیا کا کام کرتا ہے کیونکہ کوئی بھی اس کے صفحات میں ترمیم کر سکتے ہیں.',
+	'articlefeedbackv5-bucket4-teaser-line1' => 'وکی پیڈیا کا کام کرتا ہے کیونکہ کوئی بھی اس کے صفحات میں ترمیم کر سکتے ہیں.', # Fuzzy
 	'articlefeedbackv5-bucket4-teaser-line2' => 'آگے بڑھو, یہ ایک کی کوشش کریں دے. بولڈ ہو!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'جانیں کہ کس طرح ترميم کريں',
 	'articlefeedbackv5-bucket4-form-submit' => 'اس صفحے میں ترمیم کریں',
-	'articlefeedbackv5-bucket4-noedit-title' => 'وکی پیڈیا کو بہتر بنانے میں مدد',
+	'articlefeedbackv5-bucket4-noedit-title' => 'وکی پیڈیا کو بہتر بنانے میں مدد', # Fuzzy
 	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'اس ویب سائٹ آپ کی طرح لوگوں کی طرف سے بنائی ہے.',
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'آپ دے سکتے ہیں ہم ایک ہاتھ?',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'مزید جانیں',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'جی ہاں',
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'نہیں',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'کیا تھے آپ تلاش کر کے لئے ؟',
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'کیا تھے آپ تلاش کر کے لئے ؟', # Fuzzy
 	'articlefeedbackv5-bucket6-form-submit' => 'پوسٹ آپ کی رائے',
 	'articlefeedbackv5-help-tooltip-title' => 'یہ کیا ہے ؟',
 	'articlefeedbackv5-help-tooltip-linktext' => 'مزید جانیں',
@@ -20415,8 +20169,6 @@ $messages['ur'] = array(
 	'articlefeedbackv5-toolbox-view' => 'دیکھیں آپ کی رائے',
 	'articlefeedbackv5-toolbox-add' => 'آپ کی رائے کو شامل کریں',
 	'articlefeedbackv5-disable-preference' => 'مت دکھائیں مضمون آراء ویجیٹ صفحات پر',
-	'right-aftv5-hide-feedback' => 'آپ کی رائے کو چھپائیں',
-	'right-aftv5-delete-feedback' => 'آپ کی رائے کو خارج',
 );
 
 /** Uzbek (oʻzbekcha)
@@ -20430,8 +20182,8 @@ $messages['uz'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'articlefeedbackv5' => 'Valutassion pagina',
-	'articlefeedbackv5-desc' => 'Valutassion pagina (version de prova)',
+	'articlefeedbackv5' => 'Valutassion pagina', # Fuzzy
+	'articlefeedbackv5-desc' => 'Valutassion pagina (version de prova)', # Fuzzy
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -20757,12 +20509,8 @@ $messages['yi'] = array(
  * @author Demmy
  */
 $messages['yo'] = array(
-	'articlefeedbackv5' => 'Ibi èsì àyọkà',
-	'articlefeedbackv5-desc' => '条目评级（测试版）',
-	'articlefeedbackv5-bucket5-form-switch-label' => 'Wọn ojúewé yìí',
-	'articlefeedbackv5-bucket5-form-panel-title' => 'Wọn ojúewé yìí',
-	'articlefeedbackv5-bucket5-form-panel-submit' => 'Ìkóólẹ̀ ìdíyelé',
-	'articlefeedbackv5-bucket5-complete-label' => '完成',
+	'articlefeedbackv5' => 'Ibi èsì àyọkà', # Fuzzy
+	'articlefeedbackv5-desc' => '条目评级（测试版）', # Fuzzy
 );
 
 /** Simplified Chinese (中文（简体）‎)
