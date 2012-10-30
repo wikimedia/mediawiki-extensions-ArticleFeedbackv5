@@ -1261,9 +1261,9 @@
 						</div>\
 						<div class="articleFeedbackv5-panel-buttons">\
 							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-signup articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-signup" /></a>\
-							<span class="articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-or" /></span>\
-							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-login articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-login" /></a>\
-							<a href="#" class="articleFeedbackv5-cta-button-later articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-later" /></a>\
+<!--						<span class="articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-or" /></span> -->\
+							<a href="#" class="articleFeedbackv5-cta-button-login articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-login" /></a>\
+<!--						<a href="#" class="articleFeedbackv5-cta-button-later articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-later" /></a> -->\
 						</div>\
 						<div class="clear"></div>\
 					</div>\
@@ -1427,6 +1427,22 @@
 					.addClass( 'ui-button-blue' );
 
 				return $block;
+			},
+
+			// }}}
+			// {{{ verify
+
+			/**
+			 * Verifies that this CTA can be displayed
+			 *
+			 * @return bool whether the CTA can be displayed
+			 */
+			verify: function () {
+				/*
+				 * @todo: This will disable CTA5 for anonymous users; I think this will be only
+				 * temporarily, so this method can probably be removed again at some point.
+				 */
+				return mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'];
 			},
 
 			// }}}
