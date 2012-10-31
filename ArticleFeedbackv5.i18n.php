@@ -3312,6 +3312,7 @@ $messages['da'] = array(
  * @author Purodha
  * @author Quedel
  * @author Tiin
+ * @author Wnme
  */
 $messages['de'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Vielen Dank!',
@@ -3598,7 +3599,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-noteflyover-show-submit' => 'Diesen Beitrag einblenden',
 	'articlefeedbackv5-noteflyover-show-help' => 'Weitere Informationen',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Löschung beantragen',
-	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Bevor du eine Versionslöschung beantragst, prüfe bitte, dass dieser Beitrag
+	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Bevor du eine Versionslöschung per Oversight beantragst, prüfe bitte, dass dieser Beitrag
 eine der folgenden Probleme enthält:
 * Telefonnummern
 * E-Mail-Adressen
@@ -20270,11 +20271,11 @@ $messages['vi'] = array(
 	'articlefeedbackv5-form-helpful-no-label' => 'Không',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 có|$1 có}} / {{PLURAL:$2|1 không có|$2 không có}}',
 	'articlefeedbackv5-special-add-feedback' => 'Gửi phản hồi của bạn',
-	'articlefeedbackv5-special-filter-all' => 'Tất cá (giám sát viên ẩn) ($1)', # Fuzzy
+	'articlefeedbackv5-special-filter-all' => 'Tất cả các bài đăng ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'Tất cả (ẩn) ($1)',
 	'articlefeedbackv5-special-filter-visible' => 'Tất cả thấy được ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'Không thấy được ($1)',
-	'articlefeedbackv5-special-filter-all-watchlist' => 'Tất cả (giám sát viên ẩn)', # Fuzzy
+	'articlefeedbackv5-special-filter-all-watchlist' => 'Tất cả các bài đăng',
 	'articlefeedbackv5-special-filter-notdeleted-watchlist' => 'Tất cả (ẩn)',
 	'articlefeedbackv5-special-sort-label-before' => 'Sắp xếp theo:',
 	'articleFeedbackv5-comment-ago' => 'cách đây $1',
