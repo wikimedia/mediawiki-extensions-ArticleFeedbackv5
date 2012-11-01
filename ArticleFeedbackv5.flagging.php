@@ -708,20 +708,6 @@ class ArticleFeedbackv5Flagging {
 		if ( $notes ) {
 			$this->update['af_last_status_notes'] = $notes;
 		}
-
-		// Un-hide if it was auto-hidden
-		if ( $record->af_is_hidden == true && $record->af_is_autohide == true ) {
-			$this->update['af_is_hidden'] = false;
-			$this->update['af_is_unhidden'] = true;
-
-			$this->hideCounts( $record, 'show' );
-			$this->visibleCounts( $record, 'visible' );
-
-			$this->relevance[] = 'unhide';
-
-			$this->log[] = array( 'unhide', 'Automatic un-hide', null );
-		}
-
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
 			'unrequest', $this->getUserId(), $timestamp );
 		return true;
@@ -740,7 +726,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_feature_increase( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( $record->af_is_featured || $record->af_is_hidden || $record->af_is_deleted ) {
+		if ( $record->af_is_featured ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
 		$this->log[] = array( 'feature', $notes, $this->user );
@@ -782,7 +768,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_feature_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( !$record->af_is_featured || $record->af_is_hidden || $record->af_is_deleted ) {
+		if ( !$record->af_is_featured ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
 		$this->log[] = array( 'unfeature', $notes, $this->user );
@@ -819,7 +805,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_resolve_increase( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( $record->af_is_resolved || $record->af_is_hidden || $record->af_is_deleted ) {
+		if ( $record->af_is_resolved ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
 		$this->log[] = array( 'resolve', $notes, $this->user );
@@ -856,7 +842,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return mixed      true if success, message key (string) if not
 	 */
 	private function flag_resolve_decrease( stdClass $record, $notes, $timestamp, $toggle ) {
-		if ( !$record->af_is_resolved || $record->af_is_hidden || $record->af_is_deleted ) {
+		if ( !$record->af_is_resolved ) {
 			return 'articlefeedbackv5-invalid-feedback-state';
 		}
 		// decrease means "unresolve" this

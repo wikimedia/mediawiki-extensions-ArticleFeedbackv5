@@ -821,9 +821,6 @@
 		$row.addClass( 'articleFeedbackv5-feedback-hidden' );
 		$.articleFeedbackv5special.changeTags( $row, 'hidden', 'add' );
 		$.articleFeedbackv5special.maskPost( $row, line );
-
-		// hide feature/unfeature/resolve/unresolve
-		$row.find( '.tools_feature' ).hide();
 	};
 
 	// }}}
@@ -840,9 +837,6 @@
 		if ( !$row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
 			$.articleFeedbackv5special.unmaskPost( $row );
 		}
-
-		// show feature/unfeature/resolve/unresolve
-		$row.find( '.tools_feature' ).show();
 	};
 
 	// }}}
@@ -870,7 +864,6 @@
 		if ( $screen.hasClass( 'articleFeedbackv5-post-screen-off' ) ) {
 			$screen.removeClass( 'articleFeedbackv5-post-screen-off' );
 		}
-
 		if ( !empty ) {
 			$screen.click( function( e ) {
 				$.articleFeedbackv5special.unmaskPost(
@@ -1716,7 +1709,7 @@
 					.addClass( 'articleFeedbackv5-unrequestoversight-link');
 
 				if ( data['articlefeedbackv5-flag-feedback']['autohide'] ) {
-					$( '#articleFeedbackv5-hide-link-' + id )
+					var $new_link = $( '#articleFeedbackv5-hide-link-' + id )
 						.attr( 'action', 'show' )
 						.attr( 'id', 'articleFeedbackv5-show-link-' + id )
 						.text( mw.msg( 'articlefeedbackv5-form-unhide' ) )
@@ -1742,16 +1735,12 @@
 			'apiFlagType': 'request',
 			'apiFlagDir': -1,
 			'onSuccess': function( id, data ) {
-				var $link = $( '#articleFeedbackv5-unrequestoversight-link-' + id )
+				$( '#articleFeedbackv5-unrequestoversight-link-' + id )
 					.attr( 'action', 'requestoversight' )
 					.attr( 'id', 'articleFeedbackv5-requestoversight-link-' + id )
 					.text( mw.msg( 'articlefeedbackv5-form-oversight' ) )
 					.removeClass( 'articleFeedbackv5-unrequestoversight-link' )
 					.addClass( 'articleFeedbackv5-requestoversight-link');
-
-				$.articleFeedbackv5special.unmarkHidden(
-					$link.closest( '.articleFeedbackv5-feedback' )
-				);
 			}
 		},
 
