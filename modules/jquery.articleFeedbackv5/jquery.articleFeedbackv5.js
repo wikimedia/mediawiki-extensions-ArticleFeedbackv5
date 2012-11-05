@@ -1261,7 +1261,7 @@
 						</div>\
 						<div class="articleFeedbackv5-panel-buttons">\
 							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-signup articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-signup" /></a>\
-<!--						<span class="articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-or" /></span> -->\
+							<span class="articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-or" /></span>\
 							<a href="#" class="articleFeedbackv5-cta-button-login articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-login" /></a>\
 <!--						<a href="#" class="articleFeedbackv5-cta-button-later articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-later" /></a> -->\
 						</div>\
