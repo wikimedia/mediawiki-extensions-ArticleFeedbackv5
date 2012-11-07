@@ -56,7 +56,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-email' => 'That e-mail address is not valid.',
 	'articlefeedbackv5-error-blocked' => 'Blocked users may not submit feedback.',
 	'articlefeedbackv5-error-validation' => 'Validation error.',
-	'articlefeedbackv5-error-abuse' => 'Your post has been rejected by a software filter that suggests it may have violated {{SITENAME}}\'s [$1 feedback guidelines]. Please revise your post and try again.',
+	'articlefeedbackv5-error-abuse' => 'Your post has been rejected by a software filter that suggests it may not meet {{SITENAME}}\'s [$1 feedback guidelines]. Please revise your post and try again. ({{PLURAL:$2|Filter|Filters}}: $3)',
 	'articlefeedbackv5-error-abuse-link' => '//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines',
 	'articlefeedbackv5-error-unknown' => 'Unknown error.',
 	'articlefeedbackv5-error-submit' => 'Form submission error.',
@@ -639,7 +639,10 @@ The link to the edit tutorial',
 	'articlefeedbackv5-overlay-close' => 'The alt-text for the close button in overlay-mode',
 	'articlefeedbackv5-error' => 'This error message will be displayed in a grey box replacing the form if there was an unrecoverable error.',
 	'articlefeedbackv5-error-blocked' => 'This error message will be displayed on the form if the user is blocked from submitting feedback.',
-	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters. $1 is the url to the abuse policy.',
+	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters. Parameters:
+* $1 is the url to the abuse policy
+* $2 is pluralization support: the amount of filters matched
+* $3 is a list of filter(s) matched.',
 	'articlefeedbackv5-error-abuse-link' => '{{notranslate}}
 The abuse policy link.',
 	'articlefeedbackv5-error-nofeedback' => 'This error message will be displayed above the form (but below the title) if the user has attempted to submit a blank form.',

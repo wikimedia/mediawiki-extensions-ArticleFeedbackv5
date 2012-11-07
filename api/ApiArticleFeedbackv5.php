@@ -25,6 +25,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	// Warn for abuse?
 	private $warnForAbuse = false;
 
+	// List of abuse filters that were positively matched against the feedback
+	protected $abuseFiltersMatched = array();
+
 	// filters incremented on creation
 	protected $filters = array( 'visible' => 1, 'notdeleted' => 1, 'all' => 1);
 
@@ -102,7 +105,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 						$target = $this->msg( 'articlefeedbackv5-error-abuse-link' )->inContentLanguage()->plain();
 
 						$this->dieUsage(
-							$this->msg( 'articlefeedbackv5-error-abuse', $target )->parse(),
+							$this->msg(
+								'articlefeedbackv5-error-abuse',
+								$target,
+								count( $this->abuseFiltersMatched ),
+								$this->getLanguage()->listToText( $this->abuseFiltersMatched )
+							)->parse(),
 							'afreject'
 						);
 					}
@@ -280,6 +288,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 *
 	 * @param $value  string the text to check
 	 * @param $pageId int    the page ID
+	 * @return bool
 	 */
 	private function findAbuse( &$value, $pageId ) {
 		// Respect $wgSpamRegex
@@ -339,6 +348,13 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$results = AbuseFilter::checkAllFilters( $vars, $wgArticleFeedbackv5AbuseFilterGroup );
 			if ( count( array_filter( $results ) ) == 0 ) {
 				return false;
+			}
+
+			// build list of filters that were matched
+			foreach( $results as $filter => $match ) {
+				if ( $match ) {
+					$this->abuseFiltersMatched[] = AbuseFilter::$filters[$filter]->af_public_comments;
+				}
 			}
 
 			// Abuse filter consequences
