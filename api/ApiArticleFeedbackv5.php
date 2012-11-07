@@ -358,7 +358,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'afl_ip' => $wgRequest->getIP()
 			);
 			$action = $vars->getVar( 'ACTION' )->toString();
-			AbuseFilter::addLogEntries( $actions_taken, $log_template, $action, $vars );
+			AbuseFilter::addLogEntries( $actions_taken, $log_template, $action, $vars, $wgArticleFeedbackv5AbuseFilterGroup );
 
 			// Local consequences (right now: disallow only)
 			$disallow = false;
