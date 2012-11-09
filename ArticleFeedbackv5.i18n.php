@@ -7884,6 +7884,37 @@ $messages['gsw'] = array(
 	'articlefeedbackv5-noteflyover-resolve-caption' => 'As erledigt markiere',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'E Aamerkig dezuefiege',
 	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Wurum markiersch die Ruggmäldig as erledigt?',
+	'articlefeedbackv5-noteflyover-resolve-submit' => 'As erledigt markiere',
+	'articlefeedbackv5-noteflyover-resolve-help' => 'Meh Informatione',
+	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Markierig as erledigt zrucknee',
+	'articlefeedbackv5-noteflyover-unresolve-label' => 'E Aamerkig dezuefiege',
+	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Wurum nimmsch d Markierig vu däre Ruggmäldig as erledigt zruck?',
+	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Markierig as erledigt zrucknee',
+	'articlefeedbackv5-noteflyover-unresolve-help' => 'Meh Informatione',
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Die Ruckmäldig uusblände',
+	'articlefeedbackv5-noteflyover-hide-label' => 'E Aamerkig dezuefiege',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Wurum duesch die Ruggmäldig uusblände?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Die Ruckmäldig uusblände',
+	'articlefeedbackv5-noteflyover-hide-help' => 'Meh Informatione',
+	'articlefeedbackv5-noteflyover-show-caption' => 'Dää Byytrag yyblände',
+	'articlefeedbackv5-noteflyover-show-label' => 'E Aamerkig dezuefiege',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'Wurum stellsch die Ruggmäldig wider här?',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Dää Byytrag yyblände',
+	'articlefeedbackv5-noteflyover-show-help' => 'Meh Informatione',
+	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'E Aatrag uf Leschig stelle',
+	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Voreb Du ne Aatrag uf Leschig per Oversight stellsch, prief bitte, dass es in däm Bytrag eini vu däne Probläm het:
+* Telifonnummere
+* E-Mail-Adrässe
+* pornografischi Link
+* diffamierendi/beleidigendi Kommentar iber e Person',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Fieg e Aamerkig dezue zum erklere, wurum Du ne Aatrag uf Oversight-Leschig stellsch.',
+	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Wurum stellsch e Aatrag uf Leschig?',
+	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'E Aatrag uf Leschig stelle',
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Meh Informatione',
+	'articlefeedbackv5-noteflyover-unrequestoversight-caption' => 'Leschaatrag zruckneh',
+	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'E Aamerkig dezuefiege',
+	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Wurum nimmsch dr Leschaatrag zruck?',
+	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Leschaatrag zruckneh',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Jo',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Nei',
 	'articlefeedbackv5-help-tooltip-title' => 'Was isch des de?',
@@ -20091,6 +20122,7 @@ $messages['tr'] = array(
  * @author A1
  * @author AS
  * @author Arturyatsko
+ * @author Base
  * @author Dim Grits
  * @author Microcell
  * @author Olvin
@@ -20098,6 +20130,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Дякуємо!',
+	'articlefeedbackv5-cta-confirmation-message' => 'Ваш відгук було [$1 розміщено тут].',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Чи ви знаєте, що можете редагувати цю сторінку?',
 	'articlefeedbackv5-cta1-learn-how' => 'Дізнайтеся, як редагувати',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Редагувати цю сторінку',
