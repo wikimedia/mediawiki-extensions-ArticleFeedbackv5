@@ -4823,6 +4823,7 @@ La teamo {{SITENAME}}',
  * @author Od1n
  * @author Pedroca cerebral
  * @author Platonides
+ * @author Ralgis
  * @author Sanbec
  * @author Toliño
  * @author Translationista
@@ -5213,14 +5214,14 @@ $messages['es'] = array(
 	'articlefeedbackv5-activity-feedback-info' => 'Comentario de post #$1 emitido por $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Publicado el $1',
 	'articlefeedbackv5-activity-permalink' => 'Enlace permanente',
-	'articlefeedbackv5-activity-item-request' => '$1 solicitó supresión el $3 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-request' => '$1 solicitó información el $4 a las $5 $2',
 	'articlefeedbackv5-activity-item-unrequest' => '$1 no solicitó supervisión el $3 $2',
 	'articlefeedbackv5-activity-item-decline' => '$1 rechazó la supervisión el $3 $2',
 	'articlefeedbackv5-activity-item-hide' => '$1 ocultó este post el $4 a las $5 $2',
 	'articlefeedbackv5-activity-item-flag' => '$1 marcó este post el $3 $2',
 	'articlefeedbackv5-activity-item-unhide' => '$1 volvió a mostrar este post el $4 a las $5 $2',
 	'articlefeedbackv5-activity-item-unflag' => '$1 desmarcó este post el $3 $2',
-	'articlefeedbackv5-activity-item-oversight' => '$1 suprimió este post el $3 a las $2', # Fuzzy
+	'articlefeedbackv5-activity-item-oversight' => '$1 supervisó esta publicación el $4 a las $5 $2',
 	'articlefeedbackv5-activity-item-unoversight' => '$1 eliminó la supervisión de este post el $3 $2',
 	'articlefeedbackv5-activity-item-resolve' => '$1 ha marcado este post como resuelto el $3 $2',
 	'articlefeedbackv5-activity-item-unresolve' => '$1 ha quitado la marca de resuelto a este post el $3 $2',
