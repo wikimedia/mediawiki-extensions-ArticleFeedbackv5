@@ -225,6 +225,19 @@
 			trigger: 'manual'			// how tooltip is triggered - hover | focus | manual
 		};
 
+		// clicking anywhere (but tipsy) should close an open tipsy
+		$( document ).click( function(e) {
+			if (
+				// if a panel is currently open
+				$.articleFeedbackv5special.currentPanelHostId !== undefined &&
+				// and we clicked outside of the open panel
+				$( e.target ).parents( '.tipsy' ).length == 0
+			) {
+				$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
+				$.articleFeedbackv5special.currentPanelHostId = undefined;
+			}
+		} );
+
 		// Link to help is dependent on the group the user belongs to
 		var helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl' );
 		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'] ) {
@@ -519,6 +532,7 @@
 	 */
 	$.articleFeedbackv5special.toggleTipsy = function( e ) {
 		e.preventDefault();
+		e.stopPropagation();
 		var $l = $( e.target );
 		// are we hiding the current tipsy?
 		if ( $l.attr( 'id' ) == $.articleFeedbackv5special.currentPanelHostId ) {
