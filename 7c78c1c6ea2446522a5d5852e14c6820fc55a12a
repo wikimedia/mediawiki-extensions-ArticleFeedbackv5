@@ -16,6 +16,24 @@
       "revId": "7c78c1c6ea2446522a5d5852e14c6820fc55a12a",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADNH////w\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 1753,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-11-12T13:09:27Z",
+      "side": 1,
+      "message": "What do you mean? $link.closest( \u0027.articleFeedbackv5-feedback\u0027 ) is no statement, only the parameter for $.articleFeedbackv5special.unmarkHidden(), which does have a terminating semicolon.",
+      "parentUuid": "AAAC9n////4\u003d",
+      "revId": "7c78c1c6ea2446522a5d5852e14c6820fc55a12a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
