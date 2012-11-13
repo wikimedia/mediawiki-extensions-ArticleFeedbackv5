@@ -511,6 +511,9 @@ includes one of these issues:
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 action on this post|$1 actions on this post}}',
 	'articlefeedbackv5-activity-more' => 'Show more Activity',
 
+	/* Article page */
+	'articlefeedbackv5-article-view-feedback' => '$1 suggestions',
+
 	/* Talk page */
 	'articlefeedbackv5-talk-view-feedback' => 'View reader feedback',
 
@@ -1331,6 +1334,7 @@ Name of the AFTv5 log filter on the Special:Log page',
 * $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-count' => 'Shows the amount of actions performed on a feedback entry. $1 is the number',
 	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
+	'articlefeedbackv5-article-view-feedback' => 'A link on the article page to encourage people to visit the feedback page. $1 is the amount of relevant suggestions.',
 	'articlefeedbackv5-talk-view-feedback' => 'A link on the talk page to encourage people to visit the feedback page',
 	'articlefeedbackv5-watchlist-view-feedback' => 'A link on the watchlist page to encourage people to visit the feedback page for articles on their watchlist',
 	'articlefeedbackv5-emailcapture-response-body' => 'Body of an e-mail sent to a user wishing to participate in [[mw:Extension:ArticleFeedback|article feedback]] (see the extension documentation).
