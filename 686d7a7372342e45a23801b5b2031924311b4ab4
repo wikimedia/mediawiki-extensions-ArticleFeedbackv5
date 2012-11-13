@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADUX///+o\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2012-11-13T16:31:30Z",
+      "side": 1,
+      "message": "Needs qqq. What vales can $1 have?",
+      "revId": "686d7a7372342e45a23801b5b2031924311b4ab4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
