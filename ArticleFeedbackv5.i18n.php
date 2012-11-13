@@ -511,6 +511,9 @@ includes one of these issues:
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 action on this post|$1 actions on this post}}',
 	'articlefeedbackv5-activity-more' => 'Show more Activity',
 
+	/* Article page */
+	'articlefeedbackv5-article-view-feedback' => '$1 suggestions',
+
 	/* Talk page */
 	'articlefeedbackv5-talk-view-feedback' => 'View reader feedback',
 
