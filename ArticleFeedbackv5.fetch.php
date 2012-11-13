@@ -21,7 +21,7 @@ class ArticleFeedbackv5Fetch {
 	 *
 	 * @var int
 	 */
-	private $pageId;
+	private $pageId = 0;
 
 	/**
 	 * The user ID
@@ -516,7 +516,7 @@ class ArticleFeedbackv5Fetch {
 	public function overallCount() {
 		$dbr   = wfGetDB( DB_SLAVE );
 		$where = array( 'afc_filter_name' => 'all' );
-		$where['afc_page_id'] = $this->pageId ? $this->pageId : 0;
+		$where['afc_page_id'] = $this->pageId;
 		$count = $dbr->selectField(
 			array( 'aft_article_filter_count' ),
 			array( 'afc_filter_count' ),
