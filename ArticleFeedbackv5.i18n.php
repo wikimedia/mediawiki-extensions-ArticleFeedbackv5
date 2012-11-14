@@ -20137,6 +20137,14 @@ $messages['tr'] = array(
 	'articlefeedbackv5-activity-permalink' => 'Kalıcı Bağlantı',
 );
 
+/** Central Atlas Tamazight (ⵜⴰⵎⴰⵣⵉⵖⵜ)
+ * @author Tifinaghes
+ */
+$messages['tzm'] = array(
+	'articlefeedbackv5-noteflyover-show-help' => 'ⵙⵙⵏ ⵓⴳⴰⵔ',
+	'articlefeedbackv5-bucket6-toggle-found-yes' => 'ⵢⴰⵀ',
+);
+
 /** Ukrainian (українська)
  * @author A1
  * @author AS
