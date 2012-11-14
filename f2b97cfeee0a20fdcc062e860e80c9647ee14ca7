@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAADYX////0\u003d",
+        "filename": "api/ApiArticleFeedbackv5Utils.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-11-14T10:41:30Z",
+      "side": 1,
+      "message": "Yes, 0 is used for the central feedback page",
+      "parentUuid": "AAADVX///0o\u003d",
+      "revId": "f2b97cfeee0a20fdcc062e860e80c9647ee14ca7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAADVX///0E\u003d",
         "filename": "api/ApiGetCountArticleFeedbackv5.php",
         "patchSetId": 2
@@ -64,6 +82,24 @@
       "writtenOn": "2012-11-14T00:55:29Z",
       "side": 1,
       "message": "just put a number like 1.0",
+      "revId": "f2b97cfeee0a20fdcc062e860e80c9647ee14ca7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADYX////w\u003d",
+        "filename": "api/ApiGetCountArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-11-14T10:41:30Z",
+      "side": 1,
+      "message": "Like \"return __CLASS__ . \u0027 1.0\u0027;\" or \"return \u00271.0\u0027;\"?\nIt appears to be done this way ($Id$) in the other API files of AFT as well as a lot of other extensions though :p",
+      "parentUuid": "AAADVX///z4\u003d",
       "revId": "f2b97cfeee0a20fdcc062e860e80c9647ee14ca7",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
