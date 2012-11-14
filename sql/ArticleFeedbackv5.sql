@@ -9,6 +9,9 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_article_feedback (
   af_user_ip         varchar(40) NULL,
   -- Unique token for anonymous users (to facilitate ratings from multiple users on the same IP)
   af_user_anon_token varbinary(32) NOT NULL DEFAULT '',
+  -- User Id (0 if anon), but different than af_user_id in that when after submitting feedback a user
+  -- signs up, this value will be filled with the user's id (whereas af_user_id will remain 0)
+  af_claimed_by      integer unsigned NOT NULL DEFAULT 0,
   -- Foreign key to revision.rev_id
   af_revision_id     integer unsigned NOT NULL,
   -- Which feedback widget the user was given. Default of 0 is "none".
