@@ -762,6 +762,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'af_user_id'         => $wgUser->getId(),
 			'af_user_ip'         => $ip,
 			'af_user_anon_token' => $token,
+			'af_claimed_by'      => $wgUser->getId(),
 			'af_form_id'         => $bucket,
 			'af_experiment'      => $experiment,
 			'af_link_id'         => $linkId,

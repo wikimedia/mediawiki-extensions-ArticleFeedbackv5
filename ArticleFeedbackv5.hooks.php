@@ -390,6 +390,13 @@ class ArticleFeedbackv5Hooks {
 			true
 		);
 
+		$updater->addExtensionField(
+			'aft_article_feedback',
+			'af_claimed_by',
+			dirname( __FILE__ ) . '/sql/af_claimed_by.sql',
+			true
+		);
+
 		return true;
 	}
 
@@ -1133,5 +1140,53 @@ class ArticleFeedbackv5Hooks {
 		);
 
 		return $success;
+	}
+
+	/**
+	 * Post-login update new user's last feedback with his new id
+	 *
+	 * @param User $currentUser
+	 * @param string $injected_html
+	 * @return bool
+	 */
+	public static function userLoginComplete( $currentUser, $injected_html ) {
+		global $wgRequest;
+
+		$id = 0;
+
+		// feedback id is c-parameter in the referrer, extract it
+		$referrer = ( $wgRequest->getVal( 'referrer' ) ) ? $wgRequest->getVal( 'referrer' ) : $wgRequest->getHeader( 'referer' );
+		$url = parse_url( $referrer );
+		$values = array();
+		if ( isset( $url['query'] ) ) {
+			parse_str( $url['query'], $values );
+		}
+
+		if ( isset( $values['c'] ) ) {
+			$id = $values['c'];
+
+		// if c-parameter is no longer in url (e.g. account creation didn't work at first attempts), try cookie data
+		} else {
+			global $wgArticleFeedbackv5Tracking;
+			$version = isset( $wgArticleFeedbackv5Tracking['version'] ) ? $wgArticleFeedbackv5Tracking['version'] : 0;
+			$cookie = json_decode( $wgRequest->getCookie( 'feedback-ids', 'ext_articleFeedbackv5@' . $version . '-' ), true );
+			if ( is_array( $cookie ) ) {
+				$id = array_shift( $cookie );
+			}
+		}
+
+		$id = intval( $id );
+		if ( $id ) {
+			$dbw = wfGetDB( DB_MASTER );
+
+			$dbw->update(
+				'aft_article_feedback',
+				array( 'af_claimed_by' => $currentUser->getId() ),
+				array( 'af_id' => $id ),
+				__METHOD__
+			);
+		}
+
+		return true;
 	}
 }
