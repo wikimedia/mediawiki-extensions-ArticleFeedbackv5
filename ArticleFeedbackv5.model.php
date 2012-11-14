@@ -21,6 +21,7 @@ class ArticleFeedbackv5Model extends DataModel {
 		$aft_user,
 		$aft_user_text,
 		$aft_user_token,
+		$aft_claimed_user,
 		$aft_form,
 		$aft_cta,
 		$aft_link,
