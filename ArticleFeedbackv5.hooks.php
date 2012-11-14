@@ -694,6 +694,14 @@ class ArticleFeedbackv5Hooks {
 		$userToken  = $request->getVal( 'articleFeedbackv5_ct_usertoken' );
 		$ctEvent    = $request->getVal( 'articleFeedbackv5_ct_event' );
 
+		/*
+		 * if visitor has old - cached - JS, not all required values will be there
+		 * and we should ignore this hit (it won't have the relevant JS-calls either)
+		 */
+		if ( !$ctToken ) {
+			return;
+		}
+
 		$params = new FauxRequest( array(
 			'action' => 'clicktracking',
 			'eventid' => $ctEvent . '-' . $event,
