@@ -752,6 +752,7 @@
 				// add character-countdown on feedback-field
 				$( document )
 					.on( 'keyup', '.articleFeedbackv5-comment textarea', function () {
+						$.articleFeedbackv5.unlockForm();
 						$.articleFeedbackv5.currentBucket().countdown( $( this ) );
 					} );
 
@@ -2691,7 +2692,6 @@
 
 					// Set up error state
 					$.articleFeedbackv5.markFormErrors( msg );
-					$.articleFeedbackv5.unlockForm();
 				}
 			},
 			'error': function (xhr, tstatus, error) {
