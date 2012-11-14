@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADVX///0s\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-11-14T00:55:29Z",
+      "side": 1,
+      "message": "plural support?",
+      "revId": "f2b97cfeee0a20fdcc062e860e80c9647ee14ca7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADVX///0o\u003d",
+        "filename": "api/ApiArticleFeedbackv5Utils.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-11-14T00:55:29Z",
+      "side": 1,
+      "message": "Does afc_page_id have 0 record in the db?  If not, should just return from here",
+      "revId": "f2b97cfeee0a20fdcc062e860e80c9647ee14ca7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADVX///0E\u003d",
+        "filename": "api/ApiGetCountArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-11-14T00:55:29Z",
+      "side": 1,
+      "message": "You can set pageid with default value 0 in API definition.",
+      "revId": "f2b97cfeee0a20fdcc062e860e80c9647ee14ca7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADVX///z4\u003d",
+        "filename": "api/ApiGetCountArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-11-14T00:55:29Z",
+      "side": 1,
+      "message": "just put a number like 1.0",
+      "revId": "f2b97cfeee0a20fdcc062e860e80c9647ee14ca7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADVX///zQ\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-11-14T00:55:29Z",
+      "side": 1,
+      "message": "Is the location parameter missing here?",
+      "revId": "f2b97cfeee0a20fdcc062e860e80c9647ee14ca7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADVX///zI\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-11-14T00:55:29Z",
+      "side": 1,
+      "message": "should the if block be removed as well? it duplicates the one in $.aftVerify.article()",
+      "revId": "f2b97cfeee0a20fdcc062e860e80c9647ee14ca7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
