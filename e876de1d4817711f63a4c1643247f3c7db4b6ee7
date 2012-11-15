@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADZH///Fg\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-11-15T19:06:22Z",
+      "side": 1,
+      "message": "unrelated to this change, probably should do some more check on the result of Number() or check with isNaN()",
+      "revId": "e876de1d4817711f63a4c1643247f3c7db4b6ee7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
