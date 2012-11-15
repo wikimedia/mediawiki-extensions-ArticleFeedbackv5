@@ -213,7 +213,8 @@
 		if ( typeof odds === 'object' && article.namespace in odds ) {
 			odds = odds[article.namespace];
 		}
-		return ( Number( article.id ) % 1000 ) > ( 1000 - ( Number( odds ) * 10 ) );
+
+		return ( Number( article.id ) % 1000 ) >= ( 1000 - ( Number( odds ) * 10 ) );
 	};
 
 	// }}}
