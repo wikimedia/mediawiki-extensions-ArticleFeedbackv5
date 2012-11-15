@@ -7568,6 +7568,7 @@ inclúe algún dos seguintes problemas:
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 retirou todas as marcas desta mensaxe o $4 ás $5 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 acción nesta mensaxe|$1 accións nesta mensaxe}}',
 	'articlefeedbackv5-activity-more' => 'Mostrar máis actividade',
+	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|1 suxestión|$1 suxestións}}',
 	'articlefeedbackv5-talk-view-feedback' => 'Ollar as suxestións dos lectores',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Comentarios sobre as páxinas que vixío',
 	'articlefeedbackv5-emailcapture-response-body' => 'Ola!
@@ -8940,6 +8941,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 je wšě marki za tutón přinošk $3 wotstronił ($2)',
 	'articlefeedbackv5-activity-count' => '$1 {{PLURAL:$1|akcija|akciji|akcije|akcijow}} k tutomu komentarej',
 	'articlefeedbackv5-activity-more' => 'Dalše aktiwity pokazać',
+	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|1 namjet|$1 namjetaj|$1 namjety|$1 namjetow}}',
 	'articlefeedbackv5-talk-view-feedback' => 'Namjety čitarja pokazać',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Komentary mojich wobkedźbowanych stronow',
 	'articlefeedbackv5-emailcapture-response-body' => 'Halo!
