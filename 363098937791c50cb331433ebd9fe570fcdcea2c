@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADZH///aQ\u003d",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2012-11-15T01:53:13Z",
+      "side": 1,
+      "message": "you can initialize $this-\u003epageId with 0, $title-\u003egetArticleID() would return 0 for special page",
+      "revId": "363098937791c50cb331433ebd9fe570fcdcea2c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
