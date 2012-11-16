@@ -50,6 +50,7 @@ $specialPageAliases['lb'] = array(
 /** Macedonian (македонски) */
 $specialPageAliases['mk'] = array(
 	'ArticleFeedbackv5' => array( 'ОценувањеНаСтатиив5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'ОценувањеНаСтатиив5Набљудувања' ),
 );
 
 /** Norwegian Bokmål (norsk (bokmål)‎) */
