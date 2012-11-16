@@ -90,7 +90,10 @@ $wgArticleFeedbackv5RelevanceScoring = array(
 	'unoversight' => 750,
 );
 
-// Defines whether or not there should be a link to the corresponding feedback on the page's talk page
+// Defines whether or not there should be a link to the corresponding feedback on the article page
+$wgArticleFeedbackv5ArticlePageLink = true;
+
+// Defines whether or not there should be a link to the corresponding feedback on the article page's talk page
 $wgArticleFeedbackv5TalkPageLink = true;
 
 // Defines whether or not there should be a link to the watchlisted feedback on the watchlist page
@@ -384,6 +387,7 @@ $wgAutoloadClasses['ApiArticleFeedbackv5']              = $dir . 'api/ApiArticle
 $wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5']   = $dir . 'api/ApiViewRatingsArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5']  = $dir . 'api/ApiViewFeedbackArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5']  = $dir . 'api/ApiFlagFeedbackArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiGetCountArticleFeedbackv5']      = $dir . 'api/ApiGetCountArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewActivityArticleFeedbackv5']  = $dir . 'api/ApiViewActivityArticleFeedbackv5.php';
 $wgAutoloadClasses['ArticleFeedbackv5Hooks']            = $dir . 'ArticleFeedbackv5.hooks.php';
 $wgAutoloadClasses['ArticleFeedbackv5Permissions']      = $dir . 'ArticleFeedbackv5.permissions.php';
@@ -418,6 +422,7 @@ $wgAPIListModules['articlefeedbackv5-view-ratings']  = 'ApiViewRatingsArticleFee
 $wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';
 $wgAPIListModules['articlefeedbackv5-view-activity'] = 'ApiViewActivityArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-flag-feedback']     = 'ApiFlagFeedbackArticleFeedbackv5';
+$wgAPIModules['articlefeedbackv5-get-count']         = 'ApiGetCountArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5']                   = 'ApiArticleFeedbackv5';
 
 // Special Page

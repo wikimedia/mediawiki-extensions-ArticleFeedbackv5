@@ -55,6 +55,30 @@
 	};
 
 	// }}}
+	// {{{ article
+
+	/**
+	 * Get article info
+	 *
+	 * @return object
+	 */
+	$.aftVerify.article = function () {
+		// make sure we have all data - even on old cached pages
+		$.aftVerify.legacyCorrection();
+
+		var article = mw.config.get( 'aftv5Article' );
+
+		// fetch data, on article level, we can fetch these from other sources as well
+		if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1 ) {
+			article.id = mw.config.get( 'wgArticleId', -1 );
+			article.namespace = mw.config.get( 'wgNamespaceNumber' );
+			article.categories = mw.config.get( 'wgCategories', [] );
+		}
+
+		return article;
+	};
+
+	// }}}
 	// {{{ verify
 
 	/**
@@ -64,18 +88,7 @@
 	 * @return bool     whether AFTv5 is enabled for this page
 	 */
 	$.aftVerify.verify = function ( location ) {
-		// make sure we have all data - even on old cached pages
-		$.aftVerify.legacyCorrection();
-
-		var article = mw.config.get( 'aftv5Article' );
-
-		// fetch data, on article level, we can fetch these from other sources as well
-		if ( location == 'article' ) {
-			article.id = mw.config.get( 'wgArticleId', -1 );
-			article.namespace = mw.config.get( 'wgNamespaceNumber' );
-			article.categories = mw.config.get( 'wgCategories', [] );
-		}
-
+		var article = $.aftVerify.article();
 
 		var enable = true;
 
@@ -200,7 +213,8 @@
 		if ( typeof odds === 'object' && article.namespace in odds ) {
 			odds = odds[article.namespace];
 		}
-		return ( Number( article.id ) % 1000 ) > ( 1000 - ( Number( odds ) * 10 ) );
+
+		return ( Number( article.id ) % 1000 ) >= ( 1000 - ( Number( odds ) * 10 ) );
 	};
 
 	// }}}
