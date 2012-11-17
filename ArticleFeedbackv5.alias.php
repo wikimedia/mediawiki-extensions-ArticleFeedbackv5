@@ -36,6 +36,12 @@ $specialPageAliases['gl'] = array(
 	'ArticleFeedbackv5' => array( 'Avaliación_de_artigos_v5' ),
 );
 
+/** Italian (italiano) */
+$specialPageAliases['it'] = array(
+	'ArticleFeedbackv5' => array( 'FeedbackVocev5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'FeedbackVocev5OsservatiSpeciali' ),
+);
+
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
 	'ArticleFeedbackv5' => array( '문서피드백v5' ),
