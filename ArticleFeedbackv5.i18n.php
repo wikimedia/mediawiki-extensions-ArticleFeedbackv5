@@ -975,7 +975,8 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-noteflyover-show-help' => 'Show post note flyover panel - help link text',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Request oversight note flyover panel - panel caption (request oversight asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Request oversight post note flyover panel - action description',
-	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Request oversight note flyover panel - text area label (request oversight asks that an oversighter review the feedback item)',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Request oversight note flyover panel - text area label (request oversight asks that an oversighter review the feedback item).
+*Apparently, the same as "oversight" in Oversight extension and "suppress" in MediaWiki core\'s revision deletion.',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Request oversight note flyover panel - text area placeholder text (request oversight asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Request oversight note flyover panel - submit button text (request oversight asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Request oversight note flyover panel - help link text (request oversight asks that an oversighter review the feedback item)',
@@ -3389,6 +3390,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author Danmichaelo
  * @author Geitost
  * @author Kghbln
  * @author MF-Warburg
@@ -3425,7 +3427,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-cta6-confirmation-title' => 'Brauchst du Hilfe beim Bearbeiten von {{SITENAME}}?',
 	'articlefeedbackv5-cta6-confirmation-call' => 'Komm zum Teehaus, um das Bearbeiten von {{SITENAME}} zu diskutieren. Dort tauschen neue und erfahrene Autoren nützliche Tipps untereinander aus.',
 	'articlefeedbackv5-cta6-button-text' => 'Teehaus besuchen',
-	'articlefeedbackv5-cta6-button-link' => '//de.wikipedia.org/wiki/Wikipedia:Teehaus?ref=aft',
+	'articlefeedbackv5-cta6-button-link' => '//en.wikipedia.org/wiki/Wikipedia:Teahouse?ref=aft',
 	'articlefeedbackv5-overlay-close' => 'Schließen',
 	'articlefeedbackv5-error' => 'Ein Fehler ist aufgetreten. Bitte versuche es später erneut.',
 	'articlefeedbackv5-error-email' => 'Diese E-Mail-Adresse ist ungültig.',
@@ -6876,6 +6878,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 a supprimé tous les marquages de cette note le $4 à $5 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 action sur cette note|$1 actions sur cette note}}',
 	'articlefeedbackv5-activity-more' => "Afficher plus d'activités",
+	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|1 suggestion|$1 suggestions}}',
 	'articlefeedbackv5-talk-view-feedback' => 'Voir les suggestions du lecteur',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Commentaires de mes pages regardées',
 	'articlefeedbackv5-emailcapture-response-body' => "Bonjour !
@@ -14457,18 +14460,18 @@ $messages['nb'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Takk!',
 	'articlefeedbackv5-cta-confirmation-message' => 'Ditt innlegg kan vises på denne [$1 tilbakemeldingssiden].',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Visste du at du kan redigere denne siden?',
-	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipedia fungerer fordi alle kan redigere alle sidene. Sett i gang, prøv selv. Vær djerv!', # Fuzzy
+	'articlefeedbackv5-cta1-confirmation-call' => '{{SITENAME}} fungerer fordi alle kan redigere innholdet. Sett i gang, prøv selv. Vær djerv!',
 	'articlefeedbackv5-cta1-learn-how' => 'Lær å redigere',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Rediger denne siden',
-	'articlefeedbackv5-cta2-confirmation-title' => 'Hjelp til å forbedre Wikipedia', # Fuzzy
+	'articlefeedbackv5-cta2-confirmation-title' => 'Hjelp til med å forbedre Wikipedia',
 	'articlefeedbackv5-cta2-confirmation-call' => 'Dette nettstedet skapes av folk som deg. Kan du hjelpe oss?',
 	'articlefeedbackv5-cta2-button-text' => 'Lær mer',
 	'articlefeedbackv5-cta3-confirmation-title' => 'Vennligst gjennomfør en rask undersøkelse',
-	'articlefeedbackv5-cta3-confirmation-call' => 'Den tar kun et minutt og vil være til hjelp for å forbedre Wikipedia.', # Fuzzy
+	'articlefeedbackv5-cta3-confirmation-call' => 'Det tar bare et minutt og vil hjelpe til med å forbedre {{SITENAME}}.',
 	'articlefeedbackv5-cta3-button-text' => 'Start undersøkelsen',
 	'articlefeedbackv5-cta4-confirmation-title' => 'Bli med i fellesskapet vårt',
 	'articlefeedbackv5-cta4-confirmation-call-line1' => 'Registrér deg eller logg inn, så andre brukere kan svare på din tilbakemelding.',
-	'articlefeedbackv5-cta4-confirmation-call-line2' => 'En gratis brukerkonto gjør det enklere for deg å dele din kunnskap på Wikipedia.', # Fuzzy
+	'articlefeedbackv5-cta4-confirmation-call-line2' => 'Din gratis brukerkonto gjør det enklere for deg å dele din kunnskap på {{SITENAME}}.',
 	'articlefeedbackv5-cta4-button-text-signup' => 'Opprett konto',
 	'articlefeedbackv5-cta4-button-text-login' => 'Logg inn',
 	'articlefeedbackv5-cta4-button-text-later' => 'Kanskje senere',
@@ -14476,6 +14479,10 @@ $messages['nb'] = array(
 	'articlefeedbackv5-cta5-confirmation-title' => 'Se hva andre synes',
 	'articlefeedbackv5-cta5-confirmation-call' => 'Vis forslag fra andre lesere som deg. Kan du hjelpe med å velge ut de beste idéene?',
 	'articlefeedbackv5-cta5-button-text' => 'Vis alle kommentarer',
+	'articlefeedbackv5-cta6-confirmation-title' => 'Trenger du hjelp med å redigere {{SITENAME}}?',
+	'articlefeedbackv5-cta6-confirmation-call' => 'For å diskutere redigering av {{SITENAME}}, kom innom Tehuset, der nye og erfarne skribenter samles for å utveksle hjelpsomme tips.',
+	'articlefeedbackv5-cta6-button-text' => 'Besøk Tehuset',
+	'articlefeedbackv5-cta6-button-link' => '//en.wikipedia.org/wiki/Wikipedia:Teahouse?ref=aft',
 	'articlefeedbackv5-overlay-close' => 'Lukk',
 	'articlefeedbackv5-error' => 'En feil har oppstått. Prøv igjen senere.',
 	'articlefeedbackv5-error-email' => 'Den e-postadressen er ugyldig.',
@@ -14485,7 +14492,7 @@ $messages['nb'] = array(
 	'articlefeedbackv5-error-submit' => 'Feil ved levering av skjema.',
 	'articlefeedbackv5-error-nofeedback' => 'Skriv inn din tilbakemelding.',
 	'articlefeedbackv5-error-flagging' => 'Feil ved flagging av tilbakemelding.',
-	'articlefeedbackv5-contribs-entry-status' => 'Status: $1', # Fuzzy
+	'articlefeedbackv5-contribs-entry-status' => '. . Status: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Hjelpsom',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Merket',
 	'articlefeedbackv5-contribs-status-action-feature' => 'Fremhevet',
@@ -14514,6 +14521,7 @@ $messages['nb'] = array(
 	'articlefeedbackv5-special-filter-unfeatured' => 'Ikke-fremhevede ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'Løste ($1)',
 	'articlefeedbackv5-special-filter-unresolved' => 'Uløste ($1)',
+	'articlefeedbackv5-special-filter-all-watchlist' => 'Alle innlegg',
 	'articlefeedbackv5-special-filter-notdeleted-watchlist' => 'Alle (skjulte)',
 	'articlefeedbackv5-special-filter-comment-watchlist' => 'Alle kommentarer',
 	'articlefeedbackv5-special-filter-relevant-watchlist' => 'De mest relevante',
@@ -14733,6 +14741,8 @@ $messages['nb'] = array(
 	'articlefeedbackv5-toolbox-view' => 'Vis tilbakemelding',
 	'articlefeedbackv5-toolbox-add' => 'Gi din tilbakemelding',
 	'articlefeedbackv5-disable-preference' => 'Skjul Artikkeltilbakemelding på sidene',
+	'right-aft-reader' => 'Poste tilbakemeldinger og merke som (u)nyttig',
+	'right-aft-member' => 'Poste tilbakemeldinger og merke som (u)nyttig',
 	'articlefeedbackv5-activity-pane-header' => 'Aktivitetslogg',
 	'articlefeedbackv5-activity-feedback-info' => 'Tilbakemeldingsinnlegg #$1 av $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Skrevet den $1',
@@ -18781,6 +18791,8 @@ $messages['sv'] = array(
 	'articlefeedbackv5-contribs-status-action-feature' => 'Utmärkt',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Lösta',
 	'articlefeedbackv5-contribs-status-action-hide' => 'Dolda',
+	'articlefeedbackv5-contribs-status-action-request' => 'Censur begärd',
+	'articlefeedbackv5-contribs-status-action-oversight' => 'Censurerad',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'dold kommentar',
 	'articlefeedbackv5-form-tools-label' => 'Verktyg',
 	'articlefeedbackv5-form-helpful-label' => 'Hjälper detta feedback?',
@@ -18797,10 +18809,15 @@ $messages['sv'] = array(
 	'articlefeedbackv5-special-filter-abusive' => 'Flaggad som missbruk ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Användbart ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Inte användbart ($1)',
+	'articlefeedbackv5-special-filter-requested' => 'Censur begärd ($1)',
+	'articlefeedbackv5-special-filter-unrequested' => 'Censur avbegärd ($1)', # Fuzzy
 	'articlefeedbackv5-special-filter-visible' => 'Alla synliga ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'Dold ($1)',
+	'articlefeedbackv5-special-filter-oversighted' => 'Censurerad ($1)',
+	'articlefeedbackv5-special-filter-declined' => 'Censur avböjd ($1)',
 	'articlefeedbackv5-special-filter-unhidden' => 'Odolda ( $1 )',
 	'articlefeedbackv5-special-filter-featured' => 'Framhävt ($1)',
+	'articlefeedbackv5-special-filter-unfeatured' => 'Inte framhävd ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'Löst ($1)',
 	'articlefeedbackv5-special-filter-unresolved' => 'Olösta ($1)',
 	'articlefeedbackv5-special-filter-all-watchlist' => 'Alla inlägg',
@@ -18810,10 +18827,17 @@ $messages['sv'] = array(
 	'articlefeedbackv5-special-filter-abusive-watchlist' => 'Flaggad som missbruk',
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Hjälpsam',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Inte hjälpsam',
+	'articlefeedbackv5-special-filter-requested-watchlist' => 'Censur begärd',
+	'articlefeedbackv5-special-filter-unrequested-watchlist' => 'Censur avbegärd', # Fuzzy
 	'articlefeedbackv5-special-filter-visible-watchlist' => 'Alla synliga',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'Dolda',
+	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'Censurerad',
+	'articlefeedbackv5-special-filter-declined-watchlist' => 'Censur avböjd',
+	'articlefeedbackv5-special-filter-unhidden-watchlist' => 'Inte dold',
 	'articlefeedbackv5-special-filter-featured-watchlist' => 'Framhävd',
+	'articlefeedbackv5-special-filter-unfeatured-watchlist' => 'Inte framhävd',
 	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Löst',
+	'articlefeedbackv5-special-filter-unresolved-watchlist' => 'Inte löst',
 	'articlefeedbackv5-special-sort-relevance-asc' => 'Relevans',
 	'articlefeedbackv5-special-sort-relevance-desc' => 'Irrelevant',
 	'articlefeedbackv5-special-sort-helpful-desc' => 'Användbar',
@@ -18841,12 +18865,18 @@ $messages['sv'] = array(
 	'articlefeedbackv5-loading-tag' => 'Laddar...',
 	'articlefeedbackv5-status-hide' => 'Denna post doldes av $1 den $2 klockan $3',
 	'articlefeedbackv5-status-unhide' => 'Detta inlägg återvisades av $1 den $2 klockan $3',
+	'articlefeedbackv5-status-request' => 'Censur för detta inlägg begärdes av $1 den $2 kl $3',
+	'articlefeedbackv5-status-unrequest' => 'Tillsyn för detta inlägg avbegärdes av $1 den $2 kl $3', # Fuzzy
+	'articlefeedbackv5-status-decline' => 'Censur för detta inlägg avböjdes av $1 den $2 kl $3',
 	'articlefeedbackv5-status-autohide' => 'Detta inlägg gömdes automatiskt av $1 den $2 klockan $3',
+	'articlefeedbackv5-status-oversight' => 'Detta inlägg censurerades av $1 den $2 kl $3',
+	'articlefeedbackv5-status-unoversight' => 'Detta inlägg avcensurerades av $1 den $2 kl $3', # Fuzzy
 	'articlefeedbackv5-status-autoflag' => 'Detta inlägg flaggades automatiskt av $1 den $2 klockan $3',
 	'articlefeedbackv5-status-feature' => 'Detta inlägg framhävdes av $1 den $2 klockan $3',
 	'articlefeedbackv5-status-resolve' => 'Detta inlägg markerades som löst av $1 på $2 klockan $3',
 	'articlefeedbackv5-status-unresolve' => 'Detta inlägg avmarkerades som löst av $1 på $2 klockan $3',
 	'articlefeedbackv5-new-marker' => 'Ny',
+	'articlefeedbackv5-deleted-marker' => 'Censurerad',
 	'articlefeedbackv5-hidden-marker' => 'Dold',
 	'articlefeedbackv5-featured-marker' => 'Framhävd',
 	'articlefeedbackv5-form-feature' => 'Framhäv det här inlägget',
@@ -18861,6 +18891,11 @@ $messages['sv'] = array(
 	'articlefeedbackv5-form-abuse' => 'Flagga som missbruk',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 flagga|$1 flaggor}}',
 	'articlefeedbackv5-form-abuse-cleared' => 'Flaggor borttagna',
+	'articlefeedbackv5-form-delete' => 'Censur',
+	'articlefeedbackv5-form-oversight' => 'Begäran censur',
+	'articlefeedbackv5-form-unoversight' => 'Avbegär censur', # Fuzzy
+	'articlefeedbackv5-form-decline' => 'Avböj censur',
+	'articlefeedbackv5-form-declined' => 'Censur avböjd',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 hittade vad de letade efter}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 hittade inte vad hen letade efter.}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 postade en kommentar.}}',
@@ -18877,6 +18912,7 @@ $messages['sv'] = array(
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} gav [[$4|feedback]] till $3',
 	'articlefeedbackv5-abuse-saved' => 'Flaggad som missbruk',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Ta bort flaggan du satte.',
+	'articlefeedbackv5-oversight-saved' => 'Märkt för censur',
 	'articlefeedbackv5-error-loading-feedback' => 'Fel vid laddning av feedback.',
 	'articlefeedbackv5-invalid-feedback-id' => 'Ogiltigt feedback-ID',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Ogiltig feedback-flagga',
@@ -18926,7 +18962,10 @@ $messages['sv'] = array(
 	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 åtgärd|$1 åtgärder}})',
 	'articlefeedbackv5-permalink-activity-none' => 'Det har inte varit någon aktivitet på detta inlägg.',
 	'articlefeedbackv5-permalink-status-hide' => '{{GENDER:$1|<strong>Dold</strong> av  $1}} $2 sedan',
+	'articlefeedbackv5-permalink-status-request' => '{{GENDER:$1|<strong>Censur</strong> begärdes av $1}} $2 sedan',
+	'articlefeedbackv5-permalink-status-decline' => '{{GENDER:$1|<strong>Censur</strong> avböjdes av $1}} $2 sedan',
 	'articlefeedbackv5-permalink-status-autohide' => '{{GENDER:$1|<strong>Automatiskt dold</strong> av $1}} $2 sedan',
+	'articlefeedbackv5-permalink-status-oversight' => '{{GENDER:$1|<strong>Censurerad</strong> av $1}} $2 sedan',
 	'articlefeedbackv5-permalink-status-autoflag' => '{{GENDER:$1|<strong>Automatiskt flaggad</strong> av $1}} $2 sedan',
 	'articlefeedbackv5-permalink-status-feature' => '{{GENDER:$1|<strong>Framhävd</strong> av  $1}} $2 sedan',
 	'articlefeedbackv5-permalink-status-resolve' => '{{GENDER:$1|<strong>Markerad som löst</strong> av $1}} $2 sedan',
@@ -18962,16 +19001,34 @@ $messages['sv'] = array(
 	'articlefeedbackv5-noteflyover-show-caption' => 'Ta fram detta inlägg',
 	'articlefeedbackv5-noteflyover-show-label' => 'Lägg till en anteckning',
 	'articlefeedbackv5-noteflyover-show-help' => 'Läs mer',
-	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Lägg till en anteckning för att förklara varför varför du begär tillsyn', # Fuzzy
+	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Begär censur',
+	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Var god kontroller att detta inlägg inkluderar ett av
+dessa fel innan du begär tillsyn:
+* telefonnummer
+* e-postadresser
+* pornografiska länkar
+* nedsättande/ärekränkande kommentarer om en person
+* [http://sv.wikipedia.org/wiki/Wikipedia:Censorer#Villkor_för_användande_av_censorfunktionen andra kriterier för tillsyn]',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Lägg till en anteckning för att förklara varför du begär tillsyn',
+	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Varför begär du censur?',
+	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Begär censur',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Läs mer',
+	'articlefeedbackv5-noteflyover-unrequestoversight-caption' => 'Avbryt censurbegäran',
 	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'Lägg till en anteckning',
+	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Varför avbryter du censurbegäran?',
 	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Avbryt begäran',
 	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Läs mer',
+	'articlefeedbackv5-noteflyover-oversight-caption' => 'Censurera detta inlägg',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Lägg till en anteckning',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Varför censurerar du detta inlägg?',
+	'articlefeedbackv5-noteflyover-oversight-submit' => 'Censurera detta inlägg',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Läs mer',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Lägg till en anteckning',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Läs mer',
+	'articlefeedbackv5-noteflyover-declineoversight-caption' => 'Avböj censur',
 	'articlefeedbackv5-noteflyover-declineoversight-label' => 'Lägg till en anteckning',
+	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'Varför avböjer du censuren?',
+	'articlefeedbackv5-noteflyover-declineoversight-submit' => 'Avböj censur',
 	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Läs mer',
 	'articlefeedbackv5-bucket1-title' => 'Hjälp till att förbättra denna sida',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Hittade du det som du letade efter?',
@@ -19020,20 +19077,32 @@ $messages['sv'] = array(
 	'articlefeedbackv5-disable-preference' => 'Visa inte artikelbedömnings-widget på sidor',
 	'right-aft-reader' => 'Skicka in feedback och markera som (inte) hjälpsamt',
 	'right-aft-member' => 'Skicka in feedback och markera som (inte) hjälpsamt',
+	'right-aft-editor' => 'Framhäv och lös feedback',
 	'right-aft-administrator' => 'Se AFT på skyddade sidor',
+	'right-aft-oversighter' => 'Censurfeedback',
 	'log-name-articlefeedbackv5' => 'Aktivitetslogg för artikelfeedback',
+	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|ändrade censurstatusen för}} [[$3|feedbackinlägg #$4]] på [[$5]]',
+	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|tog bort censurstatusen för}} [[$3|feedbackinlägg #$4]] på [[$5]]',
 	'logentry-articlefeedbackv5-hide' => '$1 {{GENDER:$2|doldes}} [[$3|feedbackinlägg #$4]] på [[$5]]',
+	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|avböjde censur för}} [[$3|feedbackinlägg #$4]] på [[$5]]',
 	'logentry-articlefeedbackv5-flag' => '$1 {{GENDER:$2|flaggades som missbruk}} [[$3|feedbackinlägg #$4]] på [[$5]]',
 	'logentry-articlefeedbackv5-autoflag' => '$1 {{GENDER:$2|flaggades som missbruk automatiskt}} [[$3|feedbackinlägg #$4]] den [[$5]]',
 	'logentry-articlefeedbackv5-feature' => '$1 {{GENDER:$2|framhävde}} [[$3|feedbackinlägg #$4]] på [[$5]]',
-	'logentry-articlefeedbackv5-resolve' => '$1 {{GENDER:$2|markerades som läst}} [[$3|feedbackinlägg #$4]] på [[$5]]',
+	'logentry-articlefeedbackv5-resolve' => '$1 {{GENDER:$2|markerades som löst}} [[$3|feedbackinlägg #$4]] på [[$5]]',
+	'logentry-articlefeedbackv5-unresolve' => '$1 {{GENDER:$2|avmarkerades som löst}} [[$3|feedbackinlägg #$4]] på [[$5]]',
+	'logentry-articlefeedbackv5-helpful' => '$1 {{GENDER:$2|markerades som hjälpsam}} [[$3|feedbackinlägg #$4]] på [[$5]]',
+	'logentry-articlefeedbackv5-unhelpful' => '$1 {{GENDER:$2|markerade som ohjälpsam}} [[$3|feedbackinlägg #$4]] på [[$5]]',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|tog bort alla flaggor}} [[$3|feedbackinlägg #$4]] på [[$5]]',
 	'articlefeedbackv5-activity-pane-header' => 'Aktivitetslogg',
 	'articlefeedbackv5-activity-feedback-info' => 'Feedbackinlägg #$1 av $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Skrevs den $1',
 	'articlefeedbackv5-activity-permalink' => 'permanent länk',
+	'articlefeedbackv5-activity-item-request' => '$1 begärde censur den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 avböjde censur den $4 kl $5 $2',
 	'articlefeedbackv5-activity-item-hide' => '$1 dolde detta inlägg den $4 kl $5 $2',
 	'articlefeedbackv5-activity-item-flag' => '$1 flaggade detta inlägg den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 censurerade detta inlägg den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 tog bort censur på detta inlägg den $4 kl $5 $2',
 	'articlefeedbackv5-activity-item-resolve' => '$1 markerade detta inlägg som löst den $4 kl $5 $2',
 	'articlefeedbackv5-activity-item-feature' => '$1 framhävde detta inlägg den $4 kl $5 $2',
 	'articlefeedbackv5-activity-item-helpful' => '$1 markerade detta inlägg som hjälpsamt den $4 kl $5 $2',
@@ -19068,6 +19137,29 @@ Om du inte påbörjade denna begäran, ignorera detta e-postmeddelande och vi ko
 
 Tack och lycka till!
 {{SITENAME}}-teamet',
+	'articlefeedbackv5-email-request-oversight-subject' => 'Censur begärdes för artikelfeedbacksida',
+	'articlefeedbackv5-email-request-oversight-body' => 'Hej, censorer!
+
+Censur begärdes av $1 för feedback som lades upp på denna artikel:
+
+$2
+
+Var god granska detta feedbackinlägg och godkänn eller avböj denna
+censurbegäran:
+
+$3
+
+Tack,
+
+
+{{SITENAME}}-teamet
+
+
+P.S.: Om du har några frågor om hur man använder censurfunktionen för
+artikelfeedbackssidorna, var god kolla på denna sida med frågor och
+svar om censur:
+
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Ta bort detta verktyg?',
 	'articlefeedbackv5-disable-flyover-help' => 'För att ta bort $1, gå till $2 och kontrollera $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Artikelbedömning',
@@ -19077,6 +19169,8 @@ Tack och lycka till!
 	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Automatiskt flaggad som missbruk. Regel: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Artikel Feedback) Dölj automatiskt',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automatiskt dolda. Regel: $1',
+	'abusefilter-edit-action-aftv5requestoversight' => '(Artikelfeedback) Automatisk begäran av censur',
+	'articlefeedbackv5-abusefilter-note-aftv5requestoversight' => 'Censur begärdes automatiskt. Regel: $1',
 );
 
 /** Swahili (Kiswahili)
