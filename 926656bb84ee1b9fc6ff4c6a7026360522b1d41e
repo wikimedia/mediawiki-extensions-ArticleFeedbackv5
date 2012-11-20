@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADZH//8KI\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2012-11-20T17:18:09Z",
+      "side": 1,
+      "message": "extra comma",
+      "revId": "926656bb84ee1b9fc6ff4c6a7026360522b1d41e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
