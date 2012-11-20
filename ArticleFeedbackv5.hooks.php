@@ -185,6 +185,7 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-help-form-linkurl-monitors',
 				'articlefeedbackv5-help-form-linkurl-oversighters',
 				'articlefeedbackv5-help-transparency-terms',
+				'articlefeedbackv5-help-transparency-terms-anon',
 				'parentheses',
 				'articlefeedbackv5-disable-flyover-title',
 				'articlefeedbackv5-disable-flyover-help',

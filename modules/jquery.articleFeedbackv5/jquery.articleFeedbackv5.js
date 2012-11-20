@@ -360,7 +360,11 @@
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
 				// Fill in the disclosure text
-				$block.find( '.articlefeedbackv5-help-transparency-terms' ).msg( 'articlefeedbackv5-help-transparency-terms' );
+				var message = 'articlefeedbackv5-help-transparency-terms';
+				if ( $.articleFeedbackv5.anonymous ) {
+					message = 'articlefeedbackv5-help-transparency-terms-anon';
+				}
+				$block.find( '.articlefeedbackv5-help-transparency-terms' ).msg( message );
 
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-submit' )
@@ -696,7 +700,11 @@
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
 				// Fill in the disclosure text
-				$block.find( '.articlefeedbackv5-help-transparency-terms' ).msg( 'articlefeedbackv5-help-transparency-terms' );
+				var message = 'articlefeedbackv5-help-transparency-terms';
+				if ( $.articleFeedbackv5.anonymous ) {
+					message = 'articlefeedbackv5-help-transparency-terms-anon';
+				}
+				$block.find( '.articlefeedbackv5-help-transparency-terms' ).msg( message );
 
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-submit' )
