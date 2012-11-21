@@ -597,6 +597,7 @@ $4',
  * @author Kghbln
  * @author Krinkle
  * @author Liangent
+ * @author Lloffiwr
  * @author McDutchie
  * @author Minh Nguyen
  * @author Mormegil
@@ -976,7 +977,9 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Request oversight note flyover panel - panel caption (request oversight asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Request oversight post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Request oversight note flyover panel - text area label (request oversight asks that an oversighter review the feedback item).
-*Apparently, the same as "oversight" in Oversight extension and "suppress" in MediaWiki core\'s revision deletion.',
+*Apparently, the same as "oversight" in Oversight extension and "suppress" in MediaWiki core\'s revision deletion.
+
+Usual meaning of oversight in English is "regulatory supervision". Source: http://www.merriam-webster.com/dictionary/oversight',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Request oversight note flyover panel - text area placeholder text (request oversight asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Request oversight note flyover panel - submit button text (request oversight asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Request oversight note flyover panel - help link text (request oversight asks that an oversighter review the feedback item)',
@@ -3766,7 +3769,7 @@ eine der folgenden Probleme enthält:
 	'articlefeedbackv5-help-form-linkurl-editors' => '//de.wikipedia.org/wiki/Wikipedia:Artikel-Feedback',
 	'articlefeedbackv5-help-form-linkurl-monitors' => '//de.wikipedia.org/wiki/Wikipedia:Artikel-Feedback',
 	'articlefeedbackv5-help-form-linkurl-oversighters' => '//de.wikipedia.org/wiki/Wikipedia:Artikel-Feedback',
-	'articlefeedbackv5-help-transparency-terms' => 'Bitte hinterlasse dem Autor [//de.wikipedia.org/wiki/Wikipedia:Artikel-Feedback/Feedback_Orga#Tipps.2C_um_Feedback_zu_geben nützliche Rückmeldungen]. Mit dem Speichern stimmst du diesen [//wikimediafoundation.org/wiki/Feedback_privacy_statement/de Bedingungen] zu.',
+	'articlefeedbackv5-help-transparency-terms' => 'Bitte hinterlasse [//de.wikipedia.org/wiki/Wikipedia:Artikel-Feedback/Feedback_Orga#Tipps.2C_um_Feedback_zu_geben nützliche Rückmeldungen]. Mit dem Speichern stimmst du diesen [//wikimediafoundation.org/wiki/Feedback_privacy_statement/de Bedingungen] zu.',
 	'articlefeedbackv5-sitesub-linktext' => 'Verbessere diese Seite',
 	'articlefeedbackv5-titlebar-linktext' => 'Du kannst helfen, diesen Artikel zu verbessern >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Verbessere diese Seite',
@@ -3875,7 +3878,7 @@ $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Diese Funktion entfernen?',
 	'articlefeedbackv5-disable-flyover-help' => 'Um $1 zu deaktivieren, gehe zu $2 und klicke die Option $3 an',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Rückmeldungen zu Artikeln',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Meine Einstellungen > Aussehen',
+	'articlefeedbackv5-disable-flyover-help-location' => 'Einstellungen > Aussehen',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Zu meinen Einstellungen',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Seiteneinschätzung) Automatisch als Missbrauch kennzeichnen',
 	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Automatisch als Missbrauch gekennzeichnet. Regel: $1',
@@ -16143,6 +16146,7 @@ $messages['pms'] = array(
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 sman-a|$1 sman-e}}',
 	'articlefeedbackv5-timestamp-seconds' => 'men che 1 minuta',
 	'articlefeedbackv5-mask-view-contents' => 'Smon-e ij contnù',
+	'articlefeedbackv5-mask-text-autohide' => "Ës mëssagi #$1 {{GENDER:$2|a l'é stàit stërmà da $2}} $3 fà.",
 	'articlefeedbackv5-mask-text-hide' => "Ës mëssagi #$1 {{GENDER:$2|a l'é stàit stërmà da $2}} $3 fà.",
 	'articlefeedbackv5-mask-text-oversight' => "Ës mëssagi #$1 {{GENDER:$2|a l'é stàit dzorvejà da $2}} $3 fà.",
 	'articlefeedbackv5-mask-postnumber' => 'Mëssagi #$1',
@@ -16213,7 +16217,13 @@ $messages['pms'] = array(
 	'articlefeedbackv5-noteflyover-show-submit' => 'Dëscoata sto mëssagi',
 	'articlefeedbackv5-noteflyover-show-help' => 'Savèjne ëd pi',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Ciamé na dzorvejansa',
-	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Gionta na nòta', # Fuzzy
+	'articlefeedbackv5-noteflyover-requestoversight-description' => "Prima ëd ciamé la sopression, për piasì contròla che sto mëssagi a conten-a almanch un dij problem ch'a ven-o:
+* nùmer ëd telefono
+* adrëssa e-mail
+* colegament pronogràfich
+* coment difamador/calunios a propòsit ëd na përson-a
+* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Polìtica dzora a criter për la sopression]",
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Gionta na nòta për spieghé përchè it të stas coiamand na sopression',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Përchè a ciama na dzorvejansa?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Ciamé na dzorvejansa',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Savèjne ëd pi',
@@ -16248,12 +16258,12 @@ $messages['pms'] = array(
 	'articlefeedbackv5-bucket1-form-submit' => "Ch'a pùblica soa opinion",
 	'articlefeedbackv5-bucket4-title' => "Ch'a giuta a amelioré costa pàgina",
 	'articlefeedbackv5-bucket4-subhead' => "A lo savìa ch'a peul modifiché costa pàgina?",
-	'articlefeedbackv5-bucket4-teaser-line1' => 'Wikipedia a marcia përchè chicassìa a peul modifiché soe pàgine.', # Fuzzy
+	'articlefeedbackv5-bucket4-teaser-line1' => '{{SITENAME}} a marcia përchè chicassìa a peul modifiché soe pàgine.',
 	'articlefeedbackv5-bucket4-teaser-line2' => "Fòrsa, ch'a fasa na preuva. Ch'a sia vajant!",
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Amprende com modifiché',
 	'articlefeedbackv5-bucket4-form-submit' => "Modìfica st'artìcol-sì",
-	'articlefeedbackv5-bucket4-help-tooltip-info' => "Wikipedia a veul savèj lòn ch'a pensa. Ch'a giuta a amelioré costa pàgina an ëdventant un modificator.", # Fuzzy
-	'articlefeedbackv5-bucket4-noedit-title' => "Ch'a giuta a amelioré Wikipedia", # Fuzzy
+	'articlefeedbackv5-bucket4-help-tooltip-info' => "{{SITENAME}} a veul savèj lòn ch'a pensa. Ch'a giuta a amelioré costa pàgina an ëdventant un modificator.",
+	'articlefeedbackv5-bucket4-noedit-title' => "Ch'a giuta a amelioré {{SITENAME}}",
 	'articlefeedbackv5-bucket4-noedit-teaser-line1' => "Ës sit ëd l'aragnà a l'é creà da 'd përson-e com chiel.",
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'Peul-lo dene na man?',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Savèjne ëd pi',
@@ -16264,14 +16274,14 @@ $messages['pms'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => "Bò, i l'heu trovà lòn ch'i sërcava.",
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => "Nò, i l'heu pa trovà lòn ch'i sërcava.",
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 caràter restant)|($1 caràter restant)}}',
-	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Grand. Veus-to gionté un coment?', # Fuzzy
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Com a podrìa esse ameliorà cost artìcol?', # Fuzzy
+	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Grand. Chèich sugeriment për amelioré?',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => "Scriv ij tò sugeriment ambelessì (për esempi 'Sta vos a l'ha dzbzògn ëd na figura')",
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'An dëspias sòn. Chèich sugeriment për amelioré?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => "Lòn ch'a sërca?", # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-no' => "Scriv ij tò sugeriment ambelessì (për esempi 'Sta vos a l'ha dzbzògn ëd na figura')",
 	'articlefeedbackv5-bucket6-form-submit' => "Ch'a pùblica soa opinion",
 	'articlefeedbackv5-bucket6-backlink-text' => 'André al pass 1',
 	'articlefeedbackv5-help-tooltip-title' => "Lòn ch'a l'é sossì?",
-	'articlefeedbackv5-help-tooltip-info' => "Wikipedia a vorerìa sente lòn ch'a pense ëd costa pàgina. Ch'a partagia soa opinion con ij modificator -- e ch'a giuta a amelioré costa pàgina.", # Fuzzy
+	'articlefeedbackv5-help-tooltip-info' => "{{SITENAME}} a vorerìa sente lòn ch'a pense ëd costa pàgina. Ch'a partagia soa opinion con ij modificator — e ch'a giuta a amelioré costa pàgina.",
 	'articlefeedbackv5-help-tooltip-linktext' => 'Savèjne ëd pi',
 	'articlefeedbackv5-help-transparency-terms' => "Për piasì, ch'a pùblica [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines dij coment ùtij]. An publicand, a diciara d'esse d'acòrdi con la trasparensa sota coste [//wikimediafoundation.org/wiki/Feedback_privacy_statement condission].",
 	'articlefeedbackv5-sitesub-linktext' => 'Amelioré costa pàgina',
@@ -16282,6 +16292,14 @@ $messages['pms'] = array(
 	'articlefeedbackv5-toolbox-view' => 'Vardé ij coment',
 	'articlefeedbackv5-toolbox-add' => 'Gionta tò coment',
 	'articlefeedbackv5-disable-preference' => "Smon-e nen la tàula ëd valutassion ëd j'Artìcol an sle pàgine",
+	'right-aft-reader' => 'Scriv un coment e marca com (in)ùtil',
+	'right-aft-member' => 'Scriv un coment e marca com (in)ùtil',
+	'right-aft-editor' => 'A potensia e a arzòlv ij coment',
+	'right-aft-monitor' => 'Stërma coment e ciama sopression',
+	'right-aft-administrator' => 'Varda AFT dzora a pagine protegiùe',
+	'right-aft-oversighter' => 'Coment ëd sopression',
+	'log-name-articlefeedbackv5' => "Registr d'Atività dij Coment dl'Artìcol",
+	'log-description-articlefeedbackv5' => "Cost-sì a l'é ël registr dj'atività fàite an sj'element ëd coment cujì për j'artìcoj an dovrand ël Coment d'Artìcol.",
 	'articlefeedbackv5-activity-pane-header' => "Registr d'Atività",
 	'articlefeedbackv5-activity-feedback-info' => 'Mëssagi ëd Coment #$1 da $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Spedì dzora a $1',
@@ -21341,6 +21359,7 @@ $4',
 /** Traditional Chinese (中文（繁體）‎)
  * @author Anakmalaysia
  * @author Hydra
+ * @author Justincheng12345
  * @author Liangent
  * @author Mark85296341
  * @author Oapbtommy
@@ -21353,17 +21372,18 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-cta-thanks' => '謝謝！',
 	'articlefeedbackv5-cta-confirmation-message' => '您可以在這個[$1 反饋頁面]上查看您的帖子。',
 	'articlefeedbackv5-cta1-confirmation-title' => '您知道您可以編輯這個頁面嗎？',
-	'articlefeedbackv5-cta1-confirmation-call' => '維基百科之所以存在，因為任何人都可以編輯其頁面。繼續吧，試一試，勇敢一些！', # Fuzzy
+	'articlefeedbackv5-cta1-confirmation-call' => '{{SITENAME}}因所有人皆可編輯其頁面而存在。繼續吧，試一試，勇敢一些！',
 	'articlefeedbackv5-cta1-learn-how' => '學習如何編輯',
 	'articlefeedbackv5-cta1-edit-linktext' => '編輯此頁',
 	'articlefeedbackv5-cta2-confirmation-title' => '幫助改善{{SITENAME}}',
 	'articlefeedbackv5-cta2-confirmation-call' => '這個網站由像您一樣的人創建。您願意幫一把嗎？',
 	'articlefeedbackv5-cta2-button-text' => '了解更多',
 	'articlefeedbackv5-cta3-confirmation-title' => '請完成一下一張簡短的問卷',
-	'articlefeedbackv5-cta3-confirmation-call' => '參與調查只需一分鐘，將有助於改善維基百科。', # Fuzzy
+	'articlefeedbackv5-cta3-confirmation-call' => '參與調查只需一分鐘，將有助於改善{{SITENAME}}。',
 	'articlefeedbackv5-cta3-button-text' => '開始調查',
 	'articlefeedbackv5-cta4-confirmation-title' => '加入我們的社區',
 	'articlefeedbackv5-cta4-confirmation-call-line1' => '請註冊或登錄，這樣編者們可以對您的反饋作出回應。',
+	'articlefeedbackv5-cta4-confirmation-call-line2' => '擁有一個免費帳號可以使您更容易在{{SITENAME}}上分享您所知道的事物。',
 	'articlefeedbackv5-cta4-button-text-signup' => '創建帳號',
 	'articlefeedbackv5-cta4-button-text-login' => '登入',
 	'articlefeedbackv5-cta4-button-text-later' => '也許以後再說',
@@ -21371,21 +21391,27 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-cta5-confirmation-title' => '看其他人在說什麼',
 	'articlefeedbackv5-cta5-confirmation-call' => '看一看像您一樣其他讀者的建議。您可以挑選最好的建議嗎？',
 	'articlefeedbackv5-cta5-button-text' => '顯示所有評論',
+	'articlefeedbackv5-cta6-confirmation-title' => '需要編輯{{SITENAME}}的幫助嗎？',
+	'articlefeedbackv5-cta6-confirmation-call' => '要討論{{SITENAME}}上的編輯，到茶館來，新手和有經驗編輯皆會聚集，交換有用的提示。',
+	'articlefeedbackv5-cta6-button-text' => '訪問茶館',
 	'articlefeedbackv5-overlay-close' => '關閉',
 	'articlefeedbackv5-error' => '發生了錯誤。請稍後再試。',
 	'articlefeedbackv5-error-email' => '此電子郵件地址無效。',
 	'articlefeedbackv5-error-blocked' => '被阻止的使用者不能提交回饋。',
 	'articlefeedbackv5-error-validation' => '驗證錯誤。',
-	'articlefeedbackv5-error-abuse' => '您的評論被軟體過濾器拒絕，它可能違反了維基百科的$1。請修改之。', # Fuzzy
+	'articlefeedbackv5-error-abuse' => '您的評論被軟體過濾器拒絕，它可能違反了{{SITENAME}}的[$1 回饋指引]。請修改之。',
 	'articlefeedbackv5-error-unknown' => '未知錯誤。',
 	'articlefeedbackv5-error-submit' => '表單提交錯誤。',
 	'articlefeedbackv5-error-nofeedback' => '請輸入您的反饋。',
 	'articlefeedbackv5-error-flagging' => '標記反饋時發生錯誤。',
+	'articlefeedbackv5-error-throttled' => '回您的評論已遭拒絕，因為您最近發表的回饋已超出{{SITENAME}}的回饋方針推薦的數量。請不要重複或過度發表反饋。',
+	'articlefeedbackv5-protection-level' => '條目回饋',
+	'articlefeedbackv5-protection-level-error' => '條目回饋保護層級不能高於編輯保護層級',
 	'articlefeedbackv5-protection-permission-reader' => '對全部用戶開放使用',
 	'articlefeedbackv5-protection-permission-member' => '僅對登錄用戶開放使用',
 	'articlefeedbackv5-protection-permission-editor' => '僅對自動確認用戶開放使用',
 	'articlefeedbackv5-protection-permission-administrator' => '僅對管理員開放使用',
-	'articlefeedbackv5-contribs-entry-status' => '狀態：$1', # Fuzzy
+	'articlefeedbackv5-contribs-entry-status' => '. . 狀態：$1',
 	'articlefeedbackv5-contribs-status-action-helpful' => '有幫助',
 	'articlefeedbackv5-contribs-status-action-flag' => '已標記',
 	'articlefeedbackv5-contribs-status-action-feature' => '特色',
@@ -21402,7 +21428,7 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1是|$1是}}/ {{PLURAL:$2|1否|$2否}}',
 	'articlefeedbackv5-special-add-feedback' => '發布您的回饋',
 	'articlefeedbackv5-special-survey-button-text' => '你怎樣看這回饋工具？',
-	'articlefeedbackv5-special-filter-all' => '全部（刪除）（$1）', # Fuzzy
+	'articlefeedbackv5-special-filter-all' => '全部評論（$1）',
 	'articlefeedbackv5-special-filter-notdeleted' => '全部(隱藏) ($1)',
 	'articlefeedbackv5-special-filter-comment' => '全部評論（$1）',
 	'articlefeedbackv5-special-filter-relevant' => '最相關 ( $1 )',
@@ -21421,11 +21447,24 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-special-filter-unfeatured' => '取消特色（$1）',
 	'articlefeedbackv5-special-filter-resolved' => '已解決（$1）',
 	'articlefeedbackv5-special-filter-unresolved' => '未解決（$1）',
+	'articlefeedbackv5-special-filter-all-watchlist' => '所有評論',
+	'articlefeedbackv5-special-filter-notdeleted-watchlist' => '所有（隱藏）',
 	'articlefeedbackv5-special-filter-comment-watchlist' => '全部評論',
 	'articlefeedbackv5-special-filter-relevant-watchlist' => '最相關',
+	'articlefeedbackv5-special-filter-abusive-watchlist' => '已標記為濫用',
 	'articlefeedbackv5-special-filter-helpful-watchlist' => '有幫助',
+	'articlefeedbackv5-special-filter-unhelpful-watchlist' => '無幫助',
 	'articlefeedbackv5-special-filter-requested-watchlist' => '巡查請求',
+	'articlefeedbackv5-special-filter-unrequested-watchlist' => '取消監督請求',
 	'articlefeedbackv5-special-filter-visible-watchlist' => '全部可見',
+	'articlefeedbackv5-special-filter-hidden-watchlist' => '已隱藏',
+	'articlefeedbackv5-special-filter-oversighted-watchlist' => '已監督',
+	'articlefeedbackv5-special-filter-unoversighted-watchlist' => '取消監督',
+	'articlefeedbackv5-special-filter-unhidden-watchlist' => '取消隱藏',
+	'articlefeedbackv5-special-filter-featured-watchlist' => '精選',
+	'articlefeedbackv5-special-filter-unfeatured-watchlist' => '取消精選',
+	'articlefeedbackv5-special-filter-resolved-watchlist' => '已解決',
+	'articlefeedbackv5-special-filter-unresolved-watchlist' => '取消已解决',
 	'articlefeedbackv5-special-sort-relevance-asc' => '有關',
 	'articlefeedbackv5-special-sort-relevance-desc' => '無關',
 	'articlefeedbackv5-special-sort-helpful-desc' => '有幫助',
@@ -21596,7 +21635,7 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-noteflyover-show-submit' => '取消隱藏該帖',
 	'articlefeedbackv5-noteflyover-show-help' => '了解更多',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => '請求監督',
-	'articlefeedbackv5-noteflyover-requestoversight-label' => '添加注釋', # Fuzzy
+	'articlefeedbackv5-noteflyover-requestoversight-label' => '添加注釋解釋為何要求監督',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => '為什麼你請求監督？',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => '請求刪除',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => '了解更多',
@@ -21665,6 +21704,9 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-toolbox-view' => '查看反饋',
 	'articlefeedbackv5-toolbox-add' => '添加您的反饋',
 	'articlefeedbackv5-disable-preference' => '不在頁面顯示條目反饋部件',
+	'right-aft-oversighter' => '監督回饋',
+	'log-name-articlefeedbackv5' => '條目回饋活動日誌',
+	'log-description-articlefeedbackv5' => '這是記錄條目回饋活動的日誌。',
 	'articlefeedbackv5-activity-pane-header' => '活動日誌',
 	'articlefeedbackv5-activity-feedback-info' => '$2發表的反饋#$1',
 	'articlefeedbackv5-activity-feedback-date' => '發佈於$1',
