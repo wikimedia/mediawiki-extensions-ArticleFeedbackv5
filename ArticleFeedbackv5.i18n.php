@@ -16217,13 +16217,13 @@ $messages['pms'] = array(
 	'articlefeedbackv5-noteflyover-show-submit' => 'Dëscoata sto mëssagi',
 	'articlefeedbackv5-noteflyover-show-help' => 'Savèjne ëd pi',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Ciamé na dzorvejansa',
-	'articlefeedbackv5-noteflyover-requestoversight-description' => "Prima ëd ciamé la sopression, për piasì contròla che sto mëssagi a conten-a almanch un dij problem ch'a ven-o:
-* nùmer ëd telefono
-* adrëssa e-mail
-* colegament pronogràfich
-* coment difamador/calunios a propòsit ëd na përson-a
-* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Polìtica dzora a criter për la sopression]",
-	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Gionta na nòta për spieghé përchè it të stas coiamand na sopression',
+	'articlefeedbackv5-noteflyover-requestoversight-description' => "Prima ëd ciamé dë stërmelo, për piasì ch'a contròla che ës mëssagi a conten-a almanch un dij problema sì-dapress:
+* nùmer ëd teléfon
+* adrësse ëd pòsta eletrònica
+* liure pornogràfiche
+* coment dëscreditant o maldisent a propòsit ëd na përson-a
+* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy d'àutre rason për ch'a sia gavà]",
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Gionté na nòta për spieghé përchè a ciama dë stërmé',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Përchè a ciama na dzorvejansa?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Ciamé na dzorvejansa',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Savèjne ëd pi',
@@ -16275,13 +16275,13 @@ $messages['pms'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => "Nò, i l'heu pa trovà lòn ch'i sërcava.",
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 caràter restant)|($1 caràter restant)}}',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Grand. Chèich sugeriment për amelioré?',
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => "Scriv ij tò sugeriment ambelessì (për esempi 'Sta vos a l'ha dzbzògn ëd na figura')",
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => "Ch'a scriva ij sò sugeriment ambelessì (për esempi 'Sta vos a l'ha damanca ëd na figura')",
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'An dëspias sòn. Chèich sugeriment për amelioré?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => "Scriv ij tò sugeriment ambelessì (për esempi 'Sta vos a l'ha dzbzògn ëd na figura')",
+	'articlefeedbackv5-bucket6-question-placeholder-no' => "Ch'a scriva ij sò sugeriment ambelessì (për esempi 'Sta vos a l'ha damanca ëd na figura')",
 	'articlefeedbackv5-bucket6-form-submit' => "Ch'a pùblica soa opinion",
 	'articlefeedbackv5-bucket6-backlink-text' => 'André al pass 1',
 	'articlefeedbackv5-help-tooltip-title' => "Lòn ch'a l'é sossì?",
-	'articlefeedbackv5-help-tooltip-info' => "{{SITENAME}} a vorerìa sente lòn ch'a pense ëd costa pàgina. Ch'a partagia soa opinion con ij modificator — e ch'a giuta a amelioré costa pàgina.",
+	'articlefeedbackv5-help-tooltip-info' => "{{SITENAME}} a vorerìa sente lòn ch'a pensa ëd costa pàgina. Ch'a partagia soa opinion con ij modificator — e ch'a giuta a amelioré costa pàgina.",
 	'articlefeedbackv5-help-tooltip-linktext' => 'Savèjne ëd pi',
 	'articlefeedbackv5-help-transparency-terms' => "Për piasì, ch'a pùblica [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines dij coment ùtij]. An publicand, a diciara d'esse d'acòrdi con la trasparensa sota coste [//wikimediafoundation.org/wiki/Feedback_privacy_statement condission].",
 	'articlefeedbackv5-sitesub-linktext' => 'Amelioré costa pàgina',
@@ -16295,8 +16295,8 @@ $messages['pms'] = array(
 	'right-aft-reader' => 'Scriv un coment e marca com (in)ùtil',
 	'right-aft-member' => 'Scriv un coment e marca com (in)ùtil',
 	'right-aft-editor' => 'A potensia e a arzòlv ij coment',
-	'right-aft-monitor' => 'Stërma coment e ciama sopression',
-	'right-aft-administrator' => 'Varda AFT dzora a pagine protegiùe',
+	'right-aft-monitor' => "Stërmé ij coment e j'arceste ëd dzorvejansa",
+	'right-aft-administrator' => 'Vëdde AFT ansima a le pàgine protegiùe',
 	'right-aft-oversighter' => 'Coment ëd sopression',
 	'log-name-articlefeedbackv5' => "Registr d'Atività dij Coment dl'Artìcol",
 	'log-description-articlefeedbackv5' => "Cost-sì a l'é ël registr dj'atività fàite an sj'element ëd coment cujì për j'artìcoj an dovrand ël Coment d'Artìcol.",

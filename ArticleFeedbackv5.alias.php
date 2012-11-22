@@ -70,6 +70,12 @@ $specialPageAliases['nl'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'Terugkoppelingv5Volglijst' ),
 );
 
+/** Sicilian (sicilianu) */
+$specialPageAliases['scn'] = array(
+	'ArticleFeedbackv5' => array( 'FeedbackVocev5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'FeedbackVocev5OsservatiSpeciali' ),
+);
+
 /** Tagalog (Tagalog) */
 $specialPageAliases['tl'] = array(
 	'ArticleFeedbackv5' => array( 'Tugon_sa_Artikulo_v5' ),
