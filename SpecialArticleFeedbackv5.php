@@ -39,7 +39,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 *
 	 * @var int
 	 */
-	protected $pageId = 0;
+	protected $pageId;
 
 	/**
 	 * The title for the page we're operating on (null for central log)
@@ -579,7 +579,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out = $this->getOutput();
 
 		// Filtering
-		$counts = ApiArticleFeedbackv5Utils::getFilterCounts( $this->pageId );
+		$counts = $this->getFilterCounts();
 
 		$filterLabels = array();
 		foreach ( $this->topFilters as $filter ) {
@@ -755,6 +755,34 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	}
 
 	/**
+	 * Gets the counts for the filter
+	 *
+	 * @return array the counts, as filter => count
+	 */
+	private function getFilterCounts() {
+		if ( !isset( $this->filterCounts ) ) {
+			$rv   = array();
+			$dbr  = wfGetDB( DB_SLAVE );
+			$rows = $dbr->select(
+				'aft_article_filter_count',
+				array(
+					'afc_filter_name',
+					'afc_filter_count'
+				),
+				array(
+					'afc_page_id' => $this->pageId ? $this->pageId : 0
+				),
+				__METHOD__
+			);
+			foreach ( $rows as $row ) {
+				$rv[ $row->afc_filter_name ] = $row->afc_filter_count;
+			}
+			$this->filterCounts = $rv;
+		}
+		return $this->filterCounts;
+	}
+
+	/**
 	 * Sets the filter, sort, and sort direction based on what was passed in
 	 *
 	 * @param $filter string the requested filter
@@ -812,7 +840,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		// Switch from relevant to all comments if the count is zero
-		$counts = ApiArticleFeedbackv5Utils::getFilterCounts( $this->pageId );
+		$counts = $this->getFilterCounts();
 		if ( !isset( $counts[$filter] ) || $counts[$filter] == 0 ) {
 			if ( $filter == 'visible-relevant' ) {
 				$filter = 'visible-comment';

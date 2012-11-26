@@ -177,32 +177,6 @@ class ApiArticleFeedbackv5Utils {
 	}
 
 	/**
-	 * Get the total number of responses per filter
-	 *
-	 * @param  $pageId int [optional] the page ID
-	 * @return array the counts
-	 */
-	public static function getFilterCounts( $pageId = 0 ) {
-		$rv   = array();
-		$dbr  = wfGetDB( DB_SLAVE );
-		$rows = $dbr->select(
-			'aft_article_filter_count',
-			array(
-				'afc_filter_name',
-				'afc_filter_count'
-			),
-			array(
-				'afc_page_id' => $pageId
-			),
-			__METHOD__
-		);
-		foreach ( $rows as $row ) {
-			$rv[ $row->afc_filter_name ] = $row->afc_filter_count;
-		}
-		return $rv;
-	}
-
-	/**
 	 * Must pass in a useable database handle in a transaction - since all
 	 * counts MUST be incremented in the same transaction as the data changing
 	 * or the counts will be off
