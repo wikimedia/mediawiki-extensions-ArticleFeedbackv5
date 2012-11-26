@@ -40,7 +40,6 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-section-linktext',
 				'articlefeedbackv5-toolbox-view',
 				'articlefeedbackv5-toolbox-add',
-				'articlefeedbackv5-article-view-feedback'
 			),
 			'dependencies' => array(
 				'ext.Experiments.lib',
@@ -48,7 +47,6 @@ class ArticleFeedbackv5Hooks {
 				'jquery.articleFeedbackv5',
 				'jquery.cookie',
 				'jquery.articleFeedbackv5.track',
-				'jquery.articleFeedbackv5.verify',
 			),
 		),
 		'ext.articleFeedbackv5.ie' => array(
@@ -543,7 +541,6 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5SurveyUrls,
 			$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay,
 			$wgArticleFeedbackv5ThrottleThresholdPostsPerHour,
-			$wgArticleFeedbackv5ArticlePageLink,
 			$wgArticleFeedbackv5TalkPageLink,
 			$wgArticleFeedbackv5WatchlistLink,
 			$wgArticleFeedbackv5DefaultSorts,
@@ -562,7 +559,6 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5ThrottleThresholdPostsPerHour'] = $wgArticleFeedbackv5ThrottleThresholdPostsPerHour;
 		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
 		$vars['wgArticleFeedbackv5SpecialWatchlistUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getLinkUrl();
-		$vars['wgArticleFeedbackv5ArticlePageLink'] = $wgArticleFeedbackv5ArticlePageLink;
 		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
 		$vars['wgArticleFeedbackv5WatchlistLink'] = $wgArticleFeedbackv5WatchlistLink;
 		$vars['wgArticleFeedbackv5DefaultSorts'] = $wgArticleFeedbackv5DefaultSorts;
