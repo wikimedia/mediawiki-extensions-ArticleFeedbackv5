@@ -17,6 +17,27 @@
 	$.aftUtils = {};
 
 	// }}}
+	// {{{ article
+
+	/**
+	 * Get article info
+	 *
+	 * @return object
+	 */
+	$.aftUtils.article = function () {
+		var article = mw.config.get( 'aftv5Article' );
+
+		// fetch data, on article level, we can fetch these from other sources as well
+		if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1 ) {
+			article.id = mw.config.get( 'wgArticleId', -1 );
+			article.namespace = mw.config.get( 'wgNamespaceNumber' );
+			article.categories = mw.config.get( 'wgCategories', [] );
+		}
+
+		return article;
+	};
+
+	// }}}
 	// {{{ verify
 
 	/**
@@ -29,15 +50,8 @@
 		// remove obsolete cookies
 		$.aftUtils.removeLegacyCookies();
 
-		var article = mw.config.get( 'aftv5Article' );
 
-		// fetch data, on article level, we can fetch these from other sources as well
-		if ( location == 'article' ) {
-			article.id = mw.config.get( 'wgArticleId', -1 );
-			article.namespace = mw.config.get( 'wgNamespaceNumber' );
-			article.categories = mw.config.get( 'wgCategories', [] );
-		}
-
+		var article = $.aftUtils.article();
 
 		var enable = true;
 

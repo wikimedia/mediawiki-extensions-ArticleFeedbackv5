@@ -662,6 +662,9 @@ includes one of these issues:
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 action on this post|$1 actions on this post}}',
 	'articlefeedbackv5-activity-more' => 'Show more Activity',
 
+	/* Article page */
+	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|1 reader comment|$1 reader comments}}',
+
 	/* Talk page */
 	'articlefeedbackv5-talk-view-feedback' => 'View reader feedback',
 
@@ -2030,6 +2033,7 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 	'articlefeedbackv5-activity-note-archive' => "Activity log comment when feedback is archived. $1 is the amount of days between the creation of the feedback and the date it's being archived",
 	'articlefeedbackv5-activity-count' => 'Shows the amount of actions performed on a feedback entry. $1 is the number',
 	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
+	'articlefeedbackv5-article-view-feedback' => 'A link on the article page to encourage people to visit the feedback page. $1 is the amount of relevant suggestions.',
 	'articlefeedbackv5-talk-view-feedback' => 'A link on the talk page to encourage people to visit the feedback page',
 	'articlefeedbackv5-watchlist-view-feedback' => 'A link on the watchlist page to encourage people to visit the feedback page for articles on their watchlist',
 	'articlefeedbackv5-default-user' => 'Certain feedback will be automatically flagged (e.g. as abusive by AbuseFilter); this is the username that will show up in the activity log for actions that were automatically performed by the system, rather than by users.',

@@ -46,6 +46,8 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	 * @return array the params info, indexed by allowed key
 	 */
 	public function getAllowedParams() {
+		$filters = array_keys( ArticleFeedbackv5Model::$lists );
+
 		return array(
 			'pageid'        => array(
 				ApiBase::PARAM_REQUIRED => false,
@@ -54,9 +56,10 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_DFLT     => 0
 			),
 			'filter'        => array(
-				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Model::$lists )
+				ApiBase::PARAM_TYPE     => $filters,
+				ApiBase::PARAM_DFLT     => $filters[0]
 			),
 		);
 	}
