@@ -15,18 +15,25 @@
 /**
  * Default filter and direction settings for groups
  *
- * all
- * editors (autoconfirmed) (can-feature)
- * monitors (see hidden)
- * oversighters (see deleted)
+ * readers (= all)
+ * editors (autoconfirmed)
+ * monitors
+ * oversighters
  */
 $wgArticleFeedbackv5DefaultFilters = array (
-	'all'      => 'visible-relevant',
-	'featured' => 'visible-relevant',
-	'hidden'   => 'visible-relevant',
-	'deleted'  => 'visible-relevant',
-	'central'  => 'visible-relevant',
+	'aft-reader' => 'visible-relevant',
+	'aft-editor' => 'visible-relevant',
+	'aft-monitor' => 'visible-relevant',
+	'aft-oversighter' => 'visible-relevant',
 );
+
+/**
+ * (Hidden) user preference, saving the last selected filter. This is saved
+ * in a cookie (more volatile) as well, but this will make sure that even
+ * (logged-in) users who have cookies disabled, will get to see their last
+ * selected filter (instead of the default filter)
+ */
+$wgDefaultUserOptions['aftv5-last-filter'] = null;
 
 /**
  * Default sorts by filter

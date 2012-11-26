@@ -807,6 +807,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			}
 		}
 
+		// Was a filter requested via (hidden) user preference?
+		if ( !$filter ) {
+			$filter = $this->getUser()->getOption( 'aftv5-last-filter' );
+		}
+
 		// Was a filter requested via cookie?
 		if ( !$filter && $this->feedbackId === null ) {
 			$request = $this->getRequest();
@@ -829,13 +834,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			if ( $this->feedbackId ) {
 				$filter = 'id';
 			} elseif ( $this->isAllowed( 'aft-oversighter' ) ) {
-				$filter = $wgArticleFeedbackv5DefaultFilters['deleted'];
+				$filter = $wgArticleFeedbackv5DefaultFilters['aft-oversighter'];
 			} elseif ( $this->isAllowed( 'aft-monitor' ) ) {
-				$filter = $wgArticleFeedbackv5DefaultFilters['hidden'];
+				$filter = $wgArticleFeedbackv5DefaultFilters['aft-monitor'];
 			} elseif ( $this->isAllowed( 'aft-editor' ) ) {
-				$filter = $wgArticleFeedbackv5DefaultFilters['featured'];
+				$filter = $wgArticleFeedbackv5DefaultFilters['aft-editor'];
 			} else {
-				$filter = $wgArticleFeedbackv5DefaultFilters['all'];
+				$filter = $wgArticleFeedbackv5DefaultFilters['aft-reader'];
 			}
 		}
 
