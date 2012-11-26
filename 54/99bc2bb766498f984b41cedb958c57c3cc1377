@@ -1,0 +1,8 @@
+Change-Id: I5499bc2bb766498f984b41cedb958c57c3cc1377
+Code-Review+2: Matthias Mullie <mmullie@wikimedia.org>
+Verified+1: Matthias Mullie <mmullie@wikimedia.org>
+Submitted-by: Matthias Mullie <mmullie@wikimedia.org>
+Submitted-at: Mon, 26 Nov 2012 16:01:02 +0000
+Reviewed-on: https://gerrit.wikimedia.org/r/35167
+Project: mediawiki/extensions/ArticleFeedbackv5
+Branch: refs/heads/master
