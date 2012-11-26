@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADaH///4w\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 78
+      },
+      "writtenOn": "2012-11-26T18:44:01Z",
+      "side": 1,
+      "message": "probably want to use \u0027!\u003d\u003d undefined\u0027 so the behavior is clear",
+      "revId": "170e00ebb00901977e6dca060ce179ecd8fb4db0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
