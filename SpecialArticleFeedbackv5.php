@@ -39,7 +39,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 *
 	 * @var int
 	 */
-	protected $pageId;
+	protected $pageId = 0;
 
 	/**
 	 * The title for the page we're operating on (null for central log)
