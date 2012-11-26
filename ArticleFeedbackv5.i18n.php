@@ -1905,6 +1905,13 @@ $messages['az'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'Xeyr',
 );
 
+/** تورکجه (تورکجه)
+ * @author Amir a57
+ */
+$messages['azb'] = array(
+	'articlefeedbackv5-cta-thanks' => 'تشکورلر',
+);
+
 /** Bashkir (башҡортса)
  * @author Assele
  * @author Haqmar
@@ -3827,7 +3834,6 @@ eine der folgenden Probleme enthält:
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 entfernte alle Kennzeichen zu diesem Beitrag am $3 zurück ($2)',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|Eine Aktion|$1 Aktionen}} zu dieser Rückmeldung',
 	'articlefeedbackv5-activity-more' => 'Weitere Aktivitäten anzeigen',
-	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|Ein Vorschlag|$1 Vorschläge}}',
 	'articlefeedbackv5-talk-view-feedback' => 'Vorschläge der Leser ansehen',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Rückmeldungen zu von mir beobachteten Seiten',
 	'articlefeedbackv5-emailcapture-response-body' => 'Hallo!
@@ -12029,7 +12035,6 @@ $messages['ko'] = array(
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 사용자가 $4 $5에 이 게시물의 모든 플래그를 지움 $2',
 	'articlefeedbackv5-activity-count' => '이 게시물에 행동 $1',
 	'articlefeedbackv5-activity-more' => '더 많은 활동 보기',
-	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|제안 1개|제안 $1개}}',
 	'articlefeedbackv5-talk-view-feedback' => '독자 제안 보기',
 	'articlefeedbackv5-watchlist-view-feedback' => '내가 주시하는 문서에 대한 피드백',
 	'articlefeedbackv5-emailcapture-response-body' => '안녕하세요!
@@ -16336,12 +16341,11 @@ $messages['pms'] = array(
 	'articlefeedbackv5-activity-item-unfeature' => "$1 a l'ha gavaje la caraterisassion a 's mëssagi ël $4 a $5 $2",
 	'articlefeedbackv5-activity-item-helpful' => "$1 a l'ha marcà sto mëssagi com ùtil dzora $4 a $5 $2",
 	'articlefeedbackv5-activity-item-unhelpful' => "$1 a l'ha marcà sto mëssagi com inùtil dzora $4 a $5 $2",
-	'articlefeedbackv5-activity-item-undo-helpful' => "$1 a l'ha dësmarcà sto mëssagi com ùtil dzora $4 a $5 $2",
-	'articlefeedbackv5-activity-item-undo-unhelpful' => "$1 a l'ha dësmarcà sto mëssagi com inùtil dzora $4 a $5 $2",
-	'articlefeedbackv5-activity-item-clear-flags' => "$1 a l'ha scanselà tute le marche për sto mëssagi dzora $4 a $5 $2",
+	'articlefeedbackv5-activity-item-undo-helpful' => "$1 a l'ha gavaje ël marcage a cost mëssagi com ùtil ël $4 a $5 $2",
+	'articlefeedbackv5-activity-item-undo-unhelpful' => "$1 a l'ha gavaje la marca d'inùtil a's mëssage ël $4 a $5 $2",
+	'articlefeedbackv5-activity-item-clear-flags' => "$1 a l'ha scancelà tute le marche për cost mëssagi ël $4 a $5 $2",
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 assion dzora a sto mëssagi|$1 assion dzora a sto mëssagi}}',
 	'articlefeedbackv5-activity-more' => "Smon-e d'àutre Atività",
-	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|1 sugeriment|$1 sugeriment}}',
 	'articlefeedbackv5-talk-view-feedback' => 'Varda ij coment dij letor',
 	'articlefeedbackv5-watchlist-view-feedback' => "Coment da le pàgine ch'i ten-o sot-euj",
 	'articlefeedbackv5-emailcapture-response-body' => "Cerea!
@@ -19207,7 +19211,6 @@ dessa fel innan du begär tillsyn:
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 tog bort alla flaggor för detta inlägg den $4 kl $5 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 åtgärd  på denna post|$1 åtgärder på denna post}}',
 	'articlefeedbackv5-activity-more' => 'Visa mer aktivitet',
-	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|1 förslag|&1 förslag}}',
 	'articlefeedbackv5-talk-view-feedback' => 'Visa feedback från läsare',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Feedback från mina bevakade sidor',
 	'articlefeedbackv5-emailcapture-response-body' => 'Hej!
