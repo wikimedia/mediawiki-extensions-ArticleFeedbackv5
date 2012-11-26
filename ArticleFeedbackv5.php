@@ -120,7 +120,10 @@ $wgArticleFeedbackAutoArchiveEnabled = false;
  */
 $wgArticleFeedbackAutoArchiveTtl = '+2 weeks';
 
-// Defines whether or not there should be a link to the corresponding feedback on the page's talk page
+// Defines whether or not there should be a link to the corresponding feedback on the article page
+$wgArticleFeedbackv5ArticlePageLink = true;
+
+// Defines whether or not there should be a link to the corresponding feedback on the article page's talk page
 $wgArticleFeedbackv5TalkPageLink = true;
 
 // Defines whether or not there should be a link to the watchlisted feedback on the watchlist page
@@ -390,6 +393,7 @@ $wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5']   = __DIR__ . '/api/ApiVie
 $wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5']  = __DIR__ . '/api/ApiViewFeedbackArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiAddFlagNoteArticleFeedbackv5']   = __DIR__ . '/api/ApiAddFlagNoteArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5']  = __DIR__ . '/api/ApiFlagFeedbackArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiGetCountArticleFeedbackv5']      = __DIR__ . '/api/ApiGetCountArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewActivityArticleFeedbackv5']  = __DIR__ . '/api/ApiViewActivityArticleFeedbackv5.php';
 $wgAutoloadClasses['DataModel']                         = __DIR__ . '/data/DataModel.php';
 $wgAutoloadClasses['DataModelBackend']                  = __DIR__ . '/data/DataModelBackend.php';
@@ -430,6 +434,7 @@ $wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFe
 $wgAPIListModules['articlefeedbackv5-view-activity'] = 'ApiViewActivityArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-add-flag-note']     = 'ApiAddFlagNoteArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-flag-feedback']     = 'ApiFlagFeedbackArticleFeedbackv5';
+$wgAPIModules['articlefeedbackv5-get-count']         = 'ApiGetCountArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5']                   = 'ApiArticleFeedbackv5';
 
 // Special Page
@@ -533,12 +538,15 @@ $wgResourceModules['ext.articleFeedbackv5'] = array(
 		'articlefeedbackv5-section-linktext',
 		'articlefeedbackv5-toolbox-view',
 		'articlefeedbackv5-toolbox-add',
+		'articlefeedbackv5-article-view-feedback',
 	),
 	'dependencies' => array(
+		'mediawiki.jqueryMsg',
 		'jquery.ui.button',
 		'jquery.articleFeedbackv5',
 		'jquery.cookie',
 		'jquery.articleFeedbackv5.track',
+		'jquery.articleFeedbackv5.utils',
 	),
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['ext.articleFeedbackv5.ie'] = array(

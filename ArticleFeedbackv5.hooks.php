@@ -214,6 +214,7 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5LearnToEdit,
 			$wgArticleFeedbackv5SurveyUrls,
 			$wgArticleFeedbackv5ThrottleThresholdPostsPerHour,
+			$wgArticleFeedbackv5ArticlePageLink,
 			$wgArticleFeedbackv5TalkPageLink,
 			$wgArticleFeedbackv5WatchlistLink,
 			$wgArticleFeedbackv5DefaultSorts,
@@ -232,6 +233,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5ThrottleThresholdPostsPerHour'] = $wgArticleFeedbackv5ThrottleThresholdPostsPerHour;
 		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
 		$vars['wgArticleFeedbackv5SpecialWatchlistUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getPrefixedText();
+		$vars['wgArticleFeedbackv5ArticlePageLink'] = $wgArticleFeedbackv5ArticlePageLink;
 		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
 		$vars['wgArticleFeedbackv5WatchlistLink'] = $wgArticleFeedbackv5WatchlistLink;
 		$vars['wgArticleFeedbackv5DefaultSorts'] = $wgArticleFeedbackv5DefaultSorts;
