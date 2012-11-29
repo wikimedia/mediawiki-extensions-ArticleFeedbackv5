@@ -1905,7 +1905,7 @@ $messages['az'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'Xeyr',
 );
 
-/** تورکجه (تورکجه)
+/** South Azerbaijani (تورکجه)
  * @author Amir a57
  */
 $messages['azb'] = array(
@@ -6159,6 +6159,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-cta5-confirmation-call' => 'Näytä ehdotuksia muilta sinunkaltaisilta lukijoilta. Voitko auttaa valitsemaan parhaat ajatukset?',
 	'articlefeedbackv5-cta5-button-text' => 'Katso kaikki kommentit',
 	'articlefeedbackv5-cta6-confirmation-title' => 'Tarvitsekoa apua, muokkaat {{SITENAME}} -sivustoa?',
+	'articlefeedbackv5-cta6-button-link' => '//en.wikipedia.org/wiki/Wikipedia:Teahouse?ref=aft',
 	'articlefeedbackv5-overlay-close' => 'Sulje',
 	'articlefeedbackv5-error' => 'Virhe ilmaantui. Yritä myöhemmin uudelleen.',
 	'articlefeedbackv5-error-email' => 'Sähköpostiosoite ei kelpaa.',
@@ -6170,6 +6171,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-error-nofeedback' => 'Anna palautteesi.',
 	'articlefeedbackv5-error-flagging' => 'Virhe merkittäessä palautetta.',
 	'articlefeedbackv5-error-throttled' => 'Viestisi on hylätty, koska olet äskettäiten lähettänyt enemmän palautetta kuin {{GRAMMAR:genitive|{{SITENAME}}}} palautetyökalun ohjeissa on suositeltu. Ethän lähetä palautetta toistuvasti.',
+	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Palaute: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Tila: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Avulias',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Merkitty',
@@ -6311,6 +6313,9 @@ $messages['fi'] = array(
 	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-page-disabled' => 'Palautetyökalu ei ole käytössä tällä sivulla.',
 	'articlefeedbackv5-viewactivity' => 'Näytä toimet',
+	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 vuosi|$1 vuotta}}',
+	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 kuukausi|$1 kuukautta}}',
+	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 viikko|$1 viikkoa}}',
 	'articlefeedbackv5-timestamp-seconds' => 'alle 1 minuutti',
 	'articlefeedbackv5-mask-view-contents' => 'Näytä sisältö',
 	'articlefeedbackv5-mask-postnumber' => 'Viesti $1',
@@ -6411,10 +6416,10 @@ $messages['fi'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'Kyllä, löysin etsimäni.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'Ei, en löytänyt etsimääni.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 merkki jäljellä)|($1 merkkiä jäljellä)}}',
-	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Hienoa. Haluaisitko lisätä kommentin?', # Fuzzy
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Miten tätä artikkelia voisi kehittää?', # Fuzzy
+	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Hienoa. Onko sinulla parannusehdotuksia?',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Kirjoita ehdotuksesi tänne (esim. "Tässä artikkelissa pitäisi olla kuva.")',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Pahoittelemme. Haluaisitko antaa kehitysehdotuksen?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Mitä olit etsimässä?', # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Kirjoita ehdotuksesi tänne (esim. "Tässä artikkelissa pitäisi olla kuva.")',
 	'articlefeedbackv5-bucket6-form-submit' => 'Lähetä palaute',
 	'articlefeedbackv5-bucket6-backlink-text' => 'Takaisin vaiheeseen 1',
 	'articlefeedbackv5-help-tooltip-title' => 'Mikä tämä on?',
