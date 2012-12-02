@@ -48,6 +48,12 @@ $specialPageAliases['ko'] = array(
 	'ArticleFeedbackv5Watchlist' => array( '문서피드백v5주시문서목록', '문서피드백v5주시목록' ),
 );
 
+/** Cornish (kernowek) */
+$specialPageAliases['kw'] = array(
+	'ArticleFeedbackv5' => array( 'DaslivErthygelv5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'DaslivErthygelv5RolGolyas' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'ArticleFeedbackv5' => array( 'Artikel-Feedback_Versioun_5' ),
