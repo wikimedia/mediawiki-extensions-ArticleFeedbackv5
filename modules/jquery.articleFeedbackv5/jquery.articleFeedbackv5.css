@@ -576,16 +576,17 @@
 
 .articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder {
 	display: inline-block;
-	height: 22px;
+	height: 22px !important;
 	line-height: 22px;
 	font-size: .9em;
 	min-width: 34px;
-	padding: 0 8px;
+	padding: 0 5px;
 	text-align: center;
 	color: #333;
 	font-weight: bold;
+	margin: 0 !important;
+	border: none !important;
 	/* @embed */
-	background: url(images/bg-button-disable.png) repeat-x;
 	-webkit-border-radius: 3px;
 	-khtml-border-radius: 3px; /* for old Konqueror browsers */
 	-moz-border-radius: 3px;
@@ -593,20 +594,6 @@
 	-webkit-box-shadow: -2px 2px 1px #999;
 	-moz-box-shadow: -2px 2px 1px #999;
 	box-shadow: -2px 2px 1px #999;
-}
-
-.articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder:hover {
-	/* @embed */
-	background: url(images/bg-button-hov.png) repeat-x;
-	cursor: pointer;
-	color: #333;
-}
-
-.articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder-active,
-.articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder-active:hover {
-	/* @embed */
-	background: url(images/bg-button.png) repeat-x;
-	color: #fff;
 }
 
 .articleFeedbackv5-ui .feedback-text {
