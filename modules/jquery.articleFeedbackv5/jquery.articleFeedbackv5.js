@@ -307,14 +307,14 @@
 						<div class="form-row articleFeedbackv5-bucket1-toggle">\
 							<p class="instructions-left"><html:msg key="bucket1-question-toggle" /></p>\
 							<div class="buttons">\
-								<div class="form-item" rel="yes" id="articleFeedbackv5-bucket1-toggle-wrapper-yes">\
+								<div class="form-item" data-value="yes" id="articleFeedbackv5-bucket1-toggle-wrapper-yes">\
 									<label for="articleFeedbackv5-bucket1-toggle-yes"><html:msg key="bucket1-toggle-found-yes-full" /></label>\
-									<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-yes" value="yes" /></span>\
+									<a href="#" onclick="return false;"><span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-yes" value="yes" /></span></a>\
 									<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-yes" class="query-button" value="yes" />\
 								</div>\
-								<div class="form-item" rel="no" id="articleFeedbackv5-bucket1-toggle-wrapper-no">\
+								<div class="form-item" data-value="no" id="articleFeedbackv5-bucket1-toggle-wrapper-no">\
 									<label for="articleFeedbackv5-bucket1-toggle-no"><html:msg key="bucket1-toggle-found-no-full" /></label>\
-									<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-no" /></span>\
+									<a href="#" onclick="return false;"><span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-no" /></span></a>\
 									<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-no" class="query-button last" value="no" />\
 								</div>\
 								<div class="clear"></div>\
@@ -383,7 +383,7 @@
 				// Enable submission and switch out the comment default on toggle selection
 				$block.find( '.articleFeedbackv5-button-placeholder' )
 					.click( function ( e ) {
-						var new_val = $( this ).parent().attr( 'rel' );
+						var new_val = $( this ).parents( '[data-value]' ).data( 'value' );
 						var old_val = ( new_val == 'yes' ? 'no' : 'yes' );
 						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + new_val );
 						var $other_wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + old_val );
@@ -642,14 +642,14 @@
 						<div class="form-row articleFeedbackv5-bucket6-toggle">\
 							<p class="instructions-left"><html:msg key="bucket6-question-toggle" /></p>\
 							<div class="buttons">\
-								<div class="form-item" rel="yes" id="articleFeedbackv5-bucket6-toggle-wrapper-yes">\
+								<div class="form-item" data-value="yes" id="articleFeedbackv5-bucket6-toggle-wrapper-yes">\
 									<label for="articleFeedbackv5-bucket6-toggle-yes"><html:msg key="bucket6-toggle-found-yes-full" /></label>\
-									<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-yes" value="yes" /></span>\
+									<a href="#" onclick="return false;"><span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-yes" value="yes" /></span></a>\
 									<input type="radio" name="toggle" id="articleFeedbackv5-bucket6-toggle-yes" class="query-button" value="yes" />\
 								</div>\
-								<div class="form-item" rel="no" id="articleFeedbackv5-bucket6-toggle-wrapper-no">\
+								<div class="form-item" data-value="no" id="articleFeedbackv5-bucket6-toggle-wrapper-no">\
 									<label for="articleFeedbackv5-bucket6-toggle-no"><html:msg key="bucket6-toggle-found-no-full" /></label>\
-									<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-no" /></span>\
+									<a href="#" onclick="return false;"><span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-no" /></span></a>\
 									<input type="radio" name="toggle" id="articleFeedbackv5-bucket6-toggle-no" class="query-button last" value="no" />\
 								</div>\
 								<div class="clear"></div>\
@@ -722,7 +722,7 @@
 				// enable submission and switch out the comment default on toggle selection
 				$block.find( '.articleFeedbackv5-button-placeholder' )
 					.click( function ( e ) {
-						var new_val = $( this ).parent().attr( 'rel' );
+						var new_val = $( this ).parents( '[data-value]' ).data( 'value' );
 						$.articleFeedbackv5.trackClick( 'click_' + new_val );
 
 						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket6-toggle-wrapper-' + new_val );
@@ -2971,7 +2971,7 @@
 						.button()
 						.addClass( 'ui-button-blue' );
 
-					$flyover.find('.articleFeedbackv5-form-flyover-closebutton')
+					$flyover.find( '.articleFeedbackv5-form-flyover-closebutton' )
 						.attr( 'href', '#hello' )
 						.attr( 'rel', linkId );
 
