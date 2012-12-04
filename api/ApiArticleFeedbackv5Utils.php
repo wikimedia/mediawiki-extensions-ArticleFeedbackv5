@@ -384,6 +384,7 @@ class ApiArticleFeedbackv5Utils {
 		} else { // magic user
 			$username = wfMessage( 'articlefeedbackv5-default-user' )->text();
 		}
+		$type == 'hidden' ? 'hide' : $type;
 		return wfMessage( 'articlefeedbackv5-mask-text-' . $type )
 			->numParams( $post_id )
 			->params( $username )
@@ -392,4 +393,3 @@ class ApiArticleFeedbackv5Utils {
 	}
 
 }
-
