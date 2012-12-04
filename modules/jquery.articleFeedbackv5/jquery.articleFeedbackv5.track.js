@@ -108,21 +108,72 @@
 		return tmp.join( '|' );
 	};
 
+
 	// }}}
-	// {{{ trackClick
+	// {{{ track
 
 	/**
-	 * Tracks a click
+	 * Send something toward ClickTracking API
 	 *
-	 * @param trackingId string the tracking ID
+	 * @param string trackingId
 	 */
-	$.aftTrack.trackClick = function ( trackingId ) {
+	$.aftTrack.track = function ( trackingId ) {
 		if ( $.aftTrack.clickTrackingOn && $.isFunction( $.trackActionWithInfo ) ) {
 			return $.trackActionWithInfo(
 				$.aftTrack.prefix( trackingId ),
 				$.aftTrack.additional()
 			);
 		}
+
+		return $.Deferred().resolve();
+	};
+
+	// }}}
+	// {{{ trackEvent
+
+	/**
+	 * Tracks an event
+	 * Example usage: $(this).click( { trackingId: 'trackingId' }, $.aftTrack.trackEvent );
+	 *
+	 * @param object e
+	 */
+	$.aftTrack.trackEvent = function ( e ) {
+		// sanity check: valid call?
+		if ( typeof e.data == 'undefined' || typeof e.data.trackingId == 'undefined' ) {
+			return false;
+		}
+
+		/**
+		 * $.trackActionWithInfo ends with a $.post to submit the data to
+		 * ClickTracking API. We do not want any default behaviour to
+		 * interrupt that ajax call, so prevent any default behaviour (e.g.
+		 * redirect to a clicked link's href) until the call has completed
+		 */
+		e.preventDefault();
+		e.stopPropagation();
+
+		// submit call to ClickTracking API
+		$.aftTrack.track( e.data.trackingId )
+			.done( function () {
+				/*
+				 * At this point, the ClickTracking call has been completed.
+				 * We can now resume the event's default behaviour (if any).
+				 * To accomplish this, we'll:
+				 * * unbind this event (don't want to track & prevent default again)
+				 * * trigger the event anew (to let it complete normal behaviour)
+				 * * re-bind this event (allowing subsequent events to be tracked again)
+				 */
+				$( e.target ).off( e.type, $.aftTrack.trackEvent );
+
+				if ( typeof e.target.fireEvent == 'function' ) {
+					e.target.fireEvent( e.type );
+				} else {
+					e.target[ e.type ]();
+				}
+
+				$( e.target ).bind( e.type, e.data, $.aftTrack.trackEvent );
+			}
+		);
 
 		return true;
 	};

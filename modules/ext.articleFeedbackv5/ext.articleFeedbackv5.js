@@ -41,9 +41,7 @@ if ( $.aftTrack.clickTrackingOn ) {
 
 		$(this)
 			.attr( 'href', editUrl )
-			.stall( 'click', function() {
-				return $.articleFeedbackv5.trackClick( event + '-click' );
-			} );
+			.click( { trackingId: event + '-click' }, $.aftTrack.trackEvent );
 	} );
 }
 

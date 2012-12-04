@@ -295,7 +295,7 @@
 		);
 
 		// Track an impression
-		$.aftTrack.trackClick( 'feedback_page-impression-' +
+		$.aftTrack.track( 'feedback_page-impression-' +
 			$.articleFeedbackv5special.referral + '-' +
 			$.articleFeedbackv5special.userType );
 
@@ -487,7 +487,7 @@
 		$.articleFeedbackv5special.setSortByFilter( id );
 
 		// track the filter change
-		$.aftTrack.trackClick( 'feedback_page-click-' +
+		$.aftTrack.track( 'feedback_page-click-' +
 				'f_' + $.articleFeedbackv5special.getFilterName( id ) + '-' +
 				$.articleFeedbackv5special.referral + '-' +
 				$.articleFeedbackv5special.userType );

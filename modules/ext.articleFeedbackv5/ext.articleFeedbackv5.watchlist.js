@@ -29,13 +29,12 @@ jQuery( function( $ ) {
 			.text( mw.msg( 'articlefeedbackv5-watchlist-view-feedback' ) )
 			.html( link.html() + ' &raquo;' )
 			.attr( 'href', url )
-			.stall( 'click', function() {
-				return $.aftTrack.trackClick( 'watchlist_view_feedback-button_click' );
-			} );
+			.click( { trackingId: 'watchlist_view_feedback-button_click' }, $.aftTrack.trackEvent );
+
 		$( '#contentSub' ).append( link );
 
 		// Track an impression
-		$.aftTrack.trackClick( 'watchlist_view_feedback-impression' );
+		$.aftTrack.track( 'watchlist_view_feedback-impression' );
 	}
 
 } );

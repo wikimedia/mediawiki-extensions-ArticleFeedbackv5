@@ -31,13 +31,12 @@ jQuery( function( $ ) {
 			.text( mw.msg( 'articlefeedbackv5-talk-view-feedback' ) )
 			.html( link.html() + ' &raquo;' )
 			.attr( 'href', url )
-			.stall( 'click', function() {
-				return $.aftTrack.trackClick( 'talk_page_view_feedback-button_click' );
-			} );
+			.click( { trackingId: 'talk_page_view_feedback-button_click' }, $.aftTrack.trackEvent );
+
 		$( '#firstHeading' ).append( link );
 
 		// Track an impression
-		$.aftTrack.trackClick( 'talk_page_view_feedback-impression' );
+		$.aftTrack.track( 'talk_page_view_feedback-impression' );
 	}
 
 } );
