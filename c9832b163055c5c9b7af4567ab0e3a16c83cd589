@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADbX//64E\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 34
+      },
+      "writtenOn": "2012-12-04T13:18:09Z",
+      "side": 1,
+      "message": "Are these return statements still relevant? They\u0027re somewhat confusing and potentially harmful from an event handler (false-y values trigger special behaviour). I don\u0027t know the return value of trackClick(), but it is probably not related to DOM events.",
+      "revId": "c9832b163055c5c9b7af4567ab0e3a16c83cd589",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADbX//63Q\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.track.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 34
+      },
+      "writtenOn": "2012-12-04T13:18:09Z",
+      "side": 1,
+      "message": "Maybe this change with async-false can be factored out into a separate commit? This commit changes all usage of E3\u0027s $.fn.stall to jQuery\u0027s built-in $.fn.on. However stall didn\u0027t do anything with async, so that\u0027s sort of unrelated to this commit.\n\nAlso, there\u0027s a few small things going on:\n\n* As of jQuery 1.8, the use of `async: false` with jqXHR ($.Deferred) is no longer supported; you must use the classic complete/success/error callback properties of $.ajax() instead of .done/.fail. Using the $.Deferred chain methods may be asynchronous (even just for 0 milliseconds), thus defeating the purpose of setting async to false.\n* Coding style: Missing space after operator \u0027function\u0027. (The javascript context is not to blame this time, AFT does follow the core coding style here in the rest of the file).\n* It is undocumented behaviour that $.ajaxSetup() with no arguments doesn\u0027t blow up (e.g. it might reset to defaults, destroying the \"current\" or whatever. This works right now, but that should not be relied upon. The documented signature is 1 parameter of type Plain Object).\n* It is undocumented behaviour that $.ajaxSetup returns anything. Certainly not a complete back-filled copy of the settings object (including properties that were not overridden). It might give you undefined, which in turn would make the line below set that as the actual value (instead of boolean false), who knows that setting \"async: undefined\" will do to $.ajax. Again, it works now but a fair warning applies. At least mention this in the code for future reference. Ideally it be avoided all together, which brings me to my last point.\n\nInstead of handling all tracking events synchronously, try experimenting with letting it be asynchronous. Not for some (since that wouldn\u0027t help much), but for all. The ajax request would be asynchronous. Then perform the default action from the .complete() handler of the jqXHR/$.Deferred and prevent the browser default handler. Then to avoid repetition, centralised in a little utility that uses the jQuery.Event instance and $.aftTrack.trackClick, like:\n\n /**\n  * @param {jQuery.Event} e\n  * @param {string} trackingId\n  */\n $.aftTrack.trackClickFollowHref \u003d function ( e, trackingId ) {\n    $.aftTrack.trackClick( trackingId ).complete( function () {\n        window.location.href \u003d e.target.href;\n    } );\n    e.preventDefault();\n };\n\n $foo.on( \u0027click\u0027, function ( e ) {\n     $.aftTrack.trackClickFollowHref( e, \u0027a_tracking_id\u0027 );\n } );",
+      "revId": "c9832b163055c5c9b7af4567ab0e3a16c83cd589",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
