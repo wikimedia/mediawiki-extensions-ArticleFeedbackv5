@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADbX//6vk\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.track.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2012-12-04T16:45:48Z",
+      "side": 1,
+      "message": "Implementation is basically as suggested by Krinkle, but rather than doing raw \"window.location.href \u003d e.target.href;\" upon completion, I wanted to \"resume\" the event and let default behaviour take care of it. This way, it can be applied to more events than just clicking a link.\nThat said, the \"problem\" with this implementation is that, when this function if bound only once, it will rebind itself upon executing.\n\nAnyway, if this is a bit too far-fetched, I can easily make it just execute \"window.location.href \u003d e.target.href;\" rather than re-firing the event, because:\n- no clicktracking is being done right now\n- if/when a new round of clicktracking is supposed to happen, we should replace $.trackActionWithInfo (ClickTracking extension) by EventLogging extension, so this code will be redundant anyway\nWe just need a quick \"solution\" to not depend on E3Experiments extension (which is only active on enwiki)",
+      "revId": "9158f558020d440ba7fea0b900a35e48fbb9bb0d",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
