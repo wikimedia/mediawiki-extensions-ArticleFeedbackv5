@@ -10,12 +10,12 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-container {
 	float: left;
 	width: 100%;
-	margin-left: -250px;
+	margin-left: -300px;
 	padding: 10px 0 5px 0;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap {
 	padding: 0 10px 20px 30px;
-	margin-left: 250px;
+	margin-left: 300px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head {
 	margin-top: 10px;
@@ -39,7 +39,7 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-vote-wrapper {
 	position: absolute;
 	bottom: 0;
-	right: 250px; /* toolbox width */
+	right: 300px; /* toolbox width */
 	left: 0;
 	margin-left: 30px;
 	margin-bottom: 5px;
@@ -51,7 +51,7 @@
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools {
 	float: right;
-	width: 250px;
+	width: 300px;
 }
 
 /** Feedback row **/
