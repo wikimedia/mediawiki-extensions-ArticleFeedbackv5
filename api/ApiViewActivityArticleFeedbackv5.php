@@ -86,10 +86,10 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			wfProfileOut( __METHOD__ );
 			$this->dieUsage( "Page for feedback does not exist", 'invalidfeedbackid' );
 		}
-		$title = $page->getDBKey();
+		$title = $page->getPrefixedDBKey();
 
 		// get our activities
-		$activities = $this->fetchActivity( $title, $feedbackId, $limit, $continue );
+		$activities = $this->fetchActivity( $page, $feedbackId, $limit, $continue );
 
 		// generate our html
 		$html = '';
@@ -263,7 +263,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 * Gets the last 25 (or a requested continuance) of activity rows taken
 	 * from the log table
 	 *
-	 * @param string $title the title of the page
+	 * @param Title $title the title of the page
 	 * @param int $feedbackId identifier for the feedback item we are fetching activity for
 	 * @param int $limit total limit number
 	 * @param mixed $continue used for offsets
@@ -271,6 +271,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	protected function fetchActivity( $title, $feedbackId, $limit = 25, $continue = null ) {
 		global $wgUser; // we need to check permissions in here for suppressionlog stuff
+		$specialPage = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5', $title->getPrefixedDBKey() );
 
 		// get afv5 log items PLUS suppress log
 		if ( $wgUser->isAllowed( 'aft-monitor' ) ) {
@@ -283,14 +284,14 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 					 log_action = 'request' OR
 					 log_action = 'unrequest'))",
 				'log_namespace' => NS_SPECIAL,
-				'log_title' => "ArticleFeedbackv5/$title/$feedbackId"
+				'log_title' => "$specialPage/$feedbackId"
 			);
 		// get only afv5 log items
 		} else {
 			$where = array (
 				'log_type' => 'articlefeedbackv5',
 				'log_namespace' => NS_SPECIAL,
-				'log_title' => "ArticleFeedbackv5/$title/$feedbackId"
+				'log_title' => "$specialPage/$feedbackId"
 			);
 		}
 
