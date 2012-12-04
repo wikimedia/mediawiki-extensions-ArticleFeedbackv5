@@ -29,7 +29,7 @@ jQuery( function( $ ) {
 			.text( mw.msg( 'articlefeedbackv5-watchlist-view-feedback' ) )
 			.html( link.html() + ' &raquo;' )
 			.attr( 'href', url )
-			.stall( 'click', function() {
+			.click( function() {
 				return $.aftTrack.trackClick( 'watchlist_view_feedback-button_click' );
 			} );
 		$( '#contentSub' ).append( link );

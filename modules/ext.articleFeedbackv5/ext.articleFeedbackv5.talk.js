@@ -31,7 +31,7 @@ jQuery( function( $ ) {
 			.text( mw.msg( 'articlefeedbackv5-talk-view-feedback' ) )
 			.html( link.html() + ' &raquo;' )
 			.attr( 'href', url )
-			.stall( 'click', function() {
+			.click( function() {
 				return $.aftTrack.trackClick( 'talk_page_view_feedback-button_click' );
 			} );
 		$( '#firstHeading' ).append( link );

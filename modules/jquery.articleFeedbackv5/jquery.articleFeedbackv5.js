@@ -582,7 +582,7 @@
 
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', url )
-					.stall( 'click', function() {
+					.click( function() {
 						return $.articleFeedbackv5.trackClick( 'button_click' );
 					} );
 
@@ -1003,7 +1003,7 @@
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.editUrl() )
-					.stall( 'click', function() {
+					.click( function() {
 						return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
 					} )
 					.button()
@@ -1072,7 +1072,7 @@
 				$block
 					.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) )
-					.stall( 'click', function() {
+					.click( function() {
 						return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
 					} )
 					.button()
@@ -1167,7 +1167,7 @@
 					$block
 						.find( '.articleFeedbackv5-cta-button' )
 						.attr( 'href', survey_url + '?c=' + $.articleFeedbackv5.feedbackId )
-						.stall( 'click', function() {
+						.click( function() {
 							return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
 						} )
 						.button()
@@ -1306,7 +1306,7 @@
 				} );
 				$block.find( '.articleFeedbackv5-cta-button-signup' )
 					.attr( 'href', signup_url )
-					.stall( 'click', function() {
+					.click( function() {
 						return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_signup_click' );
 					} );
 
@@ -1317,7 +1317,7 @@
 				} );
 				$block.find( '.articleFeedbackv5-cta-button-login' )
 					.attr( 'href', login_url )
-					.stall( 'click', function() {
+					.click( function() {
 						return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_login_click' );
 					} );
 
@@ -1421,7 +1421,7 @@
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId )
-					.stall( 'click', function() {
+					.click( function() {
 						return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
 					} )
 					.button()
@@ -1505,7 +1505,7 @@
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta6-button-link' ) )
-					.stall( 'click', function() {
+					.click( function() {
 						return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
 					} )
 					.button()
@@ -2052,7 +2052,7 @@
 				$linkView.find( 'a' )
 						.text( mw.msg( 'articlefeedbackv5-toolbox-view' ) )
 						.attr( 'href', mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' ) )
-						.stall( 'click', function() {
+						.click( function() {
 							return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-toolbar_click' );
 						} );
 
@@ -2814,7 +2814,7 @@
 
 			title
 				.find( '.articleFeedbackv5-confirmation-follow-up' ).msg( 'articlefeedbackv5-cta-confirmation-message', $.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId )
-				.find( 'a' ).stall( 'click', function() {
+				.find( 'a' ).click( function() {
 					return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-permalink_click' );
 				} );
 		}
@@ -2965,7 +2965,7 @@
 						'#mw-prefsection-rendering';
 					$flyover.find( '.articleFeedbackv5-disable-flyover-button' )
 						.attr( 'href', prefLink )
-						.stall( 'click', function() {
+						.click( function() {
 							return $.articleFeedbackv5.trackClick( 'disable_gotoprefs_click' );
 						} )
 						.button()

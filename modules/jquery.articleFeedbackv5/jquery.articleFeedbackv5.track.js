@@ -117,14 +117,35 @@
 	 * @param trackingId string the tracking ID
 	 */
 	$.aftTrack.trackClick = function ( trackingId ) {
+		/*
+		 * $.trackActionWithInfo ends with a $.post to submit the data to
+		 * ClickTracking API. Let's make sure that this call is synchronous
+		 * to make ensure that the call completes before the event leading
+		 * up to this call propagates.
+		 * An example of why we do not want this to be an async call, would
+		 * be attempting to track clicking a link. The default behaviour
+		 * after clicking a link will be that you're redirected to the link's
+		 * href, which in turn would cancel out any async call that has not
+		 * yet been completed - this will make sure not to propagate before
+		 * completing the call.
+		 */
+		var current = $.ajaxSetup().async;
+		$.ajaxSetup( { async: false } );
+
+		var success = true;
 		if ( $.aftTrack.clickTrackingOn && $.isFunction( $.trackActionWithInfo ) ) {
-			return $.trackActionWithInfo(
+			$.trackActionWithInfo(
 				$.aftTrack.prefix( trackingId ),
 				$.aftTrack.additional()
-			);
+			).fail( function() {
+				success = false;
+			});
 		}
 
-		return true;
+		// reset previous default (a)sync state
+		$.ajaxSetup( { async: current } );
+
+		return success;
 	};
 
 	// }}}
