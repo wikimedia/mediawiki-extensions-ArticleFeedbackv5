@@ -3403,11 +3403,13 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author Danmichaelo
+ * @author Filzstift
  * @author Geitost
  * @author Kghbln
  * @author MF-Warburg
  * @author Metalhead64
  * @author Minderbinder
+ * @author Pill
  * @author Purodha
  * @author Quedel
  * @author Se4598
@@ -3416,7 +3418,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Vielen Dank!',
-	'articlefeedbackv5-cta-confirmation-message' => 'Deine Rückmeldung kann auf dieser [$1 Seite mit Rückmeldungen] angesehen werden.',
+	'articlefeedbackv5-cta-confirmation-message' => 'Deine Rückmeldung kann auf [$1 dieser Seite] angesehen werden.',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Wusstest du, dass du diese Seite bearbeiten kannst?',
 	'articlefeedbackv5-cta1-confirmation-call' => '{{SITENAME}} funktioniert, weil jeder die in ihr enthaltenen Seiten bearbeiten kann. Nur zu, versuche es. Sei mutig!',
 	'articlefeedbackv5-cta1-learn-how' => 'Informationen über das Bearbeiten',
@@ -3575,8 +3577,8 @@ $messages['de'] = array(
 	'articlefeedbackv5-form-undelete' => 'Oversight-Löschung rückgängig machen',
 	'articlefeedbackv5-form-decline' => 'Oversight ablehnen',
 	'articlefeedbackv5-form-declined' => 'Oversight abgelehnt',
-	'articlefeedbackv5-form1-header-found' => '$1 fand, wonach {{GENDER:$1|$2 er|$2 sie|$2 er oder sie}} suchte.',
-	'articlefeedbackv5-form1-header-not-found' => '$2 fand nicht, wonach {{GENDER:$1|er|sie|er oder sie}} suchte.',
+	'articlefeedbackv5-form1-header-found' => '$2 hat gefunden, wonach {{GENDER:$1|er|sie|er oder sie}} gesucht hat.',
+	'articlefeedbackv5-form1-header-not-found' => '$2 hat nicht gefunden, wonach {{GENDER:$1|er|sie|er oder sie}} gesucht hat.',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 hinterließ einen Kommentar.}}',
 	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}} hinterließ ein Lob:',
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} hatte ein Problem:',
@@ -3602,7 +3604,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-discussion-page' => 'Diskussion',
 	'articlefeedbackv5-whats-this' => 'Hilfe',
 	'articlefeedbackv5-invalid-page-id' => 'Ungültige Seitenkennung',
-	'articlefeedbackv5-percent-found' => '$1 fanden, wonach sie suchten',
+	'articlefeedbackv5-percent-found' => '$1 haben gefunden, wonach sie suchten',
 	'articlefeedbackv5-overall-rating' => 'Bewertung: $1/5',
 	'articlefeedbackv5' => 'Arbeits- und Übersichtsseite zu Seiteneinschätzungen',
 	'articlefeedbackv5watchlist' => 'Seiteneinschätzung – Meine beobachteten Seiten',
@@ -3622,10 +3624,10 @@ $messages['de'] = array(
 	'articlefeedbackv5-timestamp-seconds' => 'weniger als einer Minute',
 	'articlefeedbackv5-mask-view-contents' => 'Inhalt anzeigen',
 	'articlefeedbackv5-mask-text-autohide' => 'Dieser Beitrag Nr. $1 {{GENDER:$2|wurde automatisch versteckt von $2}} vor $3.',
-	'articlefeedbackv5-mask-text-hide' => 'Dieser Beitrag Nr. $1 {{GENDER:$2|wurde versteckt von $2}} vor $3.',
+	'articlefeedbackv5-mask-text-hide' => 'Beitrag $1 wurde von {{GENDER:$2|$2}} vor $3 versteckt.',
 	'articlefeedbackv5-mask-text-oversight' => 'Dieser Beitrag Nr. $1 {{GENDER:$2|wurde von $2 per Oversight gelöscht}} vor $3.',
 	'articlefeedbackv5-mask-postnumber' => 'Beitrag Nr. $1',
-	'articlefeedbackv5-special-disclaimer' => 'Dies ist ein Prototyp. Nutze ihn nicht; es sei denn, du wirst dazu eingeladen, es zu tun.',
+	'articlefeedbackv5-special-disclaimer' => 'Dies ist ein Prototyp. Bitte nutze ihn nicht, falls du nicht dazu eingeladen wurdest.',
 	'articlefeedbackv5-special-goback' => 'Seite mit den Rückmeldungen ansehen',
 	'articlefeedbackv5-special-central-goback' => 'Weitere Rückmeldungen zu anderen Seiten ansehen',
 	'articlefeedbackv5-permalink-info-title' => 'Infos zu diesem Beitrag',
@@ -3699,14 +3701,14 @@ $messages['de'] = array(
 	'articlefeedbackv5-noteflyover-show-submit' => 'Diesen Beitrag einblenden',
 	'articlefeedbackv5-noteflyover-show-help' => 'Weitere Informationen',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Oversight-Löschung beantragen',
-	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Bevor du eine Versionslöschung per Oversight beantragst, prüfe bitte, dass dieser Beitrag
-eine der folgenden Probleme enthält:
+	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Bevor du eine Versionslöschung per Oversight beantragst, prüfe bitte, ob dieser Beitrag
+eines der folgenden Probleme enthält:
 * Telefonnummern
 * E-Mail-Adressen
 * pornografische Links
 * diffamierende/beleidigende Kommentare über eine Person
 * [//de.wikipedia.org/wiki/Wikipedia:Oversight#Anwendung andere Kriterien für Oversight]',
-	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Füge eine Anmerkung hinzu, um zu erklären, warum du eine Oversight-Löschung beantragst',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Begründung für die Beantragung einer einer Oversight-Löschung',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Warum beantragst du die Löschung?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Oversight beantragen',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Weitere Informationen',
@@ -3738,8 +3740,8 @@ eine der folgenden Probleme enthält:
 	'articlefeedbackv5-bucket1-question-toggle' => 'Hast du das Gesuchte gefunden?',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Ja',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Nein',
-	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Ja, ich fand, wonach ich suchte.',
-	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'Nein, ich fand nicht, wonach ich suchte.',
+	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Ja, ich habe gefunden, wonach ich gesucht habe.',
+	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'Nein, ich habe nicht gefunden, wonach ich gesucht habe.',
 	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'Wie könnte dieser Artikel verbessert werden?',
 	'articlefeedbackv5-bucket1-question-placeholder-no' => 'Hast du einen Verbesserungsvorschlag?',
 	'articlefeedbackv5-bucket1-form-submit' => 'Rückmeldung speichern',
@@ -3750,16 +3752,16 @@ eine der folgenden Probleme enthält:
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Lerne, wie man Seiten bearbeitet',
 	'articlefeedbackv5-bucket4-form-submit' => 'Diese Seite bearbeiten',
 	'articlefeedbackv5-bucket4-help-tooltip-info' => '{{SITENAME}} möchte wissen, was du denkst. Hilf mit, diese Seite zu verbessern, indem du ein Autor wirst.',
-	'articlefeedbackv5-bucket4-noedit-title' => 'Hilf, {{SITENAME}} zu verbessern',
+	'articlefeedbackv5-bucket4-noedit-title' => 'Hilf mit, {{SITENAME}} zu verbessern',
 	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'Diese Website wird von Menschen wie dir erstellt.',
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'Kannst du uns helfen?',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Weitere Informationen',
 	'articlefeedbackv5-bucket6-title' => 'Du kannst helfen, diesen Artikel zu verbessern',
-	'articlefeedbackv5-bucket6-question-toggle' => 'Hast du gefunden, wonach du suchtest?',
+	'articlefeedbackv5-bucket6-question-toggle' => 'Hast du gefunden, wonach du gesucht hast?',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'Ja',
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'Nein',
-	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'Ja, ich fand, wonach ich suchte.',
-	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'Nein, ich fand nicht, wonach ich suchte.',
+	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'Ja, ich habe gefunden, wonach ich gesucht habe.',
+	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'Nein, ich habe nicht gefunden, wonach ich gesucht habe.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(Noch ein Zeichen übrig)|(Noch $1 Zeichen übrig)}}',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Gut. Hast du dennoch einen Verbesserungsvorschlag?',
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Bitte gib deinen Verbesserungsvorschlag hier ein (z. B. „Im Artikel fehlt die Geschichte seit 1989, so wie sie in E. Mustermann (2007) beschrieben ist.“)',
@@ -3770,7 +3772,7 @@ eine der folgenden Probleme enthält:
 	'articlefeedbackv5-help-tooltip-title' => 'Warum diese Frage?',
 	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} möchte gerne wissen, was du über diese Seite denkst. Teile deine Rückmeldung den Autoren mit – und hilf mit, diese Seite zu verbessern.',
 	'articlefeedbackv5-help-tooltip-linktext' => 'Weitere Informationen',
-	'articlefeedbackv5-help-special-linkurl' => '//de.wikipedia.org/wiki/Wikipedia:Artikel-Feedback',
+	'articlefeedbackv5-help-special-linkurl' => '//de.wikipedia.org/wiki/Hilfe:Artikel-Feedback',
 	'articlefeedbackv5-help-special-linkurl-editors' => '//de.wikipedia.org/wiki/Hilfe:Artikel-Feedback/Benutzer',
 	'articlefeedbackv5-help-special-linkurl-monitors' => '//de.wikipedia.org/wiki/Wikipedia:Artikel-Feedback',
 	'articlefeedbackv5-help-special-linkurl-oversighters' => '//en.wikipedia.org/wiki/Wikipedia:Article_Feedback/Help/Oversighters',
@@ -3817,7 +3819,7 @@ eine der folgenden Probleme enthält:
 	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|entfernte}} alle Kennzeichen zur [[$3|Rückmeldung $4]] zu [[$5]]',
 	'articlefeedbackv5-activity-pane-header' => 'Aktivitäten-Logbuch',
 	'articlefeedbackv5-activity-feedback-info' => 'Rückmeldung Nr. $1 von $2',
-	'articlefeedbackv5-activity-feedback-date' => 'Zu $1 verfasst',
+	'articlefeedbackv5-activity-feedback-date' => 'Am $1 verfasst',
 	'articlefeedbackv5-activity-permalink' => 'Permanenter Link',
 	'articlefeedbackv5-activity-item-request' => '$1 beantragte Oversight am $4 um $5 ($2)',
 	'articlefeedbackv5-activity-item-unrequest' => '$1 nahm den Antrag zur Oversight-Löschung am $4 um $5 zurück ($2)',
@@ -3828,8 +3830,8 @@ eine der folgenden Probleme enthält:
 	'articlefeedbackv5-activity-item-unflag' => '$1 nahm die Kennzeichnung am $3 wieder zurück ($2)',
 	'articlefeedbackv5-activity-item-oversight' => '$1 löschte diesen Beitrag per Oversight am $4 um $5 ($2)',
 	'articlefeedbackv5-activity-item-unoversight' => '$1 machte den Oversight dieses Beitrags am $4 um $5 rückgängig ($2)',
-	'articlefeedbackv5-activity-item-resolve' => '$1 markierte diesen Beitrag am $3 als geklärt ($2)',
-	'articlefeedbackv5-activity-item-unresolve' => '$1 nahm die Markierung dieses Beitrags als geklärt am $3 zurück ($2)',
+	'articlefeedbackv5-activity-item-resolve' => '$1 markierte diesen Beitrag am $4 um $5 als erledigt ($2)',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 nahm die Markierung dieses Beitrags als erledigt am $4 um $5 zurück ($2)',
 	'articlefeedbackv5-activity-item-feature' => '$1 hob diesen Beitrag am $3 hervor ($2)',
 	'articlefeedbackv5-activity-item-unfeature' => '$1 nahm die Hervorhebung am $3 wieder zurück ($2)',
 	'articlefeedbackv5-activity-item-helpful' => '$1 markierte diesen Beitrag am $3 als hilfreich ($2)',
@@ -3857,7 +3859,7 @@ Gib dort den nachfolgenden Bestätigungscode ein:
 
 $3
 
-Wir melden uns in Kürze dazu, wie du helfen kannst, {{SITENAME}} zu verbessern.
+Wir melden uns in Kürze bei dir, um dir mitzuteilen, wie du dich an der Verbesserung von {{SITENAME}} beteiligen kannst.
 
 Sofern du diese Anfrage nicht ausgelöst hast, ignoriere einfach diese E-Mail. Wir werden dir dann nichts mehr zusenden.
 
@@ -3900,7 +3902,39 @@ $4',
  * @author Filzstift
  */
 $messages['de-ch'] = array(
-	'articlefeedbackv5-bucket5-form-panel-helpimprove-note' => 'Wir werden dir ein Bestätigungs-E-Mail senden. Wir geben deine E-Mail-Adresse, gemäss unserer $1, nicht an Dritte weiter.',
+	'articlefeedbackv5-overlay-close' => 'Schliessen',
+	'articlefeedbackv5-error-throttled' => 'Dein Beitrag wurde zurückgewiesen, da du in jüngster Vergangenheit mehr als die empfohlene Anzahl an Rückmeldungen, gemäss der Rückmeldungsrichtlinien von {{SITENAME}}, hinterlassen hast. Bitte hinterlasse nicht zu viele Rückmeldungen.',
+	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 hinterliess einen Kommentar.}}',
+	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}} hinterliess ein Lob:',
+	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} hinterliess eine Frage:',
+	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} hinterliess einen Vorschlag:',
+	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} wurde ein Aufforderungsformular («CTA») angezeigt.',
+	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} hinterliess eine [[$4|Rückmeldung]] zu $3',
+	'articlefeedbackv5-no-feedback' => 'Es gibt keine Rückmeldung für deinen ausgewählten Filter. Um deinen Filter zu ändern, versuche eine der obenstehenden Optionen (z.&nbsp;B. «Relevanteste» oder «Alle Kommentare»).',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Bitte gib deinen Verbesserungsvorschlag hier ein (z. B. «Im Artikel fehlt die Geschichte seit 1989, so wie sie in M. Bernasconi (2007) beschrieben ist.»)',
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Bitte gib deinen Verbesserungsvorschlag hier ein (z. B. «Im Artikel fehlt die Geschichte seit 1989, so wie sie in M. Bernasconi (2007) beschrieben ist.»)',
+	'articlefeedbackv5-emailcapture-response-body' => 'Hallo!
+
+Vielen Dank für dein Interesse an der Verbesserung von {{SITENAME}}.
+
+Bitte nimm dir einen Moment Zeit, deine E-Mail-Adresse zu bestätigen, indem du auf den folgenden Link klickst:
+
+$1
+
+Du kannst auch die folgende Seite besuchen:
+
+$2
+
+Gib dort den nachfolgenden Bestätigungscode ein:
+
+$3
+
+Wir melden uns in Kürze bei dir, um dir mitzuteilen, wie du dich an der Verbesserung von {{SITENAME}} beteiligen kannst.
+
+Sofern du diese Anfrage nicht ausgelöst hast, ignoriere einfach diese E-Mail. Wir werden dir dann nichts mehr zusenden.
+
+Viele Grüsse und vielen Dank,
+Das {{SITENAME}}-Team',
 );
 
 /** German (formal address) (Deutsch (Sie-Form)‎)
@@ -16710,6 +16744,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (português)
+ * @author Alchimista
  * @author Giro720
  * @author Hamilton Abreu
  * @author Helder.wiki
@@ -16721,12 +16756,14 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Obrigado!',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Sabia que podes editar esta página?',
-	'articlefeedbackv5-cta1-confirmation-call' => 'Wikipédia funciona porque qualquer um pode editar suas páginas. Vá em frente, experimente. Seja ousado!', # Fuzzy
+	'articlefeedbackv5-cta1-confirmation-call' => '{{SITENAME}} funciona porque qualquer um pode editar suas páginas. Vá em frente, experimente. Seja ousado!',
 	'articlefeedbackv5-cta1-learn-how' => 'Aprenda a editar',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Editar esta página.',
-	'articlefeedbackv5-cta2-confirmation-title' => 'Ajude a melhorar a Wikipédia', # Fuzzy
+	'articlefeedbackv5-cta2-confirmation-title' => 'Ajude a melhorar a {{SITENAME}}',
+	'articlefeedbackv5-cta2-confirmation-call' => 'Este site é criado por pessoas como você. Pode dar-nos uma ajuda?',
 	'articlefeedbackv5-cta2-button-text' => 'Saiba mais',
 	'articlefeedbackv5-cta3-confirmation-title' => 'Responda um inquérito rápido, por favor',
+	'articlefeedbackv5-cta3-confirmation-call' => 'Só demora um minuto e vai ajudar a melhorar a {{SITENAME}}.',
 	'articlefeedbackv5-cta3-button-text' => 'Começar o inquérito',
 	'articlefeedbackv5-cta4-confirmation-title' => 'Junte-se á nossa comunidade',
 	'articlefeedbackv5-cta4-button-text-signup' => 'Criar uma conta',
@@ -20661,8 +20698,8 @@ $messages['uk'] = array(
 	'articlefeedbackv5-form-helpful-yes-label' => 'Так',
 	'articlefeedbackv5-form-helpful-no-label' => 'Ні',
 	'articlefeedbackv5-special-add-feedback' => 'Додати свій відгук',
-	'articlefeedbackv5-special-filter-all' => 'Всі', # Fuzzy
-	'articlefeedbackv5-special-filter-visible' => 'Видимий', # Fuzzy
+	'articlefeedbackv5-special-filter-all' => 'Усі повідомлення ($1)',
+	'articlefeedbackv5-special-filter-visible' => 'Усі видимі ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'Невидимий',
 	'articlefeedbackv5-special-filter-all-watchlist' => 'Усі повідомлення',
 	'articlefeedbackv5-special-filter-notdeleted-watchlist' => 'Усі (прихований)',
@@ -20694,7 +20731,7 @@ $messages['uk'] = array(
 	'articlefeedbackv5-form-unfeature' => 'Зняти помітку "вибране"',
 	'articlefeedbackv5-resolved-marker' => 'Вирішено',
 	'articlefeedbackv5-form-resolve' => 'Позначити як вирішене',
-	'articlefeedbackv5-form-hide' => 'Приховати це', # Fuzzy
+	'articlefeedbackv5-form-hide' => 'Приховати це повідомлення',
 	'articlefeedbackv5-form-abuse' => 'Позначити як зловживання',
 	'articlefeedbackv5-form1-header-found' => '$2 {{GENDER:$1|знайшов те, що шукав|знайшла те, що шукала}}',
 	'articlefeedbackv5-form1-header-not-found' => '$2 {{GENDER:$1|не знайшов те, що шукав|не знайшла те, що шукала}}',
@@ -20706,7 +20743,7 @@ $messages['uk'] = array(
 	'articlefeedbackv5-form3-header' => '$1 {{GENDER:$1|оцінив|оцінила}} цю сторінку на $2 із 5',
 	'articlefeedbackv5-form5-header' => '$1 {{GENDER:$1|оцінив|оцінила}} цю сторінку:',
 	'articlefeedbackv5-form-invalid' => 'Невірний ID форми відгуку.',
-	'articlefeedbackv5-abuse-saved' => 'Позначку про зловживання збережено', # Fuzzy
+	'articlefeedbackv5-abuse-saved' => 'Позначено як зловживання',
 	'articlefeedbackv5-error-loading-feedback' => "Помилка завантаження зворотнього зв'язку",
 	'articlefeedbackv5-invalid-feedback-id' => 'Невірний ID відгуку.',
 	'articlefeedbackv5-go-to-article' => 'Перейти на сторінку', # Fuzzy
