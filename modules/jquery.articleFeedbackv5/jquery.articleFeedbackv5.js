@@ -328,6 +328,7 @@
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket1-form-submit" /></button>\
+						<a href="#"><html:msg key="bucket1-form-submit-nocomment" /></a>\
 						<div class="clear"></div>\
 					</form>\
 					'
@@ -442,9 +443,17 @@
 					} );
 
 				// Attach the submit
-				$block.find( '.articleFeedbackv5-submit' )
+				$block.find( '.articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment' )
 					.click( function ( e ) {
 						e.preventDefault();
+
+						// clear out free-form text field content if user selected to submit without comment
+						if ( $( e.target ).hasClass( 'articleFeedbackv5-submit-nocomment' ) ) {
+							$block.find( '[name=comment]' ).val( '' );
+							// always allowed to submit empty
+							$.articleFeedbackv5.submissionEnabled = true;
+						}
+
 						$.articleFeedbackv5.submitForm();
 					} );
 			},
@@ -669,6 +678,7 @@
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket6-form-submit" /></button>\
+						<a href="#" class="articleFeedbackv5-submit-nocomment"><html:msg key="bucket6-form-submit-nocomment" /></a>\
 						<div class="clear"></div>\
 					</form>\
 					'
@@ -753,7 +763,7 @@
 						var text = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-' + new_val );
 						$element.attr( 'placeholder', text ).placeholder();
 
-						// allow feedback submission if there is feedback (or if Y/N was positive)
+						// allow feedback submission
 						$.articleFeedbackv5.enableSubmission( true );
 					} );
 
@@ -772,9 +782,17 @@
 					} );
 
 				// attach the submit
-				$block.find( '.articleFeedbackv5-submit' )
+				$block.find( '.articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment' )
 					.click( function ( e ) {
 						e.preventDefault();
+
+						// clear out free-form text field content if user selected to submit without comment
+						if ( $( e.target ).hasClass( 'articleFeedbackv5-submit-nocomment' ) ) {
+							$block.find( '[name=comment]' ).val( '' );
+							// always allowed to submit empty
+							$.articleFeedbackv5.submissionEnabled = true;
+						}
+
 						$.articleFeedbackv5.submitForm();
 					} );
 			},
@@ -830,7 +848,7 @@
 			 */
 			displayStep1: function ( $block ) {
 				var $step1 = $( '.form-row', $block );
-				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit', $block );
+				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment', $block );
 
 				// hide comment, disclosure & submit first (should only show after clicking Y/N)
 				$step1.show();
@@ -851,7 +869,7 @@
 			 */
 			displayStep2: function ( $block ) {
 				var $step1 = $( '.form-row', $block );
-				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit', $block );
+				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment', $block );
 
 				// show comment, disclosure & submit; hide Y/N buttons
 				$step2.show();
@@ -2535,7 +2553,6 @@
 	 * object.
 	 */
 	$.articleFeedbackv5.submitForm = function () {
-
 		// Are we allowed to do this?
 		if ( !$.articleFeedbackv5.submissionEnabled ) {
 			return false;
