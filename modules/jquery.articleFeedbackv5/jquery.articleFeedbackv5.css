@@ -619,7 +619,8 @@
 
 .articleFeedbackv5-ui .articleFeedbackv5-submit,
 .articleFeedbackv5-ui .articleFeedbackv5-cta-button {
-	float: none;
+	display: inline-block;
+	float: left;
 	height: 35px !important;
 	width: auto;
 	text-align: center;
@@ -649,6 +650,12 @@
 	/*padding: 1px 30px 0 0;*/
 	/* @embed */
 	/*background: url(images/bg-submit-icon.png) right center no-repeat;*/
+}
+
+.articleFeedbackv5-ui .articleFeedbackv5-submit-nocomment {
+	float: left;
+	line-height: 35px;
+	margin-left: 20px;
 }
 
 /*** Option 4 ***/
@@ -779,7 +786,7 @@
 	position: relative;
 	top: 0;
 	left: 0;
-	margin: 0 20px;
+	margin: 0 0 0 20px;
 	line-height: 3em;
 }
 .articleFeedbackv5-ui.articleFeedbackv5-cta-4 .articleFeedbackv5-panel-buttons .articleFeedbackv5-cta-button {
