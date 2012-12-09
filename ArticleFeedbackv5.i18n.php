@@ -3437,7 +3437,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-cta4-button-text-later' => 'Vielleicht später',
 	'articlefeedbackv5-cta4-button-text-or' => 'oder',
 	'articlefeedbackv5-cta5-confirmation-title' => 'Sieh dir an, was andere sagen',
-	'articlefeedbackv5-cta5-confirmation-call' => 'Sieh dir Vorschläge von anderen Lesern wie dir an. Kannst du mithelfen, die besten Ideen auszuwählen?',
+	'articlefeedbackv5-cta5-confirmation-call' => 'Sieh dir die Vorschläge von anderen Lesern an und hilf mit, die besten Ideen auszuwählen.',
 	'articlefeedbackv5-cta5-button-text' => 'Alle Kommentare ansehen',
 	'articlefeedbackv5-cta6-confirmation-title' => 'Brauchst du Hilfe beim Bearbeiten von {{SITENAME}}?',
 	'articlefeedbackv5-cta6-confirmation-call' => 'Komm zum Teehaus, um das Bearbeiten von {{SITENAME}} zu diskutieren. Dort tauschen neue und erfahrene Autoren nützliche Tipps untereinander aus.',
@@ -3868,8 +3868,7 @@ Das {{SITENAME}}-Team',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Der Oversight der Rückmeldungsseite wurde beantragt',
 	'articlefeedbackv5-email-request-oversight-body' => 'Hallo Oversighter,
 
-von $1 wurde ein Antrag auf Verstecken zu einer Rückmeldung bezüglich des
-folgenden Artikels gestellt:
+von $1 wurde ein Antrag auf Verstecken einer Rückmeldung zu dem folgenden Artikel gestellt:
 
 $2
 
@@ -3881,8 +3880,7 @@ Vielen Dank,
 
 das Team von {{SITENAME}}
 
-PS: Sofern du Fragen zur Nutzung der Oversightfunktion auf Seiten mit Rückmeldungen
-hast, besuche bitte die Seite mit den Häufigen Fragen:
+PS: Sofern du Fragen zur Nutzung der Oversightfunktion auf Seiten mit Rückmeldungen hast, besuche bitte die Seite mit den häufigen Fragen:
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Diese Funktion entfernen?',
@@ -4023,8 +4021,7 @@ Viele Grüße und vielen Dank,
 Das {{SITENAME}}-Team',
 	'articlefeedbackv5-email-request-oversight-body' => 'Hallo Oversighter,
 
-von $1 wurde ein Antrag auf Verstecken zu einer Rückmeldung bezüglich des
-folgenden Artikels gestellt:
+von $1 wurde ein Antrag auf Verstecken einer Rückmeldung zu dem folgenden Artikel gestellt:
 
 $2
 
@@ -4037,8 +4034,7 @@ Vielen Dank,
 
 das Team von {{SITENAME}}
 
-PS Sofern Sie Fragen zur Nutzung der Oversightfunktion auf Seiten mit Rückmeldungen
-haben, besuchen Sie bitte die Seite mit den Häufigen Fragen:
+PS: Sofern Sie Fragen zur Nutzung der Oversightfunktion auf Seiten mit Rückmeldungen haben, besuchen Sie bitte die Seite mit den häufigen Fragen:
 
 $4',
 	'articlefeedbackv5-disable-flyover-help' => 'Um $1 zu deaktivieren, gehen Sie zu $2 und klicken Sie die Option $3 an',
@@ -4478,7 +4474,7 @@ $messages['el'] = array(
 	'articlefeedbackv5-overlay-close' => 'Κλείσιμο',
 	'articlefeedbackv5-error' => 'Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε πάλι αργότερα.',
 	'articlefeedbackv5-error-email' => 'Η διεύθυνση ηλεκτρονικού ταχυδρομείου δεν είναι έγκυρη.',
-	'articlefeedbackv5-error-blocked' => 'Χρήστες που βρίσκονται σε αποκλεισμό δεν μπορούν να υποβάλλουν ανατροφοδότηση.',
+	'articlefeedbackv5-error-blocked' => 'Χρήστες που βρίσκονται σε αποκλεισμό δεν μπορούν να υποβάλλουν σχόλια.',
 	'articlefeedbackv5-error-validation' => 'Εμφανίστηκε σφάλμα κατά την επικύρωση.',
 	'articlefeedbackv5-error-abuse' => 'Το κείμενό σας απορρίφθηκε από αυτόματο φίλτρο βάσει του οποίου ενδέχεται να έχετε παραβεί τις [$1 οδηγίες για την υποβολή σχολίων] στην {{SITENAME}}. Παρακαλούμε να επανεξετάσετε το κείμενό σας πριν δοκιμάσετε πάλι την υποβολή του.',
 	'articlefeedbackv5-error-unknown' => 'Άγνωστο σφάλμα.',
@@ -4509,12 +4505,12 @@ $messages['el'] = array(
 	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 το βρήκε χρήσιμο|$1 το βρήκε χρήσιμο}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 ναι|$1 ναι}} / {{PLURAL:$2|1 όχι|$2 όχι}}',
 	'articlefeedbackv5-special-add-feedback' => 'Προσθέστε τα σχόλιά σας',
-	'articlefeedbackv5-special-survey-button-text' => 'Ποια η γνώμη σας για αυτό το εργαλείο ανατροφοδότησης;',
+	'articlefeedbackv5-special-survey-button-text' => "Ποια η γνώμη σας γι' αυτό το εργαλείο ανατροφοδότησης;",
 	'articlefeedbackv5-special-filter-all' => 'Εμφάνιση όλων των δημοσιεύσεων ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'Όλα (κρυφά) ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'Όλα τα σχόλια ($1)',
 	'articlefeedbackv5-special-filter-relevant' => 'Το πιο συναφές ($1)',
-	'articlefeedbackv5-special-filter-abusive' => 'Επισημάνθηκε ως προσβλητική ($1)',
+	'articlefeedbackv5-special-filter-abusive' => 'Επισημάνθηκε ως υβριστικό ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Χρήσιμο ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Μη χρήσιμο ($1)',
 	'articlefeedbackv5-special-filter-requested' => 'Έγινε αίτηση εποπτείας ($1)',
@@ -4533,7 +4529,7 @@ $messages['el'] = array(
 	'articlefeedbackv5-special-filter-notdeleted-watchlist' => 'Όλα (κρυφά)',
 	'articlefeedbackv5-special-filter-comment-watchlist' => 'Όλα τα σχόλια',
 	'articlefeedbackv5-special-filter-relevant-watchlist' => 'Τα πιο σχετικά',
-	'articlefeedbackv5-special-filter-abusive-watchlist' => 'Επισημάνθηκε ως προσβλητικό',
+	'articlefeedbackv5-special-filter-abusive-watchlist' => 'Επισημάνθηκε ως υβριστικό',
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Χρήσιμο',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Μη χρήσιμο',
 	'articlefeedbackv5-special-filter-requested-watchlist' => 'Έγινε αίτηση εποπτείας',
@@ -4590,7 +4586,7 @@ $messages['el'] = array(
 	'articlefeedbackv5-deleted-marker' => 'Υπό εποπτεία',
 	'articlefeedbackv5-hidden-marker' => 'Κρυφό',
 	'articlefeedbackv5-featured-marker' => 'Αξιόλογο',
-	'articlefeedbackv5-form-feature' => 'Σημάνετε αυτή την ανάρτηση ως αξιόλογη',
+	'articlefeedbackv5-form-feature' => 'Επισημάνετε αυτή την ανάρτηση ως αξιόλογη',
 	'articlefeedbackv5-form-unfeature' => 'Αφαιρέστε τη σήμανση αυτής της ανάρτησης ως αξιόλογη',
 	'articlefeedbackv5-resolved-marker' => 'Επιλυμένο',
 	'articlefeedbackv5-form-resolve' => 'Σήμανση ως επιλυμένο',
@@ -4679,6 +4675,8 @@ $messages['el'] = array(
 	'articlefeedbackv5-permalink-status-hide' => '{{GENDER:$1|<strong>Κρυμμένο</strong> από $1}} $2 πριν',
 	'articlefeedbackv5-permalink-status-unhide' => '{{GENDER:$1|<strong>Ξανά ορατό</strong> από $1}} $2 πριν',
 	'articlefeedbackv5-permalink-status-request' => 'Ζητήθηκε <strong>εποπτεία</strong> από {{GENDER:$1|τον|την}} $1 $2 πριν',
+	'articlefeedbackv5-permalink-status-undo-helpful' => '{{GENDER:$1|<strong>Αφαίρεση επισήμανσης ως χρήσιμο</strong> από $1}} $2 πριν',
+	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Επισημάνθηκε ως μη επωφελές</strong> από $1}} $2 πριν',
 	'articlefeedbackv5-permalink-activity-more' => 'Δείτε περισσότερες ενέργειες...',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Δείτε λιγότερες ενέργειες...',
 	'articlefeedbackv5-noteflyover-feature-caption' => 'Αξιολογείστε αυτή την ανάρτηση',
@@ -4698,6 +4696,7 @@ $messages['el'] = array(
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Μάθετε περισσότερα',
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Κατάργηση σήμανσης ως επιλυμένο',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Προσθήκη μιας σημείωσης',
+	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Γιατί επισημαίνεις αυτή τη δημοσίευση ως επιλυμένη;',
 	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Κατάργηση σήμανσης ως επιλυμένο',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Μάθετε περισσότερα',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Απόκρυψη αυτής της ανάρτησης',
@@ -4788,10 +4787,13 @@ $messages['el'] = array(
 	'articlefeedbackv5-disable-preference' => 'Να μην εμφανίζεται το εργαλείο ανατροφοδότησης Άρθρων στις σελίδες',
 	'right-aft-reader' => 'Ανάρτηση σχολίων & σήμανση ως (μη)χρήσιμα',
 	'right-aft-member' => 'Ανάρτηση σχολίων & σήμανση ως (μη)χρήσιμα',
+	'right-aft-oversighter' => 'Εποπτεία ανατροφοδότησης',
 	'log-name-articlefeedbackv5' => 'Αρχείο δραστηριότητας του Article Feedback',
+	'logentry-articlefeedbackv5-resolve' => '$1 {{GENDER:$2|σημάνθηκε ως επιλυμένο}} [[$3|δημοσίευση ανατροφοδότησης #$4]] στις [[$5]]',
 	'articlefeedbackv5-activity-pane-header' => 'Καταγραφή δραστηριότητας',
 	'articlefeedbackv5-activity-feedback-date' => 'Καταχωρήθηκε στις $1',
 	'articlefeedbackv5-activity-permalink' => 'Μόνιμος σύνδεσμος',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 ενέργεια σε αυτή την ανάρτηση|&1 ενέργειες σε αυτή την ανάρτηση}}',
 	'articlefeedbackv5-activity-more' => 'Εμφάνιση περισσότερης δραστηριότητας',
 	'articlefeedbackv5-talk-view-feedback' => 'Δείτε σχόλια αναγνωστών',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Ανατροφοδότηση από τις σελίδες που παρακολουθώ',
@@ -4819,10 +4821,14 @@ $3
 Η ομάδα της Βικιπέδιας',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Ζητήθηκε εποπτεία για σελίδα σχολίων λήμματος',
 	'articlefeedbackv5-disable-flyover-title' => 'Κατάργηση αυτού του εργαλείου;',
+	'articlefeedbackv5-disable-flyover-help' => 'Για να απομακρύνετε το $1, πηγαίνετε στο  $2 και ελέγξατε το $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Ανατροφοδότηση λήμματος',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Προτιμήσεις > Εμφάνιση',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Πήγαινε στις προτιμήσεις μου.',
+	'abusefilter-edit-action-aftv5flagabuse' => '(Ανατροφοδότηση λήμματος) Αυτο-επισήμανση ως υβριστικό',
+	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Αυτόματα επισημασμένο ως υβριστικό. Κανόνας: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Σχόλια Λήμματος) Αυτόματη απόκρυψη',
+	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Αυτόματα αποκρυφθέν.  Κανόνας:$1',
 	'abusefilter-edit-action-aftv5requestoversight' => '(Σχόλια Λήμματος) Αυτόματη αίτηση για εποπτεία',
 	'articlefeedbackv5-abusefilter-note-aftv5requestoversight' => 'Η εποπτεία ζητήθηκε αυτόματα. Κανόνας: $1',
 );
@@ -20797,13 +20803,13 @@ $messages['uk'] = array(
 	'articlefeedbackv5-abuse-saved' => 'Позначено як зловживання',
 	'articlefeedbackv5-error-loading-feedback' => "Помилка завантаження зворотнього зв'язку",
 	'articlefeedbackv5-invalid-feedback-id' => 'Невірний ID відгуку.',
-	'articlefeedbackv5-go-to-article' => 'Перейти на сторінку', # Fuzzy
-	'articlefeedbackv5-discussion-page' => 'Сторінка обговорення', # Fuzzy
-	'articlefeedbackv5-whats-this' => 'Що це?', # Fuzzy
+	'articlefeedbackv5-go-to-article' => 'Переглянути статтю',
+	'articlefeedbackv5-discussion-page' => 'Обговорення',
+	'articlefeedbackv5-whats-this' => 'Довідка',
 	'articlefeedbackv5-invalid-page-id' => 'Невірний ID сторінки',
 	'articlefeedbackv5-percent-found' => '$1 знайшли те, що шукали',
 	'articlefeedbackv5-overall-rating' => 'Оцінка: $1 з 5',
-	'articlefeedbackv5' => 'Панель оцінювання статті', # Fuzzy
+	'articlefeedbackv5' => 'Панель оцінювання статті — Центральна сторінка',
 	'articlefeedbackv5-desc' => 'Оцінювання статей',
 	'articlefeedbackv5-permalink-activity-more' => 'Переглядати більше дій…',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Переглядати менше дій…',
