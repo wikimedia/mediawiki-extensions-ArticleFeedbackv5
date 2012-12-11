@@ -845,7 +845,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-unsupported-message' => 'A message to be displayed on the special page, when a visitor with an unsupported browser visits.',
 	'articlefeedbackv5-page-disabled' => 'A message to be displayed on the article feedback page when AFT is not enabled for that page',
 	'articlefeedbackv5-no-feedback' => 'A message to be displayed on the article feedback page when there is no feedback yet for a certain filter.',
-	'articlefeedbackv5-viewactivity' => "Text for the link to see the feedback entry's activity log",
+	'articlefeedbackv5-viewactivity' => "Text for the link to see the log of activity (e.g. mark as helpful, resolve, oversight, ...) taken towards feedback",
 	'articlefeedbackv5-timestamp-years' => 'Years part - $1 is the years parameter',
 	'articlefeedbackv5-timestamp-months' => 'Months part - $1 is the months parameter',
 	'articlefeedbackv5-timestamp-weeks' => 'Weeks part - $1 is the weeks parameter',
