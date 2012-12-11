@@ -1458,18 +1458,18 @@ $messages['ar'] = array(
 	'articlefeedbackv5-cta-thanks' => 'شكرا!',
 	'articlefeedbackv5-cta-confirmation-message' => 'تم نشر ملاحظاتك [ $1  هنا].',
 	'articlefeedbackv5-cta1-confirmation-title' => 'هل تعلم أنه بإمكانك تحرير هذه الصفحة؟',
-	'articlefeedbackv5-cta1-confirmation-call' => 'ويكيبيديا تعمل لأنه يمكن لأي شخص تحرير صفحاتها. كن جريئا وقم بالمحاولة!', # Fuzzy
+	'articlefeedbackv5-cta1-confirmation-call' => '{{SITENAME}} تعمل لأنه يمكن لأي شخص تحرير صفحاتها. كن جريئا وقم بالمحاولة!',
 	'articlefeedbackv5-cta1-learn-how' => 'تعلم كيف تحرر',
 	'articlefeedbackv5-cta1-edit-linktext' => 'تعديل هذه الصفحة',
-	'articlefeedbackv5-cta2-confirmation-title' => 'ساعد في تحسين ويكيبيديا', # Fuzzy
+	'articlefeedbackv5-cta2-confirmation-title' => 'ساعد في تحسين {{SITENAME}}',
 	'articlefeedbackv5-cta2-confirmation-call' => 'تم إنشاء ويكيبيديا من قبل أشخاص مثلك. هل تستطيع أن تساعدنا؟',
 	'articlefeedbackv5-cta2-button-text' => 'معرفة المزيد',
 	'articlefeedbackv5-cta3-confirmation-title' => 'رجاء الإجابة على استبيان سريع',
-	'articlefeedbackv5-cta3-confirmation-call' => 'سيستغرق حوالي دقيقة واحدة وسيساعد في تحسين ويكيبيديا', # Fuzzy
+	'articlefeedbackv5-cta3-confirmation-call' => 'سيستغرق حوالي دقيقة واحدة وسيساعد في تحسين {{SITENAME}}',
 	'articlefeedbackv5-cta3-button-text' => 'بدء الاستبيان',
 	'articlefeedbackv5-cta4-confirmation-title' => 'انضم إلى مجتمع ويكيبيديا',
 	'articlefeedbackv5-cta4-confirmation-call-line1' => 'قم بتسجيل حساب أو تسجيل الدخول، حتى يتمكن المحررين من الاستجابة لملاحظاتك.',
-	'articlefeedbackv5-cta4-confirmation-call-line2' => 'إن حسابك المجاني يجعل من الأسهل عليك مشاركة ما تعلمه في ويكيبيديا.', # Fuzzy
+	'articlefeedbackv5-cta4-confirmation-call-line2' => 'إن حسابك المجاني يجعل من الأسهل عليك مشاركة ما تعلمه في {{SITENAME}}.',
 	'articlefeedbackv5-cta4-button-text-signup' => 'أنشئ حسابا',
 	'articlefeedbackv5-cta4-button-text-login' => 'تسجيل الدخول',
 	'articlefeedbackv5-cta4-button-text-later' => 'ربما في وقت لاحق',
@@ -1477,18 +1477,29 @@ $messages['ar'] = array(
 	'articlefeedbackv5-cta5-confirmation-title' => 'ألق نظرة على ما يقوله الآخرون',
 	'articlefeedbackv5-cta5-confirmation-call' => 'اعرض الاقتراحات من القراء الآخرين. هل تستطيع المساعدة في اختيار أفضل الاقتراحات؟',
 	'articlefeedbackv5-cta5-button-text' => 'راجع جميع الملاحظات',
+	'articlefeedbackv5-cta6-confirmation-title' => 'هل تحتاج لمساعدة في تحرير {{SITENAME}}؟',
+	'articlefeedbackv5-cta6-confirmation-call' => 'لمناقشة كيفية تحرير {{SITENAME}}، بإمكانك القدم إلى قاعة الشاي، حيث هناك محررون خبراء مستعدون لتقديم يد المساعدة لك.',
+	'articlefeedbackv5-cta6-button-text' => 'زيارة قاعة الشاي',
+	'articlefeedbackv5-cta6-button-link' => 'http://ar.wikipedia.org/wiki/%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D8%A8%D9%88%D8%A7%D8%A8%D8%A9_%D8%A7%D9%84%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9/%D9%82%D8%A7%D8%B9%D8%A9_%D8%A7%D9%84%D8%B4%D8%A7%D9%8A/%D8%A3%D8%B3%D8%A6%D9%84%D8%A9',
 	'articlefeedbackv5-overlay-close' => 'أغلق',
 	'articlefeedbackv5-error' => 'لقد حدث خطأ. كرر المحاولة لاحقا.',
 	'articlefeedbackv5-error-email' => 'إن عنوان البريد الإلكتروني غير صالح.',
 	'articlefeedbackv5-error-blocked' => 'لا يمكن للمستخدمين الممنوعين تقديم ملاحظاتهم.',
 	'articlefeedbackv5-error-validation' => 'خطأ في التحقق.',
-	'articlefeedbackv5-error-abuse' => 'تم رفض مشاركتك من قبل مرشح تلقائي بسبب أنه يمكن أنها قد انتهكت قاعدة ويكيبيديا في $1. الرجاء مراجعة ملاحظتك والمحاولة مرة أخرى.', # Fuzzy
+	'articlefeedbackv5-error-abuse' => 'تم رفض مشاركتك من قبل مرشح تلقائي بسبب أنه يمكن أنها قد انتهكت قاعدة ويكيبيديا في $1. الرجاء مراجعة ملاحظتك والمحاولة مرة أخرى.',
 	'articlefeedbackv5-error-unknown' => 'خطأ غير معروف.',
 	'articlefeedbackv5-error-submit' => 'خطأ في إرسال النموذج.',
 	'articlefeedbackv5-error-nofeedback' => 'رجاء إدخال ملاحظاتك.',
 	'articlefeedbackv5-error-flagging' => 'خطأ في التعليم على التعليقات.',
-	'articlefeedbackv5-error-throttled' => 'تم رفض مشاركتك لأنك قد قمت بنشر عدد من التعليقات أكبر من الموصى به في قواعد ملاحظات ويكيبيديا. رجاء عدم نشر الكثير من التعليقات ضمن وقت قصير.', # Fuzzy
-	'articlefeedbackv5-contribs-entry-status' => 'الحالة: $1', # Fuzzy
+	'articlefeedbackv5-error-throttled' => 'تم رفض مشاركتك لأنك قد قمت بنشر عدد من التعليقات أكبر من الموصى به في قواعد ملاحظات ويكيبيديا. رجاء عدم نشر الكثير من التعليقات ضمن وقت قصير.',
+	'articlefeedbackv5-protection-level' => 'تعليقات المقالات',
+	'articlefeedbackv5-protection-level-error' => 'لا يمكن أن يكون مستوى حماية تعليقات المقالة أعلى من مستوى حماية التعديل',
+	'articlefeedbackv5-protection-permission-reader' => 'تمكين لكافة المستخدمين',
+	'articlefeedbackv5-protection-permission-member' => 'تمكين للمستخدمين المسجلي الدخول فقط',
+	'articlefeedbackv5-protection-permission-editor' => 'تمكين للمستخدمين المؤكدين تلقائيا فقط',
+	'articlefeedbackv5-protection-permission-administrator' => 'تمكين للمدراء فقط',
+	'articlefeedbackv5-contribs-entry' => '$1. . $2 . . [[$3|تعليق:  $4]]$5 $6 $7',
+	'articlefeedbackv5-contribs-entry-status' => '.. الحالة: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'مفيدة',
 	'articlefeedbackv5-contribs-status-action-flag' => 'عُلّم',
 	'articlefeedbackv5-contribs-status-action-feature' => 'مميزة',
@@ -1505,7 +1516,7 @@ $messages['ar'] = array(
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 نعم|$1 نعم}} / {{PLURAL:$2|1 لا|$2 لا}}',
 	'articlefeedbackv5-special-add-feedback' => 'أضف ملاحظاتك',
 	'articlefeedbackv5-special-survey-button-text' => 'ما رأيك في أداة ردود الأفعال هذه؟',
-	'articlefeedbackv5-special-filter-all' => 'جميع (التعليقات المنظورة) ( $1 )', # Fuzzy
+	'articlefeedbackv5-special-filter-all' => 'جميع التعليقات ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'الجميع (مخفية) ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'كافة التعليقات ($1)',
 	'articlefeedbackv5-special-filter-relevant' => 'الأكثر صلة بالموضوع ($1)',
@@ -1524,7 +1535,7 @@ $messages['ar'] = array(
 	'articlefeedbackv5-special-filter-unfeatured' => 'غير مميزة ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'حلت ($1)',
 	'articlefeedbackv5-special-filter-unresolved' => 'غير محلولة ($1)',
-	'articlefeedbackv5-special-filter-all-watchlist' => 'الجميع (أوفرسايت)', # Fuzzy
+	'articlefeedbackv5-special-filter-all-watchlist' => 'جميع التعليقات',
 	'articlefeedbackv5-special-filter-notdeleted-watchlist' => 'الجميع (مخفية)',
 	'articlefeedbackv5-special-filter-comment-watchlist' => 'كل التعليقات',
 	'articlefeedbackv5-special-filter-relevant-watchlist' => 'ذات العلاقة الأكثر',
@@ -1592,6 +1603,8 @@ $messages['ar'] = array(
 	'articlefeedbackv5-form-unresolve' => 'إزالة علامة الحل',
 	'articlefeedbackv5-form-hide' => 'إخفاء هذا التعليق',
 	'articlefeedbackv5-form-unhide' => 'إلغاء إخفاء هذا التعليق',
+	'articlefeedbackv5-form-hide-own' => 'أخف تعليقي',
+	'articlefeedbackv5-form-unhide-own' => 'أظهر تعليقي',
 	'articlefeedbackv5-form-helpful' => 'علم كمفيدة ($1)',
 	'articlefeedbackv5-form-abuse' => 'تعليم كإساءة',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 علم|$1 أعلام}}',
@@ -1601,6 +1614,7 @@ $messages['ar'] = array(
 	'articlefeedbackv5-form-unoversight' => 'ألغ طلب أوفرسايت',
 	'articlefeedbackv5-form-undelete' => 'ألغ أوفرسايت',
 	'articlefeedbackv5-form-decline' => 'رفض الأوفرسايت',
+	'articlefeedbackv5-form-declined' => 'رفض الإخفاء',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 وجدت ما الذي كنت تبحث عنه.}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 لم يجد ما كان يبحث عنه.}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 وضع تعليقا.}}',
@@ -1640,12 +1654,14 @@ $messages['ar'] = array(
 	'articlefeedbackv5-beta-label' => 'بيتا',
 	'articlefeedbackv5-unsupported-message' => 'معذرة، إن متصفحك غير مدعوم من قبل هذا النموذج. للاطلاع على هذه الصفحة، رجاء استخدم متصفحا آخرا.',
 	'articlefeedbackv5-page-disabled' => 'إن صفحة الملاحظات غير مفعلة لهذه المقالة.',
+	'articlefeedbackv5-no-feedback' => 'لم يوجد هناك أي تعليق للفلتر الذي قمت باختياره. من أجل تغيير فلترك، حاول أحد الخيارات الأخرى المتاحة أعلاه (مثال : "الأكثر علاقة" أو "جميع التعليقات").',
 	'articlefeedbackv5-viewactivity' => 'عرض النشاط',
 	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 سنة|$1 سنوات}}',
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 شهر|$1 أشهر}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 أسبوع|$1 أسابيع}}',
 	'articlefeedbackv5-timestamp-seconds' => 'أقل من دقيقة واحدة',
 	'articlefeedbackv5-mask-view-contents' => 'عرض المحتويات',
+	'articlefeedbackv5-mask-text-autohide' => '{{GENDER:$2|تم إخفاء هذا التعليق #$1 من قبل $2}} منذ $3.',
 	'articlefeedbackv5-mask-text-hide' => 'هذا التعليق رقم $1 {{GENDER:$2|تم إخفاؤه من قبل $2}} $3 سابقة.',
 	'articlefeedbackv5-mask-text-oversight' => 'هذا التعليق أجريت عليه عملية #$1 {{GENDER:$2|أوفرسايت من قبل $2}} منذ $3 سابقة.',
 	'articlefeedbackv5-mask-postnumber' => 'التعليق #$1',
@@ -1716,7 +1732,14 @@ $messages['ar'] = array(
 	'articlefeedbackv5-noteflyover-show-submit' => 'ألغ إخفاء هذا التعليق',
 	'articlefeedbackv5-noteflyover-show-help' => 'معرفة المزيد',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'اطلب أوفرسايت',
-	'articlefeedbackv5-noteflyover-requestoversight-label' => 'إضافة تعليق', # Fuzzy
+	'articlefeedbackv5-noteflyover-requestoversight-description' => 'قبل طلب الإخفاء، الرجاء التحقق من أن هذا التعليق
+ يتضمن واحدة من هذه القضايا:
+ * أرقام الهاتف
+ * عناوين البريد الإلكتروني
+ * وصلات إباحية
+ * تعليق تشهيري أو قادح بحق شخص ما
+ * [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy معايير أخرى للرقابة]',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'إضافة ملاحظة لشرح لماذا يتم طلب الإخفاء',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'لماذا تطلب أوفرسايت؟',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'اطلب أوفرسايت',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => 'معرفة المزيد',
@@ -1751,12 +1774,12 @@ $messages['ar'] = array(
 	'articlefeedbackv5-bucket1-form-submit' => 'انشر تعليقاتك',
 	'articlefeedbackv5-bucket4-title' => 'ساعد على تحسين هذه الصفحة',
 	'articlefeedbackv5-bucket4-subhead' => 'هل كنت تعلم أنه بإمكانك تعديل هذه الصفحة؟',
-	'articlefeedbackv5-bucket4-teaser-line1' => 'ويكيبيديا تتطور لأنه بإمكان أي شخص تعديل صفحاتها.', # Fuzzy
+	'articlefeedbackv5-bucket4-teaser-line1' => '{{SITENAME}} تتطور لأنه بإمكان أي شخص تعديل صفحاتها.',
 	'articlefeedbackv5-bucket4-teaser-line2' => 'لا تتردد بمحاولة التعديل على الصفحات!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'تعلم كيف تحرر',
 	'articlefeedbackv5-bucket4-form-submit' => 'تعديل هذه الصفحة',
-	'articlefeedbackv5-bucket4-help-tooltip-info' => 'ويكيبيديا تريد معرفة ما الذي تفكر به. ساعد في تحسين هذه الصفحة بأن تصبح محررا في ويكيبيديا.', # Fuzzy
-	'articlefeedbackv5-bucket4-noedit-title' => 'ساعد في تحسين ويكيبيديا', # Fuzzy
+	'articlefeedbackv5-bucket4-help-tooltip-info' => '{{SITENAME}} تريد معرفة ما الذي تفكر به. ساعد في تحسين هذه الصفحة بأن تصبح محررا.',
+	'articlefeedbackv5-bucket4-noedit-title' => 'ساعد في تحسين {{SITENAME}}',
 	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'تم إنشاء هذا الموقع من قبل أشخاص مثلك.',
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'هل تستطيع مساعدتنا؟',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'معرفة المزيد',
@@ -1767,15 +1790,16 @@ $messages['ar'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'نعم، لقد وجدت ما كنت أبحث عنه.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'لا، لم أجد ما كنت أبحث عنه.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(حرف واحد متبقي)|($1 حروف متبقية)}}',
-	'articlefeedbackv5-bucket6-question-instructions-yes' => 'عظيم. هل ترغب في إضافة تعليق؟', # Fuzzy
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'كيف من الممكن تطوير هذه المقالة؟', # Fuzzy
+	'articlefeedbackv5-bucket6-question-instructions-yes' => 'عظيم. هل ترغب في إضافة تعليق من أجل التطوير؟',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'اكتب اقتراحك هنا (مثال : "هذه المقالة بحاجة إلى صورة")',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'نعتذر عن ذلك. هل هناك اقتراحات للتطوير؟',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'ماذا كنت تبحث عنه؟', # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'اكتب اقتراحك هنا (مثال : "هذه المقالة بحاجة إلى صورة")',
 	'articlefeedbackv5-bucket6-form-submit' => 'انشر تعليقك',
 	'articlefeedbackv5-bucket6-backlink-text' => 'العودة إلى الخطوة 1',
 	'articlefeedbackv5-help-tooltip-title' => 'ما هذا؟',
-	'articlefeedbackv5-help-tooltip-info' => 'ويكيبيديا تود أن تعرف رأيك عن هذه الصفحة. شارك تعليقاتك مع المحررين، وساعد على تطوير هذه الصفحة.', # Fuzzy
+	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} تود أن تعرف رأيك عن هذه الصفحة. شارك تعليقاتك مع المحررين، وساعد على تطوير هذه الصفحة.',
 	'articlefeedbackv5-help-tooltip-linktext' => 'معرفة المزيد',
+	'articlefeedbackv5-help-transparency-terms' => 'الرجاء نشر [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines تعليقا مفيدا]. بالموافقة على النشر فإنك توافق على الشفافية بموجب هذه [//wikimediafoundation.org/wiki/Feedback_privacy_statement الشروط].',
 	'articlefeedbackv5-sitesub-linktext' => 'حسن هذه الصفحة',
 	'articlefeedbackv5-titlebar-linktext' => 'ساعد على تحسين هذه الصفحة >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'حسن هذه الصفحة',
@@ -1784,10 +1808,56 @@ $messages['ar'] = array(
 	'articlefeedbackv5-toolbox-view' => 'اعرض التعليق',
 	'articlefeedbackv5-toolbox-add' => 'أضف تعليقك',
 	'articlefeedbackv5-disable-preference' => 'لا تظهر ودجة تقييم المقالات في الصفحات',
+	'right-aft-reader' => 'انشر التعليق وعلم عليه بأنه (غير) مفيد',
+	'right-aft-member' => 'انشر التعليق وعلم عليه بأنه (غير) مفيد',
+	'right-aft-editor' => 'رقٍّ وحل التعليق',
+	'right-aft-monitor' => 'اخف التعليق واطلب إزالته',
+	'right-aft-administrator' => 'شاهد أداة تعليقات الصفحات على الصفحات المحمية',
+	'right-aft-oversighter' => 'أزل التعليق',
+	'log-name-articlefeedbackv5' => 'سجل نشاطات تعليقات المقالات',
+	'log-description-articlefeedbackv5' => 'هذا سجل للنشاطات التي حصلت على التعليقات التي تم تجميعها بواسطة أداة تعليقات المقالات.',
+	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|تغيرت حالة الإخفاء}} [[$3|للتعليق # $4]] على [[$5]]',
+	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|ألغيت حالة الإزالة على}} [[$3|التعليق رقم $4]] في [[$5]]',
+	'logentry-articlefeedbackv5-hide' => '$1 {{GENDER:$2|خبئ}} [[$3|التعليق رقم $4]] في [[$5]]',
+	'logentry-articlefeedbackv5-unhide' => '$1 {{GENDER:$2|أظهر}} [[$3|التعليق رقم $4]] في [[$5]]',
+	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|ورفض الرقابة ل}} [[$3|التعليق رقم $4 ]] في [[$5]]',
+	'logentry-articlefeedbackv5-request' => '$1 {{GENDER:$2|طلبت الرقابة ل}} [[$3|لتعليق رقم $4]] في [[$5]]',
+	'logentry-articlefeedbackv5-unrequest' => '$1 {{GENDER:$2|ألغيت حالة الإزالة على}} [[$3|التعليق رقم $4]] في [[$5]]',
+	'logentry-articlefeedbackv5-flag' => '$1 {{GENDER:$2|وضع علامة إساءة}} على [[$3|التعليق رقم $4]] في [[$5]]',
+	'logentry-articlefeedbackv5-unflag' => '$1 {{GENDER:$2|أزيلت علامة الإساءة}} عن [[$3|التعليق رقم $4]] في [[$5]]',
+	'logentry-articlefeedbackv5-autohide' => '$1 {{GENDER:$2|أخفي تلقائيا}} [[$3|التعليق رقم $4]] على [[$5]]',
+	'logentry-articlefeedbackv5-autoflag' => '$1 {{GENDER:$2|تم التعليم تلقائيا كضار}} [[$3|للتعليق رقم $4]] على [[$5]]',
+	'logentry-articlefeedbackv5-feature' => '$1 {{GENDER:$2|تم ترقية}} [[$3| التعليق رقم $4]] على [[$5]]',
+	'logentry-articlefeedbackv5-unfeature' => '$1 {{GENDER:$2|أزيلت ترقية}} [[$3|التعليق رقم $4]] على [[$5]]',
+	'logentry-articlefeedbackv5-resolve' => '$1 {{GENDER:$2|علم كمحلول}} على [[$3|التعليق رقم $4]] على [[$5]]',
+	'logentry-articlefeedbackv5-unresolve' => '$1 {{GENDER:$2|أزيلت علامة المحلول}} من على [[$3|التعليق رقم $4]] في [[$5]]',
+	'logentry-articlefeedbackv5-helpful' => '$1 {{GENDER:$2|علم كمساعد}} على [[$3|التعليق رقم $4]] في [[$5]]',
+	'logentry-articlefeedbackv5-unhelpful' => '$1 {{GENDER:$2|علم كغير مساعد}} على [[$3|التعليق رقم $4]] في [[$5]]',
+	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|أزيلت علامة مفيد}} من على [[$3|fالتعليق رقم $4]] في [[$5]]',
+	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|أزيلت علامة غير مفيد}} من على [[$3|التعليق رقم $4]] في [[$5]]',
+	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|أزيلت جميع العلامات}} من على [[$3|التعليق رقم $4]] في [[$5]]',
 	'articlefeedbackv5-activity-pane-header' => 'سجل النشاط',
 	'articlefeedbackv5-activity-feedback-info' => 'تعليق رقم $1 من قبل $2',
 	'articlefeedbackv5-activity-feedback-date' => 'نشر على $1',
 	'articlefeedbackv5-activity-permalink' => 'وصلة دائمة',
+	'articlefeedbackv5-activity-item-request' => '$1 تم طلب الإخفاء في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 أزال طلب الإخفاء على $4 في $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 رفض طلب الإزالة في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-hide' => '$1 أخفى هذا التعليق في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 علم هذا التعليق في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-unhide' => '$1 أزال إخفاء هذا التعليق في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 أزال إخفاء هذا التعليق في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 أزال هذا التعليق في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 أزال إخفاء التعليق على هذا التعليق في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 علم على هذا التعليق كمحلول في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 أزال علامة هذا التعليق كمحلول في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 رقى هذا التعليق في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 أزال ترقية هذا التعليق في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 على على هذا التعليق كمفيد في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 علم على هذا التعليق كغير مفيد في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 أزال تعليم هذا التعليق كمفيد في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 أزال تعليم هذا التعليق كغير مفيد في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 مسح جميع العلامات من هذا التعليق في $4 على $5 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 فعل على هذه المشاركة|$1 أفعال على هذه المشاركة}}',
 	'articlefeedbackv5-activity-more' => 'عرض المزيد من النشاط',
 	'articlefeedbackv5-talk-view-feedback' => 'اظهر تعليقات القارئ',
@@ -1815,6 +1885,25 @@ $3
 مع أحر التماني، وشكرا،
 فريق {{SITENAME}}',
 	'articlefeedbackv5-email-request-oversight-subject' => 'تم طلب أوفرسايت لصفحة تعليقات المقالة',
+	'articlefeedbackv5-email-request-oversight-body' => 'مرحبا أيها النظراء!
+
+تم طلب إزالة من قبل  $1  للتعليق الذي نشر على هذه المقالة:
+
+$2
+
+الرجاء مراجعة هذا التعليق، ثم الموافقة على أو رفض طلب الإزالة هذا:
+
+$3
+
+شكرا
+
+
+فريق {{SITENAME}}
+
+
+ملاحظة: إذا كان لديك أي أسئلة حول استخدام ميزات الإزالة لتعليقات المقالات، الرجاء مراجعة الأسئلة المتكررة للنظراء:
+
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'أأزيل هذا الوسم؟',
 	'articlefeedbackv5-disable-flyover-help' => 'لإزالة $1, الرجاء الذهاب إلى $2 والتحقق من $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'تعليقات المقالات',
@@ -3816,7 +3905,7 @@ eines der folgenden Probleme enthält:
 	'logentry-articlefeedbackv5-unhelpful' => '$1 {{GENDER:$2|markierte}} die [[$3|Rückmeldung $4]] zu [[$5]] als nicht hilfreich',
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|nahm}} die Markierung der [[$3|Rückmeldung $4]] zu [[$5]] als hilfreich zurück',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|nahm}} die Markierung der [[$3|Rückmeldung $4]] zu [[$5]] als nicht hilfreich zurück',
-	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|entfernte}} alle Kennzeichen zur [[$3|Rückmeldung $4]] zu [[$5]]',
+	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|entfernte}} alle Missbrauchskennzeichnungen zur [[$3|Rückmeldung $4]] zu [[$5]]',
 	'articlefeedbackv5-activity-pane-header' => 'Aktivitäten-Logbuch',
 	'articlefeedbackv5-activity-feedback-info' => 'Rückmeldung Nr. $1 von $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Am $1 verfasst',
@@ -3838,7 +3927,7 @@ eines der folgenden Probleme enthält:
 	'articlefeedbackv5-activity-item-unhelpful' => '$1 markierte diesen Beitrag am $4 um $5 als nicht hilfreich $2',
 	'articlefeedbackv5-activity-item-undo-helpful' => '$1 nahm die Markierung dieses Beitrags als hilfreich am $4 um $5 zurück $2',
 	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 nahm die Markierung dieses Beitrags als nicht hilfreich am $4 um $5 zurück $2',
-	'articlefeedbackv5-activity-item-clear-flags' => '$1 entfernte alle Kennzeichnungen zu diesem Beitrag am $4 um $5 zurück $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 entfernte alle Missbrauchskennzeichnungen zu diesem Beitrag am $4 um $5 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|Eine Aktion|$1 Aktionen}} zu dieser Rückmeldung',
 	'articlefeedbackv5-activity-more' => 'Weitere Aktivitäten anzeigen',
 	'articlefeedbackv5-talk-view-feedback' => 'Rückmeldungen der Leser ansehen',
