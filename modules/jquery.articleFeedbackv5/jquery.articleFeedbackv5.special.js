@@ -252,7 +252,7 @@
 		var container = $( '<div></div>' );
 		container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
 		for ( var action in $.articleFeedbackv5special.actions ) {
-			if ( $.articleFeedbackv5special.actions[action].hasTipsy && (undefined == $.articleFeedbackv5special.actions[action].tipsyHtml) ) {
+			if ( $.articleFeedbackv5special.actions[action].hasTipsy && $.articleFeedbackv5special.actions[action].tipsyHtml == undefined ) {
 				container.find( '#articleFeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
 				container.find( '#articleFeedbackv5-noteflyover-description' ).html( mw.config.get( 'mw.msg.articlefeedbackv5-noteflyover-' + action + '-description' ) );
 				container.find( '#articleFeedbackv5-noteflyover-label' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
@@ -443,7 +443,9 @@
 				.attr( 'action', action )
 				.tipsy( {
 					title: function() {
-						return $.articleFeedbackv5special.actions[$( this ).attr( 'action' )].tipsyHtml;
+						var html = $.articleFeedbackv5special.actions[$( this ).attr( 'action' )].tipsyHtml;
+						html = $( html ).localize( { 'prefix': 'articlefeedbackv5-' } ).html();
+						return html;
 					}
 				} );
 		}
@@ -1864,7 +1866,7 @@
 			'tipsyHtml': '\
 				<div>\
 					<div class="articleFeedbackv5-flyover-header">\
-						<h3 id="articleFeedbackv5-noteflyover-caption">Activity log</h3>\
+						<h3 id="articleFeedbackv5-noteflyover-caption"><html:msg key="activity-pane-header" /></h3>\
 						<a id="articleFeedbackv5-noteflyover-helpbutton" href="#"></a>\
 						<a id="articleFeedbackv5-noteflyover-close" href="#"></a>\
 					</div>\

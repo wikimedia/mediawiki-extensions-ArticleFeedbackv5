@@ -337,6 +337,8 @@ class ArticleFeedbackv5Hooks {
 				'articlefeedbackv5-noteflyover-unresolve-help',
 				'articlefeedbackv5-noteflyover-unresolve-help-link',
 
+				'articlefeedbackv5-activity-pane-header',
+
 				'articlefeedbackv5-beta-label',
 			),
 			'dependencies' => array(
