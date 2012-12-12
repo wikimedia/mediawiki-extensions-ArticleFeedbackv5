@@ -67,10 +67,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$res = $fetch->run();
 
 		// Build html
-		$permalink = ( $fetch->getFilter() == 'id' );
-		$highlight = ( $fetch->getFilter() != 'id' && $fetch->getFeedbackId() );
+		$highlight = (bool) $params['feedbackid'];
 		$central   = ( $params['pageid'] ? false : true );
-		$renderer  = new ArticleFeedbackv5Render( $user, $permalink, $central, $highlight );
+		$renderer  = new ArticleFeedbackv5Render( $user, false, $central, $highlight );
 		foreach ( $res->records as $record ) {
 			$html .= $renderer->run( $record );
 			$length++;
