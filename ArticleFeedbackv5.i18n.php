@@ -845,7 +845,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-unsupported-message' => 'A message to be displayed on the special page, when a visitor with an unsupported browser visits.',
 	'articlefeedbackv5-page-disabled' => 'A message to be displayed on the article feedback page when AFT is not enabled for that page',
 	'articlefeedbackv5-no-feedback' => 'A message to be displayed on the article feedback page when there is no feedback yet for a certain filter.',
-	'articlefeedbackv5-viewactivity' => "Text for the link to see the log of activity (e.g. mark as helpful, resolve, oversight, ...) taken towards feedback",
+	'articlefeedbackv5-viewactivity' => 'Text for the link to see the log of activity (e.g. mark as helpful, resolve, oversight, ...) taken towards feedback',
 	'articlefeedbackv5-timestamp-years' => 'Years part - $1 is the years parameter',
 	'articlefeedbackv5-timestamp-months' => 'Months part - $1 is the months parameter',
 	'articlefeedbackv5-timestamp-weeks' => 'Weeks part - $1 is the weeks parameter',
@@ -2813,6 +2813,7 @@ Vaš {{SITENAME}} tim',
  * @author BroOk
  * @author El libre
  * @author Grondin
+ * @author Pitort
  * @author Solde
  * @author Toniher
  */
@@ -2820,7 +2821,7 @@ $messages['ca'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Gràcies!',
 	'articlefeedbackv5-cta-confirmation-message' => 'El teu comentari es pot veure en aquest [$1 pàgina de comentaris].',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Saps que pots editar aquesta pàgina?',
-	'articlefeedbackv5-cta1-confirmation-call' => "La Viquipèdia funciona perquè qualsevol en pot editar les pàgines. Endavant, prova-ho. Llença-t'hi!", # Fuzzy
+	'articlefeedbackv5-cta1-confirmation-call' => "{{SITENAME}} funciona perquè qualsevol en pot editar les pàgines. Endavant, prova-ho. Llença-t'hi!",
 	'articlefeedbackv5-cta1-learn-how' => 'Aprèn a editar',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Modifica aquesta pàgina',
 	'articlefeedbackv5-cta2-confirmation-title' => 'Ajuda a millorar la Viquipèdia', # Fuzzy
@@ -2847,7 +2848,8 @@ $messages['ca'] = array(
 	'articlefeedbackv5-error-submit' => "Error d'enviament del formulari.",
 	'articlefeedbackv5-error-nofeedback' => 'Si us plau, escriu els teus comentaris.',
 	'articlefeedbackv5-error-flagging' => 'Error en marcar el comentari.',
-	'articlefeedbackv5-contribs-entry-status' => 'Estat: $1', # Fuzzy
+	'articlefeedbackv5-contribs-entry-status' => '
+. . Estat: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Útil',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Marcat',
 	'articlefeedbackv5-contribs-status-action-feature' => 'Destacat',
@@ -2862,7 +2864,7 @@ $messages['ca'] = array(
 	'articlefeedbackv5-form-helpful-no-label' => 'No',
 	'articlefeedbackv5-special-add-feedback' => 'Afegeix el teu comentari',
 	'articlefeedbackv5-special-survey-button-text' => "Què en penses d'aquesta eina de comentaris?",
-	'articlefeedbackv5-special-filter-all' => 'Tots (supervisats) ($1)', # Fuzzy
+	'articlefeedbackv5-special-filter-all' => 'Tots els missatges ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'Tots (amagats) ($1)',
 	'articlefeedbackv5-special-filter-comment' => 'Tots els comentaris ($1)',
 	'articlefeedbackv5-special-filter-relevant' => 'Els més rellevants ($1)',
@@ -10524,7 +10526,7 @@ $messages['it'] = array(
 	'articlefeedbackv5-cta4-confirmation-title' => 'Entra a far parte della comunità',
 	'articlefeedbackv5-cta4-confirmation-call-line1' => 'Registrati o accedi, in modo che gli editori possano rispondere al tuo commento.',
 	'articlefeedbackv5-cta4-confirmation-call-line2' => 'Un account gratuito rende più facile condividere ciò che sai su {{SITENAME}}.',
-	'articlefeedbackv5-cta4-button-text-signup' => 'Crea un account',
+	'articlefeedbackv5-cta4-button-text-signup' => "Crea un'utenza",
 	'articlefeedbackv5-cta4-button-text-login' => 'Entra',
 	'articlefeedbackv5-cta4-button-text-later' => 'Forse più tardi',
 	'articlefeedbackv5-cta4-button-text-or' => 'o',
@@ -10915,7 +10917,6 @@ Riprova più tardi.',
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 ha rimosso tutte le segnalazioni per questo post il $4 alle $5 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 azione su questo post|$1 azioni su questo post}}',
 	'articlefeedbackv5-activity-more' => 'Mostra altre attività',
-	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|1 suggerimento|$1 suggerimenti}}',
 	'articlefeedbackv5-talk-view-feedback' => 'Vedi i suggerimenti dei lettori',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Feedback dalle mie pagine osservate',
 	'articlefeedbackv5-emailcapture-response-body' => "Ciao e grazie per l'interesse mostrato nel contribuire a migliorare {{SITENAME}}.
@@ -15252,7 +15253,7 @@ $messages['nl'] = array(
 	'articlefeedbackv5-cta4-confirmation-title' => 'Wordt lid van onze gemeenschap',
 	'articlefeedbackv5-cta4-confirmation-call-line1' => 'Registreer een gebruiker of meldt u aan zodat andere gebruikers op uw terugkoppeling kunnen reageren.',
 	'articlefeedbackv5-cta4-confirmation-call-line2' => 'Uw gratis gebruiker maakt het eenvoudiger om wat u weet te delen in {{SITENAME}}.',
-	'articlefeedbackv5-cta4-button-text-signup' => 'Gebruiker aanmaken',
+	'articlefeedbackv5-cta4-button-text-signup' => 'Registreren',
 	'articlefeedbackv5-cta4-button-text-login' => 'Aanmelden',
 	'articlefeedbackv5-cta4-button-text-later' => 'Nu niet',
 	'articlefeedbackv5-cta4-button-text-or' => 'of',
