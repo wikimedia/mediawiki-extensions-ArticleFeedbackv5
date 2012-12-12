@@ -207,7 +207,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$fetched = $fetch->run();
 
 		// Build renderer
-		$permalink = ( 'id' == $fetch->getFilter() );
+		$permalink = (bool) $this->feedbackId;
 		$central   = ( $this->pageId ? false : true );
 		$renderer  = new ArticleFeedbackv5Render( $user, $permalink, $central );
 
