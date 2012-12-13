@@ -408,7 +408,7 @@ class ArticleFeedbackv5Hooks {
 		// normal page where form can be displayed
 		if ( in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces ) ) {
 			// check if we actually fetched article content & no error page
-			if ( $out->getRevisionTimestamp() != null ) {
+			if ( $out->getRevisionId() != null ) {
 				// load module
 				$out->addJsConfigVars( 'aftv5Article', self::getPageInformation( $title ) );
 				$out->addModules( 'ext.articleFeedbackv5.startup' );
