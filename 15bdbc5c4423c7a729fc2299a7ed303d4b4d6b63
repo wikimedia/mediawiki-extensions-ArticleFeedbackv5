@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADcH///1I\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.track.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 78
+      },
+      "writtenOn": "2012-12-13T19:37:42Z",
+      "side": 1,
+      "message": "This statement is a bit tricky.\nI would suggest:\nif ( ! ( e.type in $.aftTrack.events ) ) {\n    $.aftTrack.events[e.type] \u003d [];\n}",
+      "revId": "15bdbc5c4423c7a729fc2299a7ed303d4b4d6b63",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
