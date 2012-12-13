@@ -2824,21 +2824,23 @@ $messages['ca'] = array(
 	'articlefeedbackv5-cta1-confirmation-call' => "{{SITENAME}} funciona perquè qualsevol en pot editar les pàgines. Endavant, prova-ho. Llença-t'hi!",
 	'articlefeedbackv5-cta1-learn-how' => 'Aprèn a editar',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Modifica aquesta pàgina',
-	'articlefeedbackv5-cta2-confirmation-title' => 'Ajuda a millorar la Viquipèdia', # Fuzzy
+	'articlefeedbackv5-cta2-confirmation-title' => 'Ajuda a millorar {{SITENAME}}',
 	'articlefeedbackv5-cta2-confirmation-call' => 'Aquest lloc web està creat per gent com tu. Ens pots donar un cop de mà?',
 	'articlefeedbackv5-cta2-button-text' => 'Aprèn-ne més',
 	'articlefeedbackv5-cta3-confirmation-title' => 'Si us plau fes una enquesta ràpida',
-	'articlefeedbackv5-cta3-confirmation-call' => 'Només et suposarà un minut i ajudarà a millorar la Viquipèdia.', # Fuzzy
+	'articlefeedbackv5-cta3-confirmation-call' => 'Només et suposarà un minut i ajudarà a millorar {{SITENAME}}.',
 	'articlefeedbackv5-cta3-button-text' => "Comença l'enquesta",
 	'articlefeedbackv5-cta4-confirmation-title' => 'Uneix-te a la nostra comunitat',
 	'articlefeedbackv5-cta4-confirmation-call-line1' => "Registra't o inicia sessió perquè els editors puguin respondre als teus comentaris.",
-	'articlefeedbackv5-cta4-confirmation-call-line2' => 'El teu compte gratuït fa que sigui més fàcil compartir el que saps a la Viquipèdia.', # Fuzzy
+	'articlefeedbackv5-cta4-confirmation-call-line2' => 'El teu compte gratuït fa que sigui més fàcil compartir el que saps a {{SITENAME}}.',
 	'articlefeedbackv5-cta4-button-text-signup' => 'Crea un compte',
 	'articlefeedbackv5-cta4-button-text-login' => 'Inicia sessió',
 	'articlefeedbackv5-cta4-button-text-later' => 'Potser més tard',
 	'articlefeedbackv5-cta4-button-text-or' => 'o',
 	'articlefeedbackv5-cta5-confirmation-title' => 'Mostra el que diuen els altres',
+	'articlefeedbackv5-cta5-confirmation-call' => "Vegeu els suggeriments d'altres lectors com vostè. Vodeu ajudar a triar les millors idees?",
 	'articlefeedbackv5-cta5-button-text' => 'Mostra tots els comentaris',
+	'articlefeedbackv5-cta6-confirmation-title' => 'Necessiteu ajuda per modificar {{SITENAME}}?',
 	'articlefeedbackv5-overlay-close' => 'Tanca',
 	'articlefeedbackv5-error' => 'Ha ocorregut un error. Si us plau, prova-ho de nou més tard.',
 	'articlefeedbackv5-error-email' => 'Aquesta adreça de correu electrònic és invàlida.',
@@ -2848,6 +2850,8 @@ $messages['ca'] = array(
 	'articlefeedbackv5-error-submit' => "Error d'enviament del formulari.",
 	'articlefeedbackv5-error-nofeedback' => 'Si us plau, escriu els teus comentaris.',
 	'articlefeedbackv5-error-flagging' => 'Error en marcar el comentari.',
+	'articlefeedbackv5-protection-permission-member' => 'Autoritzat només per a usuaris registrats',
+	'articlefeedbackv5-protection-permission-editor' => 'Autoritzat només per a usuaris autoconfirmats',
 	'articlefeedbackv5-contribs-entry-status' => '
 . . Estat: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Útil',
@@ -20186,6 +20190,42 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'articleFeedbackv5-table-heading-page' => 'Pájina',
+);
+
+/** Thai (ไทย)
+ * @author Nullzero
+ */
+$messages['th'] = array(
+	'articlefeedbackv5-cta1-edit-linktext' => 'แก้ไขหน้านี้',
+	'articlefeedbackv5-cta2-button-text' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-cta4-button-text-or' => 'หรือ',
+	'articlefeedbackv5-overlay-close' => 'ปิด',
+	'articlefeedbackv5-form-helpful-yes-label' => 'ใช่',
+	'articlefeedbackv5-form-helpful-no-label' => 'ไม่',
+	'articlefeedbackv5-header-message-link-text' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-noteflyover-unfeature-help' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-noteflyover-unresolve-help' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-noteflyover-show-help' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'ยกเลิกการร้องขอ',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-noteflyover-oversight-help' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-noteflyover-unoversight-help' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-bucket1-toggle-found-yes' => 'ใช่',
+	'articlefeedbackv5-bucket1-toggle-found-no' => 'ไม่',
+	'articlefeedbackv5-bucket4-learn-to-edit' => 'เรียนรู้วิธีการแก้ไข',
+	'articlefeedbackv5-bucket4-form-submit' => 'แก้ไขหน้านี้',
+	'articlefeedbackv5-bucket4-noedit-form-submit' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-bucket6-toggle-found-yes' => 'ใช่',
+	'articlefeedbackv5-bucket6-toggle-found-no' => 'ไม่',
+	'articlefeedbackv5-bucket6-backlink-text' => 'กลับไปยังขั้นตอนแรก',
+	'articlefeedbackv5-help-tooltip-title' => 'นี้คืออะไร?',
+	'articlefeedbackv5-help-tooltip-linktext' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-sitesub-linktext' => 'ปรับปรุงหน้านี้',
+	'articlefeedbackv5-titlebar-linktext' => 'ช่วยปรับปรุงหน้านี้ >>',
+	'articlefeedbackv5-fixedtab-linktext' => 'ปรับปรุงหน้านี้',
+	'articlefeedbackv5-bottomrighttab-linktext' => 'ปรับปรุงหน้านี้',
 );
 
 /** Turkmen (Türkmençe)
