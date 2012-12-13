@@ -658,7 +658,6 @@
 	padding-top: 0;
 	padding-bottom: 0;
 	text-align: center;
-	color: #fff;
 	/*text-shadow: 1px 1px 1px #000;*/
 	/*padding: 1px 30px 0 0;*/
 	/* @embed */
@@ -1011,4 +1010,3 @@
 	/* @embed */
 	background-image: url(images/tab_x_on.png);
 }
-
