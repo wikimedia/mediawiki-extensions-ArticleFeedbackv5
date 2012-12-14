@@ -444,7 +444,7 @@
 				.tipsy( {
 					title: function() {
 						var html = $.articleFeedbackv5special.actions[$( this ).attr( 'action' )].tipsyHtml;
-						html = $( html ).localize( { 'prefix': 'articlefeedbackv5-' } ).html();
+						html = $( '<div>' + html + '</div>' ).localize( { 'prefix': 'articlefeedbackv5-' } ).html();
 						return html;
 					}
 				} );
