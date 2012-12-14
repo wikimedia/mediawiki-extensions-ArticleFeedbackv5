@@ -157,7 +157,10 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$message = wfMessage( "articlefeedbackv5-noteflyover-$flyover-description" )->parse();
 			$vars["mw.msg.articlefeedbackv5-noteflyover-$flyover-description"] = $message;
 		}
-		$this->getOutput()->addJsConfigVars( $vars );
+
+		$out = $this->getOutput();
+		$out->addJsConfigVars( $vars );
+		$out->setArticleRelated( false );
 
 		wfProfileOut( __METHOD__ );
 	}
