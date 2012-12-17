@@ -390,7 +390,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$total = ArticleFeedbackv5Model::getCount( '*', $this->pageId ) - $totalInappropriate - $totalHidden - $totalOversighted;
 			$found = ArticleFeedbackv5Model::getCountFound( $this->pageId ) / ( $total ?: 1 ) * 100;
 
-			if ( $found ) {
+			if ( $found !== null ) {
 				if ( $found > 50 ) {
 					$class = 'positive';
 				} elseif ( $found < 50 ) {
