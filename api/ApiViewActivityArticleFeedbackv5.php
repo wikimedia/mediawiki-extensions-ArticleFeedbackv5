@@ -96,7 +96,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 		// only do this if continue is not null
 		if ( !$continue && !$params['noheader'] ) {
-			$result->addValue( $this->getModuleName(), 'hasHeader', true );
+			$result->addValue( array( 'query', $this->getModuleName() ), 'hasHeader', true );
 
 			// <div class="articleFeedbackv5-activity-pane">
 			$html .= Html::openElement( 'div', array(
@@ -218,8 +218,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		$html .= Html::closeElement( 'div' );
 
 		// finally add our generated html data
-		$result->addValue( $this->getModuleName(), 'limit', $limit );
-		$result->addValue( $this->getModuleName(), 'activity', $html );
+		$result->addValue( array( 'query', $this->getModuleName() ), 'limit', $limit );
+		$result->addValue( array( 'query', $this->getModuleName() ), 'activity', $html );
 
 		// continue only goes in if it's not empty
 		if ( $count > $limit ) {

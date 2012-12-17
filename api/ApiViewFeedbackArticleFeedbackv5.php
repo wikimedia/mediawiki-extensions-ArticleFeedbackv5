@@ -76,13 +76,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		}
 
 		// Add metadata
-		$result->addValue( $this->getModuleName(), 'length', $length );
-		$result->addValue( $this->getModuleName(), 'count', $count );
-		$result->addValue( $this->getModuleName(), 'more', $res->showMore );
+		$result->addValue( array( 'query', $this->getModuleName() ), 'length', $length );
+		$result->addValue( array( 'query', $this->getModuleName() ), 'count', $count );
+		$result->addValue( array( 'query', $this->getModuleName() ), 'more', $res->showMore );
 		if ( isset( $res->continue ) ) {
-			$result->addValue( $this->getModuleName(), 'continue', $res->continue );
+			$result->addValue( array( 'query', $this->getModuleName() ), 'continue', $res->continue );
 		}
-		$result->addValue( $this->getModuleName(), 'feedback', $html );
+		$result->addValue( array( 'query', $this->getModuleName() ), 'feedback', $html );
 
 		wfProfileOut( __METHOD__ );
 	}
