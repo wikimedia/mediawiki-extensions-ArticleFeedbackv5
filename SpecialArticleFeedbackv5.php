@@ -558,7 +558,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		if ( $this->pageId ) {
 			$ratings = $this->fetchOverallRating( $this->pageId );
 			$found   = isset( $ratings['found'] ) ? $ratings['found'] : null;
-			if ( $found ) {
+			if ( $found !== null ) {
 				$class = $found > 50 ? 'positive' : 'negative';
 
 				$span = Html::rawElement( 'span', array(
