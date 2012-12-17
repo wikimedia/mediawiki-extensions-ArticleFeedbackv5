@@ -889,28 +889,31 @@
 			'cache' : false,
 			'context': { location: location },
 			'success': function ( data ) {
-				if ( data['articlefeedbackv5-view-activity'].hasHeader ) {
-					$( location ).html( data['articlefeedbackv5-view-activity'].activity );
-				} else {
-					var $place = $( location ).find( '.articleFeedbackv5-activity-more' );
-					if ( $place.length > 0 ) {
-						$place.replaceWith( data['articlefeedbackv5-view-activity'].activity );
+				if ( data.query && data.query['articlefeedbackv5-view-activity'] ) {
+					if ( data.query['articlefeedbackv5-view-activity'].hasHeader ) {
+						$( location ).html( data.query['articlefeedbackv5-view-activity'].activity );
 					} else {
-						$( location ).html( data['articlefeedbackv5-view-activity'].activity );
+						var $place = $( location ).find( '.articleFeedbackv5-activity-more' );
+						if ( $place.length > 0 ) {
+							$place.replaceWith( data.query['articlefeedbackv5-view-activity'].activity );
+						} else {
+							$( location ).html( data.query['articlefeedbackv5-view-activity'].activity );
+						}
+
+						if ( 'query-continue' in data && data.query['query-continue']['articlefeedbackv5-view-activity'] ) {
+							$( location ).find( '.articleFeedbackv5-activity-more' )
+								.data( 'continue', data.query['query-continue']['articlefeedbackv5-view-activity'].aacontinue )
+								.click( function( e ) {
+									e.preventDefault();
+									$.articleFeedbackv5special.loadActivityLog(
+										id,
+										pageId,
+										$( e.target ).data( 'continue' ),
+										location
+									);
+								} );
+						}
 					}
-				}
-				if ( data['query-continue'] && data['query-continue']['articlefeedbackv5-view-activity'] ) {
-					$( location ).find( '.articleFeedbackv5-activity-more' )
-						.data( 'continue', data['query-continue']['articlefeedbackv5-view-activity'].aacontinue )
-						.click( function( e ) {
-							e.preventDefault();
-							$.articleFeedbackv5special.loadActivityLog(
-								id,
-								pageId,
-								$( e.target ).data( 'continue' ),
-								location
-							);
-						} );
 				}
 			},
 			'error': function ( data ) {
@@ -965,14 +968,14 @@
 			'cache' : false,
 			'context' : { info: params },
 			'success' : function ( data ) {
-				if ( 'articlefeedbackv5-view-feedback' in data ) {
+				if ( 'query' in data && 'articlefeedbackv5-view-feedback' in data.query ) {
 					if ( resetContents ) {
 						$( '#articleFeedbackv5-show-feedback' ).empty();
 					}
 					if ( prependContents ) {
-						$( '#articleFeedbackv5-show-feedback' ).prepend( data['articlefeedbackv5-view-feedback'].feedback );
+						$( '#articleFeedbackv5-show-feedback' ).prepend( data.query['articlefeedbackv5-view-feedback'].feedback );
 					} else {
-						$( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback );
+						$( '#articleFeedbackv5-show-feedback' ).append( data.query['articlefeedbackv5-view-feedback'].feedback );
 					}
 					if ( $.articleFeedbackv5special.highlightId ) {
 						if (this.info.afvffeedbackid == $.articleFeedbackv5special.highlightId ) {
@@ -983,12 +986,13 @@
 						}
 					} else {
 						$.articleFeedbackv5special.processControls(
-							data['articlefeedbackv5-view-feedback']['count'],
-							data['articlefeedbackv5-view-feedback']['filtercount'],
-							data['articlefeedbackv5-view-feedback']['offset'],
-							data['articlefeedbackv5-view-feedback']['more']
+							data.query['articlefeedbackv5-view-feedback']['count'],
+							data.query['articlefeedbackv5-view-feedback']['filtercount'],
+							data.query['articlefeedbackv5-view-feedback']['offset'],
+							data.query['articlefeedbackv5-view-feedback']['more']
 						);
 					}
+
 					$.articleFeedbackv5special.processFeedback();
 				} else {
 					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );

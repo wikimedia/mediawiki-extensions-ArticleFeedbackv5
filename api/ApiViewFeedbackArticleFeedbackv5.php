@@ -78,12 +78,12 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$totalCount = ArticleFeedbackv5Model::getCount( '*', $pageId );
 
 		// Add metadata
-		$result->addValue( $this->getModuleName(), 'length', $length );
-		$result->addValue( $this->getModuleName(), 'count', $totalCount );
-		$result->addValue( $this->getModuleName(), 'filtercount', $filterCount );
-		$result->addValue( $this->getModuleName(), 'offset', $records ? $records->nextOffset() : null );
-		$result->addValue( $this->getModuleName(), 'more', $records ? $records->hasMore() : false );
-		$result->addValue( $this->getModuleName(), 'feedback', $html );
+		$result->addValue( array( 'query', $this->getModuleName() ), 'length', $length );
+		$result->addValue( array( 'query', $this->getModuleName() ), 'count', $totalCount );
+		$result->addValue( array( 'query', $this->getModuleName() ), 'filtercount', $filterCount );
+		$result->addValue( array( 'query', $this->getModuleName() ), 'offset', $records ? $records->nextOffset() : null );
+		$result->addValue( array( 'query', $this->getModuleName() ), 'more', $records ? $records->hasMore() : false );
+		$result->addValue( array( 'query', $this->getModuleName() ), 'feedback', $html );
 
 		wfProfileOut( __METHOD__ );
 	}
