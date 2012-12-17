@@ -860,28 +860,32 @@
 			'cache' : false,
 			'context': { location: location },
 			'success': function( data ) {
-				if ( data['articlefeedbackv5-view-activity'].hasHeader ) {
-					$( location ).html( data['articlefeedbackv5-view-activity'].activity );
-				} else {
-					var $place = $( location ).find( '.articleFeedbackv5-activity-more' );
-					if ( $place.length > 0 ) {
-						$place.replaceWith( data['articlefeedbackv5-view-activity'].activity );
-					} else {
+				data = data.query;
+
+				if ( 'articlefeedbackv5-view-activity' in data ) {
+					if ( data['articlefeedbackv5-view-activity'].hasHeader ) {
 						$( location ).html( data['articlefeedbackv5-view-activity'].activity );
+					} else {
+						var $place = $( location ).find( '.articleFeedbackv5-activity-more' );
+						if ( $place.length > 0 ) {
+							$place.replaceWith( data['articlefeedbackv5-view-activity'].activity );
+						} else {
+							$( location ).html( data['articlefeedbackv5-view-activity'].activity );
+						}
 					}
-				}
-				if ( data['query-continue'] && data['query-continue']['articlefeedbackv5-view-activity'] ) {
-					$( location ).find( '.articleFeedbackv5-activity-more' )
-						.data( 'continue', data['query-continue']['articlefeedbackv5-view-activity'].aacontinue )
-						.click( function( e ) {
-							e.preventDefault();
-							$.articleFeedbackv5special.loadActivityLog(
-								id,
-								pageId,
-								$( e.target ).data( 'continue' ),
-								location
-							);
-						} );
+					if ( data['query-continue'] && data['query-continue']['articlefeedbackv5-view-activity'] ) {
+						$( location ).find( '.articleFeedbackv5-activity-more' )
+							.data( 'continue', data['query-continue']['articlefeedbackv5-view-activity'].aacontinue )
+							.click( function( e ) {
+								e.preventDefault();
+								$.articleFeedbackv5special.loadActivityLog(
+									id,
+									pageId,
+									$( e.target ).data( 'continue' ),
+									location
+								);
+							} );
+					}
 				}
 			},
 			'error': function( data ) {
@@ -936,7 +940,9 @@
 			'cache' : false,
 			'context' : { info: params },
 			'success' : function ( data ) {
-				if ( 'articlefeedbackv5-view-feedback' in data ) {
+				data = data.query;
+
+				if ( 'query' in data && 'articlefeedbackv5-view-feedback' in data ) {
 					if ( resetContents ) {
 						$( '#articleFeedbackv5-show-feedback' ).empty();
 					}
@@ -960,6 +966,7 @@
 							data['articlefeedbackv5-view-feedback']['more']
 						);
 					}
+
 					$.articleFeedbackv5special.processFeedback();
 				} else {
 					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
