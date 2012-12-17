@@ -89,8 +89,8 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'ArticleFeedbackv5' => array( 'MaddeGeribildirimiv5' ),
-	'ArticleFeedbackv5Watchlist' => array( 'MaddeGeribildirimiv5İzlemeListesi' ),
+	'ArticleFeedbackv5' => array( 'MaddeDeğerlendirmesis5', 'MaddeDeğerlendirmesiv5', 'MaddeDeğerlendirmes5', 'MaddeDeğerlendirmev5', 'MaddeGeribildirimis5', 'MaddeGeribildirimiv5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'MaddeDeğerlendirmesis5İzlemeListesi', 'MaddeDeğerlendirmesiv5İzlemeListesi', 'MaddeDeğerlendirmes5İzlemeListesi', 'MaddeDeğerlendirmev5İzlemeListesi', 'MaddeGeribildirimis5İzlemeListesi', 'MaddeGeribildirimiv5İzlemeListesi' ),
 );
 
 /** Vietnamese (Tiếng Việt) */
