@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADgX//+jo\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.watchlist.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 417
+      },
+      "writtenOn": "2012-12-27T14:18:16Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be URI-encoded, just in case? (Using encodeURIComponent or mw.util.wikiUrlencode?)",
+      "revId": "731029680b161b7ac44a42ac12423865b38bedce",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
