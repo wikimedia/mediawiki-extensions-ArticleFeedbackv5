@@ -577,11 +577,11 @@ $4',
 
 	/* Custom AbuseFilter actions */
 	'abusefilter-edit-action-aftv5flagabuse' => '(Article Feedback) Auto-flag as abuse',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Automatically flagged as abuse.  Rule: $1',
+	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Automatically flagged as abuse. Rule: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Article Feedback) Auto-hide',
-	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automatically hidden.  Rule: $1',
+	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automatically hidden. Rule: $1',
 	'abusefilter-edit-action-aftv5requestoversight' => '(Article Feedback) Auto-request oversight',
-	'articlefeedbackv5-abusefilter-note-aftv5requestoversight' => 'Oversight automatically requested.  Rule: $1',
+	'articlefeedbackv5-abusefilter-note-aftv5requestoversight' => 'Oversight automatically requested. Rule: $1',
 );
 
 /** Message documentation (Message documentation)
