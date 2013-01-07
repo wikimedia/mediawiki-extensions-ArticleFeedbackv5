@@ -472,20 +472,32 @@ $wgAbuseFilterAvailableActions[] = 'aftv5requestoversight';
 // monitor, administrator, oversighter. The default (below-configured) permissions scheme can be seen at
 // http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
 foreach ( array( '*', 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
-	$wgGroupPermissions[$group]['aft-reader'] = true;
+	if ( isset( $wgGroupPermissions[$group] ) ) {
+		$wgGroupPermissions[$group]['aft-reader'] = true;
+	}
 }
 foreach ( array( 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
-	$wgGroupPermissions[$group]['aft-member'] = true;
+	if ( isset( $wgGroupPermissions[$group] ) ) {
+		$wgGroupPermissions[$group]['aft-member'] = true;
+	}
 }
 foreach ( array( 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
-	$wgGroupPermissions[$group]['aft-editor'] = true;
+	if ( isset( $wgGroupPermissions[$group] ) ) {
+		$wgGroupPermissions[$group]['aft-editor'] = true;
+	}
 }
 foreach ( array( 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
-	$wgGroupPermissions[$group]['aft-monitor'] = true;
+	if ( isset( $wgGroupPermissions[$group] ) ) {
+		$wgGroupPermissions[$group]['aft-monitor'] = true;
+	}
 }
 foreach ( array( 'sysop', 'oversight' ) as $group ) {
-	$wgGroupPermissions[$group]['aft-administrator'] = true;
+	if ( isset( $wgGroupPermissions[$group] ) ) {
+		$wgGroupPermissions[$group]['aft-administrator'] = true;
+	}
 }
 foreach ( array( 'oversight' ) as $group ) {
-	$wgGroupPermissions[$group]['aft-oversighter'] = true;
+	if ( isset( $wgGroupPermissions[$group] ) ) {
+		$wgGroupPermissions[$group]['aft-oversighter'] = true;
+	}
 }
