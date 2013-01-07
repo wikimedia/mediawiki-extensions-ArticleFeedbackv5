@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADgX//2ng\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.track.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 417
+      },
+      "writtenOn": "2013-01-07T16:35:28Z",
+      "side": 1,
+      "message": "Shift key as well.",
+      "revId": "a16541f574ee447ee80547d9b8103f60d54d98d3",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADgX//2nc\u003d",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.track.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 417
+      },
+      "writtenOn": "2013-01-07T16:35:28Z",
+      "side": 1,
+      "message": "Shift key as well.",
+      "revId": "a16541f574ee447ee80547d9b8103f60d54d98d3",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
