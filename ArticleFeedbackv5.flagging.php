@@ -719,7 +719,7 @@ class ArticleFeedbackv5Flagging {
 
 			$this->relevance[] = 'unhide';
 
-			$this->log[] = array( 'unhide', 'Automatic un-hide', null );
+			$this->log[] = array( 'unhide', 'Automatic un-hide', $this->user );
 		}
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
@@ -932,7 +932,7 @@ class ArticleFeedbackv5Flagging {
 
 			$this->relevance[] = 'unhide';
 
-			$this->log[] = array( 'unhide', 'Automatic un-hide', null );
+			$this->log[] = array( 'unhide', 'Automatic un-hide', $this->user );
 		}
 
 		$this->results['status-line'] = ApiArticleFeedbackv5Utils::renderStatusLine(
@@ -1078,7 +1078,7 @@ class ArticleFeedbackv5Flagging {
 
 			$this->relevance[] = 'unhide';
 
-			$this->log[] = array( 'unhide', 'Automatic un-hide', null );
+			$this->log[] = array( 'unhide', 'Automatic un-hide', $this->user );
 		}
 
 		$this->results['abuse_report'] = wfMessage( 'articlefeedbackv5-form-abuse-count' )
@@ -1128,7 +1128,7 @@ class ArticleFeedbackv5Flagging {
 
 			$this->relevance[] = 'unhide';
 
-			$this->log[] = array( 'unhide', 'Automatic un-hide', null );
+			$this->log[] = array( 'unhide', 'Automatic un-hide', $this->user );
 		}
 
 		$this->results['abuse_cleared'] = true;
