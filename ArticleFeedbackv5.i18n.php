@@ -661,7 +661,8 @@ The abuse policy link.',
 	'articlefeedbackv5-contribs-entry-status' => 'The status part of {{msg-mw|articlefeedbackv5-contribs-entry}}. Statussen can be any combination of helpful, flagged, featured, resolved, hidden, oversight-requested, deleted',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Status when feedback has been marked as helpful',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Status when feedback has been flagged',
-	'articlefeedbackv5-contribs-status-action-feature' => 'Status when feedback has been featured',
+	'articlefeedbackv5-contribs-status-action-feature' => 'Status when feedback has been featured.
+{{Identical|Featured}}',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Status when feedback has been resolved',
 	'articlefeedbackv5-contribs-status-action-hide' => 'Status when feedback has been hidden
 {{Identical|Hidden}}',
@@ -709,7 +710,8 @@ The abuse policy link.',
 	'articlefeedbackv5-special-filter-unoversighted-watchlist' => 'A list of feedback that has been un-oversighted (= undeleted). When viewing items on watchlist = without totals (= no $1)',
 	'articlefeedbackv5-special-filter-declined-watchlist' => 'A list of feedback where the oversight request (= request for deletion) has been declined. When viewing items on watchlist = without totals (= no $1)',
 	'articlefeedbackv5-special-filter-unhidden-watchlist' => 'A list of feedback that has been un-hidden. When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-featured-watchlist' => 'A list of feedback that has been featured (= "promoted" feedback, to make useful feedback stand out more). When viewing items on watchlist = without totals (= no $1)',
+	'articlefeedbackv5-special-filter-featured-watchlist' => 'A list of feedback that has been featured (= "promoted" feedback, to make useful feedback stand out more). When viewing items on watchlist = without totals (= no $1)
+{{Identical|Featured}}',
 	'articlefeedbackv5-special-filter-unfeatured-watchlist' => 'A list of feedback that has been un-featured. When viewing items on watchlist = without totals (= no $1)',
 	'articlefeedbackv5-special-filter-resolved-watchlist' => 'A list of feedback that has been resolved (= feedback that has been dealt with). When viewing items on watchlist = without totals (= no $1)',
 	'articlefeedbackv5-special-filter-unresolved-watchlist' => 'A list of feedback that has been un-resolved. When viewing items on watchlist = without totals (= no $1)',
@@ -784,7 +786,8 @@ The abuse policy link.',
 	'articlefeedbackv5-deleted-marker' => 'The marker that appears on a comment if it has been oversighted (deleted).',
 	'articlefeedbackv5-hidden-marker' => 'The marker that appears on a comment if it has been hidden.
 {{Identical|Hidden}}',
-	'articlefeedbackv5-featured-marker' => 'The marker that appears on a comment if it has been featured.',
+	'articlefeedbackv5-featured-marker' => 'The marker that appears on a comment if it has been featured.
+{{Identical|Featured}}',
 	'articlefeedbackv5-form-feature' => 'Link text for featuring the post (in the toolbox)',
 	'articlefeedbackv5-form-unfeature' => 'Link text for un-featuring the post (in the toolbox)',
 	'articlefeedbackv5-resolved-marker' => 'The marker that appears on a comment if it has been marked as resolved.',
@@ -802,10 +805,12 @@ The abuse policy link.',
 	'articlefeedbackv5-form-unoversight' => 'Remove request for oversight (request that an oversighter review the feedback)',
 	'articlefeedbackv5-form-decline' => 'Link text for declining oversight',
 	'articlefeedbackv5-form-declined' => 'Link text when oversight has already been declined',
-	'articlefeedbackv5-form1-header-found' => 'Parameters
+	'articlefeedbackv5-form1-header-found' => '{{doc-singularthey}}
+Parameters
 * $1 is a username.
 * $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text',
-	'articlefeedbackv5-form1-header-not-found' => 'Parameters
+	'articlefeedbackv5-form1-header-not-found' => '{{doc-singularthey}}
+Parameters
 * $1 is a username.
 * $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text',
 	'articlefeedbackv5-form1-header-left-comment' => 'Parameters
@@ -834,6 +839,9 @@ The abuse policy link.',
 	'articlefeedbackv5-error-loading-feedback' => 'Message displayed when there was an error loading feedback - result is a largely-blank page.',
 	'articlefeedbackv5-discussion-page' => '{{Identical|Discussion}}',
 	'articlefeedbackv5-whats-this' => '{{Identical|Help}}',
+	'articlefeedbackv5-percent-found' => '{{doc-singularthey}}
+Parameters:
+* $1 - username',
 	'articlefeedbackv5' => 'The title of the feature. It is about reader feedback.
 
 Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a prototype installation.',
@@ -969,6 +977,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Hide post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide post note flyover panel - submit button text',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Hide post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-hide-help-link' => '{{Identical|Hide}}',
 	'articlefeedbackv5-noteflyover-show-caption' => 'Show post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-show-description' => 'Show post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-show-label' => 'Show post note flyover panel - text area label',
@@ -19885,6 +19894,7 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-permalink-activity-none' => 'Non ge stonne attività sus a stu messàgge.',
 	'articlefeedbackv5-permalink-status-hide' => '{{GENDER:$1|<strong>Scunnute</strong> da $1}} $2 fà',
 	'articlefeedbackv5-permalink-status-unhide' => '{{GENDER:$1|<strong>Fatte vedè</strong> da $1}} $2 fà',
+	'articlefeedbackv5-permalink-status-feature' => '{{GENDER:$1|<strong>Dettagliate</strong> da $1}} $2 fà',
 	'articlefeedbackv5-permalink-activity-more' => 'Vide cchiù aziune...',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Vide mene aziune...',
 	'articlefeedbackv5-noteflyover-feature-caption' => 'Dettaglie stu messàgge',
@@ -19919,6 +19929,7 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-noteflyover-show-help' => "'Mbare de cchiù",
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Richieste de supervisione',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => "Aggiunge 'na note pe spiegà purcé tu tìne richieste supervisionate",
+	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Richieste de sorveglianze',
 	'articlefeedbackv5-noteflyover-requestoversight-help' => "'Mbare de cchiù",
 	'articlefeedbackv5-noteflyover-unrequestoversight-label' => "Aggiunge 'na note",
 	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => "Annulle 'a richieste",
@@ -19972,8 +19983,11 @@ $messages['roa-tara'] = array(
 	'right-aft-administrator' => "Vide AFT sus 'a le pàggene prutette",
 	'right-aft-oversighter' => 'Segnalazione de sorveglianze',
 	'articlefeedbackv5-activity-pane-header' => 'Archivije de le attività',
+	'articlefeedbackv5-activity-feedback-info' => 'Messàgge de segnalazione #$1 de $2',
 	'articlefeedbackv5-activity-feedback-date' => "Postate 'u $1",
 	'articlefeedbackv5-activity-permalink' => 'collegamende permanende',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 azione sus a stu messàgge|$1 aziune sus a stu messàgge}}',
+	'articlefeedbackv5-activity-more' => 'Fà vedè cchiù Attività',
 	'articlefeedbackv5-emailcapture-response-body' => "Cià!
 
 Grazie purcé è avute inderesse a dà 'na màne pe migliorà {{SITENAME}}.
