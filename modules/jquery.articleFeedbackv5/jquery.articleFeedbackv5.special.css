@@ -201,6 +201,16 @@
 .articleFeedbackv5-helpful-votes.articleFeedbackv5-has-votes {
 	display: inline;
 }
+.articleFeedbackv5-helpful-votes.articleFeedbackv5-votes-positive,
+.articleFeedbackv5-helpful-votes.articleFeedbackv5-votes-negative {
+	padding: 2px 15px 0 20px;
+	/* @embed */
+	background: url(images/thumbup.png) left no-repeat;
+}
+.articleFeedbackv5-helpful-votes.articleFeedbackv5-votes-negative {
+	/* @embed */
+	background: url(images/thumbdwn.png) left no-repeat;
+}
 
 /** Comment block: bottom line: Flag as abuse **/
 .articleFeedbackv5-flag-link,
