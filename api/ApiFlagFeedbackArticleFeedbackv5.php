@@ -59,7 +59,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$feedback = ArticleFeedbackv5Model::get( $feedbackId, $pageId );
 			$permalink = $source == 'permalink';
 			$central = $source == 'central';
-			$renderer = new ArticleFeedbackv5Render( $wgUser, $permalink, $central, false );
+			$renderer = new ArticleFeedbackv5Render( $permalink, $central, false );
 			$results['render'] = $renderer->run( $feedback );
 		}
 
