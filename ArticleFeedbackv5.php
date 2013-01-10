@@ -870,13 +870,4 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
  * that external connection.
  */
 $wgArticleFeedbackv5BackendClass = 'ArticleFeedbackv5BackendLBFactory';
-$wgArticleFeedbackv5Cluster = 'test';
-$wgExternalServers['test'] = array( array(
-	'host' => '127.0.0.1',
-	'user' => 'root',
-	'password' => '6QPmxtB2',
-	'dbname' => 'mediawiki_aft',
-	'type' => 'mysql',
-	'load' => 1,
-	'flags' => DBO_DEBUG | DBO_DEFAULT
-) );
+$wgArticleFeedbackv5Cluster = false;
