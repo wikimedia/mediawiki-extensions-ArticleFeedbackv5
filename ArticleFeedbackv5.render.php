@@ -554,9 +554,14 @@ class ArticleFeedbackv5Render {
 		$id = $record->aft_id;
 		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record );
 
-		// Add helpful/unhelpful voting links (for posts other than your own)
 		$voteLinks = '';
-		if ( $this->isAllowed( 'aft-reader' ) && !$ownFeedback ) {
+		$voteStats = '';
+		$abuseLink = '';
+		$abuseStats = '';
+
+		// Add helpful/unhelpful voting links (for posts other than your own)
+		// only for readers; editors have more powerful tools
+		if ( !$this->isAllowed( 'aft-editor' ) && !$ownFeedback ) {
 			$voteLinks =
 				Html::element(
 					'span',
@@ -583,11 +588,9 @@ class ArticleFeedbackv5Render {
 					),
 					wfMessage( 'articlefeedbackv5-form-helpful-no-label' )->text()
 				);
-		}
 
-		// Add helpful voting percentage for editors
-		$voteStats = '';
-		if ( $this->isAllowed( 'aft-editor' ) ) {
+		// add helpful voting percentage for editors
+		} elseif ( $this->isAllowed( 'aft-editor' ) ) {
 			$percent =
 				wfMessage( 'articlefeedbackv5-form-helpful-votes-percent' )
 					->numParams(
@@ -605,6 +608,12 @@ class ArticleFeedbackv5Render {
 			$votesClass = 'articleFeedbackv5-helpful-votes';
 			if ( $record->aft_helpful + $record->aft_unhelpful > 0 ) {
 				$votesClass .= ' articleFeedbackv5-has-votes';
+
+				if ( $record->aft_helpful >= $record->aft_unhelpful ) {
+					$votesClass .= ' articleFeedbackv5-votes-positive';
+				} else {
+					$votesClass .= ' articleFeedbackv5-votes-negative';
+				}
 			}
 
 			$voteStats =
@@ -620,13 +629,29 @@ class ArticleFeedbackv5Render {
 		}
 
 		// add abuse flagging (for posts other than your own)
-		$abuseLink = '';
+		// only for readers; editors have more powerful tools
 		if ( $this->isAllowed( 'aft-reader' ) && !$ownFeedback ) {
 			global $wgArticleFeedbackv5AbusiveThreshold;
 
+			if ( !$this->isAllowed( 'aft-editor' ) ) {
+				$abuseLink =
+					Html::element(
+						'a',
+						array(
+							'id'    => "articleFeedbackv5-flag-link-$id",
+							'class' => 'articleFeedbackv5-flag-link',
+							'title' => wfMessage( 'articlefeedbackv5-form-tooltip-flag' )->text(),
+							'href'  => '#',
+							'data-action'  => 'flag',
+						),
+						wfMessage(
+							'articlefeedbackv5-form-flag',
+							$wgLang->formatNum( $record->aft_flag )
+						)->text()
+					);
+
 			// add count for editors
-			$abuseStats = '';
-			if ( $this->isAllowed( 'aft-editor' ) ) {
+			} else {
 				$aclass = 'articleFeedbackv5-abuse-count';
 				if ( $record->aft_flag > 0 ) {
 					$aclass .= ' articleFeedbackv5-has-abuse-flags';
@@ -648,27 +673,6 @@ class ArticleFeedbackv5Render {
 						)->text()
 					);
 			}
-
-			$abuseLink .=
-				Html::rawElement(
-					'div',
-					array( 'class' => 'articleFeedbackv5-comment-foot-abuse' ),
-					Html::element(
-						'a',
-						array(
-							'id' => "articleFeedbackv5-flag-link-$id",
-							'class' => 'articleFeedbackv5-flag-link',
-							'title' => wfMessage( 'articlefeedbackv5-form-tooltip-flag' )->text(),
-							'href' => '#',
-							'data-action' => 'flag'
-						),
-						wfMessage(
-							'articlefeedbackv5-form-flag',
-							$wgLang->formatNum( $record->aft_flag )
-						)->text()
-					) .
-					$abuseStats
-				);
 		}
 
 		$ownPost = '';
@@ -727,7 +731,11 @@ class ArticleFeedbackv5Render {
 					array( 'class' => 'articleFeedbackv5-comment-foot-helpful' ),
 					$voteLinks . $voteStats
 				) .
-				$abuseLink .
+				Html::rawElement(
+					'div',
+					array( 'class' => 'articleFeedbackv5-comment-foot-abuse' ),
+					$abuseLink . $abuseStats
+				) .
 				$ownPost .
 				Html::element( 'div', array( 'class' => 'clear' ) )
 			);
