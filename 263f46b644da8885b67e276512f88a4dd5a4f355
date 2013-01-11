@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADg3///QY\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-01-11T10:21:46Z",
+      "side": 0,
+      "message": "Does this obsolete this message? If so, it should be removed from the RL dependencies and be removed from the i18n file. Otherwise, you would have created an orphan message (and those are hard to hunt down later).",
+      "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
