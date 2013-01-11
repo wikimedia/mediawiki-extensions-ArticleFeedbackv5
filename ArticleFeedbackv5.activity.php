@@ -40,34 +40,6 @@ class ArticleFeedbackv5Activity {
 			'sentiment' => 'negative'
 		),
 		'unrequest' => array(
-			'permissions' => 'aft_monitor',
-			'sentiment' => 'positive'
-		),
-		'hide' => array(
-			'permissions' => 'aft-monitor',
-			'sentiment' => 'negative'
-		),
-		'unhide' => array(
-			'permissions' => 'aft-monitor',
-			'sentiment' => 'positive'
-		),
-		'autohide' => array(
-			'permissions' => 'aft-monitor',
-			'sentiment' => 'negative'
-		),
-		'flag' => array(
-			'permissions' => 'aft-reader',
-			'sentiment' => 'negative'
-		),
-		'unflag' => array(
-			'permissions' => 'aft-reader',
-			'sentiment' => 'positive'
-		),
-		'autoflag' => array(
-			'permissions' => 'aft-reader',
-			'sentiment' => 'negative'
-		),
-		'clear-flags' => array(
 			'permissions' => 'aft-monitor',
 			'sentiment' => 'positive'
 		),
@@ -86,6 +58,42 @@ class ArticleFeedbackv5Activity {
 		'unresolve' => array(
 			'permissions' => 'aft-editor',
 			'sentiment' => 'negative'
+		),
+		'noaction' => array(
+			'permissions' => 'aft-editor',
+			'sentiment' => 'neutral'
+		),
+		'unnoaction' => array(
+			'permissions' => 'aft-editor',
+			'sentiment' => 'neutral'
+		),
+		'hide' => array(
+			'permissions' => 'aft-editor',
+			'sentiment' => 'negative'
+		),
+		'unhide' => array(
+			'permissions' => 'aft-editor',
+			'sentiment' => 'positive'
+		),
+		'autohide' => array(
+			'permissions' => 'aft-editor',
+			'sentiment' => 'negative'
+		),
+		'flag' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'negative'
+		),
+		'unflag' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'positive'
+		),
+		'autoflag' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'negative'
+		),
+		'clear-flags' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'positive'
 		),
 		'helpful' => array(
 			'permissions' => 'aft-reader',
@@ -115,55 +123,27 @@ class ArticleFeedbackv5Activity {
 	 * @param string[optional] $continue used for offsets
 	 * @return array db record rows
 	 */
-	public static function getList( $feedback, $user = null, $limit = 25, $continue = null ) {
-		global $wgLogActionsHandlers;
-		$dbr = wfGetDB( DB_SLAVE );
-
-		$feedbackId = $feedback->aft_id;
-		$page = Title::newFromID( $feedback->aft_page );
-		if ( !$page ) {
-			throw new MWException( 'Page for feedback does not exist', 'invalidfeedbackid' );
-		}
-		$title = $page->getDBKey();
-
+	public static function getList( ArticleFeedbackv5Model $feedback, $user = null, $limit = 25, $continue = null ) {
 		if ( !$user ) {
 			global $wgUser;
 			$user = $wgUser;
 		}
 
-		// gather a list of the requested user's AFT permissions
-		global $wgArticleFeedbackv5Permissions;
-		$permissions = array();
-		foreach ( $wgArticleFeedbackv5Permissions as $action ) {
-			$permissions[$action] = self::canPerformAction( $action, $user );
-		}
-
-		// can only see activity for actions that you have permissions to perform
-		$actions = array();
-		foreach ( self::$actions as $action => $options ) {
-			if ( isset( $permissions[$action] ) && $permissions[$action] ) {
-				if ( isset( $wgLogActionsHandlers["suppress/$action"] ) ) {
-					$type = 'suppress';
-				} elseif ( isset( $wgLogActionsHandlers["articlefeedbackv5/$action"] ) ) {
-					$type = 'articlefeedbackv5';
-				} else {
-					continue;
-				}
-				$actions[] = 'log_type = '.$dbr->addQuotes( $type ).' AND log_action = '.$dbr->addQuotes( $action );
-			}
-		}
+		// build where-clause for actions and feedback
+		$actions = self::buildWhereActions( $user->getRights() );
+		$title = self::buildWhereFeedback( $feedback );
 
 		// nothing to get? return empty resultset
-		if ( !$actions ) {
+		if ( !$actions || !$title ) {
 			return new FakeResultWrapper( array() );
 		}
 
-		$where[] = '('.implode( ') OR (', $actions ).')';
+		$where[] = $actions;
+		$where['log_title'] = $title;
 		$where['log_namespace'] = NS_SPECIAL;
-		$where['log_title'] = "ArticleFeedbackv5/$title/$feedbackId";
 		$where = self::applyContinue( $continue, $where );
 
-		$activity = $dbr->select(
+		$activity = wfGetDB( DB_SLAVE )->select(
 			array( 'logging' ),
 			array(
 				'log_id',
@@ -203,6 +183,7 @@ class ArticleFeedbackv5Activity {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Gets timestamp and id pair for continue
 	 *
 	 * @param string $continue
@@ -251,6 +232,10 @@ class ArticleFeedbackv5Activity {
 	/**
 	 * Get (and cache) the counts of activity (that are within the user's permissions)
 	 * that has been posted already
+=======
+	 * Get the amount of activity (that is within the user's permissions) that has
+	 * been posted already
+>>>>>>> New actions, filters & UX
 	 *
 	 * @param ArticleFeedbackv5Model $feedback
 	 * @param User[optional] $user
@@ -304,7 +289,7 @@ class ArticleFeedbackv5Activity {
 		global $wgMemc;
 
 		// get permission level that should be updated
-		$permission = ArticleFeedbackv5Activity::$actions[$action]['permissions'];
+		$permission = self::$actions[$action]['permissions'];
 
 		$key = wfMemcKey( 'articlefeedbackv5', 'getActivityCount', $permission, $feedbackId );
 		$count = $wgMemc->get( $key );
@@ -316,6 +301,11 @@ class ArticleFeedbackv5Activity {
 		if ( $count !== false ) {
 			$wgMemc->set( $key, $count + 1, 60 * 60 * 24 * 7 );
 		}
+
+		// while we're at it, since activity has occured, the editor activity
+		// data in cache may be out of date
+		$key = wfMemcKey( get_called_class(), 'getLastEditorActivity', $feedbackId );
+		$wgMemc->delete( $key );
 	}
 
 	/**
@@ -329,44 +319,211 @@ class ArticleFeedbackv5Activity {
 	 * @throws MWException
 	 */
 	private static function getActivityCountFromDB( ArticleFeedbackv5Model $feedback, $permission ) {
-		global $wgLogActionsHandlers;
-		$dbr = wfGetDB( DB_SLAVE );
+		// build where-clause for actions and feedback
+		$actions = self::buildWhereActions( array( $permission ) );
+		$title = self::buildWhereFeedback( $feedback );
 
-		$feedbackId = $feedback->aft_id;
-		$page = Title::newFromID( $feedback->aft_page );
-		if ( !$page ) {
-			throw new MWException( 'Page for feedback does not exist', 'invalidfeedbackid' );
-		}
-		$title = $page->getDBKey();
-
-		// get action-specific where-clause for requested permission level
-		$actions = array();
-		foreach( self::$actions as $action => $options ) {
-			if ( $options['permissions'] == $permission ) {
-				if ( isset( $wgLogActionsHandlers["suppress/$action"] ) ) {
-					$type = 'suppress';
-				} elseif ( isset( $wgLogActionsHandlers["articlefeedbackv5/$action"] ) ) {
-					$type = 'articlefeedbackv5';
-				} else {
-					continue;
-				}
-				$actions[] = 'log_type = '.$dbr->addQuotes( $type ).' AND log_action = '.$dbr->addQuotes( $action );
-			}
-		}
-
-		if ( !$actions ) {
+		// nothing to get? return empty resultset
+		if ( !$actions || !$title ) {
 			return 0;
 		}
 
-		$where[] = '('.implode( ') OR (', $actions ).')';
+		$where[] = $actions;
+		$where['log_title'] = $title;
 		$where['log_namespace'] = NS_SPECIAL;
-		$where['log_title'] = "ArticleFeedbackv5/$title/$feedbackId";
 
-		return (int) $dbr->selectField(
+		return (int) wfGetDB( DB_SLAVE )->selectField(
 			'logging',
 			'COUNT(log_id)',
 			$where,
 			__METHOD__
 		);
+	}
+
+	/**
+	 * Gets the last editor activity per feedback entry.
+	 *
+	 * @param array $entries array of feedback to fetch last log entries for; will be
+	 *                       in the form of array( array( 'id' => [id], 'shard' => [shard] ), ... )
+	 * @return ResultWrapper db record rows
+	 */
+	public static function getLastEditorActivity( array $entries ) {
+		// build where-clause for all feedback entries
+		$titles = array();
+		foreach ( $entries as $entry ) {
+			$feedback = ArticleFeedbackv5Model::get( $entry['id'], $entry['shard'] );
+			if ( !$feedback ) {
+				continue;
+			}
+
+			$titles[] = self::buildWhereFeedback( $feedback );
+		}
+
+		/*
+		 * Build where-clause for actions.
+		 * We want all "normal" editor tools, not oversight-related tools.
+		 */
+		$actions = self::buildWhereActions( array( 'aft-editor', 'aft-monitor' ), array( 'request', 'unrequest' ) );
+
+		// nothing to get? return empty resultset
+		if ( !$actions || !$titles ) {
+			return new FakeResultWrapper( array() );
+		}
+
+		$where[] = $actions;
+		$where['log_title'] = $titles;
+		$where['log_namespace'] = NS_SPECIAL;
+
+		$activity = wfGetDB( DB_SLAVE )->select(
+			array( 'logging' ),
+			array(
+				'log_id' => 'MAX(log_id)',
+				/*
+				 * The SUBSTRING_INDEX(GROUP_CONCAT()) stuff is a rather ugly hack to not have to
+				 * perform a subquery (I could get the MAX(id) in a subquery and then get all the
+				 * columns' values of the rows matching the MAX(id)'s)
+				 * This solution will return incorrect results in the event that any column's first
+				 * value includes a comma, but that should only occur for log_comment, whose value
+				 * should not be displayed (it will only be used to check if there is a comment,
+				 * so functionality will only break - in a minor way - when the comma is the first
+				 * character).
+				 */
+				'log_action' => 'SUBSTRING_INDEX(GROUP_CONCAT(log_action ORDER BY log_id DESC), ",", 1)',
+				'log_timestamp' => 'SUBSTRING_INDEX(GROUP_CONCAT(log_timestamp ORDER BY log_id DESC), ",", 1)',
+				'log_user' => 'SUBSTRING_INDEX(GROUP_CONCAT(log_user ORDER BY log_id DESC), ",", 1)',
+				'log_user_text' => 'SUBSTRING_INDEX(GROUP_CONCAT(log_user_text ORDER BY log_id DESC), ",", 1)',
+				'log_title' => 'SUBSTRING_INDEX(GROUP_CONCAT(log_title ORDER BY log_id DESC), ",", 1)',
+				'log_comment' => 'SUBSTRING_INDEX(GROUP_CONCAT(log_comment ORDER BY log_id DESC), ",", 1)',
+				'log_params' => 'SUBSTRING_INDEX(GROUP_CONCAT(log_params ORDER BY log_id DESC), ",", 1)',
+			),
+			$where,
+			__METHOD__,
+			array(
+				'GROUP BY' => 'log_title',
+				// Force the page_time index (on _namespace, _title, _timestamp)
+				// We don't expect many if any rows for Special:ArticleFeedbackv5/foo that
+				// don't match log_type='articlefeedbackv5' , so we can afford to have that
+				// clause be unindexed. The alternative is to have the log_type clause be indexed
+				// and the namespace/title clauses unindexed, that would be bad.
+				'USE INDEX' => 'page_time'
+			)
+		);
+
+		global $wgMemc;
+		foreach ( $activity as $action ) {
+			// get feedback id from params
+			$params = @unserialize( $action->log_params );
+			if ( !isset( $params['feedbackId'] ) ) {
+				continue;
+			}
+
+			// cache, per feedback entry
+			$key = wfMemcKey( get_called_class(), 'getLastEditorActivity', $params['feedbackId'] );
+			$wgMemc->set( $key, $action, 60 * 60 );
+		}
+
+		return $activity;
+	}
+
+	/**
+	 * Gets timestamp and id pair for continue
+	 *
+	 * @param string $continue
+	 * @param array $where
+	 * @return array
+	 */
+	protected static function applyContinue( $continue, $where ) {
+		if ( !$continue ) {
+			return $where;
+		}
+
+		$values = explode( '|', $continue, 3 );
+		if ( count( $values ) !== 2 ) {
+			throw new MWException( 'Invalid continue param. You should pass the original value returned by the previous query', 'badcontinue' );
+		}
+
+		$db = wfGetDB( DB_SLAVE );
+		$ts = $db->addQuotes( $db->timestamp( $values[0] ) );
+		$id = intval( $values[1] );
+		$where[] = '(log_id = ' . $id . ' AND log_timestamp <= ' . $ts . ') OR log_timestamp < ' . $ts;
+
+		return $where;
+	}
+
+	/**
+	 * Check if a user has sufficient permissions to perform an action
+	 *
+	 * @param string $action
+	 * @param User[optional] $user
+	 * @return bool
+	 * @throws MWException
+	 */
+	public static function canPerformAction( $action, User $user = null ) {
+		if ( !$user ) {
+			global $wgUser;
+			$user = $wgUser;
+		}
+
+		if ( !isset( self::$actions[$action] ) ) {
+			throw new MWException( "Action '$action' does not exist." );
+		}
+
+		return $user->isAllowed( self::$actions[$action]['permissions'] ) && !$user->isBlocked();
+	}
+
+	/**
+	 * Build WHERE conditions for permission-based log actions.
+	 *
+	 * @param array $permissions The available permissions
+	 * @param array[optional] $exclude Actions to exclude
+	 * @return string|bool false will be returned in the event no valid WHERE-clause
+	 *                     can be built because of actions are permitted
+	 */
+	protected static function buildWhereActions( $permissions, $exclude = array() ) {
+		global $wgLogActionsHandlers;
+
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$actions = array();
+		foreach ( self::$actions as $action => $options ) {
+			if ( !in_array( $options['permissions'], $permissions) || in_array( $action, $exclude ) ) {
+				continue;
+			}
+
+			if ( isset( $wgLogActionsHandlers["suppress/$action"] ) ) {
+				$type = 'suppress';
+			} elseif ( isset( $wgLogActionsHandlers["articlefeedbackv5/$action"] ) ) {
+				$type = 'articlefeedbackv5';
+			} else {
+				continue;
+			}
+			$actions[] = 'log_type = '.$dbr->addQuotes( $type ).' AND log_action = '.$dbr->addQuotes( $action );
+		}
+
+		// if no valid actions were found, return
+		if ( !$actions ) {
+			return false;
+		}
+
+		return '('.implode( ') OR (', $actions ).')';
+	}
+
+	/**
+	 * Build WHERE conditions for (a) specific feedback entr(y|ies)' log entries.
+	 *
+	 * @param array ArticleFeedbackv5Model $feedback The feedback to fetch log entries for
+	 * @return string|bool false will be returned in the event no valid WHERE-clause
+	 *                     can be built because no feedback is found
+	 */
+	protected static function buildWhereFeedback( ArticleFeedbackv5Model $feedback ) {
+		// build title(s) to fetch log entries for
+		$feedbackId = $feedback->aft_id;
+		$page = Title::newFromID( $feedback->aft_page );
+		if ( !$page ) {
+			return false;
+		}
+		$title = $page->getDBKey();
+
+		return "ArticleFeedbackv5/$title/$feedbackId";
 	}
 }
