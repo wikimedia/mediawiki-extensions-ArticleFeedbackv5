@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_feedback (
   aft_autoflag boolean NOT NULL DEFAULT 0,
   aft_feature boolean NOT NULL DEFAULT 0,
   aft_resolve boolean NOT NULL DEFAULT 0,
+  aft_noaction boolean NOT NULL DEFAULT 0,
   aft_helpful integer unsigned NOT NULL DEFAULT 0,
   aft_unhelpful integer unsigned NOT NULL DEFAULT 0,
   aft_has_comment boolean NOT NULL DEFAULT 0,
@@ -29,6 +30,6 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_feedback (
 ) /*$wgDBTableOptions*/;
 
 -- sort indexes
-CREATE INDEX /*i*/relevance ON /*_*/aft_feedback (aft_relevance_score, aft_id, aft_has_comment, aft_hide);
-CREATE INDEX /*i*/age ON /*_*/aft_feedback (aft_timestamp, aft_id, aft_has_comment, aft_hide);
-CREATE INDEX /*i*/helpful ON /*_*/aft_feedback (aft_net_helpful, aft_id, aft_has_comment, aft_hide);
+CREATE INDEX /*i*/relevance ON /*_*/aft_feedback (aft_relevance_score, aft_id, aft_has_comment, aft_oversight, aft_hide);
+CREATE INDEX /*i*/age ON /*_*/aft_feedback (aft_timestamp, aft_id, aft_has_comment, aft_oversight, aft_hide);
+CREATE INDEX /*i*/helpful ON /*_*/aft_feedback (aft_net_helpful, aft_id, aft_has_comment, aft_oversight, aft_hide);
