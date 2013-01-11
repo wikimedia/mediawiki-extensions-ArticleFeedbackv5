@@ -60,7 +60,8 @@ select {
 #articleFeedbackv5-special-watchlist-showing-wrap {
 	font-size: 1.2em;
 }
-#articleFeedbackv5-feedback-count-total {
+#articleFeedbackv5-feedback-count-total,
+#articleFeedbackv5-feedback-count-filter {
 	font-weight: bold;
 }
 #articleFeedbackv5-percent-found-wrap {

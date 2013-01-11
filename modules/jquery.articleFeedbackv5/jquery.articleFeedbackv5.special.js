@@ -1,23 +1,6 @@
 /**
  * ArticleFeedback special page
  *
- * This file handles the display of feedback responses and moderation tools for
- * privileged users.  The flow goes like this:
- *
- * User arrives at special page -> basic markup is created without data -> ajax
- * request is sent to pull most recent feedback
- *
- * For each change to the selected filter or sort method, or when more feedback
- * is requested, another ajax request is sent.
- *
- * This file is long, so it's commented with manual fold markers.  To use folds
- * this way in vim:
- *   set foldmethod=marker
- *   set foldlevel=0
- *   set foldcolumn=0
- *
- * TODO: jam sort/filter options into URL anchors, and use them as defaults if present.
- *
  * @package    ArticleFeedback
  * @subpackage Resources
  * @author     Greg Chiasson <gchiasson@omniti.com>
@@ -105,7 +88,7 @@
 	 *
 	 * @var string
 	 */
-	$.articleFeedbackv5special.activityCookieName = 'activity';
+	$.articleFeedbackv5special.activityCookieName = 'aft-activity';
 
 	/**
 	 * Currently displayed panel host element id attribute value
@@ -113,6 +96,13 @@
 	 * @var string
 	 */
 	$.articleFeedbackv5special.currentPanelHostId = undefined;
+
+	/**
+	 * Callback to be executed when tipsy form is submitted
+	 *
+	 * @var function
+	 */
+	$.articleFeedbackv5special.tipsyCallback = undefined;
 
 	/**
 	 * Highlighted feedback ID
@@ -203,11 +193,11 @@
 			isSpecial: true
 		});
 
-		// Bind events
-		$.articleFeedbackv5special.setBinds();
-
 		// Grab the user's activity out of the cookie
 		$.articleFeedbackv5special.loadActivity();
+
+		// Bind events
+		$.articleFeedbackv5special.setBinds();
 
 		// set tipsy defaults, once
 		$.fn.tipsy.defaults = {
@@ -229,6 +219,8 @@
 			if (
 				// if a panel is currently open
 				$.articleFeedbackv5special.currentPanelHostId !== undefined &&
+				// and we did not just open it
+				$.articleFeedbackv5special.currentPanelHostId != $( e.target ).attr( 'id' ) &&
 				// and we clicked outside of the open panel
 				$( e.target ).parents( '.tipsy' ).length == 0
 			) {
@@ -247,21 +239,22 @@
 			helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl-editors' );
 		}
 
-		// i18n, create action-specific tipsy panels from template
-		var container = $( '<div></div>' );
-		container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
+		// localize tipsies
 		for ( var action in $.articleFeedbackv5special.actions ) {
+			var $container = $( '<div></div>' );
 			if ( $.articleFeedbackv5special.actions[action].hasTipsy && $.articleFeedbackv5special.actions[action].tipsyHtml == undefined ) {
-				container.find( '#articleFeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
-				container.find( '#articleFeedbackv5-noteflyover-description' ).html( mw.config.get( 'mw.msg.articlefeedbackv5-noteflyover-' + action + '-description' ) );
-				container.find( '#articleFeedbackv5-noteflyover-label' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
-				container.find( '#articleFeedbackv5-noteflyover-submit' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-submit' ) );
+				$container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
+				$container.find( '#articleFeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
+				$container.find( '#articleFeedbackv5-noteflyover-description' ).html( mw.config.get( 'mw.msg.articlefeedbackv5-noteflyover-' + action + '-description' ) );
+				$container.find( '#articleFeedbackv5-noteflyover-label' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
+				$container.find( '#articleFeedbackv5-noteflyover-submit' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-submit' ) );
 				// will add an 'action' attribute to the link
-				container.find( '#articleFeedbackv5-noteflyover-submit' ).attr( 'action', action );
-				container.find( '#articleFeedbackv5-noteflyover-help' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help' ) );
-				container.find( '#articleFeedbackv5-noteflyover-help' ).attr( 'href', helpLink + mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help-link' ) );
-				$.articleFeedbackv5special.actions[action].tipsyHtml = container.html();
+				$container.find( '#articleFeedbackv5-noteflyover-help' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help' ) );
+				$container.find( '#articleFeedbackv5-noteflyover-help' ).attr( 'href', helpLink + mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help-link' ) );
+			} else {
+				$container.html( $.articleFeedbackv5special.actions[action].tipsyHtml );
 			}
+			$.articleFeedbackv5special.actions[action].tipsyHtml = $container.localize( { 'prefix': 'articlefeedbackv5-' } ).html();
 		}
 
 		// Add a loading tag to the top and hide it
@@ -289,6 +282,7 @@
 		// Process preloaded feedback
 		$.articleFeedbackv5special.processControls(
 			mw.config.get( 'afCount' ),
+			mw.config.get( 'afFilterCount' ),
 			mw.config.get( 'afOffset' ),
 			mw.config.get( 'afShowMore' )
 		);
@@ -333,7 +327,6 @@
 	 * Binds events for each of the controls
 	 */
 	$.articleFeedbackv5special.setBinds = function() {
-
 		// Filter select
 		$( '#articleFeedbackv5-filter-select' ).bind( 'change', function( e ) {
 			var id = $(this).val();
@@ -344,6 +337,7 @@
 			$.articleFeedbackv5special.loadFeedback( true, false );
 			return false;
 		} );
+
 		// Disable the dividers
 		$( '#articleFeedbackv5-filter-select option[value=]' ).attr( 'disabled', true );
 		$( '#articleFeedbackv5-filter-select option[value=X]' ).attr( 'disabled', true );
@@ -366,6 +360,7 @@
 			$.articleFeedbackv5special.loadFeedback( true, false );
 			return false;
 		} );
+
 		// Disable the dividers
 		$( '#articleFeedbackv5-sort-select option[value=]' ).attr( 'disabled', true );
 
@@ -382,37 +377,45 @@
 			return false;
 		} );
 
+		// When clicking the hidden post mask, remove the mask
+		$( document ).on( 'click touchstart', '.articleFeedbackv5-post-screen', function() {
+			// don't hide if it's only an empty mask (= when insufficient permissions
+			// won't let the user see the feedback's details)
+			if ( $( this ).parent( '.articleFeedbackv5-feedback-emptymask' ) === 0 ) {
+				$( this ).hide();
+			}
+		});
+
 		// Bind actions
 		for ( var action in $.articleFeedbackv5special.actions ) {
 			$( document ).on( 'click touchstart', '.articleFeedbackv5-' + action + '-link', function( e ) {
-				e.preventDefault();
-				var $link = $( e.target );
-				var classes = $link.attr( 'class' ).split( ' ' );
-				var actionName = '';
-				for ( var i = 0; i < classes.length; ++i ) {
-					if ( classes[i].match( /^articleFeedbackv5-/ ) ) {
-						actionName = classes[i].replace( 'articleFeedbackv5-', '' ).replace( '-link', '' );
-						break;
-					}
-				}
-				if ( actionName && !$link.hasClass( 'inactive' ) ) {
-					$.articleFeedbackv5special.actions[actionName].click(e);
+				var action = $( this ).data( 'action' );
+
+				if ( !$( this ).hasClass( 'inactive' ) ) {
+					$.articleFeedbackv5special.actions[action].click( e );
 				}
 			} );
 		}
 
-		// Bind submit actions on flyover panels (flag actions)
+		// Bind submit actions on flyover panels (post-flag comments)
 		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-submit', function( e ) {
 			e.preventDefault();
-			var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
-			var id = $container.data( 'id' );
-			var pageId = $container.data( 'pageid' );
-			$.articleFeedbackv5special.flagFeedback(
-				id,
-				pageId,
-				$( e.target ).attr( 'action' ),
-				$( '#articleFeedbackv5-noteflyover-note' ).attr( 'value' ),
-				{ } );
+
+			if ( typeof $.articleFeedbackv5special.tipsyCallback == 'function' ) {
+				// execute and clear callback function
+				$.articleFeedbackv5special.tipsyCallback( e );
+				$.articleFeedbackv5special.tipsyCallback = undefined;
+			} else {
+				var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
+				var id = $container.data( 'id' );
+				var logId = $container.find( '#articleFeedbackv5-note-link-' + id ).data( 'log-id' );
+
+				$.articleFeedbackv5special.addNote(
+					id,
+					logId,
+					$( '#articleFeedbackv5-noteflyover-note' ).attr( 'value' )
+				);
+			}
 
 			// hide tipsy
 			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
@@ -428,7 +431,7 @@
 	};
 
 	// }}}
-	// {{{ bindPanels
+	// {{{ bindTipsies
 
 	/**
 	 * Bind panels to controls - that cannot be 'live' events due to jQuery.tipsy
@@ -438,21 +441,19 @@
 	 *
 	 * @param id post id to bind panels for. If none is supplied, bind entire list.
 	 */
-	$.articleFeedbackv5special.bindPanels = function( id ) {
+	$.articleFeedbackv5special.bindTipsies = function( id ) {
 		// single post or entire list?
 		var $selector = !id ? $( '#articleFeedbackv5-show-feedback' ) : $( '.articleFeedbackv5-feedback[data-id="' + id + '"]' );
 
-		for ( var action in $.articleFeedbackv5special.actions ) {
-			$selector.find( '.articleFeedbackv5-' + action + '-link' )
-				.attr( 'action', action )
-				.tipsy( {
-					title: function() {
-						var html = $.articleFeedbackv5special.actions[$( this ).attr( 'action' )].tipsyHtml;
-						html = $( '<div>' + html + '</div>' ).localize( { 'prefix': 'articlefeedbackv5-' } ).html();
-						return html;
-					}
-				} );
-		}
+		// bind tipsies
+		$selector.find( '.articleFeedbackv5-tipsy-link' )
+			.tipsy( {
+				title: function() {
+					var action = $( this ).data( 'action' );
+					return $.articleFeedbackv5special.actions[action].tipsyHtml;
+				}
+			} )
+			.click( $.articleFeedbackv5special.toggleTipsy );
 	};
 
 	// }}}
@@ -530,18 +531,46 @@
 	};
 
 	// }}}
+	// {{{ flagAction
+
+	/**
+	 * Utility method: Fire flagging-call upon clicking an action link
+	 *
+	 * @param e event
+	 */
+	$.articleFeedbackv5special.flagAction = function( e ) {
+		e.preventDefault();
+
+		var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
+		if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+			var id = $container.data( 'id' );
+			var pageId = $container.data( 'pageid' );
+			var action = $( e.target ).data( 'action' );
+
+			$.articleFeedbackv5special.flagFeedback(
+				id,
+				pageId,
+				action,
+				'',
+				{}
+			);
+		}
+	};
+
+	// }}}
 	// {{{ toggleTipsy
 
 	/**
 	 * Utility method: Toggles tipsy display for an action link
 	 *
 	 * @param e event
-	 * @returns true if showing tipsy, false if hiding
+	 * @return true if showing tipsy, false if hiding
 	 */
 	$.articleFeedbackv5special.toggleTipsy = function( e ) {
 		e.preventDefault();
-		e.stopPropagation();
+
 		var $l = $( e.target );
+
 		// are we hiding the current tipsy?
 		if ( $l.attr( 'id' ) == $.articleFeedbackv5special.currentPanelHostId ) {
 			$l.tipsy( 'hide' );
@@ -569,405 +598,6 @@
 	};
 
 	// }}}
-	// {{{ encodeActivity
-
-	/**
-	 * Utility method: Turns the user activity object into an encoded string
-	 *
-	 * @param  activity object the activity object
-	 * @return string   the encoded string
-	 */
-	$.articleFeedbackv5special.encodeActivity = function ( activity ) {
-		var encoded = '';
-		var sorted = [];
-		for ( var fb in activity ) {
-			var info = activity[fb];
-			info.id = fb;
-			sorted.push( info );
-		}
-		sorted = sorted.sort( function ( a, b ) {
-			if ( a.index > b.index ) { return 1; }
-			if ( a.index < b.index ) { return -1; }
-			return 0;
-		} );
-		for ( var i = 0; i < sorted.length; i++ ) {
-			var info = sorted[i];
-			var buffer = info.id + ':';
-			if ( info.helpful ) {
-				buffer += 'H';
-			} else if ( info.unhelpful ) {
-				buffer += 'U';
-			}
-			if ( info.abuse ) {
-				buffer += 'A';
-			}
-			if ( info.hide ) {
-				buffer += 'I';
-			}
-			if ( info.deleted ) {
-				buffer += 'D';
-			}
-			encoded += encoded == '' ? buffer : '|' + buffer;
-		}
-		return encoded;
-	};
-
-	// }}}
-	// {{{ decodeActivity
-
-	/**
-	 * Utility method: Turns the encoded string into a user activity object
-	 *
-	 * @param  encoded string the encoded string
-	 * @return object  the activity object
-	 */
-	$.articleFeedbackv5special.decodeActivity = function ( encoded ) {
-		var entries = encoded.split( '|' );
-		var activity = {};
-		for ( var i = 0; i < entries.length; ++i ) {
-			var parts = entries[i].split( ':' );
-			if ( parts.length != 2 ) {
-				continue;
-			}
-			var fb   = parts[0];
-			var info = parts[1];
-			var obj  = { index: i, helpful: false, unhelpful: false, abuse: false, hide: false, deleted: false };
-			if ( fb.length > 0 && info.length > 0 ) {
-				if ( info.search( /H/ ) != -1 ) {
-					obj.helpful = true;
-				}
-				if ( info.search( /U/ ) != -1 ) {
-					obj.unhelpful = true;
-				}
-				if ( info.search( /A/ ) != -1 ) {
-					obj.abuse = true;
-				}
-				if ( info.search( /I/ ) != -1 ) {
-					obj.hide = true;
-				}
-				if ( info.search( /D/ ) != -1 ) {
-					obj.deleted = true;
-				}
-				activity[fb] = obj;
-			}
-		}
-		return activity;
-	};
-
-	// }}}
-	// {{{ getActivity
-
-	/**
-	 * Utility method: Gets the activity for a feedback ID
-	 *
-	 * @param  fid    int the feedback ID
-	 * @return object the activity object
-	 */
-	$.articleFeedbackv5special.getActivity = function ( fid ) {
-		if ( !( fid in $.articleFeedbackv5special.activity ) ) {
-			$.articleFeedbackv5special.activity[fid] = { helpful: false, unhelpful: false, abuse: false, hide: false, deleted: false };
-		}
-		return $.articleFeedbackv5special.activity[fid];
-	};
-
-	// }}}
-	// {{{ refreshVoteReport
-
-	/**
-	 * Utility method: Refreshes the percent-helpful text
-	 *
-	 * @param id   int    the feedback ID
-	 * @param data object the data returned from flagging
-	 */
-	$.articleFeedbackv5special.refreshVoteReport = function ( id, data ) {
-		var $report = $( '#articleFeedbackv5-helpful-votes-' + id );
-		if ( $report.length < 1 ) {
-			return;
-		}
-		$report.text( data.helpful )
-			.attr( 'title', data.helpful_counts )
-			.removeClass( 'articleFeedbackv5-has-votes' );
-		if ( data.vote_count > 0 ) {
-			$report.addClass( 'articleFeedbackv5-has-votes' );
-		}
-	};
-
-	// }}}
-	// {{{ setAbuse
-
-	/**
-	 * Utility method: Refreshes the X-flags text
-	 *
-	 * @param id   int    the feedback ID
-	 * @param data object the data returned from flagging
-	 */
-	$.articleFeedbackv5special.setAbuse = function ( id, data ) {
-		$link = $( '#articleFeedbackv5-abuse-link-' + id ).add( $( '#articleFeedbackv5-unabuse-link-' + id ) );
-
-		if ( data['articlefeedbackv5-flag-feedback']['abuse-hidden'] ) {
-			$.articleFeedbackv5special.markHidden(
-				$link.closest( '.articleFeedbackv5-feedback' ),
-				data['articlefeedbackv5-flag-feedback']['mask-line']
-			);
-		}
-
-		if ( data['articlefeedbackv5-flag-feedback']['abuse_count'] > 0 ) {
-			$link.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
-				.removeClass( 'articleFeedbackv5-abuse-link' )
-				.addClass( 'articleFeedbackv5-unabuse-link' )
-				.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) )
-				.attr( 'title', mw.msg( 'articlefeedbackv5-abuse-saved-tooltip' ) );
-		} else {
-			$link.attr( 'id', 'articleFeedbackv5-abuse-link-' + id )
-				.removeClass( 'articleFeedbackv5-unabuse-link' )
-				.addClass( 'articleFeedbackv5-abuse-link' )
-				.text( mw.msg( 'articlefeedbackv5-form-abuse' ) )
-				.attr( 'title', '' );
-		}
-
-		$.articleFeedbackv5special.setActivityFlag( id, 'abuse', data['articlefeedbackv5-flag-feedback']['abuse_count'] > 0 );
-
-		// refresh abuse report
-		var $count = $( '#articleFeedbackv5-abuse-count-' + id );
-		if ( $count.length > 0 ) {
-			$count.html( data['articlefeedbackv5-flag-feedback']['abuse_report'] )
-				.removeClass( 'articleFeedbackv5-has-abuse-flags' )
-				.removeClass( 'abusive' );
-			if ( data['articlefeedbackv5-flag-feedback']['abuse_count'] > 0 || data['articlefeedbackv5-flag-feedback']['abuse_cleared'] ) {
-				$count.addClass( 'articleFeedbackv5-has-abuse-flags' );
-			}
-			if ( data.abusive ) {
-				$count.addClass( 'abusive' );
-			}
-		}
-	};
-
-	// }}}
-	// {{{ changeTags
-
-	/**
-	 * Utility method: Changes out the post tags
-	 *
-	 * @param $row  element the feedback row
-	 * @param tag   string  the tag to add/remove
-	 * @param which string  'add' or 'remove'; defaults to 'add'
-	 */
-	$.articleFeedbackv5special.changeTags = function ( $row, tag, which ) {
-		var $tags = $row.find( '.articleFeedbackv5-comment-tags' );
-		if ( which == 'remove' ) {
-			$tags.find( '.articleFeedbackv5-' + tag + '-marker' ).remove();
-			if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'] && $row.hasClass( 'articleFeedbackv5-feedback-oversight' ) ) {
-				$.articleFeedbackv5special.changeTags( $row, 'oversight', 'add' );
-			} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-monitor'] && $row.hasClass( 'articleFeedbackv5-feedback-hide' ) ) {
-				$.articleFeedbackv5special.changeTags( $row, 'hide', 'add' );
-			} else if ( $row.hasClass( 'articleFeedbackv5-feedback-resolve' ) ) {
-				$.articleFeedbackv5special.changeTags( $row, 'resolve', 'add' );
-			} else if ( $row.hasClass( 'articleFeedbackv5-feedback-feature' ) ) {
-				$.articleFeedbackv5special.changeTags( $row, 'feature', 'add' );
-			}
-		} else {
-			$tags.empty();
-			var $marker = $( '<span>' )
-				.addClass( 'articleFeedbackv5-' + tag + '-marker' )
-				.text( mw.msg( 'articlefeedbackv5-' + tag + '-marker' ) );
-			$tags.append( $marker );
-		}
-	};
-
-	// }}}
-	// {{{ markFeatured
-
-	/**
-	 * Utility method: Marks a feedback row featured
-	 *
-	 * @param $row element the feedback row
-	 */
-	$.articleFeedbackv5special.markFeatured = function ( $row ) {
-		$row.addClass( 'articleFeedbackv5-feedback-feature' )
-			.data( 'feature', true );
-		$.articleFeedbackv5special.changeTags( $row, 'feature', 'add' );
-	};
-
-	// }}}
-	// {{{ unmarkFeatured
-
-	/**
-	 * Utility method: Unmarks as featured a feedback row
-	 *
-	 * @param $row element the feedback row
-	 */
-	$.articleFeedbackv5special.unmarkFeatured = function ( $row ) {
-		$row.removeClass( 'articleFeedbackv5-feedback-feature' )
-			.data( 'feature', false );
-		$.articleFeedbackv5special.changeTags( $row, 'feature', 'remove' );
-	};
-
-	// }}}
-	// {{{ markResolved
-
-	/**
-	 * Utility method: Marks a feedback row as resolved
-	 *
-	 * @param $row element the feedback row
-	 */
-	$.articleFeedbackv5special.markResolved = function ( $row ) {
-		$row.addClass( 'articleFeedbackv5-feedback-resolve' )
-			.data( 'resolve', true );
-		$.articleFeedbackv5special.changeTags( $row, 'resolve', 'add' );
-	};
-
-	// }}}
-	// {{{ unmarkResolved
-
-	/**
-	 * Utility method: Unmarks as resolved a feedback row
-	 *
-	 * @param $row element the feedback row
-	 */
-	$.articleFeedbackv5special.unmarkResolved = function ( $row ) {
-		$row.removeClass( 'articleFeedbackv5-feedback-resolve' )
-			.data( 'resolve', false );
-		$.articleFeedbackv5special.changeTags( $row, 'resolve', 'remove' );
-	};
-
-	// }}}
-	// {{{ markHidden
-
-	/**
-	 * Utility method: Marks a feedback row hidden
-	 *
-	 * @param $row element the feedback row
-	 * @param line string  the mask line
-	 */
-	$.articleFeedbackv5special.markHidden = function ( $row, line ) {
-		$row.addClass( 'articleFeedbackv5-feedback-hide' );
-		$.articleFeedbackv5special.changeTags( $row, 'hide', 'add' );
-		$.articleFeedbackv5special.maskPost( $row, line );
-
-		// hide feature/unfeature/resolve/unresolve
-		$row.find( '.tools_feature' ).hide();
-	};
-
-	// }}}
-	// {{{ unmarkHidden
-
-	/**
-	 * Utility method: Unmarks as hidden a feedback row
-	 *
-	 * @param $row element the feedback row
-	 */
-	$.articleFeedbackv5special.unmarkHidden = function ( $row ) {
-		$row.removeClass( 'articleFeedbackv5-feedback-hide' );
-		$.articleFeedbackv5special.changeTags( $row, 'hide', 'remove' );
-		if ( !$row.hasClass( 'articleFeedbackv5-feedback-oversight' ) ) {
-			$.articleFeedbackv5special.unmaskPost( $row );
-		}
-
-		// show feature/unfeature/resolve/unresolve
-		$row.find( '.tools_feature' ).show();
-	};
-
-	// }}}
-	// {{{ maskPost
-
-	/**
-	 * Utility method: Masks a comment that's been marked
-	 * hidden/oversighted/etc.
-	 *
-	 * @param $row element the feedback row
-	 * @param line string  the mask line
-	 * @param empty bool   whether this mask is empty
-	 */
-	$.articleFeedbackv5special.maskPost = function( $row, line, empty ) {
-		var $screen = $row.find( '.articleFeedbackv5-post-screen' );
-		if ( 0 == $screen.length ) {
-			$screen = $( $.articleFeedbackv5special.maskHtmlTemplate );
-			$screen.find( '.articleFeedbackv5-mask-view a' ).text( mw.msg( 'articlefeedbackv5-mask-view-contents' ) );
-			$screen.find( '.articleFeedbackv5-mask-info' ).html( line );
-			$row.prepend( $screen );
-		}
-		if ( !$screen.hasClass( 'articleFeedbackv5-post-screen-on' ) ) {
-			$screen.addClass( 'articleFeedbackv5-post-screen-on' );
-		}
-		if ( $screen.hasClass( 'articleFeedbackv5-post-screen-off' ) ) {
-			$screen.removeClass( 'articleFeedbackv5-post-screen-off' );
-		}
-
-		if ( !empty ) {
-			$screen.click( function( e ) {
-				$.articleFeedbackv5special.unmaskPost(
-					$( e.target ).closest( '.articleFeedbackv5-feedback' )
-				);
-			} );
-		}
-	};
-
-	// }}}
-	// {{{ unmaskPost
-
-	/**
-	 * Utility method: Unmasks a comment that was previously marked
-	 * hidden/oversighted/etc.
-	 *
-	 * @param $row element the feedback row
-	 */
-	$.articleFeedbackv5special.unmaskPost = function( $row ) {
-		$row.find( '.articleFeedbackv5-post-screen' )
-			.addClass( 'articleFeedbackv5-post-screen-off' )
-			.removeClass( 'articleFeedbackv5-post-screen-on' );
-	};
-
-	// }}}
-	// {{{ markDeleted
-
-	/**
-	 * Utility method: Marks a feedback row deleted
-	 *
-	 * @param $row element the feedback row
-	 * @param line string  the mask line
-	 */
-	$.articleFeedbackv5special.markDeleted = function ( $row, line ) {
-		$row.addClass( 'articleFeedbackv5-feedback-oversight' );
-		$.articleFeedbackv5special.changeTags( $row, 'oversight', 'add' );
-		$.articleFeedbackv5special.maskPost( $row, line );
-	};
-
-	// }}}
-	// {{{ unmarkDeleted
-
-	/**
-	 * Utility method: Unmarks as deleted a feedback row
-	 *
-	 * @param $row element the feedback row
-	 */
-	$.articleFeedbackv5special.unmarkDeleted = function ( $row ) {
-		$row.removeClass( 'articleFeedbackv5-feedback-oversight' );
-		$.articleFeedbackv5special.changeTags( $row, 'oversight', 'remove' );
-		if ( !$row.hasClass( 'articleFeedbackv5-feedback-hide' ) ) {
-			$.articleFeedbackv5special.unmaskPost( $row );
-		}
-	};
-
-	// }}}
-	// {{{ setActivityFlag
-
-	/**
-	 * Utility method: Sets an activity flag
-	 *
-	 * @param id    string the feedback id
-	 * @param flag  string the flag name
-	 * @param value string the value
-	 */
-	$.articleFeedbackv5special.setActivityFlag = function( id, flag, value ) {
-		// no activity for this post yet, create default structure
-		if ( !( id in $.articleFeedbackv5special.activity ) ) {
-			$.articleFeedbackv5special.activity[id] = { 'helpful': false, 'unhelpful': false, 'abuse': false, 'hide': false, 'delete': false };
-		}
-		$.articleFeedbackv5special.activity[id][flag] = value;
-		$.articleFeedbackv5special.storeActivity();
-	};
-
-	// }}}
 	// {{{ getFilterName
 
 	/**
@@ -977,9 +607,6 @@
 	 * @return string the filter name for use in clicktracking
 	 */
 	$.articleFeedbackv5special.getFilterName = function ( filter ) {
-		filter = filter.replace( 'all-', '' );
-		filter = filter.replace( 'notdeleted-', '' );
-		filter = filter.replace( 'visible-', '' );
 		return filter;
 	};
 
@@ -1012,11 +639,11 @@
 	/**
 	 * Sends the request to mark a response
 	 *
-	 * @param id   		int			the feedback id
-	 * @param pageId   	int			the page id
+	 * @param id		int			the feedback id
+	 * @param pageId	int			the page id
 	 * @param action	string		action to execute
-	 * @param note 		string 		note for action (default empty)
-	 * @param options	object		key => value pairs of additonal API action-specific parameters
+	 * @param note		string		note for action (default empty)
+	 * @param options	object		key => value pairs of additional API action-specific parameters
 	 */
 	$.articleFeedbackv5special.flagFeedback = function ( id, pageId, action, note, options ) {
 		// default parameters
@@ -1053,12 +680,13 @@
 		var requestData = {
 			'pageid'    : pageId,
 			'feedbackid': id,
-			'flagtype'  : $.articleFeedbackv5special.actions[action].apiFlagType,
-			'note'		: note,
+			'flagtype'  : action,
+			'note'      : note,
+			'source'    : source,
 			'format'    : 'json',
-			'action'    : 'articlefeedbackv5-flag-feedback',
-			'source'    : source
+			'action'    : 'articlefeedbackv5-flag-feedback'
 		};
+		// this "options" is currently solely used to add "toggle" to params, when appropriate
 		$.extend( requestData, options );
 
 		$.ajax( {
@@ -1071,31 +699,105 @@
 				if ( 'articlefeedbackv5-flag-feedback' in data ) {
 					if ( 'result' in data['articlefeedbackv5-flag-feedback'] ) {
 						if ( data['articlefeedbackv5-flag-feedback'].result == 'Success' ) {
+							// replace entry by new render
+							$( '.articleFeedbackv5-feedback[data-id='+id+']' )
+								.replaceWith( data['articlefeedbackv5-flag-feedback'].render );
+
 							// invoke the registered onSuccess callback for the executed action
-							if( undefined != $.articleFeedbackv5special.actions[action].onSuccess ) {
+							if ( 'onSuccess' in $.articleFeedbackv5special.actions[action] ) {
 								$.articleFeedbackv5special.actions[action].onSuccess( id, data );
 							}
 
-							// Re-enable ajax flagging.
+							// re-mark active flags in reader tools
+							$.articleFeedbackv5special.markActiveFlags( id );
+
+							// re-enable ajax flagging
 							$.articleFeedbackv5special.listControls.disabled = false;
 
 							// re-bind panels (tipsies)
-							$.articleFeedbackv5special.bindPanels( id );
+							$.articleFeedbackv5special.bindTipsies( id );
 							return true;
 						} else if ( data['articlefeedbackv5-flag-feedback'].result == 'Error' ) {
 							mw.log( mw.msg( data['articlefeedbackv5-flag-feedback'].reason ) );
 						}
 					}
 				}
-				// Re-enable ajax flagging.
+
+				// re-enable ajax flagging
 				$.articleFeedbackv5special.listControls.disabled = false;
 			},
 			'error': function ( data ) {
 				$( '#articleFeedbackv5-' + type + '-link-' + id ).text( mw.msg( 'articlefeedbackv5-error-flagging' ) );
-				// Re-enable ajax flagging.
+
+				// re-enable ajax flagging
 				$.articleFeedbackv5special.listControls.disabled = false;
 			}
 		} );
+		return false;
+	};
+
+	// {{{ addNote
+
+	/**
+	 * Updates the previous flag with a textual comment about it
+	 *
+	 * @param id		int			the feedback id
+	 * @param logId		int			the log id
+	 * @param note		string		note for action (default empty)
+	 */
+	$.articleFeedbackv5special.addNote = function ( id, logId, note ) {
+		// note should be filled out or there's no point in firing this request
+		if ( !note ) {
+			return false;
+		}
+
+		if ( $.articleFeedbackv5special.listControls.disabled ) {
+			return false;
+		}
+		$.articleFeedbackv5special.listControls.disabled = true;
+
+		// Merge request data and options objects (flat)
+		var requestData = {
+			'logid'     : logId,
+			'note'      : note,
+			'format'    : 'json',
+			'action'    : 'articlefeedbackv5-add-flag-note'
+		};
+
+		$.ajax( {
+			'url'     : $.articleFeedbackv5special.apiUrl,
+			'type'    : 'POST',
+			'dataType': 'json',
+			'data'    : requestData,
+			'success': function ( data ) {
+				if ( 'articlefeedbackv5-add-flag-note' in data ) {
+					if ( 'result' in data['articlefeedbackv5-add-flag-note'] ) {
+						if ( data['articlefeedbackv5-add-flag-note'].result == 'Success' ) {
+							// remove "add note" link
+							$( '#articleFeedbackv5-note-link-' + id ).remove();
+
+							// change text to reflect note has been entered
+							$( '#articleFeedbackv5-activity-link-' + id )
+								.removeClass( 'activity-empty' )
+								.text( mw.msg( 'articlefeedbackv5-viewactivity' ) );
+
+							// re-enable ajax flagging
+							$.articleFeedbackv5special.listControls.disabled = false;
+
+							return true;
+						}
+					}
+				}
+
+				// re-enable ajax flagging
+				$.articleFeedbackv5special.listControls.disabled = false;
+			},
+			'error': function ( data ) {
+				// re-enable ajax flagging
+				$.articleFeedbackv5special.listControls.disabled = false;
+			}
+		} );
+
 		return false;
 	};
 
@@ -1224,6 +926,7 @@
 					} else {
 						$.articleFeedbackv5special.processControls(
 							data['articlefeedbackv5-view-feedback']['count'],
+							data['articlefeedbackv5-view-feedback']['filtercount'],
 							data['articlefeedbackv5-view-feedback']['offset'],
 							data['articlefeedbackv5-view-feedback']['more']
 						);
@@ -1284,16 +987,71 @@
 	 * Processes the controls of a set of responses
 	 *
 	 * @param count        int   the total number of responses
+	 * @param filtercount  int   the number of responses for "featured" filter
 	 * @param offset       index the offset
 	 * @param showMore     bool  whether there are more records to show
 	 */
-	$.articleFeedbackv5special.processControls = function ( count, offset, showMore ) {
+	$.articleFeedbackv5special.processControls = function ( count, filtercount, offset, showMore ) {
 		$( '#articleFeedbackv5-feedback-count-total' ).text( count );
+		$( '#articleFeedbackv5-feedback-count-filter' ).text( filtercount );
 		$.articleFeedbackv5special.listControls.offset = offset;
 		if ( showMore ) {
 			$( '#articleFeedbackv5-show-more').show();
 		} else {
 			$( '#articleFeedbackv5-show-more').hide();
+		}
+	};
+
+	// }}}
+	// {{{ markActiveFlags
+
+	/**
+	 * Mark reader tools als active when they've been flagged
+	 * by this user already
+	 */
+	$.articleFeedbackv5special.markActiveFlags = function ( id ) {
+		/*
+		 * If the user already flagged as helpful/unhelpful, mark the
+		 * button as active and change the action to undo-(un)helpful.
+		 */
+		if ( $.articleFeedbackv5special.getActivityFlag( id, 'helpful' ) ) {
+			$( '#articleFeedbackv5-helpful-link-' + id )
+				.addClass( 'helpful-active' )
+				.data( 'action', 'undo-helpful' );
+		} else if ( $.articleFeedbackv5special.getActivityFlag( id, 'unhelpful' ) ) {
+			$( '#articleFeedbackv5-unhelpful-link-' + id )
+				.addClass( 'helpful-active' )
+				.data( 'action', 'undo-unhelpful' );
+		}
+
+		/**
+		 * If the user already flagged as abusive, change the text to
+		 * reflect this and change the action to unflag.
+		 */
+		if ( $.articleFeedbackv5special.getActivityFlag( id, 'flag' ) ) {
+			$( '#articleFeedbackv5-flag-link-' + id )
+				.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) )
+				.data( 'action', 'unflag' );
+		}
+
+		/**
+		 * If the user already requested oversight, change action to unoversight.
+		 */
+		if ( $.articleFeedbackv5special.getActivityFlag( id, 'request' ) ) {
+			var $link = $( '#articleFeedbackv5-request-link-' + id );
+
+			if ( !$link.hasClass( 'inactive' ) ) {
+				// oversight has been request: turn link into unrequest
+				$link
+					.text( mw.msg( 'articlefeedbackv5-form-unrequest' ) )
+					.data( 'action', 'unrequest' )
+					.removeClass( 'articleFeedbackv5-request-link' )
+					.addClass( 'articleFeedbackv5-unrequest-link' );
+			} else {
+				// oversight request has been declined - mark as such
+				$link
+					.text( mw.msg( 'articlefeedbackv5-form-declined' ) );
+			}
 		}
 	};
 
@@ -1307,40 +1065,46 @@
 		var $newList = $( '#articleFeedbackv5-show-feedback' );
 		$newList.find( '.articleFeedbackv5-feedback' ).each( function () {
 			var id = $( this ).data( 'id' );
-			if ( id in $.articleFeedbackv5special.activity ) {
-				var activity = $.articleFeedbackv5special.getActivity( id );
-				if ( activity.helpful ) {
-					$( this ).find( '#articleFeedbackv5-helpful-link-' + id )
-						.addClass( 'helpful-active' )
-						.removeClass( 'articleFeedbackv5-helpful-link' )
-						.addClass( 'articleFeedbackv5-reversehelpful-link' )
-						.attr( 'id', 'articleFeedbackv5-reversehelpful-link-' + id );
-				}
-				if ( activity.unhelpful ) {
-					$( this ).find( '#articleFeedbackv5-unhelpful-link-' + id )
-						.addClass( 'helpful-active' )
-						.removeClass( 'articleFeedbackv5-unhelpful-link' )
-						.addClass( 'articleFeedbackv5-reverseunhelpful-link' )
-						.attr( 'id', 'articleFeedbackv5-reverseunhelpful-link-' + id );
-				}
-				if ( activity.abuse ) {
-					var $l = $( this ).find( '#articleFeedbackv5-abuse-link-' + id );
-					$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', $l.data( 'id' ) ) );
-					$l.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
-						.removeClass( 'articleFeedbackv5-abuse-link' )
-						.addClass( 'articleFeedbackv5-unabuse-link' );
-				}
-			}
 
-			if ( $( this ).hasClass( 'articleFeedbackv5-feedback-emptymask' ) ) {
-				$.articleFeedbackv5special.maskPost( $( this ), '', true );
-			} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-oversight' ) ) {
-				$.articleFeedbackv5special.maskPost( $( this ) );
-			} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hide' ) ) {
-				$.articleFeedbackv5special.maskPost( $( this ) );
-			}
+			$.articleFeedbackv5special.markActiveFlags( id );
 		} );
-		$.articleFeedbackv5special.bindPanels();
+
+		$.articleFeedbackv5special.bindTipsies();
+	};
+
+	// }}}
+	// {{{ getActivity
+
+	/**
+	 * Utility method: Gets the activity for a feedback ID
+	 *
+	 * @param  fid    int the feedback ID
+	 * @param  action string the action
+	 * @return bool   true if action executed by user, false if not
+	 */
+	$.articleFeedbackv5special.getActivityFlag = function ( fid, action ) {
+		if ( fid in $.articleFeedbackv5special.activity && action in $.articleFeedbackv5special.activity[fid] ) {
+			return $.articleFeedbackv5special.activity[fid][action];
+		}
+		return false;
+	};
+
+	// }}}
+	// {{{ setActivityFlag
+
+	/**
+	 * Utility method: Sets an activity flag
+	 *
+	 * @param id    string the feedback id
+	 * @param flag  string the flag name
+	 * @param value string the value
+	 */
+	$.articleFeedbackv5special.setActivityFlag = function( fid, flag, value ) {
+		if ( !( fid in $.articleFeedbackv5special.activity ) ) {
+			$.articleFeedbackv5special.activity[fid] = [];
+		}
+		$.articleFeedbackv5special.activity[fid][flag] = value;
+		$.articleFeedbackv5special.storeActivity();
 	};
 
 	// }}}
@@ -1352,7 +1116,25 @@
 	$.articleFeedbackv5special.loadActivity = function () {
 		var flatActivity = $.cookie( mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( $.articleFeedbackv5special.activityCookieName ) );
 		if ( flatActivity ) {
-			$.articleFeedbackv5special.activity = $.articleFeedbackv5special.decodeActivity( flatActivity );
+			// get "indexes" for each action - shorter than the action name string
+			var actions = [];
+			for ( var action in $.articleFeedbackv5special.actions ) {
+				actions.push( action );
+			}
+
+			var flatActivity = flatActivity.split( '|' );
+			for ( var i in flatActivity ) {
+				var parts = flatActivity[i].split( ':' );
+				var fid = parts[0];
+				var indexes = parts[1].split( ',' );
+
+				$.articleFeedbackv5special.activity[fid] = [];
+				for ( var i in indexes ) {
+					action = actions[indexes[i]];
+
+					$.articleFeedbackv5special.activity[fid][action] = true;
+				}
+			}
 		}
 	};
 
@@ -1361,15 +1143,41 @@
 
 	/**
 	 * Stores the user activity to the cookie
+	 * A person's own activity will be saved in a cookie; since there
+	 * can be quite a lot of activity on quite a lot of feedback, let's
+	 * make the value to be saved to the cookie rather short.
+	 * The result will look like: '143:1,5|342:3'
 	 */
 	$.articleFeedbackv5special.storeActivity = function () {
-		var flatActivity = $.articleFeedbackv5special.encodeActivity( $.articleFeedbackv5special.activity );
-		while ( flatActivity.length > 4096 ) {
-			flatActivity = flatActivity.replace( /^\d+:[HUAID]+;/, '' );
+		// get "indexes" for each action - shorter than the action name string
+		var actions = [];
+		for ( var action in $.articleFeedbackv5special.actions ) {
+			actions.push( action );
 		}
+
+		var flatActivity = [];
+		for ( var fid in $.articleFeedbackv5special.activity ) {
+			var indexes = [];
+			for ( var action in $.articleFeedbackv5special.activity[fid] ) {
+				var index = actions.indexOf( action );
+
+				// only save if action is known & true
+				if ( $.articleFeedbackv5special.activity[fid][action] && index > -1 ) {
+					indexes.push( index );
+				}
+			}
+
+			if ( indexes.length > 0 ) {
+				flatActivity.push( fid + ':' + indexes.join( ',' ) );
+			}
+		}
+
+		// only the most recent 100 are of interest
+		flatActivity = flatActivity.splice( -100 );
+
 		$.cookie(
 			mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( $.articleFeedbackv5special.activityCookieName ),
-			flatActivity,
+			flatActivity.join( '|' ),
 			{ 'expires': 365, 'path': '/' }
 		);
 	};
@@ -1378,10 +1186,14 @@
 	// {{{ canBeFlagged
 
 	/**
-	 * Returns true if the post can be flagged
+	 * Checks if a post can be flagged: post is not hidden/oversighted
+	 * or user had permissions to (un)hide/(un)oversight
+	 *
+	 * @return bool true if post can be flagged, or false otherwise
 	 */
 	$.articleFeedbackv5special.canBeFlagged = function( $post ) {
-		return !$post.data( 'hide' ) && !$post.data( 'oversight' );
+		return $post.find( '.articleFeedbackv5-post-screen' ).length == 0 ||
+			mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'];
 	};
 
 	// }}}
@@ -1424,7 +1236,6 @@
 	 * 		hasTipsy - true if the action needs a flyover panel
 	 * 		tipsyHtml - html for the corresponding flyover panel
 	 * 		click - click action
-	 * 		apiFlagType - flag type for api call
 	 * 		onSuccess - callback to execute after action success. Callback parameters:
 	 * 			id - respective post id
 	 * 			data - any data returned by the AJAX call
@@ -1437,59 +1248,54 @@
 			'hasTipsy': false,
 			'click': function( e ) {
 				e.preventDefault();
-				var $link = $( e.target );
-				var $container = $link.closest( '.articleFeedbackv5-feedback' );
+
+				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
 					var pageId = $container.data( 'pageid' );
-					var activity = $.articleFeedbackv5special.getActivity( id );
-					$.articleFeedbackv5special.flagFeedback( id, pageId, 'helpful', '', activity['unhelpful'] ? { toggle: true } : { } );
+					var action = $( e.target ).data( 'action' );
+
+					$.articleFeedbackv5special.flagFeedback(
+						id,
+						pageId,
+						action,
+						'',
+						{ toggle: $.articleFeedbackv5special.getActivityFlag( id, 'unhelpful' ) }
+					);
 				}
 			},
-			'apiFlagType': 'helpful',
 			'onSuccess': function( id, data ) {
-				$( '#articleFeedbackv5-helpful-link-' + id )
-					.addClass( 'helpful-active' )
-					.removeClass( 'articleFeedbackv5-helpful-link' )
-					.addClass( 'articleFeedbackv5-reversehelpful-link' )
-					.attr( 'id', 'articleFeedbackv5-reversehelpful-link-' + id );
-				if ( data['articlefeedbackv5-flag-feedback']['toggle'] ) {
-					$( '#articleFeedbackv5-reverseunhelpful-link-' + id )
-						.removeClass( 'helpful-active' )
-						.removeClass( 'articleFeedbackv5-reverseunhelpful-link')
-						.addClass( 'articleFeedbackv5-unhelpful-link' )
-						.attr( 'id', 'articleFeedbackv5-unhelpful-link-' + id );
-					$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', false )
-				}
-				$.articleFeedbackv5special.refreshVoteReport( id, data['articlefeedbackv5-flag-feedback'] );
 				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', true );
+				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', false )
 			}
 		},
 
 		// }}}
 		// {{{ Un-vote helpful
 
-		'reversehelpful': {
+		'undo-helpful': {
 			'hasTipsy': false,
 			'click': function( e ) {
 				e.preventDefault();
-				var $link = $( e.target );
-				var $container = $link.closest( '.articleFeedbackv5-feedback' );
+
+				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
 					var pageId = $container.data( 'pageid' );
-					$.articleFeedbackv5special.flagFeedback( id, pageId,  'reversehelpful', '', { } );
+					var action = $( e.target ).data( 'action' );
+
+					$.articleFeedbackv5special.flagFeedback(
+						id,
+						pageId,
+						action,
+						'',
+						{}
+					);
 				}
 			},
-			'apiFlagType': 'undo-helpful',
 			'onSuccess': function( id, data ) {
-				$( '#articleFeedbackv5-reversehelpful-link-' + id )
-					.removeClass( 'helpful-active' )
-					.removeClass( 'articleFeedbackv5-reversehelpful-link')
-					.addClass( 'articleFeedbackv5-helpful-link' )
-					.attr( 'id', 'articleFeedbackv5-helpful-link-' + id );
-				$.articleFeedbackv5special.refreshVoteReport( id, data['articlefeedbackv5-flag-feedback'] );
 				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', false );
+				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', false )
 			}
 		},
 
@@ -1500,101 +1306,116 @@
 			'hasTipsy': false,
 			'click': function( e ) {
 				e.preventDefault();
-				var $link = $( e.target );
-				var $container = $link.closest( '.articleFeedbackv5-feedback' );
+
+				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
 					var pageId = $container.data( 'pageid' );
-					var activity = $.articleFeedbackv5special.getActivity( id );
-					$.articleFeedbackv5special.flagFeedback( id, pageId, 'unhelpful', '', activity['helpful'] ? { toggle: true } : { } );
+					var action = $( e.target ).data( 'action' );
+
+					$.articleFeedbackv5special.flagFeedback(
+						id,
+						pageId,
+						action,
+						'',
+						{ toggle: $.articleFeedbackv5special.getActivityFlag( id, 'helpful' ) }
+					);
 				}
 			},
-			'apiFlagType': 'unhelpful',
 			'onSuccess': function( id, data ) {
-				$( '#articleFeedbackv5-unhelpful-link-' + id )
-					.addClass( 'helpful-active' )
-					.removeClass( 'articleFeedbackv5-unhelpful-link')
-					.addClass( 'articleFeedbackv5-reverseunhelpful-link' )
-					.attr( 'id', 'articleFeedbackv5-reverseunhelpful-link-' + id );
-				if( data['articlefeedbackv5-flag-feedback']['toggle'] ) {
-					$( '#articleFeedbackv5-reversehelpful-link-' + id )
-						.removeClass( 'helpful-active' )
-						.removeClass( 'articleFeedbackv5-reversehelpful-link')
-						.addClass( 'articleFeedbackv5-helpful-link' )
-						.attr( 'id', 'articleFeedbackv5-helpful-link-' + id );
-					$.articleFeedbackv5special.setActivityFlag( id, 'helpful', false )
-				}
-				$.articleFeedbackv5special.refreshVoteReport( id, data['articlefeedbackv5-flag-feedback'] );
-				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', true );
+				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', false );
+				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', true )
 			}
 		},
 
 		// }}}
 		// {{{ Un-vote unhelpful
 
-		'reverseunhelpful': {
+		'undo-unhelpful': {
 			'hasTipsy': false,
 			'click': function( e ) {
 				e.preventDefault();
-				var $link = $( e.target );
-				var $container = $link.closest( '.articleFeedbackv5-feedback' );
+
+				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
 					var pageId = $container.data( 'pageid' );
-					$.articleFeedbackv5special.flagFeedback( id, pageId, 'reverseunhelpful', '', { } );
+					var action = $( e.target ).data( 'action' );
+
+					$.articleFeedbackv5special.flagFeedback(
+						id,
+						pageId,
+						action,
+						'',
+						{}
+					);
 				}
 			},
-			'apiFlagType': 'undo-unhelpful',
 			'onSuccess': function( id, data ) {
-				$( '#articleFeedbackv5-reverseunhelpful-link-' + id )
-					.removeClass( 'helpful-active' )
-					.removeClass( 'articleFeedbackv5-reverseunhelpful-link')
-					.addClass( 'articleFeedbackv5-unhelpful-link' )
-					.attr( 'id', 'articleFeedbackv5-unhelpful-link-' + id );
-				$.articleFeedbackv5special.refreshVoteReport( id, data['articlefeedbackv5-flag-feedback'] );
-				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', false );
+				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', false );
+				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', false )
 			}
 		},
 
 		// }}}
 		// {{{ Flag post as abusive
 
-		'abuse': {
+		'flag': {
 			'hasTipsy': false,
 			'click': function( e ) {
 				e.preventDefault();
-				var $link = $( e.target );
-				var $container = $link.closest( '.articleFeedbackv5-feedback' );
+
+				// only allow flagging if not yet flagged
+				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
-					var pageId = $container.data( 'pageid' );
-					$.articleFeedbackv5special.flagFeedback( id, pageId, 'abuse', '', { } );
+					if ( !$.articleFeedbackv5special.getActivityFlag( id, 'flag' ) ) {
+						var pageId = $container.data( 'pageid' );
+						var action = $( e.target ).data( 'action' );
+
+						$.articleFeedbackv5special.flagFeedback(
+							id,
+							pageId,
+							action,
+							'',
+							{}
+						);
+					}
 				}
 			},
-			'apiFlagType': 'flag',
 			'onSuccess': function( id, data ) {
-				$.articleFeedbackv5special.setAbuse( id, data );
+				$.articleFeedbackv5special.setActivityFlag( id, 'flag', true );
 			}
 		},
 
 		// }}}
 		// {{{ Unflag post as abusive
 
-		'unabuse': {
+		'unflag': {
 			'hasTipsy': false,
 			'click': function( e ) {
 				e.preventDefault();
-				var $link = $( e.target );
-				var $container = $link.closest( '.articleFeedbackv5-feedback' );
+
+				// only allow unflagging if flagged by this user
+				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
-					var pageId = $container.data( 'pageid' );
-					$.articleFeedbackv5special.flagFeedback( id, pageId, 'unabuse', '', { } );
+					if ( $.articleFeedbackv5special.getActivityFlag( id, 'flag' ) ) {
+						var pageId = $container.data( 'pageid' );
+						var action = $( e.target ).data( 'action' );
+
+						$.articleFeedbackv5special.flagFeedback(
+							id,
+							pageId,
+							action,
+							'',
+							{}
+						);
+					}
 				}
 			},
-			'apiFlagType': 'unflag',
 			'onSuccess': function( id, data ) {
-				$.articleFeedbackv5special.setAbuse( id, data );
+				$.articleFeedbackv5special.setActivityFlag( id, 'flag', false );
 			}
 		},
 
@@ -1604,19 +1425,9 @@
 		'feature': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'feature',
+			'click': $.articleFeedbackv5special.flagAction,
 			'onSuccess': function( id, data ) {
-				var $link = $( '#articleFeedbackv5-feature-link-' + id )
-					.attr( 'action', 'unfeature' )
-					.attr( 'id', 'articleFeedbackv5-unfeature-link-' + id )
-					.text( mw.msg( 'articlefeedbackv5-form-unfeature' ) )
-					.removeClass( 'articleFeedbackv5-feature-link' )
-					.addClass( 'articleFeedbackv5-unfeature-link' );
-
-				$.articleFeedbackv5special.markFeatured( $link.closest( '.articleFeedbackv5-feedback' ) );
-				$.articleFeedbackv5special.setActivityFlag( id, 'feature', true );
-				$.articleFeedbackv5special.setAbuse( id, data );
+				// activity flag is not particularly useful here
 			}
 		},
 
@@ -1626,19 +1437,9 @@
 		'unfeature': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'unfeature',
+			'click': $.articleFeedbackv5special.flagAction,
 			'onSuccess': function( id, data ) {
-				var $link = $( '#articleFeedbackv5-unfeature-link-' + id )
-					.attr( 'action', 'feature' )
-					.attr( 'id', 'articleFeedbackv5-feature-link-' + id )
-					.text( mw.msg( 'articlefeedbackv5-form-feature' ) )
-					.removeClass( 'articleFeedbackv5-unfeature-link' )
-					.addClass( 'articleFeedbackv5-feature-link' );
-
-				var $row = $link.closest( '.articleFeedbackv5-feedback' );
-				$.articleFeedbackv5special.unmarkFeatured( $row );
-				$.articleFeedbackv5special.setActivityFlag( id, 'feature', false );
+				// activity flag is not particularly useful here
 			}
 		},
 
@@ -1648,18 +1449,9 @@
 		'resolve': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'resolve',
+			'click': $.articleFeedbackv5special.flagAction,
 			'onSuccess': function( id, data ) {
-				var $link = $( '#articleFeedbackv5-resolve-link-' + id )
-					.attr( 'action', 'unresolve' )
-					.attr( 'id', 'articleFeedbackv5-unresolve-link-' + id )
-					.text( mw.msg( 'articlefeedbackv5-form-unresolve' ) )
-					.removeClass( 'articleFeedbackv5-resolve-link' )
-					.addClass( 'articleFeedbackv5-unresolve-link' );
-
-				$.articleFeedbackv5special.markResolved( $link.closest( '.articleFeedbackv5-feedback' ) );
-				$.articleFeedbackv5special.setActivityFlag( id, 'resolve', true );
+				// activity flag is not particularly useful here
 			}
 		},
 
@@ -1669,19 +1461,33 @@
 		'unresolve': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'unresolve',
+			'click': $.articleFeedbackv5special.flagAction,
 			'onSuccess': function( id, data ) {
-				var $link = $( '#articleFeedbackv5-unresolve-link-' + id )
-					.attr( 'action', 'resolve' )
-					.attr( 'id', 'articleFeedbackv5-resolve-link-' + id )
-					.text( mw.msg( 'articlefeedbackv5-form-resolve' ) )
-					.removeClass( 'articleFeedbackv5-unresolve-link' )
-					.addClass( 'articleFeedbackv5-resolve-link' );
+				// activity flag is not particularly useful here
+			}
+		},
 
-				var $row = $link.closest( '.articleFeedbackv5-feedback' );
-				$.articleFeedbackv5special.unmarkResolved( $row );
-				$.articleFeedbackv5special.setActivityFlag( id, 'resolve', false );
+		// }}}
+		// {{{ Mark post as non-actionable action
+
+		'noaction': {
+			'hasTipsy': true,
+			'tipsyHtml': undefined,
+			'click': $.articleFeedbackv5special.flagAction,
+			'onSuccess': function( id, data ) {
+				// activity flag is not particularly useful here
+			}
+		},
+
+		// }}}
+		// {{{ Unmark post as non-actionable action
+
+		'unnoaction': {
+			'hasTipsy': true,
+			'tipsyHtml': undefined,
+			'click': $.articleFeedbackv5special.flagAction,
+			'onSuccess': function( id, data ) {
+				// activity flag is not particularly useful here
 			}
 		},
 
@@ -1691,99 +1497,84 @@
 		'hide': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'hide',
+			'click': $.articleFeedbackv5special.flagAction,
 			'onSuccess': function( id, data ) {
-				var $link = $( '#articleFeedbackv5-hide-link-' + id )
-					.attr( 'action', 'show' )
-					.attr( 'id', 'articleFeedbackv5-show-link-' + id )
-					.text( mw.msg( 'articlefeedbackv5-form-unhide' ) )
-					.removeClass( 'articleFeedbackv5-hide-link' )
-					.addClass( 'articleFeedbackv5-show-link' );
-
-				$.articleFeedbackv5special.markHidden(
-					$link.closest( '.articleFeedbackv5-feedback' ),
-					data['articlefeedbackv5-flag-feedback']['mask-line']
-				);
-				$.articleFeedbackv5special.setActivityFlag( id, 'hide', true );
+				// activity flag is not particularly useful here
 			}
 		},
 
 		// }}}
 		// {{{ Show post action
 
-		'show': {
+		'unhide': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'unhide',
+			'click': $.articleFeedbackv5special.flagAction,
 			'onSuccess': function( id, data ) {
-				var $link = $( '#articleFeedbackv5-show-link-' + id )
-					.attr( 'action', 'hide' )
-					.attr( 'id', 'articleFeedbackv5-hide-link-' + id )
-					.text( mw.msg( 'articlefeedbackv5-form-hide' ) )
-					.removeClass( 'articleFeedbackv5-show-link' )
-					.addClass( 'articleFeedbackv5-hide-link' );
-
-				var $row = $link.closest( '.articleFeedbackv5-feedback' );
-				$.articleFeedbackv5special.unmarkHidden( $row );
-				$.articleFeedbackv5special.setActivityFlag( id, 'hide', false );
-				$.articleFeedbackv5special.setAbuse( id, data );
+				// activity flag is not particularly useful here
 			}
 		},
 
 		// }}}
 		// {{{ Request oversight action
 
-		'requestoversight': {
+		'request': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'request',
+			'click': function() {
+				// tipsy has been opened - bind flag submission
+
+				$.articleFeedbackv5special.tipsyCallback = function( e ) {
+					var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
+					if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+						var id = $container.data( 'id' );
+						var pageId = $container.data( 'pageid' );
+						var note = $( '#articleFeedbackv5-noteflyover-note' ).val();
+
+						$.articleFeedbackv5special.flagFeedback(
+							id,
+							pageId,
+							'request',
+							note,
+							{}
+						);
+					}
+				};
+			},
 			'onSuccess': function( id, data ) {
-				var $link = $( '#articleFeedbackv5-requestoversight-link-' + id )
-					.attr( 'action', 'unrequestoversight' )
-					.attr( 'id', 'articleFeedbackv5-unrequestoversight-link-' + id )
-					.text( mw.msg( 'articlefeedbackv5-form-unoversight' ) )
-					.removeClass( 'articleFeedbackv5-requestoversight-link' )
-					.addClass( 'articleFeedbackv5-unrequestoversight-link');
-
-				if ( data['articlefeedbackv5-flag-feedback']['autohide'] ) {
-					$( '#articleFeedbackv5-hide-link-' + id )
-						.attr( 'action', 'show' )
-						.attr( 'id', 'articleFeedbackv5-show-link-' + id )
-						.text( mw.msg( 'articlefeedbackv5-form-unhide' ) )
-						.removeClass( 'articleFeedbackv5-hide-link' )
-						.addClass( 'articleFeedbackv5-show-link' );
-
-					$.articleFeedbackv5special.markHidden(
-						$link.closest( '.articleFeedbackv5-feedback' ),
-						data['articlefeedbackv5-flag-feedback']['mask-line']
-					);
-					$.articleFeedbackv5special.setActivityFlag( id, 'hide', true );
-				}
+				$.articleFeedbackv5special.setActivityFlag( id, 'request', true );
 			}
 		},
 
 		// }}}
 		// {{{ Cancel oversight request action
 
-		'unrequestoversight': {
+		'unrequest': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'unrequest',
-			'onSuccess': function( id, data ) {
-				var $link = $( '#articleFeedbackv5-unrequestoversight-link-' + id )
-					.attr( 'action', 'requestoversight' )
-					.attr( 'id', 'articleFeedbackv5-requestoversight-link-' + id )
-					.text( mw.msg( 'articlefeedbackv5-form-oversight' ) )
-					.removeClass( 'articleFeedbackv5-unrequestoversight-link' )
-					.addClass( 'articleFeedbackv5-requestoversight-link');
+			'click': function( e ) {
+				e.preventDefault();
 
-				$.articleFeedbackv5special.unmarkHidden(
-					$link.closest( '.articleFeedbackv5-feedback' )
-				);
+				// only allow unrequesting if requested by this user
+				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
+				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+					var id = $container.data( 'id' );
+					if ( $.articleFeedbackv5special.getActivityFlag( id, 'request' ) ) {
+						var pageId = $container.data( 'pageid' );
+						var action = $( e.target ).data( 'action' );
+
+						$.articleFeedbackv5special.flagFeedback(
+							id,
+							pageId,
+							action,
+							'',
+							{}
+						);
+					}
+				}
+			},
+			'onSuccess': function( id, data ) {
+				$.articleFeedbackv5special.setActivityFlag( id, 'request', false );
 			}
 		},
 
@@ -1793,34 +1584,28 @@
 		'oversight': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'oversight',
+			'click': function() {
+				// tipsy has been opened - bind flag submission
+
+				$.articleFeedbackv5special.tipsyCallback = function( e ) {
+					var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
+					if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+						var id = $container.data( 'id' );
+						var pageId = $container.data( 'pageid' );
+						var note = $( '#articleFeedbackv5-noteflyover-note' ).val();
+
+						$.articleFeedbackv5special.flagFeedback(
+							id,
+							pageId,
+							'oversight',
+							note,
+							{}
+						);
+					}
+				};
+			},
 			'onSuccess': function( id, data ) {
-				// if there is a "decline oversight" just hide it
-				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id )
-					.addClass( 'inactive' )
-					.text( mw.msg( 'articlefeedbackv5-form-declined' ) );
-
-				// Oversight is going to hide this as well, do the unhide/hide toggle
-				var $link = $( '#articleFeedbackv5-hide-link-' + id )
-					.attr( 'action', 'show' )
-					.attr( 'id', 'articleFeedbackv5-show-link-' + id )
-					.text( mw.msg( 'articlefeedbackv5-form-unhide' ) )
-					.removeClass( 'articleFeedbackv5-hide-link' )
-					.addClass( 'articleFeedbackv5-show-link' );
-
-				var $link = $( '#articleFeedbackv5-oversight-link-' + id )
-					.attr( 'action', 'unoversight' )
-					.attr( 'id', 'articleFeedbackv5-unoversight-link-' + id )
-					.text( mw.msg( 'articlefeedbackv5-form-undelete' ) )
-					.removeClass( 'articleFeedbackv5-oversight-link' )
-					.addClass( 'articleFeedbackv5-unoversight-link' );
-
-				$.articleFeedbackv5special.markDeleted(
-					$link.closest( '.articleFeedbackv5-feedback' ),
-					data['articlefeedbackv5-flag-feedback']['mask-line']
-				);
-				$.articleFeedbackv5special.setActivityFlag( id, 'delete', true );
+				// activity flag is not particularly useful here
 			}
 		},
 
@@ -1830,46 +1615,28 @@
 		'unoversight': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'unoversight',
+			'click': $.articleFeedbackv5special.flagAction,
 			'onSuccess': function( id, data ) {
-				// if there is a "decline oversight" just show it
-				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id )
-					.removeClass( 'inactive' )
-					.text( mw.msg( 'articlefeedbackv5-form-decline' ) );
-
-				var $link = $( '#articleFeedbackv5-unoversight-link-' + id )
-					.attr( 'action', 'oversight' )
-					.attr( 'id', 'articleFeedbackv5-oversight-link-' + id )
-					.text( mw.msg( 'articlefeedbackv5-form-delete' ) )
-					.removeClass( 'articleFeedbackv5-unoversight-link' )
-					.addClass( 'articleFeedbackv5-oversight-link' );
-
-				var $row = $link.closest( '.articleFeedbackv5-feedback' );
-				$.articleFeedbackv5special.unmarkDeleted( $row );
-				$.articleFeedbackv5special.setActivityFlag( id, 'delete', false );
+				// activity flag is not particularly useful here
 			}
 		},
 
 		// }}}
 		// {{{ Decline oversight action
 
-		'declineoversight': {
+		'decline': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'decline',
+			'click': $.articleFeedbackv5special.flagAction,
 			'onSuccess': function( id, data ) {
-				// if there is a "decline oversight" just show it
-				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id )
-					.addClass( 'inactive' )
-					.text( mw.msg( 'articlefeedbackv5-form-declined' ) );
-
-				var $row = $( '#articleFeedbackv5-declineoversight-link-' + id )
-					.closest( '.articleFeedbackv5-feedback' );
-				$.articleFeedbackv5special.unmarkDeleted( $row );
+				// activity flag is not particularly useful here
 			}
 		},
+
+		/*
+		 * Well, those below are not really "actions", but we can use the
+		 * structure that has been setup for actions, for these as well ;)
+		 */
 
 		// }}}
 		// {{{ View activity log action
@@ -1886,10 +1653,9 @@
 					<div id="articleFeedbackv5-activity-log"></div>\
 				</div>',
 			'click': function( e ) {
-				if ( $.articleFeedbackv5special.toggleTipsy( e ) ) {
-					$container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
-					$.articleFeedbackv5special.loadActivityLog( $container.data( 'id' ), $container.data( 'pageid' ), 0, '#articleFeedbackv5-activity-log' );
-				}
+				// upon executing this, tipsy will be open already
+				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
+				$.articleFeedbackv5special.loadActivityLog( $container.data( 'id' ), $container.data( 'pageid' ), 0, '#articleFeedbackv5-activity-log' );
 			}
 		},
 
@@ -1898,6 +1664,8 @@
 
 		'activity2': {
 			'click': function( e ) {
+				e.preventDefault();
+
 				if ( $( e.target ).data( 'started' ) == true ) {
 					$( '#articleFeedbackv5-permalink-activity-log' ).fadeOut();
 					$( e.target ).text( mw.msg( 'articlefeedbackv5-permalink-activity-more' ) );
