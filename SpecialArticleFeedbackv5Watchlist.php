@@ -100,9 +100,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 	protected function buildFilters() {
 		// filter to be displayed as link
 		$filterLabels = array();
-		foreach ( array( 'visible-relevant', 'visible' ) as $filter ) {
-			$msg_key = str_replace( array( 'all-', 'visible-', 'notdeleted-' ), '', $filter );
-
+		foreach ( array( 'featured', 'unreviewed' ) as $filter ) {
 			$filterLabels[$filter] =
 				Html::rawElement(
 					'a',
@@ -111,7 +109,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 						'id' => "articleFeedbackv5-special-filter-$filter",
 						'class' => 'articleFeedbackv5-filter-link' . ( $this->startingFilter == $filter ? ' filter-active' : '' )
 					),
-					$this->msg( "articlefeedbackv5-special-filter-$msg_key-watchlist" )->escaped()
+					$this->msg( "articlefeedbackv5-special-filter-$filter-watchlist" )->escaped()
 				);
 		}
 
@@ -125,9 +123,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 					continue;
 				}
 
-				$msg_key = str_replace( array( 'all-', 'visible-', 'notdeleted-' ), '', $filter );
-
-				$key = $this->msg( "articlefeedbackv5-special-filter-$msg_key-watchlist" )->escaped();
+				$key = $this->msg( "articlefeedbackv5-special-filter-$filter-watchlist" )->escaped();
 				$opts[(string) $key] = $filter;
 			}
 
