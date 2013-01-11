@@ -1520,20 +1520,6 @@ Name of the AFTv5 log filter on the Special:Log page',
 * $4 is the date the action was performed
 * $5 is the time the action was performed
 * $6 is the user name (gender support)',
-	'articlefeedbackv5-activity-item-hide' => 'Activity log entry when feedback was marked as inappropriate
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
-	'articlefeedbackv5-activity-item-unhide' => 'Activity log entry when feedback was un-marked as inappropriate
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-autohide' => 'Activity log entry when feedback was auto-marked as inappropriate
 * $1 is a link to the user who performed the action
 * $2 is the informational comment left upon performing the action
