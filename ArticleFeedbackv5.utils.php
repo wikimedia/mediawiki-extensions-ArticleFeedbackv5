@@ -149,7 +149,7 @@ class ArticleFeedbackv5Utils {
 	 * @return int        the percentage
 	 */
 	public static function percentHelpful( $helpful, $unhelpful ) {
-		if ( $helpful > 0 || $unhelpful > 0 ) {
+		if ( $helpful + $unhelpful != 0 ) {
 			return intval( ( $helpful / ( $helpful + $unhelpful ) ) * 100 );
 		}
 		return 0;
