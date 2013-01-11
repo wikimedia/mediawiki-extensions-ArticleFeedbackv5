@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADg3//+4E\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-01-11T20:57:32Z",
+      "side": 1,
+      "message": "The parameters should be listed in the same style as the rest of the keys,\n\nParameters:\n\n* $1 blah\n* $2 blah",
+      "revId": "b46a55945570eaf245c1fd11a1794458a1fb4261",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADg3//+q4\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-01-11T20:57:32Z",
+      "side": 1,
+      "message": "what about no filter matched?  Does it show Filters: ?",
+      "revId": "b46a55945570eaf245c1fd11a1794458a1fb4261",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
