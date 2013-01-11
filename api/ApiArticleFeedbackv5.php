@@ -158,8 +158,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			case 'aftv5hide':
 				$this->autoFlag['hide'] = $rule_desc;
 				break;
-			case 'aftv5requestoversight':
-				$this->autoFlag['requestoversight'] = $rule_desc;
+			case 'aftv5request':
+				$this->autoFlag['request'] = $rule_desc;
 				break;
 			default:
 				// Fall through silently
