@@ -77,59 +77,53 @@ $messages['en'] = array(
 	'articlefeedbackv5-contribs-entry-status' => '. . Status: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Helpful',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Flagged',
-	'articlefeedbackv5-contribs-status-action-feature' => 'Featured',
+	'articlefeedbackv5-contribs-status-action-feature' => 'Useful',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Resolved',
-	'articlefeedbackv5-contribs-status-action-hide' => 'Hidden',
+	'articlefeedbackv5-contribs-status-action-noaction' => 'No action needed',
+	'articlefeedbackv5-contribs-status-action-hide' => 'Inappropriate',
 	'articlefeedbackv5-contribs-status-action-request' => 'Oversight requested',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Oversighted',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'hidden comment',
 
 	/* Special Page */
-	'articlefeedbackv5-form-tools-label' => 'Tools',
+	'articlefeedbackv5-form-toolbox-label' => 'Mark as:',
+	'articlefeedbackv5-form-own-feedback' => 'You cannot review your own posts.',
 	'articlefeedbackv5-form-helpful-label' => 'Is this feedback helpful?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Yes',
 	'articlefeedbackv5-form-helpful-no-label' => 'No',
 	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% found it helpful}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 yes|$1 yes}} / {{PLURAL:$2|1 no|$2 no}}',
 	'articlefeedbackv5-special-survey-button-text' => 'What do you think of this feedback tool?',
-	'articlefeedbackv5-special-filter-all' => 'All posts ($1)',
-	'articlefeedbackv5-special-filter-notdeleted' => 'All (hidden) ($1)',
-	'articlefeedbackv5-special-filter-comment' => 'All comments ($1)',
-	'articlefeedbackv5-special-filter-relevant' => 'Most relevant ($1)',
-	'articlefeedbackv5-special-filter-abusive' => 'Flagged as abuse ($1)',
+	'articlefeedbackv5-special-filter-featured' => 'Featured ($1)',
+	'articlefeedbackv5-special-filter-unreviewed' => 'Unreviewed ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Helpful ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Unhelpful ($1)',
-	'articlefeedbackv5-special-filter-requested' => 'Oversight requested ($1)',
-	'articlefeedbackv5-special-filter-unrequested' => 'Oversight unrequested ($1)',
-	'articlefeedbackv5-special-filter-visible' => 'All visible ($1)',
-	'articlefeedbackv5-special-filter-hidden' => 'Hidden ($1)',
-	'articlefeedbackv5-special-filter-oversighted' => 'Oversighted ($1)',
-	'articlefeedbackv5-special-filter-unoversighted' => 'Un-oversighted ($1)',
-	'articlefeedbackv5-special-filter-declined' => 'Oversight declined ($1)',
-	'articlefeedbackv5-special-filter-unhidden' => 'Un-hidden ($1)',
-	'articlefeedbackv5-special-filter-featured' => 'Featured ($1)',
-	'articlefeedbackv5-special-filter-unfeatured' => 'Un-featured ($1)',
+	'articlefeedbackv5-special-filter-flagged' => 'Flagged ($1)',
+	'articlefeedbackv5-special-filter-useful' => 'Useful ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'Resolved ($1)',
-	'articlefeedbackv5-special-filter-unresolved' => 'Un-resolved ($1)',
-	'articlefeedbackv5-special-filter-all-watchlist' => 'All posts',
-	'articlefeedbackv5-special-filter-notdeleted-watchlist' => 'All (hidden)',
-	'articlefeedbackv5-special-filter-comment-watchlist' => 'All comments',
-	'articlefeedbackv5-special-filter-relevant-watchlist' => 'Most relevant',
-	'articlefeedbackv5-special-filter-abusive-watchlist' => 'Flagged as abuse',
+	'articlefeedbackv5-special-filter-noaction' => 'No action needed ($1)',
+	'articlefeedbackv5-special-filter-inappropriate' => 'Inappropriate ($1)',
+	'articlefeedbackv5-special-filter-archived' => 'Archived ($1)',
+	'articlefeedbackv5-special-filter-allcomment' => 'All comments ($1)',
+	'articlefeedbackv5-special-filter-requested' => 'Oversight requested ($1)',
+	'articlefeedbackv5-special-filter-declined' => 'Oversight declined ($1)',
+	'articlefeedbackv5-special-filter-oversighted' => 'Oversighted ($1)',
+	'articlefeedbackv5-special-filter-all' => 'All posts ($1)',
+	'articlefeedbackv5-special-filter-featured-watchlist' => 'Featured',
+	'articlefeedbackv5-special-filter-unreviewed-watchlist' => 'Unreviewed',
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Helpful',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Unhelpful',
-	'articlefeedbackv5-special-filter-requested-watchlist' => 'Oversight requested',
-	'articlefeedbackv5-special-filter-unrequested-watchlist' => 'Oversight unrequested',
-	'articlefeedbackv5-special-filter-visible-watchlist' => 'All visible',
-	'articlefeedbackv5-special-filter-hidden-watchlist' => 'Hidden',
-	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'Oversighted',
-	'articlefeedbackv5-special-filter-unoversighted-watchlist' => 'Un-oversighted',
-	'articlefeedbackv5-special-filter-declined-watchlist' => 'Oversight declined',
-	'articlefeedbackv5-special-filter-unhidden-watchlist' => 'Un-hidden',
-	'articlefeedbackv5-special-filter-featured-watchlist' => 'Featured',
-	'articlefeedbackv5-special-filter-unfeatured-watchlist' => 'Un-featured',
+	'articlefeedbackv5-special-filter-flagged-watchlist' => 'Flagged',
+	'articlefeedbackv5-special-filter-useful-watchlist' => 'Useful',
 	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Resolved',
-	'articlefeedbackv5-special-filter-unresolved-watchlist' => 'Un-resolved',
+	'articlefeedbackv5-special-filter-noaction-watchlist' => 'No action needed',
+	'articlefeedbackv5-special-filter-inappropriate-watchlist' => 'Inappropriate',
+	'articlefeedbackv5-special-filter-archived-watchlist' => 'Archived',
+	'articlefeedbackv5-special-filter-allcomment-watchlist' => 'All comments',
+	'articlefeedbackv5-special-filter-requested-watchlist' => 'Oversight requested',
+	'articlefeedbackv5-special-filter-declined-watchlist' => 'Oversight declined',
+	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'Oversighted',
+	'articlefeedbackv5-special-filter-all-watchlist' => 'All posts',
 	'articlefeedbackv5-special-sort-relevance-desc' => 'Relevant',
 	'articlefeedbackv5-special-sort-relevance-asc' => 'Irrelevant',
 	'articlefeedbackv5-special-sort-helpful-desc' => 'Helpful',
@@ -141,8 +135,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-filter-label-before' => 'Showing:',
 	'articlefeedbackv5-special-filter-label-after' => '',
 	'articlefeedbackv5-special-filter-select-more' => 'More filters',
-	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|$1 post|$1 posts}} about this page',
-	'articlefeedbackv5-special-central-showing' => '{{PLURAL:$1|$1 feedback post|$1 feedback posts}} from all pages',
+	'articlefeedbackv5-special-showing' => '{{PLURAL:$4|$3 featured comment|$3 featured comments}} (of $1)',
+	'articlefeedbackv5-special-central-showing' => '{{PLURAL:$4|$3 featured comment|$3 featured comments}} from all pages (of $1)',
 	'articlefeedbackv5-special-watchlist-showing' => 'Feedback for pages watched by [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Feedback from my watched pages]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|View feedback from all pages]]',
@@ -156,41 +150,64 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'Feedback from my watched pages',
 	'articlefeedbackv5-special-central-pagetitle' => 'Central Feedback Page',
 	'articlefeedbackv5-loading-tag' => 'Loading...',
-	'articlefeedbackv5-status-hide' => 'This post was hidden by $1 on $2 at $3',
-	'articlefeedbackv5-status-unhide' => 'This post was unhidden by $1 on $2 at $3',
+	'articlefeedbackv5-status-hide' => 'This post was marked as inappropriate by $1 on $2 at $3',
+	'articlefeedbackv5-status-unhide' => 'This post was unmarked as inappropriate by $1 on $2 at $3',
 	'articlefeedbackv5-status-request' => 'Oversight for this post was requested by $1 on $2 at $3',
 	'articlefeedbackv5-status-unrequest' => 'Oversight for this post was un-requested by $1 on $2 at $3',
 	'articlefeedbackv5-status-decline' => 'Oversight for this post was declined by $1 on $2 at $3',
-	'articlefeedbackv5-status-autohide' => 'This post was auto-hidden by $1 on $2 at $3',
+	'articlefeedbackv5-status-autohide' => 'This post was auto-marked as inappropriate by $1 on $2 at $3',
 	'articlefeedbackv5-status-oversight' => 'This post was oversighted by $1 on $2 at $3',
 	'articlefeedbackv5-status-unoversight' => 'This post was un-oversighted by $1 on $2 at $3',
 	'articlefeedbackv5-status-autoflag' => 'This post was auto-flagged by $1 on $2 at $3',
-	'articlefeedbackv5-status-feature' => 'This post was featured by $1 on $2 at $3',
-	'articlefeedbackv5-status-unfeature' => 'This post was un-featured by $1 on $2 at $3',
+	'articlefeedbackv5-status-feature' => 'This post was marked as useful by $1 on $2 at $3',
+	'articlefeedbackv5-status-unfeature' => 'This post was un-marked as useful by $1 on $2 at $3',
 	'articlefeedbackv5-status-resolve' => 'This post was marked as resolved by $1 on $2 at $3',
 	'articlefeedbackv5-status-unresolve' => 'This post was un-marked as resolved by $1 on $2 at $3',
+	'articlefeedbackv5-status-noaction' => 'This post was marked as non-actionable by $1 on $2 at $3',
+	'articlefeedbackv5-status-unnoaction' => 'This post was un-marked as non-actionable by $1 on $2 at $3',
 	'articlefeedbackv5-new-marker' => 'New',
 	'articlefeedbackv5-oversight-marker' => 'Oversighted',
-	'articlefeedbackv5-hide-marker' => 'Hidden',
-	'articlefeedbackv5-feature-marker' => 'Featured',
+	'articlefeedbackv5-hide-marker' => 'Inappropriate',
+	'articlefeedbackv5-feature-marker' => 'Useful',
 	'articlefeedbackv5-resolve-marker' => 'Resolved',
-	'articlefeedbackv5-form-feature' => 'Feature this post',
-	'articlefeedbackv5-form-unfeature' => 'Unfeature this post',
-	'articlefeedbackv5-form-resolve' => 'Mark as resolved',
-	'articlefeedbackv5-form-unresolve' => 'Unmark as resolved',
-	'articlefeedbackv5-form-hide' => 'Hide this post',
-	'articlefeedbackv5-form-unhide' => 'Unhide this post',
-	'articlefeedbackv5-form-hide-own' => 'Hide my post',
-	'articlefeedbackv5-form-unhide-own' => 'Unhide my post',
-	'articlefeedbackv5-form-abuse' => 'Flag as abuse',
+	'articlefeedbackv5-noaction-marker' => 'No action needed',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 flag|$1 flags}}',
-	'articlefeedbackv5-form-abuse-cleared' => 'Flags cleared',
-	'articlefeedbackv5-form-delete' => 'Oversight',
-	'articlefeedbackv5-form-oversight' => 'Request oversight',
-	'articlefeedbackv5-form-unoversight' => 'Unrequest oversight',
-	'articlefeedbackv5-form-undelete' => 'Un-oversight',
+	'articlefeedbackv5-form-note' => 'Add note',
+	'articlefeedbackv5-form-feature' => 'Useful',
+	'articlefeedbackv5-form-unfeature' => 'Unmark as useful',
+	'articlefeedbackv5-form-resolve' => 'Resolved',
+	'articlefeedbackv5-form-unresolve' => 'Unmark as resolved',
+	'articlefeedbackv5-form-noaction' => 'No action needed',
+	'articlefeedbackv5-form-unnoaction' => 'Unmark as no action needed',
+	'articlefeedbackv5-form-hide' => 'Inappropriate',
+	'articlefeedbackv5-form-unhide' => 'Unmark as inappropriate',
+	'articlefeedbackv5-form-hide-own' => 'Hide my post',
+	'articlefeedbackv5-form-unhide-own' => 'Show my post',
+	'articlefeedbackv5-form-helpful' => 'Mark as helpful ($1)',
+	'articlefeedbackv5-form-flag' => 'Flag as abuse',
+	'articlefeedbackv5-form-oversight' => 'Oversight',
+	'articlefeedbackv5-form-unoversight' => 'Un-oversight',
+	'articlefeedbackv5-form-request' => 'Request oversight',
+	'articlefeedbackv5-form-unrequest' => 'Unrequest oversight',
 	'articlefeedbackv5-form-decline' => 'Decline oversight',
 	'articlefeedbackv5-form-declined' => 'Oversight declined',
+	'articlefeedbackv5-form-tooltip-note' => 'Add a note explaining your flag',
+	'articlefeedbackv5-form-tooltip-feature' => 'This can help improve the article',
+	'articlefeedbackv5-form-tooltip-unfeature' => 'Undo usable flag',
+	'articlefeedbackv5-form-tooltip-resolve' => 'This was used or considered for the article',
+	'articlefeedbackv5-form-tooltip-unresolve' => 'Undo resolved flag',
+	'articlefeedbackv5-form-tooltip-noaction' => 'Unclear, irrelevant, praise, duplicate ...',
+	'articlefeedbackv5-form-tooltip-unnoaction' => 'Undo non-actionable flag',
+	'articlefeedbackv5-form-tooltip-hide' => 'Nonsense, spam, offensive, private data ...',
+	'articlefeedbackv5-form-tooltip-unhide' => 'Undo inappropriate flag',
+	'articlefeedbackv5-form-tooltip-hide-own' => 'Nonsense, spam, offensive, private data ...',
+	'articlefeedbackv5-form-tooltip-unhide-own' => 'Undo inappropriate flag',
+	'articlefeedbackv5-form-tooltip-flag' => 'Nonsense, spam, offensive, private data ...',
+	'articlefeedbackv5-form-tooltip-oversight' => 'Offensive, private data ...',
+	'articlefeedbackv5-form-tooltip-unoversight' => 'Undo oversight',
+	'articlefeedbackv5-form-tooltip-request' => 'Offensive, private data ...',
+	'articlefeedbackv5-form-tooltip-unrequest' => 'Undo oversight request',
+	'articlefeedbackv5-form-tooltip-decline' => 'Decline oversight request',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 found what they were looking for.}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 did not find what they were looking for.}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 posted a comment.}}',
@@ -206,6 +223,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Remove the flag you set',
 	'articlefeedbackv5-error-loading-feedback' => 'Error loading feedback',
 	'articlefeedbackv5-invalid-feedback-id' => 'Invalid feedback ID',
+	'articlefeedbackv5-invalid-log-id' => 'Invalid log ID',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Invalid feedback flag',
 	'articlefeedbackv5-invalid-feedback-state' => 'Invalid feedback flag state',
 	'articlefeedbackv5-go-to-article' => 'View article',
@@ -223,8 +241,9 @@ $messages['en'] = array(
 	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-unsupported-message' => 'Sorry, your browser is not supported by this prototype. To see this page, please use a different browser.',
 	'articlefeedbackv5-page-disabled' => 'Article Feedback page not enabled for this page.',
-	'articlefeedbackv5-no-feedback' => "There is no feedback for the filter you selected. To change your filter, try one of the options above (e.g.: 'Most Relevant' or 'All Comments').",
-	'articlefeedbackv5-viewactivity' => 'View activity',
+	'articlefeedbackv5-no-feedback' => "There is no feedback for the filter you selected. To change your filter, try one of the options above (e.g.: 'Featured' or 'Unreviewed').",
+	'articlefeedbackv5-viewactivity' => 'Read note',
+	'articlefeedbackv5-viewactivity-empty' => 'No reason given',
 	'articlefeedbackv5-mask-view-contents' => 'View contents',
 	'articlefeedbackv5-mask-text-autohide' => 'This post #$1 {{GENDER:$2|was autohidden by $2}} $3.',
 	'articlefeedbackv5-mask-text-hide' => 'This post #$1 {{GENDER:$2|was hidden by $2}} $3.',
@@ -248,8 +267,27 @@ $messages['en'] = array(
 	'articlefeedbackv5-permalink-activity-title' => 'Activity',
 	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 action|$1 actions}})',
 	'articlefeedbackv5-permalink-activity-none' => 'There has been no activity on this post.',
-	'articlefeedbackv5-permalink-status-hide' => '{{GENDER:$1|<strong>Hidden</strong> by $1}} $2',
-	'articlefeedbackv5-permalink-status-unhide' => '{{GENDER:$1|<strong>Unhidden</strong> by $1}} $2',
+	'articlefeedbackv5-short-status-request' => '{{GENDER:$1|Oversight was requested by $1}}',
+	'articlefeedbackv5-short-status-unrequest' => '{{GENDER:$1|Oversight was un-requested by $1}}',
+	'articlefeedbackv5-short-status-decline' => '{{GENDER:$1|Oversight was declined by $1}}',
+	'articlefeedbackv5-short-status-autohide' => '{{GENDER:$1|Auto-hidden by $1}}',
+	'articlefeedbackv5-short-status-oversight' => '{{GENDER:$1|Oversighted by $1}}',
+	'articlefeedbackv5-short-status-unoversight' => '{{GENDER:$1|Un-oversighted by $1}}',
+	'articlefeedbackv5-short-status-unflag' => '{{GENDER:$1|Unflagged by $1}}',
+	'articlefeedbackv5-short-status-flag' => '{{GENDER:$1|Flagged by $1}}',
+	'articlefeedbackv5-short-status-autoflag' => '{{GENDER:$1|Auto-flagged by $1}}',
+	'articlefeedbackv5-short-status-feature' => '{{GENDER:$1|Marked as useful by $1}}',
+	'articlefeedbackv5-short-status-unfeature' => '{{GENDER:$1|Un-marked as useful by $1}}',
+	'articlefeedbackv5-short-status-resolve' => '{{GENDER:$1|Marked as resolved by $1}}',
+	'articlefeedbackv5-short-status-unresolve' => '{{GENDER:$1|Un-marked as resolved by $1}}',
+	'articlefeedbackv5-short-status-noaction' => '{{GENDER:$1|Marked as non-actionable by $1}}',
+	'articlefeedbackv5-short-status-unnoaction' => '{{GENDER:$1|Un-marked as non-actionable by $1}}',
+	'articlefeedbackv5-short-status-hide' => '{{GENDER:$1|Marked as inappropriate by $1}}',
+	'articlefeedbackv5-short-status-unhide' => '{{GENDER:$1|Unmarked as inappropriate by $1}}',
+	'articlefeedbackv5-short-status-helpful' => '{{GENDER:$1|Marked as helpful by $1}}',
+	'articlefeedbackv5-short-status-undo-helpful' => '{{GENDER:$1|Un-marked as helpful by $1}}',
+	'articlefeedbackv5-short-status-unhelpful' => '{{GENDER:$1|Marked as unhelpful by $1}}',
+	'articlefeedbackv5-short-status-undo-unhelpful' => '{{GENDER:$1|Un-marked as unhelpful by $1}}',
 	'articlefeedbackv5-permalink-status-request' => '{{GENDER:$1|<strong>Oversight</strong> was requested by $1}} $2',
 	'articlefeedbackv5-permalink-status-unrequest' => '{{GENDER:$1|<strong>Oversight</strong> was un-requested by $1}} $2',
 	'articlefeedbackv5-permalink-status-decline' => '{{GENDER:$1|<strong>Oversight</strong> was declined by $1}} $2',
@@ -259,10 +297,14 @@ $messages['en'] = array(
 	'articlefeedbackv5-permalink-status-unflag' => '{{GENDER:$1|<strong>Unflagged</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-flag' => '{{GENDER:$1|<strong>Flagged</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-autoflag' => '{{GENDER:$1|<strong>Auto-flagged</strong> by $1}} $2',
-	'articlefeedbackv5-permalink-status-feature' => '{{GENDER:$1|<strong>Featured</strong> by $1}} $2',
-	'articlefeedbackv5-permalink-status-unfeature' => '{{GENDER:$1|<strong>Un-featured</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-feature' => '{{GENDER:$1|<strong>Marked as usepful</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-unfeature' => '{{GENDER:$1|<strong>Un-marked as usepful</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-resolve' => '{{GENDER:$1|<strong>Marked as resolved</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-unresolve' => '{{GENDER:$1|<strong>Un-marked as resolved</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-noaction' => '{{GENDER:$1|<strong>Marked as non-actionable</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-unnoaction' => '{{GENDER:$1|<strong>Un-marked as non-actionable</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-hide' => '{{GENDER:$1|<strong>Marked as inappropriate</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-unhide' => '{{GENDER:$1|<strong>Un-marked as inappropriate</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-helpful' => '{{GENDER:$1|<strong>Marked as helpful</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-undo-helpful' => '{{GENDER:$1|<strong>Un-marked as helpful</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Marked as unhelpful</strong> by $1}} $2',
@@ -272,109 +314,127 @@ $messages['en'] = array(
 
 	/* Special page flyover panels */
 	/* Feature this post panel */
-	'articlefeedbackv5-noteflyover-feature-caption' => 'Feature this post',
+	'articlefeedbackv5-noteflyover-feature-caption' => 'Marked as useful',
 	'articlefeedbackv5-noteflyover-feature-description' => '',
 	'articlefeedbackv5-noteflyover-feature-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Why are you featuring this post?',
-	'articlefeedbackv5-noteflyover-feature-submit' => 'Feature this post',
+	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Why did you mark this post as useful?',
+	'articlefeedbackv5-noteflyover-feature-submit' => 'Add note',
 	'articlefeedbackv5-noteflyover-feature-help' => 'Learn more',
 	'articlefeedbackv5-noteflyover-feature-help-link' => '#feature',
 
 	/* Unfeature this post panel */
-	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Unfeature this post',
+	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Unmarked as useful',
 	'articlefeedbackv5-noteflyover-unfeature-description' => '',
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Why are you unfeaturing this post?',
-	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Unfeature this post',
+	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Why did you unmark this post as useful?',
+	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Add note',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'Learn more',
 	'articlefeedbackv5-noteflyover-unfeature-help-link' => '#unfeature',
 
 	/* Mark as resolved panel */
-	'articlefeedbackv5-noteflyover-resolve-caption' => 'Mark as resolved',
+	'articlefeedbackv5-noteflyover-resolve-caption' => 'Marked as resolved',
 	'articlefeedbackv5-noteflyover-resolve-description' => '',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Why are you marking this post resolved?',
-	'articlefeedbackv5-noteflyover-resolve-submit' => 'Mark as resolved',
+	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Why did you mark this post resolved?',
+	'articlefeedbackv5-noteflyover-resolve-submit' => 'Add note',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Learn more',
 	'articlefeedbackv5-noteflyover-resolve-help-link' => '#resolve',
 
 	/* Unmark as resolved panel */
-	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Unmark as resolved',
+	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Unmarked as resolved',
 	'articlefeedbackv5-noteflyover-unresolve-description' => '',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Why are you unmarking this post as resolved?',
-	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Unmark as resolved',
+	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Why did you unmark this post as resolved?',
+	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Add note',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Learn more',
 	'articlefeedbackv5-noteflyover-unresolve-help-link' => '#unresolve',
 
 	/* Hide this post panel */
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Marked as inappropriate',
 	'articlefeedbackv5-noteflyover-hide-description' => '',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why are you hiding this post?',
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide this post',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Why did you mark this post as inappropriate?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Add note',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Learn more',
 	'articlefeedbackv5-noteflyover-hide-help-link' => '#hide',
 
 	/* Show this post panel */
-	'articlefeedbackv5-noteflyover-show-caption' => 'Unhide this post',
-	'articlefeedbackv5-noteflyover-show-description' => '',
-	'articlefeedbackv5-noteflyover-show-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-show-placeholder' => 'Why are you unhiding this post?',
-	'articlefeedbackv5-noteflyover-show-submit' => 'Unhide this post',
-	'articlefeedbackv5-noteflyover-show-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-show-help-link' => '#unhide',
+	'articlefeedbackv5-noteflyover-unhide-caption' => 'Unmarked as inappropriate',
+	'articlefeedbackv5-noteflyover-unhide-description' => '',
+	'articlefeedbackv5-noteflyover-unhide-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-unhide-placeholder' => 'Why did you unmark this post as inappropriate?',
+	'articlefeedbackv5-noteflyover-unhide-submit' => 'Add note',
+	'articlefeedbackv5-noteflyover-unhide-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-unhide-help-link' => '#unhide',
+
+	/* Mark as non-actionable panel */
+	'articlefeedbackv5-noteflyover-noaction-caption' => 'Marked as non-actionable',
+	'articlefeedbackv5-noteflyover-noaction-description' => '',
+	'articlefeedbackv5-noteflyover-noaction-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-noaction-placeholder' => 'Why did you mark this post as non-actionable?',
+	'articlefeedbackv5-noteflyover-noaction-submit' => 'Add note',
+	'articlefeedbackv5-noteflyover-noaction-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-noaction-help-link' => '#noaction',
+
+	/* Unmark as non-actionable panel */
+	'articlefeedbackv5-noteflyover-unnoaction-caption' => 'Unmarked as non-actionable',
+	'articlefeedbackv5-noteflyover-unnoaction-description' => '',
+	'articlefeedbackv5-noteflyover-unnoaction-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-unnoaction-placeholder' => 'Why did you unmark this post as non-actionable?',
+	'articlefeedbackv5-noteflyover-unnoaction-submit' => 'Add note',
+	'articlefeedbackv5-noteflyover-unnoaction-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-unnoaction-help-link' => '#unnoaction',
 
 	/* Request oversight panel */
-	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Request oversight',
-	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Before requesting oversight, please check that this post
+	'articlefeedbackv5-noteflyover-request-caption' => 'Request oversight',
+	'articlefeedbackv5-noteflyover-request-description' => 'Before requesting oversight, please check that this post
 includes one of these issues:
 * phone numbers
 * e-mail addresses
 * pornographic links
 * defamatory/libelous comments about a person
 * [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy other criteria for oversight]',
-	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Add a note to explain why you are requesting oversight',
-	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Why are you requesting oversight?',
-	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Request oversight',
-	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-requestoversight-help-link' => '#oversight-request',
+	'articlefeedbackv5-noteflyover-request-label' => 'Add a note to explain why you are requesting oversight',
+	'articlefeedbackv5-noteflyover-request-placeholder' => 'Why did you request oversight?',
+	'articlefeedbackv5-noteflyover-request-submit' => 'Add note',
+	'articlefeedbackv5-noteflyover-request-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-request-help-link' => '#oversight-request',
 
 	/* Un-request oversight panel */
-	'articlefeedbackv5-noteflyover-unrequestoversight-caption' => 'Cancel oversight request',
-	'articlefeedbackv5-noteflyover-unrequestoversight-description' => '',
-	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Why are you canceling the oversight request?',
-	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Cancel request',
-	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-unrequestoversight-help-link' => '#unoversight-request',
+	'articlefeedbackv5-noteflyover-unrequest-caption' => 'Cancelled oversight request',
+	'articlefeedbackv5-noteflyover-unrequest-description' => '',
+	'articlefeedbackv5-noteflyover-unrequest-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Why did you cancel the oversight request?',
+	'articlefeedbackv5-noteflyover-unrequest-submit' => 'Cancel request',
+	'articlefeedbackv5-noteflyover-unrequest-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-unrequest-help-link' => '#unoversight-request',
 
 	/* Oversight this post panel */
 	'articlefeedbackv5-noteflyover-oversight-caption' => 'Oversight this post',
 	'articlefeedbackv5-noteflyover-oversight-description' => '',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Why are you oversighting this post?',
-	'articlefeedbackv5-noteflyover-oversight-submit' => 'Oversight this post',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Why did you oversight this post?',
+	'articlefeedbackv5-noteflyover-oversight-submit' => 'Add note',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Learn more',
 	'articlefeedbackv5-noteflyover-oversight-help-link' => '#oversight',
 
 	/* Un-oversight this post panel */
-	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Un-oversight this post',
+	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Un-oversighted this post',
 	'articlefeedbackv5-noteflyover-unoversight-description' => '',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Why are you unoversighting this post?',
-	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Un-oversight this post',
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Why did you unoversight this post?',
+	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Add note',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Learn more',
 	'articlefeedbackv5-noteflyover-unoversight-help-link' => '#unoversight',
 
 	/* Decline oversight panel */
-	'articlefeedbackv5-noteflyover-declineoversight-caption' => 'Decline oversight',
-	'articlefeedbackv5-noteflyover-declineoversight-description' => '',
-	'articlefeedbackv5-noteflyover-declineoversight-label' => 'Add a note',
-	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'Why are you declining oversight?',
-	'articlefeedbackv5-noteflyover-declineoversight-submit' => 'Decline oversight',
-	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Learn more',
-	'articlefeedbackv5-noteflyover-declineoversight-help-link' => '#oversight-decline',
+	'articlefeedbackv5-noteflyover-decline-caption' => 'Declined oversight',
+	'articlefeedbackv5-noteflyover-decline-description' => '',
+	'articlefeedbackv5-noteflyover-decline-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-decline-placeholder' => 'Why did you decline oversight?',
+	'articlefeedbackv5-noteflyover-decline-submit' => 'Add note',
+	'articlefeedbackv5-noteflyover-decline-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-decline-help-link' => '#oversight-decline',
 
 	/* Feedback forms */
 	/* Option 1 ("Did you find what you were looking for?") */
@@ -454,19 +514,21 @@ includes one of these issues:
 	'log-description-articlefeedbackv5' => 'This is the log of activity taken on feedback items collected for articles using Article Feedback.',
 	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|changed the status to oversight of}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|removed the oversight status of}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-hide' => '$1 {{GENDER:$2|hid}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-unhide' => '$1 {{GENDER:$2|un-hid}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|declined oversight for}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-request' => '$1 {{GENDER:$2|requested oversight for}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-unrequest' => '$1 {{GENDER:$2|un-requested oversight for}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-flag' => '$1 {{GENDER:$2|flagged as abuse}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-unflag' => '$1 {{GENDER:$2|un-flagged as abuse}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-autohide' => '$1 {{GENDER:$2|auto-hid}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-autoflag' => '$1 {{GENDER:$2|auto-flagged as abuse}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-feature' => '$1 {{GENDER:$2|featured}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-unfeature' => '$1 {{GENDER:$2|un-featured}} [[$3|feedback post #$4]] on [[$5]]',
+	'logentry-articlefeedbackv5-feature' => '$1 {{GENDER:$2|marked as useful}} [[$3|feedback post #$4]] on [[$5]]',
+	'logentry-articlefeedbackv5-unfeature' => '$1 {{GENDER:$2|un-marked as useful}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-resolve' => '$1 {{GENDER:$2|marked as resolved}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-unresolve' => '$1 {{GENDER:$2|un-marked as resolved}} [[$3|feedback post #$4]] on [[$5]]',
+	'logentry-articlefeedbackv5-noaction' => '$1 {{GENDER:$2|marked as non-actionable}} [[$3|feedback post #$4]] on [[$5]]',
+	'logentry-articlefeedbackv5-unnoaction' => '$1 {{GENDER:$2|un-marked as non-actionable}} [[$3|feedback post #$4]] on [[$5]]',
+	'logentry-articlefeedbackv5-hide' => '$1 {{GENDER:$2|marked as inappropriate}} [[$3|feedback post #$4]] on [[$5]]',
+	'logentry-articlefeedbackv5-unhide' => '$1 {{GENDER:$2|un-marked as inappropriate}} [[$3|feedback post #$4]] on [[$5]]',
+	'logentry-articlefeedbackv5-autohide' => '$1 {{GENDER:$2|auto-marked as inappropriate}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-helpful' => '$1 {{GENDER:$2|marked as helpful}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-unhelpful' => '$1 {{GENDER:$2|marked as unhelpful}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|un-marked as helpful}} [[$3|feedback post #$4]] on [[$5]]',
@@ -481,18 +543,20 @@ includes one of these issues:
 	'articlefeedbackv5-activity-item-request' => '$1 requested oversight on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-unrequest' => '$1 unrequested oversight on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-decline' => '$1 declined oversight on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-hide' => '$1 hid this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-unhide' => '$1 unhid this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-autohide' => '$1 hid this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-flag' => '$1 flagged this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-unflag' => '$1 unflagged this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-autoflag' => '$1 flagged this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-oversight' => '$1 oversighted this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-unoversight' => '$1 removed oversight on this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 marked this post as useful on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 un-marked this post as useful on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-resolve' => '$1 marked this post as resolved on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-unresolve' => '$1 un-marked this post as resolved on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-feature' => '$1 featured this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-unfeature' => '$1 un-featured this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-noaction' => '$1 marked this post as non-actionable on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 un-marked this post as non-actionable on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-hide' => '$1 marked this post as inappropriate on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-unhide' => '$1 un-marked this post as inappropriate on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-autohide' => '$1 hid this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-helpful' => '$1 marked this post as helpful on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-unhelpful' => '$1 marked this post as unhelpful on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-undo-helpful' => '$1 unmarked this post as helpful on $4 at $5 $2',
@@ -570,8 +634,8 @@ $4',
 	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Automatically flagged as abuse. Rule: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Article Feedback) Auto-hide',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automatically hidden. Rule: $1',
-	'abusefilter-edit-action-aftv5requestoversight' => '(Article Feedback) Auto-request oversight',
-	'articlefeedbackv5-abusefilter-note-aftv5requestoversight' => 'Oversight automatically requested. Rule: $1',
+	'abusefilter-edit-action-aftv5request' => '(Article Feedback) Auto-request oversight',
+	'articlefeedbackv5-abusefilter-note-aftv5request' => 'Oversight automatically requested. Rule: $1',
 );
 
 /** Message documentation (Message documentation)
@@ -664,15 +728,15 @@ The abuse policy link.',
 	'articlefeedbackv5-contribs-entry-status' => 'The status part of {{msg-mw|articlefeedbackv5-contribs-entry}}. $1 contains the status and can be any combination of helpful, flagged, featured, resolved, hidden, oversight-requested, deleted',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Status when feedback has been marked as helpful',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Status when feedback has been flagged',
-	'articlefeedbackv5-contribs-status-action-feature' => 'Status when feedback has been featured.
-{{Identical|Featured}}',
+	'articlefeedbackv5-contribs-status-action-feature' => 'Status when feedback has been marked as useful',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Status when feedback has been resolved',
-	'articlefeedbackv5-contribs-status-action-hide' => 'Status when feedback has been hidden
-{{Identical|Hidden}}',
+	'articlefeedbackv5-contribs-status-action-noaction' => 'Status when feedback has been marked as non-actionable',
+	'articlefeedbackv5-contribs-status-action-hide' => 'Status when feedback has been marked as inappropriate',
 	'articlefeedbackv5-contribs-status-action-request' => 'Status when oversight has been requested on feedback',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Status when feedback has been oversighted',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'message to display in my contributions, instead of the actual feedback, when feedback has been hidden/oversight requested/oversighted',
-	'articlefeedbackv5-form-tools-label' => '{{Identical|Tools}}',
+	'articlefeedbackv5-form-toolbox-label' => 'Message informing the user that the below links (useful, resolved, no action needed, inappropriate) are meant to mark feedback as such',
+	'articlefeedbackv5-form-own-feedback' => 'Message informing the user (s)he cannot review your his/her own post.',
 	'articlefeedbackv5-form-helpful-label' => 'A question asking if the feedback is helpful.',
 	'articlefeedbackv5-form-helpful-yes-label' => '{{Identical|Yes}}',
 	'articlefeedbackv5-form-helpful-no-label' => '{{Identical|No}}',
@@ -681,46 +745,36 @@ The abuse policy link.',
 	'articlefeedbackv5-form-helpful-votes-count' => 'Shows how many people found the feedback helpful or unhelpful, as a tooltip when you hover over {{msg-mw:articlefeedbackv5-form-helpful-votes}}.  $1 is the number of helpful votes, and $2 is the number of unhelpful votes.',
 	'articlefeedbackv5-special-add-feedback' => 'Text for a button on the special page that -when clicked- allows people to provide their feedback.',
 	'articlefeedbackv5-special-survey-button-text' => 'Text for the button linking the user to the feedback page survey.',
-	'articlefeedbackv5-special-filter-all' => 'Shows all records, including ones that have been oversighted (= deleted) by an oversighter or hidden by a monitor. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-notdeleted' => 'Show all records that have not been oversighted (= deleted). $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-comment' => 'A list of feedback with text comments. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-relevant' => 'A list of feedback with the highest relevance score. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-abusive' => 'A list of feedback that has been marked as abusive. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-helpful' => 'A list of feedback that has been marked as helpful. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-unhelpful' => 'A list of feedback that has been marked as unhelpful. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-requested' => 'A list of feedback that has been requested for oversight (= request for deletion). $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-unrequested' => 'A list of feedback that has been unrequested for oversight (= undo request for deletion). $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-visible' => 'A list of feedback that has not been hidden. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-hidden' => 'A list of feedback that has been hidden. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-oversighted' => 'A list of feedback that has been oversighted (= deleted). $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-unoversighted' => 'A list of feedback that has been un-oversighted (= undeleted). $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-declined' => 'A list of feedback where the oversight request (= request for deletion) has been declined. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-unhidden' => 'A list of feedback that has been un-hidden. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-featured' => 'A list of feedback that has been marked as featured (= "promoted" feedback, to make useful feedback stand out more). $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-unfeatured' => 'A list of feedback that has been un-featured. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-resolved' => 'A list of feedback that has been marked as resolved (= feedback that has been dealt with). $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-unresolved' => 'A list of feedback that has been un-resolved. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-all-watchlist' => 'Shows all records, including ones that have been oversighted (= deleted) by an oversighter or hidden by a monitor. When viewing items on watchlist = without totals',
-	'articlefeedbackv5-special-filter-notdeleted-watchlist' => 'Show all records that have not been oversighted (= deleted). When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-comment-watchlist' => 'A list of feedback with text comments. When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-relevant-watchlist' => 'A list of feedback with the highest relevance score. When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-abusive-watchlist' => 'A list of feedback that has been marked as abusive. When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-helpful-watchlist' => 'A list of feedback that has been marked as helpful. When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'A list of feedback that has been marked as unhelpful. When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-requested-watchlist' => 'A list of feedback that has been requested for oversight (= request for deletion). When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-unrequested-watchlist' => 'A list of feedback that has been unrequested for oversight (= undo request for deletion). When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-visible-watchlist' => 'A list of feedback that has not been hidden. When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-hidden-watchlist' => 'A list of feedback that has been hidden. When viewing items on watchlist = without totals (= no $1).
-{{Identical|Hidden}}',
-	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'A list of feedback that has been oversighted (= deleted). When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-unoversighted-watchlist' => 'A list of feedback that has been un-oversighted (= undeleted). When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-declined-watchlist' => 'A list of feedback where the oversight request (= request for deletion) has been declined. When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-unhidden-watchlist' => 'A list of feedback that has been un-hidden. When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-featured-watchlist' => 'A list of feedback that has been featured (= "promoted" feedback, to make useful feedback stand out more). When viewing items on watchlist = without totals (= no $1)
-{{Identical|Featured}}',
-	'articlefeedbackv5-special-filter-unfeatured-watchlist' => 'A list of feedback that has been un-featured. When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-resolved-watchlist' => 'A list of feedback that has been resolved (= feedback that has been dealt with). When viewing items on watchlist = without totals (= no $1)',
-	'articlefeedbackv5-special-filter-unresolved-watchlist' => 'A list of feedback that has been un-resolved. When viewing items on watchlist = without totals (= no $1)',
+	'articlefeedbackv5-special-filter-featured' => 'Name of filter that will show all feedback that has been marked as useful or helpful. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-unreviewed' => 'Name of filter that will show all feedback that has not yet been marked as anything. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-helpful' => 'Name of filter that will show all feedback that has been marked as helpful. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-unhelpful' => 'Name of filter that will show all feedback that has been marked as unhelpful. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-flagged' => 'Name of filter that will show all feedback that has been flagged for abuse. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-useful' => 'Name of filter that will show all feedback that has marked as useful. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-resolved' => 'Name of filter that will show all feedback that has been marked as resolved. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-noaction' => 'Name of filter that will show all feedback that has been marked as no action needed. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-inappropriate' => 'Name of filter that will show all feedback that has been marked as inappropriate. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-archived' => 'Name of filter that will show all feedback that has been archived. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-allcomment' => 'Name of filter that will show all feedback that has a comment. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-requested' => 'Name of filter that will show all feedback where oversight has been requested. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-declined' => 'Name of filter that will show all feedback that has has an oversight request be declined. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-oversighted' => 'Name of filter that will show all feedback that has been oversighted. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-all' => 'Name of filter that will show all feedback. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-featured-watchlist' => 'Name of filter that will show all feedback that has been marked as useful or helpful.',
+	'articlefeedbackv5-special-filter-unreviewed-watchlist' => 'Name of filter that will show all feedback that has not yet been marked as anything.',
+	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Name of filter that will show all feedback that has been marked as helpful.',
+	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Name of filter that will show all feedback that has been marked as unhelpful.',
+	'articlefeedbackv5-special-filter-flagged-watchlist' => 'Name of filter that will show all feedback that has been flagged for abuse.',
+	'articlefeedbackv5-special-filter-useful-watchlist' => 'Name of filter that will show all feedback that has marked as useful.',
+	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Name of filter that will show all feedback that has been marked as resolved.',
+	'articlefeedbackv5-special-filter-noaction-watchlist' => 'Name of filter that will show all feedback that has been marked as no action needed.',
+	'articlefeedbackv5-special-filter-inappropriate-watchlist' => 'Name of filter that will show all feedback that has been marked as inappropriate.',
+	'articlefeedbackv5-special-filter-archived-watchlist' => 'Name of filter that will show all feedback that has been archived.',
+	'articlefeedbackv5-special-filter-allcomment-watchlist' => 'Name of filter that will show all feedback that has a comment.',
+	'articlefeedbackv5-special-filter-requested-watchlist' => 'Name of filter that will show all feedback where oversight has been requested.',
+	'articlefeedbackv5-special-filter-declined-watchlist' => 'Name of filter that will show all feedback that has has an oversight request be declined.',
+	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'Name of filter that will show all feedback that has been oversighted.',
+	'articlefeedbackv5-special-filter-all-watchlist' => 'Name of filter that will show all feedback.',
 	'articlefeedbackv5-special-sort-relevance-asc' => 'Sort option: better, more relevant feedback first',
 	'articlefeedbackv5-special-sort-relevance-desc' => 'Sort option: least relevant feedback first',
 	'articlefeedbackv5-special-sort-helpful-desc' => 'Sort option: most helpful feedback first',
@@ -733,8 +787,16 @@ The abuse policy link.',
 	'articlefeedbackv5-special-filter-label-before' => 'Place to put a label before the filter options',
 	'articlefeedbackv5-special-filter-label-after' => '{{notranslate}}',
 	'articlefeedbackv5-special-filter-select-more' => 'Default text for the more-filters select box',
-	'articlefeedbackv5-special-showing' => 'Text to show how many feedback posts have been posted to this article. $1 is the number of posts (needs plural support)',
-	'articlefeedbackv5-special-central-showing' => 'Text to show how many feedback posts have been posted across the wiki. $1 is the number of posts (needs plural support)',
+	'articlefeedbackv5-special-showing' => 'Text to show how many feedback posts have been posted to this article. Parameters:
+* $1 is the total number of posts, wrapped inside html,
+* $2 is the plural support for $1,
+* $3 is the number of posts in the "featured" filter (= posts marked as helpful/useful), wrapped inside html,
+* $4 is the plural support for $3.',
+	'articlefeedbackv5-special-central-showing' => 'Text to show how many feedback posts have been posted across the wiki. Parameters:
+* $1 is the total number of posts, wrapped inside html,
+* $2 is the plural support for $1,
+* $3 is the number of posts in the "featured" filter (= posts marked as helpful/useful), wrapped inside html,
+* $4 is the plural support for $3.',
 	'articlefeedbackv5-special-watchlist-showing' => "Text to show we're at the page containing feedback on watchlisted articles. Parameters:
 * $1 is a link to the user page,
 * $2 is a username,",
@@ -817,26 +879,47 @@ The abuse policy link.',
 	'articlefeedbackv5-oversight-marker' => 'The marker that appears on a comment if it has been oversighted (deleted).',
 	'articlefeedbackv5-hide-marker' => 'The marker that appears on a comment if it has been hidden.
 {{Identical|Hidden}}',
-	'articlefeedbackv5-feature-marker' => 'The marker that appears on a comment if it has been featured.
+	'articlefeedbackv5-feature-marker' => 'The marker that appears on a comment if it has been marked as useful.
 {{Identical|Featured}}',
 	'articlefeedbackv5-resolve-marker' => 'The marker that appears on a comment if it has been marked as resolved.',
-	'articlefeedbackv5-form-feature' => 'Link text for featuring the post (in the toolbox)',
-	'articlefeedbackv5-form-unfeature' => 'Link text for un-featuring the post (in the toolbox)',
+	'articlefeedbackv5-noaction-marker' => 'The marker that appears on a comment if it has been marked as non-actionable.',
+	'articlefeedbackv5-form-note' => 'Link text to add a comment for the action you just flagged (in the toolbox)',
+	'articlefeedbackv5-hide-marker' => 'The marker that appears on a comment if it has been marked as inappropriate.',
+	'articlefeedbackv5-form-feature' => 'Link text for marking the post as useful (in the toolbox)',
+	'articlefeedbackv5-form-unfeature' => 'Link text for un-marking the post as useful (in the toolbox)',
 	'articlefeedbackv5-form-resolve' => 'Link text for marking the post resolved (in the toolbox)',
 	'articlefeedbackv5-form-unresolve' => 'Link text for un-marking the post resolved (in the toolbox)',
-	'articlefeedbackv5-form-hide' => 'Link text for hiding the post',
-	'articlefeedbackv5-form-unhide' => 'Link text for un-hiding the post',
-	'articlefeedbackv5-form-hide-own' => 'Link text for hiding your own post',
-	'articlefeedbackv5-form-unhide-own' => 'Link text for un-hiding your ownpost',
-	'articlefeedbackv5-form-abuse' => 'Link text allowing the user to flag feedback as abuse.',
+	'articlefeedbackv5-form-noaction' => 'Link text for marking the post as non-actionable (in the toolbox)',
+	'articlefeedbackv5-form-unnoaction' => 'Link text for un-marking the post as non-actionable (in the toolbox)',
+	'articlefeedbackv5-form-hide' => 'Link text for marking the post as inappropriate (in the toolbox)',
+	'articlefeedbackv5-form-unhide' => 'Link text for un-marking the post as inappropriate (in the toolbox)',
+	'articlefeedbackv5-form-hide-own' => 'Link text for marking your own post as inappropriate',
+	'articlefeedbackv5-form-unhide-own' => 'Link text for un-marking your own post as inappropriate',
+	'articlefeedbackv5-form-flag' => 'Link text allowing the user to flag feedback as abuse.',
 	'articlefeedbackv5-form-abuse-count' => 'Shows how many times the feedback has been flagged as abuse.  $1 is the count.',
-	'articlefeedbackv5-form-abuse-cleared' => 'Displayed when abuse flags have been cleared on feedback.',
-	'articlefeedbackv5-form-delete' => '{{Identical|Delete}}',
-	'articlefeedbackv5-form-oversight' => 'Request that an oversighter review this feedback',
-	'articlefeedbackv5-form-unoversight' => 'Remove request for oversight (request that an oversighter review the feedback)',
-	'articlefeedbackv5-form-undelete' => 'Link text for undoing oversight (= deletion) of a feedback entry',
+	'articlefeedbackv5-form-request' => 'Request that an oversighter review this feedback',
+	'articlefeedbackv5-form-unrequest' => 'Remove request for oversight (request that an oversighter review the feedback)',
+	'articlefeedbackv5-form-oversight' => '{{Identical|Delete}}',
+	'articlefeedbackv5-form-unoversight' => 'Link text for undoing oversight (= deletion) of a feedback entry',
 	'articlefeedbackv5-form-decline' => 'Link text for declining oversight',
 	'articlefeedbackv5-form-declined' => 'Link text when oversight has already been declined',
+	'articlefeedbackv5-form-tooltip-note' => 'Link title-attribute to add a comment for the action you just flagged (in the toolbox)',
+	'articlefeedbackv5-form-tooltip-feature' => 'Link title-attribute for marking the post as useful (in the toolbox)',
+	'articlefeedbackv5-form-tooltip-unfeature' => 'Link title-attribute for un-marking the post as useful (in the toolbox)',
+	'articlefeedbackv5-form-tooltip-resolve' => 'Link title-attribute for marking the post resolved (in the toolbox)',
+	'articlefeedbackv5-form-tooltip-unresolve' => 'Link title-attribute for un-marking the post resolved (in the toolbox)',
+	'articlefeedbackv5-form-tooltip-noaction' => 'Link title-attribute for marking the post as non-actionable (in the toolbox)',
+	'articlefeedbackv5-form-tooltip-unnoaction' => 'Link title-attribute for un-marking the post as non-actionable (in the toolbox)',
+	'articlefeedbackv5-form-tooltip-hide' => 'Link title-attribute for marking the post as inappropriate (in the toolbox)',
+	'articlefeedbackv5-form-tooltip-unhide' => 'Link title-attribute for un-marking the post as inappropriate (in the toolbox)',
+	'articlefeedbackv5-form-tooltip-hide-own' => 'Link title-attribute for marking your own post as inappropriate',
+	'articlefeedbackv5-form-tooltip-unhide-own' => 'Link title-attribute for un-marking your own post as inappropriate',
+	'articlefeedbackv5-form-tooltip-flag' => 'Link title-attribute allowing the user to flag feedback as abuse',
+	'articlefeedbackv5-form-tooltip-oversight' => 'Link title-attribute for oversighting (=deleting) feedback',
+	'articlefeedbackv5-form-tooltip-unoversight' => 'Link title-attribute for undoing oversight (= deletion) of a feedback entry',
+	'articlefeedbackv5-form-tooltip-request' => 'Link title-attribute for requesting oversight',
+	'articlefeedbackv5-form-tooltip-unrequest' => 'Link title-attribute for unrequesting oversight',
+	'articlefeedbackv5-form-tooltip-decline' => 'Link title-attribute for declining oversight',
 	'articlefeedbackv5-form1-header-found' => '{{doc-singularthey}}
 Parameters
 * $1 is a username.
@@ -872,6 +955,7 @@ Parameters
 	'articlefeedbackv5-invalid-feedback-id' => 'Message to be displayed when, though the api, an invalid feedback id paremeter is given.',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Message to be displayed when, though the api, an invalid flag parameter (e.g. oversight, feature, helpful, ...) is given.',
 	'articlefeedbackv5-invalid-feedback-state' => "Message to be displayed when, though the api, the flag parameter can't be executed (e.g. oversighting an already oversighted article).",
+	'articlefeedbackv5-invalid-log-id' => "Message to be displayed when the id of the action's log entry can't be found'",
 	'articlefeedbackv5-go-to-article' => 'Link text for a link back to the article page from the feedback page.',
 	'articlefeedbackv5-discussion-page' => '{{Identical|Discussion}}',
 	'articlefeedbackv5-whats-this' => '{{Identical|Help}}',
@@ -895,6 +979,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-page-disabled' => 'A message to be displayed on the article feedback page when AFT is not enabled for that page',
 	'articlefeedbackv5-no-feedback' => 'A message to be displayed on the article feedback page when there is no feedback yet for a certain filter.',
 	'articlefeedbackv5-viewactivity' => 'Text for the link to see the log of activity (e.g. mark as helpful, resolve, oversight, ...) taken towards feedback',
+	'articlefeedbackv5-viewactivity-empty' => 'Text for the link to see the log of activity (e.g. mark as helpful, resolve, oversight, ...) taken towards feedback, when no comment was entered for the last action',
 	'articlefeedbackv5-mask-view-contents' => 'Pseudo-link to make it obvious that clicking there will reveal the original feedback content',
 	'articlefeedbackv5-mask-text-autohide' => 'Text to be displayed on the autohidden post mask:
 * $1: The feedback post id
@@ -929,12 +1014,44 @@ Permalink info block, subtitle of the right column, containing meta-information,
 	'articlefeedbackv5-permalink-activity-title' => 'Permalink activity block, title of the left column, containing information about the last activity',
 	'articlefeedbackv5-permalink-activity-subtitle' => 'Permalink activity block, subtitle of the left column, containing information about the last activity: $1 is the number of actions logged for this feedback',
 	'articlefeedbackv5-permalink-activity-none' => 'Permalink activity block, text to display when there has been no activity',
-	'articlefeedbackv5-permalink-status-hide' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who hid the post
-* <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
-	'articlefeedbackv5-permalink-status-unhide' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who un-hid the post
-* <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
+	'articlefeedbackv5-short-status-request' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who requested oversight (deletion) on the post',
+	'articlefeedbackv5-short-status-unrequest' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who un-requested oversight (deletion) on the post',
+	'articlefeedbackv5-short-status-decline' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who declined oversight (deletion) on the post',
+	'articlefeedbackv5-short-status-oversight' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who oversighted (deleted) the post',
+	'articlefeedbackv5-short-status-unoversight' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who un-oversighted (un-deleted) the post',
+	'articlefeedbackv5-short-status-autoflag' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who auto-flagged the post as abuse (usually a fake user called Article Feedback)',
+	'articlefeedbackv5-short-status-feature' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who marked the post as useful',
+	'articlefeedbackv5-short-status-unfeature' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who un-marked the post as useful',
+	'articlefeedbackv5-short-status-resolve' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who marked the post as resolved',
+	'articlefeedbackv5-short-status-unresolve' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who un-marked the post as resolved',
+	'articlefeedbackv5-short-status-noaction' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who marked the post as non-actionable',
+	'articlefeedbackv5-short-status-unnoaction' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who un-marked the post as non-actionable',
+	'articlefeedbackv5-short-status-hide' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who marked the post as inappropriate',
+	'articlefeedbackv5-short-status-unhide' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who un-marked the post as inappropriate',
+	'articlefeedbackv5-short-status-autohide' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who auto-marked the post as inappropriate (usually a fake user called Article Feedback)',
+	'articlefeedbackv5-short-status-helpful' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who marked the post as helpful',
+	'articlefeedbackv5-short-status-undo-helpful' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who un-marked the post as helpful',
+	'articlefeedbackv5-short-status-unhelpful' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who marked the post as unhelpful',
+	'articlefeedbackv5-short-status-undo-unhelpful' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who un-marked the post as unhelpful',
 	'articlefeedbackv5-permalink-status-request' => 'Permalink info block, last activity line:
 * <code>$1</code>: A link to the user who requested oversight (deletion) on the post
 * <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
@@ -943,9 +1060,6 @@ Permalink info block, subtitle of the right column, containing meta-information,
 * <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
 	'articlefeedbackv5-permalink-status-decline' => 'Permalink info block, last activity line:
 * <code>$1</code>: A link to the user who declined oversight (deletion) on the post
-* <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
-	'articlefeedbackv5-permalink-status-autohide' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who auto-hid the post (usually a fake user called Article Feedback)
 * <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
 	'articlefeedbackv5-permalink-status-oversight' => 'Permalink info block, last activity line:
 * <code>$1</code>: A link to the user who oversighted (deleted) the post
@@ -957,16 +1071,31 @@ Permalink info block, subtitle of the right column, containing meta-information,
 * <code>$1</code>: A link to the user who auto-flagged the post as abuse (usually a fake user called Article Feedback)
 * <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
 	'articlefeedbackv5-permalink-status-feature' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who featured the post
+* <code>$1</code>: A link to the user who marked the post as useful
 * <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
 	'articlefeedbackv5-permalink-status-unfeature' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who un-featured the post
+* <code>$1</code>: A link to the user who un-marked the post as useful
 * <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
 	'articlefeedbackv5-permalink-status-resolve' => 'Permalink info block, last activity line:
 * <code>$1</code>: A link to the user who marked the post as resolved
 * <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
 	'articlefeedbackv5-permalink-status-unresolve' => 'Permalink info block, last activity line:
 * <code>$1</code>: A link to the user who un-marked the post as resolved
+* <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
+	'articlefeedbackv5-permalink-status-noaction' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who marked the post as non-actionable
+* <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
+	'articlefeedbackv5-permalink-status-unnoaction' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who un-marked the post as non-actionable
+* <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
+	'articlefeedbackv5-permalink-status-hide' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who marked the post as inappropriate
+* <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
+	'articlefeedbackv5-permalink-status-unhide' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who un-marked the post as inappropriate
+* <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
+	'articlefeedbackv5-permalink-status-autohide' => 'Permalink info block, last activity line:
+* <code>$1</code>: A link to the user who auto-marked the post as inappropriate (usually a fake user called Article Feedback)
 * <code>$2</code>: The relative timestamp (e.g. "2 hours ago")',
 	'articlefeedbackv5-permalink-status-helpful' => 'Permalink info block, last activity line:
 * <code>$1</code>: A link to the user who marked the post as helpful
@@ -1022,32 +1151,45 @@ Hide post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide post note flyover panel - submit button text',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Hide post note flyover panel - help link text',
 	'articlefeedbackv5-noteflyover-hide-help-link' => 'Hide post note flyover panel - link to the specific "hide" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
-	'articlefeedbackv5-noteflyover-show-caption' => 'Show post note flyover panel - panel caption',
-	'articlefeedbackv5-noteflyover-show-description' => '{{Optional}}
-Show post note flyover panel - action description',
-	'articlefeedbackv5-noteflyover-show-label' => 'Show post note flyover panel - text area label',
-	'articlefeedbackv5-noteflyover-show-placeholder' => 'Show post note flyover panel - text area placeholder text',
-	'articlefeedbackv5-noteflyover-show-submit' => 'Show post note flyover panel - submit button text',
-	'articlefeedbackv5-noteflyover-show-help' => 'Show post note flyover panel - help link text',
-	'articlefeedbackv5-noteflyover-show-help-link' => 'Show post note flyover panel - link to the specific "show" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
-	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Request oversight note flyover panel - panel caption (request oversight asks that an oversighter review the feedback item)',
-	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Request oversight post note flyover panel - action description',
-	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Request oversight note flyover panel - text area label (request oversight asks that an oversighter review the feedback item).
+	'articlefeedbackv5-noteflyover-unhide-caption' => 'Show post note flyover panel - panel caption',
+	'articlefeedbackv5-noteflyover-unhide-description' => 'Show post note flyover panel - action description',
+	'articlefeedbackv5-noteflyover-unhide-label' => 'Show post note flyover panel - text area label',
+	'articlefeedbackv5-noteflyover-unhide-placeholder' => 'Show post note flyover panel - text area placeholder text',
+	'articlefeedbackv5-noteflyover-unhide-submit' => 'Show post note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-unhide-help' => 'Show post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-unhide-help-link' => 'Show post note flyover panel - link to the specific "unhide" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
+	'articlefeedbackv5-noteflyover-noaction-caption' => 'Mark as non-actionable post note flyover panel - panel caption',
+	'articlefeedbackv5-noteflyover-noaction-description' => '{{Optional}}
+Mark as non-actionable post note flyover panel - action description',
+	'articlefeedbackv5-noteflyover-noaction-label' => 'Mark as non-actionable post note flyover panel - text area label',
+	'articlefeedbackv5-noteflyover-noaction-placeholder' => 'Mark as non-actionable post note flyover panel - text area placeholder text',
+	'articlefeedbackv5-noteflyover-noaction-submit' => 'Mark as non-actionable post note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-noaction-help' => 'Mark as non-actionable post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-noaction-help-link' => 'Mark as non-actionable post note flyover panel - link to the specific "noaction" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
+	'articlefeedbackv5-noteflyover-unnoaction-caption' => 'Unmark as non-actionable post note flyover panel - panel caption',
+	'articlefeedbackv5-noteflyover-unnoaction-description' => 'Unmark as non-actionable post note flyover panel - action description',
+	'articlefeedbackv5-noteflyover-unnoaction-label' => 'Unmark as non-actionable post note flyover panel - text area label',
+	'articlefeedbackv5-noteflyover-unnoaction-placeholder' => 'Unmark as non-actionable post note flyover panel - text area placeholder text',
+	'articlefeedbackv5-noteflyover-unnoaction-submit' => 'Unmark as non-actionable post note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-unnoaction-help' => 'Unmark as non-actionable post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-unnoaction-help-link' => 'Unmark as non-actionable post note flyover panel - link to the specific "unnoaction" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
+	'articlefeedbackv5-noteflyover-request-caption' => 'Request oversight note flyover panel - panel caption (request oversight asks that an oversighter review the feedback item)',
+	'articlefeedbackv5-noteflyover-request-description' => 'Request oversight post note flyover panel - action description',
+	'articlefeedbackv5-noteflyover-request-label' => 'Request oversight note flyover panel - text area label (request oversight asks that an oversighter review the feedback item).
 *Apparently, the same as "oversight" in Oversight extension and "suppress" in MediaWiki core\'s revision deletion.
 
 Usual meaning of oversight in English is "regulatory supervision". Source: http://www.merriam-webster.com/dictionary/oversight',
-	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Request oversight note flyover panel - text area placeholder text (request oversight asks that an oversighter review the feedback item)',
-	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Request oversight note flyover panel - submit button text (request oversight asks that an oversighter review the feedback item)',
-	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Request oversight note flyover panel - help link text (request oversight asks that an oversighter review the feedback item)',
-	'articlefeedbackv5-noteflyover-requestoversight-help-link' => 'Request oversight note flyover panel - link to the specific "requestoversight" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
-	'articlefeedbackv5-noteflyover-unrequestoversight-caption' => 'Un-request oversight note flyover panel - panel caption (remove the request for an oversighter to review the feedback item)',
-	'articlefeedbackv5-noteflyover-unrequestoversight-description' => '{{Optional}}
-Un-request oversight post note flyover panel - action description',
-	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'Un-request oversight note flyover panel - text area label (remove the request for an oversighter to review the feedback item)',
-	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Un-request oversight note flyover panel - text area placeholder text (remove the request for an oversighter to review the feedback item)',
-	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Un-request oversight note flyover panel - submit button text (remove the request for an oversighter to review the feedback item)',
-	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Un-request oversight note flyover panel - help link text (remove the request for an oversighter to review the feedback item)',
-	'articlefeedbackv5-noteflyover-unrequestoversight-help-link' => 'Un-request oversight note flyover panel - link to the specific "unrequestoversight" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
+	'articlefeedbackv5-noteflyover-request-placeholder' => 'Request oversight note flyover panel - text area placeholder text (request oversight asks that an oversighter review the feedback item)',
+	'articlefeedbackv5-noteflyover-request-submit' => 'Request oversight note flyover panel - submit button text (request oversight asks that an oversighter review the feedback item)',
+	'articlefeedbackv5-noteflyover-request-help' => 'Request oversight note flyover panel - help link text (request oversight asks that an oversighter review the feedback item)',
+	'articlefeedbackv5-noteflyover-request-help-link' => 'Request oversight note flyover panel - link to the specific "request oversight" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
+	'articlefeedbackv5-noteflyover-unrequest-caption' => 'Un-request oversight note flyover panel - panel caption (remove the request for an oversighter to review the feedback item)',
+	'articlefeedbackv5-noteflyover-unrequest-description' => 'Un-request oversight post note flyover panel - action description',
+	'articlefeedbackv5-noteflyover-unrequest-label' => 'Un-request oversight note flyover panel - text area label (remove the request for an oversighter to review the feedback item)',
+	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Un-request oversight note flyover panel - text area placeholder text (remove the request for an oversighter to review the feedback item)',
+	'articlefeedbackv5-noteflyover-unrequest-submit' => 'Un-request oversight note flyover panel - submit button text (remove the request for an oversighter to review the feedback item)',
+	'articlefeedbackv5-noteflyover-unrequest-help' => 'Un-request oversight note flyover panel - help link text (remove the request for an oversighter to review the feedback item)',
+	'articlefeedbackv5-noteflyover-unrequest-help-link' => 'Un-request oversight note flyover panel - link to the specific "unrequest oversight" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-oversight-caption' => 'Oversight note flyover panel - panel caption (oversight means an oversighter deleted the feedback item)',
 	'articlefeedbackv5-noteflyover-oversight-description' => '{{Optional}}
 Oversight note flyover panel - action description',
@@ -1064,14 +1206,13 @@ Un-oversight note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Un-oversight note flyover panel - submit button text (unoversight means an oversighter un-deleted the feedback)',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Un-oversight note flyover panel - help link text (unoversight means an oversighter un-deleted the feedback)',
 	'articlefeedbackv5-noteflyover-unoversight-help-link' => 'Un-oversight note flyover panel - link to the specific "unoversight" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
-	'articlefeedbackv5-noteflyover-declineoversight-caption' => 'Decline oversight note flyover panel - panel caption (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
-	'articlefeedbackv5-noteflyover-declineoversight-description' => '{{Optional}}
-Decline oversight note flyover panel - action description',
-	'articlefeedbackv5-noteflyover-declineoversight-label' => 'Decline oversight note flyover panel - text area label (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
-	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'Decline oversight note flyover panel - text area placeholder text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
-	'articlefeedbackv5-noteflyover-declineoversight-submit' => 'Decline oversight note flyover panel - submit button text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
-	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Decline oversight note flyover panel - help link text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
-	'articlefeedbackv5-noteflyover-declineoversight-help-link' => 'Decline oversight note flyover panel - link to the specific "declineoversight" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
+	'articlefeedbackv5-noteflyover-decline-caption' => 'Decline oversight note flyover panel - panel caption (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
+	'articlefeedbackv5-noteflyover-decline-description' => 'Decline oversight note flyover panel - action description',
+	'articlefeedbackv5-noteflyover-decline-label' => 'Decline oversight note flyover panel - text area label (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
+	'articlefeedbackv5-noteflyover-decline-placeholder' => 'Decline oversight note flyover panel - text area placeholder text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
+	'articlefeedbackv5-noteflyover-decline-submit' => 'Decline oversight note flyover panel - submit button text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
+	'articlefeedbackv5-noteflyover-decline-help' => 'Decline oversight note flyover panel - help link text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
+	'articlefeedbackv5-noteflyover-decline-help-link' => 'Decline oversight note flyover panel - link to the specific "declineoversight" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-bucket1-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
 	'articlefeedbackv5-bucket1-question-toggle' => 'This is the question that appears before the yes/no buttons in option 1',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'The text for the yes button in option 1.
@@ -1166,18 +1307,6 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * <code>$3</code>: A link to the feedback
 * <code>$4</code>: The feedback\'s id
 * <code>$5</code>: A link to the article the feedback was posted to',
-	'logentry-articlefeedbackv5-hide' => "Log entry for when a user hides a feedback post:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer's id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback's id
-* <code>$5</code>: A link to the article the feedback was posted to",
-	'logentry-articlefeedbackv5-unhide' => "Log entry for when a user un-hides (shows) a feedback post:
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer's id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback's id
-* <code>$5</code>: A link to the article the feedback was posted to",
 	'logentry-articlefeedbackv5-decline' => "Log entry for when a user declines an oversight request on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
 * <code>$1</code>: A link to the performer
 * <code>$2</code>: The performer's id, gender support
@@ -1208,25 +1337,19 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * <code>$3</code>: A link to the feedback
 * <code>$4</code>: The feedback's id
 * <code>$5</code>: A link to the article the feedback was posted to",
-	'logentry-articlefeedbackv5-autohide' => "Log entry for when a feedback post is automatically hidden (e.g., when it gets too many abuse flags, or when oversight is requested; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
-* <code>$1</code>: A link to the performer
-* <code>$2</code>: The performer's id, gender support
-* <code>$3</code>: A link to the feedback
-* <code>$4</code>: The feedback's id
-* <code>$5</code>: A link to the article the feedback was posted to",
 	'logentry-articlefeedbackv5-autoflag' => "Log entry for when a feedback post is automatically flagged as abuse (e.g., by an abuse filter):
 * <code>$1</code>: A link to the performer
 * <code>$2</code>: The performer's id, gender support
 * <code>$3</code>: A link to the feedback
 * <code>$4</code>: The feedback's id
 * <code>$5</code>: A link to the article the feedback was posted to",
-	'logentry-articlefeedbackv5-feature' => "Log entry for when a feedback post is marked as featured:
+	'logentry-articlefeedbackv5-feature' => "Log entry for when a feedback post is marked as useful:
 * <code>$1</code>: A link to the performer
 * <code>$2</code>: The performer's id, gender support
 * <code>$3</code>: A link to the feedback
 * <code>$4</code>: The feedback's id
 * <code>$5</code>: A link to the article the feedback was posted to",
-	'logentry-articlefeedbackv5-unfeature' => "Log entry for when a feedback post is un-marked as featured:
+	'logentry-articlefeedbackv5-unfeature' => "Log entry for when a feedback post is un-marked as useful:
 * <code>$1</code>: A link to the performer
 * <code>$2</code>: The performer's id, gender support
 * <code>$3</code>: A link to the feedback
@@ -1239,6 +1362,36 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * <code>$4</code>: The feedback's id
 * <code>$5</code>: A link to the article the feedback was posted to",
 	'logentry-articlefeedbackv5-unresolve' => "Log entry for when a feedback post is un-markes as resolved:
+* <code>$1</code>: A link to the performer
+* <code>$2</code>: The performer's id, gender support
+* <code>$3</code>: A link to the feedback
+* <code>$4</code>: The feedback's id
+* <code>$5</code>: A link to the article the feedback was posted to",
+	'logentry-articlefeedbackv5-noaction' => "Log entry for when a feedback post is marked as non-actionable:
+* <code>$1</code>: A link to the performer
+* <code>$2</code>: The performer's id, gender support
+* <code>$3</code>: A link to the feedback
+* <code>$4</code>: The feedback's id
+* <code>$5</code>: A link to the article the feedback was posted to",
+	'logentry-articlefeedbackv5-unnoaction' => "Log entry for when a feedback post is un-markes as non-actionable:
+* <code>$1</code>: A link to the performer
+* <code>$2</code>: The performer's id, gender support
+* <code>$3</code>: A link to the feedback
+* <code>$4</code>: The feedback's id
+* <code>$5</code>: A link to the article the feedback was posted to",
+	'logentry-articlefeedbackv5-hide' => "Log entry for when a user markes a feedback post as inappropriate:
+* <code>$1</code>: A link to the performer
+* <code>$2</code>: The performer's id, gender support
+* <code>$3</code>: A link to the feedback
+* <code>$4</code>: The feedback's id
+* <code>$5</code>: A link to the article the feedback was posted to",
+	'logentry-articlefeedbackv5-unhide' => "Log entry for when a user un-markes a feedback post as inappropriate:
+* <code>$1</code>: A link to the performer
+* <code>$2</code>: The performer's id, gender support
+* <code>$3</code>: A link to the feedback
+* <code>$4</code>: The feedback's id
+* <code>$5</code>: A link to the article the feedback was posted to",
+	'logentry-articlefeedbackv5-autohide' => "Log entry for when a feedback post is automatically marked as inappropriate (e.g., when it gets too many abuse flags, or when oversight is requested; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page):
 * <code>$1</code>: A link to the performer
 * <code>$2</code>: The performer's id, gender support
 * <code>$3</code>: A link to the feedback
@@ -1302,13 +1455,6 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * $4 is the date the action was performed
 * $5 is the time the action was performed
 * $6 is the user name (gender support)',
-	'articlefeedbackv5-activity-item-hide' => 'Activity log entry when feedback was hidden
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-flag' => 'Activity log entry when feedback was flagged as abusive
 * $1 is a link to the user who performed the action
 * $2 is the informational comment left upon performing the action
@@ -1316,21 +1462,7 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * $4 is the date the action was performed
 * $5 is the time the action was performed
 * $6 is the user name (gender support)',
-	'articlefeedbackv5-activity-item-autohide' => 'Activity log entry when feedback was autohidden
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
 	'articlefeedbackv5-activity-item-autoflag' => 'Activity log entry when feedback was autoflagged as abusive
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
-	'articlefeedbackv5-activity-item-unhide' => 'Activity log entry when feedback was un-hidden
 * $1 is a link to the user who performed the action
 * $2 is the informational comment left upon performing the action
 * $3 is the date & time the action was performed
@@ -1358,28 +1490,63 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * $4 is the date the action was performed
 * $5 is the time the action was performed
 * $6 is the user name (gender support)',
-	'articlefeedbackv5-activity-item-resolve' => 'Activity log entry when feedback was resolved
+	'articlefeedbackv5-activity-item-feature' => 'Activity log entry when feedback was marked as useful
 * $1 is a link to the user who performed the action
 * $2 is the informational comment left upon performing the action
 * $3 is the date & time the action was performed
 * $4 is the date the action was performed
 * $5 is the time the action was performed
 * $6 is the user name (gender support)',
-	'articlefeedbackv5-activity-item-unresolve' => 'Activity log entry when feedback was unresolved
+	'articlefeedbackv5-activity-item-unfeature' => 'Activity log entry when feedback was unmarked as useful
 * $1 is a link to the user who performed the action
 * $2 is the informational comment left upon performing the action
 * $3 is the date & time the action was performed
 * $4 is the date the action was performed
 * $5 is the time the action was performed
 * $6 is the user name (gender support)',
-	'articlefeedbackv5-activity-item-feature' => 'Activity log entry when feedback was featured
+	'articlefeedbackv5-activity-item-resolve' => 'Activity log entry when feedback was marked as resolved
 * $1 is a link to the user who performed the action
 * $2 is the informational comment left upon performing the action
 * $3 is the date & time the action was performed
 * $4 is the date the action was performed
 * $5 is the time the action was performed
 * $6 is the user name (gender support)',
-	'articlefeedbackv5-activity-item-unfeature' => 'Activity log entry when feedback was unfeatured
+	'articlefeedbackv5-activity-item-unresolve' => 'Activity log entry when feedback was un-marked as resolved
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-noaction' => 'Activity log entry when feedback was marked as non-actionable
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-unnoaction' => 'Activity log entry when feedback was un-marked as non-actionable
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-hide' => 'Activity log entry when feedback was marked as inappropriate
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-unhide' => 'Activity log entry when feedback was un-marked as inappropriate
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)',
+	'articlefeedbackv5-activity-item-autohide' => 'Activity log entry when feedback was auto-marked as inappropriate
 * $1 is a link to the user who performed the action
 * $2 is the informational comment left upon performing the action
 * $3 is the date & time the action was performed
@@ -1451,8 +1618,8 @@ It must be: {{msg-mw|mypreferences}} > {{msg-mw|prefs-rendering}}',
 	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'The note to add to the activity log when auto-flagging a new feedback post as abuse (<code>$1</code> is the name of the filter)',
 	'abusefilter-edit-action-aftv5hide' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in the feedback being auto-hidden',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'The note to add to the activity log when auto-hiding a new feedback post (<code>$1</code> is the name of the filter)',
-	'abusefilter-edit-action-aftv5requestoversight' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in oversight being automatically requested for the feedback',
-	'articlefeedbackv5-abusefilter-note-aftv5requestoversight' => 'The note to add to the activity log when automatically requesting oversight for a new feedback post (<code>$1</code> is the name of the filter)',
+	'abusefilter-edit-action-aftv5request' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in oversight being automatically requested for the feedback',
+	'articlefeedbackv5-abusefilter-note-aftv5request' => 'The note to add to the activity log when automatically requesting oversight for a new feedback post (<code>$1</code> is the name of the filter)',
 );
 
 /** Afrikaans (Afrikaans)

@@ -57,11 +57,13 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			}
 		}
 
+		$filterCount = ArticleFeedbackv5Model::getCount( 'featured', $params['pageid'] );
 		$totalCount = ArticleFeedbackv5Model::getCount( '*', $params['pageid'] );
 
 		// Add metadata
 		$result->addValue( $this->getModuleName(), 'length', $length );
 		$result->addValue( $this->getModuleName(), 'count', $totalCount );
+		$result->addValue( $this->getModuleName(), 'filtercount', $filterCount );
 		$result->addValue( $this->getModuleName(), 'offset', $records ? $records->nextOffset() : 0 );
 		$result->addValue( $this->getModuleName(), 'more', $records ? $records->hasMore() : false );
 		$result->addValue( $this->getModuleName(), 'feedback', $html );
