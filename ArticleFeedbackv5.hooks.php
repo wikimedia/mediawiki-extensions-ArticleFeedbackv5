@@ -7,7 +7,6 @@
  */
 
 class ArticleFeedbackv5Hooks {
-
 	/**
 	 * LoadExtensionSchemaUpdates hook
 	 *
@@ -16,21 +15,17 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function loadExtensionSchemaUpdates( $updater = null ) {
-		$updater->addExtensionUpdate( array(
-			'addTable',
+		$updater->addExtensionTable(
 			'aft_feedback',
-			dirname( __FILE__ ) . '/sql/ArticleFeedbackv5.sql',
-			true
-		) );
+			dirname( __FILE__ ) . '/sql/ArticleFeedbackv5.sql'
+		);
 
 		// old schema support
 		if ( $updater->getDB()->tableExists( 'aft_article_feedback' ) ) {
-			$updater->addExtensionUpdate( array(
-				'addTable',
+			$updater->addExtensionTable(
 				'aft_article_answer_text',
-				dirname( __FILE__ ) . '/sql/offload_large_feedback.sql',
-				true
-			) );
+				dirname( __FILE__ ) . '/sql/offload_large_feedback.sql'
+			);
 
 			$updater->addExtensionIndex(
 				'aft_article_feedback',
@@ -56,6 +51,12 @@ class ArticleFeedbackv5Hooks {
 			 * (you don't have to delete it), you can run sql/remove_legacy.sql
 			 */
 		}
+
+		$updater->addExtensionField(
+			'aft_feedback',
+			'aft_noaction',
+			dirname( __FILE__ ) . '/sql/noaction.sql'
+		);
 
 		return true;
 	}
@@ -121,7 +122,7 @@ class ArticleFeedbackv5Hooks {
 			elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
 				if ( $user->getId() ) {
 					$records = ArticleFeedbackv5Model::getWatchlistList(
-						'visible-relevant',
+						'unreviewed',
 						$user
 					);
 

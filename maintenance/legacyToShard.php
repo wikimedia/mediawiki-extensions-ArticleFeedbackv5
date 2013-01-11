@@ -233,23 +233,6 @@ class ArticleFeedbackv5_LegacyToShard extends Maintenance {
 							$feedback->aft_autohide = 0;
 						}
 						break;
-					case 'hidden':
-					case 'hide':
-						$feedback->aft_hide = 1;
-						break;
-					case 'autohide':
-						$feedback->aft_hide = 1;
-						$feedback->aft_autohide = 1;
-						break;
-					case 'unhidden':
-					case 'unhide':
-						$feedback->aft_hide = 0;
-						$feedback->aft_autohide = 0;
-						if ( $feedback->aft_flag && $feedback->aft_autoflag ) {
-							$feedback->aft_autoflag = 0;
-							$feedback->aft_flag = 0;
-						}
-						break;
 					case 'flag':
 					case 'autoflag':
 						$feedback->{"aft_$log->log_action"}++;
@@ -270,6 +253,9 @@ class ArticleFeedbackv5_LegacyToShard extends Maintenance {
 						break;
 					case 'feature':
 						$feedback->aft_feature = 1;
+						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_hide = 0;
 						if ( $feedback->aft_flag && $feedback->aft_autoflag ) {
 							$feedback->aft_autoflag = 0;
 							$feedback->aft_flag = 0;
@@ -277,12 +263,59 @@ class ArticleFeedbackv5_LegacyToShard extends Maintenance {
 						break;
 					case 'unfeature':
 						$feedback->aft_feature = 0;
+						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_hide = 0;
 						break;
 					case 'resolve':
+						$feedback->aft_feature = 0;
 						$feedback->aft_resolve = 1;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_hide = 0;
 						break;
 					case 'unresolve':
+						$feedback->aft_feature = 0;
 						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_hide = 0;
+						break;
+					case 'noaction':
+						$feedback->aft_feature = 0;
+						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 1;
+						$feedback->aft_hide = 0;
+						break;
+					case 'unnoaction':
+						$feedback->aft_feature = 0;
+						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_hide = 0;
+						break;
+					case 'hidden':
+					case 'hide':
+						$feedback->aft_feature = 0;
+						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_hide = 1;
+						break;
+					case 'autohide':
+						$feedback->aft_feature = 0;
+						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_hide = 1;
+						$feedback->aft_autohide = 1;
+						break;
+					case 'unhidden':
+					case 'unhide':
+						$feedback->aft_feature = 0;
+						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_hide = 0;
+						$feedback->aft_autohide = 0;
+						if ( $feedback->aft_flag && $feedback->aft_autoflag ) {
+							$feedback->aft_autoflag = 0;
+							$feedback->aft_flag = 0;
+						}
 						break;
 					case 'helpful':
 						$feedback->aft_helpful++;

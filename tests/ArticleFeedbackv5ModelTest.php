@@ -112,14 +112,14 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 
 		// 1st batch
 		$offset = 0;
-		$list = ArticleFeedbackv5Model::getList( 'visible', null, $offset, 'age', 'ASC' );
+		$list = ArticleFeedbackv5Model::getList( 'allcomment', null, $offset, 'age', 'ASC' );
 		$this->assertEquals( $list->numRows(), ArticleFeedbackv5Model::LIST_LIMIT );
 		$first = $list->fetchObject();
 		$this->assertEquals( $first->aft_comment, 'Test feedback entry #1' );
 
 		// 2nd batch
 		$offset = $list->nextOffset();
-		$list = ArticleFeedbackv5Model::getList( 'visible', null, $offset, 'age', 'ASC' );
+		$list = ArticleFeedbackv5Model::getList( 'allcomment', null, $offset, 'age', 'ASC' );
 		$this->assertEquals( $list->numRows(), round( $size * $probability - ArticleFeedbackv5Model::LIST_LIMIT ) );
 		$first = $list->fetchObject();
 		$this->assertEquals( $first->aft_comment, 'Test feedback entry #101' );
@@ -137,6 +137,6 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 			$sample->insert();
 		}
 
-		$this->assertEquals( ArticleFeedbackv5Model::getCount( 'visible', null ), $size * $probability );
+		$this->assertEquals( ArticleFeedbackv5Model::getCount( 'allcomment', null ), $size * $probability );
 	}
 }
