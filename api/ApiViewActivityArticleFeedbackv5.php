@@ -253,4 +253,3 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-
