@@ -110,7 +110,7 @@ class ArticleFeedbackv5Render {
 		if ( $record->isResolved() ) {
 			$topClass .= ' articleFeedbackv5-feedback-resolve';
 		}
-		if ( !$this->hasToolbox() ) {
+		if ( !$toolbox ) {
 			$topClass .= ' articleFeedbackv5-comment-notoolbox';
 		}
 		if ( $this->isPermalink ) {
@@ -567,7 +567,9 @@ class ArticleFeedbackv5Render {
 					'a',
 					array(
 						'id'    => "articleFeedbackv5-helpful-link-$id",
-						'class' => 'articleFeedbackv5-helpful-link'
+						'class' => 'articleFeedbackv5-helpful-link',
+						'href' => '#',
+						'data-action' => 'helpful'
 					),
 					wfMessage( 'articlefeedbackv5-form-helpful-yes-label' )->text()
 				) .
@@ -575,7 +577,9 @@ class ArticleFeedbackv5Render {
 					'a',
 					array(
 						'id'    => "articleFeedbackv5-unhelpful-link-$id",
-						'class' => 'articleFeedbackv5-unhelpful-link'
+						'class' => 'articleFeedbackv5-unhelpful-link',
+						'href' => '#',
+						'data-action' => 'unhelpful'
 					),
 					wfMessage( 'articlefeedbackv5-form-helpful-no-label' )->text()
 				);
@@ -638,8 +642,7 @@ class ArticleFeedbackv5Render {
 						'span',
 						array(
 							'id'    => "articleFeedbackv5-abuse-count-$id",
-							'class' => $aclass,
-							'href'  => '#',
+							'class' => $aclass
 						),
 						wfMessage(
 							'articlefeedbackv5-form-abuse-count',
@@ -655,9 +658,10 @@ class ArticleFeedbackv5Render {
 					Html::element(
 						'a',
 						array(
-							'id'    => "articleFeedbackv5-abuse-link-$id",
-							'class' => 'articleFeedbackv5-abuse-link',
-							'href'  => '#',
+							'id'    => "articleFeedbackv5-flag-link-$id",
+							'class' => 'articleFeedbackv5-flag-link',
+							'href' => '#',
+							'data-action' => 'flag'
 						),
 						wfMessage(
 							'articlefeedbackv5-form-abuse',
@@ -675,15 +679,9 @@ class ArticleFeedbackv5Render {
 			// Message can be:
 			//  * articlefeedbackv5-form-(hide|unhide)[-own]
 			if ( $this->feedback->isHidden() ) {
-				$msg = 'unhide';
-				$class = 'show';
+				$action = 'unhide';
 			} else {
-				$msg = 'hide';
-				$class = 'hide';
-			}
-			// change message for own feedback
-			if ( $ownFeedback ) {
-				$msg .= '-own';
+				$action = 'hide';
 			}
 
 			$hideLink =
@@ -693,11 +691,12 @@ class ArticleFeedbackv5Render {
 					Html::element(
 						'a',
 						array(
-							'id'    => "articleFeedbackv5-$class-link-$id",
-							'class' => "articleFeedbackv5-$class-link",
+							'id'    => "articleFeedbackv5-$action-link-$id",
+							'class' => "articleFeedbackv5-$action-link",
 							'href' => '#',
+							'data-action' => $action,
 						),
-						wfMessage( "articlefeedbackv5-form-" . $msg )->text()
+						wfMessage( "articlefeedbackv5-form-$action-own" )->text()
 					)
 				);
 		}
@@ -732,6 +731,8 @@ class ArticleFeedbackv5Render {
 			$status = 'resolve';
 		} elseif ( $record->isFeatured() ) {
 			$status = 'feature';
+		} elseif ( $record->isNonActionable() ) {
+			$status = 'noaction';
 		} else {
 			return '';
 		}
@@ -756,236 +757,122 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered toolbox
 	 */
 	private function renderToolbox( $record ) {
-		global $wgUser;
-
-		// Don't render the toolbox if they can't do anything with it.
-		if ( !$this->hasToolbox() ) {
+		// don't render the toolbox if they can't do anything with it.
+		if ( !$this->isAllowed( 'aft-editor' ) ) {
 			return '';
 		}
 
-		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record );
+		$toolbox = '';
 
-		$id = $record->aft_id;
-
-		$toolsFeature = '';
-		$toolsDelete = '';
-		$toolsActivity = '';
-
-		// Feature/unfeature and mark/unmark resolved (for posts other than your own)
-		if ( $this->isAllowed( 'aft-editor' ) && !$ownFeedback && !$record->isHidden() && !$record->isOversighted() ) {
-			// Message can be:
-			//  * articlefeedbackv5-form-feature
-			//  * articlefeedbackv5-form-unfeature
-			if ( $record->isFeatured() ) {
-				$msg = 'unfeature';
-				$class = 'unfeature';
-			} else {
-				$msg = 'feature';
-				$class = 'feature';
-			}
-
-			$toolsFeature =
+		// no editor-action has yet been performed, show tools
+		if ( !$record->isFeatured() && !$record->isResolved() && !$record->isNonActionable() && !$record->isHidden() && !$record->isOversighted() ) {
+			$toolbox .=
 				Html::rawElement(
-					'li',
-					array(),
-					Html::element(
-						'a',
-						array(
-							'id'    => "articleFeedbackv5-$class-link-$id",
-							'class' => "articleFeedbackv5-$class-link",
-							'href' => '#'
-						),
-						wfMessage( "articlefeedbackv5-form-$msg" )->text()
-					)
-				);
+					'ul',
+					array( 'id' => "articleFeedbackv5-feedback-tools-list-$record->aft_id" ),
+					$this->buildToolboxLink( $record, 'feature' ) .
+					$this->buildToolboxLink( $record, 'resolve' ) .
+					$this->buildToolboxLink( $record, 'noaction' ) .
+					$this->buildToolboxLink( $record, 'hide' )
+			);
 
-			// Message can be:
-			//  * articlefeedbackv5-form-resolve
-			//  * articlefeedbackv5-form-unresolve
-			if ( $record->isResolved() ) {
-				$type = 'unresolve';
-			} else {
-				$type = 'resolve';
-			}
+		// editor-action already performed; display "undo" + details
+		} else {
+			// get details on last editor action
+			$last = $record->getLastEditorActivity( $record );
 
-			$toolsFeature .=
-				Html::rawElement(
-					'li',
-					array(),
-					Html::element(
-						'a',
-						array(
-							'id'    => "articleFeedbackv5-$type-link-$id",
-							'class' => "articleFeedbackv5-$type-link",
-							'href' => '#'
-						),
-						wfMessage( "articlefeedbackv5-form-$type" )->text()
-					)
-				);
-		}
+			// it shouldn't even be possible that $last contains nothing, but hey
+			if ( $last ) {
+				$tools = '';
 
-		// Hide/unhide - either for people with hide-permissions, or when we're
-		// certain that the feedback was posted by the current user
-		if ( $this->isAllowed( 'aft-monitor' ) || ( $wgUser->getId() && $wgUser->getId() == intval( $record->aft_user ) ) ) {
-			// Message can be:
-			//  * articlefeedbackv5-form-(hide|unhide)[-own]
-			if ( $record->isHidden() ) {
-				$msg = 'unhide';
-				$class = 'show';
-			} else {
-				$msg = 'hide';
-				$class = 'hide';
-			}
-			// change message for own feedback
-			if ( $ownFeedback ) {
-				$msg .= '-own';
-			}
-
-			$toolsDelete .=
-				Html::rawElement(
-					'li',
-					array(),
-					Html::element(
-						'a',
-						array(
-							'id'    => "articleFeedbackv5-$class-link-$id",
-							'class' => "articleFeedbackv5-$class-link",
-							'href' => '#'
-						),
-						wfMessage( "articlefeedbackv5-form-$msg" )->text()
-					)
-				);
-		}
-
-		// Request oversight
-		if ( $this->isAllowed( 'aft-monitor' ) && !$this->isAllowed( 'aft-oversighter' ) ) {
-			// Message can be:
-			//  * articlefeedbackv5-form-oversight
-			//  * articlefeedbackv5-form-unoversight
-			if ( $record->aft_request > 0 ) {
-				$msg = 'unoversight';
-				$class = 'unrequestoversight';
-			} else {
-				$msg = 'oversight';
-				$class = 'requestoversight';
-			}
-
-			$toolsDelete .=
-				Html::rawElement(
-					'li',
-					array(),
-					Html::element(
-						'a',
-						array(
-							'id'    => "articleFeedbackv5-$class-link-$id",
-							'class' => "articleFeedbackv5-$class-link",
-							'href' => '#'
-						),
-						wfMessage( "articlefeedbackv5-form-$msg" )->text()
-					)
-				);
-		}
-
-		// Delete (a.k.a. oversight)
-		if ( $this->isAllowed( 'aft-oversighter' ) ) {
-			if ( $record->isRequested() || $record->isDeclined() ) {
-				$class = 'articleFeedbackv5-declineoversight-link';
-				$message = wfMessage( "articlefeedbackv5-form-decline" )->text();
-				if ( $record->isDeclined() ) {
-					$message = wfMessage( "articlefeedbackv5-form-declined" )->text();
-					$class .= ' inactive';
+				// don't add editor-action undo possibility if post has been oversighted (that would no longer make sense...)
+				if ( !$record->isOversighted() ) {
+					// undo-link
+					$tools .= $this->buildToolboxLink( $record, "un$last->log_action" );
 				}
 
-				$toolsDelete .= Html::rawElement(
-					'li',
-					array(),
-					Html::element(
-						'a',
-						array(
-							'id'    => "articleFeedbackv5-declineoversight-link-$id",
-							'class' => $class,
-							'href' => '#'
-						),
-						$message
-					)
-				);
+				// build oversight-related tools
+				if ( $record->isHidden() ) {
+					// only show "request oversight" to those who don't have permissions to oversight themselves
+					if ( $this->isAllowed( 'aft-monitor' ) && !$this->isAllowed( 'aft-oversighter' ) ) {
+						/*
+						 * When requested by this user already, it will be transformed into an unrequest
+						 * link through JS. When the request has been declined already, add a class to
+						 * make sure this user knows about it & is no longer capable to request for this entry.
+						 */
+						$class = $record->isDeclined() ? 'inactive' : '';
+						$tools .= $this->buildToolboxLink( $record, 'request', $class );
+					}
+
+					if ( $this->isAllowed( 'aft-oversighter' ) ) {
+						if ( $record->isOversighted() ) {
+							$tools .= $this->buildToolboxLink( $record, 'unoversight' );
+						} else {
+							if ( $record->isRequested() || $record->isDeclined() ) {
+								$class = $record->isDeclined() ? 'inactive' : '';
+								$tools .= $this->buildToolboxLink( $record, 'decline', $class );
+							}
+							$tools .= $this->buildToolboxLink( $record, 'oversight' );
+						}
+					}
+				}
+
+				// if current user is the one who performed the action, add a link to
+				// leave a note to clarify why the action was performed
+				$commentLink = '';
+				if ( $last->log_user && $last->log_user == $this->user->getId() && $last->log_comment == '' ) {
+					$commentLink .=
+						Html::element(
+							'a',
+							array(
+								'id' => "articleFeedbackv5-note-link-$record->aft_id",
+								'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-note-link', // tipsy for given data-action will be loaded when clicked
+								'href' => '#',
+								'data-action' => $last->log_action,
+								'data-log-id' => $last->log_id,
+							),
+							wfMessage( 'articlefeedbackv5-form-note' )->text()
+						);
+				}
+
+				$toolbox .=
+					// performer/action info
+					Html::rawElement(
+						'div',
+						array( 'class' => "articleFeedbackv5-feedback-tools-details" ),
+
+						// performer/action info
+						Html::rawElement(
+							'p',
+							array( 'class' => "articleFeedbackv5-activity-short-status" ),
+							wfMessage( "articlefeedbackv5-short-status-$last->log_action" )
+								->rawParams( ArticleFeedbackv5Utils::getUserLink( $last->log_user, $last->log_user_text ) )
+								->parse()
+						) .
+
+						// link for activity log popup
+						Html::element(
+							'a',
+							array(
+								'id' => "articleFeedbackv5-activity-link-$record->aft_id",
+								'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-activity-link'.( $last->log_comment ? '' : ' activity-empty' ), // tipsy for given data-action will be loaded when clicked
+								'href' => '#',
+								'data-action' => 'activity',
+							),
+							wfMessage( "articlefeedbackv5-viewactivity".( $last->log_comment ? '' : '-empty' ) )->text()
+						) .
+
+						// link to add comment
+						$commentLink .
+
+						// tools (undo & possibly oversight-related actions)
+						Html::rawElement(
+							'ul',
+							array( 'id' => "articleFeedbackv5-feedback-tools-list-$record->aft_id" ),
+							$tools
+						)
+					);
 			}
-
-			// Message can be:
-			//  * articlefeedbackv5-form-delete
-			//  * articlefeedbackv5-form-undelete
-			if ( $record->isOversighted() ) {
-				$msg = 'undelete';
-				$class = 'unoversight';
-			} else {
-				$msg = 'delete';
-				$class = 'oversight';
-			}
-
-			$toolsDelete .=
-				Html::rawElement(
-					'li',
-					array(),
-					Html::element(
-						'a',
-						array(
-							'id'    => "articleFeedbackv5-$class-link-$id",
-							'class' => "articleFeedbackv5-$class-link",
-							'href' => '#'
-						),
-						wfMessage( "articlefeedbackv5-form-$msg" )->text()
-					)
-				);
-		}
-
-		// View Activity
-		if ( $this->isAllowed( 'aft-editor' ) ) {
-			// if no activity has been logged yet, add the "inactive" class so we can display it accordingly
-			$activityClass = "articleFeedbackv5-activity-link";
-			if ( ArticleFeedbackv5Activity::getActivityCount( $record ) < 1 ) {
-				$activityClass .= " inactive";
-			}
-
-			$toolsActivity.=
-				Html::rawElement(
-					'li',
-					array(),
-					Html::element(
-						'a',
-						array(
-							'id'    => "articleFeedbackv5-activity-link-$id",
-							'class' => $activityClass,
-							'href' => '#'
-						),
-						wfMessage( "articlefeedbackv5-viewactivity" )->text()
-					)
-				);
-		}
-
-		// create containers for 3 toolbox-groups
-		if ( $toolsFeature ) {
-			$toolsFeature =
-				Html::rawElement(
-					'li',
-					array( 'class' => 'tools_feature' ),
-					Html::rawElement( 'ul', array(), $toolsFeature )
-				);
-		}
-		if ( $toolsDelete ) {
-			$toolsDelete =
-				Html::rawElement(
-					'li',
-					array( 'class' => 'tools_delete' ),
-					Html::rawElement( 'ul', array(), $toolsDelete )
-				);
-		}
-		if ( $toolsActivity ) {
-			$toolsActivity =
-				Html::rawElement(
-					'li',
-					array( 'class' => 'tools_activity' ),
-					Html::rawElement( 'ul', array(), $toolsActivity )
-				);
 		}
 
 		return
@@ -993,13 +880,9 @@ class ArticleFeedbackv5Render {
 				'div',
 				array(
 					'class' => 'articleFeedbackv5-feedback-tools',
-					'id'    => "articleFeedbackv5-feedback-tools-$id"
+					'id'    => "articleFeedbackv5-feedback-tools-$record->aft_id"
 				),
-				Html::rawElement(
-					'ul',
-					array( 'id' => "articleFeedbackv5-feedback-tools-list-$id" ),
-					$toolsFeature . $toolsDelete . $toolsActivity
-				)
+				$toolbox
 			);
 	}
 
@@ -1153,7 +1036,8 @@ class ArticleFeedbackv5Render {
 						'a',
 						array(
 							'href'  => '#',
-							'class' => 'articleFeedbackv5-activity2-link'
+							'class' => 'articleFeedbackv5-activity2-link', // tipsy for given data-action will be loaded when clicked
+							'data-action' => 'activity2'
 						),
 						wfMessage( 'articlefeedbackv5-permalink-activity-more' )->escaped()
 					)
@@ -1215,6 +1099,38 @@ class ArticleFeedbackv5Render {
 	}
 
 	/**
+	 * Will build the link to perform a certain action
+	 *
+	 * @param ArticleFeedbackv5Model $record
+	 * @param string $action
+	 * @param string[optional] $class Additional class to add
+	 * @return string
+	 */
+	private function buildToolboxLink( $record, $action, $class = '' ) {
+		// check if user is allowed to perform this action
+		if ( !isset( ArticleFeedbackv5Activity::$actions[$action] ) ||
+			ArticleFeedbackv5Utils::isOwnFeedback( $record ) ||
+			!ArticleFeedbackv5Activity::canPerformAction( $action, $this->user ) ) {
+			return '';
+		}
+
+		return Html::rawElement(
+			'li',
+			array(),
+			Html::element(
+				'a',
+				array(
+					'id' => "articleFeedbackv5-$action-link-$record->aft_id",
+					'class' => "articleFeedbackv5-$action-link $class",
+					'href' => '#',
+					'data-action' => $action,
+				),
+				wfMessage( "articlefeedbackv5-form-$action" )->text()
+			)
+		);
+	}
+
+	/**
 	 * @param ArticleFeedbackv5Model $record
 	 * @return ResultWrapper|bool
 	 */
@@ -1223,17 +1139,6 @@ class ArticleFeedbackv5Render {
 			return $last;
 		}
 		return false;
-	}
-
-	/**
-	 * Returns whether this thing has a toolbox
-	 *
-	 * @return bool
-	 */
-	public function hasToolbox() {
-		return $this->isAllowed( 'aft-editor' ) ||
-			$this->isAllowed( 'aft-monitor' ) ||
-			$this->isAllowed( 'aft-oversighter' );
 	}
 
 	/**
