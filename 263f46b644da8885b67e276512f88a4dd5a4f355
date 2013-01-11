@@ -16,6 +16,24 @@
       "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADg3///K4\u003d",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-01-11T13:39:00Z",
+      "side": 0,
+      "message": "The message is still there, just got moved to L644",
+      "parentUuid": "AAADg3///QY\u003d",
+      "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
