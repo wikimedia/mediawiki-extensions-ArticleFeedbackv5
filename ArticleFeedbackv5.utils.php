@@ -149,7 +149,7 @@ class ArticleFeedbackv5Utils {
 	 * @return int        the percentage
 	 */
 	public static function percentHelpful( $helpful, $unhelpful ) {
-		if ( $helpful > 0 || $unhelpful > 0 ) {
+		if ( $helpful + $unhelpful != 0 ) {
 			return intval( ( $helpful / ( $helpful + $unhelpful ) ) * 100 );
 		}
 		return 0;
@@ -257,7 +257,7 @@ class ArticleFeedbackv5Utils {
 
 				$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $callback;
 				$wgAbuseFilterCustomActionsHandlers['aftv5hide'] = $callback;
-				$wgAbuseFilterCustomActionsHandlers['aftv5requestoversight'] = $callback;
+				$wgAbuseFilterCustomActionsHandlers['aftv5request'] = $callback;
 			}
 
 			// Check the filters (mimics AbuseFilter::filterAction)
