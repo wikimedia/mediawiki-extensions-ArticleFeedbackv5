@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADg3///Pc\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-01-11T10:33:51Z",
+      "side": 1,
+      "message": "Please change commit summary to match guidelines:\n\n(bug 43419) Remove reader tools for editors in feedback page\n\nSee http://www.mediawiki.org/wiki/Git/Commit_message_guidelines for details.",
+      "revId": "c1667681fd31e2b7a80084d4f1e7c737f4c13bb4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
