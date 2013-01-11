@@ -38,6 +38,7 @@ class ArticleFeedbackv5Model extends DataModel {
 		$aft_autoflag = 0,
 		$aft_feature = 0,
 		$aft_resolve = 0,
+		$aft_noaction = 0,
 		$aft_helpful = 0,
 		$aft_unhelpful = 0,
 
@@ -87,67 +88,71 @@ class ArticleFeedbackv5Model extends DataModel {
 		),
 
 		// reader lists
-		'visible-relevant' => array(
+		'featured' => array(
 			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_hide <= 0', 'aft_has_comment = 1', 'aft_relevance_score > -5' ), // -5 here is $wgArticleFeedbackv5Cutoff
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_net_helpful > 0 OR aft_feature = 1' ),
 		),
-		'visible-featured' => array(
+		'unreviewed' => array(
 			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_hide <= 0', 'aft_has_comment = 1', 'aft_feature > 0' ),
-		),
-		'visible-helpful' => array(
-			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_hide <= 0', 'aft_has_comment = 1', 'aft_net_helpful > 0' ),
-		),
-		'visible' => array(
-			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_hide <= 0', 'aft_has_comment = 1' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_feature = 0', 'aft_resolve = 0', 'aft_noaction = 0' ),
 		),
 
 		// editor lists
-		'visible-unhelpful' => array(
+		'helpful' => array(
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_hide <= 0', 'aft_has_comment = 1', 'aft_net_helpful < 0' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_net_helpful > 0' ),
 		),
-		'visible-abusive' => array(
+		'unhelpful' => array(
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_hide <= 0', 'aft_has_comment = 1', 'aft_flag > 0' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_net_helpful < 0' ),
 		),
-		'visible-resolved' => array(
+		'flagged' => array(
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_hide <= 0', 'aft_has_comment = 1', 'aft_resolve > 0' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_flag > 0' ),
 		),
-		'visible-unresolved' => array(
-			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_hide <= 0', 'aft_has_comment = 1', 'aft_resolve <= 0' ),
+		'useful' => array(
+			'permissions' => 'aft-editor',
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_feature = 1' ),
+		),
+		'resolved' => array(
+			'permissions' => 'aft-editor',
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_resolve = 1' ),
+		),
+		'noaction' => array(
+			'permissions' => 'aft-editor',
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_noaction = 1' ),
+		),
+		'inappropriate' => array(
+			'permissions' => 'aft-editor2', // other permission level makes it possible to separate from general public view
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 1' ),
+		),
+//		'archived' => array(
+//			'permissions' => 'aft-editor',
+//			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0' ), // @todo: work on this one ...
+//		),
+		'allcomment' => array(
+			'permissions' => 'aft-editor',
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0' ),
 		),
 
 		// monitor lists
-		'notdeleted-hidden' => array(
+		'requested' => array(
 			'permissions' => 'aft-monitor',
-			'conditions' => array( 'aft_oversight <= 0', 'aft_has_comment = 1', 'aft_hide > 0' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_request = 1' ),
 		),
-		'notdeleted-declined' => array(
-			'permissions' => 'aft-monitor',
-			'conditions' => array( 'aft_oversight <= 0', 'aft_has_comment = 1', 'aft_decline > 0' ),
-		),
-		'notdeleted' => array(
-			'permissions' => 'aft-monitor',
-			'conditions' => array( 'aft_oversight <= 0', 'aft_has_comment = 1' ),
+		'declined' => array(
+			'permissions' => 'aft-oversighter',
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_request = 1', 'aft_decline = 1' ),
 		),
 
 		// oversighter lists
-		'notdeleted-requested' => array(
+		'oversighted' => array(
 			'permissions' => 'aft-oversighter',
-			'conditions' => array( 'aft_oversight <= 0', 'aft_has_comment = 1', 'aft_request > 0' ),
-		),
-		'all-oversighted' => array(
-			'permissions' => 'aft-oversighter',
-			'conditions' => array( 'aft_oversight > 0', 'aft_has_comment = 1' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 1' ),
 		),
 		'all' => array(
 			'permissions' => 'aft-oversighter',
-			'conditions' => array( 'aft_has_comment = 1' ),
+			'conditions' => array(),
 		)
 	);
 
@@ -485,9 +490,35 @@ class ArticleFeedbackv5Model extends DataModel {
 		 * unchanged, which will result in MySQL padding them to 32 length
 		 * with null-bytes. We obviously want to strip these.
 		 */
-		$this->{static::getIdColumn()} = trim( $this->{static::getIdColumn()}, chr(0) );
+		$this->{static::getIdColumn()} = trim( $this->{static::getIdColumn()}, chr( 0 ) );
 
 		return $this;
+	}
+
+	/**
+	 * Will fetch a couple of items (from DB) and cache them.
+	 *
+	 * Fetching & caching as much as (useful) entries as possible will result
+	 * in more efficient (fewer) queries to the backend.
+	 *
+	 * @param array $entries Array of items to be preloaded, in [id] => [shard] format
+	 */
+	public static function preload( array $entries ) {
+		parent::preload( $entries );
+
+		/*
+		 * Only editors will have the detailed toolbox, so only for editors,
+		 * we'll need to know the details of the last editor activity.
+		 * Readers will almost never need these details (apart from when
+		 * visiting the permalink of a hidden post, in which case the mask
+		 * will display details of when the post was hidden), so abstain
+		 * from preloading this data.
+		 */
+		global $wgUser;
+		if ( $wgUser->isAllowed( 'aft-editor' ) ) {
+			// load editor activity for all requested entries
+			ArticleFeedbackv5Activity::getLastEditorActivity( $entries );
+		}
 	}
 
 	/**
@@ -548,6 +579,22 @@ class ArticleFeedbackv5Model extends DataModel {
 	 */
 
 	/**
+	 * Get an entry's last editor activity
+	 *
+	 * @return stdClass|null
+	 */
+	public function getLastEditorActivity() {
+		$activity = false;
+
+		$activities = ArticleFeedbackv5Activity::getLastEditorActivity( array( array( 'id' => $this->{static::getIdColumn()}, 'shard' => $this->{static::getShardColumn()} ) ) );
+		foreach ( $activities as $activity ) {
+			break;
+		}
+
+		return $activity;
+	}
+
+	/**
 	 * @return bool
 	 */
 	public function isHidden() {
@@ -573,6 +620,13 @@ class ArticleFeedbackv5Model extends DataModel {
 	 */
 	public function isResolved() {
 		return (bool) $this->aft_resolve;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isNonActionable() {
+		return (bool) $this->aft_noaction;
 	}
 
 	/**
