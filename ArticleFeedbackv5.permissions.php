@@ -17,6 +17,7 @@ class ArticleFeedbackv5Permissions {
 		'aft-reader',
 		'aft-member',
 		'aft-editor',
+		'aft-editor2',
 		'aft-monitor',
 		'aft-administrator',
 		'aft-oversighter'
