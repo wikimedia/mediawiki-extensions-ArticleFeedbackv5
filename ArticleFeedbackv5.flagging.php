@@ -28,7 +28,6 @@
  * @package    ArticleFeedback
  */
 class ArticleFeedbackv5Flagging {
-
 	/**
 	 * The user performing the action
 	 *
@@ -53,11 +52,18 @@ class ArticleFeedbackv5Flagging {
 	private $source = 'unknown';
 
 	/**
-	 * The results to return
+	 * Last error message, after error has occurred
 	 *
-	 * @var array
+	 * @var string
 	 */
-	private $results;
+	private $error = '';
+
+	/**
+	 * The id of the inserted log entry
+	 *
+	 * @var int
+	 */
+	private $logId = null;
 
 	/**
 	 * Constructor
@@ -79,16 +85,16 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $notes     string [optional] any notes to send to the activity log
 	 * @param  $toggle    bool   [optional] whether to toggle the flag
 	 * @param  $source    string [optional] the origin of the flag (article, central, watchlist, permalink)
-	 * @return array      information about the run, containing at least the
-	 *                    keys 'result' ('Error' / 'Success') and 'reason' (a
-	 *                    message key)
+	 * @return bool       true upon successful flagging, false on failure. In the event of a failure,
+	 *                    the error can be fetched through ->getError())
 	 */
 	public function run( $flag, $notes = '', $toggle = false, $source = 'unknown' ) {
 		wfProfileIn( __METHOD__ . "-{$flag}" );
 
 		// check if feedback record exists
 		if ( !$this->feedback ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-id' );
+			$this->error = 'articlefeedbackv5-invalid-feedback-id';
+			return false;
 		}
 
 		// check permissions
@@ -100,48 +106,47 @@ class ArticleFeedbackv5Flagging {
 			// users are always allowed to flag their own feedback
 			!( $this->user->getId() && $this->user->getId() == intval( $this->feedback->aft_user ) )
 		) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-flag' );
+			$this->error = 'articlefeedbackv5-invalid-feedback-flag';
+			return false;
 		}
 
 		// determine the appropriate method for this action
 		$method = str_replace( '-', '_', $flag );
 		if ( !method_exists( $this, $method ) ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-flag' );
+			$this->error = 'articlefeedbackv5-invalid-feedback-flag';
+			return false;
 		}
 
 		// save origin
 		$this->source = $source;
 
-		// run action-specific code
+		/*
+		 * The method corresponding to the requested "flag" will be called;
+		 * these methods then each will perform the particular changes that
+		 * an individual flag entails.
+		 * The method is - at least - supposed to make the required adjustments
+		 * to $this->feedback and add the id of the log entry for the requested
+		 * flag to $this->logId.
+		 * Some additional stuff may be done as well (e.g. certain flags result
+		 * in follow-up automated flags), but these should be done "under the
+		 * radar"; no logId is required for these automated actions.
+		 */
 		$result = $this->{$method}( $notes, $toggle ? true : false );
-		if ( $result !== true ) {
-			return $result;
+		if ( !$result ) {
+			return false;
 		}
 
-		// update feedback entry
+		if ( !is_int( $this->logId ) ) {
+			$this->error = 'articlefeedbackv5-invalid-log-id';
+			return false;
+		}
+
+		// update feedback entry for real
 		$this->feedback->update();
-
-		$this->results['result'] = 'Success';
-		$this->results['reason'] = null;
-
-		// update helpful/unhelpful display count after submission
-		if ( in_array( $flag, array( 'helpful', 'undo-helpful', 'unhelpful', 'undo-unhelpful' ) ) ) {
-			$percentHelpful = ArticleFeedbackv5Utils::percentHelpful(
-				$this->feedback->aft_helpful,
-				$this->feedback->aft_unhelpful
-			);
-
-			$this->results['helpful'] = wfMessage( 'articlefeedbackv5-form-helpful-votes-percent' )
-				->numParams( $percentHelpful )
-				->escaped();
-			$this->results['helpful_counts'] = wfMessage( 'articlefeedbackv5-form-helpful-votes-count' )
-				->numParams( $this->feedback->aft_helpful, $this->feedback->aft_unhelpful )
-				->escaped();
-		}
 
 		wfProfileOut( __METHOD__ . "-{$flag}" );
 
-		return $this->results;
+		return true;
 	}
 
 	/**
@@ -158,17 +163,12 @@ class ArticleFeedbackv5Flagging {
 	private function oversight( $notes, $toggle ) {
 		// already oversighted?
 		if ( $this->feedback->isOversighted() ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
 		}
 
 		$this->feedback->aft_oversight = 1;
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
-
-		$this->results['mask-line'] = ArticleFeedbackv5Utils::renderMaskLine(
-			__FUNCTION__,
-			$this->feedback->aft_id,
-			$this->getUserId()
-		);
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// autohide if not yet hidden
 		if ( !$this->feedback->isHidden() ) {
@@ -179,8 +179,6 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->aft_hide = 1;
 			$this->feedback->aft_autohide = 1;
 			ArticleFeedbackv5Log::logActivity( 'autohide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic hide', $this->user, array( 'source' => $this->source ) );
-
-			$this->results['autohide'] = 1;
 		}
 
 		return true;
@@ -199,76 +197,19 @@ class ArticleFeedbackv5Flagging {
 	private function unoversight( $notes, $toggle ) {
 		// not yet oversighted?
 		if ( !$this->feedback->isOversighted() ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
 		}
 
 		$this->feedback->aft_oversight = 0;
 		$this->feedback->aft_request = 0;
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// un-hide if autohidden
 		if ( $this->feedback->aft_hide && $this->feedback->aft_autohide ) {
 			$this->feedback->aft_autohide = 0;
 			$this->feedback->aft_hide = 0;
 			ArticleFeedbackv5Log::logActivity( 'unhide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic un-hide', $this->user, array( 'source' => $this->source ) );
-		}
-
-		return true;
-	}
-
-	/**
-	 * Flag: hide
-	 *
-	 * Hiding means to mark as "hidden" so it doesn't show up in the visible
-	 * filters (i.e., any filter prefixed with "visible-").  Hidden feedback is
-	 * only visible to monitors or oversighters.
-	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return array|bool
-	 */
-	private function hide( $notes, $toggle ) {
-		// already hidden?
-		if ( $this->feedback->isHidden() ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
-		}
-
-		$this->feedback->aft_hide = 1;
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
-
-		$this->results['mask-line'] = ArticleFeedbackv5Utils::renderMaskLine(
-			__FUNCTION__,
-			$this->feedback->aft_id,
-			$this->getUserId()
-		);
-
-		return true;
-	}
-
-	/**
-	 * Flag: un-hide
-	 *
-	 * Un-hiding means to remove the "hidden" mark from a post so it shows up
-	 * in the visible filters (i.e., any filter prefixed with "visible-")
-	 * again.
-	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return array|bool
-	 */
-	private function unhide( $notes, $toggle ) {
-		// not yet hidden?
-		if ( !$this->feedback->isHidden() ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
-		}
-
-		$this->feedback->aft_hide = 0;
-		$this->feedback->aft_autohide = 0;
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
-
-		// clear all abuse flags
-		if ( $this->feedback->aft_flag && $this->feedback->aft_autoflag ) {
-			$this->clear_flags( $notes, $toggle );
 		}
 
 		return true;
@@ -287,12 +228,13 @@ class ArticleFeedbackv5Flagging {
 	private function request( $notes, $toggle ) {
 		// already requested?
 		if ( $this->feedback->isRequested() ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
 		}
 
 		$this->feedback->aft_request = 1;
 		$this->feedback->aft_decline = 0;
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// autohide if not yet hidden
 		if ( !$this->feedback->isHidden() ) {
@@ -303,8 +245,6 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->aft_hide = 1;
 			$this->feedback->aft_autohide = 1;
 			ArticleFeedbackv5Log::logActivity( 'autohide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic hide', $this->user, array( 'source' => $this->source ) );
-
-			$this->results['autohide'] = 1;
 		}
 
 		// send an email to oversighter(s)
@@ -323,11 +263,42 @@ class ArticleFeedbackv5Flagging {
 	private function unrequest( $notes, $toggle ) {
 		// not yet requested?
 		if ( !$this->feedback->isRequested() ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
 		}
 
 		$this->feedback->aft_request = 0;
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+
+		// un-hide if autohidden
+		if ( $this->feedback->aft_hide && $this->feedback->aft_autohide ) {
+			$this->feedback->aft_hide = 0;
+			$this->feedback->aft_autohide = 0;
+			ArticleFeedbackv5Log::logActivity( 'unhide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic un-hide', $this->user, array( 'source' => $this->source ) );
+		}
+
+		return true;
+	}
+
+	/**
+	 * Flag: decline oversight
+	 *
+	 * This flag allows oversighters to decline a request for oversight.  It
+	 * unsets all request/unrequest on a piece of feedback.
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return array|bool
+	 */
+	private function decline( $notes, $toggle ) {
+		// not requested?
+		if ( !$this->feedback->isRequested() ) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
+		$this->feedback->aft_decline = 1;
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// un-hide if autohidden
 		if ( $this->feedback->aft_hide && $this->feedback->aft_autohide ) {
@@ -350,15 +321,20 @@ class ArticleFeedbackv5Flagging {
 	 * @return array|bool
 	 */
 	private function feature( $notes, $toggle ) {
-		// already featured?
 		if ( $this->feedback->isFeatured() ||
-			$this->feedback->isHidden() ||
-			$this->feedback->isOversighted() ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
+			$this->feedback->isNonActionable() ||
+			$this->feedback->isHidden()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
 		}
 
 		$this->feedback->aft_feature = 1;
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+//		$this->feedback->aft_resolve = 0; // don't touch resolved flag
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_hide = 0;
+
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// clear all abuse flags
 		if ( $this->feedback->aft_flag && $this->feedback->aft_autoflag ) {
@@ -376,15 +352,20 @@ class ArticleFeedbackv5Flagging {
 	 * @return array|bool
 	 */
 	private function unfeature( $notes, $toggle ) {
-		// not yet featured?
 		if ( !$this->feedback->isFeatured() ||
-			$this->feedback->isHidden() ||
-			$this->feedback->isOversighted() ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
+			$this->feedback->isNonActionable() ||
+			$this->feedback->isHidden()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
 		}
 
 		$this->feedback->aft_feature = 0;
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+//		$this->feedback->aft_resolve = 0; // don't touch resolved flag
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_hide = 0;
+
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -392,7 +373,7 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: mark feedback resolved
 	 *
-	 * This flag allows monitors to mark a featured post as resolved, when the
+	 * This flag allows monitors to mark a post as resolved, when the
 	 * suggestion has been implemented.
 	 *
 	 * @param  $notes     string   any notes passed in
@@ -400,15 +381,20 @@ class ArticleFeedbackv5Flagging {
 	 * @return array|bool
 	 */
 	private function resolve( $notes, $toggle ) {
-		// already resolved?
 		if ( $this->feedback->isResolved() ||
-			$this->feedback->isHidden() ||
-			$this->feedback->isOversighted() ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
+			$this->feedback->isNonActionable() ||
+			$this->feedback->isHidden()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
 		}
 
+//		$this->feedback->aft_feature = 0; // don't touch featured flag
 		$this->feedback->aft_resolve = 1;
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_hide = 0;
+
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -421,43 +407,136 @@ class ArticleFeedbackv5Flagging {
 	 * @return array|bool
 	 */
 	private function unresolve( $notes, $toggle ) {
-		// not yet resolved?
 		if ( !$this->feedback->isResolved() ||
-			$this->feedback->isHidden() ||
-			$this->feedback->isOversighted() ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
+			$this->feedback->isNonActionable() ||
+			$this->feedback->isHidden()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
 		}
 
+//		$this->feedback->aft_feature = 0; // don't touch featured flag
 		$this->feedback->aft_resolve = 0;
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_hide = 0;
+
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
 
 	/**
-	 * Flag: decline oversight
+	 * Flag: mark feedback as not actionable
 	 *
-	 * This flag allows oversighters to decline a request for oversight.  It
-	 * unsets all request/unrequest on a piece of feedback.
+	 * This flag allows monitors to mark a post as not actionable.
 	 *
 	 * @param  $notes     string   any notes passed in
 	 * @param  $toggle    bool     whether to toggle the flag
 	 * @return array|bool
 	 */
-	private function decline( $notes, $toggle ) {
-		// not requested?
-		if ( $this->feedback->aft_request <= 0 ) {
-			return $this->errorResult( 'articlefeedbackv5-invalid-feedback-state' );
+	private function noaction( $notes, $toggle ) {
+		if ( $this->feedback->isFeatured() ||
+			$this->feedback->isResolved() ||
+			$this->feedback->isNonActionable() ||
+			$this->feedback->isHidden()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
 		}
 
-		$this->feedback->aft_decline = 1;
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->feedback->aft_feature = 0;
+		$this->feedback->aft_resolve = 0;
+		$this->feedback->aft_noaction = 1;
+		$this->feedback->aft_hide = 0;
 
-		// un-hide if autohidden
-		if ( $this->feedback->aft_hide && $this->feedback->aft_autohide ) {
-			$this->feedback->aft_hide = 0;
-			$this->feedback->aft_autohide = 0;
-			ArticleFeedbackv5Log::logActivity( 'unhide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic un-hide', $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+
+		return true;
+	}
+
+	/**
+	 * Flag: un-mark a post as not actionable
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return array|bool
+	 */
+	private function unnoaction( $notes, $toggle ) {
+		if ( $this->feedback->isFeatured() ||
+			$this->feedback->isResolved() ||
+			!$this->feedback->isNonActionable() ||
+			$this->feedback->isHidden()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
+		$this->feedback->aft_feature = 0;
+		$this->feedback->aft_resolve = 0;
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_hide = 0;
+
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+
+		return true;
+	}
+
+	/**
+	 * Flag: hide
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return array|bool
+	 */
+	private function hide( $notes, $toggle ) {
+		if ( $this->feedback->isFeatured() ||
+			$this->feedback->isResolved() ||
+			$this->feedback->isNonActionable() ||
+			$this->feedback->isHidden()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
+		$this->feedback->aft_feature = 0;
+		$this->feedback->aft_resolve = 0;
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_hide = 1;
+
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+
+		return true;
+	}
+
+	/**
+	 * Flag: un-hide
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return array|bool
+	 */
+	private function unhide( $notes, $toggle ) {
+		if ( $this->feedback->isFeatured() ||
+			$this->feedback->isResolved() ||
+			$this->feedback->isNonActionable() ||
+			!$this->feedback->isHidden()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
+		$this->feedback->aft_feature = 0;
+		$this->feedback->aft_resolve = 0;
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_hide = 0;
+
+		$this->feedback->aft_autohide = 0;
+
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+
+		// clear all abuse flags
+		if ( $this->feedback->aft_flag && $this->feedback->aft_autoflag ) {
+			$this->clear_flags( $notes, $toggle );
 		}
 
 		return true;
@@ -475,23 +554,12 @@ class ArticleFeedbackv5Flagging {
 	private function flag( $notes, $toggle ) {
 		$flag = $this->isSystemCall() ? 'autoflag' : 'flag';
 		$this->feedback->{"aft_$flag"}++;
-		ArticleFeedbackv5Log::logActivity( $flag, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->isSystemCall() ? null : $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Log::logActivity( $flag, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->isSystemCall() ? null : $this->user, array( 'source' => $this->source ) );
 
-		global $wgArticleFeedbackv5AbusiveThreshold,
-			$wgArticleFeedbackv5HideAbuseThreshold;
-
-		// return a flag in the JSON, that turns the link red.
-		$this->results['abuse_count'] = $this->feedback->aft_flag + $this->feedback->aft_autoflag;
-		$this->results['abuse_count'] = max( 0, $this->results['abuse_count'] );
-		if ( $this->results['abuse_count'] >= $wgArticleFeedbackv5AbusiveThreshold ) {
-			$this->results['abusive'] = 1;
-		}
-		$this->results['abuse_report'] = wfMessage( 'articlefeedbackv5-form-abuse-count' )
-			->params( $this->results['abuse_count'] )
-			->escaped();
+		global $wgArticleFeedbackv5HideAbuseThreshold;
 
 		// auto-hide after [threshold] flags
-		if ( $this->results['abuse_count'] > $wgArticleFeedbackv5HideAbuseThreshold &&
+		if ( $this->feedback->aft_flag + $this->feedback->aft_autoflag > $wgArticleFeedbackv5HideAbuseThreshold &&
 			!$this->feedback->isHidden() ) {
 			/*
 			 * We want to keep track of hides/unhides, but also autohides.
@@ -500,13 +568,6 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->aft_hide = 1;
 			$this->feedback->aft_autohide = 1;
 			ArticleFeedbackv5Log::logActivity( 'autohide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic hide', $this->user, array( 'source' => $this->source ) );
-
-			$this->results['autohide'] = 1;
-			$this->results['mask-line'] = ArticleFeedbackv5Utils::renderMaskLine(
-				'hide',
-				$this->feedback->aft_id,
-				$this->getUserId()
-			);
 		}
 
 		return true;
@@ -527,23 +588,12 @@ class ArticleFeedbackv5Flagging {
 		} else {
 			$this->feedback->aft_flag--;
 		}
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
-		global $wgArticleFeedbackv5AbusiveThreshold,
-			   $wgArticleFeedbackv5HideAbuseThreshold;
-
-		// return a flag in the JSON, that turns the link red.
-		$this->results['abuse_count'] = $this->feedback->aft_flag + $this->feedback->aft_autoflag;
-		$this->results['abuse_count'] = max( 0, $this->results['abuse_count'] );
-		if ( $this->results['abuse_count'] >= $wgArticleFeedbackv5AbusiveThreshold ) {
-			$this->results['abusive'] = 1;
-		}
-		$this->results['abuse_report'] = wfMessage( 'articlefeedbackv5-form-abuse-count' )
-			->params( $this->results['abuse_count'] )
-			->escaped();
+		global $wgArticleFeedbackv5HideAbuseThreshold;
 
 		// un-hide if autohidden & we don't have [threshold] flags anymore
-		if ( $this->results['abuse_count'] < $wgArticleFeedbackv5HideAbuseThreshold &&
+		if ( $this->feedback->aft_flag + $this->feedback->aft_autoflag < $wgArticleFeedbackv5HideAbuseThreshold &&
 			$this->feedback->aft_autohide ) {
 			$this->feedback->aft_autohide = 0;
 			ArticleFeedbackv5Log::logActivity( 'unhide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic un-hide', $this->user, array( 'source' => $this->source ) );
@@ -562,13 +612,12 @@ class ArticleFeedbackv5Flagging {
 	private function clear_flags( $notes, $toggle ) {
 		$this->feedback->aft_autoflag = 0;
 		$this->feedback->aft_flag = 0;
+
+		/*
+		 * Note: this one does not save logId because (currently) it will never
+		 * be called directly, but only as an automated result after certain flags.
+		 */
 		ArticleFeedbackv5Log::logActivity( 'clear-flags', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatically clearing all flags', $this->user, array( 'source' => $this->source ) );
-
-		$this->results['abuse_count'] = 0;
-		$this->results['abusive'] = 0;
-
-		$this->results['abuse_cleared'] = true;
-		$this->results['abuse_report'] = wfMessage( 'articlefeedbackv5-form-abuse-cleared' )->escaped();
 
 		return true;
 	}
@@ -584,13 +633,12 @@ class ArticleFeedbackv5Flagging {
 	 */
 	private function helpful( $notes, $toggle ) {
 		$this->feedback->aft_helpful++;
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// was voted unhelpful already, now voting helpful should also remove unhelpful vote
 		if ( $toggle ) {
 			$this->feedback->aft_unhelpful--;
 		}
-		$this->results['toggle'] = $toggle;
 
 		return true;
 	}
@@ -606,7 +654,7 @@ class ArticleFeedbackv5Flagging {
 	 */
 	private function undo_helpful( $notes, $toggle ) {
 		$this->feedback->aft_helpful--;
-		ArticleFeedbackv5Log::logActivity( 'undo-helpful', $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Log::logActivity( 'undo-helpful', $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -622,13 +670,12 @@ class ArticleFeedbackv5Flagging {
 	 */
 	private function unhelpful( $notes, $toggle ) {
 		$this->feedback->aft_unhelpful++;
-		ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// was voted helpful already, now voting unhelpful should also remove helpful vote
 		if ( $toggle ) {
 			$this->feedback->aft_helpful--;
 		}
-		$this->results['toggle'] = $toggle;
 
 		return true;
 	}
@@ -644,7 +691,7 @@ class ArticleFeedbackv5Flagging {
 	 */
 	private function undo_unhelpful( $notes, $toggle ) {
 		$this->feedback->aft_unhelpful--;
-		ArticleFeedbackv5Log::logActivity( 'undo-unhelpful', $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Log::logActivity( 'undo-unhelpful', $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -659,21 +706,10 @@ class ArticleFeedbackv5Flagging {
 	}
 
 	/**
-	 * Gets the user id
-	 *
-	 * @return mixed the user's ID, or zero if it's a system call
-	 */
-	public function getUserId() {
-		return $this->isSystemCall() ? null : $this->user->getId();
-	}
-
-	/**
 	 * Helper function to dig out page url and title, feedback permalink, and
 	 * requestor page url and name - if all this data can be retrieved properly
 	 * it shoves an email job into the queue for sending to the oversighters'
 	 * mailing list - only called for NEW oversight requests
-	 *
-	 * @return ArticleFeedbackv5Flagging
 	 */
 	protected function sendOversightEmail() {
 		global $wgUser;
@@ -704,21 +740,23 @@ class ArticleFeedbackv5Flagging {
 
 		$job = new ArticleFeedbackv5MailerJob( $page, $params );
 		$job->insert();
-
-		return $this;
 	}
 
 	/**
-	 * Builds an error result
+	 * Return the error message (if any)
 	 *
-	 * Retains anything added to the result before the error.
-	 *
-	 * @param  $message string the error message key
-	 * @return array    the result
+	 * @return string the message
 	 */
-	public function errorResult( $message ) {
-		$this->results['result'] = 'Error';
-		$this->results['reason'] = $message;
-		return $this->results;
+	public function getError() {
+		return $this->error;
+	}
+
+	/**
+	 * Return the id of the requested flag's log entry
+	 *
+	 * @return int the id
+	 */
+	public function getLogId() {
+		return $this->logId;
 	}
 }
