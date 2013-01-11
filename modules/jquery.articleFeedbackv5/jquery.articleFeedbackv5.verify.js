@@ -85,6 +85,12 @@
 		if ( location != 'special' || article.id != 0 ) {
 			// only on pages in namespaces where it is enabled
 			enable &= $.inArray( article.namespace, mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1;
+
+			// it does not make sense to display AFT when a page is being edited ...
+			enable &= mw.config.get( 'wgAction' ) != 'edit';
+
+			// ... or has just been edited
+			enable &= !mw.config.get( 'wgPostEdit', false );
 		}
 
 		// for special page, it doesn't matter if the article has AFT applied
@@ -121,9 +127,6 @@
 
 			// not viewing the printable version
 			enable &= mw.util.getParamValue( 'printable' ) != 'yes';
-
-			// article has not just been edited
-			enable &= !mw.config.get( 'wgPostEdit', false );
 		}
 
 		return enable;
