@@ -250,7 +250,6 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 * @return string the SVN version info
 	 */
 	public function getVersion() {
-		return __CLASS__ . ': $Id$';
+		return __CLASS__ . ': version 1.5';
 	}
 }
-
