@@ -72,9 +72,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	/**
 	 * The starting offset
 	 *
-	 * @var int
+	 * @var string
 	 */
-	protected $startingOffset = 0;
+	protected $startingOffset = '';
 
 	/**
 	 * The starting sort direction
@@ -108,8 +108,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// these are messages that require some parsing that the current JS mw.msg does not yet support
 		$flyovers = array(
-			'hide', 'show', 'requestoversight', 'unrequestoversight',
-			'oversight', 'unoversight', 'declineoversight', 'feature',
+			'hide', 'unhide', 'request', 'unrequest',
+			'oversight', 'unoversight', 'decline', 'feature',
 			'unfeature', 'resolve', 'unresolve'
 		);
 		foreach ( $flyovers as $flyover ) {
@@ -188,6 +188,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			)
 		);
 
+		$filterCount = ArticleFeedbackv5Model::getCount( 'featured', $this->pageId );
 		$totalCount = ArticleFeedbackv5Model::getCount( '*', $this->pageId );
 
 		// JS variables
@@ -198,6 +199,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->addJsConfigVars( 'afStartingSort', $this->startingSort );
 		$out->addJsConfigVars( 'afStartingSortDirection', $this->startingSortDirection );
 		$out->addJsConfigVars( 'afCount', $totalCount );
+		$out->addJsConfigVars( 'afFilterCount', $filterCount );
 		$out->addJsConfigVars( 'afOffset', $records ? $records->nextOffset() : 0 );
 		$out->addJsConfigVars( 'afShowMore', $records ? $records->hasMore() : false );
 	}
@@ -218,6 +220,20 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// list page
 		} else {
+			/*
+			 * Hack: if a filter is requested but there is no feedback,
+			 * and there _is_ feedback in the "unreviewed" filter, display that
+			 * one instead.
+			 */
+			if (
+				ArticleFeedbackv5Model::getCount( $this->startingFilter, $this->pageId ) == 0 &&
+				ArticleFeedbackv5Model::getCount( 'unreviewed', $this->pageId ) > 0
+			) {
+				$this->startingFilter = 'unreviewed';
+				$this->startingSort = 'relevance';
+				$this->startingSortDirection = 'desc';
+			}
+
 			return ArticleFeedbackv5Model::getList(
 				$this->startingFilter,
 				$this->pageId,
@@ -308,7 +324,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$watchlistLink = '';
 		if ( !$this->pageId && $user->getId() ) {
 			$records = ArticleFeedbackv5Model::getWatchlistList(
-				'visible-relevant',
+				'unreviewed',
 				$user
 			);
 
@@ -326,7 +342,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		// Showing {count} posts
-		$amount = ArticleFeedbackv5Model::getCount( '*', $this->pageId );
+		$filterCount = ArticleFeedbackv5Model::getCount( 'featured', $this->pageId );
+		$totalCount = ArticleFeedbackv5Model::getCount( '*', $this->pageId );
 		$count =
 			Html::rawElement(
 				'div',
@@ -336,16 +353,23 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					Html::element(
 						'span',
 						array( 'id' => 'articleFeedbackv5-feedback-count-total' ),
-						$amount // this figure will be filled out through JS
-					)
+						$totalCount // this figure will be filled out through JS
+					),
+					$totalCount,
+					Html::element(
+						'span',
+						array( 'id' => 'articleFeedbackv5-feedback-count-filter' ),
+						$filterCount // this figure will be filled out through JS
+					),
+					$filterCount
 				)->text() .
-					$watchlistLink
+				$watchlistLink
 			);
 
 		// % found
 		$percent = '';
 		if ( $this->pageId ) {
-			$found = ArticleFeedbackv5Model::getCountFound( $this->pageId ) / ( $amount ?: 1 ) * 100;
+			$found = ArticleFeedbackv5Model::getCountFound( $this->pageId ) / ( $totalCount ?: 1 ) * 100;
 			if ( $found ) {
 				$class = $found >= 50 ? 'positive' : 'negative';
 				$span = Html::rawElement(
@@ -376,11 +400,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 */
 	protected function getHelpLink() {
 		$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl' )->text();
-		if( $this->isAllowed( 'aft-oversighter' ) ) {
+		if ( $this->isAllowed( 'aft-oversighter' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-oversighters' )->text();
-		} elseif( $this->isAllowed( 'aft-monitor' ) ) {
+		} elseif ( $this->isAllowed( 'aft-monitor' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-monitors' )->text();
-		} elseif( $this->isAllowed( 'aft-editor' ) ) {
+		} elseif ( $this->isAllowed( 'aft-editor' ) ) {
 			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-editors' )->text();
 		}
 
@@ -513,9 +537,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	protected function buildFilters() {
 		// filter to be displayed as link
 		$filterLabels = array();
-		foreach ( array( 'visible-relevant', 'visible' ) as $filter ) {
+		foreach ( array( 'featured', 'unreviewed' ) as $filter ) {
 			$count = ArticleFeedbackv5Model::getCount( $filter, $this->pageId );
-			$msg_key = str_replace( array( 'all-', 'visible-', 'notdeleted-' ), '', $filter );
 
 			$filterLabels[$filter] =
 				Html::rawElement(
@@ -525,7 +548,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 						'id' => "articleFeedbackv5-special-filter-$filter",
 						'class' => 'articleFeedbackv5-filter-link' . ( $this->startingFilter == $filter ? ' filter-active' : '' )
 					),
-					$this->msg( "articlefeedbackv5-special-filter-$msg_key", $count )->escaped()
+					$this->msg( "articlefeedbackv5-special-filter-$filter", $count )->escaped()
 				);
 		}
 
@@ -540,9 +563,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				}
 
 				$count = ArticleFeedbackv5Model::getCount( $filter, $this->pageId );
-				$msg_key = str_replace( array( 'all-', 'visible-', 'notdeleted-' ), '', $filter );
 
-				$key = $this->msg( "articlefeedbackv5-special-filter-$msg_key", $count )->escaped();
+				$key = $this->msg( "articlefeedbackv5-special-filter-$filter", $count )->escaped();
 				$opts[(string) $key] = $filter;
 			}
 
@@ -627,28 +649,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		global $wgArticleFeedbackv5DefaultFilters,
 			$wgArticleFeedbackv5DefaultSorts;
 
-		// Was a filter requested in the url?
-		if ( $filter ) {
-			if ( in_array( $filter, $this->filters ) ) {
-				// pass through;
-			} elseif ( in_array( 'all-' . $filter, $this->filters ) ) {
-				$filter = 'all-' . $filter;
-			} elseif ( in_array( 'notdeleted-' . $filter, $this->filters ) ) {
-				$filter = 'notdeleted-' . $filter;
-			} elseif ( in_array( 'visible-' . $filter, $this->filters ) ) {
-				$filter = 'visible-' . $filter;
-			} else {
-				$filter = false;
-			}
-		}
-
 		// Was a filter requested via (hidden) user preference?
-		if ( !$filter ) {
+		if ( !$filter || !in_array( $filter, $this->filters ) ) {
 			$filter = $this->getUser()->getOption( 'aftv5-last-filter' );
 		}
 
 		// Was a filter requested via cookie?
-		if ( !$filter && $this->feedbackId === null ) {
+		if ( !$filter || !in_array( $filter, $this->filters ) ) {
 			$request = $this->getRequest();
 			$cookie = json_decode( $request->getCookie( ArticleFeedbackv5Utils::getCookieName( 'last-filter' ) ) );
 			if ( $cookie !== null && is_object( $cookie )
@@ -663,7 +670,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		// Find the default filter
-		if ( !$filter ) {
+		if ( !$filter || !in_array( $filter, $this->filters ) ) {
 			if ( $this->isAllowed( 'aft-oversighter' ) ) {
 				$filter = $wgArticleFeedbackv5DefaultFilters['aft-oversighter'];
 			} elseif ( $this->isAllowed( 'aft-monitor' ) ) {
@@ -695,23 +702,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Decide on our default sort info
 		if ( !$sort ) {
-			$key = $this->shortFilter( $filter );
-			list( $sort, $dir ) = $wgArticleFeedbackv5DefaultSorts[$key];
+			list( $sort, $dir ) = $wgArticleFeedbackv5DefaultSorts[$filter];
 		}
 
 		$this->startingFilter = $filter;
 		$this->startingSort = $sort;
 		$this->startingSortDirection = $dir;
-	}
-
-	/**
-	 * Returns the starting filter with permissions info stripped out
-	 *
-	 * @param  $filter string the long filter name
-	 * @return string  the short filter name
-	 */
-	protected function shortFilter( $filter ) {
-		return str_replace( array( 'all-', 'visible-', 'notdeleted-' ), '', $filter );
 	}
 
 	/**
