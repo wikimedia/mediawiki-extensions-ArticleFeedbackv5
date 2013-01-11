@@ -10,7 +10,8 @@
  */
 
 /**
- * This class pulls the individual ratings/comments for the feedback page.
+ * This class allows you to performs a certain action (e.g. resolve,
+ * mark as useful) to feedback.
  *
  * @package    ArticleFeedback
  * @subpackage Api
@@ -40,26 +41,27 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$toggle     = $params['toggle'];
 		$source     = $params['source'];
 
-		/*
-		 * fallback when dealing with outdated javascript:
-		 * a "decrease" direction used to be passed on for the reverse action,
-		 * rather than kist calling the reverse action name itself (as is now)
-		 */
-		if ( isset( $params['direction'] ) && $params['direction'] == 'decrease' ) {
-			switch ( $flag ) {
-				case 'helpful':
-				case 'unhelpful':
-					$flag = "undo-$flag";
-					break;
-				default:
-					$flag = "un$flag";
-					break;
-			}
-		}
-
 		// Fire up the flagging object
 		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId, $pageId );
-		$results = $flagger->run( $flag, $notes, $toggle, $source );
+		$status = $flagger->run( $flag, $notes, $toggle, $source );
+
+		if ( !$status ) {
+			$results = array();
+			$results['result'] = 'Error';
+			$results['reason'] = $flagger->getError();
+		} else {
+			$results = array();
+			$results['result'] = 'Success';
+			$results['reason'] = null;
+			$results['log_id'] = $flagger->getLogId();
+
+			// re-render feedback entry
+			$feedback = ArticleFeedbackv5Model::get( $feedbackId, $pageId );
+			$permalink = $source == 'permalink';
+			$central = $source == 'central';
+			$renderer = new ArticleFeedbackv5Render( $wgUser, $permalink, $central, false );
+			$results['render'] = $renderer->run( $feedback );
+		}
 
 		$this->getResult()->addValue(
 			null,
@@ -90,16 +92,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			'flagtype'   => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array(
-					'oversight', 'unoversight',
-					'hide', 'unhide',
-					'request', 'unrequest',
-					'feature', 'unfeature',
-					'resolve', 'unresolve',
-					'decline',
-					'flag', 'unflag', 'clear_flags',
-					'helpful', 'unhelpful', 'undo-helpful', 'undo-unhelpful'
-				)
+				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Activity::$actions ),
 			),
 			'note' => array(
 				ApiBase::PARAM_REQUIRED => false,
@@ -126,8 +119,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getParamDescription() {
 		return array(
+			'pageid'      => 'PageID of feedback',
 			'feedbackid'  => 'FeedbackID to flag',
-			'type'        => 'Type of flag to apply - hide or abuse',
+			'type'        => 'Type of flag to apply',
 			'note'        => 'Information on why the feedback activity occurred',
 			'toggle'      => 'The flag is being toggled atomically, only useful for (un)helpful',
 			'source'      => 'The origin of the flag: article (page), central (feedback page), watchlist (page), permalink',
@@ -165,7 +159,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 */
 	protected function getExamples() {
 		return array(
-			'api.php?list=articlefeedbackv5-view-feedback&affeedbackid=1&aftype=abuse',
+			'api.php?action=articlefeedbackv5-flag-feedback&feedbackid=1&pageid=1&flagtype=helpful'
 		);
 	}
 
