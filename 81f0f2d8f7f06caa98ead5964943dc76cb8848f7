@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADhH///8o\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-01-11T22:37:14Z",
+      "side": 1,
+      "message": "The first parameter of the Hooks is a User object",
+      "revId": "81f0f2d8f7f06caa98ead5964943dc76cb8848f7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADhH///8k\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-01-11T22:37:14Z",
+      "side": 1,
+      "message": "you can use $currentUser instead of $wgUser?",
+      "revId": "81f0f2d8f7f06caa98ead5964943dc76cb8848f7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADhH///8w\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-01-11T22:37:14Z",
+      "side": 1,
+      "message": "I would typcast $id before proceeding: $id \u003d intval( $id );",
+      "revId": "81f0f2d8f7f06caa98ead5964943dc76cb8848f7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
