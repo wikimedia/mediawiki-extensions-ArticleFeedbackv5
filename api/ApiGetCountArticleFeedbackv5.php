@@ -91,7 +91,7 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getExamples() {
 		return array(
-			'api.php?action=articlefeedbackv5-get-count&afpageid=1&filter=visible-relevant',
+			'api.php?action=articlefeedbackv5-get-count&afpageid=1&filter=featured',
 		);
 	}
 
