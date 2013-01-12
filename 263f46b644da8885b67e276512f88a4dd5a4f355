@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADhH///3Q\u003d",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 51
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 473
+      },
+      "writtenOn": "2013-01-12T00:31:18Z",
+      "side": 1,
+      "message": "If you update to replace a long comment with a shorter one, it looks like this will leave the old long version behind?",
+      "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADhH///3k\u003d",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 51
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 473
+      },
+      "writtenOn": "2013-01-12T00:31:18Z",
+      "side": 1,
+      "message": "will replace() gracefully handle the case where it did not previously exist because previous version was shorter?",
+      "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADhH///1o\u003d",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 51
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 473
+      },
+      "writtenOn": "2013-01-12T00:31:18Z",
+      "side": 1,
+      "message": "Is the blob table being joined against for every fetch?\n\nIf so, why have it as a separate table?",
+      "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADhH///8Y\u003d",
+        "filename": "sql/ArticleFeedbackv5.sql",
+        "patchSetId": 51
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 473
+      },
+      "writtenOn": "2013-01-12T00:31:18Z",
+      "side": 1,
+      "message": "binary will index more efficiently than varbinary, and as in the long term nearly all will be 32 chars almost no space is saved",
+      "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADhH///8E\u003d",
+        "filename": "sql/ArticleFeedbackv5.sql",
+        "patchSetId": 51
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 473
+      },
+      "writtenOn": "2013-01-12T00:31:18Z",
+      "side": 1,
+      "message": "I don\u0027t think varbinary(1) makes sense ever.  It will take length+1 bytes, whereas binary(1) will always take only 1",
+      "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADhH///8A\u003d",
+        "filename": "sql/ArticleFeedbackv5.sql",
+        "patchSetId": 51
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 473
+      },
+      "writtenOn": "2013-01-12T00:31:18Z",
+      "side": 1,
+      "message": "why not a timestamp type?\n\nTakes less space and lets you do time operations in sql",
+      "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADhH///5Y\u003d",
+        "filename": "sql/ArticleFeedbackv5.sql",
+        "patchSetId": 51
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 473
+      },
+      "writtenOn": "2013-01-12T00:31:18Z",
+      "side": 1,
+      "message": "I realize they are logically equivalent, but as this table has a mix of tinyint(1) that mean tinyint and tinyint(1) that mean bool, it would be more readable to use bool for the ones that are intended to store boolean values",
+      "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
