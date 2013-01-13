@@ -4334,7 +4334,7 @@ eines der folgenden Probleme enthält:
 	'articlefeedbackv5-help-form-linkurl-editors' => '//de.wikipedia.org/wiki/Hilfe:Artikel-Feedback/Benutzer',
 	'articlefeedbackv5-help-form-linkurl-monitors' => '//de.wikipedia.org/wiki/Wikipedia:Artikel-Feedback',
 	'articlefeedbackv5-help-form-linkurl-oversighters' => '//en.wikipedia.org/wiki/Wikipedia:Article_Feedback/Help/Oversighters',
-	'articlefeedbackv5-help-transparency-terms' => 'Bitte hinterlasse [//de.wikipedia.org/wiki/Wikipedia:Artikel-Feedback/Feedback_Orga#Tipps.2C_um_Feedback_zu_geben nützliche Rückmeldungen]. Mit dem Speichern stimmst du diesen [//wikimediafoundation.org/wiki/Feedback_privacy_statement/de Bedingungen] zu.',
+	'articlefeedbackv5-help-transparency-terms' => 'Bitte hinterlasse [//de.wikipedia.org/wiki/Hilfe:Artikel-Feedback/Feedback_Richtlinien#Tipps.2C_um_Feedback_zu_geben nützliche Rückmeldungen]. Mit dem Speichern stimmst du diesen [//wikimediafoundation.org/wiki/Feedback_privacy_statement/de Bedingungen] zu.',
 	'articlefeedbackv5-sitesub-linktext' => 'Verbessere diese Seite',
 	'articlefeedbackv5-titlebar-linktext' => 'Du kannst helfen, diesen Artikel zu verbessern >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Verbessere diese Seite',
@@ -11928,6 +11928,7 @@ $messages['is'] = array(
  * @author Beta16
  * @author Darth Kule
  * @author F. Cosoleto
+ * @author Nemo bis
  * @author Pietrodn
  * @author Raoli
  * @author Ximo17
@@ -11948,7 +11949,7 @@ $messages['it'] = array(
 	'articlefeedbackv5-cta4-confirmation-title' => 'Entra a far parte della comunità',
 	'articlefeedbackv5-cta4-confirmation-call-line1' => 'Registrati o accedi, in modo che gli editori possano rispondere al tuo commento.',
 	'articlefeedbackv5-cta4-confirmation-call-line2' => 'Un account gratuito rende più facile condividere ciò che sai su {{SITENAME}}.',
-	'articlefeedbackv5-cta4-button-text-signup' => "Crea un'utenza",
+	'articlefeedbackv5-cta4-button-text-signup' => 'Registrati',
 	'articlefeedbackv5-cta4-button-text-login' => 'Entra',
 	'articlefeedbackv5-cta4-button-text-later' => 'Forse più tardi',
 	'articlefeedbackv5-cta4-button-text-or' => 'o',
@@ -11958,7 +11959,6 @@ $messages['it'] = array(
 	'articlefeedbackv5-cta6-confirmation-title' => 'Hai bisogno di aiuto per modificare {{SITENAME}}?',
 	'articlefeedbackv5-cta6-confirmation-call' => 'Per discutere di modifiche su {{SITENAME}}, vieni al Bar, dove editori nuovi ed esperti si riuniscono per scambiarsi consigli utili.',
 	'articlefeedbackv5-cta6-button-text' => 'Visita il Bar',
-	'articlefeedbackv5-cta6-button-link' => '//en.wikipedia.org/wiki/Wikipedia:Teahouse?ref=aft',
 	'articlefeedbackv5-overlay-close' => 'Chiudi',
 	'articlefeedbackv5-error' => 'Si è verificato un errore.
 Riprova più tardi.',
@@ -13471,12 +13471,12 @@ $messages['ko'] = array(
 	'articlefeedbackv5-error' => '오류가 발생했습니다. 나중에 다시 시도해주세요.',
 	'articlefeedbackv5-error-email' => '이메일 주소가 올바르지 않습니다.',
 	'articlefeedbackv5-error-blocked' => '차단된 사용자는 피드백을 제출할 수 없습니다.',
-	'articlefeedbackv5-error-validation' => '유효성 검사 오류',
-	'articlefeedbackv5-error-abuse' => '당신의 게시물이 {{SITENAME}}의 [$1 피드백 지침]에 위반한 것으로 제안한 소프트웨어 필터에 의해 거부되었습니다. 게시물을 수정하고 다시 시도하세요.',
-	'articlefeedbackv5-error-unknown' => '알 수 없는 오류.',
-	'articlefeedbackv5-error-submit' => '양식 제출 오류.',
-	'articlefeedbackv5-error-nofeedback' => '당신의 의견을 입력해주세요.',
-	'articlefeedbackv5-error-flagging' => '피드백을 플래그 하는 중 오류',
+	'articlefeedbackv5-error-validation' => '유효성 검사에 오류가 났습니다.',
+	'articlefeedbackv5-error-abuse' => '게시물이 {{SITENAME}}의 [$1 피드백 지침]에 위반한 것으로 제안한 소프트웨어 필터에 의해 거부되었습니다. 게시물을 수정하고 다시 시도하세요.',
+	'articlefeedbackv5-error-unknown' => '알 수 없는 오류가 났습니다.',
+	'articlefeedbackv5-error-submit' => '양식 제출에 오류가 났습니다.',
+	'articlefeedbackv5-error-nofeedback' => '피드백을 입력해주세요.',
+	'articlefeedbackv5-error-flagging' => '피드백을 플래그 하는 중 오류가 났습니다.',
 	'articlefeedbackv5-error-throttled' => '{{SITENAME}}의 피드백 지침에서 권장 사항보다 더 많은 피드백을 게시했기 때문에 게시물이 거부되었습니다. 반복하거나 과도하게 피드백을 게시하지 마세요.',
 	'articlefeedbackv5-protection-level' => '문서 평가',
 	'articlefeedbackv5-protection-level-error' => '문서 피드백 보호 수준은 편집 보호 수준보다 높일 수 없습니다.',
@@ -13784,7 +13784,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-bucket6-form-submit' => '피드백 올리기',
 	'articlefeedbackv5-bucket6-backlink-text' => '1단계로 돌아가기',
 	'articlefeedbackv5-help-tooltip-title' => '어떤 기능인가요?',
-	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}}(은)는 당신이 이 페이지에 대해 어떻게 생각하는지에 대해 듣고 싶어합니다. 편집자와 함께 피드백을 공유하고 나서 — 이 페이지를 발전시키는 데 도움을 주세요.',
+	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}}(은)는 당신이 이 문서에 대해 어떻게 생각하는지에 대해 듣고 싶어합니다. 편집자와 함께 피드백을 공유하고 나서 — 이 문서를 발전시키는 데 도움을 주세요.',
 	'articlefeedbackv5-help-tooltip-linktext' => '더 알아보기',
 	'articlefeedbackv5-help-transparency-terms' => '[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 유용한 피드백]을 게시하세요. 게시를 하면 [//wikimediafoundation.org/wiki/Feedback_privacy_statement 이용 약관]하에 투명성에 동의합니다.',
 	'articlefeedbackv5-sitesub-linktext' => '이 문서 발전시키기',
@@ -17710,6 +17710,9 @@ $messages['nn'] = array(
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'Attendemelding på sider eg overvakar',
 	'articlefeedbackv5-header-message-link-text' => 'Lær meir',
 	'articlefeedbackv5-mask-postnumber' => 'Innlegg #$1',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Lær meir',
+	'articlefeedbackv5-bucket1-title' => 'Hjelp til med å betra sida',
+	'articlefeedbackv5-bucket1-question-toggle' => 'Fann du det du leitte etter?',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Ja',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Nei',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Ja, eg fann det eg leitte etter.',
