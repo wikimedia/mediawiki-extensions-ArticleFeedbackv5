@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAADhH//+qY\u003d",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 51
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-01-14T15:07:14Z",
+      "side": 1,
+      "message": "Yes:\n\nhttp://dev.mysql.com/doc/refman/5.0/en/replace.html\n\"REPLACE works exactly like INSERT, except that if an old row in the table has the same value as a new row for a PRIMARY KEY or a UNIQUE index, the old row is deleted before the new row is inserted.\"\n\nFor other DB engines, MediaWiki does delete/insert itself through this method.",
+      "parentUuid": "AAADhH///3k\u003d",
+      "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAADhH///1o\u003d",
         "filename": "ArticleFeedbackv5.backend.LBFactory.php",
         "patchSetId": 51
@@ -47,6 +65,24 @@
       "writtenOn": "2013-01-12T00:31:18Z",
       "side": 1,
       "message": "Is the blob table being joined against for every fetch?\n\nIf so, why have it as a separate table?",
+      "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADhH//+rE\u003d",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 51
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-01-14T15:07:14Z",
+      "side": 1,
+      "message": "This was originally requested for the current schema (that should be replaced by this patch): https://bugzilla.wikimedia.org/show_bug.cgi?id\u003d37707\n\nQuoting Asher: \"I was originally requesting that we disallow large comments so that all data could fit within a row instead of requiring blob storage and when that was shot down, the idea was to at least stick with datatypes for the main table that would allow its full content to be stored in row pages.  Blobs use at least one full page and can\u0027t share pages, so a 1k comment would take up 16k of disk space.  If all text like that is in its own table, and it isn\u0027t joined against, that text could be stored in another db or document store in the future.  (Or we could shard all aft tables together and continue to join.)  One of the problems with only having one single database for all tables for a wiki is that I have to keep a close eye on space utilization as much as general query performance.\"",
+      "parentUuid": "AAADhH///1o\u003d",
       "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -98,6 +134,24 @@
       "writtenOn": "2013-01-12T00:31:18Z",
       "side": 1,
       "message": "why not a timestamp type?\n\nTakes less space and lets you do time operations in sql",
+      "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADhH//+q8\u003d",
+        "filename": "sql/ArticleFeedbackv5.sql",
+        "patchSetId": 51
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-01-14T15:07:14Z",
+      "side": 1,
+      "message": "Coding standards say not to:\nhttp://www.mediawiki.org/wiki/Manual:Coding_conventions/Database\n\"Use varbinary(14) for all timestamps, and parse them to the standard format using $dbw-\u003etimestamp( $ts ); do not use the timestamp field type.\"",
+      "parentUuid": "AAADhH///8A\u003d",
       "revId": "263f46b644da8885b67e276512f88a4dd5a4f355",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
