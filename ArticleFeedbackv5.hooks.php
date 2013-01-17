@@ -70,7 +70,6 @@ class ArticleFeedbackv5Hooks {
 			'dependencies' => array(
 				'mediawiki.util',
 				'mediawiki.user',
-				'jquery.clickTracking',
 			),
 		),
 		'ext.articleFeedbackv5.talk' => array(
@@ -701,15 +700,7 @@ class ArticleFeedbackv5Hooks {
 			return;
 		}
 
-		$params = new FauxRequest( array(
-			'action' => 'clicktracking',
-			'eventid' => $ctEvent . '-' . $event,
-			'token' => $ctToken,
-			'additional' => $userToken . '|' . $title->getText() . '|' . $rev_id,
-			'namespacenumber' => $title->getNamespace()
-		) );
-		$api = new ApiMain( $params, true );
-		$api->execute();
+		// @todo: implement EventLogging if/once requested
 	}
 
 	/**

@@ -115,7 +115,6 @@
 		return tmp.join( '|' );
 	};
 
-
 	// }}}
 	// {{{ track
 
@@ -125,11 +124,8 @@
 	 * @param string trackingId
 	 */
 	$.aftTrack.track = function ( trackingId ) {
-		if ( $.aftTrack.clickTrackingOn && $.isFunction( $.trackActionWithInfo ) ) {
-			return $.trackActionWithInfo(
-				$.aftTrack.prefix( trackingId ),
-				$.aftTrack.additional()
-			);
+		if ( $.aftTrack.clickTrackingOn ) {
+			// @todo: implement EventLogging if/once requested
 		}
 
 		return $.Deferred().resolve();
