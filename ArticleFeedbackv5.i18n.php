@@ -7776,7 +7776,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-special-refresh' => 'Rafraîchir la liste',
 	'articlefeedbackv5-special-pagetitle' => 'Avis sur $1',
 	'articlefeedbackv5-special-permalink-pagetitle' => 'Commentaire sur $1',
-	'articlefeedbackv5-special-watchlist-pagetitle' => 'Commentaires de mes pages regardées',
+	'articlefeedbackv5-special-watchlist-pagetitle' => 'Commentaires sur les pages que je suis',
 	'articlefeedbackv5-special-central-pagetitle' => 'Page centrale des commentaires',
 	'articlefeedbackv5-loading-tag' => 'Chargement...',
 	'articlefeedbackv5-status-hide' => 'Ce commentaire a été masqué par $1, le $2 à $3',
@@ -7998,7 +7998,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-help-tooltip-title' => 'Qu’est-ce que ceci ?',
 	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} aimerait entendre ce que vous pensez de cette page. Partagez votre avis avec les modificateurs — et aidez à améliorer cette page.',
 	'articlefeedbackv5-help-tooltip-linktext' => 'En savoir plus',
-	'articlefeedbackv5-help-transparency-terms' => 'Veuillez publier [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines des commentaires utiles]. En le publiant, vous agréez la transparence en ces [//wikimediafoundation.org/wiki/Feedback_privacy_statement termes].',
+	'articlefeedbackv5-help-transparency-terms' => 'Veuillez publier [//fr.wikipedia.org/wiki/Wikipédia:Guide des commentaires des commentaires utiles]. En publiant, vous approuvez [//wikimediafoundation.org/wiki/Feedback_privacy_statement notre déclaration] quant à la vie privée.',
 	'articlefeedbackv5-sitesub-linktext' => 'Améliorer cette page',
 	'articlefeedbackv5-titlebar-linktext' => 'Aidez à améliorer cette page &gt;&gt;',
 	'articlefeedbackv5-fixedtab-linktext' => 'Améliorer cette page',
@@ -19857,6 +19857,7 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-form-unoversight' => 'Richieste de non sorveglianze',
 	'articlefeedbackv5-form-undelete' => 'None sorvegliate',
 	'articlefeedbackv5-form-decline' => "Rifiute 'a sorveglianze",
+	'articlefeedbackv5-form-declined' => 'Supervisione scartate',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 onne acchiate quidde ca ste cercavane}}',
 	'articlefeedbackv5-form1-header-not-found' => "{{GENDER:$1|$2 non g'onne acchiate quidde ca ste cercavane}}",
 	'articlefeedbackv5-form1-header-left-comment' => "{{GENDER:$1|$2 mannate 'nu commende.}}",
@@ -19874,6 +19875,7 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-central-header-left-comment' => "{{GENDER:$1|$2}} mannate 'a [[$4|segnalazione]] a $3",
 	'articlefeedbackv5-abuse-saved' => 'Signate cumme abbuse',
 	'articlefeedbackv5-abuse-saved-tooltip' => "Live 'a spunde ca è 'mbostate",
+	'articlefeedbackv5-oversight-saved' => 'Signate cumme sorvegliate',
 	'articlefeedbackv5-error-loading-feedback' => "Errore d'u carecamènde feedback.",
 	'articlefeedbackv5-invalid-feedback-id' => "L' ID d'u feedback non g'ète valide.",
 	'articlefeedbackv5-invalid-feedback-flag' => "L'assignazione d'u feedback non g'ète valide.",
@@ -19956,6 +19958,7 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => "Purcé tu ste scangille 'a richieste de sorveglianze?",
 	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => "Annulle 'a richieste",
 	'articlefeedbackv5-noteflyover-unrequestoversight-help' => "'Mbare de cchiù",
+	'articlefeedbackv5-noteflyover-oversight-caption' => 'Sorveglie stu messàgge',
 	'articlefeedbackv5-noteflyover-oversight-label' => "Aggiunge 'na note",
 	'articlefeedbackv5-noteflyover-oversight-submit' => 'Sorveglie stu messàgge',
 	'articlefeedbackv5-noteflyover-oversight-help' => "'Mbare de cchiù",
@@ -20014,6 +20017,7 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-activity-permalink' => 'collegamende permanende',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 azione sus a stu messàgge|$1 aziune sus a stu messàgge}}',
 	'articlefeedbackv5-activity-more' => 'Fà vedè cchiù Attività',
+	'articlefeedbackv5-talk-view-feedback' => "'Ndruche le segnalaziune de le letture",
 	'articlefeedbackv5-emailcapture-response-body' => "Cià!
 
 Grazie purcé è avute inderesse a dà 'na màne pe migliorà {{SITENAME}}.
@@ -20042,6 +20046,7 @@ Statte bbuène e grazie,
 );
 
 /** Russian (русский)
+ * @author AS
  * @author AlexSm
  * @author Assele
  * @author Base
@@ -20093,7 +20098,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-error-email' => 'Недопустимый адрес электронной почты.',
 	'articlefeedbackv5-error-blocked' => 'Заблокированные участники не могут оставлять отзывы.',
 	'articlefeedbackv5-error-validation' => 'Ошибка проверки.',
-	'articlefeedbackv5-error-abuse' => 'Ваше сообщение было отвергнуто программным фильтром, который определил, что оно может нарушить [$1 правила составления отзывов] проекта «{{SITENAME}}». Пожалуйста скорректируйте своё сообщение и повторите попытку.',
+	'articlefeedbackv5-error-abuse' => 'Ваше сообщение было отвергнуто программным фильтром, который определил, что оно может нарушить [$1 правила составления отзывов] проекта «{{SITENAME}}». Пожалуйста скорректируйте своё сообщение и повторите попытку.', # Fuzzy
 	'articlefeedbackv5-error-unknown' => 'Неизвестная ошибка.',
 	'articlefeedbackv5-error-submit' => 'Ошибка при отправке данных формы.',
 	'articlefeedbackv5-error-nofeedback' => 'Оставьте, пожалуйста, свой отзыв.',
@@ -20386,7 +20391,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-bucket4-teaser-line2' => 'Давайте же, попробуйте! Смелее!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Узнайте, как редактировать',
 	'articlefeedbackv5-bucket4-form-submit' => 'Отредактировать эту страницу',
-	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Команжде проекта «{{SITENAME}}» интересны ваши мысли и мнения. Помогите улучшить эту страницу, став редактором.',
+	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Команде проекта «{{SITENAME}}» интересны ваши мысли и мнения. Помогите улучшить эту страницу, став редактором.',
 	'articlefeedbackv5-bucket4-noedit-title' => 'Помогите улучшить проект «{{SITENAME}}»',
 	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'Этот веб-сайт создан такими же людьми, как и вы.',
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'Можете ли вы протянуть нам руку?',
@@ -24062,7 +24067,7 @@ $messages['uk'] = array(
 	'articlefeedbackv5-error-email' => 'Ця адреса електронної пошти є недійсною.',
 	'articlefeedbackv5-error-blocked' => 'Заблоковані користувачі не можуть залишати відгуки.',
 	'articlefeedbackv5-error-validation' => 'Помилка перевірки.',
-	'articlefeedbackv5-error-abuse' => "Ваш допис було відхилено програмним фільтром, який визначив, що це може порушити [$1 принципи зворотного зв'язку] {{GRAMMAR:genitive|{{SITENAME}}}}. Будь ласка, перегляньте Ваш допис і спробуйте знову.", # Fuzzy
+	'articlefeedbackv5-error-abuse' => "Ваш допис було відхилено програмним фільтром, який припустив, що допис не відповідає [$1 правилам зворотного зв'язку] {{GRAMMAR:genitive|{{SITENAME}}}}. Будь ласка, перевірте Ваш допис на відповідність і спробуйте знову. ({{PLURAL:$2|Фільтр|Фільтри}}: $3)",
 	'articlefeedbackv5-error-unknown' => 'Невідома помилка.',
 	'articlefeedbackv5-error-submit' => 'Помилка надсилання даних форми.',
 	'articlefeedbackv5-error-nofeedback' => 'Будь ласка, додайте ваш відгук.',
@@ -24307,10 +24312,10 @@ $messages['uk'] = array(
 	'articlefeedbackv5-bucket1-form-submit' => 'Залишити відгук',
 	'articlefeedbackv5-bucket4-title' => 'Допоможіть поліпшити цю сторінку',
 	'articlefeedbackv5-bucket4-subhead' => 'Чи ви знаєте, що можете редагувати цю сторінку?',
-	'articlefeedbackv5-bucket4-teaser-line1' => 'Вікіпедія працює тому, що кожен може редагувати її сторінки.', # Fuzzy
+	'articlefeedbackv5-bucket4-teaser-line1' => '{{SITENAME}} працює тому, що кожен може редагувати її сторінки.',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Дізнайтеся, як редагувати',
 	'articlefeedbackv5-bucket4-form-submit' => 'Редагувати цю сторінку',
-	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Вікіпедії цікава ваша думка. Допоможіть вдосконалити цю сторінку, станьте її редактором.', # Fuzzy
+	'articlefeedbackv5-bucket4-help-tooltip-info' => '{{SITENAME}} хоче знати Вашу думку. Допоможіть вдосконалити цю сторінку, станьте її редактором.',
 	'articlefeedbackv5-bucket4-noedit-title' => 'Допомогти вдосконалити {{GRAMMAR:accusative|SITENAME}}',
 	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'Цей веб-сайт створений такими ж людьми, як і Ви.',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Дізнатися більше',
