@@ -17177,7 +17177,7 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-error-email' => 'Dat e-mailadres is niet geldig.',
 	'articlefeedbackv5-error-blocked' => 'Geblokkeerde gebruikers mogen geen terugkoppeling verzenden.',
 	'articlefeedbackv5-error-validation' => 'Validatiefout.',
-	'articlefeedbackv5-error-abuse' => 'Uw bericht is afgewezen door een softwarefilter dat aangeeft dat de [$1 richtlijnen voor terugkoppeling] van {{SITENAME}} mogelijk geschonden worden. Pas uw opmerking alstublieft aan en probeer het opnieuw.',
+	'articlefeedbackv5-error-abuse' => 'Uw bericht is afgewezen door een softwarefilter dat aangeeft dat mogelijk niet aan de [$1 richtlijnen voor terugkoppeling] van {{SITENAME}} is voldaan. Pas uw opmerking alstublieft aan en probeer het opnieuw. {{PLURAL:$2|Filter|Filters}}: $3.',
 	'articlefeedbackv5-error-unknown' => 'Onbekende fout.',
 	'articlefeedbackv5-error-submit' => 'Fout bij het opslaan van het formulier.',
 	'articlefeedbackv5-error-nofeedback' => 'Geef uw terugkoppeling.',
@@ -20014,6 +20014,7 @@ $messages['roa-tara'] = array(
 	'right-aft-editor' => "Detaglie & resolve 'a segnalazione",
 	'right-aft-administrator' => "Vide AFT sus 'a le pàggene prutette",
 	'right-aft-oversighter' => 'Segnalazione de sorveglianze',
+	'log-name-articlefeedbackv5' => 'Archivije de le Attività de le Segnalaziune de Vôsce',
 	'articlefeedbackv5-activity-pane-header' => 'Archivije de le attività',
 	'articlefeedbackv5-activity-feedback-info' => 'Messàgge de segnalazione #$1 de $2',
 	'articlefeedbackv5-activity-feedback-date' => "Postate 'u $1",
@@ -20021,6 +20022,7 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 azione sus a stu messàgge|$1 aziune sus a stu messàgge}}',
 	'articlefeedbackv5-activity-more' => 'Fà vedè cchiù Attività',
 	'articlefeedbackv5-talk-view-feedback' => "'Ndruche le segnalaziune de le letture",
+	'articlefeedbackv5-watchlist-view-feedback' => 'Segnalazione da le pàggene condrollate mije',
 	'articlefeedbackv5-emailcapture-response-body' => "Cià!
 
 Grazie purcé è avute inderesse a dà 'na màne pe migliorà {{SITENAME}}.
@@ -20044,8 +20046,11 @@ Ce tu non g'è mannate sta richieste, pe piacere no sce penzanne a sta e-mail e 
 Statte bbuène e grazie,
 'A squadre de {{SITENAME}}",
 	'articlefeedbackv5-disable-flyover-title' => 'Vuè ccu live stu strumende?',
+	'articlefeedbackv5-disable-flyover-help' => 'Pe luà $1, veje a $2 e verifiche $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => "Segnalazione sus 'a vôsce",
+	'articlefeedbackv5-disable-flyover-help-location' => 'Preferenze mije > Aspette',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Vèje a le preferenze mije',
+	'articlefeedbackv5-abusefilter-note-aftv5requestoversight' => 'Sorveglianze richieste automaticamende. Regole: $1',
 );
 
 /** Russian (русский)
