@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADiH//8r0\u003d",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 1189,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-01-25T19:29:24Z",
+      "side": 1,
+      "message": "The id is not reliable since it comes from referrer or cookie, could we add another condition to the db update, af_user_ip \u003d $wgRequest-\u003egetIP()?  The two IPs should be the same if an anonymous user logs in right after posting a feedback",
+      "revId": "606f612a251d793f16d7146eb87d460e5dad5c7b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
