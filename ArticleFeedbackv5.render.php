@@ -674,17 +674,15 @@ class ArticleFeedbackv5Render {
 
 		// Add helpful voting percentage for editors
 		if ( $this->isAllowed( 'aft-editor' ) ) {
-			$percent = wfMessage( 'articlefeedbackv5-form-helpful-votes' )
-				->rawParams( wfMessage( 'percent',
-						ApiArticleFeedbackv5Utils::percentHelpful(
+			$percent = wfMessage( 'articlefeedbackv5-form-helpful-votes-percent' )
+				->numParams( ApiArticleFeedbackv5Utils::percentHelpful(
 							$record[0]->af_helpful_count,
 							$record[0]->af_unhelpful_count
-						)
-					)->escaped() )
+				) )
 				->escaped();
-			$counts = wfMessage( 'articlefeedbackv5-form-helpful-votes-count',
-					$record[0]->af_helpful_count,
-					$record[0]->af_unhelpful_count )->text();
+			$counts = wfMessage( 'articlefeedbackv5-form-helpful-votes-count' )
+				->numParams( $record[0]->af_helpful_count, $record[0]->af_unhelpful_count )
+				->text();
 			$votesClass = 'articleFeedbackv5-helpful-votes';
 			if ( ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ) > 0 ) {
 				$votesClass .= ' articleFeedbackv5-has-votes';

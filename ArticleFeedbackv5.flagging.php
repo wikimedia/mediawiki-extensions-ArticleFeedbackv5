@@ -293,13 +293,14 @@ class ArticleFeedbackv5Flagging {
 
 		// Update helpful/unhelpful display count after submission but BEFORE db commit to stay in the transaction
 		if ( $flag == 'helpful' || $flag == 'unhelpful' ) {
-			$this->results['helpful'] = wfMessage( 'articlefeedbackv5-form-helpful-votes' )
-				->rawParams( wfMessage( 'percent',
-						ApiArticleFeedbackv5Utils::percentHelpful( $this->helpfulCount, $this->unhelpfulCount )
-					)->text() )
+			$this->results['helpful'] = wfMessage( 'articlefeedbackv5-form-helpful-votes-percent' )
+				->numParams( ApiArticleFeedbackv5Utils::percentHelpful(
+					$this->helpfulCount,
+					$this->unhelpfulCount
+				) )
 				->escaped();
 			$this->results['helpful_counts'] = wfMessage( 'articlefeedbackv5-form-helpful-votes-count' )
-				->params( $this->helpfulCount, $this->unhelpfulCount )
+				->numParams( $this->helpfulCount, $this->unhelpfulCount )
 				->escaped();
 
 			// Update net_helpfulness after flagging as helpful/unhelpful.
