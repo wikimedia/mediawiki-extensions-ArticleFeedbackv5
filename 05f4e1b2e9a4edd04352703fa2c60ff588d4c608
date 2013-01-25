@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADiH//8+k\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-01-25T13:49:25Z",
+      "side": 1,
+      "message": "As I understand it, the first variant is called when $1 \u003d\u003d 1.\nSo if there\u0027s only one vote, this will display 1%, which is incorrect (as the result should be either 0% or 100%, depending on that 1 vote).\nWe should probably get rid of the {{PLURAL}} here altogether, as it does not make sense in this context?",
+      "revId": "05f4e1b2e9a4edd04352703fa2c60ff588d4c608",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
