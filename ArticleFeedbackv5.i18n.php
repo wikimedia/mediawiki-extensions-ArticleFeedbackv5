@@ -88,7 +88,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'Is this feedback helpful?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Yes',
 	'articlefeedbackv5-form-helpful-no-label' => 'No',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 found it helpful|$1 found it helpful}}',
+	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% found it helpful}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 yes|$1 yes}} / {{PLURAL:$2|1 no|$2 no}}',
 	'articlefeedbackv5-special-add-feedback' => 'Add your feedback',
 	'articlefeedbackv5-special-survey-button-text' => 'What do you think of this feedback tool?',
@@ -213,7 +213,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-discussion-page' => 'Talk',
 	'articlefeedbackv5-whats-this' => 'Help',
 	'articlefeedbackv5-invalid-page-id' => 'Invalid page ID',
-	'articlefeedbackv5-percent-found' => '$1 found what they were looking for',
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 found what they were looking for}}',
 	'articlefeedbackv5' => 'Article feedback - Central page',
 	'articlefeedbackv5watchlist' => 'Article feedback - My watched pages',
 	'articlefeedbackv5-desc' => 'Article feedback',
@@ -676,7 +676,7 @@ The abuse policy link.',
 	'articlefeedbackv5-form-helpful-label' => 'A question asking if the feedback is helpful.',
 	'articlefeedbackv5-form-helpful-yes-label' => '{{Identical|Yes}}',
 	'articlefeedbackv5-form-helpful-no-label' => '{{Identical|No}}',
-	'articlefeedbackv5-form-helpful-votes' => 'Text explaining how many people found the feedback helpful. Parameters:
+	'articlefeedbackv5-form-helpful-votes-percent' => 'Text explaining how many people found the feedback helpful. Parameters:
 * $1 - the percentage of helpful votes',
 	'articlefeedbackv5-form-helpful-votes-count' => 'Shows how many people found the feedback helpful or unhelpful, as a tooltip when you hover over {{msg-mw:articlefeedbackv5-form-helpful-votes}}.  $1 is the number of helpful votes, and $2 is the number of unhelpful votes.',
 	'articlefeedbackv5-special-add-feedback' => 'Text for a button on the special page that -when clicked- allows people to provide their feedback.',
@@ -867,8 +867,9 @@ Parameters
 	'articlefeedbackv5-discussion-page' => '{{Identical|Discussion}}',
 	'articlefeedbackv5-whats-this' => '{{Identical|Help}}',
 	'articlefeedbackv5-invalid-page-id' => 'Message to be displayed when the feedback page for a non-existiting article page is requested.',
-	'articlefeedbackv5-percent-found' => 'Text describing the amount of people that answered positively to the "did you find what you were looking for" question. Parameters:
-* $1 - the percentage of people that did find what they were looking for, using {{msg-mw|percent}}.',
+	'articlefeedbackv5-found-percent' => 'Text describing the percentage of readers that answered positively to the question "Did you find what you were looking for". Parameters:
+* $1 - the percentage of people that found what they were looking for marked up. Example value: 15%. {{msg-mw|percent}} is used.
+* $2 - the percentage of people that found what they were looking for, used for plural.',
 	'articlefeedbackv5' => 'The title of the feature. It is about reader feedback.
 
 Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a prototype installation.',
