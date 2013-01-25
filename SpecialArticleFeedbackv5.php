@@ -566,7 +566,10 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				), wfMessage( 'percent', $found )->escaped() );
 				$out->addHtml(
 					Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-percent-found-wrap' ) )
-						. $this->msg( 'articlefeedbackv5-percent-found' )->rawParams( $span )->escaped()
+						. $this->msg( 'articlefeedbackv5-found-percent' )
+							->rawParams( $span )
+							->numParams( $found )
+							->escaped()
 						. Html::closeElement( 'div' )
 				);
 			}
