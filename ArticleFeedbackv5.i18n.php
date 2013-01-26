@@ -4012,6 +4012,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author Danmichaelo
+ * @author Erzbischof
  * @author Filzstift
  * @author Geitost
  * @author Kghbln
@@ -4176,8 +4177,8 @@ $messages['de'] = array(
 	'articlefeedbackv5-form-hide-own' => 'Meinen Beitrag verstecken',
 	'articlefeedbackv5-form-unhide-own' => 'Meinen Beitrag wiederherstellen',
 	'articlefeedbackv5-form-abuse' => 'Als missbräuchliche Nutzung kennzeichnen',
-	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 missbräuchliche Kennzeichnung|$1 missbräuchliche Kennzeichnungen}}',
-	'articlefeedbackv5-form-abuse-cleared' => 'missbräuchliche Kennzeichnungen entfernt',
+	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|einmal als missbräuchlich gekennzeichnet|$1-mal als missbräuchlich gekennzeichnet}}',
+	'articlefeedbackv5-form-abuse-cleared' => 'Missbrauchskennzeichnungen entfernt',
 	'articlefeedbackv5-form-delete' => 'Oversight',
 	'articlefeedbackv5-form-oversight' => 'Oversight-Löschung beantragen',
 	'articlefeedbackv5-form-unoversight' => 'Oversight-Antrag zurücknehmen',
