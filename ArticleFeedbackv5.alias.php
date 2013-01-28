@@ -65,6 +65,12 @@ $specialPageAliases['mk'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'ОценувањеНаСтатиив5Набљудувања' ),
 );
 
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'ArticleFeedbackv5' => array( 'ലേഖനത്തിനുള്ളപ്രതികരണംപ5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'ലേഖനത്തിനുള്ളപ്രതികരണംപ5ശ്രദ്ധിക്കുന്നപട്ടിക' ),
+);
+
 /** Norwegian Bokmål (norsk (bokmål)‎) */
 $specialPageAliases['nb'] = array(
 	'ArticleFeedbackv5' => array( 'Artikkeltilbakemelding_v5' ),
