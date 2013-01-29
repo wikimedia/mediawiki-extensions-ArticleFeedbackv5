@@ -24360,6 +24360,8 @@ $3
 	'articlefeedbackv5-disable-flyover-title' => 'Вилучити цей інструмент?',
 	'articlefeedbackv5-disable-flyover-help' => 'Щоб вилучити $1, перейдіть до $2 і відмітьте $3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Відгук про статтю',
+	'articlefeedbackv5-disable-flyover-help-location' => 'вкладки «Зовнішній вигляд» у своїх налаштуваннях',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Перейти до налаштувань',
 );
 
 /** Urdu (اردو)
