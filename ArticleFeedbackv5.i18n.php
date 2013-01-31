@@ -14724,6 +14724,7 @@ Perbeer 't later obbenuuts.",
 );
 
 /** Lithuanian (lietuvių)
+ * @author Audriusa
  * @author Eitvys200
  * @author Ignas693
  * @author Perkunas
@@ -14751,7 +14752,6 @@ $messages['lt'] = array(
 	'articlefeedbackv5-cta6-confirmation-title' => 'Reikia pagalbos redaguojant {{SITENAME}}?',
 	'articlefeedbackv5-overlay-close' => 'Uždaryti',
 	'articlefeedbackv5-error' => 'Įvyko klaida. Bandykite dar kartą vėliau.',
-	'articlefeedbackv5-error-email' => 'El. pašto adresas neteisingas.',
 	'articlefeedbackv5-error-validation' => 'Tikrinimo klaida.',
 	'articlefeedbackv5-error-unknown' => 'Nežinoma klaida',
 	'articlefeedbackv5-error-submit' => 'Formos pateikimo klaida.',
@@ -14807,7 +14807,6 @@ $messages['lt'] = array(
 	'articlefeedbackv5-form-unhide' => 'Nebeslėpti šio pranešimo',
 	'articlefeedbackv5-form-hide-own' => 'Paslėpti mano įrašą',
 	'articlefeedbackv5-form-unhide-own' => 'Nebeslėpti mano įrašo',
-	'articlefeedbackv5-form-helpful' => 'Pažymėti kaip naudinga ($1)',
 	'articlefeedbackv5-form-anon-username' => 'Skaitytojas',
 	'articlefeedbackv5-form-anon-message' => 'Paskelbtas anonimiškai iš $1.',
 	'articlefeedbackv5-error-loading-feedback' => 'Klaida kraunant atsiliepimą',
@@ -14817,7 +14816,6 @@ $messages['lt'] = array(
 	'articlefeedbackv5-whats-this' => 'Kas tai?', # Fuzzy
 	'articlefeedbackv5-invalid-page-id' => 'Neteisingas puslapio ID',
 	'articlefeedbackv5-percent-found' => '$1 rado ko ieškojo',
-	'articlefeedbackv5-overall-rating' => 'Reitingas: $1/5',
 	'articlefeedbackv5' => 'Straipsnis atsiliepimus Panel', # Fuzzy
 	'articlefeedbackv5-desc' => 'Straipsnio atsiliepimai', # Fuzzy
 	'articlefeedbackv5-comment-more' => 'Daugiau',
@@ -14899,6 +14897,7 @@ $messages['lt'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'Ne',
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'Taip, aš radau ko ieškojau.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'Ne, aš neradau ko ieškojau.',
+	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(beliko vienas ženklas).( $1  beliko ženklų)}}',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Puiku. Ar norėtumėte pridėti komentarą?', # Fuzzy
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Kaip šis straipsnis galėtu būti patobulintas?', # Fuzzy
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Atsiprašome dėl to. Ar turite pasiūlymų patobulinimui?',
