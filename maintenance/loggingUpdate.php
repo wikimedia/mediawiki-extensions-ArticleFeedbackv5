@@ -74,8 +74,7 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 				'log_id',
 				'feedback_id' => 'SUBSTRING_INDEX(log_title, "/", -1)',
 				'page_id',
-				'log_action',
-				'log_params'
+				'log_type',
 			),
 			array(
 				"log_id > $continue",
@@ -103,24 +102,21 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 			$continue = $row->log_id;
 
 			// build params
-			$params = @unserialize( $row->log_params );
-			if ( !$params ) {
-				$params = array();
-			}
-			$params['source'] = isset( $params['source'] ) ? $params['source'] : 'unknown';
-			$params['feedbackId'] = (int) $row->feedback_id;
-			$params['pageId'] = (int) $row->page_id;
+			$params = array(
+				'feedbackId' => (int) $row->feedback_id,
+				'pageId' => (int) $row->page_id
+			);
 
 			// fix log type
-			switch ( $row->log_action ) {
+			switch ( $row->log_type ) {
 				case 'hidden':
-					$action = 'hide';
+					$type = 'hide';
 					break;
 				case 'unhidden':
-					$action = 'unhide';
+					$type = 'unhide';
 					break;
 				default:
-					$action = $row->log_action;
+					$type = $row->log_type;
 					break;
 			}
 
@@ -128,7 +124,7 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 			$dbw->update(
 				'logging',
 				array(
-					'log_action' => $action,
+					'log_type' => $type,
 					'log_params' => serialize( $params )
 				),
 				array( 'log_id' => $row->log_id )
