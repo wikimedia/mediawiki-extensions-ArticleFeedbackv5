@@ -359,8 +359,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 			// Abuse filter consequences
 			$matched = array_keys( array_filter( $results ) );
-			list( $actions_taken, $error_msg ) = AbuseFilter::executeFilterActions(
-				$matched, $title, $vars );
+			$status = AbuseFilter::executeFilterActions( $matched, $title, $vars );
+			$actionsTaken = $status->value;
+			$errorMsg = $status->getErrorsArray();
 
 			// Send to the abuse filter log
 			$dbr = wfGetDB( DB_SLAVE );
