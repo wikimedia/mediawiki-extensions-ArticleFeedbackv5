@@ -307,14 +307,14 @@
 						<div class="form-row articleFeedbackv5-bucket1-toggle">\
 							<p class="instructions-left"><html:msg key="bucket1-question-toggle" /></p>\
 							<div class="buttons">\
-								<div class="form-item" rel="yes" id="articleFeedbackv5-bucket1-toggle-wrapper-yes">\
+								<div class="form-item" data-value="yes" id="articleFeedbackv5-bucket1-toggle-wrapper-yes">\
 									<label for="articleFeedbackv5-bucket1-toggle-yes"><html:msg key="bucket1-toggle-found-yes-full" /></label>\
-									<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-yes" value="yes" /></span>\
+									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-yes" value="yes" /></a>\
 									<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-yes" class="query-button" value="yes" />\
 								</div>\
-								<div class="form-item" rel="no" id="articleFeedbackv5-bucket1-toggle-wrapper-no">\
+								<div class="form-item" data-value="no" id="articleFeedbackv5-bucket1-toggle-wrapper-no">\
 									<label for="articleFeedbackv5-bucket1-toggle-no"><html:msg key="bucket1-toggle-found-no-full" /></label>\
-									<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-no" /></span>\
+									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-no" /></a>\
 									<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-no" class="query-button last" value="no" />\
 								</div>\
 								<div class="clear"></div>\
@@ -382,17 +382,23 @@
 
 				// Enable submission and switch out the comment default on toggle selection
 				$block.find( '.articleFeedbackv5-button-placeholder' )
+					.button()
 					.click( function ( e ) {
-						var new_val = $( this ).parent().attr( 'rel' );
+						e.preventDefault();
+
+						var new_val = $( this ).parents( '[data-value]' ).data( 'value' );
 						var old_val = ( new_val == 'yes' ? 'no' : 'yes' );
 						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + new_val );
 						var $other_wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + old_val );
+
 						// make the button blue
-						$wrap.find( 'span' ).addClass( 'articleFeedbackv5-button-placeholder-active' );
-						$other_wrap.find( 'span' ).removeClass( 'articleFeedbackv5-button-placeholder-active' );
+						$( '.articleFeedbackv5-button-placeholder.ui-button-blue' ).removeClass( 'ui-button-blue' );
+						$( this ).addClass( 'ui-button-blue' );
+
 						// check/uncheck radio buttons
 						$wrap.find( 'input' ).attr( 'checked', 'checked' );
 						$other_wrap.find( 'input' ).removeAttr( 'checked' );
+
 						// set default comment message
 						var $txt = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
 						var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
@@ -401,6 +407,7 @@
 							$txt.val( new_val == 'yes' ? def_msg_yes : def_msg_no );
 							$.articleFeedbackv5.currentBucket().currentDefaultText = $txt.val();
 						}
+
 						// enable submission
 						$.articleFeedbackv5.enableSubmission( true );
 					} );
@@ -582,9 +589,7 @@
 
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', url )
-					.stall( 'click', function() {
-						return $.articleFeedbackv5.trackClick( 'button_click' );
-					} );
+					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + 'button_click' }, $.aftTrack.trackEvent );
 
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-cta-button' )
@@ -642,14 +647,14 @@
 						<div class="form-row articleFeedbackv5-bucket6-toggle">\
 							<p class="instructions-left"><html:msg key="bucket6-question-toggle" /></p>\
 							<div class="buttons">\
-								<div class="form-item" rel="yes" id="articleFeedbackv5-bucket6-toggle-wrapper-yes">\
+								<div class="form-item" data-value="yes" id="articleFeedbackv5-bucket6-toggle-wrapper-yes">\
 									<label for="articleFeedbackv5-bucket6-toggle-yes"><html:msg key="bucket6-toggle-found-yes-full" /></label>\
-									<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-yes" value="yes" /></span>\
+									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-yes" value="yes" /></a>\
 									<input type="radio" name="toggle" id="articleFeedbackv5-bucket6-toggle-yes" class="query-button" value="yes" />\
 								</div>\
-								<div class="form-item" rel="no" id="articleFeedbackv5-bucket6-toggle-wrapper-no">\
+								<div class="form-item" data-value="no" id="articleFeedbackv5-bucket6-toggle-wrapper-no">\
 									<label for="articleFeedbackv5-bucket6-toggle-no"><html:msg key="bucket6-toggle-found-no-full" /></label>\
-									<span class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-no" /></span>\
+									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-no" /></a>\
 									<input type="radio" name="toggle" id="articleFeedbackv5-bucket6-toggle-no" class="query-button last" value="no" />\
 								</div>\
 								<div class="clear"></div>\
@@ -721,9 +726,12 @@
 
 				// enable submission and switch out the comment default on toggle selection
 				$block.find( '.articleFeedbackv5-button-placeholder' )
+					.button()
 					.click( function ( e ) {
-						var new_val = $( this ).parent().attr( 'rel' );
-						$.articleFeedbackv5.trackClick( 'click_' + new_val );
+						e.preventDefault();
+
+						var new_val = $( this ).parents( '[data-value]' ).data( 'value' );
+						$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'click_' + new_val );
 
 						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket6-toggle-wrapper-' + new_val );
 
@@ -734,8 +742,8 @@
 						$( '.articleFeedbackv5-title' ).text( mw.msg( 'articlefeedbackv5-bucket6-question-instructions-' + new_val ) );
 
 						// make the button blue
-						$( 'span.articleFeedbackv5-button-placeholder-active' ).removeClass( 'articleFeedbackv5-button-placeholder-active' );
-						$wrap.find( 'span' ).addClass( 'articleFeedbackv5-button-placeholder-active' );
+						$( '.articleFeedbackv5-button-placeholder.ui-button-blue' ).removeClass( 'ui-button-blue' );
+						$( this ).addClass( 'ui-button-blue' );
 
 						// check/uncheck radio buttons
 						$wrap.find( 'input' ).trigger( 'click' ).attr( 'checked', true );
@@ -1003,9 +1011,7 @@
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.editUrl() )
-					.stall( 'click', function() {
-						return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
-					} )
+					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_click' }, $.aftTrack.trackEvent )
 					.button()
 					.addClass( 'ui-button-blue' );
 
@@ -1072,9 +1078,7 @@
 				$block
 					.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) )
-					.stall( 'click', function() {
-						return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
-					} )
+					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_click' }, $.aftTrack.trackEvent )
 					.button()
 					.addClass( 'ui-button-blue' );
 
@@ -1167,9 +1171,7 @@
 					$block
 						.find( '.articleFeedbackv5-cta-button' )
 						.attr( 'href', survey_url + '?c=' + $.articleFeedbackv5.feedbackId )
-						.stall( 'click', function() {
-							return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
-						} )
+						.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_click' }, $.aftTrack.trackEvent )
 						.button()
 						.addClass( 'ui-button-blue' );
 				}
@@ -1306,9 +1308,7 @@
 				} );
 				$block.find( '.articleFeedbackv5-cta-button-signup' )
 					.attr( 'href', signup_url )
-					.stall( 'click', function() {
-						return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_signup_click' );
-					} );
+					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_signup_click' }, $.aftTrack.trackEvent );
 
 				var login_url = mw.config.get( 'wgScript' ) + '?' + $.param( {
 					'title': 'Special:UserLogin',
@@ -1317,9 +1317,7 @@
 				} );
 				$block.find( '.articleFeedbackv5-cta-button-login' )
 					.attr( 'href', login_url )
-					.stall( 'click', function() {
-						return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_login_click' );
-					} );
+					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_login_click' }, $.aftTrack.trackEvent );
 
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.button()
@@ -1421,9 +1419,7 @@
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId )
-					.stall( 'click', function() {
-						return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
-					} )
+					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_click' }, $.aftTrack.trackEvent )
 					.button()
 					.addClass( 'ui-button-blue' );
 
@@ -1505,9 +1501,7 @@
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta6-button-link' ) )
-					.stall( 'click', function() {
-						return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-button_click' );
-					} )
+					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_click' }, $.aftTrack.trackEvent )
 					.button()
 					.addClass( 'ui-button-blue' );
 
@@ -2052,9 +2046,7 @@
 				$linkView.find( 'a' )
 						.text( mw.msg( 'articlefeedbackv5-toolbox-view' ) )
 						.attr( 'href', mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' ) )
-						.stall( 'click', function() {
-							return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-toolbar_click' );
-						} );
+						.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-toolbar_click' }, $.aftTrack.trackEvent );
 
 				return $linkAdd.add( $linkView );
 			},
@@ -2122,7 +2114,7 @@
 			if ( !$.articleFeedbackv5.isLoaded ) {
 				$.articleFeedbackv5.load( 'auto' );
 				// Track form impressions
-				$.articleFeedbackv5.trackClick( 'impression' );
+				$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'impression' );
 			}
 		} );
 		// Keep track of links that must be removed after a successful submission
@@ -2132,9 +2124,9 @@
 		// Track init at 1%
 		if ( Math.random() * 100 < 1 ) {
 			if ( $.articleFeedbackv5.editable ) {
-				$.articleFeedbackv5.trackClick( 'init' );
+				$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'init' );
 			} else {
-				$.articleFeedbackv5.trackClick( 'noedit-init' );
+				$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'noedit-init' );
 			}
 		}
 	};
@@ -2370,18 +2362,6 @@
 		];
 
 		return 'cta_' + ( ctas[$.articleFeedbackv5.ctaId] || 'unknown' );
-	};
-
-	// }}}
-	// {{{ trackClick
-
-	/**
-	 * Tracks a click
-	 *
-	 * @param trackingId string the tracking ID
-	 */
-	$.articleFeedbackv5.trackClick = function ( trackingId ) {
-		return $.aftTrack.trackClick( $.articleFeedbackv5.experiment() + '-' + trackingId );
 	};
 
 	// }}}
@@ -2641,7 +2621,7 @@
 		}
 
 		// Track the submit click
-		$.articleFeedbackv5.trackClick( 'submit_attempt' );
+		$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_attempt' );
 
 		// Send off the ajax request
 		$.ajax( {
@@ -2673,7 +2653,7 @@
 					$.articleFeedbackv5.$toRemove = $( [] );
 
 					// Track the success
-					$.articleFeedbackv5.trackClick( 'submit_success' );
+					$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_success' );
 				} else {
 					var msg = mw.msg( 'articlefeedbackv5-error-unknown' );
 					var code = 'unknown';
@@ -2688,7 +2668,7 @@
 					}
 
 					// Track the error
-					$.articleFeedbackv5.trackClick( 'submit_error_' + code );
+					$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_error_' + code );
 
 					// Set up error state
 					$.articleFeedbackv5.markFormErrors( msg );
@@ -2699,7 +2679,7 @@
 				var code = 'jquery';
 
 				// Track the error
-				$.articleFeedbackv5.trackClick( 'submit_error_' + code );
+				$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_error_' + code );
 
 				// Set up error state
 				$.articleFeedbackv5.markFormErrors( msg );
@@ -2814,9 +2794,7 @@
 
 			title
 				.find( '.articleFeedbackv5-confirmation-follow-up' ).msg( 'articlefeedbackv5-cta-confirmation-message', $.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId )
-				.find( 'a' ).stall( 'click', function() {
-					return $.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-permalink_click' );
-				} );
+				.find( 'a' ).click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-permalink_click' }, $.aftTrack.trackEvent );
 		}
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title' )
 			.empty()
@@ -2844,7 +2822,7 @@
 		$close.hide();
 
 		// Track the event
-		$.articleFeedbackv5.trackClick( $.articleFeedbackv5.ctaName() + '-impression' );
+		$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-impression' );
 
 		$.articleFeedbackv5.nowShowing = 'cta';
 	};
@@ -2965,17 +2943,15 @@
 						'#mw-prefsection-rendering';
 					$flyover.find( '.articleFeedbackv5-disable-flyover-button' )
 						.attr( 'href', prefLink )
-						.stall( 'click', function() {
-							return $.articleFeedbackv5.trackClick( 'disable_gotoprefs_click' );
-						} )
+						.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + 'disable_gotoprefs_click' }, $.aftTrack.trackEvent )
 						.button()
 						.addClass( 'ui-button-blue' );
 
-					$flyover.find('.articleFeedbackv5-form-flyover-closebutton')
+					$flyover.find( '.articleFeedbackv5-form-flyover-closebutton' )
 						.attr( 'href', '#hello' )
 						.attr( 'rel', linkId );
 
-					$.articleFeedbackv5.trackClick( 'disable_flyover-impression' );
+					$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'disable_flyover-impression' );
 					return $flyover.html();
 				}
 			} )
@@ -2989,7 +2965,7 @@
 				} else {
 					$host.tipsy( 'show' );
 					$wrap.addClass( 'articleFeedbackv5-tipsy-active' );
-					$.articleFeedbackv5.trackClick( 'disable_button_click' );
+					$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'disable_button_click' );
 				}
 			} );
 	};
@@ -3158,7 +3134,7 @@
 	$.articleFeedbackv5.clickTriggerLink = function ( $link ) {
 
 		var tracking_id = 'trigger' + $link.data( 'linkId' ) + '-click-overlay';
-		$.articleFeedbackv5.trackClick( tracking_id );
+		$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + tracking_id );
 
 		// trigger the form to appear (if it's not loaded already)
 		if ( !$.articleFeedbackv5.isLoaded ) {

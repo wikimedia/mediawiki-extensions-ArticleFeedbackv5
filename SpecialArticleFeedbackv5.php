@@ -39,7 +39,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 *
 	 * @var int
 	 */
-	protected $pageId = 0;
+	protected $pageId;
 
 	/**
 	 * The title for the page we're operating on (null for central log)
@@ -157,7 +157,10 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$message = wfMessage( "articlefeedbackv5-noteflyover-$flyover-description" )->parse();
 			$vars["mw.msg.articlefeedbackv5-noteflyover-$flyover-description"] = $message;
 		}
-		$this->getOutput()->addJsConfigVars( $vars );
+
+		$out = $this->getOutput();
+		$out->addJsConfigVars( $vars );
+		$out->setArticleRelated( false );
 
 		wfProfileOut( __METHOD__ );
 	}
@@ -207,7 +210,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$fetched = $fetch->run();
 
 		// Build renderer
-		$permalink = ( 'id' == $fetch->getFilter() );
+		$permalink = (bool) $this->feedbackId;
 		$central   = ( $this->pageId ? false : true );
 		$renderer  = new ArticleFeedbackv5Render( $user, $permalink, $central );
 
@@ -579,7 +582,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out = $this->getOutput();
 
 		// Filtering
-		$counts = ApiArticleFeedbackv5Utils::getFilterCounts( $this->pageId );
+		$counts = $this->getFilterCounts();
 
 		$filterLabels = array();
 		foreach ( $this->topFilters as $filter ) {
@@ -755,6 +758,34 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	}
 
 	/**
+	 * Gets the counts for the filter
+	 *
+	 * @return array the counts, as filter => count
+	 */
+	private function getFilterCounts() {
+		if ( !isset( $this->filterCounts ) ) {
+			$rv   = array();
+			$dbr  = wfGetDB( DB_SLAVE );
+			$rows = $dbr->select(
+				'aft_article_filter_count',
+				array(
+					'afc_filter_name',
+					'afc_filter_count'
+				),
+				array(
+					'afc_page_id' => $this->pageId ? $this->pageId : 0
+				),
+				__METHOD__
+			);
+			foreach ( $rows as $row ) {
+				$rv[ $row->afc_filter_name ] = $row->afc_filter_count;
+			}
+			$this->filterCounts = $rv;
+		}
+		return $this->filterCounts;
+	}
+
+	/**
 	 * Sets the filter, sort, and sort direction based on what was passed in
 	 *
 	 * @param $filter string the requested filter
@@ -779,6 +810,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			}
 		}
 
+		// Was a filter requested via (hidden) user preference?
+		if ( !$filter ) {
+			$filter = $this->getUser()->getOption( 'aftv5-last-filter' );
+		}
+
 		// Was a filter requested via cookie?
 		if ( !$filter && $this->feedbackId === null ) {
 			$request = $this->getRequest();
@@ -801,18 +837,18 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			if ( $this->feedbackId ) {
 				$filter = 'id';
 			} elseif ( $this->isAllowed( 'aft-oversighter' ) ) {
-				$filter = $wgArticleFeedbackv5DefaultFilters['deleted'];
+				$filter = $wgArticleFeedbackv5DefaultFilters['aft-oversighter'];
 			} elseif ( $this->isAllowed( 'aft-monitor' ) ) {
-				$filter = $wgArticleFeedbackv5DefaultFilters['hidden'];
+				$filter = $wgArticleFeedbackv5DefaultFilters['aft-monitor'];
 			} elseif ( $this->isAllowed( 'aft-editor' ) ) {
-				$filter = $wgArticleFeedbackv5DefaultFilters['featured'];
+				$filter = $wgArticleFeedbackv5DefaultFilters['aft-editor'];
 			} else {
-				$filter = $wgArticleFeedbackv5DefaultFilters['all'];
+				$filter = $wgArticleFeedbackv5DefaultFilters['aft-reader'];
 			}
 		}
 
 		// Switch from relevant to all comments if the count is zero
-		$counts = ApiArticleFeedbackv5Utils::getFilterCounts( $this->pageId );
+		$counts = $this->getFilterCounts();
 		if ( !isset( $counts[$filter] ) || $counts[$filter] == 0 ) {
 			if ( $filter == 'visible-relevant' ) {
 				$filter = 'visible-comment';

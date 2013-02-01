@@ -225,6 +225,19 @@
 			trigger: 'manual'			// how tooltip is triggered - hover | focus | manual
 		};
 
+		// clicking anywhere (but tipsy) should close an open tipsy
+		$( document ).click( function(e) {
+			if (
+				// if a panel is currently open
+				$.articleFeedbackv5special.currentPanelHostId !== undefined &&
+				// and we clicked outside of the open panel
+				$( e.target ).parents( '.tipsy' ).length == 0
+			) {
+				$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
+				$.articleFeedbackv5special.currentPanelHostId = undefined;
+			}
+		} );
+
 		// Link to help is dependent on the group the user belongs to
 		var helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl' );
 		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'] ) {
@@ -239,7 +252,7 @@
 		var container = $( '<div></div>' );
 		container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
 		for ( var action in $.articleFeedbackv5special.actions ) {
-			if ( $.articleFeedbackv5special.actions[action].hasTipsy && (undefined == $.articleFeedbackv5special.actions[action].tipsyHtml) ) {
+			if ( $.articleFeedbackv5special.actions[action].hasTipsy && $.articleFeedbackv5special.actions[action].tipsyHtml == undefined ) {
 				container.find( '#articleFeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
 				container.find( '#articleFeedbackv5-noteflyover-description' ).html( mw.config.get( 'mw.msg.articlefeedbackv5-noteflyover-' + action + '-description' ) );
 				container.find( '#articleFeedbackv5-noteflyover-label' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
@@ -282,7 +295,7 @@
 		);
 
 		// Track an impression
-		$.aftTrack.trackClick( 'feedback_page-impression-' +
+		$.aftTrack.track( 'feedback_page-impression-' +
 			$.articleFeedbackv5special.referral + '-' +
 			$.articleFeedbackv5special.userType );
 
@@ -430,7 +443,9 @@
 				.attr( 'action', action )
 				.tipsy( {
 					title: function() {
-						return $.articleFeedbackv5special.actions[$( this ).attr( 'action' )].tipsyHtml;
+						var html = $.articleFeedbackv5special.actions[$( this ).attr( 'action' )].tipsyHtml;
+						html = $( '<div>' + html + '</div>' ).localize( { 'prefix': 'articlefeedbackv5-' } ).html();
+						return html;
 					}
 				} );
 		}
@@ -474,7 +489,7 @@
 		$.articleFeedbackv5special.setSortByFilter( id );
 
 		// track the filter change
-		$.aftTrack.trackClick( 'feedback_page-click-' +
+		$.aftTrack.track( 'feedback_page-click-' +
 				'f_' + $.articleFeedbackv5special.getFilterName( id ) + '-' +
 				$.articleFeedbackv5special.referral + '-' +
 				$.articleFeedbackv5special.userType );
@@ -519,6 +534,7 @@
 	 */
 	$.articleFeedbackv5special.toggleTipsy = function( e ) {
 		e.preventDefault();
+		e.stopPropagation();
 		var $l = $( e.target );
 		// are we hiding the current tipsy?
 		if ( $l.attr( 'id' ) == $.articleFeedbackv5special.currentPanelHostId ) {
@@ -1850,7 +1866,7 @@
 			'tipsyHtml': '\
 				<div>\
 					<div class="articleFeedbackv5-flyover-header">\
-						<h3 id="articleFeedbackv5-noteflyover-caption">Activity log</h3>\
+						<h3 id="articleFeedbackv5-noteflyover-caption"><html:msg key="activity-pane-header" /></h3>\
 						<a id="articleFeedbackv5-noteflyover-helpbutton" href="#"></a>\
 						<a id="articleFeedbackv5-noteflyover-close" href="#"></a>\
 					</div>\

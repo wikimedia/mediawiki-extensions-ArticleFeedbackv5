@@ -20,8 +20,9 @@ jQuery( function( $ ) {
 
 		// Build the url to the Special:ArticleFeedbackv5 page
 		var params = { ref: 'watchlist' };
-		var url = mw.config.get( 'wgArticleFeedbackv5SpecialWatchlistUrl' ) +
-			'?' + $.param( params );
+		var url = mw.config.get( 'wgScript' ) + '?title=' +
+		          encodeURIComponent( mw.config.get( 'wgArticleFeedbackv5SpecialWatchlistUrl' ) ) +
+		          '&' + $.param( params );
 
 		// Add the link to the feedback-page next to the title
 		var link = $( '<a id="articlefeedbackv5-watchlist-feedback-link"></a>' );
@@ -29,13 +30,12 @@ jQuery( function( $ ) {
 			.text( mw.msg( 'articlefeedbackv5-watchlist-view-feedback' ) )
 			.html( link.html() + ' &raquo;' )
 			.attr( 'href', url )
-			.stall( 'click', function() {
-				return $.aftTrack.trackClick( 'watchlist_view_feedback-button_click' );
-			} );
+			.click( { trackingId: 'watchlist_view_feedback-button_click' }, $.aftTrack.trackEvent );
+
 		$( '#contentSub' ).append( link );
 
 		// Track an impression
-		$.aftTrack.trackClick( 'watchlist_view_feedback-impression' );
+		$.aftTrack.track( 'watchlist_view_feedback-impression' );
 	}
 
 } );

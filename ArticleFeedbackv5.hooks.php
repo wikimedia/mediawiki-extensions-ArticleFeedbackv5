@@ -9,355 +9,6 @@
 class ArticleFeedbackv5Hooks {
 
 	/**
-	 * Resource loader modules
-	 *
-	 * @var array
-	 */
-	protected static $modules = array(
-		'jquery.articleFeedbackv5.verify' => array(
-			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.verify.js',
-			'dependencies' => array(
-				'mediawiki.util',
-				'mediawiki.user',
-			),
-		),
-		'ext.articleFeedbackv5.startup' => array(
-			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js',
-			'dependencies' => array(
-				'mediawiki.util',
-				'mediawiki.user',
-				'jquery.articleFeedbackv5.verify',
-			),
-		),
-		'ext.articleFeedbackv5' => array(
-			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.js',
-			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.css',
-			'messages' => array(
-				'articlefeedbackv5-sitesub-linktext',
-				'articlefeedbackv5-titlebar-linktext',
-				'articlefeedbackv5-fixedtab-linktext',
-				'articlefeedbackv5-bottomrighttab-linktext',
-				'articlefeedbackv5-section-linktext',
-				'articlefeedbackv5-toolbox-view',
-				'articlefeedbackv5-toolbox-add',
-				'articlefeedbackv5-article-view-feedback'
-			),
-			'dependencies' => array(
-				'ext.Experiments.lib',
-				'jquery.ui.button',
-				'jquery.articleFeedbackv5',
-				'jquery.cookie',
-				'jquery.articleFeedbackv5.track',
-				'jquery.articleFeedbackv5.verify',
-			),
-		),
-		'ext.articleFeedbackv5.ie' => array(
-			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.ie.js',
-			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.ie.css'
-		),
-		'ext.articleFeedbackv5.dashboard' => array(
-			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.js',
-			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.css',
-			'messages' => array(
-				'articlefeedbackv5-no-feedback',
-				'articlefeedbackv5-unsupported-message',
-				'articlefeedbackv5-page-disabled',
-			),
-			'dependencies' => array(
-				'jquery.articleFeedbackv5.verify',
-				'jquery.articleFeedbackv5.special',
-			),
-		),
-		'jquery.articleFeedbackv5.track' => array(
-			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.track.js',
-			'dependencies' => array(
-				'mediawiki.util',
-				'mediawiki.user',
-				'jquery.clickTracking',
-			),
-		),
-		'ext.articleFeedbackv5.talk' => array(
-			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js',
-			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.talk.css',
-			'messages' => array(
-				'articlefeedbackv5-talk-view-feedback',
-			),
-			'dependencies' => array(
-				'ext.Experiments.lib',
-				'jquery.articleFeedbackv5.verify',
-				'jquery.articleFeedbackv5.track',
-			),
-		),
-		'ext.articleFeedbackv5.watchlist' => array(
-			'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.watchlist.js',
-			'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.watchlist.css',
-			'messages' => array(
-				'articlefeedbackv5-watchlist-view-feedback',
-			),
-			'dependencies' => array(
-				'ext.Experiments.lib',
-				'jquery.articleFeedbackv5.track',
-			),
-		),
-		'jquery.articleFeedbackv5' => array(
-			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.js',
-			'styles' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.css',
-			'messages' => array(
-				'articlefeedbackv5-error-email',
-				'articlefeedbackv5-error-validation',
-				'articlefeedbackv5-error-nofeedback',
-				'articlefeedbackv5-error-unknown',
-				'articlefeedbackv5-error-submit',
-				'articlefeedbackv5-cta-thanks',
-				'articlefeedbackv5-error-abuse',
-				'articlefeedbackv5-error-abuse-link',
-				'articlefeedbackv5-error-throttled',
-				'articlefeedbackv5-cta-confirmation-message',
-				'articlefeedbackv5-cta1-confirmation-title',
-				'articlefeedbackv5-cta1-confirmation-call',
-				'articlefeedbackv5-cta1-learn-how',
-				'articlefeedbackv5-cta1-learn-how-url',
-				'articlefeedbackv5-cta1-edit-linktext',
-				'articlefeedbackv5-cta2-confirmation-title',
-				'articlefeedbackv5-cta2-confirmation-call',
-				'articlefeedbackv5-cta2-button-text',
-				'articlefeedbackv5-cta3-confirmation-title',
-				'articlefeedbackv5-cta3-confirmation-call',
-				'articlefeedbackv5-cta3-button-text',
-				'articlefeedbackv5-cta4-confirmation-title',
-				'articlefeedbackv5-cta4-confirmation-call-line1',
-				'articlefeedbackv5-cta4-confirmation-call-line2',
-				'articlefeedbackv5-cta4-button-text-signup',
-				'articlefeedbackv5-cta4-button-text-login',
-				'articlefeedbackv5-cta4-button-text-later',
-				'articlefeedbackv5-cta4-button-text-or',
-				'articlefeedbackv5-cta5-confirmation-title',
-				'articlefeedbackv5-cta5-confirmation-call',
-				'articlefeedbackv5-cta5-button-text',
-				'articlefeedbackv5-cta6-confirmation-title',
-				'articlefeedbackv5-cta6-confirmation-call',
-				'articlefeedbackv5-cta6-button-text',
-				'articlefeedbackv5-cta6-button-link',
-				'articlefeedbackv5-overlay-close',
-				'articlefeedbackv5-bucket1-title',
-				'articlefeedbackv5-bucket1-question-toggle',
-				'articlefeedbackv5-bucket1-toggle-found-yes',
-				'articlefeedbackv5-bucket1-toggle-found-yes-full',
-				'articlefeedbackv5-bucket1-toggle-found-no',
-				'articlefeedbackv5-bucket1-toggle-found-no-full',
-				'articlefeedbackv5-bucket1-question-placeholder-yes',
-				'articlefeedbackv5-bucket1-question-placeholder-no',
-				'articlefeedbackv5-bucket1-form-pending',
-				'articlefeedbackv5-bucket1-form-success',
-				'articlefeedbackv5-bucket1-form-submit',
-				'articlefeedbackv5-bucket4-title',
-				'articlefeedbackv5-bucket4-subhead',
-				'articlefeedbackv5-bucket4-teaser-line1',
-				'articlefeedbackv5-bucket4-teaser-line2',
-				'articlefeedbackv5-bucket4-learn-to-edit',
-				'articlefeedbackv5-bucket4-form-submit',
-				'articlefeedbackv5-bucket4-help-tooltip-info',
-				'articlefeedbackv5-bucket4-noedit-title',
-				'articlefeedbackv5-bucket4-noedit-teaser-line1',
-				'articlefeedbackv5-bucket4-noedit-teaser-line2',
-				'articlefeedbackv5-bucket4-noedit-form-submit',
-				'articlefeedbackv5-bucket6-title',
-				'articlefeedbackv5-bucket6-question-toggle',
-				'articlefeedbackv5-bucket6-toggle-found-yes',
-				'articlefeedbackv5-bucket6-toggle-found-yes-full',
-				'articlefeedbackv5-bucket6-toggle-found-no',
-				'articlefeedbackv5-bucket6-toggle-found-no-full',
-				'articlefeedbackv5-bucket6-feedback-countdown',
-				'articlefeedbackv5-bucket6-question-instructions-yes',
-				'articlefeedbackv5-bucket6-question-placeholder-yes',
-				'articlefeedbackv5-bucket6-question-instructions-no',
-				'articlefeedbackv5-bucket6-question-placeholder-no',
-				'articlefeedbackv5-bucket6-form-pending',
-				'articlefeedbackv5-bucket6-form-success',
-				'articlefeedbackv5-bucket6-form-submit',
-				'articlefeedbackv5-bucket6-backlink-text',
-				'articlefeedbackv5-error',
-				'articlefeedbackv5-help-tooltip-title',
-				'articlefeedbackv5-help-tooltip-info',
-				'articlefeedbackv5-help-tooltip-linktext',
-				'articlefeedbackv5-help-form-linkurl',
-				'articlefeedbackv5-help-form-linkurl-editors',
-				'articlefeedbackv5-help-form-linkurl-monitors',
-				'articlefeedbackv5-help-form-linkurl-oversighters',
-				'articlefeedbackv5-help-transparency-terms',
-				'parentheses',
-				'articlefeedbackv5-disable-flyover-title',
-				'articlefeedbackv5-disable-flyover-help',
-				'articlefeedbackv5-disable-flyover-help-emphasis-text',
-				'articlefeedbackv5-disable-flyover-help-location',
-				'articlefeedbackv5-disable-flyover-help-direction',
-				'articlefeedbackv5-disable-flyover-prefbutton',
-				'articlefeedbackv5-disable-preference',
-				'pipe-separator',
-			),
-			'dependencies' => array(
-				'ext.Experiments.lib',
-				'jquery.appear',
-				'jquery.tipsy',
-				'jquery.json',
-				'jquery.localize',
-				'jquery.ui.button',
-				'jquery.cookie',
-				'jquery.placeholder',
-				'mediawiki.jqueryMsg',
-				'jquery.articleFeedbackv5.track',
-				'jquery.effects.highlight',
-				'mediawiki.Uri',
-			),
-		),
-		'jquery.articleFeedbackv5.special' => array(
-			'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js',
-			'styles'   => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css',
-			'messages' => array(
-				'articlefeedbackv5-error-flagging',
-				'articlefeedbackv5-invalid-feedback-id',
-				'articlefeedbackv5-invalid-feedback-flag',
-				'articlefeedbackv5-form-abuse',
-				'articlefeedbackv5-form-abuse-count',
-				'articlefeedbackv5-abuse-saved',
-				'articlefeedbackv5-abuse-saved-tooltip',
-				'articlefeedbackv5-form-hide',
-				'articlefeedbackv5-form-unhide',
-				'articlefeedbackv5-form-delete',
-				'articlefeedbackv5-form-undelete',
-				'articlefeedbackv5-form-oversight',
-				'articlefeedbackv5-form-unoversight',
-				'articlefeedbackv5-form-decline',
-				'articlefeedbackv5-form-declined',
-				'articlefeedbackv5-comment-more',
-				'articlefeedbackv5-comment-less',
-				'articlefeedbackv5-error-loading-feedback',
-				'articlefeedbackv5-loading-tag',
-				'articlefeedbackv5-permalink-activity-more',
-				'articlefeedbackv5-permalink-activity-fewer',
-
-				'articlefeedbackv5-new-marker',
-				'articlefeedbackv5-deleted-marker',
-				'articlefeedbackv5-hidden-marker',
-				'articlefeedbackv5-featured-marker',
-				'articlefeedbackv5-resolved-marker',
-
-				'articlefeedbackv5-help-special-linkurl',
-				'articlefeedbackv5-help-special-linkurl-editors',
-				'articlefeedbackv5-help-special-linkurl-monitors',
-				'articlefeedbackv5-help-special-linkurl-oversighters',
-
-				'articlefeedbackv5-noteflyover-hide-caption',
-//				'articlefeedbackv5-noteflyover-hide-description',
-				'articlefeedbackv5-noteflyover-hide-label',
-				'articlefeedbackv5-noteflyover-hide-placeholder',
-				'articlefeedbackv5-noteflyover-hide-submit',
-				'articlefeedbackv5-noteflyover-hide-help',
-				'articlefeedbackv5-noteflyover-hide-help-link',
-
-				'articlefeedbackv5-noteflyover-show-caption',
-//				'articlefeedbackv5-noteflyover-show-description',
-				'articlefeedbackv5-noteflyover-show-label',
-				'articlefeedbackv5-noteflyover-show-placeholder',
-				'articlefeedbackv5-noteflyover-show-submit',
-				'articlefeedbackv5-noteflyover-show-help',
-				'articlefeedbackv5-noteflyover-show-help-link',
-
-				'articlefeedbackv5-noteflyover-requestoversight-caption',
-//				'articlefeedbackv5-noteflyover-requestoversight-description',
-				'articlefeedbackv5-noteflyover-requestoversight-label',
-				'articlefeedbackv5-noteflyover-requestoversight-placeholder',
-				'articlefeedbackv5-noteflyover-requestoversight-submit',
-				'articlefeedbackv5-noteflyover-requestoversight-help',
-				'articlefeedbackv5-noteflyover-requestoversight-help-link',
-
-				'articlefeedbackv5-noteflyover-unrequestoversight-caption',
-//				'articlefeedbackv5-noteflyover-unrequestoversight-description',
-				'articlefeedbackv5-noteflyover-unrequestoversight-label',
-				'articlefeedbackv5-noteflyover-unrequestoversight-placeholder',
-				'articlefeedbackv5-noteflyover-unrequestoversight-submit',
-				'articlefeedbackv5-noteflyover-unrequestoversight-help',
-				'articlefeedbackv5-noteflyover-unrequestoversight-help-link',
-
-				'articlefeedbackv5-noteflyover-oversight-caption',
-//				'articlefeedbackv5-noteflyover-oversight-description',
-				'articlefeedbackv5-noteflyover-oversight-label',
-				'articlefeedbackv5-noteflyover-oversight-placeholder',
-				'articlefeedbackv5-noteflyover-oversight-submit',
-				'articlefeedbackv5-noteflyover-oversight-help',
-				'articlefeedbackv5-noteflyover-oversight-help-link',
-
-				'articlefeedbackv5-noteflyover-unoversight-caption',
-//				'articlefeedbackv5-noteflyover-unoversight-description',
-				'articlefeedbackv5-noteflyover-unoversight-label',
-				'articlefeedbackv5-noteflyover-unoversight-placeholder',
-				'articlefeedbackv5-noteflyover-unoversight-submit',
-				'articlefeedbackv5-noteflyover-unoversight-help',
-				'articlefeedbackv5-noteflyover-unoversight-help-link',
-
-				'articlefeedbackv5-noteflyover-declineoversight-caption',
-//				'articlefeedbackv5-noteflyover-declineoversight-description',
-				'articlefeedbackv5-noteflyover-declineoversight-label',
-				'articlefeedbackv5-noteflyover-declineoversight-placeholder',
-				'articlefeedbackv5-noteflyover-declineoversight-submit',
-				'articlefeedbackv5-noteflyover-declineoversight-help',
-				'articlefeedbackv5-noteflyover-declineoversight-help-link',
-
-				'articlefeedbackv5-mask-view-contents',
-				'articlefeedbackv5-mask-text-hidden',
-				'articlefeedbackv5-mask-text-oversight',
-				'articlefeedbackv5-mask-postnumber',
-
-				'articlefeedbackv5-form-feature',
-				'articlefeedbackv5-form-unfeature',
-				'articlefeedbackv5-noteflyover-feature-caption',
-//				'articlefeedbackv5-noteflyover-feature-description',
-				'articlefeedbackv5-noteflyover-feature-label',
-				'articlefeedbackv5-noteflyover-feature-placeholder',
-				'articlefeedbackv5-noteflyover-feature-submit',
-				'articlefeedbackv5-noteflyover-feature-help',
-				'articlefeedbackv5-noteflyover-feature-help-link',
-				'articlefeedbackv5-noteflyover-unfeature-caption',
-//				'articlefeedbackv5-noteflyover-unfeature-description',
-				'articlefeedbackv5-noteflyover-unfeature-label',
-				'articlefeedbackv5-noteflyover-unfeature-placeholder',
-				'articlefeedbackv5-noteflyover-unfeature-submit',
-				'articlefeedbackv5-noteflyover-unfeature-help',
-				'articlefeedbackv5-noteflyover-unfeature-help-link',
-
-				'articlefeedbackv5-form-resolve',
-				'articlefeedbackv5-form-unresolve',
-				'articlefeedbackv5-noteflyover-resolve-caption',
-//				'articlefeedbackv5-noteflyover-resolve-description',
-				'articlefeedbackv5-noteflyover-resolve-label',
-				'articlefeedbackv5-noteflyover-resolve-placeholder',
-				'articlefeedbackv5-noteflyover-resolve-submit',
-				'articlefeedbackv5-noteflyover-resolve-help',
-				'articlefeedbackv5-noteflyover-resolve-help-link',
-				'articlefeedbackv5-noteflyover-unresolve-caption',
-//				'articlefeedbackv5-noteflyover-unresolve-description',
-				'articlefeedbackv5-noteflyover-unresolve-label',
-				'articlefeedbackv5-noteflyover-unresolve-placeholder',
-				'articlefeedbackv5-noteflyover-unresolve-submit',
-				'articlefeedbackv5-noteflyover-unresolve-help',
-				'articlefeedbackv5-noteflyover-unresolve-help-link',
-
-				'articlefeedbackv5-beta-label',
-			),
-			'dependencies' => array(
-				'mediawiki.util',
-				'jquery.tipsy',
-				'jquery.localize',
-				'jquery.articleFeedbackv5.track',
-				'jquery.json',
-				'jquery.ui.button',
-			),
-		),
-	);
-
-	/* Static Methods */
-
-	/**
 	 * LoadExtensionSchemaUpdates hook
 	 *
 	 * @param $updater DatabaseUpdater
@@ -411,7 +62,7 @@ class ArticleFeedbackv5Hooks {
 		// normal page where form can be displayed
 		if ( in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces ) ) {
 			// check if we actually fetched article content & no error page
-			if ( $out->getRevisionTimestamp() != null ) {
+			if ( $out->getRevisionId() != null ) {
 				// load module
 				$out->addJsConfigVars( 'aftv5Article', self::getPageInformation( $title ) );
 				$out->addModules( 'ext.articleFeedbackv5.startup' );
@@ -505,26 +156,6 @@ class ArticleFeedbackv5Hooks {
 	}
 
 	/**
-	 * ResourceLoaderRegisterModules hook
-	 * @param $resourceLoader ResourceLoader
-	 * @return bool
-	 */
-	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
-		global $wgExtensionAssetsPath;
-
-			$localpath = dirname( __FILE__ ) . '/modules';
-			$remotepath = "$wgExtensionAssetsPath/ArticleFeedbackv5/modules";
-
-			foreach ( self::$modules as $name => $resources ) {
-				$resourceLoader->register(
-					$name,
-					new ResourceLoaderFileModule( $resources, $localpath, $remotepath )
-				);
-			}
-			return true;
-	}
-
-	/**
 	 * ResourceLoaderGetConfigVars hook
 	 * @param $vars array
 	 * @return bool
@@ -543,7 +174,6 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5SurveyUrls,
 			$wgArticleFeedbackv5InitialFeedbackPostCountToDisplay,
 			$wgArticleFeedbackv5ThrottleThresholdPostsPerHour,
-			$wgArticleFeedbackv5ArticlePageLink,
 			$wgArticleFeedbackv5TalkPageLink,
 			$wgArticleFeedbackv5WatchlistLink,
 			$wgArticleFeedbackv5DefaultSorts,
@@ -561,8 +191,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5InitialFeedbackPostCountToDisplay'] = $wgArticleFeedbackv5InitialFeedbackPostCountToDisplay;
 		$vars['wgArticleFeedbackv5ThrottleThresholdPostsPerHour'] = $wgArticleFeedbackv5ThrottleThresholdPostsPerHour;
 		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
-		$vars['wgArticleFeedbackv5SpecialWatchlistUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getLinkUrl();
-		$vars['wgArticleFeedbackv5ArticlePageLink'] = $wgArticleFeedbackv5ArticlePageLink;
+		$vars['wgArticleFeedbackv5SpecialWatchlistUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getPrefixedText();
 		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
 		$vars['wgArticleFeedbackv5WatchlistLink'] = $wgArticleFeedbackv5WatchlistLink;
 		$vars['wgArticleFeedbackv5DefaultSorts'] = $wgArticleFeedbackv5DefaultSorts;
@@ -706,15 +335,7 @@ class ArticleFeedbackv5Hooks {
 			return;
 		}
 
-		$params = new FauxRequest( array(
-			'action' => 'clicktracking',
-			'eventid' => $ctEvent . '-' . $event,
-			'token' => $ctToken,
-			'additional' => $userToken . '|' . $title->getText() . '|' . $rev_id,
-			'namespacenumber' => $title->getNamespace()
-		) );
-		$api = new ApiMain( $params, true );
-		$api->execute();
+		// @todo: implement EventLogging if/once requested
 	}
 
 	/**

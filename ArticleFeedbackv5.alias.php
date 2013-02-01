@@ -36,10 +36,22 @@ $specialPageAliases['gl'] = array(
 	'ArticleFeedbackv5' => array( 'Avaliación_de_artigos_v5' ),
 );
 
+/** Italian (italiano) */
+$specialPageAliases['it'] = array(
+	'ArticleFeedbackv5' => array( 'FeedbackVocev5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'FeedbackVocev5OsservatiSpeciali' ),
+);
+
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
 	'ArticleFeedbackv5' => array( '문서피드백v5' ),
 	'ArticleFeedbackv5Watchlist' => array( '문서피드백v5주시문서목록', '문서피드백v5주시목록' ),
+);
+
+/** Cornish (kernowek) */
+$specialPageAliases['kw'] = array(
+	'ArticleFeedbackv5' => array( 'DaslivErthygelv5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'DaslivErthygelv5RolGolyas' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -50,6 +62,13 @@ $specialPageAliases['lb'] = array(
 /** Macedonian (македонски) */
 $specialPageAliases['mk'] = array(
 	'ArticleFeedbackv5' => array( 'ОценувањеНаСтатиив5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'ОценувањеНаСтатиив5Набљудувања' ),
+);
+
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'ArticleFeedbackv5' => array( 'ലേഖനത്തിനുള്ളപ്രതികരണംപ5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'ലേഖനത്തിനുള്ളപ്രതികരണംപ5ശ്രദ്ധിക്കുന്നപട്ടിക' ),
 );
 
 /** Norwegian Bokmål (norsk (bokmål)‎) */
@@ -63,6 +82,12 @@ $specialPageAliases['nl'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'Terugkoppelingv5Volglijst' ),
 );
 
+/** Sicilian (sicilianu) */
+$specialPageAliases['scn'] = array(
+	'ArticleFeedbackv5' => array( 'FeedbackVocev5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'FeedbackVocev5OsservatiSpeciali' ),
+);
+
 /** Tagalog (Tagalog) */
 $specialPageAliases['tl'] = array(
 	'ArticleFeedbackv5' => array( 'Tugon_sa_Artikulo_v5' ),
@@ -70,8 +95,8 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'ArticleFeedbackv5' => array( 'MaddeGeribildirimiv5' ),
-	'ArticleFeedbackv5Watchlist' => array( 'MaddeGeribildirimiv5İzlemeListesi' ),
+	'ArticleFeedbackv5' => array( 'MaddeDeğerlendirmesis5', 'MaddeDeğerlendirmesiv5', 'MaddeDeğerlendirmes5', 'MaddeDeğerlendirmev5', 'MaddeGeribildirimis5', 'MaddeGeribildirimiv5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'MaddeDeğerlendirmesis5İzlemeListesi', 'MaddeDeğerlendirmesiv5İzlemeListesi', 'MaddeDeğerlendirmes5İzlemeListesi', 'MaddeDeğerlendirmev5İzlemeListesi', 'MaddeGeribildirimis5İzlemeListesi', 'MaddeGeribildirimiv5İzlemeListesi' ),
 );
 
 /** Vietnamese (Tiếng Việt) */
