@@ -692,7 +692,7 @@ abstract class DataModel {
 		$new = static::getBackend()->evaluateConditions( $this );
 
 		foreach ( static::$lists as $list => $properties ) {
-			$existsOld = true;
+			$existsOld = $old != null;
 			$existsNew = true;
 			foreach ( static::getListConditions( $list ) as $condition ) {
 				$existsOld &= isset( $old->{$condition} ) && $old->{$condition};
