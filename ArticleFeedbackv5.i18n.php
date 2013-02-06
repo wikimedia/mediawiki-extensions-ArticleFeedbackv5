@@ -14469,6 +14469,7 @@ $messages['ky'] = array(
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Catrope
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -14498,8 +14499,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-cta6-button-text' => 'Besicht den Téisalon',
 	'articlefeedbackv5-overlay-close' => 'Zoumaachen',
 	'articlefeedbackv5-error' => 'Et ass e Feeler geschitt. Probéiert w.e.g. méi spéit nach emol.',
-	'articlefeedbackv5-error-email' => 'Déi Mailadress ass net valabel.',
-	'articlefeedbackv5-error-blocked' => 'Gespaarte Benotzer kënne kee Feedback ginn.',
+	'articlefeedbackv5-error-blocked' => 'Gespaart Benotzer kënne kee Feedback ginn.',
 	'articlefeedbackv5-error-validation' => 'Feeler beim Validéieren.',
 	'articlefeedbackv5-error-unknown' => 'Onbekannte Feeler.',
 	'articlefeedbackv5-error-submit' => 'Feeler beim Späicheren.',
@@ -14585,7 +14585,6 @@ $messages['lb'] = array(
 	'articlefeedbackv5-form-unresolve' => 'Net méi als geléist markéieren',
 	'articlefeedbackv5-form-hide' => 'Verstoppt dës Réckmeldung',
 	'articlefeedbackv5-form-unhide' => 'Dës Réckmeldung nees weisen',
-	'articlefeedbackv5-form-helpful' => 'als hëllefräich markéieren ($1)',
 	'articlefeedbackv5-form-abuse' => 'Als Mëssbrauch markéieren',
 	'articlefeedbackv5-form-delete' => 'Iwwerwaachen',
 	'articlefeedbackv5-form-oversight' => 'Iwwerwaachung ufroen',
@@ -14596,17 +14595,13 @@ $messages['lb'] = array(
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} huet e Problem opgeworf:',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} hat eng Fro:',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} huet e Virschlag gemaach:',
-	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} huet des Säit $2/5 bewäert',
-	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} huet des Säit bewäert:',
 	'articlefeedbackv5-form-anon-username' => 'E Lieser',
-	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} krut kee Feedback-Formulaire gewisen.',
 	'articlefeedbackv5-abuse-saved' => 'Als Mëssbrauch markéiert',
 	'articlefeedbackv5-error-loading-feedback' => 'Feeler beim Luede vum Feedback',
 	'articlefeedbackv5-go-to-article' => 'Artikel weisen',
 	'articlefeedbackv5-discussion-page' => 'Diskussioun',
 	'articlefeedbackv5-whats-this' => 'Hëllef',
 	'articlefeedbackv5-percent-found' => '$1  hu fonnt wat si gesicht hunn',
-	'articlefeedbackv5-overall-rating' => 'Bewäertung: $1/5',
 	'articlefeedbackv5' => 'Artikel-Feedback - Haaptsäit',
 	'articlefeedbackv5watchlist' => 'Artikel Feedback - Meng iwwerwaachte Säiten',
 	'articlefeedbackv5-desc' => 'Artikel Feedback',
