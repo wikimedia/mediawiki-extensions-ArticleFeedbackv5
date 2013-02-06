@@ -72,9 +72,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	/**
 	 * The starting offset
 	 *
-	 * @var int
+	 * @var string
 	 */
-	protected $startingOffset = 0;
+	protected $startingOffset = '';
 
 	/**
 	 * The starting sort direction

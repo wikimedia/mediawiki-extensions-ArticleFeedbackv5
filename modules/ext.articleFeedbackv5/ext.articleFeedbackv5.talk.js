@@ -46,9 +46,7 @@ jQuery( function( $ ) {
 						.text( mw.msg( 'articlefeedbackv5-talk-view-feedback', count ) )
 						.html( link.html() + ' &raquo;' )
 						.attr( 'href', url )
-						.stall( 'click', function() {
-							return $.aftTrack.track( 'talk_page_view_feedback-button_click' );
-						} );
+						.click( { trackingId: 'talk_page_view_feedback-button_click' }, $.aftTrack.trackEvent );
 					$( '#firstHeading' ).append( link );
 
 					// Track an impression

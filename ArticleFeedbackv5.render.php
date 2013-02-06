@@ -677,42 +677,45 @@ class ArticleFeedbackv5Render {
 			}
 		}
 
-		// Add ability to hide own posts for readers, only when we're
-		// certain that the feedback was posted by the current user
 		$ownPost = '';
-		if ( !$this->isAllowed( 'aft-editor' ) && $wgUser->getId() && $wgUser->getId() == intval( $record->aft_user ) ) {
-			// Message can be:
-			//  * articlefeedbackv5-form-(hide|unhide)[-own]
-			if ( $this->feedback->isHidden() ) {
-				$action = 'unhide';
-			} else {
-				$action = 'hide';
-			}
+		if ( !$this->isAllowed( 'aft-editor' ) && $ownFeedback ) {
+			// Add ability to hide own posts for readers, only when we're
+			// certain that the feedback was posted by the current user
+			if ( $wgUser->getId() && $wgUser->getId() == intval( $record->aft_user ) ) {
+				// Message can be:
+				//  * articlefeedbackv5-form-(hide|unhide)[-own]
+				if ( $this->feedback->isHidden() ) {
+					$action = 'unhide';
+				} else {
+					$action = 'hide';
+				}
 
-			$ownPost =
-				Html::rawElement(
-					'div',
-					array( 'class' => 'articleFeedbackv5-comment-foot-hide' ),
+				$ownPost =
+					Html::rawElement(
+						'div',
+						array( 'class' => 'articleFeedbackv5-comment-foot-hide' ),
+						Html::element(
+							'a',
+							array(
+								'id'    => "articleFeedbackv5-$action-link-$id",
+								'class' => "articleFeedbackv5-$action-link",
+								'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-own" )->text(),
+								'href' => '#',
+								'data-action' => $action,
+							),
+							wfMessage( "articlefeedbackv5-form-$action-own" )->text()
+						)
+					);
+
+			// display message they can't monitor own feedback
+			} else {
+				$ownPost .=
 					Html::element(
-						'a',
-						array(
-							'id'    => "articleFeedbackv5-$action-link-$id",
-							'class' => "articleFeedbackv5-$action-link",
-							'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-own" )->text(),
-							'href' => '#',
-							'data-action' => $action,
-						),
-						wfMessage( "articlefeedbackv5-form-$action-own" )->text()
-					)
-				);
-		// display message they can't monitor own feedback
-		} elseif ( $ownFeedback ) {
-			$ownPost .=
-				Html::element(
-					'p',
-					array( 'class' => 'articleFeedbackv5-form-own-feedback' ),
-					wfMessage( 'articlefeedbackv5-form-own-feedback' )
-				);
+						'p',
+						array( 'class' => 'articleFeedbackv5-form-own-feedback' ),
+						wfMessage( 'articlefeedbackv5-form-own-feedback' )
+					);
+			}
 		}
 
 		return

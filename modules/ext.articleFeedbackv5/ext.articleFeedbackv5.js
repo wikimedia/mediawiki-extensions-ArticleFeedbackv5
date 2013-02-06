@@ -50,9 +50,7 @@ if ( mw.config.get( 'wgArticleFeedbackv5ArticlePageLink' ) &&
 				link
 					.text( mw.msg( 'articlefeedbackv5-article-view-feedback', count ) )
 					.attr( 'href', url )
-					.stall( 'click', function() {
-						return $.aftTrack.track( 'article_page_view_feedback-button_click' );
-					} );
+					.click( { trackingId: 'article_page_view_feedback-button_click' }, $.aftTrack.trackEvent );
 
 				var $target = $( '#siteSub' );
 				if ( $target.is( ':visible' ) ) {
