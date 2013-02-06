@@ -290,7 +290,8 @@
 
 /** Tools **/
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools {
-	margin: 10px 0;
+	margin: 20px 0 15px;
+	position: relative;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul {
 	margin: 0;
@@ -305,6 +306,21 @@
 }
 .articleFeedbackv5-hide-link, .articleFeedbackv5-oversight-link {
 	cursor: pointer;
+}
+.articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools p.articleFeedbackv5-form-toolbox-label {
+	display: none;
+	color: #888;
+	position: absolute;
+	top: -20px;
+	margin-left: 5px;
+}
+/* Display only for first... */
+.articleFeedbackv5-feedback:first-of-type .articleFeedbackv5-feedback-tools p.articleFeedbackv5-form-toolbox-label {
+	display: block;
+}
+/* ... on mouseover */
+.articleFeedbackv5-feedback:hover .articleFeedbackv5-feedback-tools p.articleFeedbackv5-form-toolbox-label {
+	display: block;
 }
 .articleFeedbackv5-feedback-tools li a {
 	display: block;
@@ -388,6 +404,14 @@
 
 .articleFeedbackv5-feedback-tools a.articleFeedbackv5-note-link {
 	padding: 3px;
+}
+
+/* Messages that it is not possible to flag own feedback */
+p.articleFeedbackv5-form-own-feedback {
+	color: #888;
+}
+.articleFeedbackv5-feedback-tools p.articleFeedbackv5-form-own-feedback {
+	margin-left: 5px;
 }
 
 /* Flyover Panels */

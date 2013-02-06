@@ -642,11 +642,12 @@ class ArticleFeedbackv5Render {
 						array(
 							'id'    => "articleFeedbackv5-flag-link-$id",
 							'class' => 'articleFeedbackv5-flag-link',
+							'title' => wfMessage( 'articlefeedbackv5-form-tooltip-flag' )->text(),
 							'href'  => '#',
 							'data-action'  => 'flag',
 						),
 						wfMessage(
-							'articlefeedbackv5-form-abuse',
+							'articlefeedbackv5-form-flag',
 							$wgLang->formatNum( $record->aft_flag )
 						)->text()
 					);
@@ -678,7 +679,7 @@ class ArticleFeedbackv5Render {
 
 		// Add ability to hide own posts for readers, only when we're
 		// certain that the feedback was posted by the current user
-		$hideLink = '';
+		$ownPost = '';
 		if ( !$this->isAllowed( 'aft-editor' ) && $wgUser->getId() && $wgUser->getId() == intval( $record->aft_user ) ) {
 			// Message can be:
 			//  * articlefeedbackv5-form-(hide|unhide)[-own]
@@ -688,7 +689,7 @@ class ArticleFeedbackv5Render {
 				$action = 'hide';
 			}
 
-			$hideLink =
+			$ownPost =
 				Html::rawElement(
 					'div',
 					array( 'class' => 'articleFeedbackv5-comment-foot-hide' ),
@@ -697,11 +698,20 @@ class ArticleFeedbackv5Render {
 						array(
 							'id'    => "articleFeedbackv5-$action-link-$id",
 							'class' => "articleFeedbackv5-$action-link",
+							'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-own" )->text(),
 							'href' => '#',
 							'data-action' => $action,
 						),
 						wfMessage( "articlefeedbackv5-form-$action-own" )->text()
 					)
+				);
+		// display message they can't monitor own feedback
+		} elseif ( $ownFeedback ) {
+			$ownPost .=
+				Html::element(
+					'p',
+					array( 'class' => 'articleFeedbackv5-form-own-feedback' ),
+					wfMessage( 'articlefeedbackv5-form-own-feedback' )
 				);
 		}
 
@@ -719,7 +729,8 @@ class ArticleFeedbackv5Render {
 					array( 'class' => 'articleFeedbackv5-comment-foot-abuse' ),
 					$abuseLink . $abuseStats
 				) .
-				$hideLink .
+				$abuseLink .
+				$ownPost .
 				Html::element( 'div', array( 'class' => 'clear' ) )
 			);
 	}
@@ -765,7 +776,7 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered toolbox
 	 */
 	private function renderToolbox( $record ) {
-		// don't render the toolbox if they can't do anything with it.
+		// check if people are allowed to perform actions
 		if ( !$this->isAllowed( 'aft-editor' ) ) {
 			return '';
 		}
@@ -774,15 +785,25 @@ class ArticleFeedbackv5Render {
 
 		// no editor-action has yet been performed, show tools
 		if ( !$record->isFeatured() && !$record->isResolved() && !$record->isNonActionable() && !$record->isHidden() && !$record->isOversighted() ) {
-			$toolbox .=
-				Html::rawElement(
-					'ul',
-					array( 'id' => "articleFeedbackv5-feedback-tools-list-$record->aft_id" ),
-					$this->buildToolboxLink( $record, 'feature' ) .
-					$this->buildToolboxLink( $record, 'resolve' ) .
-					$this->buildToolboxLink( $record, 'noaction' ) .
-					$this->buildToolboxLink( $record, 'hide' )
-			);
+			$tools =
+				$this->buildToolboxLink( $record, 'feature' ) .
+				$this->buildToolboxLink( $record, 'resolve' ) .
+				$this->buildToolboxLink( $record, 'noaction' ) .
+				$this->buildToolboxLink( $record, 'hide' );
+
+			if ( $tools ) {
+				$toolbox .=
+					Html::element(
+						'p',
+						array( 'class' => 'articleFeedbackv5-form-toolbox-label' ),
+						wfMessage( 'articlefeedbackv5-form-toolbox-label' )->text()
+					) .
+					Html::rawElement(
+						'ul',
+						array( 'id' => "articleFeedbackv5-feedback-tools-list-$record->aft_id" ),
+						$tools
+				);
+			}
 
 		// editor-action already performed; display "undo" + details
 		} else {
@@ -835,6 +856,7 @@ class ArticleFeedbackv5Render {
 							array(
 								'id' => "articleFeedbackv5-note-link-$record->aft_id",
 								'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-note-link', // tipsy for given data-action will be loaded when clicked
+								'title' => wfMessage( 'articlefeedbackv5-form-tooltip-note' )->text(),
 								'href' => '#',
 								'data-action' => $last->log_action,
 								'data-log-id' => $last->log_id,
@@ -881,6 +903,16 @@ class ArticleFeedbackv5Render {
 						)
 					);
 			}
+		}
+
+		// display message they can't monitor own feedback
+		if ( ArticleFeedbackv5Utils::isOwnFeedback( $record ) ) {
+			$toolbox .=
+				Html::element(
+					'p',
+					array( 'class' => 'articleFeedbackv5-form-own-feedback' ),
+					wfMessage( 'articlefeedbackv5-form-own-feedback' )
+				);
 		}
 
 		return
@@ -1130,6 +1162,7 @@ class ArticleFeedbackv5Render {
 				array(
 					'id' => "articleFeedbackv5-$action-link-$record->aft_id",
 					'class' => "articleFeedbackv5-$action-link $class",
+					'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action" )->text(),
 					'href' => '#',
 					'data-action' => $action,
 				),

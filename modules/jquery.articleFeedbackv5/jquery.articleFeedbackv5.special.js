@@ -275,6 +275,7 @@
 		// Process preloaded feedback
 		$.articleFeedbackv5special.processControls(
 			mw.config.get( 'afCount' ),
+			mw.config.get( 'afFilterCount' ),
 			mw.config.get( 'afOffset' ),
 			mw.config.get( 'afShowMore' )
 		);
@@ -900,6 +901,7 @@
 					} else {
 						$.articleFeedbackv5special.processControls(
 							data['articlefeedbackv5-view-feedback']['count'],
+							data['articlefeedbackv5-view-feedback']['filtercount'],
 							data['articlefeedbackv5-view-feedback']['offset'],
 							data['articlefeedbackv5-view-feedback']['more']
 						);
@@ -960,11 +962,13 @@
 	 * Processes the controls of a set of responses
 	 *
 	 * @param count        int   the total number of responses
+	 * @param filtercount  int   the number of responses for "featured" filter
 	 * @param offset       index the offset
 	 * @param showMore     bool  whether there are more records to show
 	 */
-	$.articleFeedbackv5special.processControls = function ( count, offset, showMore ) {
+	$.articleFeedbackv5special.processControls = function ( count, filtercount, offset, showMore ) {
 		$( '#articleFeedbackv5-feedback-count-total' ).text( count );
+		$( '#articleFeedbackv5-feedback-count-filter' ).text( filtercount );
 		$.articleFeedbackv5special.listControls.offset = offset;
 		if ( showMore ) {
 			$( '#articleFeedbackv5-show-more').show();

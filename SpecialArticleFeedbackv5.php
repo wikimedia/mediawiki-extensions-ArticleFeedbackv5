@@ -189,6 +189,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			)
 		);
 
+		$filterCount = ArticleFeedbackv5Model::getCount( 'featured', $this->pageId );
 		$totalCount = ArticleFeedbackv5Model::getCount( '*', $this->pageId );
 
 		// JS variables
@@ -199,6 +200,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->addJsConfigVars( 'afStartingSort', $this->startingSort );
 		$out->addJsConfigVars( 'afStartingSortDirection', $this->startingSortDirection );
 		$out->addJsConfigVars( 'afCount', $totalCount );
+		$out->addJsConfigVars( 'afFilterCount', $filterCount );
 		$out->addJsConfigVars( 'afOffset', $records ? $records->nextOffset() : 0 );
 		$out->addJsConfigVars( 'afShowMore', $records ? $records->hasMore() : false );
 	}
@@ -219,6 +221,20 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// list page
 		} else {
+			/*
+			 * Hack: if a filter is requested but there is no feedback,
+			 * and there _is_ feedback in the "unreviewed" filter, display that
+			 * one instead.
+			 */
+			if (
+				ArticleFeedbackv5Model::getCount( $this->startingFilter, $this->pageId ) == 0 &&
+				ArticleFeedbackv5Model::getCount( 'unreviewed', $this->pageId ) > 0
+			) {
+				$this->startingFilter = 'unreviewed';
+				$this->startingSort = 'relevance';
+				$this->startingSortDirection = 'desc';
+			}
+
 			return ArticleFeedbackv5Model::getList(
 				$this->startingFilter,
 				$this->pageId,
@@ -327,7 +343,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		// Showing {count} posts
-		$amount = ArticleFeedbackv5Model::getCount( '*', $this->pageId );
+		$filterCount = ArticleFeedbackv5Model::getCount( 'featured', $this->pageId );
+		$totalCount = ArticleFeedbackv5Model::getCount( '*', $this->pageId );
 		$count =
 			Html::rawElement(
 				'div',
@@ -337,16 +354,23 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					Html::element(
 						'span',
 						array( 'id' => 'articleFeedbackv5-feedback-count-total' ),
-						$amount // this figure will be filled out through JS
-					)
+						$totalCount // this figure will be filled out through JS
+					),
+					$totalCount,
+					Html::element(
+						'span',
+						array( 'id' => 'articleFeedbackv5-feedback-count-filter' ),
+						$filterCount // this figure will be filled out through JS
+					),
+					$filterCount
 				)->text() .
-					$watchlistLink
+				$watchlistLink
 			);
 
 		// % found
 		$percent = '';
 		if ( $this->pageId ) {
-			$found = ArticleFeedbackv5Model::getCountFound( $this->pageId ) / ( $amount ?: 1 ) * 100;
+			$found = ArticleFeedbackv5Model::getCountFound( $this->pageId ) / ( $totalCount ?: 1 ) * 100;
 			if ( $found ) {
 				$class = $found >= 50 ? 'positive' : 'negative';
 
