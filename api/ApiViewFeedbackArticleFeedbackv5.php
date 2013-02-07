@@ -32,6 +32,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$html     = '';
 		$length   = 0;
 
+		// no page id = central feedback page = null (getAllowedParams will have messed up null values)
+		if ( !$params['pageid'] ) {
+			$params['pageid'] = null;
+		}
+
 		// Save filter in user preference
 		$user = $this->getUser();
 		$user->setOption( 'aftv5-last-filter', $params['filter'] );
@@ -115,8 +120,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'pageid'        => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'integer',
-				ApiBase::PARAM_DFLT     => 0
+				ApiBase::PARAM_TYPE     => 'integer'
 			),
 			'watchlist'     => array(
 				ApiBase::PARAM_REQUIRED => false,

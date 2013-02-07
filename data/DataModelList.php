@@ -40,7 +40,7 @@ class DataModelList extends FakeResultWrapper {
 	 * @return bool
 	 */
 	public function hasMore() {
-		return $this->nextOffset !== null;
+		return $this->nextOffset !== '';
 	}
 
 	/**

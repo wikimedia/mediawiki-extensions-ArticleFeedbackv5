@@ -701,7 +701,9 @@ abstract class DataModel {
 
 			// update list totals
 			$difference = (int) $existsNew - (int) $existsOld;
-			$this->updateCountCache( $list, $this->{static::getShardColumn()}, $difference );
+			if ( $difference != 0 ) {
+				$this->updateCountCache( $list, $this->{static::getShardColumn()}, $difference );
+			}
 
 			// check if sort has changed
 			$sortChanged = false;
