@@ -1,7 +1,7 @@
 /*
  * Script for Article Feedback Extension
  */
-( function( $ ) {
+( function( mw, $ ) {
 
 /* Load at the bottom of the article */
 var $aftDiv = $( '<div id="mw-articlefeedbackv5"></div>' );
@@ -45,4 +45,4 @@ if ( $.aftTrack.clickTrackingOn ) {
 	} );
 }
 
-} )( jQuery );
+} )( mediaWiki, jQuery );

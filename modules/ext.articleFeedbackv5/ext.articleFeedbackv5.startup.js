@@ -3,7 +3,7 @@
  */
 
 /*** Main entry point ***/
-jQuery( function( $ ) {
+( function( mw, $ ) {
 
 	// Is AFT enabled here?
 	var enable = $.aftVerify.verify( 'article' );
@@ -25,4 +25,4 @@ jQuery( function( $ ) {
 		}
 	}
 
-} );
+} )( mediaWiki, jQuery );

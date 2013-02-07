@@ -10,7 +10,7 @@
  * @version    $Id$
  */
 
-( function ( $ ) {
+( function ( mw, $ ) {
 
 // {{{ aftTrack definition
 
@@ -234,4 +234,4 @@
 
 // }}}
 
-} )( jQuery );
+} )( mediaWiki, jQuery );

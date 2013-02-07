@@ -27,7 +27,7 @@
  * @version    $Id$
  */
 
-( function ( $ ) {
+( function ( mw, $ ) {
 
 // {{{ articleFeedbackv5special definition
 
@@ -1905,5 +1905,5 @@
 
 // }}}
 
-} )( jQuery );
+} )( mediaWiki, jQuery );
 

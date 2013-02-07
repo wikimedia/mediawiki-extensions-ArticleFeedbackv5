@@ -4,7 +4,7 @@
  */
 
 /*** Main entry point ***/
-jQuery( function( $ ) {
+( function( mw, $ ) {
 
 	var showError = function( message ) {
 		var warning = $( '#articlefeedbackv5-header-message' ).text( message );
@@ -27,4 +27,4 @@ jQuery( function( $ ) {
 		}
 	}
 
-} );
+} )( mediaWiki, jQuery );

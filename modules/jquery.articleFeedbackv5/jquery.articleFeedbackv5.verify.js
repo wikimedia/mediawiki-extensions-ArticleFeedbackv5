@@ -10,7 +10,7 @@
  * @version    $Id$
  */
 
-( function ( $ ) {
+( function ( mw, $ ) {
 
 // {{{ aftVerify definition
 
@@ -228,4 +228,4 @@
 
 // }}}
 
-} )( jQuery );
+} )( mediaWiki, jQuery );

@@ -3,7 +3,7 @@
  */
 
 /*** Main entry point ***/
-jQuery( function( $ ) {
+( function( mw, $ ) {
 
 	// Check if the talk page link can be shown
 	if ( mw.config.get( 'wgArticleFeedbackv5TalkPageLink' ) ) {
@@ -39,4 +39,4 @@ jQuery( function( $ ) {
 		$.aftTrack.track( 'talk_page_view_feedback-impression' );
 	}
 
-} );
+} )( mediaWiki, jQuery );
