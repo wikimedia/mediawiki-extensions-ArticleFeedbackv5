@@ -684,7 +684,7 @@ class ArticleFeedbackv5Render {
 			if ( $wgUser->getId() && $wgUser->getId() == intval( $record->aft_user ) ) {
 				// Message can be:
 				//  * articlefeedbackv5-form-(hide|unhide)[-own]
-				if ( $this->feedback->isHidden() ) {
+				if ( $record->isHidden() ) {
 					$action = 'unhide';
 				} else {
 					$action = 'hide';
