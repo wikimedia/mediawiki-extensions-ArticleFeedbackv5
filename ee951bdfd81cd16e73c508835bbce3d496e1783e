@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADi3//+8s\u003d",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 417
+      },
+      "writtenOn": "2013-02-07T16:38:18Z",
+      "side": 1,
+      "message": "Just a note that this will change the behavior - the old version will execute when document is ready (like $(document).ready(...)), while the new one will be executed immediately. Same applies to other files.\n\nhttp://api.jquery.com/jQuery/#jQuery3",
+      "revId": "ee951bdfd81cd16e73c508835bbce3d496e1783e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
