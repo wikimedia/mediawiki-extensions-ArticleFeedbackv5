@@ -3784,8 +3784,13 @@ tým {{grammar:2sg|{{SITENAME}}}}',
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  * @author Pwyll
+ * @author Robin Owain
  */
 $messages['cy'] = array(
+	'articlefeedbackv5-cta-thanks' => 'Diolch!',
+	'articlefeedbackv5-cta1-learn-how' => 'Dysgwch sut i olygu',
+	'articlefeedbackv5-cta1-edit-linktext' => 'Golygwch y dudalen',
+	'articlefeedbackv5-cta4-button-text-login' => 'Mewngofnodi',
 	'articlefeedbackv5-error' => 'Cafwyd gwall. Ceisiwch eto nes ymlaen os gwelwch yn dda.',
 	'articlefeedbackv5' => 'Dangosfwrdd adborth erthygl', # Fuzzy
 	'articlefeedbackv5-desc' => 'Adborth am erthygl',
