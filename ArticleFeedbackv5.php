@@ -174,9 +174,6 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// Let users be tracked for a month, and then rebucket them, allowing some
 	// churn.
 	'expires' => 30,
-	// Track the event of users being bucketed - so we can be sure the odds
-	// worked out right. [LATER - depends on UDP logging being set up]
-	'tracked' => false,
 );
 
 // Bucket settings for click tracking across the plugin
@@ -202,8 +199,6 @@ $wgArticleFeedbackv5Tracking = array(
 	'version' => 11,
 	// Let users be tracked for a month, and then rebucket them, allowing some churn
 	'expires' => 30,
-	// Do not track the event of users being bucketed, at least for now.
-	'tracked' => false,
 );
 
 // Bucket settings for links to the feedback form
@@ -236,9 +231,6 @@ $wgArticleFeedbackv5LinkBuckets = array(
 	// Let users be tracked for a month, and then rebucket them, allowing some
 	// churn.
 	'expires' => 30,
-	// Track the event of users being bucketed - so we can be sure the odds
-	// worked out right. [LATER - depends on UDP logging being set up]
-	'tracked' => false
 );
 
 // Bucket settings for CTAs
@@ -267,9 +259,6 @@ $wgArticleFeedbackv5CTABuckets = array(
 	'version' => 7,
 	// Users may constantly be rebucketed, giving them new CTAs each time.
 	'expires' => 0,
-	// Track the event of users being bucketed - so we can be sure the odds
-	// worked out right. [LATER - depends on UDP logging being set up]
-	'tracked' => false,
 );
 
 /**
