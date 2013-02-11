@@ -77,8 +77,8 @@ class ArticleFeedbackv5Render {
 
 		// Special cases: when the record is deleted/hidden, but the user
 		// doesn't have permission to see it
-		if ( ( $record->isOversighted() && !$this->isAllowed( 'aft-oversighter' ) ) ||
-			( $record->isHidden() && !$this->isAllowed( 'aft-monitor' ) ) ) {
+		if ( ( $record->isOversighted() && !ArticleFeedbackv5Activity::canPerformAction( 'oversight', $this->user ) ) ||
+			( $record->isHidden() && !ArticleFeedbackv5Activity::canPerformAction( 'hide', $this->user ) ) ) {
 			// Called via permalink: show an empty gray mask
 			if ( $this->isPermalink ) {
 				return $this->emptyGrayMask( $record );
@@ -644,7 +644,7 @@ class ArticleFeedbackv5Render {
 							'class' => 'articleFeedbackv5-flag-link',
 							'title' => wfMessage( 'articlefeedbackv5-form-tooltip-flag' )->text(),
 							'href'  => '#',
-							'data-action'  => 'flag',
+							'data-action' => 'flag',
 						),
 						wfMessage(
 							'articlefeedbackv5-form-flag',
@@ -732,7 +732,6 @@ class ArticleFeedbackv5Render {
 					array( 'class' => 'articleFeedbackv5-comment-foot-abuse' ),
 					$abuseLink . $abuseStats
 				) .
-				$abuseLink .
 				$ownPost .
 				Html::element( 'div', array( 'class' => 'clear' ) )
 			);
