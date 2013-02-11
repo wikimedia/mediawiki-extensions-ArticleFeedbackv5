@@ -16,6 +16,24 @@
       "revId": "f5e70abeddc542f1c1cc1d3ec05061a2ac480263",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADi3//7Xo\u003d",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2013-02-11T15:17:15Z",
+      "side": 1,
+      "message": "maybe this should be $status-\u003egetHTML()? or $status-\u003egetWikiText()?",
+      "parentUuid": "AAADi3//+Is\u003d",
+      "revId": "f5e70abeddc542f1c1cc1d3ec05061a2ac480263",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
