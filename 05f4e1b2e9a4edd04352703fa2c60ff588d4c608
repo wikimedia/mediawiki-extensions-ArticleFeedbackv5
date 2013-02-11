@@ -16,6 +16,24 @@
       "revId": "05f4e1b2e9a4edd04352703fa2c60ff588d4c608",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAADi3//7uA\u003d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 93
+      },
+      "writtenOn": "2013-02-11T08:57:19Z",
+      "side": 1,
+      "message": "I\u0027d drop the plural too.",
+      "parentUuid": "AAADiH//8+k\u003d",
+      "revId": "05f4e1b2e9a4edd04352703fa2c60ff588d4c608",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
