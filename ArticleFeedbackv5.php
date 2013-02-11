@@ -521,6 +521,7 @@ $wgResourceModules['ext.articleFeedbackv5'] = array(
 		'articlefeedbackv5-article-view-feedback',
 	),
 	'dependencies' => array(
+		'mediawiki.jqueryMsg',
 		'jquery.ui.button',
 		'jquery.articleFeedbackv5',
 		'jquery.cookie',
