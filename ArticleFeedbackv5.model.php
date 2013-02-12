@@ -111,27 +111,27 @@ class ArticleFeedbackv5Model extends DataModel {
 			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_flag > 0' ),
 		),
 		'useful' => array(
-			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_feature = 1' ),
+			'permissions' => 'aft-editor',
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_feature = 1' ),
 		),
 		'resolved' => array(
-			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_resolve = 1' ),
+			'permissions' => 'aft-editor',
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_resolve = 1' ),
 		),
 		'noaction' => array(
-			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_noaction = 1' ),
+			'permissions' => 'aft-editor',
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_noaction = 1' ),
 		),
 		'inappropriate' => array(
-			'permissions' => 'aft-reader',
+			'permissions' => 'aft-editor',
 			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 1' ),
 		),
 //		'archived' => array(
-//			'permissions' => 'aft-reader',
+//			'permissions' => 'aft-editor',
 //			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0' ), // @todo: work on this one ...
 //		),
 		'allcomment' => array(
-			'permissions' => 'aft-reader',
+			'permissions' => 'aft-editor',
 			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0' ),
 		),
 

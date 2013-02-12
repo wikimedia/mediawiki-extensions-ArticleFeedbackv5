@@ -48,13 +48,6 @@
 	padding: 0 10px 0 0;
 	float: right;
 }
-.articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools {
-	float: right;
-	width: 300px;
-}
-.articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools-details {
-	padding-left: 10px;
-}
 
 /** Feedback row **/
 .articleFeedbackv5-feedback {
@@ -124,11 +117,6 @@
 }
 .articleFeedbackv5-comment-toggle {
 	margin-left: 7px;
-}
-.articleFeedbackv5-feedback-hide .articleFeedbackv5-comment-wrap,
-.articleFeedbackv5-feedback-oversight .articleFeedbackv5-comment-wrap {
-	opacity : 0.4;
-	filter: alpha(opacity=40);
 }
 
 /** Comment block: bottom line **/
@@ -290,11 +278,13 @@
 
 /** Tools **/
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools {
-	margin: 20px 0 15px;
+	padding: 10px;
 	position: relative;
+	float: right;
+	width: 280px; /* 300px toolbox width minus the 10 padding on both sides */
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul {
-	margin: 0;
+	margin: 10px 0 5px;
 	list-style: none;
 	list-style-image: none; /* IE7 is stubborn & specifically needs it like this */
 }
@@ -311,14 +301,9 @@
 	display: none;
 	color: #888;
 	position: absolute;
-	top: -20px;
-	margin-left: 5px;
+	top: 0;
 }
-/* Display only for first... */
-.articleFeedbackv5-feedback:first-of-type .articleFeedbackv5-feedback-tools p.articleFeedbackv5-form-toolbox-label {
-	display: block;
-}
-/* ... on mouseover */
+/* Display only on mouseover */
 .articleFeedbackv5-feedback:hover .articleFeedbackv5-feedback-tools p.articleFeedbackv5-form-toolbox-label {
 	display: block;
 }
@@ -409,9 +394,6 @@
 /* Messages that it is not possible to flag own feedback */
 p.articleFeedbackv5-form-own-feedback {
 	color: #888;
-}
-.articleFeedbackv5-feedback-tools p.articleFeedbackv5-form-own-feedback {
-	margin-left: 5px;
 }
 
 /* Flyover Panels */
@@ -586,6 +568,14 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 
 /** Screen for hidden/deleted **/
 .articleFeedbackv5-post-screen {
+	/*
+	 * NOTE: The below line will "disable" the mask for hidden/oversighted posts.
+	 * I didn't want to completely remove the functionality, so this is the work-
+	 * around: perhaps some day, in some cases, it will prove useful once again.
+	 * Removing this line below will reinstate the mask (which is now only hidden)
+	 */
+	display: none;
+
 	z-index: 99;
 	position: absolute;
 	top: 0;
