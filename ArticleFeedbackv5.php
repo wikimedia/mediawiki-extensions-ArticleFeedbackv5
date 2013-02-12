@@ -452,6 +452,7 @@ if ( $wgArticleFeedbackv5AbuseFilterGroup != 'default' ) {
 }
 
 // Add custom action handlers for AbuseFilter
+$wgAbuseFilterAvailableActions[] = 'aftv5resolve';
 $wgAbuseFilterAvailableActions[] = 'aftv5flagabuse';
 $wgAbuseFilterAvailableActions[] = 'aftv5hide';
 $wgAbuseFilterAvailableActions[] = 'aftv5requestoversight';

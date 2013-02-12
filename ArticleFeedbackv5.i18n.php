@@ -568,6 +568,8 @@ $4',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Go to my preferences',
 
 	/* Custom AbuseFilter actions */
+	'abusefilter-edit-action-aftv5resolve' => '(Article Feedback) Auto-resolve',
+	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Automatically resolved. Rule: $1',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Article Feedback) Auto-flag as abuse',
 	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Automatically flagged as abuse. Rule: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Article Feedback) Auto-hide',
@@ -1426,6 +1428,8 @@ Name of the AFTv5 log filter on the Special:Log page',
 
 It must be: {{msg-mw|mypreferences}} > {{msg-mw|prefs-rendering}}',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'The text of the big glossy button used to send the user to their preferences in the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
+	'abusefilter-edit-action-aftv5resolve' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in the feedback being auto-resolved',
+	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'The note to add to the activity log when auto-resolving a new feedback post (<code>$1</code> is the name of the filter)',
 	'abusefilter-edit-action-aftv5flagabuse' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in the feedback being auto-flagged as abuse',
 	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'The note to add to the activity log when auto-flagging a new feedback post as abuse (<code>$1</code> is the name of the filter)',
 	'abusefilter-edit-action-aftv5hide' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in the feedback being auto-hidden',
