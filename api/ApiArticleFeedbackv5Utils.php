@@ -356,7 +356,7 @@ class ApiArticleFeedbackv5Utils {
 		}
 
 		if ( $displayTime > 0 ) {
-			if ( in_array( $displayBlock, array( 'years', 'months', 'weeks' ) ) ) {
+			if ( in_array( $displayBlock, array( 'years', 'months', 'weeks' , 'days' ) ) ) {
 				$messageKey = 'articlefeedbackv5-timestamp-' . $displayBlock;
 			} else {
 				$messageKey = $displayBlock;

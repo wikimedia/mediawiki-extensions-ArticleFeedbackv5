@@ -229,6 +229,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 year|$1 years}}',
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 month|$1 months}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 week|$1 weeks}}',
+	'articlefeedbackv5-timestamp-days' => '{{PLURAL:$1|$1 day|$1 days}}',
 	'articlefeedbackv5-timestamp-seconds' => 'less than 1 minute',
 	'articlefeedbackv5-mask-view-contents' => 'View contents',
 	'articlefeedbackv5-mask-text-autohide' => 'This post #$1 {{GENDER:$2|was autohidden by $2}} $3 ago.',
@@ -886,6 +887,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-timestamp-years' => 'Years part - $1 is the years parameter',
 	'articlefeedbackv5-timestamp-months' => 'Months part - $1 is the months parameter',
 	'articlefeedbackv5-timestamp-weeks' => 'Weeks part - $1 is the weeks parameter',
+	'articlefeedbackv5-timestamp-days' => 'Days part - $1 is the days parameter',
 	'articlefeedbackv5-timestamp-seconds' => 'Less than a minute - no parameters are required',
 	'articlefeedbackv5-mask-view-contents' => 'Pseudo-link to make it obvious that clicking there will reveal the original feedback content',
 	'articlefeedbackv5-mask-text-autohide' => 'Text to be displayed on the autohidden post mask:
