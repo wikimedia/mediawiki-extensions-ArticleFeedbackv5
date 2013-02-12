@@ -331,6 +331,7 @@ class ArticleFeedbackv5Utils {
 			if ( $callback && is_callable( $callback ) ) {
 				global $wgAbuseFilterCustomActionsHandlers;
 
+				$wgAbuseFilterCustomActionsHandlers['aftv5resolve'] = $callback;
 				$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $callback;
 				$wgAbuseFilterCustomActionsHandlers['aftv5hide'] = $callback;
 				$wgAbuseFilterCustomActionsHandlers['aftv5request'] = $callback;
