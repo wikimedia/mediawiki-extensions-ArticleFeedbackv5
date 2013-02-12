@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Dk6.r.Yk",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-12T09:42:16Z",
+      "side": 1,
+      "message": "Could you also add this one to the \u0027qqq\u0027 section (to provide the relevant information to translators)?",
+      "revId": "5ee90bb83885621bb69295c5c8f620c04e695273",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
