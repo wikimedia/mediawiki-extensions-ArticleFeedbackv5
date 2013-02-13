@@ -234,18 +234,26 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-feature-marker {
 	/* @embed */
 	background: url(images/toolbox_feature.png);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(images/toolbox_feature.svg);
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-resolve-marker {
 	/* @embed */
 	background: url(images/toolbox_resolve.png);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(images/toolbox_resolve.svg);
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-noaction-marker {
 	/* @embed */
 	background: url(images/toolbox_noaction.png);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(images/toolbox_noaction.svg);
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-hide-marker {
 	/* @embed */
 	background: url(images/toolbox_hide.png);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(images/toolbox_hide.svg);
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-oversight-marker {
 	/* @embed */
