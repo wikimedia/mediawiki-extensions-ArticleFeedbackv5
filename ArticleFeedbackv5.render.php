@@ -851,9 +851,9 @@ class ArticleFeedbackv5Render {
 				$activityLink = '';
 				if (
 					// there is a comment - display it
-					$last->log_comment == '' ||
+					$last->log_comment != '' ||
 					// there is no comment, but it's out own action and we'll have the possibility to add a comment
-					( $last->log_user && $last->log_user == $this->user->getId() && $last->log_comment == '' )
+					( $last->log_comment == '' && $last->log_user && $last->log_user == $this->user->getId() )
 				) {
 					$activityLink .=
 						// link for activity log popup
@@ -870,7 +870,7 @@ class ArticleFeedbackv5Render {
 
 					// if current user is the one who performed the action, add a link to
 					// leave a note to clarify why the action was performed
-					if ( $last->log_user && $last->log_user == $this->user->getId() && $last->log_comment == '' ) {
+					if ( $last->log_comment == '' && $last->log_user && $last->log_user == $this->user->getId() ) {
 						$activityLink .=
 							Html::element(
 								'a',
