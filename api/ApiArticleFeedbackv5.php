@@ -359,8 +359,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 			// Abuse filter consequences
 			$matched = array_keys( array_filter( $results ) );
-			list( $actions_taken, $error_msg ) = AbuseFilter::executeFilterActions(
-				$matched, $title, $vars );
+			$status = AbuseFilter::executeFilterActions( $matched, $title, $vars );
+			$actionsTaken = $status->value;
 
 			// Send to the abuse filter log
 			$dbr = wfGetDB( DB_SLAVE );
@@ -374,12 +374,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'afl_ip' => $wgRequest->getIP()
 			);
 			$action = $vars->getVar( 'ACTION' )->toString();
-			AbuseFilter::addLogEntries( $actions_taken, $log_template, $action, $vars, $wgArticleFeedbackv5AbuseFilterGroup );
+			AbuseFilter::addLogEntries( $actionsTaken, $log_template, $action, $vars, $wgArticleFeedbackv5AbuseFilterGroup );
 
 			// Local consequences (right now: disallow only)
 			$disallow = false;
 			$warn = false;
-			foreach ( $actions_taken as $id => $actions ) {
+			foreach ( $actionsTaken as $id => $actions ) {
 				foreach ( $actions as $action ) {
 					if ( 'disallow' == $action) {
 						$disallow = true;
@@ -389,8 +389,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 					}
 				}
 			}
+
 			if ( $warn ) {
-				$this->warnForAbuse = $error_msg;
+				$this->warnForAbuse = $status->getHTML();
 				return true;
 			}
 			if ( $disallow ) {
