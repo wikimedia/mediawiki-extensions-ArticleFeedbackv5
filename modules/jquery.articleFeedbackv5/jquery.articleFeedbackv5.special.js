@@ -760,6 +760,9 @@
 								.removeClass( 'activity-empty' )
 								.text( mw.msg( 'articlefeedbackv5-viewactivity' ) );
 
+							// re-enable ajax flagging
+							$.articleFeedbackv5special.listControls.disabled = false;
+
 							return true;
 						}
 					}
@@ -773,6 +776,7 @@
 				$.articleFeedbackv5special.listControls.disabled = false;
 			}
 		} );
+
 		return false;
 	};
 
