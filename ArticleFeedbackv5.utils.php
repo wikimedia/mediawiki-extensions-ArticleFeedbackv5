@@ -239,7 +239,16 @@ class ArticleFeedbackv5Utils {
 	public static function validateAbuseFilter( $value, $pageId, $callback = null ) {
 		// Check AbuseFilter, if installed
 		if ( class_exists( 'AbuseFilter' ) ) {
-			global $wgUser;
+			global $wgUser, $wgArticleFeedbackv5AbuseFilterGroup;
+
+			// Add custom action handlers
+			if ( $callback && is_callable( $callback ) ) {
+				global $wgAbuseFilterCustomActionsHandlers;
+
+				$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $callback;
+				$wgAbuseFilterCustomActionsHandlers['aftv5hide'] = $callback;
+				$wgAbuseFilterCustomActionsHandlers['aftv5request'] = $callback;
+			}
 
 			// Set up variables
 			$title = Title::newFromID( $pageId );
@@ -251,52 +260,9 @@ class ArticleFeedbackv5Utils {
 			$vars->setVar( 'new_wikitext', $value );
 			$vars->setLazyLoadVar( 'new_size', 'length', array( 'length-var' => 'new_wikitext' ) );
 
-			// Add custom action handlers
-			if ( $callback && is_callable( $callback ) ) {
-				global $wgAbuseFilterCustomActionsHandlers;
+			$status = AbuseFilter::filterAction( $vars, $title, $wgArticleFeedbackv5AbuseFilterGroup );
 
-				$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $callback;
-				$wgAbuseFilterCustomActionsHandlers['aftv5hide'] = $callback;
-				$wgAbuseFilterCustomActionsHandlers['aftv5request'] = $callback;
-			}
-
-			// Check the filters (mimics AbuseFilter::filterAction)
-			global $wgArticleFeedbackv5AbuseFilterGroup;
-			$vars->setVar( 'context', 'filter' );
-			$vars->setVar( 'timestamp', time() );
-			$results = AbuseFilter::checkAllFilters( $vars, $wgArticleFeedbackv5AbuseFilterGroup );
-			if ( count( array_filter( $results ) ) == 0 ) {
-				return false;
-			}
-
-			// Abuse filter consequences
-			$matched = array_keys( array_filter( $results ) );
-			$status = AbuseFilter::executeFilterActions( $matched, $title, $vars );
-			$actionsTaken = $status->value;
-			$errorMsg = $status->getErrorsArray();
-
-			// Send to the abuse filter log
-			$dbr = wfGetDB( DB_SLAVE );
-			global $wgRequest;
-			$logTemplate = array(
-				'afl_user' => $wgUser->getId(),
-				'afl_user_text' => $wgUser->getName(),
-				'afl_timestamp' => $dbr->timestamp( wfTimestampNow() ),
-				'afl_namespace' => $title->getNamespace(),
-				'afl_title' => $title->getDBkey(),
-				'afl_ip' => $wgRequest->getIP()
-			);
-			$action = $vars->getVar( 'ACTION' )->toString();
-			AbuseFilter::addLogEntries( $actionsTaken, $logTemplate, $action, $vars, $wgArticleFeedbackv5AbuseFilterGroup );
-
-			// Local consequences
-			foreach ( $actionsTaken as $id => $actions ) {
-				foreach ( array( 'disallow', 'warn' ) as $level ) {
-					if ( in_array( $level, $actions ) ) {
-						return $errorMsg;
-					}
-				}
-			}
+			return $status->isOK() ? false : $status->getErrorsArray();
 		}
 
 		return false;
