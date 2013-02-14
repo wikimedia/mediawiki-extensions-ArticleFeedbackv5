@@ -52,6 +52,24 @@
       "revId": "05f4e1b2e9a4edd04352703fa2c60ff588d4c608",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DlQIy2A8",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-14T11:55:57Z",
+      "side": 1,
+      "message": "@Siebrand: you\u0027re right \u0026 my comment did not make sense at all",
+      "parentUuid": "DlYI8iC4",
+      "revId": "05f4e1b2e9a4edd04352703fa2c60ff588d4c608",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
