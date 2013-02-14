@@ -34,6 +34,24 @@
       "revId": "05f4e1b2e9a4edd04352703fa2c60ff588d4c608",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DlYI8iC4",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-02-14T08:54:16Z",
+      "side": 1,
+      "message": "@Matthias: I think your interpretation is incorrect. $1 is 1 if out of 100 people, 1 person found something helpful.\n\n$1 here is:\n\n ApiArticleFeedbackv5Utils::percentHelpful(\n   $this-\u003ehelpfulCount,\n   $this-\u003eunhelpfulCount\n )\n\n @return int the percentage\n\nWhat does have to be changed, is that this currently uses the same form twice in PLURAL. That could be a single element. I\u0027ll update the code.",
+      "parentUuid": "AAADi3//7uA\u003d",
+      "revId": "05f4e1b2e9a4edd04352703fa2c60ff588d4c608",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
