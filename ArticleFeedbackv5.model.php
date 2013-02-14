@@ -90,7 +90,7 @@ class ArticleFeedbackv5Model extends DataModel {
 		// reader lists
 		'featured' => array(
 			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_net_helpful > 0 OR aft_feature = 1' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_net_helpful > 0 OR aft_feature = 1' ),
 		),
 		'unreviewed' => array(
 			'permissions' => 'aft-reader',
