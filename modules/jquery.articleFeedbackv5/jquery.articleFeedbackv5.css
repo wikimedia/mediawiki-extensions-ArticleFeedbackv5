@@ -2,15 +2,22 @@
  * Styles for Article Feedback Plugin
  */
 
-.articleFeedbackv5 {
-	position: relative;
-	display: inline-block;
-	margin-top: 1em;
-}
-
 @media print {
 	.articleFeedbackv5 {
 		display: none;
+	}
+}
+
+/*
+ * For some reason, when not explicitly overwritten here, IE will not
+ * display the node (for screen) because it's set to display: none
+ * for @media print.
+ */
+@media screen {
+	.articleFeedbackv5 {
+		display: inline-block;
+		position: relative;
+		margin-top: 1em;
 	}
 }
 
