@@ -180,8 +180,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-unnoaction' => 'Undo',
 	'articlefeedbackv5-form-hide' => 'Inappropriate',
 	'articlefeedbackv5-form-unhide' => 'Undo',
-	'articlefeedbackv5-form-hide-own' => 'Mark own post as inappropriate',
-	'articlefeedbackv5-form-unhide-own' => 'Unmark own post as inappropriate',
+	'articlefeedbackv5-form-hide-own' => 'Hide my post',
+	'articlefeedbackv5-form-unhide-own' => 'Show my post',
 	'articlefeedbackv5-form-helpful' => 'Mark as helpful ($1)',
 	'articlefeedbackv5-form-flag' => 'Flag as abuse',
 	'articlefeedbackv5-form-oversight' => 'Oversight',
@@ -385,7 +385,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-unnoaction-help-link' => '#unnoaction',
 
 	/* Request oversight panel */
-	'articlefeedbackv5-noteflyover-request-caption' => 'Requested oversight',
+	'articlefeedbackv5-noteflyover-request-caption' => 'Request oversight',
 	'articlefeedbackv5-noteflyover-request-description' => 'Before requesting oversight, please check that this post
 includes one of these issues:
 * phone numbers
@@ -409,7 +409,7 @@ includes one of these issues:
 	'articlefeedbackv5-noteflyover-unrequest-help-link' => '#unoversight-request',
 
 	/* Oversight this post panel */
-	'articlefeedbackv5-noteflyover-oversight-caption' => 'Oversighted this post',
+	'articlefeedbackv5-noteflyover-oversight-caption' => 'Oversight this post',
 	'articlefeedbackv5-noteflyover-oversight-description' => '',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Add a note',
 	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Why did you oversight this post?',

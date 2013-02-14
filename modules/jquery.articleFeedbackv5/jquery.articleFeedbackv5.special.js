@@ -98,6 +98,13 @@
 	$.articleFeedbackv5special.currentPanelHostId = undefined;
 
 	/**
+	 * Callback to be executed when tipsy form is submitted
+	 *
+	 * @var function
+	 */
+	$.articleFeedbackv5special.tipsyCallback = undefined;
+
+	/**
 	 * Highlighted feedback ID
 	 *
 	 * @var int
@@ -378,8 +385,10 @@
 		// Bind actions
 		for ( var action in $.articleFeedbackv5special.actions ) {
 			$( document ).on( 'click touchstart', '.articleFeedbackv5-' + action + '-link', function( e ) {
+				var action = $( this ).data( 'action' );
+
 				if ( !$( this ).hasClass( 'inactive' ) ) {
-					$.articleFeedbackv5special.actions[$( e.target ).data( 'action' )].click( e );
+					$.articleFeedbackv5special.actions[action].click( e );
 				}
 			} );
 		}
@@ -388,15 +397,21 @@
 		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-submit', function( e ) {
 			e.preventDefault();
 
-			var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
-			var id = $container.data( 'id' );
-			var logId = $container.find( '#articleFeedbackv5-note-link-' + id ).data( 'log-id' );
+			if ( typeof $.articleFeedbackv5special.tipsyCallback == 'function' ) {
+				// execute and clear callback function
+				$.articleFeedbackv5special.tipsyCallback( e );
+				$.articleFeedbackv5special.tipsyCallback = undefined;
+			} else {
+				var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
+				var id = $container.data( 'id' );
+				var logId = $container.find( '#articleFeedbackv5-note-link-' + id ).data( 'log-id' );
 
-			$.articleFeedbackv5special.addNote(
-				id,
-				logId,
-				$( '#articleFeedbackv5-noteflyover-note' ).attr( 'value' )
-			);
+				$.articleFeedbackv5special.addNote(
+					id,
+					logId,
+					$( '#articleFeedbackv5-noteflyover-note' ).attr( 'value' )
+				);
+			}
 
 			// hide tipsy
 			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
@@ -1172,7 +1187,7 @@
 	 */
 	$.articleFeedbackv5special.canBeFlagged = function( $post ) {
 		return $post.find( '.articleFeedbackv5-post-screen' ).length == 0 ||
-			mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-monitor'];
+			mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'];
 	};
 
 	// }}}
@@ -1500,7 +1515,26 @@
 		'request': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.flagAction,
+			'click': function() {
+				// tipsy has been opened - bind flag submission
+
+				$.articleFeedbackv5special.tipsyCallback = function( e ) {
+					var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
+					if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+						var id = $container.data( 'id' );
+						var pageId = $container.data( 'pageid' );
+						var note = $( '#articleFeedbackv5-noteflyover-note' ).val();
+
+						$.articleFeedbackv5special.flagFeedback(
+							id,
+							pageId,
+							'request',
+							note,
+							{}
+						);
+					}
+				};
+			},
 			'onSuccess': function( id, data ) {
 				$.articleFeedbackv5special.setActivityFlag( id, 'request', true );
 			}
@@ -1544,7 +1578,26 @@
 		'oversight': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.flagAction,
+			'click': function() {
+				// tipsy has been opened - bind flag submission
+
+				$.articleFeedbackv5special.tipsyCallback = function( e ) {
+					var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
+					if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+						var id = $container.data( 'id' );
+						var pageId = $container.data( 'pageid' );
+						var note = $( '#articleFeedbackv5-noteflyover-note' ).val();
+
+						$.articleFeedbackv5special.flagFeedback(
+							id,
+							pageId,
+							'oversight',
+							note,
+							{}
+						);
+					}
+				};
+			},
 			'onSuccess': function( id, data ) {
 				// activity flag is not particularly useful here
 			}

@@ -678,37 +678,43 @@ class ArticleFeedbackv5Render {
 		}
 
 		$ownPost = '';
-		if ( !$this->isAllowed( 'aft-editor' ) && $ownFeedback ) {
+		if ( $ownFeedback ) {
 			// Add ability to hide own posts for readers, only when we're
 			// certain that the feedback was posted by the current user
 			if ( $wgUser->getId() && $wgUser->getId() == intval( $record->aft_user ) ) {
-				// Message can be:
-				//  * articlefeedbackv5-form-(hide|unhide)[-own]
-				if ( $record->isHidden() ) {
-					$action = 'unhide';
-				} else {
+				// get details on last editor action
+				$last = $record->getLastEditorActivity( $record );
+
+				$action = '';
+				if ( !$record->isHidden() ) {
 					$action = 'hide';
+				// can not unhide a post someone else has hidden!
+				} elseif ( $last->log_user && $last->log_user == $this->user->getId() ) {
+					$action = 'unhide';
 				}
 
-				$ownPost =
-					Html::rawElement(
-						'div',
-						array( 'class' => 'articleFeedbackv5-comment-foot-hide' ),
-						Html::element(
-							'a',
-							array(
-								'id'    => "articleFeedbackv5-$action-link-$id",
-								'class' => "articleFeedbackv5-$action-link",
-								'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-own" )->text(),
-								'href' => '#',
-								'data-action' => $action,
-							),
-							wfMessage( "articlefeedbackv5-form-$action-own" )->text()
-						)
-					);
+				if ( $action ) {
+					$ownPost =
+						Html::rawElement(
+							'div',
+							array( 'class' => 'articleFeedbackv5-comment-foot-hide' ),
+							Html::element(
+								'a',
+								array(
+									'id'    => "articleFeedbackv5-$action-link-$id",
+									'class' => "articleFeedbackv5-$action-link articleFeedbackv5-$action-own-link",
+									'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-own" )->text(),
+									'href' => '#',
+									'data-action' => $action,
+								),
+								wfMessage( "articlefeedbackv5-form-$action-own" )->text()
+							)
+						);
+				}
 
-			// display message they can't monitor own feedback
-			} else {
+			// display message they can't monitor own feedback - unless they're
+			// editor, in which case they'll see this message in toolbox
+			} elseif ( !$this->isAllowed( 'aft-editor' ) ) {
 				$ownPost .=
 					Html::element(
 						'p',
@@ -832,7 +838,7 @@ class ArticleFeedbackv5Render {
 						 * make sure this user knows about it & is no longer capable to request for this entry.
 						 */
 						$class = $record->isDeclined() ? 'inactive' : '';
-						$tools .= $this->buildToolboxLink( $record, 'request', $class );
+						$tools .= $this->buildToolboxLink( $record, 'request', "articleFeedbackv5-tipsy-link $class" );
 					}
 
 					if ( $this->isAllowed( 'aft-oversighter' ) ) {
@@ -843,7 +849,7 @@ class ArticleFeedbackv5Render {
 								$class = $record->isDeclined() ? 'inactive' : '';
 								$tools .= $this->buildToolboxLink( $record, 'decline', $class );
 							}
-							$tools .= $this->buildToolboxLink( $record, 'oversight' );
+							$tools .= $this->buildToolboxLink( $record, 'oversight', 'articleFeedbackv5-tipsy-link' );
 						}
 					}
 				}
