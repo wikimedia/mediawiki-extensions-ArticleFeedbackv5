@@ -52,7 +52,7 @@ class ArticleFeedbackv5Log {
 		$note = $wgLang->truncate( $notes, $wgArticleFeedbackv5MaxActivityNoteLength );
 
 		// add page id & feedback id to params
-		$params['feedbackId'] = (int) $itemId;
+		$params['feedbackId'] = (string) $itemId;
 		$params['pageId'] = (int) $pageId;
 
 		// insert logging entry
@@ -105,12 +105,6 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 		if ( !$page ) {
 			return '';
 		}
-
-		// @todo: these 2 lines will spoof a new url which will lead to the central feedback page with the
-		// selected post on top; this is due to a couple of oversighters reporting issues with the permalink page.
-		// once these issues have been solved, these lines should be removed
-		$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5' );
-		$target = Title::makeTitle( NS_SPECIAL, $centralPageName, $parameters['feedbackId'] )->getFullText();
 
 		$language = $skin === null ? $wgContLang : $wgLang;
 		$action = wfMessage( "logentry-articlefeedbackv5-$action" )
