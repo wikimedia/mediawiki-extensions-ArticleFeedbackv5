@@ -826,6 +826,11 @@ class ArticleFeedbackv5Render {
 				if ( !$record->isOversighted() ) {
 					// undo-link
 					$tools .= $this->buildToolboxLink( $record, "un$last->log_action" );
+
+					// if feedback is featured, it should still be resolvable in 1 click
+					if ( $record->isFeatured() && !$record->isResolved() ) {
+						$tools .= $this->buildToolboxLink( $record, 'resolve' );
+					}
 				}
 
 				// build oversight-related tools

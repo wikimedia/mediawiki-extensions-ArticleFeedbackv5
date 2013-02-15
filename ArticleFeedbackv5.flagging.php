@@ -322,7 +322,6 @@ class ArticleFeedbackv5Flagging {
 	 */
 	private function feature( $notes, $toggle ) {
 		if ( $this->feedback->isFeatured() ||
-			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isHidden()
 		) {
@@ -331,7 +330,7 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		$this->feedback->aft_feature = 1;
-		$this->feedback->aft_resolve = 0;
+//		$this->feedback->aft_resolve = 0; // don't touch resolved flag
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_hide = 0;
 
@@ -354,7 +353,6 @@ class ArticleFeedbackv5Flagging {
 	 */
 	private function unfeature( $notes, $toggle ) {
 		if ( !$this->feedback->isFeatured() ||
-			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isHidden()
 		) {
@@ -363,7 +361,7 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		$this->feedback->aft_feature = 0;
-		$this->feedback->aft_resolve = 0;
+//		$this->feedback->aft_resolve = 0; // don't touch resolved flag
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_hide = 0;
 
@@ -383,8 +381,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return array|bool
 	 */
 	private function resolve( $notes, $toggle ) {
-		if ( $this->feedback->isFeatured() ||
-			$this->feedback->isResolved() ||
+		if ( $this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isHidden()
 		) {
@@ -392,7 +389,7 @@ class ArticleFeedbackv5Flagging {
 			return false;
 		}
 
-		$this->feedback->aft_feature = 0;
+//		$this->feedback->aft_feature = 0; // don't touch featured flag
 		$this->feedback->aft_resolve = 1;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_hide = 0;
@@ -410,8 +407,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return array|bool
 	 */
 	private function unresolve( $notes, $toggle ) {
-		if ( $this->feedback->isFeatured() ||
-			!$this->feedback->isResolved() ||
+		if ( !$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isHidden()
 		) {
@@ -419,7 +415,7 @@ class ArticleFeedbackv5Flagging {
 			return false;
 		}
 
-		$this->feedback->aft_feature = 0;
+//		$this->feedback->aft_feature = 0; // don't touch featured flag
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_hide = 0;
