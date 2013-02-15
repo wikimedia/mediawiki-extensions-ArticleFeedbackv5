@@ -72,7 +72,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 
 		wfProfileOut( __METHOD__ );
 
-		return $status;
+		return $status->isOK();
 	}
 
 	/**
