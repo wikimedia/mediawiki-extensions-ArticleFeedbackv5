@@ -274,6 +274,12 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-oversight-marker {
 	/* @embed */
 	background: url(images/toolbox_oversight.png);
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_oversight.svg);
+	/* @embed */
+	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_oversight.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(images/toolbox_oversight.svg);
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feature-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-resolve-marker,
@@ -404,6 +410,12 @@
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-oversight-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_oversight.png);
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_oversight.svg);
+	/* @embed */
+	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_oversight.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(images/toolbox_oversight.svg);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-decline-link:before {
 	/* @embed */
