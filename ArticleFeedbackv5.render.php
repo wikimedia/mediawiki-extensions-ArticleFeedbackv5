@@ -829,6 +829,16 @@ class ArticleFeedbackv5Render {
 
 					// if feedback is featured, it should still be resolvable in 1 click
 					if ( $record->isFeatured() && !$record->isResolved() ) {
+						/*
+						 * If feedback is featured and just unresolved, the "undo" button for
+						 * the earlier feature will not exist ($last == 'unresolve', so it will
+						 * have attempted to create 'ununresolve', as that action does not exist).
+						 * Force the creation of the undo feature button here ;)
+						 */
+						if ( $last->log_action == 'unresolve' ) {
+							$tools .= $this->buildToolboxLink( $record, 'unfeature' );
+						}
+
 						$tools .= $this->buildToolboxLink( $record, 'resolve' );
 					}
 				}
