@@ -1148,9 +1148,8 @@ Permission to see AFT on protected pages (see http://www.mediawiki.org/wiki/Arti
 	'right-aft-oversighter' => '{{doc-right|aft-oversighter}}
 Permission to oversight feedback (see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions)',
 	'log-name-articlefeedbackv5' => '{{doc-logpage}}
-
-Name of the AFTv5 log filter on the Special:Log page',
-	'log-description-articlefeedbackv5' => 'Description (header) of the AFTv5 activity log on the Special:Log page',
+Name of the AFTv5 log filter on the [[Special:Log]] page.',
+	'log-description-articlefeedbackv5' => 'Description (header) of the AFTv5 activity log on the [[Special:Log]] page.',
 	'logentry-articlefeedbackv5-oversight' => 'Log entry for when a user "oversights" (deletes; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page) a feedback post:
 * <code>$1</code>: A link to the performer
 * <code>$2</code>: The performer\'s id, gender support
@@ -13612,6 +13611,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-form-helpful-label' => '이 피드백이 도움이 되었습니까?',
 	'articlefeedbackv5-form-helpful-yes-label' => '예',
 	'articlefeedbackv5-form-helpful-no-label' => '아니오',
+	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1%는 유용하다고 평가했습니다}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '예 $1표 / 아니오 $2표',
 	'articlefeedbackv5-special-add-feedback' => '피드백 추가',
 	'articlefeedbackv5-special-survey-button-text' => '이 피드백 도구에 대해 어떻게 생각하나요?',
@@ -13734,7 +13734,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-discussion-page' => '토론',
 	'articlefeedbackv5-whats-this' => '도움말',
 	'articlefeedbackv5-invalid-page-id' => '잘못된 페이지 ID',
-	'articlefeedbackv5-found-percent' => '$1(이)가 그들이 찾고 있던 것을 발견함', # Fuzzy
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1(이)가 찾고 있던 것을 발견했습니다}}',
 	'articlefeedbackv5' => '문서 평가 - 중앙 문서',
 	'articlefeedbackv5watchlist' => '문서 평가 - 내가 주시하는 문서',
 	'articlefeedbackv5-desc' => '문서 평가',
@@ -17256,7 +17256,7 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-form-helpful-label' => 'Is deze terugkoppeling nuttig?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Ja',
 	'articlefeedbackv5-form-helpful-no-label' => 'Nee',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|Eén persoon vond|$1 mensen vonden}} dit nuttig',
+	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% vond het nuttig}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 keer ja|$1 keer ja}} / {{PLURAL:$2|1 keer nee|$2 keer nee}}',
 	'articlefeedbackv5-special-add-feedback' => 'Geef uw terugkoppeling',
 	'articlefeedbackv5-special-survey-button-text' => 'Wat vind u van deze functie om terugkoppeling te geven?',
@@ -17379,7 +17379,7 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-discussion-page' => 'Overleg',
 	'articlefeedbackv5-whats-this' => 'Hulp',
 	'articlefeedbackv5-invalid-page-id' => 'Ongeldig pagina-ID',
-	'articlefeedbackv5-percent-found' => '$1 heeft gevonden wat hij of zij zocht',
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 heeft gevonden waar hij/zij naar zocht}}',
 	'articlefeedbackv5' => 'Paginaterugkoppeling - Centrale pagina',
 	'articlefeedbackv5watchlist' => "Paginaterugkoppeling - Pagina's op mijn volglijst",
 	'articlefeedbackv5-desc' => 'Paginabeoordeling',
@@ -17395,6 +17395,7 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|één jaar|$1 jaar}}',
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|één maand|$1 maanden}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|één week|$1 weken}}',
+	'articlefeedbackv5-timestamp-days' => '{{PLURAL:$1|$1 dag|$1 dagen}}',
 	'articlefeedbackv5-timestamp-seconds' => 'minder dan 1 minuut',
 	'articlefeedbackv5-mask-view-contents' => 'Inhoud bekijken',
 	'articlefeedbackv5-mask-text-autohide' => 'Het bericht #$1 is $3 geleden automatisch verborgen door {{GENDER:$2|$2}}.',
@@ -23620,6 +23621,13 @@ $messages['tr'] = array(
  * @author Tifinaghes
  */
 $messages['tzm'] = array(
+	'articlefeedbackv5-cta-thanks' => 'ⵜⴰⵏⵎⵎⵉⵔⵜ!',
+	'articlefeedbackv5-cta2-button-text' => 'ⵙⵙⵏ ⵓⴳⴰⵔ',
+	'articlefeedbackv5-cta4-button-text-or' => 'ⵏⵖ',
+	'articlefeedbackv5-contribs-status-action-flag' => 'ⵙⵙⵍⵎⴻⴷ',
+	'articlefeedbackv5-form-tools-label' => 'ⵉⵎⴰⵙⵙⵏ',
+	'articlefeedbackv5-form-helpful-yes-label' => 'ⵢⴰⵀ',
+	'articlefeedbackv5-special-filter-comment' => 'ⵎⴰⵕⵕ ⵜⴰⵏⵏⴰⵢⵉⵏ ($1)',
 	'articlefeedbackv5-noteflyover-show-help' => 'ⵙⵙⵏ ⵓⴳⴰⵔ',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'ⵢⴰⵀ',
 );
