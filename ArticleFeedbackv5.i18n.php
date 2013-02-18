@@ -337,7 +337,7 @@ includes one of these issues:
 * e-mail addresses
 * pornographic links
 * defamatory/libelous comments about a person
-* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy other criteria for oversight]',
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy other criteria for oversight]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Add a note to explain why you are requesting oversight',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Why are you requesting oversight?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Request oversight',
