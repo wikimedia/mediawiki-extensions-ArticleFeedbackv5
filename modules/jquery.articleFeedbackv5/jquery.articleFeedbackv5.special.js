@@ -379,7 +379,11 @@
 
 		// When clicking the hidden post mask, remove the mask
 		$( document ).on( 'click touchstart', '.articleFeedbackv5-post-screen', function() {
-			$( this ).hide();
+			// don't hide if it's only an empty mask (= when insufficient permissions
+			// won't let the user see the feedback's details)
+			if ( $( this ).parent( '.articleFeedbackv5-feedback-emptymask' ) === 0 ) {
+				$( this ).hide();
+			}
 		});
 
 		// Bind actions

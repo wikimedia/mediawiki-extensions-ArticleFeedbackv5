@@ -488,8 +488,19 @@ class ArticleFeedbackv5Model extends DataModel {
 	public static function preload( array $entries ) {
 		parent::preload( $entries );
 
-		// load editor activity for all requested entries
-		ArticleFeedbackv5Activity::getLastEditorActivity( $entries );
+		/*
+		 * Only editors will have the detailed toolbox, so only for editors,
+		 * we'll need to know the details of the last editor activity.
+		 * Readers will almost never need these details (apart from when
+		 * visiting the permalink of a hidden post, in which case the mask
+		 * will display details of when the post was hidden), so abstain
+		 * from preloading this data.
+		 */
+		global $wgUser;
+		if ( $wgUser->isAllowed( 'aft-editor' ) ) {
+			// load editor activity for all requested entries
+			ArticleFeedbackv5Activity::getLastEditorActivity( $entries );
+		}
 	}
 
 	/**
@@ -563,8 +574,10 @@ class ArticleFeedbackv5Model extends DataModel {
 
 		if ( $activity === false ) {
 			$activity = ArticleFeedbackv5Activity::getLastEditorActivity( array( array( 'id' => $this->{static::getIdColumn()}, 'shard' => $this->{static::getShardColumn()} ) ) );
-			foreach( $activity as $activity ) {
-				break;
+			if ( $activity ) {
+				foreach( $activity as $activity ) {
+					break;
+				}
 			}
 		}
 

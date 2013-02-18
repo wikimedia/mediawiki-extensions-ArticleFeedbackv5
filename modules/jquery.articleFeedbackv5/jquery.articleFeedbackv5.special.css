@@ -683,7 +683,8 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	padding: 5px;
 	background-color: #d2e5f7;
 }
-.articleFeedbackv5-feedback-emptymask {
+.articleFeedbackv5-feedback-emptymask .articleFeedbackv5-post-screen {
+	display: block;
 	min-height: 100px;
 }
 

@@ -300,12 +300,12 @@ class ArticleFeedbackv5Render {
 					)
 				);
 		}
-
-		$last = $this->getLastActivity( $record );
+		$last = $record->getLastEditorActivity();
 		if ( !$last ) {
 			// if this happens, some data is corrupt
 			return '';
 		}
+
 		return
 			Html::rawElement(
 				'div',
@@ -683,7 +683,7 @@ class ArticleFeedbackv5Render {
 			// certain that the feedback was posted by the current user
 			if ( $wgUser->getId() && $wgUser->getId() == intval( $record->aft_user ) ) {
 				// get details on last editor action
-				$last = $record->getLastEditorActivity( $record );
+				$last = $record->getLastEditorActivity();
 
 				$action = '';
 				if ( !$record->isHidden() ) {

@@ -296,12 +296,6 @@ class ArticleFeedbackv5Activity {
 	 * @return ResultWrapper db record rows
 	 */
 	public static function getLastEditorActivity( array $entries ) {
-		// only editors will see this functionality, so save a query if the user does not have these permissions
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'aft-editor' ) ) {
-			return null;
-		}
-
 		// build where-clause for all feedback entries
 		$titles = array();
 		foreach ( $entries as $entry ) {
