@@ -916,7 +916,8 @@ Permalink info block, subtitle of the right column, containing meta-information,
 	'articlefeedbackv5-permalink-written-by-reader' => 'Permalink info block, written-by line for anonymous users: $1 is the experimental option',
 	'articlefeedbackv5-permalink-info-revision-link' => 'Permalink info block, text for the link to the revision of the article to which the feedback was posted',
 	'articlefeedbackv5-permalink-info-posted' => 'Permalink info block, post date line: $1 is the date; $2 is the time',
-	'articlefeedbackv5-permalink-info-stats-title-length' => 'Permalink info block, title for the comment length information',
+	'articlefeedbackv5-permalink-info-stats-title-length' => 'Permalink info block, title for the comment length information.
+{{Identical|Length}}',
 	'articlefeedbackv5-permalink-info-length-words' => 'Permalink info block, comment length: $1 is the number of words',
 	'articlefeedbackv5-permalink-info-length-characters' => 'Permalink info block, comment length: $1 is the number of characters',
 	'articlefeedbackv5-permalink-info-stats-title-scores' => 'Permalink info block, title for the feedback scoring information',
@@ -1577,13 +1578,11 @@ $messages['ar'] = array(
 	'articlefeedbackv5-cta6-confirmation-title' => 'هل تحتاج لمساعدة في تحرير {{SITENAME}}؟',
 	'articlefeedbackv5-cta6-confirmation-call' => 'لمناقشة كيفية تحرير {{SITENAME}}، بإمكانك القدم إلى قاعة الشاي، حيث هناك محررون خبراء مستعدون لتقديم يد المساعدة لك.',
 	'articlefeedbackv5-cta6-button-text' => 'زيارة قاعة الشاي',
-	'articlefeedbackv5-cta6-button-link' => 'http://ar.wikipedia.org/wiki/%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D8%A8%D9%88%D8%A7%D8%A8%D8%A9_%D8%A7%D9%84%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9/%D9%82%D8%A7%D8%B9%D8%A9_%D8%A7%D9%84%D8%B4%D8%A7%D9%8A/%D8%A3%D8%B3%D8%A6%D9%84%D8%A9',
 	'articlefeedbackv5-overlay-close' => 'أغلق',
 	'articlefeedbackv5-error' => 'لقد حدث خطأ. كرر المحاولة لاحقا.',
-	'articlefeedbackv5-error-email' => 'إن عنوان البريد الإلكتروني غير صالح.',
 	'articlefeedbackv5-error-blocked' => 'لا يمكن للمستخدمين الممنوعين تقديم ملاحظاتهم.',
 	'articlefeedbackv5-error-validation' => 'خطأ في التحقق.',
-	'articlefeedbackv5-error-abuse' => 'تم رفض مشاركتك من قبل مرشح تلقائي بسبب أنه يمكن أنها قد انتهكت قاعدة ويكيبيديا في $1. الرجاء مراجعة ملاحظتك والمحاولة مرة أخرى.',
+	'articlefeedbackv5-error-abuse' => 'تم رفض مشاركتك من قبل مرشح تلقائي بسبب أنه يمكن أنها قد انتهكت قاعدة ويكيبيديا في $1. الرجاء مراجعة ملاحظتك والمحاولة مرة أخرى.', # Fuzzy
 	'articlefeedbackv5-error-unknown' => 'خطأ غير معروف.',
 	'articlefeedbackv5-error-submit' => 'خطأ في إرسال النموذج.',
 	'articlefeedbackv5-error-nofeedback' => 'رجاء إدخال ملاحظاتك.',
@@ -1609,7 +1608,6 @@ $messages['ar'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'هل هذه الملاحظات مفيدة؟',
 	'articlefeedbackv5-form-helpful-yes-label' => 'نعم',
 	'articlefeedbackv5-form-helpful-no-label' => 'لا',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 شخص وجد أنها مفيدة|$1 أشخاص وجدوا أنها مفيدة}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 نعم|$1 نعم}} / {{PLURAL:$2|1 لا|$2 لا}}',
 	'articlefeedbackv5-special-add-feedback' => 'أضف ملاحظاتك',
 	'articlefeedbackv5-special-survey-button-text' => 'ما رأيك في أداة ردود الأفعال هذه؟',
@@ -1702,7 +1700,6 @@ $messages['ar'] = array(
 	'articlefeedbackv5-form-unhide' => 'إلغاء إخفاء هذا التعليق',
 	'articlefeedbackv5-form-hide-own' => 'أخف تعليقي',
 	'articlefeedbackv5-form-unhide-own' => 'أظهر تعليقي',
-	'articlefeedbackv5-form-helpful' => 'علم كمفيدة ($1)',
 	'articlefeedbackv5-form-abuse' => 'تعليم كإساءة',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 علم|$1 أعلام}}',
 	'articlefeedbackv5-form-abuse-cleared' => 'إفراغ الأعلام',
@@ -1719,18 +1716,12 @@ $messages['ar'] = array(
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} لديه مشكلة:',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} أخف السؤال:',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} لديه اقتراح:',
-	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} قام بتقييم الصفحة $2/5',
-	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} تم عرضها بواسطة وثيقة CTA فقط.',
-	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} قيم هذه الصفحة:',
 	'articlefeedbackv5-form-anon-username' => 'قارئ',
 	'articlefeedbackv5-form-anon-message' => 'أرسل بشكل مجهول من $1.',
-	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} لم يعرض له صفحة التعليق.',
 	'articlefeedbackv5-form-invalid' => 'تعليق غير مقبول لصفحة ID.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} أرسل [[$4|تعليق]] إلى $3',
 	'articlefeedbackv5-abuse-saved' => 'معلم عليه كإساءة',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'أزل العلم الذي وضعته',
-	'articlefeedbackv5-oversight-saved' => 'تم تعليمها من أجل عملية الأوفرسايت',
-	'articlefeedbackv5-unoversight-saved' => 'تم إزالة علامة الأوفرسايت',
 	'articlefeedbackv5-error-loading-feedback' => 'خطأ في تحميل التعليق',
 	'articlefeedbackv5-invalid-feedback-id' => 'تعليق ذو ID غير صالح',
 	'articlefeedbackv5-invalid-feedback-flag' => 'علم تعليق غير صالح',
@@ -1739,8 +1730,7 @@ $messages['ar'] = array(
 	'articlefeedbackv5-discussion-page' => 'نقاش',
 	'articlefeedbackv5-whats-this' => 'مساعدة',
 	'articlefeedbackv5-invalid-page-id' => 'رقم صفحة غير صحيح',
-	'articlefeedbackv5-percent-found' => '$1 وجد الذي كان يبحث عنه',
-	'articlefeedbackv5-overall-rating' => 'التقييم: $1/5',
+	'articlefeedbackv5-found-percent' => '$1 وجد الذي كان يبحث عنه', # Fuzzy
 	'articlefeedbackv5' => 'التغذية الراجعة للمقالة - الصفحة المركزية',
 	'articlefeedbackv5watchlist' => 'تعليقات المقالات - الصفحات المراقبة من قبلي',
 	'articlefeedbackv5-desc' => 'ملاحظات على المقالات',
@@ -1835,7 +1825,7 @@ $messages['ar'] = array(
  * عناوين البريد الإلكتروني
  * وصلات إباحية
  * تعليق تشهيري أو قادح بحق شخص ما
- * [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy معايير أخرى للرقابة]',
+ * [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy معايير أخرى للرقابة]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'إضافة ملاحظة لشرح لماذا يتم طلب الإخفاء',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'لماذا تطلب أوفرسايت؟',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'اطلب أوفرسايت',
@@ -5065,10 +5055,9 @@ $messages['el'] = array(
 	'articlefeedbackv5-cta6-button-text' => 'Επισκεφθείτε την Τσαγερί!',
 	'articlefeedbackv5-overlay-close' => 'Κλείσιμο',
 	'articlefeedbackv5-error' => 'Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε πάλι αργότερα.',
-	'articlefeedbackv5-error-email' => 'Η διεύθυνση ηλεκτρονικού ταχυδρομείου δεν είναι έγκυρη.',
 	'articlefeedbackv5-error-blocked' => 'Χρήστες που βρίσκονται σε αποκλεισμό δεν μπορούν να υποβάλλουν σχόλια.',
 	'articlefeedbackv5-error-validation' => 'Εμφανίστηκε σφάλμα κατά την επικύρωση.',
-	'articlefeedbackv5-error-abuse' => 'Το κείμενό σας απορρίφθηκε από αυτόματο φίλτρο βάσει του οποίου ενδέχεται να έχετε παραβεί τις [$1 οδηγίες για την υποβολή σχολίων] στην {{SITENAME}}. Παρακαλούμε να επανεξετάσετε το κείμενό σας πριν δοκιμάσετε πάλι την υποβολή του.',
+	'articlefeedbackv5-error-abuse' => 'Το κείμενό σας απορρίφθηκε από αυτόματο φίλτρο βάσει του οποίου ενδέχεται να έχετε παραβεί τις [$1 οδηγίες για την υποβολή σχολίων] στην {{SITENAME}}. Παρακαλούμε να επανεξετάσετε το κείμενό σας πριν δοκιμάσετε πάλι την υποβολή του.', # Fuzzy
 	'articlefeedbackv5-error-unknown' => 'Άγνωστο σφάλμα.',
 	'articlefeedbackv5-error-submit' => 'Σφάλμα κατά την υποβολή της φόρμας.',
 	'articlefeedbackv5-error-nofeedback' => 'Παρακαλώ εισάγετε τα σχόλιά σας.',
@@ -5094,7 +5083,6 @@ $messages['el'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'Θεωρείτε πως αυτή η ανατροφοδότηση είναι χρήσιμη;',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Ναι',
 	'articlefeedbackv5-form-helpful-no-label' => 'Όχι',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 το βρήκε χρήσιμο|$1 το βρήκε χρήσιμο}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 ναι|$1 ναι}} / {{PLURAL:$2|1 όχι|$2 όχι}}',
 	'articlefeedbackv5-special-add-feedback' => 'Προσθέστε τα σχόλιά σας',
 	'articlefeedbackv5-special-survey-button-text' => "Ποια η γνώμη σας γι' αυτό το εργαλείο ανατροφοδότησης;",
@@ -5187,7 +5175,6 @@ $messages['el'] = array(
 	'articlefeedbackv5-form-unhide' => 'Φανέρωση αυτής της δημοσίευσης',
 	'articlefeedbackv5-form-hide-own' => 'Απόκρυψη της δημοσίευσής μου',
 	'articlefeedbackv5-form-unhide-own' => 'Φανέρωση της δημοσίευσής μου',
-	'articlefeedbackv5-form-helpful' => 'Σημείωση ως χρήσιμο ($1)',
 	'articlefeedbackv5-form-abuse' => 'Σήμανση ως προσβλητικό',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 επισήμανση|$1 επισημάνσεις}}',
 	'articlefeedbackv5-form-abuse-cleared' => 'Αφαιρέθηκαν οι επισημάνσεις',
@@ -5204,18 +5191,12 @@ $messages['el'] = array(
 	'articlefeedbackv5-form2-header-problem' => 'Ο/Η {{GENDER:$1|$1}} είχε ένα πρόβλημα:',
 	'articlefeedbackv5-form2-header-question' => 'Ο/Η {{GENDER:$1|$1}} είχε μια ερώτηση:',
 	'articlefeedbackv5-form2-header-suggestion' => 'Ο/Η {{GENDER:$1|$1}} είχε μια πρόταση:',
-	'articlefeedbackv5-form3-header' => 'O/H {{GENDER:$1|$1}} βαθμολόγησε αυτή τη σελίδα $2/5',
-	'articlefeedbackv5-form4-header' => 'Στον/η {{GENDER:$1|$1}} παρουσιάστηκε μόνο η φόρμα CTA.',
-	'articlefeedbackv5-form5-header' => 'O/H {{GENDER:$1|$1}} βαθμολόγησε αυτή τη σελίδα:',
 	'articlefeedbackv5-form-anon-username' => 'Ένας αναγνώστης',
 	'articlefeedbackv5-form-anon-message' => 'Δημοσιεύθηκε ανώνυμα από $1',
-	'articlefeedbackv5-form-not-shown' => 'Στον/η {{GENDER:$1|$1}} δε δείχθηκε φόρμα ανατροφοδότησης',
 	'articlefeedbackv5-form-invalid' => 'Άκυρο αναγνωριστικό φόρμας ανατροφοδότησης',
 	'articlefeedbackv5-central-header-left-comment' => 'Ο/Η {{GENDER:$1|$2}} ανάρτησε [[$4|ανατροφοδότηση]] στο $3',
 	'articlefeedbackv5-abuse-saved' => 'Επισημάνθηκε ως προσβλητικό',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Καταργήστε την επισήμανση που θέσατε',
-	'articlefeedbackv5-oversight-saved' => 'Σημειώθηκε για εποπτεία',
-	'articlefeedbackv5-unoversight-saved' => 'Καταργήθηκε η επισήμανση εποπτείας',
 	'articlefeedbackv5-error-loading-feedback' => 'Σφάλμα φόρτωσης της ανατροφοδότησης',
 	'articlefeedbackv5-invalid-feedback-id' => 'Άκυρο αναγνωριστικό ανατροφοδότησης',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Άκυρη επισήμανση ανατροφοδότησης',
@@ -5224,8 +5205,7 @@ $messages['el'] = array(
 	'articlefeedbackv5-discussion-page' => 'Συζήτηση',
 	'articlefeedbackv5-whats-this' => 'Βοήθεια',
 	'articlefeedbackv5-invalid-page-id' => 'Άκυρο αναγνωριστικό σελίδας',
-	'articlefeedbackv5-percent-found' => '$1 βρήκαν αυτό που έψαχναν',
-	'articlefeedbackv5-overall-rating' => 'Βαθμολογία: $1/5',
+	'articlefeedbackv5-found-percent' => '$1 βρήκαν αυτό που έψαχναν', # Fuzzy
 	'articlefeedbackv5' => 'Ανατροφοδότηση λήμματος - Κεντρική σελίδα',
 	'articlefeedbackv5watchlist' => 'Ανατροφοδότηση λημμάτων - Η λίστα παρακολούθησης μου',
 	'articlefeedbackv5-desc' => 'Ανατροφοδότηση λήμματος',
@@ -5307,7 +5287,7 @@ $messages['el'] = array(
 *διευθύνσεις e-mail 
 *συνδέσμους σε πορνογραφικό υλικό 
 *δυφημιστικά/προσβλητικά σχόλια σχετικά με ένα πρόσωπο 
-** [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy άλλα κριτήρια γαι εποπτεία]',
+** [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy άλλα κριτήρια γαι εποπτεία]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Προσθέστε μια σημείωση για να εξηγήσει για ποιο λόγο ζητάτε εποπτεία',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Γιατί ζητάτε εποπτεία;',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Αίτηση εποπτείας',
@@ -5461,10 +5441,9 @@ $messages['eo'] = array(
 	'articlefeedbackv5-cta6-button-text' => 'Viziti Diskutejon',
 	'articlefeedbackv5-overlay-close' => 'Fermi',
 	'articlefeedbackv5-error' => 'Eraro okazis. Bonvolu reprovi baldaŭ.',
-	'articlefeedbackv5-error-email' => 'Tiu retpoŝta adreso ne estas valida.',
 	'articlefeedbackv5-error-blocked' => 'Forbaritaj uzantoj ne estas permesita sendi komentojn.',
 	'articlefeedbackv5-error-validation' => 'Eraro dum validigo.',
-	'articlefeedbackv5-error-abuse' => 'Vian afiŝon malpermesis aŭtomata filtrilo, kiu indikis ke ĝi eble trompis la [$1 gvidilon pri komentoj] de {{SITENAME}}. Bonvolu revizii vian afiŝon, kaj reprovi.',
+	'articlefeedbackv5-error-abuse' => 'Vian afiŝon malpermesis aŭtomata filtrilo, kiu indikis ke ĝi eble trompis la [$1 gvidilon pri komentoj] de {{SITENAME}}. Bonvolu revizii vian afiŝon, kaj reprovi.', # Fuzzy
 	'articlefeedbackv5-error-unknown' => 'Nekonata eraro.',
 	'articlefeedbackv5-error-submit' => 'Eraro dum sendado de la formularo.',
 	'articlefeedbackv5-error-nofeedback' => 'Bonvolu enigi viajn rimarkojn.',
@@ -5490,7 +5469,6 @@ $messages['eo'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'Ĉu tiu komento estas utila?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Jes',
 	'articlefeedbackv5-form-helpful-no-label' => 'Ne',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 persono konsideris ĝin kiel utilan|$1 personoj konsideris ĝin kiel utilan}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 jes|$1 jes}} / {{PLURAL:$2|1 ne|$2 ne}}',
 	'articlefeedbackv5-special-add-feedback' => 'Sendu vian komenton',
 	'articlefeedbackv5-special-survey-button-text' => 'Kion vi opinias pri ĉi tiu komentilo?',
@@ -5583,7 +5561,6 @@ $messages['eo'] = array(
 	'articlefeedbackv5-form-unhide' => 'Malkaŝi tiun ĉi afiŝon',
 	'articlefeedbackv5-form-hide-own' => 'Kaŝi mian afiŝon',
 	'articlefeedbackv5-form-unhide-own' => 'Malkaŝi mian afiŝon',
-	'articlefeedbackv5-form-helpful' => 'Marki kiel utila ($1)',
 	'articlefeedbackv5-form-abuse' => 'Marki kiel misuzon',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 flago|$1 flagoj}}',
 	'articlefeedbackv5-form-abuse-cleared' => 'Flagoj nuligitaj',
@@ -5600,18 +5577,12 @@ $messages['eo'] = array(
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} havis problemon:',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} demandis:',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} havis sugeston:',
-	'articlefeedbackv5-form3-header' => '$1 taksis ĉi tiun paĝon $2/5',
-	'articlefeedbackv5-form4-header' => '$1 ricevis nur la ag-alvokan formularon.',
-	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} taksis ĉi tiun paĝon:',
 	'articlefeedbackv5-form-anon-username' => 'Leganto',
 	'articlefeedbackv5-form-anon-message' => 'Afiŝita anonime de $1.',
-	'articlefeedbackv5-form-not-shown' => 'Al {{GENDER:$1|$1}} ne estis montrita la rimarkoformularo.',
 	'articlefeedbackv5-form-invalid' => 'Malvalida identigo de rimarkoformularo.',
 	'articlefeedbackv5-central-header-left-comment' => '$2 afiŝis [[$4|komenton]] al $3', # Fuzzy
 	'articlefeedbackv5-abuse-saved' => 'Marki kiel misuzon',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Forigi de vi faritan flagon',
-	'articlefeedbackv5-oversight-saved' => 'Marki por kontrolo',
-	'articlefeedbackv5-unoversight-saved' => 'Kontrola flago forigita',
 	'articlefeedbackv5-error-loading-feedback' => 'Okazis eraro dum ŝargado de la rimarkoj',
 	'articlefeedbackv5-invalid-feedback-id' => 'Malvalida identigo de rimarko',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Malvalida marko de rimarko',
@@ -5620,8 +5591,7 @@ $messages['eo'] = array(
 	'articlefeedbackv5-discussion-page' => 'Diskuto',
 	'articlefeedbackv5-whats-this' => 'Helpo',
 	'articlefeedbackv5-invalid-page-id' => 'Malvalida identigilo de paĝo',
-	'articlefeedbackv5-percent-found' => '$1 da uzantoj trovis kion ili serĉis.',
-	'articlefeedbackv5-overall-rating' => 'Takso: $1/5',
+	'articlefeedbackv5-found-percent' => '$1 da uzantoj trovis kion ili serĉis.', # Fuzzy
 	'articlefeedbackv5' => 'Komentoj pri artikoloj - centra paĝo',
 	'articlefeedbackv5watchlist' => 'Komentoj pri artikoloj - Mia atentaro',
 	'articlefeedbackv5-desc' => 'Takso de artikolo',
@@ -5715,7 +5685,7 @@ $messages['eo'] = array(
 * retpoŝtan adreson
 * pornografian ligilon
 * misfamigaj/ofendaj komentoj pri persono
-* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy aliajn kriteriojn kiuj necesigas kontrolon]',
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy aliajn kriteriojn kiuj necesigas kontrolon]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Aldoni noton por klarigi kial vi petas kontrolon',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Kial vi petas kontroladon?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Peti kontroladon',
@@ -6185,7 +6155,7 @@ $messages['es'] = array(
  * direcciones de correo electrónico
  * enlaces a sitios pornográficos
  * comentarios difamatorios/calumniosos sobre una persona
- * [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy Otros criterios de supervisión]',
+ * [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy Otros criterios de supervisión]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Agregue una nota para explicar por qué solicita la supresión',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => '¿Por qué solicita supresión?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Solicitar supresión',
@@ -6633,7 +6603,7 @@ $messages['et'] = array(
 * e-posti aadressid
 * lingid pornograafilistele materjalidele
 * lugupidamatud/laimavad kommentaarid isiku kohta
-* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy muu varjamiskriteerium]',
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy muu varjamiskriteerium]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Lisa märkus, milles selgitad, miks palud varjamist',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Miks palud varjamist?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Palu varjamist',
@@ -6891,6 +6861,7 @@ $messages['eu'] = array(
  * @author Leyth
  * @author Mahan
  * @author Mahdiz
+ * @author Mehran
  * @author Mjbmr
  * @author PHoBiA
  * @author Reza1615
@@ -6962,18 +6933,28 @@ $messages['fa'] = array(
 	'articlefeedbackv5-special-filter-helpful' => 'مفید ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'غیرمفید ($1)',
 	'articlefeedbackv5-special-filter-requested' => 'نظارت درخواست شد ($1)',
+	'articlefeedbackv5-special-filter-unrequested' => 'پنهانگری درخواست‌نشده ($1)',
 	'articlefeedbackv5-special-filter-visible' => 'همگی قابل دیدن ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'پنهان ($1)',
+	'articlefeedbackv5-special-filter-oversighted' => 'پنهان‌شده ($1)',
+	'articlefeedbackv5-special-filter-unoversighted' => 'پنهان‌نشده ($1)',
+	'articlefeedbackv5-special-filter-declined' => 'پنهانگری رد شد ($1)',
 	'articlefeedbackv5-special-filter-unhidden' => 'عدم پنهان ($1)',
 	'articlefeedbackv5-special-filter-featured' => 'برگزیده‌ها  ($1)',
+	'articlefeedbackv5-special-filter-unfeatured' => 'نامشخص ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'حل شده', # Fuzzy
 	'articlefeedbackv5-special-filter-unresolved' => 'حل نشده ($1)',
 	'articlefeedbackv5-special-filter-all-watchlist' => 'همهٔ ارسالی‌ها',
 	'articlefeedbackv5-special-filter-notdeleted-watchlist' => 'همه (مخفی)',
 	'articlefeedbackv5-special-filter-comment-watchlist' => 'تمام نظرات',
+	'articlefeedbackv5-special-filter-relevant-watchlist' => 'دارای بیشتری ارتباط',
+	'articlefeedbackv5-special-filter-abusive-watchlist' => 'مشخص‌شده به عنوان استفادهٔ نادرست',
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'مفید',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'غیر مفید',
+	'articlefeedbackv5-special-filter-requested-watchlist' => 'درخواست پنهانگری شد',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'مخفی',
+	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'پنهان‌شده',
+	'articlefeedbackv5-special-filter-declined-watchlist' => 'پنهانگری رد شد',
 	'articlefeedbackv5-special-filter-unhidden-watchlist' => 'غیر مخفی',
 	'articlefeedbackv5-special-filter-featured-watchlist' => 'برگزیده',
 	'articlefeedbackv5-special-filter-unfeatured-watchlist' => 'غیر برگزیده',
@@ -6998,6 +6979,14 @@ $messages['fa'] = array(
 	'articlefeedbackv5-special-pagetitle' => 'بازخورد $1',
 	'articlefeedbackv5-special-central-pagetitle' => 'صفحهٔ مرکزی بازخورد',
 	'articlefeedbackv5-loading-tag' => 'در حال بارگیری...',
+	'articlefeedbackv5-status-hide' => 'این ویرایش توسط $1 در تاریخ $2 و ساعت $3 پنهان شد.',
+	'articlefeedbackv5-status-unhide' => 'این ویرایش توسط $1 در تاریخ $2 و ساعت $3 نمایش یافت.',
+	'articlefeedbackv5-status-request' => 'پنهانگری این ویرایش توسط $1 در تاریخ $2 و ساعت $3 درخواست شد.',
+	'articlefeedbackv5-status-unrequest' => 'درخواست پنهانگری این ویرایش توسط $1 در تاریخ $2 و ساعت $3 پس گرفته شد.',
+	'articlefeedbackv5-status-decline' => 'پنهانگری این ویرایش توسط $1 در تاریخ $2 و ساعت $3 رد شد.',
+	'articlefeedbackv5-status-autohide' => 'این ویرایش توسط $1 در تاریخ $2 و ساعت $3 به طور خودکار پنهان شد.',
+	'articlefeedbackv5-status-oversight' => 'این ویرایش توسط $1 در تاریخ $2 و ساعت $3 پنهان شد.',
+	'articlefeedbackv5-status-unoversight' => 'این ویرایش توسط $1 در تاریخ $2 و ساعت $3 نمایش یافت.',
 	'articlefeedbackv5-new-marker' => 'جديد',
 	'articlefeedbackv5-deleted-marker' => 'پنهان‌شده',
 	'articlefeedbackv5-hidden-marker' => 'پنهان',
@@ -7017,6 +7006,7 @@ $messages['fa'] = array(
 	'articlefeedbackv5-form-delete' => 'نظارت',
 	'articlefeedbackv5-form-oversight' => 'درخواست نظارت',
 	'articlefeedbackv5-form-unoversight' => 'لغو درخواست نظارت',
+	'articlefeedbackv5-form-declined' => 'پنهانگری رد شد',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 آنچه را که دنبالش بودند یافتند}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 آنچه را که دنبالش بود نیافت}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 یک نظر را فرستاد}}',
@@ -7137,6 +7127,7 @@ $messages['fa'] = array(
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'چرا شما این ارسال را پنهان کردید؟',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'اطلاعات بیشتر',
 	'articlefeedbackv5-noteflyover-declineoversight-label' => 'افزودن یادداشت',
+	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'چرا درخواست پنهانگری را رد می‌کنید؟',
 	'articlefeedbackv5-noteflyover-declineoversight-help' => 'اطلاعات بیشتر',
 	'articlefeedbackv5-bucket1-title' => 'به بهبود این صفحه کمک کنید',
 	'articlefeedbackv5-bucket1-question-toggle' => 'آنچه را جستجو می‌کردید، یافتید؟',
@@ -7209,6 +7200,7 @@ $3
 با تشکر از شما، بهترین آرزوها را برایتان داریم،
 گروه {{SITENAME}}',
 	'articlefeedbackv5-disable-flyover-title' => 'حذف کردن این ابزار؟',
+	'articlefeedbackv5-disable-flyover-help' => 'برای حذف  $1، به  $2 رفته و $3 را بررسی کنید',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'ارزیابی مقاله‌ها',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'رفتن به ترجیحات من',
 );
@@ -7472,7 +7464,7 @@ $messages['fi'] = array(
 * sähköpostiosoitteita
 * pornografisia linkkejä
 * häpäiseviä/herjaavia kommentteja jostakusta
-* [http://fi.wikipedia.org/wiki/Wikipedia:Häivytysoikeudet#Käytäntö muita häivytyksen aiheita]',
+* [//fi.wikipedia.org/wiki/Wikipedia:Häivytysoikeudet#Käytäntö muita häivytyksen aiheita]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Lisää huomautus miksi pyydät häivytystä',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Miksi haluat pyytää häivytystä?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Pyydä häivytystä',
@@ -7907,7 +7899,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-noteflyover-show-submit' => 'Ne plus masquer ce billet',
 	'articlefeedbackv5-noteflyover-show-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Demander un masquage',
-	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Avant de demander le [http://fr.wikipedia.org/wiki/Wikipédia:Masqueur_de_modifications#Faire_une_requête_de_masquage masquage], merci de vérifier que ce commentaire comprend au moins un de ces éléments :
+	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Avant de demander le [//fr.wikipedia.org/wiki/Wikipédia:Masqueur_de_modifications#Faire_une_requête_de_masquage masquage], merci de vérifier que ce commentaire comprend au moins un de ces éléments :
 * numéro de téléphone ;
 * adresse de courriel ;
 * lien Web pornographique ;
@@ -8788,7 +8780,7 @@ inclúe algún dos seguintes problemas:
 * enderezos de correo electrónico
 * ligazóns a sitios web pornográficos
 * comentarios difamatorios ou calumniosos sobre unha persoa
-* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy outos criterios para a supervisión]',
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy outos criterios para a supervisión]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Engadir unha nota para explicar o motivo da petición de supervisión',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Por que pide a supervisión?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Pedir a supervisión',
@@ -10035,14 +10027,12 @@ $messages['hsb'] = array(
 	'articlefeedbackv5-cta6-confirmation-title' => 'Trjebaš pomhoc za wobdźěłowanje {{GRAMMAR:genitiw|{{SITENAME}}}}?',
 	'articlefeedbackv5-cta6-confirmation-call' => 'Zo by wo wobdźěłowanju na {{GRAMMAR:lokatiw|{{SITENAME}}}} diskutował, dźi k čajowni, hdźež so nowi a nazhonjeni wobdźěłarjo schadźuja, zo bychu wužitne pokiwy wuměnili.',
 	'articlefeedbackv5-cta6-button-text' => 'Čajownju wopytać',
-	'articlefeedbackv5-cta6-button-link' => '//en.wikipedia.org/wiki/Wikipedia:Teahouse?ref=aft',
 	'articlefeedbackv5-overlay-close' => 'Začinić',
 	'articlefeedbackv5-error' => 'Zmylk je wustupił.
 Prošu spytaj pozdźišo hišće raz.',
-	'articlefeedbackv5-error-email' => 'Tuta e-mejlowa adresa płaćiwa njeje.',
 	'articlefeedbackv5-error-blocked' => 'Zablokowani wužiwarjo njemóža komentary pósłać.',
 	'articlefeedbackv5-error-validation' => 'Přepruwowanski zmylk',
-	'articlefeedbackv5-error-abuse' => 'Twój komentar je so přez softwarowy filter wotpokazał, kotryž měni, zo wón je přećiwo [$1 směrnicam za komentary] {{GRAMMAR:genitiw|{{SITENAME}}}} přešoł. Prošu přepruwuj swój komentar a spytaj hišće raz.',
+	'articlefeedbackv5-error-abuse' => 'Twój komentar je so přez softwarowy filter wotpokazał, kotryž měni, zo wón [$1 směrnicam za komentary] {{GRAMMAR:genitiw|{{SITENAME}}}} njewotpowěduje. Prošu přepruwuj swój komentar a spytaj hišće raz. ({{PLURAL:$2|Filter|Filtraj|Filtry}}: $3)',
 	'articlefeedbackv5-error-unknown' => 'Njeznaty zmylk.',
 	'articlefeedbackv5-error-submit' => 'Zmylk při wotesyłanju formulara.',
 	'articlefeedbackv5-error-nofeedback' => 'Prošu zapodaj swój komentar.',
@@ -10068,7 +10058,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-form-helpful-label' => 'Je tutón komentar pomocliwy?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Haj',
 	'articlefeedbackv5-form-helpful-no-label' => 'Ně',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 je jón za wužitny měł|$1 stej jón za wužitny měłoj|$1 su jón za wužitny měli|$1 su jón za wužitny měli}}',
+	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% měješe za wužitne}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 haj|$1 haj}} / {{PLURAL:$2|1 ně|$2 ně}}',
 	'articlefeedbackv5-special-add-feedback' => 'Twój komentar přidać',
 	'articlefeedbackv5-special-survey-button-text' => 'Što mysliš wo tutym komentarowym nastroju?',
@@ -10130,7 +10120,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-revision-link' => '(hlej stary nadawk)',
 	'articlefeedbackv5-special-more' => 'Dalše powěsće pokazać',
 	'articlefeedbackv5-special-refresh' => 'Lisćinu aktualizować',
-	'articlefeedbackv5-special-pagetitle' => '!Komentary k $1',
+	'articlefeedbackv5-special-pagetitle' => 'Komentary k $1',
 	'articlefeedbackv5-special-permalink-pagetitle' => 'Komentar k $1',
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'Komentary mojich wobkedźbowanych stronow',
 	'articlefeedbackv5-special-central-pagetitle' => 'Centralna strona komentarow',
@@ -10161,7 +10151,6 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-form-unhide' => 'Tutu powěsć pokazać',
 	'articlefeedbackv5-form-hide-own' => 'Mój přinošk schować',
 	'articlefeedbackv5-form-unhide-own' => 'Mój přinošk pokazać',
-	'articlefeedbackv5-form-helpful' => 'Jako pomocliwy markěrować ($1)',
 	'articlefeedbackv5-form-abuse' => 'Jako znjewužiwanje woznamjenić',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 chorhojčka|$1 chorhojčce|$1 chorhojčki|$1 chorhojčkow}}',
 	'articlefeedbackv5-form-abuse-cleared' => 'Chorhojčki wotstronjene',
@@ -10178,18 +10167,12 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} je problem {{GENDER:$1|měł|měła}}:',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} je prašenje {{GENDER:$1|měł|měła}}:',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} je namjet {{GENDER:$1|měł|měła}}:',
-	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} je tutu stronu z $2/5 {{GENDER:$1|pohódnoćił|pohódnoćiła}}',
-	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} je so formular "Jenož CTA" {{GENDER:$1|pokazał|pokazała}}.',
-	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} je tutu stronu {{GENDER:$1|pohódnoćił|pohódnoćiła}}:',
 	'articlefeedbackv5-form-anon-username' => 'Čitar',
 	'articlefeedbackv5-form-anon-message' => 'Anonymnje wot $1 přinošowany.',
-	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} njeje so komentarowy formular {{GENDER:$1|pokazał|pokazała}}.',
 	'articlefeedbackv5-form-invalid' => 'Njepłaćiwy ID komentaroweho formulara.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} je wo $3 [[$4|komentar]] {{GENDER:$1|zawostajił|zawostajiła}}',
 	'articlefeedbackv5-abuse-saved' => 'Jako znjewužiwanje woznamjeny',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Woznamjenjenje wotstronić, kotryž sy stajił',
-	'articlefeedbackv5-oversight-saved' => 'Za dohladowanje markěrowany',
-	'articlefeedbackv5-unoversight-saved' => 'Marka za dohladowanje wotstronjena',
 	'articlefeedbackv5-error-loading-feedback' => 'Zmylk při začitowanju komentara',
 	'articlefeedbackv5-invalid-feedback-id' => 'Njepłaćiwy ID komentara',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Njepłaćiwa komentarowa značka',
@@ -10198,8 +10181,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-discussion-page' => 'Diskusija',
 	'articlefeedbackv5-whats-this' => 'Pomoc',
 	'articlefeedbackv5-invalid-page-id' => 'Njepłaćiwy ID strony',
-	'articlefeedbackv5-percent-found' => '$1  su namakali, za kotrymž su pytali.',
-	'articlefeedbackv5-overall-rating' => 'Pohódnoćenje: $1/5',
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 jo namakało, za kotrymž su pytali}}.',
 	'articlefeedbackv5' => 'Nastawkowe komentary - centralna strona',
 	'articlefeedbackv5watchlist' => 'Nastawkowe komentary - moje wobkedźbowane strony',
 	'articlefeedbackv5-desc' => 'Posudźenje nastawkow',
@@ -10215,6 +10197,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 lětom|$1 lětomaj|$1 lětami|$1 lětami}}',
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 měsacom|$1 měsacomaj|$1 měsacami|$1 měsacami}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 tydźenjom|$1 njedźelomaj|$1 njedźelemi|$1 njedźelemi}}',
+	'articlefeedbackv5-timestamp-days' => '{{PLURAL:$1|$1 dnjom|$1 dnjomaj|$1 dnjemi}}',
 	'articlefeedbackv5-timestamp-seconds' => 'mjenje hač 1 mjeńšina',
 	'articlefeedbackv5-mask-view-contents' => 'Wobsah pokazać',
 	'articlefeedbackv5-mask-text-autohide' => 'Tutón přinošk čo. $1 je so před $3 wot $2 awtomatisce {{GENDER:$2|schowany|schowany}}.',
@@ -10737,7 +10720,7 @@ $messages['hu'] = array(
 * e-mail cím
 * link pornográf tartalomra
 * becsületsértő/rágalmazó megjegyzés valakiről
-* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy más ok a törlésre]',
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy más ok a törlésre]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Fűzz hozzá megjegyzést, hogy miért kéred',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Miért kéred a törlést?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Törlés kérése',
@@ -10944,13 +10927,11 @@ $messages['ia'] = array(
 	'articlefeedbackv5-cta6-confirmation-title' => 'Require adjuta pro modificar {{SITENAME}}?',
 	'articlefeedbackv5-cta6-confirmation-call' => 'Pro discuter le modification in {{SITENAME}}, veni al Salon de The, ubi contributores nove e experte se reuni pro excambiar consilios utile.',
 	'articlefeedbackv5-cta6-button-text' => 'Visitar le Salon de The',
-	'articlefeedbackv5-cta6-button-link' => '//en.wikipedia.org/wiki/Wikipedia:Teahouse?ref=aft',
 	'articlefeedbackv5-overlay-close' => 'Clauder',
 	'articlefeedbackv5-error' => 'Un error ha occurrite. Per favor reproba plus tarde.',
-	'articlefeedbackv5-error-email' => 'Iste adresse de e-mail non es valide.',
 	'articlefeedbackv5-error-blocked' => 'Usatores blocate non pote submitter commentarios.',
 	'articlefeedbackv5-error-validation' => 'Error de validation.',
-	'articlefeedbackv5-error-abuse' => 'Iste message ha essite rejectate per un filtro de software que suggere que illo pote haber violate le [$1 feedback guidelines] de {{SITENAME}}. Per favor revide le message e essaya de novo.',
+	'articlefeedbackv5-error-abuse' => 'Iste message ha essite rejectate per un filtro de software que suggere que illo pote haber violate le [$1 feedback guidelines] de {{SITENAME}}. Per favor revide le message e essaya de novo.', # Fuzzy
 	'articlefeedbackv5-error-unknown' => 'Error incognite.',
 	'articlefeedbackv5-error-submit' => 'Error durante le submission del formulario.',
 	'articlefeedbackv5-error-nofeedback' => 'Per favor insere tu commentario.',
@@ -10975,7 +10956,6 @@ $messages['ia'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'Esque iste aviso es utile?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Si',
 	'articlefeedbackv5-form-helpful-no-label' => 'No',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 persona|$1 personas}} lo trovava utile',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 si|$1 si}} / {{PLURAL:$2|1 no|$2 no}}',
 	'articlefeedbackv5-special-add-feedback' => 'Adder tu evalutation',
 	'articlefeedbackv5-special-survey-button-text' => 'Que pensa tu de iste instrumento de evalutation?',
@@ -11068,7 +11048,6 @@ $messages['ia'] = array(
 	'articlefeedbackv5-form-unhide' => 'Revelar iste message',
 	'articlefeedbackv5-form-hide-own' => 'Celar mi commento',
 	'articlefeedbackv5-form-unhide-own' => 'Non plus celar mi commento',
-	'articlefeedbackv5-form-helpful' => 'Marcar como utile ($1)',
 	'articlefeedbackv5-form-abuse' => 'Marcar como abuso',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 marca|$1 marcas}}',
 	'articlefeedbackv5-form-abuse-cleared' => 'Marcas radite',
@@ -11085,18 +11064,12 @@ $messages['ia'] = array(
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} habeva un problema:',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} poneva un question:',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} offereva un suggestion:',
-	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} evalutava iste pagina $2/5',
-	'articlefeedbackv5-form4-header' => 'A {{GENDER:$1|$1}} esseva presentate le formulario "CTA solmente".',
-	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} evalutava iste pagina:',
 	'articlefeedbackv5-form-anon-username' => 'Un lector',
 	'articlefeedbackv5-form-anon-message' => 'Publicate anonymemente ab $1.',
-	'articlefeedbackv5-form-not-shown' => 'A {{GENDER:$1|$1}} non esseva monstrate un formulario de evalutation.',
 	'articlefeedbackv5-form-invalid' => 'ID de formulario de evalutation invalide.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} dava un [[$4|commentario]] sur $3',
 	'articlefeedbackv5-abuse-saved' => 'Marcate como abuso',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Remover le marca que tu ha adjungite',
-	'articlefeedbackv5-oversight-saved' => 'Marcate pro supervision',
-	'articlefeedbackv5-unoversight-saved' => 'Marca de supervision removite',
 	'articlefeedbackv5-error-loading-feedback' => 'Error durante le cargamento del evalutation.',
 	'articlefeedbackv5-invalid-feedback-id' => 'ID de evalutation invalide',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Signalation de evalutation invalide',
@@ -11105,8 +11078,7 @@ $messages['ia'] = array(
 	'articlefeedbackv5-discussion-page' => 'Discussion',
 	'articlefeedbackv5-whats-this' => 'Adjuta',
 	'articlefeedbackv5-invalid-page-id' => 'ID de pagina invalide',
-	'articlefeedbackv5-percent-found' => '$1 trovava lo que illes cercava',
-	'articlefeedbackv5-overall-rating' => 'Evalutation: $1/5',
+	'articlefeedbackv5-found-percent' => '$1 trovava lo que illes cercava', # Fuzzy
 	'articlefeedbackv5' => 'Evalutation de articulos – Pagina central',
 	'articlefeedbackv5watchlist' => 'Evalutation de articulos – Mi paginas observate',
 	'articlefeedbackv5-desc' => 'Evalutation de articulos',
@@ -11202,7 +11174,7 @@ include un de iste problemas:
 * adresses de e-mail
 * ligamines pornographic
 * commentos diffamatori/calumniose super un persona
-* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy altere criterios pro supervision]',
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy altere criterios pro supervision]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Adder un nota', # Fuzzy
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Proque requesta tu supervision?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Requestar supervision',
@@ -11388,10 +11360,9 @@ $messages['id'] = array(
 	'articlefeedbackv5-cta6-button-text' => 'Kunjungi Teahouse',
 	'articlefeedbackv5-overlay-close' => 'Tutup',
 	'articlefeedbackv5-error' => 'Telah terjadi sebuah kesalahan. Silakan coba lagi nanti.',
-	'articlefeedbackv5-error-email' => 'Alamat surel tidak sah.',
 	'articlefeedbackv5-error-blocked' => 'Pengguna yang diblokir tidak dapat mengirimkan umpan balik.',
 	'articlefeedbackv5-error-validation' => 'Kesalahan validasi.',
-	'articlefeedbackv5-error-abuse' => 'Pos Anda telah ditolak oleh penyaring perangkat lunak karena diduga melanggar [$1 panduan umpan balik] {{SITENAME}}. Mohon tinjau kembali pos Anda dan coba lagi.',
+	'articlefeedbackv5-error-abuse' => 'Pos Anda telah ditolak oleh penyaring perangkat lunak karena diduga melanggar [$1 panduan umpan balik] {{SITENAME}}. Mohon tinjau kembali pos Anda dan coba lagi.', # Fuzzy
 	'articlefeedbackv5-error-unknown' => 'Kesalahan tak dikenal.',
 	'articlefeedbackv5-error-submit' => 'Kesalahan pengiriman formulir.',
 	'articlefeedbackv5-error-nofeedback' => 'Masukkan umpan balik Anda.',
@@ -11417,7 +11388,6 @@ $messages['id'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'Apakah umpan balik ini membantu?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Ya',
 	'articlefeedbackv5-form-helpful-no-label' => 'Tidak',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 merasa berguna|$1 merasa berguna}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 ya|$1 ya}} / {{PLURAL:$2|1 tidak|$2 tidak}}',
 	'articlefeedbackv5-special-add-feedback' => 'Tambahkan umpan balik Anda',
 	'articlefeedbackv5-special-survey-button-text' => 'Apa pendapat Anda tentang alat umpan balik ini?',
@@ -11510,7 +11480,6 @@ $messages['id'] = array(
 	'articlefeedbackv5-form-unhide' => 'Tampilkan kiriman ini',
 	'articlefeedbackv5-form-hide-own' => 'Sembunyikan pos saya',
 	'articlefeedbackv5-form-unhide-own' => 'Tampilkan pos saya',
-	'articlefeedbackv5-form-helpful' => 'Tandai membantu ($1)',
 	'articlefeedbackv5-form-abuse' => 'Beri markah penyalahgunaan',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 markah|$1 markah}}',
 	'articlefeedbackv5-form-abuse-cleared' => 'Markah dihapus',
@@ -11527,18 +11496,12 @@ $messages['id'] = array(
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} punya masalah:',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} punya pertanyaan:',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} punya saran:',
-	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} menilai halaman ini $2/5',
-	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} diberikan formulir CTA saja.',
-	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} menilai halaman ini:',
 	'articlefeedbackv5-form-anon-username' => 'Seorang pembaca',
 	'articlefeedbackv5-form-anon-message' => 'Dikirimkan secara anonim dari $1.',
-	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} tidak diberikan formulir umpan balik.',
 	'articlefeedbackv5-form-invalid' => 'ID formulir umpan balik salah.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} mengirimkan [[$4|umpan balik]] ke $3',
 	'articlefeedbackv5-abuse-saved' => 'Tandai sebagai penyalahgunaan',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Hapus tanda yang Anda berikan',
-	'articlefeedbackv5-oversight-saved' => 'Ditandai untuk pengawasan',
-	'articlefeedbackv5-unoversight-saved' => 'Tanda pengawasan dihapus',
 	'articlefeedbackv5-error-loading-feedback' => 'Gagal memuat umpan balik',
 	'articlefeedbackv5-invalid-feedback-id' => 'ID umpan balik salah',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Tanda umpan balik salah',
@@ -11547,8 +11510,7 @@ $messages['id'] = array(
 	'articlefeedbackv5-discussion-page' => 'Pembicaraan',
 	'articlefeedbackv5-whats-this' => 'Bantuan',
 	'articlefeedbackv5-invalid-page-id' => 'ID halaman salah',
-	'articlefeedbackv5-percent-found' => '$1 menemukan apa yang mereka cari',
-	'articlefeedbackv5-overall-rating' => 'Penilaian: $1/5',
+	'articlefeedbackv5-found-percent' => '$1 menemukan apa yang mereka cari', # Fuzzy
 	'articlefeedbackv5' => 'Umpan balik artikel - Halaman utama',
 	'articlefeedbackv5watchlist' => 'Umpan balik artikel - Halaman terpantau saya',
 	'articlefeedbackv5-desc' => 'Umpan balik artikel',
@@ -11644,7 +11606,7 @@ memiliki salah satu dari masalah berikut:
 * alamat surel
 * tautan pornografi
 * komentar menghina
-* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy kriteria pengawasan lain]',
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy kriteria pengawasan lain]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Tambahkan catatan untuk menjelaskan sebab Anda meminta pengawasan',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Mengapa Anda meminta pengawasan?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Minta pengawasan',
@@ -12275,7 +12237,7 @@ Riprova più tardi.',
 * indirizzi di posta elettronica
 * collegamenti pornografici
 * commenti diffamatori/calunniosi su una persona
-* [http://it.wikipedia.org/wiki/Wikipedia:Oversight altri criteri per la soppressione]',
+* [//it.wikipedia.org/wiki/Wikipedia:Oversight altri criteri per la soppressione]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Aggiungi una nota per spiegare perché stai richiedendo la soppressione',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Perché stai richiedendo la soppressione?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Richiedi soppressione',
@@ -12705,7 +12667,7 @@ $messages['ja'] = array(
 * メール アドレス
 * ポルノへのリンク
 * 人を中傷するコメント
-* [http://ja.wikipedia.org/wiki/Wikipedia:オーバーサイトの方針#.E6.96.B9.E9.87.9D 抹消のその他の判断基準]',
+* [//ja.wikipedia.org/wiki/Wikipedia:オーバーサイトの方針#.E6.96.B9.E9.87.9D 抹消のその他の判断基準]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => '抹消要請する理由を説明する注記を追加',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => '抹消を要請するのはなぜですか?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => '抹消を要請',
@@ -13884,7 +13846,7 @@ $messages['ko'] = array(
 * 이메일 주소
 * 포르노그래피 링크
 * 사람에 대한 명예 훼손/비방 덧글
-* [http://ko.wikipedia.org/wiki/위키백과:오버사이트#정책 오버사이트에 대한 기타 기준]',
+* [//ko.wikipedia.org/wiki/위키백과:오버사이트#정책 오버사이트에 대한 기타 기준]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => '오버사이트를 요청하는 이유를 설명하는 참고 추가',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => '왜 오버사이트를 요청해야 합니까?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => '오버사이트 요청',
@@ -14121,7 +14083,6 @@ Versöhg et shpääder norr_ens.',
 	'articlefeedbackv5-form-helpful-label' => 'hellef dä Beidraach?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Joh',
 	'articlefeedbackv5-form-helpful-no-label' => 'Nää',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|Eine hät|$1 han jefounge|Keiner hät jefonge}}, et hellef.',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|Eijmohl Joh|$1 Mohl Yoh|Keimohl Joh}} / {{PLURAL:$2|Eijmohl Nääo|$2 Mohö Nää|Keijmohl Nää}}',
 	'articlefeedbackv5-special-add-feedback' => 'Donn Ding Röckmäldong derbei',
 	'articlefeedbackv5-special-survey-button-text' => 'Wat dängks De övver heh dat Wärkzüsch för Aanmärkonge?',
@@ -14237,7 +14198,7 @@ Versöhg et shpääder norr_ens.',
 	'articlefeedbackv5-discussion-page' => 'Klaaf',
 	'articlefeedbackv5-whats-this' => 'Hölp',
 	'articlefeedbackv5-invalid-page-id' => 'De Kännong för di Sigg wohr onjöltesch.',
-	'articlefeedbackv5-percent-found' => '{{PLURAL:$1|Eine|$1|keine}} Metmaacher hät jevonge, woh {{PLURAL:$1|hä|sei|hä}} noh aam lore woh',
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$1|Eine|$1|keine}} Metmaacher hät jevonge, woh {{PLURAL:$1|hä|sei|hä}} noh aam lore woh', # Fuzzy
 	'articlefeedbackv5' => 'Enschäzonge för Sigge — Övverbleck',
 	'articlefeedbackv5watchlist' => 'Enschäzonge för Sigge — eije Oppaßleß',
 	'articlefeedbackv5-desc' => 'Enschäzonge för Sigge',
@@ -14329,7 +14290,7 @@ Versöhg et shpääder norr_ens.',
 * Adräße fö de <i lang="en>e-mail</i>
 * Lenkgs op Pornojrafesch Zeusch
 * Schlääschmaacherei udder ander verbodde Nohrädde övver ene Minsch
-* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy ander Jrönde fört Ongerdröcke]',
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy ander Jrönde fört Ongerdröcke]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Donn en Aanmärkong derbei, di säät, woröm De et Ongerdröcke vörschleihß',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Woröm deihs De för dä Bedraach heh et Ongerdröcke vörschlonn?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Ongerdröcke aanfordere',
@@ -15527,7 +15488,7 @@ $messages['mk'] = array(
 * е-пошти
 * порнографски врски
 * клеветнички/посрамувачки коментари за некого
-* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy други критериуми за заверка]',
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy други критериуми за заверка]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Додајте белешка, образложувајќи зошто барате заверка',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Зошто барате заверка?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Побарај заверка',
@@ -16309,7 +16270,7 @@ $messages['ms'] = array(
 * alamat e-mel
 * pautan ke halaman lucah
 * komen fitnah tentang seseorang
-* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy kritera-kritera yang lain]',
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy kritera-kritera yang lain]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Tuliskan catatan untuk menjelaskan mengapa anda memohon penghapusan',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Mengapakah anda memohon penghapusan?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Pohon penghapusan',
@@ -18657,7 +18618,6 @@ $messages['pms'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'Ës coment é-lo ùtil?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'É!',
 	'articlefeedbackv5-form-helpful-no-label' => 'Nò',
-	'articlefeedbackv5-form-helpful-votes' => "{{PLURAL:$1|1 a l'ha trovalo ùtil|$1 a l'han trovalo ùtil}}",
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 è!|$1 é!}} / {{PLURAL:$2|1 nò|$2 nò}}',
 	'articlefeedbackv5-special-add-feedback' => 'Gionta tò coment',
 	'articlefeedbackv5-special-survey-button-text' => "Lòn ch'a pensa ëd cost ùtiss ëd coment?",
@@ -18780,7 +18740,7 @@ $messages['pms'] = array(
 	'articlefeedbackv5-discussion-page' => 'Discussion',
 	'articlefeedbackv5-whats-this' => 'Agiut',
 	'articlefeedbackv5-invalid-page-id' => 'Identificativ dla pàgina pa bon',
-	'articlefeedbackv5-percent-found' => "$1 a l'han trovà lòn ch'a sercavo.",
+	'articlefeedbackv5-found-percent' => "$1 a l'han trovà lòn ch'a sercavo.", # Fuzzy
 	'articlefeedbackv5' => "Valutassion ëd j'artìcoj - Pàgina sentral",
 	'articlefeedbackv5watchlist' => "Valutassion ëd j'artìcoj - Pàgine ch'i ten-o sot-euj",
 	'articlefeedbackv5-desc' => "Valutassion ëd j'artìcoj",
@@ -18874,7 +18834,7 @@ $messages['pms'] = array(
 * adrësse ëd pòsta eletrònica
 * liure pornogràfiche
 * coment dëscreditant o maldisent a propòsit ëd na përson-a
-* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy d'àutre rason për ch'a sia gavà]",
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy d'àutre rason për ch'a sia gavà]",
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Gionté na nòta për spieghé përchè a ciama dë stërmé',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Përchè a ciama na dzorvejansa?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Ciamé na dzorvejansa',
@@ -20260,7 +20220,6 @@ $messages['ru'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'Этот отзыв полезен?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Да',
 	'articlefeedbackv5-form-helpful-no-label' => 'Нет',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 нашёл это полезным|$1 нашли это полезным}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|$1 «да»}} / $2 «нет»',
 	'articlefeedbackv5-special-add-feedback' => 'Добавить свой отзыв',
 	'articlefeedbackv5-special-survey-button-text' => 'Что вы думаете об этом инструменте оставления отзывов?',
@@ -20383,7 +20342,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-discussion-page' => 'Обсуждение',
 	'articlefeedbackv5-whats-this' => 'Справка',
 	'articlefeedbackv5-invalid-page-id' => 'Неправильный идентификатор страницы',
-	'articlefeedbackv5-percent-found' => '$1 пользователей нашел (нашли), что они искали.',
+	'articlefeedbackv5-found-percent' => '$1 пользователей нашел (нашли), что они искали.', # Fuzzy
 	'articlefeedbackv5' => 'Обратная связь для статей — центральная страница',
 	'articlefeedbackv5watchlist' => 'Отзывы о статьях — наблюдаемые мной страницы',
 	'articlefeedbackv5-desc' => 'Отзывы о статьях',
@@ -20479,7 +20438,7 @@ $messages['ru'] = array(
  * адреса электронной почты
  * порнографические ссылки
  * дискредитирующим/клеветнические комментарии о человеке
- * [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy другие критерии для надзора]',
+ * [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy другие критерии для надзора]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Добавить примечание с объяснением того, почему вы запрашиваете надзор',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Почему вы запрашиваете надзор?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Запрос надзора',
@@ -22254,7 +22213,7 @@ dessa fel innan du begär tillsyn:
 * e-postadresser
 * pornografiska länkar
 * nedsättande/ärekränkande kommentarer om en person
-* [http://sv.wikipedia.org/wiki/Wikipedia:Censorer#Villkor_för_användande_av_censorfunktionen andra kriterier för tillsyn]',
+* [//sv.wikipedia.org/wiki/Wikipedia:Censorer#Villkor_för_användande_av_censorfunktionen andra kriterier för tillsyn]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Lägg till en anteckning för att förklara varför du begär tillsyn',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Varför begär du censur?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Begär censur',
@@ -22575,7 +22534,6 @@ $messages['ta'] = array(
 	'articlefeedbackv5-cta6-confirmation-title' => '{{SITENAME}} என்பதைத் தொகுத்தலில் உதவி தேவையா ?',
 	'articlefeedbackv5-overlay-close' => 'மூடுக',
 	'articlefeedbackv5-error' => 'ஒரு பிழை ஏற்பட்டுள்ளது. தயவுகூர்ந்து பிறகு மீண்டும் முயற்சிக்கவும்.',
-	'articlefeedbackv5-error-email' => 'அந்த மின்னஞ்சல் முகவரி செல்லத்தக்கதல்ல.',
 	'articlefeedbackv5-error-blocked' => 'தடை செய்யப்பட்ட பயனர்கள் பின்னூட்டத்தை சமர்பிக்க இயலாமலிருக்கலாம்.',
 	'articlefeedbackv5-error-validation' => 'செல்லத்தக்கதாக்குதல் பிழை.',
 	'articlefeedbackv5-error-abuse' => 'உங்கள் பதிவு விக்கிப்பீடியாவின் $1 ஐ மீறியுள்ளதாக பரிந்துரைக்கும் ஒரு மென்பொருள் வடிகட்டியால் நிராகரிக்கப்பட்டது. தயவுசெய்து உங்கள் பதிவை மறு ஆய்வு செய்து மீண்டும் முயலவும்.', # Fuzzy
@@ -22602,7 +22560,6 @@ $messages['ta'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'இந்த கருத்து உதவியாக உள்ளதா?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'ஆம்',
 	'articlefeedbackv5-form-helpful-no-label' => 'இல்லை',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 இதை உதவிகரமனதாக கூறியுள்ளார்|$1 இதை உதவிகரமனதாக கூறியுள்ளார்}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 ஆம்|$1 ஆம்}} / {{PLURAL:$2|1 இல்லை|$2 இல்லை}}',
 	'articlefeedbackv5-special-add-feedback' => 'உங்கள் கருத்துகளை பதிவுசெய்யவும்',
 	'articlefeedbackv5-special-survey-button-text' => 'இந்த பின்னூட்ட கருவி பற்றி நீங்கள் என்ன நினைகிறீர்கள்?',
@@ -22695,7 +22652,6 @@ $messages['ta'] = array(
 	'articlefeedbackv5-form-unhide' => 'இந்தப் பதிவை மறைக்காதே',
 	'articlefeedbackv5-form-hide-own' => 'எனது பதிவை மறை',
 	'articlefeedbackv5-form-unhide-own' => 'எனது பதிவை மறைத்தல் நீக்கு',
-	'articlefeedbackv5-form-helpful' => 'உதவியானதாக குறி ($1)',
 	'articlefeedbackv5-form-abuse' => ' தவறானது என கூறு',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 குறி|$1 குறிகள்}}',
 	'articlefeedbackv5-form-delete' => 'மேற்பார்வை',
@@ -22711,18 +22667,12 @@ $messages['ta'] = array(
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}}க்கு ஒரு பிரச்சினை உள்ளது:',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} ஒரு கேள்வியை வைத்துள்ளார்:',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}}இடம் ஒரு ஆலோசனை உள்ளது:',
-	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} இந்தப் பக்கத்தை $2/5 என மதிப்பிட்டுள்ளார்.',
-	'articlefeedbackv5-form4-header' => 'CTA-மட்டும் படிவம் கொண்டு {{GENDER:$1|$1}} செய்யப்பட்டது.',
-	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} இந்தப் பக்கத்தை மதிப்பிட்டுள்ளார்:',
 	'articlefeedbackv5-form-anon-username' => 'ஒரு படிப்பாளர்',
 	'articlefeedbackv5-form-anon-message' => '$1 லிருந்து அநாமதேயமாக பதிவிடப்பட்டது.',
-	'articlefeedbackv5-form-not-shown' => '{{GENDER:$1|$1}} பின்னூட்ட படிவத்தை காண்பிக்கவில்லை.',
 	'articlefeedbackv5-form-invalid' => 'செல்லாத பின்னூட்ட படிவ அடையாள எண்.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} பயனரால்  $3ல் பின்னூட்டம் பதிவு செய்யப்பட்டது', # Fuzzy
 	'articlefeedbackv5-abuse-saved' => 'முறைகேடானதாக குறியிடப்பட்டது',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'நீங்கள் அமைத்த குறியை நீக்குக',
-	'articlefeedbackv5-oversight-saved' => 'மேற்பார்வைக்காக குறிக்கப்பட்டது',
-	'articlefeedbackv5-unoversight-saved' => 'மேற்பார்வைக் கொடி நீக்கப்பட்டது',
 	'articlefeedbackv5-error-loading-feedback' => 'பின்னூட்டத்தை ஏற்றுவதில் பிழை',
 	'articlefeedbackv5-invalid-feedback-id' => 'செல்லாத பின்னூட்ட அடையாள எண்',
 	'articlefeedbackv5-invalid-feedback-flag' => 'செல்லாத பின்னூட்டக் கொடி',
@@ -22731,8 +22681,7 @@ $messages['ta'] = array(
 	'articlefeedbackv5-discussion-page' => 'பேச்சு',
 	'articlefeedbackv5-whats-this' => 'உதவி',
 	'articlefeedbackv5-invalid-page-id' => 'செல்லாத பக்க அடையாள எண்',
-	'articlefeedbackv5-percent-found' => '$1 அவர்கள் என்ன தேடினார்களோ அதை கண்டறிந்து விட்டனர்',
-	'articlefeedbackv5-overall-rating' => 'மதிப்பீடு: $1/5',
+	'articlefeedbackv5-found-percent' => '$1 அவர்கள் என்ன தேடினார்களோ அதை கண்டறிந்து விட்டனர்', # Fuzzy
 	'articlefeedbackv5' => 'கட்டுரை பின்னூட்ட அறை', # Fuzzy
 	'articlefeedbackv5watchlist' => 'கட்டுரைப் பின்னூட்டம் - என் கவனிப்புப் பட்டியல் பக்கங்கள்',
 	'articlefeedbackv5-desc' => 'கட்டுரைக்கான கருத்து',
@@ -22825,7 +22774,7 @@ $messages['ta'] = array(
 * மின்னஞ்சல் முகவரிகள்
 * ஆபாச வலைத்தள முகவரிகள்
 * ஒரு நபரைப் பற்றிய அவதூறான/பொய்யான தகவல்கள்
-* [http://en.wikipedia.org/wiki/Wikipedia:Oversight#Policy மேற்பார்வைக்கான மற்ற நிபந்தனைகள்]',
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy மேற்பார்வைக்கான மற்ற நிபந்தனைகள்]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'நீங்கள் ஏன் மேற்பார்வை கோருகிறீர்கள் என்பதனை விளக்க ஒரு குறிப்பைச் சேர்க்கவும்',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'ஏன் நீங்கள் மேற்பார்வை செய்யக் கோருகிறீர்கள்?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'மேற்பார்வை செய்யக் கோரவும்',
@@ -23718,10 +23667,9 @@ $messages['ug-arab'] = array(
 	'articlefeedbackv5-cta6-button-text' => 'چايخانىنى زىيارەت',
 	'articlefeedbackv5-overlay-close' => 'ياپ',
 	'articlefeedbackv5-error' => 'خاتالىق كۆرۈلدى. قايتا سىناڭ.',
-	'articlefeedbackv5-error-email' => 'بۇ تورخەت ئادرېسى ئىناۋەتسىز.',
 	'articlefeedbackv5-error-blocked' => 'توسۇلغان ئىشلەتكۈچىلەر قايتۇرما ئىنكاس يوللىيالماسلىقى مۇمكىن.',
 	'articlefeedbackv5-error-validation' => 'دەلىللەش خاتالىقى.',
-	'articlefeedbackv5-error-abuse' => 'يوللانمىڭىز يۇمشاق دېتال سۈزگۈچى تەرىپىدىن رەت قىلىندى ئۇ بەلكىم {{SITENAME}}نىڭ [$1 قايتۇرما ئىنكاس كۆرسەتمىسى]گە خىلاپ بولۇشى مۇمكىن. يوللانمىڭىزنى ئۆزگەرتىپ ئاندىن قايتا سىناڭ.',
+	'articlefeedbackv5-error-abuse' => 'يوللانمىڭىز يۇمشاق دېتال سۈزگۈچى تەرىپىدىن رەت قىلىندى ئۇ بەلكىم {{SITENAME}}نىڭ [$1 قايتۇرما ئىنكاس كۆرسەتمىسى]گە خىلاپ بولۇشى مۇمكىن. يوللانمىڭىزنى ئۆزگەرتىپ ئاندىن قايتا سىناڭ.', # Fuzzy
 	'articlefeedbackv5-error-unknown' => 'يوچۇن خاتالىق.',
 	'articlefeedbackv5-error-submit' => 'جەدۋەل يوللاش خاتالىقى.',
 	'articlefeedbackv5-error-nofeedback' => 'قايتۇرما ئىنكاسىڭىزنى كىرگۈزۈڭ.',
@@ -23747,7 +23695,6 @@ $messages['ug-arab'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'بۇ قايتۇرما ئىنكاس پايدىلىقمۇ؟',
 	'articlefeedbackv5-form-helpful-yes-label' => 'ھەئە',
 	'articlefeedbackv5-form-helpful-no-label' => 'ياق',
-	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|$1 كىشى پايدىلىق ھېس قىلدى}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|$1ھەئە}} / {{PLURAL:$2|$2 ياق}}',
 	'articlefeedbackv5-special-add-feedback' => 'قايتۇرما ئىنكاسىڭىزنى قوشۇڭ',
 	'articlefeedbackv5-special-survey-button-text' => 'سىزنىڭچە بۇ قايتۇرما ئىنكاس قورالى قانداقكەن؟',
@@ -23840,7 +23787,6 @@ $messages['ug-arab'] = array(
 	'articlefeedbackv5-form-unhide' => 'بۇ يوللانمىنى ئاشكارىلا',
 	'articlefeedbackv5-form-hide-own' => 'يوللانمامنى يوشۇر',
 	'articlefeedbackv5-form-unhide-own' => 'يوللانمامنى ئاشكارىلا',
-	'articlefeedbackv5-form-helpful' => 'پايدىلىق بەلگىسى سال ($1)',
 	'articlefeedbackv5-form-abuse' => 'سۈيىئىستىمال بايرىقى قادا',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 بايراق}}',
 	'articlefeedbackv5-form-abuse-cleared' => 'بايراق تازىلاندى',
@@ -23857,18 +23803,12 @@ $messages['ug-arab'] = array(
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} مەسىلە يوللىدى:',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} سوئال يوللىدى:',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} تەكلىپ يوللىدى:',
-	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}} بۇ بەتنى  $2/5 باھالىدى',
-	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} ھەرىكەت چاقىرىقىغىلا ئىشلىتىلىدىغان جەدۋەلگە ئېرىشتى.',
-	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}} بۇ بەتنى باھالىدى',
 	'articlefeedbackv5-form-anon-username' => 'بىر ئوقۇرمەن',
 	'articlefeedbackv5-form-anon-message' => '$1 دىن ئاتسىز يوللانغان.',
-	'articlefeedbackv5-form-not-shown' => 'قايتۇرما ئىنكاس جەدۋىلى {{GENDER:$1|$1} غا كۆرسىتىلمىدى.', # Fuzzy
 	'articlefeedbackv5-form-invalid' => 'ئىناۋەتسىز قايتۇرما ئىنكاس كىملىكى.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}}  $3 دا [[$4|قايتۇرما ئىنكاس]]نى يوللىدى.',
 	'articlefeedbackv5-abuse-saved' => 'سۈيىئىستىمال بايرىقى قادالدى',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'سىز تەڭشىگەن بايراقنى چىقىرىۋېتىدۇ',
-	'articlefeedbackv5-oversight-saved' => 'نازارەت بەلگىسى سېلىندى',
-	'articlefeedbackv5-unoversight-saved' => 'نازارەت بايرىقى چىقىرىۋېتىلدى',
 	'articlefeedbackv5-error-loading-feedback' => 'قايتۇرما ئىنكاسنى يۈكلەۋاتقاندا خاتالىق كۆرۈلدى',
 	'articlefeedbackv5-invalid-feedback-id' => 'ئىناۋەتسىز قايتۇرماق ئىنكاس كىملىكى',
 	'articlefeedbackv5-invalid-feedback-flag' => 'ئىناۋەتسىز قايتۇرما ئىنكاس بايرىقى',
@@ -23877,8 +23817,7 @@ $messages['ug-arab'] = array(
 	'articlefeedbackv5-discussion-page' => 'مۇنازىرە',
 	'articlefeedbackv5-whats-this' => 'ياردەم',
 	'articlefeedbackv5-invalid-page-id' => 'ئىناۋەتسىز بەت كىملىكى',
-	'articlefeedbackv5-percent-found' => 'ئۇلار ئىزدەۋاتقاننى $1 تاپتى',
-	'articlefeedbackv5-overall-rating' => 'باھا: $1/5',
+	'articlefeedbackv5-found-percent' => 'ئۇلار ئىزدەۋاتقاننى $1 تاپتى', # Fuzzy
 	'articlefeedbackv5' => 'ماقالە قايتۇرما ئىنكاسى - مەركىزى بەت',
 	'articlefeedbackv5watchlist' => 'ماقالە قايتۇرما ئىنكاسى - مەن كۆرگەن بەتلەر',
 	'articlefeedbackv5-desc' => 'ماقالە قايتۇرما ئىنكاسى',
@@ -23974,7 +23913,7 @@ $1',
 * تورخەت ئادرېسى
 * شەھۋانىي ئۇلانما
 * بىر كىشىگە تۆھمەت چاپلاپ/ھاقارەتلەپ ئىنكاس يوللىغان
-* [http://en.wikipedia.org/wiki/Wikipedia:نازارەت#باشقا نازارەت يېتەكچىسى]',
+* [//en.wikipedia.org/wiki/Wikipedia:نازارەت#باشقا نازارەت يېتەكچىسى]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'نېمە ئۈچۈن نازارەت قىلىنىدىغانلىقىنىڭ سەۋەب ئىزاھاتىنى قوشۇڭ',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'نېمە ئۈچۈن نازارەت قىلىشنى ئىلتىماس قىلىسىز؟',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'نازارەت ئىلتىماسى',
@@ -25251,7 +25190,7 @@ $messages['zh-hans'] = array(
 * 电子邮箱地址
 * 色情链接
 * 对某个人的诽谤/侮辱性评论
-* [http://zh.wikipedia.org/wiki/Wikipedia:监督#.E6.96.B9.E9.92.88 其他监督方针]',
+* [//zh.wikipedia.org/wiki/Wikipedia:监督#.E6.96.B9.E9.92.88 其他监督方针]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => '添加注解解释您为何要求监督',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => '您为什么请求删除？',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => '请求删除',
