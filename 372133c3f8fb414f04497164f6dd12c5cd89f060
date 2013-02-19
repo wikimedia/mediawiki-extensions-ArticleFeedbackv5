@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DlZaKjb8",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 473
+      },
+      "writtenOn": "2013-02-19T18:57:21Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure that\u0027s not your address :)",
+      "revId": "372133c3f8fb414f04497164f6dd12c5cd89f060",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DlTb4eUY",
+        "filename": "maintenance/legacyToShard.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 473
+      },
+      "writtenOn": "2013-02-19T18:57:21Z",
+      "side": 1,
+      "message": "Maybe my local install is odd, but this path never works for me.\n\nI see other extensions use\nrequire_once ( getenv( \u0027MW_INSTALL_PATH\u0027 ) !\u003d\u003d false\n? getenv( \u0027MW_INSTALL_PATH\u0027 ) . \u0027/maintenance/Maintenance.php\u0027\n: dirname( __FILE__ ) . \u0027/../../../maintenance/Maintenance.php\u0027 );",
+      "revId": "372133c3f8fb414f04497164f6dd12c5cd89f060",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
