@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Dl.pkQiU",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-19T09:31:34Z",
+      "side": 1,
+      "message": "This isn\u0027t ideal. I believe the code will check $user-\u003eisAllowed( \u0027aft-monitor\u0027 ) 5 times, isAllowed( \u0027 aft-reader\u0027 ) several times, etc. and $user-\u003eisBlocked() 20 times.  It would be better to have a getPerformableActions( $user ) that only invokes those user methods once, then iterates through the entire self::$actions array.\n\nI don\u0027t know if this is a bottleneck.",
+      "revId": "4c4e7541c5f559e4065d9dc5f1487d060266fe7f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dl8pphvs",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-19T09:31:34Z",
+      "side": 1,
+      "message": "\"Returns\" is better, and \"continue\" wasn\u0027t clear to me, I think it\u0027s a \"subsequent request continuing from this record.\"",
+      "revId": "4c4e7541c5f559e4065d9dc5f1487d060266fe7f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dl4p0ns8",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-19T09:31:34Z",
+      "side": 1,
+      "message": "Remove \"original\"",
+      "revId": "4c4e7541c5f559e4065d9dc5f1487d060266fe7f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dl.pNYps",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-19T09:31:34Z",
+      "side": 1,
+      "message": "\"Get (and cache) the counts of activity (that are within the user\u0027s permissions)...\"",
+      "revId": "4c4e7541c5f559e4065d9dc5f1487d060266fe7f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dl0p.tq0",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-19T09:31:34Z",
+      "side": 1,
+      "message": "Hoist the isBlocked() out of the loop with $userIsBlocked, don\u0027t call it each time.",
+      "revId": "4c4e7541c5f559e4065d9dc5f1487d060266fe7f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dlyp7ar0",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-19T09:31:34Z",
+      "side": 1,
+      "message": "delete the comment",
+      "revId": "4c4e7541c5f559e4065d9dc5f1487d060266fe7f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DlwpJzo8",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-19T09:31:34Z",
+      "side": 1,
+      "message": "I think you want strict \u003d\u003d\u003d comparison here, $count of 0 will \u003d\u003d false.",
+      "revId": "4c4e7541c5f559e4065d9dc5f1487d060266fe7f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dl8pCpms",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-19T09:31:34Z",
+      "side": 1,
+      "message": "nit: Capitals.  \"Save to or extend caching. Set a long expiration...\"",
+      "revId": "4c4e7541c5f559e4065d9dc5f1487d060266fe7f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dl6pHWnk",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-19T09:31:34Z",
+      "side": 1,
+      "message": "I\u0027m a memcached n00b, but there\u0027s a $wgMemc-\u003eincrement() method that would collapse the get and set.  However, it would mean this always sets a value in the cache, which may not be what you want.",
+      "revId": "4c4e7541c5f559e4065d9dc5f1487d060266fe7f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dl4pdvkc",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-19T09:31:34Z",
+      "side": 1,
+      "message": "not your email :)",
+      "revId": "4c4e7541c5f559e4065d9dc5f1487d060266fe7f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dl2pakk8",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-19T09:31:34Z",
+      "side": 1,
+      "message": "affeedback typo; I think the example should be aafeedbackid\u003d1\u0026aapageid\u003d1, at least",
+      "revId": "4c4e7541c5f559e4065d9dc5f1487d060266fe7f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dl0pX1iU",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-19T09:31:34Z",
+      "side": 1,
+      "message": "typo \"fetch\"",
+      "revId": "4c4e7541c5f559e4065d9dc5f1487d060266fe7f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
