@@ -624,7 +624,8 @@ The link to the edit tutorial',
 	'articlefeedbackv5-cta4-button-text-login' => 'The text for the button encouraging people to login.
 {{Identical|Log in}}',
 	'articlefeedbackv5-cta4-button-text-later' => 'The text for the link allowing the user to discard this message',
-	'articlefeedbackv5-cta4-button-text-or' => 'The text dividing the 2 buttons (signup & login)',
+	'articlefeedbackv5-cta4-button-text-or' => 'The text dividing the 2 buttons (signup & login).
+{{Identical|Or}}',
 	'articlefeedbackv5-cta5-confirmation-title' => 'The title of the feedback CTA (call to action)',
 	'articlefeedbackv5-cta5-confirmation-call' => 'The explanatory text of the feedback CTA (call to action)',
 	'articlefeedbackv5-cta5-button-text' => 'The text for the button on the feedback CTA (call to action)',
@@ -727,7 +728,8 @@ The abuse policy link.',
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Sort option: least helpful feedback first',
 	'articlefeedbackv5-special-sort-age-desc' => 'Sort option: newest feedback first',
 	'articlefeedbackv5-special-sort-age-asc' => 'Sort option: oldest feedback first',
-	'articlefeedbackv5-special-sort-label-before' => 'Place to put a label before the sort options',
+	'articlefeedbackv5-special-sort-label-before' => 'Place to put a label before the sort options.
+{{Identical|Sort by}}',
 	'articlefeedbackv5-special-sort-label-after' => '{{notranslate}}',
 	'articlefeedbackv5-special-filter-label-before' => 'Place to put a label before the filter options',
 	'articlefeedbackv5-special-filter-label-after' => '{{notranslate}}',
@@ -804,7 +806,8 @@ The abuse policy link.',
 * $1 is the name of the monitor who performed the unresolve
 * $2 is the date when the unresolve occurred
 * $3 is the time when the unresolve occurred',
-	'articlefeedbackv5-new-marker' => 'The marker that appears on a comment is new and highlighted.',
+	'articlefeedbackv5-new-marker' => 'The marker that appears on a comment is new and highlighted.
+{{Identical|New}}',
 	'articlefeedbackv5-deleted-marker' => 'The marker that appears on a comment if it has been oversighted (deleted).',
 	'articlefeedbackv5-hidden-marker' => 'The marker that appears on a comment if it has been hidden.
 {{Identical|Hidden}}',
@@ -14602,7 +14605,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-go-to-article' => 'Artikel weisen',
 	'articlefeedbackv5-discussion-page' => 'Diskussioun',
 	'articlefeedbackv5-whats-this' => 'Hëllef',
-	'articlefeedbackv5-found-percent' => '$1  hu fonnt wat si gesicht hunn', # Fuzzy
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 hu fonnt wat si gesicht hunn}}',
 	'articlefeedbackv5' => 'Artikel-Feedback - Haaptsäit',
 	'articlefeedbackv5watchlist' => 'Artikel Feedback - Meng iwwerwaachte Säiten',
 	'articlefeedbackv5-desc' => 'Artikel Feedback',
@@ -14618,6 +14621,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|engem Joer|$1 Joer}}',
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|engem Mount|$1 Méint}}',
 	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL: $1|enger Woch|$1 Wochen}}',
+	'articlefeedbackv5-timestamp-days' => '{{PLURAL:$1|engem Dag|$1 Deeg}}',
 	'articlefeedbackv5-timestamp-seconds' => 'manner wéi eng Minutt',
 	'articlefeedbackv5-mask-view-contents' => 'Inhalt weisen',
 	'articlefeedbackv5-mask-postnumber' => 'Beitrag Nr. $1',
