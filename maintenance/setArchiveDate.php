@@ -68,7 +68,7 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 
 			$list = $backend->getList( 'archive_scheduled', null, $next, $this->limit, 'age', 'ASC' );
 
-			foreach ( $list as $i => $row ) {
+			foreach ( $list as $row ) {
 				$feedback = ArticleFeedbackv5Model::loadFromRow( $row );
 
 				$offset = ( isset( $row->offset_value ) ? $row->offset_value . '|' : '' ) . $feedback->aft_id;
