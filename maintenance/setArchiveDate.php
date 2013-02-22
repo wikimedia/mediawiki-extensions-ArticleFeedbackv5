@@ -54,9 +54,10 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 		 * Temporarily create a bogus filter that is more of an aid to use the model's
 		 * built-in functions to query for stuff that has not yet been archived but is due.
 		 */
+		$now = wfTimestampNow();
 		ArticleFeedbackv5Model::$lists['archive_scheduled'] = array(
 			'permissions' => 'aft-noone',
-			'conditions' => array( 'aft_archive = 0', 'aft_archive_date <= "'.wfTimestampNow().'"' ),
+			'conditions' => array( 'aft_archive = 0', "aft_archive_date <= '$now'" ),
 		);
 
 		$offset = null;
@@ -65,28 +66,33 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 		while ( true ) {
 			$break = true;
 
-			$list = $backend->getList( 'archive_scheduled', null, $offset, $this->limit, 'age', 'ASC' );
+			$list = $backend->getList( 'archive_scheduled', null, $offset, $this->limit + 1, 'age', 'ASC' );
 
-			foreach ( $list as $row ) {
+			foreach ( $list as $i => $row ) {
 				$feedback = ArticleFeedbackv5Model::loadFromRow( $row );
+
+				$offset = ( isset( $row->offset_value ) ? $row->offset_value . '|' : '' ) . $feedback->aft_id;
+
+				// next list will start from here; no need to process right now
+				if ( $i >= $this->limit ) {
+					continue;
+				}
 
 				// clear out the archive date & the correct one will be set
 				$feedback->aft_archive_date = null;
 				$feedback->update();
-
-				$offset = ( isset( $row->offset_value ) ? $row->offset_value . '|' : '' ) . $feedback->aft_id;
 
 				$this->completeCount++;
 
 				$break = false;
 			}
 
+			wfWaitForSlaves();
+			$this->output( "--updated to entry #$feedback->aft_id\n" );
+
 			if ( $break ) {
 				break;
 			}
-
-			wfWaitForSlaves();
-			$this->output( "--updated to entry #$feedback->aft_id\n" );
 		}
 
 		$this->output( "Done. Fixed " . $this->completeCount . " entries' archive dates.\n" );
