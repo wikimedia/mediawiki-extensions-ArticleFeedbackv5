@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DnQhOh8E",
+        "filename": "sql/ArticleFeedbackv5.sql",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-02-22T20:49:00Z",
+      "side": 1,
+      "message": "Poking around the code a little bit, seems like the query condition could be one of the following:\n\n1, aft_archive \u003d 0 AND ( (aft_archive_date \u003e $sortOffset) OR (aft_archive_date \u003d $sortOffset AND aft_id \u003e\u003d $idOffset) )\n\n2. aft_archive\u003d 0 AND aft_id \u003e\u003d $idOffset\n\nWe need to add another index for the 2nd condition: ( aft_archive, aft_id ) or just ( aft_archive ) - Innodb automatically appends primary key to every secondary index according to MySQL 5.6 manual.",
+      "revId": "48113b9c00c7a2cb23651df784429b3bf88d3c80",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnYi912Q",
+        "filename": "sql/archive.sql",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-02-22T20:49:00Z",
+      "side": 1,
+      "message": "should be /*_*/aft_feedback",
+      "revId": "48113b9c00c7a2cb23651df784429b3bf88d3c80",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
