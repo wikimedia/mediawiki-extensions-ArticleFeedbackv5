@@ -79,6 +79,14 @@ class ArticleFeedbackv5Activity {
 			'permissions' => 'aft-editor2',
 			'sentiment' => 'negative'
 		),
+		'archive' => array(
+			'permissions' => 'aft-editor',
+			'sentiment' => 'negative'
+		),
+		'unarchive' => array(
+			'permissions' => 'aft-editor',
+			'sentiment' => 'positive'
+		),
 		'flag' => array(
 			'permissions' => 'aft-reader',
 			'sentiment' => 'negative'
