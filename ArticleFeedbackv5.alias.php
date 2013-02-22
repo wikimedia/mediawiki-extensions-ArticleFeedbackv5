@@ -71,7 +71,7 @@ $specialPageAliases['ml'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'ലേഖനത്തിനുള്ളപ്രതികരണംപ5ശ്രദ്ധിക്കുന്നപട്ടിക' ),
 );
 
-/** Norwegian Bokmål (norsk (bokmål)‎) */
+/** Norwegian Bokmål (norsk bokmål) */
 $specialPageAliases['nb'] = array(
 	'ArticleFeedbackv5' => array( 'Artikkeltilbakemelding_v5' ),
 );

@@ -10,8 +10,7 @@
  */
 
 /**
- * This class allows you to performs a certain action (e.g. resolve,
- * mark as useful) to feedback.
+ * This class pulls the individual ratings/comments for the feedback page.
  *
  * @package    ArticleFeedback
  * @subpackage Api
@@ -26,42 +25,28 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 *
 	 * This single api call covers all cases where flags are being applied to
 	 * a piece of feedback
+	 *
+	 * A feedback request consists of
+	 * 1.
 	 */
 	public function execute() {
 		wfProfileIn( __METHOD__ );
 
-		global $wgUser;
-
 		// get important values from our parameters
 		$params     = $this->extractRequestParams();
 		$feedbackId = $params['feedbackid'];
-		$pageId     = $params['pageid'];
 		$flag       = $params['flagtype'];
 		$notes      = $params['note'];
+		$direction  = isset( $params['direction'] ) ? $params['direction'] : 'increase';
 		$toggle     = $params['toggle'];
 		$source     = $params['source'];
 
+		// woah, we were not checking for permissions (that could have been script kiddy bad)
+		global $wgUser;
+
 		// Fire up the flagging object
-		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId, $pageId );
-		$status = $flagger->run( $flag, $notes, $toggle, $source );
-
-		if ( !$status ) {
-			$results = array();
-			$results['result'] = 'Error';
-			$results['reason'] = $flagger->getError();
-		} else {
-			$results = array();
-			$results['result'] = 'Success';
-			$results['reason'] = null;
-			$results['log_id'] = $flagger->getLogId();
-
-			// re-render feedback entry
-			$feedback = ArticleFeedbackv5Model::get( $feedbackId, $pageId );
-			$permalink = $source == 'permalink';
-			$central = $source == 'central';
-			$renderer = new ArticleFeedbackv5Render( $wgUser, $permalink, $central, false );
-			$results['render'] = $renderer->run( $feedback );
-		}
+		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId );
+		$results = $flagger->run( $flag, $notes, $direction, $toggle, $source );
 
 		$this->getResult()->addValue(
 			null,
@@ -87,12 +72,19 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			'feedbackid' => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'string'
+				ApiBase::PARAM_TYPE     => 'integer'
 			),
 			'flagtype'   => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Activity::$actions ),
+				ApiBase::PARAM_TYPE     => array(
+				 'flag', 'hide', 'helpful', 'unhelpful', 'oversight', 'request', 'decline', 'resolve', 'feature' )
+			),
+			'direction' => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_TYPE     => array(
+				 'increase', 'decrease' )
 			),
 			'note' => array(
 				ApiBase::PARAM_REQUIRED => false,
@@ -119,9 +111,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getParamDescription() {
 		return array(
-			'pageid'      => 'PageID of feedback',
 			'feedbackid'  => 'FeedbackID to flag',
-			'type'        => 'Type of flag to apply',
+			'type'        => 'Type of flag to apply - hide or abuse',
 			'note'        => 'Information on why the feedback activity occurred',
 			'toggle'      => 'The flag is being toggled atomically, only useful for (un)helpful',
 			'source'      => 'The origin of the flag: article (page), central (feedback page), watchlist (page), permalink',
@@ -159,7 +150,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 */
 	protected function getExamples() {
 		return array(
-			'api.php?action=articlefeedbackv5-flag-feedback&feedbackid=1&pageid=1&flagtype=helpful'
+			'api.php?list=articlefeedbackv5-view-feedback&affeedbackid=1&aftype=abuse',
 		);
 	}
 
