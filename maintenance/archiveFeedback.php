@@ -54,6 +54,15 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 	public function execute() {
 		$this->output( "Marking old feedback as archived.\n" );
 
+		/**
+		 * Temporarily create a bogus filter that is more of an aid to use the model's
+		 * built-in functions to query for stuff that has not yet been archived but is due.
+		 */
+		ArticleFeedbackv5Model::$lists['archive_scheduled'] = array(
+			'permissions' => 'aft-noone',
+			'conditions' => array( 'aft_archive = 0', 'aft_archive_date <= "'.wfTimestampNow().'"' ),
+		);
+
 		$backend = ArticleFeedbackv5Model::getBackend();
 		while ( true ) {
 			$break = true;

@@ -49,11 +49,11 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 		$dbr = $this->getDB( DB_SLAVE );
 		if ( !$dbr->tableExists( 'aft_article_feedback' ) ) {
 			// not necessary to run, there is no source data
-			return;
+			return true;
 		} elseif ( !$dbr->tableExists( 'aft_article_feedback' ) ) {
 			// not possible to run, there is no target
 			$this->output( "Target table 'aft_feedback' does not exist.\n" );
-			return;
+			return false;
 		}
 
 		$this->output( "Moving legacy ArticleFeedbackv5 entries to sharded table.\n" );

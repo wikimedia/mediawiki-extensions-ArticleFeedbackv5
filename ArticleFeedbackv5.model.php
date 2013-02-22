@@ -89,16 +89,6 @@ class ArticleFeedbackv5Model extends DataModel {
 			'conditions' => array(),
 		),
 
-		/**
-		 * This filter is not really a "selectable" filter, but more of an aid to use the
-		 * model's built-in functions to query for stuff that has not yet been archived
-		 * but is due.
-		 */
-		'archive_scheduled' => array(
-			'permissions' => 'aft-noone',
-			'conditions' => array( 'aft_archive = 0', 'aft_archive_date <= NOW()' ),
-		),
-
 		// reader lists
 		'featured' => array(
 			'permissions' => 'aft-reader',
