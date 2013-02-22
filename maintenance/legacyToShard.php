@@ -17,7 +17,7 @@ require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
  *
  * @package    ArticleFeedbackv5
  */
-class ArticleFeedbackv5_LegacyToShard extends Maintenance {
+class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 	/**
 	 * Batch size
 	 *
