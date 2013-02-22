@@ -42,6 +42,8 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 
 	/**
 	 * Execute the script
+	 *
+	 * @return bool
 	 */
 	protected function doDBUpdates() {
 		$dbr = $this->getDB( DB_SLAVE );
@@ -67,6 +69,8 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 		}
 
 		$this->output( "Done. Moved " . $this->completeCount . " ArticleFeedbackv5 entries.\n" );
+
+		return true;
 	}
 
 	/**

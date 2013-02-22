@@ -39,9 +39,6 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 		$this->mDescription = 'Fix archive dates of pre-auto-archive feedback.';
 	}
 
-	public function execute() {
-	}
-
 	/**
 	 * Installing archive.sql will create the schema changes necessary for auto-archive to work.
 	 * Old feedback, however, has no archive date set. The SQL we ran to install the schema has
