@@ -60,21 +60,21 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 			'conditions' => array( 'aft_archive = 0', "aft_archive_date <= '$now'" ),
 		);
 
-		$offset = null;
+		$next = null;
 
 		$backend = ArticleFeedbackv5Model::getBackend();
 		while ( true ) {
 			$break = true;
 
-			$list = $backend->getList( 'archive_scheduled', null, $offset, $this->limit + 1, 'age', 'ASC' );
+			$list = $backend->getList( 'archive_scheduled', null, $next, $this->limit, 'age', 'ASC' );
 
 			foreach ( $list as $i => $row ) {
 				$feedback = ArticleFeedbackv5Model::loadFromRow( $row );
 
 				$offset = ( isset( $row->offset_value ) ? $row->offset_value . '|' : '' ) . $feedback->aft_id;
 
-				// next list will start from here; no need to process right now
-				if ( $i >= $this->limit ) {
+				// there's 1 item overlap (the offset is where a next search starts from) - ignore the one we just processed
+				if ( $next === $offset ) {
 					continue;
 				}
 
@@ -83,12 +83,12 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 				$feedback->update();
 
 				$this->completeCount++;
-
 				$break = false;
 			}
 
 			wfWaitForSlaves();
 			$this->output( "--updated to entry #$feedback->aft_id\n" );
+			$next = $offset;
 
 			if ( $break ) {
 				break;
