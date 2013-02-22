@@ -129,6 +129,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			array_push( $this->sorts, 'helpful-desc', 'helpful-asc' );
 		}
 
+		// don't display archived list unless specifically "enabled" (if cronjob
+		// is not running, it would simply not work)
+		global $wgArticleFeedbackAutoArchiveEnabled;
+		if ( !$wgArticleFeedbackAutoArchiveEnabled ) {
+			$this->filters = array_diff( $this->filters, array( 'archived' ) );
+		}
+
 		if ( !$param ) {
 			// No Page ID: do central log
 		} else {
