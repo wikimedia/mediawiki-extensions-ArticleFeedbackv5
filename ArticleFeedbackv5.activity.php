@@ -79,6 +79,14 @@ class ArticleFeedbackv5Activity {
 			'permissions' => 'aft-editor2',
 			'sentiment' => 'negative'
 		),
+		'archive' => array(
+			'permissions' => 'aft-editor',
+			'sentiment' => 'negative'
+		),
+		'unarchive' => array(
+			'permissions' => 'aft-editor',
+			'sentiment' => 'positive'
+		),
 		'flag' => array(
 			'permissions' => 'aft-reader',
 			'sentiment' => 'negative'
@@ -321,6 +329,8 @@ class ArticleFeedbackv5Activity {
 					$action = 'oversight';
 				} elseif ( $feedback->isHidden() ) {
 					$action = 'hide';
+				} elseif ( $feedback->isArchived() ) {
+					$action = 'archive';
 				} elseif ( $feedback->isResolved() ) {
 					$action = 'resolve';
 				} elseif ( $feedback->isFeatured() ) {
