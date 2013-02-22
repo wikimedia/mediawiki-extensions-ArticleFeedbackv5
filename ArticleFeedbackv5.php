@@ -82,12 +82,41 @@ $wgArticleFeedbackv5RelevanceScoring = array(
 	'autohide' => -100,
 	'hide' => -100,
 	'unhide' => 100,
+	'archive' => -50,
+	'unarchive' => 50,
 	'request' => -150,
 	'unrequest' => 150,
 	'decline' => 150,
 	'oversight' => -750,
 	'unoversight' => 750,
 );
+
+/**
+ * Enable/disable the "archived" filter. This is a setting that needs to explicitly be
+ * set to true since the functionality will depend on a cronjob to be run periodically.
+ *
+ * @var bool true to enable, false to disable
+ */
+$wgArticleFeedbackAutoArchiveEnabled = false;
+
+/**
+ * Defines the auto-archive period for feedback that is not being considered useful.
+ * Value should be an strtotime-capable format.
+ *
+ * If defined as string, this will be a fixed TTL based on the feedback creation date.
+ *
+ * It is also possible to set a certain TTL per offset of unreviewed feedback, e.g.:
+ * array(
+ * 	0 => '+2 years', // < 9: 2 years
+ * 	10 => '+1 month', // 10-19: 1 month
+ * 	20 => '+1 week', // 20-29: 1 week
+ * 	30 => '+3 days', // 30-39: 3 days
+ * 	40 => '+2 days', // > 40: 2 days
+ * );
+ *
+ * @var array|string strtotime-capable format
+ */
+$wgArticleFeedbackAutoArchiveTtl = '+2 weeks';
 
 // Defines whether or not there should be a link to the corresponding feedback on the page's talk page
 $wgArticleFeedbackv5TalkPageLink = true;
@@ -431,7 +460,7 @@ $wgLogTypes[] = 'suppress';
 foreach ( array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest' ) as $t) {
 	$wgLogActionsHandlers["suppress/$t"] = 'ArticleFeedbackv5LogFormatter';
 }
-foreach ( array( 'hide', 'unhide', 'flag', 'unflag', 'autoflag', 'autohide', 'feature', 'unfeature', 'resolve', 'unresolve', 'noaction', 'unnoaction', 'helpful', 'unhelpful', 'undo-helpful', 'undo-unhelpful', 'clear-flags' ) as $t) {
+foreach ( array( 'hide', 'unhide', 'flag', 'unflag', 'autoflag', 'autohide', 'feature', 'unfeature', 'resolve', 'unresolve', 'noaction', 'unnoaction', 'archive', 'unarchive', 'helpful', 'unhelpful', 'undo-helpful', 'undo-unhelpful', 'clear-flags' ) as $t) {
 	$wgLogActionsHandlers["articlefeedbackv5/$t"] = 'ArticleFeedbackv5LogFormatter';
 }
 
@@ -796,6 +825,22 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-noteflyover-unnoaction-submit',
 		'articlefeedbackv5-noteflyover-unnoaction-help',
 		'articlefeedbackv5-noteflyover-unnoaction-help-link',
+
+		'articlefeedbackv5-noteflyover-archive-caption',
+//		'articlefeedbackv5-noteflyover-archive-description',
+		'articlefeedbackv5-noteflyover-archive-label',
+		'articlefeedbackv5-noteflyover-archive-placeholder',
+		'articlefeedbackv5-noteflyover-archive-submit',
+		'articlefeedbackv5-noteflyover-archive-help',
+		'articlefeedbackv5-noteflyover-archive-help-link',
+
+		'articlefeedbackv5-noteflyover-unarchive-caption',
+//		'articlefeedbackv5-noteflyover-unarchive-description',
+		'articlefeedbackv5-noteflyover-unarchive-label',
+		'articlefeedbackv5-noteflyover-unarchive-placeholder',
+		'articlefeedbackv5-noteflyover-unarchive-submit',
+		'articlefeedbackv5-noteflyover-unarchive-help',
+		'articlefeedbackv5-noteflyover-unarchive-help-link',
 
 		'articlefeedbackv5-activity-pane-header',
 
