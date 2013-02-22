@@ -39,6 +39,8 @@ class ArticleFeedbackv5Model extends DataModel {
 		$aft_feature = 0,
 		$aft_resolve = 0,
 		$aft_noaction = 0,
+		$aft_archive = 0,
+		$aft_archive_date,
 		$aft_helpful = 0,
 		$aft_unhelpful = 0,
 
@@ -90,46 +92,46 @@ class ArticleFeedbackv5Model extends DataModel {
 		// reader lists
 		'featured' => array(
 			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_net_helpful > 0 OR aft_feature = 1' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_net_helpful > 0 OR aft_feature = 1' ),
 		),
 		'unreviewed' => array(
 			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_feature = 0', 'aft_resolve = 0', 'aft_noaction = 0' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_feature = 0', 'aft_resolve = 0', 'aft_noaction = 0' ),
 		),
 
 		// editor lists
 		'helpful' => array(
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_net_helpful > 0' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_net_helpful > 0' ),
 		),
 		'unhelpful' => array(
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_net_helpful < 0' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_net_helpful < 0' ),
 		),
 		'flagged' => array(
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_flag > 0' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_flag > 0' ),
 		),
 		'useful' => array(
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_feature = 1' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_feature = 1' ),
 		),
 		'resolved' => array(
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_resolve = 1' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_resolve = 1' ),
 		),
 		'noaction' => array(
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_noaction = 1' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_noaction = 1' ),
 		),
 		'inappropriate' => array(
 			'permissions' => 'aft-editor2', // other permission level makes it possible to separate from general public view
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 1' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 1' ),
 		),
-//		'archived' => array(
-//			'permissions' => 'aft-editor',
-//			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0' ), // @todo: work on this one ...
-//		),
+		'archived' => array(
+			'permissions' => 'aft-reader',
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 1' ),
+		),
 		'allcomment' => array(
 			'permissions' => 'aft-editor',
 			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0' ),
@@ -439,6 +441,7 @@ class ArticleFeedbackv5Model extends DataModel {
 		$this->aft_net_helpful = $this->aft_helpful - $this->aft_unhelpful;
 		$this->aft_relevance_score = $this->getRelevanceScore();
 		$this->aft_has_comment = (bool) $this->aft_comment;
+		$this->aft_archive_date = $this->getArchiveDate();
 		$this->updateCountFound();
 
 		return parent::insert();
@@ -454,6 +457,7 @@ class ArticleFeedbackv5Model extends DataModel {
 		$this->aft_net_helpful = $this->aft_helpful - $this->aft_unhelpful;
 		$this->aft_relevance_score = $this->getRelevanceScore();
 		$this->aft_has_comment = (bool) $this->aft_comment;
+		$this->aft_archive_date = $this->getArchiveDate();
 		$this->updateCountFound();
 
 		return parent::update();
@@ -541,6 +545,48 @@ class ArticleFeedbackv5Model extends DataModel {
 	}
 
 	/**
+	 * Returns the archive date (if any)
+	 *
+	 * If there's a positive relevance score, the article can be
+	 * considered useful and should not be auto-archived.
+	 * Only set archive date if none is set already; otherwise
+	 * leave the old date be
+	 *
+	 * @return mixed string with timestamp or null if no archive date
+	 */
+	public function getArchiveDate() {
+		if ( $this->isFeatured() || $this->isResolved() || $this->isNonActionable() || $this->isHidden() ) {
+			return null;
+		} elseif ( !$this->aft_archive_date ) {
+			global $wgArticleFeedbackAutoArchiveTtl;
+			$wgArticleFeedbackAutoArchiveTtl = (array) $wgArticleFeedbackAutoArchiveTtl;
+			$ttl = '+5 years';
+
+			// ttl is set per x amount of unreviewed comments
+			$count = static::getCount( 'unreviewed', $this->aft_page );
+
+			ksort( $wgArticleFeedbackAutoArchiveTtl );
+			foreach ( $wgArticleFeedbackAutoArchiveTtl as $amount => $time ) {
+				if ( $amount <= $count ) {
+					$ttl = $time;
+				} else {
+					break;
+				}
+			}
+
+			$ttl = strtotime( $ttl ) - time();
+
+			// convert creation timestamp to unix
+			$creation = wfTimestamp( TS_UNIX, $this->aft_timestamp );
+
+			// add ttl to creation timestamp and return in mediawiki timestamp format
+			return wfTimestamp( TS_MW, $creation + $ttl );
+		} else {
+			return $this->aft_archive_date;
+		}
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getExperiment() {
@@ -613,6 +659,13 @@ class ArticleFeedbackv5Model extends DataModel {
 	 */
 	public function isNonActionable() {
 		return (bool) $this->aft_noaction;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isArchived() {
+		return (bool) $this->aft_archive;
 	}
 
 	/**

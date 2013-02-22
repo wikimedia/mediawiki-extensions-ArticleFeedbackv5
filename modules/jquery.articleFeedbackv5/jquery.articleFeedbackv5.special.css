@@ -251,6 +251,16 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_resolve.svg);
 }
+.articleFeedbackv5-feedback .articleFeedbackv5-archive-marker {
+	/* @embed */
+	background: url(images/toolbox_archive.png);
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
+	/* @embed */
+	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
+}
 .articleFeedbackv5-feedback .articleFeedbackv5-noaction-marker {
 	/* @embed */
 	background: url(images/toolbox_noaction.png);
@@ -285,6 +295,7 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-resolve-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-noaction-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-hide-marker,
+.articleFeedbackv5-feedback .articleFeedbackv5-archive-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-oversight-marker {
 	display: block;
 	height: 25px;
@@ -406,6 +417,16 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_hide.svg);
 }
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-archive-link:before {
+	/* @embed */
+	background-image: url(images/toolbox_archive.png);
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
+	/* @embed */
+	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
+}
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-request-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-oversight-link:before {
 	/* @embed */
@@ -434,10 +455,11 @@
 .articleFeedbackv5-unhide-own-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unhide-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unfeature-link:before,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unresolve-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unnoaction-link:before,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unarchive-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unrequest-link:before,
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unoversight-link:before,
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unresolve-link:before {
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unoversight-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_undo.png);
 	/* @embed */
