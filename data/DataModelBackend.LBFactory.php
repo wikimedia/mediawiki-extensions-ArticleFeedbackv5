@@ -153,7 +153,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 
 		$options['LIMIT'] = $limit;
 		list( $sortOffset, $idOffset ) = $this->getOffset( $offset );
-		if ( $sortOffset !== null ) {
+		if ( $idOffset !== null ) {
 			$direction = $order == 'ASC' ? '>' : '<';
 			$sortOffset = $dbr->addQuotes( $sortOffset );
 			$idOffset = $dbr->addQuotes( $idOffset );
