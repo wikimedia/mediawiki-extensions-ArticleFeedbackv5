@@ -82,6 +82,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-contribs-status-action-noaction' => 'No action needed',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Inappropriate',
 	'articlefeedbackv5-contribs-status-action-hide' => 'Hide',
+	'articlefeedbackv5-contribs-status-action-archive' => 'Archived',
 	'articlefeedbackv5-contribs-status-action-request' => 'Oversight requested',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Oversighted',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'hidden comment',
@@ -170,6 +171,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-status-unnoaction' => 'This post was un-marked as non-actionable by $1 on $2 at $3',
 	'articlefeedbackv5-status-inappropriate' => 'This post was marked as inappropriate by $1 on $2 at $3',
 	'articlefeedbackv5-status-uninappropriate' => 'This post was unmarked as inappropriate by $1 on $2 at $3',
+	'articlefeedbackv5-status-archive' => 'This post was archived by $1 on $2 at $3',
+	'articlefeedbackv5-status-unarchive' => 'This post was un-archived by $1 on $2 at $3',
 	'articlefeedbackv5-new-marker' => 'New',
 	'articlefeedbackv5-oversight-marker' => 'Oversighted',
 	'articlefeedbackv5-hide-marker' => 'Hide',
@@ -177,6 +180,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-resolve-marker' => 'Resolved',
 	'articlefeedbackv5-noaction-marker' => 'No action needed',
 	'articlefeedbackv5-inappropriate-marker' => 'Inappropriate',
+	'articlefeedbackv5-archive-marker' => 'Archived',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 flag|$1 flags}}',
 	'articlefeedbackv5-form-note' => 'Add note',
 	'articlefeedbackv5-form-feature' => 'Useful',
@@ -191,6 +195,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-unhide' => 'Undo',
 	'articlefeedbackv5-form-hide-own' => 'Hide my post',
 	'articlefeedbackv5-form-unhide-own' => 'Show my post',
+	'articlefeedbackv5-form-archive' => 'Archive',
+	'articlefeedbackv5-form-unarchive' => 'Undo',
 	'articlefeedbackv5-form-helpful' => 'Mark as helpful ($1)',
 	'articlefeedbackv5-form-flag' => 'Flag as abuse',
 	'articlefeedbackv5-form-oversight' => 'Oversight',
@@ -216,6 +222,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-tooltip-unhide' => 'Unhide',
 	'articlefeedbackv5-form-tooltip-hide-own' => 'Nonsense, spam, offensive, private data ...',
 	'articlefeedbackv5-form-tooltip-unhide-own' => 'Unhide',
+	'articlefeedbackv5-form-tooltip-archive' => 'Ignored for too long, not considered useful',
+	'articlefeedbackv5-form-tooltip-unarchive' => 'Un-archive',
 	'articlefeedbackv5-form-tooltip-flag' => 'Nonsense, spam, offensive, private data ...',
 	'articlefeedbackv5-form-tooltip-oversight' => 'Offensive, private data ...',
 	'articlefeedbackv5-form-tooltip-unoversight' => 'Undo oversight',
@@ -320,6 +328,8 @@ We appreciate your contributions to this page!
 	'articlefeedbackv5-short-status-uninappropriate' => '{{GENDER:$1|Reviewed by $1}}',
 	'articlefeedbackv5-short-status-hide' => '{{GENDER:$1|Reviewed by $1}}',
 	'articlefeedbackv5-short-status-unhide' => '{{GENDER:$1|Reviewed by $1}}',
+	'articlefeedbackv5-short-status-archive' => '{{GENDER:$1|Reviewed by $1}}',
+	'articlefeedbackv5-short-status-unarchive' => '{{GENDER:$1|Reviewed by $1}}',
 	'articlefeedbackv5-short-status-helpful' => '{{GENDER:$1|Reviewed by $1}}',
 	'articlefeedbackv5-short-status-undo-helpful' => '{{GENDER:$1|Reviewed by $1}}',
 	'articlefeedbackv5-short-status-unhelpful' => '{{GENDER:$1|Reviewed by $1}}',
@@ -343,6 +353,8 @@ We appreciate your contributions to this page!
 	'articlefeedbackv5-permalink-status-uninappropriate' => '{{GENDER:$1|<strong>Un-marked as inappropriate</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-hide' => '{{GENDER:$1|<strong>Hidden</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-unhide' => '{{GENDER:$1|<strong>Un-hidden</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-archive' => '{{GENDER:$1|<strong>Archived</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-unarchive' => '{{GENDER:$1|<strong>Un-archived</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-helpful' => '{{GENDER:$1|<strong>Marked as helpful</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-undo-helpful' => '{{GENDER:$1|<strong>Un-marked as helpful</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Marked as unhelpful</strong> by $1}} $2',
@@ -440,6 +452,24 @@ We appreciate your contributions to this page!
 	'articlefeedbackv5-noteflyover-uninappropriate-submit' => 'Add note',
 	'articlefeedbackv5-noteflyover-uninappropriate-help' => 'Learn more',
 	'articlefeedbackv5-noteflyover-uninappropriate-help-link' => '#uninappropriate',
+
+	/* Mark as archived panel */
+	'articlefeedbackv5-noteflyover-archive-caption' => 'Archived',
+	'articlefeedbackv5-noteflyover-archive-description' => '',
+	'articlefeedbackv5-noteflyover-archive-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-archive-placeholder' => 'Why did you archive this post?',
+	'articlefeedbackv5-noteflyover-archive-submit' => 'Add note',
+	'articlefeedbackv5-noteflyover-archive-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-archive-help-link' => '#archive',
+
+	/* Unmark as archived panel */
+	'articlefeedbackv5-noteflyover-unarchive-caption' => 'Unarchived',
+	'articlefeedbackv5-noteflyover-unarchive-description' => '',
+	'articlefeedbackv5-noteflyover-unarchive-label' => 'Add a note',
+	'articlefeedbackv5-noteflyover-unarchive-placeholder' => 'Why did you unarchive this post?',
+	'articlefeedbackv5-noteflyover-unarchive-submit' => 'Add note',
+	'articlefeedbackv5-noteflyover-unarchive-help' => 'Learn more',
+	'articlefeedbackv5-noteflyover-unarchive-help-link' => '#unarchive',
 
 	/* Request oversight panel */
 	'articlefeedbackv5-noteflyover-request-caption' => 'Request oversight',
@@ -587,6 +617,8 @@ includes one of these issues:
 	'logentry-articlefeedbackv5-hide' => '$1 {{GENDER:$2|hid}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-unhide' => '$1 {{GENDER:$2|un-hid}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-autohide' => '$1 {{GENDER:$2|auto-hid}} [[$3|feedback post #$4]] on [[$5]]',
+	'logentry-articlefeedbackv5-archive' => '$1 {{GENDER:$2|archived}} [[$3|feedback post #$4]] on [[$5]]',
+	'logentry-articlefeedbackv5-unarchive' => '$1 {{GENDER:$2|un-archived}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-helpful' => '$1 {{GENDER:$2|marked as helpful}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-unhelpful' => '$1 {{GENDER:$2|marked as unhelpful}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|un-marked as helpful}} [[$3|feedback post #$4]] on [[$5]]',
@@ -617,11 +649,14 @@ includes one of these issues:
 	'articlefeedbackv5-activity-item-hide' => '$1 hid this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-unhide' => '$1 un-hid this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-autohide' => '$1 hid this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-archive' => '$1 archived this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-unarchive' => '$1 un-archived this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-helpful' => '$1 marked this post as helpful on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-unhelpful' => '$1 marked this post as unhelpful on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-undo-helpful' => '$1 unmarked this post as helpful on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 unmarked this post as unhelpful on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 cleared all flags for this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-note-archive' => 'Archived after {{PLURAL:$1|$1 day|$1 days}} of editor inactivity',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 action on this post|$1 actions on this post}}',
 	'articlefeedbackv5-activity-more' => 'Show more Activity',
 
@@ -771,6 +806,7 @@ The abuse policy link.',
 	'articlefeedbackv5-contribs-status-action-noaction' => 'Status when feedback has been marked as non-actionable',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Status when feedback has been marked as inappropriate',
 	'articlefeedbackv5-contribs-status-action-hide' => 'Status when feedback has been hidden',
+	'articlefeedbackv5-contribs-status-action-archive' => 'Status when feedback has been archived',
 	'articlefeedbackv5-contribs-status-action-request' => 'Status when oversight has been requested on feedback',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Status when feedback has been oversighted',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'message to display in my contributions, instead of the actual feedback, when feedback has been hidden/oversight requested/oversighted',
@@ -941,6 +977,16 @@ The abuse policy link.',
 * $2 - the date when the unresolve occurred
 * $3 - the time when the unresolve occurred
 {{Related|Articlefeedbackv5-status}}',
+	'articlefeedbackv5-status-archive' => 'The marker that appears on a comment if it has been archived.
+* $1 - the name of the monitor who performed the archive
+* $2 - the date when the archive occurred
+* $3 - the time when the archive occurred
+{{Related|Articlefeedbackv5-status}}',
+	'articlefeedbackv5-status-unarchive' => 'The marker that appears on a comment if it has been unarchived.
+* $1 - the name of the monitor who performed the unarchive
+* $2 - the date when the unarchive occurred
+* $3 - the time when the unarchive occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-new-marker' => 'The marker that appears on a comment is new and highlighted.
 {{Identical|New}}',
 	'articlefeedbackv5-oversight-marker' => 'The marker that appears on a comment if it has been oversighted (deleted).',
@@ -952,6 +998,7 @@ The abuse policy link.',
 	'articlefeedbackv5-noaction-marker' => 'The marker that appears on a comment if it has been marked as non-actionable.',
 	'articlefeedbackv5-inappropriate-marker' => 'The marker that appears on a comment if it has been marked as inappropriate.',
 	'articlefeedbackv5-hide-marker' => 'The marker that appears on a comment if it has been hidden.',
+	'articlefeedbackv5-archive-marker' => 'The marker that appears on a comment if it has been archived',
 	'articlefeedbackv5-form-note' => 'Link text to add a comment for the action you just flagged (in the toolbox)',
 	'articlefeedbackv5-form-feature' => 'Link text for marking the post as useful (in the toolbox)',
 	'articlefeedbackv5-form-unfeature' => 'Link text for un-marking the post as useful (in the toolbox)',
@@ -965,6 +1012,8 @@ The abuse policy link.',
 	'articlefeedbackv5-form-unhide' => 'Link text for un-hiding the post (in the toolbox)',
 	'articlefeedbackv5-form-hide-own' => 'Link text for marking your own post as inappropriate',
 	'articlefeedbackv5-form-unhide-own' => 'Link text for un-marking your own post as inappropriate',
+	'articlefeedbackv5-form-archive' => 'Link text for archiving the post (in the toolbox)',
+	'articlefeedbackv5-form-unarchive' => 'Link text for un-archiving the post (in the toolbox)',
 	'articlefeedbackv5-form-flag' => 'Link text allowing the user to flag feedback as abuse.',
 	'articlefeedbackv5-form-abuse-count' => 'Shows how many times the feedback has been flagged as abuse.  $1 is the count.',
 	'articlefeedbackv5-form-request' => 'Request that an oversighter review this feedback',
@@ -988,6 +1037,8 @@ The abuse policy link.',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Link title-attribute for un-hiding the post (in the toolbox)',
 	'articlefeedbackv5-form-tooltip-hide-own' => 'Link title-attribute for marking your own post as inappropriate',
 	'articlefeedbackv5-form-tooltip-unhide-own' => 'Link title-attribute for un-marking your own post as inappropriate',
+	'articlefeedbackv5-form-tooltip-archive' => 'Link title-attribute for archiving the post (in the toolbox)',
+	'articlefeedbackv5-form-tooltip-unarchive' => 'Link title-attribute for un-archiving the post (in the toolbox)',
 	'articlefeedbackv5-form-tooltip-flag' => 'Link title-attribute allowing the user to flag feedback as abuse',
 	'articlefeedbackv5-form-tooltip-oversight' => 'Link title-attribute for oversighting (=deleting) feedback',
 	'articlefeedbackv5-form-tooltip-unoversight' => 'Link title-attribute for undoing oversight (= deletion) of a feedback entry',
@@ -1166,6 +1217,12 @@ Permalink info block, subtitle of the right column, containing meta-information,
 	'articlefeedbackv5-short-status-autohide' => 'Permalink info block, last activity line:
 * $1 - A link to the user who auto-hid the post (usually a fake user called Article Feedback)
 {{Related|Articlefeedbackv5-short-status}}',
+	'articlefeedbackv5-short-status-archive' => 'Permalink info block, last activity line:
+* $1 - A link to the user who archived the post
+{{Related|Articlefeedbackv5-short-status}}',
+	'articlefeedbackv5-short-status-unarchive' => 'Permalink info block, last activity line:
+* $1 - A link to the user who un-archived the post
+{{Related|Articlefeedbackv5-short-status}}',
 	'articlefeedbackv5-short-status-helpful' => 'Permalink info block, last activity line:
 * $1 - A link to the user who marked the post as helpful
 {{Related|Articlefeedbackv5-short-status}}',
@@ -1254,6 +1311,14 @@ Permalink info block, subtitle of the right column, containing meta-information,
 * $1 - A link to the user who auto-hid the post (usually a fake user called Article Feedback)
 * $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
+	'articlefeedbackv5-permalink-status-archive' => 'Permalink info block, last activity line:
+* $1 - A link to the user who archived the post
+* $2 - The relative timestamp (e.g. "2 hours ago")
+{{Related|Articlefeedbackv5-permalink-status}',
+	'articlefeedbackv5-permalink-status-unarchive' => 'Permalink info block, last activity line:
+* $1 - A link to the user who un-archived the post
+* $2 - The relative timestamp (e.g. "2 hours ago")
+{{Related|Articlefeedbackv5-permalink-status}',
 	'articlefeedbackv5-permalink-status-helpful' => 'Permalink info block, last activity line:
 * $1 - A link to the user who marked the post as helpful
 * $2 - The relative timestamp (e.g. "2 hours ago")
@@ -1349,6 +1414,21 @@ Mark as non-actionable post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-unnoaction-submit' => 'Unmark as non-actionable post note flyover panel - submit button text',
 	'articlefeedbackv5-noteflyover-unnoaction-help' => 'Unmark as non-actionable post note flyover panel - help link text',
 	'articlefeedbackv5-noteflyover-unnoaction-help-link' => 'Unmark as non-actionable post note flyover panel - link to the specific "unnoaction" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
+	'articlefeedbackv5-noteflyover-archive-caption' => 'Mark as archived post note flyover panel - panel caption',
+	'articlefeedbackv5-noteflyover-archive-description' => '{{Optional}}
+Mark as archived post note flyover panel - action description',
+	'articlefeedbackv5-noteflyover-archive-label' => 'Mark as archived post note flyover panel - text area label',
+	'articlefeedbackv5-noteflyover-archive-placeholder' => 'Mark as archived post note flyover panel - text area placeholder text',
+	'articlefeedbackv5-noteflyover-archive-submit' => 'Mark as archived post note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-archive-help' => 'Mark as archived post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-archive-help-link' => 'Mark as archived post note flyover panel - link to the specific "archive" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
+	'articlefeedbackv5-noteflyover-unarchive-caption' => 'Unmark as archived post note flyover panel - panel caption',
+	'articlefeedbackv5-noteflyover-unarchive-description' => 'Unmark as archived post note flyover panel - action description',
+	'articlefeedbackv5-noteflyover-unarchive-label' => 'Unmark as archived post note flyover panel - text area label',
+	'articlefeedbackv5-noteflyover-unarchive-placeholder' => 'Unmark as archived post note flyover panel - text area placeholder text',
+	'articlefeedbackv5-noteflyover-unarchive-submit' => 'Unmark as archived post note flyover panel - submit button text',
+	'articlefeedbackv5-noteflyover-unarchive-help' => 'Unmark as archived post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-unarchive-help-link' => 'Unmark as archived post note flyover panel - link to the specific "unarchive" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-request-caption' => 'Request oversight note flyover panel - panel caption (request oversight asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-noteflyover-request-description' => 'Request oversight post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-request-label' => 'Request oversight note flyover panel - text area label (request oversight asks that an oversighter review the feedback item).
@@ -1607,6 +1687,20 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * $4 - The feedback's id
 * $5 - A link to the article the feedback was posted to
 {{Related|Logentry-articlefeedbackv5}}",
+	'logentry-articlefeedbackv5-archive' => "Log entry for when a user archived a feedback post:
+* $1 - A link to the performer
+* $2 - The performer's id, gender support
+* $3 - A link to the feedback
+* $4 - The feedback's id
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
+	'logentry-articlefeedbackv5-unarchive' => "Log entry for when a user un-archived a feedback post:
+* $1 - A link to the performer
+* $2 - The performer's id, gender support
+* $3 - A link to the feedback
+* $4 - The feedback's id
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-helpful' => "Log entry for when a feedback post has been marked as helpful. Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
@@ -1801,6 +1895,22 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * $5 is the time the action was performed
 * $6 is the user name (gender support)
 {{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-archive' => 'Activity log entry when feedback was archived
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-unarchive' => 'Activity log entry when feedback was un-archived
+* $1 is a link to the user who performed the action
+* $2 is the informational comment left upon performing the action
+* $3 is the date & time the action was performed
+* $4 is the date the action was performed
+* $5 is the time the action was performed
+* $6 is the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-helpful' => 'Activity log entry when feedback was marked as helpful
 * $1 - a link to the user who performed the action
 * $2 - the informational comment left upon performing the action
@@ -1842,6 +1952,7 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * $5 - the time the action was performed
 * $6 - the user name (gender support)
 {{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-note-archive' => "Activity log comment when feedback is archived. $1 is the amount of days between the creation of the feedback and the date it's being archived",
 	'articlefeedbackv5-activity-count' => 'Shows the amount of actions performed on a feedback entry. $1 is the number',
 	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
 	'articlefeedbackv5-talk-view-feedback' => 'A link on the talk page to encourage people to visit the feedback page',

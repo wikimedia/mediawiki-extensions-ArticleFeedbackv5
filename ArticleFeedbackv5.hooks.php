@@ -64,6 +64,16 @@ class ArticleFeedbackv5Hooks {
 			dirname( __FILE__ ) . '/sql/inappropriate.sql'
 		);
 
+		$updater->addExtensionField(
+			'aft_feedback',
+			'aft_archive',
+			dirname( __FILE__ ) . '/sql/archive.sql'
+		);
+
+		// fix archive dates for existing feedback
+		require_once __DIR__.'/maintenance/setArchiveDate.php';
+		$updater->addPostDatabaseUpdateMaintenance( 'ArticleFeedbackv5_SetArchiveDate' );
+
 		return true;
 	}
 

@@ -102,6 +102,9 @@ class ArticleFeedbackv5Render {
 		if ( $record->isInappropriate() ) {
 			$topClass .= ' articleFeedbackv5-feedback-inappropriate';
 		}
+		if ( $record->isArchived() ) {
+			$topClass .= ' articleFeedbackv5-feedback-archive';
+		}
 		if ( !$toolbox ) {
 			$topClass .= ' articleFeedbackv5-comment-notoolbox';
 		}
@@ -770,7 +773,7 @@ class ArticleFeedbackv5Render {
 		$toolbox = '';
 
 		// no editor-action has yet been performed, show tools
-		if ( !$record->isFeatured() && !$record->isResolved() && !$record->isNonActionable() && !$record->isInappropriate() && !$record->isHidden() && !$record->isOversighted() ) {
+		if ( !$record->isFeatured() && !$record->isResolved() && !$record->isNonActionable() && !$record->isInappropriate() && !$record->isArchived() && !$record->isHidden() && !$record->isOversighted() ) {
 			$tools =
 				$this->buildToolboxLink( $record, 'feature' ) .
 				$this->buildToolboxLink( $record, 'resolve' ) .

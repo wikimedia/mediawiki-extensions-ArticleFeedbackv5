@@ -101,6 +101,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			}
 		}
 
+		// don't display archived list unless specifically "enabled" (if cronjob
+		// is not running, it would simply not work)
+		global $wgArticleFeedbackAutoArchiveEnabled;
+		if ( !$wgArticleFeedbackAutoArchiveEnabled ) {
+			$this->filters = array_diff( $this->filters, array( 'archived' ) );
+		}
+
 		$this->sorts = array( 'relevance-desc', 'relevance-asc', 'age-desc', 'age-asc' );
 		if ( $this->isAllowed( 'aft-editor' ) ) {
 			array_push( $this->sorts, 'helpful-desc', 'helpful-asc' );

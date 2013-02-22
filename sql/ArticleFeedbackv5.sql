@@ -23,6 +23,8 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_feedback (
   aft_resolve boolean NOT NULL DEFAULT 0,
   aft_noaction boolean NOT NULL DEFAULT 0,
   aft_inappropriate boolean NOT NULL DEFAULT 0,
+  aft_archive boolean NOT NULL DEFAULT 0,
+  aft_archive_date varbinary(14) DEFAULT NULL,
   aft_helpful integer unsigned NOT NULL DEFAULT 0,
   aft_unhelpful integer unsigned NOT NULL DEFAULT 0,
   aft_has_comment boolean NOT NULL DEFAULT 0,
@@ -31,6 +33,9 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_feedback (
 ) /*$wgDBTableOptions*/;
 
 -- sort indexes
-CREATE INDEX /*i*/relevance ON /*_*/aft_feedback (aft_relevance_score, aft_id, aft_has_comment, aft_oversight, aft_hide);
-CREATE INDEX /*i*/age ON /*_*/aft_feedback (aft_timestamp, aft_id, aft_has_comment, aft_oversight, aft_hide);
-CREATE INDEX /*i*/helpful ON /*_*/aft_feedback (aft_net_helpful, aft_id, aft_has_comment, aft_oversight, aft_hide);
+CREATE INDEX /*i*/relevance ON /*_*/aft_feedback (aft_relevance_score, aft_id, aft_has_comment, aft_oversight, aft_archive, aft_hide);
+CREATE INDEX /*i*/age ON /*_*/aft_feedback (aft_timestamp, aft_id, aft_has_comment, aft_oversight, aft_archive, aft_hide);
+CREATE INDEX /*i*/helpful ON /*_*/aft_feedback (aft_net_helpful, aft_id, aft_has_comment, aft_oversight, aft_archive, aft_hide);
+
+-- index for archive-job
+CREATE INDEX /*i*/archive_queue ON /*_*/aft_feedback (aft_archive, aft_archive_date);

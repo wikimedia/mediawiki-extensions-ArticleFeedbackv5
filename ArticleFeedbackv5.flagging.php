@@ -260,6 +260,7 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
 			$this->feedback->isOversighted()
 		) {
@@ -271,6 +272,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
@@ -297,6 +299,7 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
 			$this->feedback->isOversighted()
 		) {
@@ -308,6 +311,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
@@ -332,6 +336,7 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
 			$this->feedback->isOversighted()
 		) {
@@ -343,6 +348,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 1;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
@@ -364,6 +370,7 @@ class ArticleFeedbackv5Flagging {
 			!$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
 			$this->feedback->isOversighted()
 		) {
@@ -375,6 +382,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
@@ -398,6 +406,7 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
 			$this->feedback->isOversighted()
 		) {
@@ -409,6 +418,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 1;
 		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
@@ -430,6 +440,7 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isResolved() ||
 			!$this->feedback->isNonActionable() ||
 			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
 			$this->feedback->isOversighted()
 		) {
@@ -441,6 +452,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
@@ -450,7 +462,7 @@ class ArticleFeedbackv5Flagging {
 	}
 
 	/**
-	 * Flag: mark a post as nappropriate
+	 * Flag: mark a post as inappropriate
 	 *
 	 * @param  $notes     string   any notes passed in
 	 * @param  $toggle    bool     whether to toggle the flag
@@ -462,6 +474,7 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
 			$this->feedback->isOversighted()
 		) {
@@ -473,6 +486,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_inappropriate = 1;
+		$this->feedback->aft_archive = 0;
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
@@ -504,6 +518,74 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
+
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+
+		return true;
+	}
+
+	/*
+	 * Flag: mark feedback as archived
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return array|bool
+	 */
+	private function archive( $notes, $toggle ) {
+		if (
+			$this->feedback->isFeatured() ||
+			$this->feedback->isResolved() ||
+			$this->feedback->isNonActionable() ||
+			$this->feedback->isInappropriate() ||
+			!$this->feedback->isArchived() ||
+			$this->feedback->isHidden() ||
+			$this->feedback->isOversighted()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
+		$this->feedback->aft_feature = 0;
+		$this->feedback->aft_resolve = 0;
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 1;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
+
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+
+		return true;
+	}
+
+	/*
+	 * Flag: un-mark a post as archived
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return array|bool
+	 */
+	private function unarchive( $notes, $toggle ) {
+		if ( $this->feedback->isFeatured() ||
+			$this->feedback->isResolved() ||
+			$this->feedback->isNonActionable() ||
+			$this->feedback->isInappropriate() ||
+			!$this->feedback->isArchived() ||
+			$this->feedback->isHidden() ||
+			$this->feedback->isOversighted()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
+		$this->feedback->aft_feature = 0;
+		$this->feedback->aft_resolve = 0;
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
@@ -525,6 +607,7 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			!$this->feedback->isInappropriate() || // hiding is secondary action; post should already be marked inappropriate
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
 			$this->feedback->isOversighted()
 		) {
@@ -536,6 +619,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
 		$this->feedback->aft_hide = 1;
 		$this->feedback->aft_oversight = 0;
 
@@ -552,10 +636,12 @@ class ArticleFeedbackv5Flagging {
 	 * @return array|bool
 	 */
 	private function unhide( $notes, $toggle ) {
-		if ( $this->feedback->isFeatured() ||
+		if (
+			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			!$this->feedback->isHidden() ||
 			$this->feedback->isOversighted()
 		) {
@@ -567,6 +653,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
@@ -594,6 +681,7 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
+			$this->feedback->isArchived() ||
 			!(
 				$this->feedback->isInappropriate() || // oversight is secondary action; post should already be marked inappropriate
 				$this->feedback->isHidden() // ... or marked as hidden by monitor
@@ -608,6 +696,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 1;
 
@@ -629,6 +718,7 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
 			!$this->feedback->isOversighted()
 		) {
@@ -640,6 +730,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
