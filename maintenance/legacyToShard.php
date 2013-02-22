@@ -17,7 +17,7 @@ require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
  *
  * @package    ArticleFeedbackv5
  */
-class ArticleFeedbackv5_LegacyToShard extends Maintenance {
+class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 	/**
 	 * Batch size
 	 *
@@ -42,8 +42,10 @@ class ArticleFeedbackv5_LegacyToShard extends Maintenance {
 
 	/**
 	 * Execute the script
+	 *
+	 * @return bool
 	 */
-	public function execute() {
+	protected function doDBUpdates() {
 		$dbr = $this->getDB( DB_SLAVE );
 		if ( !$dbr->tableExists( 'aft_article_feedback' ) ) {
 			// not necessary to run, there is no source data
@@ -67,6 +69,8 @@ class ArticleFeedbackv5_LegacyToShard extends Maintenance {
 		}
 
 		$this->output( "Done. Moved " . $this->completeCount . " ArticleFeedbackv5 entries.\n" );
+
+		return true;
 	}
 
 	/**
@@ -342,6 +346,15 @@ class ArticleFeedbackv5_LegacyToShard extends Maintenance {
 		}
 
 		return $continue;
+	}
+
+	/**
+	 * Get the update key name to go in the update log table
+	 *
+	 * @return string
+	 */
+	protected function getUpdateKey() {
+		return 'ArticleFeedbackv5_LegacyToShard';
 	}
 }
 
