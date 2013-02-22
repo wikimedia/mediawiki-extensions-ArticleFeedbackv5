@@ -39,13 +39,18 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 		$this->mDescription = 'Fix archive dates of pre-auto-archive feedback.';
 	}
 
+	public function execute() {
+	}
+
 	/**
 	 * Installing archive.sql will create the schema changes necessary for auto-archive to work.
 	 * Old feedback, however, has no archive date set. The SQL we ran to install the schema has
 	 * added dates to the to-archive feedback already, but these dates are not 100% correct.
 	 * This script will fix these dates.
+	 *
+	 * @return bool
 	 */
-	public function execute() {
+	protected function doDBUpdates() {
 		$this->output( "Fixing archive dates.\n" );
 
 		$offset = null;
@@ -84,6 +89,17 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 		if ( !$wgArticleFeedbackAutoArchiveEnabled ) {
 			$this->output( 'IMPORTANT! The "archived" filter is currently not displayed. To enable, set $wgArticleFeedbackAutoArchiveEnabled = true.'."\n" );
 		}
+
+		return true;
+	}
+
+	/**
+	 * Get the update key name to go in the update log table
+	 *
+	 * @return string
+	 */
+	protected function getUpdateKey() {
+		return 'ArticleFeedbackv5_SetArchiveDate';
 	}
 }
 

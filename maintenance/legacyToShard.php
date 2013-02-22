@@ -43,7 +43,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 	/**
 	 * Execute the script
 	 */
-	public function execute() {
+	protected function doDBUpdates() {
 		$dbr = $this->getDB( DB_SLAVE );
 		if ( !$dbr->tableExists( 'aft_article_feedback' ) ) {
 			// not necessary to run, there is no source data
@@ -342,6 +342,15 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 		}
 
 		return $continue;
+	}
+
+	/**
+	 * Get the update key name to go in the update log table
+	 *
+	 * @return string
+	 */
+	protected function getUpdateKey() {
+		return 'ArticleFeedbackv5_LegacyToShard';
 	}
 }
 
