@@ -1514,6 +1514,30 @@
 		},
 
 		// }}}
+		// {{{ Archive post
+
+		'archive': {
+			'hasTipsy': true,
+			'tipsyHtml': undefined,
+			'click': $.articleFeedbackv5special.flagAction,
+			'onSuccess': function( id, data ) {
+				// activity flag is not particularly useful here
+			}
+		},
+
+		// }}}
+		// {{{ Unarchive post
+
+		'unarchive': {
+			'hasTipsy': true,
+			'tipsyHtml': undefined,
+			'click': $.articleFeedbackv5special.flagAction,
+			'onSuccess': function( id, data ) {
+				// activity flag is not particularly useful here
+			}
+		},
+
+		// }}}
 		// {{{ Request oversight action
 
 		'request': {
@@ -1662,6 +1686,8 @@
 
 		'activity2': {
 			'click': function( e ) {
+				e.preventDefault();
+
 				if ( $( e.target ).data( 'started' ) == true ) {
 					$( '#articleFeedbackv5-permalink-activity-log' ).fadeOut();
 					$( e.target ).text( mw.msg( 'articlefeedbackv5-permalink-activity-more' ) );

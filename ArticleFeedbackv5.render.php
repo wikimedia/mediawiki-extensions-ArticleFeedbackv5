@@ -110,6 +110,9 @@ class ArticleFeedbackv5Render {
 		if ( $record->isResolved() ) {
 			$topClass .= ' articleFeedbackv5-feedback-resolve';
 		}
+		if ( $record->isArchived() ) {
+			$topClass .= ' articleFeedbackv5-feedback-archive';
+		}
 		if ( !$toolbox ) {
 			$topClass .= ' articleFeedbackv5-comment-notoolbox';
 		}
@@ -742,6 +745,8 @@ class ArticleFeedbackv5Render {
 	private function renderTagBlock( $record ) {
 		if ( $record->isOversighted() ) {
 			$status = 'oversight';
+		} elseif ( $record->isArchived() ) {
+			$status = 'archive';
 		} elseif ( $record->isHidden() ) {
 			$status = 'hide';
 		} elseif ( $record->isResolved() ) {
@@ -782,7 +787,7 @@ class ArticleFeedbackv5Render {
 		$toolbox = '';
 
 		// no editor-action has yet been performed, show tools
-		if ( !$record->isFeatured() && !$record->isResolved() && !$record->isNonActionable() && !$record->isHidden() && !$record->isOversighted() ) {
+		if ( !$record->isFeatured() && !$record->isResolved() && !$record->isNonActionable() && !$record->isHidden() && !$record->isArchived() && !$record->isOversighted() ) {
 			$tools =
 				$this->buildToolboxLink( $record, 'feature' ) .
 				$this->buildToolboxLink( $record, 'resolve' ) .

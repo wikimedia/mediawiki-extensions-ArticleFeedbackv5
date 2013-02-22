@@ -325,7 +325,8 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
-			$this->feedback->isHidden()
+			$this->feedback->isHidden() ||
+			$this->feedback->isArchived()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -335,6 +336,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_archive = 0;
 
 		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -358,7 +360,8 @@ class ArticleFeedbackv5Flagging {
 			!$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
-			$this->feedback->isHidden()
+			$this->feedback->isHidden() ||
+			$this->feedback->isArchived()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -368,6 +371,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_archive = 0;
 
 		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -389,7 +393,8 @@ class ArticleFeedbackv5Flagging {
 //			$this->feedback->isFeatured() || // can go straight from featured to resolved
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
-			$this->feedback->isHidden()
+			$this->feedback->isHidden() ||
+			$this->feedback->isArchived()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -399,6 +404,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 1;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_archive = 0;
 
 		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -417,7 +423,8 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isFeatured() ||
 			!$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
-			$this->feedback->isHidden()
+			$this->feedback->isHidden() ||
+			$this->feedback->isArchived()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -427,6 +434,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_archive = 0;
 
 		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -447,7 +455,8 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
-			$this->feedback->isHidden()
+			$this->feedback->isHidden() ||
+			$this->feedback->isArchived()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -457,6 +466,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 1;
 		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_archive = 0;
 
 		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -475,7 +485,8 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			!$this->feedback->isNonActionable() ||
-			$this->feedback->isHidden()
+			$this->feedback->isHidden() ||
+			$this->feedback->isArchived()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -485,6 +496,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_archive = 0;
 
 		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -503,7 +515,8 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
-			$this->feedback->isHidden()
+			$this->feedback->isHidden() ||
+			$this->feedback->isArchived()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -513,6 +526,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_hide = 1;
+		$this->feedback->aft_archive = 0;
 
 		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -527,10 +541,12 @@ class ArticleFeedbackv5Flagging {
 	 * @return array|bool
 	 */
 	private function unhide( $notes, $toggle ) {
-		if ( $this->feedback->isFeatured() ||
+		if (
+			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
-			!$this->feedback->isHidden()
+			!$this->feedback->isHidden() ||
+			$this->feedback->isArchived()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -540,6 +556,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_archive = 0;
 
 		$this->feedback->aft_autohide = 0;
 
@@ -549,6 +566,65 @@ class ArticleFeedbackv5Flagging {
 		if ( $this->feedback->aft_flag && $this->feedback->aft_autoflag ) {
 			$this->clear_flags( $notes, $toggle );
 		}
+
+		return true;
+	}
+
+	/**
+	 * Flag: mark feedback as archived
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return array|bool
+	 */
+	private function archive( $notes, $toggle ) {
+		if (
+			$this->feedback->isFeatured() ||
+			$this->feedback->isResolved() ||
+			$this->feedback->isNonActionable() ||
+			$this->feedback->isHidden() ||
+			$this->feedback->isArchived()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
+		$this->feedback->aft_feature = 0;
+		$this->feedback->aft_resolve = 0;
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_archive = 1;
+
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+
+		return true;
+	}
+
+	/**
+	 * Flag: un-mark a post as archived
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return array|bool
+	 */
+	private function unarchive( $notes, $toggle ) {
+		if ( $this->feedback->isFeatured() ||
+			$this->feedback->isResolved() ||
+			$this->feedback->isNonActionable() ||
+			$this->feedback->isHidden() ||
+			!$this->feedback->isArchived()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
+		$this->feedback->aft_feature = 0;
+		$this->feedback->aft_resolve = 0;
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_archive = 0;
+
+		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
