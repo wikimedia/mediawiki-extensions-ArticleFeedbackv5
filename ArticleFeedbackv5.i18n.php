@@ -753,7 +753,8 @@ The abuse policy link.',
 * $1 is the title of the article for which we show the feedback',
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5Watchlist]].',
 	'articlefeedbackv5-special-central-pagetitle' => 'Page title for [[Special:ArticleFeedbackv5]] when viewing the central log (all pages)',
-	'articlefeedbackv5-loading-tag' => 'The text that appears to let the user know that feedback is being loaded',
+	'articlefeedbackv5-loading-tag' => 'The text that appears to let the user know that feedback is being loaded.
+{{Identical|Loading}}',
 	'articlefeedbackv5-status-hide' => 'The marker that appears on a comment if it has been hidden by a monitor.
 * $1 is the name of the monitor who performed the hide
 * $2 is the date when the hide occurred
