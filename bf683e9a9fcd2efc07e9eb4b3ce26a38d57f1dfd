@@ -223,6 +223,108 @@
     },
     {
       "key": {
+        "uuid": "DnZEQX1A",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:55:24Z",
+      "side": 1,
+      "message": "By passing params for sort and sortdirection (which can be null if the API caller didn\u0027t set afvfsort and afvfsortdirection), you defeat getList\u0027s own defaults for these (\u0027relevance\u0027 and DESC). Lower down I suggest setting PARAM_DFLT for sortdirection, but that makes two defaults to keep in sync.\n\nIt would be better to detect if these optional parameters weren\u0027t supplied and omit them from the arguments to getList().  I think PHP\u0027s call_user_func_array will let you do this. But that means if the caller leaves out sort and includes sortdirection, you\u0027re back to having to know the default value for sort.  The comments to http://php.net/manual/en/function.call-user-func-array.php suggests you can use reflection to get the default values for method getList , but that\u0027s probably overkill, and PARAM_DFLT is the way to go.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnZE5f9g",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:55:24Z",
+      "side": 1,
+      "message": "The API call seems to work without this, I don\u0027t know what sort if any getList() uses. The default for getList is \u0027relevance\u0027, maybe set it here?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnfEAswU",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:55:24Z",
+      "side": 1,
+      "message": "This is required, calls fail without it. Above I suggest omitting it from the call to getList() if not supplied. If you don\u0027t do that then instead of saying PARAM_REQUIRED, add\n\n                ApiBase::PARAM_DFLT     \u003d\u003e \u0027DESC\u0027,\n\n and I think in the description mention the default.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DndEFtxM",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:55:24Z",
+      "side": 1,
+      "message": "Also required, otherwise calls fail in DataModel::getList(NULL, NULL, NULL, NULL, with \"Exception Caught: List \u0027\u0027 is no known list\"\n\nAgain, instead of saying PARAM_REQUIRED, you could say\n\n                ApiBase::PARAM_DFLT     \u003d\u003e \u0027visible\u0027,\n\nchoosing some filter that\u0027s likely to have minimal permission restrictions.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dne4frmc",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:55:24Z",
+      "side": 1,
+      "message": "\"The ID of a specific feedback item to fetch.\"\n\n\nDocument the other params watchlist and sortdirection",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dnc4U8k4",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:55:24Z",
+      "side": 1,
+      "message": "I believe the param is afvfpageid.  And if you don\u0027t set defaults for them as I suggest above, afvfsortdirection and afvffilter are also required.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DnQ4HqoY",
         "filename": "data/DataModel.php",
         "patchSetId": 14
