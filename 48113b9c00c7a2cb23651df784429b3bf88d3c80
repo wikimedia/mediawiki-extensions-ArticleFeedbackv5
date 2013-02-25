@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "DnTF1K-g",
+        "filename": "sql/ArticleFeedbackv5.sql",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T16:43:55Z",
+      "side": 1,
+      "message": "The cronjob (archiveFeedback.php) that will perform these queries, will not define an offset. As a result, neither of these conditions will be added. There was a bug with the offset though (which I\u0027m currently fixing)\n\nThere is another script that will add this condition though (setArchiveDate.php), but that one\u0027s intended to only be run once (to migrate all existing feedback). I don\u0027t think it makes sense to create an index for this purpose?",
+      "parentUuid": "DnQhOh8E",
+      "revId": "48113b9c00c7a2cb23651df784429b3bf88d3c80",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DnYi912Q",
         "filename": "sql/archive.sql",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2013-02-22T20:49:00Z",
       "side": 1,
       "message": "should be /*_*/aft_feedback",
+      "revId": "48113b9c00c7a2cb23651df784429b3bf88d3c80",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnTHfa9U",
+        "filename": "sql/archive.sql",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T16:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnYi912Q",
       "revId": "48113b9c00c7a2cb23651df784429b3bf88d3c80",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
