@@ -53,6 +53,108 @@
     },
     {
       "key": {
+        "uuid": "DnY4l2g4",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:03:57Z",
+      "side": 1,
+      "message": "What does \"LB\" stand for, \"Load Balancer\"?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dnc6fUv8",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:03:57Z",
+      "side": 1,
+      "message": "It\u0027s not really an alternative.  \"Override getDB so that AFT\u0027s data can be on a separate cluster.\"",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnW5U3lE",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:03:57Z",
+      "side": 1,
+      "message": "Needs more detail. \"The id(s) to fetch, either a single id or an array of them.\"",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnU5RImA",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:03:57Z",
+      "side": 1,
+      "message": "How are there older IDs?  Is this due to migration of data?\n\n\"New IDs are binary(32), but IDs from migrated AFTv5 data remain unchanged, \"...\n\nI would add a private function standardizeId() that does this and have all these functions call it.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnS5Uph4",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:03:57Z",
+      "side": 1,
+      "message": "Why is this AFT-specific function in the backend?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnQ4yChA",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:03:57Z",
+      "side": 1,
+      "message": "This seems to depend on the knowledge that the sharding takes place on pageId. Why not just say $where[\u0027aft_page\u0027] \u003d $pageId;\n?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dne6mjsM",
         "filename": "ArticleFeedbackv5.php",
         "patchSetId": 14
@@ -166,6 +268,91 @@
       "writtenOn": "2013-02-25T06:30:32Z",
       "side": 1,
       "message": "Active voice: \"Each implementation (such as DataModelSample or ArticleFeedbackv5Model) extends this class.\"\n\nThe comment makes no sense without  DataModelSample, another reason to revive it and the test.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnW4ingY",
+        "filename": "data/DataModelBackend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:03:57Z",
+      "side": 1,
+      "message": "Use present tense.\nIs the point that \"Subclasses of this can implement a sharding algorithm for the method getDB to connect to databases with a cluster,while preserving the semantics of wfGetDB, including DB_SLAVE and DB_MASTER.\"  Then say so.\n\n(Although I don\u0027t see where it chooses a different DB server based on the shard column... is that implemented in this iteration?)\n\nDoes \"LB\" stand for Load Balancer?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnU4f4rQ",
+        "filename": "data/DataModelBackend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:03:57Z",
+      "side": 1,
+      "message": "I don\u0027t understand, what is \"now\"?  Is the point that subclasses will do sharding?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dna5uVv8",
+        "filename": "data/DataModelBackend.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:03:57Z",
+      "side": 1,
+      "message": "Put the second sentence first and use active voice.\n\nIf DataModel allows easy implementation of a sharded data structure, then what is DataModelBackend for?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dne5Nbps",
+        "filename": "data/DataModelBackend.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:03:57Z",
+      "side": 1,
+      "message": "explain that it\u0027s an id or array of ids. If you pass null, what is supposed to happen?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dnc5c8n0",
+        "filename": "data/DataModelBackend.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T09:03:57Z",
+      "side": 1,
+      "message": "The square brackets make it confusing, maybe add \"where [sort] and [id] are integers.\" ?  People usually use \u003csort\u003e and \u003cid\u003e for meta-names.\n\nCan you rename this function and the parameter, since $offset elsewhere is just a simple integer, and it\u0027s not really a getter? Maybe function unpackOffsets() and param $offsets;",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
