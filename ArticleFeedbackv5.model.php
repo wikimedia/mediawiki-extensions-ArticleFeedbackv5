@@ -560,13 +560,14 @@ class ArticleFeedbackv5Model extends DataModel {
 		} elseif ( !$this->aft_archive_date ) {
 			global $wgArticleFeedbackAutoArchiveTtl;
 			$wgArticleFeedbackAutoArchiveTtl = (array) $wgArticleFeedbackAutoArchiveTtl;
+			$ttl = '+5 years';
 
 			// ttl is set per x amount of unreviewed comments
 			$count = static::getCount( 'unreviewed', $this->aft_page );
 
 			ksort( $wgArticleFeedbackAutoArchiveTtl );
 			foreach ( $wgArticleFeedbackAutoArchiveTtl as $amount => $time ) {
-				if ( $amount < $count ) {
+				if ( $amount <= $count ) {
 					$ttl = $time;
 				} else {
 					break;
