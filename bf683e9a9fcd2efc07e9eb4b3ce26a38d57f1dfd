@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DnS7ZRh8",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T06:30:32Z",
+      "side": 1,
+      "message": "You get a $feedbackId from this thing, so don\u0027t call it an identifier itself. Perhaps \"Model of the feedback item whose activity we are fetching.\"",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnW45fjw",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T06:30:32Z",
+      "side": 1,
+      "message": "Capitalize sentence and remove \"requested\".",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dna42Vk4",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T06:30:32Z",
+      "side": 1,
+      "message": "But the permissions aren\u0027t actions like \u0027oversight\u0027, they are permissions like \u0027aft-reader\u0027. Then when you pass \u0027aft-reader\u0027 to canPerformAction(), it throws an exception \"Action \u0027aft-reader\u0027 does not exist.\"",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dne6mjsM",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T06:30:32Z",
+      "side": 1,
+      "message": "You can use __DIR__ here and in some other files instead of dirname(). __DIR__ was added in Perl 5.3.0, and MediaWiki 1.20 requires Perl 5.3.2 or higher.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dnc6VEjI",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T06:30:32Z",
+      "side": 1,
+      "message": "ID of article feedback to get activity for.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dna6a1l0",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T06:30:32Z",
+      "side": 1,
+      "message": "garbled",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnY77mnY",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T06:30:32Z",
+      "side": 1,
+      "message": "This is a bad example. The feedback ID is more like 429384108662e9d4e41ab6e275d0392e, so give that in the example.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnQ4HqoY",
+        "filename": "data/DataModel.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T06:30:32Z",
+      "side": 1,
+      "message": "Stick to present tense, not \"will allow/revolve\" and \"was especially important\"",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dne4LLo4",
+        "filename": "data/DataModel.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T06:30:32Z",
+      "side": 1,
+      "message": "drop second \"e.g.\", and \"is even\".",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dnc4Acm0",
+        "filename": "data/DataModel.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-02-25T06:30:32Z",
+      "side": 1,
+      "message": "Active voice: \"Each implementation (such as DataModelSample or ArticleFeedbackv5Model) extends this class.\"\n\nThe comment makes no sense without  DataModelSample, another reason to revive it and the test.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
