@@ -12,4 +12,4 @@ ALTER TABLE /*_*/aft_feedback
 
 -- set archive dates (= creation date) for existing unmonitored feedback
 -- running setArchiveDate.php maintenance script will then fill out the correct archive date
-UPDATE aft_feedback SET aft_archive_date = aft_timestamp WHERE aft_hide = 0 AND aft_feature = 0 AND aft_resolve = 0 AND aft_noaction = 0;
+UPDATE /*_*/aft_feedback SET aft_archive_date = aft_timestamp WHERE aft_hide = 0 AND aft_feature = 0 AND aft_resolve = 0 AND aft_noaction = 0;

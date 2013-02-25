@@ -68,7 +68,7 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 		while ( true ) {
 			$break = true;
 
-			$list = $backend->getList( 'archive_scheduled', null, 0, $this->limit, 'age', 'ASC' );
+			$list = $backend->getList( 'archive_scheduled', null, null, $this->limit, 'age', 'ASC' );
 
 			foreach ( $list as $row ) {
 				$feedback = ArticleFeedbackv5Model::loadFromRow( $row );

@@ -86,9 +86,12 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 				$break = false;
 			}
 
+			if ( $feedback ) {
+				$this->output( "--updated to entry #$feedback->aft_id\n" );
+				$next = $offset;
+			}
+
 			wfWaitForSlaves();
-			$this->output( "--updated to entry #$feedback->aft_id\n" );
-			$next = $offset;
 
 			if ( $break ) {
 				break;
