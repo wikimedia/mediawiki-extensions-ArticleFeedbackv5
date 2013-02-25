@@ -86,7 +86,7 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 				$break = false;
 			}
 
-			if ( $feedback ) {
+			if ( $offset ) {
 				$this->output( "--updated to entry #$feedback->aft_id\n" );
 				$next = $offset;
 			}
