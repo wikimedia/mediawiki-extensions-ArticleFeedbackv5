@@ -526,7 +526,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
 		$this->feedback->aft_hide = 1;
-		$this->feedback->aft_archive = 1;
+		$this->feedback->aft_archive = 0;
 
 		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 

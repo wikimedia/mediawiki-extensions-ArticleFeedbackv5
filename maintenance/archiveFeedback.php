@@ -67,6 +67,7 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 		$backend = ArticleFeedbackv5Model::getBackend();
 		while ( true ) {
 			$break = true;
+			$feedback = null;
 
 			$list = $backend->getList( 'archive_scheduled', null, null, $this->limit, 'age', 'ASC' );
 
@@ -75,23 +76,25 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 
 				$timestamp = wfTimestamp( TS_UNIX, $feedback->aft_timestamp );
 				$archiveDate = wfTimestamp( TS_UNIX, $feedback->aft_archive_date );
-				$days = round( ( $archiveDate - $timestamp )  / ( 60 * 60 * 24 ) );
+				$days = round( ( $archiveDate - $timestamp ) / ( 60 * 60 * 24 ) );
 				$note = wfMessage( 'articlefeedbackv5-activity-note-archive', $days )->escaped();
 
 				$flagger = new ArticleFeedbackv5Flagging( null, $feedback->aft_id, $feedback->aft_page );
 				$flagger->run( 'archive', $note, false, 'job' );
 
 				$this->completeCount++;
-
 				$break = false;
 			}
+
+			if ( $feedback ) {
+				$this->output( "--moved to entry #$feedback->aft_id\n" );
+			}
+
+			wfWaitForSlaves();
 
 			if ( $break ) {
 				break;
 			}
-
-			wfWaitForSlaves();
-			$this->output( "--moved to entry #$feedback->aft_id\n" );
 		}
 
 		$this->output( "Done. Marked " . $this->completeCount . " entries as archived.\n" );
