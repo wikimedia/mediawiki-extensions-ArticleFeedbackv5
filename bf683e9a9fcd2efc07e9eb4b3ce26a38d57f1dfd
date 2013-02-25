@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "DnTGdK2M",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnS7ZRh8",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DnW45fjw",
         "filename": "ArticleFeedbackv5.activity.php",
         "patchSetId": 14
@@ -30,6 +48,24 @@
       "writtenOn": "2013-02-25T06:30:32Z",
       "side": 1,
       "message": "Capitalize sentence and remove \"requested\".",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnRGLTyI",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnW45fjw",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "DnfGPkyk",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dna42Vk4",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DnY4l2g4",
         "filename": "ArticleFeedbackv5.backend.LBFactory.php",
         "patchSetId": 14
@@ -64,6 +118,24 @@
       "writtenOn": "2013-02-25T09:03:57Z",
       "side": 1,
       "message": "What does \"LB\" stand for, \"Load Balancer\"?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DndHZN1U",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Load balancer indeed. But in this context, \"ArticleFeedbackv5Backend using LBFactory class\"\n(another class could be ArticleFeedbackv5BackendRDBStore)\n\nPerhaps classname should change to ArticleFeedbackv5BackendUsingLBFactory?",
+      "parentUuid": "DnY4l2g4",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "DnbGw.-Q",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dnc6fUv8",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DnW5U3lE",
         "filename": "ArticleFeedbackv5.backend.LBFactory.php",
         "patchSetId": 14
@@ -98,6 +188,24 @@
       "writtenOn": "2013-02-25T09:03:57Z",
       "side": 1,
       "message": "Needs more detail. \"The id(s) to fetch, either a single id or an array of them.\"",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnZGWH0o",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnW5U3lE",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "DnXGTo1s",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnU5RImA",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DnS5Uph4",
         "filename": "ArticleFeedbackv5.backend.LBFactory.php",
         "patchSetId": 14
@@ -132,6 +258,24 @@
       "writtenOn": "2013-02-25T09:03:57Z",
       "side": 1,
       "message": "Why is this AFT-specific function in the backend?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnVHuZ.8",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "DataModelBackendLBFactory is the \"general\" backend - this class extends the general backend code for AFT-specific purposes (the ID standardization \u0026 getDB-override), so I think it makes sense to add an additional AFT-specific database query here.",
+      "parentUuid": "DnS5Uph4",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "DnVGgp6I",
+        "filename": "ArticleFeedbackv5.backend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnQ4yChA",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dne6mjsM",
         "filename": "ArticleFeedbackv5.php",
         "patchSetId": 14
@@ -166,6 +328,24 @@
       "writtenOn": "2013-02-25T06:30:32Z",
       "side": 1,
       "message": "You can use __DIR__ here and in some other files instead of dirname(). __DIR__ was added in Perl 5.3.0, and MediaWiki 1.20 requires Perl 5.3.2 or higher.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DndGrd4k",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dne6mjsM",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "DnTHEC2E",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dnc6VEjI",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dna6a1l0",
         "filename": "api/ApiViewActivityArticleFeedbackv5.php",
         "patchSetId": 14
@@ -200,6 +398,24 @@
       "writtenOn": "2013-02-25T06:30:32Z",
       "side": 1,
       "message": "garbled",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnRGiL7I",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dna6a1l0",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -223,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "DnfGmc8M",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnY77mnY",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DnZEQX1A",
         "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
         "patchSetId": 14
@@ -234,6 +468,24 @@
       "writtenOn": "2013-02-25T09:55:24Z",
       "side": 1,
       "message": "By passing params for sort and sortdirection (which can be null if the API caller didn\u0027t set afvfsort and afvfsortdirection), you defeat getList\u0027s own defaults for these (\u0027relevance\u0027 and DESC). Lower down I suggest setting PARAM_DFLT for sortdirection, but that makes two defaults to keep in sync.\n\nIt would be better to detect if these optional parameters weren\u0027t supplied and omit them from the arguments to getList().  I think PHP\u0027s call_user_func_array will let you do this. But that means if the caller leaves out sort and includes sortdirection, you\u0027re back to having to know the default value for sort.  The comments to http://php.net/manual/en/function.call-user-func-array.php suggests you can use reflection to get the default values for method getList , but that\u0027s probably overkill, and PARAM_DFLT is the way to go.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnVHHh2c",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Reflection is a great suggestion, then we don\u0027t need to keep multiple defaults in sync :)",
+      "parentUuid": "DnZEQX1A",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -257,6 +509,24 @@
     },
     {
       "key": {
+        "uuid": "DnXHKg3E",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean with this?\n\u0027sort\u0027 can either not be specified (in which case, with reflection, a correct default will be used) or, when specified, it should be a value that exists in this array. Seems correct?",
+      "parentUuid": "DnZE5f9g",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DnfEAswU",
         "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
         "patchSetId": 14
@@ -268,6 +538,24 @@
       "writtenOn": "2013-02-25T09:55:24Z",
       "side": 1,
       "message": "This is required, calls fail without it. Above I suggest omitting it from the call to getList() if not supplied. If you don\u0027t do that then instead of saying PARAM_REQUIRED, add\n\n                ApiBase::PARAM_DFLT     \u003d\u003e \u0027DESC\u0027,\n\n and I think in the description mention the default.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnZHN-4k",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnfEAswU",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -291,6 +579,24 @@
     },
     {
       "key": {
+        "uuid": "DnbG32-M",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DndEFtxM",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dne4frmc",
         "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
         "patchSetId": 14
@@ -302,6 +608,24 @@
       "writtenOn": "2013-02-25T09:55:24Z",
       "side": 1,
       "message": "\"The ID of a specific feedback item to fetch.\"\n\n\nDocument the other params watchlist and sortdirection",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DndGyVwU",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dne4frmc",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -325,6 +649,24 @@
     },
     {
       "key": {
+        "uuid": "DnfG9U9U",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dnc4U8k4",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DnQ4HqoY",
         "filename": "data/DataModel.php",
         "patchSetId": 14
@@ -336,6 +678,24 @@
       "writtenOn": "2013-02-25T06:30:32Z",
       "side": 1,
       "message": "Stick to present tense, not \"will allow/revolve\" and \"was especially important\"",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DndGElxA",
+        "filename": "data/DataModel.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnQ4HqoY",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -359,6 +719,24 @@
     },
     {
       "key": {
+        "uuid": "DnbGJGyc",
+        "filename": "data/DataModel.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dne4LLo4",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dnc4Acm0",
         "filename": "data/DataModel.php",
         "patchSetId": 14
@@ -370,6 +748,24 @@
       "writtenOn": "2013-02-25T06:30:32Z",
       "side": 1,
       "message": "Active voice: \"Each implementation (such as DataModelSample or ArticleFeedbackv5Model) extends this class.\"\n\nThe comment makes no sense without  DataModelSample, another reason to revive it and the test.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnVF5xyo",
+        "filename": "data/DataModel.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dnc4Acm0",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -393,6 +789,24 @@
     },
     {
       "key": {
+        "uuid": "DndGVtzE",
+        "filename": "data/DataModelBackend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Originally, DataModel class was a layer over RDBStore: it made queries (using RDBStore) to multiple servers (in which data was sharded over shard key/page id) it automatically caches lots of the data \u0026 provides a simple way to access all the data that is in DB/cache.\n\nWhen RDBStore was killed of, pretty much everything was implemented using DataModel already. So I decided to pull out all queries into a separate \"DataModelBackendRDBStore\" class (which was DOA after the killing of RDBStore) and built this alternative \"DataModelBackendLBFactory\", which was a dumbed-down version that just uses wfGetDB. Indeed, no data is sharded over the shard column: all data is on the same server with this class (but other parts of code, e.g. DataModel, still works under the assumption that all data _can_ be on multiple servers)\n\nLB indeed stands for Load balancer; in this context: \"DataModelBackend using LBFactory class\" (an alternative used to be DataModelBackendRDBStore).",
+      "parentUuid": "DnW4ingY",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DnU4f4rQ",
         "filename": "data/DataModelBackend.LBFactory.php",
         "patchSetId": 14
@@ -404,6 +818,24 @@
       "writtenOn": "2013-02-25T09:03:57Z",
       "side": 1,
       "message": "I don\u0027t understand, what is \"now\"?  Is the point that subclasses will do sharding?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnbGaO14",
+        "filename": "data/DataModelBackend.LBFactory.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnU4f4rQ",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -427,6 +859,24 @@
     },
     {
       "key": {
+        "uuid": "DnfELE44",
+        "filename": "data/DataModelBackend.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "DataModel is the class that should be called by all code that needs access to the data that is in DB. It will delegate the fetching of the data to DataModelBackend, and will then cache a lot of that data.\n\nDataModelBackend is called by DataModel and is the place where queries to the database are executed.\nMultiple different backends could be created: one example is the existing DataModelBackendLBFactory. If at some point in the future, an alternative to RDBStore (that does allow connecting to multiple servers and shard data over a certain shard key) pops up.\n\nIf it would ever come to a point that AFTv5\u0027s data needs to be sharded over multiple servers, the creation of a new DataModelBackend class would suffice and no changes should be made anywhere else in AFT/DataModel.\nTBH though: I doubt that AFTv5 will ever really _need_ to shard its data over multiple servers. It will now receive it\u0027s own cluster, with 1 master db and some slaves. I think this separate database will suffice for AFTv5 for the foreseeable future and we won\u0027t ever need to implement a new Backend.",
+      "parentUuid": "Dna5uVv8",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dne5Nbps",
         "filename": "data/DataModelBackend.php",
         "patchSetId": 14
@@ -444,6 +894,24 @@
     },
     {
       "key": {
+        "uuid": "DndEAF20",
+        "filename": "data/DataModelBackend.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dne5Nbps",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dnc5c8n0",
         "filename": "data/DataModelBackend.php",
         "patchSetId": 14
@@ -455,6 +923,24 @@
       "writtenOn": "2013-02-25T09:03:57Z",
       "side": 1,
       "message": "The square brackets make it confusing, maybe add \"where [sort] and [id] are integers.\" ?  People usually use \u003csort\u003e and \u003cid\u003e for meta-names.\n\nCan you rename this function and the parameter, since $offset elsewhere is just a simple integer, and it\u0027s not really a getter? Maybe function unpackOffsets() and param $offsets;",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnTHyy5k",
+        "filename": "data/DataModelBackend.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-25T15:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dnc5c8n0",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
