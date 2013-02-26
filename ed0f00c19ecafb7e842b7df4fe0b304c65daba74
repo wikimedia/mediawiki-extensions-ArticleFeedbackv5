@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DnRYqHIA",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 24
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-02-26T21:11:22Z",
+      "side": 1,
+      "message": "Since the result is set to cache, why not add some cache check here before accessing the database",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnTO1Ks8",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 24
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-02-26T21:11:22Z",
+      "side": 1,
+      "message": "GROUP_CONCAT is not supported in PostgreSQL",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnTOL6iI",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 24
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-02-26T21:11:22Z",
+      "side": 1,
+      "message": "How big is the data volume for each aftv5 title log? all of the queries are accessed by log_namespace, log_title, log_type, log_action, but this is not a key in log table, this might be a problem for high amount of data.\n\nYou probably should ask the DBA to look at these queries.",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnRN-zt4",
+        "filename": "ArticleFeedbackv5.log.php",
+        "patchSetId": 24
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-02-26T21:11:22Z",
+      "side": 1,
+      "message": "User::newFroName() may return false, probably throw an exception in here if the default is failed",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnXPigqU",
+        "filename": "ArticleFeedbackv5.utils.php",
+        "patchSetId": 24
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-02-26T21:11:22Z",
+      "side": 1,
+      "message": "\u003e 0?",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnbZXyFY",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 24
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-02-26T21:11:22Z",
+      "side": 1,
+      "message": "Is 0 id user able to update the log? if not, should check that before update attempt",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DndNu1gA",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 24
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-02-26T21:11:22Z",
+      "side": 1,
+      "message": "$Id$ is for svn",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnVPy5pk",
+        "filename": "sql/ArticleFeedbackv5.sql",
+        "patchSetId": 24
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-02-26T21:11:22Z",
+      "side": 1,
+      "message": "the definition of these are changed, there should be a patch file to make these changes as well",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
