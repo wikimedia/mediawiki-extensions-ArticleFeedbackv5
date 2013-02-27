@@ -1684,6 +1684,57 @@
 					$( e.target ).data( 'started', true );
 				}
 			}
+		},
+
+		// }}}
+		// {{{ Discuss feedback on article/user's talk page
+
+		'discuss': {
+			'click': function( e ) {
+				var exists = $( e.target ).data( 'section-exists' );
+
+				if ( !exists ) {
+					e.preventDefault();
+
+					/*
+					 * The href set for an already existing section will lead to the
+					 * edit-form to create a new section (with the title already
+					 * filled out). However, there's no way to already preload the
+					 * content. Let's fake the submission of the edit form with some
+					 * preset content.
+					 */
+
+					var link = $( e.target ).attr( 'href' ) + '#editform';
+					var title = $( e.target ).data( 'section-title' );
+					var content = $( e.target ).data( 'section-content' );
+					var editTime = $( e.target ).data( 'section-edittime' );
+					var editToken = $( e.target ).data( 'section-edittoken' );
+
+					var $form = $( '\
+						<form method="post">\
+							<input type="text" name="wpSummary" />\
+							<textarea name="wpTextbox1" />\
+							<input type="hidden" name="wpEdittime" />\
+							<input type="hidden" name="wpStarttime" />\
+							<input type="hidden" name="wpEditToken" />\
+							<input type="hidden" name="wpPreview" />\
+							<input type="submit" />\
+						</form>' );
+
+					$form.attr( 'action', link );
+					$( '[name=wpSummary]', $form ).val( title );
+					$( '[name=wpTextbox1]', $form ).val( content );
+					$( '[name=wpEdittime]', $form ).val( editTime );
+					$( '[name=wpStarttime]', $form ).val( editTime );
+					$( '[name=wpEditToken]', $form ).val( editToken );
+					$( '[name=wpPreview]', $form ).val( 1 );
+
+					$( e.target ).append( $form );
+					$form
+						.hide()
+						.submit();
+				}
+			}
 		}
 
 		// }}}
