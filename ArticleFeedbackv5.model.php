@@ -377,13 +377,11 @@ class ArticleFeedbackv5Model extends DataModel {
 
 		global $wgArticleFeedbackv5MaxCommentLength;
 
-		$page = Title::newFromID( $this->aft_page );
-		if ( $page === null ) {
+		if ( $this->getArticle() === false ) {
 			throw new MWException( "Invalid page id '$this->aft_page'." );
 		}
 
-		$revision = Revision::newFromId( $this->aft_page_revision );
-		if ( $revision === null ) {
+		if ( $this->getRevision() === false ) {
 			throw new MWException( "Invalid revision id '$this->aft_page_revision'." );
 		}
 
@@ -567,16 +565,37 @@ class ArticleFeedbackv5Model extends DataModel {
 	}
 
 	/**
+	 * Get article object for this entry
+	 *
+	 * @return Article|bool Article object or false if invalid page
+	 */
+	public function getArticle() {
+		$page = Article::newFromID( $this->aft_page );
+		return $page ?: false;
+	}
+
+	/**
+	 * Get revision object for this entry
+	 *
+	 * @return Revision|bool Revision object or false if invalid revision
+	 */
+	public function getRevision() {
+		$revision = Revision::newFromId( $this->aft_page_revision );
+		return $revision ?: false;
+	}
+
+	/**
 	 * Get user object for this entry
 	 *
-	 * @return User
+	 * @return User|bool User object or false if invalid user
 	 */
 	public function getUser() {
 		if ( $this->aft_user ) {
-			return User::newFromId( $this->aft_user );
+			$user = User::newFromId( $this->aft_user );
+		} else {
+			$user = User::newFromName( $this->aft_user_text );
 		}
-
-		return User::newFromName( $this->aft_user_text );
+		return $user ?: false;
 	}
 
 	/**

@@ -800,13 +800,120 @@ class ArticleFeedbackv5Render {
 			if ( $last ) {
 				$tools = '';
 
+
 				// undo-link
 				$tools .= $this->buildToolboxLink( $record, "un$last->log_action" );
+
+
+				// build discussion tools
+				$discussType = '';
+				$discussPage = false;
+				if ( $record->isFeatured() ) {
+					// discuss on talk page
+					$discussType = 'talk';
+					$article = $record->getArticle();
+					if ( $article ) {
+						$discussPage = $article->getTitle()->getTalkPage();
+					}
+				} elseif ( $record->getUser() ) {
+					// contact user
+					$discussType = 'user';
+					$user = $record->getUser();
+					if ( $user ) {
+						$discussPage = $user->getTalkPage();
+					}
+				}
+
+				if ( $discussPage ) {
+					global $wgLang, $wgUser;
+					$sectionTitle = wfMessage( "articlefeedbackv5-discuss-$discussType-section-title" )
+						->params( $record->aft_comment, $record->getArticle()->getTitle() )
+						->inContentLanguage()
+						->text();
+					$sectionTitleTruncated = $wgLang->truncate( $sectionTitle, 60 );
+
+					$title = Title::newFromId( $record->aft_page )->getPrefixedDBkey();
+					$userText = $record->aft_user_text; // anon users
+					if ( $record->getUser() ) {
+						$userText = '[[' . $record->getUser()->getUserPage()->getPrefixedDBKey() . '|]]'; // link to user page
+					}
+
+					if ( $sectionTitle != $sectionTitleTruncated ) {
+						/*
+						 * Truncate the title even further - this was added to make sure
+						 * that we don't truncate at 48chars when there are only 50 total.
+						 */
+						$sectionTitleTruncated = $wgLang->truncate( $sectionTitle, 48 );
+					}
+					$sectionContent = wfMessage( "articlefeedbackv5-discuss-$discussType-section-content" )
+						->inContentLanguage()
+						->params(
+						$userText,
+						SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$record->aft_id" ),
+						$wgLang->date( $record->aft_timestamp ),
+						$wgLang->time( $record->aft_timestamp ),
+						SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title ),
+						Html::rawElement( 'blockquote', array(), $record->aft_comment ),
+						$record->getArticle()->getTitle()
+					)
+						->text();
+
+					$sectionAnchor = '';
+					// check if feedback is being discussed already
+					$article = Article::newFromId( $discussPage->getArticleID() );
+					if ( $article ) {
+						$sections = $article->getParserOutput()->getSections();
+						foreach ( $sections as $section ) {
+							if ( $section['line'] == $sectionTitleTruncated ) {
+								$sectionAnchor = $section['anchor'];
+								break;
+							}
+						}
+					}
+					$sectionExists = ( $sectionAnchor !== '' );
+
+					if ( $sectionExists ) {
+						$discussLink = $discussPage->getLinkURL() . '#' . $sectionAnchor;
+					} else {
+						$discussLink = $discussPage->getLinkURL( array( 'action' => 'edit', 'section' => 'new', 'preloadtitle' => $sectionTitleTruncated ) );
+					}
+
+					$action = 'discuss';
+					$class = "articleFeedbackv5-$action-link articleFeedbackv5-$action-$discussType-link";
+					if ( $sectionExists ) {
+						$class .= " articleFeedbackv5-$action-exists-link";
+					}
+
+					$tools .= Html::rawElement(
+						'li',
+						array(),
+						Html::element(
+							'a',
+							array(
+								'id' => "articleFeedbackv5-$action-link-$record->aft_id",
+								'class' => $class,
+								'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-$discussType" )->text(),
+								'href' => $discussLink,
+								'data-action' => $action,
+								// expose some additional details to JS
+								'data-type' => $discussType,
+								'data-section-exists' => (int) $sectionExists,
+								'data-section-title' => $sectionTitleTruncated,
+								'data-section-content' => $sectionContent,
+								'data-section-edittime' => wfTimestampNow(),
+								'data-section-edittoken' => $wgUser->getEditToken()
+							),
+							wfMessage( "articlefeedbackv5-form-$action-$discussType" . ( $sectionExists ? '-exists' : '' ) )->text()
+						)
+					);
+				}
+
 
 				// if feedback is featured, it should still be resolvable in 1 click
 				if ( $record->isFeatured() && !$record->isResolved() ) {
 					$tools .= $this->buildToolboxLink( $record, 'resolve' );
 				}
+
 
 				// hide (monitors & oversighters), request (monitors), oversight & decline (oversighters)
 				if ( $record->isInappropriate() || $record->isHidden() || $record->isOversighted() ) {
@@ -844,6 +951,7 @@ class ArticleFeedbackv5Render {
 						}
 					}
 				}
+
 
 				$activityLink = '';
 				if (
@@ -883,6 +991,7 @@ class ArticleFeedbackv5Render {
 							);
 					}
 				}
+
 
 				$toolbox .=
 					// performer/action info
