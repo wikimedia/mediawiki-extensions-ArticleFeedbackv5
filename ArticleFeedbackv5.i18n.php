@@ -334,7 +334,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Before requesting oversight, please check that this post
 includes one of these issues:
 * phone numbers
-* e-mail addresses
+* email addresses
 * pornographic links
 * defamatory/libelous comments about a person
 * [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy other criteria for oversight]',
@@ -517,7 +517,7 @@ includes one of these issues:
 
 Thank you for expressing interest in helping to improve {{SITENAME}}.
 
-Please take a moment to confirm your e-mail by clicking on the link below:
+Please take a moment to confirm your email address by clicking on the link below:
 
 $1
 
@@ -531,7 +531,7 @@ $3
 
 We will be in touch shortly with how you can help improve {{SITENAME}}.
 
-If you did not initiate this request, please ignore this e-mail and we will not send you anything else.
+If you did not initiate this request, please ignore this email and we will not send you anything else.
 
 Best wishes, and thank you,
 The {{SITENAME}} team',
