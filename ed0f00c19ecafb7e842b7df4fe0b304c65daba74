@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "DnQ3voyA",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 24
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-27T16:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnTO1Ks8",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DnTOL6iI",
         "filename": "ArticleFeedbackv5.activity.php",
         "patchSetId": 24
@@ -47,6 +65,24 @@
       "writtenOn": "2013-02-26T21:11:22Z",
       "side": 1,
       "message": "How big is the data volume for each aftv5 title log? all of the queries are accessed by log_namespace, log_title, log_type, log_action, but this is not a key in log table, this might be a problem for high amount of data.\n\nYou probably should ask the DBA to look at these queries.",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dnc34a.U",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 24
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-27T16:54:11Z",
+      "side": 1,
+      "message": "page_time (log_namespace, log_title, log_timestamp) index is used. That\u0027ll narrow down the resultset to all actions per feedback. The amount of actions to feedback is slim to none (will almost never be higher than 5)\n\nPS: data from logging was being retrieved this way already.",
+      "parentUuid": "DnTOL6iI",
       "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "Dna2sD-A",
+        "filename": "ArticleFeedbackv5.log.php",
+        "patchSetId": 24
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-27T16:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnRN-zt4",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DnXPigqU",
         "filename": "ArticleFeedbackv5.utils.php",
         "patchSetId": 24
@@ -81,6 +135,24 @@
       "writtenOn": "2013-02-26T21:11:22Z",
       "side": 1,
       "message": "\u003e 0?",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnY2pU.E",
+        "filename": "ArticleFeedbackv5.utils.php",
+        "patchSetId": 24
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-27T16:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnXPigqU",
       "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "DnW22Fz8",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 24
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-27T16:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnbZXyFY",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DndNu1gA",
         "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
         "patchSetId": 24
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "DnU2zW00",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 24
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-27T16:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DndNu1gA",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DnVPy5pk",
         "filename": "sql/ArticleFeedbackv5.sql",
         "patchSetId": 24
@@ -132,6 +240,24 @@
       "writtenOn": "2013-02-26T21:11:22Z",
       "side": 1,
       "message": "the definition of these are changed, there should be a patch file to make these changes as well",
+      "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DnS2BP1E",
+        "filename": "sql/ArticleFeedbackv5.sql",
+        "patchSetId": 24
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-02-27T16:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DnVPy5pk",
       "revId": "ed0f00c19ecafb7e842b7df4fe0b304c65daba74",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
