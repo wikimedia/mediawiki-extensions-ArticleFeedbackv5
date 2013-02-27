@@ -1730,7 +1730,6 @@
 						<form method="post">\
 							<input type="text" name="wpSummary" />\
 							<textarea name="wpTextbox1" />\
-							<input type="checkbox" name="wpWatchthis" />\
 							<input type="hidden" name="wpEdittime" />\
 							<input type="hidden" name="wpEditToken" />\
 							<input type="hidden" name="wpPreview" />\
@@ -1742,7 +1741,6 @@
 					$( '[name=wpTextbox1]', $form ).val( content );
 					$( '[name=wpEdittime]', $form ).val( editTime );
 					$( '[name=wpEditToken]', $form ).val( editToken );
-					$( '[name=wpWatchthis]', $form ).prop( 'checked', 1 );
 					$( '[name=wpPreview]', $form ).val( 1 );
 
 					$( e.target ).append( $form );
