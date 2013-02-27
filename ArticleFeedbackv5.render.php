@@ -859,6 +859,97 @@ class ArticleFeedbackv5Render {
 					}
 				}
 
+				// build discussion tools
+				$discussType = '';
+				$discussPage = false;
+				if ( $record->isFeatured() ) {
+					// discuss on talk page
+					$discussType = 'talk';
+					$article = $record->getArticle();
+					if ( $article ) {
+						$discussPage = $article->getTitle()->getTalkPage();
+					}
+				} elseif ( $record->getUser() ) {
+					// contact user
+					$discussType = 'user';
+					$user = $record->getUser();
+					if ( $user ) {
+						$discussPage = $user->getTalkPage();
+					}
+				}
+
+				if ( $discussPage ) {
+					global $wgLang, $wgUser;
+					$sectionTitle = wfMessage( "articlefeedbackv5-discuss-$discussType-section-title", $record->aft_comment );
+					$sectionTitleTruncated = $wgLang->truncate( $sectionTitle, 70 );
+
+					$sectionAnchor = '';
+					// check if feedback is being discussed already
+					$article = Article::newFromId( $discussPage->getArticleID() );
+					if ( $article ) {
+						$sections = $article->getParserOutput()->getSections();
+						foreach ( $sections as $section ) {
+							if ( $section['line'] == $sectionTitleTruncated ) {
+								$sectionAnchor = $section['anchor'];
+								break;
+							}
+						}
+					}
+					$sectionExists = ( $sectionAnchor !== '' );
+
+					if ( $sectionExists ) {
+						$discussLink = $discussPage->getLinkURL() . '#' . $sectionAnchor;
+					} else {
+						$discussLink = $discussPage->getLinkURL( array( 'action' => 'edit', 'section' => 'new', 'preloadtitle' => $sectionTitleTruncated ) );
+					}
+
+					$title = Title::newFromId( $record->aft_page )->getPrefixedDBkey();
+					$userText = $record->aft_user_text; // anon users
+					if ( $record->getUser() ) {
+						$userText = '[[' . $record->getUser()->getUserPage()->getPrefixedDBKey() . '|]]'; // link to user page
+					}
+
+					$comment = '';
+					if ( $sectionTitle != $sectionTitleTruncated ) {
+						// if comment has been truncated to fit section title, display it in full in content
+						$comment = Html::rawElement( 'blockquote', array(), $record->aft_comment );
+					}
+					$sectionContent = wfMessage( "articlefeedbackv5-discuss-$discussType-section-content" )
+						->params(
+							$userText,
+							SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$record->aft_id" ),
+							$wgLang->date( $record->aft_timestamp ),
+							$wgLang->time( $record->aft_timestamp ),
+							SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title ),
+							$comment
+						)
+						->text();
+
+					$action = 'discuss';
+					$tools .= Html::rawElement(
+						'li',
+						array(),
+						Html::element(
+							'a',
+							array(
+								'id' => "articleFeedbackv5-$action-link-$record->aft_id",
+								'class' => "articleFeedbackv5-$action-link articleFeedbackv5-$action-$discussType-link",
+								'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-$discussType" )->text(),
+								'href' => $discussLink,
+								'data-action' => $action,
+								// expose some additional details to JS
+								'data-type' => $discussType,
+								'data-section-exists' => (int) $sectionExists,
+								'data-section-title' => $sectionTitleTruncated,
+								'data-section-content' => $sectionContent,
+								'data-section-edittime' => wfTimestampNow(),
+								'data-section-edittoken' => $wgUser->getEditToken()
+							),
+							wfMessage( "articlefeedbackv5-form-$action-$discussType" . ( $sectionExists ? '-exists' : '' ) )->text()
+						)
+					);
+				}
+
 				$activityLink = '';
 				if (
 					// there is a comment - display it
