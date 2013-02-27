@@ -197,6 +197,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-unrequest' => 'Unrequest oversight',
 	'articlefeedbackv5-form-decline' => 'Decline oversight',
 	'articlefeedbackv5-form-declined' => 'Oversight declined',
+	'articlefeedbackv5-form-discuss-talk' => 'Discuss on talk page',
+	'articlefeedbackv5-form-discuss-user' => 'Contact the user',
+	'articlefeedbackv5-form-discuss-talk-exists' => 'See talk page discussion',
+	'articlefeedbackv5-form-discuss-user-exists' => 'See user discussion',
 	'articlefeedbackv5-form-tooltip-note' => 'Add a note explaining your flag',
 	'articlefeedbackv5-form-tooltip-feature' => 'This can help improve the article',
 	'articlefeedbackv5-form-tooltip-unfeature' => 'Undo usable flag',
@@ -216,6 +220,20 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-tooltip-request' => 'Offensive, private data ...',
 	'articlefeedbackv5-form-tooltip-unrequest' => 'Undo oversight request',
 	'articlefeedbackv5-form-tooltip-decline' => 'Decline oversight request',
+	'articlefeedbackv5-form-tooltip-discuss-talk' => "Discuss feedback on the article's talk page",
+	'articlefeedbackv5-form-tooltip-discuss-user' => 'Discuss feedback with the user who submitted it',
+	'articlefeedbackv5-discuss-talk-section-title' => 'Reader feedback: $1',
+	'articlefeedbackv5-discuss-user-section-title' => 'Reader feedback: $1',
+	'articlefeedbackv5-discuss-talk-section-content' => '$1 posted [[$2|this comment]] on $3 ([[$5|view all feedback]]).
+$6
+Any thoughts?
+
+~~~~',
+	'articlefeedbackv5-discuss-user-section-content' => '$1 posted [[$2|this comment]] on $3 ([[$5|view all feedback]]):
+$6
+Thank you for your feedback!
+
+~~~~',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 found what they were looking for.}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 did not find what they were looking for.}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 posted a comment.}}',
@@ -933,6 +951,8 @@ The abuse policy link.',
 	'articlefeedbackv5-form-unoversight' => 'Link text for undoing oversight (= deletion) of a feedback entry',
 	'articlefeedbackv5-form-decline' => 'Link text for declining oversight',
 	'articlefeedbackv5-form-declined' => 'Link text when oversight has already been declined',
+	'articlefeedbackv5-form-discuss-talk' => "Link text to discuss feedback in a section on the article's talk page",
+	'articlefeedbackv5-form-discuss-user' => "Link text to discuss feedback in a section on the submitting user's talk page",
 	'articlefeedbackv5-form-tooltip-note' => 'Link title-attribute to add a comment for the action you just flagged (in the toolbox)',
 	'articlefeedbackv5-form-tooltip-feature' => 'Link title-attribute for marking the post as useful (in the toolbox)',
 	'articlefeedbackv5-form-tooltip-unfeature' => 'Link title-attribute for un-marking the post as useful (in the toolbox)',
@@ -952,6 +972,26 @@ The abuse policy link.',
 	'articlefeedbackv5-form-tooltip-request' => 'Link title-attribute for requesting oversight',
 	'articlefeedbackv5-form-tooltip-unrequest' => 'Link title-attribute for unrequesting oversight',
 	'articlefeedbackv5-form-tooltip-decline' => 'Link title-attribute for declining oversight',
+	'articlefeedbackv5-form-tooltip-discuss-talk' => "Link title-attribute for discussing feedback on the article's talk page",
+	'articlefeedbackv5-form-tooltip-discuss-user' => 'Link title-attribute for discussing feedback with the user who submitted it',
+	'articlefeedbackv5-discuss-talk-section-title' => "When feedback is to be discussed on the article's talk page, this is what the section title will be. Parameters:
+* $1 is the feedback comment",
+	'articlefeedbackv5-discuss-user-section-title' => "When feedback is to be discussed on the user's talk page, this is what the section title will be. Parameters:
+* $1 is the feedback comment",
+	'articlefeedbackv5-discuss-talk-section-content' => "When feedback is to be discussed on the article's talk page, this is the content template that will be provided. Parameters:
+* $1 is the user that submitted the feedback (either the IP for anonymous user, or in the format [[User:Name|]] for registered users)
+* $2 is the permalink to the feedback that'll be discussed
+* $3 is the date the feedback was submitted
+* $4 is the time the feedback was submitted
+* $5 is the link to all feedback on this article
+* $6 is the full feedback comment (will be empty in the event that feedback text is short and fits in the section title)",
+	'articlefeedbackv5-discuss-user-section-content' => "When feedback is to be discussed on the user's talk page, this is the content template that will be provided. Parameters:
+* $1 is the user that submitted the feedback (either the IP for anonymous user, or in the format [[User:Name|]] for registered users)
+* $2 is the permalink to the feedback that'll be discussed
+* $3 is the date the feedback was submitted
+* $4 is the time the feedback was submitted
+* $5 is the link to all feedback on this article
+* $6 is the full feedback comment (will be empty in the event that feedback text is short and fits in the section title)",
 	'articlefeedbackv5-form1-header-found' => '{{doc-singularthey}}
 Parameters
 * $1 is a username.
