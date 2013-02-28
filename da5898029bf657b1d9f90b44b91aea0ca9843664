@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Dn0M5Bjw",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 28
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 78
+      },
+      "writtenOn": "2013-02-28T22:52:09Z",
+      "side": 1,
+      "message": "This seems to always get set to false for me rather than a db result. Let me know if you want me to debug further.",
+      "revId": "da5898029bf657b1d9f90b44b91aea0ca9843664",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
