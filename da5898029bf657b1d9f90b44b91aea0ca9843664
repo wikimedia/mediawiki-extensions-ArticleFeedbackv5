@@ -16,6 +16,24 @@
       "revId": "da5898029bf657b1d9f90b44b91aea0ca9843664",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dn2l04c4",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 28
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-01T13:59:49Z",
+      "side": 1,
+      "message": "I had recently added another permission level \u0027aft-editor2\u0027 for hiding/unhiding (because dewiki will probably not want all confirmed users to have that permission). I had forgotten to add that permission level to this editor activity. -- fixed",
+      "parentUuid": "Dn0M5Bjw",
+      "revId": "da5898029bf657b1d9f90b44b91aea0ca9843664",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
