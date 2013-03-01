@@ -498,6 +498,8 @@ class ArticleFeedbackv5Render {
 
 		$id = $record->aft_id;
 		$text = $record->aft_comment;
+
+		// permalink should always display long version ;)
 		$short = $this->isPermalink ? $text : $wgLang->truncate( $text, 250 );
 
 		// If the short string is the same size as the original, no truncation
@@ -527,17 +529,24 @@ class ArticleFeedbackv5Render {
 				);
 		}
 
+		// if no comment was entered, display message
+		if ( $text == '' ) {
+			$short = Linker::commentBlock( wfMessage( 'articlefeedbackv5-comment-empty' )->escaped() );
+		} else {
+			$short = Html::element( 'span',
+				array(
+					'class' => 'articleFeedbackv5-comment-short',
+					'id'    => "articleFeedbackv5-comment-short-$id"
+				),
+				$short
+			);
+		}
+
 		return
 			Html::rawElement(
 				'blockquote',
 				array(),
-				Html::element( 'span',
-					array(
-						'class' => 'articleFeedbackv5-comment-short',
-						'id'    => "articleFeedbackv5-comment-short-$id"
-					),
-					$short
-				) .
+				$short .
 				$fullLengthToggle
 			);
 	}

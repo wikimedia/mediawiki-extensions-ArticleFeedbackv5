@@ -808,7 +808,8 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	color: #000;
 }
 
-.articleFeedbackv5-comment-short {
+.articleFeedbackv5-comment-short,
+.articleFeedbackv5-comment-full {
 	font-size: 1.2em;
 	line-height: 1.5em;
 }
