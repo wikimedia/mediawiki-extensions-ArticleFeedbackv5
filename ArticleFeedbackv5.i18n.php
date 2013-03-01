@@ -278,7 +278,7 @@ We appreciate your contributions to this page!
 	'articlefeedbackv5watchlist' => 'Article feedback - My watched pages',
 	'articlefeedbackv5-desc' => 'Article feedback',
 	'articlefeedbackv5-comment-more' => 'More',
-	'articlefeedbackv5-comment-less' => 'Less',
+	'articlefeedbackv5-comment-empty' => 'No text was entered',
 	'articlefeedbackv5-header-message' => 'Please promote good feedback and help improve this article. $1',
 	'articlefeedbackv5-header-message-link-text' => 'Learn more',
 	'articlefeedbackv5-beta-label' => 'BETA',
@@ -1124,9 +1124,9 @@ Parameters
 Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a prototype installation.',
 	'articlefeedbackv5watchlist' => '[[Special:SpecialPages]] item',
 	'articlefeedbackv5-desc' => '{{desc|name=Article Feedback v5|url=http://www.mediawiki.org/wiki/Extension:ArticleFeedbackv5}}',
-	'articlefeedbackv5-comment-more' => 'Label for the button to expand the truncated comment on feedback. Swaps to articlefeedbackv5-comment-less after being clicked.
+	'articlefeedbackv5-comment-more' => 'Label for the button to expand the truncated comment on feedback.
 {{Identical|More}}',
-	'articlefeedbackv5-comment-less' => 'Previous label (articlefeedbackv5-comment-more) switches to this after being clicked. This is the label for collapsing the expanded comments.',
+	'articlefeedbackv5-comment-empty' => 'Text to be displayed instead of the feedback comment in case there was no comment',
 	'articlefeedbackv5-header-message' => 'A message to be displayed on the special page, encouraging users to behave well. Parameters:
 * $1 is a link to read more about this.',
 	'articlefeedbackv5-header-message-link-text' => 'The link text to be displayed (at $1 on articlefeedbackv5-header-message-text)',

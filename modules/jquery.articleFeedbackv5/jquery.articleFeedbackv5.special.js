@@ -428,6 +428,14 @@
 			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
 		} );
+
+		// bind short/long version toggle
+		$( document ).on( 'click touchstart', '.articleFeedbackv5-comment-toggle', function( e ) {
+			e.preventDefault();
+			$( e.target ).siblings( '.articleFeedbackv5-comment-short' ).hide();
+			$( e.target ).siblings( '.articleFeedbackv5-comment-full' ).show();
+			$( e.target ).hide();
+		} );
 	};
 
 	// }}}
