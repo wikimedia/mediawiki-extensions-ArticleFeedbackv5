@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DoOX7UBE",
+        "filename": "ArticleFeedbackv5.activity.php",
+        "patchSetId": 29
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 78
+      },
+      "writtenOn": "2013-03-01T19:23:54Z",
+      "side": 1,
+      "message": "You might want to improve the description of this function as it\u0027s a bit vague. It looks like it retrieves the log entry of the most recent action performed by an aft editor or aft monitor for a particular feedback entry (or entries). The existing description is accurate but could be interpreted in other ways, like \u0027the most recent edit of the person who wrote the feedback\u0027.",
+      "revId": "c6b6a975e32d76569079269befcefb4f4224ea05",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
