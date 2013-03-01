@@ -7,9 +7,7 @@
  * @version    $Id$
  */
 
-require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
-	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
-	: dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
 
 /**
  * Rebuild AFT's CheckUser entries

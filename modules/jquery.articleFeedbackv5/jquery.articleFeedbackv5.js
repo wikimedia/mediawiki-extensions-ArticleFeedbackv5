@@ -328,7 +328,6 @@
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket1-form-submit" /></button>\
-						<a href="#"><html:msg key="bucket1-form-submit-nocomment" /></a>\
 						<div class="clear"></div>\
 					</form>\
 					'
@@ -361,11 +360,7 @@
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
 				// Fill in the disclosure text
-				var message = 'articlefeedbackv5-help-transparency-terms';
-				if ( $.articleFeedbackv5.anonymous ) {
-					message = 'articlefeedbackv5-help-transparency-terms-anon';
-				}
-				$block.find( '.articlefeedbackv5-help-transparency-terms' ).msg( message );
+				$block.find( '.articlefeedbackv5-help-transparency-terms' ).msg( 'articlefeedbackv5-help-transparency-terms' );
 
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-submit' )
@@ -447,17 +442,9 @@
 					} );
 
 				// Attach the submit
-				$block.find( '.articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment' )
+				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
-
-						// clear out free-form text field content if user selected to submit without comment
-						if ( $( e.target ).hasClass( 'articleFeedbackv5-submit-nocomment' ) ) {
-							$block.find( '[name=comment]' ).val( '' );
-							// always allowed to submit empty
-							$.articleFeedbackv5.submissionEnabled = true;
-						}
-
 						$.articleFeedbackv5.submitForm();
 					} );
 			},
@@ -682,7 +669,6 @@
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket6-form-submit" /></button>\
-						<a href="#" class="articleFeedbackv5-submit-nocomment"><html:msg key="bucket6-form-submit-nocomment" /></a>\
 						<div class="clear"></div>\
 					</form>\
 					'
@@ -715,11 +701,7 @@
 				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
 				// Fill in the disclosure text
-				var message = 'articlefeedbackv5-help-transparency-terms';
-				if ( $.articleFeedbackv5.anonymous ) {
-					message = 'articlefeedbackv5-help-transparency-terms-anon';
-				}
-				$block.find( '.articlefeedbackv5-help-transparency-terms' ).msg( message );
+				$block.find( '.articlefeedbackv5-help-transparency-terms' ).msg( 'articlefeedbackv5-help-transparency-terms' );
 
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-submit' )
@@ -771,7 +753,7 @@
 						var text = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-' + new_val );
 						$element.attr( 'placeholder', text ).placeholder();
 
-						// allow feedback submission
+						// allow feedback submission if there is feedback (or if Y/N was positive)
 						$.articleFeedbackv5.enableSubmission( true );
 					} );
 
@@ -790,17 +772,9 @@
 					} );
 
 				// attach the submit
-				$block.find( '.articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment' )
+				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
-
-						// clear out free-form text field content if user selected to submit without comment
-						if ( $( e.target ).hasClass( 'articleFeedbackv5-submit-nocomment' ) ) {
-							$block.find( '[name=comment]' ).val( '' );
-							// always allowed to submit empty
-							$.articleFeedbackv5.submissionEnabled = true;
-						}
-
 						$.articleFeedbackv5.submitForm();
 					} );
 			},
@@ -856,7 +830,7 @@
 			 */
 			displayStep1: function ( $block ) {
 				var $step1 = $( '.form-row', $block );
-				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment', $block );
+				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit', $block );
 
 				// hide comment, disclosure & submit first (should only show after clicking Y/N)
 				$step1.show();
@@ -877,7 +851,7 @@
 			 */
 			displayStep2: function ( $block ) {
 				var $step1 = $( '.form-row', $block );
-				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment', $block );
+				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit', $block );
 
 				// show comment, disclosure & submit; hide Y/N buttons
 				$step2.show();
@@ -2561,6 +2535,7 @@
 	 * object.
 	 */
 	$.articleFeedbackv5.submitForm = function () {
+
 		// Are we allowed to do this?
 		if ( !$.articleFeedbackv5.submissionEnabled ) {
 			return false;
@@ -2606,8 +2581,7 @@
 
 			if ( postsInLastHour >= $.articleFeedbackv5.throttleThresholdPostsPerHour ) {
 				// display throttling message
-				var message = $( '<span />' ).msg( 'articlefeedbackv5-error-throttled' ).text();
-				$.articleFeedbackv5.markTopError( message );
+				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-throttled' ) );
 
 				// re-store pruned post timestamp list
 				$.cookie( $.aftTrack.prefix( 'submission_timestamps' ), savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
@@ -2635,6 +2609,7 @@
 			'revid': $.articleFeedbackv5.revisionId,
 			'bucket': $.articleFeedbackv5.bucketId,
 			'cta': $.articleFeedbackv5.ctaId,
+			'experiment': $.articleFeedbackv5.experiment().replace( 'option', '' ),
 			'link': $.articleFeedbackv5.submittedLinkId
 		} );
 

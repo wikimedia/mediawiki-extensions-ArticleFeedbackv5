@@ -60,8 +60,7 @@ select {
 #articleFeedbackv5-special-watchlist-showing-wrap {
 	font-size: 1.2em;
 }
-#articleFeedbackv5-feedback-count-total,
-#articleFeedbackv5-feedback-count-filter {
+#articleFeedbackv5-feedback-count-total {
 	font-weight: bold;
 }
 #articleFeedbackv5-percent-found-wrap {
@@ -94,6 +93,24 @@ select {
 	/* @embed */
 	background: url(images/bg-feedbackpage-header.png) repeat-x;
 	padding: 0 10px;
+}
+#articleFeedbackv5-special-add-feedback {
+	/*color:white;
+	display: block;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	border-radius: 3px;
+	width: auto;
+	height: 35px;
+	line-height: 35px;
+	padding: 0 9px;
+	float: right;
+	background: url(images/bg-submit.png) repeat-x;*/
+	display: none;
+}
+#articleFeedbackv5-special-add-feedback:after {
+	clear:both;
 }
 
 /** Filter & sort line **/

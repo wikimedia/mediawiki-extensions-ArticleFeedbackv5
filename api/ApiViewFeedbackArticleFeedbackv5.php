@@ -14,6 +14,11 @@
  * @subpackage Api
  */
 class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
+	private $continue   = null;
+	private $continueId = null;
+	private $showMore   = false;
+	private $isPermalink = false;
+
 	/**
 	 * Constructor
 	 */
@@ -27,87 +32,81 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	public function execute() {
 		wfProfileIn( __METHOD__ );
 
+		$user = $this->getUser();
+
 		$params   = $this->extractRequestParams();
 		$result   = $this->getResult();
 		$html     = '';
 		$length   = 0;
-
-		// no page id = central feedback page = null (getAllowedParams will have messed up null values)
-		if ( !$params['pageid'] ) {
-			$params['pageid'] = null;
-		}
 
 		// Save filter in user preference
 		$user = $this->getUser();
 		$user->setOption( 'aftv5-last-filter', $params['filter'] );
 		$user->saveSettings();
 
-		$records = $this->fetchData( $params );
+		// Build fetch object
+		$fetch = new ArticleFeedbackv5Fetch();
+		$fetch->setFilter( $params['filter'] );
 
-		// build renderer
-		$highlight = (bool) $params['feedbackid'];
-		$central = !(bool) $params['pageid'];
-		$renderer = new ArticleFeedbackv5Render( $user, false, $central, $highlight );
-
-		// Build html
-		if ( $records ) {
-			foreach ( $records as $record ) {
-				$html .= $renderer->run( $record );
-				$length++;
-			}
+		$fetch->setFeedbackId( $params['feedbackid'] );
+		$fetch->setPageId( $params['pageid'] );
+		if ( $params['watchlist'] ) {
+			$fetch->setUserId( $user->getId() );
 		}
 
-		$filterCount = ArticleFeedbackv5Model::getCount( 'featured', $params['pageid'] );
-		$totalCount = ArticleFeedbackv5Model::getCount( '*', $params['pageid'] );
+		$fetch->setSort( $params['sort'] );
+		$fetch->setSortOrder( $params['sortdirection'] );
+		$fetch->setLimit( $params['limit'] );
+		if ( $params['continue'] !== 'null' ) {
+			$fetch->setContinue( $params['continue'] );
+		}
+
+		$count = $fetch->overallCount();
+
+		// Run
+		$res = $fetch->run();
+
+		// Build html
+		$highlight = (bool) $params['feedbackid'];
+		$central   = ( $params['pageid'] ? false : true );
+		$renderer  = new ArticleFeedbackv5Render( $user, false, $central, $highlight );
+		foreach ( $res->records as $record ) {
+			$html .= $renderer->run( $record );
+			$length++;
+		}
 
 		// Add metadata
 		$result->addValue( $this->getModuleName(), 'length', $length );
-		$result->addValue( $this->getModuleName(), 'count', $totalCount );
-		$result->addValue( $this->getModuleName(), 'filtercount', $filterCount );
-		$result->addValue( $this->getModuleName(), 'offset', $records ? $records->nextOffset() : 0 );
-		$result->addValue( $this->getModuleName(), 'more', $records ? $records->hasMore() : false );
+		$result->addValue( $this->getModuleName(), 'count', $count );
+		$result->addValue( $this->getModuleName(), 'more', $res->showMore );
+		if ( isset( $res->continue ) ) {
+			$result->addValue( $this->getModuleName(), 'continue', $res->continue );
+		}
 		$result->addValue( $this->getModuleName(), 'feedback', $html );
 
 		wfProfileOut( __METHOD__ );
 	}
 
 	/**
-	 * @param array $params
-	 * @return DataModelList
+	 * Get the total number of responses
+	 *
+	 * @param  $pageId int [optional] the page ID
+	 * @return int     the count
 	 */
-	protected function fetchData( $params ) {
-		// permalink page
-		if ( $params['feedbackid'] ) {
-			$record = ArticleFeedbackv5Model::get( $params['feedbackid'], $params['pageid'] );
-			if ( $record ) {
-				return new DataModelList(
-					array( array( 'id' => $record->aft_id, 'shard' => $record->aft_page ) ),
-					'ArticleFeedbackv5Model'
-				);
-			}
-
-		// watchlist page
-		} elseif ( $params['watchlist'] ) {
-			return ArticleFeedbackv5Model::getWatchlistList(
-				$params['filter'],
-				$this->getUser(),
-				$params['offset'],
-				$params['sort'],
-				$params['sortdirection']
-			);
-
-		// list page
-		} else {
-			return ArticleFeedbackv5Model::getList(
-				$params['filter'],
-				$params['pageid'],
-				$params['offset'],
-				$params['sort'],
-				$params['sortdirection']
-			);
+	public function fetchFeedbackCount( $pageId = null ) {
+		$dbr   = wfGetDB( DB_SLAVE );
+		$where = array( 'afc_filter_name' => 'all' );
+		if ( $pageId ) {
+			$where['afc_page_id'] = $pageId;
 		}
-
-		return array();
+		$count = $dbr->selectField(
+			array( 'aft_article_filter_count' ),
+			array( 'afc_filter_count' ),
+			$where,
+			__METHOD__
+		);
+		// selectField returns false if there's no row, so make that 0
+		return $count ? $count : 0;
 	}
 
 	/**
@@ -130,7 +129,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'sort'          => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Model::$sorts )
+				ApiBase::PARAM_TYPE     => ArticleFeedbackv5Fetch::$knownSorts,
 			),
 			'sortdirection' => array(
 				ApiBase::PARAM_REQUIRED => false,
@@ -140,14 +139,19 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'filter'        => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Model::$lists )
+				ApiBase::PARAM_TYPE     => ArticleFeedbackv5Fetch::$knownFilters,
 			),
 			'feedbackid'   => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'string'
+				ApiBase::PARAM_TYPE     => 'integer'
 			),
-			'offset'       => array(
+			'limit'         => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_TYPE     => 'integer'
+			),
+			'continue'      => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'
@@ -165,8 +169,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'pageid'      => 'Page ID to get feedback ratings for',
 			'sort'        => 'Key to sort records by',
 			'filter'      => 'What filtering to apply to list',
-			'offset'      => 'Offset to start grabbing data at',
 			'feedbackid'  => 'A specific id to fetch',
+			'limit'       => 'Number of records to show',
+			'continue'    => 'Sort value at which to continue, pipe-separated if multiple',
 		);
 	}
 

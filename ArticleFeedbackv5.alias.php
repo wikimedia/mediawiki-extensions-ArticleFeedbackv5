@@ -102,4 +102,11 @@ $specialPageAliases['tr'] = array(
 /** Vietnamese (Tiếng Việt) */
 $specialPageAliases['vi'] = array(
 	'ArticleFeedbackv5' => array( 'Phản_hồi_bài_v5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'Danh_sách_theo_dõi_Phản_hồi_bài_v5' ),
+);
+
+/** Simplified Chinese (中文（简体）‎) */
+$specialPageAliases['zh-hans'] = array(
+	'ArticleFeedbackv5' => array( '条目反馈v5' ),
+	'ArticleFeedbackv5Watchlist' => array( '条目反馈v5监视列表' ),
 );
