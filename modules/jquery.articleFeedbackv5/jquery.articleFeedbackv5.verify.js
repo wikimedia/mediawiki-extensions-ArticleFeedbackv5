@@ -218,8 +218,8 @@
 		// Rule out MSIE 6, FF2, Android
 		return !(
 			ua.indexOf( 'msie 6' ) != -1 ||
-			ua.indexOf( 'firefox/2') != -1 ||
-			ua.indexOf( 'firefox 2') != -1 ||
+			ua.indexOf( 'firefox/2.') != -1 ||
+			ua.indexOf( 'firefox 2.') != -1 ||
 			ua.indexOf( 'android' ) != -1
 		);
 	};
