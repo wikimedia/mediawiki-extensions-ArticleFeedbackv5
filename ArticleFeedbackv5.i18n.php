@@ -757,57 +757,70 @@ The abuse policy link.',
 	'articlefeedbackv5-loading-tag' => 'The text that appears to let the user know that feedback is being loaded.
 {{Identical|Loading}}',
 	'articlefeedbackv5-status-hide' => 'The marker that appears on a comment if it has been hidden by a monitor.
-* $1 is the name of the monitor who performed the hide
-* $2 is the date when the hide occurred
-* $3 is the time when the hide occurred',
+* $1 - the name of the monitor who performed the hide
+* $2 - the date when the hide occurred
+* $3 - the time when the hide occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-status-unhide' => 'The marker that appears on a comment if it has been unhidden by a user.
-* $1 is the name of the monitor who performed the unhide
-* $2 is the date when the unhide occurred
-* $3 is the time when the unhide occurred',
+* $1 - the name of the monitor who performed the unhide
+* $2 - the date when the unhide occurred
+* $3 - the time when the unhide occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-status-request' => 'The marker that appears on a comment if a user has requested oversight.
-* $1 is the name of the monitor who requested oversight
-* $2 is the date when the request occurred
-* $3 is the time when the request occurred',
+* $1 - the name of the monitor who requested oversight
+* $2 - the date when the request occurred
+* $3 - the time when the request occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-status-unrequest' => 'The marker that appears on a comment if a user has canceled an oversight request.
-* $1 is the name of the monitor who canceled the oversight request
-* $2 is the date when the cancelation request occurred
-* $3 is the time when the cancelation request occurred',
+* $1 - the name of the monitor who canceled the oversight request
+* $2 - the date when the cancelation request occurred
+* $3 - the time when the cancelation request occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-status-decline' => 'The marker that appears on a comment if a user has declined an oversight request.
-* $1 is the name of the oversighter who declined the oversight request
-* $2 is the date when the decline occurred
-* $3 is the time when the decline occurred',
+* $1 - the name of the oversighter who declined the oversight request
+* $2 - the date when the decline occurred
+* $3 - the time when the decline occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-status-autohide' => 'The marker that appears on a comment if it has been autohidden by the extension.
-* $1 is the name of the monitor who performed the hide
-* $2 is the date when the hide occurred
-* $3 is the time when the hide occurred',
+* $1 - the name of the monitor who performed the hide
+* $2 - the date when the hide occurred
+* $3 - the time when the hide occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-status-oversight' => 'The marker that appears on a comment if it has been deleted by an oversighter.
-* $1 is the name of the oversighter who performed the delete
-* $2 is the date when the deletion occurred
-* $3 is the time when the deletion occurred',
+* $1 - the name of the oversighter who performed the delete
+* $2 - the date when the deletion occurred
+* $3 - the time when the deletion occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-status-unoversight' => 'The marker that appears on a comment if a user has un-oversighted.
-* $1 is the name of the oversighter who un-oversighted
-* $2 is the date when the unoversight occurred
-* $3 is the time when the unoversight occurred',
+* $1 - the name of the oversighter who un-oversighted
+* $2 - the date when the unoversight occurred
+* $3 - the time when the unoversight occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-status-autoflag' => 'The marker that appears on a comment if it has been automatically flagged as abuse.
-* $1 is a link to the faq about how autoflagging works
-* $2 is the date when the autoflag occurred
-* $3 is the time when the autoflag occurred',
+* $1 - a link to the faq about how autoflagging works
+* $2 - the date when the autoflag occurred
+* $3 - the time when the autoflag occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-status-feature' => 'The marker that appears on a comment if it has been featured by a monitor.
-* $1 is the name of the monitor who performed the feature
-* $2 is the date when the feature occurred
-* $3 is the time when the feature occurred',
+* $1 - the name of the monitor who performed the feature
+* $2 - the date when the feature occurred
+* $3 - the time when the feature occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-status-unfeature' => 'The marker that appears on a comment if it has been unfeatured by a monitor.
-* $1 is the name of the monitor who performed the unfeature
-* $2 is the date when the unfeature occurred
-* $3 is the time when the unfeature occurred',
+* $1 - the name of the monitor who performed the unfeature
+* $2 - the date when the unfeature occurred
+* $3 - the time when the unfeature occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-status-resolve' => 'The marker that appears on a comment if it has been resolved by a monitor.
-* $1 is the name of the monitor who performed the resolve
-* $2 is the date when the resolve occurred
-* $3 is the time when the resolve occurred',
+* $1 - the name of the monitor who performed the resolve
+* $2 - the date when the resolve occurred
+* $3 - the time when the resolve occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-status-unresolve' => 'The marker that appears on a comment if it has been unresolved by a monitor.
-* $1 is the name of the monitor who performed the unresolve
-* $2 is the date when the unresolve occurred
-* $3 is the time when the unresolve occurred',
+* $1 - the name of the monitor who performed the unresolve
+* $2 - the date when the unresolve occurred
+* $3 - the time when the unresolve occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-new-marker' => 'The marker that appears on a comment is new and highlighted.
 {{Identical|New}}',
 	'articlefeedbackv5-deleted-marker' => 'The marker that appears on a comment if it has been oversighted (deleted).',
@@ -932,56 +945,73 @@ Permalink info block, subtitle of the right column, containing meta-information,
 	'articlefeedbackv5-permalink-activity-subtitle' => 'Permalink activity block, subtitle of the left column, containing information about the last activity: $1 is the number of actions logged for this feedback',
 	'articlefeedbackv5-permalink-activity-none' => 'Permalink activity block, text to display when there has been no activity',
 	'articlefeedbackv5-permalink-status-hide' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who hid the post
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who hid the post
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-unhide' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who un-hid the post
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who un-hid the post
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-request' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who requested oversight (deletion) on the post
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who requested oversight (deletion) on the post
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-unrequest' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who un-requested oversight (deletion) on the post
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who un-requested oversight (deletion) on the post
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-decline' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who declined oversight (deletion) on the post
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who declined oversight (deletion) on the post
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-autohide' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who auto-hid the post (usually a fake user called Article Feedback)
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who auto-hid the post (usually a fake user called Article Feedback)
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-oversight' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who oversighted (deleted) the post
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who oversighted (deleted) the post
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-unoversight' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who un-oversighted (un-deleted) the post
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who un-oversighted (un-deleted) the post
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-autoflag' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who auto-flagged the post as abuse (usually a fake user called Article Feedback)
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who auto-flagged the post as abuse (usually a fake user called Article Feedback)
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-feature' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who featured the post
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who featured the post
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-unfeature' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who un-featured the post
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who un-featured the post
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-resolve' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who marked the post as resolved
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who marked the post as resolved
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-unresolve' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who un-marked the post as resolved
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who un-marked the post as resolved
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-helpful' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who marked the post as helpful
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who marked the post as helpful
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-undo-helpful' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who un-marked the post as helpful
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who un-marked the post as helpful
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-unhelpful' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who marked the post as unhelpful
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who marked the post as unhelpful
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-undo-unhelpful' => 'Permalink info block, last activity line:
-* <code>$1</code>: A link to the user who un-marked the post as unhelpful
-* <code>$2</code>: The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $1 - A link to the user who un-marked the post as unhelpful
+* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+{{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-activity-more' => 'Permalink activity block, text for the link to open the rest of the activity on the feedback',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Permalink activity block, text for the link to close the rest of the activity on the feedback',
 	'articlefeedbackv5-noteflyover-feature-caption' => 'Feature post note flyover panel - panel caption',
@@ -1163,7 +1193,8 @@ Parameters:
 * $2 - The performer\'s id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback\'s id
-* $5 - A link to the article the feedback was posted to',
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}',
 	'logentry-articlefeedbackv5-unoversight' => 'Log entry for when a user un-"oversights" (un-deletes; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page) a feedback post.
 
 Parameters:
@@ -1171,19 +1202,22 @@ Parameters:
 * $2 - The performer\'s id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback\'s id
-* $5 - A link to the article the feedback was posted to',
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}',
 	'logentry-articlefeedbackv5-hide' => "Log entry for when a user hides a feedback post. Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-unhide' => "Log entry for when a user un-hides (shows) a feedback post. Paramters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-decline' => "Log entry for when a user declines an oversight request on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page).
 
 Parameters:
@@ -1191,7 +1225,8 @@ Parameters:
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-request' => "Log entry for when a user requests oversight on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page).
 
 Parameters:
@@ -1199,7 +1234,8 @@ Parameters:
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-unrequest' => "Log entry for when a user un-requests oversight on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page).
 
 Parameters:
@@ -1207,19 +1243,22 @@ Parameters:
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-flag' => "Log entry for when a user flags a feedback post as abuse. Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-unflag' => "Log entry for when a user un-flags a feedback post as abuse. Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-autohide' => "Log entry for when a feedback post is automatically hidden (e.g., when it gets too many abuse flags, or when oversight is requested; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page).
 
 Parameters:
@@ -1227,7 +1266,8 @@ Parameters:
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-autoflag' => "Log entry for when a feedback post is automatically flagged as abuse (e.g., by an abuse filter).
 
 Parameters:
@@ -1235,61 +1275,71 @@ Parameters:
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-feature' => "Log entry for when a feedback post is marked as featured. Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-unfeature' => "Log entry for when a feedback post is un-marked as featured. Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-resolve' => "Log entry for when a feedback post is marked as resolved. Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-unresolve' => "Log entry for when a feedback post is un-markes as resolved. Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-helpful' => "Log entry for when a feedback post has been marked as helpful. Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-unhelpful' => "Log entry for when a feedback post is marked as unhelpful. Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-undo-helpful' => "Log entry for when a feedback post has been un-marked as helpful. Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-undo-unhelpful' => "Log entry for when a feedback post is un-marked as unhelpful. Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-clear-flags' => "Log entry for when a feedback post is cleared of all abuse flags. Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
-* $5 - A link to the article the feedback was posted to",
+* $5 - A link to the article the feedback was posted to
+{{Related|Logentry-articlefeedbackv5}}",
 	'articlefeedbackv5-activity-pane-header' => 'Flyover panel caption',
 	'articlefeedbackv5-activity-feedback-info' => 'Post information template. Parameters:
 * $1 is the feedback post ID,
@@ -1298,132 +1348,150 @@ Parameters:
 	'articlefeedbackv5-activity-permalink' => '[Permalink] link text.
 {{Identical|Permalink}}',
 	'articlefeedbackv5-activity-item-request' => 'Activity log entry when oversight was requested (an oversight request asks an oversighter to delete feedback).
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unrequest' => 'Activity log entry when oversight was unrequested (an oversight request asks an oversighter to delete feedback)
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-decline' => 'Activity log entry when an oversight request was declined (an oversight request asks an oversighter to delete feedback)
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-hide' => 'Activity log entry when feedback was hidden
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-flag' => 'Activity log entry when feedback was flagged as abusive
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unhide' => 'Activity log entry when feedback was un-hidden
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unflag' => 'Activity log entry when feedback was un-flagged as abusive.
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-oversight' => 'Activity log entry when feedback was oversighted
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unoversight' => 'Activity log entry when feedback was unoversighted
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-resolve' => 'Activity log entry when feedback was resolved
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unresolve' => 'Activity log entry when feedback was unresolved
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-feature' => 'Activity log entry when feedback was featured
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unfeature' => 'Activity log entry when feedback was unfeatured
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-helpful' => 'Activity log entry when feedback was marked as helpful
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unhelpful' => 'Activity log entry when feedback was marked as unhelpful
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-undo-helpful' => 'Activity log entry when feedback was un-marked as helpful
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-undo-unhelpful' => 'Activity log entry when feedback was un-marked as unhelpful
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-clear-flags' => 'Activity log entry when all abuse flags were cleared on feedback
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)',
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-count' => 'Shows the amount of actions performed on a feedback entry. $1 is the number',
 	'articlefeedbackv5-activity-more' => 'Text for the [Show more] button',
 	'articlefeedbackv5-talk-view-feedback' => 'A link on the talk page to encourage people to visit the feedback page',
@@ -17828,6 +17896,8 @@ $messages['nn'] = array(
 	'articlefeedbackv5-contribs-status-action-feature' => 'Utvald',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Løyst',
 	'articlefeedbackv5-contribs-status-action-hide' => 'Løynd',
+	'articlefeedbackv5-contribs-status-action-request' => 'Gransking er bede om',
+	'articlefeedbackv5-contribs-status-action-oversight' => 'Granska',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'løynd kommentar',
 	'articlefeedbackv5-form-tools-label' => 'Verktøy',
 	'articlefeedbackv5-form-helpful-label' => 'Er denne attendemeldinga hjelpsam?',
@@ -17860,6 +17930,8 @@ $messages['nn'] = array(
 	'articlefeedbackv5-special-filter-unhidden-watchlist' => 'Gjort synleg att',
 	'articlefeedbackv5-special-filter-featured-watchlist' => 'Framhevt',
 	'articlefeedbackv5-special-filter-unfeatured-watchlist' => 'Framheving fjerna',
+	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Løyste',
+	'articlefeedbackv5-special-filter-unresolved-watchlist' => 'Ikkje lenger løyste',
 	'articlefeedbackv5-special-sort-relevance-asc' => 'Relevant',
 	'articlefeedbackv5-special-sort-relevance-desc' => 'Irrelevant',
 	'articlefeedbackv5-special-sort-helpful-desc' => 'Hjelpsam',
@@ -25576,7 +25648,6 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-cta6-button-text' => '訪問茶館',
 	'articlefeedbackv5-overlay-close' => '關閉',
 	'articlefeedbackv5-error' => '發生了錯誤。請稍後再試。',
-	'articlefeedbackv5-error-email' => '此電子郵件地址無效。',
 	'articlefeedbackv5-error-blocked' => '被阻止的使用者不能提交回饋。',
 	'articlefeedbackv5-error-validation' => '驗證錯誤。',
 	'articlefeedbackv5-error-abuse' => '您的評論被軟體過濾器拒絕，它可能違反了{{SITENAME}}的[$1 回饋指引]。請修改之。', # Fuzzy
@@ -25605,7 +25676,6 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-form-helpful-label' => '這項回饋幫得到您？',
 	'articlefeedbackv5-form-helpful-yes-label' => '是',
 	'articlefeedbackv5-form-helpful-no-label' => '否',
-	'articlefeedbackv5-form-helpful-votes' => '$1人覺得有用',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1是|$1是}}/ {{PLURAL:$2|1否|$2否}}',
 	'articlefeedbackv5-special-add-feedback' => '發布您的回饋',
 	'articlefeedbackv5-special-survey-button-text' => '你怎樣看這回饋工具？',
@@ -25693,7 +25763,6 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-form-unhide' => '取消隱藏此帖。',
 	'articlefeedbackv5-form-hide-own' => '隱藏我的帖子',
 	'articlefeedbackv5-form-unhide-own' => '取消隱藏我的帖子',
-	'articlefeedbackv5-form-helpful' => '標記為有幫助 （ $1 ）',
 	'articlefeedbackv5-form-abuse' => '標記為濫用',
 	'articlefeedbackv5-form-abuse-count' => '$1次標記',
 	'articlefeedbackv5-form-abuse-cleared' => '標記已清除',
@@ -25710,18 +25779,12 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}}發表問題：',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}}發表問題：',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}}發表建議：',
-	'articlefeedbackv5-form3-header' => '{{GENDER:$1|$1}}將此頁面評價為$2/5',
-	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}}得到只限於行動呼籲的表單。',
-	'articlefeedbackv5-form5-header' => '{{GENDER:$1|$1}}評價了這個頁面：',
 	'articlefeedbackv5-form-anon-username' => '一位讀者',
 	'articlefeedbackv5-form-anon-message' => '由$1匿名發布。',
-	'articlefeedbackv5-form-not-shown' => '反饋表單沒有顯示給{{GENDER:$1|$1}}。',
 	'articlefeedbackv5-form-invalid' => '無效反饋表單ID。',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}}在$3上發表了[[$4|反饋]]',
 	'articlefeedbackv5-abuse-saved' => '已標記為濫用',
 	'articlefeedbackv5-abuse-saved-tooltip' => '刪除您設置的標記',
-	'articlefeedbackv5-oversight-saved' => '已請求刪除',
-	'articlefeedbackv5-unoversight-saved' => '刪除請求已消除',
 	'articlefeedbackv5-error-loading-feedback' => '載入評論時發生錯誤',
 	'articlefeedbackv5-invalid-feedback-id' => '無效反饋ID',
 	'articlefeedbackv5-invalid-feedback-flag' => '無效反饋標記',
@@ -25730,8 +25793,7 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-discussion-page' => '討論',
 	'articlefeedbackv5-whats-this' => '説明',
 	'articlefeedbackv5-invalid-page-id' => '無效頁面ID',
-	'articlefeedbackv5-percent-found' => '$1找到了他們所尋找的',
-	'articlefeedbackv5-overall-rating' => '評價：$1/5',
+	'articlefeedbackv5-found-percent' => '$1找到了他們所尋找的', # Fuzzy
 	'articlefeedbackv5' => '條目評分面板——中央頁面',
 	'articlefeedbackv5-desc' => '條目評級',
 	'articlefeedbackv5-comment-more' => '更多',
@@ -25746,6 +25808,7 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1年|$1年}}',
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1個月|$1個月}}',
 	'articlefeedbackv5-timestamp-weeks' => '$1周',
+	'articlefeedbackv5-timestamp-days' => '{{PLURAL:$1|$1天}}',
 	'articlefeedbackv5-timestamp-seconds' => '少於1分鐘',
 	'articlefeedbackv5-mask-view-contents' => '檢視內容',
 	'articlefeedbackv5-mask-text-hide' => '此帖子#$1在$3之前被$2隱藏。',
