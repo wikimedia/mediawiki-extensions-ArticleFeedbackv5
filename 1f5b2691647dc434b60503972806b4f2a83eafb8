@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DoHHSogE",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-03T10:03:40Z",
+      "side": 1,
+      "message": "I realize this didn\u0027t change in the patch, but I don\u0027t see why this is duplicating page info available in other JavaScript mw.config variables: wgArticleId, wgNamespaceNumber, wgCategories, and the mw.title object",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoFHAvi0",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-03T10:03:40Z",
+      "side": 1,
+      "message": "Add \"v5\" here.  Maybe explain this accepts textual feedback, unlike Article Feedback.",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoPHdUhI",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-03T10:03:40Z",
+      "side": 1,
+      "message": "Delete this version, it doesn\u0027t match the extension version lower down in wgExtensionCredits.  Ditto for @author.",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoJGd5lY",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-03T10:03:40Z",
+      "side": 1,
+      "message": "Why isn\u0027t this an i18n message, e.g. {{ns:project:Article_Feedback_Tool/Version_5/Help ? It\u0027s only used in utils\u0027 getUserLink(), perhaps that entire link could be an i18n string or combination of i18n strings\n[[{{ns:project:Article_Feedback_Tool/Version_5/Help|Article Feedback V5]].",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoLGu6oA",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-03T10:03:40Z",
+      "side": 1,
+      "message": "FYI the way mw.user.bucket() works, this version shows up in the cookie name *AND* the cookie value. Madness!",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoNGzbuc",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-03T10:03:40Z",
+      "side": 1,
+      "message": "Kill this with fire?!  I realize it\u0027s not changed by the patch, but you\u0027ll be doing bucketing differently if and when AFTv5 does event logging.",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoHHJQls",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-03T10:03:40Z",
+      "side": 1,
+      "message": "This version \u002711\u0027 here shows up in the names of the feedback-ids|/ast-filter/submission_timestamps cookies, even though none of them have anything to do with clicktracking!!?",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoDHDuj0",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-03T10:03:40Z",
+      "side": 1,
+      "message": "Surely this has earned a massive version bump :-)",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoPEuskM",
+        "filename": "ArticleFeedbackv5.utils.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-03T10:03:40Z",
+      "side": 1,
+      "message": "nit: Capitalize sentence and end with a period.",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoNEtrkU",
+        "filename": "ArticleFeedbackv5.utils.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-03T10:03:40Z",
+      "side": 1,
+      "message": "Same code as in SpecialArticleFeedbackv5.php, make getCookieName( $suffix ) a static function of some AFTv5 class. And have an equivalent function in JS if there isn\u0027t one already.\n\nI don\u0027t see why the implementation of feedback-ids is anything to do with \"tracking\" or a particular version of tracking.  I would use a shorter name, and worry about versioning the cookie when and if the implementation changes.",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoBE0dpA",
+        "filename": "ArticleFeedbackv5.utils.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-03T10:03:40Z",
+      "side": 1,
+      "message": "This is abusing the intent of $prefix in getCookie(). To support the case where one domain runs multiple wikis, the default getCookie( \u0027myCookie\u0027 ) creates a cookie prefixed by $wgCookiePrefix, which is roughly-speaking the DBname. If you want to use the same cookie across all wikis on a domain, or you need to match lazy JavaScript code that didn\u0027t use mw.config.get( \u0027wgCookiePrefix\u0027 ), then you pass \u0027\u0027 as the $prefix.\n\nSo AFTv5 should assemble its cookie names in the first parameter, and pass null as $prefix to use the default cookie prefix.  HOWEVER, this name and others is already hella long, \"ext.articleFeedbackv5%4011-feedback-ids\" and defaulting would add enwiki on the front.\n\nDoes anything limit the length of this cookie?",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoHEjglo",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-03T10:03:40Z",
+      "side": 1,
+      "message": "Same code as in ArticleFeedbackv5.utils.php , see my comment there.",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoDEEGsI",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-03T10:03:40Z",
+      "side": 1,
+      "message": "Capitalize for consistency with API description and example below that use \u0027DESC\u0027 and \u0027ASC\u0027",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
