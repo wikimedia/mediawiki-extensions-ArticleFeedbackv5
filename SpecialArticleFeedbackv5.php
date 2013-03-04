@@ -418,7 +418,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 */
 	protected function buildContent( $renderer, $records ) {
 		if ( !$records ) {
-			return '';
+			return $this->msg( 'articlefeedbackv5-invalid-feedback' )->text();
 		}
 
 		if ( $this->feedbackId ) {

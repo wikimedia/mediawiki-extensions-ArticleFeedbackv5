@@ -469,7 +469,6 @@
 	$.articleFeedbackv5special.emptyMessage = function() {
 		var $feedbackContainer = $( '#articleFeedbackv5-show-feedback' );
 		if ( $feedbackContainer.children().length == 0 ) {
-			var $message =
 				$feedbackContainer.append(
 					$( '<div id="articlefeedbackv5-no-feedback" />' ).text(
 						mw.msg( 'articlefeedbackv5-no-feedback' )
