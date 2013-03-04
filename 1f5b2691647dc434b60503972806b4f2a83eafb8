@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "DoLfm2rE",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-04T08:59:56Z",
+      "side": 1,
+      "message": "The knowledge this static method has about getBackend and DB_SLAVE doesn\u0027t seem to belong here. E.g. it could be calling a method getContributionsData I think this should be calling a method in ArticleFeedbackv5.backend.LBFactory.php, similar to getCountFound().",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoFHAvi0",
         "filename": "ArticleFeedbackv5.php",
         "patchSetId": 17
