@@ -144,7 +144,7 @@
 		/*
 		 * Manually triggered (by this function) 2nd event. At this point, the
 		 * ClickTracking call has been completed. We can now resume the event's
-		 * default behaviour or other bound event handlers (if any), but abort
+		 * default behavior or other bound event handlers (if any), but abort
 		 * this function, it has been run.
 		 */
 		if ( ! ( e.type in $.aftTrack.events ) ) {
@@ -166,13 +166,13 @@
 		 * IE does not appear to support a way to simulate a real event. Since we can
 		 * not resume an event nor trigger an exact new one, let's just not stop this
 		 * one (for IE) - I'm aware that this may result in aborted ClickTracking calls,
-		 * but correct UX behaviour is more important
+		 * but correct UX behavior is more important
 		 */
 		if ( typeof e.target.fireEvent == 'undefined' ) {
 			/**
 			 * $.trackActionWithInfo ends with a $.post to submit the data to
-			 * ClickTracking API. We do not want any default behaviour to
-			 * interrupt that ajax call, so prevent any default behaviour (e.g.
+			 * ClickTracking API. We do not want any default behavior to
+			 * interrupt that ajax call, so prevent any default behavior (e.g.
 			 * redirect to a clicked link's href) until the call has completed
 			 */
 			e.preventDefault();
@@ -185,7 +185,7 @@
 				if ( typeof e.target.dispatchEvent != 'undefined' ) {
 					/*
 					 * Multiple browsers support dispatchEvent, though with
-					 * different behaviour.
+					 * different behavior.
 					 * Opera (maybe other browsers as well) supports the general
 					 * "Events" as parameter for createEvent. Firefox (and maybe
 					 * others) need an exact e.g. "MouseEvent" for mouse events.
