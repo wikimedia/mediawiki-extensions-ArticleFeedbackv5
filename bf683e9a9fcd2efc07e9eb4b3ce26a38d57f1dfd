@@ -334,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "DoIkBOj8",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoJc5Vj8",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoFccLr4",
         "filename": "ArticleFeedbackv5.hooks.php",
         "patchSetId": 14
@@ -345,6 +363,24 @@
       "writtenOn": "2013-03-04T08:46:30Z",
       "side": 1,
       "message": "Capitalize sentence, \"and\" typo.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoAmWiu8",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:03Z",
+      "side": 1,
+      "message": "I\u0027m not sure which sentence you mean?",
+      "parentUuid": "DoFccLr4",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -368,6 +404,24 @@
     },
     {
       "key": {
+        "uuid": "DoGn4dkc",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:03Z",
+      "side": 1,
+      "message": "That\u0027s ok; it\u0027s intended to query MW\u0027s main db \u0026 read/write data from/to MW\u0027s default \"page_restrictions\" table",
+      "parentUuid": "DoPdiIkE",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoPehwq0",
         "filename": "ArticleFeedbackv5.i18n.php",
         "patchSetId": 14
@@ -385,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "DoCmbThc",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:03Z",
+      "side": 1,
+      "message": "Updated the first one.\n\nIt\u0027s a rather large id to display indeed. Perhaps for visualisation, only the last few digits of the hash could be displayed? (although perhaps that would confuse people?)",
+      "parentUuid": "DoPehwq0",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoFfELmE",
         "filename": "ArticleFeedbackv5.log.php",
         "patchSetId": 14
@@ -396,6 +468,24 @@
       "writtenOn": "2013-03-04T08:46:30Z",
       "side": 1,
       "message": "Perhaps just return wfMessage(), overwriting $action then returning it is slightly confusing.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoMmfQv8",
+        "filename": "ArticleFeedbackv5.log.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoFfELmE",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -454,6 +544,24 @@
     },
     {
       "key": {
+        "uuid": "DoOmkhls",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoBeRxkU",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoPeLAhc",
         "filename": "ArticleFeedbackv5.render.php",
         "patchSetId": 14
@@ -465,6 +573,24 @@
       "writtenOn": "2013-03-04T08:46:30Z",
       "side": 1,
       "message": "Not a sentence. I don\u0027t think this is fetching anything.  How is this different from the render() method?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoImKmr8",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoPeLAhc",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -488,6 +614,24 @@
     },
     {
       "key": {
+        "uuid": "DoKmHXrc",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoFd2bj0",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoJed1lY",
         "filename": "ArticleFeedbackv5.render.php",
         "patchSetId": 14
@@ -499,6 +643,24 @@
       "writtenOn": "2013-03-04T08:46:30Z",
       "side": 1,
       "message": "This $title is just a string, but in other methods $titles is a TItle objects. Maybe call this $titleStr.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoEmUkuA",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoJed1lY",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -522,6 +684,24 @@
     },
     {
       "key": {
+        "uuid": "DoGmRVu8",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoBcMZqU",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoNfsvso",
         "filename": "ArticleFeedbackv5.render.php",
         "patchSetId": 14
@@ -539,6 +719,24 @@
     },
     {
       "key": {
+        "uuid": "DoMlpgvs",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:03Z",
+      "side": 1,
+      "message": "isOwnFeedback() could potentially be unsafe (evaluate data from cookie) and should not be used in this case where additional permissions (hide/show) are provided for one\u0027s own post.\nI\u0027ve updated isOwnFeedback() though, it\u0027ll now accept another param to define if unsafe data should or should not be evaluated.",
+      "parentUuid": "DoNfsvso",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoFfZjh0",
         "filename": "ArticleFeedbackv5.render.php",
         "patchSetId": 14
@@ -550,6 +748,24 @@
       "writtenOn": "2013-03-04T08:46:30Z",
       "side": 1,
       "message": "I think these 6 or 7 HTML \u003cli\u003e generation stanzas could usefully be generalized into a utility method named makeListItemLink() or something.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoKlxnt8",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:03Z",
+      "side": 1,
+      "message": "That\u0027s coming in a follow-up patchset already: https://gerrit.wikimedia.org/r/#/c/46947/29/ArticleFeedbackv5.render.php (private function buildToolboxLink)",
+      "parentUuid": "DoFfZjh0",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
