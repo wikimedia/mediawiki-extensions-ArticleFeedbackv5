@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "DoNHSjtA",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "JS needs these article\u0027s details for the article the form is displayed on. On talk pages, JS will need these details too (to perform an API call to fetch the amount of unmoderated feedback and display a link to the feedback from the talk page), but there, wgNamespaceNumber, wgCategories \u0026 mw.title will contain the talk page\u0027s details, not the details of the article page associated with that talk page.",
+      "parentUuid": "DoHHSogE",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoLfm2rE",
         "filename": "ArticleFeedbackv5.hooks.php",
         "patchSetId": 17
@@ -30,6 +48,24 @@
       "writtenOn": "2013-03-04T08:59:56Z",
       "side": 1,
       "message": "The knowledge this static method has about getBackend and DB_SLAVE doesn\u0027t seem to belong here. E.g. it could be calling a method getContributionsData I think this should be calling a method in ArticleFeedbackv5.backend.LBFactory.php, similar to getCountFound().",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoKn3XtE",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoLfm2rE",
       "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "DoEkdcgo",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoAnT6mA",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoOnR5lQ",
         "filename": "ArticleFeedbackv5.i18n.php",
         "patchSetId": 17
@@ -64,6 +118,24 @@
       "writtenOn": "2013-03-04T10:18:15Z",
       "side": 1,
       "message": "Needs docs.",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoGkathU",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoOnR5lQ",
       "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "DoAnQyik",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 1691,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "Must\u0027ve been a rebase artefact - will fix",
+      "parentUuid": "DoEnB8oE",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoFHAvi0",
         "filename": "ArticleFeedbackv5.php",
         "patchSetId": 17
@@ -98,6 +188,24 @@
       "writtenOn": "2013-03-03T10:03:40Z",
       "side": 1,
       "message": "Add \"v5\" here.  Maybe explain this accepts textual feedback, unlike Article Feedback.",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoCnVjhk",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoFHAvi0",
       "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "DoMnZglU",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoPHdUhI",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoJGd5lY",
         "filename": "ArticleFeedbackv5.php",
         "patchSetId": 17
@@ -132,6 +258,24 @@
       "writtenOn": "2013-03-03T10:03:40Z",
       "side": 1,
       "message": "Why isn\u0027t this an i18n message, e.g. {{ns:project:Article_Feedback_Tool/Version_5/Help ? It\u0027s only used in utils\u0027 getUserLink(), perhaps that entire link could be an i18n string or combination of i18n strings\n[[{{ns:project:Article_Feedback_Tool/Version_5/Help|Article Feedback V5]].",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoKmdHlY",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "Wouldn\u0027t that make it harder to configure, especially for third party users?",
+      "parentUuid": "DoJGd5lY",
       "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -172,6 +316,24 @@
     },
     {
       "key": {
+        "uuid": "DoEmqUnQ",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "I had only removed the actual calls to ClickTracking extension and left all other related cruft in here, not knowing whether or not it would still be useful in the future. Guess I\u0027ll be removing it in a future patch :)",
+      "parentUuid": "DoNGzbuc",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoHHJQls",
         "filename": "ArticleFeedbackv5.php",
         "patchSetId": 17
@@ -183,6 +345,24 @@
       "writtenOn": "2013-03-03T10:03:40Z",
       "side": 1,
       "message": "This version \u002711\u0027 here shows up in the names of the feedback-ids|/ast-filter/submission_timestamps cookies, even though none of them have anything to do with clicktracking!!?",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoMmuYoI",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoHHJQls",
       "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -206,6 +386,24 @@
     },
     {
       "key": {
+        "uuid": "DoCm6br4",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoDHDuj0",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoPEuskM",
         "filename": "ArticleFeedbackv5.utils.php",
         "patchSetId": 17
@@ -217,6 +415,24 @@
       "writtenOn": "2013-03-03T10:03:40Z",
       "side": 1,
       "message": "nit: Capitalize sentence and end with a period.",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoOmzJuc",
+        "filename": "ArticleFeedbackv5.utils.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoPEuskM",
       "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -240,6 +456,24 @@
     },
     {
       "key": {
+        "uuid": "DoMlcIn4",
+        "filename": "ArticleFeedbackv5.utils.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoNEtrkU",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoBE0dpA",
         "filename": "ArticleFeedbackv5.utils.php",
         "patchSetId": 17
@@ -251,6 +485,24 @@
       "writtenOn": "2013-03-03T10:03:40Z",
       "side": 1,
       "message": "This is abusing the intent of $prefix in getCookie(). To support the case where one domain runs multiple wikis, the default getCookie( \u0027myCookie\u0027 ) creates a cookie prefixed by $wgCookiePrefix, which is roughly-speaking the DBname. If you want to use the same cookie across all wikis on a domain, or you need to match lazy JavaScript code that didn\u0027t use mw.config.get( \u0027wgCookiePrefix\u0027 ), then you pass \u0027\u0027 as the $prefix.\n\nSo AFTv5 should assemble its cookie names in the first parameter, and pass null as $prefix to use the default cookie prefix.  HOWEVER, this name and others is already hella long, \"ext.articleFeedbackv5%4011-feedback-ids\" and defaulting would add enwiki on the front.\n\nDoes anything limit the length of this cookie?",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoElR8l8",
+        "filename": "ArticleFeedbackv5.utils.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "I\u0027ve fixed the wgCookiePrefix \u0026 shortened the AFT prefix (to AFT5.1.0-\u003csuffix\u003e instead of ext.articleFeedbackv5%4011-\u003csuffix\u003e)\n\nThe cookie\u0027s value is limited to the last 20 feedback ids.",
+      "parentUuid": "DoBE0dpA",
       "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -274,6 +526,24 @@
     },
     {
       "key": {
+        "uuid": "DoAnESg8",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoHEjglo",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoDEEGsI",
         "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
         "patchSetId": 17
@@ -285,6 +555,24 @@
       "writtenOn": "2013-03-03T10:03:40Z",
       "side": 1,
       "message": "Capitalize for consistency with API description and example below that use \u0027DESC\u0027 and \u0027ASC\u0027",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoCnybm8",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-04T16:08:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "DoDEEGsI",
       "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
