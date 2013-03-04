@@ -317,6 +317,91 @@
     },
     {
       "key": {
+        "uuid": "DoJc5Vj8",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-04T08:46:30Z",
+      "side": 1,
+      "message": "\"may be on\"",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoFccLr4",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-04T08:46:30Z",
+      "side": 1,
+      "message": "Capitalize sentence, \"and\" typo.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoPdiIkE",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-04T08:46:30Z",
+      "side": 1,
+      "message": "This is querying a different database than the other call to ArticleFeedbackv5Model::getBackend()-\u003egetDB( DB_SLAVE );\n\nI\u0027m not sure if it matters.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoPehwq0",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-04T08:46:30Z",
+      "side": 1,
+      "message": "(Firefox can\u0027t expand this file in Gerrit, so these comments apply elsewhere)\n\u0027This is the log of activity taken on feedback items collected for articles using Article Feedback.\u0027,\nwould be better with less passive voice:\n\u0027This is the log of activity taken on feedback items submitted by users via Article Feedback.\u0027\n\nShowing \"feedback post #237d7809861f95812cc65ffadc956804\" is pretty overwhelming, but I guess without it there\u0027s no way to search the log for all actions against that feedback post.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoFfELmE",
+        "filename": "ArticleFeedbackv5.log.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-04T08:46:30Z",
+      "side": 1,
+      "message": "Perhaps just return wfMessage(), overwriting $action then returning it is slightly confusing.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dne6mjsM",
         "filename": "ArticleFeedbackv5.php",
         "patchSetId": 14
@@ -346,6 +431,125 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "Dne6mjsM",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoBeRxkU",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-04T08:46:30Z",
+      "side": 1,
+      "message": "It\u0027s unclear if this is  In the AFT form or in one of the Special views that lists feedback.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoPeLAhc",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-04T08:46:30Z",
+      "side": 1,
+      "message": "Not a sentence. I don\u0027t think this is fetching anything.  How is this different from the render() method?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoFd2bj0",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-04T08:46:30Z",
+      "side": 1,
+      "message": "what does \"with keys 0 + answers\" mean?",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoJed1lY",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-04T08:46:30Z",
+      "side": 1,
+      "message": "This $title is just a string, but in other methods $titles is a TItle objects. Maybe call this $titleStr.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoBcMZqU",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-04T08:46:30Z",
+      "side": 1,
+      "message": "Note here and at several other places that $this-\u003eisAllowed uses $this-\u003euser, while isOwnFeedback uses $wgUser. They could be different...",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoNfsvso",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-04T08:46:30Z",
+      "side": 1,
+      "message": "The second test is the same as isOwnFeedback(), so use that.",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoFfZjh0",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-04T08:46:30Z",
+      "side": 1,
+      "message": "I think these 6 or 7 HTML \u003cli\u003e generation stanzas could usefully be generalized into a utility method named makeListItemLink() or something.",
       "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
