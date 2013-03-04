@@ -36,6 +36,57 @@
     },
     {
       "key": {
+        "uuid": "DoAnT6mA",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-03-04T10:18:15Z",
+      "side": 1,
+      "message": "Message documentation appears to be missing. I guess we could really use a linter for this, because I totally understand it\u0027s hard to see which messages have and which haven\u0027t been documented...",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoOnR5lQ",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-03-04T10:18:15Z",
+      "side": 1,
+      "message": "Needs docs.",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DoEnB8oE",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 17
+      },
+      "lineNbr": 1691,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-03-04T10:18:15Z",
+      "side": 1,
+      "message": "Please do not make this part of the patch set. Changes may have been made to the translations, and we have excellent facilities to rename messages at translatewiki.net. See https://www.mediawiki.org/wiki/Localisation#Changing_existing_messages point 3 for details.",
+      "revId": "1f5b2691647dc434b60503972806b4f2a83eafb8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoFHAvi0",
         "filename": "ArticleFeedbackv5.php",
         "patchSetId": 17
