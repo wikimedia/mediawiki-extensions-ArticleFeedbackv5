@@ -315,7 +315,7 @@
 	cursor: pointer;
 }
 .articleFeedbackv5-feedback-tools li a {
-	display: block;
+	display: inline-block;
 	padding-left: 30px;
 	height: 25px;
 	line-height: 25px;
