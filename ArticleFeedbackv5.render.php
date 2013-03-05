@@ -896,20 +896,6 @@ class ArticleFeedbackv5Render {
 					$sectionTitle = wfMessage( "articlefeedbackv5-discuss-$discussType-section-title", $record->aft_comment );
 					$sectionTitleTruncated = $wgLang->truncate( $sectionTitle, 60 );
 
-					$sectionAnchor = '';
-					// check if feedback is being discussed already
-					$article = Article::newFromId( $discussPage->getArticleID() );
-					if ( $article ) {
-						$sections = $article->getParserOutput()->getSections();
-						foreach ( $sections as $section ) {
-							if ( $section['line'] == $sectionTitleTruncated ) {
-								$sectionAnchor = $section['anchor'];
-								break;
-							}
-						}
-					}
-					$sectionExists = ( $sectionAnchor !== '' );
-
 					$title = Title::newFromId( $record->aft_page )->getPrefixedDBkey();
 					$userText = $record->aft_user_text; // anon users
 					if ( $record->getUser() ) {
@@ -937,6 +923,20 @@ class ArticleFeedbackv5Render {
 							$comment
 						)
 						->text();
+
+					$sectionAnchor = '';
+					// check if feedback is being discussed already
+					$article = Article::newFromId( $discussPage->getArticleID() );
+					if ( $article ) {
+						$sections = $article->getParserOutput()->getSections();
+						foreach ( $sections as $section ) {
+							if ( $section['line'] == $sectionTitleTruncated ) {
+								$sectionAnchor = $section['anchor'];
+								break;
+							}
+						}
+					}
+					$sectionExists = ( $sectionAnchor !== '' );
 
 					if ( $sectionExists ) {
 						$discussLink = $discussPage->getLinkURL() . '#' . $sectionAnchor;
