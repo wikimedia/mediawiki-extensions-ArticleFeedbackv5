@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DoG7l1Dg",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 657
+      },
+      "writtenOn": "2013-03-05T16:21:15Z",
+      "side": 1,
+      "message": "Thats returns the message localized for the user interface language?\nI think it\u0027s better to use the message in the site-language to be compatible for users with interface-language !\u003d site-language (and vice versa if they post something)",
+      "revId": "b4722411df56338e896c1a28eea4fe5643238e8e",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
