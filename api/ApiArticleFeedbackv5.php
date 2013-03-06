@@ -139,6 +139,15 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		// Save feedback
 		try {
 			$feedback->insert();
+
+			ArticleFeedbackv5Log::log(
+				'create',
+				$feedback->aft_page,
+				$feedback->aft_id,
+				$feedback->aft_comment,
+				$user,
+				array()
+			);
 		} catch ( MWException $e ) {
 //			$this->dieUsage( $e->getMessage(), 'inserterror' ); // easier when debugging: show exact exception message
 			$this->dieUsage( $this->msg( 'articlefeedbackv5-error-submit' ), 'inserterror' );

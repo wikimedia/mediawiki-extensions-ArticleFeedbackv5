@@ -458,12 +458,15 @@ $wgJobClasses['ArticleFeedbackv5MailerJob'] = 'ArticleFeedbackv5MailerJob';
 $wgLogTypes[] = 'articlefeedbackv5';
 $wgLogTypes[] = 'suppress';
 
+// register log handler for feedback submission
+$wgLogActionsHandlers['articlefeedbackv5/create'] = 'ArticleFeedbackv5LogFormatter';
+
 // register activity log formatter hooks
-foreach ( array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest' ) as $t) {
-	$wgLogActionsHandlers["suppress/$t"] = 'ArticleFeedbackv5LogFormatter';
-}
-foreach ( array( 'helpful', 'unhelpful', 'undo-helpful', 'undo-unhelpful', 'flag', 'unflag', 'autoflag', 'feature', 'unfeature', 'resolve', 'unresolve', 'noaction', 'unnoaction', 'inappropriate', 'uninappropriate', 'archive', 'unarchive', 'hide', 'unhide', 'autohide', 'clear-flags' ) as $t) {
+foreach ( array( 'helpful', 'unhelpful', 'undo-helpful', 'undo-unhelpful', 'flag', 'unflag', 'autoflag', 'feature', 'unfeature', 'resolve', 'unresolve', 'noaction', 'unnoaction', 'inappropriate', 'uninappropriate', 'archive', 'unarchive', 'hide', 'unhide', 'autohide', 'clear-flags' ) as $t ) {
 	$wgLogActionsHandlers["articlefeedbackv5/$t"] = 'ArticleFeedbackv5LogFormatter';
+}
+foreach ( array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest' ) as $t ) {
+	$wgLogActionsHandlers["suppress/$t"] = 'ArticleFeedbackv5LogFormatter';
 }
 
 if ( $wgArticleFeedbackv5AbuseFilterGroup != 'default' ) {

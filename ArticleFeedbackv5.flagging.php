@@ -168,7 +168,7 @@ class ArticleFeedbackv5Flagging {
 
 		$this->feedback->aft_request = 1;
 		$this->feedback->aft_decline = 0;
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// autohide if not yet hidden
 		if ( !$this->feedback->isHidden() ) {
@@ -178,7 +178,7 @@ class ArticleFeedbackv5Flagging {
 			 */
 			$this->feedback->aft_hide = 1;
 			$this->feedback->aft_autohide = 1;
-			ArticleFeedbackv5Log::logActivity( 'autohide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic hide', $this->user, array( 'source' => $this->source ) );
+			ArticleFeedbackv5Activity::log( 'autohide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic hide', $this->user, array( 'source' => $this->source ) );
 		}
 
 		// send an email to oversighter(s)
@@ -202,13 +202,13 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		$this->feedback->aft_request = 0;
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// un-hide if autohidden
 		if ( $this->feedback->aft_hide && $this->feedback->aft_autohide ) {
 			$this->feedback->aft_hide = 0;
 			$this->feedback->aft_autohide = 0;
-			ArticleFeedbackv5Log::logActivity( 'unhide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic un-hide', $this->user, array( 'source' => $this->source ) );
+			ArticleFeedbackv5Activity::log( 'unhide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic un-hide', $this->user, array( 'source' => $this->source ) );
 		}
 
 		return true;
@@ -232,13 +232,13 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		$this->feedback->aft_decline = 1;
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// un-hide if autohidden
 		if ( $this->feedback->aft_hide && $this->feedback->aft_autohide ) {
 			$this->feedback->aft_hide = 0;
 			$this->feedback->aft_autohide = 0;
-			ArticleFeedbackv5Log::logActivity( 'unhide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic un-hide', $this->user, array( 'source' => $this->source ) );
+			ArticleFeedbackv5Activity::log( 'unhide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic un-hide', $this->user, array( 'source' => $this->source ) );
 		}
 
 		return true;
@@ -276,7 +276,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// clear all abuse flags
 		if ( $this->feedback->aft_flag && $this->feedback->aft_autoflag ) {
@@ -315,7 +315,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -352,7 +352,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -386,7 +386,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -422,7 +422,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -456,7 +456,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -490,7 +490,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -522,7 +522,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -556,7 +556,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -589,7 +589,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 0;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -623,7 +623,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_hide = 1;
 		$this->feedback->aft_oversight = 0;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -659,7 +659,7 @@ class ArticleFeedbackv5Flagging {
 
 		$this->feedback->aft_autohide = 0;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// clear all abuse flags
 		if ( $this->feedback->aft_flag && $this->feedback->aft_autoflag ) {
@@ -700,7 +700,7 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_hide = 0;
 		$this->feedback->aft_oversight = 1;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -736,7 +736,7 @@ class ArticleFeedbackv5Flagging {
 
 		$this->feedback->aft_request = 0;
 
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -753,7 +753,7 @@ class ArticleFeedbackv5Flagging {
 	private function flag( $notes, $toggle ) {
 		$flag = $this->isSystemCall() ? 'autoflag' : 'flag';
 		$this->feedback->{"aft_$flag"}++;
-		$this->logId = ArticleFeedbackv5Log::logActivity( $flag, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->isSystemCall() ? null : $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( $flag, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->isSystemCall() ? null : $this->user, array( 'source' => $this->source ) );
 
 		global $wgArticleFeedbackv5HideAbuseThreshold;
 
@@ -766,7 +766,7 @@ class ArticleFeedbackv5Flagging {
 			 */
 			$this->feedback->aft_hide = 1;
 			$this->feedback->aft_autohide = 1;
-			ArticleFeedbackv5Log::logActivity( 'autohide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic hide', $this->user, array( 'source' => $this->source ) );
+			ArticleFeedbackv5Activity::log( 'autohide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic hide', $this->user, array( 'source' => $this->source ) );
 		}
 
 		return true;
@@ -787,7 +787,7 @@ class ArticleFeedbackv5Flagging {
 		} else {
 			$this->feedback->aft_flag--;
 		}
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		global $wgArticleFeedbackv5HideAbuseThreshold;
 
@@ -795,7 +795,7 @@ class ArticleFeedbackv5Flagging {
 		if ( $this->feedback->aft_flag + $this->feedback->aft_autoflag < $wgArticleFeedbackv5HideAbuseThreshold &&
 			$this->feedback->aft_autohide ) {
 			$this->feedback->aft_autohide = 0;
-			ArticleFeedbackv5Log::logActivity( 'unhide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic un-hide', $this->user, array( 'source' => $this->source ) );
+			ArticleFeedbackv5Activity::log( 'unhide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic un-hide', $this->user, array( 'source' => $this->source ) );
 		}
 
 		return true;
@@ -816,7 +816,7 @@ class ArticleFeedbackv5Flagging {
 		 * Note: this one does not save logId because (currently) it will never
 		 * be called directly, but only as an automated result after certain flags.
 		 */
-		ArticleFeedbackv5Log::logActivity( 'clear-flags', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatically clearing all flags', $this->user, array( 'source' => $this->source ) );
+		ArticleFeedbackv5Activity::log( 'clear-flags', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatically clearing all flags', $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -832,7 +832,7 @@ class ArticleFeedbackv5Flagging {
 	 */
 	private function helpful( $notes, $toggle ) {
 		$this->feedback->aft_helpful++;
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// was voted unhelpful already, now voting helpful should also remove unhelpful vote
 		if ( $toggle ) {
@@ -853,7 +853,7 @@ class ArticleFeedbackv5Flagging {
 	 */
 	private function undo_helpful( $notes, $toggle ) {
 		$this->feedback->aft_helpful--;
-		$this->logId = ArticleFeedbackv5Log::logActivity( 'undo-helpful', $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( 'undo-helpful', $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
@@ -869,7 +869,7 @@ class ArticleFeedbackv5Flagging {
 	 */
 	private function unhelpful( $notes, $toggle ) {
 		$this->feedback->aft_unhelpful++;
-		$this->logId = ArticleFeedbackv5Log::logActivity( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		// was voted helpful already, now voting unhelpful should also remove helpful vote
 		if ( $toggle ) {
@@ -890,7 +890,7 @@ class ArticleFeedbackv5Flagging {
 	 */
 	private function undo_unhelpful( $notes, $toggle ) {
 		$this->feedback->aft_unhelpful--;
-		$this->logId = ArticleFeedbackv5Log::logActivity( 'undo-unhelpful', $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+		$this->logId = ArticleFeedbackv5Activity::log( 'undo-unhelpful', $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
 		return true;
 	}
