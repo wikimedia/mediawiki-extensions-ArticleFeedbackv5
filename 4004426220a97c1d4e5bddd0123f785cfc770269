@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DoAqK7Rk",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 1538,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-06T19:54:12Z",
+      "side": 1,
+      "message": "Is there a way to remove this duplicated code?  The same code is used in a lot of actions as well",
+      "revId": "4004426220a97c1d4e5bddd0123f785cfc770269",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
