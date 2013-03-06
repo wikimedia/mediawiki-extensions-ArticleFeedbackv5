@@ -20,106 +20,161 @@ class ArticleFeedbackv5Activity {
 	 * If an action is not mentioned here, it is not tied to specific permissions
 	 * and everyone is able to perform the action.
 	 *
+	 * * 'permissions' is the aft permissions (see $wgArticleFeedbackv5Permissions)
+	 *   required to be able to flag a certain action and view feedback flagged as such
+	 * * 'sentiment' will determine the sentiment the action signifies towards the
+	 *   feedback. Possible sentiments: negative, neutral and positive. In the activity
+	 *   log, this will display the action as red, gray or green.
+	 * * 'log_type' is the value that will be written to logging.log_type. Default
+	 *   value should be 'articlefeedbackv5', but other (e.g. suppress for more
+	 *   delicate actions) are acceptable.
+	 *
 	 * @var array
 	 */
 	public static $actions = array(
 		'oversight' => array(
 			'permissions' => 'aft-oversighter',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'suppress'
 		),
 		'unoversight' => array(
 			'permissions' => 'aft-oversighter',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'suppress'
 		),
 		'decline' => array(
 			'permissions' => 'aft-oversighter',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'suppress'
 		),
 		'request' => array(
 			'permissions' => 'aft-monitor',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'suppress'
 		),
 		'unrequest' => array(
 			'permissions' => 'aft-monitor',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'suppress'
 		),
 		'feature' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unfeature' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'resolve' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unresolve' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'noaction' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'neutral'
+			'sentiment' => 'neutral',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unnoaction' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'neutral'
+			'sentiment' => 'neutral',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'hide' => array(
 			'permissions' => 'aft-editor2',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unhide' => array(
 			'permissions' => 'aft-editor2',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'autohide' => array(
 			'permissions' => 'aft-editor2',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'archive' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unarchive' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'flag' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unflag' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'autoflag' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'clear-flags' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'helpful' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'undo-helpful' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'neutral'
+			'sentiment' => 'neutral',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unhelpful' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'undo-unhelpful' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'neutral'
+			'sentiment' => 'neutral',
+			'log_type' => 'articlefeedbackv5'
 		)
 	);
+
+	/**
+	 * Adds an activity item to the global log under the articlefeedbackv5
+	 *
+	 * @param string $type The type of activity we'll be logging
+	 * @param int $pageId The id of the page so we can look it up
+	 * @param int $itemId The id of the feedback item, used to build permalinks
+	 * @param string $notes Any notes that were stored with the activity
+	 * @param User $doer User who did the action
+	 * @param array $params Array of parameters that can be passed into the msg thing - used for "perpetrator" for log entry
+	 * @return int The id of the newly inserted log entry
+	 */
+	public static function log( $type, $pageId, $itemId, $notes, $doer, array $params = array() ) {
+		$logId = ArticleFeedbackv5Log::log( $type, $pageId, $itemId, $notes, $doer, $params );
+
+		if ( $logId !== null ) {
+			// update log count in cache
+			static::incrementActivityCount( $itemId, $type );
+		}
+
+		return $logId;
+	}
 
 	/**
 	 * Gets the last $limit of activity rows taken from the log table,

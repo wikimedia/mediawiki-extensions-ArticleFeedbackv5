@@ -11,23 +11,24 @@ class ArticleFeedbackv5Log {
 	/**
 	 * Adds an activity item to the global log under the articlefeedbackv5
 	 *
-	 * @param $type      string the type of activity we'll be logging
-	 * @param $pageId    int    the id of the page so we can look it up
-	 * @param $itemId    int    the id of the feedback item, used to build permalinks
-	 * @param $notes     string any notes that were stored with the activity
-	 * @param $doer      User   user who did the action
-	 * @param $params    array  of parameters that can be passed into the msg thing - used for "perpetrator" for log entry
-	 * @return int       the id of the newly inserted log entry
+	 * @param string $type The type of activity we'll be logging
+	 * @param int $pageId The id of the page so we can look it up
+	 * @param int $itemId The id of the feedback item, used to build permalinks
+	 * @param string $notes Any notes that were stored with the activity
+	 * @param User $doer User who did the action
+	 * @param array $params Array of parameters that can be passed into the msg thing - used for "perpetrator" for log entry
+	 * @return int The id of the newly inserted log entry
 	 */
-	public static function logActivity( $type, $pageId, $itemId, $notes, $doer, array $params = array() ) {
+	public static function log( $type, $pageId, $itemId, $notes, $doer, array $params = array() ) {
 		wfProfileIn( __METHOD__ );
 
 		global $wgLogActionsHandlers, $wgArticleFeedbackv5MaxActivityNoteLength, $wgLang;
 
-		// set the type of feedback - some feedback must go to the more hidden suppression log
-		if ( isset( $wgLogActionsHandlers["suppress/$type"] ) ) {
-			$logType = 'suppress';
+		if ( isset( ArticleFeedbackv5Activity::$actions[$type]['log_type'] ) ) {
+			// log type for actions (the more delicate actions should go to suppression log)
+			$logType = ArticleFeedbackv5Activity::$actions[$type]['log_type'];
 		} elseif ( isset( $wgLogActionsHandlers["articlefeedbackv5/$type"] ) ) {
+			// other AFTv5-related log entry (e.g. "create")
 			$logType = 'articlefeedbackv5';
 		} else {
 			wfProfileOut( __METHOD__ );
@@ -67,9 +68,6 @@ class ArticleFeedbackv5Log {
 		$logId = $logEntry->insert();
 		$logEntry->publish( $logId );
 
-		// update log count in cache
-		ArticleFeedbackv5Activity::incrementActivityCount( $itemId, $type );
-
 		wfProfileOut( __METHOD__ );
 
 		return $logId;
@@ -88,7 +86,7 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 	/**
 	 * Formats an activity log entry
 	 *
-	 * @return string           the log entry
+	 * @return string The log entry
 	 */
 	protected function getActionMessage() {
 		global $wgLang, $wgContLang;

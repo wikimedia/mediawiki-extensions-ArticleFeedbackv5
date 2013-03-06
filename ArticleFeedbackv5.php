@@ -451,12 +451,15 @@ $wgJobClasses['ArticleFeedbackv5MailerJob'] = 'ArticleFeedbackv5MailerJob';
 $wgLogTypes[] = 'articlefeedbackv5';
 $wgLogTypes[] = 'suppress';
 
+// register log handler for feedback submission
+$wgLogActionsHandlers['articlefeedbackv5/create'] = 'ArticleFeedbackv5LogFormatter';
+
 // register activity log formatter hooks
-foreach ( array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest' ) as $t) {
-	$wgLogActionsHandlers["suppress/$t"] = 'ArticleFeedbackv5LogFormatter';
-}
-foreach ( array( 'hide', 'unhide', 'flag', 'unflag', 'autoflag', 'autohide', 'feature', 'unfeature', 'resolve', 'unresolve', 'noaction', 'unnoaction', 'archive', 'unarchive', 'helpful', 'unhelpful', 'undo-helpful', 'undo-unhelpful', 'clear-flags' ) as $t) {
-	$wgLogActionsHandlers["articlefeedbackv5/$t"] = 'ArticleFeedbackv5LogFormatter';
+foreach( ArticleFeedbackv5Activity::$actions as $action => $options ) {
+	if ( isset( $options['log_type'] ) ) {
+		$log = $options['log_type'];
+		$wgLogActionsHandlers["$log/$action"] = 'ArticleFeedbackv5LogFormatter';
+	}
 }
 
 if ( $wgArticleFeedbackv5AbuseFilterGroup != 'default' ) {

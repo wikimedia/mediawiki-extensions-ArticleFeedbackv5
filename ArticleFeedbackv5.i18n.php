@@ -542,6 +542,7 @@ includes one of these issues:
 	/* Log types */
 	'log-name-articlefeedbackv5' => 'Article Feedback Activity Log',
 	'log-description-articlefeedbackv5' => 'This is the log of activity taken on feedback items submitted by users via Article Feedback.',
+	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|submitted}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|changed the status to oversight of}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|removed the oversight status of}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|declined oversight for}} [[$3|feedback post #$4]] on [[$5]]',
@@ -1417,6 +1418,12 @@ Permission to oversight feedback (see http://www.mediawiki.org/wiki/Article_feed
 	'log-name-articlefeedbackv5' => '{{doc-logpage}}
 Name of the AFTv5 log filter on the [[Special:Log]] page.',
 	'log-description-articlefeedbackv5' => 'Description (header) of the AFTv5 activity log on the [[Special:Log]] page.',
+	'logentry-articlefeedbackv5-create' => 'Log entry for when a user initially submits/creates a feedback post. Parameters:
+* $1 - A link to the performer
+* $2 - The performer\'s id, gender support
+* $3 - A link to the feedback
+* $4 - The feedback\'s id
+* $5 - A link to the article the feedback was posted to',
 	'logentry-articlefeedbackv5-oversight' => 'Log entry for when a user "oversights" (deletes; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page) a feedback post. Parameters:
 * $1 - A link to the performer
 * $2 - The performer\'s id, gender support
