@@ -150,72 +150,6 @@ class ArticleFeedbackv5Flagging {
 	}
 
 	/**
-	 * Flag: delete
-	 *
-	 * Deleting means to mark as "oversighted" so it doesn't show up in most
-	 * filters (i.e., any filter not prefixed with "notdeleted-").  No data is
-	 * removed from the database.  Deleting a post also hides it.
-	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return array|bool
-	 */
-	private function oversight( $notes, $toggle ) {
-		// already oversighted?
-		if ( $this->feedback->isOversighted() ) {
-			$this->error = 'articlefeedbackv5-invalid-feedback-state';
-			return false;
-		}
-
-		$this->feedback->aft_oversight = 1;
-		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
-
-		// autohide if not yet hidden
-		if ( !$this->feedback->isHidden() ) {
-			/*
-			 * We want to keep track of hides/unhides, but also autohides.
-			 * Feedback will be hidden when hide + autohide > unhide
-			 */
-			$this->feedback->aft_hide = 1;
-			$this->feedback->aft_autohide = 1;
-			ArticleFeedbackv5Activity::log( 'autohide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic hide', $this->user, array( 'source' => $this->source ) );
-		}
-
-		return true;
-	}
-
-	/**
-	 * Flag: un-delete
-	 *
-	 * Un-deleting means to remove the "oversighted" mark from a post.  It
-	 * leaves the feedback hidden, even if it was auto-hidden when deleted.
-	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
-	 * @return array|bool
-	 */
-	private function unoversight( $notes, $toggle ) {
-		// not yet oversighted?
-		if ( !$this->feedback->isOversighted() ) {
-			$this->error = 'articlefeedbackv5-invalid-feedback-state';
-			return false;
-		}
-
-		$this->feedback->aft_oversight = 0;
-		$this->feedback->aft_request = 0;
-		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
-
-		// un-hide if autohidden
-		if ( $this->feedback->aft_hide && $this->feedback->aft_autohide ) {
-			$this->feedback->aft_autohide = 0;
-			$this->feedback->aft_hide = 0;
-			ArticleFeedbackv5Activity::log( 'unhide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic un-hide', $this->user, array( 'source' => $this->source ) );
-		}
-
-		return true;
-	}
-
-	/**
 	 * Flag: request oversight
 	 *
 	 * This flag allows monitors (who can hide feedback but not delete it) to
@@ -325,8 +259,10 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
+			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
-			$this->feedback->isArchived()
+			$this->feedback->isOversighted()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -335,8 +271,10 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_feature = 1;
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
-		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_inappropriate = 0;
 		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
 
 		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -360,8 +298,10 @@ class ArticleFeedbackv5Flagging {
 			!$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
+			$this->feedback->isInappropriate() ||
 			$this->feedback->isHidden() ||
-			$this->feedback->isArchived()
+			$this->feedback->isArchived() ||
+			$this->feedback->isOversighted()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -370,8 +310,10 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_feature = 0;
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
-		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_inappropriate = 0;
 		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
 
 		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -393,8 +335,10 @@ class ArticleFeedbackv5Flagging {
 //			$this->feedback->isFeatured() || // can go straight from featured to resolved
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
+			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
-			$this->feedback->isArchived()
+			$this->feedback->isOversighted()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -403,8 +347,10 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_feature = 0;
 		$this->feedback->aft_resolve = 1;
 		$this->feedback->aft_noaction = 0;
-		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_inappropriate = 0;
 		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
 
 		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -423,8 +369,10 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isFeatured() ||
 			!$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
+			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
-			$this->feedback->isArchived()
+			$this->feedback->isOversighted()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -433,8 +381,10 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_feature = 0;
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
-		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_inappropriate = 0;
 		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
 
 		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -455,8 +405,10 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
+			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
-			$this->feedback->isArchived()
+			$this->feedback->isOversighted()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -465,8 +417,10 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_feature = 0;
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 1;
-		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_inappropriate = 0;
 		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
 
 		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -485,8 +439,10 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			!$this->feedback->isNonActionable() ||
+			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
-			$this->feedback->isArchived()
+			$this->feedback->isOversighted()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -495,8 +451,78 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_feature = 0;
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
-		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_inappropriate = 0;
 		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
+
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+
+		return true;
+	}
+
+	/**
+	 * Flag: mark a post as nappropriate
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return array|bool
+	 */
+	private function inappropriate( $notes, $toggle ) {
+		if (
+			$this->feedback->isFeatured() ||
+			$this->feedback->isResolved() ||
+			$this->feedback->isNonActionable() ||
+			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
+			$this->feedback->isHidden() ||
+			$this->feedback->isOversighted()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
+		$this->feedback->aft_feature = 0;
+		$this->feedback->aft_resolve = 0;
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_inappropriate = 1;
+		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
+
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+
+		return true;
+	}
+
+	/**
+	 * Flag: unmark a post as inappropriate
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return array|bool
+	 */
+	private function uninappropriate( $notes, $toggle ) {
+		if (
+			$this->feedback->isFeatured() ||
+			$this->feedback->isResolved() ||
+			$this->feedback->isNonActionable() ||
+			!$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
+			$this->feedback->isHidden() ||
+			$this->feedback->isOversighted()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
+		$this->feedback->aft_feature = 0;
+		$this->feedback->aft_resolve = 0;
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
 
 		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -515,8 +541,10 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
+			!$this->feedback->isInappropriate() || // hiding is secondary action; post should already be marked inappropriate
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
-			$this->feedback->isArchived()
+			$this->feedback->isOversighted()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -525,8 +553,10 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_feature = 0;
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
-		$this->feedback->aft_hide = 1;
+		$this->feedback->aft_inappropriate = 0;
 		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 1;
+		$this->feedback->aft_oversight = 0;
 
 		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -545,8 +575,10 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
+			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			!$this->feedback->isHidden() ||
-			$this->feedback->isArchived()
+			$this->feedback->isOversighted()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -555,8 +587,10 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_feature = 0;
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
-		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_inappropriate = 0;
 		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
 
 		$this->feedback->aft_autohide = 0;
 
@@ -582,8 +616,10 @@ class ArticleFeedbackv5Flagging {
 			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
+			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
-			$this->feedback->isArchived()
+			$this->feedback->isOversighted()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -592,8 +628,10 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_feature = 0;
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
-		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_inappropriate = 0;
 		$this->feedback->aft_archive = 1;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
 
 		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 
@@ -608,11 +646,14 @@ class ArticleFeedbackv5Flagging {
 	 * @return array|bool
 	 */
 	private function unarchive( $notes, $toggle ) {
-		if ( $this->feedback->isFeatured() ||
+		if (
+			$this->feedback->isFeatured() ||
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
+			$this->feedback->isInappropriate() ||
+			!$this->feedback->isArchived() ||
 			$this->feedback->isHidden() ||
-			!$this->feedback->isArchived()
+			$this->feedback->isOversighted()
 		) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-state';
 			return false;
@@ -621,8 +662,82 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_feature = 0;
 		$this->feedback->aft_resolve = 0;
 		$this->feedback->aft_noaction = 0;
-		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_inappropriate = 0;
 		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
+
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+
+		return true;
+	}
+
+	/**
+	 * Flag: oversight
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return array|bool
+	 */
+	private function oversight( $notes, $toggle ) {
+		if (
+			$this->feedback->isFeatured() ||
+			$this->feedback->isResolved() ||
+			$this->feedback->isNonActionable() ||
+			$this->feedback->isArchived() ||
+			!(
+				$this->feedback->isInappropriate() || // oversight is secondary action; post should already be marked inappropriate
+				$this->feedback->isHidden() // ... or marked as hidden by monitor
+			) ||
+			$this->feedback->isOversighted()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
+		$this->feedback->aft_feature = 0;
+		$this->feedback->aft_resolve = 0;
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 1;
+
+		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
+
+		return true;
+	}
+
+	/**
+	 * Flag: unoversight
+	 *
+	 * @param  $notes     string   any notes passed in
+	 * @param  $toggle    bool     whether to toggle the flag
+	 * @return array|bool
+	 */
+	private function unoversight( $notes, $toggle ) {
+		if (
+			$this->feedback->isFeatured() ||
+			$this->feedback->isResolved() ||
+			$this->feedback->isNonActionable() ||
+			$this->feedback->isInappropriate() ||
+			$this->feedback->isArchived() ||
+			$this->feedback->isHidden() ||
+			!$this->feedback->isOversighted()
+		) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
+		$this->feedback->aft_feature = 0;
+		$this->feedback->aft_resolve = 0;
+		$this->feedback->aft_noaction = 0;
+		$this->feedback->aft_inappropriate = 0;
+		$this->feedback->aft_archive = 0;
+		$this->feedback->aft_hide = 0;
+		$this->feedback->aft_oversight = 0;
+
+		$this->feedback->aft_request = 0;
 
 		$this->logId = ArticleFeedbackv5Activity::log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user, array( 'source' => $this->source ) );
 

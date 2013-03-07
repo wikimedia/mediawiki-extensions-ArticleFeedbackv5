@@ -381,7 +381,7 @@
 		$( document ).on( 'click touchstart', '.articleFeedbackv5-post-screen', function() {
 			// don't hide if it's only an empty mask (= when insufficient permissions
 			// won't let the user see the feedback's details)
-			if ( $( this ).parent( '.articleFeedbackv5-feedback-emptymask' ) === 0 ) {
+			if ( $( this ).parent( '.articleFeedbackv5-feedback-emptymask' ).length === 0 ) {
 				$( this ).hide();
 			}
 		});
@@ -546,14 +546,10 @@
 
 		var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 		if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
-			var id = $container.data( 'id' );
-			var pageId = $container.data( 'pageid' );
-			var action = $( e.target ).data( 'action' );
-
 			$.articleFeedbackv5special.flagFeedback(
-				id,
-				pageId,
-				action,
+				$container.data( 'id' ),
+				$container.data( 'pageid' ),
+				$( e.target ).data( 'action' ),
 				'',
 				{}
 			);
@@ -1191,14 +1187,16 @@
 	// {{{ canBeFlagged
 
 	/**
-	 * Checks if a post can be flagged: post is not hidden/oversighted
+	 * Checks if a post can be flagged: post is not inappropriate/hidden/oversighted
 	 * or user had permissions to (un)hide/(un)oversight
 	 *
 	 * @return bool true if post can be flagged, or false otherwise
 	 */
 	$.articleFeedbackv5special.canBeFlagged = function( $post ) {
 		return $post.find( '.articleFeedbackv5-post-screen' ).length == 0 ||
-			mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'];
+			mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'] ||
+			mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-monitor'] ||
+			mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'];
 	};
 
 	// }}}
@@ -1256,14 +1254,10 @@
 
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
-					var id = $container.data( 'id' );
-					var pageId = $container.data( 'pageid' );
-					var action = $( e.target ).data( 'action' );
-
 					$.articleFeedbackv5special.flagFeedback(
-						id,
-						pageId,
-						action,
+						$container.data( 'id' ),
+						$container.data( 'pageid' ),
+						$( e.target ).data( 'action' ),
 						'',
 						{ toggle: $.articleFeedbackv5special.getActivityFlag( id, 'unhelpful' ) }
 					);
@@ -1285,14 +1279,10 @@
 
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
-					var id = $container.data( 'id' );
-					var pageId = $container.data( 'pageid' );
-					var action = $( e.target ).data( 'action' );
-
 					$.articleFeedbackv5special.flagFeedback(
-						id,
-						pageId,
-						action,
+						$container.data( 'id' ),
+						$container.data( 'pageid' ),
+						$( e.target ).data( 'action' ),
 						'',
 						{}
 					);
@@ -1314,14 +1304,10 @@
 
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
-					var id = $container.data( 'id' );
-					var pageId = $container.data( 'pageid' );
-					var action = $( e.target ).data( 'action' );
-
 					$.articleFeedbackv5special.flagFeedback(
-						id,
-						pageId,
-						action,
+						$container.data( 'id' ),
+						$container.data( 'pageid' ),
+						$( e.target ).data( 'action' ),
 						'',
 						{ toggle: $.articleFeedbackv5special.getActivityFlag( id, 'helpful' ) }
 					);
@@ -1343,14 +1329,10 @@
 
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
-					var id = $container.data( 'id' );
-					var pageId = $container.data( 'pageid' );
-					var action = $( e.target ).data( 'action' );
-
 					$.articleFeedbackv5special.flagFeedback(
-						id,
-						pageId,
-						action,
+						$container.data( 'id' ),
+						$container.data( 'pageid' ),
+						$( e.target ).data( 'action' ),
 						'',
 						{}
 					);
@@ -1375,13 +1357,10 @@
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
 					if ( !$.articleFeedbackv5special.getActivityFlag( id, 'flag' ) ) {
-						var pageId = $container.data( 'pageid' );
-						var action = $( e.target ).data( 'action' );
-
 						$.articleFeedbackv5special.flagFeedback(
 							id,
-							pageId,
-							action,
+							$container.data( 'pageid' ),
+							$( e.target ).data( 'action' ),
 							'',
 							{}
 						);
@@ -1406,13 +1385,10 @@
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
 					if ( $.articleFeedbackv5special.getActivityFlag( id, 'flag' ) ) {
-						var pageId = $container.data( 'pageid' );
-						var action = $( e.target ).data( 'action' );
-
 						$.articleFeedbackv5special.flagFeedback(
 							id,
-							pageId,
-							action,
+							$container.data( 'pageid' ),
+							$( e.target ).data( 'action' ),
 							'',
 							{}
 						);
@@ -1497,12 +1473,50 @@
 		},
 
 		// }}}
+		// {{{ Mark post as inappropriate
+
+		'inappropriate': {
+			'hasTipsy': true,
+			'tipsyHtml': undefined,
+			'click': $.articleFeedbackv5special.flagAction,
+			'onSuccess': function( id, data ) {
+				// activity flag is not particularly useful here
+			}
+		},
+
+		// }}}
+		// {{{ Unmark post as inappropriate
+
+		'uninappropriate': {
+			'hasTipsy': true,
+			'tipsyHtml': undefined,
+			'click': $.articleFeedbackv5special.flagAction,
+			'onSuccess': function( id, data ) {
+				// activity flag is not particularly useful here
+			}
+		},
+
+		// }}}
 		// {{{ Hide post action
 
 		'hide': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': $.articleFeedbackv5special.flagAction,
+			'click': function() {
+				// tipsy has been opened - bind flag submission
+				$.articleFeedbackv5special.tipsyCallback = function( e ) {
+					var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
+					if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+						$.articleFeedbackv5special.flagFeedback(
+							$container.data( 'id' ),
+							$container.data( 'pageid' ),
+							'hide',
+							$( '#articleFeedbackv5-noteflyover-note' ).val(),
+							{}
+						);
+					}
+				};
+			},
 			'onSuccess': function( id, data ) {
 				// activity flag is not particularly useful here
 			}
@@ -1556,15 +1570,11 @@
 				$.articleFeedbackv5special.tipsyCallback = function( e ) {
 					var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
 					if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
-						var id = $container.data( 'id' );
-						var pageId = $container.data( 'pageid' );
-						var note = $( '#articleFeedbackv5-noteflyover-note' ).val();
-
 						$.articleFeedbackv5special.flagFeedback(
-							id,
-							pageId,
+							$container.data( 'id' ),
+							$container.data( 'pageid' ),
 							'request',
-							note,
+							$( '#articleFeedbackv5-noteflyover-note' ).val(),
 							{}
 						);
 					}
@@ -1589,13 +1599,10 @@
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
 					if ( $.articleFeedbackv5special.getActivityFlag( id, 'request' ) ) {
-						var pageId = $container.data( 'pageid' );
-						var action = $( e.target ).data( 'action' );
-
 						$.articleFeedbackv5special.flagFeedback(
-							id,
-							pageId,
-							action,
+							$container.data( 'id' ),
+							$container.data( 'pageid' ),
+							$( e.target ).data( 'action' ),
 							'',
 							{}
 						);
@@ -1619,15 +1626,11 @@
 				$.articleFeedbackv5special.tipsyCallback = function( e ) {
 					var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
 					if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
-						var id = $container.data( 'id' );
-						var pageId = $container.data( 'pageid' );
-						var note = $( '#articleFeedbackv5-noteflyover-note' ).val();
-
 						$.articleFeedbackv5special.flagFeedback(
-							id,
-							pageId,
+							$container.data( 'id' ),
+							$container.data( 'pageid' ),
 							'oversight',
-							note,
+							$( '#articleFeedbackv5-noteflyover-note' ).val(),
 							{}
 						);
 					}
