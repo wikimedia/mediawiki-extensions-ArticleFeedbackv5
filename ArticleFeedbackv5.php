@@ -65,18 +65,21 @@ $wgArticleFeedbackv5DefaultSorts = array (
  * @var array
  */
 $wgArticleFeedbackv5RelevanceScoring = array(
-	'feature' => 50,
-	'unfeature' => -50,
 	'helpful' => 1,
 	'undo-helpful' => -1,
 	'unhelpful' => -1,
 	'undo-unhelpful' => 1,
+	'flag' => -5,
+	'unflag' => 5,
+	'autoflag' => 5,
+	'feature' => 50,
+	'unfeature' => -50,
 	'resolve' => -5,
 	'unresolve' => 5,
 	'noaction' => -5,
 	'unnoaction' => 5,
-	'flag' => -5,
-	'unflag' => 5,
+	'inappropriate' => -50,
+	'uninappropriate' => 50,
 	'autohide' => -100,
 	'hide' => -100,
 	'unhide' => 100,
@@ -408,7 +411,6 @@ $wgArticleFeedbackv5Permissions = array(
 	'aft-reader',
 	'aft-member',
 	'aft-editor',
-	'aft-editor2',
 	'aft-monitor',
 	'aft-administrator',
 	'aft-oversighter',
@@ -426,7 +428,7 @@ $wgLogTypes[] = 'suppress';
 foreach ( array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest' ) as $t) {
 	$wgLogActionsHandlers["suppress/$t"] = 'ArticleFeedbackv5LogFormatter';
 }
-foreach ( array( 'hide', 'unhide', 'flag', 'unflag', 'autoflag', 'autohide', 'feature', 'unfeature', 'resolve', 'unresolve', 'noaction', 'unnoaction', 'helpful', 'unhelpful', 'undo-helpful', 'undo-unhelpful', 'clear-flags' ) as $t) {
+foreach ( array( 'helpful', 'unhelpful', 'undo-helpful', 'undo-unhelpful', 'flag', 'unflag', 'autoflag', 'feature', 'unfeature', 'resolve', 'unresolve', 'noaction', 'unnoaction', 'inappropriate', 'uninappropriate', 'hide', 'unhide', 'autohide', 'clear-flags' ) as $t) {
 	$wgLogActionsHandlers["articlefeedbackv5/$t"] = 'ArticleFeedbackv5LogFormatter';
 }
 
@@ -456,7 +458,6 @@ foreach ( array( 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer',
 }
 foreach ( array( 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
 	$wgGroupPermissions[$group]['aft-editor'] = true;
-	$wgGroupPermissions[$group]['aft-editor2'] = true;
 }
 foreach ( array( 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
 	$wgGroupPermissions[$group]['aft-monitor'] = true;
@@ -688,62 +689,6 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 
 		'articlefeedbackv5-viewactivity',
 
-		'articlefeedbackv5-noteflyover-hide-caption',
-//		'articlefeedbackv5-noteflyover-hide-description',
-		'articlefeedbackv5-noteflyover-hide-label',
-		'articlefeedbackv5-noteflyover-hide-placeholder',
-		'articlefeedbackv5-noteflyover-hide-submit',
-		'articlefeedbackv5-noteflyover-hide-help',
-		'articlefeedbackv5-noteflyover-hide-help-link',
-
-		'articlefeedbackv5-noteflyover-unhide-caption',
-//		'articlefeedbackv5-noteflyover-unhide-description',
-		'articlefeedbackv5-noteflyover-unhide-label',
-		'articlefeedbackv5-noteflyover-unhide-placeholder',
-		'articlefeedbackv5-noteflyover-unhide-submit',
-		'articlefeedbackv5-noteflyover-unhide-help',
-		'articlefeedbackv5-noteflyover-unhide-help-link',
-
-		'articlefeedbackv5-noteflyover-request-caption',
-//		'articlefeedbackv5-noteflyover-request-description',
-		'articlefeedbackv5-noteflyover-request-label',
-		'articlefeedbackv5-noteflyover-request-placeholder',
-		'articlefeedbackv5-noteflyover-request-submit',
-		'articlefeedbackv5-noteflyover-request-help',
-		'articlefeedbackv5-noteflyover-request-help-link',
-
-		'articlefeedbackv5-noteflyover-unrequest-caption',
-//		'articlefeedbackv5-noteflyover-unrequest-description',
-		'articlefeedbackv5-noteflyover-unrequest-label',
-		'articlefeedbackv5-noteflyover-unrequest-placeholder',
-		'articlefeedbackv5-noteflyover-unrequest-submit',
-		'articlefeedbackv5-noteflyover-unrequest-help',
-		'articlefeedbackv5-noteflyover-unrequest-help-link',
-
-		'articlefeedbackv5-noteflyover-oversight-caption',
-//		'articlefeedbackv5-noteflyover-oversight-description',
-		'articlefeedbackv5-noteflyover-oversight-label',
-		'articlefeedbackv5-noteflyover-oversight-placeholder',
-		'articlefeedbackv5-noteflyover-oversight-submit',
-		'articlefeedbackv5-noteflyover-oversight-help',
-		'articlefeedbackv5-noteflyover-oversight-help-link',
-
-		'articlefeedbackv5-noteflyover-unoversight-caption',
-//		'articlefeedbackv5-noteflyover-unoversight-description',
-		'articlefeedbackv5-noteflyover-unoversight-label',
-		'articlefeedbackv5-noteflyover-unoversight-placeholder',
-		'articlefeedbackv5-noteflyover-unoversight-submit',
-		'articlefeedbackv5-noteflyover-unoversight-help',
-		'articlefeedbackv5-noteflyover-unoversight-help-link',
-
-		'articlefeedbackv5-noteflyover-decline-caption',
-//		'articlefeedbackv5-noteflyover-decline-description',
-		'articlefeedbackv5-noteflyover-decline-label',
-		'articlefeedbackv5-noteflyover-decline-placeholder',
-		'articlefeedbackv5-noteflyover-decline-submit',
-		'articlefeedbackv5-noteflyover-decline-help',
-		'articlefeedbackv5-noteflyover-decline-help-link',
-
 		'articlefeedbackv5-noteflyover-feature-caption',
 //		'articlefeedbackv5-noteflyover-feature-description',
 		'articlefeedbackv5-noteflyover-feature-label',
@@ -791,6 +736,78 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-noteflyover-unnoaction-submit',
 		'articlefeedbackv5-noteflyover-unnoaction-help',
 		'articlefeedbackv5-noteflyover-unnoaction-help-link',
+
+		'articlefeedbackv5-noteflyover-inappropriate-caption',
+//		'articlefeedbackv5-noteflyover-inappropriate-description',
+		'articlefeedbackv5-noteflyover-inappropriate-label',
+		'articlefeedbackv5-noteflyover-inappropriate-placeholder',
+		'articlefeedbackv5-noteflyover-inappropriate-submit',
+		'articlefeedbackv5-noteflyover-inappropriate-help',
+		'articlefeedbackv5-noteflyover-inappropriate-help-link',
+
+		'articlefeedbackv5-noteflyover-uninappropriate-caption',
+//		'articlefeedbackv5-noteflyover-uninappropriate-description',
+		'articlefeedbackv5-noteflyover-uninappropriate-label',
+		'articlefeedbackv5-noteflyover-uninappropriate-placeholder',
+		'articlefeedbackv5-noteflyover-uninappropriate-submit',
+		'articlefeedbackv5-noteflyover-uninappropriate-help',
+		'articlefeedbackv5-noteflyover-uninappropriate-help-link',
+
+		'articlefeedbackv5-noteflyover-hide-caption',
+//		'articlefeedbackv5-noteflyover-hide-description',
+		'articlefeedbackv5-noteflyover-hide-label',
+		'articlefeedbackv5-noteflyover-hide-placeholder',
+		'articlefeedbackv5-noteflyover-hide-submit',
+		'articlefeedbackv5-noteflyover-hide-help',
+		'articlefeedbackv5-noteflyover-hide-help-link',
+
+		'articlefeedbackv5-noteflyover-unhide-caption',
+//		'articlefeedbackv5-noteflyover-unhide-description',
+		'articlefeedbackv5-noteflyover-unhide-label',
+		'articlefeedbackv5-noteflyover-unhide-placeholder',
+		'articlefeedbackv5-noteflyover-unhide-submit',
+		'articlefeedbackv5-noteflyover-unhide-help',
+		'articlefeedbackv5-noteflyover-unhide-help-link',
+
+		'articlefeedbackv5-noteflyover-request-caption',
+//		'articlefeedbackv5-noteflyover-request-description',
+		'articlefeedbackv5-noteflyover-request-label',
+		'articlefeedbackv5-noteflyover-request-placeholder',
+		'articlefeedbackv5-noteflyover-request-submit',
+		'articlefeedbackv5-noteflyover-request-help',
+		'articlefeedbackv5-noteflyover-request-help-link',
+
+		'articlefeedbackv5-noteflyover-unrequest-caption',
+//		'articlefeedbackv5-noteflyover-unrequest-description',
+		'articlefeedbackv5-noteflyover-unrequest-label',
+		'articlefeedbackv5-noteflyover-unrequest-placeholder',
+		'articlefeedbackv5-noteflyover-unrequest-submit',
+		'articlefeedbackv5-noteflyover-unrequest-help',
+		'articlefeedbackv5-noteflyover-unrequest-help-link',
+
+		'articlefeedbackv5-noteflyover-decline-caption',
+//		'articlefeedbackv5-noteflyover-decline-description',
+		'articlefeedbackv5-noteflyover-decline-label',
+		'articlefeedbackv5-noteflyover-decline-placeholder',
+		'articlefeedbackv5-noteflyover-decline-submit',
+		'articlefeedbackv5-noteflyover-decline-help',
+		'articlefeedbackv5-noteflyover-decline-help-link',
+
+		'articlefeedbackv5-noteflyover-oversight-caption',
+//		'articlefeedbackv5-noteflyover-oversight-description',
+		'articlefeedbackv5-noteflyover-oversight-label',
+		'articlefeedbackv5-noteflyover-oversight-placeholder',
+		'articlefeedbackv5-noteflyover-oversight-submit',
+		'articlefeedbackv5-noteflyover-oversight-help',
+		'articlefeedbackv5-noteflyover-oversight-help-link',
+
+		'articlefeedbackv5-noteflyover-unoversight-caption',
+//		'articlefeedbackv5-noteflyover-unoversight-description',
+		'articlefeedbackv5-noteflyover-unoversight-label',
+		'articlefeedbackv5-noteflyover-unoversight-placeholder',
+		'articlefeedbackv5-noteflyover-unoversight-submit',
+		'articlefeedbackv5-noteflyover-unoversight-help',
+		'articlefeedbackv5-noteflyover-unoversight-help-link',
 
 		'articlefeedbackv5-activity-pane-header',
 

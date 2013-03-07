@@ -23,24 +23,36 @@ class ArticleFeedbackv5Activity {
 	 * @var array
 	 */
 	public static $actions = array(
-		'oversight' => array(
-			'permissions' => 'aft-oversighter',
-			'sentiment' => 'negative'
-		),
-		'unoversight' => array(
-			'permissions' => 'aft-oversighter',
+		'helpful' => array(
+			'permissions' => 'aft-reader',
 			'sentiment' => 'positive'
 		),
-		'decline' => array(
-			'permissions' => 'aft-oversighter',
-			'sentiment' => 'positive'
+		'undo-helpful' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'neutral'
 		),
-		'request' => array(
-			'permissions' => 'aft-monitor',
+		'unhelpful' => array(
+			'permissions' => 'aft-reader',
 			'sentiment' => 'negative'
 		),
-		'unrequest' => array(
-			'permissions' => 'aft-monitor',
+		'undo-unhelpful' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'neutral'
+		),
+		'flag' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'negative'
+		),
+		'unflag' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'positive'
+		),
+		'autoflag' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'negative'
+		),
+		'clear-flags' => array(
+			'permissions' => 'aft-reader',
 			'sentiment' => 'positive'
 		),
 		'feature' => array(
@@ -67,50 +79,46 @@ class ArticleFeedbackv5Activity {
 			'permissions' => 'aft-editor',
 			'sentiment' => 'neutral'
 		),
+		'inappropriate' => array(
+			'permissions' => 'aft-editor',
+			'sentiment' => 'negative'
+		),
+		'uninappropriate' => array(
+			'permissions' => 'aft-editor',
+			'sentiment' => 'positive'
+		),
 		'hide' => array(
-			'permissions' => 'aft-editor2',
+			'permissions' => 'aft-monitor',
 			'sentiment' => 'negative'
 		),
 		'unhide' => array(
-			'permissions' => 'aft-editor2',
+			'permissions' => 'aft-monitor',
 			'sentiment' => 'positive'
 		),
 		'autohide' => array(
-			'permissions' => 'aft-editor2',
+			'permissions' => 'aft-monitor',
 			'sentiment' => 'negative'
 		),
-		'flag' => array(
-			'permissions' => 'aft-reader',
+		'request' => array(
+			'permissions' => 'aft-monitor',
 			'sentiment' => 'negative'
 		),
-		'unflag' => array(
-			'permissions' => 'aft-reader',
+		'unrequest' => array(
+			'permissions' => 'aft-monitor',
 			'sentiment' => 'positive'
 		),
-		'autoflag' => array(
-			'permissions' => 'aft-reader',
-			'sentiment' => 'negative'
-		),
-		'clear-flags' => array(
-			'permissions' => 'aft-reader',
+		'decline' => array(
+			'permissions' => 'aft-oversighter',
 			'sentiment' => 'positive'
 		),
-		'helpful' => array(
-			'permissions' => 'aft-reader',
-			'sentiment' => 'positive'
-		),
-		'undo-helpful' => array(
-			'permissions' => 'aft-reader',
-			'sentiment' => 'neutral'
-		),
-		'unhelpful' => array(
-			'permissions' => 'aft-reader',
+		'oversight' => array(
+			'permissions' => 'aft-oversighter',
 			'sentiment' => 'negative'
 		),
-		'undo-unhelpful' => array(
-			'permissions' => 'aft-reader',
-			'sentiment' => 'neutral'
-		)
+		'unoversight' => array(
+			'permissions' => 'aft-oversighter',
+			'sentiment' => 'positive'
+		),
 	);
 
 	/**
@@ -327,6 +335,8 @@ class ArticleFeedbackv5Activity {
 					$action = 'feature';
 				} elseif ( $feedback->isNonActionable() ) {
 					$action = 'noaction';
+				} elseif ( $feedback->isInappropriate() ) {
+					$action = 'inappropriate';
 				} else {
 					continue;
 				}
