@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_feedback (
   aft_feature boolean NOT NULL DEFAULT 0,
   aft_resolve boolean NOT NULL DEFAULT 0,
   aft_noaction boolean NOT NULL DEFAULT 0,
+  aft_inappropriate boolean NOT NULL DEFAULT 0,
   aft_archive boolean NOT NULL DEFAULT 0,
   aft_archive_date varbinary(14) DEFAULT NULL,
   aft_helpful integer unsigned NOT NULL DEFAULT 0,

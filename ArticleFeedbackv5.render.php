@@ -66,10 +66,11 @@ class ArticleFeedbackv5Render {
 			return '';
 		}
 
-		// Special cases: when the record is deleted/hidden, but the user
-		// doesn't have permission to see it
+		// Special cases: when the record is deleted/hidden/inappropriate,
+		// but the user doesn't have permission to see it
 		if ( ( $record->isOversighted() && !ArticleFeedbackv5Activity::canPerformAction( 'oversight' ) ) ||
-			( $record->isHidden() && !ArticleFeedbackv5Activity::canPerformAction( 'hide' ) ) ) {
+			( $record->isHidden() && !ArticleFeedbackv5Activity::canPerformAction( 'hide' ) ) ||
+			( $record->isInappropriate() && !ArticleFeedbackv5Activity::canPerformAction( 'inappropriate' ) ) ) {
 			// Called via permalink: show an empty gray mask
 			if ( $this->isPermalink ) {
 				return $this->emptyGrayMask( $record );
@@ -89,17 +90,23 @@ class ArticleFeedbackv5Render {
 
 		// Get the top class
 		$topClass = 'articleFeedbackv5-feedback';
-		if ( $record->isHidden() ) {
-			$topClass .= ' articleFeedbackv5-feedback-hide';
-		}
 		if ( $record->isOversighted() ) {
 			$topClass .= ' articleFeedbackv5-feedback-oversight';
+		}
+		if ( $record->isHidden() ) {
+			$topClass .= ' articleFeedbackv5-feedback-hide';
 		}
 		if ( $record->isFeatured() ) {
 			$topClass .= ' articleFeedbackv5-feedback-feature';
 		}
 		if ( $record->isResolved() ) {
 			$topClass .= ' articleFeedbackv5-feedback-resolve';
+		}
+		if ( $record->isNonActionable() ) {
+			$topClass .= ' articleFeedbackv5-feedback-noaction';
+		}
+		if ( $record->isInappropriate() ) {
+			$topClass .= ' articleFeedbackv5-feedback-inappropriate';
 		}
 		if ( $record->isArchived() ) {
 			$topClass .= ' articleFeedbackv5-feedback-archive';
@@ -128,8 +135,8 @@ class ArticleFeedbackv5Render {
 				'div',
 				array(
 					'class' => $topClass,
-					'data-id'   => $record->aft_id,
-					'data-pageid'   => $record->aft_page
+					'data-id' => $record->aft_id,
+					'data-pageid' => $record->aft_page
 				),
 				// {toolbox, e.g. feature, hide}
 				$toolbox .
@@ -248,6 +255,8 @@ class ArticleFeedbackv5Render {
 			$class = 'oversight';
 		} elseif ( $record->isHidden() ) {
 			$class = 'hide';
+		} elseif ( $record->isInappropriate() ) {
+			$class = 'inappropriate';
 		} else {
 			return '';
 		}
@@ -274,6 +283,8 @@ class ArticleFeedbackv5Render {
 			$type = 'oversight';
 		} elseif ( $record->isHidden() ) {
 			$type = 'hide';
+		} elseif ( $record->isInappropriate() ) {
+			$type = 'inappropriate';
 		} else {
 			return '';
 		}
@@ -506,16 +517,16 @@ class ArticleFeedbackv5Render {
 					'span',
 					array(
 						'class' => 'articleFeedbackv5-comment-full',
-						'id'    => "articleFeedbackv5-comment-full-$id"
+						'id' => "articleFeedbackv5-comment-full-$id"
 					),
 					$text
 				) .
 				Html::element(
 					'a',
 					array(
-						'href'  => SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$id" )->getLinkURL(),
+						'href' => SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$id" )->getLinkURL(),
 						'class' => 'articleFeedbackv5-comment-toggle',
-						'id'    => "articleFeedbackv5-comment-toggle-$id"
+						'id' => "articleFeedbackv5-comment-toggle-$id"
 					),
 					wfMessage( 'articlefeedbackv5-comment-more' )->text()
 				);
@@ -528,7 +539,7 @@ class ArticleFeedbackv5Render {
 				Html::element( 'span',
 					array(
 						'class' => 'articleFeedbackv5-comment-short',
-						'id'    => "articleFeedbackv5-comment-short-$id"
+						'id' => "articleFeedbackv5-comment-short-$id"
 					),
 					$short
 				) .
@@ -606,7 +617,7 @@ class ArticleFeedbackv5Render {
 					'span',
 					array(
 						'class' => $votesClass,
-						'id'    => "articleFeedbackv5-helpful-votes-$id",
+						'id' => "articleFeedbackv5-helpful-votes-$id",
 						'title' => $counts
 					),
 					$percent
@@ -633,7 +644,7 @@ class ArticleFeedbackv5Render {
 					Html::element(
 						'span',
 						array(
-							'id'    => "articleFeedbackv5-abuse-count-$id",
+							'id' => "articleFeedbackv5-abuse-count-$id",
 							'class' => $aclass
 						),
 						wfMessage(
@@ -689,7 +700,7 @@ class ArticleFeedbackv5Render {
 							Html::element(
 								'a',
 								array(
-									'id'    => "articleFeedbackv5-$action-link-$id",
+									'id' => "articleFeedbackv5-$action-link-$id",
 									'class' => "articleFeedbackv5-$action-link articleFeedbackv5-$action-own-link",
 									'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-own" )->text(),
 									'href' => '#',
@@ -768,12 +779,12 @@ class ArticleFeedbackv5Render {
 		$toolbox = '';
 
 		// no editor-action has yet been performed, show tools
-		if ( !$record->isFeatured() && !$record->isResolved() && !$record->isNonActionable() && !$record->isHidden() && !$record->isArchived() && !$record->isOversighted() ) {
+		if ( !$record->isFeatured() && !$record->isResolved() && !$record->isNonActionable() && !$record->isInappropriate() && !$record->isArchived() && !$record->isHidden() && !$record->isOversighted() ) {
 			$tools =
 				$this->buildToolboxLink( $record, 'feature' ) .
 				$this->buildToolboxLink( $record, 'resolve' ) .
 				$this->buildToolboxLink( $record, 'noaction' ) .
-				$this->buildToolboxLink( $record, 'hide' );
+				$this->buildToolboxLink( $record, 'inappropriate' );
 
 			if ( $tools ) {
 				$toolbox .=
@@ -798,26 +809,14 @@ class ArticleFeedbackv5Render {
 			if ( $last ) {
 				$tools = '';
 
+
 				// undo-link
 				$tools .= $this->buildToolboxLink( $record, "un$last->log_action" );
 
 
-				// don't add editor-action undo possibility if post has been oversighted (that would no longer make sense...)
-				if ( !$record->isOversighted() ) {
-					// if feedback is featured, it should still be resolvable in 1 click
-					if ( $record->isFeatured() && !$record->isResolved() ) {
-						/*
-						 * If feedback is featured and just unresolved, the "undo" button for
-						 * the earlier feature will not exist ($last == 'unresolve', so it will
-						 * have attempted to create 'ununresolve', as that action does not exist).
-						 * Force the creation of the undo feature button here ;)
-						 */
-						if ( $last->log_action == 'unresolve' ) {
-							$tools .= $this->buildToolboxLink( $record, 'unfeature' );
-						}
-
-						$tools .= $this->buildToolboxLink( $record, 'resolve' );
-					}
+				// if feedback is featured, it should still be resolvable in 1 click
+				if ( $record->isFeatured() && !$record->isResolved() ) {
+					$tools .= $this->buildToolboxLink( $record, 'resolve' );
 				}
 
 
@@ -919,28 +918,39 @@ class ArticleFeedbackv5Render {
 				}
 
 
-				// build oversight-related tools
-				if ( $record->isHidden() ) {
-					// only show "request oversight" to those who don't have permissions to oversight themselves
-					if ( $this->isAllowed( 'aft-monitor' ) && !$this->isAllowed( 'aft-oversighter' ) ) {
-						/*
-						 * When requested by this user already, it will be transformed into an unrequest
-						 * link through JS. When the request has been declined already, add a class to
-						 * make sure this user knows about it & is no longer capable to request for this entry.
-						 */
-						$class = $record->isDeclined() ? 'inactive' : '';
-						$tools .= $this->buildToolboxLink( $record, 'request', "articleFeedbackv5-tipsy-link $class" );
+				// hide (monitors & oversighters), request (monitors), oversight & decline (oversighters)
+				if ( $record->isInappropriate() || $record->isHidden() || $record->isOversighted() ) {
+					if ( $this->isAllowed( 'aft-monitor' ) ) {
+						if ( !$record->isHidden() && !$record->isOversighted() ) {
+							$tools .= $this->buildToolboxLink( $record, 'hide', 'articleFeedbackv5-tipsy-link' );
+						} else {
+							// unhide will have been built through "un$last->log_action" already ;)
+						}
+
+						if ( !$this->isAllowed( 'aft-oversighter' ) ) {
+							/*
+							 * Request oversight.
+							 *
+							 * When requested by this user already, it will be transformed into an unrequest
+							 * link through JS. When the request has been declined already, add a class to
+							 * make sure this user knows about it & is no longer capable to request for this entry.
+							 */
+							$class = $record->isDeclined() ? 'inactive' : '';
+							$tools .= $this->buildToolboxLink( $record, 'request', "articleFeedbackv5-tipsy-link $class" );
+						}
 					}
 
 					if ( $this->isAllowed( 'aft-oversighter' ) ) {
-						if ( $record->isOversighted() ) {
-							$tools .= $this->buildToolboxLink( $record, 'unoversight' );
-						} else {
+						if ( !$record->isOversighted() ) {
+							// decline oversight request
 							if ( $record->isRequested() || $record->isDeclined() ) {
 								$class = $record->isDeclined() ? 'inactive' : '';
 								$tools .= $this->buildToolboxLink( $record, 'decline', $class );
 							}
+
 							$tools .= $this->buildToolboxLink( $record, 'oversight', 'articleFeedbackv5-tipsy-link' );
+						} else {
+							// unoversight will have been built through "un$last->log_action" already ;)
 						}
 					}
 				}
@@ -1029,7 +1039,7 @@ class ArticleFeedbackv5Render {
 				'div',
 				array(
 					'class' => 'articleFeedbackv5-feedback-tools',
-					'id'    => "articleFeedbackv5-feedback-tools-$record->aft_id"
+					'id' => "articleFeedbackv5-feedback-tools-$record->aft_id"
 				),
 				$toolbox
 			);
@@ -1074,7 +1084,7 @@ class ArticleFeedbackv5Render {
 						Title::newFromID( $record->aft_page ),
 						wfMessage( 'articlefeedbackv5-permalink-info-revision-link' )->escaped(),
 						array(),
-						array( 'oldid'  => $record->aft_page_revision )
+						array( 'oldid' => $record->aft_page_revision )
 					)
 				)
 			);

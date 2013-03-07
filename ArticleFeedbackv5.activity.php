@@ -32,30 +32,45 @@ class ArticleFeedbackv5Activity {
 	 * @var array
 	 */
 	public static $actions = array(
-		'oversight' => array(
-			'permissions' => 'aft-oversighter',
+		'helpful' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
+		),
+		'undo-helpful' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'neutral',
+			'log_type' => 'articlefeedbackv5'
+		),
+		'unhelpful' => array(
+			'permissions' => 'aft-reader',
 			'sentiment' => 'negative',
-			'log_type' => 'suppress'
+			'log_type' => 'articlefeedbackv5'
 		),
-		'unoversight' => array(
-			'permissions' => 'aft-oversighter',
-			'sentiment' => 'positive',
-			'log_type' => 'suppress'
+		'undo-unhelpful' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'neutral',
+			'log_type' => 'articlefeedbackv5'
 		),
-		'decline' => array(
-			'permissions' => 'aft-oversighter',
-			'sentiment' => 'positive',
-			'log_type' => 'suppress'
-		),
-		'request' => array(
-			'permissions' => 'aft-monitor',
+		'flag' => array(
+			'permissions' => 'aft-reader',
 			'sentiment' => 'negative',
-			'log_type' => 'suppress'
+			'log_type' => 'articlefeedbackv5'
 		),
-		'unrequest' => array(
-			'permissions' => 'aft-monitor',
+		'unflag' => array(
+			'permissions' => 'aft-reader',
 			'sentiment' => 'positive',
-			'log_type' => 'suppress'
+			'log_type' => 'articlefeedbackv5'
+		),
+		'autoflag' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
+		),
+		'clear-flags' => array(
+			'permissions' => 'aft-reader',
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'feature' => array(
 			'permissions' => 'aft-editor',
@@ -87,19 +102,14 @@ class ArticleFeedbackv5Activity {
 			'sentiment' => 'neutral',
 			'log_type' => 'articlefeedbackv5'
 		),
-		'hide' => array(
-			'permissions' => 'aft-editor2',
+		'inappropriate' => array(
+			'permissions' => 'aft-editor',
 			'sentiment' => 'negative',
 			'log_type' => 'articlefeedbackv5'
 		),
-		'unhide' => array(
-			'permissions' => 'aft-editor2',
+		'uninappropriate' => array(
+			'permissions' => 'aft-editor',
 			'sentiment' => 'positive',
-			'log_type' => 'articlefeedbackv5'
-		),
-		'autohide' => array(
-			'permissions' => 'aft-editor2',
-			'sentiment' => 'negative',
 			'log_type' => 'articlefeedbackv5'
 		),
 		'archive' => array(
@@ -112,46 +122,46 @@ class ArticleFeedbackv5Activity {
 			'sentiment' => 'positive',
 			'log_type' => 'articlefeedbackv5'
 		),
-		'flag' => array(
-			'permissions' => 'aft-reader',
+		'hide' => array(
+			'permissions' => 'aft-monitor',
 			'sentiment' => 'negative',
 			'log_type' => 'articlefeedbackv5'
 		),
-		'unflag' => array(
-			'permissions' => 'aft-reader',
+		'unhide' => array(
+			'permissions' => 'aft-monitor',
 			'sentiment' => 'positive',
 			'log_type' => 'articlefeedbackv5'
 		),
-		'autoflag' => array(
-			'permissions' => 'aft-reader',
+		'autohide' => array(
+			'permissions' => 'aft-monitor',
 			'sentiment' => 'negative',
 			'log_type' => 'articlefeedbackv5'
 		),
-		'clear-flags' => array(
-			'permissions' => 'aft-reader',
-			'sentiment' => 'positive',
-			'log_type' => 'articlefeedbackv5'
-		),
-		'helpful' => array(
-			'permissions' => 'aft-reader',
-			'sentiment' => 'positive',
-			'log_type' => 'articlefeedbackv5'
-		),
-		'undo-helpful' => array(
-			'permissions' => 'aft-reader',
-			'sentiment' => 'neutral',
-			'log_type' => 'articlefeedbackv5'
-		),
-		'unhelpful' => array(
-			'permissions' => 'aft-reader',
+		'request' => array(
+			'permissions' => 'aft-monitor',
 			'sentiment' => 'negative',
-			'log_type' => 'articlefeedbackv5'
+			'log_type' => 'suppress'
 		),
-		'undo-unhelpful' => array(
-			'permissions' => 'aft-reader',
-			'sentiment' => 'neutral',
-			'log_type' => 'articlefeedbackv5'
-		)
+		'unrequest' => array(
+			'permissions' => 'aft-monitor',
+			'sentiment' => 'positive',
+			'log_type' => 'suppress'
+		),
+		'decline' => array(
+			'permissions' => 'aft-oversighter',
+			'sentiment' => 'positive',
+			'log_type' => 'suppress'
+		),
+		'oversight' => array(
+			'permissions' => 'aft-oversighter',
+			'sentiment' => 'negative',
+			'log_type' => 'suppress'
+		),
+		'unoversight' => array(
+			'permissions' => 'aft-oversighter',
+			'sentiment' => 'positive',
+			'log_type' => 'suppress'
+		),
 	);
 
 	/**
@@ -392,6 +402,8 @@ class ArticleFeedbackv5Activity {
 					$action = 'feature';
 				} elseif ( $feedback->isNonActionable() ) {
 					$action = 'noaction';
+				} elseif ( $feedback->isInappropriate() ) {
+					$action = 'inappropriate';
 				} else {
 					continue;
 				}

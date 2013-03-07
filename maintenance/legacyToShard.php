@@ -199,22 +199,6 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 
 			foreach ( $logging as $log ) {
 				switch ( $log->log_action ) {
-					case 'oversight':
-						$feedback->aft_oversight = 1;
-						$feedback->aft_request = 0;
-						if ( !$feedback->isHidden() ) {
-							$feedback->aft_hide = 1;
-							$feedback->aft_autohide = 1;
-						}
-						break;
-					case 'unoversight':
-						$feedback->aft_oversight = 0;
-						$feedback->aft_request = 0;
-						if ( $feedback->aft_hide && $feedback->aft_autohide ) {
-							$feedback->aft_autohide = 0;
-							$feedback->aft_hide = 0;
-						}
-						break;
 					case 'decline':
 						$feedback->aft_decline = 1;
 						if ( $feedback->aft_hide && $feedback->aft_autohide ) {
@@ -259,7 +243,10 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_feature = 1;
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 0;
 						$feedback->aft_hide = 0;
+						$feedback->aft_oversight = 0;
+
 						if ( $feedback->aft_flag && $feedback->aft_autoflag ) {
 							$feedback->aft_autoflag = 0;
 							$feedback->aft_flag = 0;
@@ -269,44 +256,75 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_feature = 0;
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 0;
 						$feedback->aft_hide = 0;
+						$feedback->aft_oversight = 0;
 						break;
 					case 'resolve':
 						$feedback->aft_feature = 0;
 						$feedback->aft_resolve = 1;
 						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 0;
 						$feedback->aft_hide = 0;
+						$feedback->aft_oversight = 0;
 						break;
 					case 'unresolve':
 						$feedback->aft_feature = 0;
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 0;
 						$feedback->aft_hide = 0;
+						$feedback->aft_oversight = 0;
 						break;
 					case 'noaction':
 						$feedback->aft_feature = 0;
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 1;
+						$feedback->aft_inappropriate = 0;
 						$feedback->aft_hide = 0;
+						$feedback->aft_oversight = 0;
 						break;
 					case 'unnoaction':
 						$feedback->aft_feature = 0;
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 0;
 						$feedback->aft_hide = 0;
+						$feedback->aft_oversight = 0;
+						break;
+					case 'inappropriate':
+						$feedback->aft_feature = 0;
+						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 1;
+						$feedback->aft_hide = 0;
+						$feedback->aft_oversight = 0;
+						break;
+					case 'uninappropriate':
+						$feedback->aft_feature = 0;
+						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 0;
+						$feedback->aft_hide = 0;
+						$feedback->aft_oversight = 0;
 						break;
 					case 'hidden':
 					case 'hide':
 						$feedback->aft_feature = 0;
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 0;
 						$feedback->aft_hide = 1;
+						$feedback->aft_oversight = 0;
 						break;
 					case 'autohide':
 						$feedback->aft_feature = 0;
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 0;
 						$feedback->aft_hide = 1;
+						$feedback->aft_oversight = 0;
+
 						$feedback->aft_autohide = 1;
 						break;
 					case 'unhidden':
@@ -314,11 +332,42 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_feature = 0;
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 0;
 						$feedback->aft_hide = 0;
+						$feedback->aft_oversight = 0;
+
 						$feedback->aft_autohide = 0;
 						if ( $feedback->aft_flag && $feedback->aft_autoflag ) {
 							$feedback->aft_autoflag = 0;
 							$feedback->aft_flag = 0;
+						}
+						break;
+					case 'oversight':
+						$feedback->aft_feature = 0;
+						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 0;
+						$feedback->aft_hide = 0;
+						$feedback->aft_oversight = 1;
+
+						$feedback->aft_request = 0;
+						if ( !$feedback->isHidden() ) {
+							$feedback->aft_hide = 1;
+							$feedback->aft_autohide = 1;
+						}
+						break;
+					case 'unoversight':
+						$feedback->aft_feature = 0;
+						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 0;
+						$feedback->aft_hide = 0;
+						$feedback->aft_oversight = 0;
+
+						$feedback->aft_request = 0;
+						if ( $feedback->aft_hide && $feedback->aft_autohide ) {
+							$feedback->aft_autohide = 0;
+							$feedback->aft_hide = 0;
 						}
 						break;
 					case 'helpful':

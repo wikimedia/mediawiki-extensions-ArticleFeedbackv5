@@ -1,7 +1,7 @@
 -- add archive-related columns/indexes to schema
 ALTER TABLE /*_*/aft_feedback
-  ADD COLUMN aft_archive boolean NOT NULL DEFAULT 0 AFTER aft_noaction,
-  ADD COLUMN aft_archive_date varbinary(14) DEFAULT NULL AFTER aft_archive,
+  ADD COLUMN aft_archive boolean NOT NULL DEFAULT 0,
+  ADD COLUMN aft_archive_date varbinary(14) DEFAULT NULL,
   DROP INDEX /*i*/relevance,
   DROP INDEX /*i*/age,
   DROP INDEX /*i*/helpful,
