@@ -251,6 +251,16 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_noaction.svg);
 }
+.articleFeedbackv5-feedback .articleFeedbackv5-inappropriate-marker {
+	/* @embed */
+	background: url(images/toolbox_inappropriate.png);
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
+	/* @embed */
+	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
+}
 .articleFeedbackv5-feedback .articleFeedbackv5-hide-marker {
 	/* @embed */
 	background: url(images/toolbox_hide.png);
@@ -274,6 +284,7 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-feature-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-resolve-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-noaction-marker,
+.articleFeedbackv5-feedback .articleFeedbackv5-inappropriate-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-hide-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-oversight-marker {
 	display: block;
@@ -314,7 +325,7 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul li ul li a:hover {
 	cursor: hand;
 }
-.articleFeedbackv5-hide-link, .articleFeedbackv5-oversight-link {
+.articleFeedbackv5-inappropriate-link, .articleFeedbackv5-hide-link, .articleFeedbackv5-oversight-link {
 	cursor: pointer;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools p.articleFeedbackv5-form-toolbox-label {
@@ -391,6 +402,16 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_noaction.svg);
 }
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-inappropriate-link:before {
+	/* @embed */
+	background-image: url(images/toolbox_inappropriate.png);
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
+	/* @embed */
+	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
+}
 .articleFeedbackv5-hide-own-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-hide-link:before {
 	/* @embed */
@@ -428,12 +449,13 @@
 	background-image: url(images/toolbox_activity.png);
 }
 .articleFeedbackv5-unhide-own-link:before,
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unhide-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unfeature-link:before,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unresolve-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unnoaction-link:before,
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unrequest-link:before,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-uninappropriate-link:before,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unhide-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unoversight-link:before,
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unresolve-link:before {
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unrequest-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_undo.png);
 	/* @embed */
@@ -654,14 +676,6 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 
 /** Screen for hidden/deleted **/
 .articleFeedbackv5-post-screen {
-	/*
-	 * NOTE: The below line will "disable" the mask for hidden/oversighted posts.
-	 * I didn't want to completely remove the functionality, so this is the work-
-	 * around: perhaps some day, in some cases, it will prove useful once again.
-	 * Removing this line below will reinstate the mask (which is now only hidden)
-	 */
-	display: none;
-
 	z-index: 99;
 	position: absolute;
 	top: 0;
@@ -670,6 +684,10 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	right: 0;
 	background-color: #dae2eb;
 	padding: 10px 30px;
+}
+/* No mask should be displayed for posts marked as inappropriate (only for hide/oversight) */
+.articleFeedbackv5-feedback-inappropriate .articleFeedbackv5-post-screen {
+	display: none;
 }
 .articleFeedbackv5-post-screen .articleFeedbackv5-mask-text-wrapper {
 	width: 100%;

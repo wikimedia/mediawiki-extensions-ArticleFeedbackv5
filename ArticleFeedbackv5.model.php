@@ -39,6 +39,7 @@ class ArticleFeedbackv5Model extends DataModel {
 		$aft_feature = 0,
 		$aft_resolve = 0,
 		$aft_noaction = 0,
+		$aft_inappropriate = 0,
 		$aft_helpful = 0,
 		$aft_unhelpful = 0,
 
@@ -90,11 +91,11 @@ class ArticleFeedbackv5Model extends DataModel {
 		// reader lists
 		'featured' => array(
 			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_net_helpful > 0 OR aft_feature = 1' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_inappropriate = 0', 'aft_net_helpful > 0 OR aft_feature = 1' ),
 		),
 		'unreviewed' => array(
 			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_feature = 0', 'aft_resolve = 0', 'aft_noaction = 0' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_feature = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_inappropriate = 0' ),
 		),
 
 		// editor lists
@@ -123,19 +124,23 @@ class ArticleFeedbackv5Model extends DataModel {
 			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_noaction = 1' ),
 		),
 		'inappropriate' => array(
-			'permissions' => 'aft-editor2', // other permission level makes it possible to separate from general public view
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 1' ),
+			'permissions' => 'aft-editor',
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0', 'aft_inappropriate = 1' ),
 		),
 //		'archived' => array(
 //			'permissions' => 'aft-editor',
 //			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0' ), // @todo: work on this one ...
 //		),
-		'allcomment' => array(
+		'allcomment' => array( // @todo: rename list to "unhidden"?
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0' ),
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0' ),
 		),
 
 		// monitor lists
+		'hidden' => array( // @todo: add list translation!
+			'permissions' => 'aft-monitor',
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 1' ),
+		),
 		'requested' => array(
 			'permissions' => 'aft-monitor',
 			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_request = 1' ),
@@ -597,15 +602,8 @@ class ArticleFeedbackv5Model extends DataModel {
 	/**
 	 * @return bool
 	 */
-	public function isHidden() {
-		return (bool) $this->aft_hide;
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function isOversighted() {
-		return (bool) $this->aft_oversight;
+	public function isFlagged() {
+		return $this->aft_flag + $this->aft_autoflag > 0;
 	}
 
 	/**
@@ -632,8 +630,15 @@ class ArticleFeedbackv5Model extends DataModel {
 	/**
 	 * @return bool
 	 */
-	public function isDeclined() {
-		return (bool) $this->aft_decline;
+	public function isInappropriate() {
+		return (bool) $this->aft_inappropriate;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isHidden() {
+		return (bool) $this->aft_hide;
 	}
 
 	/**
@@ -646,7 +651,14 @@ class ArticleFeedbackv5Model extends DataModel {
 	/**
 	 * @return bool
 	 */
-	public function isFlagged() {
-		return $this->aft_flag + $this->aft_autoflag > 0;
+	public function isDeclined() {
+		return (bool) $this->aft_decline;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isOversighted() {
+		return (bool) $this->aft_oversight;
 	}
 }

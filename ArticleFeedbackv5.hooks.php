@@ -58,6 +58,12 @@ class ArticleFeedbackv5Hooks {
 			dirname( __FILE__ ) . '/sql/noaction.sql'
 		);
 
+		$updater->addExtensionField(
+			'aft_feedback',
+			'aft_inappropriate',
+			dirname( __FILE__ ) . '/sql/inappropriate.sql'
+		);
+
 		return true;
 	}
 
@@ -427,6 +433,12 @@ class ArticleFeedbackv5Hooks {
 		if ( $record->isResolved() ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-resolve' )->escaped();
 		}
+		if ( $record->isNonActionable() ) {
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-noaction' )->escaped();
+		}
+		if ( $record->isInappropriate() ) {
+			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-inappropriate' )->escaped();
+		}
 		if ( $record->isHidden() ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-hide' )->escaped();
 		}
@@ -573,7 +585,7 @@ class ArticleFeedbackv5Hooks {
 			$mExistingExpiry,
 			$mExpiry,
 			$mExpirySelection
-			) = ArticleFeedbackv5Permissions::getExpiry( $articleId );
+		) = ArticleFeedbackv5Permissions::getExpiry( $articleId );
 
 		if( $showProtectOptions ) {
 			$expiryFormOptions = '';
