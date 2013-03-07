@@ -2681,19 +2681,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4"
-     inkscape:cx="64.43551"
-     inkscape:cy="-23.413672"
+     inkscape:zoom="2.8"
+     inkscape:cx="173.2959"
+     inkscape:cy="22.151973"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1779"
-     inkscape:window-height="883"
-     inkscape:window-x="-3"
-     inkscape:window-y="26"
-     inkscape:window-maximized="0"
-     showguides="true"
-     inkscape:guide-bbox="true" />
+     inkscape:window-width="1920"
+     inkscape:window-height="951"
+     inkscape:window-x="0"
+     inkscape:window-y="22"
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata16362">
     <rdf:RDF>
@@ -2711,10 +2709,41 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-1032.3622)">
-    <path
-       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#3152c0;fill-opacity:1;stroke:none;stroke-width:1.79088962;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
-       d="m 9.4787053,1033.3622 c -2.8286005,0 -5.120954,2.2923 -5.120954,5.1209 l 0,2.8518 -0.7972743,0 0,10.0273 12.879046,0 0,-10.0273 -0.76661,0 0,-2.8518 c 0,-2.8286 -2.323018,-5.1209 -5.151618,-5.1209 l -1.0425897,0 z m 0,1.7478 1.0425897,0 c 1.885436,0 3.373083,1.4877 3.373083,3.3731 l 0,2.8518 -7.7887562,0 0,-2.8518 c 0,-1.8854 1.4876466,-3.3731 3.3730835,-3.3731 z"
-       id="rect4411"
-       inkscape:connector-curvature="0" />
+    <g
+       id="g16520"
+       transform="matrix(1.6541857,0,0,1.6541857,-205.6349,867.36465)">
+      <rect
+         transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)"
+         ry="0"
+         rx="0"
+         y="-22.833233"
+         x="166.03198"
+         height="10.924374"
+         width="1.8995798"
+         id="rect6469-8-15-1-0-2-3-0"
+         style="color:#000000;fill:#3152c0;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:8;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <rect
+         transform="matrix(-0.70710678,0.70710678,-0.70710678,-0.70710678,0,0)"
+         ry="0"
+         rx="0"
+         y="-172.44395"
+         x="-18.320843"
+         height="10.924374"
+         width="1.8995798"
+         id="rect6469-8-15-1-0-2-3-0-6"
+         style="color:#000000;fill:#3152c0;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:8;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </g>
+    <g
+       style="fill:#3152c0"
+       id="g6511-0-4-3-5-3-6-8-3"
+       transform="matrix(0.61516943,0.61516943,-0.61516943,0.61516943,-168.08875,-666.63056)"
+       inkscape:export-filename="/home/pau/Documentos/wikimedia/editor-engagement/feedback-tool/article-feedback/simplification/unusable-renamed.png"
+       inkscape:export-xdpi="177"
+       inkscape:export-ydpi="177">
+      <g
+         style="fill:#3152c0"
+         transform="matrix(0.76470589,0,0,0.76470589,202.38355,74.173812)"
+         id="g6489-9-2-2-3-7-6-4-4" />
+    </g>
   </g>
 </svg>

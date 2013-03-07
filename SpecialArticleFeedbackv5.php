@@ -108,9 +108,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// these are messages that require some parsing that the current JS mw.msg does not yet support
 		$flyovers = array(
-			'hide', 'unhide', 'request', 'unrequest',
-			'oversight', 'unoversight', 'decline', 'feature',
-			'unfeature', 'resolve', 'unresolve'
+			'feature', 'unfeature', 'resolve', 'unresolve', 'noaction', 'unnoaction', 'inappropriate', 'uninappropriate',
+			'hide', 'unhide', 'request', 'unrequest', 'decline',
+			'oversight', 'unoversight',
 		);
 		foreach ( $flyovers as $flyover ) {
 			$message = wfMessage( "articlefeedbackv5-noteflyover-$flyover-description" )->parse();
