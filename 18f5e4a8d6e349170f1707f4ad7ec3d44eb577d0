@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "DpTF4mO8",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-08T19:23:17Z",
+      "side": 1,
+      "message": "This text will be pre-filled in a new section that will be created on a talk page. The user can then edit that text before submitting. By adding ~~~~, the new section will (unless the user changes this default template text) signed with the user\u0027s name",
+      "parentUuid": "DpQZT4Bc",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DpaZXjAA",
         "filename": "ArticleFeedbackv5.model.php",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "DpbEAKGw",
+        "filename": "ArticleFeedbackv5.model.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-08T19:23:17Z",
+      "side": 1,
+      "message": "Its new shorthand ternary if syntax introduced in php 5.3. Logically equivalent to: $user ? $user : false;",
+      "parentUuid": "DpaZXjAA",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DpeZ29KI",
         "filename": "ArticleFeedbackv5.render.php",
         "patchSetId": 7
@@ -47,6 +83,24 @@
       "writtenOn": "2013-03-08T15:53:51Z",
       "side": 1,
       "message": "Superfluous newline.",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DpXHSoAE",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-08T19:23:17Z",
+      "side": 1,
+      "message": "I thought it would increase legibility by visually distinguishing the several links built, but separating them into different methods would be far superior :)",
+      "parentUuid": "DpeZ29KI",
       "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
