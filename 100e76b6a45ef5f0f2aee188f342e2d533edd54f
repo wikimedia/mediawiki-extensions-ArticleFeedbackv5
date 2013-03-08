@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DpeyKUxw",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-08T21:09:36Z",
+      "side": 1,
+      "message": "This should be escaped as the result is passed to the output directly",
+      "revId": "100e76b6a45ef5f0f2aee188f342e2d533edd54f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
