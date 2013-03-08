@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DpQZT4Bc",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-03-08T15:53:51Z",
+      "side": 1,
+      "message": "Why add \"\\n----\" at the end? Also for the message below.",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DpaZXjAA",
+        "filename": "ArticleFeedbackv5.model.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-03-08T15:53:51Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with this notation. Does this return $user if it\u0027s not null?",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DpeZ29KI",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-03-08T15:53:51Z",
+      "side": 1,
+      "message": "Superfluous newline.",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DpSZM3HA",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-03-08T15:53:51Z",
+      "side": 1,
+      "message": "This seems to be a superfluous newline.",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DpUZJ6F8",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-03-08T15:53:51Z",
+      "side": 1,
+      "message": "Superfluous newline.",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
