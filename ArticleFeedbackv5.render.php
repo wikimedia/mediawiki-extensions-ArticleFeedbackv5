@@ -15,6 +15,7 @@
  * @package    ArticleFeedback
  */
 class ArticleFeedbackv5Render {
+
 	/**
 	 * The user
 	 *
@@ -67,20 +68,16 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Runs the fetch
 	 *
-	 * @param  $record ArticleFeedbackv5Model the record, with keys 0 + answers
+	 * @param  $record array the record, with keys 0 + answers
 	 * @return string  the rendered row
 	 */
 	public function run( $record ) {
-		if ( !$record instanceof ArticleFeedbackv5Model ) {
-			return '';
-		}
-
 		// Special cases: when the record is deleted/hidden, but the user
 		// doesn't have permission to see it
-		if ( ( $record->isOversighted() && !ArticleFeedbackv5Activity::canPerformAction( 'oversight', $this->user ) ) ||
-			( $record->isHidden() && !ArticleFeedbackv5Activity::canPerformAction( 'hide', $this->user ) ) ) {
-			// Called via permalink: show an empty gray mask
+		if ( ( $record[0]->af_is_deleted && !$this->isAllowed( 'aft-oversighter' ) )
+			|| ( $record[0]->af_is_hidden && !$this->isAllowed( 'aft-monitor' ) ) ) {
 			if ( $this->isPermalink ) {
+				// Called via permalink: show an empty gray mask
 				return $this->emptyGrayMask( $record );
 			} else {
 				return '';
@@ -88,7 +85,21 @@ class ArticleFeedbackv5Render {
 		}
 
 		// Build with the actual content of the feedback (header + comment)
-		$content = $this->render( $record );
+		if ( $this->isCentral ) {
+			$content = $this->renderCentral( $record );
+		} else {
+			switch( $record[0]->af_form_id ) {
+				case 1:
+				case 2:
+				case 3:
+				case 6:
+					$content = $this->renderBucket1( $record );
+					break;
+				default:
+					$content = $this->renderNoBucket( $record );
+					break;
+			}
+		}
 
 		// Build the footer
 		$footer = $this->renderFooter( $record );
@@ -98,22 +109,19 @@ class ArticleFeedbackv5Render {
 
 		// Get the top class
 		$topClass = 'articleFeedbackv5-feedback';
-		if ( $record->isHidden() ) {
-			$topClass .= ' articleFeedbackv5-feedback-hide';
+		if ( $record[0]->af_is_hidden ) {
+			$topClass .= ' articleFeedbackv5-feedback-hidden';
 		}
-		if ( $record->isOversighted() ) {
-			$topClass .= ' articleFeedbackv5-feedback-oversight';
+		if ( $record[0]->af_is_deleted ) {
+			$topClass .= ' articleFeedbackv5-feedback-deleted';
 		}
-		if ( $record->isFeatured() ) {
-			$topClass .= ' articleFeedbackv5-feedback-feature';
+		if ( $record[0]->af_is_featured ) {
+			$topClass .= ' articleFeedbackv5-feedback-featured';
 		}
-		if ( $record->isResolved() ) {
-			$topClass .= ' articleFeedbackv5-feedback-resolve';
+		if ( $record[0]->af_is_resolved ) {
+			$topClass .= ' articleFeedbackv5-feedback-resolved';
 		}
-		if ( $record->isArchived() ) {
-			$topClass .= ' articleFeedbackv5-feedback-archive';
-		}
-		if ( !$toolbox ) {
+		if ( !$this->hasToolbox() ) {
 			$topClass .= ' articleFeedbackv5-comment-notoolbox';
 		}
 		if ( $this->isPermalink ) {
@@ -124,7 +132,8 @@ class ArticleFeedbackv5Render {
 		}
 
 		// Get the class for the comment wrap
-		$wrapClass = 'articleFeedbackv5-comment-wrap articleFeedbackv5-comment-' . $this->getMood( $record );
+		$wrapClass = 'articleFeedbackv5-comment-wrap'
+			. ' articleFeedbackv5-comment-' . $this->getMood( $record );
 
 		// Permalink info
 		$permalinkInfo = '';
@@ -132,29 +141,33 @@ class ArticleFeedbackv5Render {
 			$permalinkInfo = $this->renderPermalinkInfo( $record );
 		}
 
+		// Join it all together...
 		return
-			Html::rawElement(
-				'div',
-				array(
-					'class' => $topClass,
-					'data-id'   => $record->aft_id,
-					'data-pageid'   => $record->aft_page
-				),
+			// <div class={$topClass}" rel="{feedback id}">
+			Html::openElement( 'div', array(
+				'class' => $topClass,
+				'rel'   => $record[0]->af_id )
+			)
 				// {toolbox, e.g. feature, hide}
-				$toolbox .
+				. $toolbox
 				// {gray mask, if applicable}
-				$this->grayMask( $record ) .
-				Html::rawElement( 'div', array( 'class' => 'articleFeedbackv5-comment-container' ),
-					Html::rawElement( 'div', array( 'class' => $wrapClass ),
+				. $this->grayMask( $record )
+				// <div class="articleFeedbackv5-comment-container">
+				. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-container' ) )
+					// <div class="{$wrapClass}">
+					. Html::openElement( 'div', array( 'class' => $wrapClass ) )
 						// {feedback content}
-						$content .
+						. $content
 						// {footer links, e.g. helpful, abuse}
-						$footer
-					)
-				)
-			) .
+						. $footer
+					// </div>
+					. Html::closeElement( 'div' )
+				// </div>
+				. Html::closeElement( 'div' )
+			// </div>
+			. Html::closeElement( 'div' )
 			// {info section for permalinks}
-			$permalinkInfo;
+			. $permalinkInfo;
 	}
 
 	/**
@@ -248,41 +261,49 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns an empty gray mask
 	 *
-	 * @param  $record ArticleFeedbackv5Model the record
+	 * @param  $record array the record, with keys 0 + answers
 	 * @return string the empty gray mask
 	 */
-	private function emptyGrayMask( $record ) {
+	private function emptyGrayMask( array $record ) {
 		// hide or oversight?
-		if ( $record->isOversighted() ) {
+		if ( $record[0]->af_is_deleted ) {
 			$class = 'oversight';
-		} elseif ( $record->isHidden() ) {
-			$class = 'hide';
 		} else {
-			return '';
+			$class = 'hidden';
 		}
-
 		return
-			Html::rawElement(
-				'div',
-				array( 'class' => "articleFeedbackv5-feedback articleFeedbackv5-feedback-$class articleFeedbackv5-feedback-emptymask" ),
-				$this->grayMask( $record, true ) .
-				Html::element( 'div', array( 'class' => 'articleFeedbackv5-comment-wrap' ) )
-			);
+			// <div class="articleFeedbackv5-feedback
+			//     articleFeedbackv5-feedback-{oversight|hidden}
+			//     articleFeedbackv5-feedback-emptymask">
+			Html::openElement( 'div',  array(
+				'class' => 'articleFeedbackv5-feedback '
+					. 'articleFeedbackv5-feedback-' . $class . ' '
+					. 'articleFeedbackv5-feedback-emptymask'
+				) )
+				// {gray mask}
+				. $this->grayMask( $record, true )
+				// <div class="articleFeedbackv5-comment-wrap">
+				// </div>
+				. Html::element( 'div', array(
+					'class' => 'articleFeedbackv5-comment-wrap'
+					) )
+			// </div>
+			. Html::closeElement( 'div' );
 	}
 
 	/**
 	 * Returns a gray mask
 	 *
-	 * @param  $record ArticleFeedbackv5Model the record
+	 * @param  $record array the record, with keys 0 + answers
 	 * @param  $empty  bool  [optional] whether the mask is empty; defaults to
 	 *                       false
 	 * @return string the gray mask
 	 */
-	private function grayMask( $record, $empty = false ) {
-		if ( $record->isOversighted() ) {
+	private function grayMask( array $record, $empty = false ) {
+		if ( $record[0]->af_is_deleted ) {
 			$type = 'oversight';
-		} elseif ( $record->isHidden() ) {
-			$type = 'hide';
+		} elseif ( $record[0]->af_is_hidden ) {
+			$type = 'hidden';
 		} else {
 			return '';
 		}
@@ -290,83 +311,121 @@ class ArticleFeedbackv5Render {
 		$viewLink = '';
 		if ( !$empty ) {
 			$viewLink =
-				Html::rawElement(
-					'span',
-					array( 'class' => 'articleFeedbackv5-mask-view' ),
-					Html::rawElement(
-						'a',
-						array(
+				// <span class="articleFeedbackv5-mask-view">
+				Html::openElement( 'span', array( 'class' => 'articleFeedbackv5-mask-view' ) )
+					//   <a href="#" onclick="return false;">
+					//     {msg:articlefeedbackv5-mask-view-contents}
+					//   </a>
+					. Html::rawElement( 'a', array(
 							'href' => '#',
 							'onclick' => 'return false;',
 						),
 						wfMessage( 'articlefeedbackv5-mask-view-contents' )->escaped()
 					)
-				);
-		}
-		$last = $record->getLastEditorActivity();
-		if ( !$last ) {
-			// if this happens, some data is corrupt
-			return '';
+				// </span>
+				. Html::closeElement( 'span' );
 		}
 
 		return
-			Html::rawElement(
-				'div',
-				array( 'class' => 'articleFeedbackv5-post-screen' ),
-				Html::rawElement(
-					'div',
-					array( 'class' => 'articleFeedbackv5-mask-text-wrapper' ),
-					Html::rawElement(
-						'span',
-						array( 'class' => 'articleFeedbackv5-mask-text' ),
-						Html::rawElement(
-							'span',
-							array( 'class' => 'articleFeedbackv5-mask-info' ),
-							ArticleFeedbackv5Utils::renderMaskLine(
-								$type,
-								$record->aft_id,
-								$last->log_user,
-								$last->log_timestamp
-							)
-						) .
-						$viewLink
-					)
-				)
-			);
+			// <div class="articleFeedbackv5-post-screen">
+			Html::openElement( 'div', array(
+					'class' => 'articleFeedbackv5-post-screen'
+				) )
+				// <div class="articleFeedbackv5-mask-text-wrapper">
+				. Html::openElement( 'div', array(
+						'class' => 'articleFeedbackv5-mask-text-wrapper'
+					) )
+					// <span class="articleFeedbackv5-mask-text">
+					. Html::openElement( 'span', array( 'class' => 'articleFeedbackv5-mask-text' ) )
+						// <span class="articleFeedbackv5-mask-info">
+						//   {msg:articlefeedbackv5-mask-text-{oversight|hidden}}
+						// </span>
+						. Html::rawElement( 'span', array( 'class' => 'articleFeedbackv5-mask-info' ),
+							ApiArticleFeedbackv5Utils::renderMaskLine( $type,
+								$record[0]->af_id,
+								$record[0]->af_last_status_user_id,
+								$record[0]->af_last_status_timestamp )
+						)
+						. $viewLink
+					// </span>
+					. Html::closeElement( 'span' )
+				// </div>
+				. Html::closeElement( 'div' )
+			// </div>
+			. Html::closeElement( 'div' );
 	}
 
 	/**
 	 * Returns the mood of the feedback
 	 *
-	 * @param  $record ArticleFeedbackv5Model the record
-	 * @return string  the mood (positive or negative)
+	 * @param  $record array the record, with keys 0 + answers
+	 * @return string  the mood (positive, negative, or neutral)
 	 */
 	public function getMood( $record ) {
-		return $record->aft_rating ? 'positive' : 'negative';
+		switch( $record[0]->af_form_id ) {
+			case 1:
+			case 6:
+				if ( isset( $record['found'] ) && $record['found']->aa_response_boolean == 1 ) {
+					return 'positive';
+				} elseif ( isset( $record['found'] ) && $record['found']->aa_response_boolean !== null ) {
+					return 'negative';
+				} else {
+					return 'neutral';
+				}
+			case 2:
+				$type = $record['tag']->afo_name;
+				return $type == 'problem' ? 'negative' : 'positive';
+			case 3:
+				return $record['rating']->aa_response_rating >= 3 ? 'positive' : 'negative';
+			default:
+				return 'neutral';
+		}
 	}
 
 	/**
-	 * Returns the feedback head and comment
+	 * Returns the feedback head and comment for form #1
 	 *
-	 * @param  $record ArticleFeedbackv5Model the record
+	 * @param  $record array the record, with keys 0 + answers
 	 * @return string  the rendered feedback info
 	 */
-	private function render( $record ) {
-		if ( $this->isCentral ) {
-			$msg = 'articlefeedbackv5-central-header-left-comment';
+	private function renderBucket1( $record ) {
+		$mood = $this->getMood( $record );
+		if ( 'positive' == $mood ) {
+			$msg = 'articlefeedbackv5-form1-header-found';
+		} elseif ( 'negative' == $mood ) {
+			$msg = 'articlefeedbackv5-form1-header-not-found';
 		} else {
-			$mood = $this->getMood( $record );
-
-			if ( $mood == 'positive' ) {
-				$msg = 'articlefeedbackv5-form1-header-found';
-			} elseif ( $mood == 'negative' ) {
-				$msg = 'articlefeedbackv5-form1-header-not-found';
-			}
+			$msg = 'articlefeedbackv5-form1-header-left-comment';
 		}
+		return $this->feedbackHead( $msg, $record[0] )
+			. $this->renderComment(
+				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
+				$record[0]
+			);
+	}
 
-		return
-			$this->feedbackHead( $msg, $record ) .
-			$this->renderComment( $record );
+	/**
+	 * Returns the feedback head and comment when the form is unknown
+	 *
+	 * @param  $record array the record, with keys 0 + answers
+	 * @return string  the rendered feedback info
+	 */
+	private function renderNoBucket( $record ) {
+		return $this->feedbackHead( 'articlefeedbackv5-form-invalid', $record[0] );
+	}
+
+	/**
+	 * Returns the feedback head and comment for the central log
+	 *
+	 * @param  $record array the record, with keys 0 + answers
+	 * @return string  the rendered feedback info
+	 */
+	private function renderCentral( $record ) {
+		return $this->feedbackHead( 'articlefeedbackv5-central-header-left-comment', $record[0] )
+			. $this->renderComment(
+				isset( $record['comment'] ) ? $record['comment']->aa_response_text : '',
+				$record[0]
+			);
 	}
 
 	/**
@@ -375,23 +434,24 @@ class ArticleFeedbackv5Render {
 	 * @param  $message string   the message key describing the the nature of
 	 *                           the feedback (e.g., "USER found what they were
 	 *                           looking for")
-	 * @param  $record  ArticleFeedbackv5 the record
+	 * @param  $record  stdClass the record (from the 0 index)
+	 * @param  $extra   string   any extra info to send to the message
 	 * @return string   the rendered feedback head
 	 */
-	private function feedbackHead( $message, $record ) {
+	private function feedbackHead( $message, $record, $extra = '' ) {
 		$anonMessage = '';
 
 		// User info
-		if ( $record->aft_user == 0 ) {
+		if ( $record->af_user_ip ) {
 			// This is an anonymous (IP) user
 
-			$title = SpecialPage::getTitleFor( 'Contributions', $record->aft_user_text );
+			$title = SpecialPage::getTitleFor( 'Contributions', $record->af_user_ip );
 
-			if ( IP::isIPv4( $record->aft_user_text ) ) {
+			if ( IP::isIPv4( $record->af_user_ip ) ) {
 				// IPv4 - display the same way regular users are displayed
 
 				// display name = visitor's ip
-				$userName = Linker::link( $title, htmlspecialchars( $record->aft_user_text ) );
+				$userName = Linker::link( $title, htmlspecialchars( $record->af_user_ip ) );
 			} else {
 				// not IPv4 - display IP on next line (since IPv6 is rather long, it'd break our display)
 
@@ -399,667 +459,611 @@ class ArticleFeedbackv5Render {
 				$userName = wfMessage( 'articlefeedbackv5-form-anon-username' )->escaped();
 
 				// additional line to be printed with the IPv6 address (with link to contributions)
-				$userLink = Linker::link( $title, htmlspecialchars( $record->aft_user_text ) );
+				$userLink = Linker::link( $title, htmlspecialchars( $record->user_name ) );
 				$anonMessage = wfMessage( 'articlefeedbackv5-form-anon-message' )->rawParams( $userLink )->escaped();
 			}
 		} else {
 			// This is a logged in user
 
 			// build link to user's page
-			$title = Title::makeTitleSafe( NS_USER, $record->aft_user_text );
+			$title = Title::makeTitleSafe( NS_USER, $record->user_name );
 
 			// no user page = build link to user's contributions
 			if ( !$title || !$title->exists() ) {
-				$title = SpecialPage::getTitleFor( 'Contributions', $record->aft_user_text );
+				$title = SpecialPage::getTitleFor( 'Contributions', $record->user_name );
 			}
 
 			// display name = username
-			$userName = Linker::link( $title, htmlspecialchars( $record->aft_user_text ) );
+			$userName = Linker::link( $title, htmlspecialchars( $record->user_name ) );
 		}
 
 		if ( $this->isCentral ) {
-			$article = Title::newFromId( $record->aft_page );
+			$article = Title::newFromRow($record);
 			$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5', $article->getPrefixedDBkey() );
-			$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$record->aft_id" );
+			$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$record->af_id" );
 
-			$userMessage = wfMessage( $message, $record->aft_user_text )
+			$userMessage = wfMessage( $message, $record->user_name )
 				->rawParams( $userName, Linker::linkKnown( $article ) )
 				->params( $feedbackCentralPageTitle->getFullText() )
 				->parse();
 		} else {
-			$userMessage = wfMessage( $message, $record->aft_user_text )->rawParams( $userName )->escaped();
+			$userMessage = wfMessage( $message, $record->user_name )->rawParams(
+					$userName
+				)->escaped();
 		}
 
 		// build messages
 		$userMessage = Html::rawElement( 'h3', array(), $userMessage );
 		if ( $anonMessage ) {
-			$anonMessage = Html::rawElement(
-				'p',
-				array( 'class' => 'articleFeedbackv5-comment-anon-message' ),
-				$anonMessage
-			);
+			$anonMessage = Html::rawElement( 'p', array(
+				'class' => 'articleFeedbackv5-comment-anon-message'
+			), $anonMessage );
 		}
 
 		return
-			Html::rawElement(
-				'div',
-				array( 'class' => 'articleFeedbackv5-comment-head' ),
-				$this->renderTagBlock( $record ) .
-				$userMessage .
-				$this->renderPermalinkTimestamp( $record ) .
-				$anonMessage
-			);
+			// <div class="articleFeedbackv5-comment-head">
+			Html::openElement( 'div', array(
+				'class' => 'articleFeedbackv5-comment-head'
+			) )
+				// The tag block (featured/resolved markers)
+				. $this->renderTagBlock( $record )
+				// <h3>{type-appropriate message}</h3>
+				. $userMessage
+				// {permalink/timestamp}
+				. $this->renderPermalinkTimestamp( $record )
+				// The message for anonymous feedback, displaying the user's ip
+				. $anonMessage
+			// </div>
+			. Html::closeElement( 'div' );
 	}
 
 	/**
 	 * Returns the permalink/timestamp
 	 *
-	 * @param  $record ArticleFeedbackv5Model the record
+	 * @param  $record stdClass the record (from the 0 index)
 	 * @return string  the rendered permalink/timestamp
 	 */
 	private function renderPermalinkTimestamp( $record ) {
-		$id = $record->aft_id;
-		$title = Title::newFromId( $record->aft_page )->getPrefixedDBkey();
-		$timestamp = new MWTimestamp( $record->aft_timestamp );
+		$id    = $record->af_id;
+		$title = Title::newFromRow( $record )->getPrefixedDBkey();
 
-		// link to permalink page
-		$permalink = '';
+		$date = ApiArticleFeedbackv5Utils::renderTimeAgo( $record->af_created );
+		$message = wfMessage( 'articleFeedbackv5-comment-ago' )
+			->rawParams( $date )
+			->escaped();
+
+		$html =
+			// <span class="articleFeedbackv5-feedback-details">
+			Html::openElement( 'span', array(
+				'class' => 'articleFeedbackv5-comment-details'
+			) )
+				// <span class="articleFeedbackv5-comment-details-date">{relative date}</span>
+				. Html::rawElement( 'span', array(
+					'class' => 'articleFeedbackv5-comment-details-date'
+				), $message );
 		if ( !$this->isPermalink ) {
-			$permalink =
-				wfMessage( 'pipe-separator' )->escaped() .
-				Html::rawElement(
-					'span',
-					array( 'class' => 'articleFeedbackv5-comment-details-link' ),
-					Linker::link(
+			$html .= wfMessage( 'pipe-separator' )->escaped()
+				// <span class="articleFeedbackv5-comment-details-link">
+				. Html::openElement( 'span', array(
+					'class' => 'articleFeedbackv5-comment-details-link'
+				) )
+					// <a href="{permalink}">{msg:articleFeedbackv5-details-link}</a>
+					. Linker::link(
 						SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$id" ),
 						wfMessage( 'articleFeedbackv5-details-link' )->escaped()
 					)
-				);
+				// </span>
+				. Html::closeElement( 'span' );
 		}
+		$html .=
+			// </span>
+			Html::closeElement( 'span' );
 
-		return
-			Html::rawElement(
-				'span',
-				array( 'class' => 'articleFeedbackv5-comment-details' ),
-				Html::rawElement(
-					'span',
-					array( 'class' => 'articleFeedbackv5-comment-details-date' ),
-					$timestamp->getHumanTimestamp()->escaped()
-				) .
-				$permalink
-			);
+		return $html;
 	}
 
 	/**
 	 * Returns the marked-up feedback comment
 	 *
-	 * @param  $record ArticleFeedbackv5Model the record
+	 * @param  $text   string the comment
+	 * @param  $record stdClass the record (from the 0 index)
 	 * @return string  the rendered comment
 	 */
-	private function renderComment( $record ) {
+	private function renderComment( $text, $record ) {
 		global $wgLang;
+		$id = $record->af_id;
 
-		$id = $record->aft_id;
-		$text = $record->aft_comment;
 		$short = $this->isPermalink ? $text : $wgLang->truncate( $text, 250 );
+
+		// <blockquote>
+		$rv = Html::openElement( 'blockquote' )
+			// <span class="articleFeedbackv5-comment-short"
+			//   id="articleFeedbackv5-comment-short-{$feedbackId}">
+			//   {truncated comment}
+			// </span>
+			. Html::element( 'span',
+				array(
+					'class' => 'articleFeedbackv5-comment-short',
+					'id'    => "articleFeedbackv5-comment-short-$id"
+				),
+				$short
+			);
 
 		// If the short string is the same size as the original, no truncation
 		// happened, so no controls are needed.  If it's longer, show the short
 		// text, with the 'show more' control.
-		$fullLengthToggle = '';
 		if ( strlen( $short ) != strlen( $text ) ) {
-			$title = Title::newFromID( $record->aft_page )->getPrefixedDBkey();
+			$title = Title::newFromRow( $record )->getPrefixedDBkey();
 
-			$fullLengthToggle =
-				Html::element(
-					'span',
+			// <span class="articleFeedbackv5-comment-full"
+			//   id="articleFeedbackv5-comment-full-{$feedbackId}">
+			//   {full-length comment}
+			// </span>
+			$rv .= Html::element( 'span',
 					array(
 						'class' => 'articleFeedbackv5-comment-full',
 						'id'    => "articleFeedbackv5-comment-full-$id"
 					),
 					$text
-				) .
-				Html::element(
-					'a',
-					array(
-						'href'  => SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$id" )->getLinkURL(),
-						'class' => 'articleFeedbackv5-comment-toggle',
-						'id'    => "articleFeedbackv5-comment-toggle-$id"
-					),
-					wfMessage( 'articlefeedbackv5-comment-more' )->text()
-				);
+				)
+				// <a class="articleFeedbackv5-comment-toggle"
+				//   id="articleFeedbackv5-comment-toggle-{$feedbackId}">
+				//   {articlefeedbackv5-comment-more}
+				// </a>
+				. Html::element( 'a', array(
+					'href'  => SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$id" )->getLinkURL(),
+					'class' => 'articleFeedbackv5-comment-toggle',
+					'id'    => "articleFeedbackv5-comment-toggle-$id"
+				), wfMessage( 'articlefeedbackv5-comment-more' )->text() );
 		}
 
-		return
-			Html::rawElement(
-				'blockquote',
-				array(),
-				Html::element( 'span',
-					array(
-						'class' => 'articleFeedbackv5-comment-short',
-						'id'    => "articleFeedbackv5-comment-short-$id"
-					),
-					$short
-				) .
-				$fullLengthToggle
-			);
+		// </blockquote>
+		$rv .= Html::closeElement( 'blockquote' );
+
+		return $rv;
 	}
 
 	/**
 	 * Returns the footer links
 	 *
-	 * @param  $record ArticleFeedbackv5Model the record
+	 * @param  $record array the record, with keys 0 + answers
 	 * @return string  the rendered footer
 	 */
 	private function renderFooter( $record ) {
 		global $wgLang, $wgUser;
 
-		$id = $record->aft_id;
-		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record );
+		$id = $record[0]->af_id;
+		$ownFeedback = ApiArticleFeedbackv5Utils::isOwnFeedback( $record[0] );
 
-		$voteLinks = '';
-		$voteStats = '';
-		$abuseLink = '';
-		$abuseStats = '';
+		// Start the footer
+		$footer =
+			// <div class="articleFeedbackv5-vote-wrapper">
+			Html::openElement( 'div', array(
+				'class' => 'articleFeedbackv5-vote-wrapper'
+			) )
+				// <div class="articleFeedbackv5-comment-foot-helpful">
+				. Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot-helpful' ) );
 
 		// Add helpful/unhelpful voting links (for posts other than your own)
-		// only for readers; editors have more powerful tools
-		if ( !$this->isAllowed( 'aft-editor' ) && !$ownFeedback ) {
-			$voteLinks =
-				Html::element(
-					'span',
-					array( 'class' => 'articleFeedbackv5-helpful-caption' ),
-					wfMessage( 'articlefeedbackv5-form-helpful-label' )->text()
-				) .
-				Html::element(
-					'a',
-					array(
-						'id' => "articleFeedbackv5-helpful-link-$id",
-						'class' => 'articleFeedbackv5-helpful-link',
-						'href' => '#',
-						'data-action' => 'helpful'
-					),
-					wfMessage( 'articlefeedbackv5-form-helpful-yes-label' )->text()
-				) .
-				Html::element(
-					'a',
-					array(
-						'id' => "articleFeedbackv5-unhelpful-link-$id",
-						'class' => 'articleFeedbackv5-unhelpful-link',
-						'href' => '#',
-						'data-action' => 'unhelpful'
-					),
-					wfMessage( 'articlefeedbackv5-form-helpful-no-label' )->text()
-				);
-
-		// add helpful voting percentage for editors
-		} elseif ( $this->isAllowed( 'aft-editor' ) ) {
-			$percent =
-				wfMessage( 'articlefeedbackv5-form-helpful-votes-percent' )
-					->numParams(
-						ArticleFeedbackv5Utils::percentHelpful(
-							$record->aft_helpful,
-							$record->aft_unhelpful
-						)
-					)->escaped();
-
-			$counts =
-				wfMessage( 'articlefeedbackv5-form-helpful-votes-count' )
-					->numParams( $record->aft_helpful, $record->aft_unhelpful )
-					->text();
-
-			$votesClass = 'articleFeedbackv5-helpful-votes';
-			if ( $record->aft_helpful + $record->aft_unhelpful > 0 ) {
-				$votesClass .= ' articleFeedbackv5-has-votes';
-
-				if ( $record->aft_helpful >= $record->aft_unhelpful ) {
-					$votesClass .= ' articleFeedbackv5-votes-positive';
-				} else {
-					$votesClass .= ' articleFeedbackv5-votes-negative';
-				}
-			}
-
-			$voteStats =
-				Html::rawElement(
-					'span',
-					array(
-						'class' => $votesClass,
-						'id'    => "articleFeedbackv5-helpful-votes-$id",
-						'title' => $counts
-					),
-					$percent
-				);
+		if ( $this->isAllowed( 'aft-reader' ) && !$ownFeedback ) {
+			$footer .=
+				// <span class="articleFeedbackv5-helpful-caption">
+				//   {msg:articlefeedbackv5-form-helpful-label}
+				// </span>
+				Html::element( 'span', array(
+					'class' => 'articleFeedbackv5-helpful-caption'
+				), wfMessage( 'articlefeedbackv5-form-helpful-label' )->text()
+				)
+				// <a id="articleFeedbackv5-helpful-link-{$id}"
+				//   class="articleFeedbackv5-helpful-link">
+				//   {msg:articlefeedbackv5-form-helpful-yes-label}
+				// </a>
+				. Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-helpful-link-$id",
+					'class' => 'articleFeedbackv5-helpful-link'
+				), wfMessage( 'articlefeedbackv5-form-helpful-yes-label' )->text() )
+				// <a id="articleFeedbackv5-unhelpful-link-{$id}"
+				//   class="articleFeedbackv5-unhelpful-link">
+				//   {msg:articlefeedbackv5-form-helpful-no-label}
+				// </a>
+				. Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-unhelpful-link-$id",
+					'class' => 'articleFeedbackv5-unhelpful-link'
+				), wfMessage( 'articlefeedbackv5-form-helpful-no-label' )->text() );
 		}
 
-		// add abuse flagging (for posts other than your own)
-		// only for readers; editors have more powerful tools
+		// Add helpful voting percentage for editors
+		if ( $this->isAllowed( 'aft-editor' ) ) {
+			$percent = wfMessage( 'articlefeedbackv5-form-helpful-votes-percent' )
+				->numParams( ApiArticleFeedbackv5Utils::percentHelpful(
+							$record[0]->af_helpful_count,
+							$record[0]->af_unhelpful_count
+				) )
+				->escaped();
+			$counts = wfMessage( 'articlefeedbackv5-form-helpful-votes-count' )
+				->numParams( $record[0]->af_helpful_count, $record[0]->af_unhelpful_count )
+				->text();
+			$votesClass = 'articleFeedbackv5-helpful-votes';
+			if ( ( $record[0]->af_helpful_count + $record[0]->af_unhelpful_count ) > 0 ) {
+				$votesClass .= ' articleFeedbackv5-has-votes';
+			}
+			$footer .=
+				// <span class="articleFeedbackv5-helpful-votes"
+				//   id="articleFeedbackv5-helpful-votes-{$id}">
+				//   {msg:articlefeedbackv5-form-helpful-votes}
+				// </span>
+				Html::rawElement( 'span', array(
+					'class' => $votesClass,
+					'id'    => "articleFeedbackv5-helpful-votes-$id",
+					'title' => $counts,
+				), $percent );
+		}
+
+		// </div>
+		$footer .= Html::closeElement( 'div' );
+
+		// Add abuse flagging (for posts other than your own)
 		if ( $this->isAllowed( 'aft-reader' ) && !$ownFeedback ) {
+			// <div class="articleFeedbackv5-comment-foot-abuse">
+			$footer .= Html::openElement( 'div', array( 'class' => 'articleFeedbackv5-comment-foot-abuse' ) );
+
 			global $wgArticleFeedbackv5AbusiveThreshold;
+			// <a id="articleFeedbackv5-abuse-link-{$id}"
+			//   class="articleFeedbackv5-abuse-link"
+			//   href="#" rel="{abuse count}">
+			//   {msg:articlefeedbackv5-form-abuse}
+			// </a>
+			$footer .= Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-abuse-link-$id",
+					'class' => 'articleFeedbackv5-abuse-link',
+					'href'  => '#',
+				), wfMessage(
+					'articlefeedbackv5-form-abuse',
+					$wgLang->formatNum( $record[0]->af_abuse_count ) )->text()
+			);
 
-			if ( !$this->isAllowed( 'aft-editor' ) ) {
-				$abuseLink =
-					Html::element(
-						'a',
-						array(
-							'id'    => "articleFeedbackv5-flag-link-$id",
-							'class' => 'articleFeedbackv5-flag-link',
-							'title' => wfMessage( 'articlefeedbackv5-form-tooltip-flag' )->text(),
-							'href'  => '#',
-							'data-action'  => 'flag',
-						),
-						wfMessage(
-							'articlefeedbackv5-form-flag',
-							$wgLang->formatNum( $record->aft_flag )
-						)->text()
-					);
-
-			// add count for editors
-			} else {
+			// Add count for editors
+			if ( $this->isAllowed( 'aft-editor' ) ) {
 				$aclass = 'articleFeedbackv5-abuse-count';
-				if ( $record->aft_flag > 0 ) {
-					$aclass .= ' articleFeedbackv5-has-abuse-flags';
-				}
-				if ( $record->aft_flag >= $wgArticleFeedbackv5AbusiveThreshold ) {
+				if ( $record[0]->af_abuse_count >= $wgArticleFeedbackv5AbusiveThreshold ) {
 					$aclass .= ' abusive';
 				}
-
-				$abuseStats =
-					Html::element(
-						'span',
-						array(
-							'id'    => "articleFeedbackv5-abuse-count-$id",
-							'class' => $aclass
-						),
-						wfMessage(
-							'articlefeedbackv5-form-abuse-count',
-							$wgLang->formatNum( $record->aft_flag )
-						)->text()
-					);
+				if ( $record[0]->af_abuse_count > 0 ) {
+					$aclass .= ' articleFeedbackv5-has-abuse-flags';
+				}
+				// <span id="articleFeedbackv5-abuse-count-{$id}"
+				//   class="articleFeedbackv5-abuse-link{-abusive?}"
+				//   href="#" rel="{abuse count}">
+				//   {msg:articlefeedbackv5-form-abuse-count}
+				// </span>
+				$footer .= Html::element( 'span', array(
+						'id'    => "articleFeedbackv5-abuse-count-$id",
+						'class' => $aclass,
+						'href'  => '#',
+					), wfMessage(
+						'articlefeedbackv5-form-abuse-count',
+						$wgLang->formatNum( $record[0]->af_abuse_count ) )->text()
+				);
 			}
+
+			// </div>
+			$footer .= Html::closeElement( 'div' );
 		}
 
-		$ownPost = '';
-		if ( $ownFeedback ) {
-			// Add ability to hide own posts for readers, only when we're
-			// certain that the feedback was posted by the current user
-			if ( $wgUser->getId() && $wgUser->getId() == intval( $record->aft_user ) ) {
-				// get details on last editor action
-				$last = $record->getLastEditorActivity();
-
-				$action = '';
-				if ( !$record->isHidden() ) {
-					$action = 'hide';
-				// can not unhide a post someone else has hidden!
-				} elseif ( $last->log_user && $last->log_user == $this->user->getId() ) {
-					$action = 'unhide';
-				}
-
-				if ( $action ) {
-					$ownPost =
-						Html::rawElement(
-							'div',
-							array( 'class' => 'articleFeedbackv5-comment-foot-hide' ),
-							Html::element(
-								'a',
-								array(
-									'id'    => "articleFeedbackv5-$action-link-$id",
-									'class' => "articleFeedbackv5-$action-link articleFeedbackv5-$action-own-link",
-									'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-own" )->text(),
-									'href' => '#',
-									'data-action' => $action,
-								),
-								wfMessage( "articlefeedbackv5-form-$action-own" )->text()
-							)
-						);
-				}
-
-			// display message they can't monitor own feedback - unless they're
-			// editor, in which case they'll see this message in toolbox
-			} elseif ( !$this->isAllowed( 'aft-editor' ) ) {
-				$ownPost .=
-					Html::element(
-						'p',
-						array( 'class' => 'articleFeedbackv5-form-own-feedback' ),
-						wfMessage( 'articlefeedbackv5-form-own-feedback' )
-					);
+		// Add ability to hide own posts for readers, only when we're
+		// certain that the feedback was posted by the current user
+		if ( !$this->isAllowed( 'aft-editor' ) && ( $wgUser->getId() && $wgUser->getId() == intval( $record[0]->af_user_id ) ) ) {
+			// Message can be:
+			//  * articlefeedbackv5-form-(hide|unhide)[-own]
+			if ( $record[0]->af_is_hidden ) {
+				$msg = 'unhide';
+				$class = 'show';
+			} else {
+				$msg = 'hide';
+				$class = 'hide';
 			}
-		}
+			// change message for own feedback
+			if ( $ownFeedback ) {
+				$msg .= '-own';
+			}
 
-		return
-			Html::rawElement(
+			$footer .= Html::rawElement(
 				'div',
-				array( 'class' => 'articleFeedbackv5-vote-wrapper' ),
-				Html::rawElement(
-					'div',
-					array( 'class' => 'articleFeedbackv5-comment-foot-helpful' ),
-					$voteLinks . $voteStats
-				) .
-				Html::rawElement(
-					'div',
-					array( 'class' => 'articleFeedbackv5-comment-foot-abuse' ),
-					$abuseLink . $abuseStats
-				) .
-				$ownPost .
-				Html::element( 'div', array( 'class' => 'clear' ) )
+				array( 'class' => 'articleFeedbackv5-comment-foot-hide' ),
+				Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-$class-link-$id",
+					'class' => "articleFeedbackv5-$class-link",
+					'href' => '#',
+				),
+				wfMessage( "articlefeedbackv5-form-" . $msg )->text() )
 			);
+		}
+
+		// </div>
+		$footer .= Html::element( 'div', array( 'class' => 'clear' ) );
+
+		// </div>
+		$footer .= Html::closeElement( 'div' );
+
+		return $footer;
 	}
 
 	/**
 	 * Returns the tag block
 	 *
-	 * @param  $record ArticleFeedbackv5Model the record
+	 * @param  $record stdClass the record (from the 0 index)
 	 * @return string  the rendered tag block
 	 */
 	private function renderTagBlock( $record ) {
-		if ( $record->isOversighted() ) {
-			$status = 'oversight';
-		} elseif ( $record->isArchived() ) {
-			$status = 'archive';
-		} elseif ( $record->isHidden() ) {
-			$status = 'hide';
-		} elseif ( $record->isResolved() ) {
-			$status = 'resolve';
-		} elseif ( $record->isFeatured() ) {
-			$status = 'feature';
-		} elseif ( $record->isNonActionable() ) {
-			$status = 'noaction';
-		} else {
-			return '';
+		// <div class="articleFeedbackv5-comment-tags">
+		$html = Html::openElement( 'div', array(
+			'class' => 'articleFeedbackv5-comment-tags',
+		) );
+
+		if ( $this->isAllowed( 'aft-editor' ) && $record->af_is_deleted ) {
+			// <span class="articleFeedbackv5-deleted-marker">
+			//   {msg:articlefeedbackv5-deleted-marker}
+			// </span>
+			$html .= Html::element( 'span', array(
+				'class' => 'articleFeedbackv5-deleted-marker',
+			), wfMessage( 'articlefeedbackv5-deleted-marker' )->text() );
+		} elseif ( $this->isAllowed( 'aft-editor' ) && $record->af_is_hidden ) {
+			// <span class="articleFeedbackv5-hidden-marker">
+			//   {msg:articlefeedbackv5-hidden-marker}
+			// </span>
+			$html .= Html::element( 'span', array(
+				'class' => 'articleFeedbackv5-hidden-marker',
+			), wfMessage( 'articlefeedbackv5-hidden-marker' )->text() );
+		} elseif ( $record->af_is_resolved ) {
+			// <span class="articleFeedbackv5-resolved-marker">
+			//   {msg:articlefeedbackv5-resolved-marker}
+			// </span>
+			$html .= Html::element( 'span', array(
+				'class' => 'articleFeedbackv5-resolved-marker',
+			), wfMessage( 'articlefeedbackv5-resolved-marker' )->text() );
+		} elseif ( $record->af_is_featured ) {
+			// <span class="articleFeedbackv5-featured-marker">
+			//   {msg:articlefeedbackv5-featured-marker}
+			// </span>
+			$html .= Html::element( 'span', array(
+				'class' => 'articleFeedbackv5-featured-marker',
+			), wfMessage( 'articlefeedbackv5-featured-marker' )->text() );
 		}
 
-		return
-			Html::rawElement(
-			'div',
-			array( 'class' => 'articleFeedbackv5-comment-tags' ),
-			Html::element(
-				'span',
-				array( 'class' => "articleFeedbackv5-$status-marker" ),
-				wfMessage( "articlefeedbackv5-$status-marker" )->text()
-			)
-		);
+		// </div>
+		$html .= Html::closeElement( 'div' );
 
+		return $html;
 	}
 
 	/**
 	 * Returns the toolbox
 	 *
-	 * @param  $record ArticleFeedbackv5Model the record
+	 * @param  $record array the record, with keys 0 + answers
 	 * @return string  the rendered toolbox
 	 */
 	private function renderToolbox( $record ) {
-		// check if people are allowed to perform actions
-		if ( !$this->isAllowed( 'aft-editor' ) ) {
+		global $wgUser;
+
+		// Don't render the toolbox if they can't do anything with it.
+		if ( !$this->hasToolbox() ) {
 			return '';
 		}
 
-		$toolbox = '';
+		$ownFeedback = ApiArticleFeedbackv5Utils::isOwnFeedback( $record[0] );
 
-		// no editor-action has yet been performed, show tools
-		if ( !$record->isFeatured() && !$record->isResolved() && !$record->isNonActionable() && !$record->isHidden() && !$record->isArchived() && !$record->isOversighted() ) {
-			$tools =
-				$this->buildToolboxLink( $record, 'feature' ) .
-				$this->buildToolboxLink( $record, 'resolve' ) .
-				$this->buildToolboxLink( $record, 'noaction' ) .
-				$this->buildToolboxLink( $record, 'hide' );
+		$id = $record[0]->af_id;
 
-			if ( $tools ) {
-				$toolbox .=
-					Html::element(
-						'p',
-						array( 'class' => 'articleFeedbackv5-form-toolbox-label' ),
-						wfMessage( 'articlefeedbackv5-form-toolbox-label' )->text()
-					) .
-					Html::rawElement(
-						'ul',
-						array( 'id' => "articleFeedbackv5-feedback-tools-list-$record->aft_id" ),
-						$tools
-				);
+		// Begin toolbox
+		$tools =
+			// <div class="articleFeedbackv5-feedback-tools"
+			//   id="articleFeedbackv5-feedback-tools-{$id}">
+			Html::openElement( 'div', array(
+				'class' => 'articleFeedbackv5-feedback-tools',
+				'id'    => 'articleFeedbackv5-feedback-tools-' . $id
+			) )
+				// <ul id="articleFeedbackv5-feedback-tools-list-{$id}">
+				. Html::openElement( 'ul', array(
+					'id' => 'articleFeedbackv5-feedback-tools-list-' . $id
+				) );
+		$toolsFeature = '';
+		$toolsDelete = '';
+		$toolsActivity = '';
+
+		// Feature/unfeature and mark/unmark resolved (for posts other than your own)
+		if ( $this->isAllowed( 'aft-editor' ) && !$ownFeedback && !$record[0]->af_is_hidden && !$record[0]->af_is_deleted ) {
+			// Message can be:
+			//  * articlefeedbackv5-form-feature
+			//  * articlefeedbackv5-form-unfeature
+			if ( $record[0]->af_is_featured ) {
+				$msg = 'unfeature';
+				$class = 'unfeature';
+			} else {
+				$msg = 'feature';
+				$class = 'feature';
 			}
+			// <li>
+			//   <a id="articleFeedbackv5-{feature|unfeature}-link-{$id}"
+			//     class="articleFeedbackv5-{feature|unfeature}-link" href="#">
+			//     {msg:articlefeedbackv5-form-{feature|unfeature}}
+			//   </a>
+			// </li>
+			$toolsFeature .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+				'id'    => "articleFeedbackv5-$class-link-$id",
+				'class' => "articleFeedbackv5-$class-link",
+				'href' => '#',
+			), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
 
-		// editor-action already performed; display "undo" + details
-		} else {
-			// get details on last editor action
-			$last = $record->getLastEditorActivity();
-
-			// it shouldn't even be possible that $last contains nothing, but hey
-			if ( $last ) {
-				$tools = '';
-
-				// don't add editor-action undo possibility if post has been oversighted (that would no longer make sense...)
-				if ( !$record->isOversighted() ) {
-					// undo-link
-					$tools .= $this->buildToolboxLink( $record, "un$last->log_action" );
-
-					// if feedback is featured, it should still be resolvable in 1 click
-					if ( $record->isFeatured() && !$record->isResolved() ) {
-						/*
-						 * If feedback is featured and just unresolved, the "undo" button for
-						 * the earlier feature will not exist ($last == 'unresolve', so it will
-						 * have attempted to create 'ununresolve', as that action does not exist).
-						 * Force the creation of the undo feature button here ;)
-						 */
-						if ( $last->log_action == 'unresolve' ) {
-							$tools .= $this->buildToolboxLink( $record, 'unfeature' );
-						}
-
-						$tools .= $this->buildToolboxLink( $record, 'resolve' );
-					}
-				}
-
-				// build oversight-related tools
-				if ( $record->isHidden() ) {
-					// only show "request oversight" to those who don't have permissions to oversight themselves
-					if ( $this->isAllowed( 'aft-monitor' ) && !$this->isAllowed( 'aft-oversighter' ) ) {
-						/*
-						 * When requested by this user already, it will be transformed into an unrequest
-						 * link through JS. When the request has been declined already, add a class to
-						 * make sure this user knows about it & is no longer capable to request for this entry.
-						 */
-						$class = $record->isDeclined() ? 'inactive' : '';
-						$tools .= $this->buildToolboxLink( $record, 'request', "articleFeedbackv5-tipsy-link $class" );
-					}
-
-					if ( $this->isAllowed( 'aft-oversighter' ) ) {
-						if ( $record->isOversighted() ) {
-							$tools .= $this->buildToolboxLink( $record, 'unoversight' );
-						} else {
-							if ( $record->isRequested() || $record->isDeclined() ) {
-								$class = $record->isDeclined() ? 'inactive' : '';
-								$tools .= $this->buildToolboxLink( $record, 'decline', $class );
-							}
-							$tools .= $this->buildToolboxLink( $record, 'oversight', 'articleFeedbackv5-tipsy-link' );
-						}
-					}
-				}
-
-				// build discussion tools
-				$discussType = '';
-				$discussPage = false;
-				if ( $record->isFeatured() ) {
-					// discuss on talk page
-					$discussType = 'talk';
-					$article = $record->getArticle();
-					if ( $article ) {
-						$discussPage = $article->getTitle()->getTalkPage();
-					}
-				} elseif ( $record->getUser() ) {
-					// contact user
-					$discussType = 'user';
-					$user = $record->getUser();
-					if ( $user ) {
-						$discussPage = $user->getTalkPage();
-					}
-				}
-
-				if ( $discussPage ) {
-					global $wgLang, $wgUser;
-					$sectionTitle = wfMessage( "articlefeedbackv5-discuss-$discussType-section-title", $record->aft_comment );
-					$sectionTitleTruncated = $wgLang->truncate( $sectionTitle, 60 );
-
-					$title = Title::newFromId( $record->aft_page )->getPrefixedDBkey();
-					$userText = $record->aft_user_text; // anon users
-					if ( $record->getUser() ) {
-						$userText = '[[' . $record->getUser()->getUserPage()->getPrefixedDBKey() . '|]]'; // link to user page
-					}
-
-					$comment = '';
-					if ( $sectionTitle != $sectionTitleTruncated ) {
-						/*
-						 * Truncate the title even further - this was added to make sure
-						 * that we don't truncate at 48chars when there are only 50 total.
-						 */
-						$sectionTitleTruncated = $wgLang->truncate( $sectionTitle, 48 );
-
-						// if comment has been truncated to fit section title, display it in full in content
-						$comment = Html::rawElement( 'blockquote', array(), $record->aft_comment );
-					}
-					$sectionContent = wfMessage( "articlefeedbackv5-discuss-$discussType-section-content" )
-						->params(
-							$userText,
-							SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$record->aft_id" ),
-							$wgLang->date( $record->aft_timestamp ),
-							$wgLang->time( $record->aft_timestamp ),
-							SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title ),
-							$comment
-						)
-						->text();
-
-					$sectionAnchor = '';
-					// check if feedback is being discussed already
-					$article = Article::newFromId( $discussPage->getArticleID() );
-					if ( $article ) {
-						$sections = $article->getParserOutput()->getSections();
-						foreach ( $sections as $section ) {
-							if ( $section['line'] == $sectionTitleTruncated ) {
-								$sectionAnchor = $section['anchor'];
-								break;
-							}
-						}
-					}
-					$sectionExists = ( $sectionAnchor !== '' );
-
-					if ( $sectionExists ) {
-						$discussLink = $discussPage->getLinkURL() . '#' . $sectionAnchor;
-					} else {
-						$discussLink = $discussPage->getLinkURL( array( 'action' => 'edit', 'section' => 'new', 'preloadtitle' => $sectionTitleTruncated ) );
-					}
-
-					$action = 'discuss';
-					$class = "articleFeedbackv5-$action-link articleFeedbackv5-$action-$discussType-link";
-					if ( $sectionExists ) {
-						$class .= " articleFeedbackv5-$action-exists-link";
-					}
-
-					$tools .= Html::rawElement(
-						'li',
-						array(),
-						Html::element(
-							'a',
-							array(
-								'id' => "articleFeedbackv5-$action-link-$record->aft_id",
-								'class' => $class,
-								'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-$discussType" )->text(),
-								'href' => $discussLink,
-								'data-action' => $action,
-								// expose some additional details to JS
-								'data-type' => $discussType,
-								'data-section-exists' => (int) $sectionExists,
-								'data-section-title' => $sectionTitleTruncated,
-								'data-section-content' => $sectionContent,
-								'data-section-edittime' => wfTimestampNow(),
-								'data-section-edittoken' => $wgUser->getEditToken()
-							),
-							wfMessage( "articlefeedbackv5-form-$action-$discussType" . ( $sectionExists ? '-exists' : '' ) )->text()
-						)
-					);
-				}
-
-				$activityLink = '';
-				if (
-					// there is a comment - display it
-					$last->log_comment != '' ||
-					// there is no comment, but it's out own action and we'll have the possibility to add a comment
-					( $last->log_comment == '' && $last->log_user && $last->log_user == $this->user->getId() )
-				) {
-					$activityLink .=
-						// link for activity log popup
-						Html::element(
-							'a',
-							array(
-								'id' => "articleFeedbackv5-activity-link-$record->aft_id",
-								'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-activity-link'.( $last->log_comment ? '' : ' activity-empty' ), // tipsy for given data-action will be loaded when clicked
-								'href' => '#',
-								'data-action' => 'activity',
-							),
-							wfMessage( "articlefeedbackv5-viewactivity".( $last->log_comment ? '' : '-empty' ) )->text()
-						);
-
-					// if current user is the one who performed the action, add a link to
-					// leave a note to clarify why the action was performed
-					if ( $last->log_comment == '' && $last->log_user && $last->log_user == $this->user->getId() ) {
-						$activityLink .=
-							Html::element(
-								'a',
-								array(
-									'id' => "articleFeedbackv5-note-link-$record->aft_id",
-									'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-note-link', // tipsy for given data-action will be loaded when clicked
-									'title' => wfMessage( 'articlefeedbackv5-form-tooltip-note' )->text(),
-									'href' => '#',
-									'data-action' => $last->log_action,
-									'data-log-id' => $last->log_id,
-								),
-								wfMessage( 'articlefeedbackv5-form-note' )->text()
-							);
-					}
-				}
-
-				$toolbox .=
-					// performer/action info
-					Html::rawElement(
-						'div',
-						array( 'class' => "articleFeedbackv5-feedback-tools-details" ),
-
-						// performer/action info
-						Html::rawElement(
-							'p',
-							array( 'class' => "articleFeedbackv5-activity-short-status" ),
-							wfMessage( "articlefeedbackv5-short-status-$last->log_action" )
-								->rawParams( ArticleFeedbackv5Utils::getUserLink( $last->log_user, $last->log_user_text ) )
-								->parse()
-						) .
-
-						// link to activity log
-						$activityLink .
-
-						// tools (undo & possibly oversight-related actions)
-						Html::rawElement(
-							'ul',
-							array( 'id' => "articleFeedbackv5-feedback-tools-list-$record->aft_id" ),
-							$tools
-						)
-					);
+			// Message can be:
+			//  * articlefeedbackv5-form-resolve
+			//  * articlefeedbackv5-form-unresolve
+			if ( $record[0]->af_is_resolved ) {
+				$type = 'unresolve';
+			} else {
+				$type = 'resolve';
 			}
-		}
-
-		// display message they can't monitor own feedback
-		if ( ArticleFeedbackv5Utils::isOwnFeedback( $record ) ) {
-			$toolbox .=
-				Html::element(
-					'p',
-					array( 'class' => 'articleFeedbackv5-form-own-feedback' ),
-					wfMessage( 'articlefeedbackv5-form-own-feedback' )
-				);
-		}
-
-		return
-			Html::rawElement(
-				'div',
-				array(
-					'class' => 'articleFeedbackv5-feedback-tools',
-					'id'    => "articleFeedbackv5-feedback-tools-$record->aft_id"
-				),
-				$toolbox
+			// <li>
+			//   <a id="articleFeedbackv5-{resolve|unresolve}-link-{$id}"
+			//     class="articleFeedbackv5-{resolve|unresolve}-link" href="#">
+			//     {msg:articlefeedbackv5-form-{resolve|unresolve}}
+			//   </a>
+			// </li>
+			$toolsFeature .= Html::rawElement( 'li', array(),
+				Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-$type-link-$id",
+					'class' => "articleFeedbackv5-$type-link",
+					'href' => '#',
+				), wfMessage( "articlefeedbackv5-form-$type" )->text() )
 			);
+		}
+
+		// Hide/unhide - either for people with hide-permissions, or when we're
+		// certain that the feedback was posted by the current user
+		if ( $this->isAllowed( 'aft-monitor' ) || ( $wgUser->getId() && $wgUser->getId() == intval( $record[0]->af_user_id ) ) ) {
+			// Message can be:
+			//  * articlefeedbackv5-form-(hide|unhide)[-own]
+			if ( $record[0]->af_is_hidden ) {
+				$msg = 'unhide';
+				$class = 'show';
+			} else {
+				$msg = 'hide';
+				$class = 'hide';
+			}
+			// change message for own feedback
+			if ( $ownFeedback ) {
+				$msg .= '-own';
+			}
+
+			// <li>
+			//   <a id="articleFeedbackv5-{hide|unhide}-link-{$id}"
+			//     class="articleFeedbackv5-{hide|unhide}-link" href="#">
+			//     {msg:articlefeedbackv5-form-{hide|unhide}}
+			//   </a>
+			// </li>
+			$toolsDelete .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+				'id'    => "articleFeedbackv5-$class-link-$id",
+				'class' => "articleFeedbackv5-$class-link",
+				'href' => '#',
+			), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
+		}
+
+		// Request oversight
+		if ( $this->isAllowed( 'aft-monitor' ) && !$this->isAllowed( 'aft-oversighter' ) ) {
+			// Message can be:
+			//  * articlefeedbackv5-form-oversight
+			//  * articlefeedbackv5-form-unoversight
+			if ( $record[0]->af_oversight_count > 0 ) {
+				$msg = 'unoversight';
+				$class = 'unrequestoversight';
+			} else {
+				$msg = 'oversight';
+				$class = 'requestoversight';
+			}
+			// <li>
+			//   <a id="articleFeedbackv5-{requestoversight|unrequestoversight}-link-{$id}"
+			//     class="articleFeedbackv5-{requestoversight|unrequestoversight}-link" href="#">
+			//     {msg:articlefeedbackv5-form-{oversight|unoversight}}
+			//   </a>
+			// </li>
+			$toolsDelete .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+				'id'    => "articleFeedbackv5-$class-link-$id",
+				'class' => "articleFeedbackv5-$class-link",
+				'href' => '#',
+			), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
+		}
+
+		// Delete (a.k.a. oversight)
+		if ( $this->isAllowed( 'aft-oversighter' ) ) {
+			if ( $record[0]->af_oversight_count > 0 || $record[0]->af_is_declined > 0 ) {
+				// <li>
+				//   <a id="articleFeedbackv5-declineoversight-link-{$id}"
+				//     class="articleFeedbackv5-declineoversight-link" href="#">
+				//     {msg:articlefeedbackv5-form-decline}
+				//   </a>
+				// </li>
+				$class = 'articleFeedbackv5-declineoversight-link';
+				$message = wfMessage( "articlefeedbackv5-form-decline" )->text();
+				if ( $record[0]->af_is_declined > 0 ) {
+					$message = wfMessage( "articlefeedbackv5-form-declined" )->text();
+					$class .= ' inactive';
+				}
+
+				$toolsDelete .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-declineoversight-link-$id",
+					'class' => $class,
+					'href' => '#',
+				), $message ) );
+			}
+
+			// Message can be:
+			//  * articlefeedbackv5-form-delete
+			//  * articlefeedbackv5-form-undelete
+			if ( $record[0]->af_is_deleted > 0 ) {
+				$msg = 'undelete';
+				$class = 'unoversight';
+			} else {
+				$msg = 'delete';
+				$class = 'oversight';
+			}
+			// <li>
+			//   <a id="articleFeedbackv5-{oversight|unoversight}-link-{$id}"
+			//     class="articleFeedbackv5-{oversight|unoversight}-link" href="#">
+			//     {msg:articlefeedbackv5-form-{delete|undelete}}
+			//   </a>
+			// </li>
+			$toolsDelete .= Html::rawElement( 'li', array(), Html::element( 'a', array(
+				'id'    => "articleFeedbackv5-$class-link-$id",
+				'class' => "articleFeedbackv5-$class-link",
+				'href' => '#',
+			), wfMessage( "articlefeedbackv5-form-" . $msg )->text() ) );
+		}
+
+		// View Activity
+		if ( $this->isAllowed( 'aft-editor' ) ) {
+			// if no activity has been logged yet, add the "inactive" class so we can display it accordingly
+			$activityClass = "articleFeedbackv5-activity-link";
+			if ( $this->getActivityCount( $record[0] ) < 1 ) {
+				$activityClass .= " inactive";
+			}
+
+			// <li>
+			//   <a id="articleFeedbackv5-activity-link-{$id}"
+			//     class="articleFeedbackv5-activity-link" href="#">
+			//     {msg:articlefeedbackv5-form-activity}
+			//   </a>
+			// </li>
+			$toolsActivity.= Html::rawElement( 'li', array(), Html::element( 'a', array(
+					'id'    => "articleFeedbackv5-activity-link-$id",
+					'class' => $activityClass,
+					'href' => '#',
+				), wfMessage( "articlefeedbackv5-viewactivity" )->text() ) );
+		}
+
+		// create containers for 3 toolbox-groups
+		if ( $toolsFeature ) {
+			$tools .= Html::rawElement( 'li', array(
+				'class' => 'tools_feature'
+			), Html::rawElement( 'ul', array(), $toolsFeature));
+		}
+		if ( $toolsDelete ) {
+			$tools .= Html::rawElement( 'li', array(
+				'class' => 'tools_delete'
+			), Html::rawElement( 'ul', array(), $toolsDelete));
+		}
+		if ( $toolsActivity ) {
+			$tools .= Html::rawElement( 'li', array(
+				'class' => 'tools_activity'
+			), Html::rawElement( 'ul', array(), $toolsActivity));
+		}
+
+		// Close
+		$tools .=
+				// </ul>
+				Html::closeElement( 'ul' )
+			// </div>
+			. Html::closeElement( 'div' );
+
+		return $tools;
 	}
 
 	/**
@@ -1075,247 +1079,270 @@ class ArticleFeedbackv5Render {
 			return '';
 		}
 
+		$id = $record[0]->af_id;
+
 		// Metadata section
+		$utype = $record[0]->af_user_id > 0 ? 'editor' : 'reader';
 		$metadata =
-			Html::rawElement(
-				'div',
-				array( 'class' => 'articleFeedbackv5-feedback-permalink-meta' ),
-				Html::rawElement(
-					'p',
-					array(),
-					wfMessage( 'articlefeedbackv5-permalink-written-by-' . ( $record->aft_user == 0 ? 'reader' : 'editor' ) )
-						->params( $record->getExperiment() )
+			// <div class="articleFeedbackv5-feedback-permalink-meta">
+			Html::openElement( 'div', array(
+				'class' => 'articleFeedbackv5-feedback-permalink-meta'
+			) )
+				// <p>Written by a registered user <span>using feedback form 1 and link E</span></p>
+				// Possible messages:
+				//  {msg:articlefeedbackv5-permalink-written-by-editor}
+				//  {msg:articlefeedbackv5-permalink-written-by-reader}
+				.Html::rawElement( 'p', array(),
+					wfMessage( "articlefeedbackv5-permalink-written-by-$utype" )
+						->params( $record[0]->af_experiment )
 						->parse()
-				) .
-				Html::rawElement(
-					'p',
-					array(),
+				)
+				// <p>{msg:articlefeedbackv5-permalink-info-posted}</p>
+				. Html::rawElement( 'p', array(),
 					wfMessage( 'articlefeedbackv5-permalink-info-posted' )
-						->params( $wgLang->date( $record->aft_timestamp ), $wgLang->time( $record->aft_timestamp ) )
+						->params( $wgLang->date( $record[0]->af_created ), $wgLang->time( $record[0]->af_created ) )
 						->escaped()
-				) .
-				Html::rawElement(
-					'p',
-					array( 'class' => 'articleFeedbackv5-old-revision' ),
-					Linker::link(
-						Title::newFromID( $record->aft_page ),
+				)
+				// <p class="articleFeedbackv5-old-revision">
+				. Html::openElement( 'p', array(
+						'class' => 'articleFeedbackv5-old-revision'
+				) )
+					// <a href="{previous rev}">{msg:articlefeedbackv5-permalink-info-revision-link}</a></p>
+					.  Linker::link(
+						Title::newFromRow( $record[0] ),
 						wfMessage( 'articlefeedbackv5-permalink-info-revision-link' )->escaped(),
 						array(),
-						array( 'oldid'  => $record->aft_page_revision )
+						array( 'oldid'  => $record[0]->af_revision_id )
 					)
-				)
-			);
-
-		$comment = '';
-		if ( $record->aft_comment ) {
-			$comment .=
-				Html::rawElement(
-					'dt',
-					array(),
-					wfMessage( 'articlefeedbackv5-permalink-info-stats-title-length' )->escaped()
-				) .
-				Html::rawElement(
-					'dd',
-					array(),
-					wfMessage(
-						'articlefeedbackv5-permalink-info-length-words',
-						str_word_count( $record->aft_comment )
-					)->escaped() .
-					'&nbsp;' .
-					Html::rawElement(
-						'span',
-						array(),
-						wfMessage(
-							'articlefeedbackv5-permalink-info-length-characters',
-							strlen( $record->aft_comment )
-						)->escaped()
-					)
-				);
-		}
+				// </p>
+				. Html::closeElement( 'p' )
+			// </div>
+			. Html::closeElement( 'div' );
 
 		// Stats section
-		$relevance = $record->aft_relevance_score;
-		$helpfulness = $record->aft_helpful - $record->aft_unhelpful;
 		$stats =
-			Html::rawElement(
-				'dl',
-				array( 'class' => 'articleFeedbackv5-feedback-permalink-stats' ),
-				$comment .
-				Html::rawElement(
-					'dt',
-					array(),
-					wfMessage( 'articlefeedbackv5-permalink-info-stats-title-scores' )->escaped()
-				) .
-				Html::rawElement(
-					'dd',
-					array( 'class' => 'articleFeedbackv5-feedback-permalink-scores' ),
-					Html::rawElement(
-						'dl',
-						array(),
-						Html::rawElement(
-							'dt',
-							array(),
-							wfMessage( 'articlefeedbackv5-permalink-info-stats-subtitle-relevance' )->escaped()
-						) .
-						Html::element(
-							'dd',
-							array(),
-							$relevance > 0 ? '+' . $relevance : $relevance
-						) .
-						Html::rawElement(
-							'dt',
-							array(),
-							wfMessage( 'articlefeedbackv5-permalink-info-stats-subtitle-helpfulness' )->escaped()
-						) .
-						Html::element(
-							'dd',
-							array(),
-							$helpfulness > 0 ? '+' . $helpfulness : $helpfulness
-						)
-					)
+			// <dl class="articleFeedbackv5-feedback-permalink-stats">
+			Html::openElement( 'dl', array(
+				'class' => 'articleFeedbackv5-feedback-permalink-stats'
+			) );
+		if ( isset( $record['comment'] ) ) {
+			$stats .=
+				// <dt>{msg:articlefeedbackv5-permalink-info-stats-title-length}</dt>
+				Html::rawElement( 'dt', array(),
+					wfMessage( 'articlefeedbackv5-permalink-info-stats-title-length' )->escaped()
 				)
-			);
+				// <dd>
+				. Html::openElement( 'dd' )
+					// {msg:articlefeedbackv5-permalink-info-length-words}
+					. wfMessage(
+						'articlefeedbackv5-permalink-info-length-words',
+						str_word_count( $record['comment']->aa_response_text )
+					)->escaped()
+					// &nbsp;
+					. '&nbsp;'
+					// <span>{msg:articlefeedbackv5-permalink-info-length-characters}</span>
+					. Html::rawElement( 'span', array(),
+						wfMessage(
+							'articlefeedbackv5-permalink-info-length-characters',
+							strlen( $record['comment']->aa_response_text )
+						)->escaped()
+					)
+				// </dd>
+				. Html::closeElement( 'dd' );
+		}
+		$relevance = $record[0]->af_relevance_score;
+		$helpfulness = $record[0]->af_net_helpfulness;
+		$stats .=
+				// <dt>{msg:articlefeedbackv5-permalink-info-stats-title-scores}</dt>
+				Html::rawElement( 'dt', array(),
+					wfMessage( 'articlefeedbackv5-permalink-info-stats-title-scores' )->escaped()
+				)
+				// <dd class="articleFeedbackv5-feedback-permalink-scores">
+				. Html::openElement( 'dd', array(
+					'class' => 'articleFeedbackv5-feedback-permalink-scores',
+				) )
+					// <dl>
+					. Html::openElement( 'dl' )
+						// <dt>{msg:articlefeedbackv5-permalink-info-stats-subtitle-relevance}</dt>
+						. Html::rawElement( 'dt', array(),
+							wfMessage( 'articlefeedbackv5-permalink-info-stats-subtitle-relevance' )->escaped()
+						)
+						// <dd>{relvance score}</dd>
+						. Html::element( 'dd', array(),
+							$relevance > 0 ? '+' . $relevance : $relevance )
+						// <dt>{msg:articlefeedbackv5-permalink-info-stats-subtitle-helpfulness}</dt>
+						. Html::rawElement( 'dt', array(),
+							wfMessage( 'articlefeedbackv5-permalink-info-stats-subtitle-helpfulness' )->escaped()
+						)
+						// <dd>{net helpfulness score}</dd>
+						. Html::element( 'dd', array(),
+							$helpfulness > 0 ? '+' . $helpfulness : $helpfulness )
+					// </dl>
+					. Html::closeElement( 'dl' )
+				// </dd>
+				. Html::closeElement( 'dd' )
+			// </dl>
+			. Html::closeElement( 'dl' );
 
 		// Activity section
-		$last = $this->getLastActivity( $record );
-		if ( $last ) {
-			$timestamp = new MWTimestamp( $last->log_timestamp );
-
-			$notes = '';
-			if ( $last->log_comment ) {
-				$notes .=
-					Html::element(
-						'p',
-						array( 'class' => 'articleFeedbackv5-feedback-permalink-activity-status' ),
-						$last->log_comment
+		$activity = '';
+		if ( $record[0]->af_last_status && $record[0]->af_last_status_timestamp ) {
+			$activity .=
+				// <p class="articleFeedbackv5-feedback-permalink-activity-status">
+				Html::openElement( 'p', array(
+						'class' => 'articleFeedbackv5-feedback-permalink-activity-status'
+					) )
+					// <span class="articleFeedbackv5-feedback-permalink-status">
+					//   One of:
+					//   {msg:articlefeedbackv5-permalink-status-hidden}
+					//   {msg:articlefeedbackv5-permalink-status-unhidden}
+					//   {msg:articlefeedbackv5-permalink-status-request}
+					//   {msg:articlefeedbackv5-permalink-status-unrequest}
+					//   {msg:articlefeedbackv5-permalink-status-declined}
+					//   {msg:articlefeedbackv5-permalink-status-autohide}
+					//   {msg:articlefeedbackv5-permalink-status-deleted}
+					//   {msg:articlefeedbackv5-permalink-status-undeleted}
+					//   {msg:articlefeedbackv5-permalink-status-autoflag}
+					//   {msg:articlefeedbackv5-permalink-status-featured}
+					//   {msg:articlefeedbackv5-permalink-status-unfeatured}
+					//   {msg:articlefeedbackv5-permalink-status-resolved}
+					//   {msg:articlefeedbackv5-permalink-status-unresolved}
+					// </span>
+					. Html::rawElement( 'span', array(
+						'class' => 'articleFeedbackv5-feedback-permalink-status ' .
+							'articleFeedbackv5-laststatus-' . $record[0]->af_last_status
+						),
+						wfMessage( 'articlefeedbackv5-permalink-status-' . $record[0]->af_last_status )
+							->rawParams( ApiArticleFeedbackv5Utils::getUserLink( $record[0]->af_last_status_user_id ) )
+							->rawParams( ApiArticleFeedbackv5Utils::renderTimeAgo( $record[0]->af_last_status_timestamp ) )
+							->parse()
+						)
+				// </p>
+				. Html::closeElement( 'p' );
+			if ( $record[0]->af_last_status_notes ) {
+				$activity .=
+					// <p class="articleFeedbackv5-feedback-permalink-activity-note">
+					//   {activity note}
+					// </p>
+					Html::element( 'p', array(
+							'class' => 'articleFeedbackv5-feedback-permalink-activity-status'
+						),
+						$record[0]->af_last_status_notes
 					);
 			}
-
-			$activity =
-				Html::rawElement(
-					'p',
-					array( 'class' => 'articleFeedbackv5-feedback-permalink-activity-status' ),
-					Html::rawElement(
-						'span',
-						array( 'class' => 'articleFeedbackv5-feedback-permalink-status articleFeedbackv5-laststatus-' . $last->log_action ),
-						wfMessage( 'articlefeedbackv5-permalink-status-' . $last->log_action )
-							->rawParams( ArticleFeedbackv5Utils::getUserLink( $last->log_user, $last->log_user_text ) )
-							->rawParams( $timestamp->getHumanTimestamp()->escaped() )
-							->parse()
-					)
-				) .
-				$notes .
-				Html::rawElement(
-					'p',
-					array( 'class' => 'articleFeedbackv5-feedback-permalink-activity-more' ),
-					Html::rawElement(
-						'a',
-						array(
-							'href' => '#',
-							'class' => 'articleFeedbackv5-activity2-link', // tipsy for given data-action will be loaded when clicked
-							'data-action' => 'activity2'
+			$activity .=
+				// <p class="articleFeedbackv5-feedback-permalink-activity-more">
+				Html::openElement( 'p', array(
+						'class' => 'articleFeedbackv5-feedback-permalink-activity-more',
+					) )
+					// <a href="#" class="articleFeedbackv5-activity-link">
+					//   {msg:articlefeedbackv5-permalink-activity-more}
+					// </a>
+					. Html::rawElement( 'a', array(
+							'href'  => '#',
+							'class' => 'articleFeedbackv5-activity2-link'
 						),
 						wfMessage( 'articlefeedbackv5-permalink-activity-more' )->escaped()
 					)
-				) .
-				Html::element(
-					'div',
-					array( 'id' => 'articleFeedbackv5-permalink-activity-log' )
-				);
+				// </p>
+				. Html::closeElement( 'p' )
+				// <div id="articleFeedbackv5-activity-log">
+				. Html::openElement( 'div', array(
+						'id' => 'articleFeedbackv5-permalink-activity-log'
+					) )
+				// </div>
+				. Html::closeElement( 'div' );
 		} else {
-			$activity =
-				Html::rawElement(
-					'p',
-					array( 'class' => 'articleFeedbackv5-feedback-permalink-activity-none' ),
+			$activity .=
+				// <p class="articleFeedbackv5-feedback-permalink-activity-note">
+				//   {msg:articlefeedbackv5-permalink-activity-none}
+				// </p>
+				Html::rawElement( 'p', array(
+						'class' => 'articleFeedbackv5-feedback-permalink-activity-none',
+					),
 					wfMessage( 'articlefeedbackv5-permalink-activity-none')->escaped()
 				);
 		}
 
 		// Frame and return
 		return
-			Html::rawElement(
-				'div',
-				array( 'id' => 'articleFeedbackv5-feedback-permalink-info' ),
-				Html::rawElement(
-					'div',
-					array( 'class' => 'articleFeedbackv5-feedback-permalink-about' ),
-					Html::rawElement(
-						'h4',
-						array(),
-						wfMessage( 'articlefeedbackv5-permalink-info-title' )->escaped() .
-						Html::rawElement(
-							'span',
-							array(),
+			// <div id="articleFeedbackv5-feedback-permalink-info">
+			Html::openElement( 'div', array(
+				'id' => 'articleFeedbackv5-feedback-permalink-info'
+			) )
+				// <div class="articleFeedbackv5-feedback-permalink-about">
+				. Html::openElement( 'div', array(
+					'class' => 'articleFeedbackv5-feedback-permalink-about'
+				) )
+					// <h4>
+					. Html::openElement( 'h4' )
+						// {msg:articlefeedbackv5-permalink-info-title}
+						. wfMessage( 'articlefeedbackv5-permalink-info-title' )->escaped()
+						// <span>{msg:articlefeedbackv5-permalink-info-subtitle}</span>
+						. Html::rawElement( 'span', array(),
 							wfMessage( 'articlefeedbackv5-permalink-info-subtitle' )
-								->params( $record->aft_id )
+								->params( $id )
 								->escaped()
 						)
-					) .
-					$metadata .
-					$stats
-				) .
-				Html::rawElement(
-					'div',
-					array( 'class' => 'articleFeedbackv5-feedback-permalink-activity' ),
-					Html::rawElement(
-						'h4',
-						array(),
-						wfMessage( 'articlefeedbackv5-permalink-activity-title' )->escaped() .
-						Html::rawElement(
-							'span',
-							array(),
+					// </h4>
+					. Html::closeElement( 'h4' )
+					// {metadata section}
+					. $metadata
+					// {stats section}
+					. $stats
+				// </div>
+				. Html::closeElement( 'div' )
+				// <div class="articleFeedbackv5-feedback-permalink-activity">
+				. Html::openElement( 'div', array(
+					'class' => 'articleFeedbackv5-feedback-permalink-activity'
+				) )
+					// <h4>
+					. Html::openElement( 'h4', array() )
+						// {msg:articlefeedbackv5-permalink-activity-title}
+						. wfMessage( 'articlefeedbackv5-permalink-activity-title' )->escaped()
+						// <span>{msg:articlefeedbackv5-permalink-activity-subtitle}</span>
+						. Html::rawElement( 'span', array(),
 							wfMessage( 'articlefeedbackv5-permalink-activity-subtitle' )
-								->params( ArticleFeedbackv5Activity::getActivityCount( $record ) )
+								->params( $this->getActivityCount( $record[0] ) )
 								->escaped()
 						)
-					) .
-					$activity
-				)
-			);
+					// </h4>
+					. Html::closeElement( 'h4' )
+					// {activity section}
+					. $activity
+				// </div>
+				. Html::closeElement( 'div' )
+
+			// </div>
+			. Html::closeElement( 'div' );
 	}
 
 	/**
-	 * Will build the link to perform a certain action
+	 * Returns whether this thing has a toolbox
 	 *
-	 * @param ArticleFeedbackv5Model $record
-	 * @param string $action
-	 * @param string[optional] $class Additional class to add
-	 * @return string
+	 * @return bool
 	 */
-	private function buildToolboxLink( $record, $action, $class = '' ) {
-		// check if user is allowed to perform this action
-		if ( !isset( ArticleFeedbackv5Activity::$actions[$action] ) ||
-			ArticleFeedbackv5Utils::isOwnFeedback( $record ) ||
-			!ArticleFeedbackv5Activity::canPerformAction( $action, $this->user ) ) {
-			return '';
+	public function hasToolbox() {
+		if ( !$this->isAllowed( 'aft-editor' )
+			&& !$this->isAllowed( 'aft-monitor' )
+			&& !$this->isAllowed( 'aft-oversighter' ) ) {
+			return false;
 		}
-
-		return Html::rawElement(
-			'li',
-			array(),
-			Html::element(
-				'a',
-				array(
-					'id' => "articleFeedbackv5-$action-link-$record->aft_id",
-					'class' => "articleFeedbackv5-$action-link $class",
-					'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action" )->text(),
-					'href' => '#',
-					'data-action' => $action,
-				),
-				wfMessage( "articlefeedbackv5-form-$action" )->text()
-			)
-		);
+		return true;
 	}
 
 	/**
-	 * @param ArticleFeedbackv5Model $record
-	 * @return ResultWrapper|bool
+	 * Returns the appropriate activity count
+	 *
+	 * @param  $record stdClass the record
+	 * @return int the activity count
 	 */
-	public function getLastActivity( ArticleFeedbackv5Model $record ) {
-		foreach( ArticleFeedbackv5Activity::getList( $record, $this->user, 1 ) as $last ) {
-			return $last;
+	public function getActivityCount( stdClass $record ) {
+		$count = $record->af_activity_count;
+		if ( $this->isAllowed( 'aft-monitor' ) ) {
+			$count += $record->af_suppress_count;
 		}
-		return false;
+		return $count;
 	}
 
 	/**

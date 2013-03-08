@@ -55,30 +55,6 @@
 	};
 
 	// }}}
-	// {{{ article
-
-	/**
-	 * Get article info
-	 *
-	 * @return object
-	 */
-	$.aftVerify.article = function () {
-		// make sure we have all data - even on old cached pages
-		$.aftVerify.legacyCorrection();
-
-		var article = mw.config.get( 'aftv5Article' );
-
-		// fetch data, on article level, we can fetch these from other sources as well
-		if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1 ) {
-			article.id = mw.config.get( 'wgArticleId', -1 );
-			article.namespace = mw.config.get( 'wgNamespaceNumber' );
-			article.categories = mw.config.get( 'wgCategories', [] );
-		}
-
-		return article;
-	};
-
-	// }}}
 	// {{{ verify
 
 	/**
@@ -88,7 +64,18 @@
 	 * @return bool     whether AFTv5 is enabled for this page
 	 */
 	$.aftVerify.verify = function ( location ) {
-		var article = $.aftVerify.article();
+		// make sure we have all data - even on old cached pages
+		$.aftVerify.legacyCorrection();
+
+		var article = mw.config.get( 'aftv5Article' );
+
+		// fetch data, on article level, we can fetch these from other sources as well
+		if ( location == 'article' ) {
+			article.id = mw.config.get( 'wgArticleId', -1 );
+			article.namespace = mw.config.get( 'wgNamespaceNumber' );
+			article.categories = mw.config.get( 'wgCategories', [] );
+		}
+
 
 		var enable = true;
 
@@ -98,12 +85,6 @@
 		if ( location != 'special' || article.id != 0 ) {
 			// only on pages in namespaces where it is enabled
 			enable &= $.inArray( article.namespace, mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1;
-
-			// it does not make sense to display AFT when a page is being edited ...
-			enable &= mw.config.get( 'wgAction' ) != 'edit';
-
-			// ... or has just been edited
-			enable &= !mw.config.get( 'wgPostEdit', false );
 		}
 
 		// for special page, it doesn't matter if the article has AFT applied
