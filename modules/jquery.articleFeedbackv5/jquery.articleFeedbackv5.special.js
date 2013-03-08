@@ -774,11 +774,6 @@
 							// remove "add note" link
 							$( '#articleFeedbackv5-note-link-' + id ).remove();
 
-							// change text to reflect note has been entered
-							$( '#articleFeedbackv5-activity-link-' + id )
-								.removeClass( 'activity-empty' )
-								.text( mw.msg( 'articlefeedbackv5-viewactivity' ) );
-
 							// re-enable ajax flagging
 							$.articleFeedbackv5special.listControls.disabled = false;
 
