@@ -87,7 +87,7 @@
 	 * @param  location string  the place from which this is being called
 	 * @return bool     whether AFTv5 is enabled for this page
 	 */
-	$.aftVerify.verify = function ( location ) {
+	$.aftUtils.verify = function ( location ) {
 		var article = $.aftUtils.article();
 
 		var enable = true;

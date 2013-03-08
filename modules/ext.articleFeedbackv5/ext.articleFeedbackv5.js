@@ -27,7 +27,7 @@ if ( mw.config.get( 'wgArticleFeedbackv5ArticlePageLink' ) &&
 		'type'    : 'GET',
 		'dataType': 'json',
 		'data'    : {
-			'pageid': $.aftVerify.article().id,
+			'pageid': $.aftUtils.article().id,
 			'filter': 'featured',
 			'action': 'articlefeedbackv5-get-count',
 			'format': 'json'
