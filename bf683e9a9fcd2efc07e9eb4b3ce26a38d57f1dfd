@@ -457,6 +457,24 @@
     },
     {
       "key": {
+        "uuid": "DpRFOvJc",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-08T21:14:00Z",
+      "side": 1,
+      "message": "git log --oneline displays the first 7 digits of the hash.  You could use that together with the ellipsis character …, thus  \"feedback post #237d780…\". Obviously make a function for it.",
+      "parentUuid": "DoCmbThc",
+      "revId": "bf683e9a9fcd2efc07e9eb4b3ce26a38d57f1dfd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DoFfELmE",
         "filename": "ArticleFeedbackv5.log.php",
         "patchSetId": 14
