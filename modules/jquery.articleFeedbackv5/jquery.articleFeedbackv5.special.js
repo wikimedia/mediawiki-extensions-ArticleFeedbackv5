@@ -785,11 +785,6 @@
 							// remove "add note" link
 							$( '#articleFeedbackv5-note-link-' + id ).remove();
 
-							// change text to reflect note has been entered
-							$( '#articleFeedbackv5-activity-link-' + id )
-								.removeClass( 'activity-empty' )
-								.text( mw.msg( 'articlefeedbackv5-viewactivity' ) );
-
 							// re-enable ajax flagging
 							$.articleFeedbackv5special.listControls.disabled = false;
 
@@ -1688,7 +1683,6 @@
 				<div>\
 					<div class="articleFeedbackv5-flyover-header">\
 						<h3 id="articleFeedbackv5-noteflyover-caption"><html:msg key="activity-pane-header" /></h3>\
-						<a id="articleFeedbackv5-noteflyover-helpbutton" href="#"></a>\
 						<a id="articleFeedbackv5-noteflyover-close" href="#"></a>\
 					</div>\
 					<div id="articleFeedbackv5-activity-log"></div>\
