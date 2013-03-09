@@ -37,6 +37,40 @@
     },
     {
       "key": {
+        "uuid": "DpzunF6w",
+        "filename": "ArticleFeedbackv5.model.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-09T01:12:06Z",
+      "side": 1,
+      "message": "I don\u0027t think the check is necessary, just return $page, the caller can check based on if it\u0027s an object or null",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dp9u089Q",
+        "filename": "ArticleFeedbackv5.model.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-09T01:12:06Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DpaZXjAA",
         "filename": "ArticleFeedbackv5.model.php",
         "patchSetId": 7
@@ -66,6 +100,74 @@
       "side": 1,
       "message": "Its new shorthand ternary if syntax introduced in php 5.3. Logically equivalent to: $user ? $user : false;",
       "parentUuid": "DpaZXjAA",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DpxuqW3M",
+        "filename": "ArticleFeedbackv5.model.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-09T01:12:06Z",
+      "side": 1,
+      "message": "$user would be either User object or false, it\u0027s not necessary to make this check",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dp7uzJ.g",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-09T01:12:06Z",
+      "side": 1,
+      "message": "the check is not necessary, it\u0027s already checked in elseif",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dp1vJw1o",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-09T01:12:06Z",
+      "side": 1,
+      "message": "$record-\u003egetArticle() may not return an object, should it be $discussPage?",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dp3vG-00",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-09T01:12:06Z",
+      "side": 1,
+      "message": "$record-\u003egetArticle() may return false",
       "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
