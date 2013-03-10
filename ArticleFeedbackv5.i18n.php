@@ -4108,6 +4108,7 @@ $messages['da'] = array(
  * @author Se4598
  * @author TMg
  * @author Tiin
+ * @author Wikifan
  * @author Wnme
  */
 $messages['de'] = array(
@@ -4390,9 +4391,9 @@ $messages['de'] = array(
 eines der folgenden Probleme enthält:
 * Telefonnummern
 * E-Mail-Adressen
-* pornografische Links
+* Links zu pornografischen Seiten
 * diffamierende/beleidigende Kommentare über eine Person
-* [//de.wikipedia.org/wiki/Wikipedia:Oversight#Anwendung andere Kriterien für Oversight]',
+* [//de.wikipedia.org/wiki/Wikipedia:Oversight#Richtlinie andere Oversight-Kriterien]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Begründung für die Beantragung einer einer Oversight-Löschung',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Warum beantragst du die Löschung?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'Oversight beantragen',
@@ -4626,6 +4627,7 @@ Das {{SITENAME}}-Team',
  * @author Imre
  * @author Kghbln
  * @author Umherirrender
+ * @author Wikifan
  */
 $messages['de-formal'] = array(
 	'articlefeedbackv5-cta-confirmation-message' => 'Ihre Rückmeldung wurde [$1 hier gespeichert].', # Fuzzy
@@ -4642,7 +4644,7 @@ $messages['de-formal'] = array(
 	'articlefeedbackv5-cta6-confirmation-title' => 'Brauchen Sie Hilfe beim Bearbeiten von {{SITENAME}}?',
 	'articlefeedbackv5-cta6-confirmation-call' => 'Kommen Sie zum Teehaus, um das Bearbeiten von {{SITENAME}} zu diskutieren. Dort tauschen neue und erfahrene Autoren nützliche Tipps untereinander aus.',
 	'articlefeedbackv5-error' => 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.',
-	'articlefeedbackv5-error-abuse' => 'Ihr Beitrag wurde vom Softwarefilter zurückgewiesen, der nahelegt, dass er möglicherweise die [$1 Rückmeldungsrichtlinien] von {{SITENAME}} verletzt.  Bitte überarbeiten Sie Ihren Beitrag und versuchen Sie es noch einmal.',
+	'articlefeedbackv5-error-abuse' => 'Ihr Beitrag wurde vom Softwarefilter zurückgewiesen, der nahelegt, dass er möglicherweise die [$1 Rückmeldungsrichtlinien] von {{SITENAME}} verletzt.  Bitte überarbeiten Sie Ihren Beitrag und versuchen Sie es noch einmal.', # Fuzzy
 	'articlefeedbackv5-error-nofeedback' => 'Bitte geben Sie Ihre Rückmeldung ein.',
 	'articlefeedbackv5-error-throttled' => 'Ihr Beitrag wurde zurückgewiesen, da Sie in jüngster Vergangenheit mehr als die empfohlene Anzahl an Rückmeldungen, gemäß der Rückmeldungsrichtlinien von {{SITENAME}}, hinterlassen haben. Bitte hinterlassen Sie nicht zu viele Rückmeldungen.',
 	'articlefeedbackv5-special-add-feedback' => 'Geben Sie eine Rückmeldung',
@@ -4653,6 +4655,13 @@ $messages['de-formal'] = array(
 	'articlefeedbackv5-special-disclaimer' => 'Dies ist ein Prototyp. Nutzen Sie ihn nicht; es sei denn, Sie werden dazu eingeladen, es zu tun.',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Warum blenden Sie diese Rückmeldung aus?',
 	'articlefeedbackv5-noteflyover-show-placeholder' => 'Warum stellen Sie diese Rückmeldung wieder her?',
+	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Bevor Sie eine Versionslöschung per Oversight beantragen, prüfen Sie bitte, ob dieser Beitrag
+eines der folgenden Probleme enthält:
+* Telefonnummern
+* E-Mail-Adressen
+* Links zu pornografischen Seiten
+* diffamierende/beleidigende Kommentare über eine Person
+* [//de.wikipedia.org/wiki/Wikipedia:Oversight#Richtlinie andere Oversight-Kriterien]',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Warum beantragen Sie die Löschung?',
 	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Warum nehmen Sie den Antrag zur Löschung zurück?',
 	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Warum verstecken Sie diese Rückmeldung?',
@@ -9512,7 +9521,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-error' => 'אירעה שגיאה. נא לנסות שוב מאוחר יותר.',
 	'articlefeedbackv5-error-blocked' => 'משתמשים חסומים אינם יכולים לשלוח משוב.',
 	'articlefeedbackv5-error-validation' => 'שגיאת אימות.',
-	'articlefeedbackv5-error-abuse' => 'תוכנת סינון דחתה את הרשומה שלך, כי נראה שהיא מפרה את [$1 מדיניות המשוב] של {{SITENAME}}. נא לשנות את הרשומה ולנסות שוב.', # Fuzzy
+	'articlefeedbackv5-error-abuse' => 'תוכנת סינון דחתה את הרשומה שלך, כי נראה שהיא מפרה את [$1 מדיניות המשוב] של {{SITENAME}}. נא לשנות את הרשומה ולנסות שוב. ({{PLURAL:$2|מסנן|מסננים}}: $3)',
 	'articlefeedbackv5-error-unknown' => 'שגיאה לא מוכרת.',
 	'articlefeedbackv5-error-submit' => 'שגיאה בהזנת הטופס.',
 	'articlefeedbackv5-error-nofeedback' => 'נא להזין את המשוב שלך.',
@@ -9752,6 +9761,13 @@ $messages['he'] = array(
 	'articlefeedbackv5-noteflyover-show-submit' => 'ביטול מחיקת הרשומה הזאת',
 	'articlefeedbackv5-noteflyover-show-help' => 'מידע נוסף',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'בקשת הסתרה',
+	'articlefeedbackv5-noteflyover-requestoversight-description' => 'לפני בקשת ממפעילים, אנא בדוק כי הפוסט הזה
+ כולל אחד מהנושאים הללו:
+ * מספרי טלפון
+ * כתובות דוא"ל
+ * קישורים פורנוגרפיים
+ * הוצאת דיבה על אדם
+ * [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy other criteria for oversight]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'הוספת הערת הסבר לבקשת ההסתרה',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'למה ביקשת הסתרה?',
 	'articlefeedbackv5-noteflyover-requestoversight-submit' => 'בקשת הסתרה',
@@ -9823,8 +9839,11 @@ $messages['he'] = array(
 	'articlefeedbackv5-disable-preference' => 'לא להציג את כלי המשוב בדפים',
 	'right-aft-reader' => 'שליחת משוב וסימון בתור מועיל',
 	'right-aft-member' => 'שליחת משוב וסימון בתור (לא) מועיל',
+	'right-aft-editor' => 'המלצה על משובים וסימונם כפתורים',
 	'right-aft-monitor' => 'הסתרת המשוב ובקשת פיקוח',
+	'right-aft-administrator' => 'ראה AFT בדפים מוגנים',
 	'right-aft-oversighter' => 'משוב לבקשת ההסתרה',
+	'log-name-articlefeedbackv5' => 'יומן משוב של ערכים',
 	'log-description-articlefeedbackv5' => 'זהו יומן הפעילות המכיל את פריטי המשוב הנאספים באמצעות כלי המשוב לערכים.',
 	'articlefeedbackv5-activity-pane-header' => 'יומן פעילות',
 	'articlefeedbackv5-activity-feedback-info' => "רשומת המשוב מס' $1 מאת $2",
@@ -24556,6 +24575,7 @@ $3
  * @author A1
  * @author AS
  * @author Arturyatsko
+ * @author AtUkr
  * @author Base
  * @author Dim Grits
  * @author Microcell
@@ -24599,6 +24619,7 @@ $messages['uk'] = array(
 	'articlefeedbackv5-error-submit' => 'Помилка надсилання даних форми.',
 	'articlefeedbackv5-error-nofeedback' => 'Будь ласка, додайте ваш відгук.',
 	'articlefeedbackv5-error-flagging' => 'Помилка додавання мітки до відгуку.',
+	'articlefeedbackv5-error-throttled' => 'Ваше повідомлення було відхилене, оскільки ви недавно відправили їх більше, ніж рекомендовано правилами складання відгуків проекту «{{SITENAME}}». Будь ласка, не відправляйте занадто багато повідомлень і не робіть цього дуже часто.',
 	'articlefeedbackv5-protection-level' => 'Відгук про статтю',
 	'articlefeedbackv5-protection-level-error' => 'Рівень захисту від відгуків не може бути вищим за рівень захисту від редагувань',
 	'articlefeedbackv5-protection-permission-reader' => 'Увімкнути для всіх',
@@ -24619,6 +24640,7 @@ $messages['uk'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'Чи цей відгук корисний?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Так',
 	'articlefeedbackv5-form-helpful-no-label' => 'Ні',
+	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% визнано корисними}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 так|$1 так}} / {{PLURAL:$2|1 ні|$2 ні}}',
 	'articlefeedbackv5-special-add-feedback' => 'Додати свій відгук',
 	'articlefeedbackv5-special-survey-button-text' => "Як Вам цей інструмент зворотного зв'язку?",
@@ -24649,12 +24671,19 @@ $messages['uk'] = array(
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Корисно',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Не корисно',
 	'articlefeedbackv5-special-filter-requested-watchlist' => 'Запитано приховування ревізором',
+	'articlefeedbackv5-special-filter-unrequested-watchlist' => 'Ті, для яких надіслано запит на розкриття',
 	'articlefeedbackv5-special-filter-visible-watchlist' => 'Усі видимі',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'Приховані',
+	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'Приховані ревізором',
+	'articlefeedbackv5-special-filter-unoversighted-watchlist' => 'Розкриті ревізором',
+	'articlefeedbackv5-special-filter-declined-watchlist' => 'Ті, для яких приховування було відхилене',
 	'articlefeedbackv5-special-filter-unhidden-watchlist' => 'Розкриті',
 	'articlefeedbackv5-special-filter-featured-watchlist' => 'Вибрані',
+	'articlefeedbackv5-special-filter-unfeatured-watchlist' => 'Із знятою позначкою вибраних',
 	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Вирішені',
 	'articlefeedbackv5-special-filter-unresolved-watchlist' => 'Невирішені',
+	'articlefeedbackv5-special-sort-relevance-asc' => 'Відповідні',
+	'articlefeedbackv5-special-sort-relevance-desc' => 'Невідповідні',
 	'articlefeedbackv5-special-sort-helpful-desc' => 'Корисно',
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Не корисно',
 	'articlefeedbackv5-special-sort-age-desc' => 'Найновіші',
@@ -24666,7 +24695,9 @@ $messages['uk'] = array(
 	'articlefeedbackv5-special-central-showing' => '{{PLURAL:$1|$1 відгук|$1 відгуки|$1 відгуків}} до усіх сторінок',
 	'articlefeedbackv5-special-watchlist-showing' => 'Відгуки про статті, за якими наглядає [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Відгуки про статті з мого списку спостереження]]',
+	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Переглянути відгуки до всіх сторінок]]',
 	'articleFeedbackv5-comment-ago' => '$1 тому',
+	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|$1 редагування|$1 редагування|$1 редагувань}} з моменту публікації',
 	'articleFeedbackv5-details-link' => 'Деталі',
 	'articlefeedbackv5-revision-link' => '(див. стару редакцію)',
 	'articlefeedbackv5-special-more' => 'Показати більше повідомлень',
@@ -24678,6 +24709,9 @@ $messages['uk'] = array(
 	'articlefeedbackv5-loading-tag' => 'Завантаження…',
 	'articlefeedbackv5-status-hide' => 'Цей відгук був прихований користувачем $1 $2 о $3',
 	'articlefeedbackv5-status-unhide' => 'Цей відгук був розкритий користувачем $1 $2 о $3',
+	'articlefeedbackv5-status-request' => 'Надіслано запит на приховання цього відгуку користувачем $1 $2 о $3',
+	'articlefeedbackv5-status-unrequest' => 'Надіслано запит на скасування приховання цього відгуку користувачем $1 $2 о $3',
+	'articlefeedbackv5-status-decline' => 'Запит на приховання цього відгуку відхилений учасником $1 $2 о $3',
 	'articlefeedbackv5-status-autohide' => 'Цей відгук був автоматично прихований користувачем $1 $2 о $3',
 	'articlefeedbackv5-status-oversight' => 'Цей відгук був прихований користувачем $1 $2 о $3',
 	'articlefeedbackv5-status-unoversight' => 'Цей відгук був показаний користувачем $1 $2 о $3',
@@ -24703,6 +24737,8 @@ $messages['uk'] = array(
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 позначка|$1 позначки|$1 позначок}}',
 	'articlefeedbackv5-form-abuse-cleared' => 'Позначки знято',
 	'articlefeedbackv5-form-delete' => 'Нагляд',
+	'articlefeedbackv5-form-oversight' => 'Запит нагляду',
+	'articlefeedbackv5-form-unoversight' => 'Відкликати запит нагляду',
 	'articlefeedbackv5-form-undelete' => 'Зняти нагляд',
 	'articlefeedbackv5-form-decline' => 'Відхилити нагляд',
 	'articlefeedbackv5-form-declined' => 'Нагляд відхилено',
@@ -24727,7 +24763,7 @@ $messages['uk'] = array(
 	'articlefeedbackv5-discussion-page' => 'Обговорення',
 	'articlefeedbackv5-whats-this' => 'Довідка',
 	'articlefeedbackv5-invalid-page-id' => 'Невірний ID сторінки',
-	'articlefeedbackv5-found-percent' => '$1 знайшли те, що шукали', # Fuzzy
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 користувачів знайшли потрібне їм}}',
 	'articlefeedbackv5' => 'Панель оцінювання статті — Центральна сторінка',
 	'articlefeedbackv5watchlist' => 'Відгуки про статті — Спостережувані мною сторінки',
 	'articlefeedbackv5-desc' => 'Оцінювання статей',
@@ -24737,10 +24773,13 @@ $messages['uk'] = array(
 	'articlefeedbackv5-header-message-link-text' => 'Дізнатися більше',
 	'articlefeedbackv5-beta-label' => 'БЕТА',
 	'articlefeedbackv5-unsupported-message' => 'Вибачте, Ваш браузер не підтримується цим прототипом. Для того, щоб переглянути цю сторінку, використайте, будь ласка, інший браузер.',
+	'articlefeedbackv5-page-disabled' => "Сторінка зворотного зв'язку недоступна для цієї статті.",
+	'articlefeedbackv5-no-feedback' => 'Немає відгуків користувачів для фільтру, який ви вибрали. Щоб змінити фільтр, спробуйте один з варіантів вище (наприклад: «Найбільш відповідний» або «Всі коментарі»).',
 	'articlefeedbackv5-viewactivity' => 'Перегляд активності',
 	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 рік|$1 роки|$1 років}}',
 	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 місяць|$1 місяці|$1 місяців}}',
 	'articlefeedbackv5-timestamp-weeks' => '$1 {{PLURAL:$1|тиждень|тижні|тижнів}}',
+	'articlefeedbackv5-timestamp-days' => '{{PLURAL:$1|$1 день|$1 дні|$1 днів}}',
 	'articlefeedbackv5-timestamp-seconds' => 'менше ніж 1 хвилина',
 	'articlefeedbackv5-mask-view-contents' => 'Перегляд вмісту',
 	'articlefeedbackv5-mask-text-autohide' => 'Цей відгук №$1 був автоматично прихований {{GENDER:$2|користувачем|користувачкою}} $2 $3 тому.',
@@ -24751,6 +24790,8 @@ $messages['uk'] = array(
 	'articlefeedbackv5-special-goback' => 'Переглянути сторінку відгуків',
 	'articlefeedbackv5-special-central-goback' => 'Відгуки на інші сторінки',
 	'articlefeedbackv5-permalink-info-title' => 'Інформація про цей відгук',
+	'articlefeedbackv5-permalink-written-by-editor' => "Написано зареєстрованим учасником <span>з допомогою форми зворотного зв'язку $1</span>",
+	'articlefeedbackv5-permalink-written-by-reader' => "Написано анонімом <span>з допомогою форми зворотного зв'язку $1</span>",
 	'articlefeedbackv5-permalink-info-revision-link' => 'Див. стару версію',
 	'articlefeedbackv5-permalink-info-posted' => 'Опубліковано $1 о $2',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Довжина',
@@ -24764,7 +24805,11 @@ $messages['uk'] = array(
 	'articlefeedbackv5-permalink-activity-none' => 'Щодо цього відгуку не було дій.',
 	'articlefeedbackv5-permalink-status-hide' => '<strong>Приховано</strong> {{GENDER:$1|користувачем $1|користувачкою $1}} $2 назад',
 	'articlefeedbackv5-permalink-status-unhide' => '<strong>Показано</strong> {{GENDER:$1|користувачем $1|користувачкою $1}} $2 назад',
+	'articlefeedbackv5-permalink-status-request' => '<strong>Приховання</strong> запропоноване {{GENDER:$1|користувачем $1|користувачкою $1}} $2 тому',
+	'articlefeedbackv5-permalink-status-unrequest' => '<strong>Приховання</strong> скасоване {{GENDER:$1|користувачем $1|користувачкою $1}} $2 тому',
+	'articlefeedbackv5-permalink-status-decline' => '<strong>Приховання</strong> відхилене {{GENDER:$1|користувачем $1|користувачкою $1}} $2 тому',
 	'articlefeedbackv5-permalink-status-autohide' => '<strong>Автоматично приховано</strong> {{GENDER:$1|користувачем $1|користувачкою $1}} $2 назад',
+	'articlefeedbackv5-permalink-status-oversight' => '<strong>Приховано</strong> {{GENDER:$1|користувачем $1|користувачкою $1}} $2 тому',
 	'articlefeedbackv5-permalink-activity-more' => 'Переглядати більше дій…',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Переглядати менше дій…',
 	'articlefeedbackv5-noteflyover-feature-caption' => 'Додати до списку вибраних',
