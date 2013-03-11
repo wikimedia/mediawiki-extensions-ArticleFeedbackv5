@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DqJ3nR.c",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.utils.js",
+        "patchSetId": 21
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-11T22:21:23Z",
+      "side": 1,
+      "message": "This is bad, it means if you bump the credits version to 5.1.1 and yet the semantics of cookies like \u003cprefix\u003eAFT5.1.0-feedback-ids doesn\u0027t change, you obsolete all existing cookies.\n\nI think the cookies should be version-less (just \"AFTv5\" prefix)  and if and only when you change the semantics of one, add a version or otherwise change its suffix, e.g. \u003cprefix\u003eAFTv5-feedback-ids-json",
+      "revId": "5a09aaae6c658a9cf799e069a7b94f9afefe0dd5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqH3G800",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.utils.js",
+        "patchSetId": 21
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-11T22:21:23Z",
+      "side": 1,
+      "message": "The version here should be static \u002711\u0027.  If you bump wgArticleFeedbackv5Tracking.version to 12 you still want to remove the previous-generation v11 cookies, there won\u0027t be any cookies with \"12\" in them. And if you can\u0027t get the version don\u0027t waste time expiring non-existent @0 cookies.",
+      "revId": "5a09aaae6c658a9cf799e069a7b94f9afefe0dd5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqB0El8E",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.utils.js",
+        "patchSetId": 21
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-11T22:21:23Z",
+      "side": 1,
+      "message": "FYI, stepping through jquery.cookie code setting a cookie to null sets expires to -1 for you; but jquery.cookie has no spec and poor documentation so I think it\u0027s fine not to rely on it.  Also FYI the latest version has an explicit removeCookie() function but it\u0027s not in MW\u0027s version.\n\nMy remaining old-style cookies all expire in a week, so they\u0027re fine to let die off naturally. FYI they are mediaWiki.user.bucket:ext.articleFeedbackv5@11-tracking, mediaWiki.user.bucket:ext.articleFeedbackv5@5-links, and mediaWiki.user.bucket:ext.articleFeedbackv5@6-form.  Note the last two have non-11 versions I think because they use other versions from wgArticleFeedbackv5LinkBuckets and wgArticleFeedbackv5DisplayBuckets.",
+      "revId": "5a09aaae6c658a9cf799e069a7b94f9afefe0dd5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
