@@ -739,8 +739,8 @@ The abuse policy link.',
 	'articlefeedbackv5-special-showing' => 'Text to show how many feedback posts have been posted to this article. $1 is the number of posts (needs plural support)',
 	'articlefeedbackv5-special-central-showing' => 'Text to show how many feedback posts have been posted across the wiki. $1 is the number of posts (needs plural support)',
 	'articlefeedbackv5-special-watchlist-showing' => "Text to show we're at the page containing feedback on watchlisted articles. Parameters:
-* $1 is a link to the user page,
-* $2 is a username,",
+* $1 - a link to the user page
+* $2 - a username",
 	'articlefeedbackv5-special-central-watchlist-link' => 'Text to show on the link on the central feedback page to the watchlist-page. $1 is the link',
 	'articlefeedbackv5-special-watchlist-central-link' => 'Text to show on the link on the watchlist-page to the central feedback page. $1 is the link',
 	'articleFeedbackv5-comment-ago' => 'For posts less than 48 hours old, display a relative timestamp ("2 hours 19 minutes ago", eg). Formatting timestamp is in $1',
@@ -2921,7 +2921,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-cta2-confirmation-call' => "Gant tud eveldoc'h eo graet al lec'hienn-mañ. Ha mat eo deoc'h reiñ an dorn deomp ?",
 	'articlefeedbackv5-cta2-button-text' => "Gouzout hiroc'h.",
 	'articlefeedbackv5-cta3-confirmation-title' => "Respontit d'ur sontadeg vihan",
-	'articlefeedbackv5-cta3-confirmation-call' => 'Ne gemero nemet ur vunutenn hag hor skoazello da wellaat Wikipedia.', # Fuzzy
+	'articlefeedbackv5-cta3-confirmation-call' => 'Ne gemero nemet ur vunutenn hag hor skoazello da wellaat {{SITENAME}}.', # Fuzzy
 	'articlefeedbackv5-cta3-button-text' => 'Kregiñ gant ar sontadeg',
 	'articlefeedbackv5-cta4-confirmation-title' => 'Emezelañ er gumuniezh',
 	'articlefeedbackv5-cta4-button-text-signup' => 'Krouiñ ur gont',
@@ -2940,6 +2940,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-error-nofeedback' => 'Roit ho soñj.',
 	'articlefeedbackv5-error-flagging' => 'Fazi en ur lakaat ar banniel war ar soñjadenn.',
 	'articlefeedbackv5-protection-level' => 'Soñjoù diwar-benn ar pennad',
+	'articlefeedbackv5-protection-permission-administrator' => 'Gweredekaat evit ar verourien hepken',
 	'articlefeedbackv5-contribs-entry-status' => 'Statud : $1', # Fuzzy
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Talvoudus',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Merket',
@@ -2981,6 +2982,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Didalvez',
 	'articlefeedbackv5-special-filter-requested-watchlist' => 'Evezh goulennet',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'Kuzhet',
+	'articlefeedbackv5-special-filter-unhidden-watchlist' => 'Digoachet',
 	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Diskoulmet',
 	'articlefeedbackv5-special-filter-unresolved-watchlist' => 'Nann-diskoulmet',
 	'articlefeedbackv5-special-sort-relevance-asc' => 'Talvoudus',
@@ -3162,13 +3164,13 @@ $messages['br'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => "N'em eus ket kavet ar pezh a glasken siwazh.",
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 arouezenn a chom)|($1 arouezenn a chom)}}',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => "Eus ar c'hentañ. Un evezhiadenn bennak a fell deoc'h ouzhpennañ ?",
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => "Penaos e c'hallfe ar pennad-mañ bezañ gwellaet ?", # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => "Skrivit ho tamantiñ amañ (d.sk.: 'ezhomm en deus ar pennad-mañ eus ur skeudenn')",
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Ho tigarez. Un ali bennak eus ho perzh evit gwellaat an traoù ?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => "Petra a vank ? Kinnigoù gwellaat hoc'h eus ?", # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-no' => "Skrivit ho tamantiñ amañ (da sk. : 'ezhomm en deus ar pennad-mañ eus ur skeudenn')",
 	'articlefeedbackv5-bucket6-form-submit' => 'Embannit ho soñj',
 	'articlefeedbackv5-bucket6-backlink-text' => "Distreiñ d'ar bazenn 1",
 	'articlefeedbackv5-help-tooltip-title' => 'Petra eo se ?',
-	'articlefeedbackv5-help-tooltip-info' => "Wikipedia a garfe gouzout ar pezh a soñjit diwar-benn ar bajenn-mañ. Roit ho soñj da c'houzout. -- hag hor skoazellit da wellaat ar bajenn-mañ.", # Fuzzy
+	'articlefeedbackv5-help-tooltip-info' => "{{SITENAME}} a garfe gouzout ar pezh a soñjit diwar-benn ar bajenn-mañ. Roit ho soñj da c'houzout. -- hag hor skoazellit da wellaat ar bajenn-mañ.",
 	'articlefeedbackv5-help-tooltip-linktext' => "Gouzout hiroc'h.",
 	'articlefeedbackv5-sitesub-linktext' => 'Gwellaat ar bajenn-mañ',
 	'articlefeedbackv5-titlebar-linktext' => 'Hor skoazellit da wellaat ar bajenn-mañ >>',
