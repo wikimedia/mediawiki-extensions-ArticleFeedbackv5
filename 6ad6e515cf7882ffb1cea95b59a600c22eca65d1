@@ -34,6 +34,24 @@
       "revId": "6ad6e515cf7882ffb1cea95b59a600c22eca65d1",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dp5D4gno",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-11T17:28:20Z",
+      "side": 1,
+      "message": "Got it!  I thought they all belong to the same action type.  Maybe put some more comment to state the difference\n\nI am not sure if ArticleFeedbackv5Activity::$actions can be accessed in ArticleFeedbackv5.php, autoload function may not be defined in here yet",
+      "parentUuid": "Dp5WStJ0",
+      "revId": "6ad6e515cf7882ffb1cea95b59a600c22eca65d1",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
