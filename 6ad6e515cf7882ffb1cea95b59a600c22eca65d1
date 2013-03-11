@@ -16,6 +16,24 @@
       "revId": "6ad6e515cf7882ffb1cea95b59a600c22eca65d1",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dp5WStJ0",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-11T12:24:52Z",
+      "side": 1,
+      "message": "All others are \"actions\" performed towards feedback and have much more other code tied to them.\n\"create\" will only log with the intent of having an entry in Special:Log \u0026 RecentChanges, while all others have much more functionality (e.g. they\u0027re being fetched to be displayed in a feedback entry\u0027s \"activity pane\")\nThought it would be cleaner to also separate this here, rather than just adding 1 (\"create\") more value in there that does not really stand out in the crowd and might otherwise go unnoticed.\n\nPerhaps though, I would be much better to add the log handler to ArticleFeedbackv5Activity::$actions and iterate over them here? That would make it even less error-prone: adding a new action would not require this logformatter entry to be added as well so won\u0027t go overlooked.\n\nExample:\n\nArticleFeedbackv5.activity.php\n\n    public static $actions \u003d array(\n        \u0027oversight\u0027 \u003d\u003e array(\n            \u0027permissions\u0027 \u003d\u003e \u0027aft-oversighter\u0027,\n            \u0027sentiment\u0027 \u003d\u003e \u0027negative\u0027,\n            \u0027log\u0027 \u003d\u003e \u0027suppress\u0027\n        ),\n        ...\n    );\n\nArticleFeedbackv5.php:\n\n    foreach( ArticleFeedbackv5Activity::$actions as $action \u003d\u003e $options ) {\n        $log \u003d $option[\u0027log\u0027];\n        $wgLogActionsHandlers[\"$log/$action\"] \u003d \u0027ArticleFeedbackv5LogFormatter\u0027;\n    }\n\n\nWhat do you think?",
+      "parentUuid": "DpYwgb00",
+      "revId": "6ad6e515cf7882ffb1cea95b59a600c22eca65d1",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
