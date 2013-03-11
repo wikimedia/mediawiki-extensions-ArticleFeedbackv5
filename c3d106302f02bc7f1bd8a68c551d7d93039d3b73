@@ -16,6 +16,24 @@
       "revId": "c3d106302f02bc7f1bd8a68c551d7d93039d3b73",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dp-XD.Ac",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 20
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-11T14:49:58Z",
+      "side": 1,
+      "message": "I\u0027ve added a method to remove the now-obsolete cookies. I won\u0027t create a script to merge them though, since the the \"most important\" filter \u0026 activity cookies will change drastically (new filters \u0026 actions) in https://gerrit.wikimedia.org/r/#/c/46947/",
+      "parentUuid": "DpWygg5U",
+      "revId": "c3d106302f02bc7f1bd8a68c551d7d93039d3b73",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
