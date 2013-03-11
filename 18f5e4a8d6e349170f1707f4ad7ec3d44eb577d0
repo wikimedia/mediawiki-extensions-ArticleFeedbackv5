@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "DpwrEQ-Y",
+        "filename": "ArticleFeedbackv5.model.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-11T10:35:14Z",
+      "side": 1,
+      "message": "It\u0027s indeed not necessary, but I didn\u0027t like that the return values of the 3 objects being created through getArticle(), getRevision() and getUser() are different.\n\n* Article::newFromID: object or null\n* Revision::newFromId: object or null\n* User::newFromName: object or false\n\nI\u0027ll change it though, I understand that compared to other code that gets Article of Revision objects, expecting the \"fail\" return value to be false instead of null would be odd.",
+      "parentUuid": "DpzunF6w",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dp9u089Q",
         "filename": "ArticleFeedbackv5.model.php",
         "patchSetId": 7
@@ -151,6 +169,24 @@
       "writtenOn": "2013-03-09T01:12:06Z",
       "side": 1,
       "message": "$record-\u003egetArticle() may not return an object, should it be $discussPage?",
+      "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dpyp.36w",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 7
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-11T10:35:14Z",
+      "side": 1,
+      "message": "Mmh - this should be checked through this class\u0027 validate() function, which I falsely though was being tested already. I\u0027ll add this in right away.",
+      "parentUuid": "Dp1vJw1o",
       "revId": "18f5e4a8d6e349170f1707f4ad7ec3d44eb577d0",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
