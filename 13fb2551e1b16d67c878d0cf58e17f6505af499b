@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DqMBCshI",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 22
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-12T00:29:23Z",
+      "side": 1,
+      "message": "But... you listened to me and made the API use uppercase ASC and DESC to match the underlying SQL query and the api\u0027s auto-generated documentation.  But this sort, and hence I think the JavaScript and the cookie, all wind up using lowercase asc and desc and as a result the API query always fails when I click \"Sort by\" on Special:ArticleFeedbackv5/SomePage.\n\nRather than trying to impose one true capitalization everywhere, somewhere in this sprawling codebase you should be more lenient and/or juststrtoupper().  E.g. the \"Sort by\" works if I change api/ApiViewFeedbackArticleFeedbackv5.php to \n\n   ApiBase::PARAM_TYPE     \u003d\u003e array( \u0027DESC\u0027, \u0027ASC\u0027, \u0027desc\u0027, \u0027asc\u0027 )\n\nHowever, I\u0027m worried that allowing lowercase may trigger the exception in data/DataModel.php :\n\n     throw new MWException( \u0027Order should be either ASC or DESC\u0027 );\n\nthough it doesn\u0027t happen for me, maybe some DB layer normalizes it.",
+      "revId": "13fb2551e1b16d67c878d0cf58e17f6505af499b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
