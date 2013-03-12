@@ -2563,10 +2563,12 @@
 			var now = (new Date()).getTime();
 			var msInHour = 3600000;
 
+			var timestampsCookieName = mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'submission_timestamps' );
+
 			var priorTimestamps = new Array();
 			var savedTimestamps = new Array();
 
-			var priorCookieValue = $.cookie( $.aftTrack.prefix( 'submission_timestamps' ) );
+			var priorCookieValue = $.cookie( timestampsCookieName );
 			if ( priorCookieValue != null ) {
 				var priorTimestamps = priorCookieValue.split( ',' );
 			}
@@ -2581,17 +2583,18 @@
 
 			if ( postsInLastHour >= $.articleFeedbackv5.throttleThresholdPostsPerHour ) {
 				// display throttling message
-				$.articleFeedbackv5.markTopError( mw.msg( 'articlefeedbackv5-error-throttled' ) );
+				var message = $( '<span />' ).msg( 'articlefeedbackv5-error-throttled' ).text();
+				$.articleFeedbackv5.markTopError( message );
 
 				// re-store pruned post timestamp list
-				$.cookie( $.aftTrack.prefix( 'submission_timestamps' ), savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
+				$.cookie( timestampsCookieName, savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
 
 				return;
 			}
 
 			// if we get this far, they haven't been throttled, so update the post timestamp list with the current time and re-store it
 			savedTimestamps.push(now);
-			$.cookie( $.aftTrack.prefix( 'submission_timestamps' ), savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
+			$.cookie( timestampsCookieName, savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
 		}
 
 		// Lock the form
@@ -2609,7 +2612,6 @@
 			'revid': $.articleFeedbackv5.revisionId,
 			'bucket': $.articleFeedbackv5.bucketId,
 			'cta': $.articleFeedbackv5.ctaId,
-			'experiment': $.articleFeedbackv5.experiment().replace( 'option', '' ),
 			'link': $.articleFeedbackv5.submittedLinkId
 		} );
 
@@ -2640,13 +2642,19 @@
 					$.articleFeedbackv5.unlockForm();
 					$.articleFeedbackv5.showCTA();
 
+					var feedbackIdsCookieName = mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'feedback-ids' );
+
 					// save add feedback id to cookie (only most recent 20)
-					var feedbackIds = $.parseJSON( $.cookie( $.aftTrack.prefix( 'feedback-ids' ) ) );
+					var feedbackIds = $.parseJSON( $.cookie( feedbackIdsCookieName ) );
 					if ( !$.isArray( feedbackIds ) ) {
 						feedbackIds = [];
 					}
 					feedbackIds.unshift( data.articlefeedbackv5.feedback_id );
-					$.cookie( $.aftTrack.prefix( 'feedback-ids' ), $.toJSON( feedbackIds.splice( 0, 20 ) ), { expires: 30, path: '/' } );
+					$.cookie(
+						feedbackIdsCookieName,
+						$.toJSON( feedbackIds.splice( 0, 20 ) ),
+						{ expires: 30, path: '/' }
+					);
 
 					// Clear out anything that needs removing (usually trigger links)
 					$.articleFeedbackv5.$toRemove.remove();

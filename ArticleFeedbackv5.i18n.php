@@ -59,6 +59,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-error-abuse-link' => '//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines',
 	'articlefeedbackv5-error-unknown' => 'Unknown error.',
 	'articlefeedbackv5-error-submit' => 'Form submission error.',
+	'articlefeedbackv5-error-duplicate' => 'The submitted feedback is a duplicate of the last feedback; perhaps you accidentally submitted the feedback twice?',
 	'articlefeedbackv5-error-nofeedback' => 'Please enter your feedback.',
 	'articlefeedbackv5-error-flagging' => 'Error flagging feedback.',
 	'articlefeedbackv5-error-throttled' => 'Your post has been rejected because you have recently posted more feedback than recommended in {{SITENAME}}\'s feedback guidelines. Please do not post feedback repeatedly or excessively.',
@@ -90,7 +91,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-helpful-no-label' => 'No',
 	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% found it helpful}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 yes|$1 yes}} / {{PLURAL:$2|1 no|$2 no}}',
-	'articlefeedbackv5-special-add-feedback' => 'Add your feedback',
 	'articlefeedbackv5-special-survey-button-text' => 'What do you think of this feedback tool?',
 	'articlefeedbackv5-special-filter-all' => 'All posts ($1)',
 	'articlefeedbackv5-special-filter-notdeleted' => 'All (hidden) ($1)',
@@ -130,8 +130,8 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-filter-unfeatured-watchlist' => 'Un-featured',
 	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Resolved',
 	'articlefeedbackv5-special-filter-unresolved-watchlist' => 'Un-resolved',
-	'articlefeedbackv5-special-sort-relevance-asc' => 'Relevant',
-	'articlefeedbackv5-special-sort-relevance-desc' => 'Irrelevant',
+	'articlefeedbackv5-special-sort-relevance-desc' => 'Relevant',
+	'articlefeedbackv5-special-sort-relevance-asc' => 'Irrelevant',
 	'articlefeedbackv5-special-sort-helpful-desc' => 'Helpful',
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Unhelpful',
 	'articlefeedbackv5-special-sort-age-desc' => 'Newest',
@@ -146,7 +146,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-watchlist-showing' => 'Feedback for pages watched by [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Feedback from my watched pages]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|View feedback from all pages]]',
-	'articleFeedbackv5-comment-ago'  => '$1 ago',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edit|$1 edits}} since post',
 	'articleFeedbackv5-details-link' => 'Details',
 	'articlefeedbackv5-revision-link' => '(see old article)',
@@ -171,12 +170,12 @@ $messages['en'] = array(
 	'articlefeedbackv5-status-resolve' => 'This post was marked as resolved by $1 on $2 at $3',
 	'articlefeedbackv5-status-unresolve' => 'This post was un-marked as resolved by $1 on $2 at $3',
 	'articlefeedbackv5-new-marker' => 'New',
-	'articlefeedbackv5-deleted-marker' => 'Oversighted',
-	'articlefeedbackv5-hidden-marker' => 'Hidden',
-	'articlefeedbackv5-featured-marker' => 'Featured',
+	'articlefeedbackv5-oversight-marker' => 'Oversighted',
+	'articlefeedbackv5-hide-marker' => 'Hidden',
+	'articlefeedbackv5-feature-marker' => 'Featured',
+	'articlefeedbackv5-resolve-marker' => 'Resolved',
 	'articlefeedbackv5-form-feature' => 'Feature this post',
 	'articlefeedbackv5-form-unfeature' => 'Unfeature this post',
-	'articlefeedbackv5-resolved-marker' => 'Resolved',
 	'articlefeedbackv5-form-resolve' => 'Mark as resolved',
 	'articlefeedbackv5-form-unresolve' => 'Unmark as resolved',
 	'articlefeedbackv5-form-hide' => 'Hide this post',
@@ -226,16 +225,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-page-disabled' => 'Article Feedback page not enabled for this page.',
 	'articlefeedbackv5-no-feedback' => "There is no feedback for the filter you selected. To change your filter, try one of the options above (e.g.: 'Most Relevant' or 'All Comments').",
 	'articlefeedbackv5-viewactivity' => 'View activity',
-	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 year|$1 years}}',
-	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 month|$1 months}}',
-	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 week|$1 weeks}}',
-	'articlefeedbackv5-timestamp-days' => '{{PLURAL:$1|$1 day|$1 days}}',
-	'articlefeedbackv5-timestamp-seconds' => 'less than 1 minute',
 	'articlefeedbackv5-mask-view-contents' => 'View contents',
-	'articlefeedbackv5-mask-text-autohide' => 'This post #$1 {{GENDER:$2|was autohidden by $2}} $3 ago.',
-	'articlefeedbackv5-mask-text-hide' => 'This post #$1 {{GENDER:$2|was hidden by $2}} $3 ago.',
-	'articlefeedbackv5-mask-text-oversight' => 'This post #$1 {{GENDER:$2|was oversighted by $2}} $3 ago.',
-	'articlefeedbackv5-mask-postnumber' => 'Post #$1',
+	'articlefeedbackv5-mask-text-autohide' => 'This post #$1 {{GENDER:$2|was autohidden by $2}} $3.',
+	'articlefeedbackv5-mask-text-hide' => 'This post #$1 {{GENDER:$2|was hidden by $2}} $3.',
+	'articlefeedbackv5-mask-text-oversight' => 'This post #$1 {{GENDER:$2|was oversighted by $2}} $3.',
 	'articlefeedbackv5-special-disclaimer' => 'This is a prototype. Please do not use it unless you have been invited to.',
 	'articlefeedbackv5-special-goback' => 'View feedback page',
 	'articlefeedbackv5-special-central-goback' => 'See more feedback from other pages',
@@ -254,23 +247,25 @@ $messages['en'] = array(
 	'articlefeedbackv5-permalink-activity-title' => 'Activity',
 	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 action|$1 actions}})',
 	'articlefeedbackv5-permalink-activity-none' => 'There has been no activity on this post.',
-	'articlefeedbackv5-permalink-status-hide' => '{{GENDER:$1|<strong>Hidden</strong> by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-unhide' => '{{GENDER:$1|<strong>Unhidden</strong> by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-request' => '{{GENDER:$1|<strong>Oversight</strong> was requested by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-unrequest' => '{{GENDER:$1|<strong>Oversight</strong> was un-requested by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-decline' => '{{GENDER:$1|<strong>Oversight</strong> was declined by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-autohide' => '{{GENDER:$1|<strong>Auto-hidden</strong> by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-oversight' => '{{GENDER:$1|<strong>Oversighted</strong> by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-unoversight' => '{{GENDER:$1|<strong>Un-oversighted</strong> by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-autoflag' => '{{GENDER:$1|<strong>Auto-flagged</strong> by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-feature' => '{{GENDER:$1|<strong>Featured</strong> by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-unfeature' => '{{GENDER:$1|<strong>Un-featured</strong> by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-resolve' => '{{GENDER:$1|<strong>Marked as resolved</strong> by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-unresolve' => '{{GENDER:$1|<strong>Un-marked as resolved</strong> by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-helpful' => '{{GENDER:$1|<strong>Marked as helpful</strong> by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-undo-helpful' => '{{GENDER:$1|<strong>Un-marked as helpful</strong> by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Marked as unhelpful</strong> by $1}} $2 ago',
-	'articlefeedbackv5-permalink-status-undo-unhelpful' => '{{GENDER:$1|<strong>Un-marked as unhelpful</strong> by $1}} $2 ago',
+	'articlefeedbackv5-permalink-status-hide' => '{{GENDER:$1|<strong>Hidden</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-unhide' => '{{GENDER:$1|<strong>Unhidden</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-request' => '{{GENDER:$1|<strong>Oversight</strong> was requested by $1}} $2',
+	'articlefeedbackv5-permalink-status-unrequest' => '{{GENDER:$1|<strong>Oversight</strong> was un-requested by $1}} $2',
+	'articlefeedbackv5-permalink-status-decline' => '{{GENDER:$1|<strong>Oversight</strong> was declined by $1}} $2',
+	'articlefeedbackv5-permalink-status-autohide' => '{{GENDER:$1|<strong>Auto-hidden</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-oversight' => '{{GENDER:$1|<strong>Oversighted</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-unoversight' => '{{GENDER:$1|<strong>Un-oversighted</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-flag' => '{{GENDER:$1|<strong>Flagged</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-unflag' => '{{GENDER:$1|<strong>Unflagged</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-autoflag' => '{{GENDER:$1|<strong>Auto-flagged</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-feature' => '{{GENDER:$1|<strong>Featured</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-unfeature' => '{{GENDER:$1|<strong>Un-featured</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-resolve' => '{{GENDER:$1|<strong>Marked as resolved</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-unresolve' => '{{GENDER:$1|<strong>Un-marked as resolved</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-helpful' => '{{GENDER:$1|<strong>Marked as helpful</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-undo-helpful' => '{{GENDER:$1|<strong>Un-marked as helpful</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Marked as unhelpful</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-status-undo-unhelpful' => '{{GENDER:$1|<strong>Un-marked as unhelpful</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-activity-more' => 'View more actions...',
 	'articlefeedbackv5-permalink-activity-fewer' => 'View fewer actions...',
 
@@ -455,7 +450,7 @@ includes one of these issues:
 
 	/* Log types */
 	'log-name-articlefeedbackv5' => 'Article Feedback Activity Log',
-	'log-description-articlefeedbackv5' => 'This is the log of activity taken on feedback items collected for articles using Article Feedback.',
+	'log-description-articlefeedbackv5' => 'This is the log of activity taken on feedback items submitted by users via Article Feedback.',
 	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|changed the status to oversight of}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|removed the oversight status of}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-hide' => '$1 {{GENDER:$2|hid}} [[$3|feedback post #$4]] on [[$5]]',
@@ -486,9 +481,11 @@ includes one of these issues:
 	'articlefeedbackv5-activity-item-unrequest' => '$1 unrequested oversight on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-decline' => '$1 declined oversight on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-hide' => '$1 hid this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-flag' => '$1 flagged this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-unhide' => '$1 unhid this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-autohide' => '$1 hid this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 flagged this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-unflag' => '$1 unflagged this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-autoflag' => '$1 flagged this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-oversight' => '$1 oversighted this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-unoversight' => '$1 removed oversight on this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-resolve' => '$1 marked this post as resolved on $4 at $5 $2',
@@ -646,6 +643,7 @@ The link to the edit tutorial',
 The abuse policy link.',
 	'articlefeedbackv5-error-unknown' => 'Generic error message to be displayed when something unknown goes wrong.',
 	'articlefeedbackv5-error-submit' => 'Generic error message to be displayed in case the feedback form could not be submitted.',
+	'articlefeedbackv5-error-duplicate' => 'Error message to be displayed when the submitted feedback is exactly the same as the last submitted feedback.',
 	'articlefeedbackv5-error-nofeedback' => 'This error message will be displayed above the form (but below the title) if the user has attempted to submit a blank form.',
 	'articlefeedbackv5-error-flagging' => 'Generic error message displayed when it was not possible to perform a flagging action (e.g. feature, oversight, mark as helpful...) on feedback.',
 	'articlefeedbackv5-error-throttled' => 'Error message to be displayed when a user attempts to post too much feedback in too little time.',
@@ -743,7 +741,6 @@ The abuse policy link.',
 * $2 - a username",
 	'articlefeedbackv5-special-central-watchlist-link' => 'Text to show on the link on the central feedback page to the watchlist-page. $1 is the link',
 	'articlefeedbackv5-special-watchlist-central-link' => 'Text to show on the link on the watchlist-page to the central feedback page. $1 is the link',
-	'articleFeedbackv5-comment-ago' => 'For posts less than 48 hours old, display a relative timestamp ("2 hours 19 minutes ago", eg). Formatting timestamp is in $1',
 	'articlefeedbackv5-updates-since' => 'Number of edits made to this article since this feedback was posted. $1 is the number of edits. Requires plural support',
 	'articleFeedbackv5-details-link' => 'Text for the link to the details/permalink page for that feedback post',
 	'articlefeedbackv5-revision-link' => 'Link to view the exact revision this user commented on (may be the current live page, or a historical revision).',
@@ -797,6 +794,16 @@ The abuse policy link.',
 * $2 - the date when the unoversight occurred
 * $3 - the time when the unoversight occurred
 {{Related|Articlefeedbackv5-status}}',
+	'articlefeedbackv5-status-unflag' => 'The marker that appears on a comment if it has been unflagged as abuse.
+* $1 - a link to the faq about how unflagging works
+* $2 - the date when the unflag occurred
+* $3 - the time when the unflag occurred
+{{Related|Articlefeedbackv5-status}}',
+	'articlefeedbackv5-status-flag' => 'The marker that appears on a comment if it has been flagged as abuse.
+* $1 - a link to the faq about how flagging works
+* $2 - the date when the flag occurred
+* $3 - the time when the flag occurred
+{{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-status-autoflag' => 'The marker that appears on a comment if it has been automatically flagged as abuse.
 * $1 - a link to the faq about how autoflagging works
 * $2 - the date when the autoflag occurred
@@ -824,14 +831,14 @@ The abuse policy link.',
 {{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-new-marker' => 'The marker that appears on a comment is new and highlighted.
 {{Identical|New}}',
-	'articlefeedbackv5-deleted-marker' => 'The marker that appears on a comment if it has been oversighted (deleted).',
-	'articlefeedbackv5-hidden-marker' => 'The marker that appears on a comment if it has been hidden.
+	'articlefeedbackv5-oversight-marker' => 'The marker that appears on a comment if it has been oversighted (deleted).',
+	'articlefeedbackv5-hide-marker' => 'The marker that appears on a comment if it has been hidden.
 {{Identical|Hidden}}',
-	'articlefeedbackv5-featured-marker' => 'The marker that appears on a comment if it has been featured.
+	'articlefeedbackv5-feature-marker' => 'The marker that appears on a comment if it has been featured.
 {{Identical|Featured}}',
+	'articlefeedbackv5-resolve-marker' => 'The marker that appears on a comment if it has been marked as resolved.',
 	'articlefeedbackv5-form-feature' => 'Link text for featuring the post (in the toolbox)',
 	'articlefeedbackv5-form-unfeature' => 'Link text for un-featuring the post (in the toolbox)',
-	'articlefeedbackv5-resolved-marker' => 'The marker that appears on a comment if it has been marked as resolved.',
 	'articlefeedbackv5-form-resolve' => 'Link text for marking the post resolved (in the toolbox)',
 	'articlefeedbackv5-form-unresolve' => 'Link text for un-marking the post resolved (in the toolbox)',
 	'articlefeedbackv5-form-hide' => 'Link text for hiding the post',
@@ -912,26 +919,19 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-page-disabled' => 'A message to be displayed on the article feedback page when AFT is not enabled for that page',
 	'articlefeedbackv5-no-feedback' => 'A message to be displayed on the article feedback page when there is no feedback yet for a certain filter.',
 	'articlefeedbackv5-viewactivity' => 'Text for the link to see the log of activity (e.g. mark as helpful, resolve, oversight, ...) taken towards feedback',
-	'articlefeedbackv5-timestamp-years' => 'Years part - $1 is the years parameter',
-	'articlefeedbackv5-timestamp-months' => 'Months part - $1 is the months parameter',
-	'articlefeedbackv5-timestamp-weeks' => 'Weeks part - $1 is the weeks parameter',
-	'articlefeedbackv5-timestamp-days' => 'Days part - $1 is the days parameter
-{{Identical|Day}}',
-	'articlefeedbackv5-timestamp-seconds' => 'Less than a minute - no parameters are required',
 	'articlefeedbackv5-mask-view-contents' => 'Pseudo-link to make it obvious that clicking there will reveal the original feedback content',
 	'articlefeedbackv5-mask-text-autohide' => 'Text to be displayed on the autohidden post mask. Parameters:
 * $1 - The feedback post id
 * $2 - The name of the user who hid the post
-* $3 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $3 - The relative timestamp (e.g. "2 hours ago")',
 	'articlefeedbackv5-mask-text-hide' => 'Text to be displayed on the hidden post mask. Parameters:
 * $1 - The feedback post id
 * $2 - The name of the user who hid the post
-* $3 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
+* $3 - The relative timestamp (e.g. "2 hours ago")',
 	'articlefeedbackv5-mask-text-oversight' => 'Text to be displayed on the oversighted post mask. Parameters:
 * $1 is the feedback post id
 * $2 is the name of the user who oversighted (deleted) the post
-* $3 is the relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)',
-	'articlefeedbackv5-mask-postnumber' => 'Template for post number, to be displayed on the hidden post mask. $1 is the id (number) of the feedback entry.',
+* $3 is the relative timestamp (e.g. "2 hours ago")',
 	'articlefeedbackv5-special-disclaimer' => 'Cautionary text that is displayed in red at the top of the feedback dashboard. This will be removed when the requirements and design of this feature are more final.',
 	'articlefeedbackv5-special-goback' => 'Link to take a user from a feedback permalink back to the listing of all feedback for that page.',
 	'articlefeedbackv5-special-central-goback' => 'Link to take a user from a single-page feedback listing back to the listing of all feedback.',
@@ -954,71 +954,79 @@ Permalink info block, subtitle of the right column, containing meta-information,
 	'articlefeedbackv5-permalink-activity-none' => 'Permalink activity block, text to display when there has been no activity',
 	'articlefeedbackv5-permalink-status-hide' => 'Permalink info block, last activity line:
 * $1 - A link to the user who hid the post
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-unhide' => 'Permalink info block, last activity line:
 * $1 - A link to the user who un-hid the post
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-request' => 'Permalink info block, last activity line:
 * $1 - A link to the user who requested oversight (deletion) on the post
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-unrequest' => 'Permalink info block, last activity line:
 * $1 - A link to the user who un-requested oversight (deletion) on the post
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-decline' => 'Permalink info block, last activity line:
 * $1 - A link to the user who declined oversight (deletion) on the post
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-autohide' => 'Permalink info block, last activity line:
 * $1 - A link to the user who auto-hid the post (usually a fake user called Article Feedback)
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-oversight' => 'Permalink info block, last activity line:
 * $1 - A link to the user who oversighted (deleted) the post
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-unoversight' => 'Permalink info block, last activity line:
 * $1 - A link to the user who un-oversighted (un-deleted) the post
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
+{{Related|Articlefeedbackv5-permalink-status}}',
+	'articlefeedbackv5-permalink-status-flag' => 'Permalink info block, last activity line:
+* $1 - A link to the user who flagged the post as abusive
+* $2 - The relative timestamp (e.g. "2 hours ago")
+{{Related|Articlefeedbackv5-permalink-status}}',
+	'articlefeedbackv5-permalink-status-unflag' => 'Permalink info block, last activity line:
+* $1 - A link to the user who un-flagged the post as abusive
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-autoflag' => 'Permalink info block, last activity line:
 * $1 - A link to the user who auto-flagged the post as abuse (usually a fake user called Article Feedback)
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-feature' => 'Permalink info block, last activity line:
 * $1 - A link to the user who featured the post
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-unfeature' => 'Permalink info block, last activity line:
 * $1 - A link to the user who un-featured the post
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-resolve' => 'Permalink info block, last activity line:
 * $1 - A link to the user who marked the post as resolved
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-unresolve' => 'Permalink info block, last activity line:
 * $1 - A link to the user who un-marked the post as resolved
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-helpful' => 'Permalink info block, last activity line:
 * $1 - A link to the user who marked the post as helpful
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-undo-helpful' => 'Permalink info block, last activity line:
 * $1 - A link to the user who un-marked the post as helpful
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-unhelpful' => 'Permalink info block, last activity line:
 * $1 - A link to the user who marked the post as unhelpful
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-status-undo-unhelpful' => 'Permalink info block, last activity line:
 * $1 - A link to the user who un-marked the post as unhelpful
-* $2 - The relative timestamp (e.g. "2 hours") ({{msg-mw|articlefeedbackv5-timestamp-years}} and friends)
+* $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
 	'articlefeedbackv5-permalink-activity-more' => 'Permalink activity block, text for the link to open the rest of the activity on the feedback',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Permalink activity block, text for the link to close the rest of the activity on the feedback',
@@ -1395,6 +1403,22 @@ Parameters:
 * $6 - the user name (gender support)
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-flag' => 'Activity log entry when feedback was flagged as abusive
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-autohide' => 'Activity log entry when feedback was autohidden
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - the user name (gender support)
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-autoflag' => 'Activity log entry when feedback was autoflagged as abusive
 * $1 - a link to the user who performed the action
 * $2 - the informational comment left upon performing the action
 * $3 - the date & time the action was performed
@@ -2112,7 +2136,7 @@ $4',
 	'articlefeedbackv5-abusefilter-note-aftv5requestoversight' => 'تم طلب الأوفرسايت تلقائيا. قاعدة : $1',
 );
 
-/** Assamese (অসমীয়া)
+/** Assamese (অসমীয়া)
  * @author Bishnu Saikia
  */
 $messages['as'] = array(
@@ -2555,7 +2579,7 @@ $3
 Әгәр бында мөрәҗәғәт итмәгән булһағыҙ, был хәбәргә ихтибар итмәгеҙ, беҙ һеҙҙе башҡа борсомаҫбыҙ.
 
 
-Команда проекта {{SITENAME}} проекты командаһы исеменән 
+Команда проекта {{SITENAME}} проекты командаһы исеменән
 рәхмәт һәм иң изге теләктәр белдерәбеҙ.',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Фекер алышыу биттәренә күҙәтеү һоралған',
 	'articlefeedbackv5-email-request-oversight-body' => 'Һаумыһығыҙ, тикшереүселәр!
@@ -2566,7 +2590,7 @@ $1 ҡатнашыусы $2 битендәге фекерҙәрҙе йәшере�
 
 $3
 
-Рәхмәт, 
+Рәхмәт,
 
 {{SITENAME}} командаһы
 
@@ -5407,10 +5431,10 @@ $messages['el'] = array(
 	'articlefeedbackv5-noteflyover-show-help' => 'Μάθετε περισσότερα',
 	'articlefeedbackv5-noteflyover-requestoversight-caption' => 'Αίτηση εποπτείας',
 	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Πριν κάνετε αίτηση εποπτείας, παρακαλούμε ελέγξτε ότι αυτή η ανάρτηση περιλαμβάνει ένα από αυτά τα μέρη:
-*αριθμούς τηλεφώνου 
-*διευθύνσεις e-mail 
-*συνδέσμους σε πορνογραφικό υλικό 
-*δυφημιστικά/προσβλητικά σχόλια σχετικά με ένα πρόσωπο 
+*αριθμούς τηλεφώνου
+*διευθύνσεις e-mail
+*συνδέσμους σε πορνογραφικό υλικό
+*δυφημιστικά/προσβλητικά σχόλια σχετικά με ένα πρόσωπο
 ** [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy άλλα κριτήρια γαι εποπτεία]',
 	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Προσθέστε μια σημείωση για να εξηγήσει για ποιο λόγο ζητάτε εποπτεία',
 	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Γιατί ζητάτε εποπτεία;',
@@ -10603,7 +10627,7 @@ $messages['hu'] = array(
 	'articlefeedbackv5-error' => 'Hiba történt. Kérlek, próbálkozz később.',
 	'articlefeedbackv5-error-blocked' => 'Blokkolt felhasználók nem küldhetnek be visszajelzést.',
 	'articlefeedbackv5-error-validation' => 'Ellenőrzési hiba.',
-	'articlefeedbackv5-error-abuse' => 'A megjegyzésed fennakadt egy automatikus szűrőn, ami annak a jele, hogy nem követted a {{SITENAME}}  
+	'articlefeedbackv5-error-abuse' => 'A megjegyzésed fennakadt egy automatikus szűrőn, ami annak a jele, hogy nem követted a {{SITENAME}}
 [$1 hozzászólási szabályait]. Kérünk, hogy fogalmazd át mondandódat, és küldd be újra!
 ({{PLURAL:$2|Szűrő|Szűrők}}: $3)',
 	'articlefeedbackv5-error-unknown' => 'Ismeretlen hiba.',
@@ -18337,7 +18361,7 @@ $4',
 	'articlefeedbackv5-abusefilter-note-aftv5requestoversight' => 'Fjerning automatisk bede om. Regel: $1',
 );
 
-/** Oriya (ଓଡ଼ିଆ)
+/** Oriya (ଓଡ଼ିଆ)
  * @author Ansumang
  * @author Jnanaranjan Sahu
  * @author Odisha1
@@ -21085,7 +21109,7 @@ $3
 
 Если вы не отправляли подобного запроса, пожалуйста, проигнорируйте это сообщение, и мы больше не будем вас тревожить.
 
-С наилучшими пожеланиями и благодарностью — 
+С наилучшими пожеланиями и благодарностью —
 команда проекта {{SITENAME}}',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Запрошен надзор для страницы отзыва',
 	'articlefeedbackv5-email-request-oversight-body' => 'Здравствуйте, ревизоры!
@@ -23959,7 +23983,7 @@ Ang pangangalingat ay hiniling ni $1 para sa tugon na ipinaskil sa artikulong it
 
 $2
 
-Paki suriing muli ang paskil na ito ng pagtugon, pagkaraan ay payagan o tanggihan ang paghiling na ito ng 
+Paki suriing muli ang paskil na ito ng pagtugon, pagkaraan ay payagan o tanggihan ang paghiling na ito ng
 pangangalingat:
 
 $3
@@ -24567,7 +24591,7 @@ $3
 
 ئەگەر بۇ ئىلتىماسنى سىز تەلەپ قىلمىغان بولسىڭىز، بۇ تورخەتكە پەرۋا قىلماڭ، بىز يەنە سىزگە ھېچقانداق تورخەت يوللىمايمىز.
 
-رەھمەت ئېيتىپ، سالام بىلەن 
+رەھمەت ئېيتىپ، سالام بىلەن
 
 {{SITENAME}} قوشۇنى',
 	'articlefeedbackv5-email-request-oversight-subject' => 'ماقالە قايتۇرما ئىنكاس بېتىنىڭ نازارەت ئىلتىماسى',

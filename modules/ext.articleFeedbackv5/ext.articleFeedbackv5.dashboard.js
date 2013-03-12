@@ -12,13 +12,13 @@ jQuery( function( $ ) {
 	};
 
 	// AFT is enabled
-	if ( $.aftVerify.verify( 'special' ) ) {
+	if ( $.aftUtils.verify( 'special' ) ) {
 		$.articleFeedbackv5special.setup();
 
 	// AFT is not enabled
 	} else {
 		// unsupported browser
-		if ( $.aftVerify.useragent() === false ) {
+		if ( $.aftUtils.useragent() === false ) {
 			showError( mw.msg( 'articlefeedbackv5-unsupported-message' ) );
 
 		// AFT disabled for this page

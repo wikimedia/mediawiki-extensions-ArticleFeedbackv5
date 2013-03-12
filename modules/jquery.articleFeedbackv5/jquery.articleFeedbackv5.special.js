@@ -80,8 +80,7 @@
 		feedbackId: mw.config.get( 'afStartingFeedbackId' ), // Permalinks require a feedback ID
 		sort: mw.config.get( 'afStartingSort' ),
 		sortDirection: mw.config.get( 'afStartingSortDirection' ),
-		limit: mw.config.get( 'afStartingLimit' ),
-		continueInfo: null,
+		offset: null,
 		disabled: false,	// Prevent (at least limit) a flood of ajax requests.
 		allowMultiple: false
 	};
@@ -282,17 +281,18 @@
 
 		// Is there a highlighted ID?
 		var hash = window.location.hash.replace( '#', '' );
-		if ( hash.match( /^\d+$/ ) && $.articleFeedbackv5special.filter != 'id' ) {
-			$.articleFeedbackv5special.highlightId = parseInt( hash, 10 );
+		if ( hash.match( /^\w+$/ ) && $.articleFeedbackv5special.filter != 'id' ) {
+			$.articleFeedbackv5special.highlightId = hash;
 			$.articleFeedbackv5special.pullHighlight();
 		}
 
 		// Process preloaded feedback
-		$.articleFeedbackv5special.processFeedback(
+		$.articleFeedbackv5special.processControls(
 			mw.config.get( 'afCount' ),
-			mw.config.get( 'afContinue' ),
+			mw.config.get( 'afOffset' ),
 			mw.config.get( 'afShowMore' )
 		);
+		$.articleFeedbackv5special.processFeedback();
 
 		// Track an impression
 		$.aftTrack.track( 'feedback_page-impression-' +
@@ -377,7 +377,7 @@
 
 		// Refresh list
 		$( '#articleFeedbackv5-refresh-list' ).bind( 'click', function( e ) {
-			$.articleFeedbackv5special.listControls.continueInfo = null;
+			$.articleFeedbackv5special.listControls.offset = null;
 			$.articleFeedbackv5special.loadFeedback( true, false );
 			return false;
 		} );
@@ -404,8 +404,12 @@
 		// Bind submit actions on flyover panels (flag actions)
 		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-submit', function( e ) {
 			e.preventDefault();
+			var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
+			var id = $container.data( 'id' );
+			var pageId = $container.data( 'pageid' );
 			$.articleFeedbackv5special.flagFeedback(
-				$( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ),
+				id,
+				pageId,
 				$( e.target ).attr( 'action' ),
 				$( '#articleFeedbackv5-noteflyover-note' ).attr( 'value' ),
 				{ } );
@@ -436,7 +440,7 @@
 	 */
 	$.articleFeedbackv5special.bindPanels = function( id ) {
 		// single post or entire list?
-		var $selector = !id ? $( '#articleFeedbackv5-show-feedback' ) : $( '.articleFeedbackv5-feedback[rel="' + id + '"]' );
+		var $selector = !id ? $( '#articleFeedbackv5-show-feedback' ) : $( '.articleFeedbackv5-feedback[data-id="' + id + '"]' );
 
 		for ( var action in $.articleFeedbackv5special.actions ) {
 			$selector.find( '.articleFeedbackv5-' + action + '-link' )
@@ -485,7 +489,7 @@
 	 */
 	$.articleFeedbackv5special.toggleFilter = function( id ) {
 		$.articleFeedbackv5special.listControls.filter = id;
-		$.articleFeedbackv5special.listControls.continueInfo = null;
+		$.articleFeedbackv5special.listControls.offset = null;
 		$.articleFeedbackv5special.setSortByFilter( id );
 
 		// track the filter change
@@ -516,9 +520,11 @@
 	 * @param direction The direction to sort (asc/desc)
 	 */
 	$.articleFeedbackv5special.toggleSort = function( sort, direction ) {
+		direction = direction.toUpperCase();
+
 		$.articleFeedbackv5special.listControls.sort = sort;
 		$.articleFeedbackv5special.listControls.sortDirection = direction;
-		$.articleFeedbackv5special.listControls.continueInfo = null;
+		$.articleFeedbackv5special.listControls.offset = null;
 
 		$( '#articleFeedbackv5-sort-select' ).val( sort + '-' + direction );
 	};
@@ -750,14 +756,14 @@
 		var $tags = $row.find( '.articleFeedbackv5-comment-tags' );
 		if ( which == 'remove' ) {
 			$tags.find( '.articleFeedbackv5-' + tag + '-marker' ).remove();
-			if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'] && $row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
-				$.articleFeedbackv5special.changeTags( $row, 'deleted', 'add' );
-			} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-monitor'] && $row.hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
-				$.articleFeedbackv5special.changeTags( $row, 'hidden', 'add' );
-			} else if ( $row.hasClass( 'articleFeedbackv5-feedback-resolved' ) ) {
-				$.articleFeedbackv5special.changeTags( $row, 'resolved', 'add' );
-			} else if ( $row.hasClass( 'articleFeedbackv5-feedback-featured' ) ) {
-				$.articleFeedbackv5special.changeTags( $row, 'featured', 'add' );
+			if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'] && $row.hasClass( 'articleFeedbackv5-feedback-oversight' ) ) {
+				$.articleFeedbackv5special.changeTags( $row, 'oversight', 'add' );
+			} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-monitor'] && $row.hasClass( 'articleFeedbackv5-feedback-hide' ) ) {
+				$.articleFeedbackv5special.changeTags( $row, 'hide', 'add' );
+			} else if ( $row.hasClass( 'articleFeedbackv5-feedback-resolve' ) ) {
+				$.articleFeedbackv5special.changeTags( $row, 'resolve', 'add' );
+			} else if ( $row.hasClass( 'articleFeedbackv5-feedback-feature' ) ) {
+				$.articleFeedbackv5special.changeTags( $row, 'feature', 'add' );
 			}
 		} else {
 			$tags.empty();
@@ -777,9 +783,9 @@
 	 * @param $row element the feedback row
 	 */
 	$.articleFeedbackv5special.markFeatured = function ( $row ) {
-		$row.addClass( 'articleFeedbackv5-feedback-featured' )
-			.data( 'featured', true );
-		$.articleFeedbackv5special.changeTags( $row, 'featured', 'add' );
+		$row.addClass( 'articleFeedbackv5-feedback-feature' )
+			.data( 'feature', true );
+		$.articleFeedbackv5special.changeTags( $row, 'feature', 'add' );
 	};
 
 	// }}}
@@ -791,9 +797,9 @@
 	 * @param $row element the feedback row
 	 */
 	$.articleFeedbackv5special.unmarkFeatured = function ( $row ) {
-		$row.removeClass( 'articleFeedbackv5-feedback-featured' )
-			.data( 'featured', false );
-		$.articleFeedbackv5special.changeTags( $row, 'featured', 'remove' );
+		$row.removeClass( 'articleFeedbackv5-feedback-feature' )
+			.data( 'feature', false );
+		$.articleFeedbackv5special.changeTags( $row, 'feature', 'remove' );
 	};
 
 	// }}}
@@ -805,9 +811,9 @@
 	 * @param $row element the feedback row
 	 */
 	$.articleFeedbackv5special.markResolved = function ( $row ) {
-		$row.addClass( 'articleFeedbackv5-feedback-resolved' )
-			.data( 'resolved', true );
-		$.articleFeedbackv5special.changeTags( $row, 'resolved', 'add' );
+		$row.addClass( 'articleFeedbackv5-feedback-resolve' )
+			.data( 'resolve', true );
+		$.articleFeedbackv5special.changeTags( $row, 'resolve', 'add' );
 	};
 
 	// }}}
@@ -819,9 +825,9 @@
 	 * @param $row element the feedback row
 	 */
 	$.articleFeedbackv5special.unmarkResolved = function ( $row ) {
-		$row.removeClass( 'articleFeedbackv5-feedback-resolved' )
-			.data( 'resolved', false );
-		$.articleFeedbackv5special.changeTags( $row, 'resolved', 'remove' );
+		$row.removeClass( 'articleFeedbackv5-feedback-resolve' )
+			.data( 'resolve', false );
+		$.articleFeedbackv5special.changeTags( $row, 'resolve', 'remove' );
 	};
 
 	// }}}
@@ -834,8 +840,8 @@
 	 * @param line string  the mask line
 	 */
 	$.articleFeedbackv5special.markHidden = function ( $row, line ) {
-		$row.addClass( 'articleFeedbackv5-feedback-hidden' );
-		$.articleFeedbackv5special.changeTags( $row, 'hidden', 'add' );
+		$row.addClass( 'articleFeedbackv5-feedback-hide' );
+		$.articleFeedbackv5special.changeTags( $row, 'hide', 'add' );
 		$.articleFeedbackv5special.maskPost( $row, line );
 
 		// hide feature/unfeature/resolve/unresolve
@@ -851,9 +857,9 @@
 	 * @param $row element the feedback row
 	 */
 	$.articleFeedbackv5special.unmarkHidden = function ( $row ) {
-		$row.removeClass( 'articleFeedbackv5-feedback-hidden' );
-		$.articleFeedbackv5special.changeTags( $row, 'hidden', 'remove' );
-		if ( !$row.hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
+		$row.removeClass( 'articleFeedbackv5-feedback-hide' );
+		$.articleFeedbackv5special.changeTags( $row, 'hide', 'remove' );
+		if ( !$row.hasClass( 'articleFeedbackv5-feedback-oversight' ) ) {
 			$.articleFeedbackv5special.unmaskPost( $row );
 		}
 
@@ -921,8 +927,8 @@
 	 * @param line string  the mask line
 	 */
 	$.articleFeedbackv5special.markDeleted = function ( $row, line ) {
-		$row.addClass( 'articleFeedbackv5-feedback-deleted' );
-		$.articleFeedbackv5special.changeTags( $row, 'deleted', 'add' );
+		$row.addClass( 'articleFeedbackv5-feedback-oversight' );
+		$.articleFeedbackv5special.changeTags( $row, 'oversight', 'add' );
 		$.articleFeedbackv5special.maskPost( $row, line );
 	};
 
@@ -935,9 +941,9 @@
 	 * @param $row element the feedback row
 	 */
 	$.articleFeedbackv5special.unmarkDeleted = function ( $row ) {
-		$row.removeClass( 'articleFeedbackv5-feedback-deleted' );
-		$.articleFeedbackv5special.changeTags( $row, 'deleted', 'remove' );
-		if ( !$row.hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
+		$row.removeClass( 'articleFeedbackv5-feedback-oversight' );
+		$.articleFeedbackv5special.changeTags( $row, 'oversight', 'remove' );
+		if ( !$row.hasClass( 'articleFeedbackv5-feedback-hide' ) ) {
 			$.articleFeedbackv5special.unmaskPost( $row );
 		}
 	};
@@ -992,7 +998,7 @@
 		if ( shortName in defaults ) {
 			$.articleFeedbackv5special.toggleSort( defaults[shortName][0], defaults[shortName][1] );
 		} else {
-			$.articleFeedbackv5special.toggleSort( 'age', 'desc' );
+			$.articleFeedbackv5special.toggleSort( 'age', 'DESC' );
 		}
 	};
 
@@ -1007,11 +1013,12 @@
 	 * Sends the request to mark a response
 	 *
 	 * @param id   		int			the feedback id
+	 * @param pageId   	int			the page id
 	 * @param action	string		action to execute
 	 * @param note 		string 		note for action (default empty)
 	 * @param options	object		key => value pairs of additonal API action-specific parameters
 	 */
-	$.articleFeedbackv5special.flagFeedback = function ( id, action, note, options ) {
+	$.articleFeedbackv5special.flagFeedback = function ( id, pageId, action, note, options ) {
 		// default parameters
 		note = typeof note !== undefined ? note : '';
 
@@ -1044,10 +1051,9 @@
 
 		// Merge request data and options objects (flat)
 		var requestData = {
-			'pageid'    : $.articleFeedbackv5special.page,
+			'pageid'    : pageId,
 			'feedbackid': id,
 			'flagtype'  : $.articleFeedbackv5special.actions[action].apiFlagType,
-			'direction' : $.articleFeedbackv5special.actions[action].apiFlagDir > 0 ? 'increase' : 'decrease',
 			'note'		: note,
 			'format'    : 'json',
 			'action'    : 'articlefeedbackv5-flag-feedback',
@@ -1103,12 +1109,13 @@
 	 * @param continueInfo string should be null for the first request (first page), then the continue info returned from the last API call
 	 * @param location     string where to put the results
 	 */
-	$.articleFeedbackv5special.loadActivityLog = function( id, continueInfo, location ) {
+	$.articleFeedbackv5special.loadActivityLog = function( id, pageId, continueInfo, location ) {
 		var data = {
 			'action': 'query',
 			'list': 'articlefeedbackv5-view-activity',
 			'format': 'json',
-			'aafeedbackid': id
+			'aafeedbackid': id,
+			'aapageid': pageId
 		};
 		if ( continueInfo ) {
 			data['aacontinue'] = continueInfo;
@@ -1135,12 +1142,13 @@
 				}
 				if ( data['query-continue'] && data['query-continue']['articlefeedbackv5-view-activity'] ) {
 					$( location ).find( '.articleFeedbackv5-activity-more' )
-						.attr( 'rel', data['query-continue']['articlefeedbackv5-view-activity'].aacontinue )
+						.data( 'continue', data['query-continue']['articlefeedbackv5-view-activity'].aacontinue )
 						.click( function( e ) {
 							e.preventDefault();
 							$.articleFeedbackv5special.loadActivityLog(
 								id,
-								$( e.target ).attr( 'rel'),
+								pageId,
+								$( e.target ).data( 'continue' ),
 								location
 							);
 						} );
@@ -1183,8 +1191,7 @@
 			'afvffeedbackid':     $.articleFeedbackv5special.listControls.feedbackId,
 			'afvfsort':           $.articleFeedbackv5special.listControls.sort,
 			'afvfsortdirection':  $.articleFeedbackv5special.listControls.sortDirection,
-			'afvflimit':          $.articleFeedbackv5special.listControls.limit,
-			'afvfcontinue':       $.articleFeedbackv5special.listControls.continueInfo,
+			'afvfoffset':         $.articleFeedbackv5special.listControls.offset,
 			'afvfwatchlist':      $.articleFeedbackv5special.watchlist,
 			'action':             'query',
 			'format':             'json',
@@ -1207,16 +1214,21 @@
 					} else {
 						$( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback );
 					}
-					if ( this.info.afvffeedbackid == $.articleFeedbackv5special.highlightId ) {
-						$( '.articleFeedbackv5-feedback[rel=' + $.articleFeedbackv5special.highlightId + ']:not(.articleFeedbackv5-feedback-highlighted)' ).hide();
-					} else if ( $.articleFeedbackv5special.highlightId && !prependContents ) {
-						$.articleFeedbackv5special.pullHighlight();
+					if ( $.articleFeedbackv5special.highlightId ) {
+						if (this.info.afvffeedbackid == $.articleFeedbackv5special.highlightId ) {
+							$( '.articleFeedbackv5-feedback[data-id=' + $.articleFeedbackv5special.highlightId + ']:not(.articleFeedbackv5-feedback-highlighted)' ).hide();
+							$.articleFeedbackv5special.highlightId = undefined;
+						} else if ( !prependContents ) {
+							$.articleFeedbackv5special.pullHighlight();
+						}
+					} else {
+						$.articleFeedbackv5special.processControls(
+							data['articlefeedbackv5-view-feedback']['count'],
+							data['articlefeedbackv5-view-feedback']['offset'],
+							data['articlefeedbackv5-view-feedback']['more']
+						);
 					}
-					$.articleFeedbackv5special.processFeedback(
-						data['articlefeedbackv5-view-feedback']['count'],
-						data['articlefeedbackv5-view-feedback']['continue'],
-						data['articlefeedbackv5-view-feedback']['more']
-					);
+					$.articleFeedbackv5special.processFeedback();
 				} else {
 					$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				}
@@ -1253,8 +1265,7 @@
 			feedbackId:     $.articleFeedbackv5special.listControls.feedbackId,
 			sort:           $.articleFeedbackv5special.listControls.sort,
 			sortDirection:  $.articleFeedbackv5special.listControls.sortDirection,
-			limit:          $.articleFeedbackv5special.listControls.limit,
-			continueInfo:   $.articleFeedbackv5special.listControls.continueInfo,
+			offset:         $.articleFeedbackv5special.listControls.offset,
 			disabled:       $.articleFeedbackv5special.listControls.disabled,
 			allowMultiple:  $.articleFeedbackv5special.listControls.allowMultiple,
 			showMore:       $.articleFeedbackv5special.listControls.showMore
@@ -1267,19 +1278,35 @@
 	};
 
 	// }}}
+	// {{{ processControls
+
+	/**
+	 * Processes the controls of a set of responses
+	 *
+	 * @param count        int   the total number of responses
+	 * @param offset       index the offset
+	 * @param showMore     bool  whether there are more records to show
+	 */
+	$.articleFeedbackv5special.processControls = function ( count, offset, showMore ) {
+		$( '#articleFeedbackv5-feedback-count-total' ).text( count );
+		$.articleFeedbackv5special.listControls.offset = offset;
+		if ( showMore ) {
+			$( '#articleFeedbackv5-show-more').show();
+		} else {
+			$( '#articleFeedbackv5-show-more').hide();
+		}
+	};
+
+	// }}}
 	// {{{ processFeedback
 
 	/**
 	 * Processes in a set of responses
-	 *
-	 * @param count        int   the total number of responses
-	 * @param continueInfo mixed the first continue value
-	 * @param showMore     bool  whether there are more records to show
 	 */
-	$.articleFeedbackv5special.processFeedback = function ( count, continueInfo, showMore ) {
+	$.articleFeedbackv5special.processFeedback = function () {
 		var $newList = $( '#articleFeedbackv5-show-feedback' );
 		$newList.find( '.articleFeedbackv5-feedback' ).each( function () {
-			var id = $( this ).attr( 'rel' );
+			var id = $( this ).data( 'id' );
 			if ( id in $.articleFeedbackv5special.activity ) {
 				var activity = $.articleFeedbackv5special.getActivity( id );
 				if ( activity.helpful ) {
@@ -1298,7 +1325,7 @@
 				}
 				if ( activity.abuse ) {
 					var $l = $( this ).find( '#articleFeedbackv5-abuse-link-' + id );
-					$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', $l.attr( 'rel' ) ) );
+					$l.text( mw.msg( 'articlefeedbackv5-abuse-saved', $l.data( 'id' ) ) );
 					$l.attr( 'id', 'articleFeedbackv5-unabuse-link-' + id )
 						.removeClass( 'articleFeedbackv5-abuse-link' )
 						.addClass( 'articleFeedbackv5-unabuse-link' );
@@ -1307,20 +1334,12 @@
 
 			if ( $( this ).hasClass( 'articleFeedbackv5-feedback-emptymask' ) ) {
 				$.articleFeedbackv5special.maskPost( $( this ), '', true );
-			} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-deleted' ) ) {
+			} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-oversight' ) ) {
 				$.articleFeedbackv5special.maskPost( $( this ) );
-			} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hidden' ) ) {
+			} else if ( $( this ).hasClass( 'articleFeedbackv5-feedback-hide' ) ) {
 				$.articleFeedbackv5special.maskPost( $( this ) );
 			}
 		} );
-
-		$( '#articleFeedbackv5-feedback-count-total' ).text( count );
-		$.articleFeedbackv5special.listControls.continueInfo = continueInfo;
-		if ( showMore ) {
-			$( '#articleFeedbackv5-show-more').show();
-		} else {
-			$( '#articleFeedbackv5-show-more').hide();
-		}
 		$.articleFeedbackv5special.bindPanels();
 	};
 
@@ -1331,7 +1350,7 @@
 	 * Loads the user activity from the cookie
 	 */
 	$.articleFeedbackv5special.loadActivity = function () {
-		var flatActivity = $.cookie( $.aftTrack.prefix( $.articleFeedbackv5special.activityCookieName ) );
+		var flatActivity = $.cookie( mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( $.articleFeedbackv5special.activityCookieName ) );
 		if ( flatActivity ) {
 			$.articleFeedbackv5special.activity = $.articleFeedbackv5special.decodeActivity( flatActivity );
 		}
@@ -1349,7 +1368,7 @@
 			flatActivity = flatActivity.replace( /^\d+:[HUAID]+;/, '' );
 		}
 		$.cookie(
-			$.aftTrack.prefix( $.articleFeedbackv5special.activityCookieName ),
+			mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( $.articleFeedbackv5special.activityCookieName ),
 			flatActivity,
 			{ 'expires': 365, 'path': '/' }
 		);
@@ -1362,7 +1381,7 @@
 	 * Returns true if the post can be flagged
 	 */
 	$.articleFeedbackv5special.canBeFlagged = function( $post ) {
-		return !$post.data( 'hidden' ) && !$post.data( 'deleted' );
+		return !$post.data( 'hide' ) && !$post.data( 'oversight' );
 	};
 
 	// }}}
@@ -1387,7 +1406,7 @@
 		// note: we're overwriting the same cookie for every page; assuming that they won't like to come
 		// back later to previous pages and find their previous settings again (plus less cookie size)
 		$.cookie(
-			$.aftTrack.prefix( $.articleFeedbackv5special.filterCookieName ),
+			mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( $.articleFeedbackv5special.filterCookieName ),
 			filterParams,
 			{ 'expires': 1, 'path': '/' }
 		);
@@ -1406,7 +1425,6 @@
 	 * 		tipsyHtml - html for the corresponding flyover panel
 	 * 		click - click action
 	 * 		apiFlagType - flag type for api call
-	 * 		apiFlagDir - flag direction for api call (+/-1)
 	 * 		onSuccess - callback to execute after action success. Callback parameters:
 	 * 			id - respective post id
 	 * 			data - any data returned by the AJAX call
@@ -1420,14 +1438,15 @@
 			'click': function( e ) {
 				e.preventDefault();
 				var $link = $( e.target );
-				if ( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
-					var id = $link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
+				var $container = $link.closest( '.articleFeedbackv5-feedback' );
+				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+					var id = $container.data( 'id' );
+					var pageId = $container.data( 'pageid' );
 					var activity = $.articleFeedbackv5special.getActivity( id );
-					$.articleFeedbackv5special.flagFeedback( id, 'helpful', '', activity['unhelpful'] ? { toggle: true } : { } );
+					$.articleFeedbackv5special.flagFeedback( id, pageId, 'helpful', '', activity['unhelpful'] ? { toggle: true } : { } );
 				}
 			},
 			'apiFlagType': 'helpful',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				$( '#articleFeedbackv5-helpful-link-' + id )
 					.addClass( 'helpful-active' )
@@ -1455,13 +1474,14 @@
 			'click': function( e ) {
 				e.preventDefault();
 				var $link = $( e.target );
-				if( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
-					$.articleFeedbackv5special.flagFeedback(
-						$link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ), 'reversehelpful', '', { } );
+				var $container = $link.closest( '.articleFeedbackv5-feedback' );
+				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+					var id = $container.data( 'id' );
+					var pageId = $container.data( 'pageid' );
+					$.articleFeedbackv5special.flagFeedback( id, pageId,  'reversehelpful', '', { } );
 				}
 			},
-			'apiFlagType': 'helpful',
-			'apiFlagDir': -1,
+			'apiFlagType': 'undo-helpful',
 			'onSuccess': function( id, data ) {
 				$( '#articleFeedbackv5-reversehelpful-link-' + id )
 					.removeClass( 'helpful-active' )
@@ -1481,14 +1501,15 @@
 			'click': function( e ) {
 				e.preventDefault();
 				var $link = $( e.target );
-				if( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
-					var id = $link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
+				var $container = $link.closest( '.articleFeedbackv5-feedback' );
+				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+					var id = $container.data( 'id' );
+					var pageId = $container.data( 'pageid' );
 					var activity = $.articleFeedbackv5special.getActivity( id );
-					$.articleFeedbackv5special.flagFeedback( id, 'unhelpful', '', activity['helpful'] ? { toggle: true } : { } );
+					$.articleFeedbackv5special.flagFeedback( id, pageId, 'unhelpful', '', activity['helpful'] ? { toggle: true } : { } );
 				}
 			},
 			'apiFlagType': 'unhelpful',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				$( '#articleFeedbackv5-unhelpful-link-' + id )
 					.addClass( 'helpful-active' )
@@ -1516,13 +1537,14 @@
 			'click': function( e ) {
 				e.preventDefault();
 				var $link = $( e.target );
-				if( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
-					$.articleFeedbackv5special.flagFeedback(
-						$link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ), 'reverseunhelpful', '', { } );
+				var $container = $link.closest( '.articleFeedbackv5-feedback' );
+				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+					var id = $container.data( 'id' );
+					var pageId = $container.data( 'pageid' );
+					$.articleFeedbackv5special.flagFeedback( id, pageId, 'reverseunhelpful', '', { } );
 				}
 			},
-			'apiFlagType': 'unhelpful',
-			'apiFlagDir': -1,
+			'apiFlagType': 'undo-unhelpful',
 			'onSuccess': function( id, data ) {
 				$( '#articleFeedbackv5-reverseunhelpful-link-' + id )
 					.removeClass( 'helpful-active' )
@@ -1542,13 +1564,14 @@
 			'click': function( e ) {
 				e.preventDefault();
 				var $link = $( e.target );
-				if( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
-					var id = $link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
-					$.articleFeedbackv5special.flagFeedback( id, 'abuse', '', { } );
+				var $container = $link.closest( '.articleFeedbackv5-feedback' );
+				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+					var id = $container.data( 'id' );
+					var pageId = $container.data( 'pageid' );
+					$.articleFeedbackv5special.flagFeedback( id, pageId, 'abuse', '', { } );
 				}
 			},
 			'apiFlagType': 'flag',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				$.articleFeedbackv5special.setAbuse( id, data );
 			}
@@ -1562,13 +1585,14 @@
 			'click': function( e ) {
 				e.preventDefault();
 				var $link = $( e.target );
-				if( $.articleFeedbackv5special.canBeFlagged( $link.closest( '.articleFeedbackv5-feedback' ) ) ) {
-					var id = $link.closest( '.articleFeedbackv5-feedback' ).attr( 'rel' );
-					$.articleFeedbackv5special.flagFeedback( id, 'unabuse', '', { } );
+				var $container = $link.closest( '.articleFeedbackv5-feedback' );
+				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+					var id = $container.data( 'id' );
+					var pageId = $container.data( 'pageid' );
+					$.articleFeedbackv5special.flagFeedback( id, pageId, 'unabuse', '', { } );
 				}
 			},
-			'apiFlagType': 'flag',
-			'apiFlagDir': -1,
+			'apiFlagType': 'unflag',
 			'onSuccess': function( id, data ) {
 				$.articleFeedbackv5special.setAbuse( id, data );
 			}
@@ -1582,7 +1606,6 @@
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
 			'apiFlagType': 'feature',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-feature-link-' + id )
 					.attr( 'action', 'unfeature' )
@@ -1604,8 +1627,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'feature',
-			'apiFlagDir': -1,
+			'apiFlagType': 'unfeature',
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-unfeature-link-' + id )
 					.attr( 'action', 'feature' )
@@ -1628,7 +1650,6 @@
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
 			'apiFlagType': 'resolve',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-resolve-link-' + id )
 					.attr( 'action', 'unresolve' )
@@ -1649,8 +1670,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'resolve',
-			'apiFlagDir': -1,
+			'apiFlagType': 'unresolve',
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-unresolve-link-' + id )
 					.attr( 'action', 'resolve' )
@@ -1673,7 +1693,6 @@
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
 			'apiFlagType': 'hide',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-hide-link-' + id )
 					.attr( 'action', 'show' )
@@ -1697,8 +1716,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'hide',
-			'apiFlagDir': -1,
+			'apiFlagType': 'unhide',
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-show-link-' + id )
 					.attr( 'action', 'hide' )
@@ -1722,7 +1740,6 @@
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
 			'apiFlagType': 'request',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-requestoversight-link-' + id )
 					.attr( 'action', 'unrequestoversight' )
@@ -1755,8 +1772,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'request',
-			'apiFlagDir': -1,
+			'apiFlagType': 'unrequest',
 			'onSuccess': function( id, data ) {
 				var $link = $( '#articleFeedbackv5-unrequestoversight-link-' + id )
 					.attr( 'action', 'requestoversight' )
@@ -1779,7 +1795,6 @@
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
 			'apiFlagType': 'oversight',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				// if there is a "decline oversight" just hide it
 				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id )
@@ -1816,8 +1831,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
-			'apiFlagType': 'oversight',
-			'apiFlagDir': -1,
+			'apiFlagType': 'unoversight',
 			'onSuccess': function( id, data ) {
 				// if there is a "decline oversight" just show it
 				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id )
@@ -1845,7 +1859,6 @@
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.toggleTipsy,
 			'apiFlagType': 'decline',
-			'apiFlagDir': 1,
 			'onSuccess': function( id, data ) {
 				// if there is a "decline oversight" just show it
 				var $link = $( '#articleFeedbackv5-declineoversight-link-' + id )
@@ -1874,7 +1887,8 @@
 				</div>',
 			'click': function( e ) {
 				if ( $.articleFeedbackv5special.toggleTipsy( e ) ) {
-					$.articleFeedbackv5special.loadActivityLog( $( e.target ).closest( '.articleFeedbackv5-feedback' ).attr( 'rel' ), 0, '#articleFeedbackv5-activity-log' );
+					$container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
+					$.articleFeedbackv5special.loadActivityLog( $container.data( 'id' ), $container.data( 'pageid' ), 0, '#articleFeedbackv5-activity-log' );
 				}
 			}
 		},
@@ -1889,7 +1903,8 @@
 					$( e.target ).text( mw.msg( 'articlefeedbackv5-permalink-activity-more' ) );
 					$( e.target ).data( 'started', false );
 				} else {
-					$.articleFeedbackv5special.loadActivityLog( $( '#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback' ).attr( 'rel' ), 0, '#articleFeedbackv5-permalink-activity-log' );
+					$container = $( '#articleFeedbackv5-show-feedback .articleFeedbackv5-feedback' );
+					$.articleFeedbackv5special.loadActivityLog( $container.data( 'id' ), $container.data( 'pageid' ), 0, '#articleFeedbackv5-permalink-activity-log' );
 					$( '#articleFeedbackv5-permalink-activity-log' ).fadeIn();
 					$( e.target ).text( mw.msg( 'articlefeedbackv5-permalink-activity-fewer' ) );
 					$( e.target ).data( 'started', true );
