@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DqFSzxEw",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-12T18:10:21Z",
+      "side": 1,
+      "message": "the two lines above can be removed because it has passed the validation",
+      "revId": "801fb85f31b045e52158eb7513c3ce74b166bf43",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqJTE-JQ",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-12T18:10:21Z",
+      "side": 1,
+      "message": "you can compare by strlen, strlen( $sectionTitle ) !\u003d strlen( $sectionTitleTruncated )",
+      "revId": "801fb85f31b045e52158eb7513c3ce74b166bf43",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqBTVTBk",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 8
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-12T18:10:21Z",
+      "side": 1,
+      "message": "I think this should be escaped, the content is used in attribute tags, which is not escaped",
+      "revId": "801fb85f31b045e52158eb7513c3ce74b166bf43",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
