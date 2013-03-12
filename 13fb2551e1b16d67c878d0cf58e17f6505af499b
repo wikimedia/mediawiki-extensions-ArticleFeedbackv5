@@ -16,6 +16,23 @@
       "revId": "13fb2551e1b16d67c878d0cf58e17f6505af499b",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqKCVPjI",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 22
+      },
+      "lineNbr": 2569,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2013-03-12T00:55:36Z",
+      "side": 1,
+      "message": "for future: compute\n\n    var timestampsCookieName \u003d mw.config.get( \u0027wgCookiePrefix\u0027 ) + $.aftUtils.getCookieName(\n\u0027submission_timestamps\u0027 );\n\nonce at the top of this function. Likewise for cookieFeedbackIdsName.",
+      "revId": "13fb2551e1b16d67c878d0cf58e17f6505af499b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
