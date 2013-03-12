@@ -656,13 +656,13 @@ The abuse policy link.',
 	'articlefeedbackv5-protection-permission-editor' => 'Dropdown menu option to enable AFT for editors only',
 	'articlefeedbackv5-protection-permission-administrator' => 'Dropdown menu option to enable AFT for administrators only',
 	'articlefeedbackv5-contribs-entry' => 'AFT entry line displayed on My Contributions. An example of this line could be: 10:59, 30 August 2012 . . (+55)‎ . . Feedback: Main Page (This is some more feedback, using the AFT feedback form) . . Status: Helpful and Featured
-* $1 is the date with link to feedback permalink - in the example: "10:59, 30 August 2012"
-* $2 is the comment character count - in the example: "(+55)"
-* $3 is the feedback permalink - in the example: the link behind "Feedback: Main Page"
-* $4 is the page title - in the example: "Main Page"
-* $5 is the username (only set in the case of newbie log) - not in the example, this will only show up in the newbie log
-* $6 is the comment - in the example: "(This is some more feedback, using the AFT feedback form)"
-* $7 is a list of the feedback\'s current statusses, built out of {{msg-mw|articlefeedbackv5-contribs-entry-status}}, if the status is not empty - in the example: "Status: Helpful and Featured"',
+* $1 - the date with link to feedback permalink - in the example: "10:59, 30 August 2012"
+* $2 - the comment character count - in the example: "(+55)"
+* $3 - the feedback permalink - in the example: the link behind "Feedback: Main Page"
+* $4 - the page title - in the example: "Main Page"
+* $5 - the username (only set in the case of newbie log) - not in the example, this will only show up in the newbie log
+* $6 - the comment - in the example: "(This is some more feedback, using the AFT feedback form)"
+* $7 - a list of the feedback\'s current statusses, built out of {{msg-mw|articlefeedbackv5-contribs-entry-status}}, if the status is not empty - in the example: "Status: Helpful and Featured"',
 	'articlefeedbackv5-contribs-entry-status' => 'The status part of {{msg-mw|articlefeedbackv5-contribs-entry}}. $1 contains the status and can be any combination of helpful, flagged, featured, resolved, hidden, oversight-requested, deleted',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Status when feedback has been marked as helpful',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Status when feedback has been flagged',
@@ -841,10 +841,17 @@ The abuse policy link.',
 	'articlefeedbackv5-form-abuse' => 'Link text allowing the user to flag feedback as abuse.',
 	'articlefeedbackv5-form-abuse-count' => 'Shows how many times the feedback has been flagged as abuse.  $1 is the count.',
 	'articlefeedbackv5-form-abuse-cleared' => 'Displayed when abuse flags have been cleared on feedback.',
-	'articlefeedbackv5-form-delete' => '{{Identical|Delete}}',
+	'articlefeedbackv5-form-delete' => 'Used as link text.
+
+See also:
+* {{msg-mw|Articlefeedbackv5-form-undelete}}
+{{Identical|Delete}}',
 	'articlefeedbackv5-form-oversight' => 'Request that an oversighter review this feedback',
 	'articlefeedbackv5-form-unoversight' => 'Remove request for oversight (request that an oversighter review the feedback)',
-	'articlefeedbackv5-form-undelete' => 'Link text for undoing oversight (= deletion) of a feedback entry',
+	'articlefeedbackv5-form-undelete' => 'Link text for undoing oversight (= deletion) of a feedback entry.
+
+See also:
+* {{msg-mw|Articlefeedbackv5-form-delete}}',
 	'articlefeedbackv5-form-decline' => 'Link text for declining oversight',
 	'articlefeedbackv5-form-declined' => 'Link text when oversight has already been declined',
 	'articlefeedbackv5-form1-header-found' => '{{doc-singularthey}}
@@ -1345,10 +1352,14 @@ Parameters:
 * $5 - A link to the article the feedback was posted to
 {{Related|Logentry-articlefeedbackv5}}",
 	'articlefeedbackv5-activity-pane-header' => 'Flyover panel caption',
-	'articlefeedbackv5-activity-feedback-info' => 'Post information template. Parameters:
-* $1 is the feedback post ID,
-* $2 is a username',
-	'articlefeedbackv5-activity-feedback-date' => 'Post information timestamp template. $1 is the date',
+	'articlefeedbackv5-activity-feedback-info' => "Post information template. Parameters:
+* $1 - the feedback post ID
+* $2 - link to user page (GENDER '''not''' supported). its text is any one of the following:
+** username (for logged-in users)
+** IP address (for IP users)
+** {{msg-mw|articlefeedbackv5-default-user}} (for magic user)",
+	'articlefeedbackv5-activity-feedback-date' => 'Post information timestamp template.
+* $1 - time and date',
 	'articlefeedbackv5-activity-permalink' => '[Permalink] link text.
 {{Identical|Permalink}}',
 	'articlefeedbackv5-activity-item-request' => 'Activity log entry when oversight was requested (an oversight request asks an oversighter to delete feedback).
