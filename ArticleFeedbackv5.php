@@ -545,7 +545,7 @@ $wgResourceModules['ext.articleFeedbackv5'] = array(
 		'jquery.articleFeedbackv5',
 		'jquery.cookie',
 		'jquery.articleFeedbackv5.track',
-		'jquery.articleFeedbackv5.verify',
+		'jquery.articleFeedbackv5.utils',
 	),
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['ext.articleFeedbackv5.ie'] = array(
