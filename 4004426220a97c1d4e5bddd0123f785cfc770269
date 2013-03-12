@@ -16,6 +16,24 @@
       "revId": "4004426220a97c1d4e5bddd0123f785cfc770269",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqElPrTU",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 1538,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-12T15:30:55Z",
+      "side": 1,
+      "message": "I could set a default value for hasTipsy, tipsyHtml, click \u0026 onSuccess so that - when not set - the default value is used.\nHowever, there\u0027s not too much consistency across the actions (or rather, there are quite some exceptions) that I think it makes more sense to have everything well-defined per action than to hide it and fall back to default values.",
+      "parentUuid": "DoAqK7Rk",
+      "revId": "4004426220a97c1d4e5bddd0123f785cfc770269",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
