@@ -148,7 +148,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'sortdirection' => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array( 'DESC', 'ASC' )
+				ApiBase::PARAM_TYPE     => array( 'DESC', 'ASC', 'desc', 'asc' )
 			),
 			'filter'        => array(
 				ApiBase::PARAM_REQUIRED => true,
