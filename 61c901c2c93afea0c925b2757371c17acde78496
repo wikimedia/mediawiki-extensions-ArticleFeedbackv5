@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "DqMnrvXg",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 33
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-12T18:21:26Z",
+      "side": 1,
+      "message": "I\u0027ve just added a check for log_action already.\n\nIn a follow-up patchset (the one where the log_type has been added to ArticleFeedbackv5Activity::$actions) I\u0027ll also add an additional check for the correct log_type!",
+      "parentUuid": "Dp.SzS.c",
+      "revId": "61c901c2c93afea0c925b2757371c17acde78496",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dp6STA1o",
         "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
         "patchSetId": 33
@@ -30,6 +48,24 @@
       "writtenOn": "2013-03-11T20:19:47Z",
       "side": 1,
       "message": "This is not necessary because default is false",
+      "revId": "61c901c2c93afea0c925b2757371c17acde78496",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqOnsgZU",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 33
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-12T18:21:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dp6STA1o",
       "revId": "61c901c2c93afea0c925b2757371c17acde78496",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "DqAnyFW8",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 33
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-12T18:21:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dp2R2Wz4",
+      "revId": "61c901c2c93afea0c925b2757371c17acde78496",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dp0Sg-6I",
         "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
         "patchSetId": 33
@@ -64,6 +118,24 @@
       "writtenOn": "2013-03-11T20:19:47Z",
       "side": 1,
       "message": "This is not necessary because default is false",
+      "revId": "61c901c2c93afea0c925b2757371c17acde78496",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqKnmibE",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 33
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-12T18:21:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Dp0Sg-6I",
       "revId": "61c901c2c93afea0c925b2757371c17acde78496",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
