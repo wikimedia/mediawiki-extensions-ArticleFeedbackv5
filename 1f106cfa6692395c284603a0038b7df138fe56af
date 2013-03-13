@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DqMuhavw",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 1540,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-13T20:08:38Z",
+      "side": 1,
+      "message": "declaring these variable seems unnecessary, you can just put them in the function argument",
+      "revId": "1f106cfa6692395c284603a0038b7df138fe56af",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqKtotrs",
+        "filename": "sql/inappropriate.sql",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-13T20:08:38Z",
+      "side": 1,
+      "message": "Is the AFTER absolutely necessary?  PostgreSQL doesn\u0027t support this",
+      "revId": "1f106cfa6692395c284603a0038b7df138fe56af",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
