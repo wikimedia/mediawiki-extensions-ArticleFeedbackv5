@@ -84,9 +84,15 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 					$note = wfMessage( 'articlefeedbackv5-activity-note-archive', $days )->escaped();
 
 					$flagger = new ArticleFeedbackv5Flagging( null, $feedback->aft_id, $feedback->aft_page );
-					$flagger->run( 'archive', $note, false, 'job' );
+					$success = $flagger->run( 'archive', $note, false, 'job' );
 
-					$this->completeCount++;
+					if ( $success ) {
+						$this->completeCount++;
+					} else {
+						// if we could not flag, unmark as archive_schedule
+						$feedback->aft_archive_date = null;
+						$feedback->update();
+					}
 
 					$break = false;
 				}
