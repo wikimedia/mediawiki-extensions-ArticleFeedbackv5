@@ -35,7 +35,7 @@ class ArticleFeedbackv5Utils {
 
 	/**
 	 * Returns whether feedback is enabled for this page.
-	 * See jquery.articleFeedbackv5.verify.js for full implementation;
+	 * See jquery.articleFeedbackv5.utils.js for full implementation;
 	 * this is more of a safety check.
 	 *
 	 * @param $pageId int the page id
