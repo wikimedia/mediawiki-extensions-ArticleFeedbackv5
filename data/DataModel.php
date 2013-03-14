@@ -315,7 +315,7 @@ abstract class DataModel {
 
 				// build list object
 				$list = new DataModelList( $partial, get_called_class() );
-				if ( $nextOffset ) {
+				if ( $nextOffset !== false ) {
 					$list->setNextOffset( $nextOffset );
 				}
 

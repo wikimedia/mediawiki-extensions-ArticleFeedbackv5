@@ -44,6 +44,9 @@
 		// supported browser
 		enable &= $.aftUtils.useragent();
 
+		// if AFTv5 is not enabled on any namespace, it does not make sense to display it at all
+		enable &= mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ).length > 0;
+
 		if ( location != 'special' || article.id != 0 ) {
 			// only on pages in namespaces where it is enabled
 			enable &= $.inArray( article.namespace, mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1;

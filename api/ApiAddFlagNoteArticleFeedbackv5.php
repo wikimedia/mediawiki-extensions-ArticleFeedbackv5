@@ -45,6 +45,8 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 				array( 'log_comment' => $notes ),
 				array(
 					'log_id' => $logId,
+					// failsafe, making sure this can't be gamed to add comments to anything to AFTv5 entries
+					'log_type' => ArticleFeedbackv5Activity::$actions[$action]['log_type'],
 					'log_action' => $action,
 					// failsafe, making sure this can't be gamed to add comments to other users' feedback
 					'log_user' => $wgUser->getId(),
