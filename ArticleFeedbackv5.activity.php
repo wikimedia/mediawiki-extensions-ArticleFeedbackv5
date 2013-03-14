@@ -389,29 +389,32 @@ class ArticleFeedbackv5Activity {
 			if ( $cache !== false ) {
 				$activity[$feedback->aft_id] = $cache;
 			} else {
+				$actions = array();
+
 				// we know exactly which status entry we want to fetch
 				if ( $feedback->isOversighted() ) {
-					$action = 'oversight';
+					$actions[] = 'oversight';
 				} elseif ( $feedback->isHidden() ) {
-					$action = 'hide';
+					$actions[] = 'hide';
+					$actions[] = 'autohide';
 				} elseif ( $feedback->isArchived() ) {
-					$action = 'archive';
+					$actions[] = 'archive';
 				} elseif ( $feedback->isResolved() ) {
-					$action = 'resolve';
+					$actions[] = 'resolve';
 				} elseif ( $feedback->isFeatured() ) {
-					$action = 'feature';
+					$actions[] = 'feature';
 				} elseif ( $feedback->isNonActionable() ) {
-					$action = 'noaction';
+					$actions[] = 'noaction';
 				} elseif ( $feedback->isInappropriate() ) {
-					$action = 'inappropriate';
+					$actions[] = 'inappropriate';
 				} else {
 					continue;
 				}
 
-				$action = self::buildWhereActions( array(), array( $action ) );
-				if ( $action ) {
+				$actions = self::buildWhereActions( array(), $actions );
+				if ( $actions ) {
 					$title = self::buildWhereFeedback( $feedback );
-					$where[] = 'log_title = '.$dbr->addQuotes( $title ).' AND '.$action;
+					$where[] = 'log_title = '.$dbr->addQuotes( $title ).' AND '.$actions;
 				}
 			}
 		}
