@@ -1035,9 +1035,7 @@
 				.data( 'action', 'unflag' );
 		}
 
-		/**
-		 * If the user already requested oversight, change action to unoversight.
-		 */
+		// if the user already requested oversight, change action to unrequest
 		if ( $.articleFeedbackv5special.getActivityFlag( id, 'request' ) ) {
 			var $link = $( '#articleFeedbackv5-request-link-' + id );
 
@@ -1047,7 +1045,8 @@
 					.text( mw.msg( 'articlefeedbackv5-form-unrequest' ) )
 					.data( 'action', 'unrequest' )
 					.removeClass( 'articleFeedbackv5-request-link' )
-					.addClass( 'articleFeedbackv5-unrequest-link' );
+					.addClass( 'articleFeedbackv5-unrequest-link' )
+					.removeClass( 'articleFeedbackv5-tipsy-link' );
 			} else {
 				// oversight request has been declined - mark as such
 				$link
@@ -1254,8 +1253,10 @@
 
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+					var id = $container.data( 'id' );
+
 					$.articleFeedbackv5special.flagFeedback(
-						$container.data( 'id' ),
+						id,
 						$container.data( 'pageid' ),
 						$( e.target ).data( 'action' ),
 						'',
@@ -1304,8 +1305,10 @@
 
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
+					var id = $container.data( 'id' );
+
 					$.articleFeedbackv5special.flagFeedback(
-						$container.data( 'id' ),
+						id,
 						$container.data( 'pageid' ),
 						$( e.target ).data( 'action' ),
 						'',
