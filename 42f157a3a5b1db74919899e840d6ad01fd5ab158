@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DqM7hdQE",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 473
+      },
+      "writtenOn": "2013-03-14T15:33:56Z",
+      "side": 1,
+      "message": "Comment grammar is wrong and it\u0027s not clear what sentence means.\n\nMaybe \n\"failsafe, making sure this can\u0027t be gamed to add comments to AFTv5 entries\" \nor\n\"failsafe, making sure this can\u0027t be gamed to add comments to anything other than AFTv5 entries\"",
+      "revId": "42f157a3a5b1db74919899e840d6ad01fd5ab158",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqE7VZRg",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.utils.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 473
+      },
+      "writtenOn": "2013-03-14T15:33:56Z",
+      "side": 1,
+      "message": "mw.config.get can return null or false sometimes.\n\nI think false would be safe here, but if there is a risk of null safer to check before calling length()",
+      "revId": "42f157a3a5b1db74919899e840d6ad01fd5ab158",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
