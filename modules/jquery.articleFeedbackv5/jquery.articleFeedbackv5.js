@@ -232,7 +232,7 @@
 			</div>\
 			',
 
-		helpToolTipTrigger: '<div class="articleFeedbackv5-tooltip-trigger-wrap"><a class="articleFeedbackv5-tooltip-trigger"><html:msg key="help-tooltip-title" /></a></div>',
+		helpToolTipTrigger: '<div class="articleFeedbackv5-tooltip-trigger-wrap"><a href="#" class="articleFeedbackv5-tooltip-trigger"><html:msg key="help-tooltip-title" /></a></div>',
 
 		ctaTitleConfirm: '\
 			<div class="articleFeedbackv5-confirmation-text">\
@@ -2456,7 +2456,8 @@
 
 		// Set up the tooltip trigger for the panel version
 		$wrapper.find( '.articleFeedbackv5-title-wrap' ).append( $.articleFeedbackv5.templates.helpToolTipTrigger );
-		$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
+		$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function ( e ) {
+			e.preventDefault();
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
 		} );
 
