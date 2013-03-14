@@ -18,7 +18,6 @@ $messages = array();
  * @author John Du Hart
  */
 $messages['en'] = array(
-
 	/* CTAs */
 	'articlefeedbackv5-cta-thanks' => 'Thanks!',
 	'articlefeedbackv5-cta-confirmation-message' => 'Your post can be viewed on this [$1 feedback page].',
@@ -146,7 +145,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|View feedback from all pages]]',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edit|$1 edits}} since post',
 	'articleFeedbackv5-details-link' => 'Details',
-	'articlefeedbackv5-revision-link' => '(see old article)',
+	'articlefeedbackv5-revision-link' => '(see old page)',
 	'articlefeedbackv5-special-more' => 'Show more posts',
 	'articlefeedbackv5-special-refresh' => 'Refresh list',
 	'articlefeedbackv5-special-pagetitle' => 'Feedback on $1',
@@ -211,9 +210,9 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-discuss-talk-exists' => 'See talk page discussion',
 	'articlefeedbackv5-form-discuss-user-exists' => 'See user talk page message',
 	'articlefeedbackv5-form-tooltip-note' => 'Add a note explaining your flag',
-	'articlefeedbackv5-form-tooltip-feature' => 'This can help improve the article',
+	'articlefeedbackv5-form-tooltip-feature' => 'This can help improve the page',
 	'articlefeedbackv5-form-tooltip-unfeature' => 'Undo usable flag',
-	'articlefeedbackv5-form-tooltip-resolve' => 'This was used or considered for the article',
+	'articlefeedbackv5-form-tooltip-resolve' => 'This was used or considered for the page',
 	'articlefeedbackv5-form-tooltip-unresolve' => 'Undo resolved flag',
 	'articlefeedbackv5-form-tooltip-noaction' => 'Unclear, irrelevant, praise, duplicate ...',
 	'articlefeedbackv5-form-tooltip-unnoaction' => 'Undo non-actionable flag',
@@ -231,7 +230,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-form-tooltip-request' => 'Offensive, private data ...',
 	'articlefeedbackv5-form-tooltip-unrequest' => 'Undo oversight request',
 	'articlefeedbackv5-form-tooltip-decline' => 'Decline oversight request',
-	'articlefeedbackv5-form-tooltip-discuss-talk' => "Discuss feedback on the article's talk page",
+	'articlefeedbackv5-form-tooltip-discuss-talk' => "Discuss feedback on the page's talk page",
 	'articlefeedbackv5-form-tooltip-discuss-user' => 'Discuss feedback with the user who submitted it',
 	'articlefeedbackv5-discuss-talk-section-title' => 'Reader feedback: $1',
 	'articlefeedbackv5-discuss-user-section-title' => 'Your feedback on "$2"',
@@ -269,7 +268,7 @@ We appreciate your contributions to this page!
 	'articlefeedbackv5-invalid-log-id' => 'Invalid log ID',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Invalid feedback flag',
 	'articlefeedbackv5-invalid-feedback-state' => 'Invalid feedback flag state',
-	'articlefeedbackv5-go-to-article' => 'View article',
+	'articlefeedbackv5-go-to-article' => 'View page',
 	'articlefeedbackv5-discussion-page' => 'Talk',
 	'articlefeedbackv5-whats-this' => 'Help',
 	'articlefeedbackv5-invalid-page-id' => 'Invalid page ID',
@@ -279,7 +278,7 @@ We appreciate your contributions to this page!
 	'articlefeedbackv5-desc' => 'Article feedback',
 	'articlefeedbackv5-comment-more' => 'More',
 	'articlefeedbackv5-comment-less' => 'Less',
-	'articlefeedbackv5-header-message' => 'Please promote good feedback and help improve this article. $1',
+	'articlefeedbackv5-header-message' => 'Please promote good feedback and help improve this page. $1',
 	'articlefeedbackv5-header-message-link-text' => 'Learn more',
 	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-unsupported-message' => 'Sorry, your browser is not supported by this prototype. To see this page, please use a different browser.',
@@ -532,7 +531,7 @@ includes one of these issues:
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'No',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Yes, I found what I was looking for.',
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'No, I did not find what I was looking for.',
-	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'How could this article be improved?',
+	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'How could this page be improved?',
 	'articlefeedbackv5-bucket1-question-placeholder-no' => 'Any suggestion for improvement?',
 	'articlefeedbackv5-bucket1-form-submit' => 'Post your feedback',
 
@@ -559,9 +558,9 @@ includes one of these issues:
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'No, I did not find what I was looking for.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 character remaining)|($1 characters remaining)}}',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Great. Any suggestion for improvement?',
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Write your suggestion here (e.g.: \'This article needs a picture\')',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Write your suggestion here (e.g.: \'This page needs a picture\')',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Sorry about that. Any suggestion for improvement?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Write your suggestion here (e.g.: \'This article needs a picture\')',
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Write your suggestion here (e.g.: \'This page needs a picture\')',
 	'articlefeedbackv5-bucket6-form-submit' => 'Post your feedback',
 	'articlefeedbackv5-bucket6-backlink-text' => 'Back to step 1',
 
@@ -677,7 +676,7 @@ includes one of these issues:
 
 	'articlefeedbackv5-email-request-oversight-body' => 'Hello, oversighters!
 
-Oversight was requested by $1 for feedback posted on this article:
+Oversight was requested by $1 for feedback posted on this page:
 
 $2
 
@@ -788,7 +787,7 @@ The abuse policy link.',
 	'articlefeedbackv5-error-flagging' => 'Generic error message displayed when it was not possible to perform a flagging action (e.g. feature, oversight, mark as helpful...) on feedback.',
 	'articlefeedbackv5-error-throttled' => 'Error message to be displayed when a user attempts to post too much feedback in too little time.',
 	'articlefeedbackv5-protection-level' => 'Fieldset label to be used for AFT page protection levels',
-	'articlefeedbackv5-protection-level-error' => 'Error message when protection level is too high compared to article edit protection level',
+	'articlefeedbackv5-protection-level-error' => 'Error message when protection level is too high compared to the page\'s edit protection level',
 	'articlefeedbackv5-protection-permission-reader' => 'Dropdown menu option to enable AFT for all users',
 	'articlefeedbackv5-protection-permission-member' => 'Dropdown menu option to enable AFT for registered users only',
 	'articlefeedbackv5-protection-permission-editor' => 'Dropdown menu option to enable AFT for editors only',
