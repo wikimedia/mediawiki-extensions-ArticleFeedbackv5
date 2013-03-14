@@ -1,0 +1,9 @@
+Verified+1: jenkins-bot
+Code-Review+1: Raimond Spekking <raimond.spekking@gmail.com>
+Code-Review+2: Matthias Mullie <mmullie@wikimedia.org>
+Verified+2: Matthias Mullie <mmullie@wikimedia.org>
+Submitted-by: Matthias Mullie <mmullie@wikimedia.org>
+Submitted-at: Thu, 14 Mar 2013 19:30:21 +0000
+Reviewed-on: https://gerrit.wikimedia.org/r/53788
+Project: mediawiki/extensions/ArticleFeedbackv5
+Branch: refs/heads/master
