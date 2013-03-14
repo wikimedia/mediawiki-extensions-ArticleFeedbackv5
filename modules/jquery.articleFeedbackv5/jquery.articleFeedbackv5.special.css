@@ -271,6 +271,7 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
 }
+.articleFeedbackv5-feedback .articleFeedbackv5-autohide-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-hide-marker {
 	/* @embed */
 	background: url(images/toolbox_hide.png);
@@ -295,6 +296,7 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-resolve-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-noaction-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-inappropriate-marker,
+.articleFeedbackv5-feedback .articleFeedbackv5-autohide-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-hide-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-archive-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-oversight-marker {
@@ -736,8 +738,14 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	color: red;
 }
 
-/** Screen for hidden/deleted **/
+/* Don't show mask by default */
 .articleFeedbackv5-post-screen {
+	display: none;
+}
+/* Only display the mask for posts marked as hidden/oversighted */
+.articleFeedbackv5-feedback-hide .articleFeedbackv5-post-screen,
+.articleFeedbackv5-feedback-oversight .articleFeedbackv5-post-screen {
+	display: block;
 	z-index: 99;
 	position: absolute;
 	top: 0;
@@ -746,10 +754,6 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	right: 0;
 	background-color: #dae2eb;
 	padding: 10px 30px;
-}
-/* No mask should be displayed for posts marked as inappropriate (only for hide/oversight) */
-.articleFeedbackv5-feedback-inappropriate .articleFeedbackv5-post-screen {
-	display: none;
 }
 .articleFeedbackv5-post-screen .articleFeedbackv5-mask-text-wrapper {
 	width: 100%;
