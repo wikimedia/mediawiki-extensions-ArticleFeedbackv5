@@ -51,6 +51,7 @@ $wgArticleFeedbackv5DefaultSorts = array (
 	'inappropriate' => array( 'age', 'DESC' ),
 	'archived' => array( 'age', 'DESC' ),
 	'allcomment' => array( 'age', 'DESC' ),
+	'hidden' => array( 'age', 'DESC' ),
 	'requested' => array( 'age', 'DESC' ),
 	'declined' => array( 'age', 'DESC' ),
 	'oversighted' => array( 'age', 'DESC' ),

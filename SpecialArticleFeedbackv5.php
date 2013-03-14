@@ -228,7 +228,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			) {
 				$this->startingFilter = 'unreviewed';
 				$this->startingSort = 'relevance';
-				$this->startingSortDirection = 'desc';
+				$this->startingSortDirection = 'DESC';
 			}
 
 			return ArticleFeedbackv5Model::getList(
