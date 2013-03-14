@@ -2,7 +2,7 @@
 
 require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
-	: dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+	: dirname( __FILE__ ) . '/../../../../maintenance/Maintenance.php' );
 
 /**
  * This will purge all DataModel caches.
@@ -15,7 +15,14 @@ class DataModelPurgeCache extends Maintenance {
 	 *
 	 * @var int
 	 */
-	private $completeCount = 0;
+	protected $completeCount = 0;
+
+	/**
+	 * Array of shard ids
+	 *
+	 * @var array
+	 */
+	protected $shards = array( null );
 
 	/**
 	 * Constructor
@@ -38,7 +45,6 @@ class DataModelPurgeCache extends Maintenance {
 	 */
 	public function execute() {
 		$class = $this->getClass();
-		$shards = array( null );
 
 		$this->output( "Purging $class caches.\n" );
 
@@ -46,40 +52,65 @@ class DataModelPurgeCache extends Maintenance {
 		$rows = $class::getBackend()->get( null, null );
 
 		foreach ( $rows as $i => $row ) {
-			if ( !in_array( $row->{$class::getShardColumn()}, $shards ) ) {
-				$shards[] = $row->{$class::getShardColumn()};
+			if ( !in_array( $row->{$class::getShardColumn()}, $this->shards ) ) {
+				$this->shards[] = $row->{$class::getShardColumn()};
 			}
 
-			// clear cached entries
-			$entry = $class::loadFromRow( $row );
-			$entry->uncache();
+			$object = $class::loadFromRow( $row );
+
+			$this->purgeObject( $object );
 
 			$this->completeCount++;
 
-			wfWaitForSlaves();
-
 			if ( $i % 50 == 0 ) {
-				$this->output( "--purged caches to entry #".$entry->{$class::getIdColumn()}."\n" );
+				$this->output( "--purged caches to entry #".$object->{$class::getIdColumn()}."\n" );
+				wfWaitForSlaves();
 			}
 		}
 
-		foreach ( $class::$lists as $list => $properties ) {
-			foreach ( $shards as $shard ) {
-				// clear lists
-				$key = wfMemcKey( get_called_class(), 'getListValidity', $list, $shard );
-				$class::getCache()->delete( $key );
+		foreach ( $this->shards as $i => $shard ) {
+			$this->purgeShard( $shard );
 
-				// clear counts
-				$key = wfMemcKey( $class, 'getCount', $list, $shard );
-				$class::getCache()->delete( $key );
+			if ( $i % 50 == 0 ) {
+				$this->output( "--purged caches to shard #$shard\n" );
+				wfWaitForSlaves();
 			}
-
-			$this->output( "--purged caches for list #".$list."\n" );
 		}
 
 		$this->output( "Done. Purged caches for $this->completeCount $class entries.\n" );
 	}
+
+	/**
+	 * Per-object cache removal
+	 *
+	 * @param DataModel $object The object
+	 */
+	public function purgeObject( DataModel $object ) {
+		$object->uncache();
+	}
+
+	/**
+	 * Per-shard cache removal
+	 *
+	 * @param mixed $shard The shard column's value
+	 */
+	public function purgeShard( $shard ) {
+		$class = $this->getClass();
+
+		foreach ( $class::$lists as $list => $properties ) {
+			// clear lists
+			$key = wfMemcKey( get_called_class(), 'getListValidity', $list, $shard );
+			$class::getCache()->delete( $key );
+
+			// clear counts
+			$key = wfMemcKey( $class, 'getCount', $list, $shard );
+			$class::getCache()->delete( $key );
+		}
+	}
 }
 
-$maintClass = "DataModelPurgeCache";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+// allow extension-specific override before including this file
+if ( !isset( $maintClassOverride ) || !$maintClassOverride ) {
+	$maintClass = "DataModelPurgeCache";
+	require_once( RUN_MAINTENANCE_IF_MAIN );
+}
