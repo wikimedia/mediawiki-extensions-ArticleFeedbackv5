@@ -702,31 +702,28 @@
 			'dataType': 'json',
 			'data'    : requestData,
 			'success': function ( data ) {
-				var msg = 'articlefeedbackv5-error-flagging';
-				if ( 'articlefeedbackv5-flag-feedback' in data ) {
-					if ( 'result' in data['articlefeedbackv5-flag-feedback'] ) {
-						if ( data['articlefeedbackv5-flag-feedback'].result == 'Success' ) {
-							// replace entry by new render
-							$( '.articleFeedbackv5-feedback[data-id='+id+']' )
-								.replaceWith( data['articlefeedbackv5-flag-feedback'].render );
+				if ( data && 'articlefeedbackv5-flag-feedback' in data && 'result' in data['articlefeedbackv5-flag-feedback'] ) {
+					if ( data['articlefeedbackv5-flag-feedback'].result == 'Success' ) {
+						// replace entry by new render
+						$( '.articleFeedbackv5-feedback[data-id='+id+']' )
+							.replaceWith( data['articlefeedbackv5-flag-feedback'].render );
 
-							// invoke the registered onSuccess callback for the executed action
-							if ( 'onSuccess' in $.articleFeedbackv5special.actions[action] ) {
-								$.articleFeedbackv5special.actions[action].onSuccess( id, data );
-							}
-
-							// re-mark active flags in reader tools
-							$.articleFeedbackv5special.markActiveFlags( id );
-
-							// re-enable ajax flagging
-							$.articleFeedbackv5special.listControls.disabled = false;
-
-							// re-bind panels (tipsies)
-							$.articleFeedbackv5special.bindTipsies( id );
-							return true;
-						} else if ( data['articlefeedbackv5-flag-feedback'].result == 'Error' ) {
-							mw.log( mw.msg( data['articlefeedbackv5-flag-feedback'].reason ) );
+						// invoke the registered onSuccess callback for the executed action
+						if ( 'onSuccess' in $.articleFeedbackv5special.actions[action] ) {
+							$.articleFeedbackv5special.actions[action].onSuccess( id, data );
 						}
+
+						// re-mark active flags in reader tools
+						$.articleFeedbackv5special.markActiveFlags( id );
+
+						// re-enable ajax flagging
+						$.articleFeedbackv5special.listControls.disabled = false;
+
+						// re-bind panels (tipsies)
+						$.articleFeedbackv5special.bindTipsies( id );
+						return true;
+					} else if ( data['articlefeedbackv5-flag-feedback'].result == 'Error' ) {
+						mw.log( mw.msg( data['articlefeedbackv5-flag-feedback'].reason ) );
 					}
 				}
 
@@ -734,7 +731,7 @@
 				$.articleFeedbackv5special.listControls.disabled = false;
 			},
 			'error': function ( data ) {
-				$( '#articleFeedbackv5-' + type + '-link-' + id ).text( mw.msg( 'articlefeedbackv5-error-flagging' ) );
+				$( '#articleFeedbackv5-' + action + '-link-' + id ).text( mw.msg( 'articlefeedbackv5-error-flagging' ) );
 
 				// re-enable ajax flagging
 				$.articleFeedbackv5special.listControls.disabled = false;
