@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DqEUyGxE",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css",
+        "patchSetId": 9
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 473
+      },
+      "writtenOn": "2013-03-15T19:55:20Z",
+      "side": 1,
+      "message": "I was going to check the name of this image because it has either an inconsistent abbreviation or typo, but I don\u0027t see it in the current ATFv5 or in core.  I assume it\u0027s in an unmerged patch?",
+      "revId": "b896536ced35c595c12f81b8195c2d116985c41f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
