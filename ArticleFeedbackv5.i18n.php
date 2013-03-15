@@ -2603,7 +2603,7 @@ $messages['as'] = array(
 $messages['az'] = array(
 	'articlefeedbackv5-loading-tag' => 'Yüklənir…',
 	'articlefeedbackv5-new-marker' => 'Yeni',
-	'articlefeedbackv5-hide-marker' => 'Gizlədilib', # Fuzzy
+	'articlefeedbackv5-hidden-marker' => 'Gizlədilib',
 	'articlefeedbackv5-whats-this' => 'Kömək',
 	'articlefeedbackv5-permalink-info-subtitle' => '(#$1)',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Bəli',
@@ -3070,25 +3070,29 @@ $messages['bg'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Благодарности!',
 	'articlefeedbackv5-cta2-button-text' => 'Научете повече',
 	'articlefeedbackv5-overlay-close' => 'Затваряне',
+	'articlefeedbackv5-form-tools-label' => 'Инструменти',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Да',
 	'articlefeedbackv5-form-helpful-no-label' => 'Не',
 	'articlefeedbackv5-special-filter-all' => 'Всички ($1)', # Fuzzy
 	'articleFeedbackv5-details-link' => 'Подробности',
 	'articlefeedbackv5-new-marker' => 'Нов',
+	'articlefeedbackv5-form-delete' => 'Изтриване', # Fuzzy
 	'articlefeedbackv5-discussion-page' => 'Обсъждане',
 	'articlefeedbackv5-whats-this' => 'Помощ',
 	'articlefeedbackv5-comment-more' => 'Повече',
+	'articlefeedbackv5-comment-less' => 'По-малко',
 	'articlefeedbackv5-header-message-link-text' => 'Научете повече',
 	'articlefeedbackv5-noteflyover-feature-help' => 'Научете повече',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'Научете повече',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Научете повече',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Научете повече',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Научете повече',
-	'articlefeedbackv5-noteflyover-request-help' => 'Научете повече',
-	'articlefeedbackv5-noteflyover-unrequest-help' => 'Научете повече',
+	'articlefeedbackv5-noteflyover-show-help' => 'Научете повече',
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Научете повече',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Научете повече',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Научете повече',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Научете повече',
-	'articlefeedbackv5-noteflyover-decline-help' => 'Научете повече',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Научете повече',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Да',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Не',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Научете повече',
@@ -3480,6 +3484,28 @@ $messages['bs'] = array(
 	'articlefeedbackv5' => 'Tabla za ocjenjivanje članaka', # Fuzzy
 	'articlefeedbackv5-desc' => 'Ocjenjivanje članaka (probna verzija)', # Fuzzy
 	'articlefeedbackv5-disable-preference' => 'Ne prikazuj dodatak Povratne informacije o članku na stranicama',
+	'articlefeedbackv5-emailcapture-response-body' => 'Zdravo!
+
+Hvala što ste izrazili zanimanje za poboljšanje {{SITENAME}}.
+
+Molimo vas potvrdite vaš e-mail putem klika na link ispod:
+
+$1
+
+Također možete posjetiti:
+
+$2
+
+I unijeti slijedeći kod potvrde:
+
+$3
+
+Bit ćemo ubrzo u kontaktu podacima kako možete pomoći oko poboljšanja {{SITENAME}}.
+
+Ako niste inicirali ovaj zahtjev, molimo zanemarite ovaj e-mail i nećemo vam slati ništa više.
+
+Srdačne čestitke i hvala najljepša,
+Vaš {{SITENAME}} tim',
 );
 
 /** Catalan (català)
@@ -4013,6 +4039,24 @@ $messages['cy'] = array(
 	'articlefeedbackv5' => 'Dangosfwrdd adborth erthygl', # Fuzzy
 	'articlefeedbackv5-desc' => 'Adborth am erthygl',
 	'articlefeedbackv5-disable-preference' => 'Peidiwch dangos y teclyn adborth erthygl ar dudalennau.',
+	'articlefeedbackv5-emailcapture-response-body' => "Helo!
+Diolch am ddangos eich diddordeb i wella {{SITENAME}}.
+
+A fyddech gystal â chadarnhau eich e-bost trwy glicio ar y ddolen isod:
+$1
+
+Hefyd gallwch ymweld â:
+$2
+
+A nodi'r côd cadarnhau canlynol:
+$3
+
+Byddwn ni mewn cysylltiad â chi'n fuan ynglyn â sut y gallwch chi wella {{SITENAME}}.
+
+Os nad oeddech wedi gwneud y cais hwn, anwybyddwch yr e-bost hwn os gwelwch yn dda. Ni fyddwn yn danfon dim byd arall atoch.
+
+Dymuniadau gorau, a diolch,
+Tîm {{SITENAME}}",
 );
 
 /** Danish (dansk)
@@ -4806,10 +4850,33 @@ $messages['de-ch'] = array(
 	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}} hinterliess ein Lob:',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} hinterliess eine Frage:',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} hinterliess einen Vorschlag:',
+	'articlefeedbackv5-form4-header' => '{{GENDER:$1|$1}} wurde ein Aufforderungsformular («CTA») angezeigt.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} hinterliess eine [[$4|Rückmeldung]] zu $3',
-	'articlefeedbackv5-no-feedback' => 'Es gibt keine Rückmeldung für deinen ausgewählten Filter. Um deinen Filter zu ändern, versuche eine der obenstehenden Optionen (z.&nbsp;B. «Relevanteste» oder «Alle Kommentare»).', # Fuzzy
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Bitte gib deinen Verbesserungsvorschlag hier ein (z. B. «Im Artikel fehlt die Geschichte seit 1989, so wie sie in M. Bernasconi (2007) beschrieben ist.»)', # Fuzzy
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Bitte gib deinen Verbesserungsvorschlag hier ein (z. B. «Im Artikel fehlt die Geschichte seit 1989, so wie sie in M. Bernasconi (2007) beschrieben ist.»)', # Fuzzy
+	'articlefeedbackv5-no-feedback' => 'Es gibt keine Rückmeldung für deinen ausgewählten Filter. Um deinen Filter zu ändern, versuche eine der obenstehenden Optionen (z.&nbsp;B. «Relevanteste» oder «Alle Kommentare»).',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Bitte gib deinen Verbesserungsvorschlag hier ein (z. B. «Im Artikel fehlt die Geschichte seit 1989, so wie sie in M. Bernasconi (2007) beschrieben ist.»)',
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Bitte gib deinen Verbesserungsvorschlag hier ein (z. B. «Im Artikel fehlt die Geschichte seit 1989, so wie sie in M. Bernasconi (2007) beschrieben ist.»)',
+	'articlefeedbackv5-emailcapture-response-body' => 'Hallo!
+
+Vielen Dank für dein Interesse an der Verbesserung von {{SITENAME}}.
+
+Bitte nimm dir einen Moment Zeit, deine E-Mail-Adresse zu bestätigen, indem du auf den folgenden Link klickst:
+
+$1
+
+Du kannst auch die folgende Seite besuchen:
+
+$2
+
+Gib dort den nachfolgenden Bestätigungscode ein:
+
+$3
+
+Wir melden uns in Kürze bei dir, um dir mitzuteilen, wie du dich an der Verbesserung von {{SITENAME}} beteiligen kannst.
+
+Sofern du diese Anfrage nicht ausgelöst hast, ignoriere einfach diese E-Mail. Wir werden dir dann nichts mehr zusenden.
+
+Viele Grüsse und vielen Dank,
+Das {{SITENAME}}-Team',
 );
 
 /** German (formal address) (Deutsch (Sie-Form)‎)
@@ -4838,24 +4905,26 @@ $messages['de-formal'] = array(
 	'articlefeedbackv5-error-abuse' => 'Ihr Beitrag wurde vom Softwarefilter zurückgewiesen, der nahelegt, dass er möglicherweise die [$1 Rückmeldungsrichtlinien] von {{SITENAME}} verletzt.  Bitte überarbeiten Sie Ihren Beitrag und versuchen Sie es noch einmal.', # Fuzzy
 	'articlefeedbackv5-error-nofeedback' => 'Bitte geben Sie Ihre Rückmeldung ein.',
 	'articlefeedbackv5-error-throttled' => 'Ihr Beitrag wurde zurückgewiesen, da Sie in jüngster Vergangenheit mehr als die empfohlene Anzahl an Rückmeldungen, gemäß der Rückmeldungsrichtlinien von {{SITENAME}}, hinterlassen haben. Bitte hinterlassen Sie nicht zu viele Rückmeldungen.',
+	'articlefeedbackv5-special-add-feedback' => 'Geben Sie eine Rückmeldung',
 	'articlefeedbackv5-special-survey-button-text' => 'Was halten Sie von diesem Rückmeldewerkzeug?',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Entfernen Sie die von Ihnen vorgenommene Kennzeichnung.',
-	'articlefeedbackv5-header-message' => 'Bitte fördern Sie gute Rückmeldungen und helfen Sie dabei, diesen Artikel zu verbessern. $1', # Fuzzy
+	'articlefeedbackv5-header-message' => 'Bitte fördern Sie gute Rückmeldungen und helfen Sie dabei, diesen Artikel zu verbessern. $1',
 	'articlefeedbackv5-unsupported-message' => 'Ihr Browser unterstützt leider diesen Prototyp des Hilfsmittels nicht. Um diese Seite ansehen zu können, müssen Sie einen anderen Browser nutzen.',
 	'articlefeedbackv5-special-disclaimer' => 'Dies ist ein Prototyp. Nutzen Sie ihn nicht; es sei denn, Sie werden dazu eingeladen, es zu tun.',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Warum blenden Sie diese Rückmeldung aus?', # Fuzzy
-	'articlefeedbackv5-noteflyover-request-description' => 'Bevor Sie eine Versionslöschung per Oversight beantragen, prüfen Sie bitte, ob dieser Beitrag
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Warum blenden Sie diese Rückmeldung aus?',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'Warum stellen Sie diese Rückmeldung wieder her?',
+	'articlefeedbackv5-noteflyover-requestoversight-description' => 'Bevor Sie eine Versionslöschung per Oversight beantragen, prüfen Sie bitte, ob dieser Beitrag
 eines der folgenden Probleme enthält:
 * Telefonnummern
 * E-Mail-Adressen
 * Links zu pornografischen Seiten
 * diffamierende/beleidigende Kommentare über eine Person
 * [//de.wikipedia.org/wiki/Wikipedia:Oversight#Richtlinie andere Oversight-Kriterien]',
-	'articlefeedbackv5-noteflyover-request-placeholder' => 'Warum beantragen Sie die Löschung?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Warum nehmen Sie den Antrag zur Löschung zurück?', # Fuzzy
-	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Warum verstecken Sie diese Rückmeldung?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Warum nehmen Sie die Löschung dieser Rückmeldung zurück?', # Fuzzy
-	'articlefeedbackv5-noteflyover-decline-placeholder' => 'Warum lehnen Sie die Löschung  ab?', # Fuzzy
+	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Warum beantragen Sie die Löschung?',
+	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Warum nehmen Sie den Antrag zur Löschung zurück?',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Warum verstecken Sie diese Rückmeldung?',
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Warum nehmen Sie die Löschung dieser Rückmeldung zurück?',
+	'articlefeedbackv5-noteflyover-declineoversight-placeholder' => 'Warum lehnen Sie die Löschung  ab?',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Haben Sie gefunden, wonach Sie suchten?',
 	'articlefeedbackv5-bucket1-question-placeholder-no' => 'Haben Sie einen Verbesserungsvorschlag?',
 	'articlefeedbackv5-bucket1-form-submit' => 'Speichern Sie Ihre Rückmeldung',
@@ -4870,9 +4939,9 @@ eines der folgenden Probleme enthält:
 	'articlefeedbackv5-bucket6-title' => 'Helfen Sie mit, diese Seite zu verbessern',
 	'articlefeedbackv5-bucket6-question-toggle' => 'Haben Sie gefunden, wonach Sie suchten?',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Super. Haben Sie einen Verbesserungsvorschlag?',
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Geben Sie Ihren Verbesserungsvorschlag hier an (z. B. „Dieser Artikel muss noch bebildert werden.“)', # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Geben Sie Ihren Verbesserungsvorschlag hier an (z. B. „Dieser Artikel muss noch bebildert werden.“)',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Dies tut uns leid. Haben Sie einen Verbesserungsvorschlag?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Geben Sie Ihren Verbesserungsvorschlag hier an (z. B. „Dieser Artikel muss noch bebildert werden.“)', # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Geben Sie Ihren Verbesserungsvorschlag hier an (z. B. „Dieser Artikel muss noch bebildert werden.“)',
 	'articlefeedbackv5-bucket6-form-submit' => 'Speichern Sie Ihre Rückmeldung',
 	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} möchte gerne wissen, was Sie über diese Seite denken. Teilen Sie Ihre Rückmeldung den Autoren mit – und helfen Sie mit, diese Seite zu verbessern.',
 	'articlefeedbackv5-help-transparency-terms' => 'Bitte hinterlassen Sie dem Autor [//de.wikipedia.org/wiki/Wikipedia:Artikel-Feedback/Feedback_Orga nützliche Rückmeldungen]. Mit dem Speichern stimmen Sie diesen [//wikimediafoundation.org/wiki/Feedback_privacy_statement Bedingungen] zu.',
@@ -4880,6 +4949,28 @@ eines der folgenden Probleme enthält:
 	'articlefeedbackv5-titlebar-linktext' => 'Helfen Sie mit, diese Seite zu verbessern >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Verbessern Sie diese Seite',
 	'articlefeedbackv5-bottomrighttab-linktext' => 'Verbessern Sie diese Seite',
+	'articlefeedbackv5-emailcapture-response-body' => 'Hallo!
+
+Vielen Dank für Ihr Interesse an der Verbesserung von {{SITENAME}}.
+
+Bitte nehmen Sie sich einen Moment Zeit, Ihre E-Mail-Adresse zu bestätigen, indem Sie auf den folgenden Link klicken:
+
+$1
+
+Sie können auch die folgende Seite besuchen:
+
+$2
+
+Geben Sie dort den nachfolgenden Bestätigungscode ein:
+
+$3
+
+Wir melden uns in Kürze dazu, wie Sie helfen können, {{SITENAME}} zu verbessern.
+
+Sofern Sie diese Anfrage nicht ausgelöst haben, ignorieren Sie einfach diese E-Mail. Wir werden Ihnen dann nichts mehr zusenden.
+
+Viele Grüße und vielen Dank,
+Das {{SITENAME}}-Team',
 	'articlefeedbackv5-email-request-oversight-body' => 'Hallo Oversighter,
 
 von $1 wurde ein Antrag auf Verstecken einer Rückmeldung zu dem folgenden Artikel gestellt:
@@ -4897,7 +4988,7 @@ das Team von {{SITENAME}}
 
 PS: Sofern Sie Fragen zur Nutzung der Oversightfunktion auf Seiten mit Rückmeldungen haben, besuchen Sie bitte die Seite mit den häufigen Fragen:
 
-$4', # Fuzzy
+$4',
 	'articlefeedbackv5-disable-flyover-help' => 'Um $1 zu deaktivieren, gehen Sie zu $2 und klicken Sie die Option $3 an',
 );
 
@@ -8229,6 +8320,7 @@ $messages['ga'] = array(
 	'articlefeedbackv5-loading-tag' => 'Ag Lódáil....',
 	'articlefeedbackv5-discussion-page' => 'Plé',
 	'articlefeedbackv5-comment-more' => 'Níos mó',
+	'articlefeedbackv5-comment-less' => 'Níos lú',
 	'articlefeedbackv5-permalink-info-subtitle' => '(#$1)',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Ní',
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'Ní',
@@ -13537,6 +13629,7 @@ Hellef met, di Sigg heh beßer ze maache, endämm dat De draan metschriivs!',
 $messages['ku-latn'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Spas!',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Vê rûpelê biguherîne',
+	'articlefeedbackv5-form-tools-label' => 'Amûr',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Erê',
 	'articlefeedbackv5-form-helpful-no-label' => 'Na',
 	'articlefeedbackv5-whats-this' => 'Alîkarî',
@@ -14091,28 +14184,38 @@ $messages['lv'] = array(
 	'articlefeedbackv5-cta5-button-text' => 'Apskatīt visus komentārus',
 	'articlefeedbackv5-overlay-close' => 'Aizvērt',
 	'articlefeedbackv5-error' => 'Radusies kļūda. Lūdzu, mēģiniet vēlāk vēlreiz.',
+	'articlefeedbackv5-error-email' => 'Šī e-pasta adrese nav derīga.',
 	'articlefeedbackv5-error-unknown' => 'Nezināma kļūda.',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'slēpts komentārs',
+	'articlefeedbackv5-form-tools-label' => 'Rīki',
 	'articlefeedbackv5-form-helpful-label' => 'Vai šī atsauksme ir noderīga?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Jā',
 	'articlefeedbackv5-form-helpful-no-label' => 'Nē',
+	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|$1 uzskatīja par noderīgu}}',
+	'articlefeedbackv5-special-add-feedback' => 'Pievienojiet savu atsauksmi',
 	'articlefeedbackv5-special-filter-all' => 'Visas ziņas ($1)',
 	'articlefeedbackv5-special-sort-label-before' => 'Kārtot pēc:',
 	'articlefeedbackv5-special-filter-label-before' => 'Parādīt tikai:', # Fuzzy
 	'articlefeedbackv5-special-filter-select-more' => 'Vairāk filtri',
 	'articlefeedbackv5-loading-tag' => 'Ielādē…',
 	'articlefeedbackv5-form-anon-username' => 'Lasītājs',
-	'articlefeedbackv5-go-to-article' => 'Skatīt rakstu', # Fuzzy
+	'articlefeedbackv5-go-to-article' => 'Skatīt rakstu',
 	'articlefeedbackv5-discussion-page' => 'Diskusija',
 	'articlefeedbackv5-whats-this' => 'Palīdzība',
 	'articlefeedbackv5-invalid-page-id' => 'Nederīgs lapas ID',
+	'articlefeedbackv5-overall-rating' => 'Vērtējums: $1/5',
 	'articlefeedbackv5' => 'Atsauksme par rakstu', # Fuzzy
 	'articlefeedbackv5-desc' => 'Atsauksme par rakstu', # Fuzzy
 	'articlefeedbackv5-comment-more' => 'Vairāk',
-	'articlefeedbackv5-header-message' => 'Lūdzu, veiciniet labas atsauksmes un palīdziet uzlabot šo rakstu. $1', # Fuzzy
+	'articlefeedbackv5-comment-less' => 'Mazāk',
+	'articlefeedbackv5-header-message' => 'Lūdzu, veiciniet labas atsauksmes un palīdziet uzlabot šo rakstu. $1',
 	'articlefeedbackv5-header-message-link-text' => 'Uzzināt vairāk',
 	'articlefeedbackv5-beta-label' => 'BETA',
-	'articlefeedbackv5-viewactivity' => 'Apskatīt aktivitāti', # Fuzzy
+	'articlefeedbackv5-viewactivity' => 'Apskatīt aktivitāti',
+	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 gads|$1 gadi}}',
+	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 mēnesis|$1 mēneši}}',
+	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 nedēļa|$1 nedēļas}}',
+	'articlefeedbackv5-timestamp-seconds' => 'mazāk par 1 minūti',
 	'articlefeedbackv5-mask-view-contents' => 'Skatīt saturu',
 	'articlefeedbackv5-special-goback' => 'Skatīt atsauksmju lapu',
 	'articlefeedbackv5-permalink-info-title' => 'Informācija par šo ierakstu',
@@ -14134,17 +14237,18 @@ $messages['lv'] = array(
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Uzzināt vairāk',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Pievienot piezīmi',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Uzzināt vairāk',
-	'articlefeedbackv5-noteflyover-unhide-label' => 'Pievienot piezīmi',
-	'articlefeedbackv5-noteflyover-request-help' => 'Uzzināt vairāk',
-	'articlefeedbackv5-noteflyover-unrequest-label' => 'Pievienot piezīmi',
-	'articlefeedbackv5-noteflyover-unrequest-submit' => 'Atcelt pieprasījumu',
-	'articlefeedbackv5-noteflyover-unrequest-help' => 'Uzzināt vairāk',
+	'articlefeedbackv5-noteflyover-show-label' => 'Pievienot piezīmi',
+	'articlefeedbackv5-noteflyover-show-help' => 'Uzzināt vairāk',
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Uzzināt vairāk',
+	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'Pievienot piezīmi',
+	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Atcelt pieprasījumu',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Uzzināt vairāk',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Pievienot piezīmi',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Uzzināt vairāk',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Pievienot piezīmi',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Uzzināt vairāk',
-	'articlefeedbackv5-noteflyover-decline-label' => 'Pievienot piezīmi',
-	'articlefeedbackv5-noteflyover-decline-help' => 'Uzzināt vairāk',
+	'articlefeedbackv5-noteflyover-declineoversight-label' => 'Pievienot piezīmi',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Uzzināt vairāk',
 	'articlefeedbackv5-bucket1-title' => 'Palīdziet uzlabot šo lapu',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Vai atradāt to, ko meklējāt?',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Jā',
@@ -15983,6 +16087,7 @@ $messages['ne'] = array(
 	'articlefeedbackv5-cta3-confirmation-call' => 'यसमा जम्मा एक मिनेट लाग्छ र यसले विकिपीडिया लाई मद्दत गर्छ ।', # Fuzzy
 	'articlefeedbackv5-cta3-button-text' => 'सर्वेक्षण सुरु गर्नुहोस',
 	'articlefeedbackv5-error' => 'एउटा त्रुटि भएको छ । कृपया फेरि प्रयास गर्नुहोला।',
+	'articlefeedbackv5-error-email' => 'यो इमेल ठेगाना वैध छैन ।',
 	'articlefeedbackv5-error-blocked' => 'अवरुद्ध गरिएका प्रयोगकर्ताहरु ले प्रतिक्रिया दिनु हुदैन ।',
 	'articlefeedbackv5-error-validation' => 'वैधानिक त्रुटी ।',
 	'articlefeedbackv5-error-abuse' => 'तपाइको टिप्पणीले $1 लाई उल्लङ्घन गर्छ। कृपया यसलाई संशोधन गर्नुहोस ।', # Fuzzy
@@ -15990,17 +16095,24 @@ $messages['ne'] = array(
 	'articlefeedbackv5-error-submit' => 'फारम बुझाउने त्रुटी।',
 	'articlefeedbackv5-error-nofeedback' => 'आफ्नो कृपया प्रतिक्रिया दिनुहोला ।',
 	'articlefeedbackv5-error-flagging' => 'गलत प्रतिक्रिया लाई चिन्ह लगाउँदा त्रुटी ।',
+	'articlefeedbackv5-form-tools-label' => 'औजारहरु',
 	'articlefeedbackv5-form-helpful-label' => 'के यो प्रतिक्रिया सहयोगी थियो ?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'छ',
 	'articlefeedbackv5-form-helpful-no-label' => 'छैन',
+	'articlefeedbackv5-form-helpful-votes' => '{{PLURAL:$1|1 छ|$1 छन्}} / {{PLURAL:$2|1 छैन|$2 छैनन्}}', # Fuzzy
+	'articlefeedbackv5-special-add-feedback' => 'आफ्नो प्रतिक्रिया थप्नुहोस',
+	'articlefeedbackv5-special-filter-all' => 'सबै ($1)', # Fuzzy
+	'articlefeedbackv5-special-filter-comment' => '($1) प्रतिक्रियाहरु मात्रै', # Fuzzy
+	'articlefeedbackv5-special-filter-abusive' => '($1) दुरुपयोग चिन्ह लगाइएको',
 	'articlefeedbackv5-special-filter-helpful' => 'सहयोगी ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'असहयोगी ($1)',
+	'articlefeedbackv5-special-filter-visible' => 'सबै देखिने ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'लुकेका ($1)',
 	'articlefeedbackv5-special-filter-oversighted' => 'मेटिएका ($1)',
-	'articlefeedbackv5-special-filter-all' => 'सबै ($1)', # Fuzzy
 	'articlefeedbackv5-special-sort-label-before' => 'सुचीकरण तरिका:',
 	'articlefeedbackv5-special-filter-label-before' => 'देखाउदै:',
 	'articlefeedbackv5-special-showing' => 'यस लेखका  {{PLURAL:$1|1 प्रकाशित प्रतिक्रिया |$1 प्रकाशित प्रतिक्रियाहरु}}', # Fuzzy
+	'articleFeedbackv5-comment-ago' => '$1 पहिले',
 	'articlefeedbackv5-updates-since' => 'पछिल्लो प्रकाशन पछिका {{PLURAL:$1|1 सम्पादन|$1 सम्पादनहरु}}',
 	'articlefeedbackv5-special-more' => 'अझै धेरै प्रकाशनहरु देखाउने',
 	'articlefeedbackv5-special-pagetitle' => 'प्रतिक्रिया: $1', # Fuzzy
@@ -16547,21 +16659,23 @@ $messages['nl-informal'] = array(
 	'articlefeedbackv5-cta4-confirmation-call-line1' => 'Registreer een gebruiker of meld je aan zodat andere gebruikers op je terugkoppeling kunnen reageren.',
 	'articlefeedbackv5-cta4-confirmation-call-line2' => 'Jouw gratis gebruiker maakt het eenvoudiger om wat je weet te delen in {{SITENAME}}.',
 	'articlefeedbackv5-cta5-confirmation-call' => 'Bekijk suggesties van andere lezers. Kan je helpen de beste ideeën te kiezen?',
-	'articlefeedbackv5-error-abuse' => 'Je bericht is afgewezen door een softwarefilter dat aangeeft dat de [$1 richtlijnen voor terugkoppeling] van {{SITENAME}} mogelijk geschonden worden. Pas je opmerking alstublieft aan en probeer het opnieuw.', # Fuzzy
+	'articlefeedbackv5-error-abuse' => 'Je bericht is afgewezen door een softwarefilter dat aangeeft dat de [$1 richtlijnen voor terugkoppeling] van {{SITENAME}} mogelijk geschonden worden. Pas je opmerking alstublieft aan en probeer het opnieuw.',
 	'articlefeedbackv5-error-nofeedback' => 'Geef je terugkoppeling.',
 	'articlefeedbackv5-error-throttled' => 'Je bericht is geweigerd omdat je recentelijk meer terugkoppeling hebt gegeven dan wordt aangeraden in de richtlijnen voor terugkoppeling van {{SITENAME}}. Geef je terugkoppeling alstublieft niet herhaaldelijk of excessief.',
+	'articlefeedbackv5-special-add-feedback' => 'Geef je terugkoppeling',
 	'articlefeedbackv5-special-survey-button-text' => 'Wat vind je van deze functie om terugkoppeling te geven?',
 	'articlefeedbackv5-unsupported-message' => 'Je browser wordt niet ondersteund door dit prototype. Gebruik een andere browser om deze pagina te bekijken.',
-	'articlefeedbackv5-no-feedback' => 'Er is geen terugkoppeling voor het filter dat je hebt geselecteerd. Probeer een van de bovenstaande opties om je filter te wijzigen (bijvoorbeeld "Meest relevant" of "Alle reacties").', # Fuzzy
+	'articlefeedbackv5-no-feedback' => 'Er is geen terugkoppeling voor het filter dat je hebt geselecteerd. Probeer een van de bovenstaande opties om je filter te wijzigen (bijvoorbeeld "Meest relevant" of "Alle reacties").',
 	'articlefeedbackv5-special-disclaimer' => 'Dit is een prototype. Gebruik het niet als je niet bent uitgenodigd.',
-	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Waarom licht je dit bericht uit?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Waarom laat je dit bericht niet langer uitgelicht worden?', # Fuzzy
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Waarom verberg je dit bericht?', # Fuzzy
-	'articlefeedbackv5-noteflyover-request-label' => 'Opmerking toevoegen om toe te lichten waarom je toezicht aanvraagt',
-	'articlefeedbackv5-noteflyover-request-placeholder' => 'Waarom vraag je toezicht aan?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Waarom annuleer je het verwijderingsverzoek?', # Fuzzy
-	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Waarom verwijder je dit bericht?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Waarom maak je de verwijdering van dit bericht ongedaan?', # Fuzzy
+	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Waarom licht je dit bericht uit?',
+	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Waarom laat je dit bericht niet langer uitgelicht worden?',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Waarom verberg je dit bericht?',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'Waarom wil je dit bericht weer weergeven?',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Opmerking toevoegen om toe te lichten waarom je toezicht aanvraagt',
+	'articlefeedbackv5-noteflyover-requestoversight-placeholder' => 'Waarom vraag je toezicht aan?',
+	'articlefeedbackv5-noteflyover-unrequestoversight-placeholder' => 'Waarom annuleer je het verwijderingsverzoek?',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Waarom verwijder je dit bericht?',
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Waarom maak je de verwijdering van dit bericht ongedaan?',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Heb je gevonden wat je zocht?',
 	'articlefeedbackv5-bucket4-subhead' => 'Wist je dat je deze pagina kunt bewerken?',
 	'articlefeedbackv5-bucket4-help-tooltip-info' => '{{SITENAME}} wil graag weten wat je van de site vindt. Help deze pagina te verbeteren door redacteur te worden.',
@@ -16569,11 +16683,36 @@ $messages['nl-informal'] = array(
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'Kan jij ons helpen?',
 	'articlefeedbackv5-bucket6-question-toggle' => 'Heb je gevonden wat je zocht?',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Bedankt. Heb je nog suggesties voor verbetering?',
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Schrijf hier je suggesties, bijvoorbeeld "Deze pagina heeft een afbeelding nodig"', # Fuzzy
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Schrijf hier je suggesties, bijvoorbeeld "Deze pagina heeft een afbeelding nodig"', # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Schrijf hier je suggesties, bijvoorbeeld "Deze pagina heeft een afbeelding nodig"',
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Schrijf hier je suggesties, bijvoorbeeld "Deze pagina heeft een afbeelding nodig"',
 	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} wil graag weten wat je vindt van deze pagina. Deel je terugkoppeling met de redacteuren en help deze pagina te verbeteren.',
 	'articlefeedbackv5-help-transparency-terms' => 'Geef alsjeblieft [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines nuttige terugkoppeling]. Door op te slaan ga je akkoord met transparantie onder deze [//wikimediafoundation.org/wiki/Feedback_privacy_statement/nl voorwaarden].',
 	'articlefeedbackv5-toolbox-add' => 'Geef ons je terugkoppeling',
+	'articlefeedbackv5-emailcapture-response-body' => 'Hallo!
+
+Dank je wel voor je interesse in het verbeteren van {{SITENAME}}.
+
+Bevestig alsjeblieft je e-mailadres door op de volgende verwijziging te klikken:
+
+$1
+
+Je kunt ook gaan naar:
+
+$2
+
+En daar de volgende bevestigingscode invoeren:
+
+$3
+
+We nemen binnenkort contact met je op over hoe u kunt helpen {{SITENAME}} te verbeteren.
+
+Als je niet hebt gevraagd om dit bericht, negeer deze e-mail dan en dan krijg je geen e-mail meer van ons.
+
+Dank je!
+
+Groetjes,
+
+Het team van {{SITENAME}}',
 	'articlefeedbackv5-email-request-oversight-body' => 'Hallo toezichthouders!
 
 Er is een verzoek voor toezicht op terugkoppeling ingediend door gebruiker $1 op deze pagina:
@@ -16590,7 +16729,7 @@ Het team van {{SITENAME}}
 
 PS Als je vragen hebt over het gebruik van de functie toezicht op de terugkoppelingspagina, raadpleeg dan de veel gestelde vragen over toezicht:
 
-$4', # Fuzzy
+$4',
 );
 
 /** Norwegian Nynorsk (norsk nynorsk)
@@ -17264,7 +17403,8 @@ $messages['pfl'] = array(
 	'articlefeedbackv5-special-filter-oversighted' => 'Geleschd ($1)',
 	'articlefeedbackv5-discussion-page' => 'Dischbediere',
 	'articlefeedbackv5-whats-this' => 'Hilf',
-	'articlefeedbackv5-found-percent' => '$1 hawen gfune, wasse gsuchd hawen', # Fuzzy
+	'articlefeedbackv5-percent-found' => '$1 hawen gfune, wasse gsuchd hawen',
+	'articlefeedbackv5-comment-less' => 'Wenischa',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Ja',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Nä',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Audomadisch vaschdegld. Reschl: $1',
@@ -19436,6 +19576,7 @@ $messages['rue'] = array(
 	'articlefeedbackv5' => 'Оцїнёваня статей - Централна сторінка',
 	'articlefeedbackv5-desc' => 'Оцїнёваня статей',
 	'articlefeedbackv5-comment-more' => 'Бівше',
+	'articlefeedbackv5-comment-less' => 'Менше',
 	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-permalink-info-subtitle' => '(#$1)',
 	'articlefeedbackv5-permalink-activity-more' => 'Вказати далшы дїї ...',
@@ -19444,38 +19585,64 @@ $messages['rue'] = array(
 	'articlefeedbackv5-noteflyover-feature-help' => 'Далшы інформації',
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Придати позначку',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'Далшы інформації',
-	'articlefeedbackv5-noteflyover-resolve-caption' => 'Познач як вырїшене', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-caption' => 'Познач як вырїшене',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Придати позначку',
-	'articlefeedbackv5-noteflyover-resolve-submit' => 'Познач як вырїшене', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-submit' => 'Познач як вырїшене',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Далшы інформації',
-	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Одзнач же вырїшене', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Одзнач же вырїшене',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Придати позначку',
-	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Чом сьте одзначіли тот пріспивок як вырїшеный?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Одзнач же вырїшене', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Чом сьте одзначіли тот пріспивок як вырїшеный?',
+	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Одзнач же вырїшене',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Далшы інформації',
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Сховати тот приспівок', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Сховати тот приспівок',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Придати позначку',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Чом скрывате тот приспівок?', # Fuzzy
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Сховати тот приспівок', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Чом скрывате тот приспівок?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Сховати тот приспівок',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Далшы інформації',
-	'articlefeedbackv5-noteflyover-unhide-label' => 'Придати позначку',
-	'articlefeedbackv5-noteflyover-request-label' => 'Придати позначку',
-	'articlefeedbackv5-noteflyover-request-help' => 'Далшы інформації',
-	'articlefeedbackv5-noteflyover-unrequest-label' => 'Придати позначку',
-	'articlefeedbackv5-noteflyover-unrequest-submit' => 'Зрушыти пожадавку',
-	'articlefeedbackv5-noteflyover-unrequest-help' => 'Далшы інформації',
+	'articlefeedbackv5-noteflyover-show-caption' => 'Зобразити тот приспівок',
+	'articlefeedbackv5-noteflyover-show-label' => 'Придати позначку',
+	'articlefeedbackv5-noteflyover-show-placeholder' => 'Чом вказуєте тот приспівок?',
+	'articlefeedbackv5-noteflyover-show-submit' => 'Зобразити тот приспівок',
+	'articlefeedbackv5-noteflyover-show-help' => 'Далшы інформації',
+	'articlefeedbackv5-noteflyover-requestoversight-label' => 'Придати позначку', # Fuzzy
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'Далшы інформації',
+	'articlefeedbackv5-noteflyover-unrequestoversight-label' => 'Придати позначку',
+	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'Зрушыти пожадавку',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'Далшы інформації',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Придати позначку',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Далшы інформації',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Придати позначку',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Далшы інформації',
-	'articlefeedbackv5-noteflyover-decline-label' => 'Придати позначку',
-	'articlefeedbackv5-noteflyover-decline-help' => 'Далшы інформації',
+	'articlefeedbackv5-noteflyover-declineoversight-label' => 'Придати позначку',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'Далшы інформації',
 	'articlefeedbackv5-bucket1-title' => 'Поможте полїпшати тоту сторінку',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Нашли сьте што сьте глядали?',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Гей',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Нїт',
 	'articlefeedbackv5-bucket1-question-placeholder-no' => 'Є пропозі на полїпшаня?',
 	'articlefeedbackv5-disable-preference' => 'Не указовати на статях компоненту про оцїнку сторінок',
+	'articlefeedbackv5-emailcapture-response-body' => 'Добрый день!
+
+Дякуєме за выядрїня інтересу помочі вылїпшыти {{grammar:4sg|{{SITENAME}}}}.
+
+Просиме, найдьте собі минутку на потверджіня вашой імейловой адресы кликнутём на наступный одказ:
+
+$1
+
+Можете тыж навщівити:
+
+$2
+
+І задати наступный код потверджіня:
+
+$3
+
+Дораз ся вам озвеме з інформаціями, як можете помочі {{grammar:4sg|{{SITENAME}}}} вылїпшыти.
+
+Кідь тота жадость не походить од вас, іґноруйте тот імейл, ніч веце вам засылати не будеме.
+
+Дякуєме і поздравуєме
+тім {{grammar:2sg|{{SITENAME}}}}',
 );
 
 /** Sanskrit (संस्कृतम्)
@@ -19543,8 +19710,9 @@ $messages['sah'] = array(
  * @author Aushulz
  */
 $messages['scn'] = array(
-	'articlefeedbackv5-special-filter-hidden' => "'Nvisibbili",
 	'articlefeedbackv5-special-filter-all' => 'Tutti', # Fuzzy
+	'articlefeedbackv5-special-filter-visible' => 'Visibbili', # Fuzzy
+	'articlefeedbackv5-special-filter-hidden' => "'Nvisibbili",
 	'articlefeedbackv5-special-more' => "Cchiù assà'", # Fuzzy
 	'articlefeedbackv5-discussion-page' => 'Pàggina di discussioni', # Fuzzy
 	'articlefeedbackv5-bucket1-question-toggle' => 'Attruvasti soccu stavi circannu?',
@@ -21334,18 +21502,25 @@ $messages['te'] = array(
 	'articlefeedbackv5-cta5-button-text' => 'అన్ని వ్యాఖ్యలను చూడండి',
 	'articlefeedbackv5-overlay-close' => 'మూసివేయి',
 	'articlefeedbackv5-contribs-entry-status' => '. . స్థితి: $1',
+	'articlefeedbackv5-form-tools-label' => 'పనిముట్లు',
 	'articlefeedbackv5-form-helpful-yes-label' => 'అవును',
 	'articlefeedbackv5-form-helpful-no-label' => 'కాదు',
+	'articlefeedbackv5-special-filter-comment' => 'అన్ని వ్యాఖ్యలు ($1)',
 	'articlefeedbackv5-special-filter-select-more' => 'మరిన్ని వడపోతలు',
-	'articlefeedbackv5-special-showing' => 'ఈ పేజీపై {{PLURAL:$1|ఒక టపా|$1 టపాలు}}', # Fuzzy
+	'articlefeedbackv5-special-showing' => 'ఈ పేజీపై {{PLURAL:$1|ఒక టపా|$1 టపాలు}}',
+	'articleFeedbackv5-comment-ago' => '$1 క్రితం',
 	'articleFeedbackv5-details-link' => 'వివరాలు',
-	'articlefeedbackv5-revision-link' => '(పాత వ్యాసాన్ని చూడండి)', # Fuzzy
+	'articlefeedbackv5-revision-link' => '(పాత వ్యాసాన్ని చూడండి)',
 	'articlefeedbackv5-special-more' => 'మరిన్ని టపాలను చూపించు',
 	'articlefeedbackv5-new-marker' => 'కొత్తది',
 	'articlefeedbackv5-discussion-page' => 'చర్చ',
 	'articlefeedbackv5-whats-this' => 'సహాయం',
 	'articlefeedbackv5' => 'వ్యాసపు మూల్యాంకన', # Fuzzy
 	'articlefeedbackv5-header-message-link-text' => 'మరింత తెలుసుకోండి',
+	'articlefeedbackv5-timestamp-years' => '{{PLURAL:$1|$1 సంవత్సరం|$1 సంవత్సరాలు}}',
+	'articlefeedbackv5-timestamp-months' => '{{PLURAL:$1|$1 నెల|$1 నెలలు}}',
+	'articlefeedbackv5-timestamp-weeks' => '{{PLURAL:$1|$1 వారం|$1 వారాలు}}',
+	'articlefeedbackv5-timestamp-seconds' => 'ఒక నిమిషం కంటే తక్కువ',
 	'articlefeedbackv5-permalink-activity-title' => 'కార్యకలాపం',
 	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 చర్య|$1 చర్యలు}})',
 	'articlefeedbackv5-permalink-activity-more' => 'మరిన్ని చర్యలను చూడండి...',
@@ -21354,12 +21529,13 @@ $messages['te'] = array(
 	'articlefeedbackv5-noteflyover-resolve-help' => 'మరింత తెలుసుకోండి',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'మరింత తెలుసుకోండి',
 	'articlefeedbackv5-noteflyover-hide-help' => 'మరింత తెలుసుకోండి',
-	'articlefeedbackv5-noteflyover-request-help' => 'మరింత తెలుసుకోండి',
-	'articlefeedbackv5-noteflyover-unrequest-submit' => 'అభ్యర్థనని రద్దుచేయండి',
-	'articlefeedbackv5-noteflyover-unrequest-help' => 'మరింత తెలుసుకోండి',
+	'articlefeedbackv5-noteflyover-show-help' => 'మరింత తెలుసుకోండి',
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'మరింత తెలుసుకోండి',
+	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'అభ్యర్థనని రద్దుచేయండి',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'మరింత తెలుసుకోండి',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'మరింత తెలుసుకోండి',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'మరింత తెలుసుకోండి',
-	'articlefeedbackv5-noteflyover-decline-help' => 'మరింత తెలుసుకోండి',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'మరింత తెలుసుకోండి',
 	'articlefeedbackv5-bucket1-title' => 'ఈ పేజీని మెరుగుపరచడానికి తోడ్పడండి',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'అవును',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'కాదు',
@@ -21369,7 +21545,7 @@ $messages['te'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'కాదు',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 అక్షరం మిగిలివుంది)|($1 అక్షరాలు మిగిలివున్నాయి)}}',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'క్షమాపణలు. మెరుగుపరచడానికి ఏమైనా సూచనలు ఇస్తారా?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => "మీ సలహాను ఇక్కడ ఇవ్వండి (ఉదా॥'ఈ వ్యాసానికి ఒక బొమ్మ కావాలి')", # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-no' => "మీ సలహాను ఇక్కడ ఇవ్వండి (ఉదా॥'ఈ వ్యాసానికి ఒక బొమ్మ కావాలి')",
 	'articlefeedbackv5-help-tooltip-title' => 'ఇది ఏమిటి?',
 	'articlefeedbackv5-help-tooltip-linktext' => 'మరింత తెలుసుకోండి',
 	'articlefeedbackv5-sitesub-linktext' => 'ఈ పేజీని మెరుగుపరచండి',
@@ -21398,12 +21574,13 @@ $messages['th'] = array(
 	'articlefeedbackv5-header-message-link-text' => 'เรียนรู้เพิ่มเติม',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'เรียนรู้เพิ่มเติม',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'เรียนรู้เพิ่มเติม',
-	'articlefeedbackv5-noteflyover-request-help' => 'เรียนรู้เพิ่มเติม',
-	'articlefeedbackv5-noteflyover-unrequest-submit' => 'ยกเลิกการร้องขอ',
-	'articlefeedbackv5-noteflyover-unrequest-help' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-noteflyover-show-help' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-noteflyover-requestoversight-help' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-noteflyover-unrequestoversight-submit' => 'ยกเลิกการร้องขอ',
+	'articlefeedbackv5-noteflyover-unrequestoversight-help' => 'เรียนรู้เพิ่มเติม',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'เรียนรู้เพิ่มเติม',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'เรียนรู้เพิ่มเติม',
-	'articlefeedbackv5-noteflyover-decline-help' => 'เรียนรู้เพิ่มเติม',
+	'articlefeedbackv5-noteflyover-declineoversight-help' => 'เรียนรู้เพิ่มเติม',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'ใช่',
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'ไม่',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'เรียนรู้วิธีการแก้ไข',
@@ -21945,7 +22122,10 @@ $messages['tzm'] = array(
 	'articlefeedbackv5-cta2-button-text' => 'ⵙⵙⵏ ⵓⴳⴰⵔ',
 	'articlefeedbackv5-cta4-button-text-or' => 'ⵏⵖ',
 	'articlefeedbackv5-contribs-status-action-flag' => 'ⵙⵙⵍⵎⴻⴷ',
+	'articlefeedbackv5-form-tools-label' => 'ⵉⵎⴰⵙⵙⵏ',
 	'articlefeedbackv5-form-helpful-yes-label' => 'ⵢⴰⵀ',
+	'articlefeedbackv5-special-filter-comment' => 'ⵎⴰⵕⵕ ⵜⴰⵏⵏⴰⵢⵉⵏ ($1)',
+	'articlefeedbackv5-noteflyover-show-help' => 'ⵙⵙⵏ ⵓⴳⴰⵔ',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'ⵢⴰⵀ',
 );
 
