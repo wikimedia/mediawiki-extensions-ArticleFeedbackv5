@@ -44,9 +44,8 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		$ids = null;
 		if ( $id != null ) {
 			$ids = (array) $id;
+			$ids = array_map( array( $this, 'standardizeId' ), $ids );
 		}
-
-		$ids = array_map( array( $this, 'standardizeId' ), $ids );
 
 		return parent::get( $ids, $shard );
 	}
