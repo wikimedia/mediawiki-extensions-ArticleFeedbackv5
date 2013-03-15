@@ -26,6 +26,12 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 
 		// connect to external, aft-specific, cluster
 		if ( $wgArticleFeedbackv5Cluster ) {
+			/*
+			 * This is a "hack" to make sure data is only read from master. It appears
+			 * that chronology protection is not yet built-in for external connections.
+			 */
+			$db = DB_MASTER;
+
 			return wfGetLBFactory()->getExternalLB( $wgArticleFeedbackv5Cluster )->getConnection( $db, $groups, $wiki );
 		}
 
