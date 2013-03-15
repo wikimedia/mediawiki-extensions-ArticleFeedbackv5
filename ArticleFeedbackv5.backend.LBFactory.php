@@ -26,7 +26,12 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 
 		// connect to external, aft-specific, cluster
 		if ( $wgArticleFeedbackv5Cluster ) {
-			return wfGetLBFactory()->getExternalLB( $wgArticleFeedbackv5Cluster )->getConnection( $db, $groups, $wiki );
+			$lb = wfGetLBFactory()->getExternalLB( $wgArticleFeedbackv5Cluster );
+
+			// wait for slave to catch up to master
+			$lb->waitFor( $lb->getMasterPos() );
+
+			return $lb->getConnection( $db, $groups, $wiki );
 		}
 
 		// plain old wfGetDB

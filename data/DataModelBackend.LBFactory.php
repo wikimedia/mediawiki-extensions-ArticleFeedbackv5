@@ -21,7 +21,12 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @param $wiki String: the wiki ID, or false for the current wiki
 	 */
 	public function getDB( $db, $groups = array(), $wiki = false ) {
-		return wfGetDB( $db, $groups, $wiki );
+		$lb = wfGetLB( $wiki );
+
+		// wait for slave to catch up to master
+		$lb->waitFor( $lb->getMasterPos() );
+
+		return $lb->getConnection( $db, $groups, $wiki );
 	}
 
 	/**
