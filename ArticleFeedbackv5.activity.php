@@ -216,7 +216,7 @@ class ArticleFeedbackv5Activity {
 		$where['log_namespace'] = NS_SPECIAL;
 		$where = self::applyContinue( $continue, $where );
 
-		$activity = wfGetDB( DB_SLAVE )->select(
+		$activity = ArticleFeedbackv5Utils::getDB( DB_SLAVE )->select(
 			array( 'logging' ),
 			array(
 				'log_id',
@@ -354,7 +354,7 @@ class ArticleFeedbackv5Activity {
 		$where['log_title'] = $title;
 		$where['log_namespace'] = NS_SPECIAL;
 
-		return (int) wfGetDB( DB_SLAVE )->selectField(
+		return (int) ArticleFeedbackv5Utils::getDB( DB_SLAVE )->selectField(
 			'logging',
 			'COUNT(log_id)',
 			$where,
@@ -372,7 +372,7 @@ class ArticleFeedbackv5Activity {
 	 */
 	public static function getLastEditorActivity( array $entries ) {
 		global $wgMemc;
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = ArticleFeedbackv5Utils::getDB( DB_SLAVE );
 
 		$activity = array();
 		$where = array();
@@ -430,7 +430,7 @@ class ArticleFeedbackv5Activity {
 			 * a subquery (the below $ids query), which will then be folded into the
 			 * main query that will get all of those last actions' details.
 			 */
-			$ids = wfGetDB( DB_SLAVE )->selectSQLText(
+			$ids = ArticleFeedbackv5Utils::getDB( DB_SLAVE )->selectSQLText(
 				array( 'logging' ),
 				array( 'last_id' => 'MAX(log_id)' ),
 				$where,
@@ -446,7 +446,7 @@ class ArticleFeedbackv5Activity {
 				)
 			);
 
-			$rows = wfGetDB( DB_SLAVE )->select(
+			$rows = ArticleFeedbackv5Utils::getDB( DB_SLAVE )->select(
 				array(
 					'logging',
 					'ids' => "($ids)" // the subquery that will provide the most recent log_id's
@@ -501,7 +501,7 @@ class ArticleFeedbackv5Activity {
 			throw new MWException( 'Invalid continue param. You should pass the original value returned by the previous query', 'badcontinue' );
 		}
 
-		$db = wfGetDB( DB_SLAVE );
+		$db = ArticleFeedbackv5Utils::getDB( DB_SLAVE );
 		$ts = $db->addQuotes( $db->timestamp( $values[0] ) );
 		$id = intval( $values[1] );
 		$where[] = '(log_id = ' . $id . ' AND log_timestamp <= ' . $ts . ') OR log_timestamp < ' . $ts;
@@ -541,7 +541,7 @@ class ArticleFeedbackv5Activity {
 	protected static function buildWhereActions( $permissions = array(), $actions = array() ) {
 		global $wgLogActionsHandlers;
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = ArticleFeedbackv5Utils::getDB( DB_SLAVE );
 
 		$where = array();
 		foreach ( self::$actions as $action => $options ) {

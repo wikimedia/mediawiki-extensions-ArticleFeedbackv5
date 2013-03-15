@@ -22,6 +22,64 @@
  */
 class ArticleFeedbackv5Utils {
 	/**
+	 * @var LoadBalancer
+	 */
+	protected static $lb;
+
+	/**
+	 * @var bool
+	 */
+	public static $written = false;
+
+	/**
+	 * @return LoadBalancer
+	 */
+	public static function getLB( $wiki ) {
+		if ( static::$lb === null ) {
+			static::$lb = wfGetLB( $wiki );
+		}
+
+		return static::$lb;
+	}
+
+	/**
+	 * Wrapper function for wfGetDB.
+	 *
+	 * @param $db Integer: index of the connection to get. May be DB_MASTER for the
+	 *            master (for write queries), DB_SLAVE for potentially lagged read
+	 *            queries, or an integer >= 0 for a particular server.
+	 * @param $groups Mixed: query groups. An array of group names that this query
+	 *                belongs to. May contain a single string if the query is only
+	 *                in one group.
+	 * @param $wiki String: the wiki ID, or false for the current wiki
+	 */
+	public static function getDB( $db, $groups = array(), $wiki = false ) {
+		$lb = static::getLB( $wiki );
+
+		if ( $db === DB_MASTER ) {
+			// mark that we're writing data
+			static::$written = true;
+		} elseif ( static::$written ) {
+			if ( $db === DB_SLAVE ) {
+				/*
+				 * Let's keep querying master to make sure we have up-to-date
+				 * data (waiting for slaves to sync up might take some time)
+				 */
+				$db = DB_MASTER;
+			} else {
+				/*
+				 * If another db is requested and we already requested master,
+				 * make sure this slave has caught up!
+				 */
+				$lb->waitFor( $lb->getMasterPos() );
+				static::$written = false;
+			}
+		}
+
+		return $lb->getConnection( $db, $groups, $wiki );
+	}
+
+	/**
 	 * Get the full, prefixed, name that data is saved at in cookie.
 	 * The cookie name is prefixed by the extension name and a version number,
 	 * to avoid collisions with other extensions or code versions.

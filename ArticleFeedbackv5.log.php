@@ -68,6 +68,13 @@ class ArticleFeedbackv5Log {
 		$logId = $logEntry->insert();
 		$logEntry->publish( $logId );
 
+		/**
+		 * ManualLogEntry will have written to database. To make sure that subsequent
+		 * reads are up-to-date, I'll set a flag to know that we've written data, so
+		 * DB_MASTER will be queried.
+		 */
+		ArticleFeedbackv5Utils::$written = true;
+
 		wfProfileOut( __METHOD__ );
 
 		return $logId;

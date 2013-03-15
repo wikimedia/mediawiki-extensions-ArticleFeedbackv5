@@ -39,7 +39,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 			$notes      = $params['note'];
 
 			// update log entry in database
-			$dbw = wfGetDB( DB_MASTER );
+			$dbw = ArticleFeedbackv5Utils::getDB( DB_MASTER );
 			$affected = $dbw->update(
 				'logging',
 				array( 'log_comment' => $notes ),

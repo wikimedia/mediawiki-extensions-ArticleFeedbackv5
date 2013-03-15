@@ -42,7 +42,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @param $wiki String: the wiki ID, or false for the current wiki
 	 */
 	public function getDB( $db, $groups = array(), $wiki = false ) {
-		$lb = $this->getLB( $wiki );
+		$lb = wfGetLB( $wiki );
 
 		if ( $db === DB_MASTER ) {
 			// mark that we're writing data
