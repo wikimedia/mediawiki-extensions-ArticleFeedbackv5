@@ -10,6 +10,27 @@
  */
 class DataModelBackendLBFactory extends DataModelBackend {
 	/**
+	 * @var LoadBalancer
+	 */
+	protected $lb;
+
+	/**
+	 * @var bool
+	 */
+	protected $written = false;
+
+	/**
+	 * @return LoadBalancer
+	 */
+	public function getLB( $wiki ) {
+		if ( $this->lb === null ) {
+			$this->lb = wfGetLB( $wiki );
+		}
+
+		return $this->lb;
+	}
+
+	/**
 	 * Wrapper function for wfGetDB.
 	 *
 	 * @param $db Integer: index of the connection to get. May be DB_MASTER for the
@@ -21,7 +42,21 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @param $wiki String: the wiki ID, or false for the current wiki
 	 */
 	public function getDB( $db, $groups = array(), $wiki = false ) {
-		return wfGetDB( $db, $groups, $wiki );
+		$lb = $this->getLB( $wiki );
+
+		if ( $db === DB_MASTER ) {
+			// mark that we're writing data
+			$this->written = true;
+		} elseif ( $this->written ) {
+			/*
+			 * If another db is requested and we already requested master,
+			 * make sure that slave has caught up!
+			 */
+			$lb->waitFor( $lb->getMasterPos() );
+			$this->written = false;
+		}
+
+		return $lb->getConnection( $db, $groups, $wiki );
 	}
 
 	/**
