@@ -131,6 +131,20 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 			$sentiment = ArticleFeedbackv5Activity::$actions[$item->log_action]['sentiment'];
 
+			// Give grep a chance to find the usages:
+			// articlefeedbackv5-activity-item-request, articlefeedbackv5-activity-item-unrequest,
+			// articlefeedbackv5-activity-item-decline, articlefeedbackv5-activity-item-flag,
+			// articlefeedbackv5-activity-item-unflag, articlefeedbackv5-activity-item-autoflag,
+			// articlefeedbackv5-activity-item-oversight, articlefeedbackv5-activity-item-unoversight,
+			// articlefeedbackv5-activity-item-feature, articlefeedbackv5-activity-item-unfeature,
+			// articlefeedbackv5-activity-item-resolve, articlefeedbackv5-activity-item-unresolve,
+			// articlefeedbackv5-activity-item-noaction, articlefeedbackv5-activity-item-unnoaction,
+			// articlefeedbackv5-activity-item-inappropriate, articlefeedbackv5-activity-item-uninappropriate,
+			// articlefeedbackv5-activity-item-hide, articlefeedbackv5-activity-item-unhide,
+			// articlefeedbackv5-activity-item-autohide, articlefeedbackv5-activity-item-archive,
+			// articlefeedbackv5-activity-item-unarchive, articlefeedbackv5-activity-item-helpful,
+			// articlefeedbackv5-activity-item-unhelpful, articlefeedbackv5-activity-item-undo-helpful,
+			// articlefeedbackv5-activity-item-undo-unhelpful, articlefeedbackv5-activity-item-clear-flags
 			$html .=
 				Html::rawElement(
 					'div',

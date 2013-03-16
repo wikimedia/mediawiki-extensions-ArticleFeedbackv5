@@ -739,6 +739,8 @@
 						$.articleFeedbackv5.currentBucket().displayStep2( $block );
 
 						// add instructional text for feedback
+						// Give grep a chance to find the usages:
+						// articlefeedbackv5-bucket6-question-instructions-yes, articlefeedbackv5-bucket6-question-instructions-no
 						$( '.articleFeedbackv5-title' ).text( mw.msg( 'articlefeedbackv5-bucket6-question-instructions-' + new_val ) );
 
 						// make the button blue
@@ -749,6 +751,8 @@
 						$wrap.find( 'input' ).trigger( 'click' ).attr( 'checked', true );
 
 						// set default comment message
+						// Give grep a chance to find the usages:
+						// articlefeedbackv5-bucket6-question-placeholder-yes, articlefeedbackv5-bucket6-question-placeholder-no
 						var $element = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
 						var text = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-' + new_val );
 						$element.attr( 'placeholder', text ).placeholder();
