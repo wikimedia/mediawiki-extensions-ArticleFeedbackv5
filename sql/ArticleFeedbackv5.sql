@@ -39,3 +39,7 @@ CREATE INDEX /*i*/helpful ON /*_*/aft_feedback (aft_net_helpful, aft_id, aft_has
 
 -- index for archive-job
 CREATE INDEX /*i*/archive_queue ON /*_*/aft_feedback (aft_archive, aft_archive_date);
+
+-- index for mycontribs data
+CREATE INDEX /*i*/contribs ON /*_*/aft_feedback (aft_user, aft_timestamp);
+CREATE INDEX /*i*/contribs_anon ON /*_*/aft_feedback (aft_user, aft_user_text, aft_timestamp);

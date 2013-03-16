@@ -73,6 +73,12 @@ class ArticleFeedbackv5Hooks {
 			dirname( __FILE__ ) . '/sql/inappropriate.sql'
 		);
 
+		$updater->addExtensionIndex(
+			'aft_feedback',
+			'contribs',
+			dirname( __FILE__ ) . '/sql/contribs.sql'
+		);
+
 		return true;
 	}
 
