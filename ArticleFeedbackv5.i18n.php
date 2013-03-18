@@ -501,7 +501,7 @@ includes one of these issues:
 	'articlefeedbackv5-noteflyover-oversight-description' => '',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Add a note',
 	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Why did you oversight this post?',
-	'articlefeedbackv5-noteflyover-oversight-submit' => 'Add note',
+	'articlefeedbackv5-noteflyover-oversight-submit' => 'Oversight',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Learn more',
 	'articlefeedbackv5-noteflyover-oversight-help-link' => '#oversight',
 
