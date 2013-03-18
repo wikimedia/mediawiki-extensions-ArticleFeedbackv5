@@ -51,6 +51,24 @@
       "revId": "b896536ced35c595c12f81b8195c2d116985c41f",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqD.Ez9U",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css",
+        "patchSetId": 9
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-18T14:16:39Z",
+      "side": 1,
+      "message": "And it\u0027s still here: https://gerrit.wikimedia.org/r/gitweb?p\u003dmediawiki/extensions/ArticleFeedbackv5.git;a\u003dblob;f\u003dmodules/jquery.articleFeedbackv5/images/thumbdwn.png;h\u003d1e7bb03479af28bb5077e2d3eb5bbb75b16ad014;hb\u003db896536ced35c595c12f81b8195c2d116985c41f\n\nThe icon existed and was in use in another context already (to be clicked on - this is the informative display of the amount of clicks), which is why it is not part of this patch\n\nPS: gerrit, you suck at parsing your own uri\u0027s :)",
+      "parentUuid": "DqNlP8zM",
+      "revId": "b896536ced35c595c12f81b8195c2d116985c41f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
