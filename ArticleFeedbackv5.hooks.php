@@ -79,6 +79,12 @@ class ArticleFeedbackv5Hooks {
 			dirname( __FILE__ ) . '/sql/index_contribs.sql'
 		);
 
+		$updater->addExtensionIndex(
+			'aft_feedback',
+			'index_page',
+			dirname( __FILE__ ) . '/sql/index_page.sql'
+		);
+
 		return true;
 	}
 
