@@ -789,47 +789,12 @@ abstract class DataModel {
 	 * @return string
 	 */
 	protected function generateId() {
-		$time = microtime();
-
-		/**
-		 * Callback method, updating the cached counts. This will ensure that no
-		 * multiple concurrent processes that had generated the same microtime()
-		 * can result the same value (only 1 of then can be merged)
-		 *
-		 * @param BagOStuff $cache
-		 * @param string $key
-		 * @param int $existingValue
-		 * @use string $time Generated unique timestamp
-		 * @return string
-		 */
-		$callback = function( BagOStuff $cache, $key, $existingValue ) use ( $time ) {
-			while ( $time === microtime() ) {
-				/*
-				 * The only possible way microtime() could result in a non-unique value,
-				 * is when it's called at the exact same time. Stall until microtime()
-				 * generates a new id.
-				 */
-			}
-
-			return $time;
-		};
-
-		$key = wfMemcKey( get_called_class(), 'generateId' );
-		if ( !static::getCache()->merge( $key, $callback, 1, 1 ) ) {
-			/*
-			 * $time could not be merged, but current microtime() should have
-			 * elapsed already - let's restart generating!
-			 */
-			return $this->generateId();
-		}
-
 		/*
-		 * At this point, we're certain that $time is unique. Manipulate the result
-		 * to not expose the exact timestamp in the ID (not that it really matters).
-		 * Don't worry; although theoretically, this lossy manipulation could again
-		 * result in the same id's, it won't for at least the first couple of million
-		 * years ;)
+		 * This will return a 128-bit string in base-16, resulting
+		 * in a 32-character (at max) string of hexadecimal characters.
+		 * Pad the string to full 32-char length if the value is lower.
 		 */
-		return md5( $time );
+		$id = UIDGenerator::newTimestampedUID128( 16 );
+		return str_pad( $id, 32, 0, STR_PAD_LEFT );
 	}
 }
