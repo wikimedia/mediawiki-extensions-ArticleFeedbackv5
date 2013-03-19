@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DqcIt2EU",
+        "filename": "sql/ArticleFeedbackv5.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-03-19T01:47:03Z",
+      "side": 1,
+      "message": "The AFT shard is using MariaDB 5.5 with extended_keys\u003don.  What this means is that the primary key is fully usable as the right most member of every secondary key.  So (aft_page, aft_relevance_score) is fully usable as (aft_page, aft_relevance_score, aft_id).  So no need to add it explicitly, which actually results in it being physically present on disk twice.",
+      "revId": "b917a754890d2dcb2ac678a3b24cd2e4852dcf65",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
