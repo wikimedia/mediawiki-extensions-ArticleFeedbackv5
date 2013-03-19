@@ -33,11 +33,10 @@ class ArticleFeedbackv5Hooks {
 				dirname( __FILE__ ) . '/sql/index_user_data.sql'
 			);
 
-			$updater->modifyField(
+			$updater->modifyExtensionField(
 				'aft_article_feedback',
 				'af_user_ip',
-				dirname( __FILE__ ) . '/sql/userip_length.sql',
-				true
+				dirname( __FILE__ ) . '/sql/userip_length.sql'
 			);
 
 			// move all data from old schema to new, sharded, schema
@@ -71,6 +70,12 @@ class ArticleFeedbackv5Hooks {
 			'aft_feedback',
 			'aft_inappropriate',
 			dirname( __FILE__ ) . '/sql/inappropriate.sql'
+		);
+
+		$updater->modifyExtensionField(
+			'aft_feedback',
+			'aft_id',
+			dirname( __FILE__ ) . '/sql/aft_id_pad_left.sql'
 		);
 
 		return true;
