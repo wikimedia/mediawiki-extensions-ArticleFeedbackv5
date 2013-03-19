@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DqIqBF1M",
+        "filename": "maintenance/legacyToShard.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-19T12:07:14Z",
+      "side": 1,
+      "message": "se4598: This was the reason dewiki import did not pick up feedback marked as resolved etc: the log entries were not found because the special page name is Artikelrückmeldungen_v5 instead of ArticleFeedbackv5. SpecialPage::getTitleFor will correctly i18n the title now.",
+      "revId": "7df75fda37e2a15eb2c7c5447c2fbf46c2086882",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
