@@ -199,6 +199,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->addJsConfigVars( 'afFilterCount', $filterCount );
 		$out->addJsConfigVars( 'afOffset', $records ? $records->nextOffset() : 0 );
 		$out->addJsConfigVars( 'afShowMore', $records ? $records->hasMore() : false );
+
+		/*
+		 * @todo: this is a test; something's wrong with the totals on some pages,
+		 * let's see what the result of this one is.
+		 */
+		$unreviewedCount = ArticleFeedbackv5Model::getCount( 'unreviewed', $this->pageId );
+		$out->addJsConfigVars( 'afUnreviewedCount', $unreviewedCount );
 	}
 
 	/**
