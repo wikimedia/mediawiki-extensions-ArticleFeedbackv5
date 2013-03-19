@@ -12,11 +12,12 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 	public function setUp() {
 		parent::setUp();
 
+		global $wgMemc, $wgArticleFeedbackv5Cluster;
+
 		// init some volatile BagOStuff
 		$this->setMwGlobals( array(
 			'wgMemc' => new HashBagOStuff,
 		) );
-		global $wgMemc;
 		ArticleFeedbackv5Model::setCache( $wgMemc );
 
 		// setup db tables
@@ -24,6 +25,8 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 		$this->db->dropTable( 'aft_feedback' );
 		$this->db->sourceFile( __DIR__ . '/../sql/ArticleFeedbackv5.sql' );
 		$this->db->commit();
+		// don't connect to external cluster but use main db, that has been prepared for unittests ($this->db)
+		$wgArticleFeedbackv5Cluster = false;
 
 		// init sample object
 		$this->sample = new ArticleFeedbackv5Model();

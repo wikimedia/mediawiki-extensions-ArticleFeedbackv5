@@ -513,6 +513,11 @@ class ArticleFeedbackv5Model extends DataModel {
 	public static function preload( array $entries ) {
 		parent::preload( $entries );
 
+		// when running unittests, ignore this
+		if ( defined( 'MW_PHPUNIT_TEST' ) && MW_PHPUNIT_TEST ) {
+			return;
+		}
+
 		/*
 		 * Only editors will have the detailed toolbox, so only for editors,
 		 * we'll need to know the details of the last editor activity.
