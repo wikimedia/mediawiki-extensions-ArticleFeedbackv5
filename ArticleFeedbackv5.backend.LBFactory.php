@@ -201,6 +201,6 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 * @return string
 	 */
 	protected function standardizeId( $id ) {
-		return str_pad( $id, 32, chr( 0 ) );
+		return str_pad( $id, 32, chr( 0 ), STR_PAD_LEFT );
 	}
 }
