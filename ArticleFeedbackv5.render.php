@@ -870,10 +870,10 @@ class ArticleFeedbackv5Render {
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$record->aft_id" ),
 							$wgLang->date( $record->aft_timestamp ),
 							$wgLang->time( $record->aft_timestamp ),
-							SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title ),
-							Html::rawElement( 'blockquote', array(), $record->aft_comment ),
-							$record->getArticle()->getTitle()
+							SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title )
 						)
+						->rawParams( Html::rawElement( 'blockquote', array(), $record->aft_comment ) )
+						->params( $record->getArticle()->getTitle() )
 						->escaped();
 
 					$sectionAnchor = '';

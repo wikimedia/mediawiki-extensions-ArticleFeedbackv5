@@ -124,9 +124,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				$this->filters[] = $filter;
 			}
 		}
-		$this->sorts = array( 'relevance-desc', 'relevance-asc', 'age-desc', 'age-asc' );
+		$this->sorts = array( 'relevance-DESC', 'relevance-ASC', 'age-DESC', 'age-ASC' );
 		if ( $this->isAllowed( 'aft-editor' ) ) {
-			array_push( $this->sorts, 'helpful-desc', 'helpful-asc' );
+			array_push( $this->sorts, 'helpful-DESC', 'helpful-ASC' );
 		}
 
 		// don't display archived list unless specifically "enabled" (if cronjob
