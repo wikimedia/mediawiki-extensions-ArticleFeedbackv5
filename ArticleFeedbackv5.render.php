@@ -871,7 +871,7 @@ class ArticleFeedbackv5Render {
 							$wgLang->date( $record->aft_timestamp ),
 							$wgLang->time( $record->aft_timestamp ),
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title ),
-							Html::rawElement( 'blockquote', array(), $record->aft_comment ),
+							Message::rawParam( Html::element( 'blockquote', array(), $record->aft_comment ) ),
 							$record->getArticle()->getTitle()
 						)
 						->escaped();
