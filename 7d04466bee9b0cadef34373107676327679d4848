@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DqZuphuE",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 12
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-20T17:37:39Z",
+      "side": 1,
+      "message": "below links -\u003e links below",
+      "revId": "7d04466bee9b0cadef34373107676327679d4848",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqVtiDtw",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 12
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-20T17:37:39Z",
+      "side": 1,
+      "message": "This should be escaped",
+      "revId": "7d04466bee9b0cadef34373107676327679d4848",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
