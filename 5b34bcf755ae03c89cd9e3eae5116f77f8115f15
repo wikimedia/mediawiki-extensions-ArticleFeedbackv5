@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DqZvbxnk",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-20T17:45:40Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be Html::element()? aft_comment should be escaped",
+      "revId": "5b34bcf755ae03c89cd9e3eae5116f77f8115f15",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqVvlLjg",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-20T17:45:40Z",
+      "side": 1,
+      "message": "You can combine the arguments in both -\u003eparams()",
+      "revId": "5b34bcf755ae03c89cd9e3eae5116f77f8115f15",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
