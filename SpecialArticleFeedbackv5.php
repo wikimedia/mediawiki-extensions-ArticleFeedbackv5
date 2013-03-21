@@ -647,7 +647,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				// that they all get added)
 				$opts[ '---------' . str_repeat( ' ', $i ) ] = '';
 			}
-			$key = $this->msg( "articlefeedbackv5-special-sort-$sort" )->escaped();
+			$key = $this->msg( strtolower( "articlefeedbackv5-special-sort-$sort" ) )->escaped();
 			$opts[(string) $key] = $sort;
 		}
 		$sortSelect = new XmlSelect( false, 'articleFeedbackv5-sort-select' );
