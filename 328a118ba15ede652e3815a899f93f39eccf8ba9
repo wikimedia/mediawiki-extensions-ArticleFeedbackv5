@@ -16,6 +16,24 @@
       "revId": "328a118ba15ede652e3815a899f93f39eccf8ba9",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqrJW8Ms",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-21T23:51:10Z",
+      "side": 1,
+      "message": "I just took another look at Html::element(), looks like all attribute values are escaped in this function, so this should not be escaped, Sorry about this!",
+      "parentUuid": "DqdkF08U",
+      "revId": "328a118ba15ede652e3815a899f93f39eccf8ba9",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
