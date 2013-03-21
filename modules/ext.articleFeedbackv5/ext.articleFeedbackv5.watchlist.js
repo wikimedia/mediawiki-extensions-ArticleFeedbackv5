@@ -5,8 +5,8 @@
 /*** Main entry point ***/
 jQuery( function( $ ) {
 
-	// Check if the talk page link can be shown
-	if ( mw.config.get( 'wgArticleFeedbackv5WatchlistLink' ) ) {
+	// Check if the watchlist is enabled & link can be shown
+	if ( mw.config.get( 'wgArticleFeedbackv5Watchlist' ) && mw.config.get( 'wgArticleFeedbackv5WatchlistLink' ) ) {
 
 		// Check if we're not dealing with anon user
 		if ( mw.user.anonymous() ) {
@@ -18,7 +18,7 @@ jQuery( function( $ ) {
 		// the article's as in the front end tracking
 		$.aftTrack.init();
 
-		// Build the url to the Special:ArticleFeedbackv5 page
+		// Build the url to the Special:ArticleFeedbackv5Watchlist page
 		var params = { ref: 'watchlist' };
 		var url = mw.config.get( 'wgScript' ) + '?title=' +
 			encodeURIComponent( mw.config.get( 'wgArticleFeedbackv5SpecialWatchlistUrl' ) ) +

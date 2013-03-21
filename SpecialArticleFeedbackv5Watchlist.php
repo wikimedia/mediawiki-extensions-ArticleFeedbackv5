@@ -39,11 +39,14 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 	 * @param $param string the parameter passed in the url
 	 */
 	public function execute( $param ) {
+		global $wgArticleFeedbackv5Watchlist;
+
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
-		if ( $user->isAnon() ) {
-			$out->redirect(SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullUrl());
+		// if watchlist not enabled or anon user is visiting, redirect to central feedback page
+		if ( !$wgArticleFeedbackv5Watchlist || $user->isAnon() ) {
+			$out->redirect( SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullUrl() );
 		}
 
 		parent::execute( $param );

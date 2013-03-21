@@ -216,6 +216,7 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5ThrottleThresholdPostsPerHour,
 			$wgArticleFeedbackv5TalkPageLink,
 			$wgArticleFeedbackv5WatchlistLink,
+			$wgArticleFeedbackv5Watchlist,
 			$wgArticleFeedbackv5DefaultSorts,
 			$wgArticleFeedbackv5LotteryOdds,
 			$wgArticleFeedbackv5MaxCommentLength;
@@ -234,6 +235,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5SpecialWatchlistUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getPrefixedText();
 		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
 		$vars['wgArticleFeedbackv5WatchlistLink'] = $wgArticleFeedbackv5WatchlistLink;
+		$vars['wgArticleFeedbackv5Watchlist'] = $wgArticleFeedbackv5Watchlist;
 		$vars['wgArticleFeedbackv5DefaultSorts'] = $wgArticleFeedbackv5DefaultSorts;
 		$vars['wgArticleFeedbackv5LotteryOdds'] = $wgArticleFeedbackv5LotteryOdds;
 		$vars['wgArticleFeedbackv5MaxCommentLength'] = $wgArticleFeedbackv5MaxCommentLength;
