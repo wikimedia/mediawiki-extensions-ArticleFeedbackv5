@@ -702,6 +702,8 @@ class ArticleFeedbackv5Render {
 				}
 
 				if ( $action ) {
+					// Give grep a chance to find the usages:
+					// articlefeedbackv5-form-tooltip-hide-own, articlefeedbackv5-form-tooltip-unhide-own
 					$ownPost =
 						Html::rawElement(
 							'div',
@@ -759,6 +761,10 @@ class ArticleFeedbackv5Render {
 			return '';
 		}
 
+		// Give grep a chance to find the usages:
+		// articlefeedbackv5-new-marker, articlefeedbackv5-oversight-marker, articlefeedbackv5-autohide-marker,
+		// articlefeedbackv5-hide-marker, articlefeedbackv5-feature-marker, articlefeedbackv5-resolve-marker,
+		// articlefeedbackv5-noaction-marker, articlefeedbackv5-inappropriate-marker, articlefeedbackv5-archive-marker
 		return
 			Html::rawElement(
 			'div',
@@ -844,6 +850,8 @@ class ArticleFeedbackv5Render {
 
 				if ( $discussPage ) {
 					global $wgLang, $wgUser;
+					// Give grep a chance to find the usages:
+					// articlefeedbackv5-discuss-talk-section-title, articlefeedbackv5-discuss-user-section-title
 					$sectionTitle = wfMessage( "articlefeedbackv5-discuss-$discussType-section-title" )
 						->params( $record->aft_comment, $record->getArticle()->getTitle() )
 						->inContentLanguage()
@@ -863,6 +871,8 @@ class ArticleFeedbackv5Render {
 						 */
 						$sectionTitleTruncated = $wgLang->truncate( $sectionTitle, 48 );
 					}
+					// Give grep a chance to find the usages:
+					// articlefeedbackv5-discuss-talk-section-content, articlefeedbackv5-discuss-user-section-content
 					$sectionContent = wfMessage( "articlefeedbackv5-discuss-$discussType-section-content" )
 						->inContentLanguage()
 						->params(
@@ -902,6 +912,8 @@ class ArticleFeedbackv5Render {
 						$class .= " articleFeedbackv5-$action-exists-link";
 					}
 
+					// Give grep a chance to find the usages:
+					// articlefeedbackv5-form-tooltip-discuss-talk, articlefeedbackv5-form-tooltip-discuss-user
 					$tools .= Html::rawElement(
 						'li',
 						array(),
@@ -1007,6 +1019,20 @@ class ArticleFeedbackv5Render {
 
 				$toolbox .=
 					// performer/action info
+					// Give grep a chance to find the usages:
+					// articlefeedbackv5-short-status-request, articlefeedbackv5-short-status-unrequest,
+					// articlefeedbackv5-short-status-decline, articlefeedbackv5-short-status-autohide,
+					// articlefeedbackv5-short-status-oversight, articlefeedbackv5-short-status-unoversight,
+					// articlefeedbackv5-short-status-unflag, articlefeedbackv5-short-status-flag,
+					// articlefeedbackv5-short-status-autoflag, articlefeedbackv5-short-status-feature,
+					// articlefeedbackv5-short-status-unfeature, articlefeedbackv5-short-status-resolve,
+					// articlefeedbackv5-short-status-unresolve, articlefeedbackv5-short-status-noaction,
+					// articlefeedbackv5-short-status-unnoaction, articlefeedbackv5-short-status-inappropriate,
+					// articlefeedbackv5-short-status-uninappropriate, articlefeedbackv5-short-status-hide,
+					// articlefeedbackv5-short-status-unhide, articlefeedbackv5-short-status-archive,
+					// articlefeedbackv5-short-status-unarchive, articlefeedbackv5-short-status-helpful,
+					// articlefeedbackv5-short-status-undo-helpful, articlefeedbackv5-short-status-unhelpful,
+					// articlefeedbackv5-short-status-undo-unhelpful
 					Html::rawElement(
 						'div',
 						array( 'class' => "articleFeedbackv5-feedback-tools-details" ),
@@ -1075,6 +1101,8 @@ class ArticleFeedbackv5Render {
 				Html::rawElement(
 					'p',
 					array(),
+					// Give grep a chance to find the usages:
+					// articlefeedbackv5-permalink-written-by-reader, articlefeedbackv5-permalink-written-by-editor
 					wfMessage( 'articlefeedbackv5-permalink-written-by-' . ( $record->aft_user == 0 ? 'reader' : 'editor' ) )
 						->params( $record->getExperiment() )
 						->parse()
@@ -1183,6 +1211,20 @@ class ArticleFeedbackv5Render {
 					);
 			}
 
+			// Give grep a chance to find the usages:
+			// articlefeedbackv5-permalink-status-request, articlefeedbackv5-permalink-status-unrequest,
+			// articlefeedbackv5-permalink-status-decline, articlefeedbackv5-permalink-status-autohide,
+			// articlefeedbackv5-permalink-status-oversight, articlefeedbackv5-permalink-status-unoversight,
+			// articlefeedbackv5-permalink-status-flag, articlefeedbackv5-permalink-status-unflag,
+			// articlefeedbackv5-permalink-status-autoflag, articlefeedbackv5-permalink-status-feature,
+			// articlefeedbackv5-permalink-status-unfeature, articlefeedbackv5-permalink-status-resolve,
+			// articlefeedbackv5-permalink-status-unresolve, articlefeedbackv5-permalink-status-noaction,
+			// articlefeedbackv5-permalink-status-unnoaction, articlefeedbackv5-permalink-status-inappropriate,
+			// articlefeedbackv5-permalink-status-uninappropriate, articlefeedbackv5-permalink-status-archive,
+			// articlefeedbackv5-permalink-status-unarchive, articlefeedbackv5-permalink-status-hide,
+			// articlefeedbackv5-permalink-status-unhide, articlefeedbackv5-permalink-status-helpful,
+			// articlefeedbackv5-permalink-status-undo-helpful, articlefeedbackv5-permalink-status-unhelpful,
+			// articlefeedbackv5-permalink-status-undo-unhelpful
 			$activity =
 				Html::rawElement(
 					'p',
@@ -1282,6 +1324,28 @@ class ArticleFeedbackv5Render {
 			return '';
 		}
 
+		// Give grep a chance to find the usages:
+		//   articlefeedbackv5-form-tooltip-note, articlefeedbackv5-form-tooltip-feature,
+		//   articlefeedbackv5-form-tooltip-unfeature, articlefeedbackv5-form-tooltip-resolve,
+		//   articlefeedbackv5-form-tooltip-unresolve, articlefeedbackv5-form-tooltip-noaction,
+		//   articlefeedbackv5-form-tooltip-unnoaction, articlefeedbackv5-form-tooltip-inappropriate,
+		//   articlefeedbackv5-form-tooltip-uninappropriate, articlefeedbackv5-form-tooltip-hide,
+		//   articlefeedbackv5-form-tooltip-unhide, articlefeedbackv5-form-tooltip-hide-own,
+		//   articlefeedbackv5-form-tooltip-unhide-own, articlefeedbackv5-form-tooltip-archive,
+		//   articlefeedbackv5-form-tooltip-unarchive, articlefeedbackv5-form-tooltip-flag,
+		//   articlefeedbackv5-form-tooltip-oversight, articlefeedbackv5-form-tooltip-unoversight,
+		//   articlefeedbackv5-form-tooltip-request, articlefeedbackv5-form-tooltip-unrequest,
+		//   articlefeedbackv5-form-tooltip-decline, articlefeedbackv5-form-tooltip-discuss-talk,
+		//   articlefeedbackv5-form-tooltip-discuss-user
+		// Give grep a chance to find the usages:
+		//   articlefeedbackv5-form-note, articlefeedbackv5-form-feature, articlefeedbackv5-form-unfeature,
+		//   articlefeedbackv5-form-resolve, articlefeedbackv5-form-unresolve, articlefeedbackv5-form-noaction,
+		//   articlefeedbackv5-form-unnoaction, articlefeedbackv5-form-inappropriate, articlefeedbackv5-form-uninappropriate,
+		//   articlefeedbackv5-form-hide, articlefeedbackv5-form-unhide, articlefeedbackv5-form-hide-own,
+		//   articlefeedbackv5-form-unhide-own, articlefeedbackv5-form-archive, articlefeedbackv5-form-unarchive,
+		//   articlefeedbackv5-form-flag, articlefeedbackv5-form-oversight, articlefeedbackv5-form-unoversight,
+		//   articlefeedbackv5-form-request, articlefeedbackv5-form-unrequest, articlefeedbackv5-form-decline,
+		//   articlefeedbackv5-form-discuss-talk, articlefeedbackv5-form-discuss-user
 		return Html::rawElement(
 			'li',
 			array(),

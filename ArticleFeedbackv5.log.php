@@ -114,6 +114,16 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 			return '';
 		}
 
+		// Give grep a chance to find the usages:
+		// logentry-articlefeedbackv5-create, logentry-articlefeedbackv5-oversight, logentry-articlefeedbackv5-unoversight,
+		// logentry-articlefeedbackv5-decline, logentry-articlefeedbackv5-request, logentry-articlefeedbackv5-unrequest,
+		// logentry-articlefeedbackv5-flag, logentry-articlefeedbackv5-unflag, logentry-articlefeedbackv5-autoflag,
+		// logentry-articlefeedbackv5-feature, logentry-articlefeedbackv5-unfeature, logentry-articlefeedbackv5-resolve,
+		// logentry-articlefeedbackv5-unresolve, logentry-articlefeedbackv5-noaction, logentry-articlefeedbackv5-unnoaction,
+		// logentry-articlefeedbackv5-inappropriate, logentry-articlefeedbackv5-uninappropriate, logentry-articlefeedbackv5-archive,
+		// logentry-articlefeedbackv5-unarchive, logentry-articlefeedbackv5-hide, logentry-articlefeedbackv5-unhide,
+		// logentry-articlefeedbackv5-autohide, logentry-articlefeedbackv5-helpful, logentry-articlefeedbackv5-unhelpful,
+		// logentry-articlefeedbackv5-undo-helpful, logentry-articlefeedbackv5-undo-unhelpful, logentry-articlefeedbackv5-clear-flags
 		$language = $skin === null ? $wgContLang : $wgLang;
 		return wfMessage( "logentry-articlefeedbackv5-$action" )
 			->params( array(
