@@ -126,6 +126,9 @@ $wgArticleFeedbackv5TalkPageLink = true;
 // Defines whether or not there should be a link to the watchlisted feedback on the watchlist page
 $wgArticleFeedbackv5WatchlistLink = true;
 
+// Defines whether or not the special page for feedback on a user's watchlisted pages is enabled
+$wgArticleFeedbackv5Watchlist = true;
+
 // Email address to send oversight request emails to, if set to null no emails are sent
 $wgArticleFeedbackv5OversightEmails = null;
 

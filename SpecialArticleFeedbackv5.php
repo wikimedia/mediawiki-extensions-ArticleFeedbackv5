@@ -338,8 +338,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// if we have a logged in user and are currently browsing the central feedback page,
 		// check if there is feedback on his/her watchlisted pages
+		global $wgArticleFeedbackv5Watchlist;
 		$watchlistLink = '';
-		if ( !$this->pageId && $user->getId() ) {
+		if ( $wgArticleFeedbackv5Watchlist && !$this->pageId && $user->getId() ) {
 			$records = ArticleFeedbackv5Model::getWatchlistList(
 				'unreviewed',
 				$user
