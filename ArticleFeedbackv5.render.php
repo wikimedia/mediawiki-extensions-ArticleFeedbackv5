@@ -931,7 +931,8 @@ class ArticleFeedbackv5Render {
 								'data-section-title' => $sectionTitleTruncated,
 								'data-section-content' => $sectionContent,
 								'data-section-edittime' => wfTimestampNow(),
-								'data-section-edittoken' => $wgUser->getEditToken()
+								'data-section-edittoken' => $wgUser->getEditToken(),
+								'data-section-watchlist' => (int) $wgUser->isWatched( $discussPage )
 							),
 							wfMessage( "articlefeedbackv5-form-$action-$discussType" . ( $sectionExists ? '-exists' : '' ) )->text()
 						)
