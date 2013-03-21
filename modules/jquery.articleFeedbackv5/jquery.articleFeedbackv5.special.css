@@ -189,6 +189,16 @@
 .articleFeedbackv5-helpful-votes.articleFeedbackv5-has-votes {
 	display: inline;
 }
+.articleFeedbackv5-helpful-votes.articleFeedbackv5-votes-positive,
+.articleFeedbackv5-helpful-votes.articleFeedbackv5-votes-negative {
+	padding: 2px 15px 0 20px;
+	/* @embed */
+	background: url(images/thumbup.png) left no-repeat;
+}
+.articleFeedbackv5-helpful-votes.articleFeedbackv5-votes-negative {
+	/* @embed */
+	background: url(images/thumbdwn.png) left no-repeat;
+}
 
 /** Comment block: bottom line: Flag as abuse **/
 .articleFeedbackv5-flag-link,
@@ -363,8 +373,8 @@
 	height: 20px;
 	padding-left: 25px;
 }
- .articleFeedbackv5-hide-own-link:before,
-.articleFeedbackv5-unhide-own-link:before,
+.articleFeedbackv5-noaction-own-link:before,
+.articleFeedbackv5-unnoaction-own-link:before,
 .articleFeedbackv5-feedback-tools li a:before {
 	display: block;
 	position: absolute;
@@ -376,14 +386,14 @@
 	background-position: left;
 	content: ' ';
 }
-.articleFeedbackv5-hide-own-link:hover:before,
-.articleFeedbackv5-unhide-own-link:hover:before,
+.articleFeedbackv5-noaction-own-link:hover:before,
+.articleFeedbackv5-unnoaction-own-link:hover:before,
 .articleFeedbackv5-feedback-tools li a:hover:before {
 	opacity : 0.4;
 	filter: alpha(opacity=40);
 }
-.articleFeedbackv5-hide-own-link:before,
-.articleFeedbackv5-unhide-own-link:before {
+.articleFeedbackv5-noaction-own-link:before,
+.articleFeedbackv5-unnoaction-own-link:before {
 	margin: 0;
 	height: 20px;
 }
@@ -407,6 +417,7 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_resolve.svg);
 }
+.articleFeedbackv5-noaction-own-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-noaction-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_noaction.png);
@@ -427,7 +438,6 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
 }
-.articleFeedbackv5-hide-own-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-hide-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_hide.png);
@@ -513,7 +523,7 @@
 	/* @embed */
 	background-image: url(images/toolbox_activity.png);
 }
-.articleFeedbackv5-unhide-own-link:before,
+.articleFeedbackv5-unnoaction-own-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unfeature-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unresolve-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unnoaction-link:before,
