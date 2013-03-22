@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DqjLHQGk",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 13
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-22T00:03:54Z",
+      "side": 1,
+      "message": "My fault, this will be escaped by Html::element(), this doesn\u0027t need to be escaped explicitly",
+      "revId": "3f3bee372baaf6ce18351f473c42784af39b9090",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqrKrUIo",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 13
+      },
+      "lineNbr": 1359,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-22T00:03:54Z",
+      "side": 1,
+      "message": "See comment above",
+      "revId": "3f3bee372baaf6ce18351f473c42784af39b9090",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
