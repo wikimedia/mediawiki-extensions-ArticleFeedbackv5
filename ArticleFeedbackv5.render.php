@@ -654,7 +654,7 @@ class ArticleFeedbackv5Render {
 						array(
 							'id'    => "articleFeedbackv5-flag-link-$id",
 							'class' => 'articleFeedbackv5-flag-link',
-							'title' => wfMessage( 'articlefeedbackv5-form-tooltip-flag' )->escaped(),
+							'title' => wfMessage( 'articlefeedbackv5-form-tooltip-flag' )->text(),
 							'href'  => '#',
 							'data-action'  => 'flag',
 						),
@@ -717,7 +717,7 @@ class ArticleFeedbackv5Render {
 								array(
 									'id' => "articleFeedbackv5-$action-link-$id",
 									'class' => "articleFeedbackv5-$action-link articleFeedbackv5-$action-own-link",
-									'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-own" )->escaped(),
+									'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-own" )->text(),
 									'href' => '#',
 									'data-action' => $action,
 								),
@@ -931,7 +931,7 @@ class ArticleFeedbackv5Render {
 							array(
 								'id' => "articleFeedbackv5-$action-link-$record->aft_id",
 								'class' => $class,
-								'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-$discussType" )->escaped(),
+								'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-$discussType" )->text(),
 								'href' => $discussLink,
 								'data-action' => $action,
 								// expose some additional details to JS
@@ -1015,7 +1015,7 @@ class ArticleFeedbackv5Render {
 								array(
 									'id' => "articleFeedbackv5-note-link-$record->aft_id",
 									'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-note-link', // tipsy for given data-action will be loaded when clicked
-									'title' => wfMessage( 'articlefeedbackv5-form-tooltip-note' )->escaped(),
+									'title' => wfMessage( 'articlefeedbackv5-form-tooltip-note' )->text(),
 									'href' => '#',
 									'data-action' => $last->log_action,
 									'data-log-id' => $last->log_id,
@@ -1356,7 +1356,7 @@ class ArticleFeedbackv5Render {
 				array(
 					'id' => "articleFeedbackv5-$action-link-$record->aft_id",
 					'class' => $class,
-					'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action" )->escaped(),
+					'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action" )->text(),
 					'href' => '#',
 					'data-action' => $action,
 				),
