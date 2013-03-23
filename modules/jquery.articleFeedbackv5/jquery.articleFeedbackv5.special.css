@@ -710,15 +710,11 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 }
 .articleFeedbackv5-activity-feedback {
 	padding: 10px 10px;
-	height: 29px;
 }
 .articleFeedbackv5-activity-feedback-permalink {
 	position: absolute;
 	top: 62px;
 	right: 22px;
-}
-.articleFeedbackv5-activity-pane {
-	height: 70px;
 }
 .articleFeedbackv5-activity-log-items {
 	height: 290px;
