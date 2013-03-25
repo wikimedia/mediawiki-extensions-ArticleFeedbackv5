@@ -985,44 +985,23 @@ class ArticleFeedbackv5Render {
 					}
 				}
 
-
-				$activityLink = '';
-				if (
-					// there is a comment - display it
-					$last->log_comment != '' ||
-					// there is no comment, but it's out own action and we'll have the possibility to add a comment
-					( $last->log_comment == '' && $last->log_user && $last->log_user == $wgUser->getId() )
-				) {
-					$activityLink .=
-						// link for activity log popup
+				$addNoteLink = '';
+				// if current user is the one who performed the action, add a link to
+				// leave a note to clarify why the action was performed
+				if ( $last->log_comment == '' && $last->log_user && $last->log_user == $wgUser->getId() ) {
+					$addNoteLink .=
 						Html::element(
 							'a',
 							array(
-								'id' => "articleFeedbackv5-activity-link-$record->aft_id",
-								'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-activity-link'.( $last->log_comment ? '' : ' activity-empty' ), // tipsy for given data-action will be loaded when clicked
+								'id' => "articleFeedbackv5-note-link-$record->aft_id",
+								'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-note-link', // tipsy for given data-action will be loaded when clicked
+								'title' => wfMessage( 'articlefeedbackv5-form-tooltip-note' )->text(),
 								'href' => '#',
-								'data-action' => 'activity',
+								'data-action' => $last->log_action,
+								'data-log-id' => $last->log_id,
 							),
-							wfMessage( "articlefeedbackv5-viewactivity".( $last->log_comment ? '' : '-empty' ) )->text()
+							wfMessage( 'articlefeedbackv5-form-note' )->text()
 						);
-
-					// if current user is the one who performed the action, add a link to
-					// leave a note to clarify why the action was performed
-					if ( $last->log_comment == '' && $last->log_user && $last->log_user == $wgUser->getId() ) {
-						$activityLink .=
-							Html::element(
-								'a',
-								array(
-									'id' => "articleFeedbackv5-note-link-$record->aft_id",
-									'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-note-link', // tipsy for given data-action will be loaded when clicked
-									'title' => wfMessage( 'articlefeedbackv5-form-tooltip-note' )->text(),
-									'href' => '#',
-									'data-action' => $last->log_action,
-									'data-log-id' => $last->log_id,
-								),
-								wfMessage( 'articlefeedbackv5-form-note' )->text()
-							);
-					}
 				}
 
 
@@ -1046,17 +1025,30 @@ class ArticleFeedbackv5Render {
 						'div',
 						array( 'class' => "articleFeedbackv5-feedback-tools-details" ),
 
-						// performer/action info
 						Html::rawElement(
 							'p',
 							array( 'class' => "articleFeedbackv5-activity-short-status" ),
+
+							// performer/action info
 							wfMessage( "articlefeedbackv5-short-status-$last->log_action" )
 								->rawParams( ArticleFeedbackv5Utils::getUserLink( $last->log_user, $last->log_user_text ) )
 								->parse()
 						) .
 
-						// link to activity log
-						$activityLink .
+						// link to add note
+						$addNoteLink .
+
+						// link for activity log popup
+						Html::element(
+							'a',
+							array(
+								'id' => "articleFeedbackv5-activity-link-$record->aft_id",
+								'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-activity-link', // tipsy for given data-action will be loaded when clicked
+								'href' => '#',
+								'data-action' => 'activity',
+							),
+							wfMessage( 'articlefeedbackv5-viewactivity' )->text()
+						) .
 
 						// tools (undo & possibly oversight-related actions)
 						Html::rawElement(
