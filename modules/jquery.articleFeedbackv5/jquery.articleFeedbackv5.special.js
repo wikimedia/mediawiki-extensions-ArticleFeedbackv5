@@ -1744,6 +1744,7 @@
 					var content = $( e.target ).data( 'section-content' );
 					var editTime = $( e.target ).data( 'section-edittime' );
 					var editToken = $( e.target ).data( 'section-edittoken' );
+					var watchlist = $( e.target ).data( 'section-watchlist' );
 
 					var $form = $( '\
 						<form method="post">\
@@ -1753,6 +1754,7 @@
 							<input type="hidden" name="wpStarttime" />\
 							<input type="hidden" name="wpEditToken" />\
 							<input type="hidden" name="wpPreview" />\
+							<input type="hidden" name="wpWatchthis" />\
 							<input type="submit" />\
 						</form>' );
 
@@ -1763,6 +1765,7 @@
 					$( '[name=wpStarttime]', $form ).val( editTime );
 					$( '[name=wpEditToken]', $form ).val( editToken );
 					$( '[name=wpPreview]', $form ).val( 1 );
+					$( '[name=wpWatchthis]', $form ).val( watchlist );
 
 					$( e.target ).append( $form );
 					$form
