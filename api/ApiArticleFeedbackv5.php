@@ -55,12 +55,22 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			);
 		}
 
+		// Make sure user name is consistently saved to db; e.g. this will
+		// run IP::sanitizeIP on IP's
+		$userTitle = Title::makeTitleSafe( NS_USER, $user->getName() );
+		if ( !$userTitle ) {
+			$this->dieUsage(
+				$this->msg( 'articlefeedbackv5-error-user' )->escaped(),
+				'invaliduser'
+			);
+		}
+
 		// Build feedback entry
 		$feedback = new ArticleFeedbackv5Model();
 		$feedback->aft_page = $params['pageid'];
 		$feedback->aft_page_revision = $params['revid'];
 		$feedback->aft_user = $user->getId();
-		$feedback->aft_user_text = $user->getName();
+		$feedback->aft_user_text = $userTitle->getText();
 		$feedback->aft_user_token = $params['anontoken'];
 		$feedback->aft_form = $params['bucket'];
 		$feedback->aft_cta = $params['cta'];
