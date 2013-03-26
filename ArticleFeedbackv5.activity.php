@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This class provides some functionality to easily get feedback's activity.
  * Because this data is less often requested & because we're dealing with
