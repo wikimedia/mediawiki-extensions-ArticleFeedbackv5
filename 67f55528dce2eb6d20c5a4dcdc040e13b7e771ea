@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DqrTrK90",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-03-26T17:41:40Z",
+      "side": 1,
+      "message": "The javascript is ignoring API error, either for $.ajax.error() or data[\u0027articlefeedbackv5-get-count\u0027][\u0027count\u0027] doesn\u0027t exist, is this desired?",
+      "revId": "67f55528dce2eb6d20c5a4dcdc040e13b7e771ea",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
