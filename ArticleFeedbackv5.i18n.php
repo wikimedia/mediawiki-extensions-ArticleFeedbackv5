@@ -1142,10 +1142,11 @@ Parameters
 	'articlefeedbackv5-found-percent' => 'Text describing the percentage of readers that answered positively to the question "Did you find what you were looking for". Parameters:
 * $1 - the percentage of people that found what they were looking for marked up. Example value: 15%. {{msg-mw|percent}} is used.
 * $2 - the percentage of people that found what they were looking for, used for plural.',
-	'articlefeedbackv5' => 'The title of the feature. It is about reader feedback.
+	'articlefeedbackv5' => '{{doc-special|ArticleFeedbackv5}}
+The title of the feature. It is about reader feedback.
 
 Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a prototype installation.',
-	'articlefeedbackv5watchlist' => '{{doc-special|ArticleFeedbackv5Watchlist}}',
+	'articlefeedbackv5watchlist' => '{{doc-special|ArticleFeedbackv5Watchlist|unlisted=1}}',
 	'articlefeedbackv5-desc' => '{{desc|name=Article Feedback v5|url=http://www.mediawiki.org/wiki/Extension:ArticleFeedbackv5}}',
 	'articlefeedbackv5-comment-more' => 'Label for the button to expand the truncated comment on feedback.
 {{Identical|More}}',
@@ -4374,7 +4375,7 @@ $messages['de'] = array(
 	'articlefeedbackv5-noaction-marker' => 'Keine Aktion erforderlich',
 	'articlefeedbackv5-inappropriate-marker' => 'Unangemessen',
 	'articlefeedbackv5-archive-marker' => 'Archiviert',
-	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|einmal als Missbrauch gemeldet|$1 mal als Missbrauch gemeldet}}',
+	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|Einmal|$1 mal}} als Missbrauch gemeldet',
 	'articlefeedbackv5-form-note' => 'Anmerkung hinzufügen',
 	'articlefeedbackv5-form-feature' => 'Nützlich',
 	'articlefeedbackv5-form-unfeature' => 'Rückgängig',
@@ -4426,19 +4427,19 @@ $messages['de'] = array(
 	'articlefeedbackv5-form-tooltip-discuss-talk' => 'Diese Rückmeldung auf die Diskussionsseite übertragen',
 	'articlefeedbackv5-form-tooltip-discuss-user' => 'Rückmeldung mit dem Verfasser diskutieren',
 	'articlefeedbackv5-discuss-talk-section-title' => 'Leserrückmeldung: $1',
-	'articlefeedbackv5-discuss-user-section-title' => 'Ihre Rückmeldung zu „$2“',
+	'articlefeedbackv5-discuss-user-section-title' => 'Deine Rückmeldung zu „$2“',
 	'articlefeedbackv5-discuss-talk-section-content' => '$1 hinterließ [[$2|diesen Kommentar]] am $3 ([[$5|alle Rückmeldungen ansehen]]).
 
 $6
 
 Eure Meinung dazu? --~~~~',
-	'articlefeedbackv5-discuss-user-section-content' => 'Vielen Dank für Ihre Rückmeldung zu „$7“.
+	'articlefeedbackv5-discuss-user-section-content' => 'Vielen Dank für die Rückmeldung zu „$7“.
 
-Sie haben diesen Kommentar am $3 hinterlassen ([[$5|alle Rückmeldungen ansehen]]).
+Am $3 hast du diesen Kommentar hinterlassen ([[$5|alle Rückmeldungen ansehen]]).
 
 $6
 
-Wir freuen uns auf Ihre Beiträge zu dieser Seite!',
+Wir freuen uns auf deine Beiträge zu dieser Seite!',
 	'articlefeedbackv5-form1-header-found' => '$2 hat gefunden, wonach {{GENDER:$1|er|sie|sie oder er}} gesucht hat.',
 	'articlefeedbackv5-form1-header-not-found' => '$2 hat nicht gefunden, wonach {{GENDER:$1|er|sie|sie oder er}} gesucht hat.',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 hinterließ einen Kommentar.}}',
@@ -4474,8 +4475,7 @@ Wir freuen uns auf Ihre Beiträge zu dieser Seite!',
 	'articlefeedbackv5-page-disabled' => 'Die Seite für Rückmeldungen ist zu diesem Artikel nicht aktiviert.',
 	'articlefeedbackv5-no-feedback' => 'Es gibt keine Rückmeldungen, die zum ausgewählten Filter passen. Um den Filter zu ändern, versuchen Sie eine der obenstehenden Optionen (z.&nbsp;B. „Hervorgehoben“ oder „Ungeprüfte“).',
 	'articlefeedbackv5-invalid-feedback' => 'Die gewünschte Rückmeldung ist nicht vorhanden.',
-	'articlefeedbackv5-viewactivity' => 'Anmerkung lesen',
-	'articlefeedbackv5-viewactivity-empty' => 'Ohne Anmerkung',
+	'articlefeedbackv5-viewactivity' => 'Anmerkung lesen', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => 'Inhalt anzeigen',
 	'articlefeedbackv5-mask-text-inappropriate' => 'Dieser Beitrag Nr. $1 wurde von {{GENDER:$2|$2}} $3 als unangemessen markiert.',
 	'articlefeedbackv5-mask-text-autohide' => 'Dieser Beitrag Nr. $1 wurde von {{GENDER:$2|$2}} $3 automatisch versteckt.',
@@ -6209,7 +6209,6 @@ Apreciamos sus contribuciones a esta página!',
 	'articlefeedbackv5-no-feedback' => "No hay ningún comentario para el filtro que has seleccionado. Para cambiar el filtro, prueba una de las opciones anteriores (p. ej.: 'Los más importantes' o 'Todos los comentarios').", # Fuzzy
 	'articlefeedbackv5-invalid-feedback' => 'La página no existe',
 	'articlefeedbackv5-viewactivity' => 'Ver la actividad', # Fuzzy
-	'articlefeedbackv5-viewactivity-empty' => 'No se da ninguna razón',
 	'articlefeedbackv5-mask-view-contents' => 'Ver el contenido',
 	'articlefeedbackv5-mask-text-autohide' => 'Este mensaje (post) #$1 {{GENDER:$2|fue ocultado automáticamente por $2}} hace $3.', # Fuzzy
 	'articlefeedbackv5-mask-text-hide' => 'Esta entrada (post) #$1 {{GENDER:$2|fue ocultada por $2}} hace $3.', # Fuzzy
@@ -6953,17 +6952,23 @@ $messages['fa'] = array(
 	'articlefeedbackv5-contribs-status-action-feature' => 'برگزیده', # Fuzzy
 	'articlefeedbackv5-contribs-status-action-resolve' => 'حل شده',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'پنهان',
+	'articlefeedbackv5-contribs-status-action-hide' => 'پنهان کردن',
 	'articlefeedbackv5-contribs-status-action-request' => 'پیشنهادهای پنهان‌شده',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'پنهان‌شده',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'پنهان‌کردن پیام‌ها',
+	'articlefeedbackv5-form-toolbox-label' => 'علامت گذاری به عنوان:',
+	'articlefeedbackv5-form-own-toolbox-label' => 'علامت‌گذاری پست خود به عنوان:',
+	'articlefeedbackv5-form-own-feedback' => 'شما نمی‌توانید پست‌های خود را بازبینی نمایید.',
 	'articlefeedbackv5-form-helpful-label' => 'آیا این بازخورد مفید است؟',
 	'articlefeedbackv5-form-helpful-yes-label' => 'بله',
 	'articlefeedbackv5-form-helpful-no-label' => 'خیر',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|۱ بله|$1 بله}} / {{PLURAL:$2|۱ خیر|$2 خیر}}',
 	'articlefeedbackv5-special-survey-button-text' => 'شما دربارهٔ این ابزار بازخورد چه فکر می‌کنید؟',
 	'articlefeedbackv5-special-filter-featured' => 'برگزیده‌ها  ($1)',
+	'articlefeedbackv5-special-filter-unreviewed' => 'بازبینی‌نشده', # Fuzzy
 	'articlefeedbackv5-special-filter-helpful' => 'مفید ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'غیرمفید ($1)',
+	'articlefeedbackv5-special-filter-useful' => 'مفید ( $1 )',
 	'articlefeedbackv5-special-filter-resolved' => 'حل شده', # Fuzzy
 	'articlefeedbackv5-special-filter-hidden' => 'پنهان ($1)',
 	'articlefeedbackv5-special-filter-requested' => 'نظارت درخواست شد ($1)',
@@ -7603,7 +7608,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-contribs-entry-status' => '. . État&nbsp;: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Utile',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Marqué',
-	'articlefeedbackv5-contribs-status-action-feature' => 'Utile',
+	'articlefeedbackv5-contribs-status-action-feature' => 'Promu',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Résolu',
 	'articlefeedbackv5-contribs-status-action-noaction' => 'Aucune action nécessaire',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Masqué',
@@ -7638,7 +7643,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-special-filter-oversighted' => 'Masqués ($1)',
 	'articlefeedbackv5-special-filter-all' => 'Tous les commentaires ($1)',
 	'articlefeedbackv5-special-filter-featured-watchlist' => 'Promus',
-	'articlefeedbackv5-special-filter-unreviewed-watchlist' => 'Non relu',
+	'articlefeedbackv5-special-filter-unreviewed-watchlist' => 'Non vérifiés',
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Utile',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Inutile',
 	'articlefeedbackv5-special-filter-flagged-watchlist' => 'Marqué',
@@ -7809,8 +7814,7 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-page-disabled' => 'L’outil de commentaires n’est pas activé pour cet article.',
 	'articlefeedbackv5-no-feedback' => "Il n’y a pas de retour correspondant au filtre que vous avez sélectionné. Pour modifier le filtre, essayez une des options ci-dessous (par ex. : 'Les plus pertinents' ou 'Tous les commentaires').",
 	'articlefeedbackv5-invalid-feedback' => "Le retour demandé n'existe pas",
-	'articlefeedbackv5-viewactivity' => 'Voir la note',
-	'articlefeedbackv5-viewactivity-empty' => 'Aucune raison spécifiée',
+	'articlefeedbackv5-viewactivity' => 'Voir la note', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => 'Afficher les contenus',
 	'articlefeedbackv5-mask-text-inappropriate' => 'Ce billet #$1 {{GENDER:$2|a été marqué comme inapproprié par $2 }} $3.',
 	'articlefeedbackv5-mask-text-autohide' => 'Ce billet #$1 {{GENDER:$2|a été masqué automatiquement par $2}} $3 plus tôt.',
@@ -8011,11 +8015,11 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-bucket6-form-submit' => 'Publiez votre avis',
 	'articlefeedbackv5-bucket6-backlink-text' => 'Retour à l’étape 1',
 	'articlefeedbackv5-help-tooltip-title' => 'Qu’est-ce que ceci ?',
-	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} aimerait entendre ce que vous pensez de cette page. Partagez votre avis avec les modificateurs — et aidez à améliorer cette page.',
+	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} aimerait avoir votre avis sur cette page. Partagez votre retour quant à cette page avec les contributeurs, et aidez à améliorer {{SITENAME}}.',
 	'articlefeedbackv5-help-tooltip-linktext' => 'En savoir plus',
-	'articlefeedbackv5-help-special-linkurl-oversighters' => '//en.wikipedia.org/wiki/Wikipedia:Article_Feedback/Help/Oversighters',
-	'articlefeedbackv5-help-form-linkurl-monitors' => '//en.wikipedia.org/wiki/Wikipedia:Article_feedback',
-	'articlefeedbackv5-help-transparency-terms' => 'Veuillez publier [//fr.wikipedia.org/wiki/Wikipédia:Guide des commentaires des commentaires utiles]. En publiant, vous approuvez [//wikimediafoundation.org/wiki/Feedback_privacy_statement notre déclaration] quant à la vie privée.',
+	'articlefeedbackv5-help-special-linkurl-oversighters' => '//fr.wikipedia.org/w/index.php?title=Aide:Outil_de_retour_des_lecteurs/Masqueurs',
+	'articlefeedbackv5-help-form-linkurl-monitors' => '//fr.wikipedia.org/w/index.php?title=Wikipédia:Outil_de_retour_des_lecteurs/',
+	'articlefeedbackv5-help-transparency-terms' => 'Veuillez publier [//fr.wikipedia.org/w/index.php?title=Wikipédia:Outil_de_retour_des_lecteurs/Guide des commentaires des commentaires utiles]. En publiant, vous approuvez [//wikimediafoundation.org/wiki/Feedback_privacy_statement/fr notre déclaration] quant à la vie privée.',
 	'articlefeedbackv5-sitesub-linktext' => 'Améliorer cette page',
 	'articlefeedbackv5-titlebar-linktext' => 'Aidez à améliorer cette page &gt;&gt;',
 	'articlefeedbackv5-fixedtab-linktext' => 'Améliorer cette page',
@@ -8722,8 +8726,7 @@ Apreciamos as achegas que poida facer nesta páxina!
 	'articlefeedbackv5-page-disabled' => 'A páxina de avaliación de artigos non está activada neste artigo.',
 	'articlefeedbackv5-no-feedback' => 'O filtro seleccionado non ten comentarios. Para cambiar o filtro, probe coas opcións anteriores (por exemplo, "Destacados" ou "Sen revisar").',
 	'articlefeedbackv5-invalid-feedback' => 'O comentario solicitado non existe.',
-	'articlefeedbackv5-viewactivity' => 'Ler a nota',
-	'articlefeedbackv5-viewactivity-empty' => 'Non se deu ningunha razón',
+	'articlefeedbackv5-viewactivity' => 'Ler a nota', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => 'Ollar o contido',
 	'articlefeedbackv5-mask-text-inappropriate' => '{{GENDER:$2|$2 marcou como inapropiada}} a mensaxe nº$1 $3.',
 	'articlefeedbackv5-mask-text-autohide' => '{{GENDER:$2|$2 agochou automaticamente}} a mensaxe nº$1 $3.',
@@ -10115,8 +10118,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-page-disabled' => 'Strona za komentary k nastawkam njeje za tutón nastawk zmóžnjena.',
 	'articlefeedbackv5-no-feedback' => 'Za filter, kotryž sy wubrał, komentar njeje. Zo by swój filter změnił, testuj jedne z nastajenjow horjeka (na př. "Wuběrne" abo "Njepřepruwowane").',
 	'articlefeedbackv5-invalid-feedback' => 'Požadany komentar njeeksistuje.',
-	'articlefeedbackv5-viewactivity' => 'Přispomnjenku pokazać',
-	'articlefeedbackv5-viewactivity-empty' => 'Žana přičina podata',
+	'articlefeedbackv5-viewactivity' => 'Přispomnjenku pokazać', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => 'Wobsah pokazać',
 	'articlefeedbackv5-mask-text-autohide' => 'Tutón přinošk čo. $1 je so $3 wot $2 awtomatisce {{GENDER:$2|schowany|schowany}}.',
 	'articlefeedbackv5-mask-text-hide' => 'Tutón přinošk čo. $1 je so $3 wot {{GENDER:$2|$2 schowany|$2 schowany}}.',
@@ -12339,7 +12341,7 @@ $messages['ja'] = array(
 	'articlefeedbackv5-unsupported-message' => '申し訳ありませんが、この試作品はご使用のブラウザーに対応していません。別のブラウザーでご覧ください。',
 	'articlefeedbackv5-page-disabled' => 'このページへのフィードバックのページは有効になっていません。',
 	'articlefeedbackv5-no-feedback' => '選択したフィルターに該当するフィードバックはありません。フィルターを変更するには、上のオプションのいずれかをお試しください (例:「最も関連性が高い」または「すべてのコメント」)', # Fuzzy
-	'articlefeedbackv5-viewactivity' => '注釈を閲覧',
+	'articlefeedbackv5-viewactivity' => '注釈を閲覧', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => '内容を表示',
 	'articlefeedbackv5-mask-text-autohide' => 'この投稿 #$1 は、$3に$2が自動秘匿しました。',
 	'articlefeedbackv5-mask-text-hide' => 'この投稿 #$1 は、$3に$2が秘匿しました。',
@@ -13447,8 +13449,7 @@ $6
 	'articlefeedbackv5-page-disabled' => '이 문서에는 문서 평가 페이지가 활성화되어 있지 않습니다.',
 	'articlefeedbackv5-no-feedback' => "선택한 필터에 대한 피드백이 없습니다. 필터를 바꾸려면 위의 선택 사항 중 하나를 시도하세요. (예: '알참' 또는 '검토하지 않음')",
 	'articlefeedbackv5-invalid-feedback' => '요청한 의견이 존재하지 않습니다.',
-	'articlefeedbackv5-viewactivity' => '참고 읽기',
-	'articlefeedbackv5-viewactivity-empty' => '이유를 입력하지 않았습니다',
+	'articlefeedbackv5-viewactivity' => '참고 읽기', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => '내용 보기',
 	'articlefeedbackv5-mask-text-inappropriate' => '#$1 게시물은 $3에 {{GENDER:$2|$2에 의해 부적절한 것으로 표시했습니다}}.',
 	'articlefeedbackv5-mask-text-autohide' => '이 게시물 #$1은 $3에 {{GENDER:$2|$2에 의해 자동으로 숨겨졌습니다}}.',
@@ -13949,7 +13950,6 @@ Hadd_Er en Meinung dohzoh? --~~~~',
 Öm di Sigg ze beloore, donn ene andere Brauser nämme.',
 	'articlefeedbackv5-page-disabled' => 'Röckmäldonge för heh di Sigg sin nit enjeschalldt.',
 	'articlefeedbackv5-viewactivity' => 'Aktivitääte beloore', # Fuzzy
-	'articlefeedbackv5-viewactivity-empty' => 'Ed es keine Jrond aanjejovve.',
 	'articlefeedbackv5-mask-view-contents' => 'Enhallde beloore',
 	'articlefeedbackv5-mask-text-autohide' => 'Heh dä Beitrag met dä Nommer $1 wood vör $3 {{GENDER:$1|vum|vum|vum Metmaacher|vun dä|vum}} $2 automatesch verschtoche.', # Fuzzy
 	'articlefeedbackv5-mask-text-hide' => 'Heh dä Beitrag met dä Nommer $1 wood vör $3 {{GENDER:$1|vum|vum|vum Metmaacher|vun dä|vum}} $2 verschtoche.', # Fuzzy
@@ -14324,8 +14324,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-unsupported-message' => 'Pardon, Äre Browser gëtt vun dësem Prototyp net ënnerstëtzt. Fir dës säit ze gesinn, benotzt w.e.g. en anere Browser.',
 	'articlefeedbackv5-page-disabled' => "D'Säit fir Feedback ass fir dësen Artikel net aktivéiert.",
 	'articlefeedbackv5-no-feedback' => "Fir de Filter deen Dir uginn hutt gëtt et nach kee Feedback.Fir Äre Filter z'änneren, probéiert eng vun den Optiounen hei driwwer (z. Bsp.: 'Ausgezeechent' oder 'Net nogekuckt').",
-	'articlefeedbackv5-viewactivity' => 'Notiz liesen',
-	'articlefeedbackv5-viewactivity-empty' => 'Kee Grond uginn',
+	'articlefeedbackv5-viewactivity' => 'Notiz liesen', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => 'Inhalt weisen',
 	'articlefeedbackv5-special-goback' => "D'Säit mam Feedback weisen",
 	'articlefeedbackv5-special-central-goback' => 'Kuckt méi Feedback zu anere Säiten',
@@ -15122,8 +15121,7 @@ $6
 	'articlefeedbackv5-page-disabled' => 'Страницата за оценување не е овозможена за оваа статија.',
 	'articlefeedbackv5-no-feedback' => 'Нема мислења за одбраниот филтер. За да го измените, изберете некоја друга од можностите погоре (на пр.: „Истакнати“ „Непроверени“).',
 	'articlefeedbackv5-invalid-feedback' => 'Побараното мислење не постои.',
-	'articlefeedbackv5-viewactivity' => 'Погл. белешката',
-	'articlefeedbackv5-viewactivity-empty' => 'Нема наведено причина',
+	'articlefeedbackv5-viewactivity' => 'Погл. белешката', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => 'Прикажи содржина',
 	'articlefeedbackv5-mask-text-inappropriate' => 'Ова мислење бр. $1 {{GENDER:$2|е означено како несоодветно од $2}} $3.',
 	'articlefeedbackv5-mask-text-autohide' => 'Ова мислење бр. $1 {{GENDER:$2|е автоскриено од $2}} $3.',
@@ -17042,8 +17040,7 @@ We waarderen je bijdrage aan deze pagina!
 	'articlefeedbackv5-page-disabled' => 'Terugkoppeling is niet ingeschakeld voor deze pagina.',
 	'articlefeedbackv5-no-feedback' => 'Er is geen terugkoppeling voor het filter dat u hebt geselecteerd. Probeer een van de bovenstaande opties om uw filter te wijzigen (bijvoorbeeld "Uitgelicht" of "Ongecontroleerd").',
 	'articlefeedbackv5-invalid-feedback' => 'De opgevraagde feedback bestaat niet',
-	'articlefeedbackv5-viewactivity' => 'Notitie bekijken',
-	'articlefeedbackv5-viewactivity-empty' => 'Geen reden gegeven',
+	'articlefeedbackv5-viewactivity' => 'Notitie bekijken', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => 'Inhoud bekijken',
 	'articlefeedbackv5-mask-text-inappropriate' => 'Dit bericht #$1 {{GENDER:$2|is als ongepast gemarkeerd door $2}} $3.',
 	'articlefeedbackv5-mask-text-autohide' => 'Dit bericht #$1 {{GENDER:$2|is automatisch verborgen door $2}} $3.',
@@ -19566,8 +19563,11 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-form-helpful' => 'Signe cumme utile ($1)',
 	'articlefeedbackv5-form-oversight' => 'Sorveglianze',
 	'articlefeedbackv5-form-unoversight' => 'Annulle',
+	'articlefeedbackv5-form-request' => 'Richieste de sorveglianze',
+	'articlefeedbackv5-form-unrequest' => "Richieste de luà 'a sorveglianze",
 	'articlefeedbackv5-form-decline' => "Rifiute 'a sorveglianze",
 	'articlefeedbackv5-form-declined' => 'Supervisione scartate',
+	'articlefeedbackv5-form-discuss-user' => "Condatte l'autore d'u messàgge",
 	'articlefeedbackv5-form-tooltip-unhide' => 'Fà vedè',
 	'articlefeedbackv5-form-tooltip-unoversight' => "Annulle 'a sorveglianze",
 	'articlefeedbackv5-discuss-user-section-title' => '\'A segnalaziona toje sus a "$2"',
@@ -19598,8 +19598,7 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-comment-more' => 'De cchiù',
 	'articlefeedbackv5-header-message-link-text' => "'Mbare de cchiù",
 	'articlefeedbackv5-beta-label' => 'BETA',
-	'articlefeedbackv5-viewactivity' => "Ligge 'a note",
-	'articlefeedbackv5-viewactivity-empty' => 'Nisciune mutive date',
+	'articlefeedbackv5-viewactivity' => "Ligge 'a note", # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => 'Fà vedè le condenute',
 	'articlefeedbackv5-mask-text-hide' => 'Stu messàgge #$1 {{GENDER:$2|ha state scunnute da $2}} $3.',
 	'articlefeedbackv5-special-goback' => "Vide 'a pàgene de le segnalaziune",
@@ -21479,7 +21478,6 @@ $messages['sv'] = array(
 	'articlefeedbackv5-no-feedback' => "Det finns ingen feedback för filtret du valde. Försök att använda någon av alternativen ovan för att ändra dina filter (t.ex.: 'Framhävda' or 'Ogranskade').",
 	'articlefeedbackv5-invalid-feedback' => 'Din begärda feedback finns inte.',
 	'articlefeedbackv5-viewactivity' => 'Visa aktivitet', # Fuzzy
-	'articlefeedbackv5-viewactivity-empty' => 'Ingen anledning given',
 	'articlefeedbackv5-mask-view-contents' => 'Visa innehåll',
 	'articlefeedbackv5-mask-text-inappropriate' => 'Detta inlägg #$1 {{GENDER:$2|markerades som olämpligt av $2}} $3.',
 	'articlefeedbackv5-mask-text-autohide' => 'Detta inlägg #$1 {{GENDER:$2|doldes automatiskt av $2}} $3.',
@@ -23928,8 +23926,7 @@ $messages['yi'] = array(
 	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-unsupported-message' => 'אנטשולדיקט, אייער בלעטערער איז נישט אונטערגעשטיצט דורך דעם פראטאטיפ. צו זען דעם בלאט, זייט אזוי גוט ניצט אן אנדער בלעטערער.',
 	'articlefeedbackv5-page-disabled' => 'ארטיקל פידבעק בלאט איז נישט אקטיווירט פאר דעם ארטיקל.',
-	'articlefeedbackv5-viewactivity' => 'ליינען אנמערקונג',
-	'articlefeedbackv5-viewactivity-empty' => 'קיין טעם נישט געגעבן',
+	'articlefeedbackv5-viewactivity' => 'ליינען אנמערקונג', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => 'ווײַזן אינהאַלט',
 	'articlefeedbackv5-mask-text-hide' => 'די מעלדונג #$1 {{GENDER:$2|איז געווארן באהאלטן דורך $2}} $3.',
 	'articlefeedbackv5-special-goback' => 'ווײַזן פֿידבעק בלאַט',
@@ -24219,8 +24216,7 @@ $6
 	'articlefeedbackv5-page-disabled' => '本条目未启用条目反馈页面。',
 	'articlefeedbackv5-no-feedback' => '您选择的过滤器没有任何反馈。要想更改您过滤器，试试上面的选项（例如“最相关的”或“所有评论”）。', # Fuzzy
 	'articlefeedbackv5-invalid-feedback' => '请求的反馈不存在。',
-	'articlefeedbackv5-viewactivity' => '阅读注释',
-	'articlefeedbackv5-viewactivity-empty' => '未提供原因',
+	'articlefeedbackv5-viewactivity' => '阅读注释', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => '显示内容',
 	'articlefeedbackv5-mask-text-inappropriate' => '此帖#$1已被$2标记为不适当的 $3。',
 	'articlefeedbackv5-mask-text-autohide' => '此帖子#$1已于$3由{{GENDER:$2|$2自动隐藏}}。',
