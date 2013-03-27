@@ -922,7 +922,7 @@
 					}
 					if ( $.articleFeedbackv5special.highlightId ) {
 						if (this.info.afvffeedbackid == $.articleFeedbackv5special.highlightId ) {
-							$( '.articleFeedbackv5-feedback[data-id=' + $.articleFeedbackv5special.highlightId + ']:not(.articleFeedbackv5-feedback-highlighted)' ).hide();
+							$( '.articleFeedbackv5-feedback[data-id=' + $.articleFeedbackv5special.highlightId + ']:not(.articleFeedbackv5-feedback-highlighted)' ).remove();
 							$.articleFeedbackv5special.highlightId = undefined;
 						} else if ( !prependContents ) {
 							$.articleFeedbackv5special.pullHighlight();
