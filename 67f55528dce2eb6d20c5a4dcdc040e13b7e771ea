@@ -16,6 +16,24 @@
       "revId": "67f55528dce2eb6d20c5a4dcdc040e13b7e771ea",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DqjZJW5A",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-03-27T14:43:55Z",
+      "side": 1,
+      "message": "Yes: the code that will be executed if the ajax call is successful, will add a link to the AFT page.\nThis is all being done automatically on page load (not the result of an action performed by the users) and not specifically requested for by the user (it\u0027s just the article page, so if something fails and an obscure link to the feedback page can\u0027t be added, it\u0027s no big deal)\nAs a result, if the ajax call fails/returns incorrect data, I think doing nothing at all is the most sensible thing to do - displaying an error message for something a user does not expect in the first place would seem rather odd :)",
+      "parentUuid": "DqrTrK90",
+      "revId": "67f55528dce2eb6d20c5a4dcdc040e13b7e771ea",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
