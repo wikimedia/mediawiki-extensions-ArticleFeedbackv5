@@ -121,10 +121,10 @@
 			<h3 id="articleFeedbackv5-noteflyover-caption"></h3>\
 			<a id="articleFeedbackv5-noteflyover-close" href="#"></a>\
 		</div>\
-		<form class="articleFeedbackv5-form-flyover">\
+		<form class="articleFeedbackv5-form-flyover" action="#">\
 			<div id="articleFeedbackv5-noteflyover-description"></div>\
 			<label id="articleFeedbackv5-noteflyover-label" for="articleFeedbackv5-noteflyover-note"></label>\
-			<input type="text" id="articleFeedbackv5-noteflyover-note" name="articleFeedbackv5-noteflyover-note" />\
+			<input type="text" id="articleFeedbackv5-noteflyover-note" name="articleFeedbackv5-noteflyover-note" maxlength="255" />\
 			<div class="articleFeedbackv5-flyover-footer">\
 				<a id="articleFeedbackv5-noteflyover-submit" class="articleFeedbackv5-flyover-button" href="#"></a>\
 				<a class="articleFeedbackv5-flyover-help" id="articleFeedbackv5-noteflyover-help" href="#"></a>\
@@ -397,8 +397,8 @@
 			} );
 		}
 
-		// Bind submit actions on flyover panels (post-flag comments)
-		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-submit', function( e ) {
+		// flyover panels submit actions (post-flag comments)
+		var tipsySubmit = function( e ) {
 			e.preventDefault();
 
 			if ( typeof $.articleFeedbackv5special.tipsyCallback == 'function' ) {
@@ -408,15 +408,13 @@
 			} else {
 				var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
 				var id = $container.data( 'id' );
-
 				var $noteLink = $container.find( '#articleFeedbackv5-note-link-' + id );
-				var logId = $noteLink.data( 'log-id' );
-				var action = $noteLink.data( 'action' );
 
 				$.articleFeedbackv5special.addNote(
 					id,
-					logId,
-					action,
+					$container.data( 'pageid' ),
+					$noteLink.data( 'log-id' ),
+					$noteLink.data( 'action' ),
 					$( '#articleFeedbackv5-noteflyover-note' ).attr( 'value' )
 				);
 			}
@@ -424,7 +422,11 @@
 			// hide tipsy
 			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
-		} );
+		};
+
+		// tipsies can be submitted by clicking the link, or submitting the form (hitting enter key)
+		$( document ).on( 'submit', 'form.articleFeedbackv5-form-flyover', tipsySubmit );
+		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-submit', tipsySubmit );
 
 		// bind flyover panel close button
 		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-close', function( e ) {
@@ -590,6 +592,10 @@
 			}
 			$l.tipsy( 'show' );
 			$.articleFeedbackv5special.currentPanelHostId = $l.attr( 'id' );
+
+			// immediately focus text field (after all, that's what we're opening the flyout for)
+			$( '#articleFeedbackv5-noteflyover-note' ).focus();
+
 			return true;
 		}
 	};
@@ -671,61 +677,54 @@
 			$.articleFeedbackv5special.listControls.disabled = true;
 		}
 
-		// origin of the flag
-		var source = 'unknown';
-		if ( $.articleFeedbackv5special.watchlist ) {
-			source = 'watchlist';
-		} else if ( $.articleFeedbackv5special.listControls.filter == 'id' ) {
-			source = 'permalink';
-		} else if ( $.articleFeedbackv5special.page ) {
-			source = 'article';
-		} else {
-			source = 'central';
-		}
-
 		// Merge request data and options objects (flat)
 		var requestData = {
-			'pageid'    : pageId,
+			'pageid': pageId,
 			'feedbackid': id,
-			'flagtype'  : action,
-			'note'      : note,
-			'source'    : source,
-			'format'    : 'json',
-			'action'    : 'articlefeedbackv5-flag-feedback'
+			'flagtype': action,
+			'note': note,
+			'source': $.articleFeedbackv5special.getSource(),
+			'format': 'json',
+			'action': 'articlefeedbackv5-flag-feedback'
 		};
 		// this "options" is currently solely used to add "toggle" to params, when appropriate
 		$.extend( requestData, options );
 
 		$.ajax( {
-			'url'     : $.articleFeedbackv5special.apiUrl,
-			'type'    : 'POST',
+			'url': $.articleFeedbackv5special.apiUrl,
+			'type': 'POST',
 			'dataType': 'json',
-			'data'    : requestData,
+			'data': requestData,
 			'success': function ( data ) {
-				var msg = 'articlefeedbackv5-error-flagging';
 				if ( 'articlefeedbackv5-flag-feedback' in data ) {
-					if ( 'result' in data['articlefeedbackv5-flag-feedback'] ) {
-						if ( data['articlefeedbackv5-flag-feedback'].result == 'Success' ) {
-							// replace entry by new render
-							$( '.articleFeedbackv5-feedback[data-id='+id+']' )
-								.replaceWith( data['articlefeedbackv5-flag-feedback'].render );
+					data = data['articlefeedbackv5-flag-feedback'];
 
-							// invoke the registered onSuccess callback for the executed action
+					if ( 'result' in data ) {
+						// replace entry by new render
+						$( '.articleFeedbackv5-feedback[data-id='+id+']' )
+							.replaceWith( data.render );
+
+						// re-mark active flags in reader tools
+						$.articleFeedbackv5special.markActiveFlags( id );
+
+						// re-bind panels (tipsies)
+						$.articleFeedbackv5special.bindTipsies( id );
+
+						// invoke the registered onSuccess callback for the executed action
+						if ( data.result === 'Success' ) {
 							if ( 'onSuccess' in $.articleFeedbackv5special.actions[action] ) {
 								$.articleFeedbackv5special.actions[action].onSuccess( id, data );
 							}
 
-							// re-mark active flags in reader tools
-							$.articleFeedbackv5special.markActiveFlags( id );
+						// display error message
+						} else if ( data.result === 'Error' && data.reason ) {
+							var errorMessage = mw.msg( data.reason );
+							if ( 'render' in data ) {
+								errorMessage = mw.msg( 'articlefeedbackv5-feedback-reloaded-after-error', errorMessage );
+							}
 
-							// re-enable ajax flagging
-							$.articleFeedbackv5special.listControls.disabled = false;
-
-							// re-bind panels (tipsies)
-							$.articleFeedbackv5special.bindTipsies( id );
-							return true;
-						} else if ( data['articlefeedbackv5-flag-feedback'].result == 'Error' ) {
-							mw.log( mw.msg( data['articlefeedbackv5-flag-feedback'].reason ) );
+							$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
+								.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
 						}
 					}
 				}
@@ -734,7 +733,9 @@
 				$.articleFeedbackv5special.listControls.disabled = false;
 			},
 			'error': function ( data ) {
-				$( '#articleFeedbackv5-' + type + '-link-' + id ).text( mw.msg( 'articlefeedbackv5-error-flagging' ) );
+				var errorMessage = mw.msg( 'articlefeedbackv5-error-flagging' );
+				$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
+					.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
 
 				// re-enable ajax flagging
 				$.articleFeedbackv5special.listControls.disabled = false;
@@ -749,11 +750,12 @@
 	 * Updates the previous flag with a textual comment about it
 	 *
 	 * @param id		int			the feedback id
+	 * @param pageId	int			the page id
 	 * @param logId		int			the log id
 	 * @param action	string		original action
 	 * @param note		string		note for action (default empty)
 	 */
-	$.articleFeedbackv5special.addNote = function ( id, logId, action, note ) {
+	$.articleFeedbackv5special.addNote = function ( id, pageId, logId, action, note ) {
 		// note should be filled out or there's no point in firing this request
 		if ( !note ) {
 			return false;
@@ -766,30 +768,41 @@
 
 		// Merge request data and options objects (flat)
 		var requestData = {
-			'logid'     : logId,
-			'note'      : note,
-			'flagtype'  : action,
-			'format'    : 'json',
-			'action'    : 'articlefeedbackv5-add-flag-note'
+			'feedbackid': id,
+			'pageid': pageId,
+			'logid': logId,
+			'note': note,
+			'flagtype': action,
+			'source': $.articleFeedbackv5special.getSource(),
+			'format': 'json',
+			'action': 'articlefeedbackv5-add-flag-note'
 		};
 
 		$.ajax( {
-			'url'     : $.articleFeedbackv5special.apiUrl,
-			'type'    : 'POST',
+			'url': $.articleFeedbackv5special.apiUrl,
+			'type': 'POST',
 			'dataType': 'json',
-			'data'    : requestData,
+			'data': requestData,
 			'success': function ( data ) {
 				if ( 'articlefeedbackv5-add-flag-note' in data ) {
-					if ( 'result' in data['articlefeedbackv5-add-flag-note'] ) {
-						if ( data['articlefeedbackv5-add-flag-note'].result == 'Success' ) {
-							// remove "add note" link
-							$( '#articleFeedbackv5-note-link-' + id ).remove();
+					data = data['articlefeedbackv5-add-flag-note'];
 
-							// re-enable ajax flagging
-							$.articleFeedbackv5special.listControls.disabled = false;
-
-							return true;
+					if ( 'result' in data ) {
+						if ( data.result === 'Success' ) {
+							// replace entry by new render
+							$( '.articleFeedbackv5-feedback[data-id='+id+']' )
+								.replaceWith( data.render );
 						}
+
+					// display error message
+					} else if ( data.result === 'Error' && data.reason ) {
+						var errorMessage = mw.msg( data.reason );
+						if ( 'render' in data ) {
+							errorMessage = mw.msg( 'articlefeedbackv5-feedback-reloaded-after-error', errorMessage );
+						}
+
+						$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
+							.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
 					}
 				}
 
@@ -797,6 +810,10 @@
 				$.articleFeedbackv5special.listControls.disabled = false;
 			},
 			'error': function ( data ) {
+				var errorMessage = mw.msg( 'articlefeedbackv5-invalid-log-update' );
+				$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
+					.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
+
 				// re-enable ajax flagging
 				$.articleFeedbackv5special.listControls.disabled = false;
 			}
@@ -1183,6 +1200,27 @@
 			flatActivity.join( '|' ),
 			{ 'expires': 365, 'path': '/' }
 		);
+	};
+
+	// }}}
+	// {{{ getSource
+
+	/**
+	 * In the log, we'll save the source an action originates from - this will
+	 * return what type of page we're currently on.
+	 *
+	 * @return string
+	 */
+	$.articleFeedbackv5special.getSource = function() {
+		if ( $.articleFeedbackv5special.watchlist ) {
+			return 'watchlist';
+		} else if ( $.articleFeedbackv5special.listControls.filter === 'id' ) {
+			return 'permalink';
+		} else if ( $.articleFeedbackv5special.page ) {
+			return 'article';
+		} else {
+			return 'central';
+		}
 	};
 
 	// }}}
