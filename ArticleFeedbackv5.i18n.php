@@ -286,7 +286,8 @@ We appreciate your contributions to this page!
 	'articlefeedbackv5-page-disabled' => 'Article Feedback page not enabled for this page.',
 	'articlefeedbackv5-no-feedback' => "There is no feedback for the filter you selected. To change your filter, try one of the options above (e.g.: 'Featured' or 'Unreviewed').",
 	'articlefeedbackv5-invalid-feedback' => 'The requested feedback does not exist.',
-	'articlefeedbackv5-viewactivity' => 'View activity',
+	'articlefeedbackv5-viewactivity' => 'View activity/read note',
+	'articlefeedbackv5-viewactivity-empty' => 'View activity',
 	'articlefeedbackv5-mask-view-contents' => 'View contents',
 	'articlefeedbackv5-mask-text-inappropriate' => 'This post #$1 {{GENDER:$2|was marked as inappropriate by $2}} $3.',
 	'articlefeedbackv5-mask-text-autohide' => 'This post #$1 {{GENDER:$2|was autohidden by $2}} $3.',
@@ -1160,6 +1161,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-no-feedback' => 'A message to be displayed on the article feedback page when there is no feedback yet for a certain filter.',
 	'articlefeedbackv5-invalid-feedback' => 'A message to be displayed on the article feedback page when the requested feedback could not be found (does not exist).',
 	'articlefeedbackv5-viewactivity' => 'Text for the link to see the log of activity (e.g. mark as helpful, resolve, oversight, ...) taken towards feedback',
+	'articlefeedbackv5-viewactivity-empty' => 'Text for the link to see the log of activity, if no note was added for the last moderation action (e.g. mark as helpful, resolve, oversight, ...) taken towards feedback',
 	'articlefeedbackv5-mask-view-contents' => 'Pseudo-link to make it obvious that clicking there will reveal the original feedback content',
 	'articlefeedbackv5-mask-text-inappropriate' => 'Text to be displayed on the marked as inappropriate post mask. Parameters:
 * $1 - The feedback post id

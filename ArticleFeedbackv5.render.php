@@ -1044,11 +1044,11 @@ class ArticleFeedbackv5Render {
 							'a',
 							array(
 								'id' => "articleFeedbackv5-activity-link-$record->aft_id",
-								'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-activity-link', // tipsy for given data-action will be loaded when clicked
+								'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-activity-link'.( $last->log_comment ? '' : ' articleFeedbackv5-activity-link-empty' ), // tipsy for given data-action will be loaded when clicked
 								'href' => '#',
 								'data-action' => 'activity',
 							),
-							wfMessage( 'articlefeedbackv5-viewactivity' )->text()
+							wfMessage( 'articlefeedbackv5-viewactivity'.( $last->log_comment ? '' : '-empty' ) )->text()
 						) .
 
 						// tools (undo & possibly oversight-related actions)
