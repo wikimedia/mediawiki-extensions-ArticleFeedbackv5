@@ -181,6 +181,25 @@ class ArticleFeedbackv5Activity {
 		if ( $logId !== null ) {
 			// update log count in cache
 			static::incrementActivityCount( $itemId, $type );
+
+			$feedback = ArticleFeedbackv5Model::get( $itemId, $pageId );
+			if ( $feedback ) {
+				global $wgMemc;
+
+				/*
+				 * While we're at it, since activity has occurred, the editor activity
+				 * data in cache may be out of date.
+				 */
+				$key = wfMemcKey( get_called_class(), 'getLastEditorActivity', $feedback->aft_id );
+				$wgMemc->delete( $key );
+
+				/*
+				 * Re-cache the editor activity right away. Otherwise, it could happen that
+				 * another user is reading the editor activity from a lagged slave & that
+				 * data gets cached.
+				 */
+				$feedback->getLastEditorActivity();
+			}
 		}
 
 		return $logId;
@@ -323,11 +342,6 @@ class ArticleFeedbackv5Activity {
 		if ( $count !== false ) {
 			$wgMemc->set( $key, $count + 1, 60 * 60 * 24 * 7 );
 		}
-
-		// while we're at it, since activity has occured, the editor activity
-		// data in cache may be out of date
-		$key = wfMemcKey( get_called_class(), 'getLastEditorActivity', $feedbackId );
-		$wgMemc->delete( $key );
 	}
 
 	/**

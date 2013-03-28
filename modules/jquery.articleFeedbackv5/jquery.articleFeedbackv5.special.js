@@ -408,6 +408,7 @@
 			} else {
 				var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
 				var id = $container.data( 'id' );
+				var pageId = $container.data( 'pageid' );
 
 				var $noteLink = $container.find( '#articleFeedbackv5-note-link-' + id );
 				var logId = $noteLink.data( 'log-id' );
@@ -415,6 +416,7 @@
 
 				$.articleFeedbackv5special.addNote(
 					id,
+					pageId,
 					logId,
 					action,
 					$( '#articleFeedbackv5-noteflyover-note' ).attr( 'value' )
@@ -748,12 +750,13 @@
 	/**
 	 * Updates the previous flag with a textual comment about it
 	 *
-	 * @param id		int			the feedback id
-	 * @param logId		int			the log id
-	 * @param action	string		original action
-	 * @param note		string		note for action (default empty)
+	 * @param feedbackId	int			the feedback id
+	 * @param pageId		int			the page id
+	 * @param logId			int			the log id
+	 * @param action		string		original action
+	 * @param note			string		note for action (default empty)
 	 */
-	$.articleFeedbackv5special.addNote = function ( id, logId, action, note ) {
+	$.articleFeedbackv5special.addNote = function ( feedbackId, pageId, logId, action, note ) {
 		// note should be filled out or there's no point in firing this request
 		if ( !note ) {
 			return false;
@@ -766,24 +769,26 @@
 
 		// Merge request data and options objects (flat)
 		var requestData = {
-			'logid'     : logId,
-			'note'      : note,
-			'flagtype'  : action,
-			'format'    : 'json',
-			'action'    : 'articlefeedbackv5-add-flag-note'
+			'feedbackid' : feedbackId,
+			'pageid' : pageId,
+			'logid' : logId,
+			'note' : note,
+			'flagtype' : action,
+			'format' : 'json',
+			'action' : 'articlefeedbackv5-add-flag-note'
 		};
 
 		$.ajax( {
-			'url'     : $.articleFeedbackv5special.apiUrl,
-			'type'    : 'POST',
+			'url' : $.articleFeedbackv5special.apiUrl,
+			'type' : 'POST',
 			'dataType': 'json',
-			'data'    : requestData,
+			'data' : requestData,
 			'success': function ( data ) {
 				if ( 'articlefeedbackv5-add-flag-note' in data ) {
 					if ( 'result' in data['articlefeedbackv5-add-flag-note'] ) {
 						if ( data['articlefeedbackv5-add-flag-note'].result == 'Success' ) {
 							// remove "add note" link
-							$( '#articleFeedbackv5-note-link-' + id ).remove();
+							$( '#articleFeedbackv5-note-link-' + feedbackId ).remove();
 
 							// re-enable ajax flagging
 							$.articleFeedbackv5special.listControls.disabled = false;
