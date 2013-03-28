@@ -705,8 +705,10 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 	'messages' => array(
 		'articlefeedbackv5-error-flagging',
 		'articlefeedbackv5-invalid-feedback-id',
-		'articlefeedbackv5-invalid-feedback-flag',
 		'articlefeedbackv5-invalid-log-id',
+		'articlefeedbackv5-invalid-feedback-flag',
+		'articlefeedbackv5-invalid-feedback-state',
+		'articlefeedbackv5-feedback-reloaded-after-error',
 
 		'articlefeedbackv5-comment-more',
 		'articlefeedbackv5-comment-less',
