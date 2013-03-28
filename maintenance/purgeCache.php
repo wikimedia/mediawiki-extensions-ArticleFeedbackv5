@@ -59,7 +59,7 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 		}
 
 		// feedback last editor activity
-		$key = wfMemcKey( get_called_class(), 'getLastEditorActivity', $object->aft_id );
+		$key = wfMemcKey( 'ArticleFeedbackv5Activity', 'getLastEditorActivity', $object->aft_id );
 		$wgMemc->delete( $key );
 	}
 
@@ -74,7 +74,7 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 		$class = $this->getClass();
 
 		// clear page found percentage
-		$key = wfMemcKey( get_called_class(), 'getCountFound', $shard );
+		$key = wfMemcKey( $class, 'getCountFound', $shard );
 		$class::getCache()->delete( $key );
 	}
 }
