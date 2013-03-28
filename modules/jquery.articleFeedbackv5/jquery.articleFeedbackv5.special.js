@@ -408,6 +408,7 @@
 			} else {
 				var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
 				var id = $container.data( 'id' );
+				var pageId = $container.data( 'pageid' );
 
 				var $noteLink = $container.find( '#articleFeedbackv5-note-link-' + id );
 				var logId = $noteLink.data( 'log-id' );
@@ -415,6 +416,7 @@
 
 				$.articleFeedbackv5special.addNote(
 					id,
+					pageId,
 					logId,
 					action,
 					$( '#articleFeedbackv5-noteflyover-note' ).attr( 'value' )
@@ -671,36 +673,24 @@
 			$.articleFeedbackv5special.listControls.disabled = true;
 		}
 
-		// origin of the flag
-		var source = 'unknown';
-		if ( $.articleFeedbackv5special.watchlist ) {
-			source = 'watchlist';
-		} else if ( $.articleFeedbackv5special.listControls.filter == 'id' ) {
-			source = 'permalink';
-		} else if ( $.articleFeedbackv5special.page ) {
-			source = 'article';
-		} else {
-			source = 'central';
-		}
-
 		// Merge request data and options objects (flat)
 		var requestData = {
-			'pageid'    : pageId,
+			'pageid': pageId,
 			'feedbackid': id,
-			'flagtype'  : action,
-			'note'      : note,
-			'source'    : source,
-			'format'    : 'json',
-			'action'    : 'articlefeedbackv5-flag-feedback'
+			'flagtype': action,
+			'note': note,
+			'source': $.articleFeedbackv5special.getSource(),
+			'format': 'json',
+			'action': 'articlefeedbackv5-flag-feedback'
 		};
 		// this "options" is currently solely used to add "toggle" to params, when appropriate
 		$.extend( requestData, options );
 
 		$.ajax( {
-			'url'     : $.articleFeedbackv5special.apiUrl,
-			'type'    : 'POST',
+			'url': $.articleFeedbackv5special.apiUrl,
+			'type': 'POST',
 			'dataType': 'json',
-			'data'    : requestData,
+			'data': requestData,
 			'success': function ( data ) {
 				var msg = 'articlefeedbackv5-error-flagging';
 				if ( 'articlefeedbackv5-flag-feedback' in data ) {
@@ -749,11 +739,12 @@
 	 * Updates the previous flag with a textual comment about it
 	 *
 	 * @param id		int			the feedback id
+	 * @param pageId	int			the page id
 	 * @param logId		int			the log id
 	 * @param action	string		original action
 	 * @param note		string		note for action (default empty)
 	 */
-	$.articleFeedbackv5special.addNote = function ( id, logId, action, note ) {
+	$.articleFeedbackv5special.addNote = function ( id, pageId, logId, action, note ) {
 		// note should be filled out or there's no point in firing this request
 		if ( !note ) {
 			return false;
@@ -766,24 +757,28 @@
 
 		// Merge request data and options objects (flat)
 		var requestData = {
-			'logid'     : logId,
-			'note'      : note,
-			'flagtype'  : action,
-			'format'    : 'json',
-			'action'    : 'articlefeedbackv5-add-flag-note'
+			'feedbackid': id,
+			'pageid': pageId,
+			'logid': logId,
+			'note': note,
+			'flagtype': action,
+			'source': $.articleFeedbackv5special.getSource(),
+			'format': 'json',
+			'action': 'articlefeedbackv5-add-flag-note'
 		};
 
 		$.ajax( {
-			'url'     : $.articleFeedbackv5special.apiUrl,
-			'type'    : 'POST',
+			'url': $.articleFeedbackv5special.apiUrl,
+			'type': 'POST',
 			'dataType': 'json',
-			'data'    : requestData,
+			'data': requestData,
 			'success': function ( data ) {
 				if ( 'articlefeedbackv5-add-flag-note' in data ) {
 					if ( 'result' in data['articlefeedbackv5-add-flag-note'] ) {
 						if ( data['articlefeedbackv5-add-flag-note'].result == 'Success' ) {
-							// remove "add note" link
-							$( '#articleFeedbackv5-note-link-' + id ).remove();
+							// replace entry by new render
+							$( '.articleFeedbackv5-feedback[data-id='+id+']' )
+								.replaceWith( data['articlefeedbackv5-add-flag-note'].render );
 
 							// re-enable ajax flagging
 							$.articleFeedbackv5special.listControls.disabled = false;
@@ -1183,6 +1178,27 @@
 			flatActivity.join( '|' ),
 			{ 'expires': 365, 'path': '/' }
 		);
+	};
+
+	// }}}
+	// {{{ getSource
+
+	/**
+	 * In the log, we'll save the source an action originates from - this will
+	 * return what type of page we're currently on.
+	 *
+	 * @return string
+	 */
+	$.articleFeedbackv5special.getSource = function() {
+		if ( $.articleFeedbackv5special.watchlist ) {
+			return 'watchlist';
+		} else if ( $.articleFeedbackv5special.listControls.filter == 'id' ) {
+			return 'permalink';
+		} else if ( $.articleFeedbackv5special.page ) {
+			return 'article';
+		} else {
+			return 'central';
+		}
 	};
 
 	// }}}

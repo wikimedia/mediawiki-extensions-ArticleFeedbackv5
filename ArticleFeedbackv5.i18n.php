@@ -183,6 +183,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-inappropriate-marker' => 'Inappropriate',
 	'articlefeedbackv5-archive-marker' => 'Archived',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 flag|$1 flags}}',
+	'articlefeedbackv5-form-note-added' => 'Note added',
 	'articlefeedbackv5-form-note' => 'Add note',
 	'articlefeedbackv5-form-feature' => 'Useful',
 	'articlefeedbackv5-form-unfeature' => 'Undo',
@@ -1018,6 +1019,7 @@ The abuse policy link.',
 {{Identical|Inappropriate}}',
 	'articlefeedbackv5-archive-marker' => 'The marker that appears on a comment if it has been archived',
 	'articlefeedbackv5-form-abuse-count' => 'Shows how many times the feedback has been flagged as abuse.  $1 is the count.',
+	'articlefeedbackv5-form-note-added' => 'Text to be displayed near the link to see the activity log, to indicate that a note has been entered to clarify the last moderation action (which will be visible in the activity log)',
 	'articlefeedbackv5-form-note' => 'Link text to add a comment for the action you just flagged (in the toolbox).
 {{Identical|Add note}}',
 	'articlefeedbackv5-form-feature' => 'Link text for marking the post as useful (in the toolbox).

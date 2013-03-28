@@ -986,11 +986,11 @@ class ArticleFeedbackv5Render {
 					}
 				}
 
-				$addNoteLink = '';
+				$note = '';
 				// if current user is the one who performed the action, add a link to
 				// leave a note to clarify why the action was performed
 				if ( $last->log_comment == '' && $last->log_user && $last->log_user == $wgUser->getId() ) {
-					$addNoteLink .=
+					$note .=
 						Html::element(
 							'a',
 							array(
@@ -1003,6 +1003,12 @@ class ArticleFeedbackv5Render {
 							),
 							wfMessage( 'articlefeedbackv5-form-note' )->text()
 						);
+				} elseif ( $last->log_comment ) {
+					$note .= Html::rawElement(
+						'span',
+						array( 'class' => "articleFeedbackv5-note-added" ),
+						wfMessage( 'articlefeedbackv5-form-note-added' )->parse()
+					);
 				}
 
 
@@ -1037,7 +1043,7 @@ class ArticleFeedbackv5Render {
 						) .
 
 						// link to add note
-						$addNoteLink .
+						$note .
 
 						// link for activity log popup
 						Html::element(
