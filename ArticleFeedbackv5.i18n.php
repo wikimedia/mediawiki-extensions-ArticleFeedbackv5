@@ -1136,7 +1136,7 @@ Parameters
 	'articlefeedbackv5-invalid-feedback-flag' => 'Message to be displayed when, though the api, an invalid flag parameter (e.g. oversight, feature, helpful, ...) is given.',
 	'articlefeedbackv5-invalid-feedback-state' => "Message to be displayed when, though the api, the flag parameter can't be executed (e.g. oversighting an already oversighted article).",
 	'articlefeedbackv5-go-to-article' => 'Link text for a link back to the article page from the feedback page.',
-	'articlefeedbackv5-discussion-page' => '{{Identical|Discussion}}',
+	'articlefeedbackv5-discussion-page' => '{{Identical|Talk}}',
 	'articlefeedbackv5-whats-this' => '{{Identical|Help}}',
 	'articlefeedbackv5-invalid-page-id' => 'Message to be displayed when the feedback page for a non-existiting article page is requested.',
 	'articlefeedbackv5-found-percent' => 'Text describing the percentage of readers that answered positively to the question "Did you find what you were looking for". Parameters:
@@ -4034,6 +4034,7 @@ $messages['cy'] = array(
 );
 
 /** Danish (dansk)
+ * @author Cgtdk
  * @author Christian List
  * @author Hylle
  * @author Kaare
@@ -4073,7 +4074,9 @@ $messages['da'] = array(
 	'articlefeedbackv5-contribs-status-action-feature' => 'Fremhævet', # Fuzzy
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Løst',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Skjult',
+	'articlefeedbackv5-contribs-status-action-archive' => 'Arkiveret',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'skjult kommentar',
+	'articlefeedbackv5-form-toolbox-label' => 'Marker som:',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Ja',
 	'articlefeedbackv5-form-helpful-no-label' => 'Nej',
 	'articlefeedbackv5-special-survey-button-text' => 'Hvad synes du om feedbackværktøjet?',
@@ -4094,6 +4097,7 @@ $messages['da'] = array(
 	'articleFeedbackv5-details-link' => 'Detaljer',
 	'articlefeedbackv5-revision-link' => '(se gammel artikel)', # Fuzzy
 	'articlefeedbackv5-special-more' => 'Vis flere indlæg',
+	'articlefeedbackv5-special-refresh' => 'Opdater liste',
 	'articlefeedbackv5-loading-tag' => 'Indlæser...',
 	'articlefeedbackv5-new-marker' => 'Ny',
 	'articlefeedbackv5-hide-marker' => 'Skjult', # Fuzzy
@@ -7323,7 +7327,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-form-unresolve' => 'Merkitse ei-ratkaistuksi', # Fuzzy
 	'articlefeedbackv5-form-inappropriate' => 'Piilota tämä viesti',
 	'articlefeedbackv5-form-hide' => 'Piilota tämä viesti',
-	'articlefeedbackv5-form-unhide' => 'Poista viestin piilotus', # Fuzzy
+	'articlefeedbackv5-form-unhide' => 'Kumoa',
 	'articlefeedbackv5-form-helpful' => 'Merkitse hyödylliseksi ($1)',
 	'articlefeedbackv5-form-oversight' => 'Pyydä häivytystä', # Fuzzy
 	'articlefeedbackv5-form-unoversight' => 'Poista häivytyspyyntö', # Fuzzy
@@ -7346,7 +7350,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-invalid-feedback-id' => 'Kelpaamaton palautteen tunnistenumero',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Kelpaamaton palautteen merkintä',
 	'articlefeedbackv5-invalid-feedback-state' => 'Kelpaamaton palautemerkinnän tila',
-	'articlefeedbackv5-go-to-article' => 'Näytä artikkeli', # Fuzzy
+	'articlefeedbackv5-go-to-article' => 'Näytä sivu',
 	'articlefeedbackv5-discussion-page' => 'Keskustelu',
 	'articlefeedbackv5-whats-this' => 'Ohje',
 	'articlefeedbackv5-invalid-page-id' => 'Kelpaamaton sivun tunnistenumero',
@@ -7547,6 +7551,7 @@ $4', # Fuzzy
  * @author Jean-Frédéric
  * @author Ltrlg
  * @author McDutchie
+ * @author Nnemo
  * @author Od1n
  * @author Peter17
  * @author Seb35
@@ -7760,7 +7765,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-form-tooltip-discuss-talk' => 'Discuter du commentaire sur la page de discussion de la page',
 	'articlefeedbackv5-form-tooltip-discuss-user' => "Discutez de vos commentaires avec l'utilisateur",
 	'articlefeedbackv5-discuss-talk-section-title' => 'Retour du lecteur :$1',
-	'articlefeedbackv5-discuss-user-section-title' => 'Vos commentaires sur "$2"',
+	'articlefeedbackv5-discuss-user-section-title' => 'Vos commentaires sur « $2 »',
 	'articlefeedbackv5-discuss-talk-section-content' => '$1 a posté [[$2|ce commentaire]] sur $3 ([[$5|voir tous les retours]]). 
 
 $6
@@ -7768,7 +7773,7 @@ $6
 Avez-vous des remarques à formuler ?
 
 ~~~~',
-	'articlefeedbackv5-discuss-user-section-content' => 'Merci d\'avoir posté votre retour sur "$7".
+	'articlefeedbackv5-discuss-user-section-content' => "Merci d'avoir posté votre retour sur « $7 ».
 
 Vous avez posté ce commentaire sur $3 ([[$5|voir tous les retours]]).
 
@@ -7776,7 +7781,7 @@ $6
 
 Nous apprécions vos contributions à cette page!
 
-~~~~',
+~~~~",
 	'articlefeedbackv5-form1-header-found' => "{{GENDER:$1|$2 a trouvé ce qu'il cherchait|$2 a trouvé ce qu'elle cherchait}}",
 	'articlefeedbackv5-form1-header-not-found' => "{{GENDER:$1|$2 n'a pas trouvé ce qu'il cherchait|$2 n'a pas trouvé ce qu'elle cherchait}}",
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 a publié un commentaire.}}',
@@ -7806,11 +7811,11 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-comment-more' => 'Plus',
 	'articlefeedbackv5-comment-empty' => "Aucun texte n'a été entré",
 	'articlefeedbackv5-header-message' => "Veuillez privilégier des commentaires constructifs permettant l'améliorer la page. $1",
-	'articlefeedbackv5-header-message-link-text' => 'En savoir plus',
+	'articlefeedbackv5-header-message-link-text' => 'En savoir plus.',
 	'articlefeedbackv5-beta-label' => 'Bêta',
 	'articlefeedbackv5-unsupported-message' => "Désolé, votre navigateur n'est pas supporté par ce prototype. Pour voir cette page, veuillez utiliser un autre navigateur.",
 	'articlefeedbackv5-page-disabled' => 'L’outil de commentaires n’est pas activé pour cet article.',
-	'articlefeedbackv5-no-feedback' => "Il n’y a pas de retour correspondant au filtre que vous avez sélectionné. Pour modifier le filtre, essayez une des options ci-dessous (par ex. : 'Les plus pertinents' ou 'Tous les commentaires').",
+	'articlefeedbackv5-no-feedback' => 'Il n’y a pas de retour correspondant au filtre sélectionné. Pour modifier le filtre, essayez une des options (par ex. : « Pertinent » ou « Tous les commentaires »).',
 	'articlefeedbackv5-invalid-feedback' => "Le retour demandé n'existe pas",
 	'articlefeedbackv5-viewactivity' => 'Voir l’activité',
 	'articlefeedbackv5-mask-view-contents' => 'Afficher les contenus',
@@ -7895,12 +7900,12 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-noteflyover-feature-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Ne plus marquer comme utile',
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Pourquoi ne marquez-vous plus ce billet comme utile?',
+	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Pourquoi ne marquez-vous plus ce billet comme utile ?',
 	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-resolve-caption' => 'Marqué comme résolu',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Pourquoi avez-vous marqué ce billet comme résolu?',
+	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Pourquoi avez-vous marqué ce billet comme résolu ?',
 	'articlefeedbackv5-noteflyover-resolve-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Plus marqué comme résolu',
@@ -7920,12 +7925,12 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-noteflyover-unhide-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-noaction-caption' => 'Marqué comme non recevable',
 	'articlefeedbackv5-noteflyover-noaction-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-noaction-placeholder' => 'Pourquoi avez-vous marqué ce billet comme non recevable?',
+	'articlefeedbackv5-noteflyover-noaction-placeholder' => 'Pourquoi avez-vous marqué ce billet comme non recevable ?',
 	'articlefeedbackv5-noteflyover-noaction-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-noaction-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-unnoaction-caption' => 'Plus marqué comme non recevable',
 	'articlefeedbackv5-noteflyover-unnoaction-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-unnoaction-placeholder' => 'Pourquoi avez-vous supprimé le marquage de ce billet comme non recevable?',
+	'articlefeedbackv5-noteflyover-unnoaction-placeholder' => 'Pourquoi avez-vous supprimé le marquage de ce billet comme non recevable ?',
 	'articlefeedbackv5-noteflyover-unnoaction-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-unnoaction-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-inappropriate-caption' => 'Marqué comme inapproprié',
@@ -7945,7 +7950,7 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-noteflyover-archive-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-unarchive-caption' => 'Désarchiver',
 	'articlefeedbackv5-noteflyover-unarchive-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-unarchive-placeholder' => 'Pourquoi avez-vous désarchivé ce billet?',
+	'articlefeedbackv5-noteflyover-unarchive-placeholder' => 'Pourquoi avez-vous désarchivé ce billet ?',
 	'articlefeedbackv5-noteflyover-unarchive-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-unarchive-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-request-caption' => 'Demander un masquage',
@@ -7955,7 +7960,7 @@ Nous apprécions vos contributions à cette page!
 * lien Web pornographique ;
 * commentaire diffamatoire sur une personne.',
 	'articlefeedbackv5-noteflyover-request-label' => 'Ajouter une note pour expliquer pourquoi vous demandez un masquage',
-	'articlefeedbackv5-noteflyover-request-placeholder' => 'Pourquoi avez-vous demandé un masquage?',
+	'articlefeedbackv5-noteflyover-request-placeholder' => 'Pourquoi avez-vous demandé un masquage ?',
 	'articlefeedbackv5-noteflyover-request-submit' => 'Demander un masquage',
 	'articlefeedbackv5-noteflyover-request-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-unrequest-caption' => 'Demande de surveillance annulée',
@@ -7970,7 +7975,7 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-noteflyover-oversight-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Billet non surveillé',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-unoversight-placeholder' => "Pourquoi n'avez-vous plus surveillé ce billet?",
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => "Pourquoi n'avez-vous plus surveillé ce billet ?",
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-decline-caption' => 'Surveillance refusée',
@@ -8008,7 +8013,7 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Formidable. Des suggestions pour l’améliorer ?',
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => "Écrivez votre suggestion ici (par ex.: 'Cette page a besoin d’une image')",
 	'articlefeedbackv5-bucket6-question-instructions-no' => "Désolé à ce sujet. Une suggestion d'amélioration ?",
-	'articlefeedbackv5-bucket6-question-placeholder-no' => "Écrivez votre suggestion ici (par ex.: 'Cette page a besoin d’une image')",
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Écrivez votre suggestion ici (par exemple&nbsp;: « Cette page a besoin d’une image »)',
 	'articlefeedbackv5-bucket6-form-submit' => 'Publiez votre avis',
 	'articlefeedbackv5-bucket6-backlink-text' => 'Retour à l’étape 1',
 	'articlefeedbackv5-help-tooltip-title' => 'Qu’est-ce que ceci ?',
@@ -15578,7 +15583,7 @@ $messages['ml'] = array(
 	'articlefeedbackv5-beta-label' => 'ബീറ്റ',
 	'articlefeedbackv5-unsupported-message' => 'ക്ഷമിക്കുക, താങ്കളുടെ ബ്രൗസറിൽ ഈ പരീക്ഷണഘടകത്തിന് പിന്തുണയില്ല. ഈ താൾ കാണാനായി ദയവായി മറ്റൊരു ബ്രൗസർ ഉപയോഗിക്കുക.',
 	'articlefeedbackv5-page-disabled' => 'ഈ ലേഖനത്തിൽ പ്രതികരണം ചേർക്കാനുള്ള സൗകര്യം സജ്ജമാക്കിയിട്ടില്ല.',
-	'articlefeedbackv5-viewactivity' => 'നടപടികൾ കാണുക', # Fuzzy
+	'articlefeedbackv5-viewactivity' => 'പ്രവർത്തനങ്ങൾ കാണുക',
 	'articlefeedbackv5-mask-view-contents' => 'ഉള്ളടക്കം കാണുക',
 	'articlefeedbackv5-mask-text-hide' => 'ഈ കുറിപ്പ് #$1 {{GENDER:$2|$2}} $3 മുമ്പ് മറച്ചതാണ്.', # Fuzzy
 	'articlefeedbackv5-special-disclaimer' => 'ഇത് പ്രാഥമിക രൂപമാണ്. താങ്കളോട് ആവശ്യപ്പെട്ടിട്ടില്ലെങ്കിൽ ദയവായി ഇത് ഉപയോഗിക്കരുത്.',
