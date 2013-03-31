@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DrLAe6Fo",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-03-31T20:25:28Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this if statement be outside the foreach?",
+      "revId": "dbe68046e7248a329b81432b78e4675cc8bc1746",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
