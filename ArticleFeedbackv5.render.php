@@ -706,8 +706,6 @@ class ArticleFeedbackv5Render {
 				}
 
 				if ( $action ) {
-					// Give grep a chance to find the usages:
-					// articlefeedbackv5-form-tooltip-hide-own, articlefeedbackv5-form-tooltip-unhide-own
 					$ownPost =
 						Html::rawElement(
 							'div',
@@ -717,10 +715,14 @@ class ArticleFeedbackv5Render {
 								array(
 									'id' => "articleFeedbackv5-$action-link-$id",
 									'class' => "articleFeedbackv5-$action-link articleFeedbackv5-$action-own-link",
+									// Give grep a chance to find the usages:
+									// articlefeedbackv5-form-tooltip-noaction-own, articlefeedbackv5-form-tooltip-unnoaction-own
 									'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-own" )->text(),
 									'href' => '#',
 									'data-action' => $action,
 								),
+								// Give grep a chance to find the usages:
+								// articlefeedbackv5-form-noaction-own, articlefeedbackv5-form-unnoaction-own
 								wfMessage( "articlefeedbackv5-form-$action-own" )->text()
 							)
 						);
@@ -921,8 +923,6 @@ class ArticleFeedbackv5Render {
 						$class .= " articleFeedbackv5-$action-exists-link";
 					}
 
-					// Give grep a chance to find the usages:
-					// articlefeedbackv5-form-tooltip-discuss-talk, articlefeedbackv5-form-tooltip-discuss-user
 					$tools .= Html::rawElement(
 						'li',
 						array(),
@@ -931,6 +931,8 @@ class ArticleFeedbackv5Render {
 							array(
 								'id' => "articleFeedbackv5-$action-link-$record->aft_id",
 								'class' => $class,
+								// Give grep a chance to find the usages:
+								// articlefeedbackv5-form-tooltip-discuss-talk, articlefeedbackv5-form-tooltip-discuss-user
 								'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-$discussType" )->text(),
 								'href' => $discussLink,
 								'data-action' => $action,
@@ -943,6 +945,9 @@ class ArticleFeedbackv5Render {
 								'data-section-edittoken' => $wgUser->getEditToken(),
 								'data-section-watchlist' => (int) $wgUser->isWatched( $discussPage )
 							),
+							// Give grep a chance to find the usages:
+							// articlefeedbackv5-form-discuss-talk, articlefeedbackv5-form-discuss-user,
+							// articlefeedbackv5-form-discuss-talk-exists, articlefeedbackv5-form-discuss-user-exists
 							wfMessage( "articlefeedbackv5-form-$action-$discussType" . ( $sectionExists ? '-exists' : '' ) )->text()
 						)
 					);

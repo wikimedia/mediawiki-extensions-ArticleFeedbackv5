@@ -109,19 +109,19 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->setIndexPolicy( 'noindex' );
 
 		// these are messages that require some parsing that the current JS mw.msg does not yet support
-		// articlefeedbackv5-noteflyover-helpful, articlefeedbackv5-noteflyover-undo-helpful,
-		// articlefeedbackv5-noteflyover-unhelpful, articlefeedbackv5-noteflyover-undo-unhelpful,
-		// articlefeedbackv5-noteflyover-flag, articlefeedbackv5-noteflyover-unflag,
-		// articlefeedbackv5-noteflyover-autoflag, articlefeedbackv5-noteflyover-clear-flags,
-		// articlefeedbackv5-noteflyover-feature, articlefeedbackv5-noteflyover-unfeature,
-		// articlefeedbackv5-noteflyover-resolve, articlefeedbackv5-noteflyover-unresolve,
-		// articlefeedbackv5-noteflyover-noaction, articlefeedbackv5-noteflyover-unnoaction,
-		// articlefeedbackv5-noteflyover-inappropriate, articlefeedbackv5-noteflyover-uninappropriate,
-		// articlefeedbackv5-noteflyover-archive, articlefeedbackv5-noteflyover-unarchive,
-		// articlefeedbackv5-noteflyover-hide, articlefeedbackv5-noteflyover-unhide,
-		// articlefeedbackv5-noteflyover-autohide, articlefeedbackv5-noteflyover-request,
-		// articlefeedbackv5-noteflyover-unrequest, articlefeedbackv5-noteflyover-decline,
-		// articlefeedbackv5-noteflyover-oversight, articlefeedbackv5-noteflyover-unoversight
+		// articlefeedbackv5-noteflyover-helpful-description, articlefeedbackv5-noteflyover-undo-helpful-description,
+		// articlefeedbackv5-noteflyover-unhelpful-description, articlefeedbackv5-noteflyover-undo-unhelpful-description,
+		// articlefeedbackv5-noteflyover-flag-description, articlefeedbackv5-noteflyover-unflag-description,
+		// articlefeedbackv5-noteflyover-autoflag-description, articlefeedbackv5-noteflyover-clear-flags-description,
+		// articlefeedbackv5-noteflyover-feature-description, articlefeedbackv5-noteflyover-unfeature-description,
+		// articlefeedbackv5-noteflyover-resolve-description, articlefeedbackv5-noteflyover-unresolve-description,
+		// articlefeedbackv5-noteflyover-noaction-description, articlefeedbackv5-noteflyover-unnoaction-description,
+		// articlefeedbackv5-noteflyover-inappropriate-description, articlefeedbackv5-noteflyover-uninappropriate-description,
+		// articlefeedbackv5-noteflyover-archive-description, articlefeedbackv5-noteflyover-unarchive-description,
+		// articlefeedbackv5-noteflyover-hide-description, articlefeedbackv5-noteflyover-unhide-description,
+		// articlefeedbackv5-noteflyover-autohide-description, articlefeedbackv5-noteflyover-request-description,
+		// articlefeedbackv5-noteflyover-unrequest-description, articlefeedbackv5-noteflyover-decline-description,
+		// articlefeedbackv5-noteflyover-oversight-description, articlefeedbackv5-noteflyover-unoversight-description
 		$vars = array();
 		foreach ( ArticleFeedbackv5Activity::$actions as $action => $options ) {
 			$message = wfMessage( "articlefeedbackv5-noteflyover-$action-description" )->parse();
