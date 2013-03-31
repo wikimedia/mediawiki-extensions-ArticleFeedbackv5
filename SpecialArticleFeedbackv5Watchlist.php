@@ -82,7 +82,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 				array( 'id' => 'articleFeedbackv5-special-watchlist-showing-wrap' ),
 				$this->msg( 'articlefeedbackv5-special-watchlist-showing',
 					$user->getUserPage()->getFullText(),
-					$user->getName()
+					$user
 				) .
 					Html::rawElement(
 						'span',
