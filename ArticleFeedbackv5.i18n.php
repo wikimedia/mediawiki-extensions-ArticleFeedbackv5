@@ -795,13 +795,15 @@ The abuse policy link.',
 	'articlefeedbackv5-protection-permission-editor' => 'Dropdown menu option to enable AFT for editors only',
 	'articlefeedbackv5-protection-permission-administrator' => 'Dropdown menu option to enable AFT for administrators only',
 	'articlefeedbackv5-contribs-entry' => 'AFT entry line displayed on My Contributions. An example of this line could be: 10:59, 30 August 2012 . . (+55)‎ . . Feedback: Main Page (This is some more feedback, using the AFT feedback form) . . Status: Helpful and Featured
-* $1 - the date with link to feedback permalink - in the example: "10:59, 30 August 2012"
+* $1 - the date & time with link to feedback permalink - in the example: "10:59, 30 August 2012"
 * $2 - the comment character count - in the example: "(+55)"
 * $3 - the feedback permalink - in the example: the link behind "Feedback: Main Page"
 * $4 - the page title - in the example: "Main Page"
 * $5 - the username (only set in the case of newbie log) - not in the example, this will only show up in the newbie log
 * $6 - the comment - in the example: "(This is some more feedback, using the AFT feedback form)"
-* $7 - a list of the feedback\'s current statusses, built out of {{msg-mw|articlefeedbackv5-contribs-entry-status}}, if the status is not empty - in the example: "Status: Helpful and Featured"',
+* $7 - a list of the feedback\'s current statusses, built out of {{msg-mw|articlefeedbackv5-contribs-entry-status}}, if the status is not empty - in the example: "Status: Helpful and Featured"
+* $8 - the date with link to feedback permalink - in the example: "30 August 2012"
+* $9 - the time with link to feedback permalink - in the example: "10:59"',
 	'articlefeedbackv5-contribs-entry-status' => 'The status part of {{msg-mw|articlefeedbackv5-contribs-entry}}. $1 contains the status and can be any combination of helpful, flagged, featured, resolved, hidden, oversight-requested, deleted',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Status when feedback has been marked as helpful',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Status when feedback has been flagged.
@@ -892,7 +894,7 @@ The abuse policy link.',
 * $4 is the plural support for $3.',
 	'articlefeedbackv5-special-watchlist-showing' => "Text to show we're at the page containing feedback on watchlisted articles. Parameters:
 * $1 - a link to the user page
-* $2 - a username",
+* $2 - a username (incl. gender support)",
 	'articlefeedbackv5-special-central-watchlist-link' => 'Text to show on the link on the central feedback page to the watchlist-page. $1 is the link',
 	'articlefeedbackv5-special-watchlist-central-link' => 'Text to show on the link on the watchlist-page to the central feedback page. $1 is the link',
 	'articlefeedbackv5-updates-since' => 'Number of edits made to this article since this feedback was posted. $1 is the number of edits. Requires plural support',
@@ -1823,9 +1825,12 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * $2 - link to user page (GENDER '''not''' supported). its text is any one of the following:
 ** username (for logged-in users)
 ** IP address (for IP users)
-** {{msg-mw|articlefeedbackv5-default-user}} (for magic user)",
+** {{msg-mw|articlefeedbackv5-default-user}} (for magic user)
+* $3 - user gender support",
 	'articlefeedbackv5-activity-feedback-date' => 'Post information timestamp template.
-* $1 - time and date',
+* $1 - time and date,
+* $2 - date
+* $3 - time',
 	'articlefeedbackv5-activity-permalink' => '[Permalink] link text.
 {{Identical|Permalink}}',
 	'articlefeedbackv5-activity-item-request' => 'Activity log entry when oversight was requested (an oversight request asks an oversighter to delete feedback).
