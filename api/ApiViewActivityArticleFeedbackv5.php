@@ -92,12 +92,18 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 							array(),
 							wfMessage( 'articlefeedbackv5-activity-feedback-info', array( $feedback->aft_id ) )
 								->rawParams( ArticleFeedbackv5Utils::getUserLink( $feedback->aft_user, $feedback->aft_user_text ) )
+								->params( $feedback->getUser() )
 								->text()
 						) .
 						Html::element(
 							'div',
 							array(),
-							wfMessage( 'articlefeedbackv5-activity-feedback-date', array( $wgLang->userTimeAndDate( $feedback->aft_timestamp, $wgUser ) ) )->text()
+							wfMessage( 'articlefeedbackv5-activity-feedback-date' )
+								->params(
+									$wgLang->userTimeAndDate( $feedback->aft_timestamp, $wgUser ),
+									$wgLang->userDate( $feedback->aft_timestamp, $wgUser ),
+									$wgLang->userTime( $feedback->aft_timestamp, $wgUser )
+								)->text()
 						) .
 						Html::rawElement(
 							'div',

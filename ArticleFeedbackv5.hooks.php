@@ -443,14 +443,22 @@ class ArticleFeedbackv5Hooks {
 		$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() );
 		$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$record->aft_id" );
 
-		// date
-		$date = $lang->userTimeAndDate( $record->aft_timestamp, $user );
-		$date = Linker::link(
-			$feedbackTitle,
-			htmlspecialchars( $date )
-		);
-		if ( $record->isHidden() || $record->isRequested() || $record->isOversighted() ) {
-			$date = '<span class="history-deleted">' . $date . '</span>';
+		// date & time
+		$dateFormats = array();
+		$dateFormats['timeAndDate'] = $lang->userTimeAndDate( $record->aft_timestamp, $user );
+		$dateFormats['date'] = $lang->userDate( $record->aft_timestamp, $user );
+		$dateFormats['time'] = $lang->userTime( $record->aft_timestamp, $user );
+
+		// if feedback should be hidden from users, a special class "history-deleted" should be added
+		$historyDeleted = ( $record->isHidden() || $record->isRequested() || $record->isOversighted() );
+		foreach ( $dateFormats as $format => &$formattedTime ) {
+			$formattedTime = Linker::link(
+				$feedbackTitle,
+				htmlspecialchars( $formattedTime )
+			);
+			if ( $historyDeleted ) {
+				$formattedTime = '<span class="history-deleted">' . $formattedTime . '</span>';
+			}
 		}
 
 		// show user names for /newbies as there may be different users.
@@ -513,7 +521,7 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		$ret = wfMessage( 'articlefeedbackv5-contribs-entry' )
-			->rawParams( $date ) // date + time
+			->rawParams( $dateFormats['timeAndDate'] ) // timeanddate
 			->params(
 				ChangesList::showCharacterDifference( 0, strlen( $record->aft_comment ) ), // chardiff
 				$feedbackCentralPageTitle->getFullText(), // feedback link
@@ -524,6 +532,7 @@ class ArticleFeedbackv5Hooks {
 				$feedback, // comment
 				$status // status
 			)
+			->rawParams( $dateFormats['date'], $dateFormats['time'] ) // date, time
 			->parse();
 
 		$classes[] = 'mw-aft-contribution';
