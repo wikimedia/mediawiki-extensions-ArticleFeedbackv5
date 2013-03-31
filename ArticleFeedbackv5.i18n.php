@@ -1050,8 +1050,14 @@ The abuse policy link.',
 	'articlefeedbackv5-form-unrequest' => 'Remove request for oversight (request that an oversighter review the feedback)',
 	'articlefeedbackv5-form-decline' => 'Link text for declining oversight',
 	'articlefeedbackv5-form-declined' => 'Link text when oversight has already been declined',
-	'articlefeedbackv5-form-discuss-talk' => "Link text to discuss feedback in a section on the article's talk page",
-	'articlefeedbackv5-form-discuss-user' => "Link text to discuss feedback in a section on the submitting user's talk page",
+	'articlefeedbackv5-form-discuss-talk' => "Link text to discuss feedback in a section on the article's talk page.
+{{Related|Articlefeedbackv5-form-discuss}}",
+	'articlefeedbackv5-form-discuss-user' => "Link text to discuss feedback in a section on the submitting user's talk page.
+{{Related|Articlefeedbackv5-form-discuss}}",
+	'articlefeedbackv5-form-discuss-talk-exists' => "Link text to discuss/see feedback in a section on the article's talk page.
+{{Related|Articlefeedbackv5-form-discuss}}",
+	'articlefeedbackv5-form-discuss-user-exists' => "Link text to discuss/see feedback in a section on the submitting user's talk page.
+{{Related|Articlefeedbackv5-form-discuss}}",
 	'articlefeedbackv5-form-tooltip-note' => 'Link title-attribute to add a comment for the action you just flagged (in the toolbox)',
 	'articlefeedbackv5-form-tooltip-feature' => 'Link title-attribute for marking the post as useful (in the toolbox)',
 	'articlefeedbackv5-form-tooltip-unfeature' => 'Link title-attribute for un-marking the post as useful (in the toolbox)',
@@ -14256,7 +14262,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 x Jo|$1 x Jo}} / {{PLURAL:$2|1 x Nenn|$2 x Neen}}',
 	'articlefeedbackv5-special-survey-button-text' => 'Wat haalt Dir vun dëser Feedback-Tool?',
 	'articlefeedbackv5-special-filter-featured' => 'Exzellent ($1)',
-	'articlefeedbackv5-special-filter-unreviewed' => 'Net nogekuckt ($1', # Fuzzy
+	'articlefeedbackv5-special-filter-unreviewed' => 'Net nogekuckt ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Hëllefräich ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Net-hëllefräich ($1)',
 	'articlefeedbackv5-special-filter-useful' => 'Nëtzlech ($1)',
@@ -14324,6 +14330,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-form-oversight' => 'Iwwerwaachung',
 	'articlefeedbackv5-form-unoversight' => 'Réckgängeg maachen',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Nees weisen',
+	'articlefeedbackv5-form-tooltip-flag' => 'Quatsch, Spam, Beleidegung, Privat Informatiounen ...',
 	'articlefeedbackv5-form1-header-found' => '$1 huet fonnt wat {{GENDER:$1|$2 hien|$2 si|$2 hien oder si}} gesicht huet',
 	'articlefeedbackv5-form1-header-not-found' => '$1 huet net fonnt wat {{GENDER:$1|$2 hien|$2 si|$2 hien oder si}} gesicht huet',
 	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}} huet e Luef ausgeschwat:',
@@ -15826,6 +15833,7 @@ $messages['ms'] = array(
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Diketepikan',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'komen tersorok',
 	'articlefeedbackv5-form-toolbox-label' => 'Tanda sebagai:',
+	'articlefeedbackv5-form-own-toolbox-label' => 'Tandakan pos anda sebagai:',
 	'articlefeedbackv5-form-own-feedback' => 'Anda tidak boleh menyemak catatan sendiri.',
 	'articlefeedbackv5-form-helpful-label' => 'Adakah maklum balas ini membantu?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Ya',
@@ -15923,7 +15931,7 @@ $messages['ms'] = array(
 	'articlefeedbackv5-invalid-feedback-id' => 'ID maklum balas tidak sah',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Penanda maklum balas tidak sah',
 	'articlefeedbackv5-invalid-feedback-state' => 'Status tanda maklum balas tidak sah',
-	'articlefeedbackv5-go-to-article' => 'Lihat rencana', # Fuzzy
+	'articlefeedbackv5-go-to-article' => 'Lihat halaman',
 	'articlefeedbackv5-discussion-page' => 'Perbincangan',
 	'articlefeedbackv5-whats-this' => 'Bantuan',
 	'articlefeedbackv5-invalid-page-id' => 'ID laman tidak sah',
@@ -15932,7 +15940,7 @@ $messages['ms'] = array(
 	'articlefeedbackv5watchlist' => 'Maklum balas rencana - Halaman pantauan saya',
 	'articlefeedbackv5-desc' => 'Maklum balas rencana',
 	'articlefeedbackv5-comment-more' => 'Lagi',
-	'articlefeedbackv5-header-message' => 'Sila pupuk maklum balas yang baik dan bantu dalam memperbaiki rencana ini. $1', # Fuzzy
+	'articlefeedbackv5-header-message' => 'Sila galakkan maklum balas yang baik dan bantu dalam memperbaiki halaman ini. $1',
 	'articlefeedbackv5-header-message-link-text' => 'Ketahui lebih lanjut',
 	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-unsupported-message' => 'Maaf, pelayar anda tidak disokong oleh prototaip ini. Untuk melihat laman ini, sila gunakan pelayar yang lain.',
@@ -18136,6 +18144,7 @@ $messages['pfl'] = array(
 /** Polish (polski)
  * @author Ankry
  * @author BeginaFelicysym
+ * @author Chrumps
  * @author Lazowik
  * @author Matma Rex
  * @author Odder
@@ -18190,9 +18199,11 @@ $messages['pl'] = array(
 	'articlefeedbackv5-contribs-status-action-feature' => 'Przydatny',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Rozwiązany',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Ukryty',
+	'articlefeedbackv5-contribs-status-action-hide' => 'Ukryj',
 	'articlefeedbackv5-contribs-status-action-request' => 'Poproszono o usunięcie',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Usunięty',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'ukryty komentarz',
+	'articlefeedbackv5-form-toolbox-label' => 'Oznacz jako:',
 	'articlefeedbackv5-form-helpful-label' => 'Czy ta opinia jest pomocna?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Tak',
 	'articlefeedbackv5-form-helpful-no-label' => 'Nie',
@@ -18211,6 +18222,7 @@ $messages['pl'] = array(
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Pomocne',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Nie pomocne',
 	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Rozwiązane',
+	'articlefeedbackv5-special-filter-allcomment-watchlist' => 'Wszystkie komentarze',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'Ukryte',
 	'articlefeedbackv5-special-filter-requested-watchlist' => 'Poproszono o usunięcie',
 	'articlefeedbackv5-special-filter-declined-watchlist' => 'Prośba o usunięcie odrzucona',
@@ -18262,8 +18274,11 @@ $messages['pl'] = array(
 	'articlefeedbackv5-form-unfeature' => 'Odznacz ten wpis', # Fuzzy
 	'articlefeedbackv5-form-resolve' => 'Oznacz jako rozwiązany', # Fuzzy
 	'articlefeedbackv5-form-unresolve' => 'Odznacz jako rozwiązany', # Fuzzy
+	'articlefeedbackv5-form-unnoaction' => 'Cofnij',
 	'articlefeedbackv5-form-inappropriate' => 'Ukryj ten wpis',
+	'articlefeedbackv5-form-uninappropriate' => 'Cofnij',
 	'articlefeedbackv5-form-unhide' => 'Odkryj ten wpis', # Fuzzy
+	'articlefeedbackv5-form-unarchive' => 'Cofnij',
 	'articlefeedbackv5-form-helpful' => 'Oznacz jako przydatny ($1)',
 	'articlefeedbackv5-form-oversight' => 'Prośba o usunięcie', # Fuzzy
 	'articlefeedbackv5-form-unoversight' => 'Anuluj prośbę o usunięcie', # Fuzzy
@@ -20819,7 +20834,7 @@ $messages['sl'] = array(
 	'articlefeedbackv5-desc' => 'Povratna informacija članka',
 	'articlefeedbackv5-comment-more' => 'Več',
 	'articlefeedbackv5-page-disabled' => 'Pri tem članku stran za povratne informacije ni omogočena.',
-	'articlefeedbackv5-viewactivity' => 'Preberi opombo',
+	'articlefeedbackv5-viewactivity' => 'Ogled dejavnosti',
 	'articlefeedbackv5-mask-text-hide' => 'Objavo št. $1 je {{GENDER:$2|skril|skrila|skril(-a)}} $2 $3.',
 	'articlefeedbackv5-mask-text-oversight' => 'Objavo št. $1 je {{GENDER:$2|pregledal|pregledala|pregledal(-a)}} $2 $3.',
 	'articlefeedbackv5-special-disclaimer' => 'To je prototip. Prosimo, da ga ne uporabljate, razen v primeru, če ste bili povabljeni.',
@@ -20842,7 +20857,7 @@ $messages['sl'] = array(
 	'articlefeedbackv5-noteflyover-oversight-caption' => 'Izbris objave',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Dodaj opombo',
 	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Zakaj ste nadzorovali objavo?',
-	'articlefeedbackv5-noteflyover-oversight-submit' => 'Dodaj opombo', # Fuzzy
+	'articlefeedbackv5-noteflyover-oversight-submit' => 'Nadzoruj',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Več o tem.',
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Razveljavil nadzor objave',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Dodajte opombo',
