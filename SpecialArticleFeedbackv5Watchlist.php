@@ -83,14 +83,14 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 				$this->msg( 'articlefeedbackv5-special-watchlist-showing',
 					$user->getUserPage()->getFullText(),
 					$user->getName()
-				) .
-					Html::rawElement(
-						'span',
-						array( 'id' => 'articlefeedbackv5-special-central-watchlist-link' ),
-						$this->msg( 'articlefeedbackv5-special-watchlist-central-link',
-							SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullText()
-						)->parse()
-					)
+				)->parse() .
+				Html::rawElement(
+					'span',
+					array( 'id' => 'articlefeedbackv5-special-central-watchlist-link' ),
+					$this->msg( 'articlefeedbackv5-special-watchlist-central-link',
+						SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullText()
+					)->parse()
+				)
 			);
 	}
 
