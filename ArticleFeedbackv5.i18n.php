@@ -13887,7 +13887,7 @@ Versöhg et shpääder norr_ens.',
 	'articlefeedbackv5-special-pagetitle' => 'Meddeilonge övver „$1“',
 	'articlefeedbackv5-special-permalink-pagetitle' => 'Meddeilong övver „$1“',
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'Meddeilonge zoh Sigge op minge Oppaßleß',
-	'articlefeedbackv5-loading-tag' => 'Ben aam Laade&nbsp;&hellip;',
+	'articlefeedbackv5-loading-tag' => 'Ben aam Laade{{int:ellipsis}}',
 	'articlefeedbackv5-status-hide' => 'Heh dä Beidraach wohd vum $1 aam $2 öm $3 Uhr verschtoche.', # Fuzzy
 	'articlefeedbackv5-status-unhide' => 'Heh dä Beidraach wohd vum $1 aam $2 aff $3 Uhr nit mieh verschtoche.', # Fuzzy
 	'articlefeedbackv5-status-request' => 'För heh dä Beidraach wohd vum $1 aam $2 öm $3 Uhr et Ongerdröcke jewönsch.',
@@ -14329,6 +14329,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-form-flag' => 'Als Mëssbrauch markéieren',
 	'articlefeedbackv5-form-oversight' => 'Iwwerwaachung',
 	'articlefeedbackv5-form-unoversight' => 'Réckgängeg maachen',
+	'articlefeedbackv5-form-discuss-talk' => 'Op der Diskussiounssäit diskutéieren',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Nees weisen',
 	'articlefeedbackv5-form-tooltip-flag' => 'Quatsch, Spam, Beleidegung, Privat Informatiounen ...',
 	'articlefeedbackv5-form1-header-found' => '$1 huet fonnt wat {{GENDER:$1|$2 hien|$2 si|$2 hien oder si}} gesicht huet',
@@ -19966,12 +19967,18 @@ $messages['ru'] = array(
 	'articlefeedbackv5-contribs-entry-status' => '. . Статус: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Полезно',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Отмеченный',
-	'articlefeedbackv5-contribs-status-action-feature' => 'Избранный', # Fuzzy
+	'articlefeedbackv5-contribs-status-action-feature' => 'Полезно',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Решённый',
+	'articlefeedbackv5-contribs-status-action-noaction' => 'Никаких действий не требуется',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Скрытый',
+	'articlefeedbackv5-contribs-status-action-archive' => 'Архивировано',
+	'articlefeedbackv5-contribs-status-action-hide' => 'Скрыто',
 	'articlefeedbackv5-contribs-status-action-request' => 'Запрошено скрытие',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Скрыто ревизором',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'скрытый комментарий',
+	'articlefeedbackv5-form-toolbox-label' => 'Пометить как:',
+	'articlefeedbackv5-form-own-toolbox-label' => 'Пометить свой отзыв как:',
+	'articlefeedbackv5-form-own-feedback' => 'Вы не может оценивать свои собственные отзывы.',
 	'articlefeedbackv5-form-helpful-label' => 'Этот отзыв полезен?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Да',
 	'articlefeedbackv5-form-helpful-no-label' => 'Нет',
@@ -23294,6 +23301,7 @@ $1', # Fuzzy
  * @author Dim Grits
  * @author Microcell
  * @author Olvin
+ * @author Sodmy
  * @author Steve.rusyn
  * @author Ата
  * @author Тест
@@ -23564,6 +23572,7 @@ $messages['uk'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'Ні, я не знайшов те, що шукав.',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Чудово! Можливо є якісь пропозиції щодо поліпшення?',
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Напишіть тут свою пропозицію (наприклад «У цій статті не вистачає ілюстрацій»)', # Fuzzy
+	'articlefeedbackv5-bucket6-question-instructions-no' => 'Шкодуємо щодо цього. Чи є які-небудь пропозиції щодо поліпшення?',
 	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Напишіть тут свою пропозицію (наприклад «У цій статті не вистачає ілюстрацій»)', # Fuzzy
 	'articlefeedbackv5-bucket6-form-submit' => 'Залишити відгук',
 	'articlefeedbackv5-bucket6-backlink-text' => 'Повернутися до кроку 1',
@@ -23781,7 +23790,7 @@ $messages['vi'] = array(
 	'articlefeedbackv5-special-filter-all-watchlist' => 'Tất cả các bài đăng',
 	'articlefeedbackv5-special-sort-label-before' => 'Sắp xếp theo:',
 	'articleFeedbackv5-details-link' => 'Chi tiết',
-	'articlefeedbackv5-revision-link' => '(xem bài cũ)', # Fuzzy
+	'articlefeedbackv5-revision-link' => '(xem trang cũ)',
 	'articlefeedbackv5-special-more' => 'Hiện thêm bài',
 	'articlefeedbackv5-special-refresh' => 'Làm tươi danh sách',
 	'articlefeedbackv5-special-pagetitle' => 'Phản hồi về $1',
@@ -23789,12 +23798,12 @@ $messages['vi'] = array(
 	'articlefeedbackv5-loading-tag' => 'Đang tải…',
 	'articlefeedbackv5-new-marker' => 'Mới',
 	'articlefeedbackv5-oversight-marker' => 'Giám sát viên ẩn',
-	'articlefeedbackv5-hide-marker' => 'Ẩn', # Fuzzy
-	'articlefeedbackv5-feature-marker' => 'Chọn lọc', # Fuzzy
-	'articlefeedbackv5-form-feature' => 'Chọn lọc bài này', # Fuzzy
-	'articlefeedbackv5-form-unfeature' => 'Bỏ chọn lọc bài này', # Fuzzy
+	'articlefeedbackv5-hide-marker' => 'Ẩn',
+	'articlefeedbackv5-feature-marker' => 'Hữu ích',
+	'articlefeedbackv5-form-feature' => 'Hữu ích',
+	'articlefeedbackv5-form-unfeature' => 'Hoàn tác',
 	'articlefeedbackv5-form-inappropriate' => 'Ẩn bài đăng này',
-	'articlefeedbackv5-form-unhide' => 'Hiện bài này', # Fuzzy
+	'articlefeedbackv5-form-unhide' => 'Hoàn tác',
 	'articlefeedbackv5-form2-header-praise' => '$1 có lời khen:',
 	'articlefeedbackv5-form2-header-problem' => '$1 có vấn đề:',
 	'articlefeedbackv5-form2-header-question' => '$1 có câu hỏi:',
@@ -23804,7 +23813,7 @@ $messages['vi'] = array(
 	'articlefeedbackv5-error-loading-feedback' => 'Lỗi khi tải phản hồi',
 	'articlefeedbackv5-invalid-feedback-id' => 'ID phản hồi không hợp lệ',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Dấu phản hồi không hợp lệ',
-	'articlefeedbackv5-go-to-article' => 'Xem bài', # Fuzzy
+	'articlefeedbackv5-go-to-article' => 'Xem trang',
 	'articlefeedbackv5-discussion-page' => 'Thảo luận',
 	'articlefeedbackv5-whats-this' => 'Trợ giúp',
 	'articlefeedbackv5-invalid-page-id' => 'ID trang không hợp lệ',
