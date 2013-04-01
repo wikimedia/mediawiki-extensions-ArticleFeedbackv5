@@ -147,7 +147,9 @@ class ArticleFeedbackv5Hooks {
 
 			// watchlist page
 			elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
-				if ( $user->getId() ) {
+				global $wgArticleFeedbackv5Watchlist;
+
+				if ( $wgArticleFeedbackv5Watchlist && $user->getId() ) {
 					$records = ArticleFeedbackv5Model::getWatchlistList(
 						'unreviewed',
 						$user
