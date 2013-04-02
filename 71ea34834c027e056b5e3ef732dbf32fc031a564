@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DrBGB21A",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-02T00:55:45Z",
+      "side": 1,
+      "message": "I am not sure if ArticleFeedbackv5Utils::$written is sufficient to handle replication delay.  If there is some other quest requesting the same feedback right after the cache delete, out-of-date data would be saved.  Of course, the chance of this is so rare that this probably can be ignored.  The following is just a suggestion: \n\nInstead of deleting it from memcache, set an \u0027expire\u0027 key in the memcache, the logic would look like:\n\non log update:\n   if ( cache exist )\n       update \u0027expire\u0027 to true\n   else\n       create a new cache with just \u0027expire\u0027 \u003d true\n\non other request:\n    if ( cache exist )\n       if expire \u003d true\n          use write database to create cache\n       else\n          return data\n    else\n       use read database to create cache",
+      "revId": "71ea34834c027e056b5e3ef732dbf32fc031a564",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DrFZ7ybs",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-02T00:55:45Z",
+      "side": 1,
+      "message": "isn\u0027t feedbackid of type integer?",
+      "revId": "71ea34834c027e056b5e3ef732dbf32fc031a564",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DrDZXLSc",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-02T00:55:45Z",
+      "side": 1,
+      "message": "Too man vars in here",
+      "revId": "71ea34834c027e056b5e3ef732dbf32fc031a564",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
