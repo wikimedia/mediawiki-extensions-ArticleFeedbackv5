@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DrMeSvp4",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-02T22:26:17Z",
+      "side": 1,
+      "message": "isn\u0027t false the default case",
+      "revId": "0d9ce46886479d8e1aa65742437a17f143b0b7a0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DrIeMxoE",
+        "filename": "api/ApiFlagFeedbackArticleFeedbackv5.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-02T22:26:17Z",
+      "side": 1,
+      "message": "false is already the default case",
+      "revId": "0d9ce46886479d8e1aa65742437a17f143b0b7a0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DrMfbnng",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-02T22:26:17Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this error be handled the same way as the error above?",
+      "revId": "0d9ce46886479d8e1aa65742437a17f143b0b7a0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DrIflpjs",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-02T22:26:17Z",
+      "side": 1,
+      "message": "error handling for result \u003d\u003d \u0027Error\u0027?",
+      "revId": "0d9ce46886479d8e1aa65742437a17f143b0b7a0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DrKcjAlk",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 1209,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-02T22:26:17Z",
+      "side": 1,
+      "message": "There are a few \u003d\u003d in this patch set, use \u003d\u003d\u003d if possible",
+      "revId": "0d9ce46886479d8e1aa65742437a17f143b0b7a0",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
