@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "DrKepxeA",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-04-02T17:02:05Z",
+      "side": 1,
+      "message": "Mmh, that\u0027s definitely not a bad idea!\n\nI won\u0027t change it in this patchset yet though; there\u0027s some more cache-related work coming up in a next patch (which might already change the way this one works, I don\u0027t know yet)",
+      "parentUuid": "DrBGB21A",
+      "revId": "71ea34834c027e056b5e3ef732dbf32fc031a564",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DrFZ7ybs",
         "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2013-04-02T00:55:45Z",
       "side": 1,
       "message": "isn\u0027t feedbackid of type integer?",
+      "revId": "71ea34834c027e056b5e3ef732dbf32fc031a564",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DrKz.jDM",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-04-02T17:02:05Z",
+      "side": 1,
+      "message": "it\u0027s a 32-character hexadecimal hash",
+      "parentUuid": "DrFZ7ybs",
       "revId": "71ea34834c027e056b5e3ef732dbf32fc031a564",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
