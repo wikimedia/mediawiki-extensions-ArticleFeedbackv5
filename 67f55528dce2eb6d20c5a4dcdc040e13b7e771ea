@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "DrDPjtN4",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-04-03T17:34:46Z",
+      "side": 1,
+      "message": "$.msg does work. It\u0027s resources/mediawiki/mediawiki.jqueryMsg.js:\n\n    $.fn.msg \u003d mw.jqueryMsg.getPlugin();\n\nAlthough not particularly necessary here, its parsing is superior to mw.msg (although I remember a recent discussion that both are going to/have been \"merged\") - mw.msg ha(s|d) problems with PLURAL (which is used in this message), jqueryMsg does just fine.",
+      "parentUuid": "DrJbV4bc",
+      "revId": "67f55528dce2eb6d20c5a4dcdc040e13b7e771ea",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DqrTrK90",
         "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
         "patchSetId": 9
