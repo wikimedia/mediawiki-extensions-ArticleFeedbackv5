@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DrDM3NAA",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-03T18:45:09Z",
+      "side": 1,
+      "message": "This is a dead code block, it should be put inside if ( \u0027result\u0027 in data )",
+      "revId": "b6afd18c5b6a892c68248e3f5b85e380730f84f3",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
