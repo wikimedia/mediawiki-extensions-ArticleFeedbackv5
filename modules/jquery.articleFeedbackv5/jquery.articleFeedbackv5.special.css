@@ -351,6 +351,9 @@
 .articleFeedbackv5-inappropriate-link, .articleFeedbackv5-hide-link, .articleFeedbackv5-oversight-link {
 	cursor: pointer;
 }
+.articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools p.articleFeedbackv5-form-toolbox-error {
+	color: red;
+}
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools p.articleFeedbackv5-form-toolbox-label {
 	display: none;
 	color: #888;
@@ -565,9 +568,9 @@
 	border: 1px solid #D6D7D5;
 	margin-right: 10px;
 }
-
-.articleFeedbackv5-feedback-tools a.articleFeedbackv5-note-link {
-	padding: 3px;
+.articleFeedbackv5-feedback-tools span.articleFeedbackv5-note-added {
+	color: #888;
+	margin-right: 10px;
 }
 
 .articleFeedbackv5-feedback-tools p.articleFeedbackv5-activity-short-status {

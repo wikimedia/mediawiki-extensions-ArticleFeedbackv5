@@ -45,21 +45,22 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId, $pageId );
 		$status = $flagger->run( $flag, $notes, $toggle, $source );
 
+		$results = array();
 		if ( !$status ) {
-			$results = array();
 			$results['result'] = 'Error';
 			$results['reason'] = $flagger->getError();
 		} else {
-			$results = array();
 			$results['result'] = 'Success';
 			$results['reason'] = null;
 			$results['log_id'] = $flagger->getLogId();
+		}
 
+		$feedback = ArticleFeedbackv5Model::get( $feedbackId, $pageId );
+		if ( $feedback ) {
 			// re-render feedback entry
-			$feedback = ArticleFeedbackv5Model::get( $feedbackId, $pageId );
 			$permalink = $source == 'permalink';
 			$central = $source == 'central';
-			$renderer = new ArticleFeedbackv5Render( $permalink, $central, false );
+			$renderer = new ArticleFeedbackv5Render( $permalink, $central );
 			$results['render'] = $renderer->run( $feedback );
 		}
 
@@ -79,7 +80,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getAllowedParams() {
 		return array(
-			'pageid'     => array(
+			'pageid' => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
@@ -89,7 +90,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'
 			),
-			'flagtype'   => array(
+			'flagtype' => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Activity::$actions ),
@@ -119,12 +120,12 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getParamDescription() {
 		return array(
-			'pageid'      => 'PageID of feedback',
-			'feedbackid'  => 'FeedbackID to flag',
-			'type'        => 'Type of flag to apply',
-			'note'        => 'Information on why the feedback activity occurred',
-			'toggle'      => 'The flag is being toggled atomically, only useful for (un)helpful',
-			'source'      => 'The origin of the flag: article (page), central (feedback page), watchlist (page), permalink',
+			'pageid' => 'PageID of feedback',
+			'feedbackid' => 'FeedbackID to flag',
+			'flagtype' => 'Type of flag to apply',
+			'note' => 'Information on why the feedback activity occurred',
+			'toggle' => 'The flag is being toggled atomically, only useful for (un)helpful',
+			'source' => 'The origin of the flag: article (page), central (feedback page), watchlist (page), permalink',
 		);
 	}
 
