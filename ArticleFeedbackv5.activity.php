@@ -586,7 +586,7 @@ class ArticleFeedbackv5Activity {
 		if ( !$page ) {
 			return false;
 		}
-		$title = $page->getDBKey();
+		$title = $page->getPrefixedDBkey();
 
 		return SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$feedbackId" )->getDBkey();
 	}

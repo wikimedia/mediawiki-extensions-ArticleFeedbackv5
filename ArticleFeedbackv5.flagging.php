@@ -948,7 +948,7 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		// to build our permalink, use the feedback entry key + the page name (isn't page name a title? but title is an object? confusing)
-		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getDBKey() . '/' . $this->feedback->aft_id );
+		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $this->feedback->aft_id );
 
 		// build our params
 		$params = array(
