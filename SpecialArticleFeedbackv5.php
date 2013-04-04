@@ -149,20 +149,27 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$this->filters = array_diff( $this->filters, array( 'archived' ) );
 		}
 
-		if ( !$param ) {
-			// No Page ID: do central log
-		} else {
-			// Permalink
-			if ( preg_match( '/^(.+)\/(\w+)$/', $param, $m ) ) {
-				$param = $m[1];
-				$this->feedbackId = $m[2];
-			}
-			// Get page
+		if ( $param ) {
+			/*
+			 * Check if title exists. We don't do the regex to separate the
+			 * permalink part just yet because a slash in the param could
+			 * also just mean we're looking at feedback from Some/Subpage.
+			 */
 			$title = Title::newFromText( $param );
-			if ( !$title->exists() ) {
-				$out->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
-				return;
+
+			// if title does not exist, we may be looking at a permalink page
+			if ( !$title || !$title->exists() ) {
+				if ( preg_match( '/^(.+)\/(\w+)$/', $param, $match ) ) {
+					$title = Title::newFromText( $match[1] );
+					$this->feedbackId = $match[2];
+				}
+
+				if ( !$title || !$title->exists() ) {
+					$out->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
+					return;
+				}
 			}
+
 			$this->pageId = $title->getArticleID();
 			$this->title = $title;
 		}
