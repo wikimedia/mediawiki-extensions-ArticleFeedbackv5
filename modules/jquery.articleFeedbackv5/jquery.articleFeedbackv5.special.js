@@ -793,6 +793,9 @@
 							$( '.articleFeedbackv5-feedback[data-id='+id+']' )
 								.replaceWith( data.render );
 
+							// re-bind panels (tipsies)
+							$.articleFeedbackv5special.bindTipsies( id );
+
 						// display error message
 						} else if ( data.result === 'Error' && data.reason ) {
 							var errorMessage = mw.msg( data.reason );
