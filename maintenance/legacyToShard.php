@@ -46,6 +46,8 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 	 * @return bool
 	 */
 	protected function doDBUpdates() {
+		global $wgArticleFeedbackv5Cluster;
+
 		$dbr = $this->getDB( DB_SLAVE );
 		if ( !$dbr->tableExists( 'aft_article_feedback' ) ) {
 			// not necessary to run, there is no source data
@@ -61,7 +63,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 		$continue = 0;
 		while ( $continue !== null ) {
 			$continue = $this->moveBatch( $continue );
-			wfWaitForSlaves();
+			wfWaitForSlaves( false, false, $wgArticleFeedbackv5Cluster );
 
 			if ( $continue ) {
 				$this->output( "--moved to entry #$continue\n" );

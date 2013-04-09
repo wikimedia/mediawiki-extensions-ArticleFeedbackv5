@@ -48,6 +48,8 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 	 * @return bool
 	 */
 	protected function doDBUpdates() {
+		global $wgArticleFeedbackv5Cluster;
+
 		$this->output( "Fixing archive dates.\n" );
 
 		/**
@@ -92,7 +94,7 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 				$next = $offset;
 			}
 
-			wfWaitForSlaves();
+			wfWaitForSlaves( false, false, $wgArticleFeedbackv5Cluster );
 
 			if ( $break ) {
 				break;

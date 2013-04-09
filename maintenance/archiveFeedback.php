@@ -52,7 +52,8 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 	 * it works similar to any other action plus caches will update nicely.
 	 */
 	public function execute() {
-		global $wgArticleFeedbackAutoArchiveEnabled;
+		global $wgArticleFeedbackv5Cluster, $wgArticleFeedbackAutoArchiveEnabled;
+
 		if ( !$wgArticleFeedbackAutoArchiveEnabled ) {
 			$this->output( 'IMPORTANT! Auto-archive is currently disabled. To enable, set $wgArticleFeedbackAutoArchiveEnabled = true.'."\n" );
 		} else {
@@ -101,7 +102,7 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 					$this->output( "--moved to entry #$feedback->aft_id\n" );
 				}
 
-				wfWaitForSlaves();
+				wfWaitForSlaves( false, false, $wgArticleFeedbackv5Cluster );
 
 				if ( $break ) {
 					break;
