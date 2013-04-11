@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DuFnHj5k",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-11T20:55:43Z",
+      "side": 1,
+      "message": "Title::newFromText() may return null",
+      "revId": "643369e393939713edd4572a44b2b8626e23c949",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DuPnugyI",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-11T20:55:43Z",
+      "side": 1,
+      "message": "Title::newFromText() may return null",
+      "revId": "643369e393939713edd4572a44b2b8626e23c949",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
