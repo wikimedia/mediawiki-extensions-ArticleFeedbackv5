@@ -15,19 +15,19 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 *
 	 * @return LoadBalancer
 	 */
-	public function getLB( $wiki ) {
-		if ( $this->lb === null ) {
+	public function getLB( $wiki = false ) {
+		if ( !isset( static::$lb[$wiki] ) ) {
 			global $wgArticleFeedbackv5Cluster;
 
 			// connect to external, aft-specific, cluster
 			if ( $wgArticleFeedbackv5Cluster ) {
-				$this->lb = wfGetLBFactory()->getExternalLB( $wgArticleFeedbackv5Cluster );
+				static::$lb[$wiki] = wfGetLBFactory()->getExternalLB( $wgArticleFeedbackv5Cluster, $wiki );
 			} else {
-				$this->lb = parent::getLB( $wiki );
+				static::$lb[$wiki] = parent::getLB( $wiki );
 			}
 		}
 
-		return $this->lb;
+		return static::$lb[$wiki];
 	}
 
 	/**

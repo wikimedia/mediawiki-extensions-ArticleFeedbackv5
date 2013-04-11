@@ -61,7 +61,8 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 			 * reads are up-to-date, I'll set a flag to know that we've written data, so
 			 * DB_MASTER will be queried.
 			 */
-			ArticleFeedbackv5Utils::$written = true;
+			$wiki = false;
+			ArticleFeedbackv5Utils::$written[$wiki] = true;
 		}
 
 		$results = array();

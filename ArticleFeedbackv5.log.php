@@ -73,7 +73,8 @@ class ArticleFeedbackv5Log {
 		 * reads are up-to-date, I'll set a flag to know that we've written data, so
 		 * DB_MASTER will be queried.
 		 */
-		ArticleFeedbackv5Utils::$written = true;
+		$wiki = false;
+		ArticleFeedbackv5Utils::$written[$wiki] = true;
 
 		wfProfileOut( __METHOD__ );
 
