@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DuKSr-ok",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-11T23:30:43Z",
+      "side": 1,
+      "message": "one more nitpick, extra ] in this line",
+      "revId": "dd3d8ef2d748f1cbc3764040ab406df46b9bd74d",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
