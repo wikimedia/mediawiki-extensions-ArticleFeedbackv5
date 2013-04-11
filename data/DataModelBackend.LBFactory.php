@@ -12,7 +12,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	/**
 	 * @var LoadBalancer
 	 */
-	protected $lb;
+	protected $lb = array();
 
 	/**
 	 * @var bool
@@ -22,12 +22,12 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	/**
 	 * @return LoadBalancer
 	 */
-	public function getLB( $wiki ) {
-		if ( $this->lb === null ) {
-			$this->lb = wfGetLB( $wiki );
+	public function getLB( $wiki = false ) {
+		if ( !isset( $this->lb[$wiki] ) ) {
+			$this->lb[$wiki] = wfGetLB( $wiki );
 		}
 
-		return $this->lb;
+		return $this->lb[$wiki];
 	}
 
 	/**
@@ -65,6 +65,16 @@ class DataModelBackendLBFactory extends DataModelBackend {
 		}
 
 		return $lb->getConnection( $db, $groups, $wiki );
+	}
+
+	/**
+	 * Before caching data read from backend, we have to make sure that the
+	 * content read is in fact "cacheable" (e.g. not read from a lagging slave)
+	 *
+	 * @return bool
+	 */
+	public function allowCache() {
+		return !$this->getLB()->getLaggedSlaveMode();
 	}
 
 	/**
