@@ -12,22 +12,22 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	/**
 	 * @var LoadBalancer
 	 */
-	protected $lb;
+	protected static $lb = array();
 
 	/**
 	 * @var bool
 	 */
-	protected $written = false;
+	protected static $written = false;
 
 	/**
 	 * @return LoadBalancer
 	 */
-	public function getLB( $wiki ) {
-		if ( $this->lb === null ) {
-			$this->lb = wfGetLB( $wiki );
+	public function getLB( $wiki = false ) {
+		if ( !isset( static::$lb[$wiki] ) ) {
+			static::$lb[$wiki] = wfGetLB( $wiki );
 		}
 
-		return $this->lb;
+		return static::$lb[$wiki];
 	}
 
 	/**
@@ -46,8 +46,8 @@ class DataModelBackendLBFactory extends DataModelBackend {
 
 		if ( $db === DB_MASTER ) {
 			// mark that we're writing data
-			$this->written = true;
-		} elseif ( $this->written ) {
+			static::$written = true;
+		} elseif ( static::$written ) {
 			if ( $db === DB_SLAVE ) {
 				/*
 				 * Let's keep querying master to make sure we have up-to-date
@@ -60,11 +60,21 @@ class DataModelBackendLBFactory extends DataModelBackend {
 				 * make sure this slave has caught up!
 				 */
 				$lb->waitFor( $lb->getMasterPos() );
-				$this->written = false;
+				static::$written = false;
 			}
 		}
 
 		return $lb->getConnection( $db, $groups, $wiki );
+	}
+
+	/**
+	 * Before caching data read from backend, we have to make sure that the
+	 * content read is in fact "cacheable" (e.g. not read from a lagging slave)
+	 *
+	 * @return bool
+	 */
+	public function allowCache() {
+		return !$this->getLB()->getLaggedSlaveMode();
 	}
 
 	/**
