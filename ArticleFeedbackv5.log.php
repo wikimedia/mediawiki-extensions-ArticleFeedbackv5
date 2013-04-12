@@ -41,7 +41,7 @@ class ArticleFeedbackv5Log {
 			wfProfileOut( __METHOD__ );
 			return null;
 		}
-		$target = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getDBKey() . "/$itemId" );
+		$target = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() . "/$itemId" );
 
 		// if no doer specified, use default AFT user
 		if ( !( $doer instanceof User ) ) {
