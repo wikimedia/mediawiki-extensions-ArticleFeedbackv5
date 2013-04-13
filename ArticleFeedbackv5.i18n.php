@@ -271,7 +271,7 @@ We appreciate your contributions to this page!
 	'articlefeedbackv5-invalid-log-update' => 'Log entry could not be updated',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Invalid feedback flag',
 	'articlefeedbackv5-invalid-feedback-state' => 'Invalid feedback flag state',
-	'articlefeedbackv5-feedback-reloaded-after-error' => 'An error ($1) has occured. The feedback has been reloaded to reflect its current state.',
+	'articlefeedbackv5-feedback-reloaded-after-error' => 'An error ($1) has occurred. The feedback has been reloaded to reflect its current state.',
 	'articlefeedbackv5-go-to-article' => 'View page',
 	'articlefeedbackv5-discussion-page' => 'Talk',
 	'articlefeedbackv5-whats-this' => 'Help',
