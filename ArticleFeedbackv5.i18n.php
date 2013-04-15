@@ -136,11 +136,10 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-sort-age-asc' => 'Oldest',
 	'articlefeedbackv5-special-sort-label-before' => 'Sort by:',
 	'articlefeedbackv5-special-sort-label-after' => '',
-	'articlefeedbackv5-special-filter-label-before' => 'Showing:',
+	'articlefeedbackv5-special-filter-label-before' => '',
 	'articlefeedbackv5-special-filter-label-after' => '',
-	'articlefeedbackv5-special-filter-select-more' => 'More filters',
-	'articlefeedbackv5-special-showing' => '{{PLURAL:$4|$3 featured comment|$3 featured comments}} (of $1)',
-	'articlefeedbackv5-special-central-showing' => '{{PLURAL:$4|$3 featured comment|$3 featured comments}} from all pages (of $1)',
+	'articlefeedbackv5-special-filter-select-more' => 'More',
+	'articlefeedbackv5-special-count-total' => '{{PLURAL:$2|1 post|$1 posts}}',
 	'articlefeedbackv5-special-watchlist-showing' => 'Feedback for pages watched by [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Feedback from my watched pages]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|View feedback from all pages]]',
@@ -282,9 +281,6 @@ We appreciate your contributions to this page!
 	'articlefeedbackv5-desc' => 'Article feedback',
 	'articlefeedbackv5-comment-more' => 'More',
 	'articlefeedbackv5-comment-empty' => 'No text was entered',
-	'articlefeedbackv5-header-message' => 'Please promote good feedback and help improve this page. $1',
-	'articlefeedbackv5-header-message-link-text' => 'Learn more',
-	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-unsupported-message' => 'Sorry, your browser is not supported by this prototype. To see this page, please use a different browser.',
 	'articlefeedbackv5-page-disabled' => 'Article Feedback page not enabled for this page.',
 	'articlefeedbackv5-no-feedback' => "There is no feedback for the filter you selected. To change your filter, try one of the options above (e.g.: 'Featured' or 'Unreviewed').",
@@ -299,10 +295,10 @@ We appreciate your contributions to this page!
 	'articlefeedbackv5-special-goback' => 'View feedback page',
 	'articlefeedbackv5-special-central-goback' => 'See more feedback from other pages',
 	'articlefeedbackv5-permalink-info-title' => 'Info about this post',
-	'articlefeedbackv5-permalink-info-subtitle' => '(#$1)',
-	'articlefeedbackv5-permalink-written-by-editor' => 'Written by a registered user <span>using feedback form $1</span>',
-	'articlefeedbackv5-permalink-written-by-reader' => 'Written by an anonymous user <span>using feedback form $1</span>',
-	'articlefeedbackv5-permalink-info-revision-link' => 'See old version',
+	'articlefeedbackv5-permalink-info-post-id' => 'Post #$1',
+	'articlefeedbackv5-permalink-written-by-editor' => 'Written by a registered user',
+	'articlefeedbackv5-permalink-written-by-reader' => 'Written by an anonymous user',
+	'articlefeedbackv5-permalink-info-revision-link' => 'See old version of this page',
 	'articlefeedbackv5-permalink-info-posted' => 'Posted on $1 at $2',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Length',
 	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 word|$1 words}}',
@@ -363,6 +359,7 @@ We appreciate your contributions to this page!
 	'articlefeedbackv5-permalink-status-undo-helpful' => '{{GENDER:$1|<strong>Un-marked as helpful</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Marked as unhelpful</strong> by $1}} $2',
 	'articlefeedbackv5-permalink-status-undo-unhelpful' => '{{GENDER:$1|<strong>Un-marked as unhelpful</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-last-action' => 'Last action',
 	'articlefeedbackv5-permalink-activity-more' => 'View more actions...',
 	'articlefeedbackv5-permalink-activity-fewer' => 'View fewer actions...',
 
@@ -632,7 +629,7 @@ includes one of these issues:
 
 	/* Activity Pane phrases */
 	'articlefeedbackv5-activity-pane-header' => 'Activity Log',
-	'articlefeedbackv5-activity-feedback-info' => 'Feedback Post #$1 by $2',
+	'articlefeedbackv5-activity-feedback-info' => 'Feedback by $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Posted on $1',
 	'articlefeedbackv5-activity-permalink' => 'permalink',
 	'articlefeedbackv5-activity-item-request' => '$1 requested oversight on $4 at $5 $2',
@@ -885,16 +882,9 @@ The abuse policy link.',
 	'articlefeedbackv5-special-filter-label-before' => 'Place to put a label before the filter options',
 	'articlefeedbackv5-special-filter-label-after' => '{{notranslate}}',
 	'articlefeedbackv5-special-filter-select-more' => 'Default text for the more-filters select box',
-	'articlefeedbackv5-special-showing' => 'Text to show how many feedback posts have been posted to this article. Parameters:
-* $1 is the total number of posts, wrapped inside html,
-* $2 is the plural support for $1,
-* $3 is the number of posts in the "featured" filter (= posts marked as helpful/useful), wrapped inside html,
-* $4 is the plural support for $3.',
-	'articlefeedbackv5-special-central-showing' => 'Text to show how many feedback posts have been posted across the wiki. Parameters:
-* $1 is the total number of posts, wrapped inside html,
-* $2 is the plural support for $1,
-* $3 is the number of posts in the "featured" filter (= posts marked as helpful/useful), wrapped inside html,
-* $4 is the plural support for $3.',
+	'articlefeedbackv5-special-count-total' => 'Text to show how many feedback posts have been posted. Parameters:
+* $1 is the total number of posts, wrapped inside an HTML element,
+* $2 is the total number of posts, numeric (plural support).',
 	'articlefeedbackv5-special-watchlist-showing' => "Text to show we're at the page containing feedback on watchlisted articles. Parameters:
 * $1 - a link to the user page
 * $2 - a username",
@@ -1166,10 +1156,6 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-comment-more' => 'Label for the button to expand the truncated comment on feedback.
 {{Identical|More}}',
 	'articlefeedbackv5-comment-empty' => 'Text to be displayed instead of the feedback comment in case there was no comment',
-	'articlefeedbackv5-header-message' => 'A message to be displayed on the special page, encouraging users to behave well. Parameters:
-* $1 is a link to read more about this.',
-	'articlefeedbackv5-header-message-link-text' => 'The link text to be displayed (at $1 on articlefeedbackv5-header-message-text)',
-	'articlefeedbackv5-beta-label' => 'A label to be displayed on the special page, warning users that this extension is still in beta.',
 	'articlefeedbackv5-unsupported-message' => 'A message to be displayed on the special page, when a visitor with an unsupported browser visits.',
 	'articlefeedbackv5-page-disabled' => 'A message to be displayed on the article feedback page when AFT is not enabled for that page',
 	'articlefeedbackv5-no-feedback' => 'A message to be displayed on the article feedback page when there is no feedback yet for a certain filter.',
@@ -1196,8 +1182,8 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-special-goback' => 'Link to take a user from a feedback permalink back to the listing of all feedback for that page.',
 	'articlefeedbackv5-special-central-goback' => 'Link to take a user from a single-page feedback listing back to the listing of all feedback.',
 	'articlefeedbackv5-permalink-info-title' => 'Permalink info block, title of the right column, containing meta-information, e.g., post date',
-	'articlefeedbackv5-permalink-info-subtitle' => '{{Optional}}
-Permalink info block, subtitle of the right column, containing meta-information, e.g., post date: $1 is the feedback id',
+	'articlefeedbackv5-permalink-info-post-id' => 'Displays the unique feedback id. Parameters:
+* $1 is the feedback id',
 	'articlefeedbackv5-permalink-written-by-editor' => 'Permalink info block, written-by line for registered users: $1 is the experimental option',
 	'articlefeedbackv5-permalink-written-by-reader' => 'Permalink info block, written-by line for anonymous users: $1 is the experimental option',
 	'articlefeedbackv5-permalink-info-revision-link' => 'Permalink info block, text for the link to the revision of the article to which the feedback was posted',
@@ -1387,6 +1373,7 @@ Permalink info block, subtitle of the right column, containing meta-information,
 * $1 - A link to the user who un-marked the post as unhelpful
 * $2 - The relative timestamp (e.g. "2 hours ago")
 {{Related|Articlefeedbackv5-permalink-status}}',
+	'articlefeedbackv5-permalink-last-action' => 'Message displayed to clarify that only the last moderation action is displayed.',
 	'articlefeedbackv5-permalink-activity-more' => 'Permalink activity block, text for the link to open the rest of the activity on the feedback',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Permalink activity block, text for the link to close the rest of the activity on the feedback',
 	'articlefeedbackv5-noteflyover-feature-caption' => 'Feature post note flyover panel - panel caption',

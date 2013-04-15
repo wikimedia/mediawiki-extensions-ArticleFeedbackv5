@@ -200,7 +200,7 @@ class ArticleFeedbackv5Model extends DataModel {
 
 	/**
 	 * Update the amount of people who marked "yes" to the question if they
-	 * found what the were looking for
+	 * found what they were looking for.
 	 */
 	public function updateCountFound() {
 		$oldRating = 0;
@@ -211,6 +211,8 @@ class ArticleFeedbackv5Model extends DataModel {
 			}
 		}
 		$difference = (int) $this->aft_rating - (int) $oldRating;
+
+		// @todo
 
 		$class = get_called_class();
 		foreach ( array( $this->{self::getShardColumn()}, null ) as $shard ) {
