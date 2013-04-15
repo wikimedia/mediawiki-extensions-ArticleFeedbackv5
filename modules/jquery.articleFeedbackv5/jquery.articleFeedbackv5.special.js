@@ -237,11 +237,6 @@
 		$.aftTrack.track( 'feedback_page-impression-' +
 			$.articleFeedbackv5special.referral + '-' +
 			$.articleFeedbackv5special.userType );
-
-		// Add BETA label next to the title
-		var label = $( '<p id="articleFeedbackv5-beta-label"></p>' );
-		label.text( mw.msg( 'articlefeedbackv5-beta-label' ) );
-		$( '#firstHeading' ).prepend( label );
 	};
 
 	// }}}

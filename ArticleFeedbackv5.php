@@ -887,8 +887,6 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 
 		'articlefeedbackv5-activity-pane-header',
 
-		'articlefeedbackv5-beta-label',
-
 		'articlefeedbackv5-settings-status-enable',
 		'articlefeedbackv5-settings-status-disable',
 	),
