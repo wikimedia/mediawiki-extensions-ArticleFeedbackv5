@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DukvJ.Vo",
+        "filename": "data/DataModelBackend.LBFactory.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-15T19:14:06Z",
+      "side": 1,
+      "message": "Since $lb is an array now which can hold multiple LBs, the $written should also be defined as an array so each LB could have its own written state?",
+      "revId": "e4d770151ac9b0680a664a9795024aef0c903048",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
