@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DuitJJWE",
+        "filename": "data/DataModelBackend.LBFactory.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-15T17:59:26Z",
+      "side": 1,
+      "message": "I guess the $lb is global across different instance of this object, maybe just keep it static?",
+      "revId": "27808de37e7903993229effc9a27de72184c34bd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
