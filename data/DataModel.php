@@ -604,8 +604,14 @@ abstract class DataModel {
 	 * @return DataModel
 	 */
 	public function cache() {
-		$key = wfMemcKey( get_called_class(), 'get', $this->{static::getIdColumn()}, $this->{static::getShardColumn()} );
-		static::getCache()->set( $key, $this, 60 * 60 );
+		/*
+		 * Make sure that the backend's current state (from which we just read data)
+		 * is not lagging; we don't want to cache outdated data.
+		 */
+		if ( static::getBackend()->allowCache() ) {
+			$key = wfMemcKey( get_called_class(), 'get', $this->{static::getIdColumn()}, $this->{static::getShardColumn()} );
+			static::getCache()->set( $key, $this, 60 * 60 );
+		}
 
 		return $this;
 	}
@@ -634,9 +640,15 @@ abstract class DataModel {
 	 * @return DataModelList
 	 */
 	public static function cacheList( $list, $name, $shard, $offset, $sort, $order ) {
-		$cache = array( 'time' => wfTimestampNow(), 'list' => $list );
-		$keyGetList = wfMemcKey( get_called_class(), 'getList', $name, $shard, $offset, $sort, $order );
-		static::getCache()->set( $keyGetList, $cache, 60 * 60 );
+		/*
+		 * Make sure that the backend's current state (from which we just read data)
+		 * is not lagging; we don't want to cache outdated data.
+		 */
+		if ( static::getBackend()->allowCache() ) {
+			$cache = array( 'time' => wfTimestampNow(), 'list' => $list );
+			$keyGetList = wfMemcKey( get_called_class(), 'getList', $name, $shard, $offset, $sort, $order );
+			static::getCache()->set( $keyGetList, $cache, 60 * 60 );
+		}
 	}
 
 	/**

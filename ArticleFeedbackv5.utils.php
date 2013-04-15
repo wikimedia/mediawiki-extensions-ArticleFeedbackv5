@@ -22,24 +22,25 @@
  */
 class ArticleFeedbackv5Utils {
 	/**
-	 * @var LoadBalancer
+	 * @var array [LoadBalancer]
 	 */
-	protected static $lb;
+	protected static $lb = array();
 
 	/**
-	 * @var bool
+	 * @var array [bool]
 	 */
-	public static $written = false;
+	public static $written = array();
 
 	/**
+	 * @param $wiki String: the wiki ID, or false for the current wiki
 	 * @return LoadBalancer
 	 */
-	public static function getLB( $wiki ) {
-		if ( static::$lb === null ) {
-			static::$lb = wfGetLB( $wiki );
+	public static function getLB( $wiki = false ) {
+		if ( !isset( static::$lb[$wiki] ) ) {
+			static::$lb[$wiki] = wfGetLB( $wiki );
 		}
 
-		return static::$lb;
+		return static::$lb[$wiki];
 	}
 
 	/**
@@ -58,8 +59,8 @@ class ArticleFeedbackv5Utils {
 
 		if ( $db === DB_MASTER ) {
 			// mark that we're writing data
-			static::$written = true;
-		} elseif ( static::$written ) {
+			static::$written[$wiki] = true;
+		} elseif ( isset(static::$written[$wiki]) && static::$written[$wiki] ) {
 			if ( $db === DB_SLAVE ) {
 				/*
 				 * Let's keep querying master to make sure we have up-to-date
@@ -72,7 +73,7 @@ class ArticleFeedbackv5Utils {
 				 * make sure this slave has caught up!
 				 */
 				$lb->waitFor( $lb->getMasterPos() );
-				static::$written = false;
+				static::$written[$wiki] = false;
 			}
 		}
 
