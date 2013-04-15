@@ -75,6 +75,8 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 	protected function buildSummary() {
 		$user = $this->getUser();
 
+		// @todo: need to update this one too...
+
 		// Showing {count} posts
 		return
 			Html::rawElement(
