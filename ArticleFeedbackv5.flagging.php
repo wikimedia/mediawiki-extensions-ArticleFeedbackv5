@@ -777,7 +777,7 @@ class ArticleFeedbackv5Flagging {
 		$this->logId = $this->log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user );
 
 		// was voted unhelpful already, now voting helpful should also remove unhelpful vote
-		if ( $toggle ) {
+		if ( $toggle && $this->feedback->aft_unhelpful > 0 ) {
 			$this->feedback->aft_unhelpful--;
 		}
 
@@ -794,6 +794,11 @@ class ArticleFeedbackv5Flagging {
 	 * @return array|bool
 	 */
 	public function undo_helpful( $notes, $toggle ) {
+		if ( $this->feedback->aft_helpful < 1 ) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
 		$this->feedback->aft_helpful--;
 		$this->logId = $this->log( 'undo-helpful', $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user );
 
@@ -814,7 +819,7 @@ class ArticleFeedbackv5Flagging {
 		$this->logId = $this->log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user );
 
 		// was voted helpful already, now voting unhelpful should also remove helpful vote
-		if ( $toggle ) {
+		if ( $toggle && $this->feedback->aft_helpful > 0 ) {
 			$this->feedback->aft_helpful--;
 		}
 
@@ -831,6 +836,11 @@ class ArticleFeedbackv5Flagging {
 	 * @return array|bool
 	 */
 	public function undo_unhelpful( $notes, $toggle ) {
+		if ( $this->feedback->aft_unhelpful < 1 ) {
+			$this->error = 'articlefeedbackv5-invalid-feedback-state';
+			return false;
+		}
+
 		$this->feedback->aft_unhelpful--;
 		$this->logId = $this->log( 'undo-unhelpful', $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user );
 
