@@ -29,11 +29,16 @@ jQuery( function( $ ) {
 		var link = $( '<a id="articlefeedbackv5-talk-feedback-link"></a>' );
 		link
 			.text( mw.msg( 'articlefeedbackv5-talk-view-feedback' ) )
-			.html( link.html() + ' &raquo;' )
+			.html( link.html() )
 			.attr( 'href', url )
 			.click( { trackingId: 'talk_page_view_feedback-button_click' }, $.aftTrack.trackEvent );
 
-		$( '#firstHeading' ).append( link );
+		var $target = $( '#siteSub' );
+		if ( $target.is( ':visible' ) ) {
+			$target.append( link );
+		} else {
+			$target.after( link );
+		}
 
 		// Track an impression
 		$.aftTrack.track( 'talk_page_view_feedback-impression' );
