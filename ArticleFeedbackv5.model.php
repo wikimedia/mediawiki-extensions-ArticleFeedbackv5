@@ -95,6 +95,10 @@ class ArticleFeedbackv5Model extends DataModel {
 			'permissions' => 'aft-noone',
 			'conditions' => array(),
 		),
+		'has_comment' => array(
+			'permissions' => 'aft-noone',
+			'conditions' => array( 'aft_has_comment = 1' ),
+		),
 
 		// reader lists
 		'featured' => array(
@@ -205,17 +209,22 @@ class ArticleFeedbackv5Model extends DataModel {
 
 	/**
 	 * Update the amount of people who marked "yes" to the question if they
-	 * found what the were looking for
+	 * found what they were looking for.
+	 * Votes for feedback marked as inappropriate/hidden/oversighted are disregarded.
 	 */
 	public function updateCountFound() {
 		$oldRating = 0;
+		$newRating = 0;
 		if ( $this->{static::getIdColumn()} ) {
 			$old = static::get( $this->{static::getIdColumn()}, $this->{static::getShardColumn()} );
-			if ( $old ) {
-				$oldRating = $old->aft_rating;
+			if ( $old && !$old->aft_inappropriate && !$old->aft_hide && !$old->aft_oversight ) {
+				$oldRating = (int) $old->aft_rating;
 			}
 		}
-		$difference = (int) $this->aft_rating - (int) $oldRating;
+		if ( !$this->aft_inappropriate && !$this->aft_hide && !$this->aft_oversight ) {
+			$newRating = (int) $this->aft_rating;
+		}
+		$difference = $newRating - $oldRating;
 
 		$class = get_called_class();
 		foreach ( array( $this->{self::getShardColumn()}, null ) as $shard ) {
@@ -246,11 +255,14 @@ class ArticleFeedbackv5Model extends DataModel {
 	}
 
 	/**
-	 * Get the amount of people who marked "yes" to the question if they
-	 * found what the were looking for
+	 * Get the percentage of people who marked "yes" to the question if they
+	 * found what the were looking for.
+	 * Votes for feedback marked as inappropriate/hidden/oversighted are
+	 * disregarded, so make sure to ignore these too when calculating the
+	 * percentage.
 	 *
 	 * @param int[optional] The page id
-	 * @return int
+	 * @return float
 	 */
 	public static function getCountFound( $pageId = null ) {
 		$key = wfMemcKey( get_called_class(), 'getCountFound', $pageId );
