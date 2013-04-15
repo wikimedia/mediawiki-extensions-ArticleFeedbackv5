@@ -83,14 +83,14 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 				$this->msg( 'articlefeedbackv5-special-watchlist-showing',
 					$user->getUserPage()->getFullText(),
 					$user->getName()
-				) .
-					Html::rawElement(
-						'span',
-						array( 'id' => 'articlefeedbackv5-special-central-watchlist-link' ),
-						$this->msg( 'articlefeedbackv5-special-watchlist-central-link',
-							SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullText()
-						)->parse()
-					)
+				)
+			) .
+			Html::rawElement(
+				'span',
+				array( 'id' => 'articlefeedbackv5-special-central-watchlist-link' ),
+				$this->msg( 'articlefeedbackv5-special-watchlist-central-link',
+					SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullText()
+				)->parse()
 			);
 	}
 
@@ -156,18 +156,12 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 			Html::rawElement(
 				'div',
 				array( 'id' => 'articleFeedbackv5-filter' ),
-				Html::rawElement(
-					'span',
-					array( 'class' => 'articleFeedbackv5-filter-label' ),
-					$this->msg( 'articlefeedbackv5-special-filter-label-before' )->escaped()
-				) .
-					implode( ' ', $filterLabels ) .
+				implode( ' ', $filterLabels ) .
 					Html::rawElement(
 						'div',
 						array( 'id' => 'articleFeedbackv5-select-wrapper' ),
 						$filterSelectHtml
-					) .
-					$this->msg( 'articlefeedbackv5-special-filter-label-after' )->escaped()
+					)
 			);
 	}
 }
