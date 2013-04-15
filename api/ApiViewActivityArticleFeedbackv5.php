@@ -89,7 +89,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 						Html::element(
 							'div',
 							array(),
-							wfMessage( 'articlefeedbackv5-activity-feedback-date', array( $wgLang->timeanddate( $feedback->aft_timestamp ) ) )->text()
+							wfMessage( 'articlefeedbackv5-activity-feedback-date', array( $wgLang->userTimeAndDate( $feedback->aft_timestamp, $wgUser ) ) )->text()
 						) .
 						Html::rawElement(
 							'div',
@@ -156,9 +156,9 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 							->rawParams(
 								ArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
 								Linker::commentBlock( $item->log_comment ),
-								Html::element( 'span', array(), $wgLang->timeanddate( $item->log_timestamp ) ),
-								Html::element( 'span', array(), $wgLang->date( $item->log_timestamp ) ),
-								Html::element( 'span', array(), $wgLang->time( $item->log_timestamp ) )
+								Html::element( 'span', array(), $wgLang->userTimeAndDate( $item->log_timestamp, $wgUser ) ),
+								Html::element( 'span', array(), $wgLang->userDate( $item->log_timestamp, $wgUser ) ),
+								Html::element( 'span', array(), $wgLang->userTime( $item->log_timestamp, $wgUser ) )
 							)
 							->params( $item->log_user_text )
 							->escaped()

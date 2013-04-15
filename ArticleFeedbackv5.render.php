@@ -889,8 +889,8 @@ class ArticleFeedbackv5Render {
 						->params(
 							$userText,
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$record->aft_id" ),
-							$wgLang->date( $record->aft_timestamp ),
-							$wgLang->time( $record->aft_timestamp ),
+							$wgLang->userDate( $record->aft_timestamp, $wgUser ),
+							$wgLang->userTime( $record->aft_timestamp, $wgUser ),
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title ),
 							Message::rawParam( Html::element( 'blockquote', array(), $record->aft_comment ) ),
 							$record->getArticle()->getTitle()
@@ -1090,7 +1090,7 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered info section
 	 */
 	private function renderPermalinkInfo( $record ) {
-		global $wgLang;
+		global $wgLang, $wgUser;
 
 		if ( !$this->isAllowed( 'aft-editor' ) ) {
 			return '';
@@ -1114,7 +1114,7 @@ class ArticleFeedbackv5Render {
 					'p',
 					array(),
 					wfMessage( 'articlefeedbackv5-permalink-info-posted' )
-						->params( $wgLang->date( $record->aft_timestamp ), $wgLang->time( $record->aft_timestamp ) )
+						->params( $wgLang->userDate( $record->aft_timestamp, $wgUser ), $wgLang->userTime( $record->aft_timestamp, $wgUser ) )
 						->escaped()
 				) .
 				Html::rawElement(
