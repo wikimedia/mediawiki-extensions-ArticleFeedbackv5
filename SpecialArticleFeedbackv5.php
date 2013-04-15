@@ -137,10 +137,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				$this->filters[] = $filter;
 			}
 		}
-		$this->sorts = array( 'relevance-DESC', 'relevance-ASC', 'age-DESC', 'age-ASC' );
-		if ( $this->isAllowed( 'aft-editor' ) ) {
-			array_push( $this->sorts, 'helpful-DESC', 'helpful-ASC' );
-		}
+		$this->sorts = array( 'relevance-DESC', 'relevance-ASC', 'age-DESC', 'age-ASC', 'helpful-DESC', 'helpful-ASC' );
 
 		// don't display archived list unless specifically "enabled" (if cronjob
 		// is not running, it would simply not work)
@@ -219,13 +216,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->addJsConfigVars( 'afFilterCount', $filterCount );
 		$out->addJsConfigVars( 'afOffset', $records ? $records->nextOffset() : 0 );
 		$out->addJsConfigVars( 'afShowMore', $records ? $records->hasMore() : false );
-
-		/*
-		 * @todo: this is a test; something's wrong with the totals on some pages,
-		 * let's see what the result of this one is.
-		 */
-		$unreviewedCount = ArticleFeedbackv5Model::getCount( 'unreviewed', $this->pageId );
-		$out->addJsConfigVars( 'afUnreviewedCount', $unreviewedCount );
 	}
 
 	/**
@@ -320,17 +310,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 */
 	protected function buildListHeader() {
 		return
-			Html::rawElement(
-				'p',
-				array( 'id' => 'articlefeedbackv5-header-message' ),
-				$this->msg( 'articlefeedbackv5-header-message' )->rawParams(
-					Html::rawElement(
-						'a',
-						array( 'href' => $this->getHelpLink().'#Feedback_page' ),
-						$this->msg( 'articlefeedbackv5-header-message-link-text' )->escaped() . ' &raquo;'
-					)
-				)->text()
-			) .
 			$this->buildSummary() .
 			Html::element( 'div', array( 'class' => 'float-clear' ) );
 	}
@@ -367,27 +346,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		// Showing {count} posts
-		$filterCount = ArticleFeedbackv5Model::getCount( 'featured', $this->pageId );
 		$totalCount = ArticleFeedbackv5Model::getCount( '*', $this->pageId );
 		$count =
 			Html::rawElement(
 				'div',
 				array( 'id' => 'articleFeedbackv5-showing-count-wrap' ),
-				$this->msg(
-					$this->pageId ? 'articlefeedbackv5-special-showing' : 'articlefeedbackv5-special-central-showing',
-					Html::element(
-						'span',
-						array( 'id' => 'articleFeedbackv5-feedback-count-total' ),
-						$totalCount // this figure will be filled out through JS
-					),
-					$totalCount,
-					Html::element(
-						'span',
-						array( 'id' => 'articleFeedbackv5-feedback-count-filter' ),
-						$filterCount // this figure will be filled out through JS
-					),
-					$filterCount
-				)->text() .
+				$this->msg( 'articlefeedbackv5-special-count-total', $totalCount )->text() .
 				$watchlistLink
 			);
 
@@ -396,10 +360,19 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		if ( $this->pageId ) {
 			$found = ArticleFeedbackv5Model::getCountFound( $this->pageId ) / ( $totalCount ?: 1 ) * 100;
 			if ( $found ) {
-				$class = $found >= 50 ? 'positive' : 'negative';
+				if ( $found > 50 ) {
+					$class = 'positive';
+				} elseif ( $found < 50 ) {
+					$class = 'negative';
+				} else {
+					$class = 'neutral';
+				}
 				$span = Html::rawElement(
 					'span',
-					array( 'class' => "stat-marker $class" ),
+					array(
+						'class' => "stat-marker $class",
+//						'title' => '' // @todo: "Based on X posts (featured + unreviewed + no action needed)
+					),
 					$this->msg( 'percent', round( $found ) )->escaped()
 				);
 

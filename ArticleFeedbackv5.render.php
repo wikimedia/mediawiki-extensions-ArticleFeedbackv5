@@ -1104,6 +1104,13 @@ class ArticleFeedbackv5Render {
 				Html::rawElement(
 					'p',
 					array(),
+					wfMessage( 'articlefeedbackv5-permalink-info-post-id' )
+						->params( $record->aft_id )
+						->escaped()
+				) .
+				Html::rawElement(
+					'p',
+					array(),
 					// Give grep a chance to find the usages:
 					// articlefeedbackv5-permalink-written-by-reader, articlefeedbackv5-permalink-written-by-editor
 					wfMessage( 'articlefeedbackv5-permalink-written-by-' . ( $record->aft_user == 0 ? 'reader' : 'editor' ) )
@@ -1279,14 +1286,7 @@ class ArticleFeedbackv5Render {
 					Html::rawElement(
 						'h4',
 						array(),
-						wfMessage( 'articlefeedbackv5-permalink-info-title' )->escaped() .
-						Html::rawElement(
-							'span',
-							array(),
-							wfMessage( 'articlefeedbackv5-permalink-info-subtitle' )
-								->params( $record->aft_id )
-								->escaped()
-						)
+						wfMessage( 'articlefeedbackv5-permalink-info-title' )->escaped()
 					) .
 					$metadata .
 					$stats

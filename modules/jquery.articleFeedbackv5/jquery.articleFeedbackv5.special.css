@@ -71,6 +71,7 @@
 
 /** Comment block: icon **/
 .articleFeedbackv5-comment-wrap {
+	background-size: 22px;
 	background-position: top left;
 	background-repeat: no-repeat;
 }
