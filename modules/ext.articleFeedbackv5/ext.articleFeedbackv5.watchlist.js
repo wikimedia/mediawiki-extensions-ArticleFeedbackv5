@@ -28,7 +28,6 @@ jQuery( function( $ ) {
 		var link = $( '<a id="articlefeedbackv5-watchlist-feedback-link"></a>' );
 		link
 			.text( mw.msg( 'articlefeedbackv5-watchlist-view-feedback' ) )
-			.html( link.html() + ' &raquo;' )
 			.attr( 'href', url )
 			.click( { trackingId: 'watchlist_view_feedback-button_click' }, $.aftTrack.trackEvent );
 

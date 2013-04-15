@@ -121,6 +121,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	/**
 	 * Get the amount of people who marked "yes" to the question if they
 	 * found what the were looking for.
+	 * Votes for feedback marked as inappropriate/hidden/oversighted are disregarded.
 	 *
 	 * This is quite an expensive function, whose result should be cached.
 	 *
@@ -134,6 +135,11 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		if ( $pageId !== null) {
 			$where['aft_page'] = $pageId;
 		}
+
+		// ignore feedback marked as inappropriate
+		$where['aft_inappropriate'] = 0;
+		$where['aft_hide'] = 0;
+		$where['aft_oversight'] = 0;
 
 		return (int) $this->getDB( DB_SLAVE )->selectField(
 			$this->table,
