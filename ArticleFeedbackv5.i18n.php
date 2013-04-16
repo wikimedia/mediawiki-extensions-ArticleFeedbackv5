@@ -555,7 +555,6 @@ includes one of these issues:
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'No',
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'Yes, I found what I was looking for.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'No, I did not find what I was looking for.',
-	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 character remaining)|($1 characters remaining)}}',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Great. Any suggestion for improvement?',
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Write your suggestion here (e.g.: \'This page needs a picture\')',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Sorry about that. Any suggestion for improvement?',
@@ -701,6 +700,9 @@ $4',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Article Feedback',
 	'articlefeedbackv5-disable-flyover-help-location' => 'My preferences > Appearance',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Go to my preferences',
+
+	/* "X characters remaining" countdown message */
+	'articlefeedbackv5-countdown' => '{{PLURAL:$1|(1 character remaining)|($1 characters remaining)}}',
 
 	/* Custom AbuseFilter actions */
 	'abusefilter-edit-action-aftv5flagabuse' => '(Article Feedback) Auto-flag as abuse',
@@ -1570,7 +1572,6 @@ Un-oversight note flyover panel - action description',
 {{Identical|No}}',
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'This is the text that appears when you roll over the yes button in option 1 ("Did you find what you were looking for?"); it clarifies what "yes" means in this context.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'This is the text that appears when you roll over the no button in option 1 ("Did you find what you were looking for?"); it clarifies what "no" means in this context.',
-	'articlefeedbackv5-bucket6-feedback-countdown' => 'This displays a countdown of the amount of characters feedback that will be allowed. $1 contains the amount of characters (number) remaining before none more are accepted.',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'This is the instructional text to be shown above the textarea where a user can leave feedback, to be shown when the user selected yes',
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'This is the grey default text that appears in the comment box when the yes button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'This is the instructional text to be shown above the textarea where a user can leave feedback, to be shown when the user selected no',
@@ -2060,6 +2061,8 @@ Parameters:
 
 It must be: {{msg-mw|mypreferences}} > {{msg-mw|prefs-rendering}}',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'The text of the big glossy button used to send the user to their preferences in the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
+	'articlefeedbackv5-countdown' => 'This displays a countdown of the amount of characters feedback that will be allowed. Parameters:
+* $1 contains the amount of characters (number) remaining before none more are accepted.',
 	'abusefilter-edit-action-aftv5flagabuse' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in the feedback being auto-flagged as abuse',
 	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'The note to add to the activity log when auto-flagging a new feedback post as abuse (<code>$1</code> is the name of the filter)',
 	'abusefilter-edit-action-aftv5hide' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in the feedback being auto-hidden',
