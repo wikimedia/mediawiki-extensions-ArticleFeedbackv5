@@ -518,6 +518,7 @@ $wgResourceModules['jquery.articleFeedbackv5.utils'] = array(
 	'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.utils.js',
 	'messages' => array(
 		'articlefeedbackv5-error-unknown',
+		'articlefeedbackv5-countdown',
 	),
 	'dependencies' => array(
 		'mediawiki.util',
@@ -673,7 +674,6 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 		'articlefeedbackv5-bucket6-toggle-found-yes-full',
 		'articlefeedbackv5-bucket6-toggle-found-no',
 		'articlefeedbackv5-bucket6-toggle-found-no-full',
-		'articlefeedbackv5-bucket6-feedback-countdown',
 		'articlefeedbackv5-bucket6-question-instructions-yes',
 		'articlefeedbackv5-bucket6-question-placeholder-yes',
 		'articlefeedbackv5-bucket6-question-instructions-no',

@@ -123,6 +123,7 @@
 		</div>\
 		<form class="articleFeedbackv5-form-flyover" action="#">\
 			<div id="articleFeedbackv5-noteflyover-description"></div>\
+			<p id="articleFeedbackv5-noteflyover-countdown"></p>\
 			<label id="articleFeedbackv5-noteflyover-label" for="articleFeedbackv5-noteflyover-note"></label>\
 			<input type="text" id="articleFeedbackv5-noteflyover-note" name="articleFeedbackv5-noteflyover-note" maxlength="255" />\
 			<div class="articleFeedbackv5-flyover-footer">\
@@ -445,6 +446,12 @@
 				$( this ).hide();
 			}
 		});
+
+		// bind character countdown on flyover panels' input field
+		$( document ).on( 'keyup', '#articleFeedbackv5-noteflyover-note', function () {
+			var maxLength = mw.config.get( 'wgArticleFeedbackv5MaxCommentLength' );
+			$.aftUtils.countdown( $( this ), $( '#articleFeedbackv5-noteflyover-countdown' ), 250 );
+		} );
 
 		// bind short/long version toggle
 		$( document ).on( 'click touchstart', '.articleFeedbackv5-comment-toggle', function( e ) {

@@ -6,7 +6,7 @@
  * @package    ArticleFeedback
  * @subpackage Resources
  * @author     Reha Sterbin <reha@omniti.com>
- * @author     Matthas Mullie <mmullie@wikimedia.org>
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @version    $Id$
  */
 
@@ -14,9 +14,8 @@
 
 // {{{ aftUtils definition
 
-	$.aftUtils = {};
+$.aftUtils = {
 
-	// }}}
 	// {{{ article
 
 	/**
@@ -24,7 +23,7 @@
 	 *
 	 * @return object
 	 */
-	$.aftUtils.article = function () {
+	article: function () {
 		// clone object
 		var article = jQuery.extend( {}, mw.config.get( 'aftv5Article' ) );
 
@@ -36,7 +35,7 @@
 		}
 
 		return article;
-	};
+	},
 
 	// }}}
 	// {{{ verify
@@ -50,11 +49,7 @@
 	 * @param  location string  the place from which this is being called
 	 * @return bool     whether AFTv5 is enabled for this page
 	 */
-	$.aftUtils.verify = function ( location ) {
-		// remove obsolete cookies
-		$.aftUtils.removeLegacyCookies();
-
-
+	verify: function ( location ) {
 		var article = $.aftUtils.article();
 
 		var enable = true;
@@ -121,7 +116,7 @@
 		}
 
 		return enable;
-	};
+	},
 
 	// }}}
 	// {{{ permissions
@@ -136,10 +131,10 @@
 	 * @param string|boolean permissionLevel
 	 * @return bool
 	 */
-	$.aftUtils.permissions = function ( article, permissionLevel ) {
+	permissions: function ( article, permissionLevel ) {
 		var permissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 		return permissionLevel in permissions && permissions[permissionLevel];
-	};
+	},
 
 	// }}}
 	// {{{ blacklist
@@ -156,13 +151,13 @@
 	 * @param object article
 	 * @return bool
 	 */
-	$.aftUtils.blacklist = function ( article ) {
+	blacklist: function ( article ) {
 		var blacklistCategories = mw.config.get( 'wgArticleFeedbackv5BlacklistCategories', [] );
-		var intersect = $.map( blacklistCategories, function( category ) {
-			return $.inArray( category.replace(/_/g, ' '), article.categories ) < 0 ? null : category;
+		var intersect = $.map( blacklistCategories, function ( category ) {
+			return $.inArray( category.replace( /_/g, ' ' ), article.categories ) < 0 ? null : category;
 		} );
 		return intersect.length > 0;
-	};
+	},
 
 	// }}}
 	// {{{ whitelist
@@ -179,13 +174,13 @@
 	 * @param object article
 	 * @return bool
 	 */
-	$.aftUtils.whitelist = function ( article ) {
+	whitelist: function ( article ) {
 		var whitelistCategories = mw.config.get( 'wgArticleFeedbackv5Categories', [] );
-		var intersect = $.map( whitelistCategories, function( category ) {
-			return $.inArray( category.replace(/_/g, ' '), article.categories ) < 0 ? null : category;
+		var intersect = $.map( whitelistCategories, function ( category ) {
+			return $.inArray( category.replace( /_/g, ' ' ), article.categories ) < 0 ? null : category;
 		} );
 		return intersect.length > 0;
-	};
+	},
 
 	// }}}
 	// {{{ lottery
@@ -201,14 +196,14 @@
 	 * @param object article
 	 * @return bool
 	 */
-	$.aftUtils.lottery = function ( article ) {
+	lottery: function ( article ) {
 		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
 		if ( typeof odds === 'object' && article.namespace in odds ) {
 			odds = odds[article.namespace];
 		}
 
 		return ( Number( article.id ) % 1000 ) >= ( 1000 - ( Number( odds ) * 10 ) );
-	};
+	},
 
 	// }}}
 	// {{{ getDefaultPermissionLevel
@@ -222,9 +217,9 @@
 	 * @param object article
 	 * @return string
 	 */
-	$.aftUtils.getDefaultPermissionLevel = function ( article ) {
+	getDefaultPermissionLevel: function ( article ) {
 		return $.aftUtils.lottery( article ) ? 'aft-reader' : 'aft-noone';
-	};
+	},
 
 	// }}}
 	// {{{ useragent
@@ -234,7 +229,7 @@
 	 *
 	 * @return bool
 	 */
-	$.aftUtils.useragent = function () {
+	useragent: function () {
 		var ua = navigator.userAgent.toLowerCase();
 
 		// Rule out MSIE 6, FF2, Android
@@ -244,7 +239,7 @@
 			ua.indexOf( 'firefox 2.') != -1 ||
 			ua.indexOf( 'android' ) != -1
 		);
-	};
+	},
 
 	// }}}
 	// {{{ getCookieName
@@ -257,40 +252,9 @@
 	 * @param string $suffix
 	 * @return string
 	 */
-	$.aftUtils.getCookieName = function ( suffix ) {
+	getCookieName: function ( suffix ) {
 		return 'AFTv5-' + suffix;
-	};
-
-	// }}}
-	// {{{ removeLegacyCookies
-
-	/**
-	 * Before the current getCookieName() function, cookie names were:
-	 * * really long
-	 * * incorrect using the tracking version number to differentiate JS/cookie versions
-	 * * not being prefixed by wgCookiePrefix
-	 *
-	 * These issues have since been fixed, but this will make sure that lingering old
-	 * cookie are cleaned up. This function will not merge the old cookies to the new
-	 * cookie name though.
-	 *
-	 * @deprecated Function is only intended to bridge a temporary "gap" while old
-	 *             data persists in cookie. After awhile, cookies have either expired
-	 *             by themselves or this will have cleaned them up, so this function
-	 *             (and where it's being called) can be cleaned up at will.
-	 */
-	$.aftUtils.removeLegacyCookies = function() {
-		// old cookie names
-		var legacyCookieName = function( suffix ) {
-			return 'ext.articleFeedbackv5@11-' + suffix;
-		};
-
-		// remove old cookie names
-		$.cookie( legacyCookieName( 'activity' ), null, { expires: -1, path: '/' } );
-		$.cookie( legacyCookieName( 'last-filter' ), null, { expires: -1, path: '/' } );
-		$.cookie( legacyCookieName( 'submission_timestamps' ), null, { expires: -1, path: '/' } );
-		$.cookie( legacyCookieName( 'feedback-ids' ), null, { expires: -1, path: '/' } );
-	};
+	},
 
 	// }}}
 	// {{{ canSetStatus
@@ -300,7 +264,7 @@
 	 *
 	 * @param bool enable true to check if can be enabled, false to check disabled
 	 */
-	$.aftUtils.canSetStatus = function( enable ) {
+	canSetStatus: function ( enable ) {
 		var permissionLevel = $.aftUtils.article().permissionLevel || $.aftUtils.getDefaultPermissionLevel( $.aftUtils.article() );
 		var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 
@@ -330,7 +294,7 @@
 
 		// check if desired status != current status
 		return enable != enabled;
-	};
+	},
 
 	// }}}
 	// {{{ setStatus
@@ -342,7 +306,7 @@
 	 * @param bool enable true to enable, false to disable
 	 * @param function callback function to execute after setting status
 	 */
-	$.aftUtils.setStatus = function( pageId, enable, callback ) {
+	setStatus: function ( pageId, enable, callback ) {
 		var api = new mw.Api();
 		api.post( {
 			'pageid': pageId,
@@ -372,11 +336,51 @@
 				alert( message );
 			}
 		} );
-	};
+	},
+
+	// }}}
+	// {{{ countdown
+
+	/**
+	 * Character countdown
+	 *
+	 * Note: will not do server-side check: this is only used to encourage people to keep their
+	 * feedback concise, there's no technical reason not to allow more
+	 *
+	 * @param jQuery $element the form element to count the characters down for
+	 * @param jQuery $text the dom element to insert the countdown text in
+	 * @param int amount the amount of characters to count down from
+	 * @param int[optional] displayLength the amount of remaining characters to start displaying
+	 *        the countdown from (no value = always show)
+	 */
+	countdown: function ( $element, $text, amount, displayLength ) {
+		if ( !amount ) {
+			return;
+		}
+
+		// grab the current length of the form element (or set to 0 if the current text is bogus placeholder)
+		var length = amount - $element.val().length;
+
+		// remove excessive characters
+		if ( length < 0 ) {
+			$element.val( $element.val().substr( 0, amount ) );
+			length = 0;
+		}
+
+		// display the amount of characters
+		var message = mw.msg( 'articlefeedbackv5-countdown', length );
+		$text.text( message );
+
+		// only display the countdown for the last X characters
+		$text.hide();
+		if ( typeof displayLength == 'undefined' || length < displayLength ) {
+			$text.show();
+		}
+	}
 
 	// }}}
 
-// }}}
+};
 
 // }}}
 
