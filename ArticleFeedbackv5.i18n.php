@@ -9485,6 +9485,7 @@ $messages['gsw'] = array(
 );
 
 /** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
  * @author KartikMistry
  */
 $messages['gu'] = array(
@@ -9498,7 +9499,7 @@ $messages['gu'] = array(
 	'articlefeedbackv5-error' => 'ક્ષતિ ઉદ્ભવી છે. થોડી વાર પછી ફરી પ્રયત્ન કરો.',
 	'articlefeedbackv5-error-validation' => 'યોગ્યતા ક્ષતિ.',
 	'articlefeedbackv5-error-unknown' => 'અજાણી ક્ષતિ.',
-	'articlefeedbackv5-contribs-entry-status' => 'સ્થિતિ: $1', # Fuzzy
+	'articlefeedbackv5-contribs-entry-status' => '. . સ્થિતિ: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'મદદકર્તા',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'છુપાયેલ',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'છુપાયેલ ટીપ્પણી',
@@ -9512,9 +9513,9 @@ $messages['gu'] = array(
 	'articleFeedbackv5-details-link' => 'વિગતો',
 	'articlefeedbackv5-loading-tag' => 'લવાઇ રહ્યું છે...',
 	'articlefeedbackv5-new-marker' => 'નવું',
-	'articlefeedbackv5-hide-marker' => 'છુપાયેલ', # Fuzzy
-	'articlefeedbackv5-feature-marker' => 'રુપક', # Fuzzy
-	'articlefeedbackv5-go-to-article' => 'લેખ જુઓ', # Fuzzy
+	'articlefeedbackv5-hide-marker' => 'છુપાયેલ',
+	'articlefeedbackv5-feature-marker' => 'ઉપયોગી',
+	'articlefeedbackv5-go-to-article' => 'પાનું જુઓ',
 	'articlefeedbackv5-discussion-page' => 'ચર્ચા',
 	'articlefeedbackv5-whats-this' => 'મદદ',
 	'articlefeedbackv5-desc' => 'Article feedback',
@@ -9533,7 +9534,7 @@ $messages['gu'] = array(
 	'articlefeedbackv5-noteflyover-resolve-help' => 'વધુ જાણો',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'નોંધ ઉમેરો',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'વધુ જાણો',
-	'articlefeedbackv5-noteflyover-hide-caption' => 'આ પોસ્ટ છુપાવો', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-caption' => 'છુપાવો',
 	'articlefeedbackv5-noteflyover-hide-label' => 'નોંધ ઉમેરો',
 	'articlefeedbackv5-noteflyover-hide-help' => 'વધુ જાણો',
 	'articlefeedbackv5-noteflyover-unhide-label' => 'નોંધ ઉમેરો',
