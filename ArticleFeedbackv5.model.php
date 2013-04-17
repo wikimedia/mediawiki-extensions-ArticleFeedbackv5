@@ -28,6 +28,12 @@ class ArticleFeedbackv5Model extends DataModel {
 		$aft_comment,
 		$aft_timestamp,
 
+		// will hold the date after which an entry may be archived
+		$aft_archive_date,
+
+		// will hold info if discussion about the feedback has been started on user or article talk page
+		$aft_discuss,
+
 		// denormalized status indicators for actions of which real records are in logging table
 		$aft_oversight = 0,
 		$aft_decline = 0,
@@ -41,7 +47,6 @@ class ArticleFeedbackv5Model extends DataModel {
 		$aft_noaction = 0,
 		$aft_inappropriate = 0,
 		$aft_archive = 0,
-		$aft_archive_date,
 		$aft_helpful = 0,
 		$aft_unhelpful = 0,
 
@@ -413,6 +418,10 @@ class ArticleFeedbackv5Model extends DataModel {
 		if ( $wgArticleFeedbackv5MaxCommentLength > 0
 			&& strlen( $this->aft_comment ) > $wgArticleFeedbackv5MaxCommentLength ) {
 			throw new MWException( "Comment length exceeds the maximum of '$wgArticleFeedbackv5MaxCommentLength'." );
+		}
+
+		if ( $this->aft_discuss && !in_array( $this->aft_discuss, array( 'talk', 'user' ) ) ) {
+			throw new MWException( "Invalid discuss type '$this->aft_discuss'." );
 		}
 
 		return parent::validate();
