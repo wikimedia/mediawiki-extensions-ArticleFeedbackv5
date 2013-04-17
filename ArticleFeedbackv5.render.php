@@ -897,24 +897,24 @@ class ArticleFeedbackv5Render {
 						)
 						->escaped();
 
-					$sectionAnchor = '';
-					// check if feedback is being discussed already
-					$article = Article::newFromId( $discussPage->getArticleID() );
-					if ( $article ) {
-						$sections = $article->getParserOutput()->getSections();
-						foreach ( $sections as $section ) {
-							if ( $section['line'] == $sectionTitleTruncated ) {
-								$sectionAnchor = $section['anchor'];
-								break;
-							}
-						}
-					}
-					$sectionExists = ( $sectionAnchor !== '' );
+					$sectionExists = ( $record->aft_discuss == $discussType );
 
 					if ( $sectionExists ) {
+						$sectionAnchor = Sanitizer::normalizeSectionNameWhitespace( $sectionTitleTruncated );
+						$sectionAnchor = Sanitizer::escapeId( $sectionAnchor );
+
 						$discussLink = $discussPage->getLinkURL() . '#' . $sectionAnchor;
 					} else {
-						$discussLink = $discussPage->getLinkURL( array( 'action' => 'edit', 'section' => 'new', 'preloadtitle' => $sectionTitleTruncated ) );
+						$discussLink = $discussPage->getLinkURL(
+							array(
+								'action' => 'edit',
+								'section' => 'new',
+								'preloadtitle' => $sectionTitleTruncated,
+								'articleFeedbackv5_discuss_id' => $record->aft_id,
+								'articleFeedbackv5_discuss_page' => $record->aft_page,
+								'articleFeedbackv5_discuss_type' => $discussType,
+							)
+						);
 					}
 
 					$action = 'discuss';
