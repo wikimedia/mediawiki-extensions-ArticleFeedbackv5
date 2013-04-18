@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DvaUtPkY",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-18T00:27:06Z",
+      "side": 1,
+      "message": "This can be just foreach( $output-\u003egetRequest()-\u003egetValues() as $key \u003d\u003e $value ).  This is looping through all get/post variables and assumes that other non-aft5 variables don\u0027t start with the same prefix, but I guess this is fine since both these minors don\u0027t affect that much",
+      "revId": "b8c3ae6dcd68d25a20d5696e4a9fa9221357acf4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DvSUwbuc",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-18T00:27:06Z",
+      "side": 1,
+      "message": "It\u0027s better to typecast them to integers",
+      "revId": "b8c3ae6dcd68d25a20d5696e4a9fa9221357acf4",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
