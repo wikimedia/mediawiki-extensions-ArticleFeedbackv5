@@ -859,6 +859,7 @@
 			'type': 'GET',
 			'dataType': 'json',
 			'data': data,
+			'cache' : false,
 			'context': { location: location },
 			'success': function( data ) {
 				if ( data['articlefeedbackv5-view-activity'].hasHeader ) {
@@ -930,12 +931,13 @@
 			'maxage':             0
 		};
 		$.ajax( {
-			'url'     : $.articleFeedbackv5special.apiUrl,
-			'type'    : 'GET',
-			'dataType': 'json',
-			'data'    : params,
-			'context': { info: params },
-			'success': function ( data ) {
+			'url' : $.articleFeedbackv5special.apiUrl,
+			'type' : 'GET',
+			'dataType' : 'json',
+			'data' : params,
+			'cache' : false,
+			'context' : { info: params },
+			'success' : function ( data ) {
 				if ( 'articlefeedbackv5-view-feedback' in data ) {
 					if ( resetContents ) {
 						$( '#articleFeedbackv5-show-feedback' ).empty();
