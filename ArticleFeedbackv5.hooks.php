@@ -85,6 +85,12 @@ class ArticleFeedbackv5Hooks {
 			dirname( __FILE__ ) . '/sql/index_page.sql'
 		);
 
+		$updater->addExtensionField(
+			'aft_feedback',
+			'aft_discuss',
+			dirname( __FILE__ ) . '/sql/discuss.sql'
+		);
+
 		return true;
 	}
 
@@ -289,37 +295,23 @@ class ArticleFeedbackv5Hooks {
 	}
 
 	/**
-	 * Pushes the tracking fields into the edit page
+	 * Pushes fields into the edit page. This will allow us to pass on some parameter(s)
+	 * until the submission of a page (at which point we can check for these parameters
+	 * with a hook in ArticleSaveComplete)
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/EditPage::showEditForm:fields
 	 * @param $editPage EditPage
 	 * @param $output OutputPage
 	 * @return bool
 	 */
-	public static function pushTrackingFieldsToEdit( $editPage, $output ) {
-		$request = $output->getRequest();
-		$tracking   = $request->getVal( 'articleFeedbackv5_click_tracking' );
-		$ctToken    = $request->getVal( 'articleFeedbackv5_ct_cttoken' );
-		$userToken  = $request->getVal( 'articleFeedbackv5_ct_usertoken' );
-		$ctEvent    = $request->getVal( 'articleFeedbackv5_ct_event' );
+	public static function pushFieldsToEdit( $editPage, $output ) {
+		// push AFTv5 values back into the edit page form, so we can pick them up after submitting the form
+		foreach ( $output->getRequest()->getValues() as $key => $value ) {
+			if ( strpos( $key, 'articleFeedbackv5_' ) === 0 ) {
+				$editPage->editFormTextAfterContent .= Html::hidden( $key, $value );
+			}
+		}
 
-		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_click_tracking', $tracking );
-		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_ct_cttoken', $ctToken );
-		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_ct_usertoken', $userToken );
-		$editPage->editFormTextAfterContent .= Html::hidden( 'articleFeedbackv5_ct_event', $ctEvent );
-
-		return true;
-	}
-
-	/**
-	 * Tracks edit attempts
-	 *
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/EditPage::attemptSave
-	 * @param $editpage EditPage
-	 * @return bool
-	 */
-	public static function trackEditAttempt( $editpage ) {
-		self::trackEvent( 'edit_attempt', $editpage->getArticle()->getTitle(), $editpage->getArticle()->getRevIdFetched()); // EditPage::getTitle() doesn't exist in 1.18wmf1
 		return true;
 	}
 
@@ -340,15 +332,53 @@ class ArticleFeedbackv5Hooks {
 	 * @param $baseRevId
 	 * @return bool
 	 */
-	public static function trackEditSuccess( &$article, &$user, $text,
-			$summary, $minoredit, $watchthis, $sectionanchor, &$flags,
-			$revision, &$status, $baseRevId /*, &$redirect */ ) {
+	public static function editSuccess( &$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId /*, &$redirect */ ) {
 		if ( $revision instanceof Revision ) {
-			self::trackEvent( 'edit_success', $article->getTitle(), $revision->getID() );
+			$request = RequestContext::getMain()->getRequest();
+			$feedbackId = $request->getVal( 'articleFeedbackv5_discuss_id' );
+			$pageId = (int) $request->getVal( 'articleFeedbackv5_discuss_page' );
+			$discussType = $request->getVal( 'articleFeedbackv5_discuss_type' );
+
+			if ( $feedbackId && $pageId && $discussType ) {
+				$feedback = ArticleFeedbackv5Model::get( $feedbackId, $pageId );
+
+				if ( $feedback ) {
+					$feedback->aft_discuss = $discussType;
+
+					/*
+					 * Before saving, the AFT data will be validated. If the discuss type
+					 * is invalid, an exception will be thrown and the data will not be saved.
+					 */
+					try {
+						$feedback->update();
+					} catch ( Exception $e ) {
+						/*
+						 * It's great that tainted AFT data will not be inserted, but let's
+						 * not stop the article edit when some AFT data is wrong.
+						 */
+					};
+				}
+			}
+
+			// track successful edit
+//			self::trackEvent( 'edit_success', $article->getTitle(), $revision->getID() );
 		} else {
-			self::trackEvent( 'edit_norevision', $article->getTitle(), 0 );
+			// track unsuccessful edit
+//			self::trackEvent( 'edit_norevision', $article->getTitle(), 0 );
 		}
 
+		return true;
+	}
+
+	/**
+	 * Tracks edit attempts
+	 *
+	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/EditPage::attemptSave
+	 * @param $editpage EditPage
+	 * @return bool
+	 */
+	public static function editAttempt( $editpage ) {
+//		self::trackEvent( 'edit_attempt', $editpage->getArticle()->getTitle(), $editpage->getArticle()->getRevIdFetched()); // EditPage::getTitle() doesn't exist in 1.18wmf1
 		return true;
 	}
 
@@ -380,6 +410,7 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		// @todo: implement EventLogging if/once requested
+		// make sure sure to uncomment commented calls to self::trackEvent at that time
 	}
 
 	/**
