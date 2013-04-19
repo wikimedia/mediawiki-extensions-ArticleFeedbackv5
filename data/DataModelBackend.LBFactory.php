@@ -10,11 +10,6 @@
  */
 class DataModelBackendLBFactory extends DataModelBackend {
 	/**
-	 * @var array [LoadBalancer]
-	 */
-	protected static $lb = array();
-
-	/**
 	 * @var array [bool]
 	 */
 	protected static $written = array();
@@ -24,11 +19,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @return LoadBalancer
 	 */
 	public function getLB( $wiki = false ) {
-		if ( !isset( static::$lb[$wiki] ) ) {
-			static::$lb[$wiki] = wfGetLB( $wiki );
-		}
-
-		return static::$lb[$wiki];
+		return wfGetLB( $wiki );
 	}
 
 	/**
@@ -48,7 +39,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 		if ( $db === DB_MASTER ) {
 			// mark that we're writing data
 			static::$written[$wiki] = true;
-		} elseif ( isset(static::$written[$wiki]) && static::$written[$wiki] ) {
+		} elseif ( isset( static::$written[$wiki] ) && static::$written[$wiki] ) {
 			if ( $db === DB_SLAVE ) {
 				/*
 				 * Let's keep querying master to make sure we have up-to-date
