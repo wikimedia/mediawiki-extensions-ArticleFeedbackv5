@@ -3569,6 +3569,7 @@ $messages['bs'] = array(
  * @author BroOk
  * @author El libre
  * @author Grondin
+ * @author Jmarchn
  * @author Pitort
  * @author Solde
  * @author Toniher
@@ -3805,6 +3806,7 @@ $messages['ca'] = array(
 	'articlefeedbackv5-noteflyover-inappropriate-submit' => 'Afegeix anotacions',
 	'articlefeedbackv5-noteflyover-inappropriate-help' => 'Aprèn-ne més',
 	'articlefeedbackv5-noteflyover-uninappropriate-caption' => 'Desmarcat com a inadequat',
+	'articlefeedbackv5-noteflyover-uninappropriate-label' => 'Afegeix una nota',
 	'articlefeedbackv5-noteflyover-uninappropriate-submit' => 'Afegeix anotacions',
 	'articlefeedbackv5-noteflyover-uninappropriate-help' => 'Aprèn-ne més',
 	'articlefeedbackv5-noteflyover-archive-label' => 'Afegeix una nota',
@@ -22107,6 +22109,7 @@ $messages['sv'] = array(
 	'articlefeedbackv5-form-discuss-user-exists' => 'Se meddelande på diskussionssidan',
 	'articlefeedbackv5-form-tooltip-note' => 'Lägg till en kommentar som förklarar din flagga',
 	'articlefeedbackv5-form-tooltip-feature' => 'Detta kan bidra till att förbättra sidan',
+	'articlefeedbackv5-form-tooltip-inappropriate' => 'Nonsens, spam, stötande, privat data...',
 	'articlefeedbackv5-form-tooltip-hide' => 'Nonsens, spam, stötande, privat data...',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Ta fram',
 	'articlefeedbackv5-form-tooltip-unarchive' => 'Avarkivera',
