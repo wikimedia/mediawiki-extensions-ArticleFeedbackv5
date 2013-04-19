@@ -704,12 +704,6 @@
 						$( '.articleFeedbackv5-feedback[data-id='+id+']' )
 							.replaceWith( data.render );
 
-						// re-mark active flags in reader tools
-						$.articleFeedbackv5special.markActiveFlags( id );
-
-						// re-bind panels (tipsies)
-						$.articleFeedbackv5special.bindTipsies( id );
-
 						// invoke the registered onSuccess callback for the executed action
 						if ( data.result === 'Success' ) {
 							if ( 'onSuccess' in $.articleFeedbackv5special.actions[action] ) {
@@ -726,6 +720,12 @@
 							$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
 								.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
 						}
+
+						// re-mark active flags in reader tools
+						$.articleFeedbackv5special.markActiveFlags( id );
+
+						// re-bind panels (tipsies)
+						$.articleFeedbackv5special.bindTipsies( id );
 					}
 				}
 
