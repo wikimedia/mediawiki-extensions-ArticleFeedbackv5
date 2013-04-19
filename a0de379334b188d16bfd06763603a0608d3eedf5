@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Dvm5xYHY",
+        "filename": "data/DataModelBackend.LBFactory.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-04-19T18:09:54Z",
+      "side": 0,
+      "message": "when $wiki is false, it means current wiki, probably use wfWikiID() instead of false for caching this data",
+      "revId": "a0de379334b188d16bfd06763603a0608d3eedf5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
