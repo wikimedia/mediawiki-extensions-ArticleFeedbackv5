@@ -380,6 +380,7 @@ class ArticleFeedbackv5Activity {
 
 		$activity = array();
 		$where = array();
+		$titles = array();
 
 		// build where-clause for all feedback entries
 		foreach ( $entries as $entry ) {
@@ -418,6 +419,7 @@ class ArticleFeedbackv5Activity {
 				$actions = self::buildWhereActions( array(), $actions );
 				if ( $actions ) {
 					$title = self::buildWhereFeedback( $feedback );
+					$titles[] = $title;
 					$where[] = 'log_title = '.$dbr->addQuotes( $title ).' AND '.$actions;
 				}
 			}
@@ -425,8 +427,23 @@ class ArticleFeedbackv5Activity {
 
 		// if there are entries not found in cache, fetch them from DB
 		if ( $where ) {
+			$options = array();
+
+			// specific conditions to find the exact action we're looking for, per page
 			$where = array( '('.implode( ') OR (', $where ).')' );
+			$options['GROUP BY'] = array( 'log_namespace', 'log_title' );
+
+			/*
+			 * Even though log_title is already in the above where-conditions (to find
+			 * specific actions per title), we'll add these again to target index
+			 * page_time (on _namespace, _title, _timestamp). This will result in very
+			 * few remaining columns (all logging data for maximum
+			 * ArticleFeedbackv5Model::LIST_LIMIT pages), which can then easily be
+			 * scanned using WHERE.
+			 */
 			$where['log_namespace'] = NS_SPECIAL;
+			$where['log_title'] = $titles;
+			$options['USE INDEX'] = 'page_time';
 
 			/*
 			 * The goal is to fetch only the last (editor) action for every feedback
@@ -439,15 +456,7 @@ class ArticleFeedbackv5Activity {
 				array( 'last_id' => 'MAX(log_id)' ),
 				$where,
 				__METHOD__,
-				array(
-					'GROUP BY' => array( 'log_namespace', 'log_title' ),
-					// Force the page_time index (on _namespace, _title, _timestamp)
-					// We don't expect many if any rows for Special:ArticleFeedbackv5/foo that
-					// don't match log_type='articlefeedbackv5' , so we can afford to have that
-					// clause be unindexed. The alternative is to have the log_type clause be indexed
-					// and the namespace/title clauses unindexed, that would be bad.
-					'USE INDEX' => 'page_time'
-				)
+				$options
 			);
 
 			$rows = ArticleFeedbackv5Utils::getDB( DB_SLAVE )->select(
