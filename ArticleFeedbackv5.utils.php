@@ -265,7 +265,7 @@ class ArticleFeedbackv5Utils {
 		// articlefeedbackv5-mask-text-inappropriate
 		return wfMessage( 'articlefeedbackv5-mask-text-' . $type )
 			->params( static::formatId( $feedbackId ), $username )
-			->rawParams( $timestamp->getHumanTimestamp()->escaped() )
+			->rawParams( $timestamp->getHumanTimestamp() )
 			->escaped();
 	}
 

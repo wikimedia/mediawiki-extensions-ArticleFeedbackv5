@@ -486,7 +486,7 @@ class ArticleFeedbackv5Render {
 				Html::rawElement(
 					'span',
 					array( 'class' => 'articleFeedbackv5-comment-details-date' ),
-					$timestamp->getHumanTimestamp()->escaped()
+					$timestamp->getHumanTimestamp()
 				) .
 				$permalink
 			);
@@ -1249,7 +1249,7 @@ class ArticleFeedbackv5Render {
 						array( 'class' => 'articleFeedbackv5-feedback-permalink-status articleFeedbackv5-laststatus-' . $last->log_action ),
 						wfMessage( 'articlefeedbackv5-permalink-status-' . $last->log_action )
 							->rawParams( ArticleFeedbackv5Utils::getUserLink( $last->log_user, $last->log_user_text ) )
-							->rawParams( $timestamp->getHumanTimestamp()->escaped() )
+							->rawParams( $timestamp->getHumanTimestamp() )
 							->parse()
 					) .
 					$notes
