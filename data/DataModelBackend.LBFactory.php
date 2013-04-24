@@ -10,6 +10,28 @@
  */
 class DataModelBackendLBFactory extends DataModelBackend {
 	/**
+	 * @var array [LoadBalancer]
+	 */
+	protected static $lb = array();
+
+	/**
+	 * @var array [bool]
+	 */
+	protected static $written = array();
+
+	/**
+	 * @param $wiki String: the wiki ID, or false for the current wiki
+	 * @return LoadBalancer
+	 */
+	public function getLB( $wiki = false ) {
+		if ( !isset( static::$lb[$wiki] ) ) {
+			static::$lb[$wiki] = wfGetLB( $wiki );
+		}
+
+		return static::$lb[$wiki];
+	}
+
+	/**
 	 * Wrapper function for wfGetDB.
 	 *
 	 * @param $db Integer: index of the connection to get. May be DB_MASTER for the
@@ -21,7 +43,39 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @param $wiki String: the wiki ID, or false for the current wiki
 	 */
 	public function getDB( $db, $groups = array(), $wiki = false ) {
-		return wfGetDB( $db, $groups, $wiki );
+		$lb = $this->getLB( $wiki );
+
+		if ( $db === DB_MASTER ) {
+			// mark that we're writing data
+			static::$written[$wiki] = true;
+		} elseif ( isset(static::$written[$wiki]) && static::$written[$wiki] ) {
+			if ( $db === DB_SLAVE ) {
+				/*
+				 * Let's keep querying master to make sure we have up-to-date
+				 * data (waiting for slaves to sync up might take some time)
+				 */
+				$db = DB_MASTER;
+			} else {
+				/*
+				 * If another db is requested and we already requested master,
+				 * make sure this slave has caught up!
+				 */
+				$lb->waitFor( $lb->getMasterPos() );
+				static::$written[$wiki] = false;
+			}
+		}
+
+		return $lb->getConnection( $db, $groups, $wiki );
+	}
+
+	/**
+	 * Before caching data read from backend, we have to make sure that the
+	 * content read is in fact "cacheable" (e.g. not read from a lagging slave)
+	 *
+	 * @return bool
+	 */
+	public function allowCache() {
+		return !$this->getLB()->getLaggedSlaveMode();
 	}
 
 	/**

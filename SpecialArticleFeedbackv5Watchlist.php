@@ -39,11 +39,14 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 	 * @param $param string the parameter passed in the url
 	 */
 	public function execute( $param ) {
+		global $wgArticleFeedbackv5Watchlist;
+
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
-		if ( $user->isAnon() ) {
-			$out->redirect(SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullUrl());
+		// if watchlist not enabled or anon user is visiting, redirect to central feedback page
+		if ( !$wgArticleFeedbackv5Watchlist || $user->isAnon() ) {
+			$out->redirect( SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullUrl() );
 		}
 
 		parent::execute( $param );
@@ -101,6 +104,8 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		// filter to be displayed as link
 		$filterLabels = array();
 		foreach ( array( 'featured', 'unreviewed' ) as $filter ) {
+			// Give grep a chance to find the usages:
+			// articlefeedbackv5-special-filter-featured, articlefeedbackv5-special-filter-unreviewed
 			$filterLabels[$filter] =
 				Html::rawElement(
 					'a',
@@ -118,6 +123,15 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		if ( $this->isAllowed( 'aft-editor' ) ) {
 			$opts = array();
 
+			// Give grep a chance to find the usages:
+			// articlefeedbackv5-special-filter-featured-watchlist, articlefeedbackv5-special-filter-unreviewed-watchlist,
+			// articlefeedbackv5-special-filter-helpful-watchlist, articlefeedbackv5-special-filter-unhelpful-watchlist,
+			// articlefeedbackv5-special-filter-flagged-watchlist, articlefeedbackv5-special-filter-useful-watchlist,
+			// articlefeedbackv5-special-filter-resolved-watchlist, articlefeedbackv5-special-filter-noaction-watchlist,
+			// articlefeedbackv5-special-filter-inappropriate-watchlist, articlefeedbackv5-special-filter-archived-watchlist,
+			// articlefeedbackv5-special-filter-allcomment-watchlist, articlefeedbackv5-special-filter-hidden-watchlist,
+			// articlefeedbackv5-special-filter-requested-watchlist, articlefeedbackv5-special-filter-declined-watchlist,
+			// articlefeedbackv5-special-filter-oversighted-watchlist, articlefeedbackv5-special-filter-all-watchlist
 			foreach ( $this->filters as $filter ) {
 				if ( in_array( $filter, array_keys( $filterLabels ) ) ) {
 					continue;

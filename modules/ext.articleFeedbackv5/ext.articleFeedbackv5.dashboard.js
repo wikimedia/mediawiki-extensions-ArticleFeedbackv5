@@ -5,10 +5,11 @@
 
 /*** Main entry point ***/
 jQuery( function( $ ) {
-
 	var showError = function( message ) {
 		var warning = $( '#articlefeedbackv5-header-message' ).text( message );
-		$( '#articleFeedbackv5-special-wrap' ).empty().append( warning );
+		$( '#articleFeedbackv5-special-wrap' )
+			.hide()
+			.after( warning );
 	};
 
 	// AFT is enabled
@@ -26,5 +27,4 @@ jQuery( function( $ ) {
 			showError( mw.msg( 'articlefeedbackv5-page-disabled' ) );
 		}
 	}
-
 } );

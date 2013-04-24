@@ -28,6 +28,12 @@ class ArticleFeedbackv5Model extends DataModel {
 		$aft_comment,
 		$aft_timestamp,
 
+		// will hold the date after which an entry may be archived
+		$aft_archive_date,
+
+		// will hold info if discussion about the feedback has been started on user or article talk page
+		$aft_discuss,
+
 		// denormalized status indicators for actions of which real records are in logging table
 		$aft_oversight = 0,
 		$aft_decline = 0,
@@ -41,7 +47,6 @@ class ArticleFeedbackv5Model extends DataModel {
 		$aft_noaction = 0,
 		$aft_inappropriate = 0,
 		$aft_archive = 0,
-		$aft_archive_date,
 		$aft_helpful = 0,
 		$aft_unhelpful = 0,
 
@@ -379,15 +384,15 @@ class ArticleFeedbackv5Model extends DataModel {
 
 		global $wgArticleFeedbackv5MaxCommentLength;
 
-		if ( $this->getArticle() === false ) {
+		if ( !$this->getArticle() ) {
 			throw new MWException( "Invalid page id '$this->aft_page'." );
 		}
 
-		if ( $this->getRevision() === false ) {
+		if ( !$this->getRevision() ) {
 			throw new MWException( "Invalid revision id '$this->aft_page_revision'." );
 		}
 
-		if ( $this->aft_user != 0 && $this->getUser() === false ) {
+		if ( $this->aft_user != 0 && !$this->getUser() ) {
 			throw new MWException( "Invalid user id '$this->aft_user' or name '$this->aft_user_text'." );
 		}
 
@@ -413,6 +418,10 @@ class ArticleFeedbackv5Model extends DataModel {
 		if ( $wgArticleFeedbackv5MaxCommentLength > 0
 			&& strlen( $this->aft_comment ) > $wgArticleFeedbackv5MaxCommentLength ) {
 			throw new MWException( "Comment length exceeds the maximum of '$wgArticleFeedbackv5MaxCommentLength'." );
+		}
+
+		if ( $this->aft_discuss && !in_array( $this->aft_discuss, array( 'talk', 'user' ) ) ) {
+			throw new MWException( "Invalid discuss type '$this->aft_discuss'." );
 		}
 
 		return parent::validate();
@@ -512,6 +521,11 @@ class ArticleFeedbackv5Model extends DataModel {
 	 */
 	public static function preload( array $entries ) {
 		parent::preload( $entries );
+
+		// when running unittests, ignore this
+		if ( defined( 'MW_PHPUNIT_TEST' ) && MW_PHPUNIT_TEST ) {
+			return;
+		}
 
 		/*
 		 * Only editors will have the detailed toolbox, so only for editors,
@@ -613,21 +627,19 @@ class ArticleFeedbackv5Model extends DataModel {
 	/**
 	 * Get article object for this entry
 	 *
-	 * @return Article|bool Article object or false if invalid page
+	 * @return Article|null Article object or null if invalid page
 	 */
 	public function getArticle() {
-		$page = Article::newFromID( $this->aft_page );
-		return $page ?: false;
+		return Article::newFromID( $this->aft_page );
 	}
 
 	/**
 	 * Get revision object for this entry
 	 *
-	 * @return Revision|bool Revision object or false if invalid revision
+	 * @return Revision|null Revision object or null if invalid revision
 	 */
 	public function getRevision() {
-		$revision = Revision::newFromId( $this->aft_page_revision );
-		return $revision ?: false;
+		return Revision::newFromId( $this->aft_page_revision );
 	}
 
 	/**
@@ -637,11 +649,10 @@ class ArticleFeedbackv5Model extends DataModel {
 	 */
 	public function getUser() {
 		if ( $this->aft_user ) {
-			$user = User::newFromId( $this->aft_user );
+			return User::newFromId( $this->aft_user );
 		} else {
-			$user = User::newFromName( $this->aft_user_text );
+			return User::newFromName( $this->aft_user_text );
 		}
-		return $user ?: false;
 	}
 
 	/**

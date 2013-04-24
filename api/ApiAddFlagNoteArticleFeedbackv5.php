@@ -35,25 +35,60 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 			// get important values from our parameters
 			$params     = $this->extractRequestParams();
 			$logId      = $params['logid'];
+			$action     = $params['flagtype'];
 			$notes      = $params['note'];
+			$feedbackId = $params['feedbackid'];
+			$pageId     = $params['pageid'];
+			$source     = $params['source'];
 
 			// update log entry in database
-			$dbw = wfGetDB( DB_MASTER );
+			$dbw = ArticleFeedbackv5Utils::getDB( DB_MASTER );
 			$affected = $dbw->update(
 				'logging',
 				array( 'log_comment' => $notes ),
 				array(
 					'log_id' => $logId,
+					// failsafe, making sure this can't be gamed to add comments to anything other than AFTv5 entries
+					'log_type' => ArticleFeedbackv5Activity::$actions[$action]['log_type'],
+					'log_action' => $action,
 					// failsafe, making sure this can't be gamed to add comments to other users' feedback
-					'log_user' => $wgUser->getId()
+					'log_user' => $wgUser->getId(),
 				)
 			);
+
+			/**
+			 * ManualLogEntry will have written to database. To make sure that subsequent
+			 * reads are up-to-date, I'll set a flag to know that we've written data, so
+			 * DB_MASTER will be queried.
+			 */
+			$wiki = false;
+			ArticleFeedbackv5Utils::$written[$wiki] = true;
 		}
 
+		$results = array();
 		if ( $affected > 0 ) {
+			/*
+			 * While we're at it, since activity has occurred, the editor activity
+			 * data in cache may be out of date.
+			 */
+			global $wgMemc;
+			$key = wfMemcKey( 'ArticleFeedbackv5Activity', 'getLastEditorActivity', $feedbackId );
+			$wgMemc->delete( $key );
+
 			$results['result'] = 'Success';
+			$results['reason'] = null;
 		} else {
 			$results['result'] = 'Error';
+			$results['reason'] = 'articlefeedbackv5-invalid-log-update';
+		}
+
+		$feedback = ArticleFeedbackv5Model::get( $feedbackId, $pageId );
+		if ( $feedback ) {
+			// re-render feedback entry
+			$permalink = $source == 'permalink';
+			$central = $source == 'central';
+			$renderer = new ArticleFeedbackv5Render( $permalink, $central );
+			$results['render'] = $renderer->run( $feedback );
 		}
 
 		$this->getResult()->addValue(
@@ -72,15 +107,33 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getAllowedParams() {
 		return array(
-			'logid'     => array(
+			'logid' => array(
+				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_MIN => 1
+			),
+			'flagtype' => array(
+				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_TYPE => array_keys( ArticleFeedbackv5Activity::$actions )
+			),
+			'note' => array(
+				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_TYPE => 'string'
+			),
+			'pageid' => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
 			),
-			'note' => array(
+			'feedbackid' => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'
+			),
+			'source' => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_ISMULTI  => false,
+				ApiBase::PARAM_TYPE     => array( 'article', 'central', 'watchlist', 'permalink', 'unknown' )
 			),
 		);
 	}
@@ -92,8 +145,12 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getParamDescription() {
 		return array(
-			'logid'  => 'Log ID to update',
+			'logid' => 'Log ID to update',
+			'flagtype' => 'Type of flag to apply',
 			'note'   => 'Information on why the feedback activity occurred',
+			'pageid' => 'PageID of feedback',
+			'feedbackid' => 'FeedbackID to flag',
+			'source' => 'The origin of the flag: article (page), central (feedback page), watchlist (page), permalink',
 		);
 	}
 
@@ -115,7 +172,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	 */
 	protected function getExamples() {
 		return array(
-			'api.php?action=articlefeedbackv5-add-flag-note&logid=1&note=text'
+			'api.php?action=articlefeedbackv5-add-flag-note&logid=1&note=text&flagtype=resolve&feedbackid=1&pageid=1'
 		);
 	}
 

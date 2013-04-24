@@ -11,26 +11,23 @@
  */
 class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	/**
-	 * Override getDB so that AFT's data can be on a separate cluster.
+	 * Override getLB so that AFT's data can be on a separate cluster.
 	 *
-	 * @param $db Integer: index of the connection to get. May be DB_MASTER for the
-	 *            master (for write queries), DB_SLAVE for potentially lagged read
-	 *            queries, or an integer >= 0 for a particular server.
-	 * @param $groups Mixed: query groups. An array of group names that this query
-	 *                belongs to. May contain a single string if the query is only
-	 *                in one group.
-	 * @param $wiki String: the wiki ID, or false for the current wiki
+	 * @return LoadBalancer
 	 */
-	public function getDB( $db, $groups = array(), $wiki = false ) {
-		global $wgArticleFeedbackv5Cluster;
+	public function getLB( $wiki = false ) {
+		if ( !isset( static::$lb[$wiki] ) ) {
+			global $wgArticleFeedbackv5Cluster;
 
-		// connect to external, aft-specific, cluster
-		if ( $wgArticleFeedbackv5Cluster ) {
-			return wfGetLBFactory()->getExternalLB( $wgArticleFeedbackv5Cluster )->getConnection( $db, $groups, $wiki );
+			// connect to external, aft-specific, cluster
+			if ( $wgArticleFeedbackv5Cluster ) {
+				static::$lb[$wiki] = wfGetLBFactory()->getExternalLB( $wgArticleFeedbackv5Cluster, $wiki );
+			} else {
+				static::$lb[$wiki] = parent::getLB( $wiki );
+			}
 		}
 
-		// plain old wfGetDB
-		return parent::getDB( $db, $groups, $wiki );
+		return static::$lb[$wiki];
 	}
 
 	/**
@@ -44,9 +41,8 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		$ids = null;
 		if ( $id != null ) {
 			$ids = (array) $id;
+			$ids = array_map( array( $this, 'standardizeId' ), $ids );
 		}
-
-		$ids = array_map( array( $this, 'standardizeId' ), $ids );
 
 		return parent::get( $ids, $shard );
 	}

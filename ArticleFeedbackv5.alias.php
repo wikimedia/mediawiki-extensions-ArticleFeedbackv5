@@ -31,6 +31,12 @@ $specialPageAliases['diq'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'PeydrıştenaWesiqanv5Listaseyri' ),
 );
 
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'ArticleFeedbackv5' => array( 'Prisondo_de_artikoloj_v5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'Atentaro_de_prisondo_de_artikoloj_v5' ),
+);
+
 /** Galician (galego) */
 $specialPageAliases['gl'] = array(
 	'ArticleFeedbackv5' => array( 'Avaliación_de_artigos_v5' ),

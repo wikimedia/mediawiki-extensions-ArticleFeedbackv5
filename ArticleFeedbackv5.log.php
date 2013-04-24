@@ -24,10 +24,11 @@ class ArticleFeedbackv5Log {
 
 		global $wgLogActionsHandlers, $wgArticleFeedbackv5MaxActivityNoteLength, $wgLang;
 
-		// set the type of feedback - some feedback must go to the more hidden suppression log
-		if ( isset( $wgLogActionsHandlers["suppress/$type"] ) ) {
-			$logType = 'suppress';
+		if ( isset( ArticleFeedbackv5Activity::$actions[$type]['log_type'] ) ) {
+			// log type for actions (the more delicate actions should go to suppression log)
+			$logType = ArticleFeedbackv5Activity::$actions[$type]['log_type'];
 		} elseif ( isset( $wgLogActionsHandlers["articlefeedbackv5/$type"] ) ) {
+			// other AFTv5-related log entry (e.g. "create")
 			$logType = 'articlefeedbackv5';
 		} else {
 			wfProfileOut( __METHOD__ );
@@ -40,7 +41,7 @@ class ArticleFeedbackv5Log {
 			wfProfileOut( __METHOD__ );
 			return null;
 		}
-		$target = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getDBKey() . "/$itemId" );
+		$target = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() . "/$itemId" );
 
 		// if no doer specified, use default AFT user
 		if ( !( $doer instanceof User ) ) {
@@ -66,6 +67,14 @@ class ArticleFeedbackv5Log {
 		$logEntry->setComment( $note );
 		$logId = $logEntry->insert();
 		$logEntry->publish( $logId );
+
+		/**
+		 * ManualLogEntry will have written to database. To make sure that subsequent
+		 * reads are up-to-date, I'll set a flag to know that we've written data, so
+		 * DB_MASTER will be queried.
+		 */
+		$wiki = false;
+		ArticleFeedbackv5Utils::$written[$wiki] = true;
 
 		wfProfileOut( __METHOD__ );
 
@@ -106,13 +115,23 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 			return '';
 		}
 
+		// Give grep a chance to find the usages:
+		// logentry-articlefeedbackv5-create, logentry-articlefeedbackv5-oversight, logentry-articlefeedbackv5-unoversight,
+		// logentry-articlefeedbackv5-decline, logentry-articlefeedbackv5-request, logentry-articlefeedbackv5-unrequest,
+		// logentry-articlefeedbackv5-flag, logentry-articlefeedbackv5-unflag, logentry-articlefeedbackv5-autoflag,
+		// logentry-articlefeedbackv5-feature, logentry-articlefeedbackv5-unfeature, logentry-articlefeedbackv5-resolve,
+		// logentry-articlefeedbackv5-unresolve, logentry-articlefeedbackv5-noaction, logentry-articlefeedbackv5-unnoaction,
+		// logentry-articlefeedbackv5-inappropriate, logentry-articlefeedbackv5-uninappropriate, logentry-articlefeedbackv5-archive,
+		// logentry-articlefeedbackv5-unarchive, logentry-articlefeedbackv5-hide, logentry-articlefeedbackv5-unhide,
+		// logentry-articlefeedbackv5-autohide, logentry-articlefeedbackv5-helpful, logentry-articlefeedbackv5-unhelpful,
+		// logentry-articlefeedbackv5-undo-helpful, logentry-articlefeedbackv5-undo-unhelpful, logentry-articlefeedbackv5-clear-flags
 		$language = $skin === null ? $wgContLang : $wgLang;
 		return wfMessage( "logentry-articlefeedbackv5-$action" )
 			->params( array(
 				Message::rawParam( $this->getPerformerElement() ),
 				$this->entry->getPerformer()->getId(),
 				$target,
-				$parameters['feedbackId'],
+				ArticleFeedbackv5Utils::formatId( $parameters['feedbackId'] ),
 				$page
 			) )
 			->inLanguage( $language )

@@ -22,6 +22,65 @@
  */
 class ArticleFeedbackv5Utils {
 	/**
+	 * @var array [LoadBalancer]
+	 */
+	protected static $lb = array();
+
+	/**
+	 * @var array [bool]
+	 */
+	public static $written = array();
+
+	/**
+	 * @param $wiki String: the wiki ID, or false for the current wiki
+	 * @return LoadBalancer
+	 */
+	public static function getLB( $wiki = false ) {
+		if ( !isset( static::$lb[$wiki] ) ) {
+			static::$lb[$wiki] = wfGetLB( $wiki );
+		}
+
+		return static::$lb[$wiki];
+	}
+
+	/**
+	 * Wrapper function for wfGetDB.
+	 *
+	 * @param $db Integer: index of the connection to get. May be DB_MASTER for the
+	 *            master (for write queries), DB_SLAVE for potentially lagged read
+	 *            queries, or an integer >= 0 for a particular server.
+	 * @param $groups Mixed: query groups. An array of group names that this query
+	 *                belongs to. May contain a single string if the query is only
+	 *                in one group.
+	 * @param $wiki String: the wiki ID, or false for the current wiki
+	 */
+	public static function getDB( $db, $groups = array(), $wiki = false ) {
+		$lb = static::getLB( $wiki );
+
+		if ( $db === DB_MASTER ) {
+			// mark that we're writing data
+			static::$written[$wiki] = true;
+		} elseif ( isset(static::$written[$wiki]) && static::$written[$wiki] ) {
+			if ( $db === DB_SLAVE ) {
+				/*
+				 * Let's keep querying master to make sure we have up-to-date
+				 * data (waiting for slaves to sync up might take some time)
+				 */
+				$db = DB_MASTER;
+			} else {
+				/*
+				 * If another db is requested and we already requested master,
+				 * make sure this slave has caught up!
+				 */
+				$lb->waitFor( $lb->getMasterPos() );
+				static::$written[$wiki] = false;
+			}
+		}
+
+		return $lb->getConnection( $db, $groups, $wiki );
+	}
+
+	/**
 	 * Get the full, prefixed, name that data is saved at in cookie.
 	 * The cookie name is prefixed by the extension name and a version number,
 	 * to avoid collisions with other extensions or code versions.
@@ -30,14 +89,12 @@ class ArticleFeedbackv5Utils {
 	 * @return string
 	 */
 	public static function getCookieName( $suffix ) {
-		global $wgArticleFeedbackv5Credits;
-		$version = isset( $wgArticleFeedbackv5Credits['version'] ) ? $wgArticleFeedbackv5Credits['version'] : 0;
-		return 'AFT' . $version . '-' . $suffix;
+		return 'AFTv5-' . $suffix;
 	}
 
 	/**
 	 * Returns whether feedback is enabled for this page.
-	 * See jquery.articleFeedbackv5.verify.js for full implementation;
+	 * See jquery.articleFeedbackv5.utils.js for full implementation;
 	 * this is more of a safety check.
 	 *
 	 * @param $pageId int the page id
@@ -182,21 +239,24 @@ class ArticleFeedbackv5Utils {
 	 * Helper function to create a mask line
 	 *
 	 * @param string $type the type (hidden or oversight)
-	 * @param int $post_id the feedback post id
-	 * @param int $user_id the user id
+	 * @param int $feedbackId the feedback post id
+	 * @param int $userId the user id
 	 * @param string[optional] $timestamp the timestamp, from the db
 	 * @return string the mask line
 	 */
-	public static function renderMaskLine( $type, $post_id, $user_id, $timestamp = null ) {
-		if ( (int) $user_id !== 0 ) { // logged-in users
-			$username = User::newFromId( $user_id )->getName();
+	public static function renderMaskLine( $type, $feedbackId, $userId, $timestamp = null ) {
+		if ( (int) $userId !== 0 ) { // logged-in users
+			$username = User::newFromId( $userId )->getName();
 		} else { // magic user
 			$username = wfMessage( 'articlefeedbackv5-default-user' )->text();
 		}
 		$timestamp = new MWTimestamp( $timestamp );
 
+		// Give grep a chance to find the usages:
+		// articlefeedbackv5-mask-text-oversight, articlefeedbackv5-mask-text-hide,
+		// articlefeedbackv5-mask-text-inappropriate
 		return wfMessage( 'articlefeedbackv5-mask-text-' . $type )
-			->params( $post_id, $username )
+			->params( static::formatId( $feedbackId ), $username )
 			->rawParams( $timestamp->getHumanTimestamp()->escaped() )
 			->escaped();
 	}
@@ -289,5 +349,16 @@ class ArticleFeedbackv5Utils {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Pretty-format an id: the full 32 char length may be visually overwhelming
+	 *
+	 * @param string $id The full-length id
+	 * @return string
+	 */
+	public static function formatId( $id ) {
+		global $wgLang;
+		return $wgLang->truncate( $id, 10 );
 	}
 }

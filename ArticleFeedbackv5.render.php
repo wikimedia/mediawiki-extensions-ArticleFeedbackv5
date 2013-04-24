@@ -60,6 +60,12 @@ class ArticleFeedbackv5Render {
 			return '';
 		}
 
+		try {
+			$record->validate();
+		} catch( Exception $e ) {
+			return '';
+		}
+
 		// Special cases: when the record is deleted/hidden/inappropriate,
 		// but the user doesn't have permission to see it
 		if ( ( $record->isOversighted() && !ArticleFeedbackv5Activity::canPerformAction( 'oversight' ) ) ||
@@ -685,8 +691,8 @@ class ArticleFeedbackv5Render {
 
 		$ownPost = '';
 		if ( $ownFeedback && !$this->isAllowed( 'aft-editor' ) ) {
-			// Add ability to hide own posts for readers, only when we're
-			// certain that the feedback was posted by the current user
+			// Add ability for readers to mark own posts as non-actionable, only
+			// when we're certain that the feedback was posted by the current user
 			if ( ArticleFeedbackv5Utils::isOwnFeedback( $record, false ) ) {
 				// get details on last editor action
 				$last = $record->getLastEditorActivity();
@@ -709,10 +715,14 @@ class ArticleFeedbackv5Render {
 								array(
 									'id' => "articleFeedbackv5-$action-link-$id",
 									'class' => "articleFeedbackv5-$action-link articleFeedbackv5-$action-own-link",
+									// Give grep a chance to find the usages:
+									// articlefeedbackv5-form-tooltip-noaction-own, articlefeedbackv5-form-tooltip-unnoaction-own
 									'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-own" )->text(),
 									'href' => '#',
 									'data-action' => $action,
 								),
+								// Give grep a chance to find the usages:
+								// articlefeedbackv5-form-noaction-own, articlefeedbackv5-form-unnoaction-own
 								wfMessage( "articlefeedbackv5-form-$action-own" )->text()
 							)
 						);
@@ -760,6 +770,10 @@ class ArticleFeedbackv5Render {
 			return '';
 		}
 
+		// Give grep a chance to find the usages:
+		// articlefeedbackv5-new-marker, articlefeedbackv5-oversight-marker, articlefeedbackv5-autohide-marker,
+		// articlefeedbackv5-hide-marker, articlefeedbackv5-feature-marker, articlefeedbackv5-resolve-marker,
+		// articlefeedbackv5-noaction-marker, articlefeedbackv5-inappropriate-marker, articlefeedbackv5-archive-marker
 		return
 			Html::rawElement(
 			'div',
@@ -826,27 +840,29 @@ class ArticleFeedbackv5Render {
 				$tools .= $this->buildToolboxLink( $record, "un$last->log_action" );
 
 
+				// if feedback is featured, it should still be resolvable in 1 click
+				if ( $record->isFeatured() && !$record->isResolved() ) {
+					$tools .= $this->buildToolboxLink( $record, 'resolve' );
+				}
+
+
 				// build discussion tools
 				$discussType = '';
 				$discussPage = false;
 				if ( $record->isFeatured() ) {
 					// discuss on talk page
 					$discussType = 'talk';
-					$article = $record->getArticle();
-					if ( $article ) {
-						$discussPage = $article->getTitle()->getTalkPage();
-					}
+					$discussPage = $record->getArticle()->getTitle()->getTalkPage();
 				} elseif ( $record->getUser() ) {
 					// contact user
 					$discussType = 'user';
-					$user = $record->getUser();
-					if ( $user ) {
-						$discussPage = $user->getTalkPage();
-					}
+					$discussPage = $record->getUser()->getTalkPage();
 				}
 
 				if ( $discussPage ) {
 					global $wgLang, $wgUser;
+					// Give grep a chance to find the usages:
+					// articlefeedbackv5-discuss-talk-section-title, articlefeedbackv5-discuss-user-section-title
 					$sectionTitle = wfMessage( "articlefeedbackv5-discuss-$discussType-section-title" )
 						->params( $record->aft_comment, $record->getArticle()->getTitle() )
 						->inContentLanguage()
@@ -859,44 +875,46 @@ class ArticleFeedbackv5Render {
 						$userText = '[[' . $record->getUser()->getUserPage()->getPrefixedDBKey() . '|]]'; // link to user page
 					}
 
-					if ( $sectionTitle != $sectionTitleTruncated ) {
+					if ( strlen( $sectionTitle ) != strlen( $sectionTitleTruncated ) ) {
 						/*
 						 * Truncate the title even further - this was added to make sure
 						 * that we don't truncate at 48chars when there are only 50 total.
 						 */
 						$sectionTitleTruncated = $wgLang->truncate( $sectionTitle, 48 );
 					}
+					// Give grep a chance to find the usages:
+					// articlefeedbackv5-discuss-talk-section-content, articlefeedbackv5-discuss-user-section-content
 					$sectionContent = wfMessage( "articlefeedbackv5-discuss-$discussType-section-content" )
 						->inContentLanguage()
 						->params(
-						$userText,
-						SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$record->aft_id" ),
-						$wgLang->date( $record->aft_timestamp ),
-						$wgLang->time( $record->aft_timestamp ),
-						SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title ),
-						Html::rawElement( 'blockquote', array(), $record->aft_comment ),
-						$record->getArticle()->getTitle()
-					)
-						->text();
+							$userText,
+							SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$record->aft_id" ),
+							$wgLang->userDate( $record->aft_timestamp, $wgUser ),
+							$wgLang->userTime( $record->aft_timestamp, $wgUser ),
+							SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title ),
+							Message::rawParam( Html::element( 'blockquote', array(), $record->aft_comment ) ),
+							$record->getArticle()->getTitle()
+						)
+						->escaped();
 
-					$sectionAnchor = '';
-					// check if feedback is being discussed already
-					$article = Article::newFromId( $discussPage->getArticleID() );
-					if ( $article ) {
-						$sections = $article->getParserOutput()->getSections();
-						foreach ( $sections as $section ) {
-							if ( $section['line'] == $sectionTitleTruncated ) {
-								$sectionAnchor = $section['anchor'];
-								break;
-							}
-						}
-					}
-					$sectionExists = ( $sectionAnchor !== '' );
+					$sectionExists = ( $record->aft_discuss == $discussType );
 
 					if ( $sectionExists ) {
+						$sectionAnchor = Sanitizer::normalizeSectionNameWhitespace( $sectionTitleTruncated );
+						$sectionAnchor = Sanitizer::escapeId( $sectionAnchor );
+
 						$discussLink = $discussPage->getLinkURL() . '#' . $sectionAnchor;
 					} else {
-						$discussLink = $discussPage->getLinkURL( array( 'action' => 'edit', 'section' => 'new', 'preloadtitle' => $sectionTitleTruncated ) );
+						$discussLink = $discussPage->getLinkURL(
+							array(
+								'action' => 'edit',
+								'section' => 'new',
+								'preloadtitle' => $sectionTitleTruncated,
+								'articleFeedbackv5_discuss_id' => $record->aft_id,
+								'articleFeedbackv5_discuss_page' => $record->aft_page,
+								'articleFeedbackv5_discuss_type' => $discussType,
+							)
+						);
 					}
 
 					$action = 'discuss';
@@ -913,6 +931,8 @@ class ArticleFeedbackv5Render {
 							array(
 								'id' => "articleFeedbackv5-$action-link-$record->aft_id",
 								'class' => $class,
+								// Give grep a chance to find the usages:
+								// articlefeedbackv5-form-tooltip-discuss-talk, articlefeedbackv5-form-tooltip-discuss-user
 								'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-$discussType" )->text(),
 								'href' => $discussLink,
 								'data-action' => $action,
@@ -922,17 +942,15 @@ class ArticleFeedbackv5Render {
 								'data-section-title' => $sectionTitleTruncated,
 								'data-section-content' => $sectionContent,
 								'data-section-edittime' => wfTimestampNow(),
-								'data-section-edittoken' => $wgUser->getEditToken()
+								'data-section-edittoken' => $wgUser->getEditToken(),
+								'data-section-watchlist' => (int) $wgUser->isWatched( $discussPage )
 							),
+							// Give grep a chance to find the usages:
+							// articlefeedbackv5-form-discuss-talk, articlefeedbackv5-form-discuss-user,
+							// articlefeedbackv5-form-discuss-talk-exists, articlefeedbackv5-form-discuss-user-exists
 							wfMessage( "articlefeedbackv5-form-$action-$discussType" . ( $sectionExists ? '-exists' : '' ) )->text()
 						)
 					);
-				}
-
-
-				// if feedback is featured, it should still be resolvable in 1 click
-				if ( $record->isFeatured() && !$record->isResolved() ) {
-					$tools .= $this->buildToolboxLink( $record, 'resolve' );
 				}
 
 
@@ -973,11 +991,11 @@ class ArticleFeedbackv5Render {
 					}
 				}
 
-				$addNoteLink = '';
+				$note = '';
 				// if current user is the one who performed the action, add a link to
 				// leave a note to clarify why the action was performed
 				if ( $last->log_comment == '' && $last->log_user && $last->log_user == $wgUser->getId() ) {
-					$addNoteLink .=
+					$note .=
 						Html::element(
 							'a',
 							array(
@@ -990,11 +1008,31 @@ class ArticleFeedbackv5Render {
 							),
 							wfMessage( 'articlefeedbackv5-form-note' )->text()
 						);
+				} elseif ( $last->log_comment ) {
+					$note .= Html::rawElement(
+						'span',
+						array( 'class' => "articleFeedbackv5-note-added" ),
+						wfMessage( 'articlefeedbackv5-form-note-added' )->parse()
+					);
 				}
 
 
 				$toolbox .=
 					// performer/action info
+					// Give grep a chance to find the usages:
+					// articlefeedbackv5-short-status-request, articlefeedbackv5-short-status-unrequest,
+					// articlefeedbackv5-short-status-decline, articlefeedbackv5-short-status-autohide,
+					// articlefeedbackv5-short-status-oversight, articlefeedbackv5-short-status-unoversight,
+					// articlefeedbackv5-short-status-unflag, articlefeedbackv5-short-status-flag,
+					// articlefeedbackv5-short-status-autoflag, articlefeedbackv5-short-status-feature,
+					// articlefeedbackv5-short-status-unfeature, articlefeedbackv5-short-status-resolve,
+					// articlefeedbackv5-short-status-unresolve, articlefeedbackv5-short-status-noaction,
+					// articlefeedbackv5-short-status-unnoaction, articlefeedbackv5-short-status-inappropriate,
+					// articlefeedbackv5-short-status-uninappropriate, articlefeedbackv5-short-status-hide,
+					// articlefeedbackv5-short-status-unhide, articlefeedbackv5-short-status-archive,
+					// articlefeedbackv5-short-status-unarchive, articlefeedbackv5-short-status-helpful,
+					// articlefeedbackv5-short-status-undo-helpful, articlefeedbackv5-short-status-unhelpful,
+					// articlefeedbackv5-short-status-undo-unhelpful
 					Html::rawElement(
 						'div',
 						array( 'class' => "articleFeedbackv5-feedback-tools-details" ),
@@ -1006,23 +1044,23 @@ class ArticleFeedbackv5Render {
 							// performer/action info
 							wfMessage( "articlefeedbackv5-short-status-$last->log_action" )
 								->rawParams( ArticleFeedbackv5Utils::getUserLink( $last->log_user, $last->log_user_text ) )
-								->parse() .
-
-							// link for activity log popup
-							Html::element(
-								'a',
-								array(
-									'id' => "articleFeedbackv5-activity-link-$record->aft_id",
-									'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-activity-link', // tipsy for given data-action will be loaded when clicked
-									'href' => '#',
-									'data-action' => 'activity',
-								),
-								wfMessage( 'articlefeedbackv5-viewactivity' )->text()
-							)
+								->parse()
 						) .
 
 						// link to add note
-						$addNoteLink .
+						$note .
+
+						// link for activity log popup
+						Html::element(
+							'a',
+							array(
+								'id' => "articleFeedbackv5-activity-link-$record->aft_id",
+								'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-activity-link', // tipsy for given data-action will be loaded when clicked
+								'href' => '#',
+								'data-action' => 'activity',
+							),
+							wfMessage( 'articlefeedbackv5-viewactivity' )->text()
+						) .
 
 						// tools (undo & possibly oversight-related actions)
 						Html::rawElement(
@@ -1052,7 +1090,7 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered info section
 	 */
 	private function renderPermalinkInfo( $record ) {
-		global $wgLang;
+		global $wgLang, $wgUser;
 
 		if ( !$this->isAllowed( 'aft-editor' ) ) {
 			return '';
@@ -1066,6 +1104,8 @@ class ArticleFeedbackv5Render {
 				Html::rawElement(
 					'p',
 					array(),
+					// Give grep a chance to find the usages:
+					// articlefeedbackv5-permalink-written-by-reader, articlefeedbackv5-permalink-written-by-editor
 					wfMessage( 'articlefeedbackv5-permalink-written-by-' . ( $record->aft_user == 0 ? 'reader' : 'editor' ) )
 						->params( $record->getExperiment() )
 						->parse()
@@ -1074,7 +1114,7 @@ class ArticleFeedbackv5Render {
 					'p',
 					array(),
 					wfMessage( 'articlefeedbackv5-permalink-info-posted' )
-						->params( $wgLang->date( $record->aft_timestamp ), $wgLang->time( $record->aft_timestamp ) )
+						->params( $wgLang->userDate( $record->aft_timestamp, $wgUser ), $wgLang->userTime( $record->aft_timestamp, $wgUser ) )
 						->escaped()
 				) .
 				Html::rawElement(
@@ -1174,6 +1214,20 @@ class ArticleFeedbackv5Render {
 					);
 			}
 
+			// Give grep a chance to find the usages:
+			// articlefeedbackv5-permalink-status-request, articlefeedbackv5-permalink-status-unrequest,
+			// articlefeedbackv5-permalink-status-decline, articlefeedbackv5-permalink-status-autohide,
+			// articlefeedbackv5-permalink-status-oversight, articlefeedbackv5-permalink-status-unoversight,
+			// articlefeedbackv5-permalink-status-flag, articlefeedbackv5-permalink-status-unflag,
+			// articlefeedbackv5-permalink-status-autoflag, articlefeedbackv5-permalink-status-feature,
+			// articlefeedbackv5-permalink-status-unfeature, articlefeedbackv5-permalink-status-resolve,
+			// articlefeedbackv5-permalink-status-unresolve, articlefeedbackv5-permalink-status-noaction,
+			// articlefeedbackv5-permalink-status-unnoaction, articlefeedbackv5-permalink-status-inappropriate,
+			// articlefeedbackv5-permalink-status-uninappropriate, articlefeedbackv5-permalink-status-archive,
+			// articlefeedbackv5-permalink-status-unarchive, articlefeedbackv5-permalink-status-hide,
+			// articlefeedbackv5-permalink-status-unhide, articlefeedbackv5-permalink-status-helpful,
+			// articlefeedbackv5-permalink-status-undo-helpful, articlefeedbackv5-permalink-status-unhelpful,
+			// articlefeedbackv5-permalink-status-undo-unhelpful
 			$activity =
 				Html::rawElement(
 					'p',
@@ -1273,9 +1327,31 @@ class ArticleFeedbackv5Render {
 		}
 
 		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, true );
-		$class .= "articleFeedbackv5-$action-link";
+		$class .= " articleFeedbackv5-$action-link";
 		$class .= ( $ownFeedback ? " articleFeedbackv5-$action-own-link" : '' );
 
+		// Give grep a chance to find the usages:
+		//   articlefeedbackv5-form-tooltip-note, articlefeedbackv5-form-tooltip-feature,
+		//   articlefeedbackv5-form-tooltip-unfeature, articlefeedbackv5-form-tooltip-resolve,
+		//   articlefeedbackv5-form-tooltip-unresolve, articlefeedbackv5-form-tooltip-noaction,
+		//   articlefeedbackv5-form-tooltip-unnoaction, articlefeedbackv5-form-tooltip-inappropriate,
+		//   articlefeedbackv5-form-tooltip-uninappropriate, articlefeedbackv5-form-tooltip-hide,
+		//   articlefeedbackv5-form-tooltip-unhide, articlefeedbackv5-form-tooltip-hide-own,
+		//   articlefeedbackv5-form-tooltip-unhide-own, articlefeedbackv5-form-tooltip-archive,
+		//   articlefeedbackv5-form-tooltip-unarchive, articlefeedbackv5-form-tooltip-flag,
+		//   articlefeedbackv5-form-tooltip-oversight, articlefeedbackv5-form-tooltip-unoversight,
+		//   articlefeedbackv5-form-tooltip-request, articlefeedbackv5-form-tooltip-unrequest,
+		//   articlefeedbackv5-form-tooltip-decline, articlefeedbackv5-form-tooltip-discuss-talk,
+		//   articlefeedbackv5-form-tooltip-discuss-user
+		// Give grep a chance to find the usages:
+		//   articlefeedbackv5-form-note, articlefeedbackv5-form-feature, articlefeedbackv5-form-unfeature,
+		//   articlefeedbackv5-form-resolve, articlefeedbackv5-form-unresolve, articlefeedbackv5-form-noaction,
+		//   articlefeedbackv5-form-unnoaction, articlefeedbackv5-form-inappropriate, articlefeedbackv5-form-uninappropriate,
+		//   articlefeedbackv5-form-hide, articlefeedbackv5-form-unhide, articlefeedbackv5-form-hide-own,
+		//   articlefeedbackv5-form-unhide-own, articlefeedbackv5-form-archive, articlefeedbackv5-form-unarchive,
+		//   articlefeedbackv5-form-flag, articlefeedbackv5-form-oversight, articlefeedbackv5-form-unoversight,
+		//   articlefeedbackv5-form-request, articlefeedbackv5-form-unrequest, articlefeedbackv5-form-decline,
+		//   articlefeedbackv5-form-discuss-talk, articlefeedbackv5-form-discuss-user
 		return Html::rawElement(
 			'li',
 			array(),

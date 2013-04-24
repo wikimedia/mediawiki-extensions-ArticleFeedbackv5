@@ -42,6 +42,16 @@ abstract class DataModelBackend {
 	}
 
 	/**
+	 * Before caching data read from backend, we have to make sure that the
+	 * content read is in fact "cacheable" (e.g. not read from a lagging slave)
+	 *
+	 * @return bool
+	 */
+	public function allowCache() {
+		return true;
+	}
+
+	/**
 	 * Query to fetch entries from DB.
 	 *
 	 * To fetch all entries for a certain shard value, leave $id null.

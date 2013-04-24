@@ -89,13 +89,13 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 						Html::element(
 							'div',
 							array(),
-							wfMessage( 'articlefeedbackv5-activity-feedback-date', array( $wgLang->timeanddate( $feedback->aft_timestamp ) ) )->text()
+							wfMessage( 'articlefeedbackv5-activity-feedback-date', array( $wgLang->userTimeAndDate( $feedback->aft_timestamp, $wgUser ) ) )->text()
 						) .
 						Html::rawElement(
 							'div',
 							array( 'class' => 'articleFeedbackv5-activity-feedback-permalink' ),
 							Linker::link(
-								SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getDBKey() . '/' . $feedback->aft_id ),
+								SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $feedback->aft_id ),
 								wfMessage( 'articlefeedbackv5-activity-permalink' )->text()
 							)
 						)
@@ -131,6 +131,20 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 			$sentiment = ArticleFeedbackv5Activity::$actions[$item->log_action]['sentiment'];
 
+			// Give grep a chance to find the usages:
+			// articlefeedbackv5-activity-item-request, articlefeedbackv5-activity-item-unrequest,
+			// articlefeedbackv5-activity-item-decline, articlefeedbackv5-activity-item-flag,
+			// articlefeedbackv5-activity-item-unflag, articlefeedbackv5-activity-item-autoflag,
+			// articlefeedbackv5-activity-item-oversight, articlefeedbackv5-activity-item-unoversight,
+			// articlefeedbackv5-activity-item-feature, articlefeedbackv5-activity-item-unfeature,
+			// articlefeedbackv5-activity-item-resolve, articlefeedbackv5-activity-item-unresolve,
+			// articlefeedbackv5-activity-item-noaction, articlefeedbackv5-activity-item-unnoaction,
+			// articlefeedbackv5-activity-item-inappropriate, articlefeedbackv5-activity-item-uninappropriate,
+			// articlefeedbackv5-activity-item-hide, articlefeedbackv5-activity-item-unhide,
+			// articlefeedbackv5-activity-item-autohide, articlefeedbackv5-activity-item-archive,
+			// articlefeedbackv5-activity-item-unarchive, articlefeedbackv5-activity-item-helpful,
+			// articlefeedbackv5-activity-item-unhelpful, articlefeedbackv5-activity-item-undo-helpful,
+			// articlefeedbackv5-activity-item-undo-unhelpful, articlefeedbackv5-activity-item-clear-flags
 			$html .=
 				Html::rawElement(
 					'div',
@@ -142,9 +156,9 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 							->rawParams(
 								ArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
 								Linker::commentBlock( $item->log_comment ),
-								Html::element( 'span', array(), $wgLang->timeanddate( $item->log_timestamp ) ),
-								Html::element( 'span', array(), $wgLang->date( $item->log_timestamp ) ),
-								Html::element( 'span', array(), $wgLang->time( $item->log_timestamp ) )
+								Html::element( 'span', array(), $wgLang->userTimeAndDate( $item->log_timestamp, $wgUser ) ),
+								Html::element( 'span', array(), $wgLang->userDate( $item->log_timestamp, $wgUser ) ),
+								Html::element( 'span', array(), $wgLang->userTime( $item->log_timestamp, $wgUser ) )
 							)
 							->params( $item->log_user_text )
 							->escaped()

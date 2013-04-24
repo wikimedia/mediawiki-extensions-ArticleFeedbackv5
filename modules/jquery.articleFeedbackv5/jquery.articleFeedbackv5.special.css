@@ -281,6 +281,7 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
 }
+.articleFeedbackv5-feedback .articleFeedbackv5-autohide-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-hide-marker {
 	/* @embed */
 	background: url(images/toolbox_hide.png);
@@ -305,6 +306,7 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-resolve-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-noaction-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-inappropriate-marker,
+.articleFeedbackv5-feedback .articleFeedbackv5-autohide-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-hide-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-archive-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-oversight-marker {
@@ -349,6 +351,9 @@
 .articleFeedbackv5-inappropriate-link, .articleFeedbackv5-hide-link, .articleFeedbackv5-oversight-link {
 	cursor: pointer;
 }
+.articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools p.articleFeedbackv5-form-toolbox-error {
+	color: red;
+}
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools p.articleFeedbackv5-form-toolbox-label {
 	display: none;
 	color: #888;
@@ -359,22 +364,24 @@
 .articleFeedbackv5-feedback:hover .articleFeedbackv5-feedback-tools p.articleFeedbackv5-form-toolbox-label {
 	display: block;
 }
-.articleFeedbackv5-comment-foot-hide,
+.articleFeedbackv5-comment-foot-hide a,
 .articleFeedbackv5-feedback-tools li a {
 	display: inline-block;
-	margin-left: 35px;
+	position: relative;
+	padding-left: 35px;
 	height: 25px;
 	line-height: 25px;
 }
-.articleFeedbackv5-comment-foot-hide {
+.articleFeedbackv5-comment-foot-hide a {
 	height: 20px;
+	padding-left: 25px;
 }
 .articleFeedbackv5-noaction-own-link:before,
 .articleFeedbackv5-unnoaction-own-link:before,
 .articleFeedbackv5-feedback-tools li a:before {
 	display: block;
 	position: absolute;
-	left: 10px;
+	left: 0;
 	width: 25px;
 	height: 25px;
 	margin: 0 5px;
@@ -526,8 +533,8 @@
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-uninappropriate-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unarchive-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unhide-link:before,
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unoversight-link:before,
-.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unrequest-link:before {
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unrequest-link:before,
+.articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unoversight-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_undo.png);
 	/* @embed */
@@ -555,20 +562,15 @@
 	text-decoration: none;
 }
 
-.articleFeedbackv5-feedback-tools a.articleFeedbackv5-activity-link {
-	padding-left: 5px;
-	margin-left: 5px;
-	border-left: 1px solid #888;
-}
-
 .articleFeedbackv5-feedback-tools a.articleFeedbackv5-note-link {
 	padding: 3px;
 	background-color: #E6E7E5;
 	border: 1px solid #D6D7D5;
+	margin-right: 10px;
 }
-
-.articleFeedbackv5-feedback-tools a.articleFeedbackv5-note-link {
-	padding: 3px;
+.articleFeedbackv5-feedback-tools span.articleFeedbackv5-note-added {
+	color: #888;
+	margin-right: 10px;
 }
 
 .articleFeedbackv5-feedback-tools p.articleFeedbackv5-activity-short-status {
@@ -653,24 +655,6 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	/* @embed */
 	background-image: url(images/bg-close-hov-16.png);
 }
-#articleFeedbackv5-noteflyover-helpbutton {
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 50px;
-	margin-top: 13px;
-	width: 20px;
-	height: 20px;
-	/* @embed */
-	background-image: url(images/bg-tooltip-trigger-20.png);
-	background-repeat: no-repeat;
-	background-position: left top;
-	background-size: 20px 20px;
-}
-#articleFeedbackv5-noteflyover-helpbutton:hover {
-	/* @embed */
-	background-image: url(images/bg-tooltip-trigger-hov-20.png);
-}
 #articleFeedbackv5-noteflyover-description {
 	padding: 0 10px;
 }
@@ -710,15 +694,11 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 }
 .articleFeedbackv5-activity-feedback {
 	padding: 10px 10px;
-	height: 29px;
 }
 .articleFeedbackv5-activity-feedback-permalink {
 	position: absolute;
 	top: 62px;
 	right: 22px;
-}
-.articleFeedbackv5-activity-pane {
-	height: 70px;
 }
 .articleFeedbackv5-activity-log-items {
 	height: 290px;
@@ -750,8 +730,14 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	color: red;
 }
 
-/** Screen for hidden/deleted **/
+/* Don't show mask by default */
 .articleFeedbackv5-post-screen {
+	display: none;
+}
+/* Only display the mask for posts marked as hidden/oversighted */
+.articleFeedbackv5-feedback-hide .articleFeedbackv5-post-screen,
+.articleFeedbackv5-feedback-oversight .articleFeedbackv5-post-screen {
+	display: block;
 	z-index: 99;
 	position: absolute;
 	top: 0;
@@ -760,10 +746,6 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	right: 0;
 	background-color: #dae2eb;
 	padding: 10px 30px;
-}
-/* No mask should be displayed for posts marked as inappropriate (only for hide/oversight) */
-.articleFeedbackv5-feedback-inappropriate .articleFeedbackv5-post-screen {
-	display: none;
 }
 .articleFeedbackv5-post-screen .articleFeedbackv5-mask-text-wrapper {
 	width: 100%;

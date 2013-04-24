@@ -232,7 +232,7 @@
 			</div>\
 			',
 
-		helpToolTipTrigger: '<div class="articleFeedbackv5-tooltip-trigger-wrap"><a class="articleFeedbackv5-tooltip-trigger"><html:msg key="help-tooltip-title" /></a></div>',
+		helpToolTipTrigger: '<div class="articleFeedbackv5-tooltip-trigger-wrap"><a href="#" class="articleFeedbackv5-tooltip-trigger"><html:msg key="help-tooltip-title" /></a></div>',
 
 		ctaTitleConfirm: '\
 			<div class="articleFeedbackv5-confirmation-text">\
@@ -328,7 +328,6 @@
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket1-form-submit" /></button>\
-						<a href="#"><html:msg key="bucket1-form-submit-nocomment" /></a>\
 						<div class="clear"></div>\
 					</form>\
 					'
@@ -443,17 +442,9 @@
 					} );
 
 				// Attach the submit
-				$block.find( '.articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment' )
+				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
-
-						// clear out free-form text field content if user selected to submit without comment
-						if ( $( e.target ).hasClass( 'articleFeedbackv5-submit-nocomment' ) ) {
-							$block.find( '[name=comment]' ).val( '' );
-							// always allowed to submit empty
-							$.articleFeedbackv5.submissionEnabled = true;
-						}
-
 						$.articleFeedbackv5.submitForm();
 					} );
 			},
@@ -678,7 +669,6 @@
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket6-form-submit" /></button>\
-						<a href="#" class="articleFeedbackv5-submit-nocomment"><html:msg key="bucket6-form-submit-nocomment" /></a>\
 						<div class="clear"></div>\
 					</form>\
 					'
@@ -749,6 +739,8 @@
 						$.articleFeedbackv5.currentBucket().displayStep2( $block );
 
 						// add instructional text for feedback
+						// Give grep a chance to find the usages:
+						// articlefeedbackv5-bucket6-question-instructions-yes, articlefeedbackv5-bucket6-question-instructions-no
 						$( '.articleFeedbackv5-title' ).text( mw.msg( 'articlefeedbackv5-bucket6-question-instructions-' + new_val ) );
 
 						// make the button blue
@@ -759,11 +751,13 @@
 						$wrap.find( 'input' ).trigger( 'click' ).attr( 'checked', true );
 
 						// set default comment message
+						// Give grep a chance to find the usages:
+						// articlefeedbackv5-bucket6-question-placeholder-yes, articlefeedbackv5-bucket6-question-placeholder-no
 						var $element = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
 						var text = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-' + new_val );
 						$element.attr( 'placeholder', text ).placeholder();
 
-						// allow feedback submission
+						// allow feedback submission if there is feedback (or if Y/N was positive)
 						$.articleFeedbackv5.enableSubmission( true );
 					} );
 
@@ -782,17 +776,9 @@
 					} );
 
 				// attach the submit
-				$block.find( '.articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment' )
+				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
-
-						// clear out free-form text field content if user selected to submit without comment
-						if ( $( e.target ).hasClass( 'articleFeedbackv5-submit-nocomment' ) ) {
-							$block.find( '[name=comment]' ).val( '' );
-							// always allowed to submit empty
-							$.articleFeedbackv5.submissionEnabled = true;
-						}
-
 						$.articleFeedbackv5.submitForm();
 					} );
 			},
@@ -848,7 +834,7 @@
 			 */
 			displayStep1: function ( $block ) {
 				var $step1 = $( '.form-row', $block );
-				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment', $block );
+				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit', $block );
 
 				// hide comment, disclosure & submit first (should only show after clicking Y/N)
 				$step1.show();
@@ -869,7 +855,7 @@
 			 */
 			displayStep2: function ( $block ) {
 				var $step1 = $( '.form-row', $block );
-				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment', $block );
+				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit', $block );
 
 				// show comment, disclosure & submit; hide Y/N buttons
 				$step2.show();
@@ -2474,7 +2460,8 @@
 
 		// Set up the tooltip trigger for the panel version
 		$wrapper.find( '.articleFeedbackv5-title-wrap' ).append( $.articleFeedbackv5.templates.helpToolTipTrigger );
-		$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function () {
+		$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function ( e ) {
+			e.preventDefault();
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
 		} );
 
@@ -2553,6 +2540,7 @@
 	 * object.
 	 */
 	$.articleFeedbackv5.submitForm = function () {
+
 		// Are we allowed to do this?
 		if ( !$.articleFeedbackv5.submissionEnabled ) {
 			return false;
@@ -2580,10 +2568,12 @@
 			var now = (new Date()).getTime();
 			var msInHour = 3600000;
 
+			var timestampsCookieName = mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'submission_timestamps' );
+
 			var priorTimestamps = new Array();
 			var savedTimestamps = new Array();
 
-			var priorCookieValue = $.cookie( mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'submission_timestamps' ) );
+			var priorCookieValue = $.cookie( timestampsCookieName );
 			if ( priorCookieValue != null ) {
 				var priorTimestamps = priorCookieValue.split( ',' );
 			}
@@ -2602,18 +2592,14 @@
 				$.articleFeedbackv5.markTopError( message );
 
 				// re-store pruned post timestamp list
-				$.cookie( mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'submission_timestamps' ), savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
+				$.cookie( timestampsCookieName, savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
 
 				return;
 			}
 
 			// if we get this far, they haven't been throttled, so update the post timestamp list with the current time and re-store it
 			savedTimestamps.push(now);
-			$.cookie(
-				mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'submission_timestamps' ),
-				savedTimestamps.join( ',' ),
-				{ expires: 1, path: '/' }
-			);
+			$.cookie( timestampsCookieName, savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
 		}
 
 		// Lock the form
@@ -2661,14 +2647,16 @@
 					$.articleFeedbackv5.unlockForm();
 					$.articleFeedbackv5.showCTA();
 
+					var feedbackIdsCookieName = mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'feedback-ids' );
+
 					// save add feedback id to cookie (only most recent 20)
-					var feedbackIds = $.parseJSON( $.cookie( mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'feedback-ids' ) ) );
+					var feedbackIds = $.parseJSON( $.cookie( feedbackIdsCookieName ) );
 					if ( !$.isArray( feedbackIds ) ) {
 						feedbackIds = [];
 					}
 					feedbackIds.unshift( data.articlefeedbackv5.feedback_id );
 					$.cookie(
-						mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'feedback-ids' ),
+						feedbackIdsCookieName,
 						$.toJSON( feedbackIds.splice( 0, 20 ) ),
 						{ expires: 30, path: '/' }
 					);

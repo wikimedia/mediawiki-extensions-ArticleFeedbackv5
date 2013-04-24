@@ -90,45 +90,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$name = 'ArticleFeedbackv5', $restriction = '', $listed = true,
 		$function = false, $file = 'default', $includable = false
 	) {
-		wfProfileIn( __METHOD__ );
-
 		parent::__construct( $name, $restriction, $listed, $function, $file, $includable );
-
-		$this->filters = array();
-		foreach ( ArticleFeedbackv5Model::$lists as $filter => $data ) {
-			if ( $this->isAllowed( $data['permissions'] ) ) {
-				$this->filters[] = $filter;
-			}
-		}
-
-		// don't display archived list unless specifically "enabled" (if cronjob
-		// is not running, it would simply not work)
-		global $wgArticleFeedbackAutoArchiveEnabled;
-		if ( !$wgArticleFeedbackAutoArchiveEnabled ) {
-			$this->filters = array_diff( $this->filters, array( 'archived' ) );
-		}
-
-		$this->sorts = array( 'relevance-desc', 'relevance-asc', 'age-desc', 'age-asc' );
-		if ( $this->isAllowed( 'aft-editor' ) ) {
-			array_push( $this->sorts, 'helpful-desc', 'helpful-asc' );
-		}
-
-		// these are messages that require some parsing that the current JS mw.msg does not yet support
-		$flyovers = array(
-			'feature', 'unfeature', 'resolve', 'unresolve', 'noaction', 'unnoaction', 'inappropriate', 'uninappropriate',
-			'hide', 'unhide', 'request', 'unrequest', 'decline',
-			'oversight', 'unoversight',
-		);
-		foreach ( $flyovers as $flyover ) {
-			$message = wfMessage( "articlefeedbackv5-noteflyover-$flyover-description" )->parse();
-			$vars["mw.msg.articlefeedbackv5-noteflyover-$flyover-description"] = $message;
-		}
-
-		$out = $this->getOutput();
-		$out->addJsConfigVars( $vars );
-		$out->setArticleRelated( false );
-
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -146,20 +108,68 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// set robot policy
 		$out->setIndexPolicy( 'noindex' );
 
-		if ( !$param ) {
-			// No Page ID: do central log
-		} else {
-			// Permalink
-			if ( preg_match( '/^(.+)\/(\w+)$/', $param, $m ) ) {
-				$param = $m[1];
-				$this->feedbackId = $m[2];
+		// these are messages that require some parsing that the current JS mw.msg does not yet support
+		// articlefeedbackv5-noteflyover-helpful-description, articlefeedbackv5-noteflyover-undo-helpful-description,
+		// articlefeedbackv5-noteflyover-unhelpful-description, articlefeedbackv5-noteflyover-undo-unhelpful-description,
+		// articlefeedbackv5-noteflyover-flag-description, articlefeedbackv5-noteflyover-unflag-description,
+		// articlefeedbackv5-noteflyover-autoflag-description, articlefeedbackv5-noteflyover-clear-flags-description,
+		// articlefeedbackv5-noteflyover-feature-description, articlefeedbackv5-noteflyover-unfeature-description,
+		// articlefeedbackv5-noteflyover-resolve-description, articlefeedbackv5-noteflyover-unresolve-description,
+		// articlefeedbackv5-noteflyover-noaction-description, articlefeedbackv5-noteflyover-unnoaction-description,
+		// articlefeedbackv5-noteflyover-inappropriate-description, articlefeedbackv5-noteflyover-uninappropriate-description,
+		// articlefeedbackv5-noteflyover-archive-description, articlefeedbackv5-noteflyover-unarchive-description,
+		// articlefeedbackv5-noteflyover-hide-description, articlefeedbackv5-noteflyover-unhide-description,
+		// articlefeedbackv5-noteflyover-autohide-description, articlefeedbackv5-noteflyover-request-description,
+		// articlefeedbackv5-noteflyover-unrequest-description, articlefeedbackv5-noteflyover-decline-description,
+		// articlefeedbackv5-noteflyover-oversight-description, articlefeedbackv5-noteflyover-unoversight-description
+		$vars = array();
+		foreach ( ArticleFeedbackv5Activity::$actions as $action => $options ) {
+			$message = wfMessage( "articlefeedbackv5-noteflyover-$action-description" )->parse();
+			$vars["mw.msg.articlefeedbackv5-noteflyover-$action-description"] = $message;
+		}
+		$out->addJsConfigVars( $vars );
+		$out->setArticleRelated( false );
+
+		// build list of available filters & sorts
+		$this->filters = array();
+		foreach ( ArticleFeedbackv5Model::$lists as $filter => $data ) {
+			if ( $this->isAllowed( $data['permissions'] ) ) {
+				$this->filters[] = $filter;
 			}
-			// Get page
+		}
+		$this->sorts = array( 'relevance-DESC', 'relevance-ASC', 'age-DESC', 'age-ASC' );
+		if ( $this->isAllowed( 'aft-editor' ) ) {
+			array_push( $this->sorts, 'helpful-DESC', 'helpful-ASC' );
+		}
+
+		// don't display archived list unless specifically "enabled" (if cronjob
+		// is not running, it would simply not work)
+		global $wgArticleFeedbackAutoArchiveEnabled;
+		if ( !$wgArticleFeedbackAutoArchiveEnabled ) {
+			$this->filters = array_diff( $this->filters, array( 'archived' ) );
+		}
+
+		if ( $param ) {
+			/*
+			 * Check if title exists. We don't do the regex to separate the
+			 * permalink part just yet because a slash in the param could
+			 * also just mean we're looking at feedback from Some/Subpage.
+			 */
 			$title = Title::newFromText( $param );
-			if ( !$title->exists() ) {
-				$out->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
-				return;
+
+			// if title does not exist, we may be looking at a permalink page
+			if ( !$title || !$title->exists() ) {
+				if ( preg_match( '/^(.+)\/(\w+)$/', $param, $match ) ) {
+					$title = Title::newFromText( $match[1] );
+					$this->feedbackId = $match[2];
+				}
+
+				if ( !$title || !$title->exists() ) {
+					$out->addWikiMsg( 'articlefeedbackv5-invalid-page-id' );
+					return;
+				}
 			}
+
 			$this->pageId = $title->getArticleID();
 			$this->title = $title;
 		}
@@ -209,6 +219,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->addJsConfigVars( 'afFilterCount', $filterCount );
 		$out->addJsConfigVars( 'afOffset', $records ? $records->nextOffset() : 0 );
 		$out->addJsConfigVars( 'afShowMore', $records ? $records->hasMore() : false );
+
+		/*
+		 * @todo: this is a test; something's wrong with the totals on some pages,
+		 * let's see what the result of this one is.
+		 */
+		$unreviewedCount = ArticleFeedbackv5Model::getCount( 'unreviewed', $this->pageId );
+		$out->addJsConfigVars( 'afUnreviewedCount', $unreviewedCount );
 	}
 
 	/**
@@ -238,7 +255,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			) {
 				$this->startingFilter = 'unreviewed';
 				$this->startingSort = 'relevance';
-				$this->startingSortDirection = 'desc';
+				$this->startingSortDirection = 'DESC';
 			}
 
 			return ArticleFeedbackv5Model::getList(
@@ -328,8 +345,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// if we have a logged in user and are currently browsing the central feedback page,
 		// check if there is feedback on his/her watchlisted pages
+		global $wgArticleFeedbackv5Watchlist;
 		$watchlistLink = '';
-		if ( !$this->pageId && $user->getId() ) {
+		if ( $wgArticleFeedbackv5Watchlist && !$this->pageId && $user->getId() ) {
 			$records = ArticleFeedbackv5Model::getWatchlistList(
 				'unreviewed',
 				$user
@@ -425,7 +443,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 */
 	protected function buildContent( $renderer, $records ) {
 		if ( !$records ) {
-			return $this->msg( 'articlefeedbackv5-invalid-feedback' )->text();
+			return $this->msg( 'articlefeedbackv5-invalid-feedback' )->escaped();
 		}
 
 		if ( $this->feedbackId ) {
@@ -449,7 +467,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				'div',
 				array( 'class' => 'articleFeedbackv5-feedback-permalink-goback' ),
 				Linker::link(
-					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedText() ),
+					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedDBkey() ),
 					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->escaped()
 				)
 			) .
@@ -462,7 +480,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				'div',
 				array( 'class' => 'articleFeedbackv5-feedback-permalink-goback' ),
 				Linker::link(
-					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedText() ),
+					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedDBkey() ),
 					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->escaped()
 				)
 			);
@@ -547,6 +565,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		foreach ( array( 'featured', 'unreviewed' ) as $filter ) {
 			$count = ArticleFeedbackv5Model::getCount( $filter, $this->pageId );
 
+			// Give grep a chance to find the usages:
+			// articlefeedbackv5-special-filter-featured, articlefeedbackv5-special-filter-unreviewed
 			$filterLabels[$filter] =
 				Html::rawElement(
 					'a',
@@ -564,6 +584,16 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		if ( $this->isAllowed( 'aft-editor' ) ) {
 			$opts = array();
 
+			// Give grep a chance to find the usages:
+			// articlefeedbackv5-special-filter-featured, rticlefeedbackv5-special-filter-unreviewed,
+			// articlefeedbackv5-special-filter-helpful, articlefeedbackv5-special-filter-unhelpful,
+			// articlefeedbackv5-special-filter-flagged, articlefeedbackv5-special-filter-useful,
+			// articlefeedbackv5-special-filter-resolved, articlefeedbackv5-special-filter-noaction,
+			// articlefeedbackv5-special-filter-inappropriate, articlefeedbackv5-special-filter-archived,
+			// articlefeedbackv5-special-filter-allcomment, articlefeedbackv5-special-filter-hidden,
+			// articlefeedbackv5-special-filter-requested, articlefeedbackv5-special-filter-declined,
+			// articlefeedbackv5-special-filter-oversighted,
+			// articlefeedbackv5-special-filter-all
 			foreach ( $this->filters as $filter ) {
 				if ( in_array( $filter, array_keys( $filterLabels ) ) ) {
 					continue;
@@ -613,6 +643,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 */
 	protected function buildSort() {
 		// Sorting
+		// Give grep a chance to find the usages:
+		// articlefeedbackv5-special-sort-relevance-desc, articlefeedbackv5-special-sort-relevance-asc,
+		// articlefeedbackv5-special-sort-helpful-desc, articlefeedbackv5-special-sort-helpful-asc,
+		// articlefeedbackv5-special-sort-age-desc, articlefeedbackv5-special-sort-age-asc,
+		// articlefeedbackv5-special-sort-label-before, articlefeedbackv5-special-sort-label-after
 		$opts = array();
 		foreach ( $this->sorts as $i => $sort ) {
 			if ( $i % 2 == 0 && $i > 0 ) {
@@ -620,10 +655,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				// that they all get added)
 				$opts[ '---------' . str_repeat( ' ', $i ) ] = '';
 			}
-			$key = $this->msg( "articlefeedbackv5-special-sort-$sort" )->escaped();
+			$key = $this->msg( strtolower( "articlefeedbackv5-special-sort-$sort" ) )->escaped();
 			$opts[(string) $key] = $sort;
 		}
-
 		$sortSelect = new XmlSelect( false, 'articleFeedbackv5-sort-select' );
 		$sortSelect->setDefault( $this->startingSort . '-' . $this->startingSortDirection );
 		$sortSelect->addOptions( $opts );
@@ -703,7 +737,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			&& isset( $cookie_sort ) && isset( $cookie_dir ) ) {
 			if ( in_array( $cookie_sort . '-' . $cookie_dir, $this->sorts ) ) {
 				$sort = $cookie_sort;
-				$dir  = $cookie_dir;
+				$dir = strtoupper( $cookie_dir );
 			}
 		}
 

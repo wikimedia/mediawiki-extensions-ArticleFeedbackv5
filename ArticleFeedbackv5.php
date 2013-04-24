@@ -51,6 +51,7 @@ $wgArticleFeedbackv5DefaultSorts = array (
 	'inappropriate' => array( 'age', 'DESC' ),
 	'archived' => array( 'age', 'DESC' ),
 	'allcomment' => array( 'age', 'DESC' ),
+	'hidden' => array( 'age', 'DESC' ),
 	'requested' => array( 'age', 'DESC' ),
 	'declined' => array( 'age', 'DESC' ),
 	'oversighted' => array( 'age', 'DESC' ),
@@ -119,14 +120,14 @@ $wgArticleFeedbackAutoArchiveEnabled = false;
  */
 $wgArticleFeedbackAutoArchiveTtl = '+2 weeks';
 
-// Defines whether or not there should be a link to the corresponding feedback on the article page
-$wgArticleFeedbackv5ArticlePageLink = true;
-
-// Defines whether or not there should be a link to the corresponding feedback on the article page's talk page
+// Defines whether or not there should be a link to the corresponding feedback on the page's talk page
 $wgArticleFeedbackv5TalkPageLink = true;
 
 // Defines whether or not there should be a link to the watchlisted feedback on the watchlist page
 $wgArticleFeedbackv5WatchlistLink = true;
+
+// Defines whether or not the special page for feedback on a user's watchlisted pages is enabled
+$wgArticleFeedbackv5Watchlist = true;
 
 // Email address to send oversight request emails to, if set to null no emails are sent
 $wgArticleFeedbackv5OversightEmails = null;
@@ -392,7 +393,6 @@ $wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5']   = __DIR__ . '/api/ApiVie
 $wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5']  = __DIR__ . '/api/ApiViewFeedbackArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiAddFlagNoteArticleFeedbackv5']   = __DIR__ . '/api/ApiAddFlagNoteArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5']  = __DIR__ . '/api/ApiFlagFeedbackArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiGetCountArticleFeedbackv5']      = __DIR__ . '/api/ApiGetCountArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewActivityArticleFeedbackv5']  = __DIR__ . '/api/ApiViewActivityArticleFeedbackv5.php';
 $wgAutoloadClasses['DataModel']                         = __DIR__ . '/data/DataModel.php';
 $wgAutoloadClasses['DataModelBackend']                  = __DIR__ . '/data/DataModelBackend.php';
@@ -420,9 +420,9 @@ $wgHooks['BeforePageDisplay'][] = 'ArticleFeedbackv5Hooks::beforePageDisplay';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'ArticleFeedbackv5Hooks::resourceLoaderGetConfigVars';
 $wgHooks['MakeGlobalVariablesScript'][] = 'ArticleFeedbackv5Hooks::makeGlobalVariablesScript';
 $wgHooks['GetPreferences'][] = 'ArticleFeedbackv5Hooks::getPreferences';
-$wgHooks['EditPage::showEditForm:fields'][] = 'ArticleFeedbackv5Hooks::pushTrackingFieldsToEdit';
-$wgHooks['EditPage::attemptSave'][] = 'ArticleFeedbackv5Hooks::trackEditAttempt';
-$wgHooks['ArticleSaveComplete'][] = 'ArticleFeedbackv5Hooks::trackEditSuccess';
+$wgHooks['EditPage::showEditForm:fields'][] = 'ArticleFeedbackv5Hooks::pushFieldsToEdit';
+$wgHooks['EditPage::attemptSave'][] = 'ArticleFeedbackv5Hooks::editAttempt';
+$wgHooks['ArticleSaveComplete'][] = 'ArticleFeedbackv5Hooks::editSuccess';
 $wgHooks['ContribsPager::reallyDoQuery'][] = 'ArticleFeedbackv5Hooks::contributionsData';
 $wgHooks['ContributionsLineEnding'][] = 'ArticleFeedbackv5Hooks::contributionsLineEnding';
 $wgHooks['ProtectionForm::buildForm'][] = 'ArticleFeedbackv5Hooks::onProtectionForm';
@@ -433,7 +433,6 @@ $wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFe
 $wgAPIListModules['articlefeedbackv5-view-activity'] = 'ApiViewActivityArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-add-flag-note']     = 'ApiAddFlagNoteArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-flag-feedback']     = 'ApiFlagFeedbackArticleFeedbackv5';
-$wgAPIModules['articlefeedbackv5-get-count']         = 'ApiGetCountArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5']                   = 'ApiArticleFeedbackv5';
 
 // Special Page
@@ -462,11 +461,11 @@ $wgLogTypes[] = 'suppress';
 $wgLogActionsHandlers['articlefeedbackv5/create'] = 'ArticleFeedbackv5LogFormatter';
 
 // register activity log formatter hooks
-foreach ( array( 'helpful', 'unhelpful', 'undo-helpful', 'undo-unhelpful', 'flag', 'unflag', 'autoflag', 'feature', 'unfeature', 'resolve', 'unresolve', 'noaction', 'unnoaction', 'inappropriate', 'uninappropriate', 'archive', 'unarchive', 'hide', 'unhide', 'autohide', 'clear-flags' ) as $t ) {
-	$wgLogActionsHandlers["articlefeedbackv5/$t"] = 'ArticleFeedbackv5LogFormatter';
-}
-foreach ( array( 'oversight', 'unoversight', 'decline', 'request', 'unrequest' ) as $t ) {
-	$wgLogActionsHandlers["suppress/$t"] = 'ArticleFeedbackv5LogFormatter';
+foreach( ArticleFeedbackv5Activity::$actions as $action => $options ) {
+	if ( isset( $options['log_type'] ) ) {
+		$log = $options['log_type'];
+		$wgLogActionsHandlers["$log/$action"] = 'ArticleFeedbackv5LogFormatter';
+	}
 }
 
 if ( $wgArticleFeedbackv5AbuseFilterGroup != 'default' ) {
@@ -537,15 +536,12 @@ $wgResourceModules['ext.articleFeedbackv5'] = array(
 		'articlefeedbackv5-section-linktext',
 		'articlefeedbackv5-toolbox-view',
 		'articlefeedbackv5-toolbox-add',
-		'articlefeedbackv5-article-view-feedback',
 	),
 	'dependencies' => array(
-		'mediawiki.jqueryMsg',
 		'jquery.ui.button',
 		'jquery.articleFeedbackv5',
 		'jquery.cookie',
 		'jquery.articleFeedbackv5.track',
-		'jquery.articleFeedbackv5.utils',
 	),
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['ext.articleFeedbackv5.ie'] = array(
@@ -644,7 +640,6 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 		'articlefeedbackv5-bucket1-form-pending',
 		'articlefeedbackv5-bucket1-form-success',
 		'articlefeedbackv5-bucket1-form-submit',
-		'articlefeedbackv5-bucket1-form-submit-nocomment',
 		'articlefeedbackv5-bucket4-title',
 		'articlefeedbackv5-bucket4-subhead',
 		'articlefeedbackv5-bucket4-teaser-line1',
@@ -670,7 +665,6 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 		'articlefeedbackv5-bucket6-form-pending',
 		'articlefeedbackv5-bucket6-form-success',
 		'articlefeedbackv5-bucket6-form-submit',
-		'articlefeedbackv5-bucket6-form-submit-nocomment',
 		'articlefeedbackv5-bucket6-backlink-text',
 		'articlefeedbackv5-error',
 		'articlefeedbackv5-help-tooltip-title',
@@ -711,8 +705,11 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 	'messages' => array(
 		'articlefeedbackv5-error-flagging',
 		'articlefeedbackv5-invalid-feedback-id',
-		'articlefeedbackv5-invalid-feedback-flag',
 		'articlefeedbackv5-invalid-log-id',
+		'articlefeedbackv5-invalid-log-update',
+		'articlefeedbackv5-invalid-feedback-flag',
+		'articlefeedbackv5-invalid-feedback-state',
+		'articlefeedbackv5-feedback-reloaded-after-error',
 
 		'articlefeedbackv5-comment-more',
 		'articlefeedbackv5-comment-less',
@@ -795,6 +792,22 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-noteflyover-uninappropriate-help',
 		'articlefeedbackv5-noteflyover-uninappropriate-help-link',
 
+		'articlefeedbackv5-noteflyover-archive-caption',
+//		'articlefeedbackv5-noteflyover-archive-description',
+		'articlefeedbackv5-noteflyover-archive-label',
+		'articlefeedbackv5-noteflyover-archive-placeholder',
+		'articlefeedbackv5-noteflyover-archive-submit',
+		'articlefeedbackv5-noteflyover-archive-help',
+		'articlefeedbackv5-noteflyover-archive-help-link',
+
+		'articlefeedbackv5-noteflyover-unarchive-caption',
+//		'articlefeedbackv5-noteflyover-unarchive-description',
+		'articlefeedbackv5-noteflyover-unarchive-label',
+		'articlefeedbackv5-noteflyover-unarchive-placeholder',
+		'articlefeedbackv5-noteflyover-unarchive-submit',
+		'articlefeedbackv5-noteflyover-unarchive-help',
+		'articlefeedbackv5-noteflyover-unarchive-help-link',
+
 		'articlefeedbackv5-noteflyover-hide-caption',
 //		'articlefeedbackv5-noteflyover-hide-description',
 		'articlefeedbackv5-noteflyover-hide-label',
@@ -850,22 +863,6 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-noteflyover-unoversight-submit',
 		'articlefeedbackv5-noteflyover-unoversight-help',
 		'articlefeedbackv5-noteflyover-unoversight-help-link',
-
-		'articlefeedbackv5-noteflyover-archive-caption',
-//		'articlefeedbackv5-noteflyover-archive-description',
-		'articlefeedbackv5-noteflyover-archive-label',
-		'articlefeedbackv5-noteflyover-archive-placeholder',
-		'articlefeedbackv5-noteflyover-archive-submit',
-		'articlefeedbackv5-noteflyover-archive-help',
-		'articlefeedbackv5-noteflyover-archive-help-link',
-
-		'articlefeedbackv5-noteflyover-unarchive-caption',
-//		'articlefeedbackv5-noteflyover-unarchive-description',
-		'articlefeedbackv5-noteflyover-unarchive-label',
-		'articlefeedbackv5-noteflyover-unarchive-placeholder',
-		'articlefeedbackv5-noteflyover-unarchive-submit',
-		'articlefeedbackv5-noteflyover-unarchive-help',
-		'articlefeedbackv5-noteflyover-unarchive-help-link',
 
 		'articlefeedbackv5-activity-pane-header',
 

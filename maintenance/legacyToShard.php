@@ -46,6 +46,8 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 	 * @return bool
 	 */
 	protected function doDBUpdates() {
+		global $wgArticleFeedbackv5Cluster;
+
 		$dbr = $this->getDB( DB_SLAVE );
 		if ( !$dbr->tableExists( 'aft_article_feedback' ) ) {
 			// not necessary to run, there is no source data
@@ -61,7 +63,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 		$continue = 0;
 		while ( $continue !== null ) {
 			$continue = $this->moveBatch( $continue );
-			wfWaitForSlaves();
+			wfWaitForSlaves( false, false, $wgArticleFeedbackv5Cluster );
 
 			if ( $continue ) {
 				$this->output( "--moved to entry #$continue\n" );
@@ -181,15 +183,14 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 				array( 'log_action' ),
 				array(
 					'log_type' => array( 'articlefeedbackv5', 'suppress' ),
-					'log_action' => array(
-						'oversight', 'unoversight', 'decline', 'request', 'unrequest',
-						'hidden', 'hide', 'unhidden', 'unhide', 'flag', 'unflag', 'autoflag', 'autohide',
-						'feature', 'unfeature', 'resolve', 'unresolve', 'helpful',
-						'unhelpful', 'undo-helpful', 'undo-unhelpful', 'clear-flags'
-					),
+					'log_action' =>
+						array_merge(
+							array_keys( ArticleFeedbackv5Activity::$actions ),
+							array( 'hidden', 'unhidden' ) // deprecated but may still have entries
+						),
 					'log_namespace' => NS_SPECIAL,
 					'log_page' => 0,
-					'log_title' => "ArticleFeedbackv5/$row->page_title/$row->af_id"
+					'log_title' => SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$row->page_title/$row->af_id" )->getDBkey()
 				),
 				__METHOD__,
 				array(
@@ -199,13 +200,6 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 
 			foreach ( $logging as $log ) {
 				switch ( $log->log_action ) {
-					case 'decline':
-						$feedback->aft_decline = 1;
-						if ( $feedback->aft_hide && $feedback->aft_autohide ) {
-							$feedback->aft_hide = 0;
-							$feedback->aft_autohide = 0;
-						}
-						break;
 					case 'request':
 						$feedback->aft_request = 1;
 						$feedback->aft_decline = 0;
@@ -221,21 +215,10 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 							$feedback->aft_autohide = 0;
 						}
 						break;
-					case 'flag':
-					case 'autoflag':
-						$feedback->{"aft_$log->log_action"}++;
-						if ( $feedback->aft_flag + $feedback->aft_autoflag > $wgArticleFeedbackv5HideAbuseThreshold && !$feedback->isHidden() ) {
-							$feedback->aft_hide = 1;
-							$feedback->aft_autohide = 1;
-						}
-						break;
-					case 'unflag':
-						if ( $feedback->aft_flag <= 0 ) {
-							$feedback->aft_autoflag = 0;
-						} else {
-							$feedback->aft_flag--;
-						}
-						if ( $feedback->aft_flag + $feedback->aft_autoflag < $wgArticleFeedbackv5HideAbuseThreshold && $feedback->aft_autohide ) {
+					case 'decline':
+						$feedback->aft_decline = 1;
+						if ( $feedback->aft_hide && $feedback->aft_autohide ) {
+							$feedback->aft_hide = 0;
 							$feedback->aft_autohide = 0;
 						}
 						break;
@@ -244,6 +227,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
 						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 0;
 						$feedback->aft_hide = 0;
 						$feedback->aft_oversight = 0;
 
@@ -257,6 +241,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
 						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 0;
 						$feedback->aft_hide = 0;
 						$feedback->aft_oversight = 0;
 						break;
@@ -265,6 +250,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_resolve = 1;
 						$feedback->aft_noaction = 0;
 						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 0;
 						$feedback->aft_hide = 0;
 						$feedback->aft_oversight = 0;
 						break;
@@ -273,6 +259,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
 						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 0;
 						$feedback->aft_hide = 0;
 						$feedback->aft_oversight = 0;
 						break;
@@ -281,6 +268,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 1;
 						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 0;
 						$feedback->aft_hide = 0;
 						$feedback->aft_oversight = 0;
 						break;
@@ -289,6 +277,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
 						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 0;
 						$feedback->aft_hide = 0;
 						$feedback->aft_oversight = 0;
 						break;
@@ -297,6 +286,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
 						$feedback->aft_inappropriate = 1;
+						$feedback->aft_archive = 0;
 						$feedback->aft_hide = 0;
 						$feedback->aft_oversight = 0;
 						break;
@@ -305,6 +295,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
 						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 0;
 						$feedback->aft_hide = 0;
 						$feedback->aft_oversight = 0;
 						break;
@@ -314,6 +305,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
 						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 0;
 						$feedback->aft_hide = 1;
 						$feedback->aft_oversight = 0;
 						break;
@@ -322,6 +314,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
 						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 0;
 						$feedback->aft_hide = 1;
 						$feedback->aft_oversight = 0;
 
@@ -333,6 +326,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
 						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 0;
 						$feedback->aft_hide = 0;
 						$feedback->aft_oversight = 0;
 
@@ -342,11 +336,30 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 							$feedback->aft_flag = 0;
 						}
 						break;
+					case 'inappropriate':
+						$feedback->aft_feature = 0;
+						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 1;
+						$feedback->aft_hide = 0;
+						$feedback->aft_oversight = 0;
+						break;
+					case 'uninappropriate':
+						$feedback->aft_feature = 0;
+						$feedback->aft_resolve = 0;
+						$feedback->aft_noaction = 0;
+						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 0;
+						$feedback->aft_hide = 0;
+						$feedback->aft_oversight = 0;
+						break;
 					case 'oversight':
 						$feedback->aft_feature = 0;
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
 						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 0;
 						$feedback->aft_hide = 0;
 						$feedback->aft_oversight = 1;
 
@@ -361,6 +374,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
 						$feedback->aft_inappropriate = 0;
+						$feedback->aft_archive = 0;
 						$feedback->aft_hide = 0;
 						$feedback->aft_oversight = 0;
 
@@ -381,6 +395,24 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						break;
 					case 'undo-unhelpful':
 						$feedback->aft_unhelpful--;
+						break;
+					case 'flag':
+					case 'autoflag':
+						$feedback->{"aft_$log->log_action"}++;
+						if ( $feedback->aft_flag + $feedback->aft_autoflag > $wgArticleFeedbackv5HideAbuseThreshold && !$feedback->isHidden() ) {
+							$feedback->aft_hide = 1;
+							$feedback->aft_autohide = 1;
+						}
+						break;
+					case 'unflag':
+						if ( $feedback->aft_flag <= 0 ) {
+							$feedback->aft_autoflag = 0;
+						} else {
+							$feedback->aft_flag--;
+						}
+						if ( $feedback->aft_flag + $feedback->aft_autoflag < $wgArticleFeedbackv5HideAbuseThreshold && $feedback->aft_autohide ) {
+							$feedback->aft_autohide = 0;
+						}
 						break;
 					case 'clear-flags':
 						$feedback->aft_autoflag = 0;

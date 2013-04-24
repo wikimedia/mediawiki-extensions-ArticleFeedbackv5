@@ -121,10 +121,10 @@
 			<h3 id="articleFeedbackv5-noteflyover-caption"></h3>\
 			<a id="articleFeedbackv5-noteflyover-close" href="#"></a>\
 		</div>\
-		<form class="articleFeedbackv5-form-flyover">\
+		<form class="articleFeedbackv5-form-flyover" action="#">\
 			<div id="articleFeedbackv5-noteflyover-description"></div>\
 			<label id="articleFeedbackv5-noteflyover-label" for="articleFeedbackv5-noteflyover-note"></label>\
-			<input type="text" id="articleFeedbackv5-noteflyover-note" name="articleFeedbackv5-noteflyover-note" />\
+			<input type="text" id="articleFeedbackv5-noteflyover-note" name="articleFeedbackv5-noteflyover-note" maxlength="255" />\
 			<div class="articleFeedbackv5-flyover-footer">\
 				<a id="articleFeedbackv5-noteflyover-submit" class="articleFeedbackv5-flyover-button" href="#"></a>\
 				<a class="articleFeedbackv5-flyover-help" id="articleFeedbackv5-noteflyover-help" href="#"></a>\
@@ -397,8 +397,8 @@
 			} );
 		}
 
-		// Bind submit actions on flyover panels (post-flag comments)
-		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-submit', function( e ) {
+		// flyover panels submit actions (post-flag comments)
+		var tipsySubmit = function( e ) {
 			e.preventDefault();
 
 			if ( typeof $.articleFeedbackv5special.tipsyCallback == 'function' ) {
@@ -408,11 +408,13 @@
 			} else {
 				var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
 				var id = $container.data( 'id' );
-				var logId = $container.find( '#articleFeedbackv5-note-link-' + id ).data( 'log-id' );
+				var $noteLink = $container.find( '#articleFeedbackv5-note-link-' + id );
 
 				$.articleFeedbackv5special.addNote(
 					id,
-					logId,
+					$container.data( 'pageid' ),
+					$noteLink.data( 'log-id' ),
+					$noteLink.data( 'action' ),
 					$( '#articleFeedbackv5-noteflyover-note' ).attr( 'value' )
 				);
 			}
@@ -420,7 +422,11 @@
 			// hide tipsy
 			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
-		} );
+		};
+
+		// tipsies can be submitted by clicking the link, or submitting the form (hitting enter key)
+		$( document ).on( 'submit', 'form.articleFeedbackv5-form-flyover', tipsySubmit );
+		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-submit', tipsySubmit );
 
 		// bind flyover panel close button
 		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-close', function( e ) {
@@ -528,6 +534,8 @@
 	 * @param direction The direction to sort (asc/desc)
 	 */
 	$.articleFeedbackv5special.toggleSort = function( sort, direction ) {
+		direction = direction.toUpperCase();
+
 		$.articleFeedbackv5special.listControls.sort = sort;
 		$.articleFeedbackv5special.listControls.sortDirection = direction;
 		$.articleFeedbackv5special.listControls.offset = null;
@@ -548,14 +556,10 @@
 
 		var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 		if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
-			var id = $container.data( 'id' );
-			var pageId = $container.data( 'pageid' );
-			var action = $( e.target ).data( 'action' );
-
 			$.articleFeedbackv5special.flagFeedback(
-				id,
-				pageId,
-				action,
+				$container.data( 'id' ),
+				$container.data( 'pageid' ),
+				$( e.target ).data( 'action' ),
 				'',
 				{}
 			);
@@ -588,6 +592,10 @@
 			}
 			$l.tipsy( 'show' );
 			$.articleFeedbackv5special.currentPanelHostId = $l.attr( 'id' );
+
+			// immediately focus text field (after all, that's what we're opening the flyout for)
+			$( '#articleFeedbackv5-noteflyover-note' ).focus();
+
 			return true;
 		}
 	};
@@ -669,61 +677,54 @@
 			$.articleFeedbackv5special.listControls.disabled = true;
 		}
 
-		// origin of the flag
-		var source = 'unknown';
-		if ( $.articleFeedbackv5special.watchlist ) {
-			source = 'watchlist';
-		} else if ( $.articleFeedbackv5special.listControls.filter == 'id' ) {
-			source = 'permalink';
-		} else if ( $.articleFeedbackv5special.page ) {
-			source = 'article';
-		} else {
-			source = 'central';
-		}
-
 		// Merge request data and options objects (flat)
 		var requestData = {
-			'pageid'    : pageId,
+			'pageid': pageId,
 			'feedbackid': id,
-			'flagtype'  : action,
-			'note'      : note,
-			'source'    : source,
-			'format'    : 'json',
-			'action'    : 'articlefeedbackv5-flag-feedback'
+			'flagtype': action,
+			'note': note,
+			'source': $.articleFeedbackv5special.getSource(),
+			'format': 'json',
+			'action': 'articlefeedbackv5-flag-feedback'
 		};
 		// this "options" is currently solely used to add "toggle" to params, when appropriate
 		$.extend( requestData, options );
 
 		$.ajax( {
-			'url'     : $.articleFeedbackv5special.apiUrl,
-			'type'    : 'POST',
+			'url': $.articleFeedbackv5special.apiUrl,
+			'type': 'POST',
 			'dataType': 'json',
-			'data'    : requestData,
+			'data': requestData,
 			'success': function ( data ) {
-				var msg = 'articlefeedbackv5-error-flagging';
 				if ( 'articlefeedbackv5-flag-feedback' in data ) {
-					if ( 'result' in data['articlefeedbackv5-flag-feedback'] ) {
-						if ( data['articlefeedbackv5-flag-feedback'].result == 'Success' ) {
-							// replace entry by new render
-							$( '.articleFeedbackv5-feedback[data-id='+id+']' )
-								.replaceWith( data['articlefeedbackv5-flag-feedback'].render );
+					data = data['articlefeedbackv5-flag-feedback'];
 
-							// invoke the registered onSuccess callback for the executed action
+					if ( 'result' in data ) {
+						// replace entry by new render
+						$( '.articleFeedbackv5-feedback[data-id='+id+']' )
+							.replaceWith( data.render );
+
+						// re-mark active flags in reader tools
+						$.articleFeedbackv5special.markActiveFlags( id );
+
+						// re-bind panels (tipsies)
+						$.articleFeedbackv5special.bindTipsies( id );
+
+						// invoke the registered onSuccess callback for the executed action
+						if ( data.result === 'Success' ) {
 							if ( 'onSuccess' in $.articleFeedbackv5special.actions[action] ) {
 								$.articleFeedbackv5special.actions[action].onSuccess( id, data );
 							}
 
-							// re-mark active flags in reader tools
-							$.articleFeedbackv5special.markActiveFlags( id );
+						// display error message
+						} else if ( data.result === 'Error' && data.reason ) {
+							var errorMessage = mw.msg( data.reason );
+							if ( 'render' in data ) {
+								errorMessage = mw.msg( 'articlefeedbackv5-feedback-reloaded-after-error', errorMessage );
+							}
 
-							// re-enable ajax flagging
-							$.articleFeedbackv5special.listControls.disabled = false;
-
-							// re-bind panels (tipsies)
-							$.articleFeedbackv5special.bindTipsies( id );
-							return true;
-						} else if ( data['articlefeedbackv5-flag-feedback'].result == 'Error' ) {
-							mw.log( mw.msg( data['articlefeedbackv5-flag-feedback'].reason ) );
+							$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
+								.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
 						}
 					}
 				}
@@ -732,7 +733,9 @@
 				$.articleFeedbackv5special.listControls.disabled = false;
 			},
 			'error': function ( data ) {
-				$( '#articleFeedbackv5-' + type + '-link-' + id ).text( mw.msg( 'articlefeedbackv5-error-flagging' ) );
+				var errorMessage = mw.msg( 'articlefeedbackv5-error-flagging' );
+				$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
+					.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
 
 				// re-enable ajax flagging
 				$.articleFeedbackv5special.listControls.disabled = false;
@@ -747,10 +750,12 @@
 	 * Updates the previous flag with a textual comment about it
 	 *
 	 * @param id		int			the feedback id
+	 * @param pageId	int			the page id
 	 * @param logId		int			the log id
+	 * @param action	string		original action
 	 * @param note		string		note for action (default empty)
 	 */
-	$.articleFeedbackv5special.addNote = function ( id, logId, note ) {
+	$.articleFeedbackv5special.addNote = function ( id, pageId, logId, action, note ) {
 		// note should be filled out or there's no point in firing this request
 		if ( !note ) {
 			return false;
@@ -763,28 +768,46 @@
 
 		// Merge request data and options objects (flat)
 		var requestData = {
-			'logid'     : logId,
-			'note'      : note,
-			'format'    : 'json',
-			'action'    : 'articlefeedbackv5-add-flag-note'
+			'feedbackid': id,
+			'pageid': pageId,
+			'logid': logId,
+			'note': note,
+			'flagtype': action,
+			'source': $.articleFeedbackv5special.getSource(),
+			'format': 'json',
+			'action': 'articlefeedbackv5-add-flag-note'
 		};
 
 		$.ajax( {
-			'url'     : $.articleFeedbackv5special.apiUrl,
-			'type'    : 'POST',
+			'url': $.articleFeedbackv5special.apiUrl,
+			'type': 'POST',
 			'dataType': 'json',
-			'data'    : requestData,
+			'data': requestData,
 			'success': function ( data ) {
 				if ( 'articlefeedbackv5-add-flag-note' in data ) {
-					if ( 'result' in data['articlefeedbackv5-add-flag-note'] ) {
-						if ( data['articlefeedbackv5-add-flag-note'].result == 'Success' ) {
-							// remove "add note" link
-							$( '#articleFeedbackv5-note-link-' + id ).remove();
+					data = data['articlefeedbackv5-add-flag-note'];
 
-							// re-enable ajax flagging
-							$.articleFeedbackv5special.listControls.disabled = false;
+					if ( 'result' in data ) {
+						// replace entry by new render
+						if ( data.result === 'Success' ) {
+							$( '.articleFeedbackv5-feedback[data-id='+id+']' )
+								.replaceWith( data.render );
 
-							return true;
+							// re-mark active flags in reader tools
+							$.articleFeedbackv5special.markActiveFlags( id );
+
+							// re-bind panels (tipsies)
+							$.articleFeedbackv5special.bindTipsies( id );
+
+						// display error message
+						} else if ( data.result === 'Error' && data.reason ) {
+							var errorMessage = mw.msg( data.reason );
+							if ( 'render' in data ) {
+								errorMessage = mw.msg( 'articlefeedbackv5-feedback-reloaded-after-error', errorMessage );
+							}
+
+							$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
+								.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
 						}
 					}
 				}
@@ -793,6 +816,10 @@
 				$.articleFeedbackv5special.listControls.disabled = false;
 			},
 			'error': function ( data ) {
+				var errorMessage = mw.msg( 'articlefeedbackv5-invalid-log-update' );
+				$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
+					.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
+
 				// re-enable ajax flagging
 				$.articleFeedbackv5special.listControls.disabled = false;
 			}
@@ -918,7 +945,7 @@
 					}
 					if ( $.articleFeedbackv5special.highlightId ) {
 						if (this.info.afvffeedbackid == $.articleFeedbackv5special.highlightId ) {
-							$( '.articleFeedbackv5-feedback[data-id=' + $.articleFeedbackv5special.highlightId + ']:not(.articleFeedbackv5-feedback-highlighted)' ).hide();
+							$( '.articleFeedbackv5-feedback[data-id=' + $.articleFeedbackv5special.highlightId + ']:not(.articleFeedbackv5-feedback-highlighted)' ).remove();
 							$.articleFeedbackv5special.highlightId = undefined;
 						} else if ( !prependContents ) {
 							$.articleFeedbackv5special.pullHighlight();
@@ -1034,9 +1061,7 @@
 				.data( 'action', 'unflag' );
 		}
 
-		/**
-		 * If the user already requested oversight, change action to unoversight.
-		 */
+		// if the user already requested oversight, change action to unrequest
 		if ( $.articleFeedbackv5special.getActivityFlag( id, 'request' ) ) {
 			var $link = $( '#articleFeedbackv5-request-link-' + id );
 
@@ -1046,7 +1071,8 @@
 					.text( mw.msg( 'articlefeedbackv5-form-unrequest' ) )
 					.data( 'action', 'unrequest' )
 					.removeClass( 'articleFeedbackv5-request-link' )
-					.addClass( 'articleFeedbackv5-unrequest-link' );
+					.addClass( 'articleFeedbackv5-unrequest-link' )
+					.removeClass( 'articleFeedbackv5-tipsy-link' );
 			} else {
 				// oversight request has been declined - mark as such
 				$link
@@ -1183,6 +1209,27 @@
 	};
 
 	// }}}
+	// {{{ getSource
+
+	/**
+	 * In the log, we'll save the source an action originates from - this will
+	 * return what type of page we're currently on.
+	 *
+	 * @return string
+	 */
+	$.articleFeedbackv5special.getSource = function() {
+		if ( $.articleFeedbackv5special.watchlist ) {
+			return 'watchlist';
+		} else if ( $.articleFeedbackv5special.listControls.filter === 'id' ) {
+			return 'permalink';
+		} else if ( $.articleFeedbackv5special.page ) {
+			return 'article';
+		} else {
+			return 'central';
+		}
+	};
+
+	// }}}
 	// {{{ canBeFlagged
 
 	/**
@@ -1254,13 +1301,11 @@
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
-					var pageId = $container.data( 'pageid' );
-					var action = $( e.target ).data( 'action' );
 
 					$.articleFeedbackv5special.flagFeedback(
 						id,
-						pageId,
-						action,
+						$container.data( 'pageid' ),
+						$( e.target ).data( 'action' ),
 						'',
 						{ toggle: $.articleFeedbackv5special.getActivityFlag( id, 'unhelpful' ) }
 					);
@@ -1282,14 +1327,10 @@
 
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
-					var id = $container.data( 'id' );
-					var pageId = $container.data( 'pageid' );
-					var action = $( e.target ).data( 'action' );
-
 					$.articleFeedbackv5special.flagFeedback(
-						id,
-						pageId,
-						action,
+						$container.data( 'id' ),
+						$container.data( 'pageid' ),
+						$( e.target ).data( 'action' ),
 						'',
 						{}
 					);
@@ -1312,13 +1353,11 @@
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
-					var pageId = $container.data( 'pageid' );
-					var action = $( e.target ).data( 'action' );
 
 					$.articleFeedbackv5special.flagFeedback(
 						id,
-						pageId,
-						action,
+						$container.data( 'pageid' ),
+						$( e.target ).data( 'action' ),
 						'',
 						{ toggle: $.articleFeedbackv5special.getActivityFlag( id, 'helpful' ) }
 					);
@@ -1340,14 +1379,10 @@
 
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
-					var id = $container.data( 'id' );
-					var pageId = $container.data( 'pageid' );
-					var action = $( e.target ).data( 'action' );
-
 					$.articleFeedbackv5special.flagFeedback(
-						id,
-						pageId,
-						action,
+						$container.data( 'id' ),
+						$container.data( 'pageid' ),
+						$( e.target ).data( 'action' ),
 						'',
 						{}
 					);
@@ -1372,13 +1407,10 @@
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
 					if ( !$.articleFeedbackv5special.getActivityFlag( id, 'flag' ) ) {
-						var pageId = $container.data( 'pageid' );
-						var action = $( e.target ).data( 'action' );
-
 						$.articleFeedbackv5special.flagFeedback(
 							id,
-							pageId,
-							action,
+							$container.data( 'pageid' ),
+							$( e.target ).data( 'action' ),
 							'',
 							{}
 						);
@@ -1403,13 +1435,10 @@
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
 					if ( $.articleFeedbackv5special.getActivityFlag( id, 'flag' ) ) {
-						var pageId = $container.data( 'pageid' );
-						var action = $( e.target ).data( 'action' );
-
 						$.articleFeedbackv5special.flagFeedback(
 							id,
-							pageId,
-							action,
+							$container.data( 'pageid' ),
+							$( e.target ).data( 'action' ),
 							'',
 							{}
 						);
@@ -1525,19 +1554,14 @@
 			'tipsyHtml': undefined,
 			'click': function() {
 				// tipsy has been opened - bind flag submission
-
 				$.articleFeedbackv5special.tipsyCallback = function( e ) {
 					var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
 					if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
-						var id = $container.data( 'id' );
-						var pageId = $container.data( 'pageid' );
-						var note = $( '#articleFeedbackv5-noteflyover-note' ).val();
-
 						$.articleFeedbackv5special.flagFeedback(
-							id,
-							pageId,
+							$container.data( 'id' ),
+							$container.data( 'pageid' ),
 							'hide',
-							note,
+							$( '#articleFeedbackv5-noteflyover-note' ).val(),
 							{}
 						);
 					}
@@ -1592,19 +1616,14 @@
 			'tipsyHtml': undefined,
 			'click': function() {
 				// tipsy has been opened - bind flag submission
-
 				$.articleFeedbackv5special.tipsyCallback = function( e ) {
 					var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
 					if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
-						var id = $container.data( 'id' );
-						var pageId = $container.data( 'pageid' );
-						var note = $( '#articleFeedbackv5-noteflyover-note' ).val();
-
 						$.articleFeedbackv5special.flagFeedback(
-							id,
-							pageId,
+							$container.data( 'id' ),
+							$container.data( 'pageid' ),
 							'request',
-							note,
+							$( '#articleFeedbackv5-noteflyover-note' ).val(),
 							{}
 						);
 					}
@@ -1629,13 +1648,10 @@
 				if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 					var id = $container.data( 'id' );
 					if ( $.articleFeedbackv5special.getActivityFlag( id, 'request' ) ) {
-						var pageId = $container.data( 'pageid' );
-						var action = $( e.target ).data( 'action' );
-
 						$.articleFeedbackv5special.flagFeedback(
-							id,
-							pageId,
-							action,
+							$container.data( 'id' ),
+							$container.data( 'pageid' ),
+							$( e.target ).data( 'action' ),
 							'',
 							{}
 						);
@@ -1655,19 +1671,14 @@
 			'tipsyHtml': undefined,
 			'click': function() {
 				// tipsy has been opened - bind flag submission
-
 				$.articleFeedbackv5special.tipsyCallback = function( e ) {
 					var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
 					if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
-						var id = $container.data( 'id' );
-						var pageId = $container.data( 'pageid' );
-						var note = $( '#articleFeedbackv5-noteflyover-note' ).val();
-
 						$.articleFeedbackv5special.flagFeedback(
-							id,
-							pageId,
+							$container.data( 'id' ),
+							$container.data( 'pageid' ),
 							'oversight',
-							note,
+							$( '#articleFeedbackv5-noteflyover-note' ).val(),
 							{}
 						);
 					}
@@ -1716,7 +1727,6 @@
 				<div>\
 					<div class="articleFeedbackv5-flyover-header">\
 						<h3 id="articleFeedbackv5-noteflyover-caption"><html:msg key="activity-pane-header" /></h3>\
-						<a id="articleFeedbackv5-noteflyover-helpbutton" href="#"></a>\
 						<a id="articleFeedbackv5-noteflyover-close" href="#"></a>\
 					</div>\
 					<div id="articleFeedbackv5-activity-log"></div>\
@@ -1772,6 +1782,7 @@
 					var content = $( e.target ).data( 'section-content' );
 					var editTime = $( e.target ).data( 'section-edittime' );
 					var editToken = $( e.target ).data( 'section-edittoken' );
+					var watchlist = $( e.target ).data( 'section-watchlist' );
 
 					var $form = $( '\
 						<form method="post">\
@@ -1781,6 +1792,7 @@
 							<input type="hidden" name="wpStarttime" />\
 							<input type="hidden" name="wpEditToken" />\
 							<input type="hidden" name="wpPreview" />\
+							<input type="hidden" name="wpWatchthis" />\
 							<input type="submit" />\
 						</form>' );
 
@@ -1791,6 +1803,7 @@
 					$( '[name=wpStarttime]', $form ).val( editTime );
 					$( '[name=wpEditToken]', $form ).val( editToken );
 					$( '[name=wpPreview]', $form ).val( 1 );
+					$( '[name=wpWatchthis]', $form ).val( watchlist );
 
 					$( e.target ).append( $form );
 					$form

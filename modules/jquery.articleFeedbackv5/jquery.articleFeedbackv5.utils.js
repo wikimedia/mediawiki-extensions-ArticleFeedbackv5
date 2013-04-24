@@ -16,68 +16,6 @@
 
 	$.aftUtils = {};
 
-	// {{{ legacyCorrection
-
-	/**
-	 * During cleanup, some javascript variables have been tossed around.
-	 * It may occur that page output will still be cached, but new (= this)
-	 * javascript will already be served. In these cached cases, this
-	 * javascript will lack the variables it assumes.
-	 *
-	 * This function will pre-fill this data with what we used to be able
-	 * to fetch (and might still be hit with due to cache)
-	 */
-	$.aftUtils.legacyCorrection = function () {
-		// check if data is already present
-		if ( mw.config.get( 'aftv5Article' ) ) {
-			return;
-		}
-
-		var article = {};
-
-		// these had an older equivalent
-		article.id = mw.config.get( 'aftv5PageId', -1 );
-		article.title = mw.config.get( 'aftv5PageTitle', '' );
-
-		// article were only supported on NS_MAIN, so assume the default
-		article.namespace = 0;
-
-		// we have no idea about the categories, but we did know if an article
-		// was whitelisted, so in that case: fill it with whitelisted categories
-		if ( mw.config.get( 'aftv5Whitelist' ) ) {
-			article.categories = mw.config.get( 'wgArticleFeedbackv5Categories', [] );
-		}
-
-		// permission levels had not yet been introduced, so assume the default
-		article.permissionLevel = 'aft-reader';
-
-		mw.config.set( 'aftv5Article', article );
-	};
-
-	// }}}
-	// {{{ article
-
-	/**
-	 * Get article info
-	 *
-	 * @return object
-	 */
-	$.aftUtils.article = function () {
-		// make sure we have all data - even on old cached pages
-		$.aftUtils.legacyCorrection();
-
-		var article = mw.config.get( 'aftv5Article' );
-
-		// fetch data, on article level, we can fetch these from other sources as well
-		if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1 ) {
-			article.id = mw.config.get( 'wgArticleId', -1 );
-			article.namespace = mw.config.get( 'wgNamespaceNumber' );
-			article.categories = mw.config.get( 'wgCategories', [] );
-		}
-
-		return article;
-	};
-
 	// }}}
 	// {{{ verify
 
@@ -88,12 +26,26 @@
 	 * @return bool     whether AFTv5 is enabled for this page
 	 */
 	$.aftUtils.verify = function ( location ) {
-		var article = $.aftUtils.article();
+		// remove obsolete cookies
+		$.aftUtils.removeLegacyCookies();
+
+		var article = mw.config.get( 'aftv5Article' );
+
+		// fetch data, on article level, we can fetch these from other sources as well
+		if ( location == 'article' ) {
+			article.id = mw.config.get( 'wgArticleId', -1 );
+			article.namespace = mw.config.get( 'wgNamespaceNumber' );
+			article.categories = mw.config.get( 'wgCategories', [] );
+		}
+
 
 		var enable = true;
 
 		// supported browser
 		enable &= $.aftUtils.useragent();
+
+		// if AFTv5 is not enabled on any namespace, it does not make sense to display it at all
+		enable &= mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ).length > 0;
 
 		if ( location != 'special' || article.id != 0 ) {
 			// only on pages in namespaces where it is enabled
@@ -255,9 +207,39 @@
 	 * @return string
 	 */
 	$.aftUtils.getCookieName = function ( suffix ) {
-		var version = mw.config.get( 'wgArticleFeedbackv5Credits' ).version || 0;
-		return 'AFT' + version + '-' + suffix;
+		return 'AFTv5-' + suffix;
 	};
+
+	// }}}
+	// {{{ removeLegacyCookies
+
+	/**
+	 * Before the current getCookieName() function, cookie names were:
+	 * * really long
+	 * * incorrect using the tracking version number to differentiate JS/cookie versions
+	 * * not being prefixed by wgCookiePrefix
+	 *
+	 * These issues have since been fixed, but this will make sure that lingering old
+	 * cookie are cleaned up. This function will not merge the old cookies to the new
+	 * cookie name though.
+	 *
+	 * @deprecated Function is only intended to bridge a temporary "gap" while old
+	 *             data persists in cookie. After awhile, cookies have either expired
+	 *             by themselves or this will have cleaned them up, so this function
+	 *             (and where it's being called) can be cleaned up at will.
+	 */
+	$.aftUtils.removeLegacyCookies = function() {
+		// old cookie names
+		var legacyCookieName = function( suffix ) {
+			return 'ext.articleFeedbackv5@11-' + suffix;
+		}
+
+		// remove old cookie names
+		$.cookie( legacyCookieName( 'activity' ), null, { expires: -1, path: '/' } );
+		$.cookie( legacyCookieName( 'last-filter' ), null, { expires: -1, path: '/' } );
+		$.cookie( legacyCookieName( 'submission_timestamps' ), null, { expires: -1, path: '/' } );
+		$.cookie( legacyCookieName( 'feedback-ids' ), null, { expires: -1, path: '/' } );
+	}
 
 	// }}}
 

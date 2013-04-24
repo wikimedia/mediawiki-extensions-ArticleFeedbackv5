@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This class provides some functionality to easily get feedback's activity.
  * Because this data is less often requested & because we're dealing with
@@ -20,112 +21,147 @@ class ArticleFeedbackv5Activity {
 	 * If an action is not mentioned here, it is not tied to specific permissions
 	 * and everyone is able to perform the action.
 	 *
+	 * * 'permissions' is the aft permissions (see $wgArticleFeedbackv5Permissions)
+	 *   required to be able to flag a certain action and view feedback flagged as such
+	 * * 'sentiment' will determine the sentiment the action signifies towards the
+	 *   feedback. Possible sentiments: negative, neutral and positive. In the activity
+	 *   log, this will display the action as red, gray or green.
+	 * * 'log_type' is the value that will be written to logging.log_type. Default
+	 *   value should be 'articlefeedbackv5', but other (e.g. suppress for more
+	 *   delicate actions) are acceptable.
+	 *
 	 * @var array
 	 */
 	public static $actions = array(
 		'helpful' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'undo-helpful' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'neutral'
+			'sentiment' => 'neutral',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unhelpful' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'undo-unhelpful' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'neutral'
+			'sentiment' => 'neutral',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'flag' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unflag' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'autoflag' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'clear-flags' => array(
 			'permissions' => 'aft-reader',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'feature' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unfeature' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'resolve' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unresolve' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'noaction' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'neutral'
+			'sentiment' => 'neutral',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unnoaction' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'neutral'
+			'sentiment' => 'neutral',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'inappropriate' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'uninappropriate' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'archive' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unarchive' => array(
 			'permissions' => 'aft-editor',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'hide' => array(
 			'permissions' => 'aft-monitor',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'unhide' => array(
 			'permissions' => 'aft-monitor',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'autohide' => array(
 			'permissions' => 'aft-monitor',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'articlefeedbackv5'
 		),
 		'request' => array(
 			'permissions' => 'aft-monitor',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'suppress'
 		),
 		'unrequest' => array(
 			'permissions' => 'aft-monitor',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'suppress'
 		),
 		'decline' => array(
 			'permissions' => 'aft-oversighter',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'suppress'
 		),
 		'oversight' => array(
 			'permissions' => 'aft-oversighter',
-			'sentiment' => 'negative'
+			'sentiment' => 'negative',
+			'log_type' => 'suppress'
 		),
 		'unoversight' => array(
 			'permissions' => 'aft-oversighter',
-			'sentiment' => 'positive'
+			'sentiment' => 'positive',
+			'log_type' => 'suppress'
 		),
 	);
 
@@ -146,6 +182,14 @@ class ArticleFeedbackv5Activity {
 		if ( $logId !== null ) {
 			// update log count in cache
 			static::incrementActivityCount( $itemId, $type );
+
+			/*
+			 * While we're at it, since activity has occurred, the editor activity
+			 * data in cache may be out of date.
+			 */
+			global $wgMemc;
+			$key = wfMemcKey( get_called_class(), 'getLastEditorActivity', $itemId );
+			$wgMemc->delete( $key );
 		}
 
 		return $logId;
@@ -181,7 +225,7 @@ class ArticleFeedbackv5Activity {
 		$where['log_namespace'] = NS_SPECIAL;
 		$where = self::applyContinue( $continue, $where );
 
-		$activity = wfGetDB( DB_SLAVE )->select(
+		$activity = ArticleFeedbackv5Utils::getDB( DB_SLAVE )->select(
 			array( 'logging' ),
 			array(
 				'log_id',
@@ -288,11 +332,6 @@ class ArticleFeedbackv5Activity {
 		if ( $count !== false ) {
 			$wgMemc->set( $key, $count + 1, 60 * 60 * 24 * 7 );
 		}
-
-		// while we're at it, since activity has occured, the editor activity
-		// data in cache may be out of date
-		$key = wfMemcKey( get_called_class(), 'getLastEditorActivity', $feedbackId );
-		$wgMemc->delete( $key );
 	}
 
 	/**
@@ -319,7 +358,7 @@ class ArticleFeedbackv5Activity {
 		$where['log_title'] = $title;
 		$where['log_namespace'] = NS_SPECIAL;
 
-		return (int) wfGetDB( DB_SLAVE )->selectField(
+		return (int) ArticleFeedbackv5Utils::getDB( DB_SLAVE )->selectField(
 			'logging',
 			'COUNT(log_id)',
 			$where,
@@ -337,10 +376,11 @@ class ArticleFeedbackv5Activity {
 	 */
 	public static function getLastEditorActivity( array $entries ) {
 		global $wgMemc;
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = ArticleFeedbackv5Utils::getDB( DB_SLAVE );
 
 		$activity = array();
 		$where = array();
+		$titles = array();
 
 		// build where-clause for all feedback entries
 		foreach ( $entries as $entry ) {
@@ -354,37 +394,56 @@ class ArticleFeedbackv5Activity {
 			if ( $cache !== false ) {
 				$activity[$feedback->aft_id] = $cache;
 			} else {
+				$actions = array();
+
 				// we know exactly which status entry we want to fetch
 				if ( $feedback->isOversighted() ) {
-					$action = 'oversight';
+					$actions[] = 'oversight';
 				} elseif ( $feedback->isHidden() ) {
-					$action = 'hide';
+					$actions[] = 'hide';
+					$actions[] = 'autohide';
 				} elseif ( $feedback->isArchived() ) {
-					$action = 'archive';
+					$actions[] = 'archive';
 				} elseif ( $feedback->isResolved() ) {
-					$action = 'resolve';
+					$actions[] = 'resolve';
 				} elseif ( $feedback->isFeatured() ) {
-					$action = 'feature';
+					$actions[] = 'feature';
 				} elseif ( $feedback->isNonActionable() ) {
-					$action = 'noaction';
+					$actions[] = 'noaction';
 				} elseif ( $feedback->isInappropriate() ) {
-					$action = 'inappropriate';
+					$actions[] = 'inappropriate';
 				} else {
 					continue;
 				}
 
-				$action = self::buildWhereActions( array(), array( $action ) );
-				if ( $action ) {
+				$actions = self::buildWhereActions( array(), $actions );
+				if ( $actions ) {
 					$title = self::buildWhereFeedback( $feedback );
-					$where[] = 'log_title = '.$dbr->addQuotes( $title ).' AND '.$action;
+					$titles[] = $title;
+					$where[] = 'log_title = '.$dbr->addQuotes( $title ).' AND '.$actions;
 				}
 			}
 		}
 
 		// if there are entries not found in cache, fetch them from DB
 		if ( $where ) {
+			$options = array();
+
+			// specific conditions to find the exact action we're looking for, per page
 			$where = array( '('.implode( ') OR (', $where ).')' );
+			$options['GROUP BY'] = array( 'log_namespace', 'log_title' );
+
+			/*
+			 * Even though log_title is already in the above where-conditions (to find
+			 * specific actions per title), we'll add these again to target index
+			 * page_time (on _namespace, _title, _timestamp). This will result in very
+			 * few remaining columns (all logging data for maximum
+			 * ArticleFeedbackv5Model::LIST_LIMIT pages), which can then easily be
+			 * scanned using WHERE.
+			 */
 			$where['log_namespace'] = NS_SPECIAL;
+			$where['log_title'] = $titles;
+			$options['USE INDEX'] = 'page_time';
 
 			/*
 			 * The goal is to fetch only the last (editor) action for every feedback
@@ -392,23 +451,15 @@ class ArticleFeedbackv5Activity {
 			 * a subquery (the below $ids query), which will then be folded into the
 			 * main query that will get all of those last actions' details.
 			 */
-			$ids = wfGetDB( DB_SLAVE )->selectSQLText(
+			$ids = ArticleFeedbackv5Utils::getDB( DB_SLAVE )->selectSQLText(
 				array( 'logging' ),
 				array( 'last_id' => 'MAX(log_id)' ),
 				$where,
 				__METHOD__,
-				array(
-					'GROUP BY' => array( 'log_namespace', 'log_title' ),
-					// Force the page_time index (on _namespace, _title, _timestamp)
-					// We don't expect many if any rows for Special:ArticleFeedbackv5/foo that
-					// don't match log_type='articlefeedbackv5' , so we can afford to have that
-					// clause be unindexed. The alternative is to have the log_type clause be indexed
-					// and the namespace/title clauses unindexed, that would be bad.
-					'USE INDEX' => 'page_time'
-				)
+				$options
 			);
 
-			$rows = wfGetDB( DB_SLAVE )->select(
+			$rows = ArticleFeedbackv5Utils::getDB( DB_SLAVE )->select(
 				array(
 					'logging',
 					'ids' => "($ids)" // the subquery that will provide the most recent log_id's
@@ -463,7 +514,7 @@ class ArticleFeedbackv5Activity {
 			throw new MWException( 'Invalid continue param. You should pass the original value returned by the previous query', 'badcontinue' );
 		}
 
-		$db = wfGetDB( DB_SLAVE );
+		$db = ArticleFeedbackv5Utils::getDB( DB_SLAVE );
 		$ts = $db->addQuotes( $db->timestamp( $values[0] ) );
 		$id = intval( $values[1] );
 		$where[] = '(log_id = ' . $id . ' AND log_timestamp <= ' . $ts . ') OR log_timestamp < ' . $ts;
@@ -503,7 +554,7 @@ class ArticleFeedbackv5Activity {
 	protected static function buildWhereActions( $permissions = array(), $actions = array() ) {
 		global $wgLogActionsHandlers;
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = ArticleFeedbackv5Utils::getDB( DB_SLAVE );
 
 		$where = array();
 		foreach ( self::$actions as $action => $options ) {
@@ -548,7 +599,7 @@ class ArticleFeedbackv5Activity {
 		if ( !$page ) {
 			return false;
 		}
-		$title = $page->getDBKey();
+		$title = $page->getPrefixedDBkey();
 
 		return SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$feedbackId" )->getDBkey();
 	}

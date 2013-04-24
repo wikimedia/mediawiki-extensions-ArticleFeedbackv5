@@ -52,7 +52,8 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 	 * it works similar to any other action plus caches will update nicely.
 	 */
 	public function execute() {
-		global $wgArticleFeedbackAutoArchiveEnabled;
+		global $wgArticleFeedbackv5Cluster, $wgArticleFeedbackAutoArchiveEnabled;
+
 		if ( !$wgArticleFeedbackAutoArchiveEnabled ) {
 			$this->output( 'IMPORTANT! Auto-archive is currently disabled. To enable, set $wgArticleFeedbackAutoArchiveEnabled = true.'."\n" );
 		} else {
@@ -84,9 +85,15 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 					$note = wfMessage( 'articlefeedbackv5-activity-note-archive', $days )->escaped();
 
 					$flagger = new ArticleFeedbackv5Flagging( null, $feedback->aft_id, $feedback->aft_page );
-					$flagger->run( 'archive', $note, false, 'job' );
+					$success = $flagger->run( 'archive', $note, false, 'job' );
 
-					$this->completeCount++;
+					if ( $success ) {
+						$this->completeCount++;
+					} else {
+						// if we could not flag, unmark as archive_schedule
+						$feedback->aft_archive_date = null;
+						$feedback->update();
+					}
 
 					$break = false;
 				}
@@ -95,7 +102,7 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 					$this->output( "--moved to entry #$feedback->aft_id\n" );
 				}
 
-				wfWaitForSlaves();
+				wfWaitForSlaves( false, false, $wgArticleFeedbackv5Cluster );
 
 				if ( $break ) {
 					break;
