@@ -1174,7 +1174,8 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-page-disabled' => 'A message to be displayed on the article feedback page when AFT is not enabled for that page',
 	'articlefeedbackv5-no-feedback' => 'A message to be displayed on the article feedback page when there is no feedback yet for a certain filter.',
 	'articlefeedbackv5-invalid-feedback' => 'A message to be displayed on the article feedback page when the requested feedback could not be found (does not exist).',
-	'articlefeedbackv5-viewactivity' => 'Text for the link to see the log of activity (e.g. mark as helpful, resolve, oversight, ...) taken towards feedback',
+	'articlefeedbackv5-viewactivity' => 'Text for the link to see the log of activity (e.g. mark as helpful, resolve, oversight, ...) taken towards feedback.
+{{Identical|View activity}}',
 	'articlefeedbackv5-mask-view-contents' => 'Pseudo-link to make it obvious that clicking there will reveal the original feedback content',
 	'articlefeedbackv5-mask-text-inappropriate' => 'Text to be displayed on the marked as inappropriate post mask. Parameters:
 * $1 - The feedback post id
@@ -7967,7 +7968,7 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-invalid-feedback-flag' => 'Marquage de l’avis invalide',
 	'articlefeedbackv5-invalid-feedback-state' => 'État du drapeau de commentaire non valide',
 	'articlefeedbackv5-feedback-reloaded-after-error' => "Une erreur ($1) s'est produite. L'avis a été rechargé afin refléter son état actuel.",
-	'articlefeedbackv5-go-to-article' => "Afficher l'article",
+	'articlefeedbackv5-go-to-article' => 'Afficher l’article',
 	'articlefeedbackv5-discussion-page' => 'Discussion',
 	'articlefeedbackv5-whats-this' => 'Aide',
 	'articlefeedbackv5-invalid-page-id' => 'Identifiant de page non valide',
