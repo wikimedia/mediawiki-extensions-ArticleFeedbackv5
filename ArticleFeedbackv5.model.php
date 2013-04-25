@@ -589,15 +589,15 @@ class ArticleFeedbackv5Model extends DataModel {
 		if ( $this->isFeatured() || $this->isResolved() || $this->isNonActionable() || $this->isHidden() ) {
 			return null;
 		} elseif ( !$this->aft_archive_date ) {
-			global $wgArticleFeedbackAutoArchiveTtl;
-			$wgArticleFeedbackAutoArchiveTtl = (array) $wgArticleFeedbackAutoArchiveTtl;
+			global $wgArticleFeedbackv5AutoArchiveTtl;
+			$wgArticleFeedbackv5AutoArchiveTtl = (array) $wgArticleFeedbackv5AutoArchiveTtl;
 			$ttl = '+5 years';
 
 			// ttl is set per x amount of unreviewed comments
 			$count = static::getCount( 'unreviewed', $this->aft_page );
 
-			ksort( $wgArticleFeedbackAutoArchiveTtl );
-			foreach ( $wgArticleFeedbackAutoArchiveTtl as $amount => $time ) {
+			ksort( $wgArticleFeedbackv5AutoArchiveTtl );
+			foreach ( $wgArticleFeedbackv5AutoArchiveTtl as $amount => $time ) {
 				if ( $amount <= $count ) {
 					$ttl = $time;
 				} else {
