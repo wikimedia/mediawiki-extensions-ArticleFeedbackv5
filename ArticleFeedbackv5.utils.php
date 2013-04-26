@@ -124,8 +124,12 @@ class ArticleFeedbackv5Utils {
 		}
 
 		$odds = $wgArticleFeedbackv5LotteryOdds;
-		if ( is_array( $odds ) && array_key_exists( $title->getNamespace(), $odds ) ) {
-			$odds = $odds[$title->getNamespace()];
+		if ( is_array( $odds ) ) {
+			if ( array_key_exists( $title->getNamespace(), $odds ) ) {
+				$odds = $odds[$title->getNamespace()];
+			} else {
+				$odds = 0;
+			}
 		}
 
 		$enable = true;
@@ -142,7 +146,7 @@ class ArticleFeedbackv5Utils {
 		// category is whitelisted or article is in lottery
 		$enable &=
 			array_intersect( $categories, $wgArticleFeedbackv5Categories ) ||
-			(int) $pageId % 1000 >= 1000 - ( (int) $odds * 10 );
+			(int) $pageId % 1000 >= 1000 - ( (float) $odds * 10 );
 
 		// not disabled via preferences
 		$enable &= !$wgUser->getOption( 'articlefeedback-disable' );

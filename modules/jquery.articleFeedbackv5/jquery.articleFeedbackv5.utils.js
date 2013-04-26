@@ -168,8 +168,12 @@
 	 */
 	$.aftUtils.lottery = function ( article ) {
 		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
-		if ( typeof odds === 'object' && article.namespace in odds ) {
-			odds = odds[article.namespace];
+		if ( typeof odds === 'object' ) {
+			if ( article.namespace in odds ) {
+				odds = odds[article.namespace];
+			} else {
+				odds = 0;
+			}
 		}
 
 		return ( Number( article.id ) % 1000 ) >= ( 1000 - ( Number( odds ) * 10 ) );
