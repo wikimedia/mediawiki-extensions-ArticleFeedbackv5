@@ -142,7 +142,7 @@ class ArticleFeedbackv5Utils {
 		// category is whitelisted or article is in lottery
 		$enable &=
 			array_intersect( $categories, $wgArticleFeedbackv5Categories ) ||
-			(int) $pageId % 1000 >= 1000 - ( (int) $odds * 10 );
+			(int) $pageId % 1000 >= 1000 - ( $odds * 10 );
 
 		// not disabled via preferences
 		$enable &= !$wgUser->getOption( 'articlefeedback-disable' );
