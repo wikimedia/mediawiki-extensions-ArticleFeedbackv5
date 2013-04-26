@@ -368,7 +368,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// % found
 		$percent = '';
-//		if ( $this->pageId ) { // @todo: not for central feedback page?
+		if ( $this->pageId ) {
 			// calculate percentage found
 			$totalInappropriate = ArticleFeedbackv5Model::getCount( 'inappropriate', $this->pageId );
 			$totalHidden = ArticleFeedbackv5Model::getCount( 'hidden', $this->pageId );
@@ -403,7 +403,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 							->escaped()
 					);
 			}
-//		}
+		}
 
 		return $count . $percent;
 	}

@@ -10,12 +10,19 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-container {
 	float: left;
 	width: 100%;
-	margin-left: -300px;
+	margin-left: -260px;
 	padding: 10px 0 5px 0;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap {
 	padding: 0 10px 20px 30px;
-	margin-left: 300px;
+	margin-left: 260px;
+}
+/* Don't preserve toolbox space if there is no toolbox */
+.articleFeedbackv5-comment-notoolbox .articleFeedbackv5-comment-container {
+	margin-left: 0;
+}
+.articleFeedbackv5-comment-notoolbox .articleFeedbackv5-comment-wrap {
+	margin-left: 0;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head {
 	margin-top: 10px;
@@ -38,7 +45,7 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-vote-wrapper {
 	position: absolute;
 	bottom: 0;
-	right: 300px; /* toolbox width */
+	right: 260px; /* toolbox width */
 	left: 0;
 	margin-left: 30px;
 	margin-bottom: 5px;
@@ -54,11 +61,11 @@
 	padding: 0;
 	border-bottom: 1px solid #D6D7D5;
 
-	background-image: linear-gradient(right, #F5F5F4 300px, transparent 0%);
-	background-image: -o-linear-gradient(right, #F5F5F4 300px, transparent 0%);
-	background-image: -moz-linear-gradient(right, #F5F5F4 300px, transparent 0%);
-	background-image: -webkit-linear-gradient(right, #F5F5F4 300px, transparent 0%);
-	background-image: -ms-linear-gradient(right, #F5F5F4 300px, transparent 0%);
+	background-image: linear-gradient(right, #F5F5F4 260px, transparent 0%);
+	background-image: -o-linear-gradient(right, #F5F5F4 260px, transparent 0%);
+	background-image: -moz-linear-gradient(right, #F5F5F4 260px, transparent 0%);
+	background-image: -webkit-linear-gradient(right, #F5F5F4 260px, transparent 0%);
+	background-image: -ms-linear-gradient(right, #F5F5F4 260px, transparent 0%);
 }
 .articleFeedbackv5-feedback.articleFeedbackv5-comment-notoolbox {
 	background: transparent;
@@ -356,7 +363,7 @@
 	padding: 10px;
 	position: relative;
 	float: right;
-	width: 280px; /* 300px toolbox width minus the 10 padding on both sides */
+	width: 240px; /* 260px toolbox width minus the 10 padding on both sides */
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul {
 	margin: 10px 0 5px;
