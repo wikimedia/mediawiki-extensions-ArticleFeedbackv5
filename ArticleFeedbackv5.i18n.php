@@ -7988,9 +7988,9 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-viewactivity' => 'Voir l’activité',
 	'articlefeedbackv5-mask-view-contents' => 'Afficher les contenus',
 	'articlefeedbackv5-mask-text-inappropriate' => 'Ce billet #$1 {{GENDER:$2|a été marqué comme inapproprié par $2 }} $3.',
-	'articlefeedbackv5-mask-text-autohide' => 'Ce billet #$1 {{GENDER:$2|a été masqué automatiquement par $2}} $3 plus tôt.',
-	'articlefeedbackv5-mask-text-hide' => 'Ce billet #$1 {{GENDER:$2|a été masqué par $2}} $3.',
-	'articlefeedbackv5-mask-text-oversight' => 'Ce billet #$1 {{GENDER:$2|a été masqué par $2}} $3.',
+	'articlefeedbackv5-mask-text-autohide' => 'Ce billet #$1 {{GENDER:$2|a été masqué automatiquement par $2}} {{lcfirst:$3}}.',
+	'articlefeedbackv5-mask-text-hide' => 'Ce billet #$1 {{GENDER:$2|a été masqué par $2}} {{lcfirst:$3}}.',
+	'articlefeedbackv5-mask-text-oversight' => 'Ce billet #$1 {{GENDER:$2|a été masqué par $2}} {{lcfirst:$3}}.',
 	'articlefeedbackv5-special-disclaimer' => 'Il s’agit d’un prototype. Veuillez ne pas l’utiliser à moins d’y être invité.',
 	'articlefeedbackv5-special-goback' => 'Afficher la page de commentaires',
 	'articlefeedbackv5-special-central-goback' => 'Voir plus de commentaires des autres pages',
@@ -15211,8 +15211,8 @@ $messages['mk'] = array(
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Скриено',
 	'articlefeedbackv5-contribs-status-action-archive' => 'Архивирано',
 	'articlefeedbackv5-contribs-status-action-hide' => 'Скриј',
-	'articlefeedbackv5-contribs-status-action-request' => 'Побарана заверка',
-	'articlefeedbackv5-contribs-status-action-oversight' => 'Заверено',
+	'articlefeedbackv5-contribs-status-action-request' => 'Побарано скривање',
+	'articlefeedbackv5-contribs-status-action-oversight' => 'Скриено',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'скриено мислење',
 	'articlefeedbackv5-form-toolbox-label' => 'Означи како:',
 	'articlefeedbackv5-form-own-toolbox-label' => 'Означи го моето мислење како:',
@@ -15235,9 +15235,9 @@ $messages['mk'] = array(
 	'articlefeedbackv5-special-filter-archived' => 'Архивирани ($1)',
 	'articlefeedbackv5-special-filter-allcomment' => 'Сите коментари ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'Скриени ($1)',
-	'articlefeedbackv5-special-filter-requested' => 'Побарана заверка ($1)',
-	'articlefeedbackv5-special-filter-declined' => 'Одбиени заверки ($1)',
-	'articlefeedbackv5-special-filter-oversighted' => 'Заверени ($1)',
+	'articlefeedbackv5-special-filter-requested' => 'Побарано скривање ($1)',
+	'articlefeedbackv5-special-filter-declined' => 'Одбиено скривање ($1)',
+	'articlefeedbackv5-special-filter-oversighted' => 'Скриени ($1)',
 	'articlefeedbackv5-special-filter-all' => 'Сите мислења ($1)',
 	'articlefeedbackv5-special-filter-featured-watchlist' => 'Избрано',
 	'articlefeedbackv5-special-filter-unreviewed-watchlist' => 'Непроверени',
@@ -15251,9 +15251,9 @@ $messages['mk'] = array(
 	'articlefeedbackv5-special-filter-archived-watchlist' => 'Архивирани',
 	'articlefeedbackv5-special-filter-allcomment-watchlist' => 'Сите коментари',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'Скриено',
-	'articlefeedbackv5-special-filter-requested-watchlist' => 'Побарана заверка',
-	'articlefeedbackv5-special-filter-declined-watchlist' => 'Одбиена заверката',
-	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'Заверено',
+	'articlefeedbackv5-special-filter-requested-watchlist' => 'Побарано скривање',
+	'articlefeedbackv5-special-filter-declined-watchlist' => 'Одбиено скривање',
+	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'Скриени од ревизор',
 	'articlefeedbackv5-special-filter-all-watchlist' => 'Сите мислења',
 	'articlefeedbackv5-special-sort-relevance-desc' => 'Релевантност',
 	'articlefeedbackv5-special-sort-relevance-asc' => 'Нерелевантност',
@@ -15281,12 +15281,12 @@ $messages['mk'] = array(
 	'articlefeedbackv5-loading-tag' => 'Вчитувам...',
 	'articlefeedbackv5-status-hide' => 'Ова мислење е скриено од $1 на $2 во $3',
 	'articlefeedbackv5-status-unhide' => 'Ова мислење е откриено од $1 на $2 во $3',
-	'articlefeedbackv5-status-request' => '$1 побара заверка на ова мислење на $2 во $3',
-	'articlefeedbackv5-status-unrequest' => '$1 го откажа барањето за заверка на мислењево на $2 во $3',
-	'articlefeedbackv5-status-decline' => '$1 ја одби заверката на мислењево на $2 во $3',
+	'articlefeedbackv5-status-request' => '$1 побара скривање на ова мислење $2 во $3',
+	'articlefeedbackv5-status-unrequest' => '$1 го откажа барањето за скривање на мислењево на $2 во $3',
+	'articlefeedbackv5-status-decline' => '$1 го одби барањето за скривање на мислењево на $2 во $3',
 	'articlefeedbackv5-status-autohide' => 'Ова мислење е автоозначено како несоодветно од $1 на $2 во $3',
-	'articlefeedbackv5-status-oversight' => 'Ова мислење е заверено од $1 на $2 во $3',
-	'articlefeedbackv5-status-unoversight' => 'На оваа мислење му е отстранета заверката од $1 на $2 во $3',
+	'articlefeedbackv5-status-oversight' => 'Ова мислење е скриено од $1 на $2 во $3',
+	'articlefeedbackv5-status-unoversight' => 'На оваа мислење му е отстранета скриеноста од $1 на $2 во $3',
 	'articlefeedbackv5-status-autoflag' => 'Ова мислење е автоозначено од $1 на $2 во $3',
 	'articlefeedbackv5-status-feature' => 'Ова мислење е означено како корисно од $1 на $2 во $3',
 	'articlefeedbackv5-status-unfeature' => 'Ова мислење е тргнато од корисни од $1 на $2 во $3',
@@ -15299,7 +15299,7 @@ $messages['mk'] = array(
 	'articlefeedbackv5-status-archive' => 'Ова мислење е архивирано од $1 на $2 во $3',
 	'articlefeedbackv5-status-unarchive' => 'Ова мислење е одархивирано од $1 на $2 во $3',
 	'articlefeedbackv5-new-marker' => 'Ново',
-	'articlefeedbackv5-oversight-marker' => 'Заверено',
+	'articlefeedbackv5-oversight-marker' => 'Скриено',
 	'articlefeedbackv5-autohide-marker' => 'Скриено',
 	'articlefeedbackv5-hide-marker' => 'Скриено',
 	'articlefeedbackv5-feature-marker' => 'Корисно',
@@ -15326,12 +15326,12 @@ $messages['mk'] = array(
 	'articlefeedbackv5-form-unarchive' => 'Врати',
 	'articlefeedbackv5-form-helpful' => 'Означи како корисно ($1)',
 	'articlefeedbackv5-form-flag' => 'Означи како злоупотреба',
-	'articlefeedbackv5-form-oversight' => 'Завери',
+	'articlefeedbackv5-form-oversight' => 'Скривање',
 	'articlefeedbackv5-form-unoversight' => 'Врати',
-	'articlefeedbackv5-form-request' => 'Побарај заверка',
-	'articlefeedbackv5-form-unrequest' => 'Откажи заверка',
-	'articlefeedbackv5-form-decline' => 'Одбиј заверка',
-	'articlefeedbackv5-form-declined' => 'Заверката е одбиена',
+	'articlefeedbackv5-form-request' => 'Побарај скривање',
+	'articlefeedbackv5-form-unrequest' => 'Откажи скривање',
+	'articlefeedbackv5-form-decline' => 'Одбиј скривање',
+	'articlefeedbackv5-form-declined' => 'Барањето за скривање е одбиено',
 	'articlefeedbackv5-form-discuss-talk' => 'Продискутирајте во разговорот',
 	'articlefeedbackv5-form-discuss-user' => 'Контактирајте го авторот на мислењето',
 	'articlefeedbackv5-form-discuss-talk-exists' => 'Погл. дискусијата во разговорот',
@@ -15353,10 +15353,10 @@ $messages['mk'] = array(
 	'articlefeedbackv5-form-tooltip-unarchive' => 'Одархивирај',
 	'articlefeedbackv5-form-tooltip-flag' => 'Глупости, спам, навредливо, лични податоци ...',
 	'articlefeedbackv5-form-tooltip-oversight' => 'Навредливо, лични податоци ...',
-	'articlefeedbackv5-form-tooltip-unoversight' => 'Поништи заверка',
+	'articlefeedbackv5-form-tooltip-unoversight' => 'Откажи скривање',
 	'articlefeedbackv5-form-tooltip-request' => 'Навредливо, лични податоци ...',
-	'articlefeedbackv5-form-tooltip-unrequest' => 'Откажи барање за заверка',
-	'articlefeedbackv5-form-tooltip-decline' => 'Одбиј барање за заверка',
+	'articlefeedbackv5-form-tooltip-unrequest' => 'Откажи барање за скривање',
+	'articlefeedbackv5-form-tooltip-decline' => 'Одбиј барање за скривање',
 	'articlefeedbackv5-form-tooltip-discuss-talk' => 'Продискутирајте го мислењето во разговорот',
 	'articlefeedbackv5-form-tooltip-discuss-user' => 'Продискутирајте го мислењето со корисникот што го дал',
 	'articlefeedbackv5-discuss-talk-section-title' => 'Мислење на читател: $1',
@@ -15419,7 +15419,7 @@ $6
 	'articlefeedbackv5-mask-text-inappropriate' => 'Ова мислење бр. $1 {{GENDER:$2|е означено како несоодветно од $2}} $3.',
 	'articlefeedbackv5-mask-text-autohide' => 'Ова мислење бр. $1 {{GENDER:$2|е автоскриено од $2}} $3.',
 	'articlefeedbackv5-mask-text-hide' => 'Ова мислење бр. $1 {{GENDER:$2|е скриено од $2}} $3.',
-	'articlefeedbackv5-mask-text-oversight' => 'Ова мислење бр. $1 {{GENDER:$2|е заверено од $2}} $3.',
+	'articlefeedbackv5-mask-text-oversight' => 'Ова мислење бр. $1 {{GENDER:$2|е скриено од $2}} $3.',
 	'articlefeedbackv5-special-disclaimer' => 'Ова е прототип. Не користете го доколку немате посебна покана.',
 	'articlefeedbackv5-special-goback' => 'Погл. страница со мислења',
 	'articlefeedbackv5-special-central-goback' => 'Погледајте мислења за други страници',
@@ -15463,12 +15463,12 @@ $6
 	'articlefeedbackv5-short-status-undo-helpful' => '{{GENDER:$1|Проверено од $1}}',
 	'articlefeedbackv5-short-status-unhelpful' => '{{GENDER:$1|Проверено од $1}}',
 	'articlefeedbackv5-short-status-undo-unhelpful' => '{{GENDER:$1|Проверено од $1}}',
-	'articlefeedbackv5-permalink-status-request' => '{{GENDER:$1|Доставено барање за <strong>заверка</strong> до $1}} $2',
-	'articlefeedbackv5-permalink-status-unrequest' => '{{GENDER:$1|Повлечено барањето за <strong>заверка</strong> до $1}} $2',
-	'articlefeedbackv5-permalink-status-decline' => '{{GENDER:$1|<strong>Заверката</strong> беше одбиена од $1}} $2',
+	'articlefeedbackv5-permalink-status-request' => '{{GENDER:$1|Доставено барање за <strong>скривање</strong> до $1}} $2',
+	'articlefeedbackv5-permalink-status-unrequest' => '{{GENDER:$1|Повлечено барањето за <strong>скривање</strong> до $1}} $2',
+	'articlefeedbackv5-permalink-status-decline' => '{{GENDER:$1|Барањето за <strong>скривање</strong> беше одбиено од $1}} $2',
 	'articlefeedbackv5-permalink-status-autohide' => '{{GENDER:$1|<strong>Автоскриено</strong> од $1}} $2',
-	'articlefeedbackv5-permalink-status-oversight' => '{{GENDER:$1|<strong>Заверено</strong> од $1}} $2',
-	'articlefeedbackv5-permalink-status-unoversight' => '{{GENDER:$1|<strong>Поништена заверката</strong> од $1}} $2',
+	'articlefeedbackv5-permalink-status-oversight' => '{{GENDER:$1|<strong>Скриено</strong> од $1}} $2',
+	'articlefeedbackv5-permalink-status-unoversight' => '{{GENDER:$1|<strong>Откажано скривањето</strong> од $1}} $2',
 	'articlefeedbackv5-permalink-status-flag' => '{{GENDER:$1|<strong>Означено</strong> од $1}} $2',
 	'articlefeedbackv5-permalink-status-unflag' => '{{GENDER:$1|<strong>Тргната ознака</strong> од $1}} $2',
 	'articlefeedbackv5-permalink-status-autoflag' => '{{GENDER:$1|<strong>Автоозначено</strong> од $1}} $2',
@@ -15550,36 +15550,36 @@ $6
 	'articlefeedbackv5-noteflyover-unarchive-placeholder' => 'Зошто го одархивиравте мислењево?',
 	'articlefeedbackv5-noteflyover-unarchive-submit' => 'Додај белешка',
 	'articlefeedbackv5-noteflyover-unarchive-help' => 'Дознајте повеќе',
-	'articlefeedbackv5-noteflyover-request-caption' => 'Побарај заверка',
-	'articlefeedbackv5-noteflyover-request-description' => 'Пред да побарате заверка, осигурајте се дека мислењево
+	'articlefeedbackv5-noteflyover-request-caption' => 'Побарај скривање',
+	'articlefeedbackv5-noteflyover-request-description' => 'Пред да побарате скривање, осигурајте се дека мислењево
 содржи еден од следниве проблеми:
 * телефонски броеви
 * е-пошти
 * порнографски врски
 * клеветнички/посрамувачки коментари за некого
 * [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy други критериуми за заверка]',
-	'articlefeedbackv5-noteflyover-request-label' => 'Додајте белешка, образложувајќи зошто барате заверка',
-	'articlefeedbackv5-noteflyover-request-placeholder' => 'Зошто побаравте заверка?',
-	'articlefeedbackv5-noteflyover-request-submit' => 'Побарај заверка',
+	'articlefeedbackv5-noteflyover-request-label' => 'Додајте белешка, образложувајќи зошто барате скривање',
+	'articlefeedbackv5-noteflyover-request-placeholder' => 'Зошто побаравте скривање?',
+	'articlefeedbackv5-noteflyover-request-submit' => 'Побарај скривање',
 	'articlefeedbackv5-noteflyover-request-help' => 'Дознајте повеќе',
-	'articlefeedbackv5-noteflyover-unrequest-caption' => 'Откажано барање за заверка',
+	'articlefeedbackv5-noteflyover-unrequest-caption' => 'Откажано барањето за скривање',
 	'articlefeedbackv5-noteflyover-unrequest-label' => 'Додај белешка',
-	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Зошто го откажавте барањето за заверка?',
+	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Зошто го откажавте барањето за скривање?',
 	'articlefeedbackv5-noteflyover-unrequest-submit' => 'Откажи барање',
 	'articlefeedbackv5-noteflyover-unrequest-help' => 'Дознајте повеќе',
-	'articlefeedbackv5-noteflyover-oversight-caption' => 'Завери го мислењево',
+	'articlefeedbackv5-noteflyover-oversight-caption' => 'Скриј го мислењево',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Додај белешка',
-	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Зошто го заверувате мислењево?',
-	'articlefeedbackv5-noteflyover-oversight-submit' => 'Надгледувај',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Зошто го скривате мислењево?',
+	'articlefeedbackv5-noteflyover-oversight-submit' => 'Скриј',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Дознајте повеќе',
-	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Поништи ја заверката на мислењево',
+	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Вратено скриеното мислење',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Додај белешка',
-	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Зошто ја поништивте заверката на мислењево?',
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Зошто го вративте ова скриено мислење?',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Додај белешка',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Дознајте повеќе',
-	'articlefeedbackv5-noteflyover-decline-caption' => 'Одбиена заверка',
+	'articlefeedbackv5-noteflyover-decline-caption' => 'Одбиенo скривање',
 	'articlefeedbackv5-noteflyover-decline-label' => 'Додај белешка',
-	'articlefeedbackv5-noteflyover-decline-placeholder' => 'Зошто ја одбивте заверката?',
+	'articlefeedbackv5-noteflyover-decline-placeholder' => 'Зошто го одбивте барањето за скривање?',
 	'articlefeedbackv5-noteflyover-decline-submit' => 'Додај белешка',
 	'articlefeedbackv5-noteflyover-decline-help' => 'Дознајте повеќе',
 	'articlefeedbackv5-bucket1-title' => 'Помогнете ни да ја подобриме страницава',
@@ -15636,17 +15636,17 @@ $6
 	'right-aft-reader' => 'Давање мислења и означување како (не)корисно',
 	'right-aft-member' => 'Давање оценка и означување како (не)корисно',
 	'right-aft-editor' => 'Истакнување/Решавање на искажани мислења',
-	'right-aft-monitor' => 'Скривање на мислења и барање на заверка',
+	'right-aft-monitor' => 'Прикривање на мислења и барање на притајувања (скривања)',
 	'right-aft-administrator' => 'Гледање на мислења на заштитени страници',
-	'right-aft-oversighter' => 'Заверка на мислења',
+	'right-aft-oversighter' => 'Скривање на мислења',
 	'log-name-articlefeedbackv5' => 'Оценување на статии — Дневник на активности',
 	'log-description-articlefeedbackv5' => 'Ова е дневникот на активности што заведува мислења на корисниците со алатката „Мислења за статии“.',
 	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|го поднесе}} [[$3|мислењето бр. $4]] на [[$5]]',
-	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|го смени статусот на завереност на}} [[$3|мислењето бр. $4]] во [[$5]]',
-	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|го отстрани статусот на завереност на}} [[$3|мислењето бр. $4]] во [[$5]]',
-	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|ја одби заверката}} на [[$3|мислењето бр. $4]] на [[$5]]',
-	'logentry-articlefeedbackv5-request' => '$1 {{GENDER:$2|побара заверка}} на [[$3|мислењето бр. $4]] на [[$5]]',
-	'logentry-articlefeedbackv5-unrequest' => '$1 {{GENDER:$2|ја отповика побараната заверка}} на [[$3|мислењето бр. $4]] на [[$5]]',
+	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|го смени статусот на}} [[$3|мислењето бр. $4]] во „скриено“ на [[$5]]',
+	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|го отстрани статусот на скриеност на}} [[$3|мислењето бр. $4]] во [[$5]]',
+	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|го одби барањето за скривање}} на [[$3|мислењето бр. $4]] на [[$5]]',
+	'logentry-articlefeedbackv5-request' => '$1 {{GENDER:$2|побара скривање}} на [[$3|мислењето бр. $4]] на [[$5]]',
+	'logentry-articlefeedbackv5-unrequest' => '$1 {{GENDER:$2|го отповика побараното скривање}} на [[$3|мислењето бр. $4]] на [[$5]]',
 	'logentry-articlefeedbackv5-flag' => '$1 {{GENDER:$2|го означи како злоупотреба}} [[$3|мислењето бр. $4]] на [[$5]]',
 	'logentry-articlefeedbackv5-unflag' => '$1 {{GENDER:$2|ја тргна ознаката за злоупотреба}} од [[$3|мислењето бр. $4]] на [[$5]]',
 	'logentry-articlefeedbackv5-autoflag' => '$1 {{GENDER:$2|го автоозначи како злоупотреба}} [[$3|мислењето бр. $4]] на [[$5]]',
@@ -15672,14 +15672,14 @@ $6
 	'articlefeedbackv5-activity-feedback-info' => 'Мислење бр. $1 од $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Објавено на $1',
 	'articlefeedbackv5-activity-permalink' => 'постојана врска',
-	'articlefeedbackv5-activity-item-request' => '$1 побара заверка на $3 $2',
-	'articlefeedbackv5-activity-item-unrequest' => '$1 го откажа барањето за заверка на $3 $2',
-	'articlefeedbackv5-activity-item-decline' => '$1 ја одби заверката на $3 $2',
+	'articlefeedbackv5-activity-item-request' => '$1 побара скривање на $3 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 го откажа барањето за скривање на $4 во $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 го одби барањето за скривање на $4 во $5 $2',
 	'articlefeedbackv5-activity-item-flag' => '$1 го означи мислењево на $4 во $5 $2',
 	'articlefeedbackv5-activity-item-unflag' => '$1 ја тргна ознаката од мислењево на $4 во $5 $2',
 	'articlefeedbackv5-activity-item-autoflag' => '$1 го означи мислењево на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-oversight' => '$1 го завери мислењево на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-unoversight' => '$1 ја тргна заверката на мислењево на $4 во $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 го скри мислењево на $4 во $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 го тргна скривањето на мислењево на $4 во $5 $2',
 	'articlefeedbackv5-activity-item-feature' => '$1 го означи мислењево како корисно на $4 во $5 $2',
 	'articlefeedbackv5-activity-item-unfeature' => '$1 го тргна мислењево од корисни на $4 во $5 $2',
 	'articlefeedbackv5-activity-item-resolve' => '$1 го означи мислењево како решено на $4 во $5 $2',
@@ -15703,14 +15703,14 @@ $6
 	'articlefeedbackv5-activity-more' => 'Уште активности',
 	'articlefeedbackv5-talk-view-feedback' => 'Погл. предлози од читателите',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Мислења за моите набљудувани страници',
-	'articlefeedbackv5-email-request-oversight-subject' => 'Побарана е заверка на страница со мислења',
-	'articlefeedbackv5-email-request-oversight-body' => 'Здраво, заверувачи!
+	'articlefeedbackv5-email-request-oversight-subject' => 'Побарано е скривање на страница со мислења',
+	'articlefeedbackv5-email-request-oversight-body' => 'Здраво, скривачи!
 
-$1 побара заверка на оценката објавено на следнава страница:
+$1 побара скривање на оценката објавено на следнава страница:
 
 $2
 
-Прегледајте го мислењето, па одобрете ја или одбијте ја заверката:
+Прегледајте го мислењето, па одобрете го или одбијте го скривањето:
 
 $3
 
@@ -15721,7 +15721,7 @@ $3
 
 
 
-П.С.: Доколку имате прашања во врска со употребата на функциите за заверка, погледајте ја страницата за ЧПП.
+П.С.: Доколку имате прашања во врска со употребата на функциите за скривање, погледајте ја страницата за ЧПП.
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Да ја отстранам алаткава?',
@@ -15733,8 +15733,8 @@ $4',
 	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Автоматски означено како злоупотреба. Правило: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Мислење за статија) Автоматски криј',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Автоматски скриено. Правило: $1',
-	'abusefilter-edit-action-aftv5request' => '(Мислење за статија) Автоматски побарај заверка',
-	'articlefeedbackv5-abusefilter-note-aftv5request' => 'Автоматски побарана заверка. Правило: $1',
+	'abusefilter-edit-action-aftv5request' => '(Мислење за статија) Автоматски побарај скривање',
+	'articlefeedbackv5-abusefilter-note-aftv5request' => 'Автоматски побарано скривање. Правило: $1',
 );
 
 /** Malayalam (മലയാളം)
@@ -20206,6 +20206,8 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-abuse-saved-tooltip' => "Live 'a spunde ca è 'mbostate",
 	'articlefeedbackv5-error-loading-feedback' => "Errore d'u carecamènde feedback.",
 	'articlefeedbackv5-invalid-feedback-id' => "L' ID d'u feedback non g'ète valide.",
+	'articlefeedbackv5-invalid-log-id' => "Invalide ID de l'archivije",
+	'articlefeedbackv5-invalid-log-update' => "'A vôsce de l'archivije non ge pò essere aggiornate",
 	'articlefeedbackv5-invalid-feedback-flag' => "L'assignazione d'u feedback non g'ète valide.",
 	'articlefeedbackv5-go-to-article' => "'Ndruche 'a vôsce",
 	'articlefeedbackv5-discussion-page' => "'Ngazzamende",
@@ -20459,6 +20461,7 @@ $messages['roa-tara'] = array(
  * @author Kaganer
  * @author MaxSem
  * @author Ole Yves
+ * @author Putnik
  * @author Александр Сигачёв
  * @author Сrower
  */
@@ -20531,8 +20534,10 @@ $messages['ru'] = array(
 	'articlefeedbackv5-special-filter-featured' => 'Избранные ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Полезный ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Бесполезный ($1)',
+	'articlefeedbackv5-special-filter-useful' => 'Полезно ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'Урегулированные ($1)',
 	'articlefeedbackv5-special-filter-noaction' => 'Действий не требуется ($1)',
+	'articlefeedbackv5-special-filter-allcomment' => 'Все комментарии ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'Скрытые ( $1 )',
 	'articlefeedbackv5-special-filter-requested' => 'Запрошен надзор ($1)',
 	'articlefeedbackv5-special-filter-declined' => 'Надзор отклонен ( $1 )',
@@ -20543,6 +20548,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Бесполезные',
 	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Отработанные',
 	'articlefeedbackv5-special-filter-archived-watchlist' => 'Архивировано',
+	'articlefeedbackv5-special-filter-allcomment-watchlist' => 'Все комментарии',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'Скрытые',
 	'articlefeedbackv5-special-filter-requested-watchlist' => 'Те, для которых запрошено скрытие',
 	'articlefeedbackv5-special-filter-declined-watchlist' => 'Те, для которых скрытие было отклонено',
@@ -20591,6 +20597,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-hide-marker' => 'скрытый',
 	'articlefeedbackv5-feature-marker' => 'Полезно',
 	'articlefeedbackv5-resolve-marker' => 'Урегулирован',
+	'articlefeedbackv5-noaction-marker' => 'Действий не требуется',
 	'articlefeedbackv5-archive-marker' => 'Архивировано',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 пометка|$1 пометки|$1 пометок}}',
 	'articlefeedbackv5-form-note' => 'Добавить комментарий',
@@ -20612,6 +20619,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-form-unoversight' => 'Отменить',
 	'articlefeedbackv5-form-decline' => 'Отклонить надзор',
 	'articlefeedbackv5-form-declined' => 'Скрытие отклонено',
+	'articlefeedbackv5-form-discuss-talk' => 'Обсудить на странице обсуждения',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Показать',
 	'articlefeedbackv5-form1-header-found' => '$2  {{GENDER:$1|нашел то, что искал|нашла то, что искала}}',
 	'articlefeedbackv5-form1-header-not-found' => '$2 {{GENDER:$1|не нашел того, что искал|не нашла того, что искала}}',
@@ -20628,6 +20636,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Снять пометку',
 	'articlefeedbackv5-error-loading-feedback' => 'Ошибка при загрузке отзыва',
 	'articlefeedbackv5-invalid-feedback-id' => 'Неверный идентификатор отзыва',
+	'articlefeedbackv5-invalid-log-update' => 'Запись журнала не может быть обновлена',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Недопустимая отметка отзыва',
 	'articlefeedbackv5-invalid-feedback-state' => 'Недопустимое состояние отметки отзыва',
 	'articlefeedbackv5-go-to-article' => 'Просмотр статьи', # Fuzzy
@@ -20639,6 +20648,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5watchlist' => 'Отзывы о статьях — наблюдаемые мной страницы',
 	'articlefeedbackv5-desc' => 'Отзывы о статьях',
 	'articlefeedbackv5-comment-more' => 'Больше',
+	'articlefeedbackv5-comment-empty' => 'Текст не был введен',
 	'articlefeedbackv5-header-message' => 'Просим посодействовать хорошими отзывами и помочь улучшить эту статью. $1', # Fuzzy
 	'articlefeedbackv5-header-message-link-text' => 'Узнать больше',
 	'articlefeedbackv5-beta-label' => 'БЕТА',
@@ -25365,6 +25375,7 @@ $4',
  * @author Hydra
  * @author Justincheng12345
  * @author Liangent
+ * @author Littletung
  * @author Mark85296341
  * @author Oapbtommy
  * @author Shirayuki
@@ -25388,7 +25399,7 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-cta4-confirmation-title' => '加入我們的社區',
 	'articlefeedbackv5-cta4-confirmation-call-line1' => '請註冊或登錄，這樣編者們可以對您的反饋作出回應。',
 	'articlefeedbackv5-cta4-confirmation-call-line2' => '擁有一個免費帳號可以使您更容易在{{SITENAME}}上分享您所知道的事物。',
-	'articlefeedbackv5-cta4-button-text-signup' => '創建帳號',
+	'articlefeedbackv5-cta4-button-text-signup' => '建立用戶',
 	'articlefeedbackv5-cta4-button-text-login' => '登入',
 	'articlefeedbackv5-cta4-button-text-later' => '也許以後再說',
 	'articlefeedbackv5-cta4-button-text-or' => '或',
@@ -25459,15 +25470,15 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|僅有一個|有$1個}}關於此頁', # Fuzzy
 	'articlefeedbackv5-updates-since' => '發帖後有$1次編輯',
 	'articleFeedbackv5-details-link' => '詳細資訊',
-	'articlefeedbackv5-revision-link' => '(檢視舊條目)', # Fuzzy
+	'articlefeedbackv5-revision-link' => '(檢視舊頁面)',
 	'articlefeedbackv5-special-more' => '顯示更多帖子',
 	'articlefeedbackv5-special-refresh' => '更新清單',
 	'articlefeedbackv5-special-pagetitle' => '$1的回饋',
 	'articlefeedbackv5-special-permalink-pagetitle' => '$1的反饋',
 	'articlefeedbackv5-special-central-pagetitle' => '中央反饋頁面',
 	'articlefeedbackv5-loading-tag' => '正在載入...',
-	'articlefeedbackv5-status-hide' => '這篇文章於$2 $3由$1標記為隱藏。', # Fuzzy
-	'articlefeedbackv5-status-unhide' => '這篇文章於$2 $3由$1標記為未隱藏。', # Fuzzy
+	'articlefeedbackv5-status-hide' => '這篇文章於$2 $3由$1隱藏。',
+	'articlefeedbackv5-status-unhide' => '這篇文章於$2 $3由$1恢復。',
 	'articlefeedbackv5-status-request' => '此帖子已由$1於$2 $3請求刪除',
 	'articlefeedbackv5-status-unrequest' => '此帖子的刪除請求已由$1於$2 $3取消',
 	'articlefeedbackv5-status-decline' => '此帖子的刪除請求已由$1於$2 $3拒絕',
@@ -25481,13 +25492,13 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-status-unresolve' => '此帖子已由$1於$2 $3取消已解決狀態',
 	'articlefeedbackv5-new-marker' => '新',
 	'articlefeedbackv5-oversight-marker' => '已刪除',
-	'articlefeedbackv5-hide-marker' => '隱藏', # Fuzzy
+	'articlefeedbackv5-hide-marker' => '隱藏',
 	'articlefeedbackv5-feature-marker' => '特色', # Fuzzy
 	'articlefeedbackv5-resolve-marker' => '已解決',
 	'articlefeedbackv5-form-abuse-count' => '$1次標記',
 	'articlefeedbackv5-form-feature' => '標記此帖為特色', # Fuzzy
 	'articlefeedbackv5-form-unfeature' => '取消此帖的特色狀態', # Fuzzy
-	'articlefeedbackv5-form-resolve' => '標為已解決', # Fuzzy
+	'articlefeedbackv5-form-resolve' => '已解決',
 	'articlefeedbackv5-form-unresolve' => '標為已解決', # Fuzzy
 	'articlefeedbackv5-form-inappropriate' => '隱藏這個帖子',
 	'articlefeedbackv5-form-unhide' => '取消隱藏此帖。', # Fuzzy
@@ -25513,11 +25524,11 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-invalid-feedback-id' => '無效反饋ID',
 	'articlefeedbackv5-invalid-feedback-flag' => '無效反饋標記',
 	'articlefeedbackv5-invalid-feedback-state' => '無效反饋標記狀態',
-	'articlefeedbackv5-go-to-article' => '查看文章', # Fuzzy
+	'articlefeedbackv5-go-to-article' => '查看頁面',
 	'articlefeedbackv5-discussion-page' => '討論',
 	'articlefeedbackv5-whats-this' => '説明',
 	'articlefeedbackv5-invalid-page-id' => '無效頁面ID',
-	'articlefeedbackv5-found-percent' => '$1找到了他們所尋找的', # Fuzzy
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1找到了他們所尋找的}}',
 	'articlefeedbackv5' => '條目評分面板——中央頁面',
 	'articlefeedbackv5-desc' => '條目評級',
 	'articlefeedbackv5-comment-more' => '更多',
@@ -25527,7 +25538,7 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-unsupported-message' => '很抱歉，您的瀏覽器不支援此原型。請用別的瀏覽器查看此頁。',
 	'articlefeedbackv5-page-disabled' => '本條目未啟用條目回饋頁面。',
 	'articlefeedbackv5-no-feedback' => '本頁面尚未收到任何反饋', # Fuzzy
-	'articlefeedbackv5-viewactivity' => '查看活動', # Fuzzy
+	'articlefeedbackv5-viewactivity' => '查看活動',
 	'articlefeedbackv5-mask-view-contents' => '檢視內容',
 	'articlefeedbackv5-mask-text-hide' => '此帖子#$1在$3之前被$2隱藏。', # Fuzzy
 	'articlefeedbackv5-mask-text-oversight' => '此帖子#$1已被$2於$3之前刪除。', # Fuzzy
@@ -25578,12 +25589,12 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-noteflyover-unfeature-placeholder' => '您為什麼要取消此帖的特色狀態？', # Fuzzy
 	'articlefeedbackv5-noteflyover-unfeature-submit' => '取消此帖的特色狀態', # Fuzzy
 	'articlefeedbackv5-noteflyover-unfeature-help' => '了解更多',
-	'articlefeedbackv5-noteflyover-resolve-caption' => '標為已解決', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-caption' => '標為已解決',
 	'articlefeedbackv5-noteflyover-resolve-label' => '添加注釋',
-	'articlefeedbackv5-noteflyover-resolve-placeholder' => '您為什麼要將此帖標記為已解決？', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-placeholder' => '您為什麼要將此帖標記為已解決？',
 	'articlefeedbackv5-noteflyover-resolve-submit' => '標為已解決', # Fuzzy
 	'articlefeedbackv5-noteflyover-resolve-help' => '了解更多',
-	'articlefeedbackv5-noteflyover-unresolve-caption' => '取消已解決狀態', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-caption' => '取消已解決狀態',
 	'articlefeedbackv5-noteflyover-unresolve-label' => '添加注釋',
 	'articlefeedbackv5-noteflyover-unresolve-placeholder' => '您為什麼要取消此帖的已解決狀態？', # Fuzzy
 	'articlefeedbackv5-noteflyover-unresolve-submit' => '取消已解決狀態', # Fuzzy
@@ -25632,8 +25643,8 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-bucket4-teaser-line2' => '繼續吧，試一試，勇敢一些！',
 	'articlefeedbackv5-bucket4-learn-to-edit' => '學習如何編輯',
 	'articlefeedbackv5-bucket4-form-submit' => '編輯此頁',
-	'articlefeedbackv5-bucket4-help-tooltip-info' => '維基百科想知道您的意見。成為編輯者來幫助改善這個頁面。', # Fuzzy
-	'articlefeedbackv5-bucket4-noedit-title' => '幫助改善維基百科', # Fuzzy
+	'articlefeedbackv5-bucket4-help-tooltip-info' => '{{SITENAME}}想知道您的意見。成為編輯者來幫助改善這個頁面。',
+	'articlefeedbackv5-bucket4-noedit-title' => '幫助改善{{SITENAME}}',
 	'articlefeedbackv5-bucket4-noedit-teaser-line1' => '本網站是由像您一樣的人間創建的。',
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => '您可以幫助我們嗎？',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => '了解更多',
@@ -25647,11 +25658,11 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-bucket6-question-instructions-yes' => '很好。你想添加評論嗎？', # Fuzzy
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => '可以如何改善這篇文章？', # Fuzzy
 	'articlefeedbackv5-bucket6-question-instructions-no' => '抱歉。有任何改善的建議嗎？',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => '在此寫下您的意見（例：“本條目需要補充圖片”）', # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-no' => '在此寫下您的意見（例：“本頁面需要補充圖片”）',
 	'articlefeedbackv5-bucket6-form-submit' => '發布您的反饋',
 	'articlefeedbackv5-bucket6-backlink-text' => '回到步驟 1',
 	'articlefeedbackv5-help-tooltip-title' => '這是什麼？',
-	'articlefeedbackv5-help-tooltip-info' => '維基想知道您對此頁面的意見。請與編輯者們分享反饋，以及幫助我們改善此頁面。', # Fuzzy
+	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}}想知道您對此頁面的意見。請與編輯者們分享反饋，以及幫助我們改善此頁面。',
 	'articlefeedbackv5-help-tooltip-linktext' => '了解更多',
 	'articlefeedbackv5-help-transparency-terms' => '請發表[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 有用的反饋]。若您發表，我們認為您接受這些[//wikimediafoundation.org/wiki/Feedback_privacy_statement 條款]中聲明的透明度。',
 	'articlefeedbackv5-sitesub-linktext' => '改善這個頁面',
