@@ -813,7 +813,8 @@ The abuse policy link.',
 {{Identical|Flagged}}',
 	'articlefeedbackv5-contribs-status-action-feature' => 'Status when feedback has been marked as useful.
 {{Identical|Useful}}',
-	'articlefeedbackv5-contribs-status-action-resolve' => 'Status when feedback has been resolved',
+	'articlefeedbackv5-contribs-status-action-resolve' => 'Status when feedback has been resolved.
+{{Identical|Resolved}}',
 	'articlefeedbackv5-contribs-status-action-noaction' => 'Status when feedback has been marked as non-actionable',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Status when feedback has been marked as inappropriate',
 	'articlefeedbackv5-contribs-status-action-archive' => 'Status when feedback has been archived',
@@ -839,7 +840,8 @@ The abuse policy link.',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Name of filter that will show all feedback that has been marked as unhelpful. $1 is the amount of records in this filter.',
 	'articlefeedbackv5-special-filter-flagged' => 'Name of filter that will show all feedback that has been flagged for abuse. $1 is the amount of records in this filter.',
 	'articlefeedbackv5-special-filter-useful' => 'Name of filter that will show all feedback that has marked as useful. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-resolved' => 'Name of filter that will show all feedback that has been marked as resolved. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-resolved' => 'Name of filter that will show all feedback that has been marked as resolved. $1 is the amount of records in this filter.
+{{Identical|Resolved}}',
 	'articlefeedbackv5-special-filter-noaction' => 'Name of filter that will show all feedback that has been marked as no action needed. $1 is the amount of records in this filter.',
 	'articlefeedbackv5-special-filter-inappropriate' => 'Name of filter that will show all feedback that has been marked as inappropriate. $1 is the amount of records in this filter.',
 	'articlefeedbackv5-special-filter-archived' => 'Name of filter that will show all feedback that has been archived. $1 is the amount of records in this filter.',
@@ -859,7 +861,8 @@ The abuse policy link.',
 {{Identical|Flagged}}',
 	'articlefeedbackv5-special-filter-useful-watchlist' => 'Name of filter that will show all feedback that has marked as useful.
 {{Identical|Useful}}',
-	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Name of filter that will show all feedback that has been marked as resolved.',
+	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Name of filter that will show all feedback that has been marked as resolved.
+{{Identical|Resolved}}',
 	'articlefeedbackv5-special-filter-noaction-watchlist' => 'Name of filter that will show all feedback that has been marked as no action needed.',
 	'articlefeedbackv5-special-filter-inappropriate-watchlist' => 'Name of filter that will show all feedback that has been marked as inappropriate.
 {{Identical|Inappropriate}}',
@@ -1017,7 +1020,8 @@ The abuse policy link.',
 {{Identical|Hidden}}',
 	'articlefeedbackv5-feature-marker' => 'The marker that appears on a comment if it has been marked as useful.
 {{Identical|Useful}}',
-	'articlefeedbackv5-resolve-marker' => 'The marker that appears on a comment if it has been marked as resolved.',
+	'articlefeedbackv5-resolve-marker' => 'The marker that appears on a comment if it has been marked as resolved.
+{{Identical|Resolved}}',
 	'articlefeedbackv5-noaction-marker' => 'The marker that appears on a comment if it has been marked as non-actionable.',
 	'articlefeedbackv5-inappropriate-marker' => 'The marker that appears on a comment if it has been marked as inappropriate.
 {{Identical|Inappropriate}}',
@@ -1030,7 +1034,8 @@ The abuse policy link.',
 {{Identical|Useful}}',
 	'articlefeedbackv5-form-unfeature' => 'Link text for un-marking the post as useful (in the toolbox).
 {{Identical|Undo}}',
-	'articlefeedbackv5-form-resolve' => 'Link text for marking the post resolved (in the toolbox)',
+	'articlefeedbackv5-form-resolve' => 'Link text for marking the post resolved (in the toolbox).
+{{Identical|Resolved}}',
 	'articlefeedbackv5-form-unresolve' => 'Link text for un-marking the post resolved (in the toolbox).
 {{Identical|Undo}}',
 	'articlefeedbackv5-form-noaction' => 'Link text for marking the post as non-actionable (in the toolbox)',
@@ -9830,7 +9835,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-special-filter-unhelpful' => 'לא מועיל ($1)',
 	'articlefeedbackv5-special-filter-useful' => 'שימושי ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'טופל ($1)',
-	'articlefeedbackv5-special-filter-noaction' => 'לא נדרשת פעולה', # Fuzzy
+	'articlefeedbackv5-special-filter-noaction' => 'לא נדרשת פעולה ($1)',
 	'articlefeedbackv5-special-filter-inappropriate' => 'לא הולם ($1)',
 	'articlefeedbackv5-special-filter-allcomment' => 'כל התגובות ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'מחוק ($1)',
@@ -9866,7 +9871,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|תצוגת משוב מכל הדפים]]',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|עריכה אחת|$1 עריכות}} מאז שנשלח',
 	'articleFeedbackv5-details-link' => 'פרטים',
-	'articlefeedbackv5-revision-link' => '(הצגת גרסת הערך שעליה נכתב המשוב)', # Fuzzy
+	'articlefeedbackv5-revision-link' => '(ראה את הדף הישן)',
 	'articlefeedbackv5-special-more' => 'רשומות נוספות',
 	'articlefeedbackv5-special-refresh' => 'רענון הרשימה',
 	'articlefeedbackv5-special-pagetitle' => 'משוב על $1',
@@ -9890,23 +9895,32 @@ $messages['he'] = array(
 	'articlefeedbackv5-new-marker' => 'חדשה',
 	'articlefeedbackv5-oversight-marker' => 'מוסתרת',
 	'articlefeedbackv5-autohide-marker' => 'מוסתר',
-	'articlefeedbackv5-hide-marker' => 'מחוקה', # Fuzzy
-	'articlefeedbackv5-feature-marker' => 'מומלץ', # Fuzzy
+	'articlefeedbackv5-hide-marker' => 'מוסתר',
+	'articlefeedbackv5-feature-marker' => 'שימושי',
 	'articlefeedbackv5-resolve-marker' => 'טופל',
+	'articlefeedbackv5-noaction-marker' => 'לא נדרשת פעולה',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|סימון אחד|$1 סימונים}}',
-	'articlefeedbackv5-form-feature' => 'להמליץ על הרשומה הזאת', # Fuzzy
+	'articlefeedbackv5-form-note-added' => 'הערה נוספה',
+	'articlefeedbackv5-form-note' => 'הוספת הערה',
+	'articlefeedbackv5-form-feature' => 'שימושי',
 	'articlefeedbackv5-form-unfeature' => 'ביטול',
-	'articlefeedbackv5-form-resolve' => 'סימון כ"טופל"', # Fuzzy
-	'articlefeedbackv5-form-unresolve' => 'ביטול סימון כ"טופל"', # Fuzzy
+	'articlefeedbackv5-form-resolve' => 'טופל',
+	'articlefeedbackv5-form-unresolve' => 'ביטול',
+	'articlefeedbackv5-form-noaction' => 'לא נדרשת פעולה',
+	'articlefeedbackv5-form-unnoaction' => 'ביטול',
+	'articlefeedbackv5-form-noaction-own' => 'מחיקת ההודעה שלי',
+	'articlefeedbackv5-form-unnoaction-own' => 'הצג את ההודעה שלי',
 	'articlefeedbackv5-form-inappropriate' => 'הסתרת הרשומה הזאת',
 	'articlefeedbackv5-form-uninappropriate' => 'ביטול',
 	'articlefeedbackv5-form-hide' => 'הסתר רשומה זו',
-	'articlefeedbackv5-form-unhide' => 'לבטל את הסתרת הרשומה הזאת', # Fuzzy
+	'articlefeedbackv5-form-unhide' => 'בטל',
+	'articlefeedbackv5-form-unarchive' => 'ביטול',
 	'articlefeedbackv5-form-helpful' => 'סימון כמועיל ($1)',
 	'articlefeedbackv5-form-oversight' => 'בקשת הסתרה', # Fuzzy
-	'articlefeedbackv5-form-unoversight' => 'ביטול בקשת הסתרה', # Fuzzy
+	'articlefeedbackv5-form-unoversight' => 'ביטול',
 	'articlefeedbackv5-form-decline' => 'דחיית בקשת הסתרה',
 	'articlefeedbackv5-form-declined' => 'בקשת ההסתרה נדחתה',
+	'articlefeedbackv5-form-discuss-talk' => 'דיון בדף השיחה',
 	'articlefeedbackv5-form1-header-found' => '$2 {{GENDER:$1|מצא את מה שחיפש|מצאה את מה שחיפשה}}',
 	'articlefeedbackv5-form1-header-not-found' => '$2 לא {{GENDER:$1|מצא את מה שחיפש|מצאה את מה שחיפשה}}',
 	'articlefeedbackv5-form1-header-left-comment' => '$2 {{GENDER:$1|שלח|שלחה}} הערה.',
