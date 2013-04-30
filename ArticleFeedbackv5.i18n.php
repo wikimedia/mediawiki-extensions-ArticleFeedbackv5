@@ -600,7 +600,7 @@ includes one of these issues:
 	'right-aft-oversighter' => 'Oversight feedback',
 
 	/* Log types */
-	'log-name-articlefeedbackv5' => 'Article Feedback Activity Log',
+	'log-name-articlefeedbackv5' => 'Article feedback activity log',
 	'log-description-articlefeedbackv5' => 'This is the log of activity taken on feedback items submitted by users via Article Feedback.',
 	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|submitted}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|changed the status to oversight of}} [[$3|feedback post #$4]] on [[$5]]',
