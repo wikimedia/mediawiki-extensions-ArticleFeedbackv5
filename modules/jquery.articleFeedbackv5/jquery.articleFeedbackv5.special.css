@@ -12,14 +12,16 @@
 	width: 100%;
 	margin-left: -300px;
 	padding: 10px 0 5px 0;
+	min-height: 100px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap {
 	padding: 0 10px 20px 30px;
-	margin-left: 300px;
+	min-height: 80px;
+	margin: 0 0 0 300px;
+	overflow: auto;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head {
-	margin-top: 10px;
-	line-height: 24px;
+	line-height: 26px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head h3 {
 	font-size: 1em;
@@ -40,6 +42,7 @@
 	bottom: 0;
 	right: 300px; /* toolbox width */
 	left: 0;
+	height: 20px;
 	margin-left: 30px;
 	margin-bottom: 5px;
 	font-size: 0.9em;
@@ -71,6 +74,7 @@
 
 /** Comment block: icon **/
 .articleFeedbackv5-comment-wrap {
+	position: relative;
 	background-position: top left;
 	background-repeat: no-repeat;
 }
@@ -122,7 +126,9 @@
 /** Comment block: bottom line **/
 .articleFeedbackv5-comment-foot-helpful,
 .articleFeedbackv5-comment-foot-abuse,
-.articleFeedbackv5-comment-foot-hide {
+.articleFeedbackv5-comment-foot-hide,
+.articleFeedbackv5-form-own-feedback {
+	margin: 0;
 	display: inline-block;
 	/* IE7 inline-block hack */
 	zoom: 1;
