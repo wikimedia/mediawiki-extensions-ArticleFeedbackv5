@@ -1058,6 +1058,7 @@
 		if ( $.articleFeedbackv5special.getActivityFlag( id, 'flag' ) ) {
 			$( '#articleFeedbackv5-flag-link-' + id )
 				.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) )
+				.attr( 'title', mw.msg( 'articlefeedbackv5-abuse-saved-tooltip' ) )
 				.data( 'action', 'unflag' );
 		}
 
