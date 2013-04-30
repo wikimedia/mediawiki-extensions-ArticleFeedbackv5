@@ -16,6 +16,7 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap {
 	padding: 0 10px 20px 30px;
 	margin-left: 300px;
+	overflow: auto;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head {
 	margin-top: 10px;
