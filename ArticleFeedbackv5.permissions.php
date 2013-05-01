@@ -14,12 +14,13 @@ class ArticleFeedbackv5Permissions {
 	 * @var array
 	 */
 	public static $permissions = array(
-		'aft-reader',
+		'aft-reader', // default "enable" level
 		'aft-member',
-		'aft-editor',
+		'aft-editor', // level when disabled by editor
 		'aft-monitor',
 		'aft-administrator',
-		'aft-oversighter'
+		'aft-oversighter',
+		'aft-noone', // default "disable" level
 	);
 
 	/**
@@ -28,6 +29,36 @@ class ArticleFeedbackv5Permissions {
 	 * @var array
 	 */
 	protected static $current = array();
+
+	/**
+	 * A page's default permission level is lottery-based. Lottery is a
+	 * percentage, 0-100, of articles where AFTv5 is enabled by default
+	 * (based on the last digits of a page id)
+	 *
+	 * @param int $articleId
+	 * @return string
+	 */
+	public static function getDefaultPermissionLevel( $articleId ) {
+		$title = Title::newFromID( $articleId );
+		if ( is_null( $title ) ) {
+			$enable = false;
+		} else {
+			global $wgArticleFeedbackv5LotteryOdds;
+
+			$odds = $wgArticleFeedbackv5LotteryOdds;
+			if ( is_array( $odds ) ) {
+				if ( isset( $odds[$title->getNamespace()] ) ) {
+					$odds = $odds[$title->getNamespace()];
+				} else {
+					$odds = 0;
+				}
+			}
+
+			$enable = (int) $articleId % 1000 >= 1000 - ( (float) $odds * 10 );
+		}
+
+		return $enable ? self::$permissions[0] : self::$permissions[count( self::$permissions ) - 1];
+	}
 
 	/**
 	 * Validate a permission level
@@ -43,7 +74,7 @@ class ArticleFeedbackv5Permissions {
 	 * Get the AFT restriction level linked to a page
 	 *
 	 * @param int $articleId
-	 * @return object
+	 * @return object|false false if not restricted or details of restriction set
 	 */
 	public static function getRestriction( $articleId ) {
 		if ( isset( self::$current[$articleId] ) ) {
@@ -63,9 +94,9 @@ class ArticleFeedbackv5Permissions {
 			__METHOD__
 		);
 
-		// check if valid result; if not, return defaults
+		// check if valid result
 		if ( !$permission || !isset( $permission->pr_level ) || !self::isValidPermission( $permission->pr_level ) ) {
-			$permission = (object) array( 'pr_level' => self::$permissions[0], 'pr_expiry' => 'infinity' );
+			return false;
 		}
 
 		self::$current[$articleId] = $permission;
@@ -103,47 +134,28 @@ class ArticleFeedbackv5Permissions {
 		);
 
 		// insert new restriction entry
-		if ( $permission != self::$permissions[0] ) {
-			if ( $record ) {
-				$dbw->update(
-					'page_restrictions',
-					array(
-						'pr_page' => $articleId,
-						'pr_type' => 'aft',
-						'pr_level' => $permission,
-						'pr_cascade' => 0,
-						'pr_expiry' => $dbw->encodeExpiry( $expiry )
-					),
-					array(
-						'pr_page' => $articleId,
-						'pr_type' => 'aft'
-					)
-				);
-			} else {
-				$dbw->insert(
-					'page_restrictions',
-					array(
-						'pr_page' => $articleId,
-						'pr_type' => 'aft',
-						'pr_level' => $permission,
-						'pr_cascade' => 0,
-						'pr_expiry' => $dbw->encodeExpiry( $expiry )
-					)
-				);
-			}
-		} else {
-			// exception: aft-reader is considered the default value and is equal to
-			// when no record is in restrictions table - don't both adding it in then
-			if ( $record ) {
-				$dbw->delete(
-					'page_restrictions',
-					array(
-						'pr_page' => $articleId,
-						'pr_type' => 'aft'
-					)
-				);
+		$vars = array(
+			'pr_page' => $articleId,
+			'pr_type' => 'aft',
+			'pr_level' => $permission,
+			'pr_cascade' => 0,
+			'pr_expiry' => $dbw->encodeExpiry( $expiry )
+		);
 
-			}
+		if ( $record ) {
+			$dbw->update(
+				'page_restrictions',
+				$vars,
+				array(
+					'pr_page' => $articleId,
+					'pr_type' => 'aft'
+				)
+			);
+		} else {
+			$dbw->insert(
+				'page_restrictions',
+				$vars
+			);
 		}
 
 		return true;
@@ -158,9 +170,11 @@ class ArticleFeedbackv5Permissions {
 	public static function getExpiry( $articleId ) {
 		global $wgRequest;
 
+		$existingRestriction = self::getRestriction( $articleId );
+
 		$requestExpiry = $wgRequest->getText( 'articlefeedbackv5-protection-expiration' );
 		$requestExpirySelection = $wgRequest->getVal( 'articlefeedbackv5-protection-expiration-selection' );
-		$existingExpiry = self::getRestriction( $articleId )->pr_expiry;
+		$existingExpiry = isset( $existingRestriction->pr_expiry ) ? $existingRestriction->pr_expiry : false;
 
 		if ( $requestExpiry ) {
 			// Custom expiry takes precedence
@@ -170,14 +184,10 @@ class ArticleFeedbackv5Permissions {
 			// Expiry selected from list
 			$mExpiry = '';
 			$mExpirySelection = $requestExpirySelection;
-		} elseif ( $existingExpiry == 'infinity' ) {
+		} else {
 			// Existing expiry is infinite, use "infinite" in drop-down
 			$mExpiry = '';
 			$mExpirySelection = 'infinite';
-		} else {
-			// Use existing expiry in its own list item
-			$mExpiry = '';
-			$mExpirySelection = $existingExpiry;
 		}
 
 		return array( $existingExpiry, $mExpiry, $mExpirySelection );
