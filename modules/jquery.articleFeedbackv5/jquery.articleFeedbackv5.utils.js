@@ -203,7 +203,7 @@
 	 * The cookie name is prefixed by the extension name and a version number,
 	 * to avoid collisions with other extensions or code versions.
 	 *
-	 * @param string $suffix
+	 * @param string suffix
 	 * @return string
 	 */
 	$.aftUtils.getCookieName = function ( suffix ) {
@@ -240,6 +240,50 @@
 		$.cookie( legacyCookieName( 'submission_timestamps' ), null, { expires: -1, path: '/' } );
 		$.cookie( legacyCookieName( 'feedback-ids' ), null, { expires: -1, path: '/' } );
 	}
+
+	// }}}
+	// {{{ setStatus
+
+	/**
+	 * Enable/disable feedback on a certain page
+	 *
+	 * @param int pageId the page id
+	 * @param bool enable true to enable, false to disable
+	 * @param function callback function to execute after setting status
+	 */
+	$.aftUtils.setStatus = function ( pageId, enable, callback ) {
+		var result = [];
+		result['result'] = 'Error';
+		result['reason'] = 'articlefeedbackv5-error-unknown';
+
+		$.ajax( {
+			'url': mw.util.wikiScript( 'api' ),
+			'type': 'POST',
+			'dataType': 'json',
+			'data': {
+				'pageid': pageId,
+				'enable': parseInt( enable ),
+				'format': 'json',
+				'action': 'articlefeedbackv5-set-status'
+			},
+			'success': function ( data ) {
+				if ( 'articlefeedbackv5-set-status' in data ) {
+					result = data['articlefeedbackv5-set-status'];
+				}
+
+				// invoke callback function
+				if ( typeof callback == 'function' ) {
+					callback( result );
+				}
+			},
+			'error': function ( data ) {
+				// invoke callback function
+				if ( typeof callback == 'function' ) {
+					callback( result );
+				}
+			}
+		} );
+	};
 
 	// }}}
 

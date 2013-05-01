@@ -751,7 +751,7 @@ class ArticleFeedbackv5Hooks {
 		$requestPermission = $wgRequest->getVal( 'articlefeedbackv5-protection-level' );
 		$requestExpiry = $wgRequest->getText( 'articlefeedbackv5-protection-expiration' );
 		$requestExpirySelection = $wgRequest->getVal( 'articlefeedbackv5-protection-expiration-selection' );
-
+/*
 		// fetch permissions set to edit page ans make sure that AFT permissions are no tighter than these
 		$editPermission = $article->getTitle()->getRestrictions( 'edit' );
 		if ( !$editPermission ) {
@@ -762,7 +762,7 @@ class ArticleFeedbackv5Hooks {
 			$errorMsg .= wfMessage( 'articlefeedbackv5-protection-level-error' )->escaped();
 			return false;
 		}
-
+*/
 		if ( $requestExpirySelection == 'existing' ) {
 			$expirationTime = ArticleFeedbackv5Permissions::getRestriction( $article->getId() )->pr_expiry;
 		} else {

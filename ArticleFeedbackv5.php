@@ -391,6 +391,7 @@ $wgExtensionCredits['other'][] = $wgArticleFeedbackv5Credits;
 $wgAutoloadClasses['ApiArticleFeedbackv5']              = __DIR__ . '/api/ApiArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5']   = __DIR__ . '/api/ApiViewRatingsArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5']  = __DIR__ . '/api/ApiViewFeedbackArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiSetStatusArticleFeedbackv5']     = __DIR__ . '/api/ApiSetStatusArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiAddFlagNoteArticleFeedbackv5']   = __DIR__ . '/api/ApiAddFlagNoteArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5']  = __DIR__ . '/api/ApiFlagFeedbackArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewActivityArticleFeedbackv5']  = __DIR__ . '/api/ApiViewActivityArticleFeedbackv5.php';
@@ -431,6 +432,7 @@ $wgHooks['ProtectionForm::save'][] = 'ArticleFeedbackv5Hooks::onProtectionSave';
 // API Registration
 $wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';
 $wgAPIListModules['articlefeedbackv5-view-activity'] = 'ApiViewActivityArticleFeedbackv5';
+$wgAPIModules['articlefeedbackv5-set-status']        = 'ApiSetStatusArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-add-flag-note']     = 'ApiAddFlagNoteArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-flag-feedback']     = 'ApiFlagFeedbackArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5']                   = 'ApiArticleFeedbackv5';
@@ -710,6 +712,9 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-invalid-feedback-flag',
 		'articlefeedbackv5-invalid-feedback-state',
 		'articlefeedbackv5-feedback-reloaded-after-error',
+		'articlefeedbackv5-error-unknown',
+		'articlefeedbackv5-invalid-page-id',
+		'articlefeedbackv5-insufficient-permissions',
 
 		'articlefeedbackv5-comment-more',
 		'articlefeedbackv5-comment-less',
