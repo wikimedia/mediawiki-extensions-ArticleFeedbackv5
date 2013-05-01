@@ -75,14 +75,20 @@
 
 		// for special page, it doesn't matter if the article has AFT applied
 		if ( location != 'special' ) {
-			// check if user has the required permissions
-			enable &= $.aftUtils.permissions( article );
+			if ( article.permissionLevel !== false ) {
+				// check if a, to this user sufficient, permission level is defined
+				enable &= $.aftUtils.permissions( article, article.permissionLevel );
+
+			} else {
+				enable &=
+					// check if a, to this user sufficient, default permission level (based on lottery) is defined
+					$.aftUtils.permissions( article, article.defaultPermissionLevel ) ||
+					// or check whitelist
+					$.aftUtils.whitelist( article );
+			}
 
 			// category is not blacklisted
 			enable &= !$.aftUtils.blacklist( article );
-
-			// category is whitelisted or article is in lottery
-			enable &= ( $.aftUtils.whitelist( article ) || $.aftUtils.lottery( article ) );
 		}
 
 		// stricter validation for article: make sure we're at the right article view
@@ -120,11 +126,12 @@
 	 * on this particular page, as defined by its protection level
 	 *
 	 * @param object article
+	 * @param string|boolean permissionLevel
 	 * @return bool
 	 */
-	$.aftUtils.permissions = function ( article ) {
+	$.aftUtils.permissions = function ( article, permissionLevel ) {
 		var permissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
-		return article.permissionLevel in permissions && permissions[article.permissionLevel];
+		return permissionLevel in permissions && permissions[permissionLevel];
 	};
 
 	// }}}
@@ -167,31 +174,6 @@
 			return $.inArray( category.replace(/_/g, ' '), article.categories ) < 0 ? null : category;
 		} );
 		return intersect.length > 0;
-	};
-
-	// }}}
-	// {{{ lottery
-
-	/**
-	 * Check if an article is eligible for AFT through the lottery
-	 *
-	 * Note: odds can either be a plain integer (0-100), or be defined per namespace
-	 * (0-100 per namespace key)
-	 *
-	 * @param object article
-	 * @return bool
-	 */
-	$.aftUtils.lottery = function ( article ) {
-		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
-		if ( typeof odds === 'object' ) {
-			if ( article.namespace in odds ) {
-				odds = odds[article.namespace];
-			} else {
-				odds = 0;
-			}
-		}
-
-		return ( Number( article.id ) % 1000 ) >= ( 1000 - ( Number( odds ) * 10 ) );
 	};
 
 	// }}}
@@ -251,16 +233,100 @@
 		// old cookie names
 		var legacyCookieName = function( suffix ) {
 			return 'ext.articleFeedbackv5@11-' + suffix;
-		}
+		};
 
 		// remove old cookie names
 		$.cookie( legacyCookieName( 'activity' ), null, { expires: -1, path: '/' } );
 		$.cookie( legacyCookieName( 'last-filter' ), null, { expires: -1, path: '/' } );
 		$.cookie( legacyCookieName( 'submission_timestamps' ), null, { expires: -1, path: '/' } );
 		$.cookie( legacyCookieName( 'feedback-ids' ), null, { expires: -1, path: '/' } );
-	}
+	};
 
 	// }}}
+	// {{{ canSetStatus
+
+	/**
+	 * Check if the current user can set a certain status (enable/disable) for the current page
+	 *
+	 * @param bool enable true to check if can be enabled, false to check disabled
+	 */
+	$.aftUtils.canSetStatus = function( enable ) {
+		var permissionLevel = $.aftUtils.article().permissionLevel || $.aftUtils.article().defaultPermissionLevel;
+		var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
+
+		// check AFT status for readers
+		var enabled = ( permissionLevel === 'aft-reader' );
+
+		// check if current user has editor permission
+		if ( !( 'aft-editor' in userPermissions ) || !userPermissions['aft-editor'] ) {
+			return false;
+		}
+
+		/*
+		 * Check if existing page restriction is not too tight (set tight by
+		 * administrator, should not be overridden)
+		 *
+		 * If status was specifically set (= not default), "disabled" only needs
+		 * aft-editor permissions, not the default aft-noone (which is to make
+		 * sure that AFTv5 stays completely hidden for all user types unless
+		 * consciously activated)
+		 */
+		if ( $.aftUtils.article().permissionLevel === false && !enabled ) {
+			permissionLevel = 'aft-editor';
+		}
+		if ( !( permissionLevel in userPermissions ) || !userPermissions[permissionLevel] ) {
+			return false;
+		}
+
+		// check if desired status != current status
+		return enable != enabled;
+	};
+
+	// }}}
+	// {{{ setStatus
+
+	/**
+	 * Enable/disable feedback on a certain page
+	 *
+	 * @param int pageId the page id
+	 * @param bool enable true to enable, false to disable
+	 * @param function callback function to execute after setting status
+	 */
+	$.aftUtils.setStatus = function( pageId, enable, callback ) {
+		var api = new mw.Api();
+		api.post( {
+			'pageid': pageId,
+			'enable': parseInt( enable ),
+			'format': 'json',
+			'action': 'articlefeedbackv5-set-status'
+		} )
+		.done( function ( data ) {
+			// invoke callback function
+			if ( typeof callback === 'function' ) {
+				if ( 'articlefeedbackv5-set-status' in data ) {
+					callback( data['articlefeedbackv5-set-status'], null );
+				}
+			}
+		} )
+		.fail( function ( code, data ) {
+			var message = mw.msg( 'articlefeedbackv5-error-unknown' );
+
+			if ( 'error' in data && 'info' in data.error ) {
+				message = data.error.info;
+			}
+
+			// invoke callback function
+			if ( typeof callback === 'function' ) {
+				callback( false, message );
+			} else {
+				alert( message );
+			}
+		} );
+	};
+
+	// }}}
+
+// }}}
 
 // }}}
 

@@ -104,7 +104,6 @@ class ArticleFeedbackv5Utils {
 		global $wgArticleFeedbackv5Namespaces,
 				$wgArticleFeedbackv5BlacklistCategories,
 				$wgArticleFeedbackv5Categories,
-				$wgArticleFeedbackv5LotteryOdds,
 				$wgUser;
 
 		$title = Title::newFromID( $pageId );
@@ -123,30 +122,30 @@ class ArticleFeedbackv5Utils {
 			}
 		}
 
-		$odds = $wgArticleFeedbackv5LotteryOdds;
-		if ( is_array( $odds ) ) {
-			if ( isset( $odds[$title->getNamespace()] ) ) {
-				$odds = $odds[$title->getNamespace()];
-			} else {
-				$odds = 0;
-			}
-		}
+		$restriction = ArticleFeedbackv5Permissions::getProtectionRestriction( $title->getArticleID() );
 
 		$enable = true;
 
 		// only on pages in namespaces where it is enabled
 		$enable &= in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces );
 
-		// check if user has the required permissions
-		$enable &= $wgUser->isAllowed( ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() )->pr_level ) && !$wgUser->isBlocked();
+		// check if user is not blocked
+		$enable &= !$wgUser->isBlocked();
+
+		// check if a, to this user sufficient, permission level is defined
+		if ( isset( $restriction->pr_level ) ) {
+			$enable &= $wgUser->isAllowed( $restriction->pr_level );
+
+		} else {
+			$enable &=
+				// check if a, to this user sufficient, default permission level (based on lottery) is defined
+				$wgUser->isAllowed( ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $pageId ) ) ||
+				// or check whitelist
+				array_intersect( $categories, $wgArticleFeedbackv5Categories );
+		}
 
 		// category is not blacklisted
 		$enable &= !array_intersect( $categories, $wgArticleFeedbackv5BlacklistCategories );
-
-		// category is whitelisted or article is in lottery
-		$enable &=
-			array_intersect( $categories, $wgArticleFeedbackv5Categories ) ||
-			(int) $pageId % 1000 >= 1000 - ( (float) $odds * 10 );
 
 		// not disabled via preferences
 		$enable &= !$wgUser->getOption( 'articlefeedback-disable' );
