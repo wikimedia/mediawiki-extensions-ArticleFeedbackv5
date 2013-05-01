@@ -52,10 +52,23 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 			// disable: disable for editor and below (= allow aft-administrator and up)
 			$restriction = $params['enable'] ? 'aft-reader' : 'aft-editor';
 
+			/*
+			 * If the selected action (enable/disable) matches the default, just
+			 * let the restriction expire.
+			 * Reason for that is that editors can only "disable" for their own
+			 * usertype (aft-editor) and lower, meaning that if they can disable,
+			 * it will not be disabled for admins. If the default (based on lottery)
+			 * is to not show the form at all, it makes more sense to have it
+			 * back at that (by immediately expiring the permission level),
+			 * resulting in it not being displayed for anyone.
+			 */
+			$default = ArticleFeedbackv5Permissions::getLottery( $pageObj->getId() );
+			$expiry = $params['enable'] == $default ? wfTimestamp( TS_MW ) : wfGetDB( DB_SLAVE )->getInfinity();
+
 			$success = ArticleFeedbackv5Permissions::setRestriction(
 				$pageObj->getId(),
 				$restriction,
-				wfGetDB( DB_SLAVE )->getInfinity()
+				$expiry
 			);
 
 			if ( !$success ) {

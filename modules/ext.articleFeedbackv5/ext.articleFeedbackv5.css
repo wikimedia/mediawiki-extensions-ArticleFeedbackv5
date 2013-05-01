@@ -16,3 +16,12 @@
 
 	padding: 5px 0 5px 25px;
 }
+
+#articleFeedbackv5-added {
+	background-color: #fefcea;
+	color: #888;
+	margin: 0;
+	font-weight: bold;
+	padding: 0 20px;
+	line-height: 2em;
+}
