@@ -5793,20 +5793,20 @@ $messages['el'] = array(
 	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Επισημάνθηκε ως μη επωφελές</strong> από $1}} $2 πριν', # Fuzzy
 	'articlefeedbackv5-permalink-activity-more' => 'Δείτε περισσότερες ενέργειες...',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Δείτε λιγότερες ενέργειες...',
-	'articlefeedbackv5-noteflyover-feature-caption' => 'Αξιολογείστε αυτή την ανάρτηση', # Fuzzy
+	'articlefeedbackv5-noteflyover-feature-caption' => 'Επισημάνθηκε ως χρήσιμη',
 	'articlefeedbackv5-noteflyover-feature-label' => 'Προσθήκη μιας σημείωσης',
-	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Γιατί αξιολογείτε αυτή την ανάρτηση;', # Fuzzy
-	'articlefeedbackv5-noteflyover-feature-submit' => 'Αξιολογείστε αυτή την ανάρτηση', # Fuzzy
+	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Γιατί επισημάνατε αυτή την ανάρτηση ως χρήσιμη;',
+	'articlefeedbackv5-noteflyover-feature-submit' => 'Προσθήκη σημείωσης',
 	'articlefeedbackv5-noteflyover-feature-help' => 'Μάθετε περισσότερα.',
-	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Αναιρέστε την αξιολόγηση αυτής της ανάρτησης', # Fuzzy
+	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Κατάργησε την επισήμανση ως χρήσιμη',
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Προσθήκη μιας σημείωσης',
-	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Γιατί βαθμολογείτε ως μη αξιόλογη αυτή την ανάρτηση;', # Fuzzy
-	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Αφαιρέστε τη σήμανση αξιόλογου από αυτή την ανάρτηση', # Fuzzy
+	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Γιατί από-επισημάνατε αυτή την ανάρτηση ως χρήσιμη;',
+	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Προσθήκη σημείωσης',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'Μάθετε περισσότερα',
-	'articlefeedbackv5-noteflyover-resolve-caption' => 'Χαρακτηρισμός ως επιλυμένο.', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-caption' => 'Επισήμανση ως επιλυμένου',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Προσθήκη μιας σημείωσης',
-	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Γιατί επισημαίνεις αυτή τη ανάρτηση ως επιλυμένη;', # Fuzzy
-	'articlefeedbackv5-noteflyover-resolve-submit' => 'Επισήμανση ως επιλυμένο', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Γιατί επισημάνατε αυτή την ανάρτηση ως επιλυμένη;',
+	'articlefeedbackv5-noteflyover-resolve-submit' => 'Προσθήκη σημείωσης',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Μάθετε περισσότερα',
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Κατάργηση σήμανσης ως επιλυμένο', # Fuzzy
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Προσθήκη μιας σημείωσης',
@@ -6329,6 +6329,7 @@ $4', # Fuzzy
  * @author Dferg
  * @author Drini
  * @author Fitoschido
+ * @author Fortega
  * @author Imre
  * @author Locos epraix
  * @author Mashandy
@@ -6390,7 +6391,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-contribs-entry-status' => '..Estado: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Útil',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Marcado',
-	'articlefeedbackv5-contribs-status-action-feature' => 'Destacado', # Fuzzy
+	'articlefeedbackv5-contribs-status-action-feature' => 'Útil',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Resuelto',
 	'articlefeedbackv5-contribs-status-action-noaction' => 'No se necesita una acción',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Oculto',
@@ -6400,6 +6401,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Suprimido',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'comentario oculto',
 	'articlefeedbackv5-form-toolbox-label' => 'Marcar como:',
+	'articlefeedbackv5-form-own-toolbox-label' => 'Marcar tu mensaje como:',
 	'articlefeedbackv5-form-own-feedback' => 'Usted no puede revisar sus propios mensajes',
 	'articlefeedbackv5-form-helpful-label' => '¿Ha sido útil esta información?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Sí',
@@ -6409,7 +6411,11 @@ $messages['es'] = array(
 	'articlefeedbackv5-special-filter-featured' => 'Destacado ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Útil ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Inútil ($1)',
+	'articlefeedbackv5-special-filter-useful' => 'Útil ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'Resuelto ($1)',
+	'articlefeedbackv5-special-filter-inappropriate' => 'Inapropiado ($1)',
+	'articlefeedbackv5-special-filter-archived' => 'Archivado ($1)',
+	'articlefeedbackv5-special-filter-allcomment' => 'Todos los comentarios ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'Oculto ($1)',
 	'articlefeedbackv5-special-filter-requested' => 'Supresión solicitada ($1)',
 	'articlefeedbackv5-special-filter-declined' => 'Supresión declinada ($1)',
@@ -6440,14 +6446,14 @@ $messages['es'] = array(
 	'articlefeedbackv5-special-sort-label-before' => 'Ordenar por:',
 	'articlefeedbackv5-special-filter-label-before' => 'Mostrando:',
 	'articlefeedbackv5-special-filter-select-more' => 'Más filtros',
-	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|1 mensaje publicado|$1 mensajes publicados}} sobre esta página', # Fuzzy
-	'articlefeedbackv5-special-central-showing' => '{{PLURAL:$1|$1 comentario publicado|$1 comentarios publicados}} desde todas las páginas', # Fuzzy
+	'articlefeedbackv5-special-showing' => '{{PLURAL:$4|$3 mensaje publicado|$3 mensajes publicados}} (de $1)',
+	'articlefeedbackv5-special-central-showing' => '{{PLURAL:$4|$3 comentario publicado|$3 comentarios publicados}} desde todas las páginas (de $1)',
 	'articlefeedbackv5-special-watchlist-showing' => 'Comentarios sobre las páginas vigiladas por [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Comentarios sobre las páginas que vigilo]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Ver los comentarios sobre todas las páginas]]',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edición| $1 ediciones}} desde la publicación',
 	'articleFeedbackv5-details-link' => 'Detalles',
-	'articlefeedbackv5-revision-link' => '(Ver versión previa del artículo)', # Fuzzy
+	'articlefeedbackv5-revision-link' => '(Ver versión previa del artículo)',
 	'articlefeedbackv5-special-more' => 'Mostrar más entradas',
 	'articlefeedbackv5-special-refresh' => 'Actualizar lista',
 	'articlefeedbackv5-special-pagetitle' => 'Comentarios sobre $1',
@@ -24788,7 +24794,7 @@ $messages['vi'] = array(
 	'articlefeedbackv5-form2-header-question' => '$1 có câu hỏi:',
 	'articlefeedbackv5-form2-header-suggestion' => '$1 có gợi ý:',
 	'articlefeedbackv5-form-invalid' => 'ID biểu mẫu phản hồi không hợp lệ.',
-	'articlefeedbackv5-abuse-saved' => 'Đã đánh dấu lạm dụng',
+	'articlefeedbackv5-abuse-saved' => 'Đã đánh dấu sai phạm',
 	'articlefeedbackv5-error-loading-feedback' => 'Lỗi khi tải phản hồi',
 	'articlefeedbackv5-invalid-feedback-id' => 'ID phản hồi không hợp lệ',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Dấu phản hồi không hợp lệ',
@@ -25984,13 +25990,13 @@ $6
 	'articlefeedbackv5-noteflyover-resolve-help' => '了解更多',
 	'articlefeedbackv5-noteflyover-unresolve-caption' => '取消已解決狀態',
 	'articlefeedbackv5-noteflyover-unresolve-label' => '添加注釋',
-	'articlefeedbackv5-noteflyover-unresolve-placeholder' => '您為什麼要取消此帖的已解決狀態？', # Fuzzy
-	'articlefeedbackv5-noteflyover-unresolve-submit' => '取消已解決狀態', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-placeholder' => '您為什麼要取消標記此回饋為已解決？',
+	'articlefeedbackv5-noteflyover-unresolve-submit' => '添加注釋',
 	'articlefeedbackv5-noteflyover-unresolve-help' => '了解更多',
-	'articlefeedbackv5-noteflyover-hide-caption' => '隱藏該帖', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-caption' => '隱藏',
 	'articlefeedbackv5-noteflyover-hide-label' => '添加注釋',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => '為什麼你隱藏這篇文章？', # Fuzzy
-	'articlefeedbackv5-noteflyover-hide-submit' => '隱藏這個帖子', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-placeholder' => '你為甚麼要隱藏此回饋？',
+	'articlefeedbackv5-noteflyover-hide-submit' => '添加注釋',
 	'articlefeedbackv5-noteflyover-hide-help' => '了解更多',
 	'articlefeedbackv5-noteflyover-unhide-caption' => '取消隱藏',
 	'articlefeedbackv5-noteflyover-unhide-label' => '添加注釋',
@@ -26016,28 +26022,46 @@ $6
 	'articlefeedbackv5-noteflyover-uninappropriate-label' => '添加注釋',
 	'articlefeedbackv5-noteflyover-uninappropriate-placeholder' => '你為甚麼取消標記此回饋為不恰當？',
 	'articlefeedbackv5-noteflyover-uninappropriate-submit' => '添加注釋',
+	'articlefeedbackv5-noteflyover-uninappropriate-help' => '了解更多',
+	'articlefeedbackv5-noteflyover-archive-caption' => '已存檔',
+	'articlefeedbackv5-noteflyover-archive-label' => '添加注釋',
+	'articlefeedbackv5-noteflyover-archive-placeholder' => '你為甚麼要將此回饋存檔？',
+	'articlefeedbackv5-noteflyover-archive-submit' => '添加注釋',
+	'articlefeedbackv5-noteflyover-archive-help' => '了解更多',
+	'articlefeedbackv5-noteflyover-unarchive-caption' => '已撤銷存檔',
+	'articlefeedbackv5-noteflyover-unarchive-label' => '添加注釋',
+	'articlefeedbackv5-noteflyover-unarchive-placeholder' => '你為甚麼要將此回饋從存檔中取出？',
+	'articlefeedbackv5-noteflyover-unarchive-submit' => '添加注釋',
+	'articlefeedbackv5-noteflyover-unarchive-help' => '了解更多',
 	'articlefeedbackv5-noteflyover-request-caption' => '請求監督',
+	'articlefeedbackv5-noteflyover-request-description' => '要求監督前，請確認此回饋有以下的問題：
+* 電話號碼；
+* 電子郵件位址；
+* 色情連結；
+* 對某人的誹謗或侮辱性言論；或
+* [//zh.wikipedia.org/wiki/Wikipedia:監督#.E6.96.B9.E9.92.88 其他監督方針]',
 	'articlefeedbackv5-noteflyover-request-label' => '添加注釋解釋為何要求監督',
-	'articlefeedbackv5-noteflyover-request-placeholder' => '為什麼你請求監督？', # Fuzzy
+	'articlefeedbackv5-noteflyover-request-placeholder' => '你為甚麼請求監督？',
+	'articlefeedbackv5-noteflyover-request-submit' => '請求監督',
 	'articlefeedbackv5-noteflyover-request-help' => '了解更多',
-	'articlefeedbackv5-noteflyover-unrequest-caption' => '取消刪除請求', # Fuzzy
+	'articlefeedbackv5-noteflyover-unrequest-caption' => '取消監督請求',
 	'articlefeedbackv5-noteflyover-unrequest-label' => '添加注釋',
-	'articlefeedbackv5-noteflyover-unrequest-placeholder' => '你為什麼取消監督請求？', # Fuzzy
+	'articlefeedbackv5-noteflyover-unrequest-placeholder' => '你為甚麼取消監督請求？',
 	'articlefeedbackv5-noteflyover-unrequest-submit' => '取消請求',
 	'articlefeedbackv5-noteflyover-unrequest-help' => '了解更多',
 	'articlefeedbackv5-noteflyover-oversight-caption' => '刪除此帖',
 	'articlefeedbackv5-noteflyover-oversight-label' => '添加注釋',
-	'articlefeedbackv5-noteflyover-oversight-placeholder' => '您為什麼在監督此帖？', # Fuzzy
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => '您為甚麼要監督此回饋？',
 	'articlefeedbackv5-noteflyover-oversight-submit' => '監督',
 	'articlefeedbackv5-noteflyover-oversight-help' => '了解更多',
 	'articlefeedbackv5-noteflyover-unoversight-caption' => '恢復此回饋',
 	'articlefeedbackv5-noteflyover-unoversight-label' => '添加注釋',
-	'articlefeedbackv5-noteflyover-unoversight-placeholder' => '您為什麼要取消監督此帖？', # Fuzzy
-	'articlefeedbackv5-noteflyover-unoversight-submit' => '取消監督此帖', # Fuzzy
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => '您為甚麼要取消監督此回饋？',
+	'articlefeedbackv5-noteflyover-unoversight-submit' => '添加注釋',
 	'articlefeedbackv5-noteflyover-unoversight-help' => '了解更多',
-	'articlefeedbackv5-noteflyover-decline-caption' => '拒絕刪除', # Fuzzy
+	'articlefeedbackv5-noteflyover-decline-caption' => '拒絕監督',
 	'articlefeedbackv5-noteflyover-decline-label' => '添加注釋',
-	'articlefeedbackv5-noteflyover-decline-placeholder' => '您為什麼要拒絕刪除？', # Fuzzy
+	'articlefeedbackv5-noteflyover-decline-placeholder' => '您為甚麼拒絕監督？',
 	'articlefeedbackv5-noteflyover-decline-submit' => '添加注釋',
 	'articlefeedbackv5-noteflyover-decline-help' => '了解更多',
 	'articlefeedbackv5-bucket1-title' => '幫助改善這個頁面',
@@ -26046,7 +26070,7 @@ $6
 	'articlefeedbackv5-bucket1-toggle-found-no' => '否',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => '是的，我找到了我要尋找的。',
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => '不，我沒有找到我要尋找的。',
-	'articlefeedbackv5-bucket1-question-placeholder-yes' => '可以如何改善這篇文章？', # Fuzzy
+	'articlefeedbackv5-bucket1-question-placeholder-yes' => '此頁面可以如何改進？',
 	'articlefeedbackv5-bucket1-question-placeholder-no' => '任何改善建議？',
 	'articlefeedbackv5-bucket1-form-submit' => '發布您的反饋',
 	'articlefeedbackv5-bucket4-title' => '幫助改善這個頁面',
@@ -26067,8 +26091,8 @@ $6
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => '對，這是我要找的東西。',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => '不，這不是我要找的東西。',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|（剩餘1個字元）|（剩餘$1個字元）}}',
-	'articlefeedbackv5-bucket6-question-instructions-yes' => '很好。你想添加評論嗎？', # Fuzzy
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => '可以如何改善這篇文章？', # Fuzzy
+	'articlefeedbackv5-bucket6-question-instructions-yes' => '很好。你想任何可以協助改進的建議嗎？',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => '在此寫下您的建議（例如「此頁面需要一張圖片。」）',
 	'articlefeedbackv5-bucket6-question-instructions-no' => '抱歉。有任何改善的建議嗎？',
 	'articlefeedbackv5-bucket6-question-placeholder-no' => '在此寫下您的意見（例：“本頁面需要補充圖片”）',
 	'articlefeedbackv5-bucket6-form-submit' => '發布您的反饋',
@@ -26085,44 +26109,84 @@ $6
 	'articlefeedbackv5-toolbox-view' => '查看回饋',
 	'articlefeedbackv5-toolbox-add' => '添加您的回饋',
 	'articlefeedbackv5-disable-preference' => '不在頁面顯示條目回饋部件',
+	'right-aft-reader' => '發出回饋並標記為（沒）有幫助',
+	'right-aft-member' => '發出回饋並標記為（沒）有幫助',
+	'right-aft-editor' => '特色及已解決回饋',
+	'right-aft-monitor' => '隱藏回饋並請求監督',
 	'right-aft-administrator' => '在已保護頁面上顯示條目回饋工具',
 	'right-aft-oversighter' => '監督回饋',
 	'log-name-articlefeedbackv5' => '條目回饋活動日誌',
-	'log-description-articlefeedbackv5' => '這是記錄條目回饋活動的日誌。', # Fuzzy
+	'log-description-articlefeedbackv5' => '這是記錄條目回饋活動的日誌。',
+	'logentry-articlefeedbackv5-create' => '$1{{GENDER:$2|提交了}}關於[[$5]]的[[$3|回饋#$4]]',
+	'logentry-articlefeedbackv5-oversight' => '$1{{GENDER:$2|更改了}}[[$5]]的[[$3|監督狀態#$4]]',
+	'logentry-articlefeedbackv5-unoversight' => '$1{{GENDER:$2|取消了}}[[$5]]的[[$3|監督狀態#$4]]',
+	'logentry-articlefeedbackv5-decline' => '$1{{GENDER:$2|拒絕了}}[[$5]]的[[$3|監督請求#$4]]',
+	'logentry-articlefeedbackv5-request' => '$1為[[$5]]{{GENDER:$2|提出了}}[[$3|監督請求#$4]]',
+	'logentry-articlefeedbackv5-unrequest' => '$1{{GENDER:$2|取消了}}[[$5]]的[[$3|監督請求#$4]]',
+	'logentry-articlefeedbackv5-flag' => '$1{{GENDER:$2|將}}[[$5]]上的[[$3|回饋#$4]]標記為濫用',
+	'logentry-articlefeedbackv5-unflag' => '$1{{GENDER:$2|取消標記}}[[$5]]上的[[$3|回饋#$4]]為濫用',
+	'logentry-articlefeedbackv5-autoflag' => '$1{{GENDER:$2|自動標記}}[[$5]]上的[[$3|回饋#$4]]為濫用',
+	'logentry-articlefeedbackv5-feature' => '$1{{GENDER:$2|將}}[[$5]]上的[[$3|回饋#$4]]為標記為有幫助',
+	'logentry-articlefeedbackv5-unfeature' => '$1{{GENDER:$2|取消標記}}[[$5]]上的[[$3|回饋#$4]]為有幫助',
+	'logentry-articlefeedbackv5-resolve' => '$1{{GENDER:$2|將}}[[$5]]上的[[$3|回饋#$4]]為標記為已解決',
+	'logentry-articlefeedbackv5-unresolve' => '$1{{GENDER:$2|取消標記}}[[$5]]上的[[$3|回饋#$4]]為已解決',
+	'logentry-articlefeedbackv5-noaction' => '$1{{GENDER:$2|將}}[[$5]]上的[[$3|回饋#$4]]為標記為無法操作',
+	'logentry-articlefeedbackv5-unnoaction' => '$1{{GENDER:$2|取消標記}}[[$5]]上的[[$3|回饋#$4]]為無法操作',
+	'logentry-articlefeedbackv5-inappropriate' => '$1{{GENDER:$2|將}}[[$5]]上的[[$3|回饋#$4]]為標記為不恰當',
+	'logentry-articlefeedbackv5-uninappropriate' => '$1{{GENDER:$2|取消標記}}[[$5]]上的[[$3|回饋#$4]]為不恰當',
+	'logentry-articlefeedbackv5-archive' => '$1{{GENDER:$2|已將}}[[$5]]上的[[$3|回饋#$4]]存檔',
+	'logentry-articlefeedbackv5-unarchive' => '$1{{GENDER:$2|已將}}[[$5]]上的[[$3|回饋#$4]]從存檔中取出',
+	'logentry-articlefeedbackv5-hide' => '$1{{GENDER:$2|隱藏了}}[[$5]]上的[[$3|回饋#$4]]',
+	'logentry-articlefeedbackv5-unhide' => '$1{{GENDER:$2|取消隱藏}}[[$5]]上的[[$3|回饋#$4]]',
+	'logentry-articlefeedbackv5-autohide' => '$1{{GENDER:$2|自動隱藏了}}[[$5]]上的[[$3|回饋#$4]]',
+	'logentry-articlefeedbackv5-helpful' => '$1{{GENDER:$2|標記}}[[$5]]上的[[$3|回饋#$4]]為有幫助',
+	'logentry-articlefeedbackv5-unhelpful' => '$1{{GENDER:$2|將}}[[$5]]上的[[$3|回饋#$4]]為標記為沒有幫助',
+	'logentry-articlefeedbackv5-undo-helpful' => '$1{{GENDER:$2|取消標記}}[[$5]]上的[[$3|回饋#$4]]為有幫助',
+	'logentry-articlefeedbackv5-undo-unhelpful' => '$1{{GENDER:$2|取消}}[[$5]]上[[$3|回饋#$4]]的沒有幫助標記',
+	'logentry-articlefeedbackv5-clear-flags' => '$1{{GENDER:$2|將}}[[$5]]上[[$3|回饋#$4]]的所有標記清除',
 	'articlefeedbackv5-activity-pane-header' => '活動日誌',
 	'articlefeedbackv5-activity-feedback-info' => '$2發表的反饋#$1',
 	'articlefeedbackv5-activity-feedback-date' => '發佈於$1',
 	'articlefeedbackv5-activity-permalink' => '永久鏈接',
-	'articlefeedbackv5-activity-item-request' => '$1於$3請求刪除$2', # Fuzzy
-	'articlefeedbackv5-activity-item-unrequest' => '$1於$3取消刪除請求$2', # Fuzzy
-	'articlefeedbackv5-activity-item-decline' => '$1於$3拒絕刪除請求$2', # Fuzzy
-	'articlefeedbackv5-activity-item-flag' => '$1於$3標記此帖子$2', # Fuzzy
-	'articlefeedbackv5-activity-item-unflag' => '$1於$3取消此帖子的標記$2', # Fuzzy
-	'articlefeedbackv5-activity-item-oversight' => '$1於$3刪除了此帖子$2', # Fuzzy
-	'articlefeedbackv5-activity-item-unoversight' => '$1於$3恢復了此帖子$2', # Fuzzy
-	'articlefeedbackv5-activity-item-feature' => '$1於$3標記此帖子為特色$2', # Fuzzy
-	'articlefeedbackv5-activity-item-unfeature' => '$1於$3取消此帖子的特色狀態$2', # Fuzzy
-	'articlefeedbackv5-activity-item-resolve' => '$1於$3將此帖子標記為已解決$2', # Fuzzy
-	'articlefeedbackv5-activity-item-unresolve' => '$1於$3取消了此帖子的已解決狀態$2', # Fuzzy
+	'articlefeedbackv5-activity-item-request' => '$1於$3請求監督$2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1於$4 $5取消監督請求$2',
+	'articlefeedbackv5-activity-item-decline' => '$1於$4 $5拒絕監督請求$2',
+	'articlefeedbackv5-activity-item-flag' => '$1於$4 $5標記了此回饋$2',
+	'articlefeedbackv5-activity-item-unflag' => '$1於$4 $5取消標記了此回饋$2',
+	'articlefeedbackv5-activity-item-autoflag' => '$1於$4 $5標記了此回饋$2',
+	'articlefeedbackv5-activity-item-oversight' => '$1於$4 $5監督此回饋$2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1於$4 $5恢復此回饋$2',
+	'articlefeedbackv5-activity-item-feature' => '$1於$4 $5標記此回饋為有幫助$2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1於$4 $5取消標記此回饋為有幫助$2',
+	'articlefeedbackv5-activity-item-resolve' => '$1於$4 $5標記此回饋為已解決$2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1於$4 $5取消標記此回饋為已解決$2',
+	'articlefeedbackv5-activity-item-noaction' => '$1於$4 $5標記此回饋為無法操作$2',
+	'articlefeedbackv5-activity-item-unnoaction' => '$1於$4 $5取消標記此回饋為無法操作$2',
 	'articlefeedbackv5-activity-item-inappropriate' => '$1於$4 $5 $2標記為不恰當',
 	'articlefeedbackv5-activity-item-uninappropriate' => '$1於$4 $5 $2取消標記為不恰當',
-	'articlefeedbackv5-activity-item-helpful' => '$1於$3將此帖子標記為有用$2', # Fuzzy
-	'articlefeedbackv5-activity-item-unhelpful' => '$1於$3將此帖子標記為無用$2', # Fuzzy
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1於$3取消此帖子的有用狀態$2', # Fuzzy
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1於$3取消此帖子的無用狀態$2', # Fuzzy
-	'articlefeedbackv5-activity-item-clear-flags' => '$1於$3清除了此帖子的所有標記$2', # Fuzzy
+	'articlefeedbackv5-activity-item-hide' => '$1於$4 $5隱藏此回饋$2',
+	'articlefeedbackv5-activity-item-unhide' => '$1於$4 $5取消隱藏此回饋$2',
+	'articlefeedbackv5-activity-item-autohide' => '$1於$4 $5隱藏此回饋$2',
+	'articlefeedbackv5-activity-item-archive' => '$1於$4 $5將此回饋存檔$2',
+	'articlefeedbackv5-activity-item-unarchive' => '$1於$4 $5將此回饋從存檔取出$2',
+	'articlefeedbackv5-activity-item-helpful' => '$1於$4 $5標記此回饋為有幫助$2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1於$4 $5標記此回饋為沒有幫助$2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1於$4 $5取消標記此回饋為有幫助$2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1於$4 $5標記此回饋為沒有幫助$2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1於$4 $5清除此回饋的所有標記$2',
+	'articlefeedbackv5-activity-note-archive' => '於$1日後因編者不活躍而存檔',
 	'articlefeedbackv5-activity-count' => '此回饋上的$1次操作',
 	'articlefeedbackv5-activity-more' => '顯示更多活動',
 	'articlefeedbackv5-talk-view-feedback' => '查看讀者回饋',
 	'articlefeedbackv5-watchlist-view-feedback' => '我監視的頁面上的反饋',
 	'articlefeedbackv5-email-request-oversight-subject' => '對條目反饋頁面的刪除請求',
-	'articlefeedbackv5-email-request-oversight-body' => '您好，刪除者！
+	'articlefeedbackv5-email-request-oversight-body' => '您好，監督！
 
-$1請求刪除此條目上的反饋：
+$1請求監督此頁面上的回饋：
 
 $2
 
-請複查此反饋，然後通過或拒絕此刪除請求：
+請複查此反饋，然後通過或拒絕此監督請求：
 
 $3
 
@@ -26132,7 +26196,7 @@ $3
 
 註：如果您有關於在條目反饋頁使用刪除功能任何疑問，請閱讀此刪除常見問題解答：
 
-$4', # Fuzzy
+$4',
 	'articlefeedbackv5-disable-flyover-title' => '移除此工具？',
 	'articlefeedbackv5-disable-flyover-help' => '若要移除$1，請轉至$2，並勾選$3',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => '條目回饋',
