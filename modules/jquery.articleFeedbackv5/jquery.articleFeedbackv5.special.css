@@ -730,6 +730,28 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	color: red;
 }
 
+/* Settings pane */
+#articleFeedbackv5-settings-menu {
+	padding: 10px;
+}
+#articleFeedbackv5-settings-link {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	text-indent: -9999px;
+	background-size: 20px auto;
+	background-repeat: no-repeat;
+	background-position: center center;
+	/* @embed */
+	background-image: url(images/cog.png);
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url(images/cog.svg);
+	/* @embed */
+	background-image: -moz-linear-gradient(transparent, transparent), url(images/cog.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(images/cog.svg);
+}
+
 /* Don't show mask by default */
 .articleFeedbackv5-post-screen {
 	display: none;
