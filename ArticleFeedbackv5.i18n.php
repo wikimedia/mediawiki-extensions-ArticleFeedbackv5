@@ -70,6 +70,14 @@ $messages['en'] = array(
 	'articlefeedbackv5-protection-permission-member' => 'Enable for logged-in users only',
 	'articlefeedbackv5-protection-permission-editor' => 'Enable for autoconfirmed users only',
 	'articlefeedbackv5-protection-permission-administrator' => 'Enable for administrators only',
+	'articlefeedbackv5-disabled' => "Feedback has been disabled",
+	'articlefeedbackv5-disabled-admin-admin' => "Feedback has been disabled for readers and editors. They can't post new feedback on this page.",
+	'articlefeedbackv5-disabled-admin-editor' => "Feedback has been disabled for readers. They can't post new feedback on this page.",
+	'articlefeedbackv5-disabled-editor-admin' => "Feedback has been disabled by an administrator. Readers and editors can't post new feedback on this page.",
+	'articlefeedbackv5-disabled-editor-editor' => "Feedback has been disabled. Readers can't post new feedback on this page.",
+	'articlefeedbackv5-disabled-reader' => "Feedback has been disabled. Readers can't post new feedback on this page.",
+	'articlefeedbackv5-disabled-admin-button-text' => 'Change protection',
+	'articlefeedbackv5-disabled-editor-button-text' => 'Enable feedback',
 
 	/* My Contributions */
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Feedback: $4]] $5 $6 $7',
@@ -266,6 +274,8 @@ We appreciate your contributions to this page!
 	'articlefeedbackv5-abuse-saved' => 'Flagged as abuse',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Remove the flag you set',
 	'articlefeedbackv5-error-loading-feedback' => 'Error loading feedback',
+	'articlefeedbackv5-invalid-page-id' => 'Invalid page ID',
+	'articlefeedbackv5-insufficient-permissions' => 'Insufficient permission level',
 	'articlefeedbackv5-invalid-feedback-id' => 'Invalid feedback ID',
 	'articlefeedbackv5-invalid-log-id' => 'Invalid log ID',
 	'articlefeedbackv5-invalid-log-update' => 'Log entry could not be updated',
@@ -587,6 +597,7 @@ includes one of these issues:
 	'articlefeedbackv5-section-linktext' => 'feedback',
 	'articlefeedbackv5-toolbox-view' => 'View feedback',
 	'articlefeedbackv5-toolbox-add' => 'Add your feedback',
+	'articlefeedbackv5-toolbox-enable' => 'Request feedback',
 
 	/* Special:Preferences */
 	'articlefeedbackv5-disable-preference' => "Don't show the Article feedback widget on pages",
@@ -802,6 +813,14 @@ The abuse policy link.',
 	'articlefeedbackv5-protection-permission-member' => 'Dropdown menu option to enable AFT for registered users only',
 	'articlefeedbackv5-protection-permission-editor' => 'Dropdown menu option to enable AFT for editors only',
 	'articlefeedbackv5-protection-permission-administrator' => 'Dropdown menu option to enable AFT for administrators only',
+	'articlefeedbackv5-disabled' => 'Title for the message that article feedback has been disabled for this page',
+	'articlefeedbackv5-disabled-admin-admin' => 'Message, to an admin, that has disabled feedback for this page for both editors and readers',
+	'articlefeedbackv5-disabled-admin-editor' => 'Message, to an admin, that has disabled feedback for this page for readers',
+	'articlefeedbackv5-disabled-editor-admin' => "Message, to an editor, that has disabled feedback for this page for both editors and readers (an editor can't edit this setting)",
+	'articlefeedbackv5-disabled-editor-editor' => 'Message, to an editor, that has disabled feedback for this page for readers',
+	'articlefeedbackv5-disabled-reader' => "Message, to a reader, that has disabled feedback for this page (a reader can't edit this setting)",
+	'articlefeedbackv5-disabled-admin-button-text' => 'Button text for link to page protection, where admins can enable/disable the article feedback tool',
+	'articlefeedbackv5-disabled-editor-button-text' => 'Button text for link that will (re-)enable the article feedback tool at once, for editors',
 	'articlefeedbackv5-contribs-entry' => 'AFT entry line displayed on My Contributions. An example of this line could be: 10:59, 30 August 2012 . . (+55)‎ . . Feedback: Main Page (This is some more feedback, using the AFT feedback form) . . Status: Helpful and Featured
 * $1 - the date with link to feedback permalink - in the example: "10:59, 30 August 2012"
 * $2 - the comment character count - in the example: "(+55)"
@@ -1146,7 +1165,9 @@ Parameters
 	'articlefeedbackv5-abuse-saved' => 'Message displayed when abuse flag was saved successfully.',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Tooltip shown on the un-flag as abuse link, to indicate what clicking on it will do (the link text -- {{msg-mw|articlefeedbackv5-abuse-saved}} -- is used to indicate state).',
 	'articlefeedbackv5-error-loading-feedback' => 'Message displayed when there was an error loading feedback - result is a largely-blank page.',
-	'articlefeedbackv5-invalid-feedback-id' => 'Message to be displayed when, though the api, an invalid feedback id paremeter is given.',
+	'articlefeedbackv5-invalid-page-id' => 'Message to be displayed when, via the api, an invalid page id parameter is given',
+	'articlefeedbackv5-insufficient-permissions' => 'Message to be displayed when, via the api, something is to be executed that the user does not have sufficient permissions for',
+	'articlefeedbackv5-invalid-feedback-id' => 'Message to be displayed when, via the api, an invalid feedback id parameter is given.',
 	'articlefeedbackv5-invalid-log-id' => "Message to be displayed when the id of the action's log entry can't be found'",
 	'articlefeedbackv5-invalid-log-update' => 'Message to be displayed when the log entry could not be updated (e.g.: error in adding a note after the action has been performed already)',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Message to be displayed when, though the api, an invalid flag parameter (e.g. oversight, feature, helpful, ...) is given.',
