@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DwAIp6jk",
+        "filename": "ArticleFeedbackv5.utils.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-05-01T00:36:38Z",
+      "side": 1,
+      "message": "Would $odds hold null values?  If not, I would use isset() instead of array_key_exists()",
+      "revId": "45917ae5f9f59d2a2ac04972e1b4f3c58e092ba6",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
