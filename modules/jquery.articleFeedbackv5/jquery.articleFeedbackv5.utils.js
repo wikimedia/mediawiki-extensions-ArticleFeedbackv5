@@ -74,14 +74,16 @@
 
 			// for special page, it doesn't matter if the article has AFT applied
 			if ( location != 'special' ) {
-				// check if user has the required permissions
-				enable &= $.aftUtils.permissions( article );
+				enable &=
+					// category is whitelisted
+					$.aftUtils.whitelist( article ) ||
+					// or article is in lottery bounds
+					$.aftUtils.lottery( article ) ||
+					// or a to this user sufficient permission level is defined
+					$.aftUtils.permissions( article );
 
 				// category is not blacklisted
 				enable &= !$.aftUtils.blacklist( article );
-
-				// category is whitelisted or article is in lottery
-				enable &= ( $.aftUtils.whitelist( article ) || $.aftUtils.lottery( article ) );
 			}
 
 			// stricter validation for article: make sure we're at the right article view
@@ -123,7 +125,7 @@
 		 */
 		permissions: function ( article ) {
 			var permissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
-			return article.permissionLevel in permissions && permissions[article.permissionLevel];
+			return article.permissionLevel && article.permissionLevel in permissions && permissions[article.permissionLevel];
 		},
 
 		// }}}
@@ -293,11 +295,58 @@
 			if ( typeof displayLength == 'undefined' || length < displayLength ) {
 				$text.show();
 			}
+		},
+
+		// }}}
+		// {{{ setStatus
+
+		/**
+		 * Enable/disable feedback on a certain page
+		 *
+		 * @param int pageId the page id
+		 * @param bool enable true to enable, false to disable
+		 * @param function callback function to execute after setting status
+		 */
+		setStatus: function ( pageId, enable, callback ) {
+			var result = [];
+			result['result'] = 'Error';
+			result['reason'] = 'articlefeedbackv5-error-unknown';
+
+			$.ajax( {
+				'url': mw.util.wikiScript( 'api' ),
+				'type': 'POST',
+				'dataType': 'json',
+				'data': {
+					'pageid': pageId,
+					'enable': parseInt( enable ),
+					'format': 'json',
+					'action': 'articlefeedbackv5-set-status'
+				},
+				'success': function ( data ) {
+					if ( 'articlefeedbackv5-set-status' in data ) {
+						result = data['articlefeedbackv5-set-status'];
+					}
+
+					// invoke callback function
+					if ( typeof callback == 'function' ) {
+						callback( result );
+					}
+				},
+				'error': function ( data ) {
+					// invoke callback function
+					if ( typeof callback == 'function' ) {
+						callback( result );
+					}
+				}
+			});
 		}
 
 		// }}}
+
 	};
 
 	// }}}
+
+// }}}
 
 } )( jQuery );

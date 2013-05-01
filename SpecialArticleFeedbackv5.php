@@ -198,7 +198,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			Html::rawElement(
 				'div',
 				array( 'id' => 'articleFeedbackv5-special-wrap' ),
-				$this->buildHeaderLinks() . $this->buildContent( $renderer, $records )
+				$this->buildStatusBox() .
+				$this->buildHeaderLinks() .
+				$this->buildContent( $renderer, $records )
 			)
 		);
 
@@ -275,12 +277,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					$this->title,
 					$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
 				) .
-					' | ' .
-					Linker::link(
-						$this->title->getTalkPage(),
-						$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
-					) .
-					' | ';
+				' | ' .
+				Linker::link(
+					$this->title->getTalkPage(),
+					$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
+				) .
+				' | ';
 		}
 
 		// build header for list-views
@@ -424,6 +426,89 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		return $helpLink;
+	}
+
+	/**
+	 * If AFTv5 is disabled for a certain page, show a notice and link
+	 * to re-enable (if possible)
+	 *
+	 * @return string
+	 */
+	protected function buildStatusBox() {
+		if ( !$this->pageId ) {
+			return '';
+		}
+
+		$restriction = ArticleFeedbackv5Permissions::getRestriction( $this->pageId )->pr_level;
+
+		// not restricted
+		if ( $restriction == 'aft-reader' ) {
+			return '';
+		}
+
+		$link = '';
+
+		// admins can change settings at page protection
+		if ( $this->getUser()->isAllowed( 'aft-administrator' ) ) {
+			$title = Title::newFromID( $this->pageId );
+			$link = Linker::linkKnown(
+				$title,
+				$this->msg( 'articlefeedbackv5-disabled-admin-button-text' )->escaped(),
+				array( 'class' => 'articlefeedbackv5-enable-button' ),
+				array( 'action' => 'protect' )
+			);
+
+			// admin-only setting
+			if ( $restriction === 'aft-administrator' ) {
+				$message = 'articlefeedbackv5-disabled-admin-admin';
+
+			// admin+editors setting
+			} else {
+				$message = 'articlefeedbackv5-disabled-admin-editor';
+			}
+
+		// editors can change settings unless restriction is admin-specific
+		} elseif ( $this->getUser()->isAllowed( 'aft-editor' ) ) {
+			// admin-only setting
+			if ( $restriction === 'aft-administrator' ) {
+				$message = 'articlefeedbackv5-disabled-editor-admin';
+
+			// admin+editors setting
+			} else {
+				// link will trigger API call in JS
+				$link = Html::rawElement(
+					'a',
+					array(
+						'href' => '#',
+						'id' => 'articlefeedbackv5-enable',
+						'class' => 'articlefeedbackv5-enable-button'
+					),
+					$this->msg( 'articlefeedbackv5-disabled-editor-button-text' )->escaped()
+				);
+
+				$message = 'articlefeedbackv5-disabled-editor-editor';
+			}
+
+		// reader can't change settings
+		} else {
+			$message = 'articlefeedbackv5-disabled-reader';
+		}
+
+		return Html::rawElement(
+			'div',
+			array( 'id' => 'articlefeedbackv5-disabled' ),
+			$link .
+			Html::rawElement(
+				'p',
+				array( 'class' => 'articlefeedbackv5-disabled-header' ),
+				$this->msg( 'articlefeedbackv5-disabled' )->escaped()
+			) .
+			Html::rawElement(
+				'p',
+				array( 'class' => 'articlefeedbackv5-disabled-text' ),
+				$this->msg( $message )->escaped()
+			)
+		);
 	}
 
 	/**

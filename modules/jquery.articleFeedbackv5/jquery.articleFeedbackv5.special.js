@@ -444,6 +444,24 @@
 			$( e.target ).siblings( '.articleFeedbackv5-comment-full' ).show();
 			$( e.target ).hide();
 		} );
+
+		// switch to enable AFTv5
+		$( '.articlefeedbackv5-enable-button' ).button();
+		$( '#articlefeedbackv5-enable' ).on( 'click', function( e ) {
+			e.preventDefault();
+
+			$.aftUtils.setStatus( $.articleFeedbackv5special.page, 1, function( data ) {
+				if ( 'result' in data ) {
+					if ( data.result === 'Success' ) {
+						// it was just re-enabled; remove notice that it's disabled
+						$( '#articlefeedbackv5-disabled' ).remove();
+
+					} else if ( data.result === 'Error' && data.reason ) {
+						alert( mw.msg( data.reason ) );
+					}
+				}
+			} );
+		});
 	};
 
 	// }}}
@@ -746,6 +764,7 @@
 		return false;
 	};
 
+	// }}}
 	// {{{ addNote
 
 	/**

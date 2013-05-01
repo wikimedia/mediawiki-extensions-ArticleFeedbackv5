@@ -128,21 +128,26 @@ class ArticleFeedbackv5Utils {
 			$odds = $odds[$title->getNamespace()];
 		}
 
+		$restriction = ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() );
+
 		$enable = true;
 
 		// only on pages in namespaces where it is enabled
 		$enable &= in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces );
 
-		// check if user has the required permissions
-		$enable &= $wgUser->isAllowed( ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() )->pr_level ) && !$wgUser->isBlocked();
+		// check if user is not blocked
+		$enable &= !$wgUser->isBlocked();
+
+		$enable &=
+			// category is whitelisted
+			array_intersect( $categories, $wgArticleFeedbackv5Categories ) ||
+			// or article is in lottery bounds
+			(int) $pageId % 1000 >= 1000 - ( (float) $odds * 10 ) ||
+			// or a to this user sufficient permission level is defined
+			( isset( $restriction->pr_level ) && $wgUser->isAllowed( $restriction->pr_level ) );
 
 		// category is not blacklisted
 		$enable &= !array_intersect( $categories, $wgArticleFeedbackv5BlacklistCategories );
-
-		// category is whitelisted or article is in lottery
-		$enable &=
-			array_intersect( $categories, $wgArticleFeedbackv5Categories ) ||
-			(int) $pageId % 1000 >= 1000 - ( (int) $odds * 10 );
 
 		// not disabled via preferences
 		$enable &= !$wgUser->getOption( 'articlefeedback-disable' );
