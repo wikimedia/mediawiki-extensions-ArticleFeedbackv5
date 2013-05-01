@@ -730,6 +730,11 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	color: red;
 }
 
+/* Settings pane */
+#articleFeedbackv5-settings-menu {
+	padding: 10px;
+}
+
 /* Don't show mask by default */
 .articleFeedbackv5-post-screen {
 	display: none;
