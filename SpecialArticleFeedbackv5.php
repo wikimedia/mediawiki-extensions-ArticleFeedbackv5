@@ -201,7 +201,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			Html::rawElement(
 				'div',
 				array( 'id' => 'articleFeedbackv5-special-wrap' ),
-				$this->buildHeaderLinks() . $this->buildContent( $renderer, $records )
+				$this->buildHeaderLinks() .
+				$this->buildStatusBox() .
+				$this->buildContent( $renderer, $records )
 			)
 		);
 
@@ -285,12 +287,20 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					$this->title,
 					$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
 				) .
-					' | ' .
-					Linker::link(
-						$this->title->getTalkPage(),
-						$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
-					) .
-					' | ';
+				Linker::link(
+					$this->title->getTalkPage(),
+					$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
+				) .
+				Html::element(
+					'a',
+					array(
+						'href' => '#',
+						'id' => 'articleFeedbackv5-settings-link',
+						'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-settings-link',
+						'data-action' => 'settings'
+					),
+					$this->msg( 'articlefeedbackv5-settings-menu-title' )->text()
+				);
 		}
 
 		// build header for list-views
@@ -302,12 +312,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		return
 			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-header-wrap' ) ) .
 				Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-header-links' ) ) .
-					$pageLinks .
 					Html::element(
 						'a',
 						array( 'href' => $this->getHelpLink().'#Feedback_page' ),
 						$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
 					) .
+					$pageLinks .
 				Html::closeElement( 'div' ) .
 				$listHeader .
 			Html::closeElement( 'div' );
@@ -434,6 +444,90 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		return $helpLink;
+	}
+
+	/**
+	 * If AFTv5 is disabled for a certain page, show a notice and link
+	 * to re-enable (if possible)
+	 *
+	 * @return string
+	 */
+	protected function buildStatusBox() {
+		if ( !$this->pageId ) {
+			return '';
+		}
+
+		$restriction = ArticleFeedbackv5Permissions::getProtectionRestriction( $this->pageId );
+		$permissionLevel = isset( $restriction->pr_level ) ? $restriction->pr_level : false;
+
+		// not restricted
+		if ( $permissionLevel === 'aft-reader' ) {
+			return '';
+		}
+
+		$link = '';
+
+		// admins can change settings at page protection
+		if ( $this->getUser()->isAllowed( 'aft-administrator' ) ) {
+			$title = Title::newFromID( $this->pageId );
+			$link = Linker::linkKnown(
+				$title,
+				$this->msg( 'articlefeedbackv5-disabled-admin-button-text' )->escaped(),
+				array( 'class' => 'articlefeedbackv5-enable-button' ),
+				array( 'action' => 'protect' )
+			);
+
+			// admin-only setting
+			if ( $permissionLevel === 'aft-administrator' ) {
+				$message = 'articlefeedbackv5-disabled-admin-admin';
+
+			// admin+editors setting
+			} else {
+				$message = 'articlefeedbackv5-disabled-admin-editor';
+			}
+
+		// editors can change settings unless restriction is admin-specific
+		} elseif ( $this->getUser()->isAllowed( 'aft-editor' ) ) {
+			// admin-only setting
+			if ( $permissionLevel === 'aft-administrator' ) {
+				$message = 'articlefeedbackv5-disabled-editor-admin';
+
+			// admin+editors setting
+			} else {
+				// link will trigger API call in JS
+				$link = Html::rawElement(
+					'a',
+					array(
+						'href' => '#',
+						'id' => 'articlefeedbackv5-enable',
+						'class' => 'articlefeedbackv5-enable-button'
+					),
+					$this->msg( 'articlefeedbackv5-disabled-editor-button-text' )->escaped()
+				);
+
+				$message = 'articlefeedbackv5-disabled-editor-editor';
+			}
+
+		// reader can't change settings
+		} else {
+			$message = 'articlefeedbackv5-disabled-reader';
+		}
+
+		return Html::rawElement(
+			'div',
+			array( 'id' => 'articlefeedbackv5-disabled' ),
+			$link .
+			Html::rawElement(
+				'p',
+				array( 'class' => 'articlefeedbackv5-disabled-header' ),
+				$this->msg( 'articlefeedbackv5-disabled' )->escaped()
+			) .
+			Html::rawElement(
+				'p',
+				array( 'class' => 'articlefeedbackv5-disabled-text' ),
+				$this->msg( $message )->escaped()
+			)
+		);
 	}
 
 	/**
