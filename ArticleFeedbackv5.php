@@ -394,6 +394,7 @@ $wgExtensionCredits['other'][] = $wgArticleFeedbackv5Credits;
 $wgAutoloadClasses['ApiArticleFeedbackv5']              = __DIR__ . '/api/ApiArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5']   = __DIR__ . '/api/ApiViewRatingsArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5']  = __DIR__ . '/api/ApiViewFeedbackArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiSetStatusArticleFeedbackv5']     = __DIR__ . '/api/ApiSetStatusArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiAddFlagNoteArticleFeedbackv5']   = __DIR__ . '/api/ApiAddFlagNoteArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5']  = __DIR__ . '/api/ApiFlagFeedbackArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiGetCountArticleFeedbackv5']      = __DIR__ . '/api/ApiGetCountArticleFeedbackv5.php';
@@ -435,6 +436,7 @@ $wgHooks['ProtectionForm::save'][] = 'ArticleFeedbackv5Hooks::onProtectionSave';
 // API Registration
 $wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';
 $wgAPIListModules['articlefeedbackv5-view-activity'] = 'ApiViewActivityArticleFeedbackv5';
+$wgAPIModules['articlefeedbackv5-set-status']        = 'ApiSetStatusArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-add-flag-note']     = 'ApiAddFlagNoteArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-flag-feedback']     = 'ApiFlagFeedbackArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-get-count']         = 'ApiGetCountArticleFeedbackv5';
@@ -521,10 +523,15 @@ $wgResourceModules['jquery.articleFeedbackv5.utils'] = array(
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['ext.articleFeedbackv5.startup'] = array(
 	'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js',
+	'messages' => array(
+		'articlefeedbackv5-toolbox-enable',
+		'articlefeedbackv5-enabled-form-message',
+	),
 	'dependencies' => array(
 		'mediawiki.util',
 		'mediawiki.user',
 		'jquery.articleFeedbackv5.utils',
+		'mediawiki.jqueryMsg',
 	),
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['ext.articleFeedbackv5'] = array(
@@ -536,8 +543,6 @@ $wgResourceModules['ext.articleFeedbackv5'] = array(
 		'articlefeedbackv5-fixedtab-linktext',
 		'articlefeedbackv5-bottomrighttab-linktext',
 		'articlefeedbackv5-section-linktext',
-		'articlefeedbackv5-toolbox-view',
-		'articlefeedbackv5-toolbox-add',
 		'articlefeedbackv5-article-view-feedback',
 	),
 	'dependencies' => array(
@@ -689,6 +694,8 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 		'articlefeedbackv5-disable-flyover-prefbutton',
 		'articlefeedbackv5-disable-preference',
 		'pipe-separator',
+		'articlefeedbackv5-toolbox-view',
+		'articlefeedbackv5-toolbox-add',
 	),
 	'dependencies' => array(
 		'jquery.appear',
@@ -715,6 +722,9 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-invalid-feedback-flag',
 		'articlefeedbackv5-invalid-feedback-state',
 		'articlefeedbackv5-feedback-reloaded-after-error',
+		'articlefeedbackv5-error-unknown',
+		'articlefeedbackv5-invalid-page-id',
+		'articlefeedbackv5-insufficient-permissions',
 
 		'articlefeedbackv5-comment-more',
 		'articlefeedbackv5-comment-less',
@@ -870,6 +880,9 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-noteflyover-unoversight-help-link',
 
 		'articlefeedbackv5-activity-pane-header',
+
+		'articlefeedbackv5-settings-enable',
+		'articlefeedbackv5-settings-disable',
 
 		'articlefeedbackv5-beta-label',
 	),
