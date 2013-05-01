@@ -190,12 +190,15 @@ class ArticleFeedbackv5Hooks {
 	 * @return array the article's info, to be exposed to JS
 	 */
 	public static function getPageInformation( Title $title ) {
+		$permissions = ArticleFeedbackv5Permissions::getProtectionRestriction( $title->getArticleID() );
+
 		$article = array(
 			'id' => $title->getArticleID(),
 			'title' => $title->getFullText(),
 			'namespace' => $title->getNamespace(),
 			'categories' => array(),
-			'permissionLevel' => ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() )->pr_level
+			'permissionLevel' => isset( $permissions->pr_level ) ? $permissions->pr_level : false,
+			'defaultPermissionLevel' => ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $title->getArticleID() ),
 		);
 
 		foreach ( $title->getParentCategories() as $category => $page ) {
@@ -636,11 +639,12 @@ class ArticleFeedbackv5Hooks {
 			'aft-reader' => 'articlefeedbackv5-protection-permission-reader',
 			'aft-member' => 'articlefeedbackv5-protection-permission-member',
 			'aft-editor' => 'articlefeedbackv5-protection-permission-editor',
-			'aft-administrator' => 'articlefeedbackv5-protection-permission-administrator'
+			'aft-administrator' => 'articlefeedbackv5-protection-permission-administrator',
+			'aft-noone' => 'articlefeedbackv5-protection-permission-noone',
 		);
 
 		// build permissions dropdown
-		$existingPermissions = ArticleFeedbackv5Permissions::getRestriction( $articleId )->pr_level;
+		$existingRestriction = ArticleFeedbackv5Permissions::getAppliedRestriction( $articleId );
 		$id = 'articlefeedbackv5-protection-level';
 		$attribs = array(
 			'id' => $id,
@@ -649,8 +653,8 @@ class ArticleFeedbackv5Hooks {
 		) + $disabledAttrib;
 		$permissionsDropdown = Xml::openElement( 'select', $attribs );
 		foreach( $levels as $key => $label ) {
-			// possible labels: articlefeedbackv5-protection-permission-(all|reader|editor)
-			$permissionsDropdown .= Xml::option( wfMessage( $label )->escaped(), $key, $key == $existingPermissions );
+			// possible labels: articlefeedbackv5-protection-permission-(reader|member|editor|administrator|noone)
+			$permissionsDropdown .= Xml::option( wfMessage( $label )->escaped(), $key, $key == $existingRestriction->pr_level );
 		}
 		$permissionsDropdown .= Xml::closeElement( 'select' );
 
@@ -777,19 +781,8 @@ class ArticleFeedbackv5Hooks {
 		$requestExpiry = $wgRequest->getText( 'articlefeedbackv5-protection-expiration' );
 		$requestExpirySelection = $wgRequest->getVal( 'articlefeedbackv5-protection-expiration-selection' );
 
-		// fetch permissions set to edit page ans make sure that AFT permissions are no tighter than these
-		$editPermission = $article->getTitle()->getRestrictions( 'edit' );
-		if ( !$editPermission ) {
-			$editPermission[] = '*';
-		}
-		$availablePermissions = User::getGroupPermissions( $editPermission );
-		if ( !in_array( $requestPermission, $availablePermissions ) ) {
-			$errorMsg .= wfMessage( 'articlefeedbackv5-protection-level-error' )->escaped();
-			return false;
-		}
-
 		if ( $requestExpirySelection == 'existing' ) {
-			$expirationTime = ArticleFeedbackv5Permissions::getRestriction( $article->getId() )->pr_expiry;
+			$expirationTime = ArticleFeedbackv5Permissions::getAppliedRestriction( $article->getId() )->pr_expiry;
 		} else {
 			if ( $requestExpirySelection == 'othertime' ) {
 				$value = $requestExpiry;
