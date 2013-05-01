@@ -28,6 +28,46 @@ select {
 	color: #444;
 }
 
+/** Disabled notice/enable switch **/
+#articlefeedbackv5-disabled {
+	padding: 6px 12px 6px 50px;
+	margin-bottom: 10px;
+
+	/* @todo: orange/yellow lock image */
+
+	/* @embed */
+	background: url(../jquery.articleFeedbackv5/images/toolbox_hide.png);
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/toolbox_hide.svg);
+	/* @embed */
+	background-image: -moz-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/toolbox_hide.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/toolbox_hide.svg);
+
+	background-color: #fefcea;
+	background-repeat: no-repeat;
+	background-size: 40px;
+	background-position: 6px center;
+}
+#articlefeedbackv5-disabled:after {
+	content: " ";
+	display: table;
+	clear: both;
+}
+#articlefeedbackv5-disabled p {
+	line-height: 1.3em;
+}
+#articlefeedbackv5-disabled .articlefeedbackv5-disabled-header {
+	font-weight: bold;
+}
+#articlefeedbackv5-disabled .articlefeedbackv5-enable-button {
+	margin: 10px 0;
+	padding: 3px;
+	float: right;
+	background: #f7f8f8 !important;
+	color: #000;
+}
+
 /** Header section **/
 #articleFeedbackv5-header-wrap {
 	margin: 0 0 10px;
@@ -37,6 +77,11 @@ select {
 }
 #articleFeedbackv5-header-links {
 	float: right;
+	height: 30px;
+}
+#articleFeedbackv5-header-links a {
+	padding-left: 10px;
+	line-height: 30px;
 }
 #articlefeedbackv5-special-central-watchlist-link {
 	margin-left: 10px;
