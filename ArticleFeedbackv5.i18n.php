@@ -755,7 +755,8 @@ The link to the edit tutorial',
 	'articlefeedbackv5-cta1-edit-linktext' => 'The explanatory text for the button on the edit CTA (call to action)',
 	'articlefeedbackv5-cta2-confirmation-title' => 'The title of the learn more CTA (call to action)',
 	'articlefeedbackv5-cta2-confirmation-call' => 'The explanatory text of the learn more CTA (call to action)',
-	'articlefeedbackv5-cta2-button-text' => 'The text for the button on the learn more CTA (call to action)',
+	'articlefeedbackv5-cta2-button-text' => 'The text for the button on the learn more CTA (call to action).
+{{Identical|Learn more}}',
 	'articlefeedbackv5-cta3-confirmation-title' => 'The title of the survey CTA (call to action)',
 	'articlefeedbackv5-cta3-confirmation-call' => 'The explanatory text of the survey CTA (call to action)',
 	'articlefeedbackv5-cta3-button-text' => 'The text for the button on the survey CTA (call to action)',
@@ -1173,7 +1174,8 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedbackv5-comment-empty' => 'Text to be displayed instead of the feedback comment in case there was no comment',
 	'articlefeedbackv5-header-message' => 'A message to be displayed on the special page, encouraging users to behave well. Parameters:
 * $1 is a link to read more about this.',
-	'articlefeedbackv5-header-message-link-text' => 'The link text to be displayed (at $1 on articlefeedbackv5-header-message-text)',
+	'articlefeedbackv5-header-message-link-text' => 'The link text to be displayed (at $1 on articlefeedbackv5-header-message-text).
+{{Identical|Learn more}}',
 	'articlefeedbackv5-beta-label' => 'A label to be displayed on the special page, warning users that this extension is still in beta.',
 	'articlefeedbackv5-unsupported-message' => 'A message to be displayed on the special page, when a visitor with an unsupported browser visits.',
 	'articlefeedbackv5-page-disabled' => 'A message to be displayed on the article feedback page when AFT is not enabled for that page',
@@ -1403,7 +1405,8 @@ Feature post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Feature post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-feature-submit' => 'Feature post note flyover panel - submit button text.
 {{Identical|Add note}}',
-	'articlefeedbackv5-noteflyover-feature-help' => 'Feature post note flyover panel - learn more text',
+	'articlefeedbackv5-noteflyover-feature-help' => 'Feature post note flyover panel - learn more text.
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-feature-help-link' => 'Feature post note flyover panel - link to the specific "feature" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Unfeature post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-unfeature-description' => '{{Optional}}
@@ -1413,7 +1416,8 @@ Unfeature post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Unfeature post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Unfeature post note flyover panel - submit button text.
 {{Identical|Add note}}',
-	'articlefeedbackv5-noteflyover-unfeature-help' => 'Unfeature post note flyover panel - learn more text',
+	'articlefeedbackv5-noteflyover-unfeature-help' => 'Unfeature post note flyover panel - learn more text.
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-unfeature-help-link' => 'Unfeature post note flyover panel - link to the specific "unfeature" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-resolve-caption' => 'Mark resolved post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-resolve-description' => '{{Optional}}
@@ -1423,7 +1427,8 @@ Mark resolved post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Mark resolved post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-resolve-submit' => 'Mark resolved post note flyover panel - submit button text.
 {{Identical|Add note}}',
-	'articlefeedbackv5-noteflyover-resolve-help' => 'Mark resolved post note flyover panel - learn more text',
+	'articlefeedbackv5-noteflyover-resolve-help' => 'Mark resolved post note flyover panel - learn more text.
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-resolve-help-link' => 'Mark resolved post note flyover panel - link to the specific "resolve" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Un-mark resolved post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-unresolve-description' => '{{Optional}}
@@ -1433,7 +1438,8 @@ Un-mark resolved post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Un-mark resolved post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Un-mark resolved post note flyover panel - submit button text.
 {{Identical|Add note}}',
-	'articlefeedbackv5-noteflyover-unresolve-help' => 'Un-mark resolved post note flyover panel - learn more text',
+	'articlefeedbackv5-noteflyover-unresolve-help' => 'Un-mark resolved post note flyover panel - learn more text.
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-unresolve-help-link' => 'Un-mark resolved post note flyover panel - link to the specific "unresolve" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Hide post note flyover panel - panel caption.
 {{Identical|Hide}}',
@@ -1444,7 +1450,8 @@ Hide post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Hide post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Hide post note flyover panel - submit button text.
 {{Identical|Add note}}',
-	'articlefeedbackv5-noteflyover-hide-help' => 'Hide post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-hide-help' => 'Hide post note flyover panel - help link text.
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-hide-help-link' => 'Hide post note flyover panel - link to the specific "hide" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}.
 {{Identical|Hide}}',
 	'articlefeedbackv5-noteflyover-unhide-caption' => 'Show post note flyover panel - panel caption',
@@ -1454,7 +1461,8 @@ Hide post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-unhide-placeholder' => 'Show post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-unhide-submit' => 'Show post note flyover panel - submit button text.
 {{Identical|Add note}}',
-	'articlefeedbackv5-noteflyover-unhide-help' => 'Show post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-unhide-help' => 'Show post note flyover panel - help link text.
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-unhide-help-link' => 'Show post note flyover panel - link to the specific "unhide" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-noaction-caption' => 'Mark as non-actionable post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-noaction-description' => '{{Optional}}
@@ -1464,7 +1472,8 @@ Mark as non-actionable post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-noaction-placeholder' => 'Mark as non-actionable post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-noaction-submit' => 'Mark as non-actionable post note flyover panel - submit button text.
 {{Identical|Add note}}',
-	'articlefeedbackv5-noteflyover-noaction-help' => 'Mark as non-actionable post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-noaction-help' => 'Mark as non-actionable post note flyover panel - help link text.
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-noaction-help-link' => 'Mark as non-actionable post note flyover panel - link to the specific "noaction" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-unnoaction-caption' => 'Unmark as non-actionable post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-unnoaction-description' => 'Unmark as non-actionable post note flyover panel - action description',
@@ -1473,7 +1482,8 @@ Mark as non-actionable post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-unnoaction-placeholder' => 'Unmark as non-actionable post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-unnoaction-submit' => 'Unmark as non-actionable post note flyover panel - submit button text.
 {{Identical|Add note}}',
-	'articlefeedbackv5-noteflyover-unnoaction-help' => 'Unmark as non-actionable post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-unnoaction-help' => 'Unmark as non-actionable post note flyover panel - help link text.
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-unnoaction-help-link' => 'Unmark as non-actionable post note flyover panel - link to the specific "unnoaction" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-inappropriate-caption' => 'Mark inappropriate post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-inappropriate-description' => '{{Optional}}
@@ -1481,14 +1491,16 @@ Mark inappropriate post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-inappropriate-label' => 'Mark inappropriate post note flyover panel - text area label',
 	'articlefeedbackv5-noteflyover-inappropriate-placeholder' => 'Mark inappropriate post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-inappropriate-submit' => 'Mark inappropriate post note flyover panel - submit button text',
-	'articlefeedbackv5-noteflyover-inappropriate-help' => 'Mark inappropriate post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-inappropriate-help' => 'Mark inappropriate post note flyover panel - help link text.
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-inappropriate-help-link' => 'Mark inappropriate post note flyover panel - link to the specific "inappropriate" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-uninappropriate-caption' => 'Un-mark inappropriate post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-uninappropriate-description' => 'Un-mark inappropriate post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-uninappropriate-label' => 'Un-mark inappropriate post note flyover panel - text area label',
 	'articlefeedbackv5-noteflyover-uninappropriate-placeholder' => 'Un-mark inappropriate post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-uninappropriate-submit' => 'Un-mark inappropriate post note flyover panel - submit button text',
-	'articlefeedbackv5-noteflyover-uninappropriate-help' => 'Un-mark inappropriate post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-uninappropriate-help' => 'Un-mark inappropriate post note flyover panel - help link text.
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-uninappropriate-help-link' => 'Un-mark inappropriate post note flyover panel - link to the specific "uninappropriate" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-archive-caption' => 'Mark as archived post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-archive-description' => '{{Optional}}
@@ -1498,7 +1510,8 @@ Mark as archived post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-archive-placeholder' => 'Mark as archived post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-archive-submit' => 'Mark as archived post note flyover panel - submit button text.
 {{Identical|Add note}}',
-	'articlefeedbackv5-noteflyover-archive-help' => 'Mark as archived post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-archive-help' => 'Mark as archived post note flyover panel - help link text.
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-archive-help-link' => 'Mark as archived post note flyover panel - link to the specific "archive" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-unarchive-caption' => 'Unmark as archived post note flyover panel - panel caption',
 	'articlefeedbackv5-noteflyover-unarchive-description' => 'Unmark as archived post note flyover panel - action description',
@@ -1507,7 +1520,8 @@ Mark as archived post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-unarchive-placeholder' => 'Unmark as archived post note flyover panel - text area placeholder text',
 	'articlefeedbackv5-noteflyover-unarchive-submit' => 'Unmark as archived post note flyover panel - submit button text.
 {{Identical|Add note}}',
-	'articlefeedbackv5-noteflyover-unarchive-help' => 'Unmark as archived post note flyover panel - help link text',
+	'articlefeedbackv5-noteflyover-unarchive-help' => 'Unmark as archived post note flyover panel - help link text.
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-unarchive-help-link' => 'Unmark as archived post note flyover panel - link to the specific "unarchive" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-request-caption' => 'Request oversight note flyover panel - panel caption (request oversight asks that an oversighter review the feedback item).
 {{Identical|Request oversight}}',
@@ -1519,7 +1533,8 @@ Usual meaning of oversight in English is "regulatory supervision". Source: http:
 	'articlefeedbackv5-noteflyover-request-placeholder' => 'Request oversight note flyover panel - text area placeholder text (request oversight asks that an oversighter review the feedback item)',
 	'articlefeedbackv5-noteflyover-request-submit' => 'Request oversight note flyover panel - submit button text (request oversight asks that an oversighter review the feedback item).
 {{Identical|Request oversight}}',
-	'articlefeedbackv5-noteflyover-request-help' => 'Request oversight note flyover panel - help link text (request oversight asks that an oversighter review the feedback item)',
+	'articlefeedbackv5-noteflyover-request-help' => 'Request oversight note flyover panel - help link text (request oversight asks that an oversighter review the feedback item).
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-request-help-link' => 'Request oversight note flyover panel - link to the specific "request oversight" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-unrequest-caption' => 'Un-request oversight note flyover panel - panel caption (remove the request for an oversighter to review the feedback item)',
 	'articlefeedbackv5-noteflyover-unrequest-description' => 'Un-request oversight post note flyover panel - action description',
@@ -1527,7 +1542,8 @@ Usual meaning of oversight in English is "regulatory supervision". Source: http:
 {{Identical|Add note}}',
 	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Un-request oversight note flyover panel - text area placeholder text (remove the request for an oversighter to review the feedback item)',
 	'articlefeedbackv5-noteflyover-unrequest-submit' => 'Un-request oversight note flyover panel - submit button text (remove the request for an oversighter to review the feedback item)',
-	'articlefeedbackv5-noteflyover-unrequest-help' => 'Un-request oversight note flyover panel - help link text (remove the request for an oversighter to review the feedback item)',
+	'articlefeedbackv5-noteflyover-unrequest-help' => 'Un-request oversight note flyover panel - help link text (remove the request for an oversighter to review the feedback item).
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-unrequest-help-link' => 'Un-request oversight note flyover panel - link to the specific "unrequest oversight" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-oversight-caption' => 'Oversight note flyover panel - panel caption (oversight means an oversighter deleted the feedback item)',
 	'articlefeedbackv5-noteflyover-oversight-description' => '{{Optional}}
@@ -1537,7 +1553,8 @@ Oversight note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Oversight note flyover panel - text area placeholder text (oversight means an oversighter deleted the feedback item)',
 	'articlefeedbackv5-noteflyover-oversight-submit' => 'Oversight note flyover panel - submit button text (oversight means an oversighter deleted the feedback item).
 {{Identical|Oversight}}',
-	'articlefeedbackv5-noteflyover-oversight-help' => 'Oversight note flyover panel - help link text (oversight means an oversighter deleted the feedback item)',
+	'articlefeedbackv5-noteflyover-oversight-help' => 'Oversight note flyover panel - help link text (oversight means an oversighter deleted the feedback item).
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-oversight-help-link' => 'Oversight note flyover panel - link to the specific "oversight" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Un-oversight note flyover panel - panel caption (unoversight means an oversighter un-deleted the feedback)',
 	'articlefeedbackv5-noteflyover-unoversight-description' => '{{Optional}}
@@ -1547,7 +1564,8 @@ Un-oversight note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Un-oversight note flyover panel - text area placeholder text (unoversight means an oversighter un-deleted the feedback)',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Un-oversight note flyover panel - submit button text (unoversight means an oversighter un-deleted the feedback).
 {{Identical|Add note}}',
-	'articlefeedbackv5-noteflyover-unoversight-help' => 'Un-oversight note flyover panel - help link text (unoversight means an oversighter un-deleted the feedback)',
+	'articlefeedbackv5-noteflyover-unoversight-help' => 'Un-oversight note flyover panel - help link text (unoversight means an oversighter un-deleted the feedback).
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-unoversight-help-link' => 'Un-oversight note flyover panel - link to the specific "unoversight" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-noteflyover-decline-caption' => 'Decline oversight note flyover panel - panel caption (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
 	'articlefeedbackv5-noteflyover-decline-description' => 'Decline oversight note flyover panel - action description',
@@ -1556,7 +1574,8 @@ Un-oversight note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-decline-placeholder' => 'Decline oversight note flyover panel - text area placeholder text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
 	'articlefeedbackv5-noteflyover-decline-submit' => 'Decline oversight note flyover panel - submit button text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted).
 {{Identical|Add note}}',
-	'articlefeedbackv5-noteflyover-decline-help' => 'Decline oversight note flyover panel - help link text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted)',
+	'articlefeedbackv5-noteflyover-decline-help' => 'Decline oversight note flyover panel - help link text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted).
+{{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-decline-help-link' => 'Decline oversight note flyover panel - link to the specific "declineoversight" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
 	'articlefeedbackv5-bucket1-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
 	'articlefeedbackv5-bucket1-question-toggle' => 'This is the question that appears before the yes/no buttons in option 1',
@@ -1579,7 +1598,8 @@ Un-oversight note flyover panel - action description',
 	'articlefeedbackv5-bucket4-noedit-title' => 'This is the title of the feedback panel for option 4, when the user cannot edit the article',
 	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'The first line of the teaser text for option 4, when the user cannot edit the article',
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'The second line of the teaser text for option 4, when the user cannot edit the article',
-	'articlefeedbackv5-bucket4-noedit-form-submit' => 'The text for the big button, when the user cannot edit the article',
+	'articlefeedbackv5-bucket4-noedit-form-submit' => 'The text for the big button, when the user cannot edit the article.
+{{Identical|Learn more}}',
 	'articlefeedbackv5-bucket6-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
 	'articlefeedbackv5-bucket6-question-toggle' => 'This is the question that appears before the yes/no buttons in option 1',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'The text for the yes button in option 1.
@@ -1598,7 +1618,8 @@ Un-oversight note flyover panel - action description',
 	'articlefeedbackv5-help-tooltip-title' => 'The title for the help tooltip.
 {{Identical|What is this}}',
 	'articlefeedbackv5-help-tooltip-info' => 'The contents of the help tooltip',
-	'articlefeedbackv5-help-tooltip-linktext' => 'The link at the bottom of the tooltip (goes to the article feedback v5 page on wikimedia for now)',
+	'articlefeedbackv5-help-tooltip-linktext' => 'The link at the bottom of the tooltip (goes to the article feedback v5 page on wikimedia for now).
+{{Identical|Learn more}}',
 	'articlefeedbackv5-help-special-linkurl' => '{{Optional}}
 Link to article with general information on the article feedback tool',
 	'articlefeedbackv5-help-special-linkurl-editors' => '{{Optional}}
@@ -5720,15 +5741,20 @@ $messages['el'] = array(
 	'articlefeedbackv5-form-resolve' => 'Επιλύθηκε',
 	'articlefeedbackv5-form-unresolve' => 'Κατάργηση σήμανσης ως επιλυμένο', # Fuzzy
 	'articlefeedbackv5-form-inappropriate' => 'Απόκρυψη αυτής της δημοσίευσης',
-	'articlefeedbackv5-form-unhide' => 'Φανέρωση αυτής της δημοσίευσης', # Fuzzy
+	'articlefeedbackv5-form-hide' => 'Απόκρυψη σχολίου',
+	'articlefeedbackv5-form-unhide' => 'Αναίρεση',
+	'articlefeedbackv5-form-archive' => 'Αρχείο',
+	'articlefeedbackv5-form-unarchive' => 'Αναίρεση',
 	'articlefeedbackv5-form-helpful' => 'Σημείωση ως χρήσιμο ($1)',
+	'articlefeedbackv5-form-flag' => 'Επισημάνθηκε ως προσβλητικό',
 	'articlefeedbackv5-form-oversight' => 'Αίτηση εποπτείας', # Fuzzy
-	'articlefeedbackv5-form-unoversight' => 'Ακύρωση αίτησης εποπτείας', # Fuzzy
+	'articlefeedbackv5-form-unoversight' => 'Αναίρεση',
 	'articlefeedbackv5-form-decline' => 'Απόρριψη εποπτείας',
 	'articlefeedbackv5-form-declined' => 'Η εποπτεία απορρίφθηκε',
 	'articlefeedbackv5-form-discuss-talk' => 'Γράψτε στη σελίδα συζήτησης',
 	'articlefeedbackv5-form-discuss-talk-exists' => 'Δείτε τη σελίδα συζήτησης',
 	'articlefeedbackv5-form-discuss-user-exists' => 'Δείτε το μήνυμα στη σελίδα συζήτησης',
+	'articlefeedbackv5-form-tooltip-feature' => 'Αυτό μπορεί να συμβάλει στη βελτίωση της σελίδας',
 	'articlefeedbackv5-form1-header-found' => 'Οι {{GENDER:$1|$2 βρήκαν αυτό που έψαχναν.}}',
 	'articlefeedbackv5-form1-header-not-found' => 'Ο/Η {{GENDER:$1|$2 δε βρήκε αυτό που έψαχνε.}}',
 	'articlefeedbackv5-form1-header-left-comment' => 'Ο/Η {{GENDER:$1|$2 δημοσίευσε ένα σχόλιο.}}',
@@ -12873,14 +12899,21 @@ $messages['ja'] = array(
 	'articlefeedbackv5-noteflyover-hide-help' => '詳細',
 	'articlefeedbackv5-noteflyover-unhide-label' => '注記を追加',
 	'articlefeedbackv5-noteflyover-unhide-submit' => '注記を追加',
+	'articlefeedbackv5-noteflyover-unhide-help' => '詳細',
 	'articlefeedbackv5-noteflyover-noaction-label' => '注記を追加',
 	'articlefeedbackv5-noteflyover-noaction-submit' => '注記を追加',
+	'articlefeedbackv5-noteflyover-noaction-help' => '詳細',
 	'articlefeedbackv5-noteflyover-unnoaction-label' => '注記を追加',
 	'articlefeedbackv5-noteflyover-unnoaction-submit' => '注記を追加',
+	'articlefeedbackv5-noteflyover-unnoaction-help' => '詳細',
+	'articlefeedbackv5-noteflyover-inappropriate-help' => '詳細',
+	'articlefeedbackv5-noteflyover-uninappropriate-help' => '詳細',
 	'articlefeedbackv5-noteflyover-archive-label' => '注記を追加',
 	'articlefeedbackv5-noteflyover-archive-submit' => '注記を追加',
+	'articlefeedbackv5-noteflyover-archive-help' => '詳細',
 	'articlefeedbackv5-noteflyover-unarchive-label' => '注記を追加',
 	'articlefeedbackv5-noteflyover-unarchive-submit' => '注記を追加',
+	'articlefeedbackv5-noteflyover-unarchive-help' => '詳細',
 	'articlefeedbackv5-noteflyover-request-caption' => '抹消を要請',
 	'articlefeedbackv5-noteflyover-request-description' => '抹消要請する前に、この投稿が以下の問題点のいずれかを含んでいることを確認してください:
 * 電話番号
@@ -19818,6 +19851,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (português do Brasil)
  * @author Giro720
+ * @author Luckas
  * @author Luckas Blade
  * @author MetalBrasil
  * @author Pedroca cerebral
@@ -19850,6 +19884,7 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-cta5-confirmation-call' => 'Ver as sugestões de outros leitores como você. Você pode ajudar a escolher as melhores idéias?',
 	'articlefeedbackv5-cta5-button-text' => 'Ver todos os comentários',
 	'articlefeedbackv5-cta6-confirmation-title' => 'Precisa de ajuda para editar em {{SITENAME}}?',
+	'articlefeedbackv5-overlay-close' => 'Fechar',
 	'articlefeedbackv5-error' => 'Ocorreu um erro. Por favor, tente novamente mais tarde.',
 	'articlefeedbackv5-error-blocked' => 'Os usuários bloqueados não podem enviar comentários.',
 	'articlefeedbackv5-error-validation' => 'Erro de validação.',
@@ -19859,6 +19894,7 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-error-nofeedback' => 'Por favor, digite seus comentários.',
 	'articlefeedbackv5-error-flagging' => 'Erro sinalizando comentários.',
 	'articlefeedbackv5-protection-permission-reader' => 'Ativar para todos os usuários',
+	'articlefeedbackv5-form-toolbox-label' => 'Marcar como:',
 	'articlefeedbackv5-form-helpful-label' => 'Este comentário é útil?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Sim',
 	'articlefeedbackv5-form-helpful-no-label' => 'Não',
@@ -19869,15 +19905,29 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-special-filter-declined' => 'Supervisão rejeitada ($1)',
 	'articlefeedbackv5-special-filter-oversighted' => 'Supervisado ($1)',
 	'articlefeedbackv5-special-filter-all' => 'Todos os posts ($1)',
+	'articlefeedbackv5-special-filter-allcomment-watchlist' => 'Todos os comentários',
+	'articlefeedbackv5-special-sort-relevance-desc' => 'Relevante',
+	'articlefeedbackv5-special-sort-relevance-asc' => 'Irrelevante',
+	'articlefeedbackv5-special-sort-helpful-desc' => 'Útil',
+	'articlefeedbackv5-special-sort-helpful-asc' => 'Inútil',
 	'articlefeedbackv5-special-sort-label-before' => 'Ordenar por:',
 	'articlefeedbackv5-special-filter-label-before' => 'Mostrando:',
+	'articlefeedbackv5-special-filter-select-more' => 'Mais filtros',
 	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|1 post|$1 posts}} sobre esta página', # Fuzzy
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 edição| $1 edições}} desde a publicação',
+	'articleFeedbackv5-details-link' => 'Detalhes',
 	'articlefeedbackv5-revision-link' => '(exibir conteúdo antigo)', # Fuzzy
 	'articlefeedbackv5-special-more' => 'Mostrar mais comentários',
 	'articlefeedbackv5-special-pagetitle' => 'Feedback sobre $1',
+	'articlefeedbackv5-loading-tag' => 'Carregando...',
+	'articlefeedbackv5-form-unfeature' => 'Desfazer',
+	'articlefeedbackv5-form-resolve' => 'Resolvido',
+	'articlefeedbackv5-form-unresolve' => 'Desfazer',
+	'articlefeedbackv5-form-unnoaction' => 'Desfazer',
 	'articlefeedbackv5-form-inappropriate' => 'Ocultar este post',
+	'articlefeedbackv5-form-uninappropriate' => 'Desfazer',
 	'articlefeedbackv5-form-unhide' => 'Reexibir o comentário', # Fuzzy
+	'articlefeedbackv5-form-unarchive' => 'Desfazer',
 	'articlefeedbackv5-form-helpful' => 'Marcar como útil ($1)',
 	'articlefeedbackv5-form-oversight' => 'Solicitar supervisão', # Fuzzy
 	'articlefeedbackv5-form-unoversight' => 'Supervisão não solicitada', # Fuzzy
@@ -19904,6 +19954,8 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-comment-more' => 'Mais',
 	'articlefeedbackv5-page-disabled' => 'A página de comentários do artigo não foi habilitada para este artigo.',
 	'articlefeedbackv5-viewactivity' => 'Exibir atividade', # Fuzzy
+	'articlefeedbackv5-permalink-activity-title' => 'Atividade',
+	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 ação|$1 ações}})',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Ocultar esta mensagem', # Fuzzy
 	'articlefeedbackv5-bucket1-title' => 'Ajude a melhorar esta página',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Você encontrou o que procurava?',
@@ -19921,6 +19973,8 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Aprenda a editar',
 	'articlefeedbackv5-bucket4-form-submit' => 'Editar esta página',
 	'articlefeedbackv5-bucket4-help-tooltip-info' => 'O wiki {{SITENAME}} quer saber o que você pensa. Ajude a melhorar esta página tornando-se um editor.',
+	'articlefeedbackv5-bucket6-toggle-found-yes' => 'Sim',
+	'articlefeedbackv5-bucket6-toggle-found-no' => 'Não',
 	'articlefeedbackv5-help-tooltip-title' => 'O que é isso?',
 	'articlefeedbackv5-help-tooltip-info' => 'O wiki {{SITENAME}} gostaria de saber o que você pensa desta página. Compartilhe seus comentários com os editores - e ajude a melhorar esta página.',
 	'articlefeedbackv5-help-tooltip-linktext' => 'Saiba Mais',
