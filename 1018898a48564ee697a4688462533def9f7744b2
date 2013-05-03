@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DwJhDorI",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-05-03T18:27:46Z",
+      "side": 1,
+      "message": "if ( $.aftUtils.verify( \u0027talk\u0027 ) ) {\n\n}",
+      "revId": "1018898a48564ee697a4688462533def9f7744b2",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
