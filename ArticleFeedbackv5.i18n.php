@@ -818,7 +818,8 @@ The abuse policy link.',
 {{Identical|Resolved}}',
 	'articlefeedbackv5-contribs-status-action-noaction' => 'Status when feedback has been marked as non-actionable',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Status when feedback has been marked as inappropriate',
-	'articlefeedbackv5-contribs-status-action-archive' => 'Status when feedback has been archived',
+	'articlefeedbackv5-contribs-status-action-archive' => 'Status when feedback has been archived.
+{{Identical|Archive}}',
 	'articlefeedbackv5-contribs-status-action-hide' => 'Status when feedback has been hidden.
 {{Identical|Hide}}',
 	'articlefeedbackv5-contribs-status-action-request' => 'Status when oversight has been requested on feedback',
@@ -845,7 +846,8 @@ The abuse policy link.',
 {{Identical|Resolved}}',
 	'articlefeedbackv5-special-filter-noaction' => 'Name of filter that will show all feedback that has been marked as no action needed. $1 is the amount of records in this filter.',
 	'articlefeedbackv5-special-filter-inappropriate' => 'Name of filter that will show all feedback that has been marked as inappropriate. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-archived' => 'Name of filter that will show all feedback that has been archived. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-archived' => 'Name of filter that will show all feedback that has been archived. $1 is the amount of records in this filter.
+{{Identical|Archive}}',
 	'articlefeedbackv5-special-filter-allcomment' => 'Name of filter that will show all feedback that has a comment. $1 is the amount of records in this filter.',
 	'articlefeedbackv5-special-filter-hidden' => 'Name of filter that will show all feedback that is hidden. $1 is the amount of records in this filter.',
 	'articlefeedbackv5-special-filter-requested' => 'Name of filter that will show all feedback where oversight has been requested. $1 is the amount of records in this filter.',
@@ -867,7 +869,8 @@ The abuse policy link.',
 	'articlefeedbackv5-special-filter-noaction-watchlist' => 'Name of filter that will show all feedback that has been marked as no action needed.',
 	'articlefeedbackv5-special-filter-inappropriate-watchlist' => 'Name of filter that will show all feedback that has been marked as inappropriate.
 {{Identical|Inappropriate}}',
-	'articlefeedbackv5-special-filter-archived-watchlist' => 'Name of filter that will show all feedback that has been archived.',
+	'articlefeedbackv5-special-filter-archived-watchlist' => 'Name of filter that will show all feedback that has been archived.
+{{Identical|Archive}}',
 	'articlefeedbackv5-special-filter-allcomment-watchlist' => 'Name of filter that will show all feedback that has a comment.',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'Name of filter that will show all feedback that is hidden.
 {{Identical|Hidden}}',
@@ -1026,7 +1029,8 @@ The abuse policy link.',
 	'articlefeedbackv5-noaction-marker' => 'The marker that appears on a comment if it has been marked as non-actionable.',
 	'articlefeedbackv5-inappropriate-marker' => 'The marker that appears on a comment if it has been marked as inappropriate.
 {{Identical|Inappropriate}}',
-	'articlefeedbackv5-archive-marker' => 'The marker that appears on a comment if it has been archived',
+	'articlefeedbackv5-archive-marker' => 'The marker that appears on a comment if it has been archived.
+{{Identical|Archive}}',
 	'articlefeedbackv5-form-abuse-count' => 'Shows how many times the feedback has been flagged as abuse.  $1 is the count.',
 	'articlefeedbackv5-form-note-added' => 'Text to be displayed near the link to see the activity log, to indicate that a note has been entered to clarify the last moderation action (which will be visible in the activity log)',
 	'articlefeedbackv5-form-note' => 'Link text to add a comment for the action you just flagged (in the toolbox).
@@ -1049,7 +1053,8 @@ The abuse policy link.',
 {{Identical|Undo}}',
 	'articlefeedbackv5-form-hide' => 'Link text for hiding the post (in the toolbox)',
 	'articlefeedbackv5-form-unhide' => 'Link text for un-hiding the post (in the toolbox)',
-	'articlefeedbackv5-form-archive' => 'Link text for archiving the post (in the toolbox). This is an action.',
+	'articlefeedbackv5-form-archive' => 'Link text for archiving the post (in the toolbox). This is an action.
+{{Identical|Archive}}',
 	'articlefeedbackv5-form-unarchive' => 'Link text for un-archiving the post (in the toolbox).
 {{Identical|Undo}}',
 	'articlefeedbackv5-form-helpful' => 'Unused at this time.',
@@ -1502,7 +1507,8 @@ Mark inappropriate post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-uninappropriate-help' => 'Un-mark inappropriate post note flyover panel - help link text.
 {{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-uninappropriate-help-link' => 'Un-mark inappropriate post note flyover panel - link to the specific "uninappropriate" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
-	'articlefeedbackv5-noteflyover-archive-caption' => 'Mark as archived post note flyover panel - panel caption',
+	'articlefeedbackv5-noteflyover-archive-caption' => 'Mark as archived post note flyover panel - panel caption.
+{{Identical|Archive}}',
 	'articlefeedbackv5-noteflyover-archive-description' => '{{Optional}}
 Mark as archived post note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-archive-label' => 'Mark as archived post note flyover panel - text area label.
@@ -3047,7 +3053,7 @@ $messages['bcl'] = array(
 	'articlefeedbackv5-error' => 'Sarong kasalaan an nangyari. Pakiotroha giraray aro-atyan.',
 	'articlefeedbackv5-error-blocked' => 'Pinagkubkob na mga paragamit puwedeng dae na magsumite nin balik-simbag.',
 	'articlefeedbackv5-error-validation' => 'Balidasyon nin kasalaan.',
-	'articlefeedbackv5-error-abuse' => 'An saimong ipinaskil pinagdeharan nin sarong saraan nin panuklob na minasuhestiyon ini bakong pasado sa {{SITENAME}} na [$1 giya kan balik-simbag]. Pakirebisaha an saimong ipinaskil asin otroha giraray. ({{PLURAL:$2|Saraan|Mga Saraan}}:$2)', # Fuzzy
+	'articlefeedbackv5-error-abuse' => 'An saimong ipinaskil pinagdeharan nin sarong saraan nin panuklob na minasuhestiyon na ini  puwedeng dae pasado sa {{SITENAME}} na [$1 na giya kan mga balik-simbag]. Pakirebisaha an saimong ipinaskil asin otroha giraray. ({{PLURAL:$2|Saraan|Mga Saraan}}:$2)', # Fuzzy
 	'articlefeedbackv5-error-unknown' => 'Bakong bistadong kasalaan',
 	'articlefeedbackv5-error-submit' => 'Magporma nin pagsusumite nin kasalaan.',
 	'articlefeedbackv5-error-duplicate' => 'An pinagsumiteng balik-simbag sarong duplikadong balik-simbag na nakaagi na; baka aksidenteng naisumite mo nin duwang beses an saimong balik-simbag?',
@@ -12808,6 +12814,7 @@ $messages['ja'] = array(
 	'articlefeedbackv5-form-uninappropriate' => '取り消す',
 	'articlefeedbackv5-form-hide' => 'この投稿を秘匿',
 	'articlefeedbackv5-form-unhide' => '取り消す',
+	'articlefeedbackv5-form-archive' => 'アーカイブ',
 	'articlefeedbackv5-form-unarchive' => '取り消す',
 	'articlefeedbackv5-form-helpful' => '役に立つの印を付ける ($1)',
 	'articlefeedbackv5-form-flag' => '荒らしフラグを立てる',
@@ -22875,6 +22882,7 @@ $messages['sw'] = array(
  * @author ElangoRamanujam
  * @author Karthi.dr
  * @author Logicwiki
+ * @author Sank
  * @author Shanmugamp7
  * @author TRYPPN
  */
@@ -22882,7 +22890,7 @@ $messages['ta'] = array(
 	'articlefeedbackv5-cta-thanks' => 'நன்றி!',
 	'articlefeedbackv5-cta-confirmation-message' => 'உங்கள் பதிவை இந்த [$1 பின்னூட்ட] பக்கத்தில் காண இயலும்.',
 	'articlefeedbackv5-cta1-confirmation-title' => 'இந்த பக்கத்தை நீங்கள் தொகுக்க இயலும் என்பது உங்களுக்கு தெரியுமா?',
-	'articlefeedbackv5-cta1-confirmation-call' => 'விக்கிப்பீடியா செயல் படுகிறது ஏனெனில் யார் வேண்டுமானாலும் அதன் பக்கங்களை தொகுக்க இயலும். மேலே சென்று, அதற்கு ஒரு முயற்சி எடுக்கவும். துணிச்சலாக இருக்கவும்', # Fuzzy
+	'articlefeedbackv5-cta1-confirmation-call' => '{{SITENAME}} செயற்படுகிறது ஏனெனில் யார் வேண்டுமானாலும் அதன் பக்கங்களை தொகுக்க இயலும். முன் சென்று, அதற்கு ஒரு முயற்சி எடுக்கவும். துணிச்சலாக இருக்கவும்!',
 	'articlefeedbackv5-cta1-learn-how' => 'எவ்வாறு திருத்துவது என்பதை கற்றுக்கொள்ளுங்கள்.',
 	'articlefeedbackv5-cta1-edit-linktext' => 'இந்த பக்கத்தை தொகு',
 	'articlefeedbackv5-cta2-confirmation-title' => '{{SITENAME}} மேம்படுத்த உதவுங்கள்',
@@ -23005,14 +23013,20 @@ $messages['ta'] = array(
 	'articlefeedbackv5-form-feature' => 'பயன்மிகு',
 	'articlefeedbackv5-form-unfeature' => 'இப்பதிவை சிறந்ததிலிருந்து நீக்கு', # Fuzzy
 	'articlefeedbackv5-form-resolve' => 'தீர்க்கப்பட்டதாக குறி', # Fuzzy
-	'articlefeedbackv5-form-unresolve' => 'தீர்க்கப்பட்டதாக குரியிட்டதை நீக்கு', # Fuzzy
+	'articlefeedbackv5-form-unresolve' => 'செயல்தவிர்',
+	'articlefeedbackv5-form-noaction' => 'எச்செயலீடும் தேவையில்லை',
+	'articlefeedbackv5-form-unnoaction' => 'செயல்தவிர்',
+	'articlefeedbackv5-form-unnoaction-own' => 'எனது பதிவைக் காட்டு',
 	'articlefeedbackv5-form-inappropriate' => 'இந்தப் பதிவை மறை',
+	'articlefeedbackv5-form-hide' => 'இப்பதிவை மறை',
 	'articlefeedbackv5-form-unhide' => 'இந்தப் பதிவை மறைக்காதே', # Fuzzy
 	'articlefeedbackv5-form-helpful' => 'உதவியானதாக குறி ($1)',
+	'articlefeedbackv5-form-flag' => 'முறைகேடானதாக குறியிடப்பட்டது',
 	'articlefeedbackv5-form-oversight' => 'மேற்பார்வை செய்யக் கோரவும்', # Fuzzy
 	'articlefeedbackv5-form-unoversight' => 'மேற்பார்வை கோரியதை திரும்பப்பெறு', # Fuzzy
 	'articlefeedbackv5-form-decline' => 'மேற்பார்வையை நிராகரி',
 	'articlefeedbackv5-form-declined' => 'மேற்பார்வை மறுக்கப்பட்டது',
+	'articlefeedbackv5-form-discuss-talk' => 'பேச்சுப்பக்கத்தில் கலந்துரையாடு',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 அவர்கள் என்ன தேடுகிறார்கள் என்பதை கண்டுபிடித்துள்ளார்கள்.}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 அவர்கள் என்ன தேடுகிறார்கள் என்பதை கண்டுபிடிக்கவில்லை.}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 ஒரு கருத்தை பதிவு செய்துள்ளார்.}}',
@@ -23139,6 +23153,7 @@ $messages['ta'] = array(
 	'articlefeedbackv5-noteflyover-decline-caption' => 'மேற்பார்வையை நிராகரி', # Fuzzy
 	'articlefeedbackv5-noteflyover-decline-label' => 'குறிப்பைச் சேர்',
 	'articlefeedbackv5-noteflyover-decline-placeholder' => 'ஏன் நீங்கள் மேற்பார்வையை நிராகரிக்கிறீர்கள்?', # Fuzzy
+	'articlefeedbackv5-noteflyover-decline-submit' => 'குறிப்பை சேர்',
 	'articlefeedbackv5-noteflyover-decline-help' => 'மேலும் அறிக',
 	'articlefeedbackv5-bucket1-title' => 'இப்பக்கத்தை  மேம்படுத்த உதவவும்',
 	'articlefeedbackv5-bucket1-question-toggle' => 'நீங்கள் என்ன தேடினீர்களோ அதை கண்டுபிடித்தீர்களா?',
