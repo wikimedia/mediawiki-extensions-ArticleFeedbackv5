@@ -6,8 +6,7 @@
 jQuery( function( $ ) {
 
 	// Is AFT enabled here?
-	var enable = $.aftUtils.verify( 'article' );
-	if ( enable ) {
+	if ( $.aftUtils.verify( 'article' ) ) {
 		var removeAft = function() {
 			var $aft = $( '#mw-articlefeedback' );
 			if ( $aft.length > 0 ) {

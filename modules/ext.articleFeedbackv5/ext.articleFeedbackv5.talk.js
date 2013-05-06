@@ -8,17 +8,6 @@ jQuery( function( $ ) {
 	// Check if the talk page link can be shown
 	if ( mw.config.get( 'wgArticleFeedbackv5TalkPageLink' ) ) {
 
-		// Check if AFT is enabled
-		var enable = $.aftUtils.verify( 'talk' );
-		if ( !enable ) {
-			return;
-		}
-
-		// Initialize clicktracking
-		// NB: Using the talk page's namespace, title, and rev id, not
-		// the article's as in the front end tracking
-		$.aftTrack.init();
-
 		// Build the url to the Special:ArticleFeedbackv5 page
 		var params = { ref: 'talk' };
 		var url = mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' +
@@ -35,8 +24,17 @@ jQuery( function( $ ) {
 
 		$( '#firstHeading' ).append( link );
 
-		// Track an impression
-		$.aftTrack.track( 'talk_page_view_feedback-impression' );
+		// Check if AFT is enabled
+		if ( $.aftUtils.verify( 'talk' ) ) {
+			// Initialize clicktracking
+			// NB: Using the talk page's namespace, title, and rev id, not
+			// the article's as in the front end tracking
+			$.aftTrack.init();
+
+			// Track an impression
+			$.aftTrack.track( 'talk_page_view_feedback-impression' );
+		}
+
 	}
 
 } );
