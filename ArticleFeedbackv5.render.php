@@ -1141,18 +1141,9 @@ class ArticleFeedbackv5Render {
 					'dd',
 					array(),
 					wfMessage(
-						'articlefeedbackv5-permalink-info-length-words',
-						str_word_count( $record->aft_comment )
-					)->escaped() .
-					'&nbsp;' .
-					Html::rawElement(
-						'span',
-						array(),
-						wfMessage(
-							'articlefeedbackv5-permalink-info-length-characters',
-							strlen( $record->aft_comment )
-						)->escaped()
-					)
+						'articlefeedbackv5-permalink-info-length-characters',
+						mb_strlen( $record->aft_comment )
+					)->escaped()
 				);
 		}
 
