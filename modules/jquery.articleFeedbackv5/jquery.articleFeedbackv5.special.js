@@ -513,14 +513,14 @@
 				$.articleFeedbackv5special.userType );
 
 		// update filter in select (if present) & text-links (if any)
-		$( '#articleFeedbackv5-select-wrapper' ).removeClass( 'filter-active' );
-		$( '.articleFeedbackv5-filter-link' ).removeClass( 'filter-active' );
+		$( '#articleFeedbackv5-select-wrapper' ).removeClass( 'articleFeedbackv5-filter-active' );
+		$( '.articleFeedbackv5-filter-link' ).removeClass( 'articleFeedbackv5-filter-active' );
 		if ( $( '#articleFeedbackv5-filter-select option[value=' + id + ']' ).length > 0 ) {
-			$( '#articleFeedbackv5-select-wrapper' ).addClass( 'filter-active' );
+			$( '#articleFeedbackv5-select-wrapper' ).addClass( 'articleFeedbackv5-filter-active' );
 		} else {
 			$( '#articleFeedbackv5-filter-select' ).val( '' );
 		}
-		$( '#articleFeedbackv5-special-filter-' + id).addClass( 'filter-active' );
+		$( '#articleFeedbackv5-special-filter-' + id ).addClass( 'articleFeedbackv5-filter-active' );
 	};
 
 	// }}}

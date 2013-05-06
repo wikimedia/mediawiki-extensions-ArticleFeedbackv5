@@ -112,7 +112,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 					array(
 						'href' => '#',
 						'id' => "articleFeedbackv5-special-filter-$filter",
-						'class' => 'articleFeedbackv5-filter-link' . ( $this->startingFilter == $filter ? ' filter-active' : '' )
+						'class' => 'articleFeedbackv5-filter-link' . ( $this->startingFilter == $filter ? ' articleFeedbackv5-filter-active' : '' )
 					),
 					$this->msg( "articlefeedbackv5-special-filter-$filter-watchlist" )->escaped()
 				);
