@@ -78,6 +78,9 @@ $messages['en'] = array(
 	'articlefeedbackv5-disabled-reader' => "Feedback has been disabled. Readers can't post new feedback on this page.",
 	'articlefeedbackv5-disabled-admin-button-text' => 'Change protection',
 	'articlefeedbackv5-disabled-editor-button-text' => 'Enable feedback',
+	'articlefeedbackv5-settings-enable' => 'Enable feedback on this page',
+	'articlefeedbackv5-settings-disable' => 'Disable feedback on this page',
+	'articlefeedbackv5-enabled-form-message' => 'Feedback has just been enabled. Reader posts will be visible [$1 at the feedback page].',
 
 	/* My Contributions */
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Feedback: $4]] $5 $6 $7',
@@ -282,6 +285,7 @@ We appreciate your contributions to this page!
 	'articlefeedbackv5-go-to-article' => 'View page',
 	'articlefeedbackv5-discussion-page' => 'Talk',
 	'articlefeedbackv5-whats-this' => 'Help',
+	'articlefeedbackv5-settings-menu-title' => 'Settings',
 	'articlefeedbackv5-invalid-page-id' => 'Invalid page ID',
 	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 found what they were looking for}}',
 	'articlefeedbackv5-found-percent-title' => 'Based on $1 posts (excluding inappropriate comments)',
@@ -821,6 +825,10 @@ The abuse policy link.',
 	'articlefeedbackv5-disabled-reader' => "Message, to a reader, that has disabled feedback for this page (a reader can't edit this setting)",
 	'articlefeedbackv5-disabled-admin-button-text' => 'Button text for link to page protection, where admins can enable/disable the article feedback tool',
 	'articlefeedbackv5-disabled-editor-button-text' => 'Button text for link that will (re-)enable the article feedback tool at once, for editors',
+	'articlefeedbackv5-settings-enable' => 'Link text for the link to enable AFTv5 form for this page',
+	'articlefeedbackv5-settings-disable' => 'Link text for the link to disable AFTv5 form for this page',
+	'articlefeedbackv5-enabled-form-message' => 'Message to be displayed below the AFTv5 form after it has just been enabled. Parameters:
+* $1 is a link to the article feedback page, where feedback can be viewed.',
 	'articlefeedbackv5-contribs-entry' => 'AFT entry line displayed on My Contributions. An example of this line could be: 10:59, 30 August 2012 . . (+55)‎ . . Feedback: Main Page (This is some more feedback, using the AFT feedback form) . . Status: Helpful and Featured
 * $1 - the date with link to feedback permalink - in the example: "10:59, 30 August 2012"
 * $2 - the comment character count - in the example: "(+55)"
@@ -1170,6 +1178,7 @@ Parameters
 	'articlefeedbackv5-go-to-article' => 'Link text for a link back to the article page from the feedback page.',
 	'articlefeedbackv5-discussion-page' => '{{Identical|Talk}}',
 	'articlefeedbackv5-whats-this' => '{{Identical|Help}}',
+	'articlefeedbackv5-settings-menu-title' => 'Link text for the link to open AFTv5 settings',
 	'articlefeedbackv5-invalid-page-id' => 'Message to be displayed when the feedback page for a non-existiting article page is requested.',
 	'articlefeedbackv5-found-percent' => 'Text describing the percentage of readers that answered positively to the question "Did you find what you were looking for". Parameters:
 * $1 - the percentage of people that found what they were looking for marked up. Example value: 15%. {{msg-mw|percent}} is used.

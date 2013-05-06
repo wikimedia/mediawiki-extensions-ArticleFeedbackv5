@@ -531,11 +531,13 @@ $wgResourceModules['ext.articleFeedbackv5.startup'] = array(
 	'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js',
 	'messages' => array(
 		'articlefeedbackv5-toolbox-enable',
+		'articlefeedbackv5-enabled-form-message',
 	),
 	'dependencies' => array(
 		'mediawiki.util',
 		'mediawiki.user',
 		'jquery.articleFeedbackv5.utils',
+		'mediawiki.jqueryMsg',
 	),
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['ext.articleFeedbackv5'] = array(
@@ -885,6 +887,9 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-noteflyover-unoversight-help-link',
 
 		'articlefeedbackv5-activity-pane-header',
+
+		'articlefeedbackv5-settings-enable',
+		'articlefeedbackv5-settings-disable',
 	),
 	'dependencies' => array(
 		'mediawiki.util',

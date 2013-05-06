@@ -62,28 +62,29 @@
 			enable &= mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ).length > 0;
 
 			if ( location != 'special' || article.id != 0 ) {
-				// only on pages in namespaces where it is enabled
-				enable &= $.inArray( article.namespace, mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1;
+				// check if a, to this user sufficient, permission level is defined
+				if ( article.permissionLevel !== false ) {
+					enable &= $.aftUtils.permissions( article );
 
-				// it does not make sense to display AFT when a page is being edited ...
-				enable &= mw.config.get( 'wgAction' ) != 'edit';
+					// if not defined through permissions, check whitelist/lottery
+				} else {
+					enable &= $.aftUtils.whitelist( article ) || $.aftUtils.lottery( article );
+				}
 
-				// ... or has just been edited
-				enable &= !mw.config.get( 'wgPostEdit', false );
+				// category is not blacklisted
+				enable &= !$.aftUtils.blacklist( article );
 			}
 
 			// for special page, it doesn't matter if the article has AFT applied
 			if ( location != 'special' ) {
-				enable &=
-					// category is whitelisted
-					$.aftUtils.whitelist( article ) ||
-					// or article is in lottery bounds
-					$.aftUtils.lottery( article ) ||
-					// or a to this user sufficient permission level is defined
-					$.aftUtils.permissions( article );
+				// check if user has the required permissions
+				enable &= $.aftUtils.permissions( article );
 
 				// category is not blacklisted
 				enable &= !$.aftUtils.blacklist( article );
+
+				// category is whitelisted or article is in lottery
+				enable &= ( $.aftUtils.whitelist( article ) || $.aftUtils.lottery( article ) );
 			}
 
 			// stricter validation for article: make sure we're at the right article view
@@ -125,7 +126,7 @@
 		 */
 		permissions: function ( article ) {
 			var permissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
-			return article.permissionLevel && article.permissionLevel in permissions && permissions[article.permissionLevel];
+			return article.permissionLevel in permissions && permissions[article.permissionLevel];
 		},
 
 		// }}}
@@ -298,6 +299,31 @@
 		},
 
 		// }}}
+		// {{{ canSetStatus
+
+		/**
+		 * Check if the current user can set a certain status (enable/disable) for the current page
+		 *
+		 * @param bool enable true to check if can be enabled, false to check disabled
+		 */
+		canSetStatus: function( enable ) {
+			// check AFT status for readers
+			var enabled = ( $.aftUtils.article().permissionLevel === 'aft-reader' );
+
+			// check if desired status != current status
+			if ( enable != enabled ) {
+				var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
+
+				// check user has sufficient permissions to enable/disable AFTv5
+				if ( $.aftUtils.article().permissionLevel in userPermissions && userPermissions[$.aftUtils.article().permissionLevel] ) {
+					return true;
+				}
+			}
+
+			return false;
+		},
+
+		// }}}
 		// {{{ setStatus
 
 		/**
@@ -307,7 +333,7 @@
 		 * @param bool enable true to enable, false to disable
 		 * @param function callback function to execute after setting status
 		 */
-		setStatus: function ( pageId, enable, callback ) {
+		setStatus: function( pageId, enable, callback ) {
 			var result = [];
 			result['result'] = 'Error';
 			result['reason'] = 'articlefeedbackv5-error-unknown';
@@ -343,10 +369,8 @@
 
 		// }}}
 
-	};
+	}
 
 	// }}}
-
-// }}}
 
 } )( jQuery );

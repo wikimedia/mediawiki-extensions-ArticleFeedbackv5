@@ -138,13 +138,16 @@ class ArticleFeedbackv5Utils {
 		// check if user is not blocked
 		$enable &= !$wgUser->isBlocked();
 
-		$enable &=
-			// category is whitelisted
-			array_intersect( $categories, $wgArticleFeedbackv5Categories ) ||
-			// or article is in lottery bounds
-			(int) $pageId % 1000 >= 1000 - ( (float) $odds * 10 ) ||
-			// or a to this user sufficient permission level is defined
-			( isset( $restriction->pr_level ) && $wgUser->isAllowed( $restriction->pr_level ) );
+		// check if a, to this user sufficient, permission level is defined
+		if ( isset( $restriction->pr_level ) ) {
+			$enable &= $wgUser->isAllowed( $restriction->pr_level );
+
+		// if not defined through permissions, check whitelist/lottery
+		} else {
+			$enable &=
+				array_intersect( $categories, $wgArticleFeedbackv5Categories ) ||
+				(int) $pageId % 1000 >= 1000 - ( (float) $odds * 10 );
+		}
 
 		// category is not blacklisted
 		$enable &= !array_intersect( $categories, $wgArticleFeedbackv5BlacklistCategories );

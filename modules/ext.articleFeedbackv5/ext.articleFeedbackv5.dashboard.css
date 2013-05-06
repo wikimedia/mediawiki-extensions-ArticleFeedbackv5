@@ -31,6 +31,7 @@ select {
 /** Disabled notice/enable switch **/
 #articlefeedbackv5-disabled {
 	padding: 6px 12px 6px 50px;
+	margin-bottom: 10px;
 
 	/* @todo: orange/yellow lock image */
 
@@ -76,6 +77,11 @@ select {
 }
 #articleFeedbackv5-header-links {
 	float: right;
+	height: 30px;
+}
+#articleFeedbackv5-header-links a {
+	padding-left: 10px;
+	line-height: 30px;
 }
 #articlefeedbackv5-special-central-watchlist-link {
 	margin-left: 10px;

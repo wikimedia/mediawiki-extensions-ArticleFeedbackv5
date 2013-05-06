@@ -277,12 +277,20 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					$this->title,
 					$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
 				) .
-				' | ' .
 				Linker::link(
 					$this->title->getTalkPage(),
 					$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
 				) .
-				' | ';
+				Html::element(
+					'a',
+					array(
+						'href' => '#',
+						'id' => 'articleFeedbackv5-settings-link',
+						'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-settings-link',
+						'data-action' => 'settings'
+					),
+					$this->msg( 'articlefeedbackv5-settings-menu-title' )->escaped()
+				);
 		}
 
 		// build header for list-views
@@ -294,12 +302,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		return
 			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-header-wrap' ) ) .
 				Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-header-links' ) ) .
-					$pageLinks .
 					Html::element(
 						'a',
 						array( 'href' => $this->getHelpLink().'#Feedback_page' ),
 						$this->msg( 'articlefeedbackv5-whats-this' )->escaped()
 					) .
+					$pageLinks .
 				Html::closeElement( 'div' ) .
 				$listHeader .
 			Html::closeElement( 'div' );

@@ -32,53 +32,56 @@ jQuery( function( $ ) {
 		load();
 	}
 
-	// check if AFT is enabled for readers
-	if ( $.aftUtils.article().permissionLevel !== 'aft-reader' ) {
+	// check if user can enable AFTv5
+	if ( $.aftUtils.canSetStatus( true ) ) {
 		var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 
-		if (
-			// make sure that administrator has not disabled AFTv5
-			$.aftUtils.article().permissionLevel !== 'aft-administrator' &&
-			// user has sufficient permissions to enable AFTv5
-			'aft-editor' in userPermissions && userPermissions['aft-editor']
-		) {
-			// build link to enable feedback form
-			var $link = $( '<li id="t-articlefeedbackv5-enable"><a href="#"></a></li>' );
-			$link.find( 'a' ).text( mw.msg( 'articlefeedbackv5-toolbox-enable' ) );
+		// build link to enable feedback form
+		var $link = $( '<li id="t-articlefeedbackv5-enable"><a href="#"></a></li>' );
+		$link.find( 'a' ).text( mw.msg( 'articlefeedbackv5-toolbox-enable' ) );
 
-			// administrators can change detailed visibility in ?action=protect
-			if ( 'aft-administrator' in userPermissions && userPermissions['aft-administrator'] ) {
-				var link = mw.config.get( 'wgScript' ) + '?title=' +
-					encodeURIComponent( mw.config.get( 'wgPageName' ) ) +
-					'&' + $.param( { action: 'protect' } );
+		// administrators can change detailed visibility in ?action=protect
+		if ( 'aft-administrator' in userPermissions && userPermissions['aft-administrator'] ) {
+			var link = mw.config.get( 'wgScript' ) + '?title=' +
+				encodeURIComponent( mw.config.get( 'wgPageName' ) ) +
+				'&' + $.param( { action: 'protect' } );
 
-				$link.find( 'a' ).attr( 'href', link );
+			$link.find( 'a' ).attr( 'href', link );
 
-			// editors can enable/disable for readers via API
-			} else {
-				$link.find( 'a' ).on( 'click', function( e ) {
-					e.preventDefault();
+		// editors can enable/disable for readers via API
+		} else {
+			$link.find( 'a' ).on( 'click', function( e ) {
+				e.preventDefault();
 
-					$.aftUtils.setStatus( $.aftUtils.article().id, 1, function( data ) {
-						if ( 'result' in data ) {
-							if ( data.result === 'Success' ) {
-								$link.remove();
+				$.aftUtils.setStatus( $.aftUtils.article().id, 1, function( data ) {
+					if ( 'result' in data ) {
+						if ( data.result === 'Success' ) {
+							$link.remove();
 
-								// display AFTv5 tool (unless this user already had access)
-								if ( !enable ) {
-									load();
-								}
-
-							} else if ( data.result === 'Error' && data.reason ) {
-								alert( mw.msg( data.reason ) );
+							// display AFTv5 tool (unless this user already had access, in which case it's already visible)
+							if ( !enable ) {
+								load();
 							}
-						}
-					} );
-				});
-			}
 
-			$( '#p-tb' ).find( 'ul' ).append( $link );
+							// add message to confirm AFTv5 has just been enabled
+							var link = mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' );
+							var message =
+								$( '<p id="articleFeedbackv5-added"></p>' )
+									.msg( 'articlefeedbackv5-enabled-form-message', link );
+							$( '#mw-articlefeedbackv5' ).append( message );
+
+							// move down to AFTv5 form
+							location.hash = "#mw-articlefeedbackv5";
+
+						} else if ( data.result === 'Error' && data.reason ) {
+							alert( mw.msg( data.reason ) );
+						}
+					}
+				} );
+			});
 		}
+
+		$( '#p-tb' ).find( 'ul' ).append( $link );
 	}
 
 } );
