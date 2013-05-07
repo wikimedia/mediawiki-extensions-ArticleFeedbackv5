@@ -99,7 +99,7 @@ $wgArticleFeedbackv5RelevanceScoring = array(
  *
  * @var bool true to enable, false to disable
  */
-$wgArticleFeedbackAutoArchiveEnabled = false;
+$wgArticleFeedbackv5AutoArchiveEnabled = false;
 
 /**
  * Defines the auto-archive period for feedback that is not being considered useful.
@@ -118,7 +118,7 @@ $wgArticleFeedbackAutoArchiveEnabled = false;
  *
  * @var array|string strtotime-capable format
  */
-$wgArticleFeedbackAutoArchiveTtl = '+2 weeks';
+$wgArticleFeedbackv5AutoArchiveTtl = '+2 weeks';
 
 // Defines whether or not there should be a link to the corresponding feedback on the page's talk page
 $wgArticleFeedbackv5TalkPageLink = true;

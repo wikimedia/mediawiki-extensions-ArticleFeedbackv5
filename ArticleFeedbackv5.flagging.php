@@ -159,7 +159,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param User $user
 	 * @return int
 	 */
-	protected function log( $action, $pageId, $feedbackId, $comment, User $user ) {
+	protected function log( $action, $pageId, $feedbackId, $comment, User $user = null ) {
 		$params = array();
 		if ( $this->source ) {
 			$params['source'] = $this->source;

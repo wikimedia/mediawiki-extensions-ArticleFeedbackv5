@@ -144,8 +144,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// don't display archived list unless specifically "enabled" (if cronjob
 		// is not running, it would simply not work)
-		global $wgArticleFeedbackAutoArchiveEnabled;
-		if ( !$wgArticleFeedbackAutoArchiveEnabled ) {
+		global $wgArticleFeedbackv5AutoArchiveEnabled;
+		if ( !$wgArticleFeedbackv5AutoArchiveEnabled ) {
 			$this->filters = array_diff( $this->filters, array( 'archived' ) );
 		}
 
