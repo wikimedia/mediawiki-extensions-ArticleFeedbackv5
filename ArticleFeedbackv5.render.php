@@ -550,7 +550,7 @@ class ArticleFeedbackv5Render {
 		return
 			Html::rawElement(
 				'blockquote',
-				array(),
+				array( 'dir' => 'auto' ),
 				$short .
 				$fullLengthToggle
 			);
