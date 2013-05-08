@@ -696,7 +696,7 @@ class ArticleFeedbackv5Hooks {
 		);
 
 		$protectOther = Xml::input( 'articlefeedbackv5-protection-expiration', 50, $mExpiry, $attribs );
-		$mProtectOther = Xml::label( wfMessage( 'protect-othertime' )->escaped(), "mwProtect-aft-expires" );
+		$mProtectOther = Xml::label( wfMessage( 'protect-othertime' )->text(), "mwProtect-aft-expires" );
 
 		// build output
 		$output .= "
