@@ -10,11 +10,6 @@
  */
 class DataModelBackendLBFactory extends DataModelBackend {
 	/**
-	 * @var array [LoadBalancer]
-	 */
-	protected static $lb = array();
-
-	/**
 	 * @var array [bool]
 	 */
 	protected static $written = array();
@@ -24,11 +19,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @return LoadBalancer
 	 */
 	public function getLB( $wiki = false ) {
-		if ( !isset( static::$lb[$wiki] ) ) {
-			static::$lb[$wiki] = wfGetLB( $wiki );
-		}
-
-		return static::$lb[$wiki];
+		return wfGetLB( $wiki );
 	}
 
 	/**
@@ -43,12 +34,24 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @param $wiki String: the wiki ID, or false for the current wiki
 	 */
 	public function getDB( $db, $groups = array(), $wiki = false ) {
+		/*
+		 * Since we'll save a flag to indicate if a certain wiki has been written
+		 * to, we'll want to be certain that this data is accurate, and we don't
+		 * want a lower-down function to determine that false will result in
+		 * wfWikiID().
+		 * Let's make sure that false also translates to a literal wiki name (e.g.
+		 * "enwiki", or whatever wfWikiID() results in); this way, if we access 2
+		 * the same wiki in 2 different ways, we'll still know for sure if data
+		 * has been written to that database already.
+		 */
+		$wikiId = ( $wiki === false ) ? wfWikiID() : $wiki;
+
 		$lb = $this->getLB( $wiki );
 
 		if ( $db === DB_MASTER ) {
 			// mark that we're writing data
-			static::$written[$wiki] = true;
-		} elseif ( isset(static::$written[$wiki]) && static::$written[$wiki] ) {
+			static::$written[$wikiId] = true;
+		} elseif ( isset( static::$written[$wikiId] ) && static::$written[$wikiId] ) {
 			if ( $db === DB_SLAVE ) {
 				/*
 				 * Let's keep querying master to make sure we have up-to-date
@@ -61,7 +64,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 				 * make sure this slave has caught up!
 				 */
 				$lb->waitFor( $lb->getMasterPos() );
-				static::$written[$wiki] = false;
+				static::$written[$wikiId] = false;
 			}
 		}
 
