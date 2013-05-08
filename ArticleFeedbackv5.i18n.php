@@ -701,9 +701,7 @@ $4',
 
 	/* Front-end: feedback link close button */
 	'articlefeedbackv5-disable-flyover-title' => 'Remove this tool?',
-	'articlefeedbackv5-disable-flyover-help' => 'To remove $1, go to $2 and check $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Article Feedback',
-	'articlefeedbackv5-disable-flyover-help-location' => 'My preferences > Appearance',
+	'articlefeedbackv5-disable-flyover-help-message' => 'To remove Article Feedback, go to $1 > $2 and check $3',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Go to my preferences',
 
 	/* Custom AbuseFilter actions */
@@ -2094,16 +2092,12 @@ Parameters:
 * $3 – URL directly to feedback location
 * $4 – The help link',
 	'articlefeedbackv5-disable-flyover-title' => 'Title of the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
-	'articlefeedbackv5-disable-flyover-help' => 'Help text for the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool.
+	'articlefeedbackv5-disable-flyover-help-message' => 'Help text for the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool.
 
 Parameters:
-* $1 - Emphasized name of the tool ({{msg-mw|articlefeedbackv5-disable-flyover-help-emphasis-text}})
-* $2 - The location of the preference panel ({{msg-mw|articlefeedbackv5-disable-flyover-help-location}})
-* $3 - The label of the checkbox ( {{msg-mw|articlefeedbackv5-disable-preference}})',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'The emphasis text for {{msg-mw|articlefeedbackv5-disable-flyover-help}} (the name of the tool)',
-	'articlefeedbackv5-disable-flyover-help-location' => 'A short indication of where to go to change your Article Feedback preferences, inside {{msg-mw|articlefeedbackv5-disable-flyover-help}}.
-
-It must be: {{msg-mw|mypreferences}} > {{msg-mw|prefs-rendering}}',
+* $1 - Reference to preferences: {{msg-mw|mypreferences}}
+* $2 - Reference to the preference\'s appearance panel: {{msg-mw|prefs-rendering}}
+* $3 - The label of the checkbox: {{msg-mw|articlefeedbackv5-disable-preference}}',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'The text of the big glossy button used to send the user to their preferences in the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
 	'abusefilter-edit-action-aftv5flagabuse' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in the feedback being auto-flagged as abuse',
 	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'The note to add to the activity log when auto-flagging a new feedback post as abuse (<code>$1</code> is the name of the filter)',

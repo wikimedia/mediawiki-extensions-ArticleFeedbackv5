@@ -2940,12 +2940,12 @@
 
 					$flyover.find( '.articleFeedbackv5-disable-flyover-help' )
 						.html( $.articleFeedbackv5.buildLink(
-							'articlefeedbackv5-disable-flyover-help', {
-								tag: 'strong',
-								text: 'articlefeedbackv5-disable-flyover-help-emphasis-text'
+							'articlefeedbackv5-disable-flyover-help-message', {
+								tag: 'quotes',
+								text: 'prefs-rendering'
 							}, {
 								tag: 'quotes',
-								text: 'articlefeedbackv5-disable-flyover-help-location'
+								text: 'mypreferences'
 							}, {
 								tag: 'quotes',
 								text: 'articlefeedbackv5-disable-preference'
