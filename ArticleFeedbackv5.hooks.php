@@ -607,7 +607,13 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function onProtectionForm( Page $article, &$output ) {
-		global $wgLang;
+		global $wgLang, $wgUser;
+		$permErrors = $article->getTitle()->getUserPermissionsErrors( 'protect', $wgUser );
+		if ( wfReadOnly() ) {
+			$permErrors[] = array( 'readonlytext', wfReadOnlyReason() );
+		}
+		$disabled = $permErrors != array();
+		$disabledAttrib = $disabled ? array( 'disabled' => 'disabled' ) : array();
 
 		$articleId = $article->getId();
 
@@ -626,7 +632,7 @@ class ArticleFeedbackv5Hooks {
 			'id' => $id,
 			'name' => $id,
 			'size' => count( $levels )
-		);
+		) + $disabledAttrib;
 		$permissionsDropdown = Xml::openElement( 'select', $attribs );
 		foreach( $levels as $key => $label ) {
 			// possible labels: articlefeedbackv5-protection-permission-(all|reader|editor)
@@ -693,7 +699,7 @@ class ArticleFeedbackv5Hooks {
 			// when entering an other time, make sure "othertime" is selected in the dropdown
 			'onkeyup' => 'javascript:if ( $( this ).val() ) $( "#articlefeedbackv5-protection-expiration-selection" ).val( "othertime" );',
 			'onchange' => 'javascript:if ( $( this ).val() ) $( "#articlefeedbackv5-protection-expiration-selection" ).val( "othertime" );'
-		);
+		) + $disabledAttrib;
 
 		$protectOther = Xml::input( 'articlefeedbackv5-protection-expiration', 50, $mExpiry, $attribs );
 		$mProtectOther = Xml::label( wfMessage( 'protect-othertime' )->text(), "mwProtect-aft-expires" );
@@ -711,7 +717,7 @@ class ArticleFeedbackv5Hooks {
 								<tr>
 									<td>";
 
-		if( $showProtectOptions ) {
+		if ( $showProtectOptions && !$disabled ) {
 			$output .= "				<table>
 											<tr>
 												<td class='mw-label'>$mProtectExpiry</td>
