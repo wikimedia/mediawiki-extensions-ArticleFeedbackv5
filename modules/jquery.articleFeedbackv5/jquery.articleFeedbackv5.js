@@ -764,6 +764,17 @@
 				// add character-countdown on feedback-field
 				$( document )
 					.on( 'keyup', '.articleFeedbackv5-comment textarea', function () {
+
+						/*
+						 * If people have started writing feedback, inform them
+						 * that leaving the page will result in lost data.
+						 */
+						if ( typeof window.onbeforeunload != 'function' ) {
+							$( window ).on( 'beforeunload', function() {
+								return mw.msg( 'articlefeedbackv5-leave-warning' );
+							} );
+						}
+
 						$.articleFeedbackv5.unlockForm();
 						$.articleFeedbackv5.currentBucket().countdown( $( this ) );
 					} );
@@ -780,6 +791,9 @@
 					.click( function ( e ) {
 						e.preventDefault();
 						$.articleFeedbackv5.submitForm();
+
+						// unbind confirmation message before leaving page
+						$( window ).off( 'beforeunload' );
 					} );
 			},
 
@@ -3054,7 +3068,6 @@
 	 * Locks the form
 	 */
 	$.articleFeedbackv5.lockForm = function () {
-		var bucket = $.articleFeedbackv5.currentBucket();
 		$.articleFeedbackv5.enableSubmission( false );
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-lock' ).show();
 	};
@@ -3066,7 +3079,6 @@
 	 * Unlocks the form
 	 */
 	$.articleFeedbackv5.unlockForm = function () {
-		var bucket = $.articleFeedbackv5.currentBucket();
 		$.articleFeedbackv5.enableSubmission( true );
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-lock' ).hide();
 	};

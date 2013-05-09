@@ -663,6 +663,7 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 		'articlefeedbackv5-bucket6-form-success',
 		'articlefeedbackv5-bucket6-form-submit',
 		'articlefeedbackv5-bucket6-backlink-text',
+		'articlefeedbackv5-leave-warning',
 		'articlefeedbackv5-error',
 		'articlefeedbackv5-help-tooltip-title',
 		'articlefeedbackv5-help-tooltip-info',
