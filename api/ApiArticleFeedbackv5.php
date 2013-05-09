@@ -204,7 +204,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	public function callbackAbuseActionFlag( $action, $parameters, $title, $vars, $rule_desc ) {
 		switch ( $action ) {
 			case 'aftv5flagabuse':
-				$this->autoFlag['flagabuse'] = $rule_desc;
+				$this->autoFlag['flag'] = $rule_desc;
 				break;
 			case 'aftv5hide':
 				$this->autoFlag['hide'] = $rule_desc;
