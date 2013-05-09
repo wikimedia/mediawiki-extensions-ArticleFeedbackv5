@@ -226,20 +226,6 @@ class ArticleFeedbackv5Utils {
 	}
 
 	/**
-	 * Returns the percentage helpful, given a helpful count and an unhelpful count
-	 *
-	 * @param  $helpful   int the number of helpful votes
-	 * @param  $unhelpful int the number of unhelpful votes
-	 * @return int        the percentage
-	 */
-	public static function percentHelpful( $helpful, $unhelpful ) {
-		if ( $helpful + $unhelpful > 0 ) {
-			return intval( ( $helpful / ( $helpful + $unhelpful ) ) * 100 );
-		}
-		return 0;
-	}
-
-	/**
 	 * Helper function to create a mask line
 	 *
 	 * @param string $type the type (hidden or oversight)

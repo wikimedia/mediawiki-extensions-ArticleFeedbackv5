@@ -91,6 +91,12 @@ class ArticleFeedbackv5Hooks {
 			dirname( __FILE__ ) . '/sql/discuss.sql'
 		);
 
+		$updater->addExtensionField(
+			'aft_feedback',
+			'aft_percentage_helpful',
+			dirname( __FILE__ ) . '/sql/percentage_helpful.sql'
+		);
+
 		return true;
 	}
 

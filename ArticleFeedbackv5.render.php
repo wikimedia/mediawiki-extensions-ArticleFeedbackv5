@@ -607,12 +607,8 @@ class ArticleFeedbackv5Render {
 		} elseif ( $this->isAllowed( 'aft-editor' ) ) {
 			$percent =
 				wfMessage( 'articlefeedbackv5-form-helpful-votes-percent' )
-					->numParams(
-						ArticleFeedbackv5Utils::percentHelpful(
-							$record->aft_helpful,
-							$record->aft_unhelpful
-						)
-					)->escaped();
+					->numParams( $record->getHelpfulPercentage() )
+					->escaped();
 
 			$counts =
 				wfMessage( 'articlefeedbackv5-form-helpful-votes-count' )

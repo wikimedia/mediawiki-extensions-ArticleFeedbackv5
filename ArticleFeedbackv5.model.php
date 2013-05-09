@@ -53,6 +53,7 @@ class ArticleFeedbackv5Model extends DataModel {
 		// even more denormalized stuff, allowing easy DB-indexing sort columns
 		$aft_has_comment,
 		$aft_net_helpful = 0,
+		$aft_percentage_helpful = 0,
 		$aft_relevance_score = 0;
 
 	/**
@@ -181,7 +182,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	public static $sorts = array(
 		'relevance' => 'aft_relevance_score',
 		'age' => 'aft_timestamp',
-		'helpful' => 'aft_net_helpful'
+		'helpful' => 'aft_percentage_helpful'
 	);
 
 	/**
@@ -465,6 +466,7 @@ class ArticleFeedbackv5Model extends DataModel {
 		}
 
 		$this->aft_net_helpful = $this->aft_helpful - $this->aft_unhelpful;
+		$this->aft_percentage_helpful = $this->getHelpfulPercentage();
 		$this->aft_relevance_score = $this->getRelevanceScore();
 		$this->aft_has_comment = (bool) $this->aft_comment;
 		$this->aft_archive_date = $this->getArchiveDate();
@@ -481,6 +483,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 */
 	public function update() {
 		$this->aft_net_helpful = $this->aft_helpful - $this->aft_unhelpful;
+		$this->aft_percentage_helpful = $this->getHelpfulPercentage();
 		$this->aft_relevance_score = $this->getRelevanceScore();
 		$this->aft_has_comment = (bool) $this->aft_comment;
 		$this->aft_archive_date = $this->getArchiveDate();
@@ -555,6 +558,19 @@ class ArticleFeedbackv5Model extends DataModel {
 		}
 
 		return isset( static::$lists[$name]['conditions'] ) ? static::$lists[$name]['conditions'] : array();
+	}
+
+	/**
+	 * Calculate the helpfulness percentage
+	 *
+	 * @return int
+	 */
+	public function getHelpfulPercentage() {
+		if ( $this->aft_helpful + $this->aft_unhelpful > 0 ) {
+			return intval( $this->aft_helpful / ( $this->aft_helpful + $this->aft_unhelpful ) * 100 );
+		}
+
+		return 0;
 	}
 
 	/**
