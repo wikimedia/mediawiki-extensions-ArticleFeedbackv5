@@ -607,7 +607,13 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function onProtectionForm( Page $article, &$output ) {
-		global $wgLang, $wgUser;
+		global $wgLang, $wgUser, $wgArticleFeedbackv5Namespaces;
+
+		// only on pages in namespaces where it is enabled
+		if ( !in_array( $article->getTitle()->getNamespace(), $wgArticleFeedbackv5Namespaces ) ) {
+			return true;
+		}
+
 		$permErrors = $article->getTitle()->getUserPermissionsErrors( 'protect', $wgUser );
 		if ( wfReadOnly() ) {
 			$permErrors[] = array( 'readonlytext', wfReadOnlyReason() );
@@ -752,7 +758,12 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function onProtectionSave( Page $article, &$errorMsg ) {
-		global $wgRequest;
+		global $wgRequest, $wgArticleFeedbackv5Namespaces;
+
+		// only on pages in namespaces where it is enabled
+		if ( !$article->getTitle()->inNamespaces( $wgArticleFeedbackv5Namespaces ) ) {
+			return true;
+		}
 
 		$requestPermission = $wgRequest->getVal( 'articlefeedbackv5-protection-level' );
 		$requestExpiry = $wgRequest->getText( 'articlefeedbackv5-protection-expiration' );
