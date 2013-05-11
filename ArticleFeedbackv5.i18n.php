@@ -4201,11 +4201,12 @@ $messages['ca'] = array(
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Vés a les meves preferències',
 );
 
-/** Chechen (Нохчийн)
+/** Chechen (нохчийн)
  * @author Sasan700
+ * @author Умар
  */
 $messages['ce'] = array(
-	'articlefeedbackv5-bucket5-form-panel-submit' => 'Дlадахьийта хетарг',
+	'articlefeedbackv5-discussion-page' => 'Дийцаре',
 );
 
 /** Czech (česky)
@@ -18530,6 +18531,8 @@ $4',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Paginabeoordeling',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Mijn voorkeuren > Uiterlijk',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ga naar mijn voorkeuren',
+	'abusefilter-edit-action-aftv5resolve' => '(Paginaterugkoppeling) Automatisch oplossen',
+	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Automatisch opgelost. Regel: $1',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Paginaterugkoppeling) Automatisch markeren als misbruik',
 	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Automatisch gemarkeerd als misbruik. Regel: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Paginaterugkoppeling) Automatisch verbergen',
@@ -20290,11 +20293,11 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-form-unnoaction' => 'Desfazer',
 	'articlefeedbackv5-form-inappropriate' => 'Ocultar este post',
 	'articlefeedbackv5-form-uninappropriate' => 'Desfazer',
-	'articlefeedbackv5-form-unhide' => 'Reexibir o comentário', # Fuzzy
+	'articlefeedbackv5-form-unhide' => 'Desfazer',
 	'articlefeedbackv5-form-unarchive' => 'Desfazer',
 	'articlefeedbackv5-form-helpful' => 'Marcar como útil ($1)',
 	'articlefeedbackv5-form-oversight' => 'Solicitar supervisão', # Fuzzy
-	'articlefeedbackv5-form-unoversight' => 'Supervisão não solicitada', # Fuzzy
+	'articlefeedbackv5-form-unoversight' => 'Desfazer',
 	'articlefeedbackv5-form-decline' => 'Rejeitar supervisão',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 encontraram o que eles estavam procurando}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 não encontraram o que estavam procurando}}',
@@ -20308,7 +20311,7 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-error-loading-feedback' => 'Erro carregando comentários',
 	'articlefeedbackv5-invalid-feedback-id' => 'Identificação de comentário inválido.',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Marcador de comentário inválido',
-	'articlefeedbackv5-go-to-article' => 'Ver artigo', # Fuzzy
+	'articlefeedbackv5-go-to-article' => 'Ver página',
 	'articlefeedbackv5-discussion-page' => 'Discussão',
 	'articlefeedbackv5-whats-this' => 'Ajuda',
 	'articlefeedbackv5-invalid-page-id' => 'Identificador de página inválida',
@@ -20320,7 +20323,7 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-viewactivity' => 'Exibir atividade', # Fuzzy
 	'articlefeedbackv5-permalink-activity-title' => 'Atividade',
 	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 ação|$1 ações}})',
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Ocultar esta mensagem', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Ocultar',
 	'articlefeedbackv5-bucket1-title' => 'Ajude a melhorar esta página',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Você encontrou o que procurava?',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Sim',
