@@ -41,8 +41,17 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$length   = 0;
 
 		// no page id = central feedback page = null (getAllowedParams will have messed up null values)
-		if ( !$params['pageid'] ) {
-			$params['pageid'] = null;
+		if ( !$params['pageid'] && !$params['title'] ) {
+			$pageId = null;
+
+		// get page id
+		} else {
+			$pageObj = $this->getTitleOrPageId( $params, 'fromdb' );
+			if ( !$pageObj->exists() ) {
+				$this->dieUsageMsg( 'notanarticle' );
+			} else {
+				$pageId = $pageObj->getId();
+			}
 		}
 
 		// Save filter in user preference
@@ -54,7 +63,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		// build renderer
 		$highlight = (bool) $params['feedbackid'];
-		$central = !(bool) $params['pageid'];
+		$central = !(bool) $pageId;
 		$renderer = new ArticleFeedbackv5Render( false, $central, $highlight );
 
 		// Build html
@@ -65,8 +74,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			}
 		}
 
-		$filterCount = ArticleFeedbackv5Model::getCount( 'featured', $params['pageid'] );
-		$totalCount = ArticleFeedbackv5Model::getCount( '*', $params['pageid'] );
+		$filterCount = ArticleFeedbackv5Model::getCount( 'featured', $pageId );
+		$totalCount = ArticleFeedbackv5Model::getCount( '*', $pageId );
 
 		// Add metadata
 		$result->addValue( $this->getModuleName(), 'length', $length );
@@ -138,6 +147,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getAllowedParams() {
 		return array(
+			'title'         => null,
 			'pageid'        => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
@@ -182,8 +192,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 * @return array the descriptions, indexed by allowed key
 	 */
 	public function getParamDescription() {
+		$p = $this->getModulePrefix();
 		return array(
-			'pageid'        => 'Page ID to get feedback ratings for',
+			'title'         => "Title of the page to get feedback ratings for. Cannot be used together with {$p}pageid",
+			'pageid'        => "ID of the page to get feedback ratings for. Cannot be used together with {$p}title",
 			'watchlist'     => "Load feedback from user's watchlisted pages (1) or from all pages (0)",
 			'sort'          => 'Key to sort records by',
 			'sortdirection' => 'Direction (ASC|DESC) to sort the feedback by',
