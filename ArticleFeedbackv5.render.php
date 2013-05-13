@@ -1207,10 +1207,10 @@ class ArticleFeedbackv5Render {
 			$notes = '';
 			if ( $last->log_comment ) {
 				$notes .=
-					Html::element(
+					Html::rawElement(
 						'p',
 						array( 'class' => 'articleFeedbackv5-feedback-permalink-activity-status' ),
-						$last->log_comment
+						Linker::formatComment( $last->log_comment )
 					);
 			}
 
