@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Dw3yzMJg",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-13T19:36:07Z",
+      "side": 1,
+      "message": "For another commit: Shouldn\u0027t this all be done with mediawiki.api?",
+      "revId": "dae2ad9ed12be9ed212c736e4eb45184fc29f445",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
