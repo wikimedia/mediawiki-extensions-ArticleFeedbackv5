@@ -699,35 +699,37 @@
 				if ( 'articlefeedbackv5-flag-feedback' in data ) {
 					data = data['articlefeedbackv5-flag-feedback'];
 
-					if ( 'result' in data ) {
-						// replace entry by new render
+					// replace entry by new render
+					if ( 'render' in data ) {
 						$( '.articleFeedbackv5-feedback[data-id='+id+']' )
 							.replaceWith( data.render );
-
-						// invoke the registered onSuccess callback for the executed action
-						if ( data.result === 'Success' ) {
-							if ( 'onSuccess' in $.articleFeedbackv5special.actions[action] ) {
-								$.articleFeedbackv5special.actions[action].onSuccess( id, data );
-							}
-
-						// display error message
-						} else if ( data.result === 'Error' && data.reason ) {
-							var errorMessage = mw.msg( data.reason );
-							if ( 'render' in data ) {
-								errorMessage = mw.msg( 'articlefeedbackv5-feedback-reloaded-after-error', errorMessage );
-							}
-
-							$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
-								.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
-						}
-
-						// re-mark active flags in reader tools
-						$.articleFeedbackv5special.markActiveFlags( id );
-
-						// re-bind panels (tipsies)
-						$.articleFeedbackv5special.bindTipsies( id );
 					}
+
+					// invoke the registered onSuccess callback for the executed action
+					if ( 'onSuccess' in $.articleFeedbackv5special.actions[action] ) {
+						$.articleFeedbackv5special.actions[action].onSuccess( id, data );
+					}
+
+				// display error message
+				} else if ( 'error' in data ) {
+					var errorMessage = data.error.info;
+
+					if ( 'render' in data.error ) {
+						$( '.articleFeedbackv5-feedback[data-id='+id+']' )
+							.replaceWith( data.error.render );
+
+						errorMessage = mw.msg( 'articlefeedbackv5-feedback-reloaded-after-error', errorMessage );
+					}
+
+					$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
+						.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
 				}
+
+				// re-mark active flags in reader tools
+				$.articleFeedbackv5special.markActiveFlags( id );
+
+				// re-bind panels (tipsies)
+				$.articleFeedbackv5special.bindTipsies( id );
 
 				// re-enable ajax flagging
 				$.articleFeedbackv5special.listControls.disabled = false;
@@ -787,29 +789,31 @@
 				if ( 'articlefeedbackv5-add-flag-note' in data ) {
 					data = data['articlefeedbackv5-add-flag-note'];
 
-					if ( 'result' in data ) {
-						// replace entry by new render
-						if ( data.result === 'Success' ) {
-							$( '.articleFeedbackv5-feedback[data-id='+id+']' )
-								.replaceWith( data.render );
-
-							// re-mark active flags in reader tools
-							$.articleFeedbackv5special.markActiveFlags( id );
-
-							// re-bind panels (tipsies)
-							$.articleFeedbackv5special.bindTipsies( id );
-
-						// display error message
-						} else if ( data.result === 'Error' && data.reason ) {
-							var errorMessage = mw.msg( data.reason );
-							if ( 'render' in data ) {
-								errorMessage = mw.msg( 'articlefeedbackv5-feedback-reloaded-after-error', errorMessage );
-							}
-
-							$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
-								.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
-						}
+					// replace entry by new render
+					if ( 'render' in data ) {
+						$( '.articleFeedbackv5-feedback[data-id='+id+']' )
+							.replaceWith( data.render );
 					}
+
+					// re-mark active flags in reader tools
+					$.articleFeedbackv5special.markActiveFlags( id );
+
+					// re-bind panels (tipsies)
+					$.articleFeedbackv5special.bindTipsies( id );
+
+				// display error message
+				} else if ( 'error' in data ) {
+					var errorMessage = data.error.info;
+
+					if ( 'render' in data.error ) {
+						$( '.articleFeedbackv5-feedback[data-id='+id+']' )
+							.replaceWith( data.error.render );
+
+						errorMessage = mw.msg( 'articlefeedbackv5-feedback-reloaded-after-error', errorMessage );
+					}
+
+					$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
+						.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
 				}
 
 				// re-enable ajax flagging
@@ -859,7 +863,7 @@
 			'data': data,
 			'cache' : false,
 			'context': { location: location },
-			'success': function( data ) {
+			'success': function ( data ) {
 				if ( data['articlefeedbackv5-view-activity'].hasHeader ) {
 					$( location ).html( data['articlefeedbackv5-view-activity'].activity );
 				} else {
@@ -884,7 +888,7 @@
 						} );
 				}
 			},
-			'error': function( data ) {
+			'error': function ( data ) {
 				// FIXME this messages isn't defined
 				$( location ).text( mw.msg( 'articleFeedbackv5-view-activity-error' ) );
 			}

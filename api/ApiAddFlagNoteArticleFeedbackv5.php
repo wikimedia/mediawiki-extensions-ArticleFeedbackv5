@@ -29,18 +29,24 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 		wfProfileIn( __METHOD__ );
 
 		$affected = 0;
+		$results = array();
+
+		// get important values from our parameters
+		$params = $this->extractRequestParams();
+		$logId = $params['logid'];
+		$action = $params['flagtype'];
+		$notes = $params['note'];
+		$feedbackId = $params['feedbackid'];
+		$source = $params['source'];
+
+		// get page object
+		$pageObj = $this->getTitleOrPageId( $params, 'fromdb' );
+		if ( !$pageObj->exists() ) {
+			$this->dieUsageMsg( 'notanarticle' );
+		}
 
 		global $wgUser;
 		if ( $wgUser->getId() ) {
-			// get important values from our parameters
-			$params     = $this->extractRequestParams();
-			$logId      = $params['logid'];
-			$action     = $params['flagtype'];
-			$notes      = $params['note'];
-			$feedbackId = $params['feedbackid'];
-			$pageId     = $params['pageid'];
-			$source     = $params['source'];
-
 			// update log entry in database
 			$dbw = ArticleFeedbackv5Utils::getDB( DB_MASTER );
 			$affected = $dbw->update(
@@ -63,32 +69,34 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 			 */
 			$wiki = false;
 			ArticleFeedbackv5Utils::$written[$wiki] = true;
+
+			if ( $affected > 0 ) {
+				/*
+				 * While we're at it, since activity has occurred, the editor activity
+				 * data in cache may be out of date.
+				 */
+				global $wgMemc;
+				$key = wfMemcKey( 'ArticleFeedbackv5Activity', 'getLastEditorActivity', $feedbackId );
+				$wgMemc->delete( $key );
+			}
 		}
 
-		$results = array();
-		if ( $affected > 0 ) {
-			/*
-			 * While we're at it, since activity has occurred, the editor activity
-			 * data in cache may be out of date.
-			 */
-			global $wgMemc;
-			$key = wfMemcKey( 'ArticleFeedbackv5Activity', 'getLastEditorActivity', $feedbackId );
-			$wgMemc->delete( $key );
-
-			$results['result'] = 'Success';
-			$results['reason'] = null;
-		} else {
-			$results['result'] = 'Error';
-			$results['reason'] = 'articlefeedbackv5-invalid-log-update';
-		}
-
-		$feedback = ArticleFeedbackv5Model::get( $feedbackId, $pageId );
+		$feedback = ArticleFeedbackv5Model::get( $feedbackId, $pageObj->getId() );
 		if ( $feedback ) {
 			// re-render feedback entry
-			$permalink = $source == 'permalink';
-			$central = $source == 'central';
+			$permalink = $source === 'permalink';
+			$central = $source === 'central';
 			$renderer = new ArticleFeedbackv5Render( $permalink, $central );
 			$results['render'] = $renderer->run( $feedback );
+		}
+
+		if ( $affected === 0 ) {
+			$this->dieUsage(
+				$this->msg( 'articlefeedbackv5-invalid-log-update' )->text(),
+				'invalidlogid',
+				0,
+				$results
+			);
 		}
 
 		$this->getResult()->addValue(
@@ -120,8 +128,8 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => 'string'
 			),
+			'title' => null,
 			'pageid' => array(
-				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
 			),
@@ -144,11 +152,13 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	 * @return array the descriptions, indexed by allowed key
 	 */
 	public function getParamDescription() {
+		$p = $this->getModulePrefix();
 		return array(
 			'logid' => 'Log ID to update',
 			'flagtype' => 'Type of flag to apply',
 			'note'   => 'Information on why the feedback activity occurred',
-			'pageid' => 'PageID of feedback',
+			'title' => "Title of the page the feedback was given for. Cannot be used together with {$p}pageid",
+			'pageid' => "ID of the page the feedback was given for. Cannot be used together with {$p}title",
 			'feedbackid' => 'FeedbackID to flag',
 			'source' => 'The origin of the flag: article (page), central (feedback page), watchlist (page), permalink',
 		);

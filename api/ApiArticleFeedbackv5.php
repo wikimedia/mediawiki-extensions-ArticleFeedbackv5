@@ -47,8 +47,17 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
+		// get page object
+		$pageObj = $this->getTitleOrPageId( $params, 'fromdb' );
+		if ( !$pageObj->exists() ) {
+			$this->dieUsage(
+				$this->msg( 'articlefeedbackv5-invalid-page-id' )->escaped(),
+				'notanarticle'
+			);
+		}
+
 		// Check if feedback is enabled on this page
-		if ( !ArticleFeedbackv5Utils::isFeedbackEnabled( $params['pageid'] ) ) {
+		if ( !ArticleFeedbackv5Utils::isFeedbackEnabled( $pageObj->getId() ) ) {
 			$this->dieUsage(
 				$this->msg( 'articlefeedbackv5-page-disabled' )->escaped(),
 				'invalidpage'
@@ -57,7 +66,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		// Build feedback entry
 		$feedback = new ArticleFeedbackv5Model();
-		$feedback->aft_page = $params['pageid'];
+		$feedback->aft_page = $pageObj->getId();
 		$feedback->aft_page_revision = $params['revid'];
 		$feedback->aft_user = $user->getId();
 		$feedback->aft_user_text = $user->getName();
@@ -183,7 +192,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			null,
 			$this->getModuleName(),
 			array(
-				'result'      => 'Success',
 				'feedback_id' => $feedback->aft_id,
 				'aft_url'     => $aftUrl,
 				'permalink'   => $permalink,
@@ -234,9 +242,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$linkIds = array_keys( $wgArticleFeedbackv5LinkBuckets['buckets'] );
 
 		$ret = array(
+			'title' => null,
 			'pageid' => array(
 				ApiBase::PARAM_TYPE     => 'integer',
-				ApiBase::PARAM_REQUIRED => true,
 			),
 			'revid' => array(
 				ApiBase::PARAM_TYPE     => 'integer',
@@ -277,8 +285,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @return array the descriptions, indexed by allowed key
 	 */
 	public function getParamDescription() {
-		$ret = array(
-			'pageid'     => 'Page ID to submit feedback for',
+		$p = $this->getModulePrefix();
+		return array(
+			'title'      => "Title of the page to submit feedback for. Cannot be used together with {$p}pageid",
+			'pageid'     => "ID of the page to submit feedback for. Cannot be used together with {$p}title",
 			'revid'      => 'Revision ID to submit feedback for',
 			'anontoken'  => 'Token for anonymous users',
 			'bucket'     => 'Which feedback form was shown to the user',
@@ -287,7 +297,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'found'      => 'Yes/no feedback answering the question if the page was helpful',
 			'comment'    => 'the fee-form textual feedback',
 		);
-		return $ret;
 	}
 
 	/**
