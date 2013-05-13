@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Dw0FayU4",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-13T17:48:59Z",
+      "side": 1,
+      "message": "What about if ( !$article-\u003egetTitle()-\u003einNamespaces( $wgArticleFeedbackv5Namespaces ) ) ?",
+      "revId": "2aba4ca54f68c9b5fb66aa16e495882bd4342e4f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
