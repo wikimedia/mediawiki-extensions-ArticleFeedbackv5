@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DwzcVQ0k",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-13T20:16:25Z",
+      "side": 1,
+      "message": "So it looks like this is:\n\n* https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Articlefeedbackv5-contribs-entry/en\n* https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Articlefeedbackv5-special-watchlist-showing/en\n* https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Articlefeedbackv5-form-delete/en\n* https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Articlefeedbackv5-activity-feedback-info/en\n* https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Articlefeedbackv5-activity-feedback-date/en\n* https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Articlefeedbackv5-activity-feedback-date/ksh",
+      "revId": "4d7678c87f8e540d7008d89926e77e9c8f35cc57",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
