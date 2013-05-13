@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Dw5wadBI",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-13T18:30:23Z",
+      "side": 1,
+      "message": "same for this one",
+      "revId": "5b61a2ef7176dad61dd0e801e287d1f69881c48b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
