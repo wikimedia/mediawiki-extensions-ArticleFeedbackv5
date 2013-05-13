@@ -587,6 +587,7 @@ includes one of these issues:
 	'articlefeedbackv5-section-linktext' => 'feedback',
 	'articlefeedbackv5-toolbox-view' => 'View feedback',
 	'articlefeedbackv5-toolbox-add' => 'Add your feedback',
+	'articlefeedbackv5-leave-warning' => 'Data you have entered may not be saved.',
 
 	/* Special:Preferences */
 	'articlefeedbackv5-disable-preference' => "Don't show the Article feedback widget on pages",
@@ -1658,6 +1659,7 @@ Link to article introduction AFT to oversighters (= users with permission to del
 {{Identical|Feedback}}',
 	'articlefeedbackv5-toolbox-view' => 'This link will take users to the feedback page of article currently being read',
 	'articlefeedbackv5-toolbox-add' => 'This link will scroll down the screen and make the form flash, pointing users to the feedback form',
+	'articlefeedbackv5-leave-warning' => 'Warning message to be displayed if a user attempts to leave the page after having started writing feedback and not having submitted it.',
 	'articlefeedbackv5-disable-preference' => 'Preference name/description for disabling AFTv5',
 	'right-aft-reader' => '{{doc-right|aft-reader}}
 Permission to post feedback & mark as (un)helpful (see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions)',
