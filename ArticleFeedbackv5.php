@@ -716,6 +716,7 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-permalink-activity-more',
 		'articlefeedbackv5-permalink-activity-fewer',
 		'articlefeedbackv5-abuse-saved',
+		'articlefeedbackv5-abuse-saved-tooltip',
 		'articlefeedbackv5-form-unrequest',
 		'articlefeedbackv5-form-declined',
 
