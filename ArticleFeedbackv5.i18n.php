@@ -1788,7 +1788,6 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * $5 - A link to the article the feedback was posted to
 {{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-uninappropriate' => "Log entry for when a user un-marks a feedback post as inappropriate. Parameters:
->>>>>>> re-introduce hide tool for monitors
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
