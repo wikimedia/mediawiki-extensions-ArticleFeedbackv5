@@ -50,8 +50,14 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		$continue = $params['continue'];
 		$result = $this->getResult();
 
+		// get page object
+		$pageObj = $this->getTitleOrPageId( $params, 'fromdbmaster' );
+		if ( !$pageObj->exists() ) {
+			$this->dieUsageMsg( 'notanarticle' );
+		}
+
 		// fetch our activity database information
-		$feedback = ArticleFeedbackv5Model::get( $params['feedbackid'], $params['pageid'] );
+		$feedback = ArticleFeedbackv5Model::get( $params['feedbackid'], $pageObj->getId() );
 		// if this is false, this is bad feedback - move along
 		if ( !$feedback ) {
 			wfProfileOut( __METHOD__ );
@@ -211,8 +217,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE     => 'string',
 			),
+			'title' => null,
 			'pageid' => array(
-				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE     => 'integer',
 			),
 			'limit' => array(
@@ -235,9 +241,11 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 * @return array the descriptions, indexed by allowed key
 	 */
 	public function getParamDescription() {
+		$p = $this->getModulePrefix();
 		return array(
 			'feedbackid' => 'ID of article feedback to get activity for',
-			'pageid' => 'ID of the page the feedback was given for',
+			'title' => "Title of the page the feedback was given for. Cannot be used together with {$p}pageid",
+			'pageid' => "ID of the page the feedback was given for. Cannot be used together with {$p}title",
 			'limit' => 'How many activity results to return',
 			'continue' => 'When more results are available, use this to continue',
 			'noheader' => 'Skip the header markup, even if this is the first page',

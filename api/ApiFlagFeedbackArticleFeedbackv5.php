@@ -32,28 +32,30 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 
 		global $wgUser;
 
+		$results = array();
+
 		// get important values from our parameters
 		$params     = $this->extractRequestParams();
 		$feedbackId = $params['feedbackid'];
-		$pageId     = $params['pageid'];
 		$flag       = $params['flagtype'];
 		$notes      = $params['note'];
 		$toggle     = $params['toggle'];
 		$source     = $params['source'];
 
+		// get page object
+		$pageObj = $this->getTitleOrPageId( $params, 'fromdbmaster' );
+		if ( !$pageObj->exists() ) {
+			$this->dieUsage(
+				$this->msg( 'articlefeedbackv5-invalid-page-id' )->escaped(),
+				'notanarticle'
+			);
+		} else {
+			$pageId = $pageObj->getId();
+		}
+
 		// Fire up the flagging object
 		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId, $pageId );
 		$status = $flagger->run( $flag, $notes, $toggle, $source );
-
-		$results = array();
-		if ( !$status ) {
-			$results['result'] = 'Error';
-			$results['reason'] = $flagger->getError();
-		} else {
-			$results['result'] = 'Success';
-			$results['reason'] = null;
-			$results['log_id'] = $flagger->getLogId();
-		}
 
 		$feedback = ArticleFeedbackv5Model::get( $feedbackId, $pageId );
 		if ( $feedback ) {
@@ -62,6 +64,17 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$central = $source == 'central';
 			$renderer = new ArticleFeedbackv5Render( $permalink, $central );
 			$results['render'] = $renderer->run( $feedback );
+		}
+
+		if ( !$status ) {
+			$this->dieUsage(
+				$this->msg( $flagger->getError() )->text(),
+				'flagerror',
+				0,
+				$results
+			);
+		} else {
+			$results['log_id'] = $flagger->getLogId();
 		}
 
 		$this->getResult()->addValue(
@@ -80,8 +93,8 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getAllowedParams() {
 		return array(
+			'title' => null,
 			'pageid' => array(
-				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
 			),
@@ -119,8 +132,10 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 * @return array the descriptions, indexed by allowed key
 	 */
 	public function getParamDescription() {
+		$p = $this->getModulePrefix();
 		return array(
-			'pageid' => 'PageID of feedback',
+			'title' => "Title of the page to flag feedback for. Cannot be used together with {$p}pageid",
+			'pageid' => "ID of the page to flag feedback for. Cannot be used together with {$p}title",
 			'feedbackid' => 'FeedbackID to flag',
 			'flagtype' => 'Type of flag to apply',
 			'note' => 'Information on why the feedback activity occurred',
