@@ -690,12 +690,9 @@
 		// this "options" is currently solely used to add "toggle" to params, when appropriate
 		$.extend( requestData, options );
 
-		$.ajax( {
-			'url': $.articleFeedbackv5special.apiUrl,
-			'type': 'POST',
-			'dataType': 'json',
-			'data': requestData,
-			'success': function ( data ) {
+		var api = new mw.Api();
+		api.post( requestData )
+			.done( function( data ) {
 				if ( 'articlefeedbackv5-flag-feedback' in data ) {
 					data = data['articlefeedbackv5-flag-feedback'];
 
@@ -733,16 +730,16 @@
 
 				// re-enable ajax flagging
 				$.articleFeedbackv5special.listControls.disabled = false;
-			},
-			'error': function ( data ) {
+			} )
+			.fail( function() {
 				var errorMessage = mw.msg( 'articlefeedbackv5-error-flagging' );
 				$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
 					.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
 
 				// re-enable ajax flagging
 				$.articleFeedbackv5special.listControls.disabled = false;
-			}
-		} );
+			} );
+
 		return false;
 	};
 
@@ -780,12 +777,9 @@
 			'action': 'articlefeedbackv5-add-flag-note'
 		};
 
-		$.ajax( {
-			'url': $.articleFeedbackv5special.apiUrl,
-			'type': 'POST',
-			'dataType': 'json',
-			'data': requestData,
-			'success': function ( data ) {
+		var api = new mw.Api();
+		api.post( requestData )
+			.done( function( data ) {
 				if ( 'articlefeedbackv5-add-flag-note' in data ) {
 					data = data['articlefeedbackv5-add-flag-note'];
 
@@ -818,16 +812,15 @@
 
 				// re-enable ajax flagging
 				$.articleFeedbackv5special.listControls.disabled = false;
-			},
-			'error': function ( data ) {
+			} )
+			.fail( function() {
 				var errorMessage = mw.msg( 'articlefeedbackv5-invalid-log-update' );
 				$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
 					.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
 
 				// re-enable ajax flagging
 				$.articleFeedbackv5special.listControls.disabled = false;
-			}
-		} );
+			} );
 
 		return false;
 	};
@@ -856,14 +849,10 @@
 		if ( location == '#articleFeedbackv5-permalink-activity-log' ) {
 			data['aanoheader'] = true;
 		}
-		$.ajax( {
-			'url': $.articleFeedbackv5special.apiUrl,
-			'type': 'GET',
-			'dataType': 'json',
-			'data': data,
-			'cache' : false,
-			'context': { location: location },
-			'success': function( data ) {
+
+		var api = new mw.Api( { ajax: { cache: false } } );
+		api.get( data )
+			.done( function( data ) {
 				if ( data['articlefeedbackv5-view-activity'].hasHeader ) {
 					$( location ).html( data['articlefeedbackv5-view-activity'].activity );
 				} else {
@@ -887,12 +876,10 @@
 							);
 						} );
 				}
-			},
-			'error': function( data ) {
-				// FIXME this messages isn't defined
+			} )
+			.fail( function() {
 				$( location ).text( mw.msg( 'articleFeedbackv5-view-activity-error' ) );
-			}
-		} );
+			} );
 
 		return false;
 	};
@@ -932,14 +919,10 @@
 			'list':               'articlefeedbackv5-view-feedback',
 			'maxage':             0
 		};
-		$.ajax( {
-			'url' : $.articleFeedbackv5special.apiUrl,
-			'type' : 'GET',
-			'dataType' : 'json',
-			'data' : params,
-			'cache' : false,
-			'context' : { info: params },
-			'success' : function ( data ) {
+
+		var api = new mw.Api( { ajax: { cache: false } } );
+		api.get( params )
+			.done( function( data ) {
 				if ( 'articlefeedbackv5-view-feedback' in data ) {
 					if ( resetContents ) {
 						$( '#articleFeedbackv5-show-feedback' ).empty();
@@ -950,7 +933,7 @@
 						$( '#articleFeedbackv5-show-feedback' ).append( data['articlefeedbackv5-view-feedback'].feedback );
 					}
 					if ( $.articleFeedbackv5special.highlightId ) {
-						if (this.info.afvffeedbackid == $.articleFeedbackv5special.highlightId ) {
+						if ( $.articleFeedbackv5special.listControls.feedbackId == $.articleFeedbackv5special.highlightId ) {
 							$( '.articleFeedbackv5-feedback[data-id=' + $.articleFeedbackv5special.highlightId + ']:not(.articleFeedbackv5-feedback-highlighted)' ).remove();
 							$.articleFeedbackv5special.highlightId = undefined;
 						} else if ( !prependContents ) {
@@ -975,16 +958,15 @@
 				}
 
 				$.articleFeedbackv5special.emptyMessage();
-			},
-			'error': function ( data ) {
+			} )
+			.fail( function() {
 				$( '#articleFeedbackv5-show-feedback' ).text( mw.msg( 'articlefeedbackv5-error-loading-feedback' ) );
 				if ( resetContents || prependContents ) {
 					$( '#articleFeedbackv5-feedback-loading-top' ).fadeOut();
 				} else {
 					$( '#articleFeedbackv5-feedback-loading-bottom' ).fadeOut();
 				}
-			}
-		} );
+			} );
 
 		return false;
 	};
