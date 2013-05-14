@@ -1745,6 +1745,7 @@
 				$link.find( '#articleFeedbackv5-fixedtablink' )
 					.data( 'linkId', 'C' )
 					.attr( 'title', mw.msg( 'articlefeedbackv5-fixedtab-linktext' ) )
+					.text( mw.msg( 'articlefeedbackv5-fixedtab-linktext' ) )
 					.click( function ( e ) {
 						e.preventDefault();
 						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );

@@ -529,7 +529,6 @@ $wgResourceModules['ext.articleFeedbackv5'] = array(
 	'messages' => array(
 		'articlefeedbackv5-sitesub-linktext',
 		'articlefeedbackv5-titlebar-linktext',
-		'articlefeedbackv5-fixedtab-linktext',
 		'articlefeedbackv5-bottomrighttab-linktext',
 		'articlefeedbackv5-section-linktext',
 		'articlefeedbackv5-toolbox-view',
@@ -627,6 +626,7 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 		'articlefeedbackv5-cta6-button-text',
 		'articlefeedbackv5-cta6-button-link',
 		'articlefeedbackv5-overlay-close',
+		'articlefeedbackv5-fixedtab-linktext',
 		'articlefeedbackv5-bucket1-title',
 		'articlefeedbackv5-bucket1-question-toggle',
 		'articlefeedbackv5-bucket1-toggle-found-yes',

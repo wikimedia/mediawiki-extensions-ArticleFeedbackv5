@@ -812,7 +812,7 @@
 }
 .articleFeedbackv5-fixedtabbox {
 	position: relative;
-	/*
+
 	-moz-transform:rotate(90deg);
 	-moz-transform-origin: top left;
 	-webkit-transform: rotate(90deg);
@@ -823,31 +823,18 @@
 	-ms-transform-origin: top left;
 	transform: rotate(90deg);
 	transform-origin: top left;
-	*/
+
 }
 .articleFeedbackv5-fixedtablink {
-	/*
-	border: none;
-	background-color: #5373a6;
-	-moz-border-radius: 0 0 10px 10px;
-	-webkit-border-radius: 0 0 10px 10px;
-	-ms-border-radius: 0 0 10px 10px;
-	border-radius: 0 0 10px 10px;
-	min-width: 105px;
-	*/
-	width: 27px;
-	height: 114px;
-	right: 0;
+	width: 114px;
+	height: 27px;
+	line-height: 27px;
+	text-align: center;
+	background: #F5FAFF;
+	border: 1px solid #CCCCCC;
 	display: block;
 	margin: 0;
-	/* @embed */
-	background: url(images/img_aftv5_tablink.png) no-repeat;
-	/*
-	padding: 5px 10px;
-	color: #fff;
-	text-align: center;
-	writing-mode: tb-rl;
-	*/
+	color: #666;
 	position: absolute;
 	z-index: 999;
 }
