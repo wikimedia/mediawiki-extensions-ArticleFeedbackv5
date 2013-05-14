@@ -2644,16 +2644,13 @@
 		// Track the submit click
 		$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_attempt' );
 
-		// Send off the ajax request
-		$.ajax( {
-			'url': $.articleFeedbackv5.apiUrl,
-			'type': 'POST',
-			'dataType': 'json',
-			'data': data,
-			'success': function ( data ) {
+		// Fire ajax request
+		var api = new mw.Api();
+		api.post( data )
+			.done( function( data ) {
 				if ( 'articlefeedbackv5' in data
-						&& 'feedback_id' in data.articlefeedbackv5
-						&& 'aft_url' in data.articlefeedbackv5 ) {
+					&& 'feedback_id' in data.articlefeedbackv5
+					&& 'aft_url' in data.articlefeedbackv5 ) {
 					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
 					$.articleFeedbackv5.specialUrl = data.articlefeedbackv5.aft_url;
 					$.articleFeedbackv5.permalink = data.articlefeedbackv5.permalink;
@@ -2681,38 +2678,24 @@
 
 					// Track the success
 					$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_success' );
-				} else {
-					var msg = mw.msg( 'articlefeedbackv5-error-unknown' );
-					var code = 'unknown';
-
-					// fetch error information
-					if ( 'error' in data ) {
-						msg = data.error.info;
-						code = data.error.code;
-					} else if ( 'warning' in data ) {
-						msg = data.warning.info;
-						code = data.warning.code;
-					}
-
-					// Track the error
-					$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_error_' + code );
-
-					// Set up error state
-					$.articleFeedbackv5.markFormErrors( msg );
 				}
-			},
-			'error': function (xhr, tstatus, error) {
-				var msg = mw.msg( 'articlefeedbackv5-error-submit' );
-				var code = 'jquery';
+			} )
+			.fail( function( code, data ) {
+				var msg = mw.msg( 'articlefeedbackv5-error-unknown' );
+
+				// fetch error information
+				if ( 'error' in data ) {
+					msg = data.error.info;
+				} else if ( 'warning' in data ) {
+					msg = data.warning.info;
+				}
 
 				// Track the error
 				$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_error_' + code );
 
 				// Set up error state
 				$.articleFeedbackv5.markFormErrors( msg );
-				$.articleFeedbackv5.unlockForm();
-			}
-		} );
+			} );
 
 		// Does the bucket need to do anything else on submit (alongside the
 		// ajax request, not as a result of it)?

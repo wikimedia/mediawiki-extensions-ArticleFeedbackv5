@@ -696,6 +696,7 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 		'jquery.articleFeedbackv5.track',
 		'jquery.effects.highlight',
 		'mediawiki.Uri',
+		'mediawiki.api',
 	),
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
@@ -709,6 +710,7 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-invalid-feedback-flag',
 		'articlefeedbackv5-invalid-feedback-state',
 		'articlefeedbackv5-feedback-reloaded-after-error',
+		'articleFeedbackv5-view-activity-error',
 
 		'articlefeedbackv5-comment-more',
 		'articlefeedbackv5-comment-less',
@@ -875,6 +877,7 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'jquery.articleFeedbackv5.track',
 		'jquery.json',
 		'jquery.ui.button',
+		'mediawiki.api',
 	),
 ) + $wgArticleFeedbackResourcePaths;
 
