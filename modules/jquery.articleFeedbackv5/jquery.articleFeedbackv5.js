@@ -2644,16 +2644,13 @@
 		// Track the submit click
 		$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_attempt' );
 
-		// Send off the ajax request
-		$.ajax( {
-			'url': $.articleFeedbackv5.apiUrl,
-			'type': 'POST',
-			'dataType': 'json',
-			'data': data,
-			'success': function ( data ) {
+		// Fire ajax request
+		var Api = new mw.Api();
+		Api.post( data, {
+			'ok' : function( data ) {
 				if ( 'articlefeedbackv5' in data
-						&& 'feedback_id' in data.articlefeedbackv5
-						&& 'aft_url' in data.articlefeedbackv5 ) {
+					&& 'feedback_id' in data.articlefeedbackv5
+					&& 'aft_url' in data.articlefeedbackv5 ) {
 					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
 					$.articleFeedbackv5.specialUrl = data.articlefeedbackv5.aft_url;
 					$.articleFeedbackv5.permalink = data.articlefeedbackv5.permalink;
@@ -2701,7 +2698,7 @@
 					$.articleFeedbackv5.markFormErrors( msg );
 				}
 			},
-			'error': function (xhr, tstatus, error) {
+			'err' : function() {
 				var msg = mw.msg( 'articlefeedbackv5-error-submit' );
 				var code = 'jquery';
 
