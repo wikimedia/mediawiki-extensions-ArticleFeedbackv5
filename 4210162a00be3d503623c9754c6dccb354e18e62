@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Dw9f7MkM",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2648,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-14T17:29:46Z",
+      "side": 1,
+      "message": "Should be called \u0027api\u0027, no capital",
+      "revId": "4210162a00be3d503623c9754c6dccb354e18e62",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dw7f4Lkg",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2650,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-14T17:29:46Z",
+      "side": 1,
+      "message": "Use .done and .fail instead of the ok and err",
+      "revId": "4210162a00be3d503623c9754c6dccb354e18e62",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dw1egwkY",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-14T17:29:46Z",
+      "side": 1,
+      "message": "see reviews for previous file",
+      "revId": "4210162a00be3d503623c9754c6dccb354e18e62",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dwxe-Wl8",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-14T17:29:46Z",
+      "side": 1,
+      "message": "?",
+      "revId": "4210162a00be3d503623c9754c6dccb354e18e62",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
