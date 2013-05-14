@@ -91,6 +91,12 @@ class ArticleFeedbackv5Hooks {
 			dirname( __FILE__ ) . '/sql/discuss.sql'
 		);
 
+		$updater->addExtensionField(
+			'aft_feedback',
+			'aft_claimed_user',
+			dirname( __FILE__ ) . '/sql/claimed_user.sql'
+		);
+
 		return true;
 	}
 
@@ -812,5 +818,61 @@ class ArticleFeedbackv5Hooks {
 		);
 
 		return $success;
+	}
+
+	/**
+	 * Post-login update new user's last feedback with his new id
+	 *
+	 * @param User $currentUser
+	 * @param string $injected_html
+	 * @return bool
+	 */
+	public static function userLoginComplete( $currentUser, $injected_html ) {
+		global $wgRequest;
+
+		$id = 0;
+
+		// feedback id is c-parameter in the referrer, extract it
+		$referrer = ( $wgRequest->getVal( 'referrer' ) ) ? $wgRequest->getVal( 'referrer' ) : $wgRequest->getHeader( 'referer' );
+		$url = parse_url( $referrer );
+		$values = array();
+		if ( isset( $url['query'] ) ) {
+			parse_str( $url['query'], $values );
+		}
+		if ( isset( $values['c'] ) ) {
+			$id = $values['c'];
+
+		// if c-parameter is no longer in url (e.g. account creation didn't work at first attempts), try cookie data
+		} else {
+			$cookie = json_decode( $wgRequest->getCookie( ArticleFeedbackv5Utils::getCookieName( 'feedback-ids' ) ), true );
+			if ( is_array( $cookie ) ) {
+				$id = array_shift( $cookie );
+			}
+		}
+
+		// the page that feedback was added to is the one we'll be returned to
+		$title = Title::newFromDBkey( $wgRequest->getVal( 'returnto' ) );
+		if ( $title !== null && $id ) {
+			$pageId = $title->getArticleID();
+
+			/*
+			 * If we find this feedback and it is not yet "claimed" (and the feedback was
+			 * not submitted by a registered user), "claim" it to the current user.
+			 * Make sure the current request's IP actually still matches the one saved for
+			 * the original submission.
+			 */
+			$feedback = ArticleFeedbackv5Model::get( $id, $pageId );
+			if (
+				$feedback &&
+				!$feedback->aft_user &&
+				$feedback->aft_user_text == IP::sanitizeIP( $wgRequest->getIP() ) &&
+				!$feedback->aft_claimed_user
+			 ) {
+				$feedback->aft_claimed_user = $currentUser->getId();
+				$feedback->update();
+			}
+		}
+
+		return true;
 	}
 }
