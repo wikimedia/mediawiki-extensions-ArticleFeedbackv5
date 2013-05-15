@@ -77,11 +77,11 @@ select {
 }
 #articleFeedbackv5-header-links {
 	float: right;
+	line-height: 30px;
 	height: 30px;
 }
 #articleFeedbackv5-header-links a {
 	padding-left: 10px;
-	line-height: 30px;
 }
 #articlefeedbackv5-special-central-watchlist-link {
 	margin-left: 10px;
@@ -94,6 +94,7 @@ select {
 #articleFeedbackv5-special-watchlist-showing-wrap {
 	color: #444;
 	display: inline;
+	line-height: 30px;
 }
 #articleFeedbackv5-showing-count-wrap span,
 #articleFeedbackv5-special-watchlist-showing-wrap span {
@@ -123,9 +124,8 @@ select {
 }
 #articleFeedbackv5-percent-found-wrap {
 	color: #444;
-	margin: 15px 0 5px 0;
-
 	display: inline;
+	line-height: 30px;
 }
 #articleFeedbackv5-percent-found-wrap .stat-marker {
 	margin-left: 30px;
