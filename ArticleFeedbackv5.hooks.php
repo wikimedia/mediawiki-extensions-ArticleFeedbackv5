@@ -197,7 +197,8 @@ class ArticleFeedbackv5Hooks {
 			'title' => $title->getFullText(),
 			'namespace' => $title->getNamespace(),
 			'categories' => array(),
-			'permissionLevel' => isset( $permissions->pr_level ) ? $permissions->pr_level : false
+			'permissionLevel' => isset( $permissions->pr_level ) ? $permissions->pr_level : false,
+			'defaultPermissionLevel' => ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $title->getArticleID() ),
 		);
 
 		foreach ( $title->getParentCategories() as $category => $page ) {
@@ -638,12 +639,14 @@ class ArticleFeedbackv5Hooks {
 			'aft-reader' => 'articlefeedbackv5-protection-permission-reader',
 			'aft-member' => 'articlefeedbackv5-protection-permission-member',
 			'aft-editor' => 'articlefeedbackv5-protection-permission-editor',
-			'aft-administrator' => 'articlefeedbackv5-protection-permission-administrator'
+			'aft-administrator' => 'articlefeedbackv5-protection-permission-administrator',
+			'aft-noone' => 'articlefeedbackv5-protection-permission-noone', // @todo: i18n
 		);
 
 		// build permissions dropdown
 		$existingRestriction = ArticleFeedbackv5Permissions::getRestriction( $articleId );
-		$existingPermissionLevel = isset( $existingRestriction->pr_level ) ? $existingRestriction->pr_level : false;
+		$defaultPermissionLevel = ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $articleId );
+		$existingPermissionLevel = isset( $existingRestriction->pr_level ) ? $existingRestriction->pr_level : $defaultPermissionLevel;
 		$id = 'articlefeedbackv5-protection-level';
 		$attribs = array(
 			'id' => $id,

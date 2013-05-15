@@ -79,9 +79,9 @@
 			if ( article.permissionLevel !== false ) {
 				enable &= $.aftUtils.permissions( article );
 
-			// if not defined through permissions, check whitelist/lottery
+			// if not defined through permissions (which includes lottery), check whitelist
 			} else {
-				enable &= $.aftUtils.whitelist( article ) || $.aftUtils.lottery( article );
+				enable &= $.aftUtils.whitelist( article );
 			}
 
 			// category is not blacklisted
@@ -173,31 +173,6 @@
 	};
 
 	// }}}
-	// {{{ lottery
-
-	/**
-	 * Check if an article is eligible for AFT through the lottery
-	 *
-	 * Note: odds can either be a plain integer (0-100), or be defined per namespace
-	 * (0-100 per namespace key)
-	 *
-	 * @param object article
-	 * @return bool
-	 */
-	$.aftUtils.lottery = function ( article ) {
-		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
-		if ( typeof odds === 'object' ) {
-			if ( article.namespace in odds ) {
-				odds = odds[article.namespace];
-			} else {
-				odds = 0;
-			}
-		}
-
-		return ( Number( article.id ) % 1000 ) >= ( 1000 - ( Number( odds ) * 10 ) );
-	};
-
-	// }}}
 	// {{{ useragent
 
 	/**
@@ -272,15 +247,17 @@
 	 * @param bool enable true to check if can be enabled, false to check disabled
 	 */
 	$.aftUtils.canSetStatus = function( enable ) {
+		var permissionLevel = $.aftUtils.article().permissionLevel || $.aftUtils.article().defaultPermissionLevel;
+
 		// check AFT status for readers
-		var enabled = ( $.aftUtils.article().permissionLevel === 'aft-reader' );
+		var enabled = ( permissionLevel === 'aft-reader' );
 
 		// check if desired status != current status
 		if ( enable != enabled ) {
 			var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 
 			// check user has sufficient permissions to enable/disable AFTv5
-			if ( $.aftUtils.article().permissionLevel in userPermissions && userPermissions[$.aftUtils.article().permissionLevel] ) {
+			if ( permissionLevel in userPermissions && userPermissions[permissionLevel] ) {
 				return true;
 			}
 		}

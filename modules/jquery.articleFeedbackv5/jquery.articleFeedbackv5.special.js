@@ -1848,17 +1848,22 @@
 					$link.text( mw.msg( 'articlefeedbackv5-settings-enable' ) );
 
 				// or disable
-				} else if ( $.aftUtils.canSetStatus( false ) ) {
+				} else { // if ( $.aftUtils.canSetStatus( false ) ) {
 					var status = 0;
 					$link.text( mw.msg( 'articlefeedbackv5-settings-disable' ) );
 				}
 
+				$( '#articleFeedbackv5-settings-menu' ).append( $link );
+
 				// if status can not be changed at all (e.g. insufficient permissions), don't do anything
-				if ( status === null ) {
+//				if ( status === null ) {
+					// @todo: the below needs CSS, i18b, ...
+					$link.addClass( 'inactive' );
+					$link.attr( 'title', 'No permissions' );
+					$link.css( 'pointer-events', 'none' );
+					$link.css( 'cursor', 'default' );
 					return;
-				} else {
-					$( '#articleFeedbackv5-settings-menu' ).append( $link );
-				}
+//				}
 
 				var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 

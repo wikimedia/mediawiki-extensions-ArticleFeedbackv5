@@ -104,7 +104,6 @@ class ArticleFeedbackv5Utils {
 		global $wgArticleFeedbackv5Namespaces,
 				$wgArticleFeedbackv5BlacklistCategories,
 				$wgArticleFeedbackv5Categories,
-				$wgArticleFeedbackv5LotteryOdds,
 				$wgUser;
 
 		$title = Title::newFromID( $pageId );
@@ -123,15 +122,6 @@ class ArticleFeedbackv5Utils {
 			}
 		}
 
-		$odds = $wgArticleFeedbackv5LotteryOdds;
-		if ( is_array( $odds ) ) {
-			if ( isset( $odds[$title->getNamespace()] ) ) {
-				$odds = $odds[$title->getNamespace()];
-			} else {
-				$odds = 0;
-			}
-		}
-
 		$restriction = ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() );
 
 		$enable = true;
@@ -146,11 +136,9 @@ class ArticleFeedbackv5Utils {
 		if ( isset( $restriction->pr_level ) ) {
 			$enable &= $wgUser->isAllowed( $restriction->pr_level );
 
-		// if not defined through permissions, check whitelist/lottery
+		// if not defined through permissions (which includes lottery), check whitelist
 		} else {
-			$enable &=
-				array_intersect( $categories, $wgArticleFeedbackv5Categories ) ||
-				(int) $pageId % 1000 >= 1000 - ( (float) $odds * 10 );
+			$enable &= array_intersect( $categories, $wgArticleFeedbackv5Categories );
 		}
 
 		// category is not blacklisted

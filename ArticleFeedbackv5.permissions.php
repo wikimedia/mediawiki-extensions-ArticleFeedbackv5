@@ -19,7 +19,8 @@ class ArticleFeedbackv5Permissions {
 		'aft-editor',
 		'aft-monitor',
 		'aft-administrator',
-		'aft-oversighter'
+		'aft-oversighter',
+		'aft-noone',
 	);
 
 	/**
@@ -28,6 +29,36 @@ class ArticleFeedbackv5Permissions {
 	 * @var array
 	 */
 	protected static $current = array();
+
+	/**
+	 * A page's default permission level is lottery-based. Lottery is a
+	 * percentage, 0-100, of articles where AFTv5 is enabled by default
+	 * (based on the last digits of a page id)
+	 *
+	 * @param int $articleId
+	 * @return string
+	 */
+	public static function getDefaultPermissionLevel( $articleId ) {
+		$title = Title::newFromID( $articleId );
+		if ( is_null( $title ) ) {
+			$enable = false;
+		} else {
+			global $wgArticleFeedbackv5LotteryOdds;
+
+			$odds = $wgArticleFeedbackv5LotteryOdds;
+			if ( is_array( $odds ) ) {
+				if ( isset( $odds[$title->getNamespace()] ) ) {
+					$odds = $odds[$title->getNamespace()];
+				} else {
+					$odds = 0;
+				}
+			}
+
+			$enable = (int) $articleId % 1000 >= 1000 - ( (float) $odds * 10 );
+		}
+
+		return $enable ? self::$permissions[0] : self::$permissions[count( self::$permissions ) - 1];
+	}
 
 	/**
 	 * Validate a permission level
