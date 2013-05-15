@@ -483,7 +483,7 @@ class ArticleFeedbackv5Render {
 			Html::rawElement(
 				'span',
 				array( 'class' => 'articleFeedbackv5-comment-details' ),
-				Html::rawElement(
+				Html::element(
 					'span',
 					array( 'class' => 'articleFeedbackv5-comment-details-date' ),
 					$timestamp->getHumanTimestamp()
@@ -1104,13 +1104,6 @@ class ArticleFeedbackv5Render {
 				Html::rawElement(
 					'p',
 					array(),
-					wfMessage( 'articlefeedbackv5-permalink-info-post-id' )
-						->params( $record->aft_id )
-						->escaped()
-				) .
-				Html::rawElement(
-					'p',
-					array(),
 					// Give grep a chance to find the usages:
 					// articlefeedbackv5-permalink-written-by-reader, articlefeedbackv5-permalink-written-by-editor
 					wfMessage( 'articlefeedbackv5-permalink-written-by-' . ( $record->aft_user == 0 ? 'reader' : 'editor' ) )
@@ -1214,10 +1207,10 @@ class ArticleFeedbackv5Render {
 			$notes = '';
 			if ( $last->log_comment ) {
 				$notes .=
-					Html::element(
-						'span',
-						array( 'class' => 'articlefeedbackv5-permalink-last-action-comment' ),
-						$last->log_comment
+					Html::rawElement(
+						'p',
+						array( 'class' => 'articleFeedbackv5-feedback-permalink-activity-status' ),
+						Linker::formatComment( $last->log_comment )
 					);
 			}
 
@@ -1239,21 +1232,16 @@ class ArticleFeedbackv5Render {
 				Html::rawElement(
 					'p',
 					array( 'class' => 'articleFeedbackv5-feedback-permalink-activity-status' ),
-					Html::element(
-						'span',
-						array( 'class' => 'articlefeedbackv5-permalink-last-action' ),
-						wfMessage( 'articlefeedbackv5-permalink-last-action' )->escaped()
-					) .
 					Html::rawElement(
 						'span',
 						array( 'class' => 'articleFeedbackv5-feedback-permalink-status articleFeedbackv5-laststatus-' . $last->log_action ),
 						wfMessage( 'articlefeedbackv5-permalink-status-' . $last->log_action )
 							->rawParams( ArticleFeedbackv5Utils::getUserLink( $last->log_user, $last->log_user_text ) )
-							->rawParams( $timestamp->getHumanTimestamp() )
+							->params( $timestamp->getHumanTimestamp() )
 							->parse()
-					) .
-					$notes
+					)
 				) .
+				$notes .
 				Html::rawElement(
 					'p',
 					array( 'class' => 'articleFeedbackv5-feedback-permalink-activity-more' ),
@@ -1291,7 +1279,14 @@ class ArticleFeedbackv5Render {
 					Html::rawElement(
 						'h4',
 						array(),
-						wfMessage( 'articlefeedbackv5-permalink-info-title' )->escaped()
+						wfMessage( 'articlefeedbackv5-permalink-info-title' )->escaped() .
+						Html::rawElement(
+							'span',
+							array(),
+							wfMessage( 'articlefeedbackv5-permalink-info-subtitle' )
+								->params( $record->aft_id )
+								->escaped()
+						)
 					) .
 					$metadata .
 					$stats

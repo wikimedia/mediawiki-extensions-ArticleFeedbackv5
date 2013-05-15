@@ -52,10 +52,10 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 	 * it works similar to any other action plus caches will update nicely.
 	 */
 	public function execute() {
-		global $wgArticleFeedbackv5Cluster, $wgArticleFeedbackAutoArchiveEnabled;
+		global $wgArticleFeedbackv5Cluster, $wgArticleFeedbackv5AutoArchiveEnabled;
 
-		if ( !$wgArticleFeedbackAutoArchiveEnabled ) {
-			$this->output( 'IMPORTANT! Auto-archive is currently disabled. To enable, set $wgArticleFeedbackAutoArchiveEnabled = true.'."\n" );
+		if ( !$wgArticleFeedbackv5AutoArchiveEnabled ) {
+			$this->output( 'IMPORTANT! Auto-archive is currently disabled. To enable, set $wgArticleFeedbackv5AutoArchiveEnabled = true.'."\n" );
 		} else {
 			$this->output( "Marking old feedback as archived.\n" );
 

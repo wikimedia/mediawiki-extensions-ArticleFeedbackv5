@@ -328,7 +328,6 @@
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket1-form-submit" /></button>\
-						<a href="#"><html:msg key="bucket1-form-submit-nocomment" /></a>\
 						<div class="clear"></div>\
 					</form>\
 					'
@@ -443,17 +442,9 @@
 					} );
 
 				// Attach the submit
-				$block.find( '.articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment' )
+				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
-
-						// clear out free-form text field content if user selected to submit without comment
-						if ( $( e.target ).hasClass( 'articleFeedbackv5-submit-nocomment' ) ) {
-							$block.find( '[name=comment]' ).val( '' );
-							// always allowed to submit empty
-							$.articleFeedbackv5.submissionEnabled = true;
-						}
-
 						$.articleFeedbackv5.submitForm();
 					} );
 			},
@@ -678,7 +669,6 @@
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket6-form-submit" /></button>\
-						<a href="#" class="articleFeedbackv5-submit-nocomment"><html:msg key="bucket6-form-submit-nocomment" /></a>\
 						<div class="clear"></div>\
 					</form>\
 					'
@@ -767,17 +757,26 @@
 						var text = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-' + new_val );
 						$element.attr( 'placeholder', text ).placeholder();
 
-						// allow feedback submission
+						// allow feedback submission if there is feedback (or if Y/N was positive)
 						$.articleFeedbackv5.enableSubmission( true );
 					} );
 
 				// add character-countdown on feedback-field
 				$( document )
 					.on( 'keyup', '.articleFeedbackv5-comment textarea', function () {
-						$.articleFeedbackv5.unlockForm();
 
-						var maxLength = mw.config.get( 'wgArticleFeedbackv5MaxCommentLength' );
-						$.aftUtils.countdown( $( this ), $( '#articlefeedbackv5-feedback-countdown' ), maxLength, 500 );
+						/*
+						 * If people have started writing feedback, inform them
+						 * that leaving the page will result in lost data.
+						 */
+						if ( typeof window.onbeforeunload != 'function' ) {
+							$( window ).on( 'beforeunload', function() {
+								return mw.msg( 'articlefeedbackv5-leave-warning' );
+							} );
+						}
+
+						$.articleFeedbackv5.unlockForm();
+						$.articleFeedbackv5.currentBucket().countdown( $( this ) );
 					} );
 
 				// clicking the back-link on step 2 should show step 1 again
@@ -788,18 +787,13 @@
 					} );
 
 				// attach the submit
-				$block.find( '.articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment' )
+				$block.find( '.articleFeedbackv5-submit' )
 					.click( function ( e ) {
 						e.preventDefault();
-
-						// clear out free-form text field content if user selected to submit without comment
-						if ( $( e.target ).hasClass( 'articleFeedbackv5-submit-nocomment' ) ) {
-							$block.find( '[name=comment]' ).val( '' );
-							// always allowed to submit empty
-							$.articleFeedbackv5.submissionEnabled = true;
-						}
-
 						$.articleFeedbackv5.submitForm();
+
+						// unbind confirmation message before leaving page
+						$( window ).off( 'beforeunload' );
 					} );
 			},
 
@@ -854,7 +848,7 @@
 			 */
 			displayStep1: function ( $block ) {
 				var $step1 = $( '.form-row', $block );
-				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment', $block );
+				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit', $block );
 
 				// hide comment, disclosure & submit first (should only show after clicking Y/N)
 				$step1.show();
@@ -875,7 +869,7 @@
 			 */
 			displayStep2: function ( $block ) {
 				var $step1 = $( '.form-row', $block );
-				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit, .articleFeedbackv5-submit-nocomment', $block );
+				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit', $block );
 
 				// show comment, disclosure & submit; hide Y/N buttons
 				$step2.show();
@@ -889,6 +883,45 @@
 				$backLink.text( mw.msg( 'articlefeedbackv5-bucket6-backlink-text' ) );
 				$backLink.attr( 'title', mw.msg( 'articlefeedbackv5-bucket6-backlink-text' ) );
 				$( '.articleFeedbackv5-title' ).before( $backLink );
+			},
+
+			// }}}
+			// {{{ countdown
+
+			/**
+			 * Character countdown
+			 *
+			 * Note: will not do server-side check: this is only used to encourage people to keep their
+			 * feedback concise, there's no technical reason not to allow more
+			 *
+			 * @param $element the form element to count the characters down for
+			 */
+			countdown: function ( $element ) {
+				var displayLength = 500;
+				var maxLength = mw.config.get( 'wgArticleFeedbackv5MaxCommentLength' );
+				if ( maxLength == 0 ) {
+					return;
+				}
+
+				var $countdown = $( '#articlefeedbackv5-feedback-countdown' );
+
+				// grab the current length of the form element (or set to 0 if the current text is bogus placeholder)
+				var length = maxLength - $element.val().length;
+
+				// display the amount of characters
+				var message = mw.msg( 'articlefeedbackv5-bucket6-feedback-countdown', length );
+				$countdown.text( message );
+
+				// remove excessive characters
+				if ( length < 0 ) {
+					$element.val( $element.val().substr( 0, maxLength ) );
+				}
+
+				// only display the countdown for the last X characters
+				$countdown.hide();
+				if ( length < displayLength ) {
+					$countdown.show();
+				}
 			}
 
 			// }}}
@@ -2521,6 +2554,7 @@
 	 * object.
 	 */
 	$.articleFeedbackv5.submitForm = function () {
+
 		// Are we allowed to do this?
 		if ( !$.articleFeedbackv5.submissionEnabled ) {
 			return false;
@@ -3034,7 +3068,6 @@
 	 * Locks the form
 	 */
 	$.articleFeedbackv5.lockForm = function () {
-		var bucket = $.articleFeedbackv5.currentBucket();
 		$.articleFeedbackv5.enableSubmission( false );
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-lock' ).show();
 	};
@@ -3046,7 +3079,6 @@
 	 * Unlocks the form
 	 */
 	$.articleFeedbackv5.unlockForm = function () {
-		var bucket = $.articleFeedbackv5.currentBucket();
 		$.articleFeedbackv5.enableSubmission( true );
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-lock' ).hide();
 	};

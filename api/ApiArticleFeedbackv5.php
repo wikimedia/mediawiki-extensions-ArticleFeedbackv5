@@ -62,6 +62,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$feedback->aft_user = $user->getId();
 		$feedback->aft_user_text = $user->getName();
 		$feedback->aft_user_token = $params['anontoken'];
+		$feedback->aft_claimed_user = $user->getId();
 		$feedback->aft_form = $params['bucket'];
 		$feedback->aft_cta = $params['cta'];
 		$feedback->aft_link = $params['link'];
@@ -203,6 +204,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 */
 	public function callbackAbuseActionFlag( $action, $parameters, $title, $vars, $rule_desc ) {
 		switch ( $action ) {
+			case 'aftv5resolve':
+				$this->autoFlag['resolve'] = $rule_desc;
+				break;
 			case 'aftv5flagabuse':
 				$this->autoFlag['flagabuse'] = $rule_desc;
 				break;

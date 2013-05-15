@@ -123,7 +123,6 @@
 		</div>\
 		<form class="articleFeedbackv5-form-flyover" action="#">\
 			<div id="articleFeedbackv5-noteflyover-description"></div>\
-			<p id="articleFeedbackv5-noteflyover-countdown"></p>\
 			<label id="articleFeedbackv5-noteflyover-label" for="articleFeedbackv5-noteflyover-note"></label>\
 			<input type="text" id="articleFeedbackv5-noteflyover-note" name="articleFeedbackv5-noteflyover-note" maxlength="255" />\
 			<div class="articleFeedbackv5-flyover-footer">\
@@ -293,6 +292,11 @@
 		$.aftTrack.track( 'feedback_page-impression-' +
 			$.articleFeedbackv5special.referral + '-' +
 			$.articleFeedbackv5special.userType );
+
+		// Add BETA label next to the title
+		var label = $( '<p id="articleFeedbackv5-beta-label"></p>' );
+		label.text( mw.msg( 'articlefeedbackv5-beta-label' ) );
+		$( '#firstHeading' ).prepend( label );
 	};
 
 	// }}}
@@ -431,12 +435,6 @@
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
 		} );
 
-		// bind character countdown on flyover panels' input field
-		$( document ).on( 'keyup', '#articleFeedbackv5-noteflyover-note', function () {
-			var maxLength = mw.config.get( 'wgArticleFeedbackv5MaxCommentLength' );
-			$.aftUtils.countdown( $( this ), $( '#articleFeedbackv5-noteflyover-countdown' ), 250 );
-		} );
-
 		// bind short/long version toggle
 		$( document ).on( 'click touchstart', '.articleFeedbackv5-comment-toggle', function( e ) {
 			e.preventDefault();
@@ -444,24 +442,6 @@
 			$( e.target ).siblings( '.articleFeedbackv5-comment-full' ).show();
 			$( e.target ).hide();
 		} );
-
-		// switch to enable AFTv5
-		$( '.articlefeedbackv5-enable-button' ).button();
-		$( '#articlefeedbackv5-enable' ).on( 'click', function( e ) {
-			e.preventDefault();
-
-			$.aftUtils.setStatus( $.articleFeedbackv5special.page, 1, function( data ) {
-				if ( 'result' in data ) {
-					if ( data.result === 'Success' ) {
-						// refresh page to reflect changes
-						location.reload( true );
-
-					} else if ( data.result === 'Error' && data.reason ) {
-						alert( mw.msg( data.reason ) );
-					}
-				}
-			} );
-		});
 	};
 
 	// }}}
@@ -473,10 +453,14 @@
 	 * without parameters. The function should be invoked with the id parameter set
 	 * after an action is executed and its link is replaced ith reverse action.
 	 *
-	 * @param $node jQuery node to bind tipsies for.
+	 * @param id post id to bind panels for. If none is supplied, bind entire list.
 	 */
-	$.articleFeedbackv5special.bindTipsies = function( $node ) {
-		$node.find( '.articleFeedbackv5-tipsy-link' )
+	$.articleFeedbackv5special.bindTipsies = function( id ) {
+		// single post or entire list?
+		var $selector = !id ? $( '#articleFeedbackv5-show-feedback' ) : $( '.articleFeedbackv5-feedback[data-id="' + id + '"]' );
+
+		// bind tipsies
+		$selector.find( '.articleFeedbackv5-tipsy-link' )
 			.tipsy( {
 				title: function() {
 					var action = $( this ).data( 'action' );
@@ -720,12 +704,6 @@
 						$( '.articleFeedbackv5-feedback[data-id='+id+']' )
 							.replaceWith( data.render );
 
-						// re-mark active flags in reader tools
-						$.articleFeedbackv5special.markActiveFlags( id );
-
-						// re-bind panels (tipsies)
-						$.articleFeedbackv5special.bindTipsies( $( '.articleFeedbackv5-feedback[data-id="' + id + '"]' ) );
-
 						// invoke the registered onSuccess callback for the executed action
 						if ( data.result === 'Success' ) {
 							if ( 'onSuccess' in $.articleFeedbackv5special.actions[action] ) {
@@ -742,6 +720,12 @@
 							$( '.articleFeedbackv5-feedback[data-id='+id+'] .articleFeedbackv5-feedback-tools' )
 								.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
 						}
+
+						// re-mark active flags in reader tools
+						$.articleFeedbackv5special.markActiveFlags( id );
+
+						// re-bind panels (tipsies)
+						$.articleFeedbackv5special.bindTipsies( id );
 					}
 				}
 
@@ -760,7 +744,6 @@
 		return false;
 	};
 
-	// }}}
 	// {{{ addNote
 
 	/**
@@ -814,7 +797,7 @@
 							$.articleFeedbackv5special.markActiveFlags( id );
 
 							// re-bind panels (tipsies)
-							$.articleFeedbackv5special.bindTipsies( $( '.articleFeedbackv5-feedback[data-id="' + id + '"]' ) );
+							$.articleFeedbackv5special.bindTipsies( id );
 
 						// display error message
 						} else if ( data.result === 'Error' && data.reason ) {
@@ -1077,6 +1060,7 @@
 		if ( $.articleFeedbackv5special.getActivityFlag( id, 'flag' ) ) {
 			$( '#articleFeedbackv5-flag-link-' + id )
 				.text( mw.msg( 'articlefeedbackv5-abuse-saved' ) )
+				.attr( 'title', mw.msg( 'articlefeedbackv5-abuse-saved-tooltip' ) )
 				.data( 'action', 'unflag' );
 		}
 
@@ -1114,7 +1098,7 @@
 			$.articleFeedbackv5special.markActiveFlags( id );
 		} );
 
-		$.articleFeedbackv5special.bindTipsies( $( 'body' ) );
+		$.articleFeedbackv5special.bindTipsies();
 	};
 
 	// }}}
@@ -1828,71 +1812,6 @@
 					$form
 						.hide()
 						.submit();
-				}
-			}
-		},
-
-		// }}}
-		// {{{ Open AFTv5 settings pane
-
-		'settings': {
-			'hasTipsy': true,
-			'tipsyHtml': '\
-				<div id="articleFeedbackv5-settings-menu">\
-					<!-- Depending on context, enable/disable link will be added here -->\
-				</div>',
-			'click': function( e ) {
-				e.preventDefault();
-
-				// build link to enable feedback form
-				var $link = $( '<a href="#"></a>' );
-				var status = null;
-
-				// check if user can enable AFTv5
-				if ( $.aftUtils.canSetStatus( true ) ) {
-					var status = 1;
-					$link.text( mw.msg( 'articlefeedbackv5-settings-enable' ) );
-
-				// or disable
-				} else if ( $.aftUtils.canSetStatus( false ) ) {
-					var status = 0;
-					$link.text( mw.msg( 'articlefeedbackv5-settings-disable' ) );
-				}
-
-				// if status can not be changed at all (e.g. insufficient permissions), don't do anything
-				if ( status === null ) {
-					return;
-				} else {
-					$( '#articleFeedbackv5-settings-menu' ).append( $link );
-				}
-
-				var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
-
-				// administrators can change detailed visibility in ?action=protect
-				if ( 'aft-administrator' in userPermissions && userPermissions['aft-administrator'] ) {
-					var link = mw.config.get( 'wgScript' ) + '?title=' +
-						encodeURIComponent( $.aftUtils.article().title ) +
-						'&' + $.param( { action: 'protect' } );
-
-					$link.attr( 'href', link );
-
-				// editors can enable/disable for readers via API
-				} else {
-					$link.on( 'click', function( e ) {
-						e.preventDefault();
-
-						$.aftUtils.setStatus( $.aftUtils.article().id, status, function( data ) {
-							if ( 'result' in data ) {
-								if ( data.result === 'Success' ) {
-									// refresh page to reflect changes
-									location.reload( true );
-
-								} else if ( data.result === 'Error' && data.reason ) {
-									alert( mw.msg( data.reason ) );
-								}
-							}
-						} );
-					});
 				}
 			}
 		}

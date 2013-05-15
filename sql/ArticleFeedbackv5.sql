@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_feedback (
   aft_user integer unsigned NOT NULL,
   aft_user_text varchar(255) binary NOT NULL DEFAULT '',
   aft_user_token varbinary(32) NOT NULL DEFAULT '',
+  aft_claimed_user integer unsigned NOT NULL DEFAULT 0,
   aft_form binary(1) NOT NULL DEFAULT '',
   aft_cta binary(1) NOT NULL DEFAULT '',
   aft_link binary(1) NOT NULL DEFAULT '',

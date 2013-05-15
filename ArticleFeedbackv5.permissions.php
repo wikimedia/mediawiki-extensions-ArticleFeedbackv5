@@ -43,7 +43,7 @@ class ArticleFeedbackv5Permissions {
 	 * Get the AFT restriction level linked to a page
 	 *
 	 * @param int $articleId
-	 * @return object|false false if not restricted or details of restriction set
+	 * @return object
 	 */
 	public static function getRestriction( $articleId ) {
 		if ( isset( self::$current[$articleId] ) ) {
@@ -63,9 +63,9 @@ class ArticleFeedbackv5Permissions {
 			__METHOD__
 		);
 
-		// check if valid result
+		// check if valid result; if not, return defaults
 		if ( !$permission || !isset( $permission->pr_level ) || !self::isValidPermission( $permission->pr_level ) ) {
-			return false;
+			$permission = (object) array( 'pr_level' => self::$permissions[0], 'pr_expiry' => 'infinity' );
 		}
 
 		self::$current[$articleId] = $permission;
@@ -103,28 +103,47 @@ class ArticleFeedbackv5Permissions {
 		);
 
 		// insert new restriction entry
-		$vars = array(
-			'pr_page' => $articleId,
-			'pr_type' => 'aft',
-			'pr_level' => $permission,
-			'pr_cascade' => 0,
-			'pr_expiry' => $dbw->encodeExpiry( $expiry )
-		);
-
-		if ( $record ) {
-			$dbw->update(
-				'page_restrictions',
-				$vars,
-				array(
-					'pr_page' => $articleId,
-					'pr_type' => 'aft'
-				)
-			);
+		if ( $permission != self::$permissions[0] ) {
+			if ( $record ) {
+				$dbw->update(
+					'page_restrictions',
+					array(
+						'pr_page' => $articleId,
+						'pr_type' => 'aft',
+						'pr_level' => $permission,
+						'pr_cascade' => 0,
+						'pr_expiry' => $dbw->encodeExpiry( $expiry )
+					),
+					array(
+						'pr_page' => $articleId,
+						'pr_type' => 'aft'
+					)
+				);
+			} else {
+				$dbw->insert(
+					'page_restrictions',
+					array(
+						'pr_page' => $articleId,
+						'pr_type' => 'aft',
+						'pr_level' => $permission,
+						'pr_cascade' => 0,
+						'pr_expiry' => $dbw->encodeExpiry( $expiry )
+					)
+				);
+			}
 		} else {
-			$dbw->insert(
-				'page_restrictions',
-				$vars
-			);
+			// exception: aft-reader is considered the default value and is equal to
+			// when no record is in restrictions table - don't both adding it in then
+			if ( $record ) {
+				$dbw->delete(
+					'page_restrictions',
+					array(
+						'pr_page' => $articleId,
+						'pr_type' => 'aft'
+					)
+				);
+
+			}
 		}
 
 		return true;
@@ -139,11 +158,9 @@ class ArticleFeedbackv5Permissions {
 	public static function getExpiry( $articleId ) {
 		global $wgRequest;
 
-		$existingRestriction = self::getRestriction( $articleId );
-
 		$requestExpiry = $wgRequest->getText( 'articlefeedbackv5-protection-expiration' );
 		$requestExpirySelection = $wgRequest->getVal( 'articlefeedbackv5-protection-expiration-selection' );
-		$existingExpiry = isset( $existingRestriction->pr_expiry ) ? $existingRestriction->pr_expiry : false;
+		$existingExpiry = self::getRestriction( $articleId )->pr_expiry;
 
 		if ( $requestExpiry ) {
 			// Custom expiry takes precedence

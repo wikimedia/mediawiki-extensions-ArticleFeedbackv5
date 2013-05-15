@@ -91,6 +91,12 @@ class ArticleFeedbackv5Hooks {
 			dirname( __FILE__ ) . '/sql/discuss.sql'
 		);
 
+		$updater->addExtensionField(
+			'aft_feedback',
+			'aft_claimed_user',
+			dirname( __FILE__ ) . '/sql/claimed_user.sql'
+		);
+
 		return true;
 	}
 
@@ -184,14 +190,12 @@ class ArticleFeedbackv5Hooks {
 	 * @return array the article's info, to be exposed to JS
 	 */
 	public static function getPageInformation( Title $title ) {
-		$permissions = ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() );
-
 		$article = array(
 			'id' => $title->getArticleID(),
 			'title' => $title->getFullText(),
 			'namespace' => $title->getNamespace(),
 			'categories' => array(),
-			'permissionLevel' => isset( $permissions->pr_level ) ? $permissions->pr_level : false
+			'permissionLevel' => ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() )->pr_level
 		);
 
 		foreach ( $title->getParentCategories() as $category => $page ) {
@@ -224,7 +228,6 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5LearnToEdit,
 			$wgArticleFeedbackv5SurveyUrls,
 			$wgArticleFeedbackv5ThrottleThresholdPostsPerHour,
-			$wgArticleFeedbackv5ArticlePageLink,
 			$wgArticleFeedbackv5TalkPageLink,
 			$wgArticleFeedbackv5WatchlistLink,
 			$wgArticleFeedbackv5Watchlist,
@@ -244,7 +247,6 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5ThrottleThresholdPostsPerHour'] = $wgArticleFeedbackv5ThrottleThresholdPostsPerHour;
 		$vars['wgArticleFeedbackv5SpecialUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getLinkUrl();
 		$vars['wgArticleFeedbackv5SpecialWatchlistUrl'] = SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getPrefixedText();
-		$vars['wgArticleFeedbackv5ArticlePageLink'] = $wgArticleFeedbackv5ArticlePageLink;
 		$vars['wgArticleFeedbackv5TalkPageLink'] = $wgArticleFeedbackv5TalkPageLink;
 		$vars['wgArticleFeedbackv5WatchlistLink'] = $wgArticleFeedbackv5WatchlistLink;
 		$vars['wgArticleFeedbackv5Watchlist'] = $wgArticleFeedbackv5Watchlist;
@@ -611,7 +613,19 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function onProtectionForm( Page $article, &$output ) {
-		global $wgLang;
+		global $wgLang, $wgUser, $wgArticleFeedbackv5Namespaces;
+
+		// only on pages in namespaces where it is enabled
+		if ( !$article->getTitle()->inNamespaces( $wgArticleFeedbackv5Namespaces ) ) {
+			return true;
+		}
+
+		$permErrors = $article->getTitle()->getUserPermissionsErrors( 'protect', $wgUser );
+		if ( wfReadOnly() ) {
+			$permErrors[] = array( 'readonlytext', wfReadOnlyReason() );
+		}
+		$disabled = $permErrors != array();
+		$disabledAttrib = $disabled ? array( 'disabled' => 'disabled' ) : array();
 
 		$articleId = $article->getId();
 
@@ -624,18 +638,17 @@ class ArticleFeedbackv5Hooks {
 		);
 
 		// build permissions dropdown
-		$existingRestriction = ArticleFeedbackv5Permissions::getRestriction( $articleId );
-		$existingPermissionLevel = isset( $existingRestriction->pr_level ) ? $existingRestriction->pr_level : false;
+		$existingPermissions = ArticleFeedbackv5Permissions::getRestriction( $articleId )->pr_level;
 		$id = 'articlefeedbackv5-protection-level';
 		$attribs = array(
 			'id' => $id,
 			'name' => $id,
 			'size' => count( $levels )
-		);
+		) + $disabledAttrib;
 		$permissionsDropdown = Xml::openElement( 'select', $attribs );
 		foreach( $levels as $key => $label ) {
 			// possible labels: articlefeedbackv5-protection-permission-(all|reader|editor)
-			$permissionsDropdown .= Xml::option( wfMessage( $label )->escaped(), $key, $key == $existingPermissionLevel );
+			$permissionsDropdown .= Xml::option( wfMessage( $label )->escaped(), $key, $key == $existingPermissions );
 		}
 		$permissionsDropdown .= Xml::closeElement( 'select' );
 
@@ -698,10 +711,10 @@ class ArticleFeedbackv5Hooks {
 			// when entering an other time, make sure "othertime" is selected in the dropdown
 			'onkeyup' => 'javascript:if ( $( this ).val() ) $( "#articlefeedbackv5-protection-expiration-selection" ).val( "othertime" );',
 			'onchange' => 'javascript:if ( $( this ).val() ) $( "#articlefeedbackv5-protection-expiration-selection" ).val( "othertime" );'
-		);
+		) + $disabledAttrib;
 
 		$protectOther = Xml::input( 'articlefeedbackv5-protection-expiration', 50, $mExpiry, $attribs );
-		$mProtectOther = Xml::label( wfMessage( 'protect-othertime' )->escaped(), "mwProtect-aft-expires" );
+		$mProtectOther = Xml::label( wfMessage( 'protect-othertime' )->text(), "mwProtect-aft-expires" );
 
 		// build output
 		$output .= "
@@ -716,7 +729,7 @@ class ArticleFeedbackv5Hooks {
 								<tr>
 									<td>";
 
-		if( $showProtectOptions ) {
+		if ( $showProtectOptions && !$disabled ) {
 			$output .= "				<table>
 											<tr>
 												<td class='mw-label'>$mProtectExpiry</td>
@@ -751,12 +764,17 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function onProtectionSave( Page $article, &$errorMsg ) {
-		global $wgRequest;
+		global $wgRequest, $wgArticleFeedbackv5Namespaces;
+
+		// only on pages in namespaces where it is enabled
+		if ( !$article->getTitle()->inNamespaces( $wgArticleFeedbackv5Namespaces ) ) {
+			return true;
+		}
 
 		$requestPermission = $wgRequest->getVal( 'articlefeedbackv5-protection-level' );
 		$requestExpiry = $wgRequest->getText( 'articlefeedbackv5-protection-expiration' );
 		$requestExpirySelection = $wgRequest->getVal( 'articlefeedbackv5-protection-expiration-selection' );
-/*
+
 		// fetch permissions set to edit page ans make sure that AFT permissions are no tighter than these
 		$editPermission = $article->getTitle()->getRestrictions( 'edit' );
 		if ( !$editPermission ) {
@@ -767,9 +785,9 @@ class ArticleFeedbackv5Hooks {
 			$errorMsg .= wfMessage( 'articlefeedbackv5-protection-level-error' )->escaped();
 			return false;
 		}
-*/
+
 		if ( $requestExpirySelection == 'existing' ) {
-			$expirationTime = ArticleFeedbackv5Permissions::getRestriction( $article->getId() )->pr_level;
+			$expirationTime = ArticleFeedbackv5Permissions::getRestriction( $article->getId() )->pr_expiry;
 		} else {
 			if ( $requestExpirySelection == 'othertime' ) {
 				$value = $requestExpiry;
@@ -800,5 +818,61 @@ class ArticleFeedbackv5Hooks {
 		);
 
 		return $success;
+	}
+
+	/**
+	 * Post-login update new user's last feedback with his new id
+	 *
+	 * @param User $currentUser
+	 * @param string $injected_html
+	 * @return bool
+	 */
+	public static function userLoginComplete( $currentUser, $injected_html ) {
+		global $wgRequest;
+
+		$id = 0;
+
+		// feedback id is c-parameter in the referrer, extract it
+		$referrer = ( $wgRequest->getVal( 'referrer' ) ) ? $wgRequest->getVal( 'referrer' ) : $wgRequest->getHeader( 'referer' );
+		$url = parse_url( $referrer );
+		$values = array();
+		if ( isset( $url['query'] ) ) {
+			parse_str( $url['query'], $values );
+		}
+		if ( isset( $values['c'] ) ) {
+			$id = $values['c'];
+
+		// if c-parameter is no longer in url (e.g. account creation didn't work at first attempts), try cookie data
+		} else {
+			$cookie = json_decode( $wgRequest->getCookie( ArticleFeedbackv5Utils::getCookieName( 'feedback-ids' ) ), true );
+			if ( is_array( $cookie ) ) {
+				$id = array_shift( $cookie );
+			}
+		}
+
+		// the page that feedback was added to is the one we'll be returned to
+		$title = Title::newFromDBkey( $wgRequest->getVal( 'returnto' ) );
+		if ( $title !== null && $id ) {
+			$pageId = $title->getArticleID();
+
+			/*
+			 * If we find this feedback and it is not yet "claimed" (and the feedback was
+			 * not submitted by a registered user), "claim" it to the current user.
+			 * Make sure the current request's IP actually still matches the one saved for
+			 * the original submission.
+			 */
+			$feedback = ArticleFeedbackv5Model::get( $id, $pageId );
+			if (
+				$feedback &&
+				!$feedback->aft_user &&
+				$feedback->aft_user_text == IP::sanitizeIP( $wgRequest->getIP() ) &&
+				!$feedback->aft_claimed_user
+			 ) {
+				$feedback->aft_claimed_user = $currentUser->getId();
+				$feedback->update();
+			}
+		}
+
+		return true;
 	}
 }

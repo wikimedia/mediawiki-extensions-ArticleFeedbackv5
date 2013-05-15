@@ -99,7 +99,7 @@ $wgArticleFeedbackv5RelevanceScoring = array(
  *
  * @var bool true to enable, false to disable
  */
-$wgArticleFeedbackAutoArchiveEnabled = false;
+$wgArticleFeedbackv5AutoArchiveEnabled = false;
 
 /**
  * Defines the auto-archive period for feedback that is not being considered useful.
@@ -118,12 +118,9 @@ $wgArticleFeedbackAutoArchiveEnabled = false;
  *
  * @var array|string strtotime-capable format
  */
-$wgArticleFeedbackAutoArchiveTtl = '+2 weeks';
+$wgArticleFeedbackv5AutoArchiveTtl = '+2 weeks';
 
-// Defines whether or not there should be a link to the corresponding feedback on the article page
-$wgArticleFeedbackv5ArticlePageLink = true;
-
-// Defines whether or not there should be a link to the corresponding feedback on the article page's talk page
+// Defines whether or not there should be a link to the corresponding feedback on the page's talk page
 $wgArticleFeedbackv5TalkPageLink = true;
 
 // Defines whether or not there should be a link to the watchlisted feedback on the watchlist page
@@ -394,10 +391,8 @@ $wgExtensionCredits['other'][] = $wgArticleFeedbackv5Credits;
 $wgAutoloadClasses['ApiArticleFeedbackv5']              = __DIR__ . '/api/ApiArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5']   = __DIR__ . '/api/ApiViewRatingsArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5']  = __DIR__ . '/api/ApiViewFeedbackArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiSetStatusArticleFeedbackv5']     = __DIR__ . '/api/ApiSetStatusArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiAddFlagNoteArticleFeedbackv5']   = __DIR__ . '/api/ApiAddFlagNoteArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5']  = __DIR__ . '/api/ApiFlagFeedbackArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiGetCountArticleFeedbackv5']      = __DIR__ . '/api/ApiGetCountArticleFeedbackv5.php';
 $wgAutoloadClasses['ApiViewActivityArticleFeedbackv5']  = __DIR__ . '/api/ApiViewActivityArticleFeedbackv5.php';
 $wgAutoloadClasses['DataModel']                         = __DIR__ . '/data/DataModel.php';
 $wgAutoloadClasses['DataModelBackend']                  = __DIR__ . '/data/DataModelBackend.php';
@@ -432,14 +427,13 @@ $wgHooks['ContribsPager::reallyDoQuery'][] = 'ArticleFeedbackv5Hooks::contributi
 $wgHooks['ContributionsLineEnding'][] = 'ArticleFeedbackv5Hooks::contributionsLineEnding';
 $wgHooks['ProtectionForm::buildForm'][] = 'ArticleFeedbackv5Hooks::onProtectionForm';
 $wgHooks['ProtectionForm::save'][] = 'ArticleFeedbackv5Hooks::onProtectionSave';
+$wgHooks['UserLoginComplete'][] = 'ArticleFeedbackv5Hooks::userLoginComplete';
 
 // API Registration
 $wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';
 $wgAPIListModules['articlefeedbackv5-view-activity'] = 'ApiViewActivityArticleFeedbackv5';
-$wgAPIModules['articlefeedbackv5-set-status']        = 'ApiSetStatusArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-add-flag-note']     = 'ApiAddFlagNoteArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5-flag-feedback']     = 'ApiFlagFeedbackArticleFeedbackv5';
-$wgAPIModules['articlefeedbackv5-get-count']         = 'ApiGetCountArticleFeedbackv5';
 $wgAPIModules['articlefeedbackv5']                   = 'ApiArticleFeedbackv5';
 
 // Special Page
@@ -462,7 +456,6 @@ $wgJobClasses['ArticleFeedbackv5MailerJob'] = 'ArticleFeedbackv5MailerJob';
 
 // Logging
 $wgLogTypes[] = 'articlefeedbackv5';
-$wgLogTypes[] = 'suppress';
 
 // register log handler for feedback submission
 $wgLogActionsHandlers['articlefeedbackv5/create'] = 'ArticleFeedbackv5LogFormatter';
@@ -486,6 +479,7 @@ if ( $wgArticleFeedbackv5AbuseFilterGroup != 'default' ) {
 }
 
 // Add custom action handlers for AbuseFilter
+$wgAbuseFilterAvailableActions[] = 'aftv5resolve';
 $wgAbuseFilterAvailableActions[] = 'aftv5flagabuse';
 $wgAbuseFilterAvailableActions[] = 'aftv5hide';
 $wgAbuseFilterAvailableActions[] = 'aftv5request';
@@ -493,23 +487,20 @@ $wgAbuseFilterAvailableActions[] = 'aftv5request';
 // Permissions: 6 levels of permissions are built into ArticleFeedbackv5: reader, member, editor,
 // monitor, administrator, oversighter. The default (below-configured) permissions scheme can be seen at
 // http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
-foreach ( array( '*', 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
-	$wgGroupPermissions[$group]['aft-reader'] = true;
-}
-foreach ( array( 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
-	$wgGroupPermissions[$group]['aft-member'] = true;
-}
-foreach ( array( 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
-	$wgGroupPermissions[$group]['aft-editor'] = true;
-}
-foreach ( array( 'rollbacker', 'reviewer', 'sysop', 'oversight' ) as $group ) {
-	$wgGroupPermissions[$group]['aft-monitor'] = true;
-}
-foreach ( array( 'sysop', 'oversight' ) as $group ) {
-	$wgGroupPermissions[$group]['aft-administrator'] = true;
-}
-foreach ( array( 'oversight' ) as $group ) {
-	$wgGroupPermissions[$group]['aft-oversighter'] = true;
+$wgArticleFeedbackv5DefaultPermissions = array(
+	'aft-reader' => array( '*', 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ),
+	'aft-member' => array( 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ),
+	'aft-editor' => array( 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ),
+	'aft-monitor' => array( 'rollbacker', 'reviewer', 'sysop', 'oversight' ),
+	'aft-administrator' => array( 'sysop', 'oversight' ),
+	'aft-oversighter' => array( 'oversight' ),
+);
+foreach ( $wgArticleFeedbackv5DefaultPermissions as $permission => $groups ) {
+	foreach ( (array) $groups as $group ) {
+		if ( isset( $wgGroupPermissions[$group] ) ) {
+			$wgGroupPermissions[$group][$permission] = true;
+		}
+	}
 }
 
 // register resources with ResourceLoader
@@ -519,9 +510,6 @@ $wgArticleFeedbackResourcePaths = array(
 );
 $wgResourceModules['jquery.articleFeedbackv5.utils'] = array(
 	'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.utils.js',
-	'messages' => array(
-		'articlefeedbackv5-countdown',
-	),
 	'dependencies' => array(
 		'mediawiki.util',
 		'mediawiki.user',
@@ -529,15 +517,10 @@ $wgResourceModules['jquery.articleFeedbackv5.utils'] = array(
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['ext.articleFeedbackv5.startup'] = array(
 	'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js',
-	'messages' => array(
-		'articlefeedbackv5-toolbox-enable',
-		'articlefeedbackv5-enabled-form-message',
-	),
 	'dependencies' => array(
 		'mediawiki.util',
 		'mediawiki.user',
 		'jquery.articleFeedbackv5.utils',
-		'mediawiki.jqueryMsg',
 	),
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['ext.articleFeedbackv5'] = array(
@@ -549,15 +532,14 @@ $wgResourceModules['ext.articleFeedbackv5'] = array(
 		'articlefeedbackv5-fixedtab-linktext',
 		'articlefeedbackv5-bottomrighttab-linktext',
 		'articlefeedbackv5-section-linktext',
-		'articlefeedbackv5-article-view-feedback',
+		'articlefeedbackv5-toolbox-view',
+		'articlefeedbackv5-toolbox-add',
 	),
 	'dependencies' => array(
-		'mediawiki.jqueryMsg',
 		'jquery.ui.button',
 		'jquery.articleFeedbackv5',
 		'jquery.cookie',
 		'jquery.articleFeedbackv5.track',
-		'jquery.articleFeedbackv5.utils',
 	),
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['ext.articleFeedbackv5.ie'] = array(
@@ -656,7 +638,6 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 		'articlefeedbackv5-bucket1-form-pending',
 		'articlefeedbackv5-bucket1-form-success',
 		'articlefeedbackv5-bucket1-form-submit',
-		'articlefeedbackv5-bucket1-form-submit-nocomment',
 		'articlefeedbackv5-bucket4-title',
 		'articlefeedbackv5-bucket4-subhead',
 		'articlefeedbackv5-bucket4-teaser-line1',
@@ -674,6 +655,7 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 		'articlefeedbackv5-bucket6-toggle-found-yes-full',
 		'articlefeedbackv5-bucket6-toggle-found-no',
 		'articlefeedbackv5-bucket6-toggle-found-no-full',
+		'articlefeedbackv5-bucket6-feedback-countdown',
 		'articlefeedbackv5-bucket6-question-instructions-yes',
 		'articlefeedbackv5-bucket6-question-placeholder-yes',
 		'articlefeedbackv5-bucket6-question-instructions-no',
@@ -681,8 +663,8 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 		'articlefeedbackv5-bucket6-form-pending',
 		'articlefeedbackv5-bucket6-form-success',
 		'articlefeedbackv5-bucket6-form-submit',
-		'articlefeedbackv5-bucket6-form-submit-nocomment',
 		'articlefeedbackv5-bucket6-backlink-text',
+		'articlefeedbackv5-leave-warning',
 		'articlefeedbackv5-error',
 		'articlefeedbackv5-help-tooltip-title',
 		'articlefeedbackv5-help-tooltip-info',
@@ -701,8 +683,6 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 		'articlefeedbackv5-disable-flyover-prefbutton',
 		'articlefeedbackv5-disable-preference',
 		'pipe-separator',
-		'articlefeedbackv5-toolbox-view',
-		'articlefeedbackv5-toolbox-add',
 	),
 	'dependencies' => array(
 		'jquery.appear',
@@ -729,9 +709,6 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-invalid-feedback-flag',
 		'articlefeedbackv5-invalid-feedback-state',
 		'articlefeedbackv5-feedback-reloaded-after-error',
-		'articlefeedbackv5-error-unknown',
-		'articlefeedbackv5-invalid-page-id',
-		'articlefeedbackv5-insufficient-permissions',
 
 		'articlefeedbackv5-comment-more',
 		'articlefeedbackv5-comment-less',
@@ -740,6 +717,7 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-permalink-activity-more',
 		'articlefeedbackv5-permalink-activity-fewer',
 		'articlefeedbackv5-abuse-saved',
+		'articlefeedbackv5-abuse-saved-tooltip',
 		'articlefeedbackv5-form-unrequest',
 		'articlefeedbackv5-form-declined',
 
@@ -888,8 +866,7 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 
 		'articlefeedbackv5-activity-pane-header',
 
-		'articlefeedbackv5-settings-enable',
-		'articlefeedbackv5-settings-disable',
+		'articlefeedbackv5-beta-label',
 	),
 	'dependencies' => array(
 		'mediawiki.util',

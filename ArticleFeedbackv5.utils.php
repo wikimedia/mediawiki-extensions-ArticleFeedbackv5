@@ -124,33 +124,29 @@ class ArticleFeedbackv5Utils {
 		}
 
 		$odds = $wgArticleFeedbackv5LotteryOdds;
-		if ( is_array( $odds ) && array_key_exists( $title->getNamespace(), $odds ) ) {
-			$odds = $odds[$title->getNamespace()];
+		if ( is_array( $odds ) ) {
+			if ( isset( $odds[$title->getNamespace()] ) ) {
+				$odds = $odds[$title->getNamespace()];
+			} else {
+				$odds = 0;
+			}
 		}
-
-		$restriction = ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() );
 
 		$enable = true;
 
 		// only on pages in namespaces where it is enabled
 		$enable &= in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces );
 
-		// check if user is not blocked
-		$enable &= !$wgUser->isBlocked();
-
-		// check if a, to this user sufficient, permission level is defined
-		if ( isset( $restriction->pr_level ) ) {
-			$enable &= $wgUser->isAllowed( $restriction->pr_level );
-
-		// if not defined through permissions, check whitelist/lottery
-		} else {
-			$enable &=
-				array_intersect( $categories, $wgArticleFeedbackv5Categories ) ||
-				(int) $pageId % 1000 >= 1000 - ( (float) $odds * 10 );
-		}
+		// check if user has the required permissions
+		$enable &= $wgUser->isAllowed( ArticleFeedbackv5Permissions::getRestriction( $title->getArticleID() )->pr_level ) && !$wgUser->isBlocked();
 
 		// category is not blacklisted
 		$enable &= !array_intersect( $categories, $wgArticleFeedbackv5BlacklistCategories );
+
+		// category is whitelisted or article is in lottery
+		$enable &=
+			array_intersect( $categories, $wgArticleFeedbackv5Categories ) ||
+			(int) $pageId % 1000 >= 1000 - ( (float) $odds * 10 );
 
 		// not disabled via preferences
 		$enable &= !$wgUser->getOption( 'articlefeedback-disable' );
@@ -264,8 +260,7 @@ class ArticleFeedbackv5Utils {
 		// articlefeedbackv5-mask-text-oversight, articlefeedbackv5-mask-text-hide,
 		// articlefeedbackv5-mask-text-inappropriate
 		return wfMessage( 'articlefeedbackv5-mask-text-' . $type )
-			->params( static::formatId( $feedbackId ), $username )
-			->rawParams( $timestamp->getHumanTimestamp() )
+			->params( static::formatId( $feedbackId ), $username, $timestamp->getHumanTimestamp() )
 			->escaped();
 	}
 
@@ -336,6 +331,7 @@ class ArticleFeedbackv5Utils {
 			if ( $callback && is_callable( $callback ) ) {
 				global $wgAbuseFilterCustomActionsHandlers;
 
+				$wgAbuseFilterCustomActionsHandlers['aftv5resolve'] = $callback;
 				$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $callback;
 				$wgAbuseFilterCustomActionsHandlers['aftv5hide'] = $callback;
 				$wgAbuseFilterCustomActionsHandlers['aftv5request'] = $callback;
@@ -344,8 +340,7 @@ class ArticleFeedbackv5Utils {
 			// Set up variables
 			$title = Title::newFromID( $pageId );
 			$vars = new AbuseFilterVariableHolder;
-			$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
-			$vars->addHolder( AbuseFilter::generateTitleVars( $title , 'ARTICLE' ) );
+			$vars->addHolders( AbuseFilter::generateUserVars( $wgUser ), AbuseFilter::generateTitleVars( $title , 'ARTICLE' ) );
 			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
 			$vars->setVar( 'ACTION', 'feedback' );
 			$vars->setVar( 'new_wikitext', $value );
