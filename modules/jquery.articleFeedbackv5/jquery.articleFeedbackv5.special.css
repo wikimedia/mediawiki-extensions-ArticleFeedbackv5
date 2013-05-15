@@ -761,6 +761,7 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 
 /* Settings pane */
 #articleFeedbackv5-settings-menu {
+	height: 30px;
 	padding: 10px;
 }
 #articleFeedbackv5-settings-link {
@@ -779,6 +780,11 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/cog.svg);
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/cog.svg);
+}
+a.inactive {
+	color: #444;
+	pointer-events: none;
+	cursor: default;
 }
 
 /* Don't show mask by default */

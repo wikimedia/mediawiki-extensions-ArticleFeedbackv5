@@ -886,8 +886,9 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 
 		'articlefeedbackv5-activity-pane-header',
 
-		'articlefeedbackv5-settings-enable',
-		'articlefeedbackv5-settings-disable',
+		'articlefeedbackv5-settings-status-enable',
+		'articlefeedbackv5-settings-status-disable',
+		'articlefeedbackv5-settings-status-error',
 	),
 	'dependencies' => array(
 		'mediawiki.util',

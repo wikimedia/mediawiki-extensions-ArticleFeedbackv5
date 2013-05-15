@@ -640,7 +640,7 @@ class ArticleFeedbackv5Hooks {
 			'aft-member' => 'articlefeedbackv5-protection-permission-member',
 			'aft-editor' => 'articlefeedbackv5-protection-permission-editor',
 			'aft-administrator' => 'articlefeedbackv5-protection-permission-administrator',
-			'aft-noone' => 'articlefeedbackv5-protection-permission-noone', // @todo: i18n
+			'aft-noone' => 'articlefeedbackv5-protection-permission-noone',
 		);
 
 		// build permissions dropdown

@@ -252,17 +252,24 @@
 		// check AFT status for readers
 		var enabled = ( permissionLevel === 'aft-reader' );
 
-		// check if desired status != current status
-		if ( enable != enabled ) {
-			var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
-
-			// check user has sufficient permissions to enable/disable AFTv5
-			if ( permissionLevel in userPermissions && userPermissions[permissionLevel] ) {
-				return true;
-			}
+		/*
+		 * If status was specifically set (= not default), "disabled" only needs
+		 * aft-editor permissions, not the default aft-noone (which is to make
+		 * sure that AFTv5 stays completely hidden for all user types unless
+		 * consciously activated)
+		 */
+		if ( $.aftUtils.article().permissionLevel === false && !enabled ) {
+			permissionLevel = 'aft-editor';
 		}
 
-		return false;
+		// check user has sufficient permissions to enable/disable AFTv5
+		var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
+		if ( ! (permissionLevel in userPermissions ) || !userPermissions[permissionLevel] ) {
+			return false;
+		}
+
+		// check if desired status != current status
+		return enable != enabled;
 	};
 
 	// }}}

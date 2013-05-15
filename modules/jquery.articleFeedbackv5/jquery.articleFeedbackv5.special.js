@@ -1840,30 +1840,28 @@
 
 				// build link to enable feedback form
 				var $link = $( '<a href="#"></a>' );
+				$( '#articleFeedbackv5-settings-menu' ).append( $link );
+
 				var status = null;
 
 				// check if user can enable AFTv5
 				if ( $.aftUtils.canSetStatus( true ) ) {
-					var status = 1;
-					$link.text( mw.msg( 'articlefeedbackv5-settings-enable' ) );
+					status = 1;
+					$link.text( mw.msg( 'articlefeedbackv5-settings-status-enable' ) );
 
 				// or disable
-				} else { // if ( $.aftUtils.canSetStatus( false ) ) {
-					var status = 0;
-					$link.text( mw.msg( 'articlefeedbackv5-settings-disable' ) );
-				}
-
-				$( '#articleFeedbackv5-settings-menu' ).append( $link );
+				} else if ( $.aftUtils.canSetStatus( false ) ) {
+					status = 0;
+					$link.text( mw.msg( 'articlefeedbackv5-settings-status-disable' ) );
 
 				// if status can not be changed at all (e.g. insufficient permissions), don't do anything
-//				if ( status === null ) {
-					// @todo: the below needs CSS, i18b, ...
-					$link.addClass( 'inactive' );
-					$link.attr( 'title', 'No permissions' );
-					$link.css( 'pointer-events', 'none' );
-					$link.css( 'cursor', 'default' );
+				} else {
+					$link
+						.text( mw.msg( 'articlefeedbackv5-settings-status-error' ) )
+						.addClass( 'inactive' );
+
 					return;
-//				}
+				}
 
 				var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 

@@ -14,13 +14,13 @@ class ArticleFeedbackv5Permissions {
 	 * @var array
 	 */
 	public static $permissions = array(
-		'aft-reader',
+		'aft-reader', // default "enable" level
 		'aft-member',
-		'aft-editor',
+		'aft-editor', // level when disabled by editor
 		'aft-monitor',
 		'aft-administrator',
 		'aft-oversighter',
-		'aft-noone',
+		'aft-noone', // default "disable" level
 	);
 
 	/**
