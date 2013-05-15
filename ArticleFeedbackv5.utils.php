@@ -133,13 +133,15 @@ class ArticleFeedbackv5Utils {
 		$enable &= !$wgUser->isBlocked();
 
 		// check if a, to this user sufficient, permission level is defined
-		$enable &=
-			$wgUser->isAllowed( $restriction->pr_level ) ||
-			$wgUser->isAllowed( ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $pageId ) );
+		if ( isset( $restriction->pr_level ) ) {
+			$enable &= $wgUser->isAllowed( $restriction->pr_level );
 
-		// if not defined through permissions (which includes lottery), check whitelist
-		if ( !isset( $restriction->pr_level ) ) {
-			$enable &= array_intersect( $categories, $wgArticleFeedbackv5Categories );
+		} else {
+			$enable &=
+				// check if a, to this user sufficient, default permission level (based on lottery) is defined
+				$wgUser->isAllowed( ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $pageId ) ) ||
+				// or check whitelist
+				array_intersect( $categories, $wgArticleFeedbackv5Categories );
 		}
 
 		// category is not blacklisted
