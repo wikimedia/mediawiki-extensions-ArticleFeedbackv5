@@ -133,11 +133,12 @@ class ArticleFeedbackv5Utils {
 		$enable &= !$wgUser->isBlocked();
 
 		// check if a, to this user sufficient, permission level is defined
-		if ( isset( $restriction->pr_level ) ) {
-			$enable &= $wgUser->isAllowed( $restriction->pr_level );
+		$enable &=
+			$wgUser->isAllowed( $restriction->pr_level ) ||
+			$wgUser->isAllowed( ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $pageId ) );
 
 		// if not defined through permissions (which includes lottery), check whitelist
-		} else {
+		if ( !isset( $restriction->pr_level ) ) {
 			$enable &= array_intersect( $categories, $wgArticleFeedbackv5Categories );
 		}
 

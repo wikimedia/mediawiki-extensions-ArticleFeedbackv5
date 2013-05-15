@@ -76,11 +76,10 @@
 		// for special page, it doesn't matter if the article has AFT applied
 		if ( location != 'special' ) {
 			// check if a, to this user sufficient, permission level is defined
-			if ( article.permissionLevel !== false ) {
-				enable &= $.aftUtils.permissions( article );
+			enable &= $.aftUtils.permissions( article );
 
 			// if not defined through permissions (which includes lottery), check whitelist
-			} else {
+			if ( article.permissionLevel === false ) {
 				enable &= $.aftUtils.whitelist( article );
 			}
 
@@ -127,7 +126,8 @@
 	 */
 	$.aftUtils.permissions = function ( article ) {
 		var permissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
-		return article.permissionLevel in permissions && permissions[article.permissionLevel];
+		var permissionLevel = article.permissionLevel || article.defaultPermissionLevel;
+		return permissionLevel in permissions && permissions[permissionLevel];
 	};
 
 	// }}}
@@ -264,7 +264,7 @@
 
 		// check user has sufficient permissions to enable/disable AFTv5
 		var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
-		if ( ! (permissionLevel in userPermissions ) || !userPermissions[permissionLevel] ) {
+		if ( !( permissionLevel in userPermissions ) || !userPermissions[permissionLevel] ) {
 			return false;
 		}
 
