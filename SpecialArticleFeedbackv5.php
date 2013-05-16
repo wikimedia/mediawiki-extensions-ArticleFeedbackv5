@@ -396,11 +396,10 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$found = ArticleFeedbackv5Model::getCountFound( $this->pageId ) / ( $totalCount ?: 1 ) * 100;
 			if ( $found ) {
 				$class = $found >= 50 ? 'articleFeedbackv5-positive' : 'articleFeedbackv5-negative';
-				$class .= $found >= 50 ? ' positive' : ' negative'; /** @deprecated */
 
 				$span = Html::rawElement(
 					'span',
-					array( 'class' => "stat-marker articleFeedbackv5-stat-marker $class" ), /** @deprecated: get rid of the non-prefixed stat-marker */
+					array( 'class' => "articleFeedbackv5-stat-marker $class" ),
 					$this->msg( 'percent', round( $found ) )->escaped()
 				);
 
@@ -549,7 +548,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					),
 					$this->msg( 'articlefeedbackv5-special-refresh' )->text()
 				) .
-				Html::element( 'div', array( 'class' => 'clear articleFeedbackv5-clear' ) ) /** @deprecated: get rid of the non-prefixed clear */
+				Html::element( 'div', array( 'class' => 'articleFeedbackv5-clear' ) )
 			) .
 			$centralPageLink;
 	}
@@ -568,7 +567,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 			$class = 'articleFeedbackv5-filter-link';
 			$class .= ( $this->startingFilter == $filter ? ' articleFeedbackv5-filter-active' : '' );
-			$class .= ( $this->startingFilter == $filter ? ' filter-active' : '' ); /** @deprecated */
 
 			$filterLabels[$filter] =
 				Html::rawElement(

@@ -106,7 +106,6 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		foreach ( array( 'featured', 'unreviewed' ) as $filter ) {
 			$class = 'articleFeedbackv5-filter-link';
 			$class .= ( $this->startingFilter == $filter ? ' articleFeedbackv5-filter-active' : '' );
-			$class .= ( $this->startingFilter == $filter ? ' filter-active' : '' ); /** @deprecated */
 
 			$filterLabels[$filter] =
 				Html::rawElement(

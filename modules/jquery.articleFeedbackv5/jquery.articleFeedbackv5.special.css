@@ -223,7 +223,6 @@
 	color: #888;
 	display: none;
 }
-.articleFeedbackv5-abuse-count.abusive, /** @deprecated */
 .articleFeedbackv5-abuse-count.articleFeedbackv5-abusive {
 	color: #832831;
 }
@@ -901,7 +900,6 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	line-height: 1.5em;
 }
 
-.clear, /** @deprecated */
 .articleFeedbackv5-clear {
 	display: block !important;
 	height: 0 !important;

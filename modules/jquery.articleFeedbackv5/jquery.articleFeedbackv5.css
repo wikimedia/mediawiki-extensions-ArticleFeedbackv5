@@ -435,7 +435,6 @@
 
 /*---===<<< Sean's Version 5 Styles >>>===---*/
 
-.clear /** @deprecated */
 .articleFeedbackv5-clear {
 	display: block !important;
 	height: 0 !important;
