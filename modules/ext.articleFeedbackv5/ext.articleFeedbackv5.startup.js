@@ -53,29 +53,40 @@ jQuery( function( $ ) {
 			$link.find( 'a' ).on( 'click', function( e ) {
 				e.preventDefault();
 
-				$.aftUtils.setStatus( $.aftUtils.article().id, 1, function( data ) {
-					if ( 'result' in data ) {
-						if ( data.result === 'Success' ) {
-							$link.remove();
+				$.aftUtils.setStatus( $.aftUtils.article().id, 1, function( data, error ) {
+					if ( data !== false ) {
+						$link.remove();
 
-							// display AFTv5 tool (unless this user already had access, in which case it's already visible)
-							if ( !enable ) {
-								load();
-							}
-
-							// add message to confirm AFTv5 has just been enabled
-							var link = mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' );
-							var message =
-								$( '<p id="articleFeedbackv5-added"></p>' )
-									.msg( 'articlefeedbackv5-enabled-form-message', link );
-							$( '#mw-articlefeedbackv5' ).append( message );
-
-							// move down to AFTv5 form
-							location.hash = "#mw-articlefeedbackv5";
-
-						} else if ( data.result === 'Error' && data.reason ) {
-							alert( mw.msg( data.reason ) );
+						// display AFTv5 tool (unless this user already had access, in which case it's already visible)
+						if ( !enable ) {
+							// not async; we want to make sure AFTv5 is loaded before code below is executed
+							load( false );
 						}
+
+						var displayForm = function() {
+							var $form = $( '#mw-articlefeedbackv5' );
+
+							if ( $form.length > 0 ) {
+								// scroll to/highlight AFTv5 form
+								$.articleFeedbackv5.highlightForm();
+
+								// add message to confirm AFTv5 has just been enabled
+								var link = mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' );
+								var message =
+									$( '<p id="articleFeedbackv5-added"></p>' )
+										.msg( 'articlefeedbackv5-enabled-form-message', link );
+								$form.append( message );
+
+								// remove timer
+								clearTimeout( interval );
+							}
+						};
+
+						// AFT is loaded async; keep polling until it's ready
+						var interval = setInterval( displayForm, 100 );
+
+					} else if ( error ) {
+						alert( error );
 					}
 				} );
 			});

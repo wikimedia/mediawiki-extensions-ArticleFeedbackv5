@@ -24,22 +24,28 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 		global $wgUser;
 
 		$params = $this->extractRequestParams();
-		$results = array();
 
-		// check if page exists
-		if ( Title::newFromID( $params['pageid'] ) === null ) {
-			$results['result'] = 'Error';
-			$results['reason'] = 'articlefeedbackv5-invalid-page-id';
+		// get page object
+		$pageObj = $this->getTitleOrPageId( $params, 'fromdbmaster' );
+		if ( !$pageObj->exists() ) {
+			$this->dieUsage(
+				$this->msg( 'articlefeedbackv5-invalid-page-id' )->escaped(),
+				'notanarticle'
+			);
 
 		// check if current user has editor permission
 		} elseif ( !$wgUser->isAllowed( 'aft-editor' ) ) {
-			$results['result'] = 'Error';
-			$results['reason'] = 'articlefeedbackv5-insufficient-permissions';
+			$this->dieUsage(
+				$this->msg( 'articlefeedbackv5-insufficient-permissions' )->escaped(),
+				'nopermissions'
+			);
 
 		// check if existing page restriction is not too tight (set tight by administrator, should not be overridden)
-		} elseif ( ArticleFeedbackv5Permissions::getRestriction( $params['pageid'] )->pr_level === 'aft-administrator' ) {
-			$results['result'] = 'Error';
-			$results['reason'] = 'articlefeedbackv5-insufficient-permissions';
+		} elseif ( ArticleFeedbackv5Permissions::getRestriction( $pageObj->getId() )->pr_level === 'aft-administrator' ) {
+			$this->dieUsage(
+				$this->msg( 'articlefeedbackv5-insufficient-permissions' )->escaped(),
+				'nopermissions'
+			);
 
 		} else {
 			// enable: allow for all (= allow reader and up);
@@ -47,32 +53,23 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 			$restriction = $params['enable'] ? 'aft-reader' : 'aft-editor';
 
 			$success = ArticleFeedbackv5Permissions::setRestriction(
-				$params['pageid'],
+				$pageObj->getId(),
 				$restriction,
 				wfGetDB( DB_SLAVE )->getInfinity()
 			);
 
-			/*
-			 * @todo: So, we now have "it" playing nicely with existing page protection
-			 * stuff. The problem now is that, even if page protection does not
-			 * disable AFTv5, it still may not be enabled (= if it does not have
-			 * lottery or category)
-			 * THINK!
-			 */
-
 			if ( !$success ) {
-				$results['result'] = 'Error';
-				$results['reason'] = 'articlefeedbackv5-error-unknown';
-			} else {
-				$results['result'] = 'Success';
-				$results['reason'] = null;
+				$this->dieUsage(
+					$this->msg( 'articlefeedbackv5-error-unknown' )->escaped(),
+					'unknown'
+				);
 			}
 		}
 
 		$this->getResult()->addValue(
 			null,
 			$this->getModuleName(),
-			$results
+			array( 'success' => $success )
 		);
 
 		wfProfileOut( __METHOD__ );
@@ -85,8 +82,8 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getAllowedParams() {
 		return array(
+			'title' => null,
 			'pageid' => array(
-				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
 			),
@@ -103,8 +100,10 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 	 * @return array the descriptions, indexed by allowed key
 	 */
 	public function getParamDescription() {
+		$p = $this->getModulePrefix();
 		return array(
-			'pageid' => 'PageID to enable/disable AFTv5 for',
+			'title' => "Title of the page to enable/disable AFTv5 for. Cannot be used together with {$p}pageid",
+			'pageid' => "ID of the page to enable/disable AFTv5 for. Cannot be used together with {$p}title",
 			'enable' => '1 to enable, 0 to disable AFTv5',
 		);
 	}

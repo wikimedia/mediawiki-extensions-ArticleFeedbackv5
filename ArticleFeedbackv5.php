@@ -533,6 +533,7 @@ $wgResourceModules['ext.articleFeedbackv5.startup'] = array(
 		'mediawiki.user',
 		'jquery.articleFeedbackv5.utils',
 		'mediawiki.jqueryMsg',
+		'mediawiki.api',
 	),
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['ext.articleFeedbackv5'] = array(

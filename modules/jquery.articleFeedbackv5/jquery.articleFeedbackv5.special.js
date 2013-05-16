@@ -1878,15 +1878,13 @@
 					$link.on( 'click', function( e ) {
 						e.preventDefault();
 
-						$.aftUtils.setStatus( $.aftUtils.article().id, status, function( data ) {
-							if ( 'result' in data ) {
-								if ( data.result === 'Success' ) {
-									// refresh page to reflect changes
-									location.reload( true );
+						$.aftUtils.setStatus( $.aftUtils.article().id, status, function( data, error ) {
+							if ( data !== false ) {
+								// refresh page to reflect changes
+								location.reload( true );
 
-								} else if ( data.result === 'Error' && data.reason ) {
-									alert( mw.msg( data.reason ) );
-								}
+							} else if ( error ) {
+								alert( error );
 							}
 						} );
 					});
@@ -1903,4 +1901,3 @@
 // }}}
 
 } )( jQuery );
-

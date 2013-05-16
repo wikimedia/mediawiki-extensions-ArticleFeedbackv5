@@ -287,37 +287,31 @@
 	 * @param function callback function to execute after setting status
 	 */
 	$.aftUtils.setStatus = function( pageId, enable, callback ) {
-		var result = [];
-		result['result'] = 'Error';
-		result['reason'] = 'articlefeedbackv5-error-unknown';
-
-		$.ajax( {
-			'url': mw.util.wikiScript( 'api' ),
-			'type': 'POST',
-			'dataType': 'json',
-			'data': {
-				'pageid': pageId,
-				'enable': parseInt( enable ),
-				'format': 'json',
-				'action': 'articlefeedbackv5-set-status'
-			},
-			'success': function ( data ) {
+		var api = new mw.Api();
+		api.post( {
+			'pageid': pageId,
+			'enable': parseInt( enable ),
+			'format': 'json',
+			'action': 'articlefeedbackv5-set-status'
+		} )
+		.done( function ( data ) {
+			// invoke callback function
+			if ( typeof callback == 'function' ) {
 				if ( 'articlefeedbackv5-set-status' in data ) {
-					result = data['articlefeedbackv5-set-status'];
-				}
-
-				// invoke callback function
-				if ( typeof callback == 'function' ) {
-					callback( result );
-				}
-			},
-			'error': function ( data ) {
-				// invoke callback function
-				if ( typeof callback == 'function' ) {
-					callback( result );
+					callback( data['articlefeedbackv5-set-status'], null );
+				} else if ( 'error' in data && 'info' in data.error ) {
+					callback( false, data.error.info );
+				} else {
+					callback( false, mw.msg( 'articlefeedbackv5-error-unknown' ) );
 				}
 			}
-		});
+		} )
+		.fail( function () {
+			// invoke callback function
+			if ( typeof callback == 'function' ) {
+				callback( false, mw.msg( 'articlefeedbackv5-error-unknown' ) );
+			}
+		} );
 	};
 
 	// }}}
