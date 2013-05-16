@@ -128,7 +128,7 @@
 			<div class="articleFeedbackv5-flyover-footer">\
 				<a id="articleFeedbackv5-noteflyover-submit" class="articleFeedbackv5-flyover-button" href="#"></a>\
 				<a class="articleFeedbackv5-flyover-help" id="articleFeedbackv5-noteflyover-help" href="#"></a>\
-				<div class="clear"></div>\
+				<div class="articleFeedbackv5-clear"></div>\
 			</div>\
 		</form>';
 
@@ -513,14 +513,22 @@
 				$.articleFeedbackv5special.userType );
 
 		// update filter in select (if present) & text-links (if any)
-		$( '#articleFeedbackv5-select-wrapper' ).removeClass( 'filter-active' );
-		$( '.articleFeedbackv5-filter-link' ).removeClass( 'filter-active' );
+		$( '#articleFeedbackv5-select-wrapper' )
+			.removeClass( 'filter-active' ) /** @deprecated */
+			.removeClass( 'articleFeedbackv5-filter-active' );
+		$( '.articleFeedbackv5-filter-link' )
+			.removeClass( 'filter-active' ) /** @deprecated */
+			.removeClass( 'articleFeedbackv5-filter-active' );
 		if ( $( '#articleFeedbackv5-filter-select option[value=' + id + ']' ).length > 0 ) {
-			$( '#articleFeedbackv5-select-wrapper' ).addClass( 'filter-active' );
+			$( '#articleFeedbackv5-select-wrapper' )
+				.addClass( 'filter-active' ) /** @deprecated */
+				.addClass( 'articleFeedbackv5-filter-active' );
 		} else {
 			$( '#articleFeedbackv5-filter-select' ).val( '' );
 		}
-		$( '#articleFeedbackv5-special-filter-' + id).addClass( 'filter-active' );
+		$( '#articleFeedbackv5-special-filter-' + id)
+			.addClass( 'filter-active' ) /** @deprecated */
+			.addClass( 'articleFeedbackv5-filter-active' );
 	};
 
 	// }}}
@@ -1045,11 +1053,11 @@
 		 */
 		if ( $.articleFeedbackv5special.getActivityFlag( id, 'helpful' ) ) {
 			$( '#articleFeedbackv5-helpful-link-' + id )
-				.addClass( 'helpful-active' )
+				.addClass( 'articleFeedbackv5-helpful-active' )
 				.data( 'action', 'undo-helpful' );
 		} else if ( $.articleFeedbackv5special.getActivityFlag( id, 'unhelpful' ) ) {
 			$( '#articleFeedbackv5-unhelpful-link-' + id )
-				.addClass( 'helpful-active' )
+				.addClass( 'articleFeedbackv5-helpful-active' )
 				.data( 'action', 'undo-unhelpful' );
 		}
 

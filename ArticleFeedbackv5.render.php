@@ -671,7 +671,8 @@ class ArticleFeedbackv5Render {
 					$aclass .= ' articleFeedbackv5-has-abuse-flags';
 				}
 				if ( $record->aft_flag >= $wgArticleFeedbackv5AbusiveThreshold ) {
-					$aclass .= ' abusive';
+					$aclass .= ' abusive'; /** @deprecated */
+					$aclass .= ' articleFeedbackv5-abusive';
 				}
 
 				$abuseStats =
@@ -754,7 +755,7 @@ class ArticleFeedbackv5Render {
 					$abuseLink . $abuseStats
 				) .
 				$ownPost .
-				Html::element( 'div', array( 'class' => 'clear' ) )
+				Html::element( 'div', array( 'class' => 'clear articleFeedbackv5-clear' ) ) /** @deprecated: get rid of the non-prefixed clear */
 			);
 	}
 

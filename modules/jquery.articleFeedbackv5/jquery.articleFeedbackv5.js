@@ -209,14 +209,14 @@
 					<div class="articleFeedbackv5-ui">\
 						<div class="articleFeedbackv5-tooltip-wrap">\
 							<div class="articleFeedbackv5-tooltip">\
-								<div class="tooltip-top"></div>\
-								<div class="tooltip-repeat">\
+								<div class="articleFeedbackv5-tooltip-top"></div>\
+								<div class="articleFeedbackv5-tooltip-repeat">\
 									<h3><html:msg key="help-tooltip-title" /></h3><span class="articleFeedbackv5-tooltip-close">&times;</span>\
-									<div class="clear"></div>\
+									<div class="articleFeedbackv5-clear"></div>\
 									<p class="articleFeedbackv5-tooltip-info"><html:msg key="help-tooltip-info" /></p>\
 									<p><a target="_blank" class="articleFeedbackv5-tooltip-link"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
 								</div>\
-								<div class="tooltip-bottom"></div>\
+								<div class="articleFeedbackv5-tooltip-bottom"></div>\
 							</div>\
 						</div>\
 						<div class="articleFeedbackv5-ui-inner"></div>\
@@ -241,7 +241,7 @@
 			</div>\
 			',
 
-		clear: '<div class="clear"></div>',
+		clear: '<div class="articleFeedbackv5-clear"></div>',
 
 		disableFlyover: '\
 			<div>\
@@ -304,31 +304,31 @@
 				block: '\
 					<form>\
 						<div class="articleFeedbackv5-top-error"></div>\
-						<div class="form-row articleFeedbackv5-bucket1-toggle">\
-							<p class="instructions-left"><html:msg key="bucket1-question-toggle" /></p>\
-							<div class="buttons">\
-								<div class="form-item" data-value="yes" id="articleFeedbackv5-bucket1-toggle-wrapper-yes">\
+						<div class="articleFeedbackv5-form-row articleFeedbackv5-bucket1-toggle">\
+							<p class="articleFeedbackv5-instructions-left"><html:msg key="bucket1-question-toggle" /></p>\
+							<div class="articleFeedbackv5-buttons">\
+								<div class="articleFeedbackv5-form-item" data-value="yes" id="articleFeedbackv5-bucket1-toggle-wrapper-yes">\
 									<label for="articleFeedbackv5-bucket1-toggle-yes"><html:msg key="bucket1-toggle-found-yes-full" /></label>\
 									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-yes" value="yes" /></a>\
-									<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-yes" class="query-button" value="yes" />\
+									<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-yes" class="articleFeedbackv5-query-button" value="yes" />\
 								</div>\
-								<div class="form-item" data-value="no" id="articleFeedbackv5-bucket1-toggle-wrapper-no">\
+								<div class="articleFeedbackv5-form-item" data-value="no" id="articleFeedbackv5-bucket1-toggle-wrapper-no">\
 									<label for="articleFeedbackv5-bucket1-toggle-no"><html:msg key="bucket1-toggle-found-no-full" /></label>\
 									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-no" /></a>\
-									<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-no" class="query-button last" value="no" />\
+									<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-no" class="articleFeedbackv5-query-button last" value="no" />\
 								</div>\
-								<div class="clear"></div>\
+								<div class="articleFeedbackv5-clear"></div>\
 							</div>\
-							<div class="clear"></div>\
+							<div class="articleFeedbackv5-clear"></div>\
 						</div>\
 						<div class="articleFeedbackv5-comment">\
-							<textarea id="articleFeedbackv5-find-feedback" class="feedback-text" name="comment"></textarea>\
+							<textarea id="articleFeedbackv5-find-feedback" class="articleFeedbackv5-feedback-text" name="comment"></textarea>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket1-form-submit" /></button>\
-						<div class="clear"></div>\
+						<div class="articleFeedbackv5-clear"></div>\
 					</form>\
 					'
 
@@ -417,7 +417,7 @@
 					.focus( function () {
 						if ( $( this ).val() == $.articleFeedbackv5.currentBucket().currentDefaultText ) {
 							$( this ).val( '' );
-							$( this ).removeClass( 'inactive' );
+							$( this ).removeClass( 'articleFeedbackv5-inactive' );
 						}
 					} )
 					.keyup ( function () {
@@ -435,7 +435,7 @@
 						}
 						if ( $( this ).val() == '' ) {
 							$( this ).val( def_msg );
-							$( this ).addClass( 'inactive' );
+							$( this ).addClass( 'articleFeedbackv5-inactive' );
 						} else {
 							$.articleFeedbackv5.enableSubmission( true );
 						}
@@ -517,16 +517,16 @@
 				 */
 				editable: '\
 					<div id="articleFeedbackv5-bucket4">\
-						<div class="form-row articleFeedbackv5-bucket4-toggle">\
-							<p class="sub-header"><strong><html:msg key="bucket4-subhead" /></strong></p>\
-							<p class="instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
+						<div class="articleFeedbackv5-form-row articleFeedbackv5-bucket4-toggle">\
+							<p class="articleFeedbackv5-sub-header"><strong><html:msg key="bucket4-subhead" /></strong></p>\
+							<p class="articleFeedbackv5-instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
 							<html:msg key="bucket4-teaser-line2" /></p>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
 							<p><a class="articleFeedbackv5-learn-to-edit" target="_blank"><html:msg key="bucket4-learn-to-edit" /> &raquo;</a></p>\
 						</div>\
 						<a class="articleFeedbackv5-cta-button" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket4-form-submit" /></a>\
-						<div class="clear"></div>\
+						<div class="articleFeedbackv5-clear"></div>\
 					</div>\
 					',
 
@@ -536,15 +536,15 @@
 				 */
 				noneditable: '\
 					<div id="articleFeedbackv5-bucket4">\
-						<div class="form-row articleFeedbackv5-bucket4-toggle">\
-							<p class="instructions-left"><html:msg key="bucket4-noedit-teaser-line1" /><br />\
+						<div class="articleFeedbackv5-form-row articleFeedbackv5-bucket4-toggle">\
+							<p class="articleFeedbackv5-instructions-left"><html:msg key="bucket4-noedit-teaser-line1" /><br />\
 							<html:msg key="bucket4-noedit-teaser-line2" /></p>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
 							<p>&nbsp;</p>\
 						</div>\
 						<a class="articleFeedbackv5-cta-button" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket4-noedit-form-submit" /></a>\
-						<div class="clear"></div>\
+						<div class="articleFeedbackv5-clear"></div>\
 					</div>\
 					'
 
@@ -644,32 +644,32 @@
 				block: '\
 					<form>\
 						<div class="articleFeedbackv5-top-error"></div>\
-						<div class="form-row articleFeedbackv5-bucket6-toggle">\
-							<p class="instructions-left"><html:msg key="bucket6-question-toggle" /></p>\
-							<div class="buttons">\
-								<div class="form-item" data-value="yes" id="articleFeedbackv5-bucket6-toggle-wrapper-yes">\
+						<div class="articleFeedbackv5-form-row articleFeedbackv5-bucket6-toggle">\
+							<p class="articleFeedbackv5-instructions-left"><html:msg key="bucket6-question-toggle" /></p>\
+							<div class="articleFeedbackv5-buttons">\
+								<div class="articleFeedbackv5-form-item" data-value="yes" id="articleFeedbackv5-bucket6-toggle-wrapper-yes">\
 									<label for="articleFeedbackv5-bucket6-toggle-yes"><html:msg key="bucket6-toggle-found-yes-full" /></label>\
 									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-yes" value="yes" /></a>\
-									<input type="radio" name="toggle" id="articleFeedbackv5-bucket6-toggle-yes" class="query-button" value="yes" />\
+									<input type="radio" name="toggle" id="articleFeedbackv5-bucket6-toggle-yes" class="articleFeedbackv5-query-button" value="yes" />\
 								</div>\
-								<div class="form-item" data-value="no" id="articleFeedbackv5-bucket6-toggle-wrapper-no">\
+								<div class="articleFeedbackv5-form-item" data-value="no" id="articleFeedbackv5-bucket6-toggle-wrapper-no">\
 									<label for="articleFeedbackv5-bucket6-toggle-no"><html:msg key="bucket6-toggle-found-no-full" /></label>\
 									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-no" /></a>\
-									<input type="radio" name="toggle" id="articleFeedbackv5-bucket6-toggle-no" class="query-button last" value="no" />\
+									<input type="radio" name="toggle" id="articleFeedbackv5-bucket6-toggle-no" class="articleFeedbackv5-query-button last" value="no" />\
 								</div>\
-								<div class="clear"></div>\
+								<div class="articleFeedbackv5-clear"></div>\
 							</div>\
-							<div class="clear"></div>\
+							<div class="articleFeedbackv5-clear"></div>\
 						</div>\
 						<div class="articleFeedbackv5-comment">\
 							<p id="articlefeedbackv5-feedback-countdown"></p>\
-							<textarea id="articleFeedbackv5-find-feedback" class="feedback-text" name="comment"></textarea>\
+							<textarea id="articleFeedbackv5-find-feedback" class="articleFeedbackv5-feedback-text" name="comment"></textarea>\
 						</div>\
 						<div class="articleFeedbackv5-disclosure">\
 							<p class="articlefeedbackv5-help-transparency-terms"></p>\
 						</div>\
 						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket6-form-submit" /></button>\
-						<div class="clear"></div>\
+						<div class="articleFeedbackv5-clear"></div>\
 					</form>\
 					'
 
@@ -847,7 +847,7 @@
 			 * Display step 1
 			 */
 			displayStep1: function ( $block ) {
-				var $step1 = $( '.form-row', $block );
+				var $step1 = $( '.articleFeedbackv5-form-row', $block );
 				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit', $block );
 
 				// hide comment, disclosure & submit first (should only show after clicking Y/N)
@@ -868,7 +868,7 @@
 			 * Display step 2
 			 */
 			displayStep2: function ( $block ) {
-				var $step1 = $( '.form-row', $block );
+				var $step1 = $( '.articleFeedbackv5-form-row', $block );
 				var $step2 = $( '.articleFeedbackv5-comment, .articleFeedbackv5-disclosure, .articleFeedbackv5-submit', $block );
 
 				// show comment, disclosure & submit; hide Y/N buttons
@@ -988,14 +988,14 @@
 				 * The template for the whole block
 				 */
 				block: '\
-					<div class="clear"></div>\
+					<div class="articleFeedbackv5-clear"></div>\
 					<div class="articleFeedbackv5-confirmation-panel">\
 						<div class="articleFeedbackv5-panel-leftContent">\
 							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta1-confirmation-title" /></h3>\
 							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta1-confirmation-call" /></p>\
 						</div>\
 						<a href="&amp;action=edit" class="articleFeedbackv5-cta-button"><html:msg key="cta1-edit-linktext" /></a>\
-						<div class="clear"></div>\
+						<div class="articleFeedbackv5-clear"></div>\
 					</div>\
 					'
 
@@ -1066,14 +1066,14 @@
 				 * The template for the whole block
 				 */
 				block: '\
-					<div class="clear"></div>\
+					<div class="articleFeedbackv5-clear"></div>\
 					<div class="articleFeedbackv5-confirmation-panel">\
 						<div class="articleFeedbackv5-panel-leftContent">\
 							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta2-confirmation-title" /></h3>\
 							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta2-confirmation-call" /></p>\
 						</div>\
 						<a href="&amp;action=edit" class="articleFeedbackv5-cta-button"><html:msg key="cta2-button-text" /></a>\
-						<div class="clear"></div>\
+						<div class="articleFeedbackv5-clear"></div>\
 					</div>\
 					'
 
@@ -1145,14 +1145,14 @@
 				 * The template for the whole block
 				 */
 				block: '\
-					<div class="clear"></div>\
+					<div class="articleFeedbackv5-clear"></div>\
 					<div class="articleFeedbackv5-confirmation-panel">\
 						<div class="articleFeedbackv5-panel-leftContent">\
 							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta3-confirmation-title" /></h3>\
 							<p class="articleFeedbackv5-confirmation-call"><html:msg key="cta3-confirmation-call" /></p>\
 						</div>\
 						<a href="#" class="articleFeedbackv5-cta-button" target="_blank"><html:msg key="cta3-button-text" /></a>\
-						<div class="clear"></div>\
+						<div class="articleFeedbackv5-clear"></div>\
 					</div>\
 					'
 
@@ -1274,7 +1274,7 @@
 				 * The template for the whole block
 				 */
 				block: '\
-					<div class="clear"></div>\
+					<div class="articleFeedbackv5-clear"></div>\
 					<div class="articleFeedbackv5-confirmation-panel">\
 						<div class="articleFeedbackv5-panel-leftContent">\
 							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta4-confirmation-title" /></h3>\
@@ -1286,7 +1286,7 @@
 							<a href="#" class="articleFeedbackv5-cta-button-login articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-login" /></a>\
 <!--						<a href="#" class="articleFeedbackv5-cta-button-later articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-later" /></a> -->\
 						</div>\
-						<div class="clear"></div>\
+						<div class="articleFeedbackv5-clear"></div>\
 					</div>\
 					'
 			},
@@ -1408,14 +1408,14 @@
 				 * The template for the whole block
 				 */
 				block: '\
-					<div class="clear"></div>\
+					<div class="articleFeedbackv5-clear"></div>\
 					<div class="articleFeedbackv5-confirmation-panel">\
 						<div class="articleFeedbackv5-panel-leftContent">\
 							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta5-confirmation-title" /></h3>\
 							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta5-confirmation-call" /></p>\
 						</div>\
 						<a href="#" class="articleFeedbackv5-cta-button"><html:msg key="cta5-button-text" /></a>\
-						<div class="clear"></div>\
+						<div class="articleFeedbackv5-clear"></div>\
 					</div>\
 					'
 
@@ -1490,14 +1490,14 @@
 				 * The template for the whole block
 				 */
 				block: '\
-					<div class="clear"></div>\
+					<div class="articleFeedbackv5-clear"></div>\
 					<div class="articleFeedbackv5-confirmation-panel">\
 						<div class="articleFeedbackv5-panel-leftContent">\
 							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta6-confirmation-title" /></h3>\
 							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta6-confirmation-call" /></p>\
 						</div>\
 						<a href="#" class="articleFeedbackv5-cta-button"><html:msg key="cta6-button-text" /></a>\
-						<div class="clear"></div>\
+						<div class="articleFeedbackv5-clear"></div>\
 					</div>\
 					'
 
