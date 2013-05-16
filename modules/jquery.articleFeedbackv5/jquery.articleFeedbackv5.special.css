@@ -168,17 +168,17 @@
 	/* @embed */
 	background: url(images/thumbdwn_hover.png) left no-repeat;
 }
-.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-helpful-link.helpful-active,
-.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-helpful-link.helpful-active:hover,
-.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-undo-helpful-link.helpful-active,
-.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-undo-helpful-link.helpful-active:hover {
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-helpful-link.articleFeedbackv5-helpful-active,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-helpful-link.articleFeedbackv5-helpful-active:hover,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-undo-helpful-link.articleFeedbackv5-helpful-active,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-undo-helpful-link.articleFeedbackv5-helpful-active:hover {
 	/* @embed */
 	background: url(images/thumbup_active.png) left no-repeat;
 }
-.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link.helpful-active,
-.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link.helpful-active:hover,
-.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-undo-unhelpful-link.helpful-active,
-.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-undo-unhelpful-link.helpful-active:hover {
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link.articleFeedbackv5-helpful-active,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-unhelpful-link.articleFeedbackv5-helpful-active:hover,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-undo-unhelpful-link.articleFeedbackv5-helpful-active,
+.articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-undo-unhelpful-link.articleFeedbackv5-helpful-active:hover {
 	/* @embed */
 	background: url(images/thumbdwn_active.png) left no-repeat;
 }
@@ -223,7 +223,8 @@
 	color: #888;
 	display: none;
 }
-.articleFeedbackv5-abuse-count.abusive {
+.articleFeedbackv5-abuse-count.abusive, /** @deprecated */
+.articleFeedbackv5-abuse-count.articleFeedbackv5-abusive {
 	color: #832831;
 }
 .articleFeedbackv5-abuse-count.articleFeedbackv5-has-abuse-flags {
@@ -900,7 +901,8 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	line-height: 1.5em;
 }
 
-.clear {
+.clear, /** @deprecated */
+.articleFeedbackv5-clear {
 	display: block !important;
 	height: 0 !important;
 	overflow: hidden !important;

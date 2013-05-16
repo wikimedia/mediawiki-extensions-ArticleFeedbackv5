@@ -331,8 +331,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					)
 				)->text()
 			) .
-			$this->buildSummary() .
-			Html::element( 'div', array( 'class' => 'float-clear' ) );
+			$this->buildSummary();
 	}
 
 	/**
@@ -396,10 +395,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		if ( $this->pageId ) {
 			$found = ArticleFeedbackv5Model::getCountFound( $this->pageId ) / ( $totalCount ?: 1 ) * 100;
 			if ( $found ) {
-				$class = $found >= 50 ? 'positive' : 'negative';
+				$class = $found >= 50 ? 'articleFeedbackv5-positive' : 'articleFeedbackv5-negative';
+				$class .= $found >= 50 ? ' positive' : ' negative'; /** @deprecated */
+
 				$span = Html::rawElement(
 					'span',
-					array( 'class' => "stat-marker $class" ),
+					array( 'class' => "stat-marker articleFeedbackv5-stat-marker $class" ), /** @deprecated: get rid of the non-prefixed stat-marker */
 					$this->msg( 'percent', round( $found ) )->escaped()
 				);
 
@@ -548,7 +549,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					),
 					$this->msg( 'articlefeedbackv5-special-refresh' )->text()
 				) .
-				Html::element( 'div', array( 'class' => 'clear' ) )
+				Html::element( 'div', array( 'class' => 'clear articleFeedbackv5-clear' ) ) /** @deprecated: get rid of the non-prefixed clear */
 			) .
 			$centralPageLink;
 	}
@@ -565,16 +566,20 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		foreach ( array( 'featured', 'unreviewed' ) as $filter ) {
 			$count = ArticleFeedbackv5Model::getCount( $filter, $this->pageId );
 
-			// Give grep a chance to find the usages:
-			// articlefeedbackv5-special-filter-featured, articlefeedbackv5-special-filter-unreviewed
+			$class = 'articleFeedbackv5-filter-link';
+			$class .= ( $this->startingFilter == $filter ? ' articleFeedbackv5-filter-active' : '' );
+			$class .= ( $this->startingFilter == $filter ? ' filter-active' : '' ); /** @deprecated */
+
 			$filterLabels[$filter] =
 				Html::rawElement(
 					'a',
 					array(
 						'href' => '#',
 						'id' => "articleFeedbackv5-special-filter-$filter",
-						'class' => 'articleFeedbackv5-filter-link' . ( $this->startingFilter == $filter ? ' filter-active' : '' )
+						'class' => $class
 					),
+					// Give grep a chance to find the usages:
+					// articlefeedbackv5-special-filter-featured, articlefeedbackv5-special-filter-unreviewed
 					$this->msg( "articlefeedbackv5-special-filter-$filter", $count )->escaped()
 				);
 		}

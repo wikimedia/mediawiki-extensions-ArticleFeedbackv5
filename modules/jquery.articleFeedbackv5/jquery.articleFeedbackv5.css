@@ -435,7 +435,8 @@
 
 /*---===<<< Sean's Version 5 Styles >>>===---*/
 
-.clear {
+.clear, /** @deprecated */
+.articleFeedbackv5-clear {
 	display: block !important;
 	height: 0 !important;
 	overflow: hidden !important;
@@ -480,35 +481,35 @@
 	color: #000;
 }
 
-.articleFeedbackv5-tooltip .tooltip-top {
+.articleFeedbackv5-tooltip .articleFeedbackv5-tooltip-top {
 	/* @embed */
 	background: url(images/bg-tooltip-top.png);
 	height: 11px;
 }
 
-.articleFeedbackv5-tooltip .tooltip-repeat {
+.articleFeedbackv5-tooltip .articleFeedbackv5-tooltip-repeat {
 	/* @embed */
 	background: url(images/bg-tooltip.png) repeat-y;
 	padding: 0 20px 1px;
 	margin: 0;
 }
 
-.articleFeedbackv5-tooltip .tooltip-repeat h3 {
+.articleFeedbackv5-tooltip .articleFeedbackv5-tooltip-repeat h3 {
 	float: left;
 }
 
-.articleFeedbackv5-tooltip .tooltip-repeat .articleFeedbackv5-tooltip-close {
+.articleFeedbackv5-tooltip .articleFeedbackv5-tooltip-repeat .articleFeedbackv5-tooltip-close {
 	float: right;
 	cursor: pointer;
 	margin: -5px -5px 0 0;
 	font-size: 1.5em;
 }
 
-.articleFeedbackv5-tooltip .tooltip-repeat .articleFeedbackv5-tooltip-close:hover {
+.articleFeedbackv5-tooltip .articleFeedbackv5-tooltip-repeat .articleFeedbackv5-tooltip-close:hover {
 	text-decoration: underline;
 }
 
-.articleFeedbackv5-tooltip .tooltip-bottom {
+.articleFeedbackv5-tooltip .articleFeedbackv5-tooltip-bottom {
 	/* @embed */
 	background: url(images/bg-tooltip-bottom.png);
 	height: 26px;
@@ -539,11 +540,11 @@
 	padding-bottom: 0.17em;
 }
 
-.articleFeedbackv5-ui .form-row {
+.articleFeedbackv5-ui .articleFeedbackv5-form-row {
 	margin: 0 0 15px;
 }
 
-.articleFeedbackv5-ui .instructions-left {
+.articleFeedbackv5-ui .articleFeedbackv5-instructions-left {
 	float:left;
 	margin: 0 15px 0 0;
 	font-size: 1.2em;
@@ -556,21 +557,21 @@
 	margin-bottom: 0;
 }
 
-.articleFeedbackv5-ui .buttons .form-item {
+.articleFeedbackv5-ui .articleFeedbackv5-buttons .articleFeedbackv5-form-item {
 	float: left;
 	margin: 0 15px 0 0;
 }
 
-.articleFeedbackv5-ui .buttons .form-item:hover {
+.articleFeedbackv5-ui .articleFeedbackv5-buttons .articleFeedbackv5-form-item:hover {
 	float: left;
 }
 
-.articleFeedbackv5-ui .buttons label,
-.articleFeedbackv5-ui .buttons input {
+.articleFeedbackv5-ui .articleFeedbackv5-buttons label,
+.articleFeedbackv5-ui .articleFeedbackv5-buttons input {
 	display: none;
 }
 
-.articleFeedbackv5-ui .buttons .articleFeedbackv5-button-placeholder {
+.articleFeedbackv5-ui .articleFeedbackv5-buttons .articleFeedbackv5-button-placeholder {
 	display: inline-block;
 	height: 22px !important;
 	line-height: 22px;
@@ -592,7 +593,7 @@
 	box-shadow: -2px 2px 1px #999;
 }
 
-.articleFeedbackv5-ui .feedback-text {
+.articleFeedbackv5-ui .articleFeedbackv5-feedback-text {
 	background: #fff;
 	border: 1px solid #000;
 	width: 660px;
@@ -602,7 +603,7 @@
 	font-family: sans-serif !important;
 }
 
-.articleFeedbackv5-ui .feedback-text.inactive {
+.articleFeedbackv5-ui .articleFeedbackv5-feedback-text.articleFeedbackv5-inactive {
 	color: #999;
 }
 
@@ -663,11 +664,11 @@
 	font-size: 1em;
 	font-weight: bold;
 }
-.articleFeedbackv5-option-4 .sub-header {
+.articleFeedbackv5-option-4 .articleFeedbackv5-sub-header {
 	font-size: 1.1em;
 	margin: 0 0 15px;
 }
-.articleFeedbackv5-option-4 .instructions-left {
+.articleFeedbackv5-option-4 .articleFeedbackv5-instructions-left {
 	font-size: 1em;
 	margin: 0 0 15px;
 }

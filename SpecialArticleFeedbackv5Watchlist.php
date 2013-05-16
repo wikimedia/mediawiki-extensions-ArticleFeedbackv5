@@ -104,16 +104,20 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		// filter to be displayed as link
 		$filterLabels = array();
 		foreach ( array( 'featured', 'unreviewed' ) as $filter ) {
-			// Give grep a chance to find the usages:
-			// articlefeedbackv5-special-filter-featured, articlefeedbackv5-special-filter-unreviewed
+			$class = 'articleFeedbackv5-filter-link';
+			$class .= ( $this->startingFilter == $filter ? ' articleFeedbackv5-filter-active' : '' );
+			$class .= ( $this->startingFilter == $filter ? ' filter-active' : '' ); /** @deprecated */
+
 			$filterLabels[$filter] =
 				Html::rawElement(
 					'a',
 					array(
 						'href' => '#',
 						'id' => "articleFeedbackv5-special-filter-$filter",
-						'class' => 'articleFeedbackv5-filter-link' . ( $this->startingFilter == $filter ? ' filter-active' : '' )
+						'class' => $class
 					),
+					// Give grep a chance to find the usages:
+					// articlefeedbackv5-special-filter-featured, articlefeedbackv5-special-filter-unreviewed
 					$this->msg( "articlefeedbackv5-special-filter-$filter-watchlist" )->escaped()
 				);
 		}
