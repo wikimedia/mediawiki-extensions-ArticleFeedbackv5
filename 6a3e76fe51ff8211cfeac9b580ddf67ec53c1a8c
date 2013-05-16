@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DxaApFI0",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.css",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 78
+      },
+      "writtenOn": "2013-05-16T18:01:14Z",
+      "side": 1,
+      "message": "missing comma here.",
+      "revId": "6a3e76fe51ff8211cfeac9b580ddf67ec53c1a8c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
