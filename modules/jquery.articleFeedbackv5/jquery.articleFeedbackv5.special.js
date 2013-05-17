@@ -1846,20 +1846,20 @@
 			'hasTipsy': true,
 			'tipsyHtml': function() {
 				// build link to enable feedback form
-				var $link = $( '<a href="#"></a>' );
+				var $link = $( '<a href="#" id="articleFeedbackv5-settings-status"></a>' );
 				$( '#articleFeedbackv5-settings-menu' ).append( $link );
-
-				var status = null;
 
 				// check if user can enable AFTv5
 				if ( $.aftUtils.canSetStatus( true ) ) {
-					status = 1;
-					$link.text( mw.msg( 'articlefeedbackv5-settings-status-enable' ) );
+					$link
+						.attr( 'data-status', 1 )
+						.text( mw.msg( 'articlefeedbackv5-settings-status-enable' ) );
 
 				// or disable
 				} else if ( $.aftUtils.canSetStatus( false ) ) {
-					status = 0;
-					$link.text( mw.msg( 'articlefeedbackv5-settings-status-disable' ) );
+					$link
+						.attr( 'data-status', 0 )
+						.text( mw.msg( 'articlefeedbackv5-settings-status-disable' ) );
 
 				// if status can not be changed at all (e.g. insufficient permissions), don't do anything
 				} else {
@@ -1878,14 +1878,14 @@
 
 				// editors can enable/disable for readers via API
 				} else {
-					$link.on( 'click', function( e ) {
+					$( document ).on( 'click', '#articleFeedbackv5-settings-status', function( e ) {
 						e.preventDefault();
 
+						var status = $( this ).data( 'status' );
 						$.aftUtils.setStatus( $.aftUtils.article().id, status, function( data, error ) {
+							// refresh page to reflect changes
 							if ( data !== false ) {
-								// refresh page to reflect changes
 								location.reload( true );
-
 							} else if ( error ) {
 								alert( error );
 							}
