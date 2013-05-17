@@ -9716,6 +9716,7 @@ inclúe algún dos seguintes problemas:
 	'articlefeedbackv5-section-linktext' => 'comentarios',
 	'articlefeedbackv5-toolbox-view' => 'Ollar os comentarios',
 	'articlefeedbackv5-toolbox-add' => 'Achegue a súa opinión',
+	'articlefeedbackv5-leave-warning' => 'Os datos que inseriu puideron non gardarse.',
 	'articlefeedbackv5-disable-preference' => 'Non mostrar o widget de avaliación de artigos nas páxinas',
 	'right-aft-reader' => 'Publicar comentarios e marcalos como (in)útiles',
 	'right-aft-member' => 'Publicar comentarios e marcalos como (in)útiles',
@@ -25506,6 +25507,7 @@ $messages['yo'] = array(
  * @author Hydra
  * @author Hzy980512
  * @author Kuailong
+ * @author Li3939108
  * @author Liangent
  * @author Linforest
  * @author Makecat
@@ -25984,6 +25986,7 @@ $6
 	'articlefeedbackv5-section-linktext' => '反馈',
 	'articlefeedbackv5-toolbox-view' => '查看反馈',
 	'articlefeedbackv5-toolbox-add' => '添加您的反馈',
+	'articlefeedbackv5-leave-warning' => '您已输入的数据可能不会保存。',
 	'articlefeedbackv5-disable-preference' => '不在页面上显示条目评分工具',
 	'right-aft-reader' => '发反馈和标记有无帮助',
 	'right-aft-member' => '发反馈和标记有无帮助',
