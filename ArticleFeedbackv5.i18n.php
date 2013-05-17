@@ -81,7 +81,6 @@ $messages['en'] = array(
 	'articlefeedbackv5-disabled-editor-button-text' => 'Enable feedback',
 	'articlefeedbackv5-settings-status-enable' => 'Enable feedback on this page',
 	'articlefeedbackv5-settings-status-disable' => 'Disable feedback on this page',
-	'articlefeedbackv5-settings-status-error' => "Can't change feedback tool status",
 	'articlefeedbackv5-enabled-form-message' => 'Feedback has just been enabled. Reader posts will be visible [$1 at the feedback page].',
 
 	/* My Contributions */
@@ -830,7 +829,6 @@ The abuse policy link.',
 	'articlefeedbackv5-disabled-editor-button-text' => 'Button text for link that will (re-)enable the article feedback tool at once, for editors',
 	'articlefeedbackv5-settings-status-enable' => 'Link text for the link to enable AFTv5 form for this page',
 	'articlefeedbackv5-settings-status-disable' => 'Link text for the link to disable AFTv5 form for this page',
-	'articlefeedbackv5-settings-status-error' => "Text when AFTv5 form status (enabled/disabled) can't be changed for this page",
 	'articlefeedbackv5-enabled-form-message' => 'Message to be displayed below the AFTv5 form after it has just been enabled. Parameters:
 * $1 is a link to the article feedback page, where feedback can be viewed.',
 	'articlefeedbackv5-contribs-entry' => 'AFT entry line displayed on My Contributions. An example of this line could be: 10:59, 30 August 2012 . . (+55)‎ . . Feedback: Main Page (This is some more feedback, using the AFT feedback form) . . Status: Helpful and Featured

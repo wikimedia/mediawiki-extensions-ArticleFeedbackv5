@@ -197,65 +197,10 @@
 		$.articleFeedbackv5special.loadActivity();
 
 		// Bind events
+		$.articleFeedbackv5special.initTipsies();
+
+		// Bind events
 		$.articleFeedbackv5special.setBinds();
-
-		// set tipsy defaults, once
-		$.fn.tipsy.defaults = {
-			delayIn: 0,					// delay before showing tooltip (ms)
-			delayOut: 0,				// delay before hiding tooltip (ms)
-			fade: false,				// fade tooltips in/out?
-			fallback: '',				// fallback text to use when no tooltip text
-			gravity: $.fn.tipsy.autoWE,	// gravity according to directionality
-			html: true,					// is tooltip content HTML?
-			live: false,				// use live event support?
-			offset: 10,					// pixel offset of tooltip from element
-			opacity: 1.0,				// opacity of tooltip
-			title: 'title',				// attribute/callback containing tooltip text
-			trigger: 'manual'			// how tooltip is triggered - hover | focus | manual
-		};
-
-		// clicking anywhere (but tipsy) should close an open tipsy
-		$( document ).click( function(e) {
-			if (
-				// if a panel is currently open
-				$.articleFeedbackv5special.currentPanelHostId !== undefined &&
-				// and we did not just open it
-				$.articleFeedbackv5special.currentPanelHostId != $( e.target ).attr( 'id' ) &&
-				// and we clicked outside of the open panel
-				$( e.target ).parents( '.tipsy' ).length == 0
-			) {
-				$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
-				$.articleFeedbackv5special.currentPanelHostId = undefined;
-			}
-		} );
-
-		// Link to help is dependent on the group the user belongs to
-		var helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl' );
-		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'] ) {
-			helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl-oversighters' );
-		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-monitor'] ) {
-			helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl-monitors' );
-		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'] ) {
-			helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl-editors' );
-		}
-
-		// localize tipsies
-		for ( var action in $.articleFeedbackv5special.actions ) {
-			var $container = $( '<div></div>' );
-			if ( $.articleFeedbackv5special.actions[action].hasTipsy && $.articleFeedbackv5special.actions[action].tipsyHtml == undefined ) {
-				$container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
-				$container.find( '#articleFeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
-				$container.find( '#articleFeedbackv5-noteflyover-description' ).html( mw.config.get( 'mw.msg.articlefeedbackv5-noteflyover-' + action + '-description' ) );
-				$container.find( '#articleFeedbackv5-noteflyover-label' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
-				$container.find( '#articleFeedbackv5-noteflyover-submit' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-submit' ) );
-				// will add an 'action' attribute to the link
-				$container.find( '#articleFeedbackv5-noteflyover-help' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help' ) );
-				$container.find( '#articleFeedbackv5-noteflyover-help' ).attr( 'href', helpLink + mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help-link' ) );
-			} else {
-				$container.html( $.articleFeedbackv5special.actions[action].tipsyHtml );
-			}
-			$.articleFeedbackv5special.actions[action].tipsyHtml = $container.localize( { 'prefix': 'articlefeedbackv5-' } ).html();
-		}
 
 		// Add a loading tag to the top and hide it
 		var $loading1 = $( $.articleFeedbackv5special.loadingTemplate );
@@ -303,7 +248,7 @@
 	 * Only track users who have been assigned to the tracking group; don't bucket
 	 * at all if we're set to always ignore or always track.
 	 */
-	$.articleFeedbackv5special.checkClickTracking = function () {
+	$.articleFeedbackv5special.checkClickTracking = function() {
 		var b = mw.config.get( 'wgArticleFeedbackv5Tracking' );
 		if ( b.buckets.ignore == 100 && b.buckets.track == 0 ) {
 			return false;
@@ -313,6 +258,126 @@
 		}
 		var key = 'ext.articleFeedbackv5@' + b.version + '-tracking';
 		return ( 'track' === mw.user.bucket( key, b ) );
+	};
+
+	// }}}
+	// {{{ initTipties
+
+	/**
+	 * Initialize the flyout infowindows
+	 */
+	$.articleFeedbackv5special.initTipsies = function() {
+		// set tipsy defaults, once
+		$.fn.tipsy.defaults = {
+			delayIn: 0,					// delay before showing tooltip (ms)
+			delayOut: 0,				// delay before hiding tooltip (ms)
+			fade: false,				// fade tooltips in/out?
+			fallback: '',				// fallback text to use when no tooltip text
+			gravity: $.fn.tipsy.autoWE,	// gravity according to directionality
+			html: true,					// is tooltip content HTML?
+			live: false,				// use live event support?
+			offset: 10,					// pixel offset of tooltip from element
+			opacity: 1.0,				// opacity of tooltip
+			title: 'title',				// attribute/callback containing tooltip text
+			trigger: 'manual'			// how tooltip is triggered - hover | focus | manual
+		};
+
+		// clicking anywhere (but tipsy) should close an open tipsy
+		$( document ).click( function( e ) {
+			if (
+			// if a panel is currently open
+				$.articleFeedbackv5special.currentPanelHostId !== undefined &&
+					// and we did not just open it
+					$.articleFeedbackv5special.currentPanelHostId != $( e.target ).attr( 'id' ) &&
+					// and we clicked outside of the open panel
+					$( e.target ).parents( '.tipsy' ).length == 0
+				) {
+				$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
+				$.articleFeedbackv5special.currentPanelHostId = undefined;
+			}
+		} );
+
+		// Link to help is dependent on the group the user belongs to
+		var helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl' );
+		if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'] ) {
+			helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl-oversighters' );
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-monitor'] ) {
+			helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl-monitors' );
+		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'] ) {
+			helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl-editors' );
+		}
+
+		// localize tipsies
+		for ( var action in $.articleFeedbackv5special.actions ) {
+			var $container = $( '<div></div>' );
+			if ( $.articleFeedbackv5special.actions[action].hasTipsy && $.articleFeedbackv5special.actions[action].tipsyHtml == undefined ) {
+				$container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
+				$container.find( '#articleFeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
+				$container.find( '#articleFeedbackv5-noteflyover-description' ).html( mw.config.get( 'mw.msg.articlefeedbackv5-noteflyover-' + action + '-description' ) );
+				$container.find( '#articleFeedbackv5-noteflyover-label' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
+				$container.find( '#articleFeedbackv5-noteflyover-submit' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-submit' ) );
+				// will add an 'action' attribute to the link
+				$container.find( '#articleFeedbackv5-noteflyover-help' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help' ) );
+				$container.find( '#articleFeedbackv5-noteflyover-help' ).attr( 'href', helpLink + mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-help-link' ) );
+			} else {
+				$container.html( $.articleFeedbackv5special.actions[action].tipsyHtml );
+			}
+			$.articleFeedbackv5special.actions[action].tipsyHtml = $container.localize( { 'prefix': 'articlefeedbackv5-' } ).html();
+		}
+
+		// Bind actions
+		for ( var action in $.articleFeedbackv5special.actions ) {
+			$( document ).on( 'click touchstart', '.articleFeedbackv5-' + action + '-link', function( e ) {
+				var action = $( this ).data( 'action' );
+
+				if ( !$( this ).hasClass( 'inactive' ) ) {
+					$.articleFeedbackv5special.actions[action].click( e );
+				}
+			} );
+
+			// hide actions that are supposed to have a tipsy, but have no content
+			if ( $.articleFeedbackv5special.actions[action].hasTipsy && $.articleFeedbackv5special.actions[action].tipsyHtml === '' ) {
+				$( '.articleFeedbackv5-' + action + '-link' ).hide();
+			}
+		}
+
+		// flyover panels submit actions (post-flag comments)
+		var tipsySubmit = function( e ) {
+			e.preventDefault();
+
+			if ( typeof $.articleFeedbackv5special.tipsyCallback == 'function' ) {
+				// execute and clear callback function
+				$.articleFeedbackv5special.tipsyCallback( e );
+				$.articleFeedbackv5special.tipsyCallback = undefined;
+			} else {
+				var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
+				var id = $container.data( 'id' );
+				var $noteLink = $container.find( '#articleFeedbackv5-note-link-' + id );
+
+				$.articleFeedbackv5special.addNote(
+					id,
+					$container.data( 'pageid' ),
+					$noteLink.data( 'log-id' ),
+					$noteLink.data( 'action' ),
+					$( '#articleFeedbackv5-noteflyover-note' ).attr( 'value' )
+				);
+			}
+
+			// hide tipsy
+			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
+			$.articleFeedbackv5special.currentPanelHostId = undefined;
+		};
+
+		// tipsies can be submitted by clicking the link, or submitting the form (hitting enter key)
+		$( document ).on( 'submit', 'form.articleFeedbackv5-form-flyover', tipsySubmit );
+		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-submit', tipsySubmit );
+
+		// bind flyover panel close button
+		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-close', function( e ) {
+			e.preventDefault();
+			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
+			$.articleFeedbackv5special.currentPanelHostId = undefined;
+		} );
 	};
 
 	// }}}
@@ -380,55 +445,6 @@
 				$( this ).hide();
 			}
 		});
-
-		// Bind actions
-		for ( var action in $.articleFeedbackv5special.actions ) {
-			$( document ).on( 'click touchstart', '.articleFeedbackv5-' + action + '-link', function( e ) {
-				var action = $( this ).data( 'action' );
-
-				if ( !$( this ).hasClass( 'inactive' ) ) {
-					$.articleFeedbackv5special.actions[action].click( e );
-				}
-			} );
-		}
-
-		// flyover panels submit actions (post-flag comments)
-		var tipsySubmit = function( e ) {
-			e.preventDefault();
-
-			if ( typeof $.articleFeedbackv5special.tipsyCallback == 'function' ) {
-				// execute and clear callback function
-				$.articleFeedbackv5special.tipsyCallback( e );
-				$.articleFeedbackv5special.tipsyCallback = undefined;
-			} else {
-				var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
-				var id = $container.data( 'id' );
-				var $noteLink = $container.find( '#articleFeedbackv5-note-link-' + id );
-
-				$.articleFeedbackv5special.addNote(
-					id,
-					$container.data( 'pageid' ),
-					$noteLink.data( 'log-id' ),
-					$noteLink.data( 'action' ),
-					$( '#articleFeedbackv5-noteflyover-note' ).attr( 'value' )
-				);
-			}
-
-			// hide tipsy
-			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
-			$.articleFeedbackv5special.currentPanelHostId = undefined;
-		};
-
-		// tipsies can be submitted by clicking the link, or submitting the form (hitting enter key)
-		$( document ).on( 'submit', 'form.articleFeedbackv5-form-flyover', tipsySubmit );
-		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-submit', tipsySubmit );
-
-		// bind flyover panel close button
-		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-close', function( e ) {
-			e.preventDefault();
-			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
-			$.articleFeedbackv5special.currentPanelHostId = undefined;
-		} );
 
 		// bind short/long version toggle
 		$( document ).on( 'click touchstart', '.articleFeedbackv5-comment-toggle', function( e ) {
@@ -1828,13 +1844,7 @@
 
 		'settings': {
 			'hasTipsy': true,
-			'tipsyHtml': '\
-				<div id="articleFeedbackv5-settings-menu">\
-					<!-- Depending on context, enable/disable link will be added here -->\
-				</div>',
-			'click': function( e ) {
-				e.preventDefault();
-
+			'tipsyHtml': function() {
 				// build link to enable feedback form
 				var $link = $( '<a href="#"></a>' );
 				$( '#articleFeedbackv5-settings-menu' ).append( $link );
@@ -1853,11 +1863,7 @@
 
 				// if status can not be changed at all (e.g. insufficient permissions), don't do anything
 				} else {
-					$link
-						.text( mw.msg( 'articlefeedbackv5-settings-status-error' ) )
-						.addClass( 'inactive' );
-
-					return;
+					return '';
 				}
 
 				var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
@@ -1886,6 +1892,12 @@
 						} );
 					});
 				}
+
+				var content = $( '<div id="articleFeedbackv5-settings-menu"></div>' ).append( $link );
+				return $( '<div></div>' ).append( content ).html();
+			},
+			'click': function( e ) {
+				e.preventDefault();
 			}
 		}
 
