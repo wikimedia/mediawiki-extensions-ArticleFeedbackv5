@@ -252,11 +252,20 @@
 	 */
 	$.aftUtils.canSetStatus = function( enable ) {
 		var permissionLevel = $.aftUtils.article().permissionLevel || $.aftUtils.article().defaultPermissionLevel;
+		var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 
 		// check AFT status for readers
 		var enabled = ( permissionLevel === 'aft-reader' );
 
+		// check if current user has editor permission
+		if ( !( 'aft-editor' in userPermissions ) || !userPermissions['aft-editor'] ) {
+			return false;
+		}
+
 		/*
+		 * Check if existing page restriction is not too tight (set tight by
+		 * administrator, should not be overridden)
+		 *
 		 * If status was specifically set (= not default), "disabled" only needs
 		 * aft-editor permissions, not the default aft-noone (which is to make
 		 * sure that AFTv5 stays completely hidden for all user types unless
@@ -265,9 +274,6 @@
 		if ( $.aftUtils.article().permissionLevel === false && !enabled ) {
 			permissionLevel = 'aft-editor';
 		}
-
-		// check user has sufficient permissions to enable/disable AFTv5
-		var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 		if ( !( permissionLevel in userPermissions ) || !userPermissions[permissionLevel] ) {
 			return false;
 		}

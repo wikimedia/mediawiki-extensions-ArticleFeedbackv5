@@ -198,8 +198,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			Html::rawElement(
 				'div',
 				array( 'id' => 'articleFeedbackv5-special-wrap' ),
-				$this->buildStatusBox() .
 				$this->buildHeaderLinks() .
+				$this->buildStatusBox() .
 				$this->buildContent( $renderer, $records )
 			)
 		);

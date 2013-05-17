@@ -70,7 +70,7 @@ select {
 #articleFeedbackv5-header-wrap {
 	font-size: 1.2em;
 	line-height: 1.5em;
-	margin: 0 0 30px;
+	margin: 0 0 10px;
 }
 #articleFeedbackv5-header-wrap:after {
 	clear: both;
@@ -188,7 +188,7 @@ select {
 	font-size: 1.1em;
 	line-height: 1.5em;
 	clear: both;
-	padding: 0;
+	padding: 10px 0 0 0;
 	/* @embed */
 	background-image: url(images/bg-feedbackpage-header.png);
 	background-position: bottom left;

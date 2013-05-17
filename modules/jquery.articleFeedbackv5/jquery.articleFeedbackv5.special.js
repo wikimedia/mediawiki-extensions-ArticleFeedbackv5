@@ -443,15 +443,12 @@
 		$( '#articlefeedbackv5-enable' ).on( 'click', function( e ) {
 			e.preventDefault();
 
-			$.aftUtils.setStatus( $.articleFeedbackv5special.page, 1, function( data ) {
-				if ( 'result' in data ) {
-					if ( data.result === 'Success' ) {
-						// refresh page to reflect changes
-						location.reload( true );
-
-					} else if ( data.result === 'Error' && data.reason ) {
-						alert( mw.msg( data.reason ) );
-					}
+			$.aftUtils.setStatus( $.articleFeedbackv5special.page, 1, function( data, error ) {
+				// refresh page to reflect changes
+				if ( data !== false ) {
+					location.reload( true );
+				} else if ( error ) {
+					alert( error );
 				}
 			} );
 		});
