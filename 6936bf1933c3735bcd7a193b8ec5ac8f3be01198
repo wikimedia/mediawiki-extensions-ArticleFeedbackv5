@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DxfqhAK4",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 2685,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-19T01:28:34Z",
+      "side": 1,
+      "message": "This is done in .fail now. (mediawiki.api checks for result.error and does a reject instead of resolve).",
+      "revId": "6936bf1933c3735bcd7a193b8ec5ac8f3be01198",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxbrHeGY",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-19T01:28:34Z",
+      "side": 1,
+      "message": "This is done in .fail now. (mediawiki.api checks for result.error and does a reject instead of resolve).",
+      "revId": "6936bf1933c3735bcd7a193b8ec5ac8f3be01198",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxZrEPGM",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-19T01:28:34Z",
+      "side": 1,
+      "message": "This is done in .fail now. (mediawiki.api checks for result.error and does a reject instead of resolve).",
+      "revId": "6936bf1933c3735bcd7a193b8ec5ac8f3be01198",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
