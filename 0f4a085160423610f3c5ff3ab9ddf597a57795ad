@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DxTBdSXg",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 2687,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-20T15:22:05Z",
+      "side": 1,
+      "message": "error is always in data now",
+      "revId": "0f4a085160423610f3c5ff3ab9ddf597a57795ad",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxVA59Ts",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 2697,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-20T15:22:05Z",
+      "side": 1,
+      "message": "What about $.articleFeedbackv5.unlockForm(); ?",
+      "revId": "0f4a085160423610f3c5ff3ab9ddf597a57795ad",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxfBiwUA",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-20T15:22:05Z",
+      "side": 1,
+      "message": "error should always be in data now",
+      "revId": "0f4a085160423610f3c5ff3ab9ddf597a57795ad",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxdBnxU4",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 98
+      },
+      "writtenOn": "2013-05-20T15:22:05Z",
+      "side": 1,
+      "message": "error should always be in data now",
+      "revId": "0f4a085160423610f3c5ff3ab9ddf597a57795ad",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
