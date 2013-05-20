@@ -150,3 +150,53 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 		return $this->plaintext ? strip_tags( $text ) : $text;
 	}
 }
+
+/**
+ * This class formats AFTv5 protection log entries.
+ *
+ * @package    ArticleFeedback
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
+ * @version    $Id$
+ */
+class ArticleFeedbackv5ProtectionLogFormatter extends LogFormatter {
+	/**
+	 * @return array
+	 */
+	protected function getMessageParameters() {
+		$params = parent::getMessageParameters();
+
+		$articleId = $this->entry->getTarget()->getArticleID();
+		$page = WikiPage::newFromID( $articleId );
+		if ( $page ) {
+			$parameters = $this->entry->getParameters();
+			$permission = array( 'articlefeedbackv5' => $parameters['permission'] );
+			$expiry = array( 'articlefeedbackv5' => $parameters['expiry'] );
+
+			$params[] = $page->protectDescriptionLog( $permission, $expiry );
+		}
+
+		return $params;
+	}
+
+	/**
+	 * Returns extra links that comes after the action text, like "revert", etc.
+	 *
+	 * @return string
+	 */
+	public function getActionLinks() {
+		$links = array(
+			Linker::link(
+				$this->entry->getTarget(),
+				$this->msg( 'hist' )->escaped(),
+				array(),
+				array(
+					'action' => 'history',
+					'offset' => $this->entry->getTimestamp()
+				)
+			)
+		);
+
+		return $this->msg( 'parentheses' )->rawParams(
+			$this->context->getLanguage()->pipeList( $links ) )->escaped();
+	}
+}
