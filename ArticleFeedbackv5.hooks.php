@@ -636,11 +636,11 @@ class ArticleFeedbackv5Hooks {
 
 		// on a per-page basis, AFT can only be restricted from these levels
 		$levels = array(
-			'aft-reader' => 'articlefeedbackv5-protection-permission-reader',
-			'aft-member' => 'articlefeedbackv5-protection-permission-member',
-			'aft-editor' => 'articlefeedbackv5-protection-permission-editor',
-			'aft-administrator' => 'articlefeedbackv5-protection-permission-administrator',
-			'aft-noone' => 'articlefeedbackv5-protection-permission-noone',
+			'aft-reader' => 'protect-level-aft-reader',
+			'aft-member' => 'protect-level-aft-member',
+			'aft-editor' => 'protect-level-aft-editor',
+			'aft-administrator' => 'protect-level-aft-administrator',
+			'aft-noone' => 'protect-level-aft-noone',
 		);
 
 		// build permissions dropdown
@@ -653,7 +653,7 @@ class ArticleFeedbackv5Hooks {
 		) + $disabledAttrib;
 		$permissionsDropdown = Xml::openElement( 'select', $attribs );
 		foreach( $levels as $key => $label ) {
-			// possible labels: articlefeedbackv5-protection-permission-(reader|member|editor|administrator|noone)
+			// possible labels: protect-level-aft-(reader|member|editor|administrator|noone)
 			$permissionsDropdown .= Xml::option( wfMessage( $label )->escaped(), $key, $key == $existingRestriction->pr_level );
 		}
 		$permissionsDropdown .= Xml::closeElement( 'select' );
@@ -766,10 +766,11 @@ class ArticleFeedbackv5Hooks {
 	 * Parts of code are heavily "inspired" by ProtectionForm.
 	 *
 	 * @param Page $article
-	 * @param string $errorMsg
+	 * @param string &$errorMsg
+	 * @param string $reason
 	 * @return bool
 	 */
-	public static function onProtectionSave( Page $article, &$errorMsg ) {
+	public static function onProtectionSave( Page $article, &$errorMsg, $reason ) {
 		global $wgRequest, $wgArticleFeedbackv5Namespaces;
 
 		// only on pages in namespaces where it is enabled
@@ -809,10 +810,33 @@ class ArticleFeedbackv5Hooks {
 		$success = ArticleFeedbackv5Permissions::setRestriction(
 			$article->getId(),
 			$requestPermission,
-			$expirationTime
+			$expirationTime,
+			$reason
 		);
 
 		return $success;
+	}
+
+	/**
+	 * Add AFT permission logs to action=protect.
+	 *
+	 * @param Page $article
+	 * @param OutputPage $out
+	 * @return bool
+	 */
+	public static function onShowLogExtract( Page $article, OutputPage $out ) {
+		global $wgArticleFeedbackv5Namespaces;
+
+		// only on pages in namespaces where it is enabled
+		if ( !$article->getTitle()->inNamespaces( $wgArticleFeedbackv5Namespaces ) ) {
+			return true;
+		}
+
+		$protectLogPage = new LogPage( 'articlefeedbackv5' );
+		$out->addHTML( Xml::element( 'h2', null, $protectLogPage->getName()->text() ) );
+		LogEventsList::showLogExtract( $out, 'articlefeedbackv5', $article->getTitle() );
+
+		return true;
 	}
 
 	/**
