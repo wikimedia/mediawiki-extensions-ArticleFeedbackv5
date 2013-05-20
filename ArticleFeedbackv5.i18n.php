@@ -66,11 +66,13 @@ $messages['en'] = array(
 	/* Page protection */
 	'articlefeedbackv5-protection-level' => 'Article feedback',
 	'articlefeedbackv5-protection-level-error' => 'Article feedback protection level can not be higher than Edit protection level',
-	'articlefeedbackv5-protection-permission-reader' => 'Enable for all users',
-	'articlefeedbackv5-protection-permission-member' => 'Enable for logged-in users only',
-	'articlefeedbackv5-protection-permission-editor' => 'Enable for autoconfirmed users only',
-	'articlefeedbackv5-protection-permission-administrator' => 'Enable for administrators only',
-	'articlefeedbackv5-protection-permission-noone' => 'Disable for all users',
+	'protect-level-aft-reader' => 'Enable for all users',
+	'protect-level-aft-member' => 'Enable for logged-in users only',
+	'protect-level-aft-editor' => 'Enable for autoconfirmed users only',
+	'protect-level-aft-administrator' => 'Enable for administrators only',
+	'protect-level-aft-noone' => 'Disable for all users',
+	'articlefeedbackv5-protection-title' => 'Changed visibility of the article feedback tool on "[[$1]]"',
+	'restriction-articlefeedbackv5' => 'Visibility',
 	'articlefeedbackv5-disabled' => "Feedback has been disabled",
 	'articlefeedbackv5-disabled-admin-admin' => "Feedback has been disabled for readers and editors. They can't post new feedback on this page.",
 	'articlefeedbackv5-disabled-admin-editor' => "Feedback has been disabled for readers. They can't post new feedback on this page.",
@@ -645,6 +647,7 @@ includes one of these issues:
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|un-marked as helpful}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|un-marked as unhelpful}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|cleared all flags}} [[$3|feedback post #$4]] on [[$5]]',
+	'logentry-articlefeedbackv5-protect' => '$1 changed visibility of the article feedback tool on "$3" $4',
 
 	/* Activity Pane phrases */
 	'articlefeedbackv5-activity-pane-header' => 'Activity Log',
@@ -817,11 +820,14 @@ The abuse policy link.',
 	'articlefeedbackv5-error-throttled' => 'Error message to be displayed when a user attempts to post too much feedback in too little time.',
 	'articlefeedbackv5-protection-level' => 'Fieldset label to be used for AFT page protection levels',
 	'articlefeedbackv5-protection-level-error' => "Error message when protection level is too high compared to the page's edit protection level",
-	'articlefeedbackv5-protection-permission-reader' => 'Dropdown menu option to enable AFT for all users',
-	'articlefeedbackv5-protection-permission-member' => 'Dropdown menu option to enable AFT for registered users only',
-	'articlefeedbackv5-protection-permission-editor' => 'Dropdown menu option to enable AFT for editors only',
-	'articlefeedbackv5-protection-permission-administrator' => 'Dropdown menu option to enable AFT for administrators only',
-	'articlefeedbackv5-protection-permission-noone' => 'Dropdown menu option to disable AFT for all users',
+	'protect-level-aft-reader' => 'Dropdown menu option to enable AFT for all users',
+	'protect-level-aft-member' => 'Dropdown menu option to enable AFT for registered users only',
+	'protect-level-aft-editor' => 'Dropdown menu option to enable AFT for editors only',
+	'protect-level-aft-administrator' => 'Dropdown menu option to enable AFT for administrators only',
+	'protect-level-aft-noone' => 'Dropdown menu option to disable AFT for all users',
+	'articlefeedbackv5-protection-title' => 'Comment for the empty revision created when changing visibility of AFT on that page. Parameters:
+* $1 is the title of the page whose protection was changed',
+	'restriction-articlefeedbackv5' => 'Clarification of the exact setting that changed, in the detailed visibility section added to the comment of an empty revision created after changing AFT visibility for a page. The "Visibility" part in e.g. [Visibility=Enable for all users]',
 	'articlefeedbackv5-disabled' => 'Title for the message that article feedback has been disabled for this page',
 	'articlefeedbackv5-disabled-admin-admin' => 'Message, to an admin, that has disabled feedback for this page for both editors and readers',
 	'articlefeedbackv5-disabled-admin-editor' => 'Message, to an admin, that has disabled feedback for this page for readers',
@@ -1894,6 +1900,11 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * $4 - The feedback's id
 * $5 - A link to the article the feedback was posted to
 {{Related|Logentry-articlefeedbackv5}}",
+	'logentry-articlefeedbackv5-protect' => "Log entry for when article feedback tool visibility changes in page protection settings. Parameters:
+* $1 - A link to the performer
+* $2 - The performer's id, gender support
+* $3 - A link to the page
+* $4 - The selected protection level (e.g. [articlefeedbackv5=aft-editor])",
 	'articlefeedbackv5-activity-pane-header' => 'Flyover panel caption',
 	'articlefeedbackv5-activity-feedback-info' => "Post information template. Parameters:
 * $1 - the feedback post ID (parameter currently unused)
