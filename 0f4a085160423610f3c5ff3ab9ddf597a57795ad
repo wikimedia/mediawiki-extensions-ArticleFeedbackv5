@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "Dxet2UKI",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 2687,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-05-20T17:20:39Z",
+      "side": 1,
+      "message": "There should always be an error, assuming the script responds.\nIf the server is not reachable, ajax call times out, ..., it will still get in the .fail code path, but not have \u0027error\u0027.",
+      "parentUuid": "DxTBdSXg",
+      "revId": "0f4a085160423610f3c5ff3ab9ddf597a57795ad",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DxVA59Ts",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2013-05-20T15:22:05Z",
       "side": 1,
       "message": "What about $.articleFeedbackv5.unlockForm(); ?",
+      "revId": "0f4a085160423610f3c5ff3ab9ddf597a57795ad",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxStxWKk",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 2697,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-05-20T17:20:39Z",
+      "side": 1,
+      "message": "The form can remain locked. Changing the text in the textarea will unlock the form, so in case of a failed/rejected api call, it makes sense to keep the form locked until the data that should be submitted will change again.",
+      "parentUuid": "DxVA59Ts",
       "revId": "0f4a085160423610f3c5ff3ab9ddf597a57795ad",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
