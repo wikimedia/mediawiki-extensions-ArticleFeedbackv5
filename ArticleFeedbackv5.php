@@ -407,6 +407,7 @@ $wgAutoloadClasses['ArticleFeedbackv5Hooks']            = __DIR__ . '/ArticleFee
 $wgAutoloadClasses['ArticleFeedbackv5Permissions']      = __DIR__ . '/ArticleFeedbackv5.permissions.php';
 $wgAutoloadClasses['ArticleFeedbackv5Log']              = __DIR__ . '/ArticleFeedbackv5.log.php';
 $wgAutoloadClasses['ArticleFeedbackv5LogFormatter']     = __DIR__ . '/ArticleFeedbackv5.log.php';
+$wgAutoloadClasses['ArticleFeedbackv5ProtectionLogFormatter'] = __DIR__ . '/ArticleFeedbackv5.log.php';
 $wgAutoloadClasses['ArticleFeedbackv5Flagging']         = __DIR__ . '/ArticleFeedbackv5.flagging.php';
 $wgAutoloadClasses['ArticleFeedbackv5MailerJob']        = __DIR__ . '/ArticleFeedbackv5.mailerJob.php';
 $wgAutoloadClasses['ArticleFeedbackv5Render']           = __DIR__ . '/ArticleFeedbackv5.render.php';
@@ -431,6 +432,7 @@ $wgHooks['ContribsPager::reallyDoQuery'][] = 'ArticleFeedbackv5Hooks::contributi
 $wgHooks['ContributionsLineEnding'][] = 'ArticleFeedbackv5Hooks::contributionsLineEnding';
 $wgHooks['ProtectionForm::buildForm'][] = 'ArticleFeedbackv5Hooks::onProtectionForm';
 $wgHooks['ProtectionForm::save'][] = 'ArticleFeedbackv5Hooks::onProtectionSave';
+$wgHooks['ProtectionForm::showLogExtract'][] = 'ArticleFeedbackv5Hooks::onShowLogExtract';
 $wgHooks['UserLoginComplete'][] = 'ArticleFeedbackv5Hooks::userLoginComplete';
 
 // API Registration
@@ -461,6 +463,9 @@ $wgJobClasses['ArticleFeedbackv5MailerJob'] = 'ArticleFeedbackv5MailerJob';
 
 // Logging
 $wgLogTypes[] = 'articlefeedbackv5';
+
+// register log handler for AFT protection log
+$wgLogActionsHandlers['articlefeedbackv5/protect'] = 'ArticleFeedbackv5ProtectionLogFormatter';
 
 // register log handler for feedback submission
 $wgLogActionsHandlers['articlefeedbackv5/create'] = 'ArticleFeedbackv5LogFormatter';
