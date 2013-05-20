@@ -155,13 +155,16 @@ class ArticleFeedbackv5Permissions {
 	 * @param int $articleId
 	 * @param string $permission
 	 * @param string $expiry
+	 * @param string[optional] $reason
 	 * @return bool
 	 */
-	public static function setRestriction( $articleId, $permission, $expiry ) {
+	public static function setRestriction( $articleId, $permission, $expiry, $reason = '' ) {
 		// check if valid permission
 		if ( !self::isValidPermission( $permission ) ) {
 			return false;
 		}
+
+		global $wgUser;
 
 		$dbw = wfGetDB( DB_MASTER );
 		$dbr = wfGetDB( DB_SLAVE );
@@ -198,6 +201,35 @@ class ArticleFeedbackv5Permissions {
 				'page_restrictions',
 				$vars
 			);
+		}
+
+		if ( $dbw->affectedRows() > 0 ) {
+			$page = WikiPage::newFromID( $articleId );
+			if ( $page ) {
+				// make sure timestamp doesn't overlap with protection log's null revision (if any)
+				$timestamp = Revision::getTimestampFromId( $page->getTitle(), $page->getLatest() );
+				if ( $timestamp === wfTimestampNow() ) {
+					sleep( 1 );
+				}
+
+				$page->insertNullRevision(
+					'articlefeedbackv5-protection-title',
+					array( 'articlefeedbackv5' => $permission ),
+					array( 'articlefeedbackv5' => $expiry ),
+					false,
+					$reason,
+					$wgUser
+				);
+
+				// insert into log
+				$logEntry = new ManualLogEntry( 'articlefeedbackv5', 'protect' );
+				$logEntry->setTarget( $page->getTitle() );
+				$logEntry->setPerformer( $wgUser );
+				$logEntry->setParameters( array( 'permission' => $permission, 'expiry' => $expiry ) );
+				$logEntry->setComment( $reason );
+				$logId = $logEntry->insert();
+				$logEntry->publish( $logId );
+			}
 		}
 
 		return true;
