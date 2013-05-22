@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DxQ1Txhc",
+        "filename": "api/ApiGetCountArticleFeedbackv5.php",
+        "patchSetId": 22
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-05-22T18:52:35Z",
+      "side": 1,
+      "message": "I guess the chance that this API is accessed right after creating/deleting a page is rare? If this is the case, we probably should try slave db first and have master db as a fallback check.",
+      "revId": "2ab4b371e9af5854121dbf5cd289ad205218f20c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxW0.yok",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
+        "patchSetId": 22
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-05-22T18:52:35Z",
+      "side": 1,
+      "message": "Too many vars",
+      "revId": "2ab4b371e9af5854121dbf5cd289ad205218f20c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxQ0Lxtg",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
+        "patchSetId": 22
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-05-22T18:52:35Z",
+      "side": 1,
+      "message": "I assume that nothing should be done on API failure?",
+      "revId": "2ab4b371e9af5854121dbf5cd289ad205218f20c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dxe1S2tw",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
+        "patchSetId": 22
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-05-22T18:52:35Z",
+      "side": 1,
+      "message": "too many vars",
+      "revId": "2ab4b371e9af5854121dbf5cd289ad205218f20c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dxa1x8ng",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
+        "patchSetId": 22
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-05-22T18:52:35Z",
+      "side": 1,
+      "message": "this can be done in one line\n\n.html( mw.html.escape( mw.msg( \u0027articlefeedbackv5-talk-view-feedback\u0027 ) ) + \u0027 \u0026raquo;\u0027 )",
+      "revId": "2ab4b371e9af5854121dbf5cd289ad205218f20c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxQ1iprA",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
+        "patchSetId": 22
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-05-22T18:52:35Z",
+      "side": 1,
+      "message": "you can chain this as well, appendTo( \u0027#firstHeading\u0027 )",
+      "revId": "2ab4b371e9af5854121dbf5cd289ad205218f20c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
