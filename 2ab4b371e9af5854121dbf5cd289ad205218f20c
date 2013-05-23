@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "DxoJXviQ",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
+        "patchSetId": 22
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-05-23T09:57:56Z",
+      "side": 1,
+      "message": "Indeed, just not add the link to the feedback page then.",
+      "parentUuid": "DxQ0Lxtg",
+      "revId": "2ab4b371e9af5854121dbf5cd289ad205218f20c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dxe1S2tw",
         "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
         "patchSetId": 22
@@ -87,6 +105,24 @@
     },
     {
       "key": {
+        "uuid": "DxmJUMiA",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
+        "patchSetId": 22
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-05-23T09:57:56Z",
+      "side": 1,
+      "message": "The raquo was in another patch set to disappear already, so I\u0027ve just removed it right here too.",
+      "parentUuid": "Dxa1x8ng",
+      "revId": "2ab4b371e9af5854121dbf5cd289ad205218f20c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DxQ1iprA",
         "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
         "patchSetId": 22
@@ -98,6 +134,24 @@
       "writtenOn": "2013-05-22T18:52:35Z",
       "side": 1,
       "message": "you can chain this as well, appendTo( \u0027#firstHeading\u0027 )",
+      "revId": "2ab4b371e9af5854121dbf5cd289ad205218f20c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxsIxxgw",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
+        "patchSetId": 22
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-05-23T09:57:56Z",
+      "side": 1,
+      "message": "This position was also changing in another patch. Have changed that in here too.",
+      "parentUuid": "DxQ1iprA",
       "revId": "2ab4b371e9af5854121dbf5cd289ad205218f20c",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
