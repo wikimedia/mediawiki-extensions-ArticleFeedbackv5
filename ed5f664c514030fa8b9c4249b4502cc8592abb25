@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DxsUkMLc",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-05-23T10:15:24Z",
+      "side": 1,
+      "message": "This needs plural support on $1 and $2",
+      "revId": "ed5f664c514030fa8b9c4249b4502cc8592abb25",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxqUpJI0",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 10
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-05-23T10:15:24Z",
+      "side": 1,
+      "message": "This needs plural support on $1.",
+      "revId": "ed5f664c514030fa8b9c4249b4502cc8592abb25",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxuUjLKk",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 10
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-05-23T10:15:24Z",
+      "side": 1,
+      "message": "Needs update of qqq because $1 is no longer used and gender support if $2 is a username.",
+      "revId": "ed5f664c514030fa8b9c4249b4502cc8592abb25",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
