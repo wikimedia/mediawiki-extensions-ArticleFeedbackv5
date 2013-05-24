@@ -18,6 +18,43 @@ if ( $( '#catlinks' ).length && $.inArray( mw.config.get( 'skin' ), legacyskins 
 
 $aftDiv.articleFeedbackv5();
 
+// Check if the article page link can be shown
+if ( mw.config.get( 'wgArticleFeedbackv5ArticlePageLink' ) &&
+	mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'] ) {
+
+	var api = new mw.Api();
+	api.get( {
+		'pageid': $.aftUtils.article().id,
+		'filter': 'featured',
+		'action': 'articlefeedbackv5-get-count',
+		'format': 'json'
+	} )
+	.done( function ( data ) {
+		if ( 'articlefeedbackv5-get-count' in data && 'count' in data['articlefeedbackv5-get-count'] ) {
+			var count = data['articlefeedbackv5-get-count']['count'];
+
+			if ( count > 0 ) {
+				// Build the url to the Special:ArticleFeedbackv5 page
+				var url =
+					mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' +
+					mw.util.wikiUrlencode( mw.config.get( 'aftv5Article' ).title );
+				url += ( url.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( { ref: 'article', filter: 'featured' } );
+
+				// Add the link to the feedback-page next to the title
+				$( '<a id="articlefeedbackv5-article-feedback-link"></a>' )
+					.msg( 'articlefeedbackv5-article-view-feedback', count )
+					.attr( 'href', url )
+					.click( { trackingId: 'article_page_view_feedback-button_click' }, $.aftTrack.trackEvent )
+					.insertAfter( '#siteSub' );
+
+				// Track an impression
+				$.aftTrack.init();
+				$.aftTrack.track( 'article_page_view_feedback-impression' );
+			}
+		}
+	} );
+}
+
 /* Add basic edit tracking, making use of $.aftTrack() already being set up */
 if ( $.aftTrack.clickTrackingOn ) {
 	var editEventBase = $.aftTrack.prefix( $aftDiv.articleFeedbackv5( 'experiment' ) );
