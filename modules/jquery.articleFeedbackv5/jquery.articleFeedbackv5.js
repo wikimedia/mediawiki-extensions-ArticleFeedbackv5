@@ -2147,11 +2147,6 @@
 				$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'noedit-init' );
 			}
 		}
-		// Adding hash in url will not scroll down to this id, because the element
-		// won't exist until .appear is triggered. Let's just simulate this ourselves.
-		if ( '#' + $el.attr( 'id' ) === window.location.hash ) {
-			$.articleFeedbackv5.highlightForm();
-		}
 	};
 
 	// }}}
@@ -3154,12 +3149,18 @@
 	};
 
 	// }}}
-	// {{{ highlightForm
+	// {{{ clickTriggerLink
 
 	/**
-	 * Scroll to & highlight the feedback form
+	 * Handles the click event on a trigger link
+	 *
+	 * @param $link Element the trigger link
 	 */
-	$.articleFeedbackv5.highlightForm = function () {
+	$.articleFeedbackv5.clickTriggerLink = function ( $link ) {
+
+		var tracking_id = 'trigger' + $link.data( 'linkId' ) + '-click-overlay';
+		$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + tracking_id );
+
 		// trigger the form to appear (if it's not loaded already)
 		if ( !$.articleFeedbackv5.isLoaded ) {
 			$.articleFeedbackv5.$holder.trigger( 'appear' );
@@ -3172,21 +3173,6 @@
 				.effect( 'highlight', {}, 2000 )
 				.get( 0 ).scrollIntoView();
 		}
-	};
-
-	// }}}
-	// {{{ clickTriggerLink
-
-	/**
-	 * Handles the click event on a trigger link
-	 *
-	 * @param $link Element the trigger link
-	 */
-	$.articleFeedbackv5.clickTriggerLink = function ( $link ) {
-		var tracking_id = 'trigger' + $link.data( 'linkId' ) + '-click-overlay';
-		$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + tracking_id );
-
-		$.articleFeedbackv5.highlightForm();
 	};
 
 	// }}}
