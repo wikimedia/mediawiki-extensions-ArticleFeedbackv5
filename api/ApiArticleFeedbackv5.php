@@ -183,10 +183,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			null,
 			$this->getModuleName(),
 			array(
-				'result'      => 'Success',
-				'feedback_id' => $feedback->aft_id,
-				'aft_url'     => $aftUrl,
-				'permalink'   => $permalink,
+				'result' => 'Success',
+				'feedbackid' => $feedback->aft_id,
+				'url' => $aftUrl,
+				'permalink' => $permalink,
 			)
 		);
 
