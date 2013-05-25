@@ -4,27 +4,27 @@
  */
 
 /*** Main entry point ***/
-jQuery( function( $ ) {
-	var showError = function( message ) {
-		var warning = $( '#articlefeedbackv5-header-message' ).text( message );
-		$( '#articleFeedbackv5-special-wrap' )
-			.hide()
-			.after( warning );
-	};
+( function( mw, $ ) {
 
-	// AFT is enabled
-	if ( $.aftUtils.verify( 'special' ) ) {
-		$.articleFeedbackv5special.setup();
+var errorMessage;
 
-	// AFT is not enabled
-	} else {
-		// unsupported browser
-		if ( $.aftUtils.useragent() === false ) {
-			showError( mw.msg( 'articlefeedbackv5-unsupported-message' ) );
+// AFT is enabled
+if ( $.aftUtils.verify( 'special' ) ) {
+	$.articleFeedbackv5special.setup();
 
-		// AFT disabled for this page
-		} else {
-			showError( mw.msg( 'articlefeedbackv5-page-disabled' ) );
-		}
+// AFT is not enabled
+} else {
+	errorMessage = mw.msg( 'articlefeedbackv5-page-disabled' );
+
+	// unsupported browser
+	if ( $.aftUtils.useragent() === false ) {
+		errorMessage = mw.msg( 'articlefeedbackv5-unsupported-message' );
 	}
-} );
+
+	// display error message
+	$( '#articlefeedbackv5-header-message' )
+		.text( errorMessage )
+		.insertAfter( $( '#articleFeedbackv5-special-wrap' ).hide() );
+}
+
+} )( mediaWiki, jQuery );

@@ -1,52 +1,56 @@
 /**
  * Script for Article Feedback Extension: Article pages
  */
+( function( mw, $ ) {
 
-/*** Main entry point ***/
-jQuery( function( $ ) {
+// Is AFT enabled here?
+if ( $.aftUtils.verify( 'article' ) ) {
+	var load, enable, userPermissions, $link, url, displayForm, loadInterval;
 
 	// start AFTv5
-	var load = function() {
+	load = function() {
+		var removeAft, removeAftInterval;
 		// remove (if any) occurrences of older AFT variations
-		var removeAft = function() {
+		removeAft = function() {
 			var $aft = $( '#mw-articlefeedback' );
+
 			if ( $aft.length > 0 ) {
 				$aft.remove();
 			} else {
 				clearInterval( removeAftInterval );
 			}
 		};
-		var removeAftInterval = setInterval( removeAft, 100 );
+		removeAftInterval = setInterval( removeAft, 100 );
 
 		// load AFTv5
 		mw.loader.load( 'ext.articleFeedbackv5' );
 		// Load the IE-specific module
-		if ( navigator.appVersion.indexOf( 'MSIE 7' ) != -1 ) {
+		if ( navigator.appVersion.indexOf( 'MSIE 7' ) !== -1 ) {
 			mw.loader.load( 'ext.articleFeedbackv5.ie' );
 		}
 	};
 
 	// check if AFT is enabled (for this user)
-	var enable = $.aftUtils.verify( 'article' );
+	enable = $.aftUtils.verify( 'article' );
 	if ( enable ) {
 		load();
 	}
 
 	// check if user can enable AFTv5
 	if ( $.aftUtils.canSetStatus( true ) ) {
-		var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
+		userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 
 		// build link to enable feedback form
-		var $link = $( '<li id="t-articlefeedbackv5-enable"><a href="#"></a></li>' );
+		$link = $( '<li id="t-articlefeedbackv5-enable"><a href="#"></a></li>' );
 		$link.find( 'a' ).text( mw.msg( 'articlefeedbackv5-toolbox-enable' ) );
 
 		// administrators can change detailed visibility in ?action=protect
 		if ( 'aft-administrator' in userPermissions && userPermissions['aft-administrator'] ) {
-			var link = mw.config.get( 'wgScript' ) + '?title=' +
+			url = mw.config.get( 'wgScript' ) + '?title=' +
 				encodeURIComponent( mw.config.get( 'wgPageName' ) ) +
 				'&' + $.param( { action: 'protect' } );
 
-			$link.find( 'a' ).attr( 'href', link );
+			$link.find( 'a' ).attr( 'href', url );
 
 		// editors can enable/disable for readers via API
 		} else {
@@ -63,7 +67,7 @@ jQuery( function( $ ) {
 							load( false );
 						}
 
-						var displayForm = function() {
+						displayForm = function() {
 							var $form = $( '#mw-articlefeedbackv5' );
 
 							if ( $form.length > 0 ) {
@@ -71,21 +75,21 @@ jQuery( function( $ ) {
 								$.articleFeedbackv5.highlightForm();
 
 								// add message to confirm AFTv5 has just been enabled
-								var link = mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' );
-								var message =
+								url = mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' );
 									$( '<p id="articleFeedbackv5-added"></p>' )
-										.msg( 'articlefeedbackv5-enabled-form-message', link );
-								$form.append( message );
+										.msg( 'articlefeedbackv5-enabled-form-message', url )
+										.appendTo( $form );
 
 								// remove timer
-								clearTimeout( interval );
+								clearTimeout( loadInterval );
 							}
 						};
 
 						// AFT is loaded async; keep polling until it's ready
-						var interval = setInterval( displayForm, 100 );
+						loadInterval = setInterval( displayForm, 100 );
 
 					} else if ( error ) {
+						/* jshint devel: true */
 						alert( error );
 					}
 				} );
@@ -94,5 +98,6 @@ jQuery( function( $ ) {
 
 		$( '#p-tb' ).find( 'ul' ).append( $link );
 	}
+}
 
-} );
+} )( mediaWiki, jQuery );
