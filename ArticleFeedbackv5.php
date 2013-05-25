@@ -552,7 +552,6 @@ $wgResourceModules['ext.articleFeedbackv5'] = array(
 	),
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['ext.articleFeedbackv5.ie'] = array(
-	'scripts' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.ie.js',
 	'styles' => 'ext.articleFeedbackv5/ext.articleFeedbackv5.ie.css'
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['ext.articleFeedbackv5.dashboard'] = array(
