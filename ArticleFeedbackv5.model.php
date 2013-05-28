@@ -105,6 +105,10 @@ class ArticleFeedbackv5Model extends DataModel {
 			'permissions' => 'aft-reader',
 			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_feature = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_inappropriate = 0' ),
 		),
+		'noinappropriate' => array(
+			'permissions' => 'aft-reader',
+			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_inappropriate = 0' ),
+		),
 
 		// editor lists
 		'helpful' => array(
