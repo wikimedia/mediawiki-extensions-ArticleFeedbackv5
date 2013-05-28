@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DxugskQQ",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-05-28T18:52:10Z",
+      "side": 1,
+      "message": "why not use trim()?  trim() is safe for strings with utf8 encoding",
+      "revId": "ecffcde8d338c56dd794d3a4ff25a0e97a8205a5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
