@@ -98,6 +98,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-survey-button-text' => 'What do you think of this feedback tool?',
 	'articlefeedbackv5-special-filter-featured' => 'Featured ($1)',
 	'articlefeedbackv5-special-filter-unreviewed' => 'Unreviewed ($1)',
+	'articlefeedbackv5-special-filter-noinappropriate' => 'All but inappropriate ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Helpful ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Unhelpful ($1)',
 	'articlefeedbackv5-special-filter-flagged' => 'Flagged ($1)',
@@ -114,6 +115,7 @@ $messages['en'] = array(
 	'articlefeedbackv5-special-filter-all' => 'All posts ($1)',
 	'articlefeedbackv5-special-filter-featured-watchlist' => 'Featured',
 	'articlefeedbackv5-special-filter-unreviewed-watchlist' => 'Unreviewed',
+	'articlefeedbackv5-special-filter-noinappropriate-watchlist' => 'All but inappropriate',
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Helpful',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Unhelpful',
 	'articlefeedbackv5-special-filter-flagged-watchlist' => 'Flagged',
@@ -845,6 +847,8 @@ The abuse policy link.',
 	'articlefeedbackv5-special-filter-featured' => 'Name of filter that will show all feedback that has been marked as useful or helpful. $1 is the amount of records in this filter.',
 	'articlefeedbackv5-special-filter-unreviewed' => 'Name of filter that will show all feedback that has not yet been marked as anything. Parameters:
 * $1 is the number of records in this filter.',
+	'articlefeedbackv5-special-filter-noinappropriate' => 'Name of filter that will show all feedback that has not been marked as inappropriate. Parameters:
+* $1 is the number of records in this filter.',
 	'articlefeedbackv5-special-filter-helpful' => 'Name of filter that will show all feedback that has been marked as helpful. $1 is the amount of records in this filter.',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Name of filter that will show all feedback that has been marked as unhelpful. $1 is the amount of records in this filter.',
 	'articlefeedbackv5-special-filter-flagged' => 'Name of filter that will show all feedback that has been flagged for abuse. $1 is the amount of records in this filter.',
@@ -865,6 +869,8 @@ The abuse policy link.',
 {{Identical|Featured}}',
 	'articlefeedbackv5-special-filter-unreviewed-watchlist' => 'Name of filter that will show all feedback that has not yet been marked as anything.
 {{Identical|Unreviewed}}',
+	'articlefeedbackv5-special-filter-noinappropriate-watchlist' => 'Name of filter that will show all feedback that has not been marked as inappropriate. Parameters:
+* $1 is the number of records in this filter.',
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Name of filter that will show all feedback that has been marked as helpful.',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Name of filter that will show all feedback that has been marked as unhelpful.',
 	'articlefeedbackv5-special-filter-flagged-watchlist' => 'Name of filter that will show all feedback that has been flagged for abuse.

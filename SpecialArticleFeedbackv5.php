@@ -579,41 +579,39 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				);
 		}
 
-		// filters to be displayed in dropdown (only for editors)
+		// filters to be displayed in dropdown (if any)
 		$filterSelectHtml = '';
-		if ( $this->isAllowed( 'aft-editor' ) ) {
-			$opts = array();
+		$opts = array();
 
-			// Give grep a chance to find the usages:
-			// articlefeedbackv5-special-filter-featured, rticlefeedbackv5-special-filter-unreviewed,
-			// articlefeedbackv5-special-filter-helpful, articlefeedbackv5-special-filter-unhelpful,
-			// articlefeedbackv5-special-filter-flagged, articlefeedbackv5-special-filter-useful,
-			// articlefeedbackv5-special-filter-resolved, articlefeedbackv5-special-filter-noaction,
-			// articlefeedbackv5-special-filter-inappropriate, articlefeedbackv5-special-filter-archived,
-			// articlefeedbackv5-special-filter-allcomment, articlefeedbackv5-special-filter-hidden,
-			// articlefeedbackv5-special-filter-requested, articlefeedbackv5-special-filter-declined,
-			// articlefeedbackv5-special-filter-oversighted,
-			// articlefeedbackv5-special-filter-all
-			foreach ( $this->filters as $filter ) {
-				if ( in_array( $filter, array_keys( $filterLabels ) ) ) {
-					continue;
-				}
-
-				$count = ArticleFeedbackv5Model::getCount( $filter, $this->pageId );
-
-				$key = $this->msg( "articlefeedbackv5-special-filter-$filter", $count )->escaped();
-				$opts[(string) $key] = $filter;
+		// Give grep a chance to find the usages:
+		// articlefeedbackv5-special-filter-featured, rticlefeedbackv5-special-filter-unreviewed,
+		// articlefeedbackv5-special-filter-noinappropriate, articlefeedbackv5-special-filter-helpful,
+		// articlefeedbackv5-special-filter-unhelpful, articlefeedbackv5-special-filter-flagged,
+		// articlefeedbackv5-special-filter-useful, articlefeedbackv5-special-filter-resolved,
+		// articlefeedbackv5-special-filter-noaction, articlefeedbackv5-special-filter-inappropriate,
+		// articlefeedbackv5-special-filter-archived, articlefeedbackv5-special-filter-allcomment,
+		// articlefeedbackv5-special-filter-hidden, articlefeedbackv5-special-filter-requested,
+		// articlefeedbackv5-special-filter-declined, articlefeedbackv5-special-filter-oversighted,
+		// articlefeedbackv5-special-filter-all
+		foreach ( $this->filters as $filter ) {
+			if ( in_array( $filter, array_keys( $filterLabels ) ) ) {
+				continue;
 			}
 
-			if ( count( $opts ) > 0 ) {
-				// Put the "more filters" option at the beginning of the opts array
-				$opts = array( $this->msg( 'articlefeedbackv5-special-filter-select-more' )->text() => '' ) + $opts;
+			$count = ArticleFeedbackv5Model::getCount( $filter, $this->pageId );
 
-				$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter-select' );
-				$filterSelect->setDefault( $this->startingFilter );
-				$filterSelect->addOptions( $opts );
-				$filterSelectHtml = $filterSelect->getHTML();
-			}
+			$key = $this->msg( "articlefeedbackv5-special-filter-$filter", $count )->escaped();
+			$opts[(string) $key] = $filter;
+		}
+
+		if ( count( $opts ) > 0 ) {
+			// Put the "more filters" option at the beginning of the opts array
+			$opts = array( $this->msg( 'articlefeedbackv5-special-filter-select-more' )->text() => '' ) + $opts;
+
+			$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter-select' );
+			$filterSelect->setDefault( $this->startingFilter );
+			$filterSelect->addOptions( $opts );
+			$filterSelectHtml = $filterSelect->getHTML();
 		}
 
 		return
