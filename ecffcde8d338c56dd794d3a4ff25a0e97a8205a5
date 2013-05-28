@@ -16,6 +16,24 @@
       "revId": "ecffcde8d338c56dd794d3a4ff25a0e97a8205a5",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxggR-a4",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-05-28T19:03:30Z",
+      "side": 1,
+      "message": "I originally did (https://gerrit.wikimedia.org/r/#/c/60008/1/api/ApiArticleFeedbackv5.php) and then changed it. Can\u0027t remember why though (damn me for not adding a comment) - I\u0027ll try to figure that out again!",
+      "parentUuid": "DxugskQQ",
+      "revId": "ecffcde8d338c56dd794d3a4ff25a0e97a8205a5",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
