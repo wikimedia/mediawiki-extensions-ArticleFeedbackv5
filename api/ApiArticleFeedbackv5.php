@@ -208,7 +208,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				$this->autoFlag['resolve'] = $rule_desc;
 				break;
 			case 'aftv5flagabuse':
-				$this->autoFlag['flagabuse'] = $rule_desc;
+				$this->autoFlag['flag'] = $rule_desc;
 				break;
 			case 'aftv5hide':
 				$this->autoFlag['hide'] = $rule_desc;

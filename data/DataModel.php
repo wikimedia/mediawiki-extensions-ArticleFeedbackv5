@@ -369,7 +369,7 @@ abstract class DataModel {
 			static::getCache()->set( $key, $count );
 		}
 
-		return (int) $count;
+		return $count;
 	}
 
 	/**
@@ -695,7 +695,7 @@ abstract class DataModel {
 	}
 
 	/**
-	 * Update an entry's presence & sort values in all defined lists.
+	 * Update an entry's presence & sort values in all defined list.
 	 *
 	 * @param stdClass[optional] $old The pre-save conditions' results
 	 * @return DataModel

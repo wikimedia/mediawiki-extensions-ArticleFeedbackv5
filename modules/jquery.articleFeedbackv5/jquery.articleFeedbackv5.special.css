@@ -6,24 +6,16 @@
 	position: relative;
 	min-height: 115px;
 	min-width: 75px;
-	width: 100%;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-container {
 	float: left;
-	margin-left: -260px;
-	padding: 10px 0 5px 0;
 	width: 100%;
+	margin-left: -300px;
+	padding: 10px 0 5px 0;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap {
 	padding: 0 10px 20px 30px;
-	margin-left: 260px;
-}
-/* Don't preserve toolbox space if there is no toolbox */
-.articleFeedbackv5-comment-notoolbox .articleFeedbackv5-comment-container {
-	margin-left: 0;
-}
-.articleFeedbackv5-comment-notoolbox .articleFeedbackv5-comment-wrap {
-	margin-left: 0;
+	margin-left: 300px;
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-comment-head {
 	margin-top: 10px;
@@ -46,7 +38,7 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-comment-wrap .articleFeedbackv5-vote-wrapper {
 	position: absolute;
 	bottom: 0;
-	right: 260px; /* toolbox width */
+	right: 300px; /* toolbox width */
 	left: 0;
 	margin-left: 30px;
 	margin-bottom: 5px;
@@ -61,12 +53,10 @@
 .articleFeedbackv5-feedback {
 	padding: 0;
 	border-bottom: 1px solid #D6D7D5;
-
-	background-image: linear-gradient(right, #F5F5F4 260px, transparent 0%);
-	background-image: -o-linear-gradient(right, #F5F5F4 260px, transparent 0%);
-	background-image: -moz-linear-gradient(right, #F5F5F4 260px, transparent 0%);
-	background-image: -webkit-linear-gradient(right, #F5F5F4 260px, transparent 0%);
-	background-image: -ms-linear-gradient(right, #F5F5F4 260px, transparent 0%);
+	/* @embed */
+	background-image: url(images/bg-special-row.png);
+	background-repeat: repeat-y;
+	background-position: top right;
 }
 .articleFeedbackv5-feedback.articleFeedbackv5-comment-notoolbox {
 	background: transparent;
@@ -81,39 +71,20 @@
 
 /** Comment block: icon **/
 .articleFeedbackv5-comment-wrap {
-	background-size: 22px;
 	background-position: top left;
 	background-repeat: no-repeat;
 }
 .articleFeedbackv5-comment-wrap.articleFeedbackv5-comment-positive {
 	/* @embed */
-	background-image: url(images/emotion_positive.png);
-	/* @embed */
-	background-image: -webkit-linear-gradient(transparent, transparent), url(images/emotion_positive.svg);
-	/* @embed */
-	background-image: -moz-linear-gradient(transparent, transparent), url(images/emotion_positive.svg);
-	/* @embed */
-	background-image: linear-gradient(transparent, transparent), url(images/emotion_positive.svg);
+	background-image: url(images/positive.png);
 }
 .articleFeedbackv5-comment-wrap.articleFeedbackv5-comment-negative {
 	/* @embed */
-	background-image: url(images/emotion_negative.png);
-	/* @embed */
-	background-image: -webkit-linear-gradient(transparent, transparent), url(images/emotion_negative.svg);
-	/* @embed */
-	background-image: -moz-linear-gradient(transparent, transparent), url(images/emotion_negative.svg);
-	/* @embed */
-	background-image: linear-gradient(transparent, transparent), url(images/emotion_negative.svg);
+	background-image: url(images/negative.png);
 }
 .articleFeedbackv5-comment-wrap.articleFeedbackv5-comment-neutral {
 	/* @embed */
-	background-image: url(images/emotion_neutral.png);
-	/* @embed */
-	background-image: -webkit-linear-gradient(transparent, transparent), url(images/emotion_neutral.svg);
-	/* @embed */
-	background-image: -moz-linear-gradient(transparent, transparent), url(images/emotion_neutral.svg);
-	/* @embed */
-	background-image: linear-gradient(transparent, transparent), url(images/emotion_neutral.svg);
+	background-image: url(images/neutral.png);
 }
 
 /** Comment block: top line **/
@@ -262,7 +233,7 @@
 /** Tags Block (featured, resolved) **/
 .articleFeedbackv5-feedback .articleFeedbackv5-feature-marker {
 	/* @embed */
-	background-image: url(images/toolbox_feature.png);
+	background: url(images/toolbox_feature.png);
 	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_feature.svg);
 	/* @embed */
@@ -272,7 +243,7 @@
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-resolve-marker {
 	/* @embed */
-	background-image: url(images/toolbox_resolve.png);
+	background: url(images/toolbox_resolve.png);
 	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_resolve.svg);
 	/* @embed */
@@ -282,7 +253,7 @@
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-archive-marker {
 	/* @embed */
-	background-image: url(images/toolbox_archive.png);
+	background: url(images/toolbox_archive.png);
 	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
 	/* @embed */
@@ -292,7 +263,7 @@
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-noaction-marker {
 	/* @embed */
-	background-image: url(images/toolbox_noaction.png);
+	background: url(images/toolbox_noaction.png);
 	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_noaction.svg);
 	/* @embed */
@@ -302,7 +273,7 @@
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-inappropriate-marker {
 	/* @embed */
-	background-image: url(images/toolbox_inappropriate.png);
+	background: url(images/toolbox_inappropriate.png);
 	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
 	/* @embed */
@@ -313,7 +284,7 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-autohide-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-hide-marker {
 	/* @embed */
-	background-image: url(images/toolbox_hide.png);
+	background: url(images/toolbox_hide.png);
 	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_hide.svg);
 	/* @embed */
@@ -323,7 +294,7 @@
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-oversight-marker {
 	/* @embed */
-	background-image: url(images/toolbox_oversight.png);
+	background: url(images/toolbox_oversight.png);
 	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_oversight.svg);
 	/* @embed */
@@ -364,7 +335,7 @@
 	padding: 10px;
 	position: relative;
 	float: right;
-	width: 240px; /* 260px toolbox width minus the 10 padding on both sides */
+	width: 280px; /* 300px toolbox width minus the 10 padding on both sides */
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feedback-tools ul {
 	margin: 10px 0 5px;
@@ -759,34 +730,6 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	color: red;
 }
 
-/* Settings pane */
-#articleFeedbackv5-settings-menu {
-	height: 30px;
-	padding: 10px;
-}
-#articleFeedbackv5-settings-link {
-	display: inline-block;
-	width: 30px;
-	height: 30px;
-	text-indent: -9999px;
-	background-size: 20px auto;
-	background-repeat: no-repeat;
-	background-position: center center;
-	/* @embed */
-	background-image: url(images/cog.png);
-	/* @embed */
-	background-image: -webkit-linear-gradient(transparent, transparent), url(images/cog.svg);
-	/* @embed */
-	background-image: -moz-linear-gradient(transparent, transparent), url(images/cog.svg);
-	/* @embed */
-	background-image: linear-gradient(transparent, transparent), url(images/cog.svg);
-}
-a.inactive {
-	color: #444;
-	pointer-events: none;
-	cursor: default;
-}
-
 /* Don't show mask by default */
 .articleFeedbackv5-post-screen {
 	display: none;
@@ -885,9 +828,6 @@ a.inactive {
 	float: left;
 	width: 50%;
 }
-#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-activity > * {
-	margin: 0 10px;
-}
 
 #articleFeedbackv5-feedback-permalink-info h4 {
 	padding: 0 0 0.4em 22px;
@@ -900,28 +840,6 @@ a.inactive {
 	font-size: 0.875em;
 	padding-left: 0.5em;
 }
-#articleFeedbackv5-feedback-permalink-info p.articleFeedbackv5-feedback-permalink-activity-status {
-	background-color: #F5F5F4;
-	margin: 0;
-	padding: 10px;
-}
-#articleFeedbackv5-feedback-permalink-info span.articlefeedbackv5-permalink-last-action {
-	float: right;
-	color: #888;
-}
-#articleFeedbackv5-feedback-permalink-info span.articlefeedbackv5-permalink-last-action-comment {
-	display: block;
-}
-#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-activity-item {
-	padding: 6px;
-}
-#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-activity-item:nth-child(odd) {
-	background-color: #F5F5F4;
-}
-#articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-activity-more {
-	margin: 6px 10px;
-}
-
 #articleFeedbackv5-feedback-permalink-info .articleFeedbackv5-feedback-permalink-about h4 {
 	/* @embed */
 	background-image: url(images/info.png);
