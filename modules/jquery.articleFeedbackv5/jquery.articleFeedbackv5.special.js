@@ -270,7 +270,8 @@ $.articleFeedbackv5special.checkClickTracking = function () {
  * Initialize the flyout infowindows
  */
 $.articleFeedbackv5special.initTipsies = function() {
-	var actionSelectors = [], helpLink, action, $container, tipsySubmit;
+	var actionSelectors = [],
+		helpLink, action, $container, tipsySubmit;
 
 	// set tipsy defaults, once
 	$.fn.tipsy.defaults = {
@@ -312,10 +313,11 @@ $.articleFeedbackv5special.initTipsies = function() {
 		helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl-editors' );
 	}
 
-	// localize tipsies
 	for ( action in $.articleFeedbackv5special.actions ) {
-		$container = $( '<div></div>' );
+		actionSelectors.push( '.articleFeedbackv5-' + action + '-link' );
 
+		// localize tipsies
+		$container = $( '<div></div>' );
 		if ( $.articleFeedbackv5special.actions[action].hasTipsy && $.articleFeedbackv5special.actions[action].tipsyHtml === undefined ) {
 			$container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
 			$container.find( '#articleFeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
@@ -328,12 +330,7 @@ $.articleFeedbackv5special.initTipsies = function() {
 		} else {
 			$container.html( $.articleFeedbackv5special.actions[action].tipsyHtml );
 		}
-
 		$.articleFeedbackv5special.actions[action].tipsyHtml = $container.localize( { 'prefix': 'articlefeedbackv5-' } ).html();
-	}
-
-	for ( action in $.articleFeedbackv5special.actions ) {
-		actionSelectors.push( '.articleFeedbackv5-' + action + '-link' );
 
 		// hide actions that are supposed to have a tipsy, but have no content
 		if ( $.articleFeedbackv5special.actions[action].hasTipsy && $.articleFeedbackv5special.actions[action].tipsyHtml === '' ) {
