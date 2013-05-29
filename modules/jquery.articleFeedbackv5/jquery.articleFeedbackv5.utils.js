@@ -107,9 +107,9 @@ $.aftUtils.verify = function ( location ) {
 
 		// not viewing the printable version
 		enable &= mw.util.getParamValue( 'printable' ) !== 'yes';
-
-		return enable;
 	}
+
+	return enable;
 };
 
 // }}}
