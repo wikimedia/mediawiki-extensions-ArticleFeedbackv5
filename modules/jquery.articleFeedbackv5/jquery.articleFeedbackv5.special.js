@@ -1881,70 +1881,70 @@ $.articleFeedbackv5special.actions = {
 					.submit();
 			}
 		},
+	},
 
-		// }}}
-		// {{{ Open AFTv5 settings pane
+	// }}}
+	// {{{ Open AFTv5 settings pane
 
-		'settings': {
-			'hasTipsy': true,
-			'tipsyHtml': function() {
-				var $link = $( '<a href="#" id="articleFeedbackv5-settings-status"></a>' ),
-					userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' ),
-					url, content;
+	'settings': {
+		'hasTipsy': true,
+		'tipsyHtml': function() {
+			var $link = $( '<a href="#" id="articleFeedbackv5-settings-status"></a>' ),
+				userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' ),
+				url, content;
 
-				// build link to enable feedback form
-				$( '#articleFeedbackv5-settings-menu' ).append( $link );
+			// build link to enable feedback form
+			$( '#articleFeedbackv5-settings-menu' ).append( $link );
 
-				// check if user can enable AFTv5
-				if ( $.aftUtils.canSetStatus( true ) ) {
-					$link
-						.attr( 'data-status', 1 )
-						.text( mw.msg( 'articlefeedbackv5-settings-status-enable' ) );
+			// check if user can enable AFTv5
+			if ( $.aftUtils.canSetStatus( true ) ) {
+				$link
+					.attr( 'data-status', 1 )
+					.text( mw.msg( 'articlefeedbackv5-settings-status-enable' ) );
 
-				// or disable
-				} else if ( $.aftUtils.canSetStatus( false ) ) {
-					$link
-						.attr( 'data-status', 0 )
-						.text( mw.msg( 'articlefeedbackv5-settings-status-disable' ) );
+			// or disable
+			} else if ( $.aftUtils.canSetStatus( false ) ) {
+				$link
+					.attr( 'data-status', 0 )
+					.text( mw.msg( 'articlefeedbackv5-settings-status-disable' ) );
 
-				// if status can not be changed at all (e.g. insufficient permissions), don't do anything
-				} else {
-					return '';
-				}
-
-
-				// administrators can change detailed visibility in ?action=protect
-				if ( 'aft-administrator' in userPermissions && userPermissions['aft-administrator'] ) {
-					url = mw.config.get( 'wgScript' ) + '?title=' +
-						encodeURIComponent( $.aftUtils.article().title ) +
-						'&' + $.param( { action: 'protect' } );
-
-					$link.attr( 'href', url );
-
-				// editors can enable/disable for readers via API
-				} else {
-					$( document ).on( 'click', '#articleFeedbackv5-settings-status', function( e ) {
-						e.preventDefault();
-
-						var status = $( this ).data( 'status' );
-						$.aftUtils.setStatus( $.aftUtils.article().id, status, function( data, error ) {
-							// refresh page to reflect changes
-							if ( data !== false ) {
-								location.reload( true );
-							} else if ( error ) {
-								/* jshint devel: true */
-								alert( error );
-							}
-						} );
-					});
-				}
-
-				content = $( '<div id="articleFeedbackv5-settings-menu"></div>' ).append( $link );
-				return $( '<div></div>' ).append( content ).html();
-			},
-			'click': function( e ) {
-				e.preventDefault();
+			// if status can not be changed at all (e.g. insufficient permissions), don't do anything
+			} else {
+				return '';
 			}
+
+
+			// administrators can change detailed visibility in ?action=protect
+			if ( 'aft-administrator' in userPermissions && userPermissions['aft-administrator'] ) {
+				url = mw.config.get( 'wgScript' ) + '?title=' +
+					encodeURIComponent( $.aftUtils.article().title ) +
+					'&' + $.param( { action: 'protect' } );
+
+				$link.attr( 'href', url );
+
+			// editors can enable/disable for readers via API
+			} else {
+				$( document ).on( 'click', '#articleFeedbackv5-settings-status', function( e ) {
+					e.preventDefault();
+
+					var status = $( this ).data( 'status' );
+					$.aftUtils.setStatus( $.aftUtils.article().id, status, function( data, error ) {
+						// refresh page to reflect changes
+						if ( data !== false ) {
+							location.reload( true );
+						} else if ( error ) {
+							/* jshint devel: true */
+							alert( error );
+						}
+					} );
+				});
+			}
+
+			content = $( '<div id="articleFeedbackv5-settings-menu"></div>' ).append( $link );
+			return $( '<div></div>' ).append( content ).html();
+		},
+		'click': function( e ) {
+			e.preventDefault();
 		}
 	}
 
