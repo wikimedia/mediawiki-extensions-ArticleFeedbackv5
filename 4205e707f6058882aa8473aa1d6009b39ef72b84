@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DxoNBZGA",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 21
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-05-30T22:35:15Z",
+      "side": 1,
+      "message": "Perhaps this is still WIP, but if not please remove and let git history remember it instead.",
+      "revId": "4205e707f6058882aa8473aa1d6009b39ef72b84",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxuZC9kA",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 21
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-05-30T22:35:15Z",
+      "side": 1,
+      "message": "This reads really weird. The text here just doesn\u0027t read like proper English to my ears. Similar concern with the other message descriptions following the same format.\n\nPerhaps it would be more clear as:\n\nMessage, to an admin, that feedback has been disabled for both editors and readers on this page.",
+      "revId": "4205e707f6058882aa8473aa1d6009b39ef72b84",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dxma5xuk",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 21
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-05-30T22:35:15Z",
+      "side": 1,
+      "message": "While this should work since the array is setup as a list and never changed(i think), in general unless you care about the internal position pointer (rarely) the following is more robust:\n\nreturn $enable ? reset( self::$permissions ) : end( self::$permissions );",
+      "revId": "4205e707f6058882aa8473aa1d6009b39ef72b84",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dxka.StI",
+        "filename": "ArticleFeedbackv5.permissions.php",
+        "patchSetId": 21
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-05-30T22:35:15Z",
+      "side": 1,
+      "message": "!$permission is redundant here, \n\n!isset( $permission-\u003epr_level ) will return false with no warning if $permission is null or not an object",
+      "revId": "4205e707f6058882aa8473aa1d6009b39ef72b84",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxoaKEhg",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 21
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-05-30T22:35:15Z",
+      "side": 1,
+      "message": "Potential doubly-escaped content",
+      "revId": "4205e707f6058882aa8473aa1d6009b39ef72b84",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxsZ8Gh8",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 21
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-05-30T22:35:15Z",
+      "side": 1,
+      "message": "should probably be \u003d\u003d\u003d",
+      "revId": "4205e707f6058882aa8473aa1d6009b39ef72b84",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxkaRKkU",
+        "filename": "api/ApiSetStatusArticleFeedbackv5.php",
+        "patchSetId": 21
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-05-30T22:35:15Z",
+      "side": 1,
+      "message": "getRestriction doesnt always return an object.\n\nIn many parts of this code you do\n\n$permission \u003d ArticleFeedbackv5Permissions::getRestriction(...)\n\n$permLevel \u003d isset( $permission-\u003epr_level ) ? $permission-\u003epr_level : false.\n\nIts common enough perhaps there could be a new method in ArticleFeedbackv5Permissions that does just that, and you can call it from here keeping the cleanliness of having it all wrapped into the single elseif statement without more state elsewhere in the method.",
+      "revId": "4205e707f6058882aa8473aa1d6009b39ef72b84",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxoabMmM",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js",
+        "patchSetId": 21
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-05-30T22:35:15Z",
+      "side": 1,
+      "message": "8 indentation levels is a bit much, any way to separate?",
+      "revId": "4205e707f6058882aa8473aa1d6009b39ef72b84",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dxma1Rs4",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.utils.js",
+        "patchSetId": 21
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-05-30T22:35:15Z",
+      "side": 1,
+      "message": "silently fails if callback is not a function.",
+      "revId": "4205e707f6058882aa8473aa1d6009b39ef72b84",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
