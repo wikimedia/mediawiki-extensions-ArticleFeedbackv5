@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DxgNKdFU",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-05-30T18:40:06Z",
+      "side": 1,
+      "message": "when $wgUser-\u003egetId() returns a falsish value $pageObj will be null and trigger a fatal null de-referece",
+      "revId": "b2483391e90a1c5931c353739a150666895b444b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxmN3.J8",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-05-30T18:40:06Z",
+      "side": 1,
+      "message": "this should probably be \u003d\u003d\u003d. \n\nAdditionally, $permalink and $central are set in two separate blocks with the same expression. could likely consolidate this into the intiialization at the begining of the method.",
+      "revId": "b2483391e90a1c5931c353739a150666895b444b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxsNojL0",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-05-30T18:40:06Z",
+      "side": 1,
+      "message": "its not clear why the same model needs to be fetched and re-rendered when the same thing was done starting at line 74 (20 lines prior).  Perhaps a comment could be added?",
+      "revId": "b2483391e90a1c5931c353739a150666895b444b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxkPvXB8",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-05-30T18:40:06Z",
+      "side": 1,
+      "message": "the  (bool) is redundant.",
+      "revId": "b2483391e90a1c5931c353739a150666895b444b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
