@@ -67,7 +67,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$feedback->aft_cta = $params['cta'];
 		$feedback->aft_link = $params['link'];
 		$feedback->aft_rating = $params['found'];
-		$feedback->aft_comment = $params['comment'];
+		$feedback->aft_comment = trim( $params['comment'] );
 
 		/*
 		 * Check submission against last entry: do not allow duplicates.
