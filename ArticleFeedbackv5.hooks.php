@@ -477,9 +477,9 @@ class ArticleFeedbackv5Hooks {
 		if ( $record->aft_comment != '' ) {
 			if ( $record->isHidden() || $record->isRequested() || $record->isOversighted() ) {
 				// (probably) abusive comment that has been hidden/oversight-requested/oversighted
-				$feedback = Linker::commentBlock( wfMessage( 'articlefeedbackv5-contribs-hidden-feedback' )->escaped() );
+				$feedback = wfMessage( 'articlefeedbackv5-contribs-hidden-feedback' )->escaped();
 			} else {
-				$feedback = Linker::commentBlock( $lang->truncate( $record->aft_comment, 75 ) );
+				$feedback = $lang->truncate( $record->aft_comment, 75 );
 			}
 		}
 
@@ -527,11 +527,11 @@ class ArticleFeedbackv5Hooks {
 				$feedbackCentralPageTitle->getFullText(), // feedback link
 				$pageTitle->getPrefixedText() // article title
 			)
-			->rawParams( $userlink ) // userlink (for newbies)
-			->params(
-				$feedback, // comment
-				$status // status
+			->rawParams(
+				$userlink, // userlink (for newbies)
+				Linker::commentBlock( $feedback ) // comment
 			)
+			->params( $status ) // status
 			->parse();
 
 		$classes[] = 'mw-aft-contribution';
