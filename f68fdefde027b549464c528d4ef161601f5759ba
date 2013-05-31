@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DxkZ8ioA",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 11
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-05-31T00:50:41Z",
+      "side": 1,
+      "message": "$1 {{PLURAL:$1|post|posts}}",
+      "revId": "f68fdefde027b549464c528d4ef161601f5759ba",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dxobt8sY",
+        "filename": "ArticleFeedbackv5.render.php",
+        "patchSetId": 11
+      },
+      "lineNbr": 1245,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-05-31T00:50:41Z",
+      "side": 1,
+      "message": "double escaped",
+      "revId": "f68fdefde027b549464c528d4ef161601f5759ba",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxmbqZhI",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 11
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-05-31T00:50:41Z",
+      "side": 1,
+      "message": "should this be escaped?",
+      "revId": "f68fdefde027b549464c528d4ef161601f5759ba",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxqbarkY",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.watchlist.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-05-31T00:50:41Z",
+      "side": 1,
+      "message": ".html( ilnk.html() ) is redundant now",
+      "revId": "f68fdefde027b549464c528d4ef161601f5759ba",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
