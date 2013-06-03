@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DxzAMLkI",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 12
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-06-03T18:12:42Z",
+      "side": 1,
+      "message": "$totalComment and $totalNoComment need to be passed as numParams() so that number formatting and transformation can happen.\n\nPlease review all other possible number parameters in this patch set.",
+      "revId": "bddd90a21cffb9ee71c75db51acbd6c8e6f3c563",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dx-AZJoQ",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 12
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 92
+      },
+      "writtenOn": "2013-06-03T18:12:42Z",
+      "side": 1,
+      "message": "$total needs to be passed as numParams() so that number formatting and transformation can happen.",
+      "revId": "bddd90a21cffb9ee71c75db51acbd6c8e6f3c563",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
