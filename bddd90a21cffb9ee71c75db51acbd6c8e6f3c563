@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "DxyQyM14",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 12
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-06-03T18:42:38Z",
+      "side": 1,
+      "message": "Can we modify getCount() so it will be able to take more than one condition, it seems redundant to make separate calls to the same table for a count",
+      "revId": "bddd90a21cffb9ee71c75db51acbd6c8e6f3c563",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dx-AZJoQ",
         "filename": "SpecialArticleFeedbackv5.php",
         "patchSetId": 12
