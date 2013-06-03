@@ -2631,7 +2631,7 @@ $4', # Fuzzy
 	'articlefeedbackv5-abusefilter-note-aftv5request' => 'تم طلب الأوفرسايت تلقائيا. قاعدة : $1',
 );
 
-/** Assamese (অসমীয়া)
+/** Assamese (অসমীয়া)
  * @author Bishnu Saikia
  */
 $messages['as'] = array(
@@ -3070,7 +3070,6 @@ $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-help-location' => 'Көйләүҙәрҙә «Тышҡы күренеш» ҡушымтаһы',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Көйләүҙәргә күсергә',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Мәҡәлә тураһында фекер) Насар ҡулланыу тип билдәләргә',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Автиматик рәүештә насар ҡулланыу тип билдәләнде. Ҡағиҙә:$1',
 	'abusefilter-edit-action-aftv5hide' => '(Мәҡәлә тураһында фекер) Автоматик йәшереү',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Автоматик рәүештә йәшерелде. Ҡағиҙә:$1',
 	'abusefilter-edit-action-aftv5request' => '(Мәҡәлә тураһында фекер) Автоматик йәшереүҙе һорау',
@@ -5665,7 +5664,7 @@ $messages['dsb'] = array(
 	'articlefeedbackv5-header-message-link-text' => 'Dalšne informacije',
 	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-page-disabled' => 'Bok za komentary k nstawkam njejo za toś ten nastawk zmóžnjony.',
-	'articlefeedbackv5-viewactivity' => 'Pśipisk cytaś',
+	'articlefeedbackv5-viewactivity' => 'Pśipisk cytaś', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => 'Wopśimjeśe pokazaś',
 	'articlefeedbackv5-permalink-info-title' => 'Informacije wó toś tom pśinosku',
 	'articlefeedbackv5-permalink-info-revision-link' => 'Staru wersiju pokazaś',
@@ -5712,7 +5711,6 @@ $messages['dsb'] = array(
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Dalšne informacije',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Pśispomnjeśe pśidaś',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Dalšne informacije',
-	'articlefeedbackv5-noteflyover-unoversight-help-link' => 'nr.',
 	'articlefeedbackv5-noteflyover-decline-label' => 'Pśispomnjeśe pśidaś',
 	'articlefeedbackv5-noteflyover-decline-help' => 'Dalšne informacije',
 	'articlefeedbackv5-bucket1-title' => 'Pomóž toś ten bok pólěpšyś',
@@ -6353,7 +6351,6 @@ $4',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Πήγαινε στις προτιμήσεις μου.',
 	'abusefilter-edit-action-aftv5resolve' => '(Σχόλια Αξιολόγησης) Αυτόματη επίλυση',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Σχόλια Αξιολόγησης) Αυτόματη σήμανση ως προσβλητικό',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Σημάνθηκε αυτόματα ως προσβλητικό. Κανόνας: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Σχόλια Αξιολόγησης) Αυτόματη απόκρυψη',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Αποκρύφθηκε αυτόματα.  Κανόνας:$1',
 	'abusefilter-edit-action-aftv5request' => '(Σχόλια Αξιολόγησης) Αυτόματη αίτηση για εποπτεία',
@@ -6750,7 +6747,6 @@ $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-help-location' => 'Preferoj > Etoso',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Iri al miaj preferoj',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Artikolo-komento) Aŭtosignali kiel misuzado',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Aŭtomate markita kiel misuzado. Regulo: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Komento pri artikolo) Aŭtomate kaŝita',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Aŭtomate kaŝita. Regulo: $1',
 	'abusefilter-edit-action-aftv5request' => '(Artikolo-komento) Aŭtopeti kontroladon',
@@ -7236,6 +7232,7 @@ Apreciamos sus contribuciones a esta página!',
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 ha borrado todas las etiquetas de este post el $3 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 acción|$1 acciones}} en esta entrada (post)',
 	'articlefeedbackv5-activity-more' => 'Mostrar más actividad',
+	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|1 sugerencia|$1 sugerencias}}', # Fuzzy
 	'articlefeedbackv5-talk-view-feedback' => 'Ver sugerencias del lector',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Comentarios sobre las páginas que vigilo',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Se ha solicitado una supresión en página de comentarios de un artículo',
@@ -7262,7 +7259,6 @@ $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-help-location' => 'Mis preferencias > Aspecto',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ir a Mis preferencias',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Comentarios del artículo) Marcado automático como abusivo',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Marcado automáticamente como abuso.  Regla: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Comentarios del artículo) Ocultar automáticamente',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Ocultado automáticamente.  Regla: $1',
 	'abusefilter-edit-action-aftv5request' => '(Comentarios del artículo) Solicitud de supervisión automática',
@@ -7650,7 +7646,6 @@ $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-help-location' => 'eelistuste kaardile "{{int:prefs-rendering}}"',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Mine eelistuste leheküljele',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Artikli tagasiside) Lisa automaatselt väärtarvituse silt',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Sildistatud automaatselt kui väärtarvitus.  Reegel: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Artikli tagasiside) Peida automaatselt',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automaatselt peidetud. Reegel: $1',
 	'abusefilter-edit-action-aftv5request' => '(Artikli tagasiside) Palu automaatselt varjamist',
@@ -9391,7 +9386,6 @@ $messages['frp'] = array(
 	'articlefeedbackv5-disable-flyover-help-location' => 'Prèferences > Aparence',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Alar a mes prèferences',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Èstimacion d’articllos) Signalar ôtomaticament coment abusif',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Signalâ ôtomaticament coment abusif.  Règlla : $1',
 	'abusefilter-edit-action-aftv5hide' => '(Èstimacion d’articllos) Cachiér ôtomaticament',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Cachiê ôtomaticament.  Règlla : $1',
 	'abusefilter-edit-action-aftv5request' => '(Èstimacion d’articllos) Demandar ôtomaticament na suprèssion',
@@ -11357,6 +11351,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-activity-note-archive' => 'Je so po {{PLURAL:$1|$1 dnju|$1dnjomaj|$1 dnjach}} inaktiwnosće wobdźěłarja archiwował',
 	'articlefeedbackv5-activity-count' => '$1 {{PLURAL:$1|akcija|akciji|akcije|akcijow}} k tutomu komentarej',
 	'articlefeedbackv5-activity-more' => 'Dalše aktiwity pokazać',
+	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|1 namjet|$1 namjetaj|$1 namjety|$1 namjetow}}', # Fuzzy
 	'articlefeedbackv5-talk-view-feedback' => 'Namjety čitarja pokazać',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Komentary mojich wobkedźbowanych stronow',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Dohladowanje za stronu komentarow požadane',
@@ -11383,7 +11378,6 @@ $4',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Nastajenja > Napohlad',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'K nastajenjam',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Article Feedback) Awtomatisce jako znjewužiće woznamjenić',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Awtomatisce jako znjewužiće woznamjenjeny. Prawidło: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Article Feedback) Awtomatisce schować',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Awtomatisce schowany. Prawidło: $1',
 	'abusefilter-edit-action-aftv5request' => '(Article Feedback) Awtomatisce dohladowanje požadać',
@@ -11782,7 +11776,6 @@ $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-help-location' => 'Beállítások > Lapok megjelenítése',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'A beállításaimhoz',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Olvasói visszajelzés) Visszaélésnek jelölés',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Automatikusan visszaélésnek jelölve. Szűrő: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Olvasói visszajelzés) Elrejtés',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automatikusan elrejtve. Szűrő: $1',
 	'abusefilter-edit-action-aftv5request' => '(Olvasói visszajelzés) Automatikus törlési kérelem',
@@ -12643,7 +12636,6 @@ $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-help-location' => 'Preferensi saya > Tampilan',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Pergi ke preferensi saya',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Umpan Balik Artikel) Tandai penyalahgunaan secara otomatis',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Ditandai penyalahgunaan secara otomatis. Aturan: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Umpan Balik Artikel) Sembunyikan secara otomatis',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Disembunyikan secara otomatis. Aturan: $1',
 	'abusefilter-edit-action-aftv5request' => '(Umpan Balik Artikel) Minta hak pengawas secara otomatis',
@@ -13261,6 +13253,7 @@ Riprova più tardi.',
 	'articlefeedbackv5-activity-note-archive' => 'Archiviato dopo {{PLURAL:$1|$1 giorno|$1 giorni}} di inattività',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 azione su questo post|$1 azioni su questo post}}',
 	'articlefeedbackv5-activity-more' => 'Mostra altre attività',
+	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|1 suggerimento|$1 suggerimenti}}', # Fuzzy
 	'articlefeedbackv5-talk-view-feedback' => 'Vedi i suggerimenti dei lettori',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Feedback dalle mie pagine osservate',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Richiesta soppressione per la pagina dei commenti sulle voci',
@@ -13288,7 +13281,6 @@ $4',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Preferenze > Aspetto',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Vai alle mie preferenze',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Article Feedback) segnalato automaticamente come abuso',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Segnalato automaticamente come abuso. Regola: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Article Feedback) nascosto automaticamente',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Nascosto automaticamente. Regola: $1',
 	'abusefilter-edit-action-aftv5request' => '(Article Feedback) richiesta soppressione automaticamente',
@@ -14007,7 +13999,6 @@ Aja bolan-balèni lan kakèhan ngirim lebon saran.', # Fuzzy
 	'articlefeedbackv5-disable-flyover-help-location' => 'Prèperensi kula > Tampilan',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Nuju nèng prèperènsi kula',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Lebon Saran Artikel) Tengeri otomatis minangka planggaran',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Otomatis ditengeri minangka planggaran. Aturan: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Lebon Saran Artikel) Dhelikaké otomatis',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Otomatis didhelikaké. Aturan: $1',
 	'abusefilter-edit-action-aftv5request' => '(Lebon Saran Artikel) Jaluk pangawasan otomatis',
@@ -14898,6 +14889,7 @@ $6
 	'articlefeedbackv5-activity-note-archive' => '편집자의 활동이 없고 {{PLURAL:$1|$1일}} 후 보존됨',
 	'articlefeedbackv5-activity-count' => '이 게시물에 행동 $1',
 	'articlefeedbackv5-activity-more' => '더 많은 활동 보기',
+	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|제안 1개|제안 $1개}}', # Fuzzy
 	'articlefeedbackv5-talk-view-feedback' => '독자 제안 보기',
 	'articlefeedbackv5-watchlist-view-feedback' => '내가 주시하는 문서에 대한 피드백',
 	'articlefeedbackv5-email-request-oversight-subject' => '오버사이트가 문서 평가 페이지에 요청됨',
@@ -14925,7 +14917,6 @@ $4',
 	'articlefeedbackv5-disable-flyover-help-location' => '사용자 환경 설정 > 문서 보이기 설정',
 	'articlefeedbackv5-disable-flyover-prefbutton' => '사용자 환경 설정으로 가기',
 	'abusefilter-edit-action-aftv5flagabuse' => '(문서 평가) 부정 행위로 자동 플래그',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => '부정 행위로 자동으로 표시됩니다. 규칙: $1',
 	'abusefilter-edit-action-aftv5hide' => '(문서 평가) 자동 숨김',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => '자동으로 숨깁니다. 규칙: $1',
 	'abusefilter-edit-action-aftv5request' => '(문서 평가) 오버사이트 자동 요청',
@@ -15322,7 +15313,6 @@ Hellef met, di Sigg heh beßer ze maache, endämm dat De draan metschriivs!',
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Enschäzonge för Sigge',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Enschtällonge',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Röckmäldonge övver Sigge) Automattesch als Schtuß udder Meßbruch makeere',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Automattesch als Schtuß udder Meßbruch makeet noh dä Rääjel: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Röckmäldonge övver Sigge) Automattesch verschteische',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automattesch verschtoche noh dä Rääjel: $1',
 	'abusefilter-edit-action-aftv5request' => '(Röckmäldonge övver Sigge) Ongerdröcke automattesch vörjeschlonn',
@@ -16978,7 +16968,6 @@ $messages['ml'] = array(
 	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'ലേഖനത്തെക്കുറിച്ചുള്ള പ്രതികരണം',
 	'articlefeedbackv5-disable-flyover-help-location' => 'എന്റെ ക്രമീകരണങ്ങൾ > ദൃശ്യരൂപം',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'എന്റെ ക്രമീകരണങ്ങളിലേയ്ക്ക് പോവുക',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'ദുരുപയോഗമെന്ന് സ്വയം അടയാളപ്പെടുത്തി. നിയമം: $1',
 	'abusefilter-edit-action-aftv5hide' => '(ലേഖനത്തിനുള്ള പ്രതികരണം) സ്വയം-മറയ്ക്കൽ',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'സ്വയം മറച്ചു. നിയമം: $1',
 );
@@ -18178,7 +18167,6 @@ $messages['nb'] = array(
 	'articlefeedbackv5-disable-flyover-help-location' => 'Mine innstillinger > Utseende',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Gå til mine innstillinger',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Artikkeltilbakemelding) Merk automatisk som misbruk',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Automatisk merket som misbruk. Regel: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Artikkeltilbakemelding) Skjul automatisk',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automatisk skjult. Regel: $1',
 );
@@ -19457,7 +19445,7 @@ $4', # Fuzzy
 	'articlefeedbackv5-abusefilter-note-aftv5request' => 'Fjerning automatisk bede om. Regel: $1',
 );
 
-/** Oriya (ଓଡ଼ିଆ)
+/** Oriya (ଓଡ଼ିଆ)
  * @author Ansumang
  * @author Jnanaranjan Sahu
  * @author Odisha1
@@ -20490,6 +20478,7 @@ $messages['pms'] = array(
 	'articlefeedbackv5-activity-item-clear-flags' => "$1 a l'ha scancelà tute le marche për cost mëssagi ël $4 a $5 $2",
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 assion dzora a sto mëssagi|$1 assion dzora a sto mëssagi}}',
 	'articlefeedbackv5-activity-more' => "Smon-e d'àutre Atività",
+	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|1 sugeriment|$1 sugeriment}}', # Fuzzy
 	'articlefeedbackv5-talk-view-feedback' => 'Varda ij coment dij letor',
 	'articlefeedbackv5-watchlist-view-feedback' => "Coment da le pàgine ch'i ten-o sot-euj",
 	'articlefeedbackv5-email-request-oversight-subject' => "Dzorvejansa ciamà për la pàgina ëd coment ëd l'artìcol",
@@ -20516,7 +20505,6 @@ $4", # Fuzzy
 	'articlefeedbackv5-disable-flyover-help-location' => 'Mè Gust > Aspet',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Và ai mè gust',
 	'abusefilter-edit-action-aftv5flagabuse' => "(Coment ëd l'artìcol) Marcadura an automàtich com abusiv",
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Marcà automaticament com abusiv. Régola: $1',
 	'abusefilter-edit-action-aftv5hide' => "(Coment ëd l'artìcol) Stërmagi automàtich",
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Stërmà automaticament. Régola: $1',
 	'abusefilter-edit-action-aftv5request' => "(Coment ëd l'artìcol) Dzorvejansa ciamà an automàtich",
@@ -20638,6 +20626,7 @@ $messages['ps'] = array(
  * @author Giro720
  * @author Hamilton Abreu
  * @author Helder.wiki
+ * @author Luckas
  * @author Luckas Blade
  * @author Malafaya
  * @author SandroHc
@@ -22061,7 +22050,6 @@ $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-help-location' => 'вкладку «Внешний вид» своих персональных настроек',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Перейти к моим персональным настройкам',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Отзыв о статье) Автоматически пометить как злоупотребление',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Автоматически помечено как злоупотребление. Правило: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Отзыв о статье) Автоматическое скрытие',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Автоматически скрыто.  Правило: $1',
 	'abusefilter-edit-action-aftv5request' => '(Отзыв о статье) Автоматический запрос скрытия',
@@ -23604,6 +23592,7 @@ dessa fel innan du begär tillsyn:
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 tog bort alla flaggor för detta inlägg den $4 kl $5 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 åtgärd  på denna post|$1 åtgärder på denna post}}',
 	'articlefeedbackv5-activity-more' => 'Visa mer aktivitet',
+	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|1 förslag|&1 förslag}}', # Fuzzy
 	'articlefeedbackv5-talk-view-feedback' => 'Visa feedback från läsare',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Feedback från mina bevakade sidor',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Censur begärdes för artikelfeedbacksida',
@@ -23635,7 +23624,6 @@ $4',
 	'articlefeedbackv5-disable-flyover-help-location' => 'Mina inställningar > Utseende',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Gå till mina inställningar',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Artikel Feedback) Auto-flagga som missbruk',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Automatiskt flaggad som missbruk. Regel: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Artikel Feedback) Dölj automatiskt',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automatiskt dolda. Regel: $1',
 	'abusefilter-edit-action-aftv5request' => '(Artikelfeedback) Automatisk begäran av censur',
@@ -24094,7 +24082,6 @@ $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-help-location' => 'என் விருப்பத்தேர்வுகள்>தோற்றம்',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'என் விருப்பத்தேர்வுகளுக்கு செல்',
 	'abusefilter-edit-action-aftv5flagabuse' => '(கட்டுரை பின்னூட்டம்) முறை கேடானதாக தானாக கொடியிடு',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'முறைகேடானதாக தானாக கொடியிடப்பட்டது. விதி: $1',
 	'abusefilter-edit-action-aftv5hide' => '(கட்டுரை பின்னூட்டம்) தானாக மறை',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'தானாக மறைக்கப்பட்டுள்ளது.  விதி:$1',
 	'abusefilter-edit-action-aftv5request' => '(கட்டுரை பின்னூட்டம்) மேற்பார்வையை தானாக கோரு',
@@ -24592,7 +24579,6 @@ $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-help-location' => 'Mga nais ko > Kaanyuan',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Pumunta sa mga kanaisan ko',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Tugon sa Artikulo) Kusang iwatawat bilang pagmamalabis',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'Kusang iwinatawat bilang pang-aabuso.  Patakaran: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Tugon sa Artikulo) Kusang itago',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Kusang itinago.  Patakaran: $1',
 	'abusefilter-edit-action-aftv5request' => '(Tugon sa Artikulo) Kusang hilingin ang pagkalingat',
@@ -25106,7 +25092,6 @@ $1', # Fuzzy
 	'articlefeedbackv5-disable-flyover-help-location' => 'مايىللىق تەڭشىكىم › قىياپەت',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'مايىللىق تەڭشىكىمگە يۆتكەل',
 	'abusefilter-edit-action-aftv5flagabuse' => '(ماقالە قايتۇرما ئىنكاسى) ئۆزلۈكىدىن سۈيىئىستىمال بايرىقى قادا',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => 'ئۆزلۈكىدىن سۈيىئىستىمال بايرىقى قادالدى. قائىدىسى: $1',
 	'abusefilter-edit-action-aftv5hide' => '(ماقالە قايتۇرما ئىنكاسى) ئۆزلۈكىدىن يوشۇر',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'ئۆزلۈكىدىن يوشۇردى. قائىدىسى: $1',
 	'abusefilter-edit-action-aftv5request' => '(ماقالە قايتۇرما ئىنكاسى) ئۆزلۈكىدىن نازارەت',
@@ -26553,7 +26538,6 @@ $4',
 	'articlefeedbackv5-disable-flyover-help-location' => '参数设置 > 外观',
 	'articlefeedbackv5-disable-flyover-prefbutton' => '转至参数设置',
 	'abusefilter-edit-action-aftv5flagabuse' => '（条目反馈）自动标记为滥用',
-	'articlefeedbackv5-abusefilter-note-aftv5flagabuse' => '已自动标记为滥用。规则：$1',
 	'abusefilter-edit-action-aftv5hide' => '（条目反馈）自动隐藏',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => '已自动隐藏。规则：$1',
 	'abusefilter-edit-action-aftv5request' => '（条目反馈）自动请求删除',
