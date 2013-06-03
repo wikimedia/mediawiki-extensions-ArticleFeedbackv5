@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "DxxhvlP4",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 23
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-06-03T21:54:41Z",
+      "side": 1,
+      "message": "this is a duplicate of line 293",
+      "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxxixVPg",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 23
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-06-03T21:54:41Z",
+      "side": 1,
+      "message": "needs QQQ",
+      "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxzhqUO8",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 23
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-06-03T21:54:41Z",
+      "side": 1,
+      "message": "This is a duplicate of line 1207",
+      "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxzgBsG8",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 23
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-06-03T21:54:41Z",
+      "side": 1,
+      "message": "jquery.articleFeedbackv5.special.js doesn\u0027t directly reference this message.  The second reference to this message looks to be made from jquery.articleFeedbakv5.utils.js in the $.aftUtils.setStatus method.\n\n$.aftUtils.setStatus is called from both special.js and startup.js, so I think this message should also move into startup.",
+      "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dx3izOJg",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 23
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-06-03T21:54:41Z",
+      "side": 1,
+      "message": "this doesn\u0027t appear to be referenced by any js (at least not directly).  Same with insufficient-permissions.",
+      "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dx9hkDCY",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 23
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-06-03T21:54:41Z",
+      "side": 1,
+      "message": "potential double escape",
+      "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxxML9yY",
+        "filename": "api/ApiSetStatusArticleFeedbackv5.php",
+        "patchSetId": 23
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-06-03T21:54:41Z",
+      "side": 1,
+      "message": "$success is always true here, maybe thats alright not sure.",
+      "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
