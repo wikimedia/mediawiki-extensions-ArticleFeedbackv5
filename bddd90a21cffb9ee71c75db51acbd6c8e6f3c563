@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "Dx6Tiw6E",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 12
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-06-03T18:56:50Z",
+      "side": 1,
+      "message": "getCount will typically fetch data from cache. The cache never expires and are not purged (as feedback is added/edited, the counts are updated on-the-fly), so a DB call should never happen - unless Memcached server is restarted, in which case it will indeed do multiple DB calls.\nIt would also be quite hard to refactor into 1 query though; every different filter will have completely different WHERE conditions.",
+      "parentUuid": "DxyQyM14",
+      "revId": "bddd90a21cffb9ee71c75db51acbd6c8e6f3c563",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dx-AZJoQ",
         "filename": "SpecialArticleFeedbackv5.php",
         "patchSetId": 12
