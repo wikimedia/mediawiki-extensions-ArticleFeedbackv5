@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Dx-OVq.M",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 13
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 78
+      },
+      "writtenOn": "2013-06-04T02:03:12Z",
+      "side": 1,
+      "message": "This line is a bit hard to read, but I suppose it\u0027s OK.",
+      "revId": "602d86c3553b9f1bdf345ae5ebf047cc845f4ce6",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
