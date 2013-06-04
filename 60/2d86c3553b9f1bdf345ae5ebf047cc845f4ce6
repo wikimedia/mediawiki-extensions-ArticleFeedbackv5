@@ -1,0 +1,8 @@
+Verified+2: jenkins-bot
+Code-Review+2: Kaldari <rkaldari@wikimedia.org>
+Code-Review+1: Bsitu <bsitu@wikimedia.org>
+Submitted-by: jenkins-bot
+Submitted-at: Tue, 04 Jun 2013 02:03:33 +0000
+Reviewed-on: https://gerrit.wikimedia.org/r/59156
+Project: mediawiki/extensions/ArticleFeedbackv5
+Branch: refs/heads/master
