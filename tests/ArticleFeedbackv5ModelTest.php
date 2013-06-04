@@ -40,6 +40,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 		$this->sample->aft_link = 'X';
 		$this->sample->aft_rating = 1;
 		$this->sample->aft_comment = 'This is a test feedback entry';
+		$this->sample->aft_claimed_user = 1;
 
 		// we'll be using the * list a couple of times; pretend to have the
 		// required permissions
