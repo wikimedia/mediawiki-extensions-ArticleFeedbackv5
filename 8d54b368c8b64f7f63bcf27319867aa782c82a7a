@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "Dx07EtpM",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 23
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-06-04T07:09:46Z",
+      "side": 1,
+      "message": "You\u0027re right; it just had to be in .utils. I originally had the code in special.js, but moved it to utils since it\u0027s used in multiple places ;)",
+      "parentUuid": "DxzgBsG8",
+      "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Dx3izOJg",
         "filename": "ArticleFeedbackv5.php",
         "patchSetId": 23
@@ -121,6 +139,24 @@
     },
     {
       "key": {
+        "uuid": "Dx46.vvk",
+        "filename": "api/ApiSetStatusArticleFeedbackv5.php",
+        "patchSetId": 23
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-06-04T07:09:46Z",
+      "side": 1,
+      "message": "It was ok, it wasn\u0027t used anywhere. Confusing though, I removed it.",
+      "parentUuid": "DxxML9yY",
+      "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "DxxPsl48",
         "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js",
         "patchSetId": 23
@@ -132,6 +168,24 @@
       "writtenOn": "2013-06-04T01:10:22Z",
       "side": 1,
       "message": "This can be done as $( \u0027\u003cli id\u003d\"t-articlefeedbackv5-enable\"\u003e\u003ca href\u003d\"#\"\u003e\u0027 +  mw.msg( \u0027articlefeedbackv5-toolbox-enable\u0027 ).escaped() + \u0027\u003c/a\u003e\u003c/li\u003e\u0027 );",
+      "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Dx65ruoU",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js",
+        "patchSetId": 23
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-06-04T07:09:46Z",
+      "side": 1,
+      "message": "mw.msg() returns a Message.toString() already, so I can\u0027t call escaped() on it:\n\n    return mw.message.apply( mw.message, arguments ).toString();\n\nI could do mw.message( \u0027xyz\u0027 ).escaped() though, but I used jQuery\u0027s methods to make it more obvious no unescaped values will get in (although I guess .escaped() would be as demonstrably secure too)",
+      "parentUuid": "DxxPsl48",
       "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
