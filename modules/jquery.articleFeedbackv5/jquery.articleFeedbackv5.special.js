@@ -489,7 +489,9 @@
 					return $.articleFeedbackv5special.actions[action].tipsyHtml;
 				}
 			} )
-			.click( $.articleFeedbackv5special.toggleTipsy );
+			// make sure event is only bound once (having it twice would toggle on & immediately off again)
+			.off( 'click', null, $.articleFeedbackv5special.toggleTipsy )
+			.on( 'click', null, null, $.articleFeedbackv5special.toggleTipsy );
 	};
 
 	// }}}
