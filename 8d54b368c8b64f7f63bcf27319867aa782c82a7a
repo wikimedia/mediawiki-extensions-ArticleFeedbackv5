@@ -118,6 +118,40 @@
       "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxxPsl48",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js",
+        "patchSetId": 23
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-06-04T01:10:22Z",
+      "side": 1,
+      "message": "This can be done as $( \u0027\u003cli id\u003d\"t-articlefeedbackv5-enable\"\u003e\u003ca href\u003d\"#\"\u003e\u0027 +  mw.msg( \u0027articlefeedbackv5-toolbox-enable\u0027 ).escaped() + \u0027\u003c/a\u003e\u003c/li\u003e\u0027 );",
+      "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "DxzPnE7E",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.utils.js",
+        "patchSetId": 23
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-06-04T01:10:22Z",
+      "side": 1,
+      "message": "missing semicolon",
+      "revId": "8d54b368c8b64f7f63bcf27319867aa782c82a7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
