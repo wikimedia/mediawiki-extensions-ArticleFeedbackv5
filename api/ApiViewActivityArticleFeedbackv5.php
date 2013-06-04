@@ -96,8 +96,10 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 						Html::rawElement(
 							'div',
 							array(),
-							wfMessage( 'articlefeedbackv5-activity-feedback-info', array( $feedback->aft_id ) )
+							wfMessage( 'articlefeedbackv5-activity-feedback-info' )
+								->params( $feedback->aft_id )
 								->rawParams( ArticleFeedbackv5Utils::getUserLink( $feedback->aft_user, $feedback->aft_user_text ) )
+								->params( $feedback->aft_user_text ) // username or ip
 								->text()
 						) .
 						Html::element(

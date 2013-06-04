@@ -876,8 +876,6 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'articlefeedbackv5-noteflyover-unoversight-help-link',
 
 		'articlefeedbackv5-activity-pane-header',
-
-		'articlefeedbackv5-beta-label',
 	),
 	'dependencies' => array(
 		'mediawiki.util',
