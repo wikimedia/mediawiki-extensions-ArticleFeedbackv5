@@ -106,8 +106,21 @@ jQuery( function( $ ) {
 		load();
 	}
 
-	// check if user can enable AFTv5
-	if ( $.aftUtils.canSetStatus( true ) ) {
+	var article = $.aftUtils.article();
+
+	/*
+	 * Check if a user can enable AFTv5.
+	 *
+	 * Don't show the link if page is enabled/disabled via the categories.
+	 * To change that, one would have to edit the page and remove that
+	 * category, not change it via the link for page protection that we'll
+	 * be displaying here.
+	 */
+	if (
+		!$.aftUtils.whitelist( article ) &&
+		!$.aftUtils.blacklist( article ) &&
+		$.aftUtils.canSetStatus( true )
+	) {
 		var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 
 		// build link to enable feedback form
@@ -127,7 +140,7 @@ jQuery( function( $ ) {
 			$link.find( 'a' ).on( 'click', function( e ) {
 				e.preventDefault();
 
-				$.aftUtils.setStatus( $.aftUtils.article().id, 1, statusCallback );
+				$.aftUtils.setStatus( article.id, 1, statusCallback );
 			});
 		}
 

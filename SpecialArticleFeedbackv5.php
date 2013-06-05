@@ -456,11 +456,28 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			return '';
 		}
 
+		/*
+		 * Don't show status box if page is enabled/disabled via the categories.
+		 * To change that, one would have to edit the page and remove that
+		 * category, not change it via the button for page protection that we'll
+		 * be displaying here.
+		 */
+		if (
+			ArticleFeedbackv5Utils::isWhitelisted( $this->pageId ) ||
+			ArticleFeedbackv5Utils::isBlacklisted( $this->pageId )
+		) {
+			return '';
+		}
+
 		$restriction = ArticleFeedbackv5Permissions::getProtectionRestriction( $this->pageId );
 		$permissionLevel = isset( $restriction->pr_level ) ? $restriction->pr_level : false;
+		$defaultPermissionLevel = ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $this->pageId );
 
 		// not restricted
-		if ( $permissionLevel === 'aft-reader' ) {
+		if (
+			$permissionLevel === 'aft-reader' ||
+			( $permissionLevel === false && $defaultPermissionLevel === 'aft-reader' )
+		) {
 			return '';
 		}
 
@@ -477,7 +494,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			);
 
 			// admin-only setting
-			if ( $permissionLevel === 'aft-administrator' ) {
+			if ( in_array( $permissionLevel, array( 'aft-administrator', 'aft-noone' ) ) ) {
 				$message = 'articlefeedbackv5-disabled-admin-admin';
 
 			// admin+editors setting
@@ -488,7 +505,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// editors can change settings unless restriction is admin-specific
 		} elseif ( $this->getUser()->isAllowed( 'aft-editor' ) ) {
 			// admin-only setting
-			if ( $permissionLevel === 'aft-administrator' ) {
+			if ( in_array( $permissionLevel, array( 'aft-administrator', 'aft-noone' ) ) ) {
 				$message = 'articlefeedbackv5-disabled-editor-admin';
 
 			// admin+editors setting
