@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Dx2I23uc",
+        "filename": "SpecialArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-06-05T20:45:09Z",
+      "side": 1,
+      "message": "from a usability standpoint, would it make sense to tell the user that?  I\u0027m thinking that users may get used to going to this status box to change that setting, so with it missing they would wonder how its supposed to be change.",
+      "revId": "5bb9a50aea007aa0f23048c5b6b43028bf081156",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
