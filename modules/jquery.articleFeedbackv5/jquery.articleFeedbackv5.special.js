@@ -1849,6 +1849,21 @@
 		'settings': {
 			'hasTipsy': true,
 			'tipsyHtml': function() {
+				var article = $.aftUtils.article();
+
+				/*
+				 * Don't show the link if page is enabled/disabled via the categories.
+				 * To change that, one would have to edit the page and remove that
+				 * category, not change it via the link for page protection that we'll
+				 * be displaying here.
+				 */
+				if (
+					$.aftUtils.whitelist( article ) ||
+					$.aftUtils.blacklist( article )
+				) {
+					return '';
+				}
+
 				// build link to enable feedback form
 				var $link = $( '<a href="#" id="articleFeedbackv5-settings-status"></a>' );
 				$( '#articleFeedbackv5-settings-menu' ).append( $link );
@@ -1875,7 +1890,7 @@
 				// administrators can change detailed visibility in ?action=protect
 				if ( 'aft-administrator' in userPermissions && userPermissions['aft-administrator'] ) {
 					var link = mw.config.get( 'wgScript' ) + '?title=' +
-						encodeURIComponent( $.aftUtils.article().title ) +
+						encodeURIComponent( article.title ) +
 						'&' + $.param( { action: 'protect' } );
 
 					$link.attr( 'href', link );
@@ -1886,7 +1901,7 @@
 						e.preventDefault();
 
 						var status = $( this ).data( 'status' );
-						$.aftUtils.setStatus( $.aftUtils.article().id, status, function( data, error ) {
+						$.aftUtils.setStatus( article.id, status, function( data, error ) {
 							// refresh page to reflect changes
 							if ( data !== false ) {
 								location.reload( true );

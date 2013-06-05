@@ -456,6 +456,19 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			return '';
 		}
 
+		/*
+		 * Don't show status box if page is enabled/disabled via the categories.
+		 * To change that, one would have to edit the page and remove that
+		 * category, not change it via the button for page protection that we'll
+		 * be displaying here.
+		 */
+		if (
+			ArticleFeedbackv5Utils::isWhitelisted( $this->pageId ) ||
+			ArticleFeedbackv5Utils::isBlacklisted( $this->pageId )
+		) {
+			return '';
+		}
+
 		$restriction = ArticleFeedbackv5Permissions::getProtectionRestriction( $this->pageId );
 		$permissionLevel = isset( $restriction->pr_level ) ? $restriction->pr_level : false;
 
