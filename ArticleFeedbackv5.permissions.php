@@ -158,6 +158,11 @@ class ArticleFeedbackv5Permissions {
 	 * @return bool
 	 */
 	public static function setRestriction( $articleId, $permission, $expiry ) {
+		// make sure an articleId was passed
+		if ( !$articleId ) {
+			return;
+		}
+
 		// check if valid permission
 		if ( !self::isValidPermission( $permission ) ) {
 			return false;

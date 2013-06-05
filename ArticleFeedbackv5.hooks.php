@@ -620,6 +620,10 @@ class ArticleFeedbackv5Hooks {
 	public static function onProtectionForm( Page $article, &$output ) {
 		global $wgLang, $wgUser, $wgArticleFeedbackv5Namespaces;
 
+		if ( !$article->exists() ) {
+			return true;
+		}
+
 		// only on pages in namespaces where it is enabled
 		if ( !$article->getTitle()->inNamespaces( $wgArticleFeedbackv5Namespaces ) ) {
 			return true;
@@ -771,6 +775,10 @@ class ArticleFeedbackv5Hooks {
 	 */
 	public static function onProtectionSave( Page $article, &$errorMsg ) {
 		global $wgRequest, $wgArticleFeedbackv5Namespaces;
+
+		if ( !$article->exists() ) {
+			return true;
+		}
 
 		// only on pages in namespaces where it is enabled
 		if ( !$article->getTitle()->inNamespaces( $wgArticleFeedbackv5Namespaces ) ) {
