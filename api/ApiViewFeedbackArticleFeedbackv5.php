@@ -59,7 +59,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$user->setOption( 'aftv5-last-filter', $params['filter'] );
 		$user->saveSettings();
 
-		$records = $this->fetchData( $params );
+		$records = $this->fetchData( $params, $pageId );
 
 		// build renderer
 		$highlight = (bool) $params['feedbackid'];
@@ -81,7 +81,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$result->addValue( $this->getModuleName(), 'length', $length );
 		$result->addValue( $this->getModuleName(), 'count', $totalCount );
 		$result->addValue( $this->getModuleName(), 'filtercount', $filterCount );
-		$result->addValue( $this->getModuleName(), 'offset', $records ? $records->nextOffset() : 0 );
+		$result->addValue( $this->getModuleName(), 'offset', $records ? $records->nextOffset() : null );
 		$result->addValue( $this->getModuleName(), 'more', $records ? $records->hasMore() : false );
 		$result->addValue( $this->getModuleName(), 'feedback', $html );
 
@@ -92,10 +92,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 * @param array $params
 	 * @return DataModelList
 	 */
-	protected function fetchData( $params ) {
+	protected function fetchData( $params, $pageId ) {
 		// permalink page
 		if ( $params['feedbackid'] ) {
-			$record = ArticleFeedbackv5Model::get( $params['feedbackid'], $params['pageid'] );
+			$record = ArticleFeedbackv5Model::get( $params['feedbackid'], $pageId );
 			if ( $record ) {
 				return new DataModelList(
 					array( array( 'id' => $record->aft_id, 'shard' => $record->aft_page ) ),
@@ -116,7 +116,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$arguments = array();
 			$map = array(
 				'name' => $params['filter'],
-				'shard' => $params['pageid'],
+				'shard' => $pageId,
 				'user' => $this->getUser(),
 				'offset' => $params['offset'],
 				'sort' => $params['sort'],
