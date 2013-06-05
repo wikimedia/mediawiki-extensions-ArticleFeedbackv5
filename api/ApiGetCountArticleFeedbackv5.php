@@ -35,11 +35,12 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 		if ( !$pageObj->exists() ) {
 			$this->dieUsageMsg( 'notanarticle' );
 		}
+		$pageId = $pageObj->getId();
 
 		// Add metadata
-		$count = ArticleFeedbackv5Model::getCount( $params['filter'], $params['pageid'] );
+		$count = ArticleFeedbackv5Model::getCount( $params['filter'], $pageId );
 
-		$result->addValue( $this->getModuleName(), 'pageid', $params['pageid'] );
+		$result->addValue( $this->getModuleName(), 'pageid', $pageId );
 		$result->addValue( $this->getModuleName(), 'filter', $params['filter'] );
 		$result->addValue( $this->getModuleName(), 'count', $count );
 
