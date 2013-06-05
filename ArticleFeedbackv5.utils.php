@@ -102,24 +102,11 @@ class ArticleFeedbackv5Utils {
 	 */
 	public static function isFeedbackEnabled( $pageId ) {
 		global $wgArticleFeedbackv5Namespaces,
-				$wgArticleFeedbackv5BlacklistCategories,
-				$wgArticleFeedbackv5Categories,
 				$wgUser;
 
 		$title = Title::newFromID( $pageId );
 		if ( is_null( $title ) ) {
 			return false;
-		}
-
-		$categories = array();
-		foreach ( $title->getParentCategories() as $category => $page ) {
-			// get category title without prefix
-			$category = Title::newFromDBkey( $category );
-			if ( $category ) {
-				$category = $category->getDBkey();
-				$categories[] = str_replace( ' ', '_', $category );
-				$categories[] = str_replace( '_', ' ', $category );
-			}
 		}
 
 		$restriction = ArticleFeedbackv5Permissions::getProtectionRestriction( $title->getArticleID() );
@@ -141,11 +128,11 @@ class ArticleFeedbackv5Utils {
 				// check if a, to this user sufficient, default permission level (based on lottery) is defined
 				$wgUser->isAllowed( ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $pageId ) ) ||
 				// or check whitelist
-				array_intersect( $categories, $wgArticleFeedbackv5Categories );
+				self::isWhitelisted( $pageId );
 		}
 
 		// category is not blacklisted
-		$enable &= !array_intersect( $categories, $wgArticleFeedbackv5BlacklistCategories );
+		$enable &= !self::isBlacklisted( $pageId );
 
 		// not disabled via preferences
 		$enable &= !$wgUser->getOption( 'articlefeedback-disable' );
@@ -154,6 +141,63 @@ class ArticleFeedbackv5Utils {
 		$enable &= !$title->isRedirect();
 
 		return $enable;
+	}
+
+	/**
+	 * Get an array of unprefixed categories linked to a page, in both
+	 * underscored and spaced format (to make sure that no matter how they're
+	 * defined in config, we'll find the correct match)
+	 *
+	 * @param int $pageId
+	 * @return array
+	 */
+	protected static function getPageCategories( $pageId ) {
+		$title = Title::newFromID( $pageId );
+		if ( is_null( $title ) ) {
+			return array();
+		}
+
+		$categories = array();
+		foreach ( $title->getParentCategories() as $category => $page ) {
+			// get category title without prefix
+			$category = Title::newFromDBkey( $category );
+			if ( $category ) {
+				$category = $category->getDBkey();
+				// make both underscored or spaces category names work
+				$categories[] = str_replace( ' ', '_', $category );
+				$categories[] = str_replace( '_', ' ', $category );
+			}
+		}
+
+		return $categories;
+	}
+
+	/**
+	 * Check if an article is whitelisted (by means of a whitelist category)
+	 *
+	 * @param int $pageId
+	 * @return bool
+	 */
+	public static function isWhitelisted( $pageId ) {
+		global $wgArticleFeedbackv5Categories;
+
+		$categories = self::getPageCategories( $pageId );
+
+		return (bool) array_intersect( $categories, $wgArticleFeedbackv5Categories );
+	}
+
+	/**
+	 * Check if an article is blacklisted (by means of a blacklist category)
+	 *
+	 * @param int $pageId
+	 * @return bool
+	 */
+	public static function isBlacklisted( $pageId ) {
+		global $wgArticleFeedbackv5BlacklistCategories;
+
+		$categories = self::getPageCategories( $pageId );
+
+		return (bool) array_intersect( $categories, $wgArticleFeedbackv5BlacklistCategories );
 	}
 
 	/**
