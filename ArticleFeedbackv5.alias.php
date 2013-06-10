@@ -57,7 +57,7 @@ $specialPageAliases['ko'] = array(
 /** Cornish (kernowek) */
 $specialPageAliases['kw'] = array(
 	'ArticleFeedbackv5' => array( 'DaslivErthygelv5' ),
-	'ArticleFeedbackv5Watchlist' => array( 'DaslivErthygelv5RolGolyas' ),
+	'ArticleFeedbackv5Watchlist' => array( 'DaslivErthygelv5RolGolya' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
