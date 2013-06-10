@@ -89,7 +89,7 @@ class ArticleFeedbackv5Render {
 		$toolbox = $this->renderToolbox( $record );
 
 		// Get the top class
-		$topClass = 'articleFeedbackv5-feedback';
+		$topClass = 'articleFeedbackv5-feedback-container';
 		if ( $record->isOversighted() ) {
 			$topClass .= ' articleFeedbackv5-feedback-oversight';
 		}
@@ -134,25 +134,29 @@ class ArticleFeedbackv5Render {
 			Html::rawElement(
 				'div',
 				array(
-					'class' => $topClass,
+					'class' => 'articleFeedbackv5-feedback',
 					'data-id' => $record->aft_id,
 					'data-pageid' => $record->aft_page
 				),
-				// {toolbox, e.g. feature, hide}
-				$toolbox .
-				// {gray mask, if applicable}
-				$this->grayMask( $record ) .
-				Html::rawElement( 'div', array( 'class' => 'articleFeedbackv5-comment-container' ),
-					Html::rawElement( 'div', array( 'class' => $wrapClass ),
-						// {feedback content}
-						$content .
-						// {footer links, e.g. helpful, abuse}
-						$footer
+				Html::rawElement(
+					'div',
+					array( 'class' => $topClass ),
+					// {toolbox, e.g. feature, hide}
+					$toolbox .
+					// {gray mask, if applicable}
+					$this->grayMask( $record ) .
+					Html::rawElement( 'div', array( 'class' => 'articleFeedbackv5-comment-container' ),
+						Html::rawElement( 'div', array( 'class' => $wrapClass ),
+							// {feedback content}
+							$content .
+							// {footer links, e.g. helpful, abuse}
+							$footer
+						)
 					)
-				)
-			) .
-			// {info section for permalinks}
-			$permalinkInfo;
+				) .
+				// {info section for permalinks}
+				$permalinkInfo
+			);
 	}
 
 	/**

@@ -1,7 +1,7 @@
 /*----- FEEDBACK LISTING ------*/
 
 /** Overall structure **/
-.articleFeedbackv5-feedback {
+.articleFeedbackv5-feedback .articleFeedbackv5-feedback-container {
 	overflow: hidden;
 	position: relative;
 	min-height: 115px;
@@ -58,7 +58,7 @@
 }
 
 /** Feedback row **/
-.articleFeedbackv5-feedback {
+.articleFeedbackv5-feedback .articleFeedbackv5-feedback-container {
 	padding: 0;
 	border-bottom: 1px solid #D6D7D5;
 
