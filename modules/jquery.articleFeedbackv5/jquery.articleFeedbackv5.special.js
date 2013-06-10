@@ -1252,7 +1252,7 @@
 	$.articleFeedbackv5special.getSource = function() {
 		if ( $.articleFeedbackv5special.watchlist ) {
 			return 'watchlist';
-		} else if ( $.articleFeedbackv5special.listControls.filter === 'id' ) {
+		} else if ( $.articleFeedbackv5special.listControls.feedbackId ) {
 			return 'permalink';
 		} else if ( $.articleFeedbackv5special.page ) {
 			return 'article';
@@ -1285,7 +1285,7 @@
 	 */
 	$.articleFeedbackv5special.saveFilters = function () {
 		// don't save on permalink page
-		if ( $.articleFeedbackv5special.listControls.filter == 'id' ) {
+		if ( $.articleFeedbackv5special.listControls.feedbackId ) {
 			return false;
 		}
 
