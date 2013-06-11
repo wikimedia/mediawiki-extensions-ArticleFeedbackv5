@@ -96,8 +96,10 @@ select {
 	display: inline;
 	line-height: 30px;
 }
-#articleFeedbackv5-showing-count-wrap span,
-#articleFeedbackv5-special-watchlist-showing-wrap span {
+#articleFeedbackv5-showing-count-wrap span:before,
+#articleFeedbackv5-special-watchlist-showing-wrap span:before {
+	content: '';
+
 	padding: 5px 0 5px 25px;
 
 	/* @embed */

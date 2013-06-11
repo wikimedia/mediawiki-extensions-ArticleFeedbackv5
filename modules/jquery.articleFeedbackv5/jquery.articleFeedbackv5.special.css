@@ -260,7 +260,7 @@
 }
 
 /** Tags Block (featured, resolved) **/
-.articleFeedbackv5-feedback .articleFeedbackv5-feature-marker {
+.articleFeedbackv5-feedback .articleFeedbackv5-feature-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_feature.png);
 	/* @embed */
@@ -270,7 +270,7 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_feature.svg);
 }
-.articleFeedbackv5-feedback .articleFeedbackv5-resolve-marker {
+.articleFeedbackv5-feedback .articleFeedbackv5-resolve-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_resolve.png);
 	/* @embed */
@@ -280,7 +280,7 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_resolve.svg);
 }
-.articleFeedbackv5-feedback .articleFeedbackv5-archive-marker {
+.articleFeedbackv5-feedback .articleFeedbackv5-archive-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_archive.png);
 	/* @embed */
@@ -290,7 +290,7 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
 }
-.articleFeedbackv5-feedback .articleFeedbackv5-noaction-marker {
+.articleFeedbackv5-feedback .articleFeedbackv5-noaction-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_noaction.png);
 	/* @embed */
@@ -300,7 +300,7 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_noaction.svg);
 }
-.articleFeedbackv5-feedback .articleFeedbackv5-inappropriate-marker {
+.articleFeedbackv5-feedback .articleFeedbackv5-inappropriate-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_inappropriate.png);
 	/* @embed */
@@ -310,8 +310,8 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
 }
-.articleFeedbackv5-feedback .articleFeedbackv5-autohide-marker,
-.articleFeedbackv5-feedback .articleFeedbackv5-hide-marker {
+.articleFeedbackv5-feedback .articleFeedbackv5-autohide-marker:before,
+.articleFeedbackv5-feedback .articleFeedbackv5-hide-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_hide.png);
 	/* @embed */
@@ -321,7 +321,7 @@
 	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_hide.svg);
 }
-.articleFeedbackv5-feedback .articleFeedbackv5-oversight-marker {
+.articleFeedbackv5-feedback .articleFeedbackv5-oversight-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_oversight.png);
 	/* @embed */
@@ -339,13 +339,27 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-hide-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-archive-marker,
 .articleFeedbackv5-feedback .articleFeedbackv5-oversight-marker {
-	display: block;
-	height: 25px;
+	float: left;
 	line-height: 25px;
-	padding: 0 0 0 30px;
 	font-weight: bold;
 	color: #656763;
 	text-transform: uppercase;
+}
+
+.articleFeedbackv5-feedback .articleFeedbackv5-feature-marker:before,
+.articleFeedbackv5-feedback .articleFeedbackv5-resolve-marker:before,
+.articleFeedbackv5-feedback .articleFeedbackv5-noaction-marker:before,
+.articleFeedbackv5-feedback .articleFeedbackv5-inappropriate-marker:before,
+.articleFeedbackv5-feedback .articleFeedbackv5-autohide-marker:before,
+.articleFeedbackv5-feedback .articleFeedbackv5-hide-marker:before,
+.articleFeedbackv5-feedback .articleFeedbackv5-archive-marker:before,
+.articleFeedbackv5-feedback .articleFeedbackv5-oversight-marker:before {
+	content: '';
+
+	float: left;
+	height: 25px;
+	width: 25px;
+	margin-right: 5px;
 	background-repeat: no-repeat;
 	background-position: left;
 
@@ -772,6 +786,7 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	background-size: 20px auto;
 	background-repeat: no-repeat;
 	background-position: center center;
+
 	/* @embed */
 	background-image: url(images/cog.png);
 	/* @embed */
