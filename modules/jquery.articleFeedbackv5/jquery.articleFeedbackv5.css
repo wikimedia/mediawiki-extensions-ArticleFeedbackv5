@@ -14,6 +14,17 @@
 	}
 }
 
+/*
+ * Not really sure why, but the above display:none, targeted only at print, is
+ * applied in IE9, in non-compatibility mode (see bug 49445). This should
+ * override that again, making sure the form actually is visible.
+ */
+@media screen {
+	.articleFeedbackv5 {
+		display: inline-block;
+	}
+}
+
 #mw-articlefeedbackv5 {
 	margin-bottom: 15px;
 }
