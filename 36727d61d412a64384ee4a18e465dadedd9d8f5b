@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "D0x1xTqk",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.css",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-06-12T22:47:28Z",
+      "side": 1,
+      "message": "with the exception of the selector this is an exact duplicate of ext.articleFeedbackv5.talk.css.   Could both selectors be listed here and remove the duplicate file?",
+      "revId": "36727d61d412a64384ee4a18e465dadedd9d8f5b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "D0912pqI",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-06-12T22:47:28Z",
+      "side": 1,
+      "message": "This appears to be an exact duplicate of the code in ext.articleFeedbackv5.talk.js (except the string passed to $.aftTrack.track() ),  could it be written once and shared?",
+      "revId": "36727d61d412a64384ee4a18e465dadedd9d8f5b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
