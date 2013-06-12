@@ -198,7 +198,6 @@ class ArticleFeedbackv5Hooks {
 			'namespace' => $title->getNamespace(),
 			'categories' => array(),
 			'permissionLevel' => isset( $permissions->pr_level ) ? $permissions->pr_level : false,
-			'defaultPermissionLevel' => ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $title->getArticleID() ),
 		);
 
 		foreach ( $title->getParentCategories() as $category => $page ) {

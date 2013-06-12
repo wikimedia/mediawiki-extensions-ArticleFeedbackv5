@@ -14,6 +14,11 @@ class ArticleFeedbackv5Permissions {
 	 * @var array
 	 */
 	public static $permissions = array(
+		/*
+		 * When adding a new first permission level, also update
+		 * $.aftUtils.getDefaultPermissionLevel, which resembles
+		 * self::getDefaultPermissionLevel
+		 */
 		'aft-reader', // default "enable" level
 		'aft-member',
 		'aft-editor', // level when disabled by editor
@@ -21,6 +26,11 @@ class ArticleFeedbackv5Permissions {
 		'aft-administrator',
 		'aft-oversighter',
 		'aft-noone', // default "disable" level
+		/*
+		 * When adding a new last permission level, also update
+		 * $.aftUtils.getDefaultPermissionLevel, which resembles
+		 * self::getDefaultPermissionLevel
+		 */
 	);
 
 	/**
@@ -35,6 +45,8 @@ class ArticleFeedbackv5Permissions {
 	 * percentage, 0-100, of articles where AFTv5 is enabled by default.
 	 * This will return a boolean true for articles that "win" the lottery, and
 	 * false for others (based on the last digits of a page id).
+	 *
+	 * This is equivalent to $.aftUtils.lottery
 	 *
 	 * @param int $articleId
 	 * @return bool
@@ -63,6 +75,8 @@ class ArticleFeedbackv5Permissions {
 	 * Depending on whether or not an article "wins" the lottery, returns the
 	 * appropriate default permission level (enable = most permissive,
 	 * disable = least permissive).
+	 *
+	 * This is equivalent to $.aftUtils.getDefaultPermissionLevel
 	 *
 	 * @param int $articleId
 	 * @return string

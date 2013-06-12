@@ -42,7 +42,10 @@
 	// {{{ verify
 
 	/**
-	 * Runs verification
+	 * Runs verification.
+	 *
+	 * This is roughly equivalent to ArticleFeedbackv5Utils::isFeedbackEnabled
+	 * When changing conditions, make sure to change them there too.
 	 *
 	 * @param  location string  the place from which this is being called
 	 * @return bool     whether AFTv5 is enabled for this page
@@ -80,9 +83,11 @@
 				enable &= $.aftUtils.permissions( article, article.permissionLevel );
 
 			} else {
+				var defaultPermissionLevel = $.aftUtils.getDefaultPermissionLevel( article );
+
 				enable &=
 					// check if a, to this user sufficient, default permission level (based on lottery) is defined
-					$.aftUtils.permissions( article, article.defaultPermissionLevel ) ||
+					$.aftUtils.permissions( article, defaultPermissionLevel ) ||
 					// or check whitelist
 					$.aftUtils.whitelist( article );
 			}
@@ -125,6 +130,8 @@
 	 * Check if the user is permitted to see the AFT feedback form
 	 * on this particular page, as defined by its protection level
 	 *
+	 * This is roughly equivalent to $wgUser->isAllowed( <permissionLevel> );
+	 *
 	 * @param object article
 	 * @param string|boolean permissionLevel
 	 * @return bool
@@ -143,6 +150,8 @@
 	 *
 	 * Note: the .replace() makes sure that when blacklist category
 	 * names are underscored, those are converted to spaces (cfr. category)
+	 *
+	 * This is equivalent to ArticleFeedbackv5Utils::isBlacklisted
 	 *
 	 * @param object article
 	 * @return bool
@@ -165,6 +174,8 @@
 	 * Note: the .replace() makes sure that when whitelist category
 	 * names are underscored, those are converted to spaces (cfr. category)
 	 *
+	 * This is equivalent to ArticleFeedbackv5Utils::isWhitelisted
+	 *
 	 * @param object article
 	 * @return bool
 	 */
@@ -174,6 +185,45 @@
 			return $.inArray( category.replace(/_/g, ' '), article.categories ) < 0 ? null : category;
 		} );
 		return intersect.length > 0;
+	};
+
+	// }}}
+	// {{{ lottery
+
+	/**
+	 * Check if an article is eligible for AFT through the lottery
+	 *
+	 * Note: odds can either be a plain integer (0-100), or be defined per namespace
+	 * (0-100 per namespace key)
+	 *
+	 * This is equivalent to ArticleFeedbackv5Permissions::getLottery
+	 *
+	 * @param object article
+	 * @return bool
+	 */
+	$.aftUtils.lottery = function ( article ) {
+		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
+		if ( typeof odds === 'object' && article.namespace in odds ) {
+			odds = odds[article.namespace];
+		}
+
+		return ( Number( article.id ) % 1000 ) >= ( 1000 - ( Number( odds ) * 10 ) );
+	};
+
+	// }}}
+	// {{{ getDefaultPermissionLevel
+
+	/**
+	 * Check if the user is permitted to see the AFT feedback form
+	 * on this particular page, as defined by its protection level.
+	 *
+	 * This is equivalent to ArticleFeedbackv5Permissions::getDefaultPermissionLevel
+	 *
+	 * @param object article
+	 * @return string
+	 */
+	$.aftUtils.getDefaultPermissionLevel = function ( article ) {
+		return $.aftUtils.lottery( article ) ? 'aft-reader' : 'aft-noone';
 	};
 
 	// }}}
@@ -251,7 +301,7 @@
 	 * @param bool enable true to check if can be enabled, false to check disabled
 	 */
 	$.aftUtils.canSetStatus = function( enable ) {
-		var permissionLevel = $.aftUtils.article().permissionLevel || $.aftUtils.article().defaultPermissionLevel;
+		var permissionLevel = $.aftUtils.article().permissionLevel || $.aftUtils.getDefaultPermissionLevel( $.aftUtils.article() );
 		var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 
 		// check AFT status for readers

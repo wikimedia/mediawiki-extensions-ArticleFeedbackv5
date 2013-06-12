@@ -94,6 +94,10 @@ class ArticleFeedbackv5Utils {
 
 	/**
 	 * Returns whether feedback is enabled for this page.
+	 *
+	 * This is equivalent to $.aftUtils.verify
+	 * When changing conditions, make sure to change them there too.
+	 *
 	 * See jquery.articleFeedbackv5.utils.js for full implementation;
 	 * this is more of a safety check.
 	 *
@@ -175,6 +179,8 @@ class ArticleFeedbackv5Utils {
 	/**
 	 * Check if an article is whitelisted (by means of a whitelist category)
 	 *
+	 * This is equivalent to $.aftUtils.whitelist
+	 *
 	 * @param int $pageId
 	 * @return bool
 	 */
@@ -188,6 +194,8 @@ class ArticleFeedbackv5Utils {
 
 	/**
 	 * Check if an article is blacklisted (by means of a blacklist category)
+	 *
+	 * This is equivalent to $.aftUtils.blacklist
 	 *
 	 * @param int $pageId
 	 * @return bool
