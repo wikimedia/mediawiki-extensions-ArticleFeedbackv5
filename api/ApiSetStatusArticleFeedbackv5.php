@@ -75,6 +75,9 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 				$expiry
 			);
 
+			// purge page's cache, to accurately expose updated changes to JS
+			$pageObj->doPurge();
+
 			if ( !$success ) {
 				$this->dieUsage(
 					$this->msg( 'articlefeedbackv5-error-unknown' )->escaped(),
