@@ -599,7 +599,7 @@ includes one of these issues:
 	'articlefeedbackv5-toolbox-view' => 'View feedback',
 	'articlefeedbackv5-toolbox-add' => 'Add your feedback',
 	'articlefeedbackv5-leave-warning' => 'Data you have entered may not be saved.',
-	'articlefeedbackv5-toolbox-enable' => 'Request feedback',
+	'articlefeedbackv5-toolbox-enable' => 'Enable feedback',
 
 	/* Special:Preferences */
 	'articlefeedbackv5-disable-preference' => "Don't show the Article feedback widget on pages",
