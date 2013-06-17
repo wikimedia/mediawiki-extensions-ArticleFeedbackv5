@@ -552,7 +552,7 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function contributionsData( &$data, $pager, $offset, $limit, $descending ) {
-		if ( $pager->namespace !== '' ) {
+		if ( $pager->namespace !== '' || $pager->tagFilter !== false ) {
 			return true;
 		}
 
