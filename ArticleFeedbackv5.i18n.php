@@ -2163,12 +2163,12 @@ Parameters:
 * $3 – URL directly to feedback location
 * $4 – The help link',
 	'articlefeedbackv5-disable-flyover-title' => 'Title of the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
-	'articlefeedbackv5-disable-flyover-help-message' => 'Help text for the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool.
+	'articlefeedbackv5-disable-flyover-help-message' => "Help text for the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool.
 
 Parameters:
 * $1 - Reference to preferences: {{msg-mw|mypreferences}}
-* $2 - Reference to the preference\'s appearance panel: {{msg-mw|prefs-rendering}}
-* $3 - The label of the checkbox: {{msg-mw|articlefeedbackv5-disable-preference}}',
+* $2 - Reference to the preference's appearance panel: {{msg-mw|prefs-rendering}}
+* $3 - The label of the checkbox: {{msg-mw|articlefeedbackv5-disable-preference}}",
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'The text of the big glossy button used to send the user to their preferences in the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
 	'abusefilter-edit-action-aftv5resolve' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in the feedback being auto-resolved',
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'The note to add to the activity log when auto-resolving a new feedback post (<code>$1</code> is the name of the filter)',
@@ -7443,9 +7443,6 @@ PD: Si tienes alguna pregunta acerca de cómo utilizar las funciones de supresi�
 
 $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-title' => '¿Eliminar esta herramienta?',
-	'articlefeedbackv5-disable-flyover-help' => 'Para eliminar $1, vaya a $2 y compruebe $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Comentario de artículo',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Mis preferencias > Aspecto',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ir a Mis preferencias',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Comentarios del artículo) Marcado automático como abusivo',
 	'abusefilter-edit-action-aftv5hide' => '(Comentarios del artículo) Ocultar automáticamente',
@@ -8214,8 +8211,6 @@ $messages['fa'] = array(
 	'articlefeedbackv5-activity-more' => 'نمایش فعالیت بیشتر',
 	'articlefeedbackv5-talk-view-feedback' => 'نمایش بازخورد خواننده‌ها',
 	'articlefeedbackv5-disable-flyover-title' => 'حذف کردن این ابزار؟',
-	'articlefeedbackv5-disable-flyover-help' => 'برای حذف  $1، به  $2 رفته و $3 را بررسی کنید',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'ارزیابی مقاله‌ها',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'رفتن به ترجیحات من',
 );
 
@@ -8714,7 +8709,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-contribs-status-action-feature' => 'Promu',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Résolu',
 	'articlefeedbackv5-contribs-status-action-noaction' => 'Aucune action nécessaire',
-	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Masqué',
+	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Inapproprié',
 	'articlefeedbackv5-contribs-status-action-archive' => 'Archivé',
 	'articlefeedbackv5-contribs-status-action-hide' => 'Masquer',
 	'articlefeedbackv5-contribs-status-action-request' => 'Masquage demandé',
@@ -9232,9 +9227,6 @@ P.S. : Si vous avez des questions sur le masquage des pages de commentaires, veu
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Supprimer cet outil&nbsp;?',
-	'articlefeedbackv5-disable-flyover-help' => 'Pour supprimer $1, allez sur $2 et cochez $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Évaluation de l’article',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Préférences > Apparence',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Aller à mes préférences',
 	'abusefilter-edit-action-aftv5resolve' => '(Commentaire sur l’article) Auto-résolution',
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Résolu automatiquement. Règle : $1',
@@ -10172,9 +10164,6 @@ consultade as preguntas máis frecuentes dos supervisores:
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Quere eliminar a ferramenta?',
-	'articlefeedbackv5-disable-flyover-help' => 'Para eliminar a $1, vaia ata $2 e marque a caixa "$3"',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'ferramenta de avaliación de artigos',
-	'articlefeedbackv5-disable-flyover-help-location' => 'As miñas preferencias > Aparencia',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ir ás preferencias',
 	'abusefilter-edit-action-aftv5resolve' => '(Avaliación de artigos) Resolto automaticamente',
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Resolto automaticamente. Regra: $1',
@@ -10945,9 +10934,6 @@ $3
 
 $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-title' => 'להסיר את הכלי הזה?',
-	'articlefeedbackv5-disable-flyover-help' => 'כדי להסיר את $1, יש לעבור אל $2 ולסמן את האפשרות $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'כלי המשוב על ערכים',
-	'articlefeedbackv5-disable-flyover-help-location' => 'העדפות => מראה',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'גשו להעדפות שלי',
 	'abusefilter-edit-action-aftv5flagabuse' => '(משוב על ערכים) לסמן אוטומטית כהטרדה',
 	'abusefilter-edit-action-aftv5hide' => '(משוב על ערכים) הסתרה אוטומטית',
@@ -13834,7 +13820,7 @@ $messages['ja'] = array(
 	'articlefeedbackv5-help-form-linkurl-editors' => '//en.wikipedia.org/wiki/Wikipedia:Article_feedback',
 	'articlefeedbackv5-help-form-linkurl-monitors' => '//en.wikipedia.org/wiki/Wikipedia:Article_feedback',
 	'articlefeedbackv5-help-form-linkurl-oversighters' => '//en.wikipedia.org/wiki/Wikipedia:Article_feedback',
-	'articlefeedbackv5-help-transparency-terms-anon' => '[//En.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 役に立つフィードバック] を投稿してください。投稿、あなた [//wikimediafoundation.org/wiki/Feedback_privacy_statement 条件] の下での透明性とあなたの IP アドレスによって識別することに同意します。', # Fuzzy
+	'articlefeedbackv5-help-transparency-terms-anon' => '[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 役に立つフィードバック]を投稿してください。投稿することで、IP アドレスで識別されること、およびこれらの[//wikimediafoundation.org/wiki/Feedback_privacy_statement/ja 規約]のもとでの透明性に同意したと見なされます。',
 	'articlefeedbackv5-sitesub-linktext' => 'このページを改善',
 	'articlefeedbackv5-titlebar-linktext' => 'このページの改善に協力 >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'このページを改善',
@@ -13896,9 +13882,6 @@ $messages['ja'] = array(
 	'articlefeedbackv5-talk-view-feedback' => '読者の提案を表示',
 	'articlefeedbackv5-watchlist-view-feedback' => '自分がウォッチしているページへのフィードバック',
 	'articlefeedbackv5-disable-flyover-title' => 'このツールを除去しますか?',
-	'articlefeedbackv5-disable-flyover-help' => '$1を除去するには、$2で$3にチェックを入れてください',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => '記事へのフィードバック',
-	'articlefeedbackv5-disable-flyover-help-location' => '個人設定 > 表示',
 	'articlefeedbackv5-disable-flyover-prefbutton' => '個人設定に移動',
 	'abusefilter-edit-action-aftv5resolve' => '(記事へのフィードバック) 自動解決',
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => '自動で解決しました。規則: $1',
@@ -14442,8 +14425,6 @@ $messages['ka'] = array(
 	'articlefeedbackv5-activity-more' => 'დამატებითი მოქმედებების ჩვენება',
 	'articlefeedbackv5-talk-view-feedback' => 'მკითხველის გამოხმურების ხილვა',
 	'articlefeedbackv5-disable-flyover-title' => 'წავშალო ეს ხელსაწყო?',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'სტატიის გამოხმაურება',
-	'articlefeedbackv5-disable-flyover-help-location' => 'ჩემი კონფიგურაცია > იერსახე',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'ჩემ კონფიგურაციაზე გადასვლა',
 	'abusefilter-edit-action-aftv5hide' => '(სტატიის გამოხმაურება) ავტომატური დამალვა',
 );
@@ -15874,9 +15855,6 @@ $messages['lb'] = array(
 	'articlefeedbackv5-talk-view-feedback' => 'Virschléi vun de Lieser weisen >>',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Feedback vun de Säiten op menger Iwwerwaachungslëscht',
 	'articlefeedbackv5-disable-flyover-title' => 'Dës Fonctioun ewechhuelen?',
-	'articlefeedbackv5-disable-flyover-help' => 'Fir $1 ewechzehuelen gitt op $2 a kuckt $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Artikel Feedback',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Meng Astellungen > Ausgesinn',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Op meng Astellunge goen',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Artikel-Feedback) Automatesch als Mëssbrauch markéiert',
 	'abusefilter-edit-action-aftv5hide' => '(Artikel Feedback) Automatesch verstoppen',
@@ -16190,8 +16168,6 @@ $messages['lt'] = array(
 	'articlefeedbackv5-activity-more' => 'Rodyti daugiau veiklos',
 	'articlefeedbackv5-talk-view-feedback' => 'Peržiūrėti skaitytojo atsiliepimus',
 	'articlefeedbackv5-disable-flyover-title' => 'Pašalinti šį įrankį?',
-	'articlefeedbackv5-disable-flyover-help' => 'Kad pašalintumėte $1, eikite į $2 ir patikrinkite $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Straipsnio Atsiliepimai',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Eiti į mano nuostatas',
 );
 
@@ -16944,9 +16920,6 @@ $3
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Да ја отстранам алаткава?',
-	'articlefeedbackv5-disable-flyover-help' => 'За да ја отстраните алатката „$1“, појдете на $2 и штиклирајте го $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Оценување на статии',
-	'articlefeedbackv5-disable-flyover-help-location' => '„мои нагодувања > Изглед“',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Одете на вашите нагодувања',
 	'abusefilter-edit-action-aftv5resolve' => '(Мислење за статија) Авторешавање',
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Автоматски решено. Правило: $1',
@@ -19125,9 +19098,6 @@ PS Als u vragen hebt over het gebruik van de functie toezicht op de terugkoppeli
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Dit hulpprogramma verwijderen?',
-	'articlefeedbackv5-disable-flyover-help' => 'Ga naar $2 en vink $3 aan om $1 te verwijderen',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Paginabeoordeling',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Mijn voorkeuren > Uiterlijk',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ga naar mijn voorkeuren',
 	'abusefilter-edit-action-aftv5resolve' => '(Paginaterugkoppeling) Automatisch oplossen',
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Automatisch opgelost. Regel: $1',
@@ -20429,9 +20399,6 @@ $messages['pl'] = array(
 	'articlefeedbackv5-talk-view-feedback' => 'Pokaż opinię czytelnika',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Opinie z moich obserwowanych stron',
 	'articlefeedbackv5-disable-flyover-title' => 'Usunąć to narzędzie?',
-	'articlefeedbackv5-disable-flyover-help' => 'Aby usunąć $1, przejdź do $2 i użyj $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Opinie o artykule',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Preferencje > Wygląd',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Przejdź do preferencji',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Opinia o artykule) Autoflaga nadużycia',
 	'abusefilter-edit-action-aftv5hide' => '(Opinia o artykule) Autoukrywanie',
@@ -21820,9 +21787,6 @@ P.S.: Se você tem alguma dúvida sobre o uso da supervisão na página de avali
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Remover esta ferramenta?',
-	'articlefeedbackv5-disable-flyover-help' => 'Para remover $1, vá até $2 e selecione $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Avaliação do Artigo',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Minhas preferências > Aparência',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Vá para minhas preferências',
 	'abusefilter-edit-action-aftv5resolve' => '(Avaliação do Artigo) Auto-resolvida',
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Resolvida automaticamente. Regra: $1',
@@ -22160,9 +22124,6 @@ $messages['ro'] = array(
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 acțiune asupra acestui comentariu|$1 acțiuni asupra acestui comentariu|$1 de acțiuni asupra acestui comentariu}}',
 	'articlefeedbackv5-activity-more' => 'Afișează mai mult din activitate',
 	'articlefeedbackv5-disable-flyover-title' => 'Eliminați acest instrument?',
-	'articlefeedbackv5-disable-flyover-help' => 'Pentru a elimina unealta $1, mergeți la $2 și bifați $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Evaluare articol',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Preferințe > Aspect',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Mergi la preferințele mele',
 );
 
@@ -22355,8 +22316,18 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-form-tooltip-oversight' => 'Offensive, date private ...',
 	'articlefeedbackv5-form-tooltip-unoversight' => "Annulle 'a sorveglianze",
 	'articlefeedbackv5-form-tooltip-request' => 'Offensive, date private ...',
+	'articlefeedbackv5-form-tooltip-decline' => "Scitte 'a richieste de sorveglianze",
+	'articlefeedbackv5-form-tooltip-discuss-talk' => "'Ngazzamende d'a segnalazione sus 'a pàgene de le 'ngazzaminde",
+	'articlefeedbackv5-form-tooltip-discuss-user' => "'Ngazzamende d'a segnalazione cu l'utende ca l'ave confermate",
 	'articlefeedbackv5-discuss-talk-section-title' => "Segnalazione d'u lettore: $1",
 	'articlefeedbackv5-discuss-user-section-title' => '\'A segnalaziona toje sus a "$2"',
+	'articlefeedbackv5-discuss-talk-section-content' => "$1 ha mannate [[$2|stu commende]] 'u $3 ([[$5|'ndruche tutte le segnalaziune]]).
+
+$6
+
+Quacche penziere?
+
+~~~~",
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 onne acchiate quidde ca ste cercavane}}',
 	'articlefeedbackv5-form1-header-not-found' => "{{GENDER:$1|$2 non g'onne acchiate quidde ca ste cercavane}}",
 	'articlefeedbackv5-form1-header-left-comment' => "{{GENDER:$1|$2 mannate 'nu commende.}}",
@@ -22583,7 +22554,7 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-section-linktext' => 'feedback',
 	'articlefeedbackv5-toolbox-view' => "Vide 'a segnalazione",
 	'articlefeedbackv5-toolbox-add' => "Aggiunge 'a segnalaziona toje",
-	'articlefeedbackv5-toolbox-enable' => 'Segnalazione richieste', # Fuzzy
+	'articlefeedbackv5-toolbox-enable' => "Abbilite 'a segnalazione",
 	'right-aft-reader' => "Manne 'a segnalazione & signe cumme (in)utile",
 	'right-aft-member' => "Manne 'a segnalazione & signe cumme (in)utile",
 	'right-aft-editor' => "Detaglie & resolve 'a segnalazione",
@@ -22591,6 +22562,7 @@ $messages['roa-tara'] = array(
 	'right-aft-administrator' => "Vide AFT sus 'a le pàggene prutette",
 	'right-aft-oversighter' => 'Segnalazione de sorveglianze',
 	'log-name-articlefeedbackv5' => 'Archivije de le Attività de le Segnalaziune de Vôsce',
+	'logentry-articlefeedbackv5-create' => "$1 {{GENDER:$2|confermate}} [[$3|segnalazione mannate #$4]] 'u [[$5]]",
 	'logentry-articlefeedbackv5-inappropriate' => "$1 {{GENDER:$2|scunne}} [[$3|'u messàgge de segnalazione #$4]] sus a [[$5]]",
 	'logentry-articlefeedbackv5-uninappropriate' => "$1 {{GENDER:$2|fà vedè}} [[$3|'u messàgge de segnalazione #$4]] sus a [[$5]]",
 	'articlefeedbackv5-activity-pane-header' => 'Archivije de le attività',
@@ -22614,9 +22586,6 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-watchlist-view-feedback' => 'Segnalazione da le pàggene condrollate mije',
 	'articlefeedbackv5-email-request-oversight-subject' => "Sorveglianze richieste pa pàgene de segnalazione d'a vôsce",
 	'articlefeedbackv5-disable-flyover-title' => 'Vuè ccu live stu strumende?',
-	'articlefeedbackv5-disable-flyover-help' => 'Pe luà $1, veje a $2 e verifiche $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => "Segnalazione sus 'a vôsce",
-	'articlefeedbackv5-disable-flyover-help-location' => 'Preferenze mije > Aspette',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Vèje a le preferenze mije',
 	'abusefilter-edit-action-aftv5resolve' => "(Segnalazione d'a Vôsce) Auto resolte",
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Resolte automaticamende: Regole: $1',
@@ -23272,11 +23241,7 @@ $messages['si'] = array(
 	'articlefeedbackv5-special-sort-helpful-asc' => 'උදව්වක් නැති',
 	'articlefeedbackv5-special-sort-age-desc' => 'අලුත්ම',
 	'articlefeedbackv5-special-sort-age-asc' => 'පැරණිම',
-	'articlefeedbackv5-special-sort-label-before' => 'මෙසේ පෙළගස්වන්න:',
-	'articlefeedbackv5-special-filter-label-before' => 'පෙන්වමින්:',
-	'articlefeedbackv5-special-filter-select-more' => 'තවත් පෙරහන්',
-	'articlefeedbackv5-special-showing' => 'තැපැල් කිරීම් $1 ක් පෙන්වමින් ($2 කින්)', # Fuzzy
-	'articlefeedbackv5-special-central-showing' => 'සියලුම පිටුවලින් {{PLURAL:$1|ප්‍රතිපෝෂණ හසුන්}} $1', # Fuzzy
+	'articlefeedbackv5-special-filter-select-more' => 'තවත් පෙරහන්', # Fuzzy
 	'articlefeedbackv5-special-watchlist-showing' => '[[$1|$2]] විසින් නරඹන ලද පිටු සඳහා ප්‍රතිපෝෂණය',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|මගේ නැරඹුම් පිටුවලින් ප්‍රතිපෝෂණ]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|සියලුම පිටුවලින් ප්‍රතිපෝෂණ නරඹන්න]]',
@@ -23301,10 +23266,10 @@ $messages['si'] = array(
 	'articlefeedbackv5-form-resolve' => 'තීරණය කරන ලද්දක් ලෙස සලකුණු කරන්න', # Fuzzy
 	'articlefeedbackv5-form-unresolve' => 'තීරණය කරන ලද්දක් ලෙස සලකුණු නොකරන්න', # Fuzzy
 	'articlefeedbackv5-form-inappropriate' => 'මෙම හසුන සඟවන්න',
-	'articlefeedbackv5-form-unhide' => 'අහෝසිය',
+	'articlefeedbackv5-form-unhide' => 'අහෝසිකරන්න',
 	'articlefeedbackv5-form-helpful' => 'උපකාරශීලි ලෙස සලකුණු කරන්න ($1)',
 	'articlefeedbackv5-form-oversight' => 'පාලනය අයදින්න', # Fuzzy
-	'articlefeedbackv5-form-unoversight' => 'අහෝසිය',
+	'articlefeedbackv5-form-unoversight' => 'අහෝසිකරන්න',
 	'articlefeedbackv5-form-decline' => 'පාලනය ප්‍රතික්ෂේප කරන්න',
 	'articlefeedbackv5-form-declined' => 'පාලනය ප්‍රතික්ෂේප කරන ලදී',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$1}} ට ඔවුන් සොයන දේ හමුවුණා', # Fuzzy
@@ -23324,7 +23289,7 @@ $messages['si'] = array(
 	'articlefeedbackv5-invalid-feedback-id' => 'වලංගු නොවන ප්‍රතිචාර හැඳුනුම',
 	'articlefeedbackv5-invalid-feedback-flag' => 'වලංගු නොවන ප්‍රතිචාර ධජය',
 	'articlefeedbackv5-invalid-feedback-state' => 'වලංගු නොවන ප්‍රතිපෝෂණ ධජ තත්ත්වය',
-	'articlefeedbackv5-go-to-article' => 'පිටුව නරඹන්න',
+	'articlefeedbackv5-go-to-article' => 'පිටුව බලන්න',
 	'articlefeedbackv5-discussion-page' => 'සාකච්ඡාව',
 	'articlefeedbackv5-whats-this' => 'උදවු',
 	'articlefeedbackv5-invalid-page-id' => 'වලංගු නොවන පිටු හැඳුනුම',
@@ -23333,8 +23298,6 @@ $messages['si'] = array(
 	'articlefeedbackv5watchlist' => 'ලිපි ප්‍රතිචාරය - මගේ නැරඹුම් පිටු',
 	'articlefeedbackv5-desc' => 'ලිපි ප්‍රතිචාරය',
 	'articlefeedbackv5-comment-more' => 'තවත්',
-	'articlefeedbackv5-header-message-link-text' => 'තවත් දැනගන්න',
-	'articlefeedbackv5-beta-label' => 'බීටා',
 	'articlefeedbackv5-page-disabled' => 'මෙම පිටුව සඳහා ලිපි ප්‍රතිචාර පිටුව සක්‍රිය කර නොමැත.',
 	'articlefeedbackv5-viewactivity' => 'ක්‍රියාකාරකම නරඹන්න', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => 'අන්තර්ගතය නරඹන්න',
@@ -23344,8 +23307,7 @@ $messages['si'] = array(
 	'articlefeedbackv5-special-goback' => 'ප්‍රතිචාර පිටුව නරඹන්න',
 	'articlefeedbackv5-special-central-goback' => 'වෙනත් පිටුවලින් තවත් ප්‍රතිචාර බලන්න',
 	'articlefeedbackv5-permalink-info-title' => 'මෙම තැපෑල පිලිබඳ තොරතුරු',
-	'articlefeedbackv5-permalink-info-subtitle' => '(#$1)',
-	'articlefeedbackv5-permalink-info-revision-link' => 'පැරණි අනුවාදය බලන්න',
+	'articlefeedbackv5-permalink-info-revision-link' => 'පැරණි අනුවාදය බලන්න', # Fuzzy
 	'articlefeedbackv5-permalink-info-posted' => '$1 මත $2 හීදී තැපැල් කරන ලදී',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'දිග',
 	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|වචන|වචන}} $1 ක්',
@@ -23481,9 +23443,6 @@ $messages['si'] = array(
 	'articlefeedbackv5-watchlist-view-feedback' => 'මගේ නැරඹුම් පිටු වලින් ප්‍රතිපෝෂණය',
 	'articlefeedbackv5-email-request-oversight-subject' => 'ලිපි ප්‍රතිපෝෂණ පිටුව සඳහා පාලනය අයදින ලදී',
 	'articlefeedbackv5-disable-flyover-title' => 'මෙම මෙවලම ඉවත් කරන්නද?',
-	'articlefeedbackv5-disable-flyover-help' => '$1 ඉවත් කිරීමට, $2 වෙත ගොස් $3 පරික්ෂා කරන්න',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'ලිපි ප්‍රතිචාරය',
-	'articlefeedbackv5-disable-flyover-help-location' => 'මගේ අභිරුචි > මුහුණුවර',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'මගේ අභිරුචි වෙත යන්න',
 	'abusefilter-edit-action-aftv5hide' => '(ලිපි ප්‍රතිචාරය) ස්වයං-සැඟවීම',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'ස්වයංක්‍රීයව සැඟවෙන. නීතිය: $1',
@@ -23676,9 +23635,6 @@ strani s povratnimi informacijami, preverite naslednja vprašanja z odgovori:
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Odstranim orodje?',
-	'articlefeedbackv5-disable-flyover-help' => 'Za odstranitev $1 pojdite na $2 in odkljukajte $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Povratna informacija članka',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Nastavitve > Videz',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Pojdi na moje nastavitve',
 );
 
@@ -24670,9 +24626,6 @@ svar om censur:
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Ta bort detta verktyg?',
-	'articlefeedbackv5-disable-flyover-help' => 'För att ta bort $1, gå till $2 och kontrollera $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Artikelbedömning',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Mina inställningar > Utseende',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Gå till mina inställningar',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Artikel Feedback) Auto-flagga som missbruk',
 	'abusefilter-edit-action-aftv5hide' => '(Artikel Feedback) Dölj automatiskt',
@@ -26034,9 +25987,6 @@ NOT: Madde geri bildirimi sayfasının gözetim özelliklerini kullanmada sorula
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Bu araç kaldırılsın mı?',
-	'articlefeedbackv5-disable-flyover-help' => '$1\'ni kaldırmak için, $2\'e gidin ve "$3" onay kutusunu işaretleyin',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Madde Geri Bildirimi',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Tercihlerim > Görünüm',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Tercihlerime git',
 	'abusefilter-edit-action-aftv5resolve' => '(Madde Geri Bildirim) Otomatik çözme',
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Otomatik olarak çözüldü. Kural: $1',
@@ -26851,9 +26801,6 @@ $6
 	'articlefeedbackv5-activity-more' => 'Показати додаткові дії',
 	'articlefeedbackv5-talk-view-feedback' => 'Переглянути відгуки читачів',
 	'articlefeedbackv5-disable-flyover-title' => 'Вилучити цей інструмент?',
-	'articlefeedbackv5-disable-flyover-help' => 'Щоб вилучити $1, перейдіть до $2 і відмітьте $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Відгук про статтю',
-	'articlefeedbackv5-disable-flyover-help-location' => 'вкладки «Зовнішній вигляд» у своїх налаштуваннях',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Перейти до налаштувань',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Відгук до статті) Автоматично позначити як зловживання',
 	'abusefilter-edit-action-aftv5hide' => '(Відгук до статті) Автоматично приховати',
@@ -27875,9 +27822,6 @@ $3
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => '移除此工具吗？',
-	'articlefeedbackv5-disable-flyover-help' => '若要移除$1，请转至$2，并勾选$3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => '条目反馈',
-	'articlefeedbackv5-disable-flyover-help-location' => '参数设置 > 外观',
 	'articlefeedbackv5-disable-flyover-prefbutton' => '转至参数设置',
 	'abusefilter-edit-action-aftv5flagabuse' => '（条目反馈）自动标记为滥用',
 	'abusefilter-edit-action-aftv5hide' => '（条目反馈）自动隐藏',
@@ -28474,9 +28418,6 @@ $3
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => '移除此工具？',
-	'articlefeedbackv5-disable-flyover-help' => '若要移除$1，請轉至$2，並勾選$3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => '條目回饋',
-	'articlefeedbackv5-disable-flyover-help-location' => '我的偏好設定 > 外觀',
 	'articlefeedbackv5-disable-flyover-prefbutton' => '轉至參數設置',
 	'abusefilter-edit-action-aftv5resolve' => '（條目評級）自動解決',
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => '自動解決。規則：$1',
