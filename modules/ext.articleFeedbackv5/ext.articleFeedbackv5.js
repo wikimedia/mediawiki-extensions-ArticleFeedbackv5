@@ -41,11 +41,21 @@ if ( mw.config.get( 'wgArticleFeedbackv5ArticlePageLink' ) &&
 				url += ( url.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( { ref: 'article', filter: 'featured' } );
 
 				// Add the link to the feedback-page next to the title
-				$( '<a id="articlefeedbackv5-article-feedback-link"></a>' )
+				var $link = $( '<a id="articlefeedbackv5-article-feedback-link"></a>' )
 					.msg( 'articlefeedbackv5-article-view-feedback', count )
 					.attr( 'href', url )
-					.click( { trackingId: 'article_page_view_feedback-button_click' }, $.aftTrack.trackEvent )
-					.insertAfter( '#siteSub' );
+					.click( { trackingId: 'article_page_view_feedback-button_click' }, $.aftTrack.trackEvent );
+
+				/*
+				 * Add the link next to #siteSub. Append to #siteSub node if
+				 * it's visible, so we inherit it's style. Otherwise, add as
+				 * new node, right after #siteSub
+				 */
+				if ( $( '#siteSub' ).is( ':visible' ) ) {
+					$link.appendTo( '#siteSub' );
+				} else {
+					$link.insertAfter( '#siteSub' );
+				}
 
 				// Track an impression
 				$.aftTrack.init();
