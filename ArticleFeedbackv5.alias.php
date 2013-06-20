@@ -37,6 +37,11 @@ $specialPageAliases['eo'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'Atentaro_de_prisondo_de_artikoloj_v5' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'ArticleFeedbackv5' => array( 'بازخورد_مقاله_و۵' ),
+);
+
 /** Galician (galego) */
 $specialPageAliases['gl'] = array(
 	'ArticleFeedbackv5' => array( 'Avaliación_de_artigos_v5' ),
