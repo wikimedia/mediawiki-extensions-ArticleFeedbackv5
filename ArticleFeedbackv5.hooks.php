@@ -218,7 +218,6 @@ class ArticleFeedbackv5Hooks {
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
 		global
-			$wgArticleFeedbackv5Credits,
 			$wgArticleFeedbackv5Categories,
 			$wgArticleFeedbackv5BlacklistCategories,
 			$wgArticleFeedbackv5Debug,
@@ -238,7 +237,6 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5LotteryOdds,
 			$wgArticleFeedbackv5MaxCommentLength;
 
-		$vars['wgArticleFeedbackv5Credits'] = $wgArticleFeedbackv5Credits;
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
 		$vars['wgArticleFeedbackv5Debug'] = $wgArticleFeedbackv5Debug;

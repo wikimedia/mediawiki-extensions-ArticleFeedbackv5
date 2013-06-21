@@ -365,7 +365,7 @@ $wgArticleFeedbackv5SpecialPageSurveyUrl = 'https://www.surveymonkey.com/s/aft5-
 
 /* Setup */
 
-$wgArticleFeedbackv5Credits = array(
+$wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Article Feedback',
 	'author' => array(
@@ -388,7 +388,6 @@ $wgArticleFeedbackv5Credits = array(
 	'descriptionmsg' => 'articlefeedbackv5-desc',
 	'url' => '//www.mediawiki.org/wiki/Extension:ArticleFeedbackv5'
 );
-$wgExtensionCredits['other'][] = $wgArticleFeedbackv5Credits;
 
 // Autoloading
 $wgAutoloadClasses['ApiArticleFeedbackv5']              = __DIR__ . '/api/ApiArticleFeedbackv5.php';
