@@ -22804,6 +22804,7 @@ Quacche penziere?
 	'articlefeedbackv5-watchlist-view-feedback' => 'Segnalazione da le pàggene condrollate mije',
 	'articlefeedbackv5-email-request-oversight-subject' => "Sorveglianze richieste pa pàgene de segnalazione d'a vôsce",
 	'articlefeedbackv5-disable-flyover-title' => 'Vuè ccu live stu strumende?',
+	'articlefeedbackv5-disable-flyover-help-message' => 'Pe luà \'a Segnalazione d\'a vôsce, vèje sus a "$1" > "$2" e verifiche "$3"',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Vèje a le preferenze mije',
 	'abusefilter-edit-action-aftv5resolve' => "(Segnalazione d'a Vôsce) Auto resolte",
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Resolte automaticamende: Regole: $1',
