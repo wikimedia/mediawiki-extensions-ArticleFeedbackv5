@@ -15709,6 +15709,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-error-validation' => 'Feeler beim Validéieren.',
 	'articlefeedbackv5-error-unknown' => 'Onbekannte Feeler.',
 	'articlefeedbackv5-error-submit' => 'Feeler beim Späicheren.',
+	'articlefeedbackv5-error-duplicate' => 'De geschéckte Feedback ass eng Kopie vum leschte Feedback; hutt Dir vläicht de Feedback iertemlecherweis zweemol geschéckt?',
 	'articlefeedbackv5-error-nofeedback' => 'Gitt w.e.g. Äre Feedback an.',
 	'articlefeedbackv5-error-flagging' => 'Feeler beim Markéiere vum Feedback',
 	'articlefeedbackv5-protection-level' => 'Artikel Feedback',
