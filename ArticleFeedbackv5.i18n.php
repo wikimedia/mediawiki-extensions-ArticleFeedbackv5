@@ -1195,7 +1195,8 @@ Parameters
 	'articlefeedbackv5-invalid-feedback-state' => "Message to be displayed when, though the api, the flag parameter can't be executed (e.g. oversighting an already oversighted article).",
 	'articlefeedbackv5-feedback-reloaded-after-error' => 'Message to be displayed when the feedback is reloaded. Flagging feedback may fail when someone else has also just flagged the feedback. In that case, the feedback entry will be reloaded and display this message.
 * $1 is the error message',
-	'articlefeedbackv5-go-to-article' => 'Link text for a link back to the article page from the feedback page.',
+	'articlefeedbackv5-go-to-article' => 'Link text for a link back to the article page from the feedback page.
+{{Identical|View page}}',
 	'articlefeedbackv5-discussion-page' => '{{Identical|Talk}}',
 	'articlefeedbackv5-whats-this' => '{{Identical|Help}}',
 	'articlefeedbackv5-settings-menu-title' => 'Link text for the link to open AFTv5 settings.
