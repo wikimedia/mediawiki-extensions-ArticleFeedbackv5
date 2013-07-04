@@ -23250,7 +23250,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Вид обратной связи от всех страниц]]',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|$1 правка|$1 правки|$1 правок}} с момента публикации',
 	'articleFeedbackv5-details-link' => 'Подробности',
-	'articlefeedbackv5-revision-link' => '(см. старую редакцию)', # Fuzzy
+	'articlefeedbackv5-revision-link' => '(см. старую страницу)',
 	'articlefeedbackv5-special-more' => 'Показать больше отзывов',
 	'articlefeedbackv5-special-refresh' => 'Обновить список',
 	'articlefeedbackv5-special-pagetitle' => 'Отзыв к странице «$1»',
@@ -23258,17 +23258,17 @@ $messages['ru'] = array(
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'Отзывы о статьях из моего списка наблюдения',
 	'articlefeedbackv5-special-central-pagetitle' => 'Центральная страница обратной связи',
 	'articlefeedbackv5-loading-tag' => 'Загрузка…',
-	'articlefeedbackv5-status-hide' => 'Этот отзыв был скрыт участником $1 $2  в $3', # Fuzzy
-	'articlefeedbackv5-status-unhide' => 'Этот отзыв был раскрыт участником $1 $2  в $3', # Fuzzy
+	'articlefeedbackv5-status-hide' => 'Этот отзыв был скрыт участником $1 $2 в $3',
+	'articlefeedbackv5-status-unhide' => 'Этот отзыв был раскрыт участником $1 $2 в $3',
 	'articlefeedbackv5-status-request' => 'Запрошено скрытие этого отзыва участником $1 $2 в $3',
 	'articlefeedbackv5-status-unrequest' => 'Запрошена отмена скрытия этого отзыва участником $1 $2 в $3',
 	'articlefeedbackv5-status-decline' => 'Запрос скрытия этого отзыва отклонен участником $1 $2 в $3',
-	'articlefeedbackv5-status-autohide' => 'Этот отзыв был автоматически скрыт участником $1 $2  в $3', # Fuzzy
+	'articlefeedbackv5-status-autohide' => 'Этот отзыв был автоматически помечен как некорректный участником $1 $2 в $3',
 	'articlefeedbackv5-status-oversight' => 'Этот отзыв был скрыт участником $1 $2  в $3',
 	'articlefeedbackv5-status-unoversight' => 'Этот отзыв был показан участником $1 $2  в $3',
 	'articlefeedbackv5-status-autoflag' => 'Этот отзыв был автоматически помечен участником $1 $2  в $3',
-	'articlefeedbackv5-status-feature' => 'Этот отзыв был избран участником $1 $2  в $3', # Fuzzy
-	'articlefeedbackv5-status-unfeature' => 'Этот отзыв был лишён статуса избранного участником $1 $2  в $3', # Fuzzy
+	'articlefeedbackv5-status-feature' => 'Этот отзыв был помечен как полезный участником $1 $2 в $3',
+	'articlefeedbackv5-status-unfeature' => 'С этого отзыва была снята отметка полезного участником $1 $2  в $3',
 	'articlefeedbackv5-status-resolve' => 'Этот отзыв был помечен как урегулированный участником $1 $2  в $3',
 	'articlefeedbackv5-status-unresolve' => 'С этого отзыва была снята пометка урегулированного участником $1 $2  в $3',
 	'articlefeedbackv5-new-marker' => 'Новый',
@@ -23319,11 +23319,13 @@ $messages['ru'] = array(
 	'articlefeedbackv5-invalid-log-update' => 'Запись журнала не может быть обновлена',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Недопустимая отметка отзыва',
 	'articlefeedbackv5-invalid-feedback-state' => 'Недопустимое состояние отметки отзыва',
-	'articlefeedbackv5-go-to-article' => 'Просмотр статьи', # Fuzzy
+	'articlefeedbackv5-go-to-article' => 'Просмотр страницы',
 	'articlefeedbackv5-discussion-page' => 'Обсуждение',
 	'articlefeedbackv5-whats-this' => 'Справка',
+	'articlefeedbackv5-settings-menu-title' => 'Настройки',
 	'articlefeedbackv5-invalid-page-id' => 'Неправильный идентификатор страницы',
-	'articlefeedbackv5-found-percent' => '$1 пользователей нашел (нашли), что они искали.', # Fuzzy
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 читателей нашли то, что искали}}',
+	'articlefeedbackv5-found-percent-title' => 'Основано на $1 {{PLURAL:$1|отзыве|отзывах}} (исключая некорректные комментарии)',
 	'articlefeedbackv5' => 'Обратная связь для статей — центральная страница',
 	'articlefeedbackv5watchlist' => 'Отзывы о статьях — наблюдаемые мной страницы',
 	'articlefeedbackv5-desc' => 'Отзывы о статьях',
@@ -23331,7 +23333,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-comment-empty' => 'Текст не был введен',
 	'articlefeedbackv5-unsupported-message' => 'Извините, но ваш браузер не поддерживается в рамках этого прототипа. Чтобы увидеть эту страницу, воспользуйтесь, пожалуйста, другим браузером.',
 	'articlefeedbackv5-page-disabled' => 'Страница обратной связи недоступна для этой статьи.',
-	'articlefeedbackv5-no-feedback' => 'Нет отзывов пользователей для фильтра, который вы выбрали. Чтобы изменить фильтр, попробуйте один из вариантов выше (например: «Наиболее соответствующий» или «Все комментарии»).', # Fuzzy
+	'articlefeedbackv5-no-feedback' => 'Для выбранного фильтра нет отзывов пользователей. Чтобы изменить фильтр, попробуйте один из вариантов выше (например: «Избранные» или «Непроверенные»).',
 	'articlefeedbackv5-viewactivity' => 'Просмотр активности',
 	'articlefeedbackv5-mask-view-contents' => 'Просмотр содержания',
 	'articlefeedbackv5-mask-text-autohide' => 'Этот отзыв №$1 был скрыт {{GENDER:$2|участником|участницей}} $2 $3 назад.', # Fuzzy
@@ -23552,9 +23554,6 @@ P.S.: Если у Вас возникли вопросы по использов
 
 $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-title' => 'Удалить этот инструмент?',
-	'articlefeedbackv5-disable-flyover-help' => 'Чтобы убрать отображение $1, перейдите на $2 и отметьте опцию «$3»',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'отзывов о статьях',
-	'articlefeedbackv5-disable-flyover-help-location' => 'вкладку «Внешний вид» своих персональных настроек',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Перейти к моим персональным настройкам',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Отзыв о статье) Автоматически пометить как злоупотребление',
 	'abusefilter-edit-action-aftv5hide' => '(Отзыв о статье) Автоматическое скрытие',
@@ -27811,6 +27810,7 @@ $messages['yo'] = array(
  * @author Shirayuki
  * @author Shizhao
  * @author Simon Shek
+ * @author StephDC
  * @author Xiaomingyan
  * @author Yfdyh000
  * @author Zhangjintao
@@ -28060,6 +28060,7 @@ $6
 	'articlefeedbackv5-abuse-saved' => '标记为滥用',
 	'articlefeedbackv5-abuse-saved-tooltip' => '删除您设置的标记',
 	'articlefeedbackv5-error-loading-feedback' => '载入评论时发生错误',
+	'articlefeedbackv5-insufficient-permissions' => '没有足够的权限级别',
 	'articlefeedbackv5-invalid-feedback-id' => '无效反馈ID',
 	'articlefeedbackv5-invalid-log-id' => '无效的日志ID',
 	'articlefeedbackv5-invalid-log-update' => '无法更新日志条目',
@@ -28293,6 +28294,7 @@ $6
 	'articlefeedbackv5-toolbox-view' => '查看反馈',
 	'articlefeedbackv5-toolbox-add' => '添加您的反馈',
 	'articlefeedbackv5-leave-warning' => '您已输入的数据可能不会保存。',
+	'articlefeedbackv5-toolbox-enable' => '启用反馈',
 	'articlefeedbackv5-disable-preference' => '不在页面上显示条目评分工具',
 	'right-aft-reader' => '发反馈和标记有无帮助',
 	'right-aft-member' => '发反馈和标记有无帮助',
