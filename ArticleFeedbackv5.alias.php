@@ -87,6 +87,12 @@ $specialPageAliases['nb'] = array(
 	'ArticleFeedbackv5' => array( 'Artikkeltilbakemelding_v5' ),
 );
 
+/** Low Saxon (Netherlands) (Nedersaksies) */
+$specialPageAliases['nds-nl'] = array(
+	'ArticleFeedbackv5' => array( 'Troegkoppelingv5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'Troegkoppelingv5_volglieste' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'ArticleFeedbackv5' => array( 'Terugkoppelingv5' ),
