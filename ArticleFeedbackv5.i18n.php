@@ -1121,7 +1121,7 @@ See also:
 	'articlefeedbackv5-form-tooltip-uninappropriate' => 'Link title-attribute for un-marking the post as inappropriate (in the toolbox)',
 	'articlefeedbackv5-form-tooltip-hide' => 'Link title-attribute for hiding the post (in the toolbox)',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Link title-attribute for un-hiding the post (in the toolbox)',
-	'articlefeedbackv5-form-tooltip-archive' => 'Link title-attribute for archiving the post (in the toolbox)',
+	'articlefeedbackv5-form-tooltip-archive' => 'Link title-attribute for archiving the post (in the toolbox). Long is a quality of time.',
 	'articlefeedbackv5-form-tooltip-unarchive' => 'Link title-attribute for un-archiving the post (in the toolbox)',
 	'articlefeedbackv5-form-tooltip-flag' => 'Link title-attribute allowing the user to flag feedback as abuse',
 	'articlefeedbackv5-form-tooltip-oversight' => 'Link title-attribute for oversighting (=deleting) feedback',
@@ -12135,6 +12135,17 @@ $messages['ia'] = array(
 	'articlefeedbackv5-protection-permission-editor' => 'Activar solmente pro usatores autoconfirmate',
 	'articlefeedbackv5-protection-permission-administrator' => 'Activar solmente pro administratores',
 	'articlefeedbackv5-protection-permission-noone' => 'Disactivar pro tote le usatores',
+	'articlefeedbackv5-disabled' => 'Le functionalitate de evalutation ha essite disactivate',
+	'articlefeedbackv5-disabled-admin-admin' => 'Le functionalitate de evalutation ha essite disactivate pro lectores e pro redactores. Illes non pote inserer nove commentarios in iste pagina.',
+	'articlefeedbackv5-disabled-admin-editor' => 'Le functionalitate de evalutation ha essite disactivate pro lectores. Illes non pote inserer nove commentarios in iste pagina.',
+	'articlefeedbackv5-disabled-editor-admin' => 'Le functionalitate de evalutation ha essite disactivate per un administrator. Lectores e redactores non pote inserer nove commentarios in iste pagina.',
+	'articlefeedbackv5-disabled-editor-editor' => 'Le functionalitate de evalutation ha essite disactivate. Lectores non pote inserer nove commentarios in iste pagina.',
+	'articlefeedbackv5-disabled-reader' => 'Le functionalitate de evalutation ha essite disactivate. Lectores non pote inserer nove commentarios in iste pagina.',
+	'articlefeedbackv5-disabled-admin-button-text' => 'Cambiar protection',
+	'articlefeedbackv5-disabled-editor-button-text' => 'Activar evalutation',
+	'articlefeedbackv5-settings-status-enable' => 'Activar evalutation in iste pagina',
+	'articlefeedbackv5-settings-status-disable' => 'Disactivar evalutation in iste pagina',
+	'articlefeedbackv5-enabled-form-message' => 'Le functionalitate de evalutation ha justo essite activate. Commentarios de lectores essera visibile [$1 in le pagina de evalutation].',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Evalutation: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Stato: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Utile',
@@ -12195,7 +12206,10 @@ $messages['ia'] = array(
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Inutile',
 	'articlefeedbackv5-special-sort-age-desc' => 'Plus nove',
 	'articlefeedbackv5-special-sort-age-asc' => 'Minus nove',
-	'articlefeedbackv5-special-filter-select-more' => 'Plus filtros', # Fuzzy
+	'articlefeedbackv5-special-sort-label' => 'Ordinar per:',
+	'articlefeedbackv5-special-filter-select-more' => 'Plus',
+	'articlefeedbackv5-special-count-total' => '{{PLURAL:$2|1 entrata|$1 entratas}}',
+	'articlefeedbackv5-special-count-total-title' => '$1 {{PLURAL:$1|entrata|entratas}} con commentos, $2 {{PLURAL:$2|entrata|entratas}} sin',
 	'articlefeedbackv5-special-watchlist-showing' => 'Commentario pro paginas observate per [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Commentario ab mi paginas observate]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Vider commentario ab tote le paginas]]',
@@ -12286,6 +12300,26 @@ $messages['ia'] = array(
 	'articlefeedbackv5-form-tooltip-request' => 'Offensive, datos private ...',
 	'articlefeedbackv5-form-tooltip-unrequest' => 'Disfacer requesta de supervision',
 	'articlefeedbackv5-form-tooltip-decline' => 'Declinar requesta de supervision',
+	'articlefeedbackv5-form-tooltip-discuss-talk' => 'Discuter le evalutation in le pagina de discussion de iste pagina',
+	'articlefeedbackv5-form-tooltip-discuss-user' => 'Discuter le evalutation con le usator qui lo submitteva',
+	'articlefeedbackv5-discuss-talk-section-title' => 'Commentario de lector: $1',
+	'articlefeedbackv5-discuss-user-section-title' => 'Tu commentario sur "$2"',
+	'articlefeedbackv5-discuss-talk-section-content' => '$1 insereva [[$2|iste commento]] sur $3 ([[$5|vider tote le evalutation]]).
+
+$6
+
+Que pensa tu?
+
+~~~~',
+	'articlefeedbackv5-discuss-user-section-content' => 'Gratias pro inserer un evalutation de "$7".
+
+Tu insereva iste commento sur $3 ([[$5|vider tote le evalutation]]).
+
+$6
+
+Nos apprecia tu contributiones a iste pagina!
+
+~~~~',
 	'articlefeedbackv5-form1-header-found' => '$2 ha trovate lo que {{GENDER:$1|ille|illa}} cercava',
 	'articlefeedbackv5-form1-header-not-found' => '$2 non ha trovate lo que {{GENDER:$1|ille|illa}} cercava',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 publicava un commento.}}',
@@ -12300,6 +12334,7 @@ $messages['ia'] = array(
 	'articlefeedbackv5-abuse-saved' => 'Marcate como abuso',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Remover le marca que tu ha adjungite',
 	'articlefeedbackv5-error-loading-feedback' => 'Error durante le cargamento del evalutation.',
+	'articlefeedbackv5-insufficient-permissions' => 'Nivello de permission insufficiente',
 	'articlefeedbackv5-invalid-feedback-id' => 'ID de evalutation invalide',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Signalation de evalutation invalide',
 	'articlefeedbackv5-invalid-feedback-state' => 'Le stato del marca de commentario es invalide',
@@ -23094,7 +23129,9 @@ Quacche penziere?
 	'articlefeedbackv5-section-linktext' => 'feedback',
 	'articlefeedbackv5-toolbox-view' => "Vide 'a segnalazione",
 	'articlefeedbackv5-toolbox-add' => "Aggiunge 'a segnalaziona toje",
+	'articlefeedbackv5-leave-warning' => "'U date ca è mise non g'ha state reggistrate.",
 	'articlefeedbackv5-toolbox-enable' => "Abbilite 'a segnalazione",
+	'articlefeedbackv5-disable-preference' => "Nò fà vedè 'u ggegge d'a segnalazione d'a vôsce sus a le pàggene",
 	'right-aft-reader' => "Manne 'a segnalazione & signe cumme (in)utile",
 	'right-aft-member' => "Manne 'a segnalazione & signe cumme (in)utile",
 	'right-aft-editor' => "Detaglie & resolve 'a segnalazione",
