@@ -1854,12 +1854,14 @@
 				var article = $.aftUtils.article();
 
 				/*
-				 * Don't show the link if page is enabled/disabled via the categories.
+				 * Don't show the link if AFTv5 protection is disabled.
+				 * Also don't show it if page is enabled/disabled via the categories.
 				 * To change that, one would have to edit the page and remove that
 				 * category, not change it via the link for page protection that we'll
 				 * be displaying here.
 				 */
 				if (
+					!mw.config.get( 'wgArticleFeedbackv5EnableProtection', 1 ) ||
 					$.aftUtils.whitelist( article ) ||
 					$.aftUtils.blacklist( article )
 				) {

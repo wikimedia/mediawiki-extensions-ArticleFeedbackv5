@@ -226,6 +226,7 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5Tracking,
 			$wgArticleFeedbackv5LinkBuckets,
 			$wgArticleFeedbackv5Namespaces,
+			$wgArticleFeedbackv5EnableProtection,
 			$wgArticleFeedbackv5LearnToEdit,
 			$wgArticleFeedbackv5SurveyUrls,
 			$wgArticleFeedbackv5ThrottleThresholdPostsPerHour,
@@ -243,6 +244,7 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5Tracking'] = $wgArticleFeedbackv5Tracking;
 		$vars['wgArticleFeedbackv5LinkBuckets'] = $wgArticleFeedbackv5LinkBuckets;
 		$vars['wgArticleFeedbackv5Namespaces'] = $wgArticleFeedbackv5Namespaces;
+		$vars['wgArticleFeedbackv5EnableProtection'] = $wgArticleFeedbackv5EnableProtection;
 		$vars['wgArticleFeedbackv5LearnToEdit'] = $wgArticleFeedbackv5LearnToEdit;
 		$vars['wgArticleFeedbackv5SurveyUrls'] = $wgArticleFeedbackv5SurveyUrls;
 		$vars['wgArticleFeedbackv5ThrottleThresholdPostsPerHour'] = $wgArticleFeedbackv5ThrottleThresholdPostsPerHour;
@@ -615,9 +617,17 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function onProtectionForm( Page $article, &$output ) {
-		global $wgLang, $wgUser, $wgArticleFeedbackv5Namespaces;
+		global $wgLang,
+				$wgUser,
+				$wgArticleFeedbackv5Namespaces,
+				$wgArticleFeedbackv5EnableProtection;
 
 		if ( !$article->exists() ) {
+			return true;
+		}
+
+		// check if opt-in/-out is enabled
+		if ( !$wgArticleFeedbackv5EnableProtection ) {
 			return true;
 		}
 
@@ -771,9 +781,16 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function onProtectionSave( Page $article, &$errorMsg ) {
-		global $wgRequest, $wgArticleFeedbackv5Namespaces;
+		global $wgRequest,
+				$wgArticleFeedbackv5Namespaces,
+				$wgArticleFeedbackv5EnableProtection;
 
 		if ( !$article->exists() ) {
+			return true;
+		}
+
+		// check if opt-in/-out is enabled
+		if ( !$wgArticleFeedbackv5EnableProtection ) {
 			return true;
 		}
 

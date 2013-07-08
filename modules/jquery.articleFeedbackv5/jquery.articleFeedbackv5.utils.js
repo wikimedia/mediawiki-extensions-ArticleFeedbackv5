@@ -78,7 +78,7 @@
 
 		// for special page, it doesn't matter if the article has AFT applied
 		if ( location != 'special' ) {
-			if ( article.permissionLevel !== false ) {
+			if ( mw.config.get( 'wgArticleFeedbackv5EnableProtection', 1 ) && article.permissionLevel !== false ) {
 				// check if a, to this user sufficient, permission level is defined
 				enable &= $.aftUtils.permissions( article, article.permissionLevel );
 
