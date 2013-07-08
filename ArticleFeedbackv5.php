@@ -165,6 +165,14 @@ $wgArticleFeedbackv5Categories = array( 'Article_Feedback_5' );
 // Which categories the pages must not belong to have the rating widget added (with _ in text)
 $wgArticleFeedbackv5BlacklistCategories = array( 'Article_Feedback_Blacklist' );
 
+// Allow/disallow the ability to enable or disable AFTv5 on a per-article basis.
+// This feature will add an AFTv5 entry in page protection settings (for admins)
+// or a simple enable/disable link for editors.
+// Disabling this will remove said links & entry in ?action=protect & ignore
+// existing opt-in/-outs, leaving only lottery & whitelist/blacklist categories
+// to define if an article should get AFTv5.
+$wgArticleFeedbackv5EnableProtection = true;
+
 // Only load the module / enable the tool in these namespaces
 // Default to $wgContentNamespaces (defaults to array( NS_MAIN ) ).
 $wgArticleFeedbackv5Namespaces = $wgContentNamespaces;

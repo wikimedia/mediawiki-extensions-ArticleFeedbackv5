@@ -117,6 +117,7 @@ jQuery( function( $ ) {
 	 * be displaying here.
 	 */
 	if (
+		mw.config.get( 'wgArticleFeedbackv5EnableProtection', 1 ) &&
 		!$.aftUtils.whitelist( article ) &&
 		!$.aftUtils.blacklist( article ) &&
 		$.aftUtils.canSetStatus( true )

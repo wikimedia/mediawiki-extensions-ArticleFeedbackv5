@@ -106,6 +106,7 @@ class ArticleFeedbackv5Utils {
 	 */
 	public static function isFeedbackEnabled( $pageId ) {
 		global $wgArticleFeedbackv5Namespaces,
+				$wgArticleFeedbackv5EnableProtection,
 				$wgUser;
 
 		$title = Title::newFromID( $pageId );
@@ -124,7 +125,7 @@ class ArticleFeedbackv5Utils {
 		$enable &= !$wgUser->isBlocked();
 
 		// check if a, to this user sufficient, permission level is defined
-		if ( isset( $restriction->pr_level ) ) {
+		if ( $wgArticleFeedbackv5EnableProtection && isset( $restriction->pr_level ) ) {
 			$enable &= $wgUser->isAllowed( $restriction->pr_level );
 
 		} else {
