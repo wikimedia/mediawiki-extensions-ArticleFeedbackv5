@@ -452,6 +452,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @return string
 	 */
 	protected function buildStatusBox() {
+		// check if opt-in/-out is enabled
+		global $wgArticleFeedbackv5EnableProtection;
+		if ( !$wgArticleFeedbackv5EnableProtection ) {
+			return '';
+		}
+
 		if ( !$this->pageId ) {
 			return '';
 		}

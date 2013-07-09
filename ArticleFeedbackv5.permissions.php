@@ -109,6 +109,12 @@ class ArticleFeedbackv5Permissions {
 	 * @return ResultWrapper|false false if not restricted or details of restriction set
 	 */
 	public static function getProtectionRestriction( $articleId ) {
+		// check if opt-in/-out is enabled
+		global $wgArticleFeedbackv5EnableProtection;
+		if ( !$wgArticleFeedbackv5EnableProtection ) {
+			return false;
+		}
+
 		if ( isset( self::$current[$articleId] ) ) {
 			return self::$current[$articleId];
 		}
@@ -172,9 +178,15 @@ class ArticleFeedbackv5Permissions {
 	 * @return bool
 	 */
 	public static function setRestriction( $articleId, $permission, $expiry ) {
+		// check if opt-in/-out is enabled
+		global $wgArticleFeedbackv5EnableProtection;
+		if ( !$wgArticleFeedbackv5EnableProtection ) {
+			return false;
+		}
+
 		// make sure an articleId was passed
 		if ( !$articleId ) {
-			return;
+			return false;
 		}
 
 		// check if valid permission
