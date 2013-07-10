@@ -692,7 +692,6 @@ includes one of these issues:
 
 	/* Oversight email */
 	'articlefeedbackv5-email-request-oversight-subject' => 'Oversight requested for article feedback page',
-
 	'articlefeedbackv5-email-request-oversight-body' => 'Hello, oversighters!
 
 Oversight was requested by $1 for feedback posted on this page:
@@ -703,6 +702,7 @@ Please review this feedback post, then approve or decline this oversight
 request:
 
 $3
+$5
 
 Thank you,
 
@@ -714,6 +714,9 @@ P.S.: If you have any questions about using the oversight features of the
 article feedback page, please check this oversighter FAQ:
 
 $4',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'This comment was added to the oversight request:
+
+$1',
 
 	/* Front-end: feedback link close button */
 	'articlefeedbackv5-disable-flyover-title' => 'Remove this tool?',
@@ -2162,7 +2165,10 @@ Parameters:
 * $1 – User name of requestor
 * $2 – Page name of item with feedback requiring oversight
 * $3 – URL directly to feedback location
-* $4 – The help link',
+* $4 – The help link
+* $5 - Additional comment added to clarify the oversight request: {{mw-msg|articlefeedbackv5-email-request-oversight-body-notes}}, or nothing at all if no moderation notes',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'Text block used in {{mw-msg|articlefeedbackv5-email-request-oversight-body}}, to display additional moderation comments (if present) in the oversight email. Parameters:
+* $1 - Additional comment added to clarify the oversight request',
 	'articlefeedbackv5-disable-flyover-title' => 'Title of the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
 	'articlefeedbackv5-disable-flyover-help-message' => "Help text for the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool.
 
