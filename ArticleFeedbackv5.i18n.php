@@ -704,6 +704,10 @@ request:
 
 $3
 
+This comment was added to the oversight request:
+
+$5
+
 Thank you,
 
 
@@ -2162,7 +2166,8 @@ Parameters:
 * $1 – User name of requestor
 * $2 – Page name of item with feedback requiring oversight
 * $3 – URL directly to feedback location
-* $4 – The help link',
+* $4 – The help link
+* $5 - Additional comment added to clarify the oversight request',
 	'articlefeedbackv5-disable-flyover-title' => 'Title of the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
 	'articlefeedbackv5-disable-flyover-help-message' => "Help text for the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool.
 
