@@ -139,7 +139,7 @@ $wgArticleFeedbackv5OversightEmails = null;
 $wgArticleFeedbackv5OversightEmailName = 'Oversighters';
 
 // Help link for oversight email
-$wgArticleFeedbackv5OversightEmailHelp = 'http://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help/Feedback_page_Oversighters';
+$wgArticleFeedbackv5OversightEmailHelp = 'https://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help/Feedback_page_Oversighters';
 
 // Help link for auto flag/hide etc
 $wgArticleFeedbackv5AutoHelp = 'http://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help';
