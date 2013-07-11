@@ -40,6 +40,7 @@ $specialPageAliases['eo'] = array(
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'ArticleFeedbackv5' => array( 'بازخورد_مقاله_و۵' ),
+	'ArticleFeedbackv5Watchlist' => array( 'بازخورد_مقاله_و۵_فهرست_پیگیری‌ها' ),
 );
 
 /** Galician (galego) */
