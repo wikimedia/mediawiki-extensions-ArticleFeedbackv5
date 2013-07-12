@@ -7101,6 +7101,7 @@ $4', # Fuzzy
  * @author Fortega
  * @author Imre
  * @author Locos epraix
+ * @author Luis Felipe Schenone
  * @author Mashandy
  * @author Miguel2706
  * @author Od1n
@@ -7159,6 +7160,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-protection-permission-administrator' => 'Habilitar solamente para administradores',
 	'articlefeedbackv5-protection-permission-noone' => 'Desactivar todos los usuarios',
 	'articlefeedbackv5-disabled' => 'Se ha deshabilitado la retroalimentación',
+	'articlefeedbackv5-disabled-admin-button-text' => 'Cambiar protección',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Comentarios: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '..Estado: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Útil',
@@ -7282,7 +7284,7 @@ $messages['es'] = array(
 	'articlefeedbackv5-form-unarchive' => 'Deshacer',
 	'articlefeedbackv5-form-helpful' => 'Marcar como útil ($1)',
 	'articlefeedbackv5-form-flag' => 'Marcar como inadecuado',
-	'articlefeedbackv5-form-oversight' => 'Solicitud de supresión', # Fuzzy
+	'articlefeedbackv5-form-oversight' => 'Supresión',
 	'articlefeedbackv5-form-unoversight' => 'Deshacer',
 	'articlefeedbackv5-form-request' => 'Solicitar supervisión',
 	'articlefeedbackv5-form-unrequest' => 'Anular solicitud de supresión',
@@ -7335,6 +7337,7 @@ Apreciamos sus contribuciones a esta página!',
 	'articlefeedbackv5-abuse-saved' => 'Marcado como abusivo',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Eliminar la etiqueta que pusiste',
 	'articlefeedbackv5-error-loading-feedback' => 'Error cargando las opiniones',
+	'articlefeedbackv5-insufficient-permissions' => 'Permisos insuficientes',
 	'articlefeedbackv5-invalid-feedback-id' => 'ID de opinión no válido',
 	'articlefeedbackv5-invalid-log-id' => 'ID invalido',
 	'articlefeedbackv5-invalid-log-update' => 'No se pudo actualizar la entrada del registro',
@@ -7344,7 +7347,8 @@ Apreciamos sus contribuciones a esta página!',
 	'articlefeedbackv5-discussion-page' => 'Discusión',
 	'articlefeedbackv5-whats-this' => 'Ayuda',
 	'articlefeedbackv5-invalid-page-id' => 'ID de página no válido',
-	'articlefeedbackv5-found-percent' => '$1encontraron lo que buscaban', # Fuzzy
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 encontraron lo que buscaban}}',
+	'articlefeedbackv5-found-percent-title' => 'Basado en $1 {{PLURAL:$1|post|posts}} (excluyendo comentarios inapropiados)',
 	'articlefeedbackv5' => 'Comentarios de artículos - Página central',
 	'articlefeedbackv5watchlist' => 'Comentarios de artículos - Páginas que vigilo',
 	'articlefeedbackv5-desc' => 'Evaluación del artículo',
@@ -7352,10 +7356,11 @@ Apreciamos sus contribuciones a esta página!',
 	'articlefeedbackv5-comment-empty' => 'No se registró texto alguno',
 	'articlefeedbackv5-unsupported-message' => 'Lo sentimos, tu navegador no es compatible con este prototipo. Para ver esta página, utiliza un navegador diferente.',
 	'articlefeedbackv5-page-disabled' => 'La página de comentarios del artículo no ha sido habilitada para este artículo.',
-	'articlefeedbackv5-no-feedback' => "No hay ningún comentario para el filtro que has seleccionado. Para cambiar el filtro, prueba una de las opciones anteriores (p. ej.: 'Los más importantes' o 'Todos los comentarios').", # Fuzzy
+	'articlefeedbackv5-no-feedback' => 'No hay ningún comentario para el filtro seleccionado. Para cambiar el filtro, prueba con una de las opciones anteriores (ej: "Destacados" o "No revisados").',
 	'articlefeedbackv5-invalid-feedback' => 'La página no existe',
 	'articlefeedbackv5-viewactivity' => 'Ver la actividad',
 	'articlefeedbackv5-mask-view-contents' => 'Ver el contenido',
+	'articlefeedbackv5-mask-text-inappropriate' => 'Este post #$1 {{GENDER:$2|fue marcado como inapropiado por $2}} $3.',
 	'articlefeedbackv5-mask-text-autohide' => 'Este mensaje (post) #$1 {{GENDER:$2|fue ocultado automáticamente por $2}} hace $3.', # Fuzzy
 	'articlefeedbackv5-mask-text-hide' => 'Esta entrada (post) #$1 {{GENDER:$2|fue ocultada por $2}} hace $3.', # Fuzzy
 	'articlefeedbackv5-mask-text-oversight' => 'Esta entrada (post) #$1 {{GENDER:$2|fue suprimida por $2}} hace $3.', # Fuzzy
@@ -7393,6 +7398,7 @@ Apreciamos sus contribuciones a esta página!',
 	'articlefeedbackv5-permalink-status-undo-helpful' => '{{GENDER:$1|<strong>Eliminada la marca de útil</strong> por $1}} hace $2', # Fuzzy
 	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Marcado como inútil</strong> por $1}} hace $2', # Fuzzy
 	'articlefeedbackv5-permalink-status-undo-unhelpful' => '{{GENDER:$1|<strong>Eliminada la marca de inútil</strong> por $1}} hace $2', # Fuzzy
+	'articlefeedbackv5-permalink-last-action' => 'Última acción',
 	'articlefeedbackv5-permalink-activity-more' => 'Ver más acciones...',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Ver menos acciones...',
 	'articlefeedbackv5-noteflyover-feature-caption' => 'Marcada como útil',
@@ -7400,17 +7406,17 @@ Apreciamos sus contribuciones a esta página!',
 	'articlefeedbackv5-noteflyover-feature-placeholder' => '¿Por qué marcaste esta entrada como útil?',
 	'articlefeedbackv5-noteflyover-feature-submit' => 'Añadir una nota',
 	'articlefeedbackv5-noteflyover-feature-help' => 'Más información',
-	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Quitar marca de destacada a esta entrada (post)', # Fuzzy
+	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Desmarcada como útil',
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Añadir una nota',
-	'articlefeedbackv5-noteflyover-unfeature-placeholder' => '¿Por qué está quitando la marca de destacada a esta entrada (post)?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Quitar marca de destacada a esta entrada (post)', # Fuzzy
+	'articlefeedbackv5-noteflyover-unfeature-placeholder' => '¿Por quitaste la marca de útil a esta entrada (post)?',
+	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Agregar nota',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'Más información',
-	'articlefeedbackv5-noteflyover-resolve-caption' => 'Marcar como resuelto', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-caption' => 'Marcado como resuelto',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Añadir una nota',
-	'articlefeedbackv5-noteflyover-resolve-placeholder' => '¿Por qué está marcando esta entrada (post) como resuelta?', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-placeholder' => '¿Por qué marcaste esta entrada (post) como resuelta?',
 	'articlefeedbackv5-noteflyover-resolve-submit' => 'Añadir una nota',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Más información',
-	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Desmarcar como resuelto', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Desmarcado como resuelto',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Añadir una nota',
 	'articlefeedbackv5-noteflyover-unresolve-placeholder' => '¿Por qué está quitando la marca de resuelta a esta entrada (post)?', # Fuzzy
 	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Desmarcar como resuelto', # Fuzzy
@@ -22872,6 +22878,7 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-cta5-confirmation-call' => "'Ndruche le suggereminde da l'otre lettore cumme a te. Ne puè aiutà a scacchia 'a megghie idea?",
 	'articlefeedbackv5-cta5-button-text' => 'Vide totte le commènde',
 	'articlefeedbackv5-cta6-confirmation-title' => "E' abbesogne de 'na maàne pe cangià {{SITENAME}}?",
+	'articlefeedbackv5-cta6-confirmation-call' => "Pe discutere de le cangiaminde sus a {{SITENAME}}, vèje sus a 'u Bar, addò cangiature nuève e cu esperienze se donne consiglie utile.",
 	'articlefeedbackv5-cta6-button-text' => "Visite 'a case d'u te",
 	'articlefeedbackv5-overlay-close' => 'Achiude',
 	'articlefeedbackv5-error' => "'N'errore s'a verificate. Pe piacere pruève arrete.",
@@ -23030,9 +23037,13 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-form-tooltip-feature' => "Quiste pò dà 'na màne a migliorà 'a pàgene",
 	'articlefeedbackv5-form-tooltip-unfeature' => "Live 'u flag usabbile",
 	'articlefeedbackv5-form-tooltip-unresolve' => "Live 'u flag resolte",
+	'articlefeedbackv5-form-tooltip-noaction' => 'No chiare, irrilevande, lode, duplicate ...',
 	'articlefeedbackv5-form-tooltip-unnoaction' => "Live 'u flag non azionabbile",
+	'articlefeedbackv5-form-tooltip-noaction-own' => 'No chiare, irrilevande, lode, duplicate ...',
 	'articlefeedbackv5-form-tooltip-unnoaction-own' => "Live 'u flag non azionabbile",
+	'articlefeedbackv5-form-tooltip-inappropriate' => 'Studecarie, rummate, offendive, date private ...',
 	'articlefeedbackv5-form-tooltip-uninappropriate' => "Live 'u flag inappropriate",
+	'articlefeedbackv5-form-tooltip-hide' => 'Studecarie, rummate, offendive, date private ...',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Fà vedè',
 	'articlefeedbackv5-form-tooltip-oversight' => 'Offensive, date private ...',
 	'articlefeedbackv5-form-tooltip-unoversight' => "Annulle 'a sorveglianze",
@@ -23067,6 +23078,8 @@ Quacche penziere?
 	'articlefeedbackv5-invalid-log-id' => "Invalide ID de l'archivije",
 	'articlefeedbackv5-invalid-log-update' => "'A vôsce de l'archivije non ge pò essere aggiornate",
 	'articlefeedbackv5-invalid-feedback-flag' => "L'assignazione d'u feedback non g'ète valide.",
+	'articlefeedbackv5-invalid-feedback-state' => "State d'u segne d'a segnalazione invalide",
+	'articlefeedbackv5-feedback-reloaded-after-error' => "Ha assute 'n'errore ($1). 'A segnalazione ha state recarecate pe fà vedè 'u state de mò.",
 	'articlefeedbackv5-go-to-article' => "'Ndruche 'a vôsce",
 	'articlefeedbackv5-discussion-page' => "'Ngazzamende",
 	'articlefeedbackv5-whats-this' => 'Ajute',
