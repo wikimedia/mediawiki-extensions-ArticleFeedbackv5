@@ -468,10 +468,11 @@ class ArticleFeedbackv5Model extends DataModel {
 	/**
 	 * Insert entry into the DB (& cache)
 	 *
+	 * @param bool[optional] $validate True if data should be validated
 	 * @return DataModel
 	 * @throw MWException
 	 */
-	public function insert() {
+	public function insert( $validate = true ) {
 		// if no creation timestamp is entered yet, fill it out
 		if ( $this->aft_timestamp === null ) {
 			$this->aft_timestamp = wfTimestampNow();
@@ -483,23 +484,24 @@ class ArticleFeedbackv5Model extends DataModel {
 		$this->aft_archive_date = $this->getArchiveDate();
 		$this->updateCountFound();
 
-		return parent::insert();
+		return parent::insert( $validate );
 	}
 
 	/**
 	 * Update entry in the DB (& cache)
 	 *
+	 * @param bool[optional] $validate True if data should be validated
 	 * @return DataModel
 	 * @throw MWException
 	 */
-	public function update() {
+	public function update( $validate = true ) {
 		$this->aft_net_helpful = $this->aft_helpful - $this->aft_unhelpful;
 		$this->aft_relevance_score = $this->getRelevanceScore();
 		$this->aft_has_comment = (bool) $this->aft_comment;
 		$this->aft_archive_date = $this->getArchiveDate();
 		$this->updateCountFound();
 
-		return parent::update();
+		return parent::update( $validate );
 	}
 
 	/**

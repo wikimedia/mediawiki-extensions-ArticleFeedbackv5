@@ -375,17 +375,20 @@ abstract class DataModel {
 	/**
 	 * Insert entry.
 	 *
+	 * @param bool[optional] $validate True if data should be validated
 	 * @return DataModel
 	 * @throw MWException
 	 */
-	public function insert() {
+	public function insert( $validate = true ) {
 		// claim unique id for this entry
 		if ( $this->{static::getIdColumn()} === null ) {
 			$this->{static::getIdColumn()} = $this->generateId();
 		}
 
 		// validate properties before saving them
-		$this->validate();
+		if ( $validate ) {
+			$this->validate();
+		}
 
 		// insert into DB
 		static::getBackend()->insert( $this );
@@ -402,16 +405,19 @@ abstract class DataModel {
 	/**
 	 * Update entry.
 	 *
+	 * @param bool[optional] $validate True if data should be validated
 	 * @return DataModel
 	 * @throw MWException
 	 */
-	public function update() {
+	public function update( $validate = true ) {
 		if ( $this->{static::getIdColumn()} === null ) {
 			throw new MWException( "Entry has no unique id yet - did you intend to insert rather than update?" );
 		}
 
 		// validate properties before saving them
-		$this->validate();
+		if ( $validate ) {
+			$this->validate();
+		}
 
 		// before updating in db, let's re-evaluate all list conditions & sorts
 		$old = static::getBackend()->evaluateConditions( $this );

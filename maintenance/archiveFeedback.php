@@ -92,7 +92,7 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 					} else {
 						// if we could not flag, unmark as archive_schedule
 						$feedback->aft_archive_date = null;
-						$feedback->update();
+						$feedback->update( false );
 					}
 
 					$break = false;
