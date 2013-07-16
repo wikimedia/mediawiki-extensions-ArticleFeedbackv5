@@ -4554,6 +4554,7 @@ $messages['ce'] = array(
 
 /** Czech (česky)
  * @author Chmee2
+ * @author Frettie
  * @author Jezevec
  * @author Jkjk
  * @author Kuvaly
@@ -4646,7 +4647,7 @@ $messages['cs'] = array(
 	'articlefeedbackv5-special-sort-age-desc' => 'Nejnovější',
 	'articlefeedbackv5-special-sort-age-asc' => 'Nejstarší',
 	'articlefeedbackv5-special-sort-label' => 'Seřadit podle:',
-	'articlefeedbackv5-special-filter-select-more' => 'Další filtry', # Fuzzy
+	'articlefeedbackv5-special-filter-select-more' => 'Další filtry',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|$1 editace|$1 editace|$1 editací}} od odeslání',
 	'articleFeedbackv5-details-link' => 'Podrobnosti',
 	'articlefeedbackv5-revision-link' => '(vizte starou stránku)',
@@ -4667,9 +4668,12 @@ $messages['cs'] = array(
 	'articlefeedbackv5-form-note-added' => 'Poznámka přidána',
 	'articlefeedbackv5-form-note' => 'Přidat poznámku',
 	'articlefeedbackv5-form-unfeature' => 'Vrátit',
-	'articlefeedbackv5-form-resolve' => 'Označ jako vyřešené', # Fuzzy
-	'articlefeedbackv5-form-unresolve' => 'Odznač jako vyřešené', # Fuzzy
+	'articlefeedbackv5-form-resolve' => 'Označ jako vyřešené',
+	'articlefeedbackv5-form-unresolve' => 'Zpět',
+	'articlefeedbackv5-form-noaction' => 'Není nutná žádná akce',
 	'articlefeedbackv5-form-unnoaction' => 'Vrátit',
+	'articlefeedbackv5-form-noaction-own' => 'Zrušit můj post',
+	'articlefeedbackv5-form-unnoaction-own' => 'Zobrazit můj post',
 	'articlefeedbackv5-form-inappropriate' => 'Skrýt tento záznam',
 	'articlefeedbackv5-form-uninappropriate' => 'Vrátit',
 	'articlefeedbackv5-form-hide' => 'Skrýt tento post',
@@ -4677,7 +4681,13 @@ $messages['cs'] = array(
 	'articlefeedbackv5-form-archive' => 'Archivovat',
 	'articlefeedbackv5-form-unarchive' => 'Zpět',
 	'articlefeedbackv5-form-helpful' => 'Označit jako užitečné ($1)',
+	'articlefeedbackv5-form-flag' => 'Označeno jako zneužití',
+	'articlefeedbackv5-form-oversight' => 'Dozor',
 	'articlefeedbackv5-form-unoversight' => 'Vrátit',
+	'articlefeedbackv5-form-request' => 'Žádost o dozor',
+	'articlefeedbackv5-form-discuss-user' => 'Obraťte se na autora příspěvku',
+	'articlefeedbackv5-form-tooltip-noaction' => 'Nejasné, irelevantní, chvála, duplicitní...',
+	'articlefeedbackv5-form-tooltip-noaction-own' => 'Nejasné, irelevantní, chvála, duplicitní...',
 	'articlefeedbackv5-form1-header-found' => '$2 {{GENDER:$1|našel, co hledal|našla, co hledala}}.',
 	'articlefeedbackv5-form1-header-not-found' => '$2 {{GENDER:$1|nenašel, co hledal|nenašla, co hledala}}.',
 	'articlefeedbackv5-form1-header-left-comment' => '$2 {{GENDER:$1|přidal|přidala}} komentář.',
@@ -9179,6 +9189,7 @@ $4', # Fuzzy
  * @author Urhixidur
  * @author Verdy p
  * @author Wikifan
+ * @author Wyz
  */
 $messages['fr'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Merci !',
@@ -9347,23 +9358,23 @@ $messages['fr'] = array(
 	'articlefeedbackv5-form-note-added' => 'Note ajoutée',
 	'articlefeedbackv5-form-note' => 'Ajouter une note',
 	'articlefeedbackv5-form-feature' => 'Utile',
-	'articlefeedbackv5-form-unfeature' => 'Défaire',
+	'articlefeedbackv5-form-unfeature' => 'Annuler',
 	'articlefeedbackv5-form-resolve' => 'Résolu',
-	'articlefeedbackv5-form-unresolve' => 'Défaire',
+	'articlefeedbackv5-form-unresolve' => 'Annuler',
 	'articlefeedbackv5-form-noaction' => 'Aucune action nécessaire',
-	'articlefeedbackv5-form-unnoaction' => 'Défaire',
+	'articlefeedbackv5-form-unnoaction' => 'Annuler',
 	'articlefeedbackv5-form-noaction-own' => 'Jeter mon billet',
 	'articlefeedbackv5-form-unnoaction-own' => 'Afficher mon billet',
 	'articlefeedbackv5-form-inappropriate' => 'Inapproprié',
-	'articlefeedbackv5-form-uninappropriate' => 'Défaire',
+	'articlefeedbackv5-form-uninappropriate' => 'Annuler',
 	'articlefeedbackv5-form-hide' => 'Masquer ce billet',
-	'articlefeedbackv5-form-unhide' => 'Défaire',
+	'articlefeedbackv5-form-unhide' => 'Annuler',
 	'articlefeedbackv5-form-archive' => 'Archive',
-	'articlefeedbackv5-form-unarchive' => 'Défaire',
+	'articlefeedbackv5-form-unarchive' => 'Annuler',
 	'articlefeedbackv5-form-helpful' => 'Marquer comme utile ($1)',
 	'articlefeedbackv5-form-flag' => 'Marquer comme abusif',
 	'articlefeedbackv5-form-oversight' => 'Demander un masquage',
-	'articlefeedbackv5-form-unoversight' => 'Défaire',
+	'articlefeedbackv5-form-unoversight' => 'Annuler',
 	'articlefeedbackv5-form-request' => 'Demander le masquage',
 	'articlefeedbackv5-form-unrequest' => 'Ne plus demander le masquage',
 	'articlefeedbackv5-form-decline' => 'Refuser le masquage',
@@ -15305,6 +15316,7 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Altostratus
+ * @author Hym411
  * @author Klutzy
  * @author Kwj2772
  * @author Ricolyuki
@@ -15414,7 +15426,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-special-sort-helpful-asc' => '유용하지 않음',
 	'articlefeedbackv5-special-sort-age-desc' => '최신',
 	'articlefeedbackv5-special-sort-age-asc' => '오래됨',
-	'articlefeedbackv5-special-filter-select-more' => '더 많은 필터', # Fuzzy
+	'articlefeedbackv5-special-filter-select-more' => '더 많은 필터',
 	'articlefeedbackv5-special-watchlist-showing' => '[[$1|$2]]가 주시하는 문서에 대한 피드백',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|내가 주시하는 문서에 대한 피드백]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|모든 문서에서 피드백 보기]]',
@@ -15570,9 +15582,9 @@ $6
 	'articlefeedbackv5-special-goback' => '피드백 페이지 보기',
 	'articlefeedbackv5-special-central-goback' => '다른 문서에 대한 더 많은 피드백 보기',
 	'articlefeedbackv5-permalink-info-title' => '이 게시물에 대한 정보',
-	'articlefeedbackv5-permalink-written-by-editor' => '<span>$1 피드백 양식을 사용하여</span> 등록한 사용자에 의해 작성함', # Fuzzy
-	'articlefeedbackv5-permalink-written-by-reader' => '<span>$1 피드백 양식을 사용하여</span> 익명 사용자에 의해 작성함', # Fuzzy
-	'articlefeedbackv5-permalink-info-revision-link' => '이전 버전 보기', # Fuzzy
+	'articlefeedbackv5-permalink-written-by-editor' => '<span>$1 피드백 양식을 사용하여</span> 등록한 사용자에 의해 작성됨', # Fuzzy
+	'articlefeedbackv5-permalink-written-by-reader' => '<span>$1 피드백 양식을 사용하여</span> 익명 사용자에 의해 작성됨', # Fuzzy
+	'articlefeedbackv5-permalink-info-revision-link' => '이전 버전 보기',
 	'articlefeedbackv5-permalink-info-posted' => '게시됨: $1 $2에',
 	'articlefeedbackv5-permalink-info-stats-title-length' => '길이',
 	'articlefeedbackv5-permalink-info-length-words' => '$1 단어',
@@ -15840,7 +15852,7 @@ $6
 	'articlefeedbackv5-activity-note-archive' => '편집자의 활동이 없고 {{PLURAL:$1|$1일}} 후 보존됨',
 	'articlefeedbackv5-activity-count' => '이 게시물에 행동 $1',
 	'articlefeedbackv5-activity-more' => '더 많은 활동 보기',
-	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|제안 1개|제안 $1개}}', # Fuzzy
+	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|제안 1개|제안 $1개}}',
 	'articlefeedbackv5-talk-view-feedback' => '독자 제안 보기',
 	'articlefeedbackv5-watchlist-view-feedback' => '내가 주시하는 문서에 대한 피드백',
 	'articlefeedbackv5-email-request-oversight-subject' => '오버사이트가 문서 평가 페이지에 요청됨',
@@ -28757,6 +28769,7 @@ $6
 	'articlefeedbackv5-settings-menu-title' => '设置',
 	'articlefeedbackv5-invalid-page-id' => '无效页面ID',
 	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1找到了他们要的东西}}',
+	'articlefeedbackv5-found-percent-title' => '基于$1条评论（不包括不适当评论）',
 	'articlefeedbackv5' => '条目反馈 - 中心页面',
 	'articlefeedbackv5watchlist' => '条目反馈 - 我监视的页面',
 	'articlefeedbackv5-desc' => '条目反馈',
@@ -28971,6 +28984,7 @@ $6
 	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}}想知道您对此页面的意见。请与编辑者们分享您的反馈意见，以及帮忙改善此页面。',
 	'articlefeedbackv5-help-tooltip-linktext' => '了解更多',
 	'articlefeedbackv5-help-transparency-terms' => '请发表[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 有用的反馈]。若您发表，我们认为您接受这些[//wikimediafoundation.org/wiki/Feedback_privacy_statement 条款]中声明的透明度。',
+	'articlefeedbackv5-help-transparency-terms-anon' => '请发表[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 有用的回馈]。您发表时，代表您接受由你的IP位址辨认阁下，并按[//wikimediafoundation.org/wiki/Feedback_privacy_statement 这些条款]开放。',
 	'articlefeedbackv5-sitesub-linktext' => '改善这个页面',
 	'articlefeedbackv5-titlebar-linktext' => '帮助改善这个页面 >>',
 	'articlefeedbackv5-fixedtab-linktext' => '改善这个页面',
