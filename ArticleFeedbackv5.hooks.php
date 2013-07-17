@@ -892,4 +892,139 @@ class ArticleFeedbackv5Hooks {
 
 		return true;
 	}
+
+	/**
+	 * Add AFTv5 events to Echo.
+	 *
+	 * @param array $notifications Echo notifications
+	 * @param array $notificationCategories Echo notification categories
+	 * @param array $icons icon details
+	 * @return bool
+	 */
+	public static function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories, &$icons ) {
+		// feedback is submitted to a page you started
+		$notificationCategories['feedback-new'] = array(
+			'tooltip' => 'echo-pref-tooltip-feedback-new',
+		);
+
+		$notifications['feedback-new'] = array(
+			'primary-link' => array( 'message' => 'notification-link-text-view-feedback', 'destination' => 'aft_permalink' ),
+			'category' => 'feedback',
+			'group' => 'neutral',
+//			'bundle' => array( 'web' => true, 'email' => true ),
+			'formatter-class' => 'EchoArticleFeedbackv5Formatter',
+			'title-message' => 'notification-feedback-new',
+			'title-params' => array( 'agent', 'titlelink', 'aft_permalink' ),
+//'bundle-message' => 'notification-feedback-new-bundle',
+//'bundle-params' => array( 'agent', 'title', 'aft_permalink', 'link-from-page', 'link-from-page-other-display', 'link-from-page-other-count' ), // @todo: what??
+			'flyout-message' => 'notification-feedback-new-flyout',
+			'flyout-params' => array( 'agent', 'titlelink', 'aft_permalink' ),
+			'payload' => array( 'aft_comment' ),
+			'email-subject-message' => 'notification-feedback-new-email-subject',
+			'email-subject-params' => array( 'agent' ),
+			'email-body-message' => 'notification-feedback-new-email-body',
+			'email-body-params' => array( 'agent', 'titlelink', 'aft_permalink', 'aft_comment', 'email-footer' ),
+			'email-body-batch-message' => 'notification-feedback-new-email-batch-body',
+			'email-body-batch-params' => array( 'agent', 'titlelink' ),
+//'email-body-batch-bundle-message' => 'notification-page-linked-email-batch-bundle-body',
+//'email-body-batch-bundle-params' => array( 'agent', 'title', 'link-from-page', 'link-from-page-other-display', 'link-from-page-other-count' ),
+			'icon' => 'feedback-new',
+		);
+
+		$icons['feedback-new'] = array(
+			// @todo: replace this with a 30x30 image
+			'path' => 'ArticleFeedbackv5/modules/jquery.articleFeedbackv5/images/toolbox_discuss.png',
+		);
+
+		// your feedback is moderated
+		$notificationCategories['feedback-moderated'] = array(
+			'tooltip' => 'echo-pref-tooltip-feedback-moderated',
+		);
+
+		$notifications['feedback-moderated'] = array(
+			'primary-link' => array( 'message' => 'notification-link-text-view-feedback', 'destination' => 'aft_permalink' ),
+			'category' => 'feedback',
+			'group' => 'neutral',
+			'formatter-class' => 'EchoArticleFeedbackv5Formatter',
+			'title-message' => 'notification-feedback-new',
+			'title-params' => array( 'agent', 'titlelink', 'aft_permalink' ),
+			'flyout-message' => 'notification-feedback-moderated-flyout',
+			'flyout-params' => array( 'agent', 'titlelink', 'aft_permalink' ),
+			'payload' => array(),
+			'email-subject-message' => 'notification-feedback-moderated-email-subject',
+			'email-subject-params' => array( 'agent' ),
+			'email-body-message' => 'notification-feedback-moderated-email-body',
+			'email-body-params' => array( 'agent', 'titlelink', 'aft_permalink', 'aft_moderation_flag', 'email-footer' ),
+			'email-body-batch-message' => 'notification-feedback-moderated-email-batch-body',
+			'email-body-batch-params' => array( 'agent', 'titlelink' ),
+			'icon' => 'feedback-moderated',
+		);
+
+		$icons['feedback-moderated'] = array(
+			// @todo: replace this with a 30x30 image
+			'path' => 'ArticleFeedbackv5/modules/jquery.articleFeedbackv5/images/toolbox_discuss.png',
+		);
+
+		return true;
+	}
+
+	/**
+	 * Add users to be notified on Echo events.
+	 *
+	 * @param EchoEvent $event
+	 * @param array $users
+	 * @return bool
+	 */
+	public static function onEchoGetDefaultNotifiedUsers( EchoEvent $event, &$users ) {
+		switch ( $event->getType() ) {
+			/*
+			 * When submitting new feedback, notify users who initially started
+			 * the page the feedback is submitted for.
+			 */
+			case 'feedback-new':
+				$extra = $event->getExtra();
+				if ( !$extra || !isset( $extra['aft_page'] ) ) {
+					break;
+				}
+
+				// get id of user who started this article
+				$page = Title::newFromID( $extra['aft_page'] );
+				if ( $page ) {
+					$revision = $page->getFirstRevision();
+					$recipientId = $revision->getRawUser();
+					$recipient = User::newFromId( $recipientId );
+
+					// make sure user still exists
+					$recipient->loadFromId();
+					if ( !$recipient->isAnon() ) {
+						$users[$recipientId] = $recipient;
+					}
+				}
+
+				break;
+
+			/*
+			 * When moderating feedback, notify the user who submitted the
+			 * feedback.
+			 */
+			case 'feedback-moderated':
+				$extra = $event->getExtra();
+				if ( !$extra || !isset( $extra['aft_user'] ) ) {
+					break;
+				}
+
+				$recipientId = $extra['aft_user'];
+				$recipient = User::newFromId( $recipientId );
+
+				// make sure user still exists
+				$recipient->loadFromId();
+				if ( !$recipient->isAnon() ) {
+					$users[$recipientId] = $recipient;
+				}
+
+				break;
+		}
+
+		return true;
+	}
 }

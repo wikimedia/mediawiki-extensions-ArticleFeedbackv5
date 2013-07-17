@@ -33,6 +33,18 @@ $wgArticleFeedbackv5DefaultFilters = array (
  */
 $wgDefaultUserOptions['aftv5-last-filter'] = null;
 
+/*
+ * Default notification preferences.
+ *
+ * There are 2 types of notifications:
+ * * feedback-new: notification upon submission of feedback on an article on your watchlist
+ * * feedback-moderated: notification if your feedback is being moderated
+ */
+$wgDefaultUserOptions['echo-subscriptions-web-feedback-new'] = true;
+$wgDefaultUserOptions['echo-subscriptions-email-feedback-new'] = false;
+$wgDefaultUserOptions['echo-subscriptions-web-feedback-moderated'] = true;
+$wgDefaultUserOptions['echo-subscriptions-email-feedback-moderated'] = false;
+
 /**
  * Default sorts by filter
  *
@@ -418,6 +430,7 @@ $wgAutoloadClasses['ArticleFeedbackv5LogFormatter']     = __DIR__ . '/ArticleFee
 $wgAutoloadClasses['ArticleFeedbackv5Flagging']         = __DIR__ . '/ArticleFeedbackv5.flagging.php';
 $wgAutoloadClasses['ArticleFeedbackv5MailerJob']        = __DIR__ . '/ArticleFeedbackv5.mailerJob.php';
 $wgAutoloadClasses['ArticleFeedbackv5Render']           = __DIR__ . '/ArticleFeedbackv5.render.php';
+$wgAutoloadClasses['EchoArticleFeedbackv5Formatter']    = __DIR__ . '/EchoArticleFeedbackv5Formatter.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5']          = __DIR__ . '/SpecialArticleFeedbackv5.php';
 $wgAutoloadClasses['SpecialArticleFeedbackv5Watchlist'] = __DIR__ . '/SpecialArticleFeedbackv5Watchlist.php';
 $wgAutoloadClasses['ArticleFeedbackv5Model']            = __DIR__ . '/ArticleFeedbackv5.model.php';
@@ -440,6 +453,8 @@ $wgHooks['ContributionsLineEnding'][] = 'ArticleFeedbackv5Hooks::contributionsLi
 $wgHooks['ProtectionForm::buildForm'][] = 'ArticleFeedbackv5Hooks::onProtectionForm';
 $wgHooks['ProtectionForm::save'][] = 'ArticleFeedbackv5Hooks::onProtectionSave';
 $wgHooks['UserLoginComplete'][] = 'ArticleFeedbackv5Hooks::userLoginComplete';
+$wgHooks['BeforeCreateEchoEvent'][] = 'ArticleFeedbackv5Hooks::onBeforeCreateEchoEvent';
+$wgHooks['EchoGetDefaultNotifiedUsers'][] = 'ArticleFeedbackv5Hooks::onEchoGetDefaultNotifiedUsers';
 
 // API Registration
 $wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';

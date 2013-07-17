@@ -729,6 +729,63 @@ $4',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automatically hidden. Rule: $1',
 	'abusefilter-edit-action-aftv5request' => '(Article Feedback) Auto-request oversight',
 	'articlefeedbackv5-abusefilter-note-aftv5request' => 'Oversight automatically requested. Rule: $1',
+
+	/* Echo */
+	'notification-feedback-permalink-text' => 'feedback',
+	'notification-feedback-moderation-flag-helpful' => 'helpful',
+	'notification-feedback-moderation-flag-undo-helpful' => 'unflagged as helpful',
+	'notification-feedback-moderation-flag-unhelpful' => 'unhelpful',
+	'notification-feedback-moderation-flag-undo-unhelpful' => 'unflagged as unhelpful',
+	'notification-feedback-moderation-flag-flag' => 'flagged as abusive',
+	'notification-feedback-moderation-flag-unflag' => 'unflagged as abusive',
+	'notification-feedback-moderation-flag-clear-flags' => 'abuse flags cleared',
+	'notification-feedback-moderation-flag-feature' => 'useful',
+	'notification-feedback-moderation-flag-unfeature' => 'un-marked as useful',
+	'notification-feedback-moderation-flag-resolve' => 'resolved',
+	'notification-feedback-moderation-flag-unresolve' => 'un-marked as resolved',
+	'notification-feedback-moderation-flag-noaction' => 'non-actionable',
+	'notification-feedback-moderation-flag-unnoaction' => 'un-marked as non-actionable',
+	'notification-feedback-moderation-flag-inappropriate' => 'inappropriate',
+	'notification-feedback-moderation-flag-uninappropriate' => 'unmarked as inappropriate',
+	'notification-feedback-moderation-flag-archive' => 'archived',
+	'notification-feedback-moderation-flag-unarchive' => 'unmarked as archived',
+	'notification-feedback-moderation-flag-hide' => 'hidden',
+	'notification-feedback-moderation-flag-unhide' => 'unmarked as hidden',
+	'notification-feedback-moderation-flag-request' => 'requested oversight',
+	'notification-feedback-moderation-flag-unrequest' => 'unrequested oversight',
+	'notification-feedback-moderation-flag-decline' => 'oversight request declined',
+	'notification-feedback-moderation-flag-oversight' => 'oversighted',
+	'notification-feedback-moderation-flag-unoversight' => 'unmarked as oversighted',
+	'echo-category-title-feedback-new' => 'New feedback',
+	'echo-pref-tooltip-feedback-new' => 'Notify me when someone submits feedback for a page I started.',
+	'echo-category-title-feedback-moderated' => 'Moderated feedback',
+	'echo-pref-tooltip-feedback-moderated' => 'Notify me when feedback I submitted is moderated.',
+	'notification-link-text-view-feedback' => 'View feedback',
+	'notification-feedback-new' => '[[User:$1|$1]] {{GENDER:$1|submitted}} $3 on $2.',
+	'notification-feedback-moderated' => '[[User:$1|$1]] {{GENDER:$1|moderated}} your $3 on $2.',
+	'notification-feedback-new-flyout' => '[[User:$1|$1]] {{GENDER:$1|submitted}} $3 on $2.',
+	'notification-feedback-moderated-flyout' => '[[User:$1|$1]] {{GENDER:$1|moderated}} your $3 on $2.',
+	'notification-feedback-new-email-subject' => '$1 {{GENDER:$1|submitted}} feedback for your article on {{SITENAME}}',
+	'notification-feedback-new-email-body' => '{{SITENAME}} user $1 {{GENDER:$1|submitted}} feedback for your article $2.
+
+Feedback comment:
+$4
+
+View the feedback:
+<$3>
+
+$5',
+	'notification-feedback-new-email-batch-body' => '$1 {{GENDER:$1|submitted}} feedback for your article $2.',
+	'notification-feedback-moderated-email-subject' => '$1 {{GENDER:$1|moderated}} your feedback on {{SITENAME}}',
+	'notification-feedback-moderated-email-body' => '{{SITENAME}} user $1 {{GENDER:$1|moderated}} your feedback for article $2.
+
+Status: $4
+
+View the feedback:
+<$3>
+
+$5',
+	'notification-feedback-moderated-email-batch-body' => '$1 {{GENDER:$1|moderated}} your feedback for $2.',
 );
 
 /** Message documentation (Message documentation)
@@ -1133,11 +1190,11 @@ See also:
 	'articlefeedbackv5-form-tooltip-discuss-user' => 'Link title-attribute for discussing feedback with the user who submitted it',
 	'articlefeedbackv5-discuss-talk-section-title' => "When feedback is to be discussed on the article's talk page, this is what the section title will be. Parameters:
 * $1 is the feedback comment
-* $2 is the title of the page the feedback was submitted for
+* $2 is link to the page the feedback was submitted for (link text = page name)
 '''Note:''' Modifying this messages breaks detection, if feedback is already discussed on talk page.",
 	'articlefeedbackv5-discuss-user-section-title' => "When feedback is to be discussed on the user's talk page, this is what the section title will be. Parameters:
 * $1 is the feedback comment
-* $2 is the title of the page the feedback was submitted for
+* $2 is link to the page the feedback was submitted for (link text = page name)
 '''Note:''' Modifying this messages breaks detection, if feedback is already discussed on talk page.",
 	'articlefeedbackv5-discuss-talk-section-content' => "When feedback is to be discussed on the article's talk page, this is the content template that will be provided. Parameters:
 * $1 is the user that submitted the feedback (either the IP for anonymous user, or in the format [[User:Name|Name]] for registered users)
@@ -1146,7 +1203,7 @@ See also:
 * $4 is the time the feedback was submitted
 * $5 is the link to all feedback on this article
 * $6 is the full feedback comment (will be empty in the event that feedback text is short and fits in the section title)
-* $7 is the title of the page the feedback was submitted for",
+* $7 is link to the page the feedback was submitted for (link text = page name)",
 	'articlefeedbackv5-discuss-user-section-content' => "When feedback is to be discussed on the user's talk page, this is the content template that will be provided. Parameters:
 * $1 is the user that submitted the feedback (either the IP for anonymous user, or in the format [[User:Name|Name]] for registered users)
 * $2 is the permalink to the feedback that'll be discussed
@@ -1154,7 +1211,7 @@ See also:
 * $4 is the time the feedback was submitted
 * $5 is the link to all feedback on this article
 * $6 is the full feedback comment (will be empty in the event that feedback text is short and fits in the section title)
-* $7 is the title of the page the feedback was submitted for",
+* $7 is link to the page the feedback was submitted for (link text = page name)",
 	'articlefeedbackv5-form1-header-found' => '{{doc-singularthey}}
 Parameters
 * $1 is a username.
@@ -2179,6 +2236,73 @@ Parameters:
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'The note to add to the activity log when auto-hiding a new feedback post (<code>$1</code> is the name of the filter)',
 	'abusefilter-edit-action-aftv5request' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in oversight being automatically requested for the feedback',
 	'articlefeedbackv5-abusefilter-note-aftv5request' => 'The note to add to the activity log when automatically requesting oversight for a new feedback post (<code>$1</code> is the name of the filter)',
+
+	'notification-feedback-permalink-text' => 'Link text for the link to a specific feedback entry',
+	'notification-feedback-moderation-flag-helpful' => 'Status message for feedback flagged as helpful, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-undo-helpful' => 'Status message for feedback unflagged as helpful, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-unhelpful' => 'Status message for feedback flagged as unhelpful, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-undo-unhelpful' => 'Status message for feedback unflagged as unhelpful, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-flag' => 'Status message for feedback is flagged as abusive, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-unflag' => 'Status message for feedback where a flag as abusive has been undone, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-clear-flags' => 'Status message for feedback where all abuse flags are cleared, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-feature' => 'Status message for feedback marked as useful, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-unfeature' => 'Status message for feedback un-marked as useful, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-resolve' => 'Status message for feedback marked as resolved, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-unresolve' => 'Status message for feedback un-marked as resolved, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-noaction' => 'Status message for feedback marked as non-actionable, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-unnoaction' => 'Status message for feedback un-marked as non-actionable, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-inappropriate' => 'Status message for feedback marked as inappropriate, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-uninappropriate' => 'Status message for feedback un-marked as inappropriate, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-archive' => 'Status message for feedback marked as archived, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-unarchive' => 'Status message for feedback un-marked as archived, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-hide' => 'Status message for feedback marked as hidden, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-unhide' => 'Status message for feedback unmarked as hidden, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-request' => 'Status message for feedback where oversight was requested, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-unrequest' => 'Status message for feedback where an oversight request was undone, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-decline' => 'Status message for feedback marked as oversight declined, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-oversight' => 'Status message for feedback marked as oversighted, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'notification-feedback-moderation-flag-unoversight' => 'Status message for feedback un-marked as oversighted, used in {{msg-mw|notification-feedback-moderated-email-body}}',
+	'echo-category-title-feedback-new' => 'Label name, in notification preferences, for notifications sent when someone submits feedback on a page this user started',
+	'echo-pref-tooltip-feedback-new' => 'Tooltip for the label, in notification preferences, for notifications sent when someone submits feedback on a page this user started',
+	'echo-category-title-feedback-moderated' => 'Label name, in notification preferences, for notifications sent when someone moderated feedback that this user submitted',
+	'echo-pref-tooltip-feedback-moderated' => 'Tooltip for the label, in notification preferences, for notifications sent when someone moderated feedback that this user submitted',
+	'notification-link-text-view-feedback' => 'Text for notification button that links to the feedback that generated the notification',
+	'notification-feedback-new' => "Format for displaying notifications when feedback was submitted on a post started by the user. Parameters:
+* $1 is the username of the person who edited, plain text. Can be used for GENDER.
+* $2 is link to the page the feedback was submitted for (link text = page name)
+* $3 is link to the feedback entry (link text = {{msg-mw|notification-feedback-permalink-text}}).",
+	'notification-feedback-moderated' => "Format for displaying notifications when the user's feedback was moderated. Parameters:
+* $1 is the username of the person who edited, plain text. Can be used for GENDER.
+* $2 is link to the page the feedback was submitted for (link text = page name)
+* $3 is link to the feedback entry (link text = {{msg-mw|notification-feedback-permalink-text}}).",
+	'notification-feedback-new' => "Format for displaying notifications in the flyout when feedback was submitted on a post started by the user. Parameters:
+* $1 is the username of the person who edited, plain text. Can be used for GENDER.
+* $2 is link to the page the feedback was submitted for (link text = page name)
+* $3 is link to the feedback entry (link text = {{msg-mw|notification-feedback-permalink-text}}).",
+	'notification-feedback-moderated' => "Format for displaying notifications in the flyout when the user's feedback was moderated. Parameters:
+* $1 is the username of the person who edited, plain text. Can be used for GENDER.
+* $2 is link to the page the feedback was submitted for (link text = page name)
+* $3 is link to the feedback entry (link text = {{msg-mw|notification-feedback-permalink-text}}).",
+	'notification-feedback-new-email-subject' => "E-mail subject for notification when feedback was submitted on a post started by the user",
+	'notification-feedback-new-email-body' => "E-mail body for notification when feedback was submitted on a post started by the user. Parameters:
+* $1 is a username. Can be used for GENDER.
+* $2 the title of the page the user edited.
+* $3 is link to the feedback entry.
+* $4 is the feedback comment.
+* $5 is the e-mail footer, {{msg-mw|echo-email-footer-default}}",
+	'notification-feedback-new-email-batch-body' => 'Batch e-mail message for notification when feedback was submitted on a post started by the user. Parameters:
+* $1 is a username. Can be used for GENDER.
+* $2 the title of the page the feedback was submitted to.',
+	'notification-feedback-moderated-email-subject' => "E-mail subject for notification when the user's feedback was moderated",
+	'notification-feedback-moderated-email-body' => "E-mail body for notification when the user's feedback was moderated. Parameters:
+* $1 is a username. Can be used for GENDER.
+* $2 the title of the page the user edited.
+* $3 is link to the feedback entry.
+* $4 is the feedback moderation flag.
+* $5 is the e-mail footer, {{msg-mw|echo-email-footer-default}}",
+	'notification-feedback-moderated-email-batch-body' => "Batch e-mail message for notification when the user's feedback was moderated. Parameters:
+* $1 is a username. Can be used for GENDER.
+* $2 the title of the page the feedback was submitted to.",
 );
 
 /** Afrikaans (Afrikaans)
