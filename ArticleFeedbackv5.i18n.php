@@ -4547,6 +4547,7 @@ $messages['ca'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
+	'articlefeedbackv5-cta4-button-text-login' => 'Системин чугӀо',
 	'articlefeedbackv5-status-unrequest' => 'Бехкам бина юхаяккха дӀахьулйинарг декъашхочо $1 $2 оцу $3',
 	'articlefeedbackv5-discussion-page' => 'Дийцаре',
 	'articlefeedbackv5-mask-view-contents' => 'Чулацаме хьажар',
@@ -23456,6 +23457,7 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-form-tooltip-oversight' => 'Offensive, date private ...',
 	'articlefeedbackv5-form-tooltip-unoversight' => "Annulle 'a sorveglianze",
 	'articlefeedbackv5-form-tooltip-request' => 'Offensive, date private ...',
+	'articlefeedbackv5-form-tooltip-unrequest' => 'Annulle richieste de sorveglianze',
 	'articlefeedbackv5-form-tooltip-decline' => "Scitte 'a richieste de sorveglianze",
 	'articlefeedbackv5-form-tooltip-discuss-talk' => "'Ngazzamende d'a segnalazione sus 'a pàgene de le 'ngazzaminde",
 	'articlefeedbackv5-form-tooltip-discuss-user' => "'Ngazzamende d'a segnalazione cu l'utende ca l'ave confermate",
@@ -23468,6 +23470,15 @@ $6
 Quacche penziere?
 
 ~~~~",
+	'articlefeedbackv5-discuss-user-section-content' => 'Grazie pe avè mannate \'a segnalazione sus a "$7".
+
+Tu è mannate stu commende \'u $3 ([[$5|\'ndruche tutte le segnalaziune]]).
+
+$6
+
+Nuje sime cundende pe le condrebbute tune a sta pàgene!
+
+~~~~',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 onne acchiate quidde ca ste cercavane}}',
 	'articlefeedbackv5-form1-header-not-found' => "{{GENDER:$1|$2 non g'onne acchiate quidde ca ste cercavane}}",
 	'articlefeedbackv5-form1-header-left-comment' => "{{GENDER:$1|$2 mannate 'nu commende.}}",
@@ -23482,6 +23493,7 @@ Quacche penziere?
 	'articlefeedbackv5-abuse-saved' => 'Signate cumme abbuse',
 	'articlefeedbackv5-abuse-saved-tooltip' => "Live 'a spunde ca è 'mbostate",
 	'articlefeedbackv5-error-loading-feedback' => "Errore d'u carecamènde feedback.",
+	'articlefeedbackv5-insufficient-permissions' => 'Levèlle de permesse insufficiende',
 	'articlefeedbackv5-invalid-feedback-id' => "L' ID d'u feedback non g'ète valide.",
 	'articlefeedbackv5-invalid-log-id' => "Invalide ID de l'archivije",
 	'articlefeedbackv5-invalid-log-update' => "'A vôsce de l'archivije non ge pò essere aggiornate",
@@ -24408,7 +24420,7 @@ $messages['si'] = array(
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|ධජ $1|ධජ $1 ක්}}',
 	'articlefeedbackv5-form-feature' => 'ප්‍රයෝජනවත්',
 	'articlefeedbackv5-form-unfeature' => 'අහෝසිය',
-	'articlefeedbackv5-form-resolve' => 'තීරණය කරන ලද',
+	'articlefeedbackv5-form-resolve' => 'බේරුම් කර ගත්',
 	'articlefeedbackv5-form-unresolve' => 'අහෝසිය',
 	'articlefeedbackv5-form-inappropriate' => 'මෙම හසුන සඟවන්න',
 	'articlefeedbackv5-form-unhide' => 'අහෝසිය',
@@ -24556,7 +24568,7 @@ $messages['si'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'ඔව්,මම සෙවූ දේ මට හමුවුණා.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'නෑ, මම සෙවූ දේ මට හමුවුනේ නෑ.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 අකුරක් ඉතිරියි)|(අකුරු $1 ඉතිරියි)}}',
-	'articlefeedbackv5-bucket6-question-instructions-yes' => 'නියමයි. යෝජනාවක් හෝ වැඩිදියුණු කිරීමක් ඇත්ද?',
+	'articlefeedbackv5-bucket6-question-instructions-yes' => 'යසයි. වැඩිදියුණු කිරීමට යෝජනාවක් තිබේද?',
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'මෙම ලිපිය වැඩිදියුණු කල යුත්තේ කෙසේද?', # Fuzzy
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'ඒ පිළිබඳ කණගාටුයි, යෝජනාවක් හෝ වැඩිදියුණු කිරීමක් තිබේද?',
 	'articlefeedbackv5-bucket6-question-placeholder-no' => 'ඔබ සොයන්නේ මොනවාද?', # Fuzzy
@@ -25769,7 +25781,7 @@ dessa fel innan du begär tillsyn:
 	'right-aft-oversighter' => 'Censurfeedback',
 	'log-name-articlefeedbackv5' => 'Aktivitetslogg för artikelfeedback',
 	'log-description-articlefeedbackv5' => 'Detta är loggen för aktivitet på feedback för användare som använder Artikelfeedback.',
-	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|lämnade in}} [[$3|feedbackinlägg #$4]] den [[$5]]',
+	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|inlämnat}} [[$3|feedbackinlägg #$4]] den [[$5]]',
 	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|ändrade censurstatusen för}} [[$3|feedbackinlägg #$4]] på [[$5]]',
 	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|tog bort censurstatusen för}} [[$3|feedbackinlägg #$4]] på [[$5]]',
 	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|avböjde censur för}} [[$3|feedbackinlägg #$4]] på [[$5]]',
