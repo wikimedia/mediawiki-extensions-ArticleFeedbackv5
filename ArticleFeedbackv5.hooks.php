@@ -892,4 +892,186 @@ class ArticleFeedbackv5Hooks {
 
 		return true;
 	}
+
+	/**
+	 * Add AFTv5 events to Echo.
+	 *
+	 * @param array $notifications Echo notifications
+	 * @param array $notificationCategories Echo notification categories
+	 * @param array $icons icon details
+	 * @return bool
+	 */
+	public static function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories, &$icons ) {
+		$notificationCategories['feedback'] = array(
+			'tooltip' => 'echo-pref-tooltip-feedback',
+			'priority' => 5,
+		);
+
+		// feedback is submitted to a page on your watchlist
+		$notifications['feedback-watch'] = array(
+			'primary-link' => array( 'message' => 'articlefeedbackv5-notification-link-text-view-feedback', 'destination' => 'aft-page' ),
+			'category' => 'feedback',
+			'group' => 'neutral',
+			'bundle' => array( 'web' => true, 'email' => true ),
+			'formatter-class' => 'EchoArticleFeedbackv5FormatterWatch',
+			'title-message' => 'articlefeedbackv5-notification-feedback-watch',
+			'title-params' => array( 'agent', 'title', 'aft-page', 'aft-moderation-flag' ),
+			'bundle-message' => 'articlefeedbackv5-notification-feedback-watch-bundle',
+			'bundle-params' => array( 'agent', 'title', 'aft-page', 'aft-moderation-flag', 'aft-other-display', 'aft-other-count' ),
+			'flyout-message' => 'articlefeedbackv5-notification-feedback-watch-flyout',
+			'flyout-params' => array( 'agent', 'title', 'aft-page', 'aft-moderation-flag' ),
+			'payload' => array( 'aft-comment' ),
+			'email-subject-message' => 'articlefeedbackv5-notification-feedback-watch-email-subject',
+			'email-subject-params' => array( 'agent', 'title', 'aft-moderation-flag' ),
+			'email-body-batch-message' => 'articlefeedbackv5-notification-feedback-watch-email-batch-body',
+			'email-body-batch-params' => array( 'agent', 'title', 'aft-page-i18n-link', 'aft-moderation-flag' ),
+			'email-body-batch-bundle-message' => 'articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body',
+			'email-body-batch-bundle-params' => array( 'agent', 'title', 'aft-page-i18n-link', 'aft-moderation-flag', 'aft-other-display', 'aft-other-count' ),
+			'icon' => 'feedback-watch',
+		);
+
+		$icons['feedback-watch'] = array(
+			'path' => 'ArticleFeedbackv5/modules/ext.articleFeedbackv5/images/notification.png',
+		);
+
+		// your feedback is moderated
+		$notifications['feedback-moderated'] = array(
+			'primary-link' => array( 'message' => 'articlefeedbackv5-notification-link-text-view-feedback', 'destination' => 'aft-permalink' ),
+			'category' => 'feedback',
+			'group' => 'neutral',
+			'bundle' => array( 'web' => true, 'email' => true ),
+			'formatter-class' => 'EchoArticleFeedbackv5Formatter',
+			'title-message' => 'articlefeedbackv5-notification-feedback-moderated',
+			'title-params' => array( 'agent', 'title', 'aft-permalink', 'aft-moderation-flag' ),
+			'bundle-message' => 'articlefeedbackv5-notification-feedback-moderated-bundle',
+			'bundle-params' => array( 'agent', 'title', 'aft-permalink', 'agent-other-display', 'agent-other-count' ),
+			'flyout-message' => 'articlefeedbackv5-notification-feedback-moderated-flyout',
+			'flyout-params' => array( 'agent', 'title', 'aft-permalink', 'aft-moderation-flag' ),
+			'payload' => array( 'aft-comment' ),
+			'email-subject-message' => 'articlefeedbackv5-notification-feedback-moderated-email-subject',
+			'email-subject-params' => array( 'agent', 'title', 'aft-moderation-flag' ),
+			'email-body-batch-message' => 'articlefeedbackv5-notification-feedback-moderated-email-batch-body',
+			'email-body-batch-params' => array( 'agent', 'title', 'aft-permalink-i18n-link', 'aft-moderation-flag' ),
+			'email-body-batch-bundle-message' => 'articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body',
+			'email-body-batch-bundle-params' => array( 'agent', 'title', 'aft-permalink-i18n-link', 'aft-comment', 'agent-other-display', 'agent-other-count' ),
+			'icon' => 'feedback-moderated',
+		);
+
+		$icons['feedback-moderated'] = array(
+			'path' => 'ArticleFeedbackv5/modules/ext.articleFeedbackv5/images/notification.png',
+		);
+
+		return true;
+	}
+
+	/**
+	 * Add users to be notified on Echo events.
+	 *
+	 * @param EchoEvent $event
+	 * @param array $users
+	 * @return bool
+	 */
+	public static function onEchoGetDefaultNotifiedUsers( EchoEvent $event, &$users ) {
+		switch ( $event->getType() ) {
+			// notify users who watch this page
+			case 'feedback-watch':
+				$extra = $event->getExtra();
+				if ( !$extra || !isset( $extra['aft-page'] ) || !$extra['aft-page'] ) {
+					break;
+				}
+
+				$page = Title::newFromID( $extra['aft-page'] );
+
+				$dbw = wfGetDB( DB_MASTER );
+				$res = $dbw->select(
+					array( 'watchlist' ),
+					array( 'wl_user' ),
+					array(
+						'wl_user != ' . intval( $event->getAgent()->getID() ),
+						'wl_namespace' => $page->getNamespace(),
+						'wl_title' => $page->getDBkey(),
+					),
+					__METHOD__
+				);
+
+				foreach ( $res as $row ) {
+					$recipientId = intval( $row->wl_user );
+					$recipient = User::newFromId( $recipientId );
+
+					// make sure user still exists
+					$recipient->loadFromId();
+					if ( !$recipient->isAnon() ) {
+						$users[$recipientId] = $recipient;
+					}
+				}
+
+				// don't notify for self-submitted feedback
+				if ( isset( $extra['aft-user'] ) ) {
+					unset( $users[intval( $extra['aft-user'] )] );
+				}
+
+				break;
+
+			// notify user who submitted the feedback
+			case 'feedback-moderated':
+				$extra = $event->getExtra();
+				if ( !$extra || !isset( $extra['aft-user'] ) || !$extra['aft-user'] ) {
+					break;
+				}
+
+				$recipientId = $extra['aft-user'];
+				$recipient = User::newFromId( $recipientId );
+
+				// make sure user still exists
+				$recipient->loadFromId();
+				if ( !$recipient->isAnon() ) {
+					$users[$recipientId] = $recipient;
+				}
+
+				// don't notify for self-moderated feedback
+				unset( $users[intval( $event->getAgent()->getID() )] );
+
+				break;
+		}
+
+		return true;
+	}
+
+	/**
+	 * AFTv5 notification bundling rules.
+	 *
+	 * @param EchoEvent $event
+	 * @param string $bundleString
+	 * @return string
+	 */
+	public static function onEchoGetBundleRules( EchoEvent $event, &$bundleString ) {
+		switch ( $event->getType() ) {
+			// watched page feedback: bundle per page
+			case 'feedback-watch':
+				$bundleString = $event->getType() . '-' . $event->getExtraParam( 'aft-page' );
+				break;
+
+			// feedback moderation: bundle per feedback entry
+			case 'feedback-moderated':
+				$bundleString = $event->getType() . '-' . $event->getExtraParam( 'aft-id' );
+				break;
+		}
+
+		return true;
+	}
+
+	/**
+	 * After creating new account, enable AFT web notifications by default.
+	 *
+	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/AddNewAccount
+	 * @param User $user The User object that was created.
+	 * @param bool $byEmail True when account was created "by email".
+	 * @return bool
+	 */
+	public static function onAddNewAccount( $user, $byEmail ) {
+		$user->setOption( 'echo-subscriptions-web-feedback', true );
+		$user->saveSettings();
+
+		return true;
+	}
 }

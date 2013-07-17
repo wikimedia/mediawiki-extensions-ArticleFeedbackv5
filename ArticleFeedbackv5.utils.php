@@ -416,4 +416,84 @@ class ArticleFeedbackv5Utils {
 		global $wgLang;
 		return $wgLang->truncate( $id, 10 );
 	}
+
+	/**
+	 * Fire feedback-watch notification.
+	 *
+	 * @param ArticleFeedbackv5Model $feedback
+	 * @param User $agent
+	 * @param string $flag
+	 * @param int $logId
+	 * @return bool
+	 */
+	public static function notifyWatch( ArticleFeedbackv5Model $feedback, User $agent, $flag, $logId ) {
+		if ( !class_exists( 'EchoEvent' ) ) {
+			return false;
+		}
+
+		if ( !$agent ) {
+			return false;
+		}
+
+		$page = Title::newFromID( $feedback->aft_page );
+		if ( !$page ) {
+			return false;
+		}
+
+		EchoEvent::create( array(
+			'type' => 'feedback-watch',
+			'title' => $page,
+			'extra' => array(
+				'aft-id' => $feedback->aft_id,
+				'aft-page' => $feedback->aft_page,
+				'aft-comment' => $feedback->aft_comment,
+				'aft-user' => $feedback->aft_user,
+				'aft-moderation-flag' => $flag,
+				'aft-moderation-log-id' => $logId,
+			),
+			'agent' => $agent,
+		) );
+
+		return true;
+	}
+
+	/**
+	 * Fire feedback-moderated notification.
+	 *
+	 * @param ArticleFeedbackv5Model $feedback
+	 * @param User $agent
+	 * @param string $flag
+	 * @param int $logId
+	 * @return bool
+	 */
+	public static function notifyModerated( ArticleFeedbackv5Model $feedback, User $agent, $flag, $logId ) {
+		if ( !class_exists( 'EchoEvent' ) ) {
+			return false;
+		}
+
+		if ( !$agent ) {
+			return false;
+		}
+
+		$page = Title::newFromID( $feedback->aft_page );
+		if ( !$page ) {
+			return false;
+		}
+
+		EchoEvent::create( array(
+			'type' => 'feedback-moderated',
+			'title' => $page,
+			'extra' => array(
+				'aft-id' => $feedback->aft_id,
+				'aft-page' => $feedback->aft_page,
+				'aft-comment' => $feedback->aft_comment,
+				'aft-user' => $feedback->aft_user,
+				'aft-moderation-flag' => $flag,
+				'aft-moderation-log-id' => $logId,
+			),
+			'agent' => $agent,
+		) );
+
+		return true;
+	}
 }
