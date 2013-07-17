@@ -33,6 +33,16 @@ $wgArticleFeedbackv5DefaultFilters = array (
  */
 $wgDefaultUserOptions['aftv5-last-filter'] = null;
 
+/*
+ * Default notification preferences.
+ *
+ * Both web & email notifications for AFT will be opt-in (disabled by default)
+ * Newly registered users will have the web notification opt-out (enabled by
+ * default), via AddNewAccount hook.
+ */
+$wgDefaultUserOptions['echo-subscriptions-web-feedback'] = false;
+$wgDefaultUserOptions['echo-subscriptions-email-feedback'] = false;
+
 /**
  * Default sorts by filter
  *
@@ -398,33 +408,35 @@ $wgExtensionCredits['other'][] = array(
 );
 
 // Autoloading
-$wgAutoloadClasses['ApiArticleFeedbackv5']              = __DIR__ . '/api/ApiArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5']   = __DIR__ . '/api/ApiViewRatingsArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5']  = __DIR__ . '/api/ApiViewFeedbackArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiSetStatusArticleFeedbackv5']     = __DIR__ . '/api/ApiSetStatusArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiAddFlagNoteArticleFeedbackv5']   = __DIR__ . '/api/ApiAddFlagNoteArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5']  = __DIR__ . '/api/ApiFlagFeedbackArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiGetCountArticleFeedbackv5']      = __DIR__ . '/api/ApiGetCountArticleFeedbackv5.php';
-$wgAutoloadClasses['ApiViewActivityArticleFeedbackv5']  = __DIR__ . '/api/ApiViewActivityArticleFeedbackv5.php';
-$wgAutoloadClasses['DataModel']                         = __DIR__ . '/data/DataModel.php';
-$wgAutoloadClasses['DataModelBackend']                  = __DIR__ . '/data/DataModelBackend.php';
-$wgAutoloadClasses['DataModelBackendLBFactory']         = __DIR__ . '/data/DataModelBackend.LBFactory.php';
-$wgAutoloadClasses['DataModelList']                     = __DIR__ . '/data/DataModelList.php';
-$wgAutoloadClasses['ArticleFeedbackv5Utils']            = __DIR__ . '/ArticleFeedbackv5.utils.php';
-$wgAutoloadClasses['ArticleFeedbackv5Hooks']            = __DIR__ . '/ArticleFeedbackv5.hooks.php';
-$wgAutoloadClasses['ArticleFeedbackv5Permissions']      = __DIR__ . '/ArticleFeedbackv5.permissions.php';
-$wgAutoloadClasses['ArticleFeedbackv5Log']              = __DIR__ . '/ArticleFeedbackv5.log.php';
-$wgAutoloadClasses['ArticleFeedbackv5LogFormatter']     = __DIR__ . '/ArticleFeedbackv5.log.php';
-$wgAutoloadClasses['ArticleFeedbackv5Flagging']         = __DIR__ . '/ArticleFeedbackv5.flagging.php';
-$wgAutoloadClasses['ArticleFeedbackv5MailerJob']        = __DIR__ . '/ArticleFeedbackv5.mailerJob.php';
-$wgAutoloadClasses['ArticleFeedbackv5Render']           = __DIR__ . '/ArticleFeedbackv5.render.php';
-$wgAutoloadClasses['SpecialArticleFeedbackv5']          = __DIR__ . '/SpecialArticleFeedbackv5.php';
-$wgAutoloadClasses['SpecialArticleFeedbackv5Watchlist'] = __DIR__ . '/SpecialArticleFeedbackv5Watchlist.php';
-$wgAutoloadClasses['ArticleFeedbackv5Model']            = __DIR__ . '/ArticleFeedbackv5.model.php';
-$wgAutoloadClasses['ArticleFeedbackv5BackendLBFactory'] = __DIR__ . '/ArticleFeedbackv5.backend.LBFactory.php';
-$wgAutoloadClasses['ArticleFeedbackv5Activity']         = __DIR__ . '/ArticleFeedbackv5.activity.php';
-$wgExtensionMessagesFiles['ArticleFeedbackv5']          = __DIR__ . '/ArticleFeedbackv5.i18n.php';
-$wgExtensionMessagesFiles['ArticleFeedbackv5Alias']     = __DIR__ . '/ArticleFeedbackv5.alias.php';
+$wgAutoloadClasses['ApiArticleFeedbackv5']                = __DIR__ . '/api/ApiArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiViewRatingsArticleFeedbackv5']     = __DIR__ . '/api/ApiViewRatingsArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiViewFeedbackArticleFeedbackv5']    = __DIR__ . '/api/ApiViewFeedbackArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiSetStatusArticleFeedbackv5']       = __DIR__ . '/api/ApiSetStatusArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiAddFlagNoteArticleFeedbackv5']     = __DIR__ . '/api/ApiAddFlagNoteArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiFlagFeedbackArticleFeedbackv5']    = __DIR__ . '/api/ApiFlagFeedbackArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiGetCountArticleFeedbackv5']        = __DIR__ . '/api/ApiGetCountArticleFeedbackv5.php';
+$wgAutoloadClasses['ApiViewActivityArticleFeedbackv5']    = __DIR__ . '/api/ApiViewActivityArticleFeedbackv5.php';
+$wgAutoloadClasses['DataModel']                           = __DIR__ . '/data/DataModel.php';
+$wgAutoloadClasses['DataModelBackend']                    = __DIR__ . '/data/DataModelBackend.php';
+$wgAutoloadClasses['DataModelBackendLBFactory']           = __DIR__ . '/data/DataModelBackend.LBFactory.php';
+$wgAutoloadClasses['DataModelList']                       = __DIR__ . '/data/DataModelList.php';
+$wgAutoloadClasses['ArticleFeedbackv5Utils']              = __DIR__ . '/ArticleFeedbackv5.utils.php';
+$wgAutoloadClasses['ArticleFeedbackv5Hooks']              = __DIR__ . '/ArticleFeedbackv5.hooks.php';
+$wgAutoloadClasses['ArticleFeedbackv5Permissions']        = __DIR__ . '/ArticleFeedbackv5.permissions.php';
+$wgAutoloadClasses['ArticleFeedbackv5Log']                = __DIR__ . '/ArticleFeedbackv5.log.php';
+$wgAutoloadClasses['ArticleFeedbackv5LogFormatter']       = __DIR__ . '/ArticleFeedbackv5.log.php';
+$wgAutoloadClasses['ArticleFeedbackv5Flagging']           = __DIR__ . '/ArticleFeedbackv5.flagging.php';
+$wgAutoloadClasses['ArticleFeedbackv5MailerJob']          = __DIR__ . '/ArticleFeedbackv5.mailerJob.php';
+$wgAutoloadClasses['ArticleFeedbackv5Render']             = __DIR__ . '/ArticleFeedbackv5.render.php';
+$wgAutoloadClasses['EchoArticleFeedbackv5Formatter']      = __DIR__ . '/EchoArticleFeedbackv5Formatter.php';
+$wgAutoloadClasses['EchoArticleFeedbackv5FormatterWatch'] = __DIR__ . '/EchoArticleFeedbackv5Formatter.php';
+$wgAutoloadClasses['SpecialArticleFeedbackv5']            = __DIR__ . '/SpecialArticleFeedbackv5.php';
+$wgAutoloadClasses['SpecialArticleFeedbackv5Watchlist']   = __DIR__ . '/SpecialArticleFeedbackv5Watchlist.php';
+$wgAutoloadClasses['ArticleFeedbackv5Model']              = __DIR__ . '/ArticleFeedbackv5.model.php';
+$wgAutoloadClasses['ArticleFeedbackv5BackendLBFactory']   = __DIR__ . '/ArticleFeedbackv5.backend.LBFactory.php';
+$wgAutoloadClasses['ArticleFeedbackv5Activity']           = __DIR__ . '/ArticleFeedbackv5.activity.php';
+$wgExtensionMessagesFiles['ArticleFeedbackv5']            = __DIR__ . '/ArticleFeedbackv5.i18n.php';
+$wgExtensionMessagesFiles['ArticleFeedbackv5Alias']       = __DIR__ . '/ArticleFeedbackv5.alias.php';
 
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleFeedbackv5Hooks::loadExtensionSchemaUpdates';
@@ -440,6 +452,10 @@ $wgHooks['ContributionsLineEnding'][] = 'ArticleFeedbackv5Hooks::contributionsLi
 $wgHooks['ProtectionForm::buildForm'][] = 'ArticleFeedbackv5Hooks::onProtectionForm';
 $wgHooks['ProtectionForm::save'][] = 'ArticleFeedbackv5Hooks::onProtectionSave';
 $wgHooks['UserLoginComplete'][] = 'ArticleFeedbackv5Hooks::userLoginComplete';
+$wgHooks['BeforeCreateEchoEvent'][] = 'ArticleFeedbackv5Hooks::onBeforeCreateEchoEvent';
+$wgHooks['EchoGetDefaultNotifiedUsers'][] = 'ArticleFeedbackv5Hooks::onEchoGetDefaultNotifiedUsers';
+$wgHooks['EchoGetBundleRules'][] = 'ArticleFeedbackv5Hooks::onEchoGetBundleRules';
+$wgHooks['AddNewAccount'][] = 'ArticleFeedbackv5Hooks::onAddNewAccount';
 
 // API Registration
 $wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';
