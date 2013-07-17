@@ -892,4 +892,110 @@ class ArticleFeedbackv5Hooks {
 
 		return true;
 	}
+
+	/**
+	 * Add AFTv5 events to Echo.
+	 *
+	 * @param array $notifications Echo notifications
+	 * @param array $notificationCategories Echo notification categories
+	 * @param array $icons icon details
+	 * @return bool
+	 */
+	public static function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories, &$icons ) {
+		// @todo: get config right
+		// @todo: feedback-moderated
+
+		$notificationCategories['feedback-new'] = array(
+			'priority' => 3,
+			'tooltip' => 'echo-pref-tooltip-edit-thank', // @todo: i18n?
+		);
+
+		$notifications['feedback-new'] = array(
+			'primary-link' => array( 'message' => 'notification-link-text-respond-to-user', 'destination' => 'agent' ),
+			'secondary-link' => array( 'message' => 'notification-link-text-view-edit', 'destination' => 'diff' ),
+			'category' => 'edit-thank',
+			'group' => 'positive',
+			'formatter-class' => 'EchoThanksFormatter', // @todo: echo formatter
+			'title-message' => 'notification-thanks',
+			'title-params' => array( 'agent', 'difflink', 'title' ),
+			'flyout-message' => 'notification-thanks-flyout2',
+			'flyout-params' => array( 'agent', 'title' ),
+			'payload' => array( 'summary' ),
+			'email-subject-message' => 'notification-thanks-email-subject',
+			'email-subject-params' => array( 'agent' ),
+			'email-body-message' => 'notification-thanks-email-body',
+			'email-body-params' => array( 'agent', 'title', 'difflink', 'email-footer' ),
+			'email-body-batch-message' => 'notification-thanks-email-batch-body',
+			'email-body-batch-params' => array( 'agent', 'title' ),
+			'icon' => 'feedback-new',
+		);
+
+		$icons['feedback-new'] = array(
+			// @todo: replace this with a 30x30 image
+			'path' => 'ArticleFeedbackv5/modules/jquery.articleFeedbackv5/images/toolbox_discuss.png',
+		);
+
+		return true;
+	}
+
+	/**
+	 * Add users to be notified on Echo events.
+	 *
+	 * @param EchoEvent $event
+	 * @param array $users
+	 * @return bool
+	 */
+	public static function onEchoGetDefaultNotifiedUsers( EchoEvent $event, &$users ) {
+		switch ( $event->getType() ) {
+			/*
+			 * When submitting new feedback, notify users who have watchlisted
+			 * the page the feedback is submitted for.
+			 */
+			case 'feedback-new':
+				$extra = $event->getExtra();
+				if ( !$extra || !isset( $extra['aft_page'] ) ) {
+					break;
+				}
+
+				$page = Title::newFromID( $extra['aft_page'] );
+
+				$dbw = wfGetDB( DB_MASTER );
+				$res = $dbw->select(
+					array( 'watchlist' ),
+					array( 'wl_user' ),
+					array(
+						'wl_user != ' . intval( $event->getAgent()->getID() ),
+						'wl_namespace' => $page->getNamespace(),
+						'wl_title' => $page->getDBkey(),
+					),
+					__METHOD__
+				);
+
+				foreach ( $res as $row ) {
+					$recipientId = intval( $row->wl_user );
+					$recipient = User::newFromId( $recipientId );
+					$users[$recipientId] = $recipient;
+				}
+
+				break;
+
+			/*
+			 * When moderating feedback, notify the user who submitted the
+			 * feedback.
+			 */
+			case 'feedback-moderated':
+				$extra = $event->getExtra();
+				if ( !$extra || !isset( $extra['aft_user'] ) ) {
+					break;
+				}
+
+				$recipientId = $extra['aft_user'];
+				$recipient = User::newFromId( $recipientId );
+				$users[$recipientId] = $recipient;
+
+				break;
+		}
+
+		return true;
+	}
 }

@@ -144,6 +144,25 @@ class ArticleFeedbackv5Flagging {
 		// update feedback entry for real
 		$this->feedback->update();
 
+		// create notification via Echo extension
+		if ( $this->feedback->aft_user && class_exists( 'EchoNotifier' ) ) {
+			$page = Title::newFromID( $this->feedback->aft_page );
+			if ( $page ) {
+				$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $this->feedback->aft_id );
+
+				EchoEvent::create( array(
+					'type' => 'feedback-moderated',
+					'title' => $permalink,
+					'extra' => array(
+						'aft_id' => $this->feedback->aft_id,
+						'aft_page' => $this->feedback->aft_page,
+						'aft_user' => $this->feedback->aft_user,
+					),
+					'agent' => $this->user,
+				) );
+			}
+		}
+
 		wfProfileOut( __METHOD__ . "-{$flag}" );
 
 		return true;
