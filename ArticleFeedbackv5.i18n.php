@@ -729,6 +729,54 @@ $4',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automatically hidden. Rule: $1',
 	'abusefilter-edit-action-aftv5request' => '(Article Feedback) Auto-request oversight',
 	'articlefeedbackv5-abusefilter-note-aftv5request' => 'Oversight automatically requested. Rule: $1',
+
+	/* Echo */
+	'articlefeedbackv5-notification-feedback-permalink-text' => 'feedback',
+	'articlefeedbackv5-notification-feedback-titlelink-text' => 'all feedback for $1',
+	'articlefeedbackv5-notification-feedback-moderation-flag-feature' => 'useful',
+	'articlefeedbackv5-notification-feedback-moderation-flag-resolve' => 'resolved',
+	'echo-category-title-feedback' => 'Article feedback',
+	'echo-pref-tooltip-feedback' => 'Notify me for useful article feedback.',
+	'articlefeedbackv5-notification-link-text-view-feedback' => 'View feedback',
+	'articlefeedbackv5-notification-feedback-watch' => '$3 about $2 was {{GENDER:$1|marked}} as $4 by [[User:$1|$1]].',
+	'articlefeedbackv5-notification-feedback-watch-flyout' => '$3 about $2 was {{GENDER:$1|marked}} as $4 by [[User:$1|$1]].',
+	'articlefeedbackv5-notification-feedback-watch-email-subject' => 'Feedback about $2 on {{SITENAME}} was {{GENDER:$1|marked}} as $4 by $1.',
+	'articlefeedbackv5-notification-feedback-watch-email-body' => 'Feedback about $2 on {{SITENAME}} was {{GENDER:$1|marked}} as $4 by $1.
+
+Feedback comment:
+$5
+
+View the feedback:
+<$3>
+
+$6',
+	'articlefeedbackv5-notification-feedback-watch-email-batch-body' => 'Feedback about $2 on {{SITENAME}} was {{GENDER:$1|marked}} as $4 by $1.',
+	'articlefeedbackv5-notification-feedback-watch-bundle' => 'Feedback about $2 was {{GENDER:$1|marked}} as $3 by $1 and $5 {{PLURAL:$6|other|others}}.',
+	'articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body' => 'Feedback about $2 on {{SITENAME}} was {{GENDER:$1|marked}} as $3 by $1 and $5 {{PLURAL:$6|other|others}}.
+
+View all feedback for $2:
+<$4>',
+	'articlefeedbackv5-notification-feedback-moderated' => 'Your $3 about $2 was {{GENDER:$1|marked}} as $4 by [[User:$1|$1]].',
+	'articlefeedbackv5-notification-feedback-moderated-flyout' => 'Your $3 about $2 was {{GENDER:$1|marked}} as $4 by [[User:$1|$1]].',
+	'articlefeedbackv5-notification-feedback-moderated-email-subject' => 'Your feedback about $2 on {{SITENAME}} was {{GENDER:$1|marked}} as $4 by $1.',
+	'articlefeedbackv5-notification-feedback-moderated-email-body' => 'Your feedback about $2 on {{SITENAME}} was {{GENDER:$1|marked}} as $4 by $1.
+
+Feedback comment:
+$5
+
+View the feedback:
+<$3>
+
+$5',
+	'articlefeedbackv5-notification-feedback-moderated-email-batch-body' => 'Your feedback about $2 was {{GENDER:$1|marked}} as $4 by $1.',
+	'articlefeedbackv5-notification-feedback-moderated-bundle' => 'Your feedback about $2 was {{GENDER:$1|moderated}} by $1 and $4 {{PLURAL:$5|other|others}}.',
+	'articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body' => 'Your feedback about $2 on {{SITENAME}} was {{GENDER:$1|moderated}} by $1 and $5 {{PLURAL:$6|other|others}}.
+
+Feedback comment:
+$4
+
+View the feedback:
+<$3>',
 );
 
 /** Message documentation (Message documentation)
@@ -1133,11 +1181,11 @@ See also:
 	'articlefeedbackv5-form-tooltip-discuss-user' => 'Link title-attribute for discussing feedback with the user who submitted it',
 	'articlefeedbackv5-discuss-talk-section-title' => "When feedback is to be discussed on the article's talk page, this is what the section title will be. Parameters:
 * $1 is the feedback comment
-* $2 is the title of the page the feedback was submitted for
+* $2 is link to the page the feedback was submitted for (link text = page name)
 '''Note:''' Modifying this messages breaks detection, if feedback is already discussed on talk page.",
 	'articlefeedbackv5-discuss-user-section-title' => "When feedback is to be discussed on the user's talk page, this is what the section title will be. Parameters:
 * $1 is the feedback comment
-* $2 is the title of the page the feedback was submitted for
+* $2 is link to the page the feedback was submitted for (link text = page name)
 '''Note:''' Modifying this messages breaks detection, if feedback is already discussed on talk page.",
 	'articlefeedbackv5-discuss-talk-section-content' => "When feedback is to be discussed on the article's talk page, this is the content template that will be provided. Parameters:
 * $1 is the user that submitted the feedback (either the IP for anonymous user, or in the format [[User:Name|Name]] for registered users)
@@ -1146,7 +1194,7 @@ See also:
 * $4 is the time the feedback was submitted
 * $5 is the link to all feedback on this article
 * $6 is the full feedback comment (will be empty in the event that feedback text is short and fits in the section title)
-* $7 is the title of the page the feedback was submitted for",
+* $7 is link to the page the feedback was submitted for (link text = page name)",
 	'articlefeedbackv5-discuss-user-section-content' => "When feedback is to be discussed on the user's talk page, this is the content template that will be provided. Parameters:
 * $1 is the user that submitted the feedback (either the IP for anonymous user, or in the format [[User:Name|Name]] for registered users)
 * $2 is the permalink to the feedback that'll be discussed
@@ -1154,7 +1202,7 @@ See also:
 * $4 is the time the feedback was submitted
 * $5 is the link to all feedback on this article
 * $6 is the full feedback comment (will be empty in the event that feedback text is short and fits in the section title)
-* $7 is the title of the page the feedback was submitted for",
+* $7 is link to the page the feedback was submitted for (link text = page name)",
 	'articlefeedbackv5-form1-header-found' => '{{doc-singularthey}}
 Parameters
 * $1 is a username.
@@ -2179,6 +2227,98 @@ Parameters:
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'The note to add to the activity log when auto-hiding a new feedback post (<code>$1</code> is the name of the filter)',
 	'abusefilter-edit-action-aftv5request' => 'The text for the checkbox used by Special:AbuseFilter to indicate that a rule should result in oversight being automatically requested for the feedback',
 	'articlefeedbackv5-abusefilter-note-aftv5request' => 'The note to add to the activity log when automatically requesting oversight for a new feedback post (<code>$1</code> is the name of the filter)',
+
+	'articlefeedbackv5-notification-feedback-permalink-text' => 'Link text for the link to a specific feedback entry',
+	'articlefeedbackv5-notification-feedback-titlelink-text' => "Link text for the link to a all feedback entries for a specific page. Parameters:
+* $1 - The page's title",
+	'articlefeedbackv5-notification-feedback-moderation-flag-feature' => 'Status message for feedback marked as useful',
+	'articlefeedbackv5-notification-feedback-moderation-flag-resolve' => 'Status message for feedback marked as resolved',
+	'echo-category-title-feedback-watch' => 'Label name, in notification preferences, for notifications sent when someone submits feedback on a page this user started',
+	'echo-pref-tooltip-feedback-watch' => 'Tooltip for the label, in notification preferences, for notifications sent when someone submits feedback on a page this user started',
+	'echo-category-title-feedback-moderated' => 'Label name, in notification preferences, for notifications sent when someone moderated feedback that this user submitted',
+	'echo-pref-tooltip-feedback-moderated' => 'Tooltip for the label, in notification preferences, for notifications sent when someone moderated feedback that this user submitted',
+	'articlefeedbackv5-notification-link-text-view-feedback' => 'Text for notification button that links to the feedback that generated the notification',
+	'articlefeedbackv5-notification-feedback-watch' => "Format for displaying notifications when feedback was marked useful on a post watched by the user. Parameters:
+* $1 is the username of the person who edited, plain text. Can be used for GENDER.
+* $2 is link to the page the feedback was submitted for (link text = page name)
+* $3 is link to the feedback entry (link text = {{msg-mw|articlefeedbackv5-notification-feedback-permalink-text}})
+* $4 is the moderation status of the feedback entry {{msg-mw|articlefeedbackv5-notification-feedback-moderation-flag-*}}.",
+	'articlefeedbackv5-notification-feedback-moderated' => "Format for displaying notifications when the user's feedback was moderated. Parameters:
+* $1 is the username of the person who edited, plain text. Can be used for GENDER.
+* $2 is link to the page the feedback was submitted for (link text = page name)
+* $3 is link to the feedback entry (link text = {{msg-mw|articlefeedbackv5-notification-feedback-permalink-text}})
+* $4 is the moderation status of the feedback entry {{msg-mw|articlefeedbackv5-notification-feedback-moderation-flag-*}}.",
+	'articlefeedbackv5-notification-feedback-watch' => "Format for displaying notifications in the flyout when feedback was marked useful on a post watched by the user. Parameters:
+* $1 is the username of the person who edited, plain text. Can be used for GENDER.
+* $2 is link to the page the feedback was submitted for (link text = page name)
+* $3 is link to the feedback entry (link text = {{msg-mw|articlefeedbackv5-notification-feedback-permalink-text}})
+* $4 is the moderation status of the feedback entry {{msg-mw|articlefeedbackv5-notification-feedback-moderation-flag-*}}.",
+	'articlefeedbackv5-notification-feedback-moderated' => "Format for displaying notifications in the flyout when the user's feedback was moderated. Parameters:
+* $1 is the username of the person who edited, plain text. Can be used for GENDER.
+* $2 is link to the page the feedback was submitted for (link text = page name)
+* $3 is link to the feedback entry (link text = {{msg-mw|articlefeedbackv5-notification-feedback-permalink-text}})
+* $4 is the moderation status of the feedback entry {{msg-mw|articlefeedbackv5-notification-feedback-moderation-flag-*}}.",
+	'articlefeedbackv5-notification-feedback-watch-email-subject' => "E-mail subject for notification when feedback was marked useful on a post watched by the user. Parameters:
+* $1 is a username. Can be used for GENDER
+* $2 the title of the page the user edited
+* $3 is link to the feedback entry
+* $4 is the moderation status of the feedback entry {{msg-mw|articlefeedbackv5-notification-feedback-moderation-flag-*}}",
+	'articlefeedbackv5-notification-feedback-watch-email-body' => "E-mail body for notification when feedback was marked useful on a post watched by the user. Parameters:
+* $1 is a username. Can be used for GENDER
+* $2 the title of the page the user edited
+* $3 is link to the feedback entry
+* $4 is the moderation status of the feedback entry {{msg-mw|articlefeedbackv5-notification-feedback-moderation-flag-*}}
+* $5 is the feedback comment
+* $6 is the e-mail footer, {{msg-mw|echo-email-footer-default}}.",
+	'articlefeedbackv5-notification-feedback-watch-email-batch-body' => 'Batch e-mail message for notification when feedback was marked useful on a post watched by the user. Parameters:
+* $1 is a username. Can be used for GENDER.
+* $2 is link to the page the feedback was submitted for (link text = page name)
+* $3 is link to the feedback entry (link text = {{msg-mw|articlefeedbackv5-notification-feedback-permalink-text}})
+* $4 is the moderation status of the feedback entry {{msg-mw|articlefeedbackv5-notification-feedback-moderation-flag-*}}.',
+	'articlefeedbackv5-notification-feedback-watch-bundle' => 'Format for displaying bundled notifications in the flyout when feedback was marked useful on a post watched by the user. Parameters:
+* $1 is the username of the person who edited, plain text. Can be used for GENDER.
+* $2 is link to the page the feedback was submitted for (link text = page name)
+* $3 is the moderation status of the feedback entry {{msg-mw|articlefeedbackv5-notification-feedback-moderation-flag-*}}
+* $4 is the link to all feedbacks for this page (link text = {{msg-mw|articlefeedbackv5-notification-feedback-titlelink-text}})
+* $5 is the count of other feedback entries, can be number or {{msg-mw|echo-notification-count}}
+* $6 is a number used for plural support.',
+	'articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body' => 'E-mail body for bundled notification when feedback was marked useful on a post watched by the user. Parameters:
+* $1 is a username. Can be used for GENDER
+* $2 the title of the page the user edited
+* $3 is the moderation status of the feedback entry {{msg-mw|articlefeedbackv5-notification-feedback-moderation-flag-*}}
+* $4 is the link to all feedbacks for this page (link text = {{msg-mw|articlefeedbackv5-notification-feedback-titlelink-text}})
+* $5 is the count of other feedback entries, can be number or {{msg-mw|echo-notification-count}}
+* $6 is a number used for plural support.',
+	'articlefeedbackv5-notification-feedback-moderated-email-subject' => "E-mail subject for notification when the user's feedback was moderated. Parameters:
+* $1 is a username. Can be used for GENDER
+* $2 the title of the page the user edited
+* $3 is link to the feedback entry
+* $4 is the moderation status of the feedback entry {{msg-mw|articlefeedbackv5-notification-feedback-moderation-flag-*}}",
+	'articlefeedbackv5-notification-feedback-moderated-email-body' => "E-mail body for notification when the user's feedback was moderated. Parameters:
+* $1 is a username. Can be used for GENDER
+* $2 the title of the page the user edited
+* $3 is link to the feedback entry
+* $4 is the moderation status of the feedback entry {{msg-mw|articlefeedbackv5-notification-feedback-moderation-flag-*}}
+* $5 is the feedback comment
+* $6 is the e-mail footer, {{msg-mw|echo-email-footer-default}}.",
+	'articlefeedbackv5-notification-feedback-moderated-email-batch-body' => "Batch e-mail message for notification when the user's feedback was moderated. Parameters:
+* $1 is a username. Can be used for GENDER.
+* $2 is link to the page the feedback was submitted for (link text = page name)
+* $3 is link to the feedback entry (link text = {{msg-mw|articlefeedbackv5-notification-feedback-permalink-text}})
+* $4 is the moderation status of the feedback entry {{msg-mw|articlefeedbackv5-notification-feedback-moderation-flag-*}}.",
+	'articlefeedbackv5-notification-feedback-moderated-bundle' => "Format for displaying bundled notifications in the flyout when the user's feedback was moderated. Parameters:
+* $1 is the username of the person who edited, plain text. Can be used for GENDER.
+* $2 is link to the page the feedback was submitted for (link text = page name)
+* $3 is link to the feedback entry (link text = {{msg-mw|articlefeedbackv5-notification-feedback-permalink-text}})
+* $4 is the count of other link-from page title, can be number or {{msg-mw|echo-notification-count}}
+* $5 is a number used for plural support.",
+	'articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body' => "E-mail body for bundled notification when the user's feedback was moderated. Parameters:
+* $1 is a username. Can be used for GENDER
+* $2 the title of the page the user edited
+* $3 is link to the feedback entry (link text = {{msg-mw|articlefeedbackv5-notification-feedback-permalink-text}})
+* $4 is the feedback comment
+* $5 is the count of other link-from page title, can be number or {{msg-mw|echo-notification-count}}
+* $6 is a number used for plural support.",
 );
 
 /** Afrikaans (Afrikaans)
