@@ -34,6 +34,24 @@
       "revId": "a9877103cc48e97e74b44c8ea59d5b6ec5877c30",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9845590_e71f9167",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-07-19T17:44:09Z",
+      "side": 1,
+      "message": "Maybe constructing the new text block as a new message and pass it to here as a parameter?",
+      "parentUuid": "c9845590_b531320d",
+      "revId": "a9877103cc48e97e74b44c8ea59d5b6ec5877c30",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
