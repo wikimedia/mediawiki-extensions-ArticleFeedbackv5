@@ -16,6 +16,24 @@
       "revId": "a9877103cc48e97e74b44c8ea59d5b6ec5877c30",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9845590_b531320d",
+        "filename": "ArticleFeedbackv5.i18n.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-07-19T13:30:31Z",
+      "side": 1,
+      "message": "It\u0027s not mandatory, but (contrary to other moderation actions) a comment is requested before submitting the oversight request.\n\nIn theory, an empty note is possible. In practice, out of 124 oversight requests since 2013, only 2 had no note.\n\nDo you have an idea how it could be done better? Perhaps I could add a numParam to conditionally display the comment?",
+      "parentUuid": "49c305cb_f0a4655b",
+      "revId": "a9877103cc48e97e74b44c8ea59d5b6ec5877c30",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
