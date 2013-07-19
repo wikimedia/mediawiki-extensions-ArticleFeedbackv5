@@ -52,6 +52,23 @@
       "revId": "a9877103cc48e97e74b44c8ea59d5b6ec5877c30",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9845590_8ab6cc3b",
+        "filename": "ArticleFeedbackv5.mailerJob.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 776
+      },
+      "writtenOn": "2013-07-19T18:06:31Z",
+      "side": 1,
+      "message": "as long as we are toying with syntax, i kind of like\n\nstatic private $requiredParams \u003d array( \u0027user_name\u0027, \u0027user_url\u0027, ...);\n\n$missing \u003d array_diff( self::$requiredParams, array_keys( $params ) );\nif ( $missing ) {\n  log some error\n  ...\n}\n\nbut either way is fine :)",
+      "revId": "a9877103cc48e97e74b44c8ea59d5b6ec5877c30",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
