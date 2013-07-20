@@ -15806,7 +15806,9 @@ $6
 	'articlefeedbackv5-section-linktext' => '피드백',
 	'articlefeedbackv5-toolbox-view' => '피드백 보기',
 	'articlefeedbackv5-toolbox-add' => '피드백 추가',
-	'articlefeedbackv5-disable-preference' => '문서에 평가 도구 표시하지 않기',
+	'articlefeedbackv5-leave-warning' => '입력한 데이터는 저장되지 않을 수 있습니다.',
+	'articlefeedbackv5-toolbox-enable' => '피드백 활성화',
+	'articlefeedbackv5-disable-preference' => '문서에 평가 도구 보이지 않기',
 	'right-aft-reader' => '피드백 게시 및 유용하거나 유용하지 않은 것으로 표시',
 	'right-aft-member' => '피드백 게시 및 유용하거나 유용하지 않은 것으로 표시',
 	'right-aft-editor' => '알참 및 해결 피드백',
@@ -15898,6 +15900,7 @@ $3
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => '이 도구를 제거하겠습니까?',
+	'articlefeedbackv5-disable-flyover-help-message' => '문서 피드백을 제거하려면, "$1" > "$2"로 가고 나서 "$3"를 선택하세요',
 	'articlefeedbackv5-disable-flyover-prefbutton' => '사용자 환경 설정으로 가기',
 	'abusefilter-edit-action-aftv5flagabuse' => '(문서 평가) 부정 행위로 자동 플래그',
 	'abusefilter-edit-action-aftv5hide' => '(문서 평가) 자동 숨김',
