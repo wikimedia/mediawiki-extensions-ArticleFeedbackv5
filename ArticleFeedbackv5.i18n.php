@@ -4554,6 +4554,7 @@ $messages['ce'] = array(
 	'articlefeedbackv5-form-unarchive' => 'Цаоьшу',
 	'articlefeedbackv5-form-unoversight' => 'Цаоьшу',
 	'articlefeedbackv5-discussion-page' => 'Дийцаре',
+	'articlefeedbackv5-whats-this' => 'ГӀо',
 	'articlefeedbackv5-mask-view-contents' => 'Чулацаме хьажар',
 );
 
@@ -8772,6 +8773,7 @@ $4',
  * @author Nike
  * @author Olli
  * @author Silvonen
+ * @author Snidata
  * @author Stryn
  * @author VezonThunder
  */
@@ -8812,6 +8814,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-error-flagging' => 'Virhe merkittäessä palautetta.',
 	'articlefeedbackv5-error-throttled' => 'Viestisi on hylätty, koska olet äskettäiten lähettänyt enemmän palautetta kuin {{GRAMMAR:genitive|{{SITENAME}}}} palautetyökalun ohjeissa on suositeltu. Ethän lähetä palautetta toistuvasti.',
 	'articlefeedbackv5-protection-level' => 'Palaute artikkelista',
+	'articlefeedbackv5-protection-level-error' => 'Artikkelipalautteen suojaustaso ei saa olla suurempi kuin muokkaamisen suojaustaso',
 	'articlefeedbackv5-protection-permission-reader' => 'Salli kaikille käyttäjille',
 	'articlefeedbackv5-protection-permission-member' => 'Salli vain kirjautuneille käyttäjille',
 	'articlefeedbackv5-protection-permission-editor' => 'Salli vain automaattisesti hyväksytyille käyttäjille',
@@ -8837,6 +8840,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-special-filter-featured' => 'Nostettu ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Avulias ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Epäavulias ($1)',
+	'articlefeedbackv5-special-filter-flagged' => 'Merkitty ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'Ratkaistu ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'Piilotettu ($1)',
 	'articlefeedbackv5-special-filter-requested' => 'Häivytystä pyydetty ($1)',
@@ -8846,6 +8850,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-special-filter-featured-watchlist' => 'Nostettu',
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Hyödyllinen',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Hyödytön',
+	'articlefeedbackv5-special-filter-flagged-watchlist' => 'Merkitty',
 	'articlefeedbackv5-special-filter-useful-watchlist' => 'Hyödyllinen',
 	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Ratkaistu',
 	'articlefeedbackv5-special-filter-archived-watchlist' => 'Arkistoitu',
@@ -8895,6 +8900,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-feature-marker' => 'Hyödyllinen',
 	'articlefeedbackv5-resolve-marker' => 'Ratkaistu',
 	'articlefeedbackv5-noaction-marker' => 'Käyttäjän toimia ei tarvita',
+	'articlefeedbackv5-inappropriate-marker' => 'Asiaton',
 	'articlefeedbackv5-archive-marker' => 'Arkistoitu',
 	'articlefeedbackv5-form-abuse-count' => '$1 {{PLURAL:$1|merkintä|merkintää}}',
 	'articlefeedbackv5-form-note-added' => 'Huomautus lisätty',
@@ -8914,11 +8920,24 @@ $messages['fi'] = array(
 	'articlefeedbackv5-form-archive' => 'Arkistoi',
 	'articlefeedbackv5-form-unarchive' => 'Kumoa',
 	'articlefeedbackv5-form-helpful' => 'Merkitse hyödylliseksi ($1)',
+	'articlefeedbackv5-form-flag' => 'Merkitse väärinkäytöksi',
 	'articlefeedbackv5-form-oversight' => 'Häivytys',
 	'articlefeedbackv5-form-unoversight' => 'Kumoa',
+	'articlefeedbackv5-form-request' => 'Pyydä häivytystä',
+	'articlefeedbackv5-form-unrequest' => 'Peruuta häivytyspyyntö',
 	'articlefeedbackv5-form-decline' => 'Hylkää häivytys',
 	'articlefeedbackv5-form-declined' => 'Häivytyspyyntö hylätty',
+	'articlefeedbackv5-form-discuss-talk' => 'Ota puheeksi keskustelusivulla',
+	'articlefeedbackv5-form-discuss-user' => 'Ota yhteyttä viestin kirjoittajaan',
+	'articlefeedbackv5-form-discuss-talk-exists' => 'Katso keskustelusivu',
+	'articlefeedbackv5-form-discuss-user-exists' => 'Katso viesti käyttäjän keskustelusivulla',
+	'articlefeedbackv5-form-tooltip-note' => 'Lisää selitys merkinnällesi',
 	'articlefeedbackv5-form-tooltip-feature' => 'Tämä voi auttaa parantamaan sivua',
+	'articlefeedbackv5-form-tooltip-unfeature' => 'Poista käyttökelpoinen-merkintä',
+	'articlefeedbackv5-form-tooltip-resolve' => 'Tämä otettiin huomioon',
+	'articlefeedbackv5-form-tooltip-unresolve' => 'Poista selvitetty-merkintä',
+	'articlefeedbackv5-form-tooltip-unnoaction' => 'Peruuta käyttökelvottomaksi merkitseminen',
+	'articlefeedbackv5-form-tooltip-uninappropriate' => 'Poista asiaton-merkintä',
 	'articlefeedbackv5-discuss-talk-section-title' => 'Lukijapalaute: $1',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 löysi, mitä olivat etsimässä.}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 ei löytänyt, mitä olivat etsimässä.}}',
@@ -9154,10 +9173,8 @@ P.S.: Jos sinulla on kysyttävää artikkelipalautesivun häivytystoimintojen k�
 
 $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-title' => 'Poistetaanko työkalu?',
-	'articlefeedbackv5-disable-flyover-help' => '$1 voi poistaa menemällä $2 ja valitsemalla asetuksen $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Palautetyökalun',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Asetukset > Ulkoasu',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Siirry asetuksiin',
+	'abusefilter-edit-action-aftv5flagabuse' => 'Merkitse automaattisesti väärinkäytöksi',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Piilotettu automaattisesti. Sääntö: $1',
 	'articlefeedbackv5-abusefilter-note-aftv5request' => 'Pyydetty häivytystä automaattisesti. Sääntö: $1',
 );
@@ -9183,6 +9200,7 @@ $4', # Fuzzy
  * @author Ltrlg
  * @author McDutchie
  * @author Metroitendo
+ * @author Nemo bis
  * @author Nnemo
  * @author Od1n
  * @author Peter17
@@ -9413,7 +9431,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-form-tooltip-discuss-user' => "Discutez de vos commentaires avec l'utilisateur",
 	'articlefeedbackv5-discuss-talk-section-title' => 'Retour du lecteur :$1',
 	'articlefeedbackv5-discuss-user-section-title' => 'Vos commentaires sur « $2 »',
-	'articlefeedbackv5-discuss-talk-section-content' => '$1 a posté [[$2|ce commentaire]] sur $3 ([[$5|voir tous les retours]]). 
+	'articlefeedbackv5-discuss-talk-section-content' => '$1 a posté [[$2|ce commentaire]] le $3 ([[$5|voir tous les retours]]). 
 
 $6
 
@@ -17173,6 +17191,18 @@ $messages['lv'] = array(
 	'articlefeedbackv5-section-linktext' => 'atsauksmes',
 	'articlefeedbackv5-toolbox-view' => 'Skatīt atsauksmes',
 	'articlefeedbackv5-toolbox-add' => 'Pievienot savu atsauksmi',
+);
+
+/** Literary Chinese (文言)
+ * @author Yanteng3
+ */
+$messages['lzh'] = array(
+	'articlefeedbackv5-cta1-edit-linktext' => '纂此頁',
+	'articlefeedbackv5-cta4-button-text-signup' => '增簿',
+	'articlefeedbackv5-cta4-button-text-login' => '登簿',
+	'articlefeedbackv5-overlay-close' => '關',
+	'articlefeedbackv5-error-unknown' => '未明之錯',
+	'articlefeedbackv5-contribs-status-action-helpful' => '有助',
 );
 
 /** Basa Banyumasan (Basa Banyumasan)
@@ -25568,6 +25598,7 @@ $messages['sv'] = array(
 	'articlefeedbackv5-form-tooltip-unoversight' => 'Ångra censur',
 	'articlefeedbackv5-form-tooltip-request' => 'Offensiv, privat data...',
 	'articlefeedbackv5-form-tooltip-unrequest' => 'Ångra censurbegäran',
+	'articlefeedbackv5-form-tooltip-discuss-talk' => 'Diskutera feedback på sidans diskussionssida',
 	'articlefeedbackv5-form-tooltip-discuss-user' => 'Diskutera feedback med den användare som lämnade den',
 	'articlefeedbackv5-discuss-talk-section-title' => 'Läsarfeedback: $1',
 	'articlefeedbackv5-discuss-user-section-title' => 'Din feedback på "$2"',
@@ -25685,6 +25716,7 @@ Vi uppskattar dina bidrag till denna sida!
 	'articlefeedbackv5-permalink-status-unresolve' => '{{GENDER:$1|<strong>Avmarkerades som löst</strong> av $1}} $2',
 	'articlefeedbackv5-permalink-status-inappropriate' => '{{GENDER:$1|<strong>Dold</strong> av  $1}} $2 sedan',
 	'articlefeedbackv5-permalink-status-uninappropriate' => '{{GENDER:$1|<strong>Togs fram</strong> av $1}} $2 sedan',
+	'articlefeedbackv5-permalink-status-archive' => '{{GENDER:$1|<strong>Arkiverades</strong> av $1}} $2',
 	'articlefeedbackv5-permalink-status-hide' => '{{GENDER:$1|<strong>Doldes</strong> av $1}} $2',
 	'articlefeedbackv5-permalink-status-unhide' => '{{GENDER:$1|<strong>Togs fram</strong> av $1}} $2',
 	'articlefeedbackv5-permalink-status-helpful' => '{{GENDER:$1|<strong>Markerades som hjälpsam</strong> av $1}} $2',
@@ -25827,6 +25859,7 @@ dessa fel innan du begär tillsyn:
 	'articlefeedbackv5-section-linktext' => 'feedback',
 	'articlefeedbackv5-toolbox-view' => 'Visa feedback',
 	'articlefeedbackv5-toolbox-add' => 'Lägg till din feedback',
+	'articlefeedbackv5-leave-warning' => 'Data som du har angett kanske inte sparas.',
 	'articlefeedbackv5-toolbox-enable' => 'Aktivera feedback',
 	'articlefeedbackv5-disable-preference' => 'Visa inte artikelbedömnings-widget på sidor',
 	'right-aft-reader' => 'Skicka in feedback och markera som (inte) hjälpsamt',
