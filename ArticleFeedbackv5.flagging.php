@@ -201,7 +201,7 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		// send an email to oversighter(s)
-		$this->sendOversightEmail();
+		$this->sendOversightEmail( $notes );
 
 		return true;
 	}
@@ -941,8 +941,10 @@ class ArticleFeedbackv5Flagging {
 	 * requestor page url and name - if all this data can be retrieved properly
 	 * it shoves an email job into the queue for sending to the oversighters'
 	 * mailing list - only called for NEW oversight requests
+	 *
+	 * @param string[optional] $notes Additional text to include in the email
 	 */
-	protected function sendOversightEmail() {
+	protected function sendOversightEmail( $notes = '' ) {
 		global $wgUser;
 
 		// jobs need a title object
@@ -963,10 +965,11 @@ class ArticleFeedbackv5Flagging {
 		// build our params
 		$params = array(
 			'user_name' => $wgUser->getName(),
-			'user_url' => $userPage->getCanonicalUrl(),
+			'user_url' => $userPage->getFullURL( '', false, PROTO_HTTPS ),
 			'page_name' => $page->getPrefixedText(),
-			'page_url' => $page->getCanonicalUrl(),
-			'permalink' => $permalink->getCanonicalUrl()
+			'page_url' => $page->getFullURL( '', false, PROTO_HTTPS ),
+			'permalink' => $permalink->getFullURL( '', false, PROTO_HTTPS ),
+			'notes' => $notes
 		);
 
 		$job = new ArticleFeedbackv5MailerJob( $page, $params );
