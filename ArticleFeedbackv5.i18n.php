@@ -8237,10 +8237,10 @@ $messages['fa'] = array(
 	'articlefeedbackv5-disabled-reader' => 'نظردهی غیرفعال شده‌است. خوانندگان نخواهندتوانست بازخورد جدیدی برای این صفحه گذارند.',
 	'articlefeedbackv5-disabled-admin-button-text' => 'تغییر سطح محافظت',
 	'articlefeedbackv5-disabled-editor-button-text' => 'فعال کردن پیشنهادها و انتقادها',
-	'articlefeedbackv5-settings-status-enable' => 'فعال کردن پیشنهادات و انتقادات در این صفحه',
-	'articlefeedbackv5-settings-status-disable' => 'غیرفعال کردن پیشنهادات و انتقادات در این صفحه',
+	'articlefeedbackv5-settings-status-enable' => 'فعال کردن بازخوردها در این صفحه',
+	'articlefeedbackv5-settings-status-disable' => 'غیرفعال کردن بازخوردها در این صفحه',
 	'articlefeedbackv5-enabled-form-message' => 'سیستم نظردهی همین‌اکنون فعال شد. فرستاده‌های خوانندگان در [$1 at the feedback page] قابل رویت خواهد‌بود.',
-	'articlefeedbackv5-contribs-entry' => '$1. . $2 . . [[$3|پیشنهادات و انتقادات:  $4 ]]$5 $6 $7',
+	'articlefeedbackv5-contribs-entry' => '$1. . $2 . . [[$3|بازخورد:  $4 ]]$5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . وضعیت: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'سودمند',
 	'articlefeedbackv5-contribs-status-action-flag' => 'پرچم‌گذاری‌شده',
@@ -8299,12 +8299,12 @@ $messages['fa'] = array(
 	'articlefeedbackv5-special-sort-helpful-desc' => 'سودمند',
 	'articlefeedbackv5-special-sort-helpful-asc' => 'غیر سودمند',
 	'articlefeedbackv5-special-sort-age-desc' => 'جدیدترین',
-	'articlefeedbackv5-special-sort-age-asc' => 'قدیمی ترین',
-	'articlefeedbackv5-special-sort-label' => 'ترتیب بر پایۀ:',
+	'articlefeedbackv5-special-sort-age-asc' => 'قدیمی‌ترین',
+	'articlefeedbackv5-special-sort-label' => 'ترتیب بر پایه:',
 	'articlefeedbackv5-special-filter-select-more' => 'بیشتر',
 	'articlefeedbackv5-special-count-total' => '{{PLURAL:$2|1 ارسال| $1  ارسال}}',
 	'articlefeedbackv5-special-count-total-title' => '$1 {{PLURAL:$1|ارسال|ارسال}} با نظر، $2 {{PLURAL:$2|ارسال|ارسال}} بدون نظر',
-	'articlefeedbackv5-special-watchlist-showing' => 'انتقادات و پیشنهادات برای صفحه‌های پیگیری‌شده توسط  [[$1|$2]]',
+	'articlefeedbackv5-special-watchlist-showing' => 'بازخورد برای صفحه‌های پیگیری‌شده توسط  [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|بازخورد صفحه‌های پیگیری من]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|مشاهده بازخوردهای همه صفحات]]',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 ویرایش|$1 ویرایش}} از زمان ارسال',
@@ -8342,7 +8342,7 @@ $messages['fa'] = array(
 	'articlefeedbackv5-hide-marker' => 'پنهان',
 	'articlefeedbackv5-feature-marker' => 'مفید',
 	'articlefeedbackv5-resolve-marker' => 'حل شده',
-	'articlefeedbackv5-noaction-marker' => 'اقدامی لازم نیست',
+	'articlefeedbackv5-noaction-marker' => 'اقدامی نیاز نیست',
 	'articlefeedbackv5-inappropriate-marker' => 'نامناسب',
 	'articlefeedbackv5-archive-marker' => 'بایگانی شد',
 	'articlefeedbackv5-form-abuse-count' => '$1 پرچم',
@@ -8362,7 +8362,7 @@ $messages['fa'] = array(
 	'articlefeedbackv5-form-unhide' => 'واگردانی',
 	'articlefeedbackv5-form-archive' => 'بایگانی',
 	'articlefeedbackv5-form-unarchive' => 'واگردانی',
-	'articlefeedbackv5-form-helpful' => 'علامت گذاری به عنوان  مفید ( $1 )',
+	'articlefeedbackv5-form-helpful' => 'علامت‌گذاری به عنوان  مفید ( $1 )',
 	'articlefeedbackv5-form-flag' => 'آن را نامناسب علامت بزنید',
 	'articlefeedbackv5-form-oversight' => 'پنهان‌کردن',
 	'articlefeedbackv5-form-unoversight' => 'واگردانی',
@@ -8370,7 +8370,7 @@ $messages['fa'] = array(
 	'articlefeedbackv5-form-unrequest' => 'لغو درخواست پنهان‌گری',
 	'articlefeedbackv5-form-decline' => 'رد کردن درخواست پنهان‌گری',
 	'articlefeedbackv5-form-declined' => 'پنهانگری رد شد',
-	'articlefeedbackv5-form-discuss-talk' => 'در صفحه بحث، بحث کنید',
+	'articlefeedbackv5-form-discuss-talk' => 'در صفحه بحث، به بحث بپردازید',
 	'articlefeedbackv5-form-discuss-user' => 'با نویسنده پست تماس بگیرید',
 	'articlefeedbackv5-form-discuss-talk-exists' => 'بحث‌ها را ببینید',
 	'articlefeedbackv5-form-discuss-user-exists' => 'پیام در صفحه بحث کاربری را ببینید',
@@ -8383,21 +8383,21 @@ $messages['fa'] = array(
 	'articlefeedbackv5-form-tooltip-unnoaction' => 'واگردانی پرچم غیر عملی',
 	'articlefeedbackv5-form-tooltip-noaction-own' => 'معلوم نیست، بی‌ربط، ستایش، تکراری...',
 	'articlefeedbackv5-form-tooltip-unnoaction-own' => 'واگردانی پرچم غیر عملی',
-	'articlefeedbackv5-form-tooltip-inappropriate' => 'بی‌ربط، اسپم، داده های خصوصی و توهین آمیز...',
+	'articlefeedbackv5-form-tooltip-inappropriate' => 'بی‌ربط، اسپم، داده‌های خصوصی و توهین آمیز...',
 	'articlefeedbackv5-form-tooltip-uninappropriate' => 'واگردانی پرچم نامناسب',
-	'articlefeedbackv5-form-tooltip-hide' => 'بی‌ربط، اسپم، داده های خصوصی و توهین آمیز...',
+	'articlefeedbackv5-form-tooltip-hide' => 'بی‌ربط، اسپم، داده‌های خصوصی و توهین آمیز...',
 	'articlefeedbackv5-form-tooltip-unhide' => 'آشکار نمودن',
 	'articlefeedbackv5-form-tooltip-archive' => 'به علت طولانی بودن یا مفید نبودن نادیده‌گرفته‌می‌شود',
 	'articlefeedbackv5-form-tooltip-unarchive' => 'عدم بایگانی',
-	'articlefeedbackv5-form-tooltip-flag' => 'بی‌ربط، اسپم، داده های خصوصی و توهین آمیز...',
-	'articlefeedbackv5-form-tooltip-oversight' => 'توهین آمیز، داده های خصوصی...',
+	'articlefeedbackv5-form-tooltip-flag' => 'بی‌ربط، اسپم، داده‌های خصوصی و توهین آمیز...',
+	'articlefeedbackv5-form-tooltip-oversight' => 'توهین آمیز، داده‌های خصوصی...',
 	'articlefeedbackv5-form-tooltip-unoversight' => 'واگردانی پنهان‌گری',
-	'articlefeedbackv5-form-tooltip-request' => 'توهین آمیز،داده‌های خصوصی...',
+	'articlefeedbackv5-form-tooltip-request' => 'توهین آمیز، داده‌های خصوصی...',
 	'articlefeedbackv5-form-tooltip-unrequest' => 'واگردانی درخواست پنهان‌گری',
 	'articlefeedbackv5-form-tooltip-decline' => 'رد درخواست پنهان‌گری',
 	'articlefeedbackv5-form-tooltip-discuss-talk' => 'بحث در مورد بازخوردها در صفحه بحث',
 	'articlefeedbackv5-form-tooltip-discuss-user' => 'بحث در مورد بازخورد با کاربر ارسال‌کنندهٔ آن',
-	'articlefeedbackv5-discuss-talk-section-title' => 'خوانندهٔ بازخورد :$1',
+	'articlefeedbackv5-discuss-talk-section-title' => 'بازخورد خوانندگان :$1',
 	'articlefeedbackv5-discuss-user-section-title' => 'بازخوردهای شما در " $2 "',
 	'articlefeedbackv5-discuss-talk-section-content' => '$1 ارسال کرد [[$2|این نظر]] در  $3  ([[$5|دیدن همه بازخوردها]]).
 
@@ -8757,7 +8757,7 @@ $3
 
 پی نوشت: اگر شما هرگونه سوالی درمورد استفاده دسترسی پنهانگری در بازخورد مقاله ها دارید، لطفا راهنمای پنهانگری را ببینید:
 
-$4',
+$4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-title' => 'حذف کردن این ابزار؟',
 	'articlefeedbackv5-disable-flyover-help-message' => 'برای حذف بازخورد مقاله  به " $1 " > " $2 "و برای بررسی" $3 " بروید.',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'رفتن به ترجیحات من',
@@ -9801,7 +9801,7 @@ L’équipe de {{SITENAME}}
 
 P.S. : Si vous avez des questions sur le masquage des pages de commentaires, veuillez regarder cette FAQ des masqueurs :
 
-$4',
+$4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-title' => 'Supprimer cet outil&nbsp;?',
 	'articlefeedbackv5-disable-flyover-help-message' => 'Pour supprimer le commentaire de l’article, allez sur "$1" > "$2" et cochez « $3 »',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Aller à mes préférences',
@@ -15692,6 +15692,7 @@ $6
 	'articlefeedbackv5-permalink-status-undo-helpful' => '$2에 {{GENDER:$1|$1에 의해 <strong>유용한 것으로 표시 취소함</strong>}}',
 	'articlefeedbackv5-permalink-status-unhelpful' => '$2에 {{GENDER:$1|$1에 의해 <strong>유용하지 않은 것으로 표시함</strong>}}',
 	'articlefeedbackv5-permalink-status-undo-unhelpful' => '$2에 {{GENDER:$1|$1에 의해 <strong>유용하지 않은 것으로 표시 취소함</strong>}}',
+	'articlefeedbackv5-permalink-last-action' => '마지막 행동',
 	'articlefeedbackv5-permalink-activity-more' => '더 많은 작업 보기...',
 	'articlefeedbackv5-permalink-activity-fewer' => '더 적은 작업 보기...',
 	'articlefeedbackv5-noteflyover-feature-caption' => '유용한 것으로 표시함',
@@ -15922,7 +15923,7 @@ $3
 
 추신: 만약 문서 피드백 페이지의 오버사이트 기능을 사용하는 것에 대한 질문이 있다면, 오버사이트 FAQ를 참고하세요:
 
-$4',
+$4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-title' => '이 도구를 제거하겠습니까?',
 	'articlefeedbackv5-disable-flyover-help-message' => '문서 피드백을 제거하려면, "$1" > "$2"로 가고 나서 "$3"를 선택하세요',
 	'articlefeedbackv5-disable-flyover-prefbutton' => '사용자 환경 설정으로 가기',
@@ -25955,7 +25956,7 @@ P.S.: Om du har några frågor om hur man använder censurfunktionen för
 artikelfeedbackssidorna, var god kolla på denna sida med frågor och
 svar om censur:
 
-$4',
+$4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-title' => 'Ta bort detta verktyg?',
 	'articlefeedbackv5-disable-flyover-help-message' => 'För att ta bort Artikelfeedback, gå till "$1" > "$2" och markera "$3"',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Gå till mina inställningar',
@@ -28315,7 +28316,7 @@ $3
 
 P.S.: Якщо у вас є якісь запитання щодо використання можливостей приховування на сторінці відгуків до статей, будь ласка, перегляньте ЧаПи приховувачів:
 
-$4',
+$4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-title' => 'Вилучити цей інструмент?',
 	'articlefeedbackv5-disable-flyover-help-message' => 'Щоб вилучити механізм зворотного зв\'язку, перейдіть у "$1" > "$2" і змініть "$3"',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Перейти до налаштувань',
@@ -29380,7 +29381,7 @@ $3
 
 注：如果您有关于在条目反馈页使用隐藏功能任何疑问，请阅读此监督员常见问题解答：
 
-$4',
+$4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-title' => '移除此工具吗？',
 	'articlefeedbackv5-disable-flyover-help-message' => '若要删除文章回馈，请到“$1”>“$2”，并检查“$3”',
 	'articlefeedbackv5-disable-flyover-prefbutton' => '前往我的设置',
