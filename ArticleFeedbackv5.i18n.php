@@ -2166,8 +2166,8 @@ Parameters:
 * $2 – Page name of item with feedback requiring oversight
 * $3 – URL directly to feedback location
 * $4 – The help link
-* $5 - Additional comment added to clarify the oversight request: {{mw-msg|articlefeedbackv5-email-request-oversight-body-notes}}, or nothing at all if no moderation notes',
-	'articlefeedbackv5-email-request-oversight-body-notes' => 'Text block used in {{mw-msg|articlefeedbackv5-email-request-oversight-body}}, to display additional moderation comments (if present) in the oversight email. Parameters:
+* $5 - Additional comment added to clarify the oversight request: {{msg-mw|articlefeedbackv5-email-request-oversight-body-notes}}, or nothing at all if no moderation notes',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'Text block used in {{msg-mw|articlefeedbackv5-email-request-oversight-body}}, to display additional moderation comments (if present) in the oversight email. Parameters:
 * $1 - Additional comment added to clarify the oversight request',
 	'articlefeedbackv5-disable-flyover-title' => 'Title of the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
 	'articlefeedbackv5-disable-flyover-help-message' => "Help text for the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool.
@@ -4842,6 +4842,7 @@ $messages['cu'] = array(
 	'articlefeedbackv5-cta2-button-text' => 'поꙁнаи вѧщє',
 	'articlefeedbackv5-cta4-button-text-login' => 'въниди',
 	'articlefeedbackv5-cta4-button-text-or' => 'или',
+	'articlefeedbackv5-overlay-close' => 'ꙁакрꙑи',
 	'articlefeedbackv5-error-unknown' => 'нєвѣдома блаꙁна',
 	'articlefeedbackv5-contribs-status-action-hide' => 'съкрꙑи',
 	'articlefeedbackv5-form-helpful-yes-label' => 'да',
@@ -5685,6 +5686,7 @@ $2
 Bitte prüfe diese Rückmeldung und akzeptiere diesen Antrag bzw. lehne ihn ab:
 
 $3
+$5
 
 Vielen Dank,
 
@@ -5693,6 +5695,9 @@ das Team von {{SITENAME}}
 PS: Sofern du Fragen zur Nutzung der Oversightfunktion auf Seiten mit Rückmeldungen hast, besuche bitte die Seite mit den häufigen Fragen:
 
 $4',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'Dieser Kommentar wurde der Oversight-Anfrage hinzugefügt:
+
+$1',
 	'articlefeedbackv5-disable-flyover-title' => 'Diese Funktion entfernen?',
 	'articlefeedbackv5-disable-flyover-help-message' => 'Um Artikel-Feedback zu entfernen, gehe nach „$1“ > „$2“ und wähle „$3“',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Zu meinen Einstellungen',
@@ -8185,7 +8190,7 @@ $messages['eu'] = array(
  */
 $messages['fa'] = array(
 	'articlefeedbackv5-cta-thanks' => 'سپاس!',
-	'articlefeedbackv5-cta-confirmation-message' => 'پست شما را می‌توان در [ $1  صفحه انتقادها و پیشنهادها] مشاهده کرد.',
+	'articlefeedbackv5-cta-confirmation-message' => 'بازخورد ارسالی شما را می‌توان در [$1  صفحهٔ بازخورد] مشاهده کرد.',
 	'articlefeedbackv5-cta1-confirmation-title' => 'آیا می‌دانید که می‌توانید این صفحه را ویرایش کنید؟',
 	'articlefeedbackv5-cta1-confirmation-call' => 'پیشرفت {{SITENAME}} از آنجاست که همه می‌توانند صفحه‌های آن را ویرایش کنند. بیایید شما هم امتحان کنید. جسور باشید!',
 	'articlefeedbackv5-cta1-learn-how' => 'بیاموزید چگونه ویرایش کنید.',
@@ -8306,7 +8311,7 @@ $messages['fa'] = array(
 	'articlefeedbackv5-special-count-total-title' => '$1 {{PLURAL:$1|ارسال|ارسال}} با نظر، $2 {{PLURAL:$2|ارسال|ارسال}} بدون نظر',
 	'articlefeedbackv5-special-watchlist-showing' => 'بازخورد برای صفحه‌های پیگیری‌شده توسط  [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|بازخورد صفحه‌های پیگیری من]]',
-	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|مشاهده بازخوردهای همه صفحات]]',
+	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|مشاهدهٔ بازخوردهای همهٔ صفحات]]',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 ویرایش|$1 ویرایش}} از زمان ارسال',
 	'articleFeedbackv5-details-link' => 'جزئیات',
 	'articlefeedbackv5-revision-link' => '(مشاهدهٔ صفحهٔ قدیمی)',
@@ -8371,7 +8376,7 @@ $messages['fa'] = array(
 	'articlefeedbackv5-form-decline' => 'رد کردن درخواست پنهان‌گری',
 	'articlefeedbackv5-form-declined' => 'پنهانگری رد شد',
 	'articlefeedbackv5-form-discuss-talk' => 'در صفحه بحث، به بحث بپردازید',
-	'articlefeedbackv5-form-discuss-user' => 'با نویسنده پست تماس بگیرید',
+	'articlefeedbackv5-form-discuss-user' => 'با نویسندهٔ بازخورد تماس بگیرید',
 	'articlefeedbackv5-form-discuss-talk-exists' => 'بحث‌ها را ببینید',
 	'articlefeedbackv5-form-discuss-user-exists' => 'پیام در صفحه بحث کاربری را ببینید',
 	'articlefeedbackv5-form-tooltip-note' => 'یک توضیح برای علامت‌زدنتان بنویسید',
@@ -8408,9 +8413,9 @@ $6
 ~~~~',
 	'articlefeedbackv5-discuss-user-section-content' => 'با تشکر از ارسال نظراتان در " $7 ".
 
-نظر شما ارسال شده‌است در  $3  ([[$5|دیدن همه بازخوردها]]).
+در  تاریخ $3  نظر شما ارسال شده‌است . ([[$5|دیدن همه بازخوردها]])
 
-$6
+متن: $6
 
 از شما برای مشارکت در این صفحه تشکر می‌کنیم!
 
@@ -8436,7 +8441,7 @@ $6
 	'articlefeedbackv5-invalid-feedback-flag' => 'پرچم بازخورد نامعتبر',
 	'articlefeedbackv5-invalid-feedback-state' => 'وضعیت پرچم بازخورد نامعتبر',
 	'articlefeedbackv5-feedback-reloaded-after-error' => 'یک خطا ($1) رخ داد. بازخورد از نو بارگیری شد تا وضعیت موجودش را نشان دهد.',
-	'articlefeedbackv5-go-to-article' => 'مشاهده صفحه',
+	'articlefeedbackv5-go-to-article' => 'مشاهدهٔ صفحه',
 	'articlefeedbackv5-discussion-page' => 'بحث',
 	'articlefeedbackv5-whats-this' => 'راهنما',
 	'articlefeedbackv5-settings-menu-title' => 'تنظیمات',
@@ -8450,13 +8455,13 @@ $6
 	'articlefeedbackv5-comment-empty' => 'هیچ متنی وارد نشده است',
 	'articlefeedbackv5-unsupported-message' => 'با عرض پوزش ، مرورگر شما توسط این نمونه پشتیبانی نمی شود. برای دیدن این صفحه لطفاً از یک مرورگر دیگر استفاده کنید.',
 	'articlefeedbackv5-page-disabled' => 'صفحه نظرات مقاله برای این مقاله فعال نیست.',
-	'articlefeedbackv5-no-feedback' => 'هیچ بازخوردی برای پالایه ای که شما انتخاب کرده اید وجود ندارد. برای تغییر پالایه خود لطفا یکی از موارد زیر را امتحان کنید.  (e.g.: "برگزیده" or "بررسی نشده").',
+	'articlefeedbackv5-no-feedback' => 'هیچ بازخوردی برای پالایه‌ای که شما انتخاب کرده‌اید وجود ندارد. برای تغییر پالایه، لطفاً یکی از موارد زیر را امتحان کنید.  (مثلاً: "برگزیده" یا "بازبینی نشده").',
 	'articlefeedbackv5-invalid-feedback' => 'صفحهٔ بازخورد درخواستی وجود ندارد.',
 	'articlefeedbackv5-viewactivity' => 'نمایش فعالیت',
 	'articlefeedbackv5-mask-view-contents' => 'نمایش محتوا',
 	'articlefeedbackv5-mask-text-inappropriate' => 'به این پست #$1 {{GENDER:$2| برچسب نامناسب زده شده توسط  $2 }}  $3 .',
 	'articlefeedbackv5-mask-text-autohide' => 'این پست #$1 {{GENDER:$2| به طور خودکار پنهان شده، توسط  $2}} $3 .',
-	'articlefeedbackv5-mask-text-hide' => 'این نظر #$1 {{GENDER:$2| پنهان شده توسط  $}} $3 .',
+	'articlefeedbackv5-mask-text-hide' => 'این بازخورد ارسالی #$1 {{GENDER:$2|پنهان‌شده توسط $2}} در $3 .',
 	'articlefeedbackv5-mask-text-oversight' => 'این پست #$1 {{GENDER:$2| پنهان شده توسط  $2}} $3 .',
 	'articlefeedbackv5-special-disclaimer' => 'این یک نمونه است. لطفاً از آن استفاده نکنید مگر که دعوت شده باشید.',
 	'articlefeedbackv5-special-goback' => 'نمایش صفحهٔ بازخورد',
@@ -8590,13 +8595,13 @@ $6
 	'articlefeedbackv5-noteflyover-unarchive-submit' => 'افزودن یادداشت',
 	'articlefeedbackv5-noteflyover-unarchive-help' => 'اطلاعات بیشتر',
 	'articlefeedbackv5-noteflyover-request-caption' => 'درخواست نظارت',
-	'articlefeedbackv5-noteflyover-request-description' => 'قبل از درخواست پنهان‌گری  لطفا آن ارسال را بررسی کنید که
- یکی از این موارد زیر را داشته باشد:
- * شماره تلفن
- * آدرس ایمیل
- * لینک‌های مستهجن
- * نظرات توهین‌آمیز/افترا آمیز در مورد یک فرد
- * [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy معیارهای دیگر پنهان‌گری]',
+	'articlefeedbackv5-noteflyover-request-description' => 'قبل از درخواست پنهان‌گری  لطفاً بازخورد ارسالی را بررسی کنید که
+یکی از این موارد زیر را داشته باشد:
+* شمارهٔ تلفن
+* آدرس ایمیل
+* پیوندهای مستهجن
+* نظرهای توهین‌آمیز/افترا آمیز در مورد یک فرد
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy معیارهای دیگر پنهان‌گری]',
 	'articlefeedbackv5-noteflyover-request-label' => 'افزودن یادداشت',
 	'articlefeedbackv5-noteflyover-request-placeholder' => 'چرا شما درخواست بررسی دادید؟',
 	'articlefeedbackv5-noteflyover-request-submit' => 'درخواست پنهان‌گری',
@@ -8642,7 +8647,7 @@ $6
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'شما می‌توانید به ما دستی بدهید؟',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'بیشتر بدانید',
 	'articlefeedbackv5-bucket6-title' => 'به بهبود این صفحه کمک کنید',
-	'articlefeedbackv5-bucket6-question-toggle' => 'چیزی را که دنبالش بودید پیدا کردید؟',
+	'articlefeedbackv5-bucket6-question-toggle' => 'آنچه را جستجو می‌کردید، یافتید؟',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'بله',
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'خیر',
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'بله، آنچه را که دنبالش بودم پیدا کردم.',
@@ -9257,7 +9262,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-error-unknown' => 'Erreur inconnue.',
 	'articlefeedbackv5-error-submit' => 'Erreur lors de la soumission du formulaire.',
 	'articlefeedbackv5-error-duplicate' => 'Les commentaires soumis sont un doublon de vos derniers commentaires ; peut-être que vous avez envoyé accidentellement deux fois le même texte ?',
-	'articlefeedbackv5-error-nofeedback' => 'Veuillez entrer votre commentaire.',
+	'articlefeedbackv5-error-nofeedback' => 'Veuillez saisir votre commentaire.',
 	'articlefeedbackv5-error-flagging' => 'Erreur lors de la pose du marqueur sur l’avis.',
 	'articlefeedbackv5-error-throttled' => 'Votre message a été rejeté parce que vous avez validé récemment un nombre de commentaires supérieur à celui recommandé par les directives de commentaire de {{SITENAME}}. Veuillez ne pas publier vos commentaires à plusieurs reprises ou en trop grand nombre.',
 	'articlefeedbackv5-protection-level' => 'Commentaires au sujet de l’article',
@@ -9294,7 +9299,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-form-toolbox-label' => 'Marquer comme :',
 	'articlefeedbackv5-form-own-toolbox-label' => 'Marquer votre billet comme :',
 	'articlefeedbackv5-form-own-feedback' => 'Vous ne pouvez pas valider vos propres messages.',
-	'articlefeedbackv5-form-helpful-label' => 'Cet avis est-il utile&nbsp;?',
+	'articlefeedbackv5-form-helpful-label' => 'Ce commentaire est-il utile&nbsp;?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Oui',
 	'articlefeedbackv5-form-helpful-no-label' => 'Non',
 	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1 % des lecteurs ont trouvé cela utile}}',
@@ -9330,14 +9335,14 @@ $messages['fr'] = array(
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'Masqué',
 	'articlefeedbackv5-special-filter-requested-watchlist' => 'Masquage demandé',
 	'articlefeedbackv5-special-filter-declined-watchlist' => 'Masquage refusé',
-	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'Masqués (oversight)',
+	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'Masqué',
 	'articlefeedbackv5-special-filter-all-watchlist' => 'Tous les commentaires',
 	'articlefeedbackv5-special-sort-relevance-desc' => 'Pertinent',
 	'articlefeedbackv5-special-sort-relevance-asc' => 'Non pertinent',
 	'articlefeedbackv5-special-sort-helpful-desc' => 'Utile',
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Inutile',
-	'articlefeedbackv5-special-sort-age-desc' => 'Les plus récents',
-	'articlefeedbackv5-special-sort-age-asc' => 'Les plus anciens',
+	'articlefeedbackv5-special-sort-age-desc' => 'Les plus récents en premier',
+	'articlefeedbackv5-special-sort-age-asc' => 'Les plus anciens en premier',
 	'articlefeedbackv5-special-sort-label' => 'Trier par :',
 	'articlefeedbackv5-special-filter-select-more' => 'Plus',
 	'articlefeedbackv5-special-count-total' => '{{PLURAL:$2|Un commentaire|$1 commentaires}}',
@@ -9377,7 +9382,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-new-marker' => 'Nouveau',
 	'articlefeedbackv5-oversight-marker' => 'Masqué',
 	'articlefeedbackv5-autohide-marker' => 'Masqué',
-	'articlefeedbackv5-hide-marker' => 'Caché',
+	'articlefeedbackv5-hide-marker' => 'Masqué',
 	'articlefeedbackv5-feature-marker' => 'Utile',
 	'articlefeedbackv5-resolve-marker' => 'Résolu',
 	'articlefeedbackv5-noaction-marker' => 'Aucune action nécessaire',
@@ -9431,8 +9436,8 @@ $messages['fr'] = array(
 	'articlefeedbackv5-form-tooltip-oversight' => 'Offensif, données privées,...',
 	'articlefeedbackv5-form-tooltip-unoversight' => 'Annuler la surveillance',
 	'articlefeedbackv5-form-tooltip-request' => 'Offensif, données privées,...',
-	'articlefeedbackv5-form-tooltip-unrequest' => 'Annuler la demande de surveillance',
-	'articlefeedbackv5-form-tooltip-decline' => 'Refuser la demande de surveillance',
+	'articlefeedbackv5-form-tooltip-unrequest' => 'Annuler la demande de masquage',
+	'articlefeedbackv5-form-tooltip-decline' => 'Refuser la demande de masquage',
 	'articlefeedbackv5-form-tooltip-discuss-talk' => 'Discuter du commentaire sur la page de discussion de la page',
 	'articlefeedbackv5-form-tooltip-discuss-user' => "Discutez de vos commentaires avec l'utilisateur",
 	'articlefeedbackv5-discuss-talk-section-title' => 'Retour du lecteur :$1',
@@ -9462,7 +9467,7 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} a fait une suggestion :',
 	'articlefeedbackv5-form-anon-username' => 'Un lecteur',
 	'articlefeedbackv5-form-anon-message' => 'Posté anonymement par $1.',
-	'articlefeedbackv5-form-invalid' => 'Identifiant de formulaire d’avis non valide.',
+	'articlefeedbackv5-form-invalid' => 'Identifiant de formulaire de commentaire non valide.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} a publié un [[$4|commentaire]] sur $3',
 	'articlefeedbackv5-abuse-saved' => 'Marqué comme abusif',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Supprimer le marquage que vous aviez établi',
@@ -9483,7 +9488,7 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-found-percent-title' => 'Basé sur $1 {{PLURAL:$1|note|notes}} (sans les commentaires inappropriés)',
 	'articlefeedbackv5' => 'Évaluation d’article - Page centrale',
 	'articlefeedbackv5watchlist' => 'Commentaires des articles - Mes pages regardées',
-	'articlefeedbackv5-desc' => 'Évaluation d’article',
+	'articlefeedbackv5-desc' => 'Commentaire d’article',
 	'articlefeedbackv5-comment-more' => 'Plus',
 	'articlefeedbackv5-comment-empty' => "Aucun texte n'a été entré",
 	'articlefeedbackv5-unsupported-message' => "Désolé, votre navigateur n'est pas supporté par ce prototype. Pour voir cette page, veuillez utiliser un autre navigateur.",
@@ -9514,34 +9519,34 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-permalink-activity-title' => 'Activité',
 	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 action|$1 actions}})',
 	'articlefeedbackv5-permalink-activity-none' => 'Il n’y a eu aucune activité sur cet article.',
-	'articlefeedbackv5-short-status-request' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-unrequest' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-decline' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-autohide' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-oversight' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-unoversight' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-unflag' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-flag' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-autoflag' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-feature' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-unfeature' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-resolve' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-unresolve' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-noaction' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-unnoaction' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-inappropriate' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-uninappropriate' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-hide' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-unhide' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-archive' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-unarchive' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-helpful' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-undo-helpful' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-unhelpful' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-short-status-undo-unhelpful' => '{{GENDER:$1|Revu par $1}}',
-	'articlefeedbackv5-permalink-status-request' => 'Une <strong>masquage</strong> a été demandé par $1 il y a $2',
-	'articlefeedbackv5-permalink-status-unrequest' => '{{GENDER:$1|La fin de <strong>surveillance</strong> a été demandée par $1}} $2',
-	'articlefeedbackv5-permalink-status-decline' => 'La demande de <strong>masquage</strong> a été refusé par $1 il y a $2',
+	'articlefeedbackv5-short-status-request' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-unrequest' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-decline' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-autohide' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-oversight' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-unoversight' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-unflag' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-flag' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-autoflag' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-feature' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-unfeature' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-resolve' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-unresolve' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-noaction' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-unnoaction' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-inappropriate' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-uninappropriate' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-hide' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-unhide' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-archive' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-unarchive' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-helpful' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-undo-helpful' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-unhelpful' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-short-status-undo-unhelpful' => '{{GENDER:$1|Vérifié par $1}}',
+	'articlefeedbackv5-permalink-status-request' => 'Un <strong>masquage</strong> a été demandé par $1 il y a $2',
+	'articlefeedbackv5-permalink-status-unrequest' => '{{GENDER:$1|La demande de <strong>masquage</strong> a été annulée par $1}} $2',
+	'articlefeedbackv5-permalink-status-decline' => 'La demande de <strong>masquage</strong> a été refusée par $1 il y a $2',
 	'articlefeedbackv5-permalink-status-autohide' => '{{GENDER:$1|<strong>Masqué automatiquement</strong> par $1}} $2',
 	'articlefeedbackv5-permalink-status-oversight' => '<strong>Masqué</strong> par $1 il y a $2',
 	'articlefeedbackv5-permalink-status-unoversight' => '{{GENDER:$1|<strong>Plus surveillé</strong> par $1}} $2',
@@ -9637,7 +9642,7 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-noteflyover-request-placeholder' => 'Pourquoi avez-vous demandé un masquage ?',
 	'articlefeedbackv5-noteflyover-request-submit' => 'Demander un masquage',
 	'articlefeedbackv5-noteflyover-request-help' => 'En savoir plus',
-	'articlefeedbackv5-noteflyover-unrequest-caption' => 'Demande de surveillance annulée',
+	'articlefeedbackv5-noteflyover-unrequest-caption' => 'Demande de masquage annulée',
 	'articlefeedbackv5-noteflyover-unrequest-label' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Pourquoi avez-vous annuler la demande de masquage ?',
 	'articlefeedbackv5-noteflyover-unrequest-submit' => 'Annuler la demande',
@@ -9654,7 +9659,7 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-decline-caption' => 'Surveillance refusée',
 	'articlefeedbackv5-noteflyover-decline-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-decline-placeholder' => 'Pourquoi avez-vous refusé la surveillance?',
+	'articlefeedbackv5-noteflyover-decline-placeholder' => 'Pourquoi avez-vous refusé la demande de masquage ?',
 	'articlefeedbackv5-noteflyover-decline-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-decline-help' => 'En savoir plus',
 	'articlefeedbackv5-bucket1-title' => 'Aidez à améliorer cette page',
@@ -9718,36 +9723,36 @@ Nous apprécions vos contributions à cette page!
 	'right-aft-editor' => 'Retour mis en avant & résolu',
 	'right-aft-monitor' => 'Cacher retour et demander masquage',
 	'right-aft-administrator' => "Afficher l'outil de retour sur les pages protégées",
-	'right-aft-oversighter' => 'Avis de surveillance',
-	'log-name-articlefeedbackv5' => "Journal d'activité des retours",
-	'log-description-articlefeedbackv5' => 'Voici le journal d’activité des retours soumis par les lecteurs via l’outil de retour des articles.',
-	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|a soumis}} [[$3|un retour publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|a modifié l’état de masquage du}} [[$3|retour publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|a supprimé le masquage du}} [[$3|retour publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|a refusé le masquage pour}} [[$3|le retour  publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-request' => '$1 {{GENDER:$2|a demandé sur le masquage pour}} [[$3|le retour publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-unrequest' => '$1 {{GENDER:$2|a retiré la demande de masquage sur}} [[$3|le retour publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-flag' => '$1 {{GENDER:$2|a marqué comme abusif}} [[$3|le retour publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-unflag' => '$1 {{GENDER:$2|a supprimé le marquage comme abusif sur}} [[$3|le retour publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-autoflag' => '$1 {{GENDER:$2|a marqué automatiquement comme abusif}} [[$3|le retour publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-feature' => '$1 {{GENDER:$2|a marqué comme utile}} [[$3|le retour publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-unfeature' => '$1 {{GENDER:$2|a supprimé le marquage comme utile}} [[$3|du retour publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-resolve' => '$1 {{GENDER:$2|a marqué comme résolu}} [[$3|le retour publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-unresolve' => '$1 {{GENDER:$2|a supprimé le marquage comme résolu}} [[$3|du retour  publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-noaction' => '$1 {{GENDER:$2|a marqué}} [[$3|le retour  publié #$4]] sur [[$5]] comme ne nécessitant aucune action',
-	'logentry-articlefeedbackv5-unnoaction' => '$1 {{GENDER:$2|a supprimé le marquage comme ne nécessitant aucune action}} sur [[$3|le retour  publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-inappropriate' => '$1 {{GENDER:$2|a marqué comme inapproprié}} [[$3|le retour publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-uninappropriate' => "$1 {{GENDER:$2|a supprimé le marquage comme inapproprié de}} [[$3|l'avis publié #$4]] sur [[$5]]",
-	'logentry-articlefeedbackv5-archive' => '$1 {{GENDER:$2|a archivé}} [[$3|l’avis publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-unarchive' => '$1 {{GENDER:$2|a désarchivé}} [[$3|l’avis publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-hide' => '$1 {{GENDER:$2|a masqué}} [[$3|l’avis publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-unhide' => '$1 {{GENDER:$2|a démasqué}} [[$3|l’avis publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-autohide' => '$1 {{GENDER:$2|a caché automatiquement}} [[$3|l’avis publié #$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-helpful' => "$1 {{GENDER:$2|a marqué comme utile}} [[$3|l'avis publié #$4]] sur [[$5]]",
-	'logentry-articlefeedbackv5-unhelpful' => "$1 {{GENDER:$2|a marqué comme inutile}} [[$3|l'avis publié #$4]] sur [[$5]]",
-	'logentry-articlefeedbackv5-undo-helpful' => "$1 {{GENDER:$2|a supprimé le marquage comme utile de}} [[$3|l'avis publié #$4]] sur [[$5]]",
-	'logentry-articlefeedbackv5-undo-unhelpful' => "$1 {{GENDER:$2|a supprimé le marquage comme inutile de}} [[$3|l'avis publié #$4]] sur [[$5]]",
-	'logentry-articlefeedbackv5-clear-flags' => "$1 {{GENDER:$2|a effacé tous les marquages de}} [[$3|l'avis publié #$4]] sur [[$5]]",
+	'right-aft-oversighter' => 'Commentaire masquage',
+	'log-name-articlefeedbackv5' => "Journal d'activité des commentaires",
+	'log-description-articlefeedbackv5' => 'Voici le journal d’activité des commentaires soumis par les lecteurs via l’outil de commentaire d’article.',
+	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|a soumis}} [[$3|un commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|a modifié l’état de masquage du}} [[$3|commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|a supprimé le masquage du}} [[$3|commentaire publié #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|a refusé le masquage pour}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-request' => '$1 {{GENDER:$2|a demandé le masquage pour}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unrequest' => '$1 {{GENDER:$2|a retiré la demande de masquage pour}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-flag' => '$1 {{GENDER:$2|a marqué comme abusif}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unflag' => '$1 {{GENDER:$2|a supprimé le marquage comme abusif}} [[$3|du commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-autoflag' => '$1 {{GENDER:$2|a marqué automatiquement comme abusif}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-feature' => '$1 {{GENDER:$2|a marqué comme utile}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unfeature' => '$1 {{GENDER:$2|a supprimé le marquage comme utile}} [[$3|du commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-resolve' => '$1 {{GENDER:$2|a marqué comme résolu}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unresolve' => '$1 {{GENDER:$2|a supprimé le marquage comme résolu}} [[$3|du commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-noaction' => '$1 {{GENDER:$2|a marqué}} [[$3|le commentaire #$4]] sur [[$5]] comme ne nécessitant aucune action',
+	'logentry-articlefeedbackv5-unnoaction' => '$1 {{GENDER:$2|a supprimé le marquage comme ne nécessitant aucune action}} [[$3|du commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-inappropriate' => '$1 {{GENDER:$2|a marqué comme inapproprié}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-uninappropriate' => '$1 {{GENDER:$2|a supprimé le marquage comme inapproprié du}} [[$3|commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-archive' => '$1 {{GENDER:$2|a archivé}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unarchive' => '$1 {{GENDER:$2|a désarchivé}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-hide' => '$1 {{GENDER:$2|a masqué}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unhide' => '$1 {{GENDER:$2|a démasqué}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-autohide' => '$1 {{GENDER:$2|a masqué automatiquement}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-helpful' => '$1 {{GENDER:$2|a marqué comme utile}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unhelpful' => '$1 {{GENDER:$2|a marqué comme inutile}} [[$3|le commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|a supprimé le marquage comme utile}} [[$3|du commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|a supprimé le marquage comme inutile}} [[$3|du commentaire #$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|a effacé tous les marquages}} [[$3|du commentaire #$4]] sur [[$5]]',
 	'articlefeedbackv5-activity-pane-header' => "Journal d'activité",
 	'articlefeedbackv5-activity-feedback-info' => 'Commentaire par $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Publié le $1',
@@ -9785,23 +9790,27 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-talk-view-feedback' => 'Voir les commentaires des lecteurs',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Commentaires sur les pages que je suis',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Masquage demandé pour la page de commentaire de l’article',
-	'articlefeedbackv5-email-request-oversight-body' => 'Bonjour, masqueur !
+	'articlefeedbackv5-email-request-oversight-body' => 'Bonjour masqueurs de modification !
 
-Une surveillance a été demandée par $1 pour les commentaires postés sur cet page :
+Un masquage a été demandée par $1 pour les commentaires postés sur cette page :
 
 $2
 
 Veuillez relire le commentaire publié, puis refuser ou approuver la demande de masquage :
 
 $3
+$5
 
 Merci,
 
 L’équipe de {{SITENAME}}
 
-P.S. : Si vous avez des questions sur le masquage des pages de commentaires, veuillez regarder cette FAQ des masqueurs :
+P.S. : Si vous avez des questions sur le masquage des pages de commentaires, veuillez regarder cette FAQ :
 
-$4', # Fuzzy
+$4',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'Ce commentaire a été ajouté à la demande de masquage :
+
+$1',
 	'articlefeedbackv5-disable-flyover-title' => 'Supprimer cet outil&nbsp;?',
 	'articlefeedbackv5-disable-flyover-help-message' => 'Pour supprimer le commentaire de l’article, allez sur "$1" > "$2" et cochez « $3 »',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Aller à mes préférences',
@@ -17844,6 +17853,7 @@ $2
 Прегледајте го мислењето, па одобрете го или одбијте го скривањето:
 
 $3
+$5
 
 Ви благодариме,
 
@@ -17855,6 +17865,9 @@ $3
 П.С.: Доколку имате прашања во врска со употребата на функциите за скривање, погледајте ја страницата за ЧПП.
 
 $4',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'Кон барањето за скривање е придодаден следниов коментар:
+
+$1',
 	'articlefeedbackv5-disable-flyover-title' => 'Да ја отстранам алаткава?',
 	'articlefeedbackv5-disable-flyover-help-message' => 'За да го отстраните „Мислења за статии“, појдете на „$1“ > „$2“ и штиклирајте го „$3“',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Одете на вашите нагодувања',
@@ -29374,6 +29387,7 @@ $2
 请复查此反馈，然后通过或拒绝此隐藏请求：
 
 $3
+$5
 
 谢谢，
 
@@ -29381,7 +29395,7 @@ $3
 
 注：如果您有关于在条目反馈页使用隐藏功能任何疑问，请阅读此监督员常见问题解答：
 
-$4', # Fuzzy
+$4',
 	'articlefeedbackv5-disable-flyover-title' => '移除此工具吗？',
 	'articlefeedbackv5-disable-flyover-help-message' => '若要删除文章回馈，请到“$1”>“$2”，并检查“$3”',
 	'articlefeedbackv5-disable-flyover-prefbutton' => '前往我的设置',
