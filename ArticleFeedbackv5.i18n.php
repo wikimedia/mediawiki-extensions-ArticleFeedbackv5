@@ -4562,6 +4562,7 @@ $messages['ce'] = array(
 	'articlefeedbackv5-discussion-page' => 'Дийцаре',
 	'articlefeedbackv5-whats-this' => 'ГӀо',
 	'articlefeedbackv5-mask-view-contents' => 'Чулацаме хьажар',
+	'articlefeedbackv5-permalink-activity-title' => 'Дийраш',
 );
 
 /** Czech (česky)
@@ -4714,7 +4715,7 @@ $messages['cs'] = array(
 	'articlefeedbackv5-error-loading-feedback' => 'Chyba při načítání zpětné vazby',
 	'articlefeedbackv5-invalid-feedback-id' => 'Neplatné ID názoru',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Neplatné označení názoru',
-	'articlefeedbackv5-go-to-article' => 'Zobrazit článek', # Fuzzy
+	'articlefeedbackv5-go-to-article' => 'Zobrazit stránku',
 	'articlefeedbackv5-discussion-page' => 'Diskuse',
 	'articlefeedbackv5-whats-this' => 'Nápověda',
 	'articlefeedbackv5-settings-menu-title' => 'Nastavení',
@@ -7360,7 +7361,9 @@ $messages['es'] = array(
 
 $6
 
-Es de esa opinión?',
+Es de esa opinión?
+
+~~~~',
 	'articlefeedbackv5-discuss-user-section-content' => 'Gracias por publicar sus comentarios en "$7".
 
 Se ha publicado este comentario en $3 ([[$5|ver todos los comentarios]]).
@@ -7709,7 +7712,7 @@ El equipo de {{SITENAME}}
 
 PD: Si tienes alguna pregunta acerca de cómo utilizar las funciones de supresión de la página de comentarios del artículo, por favor lee esta FAQ del supresor:
 
-$4',
+$4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-title' => '¿Eliminar esta herramienta?',
 	'articlefeedbackv5-disable-flyover-help-message' => 'Para remover el Article Feedback, ve a $1 > $2 y mira $3',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ir a Mis preferencias',
@@ -8080,6 +8083,7 @@ $2
 Palun vaata see tagasiside postitus üle ning seejärel kiida palve heaks või lükka see tagasi:
 
 $3
+$5
 
 Aitäh
 
@@ -8091,10 +8095,10 @@ Meeskond
 PS Kui sul on artikli tagasiside lehekülje varjamisfunktsiooni kasutamise kohta küsimusi, vaata varjamise korduma kippuvaid küsimusi:
 
 $4',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'Varjamispalvele lisati see kommentaar:
+
+$1',
 	'articlefeedbackv5-disable-flyover-title' => 'Eemalda see tööriist?',
-	'articlefeedbackv5-disable-flyover-help' => 'Et eemaldada $1, mine $2 ja vali "$3"',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'artikli tagasiside',
-	'articlefeedbackv5-disable-flyover-help-location' => 'eelistuste kaardile "{{int:prefs-rendering}}"',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Mine eelistuste leheküljele',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Artikli tagasiside) Lisa automaatselt väärtarvituse silt',
 	'abusefilter-edit-action-aftv5hide' => '(Artikli tagasiside) Peida automaatselt',
@@ -9240,7 +9244,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-cta3-confirmation-call' => 'Cela ne prend qu’une minute et contribuera à l’amélioration de {{SITENAME}}.',
 	'articlefeedbackv5-cta3-button-text' => 'Commencer le sondage',
 	'articlefeedbackv5-cta4-confirmation-title' => 'Rejoindre notre communauté',
-	'articlefeedbackv5-cta4-confirmation-call-line1' => "Inscrivez-vous ou connectez-vous, ainsi les contributeurs pourrons répondre à votre retour d'expérience.",
+	'articlefeedbackv5-cta4-confirmation-call-line1' => 'Inscrivez-vous ou connectez-vous, ainsi les contributeurs pourront répondre à votre retour d’expérience.',
 	'articlefeedbackv5-cta4-confirmation-call-line2' => 'Créer un compte permet de partager plus facilement vos connaissances sur {{SITENAME}}.',
 	'articlefeedbackv5-cta4-button-text-signup' => 'Créer un compte',
 	'articlefeedbackv5-cta4-button-text-login' => 'Connexion',
@@ -9282,7 +9286,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-disabled-editor-button-text' => 'Autoriser les commentaires',
 	'articlefeedbackv5-settings-status-enable' => 'Autoriser les commentaires sur cette page',
 	'articlefeedbackv5-settings-status-disable' => 'Interdire les commentaires sur cette page',
-	'articlefeedbackv5-enabled-form-message' => 'Les commentaires viennent juste d’être autorisés. Les notes des lecteurs seront visibles [$1 sur la page de commentaire].',
+	'articlefeedbackv5-enabled-form-message' => 'Les commentaires viennent juste d’être autorisés. Les billets des lecteurs seront visibles [$1 sur la page de commentaire].',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Commentaire sur $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . État&nbsp;: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Utile',
@@ -9346,7 +9350,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-special-sort-label' => 'Trier par :',
 	'articlefeedbackv5-special-filter-select-more' => 'Plus',
 	'articlefeedbackv5-special-count-total' => '{{PLURAL:$2|Un commentaire|$1 commentaires}}',
-	'articlefeedbackv5-special-count-total-title' => '$1 {{PLURAL:$1|note|notes}} avec commentaires, $2 {{PLURAL:$2|note|notes}} sans',
+	'articlefeedbackv5-special-count-total-title' => '$1 billet{{PLURAL:$1||s}} avec commentaires, $2 billet{{PLURAL:$2||s}} sans',
 	'articlefeedbackv5-special-watchlist-showing' => 'Commentaires des pages suivies par [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Commentaires des pages que je suis]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Voir les commentaires de toutes les pages]]',
@@ -9426,13 +9430,13 @@ $messages['fr'] = array(
 	'articlefeedbackv5-form-tooltip-unnoaction' => 'Annuler le marquage « aucune action nécessaire »',
 	'articlefeedbackv5-form-tooltip-noaction-own' => 'Pas clair, hors sujet, éloge, doublon …',
 	'articlefeedbackv5-form-tooltip-unnoaction-own' => 'Annuler le marquage « aucune action nécessaire »',
-	'articlefeedbackv5-form-tooltip-inappropriate' => 'Absurde, spam, offensif, données privées,...',
+	'articlefeedbackv5-form-tooltip-inappropriate' => 'Absurde, spam, offensant, données privées,…',
 	'articlefeedbackv5-form-tooltip-uninappropriate' => 'Annuler le marquage « inapproprié »',
-	'articlefeedbackv5-form-tooltip-hide' => 'Absurde, spam, offensif, données privées,...',
+	'articlefeedbackv5-form-tooltip-hide' => 'Absurde, spam, offensant, données privées,…',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Afficher',
 	'articlefeedbackv5-form-tooltip-archive' => 'Ignoré pendant trop longtemps, considéré comme inutile',
 	'articlefeedbackv5-form-tooltip-unarchive' => 'Retirer des archives',
-	'articlefeedbackv5-form-tooltip-flag' => 'Absurde, spam, offensif, données privées,...',
+	'articlefeedbackv5-form-tooltip-flag' => 'Absurde, spam, offensant, données privées,…',
 	'articlefeedbackv5-form-tooltip-oversight' => 'Offensif, données privées,...',
 	'articlefeedbackv5-form-tooltip-unoversight' => 'Annuler la surveillance',
 	'articlefeedbackv5-form-tooltip-request' => 'Offensif, données privées,...',
@@ -9440,33 +9444,33 @@ $messages['fr'] = array(
 	'articlefeedbackv5-form-tooltip-decline' => 'Refuser la demande de masquage',
 	'articlefeedbackv5-form-tooltip-discuss-talk' => 'Discuter du commentaire sur la page de discussion de la page',
 	'articlefeedbackv5-form-tooltip-discuss-user' => "Discutez de vos commentaires avec l'utilisateur",
-	'articlefeedbackv5-discuss-talk-section-title' => 'Retour du lecteur :$1',
+	'articlefeedbackv5-discuss-talk-section-title' => 'Commentaire du lecteur : $1',
 	'articlefeedbackv5-discuss-user-section-title' => 'Vos commentaires sur « $2 »',
-	'articlefeedbackv5-discuss-talk-section-content' => '$1 a posté [[$2|ce commentaire]] le $3 ([[$5|voir tous les retours]]). 
+	'articlefeedbackv5-discuss-talk-section-content' => '$1 a publié [[$2|ce commentaire]] le $3 ([[$5|voir tous les retours]]). 
 
 $6
 
 Avez-vous des remarques à formuler ?
 
 ~~~~',
-	'articlefeedbackv5-discuss-user-section-content' => "Merci d'avoir posté votre retour sur « $7 ».
+	'articlefeedbackv5-discuss-user-section-content' => 'Merci d’avoir publié votre retour sur « $7 ».
 
-Vous avez posté ce commentaire sur $3 ([[$5|voir tous les retours]]).
+Vous avez publié ce commentaire sur $3 ([[$5|voir tous les retours]]).
 
 $6
 
-Nous apprécions vos contributions à cette page!
+Nous apprécions vos contributions à cette page !
 
-~~~~",
-	'articlefeedbackv5-form1-header-found' => "{{GENDER:$1|$2 a trouvé ce qu'il cherchait|$2 a trouvé ce qu'elle cherchait}}",
-	'articlefeedbackv5-form1-header-not-found' => "{{GENDER:$1|$2 n'a pas trouvé ce qu'il cherchait|$2 n'a pas trouvé ce qu'elle cherchait}}",
+~~~~',
+	'articlefeedbackv5-form1-header-found' => '$2 a trouvé ce qu’{{GENDER:$1|il|elle}} cherchait.',
+	'articlefeedbackv5-form1-header-not-found' => '$2 n’a pas trouvé ce qu’{{GENDER:$1|il|elle}} cherchait.',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 a publié un commentaire.}}',
 	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}} a fait un éloge :',
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} a eu un problème :',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} a une question :',
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} a fait une suggestion :',
 	'articlefeedbackv5-form-anon-username' => 'Un lecteur',
-	'articlefeedbackv5-form-anon-message' => 'Posté anonymement par $1.',
+	'articlefeedbackv5-form-anon-message' => 'Publié anonymement par $1.',
 	'articlefeedbackv5-form-invalid' => 'Identifiant de formulaire de commentaire non valide.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} a publié un [[$4|commentaire]] sur $3',
 	'articlefeedbackv5-abuse-saved' => 'Marqué comme abusif',
@@ -9478,14 +9482,14 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-invalid-log-update' => 'L’entrée du journal n’a pas pu être mise à jour',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Marquage de l’avis invalide',
 	'articlefeedbackv5-invalid-feedback-state' => 'État du drapeau de commentaire non valide',
-	'articlefeedbackv5-feedback-reloaded-after-error' => "Une erreur ($1) s'est produite. L'avis a été rechargé afin refléter son état actuel.",
+	'articlefeedbackv5-feedback-reloaded-after-error' => 'Une erreur ($1) s’est produite. Le commentaire a été rechargé afin de refléter son état actuel.',
 	'articlefeedbackv5-go-to-article' => 'Afficher l’article',
 	'articlefeedbackv5-discussion-page' => 'Discussion',
 	'articlefeedbackv5-whats-this' => 'Aide',
 	'articlefeedbackv5-settings-menu-title' => 'Paramètres',
 	'articlefeedbackv5-invalid-page-id' => 'Identifiant de page non valide',
 	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 ont trouvé ce qu’ils cherchaient}}',
-	'articlefeedbackv5-found-percent-title' => 'Basé sur $1 {{PLURAL:$1|note|notes}} (sans les commentaires inappropriés)',
+	'articlefeedbackv5-found-percent-title' => 'Basé sur $1 billet{{PLURAL:$1||s}} (sans les commentaires inappropriés)',
 	'articlefeedbackv5' => 'Évaluation d’article - Page centrale',
 	'articlefeedbackv5watchlist' => 'Commentaires des articles - Mes pages regardées',
 	'articlefeedbackv5-desc' => 'Commentaire d’article',
@@ -9505,11 +9509,11 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-special-goback' => 'Afficher la page de commentaires',
 	'articlefeedbackv5-special-central-goback' => 'Voir plus de commentaires des autres pages',
 	'articlefeedbackv5-permalink-info-title' => 'Informations au sujet de cet article',
-	'articlefeedbackv5-permalink-info-post-id' => 'Note #$1',
+	'articlefeedbackv5-permalink-info-post-id' => 'Billet #$1',
 	'articlefeedbackv5-permalink-written-by-editor' => 'Écrit par un utilisateur enregistré',
 	'articlefeedbackv5-permalink-written-by-reader' => 'Écrit par un utilisateur anonyme',
 	'articlefeedbackv5-permalink-info-revision-link' => 'Voir l’ancienne version de cette page',
-	'articlefeedbackv5-permalink-info-posted' => 'Posté le $1 à $2',
+	'articlefeedbackv5-permalink-info-posted' => 'Publié le $1 à $2',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Longueur',
 	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 mot|$1 mots}}',
 	'articlefeedbackv5-permalink-info-length-characters' => '({{PLURAL:$1|$1 caractère|$1 caractères}})',
@@ -9574,7 +9578,7 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-permalink-activity-fewer' => 'Afficher moins d’actions...',
 	'articlefeedbackv5-noteflyover-feature-caption' => 'Marqué comme utile',
 	'articlefeedbackv5-noteflyover-feature-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Pourquoi avez-vous marqué ce billet comme utile?',
+	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Pourquoi avez-vous marqué ce billet comme utile ?',
 	'articlefeedbackv5-noteflyover-feature-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-feature-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Ne plus marquer comme utile',
@@ -9589,12 +9593,12 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-noteflyover-resolve-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Plus marqué comme résolu',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Pourquoi avez-vous supprimé le marquage de ce billet comme résolu?',
+	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Pourquoi avez-vous supprimé le marquage de ce billet comme résolu ?',
 	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Masquer',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Pourquoi avez-vous masqué ce billet?',
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Pourquoi avez-vous masqué ce billet ?',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-hide-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-unhide-caption' => 'Démasquer',
@@ -9614,17 +9618,17 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-noteflyover-unnoaction-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-inappropriate-caption' => 'Marqué comme inapproprié',
 	'articlefeedbackv5-noteflyover-inappropriate-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-inappropriate-placeholder' => 'Pourquoi avez-vous marqué ce billet comme inapproprié?',
+	'articlefeedbackv5-noteflyover-inappropriate-placeholder' => 'Pourquoi avez-vous marqué ce billet comme inapproprié ?',
 	'articlefeedbackv5-noteflyover-inappropriate-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-inappropriate-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-uninappropriate-caption' => 'Plus marqué comme inapproprié',
 	'articlefeedbackv5-noteflyover-uninappropriate-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-uninappropriate-placeholder' => 'Pourquoi avez-vous supprimé le marquage de ce billet comme inapproprié?',
+	'articlefeedbackv5-noteflyover-uninappropriate-placeholder' => 'Pourquoi avez-vous supprimé le marquage de ce billet comme inapproprié ?',
 	'articlefeedbackv5-noteflyover-uninappropriate-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-uninappropriate-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-archive-caption' => 'Archivé',
 	'articlefeedbackv5-noteflyover-archive-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-archive-placeholder' => 'Pourquoi avez-vous archivé ce billet?',
+	'articlefeedbackv5-noteflyover-archive-placeholder' => 'Pourquoi avez-vous archivé ce billet ?',
 	'articlefeedbackv5-noteflyover-archive-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-archive-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-unarchive-caption' => 'Désarchiver',
@@ -9644,17 +9648,17 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-noteflyover-request-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-unrequest-caption' => 'Demande de masquage annulée',
 	'articlefeedbackv5-noteflyover-unrequest-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Pourquoi avez-vous annuler la demande de masquage ?',
+	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Pourquoi avez-vous annulé la demande de masquage ?',
 	'articlefeedbackv5-noteflyover-unrequest-submit' => 'Annuler la demande',
 	'articlefeedbackv5-noteflyover-unrequest-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-oversight-caption' => 'Masquer ce billet',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Pourquoi avez-vous surveillé ce billet?',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Pourquoi avez-vous surveillé ce billet ?',
 	'articlefeedbackv5-noteflyover-oversight-submit' => 'Surveiller',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Billet non surveillé',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Ajouter une note',
-	'articlefeedbackv5-noteflyover-unoversight-placeholder' => "Pourquoi n'avez-vous plus surveillé ce billet ?",
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Pourquoi avez-vous cessé de surveiller ce billet ?',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Ajouter une note',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'En savoir plus',
 	'articlefeedbackv5-noteflyover-decline-caption' => 'Surveillance refusée',
@@ -9668,7 +9672,7 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Non',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Oui, j’ai trouvé ce que je cherchais.',
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'Non, je n’ai pas trouvé ce que je cherchais.',
-	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'Comment cette page pourrait-elle être améliorée?',
+	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'Comment cette page pourrait-elle être améliorée ?',
 	'articlefeedbackv5-bucket1-question-placeholder-no' => 'Avez-vous des suggestions d’amélioration ?',
 	'articlefeedbackv5-bucket1-form-submit' => 'Publiez votre avis',
 	'articlefeedbackv5-bucket4-title' => 'Aidez à améliorer cette page',
@@ -9680,7 +9684,7 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-bucket4-help-tooltip-info' => '{{SITENAME}} voudrait savoir ce que vous pensez. Aidez à améliorer cette page en devenant un éditeur.',
 	'articlefeedbackv5-bucket4-noedit-title' => 'Aidez à améliorer {{SITENAME}}',
 	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'Ce site web est créé par des gens comme vous.',
-	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'Pouvez-vous nous donner un coup de main?',
+	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'Pouvez-vous nous donner un coup de main ?',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'En savoir plus',
 	'articlefeedbackv5-bucket6-title' => 'Aidez à améliorer cette page',
 	'articlefeedbackv5-bucket6-question-toggle' => 'Avez-vous trouvé ce que vous cherchiez ?',
@@ -9790,9 +9794,9 @@ Nous apprécions vos contributions à cette page!
 	'articlefeedbackv5-talk-view-feedback' => 'Voir les commentaires des lecteurs',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Commentaires sur les pages que je suis',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Masquage demandé pour la page de commentaire de l’article',
-	'articlefeedbackv5-email-request-oversight-body' => 'Bonjour masqueurs de modification !
+	'articlefeedbackv5-email-request-oversight-body' => 'Bonjour, masqueurs de modification !
 
-Un masquage a été demandée par $1 pour les commentaires postés sur cette page :
+Un masquage a été demandé par $1 pour les commentaires publiés sur cette page :
 
 $2
 
@@ -9805,7 +9809,7 @@ Merci,
 
 L’équipe de {{SITENAME}}
 
-P.S. : Si vous avez des questions sur le masquage des pages de commentaires, veuillez regarder cette FAQ :
+P.S. : Si vous avez des questions sur le masquage des pages de commentaires, veuillez consulter cette FAQ :
 
 $4',
 	'articlefeedbackv5-email-request-oversight-body-notes' => 'Ce commentaire a été ajouté à la demande de masquage :
@@ -10738,6 +10742,7 @@ $2
 Revisade esta mensaxe e aprobade ou rexeitade a solicitude de supervisión:
 
 $3
+$5
 
 Grazas,
 
@@ -10749,6 +10754,9 @@ P.S.: Se tedes algunha pregunta sobre o uso das ferramentas de supervisión,
 consultade as preguntas máis frecuentes dos supervisores:
 
 $4',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'Engadiuse este comentario á solicitude de supervisión:
+
+$1',
 	'articlefeedbackv5-disable-flyover-title' => 'Quere eliminar a ferramenta?',
 	'articlefeedbackv5-disable-flyover-help-message' => 'Para quitar a avaliación de artigos, vaia a "$1" > "$2" e marque "$3"',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ir ás preferencias',
@@ -15618,6 +15626,7 @@ $6
 	'articlefeedbackv5-settings-menu-title' => '설정',
 	'articlefeedbackv5-invalid-page-id' => '잘못된 페이지 ID',
 	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1(이)가 찾고 있던 것을 발견했습니다}}',
+	'articlefeedbackv5-found-percent-title' => '$1의 {{PLURAL:$1|게시물}}에 근거 (부적절한 덧글은 제외)',
 	'articlefeedbackv5' => '문서 평가 - 중앙 문서',
 	'articlefeedbackv5watchlist' => '문서 평가 - 내가 주시하는 문서',
 	'articlefeedbackv5-desc' => '문서 평가',
@@ -15832,7 +15841,8 @@ $6
 	'articlefeedbackv5-help-tooltip-title' => '어떤 기능인가요?',
 	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}}(은)는 당신이 이 문서에 대해 어떻게 생각하는지에 대해 듣고 싶어합니다. 편집자와 함께 피드백을 공유하고 나서 — 이 문서를 발전시키는 데 도움을 주세요.',
 	'articlefeedbackv5-help-tooltip-linktext' => '더 알아보기',
-	'articlefeedbackv5-help-transparency-terms' => '[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 유용한 피드백]을 게시하세요. 게시를 하면 [//wikimediafoundation.org/wiki/Feedback_privacy_statement 이용 약관]하에 투명성에 동의합니다.',
+	'articlefeedbackv5-help-transparency-terms' => '[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 유용한 피드백]을 게시하세요. 게시를 하면 [//wikimediafoundation.org/wiki/Feedback_privacy_statement 약관]에 따라 투명성에 동의합니다.',
+	'articlefeedbackv5-help-transparency-terms-anon' => '[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 유용한 피드백]을 게시하세요. 게시를 하면 IP 주소로 식별하고 [//wikimediafoundation.org/wiki/Feedback_privacy_statement 약관]에 따라 투명성에 동의합니다.',
 	'articlefeedbackv5-sitesub-linktext' => '이 문서 발전시키기',
 	'articlefeedbackv5-titlebar-linktext' => '이 문서를 발전시키는 데 도움을 주세요 >>',
 	'articlefeedbackv5-fixedtab-linktext' => '이 문서 발전시키기',
@@ -15915,7 +15925,7 @@ $6
 	'articlefeedbackv5-talk-view-feedback' => '독자 제안 보기',
 	'articlefeedbackv5-watchlist-view-feedback' => '내가 주시하는 문서에 대한 피드백',
 	'articlefeedbackv5-email-request-oversight-subject' => '오버사이트가 문서 평가 페이지에 요청됨',
-	'articlefeedbackv5-email-request-oversight-body' => '안녕하세요, 오버사이트!
+	'articlefeedbackv5-email-request-oversight-body' => '오버사이트, 안녕하세요!
 
 이 문서에 대해 피드백이 게시된 $1에 의한 오버사이트가 요청되었습니다:
 
@@ -15925,6 +15935,7 @@ $2
 요청:
 
 $3
+$5
 
 감사합니다.
 
@@ -15932,15 +15943,21 @@ $3
 
 추신: 만약 문서 피드백 페이지의 오버사이트 기능을 사용하는 것에 대한 질문이 있다면, 오버사이트 FAQ를 참고하세요:
 
-$4', # Fuzzy
+$4',
+	'articlefeedbackv5-email-request-oversight-body-notes' => '이 덧글은 오버사이트 요청에 추가되었습니다:
+
+$1',
 	'articlefeedbackv5-disable-flyover-title' => '이 도구를 제거하겠습니까?',
 	'articlefeedbackv5-disable-flyover-help-message' => '문서 피드백을 제거하려면, "$1" > "$2"로 가고 나서 "$3"를 선택하세요',
 	'articlefeedbackv5-disable-flyover-prefbutton' => '사용자 환경 설정으로 가기',
+	'abusefilter-edit-action-aftv5resolve' => '(문서 평가) 자동 해결',
+	'articlefeedbackv5-abusefilter-note-aftv5resolve' => '자동으로 해결했습니다. 규칙: $1',
 	'abusefilter-edit-action-aftv5flagabuse' => '(문서 평가) 부정 행위로 자동 플래그',
+	'articlefeedbackv5-abusefilter-note-aftv5flag' => '자동으로 부정 행위로 플래그했습니다. 규칙: $1',
 	'abusefilter-edit-action-aftv5hide' => '(문서 평가) 자동 숨김',
-	'articlefeedbackv5-abusefilter-note-aftv5hide' => '자동으로 숨깁니다. 규칙: $1',
+	'articlefeedbackv5-abusefilter-note-aftv5hide' => '자동으로 숨겼습니다. 규칙: $1',
 	'abusefilter-edit-action-aftv5request' => '(문서 평가) 오버사이트 자동 요청',
-	'articlefeedbackv5-abusefilter-note-aftv5request' => '오버사이트가 자동으로 요청됩니다. 규칙: $1',
+	'articlefeedbackv5-abusefilter-note-aftv5request' => '오버사이트가 자동으로 요청되었습니다. 규칙: $1',
 );
 
 /** Colognian (Ripoarisch)
@@ -23929,6 +23946,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-protection-permission-member' => 'Включить только для зарегистрированных участников',
 	'articlefeedbackv5-protection-permission-editor' => 'Включить только для автоподтверждённых участников',
 	'articlefeedbackv5-protection-permission-administrator' => 'Включить только для администраторов',
+	'articlefeedbackv5-protection-permission-noone' => 'Отключить для всех пользователей',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Обратная связь: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Статус: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Полезно',
@@ -23966,7 +23984,9 @@ $messages['ru'] = array(
 	'articlefeedbackv5-special-filter-featured-watchlist' => 'Избранные',
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Полезные',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Бесполезные',
+	'articlefeedbackv5-special-filter-useful-watchlist' => 'Полезно',
 	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Отработанные',
+	'articlefeedbackv5-special-filter-noaction-watchlist' => 'Действий не требуется',
 	'articlefeedbackv5-special-filter-archived-watchlist' => 'Архивировано',
 	'articlefeedbackv5-special-filter-allcomment-watchlist' => 'Все комментарии',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'Скрытые',
@@ -23982,6 +24002,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-special-sort-age-asc' => 'Самые старые',
 	'articlefeedbackv5-special-sort-label' => 'Сортировать по:',
 	'articlefeedbackv5-special-filter-select-more' => 'Ещё',
+	'articlefeedbackv5-special-count-total' => '$1 {{PLURAL:$2|сообщение|сообщения|сообщений}}',
 	'articlefeedbackv5-special-watchlist-showing' => 'Отзывы о статьях, за которыми наблюдает [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Отзывы о статьях из моего списка наблюдения]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Вид обратной связи от всех страниц]]',
@@ -24081,7 +24102,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-special-central-goback' => 'Отзывы на другие страницы',
 	'articlefeedbackv5-permalink-info-title' => 'Информация об этом отзыве',
 	'articlefeedbackv5-permalink-written-by-editor' => 'Написан зарегистрированным участником <span>с помощью формы обратной связи $1</span>', # Fuzzy
-	'articlefeedbackv5-permalink-written-by-reader' => 'Написан анонимом <span>с помощью формы обратной связи $1</span>', # Fuzzy
+	'articlefeedbackv5-permalink-written-by-reader' => 'Написан анонимным участником',
 	'articlefeedbackv5-permalink-info-revision-link' => 'См. старую версию этой страницы',
 	'articlefeedbackv5-permalink-info-posted' => 'Размещено $1  в $2',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Длина',
