@@ -3933,14 +3933,14 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Trugarez !',
 	'articlefeedbackv5-cta1-confirmation-title' => "Ha gouzout a rit e c'hallit degas kemmoù war ar bajenn-mañ ?",
-	'articlefeedbackv5-cta1-confirmation-call' => "Mont a ra WIkipedia en-dro peogwir e c'hall pep hini degas kemmoù war ar pajennoù anezhañ. Grit un tamm esae. Kredit ennoc'h !", # Fuzzy
+	'articlefeedbackv5-cta1-confirmation-call' => "Mont a ra {{SITENAME}} en-dro abalamour ma c'hall pep hini degas kemmoù war ar pajennoù anezhañ. Grit un tamm esae. Kredit ennoc'h !",
 	'articlefeedbackv5-cta1-learn-how' => 'Deskit penaos degas kemmoù en ur bajenn',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Degas kemmoù war ar bajenn-mañ',
 	'articlefeedbackv5-cta2-confirmation-title' => 'Hor skoazellit da wellaat {{SITENAME}}',
 	'articlefeedbackv5-cta2-confirmation-call' => "Gant tud eveldoc'h eo graet al lec'hienn-mañ. Ha mat eo deoc'h reiñ an dorn deomp ?",
 	'articlefeedbackv5-cta2-button-text' => "Gouzout hiroc'h.",
 	'articlefeedbackv5-cta3-confirmation-title' => "Respontit d'ur sontadeg vihan",
-	'articlefeedbackv5-cta3-confirmation-call' => 'Ne gemero nemet ur vunutenn hag hor skoazello da wellaat {{SITENAME}}.', # Fuzzy
+	'articlefeedbackv5-cta3-confirmation-call' => 'Ne gemero nemet ur vunutenn hag hor skoazello da wellaat {{SITENAME}}.',
 	'articlefeedbackv5-cta3-button-text' => 'Kregiñ gant ar sontadeg',
 	'articlefeedbackv5-cta4-confirmation-title' => 'Emezelañ er gumuniezh',
 	'articlefeedbackv5-cta4-button-text-signup' => 'Krouiñ ur gont',
@@ -3949,6 +3949,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-cta4-button-text-or' => 'pe',
 	'articlefeedbackv5-cta5-confirmation-title' => 'Gwelet ar pezh a soñj ar re all',
 	'articlefeedbackv5-cta5-button-text' => 'Diskouez an holl evezhiadennoù',
+	'articlefeedbackv5-cta6-confirmation-title' => 'Ezhomm ho peus sikour da aozañ {{SITENAME}}?',
 	'articlefeedbackv5-overlay-close' => 'Serriñ',
 	'articlefeedbackv5-error' => "C'hoarvezet ez eus ur fazi. Esaeit en-dro diwezhtaoc'h, mar plij.",
 	'articlefeedbackv5-error-blocked' => "N'hall ket an implijerien stanket kas evezhiadennoù.",
@@ -3959,6 +3960,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-error-nofeedback' => 'Roit ho soñj.',
 	'articlefeedbackv5-error-flagging' => 'Fazi en ur lakaat ar banniel war ar soñjadenn.',
 	'articlefeedbackv5-protection-level' => 'Soñjoù diwar-benn ar pennad',
+	'articlefeedbackv5-protection-permission-reader' => 'Gweredekaat evit an holl implijerien',
 	'articlefeedbackv5-protection-permission-administrator' => 'Gweredekaat evit ar verourien hepken',
 	'articlefeedbackv5-contribs-entry-status' => 'Statud : $1', # Fuzzy
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Talvoudus',
@@ -4015,10 +4017,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Didalvez',
 	'articlefeedbackv5-special-sort-age-desc' => 'Ar re nevesañ',
 	'articlefeedbackv5-special-sort-age-asc' => 'Ar re goshañ',
-	'articlefeedbackv5-special-sort-label-before' => 'Urzhiañ dre :',
-	'articlefeedbackv5-special-filter-label-before' => 'O tiskouez :',
-	'articlefeedbackv5-special-filter-select-more' => 'Siloù ouzhpenn',
-	'articlefeedbackv5-special-showing' => '{{PLURAL:$4|$3 soñj embannet|$3 soñj embannet}} (diwar-benn $1)', # Fuzzy
+	'articlefeedbackv5-special-filter-select-more' => 'Siloù ouzhpenn', # Fuzzy
 	'articlefeedbackv5-updates-since' => "{{PLURAL:$1|1 c'hemm|$1 kemm}} abaoe m'eo bet embannet",
 	'articleFeedbackv5-details-link' => 'Munudoù',
 	'articlefeedbackv5-revision-link' => '(gwelet ar pennad kozh)', # Fuzzy
@@ -4091,17 +4090,14 @@ $messages['br'] = array(
 	'articlefeedbackv5' => 'Taolenn vourzh priziañ ar pennad', # Fuzzy
 	'articlefeedbackv5-desc' => 'Soñjoù diwar-benn ar pennad',
 	'articlefeedbackv5-comment-more' => "Muioc'h",
-	'articlefeedbackv5-header-message-link-text' => "Gouzout hiroc'h",
-	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-page-disabled' => "N'eo ket gweredekaet ar bajenn evezhiadennoù evit ar pennad-mañ.",
 	'articlefeedbackv5-viewactivity' => 'Gwelet an obererezh', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => 'Diskouez an danvez',
 	'articlefeedbackv5-mask-text-hide' => 'Kuzhet eo bet an notenn-mañ gant ur skridaozer aotreet', # Fuzzy
 	'articlefeedbackv5-mask-text-oversight' => 'Evezhiet eo bet an notenn-mañ gant ur skridaozer aotreet', # Fuzzy
 	'articlefeedbackv5-permalink-info-title' => 'Titouroù diwar-benn ar pennad-mañ',
-	'articlefeedbackv5-permalink-info-subtitle' => '(#$1)',
-	'articlefeedbackv5-permalink-written-by-reader' => 'Skrivet gant un implijer dianav <span>dre ar furmskrid kas evezhiadennoù $1</span>',
-	'articlefeedbackv5-permalink-info-revision-link' => 'Gwelet ar stumm kozh',
+	'articlefeedbackv5-permalink-written-by-reader' => 'Skrivet gant un implijer dianav <span>dre ar furmskrid kas evezhiadennoù $1</span>', # Fuzzy
+	'articlefeedbackv5-permalink-info-revision-link' => 'Gwelet ar stumm kozh', # Fuzzy
 	'articlefeedbackv5-permalink-info-posted' => "Postet d'an $1 da $2",
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Hed',
 	'articlefeedbackv5-permalink-info-length-words' => '({{PLURAL:$1|$1 ger|$1 ger}})',
@@ -4204,15 +4200,12 @@ $messages['br'] = array(
 	'articlefeedbackv5-toolbox-add' => "Ouzhpennit hoc'h evezhiadenn",
 	'articlefeedbackv5-disable-preference' => 'Arabat diskwel ar bitrak Priziañ ar pennadoù er pajennoù.',
 	'articlefeedbackv5-activity-pane-header' => 'Marilh obererezh',
-	'articlefeedbackv5-activity-feedback-info' => 'Evezhiadenn bost #$1 gant $2',
+	'articlefeedbackv5-activity-feedback-info' => 'Evezhiadenn bost #$1 gant $2', # Fuzzy
 	'articlefeedbackv5-activity-feedback-date' => 'Postet war $1',
 	'articlefeedbackv5-activity-permalink' => 'Peurliamm',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 oberiadenn war an notenn-mañ|$1 oberiadenn war an notenn-mañ}}',
 	'articlefeedbackv5-activity-more' => "Diskouez muioc'h a obererezh",
 	'articlefeedbackv5-disable-flyover-title' => 'Lemel kuit an ostilh-mañ ?',
-	'articlefeedbackv5-disable-flyover-help' => 'Evit diverkañ $1, kit da $2 ha diuzit $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Soñjoù diwar-benn ar pennad',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Ma fenndibaboù > Neuz',
 	'articlefeedbackv5-disable-flyover-prefbutton' => "Mont da'm fenndibaboù",
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Kuzhet ent emgefre. Reolenn : $1',
 );
@@ -7131,6 +7124,7 @@ $4', # Fuzzy
  * @author Locos epraix
  * @author Luis Felipe Schenone
  * @author Mashandy
+ * @author McDutchie
  * @author Miguel2706
  * @author Od1n
  * @author Pedroca cerebral
@@ -7407,7 +7401,7 @@ Apreciamos sus contribuciones a esta página!',
 	'articlefeedbackv5-unsupported-message' => 'Lo sentimos, tu navegador no es compatible con este prototipo. Para ver esta página, utiliza un navegador diferente.',
 	'articlefeedbackv5-page-disabled' => 'La página de comentarios del artículo no ha sido habilitada para este artículo.',
 	'articlefeedbackv5-no-feedback' => 'No hay ningún comentario para el filtro seleccionado. Para cambiar el filtro, prueba con una de las opciones anteriores (ej: "Destacados" o "No revisados").',
-	'articlefeedbackv5-invalid-feedback' => 'La página no existe',
+	'articlefeedbackv5-invalid-feedback' => 'La evaluación solicitada no existe.', # Fuzzy
 	'articlefeedbackv5-viewactivity' => 'Ver la actividad',
 	'articlefeedbackv5-mask-view-contents' => 'Ver el contenido',
 	'articlefeedbackv5-mask-text-inappropriate' => 'Este post #$1 {{GENDER:$2|fue marcado como inapropiado por $2}} $3.',
@@ -12874,6 +12868,7 @@ $messages['ia'] = array(
 	'articlefeedbackv5-form-tooltip-uninappropriate' => 'Dismarcar como inappropriate',
 	'articlefeedbackv5-form-tooltip-hide' => 'Nonsenso, spam, offensive, datos private ...',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Revelar',
+	'articlefeedbackv5-form-tooltip-archive' => 'Ignorate durante troppo de tempore, non considerate utile',
 	'articlefeedbackv5-form-tooltip-unarchive' => 'Disarchivar',
 	'articlefeedbackv5-form-tooltip-flag' => 'Nonsenso, spam, offensive, datos private ...',
 	'articlefeedbackv5-form-tooltip-oversight' => 'Offensive, datos private ...',
@@ -12917,32 +12912,41 @@ Nos apprecia tu contributiones a iste pagina!
 	'articlefeedbackv5-error-loading-feedback' => 'Error durante le cargamento del evalutation.',
 	'articlefeedbackv5-insufficient-permissions' => 'Nivello de permission insufficiente',
 	'articlefeedbackv5-invalid-feedback-id' => 'ID de evalutation invalide',
+	'articlefeedbackv5-invalid-log-id' => 'ID de registro invalide',
+	'articlefeedbackv5-invalid-log-update' => 'Le entrata de registro non poteva esser actualisate',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Signalation de evalutation invalide',
 	'articlefeedbackv5-invalid-feedback-state' => 'Le stato del marca de commentario es invalide',
-	'articlefeedbackv5-go-to-article' => 'Vider articulo', # Fuzzy
+	'articlefeedbackv5-feedback-reloaded-after-error' => 'Un error ($1) ha occurrite. Le commentario ha essite recargate pro reflecter su stato actual.',
+	'articlefeedbackv5-go-to-article' => 'Vider pagina',
 	'articlefeedbackv5-discussion-page' => 'Discussion',
 	'articlefeedbackv5-whats-this' => 'Adjuta',
+	'articlefeedbackv5-settings-menu-title' => 'Configuration',
 	'articlefeedbackv5-invalid-page-id' => 'ID de pagina invalide',
-	'articlefeedbackv5-found-percent' => '$1 trovava lo que illes cercava', # Fuzzy
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 trovava lo que illes cercava}}',
+	'articlefeedbackv5-found-percent-title' => 'Basate sur $1 {{PLURAL:$1|message|messages}} (excludente commentos inappropriate)',
 	'articlefeedbackv5' => 'Evalutation de articulos – Pagina central',
 	'articlefeedbackv5watchlist' => 'Evalutation de articulos – Mi paginas observate',
 	'articlefeedbackv5-desc' => 'Evalutation de articulos',
 	'articlefeedbackv5-comment-more' => 'Plus',
+	'articlefeedbackv5-comment-empty' => 'Nulle texto ha essite entrate',
 	'articlefeedbackv5-unsupported-message' => 'Regrettabilemente, iste prototypo non supporta tu navigator del web. Pro vider iste pagina, per favor usa un altere navigator.',
 	'articlefeedbackv5-page-disabled' => 'Le functionalitate de evalutation non es active pro iste articulo.',
-	'articlefeedbackv5-no-feedback' => "Il non ha commentarios pro le filtro que tu ha seligite. Pro cambiar le filtro, essaya un del optiones supra (p.ex. 'le plus relevante' o 'tote le commentos').", # Fuzzy
-	'articlefeedbackv5-viewactivity' => 'Vider activitate', # Fuzzy
+	'articlefeedbackv5-no-feedback' => "Il non ha commentarios pro le filtro que tu ha seligite. Pro cambiar le filtro, essaya un del optiones supra (p.ex. 'Eminente' o 'Tote le commentos').",
+	'articlefeedbackv5-invalid-feedback' => 'Le evalutation requestate non existe.',
+	'articlefeedbackv5-viewactivity' => 'Vider activitate',
 	'articlefeedbackv5-mask-view-contents' => 'Vider contento',
-	'articlefeedbackv5-mask-text-autohide' => 'Iste message (№$1) {{GENDER:2|ha essite celate automaticamente per 2}} $3 retro.', # Fuzzy
-	'articlefeedbackv5-mask-text-hide' => '$2 celava iste message (№$1) $3 retro.', # Fuzzy
-	'articlefeedbackv5-mask-text-oversight' => '$2 mitteva iste message (№$1) sub supervision $3 retro.', # Fuzzy
+	'articlefeedbackv5-mask-text-inappropriate' => 'Iste entrata №$1 {{GENDER:$2|ha essite marcate como inappropriate per $2}} $3.',
+	'articlefeedbackv5-mask-text-autohide' => 'Iste message (№$1) {{GENDER:$2|ha essite celate automaticamente per $2}} $3.',
+	'articlefeedbackv5-mask-text-hide' => 'Iste message №$1 {{GENDER:$2|ha essite celate per $2}} $3.',
+	'articlefeedbackv5-mask-text-oversight' => 'Iste message №$1 {{GENDER:$2|ha essite mittite sub supervision per $2}} $3.',
 	'articlefeedbackv5-special-disclaimer' => 'Isto es un prototypo. Per favor non usa lo a minus que tu ha essite invitate a facer lo.',
 	'articlefeedbackv5-special-goback' => 'Vider pagina de evalutation',
 	'articlefeedbackv5-special-central-goback' => 'Vider plus commentos de altere paginas',
 	'articlefeedbackv5-permalink-info-title' => 'Information sur iste message',
-	'articlefeedbackv5-permalink-written-by-editor' => 'Scribite per un usator registrate <span>usante le formulario de evalutation $1</span>', # Fuzzy
-	'articlefeedbackv5-permalink-written-by-reader' => 'Scribite per un usator anonyme <span>usante le formulario de evalutation $1</span>', # Fuzzy
-	'articlefeedbackv5-permalink-info-revision-link' => 'Vider ancian version', # Fuzzy
+	'articlefeedbackv5-permalink-info-post-id' => 'Message №$1',
+	'articlefeedbackv5-permalink-written-by-editor' => 'Scribite per un usator registrate',
+	'articlefeedbackv5-permalink-written-by-reader' => 'Scribite per un usator anonyme',
+	'articlefeedbackv5-permalink-info-revision-link' => 'Vider ancian version de iste pagina',
 	'articlefeedbackv5-permalink-info-posted' => 'Publicate le $1 a $2',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Longitude',
 	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 parola|$1 parolas}}',
@@ -12953,51 +12957,119 @@ Nos apprecia tu contributiones a iste pagina!
 	'articlefeedbackv5-permalink-activity-title' => 'Activitate',
 	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 action|$1 actiones}})',
 	'articlefeedbackv5-permalink-activity-none' => 'Il non ha habite activitate sur iste message.',
-	'articlefeedbackv5-permalink-status-request' => '{{GENDER:$1|<strong>Supervision</strong> esseva requestate per $1}} $2 retro', # Fuzzy
-	'articlefeedbackv5-permalink-status-unrequest' => '{{GENDER:$1|Le requesta de <strong>supervision</strong> esseva cancellate per $1}} $2 retro', # Fuzzy
-	'articlefeedbackv5-permalink-status-decline' => '{{GENDER:$1|<strong>Supervision</strong> esseva declinate per $1}} $2 retro', # Fuzzy
-	'articlefeedbackv5-permalink-status-autohide' => '{{GENDER:$1|<strong>Celate automaticamente</strong> per $1}} $2 retro', # Fuzzy
-	'articlefeedbackv5-permalink-status-oversight' => '{{GENDER:$1|<strong>Mittite sub supervision</strong> per $1}} $2 retro', # Fuzzy
-	'articlefeedbackv5-permalink-status-unoversight' => '{{GENDER:$1|<strong>Supervision cessate</strong> per $1}} $2 retro', # Fuzzy
-	'articlefeedbackv5-permalink-status-autoflag' => '{{GENDER:$1|<strong>Marcate automaticamente</strong> per $1}} $2 retro', # Fuzzy
-	'articlefeedbackv5-permalink-status-feature' => '{{GENDER:$1|<strong>Stato eminente accordate</strong> per $1}} $2 retro', # Fuzzy
-	'articlefeedbackv5-permalink-status-unfeature' => '{{GENDER:$1|<strong>Stato eminente retirate</strong> per $1}} $2 retro', # Fuzzy
-	'articlefeedbackv5-permalink-status-resolve' => '{{GENDER:$1|<strong>Marcate como resolvite</strong> per $1}} $2 retro', # Fuzzy
-	'articlefeedbackv5-permalink-status-unresolve' => '{{GENDER:$1|<strong>Marcate como non resolvite</strong> per $1}} $2 retro', # Fuzzy
+	'articlefeedbackv5-short-status-request' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-unrequest' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-decline' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-autohide' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-oversight' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-unoversight' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-unflag' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-flag' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-autoflag' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-feature' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-unfeature' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-resolve' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-unresolve' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-noaction' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-unnoaction' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-inappropriate' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-uninappropriate' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-hide' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-unhide' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-archive' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-unarchive' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-helpful' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-undo-helpful' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-unhelpful' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-short-status-undo-unhelpful' => '{{GENDER:$1|Revidite per $1}}',
+	'articlefeedbackv5-permalink-status-request' => '{{GENDER:$1|<strong>Supervision</strong> esseva requestate per $1}} $2',
+	'articlefeedbackv5-permalink-status-unrequest' => '{{GENDER:$1|Le requesta de <strong>supervision</strong> esseva cancellate per $1}} $2',
+	'articlefeedbackv5-permalink-status-decline' => '{{GENDER:$1|<strong>Supervision</strong> esseva declinate per $1}} $2',
+	'articlefeedbackv5-permalink-status-autohide' => '{{GENDER:$1|<strong>Celate automaticamente</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-oversight' => '{{GENDER:$1|<strong>Mittite sub supervision</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-unoversight' => '{{GENDER:$1|<strong>Supervision cessate</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-flag' => '{{GENDER:$1|<strong>Marcate</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-unflag' => '{{GENDER:$1|<strong>Dismarcate</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-autoflag' => '{{GENDER:$1|<strong>Marcate automaticamente</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-feature' => '{{GENDER:$1|<strong>Marcate como utile</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-unfeature' => '{{GENDER:$1|<strong>Dismarcate como utile</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-resolve' => '{{GENDER:$1|<strong>Marcate como resolvite</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-unresolve' => '{{GENDER:$1|<strong>Marcate como non resolvite</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-noaction' => '{{GENDER:$1|<strong>Marcate como non actionabile</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-unnoaction' => '{{GENDER:$1|<strong>Dismarcate como non actionabile</strong> per $1}} $2',
 	'articlefeedbackv5-permalink-status-inappropriate' => '{{GENDER:$1|<strong>Celate</strong> per $1}} $2 retro',
 	'articlefeedbackv5-permalink-status-uninappropriate' => '{{GENDER:$1|<strong>Revelate</strong> per $1}} $2 retro',
-	'articlefeedbackv5-permalink-status-helpful' => '{{GENDER:$1|<strong>Marcate como utile</strong> per $1}} $2 retro', # Fuzzy
-	'articlefeedbackv5-permalink-status-undo-helpful' => '{{GENDER:$1|<strong>Dismarcate como utile</strong> per $1}} $2 retro', # Fuzzy
-	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Marcate como inutile</strong> per $1}} $2 retro', # Fuzzy
-	'articlefeedbackv5-permalink-status-undo-unhelpful' => '{{GENDER:$1|<strong>Dismarcate como inutile</strong> by $1}} $2 retro', # Fuzzy
+	'articlefeedbackv5-permalink-status-archive' => '{{GENDER:$1|<strong>Archivate</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-unarchive' => '{{GENDER:$1|<strong>Disarchivate</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-hide' => '{{GENDER:$1|<strong>Celate</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-unhide' => '{{GENDER:$1|<strong>Revelate</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-helpful' => '{{GENDER:$1|<strong>Marcate como utile</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-undo-helpful' => '{{GENDER:$1|<strong>Dismarcate como utile</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Marcate como inutile</strong> per $1}} $2',
+	'articlefeedbackv5-permalink-status-undo-unhelpful' => '{{GENDER:$1|<strong>Dismarcate como inutile</strong> by $1}} $2',
+	'articlefeedbackv5-permalink-last-action' => 'Ultime action',
 	'articlefeedbackv5-permalink-activity-more' => 'Vider plus actiones...',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Vider minus actiones...',
-	'articlefeedbackv5-noteflyover-feature-caption' => 'Marcar iste message como eminente', # Fuzzy
+	'articlefeedbackv5-noteflyover-feature-caption' => 'Marcate como utile',
 	'articlefeedbackv5-noteflyover-feature-label' => 'Adder un nota',
-	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Proque marca tu iste message como eminente?', # Fuzzy
-	'articlefeedbackv5-noteflyover-feature-submit' => 'Marcar iste message como eminente', # Fuzzy
+	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Proque marcava tu iste message como utile?',
+	'articlefeedbackv5-noteflyover-feature-submit' => 'Adder nota',
 	'articlefeedbackv5-noteflyover-feature-help' => 'Leger plus',
-	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Dismarcar iste message como eminente', # Fuzzy
+	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Dismarcate como utile',
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Adder un nota',
-	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Proque dismarca tu iste message como eminente?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Dismarcar iste message como eminente', # Fuzzy
+	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Proque dismarcava tu iste message como utile?',
+	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Adder nota',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'Leger plus',
-	'articlefeedbackv5-noteflyover-resolve-caption' => 'Marcar como resolvite', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-caption' => 'Marcate como resolvite',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Adder un nota',
-	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Proque marca tu iste message como resolvite?', # Fuzzy
-	'articlefeedbackv5-noteflyover-resolve-submit' => 'Marcar como resolvite', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Proque marcava tu iste message como resolvite?',
+	'articlefeedbackv5-noteflyover-resolve-submit' => 'Adder nota',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Leger plus',
-	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Dismarcar como resolvite', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Dismarcate como resolvite',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Adder un nota',
-	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Proque dismarca tu iste message como resolvite?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Dismarcar como resolvite', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Proque dismarcava tu iste message como resolvite?',
+	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Adder nota',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Leger plus',
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Celar iste message', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Celar',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Adder un nota',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Proque cela tu iste message?', # Fuzzy
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Celar iste message', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Proque celava tu iste message?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Adder nota',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Leger plus',
+	'articlefeedbackv5-noteflyover-unhide-caption' => 'Revelar',
 	'articlefeedbackv5-noteflyover-unhide-label' => 'Adder un nota',
+	'articlefeedbackv5-noteflyover-unhide-placeholder' => 'Proque revelava tu iste message?',
+	'articlefeedbackv5-noteflyover-unhide-submit' => 'Adder nota',
+	'articlefeedbackv5-noteflyover-unhide-help' => 'Leger plus',
+	'articlefeedbackv5-noteflyover-noaction-caption' => 'Marcate como non actionabile',
+	'articlefeedbackv5-noteflyover-noaction-label' => 'Adder un nota',
+	'articlefeedbackv5-noteflyover-noaction-placeholder' => 'Proque marcava tu iste message como non actionabile?',
+	'articlefeedbackv5-noteflyover-noaction-submit' => 'Adder nota',
+	'articlefeedbackv5-noteflyover-noaction-help' => 'Leger plus',
+	'articlefeedbackv5-noteflyover-unnoaction-caption' => 'Dismarcate como non actionabile',
+	'articlefeedbackv5-noteflyover-unnoaction-label' => 'Adder un nota',
+	'articlefeedbackv5-noteflyover-unnoaction-placeholder' => 'Proque dismarcava tu iste message como non actionabile?',
+	'articlefeedbackv5-noteflyover-unnoaction-submit' => 'Adder nota',
+	'articlefeedbackv5-noteflyover-unnoaction-help' => 'Leger plus',
+	'articlefeedbackv5-noteflyover-inappropriate-caption' => 'Marcate como inappropriate',
+	'articlefeedbackv5-noteflyover-inappropriate-label' => 'Adder un nota',
+	'articlefeedbackv5-noteflyover-inappropriate-placeholder' => 'Proque marcava tu iste message como inappropriate?',
+	'articlefeedbackv5-noteflyover-inappropriate-submit' => 'Adder nota',
+	'articlefeedbackv5-noteflyover-inappropriate-help' => 'Leger plus',
+	'articlefeedbackv5-noteflyover-uninappropriate-caption' => 'Dismarcate como inappropriate',
+	'articlefeedbackv5-noteflyover-uninappropriate-label' => 'Adder un nota',
+	'articlefeedbackv5-noteflyover-uninappropriate-placeholder' => 'Proque dismarcava tu iste message como inappropriate?',
+	'articlefeedbackv5-noteflyover-uninappropriate-submit' => 'Adder nota',
+	'articlefeedbackv5-noteflyover-uninappropriate-help' => 'Leger plus',
+	'articlefeedbackv5-noteflyover-archive-caption' => 'Archivate',
+	'articlefeedbackv5-noteflyover-archive-label' => 'Adder un nota',
+	'articlefeedbackv5-noteflyover-archive-placeholder' => 'Proque archivava tu iste message?',
+	'articlefeedbackv5-noteflyover-archive-submit' => 'Adder nota',
+	'articlefeedbackv5-noteflyover-archive-help' => 'Leger plus',
+	'articlefeedbackv5-noteflyover-unarchive-caption' => 'Disarchivate',
+	'articlefeedbackv5-noteflyover-unarchive-label' => 'Adder un nota',
+	'articlefeedbackv5-noteflyover-unarchive-placeholder' => 'Proque disarchivava tu iste message?',
+	'articlefeedbackv5-noteflyover-unarchive-submit' => 'Adder nota',
+	'articlefeedbackv5-noteflyover-unarchive-help' => 'Leger plus',
 	'articlefeedbackv5-noteflyover-request-caption' => 'Requestar supervision',
 	'articlefeedbackv5-noteflyover-request-description' => 'Ante de peter supervision, per favor verifica que iste message
 include un de iste problemas:
@@ -13007,26 +13079,28 @@ include un de iste problemas:
 * commentos diffamatori/calumniose super un persona
 * [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy altere criterios pro supervision]',
 	'articlefeedbackv5-noteflyover-request-label' => 'Adder un nota',
-	'articlefeedbackv5-noteflyover-request-placeholder' => 'Proque requesta tu supervision?', # Fuzzy
+	'articlefeedbackv5-noteflyover-request-placeholder' => 'Proque requestava tu supervision?',
+	'articlefeedbackv5-noteflyover-request-submit' => 'Requestar supervision',
 	'articlefeedbackv5-noteflyover-request-help' => 'Leger plus',
-	'articlefeedbackv5-noteflyover-unrequest-caption' => 'Cancellar requesta de supervision', # Fuzzy
+	'articlefeedbackv5-noteflyover-unrequest-caption' => 'Requesta de supervision cancellate',
 	'articlefeedbackv5-noteflyover-unrequest-label' => 'Adder un nota',
-	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Proque cancella tu le requesta de supervision?', # Fuzzy
+	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Proque cancellava tu le requesta de supervision?',
 	'articlefeedbackv5-noteflyover-unrequest-submit' => 'Cancellar requesta',
 	'articlefeedbackv5-noteflyover-unrequest-help' => 'Leger plus',
 	'articlefeedbackv5-noteflyover-oversight-caption' => 'Supervisar iste message',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'Adder un nota',
-	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Proque supervisa tu iste message?', # Fuzzy
-	'articlefeedbackv5-noteflyover-oversight-submit' => 'Supervisar iste message', # Fuzzy
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Proque mitteva tu iste message sub supervision?',
+	'articlefeedbackv5-noteflyover-oversight-submit' => 'Mitter sub supervision',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Leger plus',
-	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Non plus supervisar iste message', # Fuzzy
+	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Supervision de iste entrata retirate',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Adder un nota',
-	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Proque cessa tu le supervision de iste message?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Non plus supervisar iste message', # Fuzzy
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Proque retirava tu le supervision de iste message?',
+	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Adder nota',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Leger plus',
-	'articlefeedbackv5-noteflyover-decline-caption' => 'Declinar supervision', # Fuzzy
+	'articlefeedbackv5-noteflyover-decline-caption' => 'Supervision declinate',
 	'articlefeedbackv5-noteflyover-decline-label' => 'Adder un nota',
-	'articlefeedbackv5-noteflyover-decline-placeholder' => 'Proque declina tu le supervision?', # Fuzzy
+	'articlefeedbackv5-noteflyover-decline-placeholder' => 'Proque declinava tu le supervision?',
+	'articlefeedbackv5-noteflyover-decline-submit' => 'Adder nota',
 	'articlefeedbackv5-noteflyover-decline-help' => 'Leger plus',
 	'articlefeedbackv5-bucket1-title' => 'Adjuta a meliorar iste pagina',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Ha tu trovate lo que tu cercava?',
@@ -13034,7 +13108,7 @@ include un de iste problemas:
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'No',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Si, io ha trovate lo que io cercava.',
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'No, io non ha trovate lo que io cercava.',
-	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'Como poterea iste articulo esser meliorate?', # Fuzzy
+	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'Como poterea iste pagina esser meliorate?',
 	'articlefeedbackv5-bucket1-question-placeholder-no' => 'Ha tu un suggestion pro meliorar lo?',
 	'articlefeedbackv5-bucket1-form-submit' => 'Inviar commentario',
 	'articlefeedbackv5-bucket4-title' => 'Adjuta a meliorar iste pagina',
@@ -13055,16 +13129,17 @@ include un de iste problemas:
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'Si, io ha trovate lo que io cercava.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'No, io non ha trovate lo que io cercava.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 character restante)|($1 characteres restante)}}',
-	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Magnific. Vole tu adjunger un commento?', # Fuzzy
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Como poterea iste articulo esser meliorate?', # Fuzzy
+	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Magnific. Ha tu un suggestion pro meliorar lo?',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Scribe tu suggestion hic (p.ex.: "Iste pagina require un imagine")',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Nos regretta isto. Ha tu un suggestion pro meliorar lo?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Que cercava tu?', # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Scribe tu suggestion hic (p.ex.: "Iste pagina require un imagine")',
 	'articlefeedbackv5-bucket6-form-submit' => 'Publicar tu commentario',
 	'articlefeedbackv5-bucket6-backlink-text' => 'Retornar al passo 1',
 	'articlefeedbackv5-help-tooltip-title' => 'Que es isto?',
 	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} vole saper lo que tu pensa de iste pagina. Divide tu commentario con le redactores – e adjuta a meliorar iste pagina.',
 	'articlefeedbackv5-help-tooltip-linktext' => 'Leger plus',
 	'articlefeedbackv5-help-transparency-terms' => 'Per favor invia [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines commentario utile]. Con le invio, tu accepta que tu contribution sia public sub iste [//wikimediafoundation.org/wiki/Feedback_privacy_statement conditiones].',
+	'articlefeedbackv5-help-transparency-terms-anon' => 'Per favor invia [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines commentario utile]. Con le invio, tu accepta que tu contribution sia identificate per tu adresse IP e que sia public sub iste [//wikimediafoundation.org/wiki/Feedback_privacy_statement conditiones].',
 	'articlefeedbackv5-sitesub-linktext' => 'Meliorar iste pagina',
 	'articlefeedbackv5-titlebar-linktext' => 'Adjutar a meliorar iste pagina >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Meliorar iste pagina',
@@ -13072,9 +13147,45 @@ include un de iste problemas:
 	'articlefeedbackv5-section-linktext' => 'evalutation',
 	'articlefeedbackv5-toolbox-view' => 'Vider evalutationes',
 	'articlefeedbackv5-toolbox-add' => 'Adder tu evalutation',
+	'articlefeedbackv5-leave-warning' => 'Le datos que tu ha inserite pote non esser salveguardate.',
+	'articlefeedbackv5-toolbox-enable' => 'Activar evalutation',
 	'articlefeedbackv5-disable-preference' => 'Non monstrar le widget de evalutation de articulos in paginas',
+	'right-aft-reader' => 'Publicar commentario e marcar lo como (in)utile',
+	'right-aft-member' => 'Publicar commentario e marcar lo como (in)utile',
+	'right-aft-editor' => 'Marcar como eminente e resolver le commentario',
+	'right-aft-monitor' => 'Celar commentario e requestar supervision',
+	'right-aft-oversighter' => 'Mitter commentario sub supervision',
+	'log-name-articlefeedbackv5' => 'Registro de activitate de evalutation de articulos',
+	'log-description-articlefeedbackv5' => 'Isto es le registro de activitate exequite sur commentarios submittite per usatores con Evalutation de articulos.',
+	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|submitteva}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|mitteva sub supervision}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|retirava le stato de supervision}} del [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|declinava supervision}} pro le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-request' => '$1 {{GENDER:$2|requestava supervision}} pro le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unrequest' => '$1 {{GENDER:$2|cancellava le requesta de supervision}} pro le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-flag' => '$1 {{GENDER:$2|marcava como abuso}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unflag' => '$1 {{GENDER:$2|dismarcava como abuso}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-autoflag' => '$1 {{GENDER:$2|marcava automaticamente como abuso}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-feature' => '$1 {{GENDER:$2|marcava como utile}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unfeature' => '$1 {{GENDER:$2|dismarcava como utile}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-resolve' => '$1 {{GENDER:$2|marcava como resolvite}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unresolve' => '$1 {{GENDER:$2|dismarcava como resolvite}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-noaction' => '$1 {{GENDER:$2|marcava como non actionabile}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unnoaction' => '$1 {{GENDER:$2|dismarcava como non actionabile}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-inappropriate' => '$1 {{GENDER:$2|marcava como inappropriate}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-uninappropriate' => '$1 {{GENDER:$2|dismarcava como inappropriate}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-archive' => '$1 {{GENDER:$2|archivava}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unarchive' => '$1 {{GENDER:$2|disarchivava}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-hide' => '$1 {{GENDER:$2|celava}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unhide' => '$1 {{GENDER:$2|revelava}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-autohide' => '$1 {{GENDER:$2|celava automaticamente}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-helpful' => '$1 {{GENDER:$2|marcava como utile}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-unhelpful' => '$1 {{GENDER:$2|marcava como inutile}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|dismarcava como utile}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|dismarcava como inutile}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|radeva tote le marcas}} del [[$3|entrata de evalutation №$4]] sur [[$5]]',
 	'articlefeedbackv5-activity-pane-header' => 'Registro de activitate',
-	'articlefeedbackv5-activity-feedback-info' => 'Commentario №$1 per $2', # Fuzzy
+	'articlefeedbackv5-activity-feedback-info' => 'Commentario per $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Publicate le $1',
 	'articlefeedbackv5-activity-permalink' => 'permaligamine',
 	'articlefeedbackv5-activity-item-request' => '$1 requestava supervision le $3 $2',
@@ -19698,7 +19809,7 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-form-tooltip-uninappropriate' => 'Markering ongepast verwijderen',
 	'articlefeedbackv5-form-tooltip-hide' => 'Onzin, spam, beledigend, privégegevens, ...',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Zichtbaar maken',
-	'articlefeedbackv5-form-tooltip-archive' => 'Genegeerd want te lang, niet nuttig bevonden',
+	'articlefeedbackv5-form-tooltip-archive' => 'Te lang genegeerd, niet meer bruikbaar',
 	'articlefeedbackv5-form-tooltip-unarchive' => 'Uit archief halen',
 	'articlefeedbackv5-form-tooltip-flag' => 'Onzin, spam, beledigend, privégegevens...',
 	'articlefeedbackv5-form-tooltip-oversight' => 'Beledigend, privégegevens...',
@@ -20059,6 +20170,7 @@ $2
 Controleer deze terugkoppeling, en keur het verzoek voor toezicht goed of af:
 
 $3
+$5
 
 Bedankt!
 
@@ -20067,6 +20179,9 @@ Het team van {{SITENAME}}
 PS Als u vragen hebt over het gebruik van de functie toezicht op de terugkoppelingspagina, raadpleeg dan de veel gestelde vragen over toezicht:
 
 $4',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'Deze opmerking is toegevoegd aan de aanvraag voor toezicht:
+
+$1',
 	'articlefeedbackv5-disable-flyover-title' => 'Dit hulpprogramma verwijderen?',
 	'articlefeedbackv5-disable-flyover-help-message' => 'Ga naar "$1" > "$2" en vink "$3" aan om Paginaterugkoppeling uit te schakelen',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ga naar mijn voorkeuren',
@@ -22378,7 +22493,7 @@ Agradecemos sua contribuição nesta página!
 	'articlefeedbackv5-page-disabled' => 'A página de comentários do artigo não foi habilitada para este artigo.',
 	'articlefeedbackv5-no-feedback' => "Não existe avaliação para o filtro que selecionou. Para mudar seu filtro, tente uma das opções acima (e.g.:'Destacado' ou 'Não-revisado')",
 	'articlefeedbackv5-invalid-feedback' => 'A avaliação solicitada não existe.',
-	'articlefeedbackv5-viewactivity' => 'Exibir actividade',
+	'articlefeedbackv5-viewactivity' => 'Ver atividade',
 	'articlefeedbackv5-mask-view-contents' => 'Ver conteúdo',
 	'articlefeedbackv5-mask-text-inappropriate' => 'Esta nota #$1 {{GENDER:$2|foi marcada como inapropriada por $2}} $3',
 	'articlefeedbackv5-mask-text-autohide' => 'Esta nota #$1 {{GENDER:$2|foi auto-ocultada por $2}} $3.',
@@ -22447,6 +22562,7 @@ Agradecemos sua contribuição nesta página!
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author Cainamarques
  * @author Giro720
  * @author Leonardo Coelho
  * @author Luckas
@@ -22717,7 +22833,7 @@ Agradecemos sua contribuição nesta página!
 	'articlefeedbackv5-invalid-page-id' => 'Identificador de página inválida',
 	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 de usuários encontraram o que estavam procurando}}',
 	'articlefeedbackv5-found-percent-title' => 'Baseado em $1 {{PLURAL:$1|nota|notas}} (excluindo os comentários inapropriados)',
-	'articlefeedbackv5' => 'Feedback de páginas - Central',
+	'articlefeedbackv5' => 'Avaliação do artigo - Central',
 	'articlefeedbackv5watchlist' => 'Avaliação do artigo - Minhas páginas vigiadas',
 	'articlefeedbackv5-desc' => 'Avaliação do artigo',
 	'articlefeedbackv5-comment-more' => 'Mais',
@@ -22940,7 +23056,7 @@ Agradecemos sua contribuição nesta página!
 	'articlefeedbackv5-toolbox-view' => 'Ver avaliação',
 	'articlefeedbackv5-toolbox-add' => 'Adicionar sua avaliação',
 	'articlefeedbackv5-leave-warning' => 'Dados que digitou não podem ser salvos.',
-	'articlefeedbackv5-toolbox-enable' => 'Solicitar avaliação', # Fuzzy
+	'articlefeedbackv5-toolbox-enable' => 'Habilitar avaliação',
 	'articlefeedbackv5-disable-preference' => 'Não mostrar nas páginas o widget da avaliação de artigos',
 	'right-aft-reader' => 'Poste avaliação & marque como (in)útil',
 	'right-aft-member' => 'Poste avaliação & marque como (in)útil',
@@ -23023,6 +23139,7 @@ $2
 Por favor, revise esta nota de avaliação e então aprove ou recuse o pedido de supervisão:
 
 $3
+$5
 
 Obrigado,
 
@@ -25432,6 +25549,7 @@ $messages['sr-el'] = array(
  * @author Fluff
  * @author Jopparn
  * @author Lokal Profil
+ * @author McDutchie
  * @author Tobulos1
  * @author WikiPhoenix
  */
@@ -25911,7 +26029,7 @@ dessa fel innan du begär tillsyn:
 	'right-aft-oversighter' => 'Censurfeedback',
 	'log-name-articlefeedbackv5' => 'Aktivitetslogg för artikelfeedback',
 	'log-description-articlefeedbackv5' => 'Detta är loggen för aktivitet på feedback för användare som använder Artikelfeedback.',
-	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|inlämnat}} [[$3|feedbackinlägg #$4]] den [[$5]]',
+	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|inlämnat}} [[$3|feedbackinlägg #$4]] om [[$5]]', # Fuzzy
 	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|ändrade censurstatusen för}} [[$3|feedbackinlägg #$4]] på [[$5]]',
 	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|tog bort censurstatusen för}} [[$3|feedbackinlägg #$4]] på [[$5]]',
 	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|avböjde censur för}} [[$3|feedbackinlägg #$4]] på [[$5]]',
