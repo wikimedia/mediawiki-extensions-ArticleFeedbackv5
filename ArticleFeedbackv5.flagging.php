@@ -142,7 +142,7 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		// update feedback entry for real
-		$this->feedback->update();
+		$this->feedback->update( false );
 
 		wfProfileOut( __METHOD__ . "-{$flag}" );
 
