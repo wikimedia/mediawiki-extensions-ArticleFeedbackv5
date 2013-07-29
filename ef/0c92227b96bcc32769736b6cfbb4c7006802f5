@@ -1,0 +1,8 @@
+Verified+2: jenkins-bot
+Code-Review+2: Matthias Mullie <mmullie@wikimedia.org>
+Code-Review+1: EBernhardson (WMF) <ebernhardson@wikimedia.org>
+Submitted-by: jenkins-bot
+Submitted-at: Mon, 29 Jul 2013 17:38:55 +0000
+Reviewed-on: https://gerrit.wikimedia.org/r/73954
+Project: mediawiki/extensions/ArticleFeedbackv5
+Branch: refs/heads/master
