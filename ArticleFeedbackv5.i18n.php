@@ -537,7 +537,7 @@ includes one of these issues:
 	'articlefeedbackv5-noteflyover-decline-help-link' => '#oversight-decline',
 
 	/* Feedback forms */
-	/* Option 1 ("Did you find what you were looking for?") */
+	/* Option 1 ("Did you find what you were looking for?" - 1-step) */
 	'articlefeedbackv5-bucket1-title' => 'Help improve this page',
 	'articlefeedbackv5-bucket1-question-toggle' => 'Did you find what you were looking for?',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'Yes',
@@ -561,7 +561,6 @@ includes one of these issues:
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'Can you give us a hand?',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Learn more',
 
-	/* Feedback forms */
 	/* Option 6 ("Did you find what you were looking for?" - 2-step) */
 	'articlefeedbackv5-bucket6-title' => 'Help improve this page',
 	'articlefeedbackv5-bucket6-question-toggle' => 'Did you find what you were looking for?',
@@ -576,6 +575,14 @@ includes one of these issues:
 	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Write your suggestion here (e.g.: "This page needs a picture")',
 	'articlefeedbackv5-bucket6-form-submit' => 'Post your feedback',
 	'articlefeedbackv5-bucket6-backlink-text' => 'Back to step 1',
+
+	/* Option 7 ("Did you find what you were looking for?" - vote only, no free-form text field) */
+	'articlefeedbackv5-bucket7-title' => 'Help improve this page',
+	'articlefeedbackv5-bucket7-question-toggle' => 'Did you find what you were looking for?',
+	'articlefeedbackv5-bucket7-toggle-found-yes' => 'Yes',
+	'articlefeedbackv5-bucket7-toggle-found-no' => 'No',
+	'articlefeedbackv5-bucket7-toggle-found-yes-full' => 'Yes, I found what I was looking for.',
+	'articlefeedbackv5-bucket7-toggle-found-no-full' => 'No, I did not find what I was looking for.',
 
 	/* Messages shared by all feedback form options */
 	'articlefeedbackv5-help-tooltip-title' => 'What\'s this?',
@@ -1679,21 +1686,29 @@ Un-oversight note flyover panel - action description',
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'The second line of the teaser text for option 4, when the user cannot edit the article',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'The text for the big button, when the user cannot edit the article.
 {{Identical|Learn more}}',
-	'articlefeedbackv5-bucket6-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
-	'articlefeedbackv5-bucket6-question-toggle' => 'This is the question that appears before the yes/no buttons in option 1',
-	'articlefeedbackv5-bucket6-toggle-found-yes' => 'The text for the yes button in option 1.
+	'articlefeedbackv5-bucket6-title' => 'This is the title of the feedback form for option 6 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
+	'articlefeedbackv5-bucket6-question-toggle' => 'This is the question that appears before the yes/no buttons in option 6',
+	'articlefeedbackv5-bucket6-toggle-found-yes' => 'The text for the yes button in option 6.
 {{Identical|Yes}}',
-	'articlefeedbackv5-bucket6-toggle-found-no' => 'The text for the no button in option 1.
+	'articlefeedbackv5-bucket6-toggle-found-no' => 'The text for the no button in option 6.
 {{Identical|No}}',
-	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'This is the text that appears when you roll over the yes button in option 1 ("Did you find what you were looking for?"); it clarifies what "yes" means in this context.',
-	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'This is the text that appears when you roll over the no button in option 1 ("Did you find what you were looking for?"); it clarifies what "no" means in this context.',
+	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'This is the text that appears when you roll over the yes button in option 6 ("Did you find what you were looking for?"); it clarifies what "yes" means in this context.',
+	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'This is the text that appears when you roll over the no button in option 6 ("Did you find what you were looking for?"); it clarifies what "no" means in this context.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => 'This displays a countdown of the amount of characters feedback that will be allowed. $1 contains the amount of characters (number) remaining before none more are accepted.',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'This is the instructional text to be shown above the textarea where a user can leave feedback, to be shown when the user selected yes',
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'This is the grey default text that appears in the comment box when the yes button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'This is the grey default text that appears in the comment box when the yes button has been selected in option 6 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'This is the instructional text to be shown above the textarea where a user can leave feedback, to be shown when the user selected no',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'This is the grey default text that appears in the comment box when the no button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
-	'articlefeedbackv5-bucket6-form-submit' => 'This is the contents of the submit button for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'This is the grey default text that appears in the comment box when the no button has been selected in option 6 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
+	'articlefeedbackv5-bucket6-form-submit' => 'This is the contents of the submit button for option 6 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
 	'articlefeedbackv5-bucket6-backlink-text' => 'This is a small link that allows users to go back to the first step of the form and change their mind on whether they find the article useful',
+	'articlefeedbackv5-bucket7-title' => 'This is the title of the feedback form for option 7 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
+	'articlefeedbackv5-bucket7-question-toggle' => 'This is the question that appears before the yes/no buttons in option 7',
+	'articlefeedbackv5-bucket7-toggle-found-yes' => 'The text for the yes button in option 7.
+{{Identical|Yes}}',
+	'articlefeedbackv5-bucket7-toggle-found-no' => 'The text for the no button in option 7.
+{{Identical|No}}',
+	'articlefeedbackv5-bucket7-toggle-found-yes-full' => 'This is the text that appears when you roll over the yes button in option 7 ("Did you find what you were looking for?"); it clarifies what "yes" means in this context.',
+	'articlefeedbackv5-bucket7-toggle-found-no-full' => 'This is the text that appears when you roll over the no button in option 7 ("Did you find what you were looking for?"); it clarifies what "no" means in this context.',
 	'articlefeedbackv5-help-tooltip-title' => 'The title for the help tooltip.
 {{Identical|What is this}}',
 	'articlefeedbackv5-help-tooltip-info' => 'The contents of the help tooltip',

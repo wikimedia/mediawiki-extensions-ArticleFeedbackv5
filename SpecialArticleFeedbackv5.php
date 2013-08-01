@@ -558,6 +558,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @return string
 	 */
 	protected function buildContent( $renderer, $records ) {
+		global $wgArticleFeedbackv5DisplayFeedbackList;
+		if ( !$wgArticleFeedbackv5DisplayFeedbackList ) {
+			return '';
+		}
+
 		if ( !$records ) {
 			return $this->msg( 'articlefeedbackv5-invalid-feedback' )->escaped();
 		}

@@ -195,6 +195,11 @@
 	 */
 	$.articleFeedbackv5.throttleThresholdPostsPerHour = mw.config.get( 'wgArticleFeedbackv5ThrottleThresholdPostsPerHour' );
 
+	/**
+	 * Keep track of links that must be removed after a successful submission
+	 */
+	$.articleFeedbackv5.$toRemove = $( [] );
+
 	// }}}
 	// {{{ Templates
 
@@ -930,6 +935,198 @@
 				if ( length < displayLength ) {
 					$countdown.show();
 				}
+			}
+
+			// }}}
+
+		},
+
+		// }}}
+		// {{{ Bucket 7
+
+		/**
+		 * Bucket 7: Vote only, no free-form text field
+		 */
+		'7': {
+
+			// {{{ templates
+
+			/**
+			 * Pull out the markup so it's easy to find
+			 */
+			templates: {
+
+				/**
+				 * The template for the whole block
+				 */
+				block: '\
+					<form>\
+						<div class="articleFeedbackv5-top-error"></div>\
+						<div class="form-row articleFeedbackv5-bucket7-toggle">\
+							<p class="instructions-left"><html:msg key="bucket7-question-toggle" /></p>\
+							<div class="buttons">\
+								<div class="form-item" data-value="yes" id="articleFeedbackv5-bucket7-toggle-wrapper-yes">\
+									<label for="articleFeedbackv5-bucket7-toggle-yes"><html:msg key="bucket7-toggle-found-yes-full" /></label>\
+									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket7-toggle-found-yes" value="yes" /></a>\
+									<input type="radio" name="toggle" id="articleFeedbackv5-bucket7-toggle-yes" class="query-button" value="yes" />\
+								</div>\
+								<div class="form-item" data-value="no" id="articleFeedbackv5-bucket7-toggle-wrapper-no">\
+									<label for="articleFeedbackv5-bucket7-toggle-no"><html:msg key="bucket7-toggle-found-no-full" /></label>\
+									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket7-toggle-found-no" /></a>\
+									<input type="radio" name="toggle" id="articleFeedbackv5-bucket7-toggle-no" class="query-button last" value="no" />\
+								</div>\
+								<div class="clear"></div>\
+							</div>\
+							<div class="clear"></div>\
+						</div>\
+						<div class="articleFeedbackv5-disclosure">\
+							<p class="articlefeedbackv5-help-transparency-terms"></p>\
+						</div>\
+						<div class="clear"></div>\
+					</form>\
+					'
+
+			},
+
+			// }}}
+			// {{{ getTitle
+
+			/**
+			 * Gets the title
+			 *
+			 * @return string the title
+			 */
+			getTitle: function () {
+				return mw.msg( 'articlefeedbackv5-bucket7-title' );
+			},
+
+			// }}}
+			// {{{ buildForm
+
+			/**
+			 * Builds the empty form
+			 *
+			 * @return Element the form
+			 */
+			buildForm: function () {
+				// Start up the block to return
+				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
+
+				// Fill in the disclosure text
+				var message = 'articlefeedbackv5-help-transparency-terms';
+				if ( $.articleFeedbackv5.anonymous ) {
+					message = 'articlefeedbackv5-help-transparency-terms-anon';
+				}
+				$block.find( '.articlefeedbackv5-help-transparency-terms' ).msg( message );
+
+				return $block;
+			},
+
+			// }}}
+			// {{{ afterBuild
+
+			/**
+			 * Handles any setup that has to be done once the markup is in the
+			 * holder
+			 */
+			afterBuild: function () {
+				// if user recently voted on this article, show CTA
+				var pageIdsCookieName = mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'page-ids' );
+				var pageIds = $.parseJSON( $.cookie( pageIdsCookieName ) );
+				if ( $.inArray( $.articleFeedbackv5.pageId, pageIds ) >= 0 ) {
+					$.articleFeedbackv5.showCTA();
+				}
+			},
+
+			// }}}
+			// {{{ bindEvents
+
+			/**
+			 * Binds any events
+			 *
+			 * @param $block element the form block
+			 */
+			bindEvents: function ( $block ) {
+				// enable submission and switch out the comment default on toggle selection
+				$block.find( '.articleFeedbackv5-button-placeholder' )
+					.button()
+					.click( function ( e ) {
+						e.preventDefault();
+
+						var new_val = $( this ).parents( '[data-value]' ).data( 'value' );
+						$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'click_' + new_val );
+
+						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket7-toggle-wrapper-' + new_val );
+
+						// check/uncheck radio buttons
+						$wrap.find( 'input' ).trigger( 'click' ).attr( 'checked', true );
+
+						// allow feedback submission if there is feedback (or if Y/N was positive)
+						$.articleFeedbackv5.enableSubmission( true );
+
+						// submit the form
+						$.articleFeedbackv5.submitForm();
+					} );
+			},
+
+			// }}}
+			// {{{ getFormData
+
+			/**
+			 * Pulls down form data
+			 *
+			 * @return object the form data
+			 */
+			getFormData: function () {
+				var data = {};
+				var $check = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket7-toggle input[checked]' );
+				if ( $check.val() == 'yes' ) {
+					data.found = 1;
+				} else if ( $check.val() == 'no' ) {
+					data.found = 0;
+				}
+				data.comment = '';
+				return data;
+			},
+
+			// }}}
+			// {{{ localValidation
+
+			/**
+			 * Performs any local validation
+			 *
+			 * @param  object formdata the form data
+			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
+			 */
+			localValidation: function ( formdata ) {
+				if ( !( 'found' in formdata ) ) {
+					$.articleFeedbackv5.enableSubmission( false );
+					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
+				}
+				return false;
+			},
+
+			// }}}
+			// {{{ onSubmit
+
+			/**
+			 * Save most recent page id's, so that we can immediately show a CTA
+			 * on pages where feedback has already been submitted.
+			 *
+			 * @param  object formdata the form data
+			 */
+			onSubmit: function ( formdata ) {
+				var pageIdsCookieName = mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'page-ids' );
+				var pageIds = $.parseJSON( $.cookie( pageIdsCookieName ) );
+				if ( !$.isArray( pageIds ) ) {
+					pageIds = [];
+				}
+				pageIds.unshift( $.articleFeedbackv5.pageId );
+				$.cookie(
+					pageIdsCookieName,
+					$.toJSON( pageIds.splice( 0, 20 ) ),
+					{ expires: 30, path: '/' }
+				);
 			}
 
 			// }}}
@@ -2143,8 +2340,6 @@
 				$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'impression' );
 			}
 		} );
-		// Keep track of links that must be removed after a successful submission
-		$.articleFeedbackv5.$toRemove = $( [] );
 		// Add them
 		$.articleFeedbackv5.addTriggerLinks();
 		// Track init at 1%
@@ -2176,7 +2371,6 @@
 		// Find out which display bucket they go in:
 		// 1. Requested in query string (debug only)
 		// 2. Core bucketing
-		var knownBuckets = { '0': true, '1': true, '4': true, '6': true };
 		var requested = mw.util.getParamValue( 'aftv5_form' );
 		var cfg = mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' );
 
@@ -2592,7 +2786,7 @@
 		// check throttling
 		if ( $.articleFeedbackv5.throttleThresholdPostsPerHour != -1 ) {
 			// MSIE<9 does not support Date.now(), hence the workaround
-			var now = (new Date()).getTime();
+			var now = ( new Date() ).getTime();
 			var msInHour = 3600000;
 
 			var timestampsCookieName = mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'submission_timestamps' );
@@ -2687,10 +2881,6 @@
 						$.toJSON( feedbackIds.splice( 0, 20 ) ),
 						{ expires: 30, path: '/' }
 					);
-
-					// Clear out anything that needs removing (usually trigger links)
-					$.articleFeedbackv5.$toRemove.remove();
-					$.articleFeedbackv5.$toRemove = $( [] );
 
 					// Track the success
 					$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_success' );
@@ -2799,6 +2989,8 @@
 	 * Shows a CTA
 	 */
 	$.articleFeedbackv5.showCTA = function () {
+		// Clear out anything that needs removing (usually trigger links)
+		$.articleFeedbackv5.cleanRemovalQueue();
 
 		// Build the cta
 		var cta = $.articleFeedbackv5.currentCTA();
@@ -3040,8 +3232,7 @@
 		var $err = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-error-message' );
 		$err.text( $.articleFeedbackv5.debug && message ? message : mw.msg( 'articlefeedbackv5-error' ) );
 		$err.html( $err.html().replace( '\n', '<br />' ) );
-		$.articleFeedbackv5.$toRemove.remove();
-		$.articleFeedbackv5.$toRemove = $( [] );
+		$.articleFeedbackv5.cleanRemovalQueue();
 		$.articleFeedbackv5.nowShowing = 'error';
 	};
 
@@ -3111,6 +3302,16 @@
 	 */
 	$.articleFeedbackv5.addToRemovalQueue = function ( $el ) {
 		$.articleFeedbackv5.$toRemove = $.articleFeedbackv5.$toRemove.add( $el );
+	};
+
+	// {{{ cleanRemovalQueue
+
+	/**
+	 * Removes all elements that have been added to the removal queue
+	 */
+	$.articleFeedbackv5.cleanRemovalQueue = function () {
+		$.articleFeedbackv5.$toRemove.remove();
+		$.articleFeedbackv5.$toRemove = $( [] );
 	};
 
 	// }}}

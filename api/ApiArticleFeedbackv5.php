@@ -97,7 +97,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$old = $list->fetchObject();
 		if (
 			$old &&
-			$old->aft_user == $feedback->aft_user &&
+			$old->aft_user_text == $feedback->aft_user_text &&
 			$old->aft_comment == $feedback->aft_comment &&
 			$old->aft_timestamp > wfTimestamp( TS_MW, strtotime( '1 minute ago' ) )
 		) {
@@ -107,7 +107,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			);
 		}
 
-		/**
+		/*
 		 * Check for abusive comment in the following sequence (cheapest
 		 * processing to most expensive, returning if we get a hit):
 		 * 1) Respect $wgSpamRegex

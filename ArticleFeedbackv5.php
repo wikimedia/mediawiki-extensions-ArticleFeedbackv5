@@ -94,6 +94,16 @@ $wgArticleFeedbackv5RelevanceScoring = array(
 );
 
 /**
+ * Feedback form option 7 (see $wgArticleFeedbackv5DisplayBuckets) requests
+ * feedback without the free-form text field. In that case, it does not make
+ * sense to display an (empty) feedback list on the special page.
+ * Just the header info (amount of submissions & vote percentage) will do.
+ *
+ * @var bool true to display feedback list, false to hide it
+ */
+$wgArticleFeedbackv5DisplayFeedbackList = true;
+
+/**
  * Enable/disable the "archived" filter. This is a setting that needs to explicitly be
  * set to true since the functionality will depend on a cronjob to be run periodically.
  *
@@ -193,13 +203,14 @@ $wgArticleFeedbackv5DisplayBuckets = array(
 	// the new odds are applied to everyone, not just people who have yet to be
 	// placed in a bucket.
 	'buckets' => array(
-		'0'  => 0, // display nothing
-		'1'   => 0, // display 1-step feedback form
-//		'2'   => 0, // abandoned
+		'0' => 0, // display nothing
+		'1' => 0, // display 1-step feedback form
+//		'2' => 0, // abandoned
 //		'3' => 0, // abandoned
-		'4'  => 0, // display encouragement to edit page
-//		'5'  => 0, // abandoned
-		'6'   => 100, // display 2-step feedback form
+		'4' => 0, // display encouragement to edit page
+//		'5' => 0, // abandoned
+		'6' => 100, // display 2-step feedback form
+		'7' => 0, // display only vote, no free-form text field
 	),
 	// This version number is added to all tracking event names, so that
 	// changes in the software don't corrupt the data being collected. Bump
@@ -690,6 +701,12 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 		'articlefeedbackv5-bucket6-form-success',
 		'articlefeedbackv5-bucket6-form-submit',
 		'articlefeedbackv5-bucket6-backlink-text',
+		'articlefeedbackv5-bucket7-title',
+		'articlefeedbackv5-bucket7-question-toggle',
+		'articlefeedbackv5-bucket7-toggle-found-yes',
+		'articlefeedbackv5-bucket7-toggle-found-yes-full',
+		'articlefeedbackv5-bucket7-toggle-found-no',
+		'articlefeedbackv5-bucket7-toggle-found-no-full',
 		'articlefeedbackv5-leave-warning',
 		'articlefeedbackv5-error',
 		'articlefeedbackv5-help-tooltip-title',
