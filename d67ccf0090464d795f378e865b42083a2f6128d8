@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "898eddaf_b4176d43",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-08-05T14:13:53Z",
+      "side": 1,
+      "message": "Well, I\u0027m not even sure why they so often seem to be wrapped in a \"query\" node.\n\nJudging from the 60+ other occurences of \"$result-\u003eaddValue( array( \u0027query\u0027,\" throughout extensions and core, looks like it\u0027s quite a standard approach, that should* probably have a shortcut indeed.",
+      "parentUuid": "898eddaf_6d57e125",
+      "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "898eddaf_0d6f3dfe",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2013-08-02T21:33:04Z",
       "side": 1,
       "message": "if ( data.query \u0026\u0026 data.query[\u0027articlefeedbackv5-view-activity\u0027] ) {\n\nDoesn\u0027t need to be so complicated :)",
+      "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "898eddaf_d91a747a",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-08-05T14:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898eddaf_0d6f3dfe",
       "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "898eddaf_790c0043",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-08-05T14:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898eddaf_2d74f9cd",
+      "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "898eddaf_4d7145dd",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2013-08-02T21:33:04Z",
       "side": 1,
       "message": "Doesn\u0027t make sense to declare variables in if/else blocks in JavaScript - put var statements at the top of the function and define them where you need to",
+      "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "898eddaf_9909cc34",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-08-05T14:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898eddaf_4d7145dd",
       "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "898eddaf_b9068820",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-08-05T14:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898eddaf_6d7e01ae",
+      "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "898eddaf_2d5dd945",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
         "patchSetId": 3
@@ -98,6 +188,24 @@
       "writtenOn": "2013-08-02T21:33:04Z",
       "side": 1,
       "message": "Dot notation! (OK, this isn\u0027t part of this patch, you can ignore me)",
+      "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "898eddaf_5410e94e",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-08-05T14:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898eddaf_2d5dd945",
       "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "898eddaf_340b5d27",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-08-05T14:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898eddaf_ad48098d",
+      "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "898eddaf_cd4d559c",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
         "patchSetId": 3
@@ -132,6 +258,24 @@
       "writtenOn": "2013-08-02T21:33:04Z",
       "side": 1,
       "message": ".filtercount",
+      "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "898eddaf_1406611f",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-08-05T14:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898eddaf_cd4d559c",
       "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "898eddaf_f4001506",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-08-05T14:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898eddaf_ed42116b",
+      "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "898eddaf_0d481d88",
         "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
         "patchSetId": 3
@@ -166,6 +328,24 @@
       "writtenOn": "2013-08-02T21:33:04Z",
       "side": 1,
       "message": ".more",
+      "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "898eddaf_d4fb1911",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 214
+      },
+      "writtenOn": "2013-08-05T14:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898eddaf_0d481d88",
       "revId": "d67ccf0090464d795f378e865b42083a2f6128d8",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
