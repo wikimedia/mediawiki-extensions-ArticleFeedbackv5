@@ -90,8 +90,8 @@ $specialPageAliases['nb'] = array(
 
 /** Low Saxon (Netherlands) (Nedersaksies) */
 $specialPageAliases['nds-nl'] = array(
-	'ArticleFeedbackv5' => array( 'Troegkoppelingv5' ),
-	'ArticleFeedbackv5Watchlist' => array( 'Troegkoppelingv5_volglieste' ),
+	'ArticleFeedbackv5' => array( 'Terugkoppelingv5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'Terugkoppelingv5_volglieste' ),
 );
 
 /** Dutch (Nederlands) */
