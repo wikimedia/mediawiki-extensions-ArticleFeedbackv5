@@ -15723,7 +15723,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-cta4-button-text-or' => '또는',
 	'articlefeedbackv5-cta5-confirmation-title' => '다른 이들이 무엇을 말하는지 보기',
 	'articlefeedbackv5-cta5-confirmation-call' => '여러분과 같은 다른 독자의 의견을 봅니다. 최고의 아이디어를 선택할 수 있도록 도와줄까요?',
-	'articlefeedbackv5-cta5-button-text' => '모든 덧글 보기',
+	'articlefeedbackv5-cta5-button-text' => '모든 의견 보기',
 	'articlefeedbackv5-cta6-confirmation-title' => '{{SITENAME}}(을)를 편집하는 데 도움이 필요합니까?',
 	'articlefeedbackv5-cta6-confirmation-call' => '{{SITENAME}}에 편집 토론을 하기 위해, 새롭고 경험이 풍부한 편집자가 유용한 팁을 교환하기 위해 찻집에 모이세요.',
 	'articlefeedbackv5-cta6-button-text' => '찻집 방문하기',
@@ -15764,12 +15764,12 @@ $messages['ko'] = array(
 	'articlefeedbackv5-contribs-status-action-feature' => '유용함',
 	'articlefeedbackv5-contribs-status-action-resolve' => '해결됨',
 	'articlefeedbackv5-contribs-status-action-noaction' => '필요한 작업 없음',
-	'articlefeedbackv5-contribs-status-action-inappropriate' => '숨김',
+	'articlefeedbackv5-contribs-status-action-inappropriate' => '부적절',
 	'articlefeedbackv5-contribs-status-action-archive' => '보존',
 	'articlefeedbackv5-contribs-status-action-hide' => '숨기기',
 	'articlefeedbackv5-contribs-status-action-request' => '오버사이트 요청됨',
 	'articlefeedbackv5-contribs-status-action-oversight' => '오버사이트됨',
-	'articlefeedbackv5-contribs-hidden-feedback' => '숨긴 덧글',
+	'articlefeedbackv5-contribs-hidden-feedback' => '숨긴 의견',
 	'articlefeedbackv5-form-toolbox-label' => '다음으로 표시:',
 	'articlefeedbackv5-form-own-toolbox-label' => '다음으로 내 게시물을 표시:',
 	'articlefeedbackv5-form-own-feedback' => '자신의 게시물을 검토할 수 없습니다.',
@@ -15789,7 +15789,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-special-filter-noaction' => '필요한 작업 없음 ($1)',
 	'articlefeedbackv5-special-filter-inappropriate' => '부적절 ($1)',
 	'articlefeedbackv5-special-filter-archived' => '보존 ($1)',
-	'articlefeedbackv5-special-filter-allcomment' => '모든 덧글 ($1)',
+	'articlefeedbackv5-special-filter-allcomment' => '모든 의견 ($1)',
 	'articlefeedbackv5-special-filter-hidden' => '숨김 ($1)',
 	'articlefeedbackv5-special-filter-requested' => '오버사이트 요청됨 ($1)',
 	'articlefeedbackv5-special-filter-declined' => '오버사이트 거부됨 ($1)',
@@ -15805,7 +15805,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-special-filter-noaction-watchlist' => '필요한 작업 없음',
 	'articlefeedbackv5-special-filter-inappropriate-watchlist' => '부적절',
 	'articlefeedbackv5-special-filter-archived-watchlist' => '보존',
-	'articlefeedbackv5-special-filter-allcomment-watchlist' => '모든 덧글',
+	'articlefeedbackv5-special-filter-allcomment-watchlist' => '모든 의견',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => '숨김',
 	'articlefeedbackv5-special-filter-requested-watchlist' => '오버사이트 요청됨',
 	'articlefeedbackv5-special-filter-declined-watchlist' => '오버사이트 거부됨',
@@ -15820,7 +15820,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-special-sort-label' => '정렬 기준:',
 	'articlefeedbackv5-special-filter-select-more' => '더 많은 필터',
 	'articlefeedbackv5-special-count-total' => '{{PLURAL:$2|게시물 1개|게시물 $1개}}',
-	'articlefeedbackv5-special-count-total-title' => '덧글이 있는 {{PLURAL:$1|게시물}} $1개, 덧글이 없는 {{PLURAL:$2|게시물}} $2개',
+	'articlefeedbackv5-special-count-total-title' => '의견이 있는 {{PLURAL:$1|게시물}} $1개, 의견이 없는 {{PLURAL:$2|게시물}} $2개',
 	'articlefeedbackv5-special-watchlist-showing' => '[[$1|$2]]가 주시하는 문서에 대한 피드백',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|내가 주시하는 문서에 대한 피드백]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|모든 문서에서 피드백 보기]]',
@@ -15873,7 +15873,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-form-unnoaction' => '되돌리기',
 	'articlefeedbackv5-form-noaction-own' => '내 게시물 지우기',
 	'articlefeedbackv5-form-unnoaction-own' => '내 게시물 보기',
-	'articlefeedbackv5-form-inappropriate' => '이 게시물 숨기기',
+	'articlefeedbackv5-form-inappropriate' => '부적절',
 	'articlefeedbackv5-form-uninappropriate' => '되돌리기',
 	'articlefeedbackv5-form-hide' => '이 게시물 숨기기',
 	'articlefeedbackv5-form-unhide' => '되돌리기',
@@ -15901,7 +15901,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-form-tooltip-noaction-own' => '불분명, 관련 없음, 칭찬, 중복 ...',
 	'articlefeedbackv5-form-tooltip-unnoaction-own' => '실용적이지 않음 플래그 되돌리기',
 	'articlefeedbackv5-form-tooltip-inappropriate' => '헛소리, 스팸, 모욕적, 개인 데이터 ...',
-	'articlefeedbackv5-form-tooltip-uninappropriate' => '부적절함 플래그 되돌리기',
+	'articlefeedbackv5-form-tooltip-uninappropriate' => '부적절 플래그 되돌리기',
 	'articlefeedbackv5-form-tooltip-hide' => '헛소리, 스팸, 모욕적, 개인 데이터 ...',
 	'articlefeedbackv5-form-tooltip-unhide' => '숨기기 취소',
 	'articlefeedbackv5-form-tooltip-archive' => '너무 오랫동안 무시, 유용한 것으로 간주되지 않음',
@@ -15916,7 +15916,7 @@ $messages['ko'] = array(
 	'articlefeedbackv5-form-tooltip-discuss-user' => '제출한 사용자와 피드백 토론',
 	'articlefeedbackv5-discuss-talk-section-title' => '독자 피드백: $1',
 	'articlefeedbackv5-discuss-user-section-title' => '"$2"에 대한 내 피드백',
-	'articlefeedbackv5-discuss-talk-section-content' => '$1 사용자가 $3에 [[$2|이 덧글]]을 게시했습니다. ([[$5|모든 피드백 보기]])
+	'articlefeedbackv5-discuss-talk-section-content' => '$1 사용자가 $3에 [[$2|이 의견]]을 게시했습니다. ([[$5|모든 피드백 보기]])
 
 $6
 
@@ -15925,16 +15925,16 @@ $6
 ~~~~',
 	'articlefeedbackv5-discuss-user-section-content' => '"$7"에 피드백을 게시해주셔서 감사합니다.
 
-$3에 이 덧글을 게시했습니다. ([[$5|모든 피드백 보기]])
+$3에 이 의견을 게시했습니다. ([[$5|모든 피드백 보기]])
 
 $6
 
 이 문서에 기여를 해주셔서 감사합니다!
 
 ~~~~',
-	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2(이)가 그들이 찾고 있는 것을 발견했습니다.}}',
-	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2(이)가 그들이 찾고 있는 것을 발견할 수 없었습니다.}}',
-	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2(이)가 덧글을 게시했습니다.}}',
+	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 사용자가 그들이 찾고 있는 것을 발견했습니다.}}',
+	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 사용자가 그들이 찾고 있는 것을 발견할 수 없었습니다.}}',
+	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 사용자가 의견을 게시했습니다.}}',
 	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}}에 칭찬을 했습니다:',
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}}에 문제가 있습니다:',
 	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}}에 질문이 있습니다:',
@@ -15942,7 +15942,7 @@ $6
 	'articlefeedbackv5-form-anon-username' => '독자',
 	'articlefeedbackv5-form-anon-message' => '$1에 익명으로 게시했습니다.',
 	'articlefeedbackv5-form-invalid' => '피드백 양식 ID가 잘못되었습니다.',
-	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}}(이)가 $3에 [[$4|피드백]]을 게시함',
+	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} 사용자가 $3에 [[$4|피드백]]을 게시함',
 	'articlefeedbackv5-abuse-saved' => '부정 행위로 플래그함',
 	'articlefeedbackv5-abuse-saved-tooltip' => '설정한 플래그 제거',
 	'articlefeedbackv5-error-loading-feedback' => '피드백 로드 중 오류',
@@ -15958,8 +15958,8 @@ $6
 	'articlefeedbackv5-whats-this' => '도움말',
 	'articlefeedbackv5-settings-menu-title' => '설정',
 	'articlefeedbackv5-invalid-page-id' => '잘못된 페이지 ID',
-	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1(이)가 찾고 있던 것을 발견했습니다}}',
-	'articlefeedbackv5-found-percent-title' => '$1의 {{PLURAL:$1|게시물}}에 근거 (부적절한 덧글은 제외)',
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 사용자가 찾고 있던 것을 발견했습니다}}',
+	'articlefeedbackv5-found-percent-title' => '$1의 {{PLURAL:$1|게시물}}에 근거 (부적절한 의견은 제외)',
 	'articlefeedbackv5' => '문서 평가 - 중앙 문서',
 	'articlefeedbackv5watchlist' => '문서 평가 - 내가 주시하는 문서',
 	'articlefeedbackv5-desc' => '문서 평가',
@@ -16112,7 +16112,7 @@ $6
 * 전화 번호
 * 이메일 주소
 * 포르노그래피 링크
-* 사람에 대한 명예 훼손/비방 덧글
+* 사람에 대한 명예 훼손/비방 의견
 * [//ko.wikipedia.org/wiki/위키백과:오버사이트#정책 오버사이트에 대한 기타 기준]',
 	'articlefeedbackv5-noteflyover-request-label' => '오버사이트를 요청하는 이유를 설명하는 참고 추가',
 	'articlefeedbackv5-noteflyover-request-placeholder' => '왜 오버사이트를 요청했습니까?',
@@ -16146,7 +16146,7 @@ $6
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => '아니오, 제가 찾고자 하는 내용을 찾지 못했습니다.',
 	'articlefeedbackv5-bucket1-question-placeholder-yes' => '이 문서는 어떻게 개선할 수 있습니까?',
 	'articlefeedbackv5-bucket1-question-placeholder-no' => '어떠한 개선을 위한 제안이 있습니까?',
-	'articlefeedbackv5-bucket1-form-submit' => '피드백 올리기',
+	'articlefeedbackv5-bucket1-form-submit' => '피드백 게시하기',
 	'articlefeedbackv5-bucket4-title' => '이 문서를 발전시키는 데 도움을 주세요',
 	'articlefeedbackv5-bucket4-subhead' => '이 문서를 편집할 수 있는지 알고 있었나요?',
 	'articlefeedbackv5-bucket4-teaser-line1' => '{{SITENAME}}(은)는 누구나 문서를 편집할 수 있도록 작동합니다.',
@@ -16239,8 +16239,8 @@ $6
 	'articlefeedbackv5-activity-item-unresolve' => '$1 사용자가 $4 $5에 이 게시물을 해결한 것으로 표시 취소했습니다 $2',
 	'articlefeedbackv5-activity-item-noaction' => '$1 사용자가 $4 $5에 이 게시물을 실용적이지 않음으로 표시했습니다 $2',
 	'articlefeedbackv5-activity-item-unnoaction' => '$1 사용자가 $4 $5에 이 게시물을 실용적이지 않음으로 표시 취소했습니다 $2',
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 사용자가 $4 $5에 이 게시물을 숨겼습니다 $2',
-	'articlefeedbackv5-activity-item-uninappropriate' => '$1 사용자가 $4 $5에 이 게시물을 숨김 취소했습니다 $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 사용자가 $4 $5에 이 게시물을 부적절한 것으로 표시했습니다 $2',
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 사용자가 $4 $5에 이 게시물을 부적절한 것으로 표시 취소했습니다 $2',
 	'articlefeedbackv5-activity-item-hide' => '$1 사용자가 $4 $5에 이 게시물을 숨겼습니다 $2',
 	'articlefeedbackv5-activity-item-unhide' => '$1 사용자가 $4 $5에 이 게시물을 숨김 취소했습니다 $2',
 	'articlefeedbackv5-activity-item-autohide' => '$1 사용자가 $4 $5에 이 게시물을 숨겼습니다 $2',
@@ -16254,8 +16254,8 @@ $6
 	'articlefeedbackv5-activity-note-archive' => '편집자의 활동이 없고 {{PLURAL:$1|$1일}} 후 보존됨',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|이 게시물에 행동 $1회}}',
 	'articlefeedbackv5-activity-more' => '더 많은 활동 보기',
-	'articlefeedbackv5-article-view-feedback' => '독자 {{PLURAL:$1|제안}} $1개',
-	'articlefeedbackv5-talk-view-feedback' => '독자 제안 보기',
+	'articlefeedbackv5-article-view-feedback' => '독자 {{PLURAL:$1|의견}} $1개',
+	'articlefeedbackv5-talk-view-feedback' => '독자 피드백 보기',
 	'articlefeedbackv5-watchlist-view-feedback' => '내가 주시하는 문서에 대한 피드백',
 	'articlefeedbackv5-email-request-oversight-subject' => '오버사이트가 문서 평가 페이지에 요청됨',
 	'articlefeedbackv5-email-request-oversight-body' => '오버사이트, 안녕하세요!
@@ -16277,7 +16277,7 @@ $5
 추신: 만약 문서 피드백 페이지의 오버사이트 기능을 사용하는 것에 대한 질문이 있다면, 오버사이트 FAQ를 참고하세요:
 
 $4',
-	'articlefeedbackv5-email-request-oversight-body-notes' => '이 덧글은 오버사이트 요청에 추가되었습니다:
+	'articlefeedbackv5-email-request-oversight-body-notes' => '이 의견은 오버사이트 요청에 추가되었습니다:
 
 $1',
 	'articlefeedbackv5-disable-flyover-title' => '이 도구를 제거하겠습니까?',
@@ -22014,12 +22014,12 @@ $messages['pl'] = array(
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'Dowiedz się więcej',
 	'articlefeedbackv5-noteflyover-resolve-caption' => 'Oznaczony jako rozwiązany',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Dodaj notatkę',
-	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Czemu oznaczasz jako rozwiązany?', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Dlaczego oznaczyłeś ten wpis jako rozwiązany?',
 	'articlefeedbackv5-noteflyover-resolve-submit' => 'Dodaj komentarz',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Dowiedz się więcej',
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Odznaczony jako rozwiązany',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Dodaj notatkę',
-	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Czemu odznaczasz jako rozwiązany?', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Dlaczego odznaczyłeś ten wpis jako rozwiązany?',
 	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Dodaj komentarz',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Dowiedz się więcej',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Ukryj',
@@ -22027,6 +22027,7 @@ $messages['pl'] = array(
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Dlaczego ukryłeś ten wpis?',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Dodaj komentarz',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Dowiedz się więcej',
+	'articlefeedbackv5-noteflyover-unhide-caption' => 'Pokaż',
 	'articlefeedbackv5-noteflyover-unhide-label' => 'Dodaj notatkę',
 	'articlefeedbackv5-noteflyover-unhide-submit' => 'Dodaj komentarz',
 	'articlefeedbackv5-noteflyover-unhide-help' => 'Dowiedz się więcej',
