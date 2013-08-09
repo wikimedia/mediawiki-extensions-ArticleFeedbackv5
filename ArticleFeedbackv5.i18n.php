@@ -16900,6 +16900,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-unsupported-message' => 'Pardon, Äre Browser gëtt vun dësem Prototyp net ënnerstëtzt. Fir dës säit ze gesinn, benotzt w.e.g. en anere Browser.',
 	'articlefeedbackv5-page-disabled' => "D'Säit fir Feedback ass fir dësen Artikel net aktivéiert.",
 	'articlefeedbackv5-no-feedback' => "Fir de Filter deen Dir uginn hutt gëtt et nach kee Feedback.Fir Äre Filter z'änneren, probéiert eng vun den Optiounen hei driwwer (z. Bsp.: 'Ausgezeechent' oder 'Net nogekuckt').",
+	'articlefeedbackv5-invalid-feedback' => 'De gefrote Feedback gëtt et net.',
 	'articlefeedbackv5-viewactivity' => 'Aktivitéit weisen',
 	'articlefeedbackv5-mask-view-contents' => 'Inhalt weisen',
 	'articlefeedbackv5-special-goback' => "D'Säit mam Feedback weisen",
@@ -24572,6 +24573,7 @@ Nuje sime cundende pe le condrebbute tune a sta pàgene!
  * @author Catrope
  * @author DCamer
  * @author DR
+ * @author Daniel Case
  * @author David1010
  * @author Dim Grits
  * @author Eleferen
@@ -24633,6 +24635,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-protection-permission-editor' => 'Включить только для автоподтверждённых участников',
 	'articlefeedbackv5-protection-permission-administrator' => 'Включить только для администраторов',
 	'articlefeedbackv5-protection-permission-noone' => 'Отключить для всех пользователей',
+	'articlefeedbackv5-disabled-admin-button-text' => 'Изменить защиту',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Обратная связь: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Статус: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Полезно',
@@ -25693,6 +25696,7 @@ $messages['so'] = array(
 );
 
 /** Serbian (Cyrillic script) (српски (ћирилица)‎)
+ * @author Milicevic01
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -25730,11 +25734,19 @@ $messages['sr-ec'] = array(
 	'articlefeedbackv5-error-submit' => 'Грешка при слању обрасца.',
 	'articlefeedbackv5-error-nofeedback' => 'Унесите повратну информацију.',
 	'articlefeedbackv5-error-flagging' => 'Грешка при означавању повратне информације.',
+	'articlefeedbackv5-disabled-editor-admin' => 'Администратор је онемогућио повратне информације. Читаоци и уредници не могу остављати нове информације на овој страници.',
+	'articlefeedbackv5-disabled-editor-editor' => 'Повртне информације су онемогућене. Читаоци не могу остављати информације на овој страници',
+	'articlefeedbackv5-disabled-reader' => 'Повртне информације су онемогућене. Читаоци не могу остављати информације на овој страници',
+	'articlefeedbackv5-disabled-admin-button-text' => 'Промени заштиту',
+	'articlefeedbackv5-disabled-editor-button-text' => 'Омогући повратне информације',
+	'articlefeedbackv5-settings-status-enable' => 'Омогући повратне информације на овој страници',
+	'articlefeedbackv5-settings-status-disable' => 'Онемогући повратне информације на овој страници',
 	'articlefeedbackv5-contribs-entry-status' => 'Статус: $1', # Fuzzy
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Од помоћи',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Означена',
-	'articlefeedbackv5-contribs-status-action-feature' => 'Изабрана', # Fuzzy
+	'articlefeedbackv5-contribs-status-action-feature' => 'Корисно',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Решена',
+	'articlefeedbackv5-contribs-status-action-noaction' => 'Није потребно ништа учинити',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Сакривена',
 	'articlefeedbackv5-contribs-status-action-request' => 'Захтевана провера',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Проверено',
@@ -25747,6 +25759,7 @@ $messages['sr-ec'] = array(
 	'articlefeedbackv5-special-filter-helpful' => 'Од помоћи ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Нису од помоћи ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'Решене ($1)',
+	'articlefeedbackv5-special-filter-noaction' => 'Није потребно ништа учинити ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'Сакривено ($1)',
 	'articlefeedbackv5-special-filter-requested' => 'Захтевана провера ($1)',
 	'articlefeedbackv5-special-filter-declined' => 'Одбијена провера ($1)',
@@ -25756,6 +25769,7 @@ $messages['sr-ec'] = array(
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Корисно',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Некорисно',
 	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Решено',
+	'articlefeedbackv5-special-filter-noaction-watchlist' => 'Није потребно ништа учинити',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'Сакривено',
 	'articlefeedbackv5-special-filter-requested-watchlist' => 'Захтевана провера',
 	'articlefeedbackv5-special-filter-declined-watchlist' => 'Одбијена провера',
@@ -25767,10 +25781,7 @@ $messages['sr-ec'] = array(
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Није од помоћи',
 	'articlefeedbackv5-special-sort-age-desc' => 'Најновије',
 	'articlefeedbackv5-special-sort-age-asc' => 'Најстарије',
-	'articlefeedbackv5-special-sort-label-before' => 'Поређај по:',
-	'articlefeedbackv5-special-filter-label-before' => 'Приказ:',
-	'articlefeedbackv5-special-filter-select-more' => 'Више филтера',
-	'articlefeedbackv5-special-showing' => 'За ову страницу {{PLURAL:$1|је додата $1 порука|су додате $1 поруке|је додато $1 порука}}', # Fuzzy
+	'articlefeedbackv5-special-filter-select-more' => 'Више филтера', # Fuzzy
 	'articlefeedbackv5-special-watchlist-showing' => 'Повратне информације о страницама које надгледа [[$1|$2]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Повратне информације о свим страницама]]',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 измена|$1 измене|$1 измена}} од објављивања',
@@ -25799,6 +25810,8 @@ $messages['sr-ec'] = array(
 	'articlefeedbackv5-form-oversight' => 'Захтевај проверу', # Fuzzy
 	'articlefeedbackv5-form-unoversight' => 'Уклони захтев за проверу', # Fuzzy
 	'articlefeedbackv5-form-decline' => 'Одбиј проверу',
+	'articlefeedbackv5-form-tooltip-noaction' => 'Нејасно, небитно, похвала, дупликат ...',
+	'articlefeedbackv5-form-tooltip-noaction-own' => 'Нејасно, небитно, похвала, дупликат ...',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 је сазнао оно што је тражио|$2 је сазнала оно што је тражила|$2 је сазнао оно што је тражио}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 није сазнао оно што је тражио|$2 није сазнала оно што је тражила|$2 није сазнао оно што је тражио}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 је поставио коментар|$2 је поставила коментар|$2 је поставио коментар}}.',
@@ -25825,8 +25838,6 @@ $messages['sr-ec'] = array(
 	'articlefeedbackv5watchlist' => 'Оцењивање чланака – Моје надгледане странице',
 	'articlefeedbackv5-desc' => 'Оцењивање чланака',
 	'articlefeedbackv5-comment-more' => 'Више',
-	'articlefeedbackv5-header-message-link-text' => 'Сазнајте више',
-	'articlefeedbackv5-beta-label' => 'БЕТА',
 	'articlefeedbackv5-unsupported-message' => 'Нажалост, овај прототип не подржава ваш прегледач. Послужите се другим прегледачем да бисте видели страницу.',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Дужина',
 	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 реч|$1 речи|$1 речи}}', # Fuzzy
@@ -25934,6 +25945,7 @@ $messages['sr-ec'] = array(
 );
 
 /** Serbian (Latin script) (srpski (latinica)‎)
+ * @author Milicevic01
  */
 $messages['sr-el'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Hvala!',
@@ -25965,7 +25977,7 @@ $messages['sr-el'] = array(
 	'articlefeedbackv5-error-flagging' => 'Greška pri označavanju povratne informacije.',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Od pomoći',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Označena',
-	'articlefeedbackv5-contribs-status-action-feature' => 'Izabrana', # Fuzzy
+	'articlefeedbackv5-contribs-status-action-feature' => 'Korisno',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Rešena',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Sakrivena',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'sakriveni komentar',
@@ -25986,10 +25998,7 @@ $messages['sr-el'] = array(
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Nije od pomoći',
 	'articlefeedbackv5-special-sort-age-desc' => 'Najnovije',
 	'articlefeedbackv5-special-sort-age-asc' => 'Najstarije',
-	'articlefeedbackv5-special-sort-label-before' => 'Poređaj po:',
-	'articlefeedbackv5-special-filter-label-before' => 'Prikaz:',
-	'articlefeedbackv5-special-filter-select-more' => 'Više filtera',
-	'articlefeedbackv5-special-showing' => 'Za ovu stranicu {{PLURAL:$1|je dodata $1 poruka|su dodate $1 poruke|je dodato $1 poruka}}', # Fuzzy
+	'articlefeedbackv5-special-filter-select-more' => 'Više filtera', # Fuzzy
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 izmena|$1 izmene|$1 izmena}} od objavljivanja', # Fuzzy
 	'articlefeedbackv5-special-more' => 'Prikaži više objava',
 	'articlefeedbackv5-loading-tag' => 'Učitavam…',
@@ -29544,6 +29553,7 @@ $messages['yo'] = array(
  * @author Li3939108
  * @author Liangent
  * @author Linforest
+ * @author Liuxinyu970226
  * @author Makecat
  * @author PhiLiP
  * @author Qiyue2001
@@ -30131,6 +30141,9 @@ $5
 注：如果您有关于在条目反馈页使用隐藏功能任何疑问，请阅读此监督员常见问题解答：
 
 $4',
+	'articlefeedbackv5-email-request-oversight-body-notes' => '此注释已被添加至监督者请求：
+
+$1',
 	'articlefeedbackv5-disable-flyover-title' => '移除此工具吗？',
 	'articlefeedbackv5-disable-flyover-help-message' => '若要删除文章回馈，请到“$1”>“$2”，并检查“$3”',
 	'articlefeedbackv5-disable-flyover-prefbutton' => '前往我的设置',
