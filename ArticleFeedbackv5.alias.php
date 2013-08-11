@@ -19,6 +19,11 @@ $specialPageAliases['ar'] = array(
 	'ArticleFeedbackv5' => array( 'تعليقات_المقالات_ن5' ),
 );
 
+/** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
+$specialPageAliases['cdo'] = array(
+	'ArticleFeedbackv5' => array( '文章回饋' ),
+);
+
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'ArticleFeedbackv5' => array( 'Artikelrückmeldungen_v5' ),

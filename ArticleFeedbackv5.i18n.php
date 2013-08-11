@@ -8857,6 +8857,7 @@ $4', # Fuzzy
 /** Finnish (suomi)
  * @author Beluga
  * @author Crt
+ * @author Harriv
  * @author Linnea
  * @author Nedergard
  * @author Nike
@@ -9188,12 +9189,12 @@ $messages['fi'] = array(
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Poista läpi-käyty-merkintä',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Lisää huomautus',
 	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Miksi haluat merkitä tämän viestin ei-ratkaistuksi?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Merkitse ei-ratkaistuksi', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Lisää huomautus',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Lisätietoja',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Piilota',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Lisää huomautus',
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Miksi piilotit tämän viestin?',
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Piilota tämä viesti', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Lisää huomautus',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Lisätietoja',
 	'articlefeedbackv5-noteflyover-unhide-caption' => 'Näytä',
 	'articlefeedbackv5-noteflyover-unhide-label' => 'Lisää huomautus',
@@ -9251,14 +9252,14 @@ $messages['fi'] = array(
 	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'Miksi häivytit tämän viestin?',
 	'articlefeedbackv5-noteflyover-oversight-submit' => 'Häivytä',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Lisätietoja',
-	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Poista tältä viestiltä tila häivytys', # Fuzzy
+	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Poista tältä viestiltä tila häivytys',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Lisää huomautus',
-	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Miksi haluat poistaa tältä viestiltä tilan häivytetty?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Poista tila häivytetty tältä viestiltä', # Fuzzy
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Miksi haluat poistaa tältä viestiltä tilan häivytetty?',
+	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Lisää huomautus',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Lisätietoja',
-	'articlefeedbackv5-noteflyover-decline-caption' => 'Hylkää häivytyst', # Fuzzy
+	'articlefeedbackv5-noteflyover-decline-caption' => 'Hylkää häivytys',
 	'articlefeedbackv5-noteflyover-decline-label' => 'Lisää huomautus',
-	'articlefeedbackv5-noteflyover-decline-placeholder' => 'Miksi haluat hylätä häivytyksen?', # Fuzzy
+	'articlefeedbackv5-noteflyover-decline-placeholder' => 'Miksi hylkäsit häivytyksen?',
 	'articlefeedbackv5-noteflyover-decline-submit' => 'Lisää huomautus',
 	'articlefeedbackv5-noteflyover-decline-help' => 'Lisätietoja',
 	'articlefeedbackv5-bucket1-title' => 'Auta parantamaan tätä sivua',
@@ -9291,7 +9292,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Hienoa. Onko sinulla parannusehdotuksia?',
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Kirjoita ehdotuksesi tänne (esim. "Sivu tarvitsee kuvan.")',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Pahoittelemme. Haluaisitko antaa kehitysehdotuksen?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Kirjoita ehdotuksesi tänne (esim. "Tässä artikkelissa pitäisi olla kuva.")', # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Kirjoita ehdotuksesi tänne (esim. "Tällä sivulla pitäisi olla kuva.")',
 	'articlefeedbackv5-bucket6-form-submit' => 'Lähetä palaute',
 	'articlefeedbackv5-bucket6-backlink-text' => 'Takaisin vaiheeseen 1',
 	'articlefeedbackv5-help-tooltip-title' => 'Mikä tämä on?',
@@ -9333,7 +9334,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-watchlist-view-feedback' => 'Palaute tarkkailemistani sivuista',
 	'articlefeedbackv5-email-request-oversight-body' => 'Hei häivyttäjät!
 
-$1 pyysi häivytystä palautteelle tähän artikkeliin:
+$1 pyysi häivytystä palautteelle tähän sivuun:
 
 $2
 
@@ -13467,6 +13468,7 @@ $1',
  * @author IvanLanin
  * @author Iwan Novirion
  * @author Kenrick95
+ * @author Rv77ax
  * @author Stephensuleeman
  * @author පසිඳු කාවින්ද
  */
@@ -13500,9 +13502,10 @@ $messages['id'] = array(
 	'articlefeedbackv5-error' => 'Telah terjadi sebuah kesalahan. Silakan coba lagi nanti.',
 	'articlefeedbackv5-error-blocked' => 'Pengguna yang diblokir tidak dapat mengirimkan umpan balik.',
 	'articlefeedbackv5-error-validation' => 'Kesalahan validasi.',
-	'articlefeedbackv5-error-abuse' => 'Pos Anda telah ditolak oleh penyaring perangkat lunak karena diduga melanggar [$1 panduan umpan balik] {{SITENAME}}. Mohon tinjau kembali pos Anda dan coba lagi.', # Fuzzy
+	'articlefeedbackv5-error-abuse' => 'Pos Anda telah ditolak oleh penyaring perangkat lunak karena diduga tidak sesuai dengan [$1 panduan tanggapan] {{SITENAME}}. Mohon tinjau kembali pos Anda dan coba lagi. ({{PLURAL:$2|Filter|Filters}}: $3)',
 	'articlefeedbackv5-error-unknown' => 'Kesalahan tak dikenal.',
 	'articlefeedbackv5-error-submit' => 'Kesalahan pengiriman formulir.',
+	'articlefeedbackv5-error-duplicate' => 'Tanggapan yang dikirimkan merupakan duplikat dari tanggapan yang terakhir; mungkin Anda tidak sengaja mengirimkan tanggapan dua kali?',
 	'articlefeedbackv5-error-nofeedback' => 'Masukkan umpan balik Anda.',
 	'articlefeedbackv5-error-flagging' => 'Gagal menandai umpan balik.',
 	'articlefeedbackv5-error-throttled' => 'Pos Anda telah ditolak karena Anda sudah mengirimkan banyak umpan balik daripada yang disarankan di panduan umpan balik {{SITENAME}}. Mohon tidak mengirimkan umpan balik secara berulang-ulang atau berlebihan.',
@@ -13512,6 +13515,18 @@ $messages['id'] = array(
 	'articlefeedbackv5-protection-permission-member' => 'Aktifkan untuk pengguna masuk log saja',
 	'articlefeedbackv5-protection-permission-editor' => 'Aktifkan untuk pengguna terkonfirmasi otomatis saja',
 	'articlefeedbackv5-protection-permission-administrator' => 'Aktifkan untuk pengurus saja',
+	'articlefeedbackv5-protection-permission-noone' => 'Menonaktifkan untuk semua pengguna',
+	'articlefeedbackv5-disabled' => 'Tanggapan telah dinonaktifkan',
+	'articlefeedbackv5-disabled-admin-admin' => 'Tanggapan telah dinonaktifkan untuk pembaca dan editor. Mereka tidak dapat mengirim tanggapan baru pada Halaman ini.',
+	'articlefeedbackv5-disabled-admin-editor' => 'Tanggapan telah dinonaktifkan untuk pembaca. User tidak dapat mengirim tanggapan baru pada Halaman ini.',
+	'articlefeedbackv5-disabled-editor-admin' => 'Tanggapan telah dinonaktifkan oleh administrator. Pembaca dan editor tidak dapat mengirim tanggapan baru pada Halaman ini.',
+	'articlefeedbackv5-disabled-editor-editor' => 'Tanggapan telah dinonaktifkan. Pembaca tidak dapat mengirim tanggapan baru pada halaman ini.',
+	'articlefeedbackv5-disabled-reader' => 'Tanggapan telah dinonaktifkan. Pembaca tidak dapat mengirim tanggapan baru pada halaman ini.',
+	'articlefeedbackv5-disabled-admin-button-text' => 'Ubah perlindungan',
+	'articlefeedbackv5-disabled-editor-button-text' => 'Mengaktifkan tanggapan',
+	'articlefeedbackv5-settings-status-enable' => 'Mengaktifkan tanggapan pada Halaman ini',
+	'articlefeedbackv5-settings-status-disable' => 'Menonaktifkan tanggapan pada halaman ini',
+	'articlefeedbackv5-enabled-form-message' => 'Tanggapan telah diaktifkan. Kiriman pembaca akan terlihat [$1 di halaman tanggapan].',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Feedback: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Status: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Membantu',
@@ -13572,7 +13587,10 @@ $messages['id'] = array(
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Tidak membantu',
 	'articlefeedbackv5-special-sort-age-desc' => 'Terbaru',
 	'articlefeedbackv5-special-sort-age-asc' => 'Terlama',
-	'articlefeedbackv5-special-filter-select-more' => 'Penyaring lain', # Fuzzy
+	'articlefeedbackv5-special-sort-label' => 'Urut berdasarkan:',
+	'articlefeedbackv5-special-filter-select-more' => 'Selebihnya',
+	'articlefeedbackv5-special-count-total' => '{{PLURAL:$2|1 kiriman|$1 kiriman}}',
+	'articlefeedbackv5-special-count-total-title' => '$1 {{PLURAL:$1|kiriman|kiriman}} dengan komentar, $2 {{PLURAL:$2|kiriman|kiriman}} tanpa komentar',
 	'articlefeedbackv5-special-watchlist-showing' => 'Umpan balik untuk halaman yang dipantau oleh [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Umpan balik dari halaman pantauan saya]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Lihat umpan balik dari semua halaman]]',
@@ -13599,6 +13617,8 @@ $messages['id'] = array(
 	'articlefeedbackv5-status-unfeature' => 'Kiriman ini takjadi ditandai bermanfaat oleh $1 pada $2 pukul $3',
 	'articlefeedbackv5-status-resolve' => 'Kiriman ini ditandai selesai oleh $1 pada $2 pukul $3',
 	'articlefeedbackv5-status-unresolve' => 'Kiriman ini takjadi ditandai selesai oleh $1 pada $2 pukul $3',
+	'articlefeedbackv5-status-noaction' => 'Kiriman ini ditandai sebagai tak dapat dilanjutkan oleh $1 pada $2 di $3',
+	'articlefeedbackv5-status-unnoaction' => 'Tanda tak-dapat-dilanjutkan pada kiriman ini telah dihilangkan oleh $1 pada $2 di $3',
 	'articlefeedbackv5-new-marker' => 'Baru',
 	'articlefeedbackv5-oversight-marker' => 'Diawasi',
 	'articlefeedbackv5-autohide-marker' => 'Tersembunyi',
@@ -16867,6 +16887,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-form-discuss-talk' => 'Op der Diskussiounssäit diskutéieren',
 	'articlefeedbackv5-form-discuss-talk-exists' => 'Kuckt Diskussioun op der Diskussiounssäit',
 	'articlefeedbackv5-form-discuss-user-exists' => 'Kuckt de Message op der Benotzer-Diskussiounssäit',
+	'articlefeedbackv5-form-tooltip-feature' => "Dëst kann hëllefe fir d'Säit ze verbesseren",
 	'articlefeedbackv5-form-tooltip-noaction-own' => 'Net kloer, net relevant, Luef, Duplikat ...',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Nees weisen',
 	'articlefeedbackv5-form-tooltip-archive' => 'Ze laang ignoréiert, net als nëtzlech consideréiert',
@@ -17059,6 +17080,7 @@ $messages['lb'] = array(
 	'right-aft-administrator' => 'Feedback vu gespaarte Säite kucken',
 	'articlefeedbackv5-activity-feedback-info' => 'Feedback vum $2',
 	'articlefeedbackv5-activity-permalink' => 'Permanentlink',
+	'articlefeedbackv5-activity-note-archive' => 'Archivéiert no {{PLURAL:$1|engem dag|$1 Deeg}} Inaktivitéit vum Auteur',
 	'articlefeedbackv5-activity-more' => 'Méi Aktivitéit weisen',
 	'articlefeedbackv5-article-view-feedback' => '$1 Lieser-{{PLURAL:$1|Bemierkung|Bemierkungen}}',
 	'articlefeedbackv5-talk-view-feedback' => 'Virschléi vun de Lieser weisen >>',
@@ -18733,6 +18755,7 @@ $6
 	'articlefeedbackv5-discussion-page' => 'चर्चा',
 	'articlefeedbackv5-whats-this' => 'साहाय्य',
 	'articlefeedbackv5-settings-menu-title' => 'मांडण्या',
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1ला ते काय बघत होते ते सापडले}}',
 	'articlefeedbackv5' => 'लेख प्रतिक्रिया - केंद्रिय पान',
 	'articlefeedbackv5watchlist' => 'लेख प्रतिक्रिया - माझी निरीक्षणसूची',
 	'articlefeedbackv5-desc' => 'लेख प्रतिक्रिया',
@@ -18744,6 +18767,9 @@ $6
 	'articlefeedbackv5-invalid-feedback' => 'आपण विनंती केलेली प्रतिक्रिया अस्तित्वात नाही.',
 	'articlefeedbackv5-viewactivity' => 'क्रिया बघा',
 	'articlefeedbackv5-mask-view-contents' => 'आशय बघा',
+	'articlefeedbackv5-mask-text-inappropriate' => '#$1 या उत्तरास{{GENDER:$2|$2ने  अयोग्य म्हणून खूण केली}} $3.',
+	'articlefeedbackv5-mask-text-autohide' => '#$1 या उत्तरास {{GENDER:$2|$2ने स्वयंचलितरित्या लपविले}} $3.',
+	'articlefeedbackv5-mask-text-hide' => '#$1 या उत्तरास {{GENDER:$2|$2ने लपविले}} $3.',
 	'articlefeedbackv5-special-disclaimer' => "हा 'नमूना' आहे. कृपया, आपणास येथे आमंत्रित केल्याशिवाय तो वापरू नका.",
 	'articlefeedbackv5-special-goback' => 'प्रतिक्रिया पान बघा',
 	'articlefeedbackv5-special-central-goback' => 'ईतर पानांच्या अजून प्रतिक्रिया बघा',
@@ -18798,6 +18824,7 @@ $6
 	'articlefeedbackv5-permalink-status-undo-helpful' => '{{GENDER:$1|$1 ने<strong>मदतपूर्ण म्हणून केलेली खूण काढली</strong>}} $2',
 	'articlefeedbackv5-permalink-last-action' => 'मागील क्रिया',
 	'articlefeedbackv5-permalink-activity-more' => 'अधिक क्रिया बघा...',
+	'articlefeedbackv5-permalink-activity-fewer' => 'कमी क्रिया बघा...',
 	'articlefeedbackv5-noteflyover-feature-caption' => 'ऊपयूक्त म्हणून खूण केली',
 	'articlefeedbackv5-noteflyover-feature-label' => 'टिप्पणी लिहा',
 	'articlefeedbackv5-noteflyover-feature-placeholder' => 'आपण या उत्तरास ऊपयूक्त म्हणून कां खूण केली?',
@@ -18860,11 +18887,13 @@ $6
 	'articlefeedbackv5-noteflyover-unarchive-help' => 'अधिक शिका',
 	'articlefeedbackv5-noteflyover-request-help' => 'अधिक शिका',
 	'articlefeedbackv5-noteflyover-unrequest-label' => 'टिप्पणी लिहा',
+	'articlefeedbackv5-noteflyover-unrequest-submit' => 'केलेली विनंती रद्द करा',
 	'articlefeedbackv5-noteflyover-unrequest-help' => 'अधिक शिका',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'टिप्पणी लिहा',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'अधिक शिका',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'टिप्पणी लिहा',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'टिप्पणी लिहा',
+	'articlefeedbackv5-noteflyover-unoversight-help' => 'अधिक शिका',
 	'articlefeedbackv5-noteflyover-decline-label' => 'टिप्पणी लिहा',
 	'articlefeedbackv5-noteflyover-decline-submit' => 'टिप्पणी लिहा',
 	'articlefeedbackv5-noteflyover-decline-help' => 'अधिक शिका',
@@ -18883,6 +18912,8 @@ $6
 	'articlefeedbackv5-bucket4-teaser-line2' => 'पुढे चला,एक प्रयत्न करा.धैर्यवान व्हा!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'संपादन कसे करतात ते शिका',
 	'articlefeedbackv5-bucket4-form-submit' => 'या पानाचे संपादन करा',
+	'articlefeedbackv5-bucket4-noedit-title' => '{{SITENAME}} सुधरवण्यास मदत करा',
+	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'हे संकेतस्थळ आपल्यासारख्या लोकांनीच घडविले आहे',
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'काय आपण आम्हास मदतीचा हात देउ शकता?',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'अधिक शिका',
 	'articlefeedbackv5-bucket6-title' => 'या पानास सुधरविण्यास मदत करा',
@@ -18891,11 +18922,15 @@ $6
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'नाही',
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'होय,मी काय शोधत होतो ते मिळाले.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'नाही, मी काय शोधत होतो ते मिळाले नाही.',
+	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 वर्ण बाकी)|($1 वर्ण बाकी)}}',
+	'articlefeedbackv5-bucket6-question-instructions-yes' => 'महान आहात.सुधारवण्याबाबत काही सूचना?',
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'आपल्या सूचना येथे करा(उदा.:"या पानात चित्र हवे")',
+	'articlefeedbackv5-bucket6-question-instructions-no' => 'त्याबद्दल माफ करा.सुधारवण्याबाबत काही सूचना?',
 	'articlefeedbackv5-bucket6-question-placeholder-no' => 'आपल्या सूचना येथे करा(उदा.:"या पानात चित्र हवे")',
 	'articlefeedbackv5-bucket6-form-submit' => 'आपली प्रतिक्रिया नोंदवा',
 	'articlefeedbackv5-bucket6-backlink-text' => 'प्रथम पायरीकडे परत',
 	'articlefeedbackv5-help-tooltip-title' => 'हे काय आहे?',
+	'articlefeedbackv5-help-tooltip-info' => ' या पानाबाबत आपणास काय वाटते हे एकावयास {{SITENAME}}ला आवडेल. संपादकांसमवेत आपली प्रतिक्रिया सहभागा - व हे पान सुधारवण्याबाबत मदत करा',
 	'articlefeedbackv5-help-tooltip-linktext' => 'अधिक शिका',
 	'articlefeedbackv5-sitesub-linktext' => 'या पानास सुधरवा',
 	'articlefeedbackv5-titlebar-linktext' => 'हे पान सुधरविण्यास मदत करा',
@@ -18905,6 +18940,11 @@ $6
 	'articlefeedbackv5-toolbox-view' => 'प्रतिक्रिया बघा',
 	'articlefeedbackv5-toolbox-add' => 'आपली प्रतिक्रिया नोंदवा',
 	'articlefeedbackv5-leave-warning' => 'आपण टाकलेला मजकूर जतन व्हायची शक्यता नाही.',
+	'articlefeedbackv5-toolbox-enable' => 'प्रतिक्रिया देणे सक्षम करा',
+	'articlefeedbackv5-activity-pane-header' => 'क्रियाकलाप नोंदी',
+	'articlefeedbackv5-activity-feedback-info' => ' $2द्वारे प्रतिक्रिया',
+	'articlefeedbackv5-activity-more' => 'अधिक क्रियाकलाप दाखवा',
+	'articlefeedbackv5-article-view-feedback' => '$1 वाचक {{PLURAL:$1|शेरा|शेरे}}',
 	'articlefeedbackv5-talk-view-feedback' => 'वाचकांच्या प्रतिक्रिया दाखवा',
 	'articlefeedbackv5-watchlist-view-feedback' => 'माझ्या पहाऱ्याखाली असलेल्या पानांवरील प्रतिक्रिया',
 	'articlefeedbackv5-disable-flyover-title' => 'हे उपकरण काढायचे काय?',
@@ -24161,6 +24201,8 @@ $messages['roa-tara'] = array(
 	'articlefeedbackv5-protection-permission-noone' => 'Disabbilite pe tutte le utinde',
 	'articlefeedbackv5-disabled' => "'A segnalazione ha state disabbilitate",
 	'articlefeedbackv5-disabled-admin-admin' => "'A segnalazione ha state disabbilitate pe le letture e le cangiature. Lore non ge ponne mannà segnalaziune nuève sus a sta pàgene.",
+	'articlefeedbackv5-disabled-admin-editor' => "'A segnalazione ha state disabbilitate pe le letture. Lore non ge ponne mannà segnalaziune nuève sus a sta pàgene.",
+	'articlefeedbackv5-disabled-editor-admin' => "'A segnalazione ha state disabbilitate da 'n'amminsitratore. Le letture e le cangiature non ge ponne mannà 'na segnalazione nove sus a sta pàgene.",
 	'articlefeedbackv5-disabled-admin-button-text' => "Cange 'a protezione",
 	'articlefeedbackv5-disabled-editor-button-text' => "Abbilite 'a segnalazione",
 	'articlefeedbackv5-settings-status-enable' => "Abbilite 'a segnalazione sus a sta pàgene",
