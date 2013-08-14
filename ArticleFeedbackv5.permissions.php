@@ -184,8 +184,9 @@ class ArticleFeedbackv5Permissions {
 			return false;
 		}
 
-		// make sure an articleId was passed
-		if ( !$articleId ) {
+		// make sure a valid articleId was passed
+		$pageObj = WikiPage::newFromID( $articleId );
+		if ( !$pageObj ) {
 			return false;
 		}
 
@@ -229,6 +230,11 @@ class ArticleFeedbackv5Permissions {
 				'page_restrictions',
 				$vars
 			);
+		}
+
+		// purge page's cache, to accurately expose updated changes to JS
+		if ( $dbw->affectedRows() > 0 ) {
+			$pageObj->doPurge();
 		}
 
 		return true;
