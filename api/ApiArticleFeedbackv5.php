@@ -154,7 +154,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'create',
 				$feedback->aft_page,
 				$feedback->aft_id,
-				$feedback->aft_comment,
+				'', // just like creation of page, no comment in logs
 				$user,
 				array()
 			);
