@@ -8672,7 +8672,7 @@ $6
 	'articlefeedbackv5-permalink-status-autoflag' => '{{GENDER:$1|<strong>به طور خودکار پرچم گذاری شده</strong> توسط $1}} $2',
 	'articlefeedbackv5-permalink-status-feature' => '{{GENDER:$1|<strong>برگزیده شده</strong> توسط $1}} $2',
 	'articlefeedbackv5-permalink-status-unfeature' => '{{GENDER:$1|<strong>از حالت برگزیده در آمده</strong> توسط $1}} $2',
-	'articlefeedbackv5-permalink-status-resolve' => '{{GENDER:$1|<strong>تائیدشده به عنوان حل‌شده</strong> توسط $1}} $2',
+	'articlefeedbackv5-permalink-status-resolve' => '{{GENDER:$1|<strong>تأییدشده به عنوان حل‌شده</strong> توسط $1}} $2',
 	'articlefeedbackv5-permalink-status-unresolve' => '{{GENDER:$1|<strong>برچسب مفید بودن برداشته شده</strong> توسط $1}} $2',
 	'articlefeedbackv5-permalink-status-noaction' => '{{GENDER:$1|<strong>برچسب‌زده شده به عنوان غیر عملی</strong> توسط $1}} $2',
 	'articlefeedbackv5-permalink-status-unnoaction' => '{{GENDER:$1|<strong>برچسب برداشته شده به عنوان غیر عملی</strong> توسط $1}} $2',
