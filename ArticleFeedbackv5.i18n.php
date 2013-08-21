@@ -745,6 +745,7 @@ $1',
  * @author Krinkle
  * @author Liangent
  * @author Lloffiwr
+ * @author Ltrlg
  * @author McDutchie
  * @author Minh Nguyen
  * @author Mormegil
@@ -1693,9 +1694,11 @@ Un-oversight note flyover panel - action description',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'This is the text that appears when you roll over the no button in option 1 ("Did you find what you were looking for?"); it clarifies what "no" means in this context.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => 'This displays a countdown of the amount of characters feedback that will be allowed. $1 contains the amount of characters (number) remaining before none more are accepted.',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'This is the instructional text to be shown above the textarea where a user can leave feedback, to be shown when the user selected yes',
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'This is the grey default text that appears in the comment box when the yes button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'This is the grey default text that appears in the comment box when the yes button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.
+{{Related|Articlefeedbackv5-bucket6-question-placeholder}}',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'This is the instructional text to be shown above the textarea where a user can leave feedback, to be shown when the user selected no',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'This is the grey default text that appears in the comment box when the no button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'This is the grey default text that appears in the comment box when the no button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.
+{{Related|Articlefeedbackv5-bucket6-question-placeholder}}',
 	'articlefeedbackv5-bucket6-form-submit' => 'This is the contents of the submit button for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
 	'articlefeedbackv5-bucket6-backlink-text' => 'This is a small link that allows users to go back to the first step of the form and change their mind on whether they find the article useful',
 	'articlefeedbackv5-help-tooltip-title' => 'The title for the help tooltip.
@@ -9605,6 +9608,57 @@ $4', # Fuzzy
 	'abusefilter-edit-action-aftv5flagabuse' => 'Merkitse automaattisesti väärinkäytöksi',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Piilotettu automaattisesti. Sääntö: $1',
 	'articlefeedbackv5-abusefilter-note-aftv5request' => 'Pyydetty häivytystä automaattisesti. Sääntö: $1',
+);
+
+/** Faroese (føroyskt)
+ * @author EileenSanda
+ */
+$messages['fo'] = array(
+	'articlefeedbackv5-cta-thanks' => 'Takk fyri!',
+	'articlefeedbackv5-cta-confirmation-message' => 'Tín postur sæst á hesi [$1 afturmeldingarsíðuni].',
+	'articlefeedbackv5-cta1-confirmation-title' => 'Visti tú, at tú kanst rætta hesa síðuna?',
+	'articlefeedbackv5-cta1-confirmation-call' => '{{SITENAME}} virkar tí at ein og hvør kann rætta síðurnar Far í gongd, royn bara. Verð djarvur/djørv!',
+	'articlefeedbackv5-cta1-learn-how' => 'Lær at rætta',
+	'articlefeedbackv5-cta1-edit-linktext' => 'Rætta síðuna',
+	'articlefeedbackv5-cta2-confirmation-title' => 'Hjálp við at betra {{SITENAME}}',
+	'articlefeedbackv5-cta2-confirmation-call' => 'Henda heimasíðan er upprættað av fólki sum tær. Kanst tú geva okkum eina hjálpandi hond?',
+	'articlefeedbackv5-cta2-button-text' => 'Les meira',
+	'articlefeedbackv5-cta3-confirmation-title' => 'Vinarliga luttak í einari skjótari kanning',
+	'articlefeedbackv5-cta3-confirmation-call' => 'Tað tekur bert ein minutt og hjálpir við at betra um {{SITENAME}}.',
+	'articlefeedbackv5-cta3-button-text' => 'Byrja kanningina',
+	'articlefeedbackv5-cta4-confirmation-title' => 'Luttak í okkara felagsskapi',
+	'articlefeedbackv5-cta4-confirmation-call-line1' => 'Skráset teg ella rita inn, so editorar kunnu svara aftur uppá tína afturmelding.',
+	'articlefeedbackv5-cta4-confirmation-call-line2' => 'Tín ókeypis konto ger tað lættari at deila tað tú veitst á {{SITENAME}}.',
+	'articlefeedbackv5-cta4-button-text-signup' => 'Stovna eina kontu',
+	'articlefeedbackv5-cta4-button-text-login' => 'Rita inn',
+	'articlefeedbackv5-cta4-button-text-later' => 'Kanska seinni',
+	'articlefeedbackv5-cta4-button-text-or' => 'ella',
+	'articlefeedbackv5-cta5-confirmation-title' => 'Hygg eftir hvat ið onnur siga',
+	'articlefeedbackv5-cta5-button-text' => 'Síggj allar viðmerkingar',
+	'articlefeedbackv5-cta6-confirmation-title' => 'Tørvar tær hjálp til at skriva/rætta {{SITENAME}}?',
+	'articlefeedbackv5-cta6-button-text' => 'Vitja Tehúsið',
+	'articlefeedbackv5-overlay-close' => 'Lat aftur',
+	'articlefeedbackv5-error' => 'Ein feilur hendi. Vinarliga royn aftur seinni.',
+	'articlefeedbackv5-error-blocked' => 'Sperraðir brúkarar kunnu ikki geva afturmelding.',
+	'articlefeedbackv5-error-unknown' => 'Ókend villa.',
+	'articlefeedbackv5-contribs-status-action-helpful' => 'Hjálpsamt',
+	'articlefeedbackv5-contribs-status-action-feature' => 'Brúkbart',
+	'articlefeedbackv5-contribs-status-action-resolve' => 'Loyst',
+	'articlefeedbackv5-contribs-status-action-noaction' => 'Ongin handling neyðug',
+	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Óhóskandi',
+	'articlefeedbackv5-contribs-status-action-archive' => 'Arkiverað',
+	'articlefeedbackv5-contribs-status-action-hide' => 'Fjal',
+	'articlefeedbackv5-form-toolbox-label' => 'Merk sum:',
+	'articlefeedbackv5-form-own-toolbox-label' => 'Merk tín post sum:',
+	'articlefeedbackv5-form-helpful-label' => 'Er henda afturmelding hjálpsom?',
+	'articlefeedbackv5-form-helpful-yes-label' => 'Ja',
+	'articlefeedbackv5-form-helpful-no-label' => 'Nei',
+	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% av lesarunum hildu at hetta var hjálpsamt}}',
+	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 ja|$1 ja}} / {{PLURAL:$2|1 nei|$2 nei}}',
+	'articlefeedbackv5-special-filter-allcomment' => 'Allar viðmerkingar ($1)',
+	'articleFeedbackv5-details-link' => 'Smálutir',
+	'articlefeedbackv5-revision-link' => '(sí gamla síðu)',
+	'articlefeedbackv5-loading-tag' => 'Innlesur...',
 );
 
 /** French (français)
