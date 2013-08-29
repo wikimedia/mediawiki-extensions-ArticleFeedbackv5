@@ -872,7 +872,8 @@ See also:
 	'articlefeedbackv5-contribs-status-action-hide' => 'Status when feedback has been hidden.
 {{Identical|Hide}}',
 	'articlefeedbackv5-contribs-status-action-request' => 'Status when oversight has been requested on feedback',
-	'articlefeedbackv5-contribs-status-action-oversight' => 'Status when feedback has been oversighted',
+	'articlefeedbackv5-contribs-status-action-oversight' => 'Status when feedback has been oversighted.
+{{Identical|Oversighted}}',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'message to display in my contributions, instead of the actual feedback, when feedback has been hidden/oversight requested/oversighted',
 	'articlefeedbackv5-form-toolbox-label' => 'Message informing the user that the below links (useful, resolved, no action needed, inappropriate) are meant to mark feedback as such',
 	'articlefeedbackv5-form-own-toolbox-label' => 'Message informing the user that the link below (resolved, no action needed, inappropriate) are meant to mark feedback as such, for feedback the user submitted him/herself',
@@ -905,7 +906,11 @@ Parameters:
 	'articlefeedbackv5-special-filter-hidden' => 'Name of filter that will show all feedback that is hidden. $1 is the amount of records in this filter.',
 	'articlefeedbackv5-special-filter-requested' => 'Name of filter that will show all feedback where oversight has been requested. $1 is the amount of records in this filter.',
 	'articlefeedbackv5-special-filter-declined' => 'Name of filter that will show all feedback that has has an oversight request be declined. $1 is the amount of records in this filter.',
-	'articlefeedbackv5-special-filter-oversighted' => 'Name of filter that will show all feedback that has been oversighted. $1 is the amount of records in this filter.',
+	'articlefeedbackv5-special-filter-oversighted' => 'Name of filter that will show all feedback that has been oversighted.
+
+Parameters:
+* $1 - the amount of records in this filter
+{{Identical|Oversighted}}',
 	'articlefeedbackv5-special-filter-all' => 'Name of filter that will show all feedback. $1 is the amount of records in this filter.',
 	'articlefeedbackv5-special-filter-featured-watchlist' => 'Name of filter that will show all feedback that has been marked as useful or helpful.
 {{Identical|Featured}}',
@@ -929,7 +934,8 @@ Parameters:
 {{Identical|Hidden}}',
 	'articlefeedbackv5-special-filter-requested-watchlist' => 'Name of filter that will show all feedback where oversight has been requested.',
 	'articlefeedbackv5-special-filter-declined-watchlist' => 'Name of filter that will show all feedback that has has an oversight request be declined.',
-	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'Name of filter that will show all feedback that has been oversighted.',
+	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'Name of filter that will show all feedback that has been oversighted.
+{{Identical|Oversighted}}',
 	'articlefeedbackv5-special-filter-all-watchlist' => 'Name of filter that will show all feedback.',
 	'articlefeedbackv5-special-sort-relevance-desc' => 'Sort option: better, more relevant feedback first',
 	'articlefeedbackv5-special-sort-relevance-asc' => 'Sort option: least relevant feedback first',
@@ -1065,7 +1071,8 @@ Parameters:
 {{Related|Articlefeedbackv5-status}}',
 	'articlefeedbackv5-new-marker' => 'The marker that appears on a comment is new and highlighted.
 {{Identical|New}}',
-	'articlefeedbackv5-oversight-marker' => 'The marker that appears on a comment if it has been oversighted (deleted).',
+	'articlefeedbackv5-oversight-marker' => 'The marker that appears on a comment if it has been oversighted (deleted).
+{{Identical|Oversighted}}',
 	'articlefeedbackv5-autohide-marker' => 'The marker that appears on a comment if it has been auto-hidden.
 {{Identical|Hidden}}',
 	'articlefeedbackv5-hide-marker' => 'The marker that appears on a comment if it has been hidden.
@@ -1107,7 +1114,10 @@ Parameters:
 {{Identical|Archive}}',
 	'articlefeedbackv5-form-unarchive' => 'Link text for un-archiving the post (in the toolbox).
 {{Identical|Undo}}',
-	'articlefeedbackv5-form-helpful' => 'Unused at this time.',
+	'articlefeedbackv5-form-helpful' => 'Unused at this time.
+
+Parameters:
+* $1 - ...',
 	'articlefeedbackv5-form-flag' => 'Link text allowing the user to flag feedback as abuse.',
 	'articlefeedbackv5-form-oversight' => 'Link text for oversighting (= deletion) a feedback entry.
 {{Identical|Oversight}}',
@@ -1223,7 +1233,11 @@ Parameters
 	'articlefeedbackv5-found-percent' => 'Text describing the percentage of readers that answered positively to the question "Did you find what you were looking for". Parameters:
 * $1 - the percentage of people that found what they were looking for marked up. Example value: 15%. {{msg-mw|percent}} is used.
 * $2 - the percentage of people that found what they were looking for, used for plural.',
-	'articlefeedbackv5-found-percent-title' => 'Title attribute for percentage of people who marked feedback as useful. This will display more detailed information about the amount of feedback the percentage has been calculated over. Parameters:
+	'articlefeedbackv5-found-percent-title' => 'Title attribute for percentage of people who marked feedback as useful.
+
+This will display more detailed information about the amount of feedback the percentage has been calculated over.
+
+Parameters:
 * $1 - the amount of feedback that has been included in the calculation of the percentage (= all feedback not marked as inappropriate)',
 	'articlefeedbackv5' => '{{doc-special|ArticleFeedbackv5}}
 The title of the feature. It is about reader feedback.
@@ -1776,35 +1790,45 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * $3 - A link to the feedback
 * $4 - The feedback's id
 * $5 - A link to the article the feedback was posted to",
-	'logentry-articlefeedbackv5-oversight' => 'Log entry for when a user "oversights" (deletes; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page) a feedback post. Parameters:
+	'logentry-articlefeedbackv5-oversight' => 'Log entry for when a user "oversights" (deletes; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page) a feedback post.
+
+Parameters:
 * $1 - A link to the performer
 * $2 - The performer\'s id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback\'s id
 * $5 - A link to the article the feedback was posted to
 {{Related|Logentry-articlefeedbackv5}}',
-	'logentry-articlefeedbackv5-unoversight' => 'Log entry for when a user un-"oversights" (un-deletes; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page) a feedback post. Parameters:
+	'logentry-articlefeedbackv5-unoversight' => 'Log entry for when a user un-"oversights" (un-deletes; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page) a feedback post.
+
+Parameters:
 * $1 - A link to the performer
 * $2 - The performer\'s id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback\'s id
 * $5 - A link to the article the feedback was posted to
 {{Related|Logentry-articlefeedbackv5}}',
-	'logentry-articlefeedbackv5-decline' => "Log entry for when a user declines an oversight request on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page). Parameters:
+	'logentry-articlefeedbackv5-decline' => "Log entry for when a user declines an oversight request on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page).
+
+Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
 * $5 - A link to the article the feedback was posted to
 {{Related|Logentry-articlefeedbackv5}}",
-	'logentry-articlefeedbackv5-request' => "Log entry for when a user requests oversight on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page). Parameters:
+	'logentry-articlefeedbackv5-request' => "Log entry for when a user requests oversight on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page).
+
+Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
 * $4 - The feedback's id
 * $5 - A link to the article the feedback was posted to
 {{Related|Logentry-articlefeedbackv5}}",
-	'logentry-articlefeedbackv5-unrequest' => "Log entry for when a user un-requests oversight on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page). Parameters:
+	'logentry-articlefeedbackv5-unrequest' => "Log entry for when a user un-requests oversight on a feedback post (an oversight request asks an oversighter to delete feedback; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page).
+
+Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
@@ -1916,7 +1940,9 @@ Name of the AFTv5 log filter on the [[Special:Log]] page.',
 * $4 - The feedback's id
 * $5 - A link to the article the feedback was posted to
 {{Related|Logentry-articlefeedbackv5}}",
-	'logentry-articlefeedbackv5-autohide' => "Log entry for when a feedback post is automatically hidden (e.g., when it gets too many abuse flags, or when oversight is requested; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page). Parameters:
+	'logentry-articlefeedbackv5-autohide' => "Log entry for when a feedback post is automatically hidden (e.g., when it gets too many abuse flags, or when oversight is requested; see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_page).
+
+Parameters:
 * $1 - A link to the performer
 * $2 - The performer's id, gender support
 * $3 - A link to the feedback
@@ -3374,11 +3400,13 @@ $messages['bcl'] = array(
 	'articlefeedbackv5-error-throttled' => 'An saimong ipinaskil pinagdeharan nin huli ta ika dae pa sana nahaloy nagsurat nin kadagdagan na balik-simbag kesa rekomendado kan giya para sa balik-simbag kan {{SITENAME}}. Dae ka tabi magsurat nin balik-simbag nin pauro-otro o sobrado.',
 	'articlefeedbackv5-protection-level' => 'Balik-simbag nin Artikulo',
 	'articlefeedbackv5-protection-level-error' => 'An grado nin proteksyon kan balik-simbag nin artikulo bako halangkaw kesa grado kan proteksyon sa Pagliliwat',
-	'protect-level-aft-reader' => 'Paganahon para sa gabos na mga paragamit', # Fuzzy
-	'protect-level-aft-member' => 'Paganahon para sa naglaog na mga paragamit sana', # Fuzzy
-	'protect-level-aft-editor' => 'Paganahon para sa awtomatikong pinagkumpirmang mga paragamit sana', # Fuzzy
-	'protect-level-aft-administrator' => 'Paganahon para sa mga administrador sana', # Fuzzy
-	'protect-level-aft-noone' => 'Inuntok para sa gabos na mga paragamit', # Fuzzy
+	'protect-level-aft-reader' => 'Paganahon para sa gabos na mga paragamit',
+	'protect-level-aft-member' => 'Paganahon sana para sa nakalaog nang mga paragamit',
+	'protect-level-aft-editor' => 'Paganahon sana para sa awtomatikong pinagkumpirmang mga paragamit',
+	'protect-level-aft-administrator' => 'Paganahon sana para sa mga administrador',
+	'protect-level-aft-noone' => 'Inuntok para sa gabos na mga paragamit',
+	'articlefeedbackv5-protection-title' => 'Pinagliwat na bisibilidad kan gamit sa balik-simbag nin artikulo sa "[[$1]]"',
+	'restriction-articlefeedbackv5' => 'Bisibilidad',
 	'articlefeedbackv5-disabled' => 'An balik-simbag pinag-untok na',
 	'articlefeedbackv5-disabled-admin-admin' => 'An balik-simbag pinag-untok na para sa mga parabasa asin paraliwat. Sinda dae makakapagpaskil nin baguhong balik-simbag sa pahinang ini.',
 	'articlefeedbackv5-disabled-admin-editor' => 'An balik-simbag pinag-untok na para sa mga parabasa. Sinda dae makakapagpaskil nin baguhong balik-simbag sa pahinang ini.',
@@ -3812,6 +3840,108 @@ $messages['bcl'] = array(
 	'right-aft-oversighter' => 'Balik-simbag nin pagmamangno',
 	'log-name-articlefeedbackv5' => 'Talaan kan aktibidad nin balik-simbag kan artikulo',
 	'log-description-articlefeedbackv5' => 'Ini an talaan kan aktibidad na pinagkua sa aytem nin balik-simbag na pinagsumite kan mga paragamit sa paagi kan Balik-simbag kan Artikulo.',
+	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|pinagsumite}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|pinagliwat na kamugtakan na magmansay sa }} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|pinagtangkas an kamugtakan na magmansay sa }} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|pinaghaboan na magmansay para sa}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-request' => '$1 {{GENDER:$2|pinaghagad na magmansay para sa}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-unrequest' => '$1 {{GENDER:$2|dae pinaghagad na magmansay para sa}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-flag' => '$1 {{GENDER:$2|pinagbandera bilang abuso}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-unflag' => '$1 {{GENDER:$2|dae pinagbandera bilang abuso}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-autoflag' => '$1 {{GENDER:$2|awtomatikong pinagbandera bilang abuso}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-feature' => '$1 {{GENDER:$2|pinagmarkahan bilang may magamitan}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-unfeature' => '$1 {{GENDER:$2|dae pinagmarkahan bilang may magamitan}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-resolve' => '$1 {{GENDER:$2|pinagmarkahan bilang resolbado na}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-unresolve' => '$1 {{GENDER:$2|dae pinagmarkahan bilang resolbado na}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-noaction' => '$1 {{GENDER:$2|pinagmarkahan bilang bakong aksyonable}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-unnoaction' => '$1 {{GENDER:$2|dae pinagmarkahan bilang bakong aksyonable}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-inappropriate' => '$1 {{GENDER:$2|pinagmarkahan bilang bakong angay}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-uninappropriate' => '$1 {{GENDER:$2|dae pinagmarkahan bilang bakong angay}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-archive' => '$1 {{GENDER:$2|pinag-arkibo}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-unarchive' => '$1 {{GENDER:$2|dae pinag-arkibo}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-hide' => '$1 {{GENDER:$2|ipinagtago}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-unhide' => '$1 {{GENDER:$2|dae ipinagtago}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-autohide' => '$1 {{GENDER:$2|awtomatikong ipinagtago}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-helpful' => '$1 {{GENDER:$2|pinagmarkahan bilang pano nin katabangan}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-unhelpful' => '$1 {{GENDER:$2|pinagmarkahan bilang dae pano nin katabangan}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|dae pinagmarkahan bilang pano nin katabangan}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|dae pinagmarkahan bilang pano nin katabangan}} [[$3|paskil nin balik-simbag #$4]] sa [[$5]]',
+	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|pinagklarado an gabos na mga binandera}} [[$3|feedback post #$4]] on [[$5]]',
+	'logentry-articlefeedbackv5-protect' => '$1 pinagliwat an bisibilidad kan gamit sa balik-simbag nin artikulo sa "$3" $4',
+	'articlefeedbackv5-activity-pane-header' => 'Talaan nin Aktibidad',
+	'articlefeedbackv5-activity-feedback-info' => 'Balik-simbag ni $2',
+	'articlefeedbackv5-activity-feedback-date' => 'Pinagpaskil kan $1',
+	'articlefeedbackv5-activity-permalink' => 'permanenteng kasugpon',
+	'articlefeedbackv5-activity-item-request' => '$1 pinaghahagad an pagmansay sa $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 dae pinaghahagad an pagmansay sa $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 pinaghaboan an pagmansay sa $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 pinagbandera ining paskil kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 dae pinagbandera ining paskil kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-autoflag' => '$1 pinagbandera ining paskil kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 pinagmansayan ining paskil kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 pinagtangkas an pagmansay kaining paskil kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 pinagmarkahan ining paskil bilang pano nin magagamitan kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 dae pinagmarkahan ining paskil bilang pano nin magagamitan kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 pinagmarkahan ining paskil bilang resolbado na kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 dae pinagmarkahan ining paskil bilang resolbado na kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-noaction' => '$1 pinagmarkahan ining paskil bilang bakong aksyonable kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 dae pinagmarkahan ining paskil bilang bakong aksyonable kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 pinagmarkahan ining paskil bilang bakong angay kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 dae pinagmarkahan ining paskil bilang bakong angay kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-hide' => '$1 tagoon ining paskil kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-unhide' => '$1 dae tagoon ining paskil kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-autohide' => '$1 tagoon ining paskil kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-archive' => '$1 pinag-arkibo ining paskil kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-unarchive' => '$1 dae pinag-arkibo ining paskil kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 pinagmarkahan ining paskil bilang pano nin katabangan kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 pinagmarkahan ining paskil bilang pano nin katabangan kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 dae pinagmarkahan ining paskil bilang pano nin katabangan kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 dae pinagmarkahan ining paskil bilang bakong pano nin katabangan kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 pinagklarado an gabos na mga binandera para kaining paskil kan $4 mga $5 $2',
+	'articlefeedbackv5-activity-note-archive' => 'Pinag-arkibo matapos an {{PLURAL:$1|$1 aldaw|$1 mga aldaw}} kan mayong aktibidad an paraliwat',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 aksyon kaining paskil|$1 mga aksyon kaining paskil}}',
+	'articlefeedbackv5-activity-more' => 'Ipahiling an kadugangan na Aktibidad',
+	'articlefeedbackv5-article-view-feedback' => '$1 parabasa {{PLURAL:$1|komento|mga komento}}',
+	'articlefeedbackv5-talk-view-feedback' => 'Hilingon an balik-simbag kan parabasa',
+	'articlefeedbackv5-watchlist-view-feedback' => 'Balik-simbag gikan sa sakuyang pinagbabantayan na mga pahina',
+	'articlefeedbackv5-email-request-oversight-subject' => 'An pagmansay pinaghahagad para sa pahina kan balik-simbag nin artikulo',
+	'articlefeedbackv5-email-request-oversight-body' => 'Hello, mga paramansay!
+
+An pagmansay pinaghahagad ni $1 para sa balik-simbag na pinagpaskil sa pahinang ini:
+
+$2
+
+Tabi man pakirikisa kaining paskil nin balik-simbag, masunod an pag-apruba o paghabo kaining pagmansay na hinahagad:
+
+$3
+$5
+
+Mabalos tabi saimo,
+
+
+An {{SITENAME}} Grupo
+
+
+
+P.S. Kun igwa ka nin anuman na kahaputan mapanungod sa paggagamit kan mga estima nin pagmamansay kan pahina sa balik-simbag nin artikulo, tabi man i-tsek ining paramansay na FAQ:
+
+
+$4',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'Ining komento pinagdugang sa pagmansay na pinaghahagad:
+
+
+$1',
+	'articlefeedbackv5-disable-flyover-title' => 'Tangkason ining gamit?',
+	'articlefeedbackv5-disable-flyover-help-message' => 'Sa pagtangkas kan Balik-simbag nin Artikulo, magduman sa "$1"> "$2" asin i-tsek an "$3"',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Magduman sa sakuyang mga kamuyahan',
+	'abusefilter-edit-action-aftv5resolve' => '(Balik-simbag nin Artikulo) Awtomatikong iresolba',
+	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Awtomatikong pinagresolba. Patakaran: $1',
+	'abusefilter-edit-action-aftv5flagabuse' => '(Balik-simbag nin Artikulo) Awtomatikong ipagbandera bilang abuso',
+	'articlefeedbackv5-abusefilter-note-aftv5flag' => 'Awtomatikong ipinagbandera bilang abuso. Patakaran: $1',
+	'abusefilter-edit-action-aftv5hide' => '(Balik-simbag na Artikulo) Awtomatikong ipagtago',
+	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Awtomatikong ipinagtago. Patakaran: $1',
+	'abusefilter-edit-action-aftv5request' => '(Balik-simbag nin Artikulo) Awtomatikong pinaghahagad an pagmamansay',
+	'articlefeedbackv5-abusefilter-note-aftv5request' => 'An pagmamansay awtomatikong pinaghahagad: Patakaran: $1',
 );
 
 /** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
@@ -4543,30 +4673,60 @@ $messages['br'] = array(
 	'articlefeedbackv5-permalink-info-stats-subtitle-helpfulness' => 'Talvoudusted :',
 	'articlefeedbackv5-permalink-activity-title' => 'Obererezh',
 	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 ober|$1 ober}})',
+	'articlefeedbackv5-short-status-request' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-unrequest' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-decline' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-autohide' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-oversight' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-unoversight' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-unflag' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-flag' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-autoflag' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-feature' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-unfeature' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-resolve' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-unresolve' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-noaction' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-unnoaction' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-inappropriate' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-uninappropriate' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-hide' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-unhide' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-archive' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-unarchive' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-helpful' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-undo-helpful' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-unhelpful' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-short-status-undo-unhelpful' => '{{GENDER:$1|Adwelet gant $1}}',
+	'articlefeedbackv5-permalink-status-feature' => '{{GENDER:$1|<strong>Merket evel talvoudus</strong> gant $1}} $2',
 	'articlefeedbackv5-permalink-status-inappropriate' => '{{GENDER:$1|<strong>Bet kuzhet</strong> gant $1}} $2 zo',
-	'articlefeedbackv5-permalink-status-helpful' => '{{GENDER:$1|<strong>Bet merket talvoudus</strong> gant $1}} $2 zo', # Fuzzy
+	'articlefeedbackv5-permalink-status-hide' => '{{GENDER:$1|<strong>Bet kuzhet</strong> gant $1}} $2',
+	'articlefeedbackv5-permalink-status-helpful' => '{{GENDER:$1|<strong>Merket evel sikourus</strong> gant $1}} $2',
 	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Bet merket didalvez</strong> gant $1}} $2 zo', # Fuzzy
 	'articlefeedbackv5-permalink-last-action' => 'Obererezh ziwezhañ',
 	'articlefeedbackv5-permalink-activity-more' => "Diskwel muioc'h a oberoù...",
 	'articlefeedbackv5-permalink-activity-fewer' => "Diskwel nebeutoc'h a oberoù",
+	'articlefeedbackv5-noteflyover-feature-caption' => 'Merket evel talvoudus',
 	'articlefeedbackv5-noteflyover-feature-label' => 'Ouzhpennañ un notenn',
+	'articlefeedbackv5-noteflyover-feature-submit' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-feature-help' => "Gouzout hiroc'h",
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Ouzhpennañ un notenn',
+	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-unfeature-help' => "Gouzout hiroc'h",
-	'articlefeedbackv5-noteflyover-resolve-caption' => 'Merkañ evel diskoulmet', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-caption' => 'Merkañ evel diskoulmet',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Ouzhpennañ un notenn',
-	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Perak e verkit an notenn-mañ evel diskoulmet ?', # Fuzzy
-	'articlefeedbackv5-noteflyover-resolve-submit' => 'Merkañ evel diskoulmet', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Perak e verkit an notenn-mañ evel diskoulmet ?',
+	'articlefeedbackv5-noteflyover-resolve-submit' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-resolve-help' => "Gouzout hiroc'h",
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Merkañ evel diskoulmet', # Fuzzy
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Perak e verkit an notenn-mañ evel diskoulmet ?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Merkañ evel diskoulmet', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-unresolve-help' => "Gouzout hiroc'h",
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Kuzhat ar gemennadenn-mañ', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Kuzhat',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Ouzhpennañ un notenn',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => "Perak 'ta kuzhat an notenn-mañ ?", # Fuzzy
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Kuzhat ar gemennadenn-mañ', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-placeholder' => "Perak 'ta kuzhat an notenn-mañ ?",
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-hide-help' => "Gouzout hiroc'h",
 	'articlefeedbackv5-noteflyover-unhide-caption' => 'Diguzhat',
 	'articlefeedbackv5-noteflyover-unhide-label' => 'Ouzhpennañ un notenn',
@@ -4586,9 +4746,12 @@ $messages['br'] = array(
 	'articlefeedbackv5-noteflyover-uninappropriate-help' => "Gouzout hiroc'h",
 	'articlefeedbackv5-noteflyover-archive-caption' => 'Diellaouet',
 	'articlefeedbackv5-noteflyover-archive-label' => 'Ouzhpennañ un notenn',
+	'articlefeedbackv5-noteflyover-archive-placeholder' => 'Perak ho peus diellaouet ar gemennadenn-mañ ?',
 	'articlefeedbackv5-noteflyover-archive-submit' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-archive-help' => "Gouzout hiroc'h",
+	'articlefeedbackv5-noteflyover-unarchive-caption' => 'Diziellaouet',
 	'articlefeedbackv5-noteflyover-unarchive-label' => 'Ouzhpennañ un notenn',
+	'articlefeedbackv5-noteflyover-unarchive-placeholder' => 'Perak ho peus diziellaouet ar gemennadenn-mañ ?',
 	'articlefeedbackv5-noteflyover-unarchive-submit' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-unarchive-help' => "Gouzout hiroc'h",
 	'articlefeedbackv5-noteflyover-request-caption' => 'Goulenn ma vo evezhiet',
@@ -4609,11 +4772,11 @@ $messages['br'] = array(
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Paouez da evezhiañ an notenn-mañ', # Fuzzy
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-unoversight-placeholder' => "Perak ho peus paouezet da evezhiañ an notenn-mañ 'ta ?",
-	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Paouez da evezhiañ an notenn-mañ', # Fuzzy
+	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-unoversight-help' => "Gouzout hiroc'h",
-	'articlefeedbackv5-noteflyover-decline-caption' => "Nac'hañ an evezhiañ", # Fuzzy
+	'articlefeedbackv5-noteflyover-decline-caption' => "Nac'hañ an evezhiañ",
 	'articlefeedbackv5-noteflyover-decline-label' => 'Ouzhpennañ un notenn',
-	'articlefeedbackv5-noteflyover-decline-placeholder' => "Perak nac'hañ an evezhiañ ?", # Fuzzy
+	'articlefeedbackv5-noteflyover-decline-placeholder' => "Perak nac'hañ an evezhiañ ?",
 	'articlefeedbackv5-noteflyover-decline-submit' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-decline-help' => "Gouzout hiroc'h",
 	'articlefeedbackv5-bucket1-title' => 'Hor skoazellit da wellaat ar bajenn-mañ',
@@ -4622,7 +4785,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Ket',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Ya, kavet em eus.',
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => "N'em eus ket.",
-	'articlefeedbackv5-bucket1-question-placeholder-yes' => "Penaos e c'hallfe ar pennad-mañ bezañ gwellaet ?", # Fuzzy
+	'articlefeedbackv5-bucket1-question-placeholder-yes' => "Penaos e c'hallfe ar bajenn-mañ bezañ gwellaet ?",
 	'articlefeedbackv5-bucket1-question-placeholder-no' => "Kinnigoù gwellaat hoc'h eus ?",
 	'articlefeedbackv5-bucket1-form-submit' => 'Embannit ho soñj',
 	'articlefeedbackv5-bucket4-title' => 'Hor skoazellit da wellaat ar bajenn-mañ',
@@ -4644,9 +4807,9 @@ $messages['br'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => "N'em eus ket kavet ar pezh a glasken siwazh.",
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 arouezenn a chom)|($1 arouezenn a chom)}}',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => "Eus ar c'hentañ. Un evezhiadenn bennak a fell deoc'h ouzhpennañ ?",
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => "Skrivit ho tamantiñ amañ (d.sk.: 'ezhomm en deus ar pennad-mañ eus ur skeudenn')", # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => "Skrivit ho tamantiñ amañ (d.sk.: 'ezhomm en deus ar pennad-mañ eus ur skeudenn')",
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Ho tigarez. Un ali bennak eus ho perzh evit gwellaat an traoù ?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => "Skrivit ho tamantiñ amañ (da sk. : 'ezhomm en deus ar pennad-mañ eus ur skeudenn')", # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-no' => "Skrivit ho tamantiñ amañ (da sk. : 'ezhomm en deus ar pennad-mañ eus ur skeudenn')",
 	'articlefeedbackv5-bucket6-form-submit' => 'Embannit ho soñj',
 	'articlefeedbackv5-bucket6-backlink-text' => "Distreiñ d'ar bazenn 1",
 	'articlefeedbackv5-help-tooltip-title' => 'Petra eo se ?',
@@ -4659,6 +4822,8 @@ $messages['br'] = array(
 	'articlefeedbackv5-section-linktext' => 'Sonjoù',
 	'articlefeedbackv5-toolbox-view' => 'Diskwel an evezhiadennoù',
 	'articlefeedbackv5-toolbox-add' => "Ouzhpennit hoc'h evezhiadenn",
+	'articlefeedbackv5-leave-warning' => "Ne c'hall ket ar roadennoù ho peus ebarzhet bezañ enrollet.",
+	'articlefeedbackv5-toolbox-enable' => 'Aotren an evezhiadennoù',
 	'articlefeedbackv5-disable-preference' => 'Arabat diskwel ar bitrak Priziañ ar pennadoù er pajennoù.',
 	'articlefeedbackv5-activity-pane-header' => 'Marilh obererezh',
 	'articlefeedbackv5-activity-feedback-info' => 'Evezhiadenn bost #$1 gant $2', # Fuzzy
@@ -8225,10 +8390,10 @@ $messages['et'] = array(
 	'articlefeedbackv5-error-throttled' => 'Sinu postitus on tagasi lükatud, sest oled postitanud hiljuti rohkem tagasisidet kui on {{GRAMMAR:genitive|{{SITENAME}}}} tagasiside juhtnööride järgi soovitatav. Palun ära postitata korduvalt ja ülemäära palju.',
 	'articlefeedbackv5-protection-level' => 'Artikli tagasiside',
 	'articlefeedbackv5-protection-level-error' => 'Artikli tagasiside kaitsetase ei saa olla kõrgem kui redigeerimise kaitsetase.',
-	'protect-level-aft-reader' => 'Luba kõigile kasutajatele', # Fuzzy
-	'protect-level-aft-member' => 'Luba ainult sisseloginud kasutajatele', # Fuzzy
-	'protect-level-aft-editor' => 'Luba ainult automaatselt kinnitatud kasutajatele', # Fuzzy
-	'protect-level-aft-administrator' => 'Luba ainult administraatoritele', # Fuzzy
+	'protect-level-aft-reader' => 'Luba kõigile kasutajatele',
+	'protect-level-aft-member' => 'Luba ainult sisseloginud kasutajatele',
+	'protect-level-aft-editor' => 'Luba ainult automaatselt kinnitatud kasutajatele',
+	'protect-level-aft-administrator' => 'Luba ainult administraatoritele',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Tagasiside: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Olek: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Kasulik',
@@ -10296,7 +10461,7 @@ Nous apprécions vos contributions à cette page !
 	'articlefeedbackv5-permalink-status-unresolve' => '{{GENDER:$1|<strong>Plus marqué comme résolu</strong> par $1}} $2',
 	'articlefeedbackv5-permalink-status-noaction' => '{{GENDER:$1|<strong>Marqué comme non recevable</strong> par $1}} $2',
 	'articlefeedbackv5-permalink-status-unnoaction' => '{{GENDER:$1|<strong>Plus marqué comme non recevable</strong> par $1}} $2',
-	'articlefeedbackv5-permalink-status-inappropriate' => '<strong>Masqué</strong> par $1 il y a $2',
+	'articlefeedbackv5-permalink-status-inappropriate' => '<strong>Marqué comme inapproprié</strong> par $1 il y a $2',
 	'articlefeedbackv5-permalink-status-uninappropriate' => '<strong>Démasqué</strong> par $1 il y a $2',
 	'articlefeedbackv5-permalink-status-archive' => '{{GENDER:$1|<strong>Archivé</strong> par $1}} $2',
 	'articlefeedbackv5-permalink-status-unarchive' => '{{GENDER:$1|<strong>Désarchivé</strong> par $1}} $2',
@@ -10507,7 +10672,7 @@ Nous apprécions vos contributions à cette page !
 	'articlefeedbackv5-activity-item-unresolve' => '$1 a retiré la résolution de ce commentaire, le $4 à $5 $2',
 	'articlefeedbackv5-activity-item-noaction' => '$1 a marqué ce retour comme ne nécessitant aucune action le $4 à $5 $2',
 	'articlefeedbackv5-activity-item-unnoaction' => '$1 a supprimé le marquage de ce commentaire comme non recevable le $4 à $5 $2',
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 a caché ce commentaire, le $4 à $5 $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 a marqué ce commentaire comme inapproprié, le $4 à $5 $2',
 	'articlefeedbackv5-activity-item-uninappropriate' => '$1 a démasqué ce commentaire, le $4 à $5 $2',
 	'articlefeedbackv5-activity-item-hide' => '$1 a masqué le commentaire le $4 à $5 $2',
 	'articlefeedbackv5-activity-item-unhide' => '$1 a annulé le masquage de ce commentaire le $4 à $5 $2',
@@ -10553,11 +10718,11 @@ $1',
 	'abusefilter-edit-action-aftv5resolve' => '(Commentaire sur l’article) Auto-résolution',
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Résolu automatiquement. Règle : $1',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Outil de commentaire des articles) Marquer automatiquement comme abusif',
-	'articlefeedbackv5-abusefilter-note-aftv5flag' => 'Automatiquement marqué comme abusif. Règle&nbsp;: $1',
+	'articlefeedbackv5-abusefilter-note-aftv5flag' => 'Marqué comme abusif automatiquement. Règle&nbsp;: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Outil de commentaire des articles) Masquage automatique',
-	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automatiquement caché. Règle&nbsp;: $1',
+	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Masqué automatiquement. Règle : $1',
 	'abusefilter-edit-action-aftv5request' => '(Outil de commentaire des articles) Demander automatiquement un masquage aux administrateurs',
-	'articlefeedbackv5-abusefilter-note-aftv5request' => 'Masquage automatiquement demandé.  Règle&nbsp;: $1',
+	'articlefeedbackv5-abusefilter-note-aftv5request' => 'Masquage demandé automatiquement.  Règle&nbsp;: $1',
 );
 
 /** Franco-Provençal (arpetan)
@@ -16344,11 +16509,13 @@ $messages['ko'] = array(
 	'articlefeedbackv5-error-throttled' => '{{SITENAME}}의 피드백 지침에서 권장 사항보다 더 많은 피드백을 게시했기 때문에 게시물이 거부되었습니다. 반복하거나 과도하게 피드백을 게시하지 마세요.',
 	'articlefeedbackv5-protection-level' => '문서 평가',
 	'articlefeedbackv5-protection-level-error' => '문서 피드백 보호 수준은 편집 보호 수준보다 높일 수 없습니다.',
-	'articlefeedbackv5-protection-permission-reader' => '모든 사용자한테 활성화',
-	'articlefeedbackv5-protection-permission-member' => '로그인한 사용자만 활성화',
-	'articlefeedbackv5-protection-permission-editor' => '자동 인증된 사용자만 활성화',
-	'articlefeedbackv5-protection-permission-administrator' => '관리자만 활성화',
-	'articlefeedbackv5-protection-permission-noone' => '모든 사용자한테 비활성화',
+	'protect-level-aft-reader' => '모든 사용자에게 활성화',
+	'protect-level-aft-member' => '로그인한 사용자에게만 활성화',
+	'protect-level-aft-editor' => '자동 인증된 사용자에게만 활성화',
+	'protect-level-aft-administrator' => '관리자에게만 활성화',
+	'protect-level-aft-noone' => '모든 사용자에게 비활성화',
+	'articlefeedbackv5-protection-title' => '"[[$1]]"에 문서 피드백 도구의 공개 여부를 바꿈',
+	'restriction-articlefeedbackv5' => '공개 여부',
 	'articlefeedbackv5-disabled' => '피드백이 비활성화되었습니다',
 	'articlefeedbackv5-disabled-admin-admin' => '피드백이 독자와 편집자한테 비활성화되었습니다. 독자와 편집자는 이 문서에 새 피드백을 게시할 수 없습니다.',
 	'articlefeedbackv5-disabled-admin-editor' => '피드백이 독자한테 비활성화되었습니다. 독자는 이 문서에 새 피드백을 게시할 수 없습니다.',
@@ -16824,6 +16991,7 @@ $6
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 사용자가 [[$5]]에 [[$3|#$4 피드백 게시물]]{{GENDER:$2|을 유용한 것으로 표시 취소했습니다}}',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 사용자가 [[$5]]에 [[$3|#$4 피드백 게시물]]{{GENDER:$2|을 유용하지 않은 것으로 표시 취소했습니다}}',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 사용자가 [[$5]]에 [[$3|#$4 피드백 게시물]]{{GENDER:$2|에 모든 플래그를 지웠습니다}}',
+	'logentry-articlefeedbackv5-protect' => '$1 사용자가 "$3"에 대한 문서 피드백 도구의 공개 여부를 바꿨습니다 $4',
 	'articlefeedbackv5-activity-pane-header' => '활동 기록',
 	'articlefeedbackv5-activity-feedback-info' => '$2에 의해 게시됨',
 	'articlefeedbackv5-activity-feedback-date' => '$1에 게시됨',
@@ -17358,11 +17526,11 @@ $messages['lb'] = array(
 	'articlefeedbackv5-error-nofeedback' => 'Gitt w.e.g. Äre Feedback an.',
 	'articlefeedbackv5-error-flagging' => 'Feeler beim Markéiere vum Feedback',
 	'articlefeedbackv5-protection-level' => 'Artikel Feedback',
-	'protect-level-aft-reader' => 'Fir all Benotzer aktivéieren', # Fuzzy
-	'protect-level-aft-member' => 'Nëmme fir ageloggte Benotzer aktivéieren', # Fuzzy
-	'protect-level-aft-editor' => 'Nëmme fir auto-confirméiert Benotzer aschalten', # Fuzzy
-	'protect-level-aft-administrator' => 'Nëmme fir Administrateuren aktivéieren', # Fuzzy
-	'protect-level-aft-noone' => 'Fir all Benotzer ausschalten', # Fuzzy
+	'protect-level-aft-reader' => 'Fir all Benotzer aktivéieren',
+	'protect-level-aft-member' => 'Nëmme fir ageloggte Benotzer aktivéieren',
+	'protect-level-aft-editor' => 'Nëmme fir auto-confirméiert Benotzer aschalten',
+	'protect-level-aft-administrator' => 'Nëmme fir Administrateuren aktivéieren',
+	'protect-level-aft-noone' => 'Fir all Benotzer ausschalten',
 	'articlefeedbackv5-disabled' => 'Feedback gouf ausgeschalt',
 	'articlefeedbackv5-disabled-admin-admin' => 'De Feedback gouf fir Lieser an Auteuren ausgeschalt. Si kënne keen neie Feedback op dës Säit schreiwen.',
 	'articlefeedbackv5-disabled-admin-editor' => 'De Feedback gouf fir Lieser ausgeschalt. Si kënne keen neie Feedback op dës Säit schreiwen.',
@@ -18408,11 +18576,13 @@ $messages['mk'] = array(
 	'articlefeedbackv5-error-throttled' => 'Вашето мислење е одбиено бидејќи во последно време имате објавено повеќе мислења од препорачаното во напатствијата на {{SITENAME}}. Не објавувајте премногу мислења и гледајте да не се едно по друго.',
 	'articlefeedbackv5-protection-level' => 'Оценување на статии',
 	'articlefeedbackv5-protection-level-error' => 'Степенот на заштита не може да биде повисок од уредување',
-	'articlefeedbackv5-protection-permission-reader' => 'Овозможи за сите корисници',
-	'articlefeedbackv5-protection-permission-member' => 'Овозможи само за најавени корисници',
-	'articlefeedbackv5-protection-permission-editor' => 'Овозможи само за автопотврдени корисници',
-	'articlefeedbackv5-protection-permission-administrator' => 'Овозможи само за администратори',
-	'articlefeedbackv5-protection-permission-noone' => 'Овозможи за сите корисници',
+	'protect-level-aft-reader' => 'Овозможи за сите корисници',
+	'protect-level-aft-member' => 'Овозможи само за најавени корисници',
+	'protect-level-aft-editor' => 'Овозможи само за автопотврдени корисници',
+	'protect-level-aft-administrator' => 'Овозможи само за администратори',
+	'protect-level-aft-noone' => 'Оневозможи за сите корисници',
+	'articlefeedbackv5-protection-title' => 'Изменета видливоста на алатката за мислења на „[[$1]]“',
+	'restriction-articlefeedbackv5' => 'Видливост',
 	'articlefeedbackv5-disabled' => 'Давањето мислења е оневозможено',
 	'articlefeedbackv5-disabled-admin-admin' => 'Давањето мислења е оневозможено за читателите и уредниците. На страницава не можат да даваат нови мислења.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Давањето мислења е оневозможено за читателите. На страницава не можат да даваат нови мислења.',
@@ -18894,6 +19064,7 @@ $6
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|ја тргна ознаката за корисност}} од [[$3|мислењето бр. $4]] на [[$5]]',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|ја тргна ознаката за некорисност}} од [[$3|мислењето бр. $4]] на [[$5]]',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|ги отстрани сите ознаки}} од [[$3|мислењето бр. $4]] на [[$5]]',
+	'logentry-articlefeedbackv5-protect' => '$1 ја измени видливоста на алатката за мислења на „$3“ $4',
 	'articlefeedbackv5-activity-pane-header' => 'Дневник на активности',
 	'articlefeedbackv5-activity-feedback-info' => 'Мислење од $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Објавено на $1',
@@ -30485,7 +30656,7 @@ $messages['zh-hans'] = array(
 	'articlefeedbackv5-error' => '发生了一个错误。请稍后重试。',
 	'articlefeedbackv5-error-blocked' => '被阻止的用户不能提交反馈。',
 	'articlefeedbackv5-error-validation' => '验证错误。',
-	'articlefeedbackv5-error-abuse' => '您的评论被软件过滤器拒绝，它可能不符合{{SITENAME}}的[$1 反馈方针]。请修改您的评论再试。({{PLURAL:$2|过滤器|过滤器}}: $3)',
+	'articlefeedbackv5-error-abuse' => '您的评论被软件过滤器拒绝，它可能不符合{{SITENAME}}的[$1 反馈方针]。请修改您的评论再试。({{PLURAL:$2|过滤器}}: $3)',
 	'articlefeedbackv5-error-unknown' => '未知错误。',
 	'articlefeedbackv5-error-submit' => '表单提交错误。',
 	'articlefeedbackv5-error-duplicate' => '提交的反馈与最后的反馈是重复的；也许你不小心重复提交了两次该反馈？',
@@ -30494,11 +30665,11 @@ $messages['zh-hans'] = array(
 	'articlefeedbackv5-error-throttled' => '您的帖子已被拒绝，因为您最近发表的反馈已超出{{SITENAME}}的反馈方针推荐的数量。请不要重复或过度发表反馈。',
 	'articlefeedbackv5-protection-level' => '条目反馈',
 	'articlefeedbackv5-protection-level-error' => '条目反馈的保护级别不能高于编辑的保护级别',
-	'articlefeedbackv5-protection-permission-reader' => '对全部用户开放使用',
-	'articlefeedbackv5-protection-permission-member' => '仅对登录用户开放使用',
-	'articlefeedbackv5-protection-permission-editor' => '仅对自动确认用户开放使用',
-	'articlefeedbackv5-protection-permission-administrator' => '仅对管理员开放使用',
-	'articlefeedbackv5-protection-permission-noone' => '对所有用户禁用',
+	'protect-level-aft-reader' => '对全部用户开放使用', # Fuzzy
+	'protect-level-aft-member' => '仅对登录用户开放使用', # Fuzzy
+	'protect-level-aft-editor' => '仅对自动确认用户开放使用', # Fuzzy
+	'protect-level-aft-administrator' => '仅对管理员开放使用', # Fuzzy
+	'protect-level-aft-noone' => '对所有用户禁用', # Fuzzy
 	'articlefeedbackv5-disabled' => '反馈已被禁用',
 	'articlefeedbackv5-disabled-admin-admin' => '反馈已对读者和编辑者禁用。他们不能在此页上发布新的反馈。',
 	'articlefeedbackv5-disabled-admin-editor' => '反馈已对读者禁用。他们不能在此页上发布新的反馈。',
