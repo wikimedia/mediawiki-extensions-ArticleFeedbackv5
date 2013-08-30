@@ -2851,11 +2851,13 @@ $messages['ast'] = array(
 	'articlefeedbackv5-error-throttled' => "Refugose'l so mensaxe porque espublizó de recién más comentarios de los recomendaos nes convenciones sobre comentarios de {{SITENAME}}. Por favor, nun publique comentarios de mou repetíu o escesivu.",
 	'articlefeedbackv5-protection-level' => "Comentarios sobro l'artículu",
 	'articlefeedbackv5-protection-level-error' => "El nivel de protección de los comentarios d'artículos nun pue ser más altu que'l nivel de protección d'edición",
-	'protect-level-aft-reader' => 'Activar pa tolos usuarios', # Fuzzy
-	'protect-level-aft-member' => 'Activar namái pa los usuarios rexistraos', # Fuzzy
-	'protect-level-aft-editor' => 'Activar namái pa los usuarios autoconfirmaos', # Fuzzy
-	'protect-level-aft-administrator' => 'Activar namái pa los alministradores', # Fuzzy
-	'protect-level-aft-noone' => 'Desactivar pa tolos usuarios', # Fuzzy
+	'protect-level-aft-reader' => 'Activar pa tolos usuarios',
+	'protect-level-aft-member' => 'Activar namái pa los usuarios con sesión aniciada',
+	'protect-level-aft-editor' => 'Activar namái pa los usuarios autoconfirmaos',
+	'protect-level-aft-administrator' => 'Activar namái pa los alministradores',
+	'protect-level-aft-noone' => 'Desactivar pa tolos usuarios',
+	'articlefeedbackv5-protection-title' => 'Camudóse la visibilidá de la ferramienta de valoración d\'artículos en "[[$1]]"',
+	'restriction-articlefeedbackv5' => 'Visibilidá',
 	'articlefeedbackv5-disabled' => 'Desactiváronse los comentarios',
 	'articlefeedbackv5-disabled-admin-admin' => 'Desactiváronse los comentarios pa los llectores y editores. Nun pueden publicar comentarios nuevos sobre esta páxina.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Desactiváronse los comentarios pa los llectores. Nun pueden publicar comentarios nuevos sobre esta páxina.',
@@ -3003,6 +3005,37 @@ $messages['ast'] = array(
 	'articlefeedbackv5-form-discuss-talk-exists' => "Ver el discutiniu na páxina d'alderique",
 	'articlefeedbackv5-form-discuss-user-exists' => "Ver el mensaxe na páxina d'alderique del usuariu",
 	'articlefeedbackv5-form-tooltip-note' => 'Amestar una nota esplicando la marca',
+	'articlefeedbackv5-form-tooltip-feature' => 'Esto pue ayudar a ameyorar la páxina',
+	'articlefeedbackv5-form-tooltip-unfeature' => "Desfacer la marca d'usable",
+	'articlefeedbackv5-form-tooltip-resolve' => "Esto s'usó o consideróse pa la páxina",
+	'articlefeedbackv5-form-tooltip-unresolve' => 'Desfacer la marca de resueltu',
+	'articlefeedbackv5-form-tooltip-noaction' => 'Poco claru, non relevante, allabanza, duplicáu...',
+	'articlefeedbackv5-form-tooltip-unnoaction' => "Desfacer la marca d'aiciones torgaes",
+	'articlefeedbackv5-form-tooltip-noaction-own' => 'Poco claru, non relevante, allabanza, duplicáu...',
+	'articlefeedbackv5-form-tooltip-unnoaction-own' => "Desfacer la marca d'aiciones torgaes",
+	'articlefeedbackv5-form-tooltip-inappropriate' => 'Enguedeyu, spam, ofensivu, datos privaos...',
+	'articlefeedbackv5-form-tooltip-uninappropriate' => "Desfacer la marca d'inapropiáu",
+	'articlefeedbackv5-form-tooltip-hide' => 'Enguedeyu, spam, ofensivu, datos privaos...',
+	'articlefeedbackv5-form-tooltip-unhide' => 'Revelar',
+	'articlefeedbackv5-form-tooltip-archive' => 'Inoráu munchu tiempu, nun se considera útil',
+	'articlefeedbackv5-form-tooltip-unarchive' => 'Desarchivar',
+	'articlefeedbackv5-form-tooltip-flag' => 'Enguedeyu, spam, ofensivu, datos privaos...',
+	'articlefeedbackv5-form-tooltip-oversight' => 'Ofensivu, datos privaos...',
+	'articlefeedbackv5-form-tooltip-unoversight' => 'Desfacer la supervisión',
+	'articlefeedbackv5-form-tooltip-request' => 'Ofensivu, datos privaos...',
+	'articlefeedbackv5-form-tooltip-unrequest' => 'Desfacer la solicitú de supervisión',
+	'articlefeedbackv5-form-tooltip-decline' => 'Refugar la solicitú de supervisión',
+	'articlefeedbackv5-form-tooltip-discuss-talk' => "Discutir los comentarios na páxina d'alderique de la páxina",
+	'articlefeedbackv5-form-tooltip-discuss-user' => 'Discutir los comentarios col usuariu que los unvió',
+	'articlefeedbackv5-discuss-talk-section-title' => 'Comentarios del llector: $1',
+	'articlefeedbackv5-discuss-user-section-title' => 'Comentarios propios sobro «$2»',
+	'articlefeedbackv5-discuss-talk-section-content' => '$1 publicó [[$2|esti comentariu]] el $3 ([[$5|ver tolos comentarios]]).
+
+$6
+
+¿Qué-y paez?
+
+~~~~',
 	'articlefeedbackv5-toolbox-enable' => 'Activar los comentarios',
 );
 
@@ -4487,6 +4520,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Trugarez !',
+	'articlefeedbackv5-cta-confirmation-message' => 'Gallout a ra ho kemennadenn bezañ gwelet war ar [$1 bajenn evezhiadennoù-mañ].',
 	'articlefeedbackv5-cta1-confirmation-title' => "Ha gouzout a rit e c'hallit degas kemmoù war ar bajenn-mañ ?",
 	'articlefeedbackv5-cta1-confirmation-call' => "Mont a ra {{SITENAME}} en-dro abalamour ma c'hall pep hini degas kemmoù war ar pajennoù anezhañ. Grit un tamm esae. Kredit ennoc'h !",
 	'articlefeedbackv5-cta1-learn-how' => 'Deskit penaos degas kemmoù en ur bajenn',
@@ -4517,13 +4551,17 @@ $messages['br'] = array(
 	'articlefeedbackv5-error-nofeedback' => 'Roit ho soñj.',
 	'articlefeedbackv5-error-flagging' => 'Fazi en ur lakaat ar banniel war ar soñjadenn.',
 	'articlefeedbackv5-protection-level' => 'Soñjoù diwar-benn ar pennad',
-	'protect-level-aft-reader' => 'Gweredekaat evit an holl implijerien', # Fuzzy
-	'protect-level-aft-member' => "Aotreet d'an implijerien kevreet hepken", # Fuzzy
-	'protect-level-aft-administrator' => 'Gweredekaat evit ar verourien hepken', # Fuzzy
-	'protect-level-aft-noone' => 'Diweredekaet evit an holl implijerien', # Fuzzy
+	'protect-level-aft-reader' => 'Gweredekaat evit an holl implijerien',
+	'protect-level-aft-member' => "Aotreet d'an implijerien kevreet hepken",
+	'protect-level-aft-administrator' => 'Gweredekaat evit ar verourien hepken',
+	'protect-level-aft-noone' => 'Diweredekaet evit an holl implijerien',
+	'restriction-articlefeedbackv5' => 'Gwelusted',
+	'articlefeedbackv5-disabled' => 'Diweredekaet eo bet an evezhiadennoù',
+	'articlefeedbackv5-disabled-reader' => "Diweredekaet eo bet an evezhiadennoù. Ne c'hall ket al lennerien postañ evezhiadennoù nevez war ar bajenn-mañ.",
 	'articlefeedbackv5-disabled-admin-button-text' => 'Cheñch gwarez',
 	'articlefeedbackv5-disabled-editor-button-text' => 'Aotren an evezhiadennoù',
 	'articlefeedbackv5-settings-status-enable' => 'Aotren an evezhiadennoù war ar bajenn-mañ',
+	'articlefeedbackv5-settings-status-disable' => 'Diweredekaat an evezhiadennoù war ar bajenn-mañ',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Evezhiadenn : $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '.. Statud : $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Talvoudus',
@@ -4538,6 +4576,8 @@ $messages['br'] = array(
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Evezhiet',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'evezhiadenn kuzhet',
 	'articlefeedbackv5-form-toolbox-label' => 'Merkañ evel :',
+	'articlefeedbackv5-form-own-toolbox-label' => 'Merkañ ho kemennadenn evel :',
+	'articlefeedbackv5-form-own-feedback' => "Ne c'hallit ket adwelet ho kemennadennoù deoc'h-c'hwi.",
 	'articlefeedbackv5-form-helpful-label' => "Ha talvoudus eo bet ar soñj-mañ evidoc'h ?",
 	'articlefeedbackv5-form-helpful-yes-label' => 'Ya',
 	'articlefeedbackv5-form-helpful-no-label' => 'Ket',
@@ -4582,6 +4622,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-special-sort-age-asc' => 'Ar re goshañ',
 	'articlefeedbackv5-special-sort-label' => 'Urzhiañ dre :',
 	'articlefeedbackv5-special-filter-select-more' => "Muioc'h",
+	'articlefeedbackv5-special-count-total' => '{{PLURAL:$2|1 gemennadenn|$1 kemennadenn}}',
 	'articlefeedbackv5-updates-since' => "{{PLURAL:$1|1 c'hemm|$1 kemm}} abaoe m'eo bet embannet",
 	'articleFeedbackv5-details-link' => 'Munudoù',
 	'articlefeedbackv5-revision-link' => '(gwelet ar bajenn gozh)',
@@ -14816,11 +14857,11 @@ Riprova più tardi.',
 	'articlefeedbackv5-error-throttled' => 'Il tuo post è stato respinto perché recentemente hai inviato più commenti rispetto a quanto raccomandato dalle linee guida di {{SITENAME}} sui commenti. Per favore non pubblicare commenti ripetutamente o in modo eccessivo.',
 	'articlefeedbackv5-protection-level' => 'Commenta una voce',
 	'articlefeedbackv5-protection-level-error' => 'Il livello di protezione del commento alla voce non può essere superiore al livello di protezione in Modifica',
-	'protect-level-aft-reader' => 'Abilita per tutti gli utenti', # Fuzzy
-	'protect-level-aft-member' => 'Abilita solo per gli utenti loggati', # Fuzzy
-	'protect-level-aft-editor' => 'Abilita solo per gli utenti "autoconfermati"', # Fuzzy
-	'protect-level-aft-administrator' => 'Abilita solo per gli amministratori', # Fuzzy
-	'protect-level-aft-noone' => 'Disabilita per tutti gli utenti', # Fuzzy
+	'protect-level-aft-reader' => 'Abilita per tutti gli utenti',
+	'protect-level-aft-member' => "Abilita solo per gli utenti che hanno effettuato l'accesso",
+	'protect-level-aft-editor' => 'Abilita solo per gli utenti "autoconfermati"',
+	'protect-level-aft-administrator' => 'Abilita solo per gli amministratori',
+	'protect-level-aft-noone' => 'Disabilita per tutti gli utenti',
 	'articlefeedbackv5-disabled' => 'Il Feedback è stato disattivato',
 	'articlefeedbackv5-disabled-admin-admin' => 'Il Feedback è stato disattivato per i lettori e gli editori. Essi non possono inserire nuovi commenti su questa pagina.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Feedback è stato disattivato per i lettori. Essi non possono inserire nuovi commenti su questa pagina.',
@@ -17531,6 +17572,7 @@ $messages['lb'] = array(
 	'protect-level-aft-editor' => 'Nëmme fir auto-confirméiert Benotzer aschalten',
 	'protect-level-aft-administrator' => 'Nëmme fir Administrateuren aktivéieren',
 	'protect-level-aft-noone' => 'Fir all Benotzer ausschalten',
+	'restriction-articlefeedbackv5' => 'Visibilitéit',
 	'articlefeedbackv5-disabled' => 'Feedback gouf ausgeschalt',
 	'articlefeedbackv5-disabled-admin-admin' => 'De Feedback gouf fir Lieser an Auteuren ausgeschalt. Si kënne keen neie Feedback op dës Säit schreiwen.',
 	'articlefeedbackv5-disabled-admin-editor' => 'De Feedback gouf fir Lieser ausgeschalt. Si kënne keen neie Feedback op dës Säit schreiwen.',
@@ -26926,7 +26968,7 @@ $messages['sr-ec'] = array(
 	'articlefeedbackv5-noteflyover-archive-caption' => 'Архивирано',
 	'articlefeedbackv5-noteflyover-archive-help' => 'Сазнајте више',
 	'articlefeedbackv5-noteflyover-request-caption' => 'Захтевај проверу',
-	'articlefeedbackv5-noteflyover-request-label' => 'Додајте белешку',
+	'articlefeedbackv5-noteflyover-request-label' => 'Додајте белешку да објасните зашто тражите надзор',
 	'articlefeedbackv5-noteflyover-request-placeholder' => 'Зашто захтевате проверу?', # Fuzzy
 	'articlefeedbackv5-noteflyover-request-help' => 'Сазнајте више',
 	'articlefeedbackv5-noteflyover-unrequest-caption' => 'Откажи захтев за проверу', # Fuzzy
@@ -27197,6 +27239,7 @@ $messages['sr-el'] = array(
  * @author Jopparn
  * @author Lokal Profil
  * @author McDutchie
+ * @author NH
  * @author Tobulos1
  * @author WikiPhoenix
  */
@@ -27240,11 +27283,11 @@ $messages['sv'] = array(
 	'articlefeedbackv5-error-throttled' => 'Ditt inlägg har avvisats eftersom du har nyligen publicerat mer återkoppling än rekommenderat i {{SITENAME}}s feedback-riktlinjer. Vänligen skicka inte feedback upprepade gånger eller överdrivet.',
 	'articlefeedbackv5-protection-level' => 'Artikelfeedback',
 	'articlefeedbackv5-protection-level-error' => 'Skyddsnivån för artikelfeedback kan inte vara högre än skyddsnivån för redigering.',
-	'articlefeedbackv5-protection-permission-reader' => 'Aktivera för alla användare',
-	'articlefeedbackv5-protection-permission-member' => 'Aktivera för användare som är inloggade',
-	'articlefeedbackv5-protection-permission-editor' => 'Aktivera endast för automatiskt bekräftade användare',
-	'articlefeedbackv5-protection-permission-administrator' => 'Aktivera endast för administratörer',
-	'articlefeedbackv5-protection-permission-noone' => 'Inaktivera för alla användare',
+	'protect-level-aft-reader' => 'Aktivera för alla användare', # Fuzzy
+	'protect-level-aft-member' => 'Aktivera enbart för inloggade användare',
+	'protect-level-aft-editor' => 'Aktivera endast för bekräftade användare',
+	'protect-level-aft-administrator' => 'Aktivera endast för administratörer',
+	'protect-level-aft-noone' => 'Inaktivera för alla användare',
 	'articlefeedbackv5-disabled' => 'Feedback har inaktiverats',
 	'articlefeedbackv5-disabled-admin-admin' => 'Feedback har inaktiverats för läsare och redigerare. De kan inte lägga upp ny feedback på denna sida.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Feedback har inaktiverats för läsare. De kan inte lägga upp ny feedback på denna sida.',
@@ -30619,6 +30662,7 @@ $messages['yo'] = array(
  * @author Shizhao
  * @author Simon Shek
  * @author StephDC
+ * @author TianyinLee
  * @author Xiaomingyan
  * @author Yfdyh000
  * @author Zhangjintao
@@ -30665,11 +30709,12 @@ $messages['zh-hans'] = array(
 	'articlefeedbackv5-error-throttled' => '您的帖子已被拒绝，因为您最近发表的反馈已超出{{SITENAME}}的反馈方针推荐的数量。请不要重复或过度发表反馈。',
 	'articlefeedbackv5-protection-level' => '条目反馈',
 	'articlefeedbackv5-protection-level-error' => '条目反馈的保护级别不能高于编辑的保护级别',
-	'protect-level-aft-reader' => '对全部用户开放使用', # Fuzzy
-	'protect-level-aft-member' => '仅对登录用户开放使用', # Fuzzy
-	'protect-level-aft-editor' => '仅对自动确认用户开放使用', # Fuzzy
-	'protect-level-aft-administrator' => '仅对管理员开放使用', # Fuzzy
-	'protect-level-aft-noone' => '对所有用户禁用', # Fuzzy
+	'protect-level-aft-reader' => '对全部用户开放使用',
+	'protect-level-aft-member' => '仅对登录用户开放使用',
+	'protect-level-aft-editor' => '仅对自动确认用户开放使用',
+	'protect-level-aft-administrator' => '仅对管理员开放使用',
+	'protect-level-aft-noone' => '对所有用户禁用',
+	'articlefeedbackv5-protection-title' => '用“[[$1]]”来切换条目反馈工具可见性',
 	'articlefeedbackv5-disabled' => '反馈已被禁用',
 	'articlefeedbackv5-disabled-admin-admin' => '反馈已对读者和编辑者禁用。他们不能在此页上发布新的反馈。',
 	'articlefeedbackv5-disabled-admin-editor' => '反馈已对读者禁用。他们不能在此页上发布新的反馈。',
