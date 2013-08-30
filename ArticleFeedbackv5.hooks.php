@@ -838,6 +838,12 @@ class ArticleFeedbackv5Hooks {
 			}
 		}
 
+		// don't save if nothing's changed
+		$existingRestriction = ArticleFeedbackv5Permissions::getAppliedRestriction( $article->getId() );
+		if ( $existingRestriction->pr_level == $requestPermission && $existingRestriction->pr_expiry == $expirationTime ) {
+			return true;
+		}
+
 		$success = ArticleFeedbackv5Permissions::setRestriction(
 			$article->getId(),
 			$requestPermission,
