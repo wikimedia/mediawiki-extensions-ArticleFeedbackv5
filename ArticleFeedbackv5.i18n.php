@@ -1206,7 +1206,9 @@ Parameters
 	'articlefeedbackv5-form-anon-username' => 'Text describing an anonymous user (visitor that is not logged in)',
 	'articlefeedbackv5-form-anon-message' => "Text describing that feedback was posted by an anonymous user. Parameters:
 * $1 is a link to the IP's contibutions, with the IP as link text",
-	'articlefeedbackv5-form-invalid' => "Error message to be displayed on the Special page when for a certain feedback entry, the id of the form that was presented to the user to leave feedback is unknown. This would be a result of a long period of testing multiple different forms (for effectiveness etc), where some of the older prototypes' data is incompatible with the remaining code base.",
+	'articlefeedbackv5-form-invalid' => "Error message to be displayed on the Special page when for a certain feedback entry, the ID of the form that was presented to the user to leave feedback is unknown.
+
+This would be a result of a long period of testing multiple different forms (for effectiveness etc), where some of the older prototypes' data is incompatible with the remaining code base.",
 	'articlefeedbackv5-central-header-left-comment' => "Comment header indicating that the user posted feedback (central feedback page only). Parameters:
 * $1 is a username.
 * $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text
@@ -1215,12 +1217,12 @@ Parameters
 	'articlefeedbackv5-abuse-saved' => 'Message displayed when abuse flag was saved successfully.',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Tooltip shown on the un-flag as abuse link, to indicate what clicking on it will do (the link text -- {{msg-mw|articlefeedbackv5-abuse-saved}} -- is used to indicate state).',
 	'articlefeedbackv5-error-loading-feedback' => 'Message displayed when there was an error loading feedback - result is a largely-blank page.',
-	'articlefeedbackv5-insufficient-permissions' => 'Message to be displayed when, via the api, something is to be executed that the user does not have sufficient permissions for',
-	'articlefeedbackv5-invalid-feedback-id' => 'Message to be displayed when, via the api, an invalid feedback id parameter is given.',
-	'articlefeedbackv5-invalid-log-id' => "Message to be displayed when the id of the action's log entry can't be found'",
+	'articlefeedbackv5-insufficient-permissions' => 'Message to be displayed when, via the API, something is to be executed that the user does not have sufficient permissions for.',
+	'articlefeedbackv5-invalid-feedback-id' => 'Message to be displayed when, via the API, an invalid feedback ID parameter is given.',
+	'articlefeedbackv5-invalid-log-id' => "Message to be displayed when the ID of the action's log entry can't be found.",
 	'articlefeedbackv5-invalid-log-update' => 'Message to be displayed when the log entry could not be updated (e.g.: error in adding a note after the action has been performed already)',
-	'articlefeedbackv5-invalid-feedback-flag' => 'Message to be displayed when, though the api, an invalid flag parameter (e.g. oversight, feature, helpful, ...) is given.',
-	'articlefeedbackv5-invalid-feedback-state' => "Message to be displayed when, though the api, the flag parameter can't be executed (e.g. oversighting an already oversighted article).",
+	'articlefeedbackv5-invalid-feedback-flag' => 'Message to be displayed when, though the API, an invalid flag parameter (e.g. oversight, feature, helpful, ...) is given.',
+	'articlefeedbackv5-invalid-feedback-state' => "Message to be displayed when, though the API, the flag parameter can't be executed (e.g. oversighting an already oversighted article).",
 	'articlefeedbackv5-feedback-reloaded-after-error' => 'Message to be displayed when the feedback is reloaded. Flagging feedback may fail when someone else has also just flagged the feedback. In that case, the feedback entry will be reloaded and display this message.
 * $1 is the error message',
 	'articlefeedbackv5-go-to-article' => 'Link text for a link back to the article page from the feedback page.
@@ -1229,7 +1231,7 @@ Parameters
 	'articlefeedbackv5-whats-this' => '{{Identical|Help}}',
 	'articlefeedbackv5-settings-menu-title' => 'Link text for the link to open AFTv5 settings.
 {{Identical|Settings}}',
-	'articlefeedbackv5-invalid-page-id' => 'Message to be displayed when an invalid page id is passed to the API.',
+	'articlefeedbackv5-invalid-page-id' => 'Message to be displayed when an invalid page ID is passed to the API.',
 	'articlefeedbackv5-found-percent' => 'Text describing the percentage of readers that answered positively to the question "Did you find what you were looking for". Parameters:
 * $1 - the percentage of people that found what they were looking for marked up. Example value: 15%. {{msg-mw|percent}} is used.
 * $2 - the percentage of people that found what they were looking for, used for plural.',
@@ -13687,11 +13689,13 @@ $messages['ia'] = array(
 	'articlefeedbackv5-error-throttled' => 'Tu message ha essite rejectate perque tu ha recentemente publicate un numero de commentos superior a illo recommendate in le directivas de evalutation de {{SITENAME}}. Per favor non publica commentario repetite o excessive.',
 	'articlefeedbackv5-protection-level' => 'Evalutation de articulos',
 	'articlefeedbackv5-protection-level-error' => 'Le nivello de protection pro le commentario de articulos non pote exceder le nivello de protection pro le modification.',
-	'articlefeedbackv5-protection-permission-reader' => 'Activar pro tote le usatores',
-	'articlefeedbackv5-protection-permission-member' => 'Activar solmente pro usatores identificate',
-	'articlefeedbackv5-protection-permission-editor' => 'Activar solmente pro usatores autoconfirmate',
-	'articlefeedbackv5-protection-permission-administrator' => 'Activar solmente pro administratores',
-	'articlefeedbackv5-protection-permission-noone' => 'Disactivar pro tote le usatores',
+	'protect-level-aft-reader' => 'Activar pro tote le usatores',
+	'protect-level-aft-member' => 'Activar solmente pro usatores identificate',
+	'protect-level-aft-editor' => 'Activar solmente pro usatores autoconfirmate',
+	'protect-level-aft-administrator' => 'Activar solmente pro administratores',
+	'protect-level-aft-noone' => 'Disactivar pro tote le usatores',
+	'articlefeedbackv5-protection-title' => 'Visibilitate del instrumento de evalutation de articulos cambiate in "[[$1]]"',
+	'restriction-articlefeedbackv5' => 'Visibilitate',
 	'articlefeedbackv5-disabled' => 'Le functionalitate de evalutation ha essite disactivate',
 	'articlefeedbackv5-disabled-admin-admin' => 'Le functionalitate de evalutation ha essite disactivate pro lectores e pro redactores. Illes non pote inserer nove commentarios in iste pagina.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Le functionalitate de evalutation ha essite disactivate pro lectores. Illes non pote inserer nove commentarios in iste pagina.',
@@ -14167,6 +14171,7 @@ include un de iste problemas:
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|dismarcava como utile}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|dismarcava como inutile}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|radeva tote le marcas}} del [[$3|entrata de evalutation №$4]] sur [[$5]]',
+	'logentry-articlefeedbackv5-protect' => '$1 cambiava le visibilitate del instrumento de evalutation de articulos in "$3" $4',
 	'articlefeedbackv5-activity-pane-header' => 'Registro de activitate',
 	'articlefeedbackv5-activity-feedback-info' => 'Commentario per $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Publicate le $1',
@@ -26897,10 +26902,10 @@ $messages['sr-ec'] = array(
 	'articlefeedbackv5-form-decline' => 'Одбиј проверу',
 	'articlefeedbackv5-form-tooltip-noaction' => 'Нејасно, небитно, похвала, дупликат ...',
 	'articlefeedbackv5-form-tooltip-noaction-own' => 'Нејасно, небитно, похвала, дупликат ...',
-	'articlefeedbackv5-form-tooltip-inappropriate' => 'Глупости, спам, увредљиво, лични податци ...',
-	'articlefeedbackv5-form-tooltip-hide' => 'Глупости, спам, увредљиво, лични податци ...',
-	'articlefeedbackv5-form-tooltip-flag' => 'Глупости, спам, увредљиво, лични податци ...',
-	'articlefeedbackv5-form-tooltip-oversight' => 'Увредљиво, лични податци ...',
+	'articlefeedbackv5-form-tooltip-inappropriate' => 'Глупости, спам, увредљиво, лични подаци ...',
+	'articlefeedbackv5-form-tooltip-hide' => 'Глупости, спам, увредљиво, лични подаци ...',
+	'articlefeedbackv5-form-tooltip-flag' => 'Глупости, спам, увредљиво, лични подаци ...',
+	'articlefeedbackv5-form-tooltip-oversight' => 'Увредљиво, лични подаци ...',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 је сазнао оно што је тражио|$2 је сазнала оно што је тражила|$2 је сазнао оно што је тражио}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 није сазнао оно што је тражио|$2 није сазнала оно што је тражила|$2 није сазнао оно што је тражио}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 је поставио коментар|$2 је поставила коментар|$2 је поставио коментар}}.',
@@ -27002,7 +27007,7 @@ $messages['sr-ec'] = array(
 	'articlefeedbackv5-bucket1-form-submit' => 'Поставите повратну информацију',
 	'articlefeedbackv5-bucket4-title' => 'Помозите нам да побољшамо страницу',
 	'articlefeedbackv5-bucket4-subhead' => 'Јесте ли знали да можете да уређујете страницу?',
-	'articlefeedbackv5-bucket4-teaser-line1' => '{{SITENAME}} ради јер свако може да уређује њене странице.',
+	'articlefeedbackv5-bucket4-teaser-line1' => 'Овај сајт ради јер свако може да уређује његове странице.',
 	'articlefeedbackv5-bucket4-teaser-line2' => 'Слободно пробајте. Будите смели!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Научите како да уређујете',
 	'articlefeedbackv5-bucket4-form-submit' => 'Уреди страницу',
