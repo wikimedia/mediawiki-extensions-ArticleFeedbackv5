@@ -804,10 +804,12 @@ The link to the edit tutorial',
 	'articlefeedbackv5-error' => 'This error message will be displayed in a grey box replacing the form if there was an unrecoverable error.',
 	'articlefeedbackv5-error-blocked' => 'This error message will be displayed on the form if the user is blocked from submitting feedback.',
 	'articlefeedbackv5-error-validation' => 'Generic error message to be displayed when the submitted feedback does not pass validation (usually because the API request parameters are tampered with, but could be a genuine coding error).',
-	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters. Parameters:
-* $1 is the url to the abuse policy
-* $2 is pluralization support: the amount of filters matched
-* $3 is a list of filter(s) matched.',
+	'articlefeedbackv5-error-abuse' => 'This error message will be displayed above the form if the comment matched the spam or abuse filters.
+
+Parameters:
+* $1 - the URL to the abuse policy
+* $2 - number of filters matched, for PLURAL support
+* $3 - a list of filters matched',
 	'articlefeedbackv5-error-abuse-link' => '{{notranslate}}
 The abuse policy link.',
 	'articlefeedbackv5-error-unknown' => 'Generic error message to be displayed when something unknown goes wrong.
@@ -1163,9 +1165,11 @@ Parameters:
 * $1 is the feedback comment
 * $2 is the title of the page the feedback was submitted for
 '''Note:''' Modifying this messages breaks detection, if feedback is already discussed on talk page.",
-	'articlefeedbackv5-discuss-user-section-title' => "When feedback is to be discussed on the user's talk page, this is what the section title will be. Parameters:
-* $1 is the feedback comment
-* $2 is the title of the page the feedback was submitted for
+	'articlefeedbackv5-discuss-user-section-title' => "When feedback is to be discussed on the user's talk page, this is what the section title will be.
+
+Parameters:
+* $1 - (Unused) the feedback comment
+* $2 - the title of the page the feedback was submitted for
 '''Note:''' Modifying this messages breaks detection, if feedback is already discussed on talk page.",
 	'articlefeedbackv5-discuss-talk-section-content' => "When feedback is to be discussed on the article's talk page, this is the content template that will be provided. Parameters:
 * $1 is the user that submitted the feedback (either the IP for anonymous user, or in the format [[User:Name|Name]] for registered users)
@@ -1175,14 +1179,16 @@ Parameters:
 * $5 is the link to all feedback on this article
 * $6 is the full feedback comment (will be empty in the event that feedback text is short and fits in the section title)
 * $7 is the title of the page the feedback was submitted for",
-	'articlefeedbackv5-discuss-user-section-content' => "When feedback is to be discussed on the user's talk page, this is the content template that will be provided. Parameters:
-* $1 is the user that submitted the feedback (either the IP for anonymous user, or in the format [[User:Name|Name]] for registered users)
-* $2 is the permalink to the feedback that'll be discussed
-* $3 is the date the feedback was submitted
-* $4 is the time the feedback was submitted
-* $5 is the link to all feedback on this article
-* $6 is the full feedback comment (will be empty in the event that feedback text is short and fits in the section title)
-* $7 is the title of the page the feedback was submitted for",
+	'articlefeedbackv5-discuss-user-section-content' => "When feedback is to be discussed on the user's talk page, this is the content template that will be provided.
+
+Parameters:
+* $1 - (Unused) the user that submitted the feedback (either the IP for anonymous user, or in the format [[User:Name|Name]] for registered users)
+* $2 - (Unused) the permalink to the feedback that'll be discussed
+* $3 - the date the feedback was submitted
+* $4 - (Unused) the time the feedback was submitted
+* $5 - the link to all feedback on this article
+* $6 - the full feedback comment (will be empty in the event that feedback text is short and fits in the section title)
+* $7 - the title of the page the feedback was submitted for",
 	'articlefeedbackv5-form1-header-found' => '{{doc-singularthey}}
 Parameters
 * $1 is a username.
@@ -1993,12 +1999,12 @@ Parameters:
 * $4 - The selected protection level (e.g. [articlefeedbackv5=aft-editor])",
 	'articlefeedbackv5-activity-pane-header' => 'Flyover panel caption',
 	'articlefeedbackv5-activity-feedback-info' => 'Post information template. Parameters:
-* $1 - the feedback post ID (parameter currently unused)
+* $1 - (Unused) the feedback post ID
 * $2 - link to user page. Its text is any one of the following:
 ** username (for logged-in users)
 ** IP address (for IP users)
-** {{msg-mw|articlefeedbackv5-default-user}} (for magic user)
-* $3 - username/gender support for $2',
+** {{msg-mw|Articlefeedbackv5-default-user}} (for magic user)
+* $3 - username of $2, for GENDER support',
 	'articlefeedbackv5-activity-feedback-date' => 'Post information timestamp template.
 * $1 - time and date,
 * $2 - date
@@ -4540,6 +4546,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-cta4-button-text-later' => "Diwezhatoc'hik marteze",
 	'articlefeedbackv5-cta4-button-text-or' => 'pe',
 	'articlefeedbackv5-cta5-confirmation-title' => 'Gwelet ar pezh a soñj ar re all',
+	'articlefeedbackv5-cta5-confirmation-call' => "Gwelet erbedoù gant lennerien all eveldoc'h. Gallout a rit sikour da gavout ar soñjoù gwellañ ?",
 	'articlefeedbackv5-cta5-button-text' => 'Diskouez an holl evezhiadennoù',
 	'articlefeedbackv5-cta6-confirmation-title' => 'Ezhomm ho peus sikour da aozañ {{SITENAME}}?',
 	'articlefeedbackv5-cta6-button-text' => 'Gweladenniñ an davarn',
@@ -4625,6 +4632,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-special-sort-label' => 'Urzhiañ dre :',
 	'articlefeedbackv5-special-filter-select-more' => "Muioc'h",
 	'articlefeedbackv5-special-count-total' => '{{PLURAL:$2|1 gemennadenn|$1 kemennadenn}}',
+	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Gwelet evezhiadennoù eus an holl bajennoù]]',
 	'articlefeedbackv5-updates-since' => "{{PLURAL:$1|1 c'hemm|$1 kemm}} abaoe m'eo bet embannet",
 	'articleFeedbackv5-details-link' => 'Munudoù',
 	'articlefeedbackv5-revision-link' => '(gwelet ar bajenn gozh)',
@@ -4633,11 +4641,12 @@ $messages['br'] = array(
 	'articlefeedbackv5-special-pagetitle' => 'Soñj diwar-benn $1',
 	'articlefeedbackv5-special-permalink-pagetitle' => 'Soñj diwar-benn $1',
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'Evezhiadennoù war ar pajennoù a evezhian',
+	'articlefeedbackv5-special-central-pagetitle' => 'Pajenn greiz an evezhiadennoù',
 	'articlefeedbackv5-loading-tag' => 'O kargañ...',
 	'articlefeedbackv5-status-hide' => "Kuzhet eo bet an notenn-mañ gant $1 d'an $2 da $3",
 	'articlefeedbackv5-status-unhide' => "Diguzhet eo bet an notenn-mañ gant $1 d'an $2 da $3",
 	'articlefeedbackv5-status-request' => "Goulennet eo bet gant $1 heuliañ an evezhiadenn-mañ d'an $2 da $3",
-	'articlefeedbackv5-status-unrequest' => "Lamet eo bet an evezhiañ evit an notenn-mañ gant $1 d'an $1 da $3", # Fuzzy
+	'articlefeedbackv5-status-unrequest' => "Lamet eo bet an evezhiañ evit an notenn-mañ gant $1 d'an $2 da $3",
 	'articlefeedbackv5-status-decline' => "Nac'het eo bet gant $1 heuliañ an evezhiadenn-mañ d'an $2 da $3",
 	'articlefeedbackv5-status-autohide' => "Kuzhet eo bet an notenn-mañ ent emgefre gant $1 d'an $2 da $3", # Fuzzy
 	'articlefeedbackv5-status-oversight' => "Evezhiet eo bet an notenn-mañ gant $1 d'an $2 da $3",
@@ -4647,6 +4656,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-status-unfeature' => "Lamet eo bet a notenn-mañ a-ziwar wel gant $1 d'an $2 da $3", # Fuzzy
 	'articlefeedbackv5-status-resolve' => "Merket eo bet an notenn-mañ evel diskoulmet gant $1 d'an $2 da $3",
 	'articlefeedbackv5-status-unresolve' => "N'eo ket bet merket an notenn-mañ evel diskoulmet ken gant $1 d'an $2 da $3",
+	'articlefeedbackv5-status-archive' => "Diellaouet eo bet ar gemennadenn-mañ gant $1 d'an $2 da $3",
 	'articlefeedbackv5-new-marker' => 'Nevez',
 	'articlefeedbackv5-oversight-marker' => 'Evezhiet',
 	'articlefeedbackv5-autohide-marker' => 'Kuzhet',
@@ -4665,22 +4675,31 @@ $messages['br'] = array(
 	'articlefeedbackv5-form-unresolve' => 'Dizober',
 	'articlefeedbackv5-form-noaction' => "N'eus netra d'ober",
 	'articlefeedbackv5-form-unnoaction' => 'Dizober',
+	'articlefeedbackv5-form-noaction-own' => "Disteurel ma c'hemennadenn",
+	'articlefeedbackv5-form-unnoaction-own' => "Diskouez ma c'hemennadenn",
 	'articlefeedbackv5-form-inappropriate' => 'Kuzhat ar gemennadenn-mañ',
 	'articlefeedbackv5-form-uninappropriate' => 'Dizober',
+	'articlefeedbackv5-form-hide' => 'Kuzhat ar gemennadenn-mañ',
 	'articlefeedbackv5-form-unhide' => 'Dizober',
 	'articlefeedbackv5-form-archive' => 'Diell',
 	'articlefeedbackv5-form-unarchive' => 'Dizober',
 	'articlefeedbackv5-form-helpful' => 'Merkañ evel talvoudus ($1)',
 	'articlefeedbackv5-form-flag' => 'Merkañ evel dizereat',
-	'articlefeedbackv5-form-oversight' => 'Goulenn ma vo evezhiet', # Fuzzy
+	'articlefeedbackv5-form-oversight' => 'Dindan evezh',
 	'articlefeedbackv5-form-unoversight' => 'Dizober',
 	'articlefeedbackv5-form-request' => 'Goulenn ma vo evezhiet',
 	'articlefeedbackv5-form-decline' => 'Goulenn ma vo evezhiet',
+	'articlefeedbackv5-form-declined' => 'Evezhiañ distaolet',
 	'articlefeedbackv5-form-discuss-talk' => 'Eskemm war ar bajenn gaozeal',
+	'articlefeedbackv5-form-discuss-user' => 'Mont e darempred gant aozer ar gemennadenn',
+	'articlefeedbackv5-form-discuss-talk-exists' => 'Gwelet ar bajenn gendiviz',
+	'articlefeedbackv5-form-tooltip-feature' => "An dra-mañ a c'hall sikour da wellaat ar bajenn",
 	'articlefeedbackv5-form-tooltip-unhide' => 'Diguzhat',
+	'articlefeedbackv5-form-tooltip-unarchive' => 'Tennañ eus an dielloù',
+	'articlefeedbackv5-discuss-talk-section-title' => 'Evezhiadenn gant al lenner : $1',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 en deus|$2 he deus}} kavet ar pezh a glaske',
 	'articlefeedbackv5-form1-header-not-found' => "{{GENDER:$1|$2 n'en deus|$2 n'he deus}} ket kavet ar pezh a glaske",
-	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 en deus postet an evezhiadenn-mañ|$2 he deus postet an evezhiadenn-mañ}}', # Fuzzy
+	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 en deus postet un evezhiadenn|$2 he deus postet un evezhiadenn}}',
 	'articlefeedbackv5-form2-header-praise' => 'Meuleudi zo bet graet da {{GENDER:$1|$1}} :',
 	'articlefeedbackv5-form2-header-problem' => 'Ur gudenn zo bet gant {{GENDER:$1|$1}} :',
 	'articlefeedbackv5-form2-header-question' => 'Ur goulenn zo bet savet ouzh {{GENDER:$1|$1}} :',
@@ -4689,24 +4708,30 @@ $messages['br'] = array(
 	'articlefeedbackv5-form-invalid' => 'Direizh eo ID ar furmskrid da reiñ e soñj.',
 	'articlefeedbackv5-abuse-saved' => 'Merkañ evel dizereat',
 	'articlefeedbackv5-error-loading-feedback' => 'Fazi en ur gargañ ar soñjadenn.',
+	'articlefeedbackv5-insufficient-permissions' => 'Live aotre skort',
 	'articlefeedbackv5-invalid-feedback-id' => 'Direizh eo ID ar soñjadenn.',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Direizh eo banniel ID ar soñjadenn.',
-	'articlefeedbackv5-go-to-article' => 'Gwelet ar pennad', # Fuzzy
+	'articlefeedbackv5-go-to-article' => 'Gwelet ar bajenn',
 	'articlefeedbackv5-discussion-page' => 'Kaozeal',
 	'articlefeedbackv5-whats-this' => 'Skoazell',
+	'articlefeedbackv5-settings-menu-title' => 'Arventennoù',
 	'articlefeedbackv5-invalid-page-id' => 'ID ar bajenn direizh',
 	'articlefeedbackv5-found-percent' => 'Kavet eo bet ar pezh a glaskent gant $1', # Fuzzy
 	'articlefeedbackv5' => 'Taolenn vourzh priziañ ar pennad', # Fuzzy
 	'articlefeedbackv5-desc' => 'Soñjoù diwar-benn ar pennad',
 	'articlefeedbackv5-comment-more' => "Muioc'h",
+	'articlefeedbackv5-comment-empty' => "n'eus ket bet ebarzhet testenn ebet",
 	'articlefeedbackv5-page-disabled' => "N'eo ket gweredekaet ar bajenn evezhiadennoù evit ar pennad-mañ.",
-	'articlefeedbackv5-viewactivity' => 'Gwelet an obererezh', # Fuzzy
+	'articlefeedbackv5-invalid-feedback' => "N'eus ket eus an evezhiadenn goulennet.",
+	'articlefeedbackv5-viewactivity' => 'Gwelet an obererezh',
 	'articlefeedbackv5-mask-view-contents' => 'Diskouez an danvez',
 	'articlefeedbackv5-mask-text-hide' => 'Kuzhet eo bet an notenn-mañ gant ur skridaozer aotreet', # Fuzzy
 	'articlefeedbackv5-mask-text-oversight' => 'Evezhiet eo bet an notenn-mañ gant ur skridaozer aotreet', # Fuzzy
 	'articlefeedbackv5-permalink-info-title' => 'Titouroù diwar-benn ar pennad-mañ',
-	'articlefeedbackv5-permalink-written-by-reader' => 'Skrivet gant un implijer dianav <span>dre ar furmskrid kas evezhiadennoù $1</span>', # Fuzzy
-	'articlefeedbackv5-permalink-info-revision-link' => 'Gwelet ar stumm kozh', # Fuzzy
+	'articlefeedbackv5-permalink-info-post-id' => 'Kemennadenn #$1',
+	'articlefeedbackv5-permalink-written-by-editor' => 'Skrivet gant un implijer enskrivet',
+	'articlefeedbackv5-permalink-written-by-reader' => 'Skrivet gant un implijer dianav',
+	'articlefeedbackv5-permalink-info-revision-link' => 'Gwelet stumm kozh ar bajenn-mañ',
 	'articlefeedbackv5-permalink-info-posted' => "Postet d'an $1 da $2",
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Hed',
 	'articlefeedbackv5-permalink-info-length-words' => '({{PLURAL:$1|$1 ger|$1 ger}})',
@@ -4716,6 +4741,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-permalink-info-stats-subtitle-helpfulness' => 'Talvoudusted :',
 	'articlefeedbackv5-permalink-activity-title' => 'Obererezh',
 	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 ober|$1 ober}})',
+	'articlefeedbackv5-permalink-activity-none' => "N'eus bet tamm obererezh ebet er gemennadenn-mañ.",
 	'articlefeedbackv5-short-status-request' => '{{GENDER:$1|Adwelet gant $1}}',
 	'articlefeedbackv5-short-status-unrequest' => '{{GENDER:$1|Adwelet gant $1}}',
 	'articlefeedbackv5-short-status-decline' => '{{GENDER:$1|Adwelet gant $1}}',
@@ -4742,15 +4768,19 @@ $messages['br'] = array(
 	'articlefeedbackv5-short-status-unhelpful' => '{{GENDER:$1|Adwelet gant $1}}',
 	'articlefeedbackv5-short-status-undo-unhelpful' => '{{GENDER:$1|Adwelet gant $1}}',
 	'articlefeedbackv5-permalink-status-feature' => '{{GENDER:$1|<strong>Merket evel talvoudus</strong> gant $1}} $2',
+	'articlefeedbackv5-permalink-status-resolve' => '{{GENDER:$1|<strong>Merket evel diskoulmet</strong> gant $1}} $2',
 	'articlefeedbackv5-permalink-status-inappropriate' => '{{GENDER:$1|<strong>Bet kuzhet</strong> gant $1}} $2 zo',
+	'articlefeedbackv5-permalink-status-archive' => '{{GENDER:$1|<strong>Diellaouet</strong> gant $1}} $2',
+	'articlefeedbackv5-permalink-status-unarchive' => '{{GENDER:$1|<strong>Tennet eus an dielloù</strong> gant $1}} $2',
 	'articlefeedbackv5-permalink-status-hide' => '{{GENDER:$1|<strong>Bet kuzhet</strong> gant $1}} $2',
 	'articlefeedbackv5-permalink-status-helpful' => '{{GENDER:$1|<strong>Merket evel sikourus</strong> gant $1}} $2',
-	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Bet merket didalvez</strong> gant $1}} $2 zo', # Fuzzy
+	'articlefeedbackv5-permalink-status-unhelpful' => '{{GENDER:$1|<strong>Bet merket didalvez</strong> gant $1}} $2',
 	'articlefeedbackv5-permalink-last-action' => 'Obererezh ziwezhañ',
 	'articlefeedbackv5-permalink-activity-more' => "Diskwel muioc'h a oberoù...",
 	'articlefeedbackv5-permalink-activity-fewer' => "Diskwel nebeutoc'h a oberoù",
 	'articlefeedbackv5-noteflyover-feature-caption' => 'Merket evel talvoudus',
 	'articlefeedbackv5-noteflyover-feature-label' => 'Ouzhpennañ un notenn',
+	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Perak e verkit an notenn-mañ evel talvoudus ?',
 	'articlefeedbackv5-noteflyover-feature-submit' => 'Ouzhpennañ un notenn',
 	'articlefeedbackv5-noteflyover-feature-help' => "Gouzout hiroc'h",
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Ouzhpennañ un notenn',
@@ -4872,10 +4902,13 @@ $messages['br'] = array(
 	'articlefeedbackv5-activity-feedback-info' => 'Evezhiadenn bost #$1 gant $2', # Fuzzy
 	'articlefeedbackv5-activity-feedback-date' => 'Postet war $1',
 	'articlefeedbackv5-activity-permalink' => 'Peurliamm',
+	'articlefeedbackv5-activity-item-autohide' => "$1 en deus kuzhet ar gemennadenn-mañ d'an $4 da $5 $2",
+	'articlefeedbackv5-activity-item-archive' => '$1 en deus diellaouet ar gemennadenn-mañ $4 da $5 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 oberiadenn war an notenn-mañ|$1 oberiadenn war an notenn-mañ}}',
 	'articlefeedbackv5-activity-more' => "Diskouez muioc'h a obererezh",
 	'articlefeedbackv5-disable-flyover-title' => 'Lemel kuit an ostilh-mañ ?',
 	'articlefeedbackv5-disable-flyover-prefbutton' => "Mont da'm fenndibaboù",
+	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Diskoulmet ent emgefre. Reolenn : $1',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Kuzhet ent emgefre. Reolenn : $1',
 );
 
@@ -25695,11 +25728,11 @@ $messages['ru'] = array(
 	'articlefeedbackv5-error-throttled' => 'Ваше сообщение было отклонено, так как вы недавно отправили их больше, чем рекомендовано правилами составления отзывов проекта «{{SITENAME}}». Пожалуйста, не отправляйте чересчур много сообщений и не делайте этого слишком часто.',
 	'articlefeedbackv5-protection-level' => 'Обратная связь для статей',
 	'articlefeedbackv5-protection-level-error' => 'Уровень защиты обратной для связи для статьи не может быть выше, чем её уровень защиты от редактирования',
-	'articlefeedbackv5-protection-permission-reader' => 'Включить для всех участников',
-	'articlefeedbackv5-protection-permission-member' => 'Включить только для зарегистрированных участников',
-	'articlefeedbackv5-protection-permission-editor' => 'Включить только для автоподтверждённых участников',
-	'articlefeedbackv5-protection-permission-administrator' => 'Включить только для администраторов',
-	'articlefeedbackv5-protection-permission-noone' => 'Отключить для всех пользователей',
+	'protect-level-aft-reader' => 'Включить для всех участников', # Fuzzy
+	'protect-level-aft-member' => 'Включить только для зарегистрированных участников', # Fuzzy
+	'protect-level-aft-editor' => 'Включить только для автоподтверждённых участников', # Fuzzy
+	'protect-level-aft-administrator' => 'Включить только для администраторов', # Fuzzy
+	'protect-level-aft-noone' => 'Отключить для всех пользователей', # Fuzzy
 	'articlefeedbackv5-disabled-admin-button-text' => 'Изменить защиту',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Обратная связь: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Статус: $1',
@@ -25813,6 +25846,15 @@ $messages['ru'] = array(
 	'articlefeedbackv5-form-declined' => 'Скрытие отклонено',
 	'articlefeedbackv5-form-discuss-talk' => 'Обсудить на странице обсуждения',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Показать',
+	'articlefeedbackv5-discuss-user-section-content' => 'Спасибо за ваш отзыв на страницу «$7».
+
+Вы разместили этот комментарий $3 ([[$5|просмотреть все отзывы]]).
+
+$6
+
+Мы высоко ценим ваш вклад в улучшение этой страницы!
+
+~~~~',
 	'articlefeedbackv5-form1-header-found' => '$2  {{GENDER:$1|нашел то, что искал|нашла то, что искала}}',
 	'articlefeedbackv5-form1-header-not-found' => '$2 {{GENDER:$1|не нашел того, что искал|не нашла того, что искала}}',
 	'articlefeedbackv5-form1-header-left-comment' => '$2 {{GENDER:$1|написал|написала}} комментарий.',
@@ -27288,7 +27330,7 @@ $messages['sv'] = array(
 	'articlefeedbackv5-error-throttled' => 'Ditt inlägg har avvisats eftersom du har nyligen publicerat mer återkoppling än rekommenderat i {{SITENAME}}s feedback-riktlinjer. Vänligen skicka inte feedback upprepade gånger eller överdrivet.',
 	'articlefeedbackv5-protection-level' => 'Artikelfeedback',
 	'articlefeedbackv5-protection-level-error' => 'Skyddsnivån för artikelfeedback kan inte vara högre än skyddsnivån för redigering.',
-	'protect-level-aft-reader' => 'Aktivera för alla användare', # Fuzzy
+	'protect-level-aft-reader' => 'Aktivera för alla användare',
 	'protect-level-aft-member' => 'Aktivera enbart för inloggade användare',
 	'protect-level-aft-editor' => 'Aktivera endast för bekräftade användare',
 	'protect-level-aft-administrator' => 'Aktivera endast för administratörer',
@@ -30679,7 +30721,7 @@ $messages['zh-hans'] = array(
 	'articlefeedbackv5-cta-thanks' => '谢谢！',
 	'articlefeedbackv5-cta-confirmation-message' => '您可以在这个[$1 反馈页面]上查看您的帖子。',
 	'articlefeedbackv5-cta1-confirmation-title' => '您知道您可以编辑这个页面吗？',
-	'articlefeedbackv5-cta1-confirmation-call' => '{{SITENAME}}之所以存在，就是因为任何人都可以编辑其页面。继续吧，试一试，勇敢一些！',
+	'articlefeedbackv5-cta1-confirmation-call' => '{{SITENAME}}因为任何人都可以编辑其页面而正常运转。继续吧，试一试，勇敢一些！',
 	'articlefeedbackv5-cta1-learn-how' => '学习如何编辑',
 	'articlefeedbackv5-cta1-edit-linktext' => '编辑本页',
 	'articlefeedbackv5-cta2-confirmation-title' => '帮助改进{{SITENAME}}',
@@ -31155,7 +31197,7 @@ $6
 	'articlefeedbackv5-bottomrighttab-linktext' => '改善这个页面',
 	'articlefeedbackv5-section-linktext' => '反馈',
 	'articlefeedbackv5-toolbox-view' => '查看反馈',
-	'articlefeedbackv5-toolbox-add' => '添加您的反馈',
+	'articlefeedbackv5-toolbox-add' => '添加反馈',
 	'articlefeedbackv5-leave-warning' => '您已输入的数据可能不会保存。',
 	'articlefeedbackv5-toolbox-enable' => '启用反馈',
 	'articlefeedbackv5-disable-preference' => '不在页面上显示条目评分工具',
