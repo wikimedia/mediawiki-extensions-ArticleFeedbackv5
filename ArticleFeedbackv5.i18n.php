@@ -955,9 +955,13 @@ Parameters:
 * $1 - the total number of posts, wrapped inside an HTML element which have the following tooltip:
 ** {{msg-mw|articlefeedbackv5-special-count-total-title}}.
 * $2 - the total number of posts, numeric (plural support)',
-	'articlefeedbackv5-special-count-total-title' => 'Title attribute for total number of feedback submitted. This will display more detailed information about the amount of feedback with and without comments. Parameters:
-* $1 is the total number of feedback with comments,
-* $2 is the total number of feedback without comments.',
+	'articlefeedbackv5-special-count-total-title' => 'Title attribute for total number of feedback submitted.
+
+This will display more detailed information about the amount of feedback with and without comments.
+
+Parameters:
+* $1 - the total number of feedback with comments
+* $2 - the total number of feedback without comments',
 	'articlefeedbackv5-special-watchlist-showing' => "Text to show we're at the page containing feedback on watchlisted articles. Parameters:
 * $1 - a link to the user page
 * $2 - a username (incl. gender support)",
@@ -1161,16 +1165,24 @@ Parameters:
 	'articlefeedbackv5-form-tooltip-decline' => 'Link title-attribute for declining oversight',
 	'articlefeedbackv5-form-tooltip-discuss-talk' => "Link title-attribute for discussing feedback on the article's talk page",
 	'articlefeedbackv5-form-tooltip-discuss-user' => 'Link title-attribute for discussing feedback with the user who submitted it',
-	'articlefeedbackv5-discuss-talk-section-title' => "When feedback is to be discussed on the article's talk page, this is what the section title will be. Parameters:
-* $1 is the feedback comment
-* $2 is the title of the page the feedback was submitted for
-'''Note:''' Modifying this messages breaks detection, if feedback is already discussed on talk page.",
+	'articlefeedbackv5-discuss-talk-section-title' => "When feedback is to be discussed on the article's talk page, this is what the section title will be.
+
+Parameters:
+* $1 - (Unused) the feedback comment
+* $2 - the title of the page the feedback was submitted for
+'''Note:''' Modifying this messages breaks detection, if feedback is already discussed on talk page.
+
+See also:
+* {{msg-mw|Articlefeedbackv5-discuss-user-section-title}}",
 	'articlefeedbackv5-discuss-user-section-title' => "When feedback is to be discussed on the user's talk page, this is what the section title will be.
 
 Parameters:
 * $1 - (Unused) the feedback comment
 * $2 - the title of the page the feedback was submitted for
-'''Note:''' Modifying this messages breaks detection, if feedback is already discussed on talk page.",
+'''Note:''' Modifying this messages breaks detection, if feedback is already discussed on talk page.
+
+See also:
+* {{msg-mw|Articlefeedbackv5-discuss-talk-section-title}}",
 	'articlefeedbackv5-discuss-talk-section-content' => "When feedback is to be discussed on the article's talk page, this is the content template that will be provided. Parameters:
 * $1 is the user that submitted the feedback (either the IP for anonymous user, or in the format [[User:Name|Name]] for registered users)
 * $2 is the permalink to the feedback that'll be discussed
@@ -1200,9 +1212,10 @@ Parameters
 	'articlefeedbackv5-form1-header-left-comment' => 'Parameters
 * $1 is a username.
 * $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text',
-	'articlefeedbackv5-form2-header-praise' => 'Parameters:
-* $1 is a user name.
-* $2 is a link to the user profile (or to a contributions page for anonymous users), with the username (or IP for anons) as the link text',
+	'articlefeedbackv5-form2-header-praise' => 'Unused at this time.
+
+Parameters:
+* $1 - a username',
 	'articlefeedbackv5-form2-header-problem' => 'Parameters:
 * $1 is a user name.',
 	'articlefeedbackv5-form2-header-question' => 'Parameters:
@@ -1993,10 +2006,10 @@ Parameters:
 * $5 - A link to the article the feedback was posted to
 {{Related|Logentry-articlefeedbackv5}}",
 	'logentry-articlefeedbackv5-protect' => "Log entry for when article feedback tool visibility changes in page protection settings. Parameters:
-* $1 - A link to the performer
-* $2 - The performer's id, gender support
-* $3 - A link to the page
-* $4 - The selected protection level (e.g. [articlefeedbackv5=aft-editor])",
+* $1 - a link to the performer
+* $2 - (Optional) the performer's username, for GENDER support
+* $3 - a link to the page
+* $4 - the selected protection level (e.g. [articlefeedbackv5=aft-editor])",
 	'articlefeedbackv5-activity-pane-header' => 'Flyover panel caption',
 	'articlefeedbackv5-activity-feedback-info' => 'Post information template. Parameters:
 * $1 - (Unused) the feedback post ID
@@ -2005,10 +2018,10 @@ Parameters:
 ** IP address (for IP users)
 ** {{msg-mw|Articlefeedbackv5-default-user}} (for magic user)
 * $3 - username of $2, for GENDER support',
-	'articlefeedbackv5-activity-feedback-date' => 'Post information timestamp template.
-* $1 - time and date,
-* $2 - date
-* $3 - time',
+	'articlefeedbackv5-activity-feedback-date' => 'Post information timestamp template. Parameters:
+* $1 - time and date
+* $2 - (Optional) date
+* $3 - (Optional) time',
 	'articlefeedbackv5-activity-permalink' => '[Permalink] link text.
 {{Identical|Permalink}}',
 	'articlefeedbackv5-activity-item-request' => 'Activity log entry when oversight was requested (an oversight request asks an oversighter to delete feedback).
@@ -4590,6 +4603,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-form-helpful-label' => "Ha talvoudus eo bet ar soñj-mañ evidoc'h ?",
 	'articlefeedbackv5-form-helpful-yes-label' => 'Ya',
 	'articlefeedbackv5-form-helpful-no-label' => 'Ket',
+	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% lenner en deus kavet e oa sikourus}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 ya|$1 ya}} / {{PLURAL:$2|1 ket|$2 ket}}',
 	'articlefeedbackv5-special-survey-button-text' => 'Ha petra a soñjit eus an ostilh-mañ evit kas evezhiadennoù ?',
 	'articlefeedbackv5-special-filter-unreviewed' => 'Da wiriañ ($1)',
@@ -4693,6 +4707,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-form-discuss-talk' => 'Eskemm war ar bajenn gaozeal',
 	'articlefeedbackv5-form-discuss-user' => 'Mont e darempred gant aozer ar gemennadenn',
 	'articlefeedbackv5-form-discuss-talk-exists' => 'Gwelet ar bajenn gendiviz',
+	'articlefeedbackv5-form-tooltip-note' => 'Ouzhpennañ un notenn da zisplegañ ho panniel',
 	'articlefeedbackv5-form-tooltip-feature' => "An dra-mañ a c'hall sikour da wellaat ar bajenn",
 	'articlefeedbackv5-form-tooltip-unhide' => 'Diguzhat',
 	'articlefeedbackv5-form-tooltip-unarchive' => 'Tennañ eus an dielloù',
@@ -4707,6 +4722,7 @@ $messages['br'] = array(
 	'articlefeedbackv5-form-anon-username' => 'Ul lenner',
 	'articlefeedbackv5-form-invalid' => 'Direizh eo ID ar furmskrid da reiñ e soñj.',
 	'articlefeedbackv5-abuse-saved' => 'Merkañ evel dizereat',
+	'articlefeedbackv5-abuse-saved-tooltip' => 'Lemel ar banniel ho peus lakaet',
 	'articlefeedbackv5-error-loading-feedback' => 'Fazi en ur gargañ ar soñjadenn.',
 	'articlefeedbackv5-insufficient-permissions' => 'Live aotre skort',
 	'articlefeedbackv5-invalid-feedback-id' => 'Direizh eo ID ar soñjadenn.',
@@ -4725,8 +4741,10 @@ $messages['br'] = array(
 	'articlefeedbackv5-invalid-feedback' => "N'eus ket eus an evezhiadenn goulennet.",
 	'articlefeedbackv5-viewactivity' => 'Gwelet an obererezh',
 	'articlefeedbackv5-mask-view-contents' => 'Diskouez an danvez',
-	'articlefeedbackv5-mask-text-hide' => 'Kuzhet eo bet an notenn-mañ gant ur skridaozer aotreet', # Fuzzy
+	'articlefeedbackv5-mask-text-autohide' => 'Ar gemennadenn-mañ #$1 {{GENDER:$2|zo bet kuzhet ent emgefre gant $2}} $3.',
+	'articlefeedbackv5-mask-text-hide' => 'Ar gemennadenn-mañ #$1 {{GENDER:$2|zo bet kuzhet gant $2}} $3.',
 	'articlefeedbackv5-mask-text-oversight' => 'Evezhiet eo bet an notenn-mañ gant ur skridaozer aotreet', # Fuzzy
+	'articlefeedbackv5-special-goback' => 'Gwelet pajenn an evezhiadennoù',
 	'articlefeedbackv5-permalink-info-title' => 'Titouroù diwar-benn ar pennad-mañ',
 	'articlefeedbackv5-permalink-info-post-id' => 'Kemennadenn #$1',
 	'articlefeedbackv5-permalink-written-by-editor' => 'Skrivet gant un implijer enskrivet',
@@ -4906,6 +4924,8 @@ $messages['br'] = array(
 	'articlefeedbackv5-activity-item-archive' => '$1 en deus diellaouet ar gemennadenn-mañ $4 da $5 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 oberiadenn war an notenn-mañ|$1 oberiadenn war an notenn-mañ}}',
 	'articlefeedbackv5-activity-more' => "Diskouez muioc'h a obererezh",
+	'articlefeedbackv5-talk-view-feedback' => 'Gwelet evezhiadennoù al lennerien',
+	'articlefeedbackv5-watchlist-view-feedback' => 'Evezhiadennoù war ar pajennoù a evezhian',
 	'articlefeedbackv5-disable-flyover-title' => 'Lemel kuit an ostilh-mañ ?',
 	'articlefeedbackv5-disable-flyover-prefbutton' => "Mont da'm fenndibaboù",
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Diskoulmet ent emgefre. Reolenn : $1',
@@ -15330,6 +15350,7 @@ Il tuo contributo a questa pagina è importante per noi!
 	'articlefeedbackv5-help-tooltip-info' => '{{SITENAME}} vorrebbe sapere cosa ne pensi di questa pagina. Condividi un tuo commento con gli editori  e aiuta a migliorare questa pagina.',
 	'articlefeedbackv5-help-tooltip-linktext' => 'Ulteriori informazioni',
 	'articlefeedbackv5-help-transparency-terms' => "Si prega di inviare [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines commenti utili]. Con l'invio, accetti queste [//wikimediafoundation.org/wiki/Feedback_privacy_statement condizioni] di trasparenza.",
+	'articlefeedbackv5-help-transparency-terms-anon' => 'Per favore salva il tuo  [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines helpful feedback]. Salvando, accetti irrevocabilmente di essere identificato con il tuo indirizzo IP e accetti i previsti [//wikimediafoundation.org/wiki/Feedback_privacy_statement termini e condizioni di trasparenza].',
 	'articlefeedbackv5-sitesub-linktext' => 'Migliora questa pagina',
 	'articlefeedbackv5-titlebar-linktext' => 'Aiutaci a migliorare questa pagina >>',
 	'articlefeedbackv5-fixedtab-linktext' => 'Migliora questa pagina',
