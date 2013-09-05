@@ -357,7 +357,13 @@ class ArticleFeedbackv5Utils {
 		}
 		if ( $spam ) {
 			$title = Title::newFromText( 'ArticleFeedbackv5_' . $pageId );
-			$ret = $spam->filter( $title, $value, '' );
+
+			global $wgParser;
+			$options = new \ParserOptions;
+			$output = $wgParser->parse( $value, $title, $options );
+			$links = $output->getExternalLinks();
+
+			$ret = $spam->filter( $links, $title );
 			if ( $ret !== false ) {
 				return true;
 			}
