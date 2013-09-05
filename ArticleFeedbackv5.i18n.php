@@ -1183,14 +1183,16 @@ Parameters:
 
 See also:
 * {{msg-mw|Articlefeedbackv5-discuss-talk-section-title}}",
-	'articlefeedbackv5-discuss-talk-section-content' => "When feedback is to be discussed on the article's talk page, this is the content template that will be provided. Parameters:
-* $1 is the user that submitted the feedback (either the IP for anonymous user, or in the format [[User:Name|Name]] for registered users)
-* $2 is the permalink to the feedback that'll be discussed
-* $3 is the date the feedback was submitted
-* $4 is the time the feedback was submitted
-* $5 is the link to all feedback on this article
-* $6 is the full feedback comment (will be empty in the event that feedback text is short and fits in the section title)
-* $7 is the title of the page the feedback was submitted for",
+	'articlefeedbackv5-discuss-talk-section-content' => "When feedback is to be discussed on the article's talk page, this is the content template that will be provided.
+
+Parameters:
+* $1 - the user that submitted the feedback (either the IP for anonymous user, or in the format [[User:Name|Name]] for registered users)
+* $2 - the permalink to the feedback that'll be discussed
+* $3 - the date the feedback was submitted
+* $4 - (Unused) the time the feedback was submitted
+* $5 - the link to all feedback on this article
+* $6 - the full feedback comment (will be empty in the event that feedback text is short and fits in the section title)
+* $7 - (Unused) the title of the page the feedback was submitted for",
 	'articlefeedbackv5-discuss-user-section-content' => "When feedback is to be discussed on the user's talk page, this is the content template that will be provided.
 
 Parameters:
@@ -1251,9 +1253,11 @@ This would be a result of a long period of testing multiple different forms (for
 	'articlefeedbackv5-settings-menu-title' => 'Link text for the link to open AFTv5 settings.
 {{Identical|Settings}}',
 	'articlefeedbackv5-invalid-page-id' => 'Message to be displayed when an invalid page ID is passed to the API.',
-	'articlefeedbackv5-found-percent' => 'Text describing the percentage of readers that answered positively to the question "Did you find what you were looking for". Parameters:
-* $1 - the percentage of people that found what they were looking for marked up. Example value: 15%. {{msg-mw|percent}} is used.
-* $2 - the percentage of people that found what they were looking for, used for plural.',
+	'articlefeedbackv5-found-percent' => 'Text describing the percentage of readers that answered positively to the question "Did you find what you were looking for".
+
+Parameters:
+* $1 - the percentage of people that found what they were looking for marked up. e.g. 15%. {{msg-mw|Percent}} is used
+* $2 - the percentage of people that found what they were looking for, used for plural',
 	'articlefeedbackv5-found-percent-title' => 'Title attribute for percentage of people who marked feedback as useful.
 
 This will display more detailed information about the amount of feedback the percentage has been calculated over.
@@ -2244,13 +2248,15 @@ Parameters:
 	'articlefeedbackv5-email-request-oversight-body' => 'Body of an email sent to the oversight mailing list when an oversight request has been made.
 
 Parameters:
-* $1 – User name of requestor
-* $2 – Page name of item with feedback requiring oversight
+* $1 – username of requestor
+* $2 – page name of item with feedback requiring oversight
 * $3 – URL directly to feedback location
-* $4 – The help link
-* $5 - Additional comment added to clarify the oversight request: {{msg-mw|articlefeedbackv5-email-request-oversight-body-notes}}, or nothing at all if no moderation notes',
-	'articlefeedbackv5-email-request-oversight-body-notes' => 'Text block used in {{msg-mw|articlefeedbackv5-email-request-oversight-body}}, to display additional moderation comments (if present) in the oversight email. Parameters:
-* $1 - Additional comment added to clarify the oversight request',
+* $4 – the help link
+* $5 - additional comment added to clarify the oversight request: {{msg-mw|Articlefeedbackv5-email-request-oversight-body-notes}}, or nothing at all if no moderation notes',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'Used as text block <code>$5</code> in {{msg-mw|Articlefeedbackv5-email-request-oversight-body}}, to display additional moderation comments (if present) in the oversight email.
+
+Parameters:
+* $1 - additional comment added to clarify the oversight request',
 	'articlefeedbackv5-disable-flyover-title' => 'Title of the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool',
 	'articlefeedbackv5-disable-flyover-help-message' => "Help text for the tooltip that pops up when you click the close button on a feedback trigger link, explaining how to remove the Article Feedback tool.
 
@@ -4709,9 +4715,18 @@ $messages['br'] = array(
 	'articlefeedbackv5-form-discuss-talk-exists' => 'Gwelet ar bajenn gendiviz',
 	'articlefeedbackv5-form-tooltip-note' => 'Ouzhpennañ un notenn da zisplegañ ho panniel',
 	'articlefeedbackv5-form-tooltip-feature' => "An dra-mañ a c'hall sikour da wellaat ar bajenn",
+	'articlefeedbackv5-form-tooltip-unresolve' => 'Nullañ ar banniel diskoulmet',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Diguzhat',
 	'articlefeedbackv5-form-tooltip-unarchive' => 'Tennañ eus an dielloù',
 	'articlefeedbackv5-discuss-talk-section-title' => 'Evezhiadenn gant al lenner : $1',
+	'articlefeedbackv5-discuss-user-section-title' => 'Hoc\'h evezhiadennoù war "$2"',
+	'articlefeedbackv5-discuss-talk-section-content' => "$1 en deus embannet[[$2|an evezhiadenn-mañ]] war $3 ([[$5|gwelet an holl evezhiadennoù]]).
+
+$6
+
+Petra 'soñjit ?
+
+~~~~",
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 en deus|$2 he deus}} kavet ar pezh a glaske',
 	'articlefeedbackv5-form1-header-not-found' => "{{GENDER:$1|$2 n'en deus|$2 n'he deus}} ket kavet ar pezh a glaske",
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 en deus postet un evezhiadenn|$2 he deus postet un evezhiadenn}}',
@@ -4721,12 +4736,14 @@ $messages['br'] = array(
 	'articlefeedbackv5-form2-header-suggestion' => "Ur c'hinnig zo bet graet gant {{GENDER:$1|$1}} :",
 	'articlefeedbackv5-form-anon-username' => 'Ul lenner',
 	'articlefeedbackv5-form-invalid' => 'Direizh eo ID ar furmskrid da reiñ e soñj.',
+	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} en deus kaset [[$4|un evezhiadenn]] da $3',
 	'articlefeedbackv5-abuse-saved' => 'Merkañ evel dizereat',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Lemel ar banniel ho peus lakaet',
 	'articlefeedbackv5-error-loading-feedback' => 'Fazi en ur gargañ ar soñjadenn.',
 	'articlefeedbackv5-insufficient-permissions' => 'Live aotre skort',
 	'articlefeedbackv5-invalid-feedback-id' => 'Direizh eo ID ar soñjadenn.',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Direizh eo banniel ID ar soñjadenn.',
+	'articlefeedbackv5-feedback-reloaded-after-error' => "C'hoarvezet ez eus ur fazi ($1). Adkarget eo bet an evezhiadenn evit diskouez penaos emañ bremañ.",
 	'articlefeedbackv5-go-to-article' => 'Gwelet ar bajenn',
 	'articlefeedbackv5-discussion-page' => 'Kaozeal',
 	'articlefeedbackv5-whats-this' => 'Skoazell',
@@ -4916,8 +4933,9 @@ $messages['br'] = array(
 	'articlefeedbackv5-leave-warning' => "Ne c'hall ket ar roadennoù ho peus ebarzhet bezañ enrollet.",
 	'articlefeedbackv5-toolbox-enable' => 'Aotren an evezhiadennoù',
 	'articlefeedbackv5-disable-preference' => 'Arabat diskwel ar bitrak Priziañ ar pennadoù er pajennoù.',
+	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|en deus|he deus}} kaset [[$3|un evezhiadenn #$4]] war [[$5]]',
 	'articlefeedbackv5-activity-pane-header' => 'Marilh obererezh',
-	'articlefeedbackv5-activity-feedback-info' => 'Evezhiadenn bost #$1 gant $2', # Fuzzy
+	'articlefeedbackv5-activity-feedback-info' => 'Evezhiadenn gant $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Postet war $1',
 	'articlefeedbackv5-activity-permalink' => 'Peurliamm',
 	'articlefeedbackv5-activity-item-autohide' => "$1 en deus kuzhet ar gemennadenn-mañ d'an $4 da $5 $2",
@@ -4954,6 +4972,7 @@ $messages['bs'] = array(
  * @author Jmarchn
  * @author Nnemo
  * @author Pitort
+ * @author Qllach
  * @author Solde
  * @author Toniher
  */
@@ -4990,16 +5009,16 @@ $messages['ca'] = array(
 	'articlefeedbackv5-error-submit' => "Error d'enviament del formulari.",
 	'articlefeedbackv5-error-nofeedback' => 'Si us plau, escriu els teus comentaris.',
 	'articlefeedbackv5-error-flagging' => 'Error en marcar el comentari.',
-	'articlefeedbackv5-protection-permission-reader' => 'Activa per tots els usuaris',
-	'articlefeedbackv5-protection-permission-member' => 'Autoritzat només per a usuaris registrats',
-	'articlefeedbackv5-protection-permission-editor' => 'Autoritzat només per a usuaris autoconfirmats',
-	'articlefeedbackv5-protection-permission-administrator' => 'Activa només per administradors',
+	'protect-level-aft-reader' => 'Activa-ho per tots els usuaris',
+	'protect-level-aft-member' => 'Activa-ho només per als usuaris que han iniciat la sessió',
+	'protect-level-aft-editor' => 'Activa-ho només per als usuaris autoconfirmats',
+	'protect-level-aft-administrator' => 'Activa-ho només per als administradors',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Resposta: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '
 . . Estat: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Útil',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Marcat',
-	'articlefeedbackv5-contribs-status-action-feature' => 'Destacat', # Fuzzy
+	'articlefeedbackv5-contribs-status-action-feature' => 'Útil',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Resolt',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Ocult',
 	'articlefeedbackv5-contribs-status-action-hide' => 'Amaga',
@@ -5039,13 +5058,13 @@ $messages['ca'] = array(
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Inútil',
 	'articlefeedbackv5-special-sort-age-desc' => 'Els més nous',
 	'articlefeedbackv5-special-sort-age-asc' => 'Els més antics',
-	'articlefeedbackv5-special-filter-select-more' => 'Més filtres', # Fuzzy
+	'articlefeedbackv5-special-filter-select-more' => 'Més',
 	'articlefeedbackv5-special-watchlist-showing' => 'Resposta per a les pàgines vigilades per [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Resposta de les meves pàgines vigilades]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Mostra respostes de totes les pàgines]]',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|Una contribució|$1 contribucions}} des del missatge',
 	'articleFeedbackv5-details-link' => 'Detalls',
-	'articlefeedbackv5-revision-link' => "(veges l'article antic)", # Fuzzy
+	'articlefeedbackv5-revision-link' => '(vegeu la pàgina antiga)',
 	'articlefeedbackv5-special-more' => 'Mostra més missatges',
 	'articlefeedbackv5-special-refresh' => 'Recarrega la llista',
 	'articlefeedbackv5-special-pagetitle' => 'Comentaris sobre $1',
@@ -5053,26 +5072,26 @@ $messages['ca'] = array(
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'Respostes de les meves pàgines vigilades',
 	'articlefeedbackv5-special-central-pagetitle' => 'Pàgina central de comentaris',
 	'articlefeedbackv5-loading-tag' => 'Carregant...',
-	'articlefeedbackv5-status-hide' => 'Aquest missatge fou ocultat per $1 el $2 a $3', # Fuzzy
-	'articlefeedbackv5-status-unhide' => 'Aquest missatge fou desocult per $1 el $2 a $3', # Fuzzy
+	'articlefeedbackv5-status-hide' => 'Aquest missatge fou ocultat per $1 el $2 a les $3',
+	'articlefeedbackv5-status-unhide' => 'Aquest missatge va ser tornat a fer visible per $1 el $2 a les $3',
 	'articlefeedbackv5-new-marker' => 'Nou',
 	'articlefeedbackv5-oversight-marker' => 'Supervisat',
 	'articlefeedbackv5-autohide-marker' => 'Amagat',
 	'articlefeedbackv5-hide-marker' => 'Amagat',
-	'articlefeedbackv5-feature-marker' => 'Destacat', # Fuzzy
+	'articlefeedbackv5-feature-marker' => 'Útil',
 	'articlefeedbackv5-resolve-marker' => 'Resolt',
-	'articlefeedbackv5-form-feature' => 'Destaca aquest missatge', # Fuzzy
-	'articlefeedbackv5-form-unfeature' => 'No destaquis aquest missatge', # Fuzzy
-	'articlefeedbackv5-form-resolve' => 'Marca com a resolt', # Fuzzy
-	'articlefeedbackv5-form-unresolve' => 'Desmarca com a resolt', # Fuzzy
+	'articlefeedbackv5-form-feature' => 'Útil',
+	'articlefeedbackv5-form-unfeature' => 'Desfés',
+	'articlefeedbackv5-form-resolve' => 'Resolt',
+	'articlefeedbackv5-form-unresolve' => 'Desfés',
 	'articlefeedbackv5-form-unnoaction' => 'Desfés',
 	'articlefeedbackv5-form-inappropriate' => 'Oculta aquest missatge',
 	'articlefeedbackv5-form-uninappropriate' => 'Desfés',
-	'articlefeedbackv5-form-unhide' => 'No ocultis aquest missatge', # Fuzzy
+	'articlefeedbackv5-form-unhide' => 'Desfés',
 	'articlefeedbackv5-form-unarchive' => 'Desfés',
 	'articlefeedbackv5-form-helpful' => 'Marca com útil ($1)',
-	'articlefeedbackv5-form-oversight' => 'Sol·licita supervisió', # Fuzzy
-	'articlefeedbackv5-form-unoversight' => 'No sol·licitis supervisió', # Fuzzy
+	'articlefeedbackv5-form-oversight' => 'Supervisió',
+	'articlefeedbackv5-form-unoversight' => 'Desfés',
 	'articlefeedbackv5-form-decline' => 'Refusa supervisió',
 	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}} ha tingut un elogi:',
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} ha tingut un problema:',
@@ -5101,7 +5120,7 @@ $messages['ca'] = array(
 	'articlefeedbackv5-special-goback' => 'Mostra la pàgina de comentaris',
 	'articlefeedbackv5-special-central-goback' => "Mostra més comentaris d'altres pàgines",
 	'articlefeedbackv5-permalink-info-title' => 'Info sobre aquest missatge',
-	'articlefeedbackv5-permalink-info-revision-link' => 'Mostra la versió antiga', # Fuzzy
+	'articlefeedbackv5-permalink-info-revision-link' => "Mostra la versió antiga d'aquesta pàgina",
 	'articlefeedbackv5-permalink-info-posted' => 'Publicat el $1 a les $2',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Longitud',
 	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 paraula|$1 paraules}}',
@@ -5136,7 +5155,7 @@ $messages['ca'] = array(
 	'articlefeedbackv5-short-status-undo-helpful' => '{{GENDER:$1|Revisat per $1}}',
 	'articlefeedbackv5-short-status-unhelpful' => '{{GENDER:$1|Revisat per $1}}',
 	'articlefeedbackv5-short-status-undo-unhelpful' => '{{GENDER:$1|Revisat per $1}}',
-	'articlefeedbackv5-permalink-status-request' => '{{GENDER:$1|<strong>Supervisió</strong> sol·licitada per $1}} fa $2', # Fuzzy
+	'articlefeedbackv5-permalink-status-request' => '{{GENDER:$1|La <strong>supervisió</strong> fou sol·licitada per $1}} fa $2',
 	'articlefeedbackv5-permalink-status-unrequest' => '{GENDER:$1|<strong>Supervisió</strong> no sol·licitada per $1}} fa $2', # Fuzzy
 	'articlefeedbackv5-permalink-status-decline' => '{GENDER:$1|<strong>Supervisió</strong> declinada per $1}} fa $2', # Fuzzy
 	'articlefeedbackv5-permalink-status-inappropriate' => '{{GENDER:$1|<strong>Amagat</strong> per  $1}} fa $2',
@@ -24292,11 +24311,12 @@ $messages['pt-br'] = array(
 	'articlefeedbackv5-error-throttled' => 'Sua postagem foi rejeitada porque você recentemente postou mais comentários do que o recomendado na {{SITENAME}} de avaliação. Por favor, não poste comentários repetidamente ou em excesso.',
 	'articlefeedbackv5-protection-level' => 'Avaliação de artigo',
 	'articlefeedbackv5-protection-level-error' => 'Nível de proteção para avaliação de artigo não pode ser maior que o nível de proteção para edição',
-	'articlefeedbackv5-protection-permission-reader' => 'Ativar para todos os usuários',
-	'articlefeedbackv5-protection-permission-member' => 'Ativar apenas para usuários registrados',
-	'articlefeedbackv5-protection-permission-editor' => 'Ativar somente para usuários auto-confirmados',
-	'articlefeedbackv5-protection-permission-administrator' => 'Ativar somente para administradores',
-	'articlefeedbackv5-protection-permission-noone' => 'Desativar para todos os usuários',
+	'protect-level-aft-reader' => 'Ativar para todos os usuários',
+	'protect-level-aft-member' => 'Ativar apenas para usuários registrados',
+	'protect-level-aft-editor' => 'Ativar somente para usuários autoconfirmados',
+	'protect-level-aft-administrator' => 'Ativar apenas para administradores',
+	'protect-level-aft-noone' => 'Desativar para todos os usuários',
+	'restriction-articlefeedbackv5' => 'Visibilidade',
 	'articlefeedbackv5-disabled' => 'Avaliação foi desativada',
 	'articlefeedbackv5-disabled-admin-admin' => 'Avaliação foi desativada para leitores e editores. Eles não podem postar novas avaliações nesta página.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Avalição foi desativada para leitores. Eles não podem postar novas avaliações nesta página.',
@@ -24829,6 +24849,7 @@ P.S.: Se você tem alguma dúvida sobre o uso da supervisão na página de avali
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Remover esta ferramenta?',
+	'articlefeedbackv5-disable-flyover-help-message' => 'Para remover a Avaliação de artigo, vá à "$1" > "$2" e marque "$3"',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Vá para minhas preferências',
 	'abusefilter-edit-action-aftv5resolve' => '(Avaliação do Artigo) Auto-resolvida',
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Resolvida automaticamente. Regra: $1',
@@ -30795,6 +30816,7 @@ $messages['zh-hans'] = array(
 	'protect-level-aft-administrator' => '仅对管理员开放使用',
 	'protect-level-aft-noone' => '对所有用户禁用',
 	'articlefeedbackv5-protection-title' => '用“[[$1]]”来切换条目反馈工具可见性',
+	'restriction-articlefeedbackv5' => '可见性',
 	'articlefeedbackv5-disabled' => '反馈已被禁用',
 	'articlefeedbackv5-disabled-admin-admin' => '反馈已对读者和编辑者禁用。他们不能在此页上发布新的反馈。',
 	'articlefeedbackv5-disabled-admin-editor' => '反馈已对读者禁用。他们不能在此页上发布新的反馈。',
