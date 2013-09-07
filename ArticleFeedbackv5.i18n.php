@@ -856,9 +856,9 @@ See also:
 * $4 - the page title - in the example: "Main Page"
 * $5 - the username (only set in the case of newbie log) - not in the example, this will only show up in the newbie log
 * $6 - the comment - in the example: "(This is some more feedback, using the AFT feedback form)"
-* $7 - a list of the feedback\'s current statusses, built out of {{msg-mw|articlefeedbackv5-contribs-entry-status}}, if the status is not empty - in the example: "Status: Helpful and Featured"
-* $8 - the date with link to feedback permalink - in the example: "30 August 2012"
-* $9 - the time with link to feedback permalink - in the example: "10:59"',
+* $7 - a list of the feedback\'s current statusses, built out of {{msg-mw|Articlefeedbackv5-contribs-entry-status}}, if the status is not empty - in the example: "Status: Helpful and Featured"
+* $8 - (Optional) the date with link to feedback permalink - in the example: "30 August 2012"
+* $9 - (Optional) the time with link to feedback permalink - in the example: "10:59"',
 	'articlefeedbackv5-contribs-entry-status' => 'The status part of {{msg-mw|articlefeedbackv5-contribs-entry}}. $1 contains the status and can be any combination of helpful, flagged, featured, resolved, hidden, oversight-requested, deleted',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Status when feedback has been marked as helpful',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Status when feedback has been flagged.
@@ -6565,6 +6565,7 @@ $4', # Fuzzy
 
 /** Zazaki (Zazaki)
  * @author Erdemaslancan
+ * @author Gorizon
  * @author Mirzali
  */
 $messages['diq'] = array(
@@ -6587,9 +6588,11 @@ $messages['diq'] = array(
 	'articlefeedbackv5-contribs-entry-status' => '...Weziyet: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Nahfatın',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Nışan biyo',
-	'articlefeedbackv5-contribs-status-action-feature' => 'Weçinaye', # Fuzzy
+	'articlefeedbackv5-contribs-status-action-feature' => 'Weçinaye',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Agoziya',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Nimnaye',
+	'articlefeedbackv5-contribs-status-action-archive' => 'Arşivya',
+	'articlefeedbackv5-contribs-status-action-hide' => 'Bınımne',
 	'articlefeedbackv5-contribs-status-action-request' => 'Çımpawıtış waştiyayo',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Çımpawiyayo',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'vatışi bınımne',
@@ -6598,6 +6601,7 @@ $messages['diq'] = array(
 	'articlefeedbackv5-form-helpful-no-label' => 'Nê',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 e|$1 e}} / {{PLURAL:$2|1 nê|$2 nê}}',
 	'articlefeedbackv5-special-filter-helpful' => 'Peştikar ($1)',
+	'articlefeedbackv5-special-filter-unhelpful' => 'Peştikar ($1)',
 	'articlefeedbackv5-special-filter-hidden' => '($1) nımneya',
 	'articlefeedbackv5-special-filter-oversighted' => '($1) çımpawiyayo',
 	'articlefeedbackv5-special-filter-all' => 'Postey pêro ($1)',
@@ -6609,8 +6613,6 @@ $messages['diq'] = array(
 	'articlefeedbackv5-special-sort-helpful-desc' => 'Nahfatın',
 	'articlefeedbackv5-special-sort-age-desc' => 'Tewr newe',
 	'articlefeedbackv5-special-sort-age-asc' => 'Tewr kehan',
-	'articlefeedbackv5-special-sort-label-before' => 'Raten:',
-	'articlefeedbackv5-special-filter-label-before' => 'Mocneyêno:',
 	'articleFeedbackv5-details-link' => 'Detayi',
 	'articlefeedbackv5-loading-tag' => 'Bar beno...',
 	'articlefeedbackv5-new-marker' => 'Newe',
@@ -6624,11 +6626,8 @@ $messages['diq'] = array(
 	'articlefeedbackv5-whats-this' => 'Peşti',
 	'articlefeedbackv5-desc' => 'Wesiqe peyd rıştış',
 	'articlefeedbackv5-comment-more' => 'Dehana vêşi',
-	'articlefeedbackv5-header-message-link-text' => 'Zewbi.',
-	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-viewactivity' => 'Aktiviteya bıvin', # Fuzzy
 	'articlefeedbackv5-mask-view-contents' => 'Tedeesteyi bimocne',
-	'articlefeedbackv5-permalink-info-subtitle' => '(#$1)',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Dergin',
 	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 çekuyo|$1 çekuyê}}',
 	'articlefeedbackv5-permalink-info-length-characters' => '({{PLURAL:$1|$1 Karakter|$1 Karakteri}})',
@@ -6676,8 +6675,6 @@ $messages['diq'] = array(
 	'articlefeedbackv5-section-linktext' => 'peydrışten',
 	'articlefeedbackv5-activity-pane-header' => 'Qeydê aktiviteyan',
 	'articlefeedbackv5-activity-permalink' => 'Greyo Daimi',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Wesiqe Peyd rıştış',
-	'articlefeedbackv5-disable-flyover-help-location' => 'Tercihê mı> Asayışi',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Şo tercihan dê mı',
 );
 
@@ -17236,15 +17233,16 @@ Versöhg et shpääder norr_ens.',
 	'articlefeedbackv5-error-throttled' => 'Dinge Beidraach es affjelehnt woode, weil De en de läzde Zigg mieh Röckmäldonge affjejovve häs, als en de Ämfählonge för {{GRAMMAR:2i|{{ucfirst:{{SITENAME}}}}}} Röckmäldonmge faßjelaat. Bes esu jood un donn kein övverdrevve Röckmäldonge afjävve udder desällve emmer widder afjävve.',
 	'articlefeedbackv5-protection-level' => 'Enschäzonge för Sigge',
 	'articlefeedbackv5-protection-level-error' => 'Do Schoz för de Röckmäldonge kann nit övver ddämm för et Ändere lijje.',
-	'articlefeedbackv5-protection-permission-reader' => 'För alle Metmaacher aanschallde',
-	'articlefeedbackv5-protection-permission-member' => 'Bloß för enjelogde Metmaacher aanschallde',
-	'articlefeedbackv5-protection-permission-editor' => 'Bloß för automattesch beschtääteschte Metmaacher aanschallde',
-	'articlefeedbackv5-protection-permission-administrator' => 'Bloß för de Wikki_Kööbesse aanschallde',
+	'protect-level-aft-reader' => 'För alle Metmaacher aanschallde', # Fuzzy
+	'protect-level-aft-member' => 'Bloß för enjelogde Metmaacher aanschallde', # Fuzzy
+	'protect-level-aft-editor' => 'Bloß för automattesch beschtääteschte Metmaacher aanschallde', # Fuzzy
+	'protect-level-aft-administrator' => 'Bloß för de Wikki_Kööbesse aanschallde', # Fuzzy
+	'restriction-articlefeedbackv5' => 'Seeschbakeid',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Aanmärkong zoh: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Der Zohschtand es: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Hellef',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Makeet',
-	'articlefeedbackv5-contribs-status-action-feature' => 'Erußjeschtallt', # Fuzzy
+	'articlefeedbackv5-contribs-status-action-feature' => 'Nözlesch',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Jedonn',
 	'articlefeedbackv5-contribs-status-action-noaction' => 'Nix met donn',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Verschtoche',
@@ -17252,6 +17250,7 @@ Versöhg et shpääder norr_ens.',
 	'articlefeedbackv5-contribs-status-action-request' => 'Ongerdröcke jewönsch',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Ongerdröck',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'verschtoche Aanmärkonge',
+	'articlefeedbackv5-form-toolbox-label' => 'Makeere als:',
 	'articlefeedbackv5-form-helpful-label' => 'hellef dä Beidraach?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Joh',
 	'articlefeedbackv5-form-helpful-no-label' => 'Nää',
@@ -17287,8 +17286,6 @@ Versöhg et shpääder norr_ens.',
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Hellef nit',
 	'articlefeedbackv5-special-sort-age-desc' => 'Neuste',
 	'articlefeedbackv5-special-sort-age-asc' => 'Ählste',
-	'articlefeedbackv5-special-sort-label-before' => 'Zotteere noh:',
-	'articlefeedbackv5-special-filter-label-before' => 'Zeisch:',
 	'articlefeedbackv5-special-watchlist-showing' => 'Röckmäldonge övver Sigge, di op dä Oppaßleß {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} [[$1|$2]] schtonn',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Meddeilonge övver Sigge op minge Oppaßleß]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Meddeilonge övver alle Sigge beloore]]',
@@ -17374,9 +17371,6 @@ Hadd_Er en Meinung dohzoh? --~~~~',
 	'articlefeedbackv5-desc' => 'Enschäzonge för Sigge',
 	'articlefeedbackv5-comment-more' => 'Mieh',
 	'articlefeedbackv5-comment-empty' => 'Nix enjejovvee',
-	'articlefeedbackv5-header-message' => 'Sidd esu jood un sorresch för joode Röckmäldonge un hellef met, heh di Sigg bäßer ze maache. $1', # Fuzzy
-	'articlefeedbackv5-header-message-link-text' => 'Fengk mieh erus.',
-	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-unsupported-message' => 'Deihd ons leid, Dinge Brauser weed vun heh däm Probeerprjojramm (noch) nit ongerschtöz.
 Öm di Sigg ze beloore, donn ene andere Brauser nämme.',
 	'articlefeedbackv5-page-disabled' => 'Röckmäldonge för heh di Sigg sin nit enjeschalldt.',
@@ -17388,9 +17382,9 @@ Hadd_Er en Meinung dohzoh? --~~~~',
 	'articlefeedbackv5-special-disclaimer' => 'Dat Projramm heh es noch zom usprobeere. Donn et nit bruche, wann De nit ußdröcklesch doför enjelaade bes.',
 	'articlefeedbackv5-special-goback' => 'Donn de Röckmäldongssigg beloore',
 	'articlefeedbackv5-permalink-info-title' => 'Aanjaabe övver heh dä Beidraach',
-	'articlefeedbackv5-permalink-written-by-editor' => 'Vun enem aanjemäldte Metmaacher övver et <span>Röckmäldongsfollolaa $1</span> jeschrevve',
-	'articlefeedbackv5-permalink-written-by-reader' => 'Vun enem naameloose Metmaacher övver et <span>Röckmäldongsfollolaa $1</span> jeschrevve',
-	'articlefeedbackv5-permalink-info-revision-link' => 'De ahle Väsjohn beloore',
+	'articlefeedbackv5-permalink-written-by-editor' => 'Vun enem aanjemäldte Metmaacher övver et <span>Röckmäldongsfollolaa $1</span> jeschrevve', # Fuzzy
+	'articlefeedbackv5-permalink-written-by-reader' => 'Vun enem naameloose Metmaacher övver et <span>Röckmäldongsfollolaa $1</span> jeschrevve', # Fuzzy
+	'articlefeedbackv5-permalink-info-revision-link' => 'De ahle Väsjohn beloore', # Fuzzy
 	'articlefeedbackv5-permalink-info-posted' => 'Veröffentlesch aam $1 öm $2 Uhr',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Längde',
 	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|ein Woot|$1 Wööter|kein Wööter}}',
@@ -17550,7 +17544,7 @@ Hellef met, di Sigg heh beßer ze maache, endämm dat De draan metschriivs!',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '{{GENDER:$2|Dä|Dat|Dä Metmaacher|De|Dat}} $1 hät de [[$3|opjeschrevve Meinong Nommer $4]] övver di Sigg „[[$5]]“ nit mieh als „hellef nit“ makeet',
 	'logentry-articlefeedbackv5-clear-flags' => '{{GENDER:$2|Dä|Dat|Dä Metmaacher|De|Dat}} $1 hät vun dä [[$3|opjeschrevve Meinong Nommer $4]] övver di Sigg „[[$5]]“ alle Makeeronge fott jenumme',
 	'articlefeedbackv5-activity-pane-header' => 'Et Logbooch met de Aktivitääte',
-	'articlefeedbackv5-activity-feedback-info' => 'opjeschrevve Meinong Nommer $1 {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $2',
+	'articlefeedbackv5-activity-feedback-info' => 'opjeschrevve Meinong Nommer $1 {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $2', # Fuzzy
 	'articlefeedbackv5-activity-feedback-date' => 'Afjejovve äm $1 aam $1 ', # Fuzzy
 	'articlefeedbackv5-activity-permalink' => 'Duurhafte Lengk',
 	'articlefeedbackv5-activity-item-request' => '{{GENDER:$6|Dä|Dat|Dä Metmaacher|De|Dat}} $1 hät et Ongerdröcke vun däm Beidraach aam $4 öm $5 Uhr jewönsch: $2', # Fuzzy
@@ -17579,8 +17573,6 @@ Hellef met, di Sigg heh beßer ze maache, endämm dat De draan metschriivs!',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Meddeilonge zoh Sigge op minge Oppaßleß',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Et Ongerdröcke es vörjeschlonn för en Sigg met Röckmäldonge',
 	'articlefeedbackv5-disable-flyover-title' => 'Sull dat Wärkzüch fott?',
-	'articlefeedbackv5-disable-flyover-help' => 'Öm $1 ußzeschallde, jangk op $2 un maach e Hööksche bei $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'Enschäzonge för Sigge',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Enschtällonge',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Röckmäldonge övver Sigge) Automattesch als Schtuß udder Meßbruch makeere',
 	'abusefilter-edit-action-aftv5hide' => '(Röckmäldonge övver Sigge) Automattesch verschteische',
