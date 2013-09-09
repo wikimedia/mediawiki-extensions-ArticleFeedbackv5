@@ -253,13 +253,6 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_decline = 1;
 		$this->logId = $this->log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user );
 
-		// un-hide if autohidden
-		if ( $this->feedback->aft_hide && $this->feedback->aft_autohide ) {
-			$this->feedback->aft_hide = 0;
-			$this->feedback->aft_autohide = 0;
-			$this->log( 'unhide', $this->feedback->aft_page, $this->feedback->aft_id, 'Automatic un-hide', $this->user );
-		}
-
 		return true;
 	}
 
