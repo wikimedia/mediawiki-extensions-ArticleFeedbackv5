@@ -2029,213 +2029,219 @@ Parameters:
 	'articlefeedbackv5-activity-permalink' => '[Permalink] link text.
 {{Identical|Permalink}}',
 	'articlefeedbackv5-activity-item-request' => 'Activity log entry when oversight was requested (an oversight request asks an oversighter to delete feedback).
+
+Parameters:
 * $1 - a link to the user who performed the action
 * $2 - the informational comment left upon performing the action
-* $3 - the date & time the action was performed
+* $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - the user name (gender support)
+* $6 - (Optional) the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-unrequest' => 'Activity log entry when oversight was unrequested (an oversight request asks an oversighter to delete feedback)
+	'articlefeedbackv5-activity-item-unrequest' => 'Activity log entry when oversight was unrequested (an oversight request asks an oversighter to delete feedback).
+
+Parameters:
 * $1 - a link to the user who performed the action
 * $2 - the informational comment left upon performing the action
-* $3 - the date & time the action was performed
+* $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - the user name (gender support)
+* $6 - (Optional) the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-decline' => 'Activity log entry when an oversight request was declined (an oversight request asks an oversighter to delete feedback)
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-flag' => 'Activity log entry when feedback was flagged as abusive
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-unflag' => 'Activity log entry when feedback was un-flagged as abusive.
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-autoflag' => 'Activity log entry when feedback was autoflagged as abusive
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-oversight' => 'Activity log entry when feedback was oversighted
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-unoversight' => 'Activity log entry when feedback was unoversighted
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-feature' => 'Activity log entry when feedback was marked as useful
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-unfeature' => 'Activity log entry when feedback was unmarked as useful
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-resolve' => 'Activity log entry when feedback was marked as resolved
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-unresolve' => 'Activity log entry when feedback was un-marked as resolved
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-noaction' => 'Activity log entry when feedback was marked as non-actionable
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-unnoaction' => 'Activity log entry when feedback was un-marked as non-actionable
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-inappropriate' => 'Activity log entry when feedback was marked as inappropriate
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-uninappropriate' => 'Activity log entry when feedback was un-marked as inappropriate
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-hide' => 'Activity log entry when feedback was hidden
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-unhide' => 'Activity log entry when feedback was un-hidden
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-autohide' => 'Activity log entry when feedback was auto-marked as inappropriate
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-archive' => 'Activity log entry when feedback was archived
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-unarchive' => 'Activity log entry when feedback was un-archived
-* $1 is a link to the user who performed the action
-* $2 is the informational comment left upon performing the action
-* $3 is the date & time the action was performed
-* $4 is the date the action was performed
-* $5 is the time the action was performed
-* $6 is the user name (gender support)
-{{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-helpful' => 'Activity log entry when feedback was marked as helpful
+	'articlefeedbackv5-activity-item-decline' => 'Activity log entry when an oversight request was declined (an oversight request asks an oversighter to delete feedback).
+
+Parameters:
 * $1 - a link to the user who performed the action
 * $2 - the informational comment left upon performing the action
-* $3 - the date & time the action was performed
+* $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - the user name (gender support)
+* $6 - (Optional) the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-unhelpful' => 'Activity log entry when feedback was marked as unhelpful
+	'articlefeedbackv5-activity-item-flag' => 'Activity log entry when feedback was flagged as abusive. Parameters:
 * $1 - a link to the user who performed the action
 * $2 - the informational comment left upon performing the action
-* $3 - the date & time the action was performed
+* $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - the user name (gender support)
+* $6 - (Optional) the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-undo-helpful' => 'Activity log entry when feedback was un-marked as helpful
+	'articlefeedbackv5-activity-item-unflag' => 'Activity log entry when feedback was un-flagged as abusive. Parameters:
 * $1 - a link to the user who performed the action
 * $2 - the informational comment left upon performing the action
-* $3 - the date & time the action was performed
+* $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - the user name (gender support)
+* $6 - (Optional) the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-undo-unhelpful' => 'Activity log entry when feedback was un-marked as unhelpful
+	'articlefeedbackv5-activity-item-autoflag' => 'Activity log entry when feedback was autoflagged as abusive. Parameters:
 * $1 - a link to the user who performed the action
 * $2 - the informational comment left upon performing the action
-* $3 - the date & time the action was performed
+* $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - the user name (gender support)
+* $6 - (Optional) the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
-	'articlefeedbackv5-activity-item-clear-flags' => 'Activity log entry when all abuse flags were cleared on feedback
+	'articlefeedbackv5-activity-item-oversight' => 'Activity log entry when feedback was oversighted. Parameters:
 * $1 - a link to the user who performed the action
 * $2 - the informational comment left upon performing the action
-* $3 - the date & time the action was performed
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-unoversight' => 'Activity log entry when feedback was unoversighted. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-feature' => 'Activity log entry when feedback was marked as useful. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-unfeature' => 'Activity log entry when feedback was unmarked as useful. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-resolve' => 'Activity log entry when feedback was marked as resolved. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-unresolve' => 'Activity log entry when feedback was un-marked as resolved. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-noaction' => 'Activity log entry when feedback was marked as non-actionable. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-unnoaction' => 'Activity log entry when feedback was un-marked as non-actionable. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-inappropriate' => 'Activity log entry when feedback was marked as inappropriate. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-uninappropriate' => 'Activity log entry when feedback was un-marked as inappropriate. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-hide' => 'Activity log entry when feedback was hidden. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-unhide' => 'Activity log entry when feedback was un-hidden. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-autohide' => 'Activity log entry when feedback was auto-marked as inappropriate. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-archive' => 'Activity log entry when feedback was archived. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-unarchive' => 'Activity log entry when feedback was un-archived. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-helpful' => 'Activity log entry when feedback was marked as helpful. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-unhelpful' => 'Activity log entry when feedback was marked as unhelpful. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-undo-helpful' => 'Activity log entry when feedback was un-marked as helpful. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => 'Activity log entry when feedback was un-marked as unhelpful. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
+* $4 - the date the action was performed
+* $5 - the time the action was performed
+* $6 - (Optional) the username, for GENDER support
+{{Related|Articlefeedbackv5-activity-item}}',
+	'articlefeedbackv5-activity-item-clear-flags' => 'Activity log entry when all abuse flags were cleared on feedback. Parameters:
+* $1 - a link to the user who performed the action
+* $2 - the informational comment left upon performing the action
+* $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
 * $5 - the time the action was performed
-* $6 - the user name (gender support)
+* $6 - (Optional) the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-note-archive' => "Activity log comment when feedback is archived. $1 is the amount of days between the creation of the feedback and the date it's being archived",
 	'articlefeedbackv5-activity-count' => 'Shows the amount of actions performed on a feedback entry. $1 is the number',
@@ -15538,11 +15544,11 @@ $messages['ja'] = array(
 	'articlefeedbackv5-error-throttled' => '{{SITENAME}}のフィードバック指針での推奨数を超えるフィードバックを最近投稿したため、あなたの投稿は却下されました。繰り返しや過剰なフィードバックの投稿はご遠慮ください。',
 	'articlefeedbackv5-protection-level' => '記事へのフィードバック',
 	'articlefeedbackv5-protection-level-error' => '記事へのフィードバックの保護レベルは、編集の保護レベルより高くはできません',
-	'articlefeedbackv5-protection-permission-reader' => 'すべての利用者に有効',
-	'articlefeedbackv5-protection-permission-member' => 'ログイン利用者のみに有効',
-	'articlefeedbackv5-protection-permission-editor' => '自動承認された利用者のみに有効',
-	'articlefeedbackv5-protection-permission-administrator' => '管理者のみに有効',
-	'articlefeedbackv5-protection-permission-noone' => 'すべての利用者に対して無効にする',
+	'protect-level-aft-reader' => 'すべての利用者に有効', # Fuzzy
+	'protect-level-aft-member' => 'ログイン利用者のみに有効', # Fuzzy
+	'protect-level-aft-editor' => '自動承認された利用者のみに有効', # Fuzzy
+	'protect-level-aft-administrator' => '管理者のみに有効', # Fuzzy
+	'protect-level-aft-noone' => 'すべての利用者に対して無効にする', # Fuzzy
 	'articlefeedbackv5-disabled' => 'フィードバックが無効になっています',
 	'articlefeedbackv5-disabled-admin-admin' => '読者および編集者によるフィードバックは無効になっています。読者も編集者もこのページにフィードバックを新規投稿できません。',
 	'articlefeedbackv5-disabled-admin-editor' => '読者によるフィードバックは無効になっています。読者はこのページにフィードバックを新規投稿できません。',
@@ -15919,10 +15925,10 @@ $messages['ja'] = array(
 	'articlefeedbackv5-activity-item-inappropriate' => '$1 が $4 $5 にこの投稿に不適切の印を付けました $2',
 	'articlefeedbackv5-activity-item-uninappropriate' => '$1 が $4 $5 にこの投稿を秘匿解除しました $2',
 	'articlefeedbackv5-activity-item-autohide' => '$1 が $4 $5 にこの投稿を秘匿しました $2',
-	'articlefeedbackv5-activity-item-helpful' => '$1が$4 $5にこの投稿に役に立つの印を付けました $2',
-	'articlefeedbackv5-activity-item-unhelpful' => '$1が$4 $5にこの投稿に役に立たないの印を付けました $2',
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1が$4 $5にこの投稿の役に立つの印を除去しました $2',
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1が$4 $5にこの投稿の役に立たないの印を除去しました $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 が $4 $5 にこの投稿に役に立つの印を付けました $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 が $4 $5 にこの投稿に役に立たないの印を付けました $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 が $4 $5 にこの投稿の役に立つの印を除去しました $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 が $4 $5 にこの投稿の役に立たないの印を除去しました $2',
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 が $4 $5 にこの投稿の荒らしフラグをすべて解除しました $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|この投稿に $1 件のアクション}}',
 	'articlefeedbackv5-activity-more' => 'その他の活動を表示',
@@ -21257,6 +21263,7 @@ $messages['ne'] = array(
  * @author AvatarTeam
  * @author B4bol4t
  * @author Catrope
+ * @author HanV
  * @author Kippenvlees1
  * @author Konovalov
  * @author McDutchie
@@ -21307,11 +21314,11 @@ Probeer het later opnieuw.',
 	'articlefeedbackv5-error-throttled' => 'Uw bericht is geweigerd omdat u recentelijk meer terugkoppeling hebt gegeven dan wordt aangeraden in de richtlijnen voor terugkoppeling van {{SITENAME}}. Geef uw terugkoppeling niet herhaaldelijk of excessief.',
 	'articlefeedbackv5-protection-level' => 'Paginabeoordeling',
 	'articlefeedbackv5-protection-level-error' => 'Het beschermingsniveau voor Paginabeoordeling kan niet hoger zijn het beschermingsniveau voor bewerken',
-	'articlefeedbackv5-protection-permission-reader' => 'Voor alle gebruikers inschakelen',
-	'articlefeedbackv5-protection-permission-member' => 'Alleen voor aangemelde gebruikers inschakelen',
-	'articlefeedbackv5-protection-permission-editor' => 'Alleen voor bevestigde gebruikers inschakelen',
-	'articlefeedbackv5-protection-permission-administrator' => 'Alleen voor beheerder inschakelen',
-	'articlefeedbackv5-protection-permission-noone' => 'Uitschakelen voor alle gebruikers',
+	'protect-level-aft-reader' => 'Voor alle gebruikers inschakelen',
+	'protect-level-aft-member' => 'Alleen voor aangemelde gebruikers inschakelen',
+	'protect-level-aft-editor' => 'Alleen voor bevestigde gebruikers inschakelen',
+	'protect-level-aft-administrator' => 'Alleen voor beheerders inschakelen',
+	'protect-level-aft-noone' => 'Uitschakelen voor alle gebruikers',
 	'articlefeedbackv5-disabled' => 'Terugkoppeling is uitgeschakeld',
 	'articlefeedbackv5-disabled-admin-admin' => 'Terugkoppeling is uitgeschakeld voor lezers en bewerkers. Ze kunnen geen nieuwe terugkoppeling toevoegen aan deze pagina.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Terugkoppeling is uitgeschakeld voor lezers. Ze kunnen geen nieuwe terugkoppeling toevoegen aan deze pagina.',
@@ -31408,11 +31415,11 @@ $messages['zh-hant'] = array(
 	'articlefeedbackv5-error-throttled' => '回您的評論已遭拒絕，因為您最近發表的回饋已超出{{SITENAME}}的回饋方針推薦的數量。請不要重複或過度發表回饋。',
 	'articlefeedbackv5-protection-level' => '條目回饋',
 	'articlefeedbackv5-protection-level-error' => '條目回饋保護層級不能高於編輯保護層級',
-	'articlefeedbackv5-protection-permission-reader' => '對全部用戶開放使用',
-	'articlefeedbackv5-protection-permission-member' => '僅對登錄用戶開放使用',
-	'articlefeedbackv5-protection-permission-editor' => '僅對自動確認用戶開放使用',
-	'articlefeedbackv5-protection-permission-administrator' => '僅對管理員開放使用',
-	'articlefeedbackv5-protection-permission-noone' => '對所有使用者禁用',
+	'protect-level-aft-reader' => '為所有用戶啟用',
+	'protect-level-aft-member' => '僅對登錄用戶開放使用', # Fuzzy
+	'protect-level-aft-editor' => '僅對自動確認用戶開放使用', # Fuzzy
+	'protect-level-aft-administrator' => '僅對管理員開放使用', # Fuzzy
+	'protect-level-aft-noone' => '對所有使用者禁用', # Fuzzy
 	'articlefeedbackv5-disabled' => '回饋已被禁用',
 	'articlefeedbackv5-disabled-admin-admin' => '讀者和編輯已被禁用回饋。他們不能在此頁上發佈新的回饋。',
 	'articlefeedbackv5-disabled-admin-editor' => '讀者已被禁用回饋。他們不能在此頁上發佈新的回饋。',
@@ -31940,7 +31947,7 @@ $3
 
 註：如果您有關於在條目反饋頁使用刪除功能任何疑問，請閱讀此刪除常見問題解答：
 
-$4',
+$4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-title' => '移除此工具？',
 	'articlefeedbackv5-disable-flyover-help-message' => '若要刪除文章回饋，請到「$1」>「$2」，請核取「$3」',
 	'articlefeedbackv5-disable-flyover-prefbutton' => '轉至參數設置',
