@@ -9531,6 +9531,7 @@ $4', # Fuzzy
  * @author Nedergard
  * @author Nike
  * @author Olli
+ * @author Samoasambia
  * @author Silvonen
  * @author Snidata
  * @author Stryn
@@ -9576,11 +9577,11 @@ $messages['fi'] = array(
 	'articlefeedbackv5-error-throttled' => 'Viestisi on hylätty, koska olet äskettäiten lähettänyt enemmän palautetta kuin {{GRAMMAR:genitive|{{SITENAME}}}} palautetyökalun ohjeissa on suositeltu. Ethän lähetä palautetta toistuvasti.',
 	'articlefeedbackv5-protection-level' => 'Palaute artikkelista',
 	'articlefeedbackv5-protection-level-error' => 'Artikkelipalautteen suojaustaso ei saa olla suurempi kuin muokkaamisen suojaustaso',
-	'articlefeedbackv5-protection-permission-reader' => 'Salli kaikille käyttäjille',
-	'articlefeedbackv5-protection-permission-member' => 'Salli vain kirjautuneille käyttäjille',
-	'articlefeedbackv5-protection-permission-editor' => 'Salli vain automaattisesti hyväksytyille käyttäjille',
-	'articlefeedbackv5-protection-permission-administrator' => 'Salli vain ylläpitäjille',
-	'articlefeedbackv5-protection-permission-noone' => 'Poista kaikkien käyttäjien käytöstä',
+	'protect-level-aft-reader' => 'Salli kaikille käyttäjille',
+	'protect-level-aft-member' => 'Salli vain kirjautuneille käyttäjille',
+	'protect-level-aft-editor' => 'Salli vain automaattisesti hyväksytyille käyttäjille',
+	'protect-level-aft-administrator' => 'Salli vain ylläpitäjille',
+	'protect-level-aft-noone' => 'Poista kaikkien käyttäjien käytöstä',
 	'articlefeedbackv5-disabled' => 'Palautteen antaminen on poissa käytöstä',
 	'articlefeedbackv5-disabled-admin-admin' => 'Palautteen antaminen on poistettu lukijoiden ja muokkaajien käytöstä. He eivät voi lähettää uutta palautetta tästä sivusta.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Palautteen antaminen on poistettu lukijoiden käytöstä. He eivät voi antaa uutta palautetta tästä sivusta.',
@@ -9857,7 +9858,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Lisätietoja',
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Poista läpi-käyty-merkintä',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Lisää huomautus',
-	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Miksi haluat merkitä tämän viestin ei-ratkaistuksi?', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Miksi merkitsit tämän viestin ei-ratkaistuksi?',
 	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Lisää huomautus',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Lisätietoja',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Piilota',
@@ -27388,6 +27389,7 @@ $messages['sv'] = array(
 	'protect-level-aft-editor' => 'Aktivera endast för bekräftade användare',
 	'protect-level-aft-administrator' => 'Aktivera endast för administratörer',
 	'protect-level-aft-noone' => 'Inaktivera för alla användare',
+	'restriction-articlefeedbackv5' => 'Synlighet',
 	'articlefeedbackv5-disabled' => 'Feedback har inaktiverats',
 	'articlefeedbackv5-disabled-admin-admin' => 'Feedback har inaktiverats för läsare och redigerare. De kan inte lägga upp ny feedback på denna sida.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Feedback har inaktiverats för läsare. De kan inte lägga upp ny feedback på denna sida.',
