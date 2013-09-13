@@ -9582,6 +9582,8 @@ $messages['fi'] = array(
 	'protect-level-aft-editor' => 'Salli vain automaattisesti hyväksytyille käyttäjille',
 	'protect-level-aft-administrator' => 'Salli vain ylläpitäjille',
 	'protect-level-aft-noone' => 'Poista kaikkien käyttäjien käytöstä',
+	'articlefeedbackv5-protection-title' => '"[[$1]]" palautteen näkyvyyttä muutettu',
+	'restriction-articlefeedbackv5' => 'Näkyvyys',
 	'articlefeedbackv5-disabled' => 'Palautteen antaminen on poissa käytöstä',
 	'articlefeedbackv5-disabled-admin-admin' => 'Palautteen antaminen on poistettu lukijoiden ja muokkaajien käytöstä. He eivät voi lähettää uutta palautetta tästä sivusta.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Palautteen antaminen on poistettu lukijoiden käytöstä. He eivät voi antaa uutta palautetta tästä sivusta.',
@@ -9776,7 +9778,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-whats-this' => 'Ohje',
 	'articlefeedbackv5-settings-menu-title' => 'Asetukset',
 	'articlefeedbackv5-invalid-page-id' => 'Kelpaamaton sivun tunnistenumero',
-	'articlefeedbackv5-found-percent' => '$1 löysi etsimänsä', # Fuzzy
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 löysi etsimänsä}}',
 	'articlefeedbackv5' => 'Artikkelipalaute – Keskussivu',
 	'articlefeedbackv5watchlist' => 'Artikkelipalaute – Tarkkailemani sivut',
 	'articlefeedbackv5-desc' => 'Sivujen palaute',
@@ -9837,7 +9839,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-permalink-status-unoversight' => '{{GENDER:$1|$1 poistanut <strong>häivytyksen</strong>}} $2',
 	'articlefeedbackv5-permalink-status-inappropriate' => '{{GENDER:$1|<strong>Piilottanut</strong> $1}} $2 sitten',
 	'articlefeedbackv5-permalink-status-uninappropriate' => '{{GENDER:$1|<strong>Tuonut esiin</strong> $1}} $2 sitten',
-	'articlefeedbackv5-permalink-status-undo-helpful' => '{{GENDER:$1|$1 merkitsi <strong>ei-avuliaaksi</strong>}} $2 sitten', # Fuzzy
+	'articlefeedbackv5-permalink-status-undo-helpful' => '{{GENDER:$1|$1 merkitsi <strong>ei-avuliaaksi</strong>}} $2',
 	'articlefeedbackv5-permalink-last-action' => 'Viimeisin toiminta',
 	'articlefeedbackv5-permalink-activity-more' => 'Näytä lisää toimintoja...',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Näytä vähemmän toimintoja...',
@@ -10011,6 +10013,7 @@ $2
 Tarkistakaa tämä palauteviesti ja hyväksykää tai torjukaa häivytyspyyntö:
 
 $3
+$5
 
 Kiitos,
 
@@ -10020,7 +10023,7 @@ Ylläpito
 
 P.S.: Jos sinulla on kysyttävää artikkelipalautesivun häivytystoimintojen käytöstä, katso tämä häivyttäjän kysymys- ja vastaussivu:
 
-$4', # Fuzzy
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Poistetaanko työkalu?',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Siirry asetuksiin',
 	'abusefilter-edit-action-aftv5flagabuse' => 'Merkitse automaattisesti väärinkäytöksi',
