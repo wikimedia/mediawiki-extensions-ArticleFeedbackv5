@@ -2378,6 +2378,7 @@ $messages['an'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Asaifm
  * @author Ciphers
  * @author Meno25
  * @author Mido
@@ -2423,10 +2424,12 @@ $messages['ar'] = array(
 	'articlefeedbackv5-error-throttled' => 'تم رفض مشاركتك لأنك قد قمت بنشر عدد من التعليقات أكبر من الموصى به في قواعد ملاحظات ويكيبيديا. رجاء عدم نشر الكثير من التعليقات ضمن وقت قصير.',
 	'articlefeedbackv5-protection-level' => 'تعليقات المقالات',
 	'articlefeedbackv5-protection-level-error' => 'لا يمكن أن يكون مستوى حماية تعليقات المقالة أعلى من مستوى حماية التعديل',
-	'articlefeedbackv5-protection-permission-reader' => 'تمكين لكافة المستخدمين',
-	'articlefeedbackv5-protection-permission-member' => 'تمكين للمستخدمين المسجلي الدخول فقط',
-	'articlefeedbackv5-protection-permission-editor' => 'تمكين للمستخدمين المؤكدين تلقائيا فقط',
-	'articlefeedbackv5-protection-permission-administrator' => 'تمكين للمدراء فقط',
+	'protect-level-aft-reader' => 'تمكين لكافة المستخدمين', # Fuzzy
+	'protect-level-aft-member' => 'تمكين للمستخدمين المسجلي الدخول فقط', # Fuzzy
+	'protect-level-aft-editor' => 'تمكين للمستخدمين المؤكدين تلقائيا فقط', # Fuzzy
+	'protect-level-aft-administrator' => 'تمكين للمدراء فقط', # Fuzzy
+	'articlefeedbackv5-disabled' => 'تم تعطيل عملية التغذية الإسترجاعية (التعليقات)',
+	'articlefeedbackv5-disabled-admin-admin' => 'تم تعطيل عملية التغذية الإسترجاعية للقراء والمحررين. لا يمكن إضافة تعليقات جديدة على هذه الصفحة.',
 	'articlefeedbackv5-contribs-entry' => '$1. . $2 . . [[$3|تعليق:  $4]]$5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '.. الحالة: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'مفيدة',
@@ -2476,11 +2479,7 @@ $messages['ar'] = array(
 	'articlefeedbackv5-special-sort-helpful-asc' => 'غير مفيدة',
 	'articlefeedbackv5-special-sort-age-desc' => 'الأحدث',
 	'articlefeedbackv5-special-sort-age-asc' => 'الأقدم',
-	'articlefeedbackv5-special-sort-label-before' => 'الترتيب حسب:',
-	'articlefeedbackv5-special-filter-label-before' => 'عرض:',
-	'articlefeedbackv5-special-filter-select-more' => 'مرشحات أكثر',
-	'articlefeedbackv5-special-showing' => '{{PLURAL:$1|1 تعليق| $1 تعليقات}} حول هذه الصفحة', # Fuzzy
-	'articlefeedbackv5-special-central-showing' => '{{PLURAL:$1|$1 تعليق|$1 تعليقات}} من كل الصفحات', # Fuzzy
+	'articlefeedbackv5-special-filter-select-more' => 'مرشحات أكثر', # Fuzzy
 	'articlefeedbackv5-special-watchlist-showing' => 'تعليقات لصفحات مراقبة من قبل [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|تعليقات من الصفحات المراقبة]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|طالع التعليقات لجميع الصفحات]]',
@@ -2526,6 +2525,8 @@ $messages['ar'] = array(
 	'articlefeedbackv5-form-unoversight' => 'رجوع',
 	'articlefeedbackv5-form-decline' => 'رفض الأوفرسايت',
 	'articlefeedbackv5-form-declined' => 'رفض الإخفاء',
+	'articlefeedbackv5-discuss-talk-section-title' => 'تعليقات القارئ: $1',
+	'articlefeedbackv5-discuss-user-section-title' => 'تعليقك على "$2"',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 وجدت ما الذي كنت تبحث عنه.}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 لم يجد ما كان يبحث عنه.}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 وضع تعليقا.}}',
@@ -2552,12 +2553,11 @@ $messages['ar'] = array(
 	'articlefeedbackv5watchlist' => 'تعليقات المقالات - الصفحات المراقبة من قبلي',
 	'articlefeedbackv5-desc' => 'ملاحظات على المقالات',
 	'articlefeedbackv5-comment-more' => 'مزيد',
-	'articlefeedbackv5-header-message' => 'رجاء قيم التعليقات الجيدة، وساهم في تحسين هذه المقالة. $1', # Fuzzy
-	'articlefeedbackv5-header-message-link-text' => 'معرفة المزيد',
-	'articlefeedbackv5-beta-label' => 'بيتا',
+	'articlefeedbackv5-comment-empty' => 'لم يتم إدخال نص',
 	'articlefeedbackv5-unsupported-message' => 'معذرة، إن متصفحك غير مدعوم من قبل هذا النموذج. للاطلاع على هذه الصفحة، رجاء استخدم متصفحا آخرا.',
 	'articlefeedbackv5-page-disabled' => 'إن صفحة الملاحظات غير مفعلة لهذه المقالة.',
 	'articlefeedbackv5-no-feedback' => 'لم يوجد هناك أي تعليق للفلتر الذي قمت باختياره. من أجل تغيير فلترك، حاول أحد الخيارات الأخرى المتاحة أعلاه (مثال : "الأكثر علاقة" أو "جميع التعليقات").', # Fuzzy
+	'articlefeedbackv5-invalid-feedback' => 'التعليق الذي قمت بإختياره لا وجود له.',
 	'articlefeedbackv5-viewactivity' => 'عرض النشاط',
 	'articlefeedbackv5-mask-view-contents' => 'عرض المحتويات',
 	'articlefeedbackv5-mask-text-autohide' => '{{GENDER:$2|تم إخفاء هذا التعليق #$1 من قبل $2}} منذ $3.', # Fuzzy
@@ -2567,9 +2567,9 @@ $messages['ar'] = array(
 	'articlefeedbackv5-special-goback' => 'اطلع على صفحة التعليقات',
 	'articlefeedbackv5-special-central-goback' => 'تعليقات إضافية من الصفحات الأخرى',
 	'articlefeedbackv5-permalink-info-title' => 'معلومات حول هذا التعليق',
-	'articlefeedbackv5-permalink-written-by-editor' => 'مكتوب من قبل مستخدم مسجل <span>باستخدام صيغة التعليق $1</span>',
-	'articlefeedbackv5-permalink-written-by-reader' => 'مكتوب من قبل مستخدم مجهول <span>باستخدام صيغة التعليق $1</span>',
-	'articlefeedbackv5-permalink-info-revision-link' => 'عرض النسخة القديمة',
+	'articlefeedbackv5-permalink-written-by-editor' => 'مكتوب من قبل مستخدم مسجل <span>باستخدام صيغة التعليق $1</span>', # Fuzzy
+	'articlefeedbackv5-permalink-written-by-reader' => 'مكتوب من قبل مستخدم مجهول <span>باستخدام صيغة التعليق $1</span>', # Fuzzy
+	'articlefeedbackv5-permalink-info-revision-link' => 'عرض النسخة القديمة', # Fuzzy
 	'articlefeedbackv5-permalink-info-posted' => 'منشور في $1 على $2',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'الطول',
 	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 كلمة|$1 كلمات}}',
@@ -2607,12 +2607,12 @@ $messages['ar'] = array(
 	'articlefeedbackv5-noteflyover-unfeature-caption' => 'ألغ اختيار هذا التعليق', # Fuzzy
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'إضافة تعليق',
 	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'لماذا تلغي اختيار هذا التعليق؟', # Fuzzy
-	'articlefeedbackv5-noteflyover-unfeature-submit' => 'ألغ اختيار هذا التعليق', # Fuzzy
+	'articlefeedbackv5-noteflyover-unfeature-submit' => 'أضف ملاحظة',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'معرفة المزيد',
-	'articlefeedbackv5-noteflyover-resolve-caption' => 'علم كمحلولة', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-caption' => 'علم كمحلولة',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'إضافة تعليق',
 	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'لماذا تعلم عليها كمحلولة؟', # Fuzzy
-	'articlefeedbackv5-noteflyover-resolve-submit' => 'علم كمحلولة', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-submit' => 'أضف ملاحظة',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'معرفة المزيد',
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'ألغ علامة محلولة', # Fuzzy
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'إضافة تعليق',
@@ -2625,6 +2625,14 @@ $messages['ar'] = array(
 	'articlefeedbackv5-noteflyover-hide-submit' => 'إخفاء هذا التعليق', # Fuzzy
 	'articlefeedbackv5-noteflyover-hide-help' => 'معرفة المزيد',
 	'articlefeedbackv5-noteflyover-unhide-label' => 'إضافة تعليق',
+	'articlefeedbackv5-noteflyover-unnoaction-help' => 'تعرف على المزيد',
+	'articlefeedbackv5-noteflyover-inappropriate-caption' => 'علم كغير لائق',
+	'articlefeedbackv5-noteflyover-inappropriate-label' => 'أضف ملاحظة',
+	'articlefeedbackv5-noteflyover-inappropriate-placeholder' => 'لماذا علمت هذه التعليق كغير لائق؟',
+	'articlefeedbackv5-noteflyover-inappropriate-help' => 'معرفة المزيد',
+	'articlefeedbackv5-noteflyover-uninappropriate-caption' => 'تم إزالة علامة غير لائق',
+	'articlefeedbackv5-noteflyover-archive-placeholder' => 'لماذا قمت بأرشفة هذا التعليق؟',
+	'articlefeedbackv5-noteflyover-unarchive-caption' => 'غير مؤرشف',
 	'articlefeedbackv5-noteflyover-request-caption' => 'اطلب أوفرسايت',
 	'articlefeedbackv5-noteflyover-request-description' => 'قبل طلب الإخفاء، الرجاء التحقق من أن هذا التعليق
  يتضمن واحدة من هذه القضايا:
@@ -2729,7 +2737,7 @@ $messages['ar'] = array(
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|أزيلت علامة غير مفيد}} من على [[$3|التعليق رقم $4]] في [[$5]]',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|أزيلت جميع العلامات}} من على [[$3|التعليق رقم $4]] في [[$5]]',
 	'articlefeedbackv5-activity-pane-header' => 'سجل النشاط',
-	'articlefeedbackv5-activity-feedback-info' => 'تعليق رقم $1 من قبل $2',
+	'articlefeedbackv5-activity-feedback-info' => 'تعليق رقم $1 من قبل $2', # Fuzzy
 	'articlefeedbackv5-activity-feedback-date' => 'نشر على $1',
 	'articlefeedbackv5-activity-permalink' => 'وصلة دائمة',
 	'articlefeedbackv5-activity-item-request' => '$1 تم طلب الإخفاء في $4 على $5 $2',
@@ -2775,9 +2783,6 @@ $3
 
 $4', # Fuzzy
 	'articlefeedbackv5-disable-flyover-title' => 'أأزيل هذا الوسم؟',
-	'articlefeedbackv5-disable-flyover-help' => 'لإزالة $1, الرجاء الذهاب إلى $2 والتحقق من $3',
-	'articlefeedbackv5-disable-flyover-help-emphasis-text' => 'تعليقات المقالات',
-	'articlefeedbackv5-disable-flyover-help-location' => 'تفضيلاتي > المظهر',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'اذهب إلى تفضيلاتي',
 	'abusefilter-edit-action-aftv5flagabuse' => '(تعليقات المقالات) علم تلقائيا كإساءة',
 	'abusefilter-edit-action-aftv5hide' => '(تعليقات المقالات) إخفاء تلقائي',
@@ -5027,6 +5032,7 @@ $messages['ca'] = array(
 	'articlefeedbackv5-contribs-status-action-feature' => 'Útil',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Resolt',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Ocult',
+	'articlefeedbackv5-contribs-status-action-archive' => 'Arxivat',
 	'articlefeedbackv5-contribs-status-action-hide' => 'Amaga',
 	'articlefeedbackv5-contribs-status-action-request' => 'Supervisió sol·licitada',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Supervisat',
@@ -21274,6 +21280,7 @@ $messages['ne'] = array(
  * @author SPQRobin
  * @author Saruman
  * @author Siebrand
+ * @author Southparkfan
  * @author Tjcool007
  */
 $messages['nl'] = array(
@@ -21323,6 +21330,8 @@ Probeer het later opnieuw.',
 	'protect-level-aft-editor' => 'Alleen voor bevestigde gebruikers inschakelen',
 	'protect-level-aft-administrator' => 'Alleen voor beheerders inschakelen',
 	'protect-level-aft-noone' => 'Uitschakelen voor alle gebruikers',
+	'articlefeedbackv5-protection-title' => 'Heeft de zichtbaarheid gewijzigd van de artikel terugkoppeling-functie op "[[$1]]"',
+	'restriction-articlefeedbackv5' => 'Zichtbaarheid',
 	'articlefeedbackv5-disabled' => 'Terugkoppeling is uitgeschakeld',
 	'articlefeedbackv5-disabled-admin-admin' => 'Terugkoppeling is uitgeschakeld voor lezers en bewerkers. Ze kunnen geen nieuwe terugkoppeling toevoegen aan deze pagina.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Terugkoppeling is uitgeschakeld voor lezers. Ze kunnen geen nieuwe terugkoppeling toevoegen aan deze pagina.',
@@ -21796,6 +21805,7 @@ We waarderen je bijdrage aan deze pagina!
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|heeft}} de nuttigmarkering verwijderd voor [[$3|terugkoppelingsbericht #$4]] op [[$5]]',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|heeft}} de niet nuttigmarkering verwijderd voor [[$3|terugkoppelingsbericht #$4]] op [[$5]]',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|heeft}} alle markering verwijderd voor [[$3|terugkoppelingsbericht #$4]] op [[$5]]',
+	'logentry-articlefeedbackv5-protect' => '$1 heeft de zichtbaarheid gewijzigd van de artikel terugkoppeling-functie op "$3" $4',
 	'articlefeedbackv5-activity-pane-header' => 'Activiteitenlogboek',
 	'articlefeedbackv5-activity-feedback-info' => 'Terugkoppeling door $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Geplaatst op $1',
@@ -25740,6 +25750,7 @@ $1",
  * @author Kaganer
  * @author Lunacy1911
  * @author MaxSem
+ * @author Okras
  * @author Ole Yves
  * @author Putnik
  * @author Александр Сигачёв
@@ -25785,11 +25796,12 @@ $messages['ru'] = array(
 	'articlefeedbackv5-error-throttled' => 'Ваше сообщение было отклонено, так как вы недавно отправили их больше, чем рекомендовано правилами составления отзывов проекта «{{SITENAME}}». Пожалуйста, не отправляйте чересчур много сообщений и не делайте этого слишком часто.',
 	'articlefeedbackv5-protection-level' => 'Обратная связь для статей',
 	'articlefeedbackv5-protection-level-error' => 'Уровень защиты обратной для связи для статьи не может быть выше, чем её уровень защиты от редактирования',
-	'protect-level-aft-reader' => 'Включить для всех участников', # Fuzzy
+	'protect-level-aft-reader' => 'Включить для всех участников',
 	'protect-level-aft-member' => 'Включить только для зарегистрированных участников', # Fuzzy
 	'protect-level-aft-editor' => 'Включить только для автоподтверждённых участников', # Fuzzy
 	'protect-level-aft-administrator' => 'Включить только для администраторов', # Fuzzy
-	'protect-level-aft-noone' => 'Отключить для всех пользователей', # Fuzzy
+	'protect-level-aft-noone' => 'Отключить для всех пользователей',
+	'restriction-articlefeedbackv5' => 'Видимость',
 	'articlefeedbackv5-disabled-admin-button-text' => 'Изменить защиту',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Обратная связь: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Статус: $1',
@@ -25954,7 +25966,7 @@ $6
 	'articlefeedbackv5-special-goback' => 'Смотреть страницу отзывов',
 	'articlefeedbackv5-special-central-goback' => 'Отзывы на другие страницы',
 	'articlefeedbackv5-permalink-info-title' => 'Информация об этом отзыве',
-	'articlefeedbackv5-permalink-written-by-editor' => 'Написан зарегистрированным участником <span>с помощью формы обратной связи $1</span>', # Fuzzy
+	'articlefeedbackv5-permalink-written-by-editor' => 'Написан зарегистрированным участником',
 	'articlefeedbackv5-permalink-written-by-reader' => 'Написан анонимным участником',
 	'articlefeedbackv5-permalink-info-revision-link' => 'См. старую версию этой страницы',
 	'articlefeedbackv5-permalink-info-posted' => 'Размещено $1  в $2',
@@ -25984,6 +25996,7 @@ $6
 	'articlefeedbackv5-permalink-status-undo-helpful' => '<strong>Убран из списка полезных</strong> {{GENDER:$1|участником $1|участницей $1}} $2 назад', # Fuzzy
 	'articlefeedbackv5-permalink-status-unhelpful' => '<strong>Помечен как бесполезный</strong> {{GENDER:$1|участником $1|участницей $1}} $2 назад', # Fuzzy
 	'articlefeedbackv5-permalink-status-undo-unhelpful' => '<strong>Убран из списка бесполезных</strong> {{GENDER:$1|участником $1|участницей $1}} $2 назад', # Fuzzy
+	'articlefeedbackv5-permalink-last-action' => 'Последнее действие',
 	'articlefeedbackv5-permalink-activity-more' => 'Видеть больше действий...',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Видеть меньше действий...',
 	'articlefeedbackv5-noteflyover-feature-caption' => 'Добавить в список избранных', # Fuzzy
@@ -26013,6 +26026,7 @@ $6
 	'articlefeedbackv5-noteflyover-hide-help' => 'Узнать больше',
 	'articlefeedbackv5-noteflyover-unhide-label' => 'Добавить примечание',
 	'articlefeedbackv5-noteflyover-noaction-submit' => 'Добавить комментарий',
+	'articlefeedbackv5-noteflyover-unarchive-help' => 'Узнать больше',
 	'articlefeedbackv5-noteflyover-request-caption' => 'Запросить надзор',
 	'articlefeedbackv5-noteflyover-request-description' => 'Перед тем, как запросить надзор, проверьте, пожалуйста, что это сообщение
 содержит одну из этих вещей:
@@ -26036,7 +26050,7 @@ $6
 	'articlefeedbackv5-noteflyover-oversight-help' => 'Узнать больше',
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Убран надзор за этим отзывом',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Добавить примечание',
-	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Почему Вы убрали надзор за этой публикацией?', # Fuzzy
+	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Почему Вы убрали надзор за этой публикацией?',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Убрать надзор за этой публикацией', # Fuzzy
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Узнать больше',
 	'articlefeedbackv5-noteflyover-decline-caption' => 'Отклонить надзор', # Fuzzy
@@ -26049,7 +26063,7 @@ $6
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'Нет',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Да, мне удалось найти то, что я искал.',
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'Нет, мне не удалось найти то, что я искал.',
-	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'Как можно эту статью улучшить?', # Fuzzy
+	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'Как можно улучшить эту страницу?',
 	'articlefeedbackv5-bucket1-question-placeholder-no' => 'Есть ли у вас предложения по улучшению?',
 	'articlefeedbackv5-bucket1-form-submit' => 'Отправить отзыв',
 	'articlefeedbackv5-bucket4-title' => 'Помогите в улучшении этой страницы',
@@ -26117,7 +26131,7 @@ $6
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 снял{{GENDER:$2||а}} отметку о неполезности с [[$3|отзыва № $4]] на [[$5]]',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 снял{{GENDER:$2||а}} все отметки с [[$3|отзыва № $4]] на [[$5]]',
 	'articlefeedbackv5-activity-pane-header' => 'Журнал изменений',
-	'articlefeedbackv5-activity-feedback-info' => 'Отзыв о статье #$1 от $2', # Fuzzy
+	'articlefeedbackv5-activity-feedback-info' => 'Отзыв от $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Опубликовано в $1',
 	'articlefeedbackv5-activity-permalink' => 'Постоянная ссылка',
 	'articlefeedbackv5-activity-item-request' => '$1 запрошено скрытие отзыва в $4 $5 $2',
