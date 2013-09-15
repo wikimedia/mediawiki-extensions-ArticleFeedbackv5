@@ -276,11 +276,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				Linker::link(
 					$this->title,
 					$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
-				) .
+				) . ' ' .
 				Linker::link(
 					$this->title->getTalkPage(),
 					$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
-				) .
+				) . ' ' .
 				Html::element(
 					'a',
 					array(
