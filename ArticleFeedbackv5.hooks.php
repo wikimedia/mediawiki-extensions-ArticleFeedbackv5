@@ -931,4 +931,13 @@ class ArticleFeedbackv5Hooks {
 
 		return true;
 	}
+
+	/**
+	 * @param array $names
+	 * @return bool
+	 */
+	public function onUserGetReservedNames( &$names ) {
+		$names[] = 'msg:articlefeedbackv5-default-user';
+		return true;
+	}
 }

@@ -442,6 +442,7 @@ $wgHooks['ProtectionForm::buildForm'][] = 'ArticleFeedbackv5Hooks::onProtectionF
 $wgHooks['ProtectionForm::save'][] = 'ArticleFeedbackv5Hooks::onProtectionSave';
 $wgHooks['ProtectionForm::showLogExtract'][] = 'ArticleFeedbackv5Hooks::onShowLogExtract';
 $wgHooks['UserLoginComplete'][] = 'ArticleFeedbackv5Hooks::userLoginComplete';
+$wgHooks['UserGetReservedNames'][] = 'ArticleFeedbackv5Hooks::onUserGetReservedNames';
 
 // API Registration
 $wgAPIListModules['articlefeedbackv5-view-feedback'] = 'ApiViewFeedbackArticleFeedbackv5';
