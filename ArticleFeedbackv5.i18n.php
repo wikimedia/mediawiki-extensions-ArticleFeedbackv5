@@ -12128,6 +12128,7 @@ $messages['gu'] = array(
 /** Hebrew (עברית)
  * @author Amire80
  * @author Deror avi
+ * @author Guycn1
  * @author Inkbug
  * @author Nahum
  * @author Neukoln
@@ -12317,7 +12318,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-form-declined' => 'בקשת ההסתרה נדחתה',
 	'articlefeedbackv5-form-discuss-talk' => 'דיון בדף השיחה',
 	'articlefeedbackv5-form-discuss-user' => 'צור קשר עם מחבר פוסט',
-	'articlefeedbackv5-form-discuss-talk-exists' => 'ראה דיון בדף השיחה',
+	'articlefeedbackv5-form-discuss-talk-exists' => 'ראו דיון בדף השיחה',
 	'articlefeedbackv5-form-discuss-user-exists' => 'לראות הודעה דף שיחת משתמש',
 	'articlefeedbackv5-form-tooltip-feature' => 'זה יכול לעזור לשפר את הדף',
 	'articlefeedbackv5-form-tooltip-noaction' => 'לא ברור, לא רלוונטי, כפול...',
@@ -12361,6 +12362,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-no-feedback' => "אין משוב עבור המסנן שבחרת. כדי להחליף את המסנן, נסה אחת מהאפשרויות לעיל (למשל, 'מומלץ' או 'לא נסקר').",
 	'articlefeedbackv5-viewactivity' => 'צפייה בפעילות',
 	'articlefeedbackv5-mask-view-contents' => 'הצגת התוכן',
+	'articlefeedbackv5-mask-text-inappropriate' => '$2 {{GENDER:$2|סימו|סימנה}} את הרשומה הזאת בתור בלתי הולמת $3', # Fuzzy
 	'articlefeedbackv5-mask-text-autohide' => "רשומה מס' $1 הוסתרה אוטומטית על־ידי $2 $3.",
 	'articlefeedbackv5-mask-text-hide' => "רשומה מס' $1 הוסתרה על־ידי $2 $3.",
 	'articlefeedbackv5-mask-text-oversight' => 'רשומה #$1 הוסתרה לאחר בקרה על־ידי $2 $3.',
