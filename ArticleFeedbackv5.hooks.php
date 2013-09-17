@@ -931,4 +931,13 @@ class ArticleFeedbackv5Hooks {
 
 		return true;
 	}
+
+	/**
+	 * @param array $names
+	 * @return bool
+	 */
+	public function onUserGetReservedNames( &$names ) {
+		$names[] = 'Article_Feedback_V5 ';
+		return true;
+	}
 }
