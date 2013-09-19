@@ -4131,17 +4131,22 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Благодарности!',
+	'articlefeedbackv5-cta1-edit-linktext' => 'Редактиране на страницата',
+	'articlefeedbackv5-cta2-confirmation-title' => 'Помогнете за подобряване на {{SITENAME}}',
 	'articlefeedbackv5-cta2-button-text' => 'Научете повече',
+	'articlefeedbackv5-cta4-button-text-signup' => 'Създаване на сметка',
+	'articlefeedbackv5-cta4-button-text-login' => 'Влизане',
+	'articlefeedbackv5-cta4-button-text-or' => 'или',
 	'articlefeedbackv5-overlay-close' => 'Затваряне',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Да',
 	'articlefeedbackv5-form-helpful-no-label' => 'Не',
 	'articlefeedbackv5-special-filter-all' => 'Всички ($1)', # Fuzzy
+	'articlefeedbackv5-special-filter-allcomment-watchlist' => 'Всички коментари',
 	'articleFeedbackv5-details-link' => 'Подробности',
 	'articlefeedbackv5-new-marker' => 'Нов',
 	'articlefeedbackv5-discussion-page' => 'Обсъждане',
 	'articlefeedbackv5-whats-this' => 'Помощ',
 	'articlefeedbackv5-comment-more' => 'Повече',
-	'articlefeedbackv5-header-message-link-text' => 'Научете повече',
 	'articlefeedbackv5-noteflyover-feature-help' => 'Научете повече',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'Научете повече',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Научете повече',
@@ -19979,6 +19984,7 @@ $6
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
  * @author Aviator
+ * @author Tedbundyjr
  */
 $messages['ms'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Terima kasih!',
@@ -20020,11 +20026,12 @@ $messages['ms'] = array(
 	'articlefeedbackv5-error-throttled' => 'Catatan anda telah ditolak kerana anda baru-baru ini telah menghantar lebih banyak maklum balas daripada yang disarankan mengikut garis panduan maklum balas {{SITENAME}}. Tolong jangan hantar maklum balas secara berulang-ulang atau berlebihan.',
 	'articlefeedbackv5-protection-level' => 'Maklum balas rencana',
 	'articlefeedbackv5-protection-level-error' => 'Tahap perlindungan Maklum balas rencana tidak boleh melebihi tahap perlindungan Sunting',
-	'articlefeedbackv5-protection-permission-reader' => 'Bolehkan untuk semua pengguna',
-	'articlefeedbackv5-protection-permission-member' => 'Bolehkan untuk pengguna yang log masuk sahaja',
-	'articlefeedbackv5-protection-permission-editor' => 'Bolehkan untuk pengguna yang diautosahkan sahaja',
-	'articlefeedbackv5-protection-permission-administrator' => 'Bolehkan untuk pentadbir sahaja',
-	'articlefeedbackv5-protection-permission-noone' => 'Matikan untuk semua pengguna',
+	'protect-level-aft-reader' => 'Bolehkan untuk semua pengguna', # Fuzzy
+	'protect-level-aft-member' => 'Bolehkan untuk pengguna yang log masuk sahaja', # Fuzzy
+	'protect-level-aft-editor' => 'Bolehkan untuk pengguna yang diautosahkan sahaja', # Fuzzy
+	'protect-level-aft-administrator' => 'Bolehkan untuk pentadbir sahaja', # Fuzzy
+	'protect-level-aft-noone' => 'Matikan untuk semua pengguna', # Fuzzy
+	'restriction-articlefeedbackv5' => 'Keterlihatan',
 	'articlefeedbackv5-disabled' => 'Maklum balas telah dimatikan',
 	'articlefeedbackv5-disabled-admin-admin' => 'Maklum balas telah dimatikan untuk pembaca dan penyunting. Mereka tidak boleh mengepos maklum balas baru pada halaman ini.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Maklum balas telah dimatikan untuk pembaca. Mereka tidak boleh mengepos maklum balas baru pada halaman ini.',
@@ -21275,6 +21282,7 @@ $messages['ne'] = array(
  * @author AvatarTeam
  * @author B4bol4t
  * @author Catrope
+ * @author Hamaryns
  * @author HanV
  * @author Kippenvlees1
  * @author Konovalov
@@ -21332,7 +21340,7 @@ Probeer het later opnieuw.',
 	'protect-level-aft-editor' => 'Alleen voor bevestigde gebruikers inschakelen',
 	'protect-level-aft-administrator' => 'Alleen voor beheerders inschakelen',
 	'protect-level-aft-noone' => 'Uitschakelen voor alle gebruikers',
-	'articlefeedbackv5-protection-title' => 'Heeft de zichtbaarheid gewijzigd van de artikel terugkoppeling-functie op "[[$1]]"',
+	'articlefeedbackv5-protection-title' => 'Heeft de zichtbaarheid gewijzigd van de artikelterugkoppeling-functie op “[[$1]]”',
 	'restriction-articlefeedbackv5' => 'Zichtbaarheid',
 	'articlefeedbackv5-disabled' => 'Terugkoppeling is uitgeschakeld',
 	'articlefeedbackv5-disabled-admin-admin' => 'Terugkoppeling is uitgeschakeld voor lezers en bewerkers. Ze kunnen geen nieuwe terugkoppeling toevoegen aan deze pagina.',
@@ -25913,10 +25921,12 @@ $messages['ru'] = array(
 	'articlefeedbackv5-form-helpful' => 'Пометить как полезную ($1)',
 	'articlefeedbackv5-form-oversight' => 'Надзор',
 	'articlefeedbackv5-form-unoversight' => 'Отменить',
+	'articlefeedbackv5-form-request' => 'Запросить надзор',
 	'articlefeedbackv5-form-decline' => 'Отклонить надзор',
 	'articlefeedbackv5-form-declined' => 'Скрытие отклонено',
 	'articlefeedbackv5-form-discuss-talk' => 'Обсудить на странице обсуждения',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Показать',
+	'articlefeedbackv5-form-tooltip-unoversight' => 'Отменить надзор',
 	'articlefeedbackv5-discuss-user-section-content' => 'Спасибо за ваш отзыв на страницу «$7».
 
 Вы разместили этот комментарий $3 ([[$5|просмотреть все отзывы]]).
@@ -26002,25 +26012,25 @@ $6
 	'articlefeedbackv5-permalink-last-action' => 'Последнее действие',
 	'articlefeedbackv5-permalink-activity-more' => 'Видеть больше действий...',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Видеть меньше действий...',
-	'articlefeedbackv5-noteflyover-feature-caption' => 'Добавить в список избранных', # Fuzzy
+	'articlefeedbackv5-noteflyover-feature-caption' => 'Помечен как полезный',
 	'articlefeedbackv5-noteflyover-feature-label' => 'Добавить примечание',
-	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Почему вы добавили этот отзыв в список избранных?', # Fuzzy
+	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Почему вы отметили этот отзыв как полезный?',
 	'articlefeedbackv5-noteflyover-feature-submit' => 'Добавить заметку',
 	'articlefeedbackv5-noteflyover-feature-help' => 'Узнать больше',
 	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Убрать из списка полезных',
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Добавить примечание',
-	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Почему вы убрали этот отзыв из списка избранных?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Убрать из списка избранных', # Fuzzy
+	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Почему вы убрали этот отзыв из списка полезных?',
+	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Добавить заметку',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'Узнать больше',
-	'articlefeedbackv5-noteflyover-resolve-caption' => 'Пометить как урегулированный', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-caption' => 'Помечен как урегулированный',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Добавить примечание',
-	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Почему вы пометили этот отзыв как урегулированный?', # Fuzzy
-	'articlefeedbackv5-noteflyover-resolve-submit' => 'Пометить как урегулированный', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Почему вы пометили этот отзыв как урегулированный?',
+	'articlefeedbackv5-noteflyover-resolve-submit' => 'Добавить заметку',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Узнать больше',
-	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Снять пометку урегулированного', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Пометка урегулированного снята',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Добавить примечание',
-	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Почему вы сняли с этого отзыва пометку урегулированного?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Снять пометку урегулированного', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Почему вы сняли с этого отзыва пометку урегулированного?',
+	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Добавить заметку',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Узнать больше',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Скрыть',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Добавить примечание',
@@ -26061,7 +26071,7 @@ $6
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Убран надзор за этим отзывом',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Добавить примечание',
 	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Почему Вы убрали надзор за этой публикацией?',
-	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Убрать надзор за этой публикацией', # Fuzzy
+	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Добавить заметку',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Узнать больше',
 	'articlefeedbackv5-noteflyover-decline-caption' => 'Отклонённый надзор',
 	'articlefeedbackv5-noteflyover-decline-label' => 'Добавить примечание',
@@ -26095,9 +26105,9 @@ $6
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'Нет, мне не удалось найти то, что я искал.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(остался 1 символ)|(осталось $1 символа)|(осталось $1 символов)}}',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Прекрасно. Может быть, есть какие-то предложения по улучшению?',
-	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Напишите здесь своё предложение (например: «В этой статье не хватает иллюстраций»)', # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Напишите здесь своё предложение (например: «На этой странице не хватает иллюстраций»)',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Сожалеем об этом. Есть ли предложения по улучшению?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Напишите здесь своё предложение (например: «В этой статье не хватает иллюстраций»)', # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Напишите здесь своё предложение (например: «На этой странице не хватает иллюстраций»)',
 	'articlefeedbackv5-bucket6-form-submit' => 'Разместить свой отзыв',
 	'articlefeedbackv5-bucket6-backlink-text' => 'Вернуться к шагу 1',
 	'articlefeedbackv5-help-tooltip-title' => 'Что это?',
@@ -26119,7 +26129,7 @@ $6
 	'right-aft-administrator' => 'Просмотр AFT на защищённых страницах',
 	'right-aft-oversighter' => 'Контроль за отзывами',
 	'log-name-articlefeedbackv5' => 'Журнал действий с отзывами на статьи',
-	'log-description-articlefeedbackv5' => 'Это журнал действий, выполненных над отзывами на статьи, собираемыми при помощи механизма обратной связи.', # Fuzzy
+	'log-description-articlefeedbackv5' => 'Это журнал действий, выполненных над отзывами на статьи, добавленными пользователями при помощи механизма обратной связи.',
 	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|установил|установила}} статус [[$3|отзыва №$4]] на [[$5]] в «скрытый»',
 	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|снял|сняла}} статус сокрытия [[$3|отзыва №$4]] на [[$5]]',
 	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|отклонил|отклонила}} запрос на удаление [[$3|отзыва №$4]] на [[$5]]',
