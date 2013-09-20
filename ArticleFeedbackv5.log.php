@@ -41,7 +41,6 @@ class ArticleFeedbackv5Log {
 			wfProfileOut( __METHOD__ );
 			return null;
 		}
-		$target = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() . "/$itemId" );
 
 		// if no doer specified, use default AFT user
 		if ( !( $doer instanceof User ) ) {
@@ -61,7 +60,7 @@ class ArticleFeedbackv5Log {
 
 		// insert logging entry
 		$logEntry = new ManualLogEntry( $logType, $type );
-		$logEntry->setTarget( $target );
+		$logEntry->setTarget( $pageTitle );
 		$logEntry->setPerformer( $doer );
 		$logEntry->setParameters( $params );
 		$logEntry->setComment( $note );
@@ -100,7 +99,6 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 		global $wgLang, $wgContLang;
 
 		$action          = $this->entry->getSubtype();
-		$target          = $this->entry->getTarget();
 		$skin            = $this->plaintext ? null : $this->context->getSkin();
 		$parameters      = $this->entry->getParameters();
 
@@ -130,7 +128,7 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 			->params( array(
 				Message::rawParam( $this->getPerformerElement() ),
 				$this->entry->getPerformer()->getId(),
-				$target,
+				SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $parameters['feedbackId'] ),
 				ArticleFeedbackv5Utils::formatId( $parameters['feedbackId'] ),
 				$page
 			) )
