@@ -5029,6 +5029,9 @@ $messages['ca'] = array(
 	'protect-level-aft-member' => 'Activa-ho només per als usuaris que han iniciat la sessió',
 	'protect-level-aft-editor' => 'Activa-ho només per als usuaris autoconfirmats',
 	'protect-level-aft-administrator' => 'Activa-ho només per als administradors',
+	'protect-level-aft-noone' => 'Inhabilita per a tots els usuaris',
+	'restriction-articlefeedbackv5' => 'Visibilitat',
+	'articlefeedbackv5-disabled-admin-button-text' => 'Canvia la protecció',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Resposta: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '
 . . Estat: $1',
@@ -5036,12 +5039,14 @@ $messages['ca'] = array(
 	'articlefeedbackv5-contribs-status-action-flag' => 'Marcat',
 	'articlefeedbackv5-contribs-status-action-feature' => 'Útil',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Resolt',
+	'articlefeedbackv5-contribs-status-action-noaction' => 'No cal cap acció',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Ocult',
 	'articlefeedbackv5-contribs-status-action-archive' => 'Arxivat',
 	'articlefeedbackv5-contribs-status-action-hide' => 'Amaga',
 	'articlefeedbackv5-contribs-status-action-request' => 'Supervisió sol·licitada',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Supervisat',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'comentari ocult',
+	'articlefeedbackv5-form-toolbox-label' => 'Marca com:',
 	'articlefeedbackv5-form-helpful-label' => 'És útil aquest comentari?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Sí',
 	'articlefeedbackv5-form-helpful-no-label' => 'No',
@@ -5054,6 +5059,8 @@ $messages['ca'] = array(
 	'articlefeedbackv5-special-filter-flagged' => 'Marcat ($1)',
 	'articlefeedbackv5-special-filter-useful' => 'Útil ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'Resolts ($1)',
+	'articlefeedbackv5-special-filter-archived' => 'Arxivat ($1)',
+	'articlefeedbackv5-special-filter-allcomment' => 'Tots els comentaris ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'Ocults ($1)',
 	'articlefeedbackv5-special-filter-requested' => 'Supervisió sol·licitada ($1)',
 	'articlefeedbackv5-special-filter-declined' => 'Supervisió refusada ($1)',
@@ -5075,7 +5082,9 @@ $messages['ca'] = array(
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Inútil',
 	'articlefeedbackv5-special-sort-age-desc' => 'Els més nous',
 	'articlefeedbackv5-special-sort-age-asc' => 'Els més antics',
+	'articlefeedbackv5-special-sort-label' => 'Ordena per:',
 	'articlefeedbackv5-special-filter-select-more' => 'Més',
+	'articlefeedbackv5-special-count-total' => '{{PLURAL:$2|1 entrada|$1 entrades}}',
 	'articlefeedbackv5-special-watchlist-showing' => 'Resposta per a les pàgines vigilades per [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Resposta de les meves pàgines vigilades]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Mostra respostes de totes les pàgines]]',
@@ -25807,7 +25816,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-protection-level' => 'Обратная связь для статей',
 	'articlefeedbackv5-protection-level-error' => 'Уровень защиты обратной для связи для статьи не может быть выше, чем её уровень защиты от редактирования',
 	'protect-level-aft-reader' => 'Включить для всех участников',
-	'protect-level-aft-member' => 'Включить только для зарегистрированных участников', # Fuzzy
+	'protect-level-aft-member' => 'Включить только для зарегистрированных участников',
 	'protect-level-aft-editor' => 'Включить только для автоподтверждённых участников',
 	'protect-level-aft-administrator' => 'Включить только для администраторов',
 	'protect-level-aft-noone' => 'Отключить для всех пользователей',
@@ -26000,7 +26009,7 @@ $6
 	'articlefeedbackv5-permalink-status-unoversight' => '<strong>Показано</strong> {{GENDER:$1|участником $1|участницей $1}} $2',
 	'articlefeedbackv5-permalink-status-autoflag' => '<strong>Автоматически помечен</strong> {{GENDER:$1|участником $1|участницей $1}} $2',
 	'articlefeedbackv5-permalink-status-feature' => '<strong>Избран</strong> {{GENDER:$1|участником $1|участницей $1}} $2',
-	'articlefeedbackv5-permalink-status-unfeature' => '<strong>Убран из избранного</strong> {{GENDER:$1|участником $1|участницей $1}} $2 назад', # Fuzzy
+	'articlefeedbackv5-permalink-status-unfeature' => '<strong>Убран из полезного</strong> {{GENDER:$1|участником $1|участницей $1}} $2',
 	'articlefeedbackv5-permalink-status-resolve' => '<strong>Помечен решённым</strong> {{GENDER:$1|участником $1|участницей $1}} $2',
 	'articlefeedbackv5-permalink-status-unresolve' => '<strong>Помечен нерешённым</strong> {{GENDER:$1|участником $1|участницей $1}} $2',
 	'articlefeedbackv5-permalink-status-inappropriate' => '<strong>Скрыто</strong> {{GENDER:$1|участником $1|участницей $1}} $2 назад',
@@ -26138,13 +26147,13 @@ $6
 	'logentry-articlefeedbackv5-flag' => '$1 {{GENDER:$2|отметил|отметила}} как нарушение [[$3|отзыв №$4]] на [[$5]]',
 	'logentry-articlefeedbackv5-unflag' => '$1 {{GENDER:$2|снял|сняла}} отметку о нарушении в [[$3|отзыве №$4]] на [[$5]]',
 	'logentry-articlefeedbackv5-autoflag' => '$1 автоматически {{GENDER:$2|отметил|отметила}} как нарушение [[$3|отзыв №$4]] на [[$5]]',
-	'logentry-articlefeedbackv5-feature' => '$1 поместил{{GENDER:$2||а}} в избранное [[$3|отзыв № $4]] на [[$5]]', # Fuzzy
-	'logentry-articlefeedbackv5-unfeature' => '$1 убрал{{GENDER:$2||а}} из избранного [[$3|отзыв № $4]] на [[$5]]', # Fuzzy
+	'logentry-articlefeedbackv5-feature' => '$1 пометил {{GENDER:$2||а}} как полезный [[$3|отзыв № $4]] на [[$5]]',
+	'logentry-articlefeedbackv5-unfeature' => '$1 снял{{GENDER:$2||а}} пометку как полезного у [[$3|отзыва № $4]] на [[$5]]',
 	'logentry-articlefeedbackv5-resolve' => '$1 отметил{{GENDER:$2||а}} как решённый [[$3|отзыв № $4]] на [[$5]]',
 	'logentry-articlefeedbackv5-unresolve' => '$1 снял{{GENDER:$2||а}} отметку о решённости с [[$3|отзыва № $4]] на [[$5]]',
 	'logentry-articlefeedbackv5-inappropriate' => '$1 {{GENDER:$2|скрыл|скрыла}} [[$3|отзыв №$4]] на [[$5]]',
 	'logentry-articlefeedbackv5-uninappropriate' => '$1 снял{{GENDER:$2||а}} отметку о нарушении с [[$3|отзыва № $4]] на [[$5]]',
-	'logentry-articlefeedbackv5-autohide' => '$1 автоматически {{GENDER:$2|скрыл|скрыла}} [[$3|отзыв №$4]] на [[$5]]', # Fuzzy
+	'logentry-articlefeedbackv5-autohide' => '$1 автоматически {{GENDER:$2|скрыл|скрыла}} [[$3|отзыв №$4]] на [[$5]]',
 	'logentry-articlefeedbackv5-helpful' => '$1 отметил{{GENDER:$2||а}} как полезный [[$3|отзыв № $4]] на [[$5]]',
 	'logentry-articlefeedbackv5-unhelpful' => '$1 отметил{{GENDER:$2||а}} как неполезный [[$3|отзыв № $4]] на [[$5]]',
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 снял{{GENDER:$2||а}} отметку о полезности с [[$3|отзыва № $4]] на [[$5]]',
@@ -26161,8 +26170,8 @@ $6
 	'articlefeedbackv5-activity-item-unflag' => '$1 снял{{GENDER:$1||а}} флаг с данного сообщения в $4 $5 $2',
 	'articlefeedbackv5-activity-item-oversight' => '$1 скрыл{{GENDER:$1||а}} данное сообщение в $4 $5 $2',
 	'articlefeedbackv5-activity-item-unoversight' => '$1 раскрыл{{GENDER:$1||а}} данное сообщение в $4 $5 $2',
-	'articlefeedbackv5-activity-item-feature' => '$1 отметил{{GENDER:$1||а}} данное сообщение как избранное в $4 $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unfeature' => '$1 убрал{{GENDER:$1||а}} данное сообщение из избранного в $4 $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-feature' => '$1 отметил{{GENDER:$1||а}} данный отзыв как полезный в $4 $5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 снял{{GENDER:$1||а}} пометку как полезного у отзыва в $4 $5 $2',
 	'articlefeedbackv5-activity-item-resolve' => '$1 пометил{{GENDER:$1||а}} данное сообщение как решённое в $4 $5 $2',
 	'articlefeedbackv5-activity-item-unresolve' => '$1 снял{{GENDER:$1||а}} отметку о решённости с данного сообщения в $4 $5 $2',
 	'articlefeedbackv5-activity-item-inappropriate' => '$1 отметил{{GENDER:$1||а}} сообщение как скрытое в $4 $5 $2',
@@ -26179,14 +26188,14 @@ $6
 	'articlefeedbackv5-email-request-oversight-subject' => 'Запрошен надзор для страницы отзыва',
 	'articlefeedbackv5-email-request-oversight-body' => 'Здравствуйте, ревизоры!
 
-Участник $1 запросил скрытие отзыва опубликованного к следующей статье:
+Участник $1 запросил скрытие отзыва, опубликованного к следующей странице:
 
 $2
 
-Пожалуйста просмотрите этот отзыв, а затем утвердите или отклоните
-этот запрос:
+Пожалуйста просмотрите этот отзыв, а затем утвердите или отклоните этот запрос:
 
 $3
+$5
 
 Спасибо,
 
@@ -26194,10 +26203,9 @@ $3
 Команда {{SITENAME}}
 
 
-P.S.: Если у Вас возникли вопросы по использованию функции ревизора
-отзывов на страницы статьи, то прочитай следующее FAQ:
+P.S.: Если у Вас возникли вопросы по использованию функции ревизора отзывов на страницы статьи, то прочитай следующее FAQ:
 
-$4', # Fuzzy
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Удалить этот инструмент?',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Перейти к моим персональным настройкам',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Отзыв о статье) Автоматически пометить как злоупотребление',
