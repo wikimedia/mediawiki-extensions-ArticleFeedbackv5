@@ -775,7 +775,8 @@ $messages['qqq'] = array(
 	'articlefeedbackv5-cta1-learn-how' => 'The link below the text on the edit CTA (call to action), pointing to the edit tutorial',
 	'articlefeedbackv5-cta1-learn-how-url' => '{{optional}}
 The link to the edit tutorial',
-	'articlefeedbackv5-cta1-edit-linktext' => 'The explanatory text for the button on the edit CTA (call to action)',
+	'articlefeedbackv5-cta1-edit-linktext' => 'The explanatory text for the button on the edit CTA (call to action).
+{{Identical|Edit this page}}',
 	'articlefeedbackv5-cta2-confirmation-title' => 'The title of the learn more CTA (call to action)',
 	'articlefeedbackv5-cta2-confirmation-call' => 'The explanatory text of the learn more CTA (call to action)',
 	'articlefeedbackv5-cta2-button-text' => 'The text for the button on the learn more CTA (call to action).
@@ -1734,7 +1735,8 @@ Un-oversight note flyover panel - action description',
 	'articlefeedbackv5-bucket4-teaser-line1' => 'The first line of the teaser text for option 4; should mention that anyone can edit pages.',
 	'articlefeedbackv5-bucket4-teaser-line2' => 'The second line of the teaser text for option 4; should be a playful call to give editing a try.',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'The text for the "Learn how to edit" link',
-	'articlefeedbackv5-bucket4-form-submit' => 'The text for the big edit button',
+	'articlefeedbackv5-bucket4-form-submit' => 'The text for the big edit button.
+{{Identical|Edit this page}}',
 	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Overrides {{msg-mw|articlefeedbackv5-help-tooltip-info}} for option 4.',
 	'articlefeedbackv5-bucket4-noedit-title' => 'This is the title of the feedback panel for option 4, when the user cannot edit the article',
 	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'The first line of the teaser text for option 4, when the user cannot edit the article',
@@ -7967,7 +7969,7 @@ $messages['es'] = array(
 	'protect-level-aft-member' => 'Habilitar solamente para usuarios conectados', # Fuzzy
 	'protect-level-aft-editor' => 'Habilitar solamente para usuarios autoconfirmados', # Fuzzy
 	'protect-level-aft-administrator' => 'Habilitar solamente para administradores', # Fuzzy
-	'protect-level-aft-noone' => 'Desactivar todos los usuarios', # Fuzzy
+	'protect-level-aft-noone' => 'Desactivar para todos los usuarios',
 	'restriction-articlefeedbackv5' => 'Visibilidad',
 	'articlefeedbackv5-disabled' => 'Se ha deshabilitado la retroalimentación',
 	'articlefeedbackv5-disabled-admin-admin' => 'Las sugerencias han sido desactivadas para los lectores y editores. No pueden ingresar nuevas sugerencias en esta página.',
@@ -30624,7 +30626,7 @@ $messages['vec'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['vi'] = array(
-	'articlefeedbackv5-cta-thanks' => 'Cám ơn!',
+	'articlefeedbackv5-cta-thanks' => 'Cảm ơn!',
 	'articlefeedbackv5-cta1-confirmation-title' => 'Bạn có biết rằng bạn có thể sửa đổi trang này?',
 	'articlefeedbackv5-cta1-confirmation-call' => '{{SITENAME}} hoạt động được vì bất cứ ai cũng có thể sửa được trang. Nào, hãy thử xem. Tự tin lên!',
 	'articlefeedbackv5-cta1-learn-how' => 'Học cách sửa đổi',
@@ -30656,7 +30658,6 @@ $messages['vi'] = array(
 	'articlefeedbackv5-special-filter-hidden' => 'Không thấy được ($1)',
 	'articlefeedbackv5-special-filter-all' => 'Tất cả các bài đăng ($1)',
 	'articlefeedbackv5-special-filter-all-watchlist' => 'Tất cả các bài đăng',
-	'articlefeedbackv5-special-sort-label-before' => 'Sắp xếp theo:',
 	'articleFeedbackv5-details-link' => 'Chi tiết',
 	'articlefeedbackv5-revision-link' => '(xem trang cũ)',
 	'articlefeedbackv5-special-more' => 'Hiện thêm bài',
@@ -30688,8 +30689,6 @@ $messages['vi'] = array(
 	'articlefeedbackv5' => 'Phản hồi bài – Trang chính',
 	'articlefeedbackv5-desc' => 'Phản hồi bài',
 	'articlefeedbackv5-comment-more' => 'Thêm',
-	'articlefeedbackv5-header-message-link-text' => 'Tìm hiểu thêm',
-	'articlefeedbackv5-beta-label' => 'BETA',
 	'articlefeedbackv5-mask-view-contents' => 'Xem nội dung',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Chiều dài',
 	'articlefeedbackv5-permalink-info-length-words' => '$1 từ',
