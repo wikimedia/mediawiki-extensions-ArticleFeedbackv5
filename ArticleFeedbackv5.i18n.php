@@ -4695,6 +4695,8 @@ $messages['br'] = array(
 	'articlefeedbackv5-status-unfeature' => "Lamet eo bet a notenn-mañ a-ziwar wel gant $1 d'an $2 da $3", # Fuzzy
 	'articlefeedbackv5-status-resolve' => "Merket eo bet an notenn-mañ evel diskoulmet gant $1 d'an $2 da $3",
 	'articlefeedbackv5-status-unresolve' => "N'eo ket bet merket an notenn-mañ evel diskoulmet ken gant $1 d'an $2 da $3",
+	'articlefeedbackv5-status-inappropriate' => "Merket eo bet ar gemennadenn-mañ evel dizereat gant $1 d'an $2 da $3",
+	'articlefeedbackv5-status-uninappropriate' => "Merket eo bet ar gemennadenn-mañ evel dizereat gant $1 d'an $2 da $3",
 	'articlefeedbackv5-status-archive' => "Diellaouet eo bet ar gemennadenn-mañ gant $1 d'an $2 da $3",
 	'articlefeedbackv5-new-marker' => 'Nevez',
 	'articlefeedbackv5-oversight-marker' => 'Evezhiet',
@@ -16939,7 +16941,7 @@ $6
 	'articlefeedbackv5-permalink-info-stats-title-scores' => '점수',
 	'articlefeedbackv5-permalink-info-stats-subtitle-relevance' => '관련성:',
 	'articlefeedbackv5-permalink-info-stats-subtitle-helpfulness' => '도움됨:',
-	'articlefeedbackv5-permalink-activity-title' => '활동 내역',
+	'articlefeedbackv5-permalink-activity-title' => '활동',
 	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|활동 $1회}})',
 	'articlefeedbackv5-permalink-activity-none' => '이 게시물에 어떠한 활동도 없습니다.',
 	'articlefeedbackv5-short-status-request' => '{{GENDER:$1|$1에 의해 검토함}}',
