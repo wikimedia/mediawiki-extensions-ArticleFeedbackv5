@@ -31023,8 +31023,8 @@ $6
 我们感谢您对此页面的贡献！
 
 ~~~~',
-	'articlefeedbackv5-form1-header-found' => '$2找到了{{GENDER:$1|他|她}}们所寻找的东西。',
-	'articlefeedbackv5-form1-header-not-found' => '$2没有找到{{GENDER:$1|他|她}}们所寻找的东西。',
+	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2找到了他要寻找的内容。}}',
+	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2没有找到他要寻找的内容。}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2发表了一条评论。}}',
 	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}}发表赞扬：',
 	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}}发表问题：',
@@ -31049,7 +31049,7 @@ $6
 	'articlefeedbackv5-whats-this' => '帮助',
 	'articlefeedbackv5-settings-menu-title' => '设置',
 	'articlefeedbackv5-invalid-page-id' => '无效页面ID',
-	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1找到了他们要的东西}}',
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1找到了他要寻找的内容}}',
 	'articlefeedbackv5-found-percent-title' => '基于$1条评论（不包括不适当评论）',
 	'articlefeedbackv5' => '条目反馈 - 中心页面',
 	'articlefeedbackv5watchlist' => '条目反馈 - 我监视的页面',
