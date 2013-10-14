@@ -1330,7 +1330,8 @@ See also:
 	'articlefeedbackv5-permalink-info-stats-title-scores' => 'Permalink info block, title for the feedback scoring information',
 	'articlefeedbackv5-permalink-info-stats-subtitle-relevance' => 'Permalink info block, subtitle for the relevance score within the feedback scoring information',
 	'articlefeedbackv5-permalink-info-stats-subtitle-helpfulness' => 'Permalink info block, subtitle for the net helpfulness score within the feedback scoring information',
-	'articlefeedbackv5-permalink-activity-title' => 'Permalink activity block, title of the left column, containing information about the last activity',
+	'articlefeedbackv5-permalink-activity-title' => 'Permalink activity block, title of the left column, containing information about the last activity.
+{{Identical|Activity}}',
 	'articlefeedbackv5-permalink-activity-subtitle' => 'Permalink activity block, subtitle of the left column, containing information about the last activity: $1 is the number of actions logged for this feedback',
 	'articlefeedbackv5-permalink-activity-none' => 'Permalink activity block, text to display when there has been no activity',
 	'articlefeedbackv5-short-status-request' => 'Permalink info block, last activity line:
