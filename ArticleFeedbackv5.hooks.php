@@ -936,7 +936,7 @@ class ArticleFeedbackv5Hooks {
 	 * @param array $names
 	 * @return bool
 	 */
-	public function onUserGetReservedNames( &$names ) {
+	public static function onUserGetReservedNames( &$names ) {
 		$names[] = 'msg:articlefeedbackv5-default-user';
 		return true;
 	}
