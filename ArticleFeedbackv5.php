@@ -623,7 +623,6 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 	'scripts' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.js',
 	'styles' => 'jquery.articleFeedbackv5/jquery.articleFeedbackv5.css',
 	'messages' => array(
-		'articlefeedbackv5-error-email',
 		'articlefeedbackv5-error-validation',
 		'articlefeedbackv5-error-nofeedback',
 		'articlefeedbackv5-error-unknown',
