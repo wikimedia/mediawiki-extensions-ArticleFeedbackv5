@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0932edd2_09f8d7e1",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 13
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-10-16T18:28:21Z",
+      "side": 1,
+      "message": "Could be if ( !$event-\u003egetExtraParam( \u0027aft-page\u0027 ) )",
+      "revId": "43c387e40c35fc17705292ffb257375869c2beec",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0932edd2_29967b93",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 13
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-10-16T18:28:21Z",
+      "side": 1,
+      "message": "Could we enforce a limit in here?  If a user has opt-out from AFT5, should they still receive aft5 notification?",
+      "revId": "43c387e40c35fc17705292ffb257375869c2beec",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0932edd2_896127d8",
+        "filename": "ArticleFeedbackv5.php",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-10-16T18:28:21Z",
+      "side": 1,
+      "message": "Is AFT5 set with an opt-in preference?  If that\u0027s the case, we probably want to default echo to true for all users.  Moreover, isn\u0027t this used as an alternative to the watchlist issue?",
+      "revId": "43c387e40c35fc17705292ffb257375869c2beec",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0932edd2_be903143",
+        "filename": "ArticleFeedbackv5.utils.php",
+        "patchSetId": 13
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-10-16T18:28:21Z",
+      "side": 1,
+      "message": "This is not necessary since typehint would enforce this to be a User object",
+      "revId": "43c387e40c35fc17705292ffb257375869c2beec",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0932edd2_5e4655c4",
+        "filename": "ArticleFeedbackv5.utils.php",
+        "patchSetId": 13
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2013-10-16T18:28:21Z",
+      "side": 1,
+      "message": "Same as above comment",
+      "revId": "43c387e40c35fc17705292ffb257375869c2beec",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
