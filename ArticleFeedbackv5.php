@@ -571,6 +571,7 @@ $wgResourceModules['ext.articleFeedbackv5'] = array(
 		'jquery.articleFeedbackv5.track',
 		'jquery.articleFeedbackv5.utils',
 		'mediawiki.api',
+		'mediawiki.language',
 	),
 ) + $wgArticleFeedbackResourcePaths;
 $wgResourceModules['ext.articleFeedbackv5.ie'] = array(

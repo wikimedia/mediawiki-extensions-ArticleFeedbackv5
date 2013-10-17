@@ -42,7 +42,7 @@ if ( mw.config.get( 'wgArticleFeedbackv5ArticlePageLink' ) &&
 
 				// Add the link to the feedback-page next to the title
 				var $link = $( '<a id="articlefeedbackv5-article-feedback-link"></a>' )
-					.msg( 'articlefeedbackv5-article-view-feedback', count )
+					.msg( 'articlefeedbackv5-article-view-feedback', mw.language.convertNumber( count ) )
 					.attr( 'href', url )
 					.click( { trackingId: 'article_page_view_feedback-button_click' }, $.aftTrack.trackEvent );
 
