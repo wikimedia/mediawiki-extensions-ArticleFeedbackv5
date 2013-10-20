@@ -5349,6 +5349,17 @@ $messages['ce'] = array(
 	'articlefeedbackv5-whats-this' => 'ГӀо',
 	'articlefeedbackv5-mask-view-contents' => 'Чулацаме хьажар',
 	'articlefeedbackv5-permalink-activity-title' => 'Дийраш',
+	'articlefeedbackv5-noteflyover-feature-label' => 'ТӀетоха билгалдаккхар',
+	'articlefeedbackv5-noteflyover-unfeature-label' => 'ТӀетоха билгалдаккхар',
+	'articlefeedbackv5-noteflyover-resolve-label' => 'ТӀетоха билгалдаккхар',
+	'articlefeedbackv5-noteflyover-unresolve-label' => 'ТӀетоха билгалдаккхар',
+	'articlefeedbackv5-noteflyover-hide-label' => 'ТӀетоха билгалдаккхар',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'ТӀетоха билгалдаккхар',
+	'articlefeedbackv5-noteflyover-unhide-label' => 'ТӀетоха билгалдаккхар',
+	'articlefeedbackv5-noteflyover-unnoaction-label' => 'ТӀетоха билгалдаккхар',
+	'articlefeedbackv5-noteflyover-unrequest-label' => 'ТӀетоха билгалдаккхар',
+	'articlefeedbackv5-noteflyover-unoversight-label' => 'ТӀетоха билгалдаккхар',
+	'articlefeedbackv5-noteflyover-decline-label' => 'ТӀетоха билгалдаккхар',
 );
 
 /** Czech (česky)
@@ -5754,7 +5765,7 @@ $messages['da'] = array(
 	'protect-level-aft-member' => 'Aktiver for brugere som er logget ind', # Fuzzy
 	'protect-level-aft-editor' => 'Aktiver kun for automatisk bekræftede brugere', # Fuzzy
 	'protect-level-aft-administrator' => 'Aktiver kun for administratorer', # Fuzzy
-	'articlefeedbackv5-disabled-admin-button-text' => 'Ændr beskyttelse',
+	'articlefeedbackv5-disabled-admin-button-text' => 'Ændre beskyttelse',
 	'articlefeedbackv5-contribs-entry-status' => '. . Status: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Nyttig',
 	'articlefeedbackv5-contribs-status-action-feature' => 'Fremhævet', # Fuzzy
@@ -9617,7 +9628,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-error-abuse' => 'Ohjelmistosuodatin hylkäsi viestisi, koska se saattaa rikkoa {{GRAMMAR:genitive|{{SITENAME}}}} [$1 palautesääntöjä]. Tarkista viestisi sisältö ja yritä uudelleen.', # Fuzzy
 	'articlefeedbackv5-error-unknown' => 'Tuntematon virhe.',
 	'articlefeedbackv5-error-submit' => 'Virhe lomakkeen lähetyksessä.',
-	'articlefeedbackv5-error-duplicate' => 'Palaute jota yritit lähettää on täsmälleen sama kuin viimeisin vastaan otettu palaute. Lähetitkö vahingossa saman palautteen kahdesti?',
+	'articlefeedbackv5-error-duplicate' => 'Lähettämäsi palaute on edellisen palautteen kaksoiskappale. Lähetitkö palautteen vahingossa kahdesti?',
 	'articlefeedbackv5-error-nofeedback' => 'Anna palautteesi.',
 	'articlefeedbackv5-error-flagging' => 'Virhe merkittäessä palautetta.',
 	'articlefeedbackv5-error-throttled' => 'Viestisi on hylätty, koska olet äskettäiten lähettänyt enemmän palautetta kuin {{GRAMMAR:genitive|{{SITENAME}}}} palautetyökalun ohjeissa on suositeltu. Ethän lähetä palautetta toistuvasti.',
@@ -9630,7 +9641,7 @@ $messages['fi'] = array(
 	'protect-level-aft-noone' => 'Poista kaikkien käyttäjien käytöstä',
 	'articlefeedbackv5-protection-title' => '"[[$1]]" palautteen näkyvyyttä muutettu',
 	'restriction-articlefeedbackv5' => 'Näkyvyys',
-	'articlefeedbackv5-disabled' => 'Palautteen antaminen on poissa käytöstä',
+	'articlefeedbackv5-disabled' => 'Palautteen antaminen on poistettu käytöstä',
 	'articlefeedbackv5-disabled-admin-admin' => 'Palautteen antaminen on poistettu lukijoiden ja muokkaajien käytöstä. He eivät voi lähettää uutta palautetta tästä sivusta.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Palautteen antaminen on poistettu lukijoiden käytöstä. He eivät voi antaa uutta palautetta tästä sivusta.',
 	'articlefeedbackv5-disabled-editor-admin' => 'Ylläpitäjä on poistanut palautteen antamisen käytöstä. Lukijat ja muokkaajat eivät voi antaa palautetta tästä sivusta.',
@@ -9814,7 +9825,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-error-loading-feedback' => 'Palautteen latausvirhe',
 	'articlefeedbackv5-insufficient-permissions' => 'Riittämättömät käyttöoikeudet',
 	'articlefeedbackv5-invalid-feedback-id' => 'Kelpaamaton palautteen tunnistenumero',
-	'articlefeedbackv5-invalid-log-id' => 'Virheellinen lokimerkinnän ID',
+	'articlefeedbackv5-invalid-log-id' => 'Virheellinen lokitunniste',
 	'articlefeedbackv5-invalid-log-update' => 'Lokimerkintää ei voitu päivittää',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Kelpaamaton palautteen merkintä',
 	'articlefeedbackv5-invalid-feedback-state' => 'Kelpaamaton palautemerkinnän tila',
@@ -10024,7 +10035,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-section-linktext' => 'palaute',
 	'articlefeedbackv5-toolbox-view' => 'Näytä palaute',
 	'articlefeedbackv5-toolbox-add' => 'Lisää palautteesi',
-	'articlefeedbackv5-leave-warning' => 'Tietoa jonka olet syöttänyt ei ehkä ole tallennettu.',
+	'articlefeedbackv5-leave-warning' => 'Syöttämiäsi tietoja ei ehkä ole tallennettu.',
 	'articlefeedbackv5-toolbox-enable' => 'Ota palautteen antaminen käyttöön',
 	'articlefeedbackv5-disable-preference' => 'Älä näytä palautetyökalua',
 	'right-aft-reader' => 'Lähettää palautetta ja merkitä (epä)hyödylliseksi',
@@ -10282,6 +10293,7 @@ $messages['fo'] = array(
  * @author Nemo bis
  * @author Nnemo
  * @author Od1n
+ * @author Orlodrim
  * @author Peter17
  * @author Seb35
  * @author Sherbrooke
@@ -10627,10 +10639,10 @@ Nous apprécions vos contributions à cette page !
 	'articlefeedbackv5-permalink-status-unfeature' => '{{GENDER:$1|<strong>Plus marqué comme utile</strong> par $1}} $2',
 	'articlefeedbackv5-permalink-status-resolve' => '{{GENDER:$1|<strong>Marqué comme résolu</strong> par $1}} $2',
 	'articlefeedbackv5-permalink-status-unresolve' => '{{GENDER:$1|<strong>Plus marqué comme résolu</strong> par $1}} $2',
-	'articlefeedbackv5-permalink-status-noaction' => '{{GENDER:$1|<strong>Marqué comme non recevable</strong> par $1}} $2',
+	'articlefeedbackv5-permalink-status-noaction' => '{{GENDER:$1|<strong>Marqué comme ne nécessitant aucune action</strong> par $1}} $2',
 	'articlefeedbackv5-permalink-status-unnoaction' => '{{GENDER:$1|<strong>Plus marqué comme non recevable</strong> par $1}} $2',
 	'articlefeedbackv5-permalink-status-inappropriate' => '<strong>Marqué comme inapproprié</strong> par $1 il y a $2',
-	'articlefeedbackv5-permalink-status-uninappropriate' => '<strong>Démasqué</strong> par $1 il y a $2',
+	'articlefeedbackv5-permalink-status-uninappropriate' => '<strong>Plus marqué comme inapproprié</strong> par $1 il y a $2',
 	'articlefeedbackv5-permalink-status-archive' => '{{GENDER:$1|<strong>Archivé</strong> par $1}} $2',
 	'articlefeedbackv5-permalink-status-unarchive' => '{{GENDER:$1|<strong>Désarchivé</strong> par $1}} $2',
 	'articlefeedbackv5-permalink-status-hide' => '{{GENDER:$1|<strong>Masqué</strong> par $1}} $2',
@@ -12201,11 +12213,11 @@ $messages['he'] = array(
 	'articlefeedbackv5-error-throttled' => 'הרשומה שלך נדחתה כי שלחת לאחרונה יותר משוב מכמה שמומלץ במדריך המשוב של {{SITENAME}}. נא לא לשלוח משובים חוזרים או מוגזמים.',
 	'articlefeedbackv5-protection-level' => 'משוב על ערך',
 	'articlefeedbackv5-protection-level-error' => 'רמת ההגנה על המשוב אינה יכולה להיות גבוהה יותר מרמת ההגנה על עריכה',
-	'protect-level-aft-reader' => 'הפעלה לכל המשתמשים', # Fuzzy
-	'protect-level-aft-member' => 'הפעלה רק למשתמשים שנכנסו לחשבון', # Fuzzy
-	'protect-level-aft-editor' => 'הפעלה רק למשתמשים ותיקים', # Fuzzy
-	'protect-level-aft-administrator' => 'הפעלה רק למפעילי מערכת', # Fuzzy
-	'protect-level-aft-noone' => 'בטל עבור כל המשתמשים', # Fuzzy
+	'protect-level-aft-reader' => 'הפעלה לכל המשתמשים',
+	'protect-level-aft-member' => 'הפעלה רק למשתמשים שנכנסו לחשבון',
+	'protect-level-aft-editor' => 'הפעלה רק למשתמשים ותיקים',
+	'protect-level-aft-administrator' => 'הפעלה רק למפעילי מערכת',
+	'protect-level-aft-noone' => 'כיבוי עבור כל המשתמשים',
 	'articlefeedbackv5-disabled' => 'משוב בוטל',
 	'articlefeedbackv5-disabled-admin-admin' => 'שליחת משוב בוטלה עבור קוראים ועורכים. לא ניתן לשלוח משוב חדש לדף זה.',
 	'articlefeedbackv5-disabled-admin-editor' => 'שליחת משוב בוטלה עבור קוראים. קוראים לא יכולים לשלוח משוב לדף זה.',
