@@ -3116,6 +3116,7 @@ $messages['azb'] = array(
 );
 
 /** Bashkir (башҡортса)
+ * @author Alfiya55
  * @author Assele
  * @author Haqmar
  * @author Roustammr
@@ -3154,7 +3155,7 @@ $messages['ba'] = array(
 	'articlefeedbackv5-error' => 'Хата килеп сыҡты. Зинһар, һуңыраҡ яңынан ҡабатлап ҡарағыҙ.',
 	'articlefeedbackv5-error-blocked' => 'Бикленгән ҡатнашыусылар яуап яҙа алмай.',
 	'articlefeedbackv5-error-validation' => 'Тикшергәндә хата китте.',
-	'articlefeedbackv5-error-abuse' => 'Һеҙҙең хәбәр «{{SITENAME}}» проектында [$1 яуап яҙыу ҡағиҙәлерен] боҙоуы мөмкин, шуға һөҙгөс программа менән кире ҡағылды. Зинһар өсөн, төҙәтеп тағы ебәреп ҡарағыҙ.', # Fuzzy
+	'articlefeedbackv5-error-abuse' => 'Һеҙҙең хәбәр «{{SITENAME}}» проектында [$1 яуап яҙыу ҡағиҙәлерен] боҙоуы мөмкин, шуға һөҙгөс программа уны кире ҡаҡты. Зинһар өсөн, төҙәтеп тағы ебәреп ҡарағыҙ. $3 {{PLURAL:$2|һөҙгөс}}',
 	'articlefeedbackv5-error-unknown' => 'Билдәһеҙ хата.',
 	'articlefeedbackv5-error-submit' => 'Анкета ебәргәндә хата китте.',
 	'articlefeedbackv5-error-nofeedback' => 'Зинһар өсөн, ферегеҙҙе ҡалдырығыҙ.',
@@ -9045,9 +9046,9 @@ $messages['fa'] = array(
 	'articlefeedbackv5-disabled-editor-editor' => 'بازخورد غیرفعال شده است. خواننده‌ها نمی توانند برای این صفحه بازخورد بیافزایند.',
 	'articlefeedbackv5-disabled-reader' => 'نظردهی غیرفعال شده‌است. خوانندگان نخواهندتوانست بازخورد جدیدی برای این صفحه گذارند.',
 	'articlefeedbackv5-disabled-admin-button-text' => 'تغییر سطح محافظت',
-	'articlefeedbackv5-disabled-editor-button-text' => 'فعال کردن پیشنهادها و انتقادها',
-	'articlefeedbackv5-settings-status-enable' => 'فعال کردن بازخوردها در این صفحه',
-	'articlefeedbackv5-settings-status-disable' => 'غیرفعال کردن بازخوردها در این صفحه',
+	'articlefeedbackv5-disabled-editor-button-text' => 'فعال‌کردن پیشنهادها و انتقادها',
+	'articlefeedbackv5-settings-status-enable' => 'فعال‌کردن بازخوردها در این صفحه',
+	'articlefeedbackv5-settings-status-disable' => 'غیرفعال‌کردن بازخوردها در این صفحه',
 	'articlefeedbackv5-enabled-form-message' => 'سیستم نظردهی همین‌اکنون فعال شد. فرستاده‌های خوانندگان در [$1 at the feedback page] قابل رویت خواهد‌بود.',
 	'articlefeedbackv5-contribs-entry' => '$1. . $2 . . [[$3|بازخورد:  $4 ]]$5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . وضعیت: $1',
@@ -9258,7 +9259,7 @@ $6
 	'articlefeedbackv5-comment-more' => 'بیشتر',
 	'articlefeedbackv5-comment-empty' => 'هیچ متنی وارد نشده است',
 	'articlefeedbackv5-unsupported-message' => 'با عرض پوزش ، مرورگر شما توسط این نمونه پشتیبانی نمی شود. برای دیدن این صفحه لطفاً از یک مرورگر دیگر استفاده کنید.',
-	'articlefeedbackv5-page-disabled' => 'صفحه نظرات مقاله برای این مقاله فعال نیست.',
+	'articlefeedbackv5-page-disabled' => 'صفحهٔ نظرات مقاله برای این مقاله فعال نیست.',
 	'articlefeedbackv5-no-feedback' => 'هیچ بازخوردی برای پالایه‌ای که شما انتخاب کرده‌اید وجود ندارد. برای تغییر پالایه، لطفاً یکی از موارد زیر را امتحان کنید.  (مثلاً: "برگزیده" یا "بازبینی نشده").',
 	'articlefeedbackv5-invalid-feedback' => 'صفحهٔ بازخورد درخواستی وجود ندارد.',
 	'articlefeedbackv5-viewactivity' => 'نمایش فعالیت',
@@ -9415,7 +9416,7 @@ $6
 	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'چرا شما درخواست بررسی را لغو کردید؟',
 	'articlefeedbackv5-noteflyover-unrequest-submit' => 'درخواست لغو',
 	'articlefeedbackv5-noteflyover-unrequest-help' => 'اطلاعات بیشتر',
-	'articlefeedbackv5-noteflyover-oversight-caption' => 'پنهان کردن این ارسال',
+	'articlefeedbackv5-noteflyover-oversight-caption' => 'پنهان‌کردن این ارسال',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'افزودن یادداشت',
 	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'چرا این ارسال را پنهان‌گری کردید؟',
 	'articlefeedbackv5-noteflyover-oversight-submit' => 'پنهان‌گری',
@@ -9476,7 +9477,7 @@ $6
 	'articlefeedbackv5-toolbox-view' => 'مشاهده بازخورد',
 	'articlefeedbackv5-toolbox-add' => 'افزودن نظر شما',
 	'articlefeedbackv5-leave-warning' => 'اطلاعاتی را وارد کردید ممکن است ذخیره نشده‌باشد.',
-	'articlefeedbackv5-toolbox-enable' => 'فعال کردن بازخورد',
+	'articlefeedbackv5-toolbox-enable' => 'فعال‌کردن بازخورد',
 	'articlefeedbackv5-disable-preference' => 'ابزار بازخورد مقاله را در صفحه‌ها نشان نده',
 	'right-aft-reader' => 'ارسال بازخورد و علامت‌گذاری به‌عنوان مفید/غیرمفید',
 	'right-aft-member' => 'ارسال بازخورد و علامت‌گذاری به‌عنوان مفید/غیر مفید',
@@ -9567,7 +9568,7 @@ $3
 پی نوشت: اگر شما هرگونه سوالی درمورد استفاده دسترسی پنهانگری در بازخورد مقاله ها دارید، لطفا راهنمای پنهانگری را ببینید:
 
 $4', # Fuzzy
-	'articlefeedbackv5-disable-flyover-title' => 'حذف کردن این ابزار؟',
+	'articlefeedbackv5-disable-flyover-title' => 'حذف‌کردن این ابزار؟',
 	'articlefeedbackv5-disable-flyover-help-message' => 'برای حذف بازخورد مقاله  به " $1 " > " $2 "و برای بررسی" $3 " بروید.',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'رفتن به ترجیحات من',
 	'abusefilter-edit-action-aftv5resolve' => '(بازخورد مقاله) حل و فصل خودکار',
@@ -9854,7 +9855,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-permalink-written-by-editor' => 'Rekisteröityneen käyttäjän kirjoittama',
 	'articlefeedbackv5-permalink-written-by-reader' => 'Anonyymin käyttäjän kirjoittama',
 	'articlefeedbackv5-permalink-info-revision-link' => 'Näytä vanha versio tästä sivusta',
-	'articlefeedbackv5-permalink-info-posted' => 'Lähetetty $1 klo. $2',
+	'articlefeedbackv5-permalink-info-posted' => 'Lähetetty $1 kello $2',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Pituus',
 	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 sana|$1 sanaa}}',
 	'articlefeedbackv5-permalink-info-length-characters' => '({{PLURAL:$1|$1 merkki|$1 merkkiä}})',
@@ -31358,6 +31359,7 @@ $6
 	'logentry-articlefeedbackv5-undo-helpful' => '$1{{GENDER:$2|已取消}}[[$5]]上的[[$3|反馈帖#$4]]的有用标记',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1{{GENDER:$2|已取消}}[[$5]]上的[[$3|反馈帖#$4]]的无用标记',
 	'logentry-articlefeedbackv5-clear-flags' => '$1{{GENDER:$2|已取消}}[[$5]]上的[[$3|反馈帖#$4]]的所有标记',
+	'logentry-articlefeedbackv5-protect' => '$1在“$3”上更改了文章反馈工具的可见性$4',
 	'articlefeedbackv5-activity-pane-header' => '活动日志',
 	'articlefeedbackv5-activity-feedback-info' => '$2的反馈',
 	'articlefeedbackv5-activity-feedback-date' => '发布于$1',
