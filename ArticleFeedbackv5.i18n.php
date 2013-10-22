@@ -3074,6 +3074,35 @@ $6
 ¿Qué-y paez?
 
 ~~~~',
+	'articlefeedbackv5-discuss-user-section-content' => 'Gracies por publicar los sos comentarios sobro "$7".
+
+Publicó esti comentariu el $3 ([[$5|ver tolos comentarios]]).
+
+$6
+
+¡Apreciamos les sos collaboraciones con esta páxina!
+
+~~~~',
+	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 alcontraron lo que buscaben.}}',
+	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 nun alcontraron lo que buscaben.}}',
+	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 unvió un comentariu.}}',
+	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}} tuvo una allabanza:',
+	'articlefeedbackv5-form2-header-problem' => '{{GENDER:$1|$1}} tuvo un problema:',
+	'articlefeedbackv5-form2-header-question' => '{{GENDER:$1|$1}} tuvo una pregunta:',
+	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} tuvo una suxerencia:',
+	'articlefeedbackv5-form-anon-username' => 'Un llector',
+	'articlefeedbackv5-form-anon-message' => 'Unviáu anónimamente dende $1.',
+	'articlefeedbackv5-form-invalid' => 'ID de formulariu de comentarios inválida.',
+	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} unvió [[$4|un comentariu]] a $3',
+	'articlefeedbackv5-abuse-saved' => 'Marcáu como abusivu',
+	'articlefeedbackv5-abuse-saved-tooltip' => 'Desaniciar la marca que punxo',
+	'articlefeedbackv5-error-loading-feedback' => 'Error al cargar los comentarios.',
+	'articlefeedbackv5-insufficient-permissions' => 'Nivel de permisos insuficiente',
+	'articlefeedbackv5-invalid-feedback-id' => 'ID de comentariu inválida',
+	'articlefeedbackv5-invalid-log-id' => 'ID de rexistru inválida',
+	'articlefeedbackv5-invalid-log-update' => 'Nun pudo anovase la entrada del rexistru',
+	'articlefeedbackv5-invalid-feedback-flag' => 'Marca de comentariu inválida',
+	'articlefeedbackv5-invalid-feedback-state' => 'Estáu de la marca de comentariu inválida',
 	'articlefeedbackv5-toolbox-enable' => 'Activar los comentarios',
 );
 
@@ -3163,17 +3192,18 @@ $messages['ba'] = array(
 	'articlefeedbackv5-error-throttled' => '«{{SITENAME}}» проекты ҡағиҙәлерендә ҡаралғандан күберәк хәбәр ебәрҙегеҙ, шуға һеҙҙең хәбәр кире ҡағылды. Зинһар өсөн күп хәбәр ебермәгеҙ һәм хәбәр ебәреүҙе йыш ҡабатламағыҙ.',
 	'articlefeedbackv5-protection-level' => 'Мәҡәләне баһалыу өсөн кире бәйләнеш',
 	'articlefeedbackv5-protection-level-error' => 'Кире бәйленеш өсөн мәҡәләне һаҡлау кимәле, мәҡәләне үҙгәртеүҙән һаҡлау кимәленән юғары бла алмай',
-	'protect-level-aft-reader' => 'Бар ҡулланыусылар өсөн ғәмәлдә итергә', # Fuzzy
+	'protect-level-aft-reader' => 'Бар ҡулланыусылар өсөн ғәмәлдә итергә',
 	'protect-level-aft-member' => 'Танылған ҡулланыусылар өсөн генә ғәмәлдә итергә', # Fuzzy
-	'protect-level-aft-editor' => 'Автоматик раҫланған ҡулланыусылар өсөн генә ғәмәлдә итергә', # Fuzzy
-	'protect-level-aft-administrator' => 'Хакимдәр өсөн генә ғәмәлдә итергә', # Fuzzy
+	'protect-level-aft-editor' => 'Автоматик раҫланған ҡулланыусылар өсөн генә ғәмәлдә итергә',
+	'protect-level-aft-administrator' => 'Хакимдәр өсөн генә ғәмәлдә итергә',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Кире белдереү: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Статус: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Файҙалы',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Билдәләнгән',
-	'articlefeedbackv5-contribs-status-action-feature' => 'Һайланған', # Fuzzy
+	'articlefeedbackv5-contribs-status-action-feature' => 'Файҙалы',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Сиселгән',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Йәшерелгән',
+	'articlefeedbackv5-contribs-status-action-archive' => 'Архивланған',
 	'articlefeedbackv5-contribs-status-action-request' => 'Йәшереү һоратылған',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Тикшереүсе йәшергән',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'йәшерен комментарий',
@@ -9640,7 +9670,7 @@ $messages['fi'] = array(
 	'protect-level-aft-editor' => 'Salli vain automaattisesti hyväksytyille käyttäjille',
 	'protect-level-aft-administrator' => 'Salli vain ylläpitäjille',
 	'protect-level-aft-noone' => 'Poista kaikkien käyttäjien käytöstä',
-	'articlefeedbackv5-protection-title' => '"[[$1]]" palautteen näkyvyyttä muutettu',
+	'articlefeedbackv5-protection-title' => '"[[$1]]" palautteen näkyvyyttä muutettu', # Fuzzy
 	'restriction-articlefeedbackv5' => 'Näkyvyys',
 	'articlefeedbackv5-disabled' => 'Palautteen antaminen on poistettu käytöstä',
 	'articlefeedbackv5-disabled-admin-admin' => 'Palautteen antaminen on poistettu lukijoiden ja muokkaajien käytöstä. He eivät voi lähettää uutta palautetta tästä sivusta.',
@@ -9793,7 +9823,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-form-tooltip-noaction' => 'Epäselvä, merkityksetön, kehu, kaksoiskappale...',
 	'articlefeedbackv5-form-tooltip-unnoaction' => 'Peruuta käyttökelvottomaksi merkitseminen',
 	'articlefeedbackv5-form-tooltip-noaction-own' => 'Epäselvä, merkityksetön, kehu, kaksoiskappale...',
-	'articlefeedbackv5-form-tooltip-unnoaction-own' => 'Peruuta ei toimepiteitä merkintä',
+	'articlefeedbackv5-form-tooltip-unnoaction-own' => 'Peruuta ei toimepiteitä merkintä', # Fuzzy
 	'articlefeedbackv5-form-tooltip-inappropriate' => 'Pötyä, roskapostia, loukkaavaa, henkilökohtaista tietoa...',
 	'articlefeedbackv5-form-tooltip-uninappropriate' => 'Poista asiaton-merkintä',
 	'articlefeedbackv5-form-tooltip-hide' => 'Pötyä, roskapostia, loukkaavaa, henkilökohtaista tietoa...',
@@ -9802,14 +9832,14 @@ $messages['fi'] = array(
 	'articlefeedbackv5-form-tooltip-unarchive' => 'Palauta arkistosta',
 	'articlefeedbackv5-form-tooltip-flag' => 'Pötyä, roskapostia, loukkaavaa, henkilökohtaista tietoa...',
 	'articlefeedbackv5-form-tooltip-oversight' => 'Loukkaavaa, henkilökohtaisia tietoja...',
-	'articlefeedbackv5-form-tooltip-unoversight' => 'Peruuta häivytys',
+	'articlefeedbackv5-form-tooltip-unoversight' => 'Kumoa häivytys',
 	'articlefeedbackv5-form-tooltip-request' => 'Loukkaavaa, henkilökohtaisia tietoja...',
-	'articlefeedbackv5-form-tooltip-unrequest' => 'Peruuta häivytys pyyntö',
-	'articlefeedbackv5-form-tooltip-decline' => 'Hylkää häivytys pyyntö',
+	'articlefeedbackv5-form-tooltip-unrequest' => 'Kumoa häivytyspyyntö',
+	'articlefeedbackv5-form-tooltip-decline' => 'Hylkää häivytyspyyntö',
 	'articlefeedbackv5-form-tooltip-discuss-talk' => 'Keskustele palautteesta keskustelusivulla',
 	'articlefeedbackv5-form-tooltip-discuss-user' => 'Keskustele palautteesta lähettäjän kanssa',
 	'articlefeedbackv5-discuss-talk-section-title' => 'Lukijapalaute: $1',
-	'articlefeedbackv5-discuss-user-section-title' => 'Palautteesi sivusta "$2"',
+	'articlefeedbackv5-discuss-user-section-title' => 'Palautteesi sivusta $2',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 löysi, mitä olivat etsimässä.}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 ei löytänyt, mitä olivat etsimässä.}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 lähetti kommentin.}}',
