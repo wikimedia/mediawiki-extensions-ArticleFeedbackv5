@@ -5368,6 +5368,8 @@ $messages['ca'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
+	'articlefeedbackv5-cta-thanks' => 'Баркалла!',
+	'articlefeedbackv5-cta2-button-text' => 'Ма-дарра',
 	'articlefeedbackv5-cta4-button-text-login' => 'Системин чугӀо',
 	'articlefeedbackv5-overlay-close' => 'ДӀачӀагӀа',
 	'articlefeedbackv5-special-filter-unreviewed-watchlist' => 'Гоч янцарш',
@@ -5391,6 +5393,7 @@ $messages['ce'] = array(
 	'articlefeedbackv5-noteflyover-unrequest-label' => 'ТӀетоха билгалдаккхар',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'ТӀетоха билгалдаккхар',
 	'articlefeedbackv5-noteflyover-decline-label' => 'ТӀетоха билгалдаккхар',
+	'articlefeedbackv5-help-tooltip-linktext' => 'Ма-дарра',
 );
 
 /** Czech (česky)
@@ -12229,7 +12232,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-cta5-confirmation-call' => 'יש פה הצעות מקוראים אחרים כמוך. בא לך לעזור לבחור מהן את הרעיונות הכי טובים?',
 	'articlefeedbackv5-cta5-button-text' => 'הצגת כל ההערות',
 	'articlefeedbackv5-cta6-confirmation-title' => 'דרושה לך עזרה בעריכת {{SITENAME}}?',
-	'articlefeedbackv5-cta6-confirmation-call' => 'ההודעה הזאת אמורה להופיע רק בוויקיפדיה אנגלית. אם אתם רואים אותה במקום אחר, [https://bugzilla.wikimedia.org/show_bug.cgi?id=39578 זה באג].',
+	'articlefeedbackv5-cta6-confirmation-call' => 'ההודעה הזאת אמורה להופיע רק בוויקיפדיה האנגלית. אם אתם רואים אותה במקום אחר, [https://bugzilla.wikimedia.org/show_bug.cgi?id=39578 זה באג].',
 	'articlefeedbackv5-cta6-button-text' => 'זה לא כפתור',
 	'articlefeedbackv5-overlay-close' => 'סגור',
 	'articlefeedbackv5-error' => 'אירעה שגיאה. נא לנסות שוב מאוחר יותר.',
@@ -12517,13 +12520,13 @@ $messages['he'] = array(
 	'articlefeedbackv5-noteflyover-unarchive-submit' => 'הוספת הערה',
 	'articlefeedbackv5-noteflyover-unarchive-help' => 'מידע נוסף',
 	'articlefeedbackv5-noteflyover-request-caption' => 'בקשת הסתרה',
-	'articlefeedbackv5-noteflyover-request-description' => 'לפני בקשת ממפעילים, אנא בדוק כי הפוסט הזה
- כולל אחד מהנושאים הללו:
- * מספרי טלפון
- * כתובות דוא"ל
- * קישורים פורנוגרפיים
- * הוצאת דיבה על אדם
- * [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy other criteria for oversight]',
+	'articlefeedbackv5-noteflyover-request-description' => 'לפני בקשת הסתרה, אנא בדוק כי הרשומה הזאת
+מכילה אחת מהבעיות הבאות:
+* מספרי טלפון
+* כתובות דוא"ל
+* קישורים פורנוגרפיים
+* הוצאת דיבה על אדם
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy other criteria for oversight]',
 	'articlefeedbackv5-noteflyover-request-label' => 'הוספת הערת הסבר לבקשת ההסתרה',
 	'articlefeedbackv5-noteflyover-request-placeholder' => 'למה ביקשת הסתרה?', # Fuzzy
 	'articlefeedbackv5-noteflyover-request-help' => 'מידע נוסף',
