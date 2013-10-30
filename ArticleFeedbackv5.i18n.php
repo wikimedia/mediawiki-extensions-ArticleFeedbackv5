@@ -3187,44 +3187,79 @@ $messages['ba'] = array(
 	'articlefeedbackv5-error-abuse' => 'Һеҙҙең хәбәр «{{SITENAME}}» проектында [$1 яуап яҙыу ҡағиҙәлерен] боҙоуы мөмкин, шуға һөҙгөс программа уны кире ҡаҡты. Зинһар өсөн, төҙәтеп тағы ебәреп ҡарағыҙ. $3 {{PLURAL:$2|һөҙгөс}}',
 	'articlefeedbackv5-error-unknown' => 'Билдәһеҙ хата.',
 	'articlefeedbackv5-error-submit' => 'Анкета ебәргәндә хата китте.',
+	'articlefeedbackv5-error-duplicate' => 'Яуап хәбәре алдараҡ ебәрелгән хәбәрҙе ҡабатлай. Бәлки, һеҙ төймәгә яңылыш ике тапҡыр баҫҡанһығыҙҙыр?',
 	'articlefeedbackv5-error-nofeedback' => 'Зинһар өсөн, ферегеҙҙе ҡалдырығыҙ.',
 	'articlefeedbackv5-error-flagging' => 'Яуап тамғаһын ҡуйғанда хата китте.',
 	'articlefeedbackv5-error-throttled' => '«{{SITENAME}}» проекты ҡағиҙәлерендә ҡаралғандан күберәк хәбәр ебәрҙегеҙ, шуға һеҙҙең хәбәр кире ҡағылды. Зинһар өсөн күп хәбәр ебермәгеҙ һәм хәбәр ебәреүҙе йыш ҡабатламағыҙ.',
 	'articlefeedbackv5-protection-level' => 'Мәҡәләне баһалыу өсөн кире бәйләнеш',
 	'articlefeedbackv5-protection-level-error' => 'Кире бәйленеш өсөн мәҡәләне һаҡлау кимәле, мәҡәләне үҙгәртеүҙән һаҡлау кимәленән юғары бла алмай',
 	'protect-level-aft-reader' => 'Бар ҡулланыусылар өсөн ғәмәлдә итергә',
-	'protect-level-aft-member' => 'Танылған ҡулланыусылар өсөн генә ғәмәлдә итергә', # Fuzzy
+	'protect-level-aft-member' => 'Теркәлгән ҡулланыусылар өсөн генә тоҡандырырға',
 	'protect-level-aft-editor' => 'Автоматик раҫланған ҡулланыусылар өсөн генә ғәмәлдә итергә',
 	'protect-level-aft-administrator' => 'Хакимдәр өсөн генә ғәмәлдә итергә',
+	'protect-level-aft-noone' => 'Бөтә ҡулланыусылар өсөн дә һүндерергә',
+	'articlefeedbackv5-protection-title' => '«[[$1]]» кире бәйләнеш ҡоралының күренеүсәлеген үҙгәртергә',
+	'restriction-articlefeedbackv5' => 'Күренеүсәнлек',
+	'articlefeedbackv5-disabled' => 'Фекерҙәр һүндерелгән',
+	'articlefeedbackv5-disabled-admin-admin' => 'Уҡыусылар һәм мөхәррирҙәр өсөн фекерҙәр һүндерелгән. Улар был биттә яңы фекерҙәр яҙа алмай.',
+	'articlefeedbackv5-disabled-admin-editor' => 'Уҡыусылар өсөн фекерҙәр һүндерелгән. Улар был биттә яңы фекерҙәр яҙа алмай.',
+	'articlefeedbackv5-disabled-editor-admin' => 'Фекерҙәрҙе идарасы һүндергән. Уҡыусылар һәм мөхәррирҙәр был биттә яңы фекерҙәр яҙа алмай.',
+	'articlefeedbackv5-disabled-editor-editor' => 'Фекерҙәр һүндерелгән. Уҡыусылар был биттә яңы фекерҙәр яҙа алмай.',
+	'articlefeedbackv5-disabled-reader' => 'Фекерҙәр һүндерелгән. Уҡыусылар был биттә яңы фекерҙәр яҙа алмай.',
+	'articlefeedbackv5-disabled-admin-button-text' => 'Һаҡлауҙы үҙгәртергә',
+	'articlefeedbackv5-disabled-editor-button-text' => 'Фекерҙәрҙе тоҡандырырға',
+	'articlefeedbackv5-settings-status-enable' => 'Был биттә фекерҙәрҙе тоҡандырырға',
+	'articlefeedbackv5-settings-status-disable' => 'Был биттә фекерҙәрҙе һүндерергә',
+	'articlefeedbackv5-enabled-form-message' => 'Фекерҙәр тоҡандырылды. Уҡыусыларҙың хәбәрҙәре [$1 фекерҙәр битендә] күренәсәк.',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Кире белдереү: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Статус: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Файҙалы',
 	'articlefeedbackv5-contribs-status-action-flag' => 'Билдәләнгән',
 	'articlefeedbackv5-contribs-status-action-feature' => 'Файҙалы',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Сиселгән',
+	'articlefeedbackv5-contribs-status-action-noaction' => 'Бер ниндәй ҙә эш-ғәмәлдәр талап ителмәй',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Йәшерелгән',
 	'articlefeedbackv5-contribs-status-action-archive' => 'Архивланған',
+	'articlefeedbackv5-contribs-status-action-hide' => 'Йәшерелгән',
 	'articlefeedbackv5-contribs-status-action-request' => 'Йәшереү һоратылған',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'Тикшереүсе йәшергән',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'йәшерен комментарий',
+	'articlefeedbackv5-form-toolbox-label' => 'Ошолай билдәләргә:',
+	'articlefeedbackv5-form-own-toolbox-label' => 'Фекереңде ошолай билдәләргә:',
+	'articlefeedbackv5-form-own-feedback' => 'Һеҙ үҙ фекерҙәрегеҙҙе билдәләй алмайһығыҙ.',
 	'articlefeedbackv5-form-helpful-label' => 'Был фекер файҙалымы?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Эйе',
 	'articlefeedbackv5-form-helpful-no-label' => 'Юҡ',
+	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% уҡыусы быны файҙалы тип баһалай}}',
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 эйе|$1 эйе}} / {{PLURAL:$2|1 юҡ|$2 юҡ}}',
 	'articlefeedbackv5-special-survey-button-text' => 'Фекер белдереү ҡоралы тураһында ни уйлайһығыҙ?',
 	'articlefeedbackv5-special-filter-featured' => 'Һайланғандар ($1)',
+	'articlefeedbackv5-special-filter-unreviewed' => 'Тикшерелмәгән ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'Файҙлы ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Файҙаһыҙ ($1)',
+	'articlefeedbackv5-special-filter-flagged' => 'Билдәләнгән ($1)',
+	'articlefeedbackv5-special-filter-useful' => 'Файҙалы ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'Сиселгәндәр ($1)',
+	'articlefeedbackv5-special-filter-noaction' => 'Эш-ғәмәлдәр талап ителмәй ($1)',
+	'articlefeedbackv5-special-filter-inappropriate' => 'Яраҡлы түгел($1)',
+	'articlefeedbackv5-special-filter-archived' => 'Архивлаштырылды($1)',
+	'articlefeedbackv5-special-filter-allcomment' => 'Бөтә комменттар ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'Йәшерелгән ( $1 )',
 	'articlefeedbackv5-special-filter-requested' => 'Тикшереү һоратылған ($1)',
 	'articlefeedbackv5-special-filter-declined' => 'Тикшереү кире ҡағылды ( $1 )',
 	'articlefeedbackv5-special-filter-oversighted' => 'Күҙәтеүҙә ($1)',
 	'articlefeedbackv5-special-filter-all' => 'Бөтә яҙыуҙар ($1)',
 	'articlefeedbackv5-special-filter-featured-watchlist' => 'Һайланған',
+	'articlefeedbackv5-special-filter-unreviewed-watchlist' => 'Тикшерелмәгән',
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Файҙалы',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Файҙаһыҙ',
+	'articlefeedbackv5-special-filter-flagged-watchlist' => 'Билдәләнгән',
+	'articlefeedbackv5-special-filter-useful-watchlist' => 'Файҙалы',
 	'articlefeedbackv5-special-filter-resolved-watchlist' => 'Эшкәртелгән',
+	'articlefeedbackv5-special-filter-noaction-watchlist' => 'Эш-ғәмәлдәр талап ителмәй',
+	'articlefeedbackv5-special-filter-inappropriate-watchlist' => 'Яраҡлы түгел',
+	'articlefeedbackv5-special-filter-archived-watchlist' => 'Архивланған',
+	'articlefeedbackv5-special-filter-allcomment-watchlist' => 'Бөтә комменттар',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'Йәшерен',
 	'articlefeedbackv5-special-filter-requested-watchlist' => 'Тикшереү һоратылған',
 	'articlefeedbackv5-special-filter-declined-watchlist' => 'Кире ҡағыү йәшерелгән ҡулланыусылар',
@@ -3236,13 +3271,16 @@ $messages['ba'] = array(
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Файҙаһыҙ',
 	'articlefeedbackv5-special-sort-age-desc' => 'Иң яңылар',
 	'articlefeedbackv5-special-sort-age-asc' => 'Иң иҫкеләр',
-	'articlefeedbackv5-special-filter-select-more' => 'Башҡа фильтрҙар', # Fuzzy
+	'articlefeedbackv5-special-sort-label' => 'Тәртипләштереү:',
+	'articlefeedbackv5-special-filter-select-more' => 'Тағы',
+	'articlefeedbackv5-special-count-total' => '{{PLURAL:$2|1 хәбәр}}', # Fuzzy
+	'articlefeedbackv5-special-count-total-title' => '$1 {{PLURAL:$1|хәбәр}} коммент менән, $2 {{PLURAL:$2| хәбәр}} комментһыҙ',
 	'articlefeedbackv5-special-watchlist-showing' => ' [[$1|$2]] күҙәткән мәҡәләләр тараһында фекерҙәр',
 	'articlefeedbackv5-special-central-watchlist-link' => 'Минең [[$1|күҙәтеү исемлегендәге мәҡәләләр тураһында фекрҙәр]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Бөтә биттәрҙән кире бәйләнеште ҡарау]]',
 	'articlefeedbackv5-updates-since' => 'Ҡуйылғандан башлап {{PLURAL:$1|1 үҙгәртеү|$1 үҙгәртеү}}',
 	'articleFeedbackv5-details-link' => 'Ентеклерәк',
-	'articlefeedbackv5-revision-link' => '(иҫке мәҡәләне ҡарағыҙ)', # Fuzzy
+	'articlefeedbackv5-revision-link' => '(элекке битте ҡара)',
 	'articlefeedbackv5-special-more' => 'Тағы хәбәрҙәр',
 	'articlefeedbackv5-special-refresh' => 'Исемлекте яңыртырға',
 	'articlefeedbackv5-special-pagetitle' => '«$1» бите өсөн кире белдереү',
@@ -3250,25 +3288,85 @@ $messages['ba'] = array(
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'Минең күҙәтеү исемлегендәге мәҡәләләр тураһында фекерҙәр',
 	'articlefeedbackv5-special-central-pagetitle' => 'Үҙәк кире белдереү бите',
 	'articlefeedbackv5-loading-tag' => 'Асыла...',
-	'articlefeedbackv5-status-hide' => '$2  $3 был яуапты ҡатнышыусы $1 йәшерҙе', # Fuzzy
-	'articlefeedbackv5-status-unhide' => '$2  $3 был яуапты ҡатнышыусы $1 асты', # Fuzzy
+	'articlefeedbackv5-status-hide' => '$2  $3 был яуапты ҡатнашыусы $1 йәшерҙе',
+	'articlefeedbackv5-status-unhide' => '$2  $3 был яуапты ҡатнашыусы $1 асты',
+	'articlefeedbackv5-status-request' => '$2  $3 был яуаптың йәшерелеүе ҡатнашыусы тарафынан $1 һоратылды',
+	'articlefeedbackv5-status-unrequest' => ' $1 ҡатнашыусы был яуаптың $2  $3 йәшерелеүен кире ҡағыуҙы һораны',
+	'articlefeedbackv5-status-decline' => '$1 ҡатнашыусының был яуапты $2 урынына $3 тип үҙгәртергә һорауы кире ҡағылды',
+	'articlefeedbackv5-status-autohide' => 'Был яуапты $1 ҡатнашыусы  автоматик рәүештә хаталы тип билдәләне $2 $3',
+	'articlefeedbackv5-status-oversight' => '$1 ҡатнашыусы был яуапты $2 $3 йәшергәйне',
+	'articlefeedbackv5-status-unoversight' => '$2  $3 был яуапты ҡатнашыусы $1 асты',
+	'articlefeedbackv5-status-autoflag' => '$2  $3 был яуапты ҡатнашыусы $1 автоматик рәүештә билдәләне',
+	'articlefeedbackv5-status-feature' => 'Был яуапты ҡатнашыусы  $1 файҙалы тип билдәләне $2 $3',
+	'articlefeedbackv5-status-unfeature' => 'Ҡатнашыусы  $1 был яуаптағы файҙалы тигән билдәне алды с$2   $3',
+	'articlefeedbackv5-status-resolve' => 'Был яуапты ҡатнашыусы  $1 көйләнгән тип билдәләне $2   $3',
+	'articlefeedbackv5-status-unresolve' => 'Был яуаптан ҡатнашыусы  $1 көйләнгән тип ҡуйған билдә алынды $2 $3',
+	'articlefeedbackv5-status-noaction' => 'Был яуапты ҡатнашыусы  $1 файҙалы тип билдәләне $2 $3',
+	'articlefeedbackv5-status-unnoaction' => 'Ҡатнашыусы  $1 был яуаптан көйләнгән тигән билдәне алды с$2   $3',
+	'articlefeedbackv5-status-inappropriate' => 'Был яуапты ҡатнашыусы $1 ҡулай түгел тип билдәләне $2 $3',
 	'articlefeedbackv5-new-marker' => 'Яңы',
 	'articlefeedbackv5-oversight-marker' => 'Тикшереүсе йәшергән',
 	'articlefeedbackv5-hide-marker' => 'Йәшерен', # Fuzzy
 	'articlefeedbackv5-feature-marker' => 'Һайланған', # Fuzzy
 	'articlefeedbackv5-resolve-marker' => 'Сиселгән',
+	'articlefeedbackv5-inappropriate-marker' => 'Йәшерелгән',
+	'articlefeedbackv5-archive-marker' => 'Архивланған',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 билдә}}',
-	'articlefeedbackv5-form-feature' => 'Белдереүҙе һайланғандарға өҫтәргә', # Fuzzy
-	'articlefeedbackv5-form-unfeature' => 'Белдереүҙе һайланғандарҙан алырға', # Fuzzy
-	'articlefeedbackv5-form-resolve' => 'Сиселгән тип билдәләргә', # Fuzzy
-	'articlefeedbackv5-form-unresolve' => 'Сиселгән билдәһен алып таштарға', # Fuzzy
+	'articlefeedbackv5-form-note-added' => 'Мәҡәлә өҫтәлгән',
+	'articlefeedbackv5-form-note' => 'Комментарий өҫтәргә',
+	'articlefeedbackv5-form-feature' => 'Файҙалы',
+	'articlefeedbackv5-form-unfeature' => 'Кире алырға',
+	'articlefeedbackv5-form-resolve' => 'Сиселгән',
+	'articlefeedbackv5-form-unresolve' => 'Кире алырға',
+	'articlefeedbackv5-form-noaction' => 'Бер ниндәй эш-ғәмәл талап ителмәй',
+	'articlefeedbackv5-form-unnoaction' => 'Кире алырға',
+	'articlefeedbackv5-form-noaction-own' => 'Хәбәремде кире алырға',
+	'articlefeedbackv5-form-unnoaction-own' => 'Хәбәремде күрһәтергә',
 	'articlefeedbackv5-form-inappropriate' => 'Был фекерҙе йәшерергә',
-	'articlefeedbackv5-form-unhide' => 'Был фекерҙә күрһәтергә', # Fuzzy
+	'articlefeedbackv5-form-uninappropriate' => 'Ҡабат ҡуйырға',
+	'articlefeedbackv5-form-hide' => 'Был хәбәрҙе йәшерергә',
+	'articlefeedbackv5-form-unhide' => 'Ҡабат ҡуйырға',
+	'articlefeedbackv5-form-archive' => 'Архивланған',
+	'articlefeedbackv5-form-unarchive' => 'Кире алырға',
 	'articlefeedbackv5-form-helpful' => 'Файҙалы тигән тамға ҡуйырға ($1)',
-	'articlefeedbackv5-form-oversight' => 'Күҙәтеү һоратырға', # Fuzzy
-	'articlefeedbackv5-form-unoversight' => 'Күҙәтеү һорауҙы кире алырға', # Fuzzy
+	'articlefeedbackv5-form-flag' => 'Боҙоу тип билдәләргә',
+	'articlefeedbackv5-form-oversight' => 'Күҙәтеү',
+	'articlefeedbackv5-form-unoversight' => 'Кире алырға',
+	'articlefeedbackv5-form-request' => 'Тикшереү һоратырға',
+	'articlefeedbackv5-form-unrequest' => 'Тикшереү һоратыуҙы кире ҡағырға',
 	'articlefeedbackv5-form-decline' => 'Күҙәтеү һорауҙы кире ҡағырға',
 	'articlefeedbackv5-form-declined' => 'Кире ҡағыү йәшерелгән',
+	'articlefeedbackv5-form-discuss-talk' => 'Фекер алышыу битендә фекер алышырға',
+	'articlefeedbackv5-form-discuss-user' => 'Хәбәрҙең авторы менән бәйләнешкә инергә',
+	'articlefeedbackv5-form-discuss-talk-exists' => 'Фекер алышыу битендәге бәхәсте ҡарарға',
+	'articlefeedbackv5-form-tooltip-note' => 'Флагыгыҙҙы аңлатыусы мәҡәлә өҫтәргә',
+	'articlefeedbackv5-form-tooltip-feature' => 'Был битте яҡшыртырға ярҙам итә ала',
+	'articlefeedbackv5-form-tooltip-flag' => 'Мәғәнәһеҙлек, спам, битәрләүҙәр, шәхси мәғлүмәттәр...',
+	'articlefeedbackv5-form-tooltip-oversight' => 'Битәрләүҙәр, шәхси мәғлүмәттәр...',
+	'articlefeedbackv5-form-tooltip-unoversight' => 'Күҙәтеүҙе кире ҡағырға',
+	'articlefeedbackv5-form-tooltip-request' => 'Битәрләүҙәр, шәхси мәғлүмәттәр...',
+	'articlefeedbackv5-form-tooltip-unrequest' => 'Күҙәтеү һорауҙы кире алырға',
+	'articlefeedbackv5-form-tooltip-decline' => 'Күҙәтеү һорауҙы кире ҡағырға',
+	'articlefeedbackv5-form-tooltip-discuss-talk' => 'Яуап буйынса фекер алышыу битендә фекер алышырға',
+	'articlefeedbackv5-form-tooltip-discuss-user' => 'Фекер тураһында уны яҙған файҙаланыусы менән фекер алышырға',
+	'articlefeedbackv5-discuss-talk-section-title' => 'Уҡыусының фекере: $1',
+	'articlefeedbackv5-discuss-user-section-title' => '$2 тураһында һеҙҙең фекер',
+	'articlefeedbackv5-discuss-talk-section-content' => '$1 [[$2 был комментарийҙы]] $3 баҫтырған ([[$5|бөтә фекерҙәрҙе ҡарарға]]).
+
+$6
+
+Ниндәй ҙә булһа уй-фекер бармы?
+
+~~~~',
+	'articlefeedbackv5-discuss-user-section-content' => ' "$7" бите тураһындағы фекерегеҙ өсөн рәхмәт.
+
+ Һеҙ ошо комментарийҙы $3 урынлаштырҙығыҙ ([[$5|бөтә фекерҙәрҙе лә ҡарарға]]).
+
+$6
+
+Һеҙҙең ошо битте яҡшыртыуға индергән өлөшөгөҙҙө юғары баһалайбыҙ!
+
+~~~~',
 	'articlefeedbackv5-form1-header-found' => '$2  {{GENDER:$1|эҙләгәнде таптым}}',
 	'articlefeedbackv5-form1-header-not-found' => '$2 {{GENDER:$1|эҙләгәнде тапманым}}',
 	'articlefeedbackv5-form1-header-left-comment' => '$2 {{GENDER:$1|аңлатма яҙҙым}}',
@@ -3283,7 +3381,10 @@ $messages['ba'] = array(
 	'articlefeedbackv5-abuse-saved' => 'Насарға ҡулланыу тип билдәләнгән',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Билдәне алырға',
 	'articlefeedbackv5-error-loading-feedback' => 'Яуап ебәргәндә хата китте',
+	'articlefeedbackv5-insufficient-permissions' => 'Разрешениелар кимәле етерлек түгел',
 	'articlefeedbackv5-invalid-feedback-id' => 'Яуап идентификаторы дөрөҫ түгел',
+	'articlefeedbackv5-invalid-log-id' => 'Журналдың ID-ы яраҡлы түгел',
+	'articlefeedbackv5-invalid-log-update' => 'Журнал яҙмаһы яңыртыла алмай',
 	'articlefeedbackv5-invalid-feedback-flag' => 'Яуап өсөн рөхсәт ителмәгән тамға',
 	'articlefeedbackv5-invalid-feedback-state' => 'Яуап тамғаһының рөхсәт ителмәгән торошо',
 	'articlefeedbackv5-go-to-article' => 'Мәҡәләне ҡарау', # Fuzzy
@@ -5401,6 +5502,7 @@ $messages['ce'] = array(
  * @author Frettie
  * @author Jezevec
  * @author Jkjk
+ * @author Juandev
  * @author Kuvaly
  * @author Lahwaacz
  * @author Leanes
@@ -5453,6 +5555,7 @@ $messages['cs'] = array(
 	'protect-level-aft-member' => 'Povolit pouze pro přihlášeného uživatele', # Fuzzy
 	'protect-level-aft-editor' => 'Povolit pouze pro potvrzené uživatele', # Fuzzy
 	'protect-level-aft-administrator' => 'Povolit pouze pro správce', # Fuzzy
+	'protect-level-aft-noone' => 'Zakázat pro všechny uživatele',
 	'restriction-articlefeedbackv5' => 'Viditelnost',
 	'articlefeedbackv5-disabled' => 'Zpětná vazba byla zakázána.',
 	'articlefeedbackv5-disabled-admin-button-text' => 'Změnit zámek',
@@ -23317,7 +23420,12 @@ $messages['pl'] = array(
 	'articlefeedbackv5-form-discuss-talk-exists' => 'Zobacz stronę dyskusji',
 	'articlefeedbackv5-form-tooltip-noaction' => 'Niejasne, nieistotne, pochwały, duplikat ...',
 	'articlefeedbackv5-form-tooltip-noaction-own' => 'Niejasne, nieistotne, pochwały, duplikat ...',
+	'articlefeedbackv5-form-tooltip-inappropriate' => 'Wygłupy, spam, ataki, dane prywatne ...',
+	'articlefeedbackv5-form-tooltip-hide' => 'Wygłupy, spam, ataki, dane prywatne ...',
 	'articlefeedbackv5-form-tooltip-unhide' => 'Pokaż',
+	'articlefeedbackv5-form-tooltip-flag' => 'Wygłupy, spam, ataki, dane prywatne ...',
+	'articlefeedbackv5-form-tooltip-oversight' => 'Ataki, dane prywatne ...',
+	'articlefeedbackv5-form-tooltip-request' => 'Ataki, dane prywatne ...',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 znalazł, czego szukał|$2 znalazła czego szukała}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 nie znalazł, czego szukał|$2 nie znalazła, czego szukała}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 napisał ten komentarz.|$2 napisała ten komentarz.}}',
@@ -23524,6 +23632,7 @@ $messages['pl'] = array(
 	'articlefeedbackv5-activity-feedback-info' => 'Ocena wpisu #$1 przez $2', # Fuzzy
 	'articlefeedbackv5-activity-feedback-date' => 'Zamieszczono $1',
 	'articlefeedbackv5-activity-permalink' => 'permalink',
+	'articlefeedbackv5-activity-note-archive' => 'Zarchiwizowano po {{PLURAL:$1|$1 dniu|$1 dniach}} braku aktywności edytora',
 	'articlefeedbackv5-activity-more' => 'Pokaż więcej aktywności',
 	'articlefeedbackv5-talk-view-feedback' => 'Pokaż opinię czytelnika',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Opinie z moich obserwowanych stron',
@@ -24965,6 +25074,14 @@ $4',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Oculta automaticamente. Regra $1',
 	'abusefilter-edit-action-aftv5request' => '(Avaliação do Artigo) Supervisão requerida automaticamente',
 	'articlefeedbackv5-abusefilter-note-aftv5request' => 'Supervisão automaticamente requerida. Regra: $1',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'articlefeedbackv5-cta2-button-text' => 'Astawan yachay',
+	'articlefeedbackv5-help-tooltip-linktext' => 'Astawan yachay',
 );
 
 /** Romanian (română)
@@ -30767,6 +30884,17 @@ $messages['vi'] = array(
 	'articlefeedbackv5-disable-preference' => 'Ẩn bảng Phản hồi bài khỏi các trang',
 	'articlefeedbackv5-activity-feedback-date' => 'Đăng vào $1',
 	'articlefeedbackv5-activity-permalink' => 'liên kết thường trực',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'articlefeedbackv5-cta-thanks' => 'Danö!',
+	'articlefeedbackv5-cta1-edit-linktext' => 'Redakön padi at',
+	'articlefeedbackv5-cta4-button-text-or' => 'u',
+	'articlefeedbackv5-overlay-close' => 'Färmükön',
+	'restriction-articlefeedbackv5' => 'Logäd',
 );
 
 /** Waray (Winaray)
