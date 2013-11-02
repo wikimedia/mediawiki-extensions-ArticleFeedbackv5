@@ -5497,7 +5497,7 @@ $messages['ce'] = array(
 	'articlefeedbackv5-help-tooltip-linktext' => 'Ма-дарра',
 );
 
-/** Czech (česky)
+/** Czech (čeština)
  * @author Chmee2
  * @author Frettie
  * @author Jezevec
@@ -17832,9 +17832,9 @@ $messages['lb'] = array(
 	'articlefeedbackv5-cta1-learn-how' => 'Wéi een ännere kann',
 	'articlefeedbackv5-cta1-edit-linktext' => 'Dës Säit änneren',
 	'articlefeedbackv5-cta2-confirmation-title' => 'Hëlleft {{SITENAME}} ze verbesseren',
-	'articlefeedbackv5-cta2-confirmation-call' => 'Dësen Internet-Site ass vu Leit esou wéi Dir gemaach. Kënnt dir eis eng Hand upaken?',
+	'articlefeedbackv5-cta2-confirmation-call' => 'Dësen Internetsite ass vu Leit sou wéi Dir gemaach. Kënnt dir eis eng Hand upaken?',
 	'articlefeedbackv5-cta2-button-text' => 'Fir méi ze wëssen',
-	'articlefeedbackv5-cta3-confirmation-title' => 'Maacht w.e.g. bäi enger kuerzer Ëmfro mat',
+	'articlefeedbackv5-cta3-confirmation-title' => 'Maacht w.e.g. bei enger kuerzer Ëmfro mat',
 	'articlefeedbackv5-cta3-confirmation-call' => 'Et dauert nëmmen eng Minutt an hëlleft {{SITENAME}} ze verbesseren.',
 	'articlefeedbackv5-cta3-button-text' => 'Mat der Ëmfro ufänken',
 	'articlefeedbackv5-cta4-confirmation-title' => 'Maacht bei eis mat',
@@ -24068,7 +24068,7 @@ $messages['ps'] = array(
 	'articlefeedbackv5-special-sort-helpful-asc' => 'ناګټور',
 	'articlefeedbackv5-special-sort-age-desc' => 'تر ټولو نوی',
 	'articlefeedbackv5-special-sort-age-asc' => 'تر ټولو زوړ',
-	'articlefeedbackv5-special-filter-select-more' => 'نور چاڼګران', # Fuzzy
+	'articlefeedbackv5-special-filter-select-more' => 'نور',
 	'articlefeedbackv5-updates-since' => 'د لېږلو له وخت راهيسې {{PLURAL:$1|1 سمون|$1 سمونونه}}',
 	'articleFeedbackv5-details-link' => 'تفصيلات',
 	'articlefeedbackv5-revision-link' => '(زوړ مخ کتل)',
