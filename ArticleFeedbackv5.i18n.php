@@ -5495,6 +5495,7 @@ $messages['ce'] = array(
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'ТӀетоха билгалдаккхар',
 	'articlefeedbackv5-noteflyover-decline-label' => 'ТӀетоха билгалдаккхар',
 	'articlefeedbackv5-help-tooltip-linktext' => 'Ма-дарра',
+	'articlefeedbackv5-section-linktext' => 'язде хьайна хетарг',
 );
 
 /** Czech (čeština)
@@ -18013,6 +18014,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-invalid-feedback' => 'De gefrote Feedback gëtt et net.',
 	'articlefeedbackv5-viewactivity' => 'Aktivitéit weisen',
 	'articlefeedbackv5-mask-view-contents' => 'Inhalt weisen',
+	'articlefeedbackv5-special-disclaimer' => 'Dëst ass e Prototyp. Benotzt dee w.e.g. net, et sief Dir wiert dozou invitéiert ginn.',
 	'articlefeedbackv5-special-goback' => "D'Säit mam Feedback weisen",
 	'articlefeedbackv5-special-central-goback' => 'Kuckt méi Feedback zu anere Säiten',
 	'articlefeedbackv5-permalink-written-by-editor' => 'Vun engem registréierte Benotzer geschriwwen',
