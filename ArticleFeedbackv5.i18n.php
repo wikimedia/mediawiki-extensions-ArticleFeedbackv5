@@ -18867,6 +18867,13 @@ $messages['mg'] = array(
 	'articlefeedbackv5-bucket1-form-submit' => 'Tehirizo ny sosokevitrao',
 );
 
+/** Eastern Mari (олык марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'Тиде лаштыквер тендан гаяк еҥ-влак дене ыштен шындалтын.',
+);
+
 /** Macedonian (македонски)
  * @author Bjankuloski06
  */
@@ -24212,6 +24219,7 @@ $messages['pt'] = array(
 	'protect-level-aft-editor' => 'Ativar apenas para utilizadores auto-confirmados',
 	'protect-level-aft-administrator' => 'Ativar apenas para administradores',
 	'protect-level-aft-noone' => 'Desativar para todos os utilizadores',
+	'articlefeedbackv5-protection-title' => 'Alterada a visibilidade da ferramenta de comentários de artigos em "[[$1]]"',
 	'restriction-articlefeedbackv5' => 'Visibilidade',
 	'articlefeedbackv5-disabled' => 'Avaliação foi desativada',
 	'articlefeedbackv5-disabled-admin-admin' => 'Avaliação foi desativada para leitores e editores. Eles não podem postar novas avaliações nesta página.',
@@ -24408,18 +24416,23 @@ Agradecemos sua contribuição nesta página!
 	'articlefeedbackv5-form2-header-suggestion' => '{{GENDER:$1|$1}} tinha uma sugestão:',
 	'articlefeedbackv5-form-anon-username' => 'Um leitor',
 	'articlefeedbackv5-form-anon-message' => 'Postado anonimamente por $1',
+	'articlefeedbackv5-form-invalid' => 'ID do formulário de comentário inválido.',
 	'articlefeedbackv5-central-header-left-comment' => '{{GENDER:$1|$2}} postou a [[$4|avaliação]] para $3',
 	'articlefeedbackv5-abuse-saved' => 'Marcado como abusivo',
 	'articlefeedbackv5-abuse-saved-tooltip' => 'Remover a revisão que realizou',
 	'articlefeedbackv5-error-loading-feedback' => 'Erro carregando comentários',
 	'articlefeedbackv5-insufficient-permissions' => 'Nível de permissão insuficiente',
+	'articlefeedbackv5-invalid-feedback-id' => 'ID de comentário inválido',
 	'articlefeedbackv5-invalid-log-id' => 'Registro de ID inválido',
 	'articlefeedbackv5-invalid-log-update' => 'Registro de entrada não pode ser atualizado',
+	'articlefeedbackv5-invalid-feedback-flag' => 'Sinalizador de comentário inválido',
+	'articlefeedbackv5-invalid-feedback-state' => 'Estado do sinalizador de comentário inválido',
 	'articlefeedbackv5-feedback-reloaded-after-error' => 'Ocorreu o erro ($1). A avaliação foi recarregada para refletir o estado atual.',
 	'articlefeedbackv5-go-to-article' => 'Ver página',
 	'articlefeedbackv5-discussion-page' => 'Discussão',
 	'articlefeedbackv5-whats-this' => 'Ajuda',
 	'articlefeedbackv5-settings-menu-title' => 'Preferências',
+	'articlefeedbackv5-invalid-page-id' => 'ID da página inválido',
 	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 de utilizadores encontraram o que estavam procurando}}',
 	'articlefeedbackv5-found-percent-title' => 'Baseado em $1 {{PLURAL:$1|nota|notas}} (excluindo os comentários inapropriados)',
 	'articlefeedbackv5' => 'Avaliação de artigos - Página central',
@@ -24646,16 +24659,114 @@ Agradecemos sua contribuição nesta página!
 	'articlefeedbackv5-toolbox-add' => 'Adicione seu comentário',
 	'articlefeedbackv5-leave-warning' => 'Os dados que você digitou não foram salvos.',
 	'articlefeedbackv5-toolbox-enable' => 'Ativar comentários',
-	'articlefeedbackv5-disable-preference' => 'Não mostrar nas páginas o widget da avaliação de artigos',
+	'articlefeedbackv5-disable-preference' => 'Não mostrar o widget do Article Feedback nas páginas',
 	'right-aft-reader' => 'Publicar comentário e marcá-lo como (in)útil',
 	'right-aft-member' => 'Publicar comentário e marcá-lo como (in)útil',
 	'right-aft-editor' => 'Destacar e resolver comentário',
 	'right-aft-monitor' => 'Ocultar comentário e pedir supervisão',
 	'right-aft-administrator' => 'Ver AFT nas páginas protegidas',
 	'right-aft-oversighter' => 'Supervisionar comentário',
+	'log-name-articlefeedbackv5' => 'Registro de atividade dos comentários do artigo',
+	'log-description-articlefeedbackv5' => 'Este é o registro de atividade dos comentários publicados pelos usuários através do Article Feedback.',
+	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|publicou}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|alterou o estado do}} [[$3|comentário #$4]] para supervisionado em [[$5]]',
+	'logentry-articlefeedbackv5-unoversight' => '$1 {{GENDER:$2|remover o estado de supervisão do}} [[$3|comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-decline' => '$1 {{GENDER:$2|recusou a supervisão para}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-request' => '$1 {{GENDER:$2|solicitou supervisão para}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-unrequest' => '$1 {{GENDER:$2|apagou a solicitação de supervisão para}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-flag' => '$1 {{GENDER:$2|marcou como abusivo}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-unflag' => '$1 {{GENDER:$2|desmarcou como abusivo}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-autoflag' => '$1 {{GENDER:$2|marcou automaticamente como abusivo}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-feature' => '$1 {{GENDER:$2|marcou como útil}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-unfeature' => '$1 {{GENDER:$2|desmarcou como útil}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-resolve' => '$1 {{GENDER:$2|marcou como resolvido}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-unresolve' => '$1 {{GENDER:$2|desmarcou como resolvido}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-noaction' => '$1 {{GENDER:$2|marcou como não-acionável}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-unnoaction' => '$1 {{GENDER:$2|desmarcou como não-acionável}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-inappropriate' => '$1 {{GENDER:$2|marcou como inapropriado}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-uninappropriate' => '$1 {{GENDER:$2|desmarcou como inapropriado}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-archive' => '$1 {{GENDER:$2|arquivou}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-unarchive' => '$1 {{GENDER:$2|desarquivou}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-hide' => '$1 {{GENDER:$2|ocultou}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-unhide' => '$1 {{GENDER:$2|desocultou}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-autohide' => '$1 {{GENDER:$2|ocultou automaticamente}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-helpful' => '$1 {{GENDER:$2|marcou como útil}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-unhelpful' => '$1 {{GENDER:$2|marcou como inútil}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|desmarcou como útil}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|desmarcou como inútil}} [[$3|o comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|apagou todas as sinalizações do}} [[$3|comentário #$4]] em [[$5]]',
+	'logentry-articlefeedbackv5-protect' => '$1 alterou a visibilidade da ferramenta de comentários de artigos em "$3" $4',
+	'articlefeedbackv5-activity-pane-header' => 'Registro de atividade',
+	'articlefeedbackv5-activity-feedback-info' => 'Comentário de $2',
+	'articlefeedbackv5-activity-feedback-date' => 'Publicado em $1',
+	'articlefeedbackv5-activity-permalink' => 'ligação permanente',
+	'articlefeedbackv5-activity-item-request' => '$1 solicitou supervisão em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 não solicitou supervisão em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 recusou supervisão em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 marcou esta publicação em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 desmarcou esta publicação em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-autoflag' => '$1 marcou esta publicação em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 supervisionou esta publicação em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 apagou a supervisão desta publicação em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 marcou esta publicação como útil em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 desmarcou esta publicação como útil em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 marcou esta publicação como resolvida em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 desmarcou esta publicação como resolvida em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-noaction' => '$1 marcou esta publicação como não-acionável em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 desmarcou esta publicação como não-acionável em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 marcou esta publicação como inapropriado em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 desmarcou esta publicação como inapropriado em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-hide' => '$1 ocultou esta publicação em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unhide' => '$1 desocultou esta publicação em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-autohide' => '$1 ocultou esta publicação em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-archive' => '$1 arquivou esta publicação em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unarchive' => '$1 desarquivou esta publicação em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 marcou esta publicação como útil em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 marcou esta publicação como inútil em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 desmarcou esta publicação como útil em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 desmarcou esta publicação como inútil em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 apagou todas as sinalizações desta publicação em $4 às $5 $2',
+	'articlefeedbackv5-activity-note-archive' => 'Arquivado após {{PLURAL:$1|$1 dia|$1 dias}} sem atividade',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 ação|$1 ações}} nesta publicação',
 	'articlefeedbackv5-activity-more' => 'Mostrar mais Atividade',
 	'articlefeedbackv5-article-view-feedback' => '$1 {{PLURAL:$1|comentário de leitor|comentários de leitores}}',
+	'articlefeedbackv5-talk-view-feedback' => 'Ver comentários do leitor',
+	'articlefeedbackv5-watchlist-view-feedback' => 'Comentários das minhas páginas vigiadas',
+	'articlefeedbackv5-email-request-oversight-subject' => 'Supervisão solicitada para a página de comentários do artigo',
+	'articlefeedbackv5-email-request-oversight-body' => 'Olá, supervisores!
+
+Foi solicitada por $1 supervisão para o(s) comentário(s) publicado(s) nesta página:
+
+$2
+
+Por favor reveja este(s) comentário(s), então aprove ou não esta(s) solicitação(ões) de supervisão:
+
+$3
+$5
+
+Obrigado,
+
+
+A Equipe de {{SITENAME}}
+
+
+P.S.: Se você tiver dúvidas sobre os recursos de supervisão da página de comentários do artigo, por favor leia estas perguntas e respostas frequentes:
+
+$4',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'Este comentário foi adicionado à solicitação de supervisão:
+
+$1',
+	'articlefeedbackv5-disable-flyover-title' => 'Apagar esta ferramenta?',
+	'articlefeedbackv5-disable-flyover-help-message' => 'Para remover o Article Feedback, vá para "$1" > "$2" e clique em "$3"',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ir para as minhas preferências',
+	'abusefilter-edit-action-aftv5resolve' => '(Article Feedback) Resolver automaticamente',
+	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Resolvido automaticamente. Regra: $1',
+	'abusefilter-edit-action-aftv5flagabuse' => '(Article Feedback) Marcar automaticamente como abusivo',
+	'articlefeedbackv5-abusefilter-note-aftv5flag' => 'Marcado automaticamente como abusivo. Regra: $1',
+	'abusefilter-edit-action-aftv5hide' => '(Article Feedback) Ocultar automaticamente',
+	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Ocultado automaticamente. Regra: $1',
+	'abusefilter-edit-action-aftv5request' => '(Article Feedback) Solicitar supervisão automaticamente',
+	'articlefeedbackv5-abusefilter-note-aftv5request' => 'Solicitada supervisão automaticamente. Regra: $1',
 );
 
 /** Brazilian Portuguese (português do Brasil)
@@ -26150,6 +26261,7 @@ $1",
  * @author Putnik
  * @author Александр Сигачёв
  * @author Сrower
+ * @author Сай
  */
 $messages['ru'] = array(
 	'articlefeedbackv5-cta-thanks' => 'Спасибо!',
