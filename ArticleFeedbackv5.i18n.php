@@ -26358,7 +26358,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-error-nofeedback' => 'Оставьте, пожалуйста, свой отзыв.',
 	'articlefeedbackv5-error-flagging' => 'Ошибка при проставлении метки отзыва.',
 	'articlefeedbackv5-error-throttled' => 'Ваше сообщение было отклонено, так как вы недавно отправили их больше, чем рекомендовано правилами составления отзывов проекта «{{SITENAME}}». Пожалуйста, не отправляйте чересчур много сообщений и не делайте этого слишком часто.',
-	'articlefeedbackv5-protection-level' => 'Обратная связь для статей',
+	'articlefeedbackv5-protection-level' => 'Отзывы о статьях',
 	'articlefeedbackv5-protection-level-error' => 'Уровень защиты обратной для связи для статьи не может быть выше, чем её уровень защиты от редактирования',
 	'protect-level-aft-reader' => 'Включить для всех участников',
 	'protect-level-aft-member' => 'Включить только для зарегистрированных участников',
@@ -26581,7 +26581,7 @@ $6
 	'articlefeedbackv5-invalid-page-id' => 'Неправильный идентификатор страницы',
 	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 читателей нашли то, что искали}}',
 	'articlefeedbackv5-found-percent-title' => 'Основано на $1 {{PLURAL:$1|отзыве|отзывах}} (исключая неуместные комментарии)',
-	'articlefeedbackv5' => 'Обратная связь для статей — центральная страница',
+	'articlefeedbackv5' => 'Отзывы о статьях — Центральная страница',
 	'articlefeedbackv5watchlist' => 'Отзывы о статьях — наблюдаемые мной страницы',
 	'articlefeedbackv5-desc' => 'Отзывы о статьях',
 	'articlefeedbackv5-comment-more' => 'Больше',
@@ -26687,6 +26687,7 @@ $6
 	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Почему вы скрыли этот отзыв?',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Добавить примечание',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Узнать больше',
+	'articlefeedbackv5-noteflyover-unhide-caption' => 'Отобразить',
 	'articlefeedbackv5-noteflyover-unhide-label' => 'Добавить примечание',
 	'articlefeedbackv5-noteflyover-unhide-placeholder' => 'Почему вы отменили скрытие этого отзыва?',
 	'articlefeedbackv5-noteflyover-unhide-submit' => 'Добавить заметку',
@@ -26871,7 +26872,9 @@ P.S.: Если у Вас возникли вопросы по использов
 
 $4',
 	'articlefeedbackv5-disable-flyover-title' => 'Удалить этот инструмент?',
+	'articlefeedbackv5-disable-flyover-help-message' => 'Чтобы убрать Отзывы о статьях, перейдите в «$1» > «$2» и отметьте «$3»',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Перейти к моим персональным настройкам',
+	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Решено автоматически. Правило: $1',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Отзыв о статье) Автоматически пометить как нарушение',
 	'articlefeedbackv5-abusefilter-note-aftv5flag' => 'Автоматически отмечено как нарушение. Правило: $1',
 	'abusefilter-edit-action-aftv5hide' => '(Отзыв о статье) Автоматическое скрытие',
@@ -27875,6 +27878,7 @@ $messages['sr-ec'] = array(
 	'articlefeedbackv5-disable-preference' => 'Не приказуј елемент „Оцењивање чланака“ на страницама',
 	'articlefeedbackv5-activity-pane-header' => 'Дневник активности',
 	'articlefeedbackv5-activity-permalink' => 'трајна веза',
+	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Аутоматски сакривено.  Правило: $1',
 );
 
 /** Serbian (Latin script) (srpski (latinica)‎)
@@ -28065,6 +28069,7 @@ $messages['sr-el'] = array(
 	'articlefeedbackv5-disable-preference' => 'Ne prikazuj element „Ocenjivanje članaka“ na stranicama',
 	'articlefeedbackv5-activity-pane-header' => 'Dnevnik aktivnosti',
 	'articlefeedbackv5-activity-permalink' => 'trajna veza',
+	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automatski sakriveno. Pravilo: $1',
 );
 
 /** Swedish (svenska)
