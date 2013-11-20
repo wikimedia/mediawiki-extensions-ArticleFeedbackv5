@@ -656,7 +656,7 @@ includes one of these issues:
 	'articlefeedbackv5-activity-item-decline' => '$1 declined oversight on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-flag' => '$1 flagged this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-unflag' => '$1 unflagged this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-autoflag' => '$1 flagged this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-autoflag' => '$1 autoflagged this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-oversight' => '$1 oversighted this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-unoversight' => '$1 removed oversight on this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-item-feature' => '$1 marked this post as useful on $4 at $5 $2',
