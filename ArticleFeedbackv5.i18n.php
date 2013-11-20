@@ -644,39 +644,39 @@ includes one of these issues:
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|un-marked as helpful}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|un-marked as unhelpful}} [[$3|feedback post #$4]] on [[$5]]',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|cleared all flags}} [[$3|feedback post #$4]] on [[$5]]',
-	'logentry-articlefeedbackv5-protect' => '$1 changed visibility of the article feedback tool on "$3" $4',
+	'logentry-articlefeedbackv5-protect' => '$1 {{GENDER:$2|changed}} visibility of the article feedback tool on "$3" $4',
 
 	/* Activity Pane phrases */
 	'articlefeedbackv5-activity-pane-header' => 'Activity Log',
 	'articlefeedbackv5-activity-feedback-info' => 'Feedback by $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Posted on $1',
 	'articlefeedbackv5-activity-permalink' => 'permalink',
-	'articlefeedbackv5-activity-item-request' => '$1 requested oversight on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-unrequest' => '$1 unrequested oversight on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-decline' => '$1 declined oversight on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-flag' => '$1 flagged this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-unflag' => '$1 unflagged this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-autoflag' => '$1 autoflagged this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-oversight' => '$1 oversighted this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-unoversight' => '$1 removed oversight on this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-feature' => '$1 marked this post as useful on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-unfeature' => '$1 un-marked this post as useful on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-resolve' => '$1 marked this post as resolved on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-unresolve' => '$1 un-marked this post as resolved on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-noaction' => '$1 marked this post as non-actionable on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-unnoaction' => '$1 un-marked this post as non-actionable on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 marked this post as inappropriate on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-uninappropriate' => '$1 un-marked this post as inappropriate on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-hide' => '$1 hid this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-unhide' => '$1 un-hid this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-autohide' => '$1 hid this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-archive' => '$1 archived this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-unarchive' => '$1 un-archived this post on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-helpful' => '$1 marked this post as helpful on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 marked this post as unhelpful on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 unmarked this post as helpful on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 unmarked this post as unhelpful on $4 at $5 $2',
-	'articlefeedbackv5-activity-item-clear-flags' => '$1 cleared all flags for this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-request' => '$1 {{GENDER:$6|requested}} oversight on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 {{GENDER:$6|unrequested}} oversight on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 {{GENDER:$6|declined}} oversight on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 {{GENDER:$6|flagged}} this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 {{GENDER:$6|unflagged}} this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-autoflag' => '$1 {{GENDER:$6|autoflagged}} this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 {{GENDER:$6|oversighted}} this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 {{GENDER:$6|removed}} oversight on this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 {{GENDER:$6|marked}} this post as useful on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 {{GENDER:$6|un-marked}} this post as useful on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 {{GENDER:$6|marked}} this post as resolved on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 {{GENDER:$6|un-marked}} this post as resolved on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-noaction' => '$1 {{GENDER:$6|marked}} this post as non-actionable on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 {{GENDER:$6|un-marked}} this post as non-actionable on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 {{GENDER:$6|marked}} this post as inappropriate on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 {{GENDER:$6|un-marked}} this post as inappropriate on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-hide' => '$1 {{GENDER:$6|hid}} this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-unhide' => '$1 {{GENDER:$6|un-hid}} this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-autohide' => '$1 {{GENDER:$6|hid}} this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-archive' => '$1 {{GENDER:$6|archived}} this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-unarchive' => '$1 {{GENDER:$6|un-archived}} this post on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 {{GENDER:$6|marked}} this post as helpful on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 {{GENDER:$6|marked}} this post as unhelpful on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 {{GENDER:$6|unmarked}} this post as helpful on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 {{GENDER:$6|unmarked}} this post as unhelpful on $4 at $5 $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 {{GENDER:$6|cleared}} all flags for this post on $4 at $5 $2',
 	'articlefeedbackv5-activity-note-archive' => 'Archived after {{PLURAL:$1|$1 day|$1 days}} of editor inactivity',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 action on this post|$1 actions on this post}}',
 	'articlefeedbackv5-activity-more' => 'Show more Activity',
@@ -10756,7 +10756,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-form-tooltip-discuss-user' => 'Discutez de ses commentaires avec l’auteur',
 	'articlefeedbackv5-discuss-talk-section-title' => 'Commentaire du lecteur : $1',
 	'articlefeedbackv5-discuss-user-section-title' => 'Vos commentaires sur « $2 »',
-	'articlefeedbackv5-discuss-talk-section-content' => '$1 a publié [[$2|ce commentaire]] le $3 ([[$5|voir tous les retours]]). 
+	'articlefeedbackv5-discuss-talk-section-content' => '$1 a publié [[$2|ce commentaire]] le $3 ([[$5|voir tous les retours]]).
 
 $6
 
@@ -29923,7 +29923,7 @@ $messages['tr'] = array(
 	'articlefeedbackv5-form-tooltip-discuss-talk' => 'Sayfanın tartışma sayfasında geri bildirim hakkında tartışın',
 	'articlefeedbackv5-discuss-talk-section-title' => 'Okuyucu geri bildirimi: $1',
 	'articlefeedbackv5-discuss-user-section-title' => '"$2" sayfasındaki geri bildiriminiz',
-	'articlefeedbackv5-discuss-talk-section-content' => '[[$2|Bu yorum]] $3 tarihinde $1 tarafından gönderildi ([[$5|bütün geri bildirimleri göster]]). 
+	'articlefeedbackv5-discuss-talk-section-content' => '[[$2|Bu yorum]] $3 tarihinde $1 tarafından gönderildi ([[$5|bütün geri bildirimleri göster]]).
 
 "$6"
 
@@ -30122,13 +30122,13 @@ Bu sayfaya katkılarınızdan dolayı teşekkür ederiz!
 	'articlefeedbackv5-article-view-feedback' => '$1 okuyucu {{PLURAL:$1|yorumu|yorumu}}',
 	'articlefeedbackv5-talk-view-feedback' => 'Okuyucu geri bildirimini görüntüle',
 	'articlefeedbackv5-watchlist-view-feedback' => 'İzlediğim sayfalardan geri bildirimler',
-	'articlefeedbackv5-email-request-oversight-body' => 'Merhaba, gözetmen! 
+	'articlefeedbackv5-email-request-oversight-body' => 'Merhaba, gözetmen!
 
 $1, bu sayfadaki geri bildirim gönderisi için gözetim isteğinde bulundu:
 
 $2
 
-Lütfen bu geri bildirim gönderisini inceleyin; sonra bu gözetim isteğini onaylayın ya da reddedin: 
+Lütfen bu geri bildirim gönderisini inceleyin; sonra bu gözetim isteğini onaylayın ya da reddedin:
 
 $3
 
