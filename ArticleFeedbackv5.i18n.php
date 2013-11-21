@@ -12478,7 +12478,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'הוסתר',
 	'articlefeedbackv5-contribs-status-action-archive' => 'ארכיון',
 	'articlefeedbackv5-contribs-status-action-hide' => 'הסתר',
-	'articlefeedbackv5-contribs-status-action-request' => 'נשלחה בקשת הסתרה',
+	'articlefeedbackv5-contribs-status-action-request' => 'נשלחה בקשת העלמה',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'הוסתר',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'הערה מוסתרת',
 	'articlefeedbackv5-form-toolbox-label' => 'לסמן כ:',
@@ -12502,9 +12502,9 @@ $messages['he'] = array(
 	'articlefeedbackv5-special-filter-archived' => 'ארכוב ($1)',
 	'articlefeedbackv5-special-filter-allcomment' => 'כל התגובות ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'מחוק ($1)',
-	'articlefeedbackv5-special-filter-requested' => 'השלחה בקשת הסתרה ($1)',
+	'articlefeedbackv5-special-filter-requested' => 'נשלחה בקשת העלמה ($1)',
 	'articlefeedbackv5-special-filter-declined' => 'בקשת ההסתרה נדחתה ($1)',
-	'articlefeedbackv5-special-filter-oversighted' => 'הוסתר ($1)',
+	'articlefeedbackv5-special-filter-oversighted' => 'מועלמות ($1)',
 	'articlefeedbackv5-special-filter-all' => 'כל הרשומות ($1)',
 	'articlefeedbackv5-special-filter-featured-watchlist' => 'מומלץ',
 	'articlefeedbackv5-special-filter-unreviewed-watchlist' => 'לא עבר ביקורת',
@@ -12518,9 +12518,9 @@ $messages['he'] = array(
 	'articlefeedbackv5-special-filter-archived-watchlist' => 'אורכב',
 	'articlefeedbackv5-special-filter-allcomment-watchlist' => 'כל התגובות',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'מחוק',
-	'articlefeedbackv5-special-filter-requested-watchlist' => 'נשלחה בקשת הסתרה',
+	'articlefeedbackv5-special-filter-requested-watchlist' => 'נשלחה בקשת העלמה',
 	'articlefeedbackv5-special-filter-declined-watchlist' => 'בקשת הסתרה נדחתה',
-	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'מוסתר',
+	'articlefeedbackv5-special-filter-oversighted-watchlist' => 'מועלמות',
 	'articlefeedbackv5-special-filter-all-watchlist' => 'כל הרשימות',
 	'articlefeedbackv5-special-sort-relevance-desc' => 'רלוונטי',
 	'articlefeedbackv5-special-sort-relevance-asc' => 'לא רלוונטי',
@@ -12547,11 +12547,11 @@ $messages['he'] = array(
 	'articlefeedbackv5-loading-tag' => 'נטען...',
 	'articlefeedbackv5-status-hide' => 'התגובה הוסתרה על ידי $1 ב־$2 בשעה $3',
 	'articlefeedbackv5-status-unhide' => 'הסתרת התגובה בוטלה על ידי $1 ב־$2 בשעה $3',
-	'articlefeedbackv5-status-request' => 'בקרה לתגובה זו בוקשה על ידי $1 ב$2 ב$3',
+	'articlefeedbackv5-status-request' => 'בקשת העלמה לרשומה הזאת נשלחה על־ידי $1 ב־$2 ב־$3',
 	'articlefeedbackv5-status-unrequest' => 'בקשת בקרה לתגובה זו בוטלה על ידי $1 ב$2 ב$3',
-	'articlefeedbackv5-status-decline' => 'בקשת בקרה לתגובה זו נדחתה על ידי $1 ב$2 ב$3',
+	'articlefeedbackv5-status-decline' => 'בקשת העלמה לרשומה הזאת נדחתה על־ידי $1 ב־$2 ב־$3',
 	'articlefeedbackv5-status-autohide' => 'תגובה זו הוסתרה אוטומטית על ידי $1 ב־$2 בשעה $3',
-	'articlefeedbackv5-status-oversight' => 'תגובה זו הוסתרה על־ידי $1 ב־$3 $2',
+	'articlefeedbackv5-status-oversight' => 'הרשומה הזאת הועלמה על־ידי $1 ב־$2 ב־$3',
 	'articlefeedbackv5-status-unoversight' => 'הסתרת תגובה זו בוטלה על־ידי $1 ב־$3 $2',
 	'articlefeedbackv5-status-autoflag' => 'תגובה זו סומנה אוטומטית על ידי $1 ב־$3 $2',
 	'articlefeedbackv5-status-feature' => 'תגובה זו סומנה כשימושית על ידי $1 ב־$2 בשעה $3',
@@ -12565,7 +12565,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-status-archive' => 'הפוסט הזה אורכב על ידי $1 ב$2 ב$3',
 	'articlefeedbackv5-status-unarchive' => 'הפוסט הזה הוצא מהארכיון על ידי $1 ב$2 ב$3',
 	'articlefeedbackv5-new-marker' => 'חדשה',
-	'articlefeedbackv5-oversight-marker' => 'מוסתרת',
+	'articlefeedbackv5-oversight-marker' => 'מועלמת',
 	'articlefeedbackv5-autohide-marker' => 'מוסתר',
 	'articlefeedbackv5-hide-marker' => 'מוסתר',
 	'articlefeedbackv5-feature-marker' => 'שימושי',
@@ -12592,11 +12592,11 @@ $messages['he'] = array(
 	'articlefeedbackv5-form-unarchive' => 'ביטול',
 	'articlefeedbackv5-form-helpful' => 'סימון כמועיל ($1)',
 	'articlefeedbackv5-form-flag' => 'סומן כהטרדה',
-	'articlefeedbackv5-form-oversight' => 'הסתרה',
+	'articlefeedbackv5-form-oversight' => 'העלמה',
 	'articlefeedbackv5-form-unoversight' => 'ביטול',
-	'articlefeedbackv5-form-request' => 'בקשת הסתרה',
+	'articlefeedbackv5-form-request' => 'בקשת העלמה',
 	'articlefeedbackv5-form-unrequest' => 'ביטול בקשת הסתרה',
-	'articlefeedbackv5-form-decline' => 'דחיית בקשת הסתרה',
+	'articlefeedbackv5-form-decline' => 'דחיית בקשת העלמה',
 	'articlefeedbackv5-form-declined' => 'בקשת ההסתרה נדחתה',
 	'articlefeedbackv5-form-discuss-talk' => 'דיון בדף השיחה',
 	'articlefeedbackv5-form-discuss-user' => 'צור קשר עם מחבר פוסט',
@@ -12619,9 +12619,9 @@ $messages['he'] = array(
 	'articlefeedbackv5-form-tooltip-unarchive' => 'הוצא מארכיון',
 	'articlefeedbackv5-form-tooltip-flag' => 'שטויות, דואר זבל, מעליב, פרטי נתונים...',
 	'articlefeedbackv5-form-tooltip-oversight' => 'מעליב, מידע פרטי...',
-	'articlefeedbackv5-form-tooltip-unoversight' => 'ביטול הסתרה',
+	'articlefeedbackv5-form-tooltip-unoversight' => 'ביטול העלמה',
 	'articlefeedbackv5-form-tooltip-request' => 'מעליב, מידע פרטי...',
-	'articlefeedbackv5-form-tooltip-unrequest' => 'ביטול בקשת הסתרה',
+	'articlefeedbackv5-form-tooltip-unrequest' => 'ביטול בקשת העלמה',
 	'articlefeedbackv5-form-tooltip-decline' => 'דחיית בקשת הסתרה',
 	'articlefeedbackv5-form-tooltip-discuss-talk' => 'לדון במשוב בדף השיחה של הדף',
 	'articlefeedbackv5-form-tooltip-discuss-user' => 'לדון במשוב אם המשתמש ששלח אותו',
@@ -12685,7 +12685,7 @@ $6
 	'articlefeedbackv5-mask-text-inappropriate' => "הרשומה הזאת מס' $1 {{GENDER:$2|סומנה}} בתור בלתי הולמת על־ידי $3.",
 	'articlefeedbackv5-mask-text-autohide' => "רשומה מס' $1 הוסתרה אוטומטית על־ידי $2 $3.",
 	'articlefeedbackv5-mask-text-hide' => "רשומה מס' $1 הוסתרה על־ידי $2 $3.",
-	'articlefeedbackv5-mask-text-oversight' => 'רשומה #$1 הוסתרה לאחר בקרה על־ידי $2 $3.',
+	'articlefeedbackv5-mask-text-oversight' => "רשומה מס' $1 הועלמה על־ידי $2 $3.",
 	'articlefeedbackv5-special-disclaimer' => 'זה רק אבטיפוס. נא לא להשתמש בו אלא אם הוזמנת במפורש לעשות את זה.',
 	'articlefeedbackv5-special-goback' => 'הצגת דף המשובים',
 	'articlefeedbackv5-special-central-goback' => 'ראו משוב על דפים ארים',
@@ -12729,11 +12729,11 @@ $6
 	'articlefeedbackv5-short-status-undo-helpful' => '{{GENDER:$1|נסקרה על־ידי $1}}',
 	'articlefeedbackv5-short-status-unhelpful' => '{{GENDER:$1|נסקרה על־ידי $1}}',
 	'articlefeedbackv5-short-status-undo-unhelpful' => '{{GENDER:$1|נסקרה על־ידי $1}}',
-	'articlefeedbackv5-permalink-status-request' => '<strong>נשלחה בקשת הסתרה</strong> בידי $1 $2',
+	'articlefeedbackv5-permalink-status-request' => 'בקשת <strong>העלמה</strong> נשלחה על־ידי $1 $2',
 	'articlefeedbackv5-permalink-status-unrequest' => '<strong>בקשת ההסתרה</strong> בוטלה בידי $1 $2',
-	'articlefeedbackv5-permalink-status-decline' => '<strong>בקשת ההסתרה</strong> נדחתה בידי $1 $2',
+	'articlefeedbackv5-permalink-status-decline' => 'בקשת <strong>ההעלמה</strong> נדחתה על־ידי $1 $2',
 	'articlefeedbackv5-permalink-status-autohide' => '<strong>נמחק אוטומטית</strong> בידי $1 $2',
-	'articlefeedbackv5-permalink-status-oversight' => '<strong>הוסתר</strong> בידי $1 $2',
+	'articlefeedbackv5-permalink-status-oversight' => '<strong>הועלמה</strong> על־ידי $1 $2',
 	'articlefeedbackv5-permalink-status-unoversight' => '<strong>ההסתרה בוטלה</strong> בידי $1 $2',
 	'articlefeedbackv5-permalink-status-flag' => '$1 <strong>{{GENDER:$1|הוסיף|הוסיפה}} דגל</strong> $2',
 	'articlefeedbackv5-permalink-status-unflag' => '$1 <strong>{{GENDER:$1|הסיר|הסירה}} דגל</strong> $2',
@@ -12817,36 +12817,36 @@ $6
 	'articlefeedbackv5-noteflyover-unarchive-placeholder' => 'למה ביטלת את הארכוב של הרשומה הזאת?',
 	'articlefeedbackv5-noteflyover-unarchive-submit' => 'הוספת הערה',
 	'articlefeedbackv5-noteflyover-unarchive-help' => 'מידע נוסף',
-	'articlefeedbackv5-noteflyover-request-caption' => 'בקשת הסתרה',
-	'articlefeedbackv5-noteflyover-request-description' => 'לפני בקשת הסתרה, אנא בדוק כי הרשומה הזאת
+	'articlefeedbackv5-noteflyover-request-caption' => 'בקשת העלמה',
+	'articlefeedbackv5-noteflyover-request-description' => 'לפני בקשת העלמה, נא לבדוק כי הרשומה הזאת
 מכילה אחת מהבעיות הבאות:
 * מספרי טלפון
 * כתובות דוא"ל
 * קישורים פורנוגרפיים
 * הוצאת דיבה על אדם
-* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy other criteria for oversight]',
-	'articlefeedbackv5-noteflyover-request-label' => 'הוספת הערת הסבר לבקשת ההסתרה',
+* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy קריטריונים אחרים להעלמה]',
+	'articlefeedbackv5-noteflyover-request-label' => 'הוספת הערת הסבר לבקשת ההעלמה',
 	'articlefeedbackv5-noteflyover-request-placeholder' => 'למה ביקשת הסתרה?',
-	'articlefeedbackv5-noteflyover-request-submit' => 'בקשת הסתרה',
+	'articlefeedbackv5-noteflyover-request-submit' => 'בקשת העלמה',
 	'articlefeedbackv5-noteflyover-request-help' => 'מידע נוסף',
-	'articlefeedbackv5-noteflyover-unrequest-caption' => 'ביטול בקשת הסתרה',
+	'articlefeedbackv5-noteflyover-unrequest-caption' => 'ביטול בקשת העלמה',
 	'articlefeedbackv5-noteflyover-unrequest-label' => 'הוספת הערה',
-	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'למה ביקשת לבטל את בקשת ההסתרה?',
+	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'למה ביקשת לבטל את בקשת ההעלמה?',
 	'articlefeedbackv5-noteflyover-unrequest-submit' => 'ביטול בקשה',
 	'articlefeedbackv5-noteflyover-unrequest-help' => 'מידע נוסף',
-	'articlefeedbackv5-noteflyover-oversight-caption' => 'הסתרת הרשומה הזאת',
+	'articlefeedbackv5-noteflyover-oversight-caption' => 'העלמת הרשומה הזאת',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'הוספת הערה',
-	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'למה הסתרת את הרשומה הזאת?',
+	'articlefeedbackv5-noteflyover-oversight-placeholder' => 'למה העלמת את הרשומה הזאת?',
 	'articlefeedbackv5-noteflyover-oversight-submit' => 'הסתרה',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'מידע נוסף',
-	'articlefeedbackv5-noteflyover-unoversight-caption' => 'הסתרת הרשומה הזאת בוטלה',
+	'articlefeedbackv5-noteflyover-unoversight-caption' => 'העלמת הרשומה הזאת בוטלה',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'הוספת הערה',
 	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'למה ביטלת את הסתרת הרשומה הזאת?',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'הוספת הערה',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'מידע נוסף',
-	'articlefeedbackv5-noteflyover-decline-caption' => 'דחיית בקשת הסתרה',
+	'articlefeedbackv5-noteflyover-decline-caption' => 'דחיית בקשת ההעלמה',
 	'articlefeedbackv5-noteflyover-decline-label' => 'הוספת הערה',
-	'articlefeedbackv5-noteflyover-decline-placeholder' => 'למה דחית את בקשת ההסתרה?',
+	'articlefeedbackv5-noteflyover-decline-placeholder' => 'למה דחית את בקשת ההעלמה?',
 	'articlefeedbackv5-noteflyover-decline-submit' => 'הוספת הערה',
 	'articlefeedbackv5-noteflyover-decline-help' => 'מידע נוסף',
 	'articlefeedbackv5-bucket1-title' => 'עזרו לשפר דף זה',
@@ -12900,13 +12900,13 @@ $6
 	'right-aft-reader' => 'שליחת משוב וסימון בתור מועיל',
 	'right-aft-member' => 'שליחת משוב וסימון בתור (לא) מועיל',
 	'right-aft-editor' => 'המלצה על משובים וסימונם כפתורים',
-	'right-aft-monitor' => 'הסתרת המשוב ובקשת פיקוח',
+	'right-aft-monitor' => 'הסתרת המשוב ובקשת העלמה',
 	'right-aft-administrator' => 'ראה AFT בדפים מוגנים',
-	'right-aft-oversighter' => 'משוב לבקשת ההסתרה',
+	'right-aft-oversighter' => 'העלמת המשוב',
 	'log-name-articlefeedbackv5' => 'יומן משוב של ערכים',
 	'log-description-articlefeedbackv5' => 'זהו יומן הפעילות המכיל את פריטי המשוב שנשלחו על־ידי משתמשים דרך כלי המשוב לערכים.',
 	'logentry-articlefeedbackv5-create' => "$1 {{GENDER:$2|שלח|שלחה}} את [[$3|רשומת המשוב מס' $4]] ב־[[$5]]",
-	'logentry-articlefeedbackv5-oversight' => "$1 {{GENDER:$2|שינה|שינתה}} את מצב ההסתרה של [[$3|רשומת המשוב מס' $4]] ב־[[$5]]",
+	'logentry-articlefeedbackv5-oversight' => "$1 {{GENDER:$2|שינה|שינתה}} את מצב ההעלמה של [[$3|רשומת המשוב מס' $4]] ב־[[$5]]",
 	'logentry-articlefeedbackv5-unoversight' => "$1 {{GENDER:$2|הסיר|הסירה}} את מצב ההעלמה של [[$3|רשומת המשוב מס' $4]] ב־[[$5]]",
 	'logentry-articlefeedbackv5-decline' => "$1 {{GENDER:$2|דחה|דחתה}} את הבקשה להעלים [[$3|רשומת המשוב מס' $4]] ב־[[$5]]",
 	'logentry-articlefeedbackv5-request' => "$1 {{GENDER:$2|ביקש|ביקשה}} להעלים את [[$3|רשומת המשוב מס' $4]] ב־[[$5]]",
@@ -12945,20 +12945,38 @@ $6
 	'articlefeedbackv5-activity-item-autoflag' => '$1 {{GENDER:$6|הוסיף|הוסיפה}} דגל לרשומה הזאת ב־$4 ב־$5 $2S',
 	'articlefeedbackv5-activity-item-oversight' => '$1 {{GENDER:$6|העלים|העלימה}} את רשומה הזאת ב־$4 ב־$5 $2',
 	'articlefeedbackv5-activity-item-unoversight' => '$1 {{GENDER:$6|ביטל|ביטלה}} את ההעלמה של הרשומה הזאת ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 {{GENDER:$6|סימן|סימנה}} את הרשומה הזאת בתור מועילה ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 {{GENDER:$6|ביטל|ביטלה}} את הסימון של הרשומה הזאת בתור מועילה ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 {{GENDER:$6|סימן|סימנה}} את הרשומה הזאת בתור פתורה ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 {{GENDER:$6|ביטל|ביטלה}} את הסימון של הרשומה הזאת בתור פתורה ב־$4 ב־$5 $2S',
+	'articlefeedbackv5-activity-item-noaction' => '$1 {{GENDER:$6|סימן|סימנה}} את הרשומה הזאת בתור "לא לפעולה" ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 {{GENDER:$6|ביטל|ביטלה}} את הסימון של הרשומה הזאת בתור "לא לפעולה" ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 {{GENDER:$6|סימן|סימנה}} את הרשומה הזאת בתור בלתי־הולמת ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 {{GENDER:$6|ביטל|ביטלה}} את הסימון של הרשומה הזאת בתור בלתי־הולמת ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-hide' => '$1 {{GENDER:$6|הסתיר|הסתירה}} את הרשומה הזאת ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-unhide' => '$1 {{GENDER:$6|ביטל|ביטלה}} הסתרת הרשומה הזאת ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-autohide' => '$1 {{GENDER:$6|הסתיר|הסתירה}} את הרשומה הזאת אוטומטית ב־$4 ב־$5 $2S',
+	'articlefeedbackv5-activity-item-archive' => '$1 {{GENDER:$6|ארכב|ארכבה}} את הרשומה הזאת ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-unarchive' => '$1 {{GENDER:$6|ביטל|ביטלה}} את הארכוב של הרשומה הזאת ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 {{GENDER:$6|סימן|סימנה}} את הרשומה הזאת בתור מועילה ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 {{GENDER:$6|סימן|סימנה}} את הרשומה הזאת בתור לא מועילה ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 {{GENDER:$6|ביטל|את הסימון}} של הרשומה הזאת בתור מועילה ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 {{GENDER:$6|ביטל|את הסימון}} של הרשומה הזאת בתור לא מועילה ב־$4 ב־$5 $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 {{GENDER:$6|ניקה|ניקתה}} את כל הדגלים מהרשומה הזאת ב־$4 ב־$5 $2',
 	'articlefeedbackv5-activity-note-archive' => 'אורכב אחרי {{PLURAL:$1|יום אחד|יומיים|$1 ימים}} של חוסר פעילות',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|פעולה אחת ברשומה הזאת|$1 פעולות ברשומה הזאת}}',
 	'articlefeedbackv5-activity-more' => 'הצגת יותר פעילות',
 	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|תגובה אחת מקורא|שתי תגובות מקוראים}}',
 	'articlefeedbackv5-talk-view-feedback' => 'צפייה במשוב קוראים',
 	'articlefeedbackv5-watchlist-view-feedback' => 'משוב על דפים ברשימת המעקב',
-	'articlefeedbackv5-email-request-oversight-subject' => 'נוצרה בקשת הסתרה על דף משוב ערכים',
+	'articlefeedbackv5-email-request-oversight-subject' => 'נוצרה בקשת העלמה על דף משוב ערכים',
 	'articlefeedbackv5-email-request-oversight-body' => 'שלום, מסתירים!
 
-$1 {{GENDER:$1|ביקש|ביקשה}} הסתרה של משוב על הדף הזה:
+$1 {{GENDER:$1|ביקש|ביקשה}} להעלים משוב על הדף הזה:
 
 $2
 
-נא לסקור את רשומת המשוב הזאת ולקבל או לאשר את בקשת ההסתרה:
+נא לסקור את רשומת המשוב הזאת ולקבל או לדחו את בקשת ההעלמה:
 
 $3
 $5
@@ -12967,11 +12985,11 @@ $5
 
 צוות {{SITENAME}}
 
-נ"ב: אם יש לכם שלאות לגבי יכולות ההסתרה של
+נ"ב: אם יש לכם שלאות לגבי יכולות ההעלמה של
 דף המשוב על ערכים, אנא קראו את השו"ת למסתירים:
 
 $4',
-	'articlefeedbackv5-email-request-oversight-body-notes' => 'ההערה הזאת נוספה לבקשת ההסתרה:
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'ההערה הזאת נוספה לבקשת ההעלמה:
 
 $1',
 	'articlefeedbackv5-disable-flyover-title' => 'להסיר את הכלי הזה?',
@@ -12983,7 +13001,7 @@ $1',
 	'articlefeedbackv5-abusefilter-note-aftv5flag' => 'סומן אוטומטית בתור שימוש לרעה. חוק: $1',
 	'abusefilter-edit-action-aftv5hide' => '(משוב על ערכים) הסתרה אוטומטית',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'הוסתר אוטומטית. לפי כלל: $1',
-	'abusefilter-edit-action-aftv5request' => '(משוב על ערכים) לבקש בקרה אוטומטית',
+	'abusefilter-edit-action-aftv5request' => '(משוב על ערכים) בקשת העלמה אוטומטית',
 	'articlefeedbackv5-abusefilter-note-aftv5request' => 'בקשת הסתרה נוצרה אוטומטית. לפי כלל: $1',
 );
 
@@ -16943,10 +16961,10 @@ $messages['km'] = array(
 	'articlefeedbackv5-error-throttled' => 'ប្រកាសរបស់អ្នកត្រូវបានច្រានចោលព្រោះអ្នកបានបិទប្រកាសមតិកែលំអរបស់អ្នកច្រើនលើសពីការកំណត់ក្នុង[សេចក្ដីណែនាំស្ដីពីមតិកែលំអ $1]របស់{{SITENAME}}។​សូមកុំដាក់មតិកែលំអដូចៗគ្នានិងច្រើនពេក។', # Fuzzy
 	'articlefeedbackv5-protection-level' => 'មតិកែលំអអត្ថបទ',
 	'articlefeedbackv5-protection-level-error' => 'កំរិតការពាររបស់មតិកែលំអអត្ថបទមិនអាចខ្ពស់ជាងកំរិតការពារការកែប្រែទេ',
-	'protect-level-aft-reader' => 'អនុញ្ញាតសំរាប់អ្នកប្រើប្រាស់ទាំងអស់', # Fuzzy
-	'protect-level-aft-member' => 'អនុញ្ញាតសំរាប់តែអ្នកប្រើ់ប្រាស់ដែលបានកត់ឈ្មោះចូលប៉ុណ្ណោះ', # Fuzzy
-	'protect-level-aft-editor' => 'អនុញ្ញាតសំរាប់តែអ្នកប្រើប្រាស់បញ្ជាក់ទទួលស្គាល់ស្វ័យប្រវត្តិប៉ុណ្ណោះ', # Fuzzy
-	'protect-level-aft-administrator' => 'អនុញ្ញាតសំរាប់តែអភិបាលប៉ុណ្ណោះ', # Fuzzy
+	'protect-level-aft-reader' => 'អនុញ្ញាតអោយប្រើសម្រាប់អ្នកប្រើប្រាស់ទាំងអស់',
+	'protect-level-aft-member' => 'អនុញ្ញាតអោយប្រើសម្រាប់តែអ្នកប្រើប្រាស់ដែលបានកត់ឈ្មោះចូលប៉ុណ្ណោះ',
+	'protect-level-aft-editor' => 'អនុញ្ញាតអោយប្រើសម្រាប់តែអ្នកប្រើប្រាស់បញ្ជាក់ទទួលស្គាល់ស្វ័យប្រវត្តិប៉ុណ្ណោះ',
+	'protect-level-aft-administrator' => 'អនុញ្ញាតអោយប្រើសម្រាប់តែអភិបាលប៉ុណ្ណោះ',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|មតិកែលំអ៖ $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . ស្ថានភាព៖ $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'មានប្រយោជន៍',
@@ -19605,37 +19623,37 @@ $6
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|ја тргна ознаката за корисност}} од [[$3|мислењето бр. $4]] на [[$5]]',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|ја тргна ознаката за некорисност}} од [[$3|мислењето бр. $4]] на [[$5]]',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|ги отстрани сите ознаки}} од [[$3|мислењето бр. $4]] на [[$5]]',
-	'logentry-articlefeedbackv5-protect' => '$1 ја измени видливоста на алатката за мислења на „$3“ $4',
+	'logentry-articlefeedbackv5-protect' => '$1 {{GENDER:$2|ја измени}} видливоста на алатката за мислења на „$3“ $4',
 	'articlefeedbackv5-activity-pane-header' => 'Дневник на активности',
 	'articlefeedbackv5-activity-feedback-info' => 'Мислење од $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Објавено на $1',
 	'articlefeedbackv5-activity-permalink' => 'постојана врска',
-	'articlefeedbackv5-activity-item-request' => '$1 побара скривање на $3 $2',
-	'articlefeedbackv5-activity-item-unrequest' => '$1 го откажа барањето за скривање на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-decline' => '$1 го одби барањето за скривање на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-flag' => '$1 го означи мислењево на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-unflag' => '$1 ја тргна ознаката од мислењево на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-autoflag' => '$1 го означи мислењево на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-oversight' => '$1 го скри мислењево на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-unoversight' => '$1 го тргна скривањето на мислењево на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-feature' => '$1 го означи мислењево како корисно на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-unfeature' => '$1 го тргна мислењево од корисни на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-resolve' => '$1 го означи мислењево како решено на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-unresolve' => '$1 го тргна мислењево од решени на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-noaction' => '$1 означи дека мислењево не бара постапка на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-unnoaction' => '$1 го тргна мислењево од оние што не бараат постапка на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 го скри мислењево на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-uninappropriate' => '$1 го откри мислењево на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-hide' => '$1 го скри мислењево на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-unhide' => '$1 го откри мислењево на $4 на $5 $2',
-	'articlefeedbackv5-activity-item-autohide' => '$1 сткри мислењево на $4 на $5 $2',
-	'articlefeedbackv5-activity-item-archive' => '$1 го архивираше мислењево на $4 на $5 $2',
-	'articlefeedbackv5-activity-item-unarchive' => '$1 го одархивираше мислењево на $4 на $5 $2',
-	'articlefeedbackv5-activity-item-helpful' => '$1 го означи мислењево како корисно на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 го означи мислењево како некорисно на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 го тргна мислењево од корисни на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 го тргна мислењево од некорисни на $4 во $5 $2',
-	'articlefeedbackv5-activity-item-clear-flags' => '$1 ги тргна сите ознаки од мислењево на $4 во $5 $2',
+	'articlefeedbackv5-activity-item-request' => '$1 {{GENDER:$6|побара}} скривање на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 {{GENDER:$6|го откажа}} барањето за скривање на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 {{GENDER:$6|го одби}} барањето за скривање на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 {{GENDER:$6|ја означи}} објавава на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 {{GENDER:$6|ја тргна}} ознаката од објавава на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-autoflag' => '$1 {{GENDER:$6|ја означи}} објавава на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 {{GENDER:$6|ја скри}} објавава на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 {{GENDER:$6|ја откри}} објавава на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 {{GENDER:$6|ја означи}} објавава како корисна на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 {{GENDER:$6|ја тргна}} објавава од корисни на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 {{GENDER:$6|ја означи}} објавава како решена на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 {{GENDER:$6|ја тргна}} објавава од решени на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-noaction' => '$1 означи дека мислењево не бара постапка на $4 во $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 го тргна мислењево од оние што не бараат постапка на $4 во $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 го скри мислењево на $4 во $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 го откри мислењево на $4 во $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-hide' => '$1 го скри мислењево на $4 во $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unhide' => '$1 го откри мислењево на $4 на $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-autohide' => '$1 сткри мислењево на $4 на $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-archive' => '$1 го архивираше мислењево на $4 на $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unarchive' => '$1 го одархивираше мислењево на $4 на $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-helpful' => '$1 го означи мислењево како корисно на $4 во $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 го означи мислењево како некорисно на $4 во $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 го тргна мислењево од корисни на $4 во $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 го тргна мислењево од некорисни на $4 во $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 ги тргна сите ознаки од мислењево на $4 во $5 $2', # Fuzzy
 	'articlefeedbackv5-activity-note-archive' => 'Архивирано по {{PLURAL:$1|$1 ден|$1 дена}} неактивност на уредникот',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 дејство врз мислењево|$1 дејства врз мислењево}}',
 	'articlefeedbackv5-activity-more' => 'Уште активности',
