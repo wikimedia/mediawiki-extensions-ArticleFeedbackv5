@@ -474,6 +474,14 @@ $wgJobClasses['ArticleFeedbackv5MailerJob'] = 'ArticleFeedbackv5MailerJob';
 // Logging
 $wgLogTypes[] = 'articlefeedbackv5';
 
+$wgExtensionFunctions[] = function () {
+	global $wgArticleFeedbackv5EnableProtection, $wgRestrictionTypes, $wgRestrictionLevels;
+	if ( $wgArticleFeedbackv5EnableProtection ) {
+		$wgRestrictionTypes[] = 'aft';
+		$wgRestrictionLevels += ArticleFeedbackv5Permissions::$permissions;
+	}
+};
+
 // register log handler for AFT protection log
 $wgLogActionsHandlers['articlefeedbackv5/protect'] = 'ArticleFeedbackv5ProtectionLogFormatter';
 
