@@ -2043,7 +2043,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unrequest' => 'Activity log entry when oversight was unrequested (an oversight request asks an oversighter to delete feedback).
 
@@ -2053,7 +2053,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-decline' => 'Activity log entry when an oversight request was declined (an oversight request asks an oversighter to delete feedback).
 
@@ -2063,7 +2063,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-flag' => 'Activity log entry when feedback was flagged as abusive. Parameters:
 * $1 - a link to the user who performed the action
@@ -2071,7 +2071,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unflag' => 'Activity log entry when feedback was un-flagged as abusive. Parameters:
 * $1 - a link to the user who performed the action
@@ -2079,7 +2079,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-autoflag' => 'Activity log entry when feedback was autoflagged as abusive. Parameters:
 * $1 - a link to the user who performed the action
@@ -2087,7 +2087,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-oversight' => 'Activity log entry when feedback was oversighted. Parameters:
 * $1 - a link to the user who performed the action
@@ -2095,7 +2095,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unoversight' => 'Activity log entry when feedback was unoversighted. Parameters:
 * $1 - a link to the user who performed the action
@@ -2103,7 +2103,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-feature' => 'Activity log entry when feedback was marked as useful. Parameters:
 * $1 - a link to the user who performed the action
@@ -2111,7 +2111,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unfeature' => 'Activity log entry when feedback was unmarked as useful. Parameters:
 * $1 - a link to the user who performed the action
@@ -2119,7 +2119,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-resolve' => 'Activity log entry when feedback was marked as resolved. Parameters:
 * $1 - a link to the user who performed the action
@@ -2127,7 +2127,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unresolve' => 'Activity log entry when feedback was un-marked as resolved. Parameters:
 * $1 - a link to the user who performed the action
@@ -2135,7 +2135,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-noaction' => 'Activity log entry when feedback was marked as non-actionable. Parameters:
 * $1 - a link to the user who performed the action
@@ -2143,7 +2143,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unnoaction' => 'Activity log entry when feedback was un-marked as non-actionable. Parameters:
 * $1 - a link to the user who performed the action
@@ -2151,7 +2151,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-inappropriate' => 'Activity log entry when feedback was marked as inappropriate. Parameters:
 * $1 - a link to the user who performed the action
@@ -2159,7 +2159,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-uninappropriate' => 'Activity log entry when feedback was un-marked as inappropriate. Parameters:
 * $1 - a link to the user who performed the action
@@ -2167,7 +2167,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-hide' => 'Activity log entry when feedback was hidden. Parameters:
 * $1 - a link to the user who performed the action
@@ -2175,7 +2175,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unhide' => 'Activity log entry when feedback was un-hidden. Parameters:
 * $1 - a link to the user who performed the action
@@ -2183,7 +2183,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-autohide' => 'Activity log entry when feedback was auto-marked as inappropriate. Parameters:
 * $1 - a link to the user who performed the action
@@ -2191,7 +2191,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-archive' => 'Activity log entry when feedback was archived. Parameters:
 * $1 - a link to the user who performed the action
@@ -2199,7 +2199,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unarchive' => 'Activity log entry when feedback was un-archived. Parameters:
 * $1 - a link to the user who performed the action
@@ -2207,7 +2207,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-helpful' => 'Activity log entry when feedback was marked as helpful. Parameters:
 * $1 - a link to the user who performed the action
@@ -2215,7 +2215,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-unhelpful' => 'Activity log entry when feedback was marked as unhelpful. Parameters:
 * $1 - a link to the user who performed the action
@@ -2223,7 +2223,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-undo-helpful' => 'Activity log entry when feedback was un-marked as helpful. Parameters:
 * $1 - a link to the user who performed the action
@@ -2231,7 +2231,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-undo-unhelpful' => 'Activity log entry when feedback was un-marked as unhelpful. Parameters:
 * $1 - a link to the user who performed the action
@@ -2239,7 +2239,7 @@ Parameters:
 * $3 - (Optional) the date & time the action was performed
 * $4 - the date the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-item-clear-flags' => 'Activity log entry when all abuse flags were cleared on feedback. Parameters:
 * $1 - a link to the user who performed the action
@@ -2248,7 +2248,7 @@ Parameters:
 * $4 - the date the action was performed
 * $5 - the time the action was performed
 * $5 - the time the action was performed
-* $6 - (Optional) the username, for GENDER support
+* $6 - the username, for GENDER support
 {{Related|Articlefeedbackv5-activity-item}}',
 	'articlefeedbackv5-activity-note-archive' => "Activity log comment when feedback is archived. $1 is the amount of days between the creation of the feedback and the date it's being archived",
 	'articlefeedbackv5-activity-count' => 'Shows the amount of actions performed on a feedback entry. $1 is the number',
@@ -2431,9 +2431,13 @@ $messages['ar'] = array(
 	'protect-level-aft-editor' => 'تمكين للمستخدمين المؤكدين تلقائيا فقط', # Fuzzy
 	'protect-level-aft-administrator' => 'تمكين للمدراء فقط', # Fuzzy
 	'protect-level-aft-noone' => 'عطل لكل المستخدمين',
+	'restriction-articlefeedbackv5' => 'الرؤية',
 	'articlefeedbackv5-disabled' => 'تم تعطيل عملية التغذية الإسترجاعية (التعليقات)',
 	'articlefeedbackv5-disabled-admin-admin' => 'تم تعطيل عملية التغذية الإسترجاعية للقراء والمحررين. لا يمكن إضافة تعليقات جديدة على هذه الصفحة.',
 	'articlefeedbackv5-disabled-admin-button-text' => 'غير الحماية',
+	'articlefeedbackv5-disabled-editor-button-text' => 'فعل التغذية الراجعة',
+	'articlefeedbackv5-settings-status-enable' => 'فعل التغذية الراجعة على هذه الصفحة',
+	'articlefeedbackv5-settings-status-disable' => 'عطل التغذية الراجعة على هذه الصفحة',
 	'articlefeedbackv5-contribs-entry' => '$1. . $2 . . [[$3|تعليق:  $4]]$5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '.. الحالة: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'مفيدة',
@@ -2454,9 +2458,16 @@ $messages['ar'] = array(
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 نعم|$1 نعم}} / {{PLURAL:$2|1 لا|$2 لا}}',
 	'articlefeedbackv5-special-survey-button-text' => 'ما رأيك في أداة ردود الأفعال هذه؟',
 	'articlefeedbackv5-special-filter-featured' => 'مميزة ($1)',
+	'articlefeedbackv5-special-filter-unreviewed' => 'غير مراجعة ($1)',
 	'articlefeedbackv5-special-filter-helpful' => 'مفيدة ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'غير مفيد ($1)',
+	'articlefeedbackv5-special-filter-flagged' => 'معلمة ($1)',
+	'articlefeedbackv5-special-filter-useful' => 'مفيدة ($1)',
 	'articlefeedbackv5-special-filter-resolved' => 'حلت ($1)',
+	'articlefeedbackv5-special-filter-noaction' => 'لا فعل مطلوب ($1)',
+	'articlefeedbackv5-special-filter-inappropriate' => 'غير مناسبة ($1)',
+	'articlefeedbackv5-special-filter-archived' => 'مؤرشفة ($1)',
+	'articlefeedbackv5-special-filter-allcomment' => 'كل التعليقات ($1)',
 	'articlefeedbackv5-special-filter-hidden' => 'مخفي ($1)',
 	'articlefeedbackv5-special-filter-requested' => 'طلب نظر التعليق ($1)',
 	'articlefeedbackv5-special-filter-declined' => 'تم رفض الرقابة ($1)',
@@ -2486,6 +2497,7 @@ $messages['ar'] = array(
 	'articlefeedbackv5-special-sort-age-asc' => 'الأقدم',
 	'articlefeedbackv5-special-sort-label' => 'رتب بواسطة:',
 	'articlefeedbackv5-special-filter-select-more' => 'المزيد',
+	'articlefeedbackv5-special-count-total' => '{{PLURAL:$2|1 تعليق|$1 تعليقات}}',
 	'articlefeedbackv5-special-watchlist-showing' => 'تعليقات لصفحات مراقبة من قبل [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|تعليقات من الصفحات المراقبة]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|طالع التعليقات لجميع الصفحات]]',
@@ -2519,18 +2531,42 @@ $messages['ar'] = array(
 	'articlefeedbackv5-feature-marker' => 'مفيد',
 	'articlefeedbackv5-resolve-marker' => 'تم حلها',
 	'articlefeedbackv5-noaction-marker' => 'لا فعل مطلوب',
+	'articlefeedbackv5-inappropriate-marker' => 'غير مناسب',
+	'articlefeedbackv5-archive-marker' => 'مؤرشف',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 علم|$1 أعلام}}',
+	'articlefeedbackv5-form-note-added' => 'الملاحظة تمت إضافتها',
+	'articlefeedbackv5-form-note' => 'أضف ملاحظة',
 	'articlefeedbackv5-form-feature' => 'مفيد',
 	'articlefeedbackv5-form-unfeature' => 'رجوع',
 	'articlefeedbackv5-form-resolve' => 'تم حلها',
 	'articlefeedbackv5-form-unresolve' => 'رجوع',
+	'articlefeedbackv5-form-noaction' => 'لا فعل مطلوب',
+	'articlefeedbackv5-form-unnoaction' => 'رجوع',
+	'articlefeedbackv5-form-noaction-own' => 'تجاهل تعليقي',
+	'articlefeedbackv5-form-unnoaction-own' => 'اعرض تعليقي',
 	'articlefeedbackv5-form-inappropriate' => 'إخفاء هذا التعليق',
+	'articlefeedbackv5-form-uninappropriate' => 'رجوع',
+	'articlefeedbackv5-form-hide' => 'أخف هذا التعليق',
 	'articlefeedbackv5-form-unhide' => 'رجوع',
+	'articlefeedbackv5-form-archive' => 'أرشف',
+	'articlefeedbackv5-form-unarchive' => 'رجوع',
 	'articlefeedbackv5-form-helpful' => 'علم كمفيدة ($1)',
-	'articlefeedbackv5-form-oversight' => 'اطلب أوفرسايت', # Fuzzy
+	'articlefeedbackv5-form-flag' => 'علم كإساءة',
+	'articlefeedbackv5-form-oversight' => 'أخف (أوفرسايت)',
 	'articlefeedbackv5-form-unoversight' => 'رجوع',
+	'articlefeedbackv5-form-request' => 'اطلب النظر',
+	'articlefeedbackv5-form-unrequest' => 'ألغ طلب النظر',
 	'articlefeedbackv5-form-decline' => 'رفض الأوفرسايت',
 	'articlefeedbackv5-form-declined' => 'رفض الإخفاء',
+	'articlefeedbackv5-form-discuss-talk' => 'ناقش على صفحة النقاش',
+	'articlefeedbackv5-form-discuss-user' => 'اتصل بمؤلف التعليق',
+	'articlefeedbackv5-form-discuss-talk-exists' => 'انظر النقاش في صفحة النقاش',
+	'articlefeedbackv5-form-discuss-user-exists' => 'انظر الرسالة في صفحة نقاش المستخدم',
+	'articlefeedbackv5-form-tooltip-note' => 'أضف ملاحظة تفسر علمك',
+	'articlefeedbackv5-form-tooltip-feature' => 'هذا يمكن أن يساعد في تحسين الصفحة',
+	'articlefeedbackv5-form-tooltip-unhide' => 'أظهر',
+	'articlefeedbackv5-form-tooltip-unarchive' => 'ألغ الأرشفة',
+	'articlefeedbackv5-form-tooltip-unoversight' => 'ارجع عن النظر',
 	'articlefeedbackv5-discuss-talk-section-title' => 'تعليقات القارئ: $1',
 	'articlefeedbackv5-discuss-user-section-title' => 'تعليقك على "$2"',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 وجدت ما الذي كنت تبحث عنه.}}',
@@ -2548,6 +2584,8 @@ $messages['ar'] = array(
 	'articlefeedbackv5-abuse-saved-tooltip' => 'أزل العلم الذي وضعته',
 	'articlefeedbackv5-error-loading-feedback' => 'خطأ في تحميل التعليق',
 	'articlefeedbackv5-invalid-feedback-id' => 'تعليق ذو ID غير صالح',
+	'articlefeedbackv5-invalid-log-id' => 'رقم سجل غير صحيح',
+	'articlefeedbackv5-invalid-log-update' => 'مدخلة السجل لم يمكن تحديثها',
 	'articlefeedbackv5-invalid-feedback-flag' => 'علم تعليق غير صالح',
 	'articlefeedbackv5-invalid-feedback-state' => 'حالة علم تعليق غير صالح',
 	'articlefeedbackv5-go-to-article' => 'عرض الصفحة',
@@ -2573,9 +2611,10 @@ $messages['ar'] = array(
 	'articlefeedbackv5-special-goback' => 'اطلع على صفحة التعليقات',
 	'articlefeedbackv5-special-central-goback' => 'تعليقات إضافية من الصفحات الأخرى',
 	'articlefeedbackv5-permalink-info-title' => 'معلومات حول هذا التعليق',
-	'articlefeedbackv5-permalink-written-by-editor' => 'مكتوب من قبل مستخدم مسجل <span>باستخدام صيغة التعليق $1</span>', # Fuzzy
-	'articlefeedbackv5-permalink-written-by-reader' => 'مكتوب من قبل مستخدم مجهول <span>باستخدام صيغة التعليق $1</span>', # Fuzzy
-	'articlefeedbackv5-permalink-info-revision-link' => 'عرض النسخة القديمة', # Fuzzy
+	'articlefeedbackv5-permalink-info-post-id' => 'التعليق #$1',
+	'articlefeedbackv5-permalink-written-by-editor' => 'تمت كتابته بواسطة مستخدم مسجل',
+	'articlefeedbackv5-permalink-written-by-reader' => 'تمت كتابته بواسطة مستخدم مجهول',
+	'articlefeedbackv5-permalink-info-revision-link' => 'انظر النسخة القديمة لهذه الصفحة',
 	'articlefeedbackv5-permalink-info-posted' => 'منشور في $1 على $2',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'الطول',
 	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 كلمة|$1 كلمات}}',
@@ -2586,6 +2625,31 @@ $messages['ar'] = array(
 	'articlefeedbackv5-permalink-activity-title' => 'النشاط',
 	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 فعل|$1 أفعال}})',
 	'articlefeedbackv5-permalink-activity-none' => 'لم يوجد الكثير من النشاطات على هذا التعليق.',
+	'articlefeedbackv5-short-status-request' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-unrequest' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-decline' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-autohide' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-oversight' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-unoversight' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-unflag' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-flag' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-autoflag' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-feature' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-unfeature' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-resolve' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-unresolve' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-noaction' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-unnoaction' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-inappropriate' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-uninappropriate' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-hide' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-unhide' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-archive' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-unarchive' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-helpful' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-undo-helpful' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-unhelpful' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
+	'articlefeedbackv5-short-status-undo-unhelpful' => '{{GENDER:$1|تمت مراجعته بواسطة $1}}',
 	'articlefeedbackv5-permalink-status-request' => '{{GENDER:$1|تم طلب <strong>الأوفرسايت</strong> من قبل $1}} منذ $2 سابقة', # Fuzzy
 	'articlefeedbackv5-permalink-status-unrequest' => '{{GENDER:$1|تم إلغاء طلب<strong>الأوفرسايت</strong> من قبل $1}} منذ $2 سابقة', # Fuzzy
 	'articlefeedbackv5-permalink-status-decline' => '{{GENDER:$1|تم رفض <strong>الأوفرسايت</strong> من قبل $1}} منذ $2 سابقة', # Fuzzy
@@ -2746,24 +2810,24 @@ $messages['ar'] = array(
 	'articlefeedbackv5-activity-feedback-info' => 'تعليق رقم $1 من قبل $2', # Fuzzy
 	'articlefeedbackv5-activity-feedback-date' => 'نشر على $1',
 	'articlefeedbackv5-activity-permalink' => 'وصلة دائمة',
-	'articlefeedbackv5-activity-item-request' => '$1 تم طلب الإخفاء في $4 على $5 $2',
-	'articlefeedbackv5-activity-item-unrequest' => '$1 أزال طلب الإخفاء على $4 في $5 $2',
-	'articlefeedbackv5-activity-item-decline' => '$1 رفض طلب الإزالة في $4 على $5 $2',
-	'articlefeedbackv5-activity-item-flag' => '$1 علم هذا التعليق في $4 على $5 $2',
-	'articlefeedbackv5-activity-item-unflag' => '$1 أزال إخفاء هذا التعليق في $4 على $5 $2',
-	'articlefeedbackv5-activity-item-oversight' => '$1 أزال هذا التعليق في $4 على $5 $2',
-	'articlefeedbackv5-activity-item-unoversight' => '$1 أزال إخفاء التعليق على هذا التعليق في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-request' => '$1 تم طلب الإخفاء في $4 على $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unrequest' => '$1 أزال طلب الإخفاء على $4 في $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-decline' => '$1 رفض طلب الإزالة في $4 على $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-flag' => '$1 علم هذا التعليق في $4 على $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unflag' => '$1 أزال إخفاء هذا التعليق في $4 على $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-oversight' => '$1 أزال هذا التعليق في $4 على $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unoversight' => '$1 أزال إخفاء التعليق على هذا التعليق في $4 على $5 $2', # Fuzzy
 	'articlefeedbackv5-activity-item-feature' => '$1 رقى هذا التعليق في $4 على $5 $2', # Fuzzy
 	'articlefeedbackv5-activity-item-unfeature' => '$1 أزال ترقية هذا التعليق في $4 على $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-resolve' => '$1 علم على هذا التعليق كمحلول في $4 على $5 $2',
-	'articlefeedbackv5-activity-item-unresolve' => '$1 أزال علامة هذا التعليق كمحلول في $4 على $5 $2',
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 أخفى هذا التعليق في $4 على $5 $2',
-	'articlefeedbackv5-activity-item-uninappropriate' => '$1 أزال إخفاء هذا التعليق في $4 على $5 $2',
-	'articlefeedbackv5-activity-item-helpful' => '$1 على على هذا التعليق كمفيد في $4 على $5 $2',
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 علم على هذا التعليق كغير مفيد في $4 على $5 $2',
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 أزال تعليم هذا التعليق كمفيد في $4 على $5 $2',
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 أزال تعليم هذا التعليق كغير مفيد في $4 على $5 $2',
-	'articlefeedbackv5-activity-item-clear-flags' => '$1 مسح جميع العلامات من هذا التعليق في $4 على $5 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 علم على هذا التعليق كمحلول في $4 على $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unresolve' => '$1 أزال علامة هذا التعليق كمحلول في $4 على $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 أخفى هذا التعليق في $4 على $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 أزال إخفاء هذا التعليق في $4 على $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-helpful' => '$1 على على هذا التعليق كمفيد في $4 على $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 علم على هذا التعليق كغير مفيد في $4 على $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 أزال تعليم هذا التعليق كمفيد في $4 على $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 أزال تعليم هذا التعليق كغير مفيد في $4 على $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 مسح جميع العلامات من هذا التعليق في $4 على $5 $2', # Fuzzy
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 فعل على هذه المشاركة|$1 أفعال على هذه المشاركة}}',
 	'articlefeedbackv5-activity-more' => 'عرض المزيد من النشاط',
 	'articlefeedbackv5-talk-view-feedback' => 'اظهر تعليقات القارئ',
@@ -3174,7 +3238,7 @@ $messages['ba'] = array(
 	'articlefeedbackv5-cta4-confirmation-call-line1' => 'Мөхәррирҙәр һеҙгә яуап бирһен өсөн, теркәлеү үтегеҙ һәм үҙ исемегеҙ менән инегеҙ.',
 	'articlefeedbackv5-cta4-confirmation-call-line2' => '«{{SITENAME}}» проектында ирекле теркәлеү белгәнегеҙҙе башҡалар менән уртаҡлашырға мөмкинлек бирә.',
 	'articlefeedbackv5-cta4-button-text-signup' => 'Иҫәп яҙмаһын булдырырға',
-	'articlefeedbackv5-cta4-button-text-login' => 'Танышыу йәки теркәлеү',
+	'articlefeedbackv5-cta4-button-text-login' => 'Танылыу',
 	'articlefeedbackv5-cta4-button-text-later' => 'Бәлки, һуңғараҡ',
 	'articlefeedbackv5-cta4-button-text-or' => 'йәки',
 	'articlefeedbackv5-cta5-confirmation-title' => 'Башҡа фекерҙәрҙе ҡарарға',
@@ -5731,11 +5795,11 @@ $messages['cs'] = array(
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Odznač jako vyřešené', # Fuzzy
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Přidat poznámku',
 	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Proč jste odznačil tento příspěvek jako vyřešený?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Odznač jako vyřešené', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Přidat poznámku',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Další informace',
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Skrýt tento příspěvek', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Skrýt',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Přidat poznámku',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Proč schováváte tento příspěvek?', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Proč jste skryl tento příspěvek?',
 	'articlefeedbackv5-noteflyover-hide-submit' => 'Přidat poznámku',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Další informace',
 	'articlefeedbackv5-noteflyover-unhide-caption' => 'odkrýt',
@@ -5745,9 +5809,13 @@ $messages['cs'] = array(
 	'articlefeedbackv5-noteflyover-unhide-help' => 'Další informace',
 	'articlefeedbackv5-noteflyover-noaction-label' => 'Přidat poznámku',
 	'articlefeedbackv5-noteflyover-noaction-submit' => 'Přidat poznámku',
+	'articlefeedbackv5-noteflyover-noaction-help' => 'Dozvědět se více',
 	'articlefeedbackv5-noteflyover-unnoaction-label' => 'Přidat poznámku',
 	'articlefeedbackv5-noteflyover-unnoaction-submit' => 'Přidat poznámku',
+	'articlefeedbackv5-noteflyover-unnoaction-help' => 'Dozvědět se více',
+	'articlefeedbackv5-noteflyover-inappropriate-caption' => 'Označit jako nevhodný',
 	'articlefeedbackv5-noteflyover-inappropriate-label' => 'Přidat poznámku',
+	'articlefeedbackv5-noteflyover-inappropriate-placeholder' => 'Proč jste označil tento příspěvek jako nevhodný?',
 	'articlefeedbackv5-noteflyover-inappropriate-submit' => 'Přidat poznámku',
 	'articlefeedbackv5-noteflyover-inappropriate-help' => 'Další informace',
 	'articlefeedbackv5-noteflyover-uninappropriate-label' => 'Přidat poznámku',
@@ -5819,6 +5887,7 @@ $messages['cs'] = array(
 	'articlefeedbackv5-toolbox-add' => 'Přidat názor',
 	'articlefeedbackv5-toolbox-enable' => 'Povolit zpětnou vazbu',
 	'articlefeedbackv5-disable-preference' => 'Nezobrazovat na stránkách komponentu pro hodnocení článků',
+	'articlefeedbackv5-activity-pane-header' => 'Historie změn',
 	'articlefeedbackv5-activity-feedback-date' => 'Zveřejněno $1',
 	'articlefeedbackv5-activity-permalink' => 'Trvalý odkaz',
 	'articlefeedbackv5-activity-more' => 'Zobrazit další aktivity',
@@ -9081,24 +9150,24 @@ $messages['et'] = array(
 	'articlefeedbackv5-activity-feedback-info' => 'Tagasiside kasutajalt $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Postitamisaeg: $1',
 	'articlefeedbackv5-activity-permalink' => 'püsilink',
-	'articlefeedbackv5-activity-item-request' => '$1 palus varjamist. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-unrequest' => '$1 tühistas varjamispalve. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-decline' => '$1 lükkas varjamispalve tagasi. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-flag' => '$1 sildistas selle postituse. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-unflag' => '$1 eemaldas selle postituse juurest sildi. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-oversight' => '$1 varjas selle postituse. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-unoversight' => '$1 tühistas selle postituse varjamise. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-feature' => '$1 märkis selle postituse kasulikuks. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-unfeature' => '$1 tühistas selle postituse kasulikuks märkmise. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-resolve' => '$1 märkis selle postituse lahendatuks. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-unresolve' => '$1 tühistas selle postituse lahendatuks märkimise. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 märkis selle postituse ebakohaseks. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-uninappropriate' => '$1 tühistas selle postituse ebakohaseks märkimise. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-helpful' => '$1 märkis selle postituse kasulikuks. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 märkis selle postituse ebakasulikuks. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 tühistas selle postituse kasulikuks märkimise. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 tühistas selle postituse ebakasulikuks märkimise. Toimingu aeg: $4, kell $5 $2',
-	'articlefeedbackv5-activity-item-clear-flags' => '$1 eemaldas kõik selle postituse sildid. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-request' => '$1 {{GENDER:$6|palus}} varjamist. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 {{GENDER:$6|tühistas}} varjamispalve. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 {{GENDER:$6|lükkas}} varjamispalve tagasi. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 {{GENDER:$6|sildistas}} selle postituse. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 {{GENDER:$6|eemaldas}} selle postituse juurest sildi. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 {{GENDER:$6|varjas}} selle postituse. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 {{GENDER:$6|tühistas}} selle postituse varjamise. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 {{GENDER:$6|märkis}} selle postituse kasulikuks. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 {{GENDER:$6|tühistas}} selle postituse kasulikuks märkmise. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 {{GENDER:$6|märkis}} selle postituse lahendatuks. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 {{GENDER:$6|tühistas}} selle postituse lahendatuks märkimise. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 {{GENDER:$6|märkis}} selle postituse ebakohaseks. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 {{GENDER:$6|tühistas}} selle postituse ebakohaseks märkimise. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 {{GENDER:$6|märkis}} selle postituse kasulikuks. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 {{GENDER:$6|märkis}} selle postituse ebakasulikuks. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 {{GENDER:$6|tühistas}} selle postituse kasulikuks märkimise. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 {{GENDER:$6|tühistas}} selle postituse ebakasulikuks märkimise. Toimingu aeg: $4, kell $5 $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 {{GENDER:$6|eemaldas}} kõik selle postituse sildid. Toimingu aeg: $4, kell $5 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|Üks|$1}} selle postitusega seotud {{PLURAL:$1|toiming|toimingut}}',
 	'articlefeedbackv5-activity-more' => 'Näita veel toiminguid',
 	'articlefeedbackv5-talk-view-feedback' => 'Vaata lugejate tagasisidet',
@@ -9823,6 +9892,7 @@ $1',
  * @author Nedergard
  * @author Nike
  * @author Olli
+ * @author Pxos
  * @author Samoasambia
  * @author Silvonen
  * @author Snidata
@@ -10027,7 +10097,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-form-tooltip-noaction' => 'Epäselvä, merkityksetön, kehu, kaksoiskappale...',
 	'articlefeedbackv5-form-tooltip-unnoaction' => 'Peruuta käyttökelvottomaksi merkitseminen',
 	'articlefeedbackv5-form-tooltip-noaction-own' => 'Epäselvä, merkityksetön, kehu, kaksoiskappale...',
-	'articlefeedbackv5-form-tooltip-unnoaction-own' => 'Peruuta ei toimepiteitä merkintä', # Fuzzy
+	'articlefeedbackv5-form-tooltip-unnoaction-own' => 'Peruuta "ei toimepiteitä" -merkintä',
 	'articlefeedbackv5-form-tooltip-inappropriate' => 'Pötyä, roskapostia, loukkaavaa, henkilökohtaista tietoa...',
 	'articlefeedbackv5-form-tooltip-uninappropriate' => 'Poista asiaton-merkintä',
 	'articlefeedbackv5-form-tooltip-hide' => 'Pötyä, roskapostia, loukkaavaa, henkilökohtaista tietoa...',
@@ -15842,37 +15912,37 @@ Il tuo contributo a questa pagina è importante per noi!
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|ha tolto}} il contrassegno di utile dal [[$3|commento #$4]] su [[$5]]',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|ha tolto}} il contrassegno di non utile dal [[$3|commento #$4]] su [[$5]]',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|ha rimosso}} tutte le segnalazioni per il [[$3|commento #$4]] su [[$5]]',
-	'logentry-articlefeedbackv5-protect' => '$1 ha modificato la visibilità dello strumento di feedback per "$3" $4',
+	'logentry-articlefeedbackv5-protect' => '$1 {{GENDER:$2|ha modificato}} la visibilità dello strumento di feedback per "$3" $4',
 	'articlefeedbackv5-activity-pane-header' => 'Registro attività',
 	'articlefeedbackv5-activity-feedback-info' => 'Commento di $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Postato il $1',
 	'articlefeedbackv5-activity-permalink' => 'link permanente',
-	'articlefeedbackv5-activity-item-request' => '$1 ha richiesto la soppressione il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-unrequest' => '$1 ha tolto la richiesta di soppressione il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-decline' => '$1 ha declinato la soppressione il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-flag' => '$1 ha segnalato questo post il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-unflag' => '$1 ha tolto la segnalazione da questo post il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-autoflag' => '$1 ha segnalato questo post il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-oversight' => '$1 ha soppresso questo post il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-unoversight' => '$1 ha rimosso lo stato di soppressione per questo post il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-feature' => '$1 ha contrassegnato questo post come utile il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-unfeature' => '$1 ha tolto il contrassegno di utile da questo post il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-resolve' => '$1 ha contrassegnato questo post come risolto il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-unresolve' => '$1 ha tolto il contrassegno di risolto per questo post il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-noaction' => '$1 ha contrassegnato questo post come non fungibile il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-unnoaction' => '$1 ha tolto il contrassegno di non fungibile per questo post il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 ha nascosto questo questo il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-uninappropriate' => '$1 ha scoperto questo post il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-hide' => '$1 ha nascosto questo questo il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-unhide' => '$1 ha scoperto questo post il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-autohide' => '$1 ha nascosto questo questo il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-archive' => '$1 ha archiviato questo questo il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-unarchive' => "$1 ha tolto dall'archivio questo post il $4 alle $5 $2",
-	'articlefeedbackv5-activity-item-helpful' => '$1 ha contrassegnato questo post come utile il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 ha contrassegnato questo post come non utile il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 ha tolto il contrassegno di utile da questo post il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 ha tolto il contrassegno di non utile per questo post il $4 alle $5 $2',
-	'articlefeedbackv5-activity-item-clear-flags' => '$1 ha rimosso tutte le segnalazioni per questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-request' => '$1 {{GENDER:$6|ha richiesto}} la soppressione il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 {{GENDER:$6|ha tolto}} la richiesta di soppressione il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 {{GENDER:$6|ha declinato}} la soppressione il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 {{GENDER:$6|ha segnalato}} questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 {{GENDER:$6|ha tolto}} la segnalazione da questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-autoflag' => '$1 {{GENDER:$6|ha segnalato}} automaticamente questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 {{GENDER:$6|ha soppresso}} questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 {{GENDER:$6|ha rimosso}} lo stato di soppressione per questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 {{GENDER:$6|ha contrassegnato}} questo post come utile il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 {{GENDER:$6|ha tolto}} il contrassegno di utile da questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 {{GENDER:$6|ha contrassegnato}} questo post come risolto il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 {{GENDER:$6|ha tolto}} il contrassegno di risolto per questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-noaction' => '$1 {{GENDER:$6|ha contrassegnato}} questo post come non fungibile il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 {{GENDER:$6|ha tolto}} il contrassegno di non fungibile per questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 {{GENDER:$6|ha contrassegnato}} questo post come inappropriato il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 {{GENDER:$6|ha tolto}} il contrassegno di inappropriato per questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-hide' => '$1 {{GENDER:$6|ha nascosto}} questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-unhide' => '$1 {{GENDER:$6|ha scoperto}} questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-autohide' => '$1 {{GENDER:$6|ha nascosto}} questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-archive' => '$1 {{GENDER:$6|ha archiviato}} questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-unarchive' => "$1 {{GENDER:$6|ha tolto}} dall'archivio questo post il $4 alle $5 $2",
+	'articlefeedbackv5-activity-item-helpful' => '$1 {{GENDER:$6|ha contrassegnato}} questo post come utile il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 {{GENDER:$6|ha contrassegnato}} questo post come non utile il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 {{GENDER:$6|ha tolto}} il contrassegno di utile da questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 {{GENDER:$6|ha tolto}} il contrassegno di non utile per questo post il $4 alle $5 $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 {{GENDER:$6|ha rimosso}} tutte le segnalazioni per questo post il $4 alle $5 $2',
 	'articlefeedbackv5-activity-note-archive' => 'Archiviato dopo {{PLURAL:$1|$1 giorno|$1 giorni}} di inattività',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 azione su questo post|$1 azioni su questo post}}',
 	'articlefeedbackv5-activity-more' => 'Mostra altre attività',
@@ -16219,10 +16289,14 @@ $messages['ja'] = array(
 	'articlefeedbackv5-noteflyover-inappropriate-help' => '詳細',
 	'articlefeedbackv5-noteflyover-uninappropriate-submit' => '注記を追加',
 	'articlefeedbackv5-noteflyover-uninappropriate-help' => '詳細',
+	'articlefeedbackv5-noteflyover-archive-caption' => 'アーカイブ済み',
 	'articlefeedbackv5-noteflyover-archive-label' => '注記を追加',
+	'articlefeedbackv5-noteflyover-archive-placeholder' => 'この投稿をアーカイブしたのはなぜですか?',
 	'articlefeedbackv5-noteflyover-archive-submit' => '注記を追加',
 	'articlefeedbackv5-noteflyover-archive-help' => '詳細',
+	'articlefeedbackv5-noteflyover-unarchive-caption' => 'アーカイブ解除済み',
 	'articlefeedbackv5-noteflyover-unarchive-label' => '注記を追加',
+	'articlefeedbackv5-noteflyover-unarchive-placeholder' => 'この投稿をアーカイブ解除したのはなぜですか?',
 	'articlefeedbackv5-noteflyover-unarchive-submit' => '注記を追加',
 	'articlefeedbackv5-noteflyover-unarchive-help' => '詳細',
 	'articlefeedbackv5-noteflyover-request-caption' => '抹消を要請',
@@ -19640,20 +19714,20 @@ $6
 	'articlefeedbackv5-activity-item-unfeature' => '$1 {{GENDER:$6|ја тргна}} објавава од корисни на $4 во $5 ч. $2',
 	'articlefeedbackv5-activity-item-resolve' => '$1 {{GENDER:$6|ја означи}} објавава како решена на $4 во $5 ч. $2',
 	'articlefeedbackv5-activity-item-unresolve' => '$1 {{GENDER:$6|ја тргна}} објавава од решени на $4 во $5 ч. $2',
-	'articlefeedbackv5-activity-item-noaction' => '$1 означи дека мислењево не бара постапка на $4 во $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unnoaction' => '$1 го тргна мислењево од оние што не бараат постапка на $4 во $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 го скри мислењево на $4 во $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-noaction' => '$1 {{GENDER:$6|означи}} дека објавава не бара постапка на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 {{GENDER:$6|ја тргна}} објавава од оние што не бараат постапка на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 {{GENDER:$6|ја означи}} објавава како несоодветна на $4 во $5 ч. $2',
 	'articlefeedbackv5-activity-item-uninappropriate' => '$1 го откри мислењево на $4 во $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-hide' => '$1 го скри мислењево на $4 во $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unhide' => '$1 го откри мислењево на $4 на $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-autohide' => '$1 сткри мислењево на $4 на $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-archive' => '$1 го архивираше мислењево на $4 на $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unarchive' => '$1 го одархивираше мислењево на $4 на $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-helpful' => '$1 го означи мислењево како корисно на $4 во $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 го означи мислењево како некорисно на $4 во $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 го тргна мислењево од корисни на $4 во $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 го тргна мислењево од некорисни на $4 во $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-clear-flags' => '$1 ги тргна сите ознаки од мислењево на $4 во $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-hide' => '$1 {{GENDER:$6|ја скри}} објавава на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-unhide' => '$1 {{GENDER:$6|ја откри}} објавава на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-autohide' => '$1 {{GENDER:$6|ја откри}} објавава на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-archive' => '$1 {{GENDER:$6|ја архивираше}} објавава на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-unarchive' => '$1 {{GENDER:$6|ја одархивираше}} објавава на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 {{GENDER:$6|ја означи}} објавава како корисна на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 {{GENDER:$6|ја означи објавава}} како некорисна на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 {{GENDER:$6|ја тргна објавава}} од корисни на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 {{GENDER:$6|ja тргна}} објавава од некорисни на $4 во $5 ч. $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 {{GENDER:$6|ги тргна}} сите ознаки од објавава на $4 во $5 ч. $2',
 	'articlefeedbackv5-activity-note-archive' => 'Архивирано по {{PLURAL:$1|$1 ден|$1 дена}} неактивност на уредникот',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 дејство врз мислењево|$1 дејства врз мислењево}}',
 	'articlefeedbackv5-activity-more' => 'Уште активности',
@@ -28867,37 +28941,37 @@ dessa fel innan du begär tillsyn:
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|avmarkerade som hjälpsam}} [[$3|feedbackinlägg #$4]] på [[$5]]',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|avmarkerade som ohjälpsam}} [[$3|feedbackinlägg #$4]] på [[$5]]',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|tog bort alla flaggor}} [[$3|feedbackinlägg #$4]] på [[$5]]',
-	'logentry-articlefeedbackv5-protect' => '$1 ändrade artikelåterkopplingsverktygets synlighet på "$3" $4',
+	'logentry-articlefeedbackv5-protect' => '$1 {{GENDER:$2|ändrade}} artikelåterkopplingsverktygets synlighet på "$3" $4',
 	'articlefeedbackv5-activity-pane-header' => 'Aktivitetslogg',
 	'articlefeedbackv5-activity-feedback-info' => 'Feedback av $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Skrevs den $1',
 	'articlefeedbackv5-activity-permalink' => 'permanent länk',
-	'articlefeedbackv5-activity-item-request' => '$1 begärde censur den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unrequest' => '$1 avbegärde censur på $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-decline' => '$1 avböjde censur den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-flag' => '$1 flaggade detta inlägg den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unflag' => '$1 tog bort flagga på detta inlägg den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-autoflag' => '$1 flaggade detta inlägg den $4 kl. $5 $2',
-	'articlefeedbackv5-activity-item-oversight' => '$1 censurerade detta inlägg den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unoversight' => '$1 tog bort censur på detta inlägg den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-feature' => '$1 markerade detta inlägg som användbar den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unfeature' => '$1 avmarkerade detta inlägg som användbar den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-resolve' => '$1 markerade detta inlägg som löst den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unresolve' => '$1 avmarkerade detta inlägg som löst den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-noaction' => '$1 markerade detta inlägg som icke-åtgärdsbar den $4 kl. $5 $2',
-	'articlefeedbackv5-activity-item-unnoaction' => '$1 avmarkerade detta inlägg som icke-åtgärdsbar den $4 kl. $5 $2',
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 dolde detta inlägg den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-uninappropriate' => '$1 tog fram detta inlägg den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-hide' => '$1 dolde detta inlägg den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unhide' => '$1 tog fram detta inlägg den $4 kl. $5 $2',
-	'articlefeedbackv5-activity-item-autohide' => '$1 dolde detta inlägg den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-archive' => '$1 arkiverade detta inlägg den $4 kl. $5 $2',
-	'articlefeedbackv5-activity-item-unarchive' => '$1 av-arkiverade detta inlägg den $4 kl. $5 $2',
-	'articlefeedbackv5-activity-item-helpful' => '$1 markerade detta inlägg som hjälpsamt den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 markerade detta inlägg som inte hjälpsamt den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 avmarkerade detta inlägg som hjälpsamt den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 avmarkerade detta inlägg som inte hjälpsamt den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-clear-flags' => '$1 tog bort alla flaggor för detta inlägg den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-request' => '$1 {{GENDER:$6|begärde}} censur den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 {{GENDER:$6|avbegärde}} censur den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 {{GENDER:$6|avböjde}} censur den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 {{GENDER:$6|flaggade}} detta inlägg den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 {{GENDER:$6|tog bort flaggan}} på detta inlägg den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-autoflag' => '$1 {{GENDER:$6|flaggade detta inlägg automatiskt}} den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 {{GENDER:$6|censurerade}} detta inlägg den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 {{GENDER:$6|tog bort}} censur på detta inlägg den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 {{GENDER:$6|markerade}} detta inlägg som användbar den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som användbart den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 {{GENDER:$6|markerade}} detta inlägg som löst den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som löst den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-noaction' => '$1 {{GENDER:$6|markerade}} detta inlägg som icke-åtgärdsbar den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som icke-åtgärdsbar den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 {{GENDER:$6|markerade}} detta inlägg som olämpligt den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som olämpligt den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-hide' => '$1 {{GENDER:$6|dolde}} detta inlägg den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-unhide' => '$1 {{GENDER:$6|tog fram}} detta inlägg den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-autohide' => '$1 {{GENDER:$6|dolde}} detta inlägg den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-archive' => '$1 {{GENDER:$6|arkiverade}} detta inlägg den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-unarchive' => '$1 {{GENDER:$6|av-arkiverade}} detta inlägg den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 {{GENDER:$6|markerade}} detta inlägg som hjälpsamt den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 {{GENDER:$6|markerade}} detta inlägg som inte hjälpsamt den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som hjälpsamt den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som inte hjälpsamt den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 {{GENDER:$6|tog bort}} alla flaggor för detta inlägg den $4 kl $5 $2',
 	'articlefeedbackv5-activity-note-archive' => 'Arkiverades efter {{PLURAL:$1|$1 dags|$1 dagars}} inaktivitet av redigering',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 åtgärd  på denna post|$1 åtgärder på denna post}}',
 	'articlefeedbackv5-activity-more' => 'Visa mer aktivitet',
