@@ -12469,6 +12469,7 @@ $messages['gu'] = array(
  * @author Amire80
  * @author Deror avi
  * @author Guycn1
+ * @author Guycn2
  * @author Inkbug
  * @author Nahum
  * @author Neukoln
@@ -14745,37 +14746,37 @@ include un de iste problemas:
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|dismarcava como utile}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|dismarcava como inutile}} le [[$3|entrata de evalutation №$4]] sur [[$5]]',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|radeva tote le marcas}} del [[$3|entrata de evalutation №$4]] sur [[$5]]',
-	'logentry-articlefeedbackv5-protect' => '$1 cambiava le visibilitate del instrumento de evalutation de articulos in "$3" $4',
+	'logentry-articlefeedbackv5-protect' => '$1 {{GENDER:$2|cambiava}} le visibilitate del instrumento de evalutation de articulos in "$3" $4',
 	'articlefeedbackv5-activity-pane-header' => 'Registro de activitate',
 	'articlefeedbackv5-activity-feedback-info' => 'Commentario per $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Publicate le $1',
 	'articlefeedbackv5-activity-permalink' => 'permaligamine',
-	'articlefeedbackv5-activity-item-request' => '$1 requestava supervision le $3 $2',
-	'articlefeedbackv5-activity-item-unrequest' => '$1 cancellava le requesta de supervision le $3 $2',
-	'articlefeedbackv5-activity-item-decline' => '$1 declinava supervision le $3 $2',
-	'articlefeedbackv5-activity-item-flag' => '$1 marcava iste message le $3 $2',
-	'articlefeedbackv5-activity-item-unflag' => '$1 dismarcava iste message le $3: $2',
-	'articlefeedbackv5-activity-item-autoflag' => '$1 marcava iste entrata le $4 a $5 $2',
-	'articlefeedbackv5-activity-item-oversight' => '$1 supervisava iste message le $3 $2',
-	'articlefeedbackv5-activity-item-unoversight' => '$1 removeva le supervision sur iste message le $3 $2',
-	'articlefeedbackv5-activity-item-feature' => '$1 marcava iste entrata como utile le $4 a $5 $2',
-	'articlefeedbackv5-activity-item-unfeature' => '$1 dismarcava iste entrata como utile le $4 a $5 $2',
-	'articlefeedbackv5-activity-item-resolve' => '$1 marcava iste message como resolvite le $3 $2',
-	'articlefeedbackv5-activity-item-unresolve' => '$1 dismarcava iste message como resolvite le $3 $2',
-	'articlefeedbackv5-activity-item-noaction' => '$1 marcava iste entrata como non actionabile le $4 a $5 $2',
-	'articlefeedbackv5-activity-item-unnoaction' => '$1 dismarcava iste entrata como non actionabile le $4 a $5 $2',
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 celava iste message le $3 $2',
-	'articlefeedbackv5-activity-item-uninappropriate' => '$1 revelava iste message le $3 $2',
-	'articlefeedbackv5-activity-item-hide' => '$1 celava iste entrata le $4 a $5 $2',
-	'articlefeedbackv5-activity-item-unhide' => '$1 revelava iste entrata le $4 a $5 $2',
-	'articlefeedbackv5-activity-item-autohide' => '$1 celava iste entrata le $4 a $5 $2',
-	'articlefeedbackv5-activity-item-archive' => '$1 archivava iste entrata le $4 a $5 $2',
-	'articlefeedbackv5-activity-item-unarchive' => '$1 disarchivava iste entrata le $4 a $5 $2',
-	'articlefeedbackv5-activity-item-helpful' => '$1 marcava iste message como utile le $3 $2',
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 marcava iste message como inutile le $3 $2',
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 dismarcava iste message como utile le $3 $2',
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 dismarcava iste message como inutile le $3 $2',
-	'articlefeedbackv5-activity-item-clear-flags' => '$1 radeva tote le marcas de iste message le $3 $2',
+	'articlefeedbackv5-activity-item-request' => '$1 {{GENDER:$6|requestava}} supervision le $4 a $5 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 {{GENDER:$6|cancellava le requesta de}} supervision le $4 a $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 {{GENDER:$6|declinava}} supervision le $4 a $5 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 {{GENDER:$6|marcava}} iste message le $4 a $5 $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 {{GENDER:$6|dismarcava}} iste message le $4 a $5 $2',
+	'articlefeedbackv5-activity-item-autoflag' => '$1 {{GENDER:$6|marcava automaticamente}} iste entrata le $4 a $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 {{GENDER:$6|supervisava}} iste message le $4 a $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 removeva le supervision sur iste message le $3 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-feature' => '$1 marcava iste entrata como utile le $4 a $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unfeature' => '$1 dismarcava iste entrata como utile le $4 a $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-resolve' => '$1 marcava iste message como resolvite le $3 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unresolve' => '$1 dismarcava iste message como resolvite le $3 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-noaction' => '$1 marcava iste entrata como non actionabile le $4 a $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 dismarcava iste entrata como non actionabile le $4 a $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 celava iste message le $3 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 revelava iste message le $3 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-hide' => '$1 celava iste entrata le $4 a $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unhide' => '$1 revelava iste entrata le $4 a $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-autohide' => '$1 celava iste entrata le $4 a $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-archive' => '$1 archivava iste entrata le $4 a $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unarchive' => '$1 disarchivava iste entrata le $4 a $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-helpful' => '$1 marcava iste message como utile le $3 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 marcava iste message como inutile le $3 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 dismarcava iste message como utile le $3 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 dismarcava iste message como inutile le $3 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 radeva tote le marcas de iste message le $3 $2', # Fuzzy
 	'articlefeedbackv5-activity-note-archive' => 'Archivate post $1 {{PLURAL:$1|die|dies}} de inactivitate de redactores',
 	'articlefeedbackv5-activity-count' => '$1 {{PLURAL:$1|action|actiones}} sur iste message',
 	'articlefeedbackv5-activity-more' => 'Monstrar plus activitate',
