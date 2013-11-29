@@ -5210,6 +5210,7 @@ $messages['bs'] = array(
  * @author Grondin
  * @author Jmarchn
  * @author Nnemo
+ * @author Papapep
  * @author Pitort
  * @author Qllach
  * @author Solde
@@ -5494,7 +5495,7 @@ $messages['ca'] = array(
 	'articlefeedbackv5-bucket4-form-submit' => 'Modifica aquesta pàgina',
 	'articlefeedbackv5-bucket4-help-tooltip-info' => '{{SITENAME}} vol saber el que penses. Ajudar a millorar aquesta pàgina convertint-te en un editor.',
 	'articlefeedbackv5-bucket4-noedit-title' => 'Ajudeu a millorar {{SITENAME}}',
-	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'Aquest lloc web ha estat creat per persones com vostè.',
+	'articlefeedbackv5-bucket4-noedit-teaser-line1' => "Aquest lloc web s'ha creat per persones com vostè.",
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'Ens dónes un cop de mà?',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Aprèn-ne més',
 	'articlefeedbackv5-bucket6-title' => 'Ajudeu a millorar aquesta pàgina',
@@ -5523,8 +5524,8 @@ $messages['ca'] = array(
 	'articlefeedbackv5-activity-feedback-info' => 'Missatge de comentari #$1 per $2', # Fuzzy
 	'articlefeedbackv5-activity-feedback-date' => 'Publicat el $1',
 	'articlefeedbackv5-activity-permalink' => 'enllaç permanent',
-	'articlefeedbackv5-activity-item-request' => '$1 ha demanat una supervisió el $4 a les $5 $2',
-	'articlefeedbackv5-activity-item-unrequest' => '$1 ha deixat de demanar una supervisió el $4 a les $5 $2',
+	'articlefeedbackv5-activity-item-request' => '$1 ha demanat una supervisió el $4 a les $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unrequest' => '$1 ha deixat de demanar una supervisió el $4 a les $5 $2', # Fuzzy
 	'articlefeedbackv5-activity-more' => 'Mostra més activitat',
 	'articlefeedbackv5-talk-view-feedback' => 'Mostra comentaris de lectors',
 	'articlefeedbackv5-disable-flyover-title' => 'Vols eliminar aquesta eina?',
@@ -8811,7 +8812,9 @@ El equipo de {{SITENAME}}
 PD: Si tienes alguna pregunta acerca de cómo utilizar las funciones de supresión de la página de comentarios del artículo, por favor lee esta FAQ del supresor:
 
 $4', # Fuzzy
-	'articlefeedbackv5-email-request-oversight-body-notes' => '$1',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'Se añadió este comentario a la solicitud:
+
+$1',
 	'articlefeedbackv5-disable-flyover-title' => '¿Eliminar esta herramienta?',
 	'articlefeedbackv5-disable-flyover-help-message' => 'Para remover el Article Feedback, ve a $1 > $2 y mira $3',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Ir a Mis preferencias',
@@ -12609,7 +12612,7 @@ $messages['he'] = array(
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|תצוגת משוב מכל הדפים]]',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|עריכה אחת|$1 עריכות}} מאז שנשלח',
 	'articleFeedbackv5-details-link' => 'פרטים',
-	'articlefeedbackv5-revision-link' => '(ראה את הדף הישן)',
+	'articlefeedbackv5-revision-link' => '(ראו את הדף הישן)',
 	'articlefeedbackv5-special-more' => 'רשומות נוספות',
 	'articlefeedbackv5-special-refresh' => 'רענון הרשימה',
 	'articlefeedbackv5-special-pagetitle' => 'משוב על $1',
@@ -13048,7 +13051,7 @@ $1 {{GENDER:$1|ביקש|ביקשה}} להעלים משוב על הדף הזה:
 
 $2
 
-נא לסקור את רשומת המשוב הזאת ולקבל או לדחו את בקשת ההעלמה:
+נא לסקור את רשומת המשוב הזאת ולקבל או לדחות את בקשת ההעלמה:
 
 $3
 $5
@@ -28953,32 +28956,32 @@ dessa fel innan du begär tillsyn:
 	'articlefeedbackv5-activity-feedback-info' => 'Feedback av $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Skrevs den $1',
 	'articlefeedbackv5-activity-permalink' => 'permanent länk',
-	'articlefeedbackv5-activity-item-request' => '$1 {{GENDER:$6|begärde}} censur den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unrequest' => '$1 {{GENDER:$6|avbegärde}} censur den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-decline' => '$1 {{GENDER:$6|avböjde}} censur den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-flag' => '$1 {{GENDER:$6|flaggade}} detta inlägg den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unflag' => '$1 {{GENDER:$6|tog bort flaggan}} på detta inlägg den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-autoflag' => '$1 {{GENDER:$6|flaggade detta inlägg automatiskt}} den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-oversight' => '$1 {{GENDER:$6|censurerade}} detta inlägg den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unoversight' => '$1 {{GENDER:$6|tog bort}} censur på detta inlägg den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-feature' => '$1 {{GENDER:$6|markerade}} detta inlägg som användbar den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unfeature' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som användbart den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-resolve' => '$1 {{GENDER:$6|markerade}} detta inlägg som löst den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unresolve' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som löst den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-noaction' => '$1 {{GENDER:$6|markerade}} detta inlägg som icke-åtgärdsbar den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unnoaction' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som icke-åtgärdsbar den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 {{GENDER:$6|markerade}} detta inlägg som olämpligt den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-uninappropriate' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som olämpligt den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-hide' => '$1 {{GENDER:$6|dolde}} detta inlägg den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-request' => '$1 {{GENDER:$6|begärde}} censur den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 {{GENDER:$6|avbegärde}} censur den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 {{GENDER:$6|avböjde}} censur den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 {{GENDER:$6|flaggade}} detta inlägg den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 {{GENDER:$6|tog bort flaggan}} på detta inlägg den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-autoflag' => '$1 {{GENDER:$6|flaggade detta inlägg automatiskt}} den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 {{GENDER:$6|censurerade}} detta inlägg den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 {{GENDER:$6|tog bort}} censur på detta inlägg den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 {{GENDER:$6|markerade}} detta inlägg som användbart den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som användbart den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 {{GENDER:$6|markerade}} detta inlägg som löst den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som löst den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-noaction' => '$1 {{GENDER:$6|markerade}} detta inlägg som icke-åtgärdsbar den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som icke-åtgärdsbar den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 {{GENDER:$6|markerade}} detta inlägg som olämpligt den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som olämpligt den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-hide' => '$1 {{GENDER:$6|dolde}} detta inlägg den $4 kl. $5 $2',
 	'articlefeedbackv5-activity-item-unhide' => '$1 {{GENDER:$6|tog fram}} detta inlägg den $4 kl. $5 $2',
-	'articlefeedbackv5-activity-item-autohide' => '$1 {{GENDER:$6|dolde}} detta inlägg den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-autohide' => '$1 {{GENDER:$6|dolde}} detta inlägg den $4 kl. $5 $2',
 	'articlefeedbackv5-activity-item-archive' => '$1 {{GENDER:$6|arkiverade}} detta inlägg den $4 kl. $5 $2',
-	'articlefeedbackv5-activity-item-unarchive' => '$1 {{GENDER:$6|av-arkiverade}} detta inlägg den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-helpful' => '$1 {{GENDER:$6|markerade}} detta inlägg som hjälpsamt den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 {{GENDER:$6|markerade}} detta inlägg som inte hjälpsamt den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som hjälpsamt den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som inte hjälpsamt den $4 kl $5 $2',
-	'articlefeedbackv5-activity-item-clear-flags' => '$1 {{GENDER:$6|tog bort}} alla flaggor för detta inlägg den $4 kl $5 $2',
+	'articlefeedbackv5-activity-item-unarchive' => '$1 {{GENDER:$6|av-arkiverade}} detta inlägg den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 {{GENDER:$6|markerade}} detta inlägg som hjälpsamt den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 {{GENDER:$6|markerade}} detta inlägg som inte hjälpsamt den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som hjälpsamt den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 {{GENDER:$6|avmarkerade}} detta inlägg som inte hjälpsamt den $4 kl. $5 $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 {{GENDER:$6|tog bort}} alla flaggor för detta inlägg den $4 kl. $5 $2',
 	'articlefeedbackv5-activity-note-archive' => 'Arkiverades efter {{PLURAL:$1|$1 dags|$1 dagars}} inaktivitet av redigering',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 åtgärd  på denna post|$1 åtgärder på denna post}}',
 	'articlefeedbackv5-activity-more' => 'Visa mer aktivitet',
