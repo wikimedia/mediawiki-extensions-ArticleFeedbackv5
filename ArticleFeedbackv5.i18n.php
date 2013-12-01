@@ -2914,6 +2914,13 @@ $messages['as'] = array(
 	'articlefeedbackv5-section-linktext' => 'মন্তব্য',
 );
 
+/** American sign language (American sign language)
+ * @author Icemandeaf
+ */
+$messages['ase'] = array(
+	'articlefeedbackv5-cta4-button-text-login' => 'M538x521S2a200497x480S20b00462x508S11530523x482S15a37462x483S11551470x493',
+);
+
 /** Asturian (asturianu)
  * @author Xuacu
  */
@@ -5204,6 +5211,7 @@ $messages['bs'] = array(
 
 /** Catalan (català)
  * @author Aleator
+ * @author Alvaro Vidal-Abarca
  * @author Arnaugir
  * @author BroOk
  * @author El libre
@@ -5406,36 +5414,36 @@ $messages['ca'] = array(
 	'articlefeedbackv5-short-status-unhelpful' => '{{GENDER:$1|Revisat per $1}}',
 	'articlefeedbackv5-short-status-undo-unhelpful' => '{{GENDER:$1|Revisat per $1}}',
 	'articlefeedbackv5-permalink-status-request' => '{{GENDER:$1|La <strong>supervisió</strong> fou sol·licitada per $1}} fa $2',
-	'articlefeedbackv5-permalink-status-unrequest' => '{GENDER:$1|<strong>Supervisió</strong> no sol·licitada per $1}} fa $2', # Fuzzy
-	'articlefeedbackv5-permalink-status-decline' => '{GENDER:$1|<strong>Supervisió</strong> declinada per $1}} fa $2', # Fuzzy
+	'articlefeedbackv5-permalink-status-unrequest' => '{{GENDER:$1|<strong>Supervisió</strong> no sol·licitada per $1}} fa $2',
+	'articlefeedbackv5-permalink-status-decline' => '{{GENDER:$1|<strong>Supervisió</strong> rebutjada per $1}} fa $2',
 	'articlefeedbackv5-permalink-status-inappropriate' => '{{GENDER:$1|<strong>Amagat</strong> per  $1}} fa $2',
 	'articlefeedbackv5-permalink-status-uninappropriate' => '{{GENDER:$1|<strong>Mostrat</strong> per  $1}} fa $2',
 	'articlefeedbackv5-permalink-activity-more' => 'Mostra més accions...',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Mostra menys accions...',
-	'articlefeedbackv5-noteflyover-feature-caption' => 'Destaca aquest missatge', # Fuzzy
+	'articlefeedbackv5-noteflyover-feature-caption' => 'Marca com a útil',
 	'articlefeedbackv5-noteflyover-feature-label' => 'Afegeix una nota',
-	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Per què destaques aquest missatge?', # Fuzzy
-	'articlefeedbackv5-noteflyover-feature-submit' => 'Destaca aquest missatge', # Fuzzy
+	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Per què marqueu aquest missatge com a útil?',
+	'articlefeedbackv5-noteflyover-feature-submit' => 'Afegeix una nota',
 	'articlefeedbackv5-noteflyover-feature-help' => 'Aprèn-ne més',
-	'articlefeedbackv5-noteflyover-unfeature-caption' => 'No destaquis aquest missatge', # Fuzzy
+	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Desmarca com a útil',
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Afegeix una nota',
-	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Per què destaques aquest missatge?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unfeature-submit' => 'No destaquis aquest missatge', # Fuzzy
+	'articlefeedbackv5-noteflyover-unfeature-placeholder' => 'Per què heu desmarcat aquest missatge com a útil?',
+	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Afegeix una nota',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'Aprèn-ne més',
-	'articlefeedbackv5-noteflyover-resolve-caption' => 'Marca com a resolt', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-caption' => 'Marcat com a resolt',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Afegeix una nota',
-	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Per què marques aquest missatge com a resolt?', # Fuzzy
-	'articlefeedbackv5-noteflyover-resolve-submit' => 'Marca com a resolt', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Per què heu marcat aquest missatge com a resolt?',
+	'articlefeedbackv5-noteflyover-resolve-submit' => 'Afegeix una nota',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Aprèn-ne més',
-	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Desmarca com a resolt', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Desmarcat com a resolt',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Afegeix una nota',
-	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Per què marques aquest missatge com a resolt?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Desmarca com a resolt', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Per què heu desmarcat aquest missatge com a resolt?',
+	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Afegeix una nota',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Aprèn-ne més',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Amaga',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Afegeix una nota',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Per què ocultes aquest missatge?', # Fuzzy
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Oculta aquest missatge', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Per què heu amagat aquest missatge?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Afegeix una nota',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Aprèn-ne més',
 	'articlefeedbackv5-noteflyover-unhide-label' => 'Afegeix una nota',
 	'articlefeedbackv5-noteflyover-unhide-submit' => 'Afegeix anotacions',
@@ -5462,10 +5470,10 @@ $messages['ca'] = array(
 	'articlefeedbackv5-noteflyover-unarchive-help' => 'Aprèn-ne més',
 	'articlefeedbackv5-noteflyover-request-caption' => 'Sol·licita supervisió',
 	'articlefeedbackv5-noteflyover-request-label' => 'Afegeix una nota per explicar perquè sol·licites revisió',
-	'articlefeedbackv5-noteflyover-request-placeholder' => 'Per què sol·licites supervisió?', # Fuzzy
+	'articlefeedbackv5-noteflyover-request-placeholder' => 'Per què heu sol·licitat supervisió?',
 	'articlefeedbackv5-noteflyover-request-help' => 'Aprèn-ne més',
 	'articlefeedbackv5-noteflyover-unrequest-label' => 'Afegeix una nota',
-	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Per què cancel·les la sol·licitud de supervisió?', # Fuzzy
+	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Per què heu cancel·lat la sol·licitud de supervisió?',
 	'articlefeedbackv5-noteflyover-unrequest-submit' => 'Cancel·la la sol·licitud',
 	'articlefeedbackv5-noteflyover-unrequest-help' => 'Aprèn-ne més',
 	'articlefeedbackv5-noteflyover-oversight-caption' => 'Supervisa aquesta publicació',
@@ -5474,7 +5482,7 @@ $messages['ca'] = array(
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Afegeix una nota',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Afegeix anotacions',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Aprèn-ne més',
-	'articlefeedbackv5-noteflyover-decline-caption' => 'Refusa supervisió', # Fuzzy
+	'articlefeedbackv5-noteflyover-decline-caption' => 'Supervisió refusada',
 	'articlefeedbackv5-noteflyover-decline-label' => 'Afegeix una nota',
 	'articlefeedbackv5-noteflyover-decline-submit' => 'Afegeix anotacions',
 	'articlefeedbackv5-noteflyover-decline-help' => 'Aprèn-ne més',
@@ -5484,7 +5492,7 @@ $messages['ca'] = array(
 	'articlefeedbackv5-bucket1-toggle-found-no' => 'No',
 	'articlefeedbackv5-bucket1-toggle-found-yes-full' => 'Sí, he trobat el que buscava.',
 	'articlefeedbackv5-bucket1-toggle-found-no-full' => 'No, no he trobat el que buscava.',
-	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'Com es podria millorar aquest article?', # Fuzzy
+	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'Com es podria millorar aquesta pàgina?',
 	'articlefeedbackv5-bucket1-question-placeholder-no' => 'Alguna suggerència per millorar?',
 	'articlefeedbackv5-bucket1-form-submit' => 'Publica els teus comentaris',
 	'articlefeedbackv5-bucket4-title' => 'Ajuda a millorar aquesta pàgina',
@@ -5521,11 +5529,11 @@ $messages['ca'] = array(
 	'articlefeedbackv5-toolbox-add' => 'Afegeix els teus comentaris',
 	'articlefeedbackv5-disable-preference' => "No mostris el giny de comentaris d'article a les pàgines",
 	'articlefeedbackv5-activity-pane-header' => "Registre d'activitat",
-	'articlefeedbackv5-activity-feedback-info' => 'Missatge de comentari #$1 per $2', # Fuzzy
+	'articlefeedbackv5-activity-feedback-info' => 'Comentari per $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Publicat el $1',
 	'articlefeedbackv5-activity-permalink' => 'enllaç permanent',
-	'articlefeedbackv5-activity-item-request' => '$1 ha demanat una supervisió el $4 a les $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unrequest' => '$1 ha deixat de demanar una supervisió el $4 a les $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-request' => '$1 {{GENDER:$6|ha demanat}} una supervisió el $4 a les $5 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 {{GENDER:$6|ha deixat de demanar}} una supervisió el $4 a les $5 $2',
 	'articlefeedbackv5-activity-more' => 'Mostra més activitat',
 	'articlefeedbackv5-talk-view-feedback' => 'Mostra comentaris de lectors',
 	'articlefeedbackv5-disable-flyover-title' => 'Vols eliminar aquesta eina?',
@@ -12620,25 +12628,25 @@ $messages['he'] = array(
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'משוב על דפים ברשימת המעקב',
 	'articlefeedbackv5-special-central-pagetitle' => 'דף המשוב המרכזי',
 	'articlefeedbackv5-loading-tag' => 'נטען...',
-	'articlefeedbackv5-status-hide' => 'התגובה הוסתרה על ידי $1 ב־$2 בשעה $3',
-	'articlefeedbackv5-status-unhide' => 'הסתרת התגובה בוטלה על ידי $1 ב־$2 בשעה $3',
+	'articlefeedbackv5-status-hide' => 'התגובה הוסתרה על־ידי $1 ב־$2 בשעה $3',
+	'articlefeedbackv5-status-unhide' => 'הסתרת התגובה בוטלה על־ידי $1 ב־$2 בשעה $3',
 	'articlefeedbackv5-status-request' => 'בקשת העלמה לרשומה הזאת נשלחה על־ידי $1 ב־$2 ב־$3',
-	'articlefeedbackv5-status-unrequest' => 'בקשת בקרה לתגובה זו בוטלה על ידי $1 ב$2 ב$3',
+	'articlefeedbackv5-status-unrequest' => 'בקשת בקרה לתגובה זו בוטלה על־ידי $1 ב$2 ב$3',
 	'articlefeedbackv5-status-decline' => 'בקשת העלמה לרשומה הזאת נדחתה על־ידי $1 ב־$2 ב־$3',
-	'articlefeedbackv5-status-autohide' => 'תגובה זו הוסתרה אוטומטית על ידי $1 ב־$2 בשעה $3',
+	'articlefeedbackv5-status-autohide' => 'תגובה זו הוסתרה אוטומטית על־ידי $1 ב־$2 בשעה $3',
 	'articlefeedbackv5-status-oversight' => 'הרשומה הזאת הועלמה על־ידי $1 ב־$2 ב־$3',
 	'articlefeedbackv5-status-unoversight' => 'הסתרת תגובה זו בוטלה על־ידי $1 ב־$3 $2',
-	'articlefeedbackv5-status-autoflag' => 'תגובה זו סומנה אוטומטית על ידי $1 ב־$3 $2',
-	'articlefeedbackv5-status-feature' => 'תגובה זו סומנה כשימושית על ידי $1 ב־$2 בשעה $3',
-	'articlefeedbackv5-status-unfeature' => 'סימון תגובה זו כשימושית בוטלה על ידי $1 ב־$2 בשעה $3',
-	'articlefeedbackv5-status-resolve' => 'הודעה זו סומנה כנפתרה על ידי $1 ב־$2 בשעה $3',
-	'articlefeedbackv5-status-unresolve' => 'סימון הודעה זו כנפתרה בוטלה על ידי $1 ב־$2 בשעה $3',
+	'articlefeedbackv5-status-autoflag' => 'תגובה זו סומנה אוטומטית על־ידי $1 ב־$3 $2',
+	'articlefeedbackv5-status-feature' => 'תגובה זו סומנה כשימושית על־ידי $1 ב־$2 בשעה $3',
+	'articlefeedbackv5-status-unfeature' => 'סימון תגובה זו כשימושית בוטלה על־ידי $1 ב־$2 בשעה $3',
+	'articlefeedbackv5-status-resolve' => 'הודעה זו סומנה כנפתרה על־ידי $1 ב־$2 בשעה $3',
+	'articlefeedbackv5-status-unresolve' => 'סימון הודעה זו כנפתרה בוטלה על־ידי $1 ב־$2 בשעה $3',
 	'articlefeedbackv5-status-noaction' => 'הרשומה הזאת סומנה בתור "לא לפעולה" על־ידי $1 ב־$2 ב־$3S',
 	'articlefeedbackv5-status-unnoaction' => 'הסימון של הרשומה הזאת בתור "לא לפעולה" בוטל על־ידי $1 ב־$2 ב־$3S',
 	'articlefeedbackv5-status-inappropriate' => 'הרשומה הזאת סומנה בתור בלתי־הולמת על־ידי $1 ב־$2 ב־$3',
 	'articlefeedbackv5-status-uninappropriate' => 'סימון הרשומה הזאת בתור בלתי־הולמת בוטל על־ידי $1 ב־$2 ב־$3',
-	'articlefeedbackv5-status-archive' => 'הפוסט הזה אורכב על ידי $1 ב$2 ב$3',
-	'articlefeedbackv5-status-unarchive' => 'הפוסט הזה הוצא מהארכיון על ידי $1 ב$2 ב$3',
+	'articlefeedbackv5-status-archive' => 'הפוסט הזה אורכב על־ידי $1 ב$2 ב$3',
+	'articlefeedbackv5-status-unarchive' => 'הפוסט הזה הוצא מהארכיון על־ידי $1 ב$2 ב$3',
 	'articlefeedbackv5-new-marker' => 'חדשה',
 	'articlefeedbackv5-oversight-marker' => 'מועלמת',
 	'articlefeedbackv5-autohide-marker' => 'מוסתר',
@@ -12757,17 +12765,17 @@ $6
 	'articlefeedbackv5-invalid-feedback' => 'המשוב המבוקש אינו קיים.',
 	'articlefeedbackv5-viewactivity' => 'צפייה בפעילות',
 	'articlefeedbackv5-mask-view-contents' => 'הצגת התוכן',
-	'articlefeedbackv5-mask-text-inappropriate' => "הרשומה הזאת מס' $1 {{GENDER:$2|סומנה}} בתור בלתי הולמת על־ידי $3.",
-	'articlefeedbackv5-mask-text-autohide' => "רשומה מס' $1 הוסתרה אוטומטית על־ידי $2 $3.",
-	'articlefeedbackv5-mask-text-hide' => "רשומה מס' $1 הוסתרה על־ידי $2 $3.",
-	'articlefeedbackv5-mask-text-oversight' => "רשומה מס' $1 הועלמה על־ידי $2 $3.",
+	'articlefeedbackv5-mask-text-inappropriate' => 'הרשומה הזאת מספר $1 {{GENDER:$2|סומנה}} בתור בלתי הולמת על־ידי $3.',
+	'articlefeedbackv5-mask-text-autohide' => 'רשומה מספר $1 הוסתרה אוטומטית על־ידי $2 $3.',
+	'articlefeedbackv5-mask-text-hide' => 'רשומה מספר $1 הוסתרה על־ידי $2 $3.',
+	'articlefeedbackv5-mask-text-oversight' => 'רשומה מספר $1 הועלמה על־ידי $2 $3.',
 	'articlefeedbackv5-special-disclaimer' => 'זה רק אבטיפוס. נא לא להשתמש בו אלא אם הוזמנת במפורש לעשות את זה.',
 	'articlefeedbackv5-special-goback' => 'הצגת דף המשובים',
 	'articlefeedbackv5-special-central-goback' => 'ראו משוב על דפים ארים',
 	'articlefeedbackv5-permalink-info-title' => 'מידע על הרשומה הזאת',
-	'articlefeedbackv5-permalink-info-post-id' => "רשומה מס' $1",
-	'articlefeedbackv5-permalink-written-by-editor' => 'נכתב על ידי משתמש רשום',
-	'articlefeedbackv5-permalink-written-by-reader' => 'נכתב על ידי משתמש אנונימי',
+	'articlefeedbackv5-permalink-info-post-id' => 'רשומה מספר $1',
+	'articlefeedbackv5-permalink-written-by-editor' => 'נכתב על־ידי משתמש רשום',
+	'articlefeedbackv5-permalink-written-by-reader' => 'נכתב על־ידי משתמש אנונימי',
 	'articlefeedbackv5-permalink-info-revision-link' => 'צפייה בגרסה הישנה של דף זה',
 	'articlefeedbackv5-permalink-info-posted' => 'נשלח ב־$1 ב־$2',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'אורך',
