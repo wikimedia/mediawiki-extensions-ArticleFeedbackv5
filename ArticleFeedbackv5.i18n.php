@@ -6935,6 +6935,7 @@ $4', # Fuzzy
 /** Zazaki (Zazaki)
  * @author Erdemaslancan
  * @author Gorizon
+ * @author Marmase
  * @author Mirzali
  */
 $messages['diq'] = array(
@@ -6990,7 +6991,13 @@ $messages['diq'] = array(
 	'articlefeedbackv5-feature-marker' => 'Weçinaye', # Fuzzy
 	'articlefeedbackv5-resolve-marker' => 'Agoziya',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 desmal|$1 desmali}}',
-	'articlefeedbackv5-form-unhide' => 'Enê mesaci menımne', # Fuzzy
+	'articlefeedbackv5-form-unfeature' => 'Peyser biya',
+	'articlefeedbackv5-form-unresolve' => 'Peyser biya',
+	'articlefeedbackv5-form-unnoaction' => 'Peyser biya',
+	'articlefeedbackv5-form-uninappropriate' => 'Peyser biya',
+	'articlefeedbackv5-form-unhide' => 'Peyser biya',
+	'articlefeedbackv5-form-unarchive' => 'Peyser biya',
+	'articlefeedbackv5-form-unoversight' => 'Peyser biya',
 	'articlefeedbackv5-discussion-page' => 'Vaten',
 	'articlefeedbackv5-whats-this' => 'Desteg',
 	'articlefeedbackv5-desc' => 'Wesiqe peyd rıştış',
@@ -25681,32 +25688,32 @@ Agradecemos sua contribuição nesta página!
 	'articlefeedbackv5-activity-feedback-info' => 'Avaliado por $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Postado em $1',
 	'articlefeedbackv5-activity-permalink' => 'Link permanente',
-	'articlefeedbackv5-activity-item-request' => '$1 solicitação de supervisão em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-unrequest' => '$1 solicitação de supervisão cancelada em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-decline' => '$1 supervisão recusada em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-flag' => '$1 marcou esta nota em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-unflag' => '$1 desmarcou esta nota em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-autoflag' => '$1 marcou esta nota em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-oversight' => '$1 supervisionou esta nota em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-unoversight' => '$1 removeu a supervisão desta nota em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-feature' => '$1 marcou esta nota como útil em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-unfeature' => '$1 desmarcou esta nota como útil em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-resolve' => '$1 marcou esta nota como resolvida em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-unresolve' => '$1 desmarcou esta nota como resolvida em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-noaction' => '$1 marcou esta nota como não-executável em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-unnoaction' => '$1 desmarcou esta nota como não-executável em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 marcou esta nota como inapropriada em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-uninappropriate' => '$1 desmarcou esta nota como inapropriada em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-hide' => '$1 ocultou esta nota em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-unhide' => '$1 mostrou esta nota em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-autohide' => '$1 ocultou esta nota em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-archive' => '$1 arquivou esta nota em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-unarchive' => '$1 desarquivou esta nota em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-helpful' => '$1 marcou esta nota como útil em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 marcou esta nota como inútil em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 desmarcou esta nota como útil em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 desmarcou esta nota como inútil em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-clear-flags' => '$1 limpou todas as revisões desta nota em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-request' => '$1 solicitação de supervisão em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unrequest' => '$1 solicitação de supervisão cancelada em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-decline' => '$1 supervisão recusada em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-flag' => '$1 marcou esta nota em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unflag' => '$1 desmarcou esta nota em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-autoflag' => '$1 marcou esta nota em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-oversight' => '$1 supervisionou esta nota em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unoversight' => '$1 removeu a supervisão desta nota em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-feature' => '$1 marcou esta nota como útil em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unfeature' => '$1 desmarcou esta nota como útil em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-resolve' => '$1 marcou esta nota como resolvida em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unresolve' => '$1 desmarcou esta nota como resolvida em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-noaction' => '$1 marcou esta nota como não-executável em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 desmarcou esta nota como não-executável em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 marcou esta nota como inapropriada em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 desmarcou esta nota como inapropriada em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-hide' => '$1 ocultou esta nota em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unhide' => '$1 mostrou esta nota em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-autohide' => '$1 ocultou esta nota em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-archive' => '$1 arquivou esta nota em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unarchive' => '$1 desarquivou esta nota em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-helpful' => '$1 marcou esta nota como útil em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 marcou esta nota como inútil em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 desmarcou esta nota como útil em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 desmarcou esta nota como inútil em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 limpou todas as revisões desta nota em $4 às $5 $2', # Fuzzy
 	'articlefeedbackv5-activity-note-archive' => 'Arquivada após {{PLURAL:$1|$1 dia|$1 dias}} de inatividade do editor',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 ação nesta nota|$1 ações nesta nota}}',
 	'articlefeedbackv5-activity-more' => 'Mostrar mais Atividades',
@@ -25734,6 +25741,9 @@ Voluntários do projeto {{SITENAME}}
 P.S.: Se você tem alguma dúvida sobre o uso da supervisão na página de avaliação, por favor veja as perguntas mais frequentes de supervisão:
 
 $4',
+	'articlefeedbackv5-email-request-oversight-body-notes' => 'Este comentário foi adicionado à solicitação de supervisão:
+
+$1',
 	'articlefeedbackv5-disable-flyover-title' => 'Remover esta ferramenta?',
 	'articlefeedbackv5-disable-flyover-help-message' => 'Para remover a Avaliação de artigo, vá à "$1" > "$2" e marque "$3"',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'Vá para minhas preferências',
