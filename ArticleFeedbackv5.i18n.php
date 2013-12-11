@@ -24050,6 +24050,7 @@ $messages['pl'] = array(
 	'logentry-articlefeedbackv5-noaction' => '$1 {{GENDER:$2|oznaczył|oznaczyła}} [[$3|opinię #$4]] na temat strony [[$5]] jako nie wymagającą działania',
 	'logentry-articlefeedbackv5-inappropriate' => '$1 {{GENDER:$2|ukrył|ukryła|ukrył(a)}} [[$3|opinię #$4]] na temat strony [[$5]]',
 	'logentry-articlefeedbackv5-uninappropriate' => '$1 {{GENDER:$2|anulował|anulowała|anulował(a)}} ukrycie [[$3|opinii #$4]] na temat strony [[$5]]',
+	'logentry-articlefeedbackv5-unhelpful' => '$1 {{GENDER:$2|oznaczył|oznaczyła}} [[$3|opinię #$4]] na temat strony [[$5]] jako niepomocną',
 	'logentry-articlefeedbackv5-protect' => '$1 {{GENDER:$2|zmienił|zmieniła}} widoczność narzędzia opinii o artykule na " $3 "$4',
 	'articlefeedbackv5-activity-pane-header' => 'Rejestr aktywności',
 	'articlefeedbackv5-activity-feedback-info' => 'Ocena wpisu #$1 przez $2', # Fuzzy
