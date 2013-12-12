@@ -16046,7 +16046,7 @@ $messages['ja'] = array(
 	'articlefeedbackv5-cta6-confirmation-title' => '{{SITENAME}}の編集ヘルプが必要?',
 	'articlefeedbackv5-cta6-button-link' => '//en.wikipedia.org/wiki/Wikipedia:Teahouse?ref=aft',
 	'articlefeedbackv5-overlay-close' => '閉じる',
-	'articlefeedbackv5-error' => 'エラーが発生しました。後でもう一度試してください。',
+	'articlefeedbackv5-error' => 'エラーが発生しました。しばらくしてからもう一度お試しください。',
 	'articlefeedbackv5-error-blocked' => 'ブロックされている利用者はフィードバックを送信できません。',
 	'articlefeedbackv5-error-validation' => '検証エラーです。',
 	'articlefeedbackv5-error-abuse' => 'ソフトウェアフィルターが、あなたの投稿が{{SITENAME}}の[$1 フィードバック指針]を満たしていない可能性があると判定して、これを却下しました。投稿を見直してから再度試してください。({{PLURAL:$2|フィルター}}: $3)',
