@@ -5550,6 +5550,7 @@ $messages['ce'] = array(
 	'articlefeedbackv5-cta4-button-text-login' => 'Системин чугӀо',
 	'articlefeedbackv5-overlay-close' => 'ДӀачӀагӀа',
 	'articlefeedbackv5-special-filter-unreviewed-watchlist' => 'Гоч янцарш',
+	'articlefeedbackv5-special-sort-age-asc' => 'Уггар ширанийш',
 	'articleFeedbackv5-details-link' => 'Мадарра',
 	'articlefeedbackv5-status-unrequest' => 'Бехкам бина юхаяккха дӀахьулйинарг декъашхочо $1 $2 оцу $3',
 	'articlefeedbackv5-form-unresolve' => 'Цаоьшу',

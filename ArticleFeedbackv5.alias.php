@@ -18,6 +18,7 @@ $specialPageAliases['en'] = array(
 /** Arabic (العربية) */
 $specialPageAliases['ar'] = array(
 	'ArticleFeedbackv5' => array( 'تعليقات_المقالات_ن5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'قائمة_مراقبة_تعليقات_المقالات_ن5' ),
 );
 
 /** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
