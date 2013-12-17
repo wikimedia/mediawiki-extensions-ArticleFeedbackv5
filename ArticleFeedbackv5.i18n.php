@@ -13455,10 +13455,10 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-error-throttled' => 'Twój přinošk je so wotpokazał, dokelž sy wjace komentarow zawostajił hač směrnicy za komentary {{GRAMMAR:genitiw|{{SITENAME}}}} dopušćeja.  Prošu njezawostaj přewjele komentarow.',
 	'articlefeedbackv5-protection-level' => 'Komentary wo nastawkach',
 	'articlefeedbackv5-protection-level-error' => 'Škitna runina za komentary wo nastawkach njemóže wyša być hač škitna runina za wobdźěłowanje',
-	'protect-level-aft-reader' => 'Za wšěch wužiwarjow zmóžnić', # Fuzzy
-	'protect-level-aft-member' => 'Jenož za přizjewjenych wužiwarjow zmóžnić', # Fuzzy
-	'protect-level-aft-editor' => 'Jenož za awtomatisce wobkrućenych wužiwarjow zmóžnić', # Fuzzy
-	'protect-level-aft-administrator' => 'Jenož za administratorow zmóžnić', # Fuzzy
+	'protect-level-aft-reader' => 'Za wšěch wužiwarjow zmóžnić',
+	'protect-level-aft-member' => 'Jenož za přizjewjenych wužiwarjow zmóžnić',
+	'protect-level-aft-editor' => 'Jenož za awtomatisce wobkrućenych wužiwarjow zmóžnić',
+	'protect-level-aft-administrator' => 'Jenož za administratorow zmóžnić',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Komentar: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Status: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Wužitny',
@@ -13802,9 +13802,9 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-activity-feedback-info' => 'Komentar wot $2',
 	'articlefeedbackv5-activity-feedback-date' => '$1 pósłany',
 	'articlefeedbackv5-activity-permalink' => 'trajny wotkaz',
-	'articlefeedbackv5-activity-item-request' => '$1 je $3 dohladowanje požadał ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-unrequest' => '$1 je požadanje wo dohladowanje $3 ($2) anulował', # Fuzzy
-	'articlefeedbackv5-activity-item-decline' => '$1 je $3 dohladowanje wotpokazał ($2)', # Fuzzy
+	'articlefeedbackv5-activity-item-request' => '$1 je $4 $5 dohladowanje {{GENDER:$6|požadał|požadała}} ($2)',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 je $4 $5 požadanje wo dohladowanje {{GENDER:$6|anulował|anulowała}} $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 je $4 $5 dohladowanje {{GENDER:$6|wotpokazał|wotpokazała}} $2',
 	'articlefeedbackv5-activity-item-flag' => '$1 je tutón přinošk $3 woznamjenił ($2)', # Fuzzy
 	'articlefeedbackv5-activity-item-unflag' => '$1 je woznamjenjenje tutoho přinoška $3 anulował ($2)', # Fuzzy
 	'articlefeedbackv5-activity-item-oversight' => '$1 je tutón přinošk $3 dohladował ($2)', # Fuzzy
