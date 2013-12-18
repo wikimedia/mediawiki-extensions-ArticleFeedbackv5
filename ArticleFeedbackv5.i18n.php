@@ -1723,7 +1723,8 @@ Un-oversight note flyover panel - action description',
 	'articlefeedbackv5-noteflyover-decline-help' => 'Decline oversight note flyover panel - help link text (decline oversight means an oversighter found the feedback appropriate and denied the request that the feedback be deleted).
 {{Identical|Learn more}}',
 	'articlefeedbackv5-noteflyover-decline-help-link' => 'Decline oversight note flyover panel - link to the specific "declineoversight" chapter (anchored link) within {{msg-mw|articlefeedbackv5-help-special-linkurl}}',
-	'articlefeedbackv5-bucket1-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
+	'articlefeedbackv5-bucket1-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box).
+{{Identical|Help improve this page}}',
 	'articlefeedbackv5-bucket1-question-toggle' => 'This is the question that appears before the yes/no buttons in option 1',
 	'articlefeedbackv5-bucket1-toggle-found-yes' => 'The text for the yes button in option 1.
 {{Identical|Yes}}',
@@ -1734,7 +1735,8 @@ Un-oversight note flyover panel - action description',
 	'articlefeedbackv5-bucket1-question-placeholder-yes' => 'This is the grey default text that appears in the comment box when the yes button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
 	'articlefeedbackv5-bucket1-question-placeholder-no' => 'This is the grey default text that appears in the comment box when the no button has been selected in option 1 {{msg-mw|Articlefeedbackv5-bucket1-question-toggle}}.',
 	'articlefeedbackv5-bucket1-form-submit' => 'This is the contents of the submit button for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
-	'articlefeedbackv5-bucket4-title' => 'This is the title of the feedback panel for option 4 (a big button to take you to the edit page, along with some inspiring text and a link to the "Learn to Edit" page)',
+	'articlefeedbackv5-bucket4-title' => 'This is the title of the feedback panel for option 4 (a big button to take you to the edit page, along with some inspiring text and a link to the "Learn to Edit" page).
+{{Identical|Help improve this page}}',
 	'articlefeedbackv5-bucket4-subhead' => 'A subheader to go directly under the title for option 4',
 	'articlefeedbackv5-bucket4-teaser-line1' => 'The first line of the teaser text for option 4; should mention that anyone can edit pages.',
 	'articlefeedbackv5-bucket4-teaser-line2' => 'The second line of the teaser text for option 4; should be a playful call to give editing a try.',
@@ -1747,7 +1749,8 @@ Un-oversight note flyover panel - action description',
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'The second line of the teaser text for option 4, when the user cannot edit the article',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'The text for the big button, when the user cannot edit the article.
 {{Identical|Learn more}}',
-	'articlefeedbackv5-bucket6-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box)',
+	'articlefeedbackv5-bucket6-title' => 'This is the title of the feedback form for option 1 ("Did you find what you were looking for?" with yes/no buttons, plus a comment box).
+{{Identical|Help improve this page}}',
 	'articlefeedbackv5-bucket6-question-toggle' => 'This is the question that appears before the yes/no buttons in option 1',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'The text for the yes button in option 1.
 {{Identical|Yes}}',
@@ -1789,7 +1792,8 @@ Link to article introduction AFT to oversighters (= users with permission to del
 	'articlefeedbackv5-help-transparency-terms-anon' => "This is the bottom line of the small text that goes beside the submit button and informs the user on how to post helpful feedback & tells the user about the terms they're agreeing to by posting a comment. This will be displayed to anonymous, logged-out users",
 	'articlefeedbackv5-sitesub-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far left, this will be the link text.
 {{Identical|Improve this page}}',
-	'articlefeedbackv5-titlebar-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far right, this will be the link text.',
+	'articlefeedbackv5-titlebar-linktext' => 'When a link to pop up the feedback tool appears just below the title bar to the far right, this will be the link text.
+{{Identical|Help improve this page}}',
 	'articlefeedbackv5-fixedtab-linktext' => 'When a link to pop up the feedback tool appears as a fixed-positioned tab, this will be the link text.
 {{Identical|Improve this page}}',
 	'articlefeedbackv5-bottomrighttab-linktext' => 'When a link to pop up the feedback tool appears as a fixed-positioned tab at the bottom right, this will be the link text.
@@ -4214,6 +4218,7 @@ $1',
  * @author Base
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  * @author Renessaince
  * @author Wizardist
  */
@@ -4255,7 +4260,7 @@ $messages['be-tarask'] = array(
 	'articlefeedbackv5-special-filter-hidden' => 'Схаваны ($1)',
 	'articlefeedbackv5-special-filter-requested' => 'Запытаныя на назіраньне ($1)',
 	'articlefeedbackv5-special-filter-oversighted' => 'Рэвізаваныя ($1)',
-	'articlefeedbackv5-special-filter-all' => 'Усе (назіраныя) ($1)', # Fuzzy
+	'articlefeedbackv5-special-filter-all' => 'Усе паведамленьні ($1)',
 	'articlefeedbackv5-updates-since' => '$1 {{PLURAL:$1|рэдагаваньне|рэдагаваньні|рэдагаваньняў}} пасьля разьмяшчэньня',
 	'articlefeedbackv5-revision-link' => 'Паказаць вэрсію артыкула', # Fuzzy
 	'articlefeedbackv5-special-more' => 'Паказаць болей паведамленьняў',
