@@ -1537,7 +1537,8 @@ Followed by any one of the following mesasges:
 * {{msg-mw|Articlefeedbackv5-permalink-status-helpful}}
 * {{msg-mw|Articlefeedbackv5-permalink-status-undo-helpful}}
 * {{msg-mw|Articlefeedbackv5-permalink-status-unhelpful}}
-* {{msg-mw|Articlefeedbackv5-permalink-status-undo-unhelpful}}',
+* {{msg-mw|Articlefeedbackv5-permalink-status-undo-unhelpful}}
+{{Identical|Last action}}',
 	'articlefeedbackv5-permalink-activity-more' => 'Permalink activity block, text for the link to open the rest of the activity on the feedback',
 	'articlefeedbackv5-permalink-activity-fewer' => 'Permalink activity block, text for the link to close the rest of the activity on the feedback',
 	'articlefeedbackv5-noteflyover-feature-caption' => 'Feature post note flyover panel - panel caption',
@@ -23716,6 +23717,7 @@ $messages['pl'] = array(
 	'protect-level-aft-editor' => 'Włącz tylko dla automatycznie zatwierdzonych użytkowników',
 	'protect-level-aft-administrator' => 'Włącz tylko dla administratorów',
 	'protect-level-aft-noone' => 'Wyłącz dla wszystkich użytkowników',
+	'restriction-articlefeedbackv5' => 'Widoczność',
 	'articlefeedbackv5-disabled-admin-button-text' => 'Zmień zabezpieczenie',
 	'articlefeedbackv5-disabled-editor-button-text' => 'Włącz opinie',
 	'articlefeedbackv5-settings-status-enable' => 'Włącz opinie na tej stronie',
