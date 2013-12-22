@@ -5591,6 +5591,7 @@ $messages['ce'] = array(
  * @author Kuvaly
  * @author Lahwaacz
  * @author Leanes
+ * @author Matěj Grabovský
  * @author Michaelbrabec
  * @author Mormegil
  * @author Mr. Richard Bolla
@@ -5637,9 +5638,9 @@ $messages['cs'] = array(
 	'articlefeedbackv5-error-flagging' => 'Chyba při nastavování příznaku ke zpětné vazbě.',
 	'articlefeedbackv5-protection-level' => 'Hodnocení článku',
 	'protect-level-aft-reader' => 'Povolit pro všechny uživatele',
-	'protect-level-aft-member' => 'Povolit pouze pro přihlášeného uživatele', # Fuzzy
-	'protect-level-aft-editor' => 'Povolit pouze pro potvrzené uživatele', # Fuzzy
-	'protect-level-aft-administrator' => 'Povolit pouze pro správce', # Fuzzy
+	'protect-level-aft-member' => 'Povolit pouze pro přihlášené uživatele',
+	'protect-level-aft-editor' => 'Povolit pouze pro potvrzené uživatele',
+	'protect-level-aft-administrator' => 'Povolit pouze pro správce',
 	'protect-level-aft-noone' => 'Zakázat pro všechny uživatele',
 	'restriction-articlefeedbackv5' => 'Viditelnost',
 	'articlefeedbackv5-disabled' => 'Zpětná vazba byla zakázána.',
@@ -5767,7 +5768,7 @@ $messages['cs'] = array(
 	'articlefeedbackv5-whats-this' => 'Nápověda',
 	'articlefeedbackv5-settings-menu-title' => 'Nastavení',
 	'articlefeedbackv5-invalid-page-id' => 'Neplatné ID stránky',
-	'articlefeedbackv5-found-percent' => '$1 uživatelů našlo, co hledalo', # Fuzzy
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 uživatelů našlo, co hledalo}}',
 	'articlefeedbackv5' => 'Přehled hodnocení článků',
 	'articlefeedbackv5-desc' => 'Odezva k článkům',
 	'articlefeedbackv5-comment-more' => 'Více',
@@ -5775,7 +5776,7 @@ $messages['cs'] = array(
 	'articlefeedbackv5-unsupported-message' => 'Omlouváme se Vám, ale Váš prohlížeč není tímto prototypem podporován. Pokud chcete zobrazit tuto stránku, použijte jiný prohlížeč.',
 	'articlefeedbackv5-viewactivity' => 'Zobrazit aktivitu',
 	'articlefeedbackv5-mask-view-contents' => 'Zobrazit obsah',
-	'articlefeedbackv5-mask-text-hide' => 'Tento příspěvek #$1 {{GENDER:$2|skryl|skryla}} $2 před $3.', # Fuzzy
+	'articlefeedbackv5-mask-text-hide' => 'Tento příspěvek #$1 {{GENDER:$2|skryl|skryla}} $2 $3.',
 	'articlefeedbackv5-special-disclaimer' => 'Toto je prototyp. Prosíme, nepoužívejte jej pokud jste nebyli pozváni.',
 	'articlefeedbackv5-special-goback' => 'Zobrazit stránku s názory',
 	'articlefeedbackv5-special-central-goback' => 'Zobrazit další stránky s názory',
@@ -5807,11 +5808,11 @@ $messages['cs'] = array(
 	'articlefeedbackv5-noteflyover-resolve-caption' => 'Označen jako vyřešený',
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Přidat poznámku',
 	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Proč jste označil tento příspěvek jako vyřešený?',
-	'articlefeedbackv5-noteflyover-resolve-submit' => 'Označ jako vyřešit', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-submit' => 'Přidat poznámku',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Další informace',
-	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Odznač jako vyřešené', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Odznač jako vyřešené',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Přidat poznámku',
-	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Proč jste odznačil tento příspěvek jako vyřešený?', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Proč jste odznačil tento příspěvek jako vyřešený?',
 	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Přidat poznámku',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Další informace',
 	'articlefeedbackv5-noteflyover-hide-caption' => 'Skrýt',
@@ -5875,7 +5876,7 @@ $messages['cs'] = array(
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Zjistěte, jak editovat',
 	'articlefeedbackv5-bucket4-form-submit' => 'Editovat tuto stránku',
 	'articlefeedbackv5-bucket4-help-tooltip-info' => 'Wikipedie by ráda věděla, co si myslíte. Staňte se editorem a pomozte zlepšit tuto stránku.', # Fuzzy
-	'articlefeedbackv5-bucket4-noedit-title' => 'Pomozte zlepšit Wikipedii', # Fuzzy
+	'articlefeedbackv5-bucket4-noedit-title' => 'Pomozte zlepšit {{SITENAME}}',
 	'articlefeedbackv5-bucket4-noedit-teaser-line1' => 'Tato stránka je tvořená lidmi jako Vy.',
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'Můžete nám pomoci?',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => 'Více informací',
@@ -5886,7 +5887,7 @@ $messages['cs'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'Ano, {{GENDER:|našel jsem|našla jsem|našel jsem}}, co jsem {{GENDER:|hledal|hledala|hledal}}.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'Ne, {{GENDER:|nenašel|nenašla|nenašel}} jsem, co jsem {{GENDER:|hledal|hledala|hledal}}.',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(zbývající 1 znak) |( $1  zbývající počet znaků)}}',
-	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Skvělé. Chcete přidat komentář?', # Fuzzy
+	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Skvělé. Chcete přidat komentář?',
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Jak by se tento článek dal vylepšit?', # Fuzzy
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Omlouváme se zato. Návrhy na zlepšení?',
 	'articlefeedbackv5-bucket6-question-placeholder-no' => 'Napište Váš návrh (např. "Tento článek potřebuje obrázek")', # Fuzzy
@@ -7098,10 +7099,10 @@ $messages['dsb'] = array(
 	'articlefeedbackv5-error-nofeedback' => 'Pšosym zapódaj swój komentar.',
 	'articlefeedbackv5-error-flagging' => 'Zmólka pśi wóznamjenjenju komentara.',
 	'articlefeedbackv5-protection-level' => 'Komentary k nastawkam',
-	'protect-level-aft-reader' => 'Za wšych wužywarjow zmóžniś', # Fuzzy
-	'protect-level-aft-member' => 'Jano za pśizjawjonych wužywarjow zmóžniś', # Fuzzy
-	'protect-level-aft-editor' => 'Jano za awtomatiski wobkšuśonych wužywarjow zmóžniś', # Fuzzy
-	'protect-level-aft-administrator' => 'Jano za administratorow zmóžniś', # Fuzzy
+	'protect-level-aft-reader' => 'Za wšykne wužywarje zmóžniś',
+	'protect-level-aft-member' => 'Jano za pśizjawjone wužywarje zmóžniś',
+	'protect-level-aft-editor' => 'Jano za awtomatiski wobkšuśone wužywarje zmóžniś',
+	'protect-level-aft-administrator' => 'Jano za administratory zmóžniś',
 	'articlefeedbackv5-contribs-entry-status' => '. . Status: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Wužytny',
 	'articlefeedbackv5-contribs-status-action-resolve' => 'Wótbyty',
@@ -7129,7 +7130,7 @@ $messages['dsb'] = array(
 	'articlefeedbackv5-special-sort-helpful-asc' => 'Njewužytny',
 	'articlefeedbackv5-special-sort-age-desc' => 'Nejnowše',
 	'articlefeedbackv5-special-sort-age-asc' => 'Nejstarše',
-	'articlefeedbackv5-special-filter-select-more' => 'Dalšne filtry', # Fuzzy
+	'articlefeedbackv5-special-filter-select-more' => 'Dalšne',
 	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|1 změna|$1 změnje|$1 změny|$1 změnow}} wót pśinoska sem',
 	'articleFeedbackv5-details-link' => 'Drobnostki',
 	'articlefeedbackv5-revision-link' => '(glědaj stary bok)',
@@ -7168,10 +7169,10 @@ $messages['dsb'] = array(
 	'articlefeedbackv5-desc' => 'Komentary k nastawkam',
 	'articlefeedbackv5-comment-more' => 'Wěcej',
 	'articlefeedbackv5-page-disabled' => 'Bok za komentary k nstawkam njejo za toś ten nastawk zmóžnjony.',
-	'articlefeedbackv5-viewactivity' => 'Pśipisk cytaś', # Fuzzy
+	'articlefeedbackv5-viewactivity' => 'Aktiwitu se woglědaś',
 	'articlefeedbackv5-mask-view-contents' => 'Wopśimjeśe pokazaś',
 	'articlefeedbackv5-permalink-info-title' => 'Informacije wó toś tom pśinosku',
-	'articlefeedbackv5-permalink-info-revision-link' => 'Staru wersiju pokazaś', # Fuzzy
+	'articlefeedbackv5-permalink-info-revision-link' => 'Staru wersiju toś togo boka pokazaś',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Dłujkosć',
 	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 słowo|$1 słowje|$1 słowa|$1 słowow}}',
 	'articlefeedbackv5-permalink-info-length-characters' => '{{PLURAL:$1|$1 znamuško|$1 znamušce|$1 znamuška|$1 znamuškow}}',
@@ -7254,12 +7255,12 @@ $messages['dsb'] = array(
 	'articlefeedbackv5-bottomrighttab-linktext' => 'Toś ten bok pólěpšyś',
 	'articlefeedbackv5-section-linktext' => 'komentar',
 	'articlefeedbackv5-activity-pane-header' => 'Protokol aktiwity',
-	'articlefeedbackv5-activity-feedback-info' => 'Komentar pśinoska  co. $1 wót $2', # Fuzzy
+	'articlefeedbackv5-activity-feedback-info' => 'Komentar wót $2',
 	'articlefeedbackv5-activity-feedback-date' => '$1 pósłany',
 	'articlefeedbackv5-activity-permalink' => 'Trajny wótkaz',
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 jo toś ten pśinosk $4, $5 schował ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-helpful' => '$1 jo toś ten pśinošk $4, $5 ako wužytny markěrował ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 jo toś ten pśinošk $4, $5 ako njewužytny markěrował ($2)', # Fuzzy
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 jo toś ten pśinosk $4 $5 ako njegódny {{GENDER:$6|markěrował|markěrowała}} $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 jo toś ten pśinosk $4 $5 ako wužytny {{GENDER:$6|markěrował|markěrowała}} $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 jo toś ten pśinosk $4 $5 ako njewužytny {{GENDER:$6|markěrował|markěrowała}} $2',
 	'articlefeedbackv5-activity-count' => '$1 {{PLURAL:$1|akcija|akciji|akcije|akcijow}} k toś tomu komentaroju',
 	'articlefeedbackv5-activity-more' => 'Dalšne aktiwity pokazaś',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Komentary k mójim wobglědowanym bokam',
@@ -13811,21 +13812,21 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedbackv5-activity-item-request' => '$1 je $4 $5 dohladowanje {{GENDER:$6|požadał|požadała}} ($2)',
 	'articlefeedbackv5-activity-item-unrequest' => '$1 je $4 $5 požadanje wo dohladowanje {{GENDER:$6|anulował|anulowała}} $2',
 	'articlefeedbackv5-activity-item-decline' => '$1 je $4 $5 dohladowanje {{GENDER:$6|wotpokazał|wotpokazała}} $2',
-	'articlefeedbackv5-activity-item-flag' => '$1 je tutón přinošk $3 woznamjenił ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-unflag' => '$1 je woznamjenjenje tutoho přinoška $3 anulował ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-oversight' => '$1 je tutón přinošk $3 dohladował ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-unoversight' => '$1 je dohladowanje tutoho přinoska $3 wotstronił ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-feature' => '$1 je tutón přinošk dnja $4 $5 $2 jako wužitny markěrował', # Fuzzy
-	'articlefeedbackv5-activity-item-unfeature' => '$1 je za tutón přinošk dnja $4 $5 $2 markěrowanje jako wužitny wotstronił', # Fuzzy
-	'articlefeedbackv5-activity-item-resolve' => '$1 je tutón přinošk $3 jako wujasnjeny markěrował ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-unresolve' => '$1 je markěrowanje tutoho přinoška jako wujasnjeny $3 anulował ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 je tutón přinošk $3 schował ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-uninappropriate' => '$1 je tutón přinošk $3 zaso pokazał ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-helpful' => '$1 je tutón přinošk $3 jako wužitny markěrował ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 je tutón přinošk $3 jako njewužitny markěrował ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 markěrowanje tutoho přinoška jako wužitny $3 anulował ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 markěrowanje tutoho přinoška jako njewužitny $3 anulował ($2)', # Fuzzy
-	'articlefeedbackv5-activity-item-clear-flags' => '$1 je wšě marki za tutón přinošk $3 wotstronił ($2)', # Fuzzy
+	'articlefeedbackv5-activity-item-flag' => '$1 je tutón přinošk $4 $5 {{GENDER:$6|woznamjenił|woznamjeniła}} $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 je woznamjenjenje tutoho přinoška $4 $5 {{GENDER:$6|anulował|anulowała}} $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 je tutón přinošk $4 $5 {{GENDER:$6|dohladował|dohladowała}} $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 je dohladowanje tutoho přinoska $4 $5 {{GENDER:$6|wotstronił|wotstroniła}} $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 je tutón přinošk dnja $4 $5 jako wužitny {{GENDER:$6|markěrował|markěrowała}} $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 je za tutón přinošk dnja $4 $5 markěrowanje jako wužitny {{GENDER:$6|wotstronił|wotstroniła}} $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 je tutón přinošk $4 $5 jako wujasnjeny {{GENDER:$6|markěrował|markěrowała}} $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 je markěrowanje tutoho přinoška jako wujasnjeny $4 $5 {{GENDER:$6|anulował|anulowała}} $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 je tutón přinošk $4 $5 jako njepřihódny {{GENDER:$6|markěrował|markěrowała}} $2',
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 je za tutón přinošk $4 $5 markěrowanje jako njepřihódny {{GENDER:$6|wotstronił|wotstroniła}} $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 je tutón přinošk $4 $5 jako wužitny {{GENDER:$6|markěrował|markěrowała}} $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 je tutón přinošk $4 $5 jako njewužitny {{GENDER:$6|markěrował|markěrowała}} $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 markěrowanje tutoho přinoška $4 $5 jako wužitny {{GENDER:$6|anulował|anulowała}} $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 markěrowanje tutoho přinoška jako njewužitny $4 $5 {{GENDER:$6|anulował|anulowała}} $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 je wšě marki za tutón přinošk $4 $5 {{GENDER:$6|wotstronił|wotstroniła}} $2',
 	'articlefeedbackv5-activity-note-archive' => 'Je so po {{PLURAL:$1|$1 dnju|$1dnjomaj|$1 dnjach}} inaktiwnosće wobdźěłarja archiwował',
 	'articlefeedbackv5-activity-count' => '$1 {{PLURAL:$1|akcija|akciji|akcije|akcijow}} k tutomu komentarej',
 	'articlefeedbackv5-activity-more' => 'Dalše aktiwity pokazać',
@@ -13842,6 +13843,7 @@ $2
 Prošu přepruwuj tutón komentar a schwal abo wotpokazaj potom požadanje na dohladowanje:
 
 $3
+$5
 
 Wulki dźak
 
@@ -13849,7 +13851,7 @@ Team {{SITENAME}}
 
 P.S. Jeli maš prašenja wo wužiwanju dohladowanskich funkcijow komentaroweje strony, přečitaj prošu tute
 
-$4', # Fuzzy
+$4',
 	'articlefeedbackv5-disable-flyover-title' => 'Tutón nastroj wotstronić?',
 	'articlefeedbackv5-disable-flyover-prefbutton' => 'K nastajenjam',
 	'abusefilter-edit-action-aftv5flagabuse' => '(Article Feedback) Awtomatisce jako znjewužiće woznamjenić',
