@@ -7010,7 +7010,7 @@ $messages['diq'] = array(
 	'articlefeedbackv5-form-unhide' => 'Peyser biya',
 	'articlefeedbackv5-form-unarchive' => 'Peyser biya',
 	'articlefeedbackv5-form-unoversight' => 'Peyser biya',
-	'articlefeedbackv5-discussion-page' => 'Vaten',
+	'articlefeedbackv5-discussion-page' => 'Werênayış',
 	'articlefeedbackv5-whats-this' => 'Desteg',
 	'articlefeedbackv5-desc' => 'Wesiqe peyd rıştış',
 	'articlefeedbackv5-comment-more' => 'Dehana vêşi',
@@ -24069,7 +24069,7 @@ $messages['pl'] = array(
 	'right-aft-editor' => 'Oznaczanie opinii jako wyróżnione lub załatwione',
 	'right-aft-monitor' => 'Ukrywanie opinii i dostęp do próśb o ich usunięcie',
 	'right-aft-administrator' => 'Dostęp do formularza opinii na zabezpieczonych stronach',
-	'log-name-articlefeedbackv5' => 'Dziennik aktywności opinii artykułu',
+	'log-name-articlefeedbackv5' => 'Rejestr aktywności opinii artykułu',
 	'logentry-articlefeedbackv5-flag' => '$1 {{GENDER:$2|oznaczył|oznaczyła}} [[$3|opinię #$4]] na temat strony [[$5]] jako nadużycie',
 	'logentry-articlefeedbackv5-unflag' => '$1 {{GENDER:$2|anulował|anulowała|anulował(a)}} oznaczenie [[$3|opinii #$4]] na temat strony [[$5]] jako nadużycie',
 	'logentry-articlefeedbackv5-feature' => '$1 {{GENDER:$2|wyróżnił|wyróżniła|wyróżnił(a)}} [[$3|opinię #$4]] na temat strony [[$5]]', # Fuzzy
@@ -31930,8 +31930,39 @@ $messages['yi'] = array(
  * @author Demmy
  */
 $messages['yo'] = array(
+	'articlefeedbackv5-cta4-button-text-login' => 'Ìjáwọlé',
+	'articlefeedbackv5-go-to-article' => 'Ìgbéwò ojúewé',
+	'articlefeedbackv5-discussion-page' => 'Ọ̀rọ̀',
+	'articlefeedbackv5-whats-this' => 'Ìrànwọ́',
+	'articlefeedbackv5-settings-menu-title' => 'Àwọn ìtòjọ',
 	'articlefeedbackv5' => 'Ibi èsì àyọkà', # Fuzzy
 	'articlefeedbackv5-desc' => '条目评级（测试版）', # Fuzzy
+	'articlefeedbackv5-short-status-request' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-unrequest' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-decline' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-autohide' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-oversight' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-unoversight' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-unflag' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-flag' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-autoflag' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-feature' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-unfeature' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-resolve' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-unresolve' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-noaction' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-unnoaction' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-inappropriate' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-uninappropriate' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-hide' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-unhide' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-archive' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-unarchive' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-helpful' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-undo-helpful' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-unhelpful' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-short-status-undo-unhelpful' => '{{GENDER:$1|Àtúnyẹ̀wò látọwọ́ $1}}',
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Ìbòmọ́lẹ̀',
 );
 
 /** Simplified Chinese (中文（简体）‎)
