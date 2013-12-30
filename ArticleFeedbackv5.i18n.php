@@ -7014,7 +7014,7 @@ $messages['diq'] = array(
 	'articlefeedbackv5-form-unarchive' => 'Peyser biya',
 	'articlefeedbackv5-form-unoversight' => 'Peyser biya',
 	'articlefeedbackv5-discussion-page' => 'Werênayış',
-	'articlefeedbackv5-whats-this' => 'Desteg',
+	'articlefeedbackv5-whats-this' => 'Peşti',
 	'articlefeedbackv5-desc' => 'Wesiqe peyd rıştış',
 	'articlefeedbackv5-comment-more' => 'Dehana vêşi',
 	'articlefeedbackv5-viewactivity' => 'Aktiviteya bıvin', # Fuzzy
@@ -16205,6 +16205,7 @@ $messages['ja'] = array(
 	'articlefeedbackv5-form-unrequest' => '抹消の要請を取り下げ',
 	'articlefeedbackv5-form-decline' => '抹消を却下',
 	'articlefeedbackv5-form-declined' => '抹消却下済み',
+	'articlefeedbackv5-form-discuss-talk' => 'トークページで議論',
 	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 が探していたものが見つかりました。}}',
 	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 が探していたものは見つかりませんでした。}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 がコメントを投稿しました。}}',
@@ -21479,6 +21480,7 @@ $messages['myv'] = array(
 );
 
 /** Norwegian Bokmål (norsk bokmål)
+ * @author Cocu
  * @author Danmichaelo
  * @author EivindJ
  * @author Event
@@ -21516,10 +21518,15 @@ $messages['nb'] = array(
 	'articlefeedbackv5-error' => 'En feil har oppstått. Prøv igjen senere.',
 	'articlefeedbackv5-error-blocked' => 'Blokkerte brukere får ikke gi tilbakemelding.',
 	'articlefeedbackv5-error-validation' => 'Valideringsfeil.',
+	'articlefeedbackv5-error-abuse' => 'Ditt innlegg har blitt avslått gjennom et programvarefilter som foreslår at det kanskje ikke møter {{SITENAME}}s [$1 retningslinjer for tilbakemeldinger]. Endre ditt innlegg og prøv igjen. ({{PLURAL:$2|Filter}}: $3)',
 	'articlefeedbackv5-error-unknown' => 'Ukjent feil.',
 	'articlefeedbackv5-error-submit' => 'Feil ved levering av skjema.',
+	'articlefeedbackv5-error-duplicate' => 'Den innsendte tilbakemeldingen er et duplikat av den siste tilbakemeldingen, kanskje du ved et uhell har sendt den to ganger?',
 	'articlefeedbackv5-error-nofeedback' => 'Skriv inn din tilbakemelding.',
 	'articlefeedbackv5-error-flagging' => 'Feil ved flagging av tilbakemelding.',
+	'articlefeedbackv5-error-throttled' => 'Innlegget ditt ble avslått fordi du nylig har lagt inn flere tilbakemeldinger enn anbefalt i retningslinjene til {{SITENAME}} for tilbakemeldinger. Ikke legg inn tilbakemeldinger flere ganger eller overdriv mye.',
+	'articlefeedbackv5-protection-level' => 'Artikkeltilbakemelding',
+	'articlefeedbackv5-protection-level-error' => 'Beskyttelsesnivået for tilbakemelding kan ikke være høyere enn beskyttelsesnivået for endring',
 	'protect-level-aft-reader' => 'Aktiver for alle brukere',
 	'protect-level-aft-member' => 'Aktiver kun for innloggede brukere',
 	'protect-level-aft-editor' => 'Aktiver kun for autobekreftede brukere',
@@ -21528,6 +21535,7 @@ $messages['nb'] = array(
 	'articlefeedbackv5-protection-title' => 'Endret synlighet for artikkeltilbakemeldingsverktøyet på "[[$1]]"',
 	'restriction-articlefeedbackv5' => 'Synlighet',
 	'articlefeedbackv5-disabled' => 'Tilbakemelding har blitt deaktivert',
+	'articlefeedbackv5-disabled-admin-admin' => 'Tilbakemelding har blitt deaktivert for lesere og skribenter. De kan ikke skrive tilbakemelding på denne siden.',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Feedback:$4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Status: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Hjelpsom',
