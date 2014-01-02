@@ -5580,6 +5580,12 @@ $messages['ce'] = array(
 	'articlefeedbackv5-noteflyover-hide-submit' => 'ТӀетоха билгалдаккхар',
 	'articlefeedbackv5-noteflyover-unhide-label' => 'ТӀетоха билгалдаккхар',
 	'articlefeedbackv5-noteflyover-unnoaction-label' => 'ТӀетоха билгалдаккхар',
+	'articlefeedbackv5-noteflyover-request-description' => 'Дехар дале хьажа лахара цхьа хӀум дуй:
+ * телефонан номераш
+ * электронан почтан адрес
+ * боьху хӀумнаш долу хьажорагаш
+ * сийсаздеш/адам тӀехул эладита
+ * [//ru.wikipedia.org/wiki/Википеди:Ревизор# Бакъонаш а кхин лелор а]',
 	'articlefeedbackv5-noteflyover-unrequest-label' => 'ТӀетоха билгалдаккхар',
 	'articlefeedbackv5-noteflyover-oversight-submit' => 'Къайлаяккха',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'ТӀетоха билгалдаккхар',
@@ -5588,6 +5594,26 @@ $messages['ce'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'ХӀаъ',
 	'articlefeedbackv5-help-tooltip-linktext' => 'Ма-дарра',
 	'articlefeedbackv5-section-linktext' => 'язде хьайна хетарг',
+	'articlefeedbackv5-email-request-oversight-body' => 'Маршалла ду шоьга ревизораш!
+
+Декъашхочо $1 дехар дина $2 агӀонгахь дехнарг къайладаккхар:
+
+
+
+Дехар до, хӀокху дехаре хьаьжна кхочуш де я тӀе малаца:
+
+$3
+$5
+
+Баркалла,
+
+
+Куьйгалла {{SITENAME}}
+
+
+P.S.: Ревизорин функцех лаьцна хьай хатар делахь FAQ еша:
+
+$4',
 );
 
 /** Czech (čeština)
