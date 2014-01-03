@@ -3263,7 +3263,7 @@ $messages['ba'] = array(
 	'articlefeedbackv5-error' => 'Хата килеп сыҡты. Зинһар, һуңыраҡ яңынан ҡабатлап ҡарағыҙ.',
 	'articlefeedbackv5-error-blocked' => 'Бикленгән ҡатнашыусылар яуап яҙа алмай.',
 	'articlefeedbackv5-error-validation' => 'Тикшергәндә хата китте.',
-	'articlefeedbackv5-error-abuse' => 'Һеҙҙең хәбәр «{{SITENAME}}» проектында [$1 яуап яҙыу ҡағиҙәлерен] боҙоуы мөмкин, шуға һөҙгөс программа уны кире ҡаҡты. Зинһар өсөн, төҙәтеп тағы ебәреп ҡарағыҙ. $3 {{PLURAL:$2|һөҙгөс}}',
+	'articlefeedbackv5-error-abuse' => 'Һеҙҙең хәбәр «{{SITENAME}}» проектында [$1 яуап яҙыу ҡағиҙәлерен] боҙоуы мөмкин, шуға һөҙгөс программа уны кире ҡаҡты. Зинһар өсөн, төҙәтеп тағы ебәреп ҡарағыҙ. $3 {{PLURAL:$2|һөҙгөс}}', # Fuzzy
 	'articlefeedbackv5-error-unknown' => 'Билдәһеҙ хата.',
 	'articlefeedbackv5-error-submit' => 'Анкета ебәргәндә хата китте.',
 	'articlefeedbackv5-error-duplicate' => 'Яуап хәбәре алдараҡ ебәрелгән хәбәрҙе ҡабатлай. Бәлки, һеҙ төймәгә яңылыш ике тапҡыр баҫҡанһығыҙҙыр?',
@@ -3309,8 +3309,8 @@ $messages['ba'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'Был фекер файҙалымы?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Эйе',
 	'articlefeedbackv5-form-helpful-no-label' => 'Юҡ',
-	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% уҡыусы быны файҙалы тип баһалай}}',
-	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 эйе|$1 эйе}} / {{PLURAL:$2|1 юҡ|$2 юҡ}}',
+	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% уҡыусы быны файҙалы тип баһалай}}', # Fuzzy
+	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1=1 эйе|$1 эйе}} / {{PLURAL:$2|1=1 юҡ|$2 юҡ}}', # Fuzzy
 	'articlefeedbackv5-special-survey-button-text' => 'Фекер белдереү ҡоралы тураһында ни уйлайһығыҙ?',
 	'articlefeedbackv5-special-filter-featured' => 'Һайланғандар ($1)',
 	'articlefeedbackv5-special-filter-unreviewed' => 'Тикшерелмәгән ($1)',
@@ -3353,11 +3353,11 @@ $messages['ba'] = array(
 	'articlefeedbackv5-special-sort-label' => 'Тәртипләштереү:',
 	'articlefeedbackv5-special-filter-select-more' => 'Тағы',
 	'articlefeedbackv5-special-count-total' => '{{PLURAL:$2|1 хәбәр}}', # Fuzzy
-	'articlefeedbackv5-special-count-total-title' => '$1 {{PLURAL:$1|хәбәр}} коммент менән, $2 {{PLURAL:$2| хәбәр}} комментһыҙ',
+	'articlefeedbackv5-special-count-total-title' => '$1 {{PLURAL:$1|1=хәбәр}} коммент менән, $2 {{PLURAL:$2| хәбәр}} комментһыҙ', # Fuzzy
 	'articlefeedbackv5-special-watchlist-showing' => ' [[$1|$2]] күҙәткән мәҡәләләр тараһында фекерҙәр',
 	'articlefeedbackv5-special-central-watchlist-link' => 'Минең [[$1|күҙәтеү исемлегендәге мәҡәләләр тураһында фекрҙәр]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Бөтә биттәрҙән кире бәйләнеште ҡарау]]',
-	'articlefeedbackv5-updates-since' => 'Ҡуйылғандан башлап {{PLURAL:$1|1 үҙгәртеү|$1 үҙгәртеү}}',
+	'articlefeedbackv5-updates-since' => 'Ҡуйылғандан башлап {{PLURAL:$1|1=1 үҙгәртеү|$1 үҙгәртеү}}', # Fuzzy
 	'articleFeedbackv5-details-link' => 'Ентеклерәк',
 	'articlefeedbackv5-revision-link' => '(элекке битте ҡара)',
 	'articlefeedbackv5-special-more' => 'Тағы хәбәрҙәр',
@@ -3390,7 +3390,7 @@ $messages['ba'] = array(
 	'articlefeedbackv5-resolve-marker' => 'Сиселгән',
 	'articlefeedbackv5-inappropriate-marker' => 'Йәшерелгән',
 	'articlefeedbackv5-archive-marker' => 'Архивланған',
-	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 билдә}}',
+	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 билдә}}', # Fuzzy
 	'articlefeedbackv5-form-note-added' => 'Мәҡәлә өҫтәлгән',
 	'articlefeedbackv5-form-note' => 'Комментарий өҫтәргә',
 	'articlefeedbackv5-form-feature' => 'Файҙалы',
@@ -3485,13 +3485,13 @@ $6
 	'articlefeedbackv5-permalink-info-revision-link' => 'Иҫке версияны ҡарағыҙ', # Fuzzy
 	'articlefeedbackv5-permalink-info-posted' => 'Ҡуйылды: $1 $2',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Оҙонлоҡ',
-	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 һүҙ|$1 һүҙ}}',
-	'articlefeedbackv5-permalink-info-length-characters' => '({{PLURAL:$1|$1 символ|$1 символ|$1 символ}})',
+	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|1=$1 һүҙ|$1 һүҙ}}', # Fuzzy
+	'articlefeedbackv5-permalink-info-length-characters' => '({{PLURAL:$1|$1 символ|$1 символ|$1 символ}})', # Fuzzy
 	'articlefeedbackv5-permalink-info-stats-title-scores' => 'Баһалар',
 	'articlefeedbackv5-permalink-info-stats-subtitle-relevance' => 'Темаға тап килеү (релевантлыҡ):',
 	'articlefeedbackv5-permalink-info-stats-subtitle-helpfulness' => 'Файҙалылыҡ:',
 	'articlefeedbackv5-permalink-activity-title' => 'Хәрәкәттәр',
-	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 хәрәкәт|$1 хәрәкәт}})',
+	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|1=$1 хәрәкәт|$1 хәрәкәт}})', # Fuzzy
 	'articlefeedbackv5-permalink-activity-none' => 'Был хәбәрҙә хәрәкәт юҡ.',
 	'articlefeedbackv5-permalink-status-request' => '$2 элек {{GENDER:$1|<strong>йәшереү һоратҡан</strong> ҡатнашыусы $1}}', # Fuzzy
 	'articlefeedbackv5-permalink-status-unrequest' => '$2 элек {{GENDER:$1|<strong>йәшереүҙе кире алған</strong> ҡатнашыусы $1}}', # Fuzzy
@@ -10041,7 +10041,7 @@ $messages['fi'] = array(
 	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 kyllä|$1 kyllä}} / {{PLURAL:$2|1 ei|$2 ei}}',
 	'articlefeedbackv5-special-survey-button-text' => 'Mitä mieltä olet palautetyökalusta?',
 	'articlefeedbackv5-special-filter-featured' => 'Nostettu ($1)',
-	'articlefeedbackv5-special-filter-unreviewed' => 'Katselmoimatta ($1)',
+	'articlefeedbackv5-special-filter-unreviewed' => 'Tarkistamattomat', # Fuzzy
 	'articlefeedbackv5-special-filter-helpful' => 'Avulias ($1)',
 	'articlefeedbackv5-special-filter-unhelpful' => 'Epäavulias ($1)',
 	'articlefeedbackv5-special-filter-flagged' => 'Merkitty ($1)',
@@ -10175,8 +10175,8 @@ $messages['fi'] = array(
 	'articlefeedbackv5-form-tooltip-discuss-user' => 'Keskustele palautteesta lähettäjän kanssa',
 	'articlefeedbackv5-discuss-talk-section-title' => 'Lukijapalaute: $1',
 	'articlefeedbackv5-discuss-user-section-title' => 'Palautteesi sivusta $2',
-	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 löysi, mitä olivat etsimässä.}}',
-	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 ei löytänyt, mitä olivat etsimässä.}}',
+	'articlefeedbackv5-form1-header-found' => '{{GENDER:$1|$2 löysi sen mitä oli etsimässä.}}',
+	'articlefeedbackv5-form1-header-not-found' => '{{GENDER:$1|$2 ei löytänyt sitä mitä oli etsimässä.}}',
 	'articlefeedbackv5-form1-header-left-comment' => '{{GENDER:$1|$2 lähetti kommentin.}}',
 	'articlefeedbackv5-form2-header-praise' => '{{GENDER:$1|$1}} kehui:',
 	'articlefeedbackv5-form2-header-problem' => 'Käyttäjällä {{GENDER:$1|$1}} oli ongelma:',
@@ -26819,7 +26819,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-error-blocked' => 'Заблокированные участники не могут оставлять отзывы.',
 	'articlefeedbackv5-error-validation' => 'Ошибка проверки.',
 	'articlefeedbackv5-error-abuse' => 'Ваше сообщение было отвергнуто программным фильтром, который определил, что оно может нарушить [$1 правила составления отзывов] проекта «{{SITENAME}}». Пожалуйста скорректируйте своё сообщение и повторите попытку.
-($3 {{PLURAL:$2|фильтр|фильтра|фильтров}})',
+($3 {{PLURAL:$2|фильтр|фильтров|фильтра}})', # Fuzzy
 	'articlefeedbackv5-error-unknown' => 'Неизвестная ошибка.',
 	'articlefeedbackv5-error-submit' => 'Ошибка при отправке данных формы.',
 	'articlefeedbackv5-error-duplicate' => 'Отправленное сообщение обратной связи повторяет ранее отправленное сообщение. Возможно, вы случайно нажали кнопку дважды?',
@@ -26865,8 +26865,8 @@ $messages['ru'] = array(
 	'articlefeedbackv5-form-helpful-label' => 'Этот отзыв полезен?',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Да',
 	'articlefeedbackv5-form-helpful-no-label' => 'Нет',
-	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% читателей считают это полезным}}',
-	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|$1 «да»}} / $2 «нет»',
+	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% читателей считают это полезным}}', # Fuzzy
+	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|$1 «да»}} / $2 «нет»', # Fuzzy
 	'articlefeedbackv5-special-survey-button-text' => 'Что вы думаете об этом инструменте обратной связи?',
 	'articlefeedbackv5-special-filter-featured' => 'Избранные ($1)',
 	'articlefeedbackv5-special-filter-unreviewed' => 'Непроверенные ($1)',
@@ -26908,12 +26908,12 @@ $messages['ru'] = array(
 	'articlefeedbackv5-special-sort-age-asc' => 'Самые старые',
 	'articlefeedbackv5-special-sort-label' => 'Сортировать по:',
 	'articlefeedbackv5-special-filter-select-more' => 'Ещё',
-	'articlefeedbackv5-special-count-total' => '$1 {{PLURAL:$2|сообщение|сообщения|сообщений}}',
-	'articlefeedbackv5-special-count-total-title' => '$1 {{PLURAL:$1|сообщение|сообщения|сообщений}} с комментариями, $2 {{PLURAL:$2|сообщение|сообщения|сообщений}} без',
+	'articlefeedbackv5-special-count-total' => '$1 {{PLURAL:$2|сообщение|сообщений|сообщения}}', # Fuzzy
+	'articlefeedbackv5-special-count-total-title' => '$1 {{PLURAL:$1|сообщение|сообщений|сообщения}} с комментариями, $2 {{PLURAL:$2|сообщение|сообщений|сообщения}} без', # Fuzzy
 	'articlefeedbackv5-special-watchlist-showing' => 'Отзывы о статьях, за которыми наблюдает [[$1|$2]]',
 	'articlefeedbackv5-special-central-watchlist-link' => '[[$1|Отзывы о статьях из моего списка наблюдения]]',
 	'articlefeedbackv5-special-watchlist-central-link' => '[[$1|Вид обратной связи от всех страниц]]',
-	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|$1 правка|$1 правки|$1 правок}} с момента публикации',
+	'articlefeedbackv5-updates-since' => '{{PLURAL:$1|$1 правка|$1 правок|$1 правки}} с момента публикации', # Fuzzy
 	'articleFeedbackv5-details-link' => 'Подробности',
 	'articlefeedbackv5-revision-link' => '(см. старую страницу)',
 	'articlefeedbackv5-special-more' => 'Показать больше отзывов',
@@ -26951,7 +26951,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-noaction-marker' => 'Действий не требуется',
 	'articlefeedbackv5-inappropriate-marker' => 'Неуместный',
 	'articlefeedbackv5-archive-marker' => 'Архивировано',
-	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 пометка|$1 пометки|$1 пометок}}',
+	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 пометка|$1 пометок|$1 пометки}}', # Fuzzy
 	'articlefeedbackv5-form-note-added' => 'Заметка добавлена',
 	'articlefeedbackv5-form-note' => 'Добавить комментарий',
 	'articlefeedbackv5-form-feature' => 'Полезно',
@@ -27047,8 +27047,8 @@ $6
 	'articlefeedbackv5-whats-this' => 'Справка',
 	'articlefeedbackv5-settings-menu-title' => 'Настройки',
 	'articlefeedbackv5-invalid-page-id' => 'Неправильный идентификатор страницы',
-	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 читателей нашли то, что искали}}',
-	'articlefeedbackv5-found-percent-title' => 'Основано на $1 {{PLURAL:$1|отзыве|отзывах}} (исключая неуместные комментарии)',
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 читателей нашли то, что искали}}', # Fuzzy
+	'articlefeedbackv5-found-percent-title' => 'Основано на $1 {{PLURAL:$1|1=отзыве|отзывах}} (исключая неуместные комментарии)', # Fuzzy
 	'articlefeedbackv5' => 'Отзывы о статьях — Центральная страница',
 	'articlefeedbackv5watchlist' => 'Отзывы о статьях — наблюдаемые мной страницы',
 	'articlefeedbackv5-desc' => 'Отзывы о статьях',
@@ -27074,13 +27074,13 @@ $6
 	'articlefeedbackv5-permalink-info-revision-link' => 'См. старую версию этой страницы',
 	'articlefeedbackv5-permalink-info-posted' => 'Размещено $1  в $2',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Длина',
-	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 слово|$1 слова|$1 слов}}',
-	'articlefeedbackv5-permalink-info-length-characters' => '({{PLURAL:$1|$1 символ|$1 символа|$1 символов}})',
+	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 слово|$1 слов|$1 слова}}', # Fuzzy
+	'articlefeedbackv5-permalink-info-length-characters' => '({{PLURAL:$1|$1 символ|$1 символов|$1 символа}})', # Fuzzy
 	'articlefeedbackv5-permalink-info-stats-title-scores' => 'Оценки',
 	'articlefeedbackv5-permalink-info-stats-subtitle-relevance' => 'Соответствие теме (релевантность):',
 	'articlefeedbackv5-permalink-info-stats-subtitle-helpfulness' => 'Полезность:',
 	'articlefeedbackv5-permalink-activity-title' => 'Действия',
-	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 действие|$1 действия|$1 действий}})',
+	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 действие|$1 действий|$1 действия}})', # Fuzzy
 	'articlefeedbackv5-permalink-activity-none' => 'У этого отзыва не было активности.',
 	'articlefeedbackv5-short-status-request' => 'Проверено {{GENDER:$1|участником|участницей}} $1',
 	'articlefeedbackv5-short-status-unrequest' => 'Проверено {{GENDER:$1|участником|участницей}} $1',
@@ -27252,7 +27252,7 @@ $6
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'Нет',
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'Да, мне удалось найти то, что я искал.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'Нет, мне не удалось найти то, что я искал.',
-	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(остался 1 символ)|(осталось $1 символа)|(осталось $1 символов)}}',
+	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(остался 1 символ)|(осталось $1 символов)|(осталось $1 символа)}}', # Fuzzy
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Прекрасно. Может быть, есть какие-то предложения по улучшению?',
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Напишите здесь своё предложение (например: «На этой странице не хватает иллюстраций»)',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Сожалеем об этом. Есть ли предложения по улучшению?',
@@ -27340,10 +27340,10 @@ $6
 	'articlefeedbackv5-activity-item-undo-helpful' => '$1 снял{{GENDER:$6||а}} пометку о полезности с данного сообщения $4 в $5 $2',
 	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 снял{{GENDER:$6||а}} пометку о неполезности с данного сообщения $4 в $5 $2',
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 снял{{GENDER:$6||а}} все флаги с данного сообщения $4 в $5 $2',
-	'articlefeedbackv5-activity-note-archive' => 'Заархивировано через {{PLURAL:$1|$1 день|$1 дня|$1 дней}} бездействия редактора',
-	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 действие на этот отзыв|$1 действия на этот отзыв|$1 действий на этот отзыв}}',
+	'articlefeedbackv5-activity-note-archive' => 'Заархивировано через {{PLURAL:$1|$1 день|$1 дней|$1 дня}} бездействия редактора', # Fuzzy
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 действие на этот отзыв|$1 действий на этот отзыв|$1 действия на этот отзыв}}', # Fuzzy
 	'articlefeedbackv5-activity-more' => 'Показать дополнительные действия',
-	'articlefeedbackv5-article-view-feedback' => '$1 {{PLURAL:$1|читательский комментарий|читательских комментария|читательских комментариев}}',
+	'articlefeedbackv5-article-view-feedback' => '$1 {{PLURAL:$1|читательский комментарий|читательских комментариев|читательских комментария}}', # Fuzzy
 	'articlefeedbackv5-talk-view-feedback' => 'Посмотреть отзывы читателей',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Обратная связь от моих популярных страниц',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Запрошено скрытие для страницы отзыва к статье',
@@ -30963,7 +30963,7 @@ $messages['uk'] = array(
 	'articlefeedbackv5-error' => 'Сталася помилка. Будь ласка, спробуйте пізніше.',
 	'articlefeedbackv5-error-blocked' => 'Заблоковані користувачі не можуть залишати відгуки.',
 	'articlefeedbackv5-error-validation' => 'Помилка перевірки.',
-	'articlefeedbackv5-error-abuse' => "Ваш допис було відхилено програмним фільтром, який припустив, що допис не відповідає [$1 правилам зворотного зв'язку] {{GRAMMAR:genitive|{{SITENAME}}}}. Будь ласка, перевірте Ваш допис на відповідність і спробуйте знову. ({{PLURAL:$2|Фільтр|Фільтри}}: $3)",
+	'articlefeedbackv5-error-abuse' => "Ваш допис було відхилено програмним фільтром, який припустив, що допис не відповідає [$1 правилам зворотного зв'язку] {{GRAMMAR:genitive|{{SITENAME}}}}. Будь ласка, перевірте Ваш допис на відповідність і спробуйте знову. ({{PLURAL:$2|1=Фільтр|Фільтри}}: $3)",
 	'articlefeedbackv5-error-unknown' => 'Невідома помилка.',
 	'articlefeedbackv5-error-submit' => 'Помилка надсилання даних форми.',
 	'articlefeedbackv5-error-duplicate' => 'Надісланий відгук ідентичний останньому відгуку. Ви надіслали, вірогідно, два відгуки помилково?',
@@ -31010,7 +31010,7 @@ $messages['uk'] = array(
 	'articlefeedbackv5-form-helpful-yes-label' => 'Так',
 	'articlefeedbackv5-form-helpful-no-label' => 'Ні',
 	'articlefeedbackv5-form-helpful-votes-percent' => '{{PLURAL:$1|$1% визнано корисними}}',
-	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1 так|$1 так}} / {{PLURAL:$2|1 ні|$2 ні}}',
+	'articlefeedbackv5-form-helpful-votes-count' => '{{PLURAL:$1|1=1 так|$1 так}} / {{PLURAL:$2|1=1 ні|$2 ні}}',
 	'articlefeedbackv5-special-survey-button-text' => "Як Вам цей інструмент зворотного зв'язку?",
 	'articlefeedbackv5-special-filter-featured' => 'Рекомендовано ($1)',
 	'articlefeedbackv5-special-filter-unreviewed' => 'Не переглянуті ($1)',
@@ -31674,6 +31674,7 @@ $messages['vec'] = array(
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
+ * @author Withoutaname
  * @author පසිඳු කාවින්ද
  */
 $messages['vi'] = array(
@@ -31702,6 +31703,9 @@ $messages['vi'] = array(
 	'articlefeedbackv5-error-flagging' => 'Có lỗi khi gắn cờ thông tin phản hồi.',
 	'articlefeedbackv5-contribs-entry-status' => '. . Trạng thái: $1',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'Ẩn',
+	'articlefeedbackv5-contribs-status-action-hide' => 'Ẩn',
+	'articlefeedbackv5-contribs-status-action-request' => 'Đã yêu cầu giám sát',
+	'articlefeedbackv5-contribs-status-action-oversight' => 'Giám sát rồi',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'bình luận ẩn',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Có',
 	'articlefeedbackv5-form-helpful-no-label' => 'Không',
