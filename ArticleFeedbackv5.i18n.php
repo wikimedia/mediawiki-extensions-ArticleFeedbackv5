@@ -8106,12 +8106,12 @@ $messages['eo'] = array(
 	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Malmarki kiel solvita', # Fuzzy
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Aldoni noton',
 	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Kial vi malmarkis ĉi tiun afiŝon kiel solvita?', # Fuzzy
-	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Malmarki kiel solvita', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Aldoni noton',
 	'articlefeedbackv5-noteflyover-unresolve-help' => 'Lerni plu',
-	'articlefeedbackv5-noteflyover-hide-caption' => 'Kaŝi ĉi tiun afiŝon', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-caption' => 'Kaŝi',
 	'articlefeedbackv5-noteflyover-hide-label' => 'Aldoni noton',
-	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Kial vi kaŝas ĉi tiun afiŝon?', # Fuzzy
-	'articlefeedbackv5-noteflyover-hide-submit' => 'Kaŝi ĉi tiun afiŝon', # Fuzzy
+	'articlefeedbackv5-noteflyover-hide-placeholder' => 'Kial vi kaŝis ĉi tiun afiŝon?',
+	'articlefeedbackv5-noteflyover-hide-submit' => 'Aldoni noton',
 	'articlefeedbackv5-noteflyover-hide-help' => 'Lerni plu',
 	'articlefeedbackv5-noteflyover-unhide-label' => 'Aldoni noton',
 	'articlefeedbackv5-noteflyover-request-caption' => 'Peti kontroladon',
@@ -8137,7 +8137,7 @@ $messages['eo'] = array(
 	'articlefeedbackv5-noteflyover-unoversight-caption' => 'Marki ĉi tiun afiŝon kiel ne-kontrolita', # Fuzzy
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'Aldoni noton',
 	'articlefeedbackv5-noteflyover-unoversight-placeholder' => 'Kial vi markas ĉi tiun afiŝon kiel ne-kontrolita', # Fuzzy
-	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Malmarki ĉi tiun afiŝon', # Fuzzy
+	'articlefeedbackv5-noteflyover-unoversight-submit' => 'Aldoni noton',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'Lerni plu',
 	'articlefeedbackv5-noteflyover-decline-caption' => 'Rifuzi kontroladon', # Fuzzy
 	'articlefeedbackv5-noteflyover-decline-label' => 'Aldoni noton',
@@ -8274,6 +8274,7 @@ $4', # Fuzzy
 /** Spanish (español)
  * @author AlbertoLeon
  * @author Armando-Martin
+ * @author Ciencia Al Poder
  * @author Dalton2
  * @author Dferg
  * @author Drini
@@ -8821,30 +8822,30 @@ Apreciamos sus contribuciones a esta página!',
 	'articlefeedbackv5-activity-feedback-date' => 'Publicado el $1',
 	'articlefeedbackv5-activity-permalink' => 'Enlace permanente',
 	'articlefeedbackv5-activity-item-request' => '$1 solicitó información el $4 a las $5 $2',
-	'articlefeedbackv5-activity-item-unrequest' => '$1 no solicitó supervisión el $3 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-decline' => '$1 rechazó la supervisión el $3 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-flag' => '$1 marcó esta publicación el $3 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unflag' => '$1 desmarcó esta publicación el $3 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-autoflag' => '$1 marcó esta publicación el $4 a las $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-oversight' => '$1 supervisó esta publicación el $4 a las $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unoversight' => '$1 eliminó la supervisión de esta publicación el $3 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-feature' => '$1 destacó esta publicación el $4 a las $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unfeature' => '$1 quitó la marca de destacado a esta publicación el $4 a las $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-resolve' => '$1 ha marcado esta publicación como resuelta el $3 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unresolve' => '$1 ha quitado la marca de resuelta a esta publicación el $3 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-noaction' => '$1 marcó esta publicación como no-accionable el $4 a las $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unnoaction' => '$1 quitó la marca de no-accionable de esta publicación el $4 a las $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 ocultó esta publicación el $4 a las $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-uninappropriate' => '$1 volvió a mostrar esta publicación el $4 a las $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-hide' => '$1 escondió esta publicación el $4 a las $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unhide' => '$1 quitó la marca de oculta de esta publicación el $4 a las $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-autohide' => '$1 escondió esta publicación el $4 a las $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-archive' => '$1 archivó esta publicación el $4 a las $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unarchive' => '$1 desarchivó esta publicación el $4 a las $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-helpful' => '$1 ha marcado esta publicación como útil el $3 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 ha marcado esta publicación como inútil el $3 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 ha desmarcado esta publicación como útil el $3 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 ha desmarcado esta publicación como inútil el $3 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-unrequest' => '$1 {{GENDER:$6|anuló}} la petición de supresión el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 {{GENDER:$6|declinó}} la supresión el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 {{GENDER:$6|marcó}} esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 {{GENDER:$6|desmarcó}} esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-autoflag' => '$1 {{GENDER:$6|marcó atomáticamente}} esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 {{GENDER:$6|suprimió}} esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 {{GENDER:$6|eliminó}} la supresión en esta publicación el $4 a las $5$3 $2 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-feature' => '$1 {{GENDER:$6|marcó}} esta publicación como útil el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 {{GENDER:$6|quitó la marca}} de útil a esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 {{GENDER:$6|marcó}} esta publicación como resuelta el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 {{GENDER:$6|quitó}} la marca de resuelta a esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-noaction' => '$1 {{GENDER:$6|marcó}} esta publicación como no accionable el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 {{GENDER:$6|quitó}} la marca de no accionable de esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 {{GENDER:$6|marcó}} esta publicación como inapropiada el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 {{GENDER:$6|quitó}} la marca de inapropiada de esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-hide' => '$1 {{GENDER:$6|ocultó}} esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-unhide' => '$1 {{GENDER:$6|volvió a mostrar}} esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-autohide' => '$1 {{GENDER:$6|ocultó}} esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-archive' => '$1 {{GENDER:$6|archivó}} esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-unarchive' => '$1 {{GENDER:$6|rescató}} del archivo esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 {{GENDER:$6|marcó}} esta publicación como muy útil el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 {{GENDER:$6|marcó}} esta publicación como nada útil el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 {{GENDER:$6|quitó la marca}} de muy útil a esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 {{GENDER:$6|quitó la marca}} de nada útil a esta publicación el $4 a las $5 $2',
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 ha borrado todas las etiquetas de esta publicación el $3 $2',
 	'articlefeedbackv5-activity-note-archive' => 'Archivado tras {{PLURAL:$1|$1 día|$1 días}} sin actividad',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 acción|$1 acciones}} en esta entrada (post)',
@@ -8859,9 +8860,10 @@ $1 solicitó una supresión para un comentario publicado en esta página:
 
 $2
 
-Por favor revisa este comentario y luego aprueba o rechaza esta solicitud de supresión:
+Por favor, revisa este comentario y luego aprueba o rechaza esta solicitud de supresión:
 
 $3
+$5
 
 Gracias,
 
@@ -8869,7 +8871,7 @@ El equipo de {{SITENAME}}
 
 PD: Si tienes alguna pregunta acerca de cómo utilizar las funciones de supresión de la página de comentarios del artículo, por favor lee esta FAQ del supresor:
 
-$4', # Fuzzy
+$4',
 	'articlefeedbackv5-email-request-oversight-body-notes' => 'Se añadió este comentario a la solicitud:
 
 $1',
@@ -26780,6 +26782,7 @@ $1",
  * @author Iluvatar
  * @author KPu3uC B Poccuu
  * @author Kaganer
+ * @author Lockal
  * @author Lunacy1911
  * @author MaxSem
  * @author Okras
@@ -26952,7 +26955,7 @@ $messages['ru'] = array(
 	'articlefeedbackv5-noaction-marker' => 'Действий не требуется',
 	'articlefeedbackv5-inappropriate-marker' => 'Неуместный',
 	'articlefeedbackv5-archive-marker' => 'Архивировано',
-	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 пометка|$1 пометок|$1 пометки}}', # Fuzzy
+	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 пометка|$1 пометок|$1 пометки}}',
 	'articlefeedbackv5-form-note-added' => 'Заметка добавлена',
 	'articlefeedbackv5-form-note' => 'Добавить комментарий',
 	'articlefeedbackv5-form-feature' => 'Полезно',
@@ -27048,7 +27051,7 @@ $6
 	'articlefeedbackv5-whats-this' => 'Справка',
 	'articlefeedbackv5-settings-menu-title' => 'Настройки',
 	'articlefeedbackv5-invalid-page-id' => 'Неправильный идентификатор страницы',
-	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 читателей нашли то, что искали}}', # Fuzzy
+	'articlefeedbackv5-found-percent' => '{{PLURAL:$2|$1 читателей нашли то, что искали}}',
 	'articlefeedbackv5-found-percent-title' => 'Основано на $1 {{PLURAL:$1|1=отзыве|отзывах}} (исключая неуместные комментарии)', # Fuzzy
 	'articlefeedbackv5' => 'Отзывы о статьях — Центральная страница',
 	'articlefeedbackv5watchlist' => 'Отзывы о статьях — наблюдаемые мной страницы',
@@ -27075,13 +27078,13 @@ $6
 	'articlefeedbackv5-permalink-info-revision-link' => 'См. старую версию этой страницы',
 	'articlefeedbackv5-permalink-info-posted' => 'Размещено $1  в $2',
 	'articlefeedbackv5-permalink-info-stats-title-length' => 'Длина',
-	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 слово|$1 слов|$1 слова}}', # Fuzzy
-	'articlefeedbackv5-permalink-info-length-characters' => '({{PLURAL:$1|$1 символ|$1 символов|$1 символа}})', # Fuzzy
+	'articlefeedbackv5-permalink-info-length-words' => '{{PLURAL:$1|$1 слово|$1 слов|$1 слова}}',
+	'articlefeedbackv5-permalink-info-length-characters' => '({{PLURAL:$1|$1 символ|$1 символов|$1 символа}})',
 	'articlefeedbackv5-permalink-info-stats-title-scores' => 'Оценки',
 	'articlefeedbackv5-permalink-info-stats-subtitle-relevance' => 'Соответствие теме (релевантность):',
 	'articlefeedbackv5-permalink-info-stats-subtitle-helpfulness' => 'Полезность:',
 	'articlefeedbackv5-permalink-activity-title' => 'Действия',
-	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 действие|$1 действий|$1 действия}})', # Fuzzy
+	'articlefeedbackv5-permalink-activity-subtitle' => '({{PLURAL:$1|$1 действие|$1 действий|$1 действия}})',
 	'articlefeedbackv5-permalink-activity-none' => 'У этого отзыва не было активности.',
 	'articlefeedbackv5-short-status-request' => 'Проверено {{GENDER:$1|участником|участницей}} $1',
 	'articlefeedbackv5-short-status-unrequest' => 'Проверено {{GENDER:$1|участником|участницей}} $1',
@@ -27253,7 +27256,7 @@ $6
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'Нет',
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => 'Да, мне удалось найти то, что я искал.',
 	'articlefeedbackv5-bucket6-toggle-found-no-full' => 'Нет, мне не удалось найти то, что я искал.',
-	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(остался 1 символ)|(осталось $1 символов)|(осталось $1 символа)}}', # Fuzzy
+	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(остался 1 символ)|(осталось $1 символов)|(осталось $1 символа)}}',
 	'articlefeedbackv5-bucket6-question-instructions-yes' => 'Прекрасно. Может быть, есть какие-то предложения по улучшению?',
 	'articlefeedbackv5-bucket6-question-placeholder-yes' => 'Напишите здесь своё предложение (например: «На этой странице не хватает иллюстраций»)',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'Сожалеем об этом. Есть ли предложения по улучшению?',
@@ -27341,10 +27344,10 @@ $6
 	'articlefeedbackv5-activity-item-undo-helpful' => '$1 снял{{GENDER:$6||а}} пометку о полезности с данного сообщения $4 в $5 $2',
 	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 снял{{GENDER:$6||а}} пометку о неполезности с данного сообщения $4 в $5 $2',
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 снял{{GENDER:$6||а}} все флаги с данного сообщения $4 в $5 $2',
-	'articlefeedbackv5-activity-note-archive' => 'Заархивировано через {{PLURAL:$1|$1 день|$1 дней|$1 дня}} бездействия редактора', # Fuzzy
-	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 действие на этот отзыв|$1 действий на этот отзыв|$1 действия на этот отзыв}}', # Fuzzy
+	'articlefeedbackv5-activity-note-archive' => 'Заархивировано через {{PLURAL:$1|$1 день|$1 дней|$1 дня}} бездействия редактора',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 действие на этот отзыв|$1 действий на этот отзыв|$1 действия на этот отзыв}}',
 	'articlefeedbackv5-activity-more' => 'Показать дополнительные действия',
-	'articlefeedbackv5-article-view-feedback' => '$1 {{PLURAL:$1|читательский комментарий|читательских комментариев|читательских комментария}}', # Fuzzy
+	'articlefeedbackv5-article-view-feedback' => '$1 {{PLURAL:$1|читательский комментарий|читательских комментариев|читательских комментария}}',
 	'articlefeedbackv5-talk-view-feedback' => 'Посмотреть отзывы читателей',
 	'articlefeedbackv5-watchlist-view-feedback' => 'Обратная связь от моих популярных страниц',
 	'articlefeedbackv5-email-request-oversight-subject' => 'Запрошено скрытие для страницы отзыва к статье',
@@ -29645,9 +29648,9 @@ $messages['te'] = array(
 	'articlefeedbackv5-contribs-entry-status' => '. . స్థితి: $1',
 	'articlefeedbackv5-form-helpful-yes-label' => 'అవును',
 	'articlefeedbackv5-form-helpful-no-label' => 'కాదు',
-	'articlefeedbackv5-special-filter-select-more' => 'మరిన్ని వడపోతలు', # Fuzzy
+	'articlefeedbackv5-special-filter-select-more' => 'మరిన్ని',
 	'articleFeedbackv5-details-link' => 'వివరాలు',
-	'articlefeedbackv5-revision-link' => '(పాత వ్యాసాన్ని చూడండి)', # Fuzzy
+	'articlefeedbackv5-revision-link' => '(పాత పుటను చూడండి)',
 	'articlefeedbackv5-special-more' => 'మరిన్ని టపాలను చూపించు',
 	'articlefeedbackv5-new-marker' => 'కొత్తది',
 	'articlefeedbackv5-discussion-page' => 'చర్చ',
@@ -29676,7 +29679,7 @@ $messages['te'] = array(
 	'articlefeedbackv5-bucket6-toggle-found-no' => 'కాదు',
 	'articlefeedbackv5-bucket6-feedback-countdown' => '{{PLURAL:$1|(1 అక్షరం మిగిలివుంది)|($1 అక్షరాలు మిగిలివున్నాయి)}}',
 	'articlefeedbackv5-bucket6-question-instructions-no' => 'క్షమాపణలు. మెరుగుపరచడానికి ఏమైనా సూచనలు ఇస్తారా?',
-	'articlefeedbackv5-bucket6-question-placeholder-no' => "మీ సలహాను ఇక్కడ ఇవ్వండి (ఉదా॥'ఈ వ్యాసానికి ఒక బొమ్మ కావాలి')", # Fuzzy
+	'articlefeedbackv5-bucket6-question-placeholder-no' => 'మీ సలహాను ఇక్కడ ఇవ్వండి (ఉదా॥"ఈ వ్యాసానికి ఒక బొమ్మ కావాలి")',
 	'articlefeedbackv5-help-tooltip-title' => 'ఇది ఏమిటి?',
 	'articlefeedbackv5-help-tooltip-linktext' => 'మరింత తెలుసుకోండి',
 	'articlefeedbackv5-sitesub-linktext' => 'ఈ పేజీని మెరుగుపరచండి',
