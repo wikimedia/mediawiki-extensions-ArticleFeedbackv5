@@ -9424,7 +9424,7 @@ $messages['fa'] = array(
 	'articlefeedbackv5-contribs-status-action-noaction' => 'کاری لازم نیست',
 	'articlefeedbackv5-contribs-status-action-inappropriate' => 'پنهان',
 	'articlefeedbackv5-contribs-status-action-archive' => 'بایگانی‌شده',
-	'articlefeedbackv5-contribs-status-action-hide' => 'پنهان کردن',
+	'articlefeedbackv5-contribs-status-action-hide' => 'پنهان‌کردن',
 	'articlefeedbackv5-contribs-status-action-request' => 'پیشنهادهای پنهان‌شده',
 	'articlefeedbackv5-contribs-status-action-oversight' => 'پنهان‌شده',
 	'articlefeedbackv5-contribs-hidden-feedback' => 'پنهان‌کردن پیام‌ها',
@@ -32598,7 +32598,7 @@ $6
 	'articlefeedbackv5-activity-item-unnoaction' => '$1于$4 $5取消标记此回馈为无法操作$2', # Fuzzy
 	'articlefeedbackv5-activity-item-inappropriate' => '$1于$3隐藏此帖子$2', # Fuzzy
 	'articlefeedbackv5-activity-item-uninappropriate' => '$1于$3取消此帖子的隐藏状态$2', # Fuzzy
-	'articlefeedbackv5-activity-item-hide' => '$1于$4 $5隐藏此回馈$2', # Fuzzy
+	'articlefeedbackv5-activity-item-hide' => '$1于$4在$5 $2{{GENDER:$6|隐藏}}此回馈',
 	'articlefeedbackv5-activity-item-unhide' => '$1于$4 $5取消隐藏此回馈$2', # Fuzzy
 	'articlefeedbackv5-activity-item-autohide' => '$1于$4 $5隐藏此回馈$2', # Fuzzy
 	'articlefeedbackv5-activity-item-archive' => '$1于$4 $5将此回馈存档在$2', # Fuzzy
