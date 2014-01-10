@@ -5574,6 +5574,7 @@ $messages['ce'] = array(
 	'articlefeedbackv5-form-unoversight' => 'Цаоьшу',
 	'articlefeedbackv5-discussion-page' => 'Дийцаре',
 	'articlefeedbackv5-whats-this' => 'ГӀо',
+	'articlefeedbackv5-settings-menu-title' => 'Параметраш',
 	'articlefeedbackv5-mask-view-contents' => 'Чулацаме хьажар',
 	'articlefeedbackv5-permalink-activity-title' => 'Дийраш',
 	'articlefeedbackv5-noteflyover-feature-label' => 'ТӀетоха билгалдаккхар',
@@ -7936,10 +7937,10 @@ $messages['eo'] = array(
 	'articlefeedbackv5-error-throttled' => 'Vian afiŝon malpermesis {{SITENAME}}, ĉar vi lastatempe afiŝis pli da komentoj ol la komento-gvidlinioj permesas. Bonvolu ne ripetate aŭ troe afiŝi komentojn.',
 	'articlefeedbackv5-protection-level' => 'Rimarkoj pri artikolo',
 	'articlefeedbackv5-protection-level-error' => 'Protektado de artikolrimarkoj ne povas esti pli alta ol ĝia nivelo de redaktoprotektado',
-	'protect-level-aft-reader' => 'Permesi por ĉiuj uzantoj', # Fuzzy
+	'protect-level-aft-reader' => 'Ŝalti por ĉiuj uzantoj',
 	'protect-level-aft-member' => 'Permesi nur por ensalutintaj uzantoj', # Fuzzy
 	'protect-level-aft-editor' => 'Permesi nur por aŭtomate konfirmitaj uzantoj', # Fuzzy
-	'protect-level-aft-administrator' => 'Permesi nur por administrantoj', # Fuzzy
+	'protect-level-aft-administrator' => 'Ŝalti nur por administrantoj',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Rimarkoj: $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . Statuso: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Utila',
@@ -7993,7 +7994,7 @@ $messages['eo'] = array(
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'Rimarkoj el miaj priatentataj paĝoj',
 	'articlefeedbackv5-special-central-pagetitle' => 'Centra paĝo de rimarkoj',
 	'articlefeedbackv5-loading-tag' => 'Ŝarĝante...',
-	'articlefeedbackv5-status-hide' => 'Tiu ĉi afiŝo estis kaŝita de $1 en $2 je $3', # Fuzzy
+	'articlefeedbackv5-status-hide' => 'Tiu ĉi afiŝo estis kaŝita de $1 en $2 je $3',
 	'articlefeedbackv5-status-unhide' => 'Tiu ĉi afiŝo esti malkaŝita de $1 en $2 je $3', # Fuzzy
 	'articlefeedbackv5-status-request' => 'Kontrolo de tiu ĉi afiŝo estis petita de $1 en $2 je $3',
 	'articlefeedbackv5-status-unrequest' => 'Kontrolo de tiu ĉi afiŝo estis malpetita de $1 en $2 je $3',
@@ -8014,12 +8015,12 @@ $messages['eo'] = array(
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 flago|$1 flagoj}}',
 	'articlefeedbackv5-form-feature' => 'Utila',
 	'articlefeedbackv5-form-unfeature' => 'Malfari',
-	'articlefeedbackv5-form-resolve' => 'Marki kiel pritraktitan', # Fuzzy
+	'articlefeedbackv5-form-resolve' => 'Pritraktita',
 	'articlefeedbackv5-form-unresolve' => 'Malfari',
 	'articlefeedbackv5-form-inappropriate' => 'Kaŝi ĉi tiun afiŝon',
 	'articlefeedbackv5-form-unhide' => 'Malfari',
 	'articlefeedbackv5-form-helpful' => 'Marki kiel utila ($1)',
-	'articlefeedbackv5-form-oversight' => 'Peti kontrolon', # Fuzzy
+	'articlefeedbackv5-form-oversight' => 'Superrigardo',
 	'articlefeedbackv5-form-unoversight' => 'Malfari',
 	'articlefeedbackv5-form-decline' => 'Rifuzi kontrolon',
 	'articlefeedbackv5-form-declined' => 'Kontrol rifuzita',
@@ -8096,7 +8097,7 @@ $messages['eo'] = array(
 	'articlefeedbackv5-noteflyover-feature-caption' => 'Elstarigi tiun ĉi afiŝon', # Fuzzy
 	'articlefeedbackv5-noteflyover-feature-label' => 'Aldoni noton',
 	'articlefeedbackv5-noteflyover-feature-placeholder' => 'Kial vi elstarigas tiun ĉi afiŝon?', # Fuzzy
-	'articlefeedbackv5-noteflyover-feature-submit' => 'Elstarigi tiun ĉi afiŝon', # Fuzzy
+	'articlefeedbackv5-noteflyover-feature-submit' => 'Aldoni noton',
 	'articlefeedbackv5-noteflyover-feature-help' => 'Lerni pli',
 	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Malelstarigi tiun ĉi afiŝon', # Fuzzy
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Aldoni noton',
@@ -8106,9 +8107,9 @@ $messages['eo'] = array(
 	'articlefeedbackv5-noteflyover-resolve-caption' => 'Marki kiel solvita', # Fuzzy
 	'articlefeedbackv5-noteflyover-resolve-label' => 'Aldoni noton',
 	'articlefeedbackv5-noteflyover-resolve-placeholder' => 'Kial vi markis ĉi tiun afiŝon kiel solvita?', # Fuzzy
-	'articlefeedbackv5-noteflyover-resolve-submit' => 'Marki kiel solvita', # Fuzzy
+	'articlefeedbackv5-noteflyover-resolve-submit' => 'Aldoni noton',
 	'articlefeedbackv5-noteflyover-resolve-help' => 'Lerni plu',
-	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Malmarki kiel solvita', # Fuzzy
+	'articlefeedbackv5-noteflyover-unresolve-caption' => 'Malmarkiĝis kiel solvita',
 	'articlefeedbackv5-noteflyover-unresolve-label' => 'Aldoni noton',
 	'articlefeedbackv5-noteflyover-unresolve-placeholder' => 'Kial vi malmarkis ĉi tiun afiŝon kiel solvita?', # Fuzzy
 	'articlefeedbackv5-noteflyover-unresolve-submit' => 'Aldoni noton',
@@ -32656,6 +32657,7 @@ $1',
  * @author Liangent
  * @author Liflon
  * @author Littletung
+ * @author Liuxinyu970226
  * @author Mark85296341
  * @author Oapbtommy
  * @author Radish10cm
@@ -33184,6 +33186,7 @@ $6
 	'logentry-articlefeedbackv5-undo-helpful' => '$1{{GENDER:$2|取消標記}}[[$5]]上的[[$3|回饋#$4]]為有幫助',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1{{GENDER:$2|取消}}[[$5]]上[[$3|回饋#$4]]的沒有幫助標記',
 	'logentry-articlefeedbackv5-clear-flags' => '$1{{GENDER:$2|將}}[[$5]]上[[$3|回饋#$4]]的所有標記清除',
+	'logentry-articlefeedbackv5-protect' => '$1於「$3」{{GENDER:$2|更改了}}條目反饋工具之可見性$4',
 	'articlefeedbackv5-activity-pane-header' => '活動日誌',
 	'articlefeedbackv5-activity-feedback-info' => '$2發表的反饋',
 	'articlefeedbackv5-activity-feedback-date' => '發佈於$1',
