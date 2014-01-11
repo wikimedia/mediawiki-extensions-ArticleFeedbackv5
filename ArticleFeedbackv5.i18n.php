@@ -32516,7 +32516,7 @@ $6
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => '您可以帮助我们吗？',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => '了解更多',
 	'articlefeedbackv5-bucket6-title' => '帮助改进该页面',
-	'articlefeedbackv5-bucket6-question-toggle' => '您找到了要找的东西吗？',
+	'articlefeedbackv5-bucket6-question-toggle' => '您找到了要找的东西了吗？',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => '是',
 	'articlefeedbackv5-bucket6-toggle-found-no' => '否',
 	'articlefeedbackv5-bucket6-toggle-found-yes-full' => '是，我已经找到了。',
