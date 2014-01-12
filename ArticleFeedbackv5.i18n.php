@@ -2392,6 +2392,7 @@ $messages['an'] = array(
 /** Arabic (العربية)
  * @author Asaifm
  * @author Ciphers
+ * @author Ibrahim.ID
  * @author Meno25
  * @author Mido
  * @author OsamaK
@@ -2444,6 +2445,7 @@ $messages['ar'] = array(
 	'restriction-articlefeedbackv5' => 'الرؤية',
 	'articlefeedbackv5-disabled' => 'تم تعطيل عملية التغذية الإسترجاعية (التعليقات)',
 	'articlefeedbackv5-disabled-admin-admin' => 'تم تعطيل عملية التغذية الإسترجاعية للقراء والمحررين. لا يمكن إضافة تعليقات جديدة على هذه الصفحة.',
+	'articlefeedbackv5-disabled-admin-editor' => 'تم تعطيل عملية التغذية العكسية للقراء والمحررين. لا يمكن إضافة تعليقات جديدة على هذه الصفحة.',
 	'articlefeedbackv5-disabled-admin-button-text' => 'غير الحماية',
 	'articlefeedbackv5-disabled-editor-button-text' => 'فعل التغذية الراجعة',
 	'articlefeedbackv5-settings-status-enable' => 'فعل التغذية الراجعة على هذه الصفحة',
