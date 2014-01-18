@@ -10663,6 +10663,7 @@ $messages['fo'] = array(
  * @author Dereckson
  * @author Erkethan
  * @author Faure.thomas
+ * @author Frakir
  * @author Gomoko
  * @author Grondin
  * @author Hello71
@@ -10746,7 +10747,7 @@ $messages['fr'] = array(
 	'articlefeedbackv5-disabled-editor-button-text' => 'Autoriser les commentaires',
 	'articlefeedbackv5-settings-status-enable' => 'Autoriser les commentaires sur cette page',
 	'articlefeedbackv5-settings-status-disable' => 'Interdire les commentaires sur cette page',
-	'articlefeedbackv5-enabled-form-message' => 'Les commentaires viennent juste d’être autorisés. Les commentaires des lecteurs seront visibles [$1 sur la page de commentaire].',
+	'articlefeedbackv5-enabled-form-message' => 'Les commentaires viennent juste d’être autorisés. Les commentaires des lecteurs seront visibles [$1 sur la page de commentaires].',
 	'articlefeedbackv5-contribs-entry' => '$1 . . $2 . . [[$3|Commentaire sur $4]] $5 $6 $7',
 	'articlefeedbackv5-contribs-entry-status' => '. . État&nbsp;: $1',
 	'articlefeedbackv5-contribs-status-action-helpful' => 'Utile',
