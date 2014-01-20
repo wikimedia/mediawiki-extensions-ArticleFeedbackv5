@@ -18385,6 +18385,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-abuse-saved' => 'Als Mëssbrauch markéiert',
 	'articlefeedbackv5-error-loading-feedback' => 'Feeler beim Luede vum Feedback',
 	'articlefeedbackv5-insufficient-permissions' => 'Niveau vun de Rechter net héich genuch',
+	'articlefeedbackv5-feedback-reloaded-after-error' => 'E Feeler ($1) ass geschitt. De Feedback gouf nei geluede fir säin aktuelle Status ze weisen.',
 	'articlefeedbackv5-go-to-article' => 'Säit weisen',
 	'articlefeedbackv5-discussion-page' => 'Diskussioun',
 	'articlefeedbackv5-whats-this' => 'Hëllef',
@@ -28396,6 +28397,8 @@ $messages['sr-ec'] = array(
 	'articlefeedbackv5-disable-preference' => 'Не приказуј елемент „Оцењивање чланака“ на страницама',
 	'articlefeedbackv5-activity-pane-header' => 'Дневник активности',
 	'articlefeedbackv5-activity-permalink' => 'трајна веза',
+	'articlefeedbackv5-disable-flyover-title' => 'Желите да уклоните ову алатку?',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Иди у корисничка подешавања',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Аутоматски сакривено.  Правило: $1',
 );
 
@@ -28587,6 +28590,8 @@ $messages['sr-el'] = array(
 	'articlefeedbackv5-disable-preference' => 'Ne prikazuj element „Ocenjivanje članaka“ na stranicama',
 	'articlefeedbackv5-activity-pane-header' => 'Dnevnik aktivnosti',
 	'articlefeedbackv5-activity-permalink' => 'trajna veza',
+	'articlefeedbackv5-disable-flyover-title' => 'Želite da uklonite ovu alatku?',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'Idi u korisnička podešavanja',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Automatski sakriveno. Pravilo: $1',
 );
 
