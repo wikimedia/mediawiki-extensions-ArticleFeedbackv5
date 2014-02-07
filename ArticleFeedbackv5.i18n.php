@@ -9370,6 +9370,7 @@ $1',
  * @author Abel2es
  * @author An13sa
  * @author Joxemai
+ * @author Subi
  * @author Theklan
  * @author Unai Fdz. de Betoño
  * @author පසිඳු කාවින්ද
@@ -9389,15 +9390,26 @@ $messages['eu'] = array(
 	'articlefeedbackv5-contribs-hidden-feedback' => 'iruzkin ezkutatua',
 	'articlefeedbackv5-form-helpful-yes-label' => 'Bai',
 	'articlefeedbackv5-form-helpful-no-label' => 'Ez',
+	'articlefeedbackv5-special-filter-allcomment' => 'Iruzkin guztiak ($1)',
 	'articlefeedbackv5-special-filter-hidden-watchlist' => 'Ezkutatuta',
 	'articlefeedbackv5-special-sort-age-desc' => 'berrienak',
 	'articlefeedbackv5-special-sort-age-asc' => 'zaharrenak',
+	'articlefeedbackv5-special-filter-select-more' => 'Gehiago',
 	'articleFeedbackv5-details-link' => 'Xehetasunak',
 	'articlefeedbackv5-special-more' => 'Gehiago', # Fuzzy
+	'articlefeedbackv5-loading-tag' => 'Kargatzen...',
 	'articlefeedbackv5-new-marker' => 'Berria',
 	'articlefeedbackv5-oversight-marker' => 'Gainbegiratuta',
-	'articlefeedbackv5-hide-marker' => 'Ezkutatuta', # Fuzzy
+	'articlefeedbackv5-autohide-marker' => 'Ezkutatuta',
+	'articlefeedbackv5-hide-marker' => 'Ezkutatuta',
 	'articlefeedbackv5-resolve-marker' => 'Konponduta',
+	'articlefeedbackv5-form-unfeature' => 'Desegin',
+	'articlefeedbackv5-form-unresolve' => 'Desegin',
+	'articlefeedbackv5-form-unnoaction' => 'Desegin',
+	'articlefeedbackv5-form-uninappropriate' => 'Desegin',
+	'articlefeedbackv5-form-unhide' => 'Desegin',
+	'articlefeedbackv5-form-unarchive' => 'Desegin',
+	'articlefeedbackv5-form-unoversight' => 'Desegin',
 	'articlefeedbackv5-form-anon-username' => 'Irakurle bat',
 	'articlefeedbackv5-go-to-article' => 'Ikus artikulua', # Fuzzy
 	'articlefeedbackv5-discussion-page' => 'Eztabaida',
