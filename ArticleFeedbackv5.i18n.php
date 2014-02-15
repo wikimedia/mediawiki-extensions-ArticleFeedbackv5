@@ -19960,7 +19960,7 @@ $6
 	'articlefeedbackv5-activity-item-undo-helpful' => '$1 {{GENDER:$6|ја тргна објавава}} од корисни на $4 во $5 ч. $2',
 	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 {{GENDER:$6|ja тргна}} објавава од некорисни на $4 во $5 ч. $2',
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 {{GENDER:$6|ги тргна}} сите ознаки од објавава на $4 во $5 ч. $2',
-	'articlefeedbackv5-activity-note-archive' => 'Архивирано по {{PLURAL:$1|$1 ден|$1 дена}} неактивност на уредникот',
+	'articlefeedbackv5-activity-note-archive' => 'Архивирано по {{PLURAL:$1|еден ден|$1 дена}} неактивност на уредникот',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 дејство врз мислењево|$1 дејства врз мислењево}}',
 	'articlefeedbackv5-activity-more' => 'Уште активности',
 	'articlefeedbackv5-article-view-feedback' => '$1 читателски {{PLURAL:$1|коментар|коментари}}',
