@@ -10033,7 +10033,7 @@ $6
 	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 برچسب ناسودمندبودن این پست را در $4 ساعت $5 {{GENDER:$6|برداشت}} $2',
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 همهٔ نشان‌های این ارسال را در $4 ساعت $5 {{GENDER:$6|برداشت}} $2',
 	'articlefeedbackv5-activity-note-archive' => 'پس از {{PLURAL:$1|$1 روز|$1 روز}} از عدم مشارکت کاربران بایگانی شد',
-	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 اقدام در این پست}}',
+	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 اقدام در این پست|$1 اقدام‌ها در این پست}}',
 	'articlefeedbackv5-activity-more' => 'نمایش فعالیت بیشتر',
 	'articlefeedbackv5-article-view-feedback' => '$1 {{PLURAL:$1|نظر}} بازدیدکننده',
 	'articlefeedbackv5-talk-view-feedback' => 'نمایش بازخورد خواننده‌ها',
