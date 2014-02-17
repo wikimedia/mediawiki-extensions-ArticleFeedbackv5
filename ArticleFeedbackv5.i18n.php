@@ -10777,6 +10777,7 @@ $messages['fo'] = array(
  * @author DavidL
  * @author Davidtsm
  * @author Dereckson
+ * @author Dr Brains
  * @author Erkethan
  * @author Faure.thomas
  * @author Frakir
@@ -11303,7 +11304,7 @@ Nous apprécions vos contributions à cette page !
 	'right-aft-monitor' => 'Masquer le commentaire et demander le masquage aux administrateurs',
 	'right-aft-administrator' => "Afficher l'outil de retour sur les pages protégées",
 	'right-aft-oversighter' => 'Masquer le commentaire aux administrateurs',
-	'log-name-articlefeedbackv5' => "Journal d'activité des commentaires",
+	'log-name-articlefeedbackv5' => 'Journal d’activité des commentaires',
 	'log-description-articlefeedbackv5' => 'Voici le journal d’activité des commentaires soumis par les lecteurs via l’outil de commentaire d’article.',
 	'logentry-articlefeedbackv5-create' => '$1 {{GENDER:$2|a soumis}} [[$3|un commentaire #$4]] sur [[$5]]',
 	'logentry-articlefeedbackv5-oversight' => '$1 {{GENDER:$2|a modifié l’état de masquage aux administrateurs du}} [[$3|commentaire #$4]] sur [[$5]]',
@@ -29777,6 +29778,7 @@ $4', # Fuzzy
 
 /** Telugu (తెలుగు)
  * @author Chaduvari
+ * @author Ravichandra
  * @author Veeven
  */
 $messages['te'] = array(
@@ -29805,6 +29807,7 @@ $messages['te'] = array(
 	'articlefeedbackv5-cta6-confirmation-title' => '{{SITENAME}} లో రాయడానికి సాయం కావాలా?',
 	'articlefeedbackv5-overlay-close' => 'మూసివేయి',
 	'articlefeedbackv5-error' => 'లోపమేదో దొర్లింది. తరువాత మళ్ళీ ప్రయత్నించండి.',
+	'articlefeedbackv5-error-validation' => 'సరిచూడ్డంలో దోషం.',
 	'articlefeedbackv5-error-unknown' => 'తెలియని లోపం.',
 	'articlefeedbackv5-error-submit' => 'ఫారం సమర్పణ లోపం.',
 	'articlefeedbackv5-error-nofeedback' => 'మీ ఫీడుబ్యాకును ఇవ్వండి.',
@@ -29922,6 +29925,11 @@ $messages['te'] = array(
 	'articlefeedbackv5-form-unarchive' => 'రద్దుచెయ్యి',
 	'articlefeedbackv5-form-helpful' => 'ఉపయోగకంగా ఉందని గుర్తు పెట్టు ($1)',
 	'articlefeedbackv5-form-flag' => 'దుశ్చర్యగా గుర్తు పెట్టు',
+	'articlefeedbackv5-form-discuss-user' => 'టపా రచయితను సంప్రదించండి',
+	'articlefeedbackv5-form-discuss-talk-exists' => 'చర్చాపేజీలోని చర్చను చూడండి',
+	'articlefeedbackv5-form-discuss-user-exists' => 'వాడుకరి చర్చ పేజీ సందేశాన్ని చూడండి',
+	'articlefeedbackv5-form-tooltip-note' => 'మీ జెండాను వివరిస్తూ ఓ నోట్ రాయండి',
+	'articlefeedbackv5-form-tooltip-feature' => 'పేజీని మెరుగుపరచేందుకు ఇది పనికొస్తుంది',
 	'articlefeedbackv5-discuss-user-section-content' => '"$7" పై మీఫీడుబ్యాకును సమర్పించినందుకు నెనరులు
 
 మీరీ ఫీడుబ్యాకును $3 నాడు సమర్పించారు ([[$5|ఫీడుబ్యాకులన్నిటినీ చూడండి]]).
@@ -29956,6 +29964,7 @@ $6
 	'articlefeedbackv5-comment-more' => 'పూర్తిగా',
 	'articlefeedbackv5-comment-empty' => 'పాఠ్యమేమీ ఇవ్వలేదు',
 	'articlefeedbackv5-invalid-feedback' => 'అడిగిన ఫీడుబ్యాకు ఉనికిలో లేదు.',
+	'articlefeedbackv5-viewactivity' => 'కార్యకలాపాలు చూడు',
 	'articlefeedbackv5-mask-view-contents' => 'వ్యాఖ్యలను చూపించు',
 	'articlefeedbackv5-mask-text-inappropriate' => 'ఈ టపా #$1 $3 {{GENDER:$2|అనుచితంగా ఉందని $2 గుర్తు పెట్టారు}}.',
 	'articlefeedbackv5-mask-text-hide' => 'ఈ టపా #$1 ను $3 {{GENDER:$2|$2 దాచారు}}.',
@@ -30065,8 +30074,10 @@ $6
 	'articlefeedbackv5-noteflyover-unarchive-submit' => 'నోట్‍ను చేర్చు',
 	'articlefeedbackv5-noteflyover-unarchive-help' => 'మరింత తెలుసుకోండి',
 	'articlefeedbackv5-noteflyover-request-help' => 'మరింత తెలుసుకోండి',
+	'articlefeedbackv5-noteflyover-unrequest-label' => 'గమనికను చేర్చు',
 	'articlefeedbackv5-noteflyover-unrequest-submit' => 'అభ్యర్థనని రద్దుచేయండి',
 	'articlefeedbackv5-noteflyover-unrequest-help' => 'మరింత తెలుసుకోండి',
+	'articlefeedbackv5-noteflyover-oversight-label' => 'గమనికను చేర్చు',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'మరింత తెలుసుకోండి',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'ఓ నోట్‍ను చేర్చండి',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'నోట్‍ను చేర్చు',
@@ -30127,8 +30138,11 @@ $6
 	'right-aft-editor' => 'ఫీడుబ్యాకును విశేషించడం, పరిష్కరించడం',
 	'right-aft-monitor' => 'ఫీడుబ్యాకును దాచడం, పట్టించుకోవద్దని అభ్యర్ధించడం',
 	'articlefeedbackv5-activity-pane-header' => 'కార్యకలాపాల చిట్టా',
+	'articlefeedbackv5-activity-feedback-date' => '$1 న పోస్టు చెయ్యబడింది',
 	'articlefeedbackv5-activity-permalink' => 'స్థిరలంకె',
+	'articlefeedbackv5-activity-more' => 'మరిన్ని కార్యకలాపాలు చూపించు',
 	'articlefeedbackv5-disable-flyover-title' => 'ఈ పనిముట్టును తొలగించాలా?',
+	'articlefeedbackv5-disable-flyover-prefbutton' => 'నా అభిరుచులకు వెళ్ళు',
 );
 
 /** Tetum (Tetun)
