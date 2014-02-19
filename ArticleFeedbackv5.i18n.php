@@ -5089,6 +5089,7 @@ Petra 'soñjit ?
 	'articlefeedbackv5-mask-text-autohide' => 'Ar gemennadenn-mañ #$1 {{GENDER:$2|zo bet kuzhet ent emgefre gant $2}} $3.',
 	'articlefeedbackv5-mask-text-hide' => 'Ar gemennadenn-mañ #$1 {{GENDER:$2|zo bet kuzhet gant $2}} $3.',
 	'articlefeedbackv5-mask-text-oversight' => 'Evezhiet eo bet an notenn-mañ gant ur skridaozer aotreet', # Fuzzy
+	'articlefeedbackv5-special-disclaimer' => "Ur c'hentpatrom eo. Arabat implijout anezhañ nemet ha pedet e vefec'h d'ober.",
 	'articlefeedbackv5-special-goback' => 'Gwelet pajenn an evezhiadennoù',
 	'articlefeedbackv5-special-central-goback' => "Gwelet muioc'h a evezhiadennoù eus pajennoù all",
 	'articlefeedbackv5-permalink-info-title' => 'Titouroù diwar-benn ar pennad-mañ',
@@ -5270,8 +5271,8 @@ Petra 'soñjit ?
 	'articlefeedbackv5-activity-feedback-info' => 'Evezhiadenn gant $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Postet war $1',
 	'articlefeedbackv5-activity-permalink' => 'Peurliamm',
-	'articlefeedbackv5-activity-item-autohide' => "$1 en deus kuzhet ar gemennadenn-mañ d'an $4 da $5 $2", # Fuzzy
-	'articlefeedbackv5-activity-item-archive' => '$1 en deus diellaouet ar gemennadenn-mañ $4 da $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-autohide' => "$1 {{GENDER:$6|en deus|he deus}} kuzhet ar gemennadenn-mañ d'an $4 da $5 $2",
+	'articlefeedbackv5-activity-item-archive' => '$1 {{GENDER:$6|en deus|he deus}} diellaouet ar gemennadenn-mañ $4 da $5 $2',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 oberiadenn war an notenn-mañ|$1 oberiadenn war an notenn-mañ}}',
 	'articlefeedbackv5-activity-more' => "Diskouez muioc'h a obererezh",
 	'articlefeedbackv5-article-view-feedback' => '{{PLURAL:$1|un evezhiadenn|$1 evezhiadenn}} gant ul lenner',
@@ -5281,6 +5282,7 @@ Petra 'soñjit ?
 	'articlefeedbackv5-disable-flyover-help-message' => 'Evit lemel an evezhiadenn war ar pennad, kit da "$1" > "$2" hag askit "$3"',
 	'articlefeedbackv5-disable-flyover-prefbutton' => "Mont da'm fenndibaboù",
 	'articlefeedbackv5-abusefilter-note-aftv5resolve' => 'Diskoulmet ent emgefre. Reolenn : $1',
+	'abusefilter-edit-action-aftv5hide' => '(Evezhiadenn war ar pennad) Emguzhat',
 	'articlefeedbackv5-abusefilter-note-aftv5hide' => 'Kuzhet ent emgefre. Reolenn : $1',
 );
 
@@ -29811,6 +29813,7 @@ $messages['te'] = array(
 	'articlefeedbackv5-error-unknown' => 'తెలియని లోపం.',
 	'articlefeedbackv5-error-submit' => 'ఫారం సమర్పణ లోపం.',
 	'articlefeedbackv5-error-nofeedback' => 'మీ ఫీడుబ్యాకును ఇవ్వండి.',
+	'articlefeedbackv5-protection-level' => 'వ్యాసాల ఫీడుబ్యాకు',
 	'protect-level-aft-reader' => 'వాడుకరులందరికీ చేతనం చెయ్యి',
 	'protect-level-aft-member' => 'లాగిన్ అయిన వాడుకరులకు మాత్రమే చేతనం చెయ్యి',
 	'protect-level-aft-editor' => 'ఆటో నిర్ధారిత వాడుకరులకు మాత్రమే చేతనం చెయ్యి',
@@ -29925,11 +29928,13 @@ $messages['te'] = array(
 	'articlefeedbackv5-form-unarchive' => 'రద్దుచెయ్యి',
 	'articlefeedbackv5-form-helpful' => 'ఉపయోగకంగా ఉందని గుర్తు పెట్టు ($1)',
 	'articlefeedbackv5-form-flag' => 'దుశ్చర్యగా గుర్తు పెట్టు',
+	'articlefeedbackv5-form-unoversight' => 'రద్దుచెయ్యి',
 	'articlefeedbackv5-form-discuss-user' => 'టపా రచయితను సంప్రదించండి',
 	'articlefeedbackv5-form-discuss-talk-exists' => 'చర్చాపేజీలోని చర్చను చూడండి',
 	'articlefeedbackv5-form-discuss-user-exists' => 'వాడుకరి చర్చ పేజీ సందేశాన్ని చూడండి',
 	'articlefeedbackv5-form-tooltip-note' => 'మీ జెండాను వివరిస్తూ ఓ నోట్ రాయండి',
 	'articlefeedbackv5-form-tooltip-feature' => 'పేజీని మెరుగుపరచేందుకు ఇది పనికొస్తుంది',
+	'articlefeedbackv5-form-tooltip-unhide' => 'దాచవద్దు',
 	'articlefeedbackv5-discuss-user-section-content' => '"$7" పై మీఫీడుబ్యాకును సమర్పించినందుకు నెనరులు
 
 మీరీ ఫీడుబ్యాకును $3 నాడు సమర్పించారు ([[$5|ఫీడుబ్యాకులన్నిటినీ చూడండి]]).
@@ -30078,10 +30083,12 @@ $6
 	'articlefeedbackv5-noteflyover-unrequest-submit' => 'అభ్యర్థనని రద్దుచేయండి',
 	'articlefeedbackv5-noteflyover-unrequest-help' => 'మరింత తెలుసుకోండి',
 	'articlefeedbackv5-noteflyover-oversight-label' => 'గమనికను చేర్చు',
+	'articlefeedbackv5-noteflyover-oversight-submit' => 'ఉపేక్ష',
 	'articlefeedbackv5-noteflyover-oversight-help' => 'మరింత తెలుసుకోండి',
 	'articlefeedbackv5-noteflyover-unoversight-label' => 'ఓ నోట్‍ను చేర్చండి',
 	'articlefeedbackv5-noteflyover-unoversight-submit' => 'నోట్‍ను చేర్చు',
 	'articlefeedbackv5-noteflyover-unoversight-help' => 'మరింత తెలుసుకోండి',
+	'articlefeedbackv5-noteflyover-decline-caption' => 'ఉపేక్షను తిరస్కరించారు',
 	'articlefeedbackv5-noteflyover-decline-label' => 'ఓ నోట్‍ను చేర్చండి',
 	'articlefeedbackv5-noteflyover-decline-submit' => 'నోట్‍ను చేర్చు',
 	'articlefeedbackv5-noteflyover-decline-help' => 'మరింత తెలుసుకోండి',
@@ -30137,6 +30144,7 @@ $6
 	'right-aft-member' => 'ఫీడుబ్యాకును పంపడం, సహాయకరంగా ఉందని/లేదని గుర్తించడం',
 	'right-aft-editor' => 'ఫీడుబ్యాకును విశేషించడం, పరిష్కరించడం',
 	'right-aft-monitor' => 'ఫీడుబ్యాకును దాచడం, పట్టించుకోవద్దని అభ్యర్ధించడం',
+	'right-aft-oversighter' => 'ఉపేక్షపై స్పందన',
 	'articlefeedbackv5-activity-pane-header' => 'కార్యకలాపాల చిట్టా',
 	'articlefeedbackv5-activity-feedback-date' => '$1 న పోస్టు చెయ్యబడింది',
 	'articlefeedbackv5-activity-permalink' => 'స్థిరలంకె',

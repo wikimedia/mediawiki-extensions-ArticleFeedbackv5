@@ -21,6 +21,12 @@ $specialPageAliases['ar'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'قائمة_مراقبة_تعليقات_المقالات_ن5' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'ArticleFeedbackv5' => array( 'كومنتات_المقالات_فى5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'قايمه_مراقبه_كومناتا_المقالات_فى5' ),
+);
+
 /** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
 $specialPageAliases['cdo'] = array(
 	'ArticleFeedbackv5' => array( '文章回饋' ),
@@ -134,4 +140,10 @@ $specialPageAliases['vi'] = array(
 $specialPageAliases['zh-hans'] = array(
 	'ArticleFeedbackv5' => array( '条目反馈v5' ),
 	'ArticleFeedbackv5Watchlist' => array( '条目反馈v5监视列表' ),
+);
+
+/** Traditional Chinese (中文（繁體）‎) */
+$specialPageAliases['zh-hant'] = array(
+	'ArticleFeedbackv5' => array( '條目反饋v5' ),
+	'ArticleFeedbackv5Watchlist' => array( '條目反饋v5監視列表' ),
 );
