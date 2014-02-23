@@ -82,6 +82,7 @@ $specialPageAliases['kw'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'ArticleFeedbackv5' => array( 'Artikel-Feedback_Versioun_5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'Artikel-Feedback_Versioun_5_Iwweerwaachungslëscht' ),
 );
 
 /** Macedonian (македонски) */

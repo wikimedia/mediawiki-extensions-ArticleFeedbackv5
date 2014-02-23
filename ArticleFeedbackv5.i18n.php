@@ -18445,6 +18445,8 @@ $messages['lb'] = array(
 	'articlefeedbackv5-status-hide' => 'Dëse Beitrag gouf vum $1 de(n) $2 ëm $3 verstoppt',
 	'articlefeedbackv5-status-unhide' => 'Dës Matdeelung gouf vum $1 den $2 ëm $3 nees gewisen',
 	'articlefeedbackv5-status-feature' => 'Dës Matdeelung gouf vum $1 den $2 ëm $3 als nëtzlech markéiert',
+	'articlefeedbackv5-status-unfeature' => "D'Markéierung vun dëser Matdeelung als nëtzlech gouf vum $1 den $2 ëm $3 ewechgeholl",
+	'articlefeedbackv5-status-resolve' => 'Dës Matdeelung gouf vum $1 den $2 ëm $3 als geléist markéiert',
 	'articlefeedbackv5-status-archive' => 'Dës Matdeelung gouf vum $1 den $2 ëm $3 archivéiert',
 	'articlefeedbackv5-new-marker' => 'Nei',
 	'articlefeedbackv5-oversight-marker' => 'Geläscht',
@@ -24937,7 +24939,7 @@ $messages['pt'] = array(
 	'articlefeedbackv5-special-filter-oversighted' => 'Supervisado ($1)',
 	'articlefeedbackv5-special-filter-all' => 'Todos as notas ($1)',
 	'articlefeedbackv5-special-filter-featured-watchlist' => 'Destacado',
-	'articlefeedbackv5-special-filter-unreviewed-watchlist' => 'Não revisado',
+	'articlefeedbackv5-special-filter-unreviewed-watchlist' => 'Não revisto',
 	'articlefeedbackv5-special-filter-helpful-watchlist' => 'Útil',
 	'articlefeedbackv5-special-filter-unhelpful-watchlist' => 'Inútil',
 	'articlefeedbackv5-special-filter-flagged-watchlist' => 'Revisado',
@@ -24974,7 +24976,7 @@ $messages['pt'] = array(
 	'articlefeedbackv5-special-permalink-pagetitle' => 'Nota de avaliação em $1',
 	'articlefeedbackv5-special-watchlist-pagetitle' => 'Avaliação das minhas páginas vigiadas',
 	'articlefeedbackv5-special-central-pagetitle' => 'Página Central de Avaliação',
-	'articlefeedbackv5-loading-tag' => 'Carregando...',
+	'articlefeedbackv5-loading-tag' => 'A carregar…',
 	'articlefeedbackv5-status-hide' => 'Esta nota foi ocultada por $1 em $2 às $3',
 	'articlefeedbackv5-status-unhide' => 'Esta nota foi desocultada por $1 em $2 às $3',
 	'articlefeedbackv5-status-request' => 'Supervisão desta nota foi requerida por $1 em $2 às $3',
@@ -26929,6 +26931,7 @@ $1",
  * @author Okras
  * @author Ole Yves
  * @author Putnik
+ * @author Tucvbif
  * @author Александр Сигачёв
  * @author Сrower
  * @author Сай
@@ -27350,7 +27353,7 @@ $6
 	'articlefeedbackv5-noteflyover-request-label' => 'Добавить примечание с объяснением того, почему вы запрашиваете скрытие',
 	'articlefeedbackv5-noteflyover-request-placeholder' => 'Почему вы запросили скрытие?',
 	'articlefeedbackv5-noteflyover-request-submit' => 'Запросить скрытие',
-	'articlefeedbackv5-noteflyover-request-help' => 'Узнать больше',
+	'articlefeedbackv5-noteflyover-request-help' => 'Подробнее',
 	'articlefeedbackv5-noteflyover-unrequest-caption' => 'Отменённый запрос скрытия',
 	'articlefeedbackv5-noteflyover-unrequest-label' => 'Добавить примечание',
 	'articlefeedbackv5-noteflyover-unrequest-placeholder' => 'Почему вы отменили запрос скрытия?',
