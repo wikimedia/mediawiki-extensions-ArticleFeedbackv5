@@ -7170,10 +7170,11 @@ $messages['diq'] = array(
 	'articlefeedbackv5-loading-tag' => 'Bar beno...',
 	'articlefeedbackv5-new-marker' => 'Newe',
 	'articlefeedbackv5-oversight-marker' => 'Çımpawiyayo',
-	'articlefeedbackv5-hide-marker' => 'Nimnaye', # Fuzzy
-	'articlefeedbackv5-feature-marker' => 'Weçinaye', # Fuzzy
+	'articlefeedbackv5-hide-marker' => 'Nımıte',
+	'articlefeedbackv5-feature-marker' => 'Faydeyın',
 	'articlefeedbackv5-resolve-marker' => 'Agoziya',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1 desmal|$1 desmali}}',
+	'articlefeedbackv5-form-feature' => 'Faydeyın',
 	'articlefeedbackv5-form-unfeature' => 'Peyser biya',
 	'articlefeedbackv5-form-unresolve' => 'Peyser biya',
 	'articlefeedbackv5-form-unnoaction' => 'Peyser biya',
@@ -8434,6 +8435,7 @@ $4', # Fuzzy
  * @author Platonides
  * @author Ralgis
  * @author Sanbec
+ * @author Sporeunai
  * @author Stephensuleeman
  * @author Toliño
  * @author Translationista
@@ -8957,6 +8959,7 @@ Apreciamos sus contribuciones a esta página!',
 	'logentry-articlefeedbackv5-undo-helpful' => '$1 {{GENDER:$2|ha desmarcado como útil}} [[$3|el comentario de opinión #$4]] sobre [[$5]]',
 	'logentry-articlefeedbackv5-undo-unhelpful' => '$1 {{GENDER:$2|ha desmarcado como inútil}} [[$3|el comentario de opinión #$4]] sobre [[$5]]',
 	'logentry-articlefeedbackv5-clear-flags' => '$1 {{GENDER:$2|ha eliminado todas las etiquetas del}} [[$3|comentario de opinión #$4]] sobre [[$5]]',
+	'logentry-articlefeedbackv5-protect' => '$1 {{GENDER:$2|visibilidad cambiante}} de la herramienta de retroalimentación de artículo en " $3 "$4',
 	'articlefeedbackv5-activity-pane-header' => 'Registro de actividad',
 	'articlefeedbackv5-activity-feedback-info' => 'Comentario por $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Publicado el $1',
@@ -18639,6 +18642,7 @@ $messages['lb'] = array(
 	'articlefeedbackv5-noteflyover-feature-help' => 'Fir méi ze wëssen',
 	'articlefeedbackv5-noteflyover-unfeature-caption' => 'Markéierung als nëtzlech ewechhuelen',
 	'articlefeedbackv5-noteflyover-unfeature-label' => 'Eng Notiz derbäisetzen',
+	'articlefeedbackv5-noteflyover-unfeature-placeholder' => "Firwat hutt Dir d'Markéierung als nëtzlech vun dëser Matdeelung ewechgeholl?",
 	'articlefeedbackv5-noteflyover-unfeature-submit' => 'Notiz derbäisetzen',
 	'articlefeedbackv5-noteflyover-unfeature-help' => 'Fir méi ze wëssen',
 	'articlefeedbackv5-noteflyover-resolve-caption' => 'Als geléist markéiert',
@@ -25290,7 +25294,7 @@ Agradecemos sua contribuição nesta página!
 	'articlefeedbackv5-noteflyover-uninappropriate-help' => 'Saiba mais',
 	'articlefeedbackv5-noteflyover-archive-caption' => 'Arquivado',
 	'articlefeedbackv5-noteflyover-archive-label' => 'Adicionar uma nota',
-	'articlefeedbackv5-noteflyover-archive-placeholder' => 'Por que arquivou esta mensagem?',
+	'articlefeedbackv5-noteflyover-archive-placeholder' => 'Porque arquivou esta mensagem?',
 	'articlefeedbackv5-noteflyover-archive-submit' => 'Adicionar nota',
 	'articlefeedbackv5-noteflyover-archive-help' => 'Saiba mais',
 	'articlefeedbackv5-noteflyover-unarchive-caption' => 'Desarquivado',
@@ -27718,12 +27722,12 @@ $messages['sco'] = array(
 	'articlefeedbackv5-cta2-confirmation-call' => 'This wabsite is makit bi fawk like ye. Can ye gie us ae haun?',
 	'articlefeedbackv5-cta2-button-text' => 'Learn mair',
 	'articlefeedbackv5-cta3-confirmation-title' => 'Please tak ae quick survey',
-	'articlefeedbackv5-cta3-confirmation-call' => 'It taks yinlie ae minute an will heelp impruive {{SITENAME}}.',
+	'articlefeedbackv5-cta3-confirmation-call' => 'It taks yinlie ae minute n will heelp impruive {{SITENAME}}.',
 	'articlefeedbackv5-cta3-button-text' => 'Stairt the survey',
 	'articlefeedbackv5-cta4-confirmation-title' => 'Jyn oor communitie',
 	'articlefeedbackv5-cta4-confirmation-call-line1' => 'Sign up or log in, sae eiditers can respond til yer feedback.',
 	'articlefeedbackv5-cta4-confirmation-call-line2' => 'Yer free accoont maks it easier tae shair whit ye knaw oan {{SITENAME}}.',
-	'articlefeedbackv5-cta4-button-text-signup' => 'Mak an accoont',
+	'articlefeedbackv5-cta4-button-text-signup' => 'Cræft aen accoont',
 	'articlefeedbackv5-cta4-button-text-login' => 'Log in',
 	'articlefeedbackv5-cta4-button-text-later' => 'Meybe later',
 	'articlefeedbackv5-cta4-button-text-or' => 'or',
@@ -27754,7 +27758,7 @@ $messages['sco'] = array(
 	'articlefeedbackv5-protection-title' => 'Chynged veesibeelitie o the airticle feedback tuil oan "[[$1]]"',
 	'restriction-articlefeedbackv5' => 'Veesibeelitie',
 	'articlefeedbackv5-disabled' => 'Feedback haes been disabled',
-	'articlefeedbackv5-disabled-admin-admin' => 'Feedback haes been disabled fer readers an eiditors. They canna post new feedback oan this page.',
+	'articlefeedbackv5-disabled-admin-admin' => 'Feedback haes been disabled fer readers n eediters. Thay canna post new feedback oan this page.',
 	'articlefeedbackv5-disabled-admin-editor' => 'Feedback haes been disabled fer readers. They canna post new feedback oan this page.',
 	'articlefeedbackv5-disabled-editor-admin' => 'Feedback haes been disabled bi aen admeenistrater. Readers an eiditors canna post new feedback oan this page.',
 	'articlefeedbackv5-disabled-editor-editor' => 'Feedback haes been disabled. Readers canna post new feedback oan this page.',
