@@ -23616,7 +23616,7 @@ $messages['oc'] = array(
 	'articlefeedbackv5-activity-feedback-info' => 'Comentari per $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Postat lo $1',
 	'articlefeedbackv5-activity-permalink' => 'Ligam permanent',
-	'articlefeedbackv5-activity-item-hide' => '$1 a amagat lo bilhet lo $4 a $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-hide' => '$1 {{GENDER:$6|a amagat}} lo comentari lo $4 a $5 $2',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
