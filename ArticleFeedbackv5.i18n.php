@@ -5340,6 +5340,13 @@ $messages['bs'] = array(
 	'articlefeedbackv5-disable-preference' => 'Ne prikazuj dodatak Povratne informacije o članku na stranicama',
 );
 
+/** буряад (буряад)
+ * @author Elvonudinium
+ */
+$messages['bxr'] = array(
+	'articlefeedbackv5-disabled-admin-button-text' => 'Хамгаалгые хубилгаха',
+);
+
 /** Catalan (català)
  * @author Aleator
  * @author Alvaro Vidal-Abarca
