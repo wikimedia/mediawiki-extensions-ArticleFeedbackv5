@@ -8981,7 +8981,7 @@ Apreciamos sus contribuciones a esta página!',
 	'articlefeedbackv5-activity-item-unflag' => '$1 {{GENDER:$6|desmarcó}} esta publicación el $4 a las $5 $2',
 	'articlefeedbackv5-activity-item-autoflag' => '$1 {{GENDER:$6|marcó atomáticamente}} esta publicación el $4 a las $5 $2',
 	'articlefeedbackv5-activity-item-oversight' => '$1 {{GENDER:$6|suprimió}} esta publicación el $4 a las $5 $2',
-	'articlefeedbackv5-activity-item-unoversight' => '$1 {{GENDER:$6|suprimió}} esta publicación el $4 a las $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 {{GENDER:$6|eliminó}} la supresión en esta publicación el $4 a las $5$3 $2 $2', # Fuzzy
 	'articlefeedbackv5-activity-item-feature' => '$1 {{GENDER:$6|marcó}} esta publicación como útil el $4 a las $5 $2',
 	'articlefeedbackv5-activity-item-unfeature' => '$1 {{GENDER:$6|quitó la marca}} de útil a esta publicación el $4 a las $5 $2',
 	'articlefeedbackv5-activity-item-resolve' => '$1 {{GENDER:$6|marcó}} esta publicación como resuelta el $4 a las $5 $2',
