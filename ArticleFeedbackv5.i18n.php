@@ -31406,6 +31406,7 @@ $messages['tpi'] = array(
  * @author Joseph
  * @author Karduelis
  * @author Reedy
+ * @author SiLveRLeaD
  * @author Stultiwikia
  * @author Suelnur
  */
@@ -31534,9 +31535,11 @@ $messages['tr'] = array(
 	'articlefeedbackv5-new-marker' => 'Yeni',
 	'articlefeedbackv5-oversight-marker' => 'Gözetlendi',
 	'articlefeedbackv5-autohide-marker' => 'Gizlendi',
+	'articlefeedbackv5-hide-marker' => 'Gizli',
 	'articlefeedbackv5-feature-marker' => 'Kullanışlı',
 	'articlefeedbackv5-resolve-marker' => 'Çözüldü',
 	'articlefeedbackv5-noaction-marker' => 'İşlem gerektirmeyen',
+	'articlefeedbackv5-inappropriate-marker' => 'Uygunsuz',
 	'articlefeedbackv5-form-abuse-count' => '{{PLURAL:$1|$1|$1}} işaretleme',
 	'articlefeedbackv5-form-note-added' => 'Not eklendi',
 	'articlefeedbackv5-form-note' => 'Not ekle',
@@ -31609,6 +31612,7 @@ Bu sayfaya katkılarınızdan dolayı teşekkür ederiz!
 	'articlefeedbackv5-comment-empty' => 'Metin girilmemiş',
 	'articlefeedbackv5-no-feedback' => 'Seçtiğiniz süzgeçte geri bildirim bulunmamaktadır. Süzgeç değiştirmek için, yukarıdaki seçeneklerden birini deneyin (örneğin: "Öne Çıkan" ya da "İncelenmemiş")',
 	'articlefeedbackv5-viewactivity' => 'Etkinliği görüntüle',
+	'articlefeedbackv5-mask-view-contents' => 'İçeriği görüntüle',
 	'articlefeedbackv5-special-goback' => 'Geri bildirim sayfasını göster',
 	'articlefeedbackv5-special-central-goback' => 'Diğer sayfalardaki geri bildirimlere bakın',
 	'articlefeedbackv5-permalink-info-title' => 'Bu gönderi hakkındaki bilgiler',
@@ -31696,6 +31700,7 @@ Bu sayfaya katkılarınızdan dolayı teşekkür ederiz!
 	'articlefeedbackv5-noteflyover-inappropriate-label' => 'Bir not ekle',
 	'articlefeedbackv5-noteflyover-inappropriate-submit' => 'Not ekle',
 	'articlefeedbackv5-noteflyover-inappropriate-help' => 'Daha fazla bilgi',
+	'articlefeedbackv5-noteflyover-uninappropriate-caption' => 'Uygunsuz olarak işaretlenmemiş',
 	'articlefeedbackv5-noteflyover-uninappropriate-label' => 'Bir not ekle',
 	'articlefeedbackv5-noteflyover-uninappropriate-submit' => 'Not ekle',
 	'articlefeedbackv5-noteflyover-uninappropriate-help' => 'Daha fazla bilgi',
@@ -31732,6 +31737,7 @@ Bu sayfaya katkılarınızdan dolayı teşekkür ederiz!
 	'articlefeedbackv5-bucket4-teaser-line2' => 'Hadi, bir deneyin. Cesur olun!',
 	'articlefeedbackv5-bucket4-learn-to-edit' => 'Nasıl düzenleyeceğinizi öğrenin',
 	'articlefeedbackv5-bucket4-form-submit' => 'Bu sayfayı düzenle',
+	'articlefeedbackv5-bucket4-noedit-teaser-line2' => 'Bize yardım eder misin?',
 	'articlefeedbackv5-bucket6-title' => 'Bu sayfayı geliştirmeye yardımcı olun',
 	'articlefeedbackv5-bucket6-question-toggle' => 'Aradığınızı bulabildiniz mi?',
 	'articlefeedbackv5-bucket6-toggle-found-yes' => 'Evet',
