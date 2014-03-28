@@ -25034,6 +25034,7 @@ $messages['ps'] = array(
 
 /** Portuguese (português)
  * @author Alchimista
+ * @author Cainamarques
  * @author Fúlvio
  * @author Giro720
  * @author Hamilton Abreu
@@ -25593,10 +25594,10 @@ Agradecemos sua contribuição nesta página!
 	'articlefeedbackv5-activity-item-autohide' => '$1 {{GENDER:$6|escondeu}} este comentário em $4 às $5 $2',
 	'articlefeedbackv5-activity-item-archive' => '$1 {{GENDER:$6|arquivou}} este comentário em $4 às $5 $2',
 	'articlefeedbackv5-activity-item-unarchive' => '$1 {{GENDER:$6|desarquivou}} este comentário em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-helpful' => '$1 {{GENDER:$6|marcou}} este comentário como sendo útil em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 {{GENDER:$6|marcou}} este comentário como sendo inútil em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 {{GENDER:$6|desmarcou}} este comentário como sendo útil em $4 às $5 $2',
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 {{GENDER:$6|desmarcou}} este comentário como sendo inútil em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 {{GENDER:$6|marcou}} este comentário como sendo prestativo em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 {{GENDER:$6|marcou}} este comentário como sendo não prestativo em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 {{GENDER:$6|desmarcou}} este comentário como prestativo em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 {{GENDER:$6|desmarcou}} este comentário como não prestativo em $4 às $5 $2',
 	'articlefeedbackv5-activity-item-clear-flags' => '$1 {{GENDER:$6|apagou}} todas as sinalizações para este comentário em $4 às $5 $2',
 	'articlefeedbackv5-activity-note-archive' => 'Arquivado após {{PLURAL:$1|$1 dia|$1 dias}} sem actividade',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 acção|$1 acções}} nesta publicação',
@@ -26178,32 +26179,32 @@ Agradecemos sua contribuição nesta página!
 	'articlefeedbackv5-activity-feedback-info' => 'Avaliado por $2',
 	'articlefeedbackv5-activity-feedback-date' => 'Postado em $1',
 	'articlefeedbackv5-activity-permalink' => 'Link permanente',
-	'articlefeedbackv5-activity-item-request' => '$1 solicitação de supervisão em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unrequest' => '$1 solicitação de supervisão cancelada em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-decline' => '$1 supervisão recusada em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-flag' => '$1 marcou esta nota em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unflag' => '$1 desmarcou esta nota em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-autoflag' => '$1 marcou esta nota em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-oversight' => '$1 supervisionou esta nota em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unoversight' => '$1 removeu a supervisão desta nota em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-feature' => '$1 marcou esta nota como útil em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unfeature' => '$1 desmarcou esta nota como útil em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-resolve' => '$1 marcou esta nota como resolvida em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unresolve' => '$1 desmarcou esta nota como resolvida em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-noaction' => '$1 marcou esta nota como não-executável em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unnoaction' => '$1 desmarcou esta nota como não-executável em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-inappropriate' => '$1 marcou esta nota como inapropriada em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-uninappropriate' => '$1 desmarcou esta nota como inapropriada em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-hide' => '$1 ocultou esta nota em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unhide' => '$1 mostrou esta nota em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-autohide' => '$1 ocultou esta nota em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-archive' => '$1 arquivou esta nota em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unarchive' => '$1 desarquivou esta nota em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-helpful' => '$1 marcou esta nota como útil em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-unhelpful' => '$1 marcou esta nota como inútil em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-undo-helpful' => '$1 desmarcou esta nota como útil em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 desmarcou esta nota como inútil em $4 às $5 $2', # Fuzzy
-	'articlefeedbackv5-activity-item-clear-flags' => '$1 limpou todas as revisões desta nota em $4 às $5 $2', # Fuzzy
+	'articlefeedbackv5-activity-item-request' => '$1 {{GENDER:$6|solicitou}} uma supervisão em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unrequest' => '$1 {{GENDER:$6|cancelou a solicitação}} de supervisão em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-decline' => '$1 {{GENDER:$6|recusou}} a supervisão em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-flag' => '$1 {{GENDER:$6|marcou}} este comentário em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unflag' => '$1 {{GENDER:$6|desmarcou}} este comentário em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-autoflag' => '$1 {{GENDER:$6|marcou automaticamente}} este comentário em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-oversight' => '$1 {{GENDER:$6|supervisionou}} este comentário em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unoversight' => '$1 {{GENDER:$6|removeu}} a supervisão deste comentário em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-feature' => '$1 {{GENDER:$6|marcou}} este comentário como útil em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unfeature' => '$1 {{GENDER:$6|desmarcou}} este comentário como útil em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-resolve' => '$1 {{GENDER:$6|marcou}} este comentário como resolvido em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unresolve' => '$1 {{GENDER:$6|desmarcou}} este comentário como resolvido em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-noaction' => '$1 {{GENDER:$6|marcou}} este comentário como não-executável em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unnoaction' => '$1 {{GENDER:$6|desmarcou}} este comentário como não-executável em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-inappropriate' => '$1 {{GENDER:$6|marcou}} este comentário como inapropriado em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-uninappropriate' => '$1 {{GENDER:$6|desmarcou}} este comentário como inapropriado em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-hide' => '$1 {{GENDER:$6|ocultou}} este comentário em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unhide' => '$1 {{GENDER:$6|desocultou}} este comentário em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-autohide' => '$1 {{GENDER:$6|ocultou}} este comentário em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-archive' => '$1 {{GENDER:$6|arquivou}} este comentário em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unarchive' => '$1 {{GENDER:$6|desarquivou}} este comentário em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-helpful' => '$1 {{GENDER:$6|marcou}} este comentário como prestativo em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-unhelpful' => '$1 {{GENDER:$6|marcou}} este comentário como não prestativo em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-undo-helpful' => '$1 {{GENDER:$6|desmarcou}} este comentário como prestativo em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-undo-unhelpful' => '$1 {{GENDER:$6|desmarcou}} este comentário como não prestativo em $4 às $5 $2',
+	'articlefeedbackv5-activity-item-clear-flags' => '$1 {{GENDER:$6|limpou}} todas as sinalizações deste comentário em $4 às $5 $2',
 	'articlefeedbackv5-activity-note-archive' => 'Arquivada após {{PLURAL:$1|$1 dia|$1 dias}} de inatividade do editor',
 	'articlefeedbackv5-activity-count' => '{{PLURAL:$1|$1 ação nesta nota|$1 ações nesta nota}}',
 	'articlefeedbackv5-activity-more' => 'Mostrar mais Atividades',
@@ -33428,7 +33429,7 @@ $messages['zh-hans'] = array(
 	'articlefeedbackv5-cta1-learn-how' => '学习如何编辑',
 	'articlefeedbackv5-cta1-edit-linktext' => '编辑本页',
 	'articlefeedbackv5-cta2-confirmation-title' => '帮助改进{{SITENAME}}',
-	'articlefeedbackv5-cta2-confirmation-call' => '这个网站由像您一样的人创建。您愿意帮一把吗？',
+	'articlefeedbackv5-cta2-confirmation-call' => '本网站是由同你一样的人们构筑的。你愿意帮把手吗？',
 	'articlefeedbackv5-cta2-button-text' => '了解更多',
 	'articlefeedbackv5-cta3-confirmation-title' => '请参与快速调查',
 	'articlefeedbackv5-cta3-confirmation-call' => '参与调查只需一分钟，这将有助于改善{{SITENAME}}。',
@@ -33874,7 +33875,7 @@ $6
 	'articlefeedbackv5-bucket4-form-submit' => '编辑此页',
 	'articlefeedbackv5-bucket4-help-tooltip-info' => '{{SITENAME}}想知道您的意见。成为编辑者来帮忙改善这个页面。',
 	'articlefeedbackv5-bucket4-noedit-title' => '帮忙改善{{SITENAME}}',
-	'articlefeedbackv5-bucket4-noedit-teaser-line1' => '本网站是由像您一样的人间创建的。',
+	'articlefeedbackv5-bucket4-noedit-teaser-line1' => '本网站是由同你一样的人们构筑的。',
 	'articlefeedbackv5-bucket4-noedit-teaser-line2' => '您可以帮助我们吗？',
 	'articlefeedbackv5-bucket4-noedit-form-submit' => '了解更多',
 	'articlefeedbackv5-bucket6-title' => '帮助改进该页面',
