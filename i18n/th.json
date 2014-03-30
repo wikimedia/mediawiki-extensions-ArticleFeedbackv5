@@ -1,0 +1,35 @@
+{
+    "@metadata": {
+        "authors": [
+            "Nullzero"
+        ]
+    },
+    "articlefeedbackv5-cta1-edit-linktext": "แก้ไขหน้านี้",
+    "articlefeedbackv5-cta2-button-text": "เรียนรู้เพิ่มเติม",
+    "articlefeedbackv5-cta4-button-text-or": "หรือ",
+    "articlefeedbackv5-overlay-close": "ปิด",
+    "articlefeedbackv5-form-helpful-yes-label": "ใช่",
+    "articlefeedbackv5-form-helpful-no-label": "ไม่",
+    "articlefeedbackv5-noteflyover-unfeature-help": "เรียนรู้เพิ่มเติม",
+    "articlefeedbackv5-noteflyover-unresolve-help": "เรียนรู้เพิ่มเติม",
+    "articlefeedbackv5-noteflyover-request-help": "เรียนรู้เพิ่มเติม",
+    "articlefeedbackv5-noteflyover-unrequest-submit": "ยกเลิกการร้องขอ",
+    "articlefeedbackv5-noteflyover-unrequest-help": "เรียนรู้เพิ่มเติม",
+    "articlefeedbackv5-noteflyover-oversight-help": "เรียนรู้เพิ่มเติม",
+    "articlefeedbackv5-noteflyover-unoversight-help": "เรียนรู้เพิ่มเติม",
+    "articlefeedbackv5-noteflyover-decline-help": "เรียนรู้เพิ่มเติม",
+    "articlefeedbackv5-bucket1-toggle-found-yes": "ใช่",
+    "articlefeedbackv5-bucket1-toggle-found-no": "ไม่",
+    "articlefeedbackv5-bucket4-learn-to-edit": "เรียนรู้วิธีการแก้ไข",
+    "articlefeedbackv5-bucket4-form-submit": "แก้ไขหน้านี้",
+    "articlefeedbackv5-bucket4-noedit-form-submit": "เรียนรู้เพิ่มเติม",
+    "articlefeedbackv5-bucket6-toggle-found-yes": "ใช่",
+    "articlefeedbackv5-bucket6-toggle-found-no": "ไม่",
+    "articlefeedbackv5-bucket6-backlink-text": "กลับไปยังขั้นตอนแรก",
+    "articlefeedbackv5-help-tooltip-title": "นี้คืออะไร?",
+    "articlefeedbackv5-help-tooltip-linktext": "เรียนรู้เพิ่มเติม",
+    "articlefeedbackv5-sitesub-linktext": "ปรับปรุงหน้านี้",
+    "articlefeedbackv5-titlebar-linktext": "ช่วยปรับปรุงหน้านี้ >>",
+    "articlefeedbackv5-fixedtab-linktext": "ปรับปรุงหน้านี้",
+    "articlefeedbackv5-bottomrighttab-linktext": "ปรับปรุงหน้านี้"
+}

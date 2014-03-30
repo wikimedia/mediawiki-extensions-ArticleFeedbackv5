@@ -392,7 +392,7 @@ $wgExtensionCredits['other'][] = array(
 		'Michael Jackson',
 		'Matthias Mullie',
 	),
-	'version' => '5.1.0',
+	'version' => '5.2.0',
 	'descriptionmsg' => 'articlefeedbackv5-desc',
 	'url' => '//www.mediawiki.org/wiki/Extension:ArticleFeedbackv5'
 );
@@ -424,6 +424,7 @@ $wgAutoloadClasses['SpecialArticleFeedbackv5Watchlist'] = __DIR__ . '/SpecialArt
 $wgAutoloadClasses['ArticleFeedbackv5Model']            = __DIR__ . '/ArticleFeedbackv5.model.php';
 $wgAutoloadClasses['ArticleFeedbackv5BackendLBFactory'] = __DIR__ . '/ArticleFeedbackv5.backend.LBFactory.php';
 $wgAutoloadClasses['ArticleFeedbackv5Activity']         = __DIR__ . '/ArticleFeedbackv5.activity.php';
+$wgMessagesDirs['ArticleFeedbackv5']                    = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['ArticleFeedbackv5']          = __DIR__ . '/ArticleFeedbackv5.i18n.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5Alias']     = __DIR__ . '/ArticleFeedbackv5.alias.php';
 

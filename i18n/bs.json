@@ -1,0 +1,14 @@
+{
+    "@metadata": {
+        "authors": [
+            "CERminator"
+        ]
+    },
+    "articlefeedbackv5-error": "Desila se greška. Molimo pokušajte kasnije.",
+    "articlefeedbackv5": "Tabla za ocjenjivanje članaka",
+    "articlefeedbackv5-desc": "Ocjenjivanje članaka (probna verzija)",
+    "articlefeedbackv5-no-feedback": "Nema povratnih informacija za odabrani filter. Da biste promijenili filter, pokušajte neku od gornjih opcija (npr. \"Odabrani\" ili \"Neprovjereno\")",
+    "articlefeedbackv5-bucket6-question-placeholder-yes": "Napišite vaš prijedog ovdje (npr. \"Na ovoj stranici treba slika\")",
+    "articlefeedbackv5-bucket6-question-placeholder-no": "Napišite svoje prijedloge ovdje (npr. \"Na ovoj stranici je potrebna slika\")",
+    "articlefeedbackv5-disable-preference": "Ne prikazuj dodatak Povratne informacije o članku na stranicama"
+}
