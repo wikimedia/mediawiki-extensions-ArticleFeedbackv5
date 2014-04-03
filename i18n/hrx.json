@@ -1,0 +1,17 @@
+{
+    "@metadata": {
+        "authors": [
+            "Paul Beppler"
+        ]
+    },
+    "articlefeedbackv5-cta-thanks": "Dankschön!",
+    "articlefeedbackv5-cta1-learn-how": "Informatione üwer wie mer das beoorbeite tut",
+    "articlefeedbackv5-cta1-edit-linktext": "Die Seit beoorbeite",
+    "articlefeedbackv5-cta2-button-text": "Weitre Informatione",
+    "articlefeedbackv5-cta4-button-text-login": "Oonmelde",
+    "articlefeedbackv5-cta4-button-text-later": "Vielleicht später",
+    "articlefeedbackv5-cta4-button-text-or": "orrer",
+    "articlefeedbackv5-overlay-close": "Schliesse",
+    "articlefeedbackv5-error-validation": "Fehler beim Validiere.",
+    "restriction-articlefeedbackv5": "Sichtbarkeit"
+}
