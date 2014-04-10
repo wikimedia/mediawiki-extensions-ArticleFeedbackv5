@@ -284,7 +284,7 @@
     "articlefeedbackv5-page-disabled": "La página de comentarios del artículo no ha sido habilitada para este artículo.",
     "articlefeedbackv5-no-feedback": "No hay ningún comentario para el filtro seleccionado. Para cambiar el filtro, prueba con una de las opciones anteriores (ej: \"Destacados\" o \"No revisados\").",
     "articlefeedbackv5-invalid-feedback": "La página solicitada no existe.",
-    "articlefeedbackv5-viewactivity": "Ver la actividad",
+    "articlefeedbackv5-viewactivity": "Ver actividad",
     "articlefeedbackv5-mask-view-contents": "Ver el contenido",
     "articlefeedbackv5-mask-text-inappropriate": "Este post #$1 {{GENDER:$2|fue marcado como inapropiado por $2}} $3.",
     "articlefeedbackv5-mask-text-autohide": "Esta entrada #$1 {{GENDER:$2|fue ocultada automáticamente por $2}} $3.",
