@@ -27,6 +27,7 @@
     "restriction-articlefeedbackv5": "Sichtbarkeit",
     "articlefeedbackv5-disabled": "Feedbackfunktion (Rückmeldung) woard deaktiviert",
     "articlefeedbackv5-disabled-admin-button-text": "Seiteschutz ännre",
+    "articlefeedbackv5-disabled-editor-button-text": "Feedbackabgäb aktiviere",
     "articlefeedbackv5-contribs-entry-status": ". . Status: $1",
     "articlefeedbackv5-contribs-status-action-helpful": "Hellefreich",
     "articlefeedbackv5-contribs-status-action-flag": "Wie en Missbrauch gemeldt",
