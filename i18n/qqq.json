@@ -27,7 +27,8 @@
             "Siebrand",
             "Toliño",
             "Umherirrender",
-            "Yekrats"
+            "Yekrats",
+            "Robby"
         ]
     },
     "articlefeedbackv5-cta-thanks": "The bolded part of the message that appears at the top of every CTA (call to action).\n{{Identical|Thank}}",
@@ -96,7 +97,7 @@
     "articlefeedbackv5-contribs-status-action-feature": "Status when feedback has been marked as useful.\n{{Identical|Useful}}",
     "articlefeedbackv5-contribs-status-action-resolve": "Status when feedback has been resolved.\n{{Identical|Resolved}}",
     "articlefeedbackv5-contribs-status-action-noaction": "Status when feedback has been marked as non-actionable",
-    "articlefeedbackv5-contribs-status-action-inappropriate": "Status when feedback has been marked as inappropriate",
+    "articlefeedbackv5-contribs-status-action-inappropriate": "Status when feedback has been marked as inappropriate\n{{Identical|Inappropriate}}",
     "articlefeedbackv5-contribs-status-action-archive": "Status when feedback has been archived.\n{{Identical|Archive}}",
     "articlefeedbackv5-contribs-status-action-hide": "Status when feedback has been hidden.\n{{Identical|Hide}}",
     "articlefeedbackv5-contribs-status-action-request": "Status when oversight has been requested on feedback",
