@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "Chorobek",
-            "Growingup"
-        ]
-    },
-    "articlefeedbackv5-cta4-button-text-login": "Кирүү",
-    "articlefeedbackv5-loading-tag": "Жүктөө...",
-    "articlefeedbackv5-new-marker": "Жаңы"
+	"@metadata": {
+		"authors": [
+			"Chorobek",
+			"Growingup"
+		]
+	},
+	"articlefeedbackv5-cta4-button-text-login": "Кирүү",
+	"articlefeedbackv5-loading-tag": "Жүктөө...",
+	"articlefeedbackv5-new-marker": "Жаңы"
 }

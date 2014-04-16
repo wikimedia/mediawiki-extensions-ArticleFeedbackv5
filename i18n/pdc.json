@@ -1,8 +1,8 @@
 {
-    "@metadata": {
-        "authors": [
-            "Xqt"
-        ]
-    },
-    "articlefeedbackv5-special-filter-oversighted": "Verwischt ($1)"
+	"@metadata": {
+		"authors": [
+			"Xqt"
+		]
+	},
+	"articlefeedbackv5-special-filter-oversighted": "!!FUZZY!!Verwischt ($1)"
 }

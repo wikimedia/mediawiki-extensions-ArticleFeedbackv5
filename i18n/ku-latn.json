@@ -1,16 +1,16 @@
 {
-    "@metadata": {
-        "authors": [
-            "George Animal"
-        ]
-    },
-    "articlefeedbackv5-cta-thanks": "Spas!",
-    "articlefeedbackv5-cta1-edit-linktext": "Vê rûpelê biguherîne",
-    "articlefeedbackv5-form-helpful-yes-label": "Erê",
-    "articlefeedbackv5-form-helpful-no-label": "Na",
-    "articlefeedbackv5-whats-this": "Alîkarî",
-    "articlefeedbackv5-permalink-info-revision-link": "Guhertoya kevn a vê rûpelê bibîne",
-    "articlefeedbackv5-bucket1-toggle-found-no": "Na",
-    "articlefeedbackv5-bucket6-toggle-found-yes": "Erê",
-    "articlefeedbackv5-bucket6-toggle-found-no": "Na"
+	"@metadata": {
+		"authors": [
+			"George Animal"
+		]
+	},
+	"articlefeedbackv5-cta-thanks": "Spas!",
+	"articlefeedbackv5-cta1-edit-linktext": "Vê rûpelê biguherîne",
+	"articlefeedbackv5-form-helpful-yes-label": "Erê",
+	"articlefeedbackv5-form-helpful-no-label": "Na",
+	"articlefeedbackv5-whats-this": "Alîkarî",
+	"articlefeedbackv5-permalink-info-revision-link": "Guhertoya kevn a vê rûpelê bibîne",
+	"articlefeedbackv5-bucket1-toggle-found-no": "Na",
+	"articlefeedbackv5-bucket6-toggle-found-yes": "Erê",
+	"articlefeedbackv5-bucket6-toggle-found-no": "Na"
 }
