@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"AnakngAraw",
-			"Sky Harbor"
+			"Sky Harbor",
+			"Jojit fb"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Salamat!",
@@ -20,8 +21,8 @@
 	"articlefeedbackv5-cta3-button-text": "Simulan ang pagsagut-sagot",
 	"articlefeedbackv5-cta4-confirmation-title": "Sumali sa pamayanan namin",
 	"articlefeedbackv5-cta4-confirmation-call-line1": "Magpatala o lumagda, upang makatugon ang mga patnugot sa tugon mo.",
-	"articlefeedbackv5-cta4-confirmation-call-line2": "Ang iyong malayang akawnt ay nakakapagpaginhawa sa pagpapamahagi ng nalalaman mo sa {{SITENAME}}.",
-	"articlefeedbackv5-cta4-button-text-signup": "Lumikha ng isang akawnt",
+	"articlefeedbackv5-cta4-confirmation-call-line2": "Ang iyong malayang account ay nakakapagpaginhawa sa pagpapamahagi ng nalalaman mo sa {{SITENAME}}.",
+	"articlefeedbackv5-cta4-button-text-signup": "Lumikha ng isang account",
 	"articlefeedbackv5-cta4-button-text-login": "Lumagda",
 	"articlefeedbackv5-cta4-button-text-later": "Maaaring mamaya",
 	"articlefeedbackv5-cta4-button-text-or": "o",
