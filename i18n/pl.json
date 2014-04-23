@@ -13,7 +13,8 @@
 			"Sp5uhe",
 			"Ty221",
 			"WTM",
-			"Woytecr"
+			"Woytecr",
+			"Alan ffm"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Dziękujemy!",
@@ -321,6 +322,7 @@
 	"articlefeedbackv5-noteflyover-request-caption": "Prośba o usunięcie",
 	"articlefeedbackv5-noteflyover-request-label": "Dodaj notatkę, aby wyjaśnić, czemu prosisz o usunięcie",
 	"articlefeedbackv5-noteflyover-request-placeholder": "Dlaczego prosiłeś o usunięcie?",
+	"articlefeedbackv5-noteflyover-request-submit": "Wniosek o ukrycie edycji",
 	"articlefeedbackv5-noteflyover-request-help": "Dowiedz się więcej",
 	"articlefeedbackv5-noteflyover-unrequest-caption": "Anulowana prośba o ukrycie",
 	"articlefeedbackv5-noteflyover-unrequest-label": "Dodaj notatkę",
@@ -329,7 +331,7 @@
 	"articlefeedbackv5-noteflyover-unrequest-help": "Dowiedz się więcej",
 	"articlefeedbackv5-noteflyover-oversight-caption": "Usuń ten wpis",
 	"articlefeedbackv5-noteflyover-oversight-label": "Dodaj notatkę",
-	"articlefeedbackv5-noteflyover-oversight-placeholder": "Dlaczego usuwasz ten wpis?",
+	"articlefeedbackv5-noteflyover-oversight-placeholder": "Dlaczego ukryłeś ten wpis?",
 	"articlefeedbackv5-noteflyover-oversight-submit": "Usuń ten wpis",
 	"articlefeedbackv5-noteflyover-oversight-help": "Dowiedz się więcej",
 	"articlefeedbackv5-noteflyover-unoversight-caption": "Anuluj usunięcie tego wpisu",
