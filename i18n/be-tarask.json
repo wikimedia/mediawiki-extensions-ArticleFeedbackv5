@@ -32,7 +32,7 @@
 	"articlefeedbackv5-error": "Узьнікла памылка. Калі ласка, паспрабуйце потым",
 	"articlefeedbackv5-error-blocked": "Заблякаваныя ўдзельнікі ня могуць дасылаць водгукі.",
 	"articlefeedbackv5-error-validation": "Памылка праверкі.",
-	"articlefeedbackv5-error-abuse": "Ваш камэнтар парушае $1. Калі ласка, пераглядзіце яго.",
+	"articlefeedbackv5-error-abuse": "Вашае паведамленьне было адхіленае праграмным фільтрам, таму што яно можа парушаць [$1 правілы водгукаў] {{GRAMMAR:родны|{{SITENAME}}}}. Калі ласка, скарэктуйце сваё паведамленьне і паспрабуйце яшчэ раз. ({{PLURAL:$2|1=Фільтар|Фільтры}}: $3)",
 	"articlefeedbackv5-error-abuse-link": "#",
 	"articlefeedbackv5-error-unknown": "Невядомая памылка.",
 	"articlefeedbackv5-error-submit": "Памылка адпраўкі формы.",
