@@ -50,7 +50,7 @@
 	"articlefeedbackv5-updates-since": "$1 {{PLURAL:$1|рэдагаваньне|рэдагаваньні|рэдагаваньняў}} пасьля разьмяшчэньня",
 	"articlefeedbackv5-revision-link": "(глядзіце старую старонку)",
 	"articlefeedbackv5-special-more": "Паказаць болей паведамленьняў",
-	"articlefeedbackv5-special-pagetitle": "Водгук: $1",
+	"articlefeedbackv5-special-pagetitle": "Водгук на $1",
 	"articlefeedbackv5-form-inappropriate": "Схаваць гэтае паведамленьне",
 	"articlefeedbackv5-form-unhide": "Паказаць гэтае паведамленьне",
 	"articlefeedbackv5-form-helpful": "Пазначаныя як карысныя ($1)",
