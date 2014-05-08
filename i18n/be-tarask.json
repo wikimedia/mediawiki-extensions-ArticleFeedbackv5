@@ -55,7 +55,7 @@
 	"articlefeedbackv5-form-unhide": "Адмяніць",
 	"articlefeedbackv5-form-helpful": "Пазначаныя як карысныя ($1)",
 	"articlefeedbackv5-form-oversight": "Скрываньне",
-	"articlefeedbackv5-form-unoversight": "Зьняць пазнаку для назіраньня",
+	"articlefeedbackv5-form-unoversight": "Адмяніць",
 	"articlefeedbackv5-form-decline": "Адмяніць рэвізію",
 	"articlefeedbackv5-form1-header-found": "$2 {{GENDER:$1|знайшоў тое, што шукаў|знайшла тое, што шукала.}}",
 	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2 не знайшоў тое, што шукаў|$2 не знайшла тое, што шукала}}",
