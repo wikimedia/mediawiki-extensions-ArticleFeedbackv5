@@ -59,7 +59,7 @@
 	"articlefeedbackv5-form-decline": "Адмяніць рэвізію",
 	"articlefeedbackv5-form1-header-found": "$2 {{GENDER:$1|знайшоў тое, што шукаў|знайшла тое, што шукала.}}",
 	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2 не знайшоў тое, што шукаў|$2 не знайшла тое, што шукала}}",
-	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 даслаў гэты камэнтар|$2 даслала гэты камэнтар}}",
+	"articlefeedbackv5-form1-header-left-comment": "$2 {{GENDER:$1|даслаў|даслала}} камэнтар.",
 	"articlefeedbackv5-form2-header-praise": "{{GENDER:$1|пакінуў|пакінула}} пахвалу:",
 	"articlefeedbackv5-form2-header-problem": "{{GENDER:$1|$1 мае|$1 мае}} праблему:",
 	"articlefeedbackv5-form2-header-question": "$1 {{GENDER:$1|меў|мела}} пытаньне:",
