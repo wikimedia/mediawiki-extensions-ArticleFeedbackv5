@@ -107,7 +107,7 @@
 	"articlefeedbackv5-special-filter-inappropriate": "Недоречні ($1)",
 	"articlefeedbackv5-special-filter-archived": "Архівні ($1)",
 	"articlefeedbackv5-special-filter-allcomment": "Всі коментарі ($1)",
-	"articlefeedbackv5-special-filter-hidden": "Невидимий",
+	"articlefeedbackv5-special-filter-hidden": "Приховані ($1)",
 	"articlefeedbackv5-special-filter-requested": "Запитано нагляд ($1)",
 	"articlefeedbackv5-special-filter-declined": "Нагляд відхилено ($1)",
 	"articlefeedbackv5-special-filter-oversighted": "Під наглядом ($1)",
