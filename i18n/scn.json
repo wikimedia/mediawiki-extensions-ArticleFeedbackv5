@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aushulz"
+			"Aushulz",
+			"Gmelfi"
 		]
 	},
+	"articlefeedbackv5-cta4-button-text-login": "Trasi",
 	"articlefeedbackv5-special-filter-hidden": "'Nvisibbili",
 	"articlefeedbackv5-special-filter-all": "Tutti",
 	"articlefeedbackv5-special-more": "Cchiù assà'",
