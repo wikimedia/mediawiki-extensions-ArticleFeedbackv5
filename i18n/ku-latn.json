@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"George Animal"
+			"George Animal",
+			"Ghybu"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Spas!",
 	"articlefeedbackv5-cta1-edit-linktext": "Vê rûpelê biguherîne",
+	"articlefeedbackv5-cta4-button-text-login": "Têkeve",
 	"articlefeedbackv5-form-helpful-yes-label": "Erê",
 	"articlefeedbackv5-form-helpful-no-label": "Na",
 	"articlefeedbackv5-whats-this": "Alîkarî",
