@@ -55,7 +55,7 @@
 	"articlefeedbackv5-cta6-button-text": "访问茶馆",
 	"articlefeedbackv5-overlay-close": "关闭",
 	"articlefeedbackv5-error": "出现错误。请稍后再试。",
-	"articlefeedbackv5-error-blocked": "被阻止的用户不能提交反馈。",
+	"articlefeedbackv5-error-blocked": "被封禁用户不能提交反馈。",
 	"articlefeedbackv5-error-validation": "验证错误。",
 	"articlefeedbackv5-error-abuse": "您的评论被软件过滤器拒绝，它可能不符合{{SITENAME}}的[$1 反馈方针]。请修改您的评论再试。({{PLURAL:$2|过滤器}}: $3)",
 	"articlefeedbackv5-error-unknown": "未知错误。",
