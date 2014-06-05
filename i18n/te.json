@@ -3,7 +3,8 @@
 		"authors": [
 			"Chaduvari",
 			"Ravichandra",
-			"Veeven"
+			"Veeven",
+			"Kiranmayee"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "కృతజ్ఞతలు!",
@@ -165,7 +166,10 @@
 	"articlefeedbackv5-form-unarchive": "రద్దుచెయ్యి",
 	"articlefeedbackv5-form-helpful": "ఉపయోగకంగా ఉందని గుర్తు పెట్టు ($1)",
 	"articlefeedbackv5-form-flag": "దుశ్చర్యగా గుర్తు పెట్టు",
+	"articlefeedbackv5-form-oversight": "ఉపేక్ష",
 	"articlefeedbackv5-form-unoversight": "రద్దుచెయ్యి",
+	"articlefeedbackv5-form-decline": "ఉపేక్షను తిరస్కరించారు",
+	"articlefeedbackv5-form-declined": "విచారణ తిరస్కరించబడినది",
 	"articlefeedbackv5-form-discuss-user": "టపా రచయితను సంప్రదించండి",
 	"articlefeedbackv5-form-discuss-talk-exists": "చర్చాపేజీలోని చర్చను చూడండి",
 	"articlefeedbackv5-form-discuss-user-exists": "వాడుకరి చర్చ పేజీ సందేశాన్ని చూడండి",

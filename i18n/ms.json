@@ -3,7 +3,8 @@
 		"authors": [
 			"Anakmalaysia",
 			"Aviator",
-			"Tedbundyjr"
+			"Tedbundyjr",
+			"Pizza1016"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Terima kasih!",
@@ -193,9 +194,9 @@
 	"articlefeedbackv5-form-unrequest": "Batalkan permohonan pengetepian",
 	"articlefeedbackv5-form-decline": "Tolak pengetepian",
 	"articlefeedbackv5-form-declined": "Pengetepian ditolak",
-	"articlefeedbackv5-form-discuss-talk": "Bincangkan di halaman perbualan",
+	"articlefeedbackv5-form-discuss-talk": "Bincangkan di laman perbincangan",
 	"articlefeedbackv5-form-discuss-user": "Hubungi pengarang pos",
-	"articlefeedbackv5-form-discuss-talk-exists": "Baca perbincangan di halaman perbualan",
+	"articlefeedbackv5-form-discuss-talk-exists": "Baca perbincangan di laman perbincangan",
 	"articlefeedbackv5-form-discuss-user-exists": "Baca pesanan di halaman perbincangan pengguna",
 	"articlefeedbackv5-form-tooltip-note": "Tulis catatan untuk menjelaskan tanda anda",
 	"articlefeedbackv5-form-tooltip-feature": "Ini boleh membantu dalam menambah baik halaman ini",
@@ -218,7 +219,7 @@
 	"articlefeedbackv5-form-tooltip-request": "Menyinggung perasaan, data peribadi ...",
 	"articlefeedbackv5-form-tooltip-unrequest": "Tarik balik pemohonan untuk pengetepian",
 	"articlefeedbackv5-form-tooltip-decline": "Tolak pemohonan untuk pengetepian",
-	"articlefeedbackv5-form-tooltip-discuss-talk": "Bincangkan maklum balas di halaman perbualan halaman ini",
+	"articlefeedbackv5-form-tooltip-discuss-talk": "Bincangkan maklum balas di laman perbincangan laman ini",
 	"articlefeedbackv5-form-tooltip-discuss-user": "Bincangkan maklum balas dengan pengguna yang menghantarnya",
 	"articlefeedbackv5-discuss-talk-section-title": "Maklum balas pengguna: $1",
 	"articlefeedbackv5-discuss-user-section-title": "Maklum balas anda di \"$2\"",
