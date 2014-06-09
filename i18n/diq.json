@@ -44,7 +44,7 @@
 	"articlefeedbackv5-form-helpful-no-label": "Nê",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 e|$1 e}} / {{PLURAL:$2|1 nê|$2 nê}}",
 	"articlefeedbackv5-special-filter-featured": "Top ($1)",
-	"articlefeedbackv5-special-filter-unreviewed": "Barıyayış nêbiyo ($1)",
+	"articlefeedbackv5-special-filter-unreviewed": "Çım ra nêraviyarnayo ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Peştikar ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Peştikar ($1)",
 	"articlefeedbackv5-special-filter-flagged": "Nışanın  ($1)",
