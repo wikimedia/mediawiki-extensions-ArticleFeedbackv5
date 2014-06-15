@@ -13,7 +13,8 @@
 			"Pitort",
 			"Qllach",
 			"Solde",
-			"Toniher"
+			"Toniher",
+			"Fitoschido"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Gràcies!",
@@ -128,6 +129,7 @@
 	"articlefeedbackv5-hide-marker": "Amagat",
 	"articlefeedbackv5-feature-marker": "Útil",
 	"articlefeedbackv5-resolve-marker": "Resolt",
+	"articlefeedbackv5-form-note": "Afegeix una nota",
 	"articlefeedbackv5-form-feature": "Útil",
 	"articlefeedbackv5-form-unfeature": "Desfés",
 	"articlefeedbackv5-form-resolve": "Resolt",
@@ -208,6 +210,7 @@
 	"articlefeedbackv5-permalink-status-decline": "{{GENDER:$1|<strong>Supervisió</strong> rebutjada per $1}} fa $2",
 	"articlefeedbackv5-permalink-status-inappropriate": "{{GENDER:$1|<strong>Amagat</strong> per  $1}} fa $2",
 	"articlefeedbackv5-permalink-status-uninappropriate": "{{GENDER:$1|<strong>Mostrat</strong> per  $1}} fa $2",
+	"articlefeedbackv5-permalink-last-action": "Darrera acció",
 	"articlefeedbackv5-permalink-activity-more": "Mostra més accions...",
 	"articlefeedbackv5-permalink-activity-fewer": "Mostra menys accions...",
 	"articlefeedbackv5-noteflyover-feature-caption": "Marca com a útil",
