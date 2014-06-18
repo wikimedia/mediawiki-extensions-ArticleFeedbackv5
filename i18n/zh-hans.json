@@ -25,7 +25,8 @@
 			"Zhangjintao",
 			"Zhuyifei1999",
 			"乌拉跨氪",
-			"阿pp"
+			"阿pp",
+			"Mywood"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "谢谢！",
@@ -532,7 +533,7 @@
 	"articlefeedbackv5-activity-pane-header": "活动日志",
 	"articlefeedbackv5-activity-feedback-info": "$2的反馈",
 	"articlefeedbackv5-activity-feedback-date": "发布于$1",
-	"articlefeedbackv5-activity-permalink": "永久链接",
+	"articlefeedbackv5-activity-permalink": "固定链接",
 	"articlefeedbackv5-activity-item-request": "$1已于$5 $2由$6申请在$4监督",
 	"articlefeedbackv5-activity-item-unrequest": "$1已于$5 $2由$6取消申请在$4监督",
 	"articlefeedbackv5-activity-item-decline": "$1已于$5 $2由$6拒绝在$4监督",
