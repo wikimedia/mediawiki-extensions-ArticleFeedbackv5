@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Chrisportelli",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Leli Forte"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Grazzi!",
@@ -76,7 +77,7 @@
 	"articlefeedbackv5-special-sort-helpful-asc": "Inutli",
 	"articlefeedbackv5-special-sort-age-desc": "Iktar riċenti",
 	"articlefeedbackv5-special-sort-age-asc": "L-iktar qodma",
-	"articlefeedbackv5-special-filter-select-more": "Iktar filtri",
+	"articlefeedbackv5-special-filter-select-more": "Aktar filtri",
 	"articlefeedbackv5-special-watchlist-showing": "Rispons għal paġni segwiti minn [[$1|$2]]",
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Rispons mill-paġni li nsegwi]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Ara r-rispons mill-paġni kollha]]",
@@ -143,7 +144,7 @@
 	"articlefeedbackv5": "Rispons tal-artiklu - Paġna ċentrali",
 	"articlefeedbackv5watchlist": "Rispons tal-artiklu - Il-paġni segwiti minni",
 	"articlefeedbackv5-desc": "Rispons tal-artiklu",
-	"articlefeedbackv5-comment-more": "Iktar",
+	"articlefeedbackv5-comment-more": "Aktar",
 	"articlefeedbackv5-unsupported-message": "Jiddispjaċina, il-browżer tiegħek mhuwiex sostnut minn dan il-prototip. Biex tara din il-paġna, jekk jogħġbok uża browżer differenti.",
 	"articlefeedbackv5-page-disabled": "Article Feedback mhijiex disponibbli għal dan l-artiklu.",
 	"articlefeedbackv5-viewactivity": "Ara l-attività",
@@ -267,7 +268,7 @@
 	"articlefeedbackv5-activity-pane-header": "Reġistru tal-attività",
 	"articlefeedbackv5-activity-feedback-date": "Mibgħut nhar il-$1",
 	"articlefeedbackv5-activity-permalink": "ħolqa permanenti",
-	"articlefeedbackv5-activity-more": "Uri iktar attività",
+	"articlefeedbackv5-activity-more": "Uri aktar attività",
 	"articlefeedbackv5-disable-flyover-title": "Neħħi din l-għodda?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Mur fil-preferenzi tiegħi"
 }
