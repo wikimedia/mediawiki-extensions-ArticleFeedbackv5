@@ -1,14 +1,36 @@
 {
 	"@metadata": {
 		"authors": [
-			"CERminator"
+			"CERminator",
+			"Edinwiki"
 		]
 	},
 	"articlefeedbackv5-error": "Desila se greška. Molimo pokušajte kasnije.",
+	"articlefeedbackv5-special-filter-select-more": "Više",
 	"articlefeedbackv5": "Tabla za ocjenjivanje članaka",
 	"articlefeedbackv5-desc": "Ocjenjivanje članaka (probna verzija)",
+	"articlefeedbackv5-comment-more": "Više",
 	"articlefeedbackv5-no-feedback": "Nema povratnih informacija za odabrani filter. Da biste promijenili filter, pokušajte neku od gornjih opcija (npr. \"Odabrani\" ili \"Neprovjereno\")",
+	"articlefeedbackv5-noteflyover-feature-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-unfeature-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-resolve-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-unresolve-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-hide-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-unhide-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-noaction-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-unnoaction-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-inappropriate-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-uninappropriate-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-archive-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-unarchive-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-request-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-unrequest-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-oversight-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-unoversight-help": "Saznaj više",
+	"articlefeedbackv5-noteflyover-decline-help": "Saznaj više",
+	"articlefeedbackv5-bucket4-noedit-form-submit": "Saznaj više",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "Napišite vaš prijedog ovdje (npr. \"Na ovoj stranici treba slika\")",
 	"articlefeedbackv5-bucket6-question-placeholder-no": "Napišite svoje prijedloge ovdje (npr. \"Na ovoj stranici je potrebna slika\")",
+	"articlefeedbackv5-help-tooltip-linktext": "Saznaj više",
 	"articlefeedbackv5-disable-preference": "Ne prikazuj dodatak Povratne informacije o članku na stranicama"
 }
