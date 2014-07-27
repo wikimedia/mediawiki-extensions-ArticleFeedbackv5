@@ -16,7 +16,9 @@
 			"Simon Shek",
 			"StephDC",
 			"Waihorace",
-			"Mywood"
+			"Mywood",
+			"Impersonator 1",
+			"LNDDYL"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "謝謝！",
@@ -231,7 +233,7 @@
 	"articlefeedbackv5-form-tooltip-unrequest": "撤銷監督請求",
 	"articlefeedbackv5-form-tooltip-decline": "拒絕監督請求",
 	"articlefeedbackv5-form-tooltip-discuss-talk": "於該頁面之討論頁討論此評論",
-	"articlefeedbackv5-form-tooltip-discuss-user": "與提交評論的用戶討論",
+	"articlefeedbackv5-form-tooltip-discuss-user": "與提交評論的使用者討論",
 	"articlefeedbackv5-discuss-talk-section-title": "讀者回饋：$1",
 	"articlefeedbackv5-discuss-user-section-title": "你於「$2」上的回饋",
 	"articlefeedbackv5-discuss-talk-section-content": "$1於$3發出了[[$2|此評論]]（[[$5|查看所有回饋]]）。\n\n$6\n\n有甚麼看法嗎？\n\n~~~~",
@@ -269,7 +271,7 @@
 	"articlefeedbackv5-desc": "條目評級",
 	"articlefeedbackv5-comment-more": "更多",
 	"articlefeedbackv5-comment-empty": "沒有輸入文字",
-	"articlefeedbackv5-unsupported-message": "很抱歉，您的瀏覽器不支援此原型。請用別的瀏覽器查看此頁。",
+	"articlefeedbackv5-unsupported-message": "很抱歉，您的瀏覽器不支援此原型。請用別的瀏覽器檢視此頁。",
 	"articlefeedbackv5-page-disabled": "本條目未啟用條目回饋頁面。",
 	"articlefeedbackv5-no-feedback": "您選擇的過濾器没有任何回饋。若希望更改過濾器，試試上面的選項（例如「特色」或「未巡查」）。",
 	"articlefeedbackv5-invalid-feedback": "請求的回饋不存在。",
@@ -479,7 +481,7 @@
 	"articlefeedbackv5-fixedtab-linktext": "改善這個頁面",
 	"articlefeedbackv5-bottomrighttab-linktext": "改善這個頁面",
 	"articlefeedbackv5-section-linktext": "回饋",
-	"articlefeedbackv5-toolbox-view": "查看回饋",
+	"articlefeedbackv5-toolbox-view": "檢視回饋",
 	"articlefeedbackv5-toolbox-add": "添加您的回饋",
 	"articlefeedbackv5-leave-warning": "您已輸入的資料可能不會保存。",
 	"articlefeedbackv5-toolbox-enable": "啟用回饋",
