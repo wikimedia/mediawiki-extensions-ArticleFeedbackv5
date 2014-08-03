@@ -198,6 +198,7 @@
 	"articlefeedbackv5-form-anon-username": "E Lieser",
 	"articlefeedbackv5-form-anon-message": "Anonym vum $1 bäigedro.",
 	"articlefeedbackv5-abuse-saved": "Als Mëssbrauch markéiert",
+	"articlefeedbackv5-abuse-saved-tooltip": "Markéierung déi Dir gesat hutt ewechhuelen",
 	"articlefeedbackv5-error-loading-feedback": "Feeler beim Luede vum Feedback",
 	"articlefeedbackv5-insufficient-permissions": "Niveau vun de Rechter net héich genuch",
 	"articlefeedbackv5-feedback-reloaded-after-error": "E Feeler ($1) ass geschitt. De Feedback gouf nei geluede fir säin aktuelle Status ze weisen.",
