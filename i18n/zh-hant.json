@@ -18,7 +18,8 @@
 			"Waihorace",
 			"Mywood",
 			"Impersonator 1",
-			"LNDDYL"
+			"LNDDYL",
+			"Cwlin0416"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "謝謝！",
@@ -63,7 +64,7 @@
 	"protect-level-aft-member": "僅對已登錄用戶開放使用",
 	"protect-level-aft-editor": "僅對自動確認用戶開放使用",
 	"protect-level-aft-administrator": "僅對管理員開放使用",
-	"protect-level-aft-noone": "對所有使用者禁用",
+	"protect-level-aft-noone": "對所有使用者停用",
 	"articlefeedbackv5-protection-title": "已更改於「[[$1]]」之條目反饋工具可見性",
 	"restriction-articlefeedbackv5": "可見性",
 	"articlefeedbackv5-disabled": "回饋已被禁用",
