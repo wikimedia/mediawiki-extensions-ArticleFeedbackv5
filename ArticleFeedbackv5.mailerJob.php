@@ -48,7 +48,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 		wfProfileIn( __METHOD__ );
 
 		global $wgArticleFeedbackv5OversightEmails, $wgArticleFeedbackv5OversightEmailName;
-		global $wgPasswordSender, $wgPasswordSenderName, $wgNoReplyAddress;
+		global $wgPasswordSender, $wgNoReplyAddress;
 
 		$params = $this->params;
 
@@ -67,7 +67,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 
 		// get our addresses
 		$to = new MailAddress( $wgArticleFeedbackv5OversightEmails, $wgArticleFeedbackv5OversightEmailName );
-		$from = new MailAddress( $wgPasswordSender, $wgPasswordSenderName );
+		$from = new MailAddress( $wgPasswordSender, wfMessage( 'emailsender' ) );
 		$replyto = new MailAddress( $wgNoReplyAddress );
 
 		// get our text
