@@ -217,19 +217,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	}
 
 	/**
-	 * Gets any possible errors
-	 *
-	 * @return array the errors
-	 */
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-				array( 'missingparam', 'anontoken' ),
-				array( 'code' => 'invalidtoken', 'info' => 'The anontoken is not 32 characters' ),
-			)
-		);
-	}
-
-	/**
 	 * Gets an example
 	 *
 	 * @return array the example as the first element in an array
