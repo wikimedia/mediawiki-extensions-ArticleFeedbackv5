@@ -314,22 +314,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	public function isWriteMode() { return true; }
 
 	/**
-	 * TODO
-	 * Gets a list of possible errors
-	 *
-	 * @return bool
-	 */
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'anontoken' ),
-			array( 'code' => 'invalidtoken', 'info' => 'The anontoken is not 32 characters' ),
-			array( 'code' => 'invalidpage', 'info' => 'ArticleFeedback is not enabled on this page' ),
-			array( 'code' => 'invalidpageid', 'info' => 'Page ID is missing or invalid' ),
-			array( 'code' => 'missinguser', 'info' => 'User info is missing' ),
-		) );
-	}
-
-	/**
 	 * Gets a description
 	 *
 	 * @return string
