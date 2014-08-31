@@ -20,7 +20,8 @@
 			"ZxxZxxZ",
 			"جواد",
 			"پسر یاس",
-			"Fatemi127"
+			"Fatemi127",
+			"Alirezaaa"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "سپاس!",
@@ -286,7 +287,7 @@
 	"articlefeedbackv5-mask-text-oversight": "این پست #$1 {{GENDER:$2| پنهان شده توسط  $2}} $3 .",
 	"articlefeedbackv5-special-disclaimer": "این یک نمونه است. لطفاً از آن استفاده نکنید مگر که دعوت شده باشید.",
 	"articlefeedbackv5-special-goback": "نمایش صفحهٔ بازخورد",
-	"articlefeedbackv5-special-central-goback": "بازخوردهای بیشتر از دیگر صفحه‌ها را ببینید",
+	"articlefeedbackv5-special-central-goback": "بازخوردهای بیشتر از دیگر صفحات را ببینید",
 	"articlefeedbackv5-permalink-info-title": "اطلاعات در مورد این پیغام",
 	"articlefeedbackv5-permalink-info-post-id": "ارسال #$1",
 	"articlefeedbackv5-permalink-written-by-editor": "نوشته شده توسط کاربر ثبت نام شده",
