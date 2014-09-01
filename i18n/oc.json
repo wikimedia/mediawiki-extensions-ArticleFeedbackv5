@@ -250,6 +250,8 @@
 	"articlefeedbackv5-short-status-unhelpful": "{{GENDER:$1|Revist per $1}}",
 	"articlefeedbackv5-short-status-undo-unhelpful": "{{GENDER:$1|Revist per $1}}",
 	"articlefeedbackv5-permalink-status-request": "Un <strong>amagatge als administrators</strong> es estat demandat per $1 i a $2",
+	"articlefeedbackv5-permalink-status-unrequest": "{{GENDER:$1|La demanda d'<strong>amagatge</strong> es estada anullada per $1}} $2",
+	"articlefeedbackv5-permalink-status-decline": "La demanda d'<strong>amagatge als administrators</strong> es estada refusada per $1 i a $2",
 	"articlefeedbackv5-permalink-status-autohide": "{{GENDER:$1|<strong>Amagat automaticament</strong> per $1}} $2",
 	"articlefeedbackv5-permalink-status-oversight": "<strong>Amagat als administrators</strong> per $1 i a $2",
 	"articlefeedbackv5-permalink-status-unoversight": "{{GENDER:$1|<strong>Pas mai susvelhat</strong> per $1}} $2",
