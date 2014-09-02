@@ -256,7 +256,7 @@
 	"articlefeedbackv5-no-feedback": "Δεν υπάρχει σχόλιο σύμφωνα με το φίλτρο που επιλέξατε. Για να αλλάξετε το φίλτρο σας, δοκιμάστε μια από τις παραπάνω επιλογές (π.χ. «Συναφές» ή «Όλα τα σχόλια»).",
 	"articlefeedbackv5-invalid-feedback": "Το σχόλιο αξιολόγησης που ζητήθηκε δεν υπάρχει.",
 	"articlefeedbackv5-viewactivity": "Δείτε τη δραστηριότητα",
-	"articlefeedbackv5-mask-view-contents": "Εμφάνιση περιεχομένων",
+	"articlefeedbackv5-mask-view-contents": "Προβολή περιεχομένων",
 	"articlefeedbackv5-mask-text-inappropriate": "Αυτό το σχόλιο #$1 {{GENDER:$2|σημάνθηκε ως ακατάλληλο από τον $2}} $3.",
 	"articlefeedbackv5-mask-text-autohide": "Αυτό το σχόλιο #$1 {{GENDER:$2|είχε αποκρυφθεί αυτόματα από τον $2}} $3.",
 	"articlefeedbackv5-mask-text-hide": "Αυτό το σχόλιο #$1 {{GENDER:$2|είχε αποκρυφθεί από τον $2}} $3.",
