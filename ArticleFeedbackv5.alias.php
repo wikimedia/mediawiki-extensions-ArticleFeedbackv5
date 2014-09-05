@@ -85,6 +85,12 @@ $specialPageAliases['lb'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'Artikel-Feedback_Versioun_5_Iwweerwaachungslëscht' ),
 );
 
+/** Malagasy (Malagasy) */
+$specialPageAliases['mg'] = array(
+	'ArticleFeedbackv5' => array( 'Verimpahandahatsoratrav5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'LisipanarahanaVerimpahandahatsoratrav5' ),
+);
+
 /** Macedonian (македонски) */
 $specialPageAliases['mk'] = array(
 	'ArticleFeedbackv5' => array( 'ОценувањеНаСтатиив5' ),
