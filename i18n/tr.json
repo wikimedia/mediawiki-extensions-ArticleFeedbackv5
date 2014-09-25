@@ -14,7 +14,8 @@
 			"Reedy",
 			"SiLveRLeaD",
 			"Stultiwikia",
-			"Suelnur"
+			"Suelnur",
+			"Sayginer"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Teşekkürler!",
@@ -335,6 +336,7 @@
 	"articlefeedbackv5-bucket6-toggle-found-yes": "Evet",
 	"articlefeedbackv5-bucket6-toggle-found-no": "Hayır",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "Evet, aradığımı buldum.",
+	"articlefeedbackv5-bucket6-toggle-found-no-full": "Hayır, aradığım şeyi bulamadım.",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "Harika. Sayfanın iyileştirilmesi için herhangi bir öneriniz var mı?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "Önerinizi buraya yazın (örneğin: \"Bu sayfanın resme ihtiyacı var.\")",
 	"articlefeedbackv5-bucket6-question-instructions-no": "Bunun için üzgünüz. Sayfanın iyileştirilmesi için herhangi bir öneriniz var mı?",
@@ -349,7 +351,9 @@
 	"articlefeedbackv5-fixedtab-linktext": "Bu sayfayı geliştirin",
 	"articlefeedbackv5-bottomrighttab-linktext": "Bu sayfayı geliştirin",
 	"articlefeedbackv5-section-linktext": "geri bildirim",
+	"articlefeedbackv5-toolbox-add": "Geri bildirim gönder",
 	"articlefeedbackv5-leave-warning": "Girdiğiniz veriler kaydedilmemiş olabilir.",
+	"articlefeedbackv5-toolbox-enable": "Geri bildirimi etkinleştir",
 	"articlefeedbackv5-activity-pane-header": "Etkinlik Günlüğü",
 	"articlefeedbackv5-activity-feedback-info": "$2 tarafından bildirildi",
 	"articlefeedbackv5-activity-feedback-date": "$1 tarihinde gönderildi",
