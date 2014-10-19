@@ -9,7 +9,8 @@
 			"Tacsipacsi",
 			"Tgr",
 			"පසිඳු කාවින්ද",
-			"Csega"
+			"Csega",
+			"Dorgan"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Köszönjük!",
@@ -147,7 +148,9 @@
 	"articlefeedbackv5-form-unnoaction": "Visszavonás",
 	"articlefeedbackv5-form-noaction-own": "Dobja el a hozzászólásomat",
 	"articlefeedbackv5-form-inappropriate": "Üzenet elrejtése",
+	"articlefeedbackv5-form-uninappropriate": "Visszavonás",
 	"articlefeedbackv5-form-unhide": "Visszavonás",
+	"articlefeedbackv5-form-unarchive": "Visszavonás",
 	"articlefeedbackv5-form-helpful": "Megjelölés hasznosként ($1)",
 	"articlefeedbackv5-form-oversight": "Törlés",
 	"articlefeedbackv5-form-unoversight": "Visszavonás",
