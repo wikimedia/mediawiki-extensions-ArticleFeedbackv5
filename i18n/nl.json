@@ -556,7 +556,7 @@
 	"articlefeedbackv5-talk-view-feedback": "Suggesties van lezers bekijken",
 	"articlefeedbackv5-watchlist-view-feedback": "Terugkoppeling op pagina's uit mijn volglijst",
 	"articlefeedbackv5-email-request-oversight-subject": "Er is een verzoek voor toezicht ingediend voor een terugkoppelingspagina",
-	"articlefeedbackv5-email-request-oversight-body": "Hallo toezichthouders!\n\nEr is een verzoek voor toezicht op terugkoppeling ingediend door gebruiker $1 op deze pagina:\n\n$2\n\nControleer deze terugkoppeling, en keur het verzoek voor toezicht goed of af:\n\n$3\n$5\n\nBedankt!\n\nHet team van {{SITENAME}}\n\nPS Als u vragen hebt over het gebruik van de functie toezicht op de terugkoppelingspagina, raadpleeg dan de veel gestelde vragen over toezicht:\n\n$4",
+	"articlefeedbackv5-email-request-oversight-body": "Hallo toezichthouders!\n\nEr is een verzoek voor toezicht op terugkoppeling ingediend door gebruiker $1 op deze pagina:\n\n$2\n\nControleer deze terugkoppeling, en keur het verzoek voor toezicht goed of af:\n\n$3\n$5\n\nBedankt!\n\nHet team van {{SITENAME}}\n\nPS Als u vragen hebt over het gebruik van de functie toezicht op de terugkoppelingspagina, raadpleeg dan de veelgestelde vragen over toezicht:\n\n$4",
 	"articlefeedbackv5-email-request-oversight-body-notes": "Deze opmerking is toegevoegd aan de aanvraag voor toezicht:\n\n$1",
 	"articlefeedbackv5-disable-flyover-title": "Dit hulpprogramma verwijderen?",
 	"articlefeedbackv5-disable-flyover-help-message": "Ga naar \"$1\" > \"$2\" en vink \"$3\" aan om Paginaterugkoppeling uit te schakelen",
