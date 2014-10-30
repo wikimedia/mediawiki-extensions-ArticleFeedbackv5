@@ -307,7 +307,7 @@
 	"articlefeedbackv5-permalink-info-stats-title-length": "Permalink info block, title for the comment length information.\n{{Identical|Length}}",
 	"articlefeedbackv5-permalink-info-length-words": "Permalink info block, comment length: $1 is the number of words",
 	"articlefeedbackv5-permalink-info-length-characters": "Permalink info block. Parameters:\n* $1 - the number of characters (comment length)",
-	"articlefeedbackv5-permalink-info-stats-title-scores": "Permalink info block, title for the feedback scoring information",
+	"articlefeedbackv5-permalink-info-stats-title-scores": "Permalink info block, title for the feedback scoring information\n{{Identical|Score}}",
 	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "Permalink info block, subtitle for the relevance score within the feedback scoring information",
 	"articlefeedbackv5-permalink-info-stats-subtitle-helpfulness": "Permalink info block, subtitle for the net helpfulness score within the feedback scoring information",
 	"articlefeedbackv5-permalink-activity-title": "Permalink activity block, title of the left column, containing information about the last activity.\n{{Identical|Activity}}",
