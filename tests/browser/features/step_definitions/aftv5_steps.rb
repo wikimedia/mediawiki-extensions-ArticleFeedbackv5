@@ -60,7 +60,7 @@ Then(/^I can always return to AFTv5 input$/) do
 end
 Then(/^I can enter and save text$/) do
   on(AFTv5Page) do |page|
-    @input_string = "Automated test did this #{('a' .. 'z').to_a.shuffle[0,10].join}"
+    @input_string = "Automated test did this #{('a' .. 'z').to_a.shuffle[0, 10].join}"
     page.input_area_element.send_keys "Hello from #{@input_string}"
     page.post_feedback_element.when_present.click
     page.wait_until(10) do

@@ -21,11 +21,6 @@ Style/LeadingCommentSpace:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Style/SpaceAfterComma:
-  Enabled: false
-
-# Offense count: 1
-# Cop supports --auto-correct.
 Style/SpaceInsideRangeLiteral:
   Enabled: false
 
