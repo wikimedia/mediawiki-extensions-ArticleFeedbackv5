@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e936f18_1f532c6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 487
+      },
+      "writtenOn": "2014-11-06T10:42:01Z",
+      "side": 1,
+      "message": "Please reference bug number in commit message. See [0] for example.\n\n0: https://gerrit.wikimedia.org/r/#/c/170911/",
+      "revId": "3884dabae5c1b95fb9b609fb6b5f72d7a528cec7",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
