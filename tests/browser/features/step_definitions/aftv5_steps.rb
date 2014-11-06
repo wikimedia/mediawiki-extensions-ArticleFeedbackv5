@@ -67,7 +67,7 @@ Then(/^I can enter and save text$/) do
       page.text.include? "Thanks!"
     end
     page.text.should include "Your post can be viewed on this feedback page."
-    #ONLY ANONS GET "CREATE ACCOUNT"/LOG IN MESSAGE
+    # ONLY ANONS GET "CREATE ACCOUNT"/LOG IN MESSAGE
     page.create_account_element.should be_true
     page.log_in_element.should be_true
   end
