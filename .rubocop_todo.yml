@@ -10,10 +10,6 @@
 Metrics/LineLength:
   Max: 158
 
-# Offense count: 1
-Style/Documentation:
-  Enabled: false
-
 # Offense count: 5
 # Cop supports --auto-correct.
 Style/LeadingCommentSpace:

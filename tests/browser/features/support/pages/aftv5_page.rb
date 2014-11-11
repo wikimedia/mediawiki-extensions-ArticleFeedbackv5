@@ -11,6 +11,7 @@
 #
 require "page-object"
 
+# AFTv5 page object
 class AFTv5Page
   include PageObject
 
