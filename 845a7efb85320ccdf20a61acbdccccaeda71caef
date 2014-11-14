@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e936f18_e84e8c3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 487
+      },
+      "writtenOn": "2014-11-14T08:29:04Z",
+      "side": 1,
+      "message": "I think \"in the two files\" part is redundant. It is obvious from the commit that two files are changed.",
+      "revId": "845a7efb85320ccdf20a61acbdccccaeda71caef",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e936f18_68527cdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 487
+      },
+      "writtenOn": "2014-11-14T08:29:04Z",
+      "side": 1,
+      "message": "I think this line is redundant too. When a RuboCop problem is fixed, the configuration should be removed from the todo file, there is no need to explicitly mention it in the commit message.",
+      "revId": "845a7efb85320ccdf20a61acbdccccaeda71caef",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e936f18_8857c8cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 487
+      },
+      "writtenOn": "2014-11-14T08:29:04Z",
+      "side": 1,
+      "message": "\"bug\" should be \"Bug\".",
+      "revId": "845a7efb85320ccdf20a61acbdccccaeda71caef",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
