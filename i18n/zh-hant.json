@@ -61,7 +61,7 @@
 	"articlefeedbackv5-protection-level": "條目回饋",
 	"articlefeedbackv5-protection-level-error": "條目回饋保護層級不能高於編輯保護層級",
 	"protect-level-aft-reader": "為所有用戶啟用",
-	"protect-level-aft-member": "僅對已登錄用戶開放使用",
+	"protect-level-aft-member": "僅對已登入使用者開放使用",
 	"protect-level-aft-editor": "僅對自動確認用戶開放使用",
 	"protect-level-aft-administrator": "僅對管理員開放使用",
 	"protect-level-aft-noone": "對所有使用者停用",
