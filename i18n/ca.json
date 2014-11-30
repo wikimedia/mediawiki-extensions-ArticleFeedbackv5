@@ -94,6 +94,8 @@
 	"articlefeedbackv5-special-filter-unhelpful-watchlist": "Inútil",
 	"articlefeedbackv5-special-filter-useful-watchlist": "Útil",
 	"articlefeedbackv5-special-filter-resolved-watchlist": "Resolt",
+	"articlefeedbackv5-special-filter-noaction-watchlist": "No cal cap acció",
+	"articlefeedbackv5-special-filter-archived-watchlist": "Arxivat",
 	"articlefeedbackv5-special-filter-allcomment-watchlist": "Tots els comentaris",
 	"articlefeedbackv5-special-filter-hidden-watchlist": "Ocult",
 	"articlefeedbackv5-special-filter-requested-watchlist": "Supervisió sol·licitada",
