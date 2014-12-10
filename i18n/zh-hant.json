@@ -52,7 +52,7 @@
 	"articlefeedbackv5-error-blocked": "已封禁用戶無法提交回饋。",
 	"articlefeedbackv5-error-validation": "驗證錯誤。",
 	"articlefeedbackv5-error-abuse": "您的評論遭軟體過濾器拒絕，它可能違反了{{SITENAME}}的[$1 回饋指引]。請修改之。（ {{PLURAL:$2|過濾器}}$3）",
-	"articlefeedbackv5-error-unknown": "未知錯誤。",
+	"articlefeedbackv5-error-unknown": "不明錯誤。",
 	"articlefeedbackv5-error-submit": "表單提交錯誤。",
 	"articlefeedbackv5-error-duplicate": "提交的回饋與最後的回饋有所重覆；也許你不小心重覆提交了兩次相同回饋？",
 	"articlefeedbackv5-error-nofeedback": "請輸入您的回饋。",
