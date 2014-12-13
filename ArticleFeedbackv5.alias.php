@@ -151,6 +151,6 @@ $specialPageAliases['zh-hans'] = array(
 
 /** Traditional Chinese (中文（繁體）‎) */
 $specialPageAliases['zh-hant'] = array(
-	'ArticleFeedbackv5' => array( '文章意見回饋v5' ),
-	'ArticleFeedbackv5Watchlist' => array( '文章意見回饋v5監視清單' ),
+	'ArticleFeedbackv5' => array( '條目意見回饋v5' ),
+	'ArticleFeedbackv5Watchlist' => array( '條目意見回饋v5監視清單' ),
 );
