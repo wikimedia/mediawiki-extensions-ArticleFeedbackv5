@@ -2919,7 +2919,7 @@
 			}
 		}
 		if ( hasTipsy ) {
-			$( '.articleFeedbackv5-form-flyover-closebutton' ).live( 'click', function ( e ) {
+			$( '.articleFeedbackv5-form-flyover-closebutton' ).on( 'click', function ( e ) {
 				e.preventDefault();
 				var $host = $( '.articleFeedbackv5-trigger-link-' + $( e.target ).attr( 'rel' ) );
 				$host.tipsy( 'hide' );
