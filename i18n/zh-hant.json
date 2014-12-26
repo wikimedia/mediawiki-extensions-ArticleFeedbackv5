@@ -547,7 +547,7 @@
 	"articlefeedbackv5-activity-item-unhide": "$1於$4在$5{{GENDER:$6|取消隱藏}}此回饋$2",
 	"articlefeedbackv5-activity-item-autohide": "$1於$4在$5{{GENDER:$6|隱藏}}此回饋$2",
 	"articlefeedbackv5-activity-item-archive": "$1於$4在$5將此回饋{{GENDER:$6|存檔}}$2",
-	"articlefeedbackv5-activity-item-unarchive": "$1於$4在$5將此回饋{{GENDER:$6|從存檔取出}}$2",
+	"articlefeedbackv5-activity-item-unarchive": "$1 於 $4 $5 將此回饋{{GENDER:$6|從存檔取出}} $2",
 	"articlefeedbackv5-activity-item-helpful": "$1於$4在$5{{GENDER:$6|標記}}此回饋為有幫助$2",
 	"articlefeedbackv5-activity-item-unhelpful": "$1於$4在$5{{GENDER:$6|標記}}此回饋為沒有幫助$2",
 	"articlefeedbackv5-activity-item-undo-helpful": "$1於$4在$5{{GENDER:$6|取消標記}}此回饋為有幫助$2",
