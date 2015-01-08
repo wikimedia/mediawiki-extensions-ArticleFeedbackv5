@@ -3,7 +3,8 @@
 		"authors": [
 			"Singhalawap",
 			"පසිඳු කාවින්ද",
-			"ශ්වෙත"
+			"ශ්වෙත",
+			"Thanushka"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "ස්තුතියි!",
@@ -39,7 +40,7 @@
 	"articlefeedbackv5-error-flagging": "ප්‍රතිචාරය ධජීකරණය කිරීමේ දෝෂය.",
 	"articlefeedbackv5-protection-level": "ලිපි ප්‍රතිචාරය",
 	"protect-level-aft-reader": "සියලුම පරිශීලකයන් සඳහා සක්‍රිය කරන්න",
-	"protect-level-aft-member": "ප්‍රවිෂ්ට-වූ පරිශීලකයන්ට පමණක් සක්‍රිය කරන්න",
+	"protect-level-aft-member": "දැනටමත් ප්‍රවේශ වූ පරිශීලකයන්ට පමණක් සක්‍රිය කරන්න",
 	"protect-level-aft-editor": "ස්වයංතහවුරුකළ පරිශීලකයන්ට පමණක් සක්‍රිය කරන්න",
 	"protect-level-aft-administrator": "පරිපාලකයන් සඳහා පමණක් සක්‍රිය කරන්න",
 	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|ප්‍රතිචාරය: $4]] $5 $6 $7",
