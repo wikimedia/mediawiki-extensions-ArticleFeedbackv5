@@ -107,13 +107,4 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 			'api.php?action=articlefeedbackv5-get-count&afpageid=1&filter=featured',
 		);
 	}
-
-	/**
-	 * Gets the version info
-	 *
-	 * @return string the SVN version info
-	 */
-	public function getVersion() {
-		return __CLASS__ . ': version 1.5';
-	}
 }

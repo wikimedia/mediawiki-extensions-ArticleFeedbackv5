@@ -226,13 +226,4 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'api.php?action=query&list=articlefeedbackv5-view-feedback&afvfpageid=1&afvfsort=relevance&afvfsortdirection=ASC&afvffilter=visible-relevant',
 		);
 	}
-
-	/**
-	 * Gets the version info
-	 *
-	 * @return string the SVN version info
-	 */
-	public function getVersion() {
-		return __CLASS__ . ': version 1.5';
-	}
 }

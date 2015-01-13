@@ -335,13 +335,4 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'api.php?action=articlefeedbackv5'
 		);
 	}
-
-	/**
-	 * Gets the version info
-	 *
-	 * @return string the SVN version info
-	 */
-	public function getVersion() {
-		return __CLASS__ . ': version 1.5';
-	}
 }

@@ -166,15 +166,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		);
 	}
 
-	/**
-	 * Gets the version info
-	 *
-	 * @return string the SVN version info
-	 */
-	public function getVersion() {
-		return __CLASS__ . ': version 1.5';
-	}
-
 	public function isWriteMode() { return true; }
 
 	public function mustBePosted() { return true; }
