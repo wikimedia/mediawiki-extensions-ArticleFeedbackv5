@@ -29,7 +29,7 @@
 	"articlefeedbackv5-cta6-button-text": "Külasta teemaja",
 	"articlefeedbackv5-overlay-close": "Sule",
 	"articlefeedbackv5-error": "Ilmnes tõrge. Palun proovi hiljem uuesti.",
-	"articlefeedbackv5-error-blocked": "Blokeeritud kasutajad ei või tagasisidet saata.",
+	"articlefeedbackv5-error-blocked": "Blokeeritud kasutajad ei saa tagasisidet saata.",
 	"articlefeedbackv5-error-validation": "Valideerimistõrge.",
 	"articlefeedbackv5-error-abuse": "Tarkvarafilter on sinu postituse tagasi lükanud, sest see võib olla vastuolus {{GRAMMAR:genitive|{{SITENAME}}}} [$1 tagasiside juhtnööridega]. Palun vaata oma postitus üle ja proovi uuesti. ({{PLURAL:$2|Filter|Filtrid}}: $3)",
 	"articlefeedbackv5-error-unknown": "Tundmatu tõrge.",
