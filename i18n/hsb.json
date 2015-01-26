@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Michawiki"
+			"Michawiki",
+			"J budissin"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Wulki dźak!",
@@ -69,7 +70,7 @@
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 haj|$1 haj}} / {{PLURAL:$2|1 ně|$2 ně}}",
 	"articlefeedbackv5-special-survey-button-text": "Što mysliš wo tutym komentarowym nastroju?",
 	"articlefeedbackv5-special-filter-featured": "Wuzběhnjeny ($1)",
-	"articlefeedbackv5-special-filter-unreviewed": "Njepřepruwowany ($1)",
+	"articlefeedbackv5-special-filter-unreviewed": "Njepřepruwowane ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Pomocliwy ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Njepomocliwy ($1)",
 	"articlefeedbackv5-special-filter-useful": "Wužitny ($1)",
@@ -84,7 +85,7 @@
 	"articlefeedbackv5-special-filter-oversighted": "Dohladowany ($1)",
 	"articlefeedbackv5-special-filter-all": "Wšě přinoški ($1)",
 	"articlefeedbackv5-special-filter-featured-watchlist": "Wuběrne",
-	"articlefeedbackv5-special-filter-unreviewed-watchlist": "Njepřepruwowany",
+	"articlefeedbackv5-special-filter-unreviewed-watchlist": "Njepřepruwowane",
 	"articlefeedbackv5-special-filter-helpful-watchlist": "Wužitny",
 	"articlefeedbackv5-special-filter-unhelpful-watchlist": "Njewužitny",
 	"articlefeedbackv5-special-filter-useful-watchlist": "Wužitny",
