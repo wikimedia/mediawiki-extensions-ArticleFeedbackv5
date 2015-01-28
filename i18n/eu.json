@@ -31,6 +31,7 @@
 	"articlefeedbackv5-form-helpful-yes-label": "Bai",
 	"articlefeedbackv5-form-helpful-no-label": "Ez",
 	"articlefeedbackv5-special-filter-allcomment": "Iruzkin guztiak ($1)",
+	"articlefeedbackv5-special-filter-allcomment-watchlist": "Iruzkin guztiak",
 	"articlefeedbackv5-special-filter-hidden-watchlist": "Ezkutatuta",
 	"articlefeedbackv5-special-sort-age-desc": "berrienak",
 	"articlefeedbackv5-special-sort-age-asc": "zaharrenak",
@@ -59,6 +60,7 @@
 	"articlefeedbackv5-go-to-article": "Orrialdea ikusi",
 	"articlefeedbackv5-discussion-page": "Eztabaida",
 	"articlefeedbackv5-whats-this": "Laguntza",
+	"articlefeedbackv5-settings-menu-title": "Ezarpenak",
 	"articlefeedbackv5": "Artikuluaren feedbacka - Orrialde nagusia",
 	"articlefeedbackv5-desc": "Artikuluaren feedbacka",
 	"articlefeedbackv5-comment-more": "Gehiago",
@@ -150,6 +152,7 @@
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "Ez dut espero nuena aurkitu.",
 	"articlefeedbackv5-help-tooltip-title": "Zer da hau?",
 	"articlefeedbackv5-help-tooltip-linktext": "Gehiago ikasi",
+	"articlefeedbackv5-bottomrighttab-linktext": "Hobetu orrialde hau",
 	"articlefeedbackv5-activity-more": "Jarduera gehiago erakutsi",
 	"articlefeedbackv5-disable-flyover-title": "Tresna hau kendu?"
 }
