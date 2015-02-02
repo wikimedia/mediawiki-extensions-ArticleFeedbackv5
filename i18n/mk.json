@@ -449,7 +449,7 @@
 	"articlefeedbackv5-bucket6-toggle-found-no": "Не",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "Да, го најдов.",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "Не го најдов.",
-	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|(преостанува 1 знак)|(преостануваат $1 знаци)}}",
+	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|(преостанува уште еден знак)|(преостануваат уште $1 знаци)}}",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "Одлично. Дали имате предлози за подобрување?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "Тука напишете го предлогот (на пр. „Страницава треба да има слика“)",
 	"articlefeedbackv5-bucket6-question-instructions-no": "Жалиме. Како можеме дa ja подобриме?",
