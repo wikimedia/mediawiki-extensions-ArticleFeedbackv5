@@ -370,6 +370,7 @@
 	"articlefeedbackv5-bucket6-toggle-found-no": "Neen",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "Jo, ech hu fonnt wat ech gesicht hunn.",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "Neen, ech hunn net fonnt wat ech gesicht hunn.",
+	"articlefeedbackv5-bucket6-feedback-countdown": "(Nach {{PLURAL:$1|een|$1}} Zeechen iwwreg)",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "Super. Hutt Dir Virschléi fir Verbesserungen?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "Schreift Äre Virschlag heihin (z. Bsp.: 'Dës Säit brauch eng Foto')",
 	"articlefeedbackv5-bucket6-question-instructions-no": "Et deet eis leed. Hutt Dir Virschléi fir Verbesserungen?",
