@@ -282,7 +282,7 @@
 	"articlefeedbackv5-found-percent-title": "Title attribute for percentage of people who marked feedback as useful.\n\nThis will display more detailed information about the amount of feedback the percentage has been calculated over.\n\nParameters:\n* $1 - the amount of feedback that has been included in the calculation of the percentage (= all feedback not marked as inappropriate)",
 	"articlefeedbackv5": "{{doc-special|ArticleFeedbackv5}}\nThe title of the feature. It is about reader feedback.\n\nPlease visit http://prototype.wikimedia.org/articleassess/Main_Page for a prototype installation.",
 	"articlefeedbackv5watchlist": "{{doc-special|ArticleFeedbackv5Watchlist|unlisted=1}}",
-	"articlefeedbackv5-desc": "{{desc|name=Article Feedback v5|url=http://www.mediawiki.org/wiki/Extension:ArticleFeedbackv5}}",
+	"articlefeedbackv5-desc": "{{desc|name=Article Feedback v5|url=https://www.mediawiki.org/wiki/Extension:ArticleFeedbackv5}}",
 	"articlefeedbackv5-comment-more": "Label for the button to expand the truncated comment on feedback.\n{{Identical|More}}",
 	"articlefeedbackv5-comment-empty": "Text to be displayed instead of the feedback comment in case there was no comment",
 	"articlefeedbackv5-unsupported-message": "A message to be displayed on the special page, when a visitor with an unsupported browser visits.",
