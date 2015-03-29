@@ -417,7 +417,7 @@
 	"articlefeedbackv5-noteflyover-unarchive-submit": "افزودن یادداشت",
 	"articlefeedbackv5-noteflyover-unarchive-help": "اطلاعات بیشتر",
 	"articlefeedbackv5-noteflyover-request-caption": "درخواست نظارت",
-	"articlefeedbackv5-noteflyover-request-description": "قبل از درخواست پنهان‌گری لطفاً بازخورد ارسالی را بررسی کنید که\nیکی از این موارد زیر را داشته باشد:\n* شمارهٔ تلفن\n* نشانی‌های رایانامه\n* پیوندهای مستهجن\n* نظرهای توهین‌آمیز/افترا آمیز در مورد یک فرد\n* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy معیارهای دیگر پنهان‌گری]",
+	"articlefeedbackv5-noteflyover-request-description": "قبل از درخواست پنهان‌گری لطفاً بازخورد ارسالی را بررسی کنید که\nیکی از این موارد زیر را داشته باشد:\n* شمارهٔ تلفن\n* آدرس‌های ایمیل\n* پیوندهای مستهجن\n* نظرهای توهین‌آمیز/افترا آمیز در مورد یک فرد\n* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy معیارهای دیگر پنهان‌گری]",
 	"articlefeedbackv5-noteflyover-request-label": "افزودن یادداشت توضیحی که چرا شما درخواست نظارت دارید",
 	"articlefeedbackv5-noteflyover-request-placeholder": "چرا شما درخواست بررسی دادید؟",
 	"articlefeedbackv5-noteflyover-request-submit": "درخواست پنهان‌گری",

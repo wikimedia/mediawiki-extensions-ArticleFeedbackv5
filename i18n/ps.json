@@ -47,7 +47,7 @@
 	"articlefeedbackv5-special-sort-helpful-asc": "ناګټور",
 	"articlefeedbackv5-special-sort-age-desc": "تر ټولو نوی",
 	"articlefeedbackv5-special-sort-age-asc": "تر ټولو زوړ",
-	"articlefeedbackv5-special-sort-label": "اوډنه له مخې د:",
+	"articlefeedbackv5-special-sort-label": "اوډون ډول:",
 	"articlefeedbackv5-special-filter-select-more": "نور",
 	"articlefeedbackv5-updates-since": "د لېږلو له وخت راهيسې {{PLURAL:$1|1 سمون|$1 سمونونه}}",
 	"articleFeedbackv5-details-link": "تفصيلات",
