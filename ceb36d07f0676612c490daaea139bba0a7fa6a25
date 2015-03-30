@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e7c4fa4_0f172b4b",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 417
+      },
+      "writtenOn": "2015-03-30T10:39:45Z",
+      "side": 1,
+      "message": "Fairly sure this is meant to be [value\u003d\"\"].",
+      "revId": "ceb36d07f0676612c490daaea139bba0a7fa6a25",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
