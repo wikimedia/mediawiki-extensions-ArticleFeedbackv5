@@ -422,7 +422,7 @@
 		} );
 
 		// Disable the dividers
-		$( '#articleFeedbackv5-sort-select option[value=]' ).attr( 'disabled', true );
+		$( '#articleFeedbackv5-sort-select option[value=""]' ).attr( 'disabled', true );
 
 		// Show more
 		$( '#articleFeedbackv5-show-more' ).bind( 'click', function( e ) {
