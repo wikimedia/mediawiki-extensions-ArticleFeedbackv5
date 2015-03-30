@@ -399,7 +399,7 @@
 		} );
 
 		// Disable the dividers
-		$( '#articleFeedbackv5-filter-select option[value=]' ).attr( 'disabled', true );
+		$( '#articleFeedbackv5-filter-select option[value]' ).attr( 'disabled', true );
 		$( '#articleFeedbackv5-filter-select option[value=X]' ).attr( 'disabled', true );
 
 		// Filter links
