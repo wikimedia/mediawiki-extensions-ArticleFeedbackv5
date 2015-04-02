@@ -85,6 +85,12 @@ $specialPageAliases['lb'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'Artikel-Feedback_Versioun_5_Iwweerwaachungslëscht' ),
 );
 
+/** لوری (لوری) */
+$specialPageAliases['lrc'] = array(
+	'ArticleFeedbackv5' => array( 'پشت_راس_کار_حوال_حون_گوتار_نسقه5' ),
+	'ArticleFeedbackv5Watchlist' => array( 'سیل_برگ_پشت_راست_کار_حوال_حون_گوتار_نسقه5' ),
+);
+
 /** Malagasy (Malagasy) */
 $specialPageAliases['mg'] = array(
 	'ArticleFeedbackv5' => array( 'Verimpahandahatsoratrav5' ),
