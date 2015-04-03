@@ -75,7 +75,7 @@
 	"protect-level-aft-noone": "Desactivar para todos los usuarios",
 	"articlefeedbackv5-protection-title": "Se cambió la visibilidad de la herramienta de comentarios del artículo sobre \"[[$1]]\"",
 	"restriction-articlefeedbackv5": "Visibilidad",
-	"articlefeedbackv5-disabled": "Se ha deshabilitado la retroalimentación",
+	"articlefeedbackv5-disabled": "Se han desactivado los comentarios",
 	"articlefeedbackv5-disabled-admin-admin": "Las sugerencias han sido desactivadas para los lectores y editores. No pueden ingresar nuevas sugerencias en esta página.",
 	"articlefeedbackv5-disabled-admin-editor": "Las sugerencias han sido desactivadas para los lectores. No pueden ingresar nuevas sugerencias en esta página.",
 	"articlefeedbackv5-disabled-editor-admin": "Las sugerencias han sido desactivadas por un administrador. Los lectores y editores no pueden ingresar nuevas sugerencias en esta página.",
