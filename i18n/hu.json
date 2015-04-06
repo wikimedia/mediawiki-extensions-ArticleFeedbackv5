@@ -184,7 +184,7 @@
 	"articlefeedbackv5-whats-this": "Segítség",
 	"articlefeedbackv5-settings-menu-title": "Beállítások",
 	"articlefeedbackv5-invalid-page-id": "Érvénytelen lap ID",
-	"articlefeedbackv5-found-percent": "$1 megtalálta, amit keresett",
+	"articlefeedbackv5-found-percent": "{{PLURAL:$2|$1 megtalálta, amit keresett}}",
 	"articlefeedbackv5": "Visszajelzések - főoldal",
 	"articlefeedbackv5watchlist": "Visszajelzések - általam figyelt oldalaim",
 	"articlefeedbackv5-desc": "Visszajelzések",

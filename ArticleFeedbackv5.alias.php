@@ -27,6 +27,12 @@ $specialPageAliases['arz'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'قايمه_مراقبه_كومناتا_المقالات_فى5' ),
 );
 
+/** Western Balochi (بلوچی رخشانی) */
+$specialPageAliases['bgn'] = array(
+	'ArticleFeedbackv5' => array( 'مقاله_ئی_پدوارت_و_۵' ),
+	'ArticleFeedbackv5Watchlist' => array( 'مقاله_ئی_پدوارت_و_پدگیری_ئی_۵' ),
+);
+
 /** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
 $specialPageAliases['cdo'] = array(
 	'ArticleFeedbackv5' => array( '文章回饋' ),

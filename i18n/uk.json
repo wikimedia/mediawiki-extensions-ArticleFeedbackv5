@@ -15,7 +15,8 @@
 			"Steve.rusyn",
 			"SteveR",
 			"Ата",
-			"Тест"
+			"Тест",
+			"Ahonc"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Дякуємо!",
@@ -483,12 +484,12 @@
 	"articlefeedbackv5-leave-warning": "Введені Вами дані не можуть бути збережені.",
 	"articlefeedbackv5-toolbox-enable": "Увімкнути відгуки",
 	"articlefeedbackv5-disable-preference": "Не показувати на сторінках віджет оцінювання сторінок",
-	"right-aft-reader": "Залишити відгук і позначити як (не)корисне",
-	"right-aft-member": "Залишити відгук і позначити як (не)корисне",
-	"right-aft-editor": "Налаштування і вирішення відгуків",
-	"right-aft-monitor": "Приховування відгуків і подавання запитів на приховування",
-	"right-aft-administrator": "Перегляд AFT захищених сторінок",
-	"right-aft-oversighter": "Приховування відгуків",
+	"right-aft-reader": "залишення відгуків і позначення як (не)корисні",
+	"right-aft-member": "залишання відгуків і позначення як (не)корисні",
+	"right-aft-editor": "установлення і зняття міток «Вибраний» і «Вирішений» у відгуків",
+	"right-aft-monitor": "приховування відгуків і подавання запитів на приховування змін",
+	"right-aft-administrator": "перегляд AFT на захищених сторінках",
+	"right-aft-oversighter": "стеження за відгуками",
 	"log-name-articlefeedbackv5": "Журнал дій з відгуками на статті",
 	"log-description-articlefeedbackv5": "Це журнал діяльності щодо відгуків користувачів, залишених через механізм зворотного зв'язку.",
 	"logentry-articlefeedbackv5-create": "$1 {{GENDER:$2|залишив|залишила}} [[$3|відгук #$4]] на [[$5]]",
