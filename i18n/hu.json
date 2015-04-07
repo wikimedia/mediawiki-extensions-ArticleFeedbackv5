@@ -10,7 +10,8 @@
 			"Tgr",
 			"පසිඳු කාවින්ද",
 			"Csega",
-			"Dorgan"
+			"Dorgan",
+			"Adam78"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Köszönjük!",
@@ -52,7 +53,7 @@
 	"articlefeedbackv5-protection-level-error": "Az olvasói visszajelzés védelmi szintje nem lehet magasabb, mint a szerkesztésé",
 	"protect-level-aft-reader": "Engedélyezés valamennyi felhasználó számára",
 	"protect-level-aft-member": "Csak bejelentkezett felhasználóknak engedélyezett",
-	"protect-level-aft-editor": "Csak több, mint négy napja regisztrált szerkesztőknek engedélyezett",
+	"protect-level-aft-editor": "Csak több mint négy napja regisztrált szerkesztőknek engedélyezett",
 	"protect-level-aft-administrator": "Csak adminisztrátoroknak engedélyezett",
 	"restriction-articlefeedbackv5": "Láthatóság",
 	"articlefeedbackv5-disabled": "Visszajelzés le van tiltva",
