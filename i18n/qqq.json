@@ -29,7 +29,8 @@
 			"Umherirrender",
 			"Yekrats",
 			"Robby",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Metalhead64"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "The bolded part of the message that appears at the top of every CTA (call to action).\n{{Identical|Thank}}",
@@ -111,7 +112,7 @@
 	"articlefeedbackv5-form-helpful-yes-label": "{{Identical|Yes}}",
 	"articlefeedbackv5-form-helpful-no-label": "{{Identical|No}}",
 	"articlefeedbackv5-form-helpful-votes-percent": "Text explaining how many people found the feedback helpful. Parameters:\n* $1 - the percentage of helpful votes",
-	"articlefeedbackv5-form-helpful-votes-count": "Shows how many people found the feedback helpful or unhelpful, as a tooltip when you hover over {{msg-mw:articlefeedbackv5-form-helpful-votes}}.  $1 is the number of helpful votes, and $2 is the number of unhelpful votes.",
+	"articlefeedbackv5-form-helpful-votes-count": "Shows how many people found the feedback helpful or unhelpful, as a tooltip when you hover over {{msg-mw|articlefeedbackv5-form-helpful-votes}}.  $1 is the number of helpful votes, and $2 is the number of unhelpful votes.",
 	"articlefeedbackv5-special-survey-button-text": "Text for the button linking the user to the feedback page survey.",
 	"articlefeedbackv5-special-filter-featured": "Name of filter that will show all feedback that has been marked as useful or helpful. $1 is the amount of records in this filter.\n{{Identical|Featured}}",
 	"articlefeedbackv5-special-filter-unreviewed": "Name of filter that will show all feedback that has not yet been marked as anything. Parameters:\n* $1 is the number of records in this filter.\n{{Identical|Unreviewed}}",
