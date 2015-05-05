@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Aushulz",
-			"Gmelfi"
+			"Gmelfi",
+			"Pippinu"
 		]
 	},
 	"articlefeedbackv5-cta4-button-text-login": "Trasi",
-	"articlefeedbackv5-special-filter-hidden": "'Nvisibbili",
-	"articlefeedbackv5-special-filter-all": "Tutti",
-	"articlefeedbackv5-special-more": "Cchiù assà'",
-	"articlefeedbackv5-discussion-page": "Pàggina di discussioni",
+	"articlefeedbackv5-special-filter-hidden": "Ammucciati ($1)",
+	"articlefeedbackv5-special-filter-all": "Tutti li missaggi ($1)",
+	"articlefeedbackv5-special-more": "Ammustra autri missaggi",
+	"articlefeedbackv5-discussion-page": "Discussioni",
 	"articlefeedbackv5-bucket1-question-toggle": "Attruvasti soccu stavi circannu?",
 	"articlefeedbackv5-bucket1-toggle-found-yes": "Sè",
 	"articlefeedbackv5-bucket1-toggle-found-no": "Nò",
