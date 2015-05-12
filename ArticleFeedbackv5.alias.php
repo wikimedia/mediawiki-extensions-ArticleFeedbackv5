@@ -21,7 +21,7 @@ $specialPageAliases['ar'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'قائمة_مراقبة_تعليقات_المقالات_ن5' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Arabic (مصرى) */
 $specialPageAliases['arz'] = array(
 	'ArticleFeedbackv5' => array( 'كومنتات_المقالات_فى5' ),
 	'ArticleFeedbackv5Watchlist' => array( 'قايمه_مراقبه_كومناتا_المقالات_فى5' ),
@@ -91,7 +91,7 @@ $specialPageAliases['lb'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'Artikel-Feedback_Versioun_5_Iwweerwaachungslëscht' ),
 );
 
-/** لوری (لوری) */
+/** لوری مینجایی (لوری مینجایی) */
 $specialPageAliases['lrc'] = array(
 	'ArticleFeedbackv5' => array( 'پشت_راس_کار_حوال_حون_گوتار_نسقه5' ),
 	'ArticleFeedbackv5Watchlist' => array( 'سیل_برگ_پشت_راست_کار_حوال_حون_گوتار_نسقه5' ),
