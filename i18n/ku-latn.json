@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"George Animal",
-			"Ghybu"
+			"Ghybu",
+			"Bikarhêner"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Spas!",
@@ -19,8 +20,8 @@
 	"articlefeedbackv5-special-refresh": "Lîsteyê nû bike",
 	"articlefeedbackv5-loading-tag": "Tê barkirin...",
 	"articlefeedbackv5-new-marker": "Nû",
-	"articlefeedbackv5-autohide-marker": "VeşartÎ",
-	"articlefeedbackv5-hide-marker": "VeşartÎ",
+	"articlefeedbackv5-autohide-marker": "Veşartî",
+	"articlefeedbackv5-hide-marker": "Veşartî",
 	"articlefeedbackv5-whats-this": "Alîkarî",
 	"articlefeedbackv5-mask-view-contents": "Naverokan bibîne",
 	"articlefeedbackv5-permalink-info-revision-link": "Guhertoya kevn a vê rûpelê bibîne",
