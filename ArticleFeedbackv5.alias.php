@@ -91,7 +91,7 @@ $specialPageAliases['lb'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'Artikel-Feedback_Versioun_5_Iwweerwaachungslëscht' ),
 );
 
-/** لوری مینجایی (لوری مینجایی) */
+/** Northern Luri (لوری مینجایی) */
 $specialPageAliases['lrc'] = array(
 	'ArticleFeedbackv5' => array( 'پشت_راس_کار_حوال_حون_گوتار_نسقه5' ),
 	'ArticleFeedbackv5Watchlist' => array( 'سیل_برگ_پشت_راست_کار_حوال_حون_گوتار_نسقه5' ),
