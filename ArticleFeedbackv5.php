@@ -456,7 +456,6 @@ $wgAPIModules['articlefeedbackv5']                   = 'ApiArticleFeedbackv5';
 // Special Page
 $wgSpecialPages['ArticleFeedbackv5'] = 'SpecialArticleFeedbackv5';
 $wgSpecialPages['ArticleFeedbackv5Watchlist'] = 'SpecialArticleFeedbackv5Watchlist';
-$wgSpecialPageGroups['ArticleFeedbackv5'] = 'other';
 
 $wgArticleFeedbackv5Permissions = array(
 	'aft-reader',

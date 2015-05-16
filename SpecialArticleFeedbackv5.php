@@ -875,4 +875,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$user = $this->getUser();
 		return $user->isAllowed( $permission ) && !$user->isBlocked();
 	}
+
+	protected function getGroupName() {
+		return 'other';
+	}
 }
