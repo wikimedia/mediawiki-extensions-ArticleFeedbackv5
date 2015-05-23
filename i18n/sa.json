@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ansumang",
-			"Shubha"
+			"Shubha",
+			"NehalDaveND"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "धन्यवादः!",
@@ -16,7 +17,7 @@
 	"articlefeedbackv5-cta3-button-text": "सर्वेक्षणम् आरभताम्",
 	"articlefeedbackv5-cta4-confirmation-title": "अस्माकं समुदायं प्रविशतु",
 	"articlefeedbackv5-cta4-button-text-signup": "सदस्यता प्राप्यताम्",
-	"articlefeedbackv5-cta4-button-text-login": "सम्प्रवेशः",
+	"articlefeedbackv5-cta4-button-text-login": "प्रविश्यताम्",
 	"articlefeedbackv5-cta4-button-text-later": "अनन्तरं स्यात्",
 	"articlefeedbackv5-cta4-button-text-or": "अथवा",
 	"articlefeedbackv5-cta5-confirmation-title": "अन्ये किं वदन्तः सन्ति इति अवलोक्यताम्",
@@ -27,7 +28,7 @@
 	"articlefeedbackv5-error-nofeedback": "भवतः प्रतिस्पन्दः दर्श्यताम् ।",
 	"articlefeedbackv5-contribs-entry-status": "स्थितिः : $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "उपकारकम्",
-	"articlefeedbackv5-contribs-status-action-feature": "प्रमुखम्",
+	"articlefeedbackv5-contribs-status-action-feature": "उपयुक्तम्",
 	"articlefeedbackv5-contribs-status-action-resolve": "परिहृतम्",
 	"articlefeedbackv5-contribs-status-action-inappropriate": "गोपितम्",
 	"articlefeedbackv5-contribs-status-action-oversight": "अलक्षितम्",
@@ -38,7 +39,7 @@
 	"articlefeedbackv5-special-filter-helpful": "उपकारकम् ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "नोपकारकम् ($1)",
 	"articlefeedbackv5-special-filter-all": "समग्रम् (अलक्ष्यम्) ($1)",
-	"articlefeedbackv5-special-filter-featured-watchlist": "प्रमुखम्",
+	"articlefeedbackv5-special-filter-featured-watchlist": "निर्वाचितम्",
 	"articlefeedbackv5-special-filter-helpful-watchlist": "उपकारकम्",
 	"articlefeedbackv5-special-filter-unhelpful-watchlist": "नोपकारकम्",
 	"articlefeedbackv5-special-filter-resolved-watchlist": "परिहृतम्",
@@ -49,5 +50,5 @@
 	"articlefeedbackv5-discussion-page": "सम्भाषणम्",
 	"articlefeedbackv5-whats-this": "साहाय्यम्",
 	"articlefeedbackv5-bucket1-toggle-found-yes": "आम्",
-	"articlefeedbackv5-bucket1-toggle-found-no": "नहीं"
+	"articlefeedbackv5-bucket1-toggle-found-no": "न"
 }
