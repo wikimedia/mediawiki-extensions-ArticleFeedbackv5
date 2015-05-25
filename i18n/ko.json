@@ -407,7 +407,7 @@
 	"articlefeedbackv5-noteflyover-unarchive-submit": "참고 추가",
 	"articlefeedbackv5-noteflyover-unarchive-help": "더 알아보기",
 	"articlefeedbackv5-noteflyover-request-caption": "기록보호자 요청",
-	"articlefeedbackv5-noteflyover-request-description": "오버사이트를 요청하기 전에, 이 게시물에 다음 문제 중\n하나를 포함하고 있는지 확인하세요:\n* 전화 번호\n* 이메일 주소\n* 포르노그래피 링크\n* 사람에 대한 명예 훼손/비방 의견\n* [//ko.wikipedia.org/wiki/위키백과:오버사이트#정책 오버사이트에 대한 기타 기준]",
+	"articlefeedbackv5-noteflyover-request-description": "역사 숨김을 요청하기 전에, 이 게시물이 다음 문제들 중\n하나에 해당하는지 확인하세요:\n* 전화 번호\n* 이메일 주소\n* 포르노그래피 링크\n* 사람에 대한 명예 훼손/비방 의견\n* [[위키백과:기록보호자#권한의 사용]]",
 	"articlefeedbackv5-noteflyover-request-label": "오버사이트를 요청하는 이유를 설명하는 참고 추가",
 	"articlefeedbackv5-noteflyover-request-placeholder": "왜 오버사이트를 요청했습니까?",
 	"articlefeedbackv5-noteflyover-request-submit": "기록보호자 요청",
