@@ -93,8 +93,8 @@ $specialPageAliases['lb'] = array(
 
 /** Northern Luri (لوری مینجایی) */
 $specialPageAliases['lrc'] = array(
-	'ArticleFeedbackv5' => array( 'پشت_راس_کار_حوال_حون_گوتار_نسقه5' ),
-	'ArticleFeedbackv5Watchlist' => array( 'سیل_برگ_پشت_راست_کار_حوال_حون_گوتار_نسقه5' ),
+	'ArticleFeedbackv5' => array( 'پوشت_راس_کار_حأڤال_حوٙن_گوتار_نوسقە_۵' ),
+	'ArticleFeedbackv5Watchlist' => array( 'سئیل_بأرگ_پوشت_راست_کار_حأڤال_حوٙن_گوتار_نوسقە_۵' ),
 );
 
 /** Malagasy (Malagasy) */
