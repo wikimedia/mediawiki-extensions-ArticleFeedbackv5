@@ -26,7 +26,8 @@
 			"Sporeunai",
 			"Stephensuleeman",
 			"Toliño",
-			"Translationista"
+			"Translationista",
+			"Macofe"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "¡Gracias!",
@@ -560,7 +561,7 @@
 	"articlefeedbackv5-activity-item-unhelpful": "$1 {{GENDER:$6|marcó}} esta publicación como nada útil el $4 a las $5 $2",
 	"articlefeedbackv5-activity-item-undo-helpful": "$1 {{GENDER:$6|quitó la marca}} de muy útil a esta publicación el $4 a las $5 $2",
 	"articlefeedbackv5-activity-item-undo-unhelpful": "$1 {{GENDER:$6|quitó la marca}} de nada útil a esta publicación el $4 a las $5 $2",
-	"articlefeedbackv5-activity-item-clear-flags": "$1 ha borrado todas las etiquetas de esta publicación el $3 $2",
+	"articlefeedbackv5-activity-item-clear-flags": "$1 {{GENDER:$6|quitó}} todas las etiquetas de esta publicación el $4 a las $5 $2",
 	"articlefeedbackv5-activity-note-archive": "Archivado tras {{PLURAL:$1|$1 día|$1 días}} sin actividad",
 	"articlefeedbackv5-activity-count": "{{PLURAL:$1|$1 acción|$1 acciones}} en esta entrada (post)",
 	"articlefeedbackv5-activity-more": "Mostrar más actividad",
