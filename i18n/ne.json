@@ -4,12 +4,13 @@
 			"Bhawani Gautam",
 			"Bhawani Gautam Rhk",
 			"RajeshPandey",
-			"सरोज कुमार ढकाल"
+			"सरोज कुमार ढकाल",
+			"राम प्रसाद जोशी"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "धन्यबाद!",
 	"articlefeedbackv5-cta1-confirmation-title": "के तपाईंलाई यो पृष्ठ सम्पादन गर्न सकिन्छ भनेर थाहा थियो?",
-	"articlefeedbackv5-cta1-confirmation-call": "विकिपीडिया काम गर्छ किनभने कसैले पनि यसका पृष्ठहरु सम्पादन गर्न सक्छन।  जानुहोस, गएर कोशिस गर्नुहोस । आँटिलो हुनुहोस!",
+	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} काम गर्छ किनभने कसैले पनि यसका पृष्ठहरू सम्पादन गर्न सक्छन्।  जानुहोस्, गएर कोशिस गर्नुहोस् । आँटिलो हुनुहोस्!",
 	"articlefeedbackv5-cta1-learn-how": "पृष्ठ सम्पादन गर्न सिक्नुहोस",
 	"articlefeedbackv5-cta1-edit-linktext": "यो पृष्ठ सम्पादन गर्नुहोस",
 	"articlefeedbackv5-cta2-confirmation-title": "विकिपीडिया लाई अझ राम्रो बनाउनमा मद्दत गर्नुहोस",
