@@ -91,7 +91,7 @@ $specialPageAliases['lb'] = array(
 	'ArticleFeedbackv5Watchlist' => array( 'Artikel-Feedback_Versioun_5_Iwweerwaachungslëscht' ),
 );
 
-/** Northern Luri (لوری مینجایی) */
+/** Northern Luri (لۊری شومالی) */
 $specialPageAliases['lrc'] = array(
 	'ArticleFeedbackv5' => array( 'پوشت_راس_کار_حأڤال_حوٙن_گوتار_نوسقە_۵' ),
 	'ArticleFeedbackv5Watchlist' => array( 'سئیل_بأرگ_پوشت_راست_کار_حأڤال_حوٙن_گوتار_نوسقە_۵' ),
