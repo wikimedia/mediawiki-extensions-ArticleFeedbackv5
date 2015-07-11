@@ -531,7 +531,7 @@
 	"logentry-articlefeedbackv5-undo-helpful": "$1 {{GENDER:$2|ha desmarcado como útil}} [[$3|el comentario de opinión #$4]] sobre [[$5]]",
 	"logentry-articlefeedbackv5-undo-unhelpful": "$1 {{GENDER:$2|ha desmarcado como inútil}} [[$3|el comentario de opinión #$4]] sobre [[$5]]",
 	"logentry-articlefeedbackv5-clear-flags": "$1 {{GENDER:$2|ha eliminado todas las etiquetas del}} [[$3|comentario de opinión #$4]] sobre [[$5]]",
-	"logentry-articlefeedbackv5-protect": "$1 {{GENDER:$2|visibilidad cambiante}} de la herramienta de retroalimentación de artículo en \" $3 \"$4",
+	"logentry-articlefeedbackv5-protect": "$1 {{GENDER:$2|cambió}} la visibilidad de la herramienta de comentarios del artículo en \"$3\" $4",
 	"articlefeedbackv5-activity-pane-header": "Registro de actividad",
 	"articlefeedbackv5-activity-feedback-info": "Comentario por $2",
 	"articlefeedbackv5-activity-feedback-date": "Publicado el $1",
