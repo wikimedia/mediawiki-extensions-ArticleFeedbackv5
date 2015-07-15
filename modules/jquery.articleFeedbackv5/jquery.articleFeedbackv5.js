@@ -2677,14 +2677,14 @@
 					var feedbackIdsCookieName = mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'feedback-ids' );
 
 					// save add feedback id to cookie (only most recent 20)
-					var feedbackIds = $.parseJSON( $.cookie( feedbackIdsCookieName ) );
+					var feedbackIds = JSON.parse( $.cookie( feedbackIdsCookieName ) );
 					if ( !$.isArray( feedbackIds ) ) {
 						feedbackIds = [];
 					}
 					feedbackIds.unshift( data.articlefeedbackv5.feedback_id );
 					$.cookie(
 						feedbackIdsCookieName,
-						$.toJSON( feedbackIds.splice( 0, 20 ) ),
+						JSON.stringify( feedbackIds.splice( 0, 20 ) ),
 						{ expires: 30, path: '/' }
 					);
 

@@ -719,7 +719,7 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 	'dependencies' => array(
 		'jquery.appear',
 		'jquery.tipsy',
-		'jquery.json',
+		'json',
 		'jquery.localize',
 		'jquery.ui.button',
 		'jquery.cookie',
@@ -906,7 +906,7 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'jquery.tipsy',
 		'jquery.localize',
 		'jquery.articleFeedbackv5.track',
-		'jquery.json',
+		'json',
 		'jquery.ui.button',
 	),
 ) + $wgArticleFeedbackResourcePaths;
