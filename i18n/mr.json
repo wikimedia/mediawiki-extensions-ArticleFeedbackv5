@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"V.narsikar"
+			"V.narsikar",
+			"Suyog"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "धन्यवाद!",
@@ -13,7 +14,7 @@
 	"articlefeedbackv5-cta2-confirmation-title": "{{SITENAME}} सुधरवण्यास मदत करा",
 	"articlefeedbackv5-cta2-confirmation-call": "हे संकेतस्थळ आपल्यासारख्या लोकांनी निर्माण केले आहे.काय आपण आम्हास मदतीचा हात देउ शकता?",
 	"articlefeedbackv5-cta2-button-text": "अधिक शिका",
-	"articlefeedbackv5-cta3-confirmation-title": "त्वरीत सर्वेक्षण करा",
+	"articlefeedbackv5-cta3-confirmation-title": "सर्वेक्षणात भाग घ्या",
 	"articlefeedbackv5-cta3-confirmation-call": "त्यास फक्त एकच मिनिट वेळ लागतो त्याने {{SITENAME}} सुधरविण्यास मदत मिळेल.",
 	"articlefeedbackv5-cta3-button-text": "सर्वेक्षण सुरू करा",
 	"articlefeedbackv5-cta4-confirmation-title": "आमच्या समुदायास जुळा",
@@ -55,7 +56,7 @@
 	"articlefeedbackv5-disabled-editor-admin": "प्रशासकाद्वारे, प्रतिक्रिया अक्षम करण्यात आली आहे.वाचक व संपादक या पानावर, नविन प्रतिक्रिया देऊ शकत नाही.",
 	"articlefeedbackv5-disabled-editor-editor": "प्रतिक्रिया देणे अक्षम करण्यात आले आहे.वाचक या पानावर, नविन प्रतिक्रिया देऊ शकत नाही.",
 	"articlefeedbackv5-disabled-reader": "प्रतिक्रिया देणे अक्षम करण्यात आले आहे.वाचक या पानावर, नविन प्रतिक्रिया देऊ शकत नाहीत.",
-	"articlefeedbackv5-disabled-admin-button-text": "सुरक्षा बदला",
+	"articlefeedbackv5-disabled-admin-button-text": "सुरक्षा पातली बदला",
 	"articlefeedbackv5-disabled-editor-button-text": "प्रतिक्रिया देणे सक्षम करा",
 	"articlefeedbackv5-settings-status-enable": "या पानावर प्रतिक्रिया देणे सक्षम करा",
 	"articlefeedbackv5-settings-status-disable": "या पानावर प्रतिक्रिया देणे अक्षम करा",
@@ -66,9 +67,9 @@
 	"articlefeedbackv5-contribs-status-action-flag": "खूणपताकासह",
 	"articlefeedbackv5-contribs-status-action-feature": "कामाचे",
 	"articlefeedbackv5-contribs-status-action-resolve": "वियोजित",
-	"articlefeedbackv5-contribs-status-action-noaction": "कोणतीही कार्यवाही नको",
+	"articlefeedbackv5-contribs-status-action-noaction": "कोणतीही कार्यवाहीची गरज नहि",
 	"articlefeedbackv5-contribs-status-action-inappropriate": "अयोग्य",
-	"articlefeedbackv5-contribs-status-action-archive": "दप्तरदाखल",
+	"articlefeedbackv5-contribs-status-action-archive": "पुराभिलेख",
 	"articlefeedbackv5-contribs-status-action-hide": "लपवा",
 	"articlefeedbackv5-contribs-status-action-request": "झापडबंदची विनंती",
 	"articlefeedbackv5-contribs-hidden-feedback": "लपविलेले शेरे",
@@ -89,7 +90,7 @@
 	"articlefeedbackv5-special-filter-resolved": "वियोजित ($1)",
 	"articlefeedbackv5-special-filter-noaction": "काहीच कार्यवाही नको($1)",
 	"articlefeedbackv5-special-filter-inappropriate": "अयोग्य($1)",
-	"articlefeedbackv5-special-filter-archived": "दप्तरदाखल ($1)",
+	"articlefeedbackv5-special-filter-archived": "पुराभिलेख ($1)",
 	"articlefeedbackv5-special-filter-allcomment": "सर्व शेरे ($1)",
 	"articlefeedbackv5-special-filter-hidden": "लपविलेले ($1)",
 	"articlefeedbackv5-special-filter-oversighted": "सर्व उत्तरे ($1)",
@@ -102,7 +103,7 @@
 	"articlefeedbackv5-special-filter-resolved-watchlist": "वियोजित",
 	"articlefeedbackv5-special-filter-noaction-watchlist": "काहीच कार्यवाही नको",
 	"articlefeedbackv5-special-filter-inappropriate-watchlist": "अयोग्य",
-	"articlefeedbackv5-special-filter-archived-watchlist": "दप्तरदाखल",
+	"articlefeedbackv5-special-filter-archived-watchlist": "पुराभिलेख",
 	"articlefeedbackv5-special-filter-allcomment-watchlist": "सर्व शेरे",
 	"articlefeedbackv5-special-filter-hidden-watchlist": "लपविलेला",
 	"articlefeedbackv5-special-filter-all-watchlist": "सर्व उत्तरे",
