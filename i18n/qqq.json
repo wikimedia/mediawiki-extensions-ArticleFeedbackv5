@@ -211,7 +211,7 @@
 	"articlefeedbackv5-form-inappropriate": "Link text for marking the post as inappropriate (in the toolbox)",
 	"articlefeedbackv5-form-uninappropriate": "Link text for un-marking the post as inappropriate (in the toolbox).\n{{Identical|Undo}}",
 	"articlefeedbackv5-form-hide": "Link text for hiding the post (in the toolbox).\n{{Identical|Hide post}}",
-	"articlefeedbackv5-form-unhide": "Link text for un-hiding the post (in the toolbox)",
+	"articlefeedbackv5-form-unhide": "Link text for un-hiding the post (in the toolbox)\n{{Identical|Undo}}",
 	"articlefeedbackv5-form-archive": "Link text for archiving the post (in the toolbox). This is an action.\n{{Identical|Archive}}",
 	"articlefeedbackv5-form-unarchive": "Link text for un-archiving the post (in the toolbox).\n{{Identical|Undo}}",
 	"articlefeedbackv5-form-helpful": "Unused at this time.\n\nParameters:\n* $1 - ...",

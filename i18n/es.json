@@ -64,7 +64,7 @@
 	"articlefeedbackv5-error-unknown": "Error desconocido.",
 	"articlefeedbackv5-error-submit": "Error de envío de formulario.",
 	"articlefeedbackv5-error-duplicate": "La información presentada es un duplicado de los últimos comentarios ¿Tal vez usted ha enviado los comentarios por duplicado?",
-	"articlefeedbackv5-error-nofeedback": "Introduce tus comentarios.",
+	"articlefeedbackv5-error-nofeedback": "Escribe tus comentarios.",
 	"articlefeedbackv5-error-flagging": "Error proporcionando la opinión",
 	"articlefeedbackv5-error-throttled": "Tu mensaje ha sido rechazado porque recientemente has publicado más comentarios de los recomendados en las directrices de comentarios de {{SITENAME}}. Por favor no publiques los comentarios repetidas veces o en número excesivo.",
 	"articlefeedbackv5-protection-level": "Comentarios del artículo",
