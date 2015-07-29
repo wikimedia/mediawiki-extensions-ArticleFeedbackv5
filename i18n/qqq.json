@@ -107,7 +107,7 @@
 	"articlefeedbackv5-contribs-hidden-feedback": "message to display in my contributions, instead of the actual feedback, when feedback has been hidden/oversight requested/oversighted",
 	"articlefeedbackv5-form-toolbox-label": "Message informing the user that the below links (useful, resolved, no action needed, inappropriate) are meant to mark feedback as such",
 	"articlefeedbackv5-form-own-toolbox-label": "Message informing the user that the link below (resolved, no action needed, inappropriate) are meant to mark feedback as such, for feedback the user submitted him/herself",
-	"articlefeedbackv5-form-own-feedback": "Message informing the user (s)he cannot review your his/her own post.",
+	"articlefeedbackv5-form-own-feedback": "Message informing the user that he/she cannot review his/her own post.",
 	"articlefeedbackv5-form-helpful-label": "A question asking if the feedback is helpful.",
 	"articlefeedbackv5-form-helpful-yes-label": "{{Identical|Yes}}",
 	"articlefeedbackv5-form-helpful-no-label": "{{Identical|No}}",
