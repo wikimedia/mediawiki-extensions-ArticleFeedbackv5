@@ -345,7 +345,7 @@
 	"articlefeedbackv5-permalink-status-undo-unhelpful": "$2에 {{GENDER:$1|$1에 의해 <strong>유용하지 않은 것으로 표시 취소함</strong>}}",
 	"articlefeedbackv5-permalink-last-action": "마지막 행동",
 	"articlefeedbackv5-permalink-activity-more": "더 많은 작업 보기...",
-	"articlefeedbackv5-permalink-activity-fewer": "더 적은 작업 보기...",
+	"articlefeedbackv5-permalink-activity-fewer": "작업 덜 보기...",
 	"articlefeedbackv5-noteflyover-feature-caption": "유용한 것으로 표시함",
 	"articlefeedbackv5-noteflyover-feature-label": "의견 추가",
 	"articlefeedbackv5-noteflyover-feature-placeholder": "왜 이 게시물을 유용한 것으로 표시했습니까?",
