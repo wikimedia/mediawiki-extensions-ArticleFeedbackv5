@@ -148,7 +148,7 @@
 	/**
 	 * Is this an anonymous user?
 	 */
-	$.articleFeedbackv5.anonymous = mw.user.anonymous();
+	$.articleFeedbackv5.anonymous = mw.user.isAnon();
 
 	/**
 	 * If not, what's their user id?
