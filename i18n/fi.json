@@ -14,7 +14,8 @@
 			"Snidata",
 			"Stryn",
 			"VezonThunder",
-			"McSalama"
+			"McSalama",
+			"Jack Phoenix"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Kiitos!",
@@ -39,7 +40,7 @@
 	"articlefeedbackv5-cta5-confirmation-title": "Katso, mitä muut sanovat",
 	"articlefeedbackv5-cta5-confirmation-call": "Näytä ehdotuksia muilta sinunkaltaisilta lukijoilta. Voitko auttaa valitsemaan parhaat ajatukset?",
 	"articlefeedbackv5-cta5-button-text": "Katso kaikki kommentit",
-	"articlefeedbackv5-cta6-confirmation-title": "Tarvitsekoa apua, muokkaat {{SITENAME}} -sivustoa?",
+	"articlefeedbackv5-cta6-confirmation-title": "Tarvitsetko apua {{GRAMMAR:genitive|{{SITENAME}}}} muokkaamiseen?",
 	"articlefeedbackv5-cta6-confirmation-call": "Keskustellaksesi muokkauksista sivulla {{SITENAME}} tule kahvihuoneeseen, johon uudet ja kokeneet muokkaajat kokoontuvat jakamaan tietojaan.",
 	"articlefeedbackv5-cta6-button-text": "Vieraile teehuoneessa",
 	"articlefeedbackv5-cta6-button-link": "//en.wikipedia.org/wiki/Wikipedia:Teahouse?ref=aft",
