@@ -107,7 +107,7 @@
 			// if user is logged in, showing on action=purge is OK,
 			// but if user is logged out, action=purge shows a form instead of the article,
 			// so return false in that case.
-			enable &= !( mw.config.get( 'wgAction' ) == 'purge' && mw.user.anonymous() );
+			enable &= !( mw.config.get( 'wgAction' ) == 'purge' && mw.user.isAnon() );
 
 			// current revision
 			enable &= mw.util.getParamValue( 'diff' ) == null;

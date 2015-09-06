@@ -9,7 +9,7 @@ jQuery( function( $ ) {
 	if ( mw.config.get( 'wgArticleFeedbackv5Watchlist' ) && mw.config.get( 'wgArticleFeedbackv5WatchlistLink' ) ) {
 
 		// Check if we're not dealing with anon user
-		if ( mw.user.anonymous() ) {
+		if ( mw.user.isAnon() ) {
 			return;
 		}
 

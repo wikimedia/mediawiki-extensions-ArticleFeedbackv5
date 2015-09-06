@@ -164,7 +164,7 @@
 	 */
 	$.articleFeedbackv5special.setup = function() {
 		// Get the user type
-		if ( mw.user.anonymous() ) {
+		if ( mw.user.isAnon() ) {
 			$.articleFeedbackv5special.userType = 'anon';
 		} else if ( mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-oversighter'] ) {
 			$.articleFeedbackv5special.userType = 'oversighter';
