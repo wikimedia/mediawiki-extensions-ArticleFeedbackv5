@@ -57,7 +57,7 @@
 	"articlefeedbackv5-cta5-confirmation-call": "The explanatory text of the feedback CTA (call to action)",
 	"articlefeedbackv5-cta5-button-text": "The text for the button on the feedback CTA (call to action)",
 	"articlefeedbackv5-cta6-confirmation-title": "The title of the feedback CTA (call to action)",
-	"articlefeedbackv5-cta6-confirmation-call": "The explanatory text of the feedback CTA (call to action). See https://bugzilla.wikimedia.org/show_bug.cgi?id=39578 .",
+	"articlefeedbackv5-cta6-confirmation-call": "The explanatory text of the feedback CTA (call to action). See [[phab:T41578]].",
 	"articlefeedbackv5-cta6-button-text": "The text for the button on the feedback CTA (call to action). See https://bugzilla.wikimedia.org/show_bug.cgi?id=39578 .",
 	"articlefeedbackv5-cta6-button-link": "The link for the button on the feedback CTA (call to action)",
 	"articlefeedbackv5-overlay-close": "The alt-text for the close button in overlay-mode.\n{{Identical|Close}}",
