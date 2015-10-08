@@ -60,7 +60,7 @@
 	"articlefeedbackv5-error": "Ha ocurrido un error. Inténtalo de nuevo más tarde.",
 	"articlefeedbackv5-error-blocked": "Los usuarios bloqueados no pueden enviar comentarios.",
 	"articlefeedbackv5-error-validation": "Error de validación.",
-	"articlefeedbackv5-error-abuse": "Tu mensaje ha sido rechazado por un software de filtro que sugiere que puede no satisfacer a {{SITENAME}} [$1 comentarios directrices]. Por favor, revisar su mensaje e inténtelo de nuevo. ({{PLURAL:$2|Filtro|Filtros}}: $3)",
+	"articlefeedbackv5-error-abuse": "Tu mensaje ha sido rechazado por un filtro de software que sugiere que quizás no satisfaga las [$1 directrices sobre comentarios] de {{SITENAME}}. Revisa tu mensaje e inténtalo de nuevo. ({{PLURAL:$2|Filtro|Filtros}}: $3)",
 	"articlefeedbackv5-error-unknown": "Error desconocido.",
 	"articlefeedbackv5-error-submit": "Error de envío de formulario.",
 	"articlefeedbackv5-error-duplicate": "El comentario enviado es un duplicado del último comentarios. ¿Tal vez enviaste el comentario dos veces?",
