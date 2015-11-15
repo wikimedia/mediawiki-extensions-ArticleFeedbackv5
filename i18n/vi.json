@@ -39,7 +39,7 @@
 	"articlefeedbackv5-error-nofeedback": "Xin vui lòng gõ phản hồi của bạn.",
 	"articlefeedbackv5-error-flagging": "Có lỗi khi gắn cờ thông tin phản hồi.",
 	"articlefeedbackv5-protection-level": "Phản hồi bài",
-	"articlefeedbackv5-protection-level-error": "Mức độ bảo vệ phản hồi bài viết không được cao hơn mức độ bảo vệ Chỉnh sửa",
+	"articlefeedbackv5-protection-level-error": "Mức độ khóa phản hồi bài viết không được cao hơn mức độ khóa Sửa đổi",
 	"protect-level-aft-reader": "Cho phép tất cả người dùng",
 	"protect-level-aft-member": "Chỉ cho phép người dùng đã đăng nhập",
 	"protect-level-aft-editor": "Chỉ co phép đối với người dùng tự động xác định",
