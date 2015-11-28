@@ -54,7 +54,7 @@
 	"articlefeedbackv5-error-unknown": "Άγνωστο σφάλμα.",
 	"articlefeedbackv5-error-submit": "Σφάλμα κατά την υποβολή της φόρμας.",
 	"articlefeedbackv5-error-duplicate": "Το σχόλιο που υποβλήθηκε είναι ακριβές αντίγραφο του τελευταίου σχολίου αξιολόγησης· μήπως υποβάλλατε κατά λάθος το ίδιο κείμενο δύο φορές;",
-	"articlefeedbackv5-error-nofeedback": "Παρακαλώ εισάγετε τα σχόλιά σας.",
+	"articlefeedbackv5-error-nofeedback": "Παρακαλούμε εισαγάγετε τα σχόλιά σας.",
 	"articlefeedbackv5-error-flagging": "Σφάλμα στην επισήμανση των σχολίων σας",
 	"articlefeedbackv5-error-throttled": "Η καταχώρησή σας έχει απορριφθεί επειδή έχετε καταχωρήσει, πρόσφατα, περισσότερα σχόλια από όσα συνιστώνται στις οδηγίες της {{SITENAME}}. Παρακαλώ μην καταχωρείτε υπερβολικά πολλά σχόλια αξιολόγησης ή κατ' επανάληψη.",
 	"articlefeedbackv5-protection-level": "Σχόλια αξιολόγησης λήμματος",
