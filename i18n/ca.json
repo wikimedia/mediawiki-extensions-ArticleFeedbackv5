@@ -14,7 +14,8 @@
 			"Qllach",
 			"Solde",
 			"Toniher",
-			"Fitoschido"
+			"Fitoschido",
+			"Jaumeortola"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Gràcies!",
@@ -26,7 +27,7 @@
 	"articlefeedbackv5-cta2-confirmation-title": "Ajuda a millorar {{SITENAME}}",
 	"articlefeedbackv5-cta2-confirmation-call": "Aquest lloc web està creat per gent com tu. Ens pots donar un cop de mà?",
 	"articlefeedbackv5-cta2-button-text": "Aprèn-ne més",
-	"articlefeedbackv5-cta3-confirmation-title": "Si us plau fes una enquesta ràpida",
+	"articlefeedbackv5-cta3-confirmation-title": "Si us plau, feu una enquesta ràpida.",
 	"articlefeedbackv5-cta3-confirmation-call": "Només et suposarà un minut i ajudarà a millorar {{SITENAME}}.",
 	"articlefeedbackv5-cta3-button-text": "Comença l'enquesta",
 	"articlefeedbackv5-cta4-confirmation-title": "Uneix-te a la nostra comunitat",
@@ -47,7 +48,7 @@
 	"articlefeedbackv5-error-validation": "Error de validació.",
 	"articlefeedbackv5-error-unknown": "Error desconegut.",
 	"articlefeedbackv5-error-submit": "Error d'enviament del formulari.",
-	"articlefeedbackv5-error-nofeedback": "Si us plau, escriu els teus comentaris.",
+	"articlefeedbackv5-error-nofeedback": "Si us plau, escriviu els vostres comentaris.",
 	"articlefeedbackv5-error-flagging": "Error en marcar el comentari.",
 	"protect-level-aft-reader": "Activa-ho per tots els usuaris",
 	"protect-level-aft-member": "Activa-ho només per als usuaris que han iniciat la sessió",
