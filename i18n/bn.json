@@ -382,7 +382,7 @@
 	"articlefeedbackv5-article-view-feedback": "$1জন পাঠক {{PLURAL:$1|মন্তব্য}}",
 	"articlefeedbackv5-talk-view-feedback": "পাঠকের প্রতিক্রিয়া দেখাও",
 	"articlefeedbackv5-watchlist-view-feedback": "আমার নজরে থাকা পাতা সম্পর্কিত প্রতিক্রিয়া",
-	"articlefeedbackv5-disable-flyover-title": "এই টুল সরাবেন?",
+	"articlefeedbackv5-disable-flyover-title": "এই সরঞ্জাম সরাবেন?",
 	"articlefeedbackv5-disable-flyover-help-message": "নিবন্ধ প্রতিক্রিয়া অপসারণের জন্য, \"$1\" এ যান > \"$2\" এবং পরীক্ষা করুন \"$3\"",
 	"articlefeedbackv5-disable-flyover-prefbutton": "আমার পছন্দসমূহে যাও",
 	"abusefilter-edit-action-aftv5resolve": "(নিবন্ধ প্রতিক্রিয়া) স্বয়ংক্রিয়-মীমাংসা",
