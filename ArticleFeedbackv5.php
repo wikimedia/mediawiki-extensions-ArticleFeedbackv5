@@ -909,6 +909,7 @@ $wgResourceModules['jquery.articleFeedbackv5.special'] = array(
 		'json',
 		'jquery.ui.button',
 	),
+	'position' => 'top'
 ) + $wgArticleFeedbackResourcePaths;
 
 /*
