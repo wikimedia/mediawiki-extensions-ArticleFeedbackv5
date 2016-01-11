@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Arash71",
-			"Hosseinblue"
+			"Hosseinblue",
+			"Lakzon"
 		]
 	},
 	"articlefeedbackv5-form-note-added": "ویرنۆیسة-یادداشت اضافة بی",
@@ -18,5 +19,5 @@
 	"articlefeedbackv5-noteflyover-inappropriate-label": " افزودن ویرنۆیسة-یادداشت",
 	"articlefeedbackv5-noteflyover-inappropriate-submit": " افزودن ویرنۆیسة-یادداشت",
 	"articlefeedbackv5-noteflyover-unarchive-submit": " افزودن ویرنۆیسة-یادداشت",
-	"articlefeedbackv5-disable-flyover-prefbutton": "رفتن به ترجیحات من"
+	"articlefeedbackv5-disable-flyover-prefbutton": "بچۆ تمارزووەل(ترجیحات) ووِژِم"
 }
