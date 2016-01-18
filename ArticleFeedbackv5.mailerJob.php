@@ -80,7 +80,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 			isset( $params['notes'] ) ? $params['notes'] : ''
 		);
 
-		$status = UserMailer::send( $to, $from, $subject, $body, $replyto );
+		$status = UserMailer::send( $to, $from, $subject, $body, array( 'replyTo' => $replyto ) );
 
 		wfProfileOut( __METHOD__ );
 
