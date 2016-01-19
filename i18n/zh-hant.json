@@ -65,7 +65,7 @@
 	"protect-level-aft-editor": "僅對自動確認使用者開放使用",
 	"protect-level-aft-administrator": "僅對管理員開放使用",
 	"protect-level-aft-noone": "對所有使用者停用",
-	"articlefeedbackv5-protection-title": "已更改於 \"[[$1]]\" 之文章回饋工具可見性",
+	"articlefeedbackv5-protection-title": "已變更 \"[[$1]]\" 的文章回饋工具可見性",
 	"restriction-articlefeedbackv5": "可見性",
 	"articlefeedbackv5-disabled": "回饋已被停用",
 	"articlefeedbackv5-disabled-admin-admin": "讀者和編輯已被停用回饋。他們不能在此頁上發佈新的回饋。",
