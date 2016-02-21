@@ -518,7 +518,7 @@
 	"logentry-articlefeedbackv5-undo-helpful": "$1 {{GENDER:$2|heeft}} de nuttigmarkering verwijderd voor [[$3|terugkoppelingsbericht #$4]] op [[$5]]",
 	"logentry-articlefeedbackv5-undo-unhelpful": "$1 {{GENDER:$2|heeft}} de niet nuttigmarkering verwijderd voor [[$3|terugkoppelingsbericht #$4]] op [[$5]]",
 	"logentry-articlefeedbackv5-clear-flags": "$1 {{GENDER:$2|heeft}} alle markering verwijderd voor [[$3|terugkoppelingsbericht #$4]] op [[$5]]",
-	"logentry-articlefeedbackv5-protect": "{{GENDER:$2|$1}} heeft de zichtbaarheid gewijzigd van de artikel terugkoppeling-functie op \"$3\" $4",
+	"logentry-articlefeedbackv5-protect": "{{GENDER:$2|$1}} heeft de zichtbaarheid gewijzigd van de paginaterugkoppelfunctie op \"$3\" $4",
 	"articlefeedbackv5-activity-pane-header": "Activiteitenlogboek",
 	"articlefeedbackv5-activity-feedback-info": "Terugkoppeling door $2",
 	"articlefeedbackv5-activity-feedback-date": "Geplaatst op $1",
