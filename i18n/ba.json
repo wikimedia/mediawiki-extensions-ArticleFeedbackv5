@@ -48,7 +48,7 @@
 	"articlefeedbackv5-error-unknown": "Билдәһеҙ хата.",
 	"articlefeedbackv5-error-submit": "Анкета ебәргәндә хата китте.",
 	"articlefeedbackv5-error-duplicate": "Яуап хәбәре алдараҡ ебәрелгән хәбәрҙе ҡабатлай. Бәлки, һеҙ төймәгә яңылыш ике тапҡыр баҫҡанһығыҙҙыр?",
-	"articlefeedbackv5-error-nofeedback": "Зинһар өсөн, ферегеҙҙе ҡалдырығыҙ.",
+	"articlefeedbackv5-error-nofeedback": "Үҙ фекерегеҙҙе ҡалдырығыҙ.",
 	"articlefeedbackv5-error-flagging": "Яуап тамғаһын ҡуйғанда хата китте.",
 	"articlefeedbackv5-error-throttled": "«{{SITENAME}}» проекты ҡағиҙәлерендә ҡаралғандан күберәк хәбәр ебәрҙегеҙ, шуға һеҙҙең хәбәр кире ҡағылды. Зинһар өсөн күп хәбәр ебермәгеҙ һәм хәбәр ебәреүҙе йыш ҡабатламағыҙ.",
 	"articlefeedbackv5-protection-level": "Мәҡәләне баһалыу өсөн кире бәйләнеш",
