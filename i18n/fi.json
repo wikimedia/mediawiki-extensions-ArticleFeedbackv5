@@ -15,7 +15,8 @@
 			"Stryn",
 			"VezonThunder",
 			"McSalama",
-			"Jack Phoenix"
+			"Jack Phoenix",
+			"01miki10"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Kiitos!",
@@ -62,7 +63,7 @@
 	"protect-level-aft-editor": "Salli vain automaattisesti hyväksytyille käyttäjille",
 	"protect-level-aft-administrator": "Salli vain ylläpitäjille",
 	"protect-level-aft-noone": "Poista kaikkien käyttäjien käytöstä",
-	"articlefeedbackv5-protection-title": "\"[[$1]]\" palautteen näkyvyyttä muutettu",
+	"articlefeedbackv5-protection-title": "Muutti artikkelin palautetyökalun näkyvyyttä sivulla \"[[$1]]\"",
 	"restriction-articlefeedbackv5": "Näkyvyys",
 	"articlefeedbackv5-disabled": "Palautteen antaminen on poistettu käytöstä",
 	"articlefeedbackv5-disabled-admin-admin": "Palautteen antaminen on poistettu lukijoiden ja muokkaajien käytöstä. He eivät voi lähettää uutta palautetta tästä sivusta.",
@@ -137,6 +138,8 @@
 	"articlefeedbackv5-special-sort-age-asc": "Vanhin",
 	"articlefeedbackv5-special-sort-label": "Lajitteluperuste:",
 	"articlefeedbackv5-special-filter-select-more": "Lisää",
+	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|1 viesti|$1 viestiä}}",
+	"articlefeedbackv5-special-count-total-title": "$1 {{PLURAL:$1|viesti|viestiä}} kommenteilla, $2 {{PLURAL:$2|viesti|viestiä}} ilman",
 	"articlefeedbackv5-special-watchlist-showing": "Palaute käyttäjän [[$1|$2]] tarkkailemista sivuista",
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Palaute tarkkailemistani sivuista]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Näytä palaute kaikista sivuista]]",
