@@ -4,7 +4,8 @@
 			"Erdemaslancan",
 			"Gorizon",
 			"Marmase",
-			"Mirzali"
+			"Mirzali",
+			"Kumkumuk"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Teşekur kena!",
@@ -114,7 +115,7 @@
 	"articlefeedbackv5-viewactivity": "Aktivita bıvin",
 	"articlefeedbackv5-mask-view-contents": "Tedeesteyi bimocne",
 	"articlefeedbackv5-permalink-info-stats-title-length": "Dergin",
-	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 çekuyo|$1 çekuyê}}",
+	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 çeku|$1 çekuy}}",
 	"articlefeedbackv5-permalink-info-length-characters": "({{PLURAL:$1|$1 Karakter|$1 Karakteri}})",
 	"articlefeedbackv5-permalink-info-stats-title-scores": "Skori",
 	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "Eleqeyin:",
