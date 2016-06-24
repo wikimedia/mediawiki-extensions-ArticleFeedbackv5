@@ -11,7 +11,8 @@
 			"아라",
 			"Revi",
 			"Bluemersen",
-			"Ysjbserver"
+			"Ysjbserver",
+			"Ykhwong"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "감사합니다!",
@@ -49,7 +50,7 @@
 	"articlefeedbackv5-error-submit": "양식 제출에 오류가 났습니다.",
 	"articlefeedbackv5-error-duplicate": "제출한 피드백은 마지막 피드백과 중복됩니다. 아마도 실수로 두 번 의견을 제출했습니까?",
 	"articlefeedbackv5-error-nofeedback": "피드백을 입력해주세요.",
-	"articlefeedbackv5-error-flagging": "피드백을 플래그 하는 중 오류가 났습니다.",
+	"articlefeedbackv5-error-flagging": "피드백을 플래그 처리하는 중 오류가 났습니다.",
 	"articlefeedbackv5-error-throttled": "{{SITENAME}}의 피드백 지침에서 권장 사항보다 더 많은 피드백을 게시했기 때문에 게시물이 거부되었습니다. 반복하거나 과도하게 피드백을 게시하지 마세요.",
 	"articlefeedbackv5-protection-level": "문서 평가",
 	"articlefeedbackv5-protection-level-error": "문서 피드백 보호 수준은 편집 보호 수준보다 높일 수 없습니다.",
