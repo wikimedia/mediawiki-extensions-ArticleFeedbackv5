@@ -424,7 +424,6 @@ $wgAutoloadClasses['ArticleFeedbackv5Model']            = __DIR__ . '/ArticleFee
 $wgAutoloadClasses['ArticleFeedbackv5BackendLBFactory'] = __DIR__ . '/ArticleFeedbackv5.backend.LBFactory.php';
 $wgAutoloadClasses['ArticleFeedbackv5Activity']         = __DIR__ . '/ArticleFeedbackv5.activity.php';
 $wgMessagesDirs['ArticleFeedbackv5']                    = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['ArticleFeedbackv5']          = __DIR__ . '/ArticleFeedbackv5.i18n.php';
 $wgExtensionMessagesFiles['ArticleFeedbackv5Alias']     = __DIR__ . '/ArticleFeedbackv5.alias.php';
 
 // Hooks
