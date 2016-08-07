@@ -7,6 +7,53 @@
  */
 
 class ArticleFeedbackv5Hooks {
+	public static function registerExtension() {
+		global $wgContentNamespaces, $wgGroupPermissions, $wgLogActionsHandlers;
+		global $wgAbuseFilterValidGroups, $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount, $wgAbuseFilterEmergencyDisableAge;
+		global $wgArticleFeedbackv5AbuseFilterGroup, $wgArticleFeedbackv5DefaultPermissions, $wgArticleFeedbackv5Namespaces;
+
+		// register activity log formatter hooks
+		foreach ( ArticleFeedbackv5Activity::$actions as $action => $options ) {
+			if ( isset( $options['log_type'] ) ) {
+				$log = $options['log_type'];
+				$wgLogActionsHandlers["$log/$action"] = 'ArticleFeedbackv5LogFormatter';
+			}
+		}
+
+		if ( $wgArticleFeedbackv5AbuseFilterGroup != 'default' ) {
+			// Add a custom filter group for AbuseFilter
+			$wgAbuseFilterValidGroups[] = $wgArticleFeedbackv5AbuseFilterGroup;
+
+			// set abusefilter emergency disable values for AFT feedback
+			$wgAbuseFilterEmergencyDisableThreshold[$wgArticleFeedbackv5AbuseFilterGroup] = 0.10;
+			$wgAbuseFilterEmergencyDisableCount[$wgArticleFeedbackv5AbuseFilterGroup] = 50;
+			$wgAbuseFilterEmergencyDisableAge[$wgArticleFeedbackv5AbuseFilterGroup] = 86400; // One day.
+		}
+
+		// Permissions: 6 levels of permissions are built into ArticleFeedbackv5: reader, member, editor,
+		// monitor, administrator, oversighter. The default (below-configured) permissions scheme can be seen at
+		// http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
+		$wgArticleFeedbackv5DefaultPermissions = array(
+			'aft-reader' => array( '*', 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ),
+			'aft-member' => array( 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ),
+			'aft-editor' => array( 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ),
+			'aft-monitor' => array( 'rollbacker', 'reviewer', 'sysop', 'oversight' ),
+			'aft-administrator' => array( 'sysop', 'oversight' ),
+			'aft-oversighter' => array( 'oversight' ),
+		);
+		foreach ( $wgArticleFeedbackv5DefaultPermissions as $permission => $groups ) {
+			foreach ( (array) $groups as $group ) {
+				if ( isset( $wgGroupPermissions[$group] ) ) {
+					$wgGroupPermissions[$group][$permission] = true;
+				}
+			}
+		}
+
+		// Only load the module / enable the tool in these namespaces
+		// Default to $wgContentNamespaces (defaults to array( NS_MAIN ) ).
+		$wgArticleFeedbackv5Namespaces = $wgContentNamespaces;
+	}
+
 	/**
 	 * LoadExtensionSchemaUpdates hook
 	 *
