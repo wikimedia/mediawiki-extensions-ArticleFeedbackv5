@@ -81,6 +81,7 @@
 	"articlefeedbackv5-form-oversight": "Nadziraj",
 	"articlefeedbackv5-form-unoversight": "Razveljavi",
 	"articlefeedbackv5-form-decline": "Zavrnitev izbrisa",
+	"articlefeedbackv5-discuss-user-section-content": "Hvala za objavo povratnih informacij o strani »$7«.\n\nTa komentar ste objavili $3 ([[$5|pregled vseh povratnih informacij]]).\n\n$6\n\nCenimo vaš prispevek k tej strani!\n\n~~~~",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 je našel iskano informacijo|$2 je našla iskano informacijo}}",
 	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2 ni našel iskane informacije|$2 ni našla iskane informacije}}",
 	"articlefeedbackv5-form1-header-left-comment": "$2 je {{GENDER:$1|objavil|objavila}} komentar.",
