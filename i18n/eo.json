@@ -6,7 +6,8 @@
 			"Lucas",
 			"Objectivesea",
 			"Pedroca cerebral",
-			"Yekrats"
+			"Yekrats",
+			"Robin van der Vliet"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Dankon!",
@@ -133,8 +134,8 @@
 	"articlefeedbackv5-form-unoversight": "Malfari",
 	"articlefeedbackv5-form-decline": "Rifuzi kontrolon",
 	"articlefeedbackv5-form-declined": "Kontrol rifuzita",
-	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2}} trovis, kion {{GENDER:$1|li|ŝi}} serĉis",
-	"articlefeedbackv5-form1-header-not-found": "$2 ne trovis, kion {{GENDER:$1|li|ŝi}} serĉis.",
+	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 trovis la serĉitaĵon.}}",
+	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2 ne trovis la serĉitaĵon.}}",
 	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 afiŝis komenton.}}",
 	"articlefeedbackv5-form2-header-praise": "{{GENDER:$1|$1}} laŭdis:",
 	"articlefeedbackv5-form2-header-problem": "{{GENDER:$1|$1}} havis problemon:",
