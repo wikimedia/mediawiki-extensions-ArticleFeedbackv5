@@ -562,12 +562,12 @@
 	"articlefeedbackv5-disable-flyover-title": "להסיר את הכלי הזה?",
 	"articlefeedbackv5-disable-flyover-help-message": "כדי להסיר את המשוב לערכים, נא לעבור אל \"$1\" > \"$2\" ולסמן את \"$3\"",
 	"articlefeedbackv5-disable-flyover-prefbutton": "גשו להעדפות שלי",
-	"abusefilter-edit-action-aftv5resolve": "(משוב על ערכים) פתרון אוטומטי",
+	"abusefilter-edit-action-aftv5resolve": "(משוב על ערכים) לסמן כ\"פתור\" באופן אוטומטי",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "נפתר אוטומטית. חוק: $1",
-	"abusefilter-edit-action-aftv5flagabuse": "(משוב על ערכים) לסמן אוטומטית כהטרדה",
+	"abusefilter-edit-action-aftv5flagabuse": "(משוב על ערכים) לסמן כהשחתה באופן אוטומטי",
 	"articlefeedbackv5-abusefilter-note-aftv5flag": "סומן אוטומטית בתור שימוש לרעה. חוק: $1",
-	"abusefilter-edit-action-aftv5hide": "(משוב על ערכים) הסתרה אוטומטית",
+	"abusefilter-edit-action-aftv5hide": "(משוב על ערכים) להסתיר באופן אוטומטי",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "הוסתר אוטומטית. לפי כלל: $1",
-	"abusefilter-edit-action-aftv5request": "(משוב על ערכים) בקשת העלמה אוטומטית",
+	"abusefilter-edit-action-aftv5request": "(משוב על ערכים) לבקש להעלים באופן אוטומטי",
 	"articlefeedbackv5-abusefilter-note-aftv5request": "בקשת הסתרה נוצרה אוטומטית. לפי כלל: $1"
 }
