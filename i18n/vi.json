@@ -45,7 +45,7 @@
 	"protect-level-aft-editor": "Chỉ co phép đối với người dùng tự động xác định",
 	"protect-level-aft-administrator": "Chỉ cho phép đối với quản trị viên",
 	"protect-level-aft-noone": "Vô hiệu cho tất cả người dùng",
-	"articlefeedbackv5-disabled": "Thông tin phản hồi đã bị vô hiệu hoá",
+	"articlefeedbackv5-disabled": "Thông tin phản hồi đã bị vô hiệu hóa",
 	"articlefeedbackv5-disabled-admin-admin": "Thông tin phản hồi đã bị vô hiệu cho độc giả và biên tập viên. Họ không thể gửi thông tin phản hồi mới trên trang này.",
 	"articlefeedbackv5-disabled-admin-button-text": "Đổi mức khóa",
 	"articlefeedbackv5-disabled-editor-button-text": "Cho phép phản hồi",
