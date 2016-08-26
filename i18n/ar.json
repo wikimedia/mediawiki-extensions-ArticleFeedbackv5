@@ -10,7 +10,8 @@
 			"زكريا",
 			"Kuwaity26",
 			"Maroen1990",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"بدارين"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "شكرا!",
@@ -292,7 +293,7 @@
 	"articlefeedbackv5-permalink-status-autoflag": "{{GENDER:$1|<strong>تم التعليم تلقائيا</strong> من قبل $1}} منذ $2 سابقة",
 	"articlefeedbackv5-permalink-status-feature": "{{GENDER:$1|<strong>اختيرت كمختارة</strong> من قبل $1}} منذ $2 سابقة",
 	"articlefeedbackv5-permalink-status-unfeature": "{{GENDER:$1|<strong>تم إلغاء الاختيار كمختارة</strong> من قبل $1}} منذ $2 سابقة",
-	"articlefeedbackv5-permalink-status-resolve": "{{GENDER:$1|<strong>تم التعليم عليها كمحلولة</strong> من قبل $1}} منذ $2 سابقة",
+	"articlefeedbackv5-permalink-status-resolve": "{{GENDER:$1|<strong>تم التعليم عليها كمحلولة</strong> بواسطة $1}} $2",
 	"articlefeedbackv5-permalink-status-unresolve": "{{GENDER:$1|<strong>Uإلغاء التعليم بأنها محلولة</strong> من قبل $1}} منذ $2 سابقة",
 	"articlefeedbackv5-permalink-status-inappropriate": "{{GENDER:$1|<strong>مخفية</strong> من قبل $1}} منذ $2 سابقة",
 	"articlefeedbackv5-permalink-status-uninappropriate": "{{GENDER:$1|<strong>ملغية الإخفاء</strong> من قبل $1}} منذ $2 سابقة",
