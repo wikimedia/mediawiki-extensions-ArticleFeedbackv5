@@ -27,8 +27,6 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 * Execute the API call: Pull max 25 activity log items for page
 	 */
 	public function execute() {
-		wfProfileIn( __METHOD__ );
-
 		/*
 		 * To bust caches, this GET value may be added to the querystring. Codewise,
 		 * we won't really use it for anything, but we don't want it to output a
@@ -40,7 +38,6 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		global $wgUser, $wgLang;
 
 		if ( !$wgUser->isAllowed( 'aft-editor' ) ) {
-			wfProfileOut( __METHOD__ );
 			$this->dieUsage( "You don't have permission to view feedback activity", 'permissiondenied' );
 		}
 
@@ -60,14 +57,12 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		$feedback = ArticleFeedbackv5Model::get( $params['feedbackid'], $pageObj->getId() );
 		// if this is false, this is bad feedback - move along
 		if ( !$feedback ) {
-			wfProfileOut( __METHOD__ );
 			$this->dieUsage( "Feedback does not exist", 'invalidfeedbackid' );
 		}
 
 		// get the string title for the page
 		$page = Title::newFromID( $feedback->aft_page );
 		if ( !$page ) {
-			wfProfileOut( __METHOD__ );
 			$this->dieUsage( "Page for feedback does not exist", 'invalidfeedbackid' );
 		}
 
@@ -75,7 +70,6 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		try {
 			$activities = ArticleFeedbackv5Activity::getList( $feedback, $wgUser, $limit, $continue );
 		} catch ( Exception $e ) {
-			wfProfileOut( __METHOD__ );
 			$this->dieUsage( $e->getMessage(), $e->getCode() );
 		}
 
@@ -209,8 +203,6 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		if ( $count > $limit ) {
 			$this->setContinueEnumParameter( 'continue', ArticleFeedbackv5Activity::getContinue( $item ) );
 		}
-
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**

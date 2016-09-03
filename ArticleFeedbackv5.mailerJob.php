@@ -45,8 +45,6 @@ class ArticleFeedbackv5MailerJob extends Job {
 	 * @return boolean success
 	 */
 	function run() {
-		wfProfileIn( __METHOD__ );
-
 		global $wgArticleFeedbackv5OversightEmails, $wgArticleFeedbackv5OversightEmailName;
 		global $wgPasswordSender, $wgNoReplyAddress;
 
@@ -54,14 +52,12 @@ class ArticleFeedbackv5MailerJob extends Job {
 
 		// if the oversight email address is empty we're going to just skip all this, but return true
 		if ( $wgArticleFeedbackv5OversightEmails === null ) {
-			wfProfileOut( __METHOD__ );
 			return true;
 		}
 
 		// if we don't have the right params set return false, job can't run
 		$missing = array_diff( $this->requiredParams, array_keys( $params ) );
 		if ( $missing ) {
-			wfProfileOut( __METHOD__ );
 			return false;
 	    }
 
@@ -81,8 +77,6 @@ class ArticleFeedbackv5MailerJob extends Job {
 		);
 
 		$status = UserMailer::send( $to, $from, $subject, $body, array( 'replyTo' => $replyto ) );
-
-		wfProfileOut( __METHOD__ );
 
 		return $status->isOK();
 	}

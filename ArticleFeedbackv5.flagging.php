@@ -89,8 +89,6 @@ class ArticleFeedbackv5Flagging {
 	 *                    the error can be fetched through ->getError())
 	 */
 	public function run( $flag, $notes = '', $toggle = false, $source = 'unknown' ) {
-		wfProfileIn( __METHOD__ . "-{$flag}" );
-
 		// check if feedback record exists
 		if ( !$this->feedback ) {
 			$this->error = 'articlefeedbackv5-invalid-feedback-id';
@@ -143,8 +141,6 @@ class ArticleFeedbackv5Flagging {
 
 		// update feedback entry for real
 		$this->feedback->update( false );
-
-		wfProfileOut( __METHOD__ . "-{$flag}" );
 
 		return true;
 	}

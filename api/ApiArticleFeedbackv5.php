@@ -34,8 +34,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * Execute the API call: Save the form values
 	 */
 	public function execute() {
-		wfProfileIn( __METHOD__ );
-
 		// Blocked users are, well, blocked.
 		$user = $this->getUser();
 		if ( $user->isBlocked() ) {
@@ -180,7 +178,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		// build url to permalink and special page
 		$page = Title::newFromID( $feedback->aft_page );
 		if ( !$page ) {
-			wfProfileOut( __METHOD__ );
 			$this->dieUsage( "Page for feedback does not exist", "invalidfeedbackid" );
 		}
 		$specialTitle = Title::newFromText( "ArticleFeedbackv5/$page", NS_SPECIAL );
@@ -197,8 +194,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'permalink'   => $permalink,
 			)
 		);
-
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**
