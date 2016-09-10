@@ -665,8 +665,6 @@ $wgResourceModules['jquery.articleFeedbackv5'] = array(
 		'articlefeedbackv5-bucket1-toggle-found-no-full',
 		'articlefeedbackv5-bucket1-question-placeholder-yes',
 		'articlefeedbackv5-bucket1-question-placeholder-no',
-		'articlefeedbackv5-bucket1-form-pending',
-		'articlefeedbackv5-bucket1-form-success',
 		'articlefeedbackv5-bucket1-form-submit',
 		'articlefeedbackv5-bucket4-title',
 		'articlefeedbackv5-bucket4-subhead',
