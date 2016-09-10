@@ -19,8 +19,6 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 	}
 
 	public function execute() {
-		wfProfileIn( __METHOD__ );
-
 		global $wgUser;
 
 		$params = $this->extractRequestParams();
@@ -88,8 +86,6 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 			$this->getModuleName(),
 			array()
 		);
-
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**

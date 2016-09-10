@@ -26,8 +26,6 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	 * a piece of feedback
 	 */
 	public function execute() {
-		wfProfileIn( __METHOD__ );
-
 		$affected = 0;
 		$results = array();
 
@@ -104,8 +102,6 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 			$this->getModuleName(),
 			$results
 		);
-
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**

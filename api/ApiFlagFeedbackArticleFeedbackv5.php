@@ -28,8 +28,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 * a piece of feedback
 	 */
 	public function execute() {
-		wfProfileIn( __METHOD__ );
-
 		global $wgUser;
 
 		$results = array();
@@ -82,8 +80,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			$this->getModuleName(),
 			$results
 		);
-
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**

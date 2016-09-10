@@ -25,8 +25,6 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	 * Execute the API call: Pull the requested feedback
 	 */
 	public function execute() {
-		wfProfileIn( __METHOD__ );
-
 		$params   = $this->extractRequestParams();
 		$result   = $this->getResult();
 
@@ -43,8 +41,6 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 		$result->addValue( $this->getModuleName(), 'pageid', $pageId );
 		$result->addValue( $this->getModuleName(), 'filter', $params['filter'] );
 		$result->addValue( $this->getModuleName(), 'count', $count );
-
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**

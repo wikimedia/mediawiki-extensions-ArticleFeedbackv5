@@ -25,8 +25,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 * Execute the API call: Pull the requested feedback
 	 */
 	public function execute() {
-		wfProfileIn( __METHOD__ );
-
 		/*
 		 * To bust caches, this GET value may be added to the querystring. Codewise,
 		 * we won't really use it for anything, but we don't want it to output a
@@ -84,8 +82,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$result->addValue( $this->getModuleName(), 'offset', $records ? $records->nextOffset() : null );
 		$result->addValue( $this->getModuleName(), 'more', $records ? $records->hasMore() : false );
 		$result->addValue( $this->getModuleName(), 'feedback', $html );
-
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**
