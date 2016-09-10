@@ -10,6 +10,13 @@
 			"John Du Hart"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "Submit article feedback",
+	"apihelp-articlefeedbackv5-get-count-description": "Get the amount of feedback for a certain page/filter",
+	"apihelp-articlefeedbackv5-flag-feedback-description": "Flag a feedbackID as abusive or hidden.",
+	"apihelp-articlefeedbackv5-add-flag-note-description": "Add a note describing activity, after the action has been performed already.",
+	"apihelp-articlefeedbackv5-set-status-description": "Enable/disable AFTv5 for a certain page.",
+	"apihelp-query+articlefeedbackv5-view-activity-description": "List article feedback activity for a specified page",
+	"apihelp-query+articlefeedbackv5-view-feedback-description": "List article feedback for a specified page",
 	"articlefeedbackv5-cta-thanks": "Thanks!",
 	"articlefeedbackv5-cta-confirmation-message": "Your post can be viewed on this [$1 feedback page].",
 	"articlefeedbackv5-cta1-confirmation-title": "Did you know that you can edit this page?",
