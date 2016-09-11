@@ -18,6 +18,7 @@
 			"Vengir"
 		]
 	},
+	"apihelp-articlefeedbackv5-param-anontoken": "Token dla użytkowników anonimowych",
 	"articlefeedbackv5-cta-thanks": "Dziękujemy!",
 	"articlefeedbackv5-cta-confirmation-message": "Twoja ocena jest widoczna na [$1 tej stronie].",
 	"articlefeedbackv5-cta1-confirmation-title": "Czy wiesz, że możesz edytować tę stronę?",

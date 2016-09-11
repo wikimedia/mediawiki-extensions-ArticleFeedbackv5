@@ -30,6 +30,9 @@
 			"Impersonator 1"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "提交条目反馈",
+	"apihelp-articlefeedbackv5-flag-feedback-param-feedbackid": "要标记的反馈ID",
+	"apihelp-articlefeedbackv5-set-status-param-enable": "1启用，0禁用AFTv5",
 	"articlefeedbackv5-cta-thanks": "谢谢！",
 	"articlefeedbackv5-cta-confirmation-message": "您可以在这个[$1 反馈页面]上查看您的帖子。",
 	"articlefeedbackv5-cta1-confirmation-title": "您知道您可以编辑这个页面吗？",

@@ -8,6 +8,7 @@
 		]
 	},
 	"apihelp-articlefeedbackv5-param-anontoken": "Token fir anonym Benotzer",
+	"apihelp-articlefeedbackv5-set-status-param-enable": "1 fir AFTv5 z'aktivéieren, 0 fir AFTv5 ze desaktivéieren",
 	"articlefeedbackv5-cta-thanks": "Merci!",
 	"articlefeedbackv5-cta-confirmation-message": "Äre Reaktioun ass op dëser [$1 Feedbacksäit ze gesinn].",
 	"articlefeedbackv5-cta1-confirmation-title": "Wosst Dir datt Dir dës Säit ännere kënnt?",
