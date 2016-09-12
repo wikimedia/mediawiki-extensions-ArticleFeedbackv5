@@ -6,6 +6,8 @@
 	},
 	"apihelp-articlefeedbackv5-description": "Дајте мислење за статијата",
 	"apihelp-articlefeedbackv5-param-title": "Наслов на страницата за која се дава мислење. Не може да се користи заедно со $1pageid.",
+	"apihelp-articlefeedbackv5-param-anontoken": "Шифра за анонимни корисници",
+	"apihelp-articlefeedbackv5-param-bucket": "Кој образец за давање мислење му бил покажан на корисникот",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "По кој клуч да се подредат записите",
 	"articlefeedbackv5-cta-thanks": "Благодариме!",
 	"articlefeedbackv5-cta-confirmation-message": "Вашето мислење можете да го погледате на оваа [$1 страница за мислења].",

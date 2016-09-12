@@ -9,6 +9,15 @@
 			"Vogone"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "Siųsti straipsnio atsiliepimą",
+	"apihelp-articlefeedbackv5-param-link": "Kurią nuorodą vartotojas paspaudė, kad prieitų prie valdiklio",
+	"apihelp-articlefeedbackv5-flag-feedback-param-note": "Informacija kodėl atsiliepimo veikla įvyko",
+	"apihelp-articlefeedbackv5-add-flag-note-description": "Pridėkite pastabą, apibūdinančią veiklą, po to kai veiksmas jau buvo atliktas.",
+	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Žurnalo ID atnaujinimui",
+	"apihelp-articlefeedbackv5-add-flag-note-param-note": "Informacija kodėl atsiliepimo veikla įvyko",
+	"apihelp-query+articlefeedbackv5-view-activity-param-limit": "Kiek veiklos rezultatų gražinti",
+	"apihelp-query+articlefeedbackv5-view-activity-param-continue": "Kai prieinama daugiau rezultatų, naudokite tai tęsimui",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Kokį filtravimą taikyti sąrašui",
 	"articlefeedbackv5-cta-thanks": "Ačiū!",
 	"articlefeedbackv5-cta-confirmation-message": "Jūsų pranešimas gali būti peržiūrėtas šiame [$1 atsiliepimų puslapyje].",
 	"articlefeedbackv5-cta1-confirmation-title": "Ar žinote, kad galite redaguoti šį puslapį?",
