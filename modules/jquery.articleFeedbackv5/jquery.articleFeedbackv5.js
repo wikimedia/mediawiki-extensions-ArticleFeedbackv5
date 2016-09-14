@@ -72,7 +72,7 @@
  * @version    $Id$
  */
 
-( function ( $ ) {
+( function ( $, mw ) {
 
 // {{{ articleFeedbackv5 definition
 
@@ -391,7 +391,7 @@
 						e.preventDefault();
 
 						var new_val = $( this ).parents( '[data-value]' ).data( 'value' );
-						var old_val = ( new_val == 'yes' ? 'no' : 'yes' );
+						var old_val = ( new_val === 'yes' ? 'no' : 'yes' );
 						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + new_val );
 						var $other_wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + old_val );
 
@@ -407,8 +407,8 @@
 						var $txt = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
 						var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
 						var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
-						if ( $txt.val() == '' || $txt.val() == def_msg_yes || $txt.val() == def_msg_no ) {
-							$txt.val( new_val == 'yes' ? def_msg_yes : def_msg_no );
+						if ( $txt.val() === '' || $txt.val() === def_msg_yes || $txt.val() === def_msg_no ) {
+							$txt.val( new_val === 'yes' ? def_msg_yes : def_msg_no );
 							$.articleFeedbackv5.currentBucket().currentDefaultText = $txt.val();
 						}
 
@@ -419,7 +419,7 @@
 				// Clear out the question on focus
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.focus( function () {
-						if ( $( this ).val() == $.articleFeedbackv5.currentBucket().currentDefaultText ) {
+						if ( $( this ).val() === $.articleFeedbackv5.currentBucket().currentDefaultText ) {
 							$( this ).val( '' );
 							$( this ).removeClass( 'inactive' );
 						}
@@ -432,12 +432,12 @@
 					.blur( function () {
 						var def_msg = '';
 						var val = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).val();
-						if ( val == 'yes' ) {
+						if ( val === 'yes' ) {
 							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
-						} else if ( val == 'no' ) {
+						} else if ( val === 'no' ) {
 							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
 						}
-						if ( $( this ).val() == '' ) {
+						if ( $( this ).val() === '' ) {
 							$( this ).val( def_msg );
 							$( this ).addClass( 'inactive' );
 						} else {
@@ -464,15 +464,15 @@
 			getFormData: function () {
 				var data = {};
 				var $check = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' );
-				if ( $check.val() == 'yes' ) {
+				if ( $check.val() === 'yes' ) {
 					data.found = 1;
-				} else if ( $check.val() == 'no' ) {
+				} else if ( $check.val() === 'no' ) {
 					data.found = 0;
 				}
 				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
 				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
 				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
-				if ( data.comment == def_msg_yes || data.comment == def_msg_no ) {
+				if ( data.comment === def_msg_yes || data.comment === def_msg_no ) {
 					data.comment = '';
 				}
 				return data;
@@ -488,8 +488,8 @@
 			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
 			localValidation: function ( formdata ) {
-				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
-					&& !( 'found' in formdata ) ) {
+				if ( ( !( 'comment' in formdata ) || formdata.comment === '' ) &&
+					!( 'found' in formdata ) ) {
 					$.articleFeedbackv5.enableSubmission( false );
 					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
 				}
@@ -580,15 +580,17 @@
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.editable ? $.articleFeedbackv5.currentBucket().templates.editable : $.articleFeedbackv5.currentBucket().templates.noneditable );
 
+				var url;
+
 				// Fill in the learn to edit link
 				$block.find( '.articleFeedbackv5-learn-to-edit' )
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the button link
 				if ( $.articleFeedbackv5.editable ) {
-					var url = $.articleFeedbackv5.editUrl();
+					url = $.articleFeedbackv5.editUrl();
 				} else {
-					var url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
+					url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
 				}
 
 				$block.find( '.articleFeedbackv5-cta-button' )
@@ -777,7 +779,7 @@
 						 * If people have started writing feedback, inform them
 						 * that leaving the page will result in lost data.
 						 */
-						if ( typeof window.onbeforeunload != 'function' ) {
+						if ( typeof window.onbeforeunload !== 'function' ) {
 							$( window ).on( 'beforeunload', function() {
 								return mw.msg( 'articlefeedbackv5-leave-warning' );
 							} );
@@ -816,15 +818,15 @@
 			getFormData: function () {
 				var data = {};
 				var $check = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket6-toggle input[checked]' );
-				if ( $check.val() == 'yes' ) {
+				if ( $check.val() === 'yes' ) {
 					data.found = 1;
-				} else if ( $check.val() == 'no' ) {
+				} else if ( $check.val() === 'no' ) {
 					data.found = 0;
 				}
 				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
 				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-yes' );
 				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-no' );
-				if ( data.comment == def_msg_yes || data.comment == def_msg_no ) {
+				if ( data.comment === def_msg_yes || data.comment === def_msg_no ) {
 					data.comment = '';
 				}
 				return data;
@@ -840,8 +842,8 @@
 			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
 			localValidation: function ( formdata ) {
-				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
-					&& !( 'found' in formdata ) && !$( '#articleFeedbackv5-bucket6-toggle-yes').is( ':checked' ) ) {
+				if ( ( !( 'comment' in formdata ) || formdata.comment === '' ) &&
+					!( 'found' in formdata ) && !$( '#articleFeedbackv5-bucket6-toggle-yes').is( ':checked' ) ) {
 					$.articleFeedbackv5.enableSubmission( false );
 					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
 				}
@@ -907,7 +909,7 @@
 			countdown: function ( $element ) {
 				var displayLength = 500;
 				var maxLength = mw.config.get( 'wgArticleFeedbackv5MaxCommentLength' );
-				if ( maxLength == 0 ) {
+				if ( maxLength === 0 ) {
 					return;
 				}
 
@@ -1216,7 +1218,7 @@
 			 */
 			getSurveyUrl: function () {
 				var base = mw.config.get( 'wgArticleFeedbackv5SurveyUrls' );
-				if ( typeof base != 'object' || !( $.articleFeedbackv5.bucketId in base ) ) {
+				if ( typeof base !== 'object' || !( $.articleFeedbackv5.bucketId in base ) ) {
 					return false;
 				}
 				return base[$.articleFeedbackv5.bucketId];
@@ -1236,6 +1238,7 @@
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.click( function ( e ) {
 						e.preventDefault();
+						/* jshint ignore:start */
 						var link = $( this ).attr( 'href' );
 						var params = 'status=0,\
 							toolbar=0,\
@@ -1247,6 +1250,7 @@
 							height=800,\
 							width=600';
 						var survey = window.open( link, 'survey', params );
+						/* jshint ignore:end */
 						$.articleFeedbackv5.clear();
 					} );
 
@@ -1363,7 +1367,7 @@
 			 */
 			getSurveyUrl: function () {
 				var base = mw.config.get( 'wgArticleFeedbackv5SurveyUrls' );
-				if ( typeof base != 'object' || !( $.articleFeedbackv5.bucketId in base ) ) {
+				if ( typeof base !== 'object' || !( $.articleFeedbackv5.bucketId in base ) ) {
 					return false;
 				}
 				return base[$.articleFeedbackv5.bucketId];
@@ -2047,7 +2051,7 @@
 				$linkAdd.find( 'a' )
 						.text( mw.msg( 'articlefeedbackv5-toolbox-add' ) );
 
-				if ( '5' == $.articleFeedbackv5.bucketId ) {
+				if ( '5' === $.articleFeedbackv5.bucketId ) {
 					$linkAdd.find( 'a' )
 						.click( function ( e ) {
 							e.preventDefault();
@@ -2064,9 +2068,11 @@
 				}
 
 				// build link to article feedback page
+				/* jshint ignore:start */
 				var title = $( '<div></div>' )
 					.html( $.articleFeedbackv5.templates.ctaTitleConfirm )
 					.localize( { 'prefix': 'articlefeedbackv5-' } );
+				/* jshint ignore:end */
 
 				var $linkView = $( '<li id="t-articlefeedbackv5-view"><a href="#"></a></li>' );
 				$linkView.find( 'a' )
@@ -2122,7 +2128,7 @@
 		// Debug mode
 		var reqDebug = mw.util.getParamValue( 'debug' );
 		if ( reqDebug ) {
-			$.articleFeedbackv5.debug = reqDebug == 'false' ? false : true;
+			$.articleFeedbackv5.debug = reqDebug === 'false' ? false : true;
 		}
 		// Initialize clicktracking
 		$.aftTrack.init();
@@ -2176,7 +2182,9 @@
 		// Find out which display bucket they go in:
 		// 1. Requested in query string (debug only)
 		// 2. Core bucketing
+		/* jshint ignore:start */
 		var knownBuckets = { '0': true, '1': true, '4': true, '6': true };
+		/* jshint ignore:end */
 		var requested = mw.util.getParamValue( 'aftv5_form' );
 		var cfg = mw.config.get( 'wgArticleFeedbackv5DisplayBuckets' );
 
@@ -2204,13 +2212,13 @@
 		//   2. Requested in query string (debug only)
 		//   3. Random bucketing
 		var bucketedLink = 'X';
-		if ( ! ( '0' == $.articleFeedbackv5.bucketId
-			|| ( '4' == $.articleFeedbackv5.bucketId && !$.articleFeedbackv5.editable ) ) ) {
+		if ( ! ( '0' === $.articleFeedbackv5.bucketId ||
+			( '4' === $.articleFeedbackv5.bucketId && !$.articleFeedbackv5.editable ) ) ) {
 			var cfg = mw.config.get( 'wgArticleFeedbackv5LinkBuckets' );
 			if ( 'buckets' in cfg ) {
 				var knownBuckets = cfg.buckets;
 				var requested = mw.util.getParamValue( 'aftv5_link' );
-				if ( requested in knownBuckets || requested == 'X' ) {
+				if ( requested in knownBuckets || requested === 'X' ) {
 					bucketedLink = requested;
 				} else {
 					var key = 'ext.articleFeedbackv5@' + cfg.version + '-links';
@@ -2219,7 +2227,7 @@
 			}
 		}
 		$.articleFeedbackv5.floatingLinkId = bucketedLink;
-		if ('X' != bucketedLink) {
+		if ('X' !== bucketedLink) {
 			$.articleFeedbackv5.selectedLinks.push(bucketedLink);
 		}
 		// Always add the toolbox link
@@ -2288,17 +2296,17 @@
 	 * @param  string fulltext the message key for the full text
 	 * @param  object link1    the first link, as { href: '#', text: 'click here' }
 	 * @param  object link2    [optional] the second link, as above
-	 * @param  object link2    [optional] the third link, as above
+	 * @param  object link3    [optional] the third link, as above
 	 * @return string the html
 	 */
-	$.articleFeedbackv5.buildLink = function ( fulltext, link1, link2, link3 ) {
+	$.articleFeedbackv5.buildLink = function ( fulltext, /* jshint ignore:start */link1, link2, link3/* jshint ignore:end */ ) {
 		var full = mw.html.escape( mw.msg( fulltext ) );
 		var args = arguments;
 		return full.replace( /\$(\d+)/g, function ( str, number ) {
 			var i = parseInt( number, 10 );
 			var sub = args[i];
 			var replacement = '';
-			if ( sub.tag == 'quotes' ) {
+			if ( sub.tag === 'quotes' ) {
 				replacement = '&quot;' + mw.msg( sub.text ) + '&quot';
 			} else {
 				replacement = mw.html.element(
@@ -2325,7 +2333,7 @@
 	$.articleFeedbackv5.attribs = function ( link ) {
 		var attr = {};
 		for ( var k in link ) {
-			if ( 'text' != k && 'tag' != k ) {
+			if ( 'text' !== k && 'tag' !== k ) {
 				attr[k] = link[k];
 			}
 		}
@@ -2344,7 +2352,7 @@
 		// this is actually required to resolve jQuery behavior of not triggering the
 		// click event when .blur() occurs on the textarea and .click() is supposed to
 		// be triggered on the button.
-		if ( $.articleFeedbackv5.submissionEnabled == state ) {
+		if ( $.articleFeedbackv5.submissionEnabled === state ) {
 			return;
 		}
 
@@ -2433,14 +2441,14 @@
 	 */
 	$.articleFeedbackv5.load = function ( display ) {
 
-		if ( display && 'auto' != display ) {
-			$.articleFeedbackv5.toDisplay = ( display == 'cta' ? 'cta' : 'form' );
+		if ( display && 'auto' !== display ) {
+			$.articleFeedbackv5.toDisplay = ( display === 'cta' ? 'cta' : 'form' );
 		}
 
 		$.articleFeedbackv5.clearContainers();
 		$.articleFeedbackv5.nowShowing = 'none';
 
-		if ( 'form' == $.articleFeedbackv5.toDisplay ) {
+		if ( 'form' === $.articleFeedbackv5.toDisplay ) {
 			var bucket = $.articleFeedbackv5.currentBucket();
 			if ( !( 'buildForm' in bucket ) ) {
 				$.articleFeedbackv5.isLoaded = true;
@@ -2448,9 +2456,7 @@
 			}
 			$.articleFeedbackv5.loadContainers();
 			$.articleFeedbackv5.showForm();
-		}
-
-		else if ( 'cta' == $.articleFeedbackv5.toDisplay ) {
+		} else if ( 'cta' === $.articleFeedbackv5.toDisplay ) {
 			var cta = $.articleFeedbackv5.currentCTA();
 			if ( !( 'build' in cta ) ) {
 				$.articleFeedbackv5.isLoaded = true;
@@ -2590,19 +2596,23 @@
 		}
 
 		// check throttling
-		if ( $.articleFeedbackv5.throttleThresholdPostsPerHour != -1 ) {
+		if ( $.articleFeedbackv5.throttleThresholdPostsPerHour !== -1 ) {
 			// MSIE<9 does not support Date.now(), hence the workaround
 			var now = (new Date()).getTime();
 			var msInHour = 3600000;
 
 			var timestampsCookieName = mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'submission_timestamps' );
 
-			var priorTimestamps = new Array();
+			var priorTimestamps;
+
+			/* jshint ignore:start */
+			priorTimestamps = new Array();
 			var savedTimestamps = new Array();
+			/* jshint ignore:end */
 
 			var priorCookieValue = $.cookie( timestampsCookieName );
-			if ( priorCookieValue != null ) {
-				var priorTimestamps = priorCookieValue.split( ',' );
+			if ( priorCookieValue !== null ) {
+				priorTimestamps = priorCookieValue.split( ',' );
 			}
 
 			for ( var i = 0; i < priorTimestamps.length; i++ ) {
@@ -2664,9 +2674,9 @@
 			'dataType': 'json',
 			'data': data,
 			'success': function ( data ) {
-				if ( 'articlefeedbackv5' in data
-						&& 'feedback_id' in data.articlefeedbackv5
-						&& 'aft_url' in data.articlefeedbackv5 ) {
+				if ( 'articlefeedbackv5' in data &&
+						'feedback_id' in data.articlefeedbackv5 &&
+						'aft_url' in data.articlefeedbackv5 ) {
 					$.articleFeedbackv5.feedbackId = data.articlefeedbackv5.feedback_id;
 					$.articleFeedbackv5.specialUrl = data.articlefeedbackv5.aft_url;
 					$.articleFeedbackv5.permalink = data.articlefeedbackv5.permalink;
@@ -2714,7 +2724,9 @@
 					$.articleFeedbackv5.markFormErrors( msg );
 				}
 			},
+			/* jshint ignore:start */
 			'error': function (xhr, tstatus, error) {
+			/* jshint ignore:end */
 				var msg = mw.msg( 'articlefeedbackv5-error-submit' );
 				var code = 'jquery';
 
@@ -2771,12 +2783,13 @@
 		// Find out which CTA bucket they go in:
 		// 1. Requested in query string (debug only)
 		// 2. Core bucketing
-		var requested = mw.util.getParamValue( 'aftv5_cta' );
+		var requested;
+		requested = mw.util.getParamValue( 'aftv5_cta' );
 		if ( requested && valid( requested ) ) {
 			$.articleFeedbackv5.ctaId = requested;
 		} else {
 			var key = 'ext.articleFeedbackv5@' + cfg.version + '-cta';
-			var requested = mw.user.bucket( key, cfg );
+			requested = mw.user.bucket( key, cfg );
 
 			if ( valid( requested ) ) {
 				$.articleFeedbackv5.ctaId = requested;
@@ -2824,11 +2837,13 @@
 		// remove back-arrow from title (if present)
 		$( '.articleFeedbackv5-arrow-back' ).remove();
 
+		var title;
+
 		// Set the title in both places
 		if ( 'getTitle' in cta ) {
-			var title = cta.getTitle();
+			title = cta.getTitle();
 		} else {
-			var title = $( '<div></div>' )
+			title = $( '<div></div>' )
 				.html( $.articleFeedbackv5.templates.ctaTitleConfirm )
 				.localize( { 'prefix': 'articlefeedbackv5-' } );
 
@@ -2913,7 +2928,7 @@
 					$.articleFeedbackv5.buildDisableFlyover( linkId, $link );
 					hasTipsy = true;
 				}
-				if ( 'TBX' != linkId && '5' != $.articleFeedbackv5.bucketId ) {
+				if ( 'TBX' !== linkId && '5' !== $.articleFeedbackv5.bucketId ) {
 					$.articleFeedbackv5.addToRemovalQueue( $link );
 				}
 			}
@@ -2942,7 +2957,7 @@
 		$link.addClass( 'articleFeedbackv5-trigger-link-holder' );
 		$link.addClass( 'articleFeedbackv5-trigger-link-holder-' + linkId );
 		var gravity = 'se';
-		if ( 'A' == linkId ) {
+		if ( 'A' === linkId ) {
 			gravity = 'nw';
 		}
 		$link.find( '.articleFeedbackv5-close-trigger-link' )
@@ -3224,9 +3239,9 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 	};
 	if ( opts in publicFunction ) {
 		var r;
-		if ( 1 == publicFunction[opts].args ) {
+		if ( 1 === publicFunction[opts].args ) {
 			r = $.articleFeedbackv5[opts]( arg );
-		} else if ( 0 == publicFunction[opts].args ) {
+		} else if ( 0 === publicFunction[opts].args ) {
 			r = $.articleFeedbackv5[opts]();
 		}
 		if ( publicFunction[opts].ret) {
@@ -3238,5 +3253,5 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 
 // }}}
 
-} )( jQuery );
+}( jQuery, mediaWiki ) );
 
