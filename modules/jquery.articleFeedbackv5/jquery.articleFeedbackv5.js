@@ -72,7 +72,7 @@
  * @version    $Id$
  */
 
-( function ( $ ) {
+( function ( $, mw ) {
 
 // {{{ articleFeedbackv5 definition
 
@@ -391,7 +391,7 @@
 						e.preventDefault();
 
 						var new_val = $( this ).parents( '[data-value]' ).data( 'value' );
-						var old_val = ( new_val == 'yes' ? 'no' : 'yes' );
+						var old_val = ( new_val === 'yes' ? 'no' : 'yes' );
 						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + new_val );
 						var $other_wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + old_val );
 
@@ -407,8 +407,8 @@
 						var $txt = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
 						var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
 						var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
-						if ( $txt.val() == '' || $txt.val() == def_msg_yes || $txt.val() == def_msg_no ) {
-							$txt.val( new_val == 'yes' ? def_msg_yes : def_msg_no );
+						if ( $txt.val() === '' || $txt.val() === def_msg_yes || $txt.val() === def_msg_no ) {
+							$txt.val( new_val === 'yes' ? def_msg_yes : def_msg_no );
 							$.articleFeedbackv5.currentBucket().currentDefaultText = $txt.val();
 						}
 
@@ -419,7 +419,7 @@
 				// Clear out the question on focus
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.focus( function () {
-						if ( $( this ).val() == $.articleFeedbackv5.currentBucket().currentDefaultText ) {
+						if ( $( this ).val() === $.articleFeedbackv5.currentBucket().currentDefaultText ) {
 							$( this ).val( '' );
 							$( this ).removeClass( 'inactive' );
 						}
@@ -432,12 +432,12 @@
 					.blur( function () {
 						var def_msg = '';
 						var val = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).val();
-						if ( val == 'yes' ) {
+						if ( val === 'yes' ) {
 							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
-						} else if ( val == 'no' ) {
+						} else if ( val === 'no' ) {
 							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
 						}
-						if ( $( this ).val() == '' ) {
+						if ( $( this ).val() === '' ) {
 							$( this ).val( def_msg );
 							$( this ).addClass( 'inactive' );
 						} else {
@@ -464,15 +464,15 @@
 			getFormData: function () {
 				var data = {};
 				var $check = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' );
-				if ( $check.val() == 'yes' ) {
+				if ( $check.val() === 'yes' ) {
 					data.found = 1;
-				} else if ( $check.val() == 'no' ) {
+				} else if ( $check.val() === 'no' ) {
 					data.found = 0;
 				}
 				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
 				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
 				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
-				if ( data.comment == def_msg_yes || data.comment == def_msg_no ) {
+				if ( data.comment === def_msg_yes || data.comment === def_msg_no ) {
 					data.comment = '';
 				}
 				return data;
@@ -488,7 +488,7 @@
 			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
 			localValidation: function ( formdata ) {
-				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
+				if ( ( !( 'comment' in formdata ) || formdata.comment === '' )
 					&& !( 'found' in formdata ) ) {
 					$.articleFeedbackv5.enableSubmission( false );
 					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
@@ -580,15 +580,17 @@
 				// Start up the block to return
 				var $block = $( $.articleFeedbackv5.editable ? $.articleFeedbackv5.currentBucket().templates.editable : $.articleFeedbackv5.currentBucket().templates.noneditable );
 
+				var url;
+
 				// Fill in the learn to edit link
 				$block.find( '.articleFeedbackv5-learn-to-edit' )
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) );
 
 				// Fill in the button link
 				if ( $.articleFeedbackv5.editable ) {
-					var url = $.articleFeedbackv5.editUrl();
+					url = $.articleFeedbackv5.editUrl();
 				} else {
-					var url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
+					url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
 				}
 
 				$block.find( '.articleFeedbackv5-cta-button' )
@@ -777,7 +779,7 @@
 						 * If people have started writing feedback, inform them
 						 * that leaving the page will result in lost data.
 						 */
-						if ( typeof window.onbeforeunload != 'function' ) {
+						if ( typeof window.onbeforeunload !== 'function' ) {
 							$( window ).on( 'beforeunload', function() {
 								return mw.msg( 'articlefeedbackv5-leave-warning' );
 							} );
@@ -816,15 +818,15 @@
 			getFormData: function () {
 				var data = {};
 				var $check = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket6-toggle input[checked]' );
-				if ( $check.val() == 'yes' ) {
+				if ( $check.val() === 'yes' ) {
 					data.found = 1;
-				} else if ( $check.val() == 'no' ) {
+				} else if ( $check.val() === 'no' ) {
 					data.found = 0;
 				}
 				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
 				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-yes' );
 				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-no' );
-				if ( data.comment == def_msg_yes || data.comment == def_msg_no ) {
+				if ( data.comment === def_msg_yes || data.comment === def_msg_no ) {
 					data.comment = '';
 				}
 				return data;
@@ -840,7 +842,7 @@
 			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
 			localValidation: function ( formdata ) {
-				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
+				if ( ( !( 'comment' in formdata ) || formdata.comment === '' )
 					&& !( 'found' in formdata ) && !$( '#articleFeedbackv5-bucket6-toggle-yes').is( ':checked' ) ) {
 					$.articleFeedbackv5.enableSubmission( false );
 					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
@@ -907,7 +909,7 @@
 			countdown: function ( $element ) {
 				var displayLength = 500;
 				var maxLength = mw.config.get( 'wgArticleFeedbackv5MaxCommentLength' );
-				if ( maxLength == 0 ) {
+				if ( maxLength === 0 ) {
 					return;
 				}
 
@@ -3238,5 +3240,5 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 
 // }}}
 
-} )( jQuery );
+}( jQuery, mediaWiki ) );
 

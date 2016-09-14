@@ -10,7 +10,7 @@
  * @version    $Id$
  */
 
-( function ( $ ) {
+( function ( $, mw ) {
 
 // {{{ articleFeedbackv5special definition
 
@@ -181,7 +181,7 @@
 
 		// Set up config vars
 		$.articleFeedbackv5special.page = mw.config.get( 'afPageId' );
-		$.articleFeedbackv5special.watchlist = mw.config.get( 'wgCanonicalSpecialPageName' ) == 'ArticleFeedbackv5Watchlist' ? 1 : 0;
+		$.articleFeedbackv5special.watchlist = mw.config.get( 'wgCanonicalSpecialPageName' ) === 'ArticleFeedbackv5Watchlist' ? 1 : 0;
 
 		// check if there is feedback
 		$.articleFeedbackv5special.emptyMessage();
@@ -219,7 +219,7 @@
 
 		// Is there a highlighted ID?
 		var hash = window.location.hash.replace( '#', '' );
-		if ( hash.match( /^\w+$/ ) && $.articleFeedbackv5special.filter != 'id' ) {
+		if ( hash.match( /^\w+$/ ) && $.articleFeedbackv5special.filter !== 'id' ) {
 			$.articleFeedbackv5special.highlightId = hash;
 			$.articleFeedbackv5special.pullHighlight();
 		}
@@ -250,10 +250,10 @@
 	 */
 	$.articleFeedbackv5special.checkClickTracking = function() {
 		var b = mw.config.get( 'wgArticleFeedbackv5Tracking' );
-		if ( b.buckets.ignore == 100 && b.buckets.track == 0 ) {
+		if ( b.buckets.ignore === 100 && b.buckets.track === 0 ) {
 			return false;
 		}
-		if ( b.buckets.ignore == 0 && b.buckets.track == 100 ) {
+		if ( b.buckets.ignore === 0 && b.buckets.track === 100 ) {
 			return true;
 		}
 		var key = 'ext.articleFeedbackv5@' + b.version + '-tracking';
@@ -288,9 +288,9 @@
 			// if a panel is currently open
 				$.articleFeedbackv5special.currentPanelHostId !== undefined &&
 					// and we did not just open it
-					$.articleFeedbackv5special.currentPanelHostId != $( e.target ).attr( 'id' ) &&
+					$.articleFeedbackv5special.currentPanelHostId !== $( e.target ).attr( 'id' ) &&
 					// and we clicked outside of the open panel
-					$( e.target ).parents( '.tipsy' ).length == 0
+					$( e.target ).parents( '.tipsy' ).length === 0
 				) {
 				$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 				$.articleFeedbackv5special.currentPanelHostId = undefined;
@@ -307,10 +307,12 @@
 			helpLink = mw.msg( 'articlefeedbackv5-help-special-linkurl-editors' );
 		}
 
+		var action;
+
 		// localize tipsies
-		for ( var action in $.articleFeedbackv5special.actions ) {
+		for ( action in $.articleFeedbackv5special.actions ) {
 			var $container = $( '<div></div>' );
-			if ( $.articleFeedbackv5special.actions[action].hasTipsy && $.articleFeedbackv5special.actions[action].tipsyHtml == undefined ) {
+			if ( $.articleFeedbackv5special.actions[action].hasTipsy && $.articleFeedbackv5special.actions[action].tipsyHtml === undefined ) {
 				$container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
 				$container.find( '#articleFeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
 				$container.find( '#articleFeedbackv5-noteflyover-description' ).html( mw.config.get( 'mw.msg.articlefeedbackv5-noteflyover-' + action + '-description' ) );
@@ -326,9 +328,9 @@
 		}
 
 		// Bind actions
-		for ( var action in $.articleFeedbackv5special.actions ) {
+		for ( action in $.articleFeedbackv5special.actions ) {
 			$( document ).on( 'click touchstart', '.articleFeedbackv5-' + action + '-link', function( e ) {
-				var action = $( this ).data( 'action' );
+				action = $( this ).data( 'action' );
 
 				if ( !$( this ).hasClass( 'inactive' ) ) {
 					$.articleFeedbackv5special.actions[action].click( e );
@@ -345,7 +347,7 @@
 		var tipsySubmit = function( e ) {
 			e.preventDefault();
 
-			if ( typeof $.articleFeedbackv5special.tipsyCallback == 'function' ) {
+			if ( typeof $.articleFeedbackv5special.tipsyCallback === 'function' ) {
 				// execute and clear callback function
 				$.articleFeedbackv5special.tipsyCallback( e );
 				$.articleFeedbackv5special.tipsyCallback = undefined;
@@ -390,7 +392,7 @@
 		// Filter select
 		$( '#articleFeedbackv5-filter-select' ).bind( 'change', function( e ) {
 			var id = $(this).val();
-			if ( id == '' || id == 'X' ) {
+			if ( id === '' || id === 'X' ) {
 				return false;
 			}
 			$.articleFeedbackv5special.toggleFilter( id );
@@ -411,9 +413,9 @@
 		} );
 
 		// Sort select
-		$( '#articleFeedbackv5-sort-select' ).bind( 'change', function( e ) {
+		$( '#articleFeedbackv5-sort-select' ).bind( 'change', function() {
 			var sort = $(this).val().split( '-' );
-			if ( sort == '' ) {
+			if ( sort === '' ) {
 				return false;
 			}
 			$.articleFeedbackv5special.toggleSort( sort[0], sort[1] );
@@ -425,13 +427,13 @@
 		$( '#articleFeedbackv5-sort-select option[value=""]' ).attr( 'disabled', true );
 
 		// Show more
-		$( '#articleFeedbackv5-show-more' ).bind( 'click', function( e ) {
+		$( '#articleFeedbackv5-show-more' ).bind( 'click', function() {
 			$.articleFeedbackv5special.loadFeedback( false, false );
 			return false;
 		} );
 
 		// Refresh list
-		$( '#articleFeedbackv5-refresh-list' ).bind( 'click', function( e ) {
+		$( '#articleFeedbackv5-refresh-list' ).bind( 'click', function() {
 			$.articleFeedbackv5special.listControls.offset = null;
 			$.articleFeedbackv5special.loadFeedback( true, false );
 			return false;
@@ -506,7 +508,7 @@
 	 */
 	$.articleFeedbackv5special.emptyMessage = function() {
 		var $feedbackContainer = $( '#articleFeedbackv5-show-feedback' );
-		if ( $feedbackContainer.children().length == 0 ) {
+		if ( $feedbackContainer.children().length === 0 ) {
 				$feedbackContainer.append(
 					$( '<div id="articlefeedbackv5-no-feedback" />' ).text(
 						mw.msg( 'articlefeedbackv5-no-feedback' )
@@ -605,13 +607,13 @@
 		var $l = $( e.target );
 
 		// are we hiding the current tipsy?
-		if ( $l.attr( 'id' ) == $.articleFeedbackv5special.currentPanelHostId ) {
+		if ( $l.attr( 'id' ) === $.articleFeedbackv5special.currentPanelHostId ) {
 			$l.tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
 			return false;
 		} else {
 			// no, we're displaying another one
-			if ( undefined != $.articleFeedbackv5special.currentPanelHostId ) {
+			if ( undefined !== $.articleFeedbackv5special.currentPanelHostId ) {
 				$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			}
 			$l.tipsy( 'show' );
@@ -1932,4 +1934,4 @@
 
 // }}}
 
-} )( jQuery );
+}( jQuery, mediaWiki );
