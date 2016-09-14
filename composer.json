@@ -11,5 +11,13 @@
 
 	"suggest": {
 		"mediawiki/abuse-filter" : "dev-master"
+	},
+	"require-dev": {
+		"jakub-onderka/php-parallel-lint": "0.9.*"
+	},
+	"scripts": {
+		"test": [
+			"parallel-lint . --exclude node_modules --exclude vendor"
+		]
 	}
 }
