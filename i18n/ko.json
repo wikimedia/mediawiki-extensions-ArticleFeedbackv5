@@ -15,6 +15,7 @@
 			"Ykhwong"
 		]
 	},
+	"apihelp-articlefeedbackv5-set-status-param-enable": "AFTv5를 사용하려면 1, 사용하지 않으려면 0",
 	"articlefeedbackv5-cta-thanks": "감사합니다!",
 	"articlefeedbackv5-cta-confirmation-message": "게시물은 이 [$1 피드백 문서]에 볼 수 있습니다.",
 	"articlefeedbackv5-cta1-confirmation-title": "이 문서를 편집할 수 있는지 알고 있었나요?",
