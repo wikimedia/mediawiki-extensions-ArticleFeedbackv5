@@ -6,10 +6,10 @@
 jQuery( function( $ ) {
 
 	// Check if the watchlist is enabled & link can be shown
-	if ( mw.config.get( 'wgArticleFeedbackv5Watchlist' ) && mw.config.get( 'wgArticleFeedbackv5WatchlistLink' ) ) {
+	if ( mediaWiki.config.get( 'wgArticleFeedbackv5Watchlist' ) && mediaWiki.config.get( 'wgArticleFeedbackv5WatchlistLink' ) ) {
 
 		// Check if we're not dealing with anon user
-		if ( mw.user.isAnon() ) {
+		if ( mediaWiki.user.isAnon() ) {
 			return;
 		}
 
@@ -20,14 +20,14 @@ jQuery( function( $ ) {
 
 		// Build the url to the Special:ArticleFeedbackv5Watchlist page
 		var params = { ref: 'watchlist' };
-		var url = mw.config.get( 'wgScript' ) + '?title=' +
-			encodeURIComponent( mw.config.get( 'wgArticleFeedbackv5SpecialWatchlistUrl' ) ) +
+		var url = mediaWiki.config.get( 'wgScript' ) + '?title=' +
+			encodeURIComponent( mediaWiki.config.get( 'wgArticleFeedbackv5SpecialWatchlistUrl' ) ) +
 			'&' + $.param( params );
 
 		// Add the link to the feedback-page next to the title
 		var link = $( '<a id="articlefeedbackv5-watchlist-feedback-link"></a>' );
 		link
-			.text( mw.msg( 'articlefeedbackv5-watchlist-view-feedback' ) )
+			.text( mediaWiki.msg( 'articlefeedbackv5-watchlist-view-feedback' ) )
 			.attr( 'href', url )
 			.click( { trackingId: 'watchlist_view_feedback-button_click' }, $.aftTrack.trackEvent );
 

@@ -40,10 +40,10 @@ jQuery( function( $ ) {
 		removeOld();
 
 		// load AFTv5
-		mw.loader.load( 'ext.articleFeedbackv5' );
+		mediaWiki.loader.load( 'ext.articleFeedbackv5' );
 		// Load the IE-specific module
 		if ( navigator.appVersion.indexOf( 'MSIE 7' ) !== -1 ) {
-			mw.loader.load( 'ext.articleFeedbackv5.ie' );
+			mediaWiki.loader.load( 'ext.articleFeedbackv5.ie' );
 		}
 	};
 
@@ -68,7 +68,7 @@ jQuery( function( $ ) {
 			$.articleFeedbackv5.highlightForm();
 
 			// add message to confirm AFTv5 has just been enabled
-			link = mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' );
+			link = mediaWiki.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mediaWiki.config.get( 'wgPageName' );
 				$( '<p id="articleFeedbackv5-added"></p>' )
 					.msg( 'articlefeedbackv5-enabled-form-message', link )
 					.appendTo( $form );
@@ -78,6 +78,8 @@ jQuery( function( $ ) {
 		};
 		interval = setInterval( display, 100 );
 	};
+	
+	var $link;
 
 	/**
 	 * Load AFTv5 after it has been enabled.
@@ -117,21 +119,21 @@ jQuery( function( $ ) {
 	 * be displaying here.
 	 */
 	if (
-		mw.config.get( 'wgArticleFeedbackv5EnableProtection', 1 ) &&
+		mediaWiki.config.get( 'wgArticleFeedbackv5EnableProtection', 1 ) &&
 		!$.aftUtils.whitelist( article ) &&
 		!$.aftUtils.blacklist( article ) &&
 		$.aftUtils.canSetStatus( true )
 	) {
-		var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
+		var userPermissions = mediaWiki.config.get( 'wgArticleFeedbackv5Permissions' );
 
 		// build link to enable feedback form
-		var $link = $( '<li id="t-articlefeedbackv5-enable"><a href="#"></a></li>' );
-		$link.find( 'a' ).text( mw.msg( 'articlefeedbackv5-toolbox-enable' ) );
+		$link = $( '<li id="t-articlefeedbackv5-enable"><a href="#"></a></li>' );
+		$link.find( 'a' ).text( mediaWiki.msg( 'articlefeedbackv5-toolbox-enable' ) );
 
 		// administrators can change detailed visibility in ?action=protect
 		if ( 'aft-administrator' in userPermissions && userPermissions['aft-administrator'] ) {
-			var link = mw.config.get( 'wgScript' ) + '?title=' +
-				encodeURIComponent( mw.config.get( 'wgPageName' ) ) +
+			var link = mediaWiki.config.get( 'wgScript' ) + '?title=' +
+				encodeURIComponent( mediaWiki.config.get( 'wgPageName' ) ) +
 				'&' + $.param( { action: 'protect' } );
 
 			$link.find( 'a' ).attr( 'href', link );
