@@ -5,7 +5,7 @@
 /*** Main entry point ***/
 jQuery( function( $ ) {
 	// Check if the talk page link can be shown
-	if ( mw.config.get( 'wgArticleFeedbackv5TalkPageLink' ) ) {
+	if ( mediaWiki.config.get( 'wgArticleFeedbackv5TalkPageLink' ) ) {
 
 		var filter = '*';
 		/*
@@ -16,7 +16,7 @@ jQuery( function( $ ) {
 			filter = 'featured';
 		}
 
-		var api = new mw.Api();
+		var api = new mediaWiki.Api();
 		api.get( {
 			'pageid': $.aftUtils.article().id,
 			'filter': filter,
@@ -25,18 +25,18 @@ jQuery( function( $ ) {
 		} )
 		.done( function ( data ) {
 			if ( 'articlefeedbackv5-get-count' in data && 'count' in data['articlefeedbackv5-get-count'] ) {
-				var count = data['articlefeedbackv5-get-count']['count'];
+				var count = data['articlefeedbackv5-get-count'].count;
 
 				if ( count > 0 ) {
 					// Build the url to the Special:ArticleFeedbackv5 page
 					var url =
-						mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' +
-						mw.util.wikiUrlencode( mw.config.get( 'aftv5Article' ).title );
+						mediaWiki.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' +
+						mediaWiki.util.wikiUrlencode( mediaWiki.config.get( 'aftv5Article' ).title );
 					url += ( url.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( { ref: 'talk', filter: 'featured' } );
 
 					// Add the link to the feedback-page next to the title
 					var $link = $( '<a id="articlefeedbackv5-talk-feedback-link"></a>' )
-						.text( mw.msg( 'articlefeedbackv5-talk-view-feedback' ) )
+						.text( mediaWiki.msg( 'articlefeedbackv5-talk-view-feedback' ) )
 						.attr( 'href', url )
 						.click( { trackingId: 'talk_page_view_feedback-button_click' }, $.aftTrack.trackEvent );
 
