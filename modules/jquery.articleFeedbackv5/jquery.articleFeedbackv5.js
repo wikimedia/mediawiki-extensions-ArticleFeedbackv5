@@ -72,7 +72,7 @@
  * @version    $Id$
  */
 
-( function ( $ ) {
+( function ( $, mw ) {
 
 // {{{ articleFeedbackv5 definition
 
@@ -3238,5 +3238,5 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 
 // }}}
 
-} )( jQuery );
+}( jQuery, mediaWiki ) );
 
