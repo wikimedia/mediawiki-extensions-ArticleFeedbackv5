@@ -20,11 +20,11 @@ jQuery( function( $ ) {
 	} else {
 		// unsupported browser
 		if ( $.aftUtils.useragent() === false ) {
-			showError( mw.msg( 'articlefeedbackv5-unsupported-message' ) );
+			showError( mediaWiki.msg( 'articlefeedbackv5-unsupported-message' ) );
 
 		// AFT disabled for this page
 		} else {
-			showError( mw.msg( 'articlefeedbackv5-page-disabled' ) );
+			showError( mediaWiki.msg( 'articlefeedbackv5-page-disabled' ) );
 		}
 	}
 } );
