@@ -10,6 +10,7 @@
 	"apihelp-articlefeedbackv5-param-anontoken": "Шифра за анонимни корисници",
 	"apihelp-articlefeedbackv5-param-bucket": "Кој образец за давање мислење му бил покажан на корисникот",
 	"apihelp-articlefeedbackv5-param-cta": "Повик што се прикажува по поднесувањето",
+	"apihelp-articlefeedbackv5-param-comment": "Мислење во слободен текст",
 	"apihelp-articlefeedbackv5-get-count-param-filter": "Како да се филтрира списокот",
 	"apihelp-articlefeedbackv5-flag-feedback-description": "Означи назнака на мислење како навредлива или скриена.",
 	"apihelp-articlefeedbackv5-flag-feedback-param-feedbackid": "Која назнака на мислење да се означи",
