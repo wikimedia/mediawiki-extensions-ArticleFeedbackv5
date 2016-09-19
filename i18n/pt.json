@@ -14,9 +14,15 @@
 			"OTAVIO1981",
 			"SandroHc",
 			"Vitorvicentevalente",
-			"Waldir"
+			"Waldir",
+			"Mansil"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "Submeter comentário do artigo",
+	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Id. de registo para atualizar",
+	"apihelp-articlefeedbackv5-set-status-param-enable": "1 para ativar, 0 para desativar AFTv5",
+	"apihelp-query+articlefeedbackv5-view-activity-param-feedbackid": "Id. do comentário do artigo para obter a atividade",
+	"apihelp-query+articlefeedbackv5-view-feedback-description": "Listar comentário de artigo para uma página indicada",
 	"articlefeedbackv5-cta-thanks": "Obrigado!",
 	"articlefeedbackv5-cta-confirmation-message": "O seu comentário pode ser visto nesta [$1 página de avaliação].",
 	"articlefeedbackv5-cta1-confirmation-title": "Sabia que pode editar esta página?",

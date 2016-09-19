@@ -17,6 +17,9 @@
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Skicka artikelåterkoppling",
+	"apihelp-articlefeedbackv5-param-anontoken": "Nyckel för anonyma användare",
+	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Flaggtyp att verkställa",
+	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Logg-ID att uppdatera",
 	"apihelp-articlefeedbackv5-add-flag-note-param-flagtype": "Flaggtyp att verkställa",
 	"articlefeedbackv5-cta-thanks": "Tack!",
 	"articlefeedbackv5-cta-confirmation-message": "Ditt inlägg kan ses på den här [$1 feedback-sidan].",
