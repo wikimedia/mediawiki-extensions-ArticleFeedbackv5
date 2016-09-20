@@ -39,7 +39,8 @@
 			"Verdy p",
 			"Wikifan",
 			"Wyz",
-			"Wladek92"
+			"Wladek92",
+			"Trial"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Soumettre un commentaire sur un article",
@@ -85,7 +86,7 @@
 	"apihelp-query+articlefeedbackv5-view-activity-param-noheader": "Aller aux balises d'en-tête, même si on est sur la première page",
 	"apihelp-query+articlefeedbackv5-view-feedback-description": "Affiche la liste des commentaires d'articles pour une page spécifiée",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-title": "Le titre de la page pour laquelle on désire les commentaires d'appréciation. Ne peut être utilisé avec $1pageid",
-	"apihelp-query+articlefeedbackv5-view-feedback-param-pageid": "ID de la page pour laquelle obtenir les notes d’avis. Impossible à utiliser avec $1title",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-pageid": "Identifiant de la page pour laquelle obtenir les notes d’avis. Impossible à utiliser avec $1title",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-watchlist": "Charger les commentaires des pages suivies par l’utilisateur (1) ou de toutes les pages (0)",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "Clé pour trier les enregistrements",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sortdirection": "Sens (ASC|DESC) pour trier les commentaires",
