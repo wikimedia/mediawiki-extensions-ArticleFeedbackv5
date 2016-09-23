@@ -40,6 +40,8 @@
 	"apihelp-articlefeedbackv5-param-comment": "自由格式的文本反馈",
 	"apihelp-articlefeedbackv5-get-count-param-title": "要获取反馈评级的页面标题。不能与$1pageid一起使用",
 	"apihelp-articlefeedbackv5-get-count-param-pageid": "要获取反馈评级的页面ID。不能与$1title一起使用",
+	"apihelp-articlefeedbackv5-get-count-param-filter": "应用到列表的过滤",
+	"apihelp-articlefeedbackv5-flag-feedback-description": "标记反馈ID为滥用或已隐藏。",
 	"apihelp-articlefeedbackv5-flag-feedback-param-title": "要标记反馈的页面标题。不能与$1pageid一起使用",
 	"apihelp-articlefeedbackv5-flag-feedback-param-pageid": "要标记反馈的页面ID。不能与$1title一起使用",
 	"apihelp-articlefeedbackv5-flag-feedback-param-feedbackid": "要标记的反馈ID",
