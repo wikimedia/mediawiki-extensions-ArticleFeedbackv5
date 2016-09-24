@@ -779,7 +779,12 @@
 						 */
 						if ( typeof window.onbeforeunload != 'function' ) {
 							$( window ).on( 'beforeunload', function() {
-								return mw.msg( 'articlefeedbackv5-leave-warning' );
+								// Only show the warning message if the user
+								// actually entered some feedback into the
+								// textarea (T146536)
+								if ( $( '#articleFeedbackv5-find-feedback' ).val() !== '' ) {
+									return mw.msg( 'articlefeedbackv5-leave-warning' );
+								}
 							} );
 						}
 
