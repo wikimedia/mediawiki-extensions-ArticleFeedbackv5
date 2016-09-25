@@ -138,10 +138,6 @@
 				"mediawiki.api"
 			]
 		},
-		"ext.articleFeedbackv5.ie": {
-			"scripts": "ext.articleFeedbackv5/ext.articleFeedbackv5.ie.js",
-			"styles": "ext.articleFeedbackv5/ext.articleFeedbackv5.ie.css"
-		},
 		"ext.articleFeedbackv5.dashboard": {
 			"scripts": "ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.js",
 			"styles": "ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.css",
