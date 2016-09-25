@@ -323,7 +323,6 @@
 	"articlefeedbackv5-mask-text-autohide": "This post #$1 {{GENDER:$2|was autohidden by $2}} $3.",
 	"articlefeedbackv5-mask-text-hide": "This post #$1 {{GENDER:$2|was hidden by $2}} $3.",
 	"articlefeedbackv5-mask-text-oversight": "This post #$1 {{GENDER:$2|was oversighted by $2}} $3.",
-	"articlefeedbackv5-special-disclaimer": "This is a prototype. Please do not use it unless you have been invited to.",
 	"articlefeedbackv5-special-goback": "View feedback page",
 	"articlefeedbackv5-special-central-goback": "See more feedback from other pages",
 	"articlefeedbackv5-permalink-info-title": "Info about this post",
