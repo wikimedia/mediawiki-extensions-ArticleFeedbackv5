@@ -612,6 +612,7 @@
 	padding: 5px;
 	font-size: 1.1em;
 	font-family: sans-serif !important;
+	max-width: 100%; /* see https://phabricator.wikimedia.org/T146512 */
 }
 
 .articleFeedbackv5-ui .feedback-text.inactive {
