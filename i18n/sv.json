@@ -282,7 +282,6 @@
 	"articlefeedbackv5-mask-text-autohide": "Detta inlägg #$1 {{GENDER:$2|doldes automatiskt av $2}} $3.",
 	"articlefeedbackv5-mask-text-hide": "Detta inlägg #$1 {{GENDER:$2|doldes av $2}} $3.",
 	"articlefeedbackv5-mask-text-oversight": "Detta inlägg #$1 {{GENDER:$2|censurerades av $2}} $3.",
-	"articlefeedbackv5-special-disclaimer": "Detta är en prototyp. Använd den inte om du inte har blivit inbjuden till det.",
 	"articlefeedbackv5-special-goback": "Visa feedback-sidan",
 	"articlefeedbackv5-special-central-goback": "Se mer feedback från andra sidor",
 	"articlefeedbackv5-permalink-info-title": "Information om detta inlägg",

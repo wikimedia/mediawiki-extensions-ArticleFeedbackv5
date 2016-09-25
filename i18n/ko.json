@@ -280,7 +280,6 @@
 	"articlefeedbackv5-mask-text-autohide": "이 게시물 #$1은 $3에 {{GENDER:$2|$2에 의해 자동으로 숨겨졌습니다}}.",
 	"articlefeedbackv5-mask-text-hide": "이 #$1 게시물은 $3에 {{GENDER:$2|$2에 의해 숨겨졌습니다}}.",
 	"articlefeedbackv5-mask-text-oversight": "이 게시물 $1은 $3에 {{GENDER:$2|$2에 의해 특정판 삭제되었습니다}}.",
-	"articlefeedbackv5-special-disclaimer": "프로토타입입니다. 초대되지 않는 한 이를 사용하지 마세요.",
 	"articlefeedbackv5-special-goback": "피드백 페이지 보기",
 	"articlefeedbackv5-special-central-goback": "다른 문서에 대한 더 많은 피드백 보기",
 	"articlefeedbackv5-permalink-info-title": "이 게시물에 대한 정보",

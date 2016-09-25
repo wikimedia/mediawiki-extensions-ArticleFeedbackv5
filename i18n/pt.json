@@ -283,7 +283,6 @@
 	"articlefeedbackv5-mask-text-autohide": "Esta nota #$1 {{GENDER:$2|foi auto-ocultada por $2}} $3.",
 	"articlefeedbackv5-mask-text-hide": "Esta nota #$1 {{GENDER:$2|foi oculta por $2}} $3.",
 	"articlefeedbackv5-mask-text-oversight": "Esta nota #$1 {{GENDER:$2|foi supervisionada por $2}} $3.",
-	"articlefeedbackv5-special-disclaimer": "Isto é um protótipo. Por favor, não o utilize excepto se foi convidado a fazê-lo.",
 	"articlefeedbackv5-special-goback": "Ver página de avaliação",
 	"articlefeedbackv5-special-central-goback": "Ver mais avaliações de outras páginas",
 	"articlefeedbackv5-permalink-info-title": "Informação sobre esta nota",

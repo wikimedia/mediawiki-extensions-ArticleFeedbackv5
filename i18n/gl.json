@@ -288,7 +288,6 @@
 	"articlefeedbackv5-mask-text-autohide": "{{GENDER:$2|$2 agochou automaticamente}} a mensaxe nº$1 $3.",
 	"articlefeedbackv5-mask-text-hide": "{{GENDER:$2|$2 agochou}} a mensaxe nº$1 $3.",
 	"articlefeedbackv5-mask-text-oversight": "{{GENDER:$2|$2 supervisou}} a mensaxe nº$1 $3.",
-	"articlefeedbackv5-special-disclaimer": "Isto é un prototipo. Non o use a menos que o convidasen a facelo.",
 	"articlefeedbackv5-special-goback": "Volver á páxina de comentarios",
 	"articlefeedbackv5-special-central-goback": "Ollar máis comentarios sobre outras páxinas",
 	"articlefeedbackv5-permalink-info-title": "Información sobre esta mensaxe",

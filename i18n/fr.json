@@ -356,7 +356,6 @@
 	"articlefeedbackv5-mask-text-autohide": "Ce commentaire #$1 {{GENDER:$2|a été masqué automatiquement par $2}} {{lcfirst:$3}}.",
 	"articlefeedbackv5-mask-text-hide": "Ce commentaire #$1 {{GENDER:$2|a été masqué par $2}} {{lcfirst:$3}}.",
 	"articlefeedbackv5-mask-text-oversight": "Ce commentaire #$1 {{GENDER:$2|a été masqué aux administrateurs par $2}} {{lcfirst:$3}}.",
-	"articlefeedbackv5-special-disclaimer": "Il s’agit d’un prototype. Veuillez ne pas l’utiliser à moins d’y être invité.",
 	"articlefeedbackv5-special-goback": "Afficher la page de commentaires",
 	"articlefeedbackv5-special-central-goback": "Voir plus de commentaires des autres pages",
 	"articlefeedbackv5-permalink-info-title": "Informations au sujet de cet article",
