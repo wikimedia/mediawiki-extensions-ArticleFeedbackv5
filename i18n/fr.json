@@ -65,7 +65,7 @@
 	"apihelp-articlefeedbackv5-flag-feedback-param-note": "Informations sur la raison pour laquelle les commentaires ont commencé",
 	"apihelp-articlefeedbackv5-flag-feedback-param-toggle": "L'indicateur est géré unitairement, utile uniquement pour apporter une aide ou pas",
 	"apihelp-articlefeedbackv5-flag-feedback-param-source": "L'origine de l'indication: article (une page), centrale (page de commentaires), liste de surveillance (page), permalien",
-	"apihelp-articlefeedbackv5-add-flag-note-description": "Ajouter une note décrivant l’activité, après que l’action a déjà été effectuée.",
+	"apihelp-articlefeedbackv5-add-flag-note-description": "Ajouter une note décrivant l’activité, après que l’action ait déjà été effectuée.",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Identifiant de journal à mettre à jour",
 	"apihelp-articlefeedbackv5-add-flag-note-param-flagtype": "Type de d'étiquette à appliquer",
 	"apihelp-articlefeedbackv5-add-flag-note-param-note": "Informations sur la raison pour laquelle les commentaires ont commencé",
