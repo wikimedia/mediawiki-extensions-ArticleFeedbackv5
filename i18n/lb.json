@@ -10,6 +10,7 @@
 	"apihelp-articlefeedbackv5-description": "Artikel-Feedback ofginn",
 	"apihelp-articlefeedbackv5-param-anontoken": "Token fir anonym Benotzer",
 	"apihelp-articlefeedbackv5-param-bucket": "Wat fir ee Feedback-Formulaire gouf dem Benotzer gewisen",
+	"apihelp-articlefeedbackv5-get-count-description": "Zuel vun de Feebacke fir eng bestëmmt Säit/Filter kréien",
 	"apihelp-articlefeedbackv5-set-status-description": "AFTv5 fir eng bestëmmt Säit aktivéieren/desaktivéieren",
 	"apihelp-articlefeedbackv5-set-status-param-enable": "1 fir AFTv5 z'aktivéieren, 0 fir AFTv5 ze desaktivéieren",
 	"apihelp-query+articlefeedbackv5-view-activity-param-continue": "Wa méi Resultater disponibel sinn da benotzt dëst fir virunzefueren",
