@@ -16,6 +16,7 @@
 	"apihelp-articlefeedbackv5-param-comment": "O comentario textual en formato libre",
 	"apihelp-articlefeedbackv5-get-count-description": "Obter a cantidade de comentarios para unha páxina/filtro determinado",
 	"apihelp-articlefeedbackv5-get-count-param-filter": "Que filtrado aplicar ás listas",
+	"apihelp-articlefeedbackv5-flag-feedback-description": "Marcar un identificador de comentario como abusivo ou oculto.",
 	"apihelp-articlefeedbackv5-flag-feedback-param-feedbackid": "Identificador do comentario a marcar",
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Tipo de etiqueta a aplicar",
 	"apihelp-articlefeedbackv5-flag-feedback-param-note": "Información sobre a razón pola que comezaron os comentarios",

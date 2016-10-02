@@ -52,6 +52,7 @@
 	"apihelp-query+articlefeedbackv5-view-activity-param-noheader": "Salta il markup dell'intestazione, anche se questa è la prima pagina",
 	"apihelp-query+articlefeedbackv5-view-feedback-description": "Elenca feedback alla voce per una specifica pagina",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-title": "Titolo della pagina di cui ottenere i punteggi di feedback. Non può essere usato insieme a $1pageid",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-pageid": "ID della pagina di cui ottenere il punteggio di feedback. Non può essere usato insieme a $1title",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-watchlist": "Carica feedback dalle pagine tra gli osservati speciali dell'utente (1) o da tutte le pagine (0)",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "Chiave per cui ordinare i record",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sortdirection": "Direzione (ASC|DESC) per cui ordinare i feedback",
