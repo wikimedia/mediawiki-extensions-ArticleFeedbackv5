@@ -12,7 +12,8 @@
 			"Raoli",
 			"Ximo17",
 			"Anto",
-			"Saracrovetto"
+			"Saracrovetto",
+			"Selven"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Invia feedback alla voce",
@@ -30,6 +31,7 @@
 	"apihelp-articlefeedbackv5-get-count-param-pageid": "ID della pagina di cui ottenere il punteggio di feedback. Non può essere usato insieme a $1title",
 	"apihelp-articlefeedbackv5-get-count-param-filter": "Quale filtro applicare all'elenco",
 	"apihelp-articlefeedbackv5-flag-feedback-description": "Contrassegnare un feedbackID come abusivo o nascosto.",
+	"apihelp-articlefeedbackv5-flag-feedback-param-feedbackid": "FeedbackID da segnare",
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Tipo di flag da applicare",
 	"apihelp-articlefeedbackv5-flag-feedback-param-note": "Informazioni sul motivo per cui si è verificata l'attività di feedback",
 	"apihelp-articlefeedbackv5-flag-feedback-param-toggle": "Il contrassegno viene attivato in modo atomico, utile solo per  (in)utile",
@@ -39,6 +41,7 @@
 	"apihelp-articlefeedbackv5-add-flag-note-param-note": "Informazioni sul motivo per cui si è verificata l'attività di feedback",
 	"apihelp-articlefeedbackv5-add-flag-note-param-title": "Titolo della pagina per cui è stato ottenuto il feedback. Non può essere usato insieme a $1pageid",
 	"apihelp-articlefeedbackv5-add-flag-note-param-pageid": "ID della pagina per cui è stato ottenuto il feedback. Non può essere usato insieme a $1title",
+	"apihelp-articlefeedbackv5-add-flag-note-param-feedbackid": "FeedbackID da segnare",
 	"apihelp-articlefeedbackv5-set-status-description": "Abilita/disabilita AFTv5 per una certa pagina.",
 	"apihelp-articlefeedbackv5-set-status-param-title": "Titolo della pagina per la quale attivare/disattivare AFTv5. Non può essere usato insieme a $1pageid",
 	"apihelp-articlefeedbackv5-set-status-param-pageid": "ID della pagina per la quale attivare/disattivare AFTv5. Non può essere usato insieme a $1title",

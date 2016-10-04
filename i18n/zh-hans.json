@@ -58,6 +58,7 @@
 	"apihelp-articlefeedbackv5-set-status-param-title": "要启用/禁用AFTv5的页面标题。不能与$1pageid一起使用",
 	"apihelp-articlefeedbackv5-set-status-param-pageid": "要启用/禁用AFTv5的页面ID。不能与$1title一起使用",
 	"apihelp-articlefeedbackv5-set-status-param-enable": "1启用，0禁用AFTv5",
+	"apihelp-query+articlefeedbackv5-view-activity-description": "为特定页面列举条目反馈活动",
 	"apihelp-query+articlefeedbackv5-view-activity-param-feedbackid": "要获取活动的条目反馈ID",
 	"apihelp-query+articlefeedbackv5-view-activity-param-title": "提供反馈的页面标题。不能与$1pageid一起使用",
 	"apihelp-query+articlefeedbackv5-view-activity-param-pageid": "提供反馈的页面ID。不能与$1title一起使用",
