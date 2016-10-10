@@ -310,7 +310,7 @@
 	"articlefeedbackv5-found-percent-title": "Based on $1 {{PLURAL:$1|post|posts}} (excluding inappropriate comments)",
 	"articlefeedbackv5": "Article feedback - Central page",
 	"articlefeedbackv5watchlist": "Article feedback - My watched pages",
-	"articlefeedbackv5-desc": "Article feedback",
+	"articlefeedbackv5-desc": "Encourages users to contribute by allowing them to review an article and suggest changes",
 	"articlefeedbackv5-comment-more": "More",
 	"articlefeedbackv5-comment-empty": "No text was entered",
 	"articlefeedbackv5-unsupported-message": "Sorry, your browser is not supported by this prototype. To see this page, please use a different browser.",
