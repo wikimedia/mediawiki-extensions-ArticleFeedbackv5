@@ -7,7 +7,8 @@
 			"Siddhartha Ghai",
 			"Vibhijain",
 			"राम प्रसाद जोशी",
-			"YmKavishwar"
+			"YmKavishwar",
+			"Ziyaurr"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "धन्यवाद!",
@@ -80,7 +81,7 @@
 	"articlefeedbackv5-invalid-page-id": "अमान्य पृष्ठ आईड़ि",
 	"articlefeedbackv5-found-percent": "{{GENDER:$2|$1 जो खोज रहे थे उन्हें मिल गया।}}",
 	"articlefeedbackv5": "लेख प्रतिक्रिया - केन्द्रीय पृष्ठ",
-	"articlefeedbackv5-desc": "लेख सुझाव प्रतिक्रिया",
+	"articlefeedbackv5-desc": "कोई लेख का मूल्यांकन और परिवर्तन का सुझाव देकर सहयोग करने के लिए उपयोगकर्ताओं को उत्साहित करें",
 	"articlefeedbackv5-comment-more": "अधिक",
 	"articlefeedbackv5-mask-view-contents": "बिषयबस्तु देखिए",
 	"articlefeedbackv5-special-goback": "सुझाव पृष्ठ देखें",

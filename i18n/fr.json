@@ -343,7 +343,7 @@
 	"articlefeedbackv5-found-percent-title": "Basé sur $1 commentaire{{PLURAL:$1||s}} (sans les commentaires inappropriés)",
 	"articlefeedbackv5": "Évaluation d’article - Page centrale",
 	"articlefeedbackv5watchlist": "Commentaires des articles - Mes pages regardées",
-	"articlefeedbackv5-desc": "Encourage les utilisateurs à contribuer en leur permettant de relire un article et suggérer des modifications",
+	"articlefeedbackv5-desc": "Encourage les utilisateurs à contribuer en leur permettant de relire un article et de suggérer des modifications",
 	"articlefeedbackv5-comment-more": "Plus",
 	"articlefeedbackv5-comment-empty": "Aucun texte n’a été entré",
 	"articlefeedbackv5-unsupported-message": "Désolé, votre navigateur n’est pas pris en charge par ce prototype. Pour voir cette page, veuillez utiliser un autre navigateur.",

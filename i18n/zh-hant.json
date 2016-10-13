@@ -19,7 +19,8 @@
 			"Mywood",
 			"Impersonator 1",
 			"LNDDYL",
-			"Cwlin0416"
+			"Cwlin0416",
+			"1233thehongkonger"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "謝謝！",
@@ -269,7 +270,7 @@
 	"articlefeedbackv5-found-percent-title": "基於 $1 篇文章 (不包括不適當評論)",
 	"articlefeedbackv5": "文章評分面板——中央頁面",
 	"articlefeedbackv5watchlist": "文章回饋—我監視的頁面",
-	"articlefeedbackv5-desc": "文章評級",
+	"articlefeedbackv5-desc": "鼓勵用戶以評審及建議的方式作出貢獻",
 	"articlefeedbackv5-comment-more": "更多",
 	"articlefeedbackv5-comment-empty": "沒有輸入文字",
 	"articlefeedbackv5-unsupported-message": "很抱歉，您的瀏覽器不支援此原型。請用別的瀏覽器檢視此頁。",
@@ -282,7 +283,6 @@
 	"articlefeedbackv5-mask-text-autohide": "此回饋#$1 由 $2 於 $3 自動隱藏。",
 	"articlefeedbackv5-mask-text-hide": "此文章 #$1 由 $2 於 $3 隱藏。",
 	"articlefeedbackv5-mask-text-oversight": "此文章 #$1 由 $2 於 $3 監督刪除。",
-	"articlefeedbackv5-special-disclaimer": "這是一個原型。除非您已被邀請，否則請不要使用。",
 	"articlefeedbackv5-special-goback": "檢視回饋頁面",
 	"articlefeedbackv5-special-central-goback": "查看其他頁面上的更多回饋",
 	"articlefeedbackv5-permalink-info-title": "關於此文章的資訊",
