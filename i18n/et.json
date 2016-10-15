@@ -150,7 +150,7 @@
 	"articlefeedbackv5-found-percent": "{{PLURAL:$2|$1 inimesi leidis, mida otsisid}}",
 	"articlefeedbackv5": "Artikli tagasiside pealeht",
 	"articlefeedbackv5watchlist": "Artikli tagasiside – minu jälgitavad leheküljed",
-	"articlefeedbackv5-desc": "Artikli tagasiside",
+	"articlefeedbackv5-desc": "Kutsub artiklit üle vaatama ja parandusettepanekuid tegema ning julgustab seeläbi kasutajaid kaastööle.",
 	"articlefeedbackv5-comment-more": "Rohkem",
 	"articlefeedbackv5-page-disabled": "Artikli tagasiside lehekülge pole selle artikli jaoks lubatud.",
 	"articlefeedbackv5-viewactivity": "Vaata toiminguid",
