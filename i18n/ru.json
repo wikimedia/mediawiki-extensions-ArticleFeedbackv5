@@ -28,7 +28,8 @@
 			"Tucvbif",
 			"Александр Сигачёв",
 			"Сrower",
-			"Сай"
+			"Сай",
+			"Irus"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Спасибо!",
@@ -278,7 +279,7 @@
 	"articlefeedbackv5-found-percent-title": "Основано на $1 {{PLURAL:$1|отзыве|отзывах}} (исключая неуместные комментарии)",
 	"articlefeedbackv5": "Отзывы о статьях — Центральная страница",
 	"articlefeedbackv5watchlist": "Отзывы о статьях — наблюдаемые мной страницы",
-	"articlefeedbackv5-desc": "Отзывы о статьях",
+	"articlefeedbackv5-desc": "Призывает пользователей внести свой вклад, позволяя им пересмотреть статью и предложить изменения",
 	"articlefeedbackv5-comment-more": "Больше",
 	"articlefeedbackv5-comment-empty": "Текст не был введен",
 	"articlefeedbackv5-unsupported-message": "Извините, но ваш браузер не поддерживается в рамках этого прототипа. Чтобы увидеть эту страницу, воспользуйтесь, пожалуйста, другим браузером.",
@@ -291,7 +292,6 @@
 	"articlefeedbackv5-mask-text-autohide": "Этот отзыв №$1 был скрыт {{GENDER:$2|участником|участницей}} $2 $3.",
 	"articlefeedbackv5-mask-text-hide": "Этот отзыв #$1 был скрыт {{GENDER:$2|участником|участницей}} $2 $3.",
 	"articlefeedbackv5-mask-text-oversight": "Этот отзыв #$1 был скрыт {{GENDER:$2|участником|участницей}} $2 $3.",
-	"articlefeedbackv5-special-disclaimer": "Это прототип. Не используйте его, если вас специально не приглашали.",
 	"articlefeedbackv5-special-goback": "Смотреть страницу отзывов",
 	"articlefeedbackv5-special-central-goback": "Отзывы на другие страницы",
 	"articlefeedbackv5-permalink-info-title": "Информация об этом отзыве",
