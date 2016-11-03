@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Baloch Afghanistan"
+			"Baloch Afghanistan",
+			"Ibrahim khashrowdi"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "منتوارن!",
 	"articlefeedbackv5-cta4-button-text-or": "یا",
+	"articlefeedbackv5-cta6-button-text": "بانڈارخانه‌ای دیستین",
 	"articlefeedbackv5-overlay-close": "بستین",
 	"articlefeedbackv5-contribs-status-action-hide": "چیهر داتین",
 	"articlefeedbackv5-form-helpful-yes-label": "هان",
