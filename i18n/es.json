@@ -27,7 +27,8 @@
 			"Stephensuleeman",
 			"Toliño",
 			"Translationista",
-			"Macofe"
+			"Macofe",
+			"Sophivorus"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "¡Gracias!",
@@ -291,7 +292,6 @@
 	"articlefeedbackv5-mask-text-autohide": "Esta entrada #$1 {{GENDER:$2|fue ocultada automáticamente por $2}} $3.",
 	"articlefeedbackv5-mask-text-hide": "Esta entrada #$1 {{GENDER:$2|fue ocultada por $2}} $3.",
 	"articlefeedbackv5-mask-text-oversight": "Esta entrada #$1 {{GENDER:$2|fue borrada por $2}} $3.",
-	"articlefeedbackv5-special-disclaimer": "Esto es un prototipo. Por favor no lo utilice a menos que ha sido invitado para hacerlo.",
 	"articlefeedbackv5-special-goback": "Ver la página de comentarios",
 	"articlefeedbackv5-special-central-goback": "Ver más comentarios de otras páginas",
 	"articlefeedbackv5-permalink-info-title": "Información acerca de este mensaje",
@@ -467,7 +467,7 @@
 	"articlefeedbackv5-bucket4-noedit-title": "Ayuda a mejorar {{SITENAME}}",
 	"articlefeedbackv5-bucket4-noedit-teaser-line1": "Este sitio web es creado por gente como tú.",
 	"articlefeedbackv5-bucket4-noedit-teaser-line2": "¿Puedes echarnos una mano?",
-	"articlefeedbackv5-bucket4-noedit-form-submit": "Aprender más.",
+	"articlefeedbackv5-bucket4-noedit-form-submit": "Más información",
 	"articlefeedbackv5-bucket6-title": "Ayuda a mejorar esta página",
 	"articlefeedbackv5-bucket6-question-toggle": "¿Encontraste lo que buscabas?",
 	"articlefeedbackv5-bucket6-toggle-found-yes": "Sí",
