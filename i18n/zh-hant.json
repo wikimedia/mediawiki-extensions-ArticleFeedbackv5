@@ -263,7 +263,7 @@
 	"articlefeedbackv5-feedback-reloaded-after-error": "發生了一個錯誤 ($1) 。回饋已重新載入以反映其目前狀態。",
 	"articlefeedbackv5-go-to-article": "檢視頁面",
 	"articlefeedbackv5-discussion-page": "討論",
-	"articlefeedbackv5-whats-this": "説明",
+	"articlefeedbackv5-whats-this": "說明",
 	"articlefeedbackv5-settings-menu-title": "設定",
 	"articlefeedbackv5-invalid-page-id": "無效頁面 ID",
 	"articlefeedbackv5-found-percent": "{{PLURAL:$2|$1 找到了他們所尋找的}}",
