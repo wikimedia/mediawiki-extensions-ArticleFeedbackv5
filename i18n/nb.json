@@ -7,7 +7,8 @@
 			"Event",
 			"Nghtwlkr",
 			"Sjurhamre",
-			"Jeblad"
+			"Jeblad",
+			"Jon Harald Søby"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Takk!",
@@ -197,7 +198,7 @@
 	"articlefeedbackv5-form-tooltip-unhide": "vis",
 	"articlefeedbackv5-form-tooltip-unoversight": "Angre sensurering",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 fant hva de var ute etter.}}",
-	"articlefeedbackv5-form1-header-not-found": "$2 fant ikke hva {{GENDER:$1|han|hun|han eller hun}} var ute etter.",
+	"articlefeedbackv5-form1-header-not-found": "$2 fant ikke det {{GENDER:$1|han|hun|han eller hun}} var ute etter.",
 	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 skrev en kommentar.}}",
 	"articlefeedbackv5-form2-header-praise": "{{GENDER:$1|$1}} kom med en lovprisende kommentar:",
 	"articlefeedbackv5-form2-header-problem": "{{GENDER:$1|$1}} opplevde et problem:",
