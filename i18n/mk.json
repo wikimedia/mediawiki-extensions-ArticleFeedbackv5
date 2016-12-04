@@ -26,6 +26,7 @@
 	"apihelp-articlefeedbackv5-flag-feedback-param-note": "Информација за тоа зошто се случило дејството за мислење.",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Назнака на најавата за поднова",
 	"apihelp-articlefeedbackv5-add-flag-note-param-flagtype": "Вид ознака за примена",
+	"apihelp-articlefeedbackv5-add-flag-note-param-note": "Информација за тоа зошто се случило дејството за мислење.",
 	"apihelp-articlefeedbackv5-add-flag-note-param-feedbackid": "Која назнака на мислење да се означи",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "По кој клуч да се подредат записите",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Како да се филтрира списокот",

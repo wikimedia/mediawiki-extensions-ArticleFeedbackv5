@@ -267,7 +267,7 @@
 	"articlefeedbackv5-found-percent-title": "Perustuu $1 {{PLURAL:$1|viestiin}} (sopimattomia kommentteja ei huomioida)",
 	"articlefeedbackv5": "Artikkelipalaute – Keskussivu",
 	"articlefeedbackv5watchlist": "Artikkelipalaute – Tarkkailemani sivut",
-	"articlefeedbackv5-desc": "Sivujen palaute",
+	"articlefeedbackv5-desc": "Kannustaa käyttäjiä osallistumaan mahdollistamalla artikkelin arvioimisen ja parannusehdotusten lähettämisen",
 	"articlefeedbackv5-comment-more": "Lisää",
 	"articlefeedbackv5-comment-empty": "Tekstiä ei ole lisätty",
 	"articlefeedbackv5-unsupported-message": "Valitettavasti tämä prototyyppi ei tue selaintasi. Käytä toista selainta nähdäksesi tämän sivun.",

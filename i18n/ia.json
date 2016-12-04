@@ -5,6 +5,12 @@
 			"McDutchie"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "Submitter un commentario sur un articulo",
+	"apihelp-articlefeedbackv5-param-title": "Titulo del pagina sur le qual submitter un commentario. Non pote esser combinate con $1pageid",
+	"apihelp-articlefeedbackv5-param-pageid": "ID del pagina sur le qual submitter un commentario. Non pote esser combinate con $1title",
+	"apihelp-articlefeedbackv5-param-revid": "ID del version pro le qual submitter un commentario",
+	"apihelp-articlefeedbackv5-param-anontoken": "Indicio pro usatores anonyme",
+	"apihelp-articlefeedbackv5-param-bucket": "Qual formulario de evalutation ha essite monstrate al usator",
 	"articlefeedbackv5-cta-thanks": "Gratias!",
 	"articlefeedbackv5-cta-confirmation-message": "Tu commentario es visibile in iste [$1 pagina de commentario].",
 	"articlefeedbackv5-cta1-confirmation-title": "Sapeva tu que tu pote modificar iste pagina?",
@@ -266,7 +272,6 @@
 	"articlefeedbackv5-mask-text-autohide": "Iste message (№$1) {{GENDER:$2|ha essite celate automaticamente per $2}} $3.",
 	"articlefeedbackv5-mask-text-hide": "Iste message №$1 {{GENDER:$2|ha essite celate per $2}} $3.",
 	"articlefeedbackv5-mask-text-oversight": "Iste message №$1 {{GENDER:$2|ha essite mittite sub supervision per $2}} $3.",
-	"articlefeedbackv5-special-disclaimer": "Isto es un prototypo. Per favor non usa lo a minus que tu ha essite invitate a facer lo.",
 	"articlefeedbackv5-special-goback": "Vider pagina de evalutation",
 	"articlefeedbackv5-special-central-goback": "Vider plus commentos de altere paginas",
 	"articlefeedbackv5-permalink-info-title": "Information sur iste message",
