@@ -34,6 +34,7 @@
 			"Mhutti1"
 		]
 	},
+	"apihelp-articlefeedbackv5-param-link": "Note: \"get to the widget\" means \"reach the widget\" or \"access the widget\", not \"obtain the widget\".",
 	"articlefeedbackv5-cta-thanks": "The bolded part of the message that appears at the top of every CTA (call to action).\n{{Identical|Thank}}",
 	"articlefeedbackv5-cta-confirmation-message": "The non-bolded part of the message that appears at the top of every CTA (call to action). $1 is the link to the special page that lists all feedback.",
 	"articlefeedbackv5-cta1-confirmation-title": "The title of the edit CTA (call to action)",
@@ -297,7 +298,6 @@
 	"articlefeedbackv5-mask-text-autohide": "Text to be displayed on the autohidden post mask. Parameters:\n* $1 - The feedback post id\n* $2 - The name of the user who hid the post\n* $3 - The relative timestamp: {{Doc-human-timestamp|12:00|10}}",
 	"articlefeedbackv5-mask-text-hide": "Text to be displayed on the hidden post mask. Parameters:\n* $1 - The feedback post id\n* $2 - The name of the user who hid the post\n* $3 - The relative timestamp: {{Doc-human-timestamp|12:00|10}}",
 	"articlefeedbackv5-mask-text-oversight": "Text to be displayed on the oversighted post mask. Parameters:\n* $1 is the feedback post id\n* $2 is the name of the user who oversighted (deleted) the post\n* $3 is the relative timestamp: {{Doc-human-timestamp|12:00|10}}",
-	"articlefeedbackv5-special-disclaimer": "Cautionary text that is displayed in red at the top of the feedback dashboard. This will be removed when the requirements and design of this feature are more final.",
 	"articlefeedbackv5-special-goback": "Link to take a user from a feedback permalink back to the listing of all feedback for that page.",
 	"articlefeedbackv5-special-central-goback": "Link to take a user from a single-page feedback listing back to the listing of all feedback.",
 	"articlefeedbackv5-permalink-info-title": "Permalink info block, title of the right column, containing meta-information, e.g., post date",

@@ -13,7 +13,8 @@
 			"Ximo17",
 			"Anto",
 			"Saracrovetto",
-			"Selven"
+			"Selven",
+			"McDutchie"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Invia feedback alla voce",
@@ -23,7 +24,7 @@
 	"apihelp-articlefeedbackv5-param-anontoken": "Token per gli utenti anonimi",
 	"apihelp-articlefeedbackv5-param-bucket": "Quale modulo di feedback è stato mostrato all'utente",
 	"apihelp-articlefeedbackv5-param-cta": "CTA visualizzato dopo l'invio del modulo",
-	"apihelp-articlefeedbackv5-param-link": "Su quale collegamento l'utente ha cliccato per ottenere il widget",
+	"apihelp-articlefeedbackv5-param-link": "Su quale collegamento l'utente ha cliccato per arrivare al widget",
 	"apihelp-articlefeedbackv5-param-found": "Feedback si/no rispondendo alla domanda se la pagina è stata utile",
 	"apihelp-articlefeedbackv5-param-comment": "Il feedback in forma testuale libera",
 	"apihelp-articlefeedbackv5-get-count-description": "Ottieni la quantità di feedback per una certa pagina/filtro",
@@ -61,7 +62,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sortdirection": "Direzione (ASC|DESC) per cui ordinare i feedback",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Quale filtro applicare all'elenco",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "L'ID di uno specifico feedback da recuperare",
-	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Offset per avviare la cattura di dati a",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Offset da cui avviare la cattura di dati",
 	"articlefeedbackv5-cta-thanks": "Grazie!",
 	"articlefeedbackv5-cta-confirmation-message": "Il tuo post può essere visualizzato in [$1 questa pagina dei commenti].",
 	"articlefeedbackv5-cta1-confirmation-title": "Sai che è possibile modificare questa pagina?",

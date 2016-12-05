@@ -50,7 +50,7 @@
 	"apihelp-articlefeedbackv5-param-anontoken": "Jeton pour les utilisateurs anonymes",
 	"apihelp-articlefeedbackv5-param-bucket": "Quel formulaire de commentaire a été affiché à l'utilisateur",
 	"apihelp-articlefeedbackv5-param-cta": "CTA affiché après l’envoi du formulaire",
-	"apihelp-articlefeedbackv5-param-link": "Quel lien l'utilisateur a cliqué pour obtenir le widget",
+	"apihelp-articlefeedbackv5-param-link": "Quel lien l'utilisateur a cliqué pour accéder au widget",
 	"apihelp-articlefeedbackv5-param-found": "Réponse oui/non à la question si la page a été utile ou pas",
 	"apihelp-articlefeedbackv5-param-comment": "L’avis textuel en format libre",
 	"apihelp-articlefeedbackv5-get-count-description": "Obtenir la quantité de commentaires pour une certaine page/filtre",
