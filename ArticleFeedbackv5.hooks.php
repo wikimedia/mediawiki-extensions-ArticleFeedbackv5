@@ -354,7 +354,7 @@ class ArticleFeedbackv5Hooks {
 	/**
 	 * Pushes fields into the edit page. This will allow us to pass on some parameter(s)
 	 * until the submission of a page (at which point we can check for these parameters
-	 * with a hook in ArticleSaveComplete)
+	 * with a hook in PageContentSaveComplete)
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/EditPage::showEditForm:fields
 	 * @param $editPage EditPage
@@ -375,21 +375,21 @@ class ArticleFeedbackv5Hooks {
 	/**
 	 * Tracks successful edits
 	 *
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/ArticleSaveComplete
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete
 	 * @param $article WikiPage
 	 * @param $user
-	 * @param $text
+	 * @param $content
 	 * @param $summary
-	 * @param $minoredit
-	 * @param $watchthis
-	 * @param $sectionanchor
+	 * @param $isMinor
+	 * @param $isWatch
+	 * @param $section
 	 * @param $flags
 	 * @param $revision
 	 * @param $status
 	 * @param $baseRevId
 	 * @return bool
 	 */
-	public static function editSuccess( &$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId /*, &$redirect */ ) {
+	public static function editSuccess( $article, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId ) {
 		if ( $revision instanceof Revision ) {
 			$request = RequestContext::getMain()->getRequest();
 			$feedbackId = $request->getVal( 'articleFeedbackv5_discuss_id' );
