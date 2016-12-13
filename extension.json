@@ -442,7 +442,7 @@
 		"GetPreferences": "ArticleFeedbackv5Hooks::getPreferences",
 		"EditPage::showEditForm:fields": "ArticleFeedbackv5Hooks::pushFieldsToEdit",
 		"EditPage::attemptSave": "ArticleFeedbackv5Hooks::editAttempt",
-		"ArticleSaveComplete": "ArticleFeedbackv5Hooks::editSuccess",
+		"PageContentSaveComplete": "ArticleFeedbackv5Hooks::editSuccess",
 		"ContribsPager::reallyDoQuery": "ArticleFeedbackv5Hooks::contributionsData",
 		"ContributionsLineEnding": "ArticleFeedbackv5Hooks::contributionsLineEnding",
 		"ProtectionForm::buildForm": "ArticleFeedbackv5Hooks::onProtectionForm",
