@@ -17,6 +17,7 @@
 		"Michael Jackson",
 		"Matthias Mullie"
 	],
+	"license-name": "GPL-2.0+",
 	"url": "https://www.mediawiki.org/wiki/Extension:ArticleFeedbackv5",
 	"descriptionmsg": "articlefeedbackv5-desc",
 	"type": "other",
