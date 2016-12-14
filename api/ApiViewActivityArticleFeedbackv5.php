@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * ApiViewActivityArticleFeedbackv5 class
  *
@@ -109,7 +112,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 						Html::rawElement(
 							'div',
 							array( 'class' => 'articleFeedbackv5-activity-feedback-permalink' ),
-							Linker::link(
+							MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 								SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $feedback->aft_id ),
 								wfMessage( 'articlefeedbackv5-activity-permalink' )->text()
 							)
