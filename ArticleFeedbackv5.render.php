@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * ArticleFeedbackv5Render class
  *
@@ -384,6 +387,7 @@ class ArticleFeedbackv5Render {
 	private function feedbackHead( $message, $record ) {
 		$anonMessage = '';
 
+		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 		// User info
 		if ( $record->aft_user == 0 ) {
 			// This is an anonymous (IP) user
@@ -394,7 +398,7 @@ class ArticleFeedbackv5Render {
 				// IPv4 - display the same way regular users are displayed
 
 				// display name = visitor's ip
-				$userName = Linker::link( $title, htmlspecialchars( $record->aft_user_text ) );
+				$userName = $linkRenderer->makeLink( $title, $record->aft_user_text );
 			} else {
 				// not IPv4 - display IP on next line (since IPv6 is rather long, it'd break our display)
 
@@ -402,7 +406,7 @@ class ArticleFeedbackv5Render {
 				$userName = wfMessage( 'articlefeedbackv5-form-anon-username' )->escaped();
 
 				// additional line to be printed with the IPv6 address (with link to contributions)
-				$userLink = Linker::link( $title, htmlspecialchars( $record->aft_user_text ) );
+				$userLink = $linkRenderer->makeLink( $title, $record->aft_user_text );
 				$anonMessage = wfMessage( 'articlefeedbackv5-form-anon-message' )->rawParams( $userLink )->escaped();
 			}
 		} else {
@@ -417,7 +421,7 @@ class ArticleFeedbackv5Render {
 			}
 
 			// display name = username
-			$userName = Linker::link( $title, htmlspecialchars( $record->aft_user_text ) );
+			$userName = $linkRenderer->makeLink( $title, $record->aft_user_text );
 		}
 
 		if ( $this->isCentral ) {
@@ -426,7 +430,7 @@ class ArticleFeedbackv5Render {
 			$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$record->aft_id" );
 
 			$userMessage = wfMessage( $message, $record->aft_user_text )
-				->rawParams( $userName, Linker::linkKnown( $article ) )
+				->rawParams( $userName, $linkRenderer->makeKnownLink( $article ) )
 				->params( $feedbackCentralPageTitle->getFullText() )
 				->parse();
 		} else {
@@ -472,9 +476,9 @@ class ArticleFeedbackv5Render {
 				Html::rawElement(
 					'span',
 					array( 'class' => 'articleFeedbackv5-comment-details-link' ),
-					Linker::link(
+					MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 						SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title->getPrefixedDBkey() .'/'. $record->aft_id ),
-						wfMessage( 'articleFeedbackv5-details-link' )->escaped()
+						wfMessage( 'articleFeedbackv5-details-link' )->text()
 					)
 				);
 		}
@@ -1127,9 +1131,9 @@ class ArticleFeedbackv5Render {
 				Html::rawElement(
 					'p',
 					array( 'class' => 'articleFeedbackv5-old-revision' ),
-					Linker::link(
+					MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 						Title::newFromID( $record->aft_page ),
-						wfMessage( 'articlefeedbackv5-permalink-info-revision-link' )->escaped(),
+						wfMessage( 'articlefeedbackv5-permalink-info-revision-link' )->text(),
 						array(),
 						array( 'oldid' => $record->aft_page_revision )
 					)
