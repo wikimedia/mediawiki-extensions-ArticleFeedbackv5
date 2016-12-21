@@ -8,6 +8,8 @@
  * @version    $Id$
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * This class pulls the aggregated ratings for display in Bucket #5
  *
@@ -109,7 +111,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 						Html::rawElement(
 							'div',
 							array( 'class' => 'articleFeedbackv5-activity-feedback-permalink' ),
-							Linker::link(
+							MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 								SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $feedback->aft_id ),
 								wfMessage( 'articlefeedbackv5-activity-permalink' )->text()
 							)
