@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * Hooks for ArticleFeedback
  *
@@ -509,10 +512,8 @@ class ArticleFeedbackv5Hooks {
 		// if feedback should be hidden from users, a special class "history-deleted" should be added
 		$historyDeleted = ( $record->isHidden() || $record->isRequested() || $record->isOversighted() );
 		foreach ( $dateFormats as $format => &$formattedTime ) {
-			$formattedTime = Linker::link(
-				$feedbackTitle,
-				htmlspecialchars( $formattedTime )
-			);
+			$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
+			$formattedTime = $linkRenderer->makeLink( $feedbackTitle, $formattedTime );
 			if ( $historyDeleted ) {
 				$formattedTime = '<span class="history-deleted">' . $formattedTime . '</span>';
 			}

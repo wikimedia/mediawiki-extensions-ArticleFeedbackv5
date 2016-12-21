@@ -80,6 +80,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		if ( !$continue && !$params['noheader'] ) {
 			$result->addValue( $this->getModuleName(), 'hasHeader', true );
 
+			$linkRenderer = \MediaWiki\MediaWikiServices::getInstance()->getLinkRenderer();
+
 			$html .=
 				Html::rawElement(
 					'div',
@@ -109,7 +111,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 						Html::rawElement(
 							'div',
 							array( 'class' => 'articleFeedbackv5-activity-feedback-permalink' ),
-							Linker::link(
+							$linkRenderer->makeLink(
 								SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $feedback->aft_id ),
 								wfMessage( 'articlefeedbackv5-activity-permalink' )->text()
 							)

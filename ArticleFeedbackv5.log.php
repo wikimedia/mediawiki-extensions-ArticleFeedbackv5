@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * This class formats all articlefeedbackv5log entries.
  *
@@ -178,10 +181,11 @@ class ArticleFeedbackv5ProtectionLogFormatter extends LogFormatter {
 	 * @return string
 	 */
 	public function getActionLinks() {
+		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 		$links = array(
-			Linker::link(
+			$linkRenderer->makeLink(
 				$this->entry->getTarget(),
-				$this->msg( 'hist' )->escaped(),
+				$this->msg( 'hist' )->text(),
 				array(),
 				array(
 					'action' => 'history',
