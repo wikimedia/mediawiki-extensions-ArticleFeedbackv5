@@ -273,13 +273,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$pageLinks = '';
 		if ( $this->pageId ) {
 			$pageLinks =
-				Linker::link(
+				$this->getLinkRenderer()->makeLink(
 					$this->title,
-					$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
+					$this->msg( 'articlefeedbackv5-go-to-article' )->text()
 				) . ' ' .
-				Linker::link(
+				$this->getLinkRenderer()->makeLink(
 					$this->title->getTalkPage(),
-					$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
+					$this->msg( 'articlefeedbackv5-discussion-page' )->text()
 				) . ' ' .
 				Html::element(
 					'a',
@@ -492,9 +492,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// admins can change settings at page protection
 		if ( $this->getUser()->isAllowed( 'aft-administrator' ) ) {
 			$title = Title::newFromID( $this->pageId );
-			$link = Linker::linkKnown(
+			$link = $this->getLinkRenderer()->makeKnownLink(
 				$title,
-				$this->msg( 'articlefeedbackv5-disabled-admin-button-text' )->escaped(),
+				$this->msg( 'articlefeedbackv5-disabled-admin-button-text' )->text(),
 				array( 'class' => 'articlefeedbackv5-enable-button' ),
 				array( 'action' => 'protect' )
 			);
@@ -582,9 +582,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			Html::rawElement(
 				'div',
 				array( 'class' => 'articleFeedbackv5-feedback-permalink-goback' ),
-				Linker::link(
+				$this->getLinkRenderer()->makeLink(
 					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedDBkey() ),
-					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->escaped()
+					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->text()
 				)
 			) .
 			Html::rawElement(
@@ -595,9 +595,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			Html::rawElement(
 				'div',
 				array( 'class' => 'articleFeedbackv5-feedback-permalink-goback' ),
-				Linker::link(
+				$this->getLinkRenderer()->makeLink(
 					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedDBkey() ),
-					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->escaped()
+					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->text()
 				)
 			);
 	}
@@ -623,9 +623,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				Html::rawElement(
 					'div',
 					array( 'class' => 'articleFeedbackv5-feedback-central-goback' ),
-					Linker::link(
+					$this->getLinkRenderer()->makeLink(
 						SpecialPage::getTitleFor( 'ArticleFeedbackv5' ),
-						$this->msg( 'articlefeedbackv5-special-central-goback' )->escaped()
+						$this->msg( 'articlefeedbackv5-special-central-goback' )->text()
 					)
 				);
 		}

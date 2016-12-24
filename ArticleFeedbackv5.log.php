@@ -7,6 +7,9 @@
  * @author     Reha Sterbin <reha@omniti.com>
  * @version    $Id$
  */
+
+use MediaWiki\MediaWikiServices;
+
 class ArticleFeedbackv5Log {
 	/**
 	 * Adds an activity item to the global log under the articlefeedbackv5
@@ -179,9 +182,9 @@ class ArticleFeedbackv5ProtectionLogFormatter extends LogFormatter {
 	 */
 	public function getActionLinks() {
 		$links = array(
-			Linker::link(
+			MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 				$this->entry->getTarget(),
-				$this->msg( 'hist' )->escaped(),
+				$this->msg( 'hist' )->text(),
 				array(),
 				array(
 					'action' => 'history',

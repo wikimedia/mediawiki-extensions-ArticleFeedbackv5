@@ -6,6 +6,8 @@
  * @ingroup Extensions
  */
 
+use MediaWiki\MediaWikiServices;
+
 class ArticleFeedbackv5Hooks {
 	public static function registerExtension() {
 		global $wgContentNamespaces, $wgGroupPermissions, $wgLogActionsHandlers;
@@ -509,9 +511,9 @@ class ArticleFeedbackv5Hooks {
 		// if feedback should be hidden from users, a special class "history-deleted" should be added
 		$historyDeleted = ( $record->isHidden() || $record->isRequested() || $record->isOversighted() );
 		foreach ( $dateFormats as $format => &$formattedTime ) {
-			$formattedTime = Linker::link(
+			$formattedTime = MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 				$feedbackTitle,
-				htmlspecialchars( $formattedTime )
+				$formattedTime
 			);
 			if ( $historyDeleted ) {
 				$formattedTime = '<span class="history-deleted">' . $formattedTime . '</span>';
