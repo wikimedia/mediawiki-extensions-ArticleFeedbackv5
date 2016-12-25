@@ -272,14 +272,15 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// build link to page & talk page
 		$pageLinks = '';
 		if ( $this->pageId ) {
+			$linkRenderer = $this->getLinkRenderer();
 			$pageLinks =
-				Linker::link(
+				$linkRenderer->makeLink(
 					$this->title,
-					$this->msg( 'articlefeedbackv5-go-to-article' )->escaped()
+					$this->msg( 'articlefeedbackv5-go-to-article' )->text()
 				) . ' ' .
-				Linker::link(
+				$linkRenderer->makeLink(
 					$this->title->getTalkPage(),
-					$this->msg( 'articlefeedbackv5-discussion-page' )->escaped()
+					$this->msg( 'articlefeedbackv5-discussion-page' )->text()
 				) . ' ' .
 				Html::element(
 					'a',
@@ -578,13 +579,14 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @return string
 	 */
 	protected function buildPermalink( $renderer, $record ) {
+		$linkRenderer = $this->getLinkRenderer();
 		return
 			Html::rawElement(
 				'div',
 				array( 'class' => 'articleFeedbackv5-feedback-permalink-goback' ),
-				Linker::link(
+				$linkRenderer->makeLink(
 					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedDBkey() ),
-					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->escaped()
+					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->text()
 				)
 			) .
 			Html::rawElement(
@@ -595,9 +597,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			Html::rawElement(
 				'div',
 				array( 'class' => 'articleFeedbackv5-feedback-permalink-goback' ),
-				Linker::link(
+				$linkRenderer->makeLink(
 					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedDBkey() ),
-					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->escaped()
+					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->text()
 				)
 			);
 	}
@@ -623,9 +625,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				Html::rawElement(
 					'div',
 					array( 'class' => 'articleFeedbackv5-feedback-central-goback' ),
-					Linker::link(
+					$this->getLinkRenderer()->makeLink(
 						SpecialPage::getTitleFor( 'ArticleFeedbackv5' ),
-						$this->msg( 'articlefeedbackv5-special-central-goback' )->escaped()
+						$this->msg( 'articlefeedbackv5-special-central-goback' )->text()
 					)
 				);
 		}
