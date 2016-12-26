@@ -36,6 +36,7 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 	 */
 	public function __construct() {
 		parent::__construct();
+		$this->requireExtension( 'ArticleFeedbackv5' );
 		$this->mDescription = 'Fix archive dates of pre-auto-archive feedback.';
 	}
 

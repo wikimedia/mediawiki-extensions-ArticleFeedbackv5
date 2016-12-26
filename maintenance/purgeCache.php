@@ -18,6 +18,7 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 	 */
 	public function __construct() {
 		parent::__construct();
+		$this->requireExtension( 'ArticleFeedbackv5' );
 
 		$this->deleteOption( 'model' );
 		$this->mDescription = 'Purge all ArticleFeedbackv5 caches.';

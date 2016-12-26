@@ -36,6 +36,7 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 	 */
 	public function __construct() {
 		parent::__construct();
+		$this->requireExtension( 'ArticleFeedbackv5' );
 		$this->mDescription = 'Mark old feedback that is not particularly interesting as archived.';
 	}
 
