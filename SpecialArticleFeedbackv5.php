@@ -186,11 +186,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// build title
 		if ( $permalink ) {
-			$out->setPagetitle( $this->msg( 'articlefeedbackv5-special-permalink-pagetitle', $this->title )->escaped() );
+			$out->setPageTitle( $this->msg( 'articlefeedbackv5-special-permalink-pagetitle', $this->title )->escaped() );
 		} elseif ( $this->pageId ) {
-			$out->setPagetitle( $this->msg( 'articlefeedbackv5-special-pagetitle', $this->title )->escaped() );
+			$out->setPageTitle( $this->msg( 'articlefeedbackv5-special-pagetitle', $this->title )->escaped() );
 		} else {
-			$out->setPagetitle( $this->msg( 'articlefeedbackv5-special-central-pagetitle' )->escaped() );
+			$out->setPageTitle( $this->msg( 'articlefeedbackv5-special-central-pagetitle' )->escaped() );
 		}
 
 		// output content
