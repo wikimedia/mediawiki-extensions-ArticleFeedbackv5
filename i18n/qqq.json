@@ -41,7 +41,7 @@
 	"apihelp-articlefeedbackv5-param-anontoken": "{{doc-apihelp-param|articlefeedbackv5|anontoken}}",
 	"apihelp-articlefeedbackv5-param-bucket": "{{doc-apihelp-param|articlefeedbackv5|bucket}}",
 	"apihelp-articlefeedbackv5-param-cta": "{{doc-apihelp-param|articlefeedbackv5|cta}}",
-	"apihelp-articlefeedbackv5-param-link": "Note: \"get to the widget\" means \"reach the widget\" or \"access the widget\", not \"obtain the widget\".",
+	"apihelp-articlefeedbackv5-param-link": "Note: \"get to the widget\" means \"reach the widget\" or \"access the widget\", not \"obtain the widget\".\n{{doc-apihelp-param|articlefeedbackv5|link}}",
 	"apihelp-articlefeedbackv5-param-found": "{{doc-apihelp-param|articlefeedbackv5|found}}",
 	"apihelp-articlefeedbackv5-param-comment": "{{doc-apihelp-param|articlefeedbackv5|comment}}",
 	"apihelp-articlefeedbackv5-get-count-description": "{{doc-apihelp-description|articlefeedbackv5-get-count}}",
