@@ -1,6 +1,10 @@
 {
 	"name": "Article Feedback",
+<<<<<<< 2108209bcd33edfaa1e66a7a0b54e9b51404dba9
 	"version": "5.2.1",
+=======
+	"version": "5.3.0",
+>>>>>>> [WIP] Cleanup AFTv5 tooltip & CSS, and convert it to mw-collapsible element
 	"author": [
 		"Greg Chiasson",
 		"Reha Sterbin",
