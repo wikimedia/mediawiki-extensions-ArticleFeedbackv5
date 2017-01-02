@@ -476,54 +476,63 @@
 	border: none;
 	font-weight: bold;
 }
+
 .articleFeedbackv5-tooltip-wrap {
 	position: relative;
 }
+
 .articleFeedbackv5-tooltip-wrap:after {
 	clear: both;
 }
+
 .articleFeedbackv5-tooltip {
+	background: #fff;
+	border: 1px solid #bbb;
+	box-shadow: 0 0 10px rgba( 0, 0, 0, 0.2 );
+	color: #222;
+	font-size: 14px;
+	font-weight: 400;
+	padding: 1em;
 	position: absolute;
 	z-index: 15;
-	top: -237px;
+	top: -230px;
 	right: -75px;
-	font-size: 12px;
-	width: 234px;
-	color: #000;
+	width: 300px;
 }
 
-.articleFeedbackv5-tooltip .tooltip-top {
-	/* @embed */
-	background: url(images/bg-tooltip-top.png);
-	height: 11px;
+.articleFeedbackv5-tooltip::before {
+	border: 11px solid transparent;
+	border-bottom: 0;
+	border-top: 9px solid #bbb;
+	content: '';
+	position: absolute;
+	top: 12em;
+	left: 15.25em;
 }
 
-.articleFeedbackv5-tooltip .tooltip-repeat {
-	/* @embed */
-	background: url(images/bg-tooltip.png) repeat-y;
-	padding: 0 20px 1px;
-	margin: 0;
+.articleFeedbackv5-tooltip::after {
+	border: 8px solid transparent;
+	border-bottom: 0;
+	border-top: 8px solid #fff;
+	content: '';
+	position: absolute;
+	top: 11.9em;
+	left: 15.5em;
 }
 
-.articleFeedbackv5-tooltip .tooltip-repeat h3 {
+.articleFeedbackv5-tooltip h3 {
 	float: left;
 }
 
-.articleFeedbackv5-tooltip .tooltip-repeat .articleFeedbackv5-tooltip-close {
+.articleFeedbackv5-tooltip .articleFeedbackv5-tooltip-close {
+	font-size: 2em;
 	float: right;
 	cursor: pointer;
-	margin: -5px -5px 0 0;
-	font-size: 1.5em;
+	margin: -.5em 0 0 0;
 }
 
-.articleFeedbackv5-tooltip .tooltip-repeat .articleFeedbackv5-tooltip-close:hover {
+.articleFeedbackv5-tooltip .articleFeedbackv5-tooltip-close:hover {
 	text-decoration: underline;
-}
-
-.articleFeedbackv5-tooltip .tooltip-bottom {
-	/* @embed */
-	background: url(images/bg-tooltip-bottom.png);
-	height: 26px;
 }
 
 .articleFeedbackv5-tooltip-trigger-wrap {
