@@ -51,7 +51,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 
 		parent::execute( $param );
 
-		$out->setPagetitle( $this->msg( 'articlefeedbackv5-special-watchlist-pagetitle' )->escaped() );
+		$out->setPageTitle( $this->msg( 'articlefeedbackv5-special-watchlist-pagetitle' )->escaped() );
 	}
 
 	/**
