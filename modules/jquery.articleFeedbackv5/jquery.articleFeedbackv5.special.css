@@ -153,14 +153,13 @@
 .articleFeedbackv5-comment-foot-abuse,
 .articleFeedbackv5-comment-foot-hide {
 	display: inline-block;
-	/* IE7 inline-block hack */
-	zoom: 1;
-	*display: inline;
 }
+
 .articleFeedbackv5-comment-foot-helpful,
 .articleFeedbackv5-comment-foot-abuse {
 	margin-right: 45px;
 }
+
 .articleFeedbackv5-comment-foot-helpful .articleFeedbackv5-helpful-caption {
 	margin: 0 15px 0 0;
 }

@@ -1,5 +1,5 @@
-/*
- * Styles for Article Feedback Plugin
+/**
+ * styles for AFTv5 extension
  */
 
 .articleFeedbackv5 {
@@ -14,7 +14,7 @@
 	}
 }
 
-/*
+/**
  * Not really sure why, but the above display:none, targeted only at print, is
  * applied in IE9, in non-compatibility mode (see bug 49445). This should
  * override that again, making sure the form actually is visible.
@@ -92,7 +92,7 @@
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
-	color: #0645AD;
+	color: #0645ad;
 	line-height: 1.4em;
 }
 
@@ -124,18 +124,11 @@
 }
 
 .articleFeedbackv5-pitch .articleFeedbackv5-pop {
-	padding: 1em;
-	margin: 0;
 	background-color: #fff;
 	border: solid 1px silver;
-	/*
-	background-image: url(images/pop.png);
-	background-position: center center;
-	background-repeat: no-repeat;
-	*/
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
 	border-radius: 5px;
+	padding: 1em;
+	margin: 0;
 }
 
 .articleFeedbackv5-message {
@@ -150,7 +143,7 @@
 
 .articleFeedbackv5-switch {
 	cursor: pointer;
-	color: #0645AD;
+	color: #0645ad;
 	float: right;
 	line-height: 1.4em;
 	background-repeat: no-repeat;
@@ -393,11 +386,11 @@
 }
 
 .articleFeedbackv5-helpimprove-email.valid {
-	background-color: #C0FFC0;
+	background-color: #c0ffc0;
 }
 
 .articleFeedbackv5-helpimprove-email.invalid {
-	background-color: #FFC0C0;
+	background-color: #ffc0c0;
 }
 
 .articleFeedbackv5-pending,
@@ -429,7 +422,7 @@
 .articleFeedbackv5-expiry {
 	display: none;
 	border: solid 1px orange;
-	background-color: white;
+	background-color: #fff;
 	padding: 0.5em;
 }
 .articleFeedbackv5-expiry-title {
@@ -442,10 +435,10 @@
 }
 .articleFeedbackv5-expiry-message {
 	padding-left: 28px;
-	color: #777777;
+	color: #777;
 }
 
-/*---===<<< Sean's Version 5 Styles >>>===---*/
+/* Sean's Version 5 Styles */
 
 .clear {
 	display: block !important;
@@ -476,54 +469,19 @@
 	border: none;
 	font-weight: bold;
 }
+
 .articleFeedbackv5-tooltip-wrap {
 	position: relative;
 }
+
 .articleFeedbackv5-tooltip-wrap:after {
 	clear: both;
 }
+
 .articleFeedbackv5-tooltip {
-	position: absolute;
-	z-index: 15;
-	top: -237px;
-	right: -75px;
-	font-size: 12px;
-	width: 234px;
-	color: #000;
-}
-
-.articleFeedbackv5-tooltip .tooltip-top {
-	/* @embed */
-	background: url(images/bg-tooltip-top.png);
-	height: 11px;
-}
-
-.articleFeedbackv5-tooltip .tooltip-repeat {
-	/* @embed */
-	background: url(images/bg-tooltip.png) repeat-y;
-	padding: 0 20px 1px;
-	margin: 0;
-}
-
-.articleFeedbackv5-tooltip .tooltip-repeat h3 {
-	float: left;
-}
-
-.articleFeedbackv5-tooltip .tooltip-repeat .articleFeedbackv5-tooltip-close {
-	float: right;
-	cursor: pointer;
-	margin: -5px -5px 0 0;
-	font-size: 1.5em;
-}
-
-.articleFeedbackv5-tooltip .tooltip-repeat .articleFeedbackv5-tooltip-close:hover {
-	text-decoration: underline;
-}
-
-.articleFeedbackv5-tooltip .tooltip-bottom {
-	/* @embed */
-	background: url(images/bg-tooltip-bottom.png);
-	height: 26px;
+	color: #222;
+	font-size: 14px;
+	font-weight: 400;
 }
 
 .articleFeedbackv5-tooltip-trigger-wrap {
@@ -595,12 +553,7 @@
 	margin: 0 !important;
 	border: none !important;
 	/* @embed */
-	-webkit-border-radius: 3px;
-	-khtml-border-radius: 3px; /* for old Konqueror browsers */
-	-moz-border-radius: 3px;
 	border-radius: 3px;
-	-webkit-box-shadow: -2px 2px 1px #999;
-	-moz-box-shadow: -2px 2px 1px #999;
 	box-shadow: -2px 2px 1px #999;
 }
 
@@ -638,12 +591,7 @@
 	padding: 0 10px;
 	margin: 0 !important;
 	border: none !important;
-	-webkit-border-radius: 3px;
-	-khtml-border-radius: 3px; /* for old Konqueror browsers */
-	-moz-border-radius: 3px;
 	border-radius: 3px;
-	-webkit-box-shadow: -2px 2px 1px #999;
-	-moz-box-shadow: -2px 2px 1px #999;
 	box-shadow: -2px 2px 1px #999;
 }
 
@@ -917,8 +865,6 @@
 	padding: 0;
 	border-color: #888;
 	max-width: 250px;
-	-webkit-box-shadow: 2px 2px 1px #999;
-	-moz-box-shadow: 2px 2px 1px #999;
 	box-shadow: 2px 2px 1px #999;
 	margin-bottom: 5px;
 	font-size: 0.9em;
@@ -953,9 +899,6 @@
 	height: 120px;
 }
 .articleFeedbackv5-flyover-header {
-	-webkit-border-radius: 3px 3px 0 0;
-	-khtml-border-radius: 3px 3px 0 0;
-	-moz-border-radius: 3px 3px 0 0;
 	border-radius: 3px 3px 0 0;
 }
 .articleFeedbackv5-flyover-header h3 {

@@ -209,14 +209,9 @@
 					<div class="articleFeedbackv5-ui">\
 						<div class="articleFeedbackv5-tooltip-wrap">\
 							<div class="articleFeedbackv5-tooltip">\
-								<div class="tooltip-top"></div>\
-								<div class="tooltip-repeat">\
-									<h3><html:msg key="help-tooltip-title" /></h3><span class="articleFeedbackv5-tooltip-close">&times;</span>\
-									<div class="clear"></div>\
-									<p class="articleFeedbackv5-tooltip-info"><html:msg key="help-tooltip-info" /></p>\
-									<p><a target="_blank" class="articleFeedbackv5-tooltip-link"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
-								</div>\
-								<div class="tooltip-bottom"></div>\
+								<h3><html:msg key="help-tooltip-title" /></h3><span class="articleFeedbackv5-tooltip-close">&times;</span>\
+								<p class="articleFeedbackv5-tooltip-info"><html:msg key="help-tooltip-info" /></p>\
+								<p><a target="_blank" class="articleFeedbackv5-tooltip-link"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
 							</div>\
 						</div>\
 						<div class="articleFeedbackv5-ui-inner"></div>\
@@ -3244,4 +3239,3 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 // }}}
 
 } )( jQuery );
-
