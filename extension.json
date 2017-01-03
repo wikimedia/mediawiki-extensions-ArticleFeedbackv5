@@ -1,6 +1,6 @@
 {
 	"name": "Article Feedback",
-	"version": "5.2.0",
+	"version": "5.2.1",
 	"author": [
 		"Greg Chiasson",
 		"Reha Sterbin",
@@ -15,7 +15,8 @@
 		"Ryan Kaldari",
 		"Elizabeth M Smith",
 		"Michael Jackson",
-		"Matthias Mullie"
+		"Matthias Mullie",
+		"Jack Phoenix"
 	],
 	"license-name": "GPL-2.0+",
 	"url": "https://www.mediawiki.org/wiki/Extension:ArticleFeedbackv5",
