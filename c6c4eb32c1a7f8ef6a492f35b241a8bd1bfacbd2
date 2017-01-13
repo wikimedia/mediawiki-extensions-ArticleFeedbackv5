@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4efb0bce_96f16a95",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.css",
+        "patchSetId": 4
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 2604
+      },
+      "writtenOn": "2017-01-13T05:20:32Z",
+      "side": 1,
+      "message": "I\u0027d replace this by `border-width: 1px 0 0 1px;`",
+      "revId": "c6c4eb32c1a7f8ef6a492f35b241a8bd1bfacbd2",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4efb0bce_56ebf2a0",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 2604
+      },
+      "writtenOn": "2017-01-13T05:20:32Z",
+      "side": 1,
+      "message": "You can leave `-o` and `-ms` vendor properties out. See https://stackoverflow.com/questions/7108603/how-to-make-a-background-using-css-gradient-with-flat-color/25736010#25736010",
+      "revId": "c6c4eb32c1a7f8ef6a492f35b241a8bd1bfacbd2",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
