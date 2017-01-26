@@ -1,0 +1,7 @@
+Code-Review+2: Siebrand <siebrand@kitano.nl>
+Verified+2: jenkins-bot
+Submitted-by: jenkins-bot
+Submitted-at: Thu, 26 Jan 2017 18:55:09 +0000
+Reviewed-on: https://gerrit.wikimedia.org/r/330188
+Project: mediawiki/extensions/ArticleFeedbackv5
+Branch: refs/heads/master
