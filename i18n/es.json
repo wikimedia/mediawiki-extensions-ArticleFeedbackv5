@@ -28,7 +28,8 @@
 			"Toliño",
 			"Translationista",
 			"Macofe",
-			"Sophivorus"
+			"Sophivorus",
+			"Dgstranz"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "¡Gracias!",
@@ -279,7 +280,7 @@
 	"articlefeedbackv5-found-percent-title": "Basado en $1 {{PLURAL:$1|comentario|comentarios}} (excluyendo los inapropiados)",
 	"articlefeedbackv5": "Comentarios de artículos - Página central",
 	"articlefeedbackv5watchlist": "Comentarios de artículos - Páginas que vigilo",
-	"articlefeedbackv5-desc": "Evaluación del artículo",
+	"articlefeedbackv5-desc": "Anima a los usuarios a contribuir perimitiéndoles revisar un artículo y proponer cambios",
 	"articlefeedbackv5-comment-more": "Más",
 	"articlefeedbackv5-comment-empty": "No se registró texto alguno",
 	"articlefeedbackv5-unsupported-message": "Lo sentimos, tu navegador no es compatible con este prototipo. Para ver esta página, utiliza un navegador diferente.",
