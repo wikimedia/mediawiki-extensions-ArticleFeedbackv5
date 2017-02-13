@@ -492,40 +492,6 @@
 	color: #000;
 }
 
-.articleFeedbackv5-tooltip .tooltip-top {
-	/* @embed */
-	background: url(images/bg-tooltip-top.png);
-	height: 11px;
-}
-
-.articleFeedbackv5-tooltip .tooltip-repeat {
-	/* @embed */
-	background: url(images/bg-tooltip.png) repeat-y;
-	padding: 0 20px 1px;
-	margin: 0;
-}
-
-.articleFeedbackv5-tooltip .tooltip-repeat h3 {
-	float: left;
-}
-
-.articleFeedbackv5-tooltip .tooltip-repeat .articleFeedbackv5-tooltip-close {
-	float: right;
-	cursor: pointer;
-	margin: -5px -5px 0 0;
-	font-size: 1.5em;
-}
-
-.articleFeedbackv5-tooltip .tooltip-repeat .articleFeedbackv5-tooltip-close:hover {
-	text-decoration: underline;
-}
-
-.articleFeedbackv5-tooltip .tooltip-bottom {
-	/* @embed */
-	background: url(images/bg-tooltip-bottom.png);
-	height: 26px;
-}
-
 .articleFeedbackv5-tooltip-trigger-wrap {
 	float: right;
 	position: relative;
