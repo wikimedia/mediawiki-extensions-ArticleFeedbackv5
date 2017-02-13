@@ -16,11 +16,12 @@
 			"VezonThunder",
 			"McSalama",
 			"Jack Phoenix",
-			"01miki10"
+			"01miki10",
+			"Pyscowicz"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Kiitos!",
-	"articlefeedbackv5-cta-confirmation-message": "Viestisi voidaan nähdä [$1 tällä palautesivulla].",
+	"articlefeedbackv5-cta-confirmation-message": "Viestisi voidaan nähdä tällä [$1 palautesivulla].",
 	"articlefeedbackv5-cta1-confirmation-title": "Tiesitkö, että voit muokata tätä sivua?",
 	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} toimii, koska kuka tahansa voi muokata sen sivuja. Muokkaa rohkeasti!",
 	"articlefeedbackv5-cta1-learn-how": "Opi muokkaamaan",
