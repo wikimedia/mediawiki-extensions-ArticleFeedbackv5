@@ -178,7 +178,7 @@
 	"articlefeedbackv5-status-unarchive": "Die Archivierung dieses Beitrages wurde von $1 am $2 um $3 rückgängig gemacht",
 	"articlefeedbackv5-new-marker": "Neu",
 	"articlefeedbackv5-oversight-marker": "Per Oversight gelöscht",
-	"articlefeedbackv5-autohide-marker": "Versteckt",
+	"articlefeedbackv5-autohide-marker": "Automatisch versteckt",
 	"articlefeedbackv5-hide-marker": "Versteckt",
 	"articlefeedbackv5-feature-marker": "Nützlich",
 	"articlefeedbackv5-resolve-marker": "Erledigt",
