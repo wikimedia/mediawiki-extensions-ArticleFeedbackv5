@@ -29,7 +29,8 @@
 			"Александр Сигачёв",
 			"Сrower",
 			"Сай",
-			"Irus"
+			"Irus",
+			"Redredsonia"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Спасибо!",
@@ -186,7 +187,7 @@
 	"articlefeedbackv5-status-unarchive": "Это сообщение было разархивировано $1 $2 в $3",
 	"articlefeedbackv5-new-marker": "Новый",
 	"articlefeedbackv5-oversight-marker": "Скрыто ревизором",
-	"articlefeedbackv5-autohide-marker": "скрытый",
+	"articlefeedbackv5-autohide-marker": "Автоматически скрываемое",
 	"articlefeedbackv5-hide-marker": "скрытый",
 	"articlefeedbackv5-feature-marker": "Полезно",
 	"articlefeedbackv5-resolve-marker": "Урегулирован",

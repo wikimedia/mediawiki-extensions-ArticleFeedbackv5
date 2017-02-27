@@ -241,7 +241,7 @@
 	"articlefeedbackv5-status-unarchive": "The marker that appears on a comment if it has been unarchived.\n* $1 - the name of the monitor who performed the unarchive\n* $2 - the date when the unarchive occurred\n* $3 - the time when the unarchive occurred\n{{Related|Articlefeedbackv5-status}}",
 	"articlefeedbackv5-new-marker": "The marker that appears on a comment is new and highlighted.\n{{Identical|New}}",
 	"articlefeedbackv5-oversight-marker": "The marker that appears on a comment if it has been oversighted (deleted).\n{{Identical|Oversighted}}",
-	"articlefeedbackv5-autohide-marker": "The marker that appears on a comment if it has been auto-hidden.\n{{Identical|Hidden}}",
+	"articlefeedbackv5-autohide-marker": "The marker that appears on a comment if it has been auto-hidden.",
 	"articlefeedbackv5-hide-marker": "The marker that appears on a comment if it has been hidden.\n{{Identical|Hidden}}",
 	"articlefeedbackv5-feature-marker": "The marker that appears on a comment if it has been marked as useful.\n{{Identical|Useful}}",
 	"articlefeedbackv5-resolve-marker": "The marker that appears on a comment if it has been marked as resolved.\n{{Identical|Resolved}}",
