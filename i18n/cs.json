@@ -18,7 +18,8 @@
 			"Utar",
 			"Vks",
 			"Draceane",
-			"Cvanca"
+			"Cvanca",
+			"Dvorapa"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Děkujeme!",
@@ -133,7 +134,7 @@
 	"articlefeedbackv5-loading-tag": "Načítá se…",
 	"articlefeedbackv5-status-hide": "Tento přízpěvek zkryl(a) $1 $2 v $3",
 	"articlefeedbackv5-new-marker": "Nové",
-	"articlefeedbackv5-autohide-marker": "Skryté",
+	"articlefeedbackv5-autohide-marker": "Automaticky skryté",
 	"articlefeedbackv5-hide-marker": "Skryté",
 	"articlefeedbackv5-feature-marker": "Užitečné",
 	"articlefeedbackv5-resolve-marker": "Vyřízeno",
@@ -198,7 +199,6 @@
 	"articlefeedbackv5-viewactivity": "Zobrazit aktivitu",
 	"articlefeedbackv5-mask-view-contents": "Zobrazit obsah",
 	"articlefeedbackv5-mask-text-hide": "Tento příspěvek #$1 {{GENDER:$2|skryl|skryla}} $2 $3.",
-	"articlefeedbackv5-special-disclaimer": "Toto je prototyp. Prosíme, nepoužívejte jej pokud jste nebyli pozváni.",
 	"articlefeedbackv5-special-goback": "Zobrazit stránku s názory",
 	"articlefeedbackv5-special-central-goback": "Zobrazit další stránky s názory",
 	"articlefeedbackv5-permalink-info-title": "Informace o tomto příspěvku",
