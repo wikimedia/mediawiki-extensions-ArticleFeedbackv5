@@ -142,7 +142,7 @@
 	"articlefeedbackv5-status-unhide": "এই পোস্টটি $2, $3 সময়ে $1 দ্বারা দৃশ্যমান করা হয়েছে",
 	"articlefeedbackv5-new-marker": "নতুন",
 	"articlefeedbackv5-oversight-marker": "ওভারসাইটকৃত",
-	"articlefeedbackv5-autohide-marker": "লুকায়িত",
+	"articlefeedbackv5-autohide-marker": "স্বয়ং-লুকায়িত",
 	"articlefeedbackv5-hide-marker": "লুকায়িত",
 	"articlefeedbackv5-feature-marker": "উপকারী",
 	"articlefeedbackv5-resolve-marker": "মিমাংসিত",
