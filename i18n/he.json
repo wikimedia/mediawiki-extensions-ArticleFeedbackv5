@@ -16,7 +16,8 @@
 			"דניאל ב.",
 			"חיים",
 			"ערן",
-			"פוילישער"
+			"פוילישער",
+			"שמזן"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "תודה!",
@@ -173,7 +174,7 @@
 	"articlefeedbackv5-status-unarchive": "הפוסט הזה הוצא מהארכיון על־ידי $1 ב$2 ב$3",
 	"articlefeedbackv5-new-marker": "חדשה",
 	"articlefeedbackv5-oversight-marker": "מועלמת",
-	"articlefeedbackv5-autohide-marker": "מוסתר",
+	"articlefeedbackv5-autohide-marker": "מוסתר אוטומטית",
 	"articlefeedbackv5-hide-marker": "מוסתר",
 	"articlefeedbackv5-feature-marker": "שימושי",
 	"articlefeedbackv5-resolve-marker": "טופל",
@@ -279,7 +280,6 @@
 	"articlefeedbackv5-mask-text-autohide": "רשומה מספר $1 הוסתרה אוטומטית על־ידי $2 $3.",
 	"articlefeedbackv5-mask-text-hide": "רשומה מספר $1 הוסתרה על־ידי $2 $3.",
 	"articlefeedbackv5-mask-text-oversight": "רשומה מספר $1 הועלמה על־ידי $2 $3.",
-	"articlefeedbackv5-special-disclaimer": "זה רק אבטיפוס. נא לא להשתמש בו אלא אם הוזמנת במפורש לעשות את זה.",
 	"articlefeedbackv5-special-goback": "הצגת דף המשובים",
 	"articlefeedbackv5-special-central-goback": "ראו משוב על דפים ארים",
 	"articlefeedbackv5-permalink-info-title": "מידע על הרשומה הזאת",
