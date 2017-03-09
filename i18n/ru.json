@@ -555,7 +555,7 @@
 	"articlefeedbackv5-activity-item-uninappropriate": "$1 снял{{GENDER:$6||а}} отметку о скрытии данного сообщения $4 в $5 $2",
 	"articlefeedbackv5-activity-item-hide": "$1 спрятал{{GENDER:$6||а}} этот отзыв $4 в $5 $2",
 	"articlefeedbackv5-activity-item-unhide": "$1 вернул{{GENDER:$6||а}} этот отзыв $4 в $5 $2",
-	"articlefeedbackv5-activity-item-autohide": "$1 спрятал{{GENDER:$6||а}} этот отзыв $4 в $5 $2",
+	"articlefeedbackv5-activity-item-autohide": "$1 автоматически спрятал{{GENDER:$6||а}} этот отзыв $4 в $5 $2",
 	"articlefeedbackv5-activity-item-archive": "$1 заархивировал{{GENDER:$6||а}} этот отзыв #$4 в $5 $2",
 	"articlefeedbackv5-activity-item-unarchive": "$1 разархивировал{{GENDER:$6||а}} этот отзыв $4 в $5 $2",
 	"articlefeedbackv5-activity-item-helpful": "$1 пометил{{GENDER:$6||а}} данное сообщение как полезное $4 в $5 $2",

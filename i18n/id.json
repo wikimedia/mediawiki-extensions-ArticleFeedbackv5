@@ -10,7 +10,8 @@
 			"Stephensuleeman",
 			"පසිඳු කාවින්ද",
 			"C5st4wr6ch",
-			"Arifin.wijaya"
+			"Arifin.wijaya",
+			"Hidayatsrf"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Terima kasih!",
@@ -167,7 +168,7 @@
 	"articlefeedbackv5-status-unarchive": "Kiriman ini takjadi diarsipkan oleh $1 pada $2 pukul $3",
 	"articlefeedbackv5-new-marker": "Baru",
 	"articlefeedbackv5-oversight-marker": "Diawasi",
-	"articlefeedbackv5-autohide-marker": "Tersembunyi",
+	"articlefeedbackv5-autohide-marker": "Disembunyikan otomatis",
 	"articlefeedbackv5-hide-marker": "Tersembunyi",
 	"articlefeedbackv5-feature-marker": "Bermanfaat",
 	"articlefeedbackv5-resolve-marker": "Diselesaikan",
@@ -273,7 +274,6 @@
 	"articlefeedbackv5-mask-text-autohide": "Pos ini #$1 {{GENDER:$2|otomatis disembunyikan oleh $2}} $3.",
 	"articlefeedbackv5-mask-text-hide": "Kiriman ini #$1 {{GENDER:$2|disembunyikan oleh $2}} $3.",
 	"articlefeedbackv5-mask-text-oversight": "Kiriman ini #$1 {{GENDER:$2|otomatis diawasi oleh $2}} $3.",
-	"articlefeedbackv5-special-disclaimer": "Ini adalah prototipe. Jangan gunakan kecuali Anda telah diundang.",
 	"articlefeedbackv5-special-goback": "Lihat halaman umpan balik",
 	"articlefeedbackv5-special-central-goback": "Lihat umpan balik dari halaman lain",
 	"articlefeedbackv5-permalink-info-title": "Info tentang pos ini",
