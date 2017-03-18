@@ -273,7 +273,6 @@ class ArticleFeedbackv5Hooks {
 			$wgArticleFeedbackv5Debug,
 			$wgArticleFeedbackv5DisplayBuckets,
 			$wgArticleFeedbackv5CTABuckets,
-			$wgArticleFeedbackv5Tracking,
 			$wgArticleFeedbackv5LinkBuckets,
 			$wgArticleFeedbackv5Namespaces,
 			$wgArticleFeedbackv5EnableProtection,
@@ -291,7 +290,6 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5Categories'] = $wgArticleFeedbackv5Categories;
 		$vars['wgArticleFeedbackv5BlacklistCategories'] = $wgArticleFeedbackv5BlacklistCategories;
 		$vars['wgArticleFeedbackv5Debug'] = $wgArticleFeedbackv5Debug;
-		$vars['wgArticleFeedbackv5Tracking'] = $wgArticleFeedbackv5Tracking;
 		$vars['wgArticleFeedbackv5LinkBuckets'] = $wgArticleFeedbackv5LinkBuckets;
 		$vars['wgArticleFeedbackv5Namespaces'] = $wgArticleFeedbackv5Namespaces;
 		$vars['wgArticleFeedbackv5EnableProtection'] = $wgArticleFeedbackv5EnableProtection;
@@ -373,104 +371,6 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Tracks successful edits
-	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete
-	 * @param $article WikiPage
-	 * @param $user
-	 * @param $content
-	 * @param $summary
-	 * @param $isMinor
-	 * @param $isWatch
-	 * @param $section
-	 * @param $flags
-	 * @param $revision
-	 * @param $status
-	 * @param $baseRevId
-	 * @return bool
-	 */
-	public static function editSuccess( $article, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId ) {
-		if ( $revision instanceof Revision ) {
-			$request = RequestContext::getMain()->getRequest();
-			$feedbackId = $request->getVal( 'articleFeedbackv5_discuss_id' );
-			$pageId = (int) $request->getVal( 'articleFeedbackv5_discuss_page' );
-			$discussType = $request->getVal( 'articleFeedbackv5_discuss_type' );
-
-			if ( $feedbackId && $pageId && $discussType ) {
-				$feedback = ArticleFeedbackv5Model::get( $feedbackId, $pageId );
-
-				if ( $feedback ) {
-					$feedback->aft_discuss = $discussType;
-
-					/*
-					 * Before saving, the AFT data will be validated. If the discuss type
-					 * is invalid, an exception will be thrown and the data will not be saved.
-					 */
-					try {
-						$feedback->update();
-					} catch ( Exception $e ) {
-						/*
-						 * It's great that tainted AFT data will not be inserted, but let's
-						 * not stop the article edit when some AFT data is wrong.
-						 */
-					};
-				}
-			}
-
-			// track successful edit
-//			self::trackEvent( 'edit_success', $article->getTitle(), $revision->getID() );
-		} else {
-			// track unsuccessful edit
-//			self::trackEvent( 'edit_norevision', $article->getTitle(), 0 );
-		}
-
-		return true;
-	}
-
-	/**
-	 * Tracks edit attempts
-	 *
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/EditPage::attemptSave
-	 * @param $editpage EditPage
-	 * @return bool
-	 */
-	public static function editAttempt( $editpage ) {
-//		self::trackEvent( 'edit_attempt', $editpage->getArticle()->getTitle(), $editpage->getArticle()->getRevIdFetched()); // EditPage::getTitle() doesn't exist in 1.18wmf1
-		return true;
-	}
-
-	/**
-	 * Internal use: Tracks an event
-	 *
-	 * @param $event string the event name
-	 * @param $context IContextSource
-	 * @return
-	 */
-	private static function trackEvent( $event, $title, $rev_id ) {
-		$request = RequestContext::getMain()->getRequest();
-
-		$tracking = $request->getVal( 'articleFeedbackv5_click_tracking' );
-		if ( !$tracking ) {
-			return;
-		}
-
-		$ctToken    = $request->getVal( 'articleFeedbackv5_ct_cttoken' );
-		$userToken  = $request->getVal( 'articleFeedbackv5_ct_usertoken' );
-		$ctEvent    = $request->getVal( 'articleFeedbackv5_ct_event' );
-
-		/*
-		 * if visitor has old - cached - JS, not all required values will be there
-		 * and we should ignore this hit (it won't have the relevant JS-calls either)
-		 */
-		if ( !$ctToken ) {
-			return;
-		}
-
-		// @todo: implement EventLogging if/once requested
-		// make sure sure to uncomment commented calls to self::trackEvent at that time
 	}
 
 	/**
