@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e46e3ee_19b9c778",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 3141,
+      "author": {
+        "id": 243
+      },
+      "writtenOn": "2017-03-18T02:25:10Z",
+      "side": 1,
+      "message": "Given how simple the new version of this function is and that it doesn\u0027t even need the $link parameter passed to it, I think you should see what\u0027s calling this and make the callers call .highlightForm() directly instead.",
+      "range": {
+        "startLine": 3141,
+        "startChar": 1,
+        "endLine": 3141,
+        "endChar": 37
+      },
+      "revId": "73cd34e3b0ed473fac9859b293613241696b3fcd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e46e3ee_39bcc366",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 243
+      },
+      "writtenOn": "2017-03-18T02:25:10Z",
+      "side": 1,
+      "message": "Given that you remove the getFilterName() function, you\u0027ll want to fix this aswell.",
+      "range": {
+        "startLine": 611,
+        "startChar": 2,
+        "endLine": 611,
+        "endChar": 69
+      },
+      "revId": "73cd34e3b0ed473fac9859b293613241696b3fcd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}

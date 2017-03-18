@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e46e3ee_5990aff1",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2152,
+      "author": {
+        "id": 243
+      },
+      "writtenOn": "2017-03-18T02:25:10Z",
+      "side": 0,
+      "message": "Did you really intend to remove this section of code? If yes, why?",
+      "range": {
+        "startLine": 2151,
+        "startChar": 2,
+        "endLine": 2152,
+        "endChar": 42
+      },
+      "revId": "caaab22b664a42e6c5ee16801c09854477a9a83c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
