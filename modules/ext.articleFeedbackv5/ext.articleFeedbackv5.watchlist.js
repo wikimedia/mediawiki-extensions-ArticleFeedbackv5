@@ -13,11 +13,6 @@ jQuery( function( $ ) {
 			return;
 		}
 
-		// Initialize clicktracking
-		// NB: Using the talk page's namespace, title, and rev id, not
-		// the article's as in the front end tracking
-		$.aftTrack.init();
-
 		// Build the url to the Special:ArticleFeedbackv5Watchlist page
 		var params = { ref: 'watchlist' };
 		var url = mw.config.get( 'wgScript' ) + '?title=' +
@@ -28,13 +23,10 @@ jQuery( function( $ ) {
 		var link = $( '<a id="articlefeedbackv5-watchlist-feedback-link"></a>' );
 		link
 			.text( mw.msg( 'articlefeedbackv5-watchlist-view-feedback' ) )
-			.attr( 'href', url )
-			.click( { trackingId: 'watchlist_view_feedback-button_click' }, $.aftTrack.trackEvent );
+			.attr( 'href', url );
 
 		$( '#contentSub' ).append( link );
 
-		// Track an impression
-		$.aftTrack.track( 'watchlist_view_feedback-impression' );
 	}
 
 } );

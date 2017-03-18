@@ -1,6 +1,6 @@
 {
 	"name": "Article Feedback",
-	"version": "5.2.2",
+	"version": "5.2.3",
 	"author": [
 		"Greg Chiasson",
 		"Reha Sterbin",
@@ -135,7 +135,6 @@
 				"jquery.ui.button",
 				"jquery.articleFeedbackv5",
 				"jquery.cookie",
-				"jquery.articleFeedbackv5.track",
 				"jquery.articleFeedbackv5.utils",
 				"mediawiki.api"
 			]
@@ -153,13 +152,6 @@
 				"jquery.articleFeedbackv5.special"
 			]
 		},
-		"jquery.articleFeedbackv5.track": {
-			"scripts": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.track.js",
-			"dependencies": [
-				"mediawiki.util",
-				"mediawiki.user"
-			]
-		},
 		"ext.articleFeedbackv5.talk": {
 			"scripts": "ext.articleFeedbackv5/ext.articleFeedbackv5.talk.js",
 			"styles": "ext.articleFeedbackv5/ext.articleFeedbackv5.talk.css",
@@ -168,7 +160,6 @@
 			],
 			"dependencies": [
 				"jquery.articleFeedbackv5.utils",
-				"jquery.articleFeedbackv5.track",
 				"mediawiki.api"
 			]
 		},
@@ -177,9 +168,6 @@
 			"styles": "ext.articleFeedbackv5/ext.articleFeedbackv5.watchlist.css",
 			"messages": [
 				"articlefeedbackv5-watchlist-view-feedback"
-			],
-			"dependencies": [
-				"jquery.articleFeedbackv5.track"
 			]
 		},
 		"jquery.articleFeedbackv5": {
@@ -285,7 +273,6 @@
 				"jquery.cookie",
 				"jquery.placeholder",
 				"mediawiki.jqueryMsg",
-				"jquery.articleFeedbackv5.track",
 				"jquery.effects.highlight",
 				"mediawiki.Uri"
 			]
@@ -425,7 +412,6 @@
 				"mediawiki.util",
 				"jquery.tipsy",
 				"jquery.localize",
-				"jquery.articleFeedbackv5.track",
 				"json",
 				"jquery.ui.button"
 			]
@@ -582,16 +568,6 @@
 				"6": 100
 			},
 			"version": 6,
-			"expires": 30
-		},
-		"ArticleFeedbackv5Tracking": {
-			"buckets": {
-				"ignore": 100,
-				"track": 0,
-				"track-front": 0,
-				"track-special": 0
-			},
-			"version": 11,
 			"expires": 30
 		},
 		"ArticleFeedbackv5LinkBuckets": {

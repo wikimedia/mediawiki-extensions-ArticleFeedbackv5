@@ -37,8 +37,7 @@ jQuery( function( $ ) {
 					// Add the link to the feedback-page next to the title
 					var $link = $( '<a id="articlefeedbackv5-talk-feedback-link"></a>' )
 						.text( mw.msg( 'articlefeedbackv5-talk-view-feedback' ) )
-						.attr( 'href', url )
-						.click( { trackingId: 'talk_page_view_feedback-button_click' }, $.aftTrack.trackEvent );
+						.attr( 'href', url );
 
 					/*
 					 * Add the link next to #siteSub. Append to #siteSub node if
@@ -51,9 +50,6 @@ jQuery( function( $ ) {
 						$link.insertAfter( '#siteSub' );
 					}
 
-					// Track an impression
-					$.aftTrack.init();
-					$.aftTrack.track( 'talk_page_view_feedback-impression' );
 				}
 			}
 		} );
