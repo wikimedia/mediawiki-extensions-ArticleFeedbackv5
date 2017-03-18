@@ -186,13 +186,6 @@
 		// check if there is feedback
 		$.articleFeedbackv5special.emptyMessage();
 
-		// Initialize clicktracking
-		$.aftTrack.init({
-			pageName: $.articleFeedbackv5special.page,
-			revisionId: 0,
-			isSpecial: true
-		});
-
 		// Grab the user's activity out of the cookie
 		$.articleFeedbackv5special.loadActivity();
 
@@ -233,34 +226,10 @@
 		);
 		$.articleFeedbackv5special.processFeedback();
 
-		// Track an impression
-		$.aftTrack.track( 'feedback_page-impression-' +
-			$.articleFeedbackv5special.referral + '-' +
-			$.articleFeedbackv5special.userType );
 	};
 
 	// }}}
-	// {{{ checkClickTracking
 
-	/**
-	 * Checks whether click tracking is turned on
-	 *
-	 * Only track users who have been assigned to the tracking group; don't bucket
-	 * at all if we're set to always ignore or always track.
-	 */
-	$.articleFeedbackv5special.checkClickTracking = function() {
-		var b = mw.config.get( 'wgArticleFeedbackv5Tracking' );
-		if ( b.buckets.ignore == 100 && b.buckets.track == 0 ) {
-			return false;
-		}
-		if ( b.buckets.ignore == 0 && b.buckets.track == 100 ) {
-			return true;
-		}
-		var key = 'ext.articleFeedbackv5@' + b.version + '-tracking';
-		return ( 'track' === mw.user.bucket( key, b ) );
-	};
-
-	// }}}
 	// {{{ initTipties
 
 	/**
@@ -530,12 +499,6 @@
 		$.articleFeedbackv5special.listControls.offset = null;
 		$.articleFeedbackv5special.setSortByFilter( id );
 
-		// track the filter change
-		$.aftTrack.track( 'feedback_page-click-' +
-				'f_' + $.articleFeedbackv5special.getFilterName( id ) + '-' +
-				$.articleFeedbackv5special.referral + '-' +
-				$.articleFeedbackv5special.userType );
-
 		// update filter in select (if present) & text-links (if any)
 		$( '#articleFeedbackv5-select-wrapper' ).removeClass( 'filter-active' );
 		$( '.articleFeedbackv5-filter-link' ).removeClass( 'filter-active' );
@@ -635,19 +598,7 @@
 	};
 
 	// }}}
-	// {{{ getFilterName
 
-	/**
-	 * Utility method: Gets the filter name from its internal-use ID
-	 *
-	 * @param  filter string the internal-use id of the filter
-	 * @return string the filter name for use in clicktracking
-	 */
-	$.articleFeedbackv5special.getFilterName = function ( filter ) {
-		return filter;
-	};
-
-	// }}}
 	// {{{ setSortByFilter
 
 	/**
@@ -657,7 +608,6 @@
 	 * @param filter string the internal-use id of the filter
 	 */
 	$.articleFeedbackv5special.setSortByFilter = function ( filter ) {
-		var shortName = $.articleFeedbackv5special.getFilterName( filter );
 		var defaults = mw.config.get( 'wgArticleFeedbackv5DefaultSorts' );
 		if ( shortName in defaults ) {
 			$.articleFeedbackv5special.toggleSort( defaults[shortName][0], defaults[shortName][1] );

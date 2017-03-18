@@ -176,11 +176,6 @@
 	$.articleFeedbackv5.nowShowing = 'none';
 
 	/**
-	 * The feedback ID (collected on submit, for use in tracking edits)
-	 */
-	$.articleFeedbackv5.feedbackId = 0;
-
-	/**
 	 * The new feedback's permalink (collected on submit, for use in CTA5)
 	 */
 	$.articleFeedbackv5.permalink = undefined;
@@ -592,8 +587,7 @@
 				}
 
 				$block.find( '.articleFeedbackv5-cta-button' )
-					.attr( 'href', url )
-					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + 'button_click' }, $.aftTrack.trackEvent );
+					.attr( 'href', url );
 
 				// Turn the submit into a slick button
 				$block.find( '.articleFeedbackv5-cta-button' )
@@ -739,7 +733,6 @@
 						e.preventDefault();
 
 						var new_val = $( this ).parents( '[data-value]' ).data( 'value' );
-						$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'click_' + new_val );
 
 						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket6-toggle-wrapper-' + new_val );
 
@@ -1042,7 +1035,6 @@
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.editUrl() )
-					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_click' }, $.aftTrack.trackEvent )
 					.button()
 					.addClass( 'ui-button-blue' );
 
@@ -1109,7 +1101,6 @@
 				$block
 					.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta1-learn-how-url' ) )
-					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_click' }, $.aftTrack.trackEvent )
 					.button()
 					.addClass( 'ui-button-blue' );
 
@@ -1202,7 +1193,6 @@
 					$block
 						.find( '.articleFeedbackv5-cta-button' )
 						.attr( 'href', survey_url + '?c=' + $.articleFeedbackv5.feedbackId )
-						.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_click' }, $.aftTrack.trackEvent )
 						.button()
 						.addClass( 'ui-button-blue' );
 				}
@@ -1338,8 +1328,7 @@
 					'c': $.articleFeedbackv5.feedbackId
 				} );
 				$block.find( '.articleFeedbackv5-cta-button-signup' )
-					.attr( 'href', signup_url )
-					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_signup_click' }, $.aftTrack.trackEvent );
+					.attr( 'href', signup_url );
 
 				var login_url = mw.config.get( 'wgScript' ) + '?' + $.param( {
 					'title': 'Special:UserLogin',
@@ -1347,8 +1336,7 @@
 					'c': $.articleFeedbackv5.feedbackId
 				} );
 				$block.find( '.articleFeedbackv5-cta-button-login' )
-					.attr( 'href', login_url )
-					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_login_click' }, $.aftTrack.trackEvent );
+					.attr( 'href', login_url );
 
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.button()
@@ -1450,7 +1438,6 @@
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', $.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId )
-					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_click' }, $.aftTrack.trackEvent )
 					.button()
 					.addClass( 'ui-button-blue' );
 
@@ -1532,7 +1519,6 @@
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-cta-button' )
 					.attr( 'href', mw.msg( 'articlefeedbackv5-cta6-button-link' ) )
-					.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-button_click' }, $.aftTrack.trackEvent )
 					.button()
 					.addClass( 'ui-button-blue' );
 
@@ -1633,7 +1619,7 @@
 					.text( mw.msg( 'articlefeedbackv5-sitesub-linktext' ) )
 					.click( function ( e ) {
 						e.preventDefault();
-						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+						$.articleFeedbackv5.highlightForm();
 					} );
 				return $link;
 			},
@@ -1697,7 +1683,7 @@
 					.text( mw.msg( 'articlefeedbackv5-titlebar-linktext' ) )
 					.click( function ( e ) {
 						e.preventDefault();
-						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+						$.articleFeedbackv5.highlightForm();
 					} );
 				if ( $( '#coordinates' ).length ) {
 					$link.css( 'margin-top: 2.5em' );
@@ -1760,7 +1746,7 @@
 					.attr( 'title', mw.msg( 'articlefeedbackv5-fixedtab-linktext' ) )
 					.click( function ( e ) {
 						e.preventDefault();
-						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+						$.articleFeedbackv5.highlightForm();
 					} );
 				return $link;
 			}
@@ -1820,7 +1806,7 @@
 					.text( mw.msg( 'articlefeedbackv5-bottomrighttab-linktext' ) )
 					.click( function ( e ) {
 						e.preventDefault();
-						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+						$.articleFeedbackv5.highlightForm();
 					} );
 				return $link;
 			}
@@ -1898,7 +1884,7 @@
 					.text( mw.msg( 'articlefeedbackv5-bottomrighttab-linktext' ) )
 					.click( function ( e ) {
 						e.preventDefault();
-						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+						$.articleFeedbackv5.highlightForm();
 					} );
 				return $link;
 			}
@@ -2001,7 +1987,7 @@
 					.text( mw.msg( 'articlefeedbackv5-section-linktext' ) )
 					.click( function ( e ) {
 						e.preventDefault();
-						$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+						$.articleFeedbackv5.highlightForm();
 					} );
 				return $wrap;
 			},
@@ -2064,7 +2050,7 @@
 						.data( 'linkId', 'TBX' )
 						.click( function ( e ) {
 							e.preventDefault();
-							$.articleFeedbackv5.clickTriggerLink( $( e.target ) );
+							$.articleFeedbackv5.highlightForm();
 						} );
 				}
 
@@ -2076,8 +2062,7 @@
 				var $linkView = $( '<li id="t-articlefeedbackv5-view"><a href="#"></a></li>' );
 				$linkView.find( 'a' )
 						.text( mw.msg( 'articlefeedbackv5-toolbox-view' ) )
-						.attr( 'href', mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' ) )
-						.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-toolbar_click' }, $.aftTrack.trackEvent );
+						.attr( 'href', mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' ) );
 
 				return $linkAdd.add( $linkView );
 			},
@@ -2129,8 +2114,6 @@
 		if ( reqDebug ) {
 			$.articleFeedbackv5.debug = reqDebug == 'false' ? false : true;
 		}
-		// Initialize clicktracking
-		$.aftTrack.init();
 		// Go ahead and bucket right away
 		$.articleFeedbackv5.selectBucket();
 		$.articleFeedbackv5.selectCTA();
@@ -2144,22 +2127,10 @@
 		$.articleFeedbackv5.$holder.appear( function () {
 			if ( !$.articleFeedbackv5.isLoaded ) {
 				$.articleFeedbackv5.load( 'auto' );
-				// Track form impressions
-				$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'impression' );
 			}
 		} );
-		// Keep track of links that must be removed after a successful submission
-		$.articleFeedbackv5.$toRemove = $( [] );
 		// Add them
 		$.articleFeedbackv5.addTriggerLinks();
-		// Track init at 1%
-		if ( Math.random() * 100 < 1 ) {
-			if ( $.articleFeedbackv5.editable ) {
-				$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'init' );
-			} else {
-				$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'noedit-init' );
-			}
-		}
 		// Adding hash in url will not scroll down to this id, because the element
 		// won't exist until .appear is triggered. Let's just simulate this ourselves.
 		if ( '#' + $el.attr( 'id' ) === window.location.hash ) {
@@ -2404,23 +2375,13 @@
 	// {{{ editUrl
 
 	/**
-	 * Builds the edit URL, with tracking if appropriate
-	 *
-	 * @param trackingId string the tracking ID
+	 * Builds the edit URL
 	 */
 	$.articleFeedbackv5.editUrl = function () {
 		var params = {
 			'title': mw.config.get( 'wgPageName' ),
-			'action': 'edit',
-			'articleFeedbackv5_click_tracking': $.aftTrack.clickTrackingOn ? '1' : '0'
+			'action': 'edit'
 		};
-		if ( $.aftTrack.clickTrackingOn ) {
-			var event = $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName();
-
-			params.articleFeedbackv5_ct_cttoken   = $.cookie( 'clicktracking-session' );
-			params.articleFeedbackv5_ct_usertoken = mw.user.id();
-			params.articleFeedbackv5_ct_event     = $.aftTrack.prefix( event );
-		}
 		return mw.config.get( 'wgScript' ) + '?' + $.param( params );
 	};
 
@@ -2659,9 +2620,6 @@
 			} );
 		}
 
-		// Track the submit click
-		$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_attempt' );
-
 		// Send off the ajax request
 		$.ajax( {
 			'url': $.articleFeedbackv5.apiUrl,
@@ -2697,8 +2655,6 @@
 					$.articleFeedbackv5.$toRemove.remove();
 					$.articleFeedbackv5.$toRemove = $( [] );
 
-					// Track the success
-					$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_success' );
 				} else {
 					var msg = mw.msg( 'articlefeedbackv5-error-unknown' );
 					var code = 'unknown';
@@ -2712,9 +2668,6 @@
 						code = data.warning.code;
 					}
 
-					// Track the error
-					$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_error_' + code );
-
 					// Set up error state
 					$.articleFeedbackv5.markFormErrors( msg );
 				}
@@ -2722,9 +2675,6 @@
 			'error': function (xhr, tstatus, error) {
 				var msg = mw.msg( 'articlefeedbackv5-error-submit' );
 				var code = 'jquery';
-
-				// Track the error
-				$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'submit_error_' + code );
 
 				// Set up error state
 				$.articleFeedbackv5.markFormErrors( msg );
@@ -2838,8 +2788,7 @@
 				.localize( { 'prefix': 'articlefeedbackv5-' } );
 
 			title
-				.find( '.articleFeedbackv5-confirmation-follow-up' ).msg( 'articlefeedbackv5-cta-confirmation-message', $.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId )
-				.find( 'a' ).click( { trackingId: $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-permalink_click' }, $.aftTrack.trackEvent );
+				.find( '.articleFeedbackv5-confirmation-follow-up' ).msg( 'articlefeedbackv5-cta-confirmation-message', $.articleFeedbackv5.specialUrl + '#' + $.articleFeedbackv5.feedbackId );
 		}
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title' )
 			.empty()
@@ -2865,9 +2814,6 @@
 
 		// The close element needs to be created anyway, to serve as an anchor, but needs to be hidden
 		$close.hide();
-
-		// Track the event
-		$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + $.articleFeedbackv5.ctaName() + '-impression' );
 
 		$.articleFeedbackv5.nowShowing = 'cta';
 	};
@@ -2988,7 +2934,6 @@
 						'#mw-prefsection-rendering';
 					$flyover.find( '.articleFeedbackv5-disable-flyover-button' )
 						.attr( 'href', prefLink )
-						.click( { trackingId: $.articleFeedbackv5.experiment() + '-' + 'disable_gotoprefs_click' }, $.aftTrack.trackEvent )
 						.button()
 						.addClass( 'ui-button-blue' );
 
@@ -2996,7 +2941,6 @@
 						.attr( 'href', '#hello' )
 						.attr( 'rel', linkId );
 
-					$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'disable_flyover-impression' );
 					return $flyover.html();
 				}
 			} )
@@ -3010,7 +2954,6 @@
 				} else {
 					$host.tipsy( 'show' );
 					$wrap.addClass( 'articleFeedbackv5-tipsy-active' );
-					$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + 'disable_button_click' );
 				}
 			} );
 	};
@@ -3188,21 +3131,6 @@
 	};
 
 	// }}}
-	// {{{ clickTriggerLink
-
-	/**
-	 * Handles the click event on a trigger link
-	 *
-	 * @param $link Element the trigger link
-	 */
-	$.articleFeedbackv5.clickTriggerLink = function ( $link ) {
-		var tracking_id = 'trigger' + $link.data( 'linkId' ) + '-click-overlay';
-		$.aftTrack.track( $.articleFeedbackv5.experiment() + '-' + tracking_id );
-
-		$.articleFeedbackv5.highlightForm();
-	};
-
-	// }}}
 
 // }}}
 // {{{ articleFeedbackv5 plugin
@@ -3244,4 +3172,3 @@ $.fn.articleFeedbackv5 = function ( opts, arg ) {
 // }}}
 
 } )( jQuery );
-
