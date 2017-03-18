@@ -22,6 +22,29 @@
       "revId": "caaab22b664a42e6c5ee16801c09854477a9a83c",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e46e3ee_d9483f8f",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 243
+      },
+      "writtenOn": "2017-03-18T02:44:46Z",
+      "side": 0,
+      "message": "Look closely -- shortName variable (now undefined in the new patchset) is still used in this function. You\u0027ll want to change the instances of \"shortName\" to \"filter\" in this func.",
+      "range": {
+        "startLine": 660,
+        "startChar": 2,
+        "endLine": 660,
+        "endChar": 69
+      },
+      "revId": "caaab22b664a42e6c5ee16801c09854477a9a83c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }

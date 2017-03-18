@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e46e3ee_396b63f0",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 243
+      },
+      "writtenOn": "2017-03-18T02:44:46Z",
+      "side": 1,
+      "message": "Needs the semicolon",
+      "range": {
+        "startLine": 46,
+        "startChar": 24,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "8e4b2dc1174394f2d418c20111e390fd5b46554a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e46e3ee_59866fad",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 2791,
+      "author": {
+        "id": 243
+      },
+      "writtenOn": "2017-03-18T02:44:46Z",
+      "side": 1,
+      "message": "Could probably split this on two separate lines:\n.find( ... )\n.msg( ... )\n\nWould be more readable and coding conventions certainly don\u0027t encourage tl,dr lines, which AFTv5 certainly has! ;)",
+      "range": {
+        "startLine": 2791,
+        "startChar": 4,
+        "endLine": 2791,
+        "endChar": 180
+      },
+      "revId": "8e4b2dc1174394f2d418c20111e390fd5b46554a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
