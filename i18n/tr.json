@@ -16,7 +16,8 @@
 			"Stultiwikia",
 			"Suelnur",
 			"Sayginer",
-			"Mavrikant"
+			"Mavrikant",
+			"Vito Genovese"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Teşekkürler!",
@@ -383,7 +384,7 @@
 	"articlefeedbackv5-disable-flyover-prefbutton": "Tercihlerime git",
 	"abusefilter-edit-action-aftv5resolve": "(Madde Geri Bildirim) Otomatik çözme",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "Otomatik olarak çözüldü. Kural: $1",
-	"abusefilter-edit-action-aftv5flagabuse": "(Madde Geri Bildirimi) Otomatikman istismar olarak işaretle",
+	"abusefilter-edit-action-aftv5flagabuse": "(Madde Geribildirimi) Otomatik olarak kötüye kullanım olarak işaretle",
 	"articlefeedbackv5-abusefilter-note-aftv5flag": "Otomatikman istismar olarak işaretlendi. Kural: $1",
 	"abusefilter-edit-action-aftv5hide": "(Madde Geri Bildirim) Otomatik gizleme",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Otomatik olarak gizlendi. Kural: $1"
