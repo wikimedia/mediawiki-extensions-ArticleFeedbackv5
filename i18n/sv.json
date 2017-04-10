@@ -25,6 +25,7 @@
 	"apihelp-articlefeedbackv5-param-cta": "CTA visas efter att formuläret skickas in",
 	"apihelp-articlefeedbackv5-param-link": "Vilken länk användaren klickade på för att gå till widgeten",
 	"apihelp-articlefeedbackv5-param-found": "Ja/nej-återkoppling besvarar frågan om sidan var hjälpsam",
+	"apihelp-articlefeedbackv5-param-comment": "Återkoppling från friformstext",
 	"apihelp-articlefeedbackv5-get-count-description": "Hämta mängden återkoppling för en viss sida/filter",
 	"apihelp-articlefeedbackv5-get-count-param-title": "Titel på sidan att hämta återkopplingsbetyg för. Kan inte användas tillsammans med $1pageid",
 	"apihelp-articlefeedbackv5-get-count-param-pageid": "ID för sidan att hämta återkopplingsbetyg för. Kan inte användas tillsammans med $1title",

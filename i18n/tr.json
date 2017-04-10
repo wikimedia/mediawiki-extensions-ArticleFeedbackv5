@@ -218,7 +218,7 @@
 	"articlefeedbackv5-permalink-info-revision-link": "Bu sayfanın eski sürümüne bak",
 	"articlefeedbackv5-permalink-info-posted": "$1, $2 tarihinde gönderildi",
 	"articlefeedbackv5-permalink-info-stats-title-length": "Uzunluk",
-	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 kelime|$1 kelime}}",
+	"articlefeedbackv5-permalink-info-length-words": "$1 sözcük",
 	"articlefeedbackv5-permalink-info-length-characters": "({{PLURAL:$1|$1 harf|$1 harf}})",
 	"articlefeedbackv5-permalink-info-stats-title-scores": "Derecelendirme",
 	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "Alaka düzeyi:",
