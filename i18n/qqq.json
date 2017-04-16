@@ -337,7 +337,6 @@
 	"articlefeedbackv5-desc": "{{desc|name=Article Feedback v5|url=https://www.mediawiki.org/wiki/Extension:ArticleFeedbackv5}}",
 	"articlefeedbackv5-comment-more": "Label for the button to expand the truncated comment on feedback.\n{{Identical|More}}",
 	"articlefeedbackv5-comment-empty": "Text to be displayed instead of the feedback comment in case there was no comment",
-	"articlefeedbackv5-unsupported-message": "A message to be displayed on the special page, when a visitor with an unsupported browser visits.",
 	"articlefeedbackv5-page-disabled": "A message to be displayed on the article feedback page when AFT is not enabled for that page",
 	"articlefeedbackv5-no-feedback": "A message to be displayed on the article feedback page when there is no feedback yet for a certain filter.",
 	"articlefeedbackv5-invalid-feedback": "A message to be displayed on the article feedback page when the requested feedback could not be found (does not exist).",

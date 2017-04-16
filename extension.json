@@ -1,6 +1,6 @@
 {
 	"name": "Article Feedback",
-	"version": "5.2.3",
+	"version": "5.2.4",
 	"author": [
 		"Greg Chiasson",
 		"Reha Sterbin",
@@ -144,7 +144,6 @@
 			"styles": "ext.articleFeedbackv5/ext.articleFeedbackv5.dashboard.css",
 			"messages": [
 				"articlefeedbackv5-no-feedback",
-				"articlefeedbackv5-unsupported-message",
 				"articlefeedbackv5-page-disabled"
 			],
 			"dependencies": [
