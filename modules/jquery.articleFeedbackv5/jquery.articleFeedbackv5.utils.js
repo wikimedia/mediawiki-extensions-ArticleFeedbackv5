@@ -59,9 +59,6 @@
 
 		var enable = true;
 
-		// supported browser
-		enable &= $.aftUtils.useragent();
-
 		// if AFTv5 is not enabled on any namespace, it does not make sense to display it at all
 		enable &= mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ).length > 0;
 
@@ -224,26 +221,6 @@
 	 */
 	$.aftUtils.getDefaultPermissionLevel = function ( article ) {
 		return $.aftUtils.lottery( article ) ? 'aft-reader' : 'aft-noone';
-	};
-
-	// }}}
-	// {{{ useragent
-
-	/**
-	 * Check if the browser is supported
-	 *
-	 * @return bool
-	 */
-	$.aftUtils.useragent = function () {
-		var ua = navigator.userAgent.toLowerCase();
-
-		// Rule out MSIE 6, FF2, Android
-		return !(
-			ua.indexOf( 'msie 6' ) != -1 ||
-			ua.indexOf( 'firefox/2.') != -1 ||
-			ua.indexOf( 'firefox 2.') != -1 ||
-			ua.indexOf( 'android' ) != -1
-		);
 	};
 
 	// }}}

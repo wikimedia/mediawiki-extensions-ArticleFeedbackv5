@@ -18,13 +18,6 @@ jQuery( function( $ ) {
 
 	// AFT is not enabled
 	} else {
-		// unsupported browser
-		if ( $.aftUtils.useragent() === false ) {
-			showError( mw.msg( 'articlefeedbackv5-unsupported-message' ) );
-
-		// AFT disabled for this page
-		} else {
-			showError( mw.msg( 'articlefeedbackv5-page-disabled' ) );
-		}
+		showError( mw.msg( 'articlefeedbackv5-page-disabled' ) );
 	}
 } );

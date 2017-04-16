@@ -313,7 +313,6 @@
 	"articlefeedbackv5-desc": "Encourages users to contribute by allowing them to review an article and suggest changes",
 	"articlefeedbackv5-comment-more": "More",
 	"articlefeedbackv5-comment-empty": "No text was entered",
-	"articlefeedbackv5-unsupported-message": "Sorry, your browser is not supported by this prototype. To see this page, please use a different browser.",
 	"articlefeedbackv5-page-disabled": "Article Feedback page not enabled for this page.",
 	"articlefeedbackv5-no-feedback": "There is no feedback for the filter you selected. To change your filter, try one of the options above (e.g.: \"Featured\" or \"Unreviewed\").",
 	"articlefeedbackv5-invalid-feedback": "The requested feedback does not exist.",
