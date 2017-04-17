@@ -331,7 +331,6 @@
 	"articlefeedbackv5-desc": "通过允许用户复核条目并建议更改，鼓励其贡献",
 	"articlefeedbackv5-comment-more": "更多",
 	"articlefeedbackv5-comment-empty": "没有输入文本",
-	"articlefeedbackv5-unsupported-message": "很抱歉，您的浏览器不支持此原型。若要查看此页，请使用不同的浏览器。",
 	"articlefeedbackv5-page-disabled": "本条目未启用条目反馈页面。",
 	"articlefeedbackv5-no-feedback": "您选择的过滤器没有任何反馈。要想更改您过滤器，试试上面的选项（例如“特色”或“未巡查”）。",
 	"articlefeedbackv5-invalid-feedback": "请求的反馈不存在。",

@@ -317,7 +317,6 @@
 	"articlefeedbackv5-desc": "Uppmuntrar användare att bidra genom att låta dem granska en artikel och föreslå ändringar",
 	"articlefeedbackv5-comment-more": "Mer",
 	"articlefeedbackv5-comment-empty": "Ingen text har angetts",
-	"articlefeedbackv5-unsupported-message": "Tyvärr, din webbläsare stöds inte av denna prototyp. För att se denna sida, vänligen använd en annan webbläsare.",
 	"articlefeedbackv5-page-disabled": "Artikelbedömningssidan är inte aktiverad för denna artikel.",
 	"articlefeedbackv5-no-feedback": "Det finns ingen feedback för filtret du valde. Försök att använda någon av alternativen ovan för att ändra dina filter (t.ex.: 'Framhävda' or 'Ogranskade').",
 	"articlefeedbackv5-invalid-feedback": "Din begärda feedback finns inte.",
