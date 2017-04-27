@@ -10,7 +10,7 @@
  * @version    $Id$
  */
 
-( function ( $ ) {
+( function ( $, mw ) {
 
 // {{{ articleFeedbackv5special definition
 
@@ -162,7 +162,7 @@
 	/**
 	 * Sets up the page
 	 */
-	$.articleFeedbackv5special.setup = function() {
+	$.articleFeedbackv5special.setup = function () {
 		// Get the user type
 		if ( mw.user.isAnon() ) {
 			$.articleFeedbackv5special.userType = 'anon';
@@ -235,7 +235,7 @@
 	/**
 	 * Initialize the flyout infowindows
 	 */
-	$.articleFeedbackv5special.initTipsies = function() {
+	$.articleFeedbackv5special.initTipsies = function () {
 		// set tipsy defaults, once
 		$.fn.tipsy.defaults = {
 			delayIn: 0,					// delay before showing tooltip (ms)
@@ -252,7 +252,7 @@
 		};
 
 		// clicking anywhere (but tipsy) should close an open tipsy
-		$( document ).click( function( e ) {
+		$( document ).click( function ( e ) {
 			if (
 			// if a panel is currently open
 				$.articleFeedbackv5special.currentPanelHostId !== undefined &&
@@ -296,7 +296,7 @@
 
 		// Bind actions
 		for ( var action in $.articleFeedbackv5special.actions ) {
-			$( document ).on( 'click touchstart', '.articleFeedbackv5-' + action + '-link', function( e ) {
+			$( document ).on( 'click touchstart', '.articleFeedbackv5-' + action + '-link', function ( e ) {
 				var action = $( this ).data( 'action' );
 
 				if ( !$( this ).hasClass( 'inactive' ) ) {
@@ -311,7 +311,7 @@
 		}
 
 		// flyover panels submit actions (post-flag comments)
-		var tipsySubmit = function( e ) {
+		var tipsySubmit = function ( e ) {
 			e.preventDefault();
 
 			if ( typeof $.articleFeedbackv5special.tipsyCallback == 'function' ) {
@@ -342,7 +342,7 @@
 		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-submit', tipsySubmit );
 
 		// bind flyover panel close button
-		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-close', function( e ) {
+		$( document ).on( 'click touchstart', '#articleFeedbackv5-noteflyover-close', function ( e ) {
 			e.preventDefault();
 			$( '#' + $.articleFeedbackv5special.currentPanelHostId ).tipsy( 'hide' );
 			$.articleFeedbackv5special.currentPanelHostId = undefined;
@@ -355,9 +355,9 @@
 	/**
 	 * Binds events for each of the controls
 	 */
-	$.articleFeedbackv5special.setBinds = function() {
+	$.articleFeedbackv5special.setBinds = function () {
 		// Filter select
-		$( '#articleFeedbackv5-filter-select' ).bind( 'change', function( e ) {
+		$( '#articleFeedbackv5-filter-select' ).bind( 'change', function ( e ) {
 			var id = $(this).val();
 			if ( id == '' || id == 'X' ) {
 				return false;
@@ -372,7 +372,7 @@
 		$( '#articleFeedbackv5-filter-select option[value=X]' ).attr( 'disabled', true );
 
 		// Filter links
-		$( '.articleFeedbackv5-filter-link' ).bind( 'click', function( e ) {
+		$( '.articleFeedbackv5-filter-link' ).bind( 'click', function ( e ) {
 			e.preventDefault();
 			var	id = $.articleFeedbackv5special.stripID( this, 'articleFeedbackv5-special-filter-' );
 			$.articleFeedbackv5special.toggleFilter( id );
@@ -380,7 +380,7 @@
 		} );
 
 		// Sort select
-		$( '#articleFeedbackv5-sort-select' ).bind( 'change', function( e ) {
+		$( '#articleFeedbackv5-sort-select' ).bind( 'change', function ( e ) {
 			var sort = $(this).val().split( '-' );
 			if ( sort == '' ) {
 				return false;
@@ -394,20 +394,20 @@
 		$( '#articleFeedbackv5-sort-select option[value=""]' ).attr( 'disabled', true );
 
 		// Show more
-		$( '#articleFeedbackv5-show-more' ).bind( 'click', function( e ) {
+		$( '#articleFeedbackv5-show-more' ).bind( 'click', function ( e ) {
 			$.articleFeedbackv5special.loadFeedback( false, false );
 			return false;
 		} );
 
 		// Refresh list
-		$( '#articleFeedbackv5-refresh-list' ).bind( 'click', function( e ) {
+		$( '#articleFeedbackv5-refresh-list' ).bind( 'click', function ( e ) {
 			$.articleFeedbackv5special.listControls.offset = null;
 			$.articleFeedbackv5special.loadFeedback( true, false );
 			return false;
 		} );
 
 		// When clicking the hidden post mask, remove the mask
-		$( document ).on( 'click touchstart', '.articleFeedbackv5-post-screen', function() {
+		$( document ).on( 'click touchstart', '.articleFeedbackv5-post-screen', function () {
 			// don't hide if it's only an empty mask (= when insufficient permissions
 			// won't let the user see the feedback's details)
 			if ( $( this ).parent( '.articleFeedbackv5-feedback-emptymask' ).length === 0 ) {
@@ -416,7 +416,7 @@
 		});
 
 		// bind short/long version toggle
-		$( document ).on( 'click touchstart', '.articleFeedbackv5-comment-toggle', function( e ) {
+		$( document ).on( 'click touchstart', '.articleFeedbackv5-comment-toggle', function ( e ) {
 			e.preventDefault();
 			$( e.target ).siblings( '.articleFeedbackv5-comment-short' ).hide();
 			$( e.target ).siblings( '.articleFeedbackv5-comment-full' ).show();
@@ -425,10 +425,10 @@
 
 		// switch to enable AFTv5
 		$( '.articlefeedbackv5-enable-button' ).button();
-		$( '#articlefeedbackv5-enable' ).on( 'click', function( e ) {
+		$( '#articlefeedbackv5-enable' ).on( 'click', function ( e ) {
 			e.preventDefault();
 
-			$.aftUtils.setStatus( $.articleFeedbackv5special.page, 1, function( data, error ) {
+			$.aftUtils.setStatus( $.articleFeedbackv5special.page, 1, function ( data, error ) {
 				// refresh page to reflect changes
 				if ( data !== false ) {
 					location.reload( true );
@@ -450,10 +450,10 @@
 	 *
 	 * @param $node jQuery node to bind tipsies for.
 	 */
-	$.articleFeedbackv5special.bindTipsies = function( $node ) {
+	$.articleFeedbackv5special.bindTipsies = function ( $node ) {
 		$node.find( '.articleFeedbackv5-tipsy-link' )
 			.tipsy( {
-				title: function() {
+				title: function () {
 					var action = $( this ).data( 'action' );
 					return $.articleFeedbackv5special.actions[action].tipsyHtml;
 				}
@@ -473,7 +473,7 @@
 	/**
 	 * Checks if there is feedback loaded and outputs a message if not
 	 */
-	$.articleFeedbackv5special.emptyMessage = function() {
+	$.articleFeedbackv5special.emptyMessage = function () {
 		var $feedbackContainer = $( '#articleFeedbackv5-show-feedback' );
 		if ( $feedbackContainer.children().length == 0 ) {
 				$feedbackContainer.append(
@@ -494,7 +494,7 @@
 	 *
 	 * @param id The id of the filter to be enabled
 	 */
-	$.articleFeedbackv5special.toggleFilter = function( id ) {
+	$.articleFeedbackv5special.toggleFilter = function ( id ) {
 		$.articleFeedbackv5special.listControls.filter = id;
 		$.articleFeedbackv5special.listControls.offset = null;
 		$.articleFeedbackv5special.setSortByFilter( id );
@@ -520,7 +520,7 @@
 	 * @param sort The sorting method
 	 * @param direction The direction to sort (asc/desc)
 	 */
-	$.articleFeedbackv5special.toggleSort = function( sort, direction ) {
+	$.articleFeedbackv5special.toggleSort = function ( sort, direction ) {
 		direction = direction.toUpperCase();
 
 		$.articleFeedbackv5special.listControls.sort = sort;
@@ -538,7 +538,7 @@
 	 *
 	 * @param e event
 	 */
-	$.articleFeedbackv5special.flagAction = function( e ) {
+	$.articleFeedbackv5special.flagAction = function ( e ) {
 		e.preventDefault();
 
 		var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
@@ -562,7 +562,7 @@
 	 * @param e event
 	 * @return true if showing tipsy, false if hiding
 	 */
-	$.articleFeedbackv5special.toggleTipsy = function( e ) {
+	$.articleFeedbackv5special.toggleTipsy = function ( e ) {
 		e.preventDefault();
 
 		var $l = $( e.target );
@@ -593,7 +593,7 @@
 	/**
 	 * Utility method: Strips long IDs down to the specific bits we care about
 	 */
-	$.articleFeedbackv5special.stripID = function( object, toRemove ) {
+	$.articleFeedbackv5special.stripID = function ( object, toRemove ) {
 		return $( object ).attr( 'id' ).replace( toRemove, '' );
 	};
 
@@ -636,7 +636,7 @@
 		// default parameters
 		note = typeof note !== undefined ? note : '';
 
-		if( $.articleFeedbackv5special.listControls.disabled ) {
+		if ( $.articleFeedbackv5special.listControls.disabled ) {
 			return false;
 		}
 
@@ -644,7 +644,7 @@
 		// already says unhelpful', which is a case where two ajax requests
 		// is perfectly legitimate.
 		// Check another global variable to not disable ajax in that case.
-		if( !$.articleFeedbackv5special.listControls.allowMultiple ) {
+		if ( !$.articleFeedbackv5special.listControls.allowMultiple ) {
 			// Put a lock on ajax requests to prevent another one from going
 			// through while this is still running. Prevents manic link-clicking
 			// messing up the counts, and generally seems like a good idea.
@@ -817,7 +817,7 @@
 	 * @param continueInfo string should be null for the first request (first page), then the continue info returned from the last API call
 	 * @param location     string where to put the results
 	 */
-	$.articleFeedbackv5special.loadActivityLog = function( id, pageId, continueInfo, location ) {
+	$.articleFeedbackv5special.loadActivityLog = function ( id, pageId, continueInfo, location ) {
 		var data = {
 			'action': 'query',
 			'list': 'articlefeedbackv5-view-activity',
@@ -852,7 +852,7 @@
 				if ( data['query-continue'] && data['query-continue']['articlefeedbackv5-view-activity'] ) {
 					$( location ).find( '.articleFeedbackv5-activity-more' )
 						.data( 'continue', data['query-continue']['articlefeedbackv5-view-activity'].aacontinue )
-						.click( function( e ) {
+						.click( function ( e ) {
 							e.preventDefault();
 							$.articleFeedbackv5special.loadActivityLog(
 								id,
@@ -1107,7 +1107,7 @@
 	 * @param flag  string the flag name
 	 * @param value string the value
 	 */
-	$.articleFeedbackv5special.setActivityFlag = function( fid, flag, value ) {
+	$.articleFeedbackv5special.setActivityFlag = function ( fid, flag, value ) {
 		if ( !( fid in $.articleFeedbackv5special.activity ) ) {
 			$.articleFeedbackv5special.activity[fid] = [];
 		}
@@ -1199,7 +1199,7 @@
 	 *
 	 * @return string
 	 */
-	$.articleFeedbackv5special.getSource = function() {
+	$.articleFeedbackv5special.getSource = function () {
 		if ( $.articleFeedbackv5special.watchlist ) {
 			return 'watchlist';
 		} else if ( $.articleFeedbackv5special.listControls.filter === 'id' ) {
@@ -1220,7 +1220,7 @@
 	 *
 	 * @return bool true if post can be flagged, or false otherwise
 	 */
-	$.articleFeedbackv5special.canBeFlagged = function( $post ) {
+	$.articleFeedbackv5special.canBeFlagged = function ( $post ) {
 		return $post.find( '.articleFeedbackv5-post-screen' ).length == 0 ||
 			mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'] ||
 			mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-monitor'] ||
@@ -1277,7 +1277,7 @@
 
 		'helpful': {
 			'hasTipsy': false,
-			'click': function( e ) {
+			'click': function ( e ) {
 				e.preventDefault();
 
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
@@ -1293,7 +1293,7 @@
 					);
 				}
 			},
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', true );
 				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', false )
 			}
@@ -1304,7 +1304,7 @@
 
 		'undo-helpful': {
 			'hasTipsy': false,
-			'click': function( e ) {
+			'click': function ( e ) {
 				e.preventDefault();
 
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
@@ -1318,7 +1318,7 @@
 					);
 				}
 			},
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', false );
 				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', false )
 			}
@@ -1329,7 +1329,7 @@
 
 		'unhelpful': {
 			'hasTipsy': false,
-			'click': function( e ) {
+			'click': function ( e ) {
 				e.preventDefault();
 
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
@@ -1345,7 +1345,7 @@
 					);
 				}
 			},
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', false );
 				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', true )
 			}
@@ -1356,7 +1356,7 @@
 
 		'undo-unhelpful': {
 			'hasTipsy': false,
-			'click': function( e ) {
+			'click': function ( e ) {
 				e.preventDefault();
 
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
@@ -1370,7 +1370,7 @@
 					);
 				}
 			},
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				$.articleFeedbackv5special.setActivityFlag( id, 'helpful', false );
 				$.articleFeedbackv5special.setActivityFlag( id, 'unhelpful', false )
 			}
@@ -1381,7 +1381,7 @@
 
 		'flag': {
 			'hasTipsy': false,
-			'click': function( e ) {
+			'click': function ( e ) {
 				e.preventDefault();
 
 				// only allow flagging if not yet flagged
@@ -1399,7 +1399,7 @@
 					}
 				}
 			},
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				$.articleFeedbackv5special.setActivityFlag( id, 'flag', true );
 			}
 		},
@@ -1409,7 +1409,7 @@
 
 		'unflag': {
 			'hasTipsy': false,
-			'click': function( e ) {
+			'click': function ( e ) {
 				e.preventDefault();
 
 				// only allow unflagging if flagged by this user
@@ -1427,7 +1427,7 @@
 					}
 				}
 			},
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				$.articleFeedbackv5special.setActivityFlag( id, 'flag', false );
 			}
 		},
@@ -1439,7 +1439,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.flagAction,
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1451,7 +1451,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.flagAction,
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1463,7 +1463,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.flagAction,
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1475,7 +1475,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.flagAction,
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1487,7 +1487,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.flagAction,
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1499,7 +1499,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.flagAction,
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1511,7 +1511,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.flagAction,
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1523,7 +1523,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.flagAction,
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1534,9 +1534,9 @@
 		'hide': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': function() {
+			'click': function () {
 				// tipsy has been opened - bind flag submission
-				$.articleFeedbackv5special.tipsyCallback = function( e ) {
+				$.articleFeedbackv5special.tipsyCallback = function ( e ) {
 					var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
 					if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 						$.articleFeedbackv5special.flagFeedback(
@@ -1549,7 +1549,7 @@
 					}
 				};
 			},
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1561,7 +1561,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.flagAction,
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1573,7 +1573,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.flagAction,
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1585,7 +1585,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.flagAction,
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1596,9 +1596,9 @@
 		'request': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': function() {
+			'click': function () {
 				// tipsy has been opened - bind flag submission
-				$.articleFeedbackv5special.tipsyCallback = function( e ) {
+				$.articleFeedbackv5special.tipsyCallback = function ( e ) {
 					var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
 					if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 						$.articleFeedbackv5special.flagFeedback(
@@ -1611,7 +1611,7 @@
 					}
 				};
 			},
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				$.articleFeedbackv5special.setActivityFlag( id, 'request', true );
 			}
 		},
@@ -1622,7 +1622,7 @@
 		'unrequest': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': function( e ) {
+			'click': function ( e ) {
 				e.preventDefault();
 
 				// only allow unrequesting if requested by this user
@@ -1640,7 +1640,7 @@
 					}
 				}
 			},
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				$.articleFeedbackv5special.setActivityFlag( id, 'request', false );
 			}
 		},
@@ -1651,9 +1651,9 @@
 		'oversight': {
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
-			'click': function() {
+			'click': function () {
 				// tipsy has been opened - bind flag submission
-				$.articleFeedbackv5special.tipsyCallback = function( e ) {
+				$.articleFeedbackv5special.tipsyCallback = function ( e ) {
 					var $container = $( '#' + $.articleFeedbackv5special.currentPanelHostId ).closest( '.articleFeedbackv5-feedback' );
 					if ( $.articleFeedbackv5special.canBeFlagged( $container ) ) {
 						$.articleFeedbackv5special.flagFeedback(
@@ -1666,7 +1666,7 @@
 					}
 				};
 			},
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1678,7 +1678,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.flagAction,
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1690,7 +1690,7 @@
 			'hasTipsy': true,
 			'tipsyHtml': undefined,
 			'click': $.articleFeedbackv5special.flagAction,
-			'onSuccess': function( id, data ) {
+			'onSuccess': function ( id, data ) {
 				// activity flag is not particularly useful here
 			}
 		},
@@ -1713,7 +1713,7 @@
 					</div>\
 					<div id="articleFeedbackv5-activity-log"></div>\
 				</div>',
-			'click': function( e ) {
+			'click': function ( e ) {
 				// upon executing this, tipsy will be open already
 				var $container = $( e.target ).closest( '.articleFeedbackv5-feedback' );
 				$.articleFeedbackv5special.loadActivityLog( $container.data( 'id' ), $container.data( 'pageid' ), 0, '#articleFeedbackv5-activity-log' );
@@ -1724,7 +1724,7 @@
 		// {{{ View activity log action on permalink
 
 		'activity2': {
-			'click': function( e ) {
+			'click': function ( e ) {
 				e.preventDefault();
 
 				if ( $( e.target ).data( 'started' ) == true ) {
@@ -1745,7 +1745,7 @@
 		// {{{ Discuss feedback on article/user's talk page
 
 		'discuss': {
-			'click': function( e ) {
+			'click': function ( e ) {
 				var exists = $( e.target ).data( 'section-exists' );
 
 				if ( !exists ) {
@@ -1800,7 +1800,7 @@
 
 		'settings': {
 			'hasTipsy': true,
-			'tipsyHtml': function() {
+			'tipsyHtml': function () {
 				var article = $.aftUtils.article();
 
 				/*
@@ -1851,11 +1851,11 @@
 
 				// editors can enable/disable for readers via API
 				} else {
-					$( document ).on( 'click', '#articleFeedbackv5-settings-status', function( e ) {
+					$( document ).on( 'click', '#articleFeedbackv5-settings-status', function ( e ) {
 						e.preventDefault();
 
 						var status = $( this ).data( 'status' );
-						$.aftUtils.setStatus( article.id, status, function( data, error ) {
+						$.aftUtils.setStatus( article.id, status, function ( data, error ) {
 							// refresh page to reflect changes
 							if ( data !== false ) {
 								location.reload( true );
@@ -1869,7 +1869,7 @@
 				var content = $( '<div id="articleFeedbackv5-settings-menu"></div>' ).append( $link );
 				return $( '<div></div>' ).append( content ).html();
 			},
-			'click': function( e ) {
+			'click': function ( e ) {
 				e.preventDefault();
 			}
 		}
@@ -1882,4 +1882,4 @@
 
 // }}}
 
-} )( jQuery );
+} )( jQuery, mediaWiki );
