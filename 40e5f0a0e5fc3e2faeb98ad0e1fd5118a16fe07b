@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e4df70f_69bdccac",
+        "filename": "modules/ext.articleFeedbackv5/ext.articleFeedbackv5.startup.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 243
+      },
+      "writtenOn": "2017-04-27T19:07:42Z",
+      "side": 1,
+      "message": "Could use a space here between these two.",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 6
+      },
+      "revId": "40e5f0a0e5fc3e2faeb98ad0e1fd5118a16fe07b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e4df70f_e999dc72",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.utils.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 243
+      },
+      "writtenOn": "2017-04-27T19:07:42Z",
+      "side": 1,
+      "message": "As per your other, already merged patchset (Change-Id: Ic7a29ef2a82e3a4135cadca8eeeaea645a91fbc2) you might wanna swap this into Array.inArray, either in this or a separate patchset.",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "40e5f0a0e5fc3e2faeb98ad0e1fd5118a16fe07b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e4df70f_69a62ca9",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.utils.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 243
+      },
+      "writtenOn": "2017-04-27T19:07:42Z",
+      "side": 1,
+      "message": "Could you add some spacing here while you\u0027re at it?",
+      "range": {
+        "startLine": 159,
+        "startChar": 38,
+        "endLine": 159,
+        "endChar": 47
+      },
+      "revId": "40e5f0a0e5fc3e2faeb98ad0e1fd5118a16fe07b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e4df70f_a99c3460",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.utils.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 243
+      },
+      "writtenOn": "2017-04-27T19:07:42Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 159,
+        "startChar": 10,
+        "endLine": 159,
+        "endChar": 19
+      },
+      "revId": "40e5f0a0e5fc3e2faeb98ad0e1fd5118a16fe07b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e4df70f_09b208e5",
+        "filename": "modules/jquery.articleFeedbackv5/jquery.articleFeedbackv5.utils.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 243
+      },
+      "writtenOn": "2017-04-27T19:07:42Z",
+      "side": 1,
+      "message": "See above :P",
+      "range": {
+        "startLine": 182,
+        "startChar": 10,
+        "endLine": 182,
+        "endChar": 48
+      },
+      "revId": "40e5f0a0e5fc3e2faeb98ad0e1fd5118a16fe07b",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
