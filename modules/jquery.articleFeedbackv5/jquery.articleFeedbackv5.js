@@ -72,7 +72,7 @@
  * @version    $Id$
  */
 
-( function ( $ ) {
+( function ( $, mw ) {
 
 // {{{ articleFeedbackv5 definition
 
@@ -771,7 +771,7 @@
 						 * that leaving the page will result in lost data.
 						 */
 						if ( typeof window.onbeforeunload != 'function' ) {
-							$( window ).on( 'beforeunload', function() {
+							$( window ).on( 'beforeunload', function () {
 								// Only show the warning message if the user
 								// actually entered some feedback into the
 								// textarea (T146536)
@@ -2214,9 +2214,9 @@
 	 */
 	$.articleFeedbackv5.userCanEdit = function () {
 		// An empty restrictions array means anyone can edit
-		var restrictions =  mw.config.get( 'wgRestrictionEdit', [] );
+		var restrictions = mw.config.get( 'wgRestrictionEdit', [] );
 		if ( restrictions.length ) {
-			var groups =  mw.config.get( 'wgUserGroups' );
+			var groups = mw.config.get( 'wgUserGroups' );
 			// Verify that each restriction exists in the user's groups
 			for ( var i = 0; i < restrictions.length; i++ ) {
 				if ( $.inArray( restrictions[i], groups ) < 0 ) {
@@ -3143,40 +3143,40 @@
 // }}}
 // {{{ articleFeedbackv5 plugin
 
-/**
- * Right now there are no options for this plugin, but there will be in the
- * future, so allow them to be passed in.
- *
- * If a string is passed in, it's considered a public function
- */
-$.fn.articleFeedbackv5 = function ( opts, arg ) {
-	if ( typeof opts === 'undefined' || typeof opts === 'object' ) {
-		$.articleFeedbackv5.init( $( this ), opts );
-		return $( this );
-	}
+	/**
+	 * Right now there are no options for this plugin, but there will be in the
+	 * future, so allow them to be passed in.
+	 *
+	 * If a string is passed in, it's considered a public function
+	 */
+	$.fn.articleFeedbackv5 = function ( opts, arg ) {
+		if ( typeof opts === 'undefined' || typeof opts === 'object' ) {
+			$.articleFeedbackv5.init( $( this ), opts );
+			return $( this );
+		}
 
-	var publicFunction = {
-		setLinkId: { args: 1, ret: false },
-		getBucketId: { args: 0, ret: true },
-		inDebug: { args: 0, ret: true },
-		nowShowing: { args: 0, ret: true },
-		experiment: { args: 0, ret: true },
-		addToRemovalQueue: { args: 1, ret: false }
+		var publicFunction = {
+			setLinkId: { args: 1, ret: false },
+			getBucketId: { args: 0, ret: true },
+			inDebug: { args: 0, ret: true },
+			nowShowing: { args: 0, ret: true },
+			experiment: { args: 0, ret: true },
+			addToRemovalQueue: { args: 1, ret: false }
+		};
+		if ( opts in publicFunction ) {
+			var r;
+			if ( 1 == publicFunction[opts].args ) {
+				r = $.articleFeedbackv5[opts]( arg );
+			} else if ( 0 == publicFunction[opts].args ) {
+				r = $.articleFeedbackv5[opts]();
+			}
+			if ( publicFunction[opts].ret) {
+				return r;
+			}
+		}
+		return $( this );
 	};
-	if ( opts in publicFunction ) {
-		var r;
-		if ( 1 == publicFunction[opts].args ) {
-			r = $.articleFeedbackv5[opts]( arg );
-		} else if ( 0 == publicFunction[opts].args ) {
-			r = $.articleFeedbackv5[opts]();
-		}
-		if ( publicFunction[opts].ret) {
-			return r;
-		}
-	}
-	return $( this );
-};
 
 // }}}
 
-} )( jQuery );
+} )( jQuery, mediaWiki );

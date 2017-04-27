@@ -10,7 +10,7 @@
  * @version    $Id$
  */
 
-( function ( $ ) {
+( function ( $, mw ) {
 
 // {{{ aftUtils definition
 
@@ -26,7 +26,7 @@
 	 */
 	$.aftUtils.article = function () {
 		// clone object
-		var article = jQuery.extend( {}, mw.config.get( 'aftv5Article' ) );
+		var article = $.extend( {}, mw.config.get( 'aftv5Article' ) );
 
 		// fetch data, on article level, we can fetch these from other sources as well
 		if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1 ) {
@@ -155,7 +155,7 @@
 	 */
 	$.aftUtils.blacklist = function ( article ) {
 		var blacklistCategories = mw.config.get( 'wgArticleFeedbackv5BlacklistCategories', [] );
-		var intersect = $.map( blacklistCategories, function( category ) {
+		var intersect = $.map( blacklistCategories, function ( category ) {
 			return $.inArray( category.replace(/_/g, ' '), article.categories ) < 0 ? null : category;
 		} );
 		return intersect.length > 0;
@@ -178,7 +178,7 @@
 	 */
 	$.aftUtils.whitelist = function ( article ) {
 		var whitelistCategories = mw.config.get( 'wgArticleFeedbackv5Categories', [] );
-		var intersect = $.map( whitelistCategories, function( category ) {
+		var intersect = $.map( whitelistCategories, function ( category ) {
 			return $.inArray( category.replace(/_/g, ' '), article.categories ) < 0 ? null : category;
 		} );
 		return intersect.length > 0;
@@ -256,9 +256,9 @@
 	 *             by themselves or this will have cleaned them up, so this function
 	 *             (and where it's being called) can be cleaned up at will.
 	 */
-	$.aftUtils.removeLegacyCookies = function() {
+	$.aftUtils.removeLegacyCookies = function () {
 		// old cookie names
-		var legacyCookieName = function( suffix ) {
+		var legacyCookieName = function ( suffix ) {
 			return 'ext.articleFeedbackv5@11-' + suffix;
 		};
 
@@ -277,7 +277,7 @@
 	 *
 	 * @param bool enable true to check if can be enabled, false to check disabled
 	 */
-	$.aftUtils.canSetStatus = function( enable ) {
+	$.aftUtils.canSetStatus = function ( enable ) {
 		var permissionLevel = $.aftUtils.article().permissionLevel || $.aftUtils.getDefaultPermissionLevel( $.aftUtils.article() );
 		var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 
@@ -319,13 +319,12 @@
 	 * @param bool enable true to enable, false to disable
 	 * @param function callback function to execute after setting status
 	 */
-	$.aftUtils.setStatus = function( pageId, enable, callback ) {
+	$.aftUtils.setStatus = function ( pageId, enable, callback ) {
 		var api = new mw.Api();
 		api.post( {
-			'pageid': pageId,
-			'enable': parseInt( enable ),
-			'format': 'json',
-			'action': 'articlefeedbackv5-set-status'
+			pageid: pageId,
+			enable: parseInt( enable ),
+			action: 'articlefeedbackv5-set-status'
 		} )
 		.done( function ( data ) {
 			// invoke callback function
@@ -357,4 +356,4 @@
 
 // }}}
 
-} )( jQuery );
+} )( jQuery, mediaWiki );
