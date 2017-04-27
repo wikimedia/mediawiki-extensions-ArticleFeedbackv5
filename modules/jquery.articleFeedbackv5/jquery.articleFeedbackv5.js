@@ -2645,7 +2645,7 @@
 
 					// save add feedback id to cookie (only most recent 20)
 					var feedbackIds = JSON.parse( $.cookie( feedbackIdsCookieName ) );
-					if ( !$.isArray( feedbackIds ) ) {
+					if ( !Array.isArray( feedbackIds ) ) {
 						feedbackIds = [];
 					}
 					feedbackIds.unshift( data.articlefeedbackv5.feedback_id );
