@@ -3,9 +3,11 @@
  */
 
 ( function ( $, mw ) {
-	/*** Main entry point ***/
+	/**
+	 * Main entry point
+	 */
 	$( function () {
-		var removeOld, load, statusChangeSuccess, statusCallback,
+		var removeOld, load, statusChangeSuccess, statusCallback, $link,
 			enable = $.aftUtils.verify( 'article' );
 
 		/**
@@ -66,9 +68,9 @@
 
 				// add message to confirm AFTv5 has just been enabled
 				link = mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' );
-					$( '<p id="articleFeedbackv5-added"></p>' )
-						.msg( 'articlefeedbackv5-enabled-form-message', link )
-						.appendTo( $form );
+				$( '<p id="articleFeedbackv5-added"></p>' )
+					.msg( 'articlefeedbackv5-enabled-form-message', link )
+					.appendTo( $form );
 
 				// we're done; stop polling
 				clearTimeout( interval );
@@ -122,11 +124,11 @@
 			var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 
 			// build link to enable feedback form
-			var $link = $( '<li id="t-articlefeedbackv5-enable"><a href="#"></a></li>' );
+			$link = $( '<li id="t-articlefeedbackv5-enable"><a href="#"></a></li>' );
 			$link.find( 'a' ).text( mw.msg( 'articlefeedbackv5-toolbox-enable' ) );
 
 			// administrators can change detailed visibility in ?action=protect
-			if ( 'aft-administrator' in userPermissions && userPermissions['aft-administrator'] ) {
+			if ( 'aft-administrator' in userPermissions && userPermissions[ 'aft-administrator' ] ) {
 				var link = mw.config.get( 'wgScript' ) + '?title=' +
 					encodeURIComponent( mw.config.get( 'wgPageName' ) ) +
 					'&' + $.param( { action: 'protect' } );
@@ -146,4 +148,4 @@
 		}
 
 	} );
-} )( jQuery, mediaWiki );
+}( jQuery, mediaWiki ) );

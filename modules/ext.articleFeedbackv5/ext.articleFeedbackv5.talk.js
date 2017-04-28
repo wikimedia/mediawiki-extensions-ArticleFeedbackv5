@@ -3,12 +3,16 @@
  */
 
 ( function ( $, mw ) {
-	/*** Main entry point ***/
+	/**
+	 * Main entry point
+	 */
 	$( function () {
+		var filter, api;
+
 		// Check if the talk page link can be shown
 		if ( mw.config.get( 'wgArticleFeedbackv5TalkPageLink' ) ) {
 
-			var filter = '*';
+			filter = '*';
 			/*
 			 * If AFT is disabled for this page, we'll only want to show the link if
 			 * there's leftover featured feedback.
@@ -17,15 +21,17 @@
 				filter = 'featured';
 			}
 
-			var api = new mw.Api();
+			api = new mw.Api();
 			api.get( {
 				pageid: $.aftUtils.article().id,
 				filter: filter,
 				action: 'articlefeedbackv5-get-count'
 			} )
 			.done( function ( data ) {
-				if ( 'articlefeedbackv5-get-count' in data && 'count' in data['articlefeedbackv5-get-count'] ) {
-					var count = data['articlefeedbackv5-get-count']['count'];
+				var count;
+
+				if ( 'articlefeedbackv5-get-count' in data && 'count' in data[ 'articlefeedbackv5-get-count' ] ) {
+					count = data[ 'articlefeedbackv5-get-count' ].count;
 
 					if ( count > 0 ) {
 						// Build the url to the Special:ArticleFeedbackv5 page
@@ -55,4 +61,4 @@
 			} );
 		}
 	} );
-} )( jQuery, mediaWiki );
+}( jQuery, mediaWiki ) );

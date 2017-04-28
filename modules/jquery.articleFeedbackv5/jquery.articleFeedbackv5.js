@@ -83,7 +83,7 @@
 	/**
 	 * Are we in debug mode?
 	 */
-	$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' ) ? true : false;
+	$.articleFeedbackv5.debug = mw.config.get( 'wgArticleFeedbackv5Debug' );
 
 	/**
 	 * Has the form been loaded yet?
@@ -270,7 +270,7 @@
 		/**
 		 * Bucket 0: No form
 		 */
-		'0': {},
+		0: {},
 
 		// }}}
 		// {{{ Bucket 1
@@ -278,7 +278,7 @@
 		/**
 		 * Bucket 1: Share Your Feedback
 		 */
-		'1': {
+		1: {
 
 			/**
 			 * Currently displayed placeholder text. This is a workaround for Chrome/FF
@@ -350,12 +350,13 @@
 			 * @return Element the form
 			 */
 			buildForm: function () {
+				var $block, message;
 
 				// Start up the block to return
-				var $block = $( $.articleFeedbackv5.currentBucket().templates.block );
+				$block = $( $.articleFeedbackv5.currentBucket().templates.block );
 
 				// Fill in the disclosure text
-				var message = 'articlefeedbackv5-help-transparency-terms';
+				message = 'articlefeedbackv5-help-transparency-terms';
 				if ( $.articleFeedbackv5.anonymous ) {
 					message = 'articlefeedbackv5-help-transparency-terms-anon';
 				}
@@ -383,12 +384,14 @@
 				$block.find( '.articleFeedbackv5-button-placeholder' )
 					.button()
 					.click( function ( e ) {
+						var newVal, oldVal, $wrap, $otherWrap, $txt, defMsgYes, defMsgNo;
+
 						e.preventDefault();
 
-						var new_val = $( this ).parents( '[data-value]' ).data( 'value' );
-						var old_val = ( new_val == 'yes' ? 'no' : 'yes' );
-						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + new_val );
-						var $other_wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + old_val );
+						newVal = $( this ).parents( '[data-value]' ).data( 'value' );
+						oldVal = ( newVal === 'yes' ? 'no' : 'yes' );
+						$wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + newVal );
+						$otherWrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket1-toggle-wrapper-' + oldVal );
 
 						// make the button blue
 						$( '.articleFeedbackv5-button-placeholder.ui-button-blue' ).removeClass( 'ui-button-blue' );
@@ -396,14 +399,14 @@
 
 						// check/uncheck radio buttons
 						$wrap.find( 'input' ).attr( 'checked', 'checked' );
-						$other_wrap.find( 'input' ).removeAttr( 'checked' );
+						$otherWrap.find( 'input' ).removeAttr( 'checked' );
 
 						// set default comment message
-						var $txt = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
-						var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
-						var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
-						if ( $txt.val() == '' || $txt.val() == def_msg_yes || $txt.val() == def_msg_no ) {
-							$txt.val( new_val == 'yes' ? def_msg_yes : def_msg_no );
+						$txt = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
+						defMsgYes = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
+						defMsgNo = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
+						if ( $txt.val() === '' || $txt.val() === defMsgYes || $txt.val() === defMsgNo ) {
+							$txt.val( newVal === 'yes' ? defMsgYes : defMsgNo );
 							$.articleFeedbackv5.currentBucket().currentDefaultText = $txt.val();
 						}
 
@@ -414,26 +417,26 @@
 				// Clear out the question on focus
 				$block.find( '.articleFeedbackv5-comment textarea' )
 					.focus( function () {
-						if ( $( this ).val() == $.articleFeedbackv5.currentBucket().currentDefaultText ) {
+						if ( $( this ).val() === $.articleFeedbackv5.currentBucket().currentDefaultText ) {
 							$( this ).val( '' );
 							$( this ).removeClass( 'inactive' );
 						}
 					} )
 					.keyup ( function () {
-						if( $( this ).val().length > 0 ) {
+						if ( $( this ).val().length > 0 ) {
 							$.articleFeedbackv5.enableSubmission( true );
 						}
 					} )
 					.blur( function () {
-						var def_msg = '';
+						var defMsg = '';
 						var val = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' ).val();
-						if ( val == 'yes' ) {
-							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
-						} else if ( val == 'no' ) {
-							def_msg = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
+						if ( val === 'yes' ) {
+							defMsg = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
+						} else if ( val === 'no' ) {
+							defMsg = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
 						}
-						if ( $( this ).val() == '' ) {
-							$( this ).val( def_msg );
+						if ( $( this ).val() === '' ) {
+							$( this ).val( defMsg );
 							$( this ).addClass( 'inactive' );
 						} else {
 							$.articleFeedbackv5.enableSubmission( true );
@@ -459,15 +462,15 @@
 			getFormData: function () {
 				var data = {};
 				var $check = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket1-toggle input[checked]' );
-				if ( $check.val() == 'yes' ) {
+				if ( $check.val() === 'yes' ) {
 					data.found = 1;
-				} else if ( $check.val() == 'no' ) {
+				} else if ( $check.val() === 'no' ) {
 					data.found = 0;
 				}
 				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
-				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
-				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
-				if ( data.comment == def_msg_yes || data.comment == def_msg_no ) {
+				var defMsgYes = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-yes' );
+				var defMsgNo = mw.msg( 'articlefeedbackv5-bucket1-question-placeholder-no' );
+				if ( data.comment === defMsgYes || data.comment === defMsgNo ) {
 					data.comment = '';
 				}
 				return data;
@@ -483,7 +486,7 @@
 			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
 			localValidation: function ( formdata ) {
-				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
+				if ( ( !( 'comment' in formdata ) || formdata.comment === '' )
 					&& !( 'found' in formdata ) ) {
 					$.articleFeedbackv5.enableSubmission( false );
 					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
@@ -561,7 +564,6 @@
 				return mw.msg( 'articlefeedbackv5-bucket4-title' );
 			},
 
-
 			// }}}
 			// {{{ buildForm
 
@@ -571,9 +573,10 @@
 			 * @return Element the form
 			 */
 			buildForm: function () {
+				var $block, url;
 
 				// Start up the block to return
-				var $block = $( $.articleFeedbackv5.editable ? $.articleFeedbackv5.currentBucket().templates.editable : $.articleFeedbackv5.currentBucket().templates.noneditable );
+				$block = $( $.articleFeedbackv5.editable ? $.articleFeedbackv5.currentBucket().templates.editable : $.articleFeedbackv5.currentBucket().templates.noneditable );
 
 				// Fill in the learn to edit link
 				$block.find( '.articleFeedbackv5-learn-to-edit' )
@@ -581,9 +584,9 @@
 
 				// Fill in the button link
 				if ( $.articleFeedbackv5.editable ) {
-					var url = $.articleFeedbackv5.editUrl();
+					url = $.articleFeedbackv5.editUrl();
 				} else {
-					var url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
+					url = mw.msg( 'articlefeedbackv5-cta1-learn-how-url' );
 				}
 
 				$block.find( '.articleFeedbackv5-cta-button' )
@@ -732,9 +735,9 @@
 					.click( function ( e ) {
 						e.preventDefault();
 
-						var new_val = $( this ).parents( '[data-value]' ).data( 'value' );
+						var newVal = $( this ).parents( '[data-value]' ).data( 'value' );
 
-						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket6-toggle-wrapper-' + new_val );
+						var $wrap = $.articleFeedbackv5.$holder.find( '#articleFeedbackv5-bucket6-toggle-wrapper-' + newVal );
 
 						// move on to step 2
 						$.articleFeedbackv5.currentBucket().displayStep2( $block );
@@ -742,7 +745,7 @@
 						// add instructional text for feedback
 						// Give grep a chance to find the usages:
 						// articlefeedbackv5-bucket6-question-instructions-yes, articlefeedbackv5-bucket6-question-instructions-no
-						$( '.articleFeedbackv5-title' ).text( mw.msg( 'articlefeedbackv5-bucket6-question-instructions-' + new_val ) );
+						$( '.articleFeedbackv5-title' ).text( mw.msg( 'articlefeedbackv5-bucket6-question-instructions-' + newVal ) );
 
 						// make the button blue
 						$( '.articleFeedbackv5-button-placeholder.ui-button-blue' ).removeClass( 'ui-button-blue' );
@@ -755,7 +758,7 @@
 						// Give grep a chance to find the usages:
 						// articlefeedbackv5-bucket6-question-placeholder-yes, articlefeedbackv5-bucket6-question-placeholder-no
 						var $element = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
-						var text = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-' + new_val );
+						var text = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-' + newVal );
 						$element.attr( 'placeholder', text ).placeholder();
 
 						// allow feedback submission if there is feedback (or if Y/N was positive)
@@ -814,15 +817,15 @@
 			getFormData: function () {
 				var data = {};
 				var $check = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-bucket6-toggle input[checked]' );
-				if ( $check.val() == 'yes' ) {
+				if ( $check.val() === 'yes' ) {
 					data.found = 1;
-				} else if ( $check.val() == 'no' ) {
+				} else if ( $check.val() === 'no' ) {
 					data.found = 0;
 				}
 				data.comment = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' ).val();
-				var def_msg_yes = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-yes' );
-				var def_msg_no = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-no' );
-				if ( data.comment == def_msg_yes || data.comment == def_msg_no ) {
+				var defMsgYes = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-yes' );
+				var defMsgNo = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-no' );
+				if ( data.comment === defMsgYes || data.comment === defMsgNo ) {
 					data.comment = '';
 				}
 				return data;
@@ -838,7 +841,7 @@
 			 * @return mixed  if ok, false; otherwise, an object as { 'field name' : 'message' }
 			 */
 			localValidation: function ( formdata ) {
-				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
+				if ( ( !( 'comment' in formdata ) || formdata.comment === '' )
 					&& !( 'found' in formdata ) && !$( '#articleFeedbackv5-bucket6-toggle-yes' ).is( ':checked' ) ) {
 					$.articleFeedbackv5.enableSubmission( false );
 					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
@@ -2038,7 +2041,7 @@
 				$linkAdd.find( 'a' )
 						.text( mw.msg( 'articlefeedbackv5-toolbox-add' ) );
 
-				if ( '5' == $.articleFeedbackv5.bucketId ) {
+				if ( '5' === $.articleFeedbackv5.bucketId ) {
 					$linkAdd.find( 'a' )
 						.click( function ( e ) {
 							e.preventDefault();
@@ -2112,7 +2115,7 @@
 		// Debug mode
 		var reqDebug = mw.util.getParamValue( 'debug' );
 		if ( reqDebug ) {
-			$.articleFeedbackv5.debug = reqDebug == 'false' ? false : true;
+			$.articleFeedbackv5.debug = reqDebug !== 'false';
 		}
 		// Go ahead and bucket right away
 		$.articleFeedbackv5.selectBucket();
@@ -2184,13 +2187,13 @@
 		//   2. Requested in query string (debug only)
 		//   3. Random bucketing
 		var bucketedLink = 'X';
-		if ( ! ( '0' == $.articleFeedbackv5.bucketId
-			|| ( '4' == $.articleFeedbackv5.bucketId && !$.articleFeedbackv5.editable ) ) ) {
+		if ( !( '0' === $.articleFeedbackv5.bucketId
+			|| ( '4' === $.articleFeedbackv5.bucketId && !$.articleFeedbackv5.editable ) ) ) {
 			var cfg = mw.config.get( 'wgArticleFeedbackv5LinkBuckets' );
 			if ( 'buckets' in cfg ) {
 				var knownBuckets = cfg.buckets;
 				var requested = mw.util.getParamValue( 'aftv5_link' );
-				if ( requested in knownBuckets || requested == 'X' ) {
+				if ( requested in knownBuckets || requested === 'X' ) {
 					bucketedLink = requested;
 				} else {
 					var key = 'ext.articleFeedbackv5@' + cfg.version + '-links';
@@ -3179,4 +3182,4 @@
 
 // }}}
 
-} )( jQuery, mediaWiki );
+}( jQuery, mediaWiki ) );

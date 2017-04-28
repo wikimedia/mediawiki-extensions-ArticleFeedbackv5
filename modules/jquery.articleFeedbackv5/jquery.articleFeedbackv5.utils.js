@@ -54,7 +54,6 @@
 		// remove obsolete cookies
 		$.aftUtils.removeLegacyCookies();
 
-
 		var article = $.aftUtils.article();
 
 		var enable = true;
@@ -306,7 +305,7 @@
 		}
 
 		// check if desired status != current status
-		return enable != enabled;
+		return enable !== enabled;
 	};
 
 	// }}}
@@ -356,4 +355,4 @@
 
 // }}}
 
-} )( jQuery, mediaWiki );
+}( jQuery, mediaWiki ) );
