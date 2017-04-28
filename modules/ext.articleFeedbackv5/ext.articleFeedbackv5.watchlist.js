@@ -3,8 +3,11 @@
  */
 
 ( function ( $, mw ) {
-	/*** Main entry point ***/
+	/**
+	 * Main entry point
+	 */
 	$( function () {
+		var params, url, link;
 
 		// Check if the watchlist is enabled & link can be shown
 		if ( mw.config.get( 'wgArticleFeedbackv5Watchlist' ) && mw.config.get( 'wgArticleFeedbackv5WatchlistLink' ) ) {
@@ -15,13 +18,13 @@
 			}
 
 			// Build the url to the Special:ArticleFeedbackv5Watchlist page
-			var params = { ref: 'watchlist' };
-			var url = mw.config.get( 'wgScript' ) + '?title=' +
+			params = { ref: 'watchlist' };
+			url = mw.config.get( 'wgScript' ) + '?title=' +
 				encodeURIComponent( mw.config.get( 'wgArticleFeedbackv5SpecialWatchlistUrl' ) ) +
 				'&' + $.param( params );
 
 			// Add the link to the feedback-page next to the title
-			var link = $( '<a id="articlefeedbackv5-watchlist-feedback-link"></a>' );
+			link = $( '<a id="articlefeedbackv5-watchlist-feedback-link"></a>' );
 			link
 				.text( mw.msg( 'articlefeedbackv5-watchlist-view-feedback' ) )
 				.attr( 'href', url );
@@ -31,4 +34,4 @@
 		}
 
 	} );
-} )( jQuery, mediaWiki );
+}( jQuery, mediaWiki ) );
