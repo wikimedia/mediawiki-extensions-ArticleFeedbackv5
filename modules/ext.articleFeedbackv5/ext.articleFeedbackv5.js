@@ -2,13 +2,14 @@
  * Script for Article Feedback Extension
  */
 ( function ( $, mw ) {
+	var $aftDiv, legacyskins, api;
 
 	/* Load at the bottom of the article */
-	var $aftDiv = $( '<div id="mw-articlefeedbackv5"></div>' );
+	$aftDiv = $( '<div id="mw-articlefeedbackv5"></div>' );
 
 	// Put on bottom of article before #catlinks (if it exists)
 	// Except in legacy skins, which have #catlinks above the article but inside content-div.
-	var legacyskins = [ 'standard', 'cologneblue', 'nostalgia' ];
+	legacyskins = [ 'standard', 'cologneblue', 'nostalgia' ];
 	if ( $( '#catlinks' ).length && $.inArray( mw.config.get( 'skin' ), legacyskins ) < 0 ) {
 		$aftDiv.insertBefore( '#catlinks' );
 	} else {
@@ -20,27 +21,28 @@
 
 	// Check if the article page link can be shown
 	if ( mw.config.get( 'wgArticleFeedbackv5ArticlePageLink' ) &&
-		mw.config.get( 'wgArticleFeedbackv5Permissions' )['aft-editor'] ) {
+		mw.config.get( 'wgArticleFeedbackv5Permissions' )[ 'aft-editor' ] ) {
 
-		var api = new mw.Api();
+		api = new mw.Api();
 		api.get( {
 			pageid: $.aftUtils.article().id,
 			filter: 'featured',
 			action: 'articlefeedbackv5-get-count'
 		} )
 		.done( function ( data ) {
-			if ( 'articlefeedbackv5-get-count' in data && 'count' in data['articlefeedbackv5-get-count'] ) {
-				var count = data['articlefeedbackv5-get-count']['count'];
+			var count, url, $link;
+
+			if ( 'articlefeedbackv5-get-count' in data && 'count' in data[ 'articlefeedbackv5-get-count' ] ) {
+				count = data[ 'articlefeedbackv5-get-count' ].count;
 
 				if ( count > 0 ) {
 					// Build the url to the Special:ArticleFeedbackv5 page
-					var url =
-						mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' +
+					url = mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' +
 						mw.util.wikiUrlencode( mw.config.get( 'aftv5Article' ).title );
 					url += ( url.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( { ref: 'article', filter: 'featured' } );
 
 					// Add the link to the feedback-page next to the title
-					var $link = $( '<a id="articlefeedbackv5-article-feedback-link"></a>' )
+					$link = $( '<a id="articlefeedbackv5-article-feedback-link"></a>' )
 						.msg( 'articlefeedbackv5-article-view-feedback', count )
 						.attr( 'href', url );
 
@@ -60,4 +62,4 @@
 		} );
 	}
 
-} )( jQuery, mediaWiki );
+}( jQuery, mediaWiki ) );
