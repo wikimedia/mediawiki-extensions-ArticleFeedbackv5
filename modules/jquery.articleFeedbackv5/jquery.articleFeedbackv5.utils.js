@@ -22,7 +22,7 @@
 	/**
 	 * Get article info
 	 *
-	 * @return object
+	 * @return {Object}
 	 */
 	$.aftUtils.article = function () {
 		// clone object
@@ -47,40 +47,41 @@
 	 * This is roughly equivalent to ArticleFeedbackv5Utils::isFeedbackEnabled
 	 * When changing conditions, make sure to change them there too.
 	 *
-	 * @param  location string  the place from which this is being called
-	 * @return bool     whether AFTv5 is enabled for this page
+	 * @param {String} location the place from which this is being called
+	 * @return {boolean} whether AFTv5 is enabled for this page
 	 */
 	$.aftUtils.verify = function ( location ) {
+		var article, enable, defaultPermissionLevel;
+
 		// remove obsolete cookies
 		$.aftUtils.removeLegacyCookies();
 
+		article = $.aftUtils.article();
 
-		var article = $.aftUtils.article();
-
-		var enable = true;
+		enable = true;
 
 		// if AFTv5 is not enabled on any namespace, it does not make sense to display it at all
 		enable &= mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ).length > 0;
 
-		if ( location != 'special' || article.id != 0 ) {
+		if ( location !== 'special' || article.id ) {
 			// only on pages in namespaces where it is enabled
 			enable &= $.inArray( article.namespace, mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1;
 
 			// it does not make sense to display AFT when a page is being edited ...
-			enable &= mw.config.get( 'wgAction' ) != 'edit';
+			enable &= mw.config.get( 'wgAction' ) !== 'edit';
 
 			// ... or has just been edited
 			enable &= !mw.config.get( 'wgPostEdit', false );
 		}
 
 		// for special page, it doesn't matter if the article has AFT applied
-		if ( location != 'special' ) {
+		if ( location !== 'special' ) {
 			if ( mw.config.get( 'wgArticleFeedbackv5EnableProtection', 1 ) && article.permissionLevel !== false ) {
 				// check if a, to this user sufficient, permission level is defined
 				enable &= $.aftUtils.permissions( article, article.permissionLevel );
 
 			} else {
-				var defaultPermissionLevel = $.aftUtils.getDefaultPermissionLevel( article );
+				defaultPermissionLevel = $.aftUtils.getDefaultPermissionLevel( article );
 
 				enable &=
 					// check if a, to this user sufficient, default permission level (based on lottery) is defined
@@ -94,27 +95,27 @@
 		}
 
 		// stricter validation for article: make sure we're at the right article view
-		if ( location == 'article' ) {
+		if ( location === 'article' ) {
 			// not disabled via preferences
 			enable &= !mw.user.options.get( 'articlefeedback-disable' );
 
 			// view pages
-			enable &= ( mw.config.get( 'wgAction' ) == 'view' || mw.config.get( 'wgAction' ) == 'purge' );
+			enable &= ( mw.config.get( 'wgAction' ) === 'view' || mw.config.get( 'wgAction' ) === 'purge' );
 
 			// if user is logged in, showing on action=purge is OK,
 			// but if user is logged out, action=purge shows a form instead of the article,
 			// so return false in that case.
-			enable &= !( mw.config.get( 'wgAction' ) == 'purge' && mw.user.isAnon() );
+			enable &= !( mw.config.get( 'wgAction' ) === 'purge' && mw.user.isAnon() );
 
 			// current revision
-			enable &= mw.util.getParamValue( 'diff' ) == null;
-			enable &= mw.util.getParamValue( 'oldid' ) == null;
+			enable &= mw.util.getParamValue( 'diff' ) === null;
+			enable &= mw.util.getParamValue( 'oldid' ) === null;
 
 			// not viewing a redirect
-			enable &= mw.util.getParamValue( 'redirect' ) != 'no';
+			enable &= mw.util.getParamValue( 'redirect' ) !== 'no';
 
 			// not viewing the printable version
-			enable &= mw.util.getParamValue( 'printable' ) != 'yes';
+			enable &= mw.util.getParamValue( 'printable' ) !== 'yes';
 		}
 
 		return enable;
@@ -129,13 +130,13 @@
 	 *
 	 * This is roughly equivalent to $wgUser->isAllowed( <permissionLevel> );
 	 *
-	 * @param object article
-	 * @param string|boolean permissionLevel
-	 * @return bool
+	 * @param {Object} article
+	 * @param {String|boolean} permissionLevel
+	 * @return {boolean}
 	 */
 	$.aftUtils.permissions = function ( article, permissionLevel ) {
 		var permissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
-		return permissionLevel in permissions && permissions[permissionLevel];
+		return permissionLevel in permissions && permissions[ permissionLevel ];
 	};
 
 	// }}}
@@ -150,8 +151,8 @@
 	 *
 	 * This is equivalent to ArticleFeedbackv5Utils::isBlacklisted
 	 *
-	 * @param object article
-	 * @return bool
+	 * @param {Object} article
+	 * @return {boolean}
 	 */
 	$.aftUtils.blacklist = function ( article ) {
 		var blacklistCategories = mw.config.get( 'wgArticleFeedbackv5BlacklistCategories', [] );
@@ -173,12 +174,12 @@
 	 *
 	 * This is equivalent to ArticleFeedbackv5Utils::isWhitelisted
 	 *
-	 * @param object article
-	 * @return bool
+	 * @param {Object} article
+	 * @return {boolean}
 	 */
 	$.aftUtils.whitelist = function ( article ) {
-		var whitelistCategories = mw.config.get( 'wgArticleFeedbackv5Categories', [] );
-		var intersect = $.map( whitelistCategories, function ( category ) {
+		var intersect, whitelistCategories = mw.config.get( 'wgArticleFeedbackv5Categories', [] );
+		intersect = $.map( whitelistCategories, function ( category ) {
 			return $.inArray( category.replace( /_/g, ' ' ), article.categories ) < 0 ? null : category;
 		} );
 		return intersect.length > 0;
@@ -195,13 +196,13 @@
 	 *
 	 * This is equivalent to ArticleFeedbackv5Permissions::getLottery
 	 *
-	 * @param object article
-	 * @return bool
+	 * @param {Object} article
+	 * @return {boolean}
 	 */
 	$.aftUtils.lottery = function ( article ) {
 		var odds = mw.config.get( 'wgArticleFeedbackv5LotteryOdds', 0 );
 		if ( typeof odds === 'object' && article.namespace in odds ) {
-			odds = odds[article.namespace];
+			odds = odds[ article.namespace ];
 		}
 
 		return ( Number( article.id ) % 1000 ) >= ( 1000 - ( Number( odds ) * 10 ) );
@@ -216,8 +217,8 @@
 	 *
 	 * This is equivalent to ArticleFeedbackv5Permissions::getDefaultPermissionLevel
 	 *
-	 * @param object article
-	 * @return string
+	 * @param {Object} article
+	 * @return {String}
 	 */
 	$.aftUtils.getDefaultPermissionLevel = function ( article ) {
 		return $.aftUtils.lottery( article ) ? 'aft-reader' : 'aft-noone';
@@ -231,8 +232,8 @@
 	 * The cookie name is prefixed by the extension name and a version number,
 	 * to avoid collisions with other extensions or code versions.
 	 *
-	 * @param string $suffix
-	 * @return string
+	 * @param {String} $suffix
+	 * @return {String}
 	 */
 	$.aftUtils.getCookieName = function ( suffix ) {
 		return 'AFTv5-' + suffix;
@@ -275,17 +276,17 @@
 	/**
 	 * Check if the current user can set a certain status (enable/disable) for the current page
 	 *
-	 * @param bool enable true to check if can be enabled, false to check disabled
+	 * @param {boolean} enable true to check if can be enabled, false to check disabled
 	 */
 	$.aftUtils.canSetStatus = function ( enable ) {
-		var permissionLevel = $.aftUtils.article().permissionLevel || $.aftUtils.getDefaultPermissionLevel( $.aftUtils.article() );
-		var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
+		var permissionLevel = $.aftUtils.article().permissionLevel || $.aftUtils.getDefaultPermissionLevel( $.aftUtils.article() ),
+			userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' ),
 
-		// check AFT status for readers
-		var enabled = ( permissionLevel === 'aft-reader' );
+			// check AFT status for readers
+			enabled = ( permissionLevel === 'aft-reader' );
 
 		// check if current user has editor permission
-		if ( !( 'aft-editor' in userPermissions ) || !userPermissions['aft-editor'] ) {
+		if ( !( 'aft-editor' in userPermissions ) || !userPermissions[ 'aft-editor' ] ) {
 			return false;
 		}
 
@@ -301,12 +302,12 @@
 		if ( $.aftUtils.article().permissionLevel === false && !enabled ) {
 			permissionLevel = 'aft-editor';
 		}
-		if ( !( permissionLevel in userPermissions ) || !userPermissions[permissionLevel] ) {
+		if ( !( permissionLevel in userPermissions ) || !userPermissions[ permissionLevel ] ) {
 			return false;
 		}
 
 		// check if desired status != current status
-		return enable != enabled;
+		return enable !== enabled;
 	};
 
 	// }}}
@@ -315,9 +316,9 @@
 	/**
 	 * Enable/disable feedback on a certain page
 	 *
-	 * @param int pageId the page id
-	 * @param bool enable true to enable, false to disable
-	 * @param function callback function to execute after setting status
+	 * @param {number} pageId the page id
+	 * @param {boolean} enable true to enable, false to disable
+	 * @param {Function} callback function to execute after setting status
 	 */
 	$.aftUtils.setStatus = function ( pageId, enable, callback ) {
 		var api = new mw.Api();
@@ -330,7 +331,7 @@
 			// invoke callback function
 			if ( typeof callback === 'function' ) {
 				if ( 'articlefeedbackv5-set-status' in data ) {
-					callback( data['articlefeedbackv5-set-status'], null );
+					callback( data[ 'articlefeedbackv5-set-status' ], null );
 				}
 			}
 		} )
@@ -356,4 +357,4 @@
 
 // }}}
 
-} )( jQuery, mediaWiki );
+}( jQuery, mediaWiki ) );

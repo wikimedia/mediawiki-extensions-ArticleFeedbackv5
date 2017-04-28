@@ -4,7 +4,9 @@
  */
 
 ( function ( $, mw ) {
-	/*** Main entry point ***/
+	/**
+	 * Main entry point
+	 */
 	$( function () {
 		var showError = function ( message ) {
 			var warning = $( '#articlefeedbackv5-header-message' ).text( message );
@@ -22,4 +24,4 @@
 			showError( mw.msg( 'articlefeedbackv5-page-disabled' ) );
 		}
 	} );
-} )( jQuery, mediaWiki );
+}( jQuery, mediaWiki ) );
