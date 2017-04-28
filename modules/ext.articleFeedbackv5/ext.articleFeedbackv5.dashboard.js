@@ -3,21 +3,23 @@
  * the feedback dashboard or not.
  */
 
-/*** Main entry point ***/
-jQuery( function( $ ) {
-	var showError = function( message ) {
-		var warning = $( '#articlefeedbackv5-header-message' ).text( message );
-		$( '#articleFeedbackv5-special-wrap' )
-			.hide()
-			.after( warning );
-	};
+( function ( $, mw ) {
+	/*** Main entry point ***/
+	$( function () {
+		var showError = function ( message ) {
+			var warning = $( '#articlefeedbackv5-header-message' ).text( message );
+			$( '#articleFeedbackv5-special-wrap' )
+				.hide()
+				.after( warning );
+		};
 
-	// AFT is enabled
-	if ( $.aftUtils.verify( 'special' ) ) {
-		$.articleFeedbackv5special.setup();
+		// AFT is enabled
+		if ( $.aftUtils.verify( 'special' ) ) {
+			$.articleFeedbackv5special.setup();
 
-	// AFT is not enabled
-	} else {
-		showError( mw.msg( 'articlefeedbackv5-page-disabled' ) );
-	}
-} );
+		// AFT is not enabled
+		} else {
+			showError( mw.msg( 'articlefeedbackv5-page-disabled' ) );
+		}
+	} );
+} )( jQuery, mediaWiki );

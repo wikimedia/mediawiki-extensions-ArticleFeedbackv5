@@ -72,7 +72,7 @@
  * @version    $Id$
  */
 
-( function ( $ ) {
+( function ( $, mw ) {
 
 // {{{ articleFeedbackv5 definition
 
@@ -771,7 +771,7 @@
 						 * that leaving the page will result in lost data.
 						 */
 						if ( typeof window.onbeforeunload != 'function' ) {
-							$( window ).on( 'beforeunload', function() {
+							$( window ).on( 'beforeunload', function () {
 								// Only show the warning message if the user
 								// actually entered some feedback into the
 								// textarea (T146536)
@@ -839,7 +839,7 @@
 			 */
 			localValidation: function ( formdata ) {
 				if ( ( !( 'comment' in formdata ) || formdata.comment == '' )
-					&& !( 'found' in formdata ) && !$( '#articleFeedbackv5-bucket6-toggle-yes').is( ':checked' ) ) {
+					&& !( 'found' in formdata ) && !$( '#articleFeedbackv5-bucket6-toggle-yes' ).is( ':checked' ) ) {
 					$.articleFeedbackv5.enableSubmission( false );
 					return mw.msg( 'articlefeedbackv5-error-nofeedback' );
 				}
@@ -1614,7 +1614,7 @@
 			build: function () {
 				var self = $.articleFeedbackv5.triggerLinks.A;
 				var $link = $( self.closeable() ? self.templates.closeable : self.templates.basic );
-				$link.find('#articleFeedbackv5-sitesublink')
+				$link.find( '#articleFeedbackv5-sitesublink' )
 					.data( 'linkId', 'A' )
 					.text( mw.msg( 'articlefeedbackv5-sitesub-linktext' ) )
 					.click( function ( e ) {
@@ -1637,10 +1637,10 @@
 				// and it needs to show up if the site subhead (e.g., "From Wikipedia, the free
 				// encyclopedia") is not visible for any reason.
 				if ( $( '#siteSub' ).filter( ':visible' ).length ) {
-					$link.prepend( ' &nbsp; ' + mw.msg('pipe-separator') + ' &nbsp; ' );
+					$link.prepend( ' &nbsp; ' + mw.msg( 'pipe-separator' ) + ' &nbsp; ' );
 					$( '#siteSub' ).append( $link );
 				} else if ( $( 'h1.pagetitle + p.subtitle' ).filter( ':visible' ).length ) {
-					$link.prepend( ' &nbsp; ' + mw.msg('pipe-separator') + ' &nbsp; ' );
+					$link.prepend( ' &nbsp; ' + mw.msg( 'pipe-separator' ) + ' &nbsp; ' );
 					$( 'h1.pagetitle + p.subtitle' ).append( $link );
 				} else if ( $( '#mw_contentholder .mw-topboxes' ).length ) {
 					$( '#mw_contentholder .mw-topboxes' ).after( $link );
@@ -2199,11 +2199,11 @@
 			}
 		}
 		$.articleFeedbackv5.floatingLinkId = bucketedLink;
-		if ('X' != bucketedLink) {
-			$.articleFeedbackv5.selectedLinks.push(bucketedLink);
+		if ( 'X' != bucketedLink ) {
+			$.articleFeedbackv5.selectedLinks.push( bucketedLink );
 		}
 		// Always add the toolbox link
-		$.articleFeedbackv5.selectedLinks.push('TBX');
+		$.articleFeedbackv5.selectedLinks.push( 'TBX' );
 	};
 
 	// }}}
@@ -2214,9 +2214,9 @@
 	 */
 	$.articleFeedbackv5.userCanEdit = function () {
 		// An empty restrictions array means anyone can edit
-		var restrictions =  mw.config.get( 'wgRestrictionEdit', [] );
+		var restrictions = mw.config.get( 'wgRestrictionEdit', [] );
 		if ( restrictions.length ) {
-			var groups =  mw.config.get( 'wgUserGroups' );
+			var groups = mw.config.get( 'wgUserGroups' );
 			// Verify that each restriction exists in the user's groups
 			for ( var i = 0; i < restrictions.length; i++ ) {
 				if ( $.inArray( restrictions[i], groups ) < 0 ) {
@@ -2562,7 +2562,7 @@
 		// check throttling
 		if ( $.articleFeedbackv5.throttleThresholdPostsPerHour != -1 ) {
 			// MSIE<9 does not support Date.now(), hence the workaround
-			var now = (new Date()).getTime();
+			var now = ( new Date() ).getTime();
 			var msInHour = 3600000;
 
 			var timestampsCookieName = mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'submission_timestamps' );
@@ -2595,7 +2595,7 @@
 			}
 
 			// if we get this far, they haven't been throttled, so update the post timestamp list with the current time and re-store it
-			savedTimestamps.push(now);
+			savedTimestamps.push( now );
 			$.cookie( timestampsCookieName, savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
 		}
 
@@ -2676,7 +2676,7 @@
 					$.articleFeedbackv5.markFormErrors( msg );
 				}
 			},
-			'error': function (xhr, tstatus, error) {
+			'error': function ( xhr, tstatus, error ) {
 				var msg = mw.msg( 'articlefeedbackv5-error-submit' );
 				var code = 'jquery';
 
@@ -2808,7 +2808,7 @@
 
 		// Add a close button to clear out the panel
 		var $close = $( '<a class="articleFeedbackv5-clear-trigger">x</a>' )
-			.click( function (e) {
+			.click( function ( e ) {
 				e.preventDefault();
 				$.articleFeedbackv5.clear();
 			} );
@@ -3143,40 +3143,40 @@
 // }}}
 // {{{ articleFeedbackv5 plugin
 
-/**
- * Right now there are no options for this plugin, but there will be in the
- * future, so allow them to be passed in.
- *
- * If a string is passed in, it's considered a public function
- */
-$.fn.articleFeedbackv5 = function ( opts, arg ) {
-	if ( typeof opts === 'undefined' || typeof opts === 'object' ) {
-		$.articleFeedbackv5.init( $( this ), opts );
-		return $( this );
-	}
+	/**
+	 * Right now there are no options for this plugin, but there will be in the
+	 * future, so allow them to be passed in.
+	 *
+	 * If a string is passed in, it's considered a public function
+	 */
+	$.fn.articleFeedbackv5 = function ( opts, arg ) {
+		if ( typeof opts === 'undefined' || typeof opts === 'object' ) {
+			$.articleFeedbackv5.init( $( this ), opts );
+			return $( this );
+		}
 
-	var publicFunction = {
-		setLinkId: { args: 1, ret: false },
-		getBucketId: { args: 0, ret: true },
-		inDebug: { args: 0, ret: true },
-		nowShowing: { args: 0, ret: true },
-		experiment: { args: 0, ret: true },
-		addToRemovalQueue: { args: 1, ret: false }
+		var publicFunction = {
+			setLinkId: { args: 1, ret: false },
+			getBucketId: { args: 0, ret: true },
+			inDebug: { args: 0, ret: true },
+			nowShowing: { args: 0, ret: true },
+			experiment: { args: 0, ret: true },
+			addToRemovalQueue: { args: 1, ret: false }
+		};
+		if ( opts in publicFunction ) {
+			var r;
+			if ( 1 == publicFunction[opts].args ) {
+				r = $.articleFeedbackv5[opts]( arg );
+			} else if ( 0 == publicFunction[opts].args ) {
+				r = $.articleFeedbackv5[opts]();
+			}
+			if ( publicFunction[opts].ret ) {
+				return r;
+			}
+		}
+		return $( this );
 	};
-	if ( opts in publicFunction ) {
-		var r;
-		if ( 1 == publicFunction[opts].args ) {
-			r = $.articleFeedbackv5[opts]( arg );
-		} else if ( 0 == publicFunction[opts].args ) {
-			r = $.articleFeedbackv5[opts]();
-		}
-		if ( publicFunction[opts].ret) {
-			return r;
-		}
-	}
-	return $( this );
-};
 
 // }}}
 
-} )( jQuery );
+} )( jQuery, mediaWiki );
