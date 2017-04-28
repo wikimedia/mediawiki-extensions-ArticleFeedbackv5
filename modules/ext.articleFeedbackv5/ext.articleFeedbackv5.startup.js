@@ -3,10 +3,12 @@
  */
 
 ( function ( $, mw ) {
-	/*** Main entry point ***/
+	/**
+	 * Main entry point
+	 */
 	$( function () {
-		var removeOld, load, statusChangeSuccess, statusCallback,
-			enable = $.aftUtils.verify( 'article' );
+		var removeOld, load, statusChangeSuccess, statusCallback, link, $link, article,
+			userPermissions, enable = $.aftUtils.verify( 'article' );
 
 		/**
 		 * Remove (if any) occurrences of older AFT variations.
@@ -66,9 +68,9 @@
 
 				// add message to confirm AFTv5 has just been enabled
 				link = mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' + mw.config.get( 'wgPageName' );
-					$( '<p id="articleFeedbackv5-added"></p>' )
-						.msg( 'articlefeedbackv5-enabled-form-message', link )
-						.appendTo( $form );
+				$( '<p id="articleFeedbackv5-added"></p>' )
+					.msg( 'articlefeedbackv5-enabled-form-message', link )
+					.appendTo( $form );
 
 				// we're done; stop polling
 				clearTimeout( interval );
@@ -79,8 +81,8 @@
 		/**
 		 * Load AFTv5 after it has been enabled.
 		 *
-		 * @param object|false data API JSON response or false on failure
-		 * @param object|null error API JSON error response or null if API call was successful
+		 * @param {Object|false} data API JSON response or false on failure
+		 * @param {Object|null} error API JSON error response or null if API call was successful
 		 */
 		statusCallback = function ( data, error ) {
 			if ( data !== false ) {
@@ -103,7 +105,7 @@
 			load();
 		}
 
-		var article = $.aftUtils.article();
+		article = $.aftUtils.article();
 
 		/*
 		 * Check if a user can enable AFTv5.
@@ -119,15 +121,15 @@
 			!$.aftUtils.blacklist( article ) &&
 			$.aftUtils.canSetStatus( true )
 		) {
-			var userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
+			userPermissions = mw.config.get( 'wgArticleFeedbackv5Permissions' );
 
 			// build link to enable feedback form
-			var $link = $( '<li id="t-articlefeedbackv5-enable"><a href="#"></a></li>' );
+			$link = $( '<li id="t-articlefeedbackv5-enable"><a href="#"></a></li>' );
 			$link.find( 'a' ).text( mw.msg( 'articlefeedbackv5-toolbox-enable' ) );
 
 			// administrators can change detailed visibility in ?action=protect
-			if ( 'aft-administrator' in userPermissions && userPermissions['aft-administrator'] ) {
-				var link = mw.config.get( 'wgScript' ) + '?title=' +
+			if ( 'aft-administrator' in userPermissions && userPermissions[ 'aft-administrator' ] ) {
+				link = mw.config.get( 'wgScript' ) + '?title=' +
 					encodeURIComponent( mw.config.get( 'wgPageName' ) ) +
 					'&' + $.param( { action: 'protect' } );
 
@@ -146,4 +148,4 @@
 		}
 
 	} );
-} )( jQuery, mediaWiki );
+}( jQuery, mediaWiki ) );
