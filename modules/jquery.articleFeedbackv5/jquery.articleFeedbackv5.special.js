@@ -500,7 +500,7 @@
 	 * Toggle on a certain filter
 	 * Please note that this will _not_ automatically fetch the new data, which requires a call to loadFeedback
 	 *
-	 * @param {String} id The id of the filter to be enabled
+	 * @param {string} id The id of the filter to be enabled
 	 */
 	$.articleFeedbackv5special.toggleFilter = function ( id ) {
 		$.articleFeedbackv5special.listControls.filter = id;
@@ -525,8 +525,8 @@
 	 * Toggle on a certain sort
 	 * Please note that this will _not_ automatically fetch the new data, which requires a call to loadFeedback
 	 *
-	 * @param {String} sort The sorting method
-	 * @param {String} direction The direction to sort (asc/desc)
+	 * @param {string} sort The sorting method
+	 * @param {string} direction The direction to sort (asc/desc)
 	 */
 	$.articleFeedbackv5special.toggleSort = function ( sort, direction ) {
 		direction = direction.toUpperCase();
@@ -606,8 +606,8 @@
 	 * Utility method: Strips long IDs down to the specific bits we care about
 	 *
 	 * @param {Object} object
-	 * @param {String} toRemove
-	 * @return {String}
+	 * @param {string} toRemove
+	 * @return {string}
 	 */
 	$.articleFeedbackv5special.stripID = function ( object, toRemove ) {
 		return $( object ).attr( 'id' ).replace( toRemove, '' );
@@ -621,7 +621,7 @@
 	 * Utility method: Sets the sort type and direction according to the filter
 	 * passed in
 	 *
-	 * @param {String} filter the internal-use id of the filter
+	 * @param {string} filter the internal-use id of the filter
 	 */
 	$.articleFeedbackv5special.setSortByFilter = function ( filter ) {
 		var defaults = mw.config.get( 'wgArticleFeedbackv5DefaultSorts' );
@@ -644,8 +644,8 @@
 	 *
 	 * @param {number} id		the feedback id
 	 * @param {number} pageId	the page id
-	 * @param {String} action	action to execute
-	 * @param {String} note		note for action (default empty)
+	 * @param {string} action	action to execute
+	 * @param {string} note		note for action (default empty)
 	 * @param {Object} options	key => value pairs of additional API action-specific parameters
 	 * @return {boolean}
 	 */
@@ -750,8 +750,8 @@
 	 * @param {number} id		the feedback id
 	 * @param {number} pageId	the page id
 	 * @param {number} logId	the log id
-	 * @param {String} action	original action
-	 * @param {String} note		note for action (default empty)
+	 * @param {string} action	original action
+	 * @param {string} note		note for action (default empty)
 	 * @return {boolean}
 	 */
 	$.articleFeedbackv5special.addNote = function ( id, pageId, logId, action, note ) {
@@ -841,8 +841,8 @@
 	 *
 	 * @param {number} id           feedback post item id
 	 * @param {number} pageId
-	 * @param {String} continueInfo should be null for the first request (first page), then the continue info returned from the last API call
-	 * @param {String} location     where to put the results
+	 * @param {string} continueInfo should be null for the first request (first page), then the continue info returned from the last API call
+	 * @param {string} location     where to put the results
 	 * @return {boolean}
 	 */
 	$.articleFeedbackv5special.loadActivityLog = function ( id, pageId, continueInfo, location ) {
@@ -1052,7 +1052,7 @@
 	 * Mark reader tools als active when they've been flagged
 	 * by this user already
 	 *
-	 * @param {String} id
+	 * @param {string} id
 	 */
 	$.articleFeedbackv5special.markActiveFlags = function ( id ) {
 		var $link;
@@ -1126,7 +1126,7 @@
 	 * Utility method: Gets the activity for a feedback ID
 	 *
 	 * @param {number} fid the feedback ID
-	 * @param {String} action the action
+	 * @param {string} action the action
 	 * @return {boolean} true if action executed by user, false if not
 	 */
 	$.articleFeedbackv5special.getActivityFlag = function ( fid, action ) {
@@ -1142,9 +1142,9 @@
 	/**
 	 * Utility method: Sets an activity flag
 	 *
-	 * @param {String} fid   the feedback id
-	 * @param {String} flag  the flag name
-	 * @param {String} value the value
+	 * @param {string} fid   the feedback id
+	 * @param {string} flag  the flag name
+	 * @param {string} value the value
 	 */
 	$.articleFeedbackv5special.setActivityFlag = function ( fid, flag, value ) {
 		if ( !( fid in $.articleFeedbackv5special.activity ) ) {
@@ -1240,7 +1240,7 @@
 	 * In the log, we'll save the source an action originates from - this will
 	 * return what type of page we're currently on.
 	 *
-	 * @return {String}
+	 * @return {string}
 	 */
 	$.articleFeedbackv5special.getSource = function () {
 		if ( $.articleFeedbackv5special.watchlist ) {
