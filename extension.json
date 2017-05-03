@@ -112,7 +112,6 @@
 				"articlefeedbackv5-enabled-form-message"
 			],
 			"dependencies": [
-				"mediawiki.util",
 				"mediawiki.user",
 				"jquery.articleFeedbackv5.utils",
 				"mediawiki.jqueryMsg",
@@ -136,7 +135,8 @@
 				"jquery.articleFeedbackv5",
 				"jquery.cookie",
 				"jquery.articleFeedbackv5.utils",
-				"mediawiki.api"
+				"mediawiki.api",
+				"mediawiki.util"
 			]
 		},
 		"ext.articleFeedbackv5.dashboard": {
@@ -159,7 +159,8 @@
 			],
 			"dependencies": [
 				"jquery.articleFeedbackv5.utils",
-				"mediawiki.api"
+				"mediawiki.api",
+				"mediawiki.util"
 			]
 		},
 		"ext.articleFeedbackv5.watchlist": {
@@ -273,7 +274,8 @@
 				"jquery.placeholder",
 				"mediawiki.jqueryMsg",
 				"jquery.effects.highlight",
-				"mediawiki.Uri"
+				"mediawiki.Uri",
+				"mediawiki.util"
 			]
 		},
 		"jquery.articleFeedbackv5.special": {
