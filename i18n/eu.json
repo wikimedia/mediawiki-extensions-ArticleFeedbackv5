@@ -133,7 +133,11 @@
 	"articlefeedbackv5-noteflyover-request-help": "Gehiago ikasi",
 	"articlefeedbackv5-noteflyover-unrequest-help": "Gehiago ikasi",
 	"articlefeedbackv5-noteflyover-oversight-help": "Gehiago ikasi",
+	"articlefeedbackv5-noteflyover-unoversight-label": "Gehitu ohar bat",
+	"articlefeedbackv5-noteflyover-unoversight-submit": "Gehitu ohar bat",
 	"articlefeedbackv5-noteflyover-unoversight-help": "Gehiago ikasi",
+	"articlefeedbackv5-noteflyover-decline-label": "Gehitu ohar bat",
+	"articlefeedbackv5-noteflyover-decline-submit": "Gehitu ohar bat",
 	"articlefeedbackv5-noteflyover-decline-help": "Gehiago ikasi",
 	"articlefeedbackv5-bucket1-title": "Lagun ezazu orrialde hau hobetzen",
 	"articlefeedbackv5-bucket1-question-toggle": "Espero zenuena aurkitu duzu?",
@@ -147,6 +151,7 @@
 	"articlefeedbackv5-bucket4-subhead": "Ba al zenekien orrialde hau aldatu dezakezula?",
 	"articlefeedbackv5-bucket4-form-submit": "Orrialde hau aldatu",
 	"articlefeedbackv5-bucket4-noedit-title": "Lagundu {{SITENAME}} hobetzen",
+	"articlefeedbackv5-bucket4-noedit-teaser-line2": "Lagun gaitzakezu?",
 	"articlefeedbackv5-bucket4-noedit-form-submit": "Gehiago ikasi",
 	"articlefeedbackv5-bucket6-title": "Lagun ezazu orrialde hau hobetzen",
 	"articlefeedbackv5-bucket6-question-toggle": "Espero zenuena aurkitu duzu?",
@@ -160,6 +165,7 @@
 	"articlefeedbackv5-titlebar-linktext": "Lagundu orrialde hau hobetzen >>",
 	"articlefeedbackv5-fixedtab-linktext": "Hobetu orrialde hau",
 	"articlefeedbackv5-bottomrighttab-linktext": "Hobetu orrialde hau",
+	"articlefeedbackv5-activity-permalink": "lotura iraunkorra",
 	"articlefeedbackv5-activity-more": "Jarduera gehiago erakutsi",
 	"articlefeedbackv5-disable-flyover-title": "Tresna hau kendu?"
 }
