@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Indus Asia"
+			"Indus Asia",
+			"Mehtab ahmed"
 		]
 	},
-	"articlefeedbackv5-autohide-marker": "پاڻمرادو لڪل"
+	"articlefeedbackv5-overlay-close": "بند ڪريو",
+	"articlefeedbackv5-autohide-marker": "پاڻمرادو لڪل",
+	"articlefeedbackv5-form-discuss-talk": "بحث صفحي تي ڳالھايو"
 }

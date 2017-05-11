@@ -8,7 +8,8 @@
 			"Vibhijain",
 			"राम प्रसाद जोशी",
 			"YmKavishwar",
-			"Ziyaurr"
+			"Ziyaurr",
+			"Sfic"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "धन्यवाद!",
@@ -45,7 +46,7 @@
 	"articlefeedbackv5-form-helpful-no-label": "नहीं",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 yes|$1 yes}} / {{PLURAL:$2|1 no|$2 no}}",
 	"articlefeedbackv5-special-filter-helpful": "सहायक ($1)",
-	"articlefeedbackv5-special-filter-hidden": "अदृश्य",
+	"articlefeedbackv5-special-filter-hidden": "अदृश्य ($1)",
 	"articlefeedbackv5-special-filter-all": "सभी पोस्ट ($1)",
 	"articlefeedbackv5-special-filter-helpful-watchlist": "सहायक",
 	"articlefeedbackv5-special-filter-unhelpful-watchlist": "असहायक",
@@ -63,7 +64,7 @@
 	"articlefeedbackv5-loading-tag": "लोड हो रहा है...",
 	"articlefeedbackv5-new-marker": "नए",
 	"articlefeedbackv5-hide-marker": "छिपा हुआ",
-	"articlefeedbackv5-form-inappropriate": "इसे छुपाएँ",
+	"articlefeedbackv5-form-inappropriate": "अनुचित",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 जो खोज रहे थे उन्हें मिल गया।}}",
 	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2 जो खोज रहे थे उन्हें नहीं मिला।}}",
 	"articlefeedbackv5-form2-header-praise": "{{GENDER:$1|$1}} ने एक प्रशंसा की थी:",
