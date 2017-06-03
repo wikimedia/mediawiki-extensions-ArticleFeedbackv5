@@ -429,8 +429,6 @@
 		"MakeGlobalVariablesScript": "ArticleFeedbackv5Hooks::makeGlobalVariablesScript",
 		"GetPreferences": "ArticleFeedbackv5Hooks::getPreferences",
 		"EditPage::showEditForm:fields": "ArticleFeedbackv5Hooks::pushFieldsToEdit",
-		"EditPage::attemptSave": "ArticleFeedbackv5Hooks::editAttempt",
-		"PageContentSaveComplete": "ArticleFeedbackv5Hooks::editSuccess",
 		"ContribsPager::reallyDoQuery": "ArticleFeedbackv5Hooks::contributionsData",
 		"ContributionsLineEnding": "ArticleFeedbackv5Hooks::contributionsLineEnding",
 		"ProtectionForm::buildForm": "ArticleFeedbackv5Hooks::onProtectionForm",
