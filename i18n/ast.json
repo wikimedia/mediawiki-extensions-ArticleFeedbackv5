@@ -4,6 +4,8 @@
 			"Xuacu"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "Unviar un comentariu sobro l'artículu",
+	"apihelp-articlefeedbackv5-param-title": "Títulu de la páxina pa la qu'unviar un comentariu. Nun puede usase xunto con $1pageid",
 	"articlefeedbackv5-cta-thanks": "¡Gracies!",
 	"articlefeedbackv5-cta-confirmation-message": "El comentariu pue vese nesta [$1 páxina de comentarios].",
 	"articlefeedbackv5-cta1-confirmation-title": "¿Sabía que pue editar esta páxina?",
