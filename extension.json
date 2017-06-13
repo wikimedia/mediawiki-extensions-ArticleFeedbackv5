@@ -168,6 +168,9 @@
 			"styles": "ext.articleFeedbackv5/ext.articleFeedbackv5.watchlist.css",
 			"messages": [
 				"articlefeedbackv5-watchlist-view-feedback"
+			],
+			"dependencies": [
+				"mediawiki.user"
 			]
 		},
 		"jquery.articleFeedbackv5": {
@@ -276,6 +279,7 @@
 				"mediawiki.jqueryMsg",
 				"jquery.effects.highlight",
 				"mediawiki.Uri",
+				"mediawiki.user",
 				"mediawiki.util"
 			]
 		},
@@ -411,6 +415,7 @@
 				"articlefeedbackv5-settings-status-disable"
 			],
 			"dependencies": [
+				"mediawiki.user",
 				"mediawiki.util",
 				"jquery.tipsy",
 				"jquery.localize",
