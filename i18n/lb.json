@@ -8,6 +8,7 @@
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Artikel-Feedback ofginn",
+	"apihelp-articlefeedbackv5-summary": "Artikel-Feedback ofginn",
 	"apihelp-articlefeedbackv5-param-anontoken": "Token fir anonym Benotzer",
 	"apihelp-articlefeedbackv5-param-bucket": "Wat fir ee Feedback-Formulaire gouf dem Benotzer gewisen",
 	"apihelp-articlefeedbackv5-get-count-description": "Zuel vun de Feebacke fir eng bestëmmt Säit/Filter kréien",
@@ -236,7 +237,6 @@
 	"articlefeedbackv5-desc": "Encouragéiert Benotzer fir matzemaachen andeem et hinnen erlaabt gëtt fir Artikelen nozekucken an Ännerunge virzeschloen",
 	"articlefeedbackv5-comment-more": "Méi",
 	"articlefeedbackv5-comment-empty": "Et gouf keen Text aginn",
-	"articlefeedbackv5-unsupported-message": "Pardon, Äre Browser gëtt vun dësem Prototyp net ënnerstëtzt. Fir dës säit ze gesinn, benotzt w.e.g. en anere Browser.",
 	"articlefeedbackv5-page-disabled": "D'Säit fir Feedback ass fir dësen Artikel net aktivéiert.",
 	"articlefeedbackv5-no-feedback": "Fir de Filter deen Dir uginn hutt gëtt et nach kee Feedback.Fir Äre Filter z'änneren, probéiert eng vun den Optiounen hei driwwer (z. Bsp.: 'Ausgezeechent' oder 'Net nogekuckt').",
 	"articlefeedbackv5-invalid-feedback": "De gefrote Feedback gëtt et net.",
