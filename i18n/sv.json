@@ -58,6 +58,7 @@
 	"apihelp-query+articlefeedbackv5-view-activity-param-continue": "När fler resultat finns tillgängliga, använd detta för att fortsätta.",
 	"apihelp-query+articlefeedbackv5-view-activity-param-noheader": "Hoppa över markup för sidhuvudet, även om det är första sidan",
 	"apihelp-query+articlefeedbackv5-view-feedback-description": "Lista artikelåterkoppling för en viss sida",
+	"apihelp-query+articlefeedbackv5-view-feedback-summary": "Lista artikelåterkoppling för en viss sida",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-title": "Titel på sidan att hämta återkopplingsbetyg för. Kan inte användas tillsammans med $1pageid",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-pageid": "ID för sidan att hämta återkopplingsbetyg för. Kan inte användas tillsammans med $1title",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-watchlist": "Läs återkopplings från användares bevakade sidor (1) eller från alla sidor (0)",
