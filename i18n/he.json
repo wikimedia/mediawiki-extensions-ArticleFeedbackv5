@@ -17,9 +17,11 @@
 			"חיים",
 			"ערן",
 			"פוילישער",
-			"שמזן"
+			"שמזן",
+			"המקיסט"
 		]
 	},
+	"apihelp-articlefeedbackv5-summary": "שלח ביקורת על המאמר",
 	"articlefeedbackv5-cta-thanks": "תודה!",
 	"articlefeedbackv5-cta-confirmation-message": "אפשר לראות את הרשומה שלך [$1 בדף המשוב] הזה.",
 	"articlefeedbackv5-cta1-confirmation-title": "הידעת שבאפשרותך לערוך דף זה?",
@@ -270,7 +272,6 @@
 	"articlefeedbackv5-desc": "משוב על ערך",
 	"articlefeedbackv5-comment-more": "יותר",
 	"articlefeedbackv5-comment-empty": "לא הוזן שום טקסט",
-	"articlefeedbackv5-unsupported-message": "מצטערים, הדפדפן שלך אינו נתמך באב־טיפוס הזה. אפשר לראות את הדף הזה בדפדפן אחר.",
 	"articlefeedbackv5-page-disabled": "דף המשוב אינו זמין עבור ערך זה.",
 	"articlefeedbackv5-no-feedback": "אין משוב עבור המסנן שבחרת. כדי להחליף את המסנן, נסה אחת מהאפשרויות לעיל (למשל, 'מומלץ' או 'לא נסקר').",
 	"articlefeedbackv5-invalid-feedback": "המשוב המבוקש אינו קיים.",
