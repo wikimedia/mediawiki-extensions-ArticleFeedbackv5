@@ -517,7 +517,7 @@
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "Sim, eu encontrei o que estava à procura.",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "Não, eu não encontrei o que estava à procura.",
 	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|(1 carácter restante)|($1 caracteres restantes)}}",
-	"articlefeedbackv5-bucket6-question-instructions-yes": "Óptimo. Alguma sugestão para melhorar?",
+	"articlefeedbackv5-bucket6-question-instructions-yes": "Ótimo. Alguma sugestão para melhorar?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "Escreva a sua sugestão aqui (exemplo: \"Esta página necessita de uma imagem\")",
 	"articlefeedbackv5-bucket6-question-instructions-no": "Desculpe-nos por isso. Alguma sugestão para melhorar?",
 	"articlefeedbackv5-bucket6-question-placeholder-no": "Escreva a sua sugestão aqui (exemplo: \"Esta página necessita de uma imagem\")",
