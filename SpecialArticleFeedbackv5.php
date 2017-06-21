@@ -586,7 +586,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				array( 'class' => 'articleFeedbackv5-feedback-permalink-goback' ),
 				$linkRenderer->makeLink(
 					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedDBkey() ),
-					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->text()
+					'‹ ' . $this->msg( 'articlefeedbackv5-special-goback' )->text()
 				)
 			) .
 			Html::rawElement(
@@ -599,7 +599,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				array( 'class' => 'articleFeedbackv5-feedback-permalink-goback' ),
 				$linkRenderer->makeLink(
 					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedDBkey() ),
-					'&lsaquo; ' . $this->msg( 'articlefeedbackv5-special-goback' )->text()
+					'‹ ' . $this->msg( 'articlefeedbackv5-special-goback' )->text()
 				)
 			);
 	}
