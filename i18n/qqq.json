@@ -339,7 +339,7 @@
 	"articlefeedbackv5-invalid-page-id": "Message to be displayed when an invalid page ID is passed to the API.",
 	"articlefeedbackv5-found-percent": "Text describing the percentage of readers that answered positively to the question \"Did you find what you were looking for\".\n\nParameters:\n* $1 - the percentage of people that found what they were looking for marked up. e.g. 15%. {{msg-mw|Percent}} is used\n* $2 - the percentage of people that found what they were looking for, used for plural",
 	"articlefeedbackv5-found-percent-title": "Title attribute for percentage of people who marked feedback as useful.\n\nThis will display more detailed information about the amount of feedback the percentage has been calculated over.\n\nParameters:\n* $1 - the amount of feedback that has been included in the calculation of the percentage (= all feedback not marked as inappropriate)",
-	"articlefeedbackv5": "{{doc-special|ArticleFeedbackv5}}\nThe title of the feature. It is about reader feedback.\n\nPlease visit http://prototype.wikimedia.org/articleassess/Main_Page for a prototype installation.",
+	"articlefeedbackv5": "{{doc-special|ArticleFeedbackv5}}\nThe title of the feature. It is about reader feedback.",
 	"articlefeedbackv5watchlist": "{{doc-special|ArticleFeedbackv5Watchlist|unlisted=1}}",
 	"articlefeedbackv5-desc": "{{desc|name=Article Feedback v5|url=https://www.mediawiki.org/wiki/Extension:ArticleFeedbackv5}}",
 	"articlefeedbackv5-comment-more": "Label for the button to expand the truncated comment on feedback.\n{{Identical|More}}",
