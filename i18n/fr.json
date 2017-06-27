@@ -44,6 +44,7 @@
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Soumettre un commentaire sur un article",
+	"apihelp-articlefeedbackv5-summary": "Envoyer un commentaire d'article",
 	"apihelp-articlefeedbackv5-param-title": "Titre de la page pour laquelle soumettre un avis. Impossible à utiliser avec $1pageid",
 	"apihelp-articlefeedbackv5-param-pageid": "Id de la page pour laquelle soumettre un avis. Impossible à utiliser avec $1title",
 	"apihelp-articlefeedbackv5-param-revid": "Identifiant de version pour lequel un commentaire est soumis",
@@ -74,6 +75,7 @@
 	"apihelp-articlefeedbackv5-add-flag-note-param-feedbackid": "Identifiant de commentaire à labelliser",
 	"apihelp-articlefeedbackv5-add-flag-note-param-source": "L’origine de la marque : article (page), centrale (page de commentaire), liste de suivi (page), lien permanent",
 	"apihelp-articlefeedbackv5-set-status-description": "Activer/désactiver AFTv5 pour une certaine page.",
+	"apihelp-articlefeedbackv5-set-status-summary": "Activer/Désactiver AFTv5 pour une page donnée.",
 	"apihelp-articlefeedbackv5-set-status-param-title": "Titre de la page pour activer/désactiver AFTv5. Ne peut être utilisé avec $1pageid",
 	"apihelp-articlefeedbackv5-set-status-param-pageid": "Id de la page pour laquelle activer/désactiver AFTv5. Impossible à utiliser avec $1title.",
 	"apihelp-articlefeedbackv5-set-status-param-enable": "1 pour activer, 0 pour désactiver AFTv5",
@@ -85,6 +87,7 @@
 	"apihelp-query+articlefeedbackv5-view-activity-param-continue": "Quand plusieurs résultats sont possibles, utiliser ceci pour continuer",
 	"apihelp-query+articlefeedbackv5-view-activity-param-noheader": "Aller aux balises d'en-tête, même si on est sur la première page",
 	"apihelp-query+articlefeedbackv5-view-feedback-description": "Affiche la liste des commentaires d'articles pour une page spécifiée",
+	"apihelp-query+articlefeedbackv5-view-feedback-summary": "Afficher les commentaires d'articles d'une page spécifique",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-title": "Le titre de la page pour laquelle on désire les commentaires d'appréciation. Ne peut être utilisé avec $1pageid",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-pageid": "Identifiant de la page pour laquelle obtenir les notes d’avis. Impossible à utiliser avec $1title",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-watchlist": "Charger les commentaires des pages suivies par l’utilisateur (1) ou de toutes les pages (0)",
