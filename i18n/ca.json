@@ -15,7 +15,8 @@
 			"Solde",
 			"Toniher",
 			"Fitoschido",
-			"Jaumeortola"
+			"Jaumeortola",
+			"Ssola"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Gràcies!",
@@ -44,7 +45,7 @@
 	"articlefeedbackv5-cta6-button-text": "Visita la casa del te",
 	"articlefeedbackv5-overlay-close": "Tanca",
 	"articlefeedbackv5-error": "Ha ocorregut un error. Si us plau, prova-ho de nou més tard.",
-	"articlefeedbackv5-error-blocked": "Els usuaris bloquejats no poden enviar comentaris.",
+	"articlefeedbackv5-error-blocked": "Els usuaris blocats no poden enviar comentaris.",
 	"articlefeedbackv5-error-validation": "Error de validació.",
 	"articlefeedbackv5-error-unknown": "Error desconegut.",
 	"articlefeedbackv5-error-submit": "Error d'enviament del formulari.",
