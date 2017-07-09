@@ -493,9 +493,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// admins can change settings at page protection
 		if ( $this->getUser()->isAllowed( 'aft-administrator' ) ) {
 			$title = Title::newFromID( $this->pageId );
-			$link = Linker::linkKnown(
+			$link = $this->getLinkRenderer()->makeKnownLink(
 				$title,
-				$this->msg( 'articlefeedbackv5-disabled-admin-button-text' )->escaped(),
+				$this->msg( 'articlefeedbackv5-disabled-admin-button-text' )->text(),
 				array( 'class' => 'articlefeedbackv5-enable-button' ),
 				array( 'action' => 'protect' )
 			);
