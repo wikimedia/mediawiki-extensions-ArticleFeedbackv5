@@ -5,7 +5,13 @@
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Unviar un comentariu sobro l'artículu",
+	"apihelp-articlefeedbackv5-summary": "Unviar un comentariu sobro l'artículu",
 	"apihelp-articlefeedbackv5-param-title": "Títulu de la páxina pa la qu'unviar un comentariu. Nun puede usase xunto con $1pageid",
+	"apihelp-articlefeedbackv5-param-pageid": "Identificador de la páxina pa la qu'unviar un comentariu. Nun puede usase xunto con $1title",
+	"apihelp-articlefeedbackv5-param-revid": "Identificador de la revisión pa la qu'unviar un comentariu",
+	"apihelp-articlefeedbackv5-param-anontoken": "Pase pa usuarios anónimos",
+	"apihelp-articlefeedbackv5-param-bucket": "Qué formulariu de comentariu s'amosó al usuariu",
+	"apihelp-articlefeedbackv5-param-cta": "CTA (llamada a aición) que s'amosó después d'unviar el formulariu",
 	"articlefeedbackv5-cta-thanks": "¡Gracies!",
 	"articlefeedbackv5-cta-confirmation-message": "El comentariu pue vese nesta [$1 páxina de comentarios].",
 	"articlefeedbackv5-cta1-confirmation-title": "¿Sabía que pue editar esta páxina?",
