@@ -1,6 +1,6 @@
 {
 	"name": "Article Feedback",
-	"version": "5.2.4",
+	"version": "5.2.5",
 	"author": [
 		"Greg Chiasson",
 		"Reha Sterbin",
@@ -19,6 +19,9 @@
 		"Jack Phoenix"
 	],
 	"license-name": "GPL-2.0+",
+	"requires": {
+		"MediaWiki": ">= 1.28.0"
+	},
 	"url": "https://www.mediawiki.org/wiki/Extension:ArticleFeedbackv5",
 	"descriptionmsg": "articlefeedbackv5-desc",
 	"type": "other",
