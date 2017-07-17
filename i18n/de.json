@@ -22,6 +22,10 @@
 			"Wnme"
 		]
 	},
+	"apihelp-articlefeedbackv5-param-anontoken": "Token für anonyme Benutzer",
+	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Zu aktualisierende Logbuchkennung",
+	"apihelp-articlefeedbackv5-add-flag-note-param-flagtype": "Anzuwendender Markierungstyp",
+	"apihelp-articlefeedbackv5-add-flag-note-param-feedbackid": "Zu markierende Rückmeldungskennung",
 	"articlefeedbackv5-cta-thanks": "Vielen Dank!",
 	"articlefeedbackv5-cta-confirmation-message": "Ihre Rückmeldung kann auf [$1 dieser Seite] angesehen werden.",
 	"articlefeedbackv5-cta1-confirmation-title": "Wussten Sie, dass Sie diese Seite bearbeiten können?",
@@ -274,7 +278,6 @@
 	"articlefeedbackv5-desc": "Ermutigt Benutzer zur Mitarbeit, indem ihnen erlaubt wird, einen Artikel zu bewerten und Änderungen vorzuschlagen",
 	"articlefeedbackv5-comment-more": "Mehr",
 	"articlefeedbackv5-comment-empty": "Es wurde kein Text eingegeben",
-	"articlefeedbackv5-unsupported-message": "Ihr Browser unterstützt leider diesen Prototyp des Hilfsmittels nicht. Um diese Seite ansehen zu können, müssen Sie einen anderen Browser nutzen.",
 	"articlefeedbackv5-page-disabled": "Die Seite für Rückmeldungen ist zu diesem Artikel nicht aktiviert.",
 	"articlefeedbackv5-no-feedback": "Es gibt keine Rückmeldungen, die zum ausgewählten Filter passen. Um den Filter zu ändern, versuchen Sie eine der obenstehenden Optionen (z.&nbsp;B. „Hervorgehoben“ oder „Ungeprüfte“).",
 	"articlefeedbackv5-invalid-feedback": "Die gewünschte Rückmeldung ist nicht vorhanden.",
