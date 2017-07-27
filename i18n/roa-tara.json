@@ -7,6 +7,8 @@
 	},
 	"apihelp-articlefeedbackv5-description": "Manne 'na segnalazione d'a vôsce",
 	"apihelp-articlefeedbackv5-summary": "Manne 'na segnalazione d'a vôsce",
+	"apihelp-articlefeedbackv5-param-revid": "ID d'a revisione da mannà 'a segnalazione",
+	"apihelp-articlefeedbackv5-param-anontoken": "Gettone pe le utinde senza nome",
 	"articlefeedbackv5-cta-thanks": "Grazie!",
 	"articlefeedbackv5-cta-confirmation-message": "'U messàgge tune 'u puè 'ndrucà sus a sta [$1 pàgene de segnalaziune].",
 	"articlefeedbackv5-cta1-confirmation-title": "'Ô sapevate ca se pòte cangià 'stà pagene?",
