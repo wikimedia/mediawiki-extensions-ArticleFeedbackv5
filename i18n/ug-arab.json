@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Arlin",
-			"Sahran"
+			"Sahran",
+			"Uzdil"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "رەھمەت!",
@@ -123,7 +124,7 @@
 	"articlefeedbackv5-form-unfeature": "ئالاھىدىلىكى يوق يازما",
 	"articlefeedbackv5-form-resolve": "ھەل قىلىنغان بەلگىسى سال",
 	"articlefeedbackv5-form-unresolve": "ھەل قىلىنمىغان بەلگىسى سال",
-	"articlefeedbackv5-form-inappropriate": "بۇ يوللانمىنى يوشۇر",
+	"articlefeedbackv5-form-inappropriate": "نامۇۋاپىق",
 	"articlefeedbackv5-form-unhide": "بۇ يوللانمىنى ئاشكارىلا",
 	"articlefeedbackv5-form-helpful": "پايدىلىق بەلگىسى سال ($1)",
 	"articlefeedbackv5-form-oversight": "نازارەت ئىلتىماسى",
@@ -156,7 +157,6 @@
 	"articlefeedbackv5watchlist": "ماقالە قايتۇرما ئىنكاسى - مەن كۆرگەن بەتلەر",
 	"articlefeedbackv5-desc": "ماقالە قايتۇرما ئىنكاسى",
 	"articlefeedbackv5-comment-more": "كۆپ",
-	"articlefeedbackv5-unsupported-message": "كەچۈرۈڭ، توركۆرگۈڭىز بۇ ئەندىزىنى قوللىمايدۇ. بۇ بەتنى كۆرۈش ئۈچۈن باشقا توركۆرگۈ ئىشلىتىڭ.",
 	"articlefeedbackv5-page-disabled": "بۇ بەتنىڭ قايتۇرما ئىنكاس بېتى قوزغىتىلمىغان.",
 	"articlefeedbackv5-no-feedback": "سىز تاللىغان سۈزگۈچنىڭ ھېچقانداق قايتۇرما ئىنكاسى يوق. سۈزگۈچىڭىزنى ئۆزگەرتىشتە ئۈستىدىكى تاللانمىنى سىناڭ (مەسىلەن: «ئەڭ مۇناسىۋەتلىك» ياكى «ھەممە باھالار»).",
 	"articlefeedbackv5-viewactivity": "پائالىيەتنى كۆرسەت",
@@ -164,7 +164,6 @@
 	"articlefeedbackv5-mask-text-autohide": "بۇ يامىنى $3 ئىلگىرى #$1 {{GENDER:$2|$2 تەرىپىدىن ئۆزلۈكىدىن يوشۇرۇلغان}}.",
 	"articlefeedbackv5-mask-text-hide": "بۇ يامىنى $3 ئىلگىرى #$1 {{GENDER:$2|$2 تەرىپىدىن يوشۇرۇلغان}}.",
 	"articlefeedbackv5-mask-text-oversight": "بۇ يامىنى $3 ئىلگىرى #$1 {{GENDER:$2|$2 تەرىپىدىن نازارەت قىلىنغان}}.",
-	"articlefeedbackv5-special-disclaimer": "بۇ بىر ئەندىزە. تەكلىپ قىلىنمىغان بولسىڭىز ئۇنى ئىشلەتمەڭ.",
 	"articlefeedbackv5-special-goback": "قايتۇرما ئىنكاس بېتىنى كۆرسەت",
 	"articlefeedbackv5-special-central-goback": "باشقا بەتلەردىن تېخىمۇ كۆپ قايتۇرما ئىنكاسنى كۆرۈڭ",
 	"articlefeedbackv5-permalink-info-title": "بۇ يازما ھەققىدىكى ئۇچۇر",
@@ -234,7 +233,7 @@
 	"articlefeedbackv5-noteflyover-unrequest-caption": "نازارەت ئىلتىماسىدىن ۋاز كەچ",
 	"articlefeedbackv5-noteflyover-unrequest-label": "ئىزاھات قوش",
 	"articlefeedbackv5-noteflyover-unrequest-placeholder": "نېمە ئۈچۈن بۇ نازارەت ئىلتىماسىدىن ۋاز كېچىسىز؟",
-	"articlefeedbackv5-noteflyover-unrequest-submit": "ئىلتىماستىن ۋاز كەچ",
+	"articlefeedbackv5-noteflyover-unrequest-submit": "ئىلتىماستىن قايتىش",
 	"articlefeedbackv5-noteflyover-unrequest-help": "تەپسىلات بىلدۈرگۈسى",
 	"articlefeedbackv5-noteflyover-oversight-caption": "بۇ ماقالىنى نازارەت قىلىش",
 	"articlefeedbackv5-noteflyover-oversight-label": "ئىزاھات قوش",
@@ -359,7 +358,7 @@
 	"articlefeedbackv5-watchlist-view-feedback": "مەن كۆرگەن بەتلەردىن كەلگەن قايتۇرما ئىنكاس",
 	"articlefeedbackv5-email-request-oversight-subject": "ماقالە قايتۇرما ئىنكاس بېتىنىڭ نازارەت ئىلتىماسى",
 	"articlefeedbackv5-disable-flyover-title": "بۇ قورالنى چىقىرىۋەتسۇنمۇ؟",
-	"articlefeedbackv5-disable-flyover-prefbutton": "مايىللىق تەڭشىكىمگە يۆتكەل",
+	"articlefeedbackv5-disable-flyover-prefbutton": "مايىللىق تەڭشىكىم",
 	"abusefilter-edit-action-aftv5flagabuse": "(ماقالە قايتۇرما ئىنكاسى) ئۆزلۈكىدىن سۈيىئىستىمال بايرىقى قادا",
 	"abusefilter-edit-action-aftv5hide": "(ماقالە قايتۇرما ئىنكاسى) ئۆزلۈكىدىن يوشۇر",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "ئۆزلۈكىدىن يوشۇردى. قائىدىسى: $1",
