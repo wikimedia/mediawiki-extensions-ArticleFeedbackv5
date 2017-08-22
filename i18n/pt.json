@@ -465,7 +465,7 @@
 	"articlefeedbackv5-noteflyover-unarchive-submit": "Adicionar nota",
 	"articlefeedbackv5-noteflyover-unarchive-help": "Saiba mais",
 	"articlefeedbackv5-noteflyover-request-caption": "Solicitar supervisão",
-	"articlefeedbackv5-noteflyover-request-description": "Antes de solicitar supervisão, por favor verifique se esta mensagem inclui uma destas questões:\n* números de telefone\n* endereços de email\n* ligações a sítios pornográficos\n* comentários difamatórios/caluniosos sobre uma pessoa\n* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy other outros critérios para supervisão]",
+	"articlefeedbackv5-noteflyover-request-description": "Antes de solicitar supervisão verifique, por favor, se esta mensagem inclui uma destas questões:\n* números de telefone\n* endereços de correio eletrónico\n* links para sites pornográficos\n* comentários difamatórios ou caluniosos sobre uma pessoa\n* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy outros critérios para supervisão]",
 	"articlefeedbackv5-noteflyover-request-label": "Adicionar uma nota a explicar o motivo da solicitação desta supervisão",
 	"articlefeedbackv5-noteflyover-request-placeholder": "Porque solicitou supervisão?",
 	"articlefeedbackv5-noteflyover-request-submit": "Pedido de supervisão",
