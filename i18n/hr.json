@@ -3,7 +3,8 @@
 		"authors": [
 			"Herr Mlinka",
 			"Roberta F.",
-			"SpeedyGonsales"
+			"SpeedyGonsales",
+			"Bugoslav"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Hvala!",
@@ -135,6 +136,7 @@
 	"articlefeedbackv5-form-tooltip-hide": "Besmislica, neželjena poruka, napad, osobni podatci ...",
 	"articlefeedbackv5-form-tooltip-flag": "Besmislica, neželjena poruka, napad, osobni podatci ...",
 	"articlefeedbackv5-form-tooltip-oversight": "Napad, osobni podatci ...",
+	"articlefeedbackv5-form2-header-praise": "{{GENDER:$1|$1 primio je pohvalu|$1 primila je pohvalu|$1 primili ste pohvalu}}:",
 	"articlefeedbackv5-form2-header-problem": "{{GENDER:$1|$1}} ima problem:",
 	"articlefeedbackv5-form2-header-question": "{{GENDER:$1|$1}} ima pitanje:",
 	"articlefeedbackv5-form2-header-suggestion": "{{GENDER:$1|$1}} ima prijedlog:",
