@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bunukwiki"
+			"Bunukwiki",
+			"Benel"
 		]
 	},
 	"articlefeedbackv5-contribs-status-action-hide": "midimut",
+	"articlefeedbackv5-form-helpful-yes-label": "hang",
 	"articlefeedbackv5-noteflyover-hide-caption": "midimut"
 }
