@@ -69,7 +69,7 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 	 */
 	public function refreshBatch( $continue ) {
 		$dbw = wfGetDB( DB_MASTER );
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$rows = $dbr->select(
 			array( 'logging', 'page' ),

@@ -314,7 +314,7 @@ class ArticleFeedbackv5Model extends DataModel {
 		 * is not other way: both the feedback entries and the lists are sharded, so we
 		 * can't perform a joined query ;)
 		 */
-		$articles = wfGetDB( DB_SLAVE )->select(
+		$articles = wfGetDB( DB_REPLICA )->select(
 			array( 'watchlist', 'page' ),
 			array( 'page_id' ),
 			array( 'wl_user' => $user->getId() ),

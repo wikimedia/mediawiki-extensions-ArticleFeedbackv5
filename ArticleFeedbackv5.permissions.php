@@ -119,7 +119,7 @@ class ArticleFeedbackv5Permissions {
 			return self::$current[$articleId];
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$restriction = $dbr->selectRow(
 			'page_restrictions',
@@ -158,7 +158,7 @@ class ArticleFeedbackv5Permissions {
 		if ( $restriction === false ) {
 			$restriction = (object) array(
 				'pr_level' => self::getDefaultPermissionLevel( $articleId ),
-				'pr_expiry' => wfGetDB( DB_SLAVE )->getInfinity()
+				'pr_expiry' => wfGetDB( DB_REPLICA )->getInfinity()
 			);
 		}
 
@@ -199,7 +199,7 @@ class ArticleFeedbackv5Permissions {
 		global $wgUser;
 
 		$dbw = wfGetDB( DB_MASTER );
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$record = $dbr->selectField(
 			'page_restrictions',

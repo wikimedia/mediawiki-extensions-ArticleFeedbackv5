@@ -49,7 +49,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 	protected function doDBUpdates() {
 		global $wgArticleFeedbackv5Cluster;
 
-		$dbr = $this->getDB( DB_SLAVE );
+		$dbr = $this->getDB( DB_REPLICA );
 		if ( !$dbr->tableExists( 'aft_article_feedback' ) ) {
 			// not necessary to run, there is no source data
 			return true;
@@ -90,7 +90,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 			$wgArticleFeedbackv5LinkBuckets,
 			$wgArticleFeedbackv5MaxCommentLength;
 
-		$dbr = $this->getDB( DB_SLAVE );
+		$dbr = $this->getDB( DB_REPLICA );
 
 		$rows = $dbr->select(
 			array(

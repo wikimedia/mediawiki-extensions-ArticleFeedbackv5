@@ -141,7 +141,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		$where['aft_hide'] = 0;
 		$where['aft_oversight'] = 0;
 
-		return (int) $this->getDB( DB_SLAVE )->selectField(
+		return (int) $this->getDB( DB_REPLICA )->selectField(
 			$this->table,
 			array( 'COUNT(*)' ),
 			$where,
@@ -189,7 +189,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		$options['ORDER BY'] = array( $pager->getIndexField() . " $order" );
 		$options['LIMIT'] = $limit;
 
-		return $this->getDB( DB_SLAVE )->select( $tables, $fields, $conds, __METHOD__, $options, array() );
+		return $this->getDB( DB_REPLICA )->select( $tables, $fields, $conds, __METHOD__, $options, array() );
 	}
 
 	/**

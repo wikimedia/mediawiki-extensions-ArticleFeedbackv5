@@ -47,7 +47,7 @@ class ArticleFeedbackv5Utils {
 	 * Wrapper function for wfGetDB.
 	 *
 	 * @param $db Integer: index of the connection to get. May be DB_MASTER for the
-	 *            master (for write queries), DB_SLAVE for potentially lagged read
+	 *            master (for write queries), DB_REPLICA for potentially lagged read
 	 *            queries, or an integer >= 0 for a particular server.
 	 * @param $groups Mixed: query groups. An array of group names that this query
 	 *                belongs to. May contain a single string if the query is only
@@ -61,7 +61,7 @@ class ArticleFeedbackv5Utils {
 			// mark that we're writing data
 			static::$written[$wiki] = true;
 		} elseif ( isset(static::$written[$wiki]) && static::$written[$wiki] ) {
-			if ( $db === DB_SLAVE ) {
+			if ( $db === DB_REPLICA ) {
 				/*
 				 * Let's keep querying master to make sure we have up-to-date
 				 * data (waiting for slaves to sync up might take some time)

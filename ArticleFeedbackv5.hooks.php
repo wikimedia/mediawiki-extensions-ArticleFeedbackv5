@@ -772,7 +772,7 @@ class ArticleFeedbackv5Hooks {
 			}
 
 			if ( $value == 'infinite' || $value == 'indefinite' || $value == 'infinity' ) {
-				$expirationTime = wfGetDB( DB_SLAVE )->getInfinity();
+				$expirationTime = wfGetDB( DB_REPLICA )->getInfinity();
 			} else {
 				$unix = strtotime( $value );
 

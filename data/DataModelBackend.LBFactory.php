@@ -26,7 +26,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * Wrapper function for wfGetDB.
 	 *
 	 * @param $db Integer: index of the connection to get. May be DB_MASTER for the
-	 *            master (for write queries), DB_SLAVE for potentially lagged read
+	 *            master (for write queries), DB_REPLICA for potentially lagged read
 	 *            queries, or an integer >= 0 for a particular server.
 	 * @param $groups Mixed: query groups. An array of group names that this query
 	 *                belongs to. May contain a single string if the query is only
@@ -52,7 +52,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 			// mark that we're writing data
 			static::$written[$wikiId] = true;
 		} elseif ( isset( static::$written[$wikiId] ) && static::$written[$wikiId] ) {
-			if ( $db === DB_SLAVE ) {
+			if ( $db === DB_REPLICA ) {
 				/*
 				 * Let's keep querying master to make sure we have up-to-date
 				 * data (waiting for slaves to sync up might take some time)
@@ -98,7 +98,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 			$conds[$this->shardColumn] = $shard;
 		}
 
-		return $this->getDB( DB_SLAVE )->select(
+		return $this->getDB( DB_REPLICA )->select(
 			$this->table,
 			'*',
 			$conds,
@@ -171,7 +171,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @return ResultWrapper
 	 */
 	public function getList( $name, $shard = null, $offset = null, $limit, $sort = null, $order ) {
-		$dbr = $this->getDB( DB_SLAVE );
+		$dbr = $this->getDB( DB_REPLICA );
 
 		$tables = array();
 		$vars = array();
@@ -245,7 +245,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @return array
 	 */
 	public function getCount( $name, $shard = null ) {
-		$dbr = $this->getDB( DB_SLAVE );
+		$dbr = $this->getDB( DB_REPLICA );
 
 		$tables = array();
 		$vars = array();
@@ -303,7 +303,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 		// sorts and conditions are to be treated alike for this purpose
 		$conditions = array_merge( $conditions, array_values( $class::$sorts ) );
 
-		return $this->getDB( DB_SLAVE )->selectRow(
+		return $this->getDB( DB_REPLICA )->selectRow(
 			$this->table,
 			array_unique( $conditions ),
 			array(

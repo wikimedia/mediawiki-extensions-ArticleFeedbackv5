@@ -65,7 +65,7 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 			 * resulting in it not being displayed for anyone.
 			 */
 			$default = ArticleFeedbackv5Permissions::getLottery( $pageObj->getId() );
-			$expiry = $params['enable'] == $default ? wfTimestamp( TS_MW ) : wfGetDB( DB_SLAVE )->getInfinity();
+			$expiry = $params['enable'] == $default ? wfTimestamp( TS_MW ) : wfGetDB( DB_REPLICA )->getInfinity();
 
 			$success = ArticleFeedbackv5Permissions::setRestriction(
 				$pageObj->getId(),
