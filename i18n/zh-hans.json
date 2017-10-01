@@ -539,6 +539,7 @@
 	"articlefeedbackv5-help-tooltip-title": "这是什么？",
 	"articlefeedbackv5-help-tooltip-info": "{{SITENAME}}想知道您对此页面的意见。请与编辑者们分享您的反馈意见，以及帮忙改善此页面。",
 	"articlefeedbackv5-help-tooltip-linktext": "了解更多",
+	"articlefeedbackv5-help-special-linkurl": "//zh.wikipedia.org/wiki/Wikipedia:条目评分工具",
 	"articlefeedbackv5-help-transparency-terms": "请发表[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 有用的反馈]。若您发表，我们认为您接受这些[//wikimediafoundation.org/wiki/Feedback_privacy_statement 条款]中声明的透明度。",
 	"articlefeedbackv5-help-transparency-terms-anon": "请发表[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 有用的回馈]。通过发帖，您同意使用您的IP地址识别您，并按这些[//wikimediafoundation.org/wiki/Feedback_privacy_statement 条款]开放。",
 	"articlefeedbackv5-sitesub-linktext": "改善此页",
