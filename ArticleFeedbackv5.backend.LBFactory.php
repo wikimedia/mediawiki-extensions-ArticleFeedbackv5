@@ -9,6 +9,9 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @version    $Id$
  */
+
+use MediaWiki\MediaWikiServices;
+
 class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	/**
 	 * Override getLB so that AFT's data can be on a separate cluster.
@@ -20,7 +23,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 
 		// connect to external, aft-specific, cluster
 		if ( $wgArticleFeedbackv5Cluster ) {
-			return wfGetLBFactory()->getExternalLB( $wgArticleFeedbackv5Cluster, $wiki );
+			return MediaWikiWikiServices::getInstance()->getDBLoadBalancerFactory()->getExternalLB( $wgArticleFeedbackv5Cluster, $wiki );
 		} else {
 			return parent::getLB( $wiki );
 		}
