@@ -46,6 +46,30 @@
       "revId": "d99a4ceaaf8b9f0cb7b9dbaae54c656fb4eda83a",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e6af365_a1e2d02c",
+        "filename": "data/DataModelBackend.LBFactory.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 34
+      },
+      "writtenOn": "2017-10-06T22:13:22Z",
+      "side": 1,
+      "message": "I\u0027m sorry. I didn\u0027t realise $wiki is passed here. I guess that might mean it still needs to be passed down via lbfactory. You\u0027d know better than me. Sorry for the confusion.",
+      "parentUuid": "0e6af365_c16024cf",
+      "range": {
+        "startLine": 25,
+        "startChar": 43,
+        "endLine": 25,
+        "endChar": 80
+      },
+      "revId": "d99a4ceaaf8b9f0cb7b9dbaae54c656fb4eda83a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
