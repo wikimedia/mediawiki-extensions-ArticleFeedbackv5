@@ -4,6 +4,8 @@ require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
 	: dirname( __FILE__ ) . '/../../../../maintenance/Maintenance.php' );
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * This will purge all DataModel caches.
  *
@@ -51,6 +53,9 @@ class DataModelPurgeCache extends Maintenance {
 		// get all entries from DB
 		$rows = $class::getBackend()->get( null, null );
 
+		// get LoadBalancerFactory
+		$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
 		foreach ( $rows as $i => $row ) {
 			if ( !in_array( $row->{$class::getShardColumn()}, $this->shards ) ) {
 				$this->shards[] = $row->{$class::getShardColumn()};
@@ -64,7 +69,7 @@ class DataModelPurgeCache extends Maintenance {
 
 			if ( $i % 50 == 0 ) {
 				$this->output( "--purged caches to entry #".$object->{$class::getIdColumn()}."\n" );
-				wfWaitForSlaves();
+				$factory->waitForReplication();
 			}
 		}
 
@@ -73,7 +78,7 @@ class DataModelPurgeCache extends Maintenance {
 
 			if ( $i % 50 == 0 ) {
 				$this->output( "--purged caches to shard #$shard\n" );
-				wfWaitForSlaves();
+				$factory->waitForReplication();
 			}
 		}
 

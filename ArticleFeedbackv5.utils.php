@@ -20,6 +20,9 @@
  * @package    ArticleFeedback
  * @subpackage Api
  */
+
+use MediaWiki\MediaWikiServices;
+
 class ArticleFeedbackv5Utils {
 	/**
 	 * @var array [LoadBalancer]
@@ -37,7 +40,7 @@ class ArticleFeedbackv5Utils {
 	 */
 	public static function getLB( $wiki = false ) {
 		if ( !isset( static::$lb[$wiki] ) ) {
-			static::$lb[$wiki] = wfGetLB( $wiki );
+			static::$lb[$wiki] = MediaWikiServices::getInstance()->getDBLoadBalancer();
 		}
 
 		return static::$lb[$wiki];

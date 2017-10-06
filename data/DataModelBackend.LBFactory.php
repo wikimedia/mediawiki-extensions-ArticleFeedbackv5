@@ -8,6 +8,9 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @version    $Id$
  */
+
+use MediaWiki\MediaWikiServices;
+
 class DataModelBackendLBFactory extends DataModelBackend {
 	/**
 	 * @var array [bool]
@@ -19,7 +22,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @return LoadBalancer
 	 */
 	public function getLB( $wiki = false ) {
-		return wfGetLB( $wiki );
+		return MediaWikiServices::getInstance()->getDBLoadBalancer();
 	}
 
 	/**
