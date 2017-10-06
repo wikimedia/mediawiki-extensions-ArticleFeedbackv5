@@ -11,6 +11,8 @@ require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
 	: dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Set an archive date for feedback posts, before archive was introduced.
  *
@@ -95,7 +97,12 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 				$next = $offset;
 			}
 
-			wfWaitForSlaves( false, false, $wgArticleFeedbackv5Cluster );
+			$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+			$factory->waitForReplication( [
+				'ifWritesSince' => false,
+				'domain' => false,
+				'cluster' => $wgArticleFeedbackv5Cluster 
+			] );
 
 			if ( $break ) {
 				break;

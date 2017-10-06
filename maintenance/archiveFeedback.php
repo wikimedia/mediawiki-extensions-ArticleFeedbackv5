@@ -11,6 +11,8 @@ require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
 	: dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Mark old feedback that is not particularly interesting as archived.
  *
@@ -103,7 +105,12 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 					$this->output( "--moved to entry #$feedback->aft_id\n" );
 				}
 
-				wfWaitForSlaves( false, false, $wgArticleFeedbackv5Cluster );
+				$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+				$factory->waitForReplication( [
+					'ifWritesSince' => false,
+					'domain' => false,
+					'cluster' => $wgArticleFeedbackv5Cluster 
+				] );
 
 				if ( $break ) {
 					break;

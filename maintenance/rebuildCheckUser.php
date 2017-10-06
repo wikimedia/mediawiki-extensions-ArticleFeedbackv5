@@ -11,6 +11,8 @@ require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
 	: dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Rebuild AFT's CheckUser entries
  *
@@ -51,7 +53,9 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 
 		while ( $continue !== null ) {
 			$continue = $this->refreshBatch( $continue );
-			wfWaitForSlaves();
+
+			$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+			$factory->waitForReplication();
 
 			if ( $continue ) {
 				$this->output( '--refreshed to entry #' . $continue['id'] . "\n" );
