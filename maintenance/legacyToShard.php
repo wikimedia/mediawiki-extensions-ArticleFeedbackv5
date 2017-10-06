@@ -11,6 +11,8 @@ require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
 	: dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Move all relevant legacy data stored in aft_article_*
  * tables to the aft_feedback table that will be sharded.
@@ -64,7 +66,13 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 		$continue = 0;
 		while ( $continue !== null ) {
 			$continue = $this->moveBatch( $continue );
-			wfWaitForSlaves( false, false, $wgArticleFeedbackv5Cluster );
+
+			$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+			$factory->waitForReplication( [
+				'ifWritesSince' => false,
+				'domain' => false,
+				'cluster' => $wgArticleFeedbackv5Cluster
+			] );
 
 			if ( $continue ) {
 				$this->output( "--moved to entry #$continue\n" );
