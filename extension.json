@@ -1,6 +1,6 @@
 {
 	"name": "Article Feedback",
-	"version": "5.2.5",
+	"version": "5.3.0",
 	"author": [
 		"Greg Chiasson",
 		"Reha Sterbin",
@@ -273,7 +273,6 @@
 			"dependencies": [
 				"jquery.appear",
 				"jquery.tipsy",
-				"json",
 				"jquery.localize",
 				"jquery.ui.button",
 				"jquery.cookie",
@@ -422,7 +421,6 @@
 				"mediawiki.util",
 				"jquery.tipsy",
 				"jquery.localize",
-				"json",
 				"jquery.ui.button"
 			]
 		}
