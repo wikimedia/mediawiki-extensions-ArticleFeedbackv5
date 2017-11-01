@@ -276,7 +276,6 @@
 				"jquery.localize",
 				"jquery.ui.button",
 				"jquery.cookie",
-				"jquery.placeholder",
 				"mediawiki.cookie",
 				"mediawiki.jqueryMsg",
 				"jquery.effects.highlight",

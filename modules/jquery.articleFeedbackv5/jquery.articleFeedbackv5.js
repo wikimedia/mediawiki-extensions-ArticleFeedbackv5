@@ -766,7 +766,7 @@
 						// articlefeedbackv5-bucket6-question-placeholder-yes, articlefeedbackv5-bucket6-question-placeholder-no
 						$element = $.articleFeedbackv5.$holder.find( '.articleFeedbackv5-comment textarea' );
 						text = mw.msg( 'articlefeedbackv5-bucket6-question-placeholder-' + newVal );
-						$element.attr( 'placeholder', text ).placeholder();
+						$element.attr( 'placeholder', text );
 
 						// allow feedback submission if there is feedback (or if Y/N was positive)
 						$.articleFeedbackv5.enableSubmission( true );
