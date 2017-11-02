@@ -13,9 +13,11 @@
 			"Saruman",
 			"Siebrand",
 			"Southparkfan",
-			"Tjcool007"
+			"Tjcool007",
+			"Mainframe98"
 		]
 	},
+	"apihelp-articlefeedbackv5-param-anontoken": "Token voor anonieme gebruikers",
 	"articlefeedbackv5-cta-thanks": "Bedankt!",
 	"articlefeedbackv5-cta-confirmation-message": "U kunt uw bericht bekijken op deze [$1 terugkoppelingspagina].",
 	"articlefeedbackv5-cta1-confirmation-title": "Wist u dat u deze pagina kunt bewerken?",
@@ -268,7 +270,6 @@
 	"articlefeedbackv5-desc": "Paginabeoordeling",
 	"articlefeedbackv5-comment-more": "Meer",
 	"articlefeedbackv5-comment-empty": "Geen tekst ingevoerd",
-	"articlefeedbackv5-unsupported-message": "Uw browser wordt niet ondersteund door dit prototype. Gebruik een andere browser om deze pagina te bekijken.",
 	"articlefeedbackv5-page-disabled": "Terugkoppeling is niet ingeschakeld voor deze pagina.",
 	"articlefeedbackv5-no-feedback": "Er is geen terugkoppeling voor het filter dat u hebt geselecteerd. Probeer een van de bovenstaande opties om uw filter te wijzigen (bijvoorbeeld \"Uitgelicht\" of \"Ongecontroleerd\").",
 	"articlefeedbackv5-invalid-feedback": "De opgegeven terugkoppeling bestaat niet.",
@@ -278,7 +279,6 @@
 	"articlefeedbackv5-mask-text-autohide": "Dit bericht #$1 {{GENDER:$2|is automatisch verborgen door $2}} $3.",
 	"articlefeedbackv5-mask-text-hide": "Dit bericht #$1 {{GENDER:$2|is}} verborgen door $2 $3.",
 	"articlefeedbackv5-mask-text-oversight": "Dit bericht #$1 {{GENDER:$2|is}} is onder toezicht geplaatst door $2 $3.",
-	"articlefeedbackv5-special-disclaimer": "Dit is een prototype. Gebruik het niet als u niet bent uitgenodigd.",
 	"articlefeedbackv5-special-goback": "Pagina met terugkoppeling bekijken",
 	"articlefeedbackv5-special-central-goback": "Meer terugkoppeling voor andere pagina's bekijken",
 	"articlefeedbackv5-permalink-info-title": "Gegevens over dit bericht",
