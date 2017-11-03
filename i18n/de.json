@@ -24,6 +24,7 @@
 	},
 	"apihelp-articlefeedbackv5-description": "Versendet die Artikel-Rückmeldung",
 	"apihelp-articlefeedbackv5-summary": "Versendet die Artikel-Rückmeldung",
+	"apihelp-articlefeedbackv5-param-revid": "Versionskennung, für die die Rückmeldung abgesandt werden soll.",
 	"apihelp-articlefeedbackv5-param-anontoken": "Token für anonyme Benutzer",
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Typ der anzuwendenden Markierung",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Zu aktualisierende Logbuchkennung",
