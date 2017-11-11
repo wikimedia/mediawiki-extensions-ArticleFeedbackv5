@@ -55,12 +55,12 @@ abstract class DataModel {
 	 *
 	 * @var array
 	 */
-	public static $lists = array( /*
+	public static $lists = [ /*
 		// sample list that would include all entries (there are no conditions)
 		'all' => array(),
 		// sample list that would include no entries (condition will never evaluate to true: id won't be < 0)
 		'none' => array( 'id < 0' ),
-*/	);
+*/ ];
 
 	/**
 	 * Available sorts to order the data
@@ -72,12 +72,12 @@ abstract class DataModel {
 	 *
 	 * @var array
 	 */
-	public static $sorts = array( /*
+	public static $sorts = [ /*
 		// sample order on id value - note: unlike a traditional auto-increment id,
 		// this would not result in entries in insertion order; the id generated
 		// by datamodel is a rather random hash
 		'id' => 'id',
-*/	);
+*/ ];
 
 	/**
 	 * Pagination limit: how many entries should be fetched at once for lists.
@@ -110,7 +110,7 @@ abstract class DataModel {
 	 * Validate the entry's data.
 	 *
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function validate() {
 		/*
@@ -239,7 +239,7 @@ abstract class DataModel {
 	 * @param string[optional] $sort Sort to apply to list
 	 * @param string[optional] $order Sort the list ASC or DESC
 	 * @return DataModelList
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public static function getList( $name, $shard = null, $offset = null, $sort = null, $order = 'ASC' ) {
 		$order = strtoupper( $order );
@@ -248,7 +248,7 @@ abstract class DataModel {
 			throw new MWException( "List '$name' is no known list" );
 		} elseif ( $sort !== null && !in_array( $sort, array_keys( static::$sorts ) ) ) {
 			throw new MWException( "Sort '$sort' does not exist" );
-		} elseif ( !in_array( $order, array( 'ASC', 'DESC' ) ) ) {
+		} elseif ( !in_array( $order, [ 'ASC', 'DESC' ] ) ) {
 			throw new MWException( 'Order should be either ASC or DESC' );
 		}
 
@@ -284,18 +284,18 @@ abstract class DataModel {
 			// fetch data from db
 			$rows = static::getBackend()->getList( $name, $shard, $offset, $batchSize + 1, $sort, $order );
 
-			$entries = array();
+			$entries = [];
 			foreach ( $rows as $row ) {
 				// pre-cache entries
 				$entry = static::loadFromRow( $row );
 				$entry->cache();
 
 				// build list of id's
-				$entries[] = array(
+				$entries[] = [
 					'id' => $entry->{static::getIdColumn()},
 					'shard' => $entry->{static::getShardColumn()},
 					'offset' => ( isset( $row->offset_value ) ? $row->offset_value . '|' : '' ) . $entry->{static::getIdColumn()}
-				);
+				];
 			}
 
 			$size = 0;
@@ -336,7 +336,7 @@ abstract class DataModel {
 		}
 
 		if ( !$list ) {
-			return new DataModelList( array(), get_called_class() );
+			return new DataModelList( [], get_called_class() );
 		}
 
 		return $list;
@@ -369,7 +369,7 @@ abstract class DataModel {
 			static::getCache()->set( $key, $count );
 		}
 
-		return (int) $count;
+		return (int)$count;
 	}
 
 	/**
@@ -377,7 +377,7 @@ abstract class DataModel {
 	 *
 	 * @param bool[optional] $validate True if data should be validated
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function insert( $validate = true ) {
 		// claim unique id for this entry
@@ -407,7 +407,7 @@ abstract class DataModel {
 	 *
 	 * @param bool[optional] $validate True if data should be validated
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function update( $validate = true ) {
 		if ( $this->{static::getIdColumn()} === null ) {
@@ -438,7 +438,7 @@ abstract class DataModel {
 	 * Delete entry.
 	 *
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function delete() {
 		if ( $this->{static::getIdColumn()} === null ) {
@@ -464,7 +464,7 @@ abstract class DataModel {
 	 * Get name of table to hold the data.
 	 *
 	 * @return string
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public static function getTable() {
 		if ( !static::$table ) {
@@ -478,7 +478,7 @@ abstract class DataModel {
 	 * Get name of column to act as unique id.
 	 *
 	 * @return string
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public static function getIdColumn() {
 		if ( !static::$idColumn ) {
@@ -494,9 +494,9 @@ abstract class DataModel {
 	 * Get name of column to shard data over.
 	 *
 	 * @return string
-	 * @throw MWException
+	 * @throws MWException
 	 */
-	public static function getShardColumn () {
+	public static function getShardColumn() {
 		if ( !static::$shardColumn ) {
 			throw new MWException( 'No shard column has been set in class ' . get_called_class() );
 		} elseif ( !property_exists( get_called_class(), static::$shardColumn ) ) {
@@ -581,7 +581,7 @@ abstract class DataModel {
 		 * We'll now want to fetch the actual data for these entries; gather a
 		 * list of entries that are not yet cached, so we can fetch all of them at once
 		 */
-		$missing = array();
+		$missing = [];
 		foreach ( $entries as $entry ) {
 			$id = $entry['id'];
 			$shard = $entry['shard'];
@@ -651,7 +651,7 @@ abstract class DataModel {
 		 * is not lagging; we don't want to cache outdated data.
 		 */
 		if ( static::getBackend()->allowCache() ) {
-			$cache = array( 'time' => wfTimestampNow(), 'list' => $list );
+			$cache = [ 'time' => wfTimestampNow(), 'list' => $list ];
 			$keyGetList = wfMemcKey( get_called_class(), 'getList', $name, $shard, $offset, $sort, $order );
 			static::getCache()->set( $keyGetList, $cache, 60 * 60 );
 		}
@@ -679,7 +679,7 @@ abstract class DataModel {
 		 * if the timestamp stored along with it is more recent than the timestamp
 		 * found in this validity cache.
 		 */
-		foreach ( array( $shard, null ) as $shard ) {
+		foreach ( [ $shard, null ] as $shard ) {
 			$key = wfMemcKey( get_called_class(), 'getListValidity', $name, $shard );
 			static::getCache()->set( $key, wfTimestampNow(), 60 * 60 );
 		}
@@ -718,7 +718,7 @@ abstract class DataModel {
 			}
 
 			// update list totals
-			$difference = (int) $existsNew - (int) $existsOld;
+			$difference = (int)$existsNew - (int)$existsOld;
 			if ( $difference != 0 ) {
 				$this->updateCountCache( $list, $this->{static::getShardColumn()}, $difference );
 			}
@@ -751,7 +751,7 @@ abstract class DataModel {
 	 */
 	protected function updateCountCache( $name, $shard, $difference ) {
 		// update both shard-specific as well as general all-shard count
-		foreach ( array( $shard, null ) as $shard ) {
+		foreach ( [ $shard, null ] as $shard ) {
 			$class = get_called_class();
 			$key = wfMemcKey( $class, 'getCount', $name, $shard );
 
@@ -767,7 +767,7 @@ abstract class DataModel {
 			 * @use string $class The called class
 			 * @return int
 			 */
-			$callback = function( BagOStuff $cache, $key, $existingValue ) use ( $name, $shard, $difference, $class ) {
+			$callback = function ( BagOStuff $cache, $key, $existingValue ) use ( $name, $shard, $difference, $class ) {
 				// if nothing is cached, leave be; cache will rebuild when it's requested
 				if ( $existingValue === false ) {
 					return false;

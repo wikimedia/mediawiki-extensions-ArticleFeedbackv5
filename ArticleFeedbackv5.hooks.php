@@ -36,16 +36,16 @@ class ArticleFeedbackv5Hooks {
 		// Permissions: 6 levels of permissions are built into ArticleFeedbackv5: reader, member, editor,
 		// monitor, administrator, oversighter. The default (below-configured) permissions scheme can be seen at
 		// http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
-		$wgArticleFeedbackv5DefaultPermissions = array(
-			'aft-reader' => array( '*', 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ),
-			'aft-member' => array( 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ),
-			'aft-editor' => array( 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ),
-			'aft-monitor' => array( 'rollbacker', 'reviewer', 'sysop', 'oversight' ),
-			'aft-administrator' => array( 'sysop', 'oversight' ),
-			'aft-oversighter' => array( 'oversight' ),
-		);
+		$wgArticleFeedbackv5DefaultPermissions = [
+			'aft-reader' => [ '*', 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ],
+			'aft-member' => [ 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ],
+			'aft-editor' => [ 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ],
+			'aft-monitor' => [ 'rollbacker', 'reviewer', 'sysop', 'oversight' ],
+			'aft-administrator' => [ 'sysop', 'oversight' ],
+			'aft-oversighter' => [ 'oversight' ],
+		];
 		foreach ( $wgArticleFeedbackv5DefaultPermissions as $permission => $groups ) {
-			foreach ( (array) $groups as $group ) {
+			foreach ( (array)$groups as $group ) {
 				if ( isset( $wgGroupPermissions[$group] ) ) {
 					$wgGroupPermissions[$group][$permission] = true;
 				}
@@ -67,26 +67,26 @@ class ArticleFeedbackv5Hooks {
 	public static function loadExtensionSchemaUpdates( $updater = null ) {
 		$updater->addExtensionTable(
 			'aft_feedback',
-			dirname( __FILE__ ) . '/sql/ArticleFeedbackv5.sql'
+			__DIR__ . '/sql/ArticleFeedbackv5.sql'
 		);
 
 		// old schema support
 		if ( $updater->getDB()->tableExists( 'aft_article_feedback' ) ) {
 			$updater->addExtensionTable(
 				'aft_article_answer_text',
-				dirname( __FILE__ ) . '/sql/offload_large_feedback.sql'
+				__DIR__ . '/sql/offload_large_feedback.sql'
 			);
 
 			$updater->addExtensionIndex(
 				'aft_article_feedback',
 				'af_user_id_user_ip_created',
-				dirname( __FILE__ ) . '/sql/index_user_data.sql'
+				__DIR__ . '/sql/index_user_data.sql'
 			);
 
 			$updater->modifyField(
 				'aft_article_feedback',
 				'af_user_ip',
-				dirname( __FILE__ ) . '/sql/userip_length.sql',
+				__DIR__ . '/sql/userip_length.sql',
 				true
 			);
 
@@ -105,13 +105,13 @@ class ArticleFeedbackv5Hooks {
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_noaction',
-			dirname( __FILE__ ) . '/sql/noaction.sql'
+			__DIR__ . '/sql/noaction.sql'
 		);
 
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_archive',
-			dirname( __FILE__ ) . '/sql/archive.sql'
+			__DIR__ . '/sql/archive.sql'
 		);
 		// fix archive dates for existing feedback
 		require_once __DIR__.'/maintenance/setArchiveDate.php';
@@ -120,31 +120,31 @@ class ArticleFeedbackv5Hooks {
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_inappropriate',
-			dirname( __FILE__ ) . '/sql/inappropriate.sql'
+			__DIR__ . '/sql/inappropriate.sql'
 		);
 
 		$updater->addExtensionIndex(
 			'aft_feedback',
 			'contribs',
-			dirname( __FILE__ ) . '/sql/index_contribs.sql'
+			__DIR__ . '/sql/index_contribs.sql'
 		);
 
 		$updater->addExtensionIndex(
 			'aft_feedback',
 			'relevance_page',
-			dirname( __FILE__ ) . '/sql/index_page.sql'
+			__DIR__ . '/sql/index_page.sql'
 		);
 
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_discuss',
-			dirname( __FILE__ ) . '/sql/discuss.sql'
+			__DIR__ . '/sql/discuss.sql'
 		);
 
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_claimed_user',
-			dirname( __FILE__ ) . '/sql/claimed_user.sql'
+			__DIR__ . '/sql/claimed_user.sql'
 		);
 
 		return true;
@@ -177,11 +177,11 @@ class ArticleFeedbackv5Hooks {
 			$out->addModules( 'ext.articleFeedbackv5.talk' );
 
 		// special page
-		} elseif ( $title->getNamespace() == NS_SPECIAL) {
+		} elseif ( $title->getNamespace() == NS_SPECIAL ) {
 			// central feedback page, article feedback page, permalink page & watchlist feedback page
-			if ( $out->getTitle()->isSpecial( 'ArticleFeedbackv5' ) ||  $out->getTitle()->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
+			if ( $out->getTitle()->isSpecial( 'ArticleFeedbackv5' ) || $out->getTitle()->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
 				// fetch the title of the article this special page is related to
-				list( /* special */, $mainTitle) = SpecialPageFactory::resolveAlias( $out->getTitle()->getDBkey() );
+				list( /* special */, $mainTitle ) = SpecialPageFactory::resolveAlias( $out->getTitle()->getDBkey() );
 
 				// Permalinks: drop the feedback ID
 				$mainTitle = preg_replace( '/(\/[0-9]+)$/', '', $mainTitle );
@@ -189,13 +189,13 @@ class ArticleFeedbackv5Hooks {
 
 				// Central feedback page
 				if ( $mainTitle === null ) {
-					$article = array(
+					$article = [
 						'id' => 0,
 						'title' => '',
 						'namespace' => '-1',
-						'categories' => array(),
+						'categories' => [],
 						'permissionLevel' => ''
-					);
+					];
 
 				// Article feedback page
 				} else {
@@ -208,7 +208,7 @@ class ArticleFeedbackv5Hooks {
 			}
 
 			// watchlist page
-			elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
+ elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
 				global $wgArticleFeedbackv5Watchlist;
 
 				if ( $wgArticleFeedbackv5Watchlist && $user->getId() ) {
@@ -221,7 +221,7 @@ class ArticleFeedbackv5Hooks {
 						$out->addModules( 'ext.articleFeedbackv5.watchlist' );
 					}
 				}
-			}
+	}
 		}
 
 		return true;
@@ -236,19 +236,19 @@ class ArticleFeedbackv5Hooks {
 	 * pages don't have the appropriate information available for Javascript, this
 	 * method will build the relevant info.
 	 *
-	 * @param  Title $title the article
+	 * @param Title $title the article
 	 * @return array the article's info, to be exposed to JS
 	 */
 	public static function getPageInformation( Title $title ) {
 		$permissions = ArticleFeedbackv5Permissions::getProtectionRestriction( $title->getArticleID() );
 
-		$article = array(
+		$article = [
 			'id' => $title->getArticleID(),
 			'title' => $title->getFullText(),
 			'namespace' => $title->getNamespace(),
-			'categories' => array(),
+			'categories' => [],
 			'permissionLevel' => isset( $permissions->pr_level ) ? $permissions->pr_level : false,
-		);
+		];
 
 		foreach ( $title->getParentCategories() as $category => $page ) {
 			// get category title without prefix
@@ -307,10 +307,10 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5MaxCommentLength'] = $wgArticleFeedbackv5MaxCommentLength;
 
 		// make sure that these keys are being encoded to an object rather than to an array
-		$wgArticleFeedbackv5DisplayBuckets['buckets'] = (object) $wgArticleFeedbackv5DisplayBuckets['buckets'];
-		$wgArticleFeedbackv5CTABuckets['buckets'] = (object) $wgArticleFeedbackv5CTABuckets['buckets'];
+		$wgArticleFeedbackv5DisplayBuckets['buckets'] = (object)$wgArticleFeedbackv5DisplayBuckets['buckets'];
+		$wgArticleFeedbackv5CTABuckets['buckets'] = (object)$wgArticleFeedbackv5CTABuckets['buckets'];
 		$vars['wgArticleFeedbackv5DisplayBuckets'] = $wgArticleFeedbackv5DisplayBuckets;
-		$vars['wgArticleFeedbackv5CTABuckets'] = (object) $wgArticleFeedbackv5CTABuckets;
+		$vars['wgArticleFeedbackv5CTABuckets'] = (object)$wgArticleFeedbackv5CTABuckets;
 
 		return true;
 	}
@@ -326,7 +326,7 @@ class ArticleFeedbackv5Hooks {
 		global $wgUser;
 
 		// expose AFT permissions for this user to JS
-		$vars['wgArticleFeedbackv5Permissions'] = array();
+		$vars['wgArticleFeedbackv5Permissions'] = [];
 		foreach ( ArticleFeedbackv5Permissions::$permissions as $permission ) {
 			$vars['wgArticleFeedbackv5Permissions'][$permission] = $wgUser->isAllowed( $permission ) && !$wgUser->isBlocked();
 		}
@@ -343,11 +343,11 @@ class ArticleFeedbackv5Hooks {
 	public static function getPreferences( $user, &$preferences ) {
 		// need to check for existing key, if deployed simultaneously with AFTv4
 		if ( !array_key_exists( 'articlefeedback-disable', $preferences ) ) {
-			$preferences['articlefeedback-disable'] = array(
+			$preferences['articlefeedback-disable'] = [
 				'type' => 'check',
 				'section' => 'rendering/advancedrendering',
 				'label-message' => 'articlefeedbackv5-disable-preference',
-			);
+			];
 		}
 		return true;
 	}
@@ -404,7 +404,7 @@ class ArticleFeedbackv5Hooks {
 		$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$record->aft_id" );
 
 		// date & time
-		$dateFormats = array();
+		$dateFormats = [];
 		$dateFormats['timeAndDate'] = $lang->userTimeAndDate( $record->aft_timestamp, $user );
 		$dateFormats['date'] = $lang->userDate( $record->aft_timestamp, $user );
 		$dateFormats['time'] = $lang->userTime( $record->aft_timestamp, $user );
@@ -443,7 +443,7 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		// status (actions taken)
-		$actions = array();
+		$actions = [];
 		if ( $record->aft_helpful > $record->aft_unhelpful ) {
 			$actions[] = wfMessage( 'articlefeedbackv5-contribs-status-action-helpful' )->escaped();
 		}
@@ -514,7 +514,7 @@ class ArticleFeedbackv5Hooks {
 			return true;
 		}
 
-		$userIds = array();
+		$userIds = [];
 		if ( $pager->contribs == 'newbie' ) {
 			// fetch max user id from cache (if present)
 			global $wgMemc;
@@ -522,31 +522,31 @@ class ArticleFeedbackv5Hooks {
 			$max = $wgMemc->get( $key );
 			if ( $max === false ) {
 				// max user id not present in cache; fetch from db & save to cache for 1h
-				$max = (int) $pager->getDatabase()->selectField( 'user', 'MAX(user_id)', '', __METHOD__ );
+				$max = (int)$pager->getDatabase()->selectField( 'user', 'MAX(user_id)', '', __METHOD__ );
 				$wgMemc->set( $key, $max, 60 * 60 );
 			}
 
 			// newbie = last 1% of users, without usergroup
 			$rows = $pager->getDatabase()->select(
-				array( 'user', 'user_groups' ),
+				[ 'user', 'user_groups' ],
 				'user_id',
-				array(
-					'user_id > ' . (int) ( $max - $max / 100 ),
+				[
+					'user_id > ' . (int)( $max - $max / 100 ),
 					'ug_group' => null
-				),
+				],
 				__METHOD__,
-				array(),
-				array(
-					'user_groups' => array(
+				[],
+				[
+					'user_groups' => [
 						'LEFT JOIN',
-						array(
+						[
 							'ug_user = user_id'
-						)
-					)
-				)
+						]
+					]
+				]
 			);
 
-			$userIds = array();
+			$userIds = [];
 			foreach ( $rows as $row ) {
 				$userIds[] = $row->user_id;
 			}
@@ -596,32 +596,32 @@ class ArticleFeedbackv5Hooks {
 
 		$permErrors = $article->getTitle()->getUserPermissionsErrors( 'protect', $wgUser );
 		if ( wfReadOnly() ) {
-			$permErrors[] = array( 'readonlytext', wfReadOnlyReason() );
+			$permErrors[] = [ 'readonlytext', wfReadOnlyReason() ];
 		}
-		$disabled = $permErrors != array();
-		$disabledAttrib = $disabled ? array( 'disabled' => 'disabled' ) : array();
+		$disabled = $permErrors != [];
+		$disabledAttrib = $disabled ? [ 'disabled' => 'disabled' ] : [];
 
 		$articleId = $article->getId();
 
 		// on a per-page basis, AFT can only be restricted from these levels
-		$levels = array(
+		$levels = [
 			'aft-reader' => 'protect-level-aft-reader',
 			'aft-member' => 'protect-level-aft-member',
 			'aft-editor' => 'protect-level-aft-editor',
 			'aft-administrator' => 'protect-level-aft-administrator',
 			'aft-noone' => 'protect-level-aft-noone',
-		);
+		];
 
 		// build permissions dropdown
 		$existingRestriction = ArticleFeedbackv5Permissions::getAppliedRestriction( $articleId );
 		$id = 'articlefeedbackv5-protection-level';
-		$attribs = array(
+		$attribs = [
 			'id' => $id,
 			'name' => $id,
 			'size' => count( $levels )
-		) + $disabledAttrib;
+		] + $disabledAttrib;
 		$permissionsDropdown = Xml::openElement( 'select', $attribs );
-		foreach( $levels as $key => $label ) {
+		foreach ( $levels as $key => $label ) {
 			// possible labels: protect-level-aft-(reader|member|editor|administrator|noone)
 			$permissionsDropdown .= Xml::option( wfMessage( $label )->escaped(), $key, $key == $existingRestriction->pr_level );
 		}
@@ -636,7 +636,7 @@ class ArticleFeedbackv5Hooks {
 			$mExpirySelection
 		) = ArticleFeedbackv5Permissions::getExpiry( $articleId );
 
-		if( $showProtectOptions ) {
+		if ( $showProtectOptions ) {
 			$expiryFormOptions = '';
 
 			// add option to re-use existing expiry
@@ -654,7 +654,7 @@ class ArticleFeedbackv5Hooks {
 
 			// add regular expiry options
 			$expiryFormOptions .= Xml::option( wfMessage( 'protect-othertime-op' )->escaped(), 'othertime' );
-			foreach( explode( ',', $scExpiryOptions ) as $option ) {
+			foreach ( explode( ',', $scExpiryOptions ) as $option ) {
 				if ( strpos( $option, ':' ) === false ) {
 					$show = $value = $option;
 				} else {
@@ -670,23 +670,23 @@ class ArticleFeedbackv5Hooks {
 
 			// build expiry dropdown
 			$protectExpiry = Xml::tags( 'select',
-				array(
+				[
 					'id' => 'articlefeedbackv5-protection-expiration-selection',
 					'name' => 'articlefeedbackv5-protection-expiration-selection',
 					// when selecting anything other than "othertime", clear the input field for other time
 					'onchange' => 'javascript:if ( $( this ).val() != "othertime" ) $( "#articlefeedbackv5-protection-expiration" ).val( "" );',
-				),
+				],
 				$expiryFormOptions );
 			$mProtectExpiry = Xml::label( wfMessage( 'protectexpiry' )->escaped(), 'mwProtectExpirySelection-aft' );
 		}
 
 		// build custom expiry field
-		$attribs = array(
+		$attribs = [
 			'id' => 'articlefeedbackv5-protection-expiration',
 			// when entering an other time, make sure "othertime" is selected in the dropdown
 			'onkeyup' => 'javascript:if ( $( this ).val() ) $( "#articlefeedbackv5-protection-expiration-selection" ).val( "othertime" );',
 			'onchange' => 'javascript:if ( $( this ).val() ) $( "#articlefeedbackv5-protection-expiration-selection" ).val( "othertime" );'
-		) + $disabledAttrib;
+		] + $disabledAttrib;
 
 		$protectOther = Xml::input( 'articlefeedbackv5-protection-expiration', 50, $mExpiry, $attribs );
 		$mProtectOther = Xml::label( wfMessage( 'protect-othertime' )->text(), "mwProtect-aft-expires" );
@@ -697,7 +697,7 @@ class ArticleFeedbackv5Hooks {
 					<td>".
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', null, wfMessage( 'articlefeedbackv5-protection-level' )->text() ) .
-			Xml::openElement( 'table', array( 'id' => 'mw-protect-table-aft' ) ) . "
+			Xml::openElement( 'table', [ 'id' => 'mw-protect-table-aft' ] ) . "
 								<tr>
 									<td>$permissionsDropdown</td>
 								</tr>
@@ -840,7 +840,7 @@ class ArticleFeedbackv5Hooks {
 		// feedback id is c-parameter in the referrer, extract it
 		$referrer = ( $wgRequest->getVal( 'referrer' ) ) ? $wgRequest->getVal( 'referrer' ) : $wgRequest->getHeader( 'referer' );
 		$url = parse_url( $referrer );
-		$values = array();
+		$values = [];
 		if ( isset( $url['query'] ) ) {
 			parse_str( $url['query'], $values );
 		}

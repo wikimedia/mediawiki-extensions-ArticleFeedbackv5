@@ -10,8 +10,6 @@
  * @version    $Id$
  */
 
-use MediaWiki\MediaWikiServices;
-
 class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	/**
 	 * Override getLB so that AFT's data can be on a separate cluster.
@@ -39,8 +37,8 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	public function get( $id = null, $shard = null ) {
 		$ids = null;
 		if ( $id != null ) {
-			$ids = (array) $id;
-			$ids = array_map( array( $this, 'standardizeId' ), $ids );
+			$ids = (array)$id;
+			$ids = array_map( [ $this, 'standardizeId' ], $ids );
 		}
 
 		return parent::get( $ids, $shard );
@@ -57,7 +55,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		 * The clone will make sure it's no longer the same object referenced
 		 * inside DataModel.
 		 */
-		$entry = clone( $entry );
+		$entry = clone $entry;
 		$entry->{$this->idColumn} = $this->standardizeId( $entry->{$this->idColumn} );
 
 		return parent::update( $entry );
@@ -74,7 +72,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		 * The clone will make sure it's no longer the same object referenced
 		 * inside DataModel.
 		 */
-		$entry = clone( $entry );
+		$entry = clone $entry;
 		$entry->{$this->idColumn} = $this->standardizeId( $entry->{$this->idColumn} );
 
 		return parent::delete( $entry );
@@ -94,7 +92,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		 * The clone will make sure it's no longer the same object referenced
 		 * inside DataModel.
 		 */
-		$entry = clone( $entry );
+		$entry = clone $entry;
 		$entry->{$this->idColumn} = $this->standardizeId( $entry->{$this->idColumn} );
 
 		return parent::evaluateConditions( $entry );
@@ -109,13 +107,13 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	public function getConditions( $name ) {
 		$class = $this->datamodel;
 
-		$conditions = array();
+		$conditions = [];
 		if ( isset( $class::$lists[$name]['conditions'] ) ) {
 			$conditions = $class::$lists[$name]['conditions'];
 		}
 
 		if ( empty( $conditions ) ) {
-			$conditions = array();
+			$conditions = [];
 		}
 
 		return $conditions;
@@ -133,9 +131,9 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 */
 	public function getCountFound( $pageId = null ) {
 		// build where condition
-		$where = array();
+		$where = [];
 		$where['aft_rating'] = 1;
-		if ( $pageId !== null) {
+		if ( $pageId !== null ) {
 			$where['aft_page'] = $pageId;
 		}
 
@@ -144,12 +142,12 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		$where['aft_hide'] = 0;
 		$where['aft_oversight'] = 0;
 
-		return (int) $this->getDB( DB_REPLICA )->selectField(
+		return (int)$this->getDB( DB_REPLICA )->selectField(
 			$this->table,
-			array( 'COUNT(*)' ),
+			[ 'COUNT(*)' ],
 			$where,
 			__METHOD__,
-			array()
+			[]
 		);
 	}
 
@@ -163,7 +161,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 * @param array $userIds array of user_ids whose data is to be selected
 	 * @return ResultWrapper
 	 */
-	public function getContributionsData( $pager, $offset, $limit, $descending, $userIds = array() ) {
+	public function getContributionsData( $pager, $offset, $limit, $descending, $userIds = [] ) {
 		$tables[] = 'aft_feedback';
 
 		$fields[] = 'aft_id';
@@ -189,10 +187,10 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		}
 
 		$order = $descending ? 'ASC' : 'DESC'; // something's wrong with $descending - see logic applied in includes/Pager.php
-		$options['ORDER BY'] = array( $pager->getIndexField() . " $order" );
+		$options['ORDER BY'] = [ $pager->getIndexField() . " $order" ];
 		$options['LIMIT'] = $limit;
 
-		return $this->getDB( DB_REPLICA )->select( $tables, $fields, $conds, __METHOD__, $options, array() );
+		return $this->getDB( DB_REPLICA )->select( $tables, $fields, $conds, __METHOD__, $options, [] );
 	}
 
 	/**

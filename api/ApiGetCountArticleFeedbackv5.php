@@ -51,21 +51,21 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	public function getAllowedParams() {
 		$filters = array_keys( ArticleFeedbackv5Model::$lists );
 
-		return array(
+		return [
 			'title' => null,
-			'pageid' => array(
+			'pageid' => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_DFLT     => 0
-			),
-			'filter' => array(
+			],
+			'filter' => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => $filters,
 				ApiBase::PARAM_DFLT     => ( isset( $filters[0] ) ? $filters[0] : '' )
-			),
-		);
+			],
+		];
 	}
 
 	/**
@@ -75,11 +75,11 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getParamDescription() {
 		$p = $this->getModulePrefix();
-		return array(
+		return [
 			'title' => "Title of the page to get feedback ratings for. Cannot be used together with {$p}pageid",
 			'pageid' => "ID of the page to get feedback ratings for. Cannot be used together with {$p}title",
 			'filter' => 'What filtering to apply to list',
-		);
+		];
 	}
 
 	/**
@@ -88,9 +88,9 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	 * @return array the description as the first element in an array
 	 */
 	public function getDescription() {
-		return array(
+		return [
 			'Get the amount of feedback for a certain page/filter'
-		);
+		];
 	}
 
 	/**
@@ -99,8 +99,8 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	 * @return array the example as the first element in an array
 	 */
 	public function getExamples() {
-		return array(
+		return [
 			'api.php?action=articlefeedbackv5-get-count&afpageid=1&filter=featured',
-		);
+		];
 	}
 }

@@ -13,7 +13,7 @@ class ArticleFeedbackv5Permissions {
 	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
 	 * @var array
 	 */
-	public static $permissions = array(
+	public static $permissions = [
 		/*
 		 * When adding a new first permission level, also update
 		 * $.aftUtils.getDefaultPermissionLevel, which resembles
@@ -31,14 +31,14 @@ class ArticleFeedbackv5Permissions {
 		 * $.aftUtils.getDefaultPermissionLevel, which resembles
 		 * self::getDefaultPermissionLevel
 		 */
-	);
+	];
 
 	/**
 	 * The current permission level(s) & expiry for a page
 	 *
 	 * @var array
 	 */
-	protected static $current = array();
+	protected static $current = [];
 
 	/**
 	 * A page's default permission level is lottery-based. Lottery is a
@@ -68,7 +68,7 @@ class ArticleFeedbackv5Permissions {
 			}
 		}
 
-		return (int) $articleId % 1000 >= 1000 - ( (float) $odds * 10 );
+		return (int)$articleId % 1000 >= 1000 - ( (float)$odds * 10 );
 	}
 
 	/**
@@ -123,12 +123,12 @@ class ArticleFeedbackv5Permissions {
 
 		$restriction = $dbr->selectRow(
 			'page_restrictions',
-			array( 'pr_level', 'pr_expiry' ),
-			array(
+			[ 'pr_level', 'pr_expiry' ],
+			[
 				'pr_page' => $articleId,
 				'pr_type' => 'aft',
 				'pr_expiry = "infinity" OR pr_expiry >= ' . $dbr->addQuotes( $dbr->encodeExpiry( wfTimestampNow() ) )
-			),
+			],
 			__METHOD__
 		);
 
@@ -156,10 +156,10 @@ class ArticleFeedbackv5Permissions {
 		$restriction = self::getProtectionRestriction( $articleId );
 
 		if ( $restriction === false ) {
-			$restriction = (object) array(
+			$restriction = (object)[
 				'pr_level' => self::getDefaultPermissionLevel( $articleId ),
 				'pr_expiry' => wfGetDB( DB_REPLICA )->getInfinity()
-			);
+			];
 		}
 
 		return $restriction;
@@ -203,30 +203,30 @@ class ArticleFeedbackv5Permissions {
 
 		$record = $dbr->selectField(
 			'page_restrictions',
-			array( 'pr_page', 'pr_type' ),
-			array(
+			[ 'pr_page', 'pr_type' ],
+			[
 				'pr_page' => $articleId,
 				'pr_type' => 'aft'
-			)
+			]
 		);
 
 		// insert new restriction entry
-		$vars = array(
+		$vars = [
 			'pr_page' => $articleId,
 			'pr_type' => 'aft',
 			'pr_level' => $permission,
 			'pr_cascade' => 0,
 			'pr_expiry' => $dbw->encodeExpiry( $expiry )
-		);
+		];
 
 		if ( $record ) {
 			$dbw->update(
 				'page_restrictions',
 				$vars,
-				array(
+				[
 					'pr_page' => $articleId,
 					'pr_type' => 'aft'
-				)
+				]
 			);
 		} else {
 			$dbw->insert(
@@ -247,8 +247,8 @@ class ArticleFeedbackv5Permissions {
 
 			$pageObj->insertProtectNullRevision(
 				'articlefeedbackv5-protection-title',
-				array( 'articlefeedbackv5' => $permission ),
-				array( 'articlefeedbackv5' => $expiry ),
+				[ 'articlefeedbackv5' => $permission ],
+				[ 'articlefeedbackv5' => $expiry ],
 				false,
 				$reason
 			);
@@ -257,7 +257,7 @@ class ArticleFeedbackv5Permissions {
 			$logEntry = new ManualLogEntry( 'articlefeedbackv5', 'protect' );
 			$logEntry->setTarget( $pageObj->getTitle() );
 			$logEntry->setPerformer( $wgUser );
-			$logEntry->setParameters( array( 'permission' => $permission, 'expiry' => $expiry ) );
+			$logEntry->setParameters( [ 'permission' => $permission, 'expiry' => $expiry ] );
 			$logEntry->setComment( $reason );
 			$logId = $logEntry->insert();
 			$logEntry->publish( $logId );
@@ -293,6 +293,6 @@ class ArticleFeedbackv5Permissions {
 			$mExpirySelection = 'infinite';
 		}
 
-		return array( $existingExpiry, $mExpiry, $mExpirySelection );
+		return [ $existingExpiry, $mExpiry, $mExpirySelection ];
 	}
 }

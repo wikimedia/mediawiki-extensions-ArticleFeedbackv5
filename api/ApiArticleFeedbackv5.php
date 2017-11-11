@@ -18,10 +18,10 @@
  */
 class ApiArticleFeedbackv5 extends ApiBase {
 	// Allow auto-flagging of feedback
-	private $autoFlag = array();
+	private $autoFlag = [];
 
 	// filters incremented on creation
-	protected $filters = array( 'visible' => 1, 'notdeleted' => 1, 'all' => 1);
+	protected $filters = [ 'visible' => 1, 'notdeleted' => 1, 'all' => 1 ];
 
 	/**
 	 * Constructor
@@ -90,7 +90,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		 */
 		$user->mRights[] = 'aft-noone';
 		$list = ArticleFeedbackv5Model::getList( '*', $feedback->aft_page, 0, 'age', 'DESC' );
-		$user->mRights = array_diff( $user->mRights, array( 'aft-noone' ) );
+		$user->mRights = array_diff( $user->mRights, [ 'aft-noone' ] );
 
 		$old = $list->fetchObject();
 		if (
@@ -122,11 +122,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				$error = ArticleFeedbackv5Utils::validateAbuseFilter(
 					$feedback->aft_comment,
 					$feedback->aft_page,
-					array( $this, 'callbackAbuseActionFlag' )
+					[ $this, 'callbackAbuseActionFlag' ]
 				);
 
 				if ( $error !== false ) {
-					$messages = array();
+					$messages = [];
 					foreach ( $error as $message ) {
 						$messages[] = $message[1];
 					}
@@ -154,10 +154,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				$feedback->aft_id,
 				'', // just like creation of page, no comment in logs
 				$user,
-				array()
+				[]
 			);
 		} catch ( MWException $e ) {
-//			$this->dieUsage( $e->getMessage(), 'inserterror' ); // easier when debugging: show exact exception message
+// $this->dieUsage( $e->getMessage(), 'inserterror' ); // easier when debugging: show exact exception message
 			$this->dieUsage( $this->msg( 'articlefeedbackv5-error-submit' ), 'inserterror' );
 		}
 
@@ -166,7 +166,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		foreach ( $this->autoFlag as $flag => $rule_desc ) {
 			$notes = wfMessage(
 				"articlefeedbackv5-abusefilter-note-aftv5$flag",
-				array( $rule_desc )
+				[ $rule_desc ]
 			)->parse();
 
 			$res = $flagger->run( $flag, $notes, false, 'abusefilter' );
@@ -181,29 +181,29 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$this->dieUsage( "Page for feedback does not exist", "invalidfeedbackid" );
 		}
 		$specialTitle = Title::newFromText( "ArticleFeedbackv5/$page", NS_SPECIAL );
-		$aftUrl = $specialTitle->getLinkUrl( array( 'ref' => 'cta' ) );
+		$aftUrl = $specialTitle->getLinkUrl( [ 'ref' => 'cta' ] );
 		$permalinkTitle = Title::newFromText( "ArticleFeedbackv5/$page/$feedback->aft_id", NS_SPECIAL );
-		$permalink = $permalinkTitle->getLinkUrl( array( 'ref' => 'cta' ) );
+		$permalink = $permalinkTitle->getLinkUrl( [ 'ref' => 'cta' ] );
 
 		$this->getResult()->addValue(
 			null,
 			$this->getModuleName(),
-			array(
+			[
 				'feedback_id' => $feedback->aft_id,
 				'aft_url'     => $aftUrl,
 				'permalink'   => $permalink,
-			)
+			]
 		);
 	}
 
 	/**
 	 * AbuseFilter callback: flag feedback (abuse, oversight, hide, etc.)
 	 *
-	 * @param string                    $action     the action name (AF)
-	 * @param array                     $parameters the action parameters (AF)
-	 * @param Title                     $title      the title passed in
-	 * @param AbuseFilterVariableHolder $vars       the variables passed in
-	 * @param string                    $rule_desc  the rule description
+	 * @param string $action the action name (AF)
+	 * @param array $parameters the action parameters (AF)
+	 * @param Title $title the title passed in
+	 * @param AbuseFilterVariableHolder $vars the variables passed in
+	 * @param string $rule_desc the rule description
 	 */
 	public function callbackAbuseActionFlag( $action, $parameters, $title, $vars, $rule_desc ) {
 		switch ( $action ) {
@@ -236,40 +236,40 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$ctaIds = array_keys( $wgArticleFeedbackv5CTABuckets['buckets'] );
 		$linkIds = array_keys( $wgArticleFeedbackv5LinkBuckets['buckets'] );
 
-		$ret = array(
+		$ret = [
 			'title' => null,
-			'pageid' => array(
+			'pageid' => [
 				ApiBase::PARAM_TYPE     => 'integer',
-			),
-			'revid' => array(
+			],
+			'revid' => [
 				ApiBase::PARAM_TYPE     => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
-			),
-			'anontoken' => array(
+			],
+			'anontoken' => [
 				ApiBase::PARAM_TYPE     => 'string',
 				ApiBase::PARAM_REQUIRED => false,
-			),
-			'bucket' => array(
+			],
+			'bucket' => [
 				ApiBase::PARAM_TYPE     => $formIds,
 				ApiBase::PARAM_REQUIRED => true,
-			),
-			'cta' => array(
+			],
+			'cta' => [
 				ApiBase::PARAM_TYPE     => $ctaIds,
 				ApiBase::PARAM_REQUIRED => true,
-			),
-			'link' => array(
+			],
+			'link' => [
 				ApiBase::PARAM_TYPE     => $linkIds,
 				ApiBase::PARAM_REQUIRED => true,
-			),
-			'found' => array(
-				ApiBase::PARAM_TYPE     => array( 0, 1 ),
+			],
+			'found' => [
+				ApiBase::PARAM_TYPE     => [ 0, 1 ],
 				ApiBase::PARAM_REQUIRED => false,
-			),
-			'comment' => array(
+			],
+			'comment' => [
 				ApiBase::PARAM_TYPE     => 'string',
 				ApiBase::PARAM_REQUIRED => false,
-			)
-		);
+			]
+		];
 
 		return $ret;
 	}
@@ -281,7 +281,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getParamDescription() {
 		$p = $this->getModulePrefix();
-		return array(
+		return [
 			'title'      => "Title of the page to submit feedback for. Cannot be used together with {$p}pageid",
 			'pageid'     => "ID of the page to submit feedback for. Cannot be used together with {$p}title",
 			'revid'      => 'Revision ID to submit feedback for',
@@ -291,7 +291,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			'link'       => 'Which link the user clicked on to get to the widget',
 			'found'      => 'Yes/no feedback answering the question if the page was helpful',
 			'comment'    => 'the fee-form textual feedback',
-		);
+		];
 	}
 
 	/**
@@ -299,14 +299,18 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 *
 	 * @return bool
 	 */
-	public function mustBePosted() { return true; }
+	public function mustBePosted() {
+ return true;
+ }
 
 	/**
 	 * Returns whether this is a write call
 	 *
 	 * @return bool
 	 */
-	public function isWriteMode() { return true; }
+	public function isWriteMode() {
+ return true;
+ }
 
 	/**
 	 * Gets a description
@@ -314,9 +318,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @return string
 	 */
 	public function getDescription() {
-		return array(
+		return [
 			'Submit article feedback'
-		);
+		];
 	}
 
 	/**
@@ -326,8 +330,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @return array
 	 */
 	protected function getExamples() {
-		return array(
+		return [
 			'api.php?action=articlefeedbackv5'
-		);
+		];
 	}
 }

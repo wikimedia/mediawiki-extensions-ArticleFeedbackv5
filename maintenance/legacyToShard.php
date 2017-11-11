@@ -7,9 +7,9 @@
  * @version    $Id$
  */
 
-require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
+require_once getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
-	: dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+	: __DIR__ . '/../../../maintenance/Maintenance.php';
 
 use MediaWiki\MediaWikiServices;
 
@@ -101,14 +101,14 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 		$dbr = $this->getDB( DB_REPLICA );
 
 		$rows = $dbr->select(
-			array(
+			[
 				'aft_article_feedback',
 				'rating' => 'aft_article_answer',
 				'answer' => 'aft_article_answer',
 				'long_answer' => 'aft_article_answer_text',
 				'page',
-			),
-			array(
+			],
+			[
 				'af_id',
 				'page_title',
 				'af_page_id', // page
@@ -122,44 +122,44 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 				'rating' => 'rating.aa_response_boolean', // rating
 				'comment' => "SUBSTR(IFNULL(long_answer.aat_response_text, answer.aa_response_text), 1, $wgArticleFeedbackv5MaxCommentLength)", // comment
 				'af_created' // timestamp
-			),
-			array(
+			],
+			[
 				'af_form_id' => array_keys( $wgArticleFeedbackv5DisplayBuckets['buckets'] ),
 				'af_cta_id' => array_keys( $wgArticleFeedbackv5CTABuckets['buckets'] ),
 				'af_link_id' => array_keys( $wgArticleFeedbackv5LinkBuckets['buckets'] ),
 				"af_id > $continue"
-			),
+			],
 			__METHOD__,
-			array(
+			[
 				'LIMIT'    => $this->limit,
 				'ORDER BY' => 'af_id'
-			),
-			array(
-				'rating' => array(
+			],
+			[
+				'rating' => [
 					'INNER JOIN',
-					array(
+					[
 						'rating.aa_feedback_id = af_id',
-						'rating.aa_field_id' => array( '1', '16' )
-					)
-				),
-				'answer' => array(
+						'rating.aa_field_id' => [ '1', '16' ]
+					]
+				],
+				'answer' => [
 					'LEFT JOIN',
-					array(
+					[
 						'answer.aa_feedback_id = af_id',
-						'answer.aa_field_id' => array( '2', '17' )
-					)
-				),
-				'long_answer' => array(
+						'answer.aa_field_id' => [ '2', '17' ]
+					]
+				],
+				'long_answer' => [
 					'LEFT JOIN',
-					array( 'long_answer.aat_id = answer.aat_id' )
-				),
-				'page' => array(
+					[ 'long_answer.aat_id = answer.aat_id' ]
+				],
+				'page' => [
 					'INNER JOIN',
-					array(
+					[
 						'page_id = af_page_id',
-					)
-				)
-			)
+					]
+				]
+			]
 		);
 
 		$continue = null;
@@ -188,23 +188,23 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 			}
 
 			$logging = $dbr->select(
-				array( 'logging' ),
-				array( 'log_action' ),
-				array(
-					'log_type' => array( 'articlefeedbackv5', 'suppress' ),
+				[ 'logging' ],
+				[ 'log_action' ],
+				[
+					'log_type' => [ 'articlefeedbackv5', 'suppress' ],
 					'log_action' =>
 						array_merge(
 							array_keys( ArticleFeedbackv5Activity::$actions ),
-							array( 'hidden', 'unhidden' ) // deprecated but may still have entries
+							[ 'hidden', 'unhidden' ] // deprecated but may still have entries
 						),
 					'log_namespace' => NS_SPECIAL,
 					'log_page' => 0,
 					'log_title' => SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$row->page_title/$row->af_id" )->getDBkey()
-				),
+				],
 				__METHOD__,
-				array(
+				[
 					'SORT BY' => 'log_id ASC'
-				)
+				]
 			);
 
 			foreach ( $logging as $log ) {
@@ -449,4 +449,4 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 }
 
 $maintClass = "ArticleFeedbackv5_LegacyToShard";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

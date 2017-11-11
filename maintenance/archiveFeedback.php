@@ -7,9 +7,9 @@
  * @version    $Id$
  */
 
-require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
+require_once getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
-	: dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+	: __DIR__ . '/../../../maintenance/Maintenance.php';
 
 use MediaWiki\MediaWikiServices;
 
@@ -67,10 +67,10 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 			 * built-in functions to query for stuff that has not yet been archived but is due.
 			 */
 			$now = wfTimestampNow();
-			ArticleFeedbackv5Model::$lists['archive_scheduled'] = array(
+			ArticleFeedbackv5Model::$lists['archive_scheduled'] = [
 				'permissions' => 'aft-noone',
-				'conditions' => array( 'aft_archive = 0', "aft_archive_date <= '$now'" ),
-			);
+				'conditions' => [ 'aft_archive = 0', "aft_archive_date <= '$now'" ],
+			];
 
 			$backend = ArticleFeedbackv5Model::getBackend();
 			while ( true ) {
@@ -119,9 +119,8 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 
 			$this->output( "Done. Marked " . $this->completeCount . " entries as archived.\n" );
 		}
-
 	}
 }
 
 $maintClass = "ArticleFeedbackv5_ArchiveFeedback";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

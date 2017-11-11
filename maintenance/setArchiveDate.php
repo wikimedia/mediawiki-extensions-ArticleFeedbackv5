@@ -7,9 +7,9 @@
  * @version    $Id$
  */
 
-require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
+require_once getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
-	: dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+	: __DIR__ . '/../../../maintenance/Maintenance.php';
 
 use MediaWiki\MediaWikiServices;
 
@@ -60,10 +60,10 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 		 * built-in functions to query for stuff that has not yet been archived but is due.
 		 */
 		$now = wfTimestampNow();
-		ArticleFeedbackv5Model::$lists['archive_scheduled'] = array(
+		ArticleFeedbackv5Model::$lists['archive_scheduled'] = [
 			'permissions' => 'aft-noone',
-			'conditions' => array( 'aft_archive = 0', "aft_archive_date <= '$now'" ),
-		);
+			'conditions' => [ 'aft_archive = 0', "aft_archive_date <= '$now'" ],
+		];
 
 		$next = null;
 
@@ -130,4 +130,4 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 }
 
 $maintClass = "ArticleFeedbackv5_SetArchiveDate";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

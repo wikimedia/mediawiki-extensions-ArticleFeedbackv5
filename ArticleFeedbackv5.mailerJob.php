@@ -20,13 +20,13 @@ class ArticleFeedbackv5MailerJob extends Job {
 	 *
 	 * @var array
 	 */
-	protected $requiredParams = array(
+	protected $requiredParams = [
 		'user_name',
 		'user_url',
 		'page_name',
 		'page_url',
 		'permalink',
-	);
+	];
 
 	/**
 	 * Passthrough that sends the name of the class as the name of the job
@@ -42,7 +42,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 
 	/**
 	 * Run the job
-	 * @return boolean success
+	 * @return bool success
 	 */
 	function run() {
 		global $wgArticleFeedbackv5OversightEmails, $wgArticleFeedbackv5OversightEmailName;
@@ -59,7 +59,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 		$missing = array_diff( $this->requiredParams, array_keys( $params ) );
 		if ( $missing ) {
 			return false;
-	    }
+		}
 
 		// get our addresses
 		$to = new MailAddress( $wgArticleFeedbackv5OversightEmails, $wgArticleFeedbackv5OversightEmailName );
@@ -76,7 +76,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 			isset( $params['notes'] ) ? $params['notes'] : ''
 		);
 
-		$status = UserMailer::send( $to, $from, $subject, $body, array( 'replyTo' => $replyto ) );
+		$status = UserMailer::send( $to, $from, $subject, $body, [ 'replyTo' => $replyto ] );
 
 		return $status->isOK();
 	}
@@ -85,12 +85,12 @@ class ArticleFeedbackv5MailerJob extends Job {
 	 * Generate the "an oversight request has been made" email for sending
 	 * to the mailing list
 	 *
-	 * @param string $requestorName      user name
-	 * @param string $requestorUrl       link to user page
-	 * @param string $pageName           page title
-	 * @param string $pageUrl            page url
-	 * @param string $feedbackPermalink  permalink url to feedback
-	 * @param string[optional] $notes    additional text
+	 * @param string $requestorName user name
+	 * @param string $requestorUrl link to user page
+	 * @param string $pageName page title
+	 * @param string $pageUrl page url
+	 * @param string $feedbackPermalink permalink url to feedback
+	 * @param string[optional] $notes additional text
 	 */
 	protected function composeMail( $requestorName, $requestorUrl, $pageName, $pageUrl, $feedbackPermalink, $notes = '' ) {
 		global $wgArticleFeedbackv5OversightEmailHelp;
@@ -110,7 +110,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 					->params( $wgArticleFeedbackv5OversightEmailHelp, $notes )
 					->text();
 
-		return array( $subject, $body );
+		return [ $subject, $body ];
 	}
 
 	/**

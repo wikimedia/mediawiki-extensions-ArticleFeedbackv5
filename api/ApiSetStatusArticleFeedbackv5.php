@@ -84,7 +84,7 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 		$this->getResult()->addValue(
 			null,
 			$this->getModuleName(),
-			array()
+			[]
 		);
 	}
 
@@ -94,17 +94,17 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 	 * @return array the params info, indexed by allowed key
 	 */
 	public function getAllowedParams() {
-		return array(
+		return [
 			'title' => null,
-			'pageid' => array(
+			'pageid' => [
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
-			),
-			'enable' => array(
-				ApiBase::PARAM_TYPE     => array( 0, 1 ),
+			],
+			'enable' => [
+				ApiBase::PARAM_TYPE     => [ 0, 1 ],
 				ApiBase::PARAM_REQUIRED => true,
-			),
-		);
+			],
+		];
 	}
 
 	/**
@@ -114,11 +114,11 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getParamDescription() {
 		$p = $this->getModulePrefix();
-		return array(
+		return [
 			'title' => "Title of the page to enable/disable AFTv5 for. Cannot be used together with {$p}pageid",
 			'pageid' => "ID of the page to enable/disable AFTv5 for. Cannot be used together with {$p}title",
 			'enable' => '1 to enable, 0 to disable AFTv5',
-		);
+		];
 	}
 
 	/**
@@ -127,9 +127,9 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 	 * @return array the description as the first element in an array
 	 */
 	public function getDescription() {
-		return array(
+		return [
 			'Enable/disable AFTv5 for a certain page.'
-		);
+		];
 	}
 
 	/**
@@ -138,13 +138,17 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 	 * @return array the example as the first element in an array
 	 */
 	protected function getExamples() {
-		return array(
+		return [
 			'api.php?action=articlefeedbackv5-set-status&pageid=1&enable=1'
-		);
+		];
 	}
 
-	public function isWriteMode() { return true; }
+	public function isWriteMode() {
+ return true;
+ }
 
-	public function mustBePosted() { return true; }
+	public function mustBePosted() {
+ return true;
+ }
 
 }

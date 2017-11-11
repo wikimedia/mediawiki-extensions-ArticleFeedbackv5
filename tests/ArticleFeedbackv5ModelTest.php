@@ -7,7 +7,7 @@
 class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 	protected $sample;
 
-	protected $tablesUsed = array( 'aft_feedback' );
+	protected $tablesUsed = [ 'aft_feedback' ];
 
 	public function setUp() {
 		parent::setUp();
@@ -15,9 +15,9 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 		global $wgMemc, $wgArticleFeedbackv5Cluster;
 
 		// init some volatile BagOStuff
-		$this->setMwGlobals( array(
+		$this->setMwGlobals( [
 			'wgMemc' => new HashBagOStuff,
-		) );
+		] );
 		ArticleFeedbackv5Model::setCache( $wgMemc );
 
 		// setup db tables
@@ -60,7 +60,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 		}
 
 		global $wgUser, $wgArticleFeedbackv5Permissions;
-		$wgUser->mRights = array_diff( $wgUser->mRights, array( 'aft-noone' ) + $wgArticleFeedbackv5Permissions );
+		$wgUser->mRights = array_diff( $wgUser->mRights, [ 'aft-noone' ] + $wgArticleFeedbackv5Permissions );
 	}
 
 	public function testInsert() {
@@ -102,7 +102,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 		$probability = 1 / 2;
 
 		for ( $i = 0; $i < $size; $i++ ) {
-			$sample = clone( $this->sample );
+			$sample = clone $this->sample;
 
 			// half of them will get a comment, half of them will be empty (so they go to separate lists)
 			$sample->aft_comment = $i % ( 1 / $probability ) ? '' : 'Test feedback entry #'. ( $i + 1 );
@@ -134,7 +134,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 		$probability = 1 / 2;
 
 		for ( $i = 0; $i < $size; $i++ ) {
-			$sample = clone( $this->sample );
+			$sample = clone $this->sample;
 
 			// half of them will get a comment, half of them will be empty (so they go to separate lists)
 			$sample->aft_comment = $i % ( 1 / $probability ) ? 'Test feedback entry #'. ( $i + 1 ) : '';

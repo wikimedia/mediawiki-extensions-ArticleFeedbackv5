@@ -27,12 +27,12 @@ class ArticleFeedbackv5Utils {
 	/**
 	 * @var array [LoadBalancer]
 	 */
-	protected static $lb = array();
+	protected static $lb = [];
 
 	/**
 	 * @var array [bool]
 	 */
-	public static $written = array();
+	public static $written = [];
 
 	/**
 	 * @param $wiki String: the wiki ID, or false for the current wiki
@@ -57,13 +57,13 @@ class ArticleFeedbackv5Utils {
 	 *                in one group.
 	 * @param $wiki String: the wiki ID, or false for the current wiki
 	 */
-	public static function getDB( $db, $groups = array(), $wiki = false ) {
+	public static function getDB( $db, $groups = [], $wiki = false ) {
 		$lb = static::getLB( $wiki );
 
 		if ( $db === DB_MASTER ) {
 			// mark that we're writing data
 			static::$written[$wiki] = true;
-		} elseif ( isset(static::$written[$wiki]) && static::$written[$wiki] ) {
+		} elseif ( isset( static::$written[$wiki] ) && static::$written[$wiki] ) {
 			if ( $db === DB_REPLICA ) {
 				/*
 				 * Let's keep querying master to make sure we have up-to-date
@@ -162,10 +162,10 @@ class ArticleFeedbackv5Utils {
 	protected static function getPageCategories( $pageId ) {
 		$title = Title::newFromID( $pageId );
 		if ( is_null( $title ) ) {
-			return array();
+			return [];
 		}
 
-		$categories = array();
+		$categories = [];
 		foreach ( $title->getParentCategories() as $category => $page ) {
 			// get category title without prefix
 			$category = Title::newFromDBkey( $category );
@@ -193,7 +193,7 @@ class ArticleFeedbackv5Utils {
 
 		$categories = self::getPageCategories( $pageId );
 
-		return (bool) array_intersect( $categories, $wgArticleFeedbackv5Categories );
+		return (bool)array_intersect( $categories, $wgArticleFeedbackv5Categories );
 	}
 
 	/**
@@ -209,7 +209,7 @@ class ArticleFeedbackv5Utils {
 
 		$categories = self::getPageCategories( $pageId );
 
-		return (bool) array_intersect( $categories, $wgArticleFeedbackv5BlacklistCategories );
+		return (bool)array_intersect( $categories, $wgArticleFeedbackv5BlacklistCategories );
 	}
 
 	/**
@@ -259,7 +259,7 @@ class ArticleFeedbackv5Utils {
 			$user = $userId;
 		} else {
 			// if $userId is not an object
-			$userId = (int) $userId;
+			$userId = (int)$userId;
 			if ( $userId !== 0 ) { // logged-in users
 				$user = User::newFromId( $userId );
 			} elseif ( !is_null( $userIp ) ) { // IP users
@@ -285,7 +285,7 @@ class ArticleFeedbackv5Utils {
 	 *
 	 * @param  $helpful   int the number of helpful votes
 	 * @param  $unhelpful int the number of unhelpful votes
-	 * @return int        the percentage
+	 * @return int the percentage
 	 */
 	public static function percentHelpful( $helpful, $unhelpful ) {
 		if ( $helpful + $unhelpful > 0 ) {
@@ -304,7 +304,7 @@ class ArticleFeedbackv5Utils {
 	 * @return string the mask line
 	 */
 	public static function renderMaskLine( $type, $feedbackId, $userId, $timestamp = null ) {
-		if ( (int) $userId !== 0 ) { // logged-in users
+		if ( (int)$userId !== 0 ) { // logged-in users
 			$username = User::newFromId( $userId )->getName();
 		} else { // magic user
 			$username = wfMessage( 'articlefeedbackv5-default-user' )->text();
@@ -333,7 +333,7 @@ class ArticleFeedbackv5Utils {
 			|| ( is_string( $wgSpamRegex ) && strlen( $wgSpamRegex ) > 0 ) ) {
 			// In older versions, $wgSpamRegex may be a single string rather than
 			// an array of regexes, so make it compatible.
-			$regexes = ( array ) $wgSpamRegex;
+			$regexes = (array)$wgSpamRegex;
 			foreach ( $regexes as $regex ) {
 				if ( preg_match( $regex, $value ) ) {
 					return true;
@@ -401,11 +401,11 @@ class ArticleFeedbackv5Utils {
 			// Set up variables
 			$title = Title::newFromID( $pageId );
 			$vars = new AbuseFilterVariableHolder;
-			$vars->addHolders( AbuseFilter::generateUserVars( $wgUser ), AbuseFilter::generateTitleVars( $title , 'ARTICLE' ) );
+			$vars->addHolders( AbuseFilter::generateUserVars( $wgUser ), AbuseFilter::generateTitleVars( $title, 'ARTICLE' ) );
 			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
 			$vars->setVar( 'ACTION', 'feedback' );
 			$vars->setVar( 'new_wikitext', $value );
-			$vars->setLazyLoadVar( 'new_size', 'length', array( 'length-var' => 'new_wikitext' ) );
+			$vars->setLazyLoadVar( 'new_size', 'length', [ 'length-var' => 'new_wikitext' ] );
 
 			$status = AbuseFilter::filterAction( $vars, $title, $wgArticleFeedbackv5AbuseFilterGroup );
 

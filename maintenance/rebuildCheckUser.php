@@ -7,9 +7,9 @@
  * @version    $Id$
  */
 
-require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
+require_once getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
-	: dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+	: __DIR__ . '/../../../maintenance/Maintenance.php';
 
 use MediaWiki\MediaWikiServices;
 
@@ -49,7 +49,7 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 	public function execute() {
 		$this->output( "Updating entries\n" );
 
-		$continue = array ( 'timestamp' => '00000000000000', 'id' => 0 );
+		$continue = [ 'timestamp' => '00000000000000', 'id' => 0 ];
 
 		while ( $continue !== null ) {
 			$continue = $this->refreshBatch( $continue );
@@ -76,8 +76,8 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$rows = $dbr->select(
-			array( 'logging', 'cu_changes' ),
-			array(
+			[ 'logging', 'cu_changes' ],
+			[
 				'log_id',
 				'log_type',
 				'log_action',
@@ -92,50 +92,50 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 				'log_deleted',
 				'cuc_id',
 				'cuc_ip'
-			),
-			array(
+			],
+			[
 				'log_timestamp >= ' . $dbr->addQuotes( $dbr->timestamp( $continue['timestamp'] ) ),
 				'log_id > ' . $continue['id'],
 				'log_title LIKE "ArticleFeedbackv5/%"',
 				'log_namespace' => NS_SPECIAL
-			),
+			],
 			__METHOD__,
-			array(
+			[
 				'LIMIT'    => $this->limit,
-				'ORDER BY' => array( 'log_timestamp', 'log_id' ),
-			),
-			array(
-				'cu_changes' => array(
-					'INNER JOIN', array(
+				'ORDER BY' => [ 'log_timestamp', 'log_id' ],
+			],
+			[
+				'cu_changes' => [
+					'INNER JOIN', [
 						'log_namespace = cuc_namespace',
 						'log_title = cuc_title',
 						'log_timestamp = cuc_timestamp',
 						'log_user = cuc_user',
 						'log_user_text = cuc_user_text'
-					)
-				)
-			)
+					]
+				]
+			]
 		);
 
 		$continue = null;
 
 		foreach ( $rows as $row ) {
-			$continue = array(
+			$continue = [
 				'timestamp' => $row->log_timestamp,
 				'id' => $row->log_id
-			);
+			];
 
-			$update = array();
+			$update = [];
 
 			// fix log entry usernames: anon actions have at times been
 			// identified as "Article Feedback V5" rather than as IP
 			if ( $row->log_user_text == 'Article Feedback V5'
 				&& $row->log_comment != 'Automatic un-hide'
-				&& !in_array( $row->log_type, array( 'autohide', 'autoflag' ) ) ) {
+				&& !in_array( $row->log_type, [ 'autohide', 'autoflag' ] ) ) {
 				$dbw->update(
 					'logging',
-					array( 'log_user_text' => $row->cuc_ip ),
-					array( 'log_id' => $row->log_id )
+					[ 'log_user_text' => $row->cuc_ip ],
+					[ 'log_id' => $row->log_id ]
 				);
 
 				$update['cuc_user_text'] = $row->cuc_ip;
@@ -153,7 +153,7 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 			$dbw->update(
 				'cu_changes',
 				$update,
-				array( 'cuc_id' => $row->cuc_id )
+				[ 'cuc_id' => $row->cuc_id ]
 			);
 
 			$this->completeCount++;
@@ -164,4 +164,4 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 }
 
 $maintClass = "ArticleFeedbackv5_RebuildCheckUser";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

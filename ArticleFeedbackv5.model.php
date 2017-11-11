@@ -13,8 +13,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 *
 	 * @var int|string
 	 */
-	public
-		// regular AFT data
+	public // regular AFT data
 		$aft_id,
 		$aft_page,
 		$aft_page_revision,
@@ -89,89 +88,89 @@ class ArticleFeedbackv5Model extends DataModel {
 	 *
 	 * @var array
 	 */
-	public static $lists = array(
+	public static $lists = [
 		// no-one should see this list, we'll use it to keep count of all articles ;)
-		'*' => array(
+		'*' => [
 			'permissions' => 'aft-noone',
-			'conditions' => array(),
-		),
-		'has_comment' => array(
+			'conditions' => [],
+		],
+		'has_comment' => [
 			'permissions' => 'aft-noone',
-			'conditions' => array( 'aft_has_comment = 1' ),
-		),
+			'conditions' => [ 'aft_has_comment = 1' ],
+		],
 
 		// reader lists
-		'featured' => array(
+		'featured' => [
 			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_inappropriate = 0', 'aft_net_helpful > 0 OR aft_feature = 1' ),
-		),
-		'unreviewed' => array(
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_inappropriate = 0', 'aft_net_helpful > 0 OR aft_feature = 1' ],
+		],
+		'unreviewed' => [
 			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_feature = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_inappropriate = 0' ),
-		),
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_feature = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_inappropriate = 0' ],
+		],
 
 		// editor lists
-		'helpful' => array(
+		'helpful' => [
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_net_helpful > 0' ),
-		),
-		'unhelpful' => array(
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_net_helpful > 0' ],
+		],
+		'unhelpful' => [
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_net_helpful < 0' ),
-		),
-		'flagged' => array(
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_net_helpful < 0' ],
+		],
+		'flagged' => [
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_flag > 0' ),
-		),
-		'useful' => array(
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_flag > 0' ],
+		],
+		'useful' => [
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_feature = 1' ),
-		),
-		'resolved' => array(
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_feature = 1' ],
+		],
+		'resolved' => [
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_resolve = 1' ),
-		),
-		'noaction' => array(
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_resolve = 1' ],
+		],
+		'noaction' => [
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_noaction = 1' ),
-		),
-		'inappropriate' => array(
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_noaction = 1' ],
+		],
+		'inappropriate' => [
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_inappropriate = 1' ),
-		),
-		'archived' => array(
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_inappropriate = 1' ],
+		],
+		'archived' => [
 			'permissions' => 'aft-reader',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 1' ),
-		),
-		'allcomment' => array(
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 1' ],
+		],
+		'allcomment' => [
 			'permissions' => 'aft-editor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0' ),
-		),
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 0' ],
+		],
 
 		// monitor lists
-		'hidden' => array(
+		'hidden' => [
 			'permissions' => 'aft-monitor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 1' ),
-		),
-		'requested' => array(
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_hide = 1' ],
+		],
+		'requested' => [
 			'permissions' => 'aft-monitor',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_request = 1' ),
-		),
-		'declined' => array(
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_request = 1' ],
+		],
+		'declined' => [
 			'permissions' => 'aft-oversighter',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_request = 1', 'aft_decline = 1' ),
-		),
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_request = 1', 'aft_decline = 1' ],
+		],
 
 		// oversighter lists
-		'oversighted' => array(
+		'oversighted' => [
 			'permissions' => 'aft-oversighter',
-			'conditions' => array( 'aft_has_comment = 1', 'aft_oversight = 1' ),
-		),
-		'all' => array(
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 1' ],
+		],
+		'all' => [
 			'permissions' => 'aft-oversighter',
-			'conditions' => array(),
-		)
-	);
+			'conditions' => [],
+		]
+	];
 
 	/**
 	 * Available sorts to order the data
@@ -183,11 +182,11 @@ class ArticleFeedbackv5Model extends DataModel {
 	 *
 	 * @var array
 	 */
-	public static $sorts = array(
+	public static $sorts = [
 		'relevance' => 'aft_relevance_score',
 		'age' => 'aft_timestamp',
 		'helpful' => 'aft_net_helpful'
-	);
+	];
 
 	/**
 	 * Get the backend object that'll store the data for real.
@@ -214,16 +213,16 @@ class ArticleFeedbackv5Model extends DataModel {
 		if ( $this->{static::getIdColumn()} ) {
 			$old = static::get( $this->{static::getIdColumn()}, $this->{static::getShardColumn()} );
 			if ( $old && !$old->aft_inappropriate && !$old->aft_hide && !$old->aft_oversight ) {
-				$oldRating = (int) $old->aft_rating;
+				$oldRating = (int)$old->aft_rating;
 			}
 		}
 		if ( !$this->aft_inappropriate && !$this->aft_hide && !$this->aft_oversight ) {
-			$newRating = (int) $this->aft_rating;
+			$newRating = (int)$this->aft_rating;
 		}
 		$difference = $newRating - $oldRating;
 
 		$class = get_called_class();
-		foreach ( array( $this->{self::getShardColumn()}, null ) as $shard ) {
+		foreach ( [ $this->{self::getShardColumn()}, null ] as $shard ) {
 			/**
 			 * Callback method, updating the cached counts
 			 *
@@ -235,7 +234,7 @@ class ArticleFeedbackv5Model extends DataModel {
 			 * @use string $class The called class
 			 * @return int
 			 */
-			$callback = function( BagOStuff $cache, $key, $existingValue ) use ( $shard, $difference, $class ) {
+			$callback = function ( BagOStuff $cache, $key, $existingValue ) use ( $shard, $difference, $class ) {
 				// if nothing is cached, leave be; cache will rebuild when it's requested
 				if ( $existingValue === false ) {
 					return false;
@@ -282,7 +281,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * @param array $userIds array of user_ids whose data is to be selected
 	 * @return ResultWrapper
 	 */
-	public static function getContributionsData( $pager, $offset, $limit, $descending, $userIds = array() ) {
+	public static function getContributionsData( $pager, $offset, $limit, $descending, $userIds = [] ) {
 		return static::getBackend()->getContributionsData( $pager, $offset, $limit, $descending, $userIds );
 	}
 
@@ -315,24 +314,24 @@ class ArticleFeedbackv5Model extends DataModel {
 		 * can't perform a joined query ;)
 		 */
 		$articles = wfGetDB( DB_REPLICA )->select(
-			array( 'watchlist', 'page' ),
-			array( 'page_id' ),
-			array( 'wl_user' => $user->getId() ),
+			[ 'watchlist', 'page' ],
+			[ 'page_id' ],
+			[ 'wl_user' => $user->getId() ],
 			__METHOD__,
-			array(),
-			array(
-				'page' => array(
+			[],
+			[
+				'page' => [
 					'INNER JOIN',
-					array(
+					[
 						'page_namespace = wl_namespace',
 						'page_title = wl_title'
-					)
-				)
-			)
+					]
+				]
+			]
 		);
 
-		$shards = array();
-		foreach( $articles as $article ) {
+		$shards = [];
+		foreach ( $articles as $article ) {
 			$shards[] = $article->page_id;
 		}
 
@@ -365,18 +364,18 @@ class ArticleFeedbackv5Model extends DataModel {
 		// fetch data from db
 		$rows = static::getBackend()->getList( $name, $shard, $offset, static::LIST_LIMIT, $sort, $order );
 
-		$entries = array();
+		$entries = [];
 		foreach ( $rows as $row ) {
 			// pre-cache entries
 			$entry = static::loadFromRow( $row );
 			$entry->cache();
 
 			// build list of id's
-			$entries[] = array(
+			$entries[] = [
 				'id' => $entry->{static::getIdColumn()},
 				'shard' => $entry->{static::getShardColumn()},
 				'offset' => ( isset( $row->offset_value ) ? $row->offset_value . '|' : '' ) . $entry->{static::getIdColumn()}
-			);
+			];
 		}
 
 		$list = new DataModelList( $entries, get_called_class() );
@@ -424,7 +423,7 @@ class ArticleFeedbackv5Model extends DataModel {
 			throw new MWException( "Invalid link id '$this->aft_link'." );
 		}
 
-		if ( !in_array( $this->aft_rating, array( 0, 1 ) ) ) {
+		if ( !in_array( $this->aft_rating, [ 0, 1 ] ) ) {
 			throw new MWException( "Invalid rating '$this->aft_rating'." );
 		}
 
@@ -433,7 +432,7 @@ class ArticleFeedbackv5Model extends DataModel {
 			throw new MWException( "Comment length exceeds the maximum of '$wgArticleFeedbackv5MaxCommentLength'." );
 		}
 
-		if ( $this->aft_discuss && !in_array( $this->aft_discuss, array( 'talk', 'user' ) ) ) {
+		if ( $this->aft_discuss && !in_array( $this->aft_discuss, [ 'talk', 'user' ] ) ) {
 			throw new MWException( "Invalid discuss type '$this->aft_discuss'." );
 		}
 
@@ -470,7 +469,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 *
 	 * @param bool[optional] $validate True if data should be validated
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function insert( $validate = true ) {
 		// if no creation timestamp is entered yet, fill it out
@@ -480,7 +479,7 @@ class ArticleFeedbackv5Model extends DataModel {
 
 		$this->aft_net_helpful = $this->aft_helpful - $this->aft_unhelpful;
 		$this->aft_relevance_score = $this->getRelevanceScore();
-		$this->aft_has_comment = (bool) $this->aft_comment;
+		$this->aft_has_comment = (bool)$this->aft_comment;
 		$this->aft_archive_date = $this->getArchiveDate();
 		$this->updateCountFound();
 
@@ -492,12 +491,12 @@ class ArticleFeedbackv5Model extends DataModel {
 	 *
 	 * @param bool[optional] $validate True if data should be validated
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function update( $validate = true ) {
 		$this->aft_net_helpful = $this->aft_helpful - $this->aft_unhelpful;
 		$this->aft_relevance_score = $this->getRelevanceScore();
-		$this->aft_has_comment = (bool) $this->aft_comment;
+		$this->aft_has_comment = (bool)$this->aft_comment;
 		$this->aft_archive_date = $this->getArchiveDate();
 		$this->updateCountFound();
 
@@ -569,7 +568,7 @@ class ArticleFeedbackv5Model extends DataModel {
 			throw new MWException( "List '$name' is no known list" );
 		}
 
-		return isset( static::$lists[$name]['conditions'] ) ? static::$lists[$name]['conditions'] : array();
+		return isset( static::$lists[$name]['conditions'] ) ? static::$lists[$name]['conditions'] : [];
 	}
 
 	/**
@@ -605,7 +604,7 @@ class ArticleFeedbackv5Model extends DataModel {
 			return null;
 		} elseif ( !$this->aft_archive_date ) {
 			global $wgArticleFeedbackv5AutoArchiveTtl;
-			$wgArticleFeedbackv5AutoArchiveTtl = (array) $wgArticleFeedbackv5AutoArchiveTtl;
+			$wgArticleFeedbackv5AutoArchiveTtl = (array)$wgArticleFeedbackv5AutoArchiveTtl;
 			$ttl = '+5 years';
 
 			// ttl is set per x amount of unreviewed comments
@@ -682,7 +681,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	public function getLastEditorActivity() {
 		$activity = false;
 
-		$activities = ArticleFeedbackv5Activity::getLastEditorActivity( array( array( 'id' => $this->{static::getIdColumn()}, 'shard' => $this->{static::getShardColumn()} ) ) );
+		$activities = ArticleFeedbackv5Activity::getLastEditorActivity( [ [ 'id' => $this->{static::getIdColumn()}, 'shard' => $this->{static::getShardColumn()} ] ] );
 		foreach ( $activities as $activity ) {
 			break;
 		}
@@ -701,42 +700,42 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * @return bool
 	 */
 	public function isFeatured() {
-		return (bool) $this->aft_feature;
+		return (bool)$this->aft_feature;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isResolved() {
-		return (bool) $this->aft_resolve;
+		return (bool)$this->aft_resolve;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isNonActionable() {
-		return (bool) $this->aft_noaction;
+		return (bool)$this->aft_noaction;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isInappropriate() {
-		return (bool) $this->aft_inappropriate;
+		return (bool)$this->aft_inappropriate;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isArchived() {
-		return (bool) $this->aft_archive;
+		return (bool)$this->aft_archive;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isHidden() {
-		return (bool) $this->aft_hide;
+		return (bool)$this->aft_hide;
 	}
 
 	/**
@@ -750,13 +749,13 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * @return bool
 	 */
 	public function isDeclined() {
-		return (bool) $this->aft_decline;
+		return (bool)$this->aft_decline;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isOversighted() {
-		return (bool) $this->aft_oversight;
+		return (bool)$this->aft_oversight;
 	}
 }

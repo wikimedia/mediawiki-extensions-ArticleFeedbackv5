@@ -55,7 +55,7 @@ class ArticleFeedbackv5Render {
 	 * Returns the HTML for the given feedback entry
 	 *
 	 * @param  $record ArticleFeedbackv5Model the record
-	 * @return string  the rendered row
+	 * @return string the rendered row
 	 */
 	public function run( $record ) {
 		if ( !$record instanceof ArticleFeedbackv5Model ) {
@@ -64,7 +64,7 @@ class ArticleFeedbackv5Render {
 
 		try {
 			$record->validate();
-		} catch( Exception $e ) {
+		} catch ( Exception $e ) {
 			return '';
 		}
 
@@ -135,17 +135,17 @@ class ArticleFeedbackv5Render {
 		return
 			Html::rawElement(
 				'div',
-				array(
+				[
 					'class' => $topClass,
 					'data-id' => $record->aft_id,
 					'data-pageid' => $record->aft_page
-				),
+				],
 				// {toolbox, e.g. feature, hide}
 				$toolbox .
 				// {gray mask, if applicable}
 				$this->grayMask( $record ) .
-				Html::rawElement( 'div', array( 'class' => 'articleFeedbackv5-comment-container' ),
-					Html::rawElement( 'div', array( 'class' => $wrapClass ),
+				Html::rawElement( 'div', [ 'class' => 'articleFeedbackv5-comment-container' ],
+					Html::rawElement( 'div', [ 'class' => $wrapClass ],
 						// {feedback content}
 						$content .
 						// {footer links, e.g. helpful, abuse}
@@ -170,7 +170,7 @@ class ArticleFeedbackv5Render {
 	 * Sets whether this is a permalink
 	 *
 	 * @param  $isPermalink bool whether this is a permalink
-	 * @return bool         whether it passed validation and was set
+	 * @return bool whether it passed validation and was set
 	 */
 	public function setIsPermalink( $isPermalink ) {
 		$this->isPermalink = $isPermalink ? true : false;
@@ -190,7 +190,7 @@ class ArticleFeedbackv5Render {
 	 * Sets whether this is on the central log
 	 *
 	 * @param  $isCentral bool whether this is on the central log
-	 * @return bool       whether it passed validation and was set
+	 * @return bool whether it passed validation and was set
 	 */
 	public function setIsCentral( $isCentral ) {
 		$this->isCentral = $isCentral ? true : false;
@@ -210,7 +210,7 @@ class ArticleFeedbackv5Render {
 	 * Sets whether this is is a highlighted row
 	 *
 	 * @param  $isHighlighted bool whether this is is a highlighted row
-	 * @return bool       whether it passed validation and was set
+	 * @return bool whether it passed validation and was set
 	 */
 	public function setIsHighlighted( $isHighlighted ) {
 		$this->isHighlighted = $isHighlighted ? true : false;
@@ -222,7 +222,7 @@ class ArticleFeedbackv5Render {
 	 *
 	 * @param  $key   string the key
 	 * @param  $value bool   whether that permission is on
-	 * @return bool   whether it passed validation and was set
+	 * @return bool whether it passed validation and was set
 	 */
 	public function setPermission( $key, $value ) {
 		if ( !isset( $this->permissions[$key] ) ) {
@@ -266,9 +266,9 @@ class ArticleFeedbackv5Render {
 		return
 			Html::rawElement(
 				'div',
-				array( 'class' => "articleFeedbackv5-feedback articleFeedbackv5-feedback-$class articleFeedbackv5-feedback-emptymask" ),
+				[ 'class' => "articleFeedbackv5-feedback articleFeedbackv5-feedback-$class articleFeedbackv5-feedback-emptymask" ],
 				$this->grayMask( $record, true ) .
-				Html::element( 'div', array( 'class' => 'articleFeedbackv5-comment-wrap' ) )
+				Html::element( 'div', [ 'class' => 'articleFeedbackv5-comment-wrap' ] )
 			);
 	}
 
@@ -296,13 +296,13 @@ class ArticleFeedbackv5Render {
 			$viewLink =
 				Html::rawElement(
 					'span',
-					array( 'class' => 'articleFeedbackv5-mask-view' ),
+					[ 'class' => 'articleFeedbackv5-mask-view' ],
 					Html::rawElement(
 						'a',
-						array(
+						[
 							'href' => '#',
 							'onclick' => 'return false;',
-						),
+						],
 						wfMessage( 'articlefeedbackv5-mask-view-contents' )->escaped()
 					)
 				);
@@ -317,16 +317,16 @@ class ArticleFeedbackv5Render {
 		return
 			Html::rawElement(
 				'div',
-				array( 'class' => 'articleFeedbackv5-post-screen' ),
+				[ 'class' => 'articleFeedbackv5-post-screen' ],
 				Html::rawElement(
 					'div',
-					array( 'class' => 'articleFeedbackv5-mask-text-wrapper' ),
+					[ 'class' => 'articleFeedbackv5-mask-text-wrapper' ],
 					Html::rawElement(
 						'span',
-						array( 'class' => 'articleFeedbackv5-mask-text' ),
+						[ 'class' => 'articleFeedbackv5-mask-text' ],
 						Html::rawElement(
 							'span',
-							array( 'class' => 'articleFeedbackv5-mask-info' ),
+							[ 'class' => 'articleFeedbackv5-mask-info' ],
 							ArticleFeedbackv5Utils::renderMaskLine(
 								$type,
 								$record->aft_id,
@@ -344,7 +344,7 @@ class ArticleFeedbackv5Render {
 	 * Returns the mood of the feedback
 	 *
 	 * @param  $record ArticleFeedbackv5Model the record
-	 * @return string  the mood (positive or negative)
+	 * @return string the mood (positive or negative)
 	 */
 	public function getMood( $record ) {
 		return $record->aft_rating ? 'positive' : 'negative';
@@ -437,11 +437,11 @@ class ArticleFeedbackv5Render {
 		}
 
 		// build messages
-		$userMessage = Html::rawElement( 'h3', array(), $userMessage );
+		$userMessage = Html::rawElement( 'h3', [], $userMessage );
 		if ( $anonMessage ) {
 			$anonMessage = Html::rawElement(
 				'p',
-				array( 'class' => 'articleFeedbackv5-comment-anon-message' ),
+				[ 'class' => 'articleFeedbackv5-comment-anon-message' ],
 				$anonMessage
 			);
 		}
@@ -449,7 +449,7 @@ class ArticleFeedbackv5Render {
 		return
 			Html::rawElement(
 				'div',
-				array( 'class' => 'articleFeedbackv5-comment-head' ),
+				[ 'class' => 'articleFeedbackv5-comment-head' ],
 				$this->renderTagBlock( $record ) .
 				$userMessage .
 				$this->renderPermalinkTimestamp( $record ) .
@@ -474,7 +474,7 @@ class ArticleFeedbackv5Render {
 				wfMessage( 'pipe-separator' )->escaped() .
 				Html::rawElement(
 					'span',
-					array( 'class' => 'articleFeedbackv5-comment-details-link' ),
+					[ 'class' => 'articleFeedbackv5-comment-details-link' ],
 					MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 						SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title->getPrefixedDBkey() .'/'. $record->aft_id ),
 						wfMessage( 'articleFeedbackv5-details-link' )->text()
@@ -485,10 +485,10 @@ class ArticleFeedbackv5Render {
 		return
 			Html::rawElement(
 				'span',
-				array( 'class' => 'articleFeedbackv5-comment-details' ),
+				[ 'class' => 'articleFeedbackv5-comment-details' ],
 				Html::element(
 					'span',
-					array( 'class' => 'articleFeedbackv5-comment-details-date' ),
+					[ 'class' => 'articleFeedbackv5-comment-details-date' ],
 					$timestamp->getHumanTimestamp()
 				) .
 				$permalink
@@ -520,19 +520,19 @@ class ArticleFeedbackv5Render {
 			$fullLengthToggle =
 				Html::element(
 					'span',
-					array(
+					[
 						'class' => 'articleFeedbackv5-comment-full',
 						'id' => "articleFeedbackv5-comment-full-$id"
-					),
+					],
 					$text
 				) .
 				Html::element(
 					'a',
-					array(
+					[
 						'href' => SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$id" )->getLinkURL(),
 						'class' => 'articleFeedbackv5-comment-toggle',
 						'id' => "articleFeedbackv5-comment-toggle-$id"
-					),
+					],
 					wfMessage( 'articlefeedbackv5-comment-more' )->text()
 				);
 		}
@@ -542,10 +542,10 @@ class ArticleFeedbackv5Render {
 			$short = Linker::commentBlock( wfMessage( 'articlefeedbackv5-comment-empty' )->escaped() );
 		} else {
 			$short = Html::element( 'span',
-				array(
+				[
 					'class' => 'articleFeedbackv5-comment-short',
 					'id' => "articleFeedbackv5-comment-short-$id"
-				),
+				],
 				$short
 			);
 		}
@@ -553,7 +553,7 @@ class ArticleFeedbackv5Render {
 		return
 			Html::rawElement(
 				'blockquote',
-				array( 'dir' => 'auto' ),
+				[ 'dir' => 'auto' ],
 				$short .
 				$fullLengthToggle
 			);
@@ -582,27 +582,27 @@ class ArticleFeedbackv5Render {
 			$voteLinks =
 				Html::element(
 					'span',
-					array( 'class' => 'articleFeedbackv5-helpful-caption' ),
+					[ 'class' => 'articleFeedbackv5-helpful-caption' ],
 					wfMessage( 'articlefeedbackv5-form-helpful-label' )->text()
 				) .
 				Html::element(
 					'a',
-					array(
+					[
 						'id' => "articleFeedbackv5-helpful-link-$id",
 						'class' => 'articleFeedbackv5-helpful-link',
 						'href' => '#',
 						'data-action' => 'helpful'
-					),
+					],
 					wfMessage( 'articlefeedbackv5-form-helpful-yes-label' )->text()
 				) .
 				Html::element(
 					'a',
-					array(
+					[
 						'id' => "articleFeedbackv5-unhelpful-link-$id",
 						'class' => 'articleFeedbackv5-unhelpful-link',
 						'href' => '#',
 						'data-action' => 'unhelpful'
-					),
+					],
 					wfMessage( 'articlefeedbackv5-form-helpful-no-label' )->text()
 				);
 
@@ -636,11 +636,11 @@ class ArticleFeedbackv5Render {
 			$voteStats =
 				Html::rawElement(
 					'span',
-					array(
+					[
 						'class' => $votesClass,
 						'id' => "articleFeedbackv5-helpful-votes-$id",
 						'title' => $counts
-					),
+					],
 					$percent
 				);
 		}
@@ -654,13 +654,13 @@ class ArticleFeedbackv5Render {
 				$abuseLink =
 					Html::element(
 						'a',
-						array(
+						[
 							'id'    => "articleFeedbackv5-flag-link-$id",
 							'class' => 'articleFeedbackv5-flag-link',
 							'title' => wfMessage( 'articlefeedbackv5-form-tooltip-flag' )->text(),
 							'href'  => '#',
 							'data-action'  => 'flag',
-						),
+						],
 						wfMessage(
 							'articlefeedbackv5-form-flag',
 							$wgLang->formatNum( $record->aft_flag )
@@ -680,10 +680,10 @@ class ArticleFeedbackv5Render {
 				$abuseStats =
 					Html::element(
 						'span',
-						array(
+						[
 							'id' => "articleFeedbackv5-abuse-count-$id",
 							'class' => $aclass
-						),
+						],
 						wfMessage(
 							'articlefeedbackv5-form-abuse-count',
 							$wgLang->formatNum( $record->aft_flag )
@@ -712,10 +712,10 @@ class ArticleFeedbackv5Render {
 					$ownPost =
 						Html::rawElement(
 							'div',
-							array( 'class' => 'articleFeedbackv5-comment-foot-hide' ),
+							[ 'class' => 'articleFeedbackv5-comment-foot-hide' ],
 							Html::element(
 								'a',
-								array(
+								[
 									'id' => "articleFeedbackv5-$action-link-$id",
 									'class' => "articleFeedbackv5-$action-link articleFeedbackv5-$action-own-link",
 									// Give grep a chance to find the usages:
@@ -723,7 +723,7 @@ class ArticleFeedbackv5Render {
 									'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action-own" )->text(),
 									'href' => '#',
 									'data-action' => $action,
-								),
+								],
 								// Give grep a chance to find the usages:
 								// articlefeedbackv5-form-noaction-own, articlefeedbackv5-form-unnoaction-own
 								wfMessage( "articlefeedbackv5-form-$action-own" )->text()
@@ -736,7 +736,7 @@ class ArticleFeedbackv5Render {
 				$ownPost .=
 					Html::element(
 						'p',
-						array( 'class' => 'articleFeedbackv5-form-own-feedback' ),
+						[ 'class' => 'articleFeedbackv5-form-own-feedback' ],
 						wfMessage( 'articlefeedbackv5-form-own-feedback' )
 					);
 			}
@@ -745,19 +745,19 @@ class ArticleFeedbackv5Render {
 		return
 			Html::rawElement(
 				'div',
-				array( 'class' => 'articleFeedbackv5-vote-wrapper' ),
+				[ 'class' => 'articleFeedbackv5-vote-wrapper' ],
 				Html::rawElement(
 					'div',
-					array( 'class' => 'articleFeedbackv5-comment-foot-helpful' ),
+					[ 'class' => 'articleFeedbackv5-comment-foot-helpful' ],
 					$voteLinks . $voteStats
 				) .
 				Html::rawElement(
 					'div',
-					array( 'class' => 'articleFeedbackv5-comment-foot-abuse' ),
+					[ 'class' => 'articleFeedbackv5-comment-foot-abuse' ],
 					$abuseLink . $abuseStats
 				) .
 				$ownPost .
-				Html::element( 'div', array( 'class' => 'clear' ) )
+				Html::element( 'div', [ 'class' => 'clear' ] )
 			);
 	}
 
@@ -780,10 +780,10 @@ class ArticleFeedbackv5Render {
 		return
 			Html::rawElement(
 			'div',
-			array( 'class' => 'articleFeedbackv5-comment-tags' ),
+			[ 'class' => 'articleFeedbackv5-comment-tags' ],
 			Html::element(
 				'span',
-				array( 'class' => "articleFeedbackv5-$last->log_action-marker" ),
+				[ 'class' => "articleFeedbackv5-$last->log_action-marker" ],
 				wfMessage( "articlefeedbackv5-$last->log_action-marker" )->text()
 			)
 		);
@@ -819,12 +819,12 @@ class ArticleFeedbackv5Render {
 				$toolbox .=
 					Html::element(
 						'p',
-						array( 'class' => 'articleFeedbackv5-form-toolbox-label' ),
+						[ 'class' => 'articleFeedbackv5-form-toolbox-label' ],
 						wfMessage( $message )->text()
 					) .
 					Html::rawElement(
 						'ul',
-						array( 'id' => "articleFeedbackv5-feedback-tools-list-$record->aft_id" ),
+						[ 'id' => "articleFeedbackv5-feedback-tools-list-$record->aft_id" ],
 						$tools
 				);
 			}
@@ -838,16 +838,13 @@ class ArticleFeedbackv5Render {
 			if ( $last ) {
 				$tools = '';
 
-
 				// undo-link
 				$tools .= $this->buildToolboxLink( $record, "un$last->log_action" );
-
 
 				// if feedback is featured, it should still be resolvable in 1 click
 				if ( $record->isFeatured() && !$record->isResolved() ) {
 					$tools .= $this->buildToolboxLink( $record, 'resolve' );
 				}
-
 
 				// build discussion tools
 				$discussType = '';
@@ -895,7 +892,7 @@ class ArticleFeedbackv5Render {
 							$wgLang->userDate( $record->aft_timestamp, $wgUser ),
 							$wgLang->userTime( $record->aft_timestamp, $wgUser ),
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title ),
-							Message::rawParam( Html::element( 'blockquote', array(), $record->aft_comment ) ),
+							Message::rawParam( Html::element( 'blockquote', [], $record->aft_comment ) ),
 							$record->getArticle()->getTitle()
 						)
 						->escaped();
@@ -909,14 +906,14 @@ class ArticleFeedbackv5Render {
 						$discussLink = $discussPage->getLinkURL() . '#' . $sectionAnchor;
 					} else {
 						$discussLink = $discussPage->getLinkURL(
-							array(
+							[
 								'action' => 'edit',
 								'section' => 'new',
 								'preloadtitle' => $sectionTitleTruncated,
 								'articleFeedbackv5_discuss_id' => $record->aft_id,
 								'articleFeedbackv5_discuss_page' => $record->aft_page,
 								'articleFeedbackv5_discuss_type' => $discussType,
-							)
+							]
 						);
 					}
 
@@ -928,10 +925,10 @@ class ArticleFeedbackv5Render {
 
 					$tools .= Html::rawElement(
 						'li',
-						array(),
+						[],
 						Html::element(
 							'a',
-							array(
+							[
 								'id' => "articleFeedbackv5-$action-link-$record->aft_id",
 								'class' => $class,
 								// Give grep a chance to find the usages:
@@ -941,13 +938,13 @@ class ArticleFeedbackv5Render {
 								'data-action' => $action,
 								// expose some additional details to JS
 								'data-type' => $discussType,
-								'data-section-exists' => (int) $sectionExists,
+								'data-section-exists' => (int)$sectionExists,
 								'data-section-title' => $sectionTitleTruncated,
 								'data-section-content' => $sectionContent,
 								'data-section-edittime' => wfTimestampNow(),
 								'data-section-edittoken' => $wgUser->getEditToken(),
-								'data-section-watchlist' => (int) $wgUser->isWatched( $discussPage )
-							),
+								'data-section-watchlist' => (int)$wgUser->isWatched( $discussPage )
+							],
 							// Give grep a chance to find the usages:
 							// articlefeedbackv5-form-discuss-talk, articlefeedbackv5-form-discuss-user,
 							// articlefeedbackv5-form-discuss-talk-exists, articlefeedbackv5-form-discuss-user-exists
@@ -955,7 +952,6 @@ class ArticleFeedbackv5Render {
 						)
 					);
 				}
-
 
 				// hide (monitors & oversighters), request (monitors), oversight & decline (oversighters)
 				if ( $record->isInappropriate() || $record->isHidden() || $record->isOversighted() ) {
@@ -1001,24 +997,23 @@ class ArticleFeedbackv5Render {
 					$note .=
 						Html::element(
 							'a',
-							array(
+							[
 								'id' => "articleFeedbackv5-note-link-$record->aft_id",
 								'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-note-link', // tipsy for given data-action will be loaded when clicked
 								'title' => wfMessage( 'articlefeedbackv5-form-tooltip-note' )->text(),
 								'href' => '#',
 								'data-action' => $last->log_action,
 								'data-log-id' => $last->log_id,
-							),
+							],
 							wfMessage( 'articlefeedbackv5-form-note' )->text()
 						);
 				} elseif ( $last->log_comment ) {
 					$note .= Html::rawElement(
 						'span',
-						array( 'class' => "articleFeedbackv5-note-added" ),
+						[ 'class' => "articleFeedbackv5-note-added" ],
 						wfMessage( 'articlefeedbackv5-form-note-added' )->parse()
 					);
 				}
-
 
 				$toolbox .=
 					// performer/action info
@@ -1038,11 +1033,11 @@ class ArticleFeedbackv5Render {
 					// articlefeedbackv5-short-status-undo-unhelpful
 					Html::rawElement(
 						'div',
-						array( 'class' => "articleFeedbackv5-feedback-tools-details" ),
+						[ 'class' => "articleFeedbackv5-feedback-tools-details" ],
 
 						Html::rawElement(
 							'p',
-							array( 'class' => "articleFeedbackv5-activity-short-status" ),
+							[ 'class' => "articleFeedbackv5-activity-short-status" ],
 
 							// performer/action info
 							wfMessage( "articlefeedbackv5-short-status-$last->log_action" )
@@ -1056,19 +1051,19 @@ class ArticleFeedbackv5Render {
 						// link for activity log popup
 						Html::element(
 							'a',
-							array(
+							[
 								'id' => "articleFeedbackv5-activity-link-$record->aft_id",
 								'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-activity-link', // tipsy for given data-action will be loaded when clicked
 								'href' => '#',
 								'data-action' => 'activity',
-							),
+							],
 							wfMessage( 'articlefeedbackv5-viewactivity' )->text()
 						) .
 
 						// tools (undo & possibly oversight-related actions)
 						Html::rawElement(
 							'ul',
-							array( 'id' => "articleFeedbackv5-feedback-tools-list-$record->aft_id" ),
+							[ 'id' => "articleFeedbackv5-feedback-tools-list-$record->aft_id" ],
 							$tools
 						)
 					);
@@ -1078,10 +1073,10 @@ class ArticleFeedbackv5Render {
 		return
 			Html::rawElement(
 				'div',
-				array(
+				[
 					'class' => 'articleFeedbackv5-feedback-tools',
 					'id' => "articleFeedbackv5-feedback-tools-$record->aft_id"
-				),
+				],
 				$toolbox
 			);
 	}
@@ -1103,17 +1098,17 @@ class ArticleFeedbackv5Render {
 		$metadata =
 			Html::rawElement(
 				'div',
-				array( 'class' => 'articleFeedbackv5-feedback-permalink-meta' ),
+				[ 'class' => 'articleFeedbackv5-feedback-permalink-meta' ],
 				Html::rawElement(
 					'p',
-					array(),
+					[],
 					wfMessage( 'articlefeedbackv5-permalink-info-post-id' )
 						->params( $record->aft_id )
 						->escaped()
 				) .
 				Html::rawElement(
 					'p',
-					array(),
+					[],
 					// Give grep a chance to find the usages:
 					// articlefeedbackv5-permalink-written-by-reader, articlefeedbackv5-permalink-written-by-editor
 					wfMessage( 'articlefeedbackv5-permalink-written-by-' . ( $record->aft_user == 0 ? 'reader' : 'editor' ) )
@@ -1122,19 +1117,19 @@ class ArticleFeedbackv5Render {
 				) .
 				Html::rawElement(
 					'p',
-					array(),
+					[],
 					wfMessage( 'articlefeedbackv5-permalink-info-posted' )
 						->params( $wgLang->userDate( $record->aft_timestamp, $wgUser ), $wgLang->userTime( $record->aft_timestamp, $wgUser ) )
 						->escaped()
 				) .
 				Html::rawElement(
 					'p',
-					array( 'class' => 'articleFeedbackv5-old-revision' ),
+					[ 'class' => 'articleFeedbackv5-old-revision' ],
 					MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 						Title::newFromID( $record->aft_page ),
 						wfMessage( 'articlefeedbackv5-permalink-info-revision-link' )->text(),
-						array(),
-						array( 'oldid' => $record->aft_page_revision )
+						[],
+						[ 'oldid' => $record->aft_page_revision ]
 					)
 				)
 			);
@@ -1144,12 +1139,12 @@ class ArticleFeedbackv5Render {
 			$comment .=
 				Html::rawElement(
 					'dt',
-					array(),
+					[],
 					wfMessage( 'articlefeedbackv5-permalink-info-stats-title-length' )->escaped()
 				) .
 				Html::rawElement(
 					'dd',
-					array(),
+					[],
 					wfMessage(
 						'articlefeedbackv5-permalink-info-length-words',
 						str_word_count( $record->aft_comment )
@@ -1157,7 +1152,7 @@ class ArticleFeedbackv5Render {
 					'&nbsp;' .
 					Html::rawElement(
 						'span',
-						array(),
+						[],
 						wfMessage(
 							'articlefeedbackv5-permalink-info-length-characters',
 							strlen( $record->aft_comment )
@@ -1172,37 +1167,37 @@ class ArticleFeedbackv5Render {
 		$stats =
 			Html::rawElement(
 				'dl',
-				array( 'class' => 'articleFeedbackv5-feedback-permalink-stats' ),
+				[ 'class' => 'articleFeedbackv5-feedback-permalink-stats' ],
 				$comment .
 				Html::rawElement(
 					'dt',
-					array(),
+					[],
 					wfMessage( 'articlefeedbackv5-permalink-info-stats-title-scores' )->escaped()
 				) .
 				Html::rawElement(
 					'dd',
-					array( 'class' => 'articleFeedbackv5-feedback-permalink-scores' ),
+					[ 'class' => 'articleFeedbackv5-feedback-permalink-scores' ],
 					Html::rawElement(
 						'dl',
-						array(),
+						[],
 						Html::rawElement(
 							'dt',
-							array(),
+							[],
 							wfMessage( 'articlefeedbackv5-permalink-info-stats-subtitle-relevance' )->escaped()
 						) .
 						Html::element(
 							'dd',
-							array(),
+							[],
 							$relevance > 0 ? '+' . $relevance : $relevance
 						) .
 						Html::rawElement(
 							'dt',
-							array(),
+							[],
 							wfMessage( 'articlefeedbackv5-permalink-info-stats-subtitle-helpfulness' )->escaped()
 						) .
 						Html::element(
 							'dd',
-							array(),
+							[],
 							$helpfulness > 0 ? '+' . $helpfulness : $helpfulness
 						)
 					)
@@ -1219,7 +1214,7 @@ class ArticleFeedbackv5Render {
 				$notes .=
 					Html::rawElement(
 						'span',
-						array( 'class' => 'articlefeedbackv5-permalink-last-action-comment' ),
+						[ 'class' => 'articlefeedbackv5-permalink-last-action-comment' ],
 						Linker::formatComment( $last->log_comment )
 					);
 			}
@@ -1241,15 +1236,15 @@ class ArticleFeedbackv5Render {
 			$activity =
 				Html::rawElement(
 					'p',
-					array( 'class' => 'articleFeedbackv5-feedback-permalink-activity-status' ),
+					[ 'class' => 'articleFeedbackv5-feedback-permalink-activity-status' ],
 					Html::element(
 						'span',
-						array( 'class' => 'articlefeedbackv5-permalink-last-action' ),
+						[ 'class' => 'articlefeedbackv5-permalink-last-action' ],
 						wfMessage( 'articlefeedbackv5-permalink-last-action' )->text()
 					) .
 					Html::rawElement(
 						'span',
-						array( 'class' => 'articleFeedbackv5-feedback-permalink-status articleFeedbackv5-laststatus-' . $last->log_action ),
+						[ 'class' => 'articleFeedbackv5-feedback-permalink-status articleFeedbackv5-laststatus-' . $last->log_action ],
 						wfMessage( 'articlefeedbackv5-permalink-status-' . $last->log_action )
 							->rawParams( ArticleFeedbackv5Utils::getUserLink( $last->log_user, $last->log_user_text ) )
 							->params( $timestamp->getHumanTimestamp() )
@@ -1259,27 +1254,27 @@ class ArticleFeedbackv5Render {
 				) .
 				Html::rawElement(
 					'p',
-					array( 'class' => 'articleFeedbackv5-feedback-permalink-activity-more' ),
+					[ 'class' => 'articleFeedbackv5-feedback-permalink-activity-more' ],
 					Html::rawElement(
 						'a',
-						array(
+						[
 							'href' => '#',
 							'class' => 'articleFeedbackv5-activity2-link', // tipsy for given data-action will be loaded when clicked
 							'data-action' => 'activity2'
-						),
+						],
 						wfMessage( 'articlefeedbackv5-permalink-activity-more' )->escaped()
 					)
 				) .
 				Html::element(
 					'div',
-					array( 'id' => 'articleFeedbackv5-permalink-activity-log' )
+					[ 'id' => 'articleFeedbackv5-permalink-activity-log' ]
 				);
 		} else {
 			$activity =
 				Html::rawElement(
 					'p',
-					array( 'class' => 'articleFeedbackv5-feedback-permalink-activity-none' ),
-					wfMessage( 'articlefeedbackv5-permalink-activity-none')->escaped()
+					[ 'class' => 'articleFeedbackv5-feedback-permalink-activity-none' ],
+					wfMessage( 'articlefeedbackv5-permalink-activity-none' )->escaped()
 				);
 		}
 
@@ -1287,13 +1282,13 @@ class ArticleFeedbackv5Render {
 		return
 			Html::rawElement(
 				'div',
-				array( 'id' => 'articleFeedbackv5-feedback-permalink-info' ),
+				[ 'id' => 'articleFeedbackv5-feedback-permalink-info' ],
 				Html::rawElement(
 					'div',
-					array( 'class' => 'articleFeedbackv5-feedback-permalink-about' ),
+					[ 'class' => 'articleFeedbackv5-feedback-permalink-about' ],
 					Html::rawElement(
 						'h4',
-						array(),
+						[],
 						wfMessage( 'articlefeedbackv5-permalink-info-title' )->escaped()
 					) .
 					$metadata .
@@ -1301,14 +1296,14 @@ class ArticleFeedbackv5Render {
 				) .
 				Html::rawElement(
 					'div',
-					array( 'class' => 'articleFeedbackv5-feedback-permalink-activity' ),
+					[ 'class' => 'articleFeedbackv5-feedback-permalink-activity' ],
 					Html::rawElement(
 						'h4',
-						array(),
+						[],
 						wfMessage( 'articlefeedbackv5-permalink-activity-title' )->escaped() .
 						Html::rawElement(
 							'span',
-							array(),
+							[],
 							wfMessage( 'articlefeedbackv5-permalink-activity-subtitle' )
 								->params( ArticleFeedbackv5Activity::getActivityCount( $record ) )
 								->escaped()
@@ -1339,39 +1334,39 @@ class ArticleFeedbackv5Render {
 		$class .= ( $ownFeedback ? " articleFeedbackv5-$action-own-link" : '' );
 
 		// Give grep a chance to find the usages:
-		//   articlefeedbackv5-form-tooltip-note, articlefeedbackv5-form-tooltip-feature,
-		//   articlefeedbackv5-form-tooltip-unfeature, articlefeedbackv5-form-tooltip-resolve,
-		//   articlefeedbackv5-form-tooltip-unresolve, articlefeedbackv5-form-tooltip-noaction,
-		//   articlefeedbackv5-form-tooltip-unnoaction, articlefeedbackv5-form-tooltip-inappropriate,
-		//   articlefeedbackv5-form-tooltip-uninappropriate, articlefeedbackv5-form-tooltip-hide,
-		//   articlefeedbackv5-form-tooltip-unhide, articlefeedbackv5-form-tooltip-hide-own,
-		//   articlefeedbackv5-form-tooltip-unhide-own, articlefeedbackv5-form-tooltip-archive,
-		//   articlefeedbackv5-form-tooltip-unarchive, articlefeedbackv5-form-tooltip-flag,
-		//   articlefeedbackv5-form-tooltip-oversight, articlefeedbackv5-form-tooltip-unoversight,
-		//   articlefeedbackv5-form-tooltip-request, articlefeedbackv5-form-tooltip-unrequest,
-		//   articlefeedbackv5-form-tooltip-decline, articlefeedbackv5-form-tooltip-discuss-talk,
-		//   articlefeedbackv5-form-tooltip-discuss-user
+		// articlefeedbackv5-form-tooltip-note, articlefeedbackv5-form-tooltip-feature,
+		// articlefeedbackv5-form-tooltip-unfeature, articlefeedbackv5-form-tooltip-resolve,
+		// articlefeedbackv5-form-tooltip-unresolve, articlefeedbackv5-form-tooltip-noaction,
+		// articlefeedbackv5-form-tooltip-unnoaction, articlefeedbackv5-form-tooltip-inappropriate,
+		// articlefeedbackv5-form-tooltip-uninappropriate, articlefeedbackv5-form-tooltip-hide,
+		// articlefeedbackv5-form-tooltip-unhide, articlefeedbackv5-form-tooltip-hide-own,
+		// articlefeedbackv5-form-tooltip-unhide-own, articlefeedbackv5-form-tooltip-archive,
+		// articlefeedbackv5-form-tooltip-unarchive, articlefeedbackv5-form-tooltip-flag,
+		// articlefeedbackv5-form-tooltip-oversight, articlefeedbackv5-form-tooltip-unoversight,
+		// articlefeedbackv5-form-tooltip-request, articlefeedbackv5-form-tooltip-unrequest,
+		// articlefeedbackv5-form-tooltip-decline, articlefeedbackv5-form-tooltip-discuss-talk,
+		// articlefeedbackv5-form-tooltip-discuss-user
 		// Give grep a chance to find the usages:
-		//   articlefeedbackv5-form-note, articlefeedbackv5-form-feature, articlefeedbackv5-form-unfeature,
-		//   articlefeedbackv5-form-resolve, articlefeedbackv5-form-unresolve, articlefeedbackv5-form-noaction,
-		//   articlefeedbackv5-form-unnoaction, articlefeedbackv5-form-inappropriate, articlefeedbackv5-form-uninappropriate,
-		//   articlefeedbackv5-form-hide, articlefeedbackv5-form-unhide, articlefeedbackv5-form-hide-own,
-		//   articlefeedbackv5-form-unhide-own, articlefeedbackv5-form-archive, articlefeedbackv5-form-unarchive,
-		//   articlefeedbackv5-form-flag, articlefeedbackv5-form-oversight, articlefeedbackv5-form-unoversight,
-		//   articlefeedbackv5-form-request, articlefeedbackv5-form-unrequest, articlefeedbackv5-form-decline,
-		//   articlefeedbackv5-form-discuss-talk, articlefeedbackv5-form-discuss-user
+		// articlefeedbackv5-form-note, articlefeedbackv5-form-feature, articlefeedbackv5-form-unfeature,
+		// articlefeedbackv5-form-resolve, articlefeedbackv5-form-unresolve, articlefeedbackv5-form-noaction,
+		// articlefeedbackv5-form-unnoaction, articlefeedbackv5-form-inappropriate, articlefeedbackv5-form-uninappropriate,
+		// articlefeedbackv5-form-hide, articlefeedbackv5-form-unhide, articlefeedbackv5-form-hide-own,
+		// articlefeedbackv5-form-unhide-own, articlefeedbackv5-form-archive, articlefeedbackv5-form-unarchive,
+		// articlefeedbackv5-form-flag, articlefeedbackv5-form-oversight, articlefeedbackv5-form-unoversight,
+		// articlefeedbackv5-form-request, articlefeedbackv5-form-unrequest, articlefeedbackv5-form-decline,
+		// articlefeedbackv5-form-discuss-talk, articlefeedbackv5-form-discuss-user
 		return Html::rawElement(
 			'li',
-			array(),
+			[],
 			Html::element(
 				'a',
-				array(
+				[
 					'id' => "articleFeedbackv5-$action-link-$record->aft_id",
 					'class' => $class,
 					'title' => wfMessage( "articlefeedbackv5-form-tooltip-$action" )->text(),
 					'href' => '#',
 					'data-action' => $action,
-				),
+				],
 				wfMessage( "articlefeedbackv5-form-$action" )->text()
 			)
 		);
@@ -1383,7 +1378,7 @@ class ArticleFeedbackv5Render {
 	 */
 	public function getLastActivity( ArticleFeedbackv5Model $record ) {
 		global $wgUser;
-		foreach( ArticleFeedbackv5Activity::getList( $record, $wgUser, 1 ) as $last ) {
+		foreach ( ArticleFeedbackv5Activity::getList( $record, $wgUser, 1 ) as $last ) {
 			return $last;
 		}
 		return false;

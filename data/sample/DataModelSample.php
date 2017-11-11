@@ -13,8 +13,7 @@ class DataModelSample extends DataModel {
 	 *
 	 * @var int|string
 	 */
-	public
-		$ds_id,
+	public $ds_id,
 		$ds_shard,
 		$ds_title,
 		$ds_email,
@@ -51,16 +50,16 @@ class DataModelSample extends DataModel {
 	 *
 	 * @var array
 	 */
-	public static $lists = array(
+	public static $lists = [
 		// all entries, sorted by title or timestamp
-		'all' => array(),
+		'all' => [],
 
 		// all hidden entries, sorted by timestamp
-		'hidden' => array( 'ds_visible = 0' ),
+		'hidden' => [ 'ds_visible = 0' ],
 
 		// all visible entries, sorted by timestamp
-		'visible' => array( 'ds_visible = 1' ),
-	);
+		'visible' => [ 'ds_visible = 1' ],
+	];
 
 	/**
 	 * Available sorts to order the data
@@ -72,16 +71,16 @@ class DataModelSample extends DataModel {
 	 *
 	 * @var array
 	 */
-	public static $sorts = array(
+	public static $sorts = [
 		'title' => 'ds_title',
 		'timestamp' => 'ds_timestamp'
-	);
+	];
 
 	/**
 	 * Validate the entry's data.
 	 *
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function validate() {
 		// make sure that, when set, the email address is valid
@@ -96,7 +95,7 @@ class DataModelSample extends DataModel {
 	 * Insert entry.
 	 *
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function insert() {
 		// if no creation timestamp is entered yet, fill it out

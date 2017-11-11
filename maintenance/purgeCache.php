@@ -54,7 +54,7 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 
 		// feedback activity count per permission
 		global $wgArticleFeedbackv5Permissions;
-		foreach( $wgArticleFeedbackv5Permissions as $permission ) {
+		foreach ( $wgArticleFeedbackv5Permissions as $permission ) {
 			$key = wfMemcKey( 'articlefeedbackv5', 'getActivityCount', $permission, $object->aft_id );
 			$wgMemc->delete( $key );
 		}
@@ -81,4 +81,4 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 }
 
 $maintClass = 'ArticleFeedbackv5_PurgeCache';
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

@@ -68,10 +68,10 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Constructor
 	 *
-	 * @param mixed $user       the user performing the action ($wgUser), or
+	 * @param mixed $user the user performing the action ($wgUser), or
 	 *                          zero if it's a system call
-	 * @param int   $feedbackId the feedback ID
-	 * @param int   $pageId     the page ID
+	 * @param int $feedbackId the feedback ID
+	 * @param int $pageId the page ID
 	 */
 	public function __construct( $user, $feedbackId, $pageId ) {
 		$this->user = $user;
@@ -85,7 +85,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $notes     string [optional] any notes to send to the activity log
 	 * @param  $toggle    bool   [optional] whether to toggle the flag
 	 * @param  $source    string [optional] the origin of the flag (article, central, watchlist, permalink)
-	 * @return bool       true upon successful flagging, false on failure. In the event of a failure,
+	 * @return bool true upon successful flagging, false on failure. In the event of a failure,
 	 *                    the error can be fetched through ->getError())
 	 */
 	public function run( $flag, $notes = '', $toggle = false, $source = 'unknown' ) {
@@ -156,7 +156,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return int
 	 */
 	protected function log( $action, $pageId, $feedbackId, $comment, User $user = null ) {
-		$params = array();
+		$params = [];
 		if ( $this->source ) {
 			$params['source'] = $this->source;
 		}
@@ -340,7 +340,7 @@ class ArticleFeedbackv5Flagging {
 	 */
 	public function resolve( $notes, $toggle ) {
 		if (
-//			$this->feedback->isFeatured() || // can go straight from featured to resolved
+// $this->feedback->isFeatured() || // can go straight from featured to resolved
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isInappropriate() ||
@@ -952,14 +952,14 @@ class ArticleFeedbackv5Flagging {
 		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $this->feedback->aft_id );
 
 		// build our params
-		$params = array(
+		$params = [
 			'user_name' => $wgUser->getName(),
 			'user_url' => $userPage->getFullURL( '', false, PROTO_HTTPS ),
 			'page_name' => $page->getPrefixedText(),
 			'page_url' => $page->getFullURL( '', false, PROTO_HTTPS ),
 			'permalink' => $permalink->getFullURL( '', false, PROTO_HTTPS ),
 			'notes' => $notes
-		);
+		];
 
 		$job = new ArticleFeedbackv5MailerJob( $page, $params );
 		$job->insert();

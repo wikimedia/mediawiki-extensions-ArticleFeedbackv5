@@ -32,138 +32,138 @@ class ArticleFeedbackv5Activity {
 	 *
 	 * @var array
 	 */
-	public static $actions = array(
-		'helpful' => array(
+	public static $actions = [
+		'helpful' => [
 			'permissions' => 'aft-reader',
 			'sentiment' => 'positive',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'undo-helpful' => array(
+		],
+		'undo-helpful' => [
 			'permissions' => 'aft-reader',
 			'sentiment' => 'neutral',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'unhelpful' => array(
+		],
+		'unhelpful' => [
 			'permissions' => 'aft-reader',
 			'sentiment' => 'negative',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'undo-unhelpful' => array(
+		],
+		'undo-unhelpful' => [
 			'permissions' => 'aft-reader',
 			'sentiment' => 'neutral',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'flag' => array(
+		],
+		'flag' => [
 			'permissions' => 'aft-reader',
 			'sentiment' => 'negative',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'unflag' => array(
+		],
+		'unflag' => [
 			'permissions' => 'aft-reader',
 			'sentiment' => 'positive',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'autoflag' => array(
+		],
+		'autoflag' => [
 			'permissions' => 'aft-reader',
 			'sentiment' => 'negative',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'clear-flags' => array(
+		],
+		'clear-flags' => [
 			'permissions' => 'aft-reader',
 			'sentiment' => 'positive',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'feature' => array(
+		],
+		'feature' => [
 			'permissions' => 'aft-editor',
 			'sentiment' => 'positive',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'unfeature' => array(
+		],
+		'unfeature' => [
 			'permissions' => 'aft-editor',
 			'sentiment' => 'negative',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'resolve' => array(
+		],
+		'resolve' => [
 			'permissions' => 'aft-editor',
 			'sentiment' => 'positive',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'unresolve' => array(
+		],
+		'unresolve' => [
 			'permissions' => 'aft-editor',
 			'sentiment' => 'negative',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'noaction' => array(
+		],
+		'noaction' => [
 			'permissions' => 'aft-editor',
 			'sentiment' => 'neutral',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'unnoaction' => array(
+		],
+		'unnoaction' => [
 			'permissions' => 'aft-editor',
 			'sentiment' => 'neutral',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'inappropriate' => array(
+		],
+		'inappropriate' => [
 			'permissions' => 'aft-editor',
 			'sentiment' => 'negative',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'uninappropriate' => array(
+		],
+		'uninappropriate' => [
 			'permissions' => 'aft-editor',
 			'sentiment' => 'positive',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'archive' => array(
+		],
+		'archive' => [
 			'permissions' => 'aft-editor',
 			'sentiment' => 'negative',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'unarchive' => array(
+		],
+		'unarchive' => [
 			'permissions' => 'aft-editor',
 			'sentiment' => 'positive',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'hide' => array(
+		],
+		'hide' => [
 			'permissions' => 'aft-monitor',
 			'sentiment' => 'negative',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'unhide' => array(
+		],
+		'unhide' => [
 			'permissions' => 'aft-monitor',
 			'sentiment' => 'positive',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'autohide' => array(
+		],
+		'autohide' => [
 			'permissions' => 'aft-monitor',
 			'sentiment' => 'negative',
 			'log_type' => 'articlefeedbackv5'
-		),
-		'request' => array(
+		],
+		'request' => [
 			'permissions' => 'aft-monitor',
 			'sentiment' => 'negative',
 			'log_type' => 'suppress'
-		),
-		'unrequest' => array(
+		],
+		'unrequest' => [
 			'permissions' => 'aft-monitor',
 			'sentiment' => 'positive',
 			'log_type' => 'suppress'
-		),
-		'decline' => array(
+		],
+		'decline' => [
 			'permissions' => 'aft-oversighter',
 			'sentiment' => 'positive',
 			'log_type' => 'suppress'
-		),
-		'oversight' => array(
+		],
+		'oversight' => [
 			'permissions' => 'aft-oversighter',
 			'sentiment' => 'negative',
 			'log_type' => 'suppress'
-		),
-		'unoversight' => array(
+		],
+		'unoversight' => [
 			'permissions' => 'aft-oversighter',
 			'sentiment' => 'positive',
 			'log_type' => 'suppress'
-		),
-	);
+		],
+	];
 
 	/**
 	 * Adds an activity item to the global log under the articlefeedbackv5
@@ -176,7 +176,7 @@ class ArticleFeedbackv5Activity {
 	 * @param array $params Array of parameters that can be passed into the msg thing - used for "perpetrator" for log entry
 	 * @return int The id of the newly inserted log entry
 	 */
-	public static function log( $type, $pageId, $itemId, $notes, $doer, array $params = array() ) {
+	public static function log( $type, $pageId, $itemId, $notes, $doer, array $params = [] ) {
 		$logId = ArticleFeedbackv5Log::log( $type, $pageId, $itemId, $notes, $doer, $params );
 
 		if ( $logId !== null ) {
@@ -217,7 +217,7 @@ class ArticleFeedbackv5Activity {
 
 		// nothing to get? return empty resultset
 		if ( !$actions || !$title ) {
-			return new FakeResultWrapper( array() );
+			return new FakeResultWrapper( [] );
 		}
 
 		$where[] = $actions;
@@ -226,8 +226,8 @@ class ArticleFeedbackv5Activity {
 		$where = self::applyContinue( $continue, $where );
 
 		$activity = ArticleFeedbackv5Utils::getDB( DB_REPLICA )->select(
-			array( 'logging' ),
-			array(
+			[ 'logging' ],
+			[
 				'log_id',
 				'log_action',
 				'log_timestamp',
@@ -235,10 +235,10 @@ class ArticleFeedbackv5Activity {
 				'log_user_text',
 				'log_title',
 				'log_comment'
-			),
+			],
 			$where,
 			__METHOD__,
-			array(
+			[
 				'LIMIT' => $limit + 1,
 				'ORDER BY' => 'log_timestamp DESC',
 				// Force the page_time index (on _namespace, _title, _timestamp)
@@ -247,7 +247,7 @@ class ArticleFeedbackv5Activity {
 				// clause be unindexed. The alternative is to have the log_type clause be indexed
 				// and the namespace/title clauses unindexed, that would be bad.
 				'USE INDEX' => 'page_time'
-			)
+			]
 		);
 
 		return $activity;
@@ -282,7 +282,7 @@ class ArticleFeedbackv5Activity {
 		}
 
 		if ( !$wgUser->isBlocked() ) {
-			foreach( $wgArticleFeedbackv5Permissions as $permission ) {
+			foreach ( $wgArticleFeedbackv5Permissions as $permission ) {
 				if ( $user->isAllowed( $permission ) ) {
 					// get count for this specific permission level from cache
 					$key = wfMemcKey( 'articlefeedbackv5', 'getActivityCount', $permission, $feedback->aft_id );
@@ -346,7 +346,7 @@ class ArticleFeedbackv5Activity {
 	 */
 	private static function getActivityCountFromDB( ArticleFeedbackv5Model $feedback, $permission ) {
 		// build where-clause for actions and feedback
-		$actions = self::buildWhereActions( array( $permission ) );
+		$actions = self::buildWhereActions( [ $permission ] );
 		$title = self::buildWhereFeedback( $feedback );
 
 		// nothing to get? return empty resultset
@@ -358,7 +358,7 @@ class ArticleFeedbackv5Activity {
 		$where['log_title'] = $title;
 		$where['log_namespace'] = NS_SPECIAL;
 
-		return (int) ArticleFeedbackv5Utils::getDB( DB_REPLICA )->selectField(
+		return (int)ArticleFeedbackv5Utils::getDB( DB_REPLICA )->selectField(
 			'logging',
 			'COUNT(log_id)',
 			$where,
@@ -378,9 +378,9 @@ class ArticleFeedbackv5Activity {
 		global $wgMemc;
 		$dbr = ArticleFeedbackv5Utils::getDB( DB_REPLICA );
 
-		$activity = array();
-		$where = array();
-		$titles = array();
+		$activity = [];
+		$where = [];
+		$titles = [];
 
 		// build where-clause for all feedback entries
 		foreach ( $entries as $entry ) {
@@ -394,7 +394,7 @@ class ArticleFeedbackv5Activity {
 			if ( $cache !== false ) {
 				$activity[$feedback->aft_id] = $cache;
 			} else {
-				$actions = array();
+				$actions = [];
 
 				// we know exactly which status entry we want to fetch
 				if ( $feedback->isOversighted() ) {
@@ -416,7 +416,7 @@ class ArticleFeedbackv5Activity {
 					continue;
 				}
 
-				$actions = self::buildWhereActions( array(), $actions );
+				$actions = self::buildWhereActions( [], $actions );
 				if ( $actions ) {
 					$title = self::buildWhereFeedback( $feedback );
 					$titles[] = $title;
@@ -427,11 +427,11 @@ class ArticleFeedbackv5Activity {
 
 		// if there are entries not found in cache, fetch them from DB
 		if ( $where ) {
-			$options = array();
+			$options = [];
 
 			// specific conditions to find the exact action we're looking for, per page
-			$where = array( '('.implode( ') OR (', $where ).')' );
-			$options['GROUP BY'] = array( 'log_namespace', 'log_title' );
+			$where = [ '('.implode( ') OR (', $where ).')' ];
+			$options['GROUP BY'] = [ 'log_namespace', 'log_title' ];
 
 			/*
 			 * Even though log_title is already in the above where-conditions (to find
@@ -452,19 +452,19 @@ class ArticleFeedbackv5Activity {
 			 * main query that will get all of those last actions' details.
 			 */
 			$ids = ArticleFeedbackv5Utils::getDB( DB_REPLICA )->selectSQLText(
-				array( 'logging' ),
-				array( 'last_id' => 'MAX(log_id)' ),
+				[ 'logging' ],
+				[ 'last_id' => 'MAX(log_id)' ],
 				$where,
 				__METHOD__,
 				$options
 			);
 
 			$rows = ArticleFeedbackv5Utils::getDB( DB_REPLICA )->select(
-				array(
+				[
 					'logging',
 					'ids' => "($ids)" // the subquery that will provide the most recent log_id's
-				),
-				array(
+				],
+				[
 					'log_id',
 					'log_action',
 					'log_timestamp',
@@ -473,10 +473,10 @@ class ArticleFeedbackv5Activity {
 					'log_title',
 					'log_comment',
 					'log_params',
-				),
-				array( 'log_id = last_id' ),
+				],
+				[ 'log_id = last_id' ],
 				__METHOD__,
-				array()
+				[]
 			);
 
 			foreach ( $rows as $action ) {
@@ -551,12 +551,12 @@ class ArticleFeedbackv5Activity {
 	 * @return string|bool false will be returned in the event no valid WHERE-clause
 	 *                     can be built because of actions are permitted
 	 */
-	protected static function buildWhereActions( $permissions = array(), $actions = array() ) {
+	protected static function buildWhereActions( $permissions = [], $actions = [] ) {
 		global $wgLogActionsHandlers;
 
 		$dbr = ArticleFeedbackv5Utils::getDB( DB_REPLICA );
 
-		$where = array();
+		$where = [];
 		foreach ( self::$actions as $action => $options ) {
 			if (
 				// check if permissions match; if none provided, all are acceptable

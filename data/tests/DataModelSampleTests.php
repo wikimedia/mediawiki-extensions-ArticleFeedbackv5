@@ -7,7 +7,7 @@
 class DataModelSampleTest extends MediaWikiTestCase {
 	protected $sample;
 
-	protected $tablesUsed = array( 'datamodel_sample' );
+	protected $tablesUsed = [ 'datamodel_sample' ];
 
 	public function setUp() {
 		parent::setUp();
@@ -16,9 +16,9 @@ class DataModelSampleTest extends MediaWikiTestCase {
 		require_once __DIR__ . '/../sample/DataModelSample.php';
 
 		// init some volatile BagOStuff
-		$this->setMwGlobals( array(
+		$this->setMwGlobals( [
 			'wgMemc' => new HashBagOStuff,
-		) );
+		] );
 		global $wgMemc;
 		DataModelSample::setCache( $wgMemc );
 
@@ -90,7 +90,7 @@ class DataModelSampleTest extends MediaWikiTestCase {
 		$probability = 1 / 2;
 
 		for ( $i = 0; $i < $size; $i++ ) {
-			$sample = clone( $this->sample );
+			$sample = clone $this->sample;
 			$sample->ds_title = 'Title #'. ( $i + 1 );
 			$sample->ds_visible = $i % ( 1 / $probability );
 			$sample->insert();
@@ -122,7 +122,7 @@ class DataModelSampleTest extends MediaWikiTestCase {
 		$probability = 1 / 2;
 
 		for ( $i = 0; $i < $size; $i++ ) {
-			$sample = clone( $this->sample );
+			$sample = clone $this->sample;
 			$sample->ds_title = 'Title #'. ( $i + 1 );
 			$sample->ds_visible = $i % ( 1 / $probability );
 			$sample->insert();
