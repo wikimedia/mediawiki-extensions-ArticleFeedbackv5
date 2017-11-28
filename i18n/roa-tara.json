@@ -9,6 +9,8 @@
 	"apihelp-articlefeedbackv5-summary": "Manne 'na segnalazione d'a vôsce",
 	"apihelp-articlefeedbackv5-param-revid": "ID d'a revisione da mannà 'a segnalazione",
 	"apihelp-articlefeedbackv5-param-anontoken": "Gettone pe le utinde senza nome",
+	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Tipe de flag da applecà",
+	"apihelp-articlefeedbackv5-flag-feedback-param-note": "'Mbormaziune sus a 'u mutive pu quale ha assute l'attivitate de segnalazione",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "ID de l'archivije da aggiornà",
 	"articlefeedbackv5-cta-thanks": "Grazie!",
 	"articlefeedbackv5-cta-confirmation-message": "'U messàgge tune 'u puè 'ndrucà sus a sta [$1 pàgene de segnalaziune].",
