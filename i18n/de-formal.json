@@ -28,8 +28,6 @@
 	"articlefeedbackv5-error-throttled": "Ihr Beitrag wurde zurückgewiesen, da Sie in jüngster Vergangenheit mehr als die empfohlene Anzahl an Rückmeldungen, gemäß der Rückmeldungsrichtlinien von {{SITENAME}}, hinterlassen haben. Bitte hinterlassen Sie nicht zu viele Rückmeldungen.",
 	"articlefeedbackv5-special-survey-button-text": "Was halten Sie von diesem Rückmeldewerkzeug?",
 	"articlefeedbackv5-abuse-saved-tooltip": "Entfernen Sie die von Ihnen vorgenommene Kennzeichnung.",
-	"articlefeedbackv5-unsupported-message": "Ihr Browser unterstützt leider diesen Prototyp des Hilfsmittels nicht. Um diese Seite ansehen zu können, müssen Sie einen anderen Browser nutzen.",
-	"articlefeedbackv5-special-disclaimer": "Dies ist ein Prototyp. Nutzen Sie ihn nicht; es sei denn, Sie werden dazu eingeladen, es zu tun.",
 	"articlefeedbackv5-noteflyover-hide-placeholder": "Warum blenden Sie diese Rückmeldung aus?",
 	"articlefeedbackv5-noteflyover-request-description": "Bevor Sie eine Versionslöschung per Oversight beantragen, prüfen Sie bitte, ob dieser Beitrag\neines der folgenden Probleme enthält:\n* Telefonnummern\n* E-Mail-Adressen\n* Links zu pornografischen Seiten\n* diffamierende/beleidigende Kommentare über eine Person\n* [//de.wikipedia.org/wiki/Wikipedia:Oversight#Richtlinie andere Oversight-Kriterien]",
 	"articlefeedbackv5-noteflyover-request-placeholder": "Warum beantragen Sie die Löschung?",

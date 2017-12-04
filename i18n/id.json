@@ -264,7 +264,6 @@
 	"articlefeedbackv5-desc": "Umpan balik artikel",
 	"articlefeedbackv5-comment-more": "Luaskan",
 	"articlefeedbackv5-comment-empty": "Tidak ada teks yang dimasukkan",
-	"articlefeedbackv5-unsupported-message": "Maaf, peramban Anda tidak didukung oleh prototipe ini. Untuk melihat halaman ini, gunakan peramban yang berbeda.",
 	"articlefeedbackv5-page-disabled": "Halaman Umpan Balik Artikel tidak diaktifkan untuk halaman ini.",
 	"articlefeedbackv5-no-feedback": "Tidak ada umpan balik untuk filter yang Anda pilih. Untuk mengganti filter, coba salah satu pilihan di atas (misalnya: 'Pilihan' atau 'Belum ditinjau').",
 	"articlefeedbackv5-invalid-feedback": "Umpan balik yang diminta tidak ada.",

@@ -255,7 +255,6 @@
 	"articlefeedbackv5-desc": "Airticle feedback",
 	"articlefeedbackv5-comment-more": "Mair",
 	"articlefeedbackv5-comment-empty": "Naw tex wis entered",
-	"articlefeedbackv5-unsupported-message": "Sorrie, yer brouser isna supported bi this prototype. Tae see this page, please uise ae different brouser.",
 	"articlefeedbackv5-page-disabled": "Airticle Feedback page naw enabled fer this page.",
 	"articlefeedbackv5-no-feedback": "Thaur's naw feedback fer the filter ye selected. Tae chynge yer filter, try yin o the opties abuin (e.g.: \"Featured\" or \"Onreviewed\").",
 	"articlefeedbackv5-invalid-feedback": "The requested feedback disna exeest.",

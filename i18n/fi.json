@@ -271,7 +271,6 @@
 	"articlefeedbackv5-desc": "Kannustaa käyttäjiä osallistumaan mahdollistamalla artikkelin arvioimisen ja parannusehdotusten lähettämisen",
 	"articlefeedbackv5-comment-more": "Lisää",
 	"articlefeedbackv5-comment-empty": "Tekstiä ei ole lisätty",
-	"articlefeedbackv5-unsupported-message": "Valitettavasti tämä prototyyppi ei tue selaintasi. Käytä toista selainta nähdäksesi tämän sivun.",
 	"articlefeedbackv5-page-disabled": "Palautetyökalu ei ole käytössä tällä sivulla.",
 	"articlefeedbackv5-no-feedback": "Valitsemallasi suodatuksella ei näy yhtäkään palautetta. Muuttaaksesi suodatusta kokeile yllä olevia vaihtoehtoja (esimerkiksi \"laadukas\" tai \"Katselmoimaton\").",
 	"articlefeedbackv5-invalid-feedback": "Etsimääsi palautetta ei löydy.",

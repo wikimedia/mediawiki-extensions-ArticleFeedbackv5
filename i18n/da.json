@@ -145,7 +145,6 @@
 	"articlefeedbackv5-invalid-page-id": "Ugyldigt side-ID",
 	"articlefeedbackv5-found-percent": "{{PLURAL:$2|$1 fandt hvad de ledte efter}}",
 	"articlefeedbackv5-comment-more": "Mere",
-	"articlefeedbackv5-unsupported-message": "Beklager, din browser er ikke understøttet af denne prototype. For at se siden, skal du venligst bruge en anden browser.",
 	"articlefeedbackv5-viewactivity": "Vis aktivitet",
 	"articlefeedbackv5-permalink-written-by-editor": "Skrevet af en registreret bruger",
 	"articlefeedbackv5-permalink-written-by-reader": "Skrevet af en anonym bruger",

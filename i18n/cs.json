@@ -195,7 +195,6 @@
 	"articlefeedbackv5-desc": "Odezva k článkům",
 	"articlefeedbackv5-comment-more": "Více",
 	"articlefeedbackv5-comment-empty": "Nebyl vložen žádný text",
-	"articlefeedbackv5-unsupported-message": "Omlouváme se Vám, ale Váš prohlížeč není tímto prototypem podporován. Pokud chcete zobrazit tuto stránku, použijte jiný prohlížeč.",
 	"articlefeedbackv5-viewactivity": "Zobrazit aktivitu",
 	"articlefeedbackv5-mask-view-contents": "Zobrazit obsah",
 	"articlefeedbackv5-mask-text-hide": "Tento příspěvek #$1 {{GENDER:$2|skryl|skryla}} $2 $3.",
