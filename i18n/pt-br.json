@@ -12,9 +12,15 @@
 			"Rafael Vargas",
 			"Raylton P. Sousa",
 			"TheGabrielZaum",
-			"555"
+			"555",
+			"Eduardo Addad de Oliveira"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "Enviar um comentário sobre um artigo",
+	"apihelp-articlefeedbackv5-summary": "Enviar comentários sobre um artigo",
+	"apihelp-articlefeedbackv5-param-revid": "ID de revisão para enviar comentários para",
+	"apihelp-articlefeedbackv5-param-anontoken": "Token para usuários anônimos",
+	"apihelp-articlefeedbackv5-param-bucket": "O formulário de comentários foi mostrado ao usuário",
 	"articlefeedbackv5-cta-thanks": "Obrigado!",
 	"articlefeedbackv5-cta-confirmation-message": "O seu comentário pode ser visto nesta [$1 página de avaliação].",
 	"articlefeedbackv5-cta1-confirmation-title": "Você sabia que você pode editar esta página?",
