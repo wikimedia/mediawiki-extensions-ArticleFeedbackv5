@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ahmed-Najib-Biabani-Ibrahimkhel"
+			"Ahmed-Najib-Biabani-Ibrahimkhel",
+			"Baloch Khan"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "مننه!",
@@ -69,6 +70,7 @@
 	"articlefeedbackv5-form-unhide": "ناکړل",
 	"articlefeedbackv5-form-archive": "خونديځ",
 	"articlefeedbackv5-form-unarchive": "ناکړل",
+	"articlefeedbackv5-form-oversight": "څارونکي",
 	"articlefeedbackv5-form-unoversight": "ناکړل",
 	"articlefeedbackv5-form2-header-problem": "{{GENDER:$1|$1}} يوه ستونزه درلوده:",
 	"articlefeedbackv5-form2-header-question": "{{GENDER:$1|$1}} يوه پوښتنه درلوده:",
@@ -136,6 +138,7 @@
 	"articlefeedbackv5-noteflyover-unrequest-submit": "غوښتنه ناگارل",
 	"articlefeedbackv5-noteflyover-unrequest-help": "نور مالومات",
 	"articlefeedbackv5-noteflyover-oversight-label": "يو يادښت ورگډول",
+	"articlefeedbackv5-noteflyover-oversight-submit": "څارونکي",
 	"articlefeedbackv5-noteflyover-oversight-help": "نور مالومات",
 	"articlefeedbackv5-noteflyover-unoversight-label": "يو يادښت ورگډول",
 	"articlefeedbackv5-noteflyover-unoversight-help": "نور مالومات",
