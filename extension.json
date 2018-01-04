@@ -18,7 +18,7 @@
 		"Matthias Mullie",
 		"Jack Phoenix"
 	],
-	"license-name": "GPL-2.0+",
+	"license-name": "GPL-2.0-or-later",
 	"requires": {
 		"MediaWiki": ">= 1.28.0"
 	},
