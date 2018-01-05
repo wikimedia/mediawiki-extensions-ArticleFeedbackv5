@@ -14,7 +14,8 @@
 			"Siebrand",
 			"Southparkfan",
 			"Tjcool007",
-			"Mainframe98"
+			"Mainframe98",
+			"Mar(c)"
 		]
 	},
 	"apihelp-articlefeedbackv5-param-anontoken": "Token voor anonieme gebruikers",
@@ -366,7 +367,7 @@
 	"articlefeedbackv5-noteflyover-resolve-help": "Meer lezen",
 	"articlefeedbackv5-noteflyover-unresolve-caption": "Als niet opgelost gemarkeerd",
 	"articlefeedbackv5-noteflyover-unresolve-label": "Opmerking toevoegen",
-	"articlefeedbackv5-noteflyover-unresolve-placeholder": "Waarom heeft u dit bericht als niet opgelost gemarkeerd?",
+	"articlefeedbackv5-noteflyover-unresolve-placeholder": "Waarom hebt u dit bericht als niet opgelost gemarkeerd?",
 	"articlefeedbackv5-noteflyover-unresolve-submit": "Opmerking toevoegen",
 	"articlefeedbackv5-noteflyover-unresolve-help": "Meer lezen",
 	"articlefeedbackv5-noteflyover-hide-caption": "Verbergen",
@@ -427,7 +428,7 @@
 	"articlefeedbackv5-noteflyover-oversight-help": "Meer lezen",
 	"articlefeedbackv5-noteflyover-unoversight-caption": "Toezicht voor dit bericht ongedaan gemaakt",
 	"articlefeedbackv5-noteflyover-unoversight-label": "Opmerking toevoegen",
-	"articlefeedbackv5-noteflyover-unoversight-placeholder": "Waarom heeft u toezicht voor dit bericht opgeheven?",
+	"articlefeedbackv5-noteflyover-unoversight-placeholder": "Waarom hebt u toezicht voor dit bericht opgeheven?",
 	"articlefeedbackv5-noteflyover-unoversight-submit": "Opmerking toevoegen",
 	"articlefeedbackv5-noteflyover-unoversight-help": "Meer lezen",
 	"articlefeedbackv5-noteflyover-decline-caption": "Verzoek om toezicht afwijzen",
@@ -464,7 +465,7 @@
 	"articlefeedbackv5-bucket6-feedback-countdown": "({{PLURAL:$1|één teken over|$1 tekens}} over)",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "Bedankt. Hebt u nog suggesties voor verbetering?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "Schrijf hier uw suggestie, bijvoorbeeld \"Deze pagina heeft een afbeelding nodig\"",
-	"articlefeedbackv5-bucket6-question-instructions-no": "Dat spijt ons. Heeft u suggesties voor verbetering?",
+	"articlefeedbackv5-bucket6-question-instructions-no": "Dat spijt ons. Hebt u suggesties voor verbetering?",
 	"articlefeedbackv5-bucket6-question-placeholder-no": "Schrijf hier uw suggestie, bijvoorbeeld \"Deze pagina heeft een afbeelding nodig\"",
 	"articlefeedbackv5-bucket6-form-submit": "Terugkoppeling opslaan",
 	"articlefeedbackv5-bucket6-backlink-text": "Terug naar stap 1",
