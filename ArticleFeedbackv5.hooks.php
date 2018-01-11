@@ -518,7 +518,7 @@ class ArticleFeedbackv5Hooks {
 		if ( $pager->contribs == 'newbie' ) {
 			// fetch max user id from cache (if present)
 			global $wgMemc;
-			$key = wfMemcKey( 'articlefeedbackv5', 'maxUserId' );
+			$key = $wgMemc->makeKey( 'articlefeedbackv5', 'maxUserId' );
 			$max = $wgMemc->get( $key );
 			if ( $max === false ) {
 				// max user id not present in cache; fetch from db & save to cache for 1h

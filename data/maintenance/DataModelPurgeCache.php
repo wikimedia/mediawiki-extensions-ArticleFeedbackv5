@@ -107,7 +107,7 @@ class DataModelPurgeCache extends Maintenance {
 			$class::uncacheList( $list, $shard );
 
 			// clear counts
-			$key = wfMemcKey( $class, 'getCount', $list, $shard );
+			$key = $class::getCache()->makeKey( $class, 'getCount', $list, $shard );
 			$class::getCache()->delete( $key );
 		}
 	}
