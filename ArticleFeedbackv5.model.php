@@ -245,7 +245,7 @@ class ArticleFeedbackv5Model extends DataModel {
 				return $existingValue + $difference;
 			};
 
-			$key = wfMemcKey( get_called_class(), 'getCountFound', $shard );
+			$key = static::getCache()->makeKey( get_called_class(), 'getCountFound', $shard );
 			static::getCache()->merge( $key, $callback );
 		}
 	}
@@ -261,7 +261,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * @return float
 	 */
 	public static function getCountFound( $pageId = null ) {
-		$key = wfMemcKey( get_called_class(), 'getCountFound', $pageId );
+		$key = static::getCache()->makeKey( get_called_class(), 'getCountFound', $pageId );
 		$found = static::getCache()->get( $key );
 
 		if ( $found === false ) {

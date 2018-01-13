@@ -74,7 +74,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 				 * data in cache may be out of date.
 				 */
 				global $wgMemc;
-				$key = wfMemcKey( 'ArticleFeedbackv5Activity', 'getLastEditorActivity', $feedbackId );
+				$key = $wgMemc->makeKey( 'ArticleFeedbackv5Activity', 'getLastEditorActivity', $feedbackId );
 				$wgMemc->delete( $key );
 			}
 		}

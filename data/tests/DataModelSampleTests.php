@@ -56,7 +56,7 @@ class DataModelSampleTest extends MediaWikiTestCase {
 
 		// data in cache
 		global $wgMemc;
-		$key = wfMemcKey( 'DataModelSample', 'get', $this->sample->{DataModelSample::getIdColumn()}, $this->sample->{DataModelSample::getShardColumn()} );
+		$key = $wgMemc->makeKey( 'DataModelSample', 'get', $this->sample->{DataModelSample::getIdColumn()}, $this->sample->{DataModelSample::getShardColumn()} );
 		$this->assertEquals( $this->sample, $wgMemc->get( $key ) );
 
 		// data in db
@@ -72,7 +72,7 @@ class DataModelSampleTest extends MediaWikiTestCase {
 
 		// data in cache
 		global $wgMemc;
-		$key = wfMemcKey( 'DataModelSample', 'get', $this->sample->{DataModelSample::getIdColumn()}, $this->sample->{DataModelSample::getShardColumn()} );
+		$key = $wgMemc->makeKey( 'DataModelSample', 'get', $this->sample->{DataModelSample::getIdColumn()}, $this->sample->{DataModelSample::getShardColumn()} );
 		$this->assertEquals( $this->sample, $wgMemc->get( $key ) );
 
 		// data in db

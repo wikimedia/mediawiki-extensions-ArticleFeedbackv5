@@ -68,7 +68,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 
 		// data in cache
 		global $wgMemc;
-		$key = wfMemcKey( 'ArticleFeedbackv5Model', 'get', $this->sample->{ArticleFeedbackv5Model::getIdColumn()}, $this->sample->{ArticleFeedbackv5Model::getShardColumn()} );
+		$key = $wgMemc->makeKey( 'ArticleFeedbackv5Model', 'get', $this->sample->{ArticleFeedbackv5Model::getIdColumn()}, $this->sample->{ArticleFeedbackv5Model::getShardColumn()} );
 		$this->assertEquals( $this->sample, $wgMemc->get( $key ) );
 
 		// data in db
@@ -84,7 +84,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 
 		// data in cache
 		global $wgMemc;
-		$key = wfMemcKey( 'ArticleFeedbackv5Model', 'get', $this->sample->{ArticleFeedbackv5Model::getIdColumn()}, $this->sample->{ArticleFeedbackv5Model::getShardColumn()} );
+		$key = $wgMemc->makeKey( 'ArticleFeedbackv5Model', 'get', $this->sample->{ArticleFeedbackv5Model::getIdColumn()}, $this->sample->{ArticleFeedbackv5Model::getShardColumn()} );
 		$this->assertEquals( $this->sample, $wgMemc->get( $key ) );
 
 		// data in db

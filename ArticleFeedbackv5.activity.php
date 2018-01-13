@@ -188,7 +188,7 @@ class ArticleFeedbackv5Activity {
 			 * data in cache may be out of date.
 			 */
 			global $wgMemc;
-			$key = wfMemcKey( get_called_class(), 'getLastEditorActivity', $itemId );
+			$key = $wgMemc->makeKey( get_called_class(), 'getLastEditorActivity', $itemId );
 			$wgMemc->delete( $key );
 		}
 
@@ -285,7 +285,7 @@ class ArticleFeedbackv5Activity {
 			foreach( $wgArticleFeedbackv5Permissions as $permission ) {
 				if ( $user->isAllowed( $permission ) ) {
 					// get count for this specific permission level from cache
-					$key = wfMemcKey( 'articlefeedbackv5', 'getActivityCount', $permission, $feedback->aft_id );
+					$key = $wgMemc->makeKey( 'articlefeedbackv5', 'getActivityCount', $permission, $feedback->aft_id );
 					$count = $wgMemc->get( $key );
 
 					if ( $count === false ) {
@@ -322,7 +322,7 @@ class ArticleFeedbackv5Activity {
 		// get permission level that should be updated
 		$permission = self::$actions[$action]['permissions'];
 
-		$key = wfMemcKey( 'articlefeedbackv5', 'getActivityCount', $permission, $feedbackId );
+		$key = $wgMemc->makeKey( 'articlefeedbackv5', 'getActivityCount', $permission, $feedbackId );
 		$count = $wgMemc->get( $key );
 
 		/*
@@ -389,7 +389,7 @@ class ArticleFeedbackv5Activity {
 				continue;
 			}
 
-			$key = wfMemcKey( get_called_class(), 'getLastEditorActivity', $feedback->aft_id );
+			$key = $wgMemc->makeKey( get_called_class(), 'getLastEditorActivity', $feedback->aft_id );
 			$cache = $wgMemc->get( $key );
 			if ( $cache !== false ) {
 				$activity[$feedback->aft_id] = $cache;
@@ -487,7 +487,7 @@ class ArticleFeedbackv5Activity {
 				}
 
 				// cache, per feedback entry
-				$key = wfMemcKey( get_called_class(), 'getLastEditorActivity', $params['feedbackId'] );
+				$key = $wgMemc->makeKey( get_called_class(), 'getLastEditorActivity', $params['feedbackId'] );
 				$wgMemc->set( $key, $action, 60 * 60 );
 
 				$activity[$params['feedbackId']] = $action;

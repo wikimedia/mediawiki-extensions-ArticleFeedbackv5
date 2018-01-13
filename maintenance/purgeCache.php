@@ -39,7 +39,7 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 
 		// clear max user id
 		global $wgMemc;
-		$wgMemc->delete( wfMemcKey( 'articlefeedbackv5', 'maxUserId' ) );
+		$wgMemc->delete( $wgMemc->makeKey( 'articlefeedbackv5', 'maxUserId' ) );
 	}
 
 	/**
@@ -55,12 +55,12 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 		// feedback activity count per permission
 		global $wgArticleFeedbackv5Permissions;
 		foreach( $wgArticleFeedbackv5Permissions as $permission ) {
-			$key = wfMemcKey( 'articlefeedbackv5', 'getActivityCount', $permission, $object->aft_id );
+			$key = $wgMemc->makeKey( 'articlefeedbackv5', 'getActivityCount', $permission, $object->aft_id );
 			$wgMemc->delete( $key );
 		}
 
 		// feedback last editor activity
-		$key = wfMemcKey( 'ArticleFeedbackv5Activity', 'getLastEditorActivity', $object->aft_id );
+		$key = $wgMemc->makeKey( 'ArticleFeedbackv5Activity', 'getLastEditorActivity', $object->aft_id );
 		$wgMemc->delete( $key );
 	}
 
@@ -75,7 +75,8 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 		$class = $this->getClass();
 
 		// clear page found percentage
-		$key = wfMemcKey( $class, 'getCountFound', $shard );
+		global $wgMemc;
+		$key = $wgMemc->makeKey( $class, 'getCountFound', $shard );
 		$class::getCache()->delete( $key );
 	}
 }

@@ -188,7 +188,7 @@ abstract class DataModel {
 	 * @return DataModel|bool
 	 */
 	public static function get( $id, $shard ) {
-		$key = wfMemcKey( get_called_class(), 'get', $id, $shard );
+		$key = static::getCache()->makeKey( get_called_class(), 'get', $id, $shard );
 		$entry = static::getCache()->get( $key );
 
 		// when not found in cache, load data from DB
@@ -253,8 +253,8 @@ abstract class DataModel {
 		}
 
 		// internal key to identify this exact list by
-		$keyGetList = wfMemcKey( get_called_class(), 'getList', $name, $shard, $offset, $sort, $order );
-		$keyGetListValidity = wfMemcKey( get_called_class(), 'getListValidity', $name, $shard );
+		$keyGetList = static::getCache()->makeKey( get_called_class(), 'getList', $name, $shard, $offset, $sort, $order );
+		$keyGetListValidity = static::getCache()->makeKey( get_called_class(), 'getListValidity', $name, $shard );
 
 		// get data from cache
 		$cache = static::getCache()->get( $keyGetList );
@@ -359,7 +359,7 @@ abstract class DataModel {
 		}
 
 		// internal key to identify this exact list by
-		$key = wfMemcKey( get_called_class(), 'getCount', $name, $shard );
+		$key = static::getCache()->makeKey( get_called_class(), 'getCount', $name, $shard );
 
 		// (try to) fetch list from cache
 		$count = static::getCache()->get( $key );
@@ -586,7 +586,7 @@ abstract class DataModel {
 			$id = $entry['id'];
 			$shard = $entry['shard'];
 
-			$keyGet = wfMemcKey( get_called_class(), 'get', $id, $shard );
+			$keyGet = static::getCache()->makeKey( get_called_class(), 'get', $id, $shard );
 			if ( static::getCache()->get( $keyGet ) === false ) {
 				$missing[$id] = $shard;
 			}
@@ -615,7 +615,7 @@ abstract class DataModel {
 		 * is not lagging; we don't want to cache outdated data.
 		 */
 		if ( static::getBackend()->allowCache() ) {
-			$key = wfMemcKey( get_called_class(), 'get', $this->{static::getIdColumn()}, $this->{static::getShardColumn()} );
+			$key = static::getCache()->makeKey( get_called_class(), 'get', $this->{static::getIdColumn()}, $this->{static::getShardColumn()} );
 			static::getCache()->set( $key, $this, 60 * 60 );
 		}
 
@@ -628,7 +628,7 @@ abstract class DataModel {
 	 * @return DataModel
 	 */
 	public function uncache() {
-		$key = wfMemcKey( get_called_class(), 'get', $this->{static::getIdColumn()}, $this->{static::getShardColumn()} );
+		$key = static::getCache()->makeKey( get_called_class(), 'get', $this->{static::getIdColumn()}, $this->{static::getShardColumn()} );
 		static::getCache()->delete( $key );
 
 		return $this;
@@ -652,7 +652,7 @@ abstract class DataModel {
 		 */
 		if ( static::getBackend()->allowCache() ) {
 			$cache = array( 'time' => wfTimestampNow(), 'list' => $list );
-			$keyGetList = wfMemcKey( get_called_class(), 'getList', $name, $shard, $offset, $sort, $order );
+			$keyGetList = static::getCache()->makeKey( get_called_class(), 'getList', $name, $shard, $offset, $sort, $order );
 			static::getCache()->set( $keyGetList, $cache, 60 * 60 );
 		}
 	}
@@ -680,7 +680,7 @@ abstract class DataModel {
 		 * found in this validity cache.
 		 */
 		foreach ( array( $shard, null ) as $shard ) {
-			$key = wfMemcKey( get_called_class(), 'getListValidity', $name, $shard );
+			$key = static::getCache()->makeKey( get_called_class(), 'getListValidity', $name, $shard );
 			static::getCache()->set( $key, wfTimestampNow(), 60 * 60 );
 		}
 	}
@@ -753,7 +753,7 @@ abstract class DataModel {
 		// update both shard-specific as well as general all-shard count
 		foreach ( array( $shard, null ) as $shard ) {
 			$class = get_called_class();
-			$key = wfMemcKey( $class, 'getCount', $name, $shard );
+			$key = static::getCache()->makeKey( $class, 'getCount', $name, $shard );
 
 			/**
 			 * Callback method, updating the cached counts.
