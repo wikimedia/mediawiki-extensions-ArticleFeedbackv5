@@ -12,7 +12,8 @@
 			"Maroen1990",
 			"محمد أحمد عبد الفتاح",
 			"بدارين",
-			"ديفيد"
+			"ديفيد",
+			"Sonic N800"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "شكرا!",
@@ -294,7 +295,7 @@
 	"articlefeedbackv5-permalink-status-unfeature": "{{GENDER:$1|<strongتم إلغاء تعليمها كمفيدة</strong> من قبل $1}} $2",
 	"articlefeedbackv5-permalink-status-resolve": "{{GENDER:$1|<strong>تم التعليم عليها كمحلولة</strong> بواسطة $1}} $2",
 	"articlefeedbackv5-permalink-status-unresolve": "{{GENDER:$1|<strong>Uإلغاء التعليم بأنها محلولة</strong> من قبل $1}} $2",
-	"articlefeedbackv5-permalink-status-inappropriate": "{{GENDER:$1|<strong>مخفية</strong> من قبل $1}} منذ $2 سابقة",
+	"articlefeedbackv5-permalink-status-inappropriate": "{{GENDER:$1|<strong>مُخفاة</strong> من قبل $1}} $2",
 	"articlefeedbackv5-permalink-status-uninappropriate": "{{GENDER:$1|<strong>ملغية الإخفاء</strong> من قبل $1}} منذ $2 سابقة",
 	"articlefeedbackv5-permalink-status-helpful": "{{GENDER:$1|<strong>تم التعليم عليها كمفيدة</strong> من قبل $1}} $2",
 	"articlefeedbackv5-permalink-status-undo-helpful": "{{GENDER:$1|<strong>تم إلغاء علامة مفيدة</strong> من قبل $1}} $2",
