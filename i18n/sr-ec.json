@@ -5,7 +5,8 @@
 			"Rancher",
 			"Sasa Stefanovic",
 			"Михајло Анђелковић",
-			"Сербијана"
+			"Сербијана",
+			"Acamicamacaraca"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Хвала!",
@@ -52,7 +53,7 @@
 	"articlefeedbackv5-contribs-status-action-flag": "Означена",
 	"articlefeedbackv5-contribs-status-action-feature": "Корисно",
 	"articlefeedbackv5-contribs-status-action-resolve": "Решена",
-	"articlefeedbackv5-contribs-status-action-noaction": "Није потребна акција",
+	"articlefeedbackv5-contribs-status-action-noaction": "Није потребна радња",
 	"articlefeedbackv5-contribs-status-action-inappropriate": "Неприкладно",
 	"articlefeedbackv5-contribs-status-action-archive": "Архивирано",
 	"articlefeedbackv5-contribs-status-action-hide": "Сакриј",
@@ -69,7 +70,7 @@
 	"articlefeedbackv5-special-filter-unhelpful": "Нису од помоћи ($1)",
 	"articlefeedbackv5-special-filter-useful": "Корисно ($1)",
 	"articlefeedbackv5-special-filter-resolved": "Решене ($1)",
-	"articlefeedbackv5-special-filter-noaction": "Није потребна акција ($1)",
+	"articlefeedbackv5-special-filter-noaction": "Није потребна радња ($1)",
 	"articlefeedbackv5-special-filter-inappropriate": "Неприкладне ($1)",
 	"articlefeedbackv5-special-filter-archived": "Архивирани ($1)",
 	"articlefeedbackv5-special-filter-allcomment": "Сви коментари ($1)",
