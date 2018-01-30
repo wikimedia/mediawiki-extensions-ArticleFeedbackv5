@@ -15,7 +15,8 @@
 			"SandroHc",
 			"Vitorvicentevalente",
 			"Waldir",
-			"Mansil"
+			"Mansil",
+			"Athena in Wonderland"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Enviar avaliação",
@@ -82,7 +83,7 @@
 	"articlefeedbackv5-cta1-learn-how": "Aprenda a editar",
 	"articlefeedbackv5-cta1-edit-linktext": "Editar esta página",
 	"articlefeedbackv5-cta2-confirmation-title": "Ajude a melhorar a wiki {{SITENAME}}",
-	"articlefeedbackv5-cta2-confirmation-call": "Este site é criado por pessoas como você. Pode dar-nos uma ajuda?",
+	"articlefeedbackv5-cta2-confirmation-call": "Este sítio é criado por pessoas como você. Pode dar-nos uma ajuda?",
 	"articlefeedbackv5-cta2-button-text": "Saiba mais",
 	"articlefeedbackv5-cta3-confirmation-title": "Responda a um inquérito rápido, por favor",
 	"articlefeedbackv5-cta3-confirmation-call": "Só demora um minuto e vai ajudar a melhorar a wiki {{SITENAME}}.",
@@ -465,7 +466,7 @@
 	"articlefeedbackv5-noteflyover-unarchive-submit": "Adicionar nota",
 	"articlefeedbackv5-noteflyover-unarchive-help": "Saiba mais",
 	"articlefeedbackv5-noteflyover-request-caption": "Solicitar supervisão",
-	"articlefeedbackv5-noteflyover-request-description": "Antes de solicitar supervisão verifique, por favor, se esta mensagem inclui uma destas questões:\n* números de telefone\n* endereços de correio eletrónico\n* hiperligações para sites pornográficos\n* comentários difamatórios ou caluniosos sobre uma pessoa\n* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy outros critérios para supervisão]",
+	"articlefeedbackv5-noteflyover-request-description": "Antes de solicitar supervisão verifique, por favor, se esta mensagem inclui uma destas questões:\n* números de telefone\n* endereços de correio eletrónico\n* hiperligações para sítios pornográficos\n* comentários difamatórios ou caluniosos sobre uma pessoa\n* [//pt.wikipedia.org/wiki/Wikipédia:Supervisão#Política outros critérios para supervisão]",
 	"articlefeedbackv5-noteflyover-request-label": "Adicionar uma nota a explicar o motivo da solicitação desta supervisão",
 	"articlefeedbackv5-noteflyover-request-placeholder": "Porque solicitou supervisão?",
 	"articlefeedbackv5-noteflyover-request-submit": "Pedido de supervisão",
@@ -507,7 +508,7 @@
 	"articlefeedbackv5-bucket4-form-submit": "Editar esta página",
 	"articlefeedbackv5-bucket4-help-tooltip-info": "A wiki {{SITENAME}} quer saber o que pensa. Ajude a melhorar esta página tornando-se um editor.",
 	"articlefeedbackv5-bucket4-noedit-title": "Ajude a melhorar a wiki {{SITENAME}}",
-	"articlefeedbackv5-bucket4-noedit-teaser-line1": "Este site é criado por pessoas como você.",
+	"articlefeedbackv5-bucket4-noedit-teaser-line1": "Este sítio é criado por pessoas como você.",
 	"articlefeedbackv5-bucket4-noedit-teaser-line2": "Pode dar-nos uma ajuda?",
 	"articlefeedbackv5-bucket4-noedit-form-submit": "Saiba mais",
 	"articlefeedbackv5-bucket6-title": "Ajude a melhorar esta página",
