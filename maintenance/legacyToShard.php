@@ -39,8 +39,9 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 	 */
 	public function __construct() {
 		parent::__construct();
-		$this->requireExtension( 'ArticleFeedbackv5' );
 		$this->mDescription = 'Move all relevant legacy data stored in aft_article_* tables to the aft_feedback table that will be sharded.';
+
+		$this->requireExtension( 'Article Feedback' );
 	}
 
 	/**

@@ -39,8 +39,9 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 	 */
 	public function __construct() {
 		parent::__construct();
-		$this->requireExtension( 'ArticleFeedbackv5' );
 		$this->mDescription = 'Rebuild checkuser actiontext & logging usernames (based on checkuser data)';
+
+		$this->requireExtension( 'Article Feedback' );
 	}
 
 	/**
