@@ -3,7 +3,7 @@
 	"type": "mediawiki-extension",
 	"description": "The Article Feedback Tool, Version 5 is a MediaWiki extension designed to engage readers in the assessment of article quality.",
 	"homepage": "https://www.mediawiki.org/wiki/Extension:ArticleFeedbackv5",
-	"license": "GPL-2.0+",
+	"license": "GPL-2.0-or-later",
 	"require": {
 		"composer/installers": "*"
 	},
