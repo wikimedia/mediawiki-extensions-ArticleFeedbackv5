@@ -187,7 +187,7 @@
 	"articlefeedbackv5-status-unarchive": "Esta entrada fue desarchivada por $1 en $2 a las $3",
 	"articlefeedbackv5-new-marker": "Nuevo",
 	"articlefeedbackv5-oversight-marker": "Suprimido",
-	"articlefeedbackv5-autohide-marker": "Oculto",
+	"articlefeedbackv5-autohide-marker": "Ocultado automáticamente",
 	"articlefeedbackv5-hide-marker": "Oculto",
 	"articlefeedbackv5-feature-marker": "Útil",
 	"articlefeedbackv5-resolve-marker": "Resuelto",

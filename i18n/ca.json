@@ -130,7 +130,7 @@
 	"articlefeedbackv5-status-unhide": "Aquest missatge va ser tornat a fer visible per $1 el $2 a les $3",
 	"articlefeedbackv5-new-marker": "Nou",
 	"articlefeedbackv5-oversight-marker": "Supervisat",
-	"articlefeedbackv5-autohide-marker": "Amagat",
+	"articlefeedbackv5-autohide-marker": "Amagat automàticament",
 	"articlefeedbackv5-hide-marker": "Amagat",
 	"articlefeedbackv5-feature-marker": "Útil",
 	"articlefeedbackv5-resolve-marker": "Resolt",
