@@ -67,6 +67,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-summary": "Listar as avaliações de uma página indicada",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-title": "Título da página para obter as classificações. Não pode ser usado em conjunto com $1pageid",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-pageid": "Identificador da página para obter as classificações. Não pode ser usado em conjunto com $1title",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-watchlist": "Obter as avaliações das páginas vigiadas pelo usuário (1) ou de todas as páginas (0)",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "Chave de ordenação dos registos",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sortdirection": "Direção (ASC|DESC) de ordenação das avaliações",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Que filtragem para se inscrever na lista",
