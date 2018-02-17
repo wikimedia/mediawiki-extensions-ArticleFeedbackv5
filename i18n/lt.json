@@ -6,7 +6,8 @@
 			"Ignas693",
 			"Mantak111",
 			"Perkunas",
-			"Vogone"
+			"Vogone",
+			"Manvydasz"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Siųsti straipsnio atsiliepimą",
@@ -485,8 +486,8 @@
 	"articlefeedbackv5-activity-item-unresolve": "$1 atžymėjo šį pranešimą kaip išspręsta $4 $5 $2",
 	"articlefeedbackv5-activity-item-inappropriate": "$1 pažymėjo šį pranešimą kaip netinkama $4 $5 $2",
 	"articlefeedbackv5-activity-item-uninappropriate": "$1 atžymėjo šį pranešimą kaip netinkama $4 $5 $2",
-	"articlefeedbackv5-activity-item-hide": "$1 paslėpė pranešimą $4 $5 $2",
-	"articlefeedbackv5-activity-item-unhide": "$1 nebeslepia pranešimo $4 $5 $2",
+	"articlefeedbackv5-activity-item-hide": "$1 {{GENDER:$6|paslėpė}} pranešimą $4 $5 $2",
+	"articlefeedbackv5-activity-item-unhide": "$1 {{GENDER:$6|nebeslepia}} pranešimo $4 $5 $2",
 	"articlefeedbackv5-activity-item-autohide": "$1 {{GENDER:$6|automatiškai paslėpė}} šį įrašą $4 $5 $2",
 	"articlefeedbackv5-activity-item-archive": "$1 archyvavo šį pranešimą $4 $5 $2",
 	"articlefeedbackv5-activity-item-unarchive": "$1 nebearchyvuoja šio pranešimo $4 $5 $2",
