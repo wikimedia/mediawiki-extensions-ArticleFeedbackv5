@@ -20,7 +20,8 @@
 			"Impersonator 1",
 			"LNDDYL",
 			"Cwlin0416",
-			"1233thehongkonger"
+			"1233thehongkonger",
+			"Hello903hello"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "謝謝！",
@@ -177,7 +178,7 @@
 	"articlefeedbackv5-status-unarchive": "此文章已由 $1 於 $2 $3 從存檔中取出",
 	"articlefeedbackv5-new-marker": "新",
 	"articlefeedbackv5-oversight-marker": "已監督刪除",
-	"articlefeedbackv5-autohide-marker": "已隱藏",
+	"articlefeedbackv5-autohide-marker": "已自動隱藏",
 	"articlefeedbackv5-hide-marker": "隱藏",
 	"articlefeedbackv5-feature-marker": "有幫助",
 	"articlefeedbackv5-resolve-marker": "已解決",
