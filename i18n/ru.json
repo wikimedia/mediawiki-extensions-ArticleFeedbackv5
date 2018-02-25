@@ -30,9 +30,17 @@
 			"Сrower",
 			"Сай",
 			"Irus",
-			"Redredsonia"
+			"Redredsonia",
+			"Mouse21"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "Отправить статью отзыв",
+	"apihelp-articlefeedbackv5-summary": "Отправить статью отзыв",
+	"apihelp-articlefeedbackv5-param-title": "Название страницы для отправки отзывов для. Не может использоваться одновременно с $1pageid.",
+	"apihelp-articlefeedbackv5-param-pageid": "Идентификатор страницы для отправки отзывов для. Не может использоваться одновременно с $1title.",
+	"apihelp-articlefeedbackv5-param-revid": "Идентификатор версии для отправки отзывов для",
+	"apihelp-articlefeedbackv5-param-anontoken": "Ток для анонимных пользователей",
+	"apihelp-articlefeedbackv5-param-bucket": "Какая форма обратной связи была показана пользователю",
 	"articlefeedbackv5-cta-thanks": "Спасибо!",
 	"articlefeedbackv5-cta-confirmation-message": "Ваш отзыв можно увидеть на этой [$1 странице обратной связи].",
 	"articlefeedbackv5-cta1-confirmation-title": "Вы знали, что можете редактировать эту страницу?",

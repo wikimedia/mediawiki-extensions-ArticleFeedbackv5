@@ -11,9 +11,12 @@
 			"Shirayuki",
 			"Whym",
 			"Yanajin66",
-			"青子守歌"
+			"青子守歌",
+			"Yusuke1109"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "記事のフィードバックを送信",
+	"apihelp-articlefeedbackv5-summary": "記事のフィードバックを送信",
 	"articlefeedbackv5-cta-thanks": "ありがとうございます!",
 	"articlefeedbackv5-cta-confirmation-message": "あなたの投稿はこの[$1 フィードバック ページ]に表示されます。",
 	"articlefeedbackv5-cta1-confirmation-title": "このページを編集できることをご存じですか?",
