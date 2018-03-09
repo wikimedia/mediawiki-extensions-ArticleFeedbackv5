@@ -962,7 +962,7 @@ class ArticleFeedbackv5Flagging {
 		);
 
 		$job = new ArticleFeedbackv5MailerJob( $page, $params );
-		$job->insert();
+		JobQueueGroup::singleton()->push( $job );
 	}
 
 	/**
