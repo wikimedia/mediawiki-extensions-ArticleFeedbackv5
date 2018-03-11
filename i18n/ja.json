@@ -157,7 +157,7 @@
 	"articlefeedbackv5-status-uninappropriate": "この投稿は$2 $3、$1が不適切の印を除去しました",
 	"articlefeedbackv5-new-marker": "新規",
 	"articlefeedbackv5-oversight-marker": "抹消済み",
-	"articlefeedbackv5-autohide-marker": "秘匿済み",
+	"articlefeedbackv5-autohide-marker": "自動で秘匿済み",
 	"articlefeedbackv5-hide-marker": "秘匿済み",
 	"articlefeedbackv5-feature-marker": "役に立つ",
 	"articlefeedbackv5-resolve-marker": "解決済",
