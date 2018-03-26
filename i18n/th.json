@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nullzero"
+			"Nullzero",
+			"Ans"
 		]
 	},
 	"articlefeedbackv5-cta1-edit-linktext": "แก้ไขหน้านี้",
 	"articlefeedbackv5-cta2-button-text": "เรียนรู้เพิ่มเติม",
+	"articlefeedbackv5-cta4-button-text-login": "เข้าสู่ระบบ",
 	"articlefeedbackv5-cta4-button-text-or": "หรือ",
 	"articlefeedbackv5-overlay-close": "ปิด",
 	"articlefeedbackv5-form-helpful-yes-label": "ใช่",
