@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Milicevic01"
+			"Milicevic01",
+			"Obsuser"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Hvala!",
@@ -69,6 +70,7 @@
 	"articlefeedbackv5-form-resolve": "Označi kao rešeno",
 	"articlefeedbackv5-form-unresolve": "Ukloni iz rešenih",
 	"articlefeedbackv5-form-inappropriate": "Neprikladno",
+	"articlefeedbackv5-form-hide": "Sakrij ovu poruku",
 	"articlefeedbackv5-form-unhide": "Otkrij ovu poruku",
 	"articlefeedbackv5-form-helpful": "Označi kao korisno ($1)",
 	"articlefeedbackv5-form-oversight": "Zahtevaj proveru",
