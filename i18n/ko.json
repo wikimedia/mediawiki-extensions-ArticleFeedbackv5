@@ -12,7 +12,8 @@
 			"Revi",
 			"Bluemersen",
 			"Ysjbserver",
-			"Ykhwong"
+			"Ykhwong",
+			"Nuevo Paso"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "문서 의견 제출",
@@ -478,7 +479,7 @@
 	"articlefeedbackv5-help-tooltip-info": "{{SITENAME}}은(는) 이 문서에 대한 당신의 생각을 듣고 싶습니다. 편집자와 피드백을 공유한 다음 이 문서의 개선에 도움을 주세요.",
 	"articlefeedbackv5-help-tooltip-linktext": "더 알아보기",
 	"articlefeedbackv5-help-transparency-terms": "[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 유용한 피드백]을 게시하세요. 게시를 하면 [//wikimediafoundation.org/wiki/Feedback_privacy_statement 약관]에 따라 투명성에 동의합니다.",
-	"articlefeedbackv5-help-transparency-terms-anon": "[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 유용한 피드백]을 게시하세요. 게시를 하면 IP 주소로 식별하고 [//wikimediafoundation.org/wiki/Feedback_privacy_statement 약관]에 따라 투명성에 동의합니다.",
+	"articlefeedbackv5-help-transparency-terms-anon": "[//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines 유용한 피드백]을 게시하세요. 게시를 한다는 것은, 곧 IP 주소 식별과 [//wikimediafoundation.org/wiki/Feedback_privacy_statement 약관]에 따라 투명성에 동의한다는 것을 의미합니다.",
 	"articlefeedbackv5-sitesub-linktext": "이 문서 발전시키기",
 	"articlefeedbackv5-titlebar-linktext": "이 문서를 개선하는 데 도움을 주세요 >>",
 	"articlefeedbackv5-fixedtab-linktext": "이 문서 발전시키기",
