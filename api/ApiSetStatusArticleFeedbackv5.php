@@ -101,7 +101,7 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_TYPE     => 'integer'
 			),
 			'enable' => array(
-				ApiBase::PARAM_TYPE     => array( 0, 1 ),
+				ApiBase::PARAM_TYPE     => array( '0', '1' ),
 				ApiBase::PARAM_REQUIRED => true,
 			),
 		);
