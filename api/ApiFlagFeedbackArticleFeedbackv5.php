@@ -110,8 +110,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_TYPE     => 'string'
 			),
 			'toggle' => array(
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'boolean'
 			),
 			'source' => array(

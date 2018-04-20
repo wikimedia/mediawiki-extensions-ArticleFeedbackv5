@@ -232,9 +232,9 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getAllowedParams() {
 		global $wgArticleFeedbackv5DisplayBuckets, $wgArticleFeedbackv5CTABuckets, $wgArticleFeedbackv5LinkBuckets;
-		$formIds = array_keys( $wgArticleFeedbackv5DisplayBuckets['buckets'] );
-		$ctaIds = array_keys( $wgArticleFeedbackv5CTABuckets['buckets'] );
-		$linkIds = array_keys( $wgArticleFeedbackv5LinkBuckets['buckets'] );
+		$formIds = array_map( 'strval', array_keys( $wgArticleFeedbackv5DisplayBuckets['buckets'] ) );
+		$ctaIds = array_map( 'strval', array_keys( $wgArticleFeedbackv5CTABuckets['buckets'] ) );
+		$linkIds = array_map( 'strval', array_keys( $wgArticleFeedbackv5LinkBuckets['buckets'] ) );
 
 		$ret = array(
 			'title' => null,
@@ -262,7 +262,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 			),
 			'found' => array(
-				ApiBase::PARAM_TYPE     => array( 0, 1 ),
+				ApiBase::PARAM_TYPE     => array( '0', '1' ),
 				ApiBase::PARAM_REQUIRED => false,
 			),
 			'comment' => array(
