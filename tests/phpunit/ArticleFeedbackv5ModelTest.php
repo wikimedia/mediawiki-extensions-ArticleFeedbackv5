@@ -12,21 +12,15 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 	public function setUp() {
 		parent::setUp();
 
-		global $wgMemc, $wgArticleFeedbackv5Cluster;
-
 		// init some volatile BagOStuff
+		$cache = new HashBagOStuff;
 		$this->setMwGlobals( array(
-			'wgMemc' => new HashBagOStuff,
+			'wgMemc' => $cache,
 		) );
-		ArticleFeedbackv5Model::setCache( $wgMemc );
+		ArticleFeedbackv5Model::setCache( $cache );
 
-		// setup db tables
-		$this->db->begin();
-		$this->db->dropTable( 'aft_feedback' );
-		$this->db->sourceFile( __DIR__ . '/../sql/ArticleFeedbackv5.sql' );
-		$this->db->commit();
 		// don't connect to external cluster but use main db, that has been prepared for unittests ($this->db)
-		$wgArticleFeedbackv5Cluster = false;
+		$this->setMwGlobals( 'wgArticleFeedbackv5Cluster', false );
 
 		// init sample object
 		$this->sample = new ArticleFeedbackv5Model();
@@ -44,9 +38,15 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 
 		// we'll be using the * list a couple of times; pretend to have the
 		// required permissions
-		global $wgUser, $wgArticleFeedbackv5Permissions;
-		$wgUser->mRights[] = 'aft-noone';
-		$wgUser->mRights += $wgArticleFeedbackv5Permissions;
+		global $wgGroupPermissions;
+		$this->mergeMwGlobalArrayValue(
+			'wgGroupPermissions', [
+				'*' => array_merge(
+					$wgGroupPermissions['*'],
+					array_fill_keys( ArticleFeedbackv5Permissions::$permissions, true )
+				)
+			]
+		);
 	}
 
 	public function tearDown() {
@@ -59,8 +59,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 			}
 		}
 
-		global $wgUser, $wgArticleFeedbackv5Permissions;
-		$wgUser->mRights = array_diff( $wgUser->mRights, array( 'aft-noone' ) + $wgArticleFeedbackv5Permissions );
+		parent::tearDown();
 	}
 
 	public function testInsert() {
