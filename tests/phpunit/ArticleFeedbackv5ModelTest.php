@@ -23,7 +23,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 		// setup db tables
 		$this->db->begin();
 		$this->db->dropTable( 'aft_feedback' );
-		$this->db->sourceFile( __DIR__ . '/../sql/ArticleFeedbackv5.sql' );
+		$this->db->sourceFile( __DIR__ . '/../../sql/ArticleFeedbackv5.sql' );
 		$this->db->commit();
 		// don't connect to external cluster but use main db, that has been prepared for unittests ($this->db)
 		$wgArticleFeedbackv5Cluster = false;
