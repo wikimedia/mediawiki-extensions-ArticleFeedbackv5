@@ -6,5 +6,11 @@
 	},
 	"protect-level-aft-editor": "Permisita nur por uzeri automatale konfirmita",
 	"articlefeedbackv5-special-refresh": "Rinovigar listo",
-	"articlefeedbackv5-permalink-written-by-editor": "Skribita da enrejistrita uzero"
+	"articlefeedbackv5-permalink-written-by-editor": "Skribita da enrejistrita uzero",
+	"articlefeedbackv5-bucket1-question-toggle": "Ka vu trovis quon vu serchabis?",
+	"articlefeedbackv5-bucket1-toggle-found-yes-full": "Yes, me trovis quon me serchabis.",
+	"articlefeedbackv5-bucket1-toggle-found-no-full": "No, me ne trovis quon me serchabis.",
+	"articlefeedbackv5-bucket6-question-toggle": "Ka vu trovis quon vu serchabis?",
+	"articlefeedbackv5-bucket6-toggle-found-yes-full": "Yes, me trovis quon me serchabis.",
+	"articlefeedbackv5-bucket6-toggle-found-no-full": "No, me ne trovis quon me serchabis."
 }
