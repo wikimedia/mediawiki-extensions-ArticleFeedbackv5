@@ -423,6 +423,6 @@ class ArticleFeedbackv5Utils {
 	 */
 	public static function formatId( $id ) {
 		global $wgLang;
-		return $wgLang->truncate( $id, 10 );
+		return $wgLang->truncateForVisual( $id, 10 );
 	}
 }

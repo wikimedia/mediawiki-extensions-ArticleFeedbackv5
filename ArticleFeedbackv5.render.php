@@ -508,7 +508,7 @@ class ArticleFeedbackv5Render {
 		$text = $record->aft_comment;
 
 		// permalink should always display long version ;)
-		$short = $this->isPermalink ? $text : $wgLang->truncate( $text, 250 );
+		$short = $this->isPermalink ? $text : $wgLang->truncateForVisual( $text, 250 );
 
 		// If the short string is the same size as the original, no truncation
 		// happened, so no controls are needed.  If it's longer, show the short
@@ -870,7 +870,7 @@ class ArticleFeedbackv5Render {
 						->params( $record->aft_comment, $record->getArticle()->getTitle() )
 						->inContentLanguage()
 						->text();
-					$sectionTitleTruncated = $wgLang->truncate( $sectionTitle, 60 );
+					$sectionTitleTruncated = $wgLang->truncateForVisual( $sectionTitle, 60 );
 
 					$title = Title::newFromId( $record->aft_page )->getPrefixedDBkey();
 					$userText = $record->aft_user_text; // anon users
@@ -883,7 +883,7 @@ class ArticleFeedbackv5Render {
 						 * Truncate the title even further - this was added to make sure
 						 * that we don't truncate at 48chars when there are only 50 total.
 						 */
-						$sectionTitleTruncated = $wgLang->truncate( $sectionTitle, 48 );
+						$sectionTitleTruncated = $wgLang->truncateForVisual( $sectionTitle, 48 );
 					}
 					// Give grep a chance to find the usages:
 					// articlefeedbackv5-discuss-talk-section-content, articlefeedbackv5-discuss-user-section-content

@@ -52,7 +52,7 @@ class ArticleFeedbackv5Log {
 		}
 
 		// truncate comment
-		$note = $wgLang->truncate( $notes, $wgArticleFeedbackv5MaxActivityNoteLength );
+		$note = $wgLang->truncateForDatabase( $notes, $wgArticleFeedbackv5MaxActivityNoteLength );
 
 		// add page id & feedback id to params
 		$params['feedbackId'] = (string) $itemId;

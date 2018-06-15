@@ -438,7 +438,7 @@ class ArticleFeedbackv5Hooks {
 				// (probably) abusive comment that has been hidden/oversight-requested/oversighted
 				$feedback = wfMessage( 'articlefeedbackv5-contribs-hidden-feedback' )->escaped();
 			} else {
-				$feedback = $lang->truncate( $record->aft_comment, 75 );
+				$feedback = $lang->truncateForVisual( $record->aft_comment, 75 );
 			}
 		}
 
