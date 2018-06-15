@@ -17,7 +17,8 @@
 			"Suelnur",
 			"Sayginer",
 			"Mavrikant",
-			"Vito Genovese"
+			"Vito Genovese",
+			"Rapsar"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Teşekkürler!",
@@ -125,7 +126,7 @@
 	"articlefeedbackv5-special-sort-age-desc": "En yeni",
 	"articlefeedbackv5-special-sort-age-asc": "En eski",
 	"articlefeedbackv5-special-sort-label": "Sıralama ölçütü:",
-	"articlefeedbackv5-special-filter-select-more": "Diğer",
+	"articlefeedbackv5-special-filter-select-more": "Daha fazla",
 	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|1 gönderi|$1 gönderi}}",
 	"articlefeedbackv5-special-count-total-title": "$2 {{PLURAL:$2|gönderi|gönderi}},  yorumlarla birlikte $1 {{PLURAL:$1|gönderi|gönderi}}",
 	"articleFeedbackv5-details-link": "Ayrıntılar",
