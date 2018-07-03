@@ -32,7 +32,8 @@
 			"Irus",
 			"Redredsonia",
 			"Mouse21",
-			"Stjn"
+			"Stjn",
+			"Vlad5250"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Отправить отзыв на статью",
@@ -85,7 +86,7 @@
 	"protect-level-aft-editor": "Включить только для автоподтверждённых участников",
 	"protect-level-aft-administrator": "Включить только для администраторов",
 	"protect-level-aft-noone": "Отключить для всех пользователей",
-	"articlefeedbackv5-protection-title": "Изменить видимость инструмента обратной связи для статьей у «[[$1]]»",
+	"articlefeedbackv5-protection-title": "Изменена видимость инструмента обратной связи для статей у «[[$1]]»",
 	"restriction-articlefeedbackv5": "Видимость",
 	"articlefeedbackv5-disabled": "Отзывы отключены",
 	"articlefeedbackv5-disabled-admin-admin": "Отзывы отключены для читателей и редакторов. Они не могут писать новые отзывы на этой странице.",
