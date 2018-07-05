@@ -81,7 +81,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @return bool
 	 */
 	public function allowCache() {
-		return !$this->getLB()->getLaggedSlaveMode();
+		return !$this->getLB()->getLaggedReplicaMode();
 	}
 
 	/**
