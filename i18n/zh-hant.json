@@ -22,7 +22,8 @@
 			"Cwlin0416",
 			"1233thehongkonger",
 			"Hello903hello",
-			"Kly"
+			"Kly",
+			"Matěj Suchánek"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "提交條目回饋",
@@ -301,7 +302,7 @@
 	"articlefeedbackv5-discuss-user-section-content": "謝謝你於 \"$7\" 上發佈回饋。\n\n你於 $3 上發佈了此評論 ([[$5|查看所有回饋]]) 。\n\n$6\n\n我們感謝您對此頁面的貢獻!\n\n~~~~",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 找到了他們所尋找的。}}",
 	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2 沒有找到他們所尋找的。}}",
-	"articlefeedbackv5-form1-header-left-comment": "{{GENDER$1|$2 發佈了一篇評論。}}",
+	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 發佈了一篇評論。}}",
 	"articlefeedbackv5-form2-header-praise": "{{GENDER:$1|$1}}發表讚揚：",
 	"articlefeedbackv5-form2-header-problem": "{{GENDER:$1|$1}}發表問題：",
 	"articlefeedbackv5-form2-header-question": "{{GENDER:$1|$1}}發表問題：",
