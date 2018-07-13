@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"පසිඳු කාවින්ද",
-			"محبوب عالم"
+			"محبوب عالم",
+			"BukhariSaeed"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "شکریہ!",
@@ -34,6 +35,7 @@
 	"articlefeedbackv5-contribs-status-action-feature": "نمایاں",
 	"articlefeedbackv5-contribs-status-action-resolve": "حل",
 	"articlefeedbackv5-contribs-status-action-inappropriate": "پوشیدہ",
+	"articlefeedbackv5-contribs-status-action-hide": "چھپائیں",
 	"articlefeedbackv5-contribs-hidden-feedback": "خفیہ تبصرہ",
 	"articlefeedbackv5-form-helpful-yes-label": "جی ہاں",
 	"articlefeedbackv5-form-helpful-no-label": "نہیں",
