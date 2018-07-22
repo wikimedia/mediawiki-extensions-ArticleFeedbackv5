@@ -18,7 +18,8 @@
 			"Sayginer",
 			"Mavrikant",
 			"Vito Genovese",
-			"Rapsar"
+			"Rapsar",
+			"Hedda"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Teşekkürler!",
@@ -283,6 +284,7 @@
 	"articlefeedbackv5-noteflyover-unresolve-help": "Daha fazla bilgi",
 	"articlefeedbackv5-noteflyover-hide-caption": "Gizle",
 	"articlefeedbackv5-noteflyover-hide-label": "Bir not ekle",
+	"articlefeedbackv5-noteflyover-hide-placeholder": "Bu mesajı neden sakladın?",
 	"articlefeedbackv5-noteflyover-hide-submit": "Not ekle",
 	"articlefeedbackv5-noteflyover-hide-help": "Daha fazla bilgi",
 	"articlefeedbackv5-noteflyover-unhide-label": "Bir not ekle",
@@ -360,6 +362,7 @@
 	"articlefeedbackv5-toolbox-add": "Geri bildirim gönder",
 	"articlefeedbackv5-leave-warning": "Girdiğiniz veriler kaydedilmemiş olabilir.",
 	"articlefeedbackv5-toolbox-enable": "Geri bildirimi etkinleştir",
+	"right-aft-monitor": "Geri bildirimi sakla ve göz ardı et",
 	"articlefeedbackv5-activity-pane-header": "Etkinlik Günlüğü",
 	"articlefeedbackv5-activity-feedback-info": "$2 tarafından bildirildi",
 	"articlefeedbackv5-activity-feedback-date": "$1 tarihinde gönderildi",
