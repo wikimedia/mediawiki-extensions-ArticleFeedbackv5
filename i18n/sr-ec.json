@@ -7,7 +7,8 @@
 			"Михајло Анђелковић",
 			"Сербијана",
 			"Acamicamacaraca",
-			"Obsuser"
+			"Obsuser",
+			"BadDog"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Хвала!",
@@ -308,7 +309,7 @@
 	"articlefeedbackv5-toolbox-add": "Додајте повратну информацију",
 	"articlefeedbackv5-toolbox-enable": "Омогући повратне информације",
 	"articlefeedbackv5-disable-preference": "Не приказуј елемент „Оцењивање чланака“ на страницама",
-	"articlefeedbackv5-activity-pane-header": "Дневник активности",
+	"articlefeedbackv5-activity-pane-header": "Евиденција активности",
 	"articlefeedbackv5-activity-permalink": "трајна веза",
 	"articlefeedbackv5-disable-flyover-title": "Желите да уклоните ову алатку?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Иди у корисничка подешавања",
