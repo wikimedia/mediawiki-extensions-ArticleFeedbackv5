@@ -208,6 +208,7 @@
 	"articlefeedbackv5-short-status-undo-helpful": "{{GENDER:$1|Прегледано од стране $1}}",
 	"articlefeedbackv5-short-status-unhelpful": "{{GENDER:$1|Прегледано од стране $1}}",
 	"articlefeedbackv5-short-status-undo-unhelpful": "{{GENDER:$1|Прегледано од стране $1}}",
+	"articlefeedbackv5-permalink-last-action": "Последња радња",
 	"articlefeedbackv5-permalink-activity-more": "Преглед више радњи...",
 	"articlefeedbackv5-permalink-activity-fewer": "Преглед мање радњи...",
 	"articlefeedbackv5-noteflyover-feature-caption": "Означено као корисно",
