@@ -147,7 +147,7 @@
 	"articlefeedbackv5-form-tooltip-noaction": "Нејасно, небитно, похвала, дупликат ...",
 	"articlefeedbackv5-form-tooltip-noaction-own": "Нејасно, небитно, похвала, дупликат ...",
 	"articlefeedbackv5-form-tooltip-inappropriate": "Глупости, спам, увредљиво, лични подаци ...",
-	"articlefeedbackv5-form-tooltip-hide": "Глупости, нежељен садржај, увредљиво, лични подаци ...",
+	"articlefeedbackv5-form-tooltip-hide": "Глупости, непожељан садржај, увредљиво, приватни подаци ...",
 	"articlefeedbackv5-form-tooltip-flag": "Глупости, спам, увредљиво, лични подаци ...",
 	"articlefeedbackv5-form-tooltip-oversight": "Увредљиво, лични подаци ...",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 је сазнао оно што је тражио|$2 је сазнала оно што је тражила|$2 је сазнао оно што је тражио}}",
