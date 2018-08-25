@@ -377,8 +377,8 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the feedback head
 	 *
-	 * @param  $message string   the message key describing the the nature of
-	 *                           the feedback (e.g., "USER found what they were
+	 * @param  $message string   the message key describing the nature of the
+	 *                           feedback (e.g., "USER found what they were
 	 *                           looking for")
 	 * @param  $record  ArticleFeedbackv5 the record
 	 * @return string   the rendered feedback head
