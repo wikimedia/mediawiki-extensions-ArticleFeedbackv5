@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ninjastrikers"
+			"Ninjastrikers",
+			"Dr Lotus Black"
 		]
 	},
 	"articlefeedbackv5-discussion-page": "ဆွေးနွေး",
-	"articlefeedbackv5-whats-this": "အကူအညီ"
+	"articlefeedbackv5-whats-this": "အကူအညီ",
+	"articlefeedbackv5-activity-permalink": "ပုံသေလိပ်စာ"
 }
