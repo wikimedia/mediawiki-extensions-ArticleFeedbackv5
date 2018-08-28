@@ -8,7 +8,8 @@
 			"Сербијана",
 			"Acamicamacaraca",
 			"Obsuser",
-			"BadDog"
+			"BadDog",
+			"Zoranzoki21"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Хвала!",
@@ -173,9 +174,9 @@
 	"articlefeedbackv5-settings-menu-title": "Подешавања",
 	"articlefeedbackv5-invalid-page-id": "Неисправн ID странице",
 	"articlefeedbackv5-found-percent": "{{PLURAL:$2|$1 је пронашао оно што је тражио}}",
-	"articlefeedbackv5": "Табла за оцењивање чланака",
+	"articlefeedbackv5": "Повратне информације о чланку — централна страница",
 	"articlefeedbackv5watchlist": "Оцењивање чланака – Моје надгледане странице",
-	"articlefeedbackv5-desc": "Оцењивање чланака",
+	"articlefeedbackv5-desc": "Подстиче кориснике да доприносе дозвољавајући им да прегледају чланак и предлажу промене",
 	"articlefeedbackv5-comment-more": "Више",
 	"articlefeedbackv5-permalink-info-stats-title-length": "Дужина",
 	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 реч|$1 речи}}",
