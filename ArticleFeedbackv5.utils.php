@@ -401,7 +401,7 @@ class ArticleFeedbackv5Utils {
 			// Set up variables
 			$title = Title::newFromID( $pageId );
 			$vars = new AbuseFilterVariableHolder;
-			$vars->addHolders( AbuseFilter::generateUserVars( $wgUser ), AbuseFilter::generateTitleVars( $title , 'ARTICLE' ) );
+			$vars->addHolders( AbuseFilter::generateUserVars( $wgUser ), AbuseFilter::generateTitleVars( $title , 'PAGE' ) );
 			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
 			$vars->setVar( 'ACTION', 'feedback' );
 			$vars->setVar( 'new_wikitext', $value );
