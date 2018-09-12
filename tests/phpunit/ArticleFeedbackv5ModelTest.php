@@ -3,6 +3,7 @@
  * This class will test the datamodel sample.
  *
  * @author     Matthias Mullie <mmullie@wikimedia.org>
+ * @group Database
  */
 class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 	protected $sample;
