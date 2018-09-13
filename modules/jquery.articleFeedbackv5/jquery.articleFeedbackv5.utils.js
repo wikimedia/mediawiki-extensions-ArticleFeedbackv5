@@ -29,7 +29,7 @@
 		var article = $.extend( {}, mw.config.get( 'aftv5Article' ) );
 
 		// fetch data, on article level, we can fetch these from other sources as well
-		if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1 ) {
+		if ( mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ).indexOf( mw.config.get( 'wgNamespaceNumber' ) ) > -1 ) {
 			article.id = mw.config.get( 'wgArticleId', -1 );
 			article.namespace = mw.config.get( 'wgNamespaceNumber' );
 			article.categories = mw.config.get( 'wgCategories', [] );
@@ -65,7 +65,7 @@
 
 		if ( location !== 'special' || article.id ) {
 			// only on pages in namespaces where it is enabled
-			enable = enable && $.inArray( article.namespace, mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ) ) > -1;
+			enable = enable && mw.config.get( 'wgArticleFeedbackv5Namespaces', [] ).indexOf( article.namespace ) > -1;
 
 			// it does not make sense to display AFT when a page is being edited ...
 			enable = enable && mw.config.get( 'wgAction' ) !== 'edit';
@@ -159,8 +159,8 @@
 		var blacklistCategories, intersect;
 
 		blacklistCategories = mw.config.get( 'wgArticleFeedbackv5BlacklistCategories', [] );
-		intersect = $.map( blacklistCategories, function ( category ) {
-			return $.inArray( category.replace( /_/g, ' ' ), article.categories ) < 0 ? null : category;
+		intersect = blacklistCategories.filter( function ( category ) {
+			return article.categories.indexOf( category.replace( /_/g, ' ' ) ) >= 0;
 		} );
 		return intersect.length > 0;
 	};
@@ -184,8 +184,8 @@
 		var whitelistCategories, intersect;
 
 		whitelistCategories = mw.config.get( 'wgArticleFeedbackv5Categories', [] );
-		intersect = $.map( whitelistCategories, function ( category ) {
-			return $.inArray( category.replace( /_/g, ' ' ), article.categories ) < 0 ? null : category;
+		intersect = whitelistCategories.filter( function ( category ) {
+			return article.categories.indexOf( category.replace( /_/g, ' ' ) ) >= 0;
 		} );
 		return intersect.length > 0;
 	};
