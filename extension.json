@@ -104,6 +104,7 @@
 				"articlefeedbackv5-error-unknown"
 			],
 			"dependencies": [
+				"jquery.cookie",
 				"mediawiki.util",
 				"mediawiki.user"
 			]
@@ -420,6 +421,7 @@
 			"dependencies": [
 				"mediawiki.user",
 				"mediawiki.util",
+				"jquery.cookie",
 				"jquery.tipsy",
 				"jquery.localize",
 				"json",
