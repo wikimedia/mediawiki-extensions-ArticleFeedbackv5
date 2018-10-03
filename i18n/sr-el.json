@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Milicevic01",
-			"Obsuser"
+			"Obsuser",
+			"Zoranzoki21"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Hvala!",
@@ -161,7 +162,7 @@
 	"articlefeedbackv5-bucket1-question-placeholder-no": "Imate li predloge za poboljšavanje?",
 	"articlefeedbackv5-bucket1-form-submit": "Postavite povratnu informaciju",
 	"articlefeedbackv5-bucket4-title": "Pomozite nam da poboljšamo stranicu",
-	"articlefeedbackv5-bucket4-subhead": "Jeste li znali da možete da uređujete stranicu?",
+	"articlefeedbackv5-bucket4-subhead": "Da li ste znali da možete da uređujete stranicu?",
 	"articlefeedbackv5-bucket4-teaser-line2": "Slobodno probajte. Budite smeli!",
 	"articlefeedbackv5-bucket4-learn-to-edit": "Naučite kako da uređujete",
 	"articlefeedbackv5-bucket4-form-submit": "Uredi stranicu",
