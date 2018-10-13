@@ -407,7 +407,7 @@ class ArticleFeedbackv5Utils {
 			$vars->setVar( 'new_wikitext', $value );
 			$vars->setLazyLoadVar( 'new_size', 'length', array( 'length-var' => 'new_wikitext' ) );
 
-			$status = AbuseFilter::filterAction( $vars, $title, $wgArticleFeedbackv5AbuseFilterGroup );
+			$status = AbuseFilter::filterAction( $vars, $title, $wgArticleFeedbackv5AbuseFilterGroup, $wgUser );
 
 			return $status->isOK() ? false : $status->getErrorsArray();
 		}
