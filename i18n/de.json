@@ -19,7 +19,8 @@
 			"Tiin",
 			"Tomabrafix",
 			"Wikifan",
-			"Wnme"
+			"Wnme",
+			"Sushi"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Versendet die Artikel-Rückmeldung",
@@ -32,7 +33,7 @@
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Typ der anzuwendenden Markierung",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Zu aktualisierende Logbuchkennung",
 	"apihelp-articlefeedbackv5-add-flag-note-param-flagtype": "Anzuwendender Markierungstyp",
-	"apihelp-articlefeedbackv5-add-flag-note-param-note": "Informationen dazu, warum die Rückmeldungsaktivität auftrat.",
+	"apihelp-articlefeedbackv5-add-flag-note-param-note": "Informationen dazu, warum die Rückmeldungsaktivität auftrat",
 	"apihelp-articlefeedbackv5-add-flag-note-param-feedbackid": "Zu markierende Rückmeldungskennung",
 	"apihelp-articlefeedbackv5-set-status-description": "Aktiviert/Deaktiviert AFTv5 für eine bestimmte Seite.",
 	"apihelp-articlefeedbackv5-set-status-summary": "Aktiviert/Deaktiviert AFTv5 für eine bestimmte Seite.",
