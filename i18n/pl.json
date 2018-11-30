@@ -15,7 +15,8 @@
 			"WTM",
 			"Woytecr",
 			"Alan ffm",
-			"Vengir"
+			"Vengir",
+			"CiaPan"
 		]
 	},
 	"apihelp-articlefeedbackv5-param-anontoken": "Token dla użytkowników anonimowych",
@@ -243,7 +244,7 @@
 	"articlefeedbackv5-found-percent-title": "Na podstawie $1 {{PLURAL:$1|wpisu|wpisów}} (z wyłączeniem niewłaściwych komentarzy)",
 	"articlefeedbackv5": "Ocena artykułu - strona główna",
 	"articlefeedbackv5watchlist": "Opinie o artykułach - obserwowane przeze mnie strony",
-	"articlefeedbackv5-desc": "Opinie o artykule",
+	"articlefeedbackv5-desc": "Zachęca użytkowników do udziału pozwalając im na przeglądanie artykułu i zgłaszanie propozycji zmian",
 	"articlefeedbackv5-comment-more": "Więcej",
 	"articlefeedbackv5-comment-empty": "Tekst nie został wprowadzony",
 	"articlefeedbackv5-page-disabled": "Strona opinii o artykule nie została aktywowana dla tego artykułu.",
@@ -287,7 +288,7 @@
 	"articlefeedbackv5-permalink-last-action": "Ostatnie działanie",
 	"articlefeedbackv5-permalink-activity-more": "Wyświetl więcej akcji...",
 	"articlefeedbackv5-permalink-activity-fewer": "Wyświetl mniej akcji...",
-	"articlefeedbackv5-noteflyover-feature-caption": "Wyróżnij ten wpis",
+	"articlefeedbackv5-noteflyover-feature-caption": "Oznaczone jako użyteczne",
 	"articlefeedbackv5-noteflyover-feature-label": "Dodaj notatkę",
 	"articlefeedbackv5-noteflyover-feature-placeholder": "Z jakiego powodu wyróżniasz ten wpis?",
 	"articlefeedbackv5-noteflyover-feature-submit": "Dodaj komentarz",
