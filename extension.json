@@ -116,10 +116,8 @@
 				"articlefeedbackv5-enabled-form-message"
 			],
 			"dependencies": [
-				"mediawiki.user",
 				"jquery.articleFeedbackv5.utils",
-				"mediawiki.jqueryMsg",
-				"mediawiki.api"
+				"mediawiki.jqueryMsg"
 			]
 		},
 		"ext.articleFeedbackv5": {
