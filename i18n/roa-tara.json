@@ -9,6 +9,8 @@
 	"apihelp-articlefeedbackv5-summary": "Manne 'na segnalazione d'a vôsce",
 	"apihelp-articlefeedbackv5-param-revid": "ID d'a revisione da mannà 'a segnalazione",
 	"apihelp-articlefeedbackv5-param-anontoken": "Gettone pe le utinde senza nome",
+	"apihelp-articlefeedbackv5-get-count-description": "Pigghie 'a quanditate de segnalaziune pe 'na certa pàgene/filtre",
+	"apihelp-articlefeedbackv5-get-count-summary": "Pigghie 'a quanditate de segnalaziune pe 'na certa pàgene/filtre",
 	"apihelp-articlefeedbackv5-flag-feedback-param-feedbackid": "FeedbackID da signà",
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Tipe de flag da applecà",
 	"apihelp-articlefeedbackv5-flag-feedback-param-note": "'Mbormaziune sus a 'u mutive pu quale ha assute l'attivitate de segnalazione",
