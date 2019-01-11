@@ -177,11 +177,11 @@ class ArticleFeedbackv5Hooks {
 			$out->addModules( 'ext.articleFeedbackv5.talk' );
 
 		// special page
-		} elseif ( $title->getNamespace() == NS_SPECIAL) {
+		} elseif ( $title->getNamespace() == NS_SPECIAL ) {
 			// central feedback page, article feedback page, permalink page & watchlist feedback page
 			if ( $out->getTitle()->isSpecial( 'ArticleFeedbackv5' ) ||  $out->getTitle()->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
 				// fetch the title of the article this special page is related to
-				list( /* special */, $mainTitle) = SpecialPageFactory::resolveAlias( $out->getTitle()->getDBkey() );
+				list( /* special */, $mainTitle ) = MediaWikiServices::getInstance()->getSpecialPageFactory()->resolveAlias( $out->getTitle()->getDBkey() );
 
 				// Permalinks: drop the feedback ID
 				$mainTitle = preg_replace( '/(\/[0-9]+)$/', '', $mainTitle );
@@ -400,7 +400,8 @@ class ArticleFeedbackv5Hooks {
 		$lang = $page->getLanguage();
 		$user = $page->getUser();
 		$feedbackTitle = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() . "/$record->aft_id" );
-		$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() );
+		$centralPageName = MediaWikiServices::getInstance()->getSpecialPageFactory()
+			->getLocalNameFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() );
 		$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$record->aft_id" );
 
 		// date & time

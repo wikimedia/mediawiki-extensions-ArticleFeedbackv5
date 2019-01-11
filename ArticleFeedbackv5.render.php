@@ -425,7 +425,8 @@ class ArticleFeedbackv5Render {
 
 		if ( $this->isCentral ) {
 			$article = Title::newFromId( $record->aft_page );
-			$centralPageName = SpecialPageFactory::getLocalNameFor( 'ArticleFeedbackv5', $article->getPrefixedDBkey() );
+			$centralPageName = MediaWikiServices::getInstance()->getSpecialPageFactory()
+				->getLocalNameFor( 'ArticleFeedbackv5', $article->getPrefixedDBkey() );
 			$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$record->aft_id" );
 
 			$userMessage = wfMessage( $message, $record->aft_user_text )
