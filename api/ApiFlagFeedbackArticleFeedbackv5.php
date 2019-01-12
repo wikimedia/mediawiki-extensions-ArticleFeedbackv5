@@ -43,7 +43,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		// get page object
 		$pageObj = $this->getTitleOrPageId( $params, 'fromdb' );
 		if ( !$pageObj->exists() ) {
-			$this->dieUsage(
+			$this->dieWithError(
 				$this->msg( 'articlefeedbackv5-invalid-page-id' )->escaped(),
 				'notanarticle'
 			);
@@ -65,11 +65,11 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		}
 
 		if ( !$status ) {
-			$this->dieUsage(
+			$this->dieWithError(
 				$this->msg( $flagger->getError() )->text(),
 				'flagerror',
-				0,
-				$results
+				$results,
+				0
 			);
 		} else {
 			$results['log_id'] = $flagger->getLogId();

@@ -40,7 +40,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 		// get page object
 		$pageObj = $this->getTitleOrPageId( $params, 'fromdb' );
 		if ( !$pageObj->exists() ) {
-			$this->dieUsageMsg( 'notanarticle' );
+			$this->dieWithError( $this->msg( 'notanarticle' ), 'notanarticle' );
 		}
 
 		global $wgUser;
@@ -89,11 +89,11 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 		}
 
 		if ( $affected === 0 ) {
-			$this->dieUsage(
+			$this->dieWithError(
 				$this->msg( 'articlefeedbackv5-invalid-log-update' )->text(),
 				'invalidlogid',
-				0,
-				$results
+				$results,
+				0
 			);
 		}
 

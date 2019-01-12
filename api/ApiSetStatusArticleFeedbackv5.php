@@ -26,14 +26,14 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 		// get page object
 		$pageObj = $this->getTitleOrPageId( $params, 'fromdbmaster' );
 		if ( !$pageObj->exists() ) {
-			$this->dieUsage(
+			$this->dieWithError(
 				$this->msg( 'articlefeedbackv5-invalid-page-id' )->escaped(),
 				'notanarticle'
 			);
 
 		// check if current user has editor permission
 		} elseif ( !$wgUser->isAllowed( 'aft-editor' ) ) {
-			$this->dieUsage(
+			$this->dieWithError(
 				$this->msg( 'articlefeedbackv5-insufficient-permissions' )->escaped(),
 				'nopermissions'
 			);
@@ -44,7 +44,7 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 			ArticleFeedbackv5Permissions::getProtectionRestriction( $pageObj->getId() ) !== false &&
 			!$wgUser->isAllowed( ArticleFeedbackv5Permissions::getAppliedRestriction( $pageObj->getId() )->pr_level )
 		) {
-			$this->dieUsage(
+			$this->dieWithError(
 				$this->msg( 'articlefeedbackv5-insufficient-permissions' )->escaped(),
 				'nopermissions'
 			);
@@ -74,7 +74,7 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 			);
 
 			if ( !$success ) {
-				$this->dieUsage(
+				$this->dieWithError(
 					$this->msg( 'articlefeedbackv5-error-unknown' )->escaped(),
 					'unknown'
 				);
