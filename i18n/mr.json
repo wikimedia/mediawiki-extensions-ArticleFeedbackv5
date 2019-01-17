@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"V.narsikar",
-			"Suyog"
+			"Suyog",
+			"Sureshkhole"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "धन्यवाद!",
@@ -21,7 +22,7 @@
 	"articlefeedbackv5-cta4-confirmation-call-line1": "सनोंद-प्रवेशित व्हा जेणेकरून,ईतर संपादक आपल्या प्रतिक्रियेचे उत्तर देउ शकतील.",
 	"articlefeedbackv5-cta4-confirmation-call-line2": "{{SITENAME}} बद्दल आपण काय जाणता, याबद्दलचे आदान-प्रादान हे आपण काढलेल्या मुक्त खात्याद्वारे सोपी होईल.",
 	"articlefeedbackv5-cta4-button-text-signup": "खाते तयार करा",
-	"articlefeedbackv5-cta4-button-text-login": "सनोंद-प्रवेश करा",
+	"articlefeedbackv5-cta4-button-text-login": "आल्याची नोंद करा",
 	"articlefeedbackv5-cta4-button-text-later": "शक्यतोवर नंतर",
 	"articlefeedbackv5-cta4-button-text-or": "किंवा",
 	"articlefeedbackv5-cta5-confirmation-title": "ईतर लोकं काय म्हणतात ते बघा",
