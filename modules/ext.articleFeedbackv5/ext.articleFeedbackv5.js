@@ -10,7 +10,7 @@
 	// Put on bottom of article before #catlinks (if it exists)
 	// Except in legacy skins, which have #catlinks above the article but inside content-div.
 	legacyskins = [ 'standard', 'cologneblue', 'nostalgia' ];
-	if ( $( '#catlinks' ).length && $.inArray( mw.config.get( 'skin' ), legacyskins ) < 0 ) {
+	if ( $( '#catlinks' ).length && legacyskins.indexOf( mw.config.get( 'skin' ) ) < 0 ) {
 		$aftDiv.insertBefore( '#catlinks' );
 	} else {
 		// CologneBlue, Nostalgia, ...

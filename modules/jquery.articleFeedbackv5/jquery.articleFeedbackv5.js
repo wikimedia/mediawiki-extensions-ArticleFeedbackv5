@@ -2333,7 +2333,7 @@
 			groups = mw.config.get( 'wgUserGroups' );
 			// Verify that each restriction exists in the user's groups
 			for ( i = 0; i < restrictions.length; i++ ) {
-				if ( $.inArray( restrictions[ i ], groups ) < 0 ) {
+				if ( groups.indexOf( restrictions[ i ] ) < 0 ) {
 					return false;
 				}
 			}
