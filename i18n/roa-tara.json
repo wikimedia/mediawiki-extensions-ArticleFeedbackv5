@@ -7,6 +7,7 @@
 	},
 	"apihelp-articlefeedbackv5-description": "Manne 'na segnalazione d'a vôsce",
 	"apihelp-articlefeedbackv5-summary": "Manne 'na segnalazione d'a vôsce",
+	"apihelp-articlefeedbackv5-param-title": "Titole d'a pàgene pa quale mannà 'na segnalazione. Non ge pò essere ausate 'nzieme a $1pageid",
 	"apihelp-articlefeedbackv5-param-revid": "ID d'a revisione da mannà 'a segnalazione",
 	"apihelp-articlefeedbackv5-param-anontoken": "Gettone pe le utinde senza nome",
 	"apihelp-articlefeedbackv5-get-count-description": "Pigghie 'a quanditate de segnalaziune pe 'na certa pàgene/filtre",
