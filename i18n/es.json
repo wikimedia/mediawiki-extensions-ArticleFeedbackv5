@@ -29,12 +29,14 @@
 			"Translationista",
 			"Macofe",
 			"Sophivorus",
-			"Dgstranz"
+			"Dgstranz",
+			"Carlosmg.dg"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Enviar sugerencias sobre el artículo",
 	"apihelp-articlefeedbackv5-summary": "Enviar sugerencias sobre el artículo",
 	"apihelp-articlefeedbackv5-param-anontoken": "Ficha para usuarios anónimos",
+	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Id. de registro a actualizar",
 	"articlefeedbackv5-cta-thanks": "¡Gracias!",
 	"articlefeedbackv5-cta-confirmation-message": "Tu comentario puede verse en esta [$1 página de comentarios].",
 	"articlefeedbackv5-cta1-confirmation-title": "¿Sabías que puedes editar esta página?",

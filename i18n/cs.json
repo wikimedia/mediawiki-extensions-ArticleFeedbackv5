@@ -19,7 +19,8 @@
 			"Vks",
 			"Draceane",
 			"Cvanca",
-			"Dvorapa"
+			"Dvorapa",
+			"Patriccck"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Děkujeme!",
@@ -205,7 +206,7 @@
 	"articlefeedbackv5-permalink-written-by-editor": "Autorem je registrovaný uživatel",
 	"articlefeedbackv5-permalink-written-by-reader": "Autorem je anonymní uživatel",
 	"articlefeedbackv5-permalink-info-revision-link": "Prohlédnout starou verzi této stránky",
-	"articlefeedbackv5-permalink-info-posted": "Publikováno $1 ve $2",
+	"articlefeedbackv5-permalink-info-posted": "Zveřejněno $1 ve $2",
 	"articlefeedbackv5-permalink-info-stats-title-length": "Délka",
 	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 slovo| $1  slova}}",
 	"articlefeedbackv5-permalink-info-length-characters": "({{PLURAL:$1|$1 znak|$1 znaky|$1 znaků}})",
