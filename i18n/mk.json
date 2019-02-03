@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Vlad5250"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Дајте мислење за статијата",
@@ -28,7 +29,7 @@
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Тип на ознаката што ќе се примени",
 	"apihelp-articlefeedbackv5-flag-feedback-param-note": "Информација за тоа зошто се случило дејството за мислење.",
 	"apihelp-articlefeedbackv5-flag-feedback-param-toggle": "Ознаката се менува автоматски, само корисно за не(корисно)",
-	"apihelp-articlefeedbackv5-flag-feedback-param-source": "Извор на ознаката: статија (сраница), централа (страница за мислења), набљудувани (страница), трајна врска",
+	"apihelp-articlefeedbackv5-flag-feedback-param-source": "Извор на ознаката: статија (страница), централа (страница за мислења), набљудувани (страница), трајна врска",
 	"apihelp-articlefeedbackv5-add-flag-note-description": "Додајте прибелешка опишувајќи ја активноста откако дејството е веќе изведено.",
 	"apihelp-articlefeedbackv5-add-flag-note-summary": "Додајте прибелешка опишувајќи ја активноста откако дејството е веќе изведено.",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Назнака на најавата за поднова",
@@ -37,7 +38,7 @@
 	"apihelp-articlefeedbackv5-add-flag-note-param-title": "Наслов на страницата за која се дава мислее. Не може да се користи заедно со $1pageid",
 	"apihelp-articlefeedbackv5-add-flag-note-param-pageid": "Назнака на страницата за која се дава мислење. Не може да се користи заедно со $1title",
 	"apihelp-articlefeedbackv5-add-flag-note-param-feedbackid": "Која назнака на мислење да се означи",
-	"apihelp-articlefeedbackv5-add-flag-note-param-source": "Извор на ознаката: статија (сраница), централа (страница за мислења), набљудувани (страница), трајна врска",
+	"apihelp-articlefeedbackv5-add-flag-note-param-source": "Извор на ознаката: статија (страница), централа (страница за мислења), набљудувани (страница), трајна врска",
 	"apihelp-articlefeedbackv5-set-status-description": "Овоз/оневоз. AFTv5 за дадена страница.",
 	"apihelp-articlefeedbackv5-set-status-summary": "Овоз/оневоз. AFTv5 за дадена страница.",
 	"apihelp-articlefeedbackv5-set-status-param-title": "Наслов на страницата за која се овозможува/оневозможува AFTv5. Не може да се користи заедно со $1pageid.",
