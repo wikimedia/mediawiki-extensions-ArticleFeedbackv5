@@ -47,6 +47,8 @@
 	"apihelp-query+articlefeedbackv5-view-activity-param-feedbackid": "Kennung der Artikelrückmeldung, für die die Aktivität abgerufen werden soll.",
 	"apihelp-query+articlefeedbackv5-view-activity-param-limit": "Wie viele Aktivitätsergebnisse zurückgegeben werden sollen",
 	"apihelp-query+articlefeedbackv5-view-feedback-description": "Listet Artikelrückmeldungen für eine angegebene Seite auf",
+	"apihelp-query+articlefeedbackv5-view-feedback-summary": "Listet Artikelrückmeldungen für eine angegebene Seite auf",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "Schlüssel, nach dem Aufzeichnungen sortiert werden sollen.",
 	"articlefeedbackv5-cta-thanks": "Vielen Dank!",
 	"articlefeedbackv5-cta-confirmation-message": "Ihre Rückmeldung kann auf [$1 dieser Seite] angesehen werden.",
 	"articlefeedbackv5-cta1-confirmation-title": "Wussten Sie, dass Sie diese Seite bearbeiten können?",
