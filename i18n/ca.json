@@ -125,7 +125,7 @@
 	"articlefeedbackv5-special-permalink-pagetitle": "Comentari a $1",
 	"articlefeedbackv5-special-watchlist-pagetitle": "Respostes de les meves pàgines vigilades",
 	"articlefeedbackv5-special-central-pagetitle": "Pàgina central de comentaris",
-	"articlefeedbackv5-loading-tag": "Carregant...",
+	"articlefeedbackv5-loading-tag": "S’està carregant…",
 	"articlefeedbackv5-status-hide": "Aquest missatge fou ocultat per $1 el $2 a les $3",
 	"articlefeedbackv5-status-unhide": "Aquest missatge va ser tornat a fer visible per $1 el $2 a les $3",
 	"articlefeedbackv5-new-marker": "Nou",
