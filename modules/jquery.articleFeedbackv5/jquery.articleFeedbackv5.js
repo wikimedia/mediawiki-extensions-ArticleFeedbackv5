@@ -2329,13 +2329,11 @@
 
 		// An empty restrictions array means anyone can edit
 		restrictions = mw.config.get( 'wgRestrictionEdit', [] );
-		if ( restrictions.length ) {
-			groups = mw.config.get( 'wgUserGroups' );
-			// Verify that each restriction exists in the user's groups
-			for ( i = 0; i < restrictions.length; i++ ) {
-				if ( groups.indexOf( restrictions[ i ] ) < 0 ) {
-					return false;
-				}
+		groups = mw.config.get( 'wgUserGroups' );
+		// Verify that each restriction exists in the user's groups
+		for ( i = 0; i < restrictions.length; i++ ) {
+			if ( groups.indexOf( restrictions[ i ] ) < 0 ) {
+				return false;
 			}
 		}
 		return true;
