@@ -12,7 +12,8 @@
 			"Whym",
 			"Yanajin66",
 			"青子守歌",
-			"Yusuke1109"
+			"Yusuke1109",
+			"Suyama"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "記事のフィードバックを送信",
@@ -447,6 +448,8 @@
 	"articlefeedbackv5-article-view-feedback": "$1 件の読者{{PLURAL:$1|コメント}}",
 	"articlefeedbackv5-talk-view-feedback": "読者の提案を表示",
 	"articlefeedbackv5-watchlist-view-feedback": "自分がウォッチしているページへのフィードバック",
+	"articlefeedbackv5-email-request-oversight-body": "こんにちは、オーバーサイト係の皆さん！\n\n\n$1によって、下記ページの投稿についてオーバーサイトがリクエストされました。\n\n$2\n\n内容を確認し、このオーバーサイトの許可あるいは拒否の判断してください。\n\n$3\n$5\n\nよろしくお願いいたします。\n\n{{SITENAME}} チームより\n\n\n追伸：\nオーバーサイトについて何かわからないことがあれば、下記のオーバーサイト係FAQをご覧ください。\n\n$4",
+	"articlefeedbackv5-email-request-oversight-body-notes": "このコメントはオーバーサイト申請に追加されました。\n\n$1",
 	"articlefeedbackv5-disable-flyover-title": "このツールを除去しますか?",
 	"articlefeedbackv5-disable-flyover-help-message": "記事へのフィードバックを除去するには、「$1」>「$2」で、「$3」にチェックを入れてください",
 	"articlefeedbackv5-disable-flyover-prefbutton": "個人設定に移動",
