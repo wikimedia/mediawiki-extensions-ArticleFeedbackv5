@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a93bfb2_2b9a1d98",
+        "filename": "ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 458
+      },
+      "writtenOn": "2019-02-24T21:06:19Z",
+      "side": 1,
+      "message": "Ugh this is kinda dumb just to not-localize \"Special:\"",
+      "range": {
+        "startLine": 405,
+        "startChar": 3,
+        "endLine": 405,
+        "endChar": 27
+      },
+      "revId": "2c55ecd79fe291efd7b6b8cd4ef324cb6d600e08",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": true
+    }
+  ]
+}
