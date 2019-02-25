@@ -55,7 +55,7 @@ class ArticleFeedbackv5Render {
 	 * Returns the HTML for the given feedback entry
 	 *
 	 * @param  $record ArticleFeedbackv5Model the record
-	 * @return string  the rendered row
+	 * @return string the rendered row
 	 */
 	public function run( $record ) {
 		if ( !$record instanceof ArticleFeedbackv5Model ) {
@@ -170,7 +170,7 @@ class ArticleFeedbackv5Render {
 	 * Sets whether this is a permalink
 	 *
 	 * @param  $isPermalink bool whether this is a permalink
-	 * @return bool         whether it passed validation and was set
+	 * @return bool whether it passed validation and was set
 	 */
 	public function setIsPermalink( $isPermalink ) {
 		$this->isPermalink = $isPermalink ? true : false;
@@ -190,7 +190,7 @@ class ArticleFeedbackv5Render {
 	 * Sets whether this is on the central log
 	 *
 	 * @param  $isCentral bool whether this is on the central log
-	 * @return bool       whether it passed validation and was set
+	 * @return bool whether it passed validation and was set
 	 */
 	public function setIsCentral( $isCentral ) {
 		$this->isCentral = $isCentral ? true : false;
@@ -210,7 +210,7 @@ class ArticleFeedbackv5Render {
 	 * Sets whether this is is a highlighted row
 	 *
 	 * @param  $isHighlighted bool whether this is is a highlighted row
-	 * @return bool       whether it passed validation and was set
+	 * @return bool whether it passed validation and was set
 	 */
 	public function setIsHighlighted( $isHighlighted ) {
 		$this->isHighlighted = $isHighlighted ? true : false;
@@ -222,7 +222,7 @@ class ArticleFeedbackv5Render {
 	 *
 	 * @param  $key   string the key
 	 * @param  $value bool   whether that permission is on
-	 * @return bool   whether it passed validation and was set
+	 * @return bool whether it passed validation and was set
 	 */
 	public function setPermission( $key, $value ) {
 		if ( !isset( $this->permissions[$key] ) ) {
@@ -344,7 +344,7 @@ class ArticleFeedbackv5Render {
 	 * Returns the mood of the feedback
 	 *
 	 * @param  $record ArticleFeedbackv5Model the record
-	 * @return string  the mood (positive or negative)
+	 * @return string the mood (positive or negative)
 	 */
 	public function getMood( $record ) {
 		return $record->aft_rating ? 'positive' : 'negative';

@@ -200,9 +200,9 @@ class ArticleFeedbackv5Activity {
 	 * starting from point $continue, sorted by time - latest first
 	 *
 	 * @param ArticleFeedbackv5Model $feedback Model of the feedback item whose activity we're fetching
-	 * @param User[optional] $user User object who we're fetching activity for (to check permissions)
-	 * @param int[optional] $limit total limit number
-	 * @param string[optional] $continue used for offsets
+	 * @param User|null $user User object who we're fetching activity for (to check permissions)
+	 * @param int $limit total limit number
+	 * @param string|null $continue used for offsets
 	 * @return array db record rows
 	 */
 	public static function getList( ArticleFeedbackv5Model $feedback, $user = null, $limit = 25, $continue = null ) {
@@ -269,7 +269,7 @@ class ArticleFeedbackv5Activity {
 	 * that has been posted already
 	 *
 	 * @param ArticleFeedbackv5Model $feedback
-	 * @param User[optional] $user
+	 * @param User|null $user
 	 * @return int
 	 */
 	public static function getActivityCount( ArticleFeedbackv5Model $feedback, User $user = null ) {
@@ -420,7 +420,7 @@ class ArticleFeedbackv5Activity {
 				if ( $actions ) {
 					$title = self::buildWhereFeedback( $feedback );
 					$titles[] = $title;
-					$where[] = 'log_title = ' . $dbr->addQuotes( $title ) . ' AND ' . $actions;
+					$where[] = 'log_title = '.$dbr->addQuotes( $title ).' AND '.$actions;
 				}
 			}
 		}
@@ -430,7 +430,7 @@ class ArticleFeedbackv5Activity {
 			$options = [];
 
 			// specific conditions to find the exact action we're looking for, per page
-			$where = [ '(' . implode( ') OR (', $where ) . ')' ];
+			$where = [ '('.implode( ') OR (', $where ).')' ];
 			$options['GROUP BY'] = [ 'log_namespace', 'log_title' ];
 
 			/*
@@ -526,7 +526,7 @@ class ArticleFeedbackv5Activity {
 	 * Check if a user has sufficient permissions to perform an action
 	 *
 	 * @param string $action
-	 * @param User[optional] $user
+	 * @param User|null $user
 	 * @return bool
 	 * @throws MWException
 	 */
@@ -546,8 +546,8 @@ class ArticleFeedbackv5Activity {
 	/**
 	 * Build WHERE conditions for permission-based log actions.
 	 *
-	 * @param array[optional] $permissions The available permissions (empty = all)
-	 * @param array[optional] $actions The acceptable actions (empty = all)
+	 * @param array $permissions The available permissions (empty = all)
+	 * @param array $actions The acceptable actions (empty = all)
 	 * @return string|bool false will be returned in the event no valid WHERE-clause
 	 *                     can be built because of actions are permitted
 	 */
@@ -574,7 +574,7 @@ class ArticleFeedbackv5Activity {
 			} else {
 				continue;
 			}
-			$where[] = 'log_type = ' . $dbr->addQuotes( $type ) . ' AND log_action = ' . $dbr->addQuotes( $action );
+			$where[] = 'log_type = '.$dbr->addQuotes( $type ).' AND log_action = '.$dbr->addQuotes( $action );
 		}
 
 		// if no valid actions were found, return
@@ -582,7 +582,7 @@ class ArticleFeedbackv5Activity {
 			return false;
 		}
 
-		return '(' . implode( ') OR (', $where ) . ')';
+		return '('.implode( ') OR (', $where ).')';
 	}
 
 	/**

@@ -32,8 +32,8 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	/**
 	 * Query to fetch entries from DB.
 	 *
-	 * @param mixed $id The id(s) to fetch, either a single id or an array of them
-	 * @param mixed $shard The corresponding shard value(s)
+	 * @param mixed|null $id The id(s) to fetch, either a single id or an array of them
+	 * @param mixed|null $shard The corresponding shard value(s)
 	 * @return ResultWrapper
 	 */
 	public function get( $id = null, $shard = null ) {

@@ -234,7 +234,7 @@ class ArticleFeedbackv5Hooks {
 	 * pages don't have the appropriate information available for Javascript, this
 	 * method will build the relevant info.
 	 *
-	 * @param  Title $title the article
+	 * @param Title $title the article
 	 * @return array the article's info, to be exposed to JS
 	 */
 	public static function getPageInformation( Title $title ) {

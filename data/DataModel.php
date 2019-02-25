@@ -234,10 +234,10 @@ abstract class DataModel {
 	 * enable us to do fewer queries when that data is finally requested.
 	 *
 	 * @param string $name The list name (see static::$lists)
-	 * @param mixed[optional] $shard Get only data for a certain shard value
-	 * @param string[optional] $offset The offset to start from
-	 * @param string[optional] $sort Sort to apply to list
-	 * @param string[optional] $order Sort the list ASC or DESC
+	 * @param mixed|null $shard Get only data for a certain shard value
+	 * @param string|null $offset The offset to start from
+	 * @param string|null $sort Sort to apply to list
+	 * @param string $order Sort the list ASC or DESC
 	 * @return DataModelList
 	 * @throws MWException
 	 */
@@ -350,7 +350,7 @@ abstract class DataModel {
 	 * - when fetching from db, it requires an aggregate function, so not so cheap
 	 *
 	 * @param string $name The list name (see static::$lists)
-	 * @param mixed[optional] $shard Get only data for a certain shard value
+	 * @param mixed|null $shard Get only data for a certain shard value
 	 * @return int
 	 */
 	public static function getCount( $name, $shard = null ) {
@@ -375,7 +375,7 @@ abstract class DataModel {
 	/**
 	 * Insert entry.
 	 *
-	 * @param bool[optional] $validate True if data should be validated
+	 * @param bool $validate True if data should be validated
 	 * @return DataModel
 	 * @throws MWException
 	 */
@@ -405,7 +405,7 @@ abstract class DataModel {
 	/**
 	 * Update entry.
 	 *
-	 * @param bool[optional] $validate True if data should be validated
+	 * @param bool $validate True if data should be validated
 	 * @return DataModel
 	 * @throws MWException
 	 */
@@ -703,7 +703,7 @@ abstract class DataModel {
 	/**
 	 * Update an entry's presence & sort values in all defined lists.
 	 *
-	 * @param stdClass[optional] $old The pre-save conditions' results
+	 * @param stdClass|null $old The pre-save conditions' results
 	 * @return DataModel
 	 */
 	public function updateLists( $old = null ) {

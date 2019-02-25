@@ -57,8 +57,8 @@ abstract class DataModelBackend {
 	 * To fetch all entries for a certain shard value, leave $id null.
 	 * To fetch a specific entry without knowing the shard value, leave $shard null.
 	 *
-	 * @param mixed $id The id(s) to fetch, either a single id or an array of them
-	 * @param mixed $shard The corresponding shard value(s)
+	 * @param mixed|null $id The id(s) to fetch, either a single id or an array of them
+	 * @param mixed|null $shard The corresponding shard value(s)
 	 * @return ResultWrapper
 	 */
 	abstract public function get( $id = null, $shard = null );
@@ -91,10 +91,10 @@ abstract class DataModelBackend {
 	 * Fetch a list.
 	 *
 	 * @param string $name The list name (see <datamodel>::$lists)
-	 * @param mixed $shard Get only data for a certain shard value
-	 * @param int $offset The offset to start fetching entries from
+	 * @param mixed|null $shard Get only data for a certain shard value
+	 * @param int|null $offset The offset to start fetching entries from
 	 * @param int $limit The amount of entries to fetch
-	 * @param string $sort Sort to apply to list
+	 * @param string|null $sort Sort to apply to list
 	 * @param string $order Sort the list ASC or DESC
 	 * @return ResultWrapper
 	 */
@@ -104,7 +104,7 @@ abstract class DataModelBackend {
 	 * Get the amount of entries in a certain list.
 	 *
 	 * @param string $name The list name (see <datamodel>::$lists)
-	 * @param mixed $shard Get only data for a certain shard value
+	 * @param mixed|null $shard Get only data for a certain shard value
 	 * @return array
 	 */
 	abstract public function getCount( $name, $shard = null );

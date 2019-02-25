@@ -68,10 +68,10 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Constructor
 	 *
-	 * @param mixed $user       the user performing the action ($wgUser), or
+	 * @param mixed $user the user performing the action ($wgUser), or
 	 *                          zero if it's a system call
-	 * @param int   $feedbackId the feedback ID
-	 * @param int   $pageId     the page ID
+	 * @param int $feedbackId the feedback ID
+	 * @param int $pageId the page ID
 	 */
 	public function __construct( $user, $feedbackId, $pageId ) {
 		$this->user = $user;
@@ -85,7 +85,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param  $notes     string [optional] any notes to send to the activity log
 	 * @param  $toggle    bool   [optional] whether to toggle the flag
 	 * @param  $source    string [optional] the origin of the flag (article, central, watchlist, permalink)
-	 * @return bool       true upon successful flagging, false on failure. In the event of a failure,
+	 * @return bool true upon successful flagging, false on failure. In the event of a failure,
 	 *                    the error can be fetched through ->getError())
 	 */
 	public function run( $flag, $notes = '', $toggle = false, $source = 'unknown' ) {
@@ -152,7 +152,7 @@ class ArticleFeedbackv5Flagging {
 	 * @param int $pageId
 	 * @param mixed $feedbackId
 	 * @param string $comment
-	 * @param User $user
+	 * @param User|null $user
 	 * @return int
 	 */
 	protected function log( $action, $pageId, $feedbackId, $comment, User $user = null ) {
@@ -931,7 +931,7 @@ class ArticleFeedbackv5Flagging {
 	 * it shoves an email job into the queue for sending to the oversighters'
 	 * mailing list - only called for NEW oversight requests
 	 *
-	 * @param string[optional] $notes Additional text to include in the email
+	 * @param string $notes Additional text to include in the email
 	 */
 	protected function sendOversightEmail( $notes = '' ) {
 		global $wgUser;
