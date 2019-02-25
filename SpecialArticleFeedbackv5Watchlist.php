@@ -138,7 +138,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 				}
 
 				$key = $this->msg( "articlefeedbackv5-special-filter-$filter-watchlist" )->escaped();
-				$opts[(string) $key] = $filter;
+				$opts[(string)$key] = $filter;
 			}
 
 			if ( count( $opts ) > 0 ) {

@@ -55,8 +55,8 @@ class ArticleFeedbackv5Log {
 		$note = $wgLang->truncateForDatabase( $notes, $wgArticleFeedbackv5MaxActivityNoteLength );
 
 		// add page id & feedback id to params
-		$params['feedbackId'] = (string) $itemId;
-		$params['pageId'] = (int) $pageId;
+		$params['feedbackId'] = (string)$itemId;
+		$params['pageId'] = (int)$pageId;
 
 		// insert logging entry
 		$logEntry = new ManualLogEntry( $logType, $type );

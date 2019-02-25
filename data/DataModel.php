@@ -369,7 +369,7 @@ abstract class DataModel {
 			static::getCache()->set( $key, $count );
 		}
 
-		return (int) $count;
+		return (int)$count;
 	}
 
 	/**
@@ -718,7 +718,7 @@ abstract class DataModel {
 			}
 
 			// update list totals
-			$difference = (int) $existsNew - (int) $existsOld;
+			$difference = (int)$existsNew - (int)$existsOld;
 			if ( $difference != 0 ) {
 				$this->updateCountCache( $list, $this->{static::getShardColumn()}, $difference );
 			}

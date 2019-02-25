@@ -276,7 +276,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 		$conditions = $this->getConditions( $name );
 		$conds += $conditions;
 
-		return (int) $dbr->selectField(
+		return (int)$dbr->selectField(
 			$tables,
 			$vars,
 			$conds,

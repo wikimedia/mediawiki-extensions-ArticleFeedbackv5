@@ -180,8 +180,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$records = $this->fetchData();
 
 		// build renderer
-		$permalink = (bool) $this->feedbackId;
-		$central = !(bool) $this->pageId;
+		$permalink = (bool)$this->feedbackId;
+		$central = !(bool)$this->pageId;
 		$renderer = new ArticleFeedbackv5Render( $permalink, $central );
 
 		// build title
@@ -725,7 +725,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					$this->msg( "articlefeedbackv5-special-filter-$filter" )
 						->numParams( $count )
 						->escaped();
-				$opts[(string) $key] = $filter;
+				$opts[(string)$key] = $filter;
 			}
 
 			if ( count( $opts ) > 0 ) {
@@ -773,7 +773,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				$opts[ '---------' . str_repeat( ' ', $i ) ] = '';
 			}
 			$key = $this->msg( strtolower( "articlefeedbackv5-special-sort-$sort" ) )->escaped();
-			$opts[(string) $key] = $sort;
+			$opts[(string)$key] = $sort;
 		}
 		$sortSelect = new XmlSelect( false, 'articleFeedbackv5-sort-select' );
 		$sortSelect->setDefault( $this->startingSort . '-' . $this->startingSortDirection );

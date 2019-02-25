@@ -942,12 +942,12 @@ class ArticleFeedbackv5Render {
 								'data-action' => $action,
 								// expose some additional details to JS
 								'data-type' => $discussType,
-								'data-section-exists' => (int) $sectionExists,
+								'data-section-exists' => (int)$sectionExists,
 								'data-section-title' => $sectionTitleTruncated,
 								'data-section-content' => $sectionContent,
 								'data-section-edittime' => wfTimestampNow(),
 								'data-section-edittoken' => $wgUser->getEditToken(),
-								'data-section-watchlist' => (int) $wgUser->isWatched( $discussPage )
+								'data-section-watchlist' => (int)$wgUser->isWatched( $discussPage )
 							],
 							// Give grep a chance to find the usages:
 							// articlefeedbackv5-form-discuss-talk, articlefeedbackv5-form-discuss-user,

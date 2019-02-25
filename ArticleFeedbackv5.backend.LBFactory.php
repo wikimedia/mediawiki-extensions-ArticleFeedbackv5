@@ -39,7 +39,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	public function get( $id = null, $shard = null ) {
 		$ids = null;
 		if ( $id != null ) {
-			$ids = (array) $id;
+			$ids = (array)$id;
 			$ids = array_map( [ $this, 'standardizeId' ], $ids );
 		}
 
@@ -144,7 +144,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		$where['aft_hide'] = 0;
 		$where['aft_oversight'] = 0;
 
-		return (int) $this->getDB( DB_REPLICA )->selectField(
+		return (int)$this->getDB( DB_REPLICA )->selectField(
 			$this->table,
 			[ 'COUNT(*)' ],
 			$where,

@@ -358,7 +358,7 @@ class ArticleFeedbackv5Activity {
 		$where['log_title'] = $title;
 		$where['log_namespace'] = NS_SPECIAL;
 
-		return (int) ArticleFeedbackv5Utils::getDB( DB_REPLICA )->selectField(
+		return (int)ArticleFeedbackv5Utils::getDB( DB_REPLICA )->selectField(
 			'logging',
 			'COUNT(log_id)',
 			$where,

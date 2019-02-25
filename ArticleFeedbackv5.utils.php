@@ -193,7 +193,7 @@ class ArticleFeedbackv5Utils {
 
 		$categories = self::getPageCategories( $pageId );
 
-		return (bool) array_intersect( $categories, $wgArticleFeedbackv5Categories );
+		return (bool)array_intersect( $categories, $wgArticleFeedbackv5Categories );
 	}
 
 	/**
@@ -209,7 +209,7 @@ class ArticleFeedbackv5Utils {
 
 		$categories = self::getPageCategories( $pageId );
 
-		return (bool) array_intersect( $categories, $wgArticleFeedbackv5BlacklistCategories );
+		return (bool)array_intersect( $categories, $wgArticleFeedbackv5BlacklistCategories );
 	}
 
 	/**
@@ -259,7 +259,7 @@ class ArticleFeedbackv5Utils {
 			$user = $userId;
 		} else {
 			// if $userId is not an object
-			$userId = (int) $userId;
+			$userId = (int)$userId;
 			if ( $userId !== 0 ) { // logged-in users
 				$user = User::newFromId( $userId );
 			} elseif ( !is_null( $userIp ) ) { // IP users
@@ -304,7 +304,7 @@ class ArticleFeedbackv5Utils {
 	 * @return string the mask line
 	 */
 	public static function renderMaskLine( $type, $feedbackId, $userId, $timestamp = null ) {
-		if ( (int) $userId !== 0 ) { // logged-in users
+		if ( (int)$userId !== 0 ) { // logged-in users
 			$username = User::newFromId( $userId )->getName();
 		} else { // magic user
 			$username = wfMessage( 'articlefeedbackv5-default-user' )->text();
@@ -333,7 +333,7 @@ class ArticleFeedbackv5Utils {
 			|| ( is_string( $wgSpamRegex ) && strlen( $wgSpamRegex ) > 0 ) ) {
 			// In older versions, $wgSpamRegex may be a single string rather than
 			// an array of regexes, so make it compatible.
-			$regexes = ( array ) $wgSpamRegex;
+			$regexes = ( array )$wgSpamRegex;
 			foreach ( $regexes as $regex ) {
 				if ( preg_match( $regex, $value ) ) {
 					return true;

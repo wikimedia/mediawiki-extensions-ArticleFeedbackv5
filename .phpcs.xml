@@ -3,7 +3,6 @@
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
 		<exclude name="Generic.Files.LineLength.TooLong" />
 		<exclude name="Generic.Files.OneObjectStructurePerFile.MultipleFound" />
-		<exclude name="Generic.Formatting.SpaceAfterCast.TooMuchSpace" />
 		<exclude name="Generic.Functions.FunctionCallArgumentSpacing.SpaceBeforeComma" />
 		<exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.ContentAfterBrace" />
 		<exclude name="Generic.PHP.NoSilencedErrors.Discouraged" />

@@ -45,7 +45,7 @@ class ArticleFeedbackv5Hooks {
 			'aft-oversighter' => [ 'oversight' ],
 		];
 		foreach ( $wgArticleFeedbackv5DefaultPermissions as $permission => $groups ) {
-			foreach ( (array) $groups as $group ) {
+			foreach ( (array)$groups as $group ) {
 				if ( isset( $wgGroupPermissions[$group] ) ) {
 					$wgGroupPermissions[$group][$permission] = true;
 				}
@@ -307,10 +307,10 @@ class ArticleFeedbackv5Hooks {
 		$vars['wgArticleFeedbackv5MaxCommentLength'] = $wgArticleFeedbackv5MaxCommentLength;
 
 		// make sure that these keys are being encoded to an object rather than to an array
-		$wgArticleFeedbackv5DisplayBuckets['buckets'] = (object) $wgArticleFeedbackv5DisplayBuckets['buckets'];
-		$wgArticleFeedbackv5CTABuckets['buckets'] = (object) $wgArticleFeedbackv5CTABuckets['buckets'];
+		$wgArticleFeedbackv5DisplayBuckets['buckets'] = (object)$wgArticleFeedbackv5DisplayBuckets['buckets'];
+		$wgArticleFeedbackv5CTABuckets['buckets'] = (object)$wgArticleFeedbackv5CTABuckets['buckets'];
 		$vars['wgArticleFeedbackv5DisplayBuckets'] = $wgArticleFeedbackv5DisplayBuckets;
-		$vars['wgArticleFeedbackv5CTABuckets'] = (object) $wgArticleFeedbackv5CTABuckets;
+		$vars['wgArticleFeedbackv5CTABuckets'] = (object)$wgArticleFeedbackv5CTABuckets;
 
 		return true;
 	}
@@ -523,7 +523,7 @@ class ArticleFeedbackv5Hooks {
 			$max = $wgMemc->get( $key );
 			if ( $max === false ) {
 				// max user id not present in cache; fetch from db & save to cache for 1h
-				$max = (int) $pager->getDatabase()->selectField( 'user', 'MAX(user_id)', '', __METHOD__ );
+				$max = (int)$pager->getDatabase()->selectField( 'user', 'MAX(user_id)', '', __METHOD__ );
 				$wgMemc->set( $key, $max, 60 * 60 );
 			}
 
@@ -532,7 +532,7 @@ class ArticleFeedbackv5Hooks {
 				[ 'user', 'user_groups' ],
 				'user_id',
 				[
-					'user_id > ' . (int) ( $max - $max / 100 ),
+					'user_id > ' . (int)( $max - $max / 100 ),
 					'ug_group' => null
 				],
 				__METHOD__,

@@ -68,7 +68,7 @@ class ArticleFeedbackv5Permissions {
 			}
 		}
 
-		return (int) $articleId % 1000 >= 1000 - ( (float) $odds * 10 );
+		return (int)$articleId % 1000 >= 1000 - ( (float)$odds * 10 );
 	}
 
 	/**
@@ -156,7 +156,7 @@ class ArticleFeedbackv5Permissions {
 		$restriction = self::getProtectionRestriction( $articleId );
 
 		if ( $restriction === false ) {
-			$restriction = (object) [
+			$restriction = (object)[
 				'pr_level' => self::getDefaultPermissionLevel( $articleId ),
 				'pr_expiry' => wfGetDB( DB_REPLICA )->getInfinity()
 			];

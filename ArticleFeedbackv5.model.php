@@ -214,11 +214,11 @@ class ArticleFeedbackv5Model extends DataModel {
 		if ( $this->{static::getIdColumn()} ) {
 			$old = static::get( $this->{static::getIdColumn()}, $this->{static::getShardColumn()} );
 			if ( $old && !$old->aft_inappropriate && !$old->aft_hide && !$old->aft_oversight ) {
-				$oldRating = (int) $old->aft_rating;
+				$oldRating = (int)$old->aft_rating;
 			}
 		}
 		if ( !$this->aft_inappropriate && !$this->aft_hide && !$this->aft_oversight ) {
-			$newRating = (int) $this->aft_rating;
+			$newRating = (int)$this->aft_rating;
 		}
 		$difference = $newRating - $oldRating;
 
@@ -480,7 +480,7 @@ class ArticleFeedbackv5Model extends DataModel {
 
 		$this->aft_net_helpful = $this->aft_helpful - $this->aft_unhelpful;
 		$this->aft_relevance_score = $this->getRelevanceScore();
-		$this->aft_has_comment = (bool) $this->aft_comment;
+		$this->aft_has_comment = (bool)$this->aft_comment;
 		$this->aft_archive_date = $this->getArchiveDate();
 		$this->updateCountFound();
 
@@ -497,7 +497,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	public function update( $validate = true ) {
 		$this->aft_net_helpful = $this->aft_helpful - $this->aft_unhelpful;
 		$this->aft_relevance_score = $this->getRelevanceScore();
-		$this->aft_has_comment = (bool) $this->aft_comment;
+		$this->aft_has_comment = (bool)$this->aft_comment;
 		$this->aft_archive_date = $this->getArchiveDate();
 		$this->updateCountFound();
 
@@ -605,7 +605,7 @@ class ArticleFeedbackv5Model extends DataModel {
 			return null;
 		} elseif ( !$this->aft_archive_date ) {
 			global $wgArticleFeedbackv5AutoArchiveTtl;
-			$wgArticleFeedbackv5AutoArchiveTtl = (array) $wgArticleFeedbackv5AutoArchiveTtl;
+			$wgArticleFeedbackv5AutoArchiveTtl = (array)$wgArticleFeedbackv5AutoArchiveTtl;
 			$ttl = '+5 years';
 
 			// ttl is set per x amount of unreviewed comments
@@ -701,42 +701,42 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * @return bool
 	 */
 	public function isFeatured() {
-		return (bool) $this->aft_feature;
+		return (bool)$this->aft_feature;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isResolved() {
-		return (bool) $this->aft_resolve;
+		return (bool)$this->aft_resolve;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isNonActionable() {
-		return (bool) $this->aft_noaction;
+		return (bool)$this->aft_noaction;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isInappropriate() {
-		return (bool) $this->aft_inappropriate;
+		return (bool)$this->aft_inappropriate;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isArchived() {
-		return (bool) $this->aft_archive;
+		return (bool)$this->aft_archive;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isHidden() {
-		return (bool) $this->aft_hide;
+		return (bool)$this->aft_hide;
 	}
 
 	/**
@@ -750,13 +750,13 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * @return bool
 	 */
 	public function isDeclined() {
-		return (bool) $this->aft_decline;
+		return (bool)$this->aft_decline;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isOversighted() {
-		return (bool) $this->aft_oversight;
+		return (bool)$this->aft_oversight;
 	}
 }
