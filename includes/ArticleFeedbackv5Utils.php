@@ -221,7 +221,7 @@ class ArticleFeedbackv5Utils {
 	 * user id) from evaluating their own feedback, but should never be trusted.
 	 *
 	 * @param ArticleFeedbackv5Model $record The feedback record
-	 * @param bool[optional] $unsafe True if untrusted data can be evaluated
+	 * @param bool $unsafe True if untrusted data can be evaluated
 	 * @return bool
 	 */
 	public static function isOwnFeedback( $record, $unsafe = false ) {
@@ -250,7 +250,7 @@ class ArticleFeedbackv5Utils {
 	 * Creates a user link for a log row
 	 *
 	 * @param int $userId can be null or a user object
-	 * @param string $userIp (name works too)
+	 * @param string|null $userIp (name works too)
 	 * @return anchor tag link to user
 	 */
 	public static function getUserLink( $userId, $userIp = null ) {
@@ -285,7 +285,7 @@ class ArticleFeedbackv5Utils {
 	 *
 	 * @param  $helpful   int the number of helpful votes
 	 * @param  $unhelpful int the number of unhelpful votes
-	 * @return int        the percentage
+	 * @return int the percentage
 	 */
 	public static function percentHelpful( $helpful, $unhelpful ) {
 		if ( $helpful + $unhelpful > 0 ) {
@@ -300,7 +300,7 @@ class ArticleFeedbackv5Utils {
 	 * @param string $type the type (hidden or oversight)
 	 * @param int $feedbackId the feedback post id
 	 * @param int $userId the user id
-	 * @param string[optional] $timestamp the timestamp, from the db
+	 * @param string|null $timestamp the timestamp, from the db
 	 * @return string the mask line
 	 */
 	public static function renderMaskLine( $type, $feedbackId, $userId, $timestamp = null ) {

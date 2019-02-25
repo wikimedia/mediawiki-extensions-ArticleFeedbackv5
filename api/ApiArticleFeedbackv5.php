@@ -199,11 +199,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	/**
 	 * AbuseFilter callback: flag feedback (abuse, oversight, hide, etc.)
 	 *
-	 * @param string                    $action     the action name (AF)
-	 * @param array                     $parameters the action parameters (AF)
-	 * @param Title                     $title      the title passed in
-	 * @param AbuseFilterVariableHolder $vars       the variables passed in
-	 * @param string                    $rule_desc  the rule description
+	 * @param string $action the action name (AF)
+	 * @param array $parameters the action parameters (AF)
+	 * @param Title $title the title passed in
+	 * @param AbuseFilterVariableHolder $vars the variables passed in
+	 * @param string $rule_desc the rule description
 	 */
 	public function callbackAbuseActionFlag( $action, $parameters, $title, $vars, $rule_desc ) {
 		switch ( $action ) {
