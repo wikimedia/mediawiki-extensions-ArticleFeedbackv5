@@ -56,7 +56,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		 * The clone will make sure it's no longer the same object referenced
 		 * inside DataModel.
 		 */
-		$entry = clone( $entry );
+		$entry = clone $entry;
 		$entry->{$this->idColumn} = $this->standardizeId( $entry->{$this->idColumn} );
 
 		return parent::update( $entry );
@@ -73,7 +73,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		 * The clone will make sure it's no longer the same object referenced
 		 * inside DataModel.
 		 */
-		$entry = clone( $entry );
+		$entry = clone $entry;
 		$entry->{$this->idColumn} = $this->standardizeId( $entry->{$this->idColumn} );
 
 		return parent::delete( $entry );
@@ -93,7 +93,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		 * The clone will make sure it's no longer the same object referenced
 		 * inside DataModel.
 		 */
-		$entry = clone( $entry );
+		$entry = clone $entry;
 		$entry->{$this->idColumn} = $this->standardizeId( $entry->{$this->idColumn} );
 
 		return parent::evaluateConditions( $entry );
