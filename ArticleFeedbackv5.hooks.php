@@ -208,7 +208,7 @@ class ArticleFeedbackv5Hooks {
 			}
 
 			// watchlist page
-			elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
+ elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
 				global $wgArticleFeedbackv5Watchlist;
 
 				if ( $wgArticleFeedbackv5Watchlist && $user->getId() ) {
