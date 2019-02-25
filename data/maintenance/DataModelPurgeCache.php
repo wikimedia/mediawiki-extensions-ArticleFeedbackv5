@@ -70,7 +70,7 @@ class DataModelPurgeCache extends Maintenance {
 			$this->completeCount++;
 
 			if ( $i % 50 == 0 ) {
-				$this->output( "--purged caches to entry #".$object->{$class::getIdColumn()}."\n" );
+				$this->output( "--purged caches to entry #" . $object->{$class::getIdColumn()} . "\n" );
 				$factory->waitForReplication();
 			}
 		}

@@ -114,7 +114,7 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 
 		global $wgArticleFeedbackv5AutoArchiveEnabled;
 		if ( !$wgArticleFeedbackv5AutoArchiveEnabled ) {
-			$this->output( 'IMPORTANT! Auto-archive is currently disabled. To enable, set $wgArticleFeedbackv5AutoArchiveEnabled = true.'."\n" );
+			$this->output( 'IMPORTANT! Auto-archive is currently disabled. To enable, set $wgArticleFeedbackv5AutoArchiveEnabled = true.' . "\n" );
 		}
 
 		return true;

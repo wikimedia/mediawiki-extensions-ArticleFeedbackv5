@@ -420,7 +420,7 @@ class ArticleFeedbackv5Activity {
 				if ( $actions ) {
 					$title = self::buildWhereFeedback( $feedback );
 					$titles[] = $title;
-					$where[] = 'log_title = '.$dbr->addQuotes( $title ).' AND '.$actions;
+					$where[] = 'log_title = ' . $dbr->addQuotes( $title ) . ' AND ' . $actions;
 				}
 			}
 		}
@@ -430,7 +430,7 @@ class ArticleFeedbackv5Activity {
 			$options = [];
 
 			// specific conditions to find the exact action we're looking for, per page
-			$where = [ '('.implode( ') OR (', $where ).')' ];
+			$where = [ '(' . implode( ') OR (', $where ) . ')' ];
 			$options['GROUP BY'] = [ 'log_namespace', 'log_title' ];
 
 			/*
@@ -574,7 +574,7 @@ class ArticleFeedbackv5Activity {
 			} else {
 				continue;
 			}
-			$where[] = 'log_type = '.$dbr->addQuotes( $type ).' AND log_action = '.$dbr->addQuotes( $action );
+			$where[] = 'log_type = ' . $dbr->addQuotes( $type ) . ' AND log_action = ' . $dbr->addQuotes( $action );
 		}
 
 		// if no valid actions were found, return
@@ -582,7 +582,7 @@ class ArticleFeedbackv5Activity {
 			return false;
 		}
 
-		return '('.implode( ') OR (', $where ).')';
+		return '(' . implode( ') OR (', $where ) . ')';
 	}
 
 	/**

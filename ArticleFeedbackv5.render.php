@@ -477,7 +477,7 @@ class ArticleFeedbackv5Render {
 					'span',
 					[ 'class' => 'articleFeedbackv5-comment-details-link' ],
 					MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
-						SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title->getPrefixedDBkey() .'/'. $record->aft_id ),
+						SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title->getPrefixedDBkey() . '/' . $record->aft_id ),
 						wfMessage( 'articleFeedbackv5-details-link' )->text()
 					)
 				);

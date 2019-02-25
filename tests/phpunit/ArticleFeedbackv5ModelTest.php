@@ -105,7 +105,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 			$sample = clone $this->sample;
 
 			// half of them will get a comment, half of them will be empty (so they go to separate lists)
-			$sample->aft_comment = $i % ( 1 / $probability ) ? '' : 'Test feedback entry #'. ( $i + 1 );
+			$sample->aft_comment = $i % ( 1 / $probability ) ? '' : 'Test feedback entry #' . ( $i + 1 );
 
 			// I'll set bogus timestamps or they'd all be the same and we can't sort base on them
 			$timestamp = wfTimestampNow();
@@ -137,7 +137,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 			$sample = clone $this->sample;
 
 			// half of them will get a comment, half of them will be empty (so they go to separate lists)
-			$sample->aft_comment = $i % ( 1 / $probability ) ? 'Test feedback entry #'. ( $i + 1 ) : '';
+			$sample->aft_comment = $i % ( 1 / $probability ) ? 'Test feedback entry #' . ( $i + 1 ) : '';
 			$sample->insert();
 		}
 
