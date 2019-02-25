@@ -24,7 +24,7 @@ class DataModelPurgeCache extends Maintenance {
 	 *
 	 * @var array
 	 */
-	protected $shards = array( null );
+	protected $shards = [ null ];
 
 	/**
 	 * Constructor

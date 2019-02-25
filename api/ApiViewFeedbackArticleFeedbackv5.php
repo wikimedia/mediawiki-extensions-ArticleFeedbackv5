@@ -94,7 +94,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			$record = ArticleFeedbackv5Model::get( $params['feedbackid'], $pageId );
 			if ( $record ) {
 				return new DataModelList(
-					array( array( 'id' => $record->aft_id, 'shard' => $record->aft_page ) ),
+					[ [ 'id' => $record->aft_id, 'shard' => $record->aft_page ] ],
 					'ArticleFeedbackv5Model'
 				);
 			}
@@ -109,15 +109,15 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			 * $map will serve as an temporary aid to overcome the differences
 			 * between this API's parameter names and the methods' argument names.
 			 */
-			$arguments = array();
-			$map = array(
+			$arguments = [];
+			$map = [
 				'name' => $params['filter'],
 				'shard' => $pageId,
 				'user' => $this->getUser(),
 				'offset' => $params['offset'],
 				'sort' => $params['sort'],
 				'order' => $params['sortdirection']
-			);
+			];
 
 			$method = $params['watchlist'] ? 'getWatchlistList' : 'getList';
 			$function = new ReflectionMethod( 'ArticleFeedbackv5Model', $method );
@@ -130,10 +130,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				}
 			}
 
-			return call_user_func_array( array( 'ArticleFeedbackv5Model', $method ), $arguments );
+			return call_user_func_array( [ 'ArticleFeedbackv5Model', $method ], $arguments );
 		}
 
-		return array();
+		return [];
 	}
 
 	/**
@@ -142,44 +142,44 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 * @return array the params info, indexed by allowed key
 	 */
 	public function getAllowedParams() {
-		return array(
+		return [
 			'title'         => null,
-			'pageid'        => array(
+			'pageid'        => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
-			),
-			'watchlist'     => array(
+			],
+			'watchlist'     => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
-			),
-			'sort'          => array(
+			],
+			'sort'          => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Model::$sorts )
-			),
-			'sortdirection' => array(
+			],
+			'sortdirection' => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array( 'DESC', 'ASC', 'desc', 'asc' )
-			),
-			'filter'        => array(
+				ApiBase::PARAM_TYPE     => [ 'DESC', 'ASC', 'desc', 'asc' ]
+			],
+			'filter'        => [
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Model::$lists )
-			),
-			'feedbackid'   => array(
+			],
+			'feedbackid'   => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'
-			),
-			'offset'       => array(
+			],
+			'offset'       => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'
-			),
-		);
+			],
+		];
 	}
 
 	/**
@@ -189,7 +189,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getParamDescription() {
 		$p = $this->getModulePrefix();
-		return array(
+		return [
 			'title'         => "Title of the page to get feedback ratings for. Cannot be used together with {$p}pageid",
 			'pageid'        => "ID of the page to get feedback ratings for. Cannot be used together with {$p}title",
 			'watchlist'     => "Load feedback from user's watchlisted pages (1) or from all pages (0)",
@@ -198,7 +198,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'filter'        => 'What filtering to apply to list',
 			'feedbackid'    => 'The ID of a specific feedback item to fetch',
 			'offset'        => 'Offset to start grabbing data at',
-		);
+		];
 	}
 
 	/**
@@ -207,9 +207,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 * @return array the description as the first element in an array
 	 */
 	public function getDescription() {
-		return array(
+		return [
 			'List article feedback for a specified page'
-		);
+		];
 	}
 
 	/**
@@ -218,8 +218,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	 * @return array the example as the first element in an array
 	 */
 	public function getExamples() {
-		return array(
+		return [
 			'api.php?action=query&list=articlefeedbackv5-view-feedback&afvfpageid=1&afvfsort=relevance&afvfsortdirection=ASC&afvffilter=visible-relevant',
-		);
+		];
 	}
 }

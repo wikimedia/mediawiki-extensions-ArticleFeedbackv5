@@ -8,16 +8,16 @@
 class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 	protected $sample;
 
-	protected $tablesUsed = array( 'aft_feedback' );
+	protected $tablesUsed = [ 'aft_feedback' ];
 
 	public function setUp() {
 		parent::setUp();
 
 		// init some volatile BagOStuff
 		$cache = new HashBagOStuff;
-		$this->setMwGlobals( array(
+		$this->setMwGlobals( [
 			'wgMemc' => $cache,
-		) );
+		] );
 		ArticleFeedbackv5Model::setCache( $cache );
 
 		// don't connect to external cluster but use main db, that has been prepared for unittests ($this->db)

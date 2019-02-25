@@ -156,7 +156,7 @@ class ArticleFeedbackv5Flagging {
 	 * @return int
 	 */
 	protected function log( $action, $pageId, $feedbackId, $comment, User $user = null ) {
-		$params = array();
+		$params = [];
 		if ( $this->source ) {
 			$params['source'] = $this->source;
 		}
@@ -952,14 +952,14 @@ class ArticleFeedbackv5Flagging {
 		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $this->feedback->aft_id );
 
 		// build our params
-		$params = array(
+		$params = [
 			'user_name' => $wgUser->getName(),
 			'user_url' => $userPage->getFullURL( '', false, PROTO_HTTPS ),
 			'page_name' => $page->getPrefixedText(),
 			'page_url' => $page->getFullURL( '', false, PROTO_HTTPS ),
 			'permalink' => $permalink->getFullURL( '', false, PROTO_HTTPS ),
 			'notes' => $notes
-		);
+		];
 
 		$job = new ArticleFeedbackv5MailerJob( $page, $params );
 		JobQueueGroup::singleton()->push( $job );

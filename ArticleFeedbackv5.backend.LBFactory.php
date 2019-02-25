@@ -40,7 +40,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		$ids = null;
 		if ( $id != null ) {
 			$ids = (array) $id;
-			$ids = array_map( array( $this, 'standardizeId' ), $ids );
+			$ids = array_map( [ $this, 'standardizeId' ], $ids );
 		}
 
 		return parent::get( $ids, $shard );
@@ -109,13 +109,13 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	public function getConditions( $name ) {
 		$class = $this->datamodel;
 
-		$conditions = array();
+		$conditions = [];
 		if ( isset( $class::$lists[$name]['conditions'] ) ) {
 			$conditions = $class::$lists[$name]['conditions'];
 		}
 
 		if ( empty( $conditions ) ) {
-			$conditions = array();
+			$conditions = [];
 		}
 
 		return $conditions;
@@ -133,7 +133,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 */
 	public function getCountFound( $pageId = null ) {
 		// build where condition
-		$where = array();
+		$where = [];
 		$where['aft_rating'] = 1;
 		if ( $pageId !== null) {
 			$where['aft_page'] = $pageId;
@@ -146,10 +146,10 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 
 		return (int) $this->getDB( DB_REPLICA )->selectField(
 			$this->table,
-			array( 'COUNT(*)' ),
+			[ 'COUNT(*)' ],
 			$where,
 			__METHOD__,
-			array()
+			[]
 		);
 	}
 
@@ -163,7 +163,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 * @param array $userIds array of user_ids whose data is to be selected
 	 * @return ResultWrapper
 	 */
-	public function getContributionsData( $pager, $offset, $limit, $descending, $userIds = array() ) {
+	public function getContributionsData( $pager, $offset, $limit, $descending, $userIds = [] ) {
 		$tables[] = 'aft_feedback';
 
 		$fields[] = 'aft_id';
@@ -189,10 +189,10 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		}
 
 		$order = $descending ? 'ASC' : 'DESC'; // something's wrong with $descending - see logic applied in includes/Pager.php
-		$options['ORDER BY'] = array( $pager->getIndexField() . " $order" );
+		$options['ORDER BY'] = [ $pager->getIndexField() . " $order" ];
 		$options['LIMIT'] = $limit;
 
-		return $this->getDB( DB_REPLICA )->select( $tables, $fields, $conds, __METHOD__, $options, array() );
+		return $this->getDB( DB_REPLICA )->select( $tables, $fields, $conds, __METHOD__, $options, [] );
 	}
 
 	/**

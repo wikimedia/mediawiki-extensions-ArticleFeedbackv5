@@ -20,13 +20,13 @@ class ArticleFeedbackv5MailerJob extends Job {
 	 *
 	 * @var array
 	 */
-	protected $requiredParams = array(
+	protected $requiredParams = [
 		'user_name',
 		'user_url',
 		'page_name',
 		'page_url',
 		'permalink',
-	);
+	];
 
 	/**
 	 * Passthrough that sends the name of the class as the name of the job
@@ -76,7 +76,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 			isset( $params['notes'] ) ? $params['notes'] : ''
 		);
 
-		$status = UserMailer::send( $to, $from, $subject, $body, array( 'replyTo' => $replyto ) );
+		$status = UserMailer::send( $to, $from, $subject, $body, [ 'replyTo' => $replyto ] );
 
 		return $status->isOK();
 	}
@@ -110,7 +110,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 					->params( $wgArticleFeedbackv5OversightEmailHelp, $notes )
 					->text();
 
-		return array( $subject, $body );
+		return [ $subject, $body ];
 	}
 
 	/**

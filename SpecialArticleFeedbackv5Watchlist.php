@@ -79,7 +79,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		return
 			Html::rawElement(
 				'div',
-				array( 'id' => 'articleFeedbackv5-special-watchlist-showing-wrap' ),
+				[ 'id' => 'articleFeedbackv5-special-watchlist-showing-wrap' ],
 				$this->msg( 'articlefeedbackv5-special-watchlist-showing',
 					$user->getUserPage()->getFullText(),
 					$user->getName()
@@ -87,7 +87,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 			) .
 			Html::rawElement(
 				'span',
-				array( 'id' => 'articlefeedbackv5-special-central-watchlist-link' ),
+				[ 'id' => 'articlefeedbackv5-special-central-watchlist-link' ],
 				$this->msg( 'articlefeedbackv5-special-watchlist-central-link',
 					SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullText()
 				)->parse()
@@ -102,18 +102,18 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 	 */
 	protected function buildFilters() {
 		// filter to be displayed as link
-		$filterLabels = array();
-		foreach ( array( 'featured', 'unreviewed' ) as $filter ) {
+		$filterLabels = [];
+		foreach ( [ 'featured', 'unreviewed' ] as $filter ) {
 			// Give grep a chance to find the usages:
 			// articlefeedbackv5-special-filter-featured, articlefeedbackv5-special-filter-unreviewed
 			$filterLabels[$filter] =
 				Html::rawElement(
 					'a',
-					array(
+					[
 						'href' => '#',
 						'id' => "articleFeedbackv5-special-filter-$filter",
 						'class' => 'articleFeedbackv5-filter-link' . ( $this->startingFilter == $filter ? ' filter-active' : '' )
-					),
+					],
 					$this->msg( "articlefeedbackv5-special-filter-$filter-watchlist" )->escaped()
 				);
 		}
@@ -121,7 +121,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		// filters to be displayed in dropdown (only for editors)
 		$filterSelectHtml = '';
 		if ( $this->isAllowed( 'aft-editor' ) ) {
-			$opts = array();
+			$opts = [];
 
 			// Give grep a chance to find the usages:
 			// articlefeedbackv5-special-filter-featured-watchlist, articlefeedbackv5-special-filter-unreviewed-watchlist,
@@ -143,7 +143,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 
 			if ( count( $opts ) > 0 ) {
 				// Put the "more filters" option at the beginning of the opts array
-				$opts = array( $this->msg( 'articlefeedbackv5-special-filter-select-more' )->text() => '' ) + $opts;
+				$opts = [ $this->msg( 'articlefeedbackv5-special-filter-select-more' )->text() => '' ] + $opts;
 
 				$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter-select' );
 				$filterSelect->setDefault( $this->startingFilter );
@@ -155,11 +155,11 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		return
 			Html::rawElement(
 				'div',
-				array( 'id' => 'articleFeedbackv5-filter' ),
+				[ 'id' => 'articleFeedbackv5-filter' ],
 				implode( ' ', $filterLabels ) .
 					Html::rawElement(
 						'div',
-						array( 'id' => 'articleFeedbackv5-select-wrapper' ),
+						[ 'id' => 'articleFeedbackv5-select-wrapper' ],
 						$filterSelectHtml
 					)
 			);

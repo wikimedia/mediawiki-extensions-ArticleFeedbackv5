@@ -22,7 +22,7 @@ class ArticleFeedbackv5Log {
 	 * @param array $params Array of parameters that can be passed into the msg thing - used for "perpetrator" for log entry
 	 * @return int The id of the newly inserted log entry
 	 */
-	public static function log( $type, $pageId, $itemId, $notes, $doer, array $params = array() ) {
+	public static function log( $type, $pageId, $itemId, $notes, $doer, array $params = [] ) {
 		global $wgLogActionsHandlers, $wgArticleFeedbackv5MaxActivityNoteLength, $wgLang;
 
 		if ( isset( ArticleFeedbackv5Activity::$actions[$type]['log_type'] ) ) {
@@ -124,13 +124,13 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 		// logentry-articlefeedbackv5-undo-helpful, logentry-articlefeedbackv5-undo-unhelpful, logentry-articlefeedbackv5-clear-flags
 		$language = $skin === null ? $wgContLang : $wgLang;
 		return wfMessage( "logentry-articlefeedbackv5-$action" )
-			->params( array(
+			->params( [
 				Message::rawParam( $this->getPerformerElement() ),
 				$this->entry->getPerformer()->getId(),
 				$target,
 				ArticleFeedbackv5Utils::formatId( $parameters['feedbackId'] ),
 				$page
-			) )
+			] )
 			->inLanguage( $language )
 			->parse();
 	}
@@ -166,8 +166,8 @@ class ArticleFeedbackv5ProtectionLogFormatter extends LogFormatter {
 		$page = WikiPage::newFromID( $articleId );
 		if ( $page ) {
 			$parameters = $this->entry->getParameters();
-			$permission = array( 'articlefeedbackv5' => $parameters['permission'] );
-			$expiry = array( 'articlefeedbackv5' => $parameters['expiry'] );
+			$permission = [ 'articlefeedbackv5' => $parameters['permission'] ];
+			$expiry = [ 'articlefeedbackv5' => $parameters['expiry'] ];
 
 			$params[] = $page->protectDescriptionLog( $permission, $expiry );
 		}
@@ -181,17 +181,17 @@ class ArticleFeedbackv5ProtectionLogFormatter extends LogFormatter {
 	 * @return string
 	 */
 	public function getActionLinks() {
-		$links = array(
+		$links = [
 			MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 				$this->entry->getTarget(),
 				$this->msg( 'hist' )->text(),
-				array(),
-				array(
+				[],
+				[
 					'action' => 'history',
 					'offset' => $this->entry->getTimestamp()
-				)
+				]
 			)
-		);
+		];
 
 		return $this->msg( 'parentheses' )->rawParams(
 			$this->context->getLanguage()->pipeList( $links ) )->escaped();

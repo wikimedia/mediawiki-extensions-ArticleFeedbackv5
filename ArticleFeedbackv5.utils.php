@@ -27,12 +27,12 @@ class ArticleFeedbackv5Utils {
 	/**
 	 * @var array [LoadBalancer]
 	 */
-	protected static $lb = array();
+	protected static $lb = [];
 
 	/**
 	 * @var array [bool]
 	 */
-	public static $written = array();
+	public static $written = [];
 
 	/**
 	 * @param $wiki String: the wiki ID, or false for the current wiki
@@ -57,7 +57,7 @@ class ArticleFeedbackv5Utils {
 	 *                in one group.
 	 * @param $wiki String: the wiki ID, or false for the current wiki
 	 */
-	public static function getDB( $db, $groups = array(), $wiki = false ) {
+	public static function getDB( $db, $groups = [], $wiki = false ) {
 		$lb = static::getLB( $wiki );
 
 		if ( $db === DB_MASTER ) {
@@ -162,10 +162,10 @@ class ArticleFeedbackv5Utils {
 	protected static function getPageCategories( $pageId ) {
 		$title = Title::newFromID( $pageId );
 		if ( is_null( $title ) ) {
-			return array();
+			return [];
 		}
 
-		$categories = array();
+		$categories = [];
 		foreach ( $title->getParentCategories() as $category => $page ) {
 			// get category title without prefix
 			$category = Title::newFromDBkey( $category );
@@ -405,7 +405,7 @@ class ArticleFeedbackv5Utils {
 			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
 			$vars->setVar( 'ACTION', 'feedback' );
 			$vars->setVar( 'new_wikitext', $value );
-			$vars->setLazyLoadVar( 'new_size', 'length', array( 'length-var' => 'new_wikitext' ) );
+			$vars->setLazyLoadVar( 'new_size', 'length', [ 'length-var' => 'new_wikitext' ] );
 
 			$status = AbuseFilter::filterAction( $vars, $title, $wgArticleFeedbackv5AbuseFilterGroup, $wgUser );
 

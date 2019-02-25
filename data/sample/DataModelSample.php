@@ -51,16 +51,16 @@ class DataModelSample extends DataModel {
 	 *
 	 * @var array
 	 */
-	public static $lists = array(
+	public static $lists = [
 		// all entries, sorted by title or timestamp
-		'all' => array(),
+		'all' => [],
 
 		// all hidden entries, sorted by timestamp
-		'hidden' => array( 'ds_visible = 0' ),
+		'hidden' => [ 'ds_visible = 0' ],
 
 		// all visible entries, sorted by timestamp
-		'visible' => array( 'ds_visible = 1' ),
-	);
+		'visible' => [ 'ds_visible = 1' ],
+	];
 
 	/**
 	 * Available sorts to order the data
@@ -72,10 +72,10 @@ class DataModelSample extends DataModel {
 	 *
 	 * @var array
 	 */
-	public static $sorts = array(
+	public static $sorts = [
 		'title' => 'ds_title',
 		'timestamp' => 'ds_timestamp'
-	);
+	];
 
 	/**
 	 * Validate the entry's data.

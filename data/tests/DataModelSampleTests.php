@@ -8,7 +8,7 @@
 class DataModelSampleTest extends MediaWikiTestCase {
 	protected $sample;
 
-	protected $tablesUsed = array( 'datamodel_sample' );
+	protected $tablesUsed = [ 'datamodel_sample' ];
 
 	public function setUp() {
 		parent::setUp();
@@ -17,9 +17,9 @@ class DataModelSampleTest extends MediaWikiTestCase {
 		require_once __DIR__ . '/../sample/DataModelSample.php';
 
 		// init some volatile BagOStuff
-		$this->setMwGlobals( array(
+		$this->setMwGlobals( [
 			'wgMemc' => new HashBagOStuff,
-		) );
+		] );
 		global $wgMemc;
 		DataModelSample::setCache( $wgMemc );
 

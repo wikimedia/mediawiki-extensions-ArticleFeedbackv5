@@ -85,13 +85,13 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			$html .=
 				Html::rawElement(
 					'div',
-					array( 'class' => 'articleFeedbackv5-activity-pane' ),
+					[ 'class' => 'articleFeedbackv5-activity-pane' ],
 					Html::rawElement(
 						'div',
-						array( 'class' => 'articleFeedbackv5-activity-feedback' ),
+						[ 'class' => 'articleFeedbackv5-activity-feedback' ],
 						Html::rawElement(
 							'div',
-							array(),
+							[],
 							wfMessage( 'articlefeedbackv5-activity-feedback-info' )
 								->params( $feedback->aft_id )
 								->rawParams( ArticleFeedbackv5Utils::getUserLink( $feedback->aft_user, $feedback->aft_user_text ) )
@@ -100,7 +100,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 						) .
 						Html::element(
 							'div',
-							array(),
+							[],
 							wfMessage( 'articlefeedbackv5-activity-feedback-date' )
 								->params(
 									$wgLang->userTimeAndDate( $feedback->aft_timestamp, $wgUser ),
@@ -110,7 +110,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 						) .
 						Html::rawElement(
 							'div',
-							array( 'class' => 'articleFeedbackv5-activity-feedback-permalink' ),
+							[ 'class' => 'articleFeedbackv5-activity-feedback-permalink' ],
 							MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 								SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $feedback->aft_id ),
 								wfMessage( 'articlefeedbackv5-activity-permalink' )->text()
@@ -119,7 +119,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 					) .
 					Html::element(
 						'div',
-						array( 'class' => 'articleFeedbackv5-activity-count' ),
+						[ 'class' => 'articleFeedbackv5-activity-count' ],
 						wfMessage( 'articlefeedbackv5-activity-count' )->numParams( ArticleFeedbackv5Activity::getActivityCount( $feedback ) )->text()
 					)
 				);
@@ -127,7 +127,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			$html .=
 				Html::openElement(
 					'div',
-					array( 'class' => 'articleFeedbackv5-activity-log-items' )
+					[ 'class' => 'articleFeedbackv5-activity-log-items' ]
 				);
 		}
 
@@ -165,17 +165,17 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			$html .=
 				Html::rawElement(
 					'div',
-					array( 'class' => 'articleFeedbackv5-activity-item' ),
+					[ 'class' => 'articleFeedbackv5-activity-item' ],
 					Html::rawElement(
 						'span',
-						array( 'class' => "articleFeedbackv5-activity-item-action articleFeedbackv5-activity-item-action-$sentiment" ),
+						[ 'class' => "articleFeedbackv5-activity-item-action articleFeedbackv5-activity-item-action-$sentiment" ],
 						wfMessage( 'articlefeedbackv5-activity-item-' . $item->log_action )
 							->rawParams(
 								ArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
 								Linker::commentBlock( $item->log_comment ),
-								Html::element( 'span', array(), $wgLang->userTimeAndDate( $item->log_timestamp, $wgUser ) ),
-								Html::element( 'span', array(), $wgLang->userDate( $item->log_timestamp, $wgUser ) ),
-								Html::element( 'span', array(), $wgLang->userTime( $item->log_timestamp, $wgUser ) )
+								Html::element( 'span', [], $wgLang->userTimeAndDate( $item->log_timestamp, $wgUser ) ),
+								Html::element( 'span', [], $wgLang->userDate( $item->log_timestamp, $wgUser ) ),
+								Html::element( 'span', [], $wgLang->userTime( $item->log_timestamp, $wgUser ) )
 							)
 							->params( $item->log_user_text )
 							->escaped()
@@ -187,10 +187,10 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			$html .=
 				Html::element(
 					'a',
-					array(
+					[
 						'class' => "articleFeedbackv5-activity-more",
 						'href' => '#',
-					),
+					],
 					wfMessage( "articlefeedbackv5-activity-more" )->text()
 				);
 		}
@@ -213,27 +213,27 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 * @return array the params info, indexed by allowed key
 	 */
 	public function getAllowedParams() {
-		return array(
-			'feedbackid' => array(
+		return [
+			'feedbackid' => [
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE     => 'string',
-			),
+			],
 			'title' => null,
-			'pageid' => array(
+			'pageid' => [
 				ApiBase::PARAM_TYPE     => 'integer',
-			),
-			'limit' => array(
+			],
+			'limit' => [
 				ApiBase::PARAM_DFLT => 25,
 				ApiBase::PARAM_TYPE => 'limit',
 				ApiBase::PARAM_MIN => 1,
 				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
-			),
+			],
 			'continue' => null,
-			'noheader' => array(
+			'noheader' => [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-		);
+			],
+		];
 	}
 
 	/**
@@ -243,14 +243,14 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 */
 	public function getParamDescription() {
 		$p = $this->getModulePrefix();
-		return array(
+		return [
 			'feedbackid' => 'ID of article feedback to get activity for',
 			'title' => "Title of the page the feedback was given for. Cannot be used together with {$p}pageid",
 			'pageid' => "ID of the page the feedback was given for. Cannot be used together with {$p}title",
 			'limit' => 'How many activity results to return',
 			'continue' => 'When more results are available, use this to continue',
 			'noheader' => 'Skip the header markup, even if this is the first page',
-		);
+		];
 	}
 
 	/**
@@ -259,9 +259,9 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 * @return array the description as the first element in an array
 	 */
 	public function getDescription() {
-		return array(
+		return [
 			'List article feedback activity for a specified page'
-		);
+		];
 	}
 
 	/**
@@ -270,8 +270,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	 * @return array the example as the first element in an array
 	 */
 	protected function getExamples() {
-		return array(
+		return [
 			'api.php?action=query&list=articlefeedbackv5-view-activity&aafeedbackid=429384108662e9d4e41ab6e275d0392e&aapageid=1',
-		);
+		];
 	}
 }

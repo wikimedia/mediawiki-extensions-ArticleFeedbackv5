@@ -77,32 +77,32 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$rows = $dbr->select(
-			array( 'logging', 'page' ),
-			array(
+			[ 'logging', 'page' ],
+			[
 				'log_id',
 				'feedback_id' => 'SUBSTRING_INDEX(log_title, "/", -1)',
 				'page_id',
 				'log_action',
 				'log_params'
-			),
-			array(
+			],
+			[
 				"log_id > $continue",
 				'log_title LIKE "ArticleFeedbackv5/%"',
 				'log_namespace' => NS_SPECIAL
-			),
+			],
 			__METHOD__,
-			array(
+			[
 				'LIMIT'    => $this->limit,
 				'ORDER BY' => 'log_id',
-			),
-			array(
-				'page' => array(
-					'INNER JOIN', array(
+			],
+			[
+				'page' => [
+					'INNER JOIN', [
 						'page_namespace = 0', // this maintenance only supports NS_MAIN
 						'page_title = SUBSTRING_INDEX(REPLACE(log_title, "ArticleFeedbackv5/", ""), "/", 1)'
-					)
-				)
-			)
+					]
+				]
+			]
 		);
 
 		$continue = null;
@@ -113,7 +113,7 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 			// build params
 			$params = @unserialize( $row->log_params );
 			if ( !$params ) {
-				$params = array();
+				$params = [];
 			}
 			$params['source'] = isset( $params['source'] ) ? $params['source'] : 'unknown';
 			$params['feedbackId'] = (int) $row->feedback_id;
@@ -135,11 +135,11 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 			// update log entry
 			$dbw->update(
 				'logging',
-				array(
+				[
 					'log_action' => $action,
 					'log_params' => serialize( $params )
-				),
-				array( 'log_id' => $row->log_id )
+				],
+				[ 'log_id' => $row->log_id ]
 			);
 
 			$this->completeCount++;

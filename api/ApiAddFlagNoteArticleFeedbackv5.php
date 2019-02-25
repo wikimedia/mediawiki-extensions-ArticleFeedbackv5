@@ -27,7 +27,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	 */
 	public function execute() {
 		$affected = 0;
-		$results = array();
+		$results = [];
 
 		// get important values from our parameters
 		$params = $this->extractRequestParams();
@@ -49,15 +49,15 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 			$dbw = ArticleFeedbackv5Utils::getDB( DB_MASTER );
 			$affected = $dbw->update(
 				'logging',
-				array( 'log_comment' => $notes ),
-				array(
+				[ 'log_comment' => $notes ],
+				[
 					'log_id' => $logId,
 					// failsafe, making sure this can't be gamed to add comments to anything other than AFTv5 entries
 					'log_type' => ArticleFeedbackv5Activity::$actions[$action]['log_type'],
 					'log_action' => $action,
 					// failsafe, making sure this can't be gamed to add comments to other users' feedback
 					'log_user' => $wgUser->getId(),
-				)
+				]
 			);
 
 			/**
@@ -110,36 +110,36 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	 * @return array the params info, indexed by allowed key
 	 */
 	public function getAllowedParams() {
-		return array(
-			'logid' => array(
+		return [
+			'logid' => [
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_MIN => 1
-			),
-			'flagtype' => array(
+			],
+			'flagtype' => [
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => array_keys( ArticleFeedbackv5Activity::$actions )
-			),
-			'note' => array(
+			],
+			'note' => [
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => 'string'
-			),
+			],
 			'title' => null,
-			'pageid' => array(
+			'pageid' => [
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
-			),
-			'feedbackid' => array(
+			],
+			'feedbackid' => [
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'
-			),
-			'source' => array(
+			],
+			'source' => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array( 'article', 'central', 'watchlist', 'permalink', 'unknown' )
-			),
-		);
+				ApiBase::PARAM_TYPE     => [ 'article', 'central', 'watchlist', 'permalink', 'unknown' ]
+			],
+		];
 	}
 
 	/**
@@ -149,7 +149,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getParamDescription() {
 		$p = $this->getModulePrefix();
-		return array(
+		return [
 			'logid' => 'Log ID to update',
 			'flagtype' => 'Type of flag to apply',
 			'note'   => 'Information on why the feedback activity occurred',
@@ -157,7 +157,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 			'pageid' => "ID of the page the feedback was given for. Cannot be used together with {$p}title",
 			'feedbackid' => 'FeedbackID to flag',
 			'source' => 'The origin of the flag: article (page), central (feedback page), watchlist (page), permalink',
-		);
+		];
 	}
 
 	/**
@@ -166,9 +166,9 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	 * @return array the description as the first element in an array
 	 */
 	public function getDescription() {
-		return array(
+		return [
 			'Add a note describing activity, after the action has been performed already.'
-		);
+		];
 	}
 
 	/**
@@ -177,9 +177,9 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	 * @return array the example as the first element in an array
 	 */
 	protected function getExamples() {
-		return array(
+		return [
 			'api.php?action=articlefeedbackv5-add-flag-note&logid=1&note=text&flagtype=resolve&feedbackid=1&pageid=1'
-		);
+		];
 	}
 
 	public function isWriteMode() { return true; }

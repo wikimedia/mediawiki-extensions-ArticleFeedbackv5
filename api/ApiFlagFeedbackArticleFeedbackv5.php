@@ -30,7 +30,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	public function execute() {
 		global $wgUser;
 
-		$results = array();
+		$results = [];
 
 		// get important values from our parameters
 		$params     = $this->extractRequestParams();
@@ -88,36 +88,36 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 * @return array the params info, indexed by allowed key
 	 */
 	public function getAllowedParams() {
-		return array(
+		return [
 			'title' => null,
-			'pageid' => array(
+			'pageid' => [
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'integer'
-			),
-			'feedbackid' => array(
+			],
+			'feedbackid' => [
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'
-			),
-			'flagtype' => array(
+			],
+			'flagtype' => [
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Activity::$actions ),
-			),
-			'note' => array(
+			],
+			'note' => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'
-			),
-			'toggle' => array(
+			],
+			'toggle' => [
 				ApiBase::PARAM_TYPE     => 'boolean'
-			),
-			'source' => array(
+			],
+			'source' => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array( 'article', 'central', 'watchlist', 'permalink', 'unknown' )
-			),
-		);
+				ApiBase::PARAM_TYPE     => [ 'article', 'central', 'watchlist', 'permalink', 'unknown' ]
+			],
+		];
 	}
 
 	/**
@@ -127,7 +127,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getParamDescription() {
 		$p = $this->getModulePrefix();
-		return array(
+		return [
 			'title' => "Title of the page to flag feedback for. Cannot be used together with {$p}pageid",
 			'pageid' => "ID of the page to flag feedback for. Cannot be used together with {$p}title",
 			'feedbackid' => 'FeedbackID to flag',
@@ -135,7 +135,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			'note' => 'Information on why the feedback activity occurred',
 			'toggle' => 'The flag is being toggled atomically, only useful for (un)helpful',
 			'source' => 'The origin of the flag: article (page), central (feedback page), watchlist (page), permalink',
-		);
+		];
 	}
 
 	/**
@@ -144,9 +144,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 * @return array the description as the first element in an array
 	 */
 	public function getDescription() {
-		return array(
+		return [
 			'Flag a feedbackID as abusive or hidden.'
-		);
+		];
 	}
 
 	/**
@@ -155,9 +155,9 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 * @return array the example as the first element in an array
 	 */
 	protected function getExamples() {
-		return array(
+		return [
 			'api.php?action=articlefeedbackv5-flag-feedback&feedbackid=1&pageid=1&flagtype=helpful'
-		);
+		];
 	}
 
 	public function isWriteMode() { return true; }

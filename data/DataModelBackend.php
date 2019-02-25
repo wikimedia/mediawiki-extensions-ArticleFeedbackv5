@@ -129,13 +129,13 @@ abstract class DataModelBackend {
 	public function getConditions( $name ) {
 		$class = $this->datamodel;
 
-		$conditions = array();
+		$conditions = [];
 		if ( isset( $class::$lists[$name] ) ) {
 			$conditions = $class::$lists[$name];
 		}
 
 		if ( empty( $conditions ) ) {
-			$conditions = array();
+			$conditions = [];
 		}
 
 		return $conditions;
@@ -150,7 +150,7 @@ abstract class DataModelBackend {
 	public function getSort( $sort ) {
 		$class = $this->datamodel;
 
-		$sorts = array();
+		$sorts = [];
 		if ( isset( $class::$sorts[$sort] ) ) {
 			return $class::$sorts[$sort];
 		}
@@ -185,6 +185,6 @@ abstract class DataModelBackend {
 			}
 		}
 
-		return array( $sortOffset, $idOffset );
+		return [ $sortOffset, $idOffset ];
 	}
 }

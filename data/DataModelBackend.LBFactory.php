@@ -15,7 +15,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	/**
 	 * @var array [bool]
 	 */
-	protected static $written = array();
+	protected static $written = [];
 
 	/**
 	 * @param $wiki String: the wiki ID, or false for the current wiki
@@ -36,7 +36,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 *                in one group.
 	 * @param $wiki String: the wiki ID, or false for the current wiki
 	 */
-	public function getDB( $db, $groups = array(), $wiki = false ) {
+	public function getDB( $db, $groups = [], $wiki = false ) {
 		/*
 		 * Since we'll save a flag to indicate if a certain wiki has been written
 		 * to, we'll want to be certain that this data is accurate, and we don't
@@ -93,7 +93,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 */
 	public function get( $id = null, $shard = null ) {
 		// query conditions
-		$conds = array();
+		$conds = [];
 		if ( $id ) {
 			$conds[$this->idColumn] = $id;
 		}
@@ -106,7 +106,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 			'*',
 			$conds,
 			__METHOD__,
-			array()
+			[]
 		);
 	}
 
@@ -137,10 +137,10 @@ class DataModelBackendLBFactory extends DataModelBackend {
 		return $this->getDB( DB_MASTER )->update(
 			$this->table,
 			$data,
-			array(
+			[
 				$this->idColumn => $entry->{$this->idColumn},
 				$this->shardColumn => $entry->{$this->shardColumn}
-			),
+			],
 			__METHOD__
 		);
 	}
@@ -154,10 +154,10 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	public function delete( DataModel $entry ) {
 		return $this->getDB( DB_MASTER )->delete(
 			$this->table,
-			array(
+			[
 				$this->idColumn => $entry->{$this->idColumn},
 				$this->shardColumn => $entry->{$this->shardColumn}
-			),
+			],
 			__METHOD__
 		);
 	}
@@ -176,10 +176,10 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	public function getList( $name, $shard = null, $offset = null, $limit, $sort = null, $order ) {
 		$dbr = $this->getDB( DB_REPLICA );
 
-		$tables = array();
-		$vars = array();
-		$conds = array();
-		$options = array();
+		$tables = [];
+		$vars = [];
+		$conds = [];
+		$options = [];
 
 		$tables[] = $this->table;
 
@@ -204,7 +204,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 
 		// "order by"
 		$sort = $this->getSort( $sort );
-		$options['ORDER BY'] = array();
+		$options['ORDER BY'] = [];
 		if ( $sort ) {
 			$options['ORDER BY'][] = "$sort $order";
 		}
@@ -250,10 +250,10 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	public function getCount( $name, $shard = null ) {
 		$dbr = $this->getDB( DB_REPLICA );
 
-		$tables = array();
-		$vars = array();
-		$conds = array();
-		$options = array();
+		$tables = [];
+		$vars = [];
+		$conds = [];
+		$options = [];
 
 		$tables[] = $this->table;
 
@@ -298,7 +298,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 		$class = $this->datamodel;
 
 		// get list of all conditions
-		$conditions = array();
+		$conditions = [];
 		foreach ( $class::$lists as $list => $properties ) {
 			$conditions = array_merge( $conditions, $class::getListConditions( $list ) );
 		}
@@ -309,10 +309,10 @@ class DataModelBackendLBFactory extends DataModelBackend {
 		return $this->getDB( DB_REPLICA )->selectRow(
 			$this->table,
 			array_unique( $conditions ),
-			array(
+			[
 				$this->idColumn => $entry->{$this->idColumn},
 				$this->shardColumn => $entry->{$this->shardColumn},
-			),
+			],
 			__METHOD__
 		);
 	}

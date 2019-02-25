@@ -122,7 +122,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// articlefeedbackv5-noteflyover-autohide-description, articlefeedbackv5-noteflyover-request-description,
 		// articlefeedbackv5-noteflyover-unrequest-description, articlefeedbackv5-noteflyover-decline-description,
 		// articlefeedbackv5-noteflyover-oversight-description, articlefeedbackv5-noteflyover-unoversight-description
-		$vars = array();
+		$vars = [];
 		foreach ( ArticleFeedbackv5Activity::$actions as $action => $options ) {
 			$message = wfMessage( "articlefeedbackv5-noteflyover-$action-description" )->parse();
 			$vars["mw.msg.articlefeedbackv5-noteflyover-$action-description"] = $message;
@@ -131,19 +131,19 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->setArticleRelated( false );
 
 		// build list of available filters & sorts
-		$this->filters = array();
+		$this->filters = [];
 		foreach ( ArticleFeedbackv5Model::$lists as $filter => $data ) {
 			if ( $this->isAllowed( $data['permissions'] ) ) {
 				$this->filters[] = $filter;
 			}
 		}
-		$this->sorts = array( 'relevance-DESC', 'relevance-ASC', 'age-DESC', 'age-ASC', 'helpful-DESC', 'helpful-ASC' );
+		$this->sorts = [ 'relevance-DESC', 'relevance-ASC', 'age-DESC', 'age-ASC', 'helpful-DESC', 'helpful-ASC' ];
 
 		// don't display archived list unless specifically "enabled" (if cronjob
 		// is not running, it would simply not work)
 		global $wgArticleFeedbackv5AutoArchiveEnabled;
 		if ( !$wgArticleFeedbackv5AutoArchiveEnabled ) {
-			$this->filters = array_diff( $this->filters, array( 'archived' ) );
+			$this->filters = array_diff( $this->filters, [ 'archived' ] );
 		}
 
 		if ( $param ) {
@@ -197,7 +197,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$out->addHTML(
 			Html::rawElement(
 				'div',
-				array( 'id' => 'articleFeedbackv5-special-wrap' ),
+				[ 'id' => 'articleFeedbackv5-special-wrap' ],
 				$this->buildHeaderLinks() .
 				$this->buildStatusBox() .
 				$this->buildContent( $renderer, $records )
@@ -229,7 +229,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$record = ArticleFeedbackv5Model::get( $this->feedbackId, $this->pageId );
 			if ( $record ) {
 				return new DataModelList(
-					array( array( 'id' => $record->aft_id, 'shard' => $record->aft_page ) ),
+					[ [ 'id' => $record->aft_id, 'shard' => $record->aft_page ] ],
 					'ArticleFeedbackv5Model'
 				);
 			}
@@ -284,12 +284,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				) . ' ' .
 				Html::element(
 					'a',
-					array(
+					[
 						'href' => '#',
 						'id' => 'articleFeedbackv5-settings-link',
 						'class' => 'articleFeedbackv5-tipsy-link articleFeedbackv5-settings-link',
 						'data-action' => 'settings'
-					),
+					],
 					$this->msg( 'articlefeedbackv5-settings-menu-title' )->text()
 				);
 		}
@@ -301,11 +301,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		return
-			Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-header-wrap' ) ) .
-				Html::openElement( 'div', array( 'id' => 'articleFeedbackv5-header-links' ) ) .
+			Html::openElement( 'div', [ 'id' => 'articleFeedbackv5-header-wrap' ] ) .
+				Html::openElement( 'div', [ 'id' => 'articleFeedbackv5-header-links' ] ) .
 					Html::element(
 						'a',
-						array( 'href' => $this->getHelpLink().'#Feedback_page' ),
+						[ 'href' => $this->getHelpLink().'#Feedback_page' ],
 						$this->msg( 'articlefeedbackv5-whats-this' )->text()
 					) .
 					$pageLinks .
@@ -322,7 +322,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	protected function buildListHeader() {
 		return
 			$this->buildSummary() .
-			Html::element( 'div', array( 'class' => 'float-clear' ) );
+			Html::element( 'div', [ 'class' => 'float-clear' ] );
 	}
 
 	/**
@@ -347,7 +347,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				$watchlistLink =
 					Html::rawElement(
 						'span',
-						array( 'id' => 'articlefeedbackv5-special-central-watchlist-link' ),
+						[ 'id' => 'articlefeedbackv5-special-central-watchlist-link' ],
 						$this->msg(
 							'articlefeedbackv5-special-central-watchlist-link',
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5Watchlist' )->getFullText()
@@ -363,17 +363,17 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$count =
 			Html::rawElement(
 				'div',
-				array( 'id' => 'articleFeedbackv5-showing-count-wrap' ),
+				[ 'id' => 'articleFeedbackv5-showing-count-wrap' ],
 				$this->msg( 'articlefeedbackv5-special-count-total' )
 					->params(
 						Html::element(
 							'span',
-							array(
+							[
 								'title' =>
 									$this->msg( 'articlefeedbackv5-special-count-total-title' )
 										->numParams( $totalComment, $totalNoComment )
 										->text()
-							),
+							],
 							$this->getLanguage()->formatNum( $totalCount )
 						)
 					)
@@ -401,13 +401,13 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				}
 				$span = Html::rawElement(
 					'span',
-					array(
+					[
 						'class' => "stat-marker $class",
 						'title' =>
 							$this->msg( 'articlefeedbackv5-found-percent-title' )
 								->numParams( $total )
 								->text()
-					),
+					],
 					$this->msg( 'percent' )
 						->numParams( round( $found ) )
 						->escaped()
@@ -416,7 +416,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				$percent =
 					Html::rawElement(
 						'div',
-						array( 'id' => 'articleFeedbackv5-percent-found-wrap' ),
+						[ 'id' => 'articleFeedbackv5-percent-found-wrap' ],
 						$this->msg( 'articlefeedbackv5-found-percent' )
 							->rawParams( $span )
 							->numParams( round( $found ) )
@@ -496,12 +496,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$link = $this->getLinkRenderer()->makeKnownLink(
 				$title,
 				$this->msg( 'articlefeedbackv5-disabled-admin-button-text' )->text(),
-				array( 'class' => 'articlefeedbackv5-enable-button' ),
-				array( 'action' => 'protect' )
+				[ 'class' => 'articlefeedbackv5-enable-button' ],
+				[ 'action' => 'protect' ]
 			);
 
 			// admin-only setting
-			if ( in_array( $permissionLevel, array( 'aft-administrator', 'aft-noone' ) ) ) {
+			if ( in_array( $permissionLevel, [ 'aft-administrator', 'aft-noone' ] ) ) {
 				$message = 'articlefeedbackv5-disabled-admin-admin';
 
 			// admin+editors setting
@@ -512,7 +512,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// editors can change settings unless restriction is admin-specific
 		} elseif ( $this->getUser()->isAllowed( 'aft-editor' ) ) {
 			// admin-only setting
-			if ( in_array( $permissionLevel, array( 'aft-administrator', 'aft-noone' ) ) ) {
+			if ( in_array( $permissionLevel, [ 'aft-administrator', 'aft-noone' ] ) ) {
 				$message = 'articlefeedbackv5-disabled-editor-admin';
 
 			// admin+editors setting
@@ -520,11 +520,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				// link will trigger API call in JS
 				$link = Html::rawElement(
 					'a',
-					array(
+					[
 						'href' => '#',
 						'id' => 'articlefeedbackv5-enable',
 						'class' => 'articlefeedbackv5-enable-button'
-					),
+					],
 					$this->msg( 'articlefeedbackv5-disabled-editor-button-text' )->escaped()
 				);
 
@@ -538,16 +538,16 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		return Html::rawElement(
 			'div',
-			array( 'id' => 'articlefeedbackv5-disabled' ),
+			[ 'id' => 'articlefeedbackv5-disabled' ],
 			$link .
 			Html::rawElement(
 				'p',
-				array( 'class' => 'articlefeedbackv5-disabled-header' ),
+				[ 'class' => 'articlefeedbackv5-disabled-header' ],
 				$this->msg( 'articlefeedbackv5-disabled' )->escaped()
 			) .
 			Html::rawElement(
 				'p',
-				array( 'class' => 'articlefeedbackv5-disabled-text' ),
+				[ 'class' => 'articlefeedbackv5-disabled-text' ],
 				$this->msg( $message )->escaped()
 			)
 		);
@@ -583,7 +583,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		return
 			Html::rawElement(
 				'div',
-				array( 'class' => 'articleFeedbackv5-feedback-permalink-goback' ),
+				[ 'class' => 'articleFeedbackv5-feedback-permalink-goback' ],
 				$linkRenderer->makeLink(
 					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedDBkey() ),
 					'‹ ' . $this->msg( 'articlefeedbackv5-special-goback' )->text()
@@ -591,12 +591,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			) .
 			Html::rawElement(
 				'div',
-				array( 'id' => 'articleFeedbackv5-show-feedback' ),
+				[ 'id' => 'articleFeedbackv5-show-feedback' ],
 				$renderer->run( $record )
 			) .
 			Html::rawElement(
 				'div',
-				array( 'class' => 'articleFeedbackv5-feedback-permalink-goback' ),
+				[ 'class' => 'articleFeedbackv5-feedback-permalink-goback' ],
 				$linkRenderer->makeLink(
 					SpecialPage::getTitleFor( 'ArticleFeedbackv5', $this->title->getPrefixedDBkey() ),
 					'‹ ' . $this->msg( 'articlefeedbackv5-special-goback' )->text()
@@ -624,7 +624,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$centralPageLink =
 				Html::rawElement(
 					'div',
-					array( 'class' => 'articleFeedbackv5-feedback-central-goback' ),
+					[ 'class' => 'articleFeedbackv5-feedback-central-goback' ],
 					$this->getLinkRenderer()->makeLink(
 						SpecialPage::getTitleFor( 'ArticleFeedbackv5' ),
 						$this->msg( 'articlefeedbackv5-special-central-goback' )->text()
@@ -635,38 +635,38 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		return
 			Html::rawElement(
 				'div',
-				array( 'id' => 'articleFeedbackv5-sort-filter-controls' ),
+				[ 'id' => 'articleFeedbackv5-sort-filter-controls' ],
 				$this->buildFilters() .
 				$this->buildSort()
 			) .
 			Html::rawElement(
 				'div',
-				array(
+				[
 					'id'    => 'articleFeedbackv5-show-feedback',
 					'class' => $this->pageId ? '' : 'articleFeedbackv5-central-feedback-log'
-				),
+				],
 				$rows
 			) .
 			Html::rawElement(
 				'div',
-				array( 'id' => 'articleFeedbackv5-footer' ),
+				[ 'id' => 'articleFeedbackv5-footer' ],
 				Html::element(
 					'a',
-					array(
+					[
 						'href' => '#more-feedback',
 						'id'   => 'articleFeedbackv5-show-more'
-					),
+					],
 					$this->msg( 'articlefeedbackv5-special-more' )->text()
 				) .
 				Html::element(
 					'a',
-					array(
+					[
 						'href' => '#refresh-feedback',
 						'id'   => 'articleFeedbackv5-refresh-list'
-					),
+					],
 					$this->msg( 'articlefeedbackv5-special-refresh' )->text()
 				) .
-				Html::element( 'div', array( 'class' => 'clear' ) )
+				Html::element( 'div', [ 'class' => 'clear' ] )
 			) .
 			$centralPageLink;
 	}
@@ -679,8 +679,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 */
 	protected function buildFilters() {
 		// filter to be displayed as link
-		$filterLabels = array();
-		foreach ( array( 'featured', 'unreviewed' ) as $filter ) {
+		$filterLabels = [];
+		foreach ( [ 'featured', 'unreviewed' ] as $filter ) {
 			$count = ArticleFeedbackv5Model::getCount( $filter, $this->pageId );
 
 			// Give grep a chance to find the usages:
@@ -688,11 +688,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$filterLabels[$filter] =
 				Html::rawElement(
 					'a',
-					array(
+					[
 						'href' => '#',
 						'id' => "articleFeedbackv5-special-filter-$filter",
 						'class' => 'articleFeedbackv5-filter-link' . ( $this->startingFilter == $filter ? ' filter-active' : '' )
-					),
+					],
 					$this->msg( "articlefeedbackv5-special-filter-$filter" )
 						->numParams( $count )
 						->escaped()
@@ -702,7 +702,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// filters to be displayed in dropdown (only for editors)
 		$filterSelectHtml = '';
 		if ( $this->isAllowed( 'aft-editor' ) ) {
-			$opts = array();
+			$opts = [];
 
 			// Give grep a chance to find the usages:
 			// articlefeedbackv5-special-filter-featured, rticlefeedbackv5-special-filter-unreviewed,
@@ -730,7 +730,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 			if ( count( $opts ) > 0 ) {
 				// Put the "more filters" option at the beginning of the opts array
-				$opts = array( $this->msg( 'articlefeedbackv5-special-filter-select-more' )->text() => '' ) + $opts;
+				$opts = [ $this->msg( 'articlefeedbackv5-special-filter-select-more' )->text() => '' ] + $opts;
 
 				$filterSelect = new XmlSelect( false, 'articleFeedbackv5-filter-select' );
 				$filterSelect->setDefault( $this->startingFilter );
@@ -742,11 +742,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		return
 			Html::rawElement(
 				'div',
-				array( 'id' => 'articleFeedbackv5-filter' ),
+				[ 'id' => 'articleFeedbackv5-filter' ],
 				implode( ' ', $filterLabels ) .
 				Html::rawElement(
 					'div',
-					array( 'id' => 'articleFeedbackv5-select-wrapper' ),
+					[ 'id' => 'articleFeedbackv5-select-wrapper' ],
 					$filterSelectHtml
 				)
 			);
@@ -765,7 +765,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// articlefeedbackv5-special-sort-helpful-desc, articlefeedbackv5-special-sort-helpful-asc,
 		// articlefeedbackv5-special-sort-age-desc, articlefeedbackv5-special-sort-age-asc,
 		// articlefeedbackv5-special-sort-label
-		$opts = array();
+		$opts = [];
 		foreach ( $this->sorts as $i => $sort ) {
 			if ( $i % 2 == 0 && $i > 0 ) {
 				// Add dividers between each pair (append trailing spaces so
@@ -782,15 +782,15 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		return
 			Html::rawElement(
 				'div',
-				array( 'id' => 'articleFeedbackv5-sort' ),
+				[ 'id' => 'articleFeedbackv5-sort' ],
 				Html::rawElement(
 					'span',
-					array( 'class' => 'articleFeedbackv5-sort-label' ),
+					[ 'class' => 'articleFeedbackv5-sort-label' ],
 					$this->msg( 'articlefeedbackv5-special-sort-label' )->escaped()
 				) .
 				Html::rawElement(
 					'div',
-					array( 'id' => 'articleFeedbackv5-sort-wrapper' ),
+					[ 'id' => 'articleFeedbackv5-sort-wrapper' ],
 					$sortSelect->getHTML()
 				)
 			);
