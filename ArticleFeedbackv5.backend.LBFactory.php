@@ -10,7 +10,6 @@
  * @version    $Id$
  */
 
-use MediaWiki\MediaWikiServices;
 
 class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	/**
