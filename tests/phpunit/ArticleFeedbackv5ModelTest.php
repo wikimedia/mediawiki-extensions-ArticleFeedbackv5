@@ -102,7 +102,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 		$probability = 1 / 2;
 
 		for ( $i = 0; $i < $size; $i++ ) {
-			$sample = clone( $this->sample );
+			$sample = clone $this->sample;
 
 			// half of them will get a comment, half of them will be empty (so they go to separate lists)
 			$sample->aft_comment = $i % ( 1 / $probability ) ? '' : 'Test feedback entry #' . ( $i + 1 );
@@ -134,7 +134,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 		$probability = 1 / 2;
 
 		for ( $i = 0; $i < $size; $i++ ) {
-			$sample = clone( $this->sample );
+			$sample = clone $this->sample;
 
 			// half of them will get a comment, half of them will be empty (so they go to separate lists)
 			$sample->aft_comment = $i % ( 1 / $probability ) ? 'Test feedback entry #' . ( $i + 1 ) : '';

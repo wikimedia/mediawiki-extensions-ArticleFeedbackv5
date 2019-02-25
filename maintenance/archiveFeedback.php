@@ -7,9 +7,9 @@
  * @version    $Id$
  */
 
-require_once ( getenv( 'MW_INSTALL_PATH' ) !== false
+require_once getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
-	: __DIR__ . '/../../../maintenance/Maintenance.php' );
+	: __DIR__ . '/../../../maintenance/Maintenance.php';
 
 use MediaWiki\MediaWikiServices;
 
@@ -124,4 +124,4 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 }
 
 $maintClass = "ArticleFeedbackv5_ArchiveFeedback";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

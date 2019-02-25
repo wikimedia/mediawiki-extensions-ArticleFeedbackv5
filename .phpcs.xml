@@ -12,7 +12,6 @@
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingReturn" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.ParamNameNoMatch" />
 		<exclude name="MediaWiki.Commenting.MissingCovers.MissingCovers" />
-		<exclude name="MediaWiki.ExtraCharacters.ParenthesesAroundKeyword.ParenthesesAroundKeywords" />
 		<exclude name="MediaWiki.Files.ClassMatchesFilename.NotMatch" />
 		<exclude name="MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName" />
 		<exclude name="MediaWiki.Usage.InArrayUsage.Found" />
