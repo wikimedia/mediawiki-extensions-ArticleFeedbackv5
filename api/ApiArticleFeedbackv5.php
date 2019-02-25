@@ -299,14 +299,18 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 *
 	 * @return bool
 	 */
-	public function mustBePosted() { return true; }
+	public function mustBePosted() {
+		return true;
+	}
 
 	/**
 	 * Returns whether this is a write call
 	 *
 	 * @return bool
 	 */
-	public function isWriteMode() { return true; }
+	public function isWriteMode() {
+		return true;
+	}
 
 	/**
 	 * Gets a description
