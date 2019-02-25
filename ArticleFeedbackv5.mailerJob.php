@@ -59,7 +59,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 		$missing = array_diff( $this->requiredParams, array_keys( $params ) );
 		if ( $missing ) {
 			return false;
-	    }
+		}
 
 		// get our addresses
 		$to = new MailAddress( $wgArticleFeedbackv5OversightEmails, $wgArticleFeedbackv5OversightEmailName );
