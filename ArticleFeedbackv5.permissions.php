@@ -175,7 +175,7 @@ class ArticleFeedbackv5Permissions {
 	 * @param int $articleId
 	 * @param string $permission
 	 * @param string $expiry
-	 * @param string[optional] $reason
+	 * @param string $reason
 	 * @return bool
 	 */
 	public static function setRestriction( $articleId, $permission, $expiry, $reason = '' ) {

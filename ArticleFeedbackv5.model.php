@@ -290,10 +290,10 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * Get watchlist list, based on user ID rather than page id ($shard)
 	 *
 	 * @param string $name The list name (see static::$lists)
-	 * @param User[optional] $user The user who'se watchlisted feedback to fetch
-	 * @param int[optional] $offset The offset to start from
-	 * @param string[optional] $sort Sort to apply to list
-	 * @param string[optional] $order Sort the list ASC or DESC
+	 * @param User|null $user The user who'se watchlisted feedback to fetch
+	 * @param int|null $offset The offset to start from
+	 * @param string $sort Sort to apply to list
+	 * @param string $order Sort the list ASC or DESC
 	 * @return DataModelList
 	 */
 	public static function getWatchlistList( $name, User $user = null, $offset = null, $sort = 'relevance', $order = 'ASC' ) {
@@ -356,9 +356,9 @@ class ArticleFeedbackv5Model extends DataModel {
 	 *
 	 * @param string $name The list name (see static::$lists)
 	 * @param array $shard Get only data for certain shard values
-	 * @param int[optional] $offset The offset to start from
-	 * @param string[optional] $sort Sort to apply to list
-	 * @param string[optional] $order Sort the list ASC or DESC
+	 * @param int|null $offset The offset to start from
+	 * @param string $sort Sort to apply to list
+	 * @param string $order Sort the list ASC or DESC
 	 * @return DataModelList
 	 */
 	protected static function getListArray( $name, array $shard, $offset = null, $sort = 'relevance', $order = 'ASC' ) {
@@ -444,10 +444,10 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * Fetch a list of entries
 	 *
 	 * @param string $name The list name (see static::$lists)
-	 * @param mixed[optional] $shard Get only data for a certain shard value
-	 * @param int[optional] $offset The offset to start from
-	 * @param string[optional] $sort Sort to apply to list
-	 * @param string[optional] $order Sort the list ASC or DESC
+	 * @param mixed|null $shard Get only data for a certain shard value
+	 * @param int|null $offset The offset to start from
+	 * @param string $sort Sort to apply to list
+	 * @param string $order Sort the list ASC or DESC
 	 * @return DataModelList
 	 */
 	public static function getList( $name, $shard = null, $offset = null, $sort = 'relevance', $order = 'ASC' ) {
@@ -468,9 +468,9 @@ class ArticleFeedbackv5Model extends DataModel {
 	/**
 	 * Insert entry into the DB (& cache)
 	 *
-	 * @param bool[optional] $validate True if data should be validated
+	 * @param bool $validate True if data should be validated
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function insert( $validate = true ) {
 		// if no creation timestamp is entered yet, fill it out
@@ -490,9 +490,9 @@ class ArticleFeedbackv5Model extends DataModel {
 	/**
 	 * Update entry in the DB (& cache)
 	 *
-	 * @param bool[optional] $validate True if data should be validated
+	 * @param bool $validate True if data should be validated
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function update( $validate = true ) {
 		$this->aft_net_helpful = $this->aft_helpful - $this->aft_unhelpful;

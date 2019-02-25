@@ -42,7 +42,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 
 	/**
 	 * Run the job
-	 * @return boolean success
+	 * @return bool success
 	 */
 	function run() {
 		global $wgArticleFeedbackv5OversightEmails, $wgArticleFeedbackv5OversightEmailName;
@@ -85,12 +85,12 @@ class ArticleFeedbackv5MailerJob extends Job {
 	 * Generate the "an oversight request has been made" email for sending
 	 * to the mailing list
 	 *
-	 * @param string $requestorName      user name
-	 * @param string $requestorUrl       link to user page
-	 * @param string $pageName           page title
-	 * @param string $pageUrl            page url
-	 * @param string $feedbackPermalink  permalink url to feedback
-	 * @param string[optional] $notes    additional text
+	 * @param string $requestorName user name
+	 * @param string $requestorUrl link to user page
+	 * @param string $pageName page title
+	 * @param string $pageUrl page url
+	 * @param string $feedbackPermalink permalink url to feedback
+	 * @param string $notes additional text
 	 */
 	protected function composeMail( $requestorName, $requestorUrl, $pageName, $pageUrl, $feedbackPermalink, $notes = '' ) {
 		global $wgArticleFeedbackv5OversightEmailHelp;

@@ -110,7 +110,7 @@ abstract class DataModel {
 	 * Validate the entry's data.
 	 *
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function validate() {
 		/*
@@ -234,12 +234,12 @@ abstract class DataModel {
 	 * enable us to do fewer queries when that data is finally requested.
 	 *
 	 * @param string $name The list name (see static::$lists)
-	 * @param mixed[optional] $shard Get only data for a certain shard value
-	 * @param string[optional] $offset The offset to start from
-	 * @param string[optional] $sort Sort to apply to list
-	 * @param string[optional] $order Sort the list ASC or DESC
+	 * @param mixed|null $shard Get only data for a certain shard value
+	 * @param string|null $offset The offset to start from
+	 * @param string|null $sort Sort to apply to list
+	 * @param string $order Sort the list ASC or DESC
 	 * @return DataModelList
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public static function getList( $name, $shard = null, $offset = null, $sort = null, $order = 'ASC' ) {
 		$order = strtoupper( $order );
@@ -350,7 +350,7 @@ abstract class DataModel {
 	 * - when fetching from db, it requires an aggregate function, so not so cheap
 	 *
 	 * @param string $name The list name (see static::$lists)
-	 * @param mixed[optional] $shard Get only data for a certain shard value
+	 * @param mixed|null $shard Get only data for a certain shard value
 	 * @return int
 	 */
 	public static function getCount( $name, $shard = null ) {
@@ -375,9 +375,9 @@ abstract class DataModel {
 	/**
 	 * Insert entry.
 	 *
-	 * @param bool[optional] $validate True if data should be validated
+	 * @param bool $validate True if data should be validated
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function insert( $validate = true ) {
 		// claim unique id for this entry
@@ -405,9 +405,9 @@ abstract class DataModel {
 	/**
 	 * Update entry.
 	 *
-	 * @param bool[optional] $validate True if data should be validated
+	 * @param bool $validate True if data should be validated
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function update( $validate = true ) {
 		if ( $this->{static::getIdColumn()} === null ) {
@@ -438,7 +438,7 @@ abstract class DataModel {
 	 * Delete entry.
 	 *
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function delete() {
 		if ( $this->{static::getIdColumn()} === null ) {
@@ -464,7 +464,7 @@ abstract class DataModel {
 	 * Get name of table to hold the data.
 	 *
 	 * @return string
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public static function getTable() {
 		if ( !static::$table ) {
@@ -478,7 +478,7 @@ abstract class DataModel {
 	 * Get name of column to act as unique id.
 	 *
 	 * @return string
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public static function getIdColumn() {
 		if ( !static::$idColumn ) {
@@ -494,7 +494,7 @@ abstract class DataModel {
 	 * Get name of column to shard data over.
 	 *
 	 * @return string
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public static function getShardColumn () {
 		if ( !static::$shardColumn ) {
@@ -703,7 +703,7 @@ abstract class DataModel {
 	/**
 	 * Update an entry's presence & sort values in all defined lists.
 	 *
-	 * @param stdClass[optional] $old The pre-save conditions' results
+	 * @param stdClass|null $old The pre-save conditions' results
 	 * @return DataModel
 	 */
 	public function updateLists( $old = null ) {

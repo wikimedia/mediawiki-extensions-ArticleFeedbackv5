@@ -87,8 +87,8 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	/**
 	 * Query to fetch entries from DB.
 	 *
-	 * @param mixed $id The id(s) to fetch
-	 * @param mixed $shard The corresponding shard value(s)
+	 * @param mixed|null $id The id(s) to fetch
+	 * @param mixed|null $shard The corresponding shard value(s)
 	 * @return ResultWrapper
 	 */
 	public function get( $id = null, $shard = null ) {
@@ -166,10 +166,10 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * Fetch a list.
 	 *
 	 * @param string $name The list name (see <datamodel>::$lists)
-	 * @param mixed $shard Get only data for a certain shard value
-	 * @param int $offset The offset to start fetching entries from
+	 * @param mixed|null $shard Get only data for a certain shard value
+	 * @param int|null $offset The offset to start fetching entries from
 	 * @param int $limit The amount of entries to fetch
-	 * @param string $sort Sort to apply to list
+	 * @param string|null $sort Sort to apply to list
 	 * @param string $order Sort the list ASC or DESC
 	 * @return ResultWrapper
 	 */
@@ -244,7 +244,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * Get the amount of entries in a certain list.
 	 *
 	 * @param string $name The list name (see <datamodel>::$lists)
-	 * @param mixed $shard Get only data for a certain shard value
+	 * @param mixed|null $shard Get only data for a certain shard value
 	 * @return array
 	 */
 	public function getCount( $name, $shard = null ) {
