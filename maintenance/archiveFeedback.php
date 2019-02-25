@@ -120,7 +120,6 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 
 			$this->output( "Done. Marked " . $this->completeCount . " entries as archived.\n" );
 		}
-
 	}
 }
 
