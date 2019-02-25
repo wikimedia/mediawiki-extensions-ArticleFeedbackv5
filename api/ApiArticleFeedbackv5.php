@@ -21,7 +21,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	private $autoFlag = [];
 
 	// filters incremented on creation
-	protected $filters = [ 'visible' => 1, 'notdeleted' => 1, 'all' => 1];
+	protected $filters = [ 'visible' => 1, 'notdeleted' => 1, 'all' => 1 ];
 
 	/**
 	 * Constructor
@@ -157,7 +157,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				[]
 			);
 		} catch ( MWException $e ) {
-//			$this->dieUsage( $e->getMessage(), 'inserterror' ); // easier when debugging: show exact exception message
+// $this->dieUsage( $e->getMessage(), 'inserterror' ); // easier when debugging: show exact exception message
 			$this->dieUsage( $this->msg( 'articlefeedbackv5-error-submit' ), 'inserterror' );
 		}
 

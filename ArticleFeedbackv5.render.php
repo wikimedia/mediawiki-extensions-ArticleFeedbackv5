@@ -64,7 +64,7 @@ class ArticleFeedbackv5Render {
 
 		try {
 			$record->validate();
-		} catch( Exception $e ) {
+		} catch ( Exception $e ) {
 			return '';
 		}
 
@@ -839,16 +839,13 @@ class ArticleFeedbackv5Render {
 			if ( $last ) {
 				$tools = '';
 
-
 				// undo-link
 				$tools .= $this->buildToolboxLink( $record, "un$last->log_action" );
-
 
 				// if feedback is featured, it should still be resolvable in 1 click
 				if ( $record->isFeatured() && !$record->isResolved() ) {
 					$tools .= $this->buildToolboxLink( $record, 'resolve' );
 				}
-
 
 				// build discussion tools
 				$discussType = '';
@@ -957,7 +954,6 @@ class ArticleFeedbackv5Render {
 					);
 				}
 
-
 				// hide (monitors & oversighters), request (monitors), oversight & decline (oversighters)
 				if ( $record->isInappropriate() || $record->isHidden() || $record->isOversighted() ) {
 					if ( $this->isAllowed( 'aft-monitor' ) ) {
@@ -1019,7 +1015,6 @@ class ArticleFeedbackv5Render {
 						wfMessage( 'articlefeedbackv5-form-note-added' )->parse()
 					);
 				}
-
 
 				$toolbox .=
 					// performer/action info
@@ -1280,7 +1275,7 @@ class ArticleFeedbackv5Render {
 				Html::rawElement(
 					'p',
 					[ 'class' => 'articleFeedbackv5-feedback-permalink-activity-none' ],
-					wfMessage( 'articlefeedbackv5-permalink-activity-none')->escaped()
+					wfMessage( 'articlefeedbackv5-permalink-activity-none' )->escaped()
 				);
 		}
 
@@ -1340,27 +1335,27 @@ class ArticleFeedbackv5Render {
 		$class .= ( $ownFeedback ? " articleFeedbackv5-$action-own-link" : '' );
 
 		// Give grep a chance to find the usages:
-		//   articlefeedbackv5-form-tooltip-note, articlefeedbackv5-form-tooltip-feature,
-		//   articlefeedbackv5-form-tooltip-unfeature, articlefeedbackv5-form-tooltip-resolve,
-		//   articlefeedbackv5-form-tooltip-unresolve, articlefeedbackv5-form-tooltip-noaction,
-		//   articlefeedbackv5-form-tooltip-unnoaction, articlefeedbackv5-form-tooltip-inappropriate,
-		//   articlefeedbackv5-form-tooltip-uninappropriate, articlefeedbackv5-form-tooltip-hide,
-		//   articlefeedbackv5-form-tooltip-unhide, articlefeedbackv5-form-tooltip-hide-own,
-		//   articlefeedbackv5-form-tooltip-unhide-own, articlefeedbackv5-form-tooltip-archive,
-		//   articlefeedbackv5-form-tooltip-unarchive, articlefeedbackv5-form-tooltip-flag,
-		//   articlefeedbackv5-form-tooltip-oversight, articlefeedbackv5-form-tooltip-unoversight,
-		//   articlefeedbackv5-form-tooltip-request, articlefeedbackv5-form-tooltip-unrequest,
-		//   articlefeedbackv5-form-tooltip-decline, articlefeedbackv5-form-tooltip-discuss-talk,
-		//   articlefeedbackv5-form-tooltip-discuss-user
+		// articlefeedbackv5-form-tooltip-note, articlefeedbackv5-form-tooltip-feature,
+		// articlefeedbackv5-form-tooltip-unfeature, articlefeedbackv5-form-tooltip-resolve,
+		// articlefeedbackv5-form-tooltip-unresolve, articlefeedbackv5-form-tooltip-noaction,
+		// articlefeedbackv5-form-tooltip-unnoaction, articlefeedbackv5-form-tooltip-inappropriate,
+		// articlefeedbackv5-form-tooltip-uninappropriate, articlefeedbackv5-form-tooltip-hide,
+		// articlefeedbackv5-form-tooltip-unhide, articlefeedbackv5-form-tooltip-hide-own,
+		// articlefeedbackv5-form-tooltip-unhide-own, articlefeedbackv5-form-tooltip-archive,
+		// articlefeedbackv5-form-tooltip-unarchive, articlefeedbackv5-form-tooltip-flag,
+		// articlefeedbackv5-form-tooltip-oversight, articlefeedbackv5-form-tooltip-unoversight,
+		// articlefeedbackv5-form-tooltip-request, articlefeedbackv5-form-tooltip-unrequest,
+		// articlefeedbackv5-form-tooltip-decline, articlefeedbackv5-form-tooltip-discuss-talk,
+		// articlefeedbackv5-form-tooltip-discuss-user
 		// Give grep a chance to find the usages:
-		//   articlefeedbackv5-form-note, articlefeedbackv5-form-feature, articlefeedbackv5-form-unfeature,
-		//   articlefeedbackv5-form-resolve, articlefeedbackv5-form-unresolve, articlefeedbackv5-form-noaction,
-		//   articlefeedbackv5-form-unnoaction, articlefeedbackv5-form-inappropriate, articlefeedbackv5-form-uninappropriate,
-		//   articlefeedbackv5-form-hide, articlefeedbackv5-form-unhide, articlefeedbackv5-form-hide-own,
-		//   articlefeedbackv5-form-unhide-own, articlefeedbackv5-form-archive, articlefeedbackv5-form-unarchive,
-		//   articlefeedbackv5-form-flag, articlefeedbackv5-form-oversight, articlefeedbackv5-form-unoversight,
-		//   articlefeedbackv5-form-request, articlefeedbackv5-form-unrequest, articlefeedbackv5-form-decline,
-		//   articlefeedbackv5-form-discuss-talk, articlefeedbackv5-form-discuss-user
+		// articlefeedbackv5-form-note, articlefeedbackv5-form-feature, articlefeedbackv5-form-unfeature,
+		// articlefeedbackv5-form-resolve, articlefeedbackv5-form-unresolve, articlefeedbackv5-form-noaction,
+		// articlefeedbackv5-form-unnoaction, articlefeedbackv5-form-inappropriate, articlefeedbackv5-form-uninappropriate,
+		// articlefeedbackv5-form-hide, articlefeedbackv5-form-unhide, articlefeedbackv5-form-hide-own,
+		// articlefeedbackv5-form-unhide-own, articlefeedbackv5-form-archive, articlefeedbackv5-form-unarchive,
+		// articlefeedbackv5-form-flag, articlefeedbackv5-form-oversight, articlefeedbackv5-form-unoversight,
+		// articlefeedbackv5-form-request, articlefeedbackv5-form-unrequest, articlefeedbackv5-form-decline,
+		// articlefeedbackv5-form-discuss-talk, articlefeedbackv5-form-discuss-user
 		return Html::rawElement(
 			'li',
 			[],
@@ -1384,7 +1379,7 @@ class ArticleFeedbackv5Render {
 	 */
 	public function getLastActivity( ArticleFeedbackv5Model $record ) {
 		global $wgUser;
-		foreach( ArticleFeedbackv5Activity::getList( $record, $wgUser, 1 ) as $last ) {
+		foreach ( ArticleFeedbackv5Activity::getList( $record, $wgUser, 1 ) as $last ) {
 			return $last;
 		}
 		return false;

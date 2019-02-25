@@ -622,7 +622,7 @@ class ArticleFeedbackv5Hooks {
 			'size' => count( $levels )
 		] + $disabledAttrib;
 		$permissionsDropdown = Xml::openElement( 'select', $attribs );
-		foreach( $levels as $key => $label ) {
+		foreach ( $levels as $key => $label ) {
 			// possible labels: protect-level-aft-(reader|member|editor|administrator|noone)
 			$permissionsDropdown .= Xml::option( wfMessage( $label )->escaped(), $key, $key == $existingRestriction->pr_level );
 		}
@@ -637,7 +637,7 @@ class ArticleFeedbackv5Hooks {
 			$mExpirySelection
 		) = ArticleFeedbackv5Permissions::getExpiry( $articleId );
 
-		if( $showProtectOptions ) {
+		if ( $showProtectOptions ) {
 			$expiryFormOptions = '';
 
 			// add option to re-use existing expiry
@@ -655,7 +655,7 @@ class ArticleFeedbackv5Hooks {
 
 			// add regular expiry options
 			$expiryFormOptions .= Xml::option( wfMessage( 'protect-othertime-op' )->escaped(), 'othertime' );
-			foreach( explode( ',', $scExpiryOptions ) as $option ) {
+			foreach ( explode( ',', $scExpiryOptions ) as $option ) {
 				if ( strpos( $option, ':' ) === false ) {
 					$show = $value = $option;
 				} else {

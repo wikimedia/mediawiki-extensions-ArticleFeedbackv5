@@ -235,7 +235,7 @@ class ArticleFeedbackv5Model extends DataModel {
 			 * @use string $class The called class
 			 * @return int
 			 */
-			$callback = function( BagOStuff $cache, $key, $existingValue ) use ( $shard, $difference, $class ) {
+			$callback = function ( BagOStuff $cache, $key, $existingValue ) use ( $shard, $difference, $class ) {
 				// if nothing is cached, leave be; cache will rebuild when it's requested
 				if ( $existingValue === false ) {
 					return false;
@@ -332,7 +332,7 @@ class ArticleFeedbackv5Model extends DataModel {
 		);
 
 		$shards = [];
-		foreach( $articles as $article ) {
+		foreach ( $articles as $article ) {
 			$shards[] = $article->page_id;
 		}
 

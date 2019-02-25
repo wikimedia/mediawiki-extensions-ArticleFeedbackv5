@@ -282,7 +282,7 @@ class ArticleFeedbackv5Activity {
 		}
 
 		if ( !$wgUser->isBlocked() ) {
-			foreach( $wgArticleFeedbackv5Permissions as $permission ) {
+			foreach ( $wgArticleFeedbackv5Permissions as $permission ) {
 				if ( $user->isAllowed( $permission ) ) {
 					// get count for this specific permission level from cache
 					$key = $wgMemc->makeKey( 'articlefeedbackv5', 'getActivityCount', $permission, $feedback->aft_id );
