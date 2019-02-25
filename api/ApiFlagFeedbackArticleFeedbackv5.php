@@ -160,8 +160,12 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		];
 	}
 
-	public function isWriteMode() { return true; }
+	public function isWriteMode() {
+		return true;
+	}
 
-	public function mustBePosted() { return true; }
+	public function mustBePosted() {
+		return true;
+	}
 
 }
