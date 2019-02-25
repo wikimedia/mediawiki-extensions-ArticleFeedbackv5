@@ -67,26 +67,26 @@ class ArticleFeedbackv5Hooks {
 	public static function loadExtensionSchemaUpdates( $updater = null ) {
 		$updater->addExtensionTable(
 			'aft_feedback',
-			dirname( __FILE__ ) . '/sql/ArticleFeedbackv5.sql'
+			__DIR__ . '/sql/ArticleFeedbackv5.sql'
 		);
 
 		// old schema support
 		if ( $updater->getDB()->tableExists( 'aft_article_feedback' ) ) {
 			$updater->addExtensionTable(
 				'aft_article_answer_text',
-				dirname( __FILE__ ) . '/sql/offload_large_feedback.sql'
+				__DIR__ . '/sql/offload_large_feedback.sql'
 			);
 
 			$updater->addExtensionIndex(
 				'aft_article_feedback',
 				'af_user_id_user_ip_created',
-				dirname( __FILE__ ) . '/sql/index_user_data.sql'
+				__DIR__ . '/sql/index_user_data.sql'
 			);
 
 			$updater->modifyField(
 				'aft_article_feedback',
 				'af_user_ip',
-				dirname( __FILE__ ) . '/sql/userip_length.sql',
+				__DIR__ . '/sql/userip_length.sql',
 				true
 			);
 
@@ -105,13 +105,13 @@ class ArticleFeedbackv5Hooks {
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_noaction',
-			dirname( __FILE__ ) . '/sql/noaction.sql'
+			__DIR__ . '/sql/noaction.sql'
 		);
 
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_archive',
-			dirname( __FILE__ ) . '/sql/archive.sql'
+			__DIR__ . '/sql/archive.sql'
 		);
 		// fix archive dates for existing feedback
 		require_once __DIR__.'/maintenance/setArchiveDate.php';
@@ -120,31 +120,31 @@ class ArticleFeedbackv5Hooks {
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_inappropriate',
-			dirname( __FILE__ ) . '/sql/inappropriate.sql'
+			__DIR__ . '/sql/inappropriate.sql'
 		);
 
 		$updater->addExtensionIndex(
 			'aft_feedback',
 			'contribs',
-			dirname( __FILE__ ) . '/sql/index_contribs.sql'
+			__DIR__ . '/sql/index_contribs.sql'
 		);
 
 		$updater->addExtensionIndex(
 			'aft_feedback',
 			'relevance_page',
-			dirname( __FILE__ ) . '/sql/index_page.sql'
+			__DIR__ . '/sql/index_page.sql'
 		);
 
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_discuss',
-			dirname( __FILE__ ) . '/sql/discuss.sql'
+			__DIR__ . '/sql/discuss.sql'
 		);
 
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_claimed_user',
-			dirname( __FILE__ ) . '/sql/claimed_user.sql'
+			__DIR__ . '/sql/claimed_user.sql'
 		);
 
 		return true;
