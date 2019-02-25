@@ -63,7 +63,7 @@ class ArticleFeedbackv5Utils {
 		if ( $db === DB_MASTER ) {
 			// mark that we're writing data
 			static::$written[$wiki] = true;
-		} elseif ( isset(static::$written[$wiki]) && static::$written[$wiki] ) {
+		} elseif ( isset( static::$written[$wiki] ) && static::$written[$wiki] ) {
 			if ( $db === DB_REPLICA ) {
 				/*
 				 * Let's keep querying master to make sure we have up-to-date

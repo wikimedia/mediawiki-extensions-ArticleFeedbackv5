@@ -340,7 +340,7 @@ class ArticleFeedbackv5Flagging {
 	 */
 	public function resolve( $notes, $toggle ) {
 		if (
-//			$this->feedback->isFeatured() || // can go straight from featured to resolved
+			// $this->feedback->isFeatured() || // can go straight from featured to resolved
 			$this->feedback->isResolved() ||
 			$this->feedback->isNonActionable() ||
 			$this->feedback->isInappropriate() ||

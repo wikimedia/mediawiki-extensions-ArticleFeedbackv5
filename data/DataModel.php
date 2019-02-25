@@ -60,7 +60,7 @@ abstract class DataModel {
 		'all' => array(),
 		// sample list that would include no entries (condition will never evaluate to true: id won't be < 0)
 		'none' => array( 'id < 0' ),
-*/	];
+	*/ ];
 
 	/**
 	 * Available sorts to order the data
@@ -77,7 +77,7 @@ abstract class DataModel {
 		// this would not result in entries in insertion order; the id generated
 		// by datamodel is a rather random hash
 		'id' => 'id',
-*/	];
+	*/ ];
 
 	/**
 	 * Pagination limit: how many entries should be fetched at once for lists.
@@ -496,7 +496,7 @@ abstract class DataModel {
 	 * @return string
 	 * @throws MWException
 	 */
-	public static function getShardColumn () {
+	public static function getShardColumn() {
 		if ( !static::$shardColumn ) {
 			throw new MWException( 'No shard column has been set in class ' . get_called_class() );
 		} elseif ( !property_exists( get_called_class(), static::$shardColumn ) ) {
@@ -767,7 +767,7 @@ abstract class DataModel {
 			 * @use string $class The called class
 			 * @return int
 			 */
-			$callback = function( BagOStuff $cache, $key, $existingValue ) use ( $name, $shard, $difference, $class ) {
+			$callback = function ( BagOStuff $cache, $key, $existingValue ) use ( $name, $shard, $difference, $class ) {
 				// if nothing is cached, leave be; cache will rebuild when it's requested
 				if ( $existingValue === false ) {
 					return false;

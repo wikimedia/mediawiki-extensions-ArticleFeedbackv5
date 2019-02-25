@@ -135,7 +135,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		// build where condition
 		$where = [];
 		$where['aft_rating'] = 1;
-		if ( $pageId !== null) {
+		if ( $pageId !== null ) {
 			$where['aft_page'] = $pageId;
 		}
 
