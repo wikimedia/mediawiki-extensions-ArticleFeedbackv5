@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc348251_a1738eb7",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-02-28T14:18:57Z",
+      "side": 1,
+      "message": "This will pass the resulting HTML string to dieWithError(). But it expects a message key, or some kind of message specifier.\n\nI think the $this-\u003emsg()-\u003eescaped() can be removed. Only the message key is needed.",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 62
+      },
+      "revId": "9babc8282004c20acc3c13fb274f332fb309b8fb",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17efbb66_04253149",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-02-28T14:18:57Z",
+      "side": 1,
+      "message": "dieWithError() expects a message key here, or some other kind of message specifier. But this is a raw English text string. You need to wrap it in a `new RawMessage( \u0027…\u0027 )`.",
+      "range": {
+        "startLine": 118,
+        "startChar": 25,
+        "endLine": 118,
+        "endChar": 70
+      },
+      "revId": "9babc8282004c20acc3c13fb274f332fb309b8fb",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
