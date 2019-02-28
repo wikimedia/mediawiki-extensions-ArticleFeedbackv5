@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b8e2897_5bb72c68",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-02-28T15:08:57Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it\u0027s a good idea to duplicate the parameter here. The first is a message key, the second an error code. That\u0027s fine, but the old code was not using an error code. It was null there.",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "42f3c2e8db367f457036572e8091e1cbe9306928",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b93f3925_19d6e396",
+        "filename": "api/ApiAddFlagNoteArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-02-28T15:08:57Z",
+      "side": 1,
+      "message": "Sending an HTTP code of 0 sounds a bit odd. I guess the old code used 0 just as a placeholder to be able to have the 4th parameter. In the new code the 0 can be removed.",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 5
+      },
+      "revId": "42f3c2e8db367f457036572e8091e1cbe9306928",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0df1a51_8840235f",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-02-28T15:08:57Z",
+      "side": 1,
+      "message": "That works, but is a little odd I find. Suggestion:\n\n$this-\u003edieWithError(\n  [\n    \u0027articlefeedbackv5-error-abuse\u0027,\n    $this-\u003emsg( \u0027articlefeedbackv5-error-abuse-link\u0027 )-\u003einContentLanguage()-\u003eplain(),\n    count( $messages ),\n    $this-\u003egetLanguage()-\u003elistToText( $messages )\n  ],\n  \u0027afreject\u0027\n);\n\nAn array is a valid message specifier, I believe. The first element is the message key, all other elements are parameters for the message.",
+      "range": {
+        "startLine": 141,
+        "startChar": 6,
+        "endLine": 148,
+        "endChar": 7
+      },
+      "revId": "42f3c2e8db367f457036572e8091e1cbe9306928",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "946b28c1_057711a7",
+        "filename": "api/ApiFlagFeedbackArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-02-28T15:08:57Z",
+      "side": 1,
+      "message": "Can be replaced with:\n\n $flagger-\u003egetError()",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 64
+      },
+      "revId": "42f3c2e8db367f457036572e8091e1cbe9306928",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef3e418c_6b353d65",
+        "filename": "api/ApiFlagFeedbackArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-02-28T15:08:57Z",
+      "side": 1,
+      "message": "As before, I believe this 0 can be removed now.",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "42f3c2e8db367f457036572e8091e1cbe9306928",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c50d801_f51f548b",
+        "filename": "api/ApiGetCountArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-02-28T15:08:57Z",
+      "side": 1,
+      "message": "As before, why duplicate it?",
+      "range": {
+        "startLine": 34,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 54
+      },
+      "revId": "42f3c2e8db367f457036572e8091e1cbe9306928",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bb520b3_db5d30a9",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-02-28T15:08:57Z",
+      "side": 1,
+      "message": "As before.",
+      "range": {
+        "startLine": 58,
+        "startChar": 24,
+        "endLine": 58,
+        "endChar": 54
+      },
+      "revId": "42f3c2e8db367f457036572e8091e1cbe9306928",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ae997e6_79466df5",
+        "filename": "api/ApiViewFeedbackArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-02-28T15:08:57Z",
+      "side": 1,
+      "message": "As before.",
+      "range": {
+        "startLine": 49,
+        "startChar": 25,
+        "endLine": 49,
+        "endChar": 55
+      },
+      "revId": "42f3c2e8db367f457036572e8091e1cbe9306928",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
