@@ -35,7 +35,6 @@
 		<exclude name="MediaWiki.WhiteSpace.SpaceyParenthesis.SingleSpaceAfterOpenParenthesis" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceyParenthesis.SingleSpaceBeforeCloseParenthesis" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceyParenthesis.SpaceBeforeOpeningParenthesis" />
-		<exclude name="PSR2.Files.EndFileNewline.NoneFound" />
 		<exclude name="PSR2.Methods.FunctionClosingBrace.SpacingBeforeClose" />
 		<exclude name="Squiz.Classes.ValidClassName.NotCamelCaps" />
 		<exclude name="Squiz.Scope.MethodScope.Missing" />
