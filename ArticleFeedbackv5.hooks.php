@@ -205,10 +205,8 @@ class ArticleFeedbackv5Hooks {
 				// load module
 				$out->addJsConfigVars( 'aftv5Article', $article );
 				$out->addModules( 'ext.articleFeedbackv5.dashboard' );
-			}
-
-			// watchlist page
-			elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
+			} elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
+				// watchlist page
 				global $wgArticleFeedbackv5Watchlist;
 
 				if ( $wgArticleFeedbackv5Watchlist && $user->getId() ) {
