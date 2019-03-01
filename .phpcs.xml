@@ -21,7 +21,6 @@
 		<exclude name="MediaWiki.Commenting.FunctionComment.SpacingAfterReturnType" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.SpacingBeforeParamType" />
 		<exclude name="MediaWiki.Commenting.MissingCovers.MissingCovers" />
-		<exclude name="MediaWiki.ControlStructures.IfElseStructure.SpaceBeforeElse" />
 		<exclude name="MediaWiki.ExtraCharacters.ParenthesesAroundKeyword.ParenthesesAroundKeywords" />
 		<exclude name="MediaWiki.Files.ClassMatchesFilename.NotMatch" />
 		<exclude name="MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName" />
