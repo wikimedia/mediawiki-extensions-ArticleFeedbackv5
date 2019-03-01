@@ -305,7 +305,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				Html::openElement( 'div', [ 'id' => 'articleFeedbackv5-header-links' ] ) .
 					Html::element(
 						'a',
-						[ 'href' => $this->getHelpLink().'#Feedback_page' ],
+						[ 'href' => $this->getHelpLink() . '#Feedback_page' ],
 						$this->msg( 'articlefeedbackv5-whats-this' )->text()
 					) .
 					$pageLinks .

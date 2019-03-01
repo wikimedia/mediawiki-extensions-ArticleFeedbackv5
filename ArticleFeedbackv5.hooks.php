@@ -91,7 +91,7 @@ class ArticleFeedbackv5Hooks {
 			);
 
 			// move all data from old schema to new, sharded, schema
-			require_once __DIR__.'/maintenance/legacyToShard.php';
+			require_once __DIR__ . '/maintenance/legacyToShard.php';
 			$updater->addPostDatabaseUpdateMaintenance( 'ArticleFeedbackv5_LegacyToShard' );
 			/*
 			 * Because this update involves moving data around, the old schema
@@ -114,7 +114,7 @@ class ArticleFeedbackv5Hooks {
 			__DIR__ . '/sql/archive.sql'
 		);
 		// fix archive dates for existing feedback
-		require_once __DIR__.'/maintenance/setArchiveDate.php';
+		require_once __DIR__ . '/maintenance/setArchiveDate.php';
 		$updater->addPostDatabaseUpdateMaintenance( 'ArticleFeedbackv5_SetArchiveDate' );
 
 		$updater->addExtensionField(
@@ -695,7 +695,7 @@ class ArticleFeedbackv5Hooks {
 		// build output
 		$output .= "
 				<tr>
-					<td>".
+					<td>" .
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', null, wfMessage( 'articlefeedbackv5-protection-level' )->text() ) .
 			Xml::openElement( 'table', [ 'id' => 'mw-protect-table-aft' ] ) . "
