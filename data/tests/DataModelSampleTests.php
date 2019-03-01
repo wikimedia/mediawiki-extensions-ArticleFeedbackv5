@@ -92,7 +92,7 @@ class DataModelSampleTest extends MediaWikiTestCase {
 
 		for ( $i = 0; $i < $size; $i++ ) {
 			$sample = clone( $this->sample );
-			$sample->ds_title = 'Title #'. ( $i + 1 );
+			$sample->ds_title = 'Title #' . ( $i + 1 );
 			$sample->ds_visible = $i % ( 1 / $probability );
 			$sample->insert();
 		}
@@ -124,7 +124,7 @@ class DataModelSampleTest extends MediaWikiTestCase {
 
 		for ( $i = 0; $i < $size; $i++ ) {
 			$sample = clone( $this->sample );
-			$sample->ds_title = 'Title #'. ( $i + 1 );
+			$sample->ds_title = 'Title #' . ( $i + 1 );
 			$sample->ds_visible = $i % ( 1 / $probability );
 			$sample->insert();
 		}

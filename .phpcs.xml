@@ -39,7 +39,6 @@
 		<exclude name="PSR2.Methods.FunctionClosingBrace.SpacingBeforeClose" />
 		<exclude name="Squiz.Classes.ValidClassName.NotCamelCaps" />
 		<exclude name="Squiz.Scope.MethodScope.Missing" />
-		<exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound" />
 		<exclude name="Squiz.WhiteSpace.CastSpacing.ContainsWhiteSpace" />
 		<exclude name="Squiz.WhiteSpace.LanguageConstructSpacing.IncorrectSingle" />
 		<exclude name="Squiz.WhiteSpace.LogicalOperatorSpacing.TooMuchSpaceAfter" />
