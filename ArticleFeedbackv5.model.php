@@ -470,7 +470,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 *
 	 * @param bool[optional] $validate True if data should be validated
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function insert( $validate = true ) {
 		// if no creation timestamp is entered yet, fill it out
@@ -492,7 +492,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 *
 	 * @param bool[optional] $validate True if data should be validated
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function update( $validate = true ) {
 		$this->aft_net_helpful = $this->aft_helpful - $this->aft_unhelpful;

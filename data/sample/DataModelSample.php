@@ -81,7 +81,7 @@ class DataModelSample extends DataModel {
 	 * Validate the entry's data.
 	 *
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function validate() {
 		// make sure that, when set, the email address is valid
@@ -96,7 +96,7 @@ class DataModelSample extends DataModel {
 	 * Insert entry.
 	 *
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function insert() {
 		// if no creation timestamp is entered yet, fill it out
