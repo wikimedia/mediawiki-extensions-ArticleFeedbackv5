@@ -15,7 +15,6 @@
 		<exclude name="MediaWiki.Commenting.FunctionComment.NoOptionalKeyWord" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.NotShortBoolReturn" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.ParamNameNoMatch" />
-		<exclude name="MediaWiki.Commenting.FunctionComment.SingularThrow" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.SpacingAfterParamName" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.SpacingAfterParamType" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.SpacingAfterReturnType" />
