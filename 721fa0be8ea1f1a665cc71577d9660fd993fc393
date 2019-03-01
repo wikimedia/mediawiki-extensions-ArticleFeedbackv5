@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d8c4c6b_0059febe",
+        "filename": "ArticleFeedbackv5.flagging.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 161
+      },
+      "writtenOn": "2019-03-01T19:00:58Z",
+      "side": 1,
+      "message": "Add indent here (move tabs before //)",
+      "revId": "721fa0be8ea1f1a665cc71577d9660fd993fc393",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe81ae06_77e77de4",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 161
+      },
+      "writtenOn": "2019-03-01T19:00:58Z",
+      "side": 1,
+      "message": "use indent here",
+      "revId": "721fa0be8ea1f1a665cc71577d9660fd993fc393",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b31005a5_18065f7e",
+        "filename": "data/DataModel.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 161
+      },
+      "writtenOn": "2019-03-01T19:00:58Z",
+      "side": 1,
+      "message": "move the tab before */ to indent the comment",
+      "revId": "721fa0be8ea1f1a665cc71577d9660fd993fc393",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4783df2_7082057b",
+        "filename": "data/DataModel.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 161
+      },
+      "writtenOn": "2019-03-01T19:00:58Z",
+      "side": 1,
+      "message": "move the tab before */",
+      "revId": "721fa0be8ea1f1a665cc71577d9660fd993fc393",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
