@@ -110,7 +110,7 @@ abstract class DataModel {
 	 * Validate the entry's data.
 	 *
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function validate() {
 		/*
@@ -239,7 +239,7 @@ abstract class DataModel {
 	 * @param string[optional] $sort Sort to apply to list
 	 * @param string[optional] $order Sort the list ASC or DESC
 	 * @return DataModelList
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public static function getList( $name, $shard = null, $offset = null, $sort = null, $order = 'ASC' ) {
 		$order = strtoupper( $order );
@@ -377,7 +377,7 @@ abstract class DataModel {
 	 *
 	 * @param bool[optional] $validate True if data should be validated
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function insert( $validate = true ) {
 		// claim unique id for this entry
@@ -407,7 +407,7 @@ abstract class DataModel {
 	 *
 	 * @param bool[optional] $validate True if data should be validated
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function update( $validate = true ) {
 		if ( $this->{static::getIdColumn()} === null ) {
@@ -438,7 +438,7 @@ abstract class DataModel {
 	 * Delete entry.
 	 *
 	 * @return DataModel
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public function delete() {
 		if ( $this->{static::getIdColumn()} === null ) {
@@ -464,7 +464,7 @@ abstract class DataModel {
 	 * Get name of table to hold the data.
 	 *
 	 * @return string
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public static function getTable() {
 		if ( !static::$table ) {
@@ -478,7 +478,7 @@ abstract class DataModel {
 	 * Get name of column to act as unique id.
 	 *
 	 * @return string
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public static function getIdColumn() {
 		if ( !static::$idColumn ) {
@@ -494,7 +494,7 @@ abstract class DataModel {
 	 * Get name of column to shard data over.
 	 *
 	 * @return string
-	 * @throw MWException
+	 * @throws MWException
 	 */
 	public static function getShardColumn () {
 		if ( !static::$shardColumn ) {
