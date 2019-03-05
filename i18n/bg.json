@@ -5,7 +5,8 @@
 			"Spiritia",
 			"Turin",
 			"පසිඳු කාවින්ද",
-			"StanProg"
+			"StanProg",
+			"Ted Masters"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Благодарности!",
@@ -26,6 +27,9 @@
 	"articlefeedbackv5-cta5-button-text": "Показване на всички коментари",
 	"articlefeedbackv5-cta6-confirmation-title": "Имате нужда от помощ за редактиране на {{SITENAME}}?",
 	"articlefeedbackv5-overlay-close": "Затваряне",
+	"articlefeedbackv5-error": "Възникна грешка. Моля, опитайте пак по-късно.",
+	"articlefeedbackv5-error-blocked": "Блокираните потребители не могат да изпращат отзиви.",
+	"articlefeedbackv5-error-validation": "Грешка при потвърждаване.",
 	"articlefeedbackv5-error-unknown": "Неизвестна грешка.",
 	"protect-level-aft-reader": "Включване за всички потребители",
 	"protect-level-aft-member": "Включване само за влезли потребители",
