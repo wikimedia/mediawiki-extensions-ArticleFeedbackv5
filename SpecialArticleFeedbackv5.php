@@ -343,7 +343,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				$user
 			);
 
-			if ( count( $records ) > 0 ) {
+			if ( is_array( $records ) && count( $records ) > 0 ) {
 				$watchlistLink =
 					Html::rawElement(
 						'span',
