@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64944436_92e27f8a",
+        "filename": "extension.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 34
+      },
+      "writtenOn": "2019-03-06T18:03:16Z",
+      "side": 1,
+      "message": "Might want to use an extension-local name to avoid conflicts. E.g. ext.aft5.jquery-appear or some such.\n\nor, even just add the file to \"jquery.articleFeedbackv5\" as first entry in the scripts array. Given this isn\u0027t meant to be a public API to other extensions presumably, and won\u0027t be addModules() loaded directly.",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 17
+      },
+      "revId": "e42624ed48f0883f85dc5b886dfb42148a1f4e04",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
