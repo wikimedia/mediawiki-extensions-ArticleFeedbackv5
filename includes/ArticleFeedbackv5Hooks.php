@@ -67,31 +67,31 @@ class ArticleFeedbackv5Hooks {
 	public static function loadExtensionSchemaUpdates( $updater = null ) {
 		$updater->addExtensionTable(
 			'aft_feedback',
-			__DIR__ . '/sql/ArticleFeedbackv5.sql'
+			__DIR__ . '/../sql/ArticleFeedbackv5.sql'
 		);
 
 		// old schema support
 		if ( $updater->getDB()->tableExists( 'aft_article_feedback' ) ) {
 			$updater->addExtensionTable(
 				'aft_article_answer_text',
-				__DIR__ . '/sql/offload_large_feedback.sql'
+				__DIR__ . '/../sql/offload_large_feedback.sql'
 			);
 
 			$updater->addExtensionIndex(
 				'aft_article_feedback',
 				'af_user_id_user_ip_created',
-				__DIR__ . '/sql/index_user_data.sql'
+				__DIR__ . '/../sql/index_user_data.sql'
 			);
 
 			$updater->modifyField(
 				'aft_article_feedback',
 				'af_user_ip',
-				__DIR__ . '/sql/userip_length.sql',
+				__DIR__ . '/../sql/userip_length.sql',
 				true
 			);
 
 			// move all data from old schema to new, sharded, schema
-			require_once __DIR__ . '/maintenance/legacyToShard.php';
+			require_once __DIR__ . '/../maintenance/legacyToShard.php';
 			$updater->addPostDatabaseUpdateMaintenance( 'ArticleFeedbackv5_LegacyToShard' );
 			/*
 			 * Because this update involves moving data around, the old schema
@@ -105,46 +105,46 @@ class ArticleFeedbackv5Hooks {
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_noaction',
-			__DIR__ . '/sql/noaction.sql'
+			__DIR__ . '/../sql/noaction.sql'
 		);
 
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_archive',
-			__DIR__ . '/sql/archive.sql'
+			__DIR__ . '/../sql/archive.sql'
 		);
 		// fix archive dates for existing feedback
-		require_once __DIR__ . '/maintenance/setArchiveDate.php';
+		require_once __DIR__ . '/../maintenance/setArchiveDate.php';
 		$updater->addPostDatabaseUpdateMaintenance( 'ArticleFeedbackv5_SetArchiveDate' );
 
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_inappropriate',
-			__DIR__ . '/sql/inappropriate.sql'
+			__DIR__ . '/../sql/inappropriate.sql'
 		);
 
 		$updater->addExtensionIndex(
 			'aft_feedback',
 			'contribs',
-			__DIR__ . '/sql/index_contribs.sql'
+			__DIR__ . '/../sql/index_contribs.sql'
 		);
 
 		$updater->addExtensionIndex(
 			'aft_feedback',
 			'relevance_page',
-			__DIR__ . '/sql/index_page.sql'
+			__DIR__ . '/../sql/index_page.sql'
 		);
 
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_discuss',
-			__DIR__ . '/sql/discuss.sql'
+			__DIR__ . '/../sql/discuss.sql'
 		);
 
 		$updater->addExtensionField(
 			'aft_feedback',
 			'aft_claimed_user',
-			__DIR__ . '/sql/claimed_user.sql'
+			__DIR__ . '/../sql/claimed_user.sql'
 		);
 
 		return true;
