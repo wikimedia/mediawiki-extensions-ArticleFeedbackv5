@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb912b8b_bc3fa320",
+        "filename": "extension.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 161
+      },
+      "writtenOn": "2019-03-08T18:34:24Z",
+      "side": 1,
+      "message": "When moving files, than the new file name should match the class name to avoid another move later\nIt does not work when the file has more than one class, but for the other cases",
+      "range": {
+        "startLine": 85,
+        "startChar": 38,
+        "endLine": 85,
+        "endChar": 65
+      },
+      "revId": "9747ba4f8d2f8d8a59587e4dfe57fe5dd879026f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "977b18f7_d18be9ae",
+        "filename": "includes/ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 161
+      },
+      "writtenOn": "2019-03-08T18:34:24Z",
+      "side": 1,
+      "message": "this patch seems wrong now, because the file is one directory deeper",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "9747ba4f8d2f8d8a59587e4dfe57fe5dd879026f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
