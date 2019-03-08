@@ -10,7 +10,7 @@ class ArticleFeedbackv5Permissions {
 	/**
 	 * The AFT permission levels
 	 *
-	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
+	 * @see https://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
 	 * @var array
 	 */
 	public static $permissions = [

@@ -35,7 +35,7 @@ class ArticleFeedbackv5Hooks {
 
 		// Permissions: 6 levels of permissions are built into ArticleFeedbackv5: reader, member, editor,
 		// monitor, administrator, oversighter. The default (below-configured) permissions scheme can be seen at
-		// http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
+		// https://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
 		$wgArticleFeedbackv5DefaultPermissions = [
 			'aft-reader' => [ '*', 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ],
 			'aft-member' => [ 'user', 'confirmed', 'autoconfirmed', 'rollbacker', 'reviewer', 'sysop', 'oversight' ],
@@ -355,7 +355,7 @@ class ArticleFeedbackv5Hooks {
 	 * until the submission of a page (at which point we can check for these parameters
 	 * with a hook in PageContentSaveComplete)
 	 *
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/EditPage::showEditForm:fields
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/EditPage::showEditForm:fields
 	 * @param $editPage EditPage
 	 * @param $output OutputPage
 	 * @return bool
