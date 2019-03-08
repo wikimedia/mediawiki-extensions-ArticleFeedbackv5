@@ -101,7 +101,7 @@
 	 * particualar user.  It set at load time, but if all else fails, default to
 	 * Bucket 6 (no form).
 	 *
-	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_form_interface
+	 * @see https://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_form_interface
 	 */
 	$.articleFeedbackv5.bucketId = '0';
 
@@ -109,7 +109,7 @@
 	 * The CTA is the view presented to a user who has successfully submitted
 	 * feedback.
 	 *
-	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Calls_to_Action
+	 * @see https://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Calls_to_Action
 	 */
 	$.articleFeedbackv5.ctaId = '1';
 
@@ -118,7 +118,7 @@
 	 * page. Options are "-" or A-H
 	 *
 	 * @see $wgArticleFeedbackv5LinkBuckets
-	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_links_on_article_pages
+	 * @see https://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_links_on_article_pages
 	 */
 	$.articleFeedbackv5.selectedLinks = [];
 
@@ -127,7 +127,7 @@
 	 * page, in addition to the toolbox link.  Options are "X" or A-H.
 	 *
 	 * @see $wgArticleFeedbackv5LinkBuckets
-	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_links_on_article_pages
+	 * @see https://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_links_on_article_pages
 	 */
 	$.articleFeedbackv5.floatingLinkId = 'X';
 
@@ -136,7 +136,7 @@
 	 * the feedback form.  Options are "X" or A-H
 	 *
 	 * @see $wgArticleFeedbackv5LinkBuckets
-	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_links_on_article_pages
+	 * @see https://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Feedback_links_on_article_pages
 	 */
 	$.articleFeedbackv5.submittedLinkId = 'X';
 

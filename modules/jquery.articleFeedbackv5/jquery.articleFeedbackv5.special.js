@@ -42,7 +42,7 @@
 	 * monitor = Rollbacker / Reviewer
 	 * oversighter = Oversighter
 	 *
-	 * @see http://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
+	 * @see https://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
 	 */
 	$.articleFeedbackv5special.userType = undefined;
 
