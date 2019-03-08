@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c46a3a6b_ffa8d12d",
+        "filename": "extension.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 161
+      },
+      "writtenOn": "2019-03-08T19:15:19Z",
+      "side": 1,
+      "message": "yes, that is the name of the file in the folder /includes/",
+      "parentUuid": "46dd581e_ce86b0ea",
+      "range": {
+        "startLine": 85,
+        "startChar": 38,
+        "endLine": 85,
+        "endChar": 65
+      },
+      "revId": "9747ba4f8d2f8d8a59587e4dfe57fe5dd879026f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "977b18f7_d18be9ae",
         "filename": "includes/ArticleFeedbackv5.hooks.php",
         "patchSetId": 1
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "How I can fix it?",
       "parentUuid": "977b18f7_d18be9ae",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "9747ba4f8d2f8d8a59587e4dfe57fe5dd879026f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58d3bc88_b7585694",
+        "filename": "includes/ArticleFeedbackv5.hooks.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 161
+      },
+      "writtenOn": "2019-03-08T19:15:19Z",
+      "side": 1,
+      "message": "You have to strip one deep of directory from the path for this __DIR__ and the others in this function\n\nI would say you can use dirname() for it, store the result to a variable $base and use it instead of __DIR__",
+      "parentUuid": "a648c495_7d72165d",
       "range": {
         "startLine": 70,
         "startChar": 3,
