@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "2fef0f8e_40fd2eef",
+        "filename": "extension.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 2842
+      },
+      "writtenOn": "2019-03-08T19:15:41Z",
+      "side": 1,
+      "message": "@Zoran, I think so. You can remove the .utils, .hooks, .permission, etc if you\u0027re making this move. And make sure to also keep an eye on where these classes are used and to make sure all references are correctly done.\n\nSo as an example, ArticleFeedbackv5.utils.php should change to ArticleFeedbackv5Utils.php and same for the rest.",
+      "parentUuid": "46dd581e_ce86b0ea",
+      "range": {
+        "startLine": 85,
+        "startChar": 38,
+        "endLine": 85,
+        "endChar": 65
+      },
+      "revId": "9747ba4f8d2f8d8a59587e4dfe57fe5dd879026f",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "977b18f7_d18be9ae",
         "filename": "includes/ArticleFeedbackv5.hooks.php",
         "patchSetId": 1
