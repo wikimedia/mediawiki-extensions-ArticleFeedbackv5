@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "22c5d317_e2a5f963",
+        "filename": "extension.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 161
+      },
+      "writtenOn": "2019-03-09T08:07:00Z",
+      "side": 1,
+      "message": "specials/ is okay, because core also contains the specialpages there. The folder specialpages/ in core contains the parent class and helper functions.\n\nI would move the specials/ folder inside includes/ folder. In the long term all php classes should be in includes/, so that avoids another move later",
+      "parentUuid": "43405552_6ea3dfb5",
+      "range": {
+        "startLine": 94,
+        "startChar": 31,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "bff8c084575d5424142a27322601b5ba24e2d0ac",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d99108ee_f777cee3",
         "filename": "extension.json",
         "patchSetId": 2
