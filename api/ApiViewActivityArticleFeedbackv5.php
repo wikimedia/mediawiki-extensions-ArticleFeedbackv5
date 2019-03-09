@@ -40,7 +40,10 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		global $wgUser, $wgLang;
 
 		if ( !$wgUser->isAllowed( 'aft-editor' ) ) {
-			$this->dieUsage( "You don't have permission to view feedback activity", 'permissiondenied' );
+			$this->dieWithError(
+				'articlefeedbackv5-error-permission-denied',
+				'permissiondenied'
+			);
 		}
 
 		// get our parameter information
@@ -52,27 +55,33 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		// get page object
 		$pageObj = $this->getTitleOrPageId( $params, 'fromdb' );
 		if ( !$pageObj->exists() ) {
-			$this->dieUsageMsg( 'notanarticle' );
+			$this->dieWithError( 'notanarticle' );
 		}
 
 		// fetch our activity database information
 		$feedback = ArticleFeedbackv5Model::get( $params['feedbackid'], $pageObj->getId() );
 		// if this is false, this is bad feedback - move along
 		if ( !$feedback ) {
-			$this->dieUsage( "Feedback does not exist", 'invalidfeedbackid' );
+			$this->dieWithError(
+				'articlefeedbackv5-error-nonexistent-feedback',
+				'invalidfeedbackid'
+			);
 		}
 
 		// get the string title for the page
 		$page = Title::newFromID( $feedback->aft_page );
 		if ( !$page ) {
-			$this->dieUsage( "Page for feedback does not exist", 'invalidfeedbackid' );
+			$this->dieWithError(
+				'articlefeedbackv5-error-nonexistent-page',
+				'invalidfeedbackid'
+			);
 		}
 
 		// get our activities
 		try {
 			$activities = ArticleFeedbackv5Activity::getList( $feedback, $wgUser, $limit, $continue );
 		} catch ( Exception $e ) {
-			$this->dieUsage( $e->getMessage(), $e->getCode() );
+			$this->dieWithError( new RawMessage( $e->getMessage() ), $e->getCode() );
 		}
 
 		// generate our html
