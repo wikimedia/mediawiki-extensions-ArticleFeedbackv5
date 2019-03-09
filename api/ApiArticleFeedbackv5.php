@@ -37,8 +37,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		// Blocked users are, well, blocked.
 		$user = $this->getUser();
 		if ( $user->isBlocked() ) {
-			$this->dieUsage(
-				$this->msg( 'articlefeedbackv5-error-blocked' )->escaped(),
+			$this->dieWithError(
+				'articlefeedbackv5-error-blocked',
 				'userblocked'
 			);
 		}
@@ -48,16 +48,16 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		// get page object
 		$pageObj = $this->getTitleOrPageId( $params, 'fromdb' );
 		if ( !$pageObj->exists() ) {
-			$this->dieUsage(
-				$this->msg( 'articlefeedbackv5-invalid-page-id' )->escaped(),
+			$this->dieWithError(
+				'articlefeedbackv5-invalid-page-id',
 				'notanarticle'
 			);
 		}
 
 		// Check if feedback is enabled on this page
 		if ( !ArticleFeedbackv5Utils::isFeedbackEnabled( $pageObj->getId() ) ) {
-			$this->dieUsage(
-				$this->msg( 'articlefeedbackv5-page-disabled' )->escaped(),
+			$this->dieWithError(
+				'articlefeedbackv5-page-disabled',
 				'invalidpage'
 			);
 		}
@@ -99,8 +99,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$old->aft_comment == $feedback->aft_comment &&
 			$old->aft_timestamp > wfTimestamp( TS_MW, strtotime( '1 minute ago' ) )
 		) {
-			$this->dieUsage(
-				$this->msg( 'articlefeedbackv5-error-duplicate' )->escaped(),
+			$this->dieWithError(
+				'articlefeedbackv5-error-duplicate',
 				'duplicate'
 			);
 		}
@@ -115,9 +115,15 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		global $wgArticleFeedbackv5AbuseFiltering;
 		if ( $wgArticleFeedbackv5AbuseFiltering ) {
 			if ( ArticleFeedbackv5Utils::validateSpamRegex( $feedback->aft_comment ) ) {
-				$this->dieUsage( "Comment was flagged as abusive by SpamRegex", 'articlefeedbackv5-error-abuse' );
+				$this->dieWithError(
+					'articlefeedbackv5-error-spamregex',
+					'articlefeedbackv5-error-abuse'
+				);
 			} elseif ( ArticleFeedbackv5Utils::validateSpamBlacklist( $feedback->aft_comment, $feedback->aft_page ) ) {
-				$this->dieUsage( "Comment was flagged as abusive by SpamBlacklist", 'articlefeedbackv5-error-abuse' );
+				$this->dieWithError(
+					'articlefeedbackv5-error-spamblacklist',
+					'articlefeedbackv5-error-abuse'
+				);
 			} else {
 				$error = ArticleFeedbackv5Utils::validateAbuseFilter(
 					$feedback->aft_comment,
@@ -131,13 +137,13 @@ class ApiArticleFeedbackv5 extends ApiBase {
 						$messages[] = $message[1];
 					}
 
-					$this->dieUsage(
-						$this->msg(
+					$this->dieWithError(
+						[
 							'articlefeedbackv5-error-abuse',
 							$this->msg( 'articlefeedbackv5-error-abuse-link' )->inContentLanguage()->plain(),
 							count( $messages ),
 							$this->getLanguage()->listToText( $messages )
-						)->parse(),
+						],
 						'afreject'
 					);
 				}
@@ -157,8 +163,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				[]
 			);
 		} catch ( MWException $e ) {
-			// $this->dieUsage( $e->getMessage(), 'inserterror' ); // easier when debugging: show exact exception message
-			$this->dieUsage( $this->msg( 'articlefeedbackv5-error-submit' ), 'inserterror' );
+			// $this->dieWithError( new RawMessage( $e->getMessage() ), 'inserterror' ); // easier when debugging: show exact exception message
+			$this->dieWithError(
+				'articlefeedbackv5-error-submit',
+				'inserterror'
+			);
 		}
 
 		// Are we set to auto-flag?
@@ -178,7 +187,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		// build url to permalink and special page
 		$page = Title::newFromID( $feedback->aft_page );
 		if ( !$page ) {
-			$this->dieUsage( "Page for feedback does not exist", "invalidfeedbackid" );
+			$this->dieWithError(
+				'articlefeedbackv5-error-nonexistent-page',
+				'invalidfeedbackid'
+			);
 		}
 		$specialTitle = Title::newFromText( "ArticleFeedbackv5/$page", NS_SPECIAL );
 		$aftUrl = $specialTitle->getLinkUrl( [ 'ref' => 'cta' ] );

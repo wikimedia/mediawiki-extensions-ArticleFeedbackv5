@@ -46,7 +46,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		} else {
 			$pageObj = $this->getTitleOrPageId( $params, 'fromdb' );
 			if ( !$pageObj->exists() ) {
-				$this->dieUsageMsg( 'notanarticle' );
+				$this->dieWithError( 'notanarticle' );
 			} else {
 				$pageId = $pageObj->getId();
 			}

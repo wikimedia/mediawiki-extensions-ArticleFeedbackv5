@@ -31,7 +31,7 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 		// get page object
 		$pageObj = $this->getTitleOrPageId( $params, 'fromdb' );
 		if ( !$pageObj->exists() ) {
-			$this->dieUsageMsg( 'notanarticle' );
+			$this->dieWithError( 'notanarticle' );
 		}
 		$pageId = $pageObj->getId();
 
