@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75d8cea4_7cddcff8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 2842
+      },
+      "writtenOn": "2019-03-09T07:57:31Z",
+      "side": 1,
+      "message": "I think \"specialpages/\" is more descriptive?",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "bff8c084575d5424142a27322601b5ba24e2d0ac",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43405552_6ea3dfb5",
+        "filename": "extension.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 2842
+      },
+      "writtenOn": "2019-03-09T07:57:31Z",
+      "side": 1,
+      "message": "\"specialpages/\"?",
+      "range": {
+        "startLine": 94,
+        "startChar": 31,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "bff8c084575d5424142a27322601b5ba24e2d0ac",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d99108ee_f777cee3",
+        "filename": "extension.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 2842
+      },
+      "writtenOn": "2019-03-09T07:57:31Z",
+      "side": 1,
+      "message": "See above",
+      "range": {
+        "startLine": 95,
+        "startChar": 40,
+        "endLine": 95,
+        "endChar": 48
+      },
+      "revId": "bff8c084575d5424142a27322601b5ba24e2d0ac",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": true
+    }
+  ]
+}
