@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9656039a_ea336f25",
+        "filename": "extension.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-03-11T10:51:49Z",
+      "side": 1,
+      "message": "I always wonder what the point of updating this number is, just because some code was changed. Do you plan to tag a release with this number? If not, I find it better to not touch this number.",
+      "revId": "3800a1df46af353df61c5e1c7d8b0737f8b3edd2",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
