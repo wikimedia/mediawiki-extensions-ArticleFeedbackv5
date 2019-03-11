@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9a10723_a99e8636",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-03-11T10:30:41Z",
+      "side": 1,
+      "message": "This looks like a copy-paste mistake.",
+      "range": {
+        "startLine": 124,
+        "startChar": 6,
+        "endLine": 124,
+        "endChar": 14
+      },
+      "revId": "496b79735ae4f40f72a0ea7b798b4ff6388ccd93",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
