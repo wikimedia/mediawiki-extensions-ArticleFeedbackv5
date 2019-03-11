@@ -934,7 +934,12 @@ class ArticleFeedbackv5Flagging {
 	 * @param string $notes Additional text to include in the email
 	 */
 	protected function sendOversightEmail( $notes = '' ) {
-		global $wgUser;
+		global $wgUser, $wgArticleFeedbackv5OversightEmails;
+
+		// if the oversight email address is empty we're going to just skip all this
+		if ( $wgArticleFeedbackv5OversightEmails === null ) {
+			return;
+		}
 
 		// jobs need a title object
 		$page = Title::newFromID( $this->feedback->aft_page );
