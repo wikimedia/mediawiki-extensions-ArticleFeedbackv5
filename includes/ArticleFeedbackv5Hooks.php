@@ -60,11 +60,9 @@ class ArticleFeedbackv5Hooks {
 	/**
 	 * LoadExtensionSchemaUpdates hook
 	 *
-	 * @param $updater DatabaseUpdater
-	 *
-	 * @return bool
+	 * @param DatabaseUpdater $updater
 	 */
-	public static function loadExtensionSchemaUpdates( $updater = null ) {
+	public static function loadExtensionSchemaUpdates( $updater ) {
 		$updater->addExtensionTable(
 			'aft_feedback',
 			__DIR__ . '/../sql/ArticleFeedbackv5.sql'
@@ -146,15 +144,12 @@ class ArticleFeedbackv5Hooks {
 			'aft_claimed_user',
 			__DIR__ . '/../sql/claimed_user.sql'
 		);
-
-		return true;
 	}
 
 	/**
 	 * BeforePageDisplay hook - this hook will determine if and what javascript will be loaded
 	 *
-	 * @param $out OutputPage
-	 * @return bool
+	 * @param OutputPage $out
 	 */
 	public static function beforePageDisplay( OutputPage &$out, Skin &$skin ) {
 		global $wgArticleFeedbackv5Namespaces;
@@ -179,7 +174,7 @@ class ArticleFeedbackv5Hooks {
 		// special page
 		} elseif ( $title->getNamespace() == NS_SPECIAL ) {
 			// central feedback page, article feedback page, permalink page & watchlist feedback page
-			if ( $out->getTitle()->isSpecial( 'ArticleFeedbackv5' ) ||  $out->getTitle()->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
+			if ( $out->getTitle()->isSpecial( 'ArticleFeedbackv5' ) || $out->getTitle()->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
 				// fetch the title of the article this special page is related to
 				list( /* special */, $mainTitle ) = MediaWikiServices::getInstance()->getSpecialPageFactory()->resolveAlias( $out->getTitle()->getDBkey() );
 
@@ -221,8 +216,6 @@ class ArticleFeedbackv5Hooks {
 				}
 			}
 		}
-
-		return true;
 	}
 
 	/**
@@ -261,8 +254,8 @@ class ArticleFeedbackv5Hooks {
 
 	/**
 	 * ResourceLoaderGetConfigVars hook
+	 *
 	 * @param $vars array
-	 * @return bool
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
 		global
@@ -309,34 +302,30 @@ class ArticleFeedbackv5Hooks {
 		$wgArticleFeedbackv5CTABuckets['buckets'] = (object)$wgArticleFeedbackv5CTABuckets['buckets'];
 		$vars['wgArticleFeedbackv5DisplayBuckets'] = $wgArticleFeedbackv5DisplayBuckets;
 		$vars['wgArticleFeedbackv5CTABuckets'] = (object)$wgArticleFeedbackv5CTABuckets;
-
-		return true;
 	}
 
 	/**
 	 * MakeGlobalVariablesScript hook - this does pretty much the same as the ResourceLoaderGetConfigVars
 	 * hook: it makes these variables accessible through JS. However, these are added on a per-page basis,
 	 * on the page itself (also setting us free from potential browser cache issues)
-	 * @param $vars array
-	 * @return bool
+	 *
+	 * @param array $vars
 	 */
-	public static function makeGlobalVariablesScript( &$vars ) {
-		global $wgUser;
+	public static function makeGlobalVariablesScript( array &$vars, OutputPage $out ) {
+		$user = $out->getUser();
 
 		// expose AFT permissions for this user to JS
 		$vars['wgArticleFeedbackv5Permissions'] = [];
 		foreach ( ArticleFeedbackv5Permissions::$permissions as $permission ) {
-			$vars['wgArticleFeedbackv5Permissions'][$permission] = $wgUser->isAllowed( $permission ) && !$wgUser->isBlocked();
+			$vars['wgArticleFeedbackv5Permissions'][$permission] = $user->isAllowed( $permission ) && !$user->isBlocked();
 		}
-
-		return true;
 	}
 
 	/**
 	 * Add the preference in the user preferences with the GetPreferences hook.
-	 * @param $user User
-	 * @param $preferences
-	 * @return bool
+	 *
+	 * @param User $user
+	 * @param array $preferences
 	 */
 	public static function getPreferences( $user, &$preferences ) {
 		// need to check for existing key, if deployed simultaneously with AFTv4
@@ -347,7 +336,6 @@ class ArticleFeedbackv5Hooks {
 				'label-message' => 'articlefeedbackv5-disable-preference',
 			];
 		}
-		return true;
 	}
 
 	/**
@@ -356,9 +344,8 @@ class ArticleFeedbackv5Hooks {
 	 * with a hook in PageContentSaveComplete)
 	 *
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/EditPage::showEditForm:fields
-	 * @param $editPage EditPage
-	 * @param $output OutputPage
-	 * @return bool
+	 * @param EditPage $editPage
+	 * @param OutputPage $output
 	 */
 	public static function pushFieldsToEdit( $editPage, $output ) {
 		// push AFTv5 values back into the edit page form, so we can pick them up after submitting the form
@@ -367,8 +354,6 @@ class ArticleFeedbackv5Hooks {
 				$editPage->editFormTextAfterContent .= Html::hidden( $key, $value );
 			}
 		}
-
-		return true;
 	}
 
 	/**
@@ -779,8 +764,8 @@ class ArticleFeedbackv5Hooks {
 					$errorMsg .= wfMessage( 'protect_expiry_invalid' )->escaped();
 					return false;
 				} else {
-					// @todo FIXME: Non-qualified absolute times are not in users specified timezone
-					// and there isn't notice about it in the ui
+					// @todo FIXME: Non-qualified absolute times are not in user's specified timezone
+					// and there isn't notice about it in the UI
 					$expirationTime = wfTimestamp( TS_MW, $unix );
 				}
 			}
@@ -807,7 +792,6 @@ class ArticleFeedbackv5Hooks {
 	 *
 	 * @param Page $article
 	 * @param OutputPage $out
-	 * @return bool
 	 */
 	public static function onShowLogExtract( Page $article, OutputPage $out ) {
 		global $wgArticleFeedbackv5Namespaces;
@@ -820,8 +804,6 @@ class ArticleFeedbackv5Hooks {
 		$protectLogPage = new LogPage( 'articlefeedbackv5' );
 		$out->addHTML( Xml::element( 'h2', null, $protectLogPage->getName()->text() ) );
 		LogEventsList::showLogExtract( $out, 'articlefeedbackv5', $article->getTitle() );
-
-		return true;
 	}
 
 	/**
@@ -829,7 +811,6 @@ class ArticleFeedbackv5Hooks {
 	 *
 	 * @param User $currentUser
 	 * @param string $injected_html
-	 * @return bool
 	 */
 	public static function userLoginComplete( $currentUser, $injected_html ) {
 		global $wgRequest;
@@ -876,16 +857,12 @@ class ArticleFeedbackv5Hooks {
 				$feedback->update();
 			}
 		}
-
-		return true;
 	}
 
 	/**
 	 * @param array $names
-	 * @return bool
 	 */
 	public static function onUserGetReservedNames( &$names ) {
 		$names[] = 'msg:articlefeedbackv5-default-user';
-		return true;
 	}
 }
