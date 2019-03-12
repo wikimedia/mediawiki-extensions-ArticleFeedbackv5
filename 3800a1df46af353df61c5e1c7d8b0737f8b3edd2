@@ -16,6 +16,75 @@
       "revId": "3800a1df46af353df61c5e1c7d8b0737f8b3edd2",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c765e59_c73d08ff",
+        "filename": "extension.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 389
+      },
+      "writtenOn": "2019-03-12T23:08:43Z",
+      "side": 1,
+      "message": "It is displayed on Special:Version and people tend to use it to report bugs, so it is annoying when it is 1.0 throughout the entire life cycle of the extension.\n(The entire manual versioning scheme is a bad idea IMO and we should move away from it but that has to be done centrally.)",
+      "parentUuid": "9656039a_ea336f25",
+      "revId": "3800a1df46af353df61c5e1c7d8b0737f8b3edd2",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a639b87f_eca2d869",
+        "filename": "extension.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 389
+      },
+      "writtenOn": "2019-03-12T23:08:43Z",
+      "side": 1,
+      "message": "If you are moving everything, maybe fix the naming here as well and then you could use PSR-4.",
+      "revId": "3800a1df46af353df61c5e1c7d8b0737f8b3edd2",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d184bb8_e7a8c316",
+        "filename": "extension.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 389
+      },
+      "writtenOn": "2019-03-12T23:08:43Z",
+      "side": 1,
+      "message": "Any reason this does not match the class name?",
+      "revId": "3800a1df46af353df61c5e1c7d8b0737f8b3edd2",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "342ecdde_65270902",
+        "filename": "extension.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 389
+      },
+      "writtenOn": "2019-03-12T23:08:43Z",
+      "side": 1,
+      "message": "Any reason this does not match the class name?",
+      "revId": "3800a1df46af353df61c5e1c7d8b0737f8b3edd2",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": true
     }
   ]
 }
