@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a34bae1_e5a35faf",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 221
+      },
+      "writtenOn": "2019-03-12T18:21:13Z",
+      "side": 1,
+      "message": "Message::listParam( $messages ) would be better, as it\u0027ll pick up the right language in case the error language doesn\u0027t match $this-\u003egetLanguage().",
+      "range": {
+        "startLine": 145,
+        "startChar": 29,
+        "endLine": 145,
+        "endChar": 39
+      },
+      "revId": "d989a3b02ded7099ce5332e5df7639e47f0a904d",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bc39b60_878e6399",
+        "filename": "api/ApiArticleFeedbackv5.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 221
+      },
+      "writtenOn": "2019-03-12T18:21:13Z",
+      "side": 1,
+      "message": "Don\u0027t pass random text to RawMessage\u0027s first parameter. Do\n\n new RawMessage( \u0027$1\u0027, $e-\u003egetMessage() )\n\ninstead of you really need a RawMessage. Even better might be to wrap the parameter with Message::plaintextParam() to prevent things that resemble wikitext from being accidentally interpreted.",
+      "revId": "d989a3b02ded7099ce5332e5df7639e47f0a904d",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a694c48d_9477ca33",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 221
+      },
+      "writtenOn": "2019-03-12T18:21:13Z",
+      "side": 1,
+      "message": "Don\u0027t pass random text to RawMessage\u0027s first parameter. Do\n\n new RawMessage( \u0027$1\u0027, $e-\u003egetMessage() )\n\ninstead of you really need a RawMessage. Even better might be to wrap the parameter with Message::plaintextParam() to prevent things that resemble wikitext from being accidentally interpreted.",
+      "revId": "d989a3b02ded7099ce5332e5df7639e47f0a904d",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": true
+    }
+  ]
+}
