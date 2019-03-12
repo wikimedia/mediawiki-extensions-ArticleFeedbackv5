@@ -526,7 +526,7 @@
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "不，這不是我要找的東西。",
 	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1| (剩餘 1 個字元) | (剩餘 $1 個字元) }}",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "很好。你想任何可以協助改進的建議嗎？",
-	"articlefeedbackv5-bucket6-question-placeholder-yes": "在此寫下您的建議 (例如 \"此頁面需要一張圖片。\" )",
+	"articlefeedbackv5-bucket6-question-placeholder-yes": "在此寫下您的建議（例如：\"此頁面需要一張圖片。\"）",
 	"articlefeedbackv5-bucket6-question-instructions-no": "抱歉。有任何改善的建議嗎？",
 	"articlefeedbackv5-bucket6-question-placeholder-no": "在此寫下您的意見 (例： \"本頁面需要補充圖片\" )",
 	"articlefeedbackv5-bucket6-form-submit": "發佈您的回饋",
