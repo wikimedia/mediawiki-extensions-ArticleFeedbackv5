@@ -546,6 +546,14 @@
 			"oversight": -750,
 			"unoversight": 750
 		},
+		"ArticleFeedbackv5Permissions": [
+			"aft-reader",
+			"aft-member",
+			"aft-editor",
+			"aft-monitor",
+			"aft-administrator",
+			"aft-oversighter"
+		],
 		"ArticleFeedbackv5AutoArchiveEnabled": false,
 		"ArticleFeedbackv5AutoArchiveTtl": "+2 weeks",
 		"ArticleFeedbackv5ArticlePageLink": true,
