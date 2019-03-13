@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "132a2773_458d1602",
+        "filename": "api/ApiViewActivityArticleFeedbackv5.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-03-13T09:25:18Z",
+      "side": 1,
+      "message": "I have not seen this pattern often. It took me a while to understand why it is indeed superior.\n\nYou *can* achieve the same with this code:\n\n$msg \u003d new RawMessage( \u0027This should [[not]] be a link\u0027 );\necho $msg-\u003eescaped();\n\nThe problem with this approach is that is depends entirely on the code that is *using* the message. The code that constructs the message does not tell if it is meant to be a wikitext message, a HTML one, or a plain text one.\n\nThe pattern with the $1 does make this clear. It is plain text, and there is no way to accidentally use it in another way.",
+      "revId": "6c9e0cba13afdb64666f0c097854fc3e91217c19",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
