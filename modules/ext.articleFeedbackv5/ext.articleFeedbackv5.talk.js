@@ -9,9 +9,9 @@
 	$( function () {
 		var filter, api;
 
-		// Check if the talk page link can be shown
-		if ( mw.config.get( 'wgArticleFeedbackv5TalkPageLink' ) ) {
-
+		// Check if the talk page link can be shown,
+		// but only for pages that exist (T63164)
+		if ( mw.config.get( 'wgArticleFeedbackv5TalkPageLink' ) && mw.config.get( 'wgArticleId' ) > 0 ) {
 			filter = '*';
 			/*
 			 * If AFT is disabled for this page, we'll only want to show the link if
