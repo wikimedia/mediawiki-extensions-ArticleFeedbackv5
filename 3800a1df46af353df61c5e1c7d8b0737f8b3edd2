@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "df2a13d6_88a5136d",
+        "filename": "extension.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-03-13T09:06:55Z",
+      "side": 1,
+      "message": "Ok, I see. This sounds like a good argument – even if it\u0027s the only one. ;-) Thanks for the response!",
+      "parentUuid": "4c765e59_c73d08ff",
+      "revId": "3800a1df46af353df61c5e1c7d8b0737f8b3edd2",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a639b87f_eca2d869",
         "filename": "extension.json",
         "patchSetId": 4
@@ -65,6 +83,24 @@
       "writtenOn": "2019-03-12T23:08:43Z",
       "side": 1,
       "message": "Any reason this does not match the class name?",
+      "revId": "3800a1df46af353df61c5e1c7d8b0737f8b3edd2",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0f9ac1e_5f66ba52",
+        "filename": "extension.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-03-13T09:06:55Z",
+      "side": 1,
+      "message": "It looks like one file contains multiple classes. Yea, this should be split. But this is something that better done in a later patch, I believe.",
+      "parentUuid": "6d184bb8_e7a8c316",
       "revId": "3800a1df46af353df61c5e1c7d8b0737f8b3edd2",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": true
