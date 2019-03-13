@@ -210,7 +210,7 @@ class ArticleFeedbackv5Hooks {
 						$user
 					);
 
-					if ( count( $records ) > 0 ) {
+					if ( $records->numRows() ) {
 						$out->addModules( 'ext.articleFeedbackv5.watchlist' );
 					}
 				}
