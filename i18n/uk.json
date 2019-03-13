@@ -17,7 +17,8 @@
 			"Ата",
 			"Тест",
 			"Ahonc",
-			"Piramidion"
+			"Piramidion",
+			"Vlad5250"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Надіслати відгук щодо статті",
@@ -77,6 +78,9 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Яке фільтрування застосувати до списку",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "Ідентифікатор конкретного елемента відгуку, який треба отримати",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Зміщення, з якого треба почати вибірку даних",
+	"articlefeedbackv5-error-spamregex": "Коментар було позначено як шкідливий через SpamRegex",
+	"articlefeedbackv5-error-spamblacklist": "Коментар було позначено як шкідливий через SpamBlacklist",
+	"articlefeedbackv5-error-nonexistent-page": "Сторінка відгуків не існує",
 	"articlefeedbackv5-cta-thanks": "Дякуємо!",
 	"articlefeedbackv5-cta-confirmation-message": "Ваш відгук було [$1 розміщено тут].",
 	"articlefeedbackv5-cta1-confirmation-title": "Чи ви знаєте, що можете редагувати цю сторінку?",
