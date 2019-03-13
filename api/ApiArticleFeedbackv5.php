@@ -142,7 +142,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 							'articlefeedbackv5-error-abuse',
 							$this->msg( 'articlefeedbackv5-error-abuse-link' )->inContentLanguage()->plain(),
 							count( $messages ),
-							$this->getLanguage()->listToText( $messages )
+							Message::listParam( $messages )
 						],
 						'afreject'
 					);
@@ -163,7 +163,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				[]
 			);
 		} catch ( MWException $e ) {
-			// $this->dieWithError( new RawMessage( $e->getMessage() ), 'inserterror' ); // easier when debugging: show exact exception message
+			// $this->dieWithError( ( new RawMessage( '$1' ) )->plaintextParam( $e->getMessage() ), 'inserterror' ); // easier when debugging: show exact exception message
 			$this->dieWithError(
 				'articlefeedbackv5-error-submit',
 				'inserterror'
