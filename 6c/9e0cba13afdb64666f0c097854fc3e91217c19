@@ -1,0 +1,8 @@
+Code-Review+1: Thiemo Kreuz (WMDE) <thiemo.kreuz@wikimedia.de>
+Code-Review+2: Anomie <bjorsch@wikimedia.org>
+Verified+2: jenkins-bot
+Submitted-by: jenkins-bot
+Submitted-at: Wed, 13 Mar 2019 14:13:58 +0000
+Reviewed-on: https://gerrit.wikimedia.org/r/495967
+Project: mediawiki/extensions/ArticleFeedbackv5
+Branch: refs/heads/master
