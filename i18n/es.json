@@ -30,13 +30,19 @@
 			"Macofe",
 			"Sophivorus",
 			"Dgstranz",
-			"Carlosmg.dg"
+			"Carlosmg.dg",
+			"Marcelo9987"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Enviar sugerencias sobre el artículo",
 	"apihelp-articlefeedbackv5-summary": "Enviar sugerencias sobre el artículo",
 	"apihelp-articlefeedbackv5-param-anontoken": "Ficha para usuarios anónimos",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Id. de registro a actualizar",
+	"articlefeedbackv5-error-spamregex": "El comentario fue marcado como abusivo por SpamRegex",
+	"articlefeedbackv5-error-spamblacklist": "El comentario fue marcado como abusivo por SpamBlacklist",
+	"articlefeedbackv5-error-nonexistent-page": "Página para la retroalimentación no existe",
+	"articlefeedbackv5-error-permission-denied": "No tienes permiso para ver actividad de retroalimentación",
+	"articlefeedbackv5-error-nonexistent-feedback": "El feedback no existe",
 	"articlefeedbackv5-cta-thanks": "¡Gracias!",
 	"articlefeedbackv5-cta-confirmation-message": "Tu comentario puede verse en esta [$1 página de comentarios].",
 	"articlefeedbackv5-cta1-confirmation-title": "¿Sabías que puedes editar esta página?",
