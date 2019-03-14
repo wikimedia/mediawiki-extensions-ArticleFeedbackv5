@@ -333,7 +333,7 @@ class ArticleFeedbackv5Utils {
 			|| ( is_string( $wgSpamRegex ) && strlen( $wgSpamRegex ) > 0 ) ) {
 			// In older versions, $wgSpamRegex may be a single string rather than
 			// an array of regexes, so make it compatible.
-			$regexes = ( array )$wgSpamRegex;
+			$regexes = (array)$wgSpamRegex;
 			foreach ( $regexes as $regex ) {
 				if ( preg_match( $regex, $value ) ) {
 					return true;
