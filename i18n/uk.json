@@ -81,6 +81,8 @@
 	"articlefeedbackv5-error-spamregex": "Коментар було позначено як шкідливий через SpamRegex",
 	"articlefeedbackv5-error-spamblacklist": "Коментар було позначено як шкідливий через SpamBlacklist",
 	"articlefeedbackv5-error-nonexistent-page": "Сторінка відгуків не існує",
+	"articlefeedbackv5-error-permission-denied": "Ви не маєте прав на перегляд активностей відгуків",
+	"articlefeedbackv5-error-nonexistent-feedback": "Відгук не існує",
 	"articlefeedbackv5-cta-thanks": "Дякуємо!",
 	"articlefeedbackv5-cta-confirmation-message": "Ваш відгук було [$1 розміщено тут].",
 	"articlefeedbackv5-cta1-confirmation-title": "Чи ви знаєте, що можете редагувати цю сторінку?",

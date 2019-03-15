@@ -565,7 +565,7 @@
 	"articlefeedbackv5-activity-item-uninappropriate": "$1 {{GENDER:$6|quitó}} la marca de inapropiada de esta publicación el $4 a las $5 $2",
 	"articlefeedbackv5-activity-item-hide": "$1 {{GENDER:$6|ocultó}} esta publicación el $4 a las $5 $2",
 	"articlefeedbackv5-activity-item-unhide": "$1 {{GENDER:$6|volvió a mostrar}} esta publicación el $4 a las $5 $2",
-	"articlefeedbackv5-activity-item-autohide": "$1 {{GENDER:$6|ocultó}} esta publicación el $4 a las $5 $2",
+	"articlefeedbackv5-activity-item-autohide": "$1 {{GENDER:$6|ocultó automáticamente}} esta publicación el $4 a las $5 $2",
 	"articlefeedbackv5-activity-item-archive": "$1 {{GENDER:$6|archivó}} esta publicación el $4 a las $5 $2",
 	"articlefeedbackv5-activity-item-unarchive": "$1 {{GENDER:$6|rescató}} del archivo esta publicación el $4 a las $5 $2",
 	"articlefeedbackv5-activity-item-helpful": "$1 {{GENDER:$6|marcó}} esta publicación como muy útil el $4 a las $5 $2",
