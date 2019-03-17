@@ -23,6 +23,7 @@
 			"Patriccck"
 		]
 	},
+	"articlefeedbackv5-error-nonexistent-feedback": "Zpětná vazba neexistuje",
 	"articlefeedbackv5-cta-thanks": "Děkujeme!",
 	"articlefeedbackv5-cta-confirmation-message": "Váš příspěvek lze zobrazit na této [ $1  stránce s názory].",
 	"articlefeedbackv5-cta1-confirmation-title": "Věděli jste, že můžete tuto stránku upravit?",

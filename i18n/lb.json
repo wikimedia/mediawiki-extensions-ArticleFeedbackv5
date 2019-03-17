@@ -16,6 +16,7 @@
 	"apihelp-articlefeedbackv5-set-status-param-enable": "1 fir AFTv5 z'aktivéieren, 0 fir AFTv5 ze desaktivéieren",
 	"apihelp-query+articlefeedbackv5-view-activity-param-continue": "Wa méi Resultater disponibel sinn da benotzt dëst fir virunzefueren",
 	"apihelp-query+articlefeedbackv5-view-feedback-description": "Den Artikel-Feedback fir eng spezifesch Säit weisen",
+	"articlefeedbackv5-error-nonexistent-feedback": "Feedback gëtt et net",
 	"articlefeedbackv5-cta-thanks": "Merci!",
 	"articlefeedbackv5-cta-confirmation-message": "Äre Reaktioun ass op dëser [$1 Feedbacksäit ze gesinn].",
 	"articlefeedbackv5-cta1-confirmation-title": "Wousst Dir datt Dir dës Säit ännere kënnt?",

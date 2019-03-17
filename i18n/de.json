@@ -25,6 +25,7 @@
 	},
 	"apihelp-articlefeedbackv5-description": "Versendet die Artikel-Rückmeldung",
 	"apihelp-articlefeedbackv5-summary": "Versendet die Artikel-Rückmeldung",
+	"apihelp-articlefeedbackv5-param-title": "Titel der Seite, für die eine Rückmeldung abgegeben werden soll. Kann nicht zusammen mit $1pageid verwendet werden.",
 	"apihelp-articlefeedbackv5-param-pageid": "Kennung der Seite, für die die Rückmeldung übermittelt werden soll. Kann nicht zusammen mit $1title verwendet werden.",
 	"apihelp-articlefeedbackv5-param-revid": "Versionskennung, für die die Rückmeldung abgesandt werden soll.",
 	"apihelp-articlefeedbackv5-param-anontoken": "Token für anonyme Benutzer",
