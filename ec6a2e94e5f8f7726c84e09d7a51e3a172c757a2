@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6eb24749_5f46280b",
+        "filename": "includes/specials/SpecialArticleFeedbackv5.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 99
+      },
+      "writtenOn": "2019-03-18T05:29:22Z",
+      "side": 1,
+      "message": "I think what is wanted here is actually $records-\u003enumRows(). I don\u0027t think this code ever worked like how it was intended to.",
+      "range": {
+        "startLine": 346,
+        "startChar": 8,
+        "endLine": 346,
+        "endChar": 17
+      },
+      "revId": "ec6a2e94e5f8f7726c84e09d7a51e3a172c757a2",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
