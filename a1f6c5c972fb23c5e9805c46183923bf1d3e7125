@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70161698_82126728",
+        "filename": "includes/ArticleFeedbackv5Log.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 99
+      },
+      "writtenOn": "2019-03-18T05:32:20Z",
+      "side": 1,
+      "message": "I think this should be getText() [In case subpages are enabled in NS_SPECIAL]",
+      "range": {
+        "startLine": 128,
+        "startChar": 16,
+        "endLine": 128,
+        "endChar": 41
+      },
+      "revId": "a1f6c5c972fb23c5e9805c46183923bf1d3e7125",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
