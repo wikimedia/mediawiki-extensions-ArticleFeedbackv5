@@ -152,15 +152,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		// Save feedback
 		try {
 			$feedback->insert();
-
-			ArticleFeedbackv5Log::log(
-				'create',
-				$feedback->aft_page,
-				$feedback->aft_id,
-				'', // just like creation of page, no comment in logs
-				$user,
-				[]
-			);
 		} catch ( MWException $e ) {
 			// $this->dieWithError( ( new RawMessage( '$1' ) )->plaintextParam( $e->getMessage() ), 'inserterror' ); // easier when debugging: show exact exception message
 			$this->dieWithError(
@@ -168,6 +159,26 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'inserterror'
 			);
 		}
+
+		ArticleFeedbackv5Log::log(
+			'create',
+			$feedback->aft_page,
+			$feedback->aft_id,
+			'', // just like creation of page, no comment in logs
+			$user,
+			[]
+		);
+
+		// build URL to permalink and special page
+		$page = Title::newFromID( $feedback->aft_page );
+		if ( !$page ) {
+			$this->dieWithError(
+				'articlefeedbackv5-error-nonexistent-page',
+				'invalidfeedbackid'
+			);
+		}
+		$special = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() );
+		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $feedback->aft_id );
 
 		// Are we set to auto-flag?
 		$flagger = new ArticleFeedbackv5Flagging( null, $feedback->aft_id, $feedback->aft_page );
@@ -183,26 +194,13 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			}
 		}
 
-		// build url to permalink and special page
-		$page = Title::newFromID( $feedback->aft_page );
-		if ( !$page ) {
-			$this->dieWithError(
-				'articlefeedbackv5-error-nonexistent-page',
-				'invalidfeedbackid'
-			);
-		}
-		$specialTitle = Title::newFromText( "ArticleFeedbackv5/$page", NS_SPECIAL );
-		$aftUrl = $specialTitle->getLinkUrl( [ 'ref' => 'cta' ] );
-		$permalinkTitle = Title::newFromText( "ArticleFeedbackv5/$page/$feedback->aft_id", NS_SPECIAL );
-		$permalink = $permalinkTitle->getLinkUrl( [ 'ref' => 'cta' ] );
-
 		$this->getResult()->addValue(
 			null,
 			$this->getModuleName(),
 			[
 				'feedback_id' => $feedback->aft_id,
-				'aft_url'     => $aftUrl,
-				'permalink'   => $permalink,
+				'aft_url'     => $special->getLinkUrl( [ 'ref' => 'cta' ] ),
+				'permalink'   => $permalink->getLinkUrl( [ 'ref' => 'cta' ] ),
 			]
 		);
 	}

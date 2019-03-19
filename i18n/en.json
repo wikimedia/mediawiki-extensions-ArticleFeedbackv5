@@ -671,5 +671,22 @@
 	"abusefilter-edit-action-aftv5hide": "(Article Feedback) Auto-hide",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Automatically hidden. Rule: $1",
 	"abusefilter-edit-action-aftv5request": "(Article Feedback) Auto-request oversight",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Oversight automatically requested. Rule: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Oversight automatically requested. Rule: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "useful",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "resolved",
+	"echo-category-title-feedback": "Feedback",
+	"echo-pref-tooltip-feedback": "Notify me when someone marks article feedback as useful.",
+	"articlefeedbackv5-notification-link-text-view-feedback": "View feedback",
+	"articlefeedbackv5-notification-feedback-watch": "[[$3|Feedback]] about [[$2]] was {{GENDER:$1|marked}} as {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} by [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-bundle": "[[$3|Feedback]] about [[$2]] was {{GENDER:$1|marked}} as {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} by [[User:$1|$1]] and $5 {{PLURAL:$6|other|others}}.",
+	"articlefeedbackv5-notification-feedback-watch-flyout": "[[$3|Feedback]] about [[$2]] was {{GENDER:$1|marked}} as {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} by [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "Feedback about $2 was {{GENDER:$1|marked}} as $3 on {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "Feedback about $2 was {{GENDER:$1|marked}} as $4 by $1 on {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "Feedback about $2 was {{GENDER:$1|marked}} as $4 by $1 and $5 {{PLURAL:$6|other|others}} on {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated": "[[$3|Your feedback]] about [[$2]] was {{GENDER:$1|marked}} as {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} by [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-bundle": "[[$3|Your feedback]] about [[$2]] was {{GENDER:$1|moderated}} by [[User:$1|$1]] and $4 {{PLURAL:$5|other|others}}.",
+	"articlefeedbackv5-notification-feedback-moderated-flyout": "[[$3|Your feedback]] about [[$2]] was {{GENDER:$1|marked}} as {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} by [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-email-subject": "Your feedback about $2 was {{GENDER:$1|marked}} as $3 on {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "Your feedback about $2 was {{GENDER:$1|marked}} as $4 by $1 on {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "Your feedback about $2 was {{GENDER:$1|moderated}} by $1 and $5 {{PLURAL:$6|other|others}} on {{SITENAME}}. $3"
 }

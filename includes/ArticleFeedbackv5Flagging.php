@@ -290,6 +290,10 @@ class ArticleFeedbackv5Flagging {
 			$this->clear_flags( $notes, $toggle );
 		}
 
+		// send notifications
+		ArticleFeedbackv5Utils::notifyWatch( $this->feedback, $this->user, __FUNCTION__, $this->logId );
+		ArticleFeedbackv5Utils::notifyModerated( $this->feedback, $this->user, __FUNCTION__, $this->logId );
+
 		return true;
 	}
 
@@ -360,6 +364,9 @@ class ArticleFeedbackv5Flagging {
 		$this->feedback->aft_oversight = 0;
 
 		$this->logId = $this->log( __FUNCTION__, $this->feedback->aft_page, $this->feedback->aft_id, $notes, $this->user );
+
+		// send notifications
+		ArticleFeedbackv5Utils::notifyModerated( $this->feedback, $this->user, __FUNCTION__, $this->logId );
 
 		return true;
 	}

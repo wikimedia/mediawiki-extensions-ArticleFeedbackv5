@@ -865,4 +865,151 @@ class ArticleFeedbackv5Hooks {
 	public static function onUserGetReservedNames( &$names ) {
 		$names[] = 'msg:articlefeedbackv5-default-user';
 	}
+
+	/**
+	 * Add AFTv5 events to Echo.
+	 *
+	 * @param array $notifications Echo notifications
+	 * @param array $notificationCategories Echo notification categories
+	 * @param array $icons Icon details
+	 */
+	public static function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories, &$icons ) {
+		$notificationCategories['feedback'] = [
+			'tooltip' => 'echo-pref-tooltip-feedback',
+			'priority' => 5,
+		];
+
+		// feedback is submitted to a page on your watchlist
+		$notifications['feedback-watch'] = [
+			'icon' => 'feedback-watch',
+			'category' => 'feedback',
+			'group' => 'neutral',
+			'presentation-model' => 'EchoArticleFeedbackv5PresentationModel',
+			EchoAttributeManager::ATTR_LOCATORS => [
+				'EchoUserLocator::locateUsersWatchingTitle'
+			],
+			'bundle' => [ 'web' => true, 'email' => true ],
+			// @todo FIXME: these prolly shouldn't exist here anymore and likely don't do anything anymore
+			'email-body-batch-message' => 'articlefeedbackv5-notification-feedback-watch-email-batch-body',
+			'email-body-batch-params' => [ 'agent', 'title', 'aft-page-i18n-link', 'aft-moderation-flag' ],
+			'email-body-batch-bundle-message' => 'articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body',
+			'email-body-batch-bundle-params' => [ 'agent', 'title', 'aft-page-i18n-link', 'aft-moderation-flag', 'aft-other-display', 'aft-other-count' ],
+		];
+
+		$icons['feedback-watch'] = [
+			'path' => 'ArticleFeedbackv5/modules/ext.articleFeedbackv5/images/notification.png',
+		];
+
+		// your feedback is moderated
+		$notifications['feedback-moderated'] = [
+			'icon' => 'feedback-moderated',
+			'category' => 'feedback',
+			'group' => 'neutral',
+			'presentation-model' => 'EchoArticleFeedbackv5ModeratedPresentationModel',
+			EchoAttributeManager::ATTR_LOCATORS => [
+				'EchoUserLocator::locateEventAgent'
+			],
+			'bundle' => [ 'web' => true, 'email' => true ],
+			// @todo FIXME: these prolly shouldn't exist here anymore and likely don't do anything anymore
+			'email-body-batch-message' => 'articlefeedbackv5-notification-feedback-moderated-email-batch-body',
+			'email-body-batch-params' => [ 'agent', 'title', 'aft-permalink-i18n-link', 'aft-moderation-flag' ],
+			'email-body-batch-bundle-message' => 'articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body',
+			'email-body-batch-bundle-params' => [ 'agent', 'title', 'aft-permalink-i18n-link', 'aft-comment', 'agent-other-display', 'agent-other-count' ],
+		];
+
+		$icons['feedback-moderated'] = [
+			'path' => 'ArticleFeedbackv5/modules/ext.articleFeedbackv5/images/notification.png',
+		];
+	}
+
+	/**
+	 * Add users to be notified on Echo events.
+	 *
+	 * @param EchoEvent $event
+	 * @param array $users
+	 */
+	public static function onEchoGetDefaultNotifiedUsers( EchoEvent $event, &$users ) {
+		switch ( $event->getType() ) {
+			// notify users who watch this page
+			case 'feedback-watch':
+				$extra = $event->getExtra();
+				if ( !$event->getExtraParam( 'aft-page' ) ) {
+					break;
+				}
+
+				$page = Title::newFromID( $extra['aft-page'] );
+
+				// @todo Could we just use EchoUserLocator::locateUsersWatchingTitle( $event ) here instead?
+				$dbw = wfGetDB( DB_MASTER );
+				$res = $dbw->select(
+					'watchlist',
+					[ 'wl_user' ],
+					[
+						'wl_user != ' . intval( $event->getAgent()->getID() ),
+						'wl_namespace' => $page->getNamespace(),
+						'wl_title' => $page->getDBkey(),
+					],
+					__METHOD__
+				);
+
+				foreach ( $res as $row ) {
+					$recipientId = intval( $row->wl_user );
+					$recipient = User::newFromId( $recipientId );
+
+					// make sure user still exists
+					$recipient->loadFromId();
+					if ( !$recipient->isAnon() ) {
+						$users[$recipientId] = $recipient;
+					}
+				}
+
+				// don't notify for self-submitted feedback
+				if ( isset( $extra['aft-user'] ) ) {
+					unset( $users[intval( $extra['aft-user'] )] );
+				}
+
+				break;
+
+			// notify user who submitted the feedback
+			case 'feedback-moderated':
+				$extra = $event->getExtra();
+				if ( !$extra || !$event->getExtraParam( 'aft-user' ) ) {
+					break;
+				}
+
+				$recipientId = $extra['aft-user'];
+				$recipient = User::newFromId( $recipientId );
+
+				// make sure user still exists
+				$recipient->loadFromId();
+				if ( !$recipient->isAnon() ) {
+					$users[$recipientId] = $recipient;
+				}
+
+				// don't notify for self-moderated feedback
+				unset( $users[intval( $event->getAgent()->getID() )] );
+
+				break;
+		}
+	}
+
+	/**
+	 * AFTv5 notification bundling rules.
+	 *
+	 * @param EchoEvent $event
+	 * @param string $bundleString
+	 */
+	public static function onEchoGetBundleRules( EchoEvent $event, &$bundleString ) {
+		switch ( $event->getType() ) {
+			// watched page feedback: bundle per page
+			case 'feedback-watch':
+				$bundleString = $event->getType() . '-' . $event->getExtraParam( 'aft-page' );
+				break;
+
+			// feedback moderation: bundle per feedback entry
+			case 'feedback-moderated':
+				$bundleString = $event->getType() . '-' . $event->getExtraParam( 'aft-id' );
+				break;
+		}
+	}
 }
