@@ -27,7 +27,9 @@
 	"type": "other",
 	"callback": "ArticleFeedbackv5Hooks::registerExtension",
 	"DefaultUserOptions": {
-		"aftv5-last-filter": null
+		"aftv5-last-filter": null,
+		"echo-subscriptions-web-feedback": true,
+		"echo-subscriptions-email-feedback": true
 	},
 	"AvailableRights": [
 		"aft-reader",
@@ -91,6 +93,8 @@
 		"ArticleFeedbackv5Flagging": "includes/ArticleFeedbackv5Flagging.php",
 		"ArticleFeedbackv5MailerJob": "includes/ArticleFeedbackv5MailerJob.php",
 		"ArticleFeedbackv5Render": "includes/ArticleFeedbackv5Render.php",
+		"EchoArticleFeedbackv5PresentationModel": "includes/notifications/EchoArticleFeedbackv5PresentationModel.php",
+		"EchoArticleFeedbackv5ModeratedPresentationModel": "includes/notifications/EchoArticleFeedbackv5ModeratedPresentationModel.php",
 		"SpecialArticleFeedbackv5": "includes/specials/SpecialArticleFeedbackv5.php",
 		"SpecialArticleFeedbackv5Watchlist": "includes/specials/SpecialArticleFeedbackv5Watchlist.php",
 		"ArticleFeedbackv5Model": "includes/ArticleFeedbackv5Model.php",
@@ -444,7 +448,10 @@
 		"ProtectionForm::save": "ArticleFeedbackv5Hooks::onProtectionSave",
 		"ProtectionForm::showLogExtract": "ArticleFeedbackv5Hooks::onShowLogExtract",
 		"UserLoginComplete": "ArticleFeedbackv5Hooks::userLoginComplete",
-		"UserGetReservedNames": "ArticleFeedbackv5Hooks::onUserGetReservedNames"
+		"UserGetReservedNames": "ArticleFeedbackv5Hooks::onUserGetReservedNames",
+		"BeforeCreateEchoEvent": "ArticleFeedbackv5Hooks::onBeforeCreateEchoEvent",
+		"EchoGetDefaultNotifiedUsers": "ArticleFeedbackv5Hooks::onEchoGetDefaultNotifiedUsers",
+		"EchoGetBundleRules": "ArticleFeedbackv5Hooks::onEchoGetBundleRules"
 	},
 	"config": {
 		"ArticleFeedbackv5DefaultFilters": {
