@@ -109,7 +109,30 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 		// this could happen when a page has since been removed
 		$page = Title::newFromID( $parameters['pageId'] );
 		if ( !$page ) {
-			return '';
+			// Ideally we would build the page title from logging.log_title instead, as
+			// it's a place which stores the human-readable page name, although for AFTv5
+			// entries it is always in the form "ArticleFeedbackv5/<wiki page name>/<feedback ID>"
+			// so we wouldn't be able use it simply as-is even if we had access to it.
+			// The DB row for this log entry exists as $this->entry->row, but that
+			// property is protected in core and there is no getRow() accessor or
+			// anything, so we have to use getTarget(), which (hopefully) returns a
+			// Title formed from the row's log_namespace and log_title.
+			// Then we work our magic on this Title, first getting the
+			// "ArticleFeedbackv5/<wiki page name>" part of "ArticleFeedbackv5/<wiki page name>/<feedback ID>"
+			// and then extracting the deleted page's name from this.
+			// @see https://phabricator.wikimedia.org/T167401
+			$pageTitle = $this->entry->getTarget();
+			if ( !$pageTitle instanceof Title ) {
+				return '';
+			}
+			$pageTitle = $pageTitle->getText();
+			$a = explode( '/', $pageTitle );
+			array_shift( $a );
+			if ( isset( $a[0] ) && $a[0] ) {
+				$page = $a[0];
+			} else {
+				return '';
+			}
 		}
 
 		// Give grep a chance to find the usages:
