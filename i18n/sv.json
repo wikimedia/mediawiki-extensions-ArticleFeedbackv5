@@ -73,6 +73,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Vilken filtrering att tillämpa i listan",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "ID för en specifik återkopplingsobjekt att hämta",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Offset att börja hämta data från",
+	"articlefeedbackv5-error-nonexistent-feedback": "Återkoppling finns inte",
 	"articlefeedbackv5-cta-thanks": "Tack!",
 	"articlefeedbackv5-cta-confirmation-message": "Ditt inlägg kan ses på den här [$1 feedback-sidan].",
 	"articlefeedbackv5-cta1-confirmation-title": "Visste du att du kan redigera denna sida?",

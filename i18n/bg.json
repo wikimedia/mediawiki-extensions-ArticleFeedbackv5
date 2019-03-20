@@ -62,6 +62,8 @@
 	"articlefeedbackv5-whats-this": "Помощ",
 	"articlefeedbackv5-settings-menu-title": "Настройки",
 	"articlefeedbackv5-comment-more": "Повече",
+	"articlefeedbackv5-permalink-info-stats-title-length": "Дължина",
+	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:една дума|$1 думи}}",
 	"articlefeedbackv5-permalink-last-action": "Последното действие",
 	"articlefeedbackv5-noteflyover-feature-label": "Добавяне на бележка",
 	"articlefeedbackv5-noteflyover-feature-submit": "Добавяне на бележка",
