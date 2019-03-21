@@ -79,7 +79,7 @@
 				if (settings.one) {
  
 					//remove the check
-					w.unbind('scroll', check);
+					w.off('scroll', check);
 					var i = $.inArray(check, $.fn.appear.checks);
 					if (i >= 0) $.fn.appear.checks.splice(i, 1);
 				}
@@ -90,7 +90,7 @@
 			 
 			//bind the modified fn to the element
 			if (settings.one) t.one('appear', settings.data, modifiedFn);
-			else t.bind('appear', settings.data, modifiedFn);
+			else t.on('appear', settings.data, modifiedFn);
 			 
 			//check whenever the window scrolls
 			w.scroll(check);

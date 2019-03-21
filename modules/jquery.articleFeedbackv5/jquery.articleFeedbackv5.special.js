@@ -363,7 +363,7 @@
 	 */
 	$.articleFeedbackv5special.setBinds = function () {
 		// Filter select
-		$( '#articleFeedbackv5-filter-select' ).bind( 'change', function () {
+		$( '#articleFeedbackv5-filter-select' ).on( 'change', function () {
 			var id = $( this ).val();
 			if ( id === '' || id === 'X' ) {
 				return false;
@@ -378,7 +378,7 @@
 		$( '#articleFeedbackv5-filter-select option[value=X]' ).attr( 'disabled', true );
 
 		// Filter links
-		$( '.articleFeedbackv5-filter-link' ).bind( 'click', function ( e ) {
+		$( '.articleFeedbackv5-filter-link' ).on( 'click', function ( e ) {
 			var id;
 
 			e.preventDefault();
@@ -388,7 +388,7 @@
 		} );
 
 		// Sort select
-		$( '#articleFeedbackv5-sort-select' ).bind( 'change', function () {
+		$( '#articleFeedbackv5-sort-select' ).on( 'change', function () {
 			var sort = $( this ).val().split( '-' );
 			if ( sort === '' ) {
 				return false;
@@ -402,13 +402,13 @@
 		$( '#articleFeedbackv5-sort-select option[value=""]' ).attr( 'disabled', true );
 
 		// Show more
-		$( '#articleFeedbackv5-show-more' ).bind( 'click', function () {
+		$( '#articleFeedbackv5-show-more' ).on( 'click', function () {
 			$.articleFeedbackv5special.loadFeedback( false, false );
 			return false;
 		} );
 
 		// Refresh list
-		$( '#articleFeedbackv5-refresh-list' ).bind( 'click', function () {
+		$( '#articleFeedbackv5-refresh-list' ).on( 'click', function () {
 			$.articleFeedbackv5special.listControls.offset = null;
 			$.articleFeedbackv5special.loadFeedback( true, false );
 			return false;
