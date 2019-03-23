@@ -49,6 +49,7 @@
 	"apihelp-articlefeedbackv5-add-flag-note-param-feedbackid": "Zu markierende Rückmeldungskennung",
 	"apihelp-articlefeedbackv5-set-status-description": "Aktiviert/Deaktiviert AFTv5 für eine bestimmte Seite.",
 	"apihelp-articlefeedbackv5-set-status-summary": "Aktiviert/Deaktiviert AFTv5 für eine bestimmte Seite.",
+	"apihelp-articlefeedbackv5-set-status-param-pageid": "Kennung der Seite, für die AFTv5 (de)aktiviert werden soll. Kann nicht zusammen mit $1title verwendet werden.",
 	"apihelp-articlefeedbackv5-set-status-param-enable": "1 zur Aktivierung, 0 zur Deaktivierung von AFTv5",
 	"apihelp-query+articlefeedbackv5-view-activity-description": "Listet die Artikelrückmeldungsaktivität für eine angegebene Seite auf",
 	"apihelp-query+articlefeedbackv5-view-activity-summary": "Listet die Artikelrückmeldungsaktivität für eine angegebene Seite auf",
