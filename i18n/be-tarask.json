@@ -12,6 +12,7 @@
 	},
 	"apihelp-articlefeedbackv5-description": "Даслаць водгук на артыкул",
 	"apihelp-articlefeedbackv5-summary": "Даслаць водгук на артыкул",
+	"apihelp-articlefeedbackv5-param-anontoken": "Токен для ананімных карыстальнікаў",
 	"articlefeedbackv5-cta-thanks": "Дзякуй!",
 	"articlefeedbackv5-cta-confirmation-message": "Можаце праглядзець ваш водгук на гэтай [$1 старонцы водгукаў].",
 	"articlefeedbackv5-cta1-confirmation-title": "Вы ведалі, што можаце рэдагаваць гэтую старонку?",
