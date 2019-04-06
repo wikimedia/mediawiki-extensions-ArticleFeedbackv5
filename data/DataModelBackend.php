@@ -14,7 +14,6 @@
  * general class, so that other backends may be used to power the DataModel class.
  *
  * @author     Matthias Mullie <mmullie@wikimedia.org>
- * @version    $Id$
  */
 abstract class DataModelBackend {
 	/**

@@ -3,7 +3,6 @@
  * This class represents "a list of data entries".
  *
  * @author     Matthias Mullie <mmullie@wikimedia.org>
- * @version    $Id$
  */
 class DataModelList extends FakeResultWrapper {
 	/**

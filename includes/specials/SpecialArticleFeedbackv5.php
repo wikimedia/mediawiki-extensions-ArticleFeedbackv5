@@ -7,7 +7,6 @@
  * @author     Greg Chiasson <gchiasson@omniti.com>
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
  * @author     Matthias Mullie <mmullie@wikimedia.org>
- * @version    $Id$
  */
 
 /**

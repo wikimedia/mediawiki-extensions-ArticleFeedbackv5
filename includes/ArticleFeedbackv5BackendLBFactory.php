@@ -7,7 +7,6 @@
  * architecture.
  *
  * @author     Matthias Mullie <mmullie@wikimedia.org>
- * @version    $Id$
  */
 
 use MediaWiki\MediaWikiServices;

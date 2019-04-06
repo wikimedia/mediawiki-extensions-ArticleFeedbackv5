@@ -5,7 +5,6 @@
  * @package    ArticleFeedback
  * @subpackage Special
  * @author     Matthias Mullie <mmullie@wikimedia.org>
- * @version    $Id$
  */
 
 /**

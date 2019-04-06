@@ -8,7 +8,6 @@ use MediaWiki\MediaWikiServices;
  * @package    ArticleFeedback
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @author     Reha Sterbin <reha@omniti.com>
- * @version    $Id$
  */
 class ArticleFeedbackv5Log {
 	/**
@@ -85,7 +84,6 @@ class ArticleFeedbackv5Log {
  * @package    ArticleFeedback
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @author     Reha Sterbin <reha@omniti.com>
- * @version    $Id$
  */
 class ArticleFeedbackv5LogFormatter extends LogFormatter {
 	/**
@@ -176,7 +174,6 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
  *
  * @package    ArticleFeedback
  * @author     Matthias Mullie <mmullie@wikimedia.org>
- * @version    $Id$
  */
 class ArticleFeedbackv5ProtectionLogFormatter extends LogFormatter {
 	/**

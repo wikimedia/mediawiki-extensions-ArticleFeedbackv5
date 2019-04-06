@@ -7,7 +7,6 @@
  * @subpackage Resources
  * @author     Reha Sterbin <reha@omniti.com>
  * @author     Matthas Mullie <mmullie@wikimedia.org>
- * @version    $Id$
  */
 
 ( function ( $, mw ) {

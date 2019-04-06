@@ -4,7 +4,6 @@
  *
  * @package    ArticleFeedbackv5
  * @author     Matthias Mullie <mmullie@wikimedia.org>
- * @version    $Id$
  */
 
 require_once getenv( 'MW_INSTALL_PATH' ) !== false

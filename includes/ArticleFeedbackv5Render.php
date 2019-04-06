@@ -6,7 +6,6 @@
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
  * @author     Reha Sterbin <reha@omniti.com>
  * @author     Matthias Mullie <mmullie@wikimedia.org>
- * @version    $Id$
  */
 
 use MediaWiki\MediaWikiServices;

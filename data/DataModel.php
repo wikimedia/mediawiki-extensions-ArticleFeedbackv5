@@ -20,7 +20,6 @@
  * specific implementation.
  *
  * @author     Matthias Mullie <mmullie@wikimedia.org>
- * @version    $Id$
  */
 abstract class DataModel {
 	/**

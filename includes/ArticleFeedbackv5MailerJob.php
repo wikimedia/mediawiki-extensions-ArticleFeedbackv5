@@ -5,7 +5,6 @@
  * @package    ArticleFeedback
  * @subpackage Job
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
- * @version    $Id$
  */
 
 /**

@@ -7,7 +7,6 @@
  * @author     Yoni Shostak <yoni@omniti.com>
  * @author     Reha Sterbin <reha@omniti.com>
  * @author     Matthias Mullie <mmullie@wikimedia.org>
- * @version    $Id$
  */
 
 ( function ( $, mw ) {

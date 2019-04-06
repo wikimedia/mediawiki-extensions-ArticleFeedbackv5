@@ -13,7 +13,6 @@
  *
  * @package    ArticleFeedback
  * @author     Matthias Mullie <mmullie@wikimedia.org>
- * @version    $Id$
  */
 class ArticleFeedbackv5Activity {
 	/**

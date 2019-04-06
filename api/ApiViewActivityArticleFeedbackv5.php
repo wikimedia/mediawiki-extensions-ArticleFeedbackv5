@@ -5,7 +5,6 @@
  * @package    ArticleFeedback
  * @subpackage Api
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
- * @version    $Id$
  */
 
 use MediaWiki\MediaWikiServices;

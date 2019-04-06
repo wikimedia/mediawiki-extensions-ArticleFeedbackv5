@@ -69,7 +69,6 @@
  * @subpackage Resources
  * @author     Reha Sterbin <reha@omniti.com>
  * @author     Matthias Mullie <mmullie@wikimedia.org>
- * @version    $Id$
  */
 
 /* eslint quote-props: ["error", "as-needed", { "numbers": true }] */
