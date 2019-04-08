@@ -3,7 +3,8 @@
 		"authors": [
 			"Praveenp",
 			"Santhosh.thottingal",
-			"Suresh.balasubra"
+			"Suresh.balasubra",
+			"Adithyak1997"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "നന്ദി!",
@@ -128,7 +129,7 @@
 	"articlefeedbackv5-status-resolve": "ഈ കുറിപ്പ് $2 - $3 മുതൽ $1 പരിഹരിച്ചതെന്ന് അടയാളപ്പെടുത്തിയിരിക്കുന്നു",
 	"articlefeedbackv5-status-unresolve": "ഈ കുറിപ്പിലെ പരിഹരിച്ചതെന്ന അടയാളം $2 - $3 മുതൽ $1 ഒഴിവാക്കിയിരിക്കുന്നു",
 	"articlefeedbackv5-new-marker": "പുതിയത്",
-	"articlefeedbackv5-autohide-marker": "മറയ്ക്കപ്പെട്ടവ",
+	"articlefeedbackv5-autohide-marker": "സ്വതേ-മറയ്ക്കപ്പെട്ടവ",
 	"articlefeedbackv5-hide-marker": "മറഞ്ഞിരിക്കുന്നത്",
 	"articlefeedbackv5-feature-marker": "ഉപയോഗപ്രദം",
 	"articlefeedbackv5-resolve-marker": "പരിഹരിച്ചത്",
@@ -140,10 +141,11 @@
 	"articlefeedbackv5-form-note": "കുറിപ്പ് ചേർക്കുക",
 	"articlefeedbackv5-form-feature": "ഉപയോഗപ്രദം",
 	"articlefeedbackv5-form-unfeature": "തിരസ്കരിക്കുക",
-	"articlefeedbackv5-form-resolve": "പരിഹരിച്ചെന്ന് അടയാളപ്പെടുത്തുക",
+	"articlefeedbackv5-form-resolve": "പരിഹരിച്ചു",
 	"articlefeedbackv5-form-unresolve": "തിരസ്ക്കരിക്കുക",
 	"articlefeedbackv5-form-noaction": "നടപടികളാവശ്യമില്ല",
 	"articlefeedbackv5-form-unnoaction": "തിരസ്ക്കരിക്കുക",
+	"articlefeedbackv5-form-unnoaction-own": "എന്റെ പോസ്റ്റ് കാണിക്കുക",
 	"articlefeedbackv5-form-inappropriate": "ഈ കുറിപ്പ് മറയ്ക്കുക",
 	"articlefeedbackv5-form-uninappropriate": "തിരസ്ക്കരിക്കുക",
 	"articlefeedbackv5-form-hide": "ഈ പോസ്റ്റ്‌ മറയ്ക്കുക",
@@ -168,6 +170,8 @@
 	"articlefeedbackv5-abuse-saved-tooltip": "താങ്കൾ ചേർത്ത പതാക നീക്കം ചെയ്യുക",
 	"articlefeedbackv5-error-loading-feedback": "പ്രതികരണം എടുക്കുന്നതിൽ പിഴവുണ്ടായി",
 	"articlefeedbackv5-invalid-feedback-id": "പ്രതികരണ ഐ.ഡി. അസാധുവാണ്",
+	"articlefeedbackv5-invalid-log-id": "ലോഗ് ഐ.ഡി. അസാധുവാണ്",
+	"articlefeedbackv5-invalid-feedback-flag": "പ്രതികരണ ഫ്ലാഗ് അസാധുവാണ്",
 	"articlefeedbackv5-go-to-article": "താൾ കാണുക",
 	"articlefeedbackv5-discussion-page": "സംവാദം",
 	"articlefeedbackv5-whats-this": "സഹായം",
@@ -187,6 +191,7 @@
 	"articlefeedbackv5-permalink-written-by-editor": "<span>പ്രതികരണ ഫോം $1 ഉപയോഗിച്ച്</span> അംഗത്വമുള്ള ഉപയോക്താവ് എഴുതിച്ചേർത്തത്",
 	"articlefeedbackv5-permalink-written-by-reader": "<span>പ്രതികരണ ഫോം $1 ഉപയോഗിച്ച്</span> അജ്ഞാത ഉപയോക്താവ് എഴുതിച്ചേർത്തത്",
 	"articlefeedbackv5-permalink-info-revision-link": "പഴയ പതിപ്പ് കാണുക",
+	"articlefeedbackv5-permalink-info-posted": "$1-നു $2 മണിക്ക് പോസ്റ്റ് ചെയ്തു",
 	"articlefeedbackv5-permalink-info-stats-title-length": "നീളം",
 	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|ഒരു വാക്ക്|$1 വാക്കുകൾ}}",
 	"articlefeedbackv5-permalink-info-length-characters": "({{PLURAL:$1|ഒരക്ഷരം|$1 അക്ഷരങ്ങൾ}})",

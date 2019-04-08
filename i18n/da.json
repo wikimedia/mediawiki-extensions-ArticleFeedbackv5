@@ -137,6 +137,7 @@
 	"articlefeedbackv5-form-archive": "Arkiver",
 	"articlefeedbackv5-form-unarchive": "Fortryd",
 	"articlefeedbackv5-form-helpful": "Markere som nyttig ( $1 )",
+	"articlefeedbackv5-form-unoversight": "Fortryd",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 fandt hvad de søgte.}}",
 	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2 fandt ikke hvad de søgte.}}",
 	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 skrev en kommentar.}}",
@@ -151,6 +152,7 @@
 	"articlefeedbackv5-invalid-page-id": "Ugyldigt side-ID",
 	"articlefeedbackv5-found-percent": "{{PLURAL:$2|$1 fandt hvad de ledte efter}}",
 	"articlefeedbackv5-comment-more": "Mere",
+	"articlefeedbackv5-comment-empty": "Ingen tekst blev indtastet",
 	"articlefeedbackv5-viewactivity": "Vis aktivitet",
 	"articlefeedbackv5-mask-view-contents": "Vis indhold",
 	"articlefeedbackv5-permalink-written-by-editor": "Skrevet af en registreret bruger",
@@ -163,6 +165,7 @@
 	"articlefeedbackv5-permalink-activity-subtitle": "({{PLURAL:$1|$1 handling|$1 handlinger}})",
 	"articlefeedbackv5-permalink-status-resolve": "{{GENDER:$1|<strong>Markeret som løst</strong> af $1}} for $2",
 	"articlefeedbackv5-permalink-status-unresolve": "{{GENDER:$1|<strong>Markering som løst fjernet</strong> af $1}} for $2",
+	"articlefeedbackv5-permalink-status-hide": "{{GENDER:$1|<strong>Skjult</strong> af $1}} $2",
 	"articlefeedbackv5-permalink-last-action": "Sidste handling",
 	"articlefeedbackv5-permalink-activity-more": "Se flere handlinger...",
 	"articlefeedbackv5-permalink-activity-fewer": "Se færre handlinger...",
@@ -266,5 +269,6 @@
 	"articlefeedbackv5-toolbox-add": "Tilføj din feedback",
 	"articlefeedbackv5-activity-pane-header": "Aktivitetslog",
 	"articlefeedbackv5-activity-permalink": "permanent henvisning",
+	"articlefeedbackv5-activity-more": "Vis mere aktivitet",
 	"articlefeedbackv5-disable-flyover-title": "Fjern dette værktøj?"
 }

@@ -21,6 +21,7 @@
 			"Valtlait"
 		]
 	},
+	"articlefeedbackv5-error-nonexistent-feedback": "Palautetta ei ole olemassa",
 	"articlefeedbackv5-cta-thanks": "Kiitos!",
 	"articlefeedbackv5-cta-confirmation-message": "Viestisi voidaan nähdä tällä [$1 palautesivulla].",
 	"articlefeedbackv5-cta1-confirmation-title": "Tiesitkö, että voit muokata tätä sivua?",
