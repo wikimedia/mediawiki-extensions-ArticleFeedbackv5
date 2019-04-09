@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Arman musikyan"
+			"Arman musikyan",
+			"Kareyac"
 		]
 	},
+	"articlefeedbackv5-cta-thanks": "Շնորհակալություն",
 	"articlefeedbackv5-special-filter-select-more": "Ավելին",
 	"articlefeedbackv5-comment-more": "Ավելին"
 }
