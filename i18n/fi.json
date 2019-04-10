@@ -513,7 +513,7 @@
 	"articlefeedbackv5-talk-view-feedback": "Näytä lukijapalaute",
 	"articlefeedbackv5-watchlist-view-feedback": "Palaute tarkkailemistani sivuista",
 	"articlefeedbackv5-email-request-oversight-subject": "Artikkelin palautesivun häivitystä pyydetty",
-	"articlefeedbackv5-email-request-oversight-body": "Hei häivyttäjät!\n\n$1 pyysi häivytystä palautteelle tähän sivuun:\n\n$2\n\nTarkistakaa tämä palauteviesti ja hyväksykää tai torjukaa häivytyspyyntö:\n\n$3\n$5\n\nKiitos,\n\n\nYlläpito\n{{SITENAME}}\n\nP.S.: Jos sinulla on kysyttävää artikkelipalautesivun häivytystoimintojen käytöstä, katso tämä häivyttäjän kysymys- ja vastaussivu:\n\n$4",
+	"articlefeedbackv5-email-request-oversight-body": "Hei häivyttäjät!\n\n$1 pyysi häivytystä palautteelle tähän sivuun:\n\n$2\n\nTarkistakaa tämä palauteviesti ja hyväksykää tai torjukaa häivytyspyyntö:\n\n$3\n$5\n\nKiitos,\n\n\n{{GRAMMAR:genitive|{{SITENAME}}}} ylläpito\n\n\nP.S.: Jos sinulla on kysyttävää artikkelipalautesivun häivytystoimintojen käytöstä, katso tämä häivyttäjän kysymys- ja vastaussivu:\n\n$4",
 	"articlefeedbackv5-email-request-oversight-body-notes": "Tämä kommentti lisättiin häivytyspyyntöön:\n\n$1",
 	"articlefeedbackv5-disable-flyover-title": "Poistetaanko työkalu?",
 	"articlefeedbackv5-disable-flyover-help-message": "Poistaaksesi palautetyökalun, mene ”$1” > ”$2” ja valitse ”$3”",
