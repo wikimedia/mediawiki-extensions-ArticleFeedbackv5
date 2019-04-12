@@ -309,7 +309,7 @@
 	"articlefeedbackv5-invalid-feedback-flag": "Flag del feedback non valido",
 	"articlefeedbackv5-invalid-feedback-state": "Stato flag feedback non valido",
 	"articlefeedbackv5-feedback-reloaded-after-error": "Si è verificato un errore ($1). Il feedback è stato ricaricato per mostrare il suo stato attuale.",
-	"articlefeedbackv5-go-to-article": "Vedi la pagina",
+	"articlefeedbackv5-go-to-article": "Vedi pagina",
 	"articlefeedbackv5-discussion-page": "Discussione",
 	"articlefeedbackv5-whats-this": "Aiuto",
 	"articlefeedbackv5-settings-menu-title": "Impostazioni",
