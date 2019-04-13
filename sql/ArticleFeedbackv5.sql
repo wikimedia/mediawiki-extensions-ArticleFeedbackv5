@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS /*_*/aft_feedback (
   aft_cta binary(1) NOT NULL DEFAULT '',
   aft_link binary(1) NOT NULL DEFAULT '',
   aft_rating boolean NOT NULL,
-  aft_comment mediumblob NOT NULL DEFAULT '',
+  aft_comment mediumblob NOT NULL,
   aft_timestamp varbinary(14) NOT NULL DEFAULT '',
   aft_discuss enum('user', 'talk') DEFAULT NULL,
   aft_oversight boolean NOT NULL DEFAULT 0,
