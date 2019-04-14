@@ -337,6 +337,7 @@
 	"articlefeedbackv5-permalink-status-inappropriate": "{{GENDER:$1|<strong>Piilottanut</strong> $1}} $2 sitten",
 	"articlefeedbackv5-permalink-status-uninappropriate": "{{GENDER:$1|<strong>Tuonut esiin</strong> $1}} $2 sitten",
 	"articlefeedbackv5-permalink-status-archive": "{{GENDER:$1|<strong>Arkistoinut</strong> $1}} $2",
+	"articlefeedbackv5-permalink-status-hide": "{{GENDER:$1|<strong>Piilottanut</strong> $1}} $2",
 	"articlefeedbackv5-permalink-status-undo-helpful": "{{GENDER:$1|$1 merkitsi <strong>ei-avuliaaksi</strong>}} $2",
 	"articlefeedbackv5-permalink-last-action": "Viimeisin toiminta",
 	"articlefeedbackv5-permalink-activity-more": "Näytä lisää toimintoja...",
