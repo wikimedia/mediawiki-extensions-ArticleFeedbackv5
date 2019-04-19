@@ -28,7 +28,8 @@
 			"阿pp",
 			"Mywood",
 			"Impersonator 1",
-			"Arthur2e5"
+			"Arthur2e5",
+			"佛壁灯"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "提交条目反馈",
@@ -88,6 +89,11 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "应用到列表的过滤",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "要取得的特定反馈项的ID",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "开始抓取数据的偏移值",
+	"articlefeedbackv5-error-spamregex": "评论已被SpamRegex标记为滥用",
+	"articlefeedbackv5-error-spamblacklist": "评论已被SpamBlacklist标记为滥用",
+	"articlefeedbackv5-error-nonexistent-page": "页面或反馈不存在",
+	"articlefeedbackv5-error-permission-denied": "您没有查看反馈活动的权限",
+	"articlefeedbackv5-error-nonexistent-feedback": "反馈不存在",
 	"articlefeedbackv5-cta-thanks": "谢谢！",
 	"articlefeedbackv5-cta-confirmation-message": "您可以在这个[$1 反馈页面]上查看您的帖子。",
 	"articlefeedbackv5-cta1-confirmation-title": "您知道您可以编辑这个页面吗？",
