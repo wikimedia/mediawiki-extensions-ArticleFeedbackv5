@@ -355,7 +355,7 @@ class ArticleFeedbackv5Utils {
 		if ( function_exists( 'wfSpamBlacklistObject' ) ) {
 			$spam = wfSpamBlacklistObject();
 		} elseif ( class_exists( 'BaseBlacklist' ) ) {
-			$spam = BaseBlacklist::getInstance( 'spam' );
+			$spam = BaseBlacklist::getSpamBlacklist();
 		}
 		if ( $spam ) {
 			$title = Title::newFromText( 'ArticleFeedbackv5_' . $pageId );
