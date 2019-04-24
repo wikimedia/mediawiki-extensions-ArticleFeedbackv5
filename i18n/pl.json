@@ -16,7 +16,8 @@
 			"Woytecr",
 			"Alan ffm",
 			"Vengir",
-			"CiaPan"
+			"CiaPan",
+			"Railfail536"
 		]
 	},
 	"apihelp-articlefeedbackv5-param-anontoken": "Token dla użytkowników anonimowych",
@@ -408,9 +409,13 @@
 	"articlefeedbackv5-leave-warning": "Wprowadzone dane nie mogą być zapisane.",
 	"articlefeedbackv5-toolbox-enable": "Włącz opinie",
 	"articlefeedbackv5-disable-preference": "Nie pokazuj na stronach widżetu opinii o artykule",
+	"action-aft-reader": "wysyłania opinii i oznaczania jako (nie)pomocne",
 	"right-aft-reader": "Wysyłanie opinii i oznaczanie jako (nie)pomocne",
+	"action-aft-member": "wysyłania opinii i oznaczania jako (nie)pomocne",
 	"right-aft-member": "Wysyłanie opinii i oznaczanie jako (nie)pomocne",
+	"action-aft-editor": "oznaczania opinii jako wyróżnione lub załatwione",
 	"right-aft-editor": "Oznaczanie opinii jako wyróżnione lub załatwione",
+	"action-aft-monitor": "ukrywania opinii i dostępu do próśb o ich usunięcie",
 	"right-aft-monitor": "Ukrywanie opinii i dostęp do próśb o ich usunięcie",
 	"right-aft-administrator": "Dostęp do formularza opinii na zabezpieczonych stronach",
 	"log-name-articlefeedbackv5": "Rejestr aktywności opinii artykułu",

@@ -542,6 +542,7 @@
 	"articlefeedbackv5-leave-warning": "Data som du har angett kanske inte sparas.",
 	"articlefeedbackv5-toolbox-enable": "Aktivera feedback",
 	"articlefeedbackv5-disable-preference": "Visa inte artikelbedömnings-widget på sidor",
+	"action-aft-reader": "skicka återkoppling och markera som (inte) hjälpsamt",
 	"right-aft-reader": "Skicka in feedback och markera som (inte) hjälpsamt",
 	"right-aft-member": "Skicka in feedback och markera som (inte) hjälpsamt",
 	"right-aft-editor": "Framhäv och lös feedback",
