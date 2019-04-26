@@ -21,6 +21,7 @@
 		]
 	},
 	"apihelp-articlefeedbackv5-summary": "שליחת ביקורת על הערך",
+	"articlefeedbackv5-error-nonexistent-feedback": "משוב לא קיים",
 	"articlefeedbackv5-cta-thanks": "תודה!",
 	"articlefeedbackv5-cta-confirmation-message": "אפשר לראות את הרשומה שלך [$1 בדף המשוב] הזה.",
 	"articlefeedbackv5-cta1-confirmation-title": "הידעת שבאפשרותך לערוך דף זה?",
