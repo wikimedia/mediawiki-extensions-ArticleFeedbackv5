@@ -15,7 +15,8 @@
 			"Saracrovetto",
 			"Selven",
 			"McDutchie",
-			"GabryBarbe"
+			"GabryBarbe",
+			"Senpremì"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Invia feedback alla voce",
@@ -534,11 +535,16 @@
 	"articlefeedbackv5-leave-warning": "I dati che hai inserito non possono essere salvati.",
 	"articlefeedbackv5-toolbox-enable": "Abilita feedback",
 	"articlefeedbackv5-disable-preference": "Non mostrare il widget di valutazione sulle pagine (Article Feedback)",
+	"action-aft-reader": "inserire un commento e contrassegnare come utile/inutile",
 	"right-aft-reader": "Inserisce i commenti e li contrassegna come utili\\inutili",
+	"action-aft-member": "inserire un commento e contrassegnare come utile/inutile",
 	"right-aft-member": "Inserisce i commenti e li contrassegna come utili\\inutili",
 	"right-aft-editor": "Rende particolare e risolve i commenti",
+	"action-aft-monitor": "nascondere i commenti e richiederne la soppressione",
 	"right-aft-monitor": "Nasconde i commenti e richiede la soppressione",
+	"action-aft-administrator": "visualizzare AFT (Article Feedback Tool) sulle pagine protette",
 	"right-aft-administrator": "Visualizza AFT (Article Feedback Tool) sulle pagine protette",
+	"action-aft-oversighter": "sopprimere il commento",
 	"right-aft-oversighter": "Effettua la soppressione dei commenti",
 	"log-name-articlefeedbackv5": "Registro attività Article Feedback",
 	"log-description-articlefeedbackv5": "Questo è il registro delle attività eseguite sui commenti inviati dagli utenti usando Article Feedback.",
