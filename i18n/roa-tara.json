@@ -510,6 +510,7 @@
 	"articlefeedbackv5-activity-item-autohide": "$1 {{GENDER:$6|auto-sconne}} stu messàgge 'u $4 a le $5 $2",
 	"articlefeedbackv5-activity-item-archive": "$1 {{GENDER:$6|ave archivijate}} stu messàgge 'u $4 a le $5 $2",
 	"articlefeedbackv5-activity-item-unarchive": "$1 {{GENDER:$6|ave luate}} da l'archivije stu messàgge 'u $4 a le $5 $2",
+	"articlefeedbackv5-activity-item-clear-flags": "$1 {{GENDER:$6|ave pulezzate}} tutte le segnalaziune pe stu messàgge 'u $4 a le $5 $2",
 	"articlefeedbackv5-activity-count": "{{PLURAL:$1|$1 azione sus a stu messàgge|$1 aziune sus a stu messàgge}}",
 	"articlefeedbackv5-activity-more": "Fà vedè cchiù Attività",
 	"articlefeedbackv5-article-view-feedback": "$1 {{PLURAL:$1|commende}} d'u lettore",
