@@ -5,7 +5,8 @@
 			"Minisarm",
 			"Stelistcristi",
 			"Strainu",
-			"XXN"
+			"XXN",
+			"Andrei Stroe"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Mulțumim!",
@@ -188,7 +189,7 @@
 	"articlefeedbackv5-found-percent": "{{PLURAL:$2|$1 au găsit ceea ce au căutat}}",
 	"articlefeedbackv5": "Panou de control evaluare articol - Pagina centrală",
 	"articlefeedbackv5watchlist": "Comentarii asupra articolelor - Paginile mele urmărite",
-	"articlefeedbackv5-desc": "Evaluare articol",
+	"articlefeedbackv5-desc": "Încurajează utilizatorii să contribuie permițându-le să revizuiască un articol și să propună modificări",
 	"articlefeedbackv5-comment-more": "Mai mult",
 	"articlefeedbackv5-comment-empty": "Niciun text introdus",
 	"articlefeedbackv5-viewactivity": "Vezi activitatea",
@@ -365,7 +366,7 @@
 	"articlefeedbackv5-activity-item-uninappropriate": "$1 {{GENDER:$6|a suprimat}} marcajul „inadecvat” al acestui comentariu pe $4 la $5 $2",
 	"articlefeedbackv5-activity-item-hide": "$1 {{GENDER:$6|a ascuns}} acest comentariu pe $4 la $5 $2",
 	"articlefeedbackv5-activity-item-unhide": "$1 {{GENDER:$6|a reafișat}} acest comentariu pe $4 la $5 $2",
-	"articlefeedbackv5-activity-item-autohide": "$1 {{GENDER:$6|a ascuns}} acest comentariu pe $4 la $5 $2",
+	"articlefeedbackv5-activity-item-autohide": "$1 {{GENDER:$6|a ascuns automat}} acest comentariu pe $4 la $5 $2",
 	"articlefeedbackv5-activity-item-archive": "$1 {{GENDER:$6|a arhivat}} acest comentariu pe $4 la $5 $2",
 	"articlefeedbackv5-activity-item-unarchive": "$1 {{GENDER:$6|a dezarhivat}} acest comentariu pe $4 la $5 $2",
 	"articlefeedbackv5-activity-item-helpful": "$1 {{GENDER:$6|a marcat}} acest comentariu ca util pe $4 la $5 $2",
