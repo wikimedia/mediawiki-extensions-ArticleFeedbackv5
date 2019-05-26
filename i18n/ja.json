@@ -13,7 +13,8 @@
 			"Yanajin66",
 			"青子守歌",
 			"Yusuke1109",
-			"Suyama"
+			"Suyama",
+			"Suchichi02"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "記事のフィードバックを送信",
@@ -164,6 +165,7 @@
 	"articlefeedbackv5-resolve-marker": "解決済",
 	"articlefeedbackv5-noaction-marker": "対処不要",
 	"articlefeedbackv5-inappropriate-marker": "不適切",
+	"articlefeedbackv5-archive-marker": "アーカイブ済み",
 	"articlefeedbackv5-form-abuse-count": "{{PLURAL:$1|$1 フラグ}}",
 	"articlefeedbackv5-form-note": "注記を追加",
 	"articlefeedbackv5-form-feature": "役に立つ",
@@ -189,6 +191,7 @@
 	"articlefeedbackv5-form-decline": "抹消を却下",
 	"articlefeedbackv5-form-declined": "抹消却下済み",
 	"articlefeedbackv5-form-discuss-talk": "トークページで議論",
+	"articlefeedbackv5-form-tooltip-unhide": "非表示を解除",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 が探していたものが見つかりました。}}",
 	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2 が探していたものは見つかりませんでした。}}",
 	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 がコメントを投稿しました。}}",
@@ -294,6 +297,7 @@
 	"articlefeedbackv5-noteflyover-hide-placeholder": "この投稿を秘匿したのはなぜですか?",
 	"articlefeedbackv5-noteflyover-hide-submit": "注記を追加",
 	"articlefeedbackv5-noteflyover-hide-help": "詳細",
+	"articlefeedbackv5-noteflyover-unhide-caption": "非表示を解除",
 	"articlefeedbackv5-noteflyover-unhide-label": "注記を追加",
 	"articlefeedbackv5-noteflyover-unhide-submit": "注記を追加",
 	"articlefeedbackv5-noteflyover-unhide-help": "詳細",

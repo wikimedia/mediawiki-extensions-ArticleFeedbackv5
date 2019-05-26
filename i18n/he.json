@@ -17,10 +17,12 @@
 			"ערן",
 			"פוילישער",
 			"שמזן",
-			"המקיסט"
+			"המקיסט",
+			"Steeve815"
 		]
 	},
 	"apihelp-articlefeedbackv5-summary": "שליחת ביקורת על הערך",
+	"apihelp-articlefeedbackv5-param-anontoken": "אסימון עבור משתמשים אנונימיים",
 	"articlefeedbackv5-error-nonexistent-feedback": "משוב לא קיים",
 	"articlefeedbackv5-cta-thanks": "תודה!",
 	"articlefeedbackv5-cta-confirmation-message": "אפשר לראות את הרשומה שלך [$1 בדף המשוב] הזה.",
@@ -490,6 +492,7 @@
 	"right-aft-editor": "המלצה על משובים וסימונם כ\"פתורים\"",
 	"right-aft-monitor": "הסתרת משובים והוספת בקשה להעלימם",
 	"right-aft-administrator": "צפייה ב־AFT בדפים מוגנים",
+	"action-aft-oversighter": "משוב מסתיר",
 	"right-aft-oversighter": "העלמת משובים",
 	"log-name-articlefeedbackv5": "יומן משוב של ערכים",
 	"log-description-articlefeedbackv5": "זהו יומן הפעילות המכיל את פריטי המשוב שנשלחו על־ידי משתמשים דרך כלי המשוב לערכים.",
@@ -543,7 +546,7 @@
 	"articlefeedbackv5-activity-item-uninappropriate": "$1 {{GENDER:$6|ביטל|ביטלה}} את הסימון של הרשומה הזאת בתור בלתי־הולמת ב־$4 ב־$5 $2",
 	"articlefeedbackv5-activity-item-hide": "$1 {{GENDER:$6|הסתיר|הסתירה}} את הרשומה הזאת ב־$4 ב־$5 $2",
 	"articlefeedbackv5-activity-item-unhide": "$1 {{GENDER:$6|ביטל|ביטלה}} הסתרת הרשומה הזאת ב־$4 ב־$5 $2",
-	"articlefeedbackv5-activity-item-autohide": "$1 {{GENDER:$6|הסתיר|הסתירה}} את הרשומה הזאת אוטומטית ב־$4 ב־$5 $2S",
+	"articlefeedbackv5-activity-item-autohide": "$1 {{$6:מגדר|הסתיר|הסתירה}} את הרשומה הזאת באופן אוטומטי ב־$4 בשעה $5 $2",
 	"articlefeedbackv5-activity-item-archive": "$1 {{GENDER:$6|ארכב|ארכבה}} את הרשומה הזאת ב־$4 ב־$5 $2",
 	"articlefeedbackv5-activity-item-unarchive": "$1 {{GENDER:$6|ביטל|ביטלה}} את הארכוב של הרשומה הזאת ב־$4 ב־$5 $2",
 	"articlefeedbackv5-activity-item-helpful": "$1 {{GENDER:$6|סימן|סימנה}} את הרשומה הזאת בתור מועילה ב־$4 ב־$5 $2",
