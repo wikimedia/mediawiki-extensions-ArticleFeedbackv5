@@ -1,5 +1,8 @@
 <?php
 
+use Wikimedia\Rdbms\IResultWrapper;
+use Wikimedia\Rdbms\FakeResultWrapper;
+
 /**
  * This class provides some functionality to easily get feedback's activity.
  * Because this data is less often requested & because we're dealing with
@@ -202,7 +205,7 @@ class ArticleFeedbackv5Activity {
 	 * @param User|null $user User object who we're fetching activity for (to check permissions)
 	 * @param int $limit total limit number
 	 * @param string|null $continue used for offsets
-	 * @return array db record rows
+	 * @return IResultWrapper db record rows
 	 */
 	public static function getList( ArticleFeedbackv5Model $feedback, $user = null, $limit = 25, $continue = null ) {
 		if ( !$user ) {
@@ -255,7 +258,7 @@ class ArticleFeedbackv5Activity {
 	/**
 	 * Returns a timestamp/id tuple for subsequent request continuing from this record
 	 *
-	 * @param ResultWrapper $row
+	 * @param IResultWrapper $row
 	 * @return string
 	 */
 	public static function getContinue( $row ) {
@@ -371,7 +374,7 @@ class ArticleFeedbackv5Activity {
 	 *
 	 * @param array $entries array of feedback to fetch last log entries for; will be
 	 *                       in the form of array( array( 'id' => [id], 'shard' => [shard] ), ... )
-	 * @return ResultWrapper db record rows
+	 * @return stdClass[] db record rows
 	 */
 	public static function getLastEditorActivity( array $entries ) {
 		global $wgMemc;
@@ -587,7 +590,7 @@ class ArticleFeedbackv5Activity {
 	/**
 	 * Build WHERE conditions for (a) specific feedback entr(y|ies)' log entries.
 	 *
-	 * @param array ArticleFeedbackv5Model $feedback The feedback to fetch log entries for
+	 * @param ArticleFeedbackv5Model $feedback The feedback to fetch log entries for
 	 * @return string|bool false will be returned in the event no valid WHERE-clause
 	 *                     can be built because no feedback is found
 	 */
