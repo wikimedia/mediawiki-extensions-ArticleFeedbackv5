@@ -13,6 +13,7 @@
 	},
 	"apihelp-articlefeedbackv5-param-anontoken": "Ĵetono por anonimuloj",
 	"apihelp-articlefeedbackv5-set-status-param-enable": "1 por ŝalti, 0 por malŝalti AFTv5",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "Ŝlosilo, laŭ kiu rikordoj ordiĝos",
 	"articlefeedbackv5-cta-thanks": "Dankon!",
 	"articlefeedbackv5-cta-confirmation-message": "Via afiŝo povas esti vidita en ĉi tiu [$1 komenta paĝo].",
 	"articlefeedbackv5-cta1-confirmation-title": "Ĉu vi scias ke vi povas redakti ĉi tiun paĝon?",

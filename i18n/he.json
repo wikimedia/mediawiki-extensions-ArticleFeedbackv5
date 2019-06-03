@@ -21,8 +21,10 @@
 			"Steeve815"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "שליחת משוב על הערך",
 	"apihelp-articlefeedbackv5-summary": "שליחת ביקורת על הערך",
 	"apihelp-articlefeedbackv5-param-anontoken": "אסימון עבור משתמשים אנונימיים",
+	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "מזהה היומן הדורש עדכון",
 	"articlefeedbackv5-error-nonexistent-feedback": "משוב לא קיים",
 	"articlefeedbackv5-cta-thanks": "תודה!",
 	"articlefeedbackv5-cta-confirmation-message": "אפשר לראות את הרשומה שלך [$1 בדף המשוב] הזה.",
