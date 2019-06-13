@@ -13,7 +13,8 @@
 			"NH",
 			"Skalman",
 			"Tobulos1",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Mjälten"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Skicka artikelåterkoppling",
@@ -544,7 +545,9 @@
 	"articlefeedbackv5-disable-preference": "Visa inte artikelbedömnings-widget på sidor",
 	"action-aft-reader": "skicka återkoppling och markera som (inte) hjälpsamt",
 	"right-aft-reader": "Skicka in feedback och markera som (inte) hjälpsamt",
+	"action-aft-member": "skicka respons och markera som (inte) hjälpsamt",
 	"right-aft-member": "Skicka in feedback och markera som (inte) hjälpsamt",
+	"action-aft-editor": "Framhäv och lös respons",
 	"right-aft-editor": "Framhäv och lös feedback",
 	"right-aft-monitor": "Dölj feedback- och begärancensur",
 	"right-aft-administrator": "Se AFT på skyddade sidor",
