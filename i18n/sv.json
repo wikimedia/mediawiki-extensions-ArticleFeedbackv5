@@ -551,6 +551,7 @@
 	"right-aft-editor": "Framhäv och lös feedback",
 	"right-aft-monitor": "Dölj feedback- och begärancensur",
 	"right-aft-administrator": "Se AFT på skyddade sidor",
+	"action-aft-oversighter": "se över respons",
 	"right-aft-oversighter": "Censurfeedback",
 	"log-name-articlefeedbackv5": "Aktivitetslogg för artikelfeedback",
 	"log-description-articlefeedbackv5": "Detta är loggen för aktivitet på feedback för användare som använder Artikelfeedback.",

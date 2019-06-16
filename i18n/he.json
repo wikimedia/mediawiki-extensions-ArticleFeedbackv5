@@ -23,6 +23,7 @@
 	},
 	"apihelp-articlefeedbackv5-description": "שליחת משוב על הערך",
 	"apihelp-articlefeedbackv5-summary": "שליחת ביקורת על הערך",
+	"apihelp-articlefeedbackv5-param-title": "כותרת הדף לשליחת משוב. לא ניתן להשתמש בזה יחד עם $1pageid",
 	"apihelp-articlefeedbackv5-param-anontoken": "אסימון עבור משתמשים אנונימיים",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "מזהה היומן הדורש עדכון",
 	"articlefeedbackv5-error-nonexistent-feedback": "משוב לא קיים",
