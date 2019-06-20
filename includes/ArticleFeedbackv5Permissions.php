@@ -106,7 +106,7 @@ class ArticleFeedbackv5Permissions {
 	 * level in case none are set via ?action=protect.
 	 *
 	 * @param int $articleId
-	 * @return ResultWrapper|false false if not restricted or details of restriction set
+	 * @return stdClass|false false if not restricted or details of restriction set
 	 */
 	public static function getProtectionRestriction( $articleId ) {
 		// check if opt-in/-out is enabled
@@ -150,7 +150,7 @@ class ArticleFeedbackv5Permissions {
 	 * those, or false if none are currently set (= not yet set or expired)
 	 *
 	 * @param int $articleId
-	 * @return ResultWrapper The restriction currently applied to the page
+	 * @return stdClass The restriction currently applied to the page
 	 */
 	public static function getAppliedRestriction( $articleId ) {
 		$restriction = self::getProtectionRestriction( $articleId );
