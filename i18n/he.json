@@ -549,7 +549,7 @@
 	"articlefeedbackv5-activity-item-uninappropriate": "$1 {{GENDER:$6|ביטל|ביטלה}} את הסימון של הרשומה הזאת בתור בלתי־הולמת ב־$4 ב־$5 $2",
 	"articlefeedbackv5-activity-item-hide": "$1 {{GENDER:$6|הסתיר|הסתירה}} את הרשומה הזאת ב־$4 ב־$5 $2",
 	"articlefeedbackv5-activity-item-unhide": "$1 {{GENDER:$6|ביטל|ביטלה}} הסתרת הרשומה הזאת ב־$4 ב־$5 $2",
-	"articlefeedbackv5-activity-item-autohide": "$1 {{$6:מגדר|הסתיר|הסתירה}} את הרשומה הזאת באופן אוטומטי ב־$4 בשעה $5 $2",
+	"articlefeedbackv5-activity-item-autohide": "$1 {{GENDER:$6|הסתיר|הסתירה}} את הרשומה הזאת באופן אוטומטי ב־$4 בשעה $5 $2",
 	"articlefeedbackv5-activity-item-archive": "$1 {{GENDER:$6|ארכב|ארכבה}} את הרשומה הזאת ב־$4 ב־$5 $2",
 	"articlefeedbackv5-activity-item-unarchive": "$1 {{GENDER:$6|ביטל|ביטלה}} את הארכוב של הרשומה הזאת ב־$4 ב־$5 $2",
 	"articlefeedbackv5-activity-item-helpful": "$1 {{GENDER:$6|סימן|סימנה}} את הרשומה הזאת בתור מועילה ב־$4 ב־$5 $2",

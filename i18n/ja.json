@@ -14,7 +14,8 @@
 			"青子守歌",
 			"Yusuke1109",
 			"Suyama",
-			"Suchichi02"
+			"Suchichi02",
+			"神樂坂秀吉"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "記事のフィードバックを送信",
@@ -63,6 +64,7 @@
 	"protect-level-aft-editor": "自動承認された利用者のみに有効",
 	"protect-level-aft-administrator": "管理者のみに有効",
 	"protect-level-aft-noone": "すべての利用者に無効",
+	"restriction-articlefeedbackv5": "可視性",
 	"articlefeedbackv5-disabled": "フィードバックが無効になっています",
 	"articlefeedbackv5-disabled-admin-admin": "読者および編集者によるフィードバックは無効になっています。読者も編集者もこのページにフィードバックを新規投稿できません。",
 	"articlefeedbackv5-disabled-admin-editor": "読者によるフィードバックは無効になっています。読者はこのページにフィードバックを新規投稿できません。",
