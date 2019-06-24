@@ -787,7 +787,7 @@ abstract class DataModel {
 	}
 
 	/**
-	 * Build a DataModel entry from it's ResultWrapper data.
+	 * Build a DataModel entry from it's row data.
 	 *
 	 * @param stdClass $row
 	 * @return DataModel
