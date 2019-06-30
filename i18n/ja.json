@@ -15,7 +15,8 @@
 			"Yusuke1109",
 			"Suyama",
 			"Suchichi02",
-			"神樂坂秀吉"
+			"神樂坂秀吉",
+			"マツムシ"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "記事のフィードバックを送信",
@@ -84,6 +85,7 @@
 	"articlefeedbackv5-contribs-status-action-resolve": "解決済",
 	"articlefeedbackv5-contribs-status-action-noaction": "対処不要",
 	"articlefeedbackv5-contribs-status-action-inappropriate": "不適切",
+	"articlefeedbackv5-contribs-status-action-archive": "アーカイブされた",
 	"articlefeedbackv5-contribs-status-action-hide": "秘匿",
 	"articlefeedbackv5-contribs-status-action-request": "抹消要請済み",
 	"articlefeedbackv5-contribs-status-action-oversight": "抹消済み",
