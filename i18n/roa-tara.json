@@ -13,6 +13,7 @@
 	"apihelp-articlefeedbackv5-param-anontoken": "Gettone pe le utinde senza nome",
 	"apihelp-articlefeedbackv5-param-bucket": "Ce module de segnalazione ha state fatte 'ndrucà a l'utende",
 	"apihelp-articlefeedbackv5-param-cta": "CTA 'ndrucate apprisse l'invie d'u module",
+	"apihelp-articlefeedbackv5-param-link": "Sus a cè collegamende l'utende ave cazzate pe arrevà a 'u uigget",
 	"apihelp-articlefeedbackv5-param-comment": "'A segnalazione jndr'à 'na forma testuale libbere",
 	"apihelp-articlefeedbackv5-get-count-description": "Pigghie 'a quanditate de segnalaziune pe 'na certa pàgene/filtre",
 	"apihelp-articlefeedbackv5-get-count-summary": "Pigghie 'a quanditate de segnalaziune pe 'na certa pàgene/filtre",
