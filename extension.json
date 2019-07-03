@@ -1,6 +1,6 @@
 {
 	"name": "Article Feedback",
-	"version": "5.4.2",
+	"version": "5.4.3",
 	"author": [
 		"Greg Chiasson",
 		"Reha Sterbin",
@@ -178,6 +178,10 @@
 		"jquery.appear": {
 			"scripts": "jquery.articleFeedbackv5/jquery.appear.js"
 		},
+		"jquery.articleFeedbackv5.localize": {
+			"@NOTE": "This is a crappy hack and should not exist. The two modules depending on this should use either jquery.i18n, or even better, just be slightly reworked to use Mustache templating instead.",
+			"scripts": "jquery.articleFeedbackv5/jquery.localize.js"
+		},
 		"jquery.articleFeedbackv5": {
 			"scripts": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
 			"styles": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.css",
@@ -275,7 +279,7 @@
 			"dependencies": [
 				"jquery.appear",
 				"jquery.tipsy",
-				"jquery.localize",
+				"jquery.articleFeedbackv5.localize",
 				"jquery.ui.button",
 				"jquery.cookie",
 				"mediawiki.cookie",
@@ -422,7 +426,7 @@
 				"mediawiki.util",
 				"jquery.cookie",
 				"jquery.tipsy",
-				"jquery.localize",
+				"jquery.articleFeedbackv5.localize",
 				"jquery.ui.button"
 			]
 		}
