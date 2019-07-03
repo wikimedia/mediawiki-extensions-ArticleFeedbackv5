@@ -117,7 +117,8 @@
 			],
 			"dependencies": [
 				"jquery.articleFeedbackv5.utils",
-				"mediawiki.jqueryMsg"
+				"mediawiki.jqueryMsg",
+				"mediawiki.util"
 			]
 		},
 		"ext.articleFeedbackv5": {
@@ -172,7 +173,8 @@
 				"articlefeedbackv5-watchlist-view-feedback"
 			],
 			"dependencies": [
-				"mediawiki.user"
+				"mediawiki.user",
+				"mediawiki.util"
 			]
 		},
 		"jquery.appear": {

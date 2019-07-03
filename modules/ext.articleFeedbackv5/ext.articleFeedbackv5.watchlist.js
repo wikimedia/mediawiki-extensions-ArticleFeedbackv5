@@ -19,9 +19,7 @@
 
 			// Build the url to the Special:ArticleFeedbackv5Watchlist page
 			params = { ref: 'watchlist' };
-			url = mw.config.get( 'wgScript' ) + '?title=' +
-				encodeURIComponent( mw.config.get( 'wgArticleFeedbackv5SpecialWatchlistUrl' ) ) +
-				'&' + $.param( params );
+			url = mw.util.getUrl( mw.config.get( 'wgArticleFeedbackv5SpecialWatchlistUrl' ), params );
 
 			// Add the link to the feedback-page next to the title
 			link = $( '<a id="articlefeedbackv5-watchlist-feedback-link"></a>' );

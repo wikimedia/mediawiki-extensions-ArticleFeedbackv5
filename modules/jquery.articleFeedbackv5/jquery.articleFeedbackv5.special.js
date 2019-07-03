@@ -1909,9 +1909,7 @@
 
 				// administrators can change detailed visibility in ?action=protect
 				if ( 'aft-administrator' in userPermissions && userPermissions[ 'aft-administrator' ] ) {
-					link = mw.config.get( 'wgScript' ) + '?title=' +
-						encodeURIComponent( article.title ) +
-						'&' + $.param( { action: 'protect' } );
+					link = mw.util.getUrl( article.title, { action: 'protect' } );
 
 					$link.attr( 'href', link );
 
