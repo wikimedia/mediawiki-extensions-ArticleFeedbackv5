@@ -92,8 +92,6 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 	 * @return string The log entry
 	 */
 	protected function getActionMessage() {
-		global $wgLang, $wgContLang;
-
 		$action          = $this->entry->getSubtype();
 		$target          = $this->entry->getTarget();
 		$skin            = $this->plaintext ? null : $this->context->getSkin();
@@ -143,7 +141,7 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 		// logentry-articlefeedbackv5-unarchive, logentry-articlefeedbackv5-hide, logentry-articlefeedbackv5-unhide,
 		// logentry-articlefeedbackv5-autohide, logentry-articlefeedbackv5-helpful, logentry-articlefeedbackv5-unhelpful,
 		// logentry-articlefeedbackv5-undo-helpful, logentry-articlefeedbackv5-undo-unhelpful, logentry-articlefeedbackv5-clear-flags
-		$language = $skin === null ? $wgContLang : $wgLang;
+		$language = $skin === null ? MediaWikiServices::getInstance()->getContentLanguage() : $this->context->getLanguage();
 		return wfMessage( "logentry-articlefeedbackv5-$action" )
 			->params( [
 				Message::rawParam( $this->getPerformerElement() ),

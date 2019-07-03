@@ -352,17 +352,15 @@ class ArticleFeedbackv5Utils {
 	 */
 	public static function validateSpamBlacklist( $value, $pageId ) {
 		// Check SpamBlacklist, if installed
-		if ( function_exists( 'wfSpamBlacklistObject' ) ) {
-			$spam = wfSpamBlacklistObject();
-		} elseif ( class_exists( 'BaseBlacklist' ) ) {
+		$spam = false;
+		if ( class_exists( 'BaseBlacklist' ) ) {
 			$spam = BaseBlacklist::getSpamBlacklist();
 		}
 		if ( $spam ) {
 			$title = Title::newFromText( 'ArticleFeedbackv5_' . $pageId );
 
-			global $wgParser;
 			$options = new \ParserOptions;
-			$output = $wgParser->parse( $value, $title, $options );
+			$output = MediaWikiServices::getInstance()->getParser()->parse( $value, $title, $options );
 			$links = $output->getExternalLinks();
 
 			$ret = $spam->filter( $links, $title );

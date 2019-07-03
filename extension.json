@@ -1,6 +1,6 @@
 {
 	"name": "Article Feedback",
-	"version": "5.4.2",
+	"version": "5.4.3",
 	"author": [
 		"Greg Chiasson",
 		"Reha Sterbin",
@@ -178,6 +178,9 @@
 		"jquery.appear": {
 			"scripts": "jquery.articleFeedbackv5/jquery.appear.js"
 		},
+		"jquery.articleFeedbackv5.localize": {
+			"scripts": "jquery.articleFeedbackv5/jquery.localize.js"
+		},
 		"jquery.articleFeedbackv5": {
 			"scripts": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
 			"styles": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.css",
@@ -275,7 +278,7 @@
 			"dependencies": [
 				"jquery.appear",
 				"jquery.tipsy",
-				"jquery.localize",
+				"jquery.articleFeedbackv5.localize",
 				"jquery.ui.button",
 				"jquery.cookie",
 				"mediawiki.cookie",
@@ -422,7 +425,7 @@
 				"mediawiki.util",
 				"jquery.cookie",
 				"jquery.tipsy",
-				"jquery.localize",
+				"jquery.articleFeedbackv5.localize",
 				"jquery.ui.button"
 			]
 		}
@@ -448,194 +451,302 @@
 	},
 	"config": {
 		"ArticleFeedbackv5DefaultFilters": {
-			"aft-reader": "featured",
-			"aft-editor": "featured",
-			"aft-monitor": "featured",
-			"aft-oversighter": "featured"
+			"description": "Default filter and direction settings for groups.\nreaders (= all)\neditors (autoconfirmed)\nmonitors\noversighters",
+			"value": {
+				"aft-reader": "featured",
+				"aft-editor": "featured",
+				"aft-monitor": "featured",
+				"aft-oversighter": "featured"
+			}
 		},
 		"ArticleFeedbackv5DefaultSorts": {
-			"featured": [
-				"relevance",
-				"DESC"
-			],
-			"unreviewed": [
-				"age",
-				"DESC"
-			],
-			"helpful": [
-				"helpful",
-				"DESC"
-			],
-			"unhelpful": [
-				"helpful",
-				"ASC"
-			],
-			"flagged": [
-				"age",
-				"DESC"
-			],
-			"useful": [
-				"age",
-				"DESC"
-			],
-			"resolved": [
-				"age",
-				"DESC"
-			],
-			"noaction": [
-				"age",
-				"DESC"
-			],
-			"inappropriate": [
-				"age",
-				"DESC"
-			],
-			"archived": [
-				"age",
-				"DESC"
-			],
-			"allcomment": [
-				"age",
-				"DESC"
-			],
-			"hidden": [
-				"age",
-				"DESC"
-			],
-			"requested": [
-				"age",
-				"DESC"
-			],
-			"declined": [
-				"age",
-				"DESC"
-			],
-			"oversighted": [
-				"age",
-				"DESC"
-			],
-			"all": [
-				"age",
-				"DESC"
-			]
+			"description": "Default sorts by filter. Because privileges don't play a part in default sort, the visible-, notdeleted-, and all- prefixes have been removed.",
+			"value": {
+				"featured": [
+					"relevance",
+					"DESC"
+				],
+				"unreviewed": [
+					"age",
+					"DESC"
+				],
+				"helpful": [
+					"helpful",
+					"DESC"
+				],
+				"unhelpful": [
+					"helpful",
+					"ASC"
+				],
+				"flagged": [
+					"age",
+					"DESC"
+				],
+				"useful": [
+					"age",
+					"DESC"
+				],
+				"resolved": [
+					"age",
+					"DESC"
+				],
+				"noaction": [
+					"age",
+					"DESC"
+				],
+				"inappropriate": [
+					"age",
+					"DESC"
+				],
+				"archived": [
+					"age",
+					"DESC"
+				],
+				"allcomment": [
+					"age",
+					"DESC"
+				],
+				"hidden": [
+					"age",
+					"DESC"
+				],
+				"requested": [
+					"age",
+					"DESC"
+				],
+				"declined": [
+					"age",
+					"DESC"
+				],
+				"oversighted": [
+					"age",
+					"DESC"
+				],
+				"all": [
+					"age",
+					"DESC"
+				]
+			}
 		},
 		"ArticleFeedbackv5RelevanceScoring": {
-			"helpful": 1,
-			"undo-helpful": -1,
-			"unhelpful": -1,
-			"undo-unhelpful": 1,
-			"flag": -5,
-			"unflag": 5,
-			"autoflag": 5,
-			"feature": 50,
-			"unfeature": -50,
-			"resolve": -5,
-			"unresolve": 5,
-			"noaction": -5,
-			"unnoaction": 5,
-			"inappropriate": -50,
-			"uninappropriate": 50,
-			"autohide": -100,
-			"hide": -100,
-			"unhide": 100,
-			"archive": -50,
-			"unarchive": 50,
-			"request": -150,
-			"unrequest": 150,
-			"decline": 150,
-			"oversight": -750,
-			"unoversight": 750
+			"description": "Relevance Scoring. name => integer scoring actions pairs. After changing this you should also change the values in relevance_score.sql and run it to reset relevance",
+			"value": {
+				"helpful": 1,
+				"undo-helpful": -1,
+				"unhelpful": -1,
+				"undo-unhelpful": 1,
+				"flag": -5,
+				"unflag": 5,
+				"autoflag": 5,
+				"feature": 50,
+				"unfeature": -50,
+				"resolve": -5,
+				"unresolve": 5,
+				"noaction": -5,
+				"unnoaction": 5,
+				"inappropriate": -50,
+				"uninappropriate": 50,
+				"autohide": -100,
+				"hide": -100,
+				"unhide": 100,
+				"archive": -50,
+				"unarchive": 50,
+				"request": -150,
+				"unrequest": 150,
+				"decline": 150,
+				"oversight": -750,
+				"unoversight": 750
+			}
 		},
-		"ArticleFeedbackv5Permissions": [
-			"aft-reader",
-			"aft-member",
-			"aft-editor",
-			"aft-monitor",
-			"aft-administrator",
-			"aft-oversighter"
-		],
-		"ArticleFeedbackv5AutoArchiveEnabled": false,
-		"ArticleFeedbackv5AutoArchiveTtl": "+2 weeks",
-		"ArticleFeedbackv5ArticlePageLink": true,
-		"ArticleFeedbackv5TalkPageLink": true,
-		"ArticleFeedbackv5WatchlistLink": true,
-		"ArticleFeedbackv5Watchlist": true,
-		"ArticleFeedbackv5OversightEmails": null,
-		"ArticleFeedbackv5OversightEmailName": "Oversighters",
-		"ArticleFeedbackv5OversightEmailHelp": "https://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help/Feedback_page_Oversighters",
-		"ArticleFeedbackv5AutoHelp": "http://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help",
-		"ArticleFeedbackv5MaxCommentLength": 5000,
-		"ArticleFeedbackv5MaxActivityNoteLength": 5000,
-		"ArticleFeedbackv5RatingLifetime": 30,
-		"ArticleFeedbackv5LotteryOdds": 100,
-		"ArticleFeedbackv5Categories": [
-			"Article_Feedback_5"
-		],
-		"ArticleFeedbackv5BlacklistCategories": [
-			"Article_Feedback_Blacklist"
-		],
-		"ArticleFeedbackv5EnableProtection": true,
-		"ArticleFeedbackv5Debug": false,
+		"ArticleFeedbackv5Permissions": {
+			"description": "Permissions, which are added to $wgAvailableRights. See ArticleFeedbackv5Hooks.php for more documentation etc. on this.",
+			"value": [
+				"aft-reader",
+				"aft-member",
+				"aft-editor",
+				"aft-monitor",
+				"aft-administrator",
+				"aft-oversighter"
+			]
+		},
+		"ArticleFeedbackv5AutoArchiveEnabled": {
+			"description": "Enable/disable the \"archived\" filter. This is a setting that needs to explicitly be set to true since the functionality will depend on a cronjob to be run periodically. True to enable, false to disable.",
+			"value": false
+		},
+		"ArticleFeedbackv5AutoArchiveTtl": {
+			"description": "Defines the auto-archive period for feedback that is not being considered useful. Value should be an strtotime-capable format.\n\nIf defined as string, this will be a fixed TTL based on the feedback creation date.\n\nIt is also possible to set a certain TTL per offset of unreviewed feedback, e.g.:\narray(\n\t0 => '+2 years', // < 9: 2 years\n\t10 => '+1 month', // 10-19: 1 month\n\t20 => '+1 week', // 20-29: 1 week\n\t30 => '+3 days', // 30-39: 3 days\n\t40 => '+2 days', // > 40: 2 days\n\t);",
+			"value": "+2 weeks"
+		},
+		"ArticleFeedbackv5ArticlePageLink": {
+			"description": "Defines whether or not there should be a link to the corresponding feedback on the article page",
+			"value": true
+		},
+		"ArticleFeedbackv5TalkPageLink": {
+			"description": "Defines whether or not there should be a link to the corresponding feedback on the article page's talk page",
+			"value": true
+		},
+		"ArticleFeedbackv5WatchlistLink": {
+			"description": "Defines whether or not there should be a link to the watchlisted feedback on the watchlist page",
+			"value": true
+		},
+		"ArticleFeedbackv5Watchlist": {
+			"description": "Defines whether or not the special page for feedback on a user's watchlisted pages is enabled",
+			"value": true
+		},
+		"ArticleFeedbackv5OversightEmails": {
+			"description": "Email address to send oversight request emails to, if set to null no emails are sent",
+			"value": null
+		},
+		"ArticleFeedbackv5OversightEmailName": {
+			"description": "Name to send oversight request emails to",
+			"value": "Oversighters"
+		},
+		"ArticleFeedbackv5OversightEmailHelp": {
+			"description": "Help link for oversight email",
+			"value": "https://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help/Feedback_page_Oversighters"
+		},
+		"ArticleFeedbackv5AutoHelp": {
+			"description": "Help link for auto flag/hide etc.",
+			"value": "http://en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Version_5/Help"
+		},
+		"ArticleFeedbackv5MaxCommentLength": {
+			"description": "How long text-based feedback is allowed to be before returning an error. Set to 0 to disable length checking entirely.",
+			"value": 5000
+		},
+		"ArticleFeedbackv5MaxActivityNoteLength": {
+			"description": "How long text-based activity items are allowed to be - note this will not return an error but simply chop notes that are too long",
+			"value": 5000
+		},
+		"ArticleFeedbackv5RatingLifetime": {
+			"description": "Number of revisions to keep a rating alive for",
+			"value": 30
+		},
+		"ArticleFeedbackv5LotteryOdds": {
+			"description": "Percentage of article AFT should be enabled on",
+			"value": 100
+		},
+		"ArticleFeedbackv5Categories": {
+			"description": "Which categories the pages must belong to have the rating widget added (with _ in text). Extension is \"disabled\" if this field is an empty array (as per default configuration)",
+			"value": [
+				"Article_Feedback_5"
+			]
+		},
+		"ArticleFeedbackv5BlacklistCategories": {
+			"description": "Which categories the pages must not belong to have the rating widget added (with _ in text)",
+			"value": [
+				"Article_Feedback_Blacklist"
+			]
+		},
+		"ArticleFeedbackv5EnableProtection": {
+			"description": "Allow/disallow the ability to enable or disable AFTv5 on a per-article basis. This feature will add an AFTv5 entry in page protection settings (for admins) or a simple enable/disable link for editors. Disabling this will remove said links & entry in ?action=protect & ignore existing opt-in/-outs, leaving only lottery & whitelist/blacklist categories to define if an article should get AFTv5.",
+			"value": true
+		},
+		"ArticleFeedbackv5Debug": {
+			"description": "This puts the JavaScript into debug mode. In debug mode, you can set your own bucket by passing it in the URL (e.g., ?bucket=1), and the showstopper error mode will have a useful error message, if one exists, rather than the default message.",
+			"value": false
+		},
 		"ArticleFeedbackv5DisplayBuckets": {
-			"buckets": {
-				"0": 0,
-				"1": 0,
-				"4": 0,
-				"6": 100
-			},
-			"version": 6,
-			"expires": 30
+			"description": "Bucket settings for display options. Users can fall into one of several display buckets (these are defined in modules/jquery.articlefeedbackv5/jquery.articlefeedbackv5.js). When a user arrives at the page, this config will be used by core bucketing to decide which of the available form options they see. Whenever there's an update to the available buckets, change the version number to ensure the new odds are applied to everyone, not just people who have yet to be placed in a bucket.",
+			"value": {
+				"buckets": {
+					"0": 0,
+					"1": 0,
+					"4": 0,
+					"6": 100
+				},
+				"version": 6,
+				"expires": 30
+			}
 		},
 		"ArticleFeedbackv5LinkBuckets": {
-			"buckets": {
-				"X": 100,
-				"A": 0,
-				"B": 0,
-				"C": 0,
-				"D": 0,
-				"E": 0,
-				"F": 0,
-				"G": 0,
-				"H": 0
-			},
-			"version": 5,
-			"expires": 30
+			"description": "Bucket settings for links to the feedback form. Users can fall into one of several buckets for links. These are:\nX: No link; user must scroll to the bottom of the page\nA: After the site tagline (below the article title)\nB: Below the titlebar on the right\nC: Button fixed to right side\nD: Button fixed to bottom right\nE: Button fixed to bottom right, design D2\nF: Button fixed to left side\nG: Button below logo\nH: Link on each section bar",
+			"value": {
+				"buckets": {
+					"X": 100,
+					"A": 0,
+					"B": 0,
+					"C": 0,
+					"D": 0,
+					"E": 0,
+					"F": 0,
+					"G": 0,
+					"H": 0
+				},
+				"version": 5,
+				"expires": 30
+			}
 		},
 		"ArticleFeedbackv5CTABuckets": {
-			"buckets": [
-				0,
-				0,
-				0,
-				0,
-				90,
-				9,
-				1
-			],
-			"version": 7,
-			"expires": 0
+			"description": "Bucket settings for CTAs. Users can fall into one of several CTAs (these are defined in modules/jquery.articlefeedbackv5/jquery.articlefeedbackv5.js). When a user arrives at the page, this config will be used by core bucketing to decide which of the available CTAs they see.  Whenever there's an update to the available buckets, change the version number to ensure the new odds are applied to everyone, not just people who have yet to be placed in a bucket.",
+			"value": {
+				"buckets": [
+					0,
+					0,
+					0,
+					0,
+					90,
+					9,
+					1
+				],
+				"version": 7,
+				"expires": 0
+			}
 		},
-		"ArticleFeedbackv5AbusiveThreshold": 3,
-		"ArticleFeedbackv5HideAbuseThreshold": 5,
-		"ArticleFeedbackv5AbuseFiltering": false,
-		"ArticleFeedbackv5AbuseFilterGroup": "feedback",
-		"ArticleFeedbackv5ThrottleThresholdPostsPerHour": 20,
-		"ArticleFeedbackv5LearnToEdit": "//en.wikipedia.org/wiki/Wikipedia:Tutorial",
+		"ArticleFeedbackv5AbusiveThreshold": {
+			"description": "Abusive threshold. After this many users flag a comment as abusive, it is marked as such.",
+			"value": 3
+		},
+		"ArticleFeedbackv5HideAbuseThreshold": {
+			"description": "Hide abuse threshold. After this many users flag a comment as abusive, it is hidden.",
+			"value": 5
+		},
+		"ArticleFeedbackv5AbuseFiltering": {
+			"description": "Turn on abuse filtering. If this is set to true, comments will be run through:\n1. $wgSpamRegex, if set\n2. SpamBlacklist, if installed\n3. AbuseFilter, if installed",
+			"value": false
+		},
+		"ArticleFeedbackv5AbuseFilterGroup": {
+			"description": "This is the custom group name for AbuseFilter. It ensures that AbuseFilter only pulls the filters related to AFT. If you would like AbuseFilter to pull all of the filters, enter 'default' here.",
+			"value": "feedback"
+		},
+		"ArticleFeedbackv5ThrottleThresholdPostsPerHour": {
+			"description": "How many feedback posts per hour before triggering a throttling response? This is per-user and is governed by last-posted timestamps stored in a cookie. If this is set to -1, the number of posts is not throttled.",
+			"value": 20
+		},
+		"ArticleFeedbackv5LearnToEdit": {
+			"description": "The full URL for the \"Learn to Edit\" link",
+			"value": "//en.wikipedia.org/wiki/Wikipedia:Tutorial"
+		},
 		"ArticleFeedbackv5SurveyUrls": {
-			"1": "https://www.surveymonkey.com/s/aft5-1",
-			"2": "https://www.surveymonkey.com/s/aft5-2",
-			"3": "https://www.surveymonkey.com/s/aft5-3",
-			"6": "https://www.surveymonkey.com/s/aft5-6"
+			"description": "The full URL for the survey link",
+			"value": {
+				"1": "https://www.surveymonkey.com/s/aft5-1",
+				"2": "https://www.surveymonkey.com/s/aft5-2",
+				"3": "https://www.surveymonkey.com/s/aft5-3",
+				"6": "https://www.surveymonkey.com/s/aft5-6"
+			}
 		},
-		"ArticleFeedbackv5SpecialPageSurveyUrl": "https://www.surveymonkey.com/s/aft5-5",
-		"AbuseFilterAvailableActions": [
-			"aftv5resolve",
-			"aftv5flagabuse",
-			"aftv5hide",
-			"aftv5request"
-		],
-		"ArticleFeedbackv5BackendClass": "ArticleFeedbackv5BackendLBFactory",
-		"ArticleFeedbackv5Cluster": false
+		"ArticleFeedbackv5SpecialPageSurveyUrl": {
+			"description": "The full URL for the special page survey link",
+			"value": "https://www.surveymonkey.com/s/aft5-5"
+		},
+		"AbuseFilterAvailableActions": {
+			"description": "Add custom action handlers for the AbuseFilter extension",
+			"value": [
+				"aftv5resolve",
+				"aftv5flagabuse",
+				"aftv5hide",
+				"aftv5request"
+			]
+		},
+		"ArticleFeedbackv5BackendClass": {
+			"description": "Defines the backend class to be used by AFT's DataModel. Currently, only 1 (ArticleFeedbackv5BackendLBFactory) backend is supported, so better not touch that ;)",
+			"value": "ArticleFeedbackv5BackendLBFactory"
+		},
+		"ArticleFeedbackv5Cluster": {
+			"description": "Will define what external server should be used. If set to false, the current database (wfGetDB) will be used to read/write data from/to. If AFT data is supposed to be stored on an external database, set the value of this variable to the $wgExternalServers key representing that external connection.",
+			"value": false
+		}
 	},
 	"load_composer_autoloader": true,
-	"manifest_version": 1
+	"manifest_version": 2
 }
