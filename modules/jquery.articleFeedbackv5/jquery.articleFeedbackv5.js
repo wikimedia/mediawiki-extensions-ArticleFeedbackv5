@@ -1342,8 +1342,7 @@
 				$block = $( $.articleFeedbackv5.currentCTA().templates.block );
 
 				// Fill in the signup & login link
-				signupUrl = mw.config.get( 'wgScript' ) + '?' + $.param( {
-					title: 'Special:UserLogin',
+				signupUrl = mw.util.getUrl( 'Special:UserLogin', {
 					returnto: mw.config.get( 'wgPageName' ),
 					type: 'signup',
 					campaign: 'aftv5_cta4',
@@ -1352,8 +1351,7 @@
 				$block.find( '.articleFeedbackv5-cta-button-signup' )
 					.attr( 'href', signupUrl );
 
-				loginUrl = mw.config.get( 'wgScript' ) + '?' + $.param( {
-					title: 'Special:UserLogin',
+				loginUrl = mw.util.getUrl( 'Special:UserLogin', {
 					returnto: mw.config.get( 'wgPageName' ),
 					c: $.articleFeedbackv5.feedbackId
 				} );
@@ -2497,11 +2495,7 @@
 	 * @return {string} URL
 	 */
 	$.articleFeedbackv5.editUrl = function () {
-		var params = {
-			title: mw.config.get( 'wgPageName' ),
-			action: 'edit'
-		};
-		return mw.config.get( 'wgScript' ) + '?' + $.param( params );
+		return mw.util.getUrl( null, { action: 'edit' } );
 	};
 
 	// }}}
@@ -3064,9 +3058,7 @@
 								text: 'articlefeedbackv5-disable-preference'
 							} ) );
 
-					prefLink = mw.config.get( 'wgScript' ) + '?' +
-						$.param( { title: 'Special:Preferences' } ) +
-						'#mw-prefsection-rendering';
+					prefLink = mw.util.getUrl( 'Special:Preferences#mw-prefsection-rendering';
 					$flyover.find( '.articleFeedbackv5-disable-flyover-button' )
 						.attr( 'href', prefLink )
 						.button()
