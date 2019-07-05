@@ -494,12 +494,12 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function contributionsData( &$data, $pager, $offset, $limit, $descending ) {
-		if ( $pager->namespace !== '' || $pager->tagFilter !== false ) {
+		if ( $pager->getNamespace() !== '' || $pager->getTagFilter() !== false ) {
 			return true;
 		}
 
 		$userIds = [];
-		if ( $pager->contribs == 'newbie' ) {
+		if ( $pager->getContribs() == 'newbie' ) {
 			// fetch max user id from cache (if present)
 			global $wgMemc;
 			$key = $wgMemc->makeKey( 'articlefeedbackv5', 'maxUserId' );
