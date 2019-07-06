@@ -132,20 +132,6 @@
 		</form>';
 
 	/**
-	 * Mask HMTL template
-	 */
-	$.articleFeedbackv5special.maskHtmlTemplate = '\
-		<div class="articleFeedbackv5-post-screen">\
-			<div class="articleFeedbackv5-mask-text-wrapper">\
-				<span class="articleFeedbackv5-mask-text">\
-					<span class="articleFeedbackv5-mask-info"></span>\
-					<span class="articleFeedbackv5-mask-view"><a href="#" onclick="return false;">\
-					</a></span>\
-				</span>\
-			</div>\
-		</div>';
-
-	/**
 	 * Loading tag template
 	 */
 	$.articleFeedbackv5special.loadingTemplate = '\
