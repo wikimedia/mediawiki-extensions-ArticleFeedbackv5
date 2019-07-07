@@ -670,5 +670,9 @@
 	"abusefilter-edit-action-aftv5hide": "(Outil de commentaire des articles) Masquage automatique",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Masqué automatiquement. Règle : $1",
 	"abusefilter-edit-action-aftv5request": "(Outil de commentaire des articles) Demander automatiquement un masquage aux administrateurs",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Masquage demandé automatiquement.  Règle&nbsp;: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Masquage demandé automatiquement.  Règle&nbsp;: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "utile",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "résolu",
+	"echo-category-title-feedback": "Commentaire",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Afficher les commentaires"
 }

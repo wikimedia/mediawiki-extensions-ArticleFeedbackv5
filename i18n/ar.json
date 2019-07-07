@@ -633,5 +633,22 @@
 	"abusefilter-edit-action-aftv5hide": "(تعليقات المقالات) إخفاء تلقائي",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "مخفي تلقائيا. قاعدة : $1",
 	"abusefilter-edit-action-aftv5request": "(تعليقات المقالات) طلب أوفرسايت تلقائي",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "تم طلب الأوفرسايت تلقائيا. قاعدة : $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "تم طلب الأوفرسايت تلقائيا. قاعدة : $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "مفيدة",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "محلول",
+	"echo-category-title-feedback": "التغذية الراجعة",
+	"echo-pref-tooltip-feedback": "أعلمني عندما يقوم شخص ما بتقييم تعليقات المقالة على أنها مفيدة.",
+	"articlefeedbackv5-notification-link-text-view-feedback": "عرض الملاحظات",
+	"articlefeedbackv5-notification-feedback-watch": "[[$3|الملاحظات]] حول [[$2]] قد {{GENDER:$1|عُلِّمت}} ك{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} بواسطة [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-bundle": "[[$3|الملاحظات]] حول [[$2]] قد {{GENDER:$1|عُلِّمت}} ك{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}  بواسطة [[User:$1|$1]] و$5 {{PLURAL:$6|آخر|آخرين}}.",
+	"articlefeedbackv5-notification-feedback-watch-flyout": "[[$3|الملاحظات]] حول [[$2]] قد {{GENDER:$1|عُلِّمت}} ك{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} بواسطة [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "الملاحظات حول $2 قد {{GENDER:$1|عُلِّمت}} ك$3 في {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "الملاحظات حول $2 قد {{GENDER:$1|عُلِّمت}} ك$4 بواسطة $1 في {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "الملاحظات حول $2 قد {{GENDER:$1|عُلِّمت}} ك$4 بواسطة $1 و$5 {{PLURAL:$6|آخر|آخرين}} في {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated": "[[$3|ملاحظاتك]] حول [[$2]] قد {{GENDER:$1|عُلِّمت}} ك{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} بواسطة [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-bundle": "[[$3|ملاحظاتك]] حول [[$2]] قد {{GENDER:$1|أشرف|أشرفت}} عليها [[User:$1|$1]] و$4 {{PLURAL:$5|آخر|آخرين}}.",
+	"articlefeedbackv5-notification-feedback-moderated-flyout": "[[$3|ملاحظاتك]] حول [[$2]] قد {{GENDER:$1|عُلِّمت}} ك{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} بواسطة [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-email-subject": "ملاحظاتك حول $2 قد {{GENDER:$1|عُلِّمت}} ك$3 في {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "ملاحظاتك حول $2 قد {{GENDER:$1|عُلِّمت}} ك$4  بواسطة $1 في {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "ملاحظاتك حول $2 قد {{GENDER:$1|أشرف|أشرفت}} عليها $1 و$5 {{PLURAL:$6|آخر|آخرين}} في {{SITENAME}}. $3"
 }

@@ -6,7 +6,8 @@
 			"RajeshPandey",
 			"सरोज कुमार ढकाल",
 			"राम प्रसाद जोशी",
-			"पर्वत सुबेदी"
+			"पर्वत सुबेदी",
+			"Nirajan pant"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "धन्यबाद!",
@@ -58,12 +59,12 @@
 	"articlefeedbackv5-noteflyover-unrequest-help": "अधिक जानकारी",
 	"articlefeedbackv5-noteflyover-oversight-help": "अधिक जानकारी",
 	"articlefeedbackv5-noteflyover-unoversight-help": "अधिक जानकारी",
-	"articlefeedbackv5-noteflyover-decline-help": "अधिक जानकारी",
+	"articlefeedbackv5-noteflyover-decline-help": "थप जान्नुहोस्",
 	"articlefeedbackv5-bucket1-toggle-found-yes": "हुन्छ",
 	"articlefeedbackv5-bucket1-toggle-found-no": "हुँदैन",
 	"articlefeedbackv5-bucket4-learn-to-edit": "पृष्ठ सम्पादन गर्न सिक्नुहोस",
 	"articlefeedbackv5-bucket4-form-submit": "यस पृष्ठ सम्पादन गर्नुहोस्",
-	"articlefeedbackv5-bucket4-noedit-form-submit": "अधिक जानकारी",
+	"articlefeedbackv5-bucket4-noedit-form-submit": "थप जान्नुहोस्",
 	"articlefeedbackv5-help-tooltip-title": "यो के हो?",
-	"articlefeedbackv5-help-tooltip-linktext": "अधिक जानकारी"
+	"articlefeedbackv5-help-tooltip-linktext": "थप जान्नुहोस्"
 }

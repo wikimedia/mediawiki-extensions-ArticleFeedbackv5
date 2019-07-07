@@ -629,5 +629,10 @@
 	"abusefilter-edit-action-aftv5hide": "(Мислење за статија) Автоматски криј",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Автоматски скриено. Правило: $1",
 	"abusefilter-edit-action-aftv5request": "(Мислење за статија) Автоматски побарај скривање",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Автоматски побарано скривање. Правило: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Автоматски побарано скривање. Правило: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "корисно",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "разрешено",
+	"echo-category-title-feedback": "Мислења",
+	"echo-pref-tooltip-feedback": "Ивести ме кога некој ќе означи мислење за статија како корисно.",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Погл. мислења"
 }
