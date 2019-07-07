@@ -110,35 +110,6 @@
 	 */
 	$.articleFeedbackv5special.highlightId = undefined;
 
-	/**
-	 * Action note flyover panel HTML template
-	 *
-	 * @var string
-	 */
-	$.articleFeedbackv5special.notePanelHtmlTemplate = '\
-		<div class="articleFeedbackv5-flyover-header">\
-			<h3 id="articleFeedbackv5-noteflyover-caption"></h3>\
-			<a id="articleFeedbackv5-noteflyover-close" href="#"></a>\
-		</div>\
-		<form class="articleFeedbackv5-form-flyover" action="#">\
-			<div id="articleFeedbackv5-noteflyover-description"></div>\
-			<label id="articleFeedbackv5-noteflyover-label" for="articleFeedbackv5-noteflyover-note"></label>\
-			<input type="text" id="articleFeedbackv5-noteflyover-note" name="articleFeedbackv5-noteflyover-note" maxlength="255" />\
-			<div class="articleFeedbackv5-flyover-footer">\
-				<a id="articleFeedbackv5-noteflyover-submit" class="articleFeedbackv5-flyover-button" href="#"></a>\
-				<a class="articleFeedbackv5-flyover-help" id="articleFeedbackv5-noteflyover-help" href="#"></a>\
-				<div class="clear"></div>\
-			</div>\
-		</form>';
-
-	/**
-	 * Loading tag template
-	 */
-	$.articleFeedbackv5special.loadingTemplate = '\
-		<div id="articleFeedbackv5-feedback-loading">\
-			<span class="articleFeedbackv5-loading-message"></span>\
-		</div>';
-
 	// }}}
 	// {{{ Init methods
 
@@ -183,14 +154,14 @@
 		$.articleFeedbackv5special.setBinds();
 
 		// Add a loading tag to the top and hide it
-		$loading1 = $( $.articleFeedbackv5special.loadingTemplate );
+		$loading1 = mw.template.get( 'jquery.articleFeedbackv5.special', 'loading.mustache' ).render();
 		$loading1.attr( 'id', $loading1.attr( 'id' ) + '-top' );
 		$loading1.find( '.articleFeedbackv5-loading-message' ).text( mw.msg( 'articlefeedbackv5-loading-tag' ) );
 		$loading1.hide();
 		$( '#articleFeedbackv5-show-feedback' ).before( $loading1 );
 
 		// Add a loading tag to the bottom and hide it
-		$loading2 = $( $.articleFeedbackv5special.loadingTemplate );
+		$loading2 = mw.template.get( 'jquery.articleFeedbackv5.special', 'loading.mustache' ).render();
 		$loading2.attr( 'id', $loading2.attr( 'id' ) + '-bottom' );
 		$loading2.find( '.articleFeedbackv5-loading-message' ).text( mw.msg( 'articlefeedbackv5-loading-tag' ) );
 		$loading2.hide();
@@ -269,7 +240,7 @@
 		for ( action in $.articleFeedbackv5special.actions ) {
 			$container = $( '<div></div>' );
 			if ( $.articleFeedbackv5special.actions[ action ].hasTipsy && $.articleFeedbackv5special.actions[ action ].tipsyHtml === undefined ) {
-				$container.html( $.articleFeedbackv5special.notePanelHtmlTemplate );
+				$container.html( mw.template.get( 'jquery.articleFeedbackv5.special', 'note-panel.mustache' ).render() );
 				$container.find( '#articleFeedbackv5-noteflyover-caption' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-caption' ) );
 				$container.find( '#articleFeedbackv5-noteflyover-description' ).html( mw.config.get( 'mw.msg.articlefeedbackv5-noteflyover-' + action + '-description' ) );
 				$container.find( '#articleFeedbackv5-noteflyover-label' ).text( mw.msg( 'articlefeedbackv5-noteflyover-' + action + '-label' ) );
@@ -280,7 +251,7 @@
 			} else {
 				$container.html( $.articleFeedbackv5special.actions[ action ].tipsyHtml );
 			}
-			$.articleFeedbackv5special.actions[ action ].tipsyHtml = $container.localize( { prefix: 'articlefeedbackv5-' } ).html();
+			$.articleFeedbackv5special.actions[ action ].tipsyHtml = $container.html();
 		}
 
 		// Bind actions
