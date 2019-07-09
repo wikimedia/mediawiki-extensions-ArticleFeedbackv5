@@ -1319,7 +1319,7 @@ class ArticleFeedbackv5Render {
 	 *
 	 * @param ArticleFeedbackv5Model $record
 	 * @param string $action
-	 * @param string[optional] $class Additional class to add
+	 * @param string $class [optional] Additional class to add
 	 * @return string
 	 */
 	private function buildToolboxLink( $record, $action, $class = '' ) {
@@ -1387,7 +1387,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns whether an action is allowed
 	 *
-	 * @param  $action string the name of the action
+	 * @param string $permission User right name
 	 * @return bool whether it's allowed
 	 */
 	public function isAllowed( $permission ) {

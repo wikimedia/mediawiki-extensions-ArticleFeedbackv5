@@ -24,7 +24,7 @@ use MediaWiki\MediaWikiServices;
 
 class ArticleFeedbackv5Utils {
 	/**
-	 * @var array [LoadBalancer]
+	 * @var array \Wikimedia\Rdbms\LoadBalancer
 	 */
 	protected static $lb = [];
 
@@ -34,8 +34,8 @@ class ArticleFeedbackv5Utils {
 	public static $written = [];
 
 	/**
-	 * @param $wiki String: the wiki ID, or false for the current wiki
-	 * @return LoadBalancer
+	 * @param string $wiki The wiki ID, or false for the current wiki
+	 * @return \Wikimedia\Rdbms\LoadBalancer
 	 */
 	public static function getLB( $wiki = false ) {
 		if ( !isset( static::$lb[$wiki] ) ) {
@@ -48,13 +48,13 @@ class ArticleFeedbackv5Utils {
 	/**
 	 * Wrapper function for wfGetDB.
 	 *
-	 * @param $db Integer: index of the connection to get. May be DB_MASTER for the
+	 * @param int $db Index of the connection to get. May be DB_MASTER for the
 	 *            master (for write queries), DB_REPLICA for potentially lagged read
 	 *            queries, or an integer >= 0 for a particular server.
-	 * @param $groups Mixed: query groups. An array of group names that this query
+	 * @param array|string $groups Query groups. An array of group names that this query
 	 *                belongs to. May contain a single string if the query is only
 	 *                in one group.
-	 * @param $wiki String: the wiki ID, or false for the current wiki
+	 * @param string $wiki The wiki ID, or false for the current wiki
 	 */
 	public static function getDB( $db, $groups = [], $wiki = false ) {
 		$lb = static::getLB( $wiki );
@@ -103,7 +103,7 @@ class ArticleFeedbackv5Utils {
 	 * See jquery.articleFeedbackv5.utils.js for full implementation;
 	 * this is more of a safety check.
 	 *
-	 * @param $pageId int the page id
+	 * @param int $pageId The page ID
 	 * @return bool
 	 */
 	public static function isFeedbackEnabled( $pageId ) {
@@ -250,7 +250,7 @@ class ArticleFeedbackv5Utils {
 	 *
 	 * @param int $userId can be null or a user object
 	 * @param string|null $userIp (name works too)
-	 * @return anchor tag link to user
+	 * @return string Anchor tag link to user
 	 */
 	public static function getUserLink( $userId, $userIp = null ) {
 		if ( ( $userId instanceof User ) ) {
@@ -282,9 +282,9 @@ class ArticleFeedbackv5Utils {
 	/**
 	 * Returns the percentage helpful, given a helpful count and an unhelpful count
 	 *
-	 * @param  $helpful   int the number of helpful votes
-	 * @param  $unhelpful int the number of unhelpful votes
-	 * @return int the percentage
+	 * @param int $helpful The number of helpful votes
+	 * @param int $unhelpful The number of unhelpful votes
+	 * @return int The percentage
 	 */
 	public static function percentHelpful( $helpful, $unhelpful ) {
 		if ( $helpful + $unhelpful > 0 ) {
@@ -321,8 +321,7 @@ class ArticleFeedbackv5Utils {
 	/**
 	 * Run comment through SpamRegex
 	 *
-	 * @param $value
-	 * @param $pageId
+	 * @param string $value
 	 * @return bool Will return boolean false if valid or true if flagged
 	 */
 	public static function validateSpamRegex( $value ) {
@@ -346,8 +345,8 @@ class ArticleFeedbackv5Utils {
 	/**
 	 * Run comment through SpamBlacklist
 	 *
-	 * @param $value
-	 * @param $pageId
+	 * @param string $value
+	 * @param int $pageId
 	 * @return bool Will return boolean false if valid or true if flagged
 	 */
 	public static function validateSpamBlacklist( $value, $pageId ) {
@@ -375,10 +374,10 @@ class ArticleFeedbackv5Utils {
 	/**
 	 * Run comment through AbuseFilter extension
 	 *
-	 * @param $value
-	 * @param $pageId
-	 * @param $callback Callback function to be called by AbuseFilter
-	 * @return bool|string Will return boolean false if valid or error message (string) if flagged
+	 * @param string $value
+	 * @param int $pageId
+	 * @param callable|null $callback Callback function to be called by AbuseFilter
+	 * @return bool|array Will return boolean false if valid or error message array if flagged
 	 */
 	public static function validateAbuseFilter( $value, $pageId, $callback = null ) {
 		// Check AbuseFilter, if installed

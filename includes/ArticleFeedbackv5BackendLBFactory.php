@@ -15,7 +15,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	/**
 	 * Override getLB so that AFT's data can be on a separate cluster.
 	 *
-	 * @return LoadBalancer
+	 * @return \Wikimedia\Rdbms\LoadBalancer
 	 */
 	public function getLB( $wiki = false ) {
 		global $wgArticleFeedbackv5Cluster;
@@ -33,7 +33,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 *
 	 * @param mixed|null $id The id(s) to fetch, either a single id or an array of them
 	 * @param mixed|null $shard The corresponding shard value(s)
-	 * @return ResultWrapper
+	 * @return \Wikimedia\Rdbms\ResultWrapper
 	 */
 	public function get( $id = null, $shard = null ) {
 		$ids = null;
@@ -86,7 +86,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 * all possible conditions, to know which caches need to be purged/updated.
 	 *
 	 * @param DataModel $entry
-	 * @return ResultWrapper
+	 * @return \Wikimedia\Rdbms\ResultWrapper
 	 */
 	public function evaluateConditions( DataModel $entry ) {
 		/*
@@ -127,7 +127,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 *
 	 * This is quite an expensive function, whose result should be cached.
 	 *
-	 * @param int[optional] The page id
+	 * @param int|null $pageId [optional] The page ID
 	 * @return int
 	 */
 	public function getCountFound( $pageId = null ) {
@@ -160,7 +160,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 * @param int $limit exact query limit
 	 * @param bool $descending query direction, false for ascending, true for descending
 	 * @param array $userIds array of user_ids whose data is to be selected
-	 * @return ResultWrapper
+	 * @return \Wikimedia\Rdbms\ResultWrapper
 	 */
 	public function getContributionsData( $pager, $offset, $limit, $descending, $userIds = [] ) {
 		$tables[] = 'aft_feedback';

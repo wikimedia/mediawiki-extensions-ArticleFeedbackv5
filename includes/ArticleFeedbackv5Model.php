@@ -256,7 +256,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * disregarded, so make sure to ignore these too when calculating the
 	 * percentage.
 	 *
-	 * @param int[optional] The page id
+	 * @param int|null $pageId [optional] The page ID
 	 * @return float
 	 */
 	public static function getCountFound( $pageId = null ) {
@@ -279,7 +279,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * @param int $limit exact query limit
 	 * @param bool $descending query direction, false for ascending, true for descending
 	 * @param array $userIds array of user_ids whose data is to be selected
-	 * @return ResultWrapper
+	 * @return \Wikimedia\Rdbms\ResultWrapper
 	 */
 	public static function getContributionsData( $pager, $offset, $limit, $descending, $userIds = [] ) {
 		return static::getBackend()->getContributionsData( $pager, $offset, $limit, $descending, $userIds );

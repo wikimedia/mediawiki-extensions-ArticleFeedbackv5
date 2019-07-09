@@ -17,8 +17,8 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	protected static $written = [];
 
 	/**
-	 * @param $wiki String: the wiki ID, or false for the current wiki
-	 * @return LoadBalancer
+	 * @param string|bool $wiki The wiki ID, or false for the current wiki
+	 * @return \Wikimedia\Rdbms\LoadBalancer
 	 */
 	public function getLB( $wiki = false ) {
 		return MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getMainLB( $wiki );
@@ -27,13 +27,13 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	/**
 	 * Wrapper function for wfGetDB.
 	 *
-	 * @param $db Integer: index of the connection to get. May be DB_MASTER for the
+	 * @param int $db Index of the connection to get. May be DB_MASTER for the
 	 *            master (for write queries), DB_REPLICA for potentially lagged read
 	 *            queries, or an integer >= 0 for a particular server.
-	 * @param $groups Mixed: query groups. An array of group names that this query
+	 * @param string|array $groups Query groups. An array of group names that this query
 	 *                belongs to. May contain a single string if the query is only
 	 *                in one group.
-	 * @param $wiki String: the wiki ID, or false for the current wiki
+	 * @param string|bool $wiki The wiki ID, or false for the current wiki
 	 */
 	public function getDB( $db, $groups = [], $wiki = false ) {
 		/*
@@ -88,7 +88,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 *
 	 * @param mixed|null $id The id(s) to fetch
 	 * @param mixed|null $shard The corresponding shard value(s)
-	 * @return ResultWrapper
+	 * @return \Wikimedia\Rdbms\ResultWrapper
 	 */
 	public function get( $id = null, $shard = null ) {
 		// query conditions
@@ -170,7 +170,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @param int $limit The amount of entries to fetch
 	 * @param string|null $sort Sort to apply to list
 	 * @param string $order Sort the list ASC or DESC
-	 * @return ResultWrapper
+	 * @return \Wikimedia\Rdbms\ResultWrapper
 	 */
 	public function getList( $name, $shard = null, $offset = null, $limit, $sort = null, $order ) {
 		$dbr = $this->getDB( DB_REPLICA );
@@ -291,7 +291,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * all possible conditions, to know which caches need to be purged/updated.
 	 *
 	 * @param DataModel $entry
-	 * @return ResultWrapper
+	 * @return \Wikimedia\Rdbms\ResultWrapper
 	 */
 	public function evaluateConditions( DataModel $entry ) {
 		$class = $this->datamodel;

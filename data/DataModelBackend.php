@@ -58,7 +58,7 @@ abstract class DataModelBackend {
 	 *
 	 * @param mixed|null $id The id(s) to fetch, either a single id or an array of them
 	 * @param mixed|null $shard The corresponding shard value(s)
-	 * @return ResultWrapper
+	 * @return \Wikimedia\Rdbms\ResultWrapper
 	 */
 	abstract public function get( $id = null, $shard = null );
 
@@ -95,7 +95,7 @@ abstract class DataModelBackend {
 	 * @param int $limit The amount of entries to fetch
 	 * @param string|null $sort Sort to apply to list
 	 * @param string $order Sort the list ASC or DESC
-	 * @return ResultWrapper
+	 * @return \Wikimedia\Rdbms\ResultWrapper
 	 */
 	abstract public function getList( $name, $shard = null, $offset = null, $limit, $sort = null, $order );
 
@@ -115,7 +115,7 @@ abstract class DataModelBackend {
 	 * all possible conditions, to know which caches need to be purged/updated.
 	 *
 	 * @param DataModel $entry
-	 * @return ResultWrapper
+	 * @return \Wikimedia\Rdbms\ResultWrapper
 	 */
 	abstract public function evaluateConditions( DataModel $entry );
 

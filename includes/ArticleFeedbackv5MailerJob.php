@@ -30,9 +30,8 @@ class ArticleFeedbackv5MailerJob extends Job {
 	/**
 	 * Passthrough that sends the name of the class as the name of the job
 	 *
-	 * @param $command
-	 * @param $title
-	 * @param $params array
+	 * @param Title $title
+	 * @param array $params
 	 * @param int $id
 	 */
 	function __construct( $title, $params, $id = 0 ) {

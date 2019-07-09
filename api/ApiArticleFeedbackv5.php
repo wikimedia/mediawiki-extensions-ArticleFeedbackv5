@@ -327,9 +327,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 * @return string
 	 */
 	public function getDescription() {
-		return [
-			'Submit article feedback'
-		];
+		return 'Submit article feedback';
 	}
 
 	/**

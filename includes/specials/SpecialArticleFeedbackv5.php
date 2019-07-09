@@ -220,7 +220,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	}
 
 	/**
-	 * @return DataModelList
+	 * @return bool|DataModelList DataModelList on success, bool false on failure
 	 */
 	protected function fetchData() {
 		// permalink page
@@ -554,7 +554,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 	/**
 	 * @param ArticleFeedbackv5Render $renderer the renderer
-	 * @param DataModelList $record the fetched records
+	 * @param DataModelList $records the fetched records
 	 * @return string
 	 */
 	protected function buildContent( $renderer, $records ) {
@@ -798,8 +798,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	/**
 	 * Sets the filter, sort, and sort direction based on what was passed in
 	 *
-	 * @param $filter string the requested filter
-	 * @param $sort   string the requested sort
+	 * @param string $filter The requested filter
+	 * @param string $sort The requested sort
 	 */
 	protected function setFilterSortDirection( $filter, $sort ) {
 		global $wgArticleFeedbackv5DefaultFilters,
@@ -869,7 +869,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	/**
 	 * Returns whether an action is allowed
 	 *
-	 * @param  $action string the name of the action
+	 * @param string $permission Name of the user right to check
 	 * @return bool whether it's allowed
 	 */
 	public function isAllowed( $permission ) {

@@ -54,7 +54,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 	}
 
 	/**
-	 * @return array
+	 * @return DataModelList
 	 */
 	protected function fetchData() {
 		return ArticleFeedbackv5Model::getWatchlistList(

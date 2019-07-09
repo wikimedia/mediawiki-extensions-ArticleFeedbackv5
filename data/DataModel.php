@@ -642,7 +642,6 @@ abstract class DataModel {
 	 * @param string $offset The offset to start from
 	 * @param string $sort Sort to apply to list
 	 * @param string $order Sort the list ASC or DESC
-	 * @return DataModelList
 	 */
 	public static function cacheList( $list, $name, $shard, $offset, $sort, $order ) {
 		/*
