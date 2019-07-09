@@ -47,15 +47,19 @@
 
 						/*
 						 * Add the link next to #siteSub. Append to #siteSub node if
-						 * it's visible, so we inherit it's style. Otherwise, add as
-						 * new node, right after #siteSub
+						 * it's visible, so we inherit its style. Otherwise, add as
+						 * new node, right after #siteSub if there is a #siteSub.
+						 * If there isn't, add it above #mw-content-text.
 						 */
-						if ( $( '#siteSub' ).is( ':visible' ) ) {
-							$link.appendTo( '#siteSub' );
+						if ( $( '#siteSub' ).length > 0 ) {
+							if ( $( '#siteSub' ).is( ':visible' ) ) {
+								$link.appendTo( '#siteSub' );
+							} else {
+								$link.insertAfter( '#siteSub' );
+							}
 						} else {
-							$link.insertAfter( '#siteSub' );
+							$( '#mw-content-text' ).before( $link );
 						}
-
 					}
 				}
 			} );
