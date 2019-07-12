@@ -625,5 +625,7 @@
 	"abusefilter-edit-action-aftv5hide": "(Article Feedback) nascosto automaticamente",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Nascosto automaticamente. Regola: $1",
 	"abusefilter-edit-action-aftv5request": "(Article Feedback) richiesta soppressione automaticamente",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Richiesta soppressione automaticamente. Regola $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Richiesta soppressione automaticamente. Regola $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "utile",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "risolto"
 }

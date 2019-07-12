@@ -637,5 +637,22 @@
 	"abusefilter-edit-action-aftv5hide": "(Відгук до статті) Автоматично приховати",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Автоматично сховано. Правило: $1",
 	"abusefilter-edit-action-aftv5request": "(Відгук до статті) Автоматичний запит на приховування",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Автоматично подано запит на приховування. Правило: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Автоматично подано запит на приховування. Правило: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "корисний",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "вирішений",
+	"echo-category-title-feedback": "Зворотний зв'язок",
+	"echo-pref-tooltip-feedback": "Сповіщати мене, коли хтось позначає відгук до статті як корисний.",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Переглянути відгуки",
+	"articlefeedbackv5-notification-feedback-watch": "[[$3|Відгук]] про [[$2]] було {{GENDER:$1|позначено}} як {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} користувачем [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-bundle": "[[$3|Відгук]] про [[$2]] було {{GENDER:$1|позначено}} як {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} користувачем [[User:$1|$1]] та $5 {{PLURAL:$6|іншим|іншими}}.",
+	"articlefeedbackv5-notification-feedback-watch-flyout": "[[$3|Відгук]] про [[$2]] було {{GENDER:$1|позначено}} як {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} користувачем [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "Відгук про $2 було {{GENDER:$1|позначено}} як $3 на сайті {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "Відгук про $2 було {{GENDER:$1|позначено}} як $4 користувачем $1 на сайті {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "Відгук про $2 було {{GENDER:$1|позначено}} як $4 користувачем $1 та $5 {{PLURAL:$6|іншим|іншими}} на сайті {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated": "[[$3|Ваш відгук]] про [[$2]] було {{GENDER:$1|позначено}} як {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} користувачем [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-bundle": "[[$3|Ваш відгук]] про [[$2]] було {{GENDER:$1|відмодеровано}} користувачем [[User:$1|$1]] та $4 {{PLURAL:$5|іншим|іншими}}.",
+	"articlefeedbackv5-notification-feedback-moderated-flyout": "[[$3|Ваш відгук]] про [[$2]] було {{GENDER:$1|позначено}} як {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} користувачем [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-email-subject": "Ваш відгук про $2 було {{GENDER:$1|позначено}} як $3 на сайті {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "Ваш відгук про $2 було {{GENDER:$1|позначено}} як $4 користувачем $1 на сайті {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "Ваш відгук про $2 було {{GENDER:$1|відмодеровано}} користувачем $1 та $5 {{PLURAL:$6|іншим|іншими}} на сайті {{SITENAME}}. $3"
 }

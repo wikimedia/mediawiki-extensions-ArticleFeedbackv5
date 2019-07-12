@@ -462,5 +462,7 @@
 	"articlefeedbackv5-abusefilter-note-aftv5flag": "Automatesch als Mëssbrauch markéiert. Regel: $1",
 	"abusefilter-edit-action-aftv5hide": "(Artikel Feedback) Automatesch verstoppen",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Automatesch verstoppt. Regel: $1",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Iwwerpréiwen automatesch ugefrot. Regel: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Iwwerpréiwen automatesch ugefrot. Regel: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "nëtzlech",
+	"echo-category-title-feedback": "Feedback"
 }

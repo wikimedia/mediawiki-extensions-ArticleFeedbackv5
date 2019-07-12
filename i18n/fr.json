@@ -674,5 +674,18 @@
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "utile",
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "résolu",
 	"echo-category-title-feedback": "Commentaire",
-	"articlefeedbackv5-notification-link-text-view-feedback": "Afficher les commentaires"
+	"echo-pref-tooltip-feedback": "Me notifier quand quelqu’un marque l’avis sur l’article comme utile.",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Afficher les commentaires",
+	"articlefeedbackv5-notification-feedback-watch": "[[$3|L’avis]] sur [[$2]] a été {{GENDER:$1|marqué}} comme {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} par [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-bundle": "[[$3|L’avis]] sur [[$2]] a été {{GENDER:$1|marqué}} comme {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} par [[User:$1|$1]] et $5 {{PLURAL:$6|autre|autres}}.",
+	"articlefeedbackv5-notification-feedback-watch-flyout": "[[$3|L’avis]] sur [[$2]] a été {{GENDER:$1|marqué}} comme {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} par [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "L’avis sur $2 a été {{GENDER:$1|marqué}} comme $3 sur {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "L’avis sur $2 a été {{GENDER:$1|marqué}} comme $4 par $1 sur {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "L’avis sur $2 a été {{GENDER:$1|marqué}} comme $4 par $1 et $5 {{PLURAL:$6|autre|autres}} sur {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated": "[[$3|Votre avis]] sur [[$2]] a été {{GENDER:$1|marqué}} comme {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} par [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-bundle": "[[$3|Votre avis]] sur [[$2]] a été {{GENDER:$1|modéré}} par [[User:$1|$1]] et $4 {{PLURAL:$5|autre|autres}}.",
+	"articlefeedbackv5-notification-feedback-moderated-flyout": "[[$3|Votre avis]] sur [[$2]] a été {{GENDER:$1|marqué}} comme {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} par [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-email-subject": "Votre avis sur $2 a été {{GENDER:$1|marqué}} comme $3 sur {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "Votre avis sur $2 a été {{GENDER:$1|marqué}} comme $4 par $1 sur {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "Votre avis sur $2 a été {{GENDER:$1|modéré}} par $1 et $5 {{PLURAL:$6|autre|autres}} sur {{SITENAME}}. $3"
 }

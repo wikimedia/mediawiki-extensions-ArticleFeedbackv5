@@ -634,5 +634,17 @@
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "разрешено",
 	"echo-category-title-feedback": "Мислења",
 	"echo-pref-tooltip-feedback": "Ивести ме кога некој ќе означи мислење за статија како корисно.",
-	"articlefeedbackv5-notification-link-text-view-feedback": "Погл. мислења"
+	"articlefeedbackv5-notification-link-text-view-feedback": "Погл. мислења",
+	"articlefeedbackv5-notification-feedback-watch": "[[$3|Мислењето]] за [[$2]] е {{GENDER:$1|означено}} како {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} од [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-bundle": "[[$3|Мислењето]] за [[$2]] е {{GENDER:$1|означено}} како {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} од [[User:$1|$1]] и уште {{PLURAL:$6|еден|$5 други}}.",
+	"articlefeedbackv5-notification-feedback-watch-flyout": "[[$3|Мислењето]] за [[$2]] е {{GENDER:$1|означено}} како {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} од [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "Мислењето за $2 е {{GENDER:$1|означено}} како $3 на {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "Мислењето за $2 е {{GENDER:$1|означено}} како $4 од $1 на {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "Мислењето за $2 е {{GENDER:$1|означено}} како $4 од $1 и уште {{PLURAL:$6|еден|$5 други}} на {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated": "[[$3|Вашето мислење]] за [[$2]] е {{GENDER:$1|означено}} како {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} од [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-bundle": "[[$3|Вашето мислење]] за [[$2]] е {{GENDER:$1|проверено}} од [[User:$1|$1]] и уште {{PLURAL:$5|еден|$4 други}}.",
+	"articlefeedbackv5-notification-feedback-moderated-flyout": "[[$3|Вашето мислење]] за [[$2]] е {{GENDER:$1|означено}} како {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} од [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-email-subject": "Вашето мислење за $2 е {{GENDER:$1|означено}} како $3 на {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "Вашето мислење за $2 е {{GENDER:$1|означено}} како $4 од $1 на {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "Вашето мислење за $2 е {{GENDER:$1|проверено}} од $1 и уште {{PLURAL:$6|еден|$5 други}} на {{SITENAME}}. $3"
 }

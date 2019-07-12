@@ -103,6 +103,7 @@
 	"articlefeedbackv5-cta6-confirmation-title": "Precisa de ajuda para editar em {{SITENAME}}?",
 	"articlefeedbackv5-cta6-confirmation-call": "Para discutir a edição na {{SITENAME}}, venha para o Cáfe dos Novatos, onde editores experientes e novos se unem para trocar dicas úteis.",
 	"articlefeedbackv5-cta6-button-text": "Visite o Café dos Novatos",
+	"articlefeedbackv5-cta6-button-link": "//pt.Wikipédia:Tire suas dúvidas?ref=aft",
 	"articlefeedbackv5-overlay-close": "Fechar",
 	"articlefeedbackv5-error": "Ocorreu um erro. Por favor, tente novamente mais tarde.",
 	"articlefeedbackv5-error-blocked": "Usuários bloqueados não podem enviar comentários.",
@@ -632,5 +633,10 @@
 	"abusefilter-edit-action-aftv5hide": "(Avaliação do artigo) ocultar automaticamente",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Oculta automaticamente. Regra $1",
 	"abusefilter-edit-action-aftv5request": "(Avaliação do artigo) Solicitar supervisão automaticamente",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Supervisão automaticamente requerida. Regra: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Supervisão automaticamente requerida. Regra: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "útil",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "resolvido",
+	"echo-category-title-feedback": "Comentário",
+	"echo-pref-tooltip-feedback": "Avise-me quando alguém marcar o comentário do artigo como útil.",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Ver avaliação"
 }

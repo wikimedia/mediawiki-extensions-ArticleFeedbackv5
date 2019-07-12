@@ -3,7 +3,8 @@
 		"authors": [
 			"Nullzero",
 			"Ans",
-			"Aefgh39622"
+			"Aefgh39622",
+			"กิ๊ฟ เลิกล่ะ สายแข็ง"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "ส่งคำติชมบทความ",
@@ -36,5 +37,6 @@
 	"articlefeedbackv5-sitesub-linktext": "ปรับปรุงหน้านี้",
 	"articlefeedbackv5-titlebar-linktext": "ช่วยปรับปรุงหน้านี้ >>",
 	"articlefeedbackv5-fixedtab-linktext": "ปรับปรุงหน้านี้",
-	"articlefeedbackv5-bottomrighttab-linktext": "ปรับปรุงหน้านี้"
+	"articlefeedbackv5-bottomrighttab-linktext": "ปรับปรุงหน้านี้",
+	"articlefeedbackv5-notification-feedback-moderated-flyout": "[[$3|Your feedback]] about [[$2]] was {{GENDER:$1|marked}} as {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} by [[User:$1|$1]]."
 }

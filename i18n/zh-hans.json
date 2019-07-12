@@ -29,7 +29,8 @@
 			"Mywood",
 			"Impersonator 1",
 			"Arthur2e5",
-			"佛壁灯"
+			"佛壁灯",
+			"神樂坂秀吉"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "提交条目反馈",
@@ -649,5 +650,9 @@
 	"abusefilter-edit-action-aftv5hide": "（条目反馈）自动隐藏",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "自动隐藏。规则：$1",
 	"abusefilter-edit-action-aftv5request": "（条目反馈）自动请求监督",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "自动请求监督。规则：$1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "自动请求监督。规则：$1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "有用",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "已解决",
+	"echo-category-title-feedback": "反馈",
+	"articlefeedbackv5-notification-link-text-view-feedback": "查看反馈"
 }

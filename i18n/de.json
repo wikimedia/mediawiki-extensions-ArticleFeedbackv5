@@ -20,7 +20,8 @@
 			"Tomabrafix",
 			"Wikifan",
 			"Wnme",
-			"Sushi"
+			"Sushi",
+			"Luke081515"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Versendet die Artikel-Rückmeldung",
@@ -633,5 +634,10 @@
 	"abusefilter-edit-action-aftv5hide": "(Artikel-Feedback) Automatisch verstecken",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Automatisch versteckt. Regel: $1",
 	"abusefilter-edit-action-aftv5request": "(Artikel-Feedback) Automatisch Oversight beantragen",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Automatisch Oversight beantragt. Regel: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Automatisch Oversight beantragt. Regel: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "Nützlich",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "Erledigt",
+	"echo-category-title-feedback": "Feedback",
+	"echo-pref-tooltip-feedback": "Benachrichtige mich, wenn jemand meinen Artikel als nützlich markiert.",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Rückmeldungen ansehen"
 }
