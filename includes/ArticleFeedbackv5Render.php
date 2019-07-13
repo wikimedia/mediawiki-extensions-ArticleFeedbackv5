@@ -1147,7 +1147,7 @@ class ArticleFeedbackv5Render {
 					[],
 					wfMessage(
 						'articlefeedbackv5-permalink-info-length-words',
-						str_word_count( $record->aft_comment )
+						$this->str_word_count_utf8( $record->aft_comment )
 					)->escaped() .
 					'&nbsp;' .
 					Html::rawElement(
@@ -1155,7 +1155,7 @@ class ArticleFeedbackv5Render {
 						[],
 						wfMessage(
 							'articlefeedbackv5-permalink-info-length-characters',
-							strlen( $record->aft_comment )
+							mb_strlen( $record->aft_comment )
 						)->escaped()
 					)
 				);
@@ -1393,5 +1393,20 @@ class ArticleFeedbackv5Render {
 	public function isAllowed( $permission ) {
 		global $wgUser;
 		return $wgUser->isAllowed( $permission ) && !$wgUser->isBlocked();
+	}
+
+	/**
+	 * UTF-8 friendlier version of PHP's str_word_count() function by
+	 * php dot net at salagir dot com
+	 *
+	 * @see https://www.php.net/manual/en/function.str-word-count.php#122242
+	 * @see https://phabricator.wikimedia.org/T60280
+	 *
+	 * @param string $str Input string
+	 * @return int Calculated word count
+	 */
+	private function str_word_count_utf8( $str ) {
+		$a = preg_split( '/\W+/u', $str, -1, PREG_SPLIT_NO_EMPTY );
+		return count( $a );
 	}
 }
