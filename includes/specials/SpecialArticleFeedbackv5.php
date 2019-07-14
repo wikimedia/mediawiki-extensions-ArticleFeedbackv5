@@ -299,8 +299,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$listHeader = $this->buildListHeader();
 		}
 
-		return
-			Html::openElement( 'div', [ 'id' => 'articleFeedbackv5-header-wrap' ] ) .
+		return Html::openElement( 'div', [ 'id' => 'articleFeedbackv5-header-wrap' ] ) .
 				Html::openElement( 'div', [ 'id' => 'articleFeedbackv5-header-links' ] ) .
 					Html::element(
 						'a',
@@ -319,8 +318,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @return string
 	 */
 	protected function buildListHeader() {
-		return
-			$this->buildSummary() .
+		return $this->buildSummary() .
 			Html::element( 'div', [ 'class' => 'float-clear' ] );
 	}
 
@@ -579,8 +577,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 */
 	protected function buildPermalink( $renderer, $record ) {
 		$linkRenderer = $this->getLinkRenderer();
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'div',
 				[ 'class' => 'articleFeedbackv5-feedback-permalink-goback' ],
 				$linkRenderer->makeLink(
@@ -631,8 +628,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 				);
 		}
 
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'div',
 				[ 'id' => 'articleFeedbackv5-sort-filter-controls' ],
 				$this->buildFilters() .
@@ -738,8 +734,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			}
 		}
 
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'div',
 				[ 'id' => 'articleFeedbackv5-filter' ],
 				implode( ' ', $filterLabels ) .
@@ -778,8 +773,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$sortSelect->setDefault( $this->startingSort . '-' . $this->startingSortDirection );
 		$sortSelect->addOptions( $opts );
 
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'div',
 				[ 'id' => 'articleFeedbackv5-sort' ],
 				Html::rawElement(

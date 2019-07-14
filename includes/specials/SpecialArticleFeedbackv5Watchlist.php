@@ -75,8 +75,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		$user = $this->getUser();
 
 		// Showing {count} posts
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'div',
 				[ 'id' => 'articleFeedbackv5-special-watchlist-showing-wrap' ],
 				$this->msg( 'articlefeedbackv5-special-watchlist-showing',
@@ -151,8 +150,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 			}
 		}
 
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'div',
 				[ 'id' => 'articleFeedbackv5-filter' ],
 				implode( ' ', $filterLabels ) .

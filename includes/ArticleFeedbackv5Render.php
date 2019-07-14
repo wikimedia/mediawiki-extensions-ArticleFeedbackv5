@@ -131,8 +131,7 @@ class ArticleFeedbackv5Render {
 			$permalinkInfo = $this->renderPermalinkInfo( $record );
 		}
 
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'div',
 				[
 					'class' => $topClass,
@@ -262,8 +261,7 @@ class ArticleFeedbackv5Render {
 			return '';
 		}
 
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'div',
 				[ 'class' => "articleFeedbackv5-feedback articleFeedbackv5-feedback-$class articleFeedbackv5-feedback-emptymask" ],
 				$this->grayMask( $record, true ) .
@@ -313,8 +311,7 @@ class ArticleFeedbackv5Render {
 			return '';
 		}
 
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'div',
 				[ 'class' => 'articleFeedbackv5-post-screen' ],
 				Html::rawElement(
@@ -368,8 +365,7 @@ class ArticleFeedbackv5Render {
 			}
 		}
 
-		return
-			$this->feedbackHead( $msg, $record ) .
+		return $this->feedbackHead( $msg, $record ) .
 			$this->renderComment( $record );
 	}
 
@@ -446,8 +442,7 @@ class ArticleFeedbackv5Render {
 			);
 		}
 
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'div',
 				[ 'class' => 'articleFeedbackv5-comment-head' ],
 				$this->renderTagBlock( $record ) .
@@ -482,8 +477,7 @@ class ArticleFeedbackv5Render {
 				);
 		}
 
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'span',
 				[ 'class' => 'articleFeedbackv5-comment-details' ],
 				Html::element(
@@ -550,8 +544,7 @@ class ArticleFeedbackv5Render {
 			);
 		}
 
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'blockquote',
 				[ 'dir' => 'auto' ],
 				$short .
@@ -742,8 +735,7 @@ class ArticleFeedbackv5Render {
 			}
 		}
 
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'div',
 				[ 'class' => 'articleFeedbackv5-vote-wrapper' ],
 				Html::rawElement(
@@ -777,8 +769,7 @@ class ArticleFeedbackv5Render {
 		// articlefeedbackv5-new-marker, articlefeedbackv5-oversight-marker, articlefeedbackv5-autohide-marker,
 		// articlefeedbackv5-hide-marker, articlefeedbackv5-feature-marker, articlefeedbackv5-resolve-marker,
 		// articlefeedbackv5-noaction-marker, articlefeedbackv5-inappropriate-marker, articlefeedbackv5-archive-marker
-		return
-			Html::rawElement(
+		return Html::rawElement(
 			'div',
 			[ 'class' => 'articleFeedbackv5-comment-tags' ],
 			Html::element(
@@ -1070,8 +1061,7 @@ class ArticleFeedbackv5Render {
 			}
 		}
 
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'div',
 				[
 					'class' => 'articleFeedbackv5-feedback-tools',
@@ -1279,8 +1269,7 @@ class ArticleFeedbackv5Render {
 		}
 
 		// Frame and return
-		return
-			Html::rawElement(
+		return Html::rawElement(
 				'div',
 				[ 'id' => 'articleFeedbackv5-feedback-permalink-info' ],
 				Html::rawElement(

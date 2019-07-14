@@ -4,7 +4,6 @@
 		<exclude name="Generic.Files.LineLength.TooLong" />
 		<exclude name="Generic.Files.OneObjectStructurePerFile.MultipleFound" />
 		<exclude name="Generic.PHP.NoSilencedErrors.Discouraged" />
-		<exclude name="MediaWiki.Commenting.FunctionComment.ExtraParamComment" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationProtected" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPublic" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingParamName" />
@@ -18,10 +17,6 @@
 		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
 		<exclude name="Squiz.Classes.ValidClassName.NotCamelCaps" />
 		<exclude name="Squiz.Scope.MethodScope.Missing" />
-		<exclude name="Squiz.WhiteSpace.LanguageConstructSpacing.IncorrectSingle" />
-		<exclude name="Squiz.WhiteSpace.LogicalOperatorSpacing.TooMuchSpaceAfter" />
-		<exclude name="Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore" />
-		<exclude name="Squiz.WhiteSpace.ScopeClosingBrace.Indent" />
 	</rule>
 	<file>.</file>
 	<arg name="extensions" value="php,php5,inc"/>
