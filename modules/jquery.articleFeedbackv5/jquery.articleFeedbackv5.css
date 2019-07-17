@@ -35,7 +35,8 @@
 	border: 1px solid #ccc;
 	padding-bottom: 1px;
 	margin: 0;
-	width: 700px !important;
+	width: 100%;
+	max-width: 700px;
 }
 
 .articleFeedbackv5-error-message {
