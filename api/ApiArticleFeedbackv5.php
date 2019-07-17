@@ -9,6 +9,9 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
+use MediaWiki\MediaWikiServices;
+use Wikimedia\ScopedCallback;
+
 /**
  * This saves the ratings
  *
@@ -75,6 +78,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$feedback->aft_rating = $params['found'];
 		$feedback->aft_comment = trim( $params['comment'] );
 
+		$services = MediaWikiServices::getInstance();
 		/*
 		 * Check submission against last entry: do not allow duplicates.
 		 *
@@ -86,10 +90,31 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		 * permission to the list and pretend to have that permission when attempting
 		 * to fetch that list here. Now we can leave the permission-safeguard in place.
 		 * Afterwards, clean up the rights by removing the bogus one.
+		 *
+		 * Manipulating $user->mRights directly isn't possible in MW 1.34+.
+		 * @see https://phabricator.wikimedia.org/T228249
 		 */
-		$user->mRights[] = 'aft-noone';
-		$list = ArticleFeedbackv5Model::getList( '*', $feedback->aft_page, 0, 'age', 'DESC' );
-		$user->mRights = array_diff( $user->mRights, [ 'aft-noone' ] );
+		if ( method_exists( $services, 'getPermissionManager' ) ) {
+			$pm = $services->getPermissionManager();
+			if ( method_exists( $pm, 'addTemporaryUserRights' ) ) {
+				// MW 1.34 or newer
+				$guard = $pm->addTemporaryUserRights( $user, 'aft-noone' );
+				$list = ArticleFeedbackv5Model::getList( '*', $feedback->aft_page, 0, 'age', 'DESC' );
+				// revoke temporary aft-noone right
+				ScopedCallback::consume( $guard );
+			}
+			// PermissionManager exists in 1.33, but doesn't have the capability
+			// to add temporary user rights. If we are on 1.33 (as opposed to 1.32,
+			// which is handled below, or 1.34+ which is handled above), let's use
+			// the old 1.32 logic for now.
+			$user->mRights[] = 'aft-noone';
+			$list = ArticleFeedbackv5Model::getList( '*', $feedback->aft_page, 0, 'age', 'DESC' );
+			$user->mRights = array_diff( $user->mRights, [ 'aft-noone' ] );
+		} else {
+			$user->mRights[] = 'aft-noone';
+			$list = ArticleFeedbackv5Model::getList( '*', $feedback->aft_page, 0, 'age', 'DESC' );
+			$user->mRights = array_diff( $user->mRights, [ 'aft-noone' ] );
+		}
 
 		$old = $list->fetchObject();
 		if (
