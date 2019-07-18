@@ -638,5 +638,17 @@
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "resolvido",
 	"echo-category-title-feedback": "Comentário",
 	"echo-pref-tooltip-feedback": "Avise-me quando alguém marcar o comentário do artigo como útil.",
-	"articlefeedbackv5-notification-link-text-view-feedback": "Ver avaliação"
+	"articlefeedbackv5-notification-link-text-view-feedback": "Ver avaliação",
+	"articlefeedbackv5-notification-feedback-watch": "A [[$3|avaliação]] de [[$2]] foi {{GENDER:$1|marcada}} como {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} por [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-bundle": "A [[$3|avaliação]] de[[$2]] foi {{GENDER:$1|marcada}} como {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} por [[User:$1|$1]] e $5 {{PLURAL:$6|outro|outros}}.",
+	"articlefeedbackv5-notification-feedback-watch-flyout": "A [[$3|avaliação]] de [[$2]] foi {{GENDER:$1|marcada}} como {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} por [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "A avaliação de $2 foi {{GENDER:$1|marcada}} como $3 na wiki {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "A avaliação de $2 foi {{GENDER:$1|marcada}} como $4 por $1 na wiki {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "A avaliação de $2 foi {{GENDER:$1|marcada}} como $4 por $1 e $5 {{PLURAL:$6|outro|outros}} na wiki {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated": "A [[$3|sua avaliação]] de [[$2]] foi {{GENDER:$1|marcada}} como {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} por [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-bundle": "A [[$3|sua avaliação]] de [[$2]] foi {{GENDER:$1|moderada}} por [[User:$1|$1]] e $4 {{PLURAL:$5|outro|outros}}.",
+	"articlefeedbackv5-notification-feedback-moderated-flyout": "A [[$3|sua avaliação]] de [[$2]] foi {{GENDER:$1|marcada}} como {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} por [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-email-subject": "A sua avaliação de $2 foi {{GENDER:$1|marcada}} como $3 na wiki {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "A sua avaliação de $2 foi {{GENDER:$1|marcada}} como $4 por $1 na wiki {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "A sua avaliação de $2 foi {{GENDER:$1|moderada}} por $1 e $5 {{PLURAL:$6|outro|outros}} na wiki {{SITENAME}}. $3"
 }

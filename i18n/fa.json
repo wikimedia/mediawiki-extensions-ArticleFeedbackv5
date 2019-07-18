@@ -574,5 +574,9 @@
 	"abusefilter-edit-action-aftv5hide": "(بازخورد مقاله) پنهان خودکار",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "مخفی‌سازی خودکار. قانون: $1",
 	"abusefilter-edit-action-aftv5request": "(بازخورد مقاله) درخواست خوکار پنهان‌گری",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "درخواست خودکار پنهان‌گری. قانون: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "درخواست خودکار پنهان‌گری. قانون: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "سودمند",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "حل شده",
+	"echo-category-title-feedback": "بازخورد",
+	"articlefeedbackv5-notification-link-text-view-feedback": "مشاهدهٔ بازخورد"
 }
