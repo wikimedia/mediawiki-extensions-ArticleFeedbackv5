@@ -9,6 +9,7 @@
 			"Ted Masters"
 		]
 	},
+	"apihelp-articlefeedbackv5-set-status-param-enable": "1 за активиране, 0 за деактивиране на AFTv5",
 	"articlefeedbackv5-cta-thanks": "Благодарности!",
 	"articlefeedbackv5-cta1-confirmation-title": "Знаете ли, че можете да редактирате тази страница?",
 	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} работи, защото всеки може да редактира страниците. Хайде, опитайте. Бъдете смели!",
@@ -50,6 +51,14 @@
 	"articleFeedbackv5-details-link": "Подробности",
 	"articlefeedbackv5-loading-tag": "Зареждане...",
 	"articlefeedbackv5-new-marker": "Нов",
+	"articlefeedbackv5-oversight-marker": "Наблюдавано",
+	"articlefeedbackv5-autohide-marker": "Автоматично скрито",
+	"articlefeedbackv5-hide-marker": "Скрито",
+	"articlefeedbackv5-feature-marker": "Полезно",
+	"articlefeedbackv5-resolve-marker": "Решено",
+	"articlefeedbackv5-noaction-marker": "Не е необходимо действие",
+	"articlefeedbackv5-inappropriate-marker": "Неуместно",
+	"articlefeedbackv5-archive-marker": "Архивирано",
 	"articlefeedbackv5-form-unfeature": "Отмяна",
 	"articlefeedbackv5-form-unresolve": "Отмяна",
 	"articlefeedbackv5-form-unnoaction": "Отмяна",
