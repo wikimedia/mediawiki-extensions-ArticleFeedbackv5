@@ -410,6 +410,7 @@
 	"right-aft-reader": "フィードバックを投稿 & 役に立つ/立たないの印を付ける",
 	"right-aft-member": "フィードバックを投稿 & 役に立つ/立たないの印を付ける",
 	"right-aft-monitor": "フィードバックを秘匿 & フィードバックの抹消を要請",
+	"action-aft-administrator": "保護されたページの AFT の閲覧",
 	"right-aft-administrator": "保護されたページの AFT を閲覧",
 	"right-aft-oversighter": "フィードバックを抹消",
 	"log-name-articlefeedbackv5": "記事へのフィードバック活動記録",

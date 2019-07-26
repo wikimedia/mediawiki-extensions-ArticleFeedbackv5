@@ -187,7 +187,7 @@
 	"articlefeedbackv5-special-filter-helpful-watchlist": "有幫助",
 	"articlefeedbackv5-special-filter-unhelpful-watchlist": "無幫助",
 	"articlefeedbackv5-special-filter-flagged-watchlist": "已標記",
-	"articlefeedbackv5-special-filter-useful-watchlist": "有用",
+	"articlefeedbackv5-special-filter-useful-watchlist": "有幫助",
 	"articlefeedbackv5-special-filter-resolved-watchlist": "已解決",
 	"articlefeedbackv5-special-filter-noaction-watchlist": "無需操作",
 	"articlefeedbackv5-special-filter-inappropriate-watchlist": "不恰當",
@@ -398,7 +398,7 @@
 	"articlefeedbackv5-permalink-status-flag": "$1 已於 $2{{GENDER:$1|<strong>標記</strong>}}",
 	"articlefeedbackv5-permalink-status-unflag": "$1 已於 $2{{GENDER:$1|<strong>取消標記</strong>}}",
 	"articlefeedbackv5-permalink-status-autoflag": "$1 已於 $2{{GENDER:$1|<strong>自動標記</strong>}}",
-	"articlefeedbackv5-permalink-status-feature": "$1 已於 $2{{GENDER:$1|<strong>標記為有用</strong>}}",
+	"articlefeedbackv5-permalink-status-feature": "$1 已於 $2{{GENDER:$1|<strong>標記為有幫助</strong>}}",
 	"articlefeedbackv5-permalink-status-unfeature": "$1 已於 $2{{GENDER:$1|<strong>取消標記為有用</strong>}}",
 	"articlefeedbackv5-permalink-status-resolve": "$1 已於 $2{{GENDER:$1|<strong>標記為已解決</strong>}}",
 	"articlefeedbackv5-permalink-status-unresolve": "$1 已於 $2{{GENDER:$1|<strong>取消標記為已解決</strong>}}",
@@ -642,5 +642,13 @@
 	"abusefilter-edit-action-aftv5hide": "（條目回饋）自動隱藏",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "已自動隱藏。規則：$1",
 	"abusefilter-edit-action-aftv5request": "（條目回饋）自動請求監督",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "已自動拒絕刪除請求。規則：$1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "已自動拒絕刪除請求。規則：$1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "有幫助",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "已解決",
+	"echo-category-title-feedback": "回饋",
+	"echo-pref-tooltip-feedback": "當有人標記條目的回饋有幫助時通知我。",
+	"articlefeedbackv5-notification-link-text-view-feedback": "檢視回饋",
+	"articlefeedbackv5-notification-feedback-moderated-email-subject": "在 {{SITENAME}} 您對於$2的回饋已被{{GENDER:$1|標記}}為$3。",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "在 {{SITENAME}} 您對於$2的回饋已被$1{{GENDER:$1|標記}}為$4。$3",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "在 {{SITENAME}} 您對於$2的回饋已被$1與$5{{GENDER:$6|其他人}}給{{GENDER:$1|調整}}。$3"
 }
