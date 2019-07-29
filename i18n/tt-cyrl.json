@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ильнар"
+			"Ильнар",
+			"Ерней"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Рәхмәт!",
@@ -74,6 +75,7 @@
 	"articlefeedbackv5-settings-menu-title": "Көйләнмәләр",
 	"articlefeedbackv5-comment-more": "Тагын",
 	"articlefeedbackv5-permalink-info-stats-title-scores": "Билгеләр",
+	"articlefeedbackv5-noteflyover-hide-caption": "Яшерү",
 	"articlefeedbackv5-noteflyover-unoversight-help": "Күбрәк белү",
 	"articlefeedbackv5-noteflyover-decline-help": "Күбрәк белү",
 	"articlefeedbackv5-bucket1-toggle-found-yes": "Әйе",

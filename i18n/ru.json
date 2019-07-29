@@ -33,7 +33,8 @@
 			"Redredsonia",
 			"Mouse21",
 			"Stjn",
-			"Vlad5250"
+			"Vlad5250",
+			"Sobloku"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Отправить отзыв на статью",
@@ -45,6 +46,7 @@
 	"apihelp-articlefeedbackv5-param-bucket": "Какая форма обратной связи была показана пользователю",
 	"apihelp-articlefeedbackv5-param-cta": "CTA отображается после отправки формы",
 	"apihelp-articlefeedbackv5-param-link": "На какую ссылку нажал пользователь для получения виджета",
+	"apihelp-articlefeedbackv5-param-found": "Отметьте \"Да\"/\"Нет\", отвечая на вопрос была ли страница полезной",
 	"apihelp-articlefeedbackv5-param-comment": "Мнение в форме свободного текста",
 	"apihelp-articlefeedbackv5-get-count-description": "Получение количества отзывов для определённой страницы/фильтра",
 	"apihelp-articlefeedbackv5-get-count-summary": "Получение количества отзывов для определённой страницы/фильтра",
@@ -87,6 +89,12 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-pageid": "ID страницы, для которой требуется получить оценки. Не может использоваться одновременно с $1title.",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-watchlist": "Загрузить отзывы из списка наблюдения участника (1) или из всех страниц (0)",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "Ключ для сортировки записей",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Какую фильтрацию применить к списку",
+	"articlefeedbackv5-error-spamregex": "Комментарий был помечен SpamRegex'ом как оскорбительный",
+	"articlefeedbackv5-error-spamblacklist": "Комментарий был помечен SpamBlacklist'ом как оскорбительный",
+	"articlefeedbackv5-error-nonexistent-page": "Страница обратной связи не существует",
+	"articlefeedbackv5-error-permission-denied": "У Вас нет разрешения просматривать отзывы",
+	"articlefeedbackv5-error-nonexistent-feedback": "Обратная связь отсутствует",
 	"articlefeedbackv5-cta-thanks": "Спасибо!",
 	"articlefeedbackv5-cta-confirmation-message": "Ваш отзыв можно увидеть на этой [$1 странице обратной связи].",
 	"articlefeedbackv5-cta1-confirmation-title": "Вы знали, что можете редактировать эту страницу?",
@@ -550,7 +558,9 @@
 	"articlefeedbackv5-leave-warning": "Данные, которые вы ввели, могут быть не сохранены.",
 	"articlefeedbackv5-toolbox-enable": "Включить отзывы",
 	"articlefeedbackv5-disable-preference": "Не показывать на страницах виджет обратной связи",
+	"action-aft-reader": "оставьте отзыв и пометьте \"полезно\" или \"бесполезно\"",
 	"right-aft-reader": "Отправлять отзывы и помечать как (бес)полезные",
+	"action-aft-member": "оставьте отзыв и отметьте помогло ли Вам это",
 	"right-aft-member": "Отправлять отзывы и помечать как (бес)полезные",
 	"right-aft-editor": "установка и снятие меток «Избранный» и «Урегулированный» у отзывов",
 	"right-aft-monitor": "Спрятать отзыв и запросить скрытие",
@@ -635,5 +645,10 @@
 	"abusefilter-edit-action-aftv5hide": "(Отзыв о статье) Автоматическое скрытие",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Автоматически скрыто.  Правило: $1",
 	"abusefilter-edit-action-aftv5request": "(Отзыв о статье) Автоматический запрос скрытия",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Запрошено автоматическое скрытие.  Правило: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Запрошено автоматическое скрытие.  Правило: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "полезно",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "решено",
+	"echo-category-title-feedback": "Обратная связь",
+	"echo-pref-tooltip-feedback": "Уведомлять меня, когда кто-то помечает отзыв о статье как полезный.",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Посмотреть ответы"
 }
