@@ -227,17 +227,16 @@ class ArticleFeedbackv5Activity {
 		$where['log_namespace'] = NS_SPECIAL;
 		$where = self::applyContinue( $continue, $where );
 
+		$commentQuery = CommentStore::getStore()->getJoin( 'log_comment' );
+		$actorQuery = ActorMigration::newMigration()->getJoin( 'log_user' );
 		$activity = ArticleFeedbackv5Utils::getDB( DB_REPLICA )->select(
-			[ 'logging' ],
+			[ 'logging' ] + $commentQuery['tables'] + $actorQuery['tables'],
 			[
 				'log_id',
 				'log_action',
 				'log_timestamp',
-				'log_user',
-				'log_user_text',
-				'log_title',
-				'log_comment'
-			],
+				'log_title'
+			] + $commentQuery['fields'] + $actorQuery['fields'],
 			$where,
 			__METHOD__,
 			[
@@ -248,8 +247,9 @@ class ArticleFeedbackv5Activity {
 				// don't match log_type='articlefeedbackv5' , so we can afford to have that
 				// clause be unindexed. The alternative is to have the log_type clause be indexed
 				// and the namespace/title clauses unindexed, that would be bad.
-				'USE INDEX' => 'page_time'
-			]
+				'USE INDEX' => [ 'logging' => 'page_time' ]
+			],
+			$commentQuery['joins'] + $actorQuery['joins']
 		);
 
 		return $activity;
@@ -445,7 +445,7 @@ class ArticleFeedbackv5Activity {
 			 */
 			$where['log_namespace'] = NS_SPECIAL;
 			$where['log_title'] = $titles;
-			$options['USE INDEX'] = 'page_time';
+			$options['USE INDEX'] = [ 'logging' => 'page_time' ];
 
 			/*
 			 * The goal is to fetch only the last (editor) action for every feedback
@@ -461,24 +461,24 @@ class ArticleFeedbackv5Activity {
 				$options
 			);
 
+			$commentQuery = CommentStore::getStore()->getJoin( 'log_comment' );
+			$actorQuery = ActorMigration::newMigration()->getJoin( 'log_user' );
 			$rows = ArticleFeedbackv5Utils::getDB( DB_REPLICA )->select(
 				[
 					'logging',
 					'ids' => "($ids)" // the subquery that will provide the most recent log_id's
-				],
+				] + $commentQuery['tables'] + $actorQuery['tables'],
 				[
 					'log_id',
 					'log_action',
 					'log_timestamp',
-					'log_user',
-					'log_user_text',
 					'log_title',
-					'log_comment',
 					'log_params',
-				],
+				] + $commentQuery['fields'] + $actorQuery['fields'],
 				[ 'log_id = last_id' ],
 				__METHOD__,
-				[]
+				[],
+				$commentQuery['joins'] + $actorQuery['joins']
 			);
 
 			foreach ( $rows as $action ) {
