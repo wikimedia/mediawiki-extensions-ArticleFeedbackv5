@@ -576,5 +576,10 @@
 	"abusefilter-edit-action-aftv5hide": "(משוב על ערכים) להסתיר באופן אוטומטי",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "הוסתר אוטומטית. לפי כלל: $1",
 	"abusefilter-edit-action-aftv5request": "(משוב על ערכים) לבקש להעלים באופן אוטומטי",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "בקשת הסתרה נוצרה אוטומטית. לפי כלל: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "בקשת הסתרה נוצרה אוטומטית. לפי כלל: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "שימושי",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "פתור",
+	"echo-category-title-feedback": "משוב",
+	"echo-pref-tooltip-feedback": "לקבל התראה כאשר מסמנים את המשוב על הערך כשימושי.",
+	"articlefeedbackv5-notification-link-text-view-feedback": "הצגת משוב"
 }

@@ -165,6 +165,7 @@
 	"articlefeedbackv5-form-unresolve": "Malfari",
 	"articlefeedbackv5-form-noaction": "Neniu farendaĵo",
 	"articlefeedbackv5-form-unnoaction": "Malfari",
+	"articlefeedbackv5-form-noaction-own": "Forĵeti mian afiŝon",
 	"articlefeedbackv5-form-unnoaction-own": "Montri mian afiŝon",
 	"articlefeedbackv5-form-inappropriate": "Kaŝi ĉi tiun afiŝon",
 	"articlefeedbackv5-form-uninappropriate": "Malfari",
@@ -471,5 +472,7 @@
 	"abusefilter-edit-action-aftv5hide": "(Komento pri artikolo) Aŭtomate kaŝita",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Aŭtomate kaŝita. Regulo: $1",
 	"abusefilter-edit-action-aftv5request": "(Artikolo-komento) Aŭtopeti kontroladon",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Kontroladon aŭtomate petis. Regulo: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Kontroladon aŭtomate petis. Regulo: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "utila",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "solvita"
 }
