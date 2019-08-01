@@ -173,12 +173,12 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		if ( $pager->getContribs() == 'newbie' ) {
 			$conds['aft_user'] = $userIds;
 		} else {
-			$uid = User::idFromName( $pager->target );
+			$uid = User::idFromName( $pager->getTarget() );
 			if ( $uid ) {
 				$conds['aft_user'] = $uid;
 			} else {
 				$conds['aft_user'] = 0;
-				$conds['aft_user_text'] = $pager->target;
+				$conds['aft_user_text'] = $pager->getTarget();
 			}
 		}
 
