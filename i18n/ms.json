@@ -4,7 +4,8 @@
 			"Anakmalaysia",
 			"Aviator",
 			"Tedbundyjr",
-			"Pizza1016"
+			"Pizza1016",
+			"Tofeiku"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Terima kasih!",
@@ -556,5 +557,6 @@
 	"abusefilter-edit-action-aftv5hide": "(Maklum Balas Rencana) Sorokkan secara automatik",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Disorokkan secara automatik.  Peraturan: $1",
 	"abusefilter-edit-action-aftv5request": "(Maklum Balas Rencana) Pohon pengetepian secara automatik",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Pengetepian dipohon secara automatik.  Peraturan: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Pengetepian dipohon secara automatik.  Peraturan: $1",
+	"echo-category-title-feedback": "Maklum balas"
 }

@@ -30,7 +30,8 @@
 			"Impersonator 1",
 			"Arthur2e5",
 			"佛壁灯",
-			"神樂坂秀吉"
+			"神樂坂秀吉",
+			"VulpesVulpes825"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "提交条目反馈",
@@ -654,5 +655,10 @@
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "有用",
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "已解决",
 	"echo-category-title-feedback": "反馈",
-	"articlefeedbackv5-notification-link-text-view-feedback": "查看反馈"
+	"echo-pref-tooltip-feedback": "当有人将标记文章反馈为有用时通知我。",
+	"articlefeedbackv5-notification-link-text-view-feedback": "查看反馈",
+	"articlefeedbackv5-notification-feedback-watch": "[[User:$1|$1]]将[[$2]]的[[$3|反馈]]标记为{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
+	"articlefeedbackv5-notification-feedback-watch-bundle": "[[User:$1|$1]]和{{PLURAL:$6|其他人|其他$5人}}将[[$2]]的[[$3|反馈]]标记为{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
+	"articlefeedbackv5-notification-feedback-watch-flyout": "[[User:$1|$1]]将[[$2]]的[[$3|反馈]]标记为{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "$2的反馈已在{{SITENAME}}被标明为$3"
 }
