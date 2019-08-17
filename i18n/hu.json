@@ -11,7 +11,8 @@
 			"පසිඳු කාවින්ද",
 			"Csega",
 			"Dorgan",
-			"Adam78"
+			"Adam78",
+			"Bináris"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Köszönjük!",
@@ -398,7 +399,7 @@
 	"articlefeedbackv5-talk-view-feedback": "Olvasói visszajelzések megnézése",
 	"articlefeedbackv5-watchlist-view-feedback": "Visszajelzések az általam figyelt lapokról",
 	"articlefeedbackv5-email-request-oversight-subject": "Törlést kértek egy szócikk visszajelzési lapján",
-	"articlefeedbackv5-email-request-oversight-body": "Kedves törlők!\n\n$1 egy visszajelzés törlését kérte az alábbi oldalon:\n\n$2\n\nKérlek nézzétek meg a visszajelzést, és hagyjátok jóvá, vagy utasítsátok el a törlési kérést:\n\n$3\n$5\n\nKöszi,\n\na {{SITENAME}} csapata\n\nUi.: Ha kérdésetek van a hozzászólás törlésével kapcsolatban, akkor olvassátok el a törlési GyIK-et:\n\n$4",
+	"articlefeedbackv5-email-request-oversight-body": "Kedves törlők!\n\n$1 egy visszajelzés törlését kérte az alábbi oldalon:\n\n$2\n\nKérlek nézzétek meg a visszajelzést, és hagyjátok jóvá, vagy utasítsátok el a törlési kérést:\n\n$3\n$5\n\nKöszi,\n\na {{SITENAME}} csapata\n\nUi.: Ha kérdésetek van a hozzászólás törlésével kapcsolatban, akkor olvassátok el a törlési GYIK-ot:\n\n$4",
 	"articlefeedbackv5-disable-flyover-title": "Nem akarod látni ezt az eszközt?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "A beállításaimhoz",
 	"abusefilter-edit-action-aftv5flagabuse": "(Olvasói visszajelzés) Visszaélésnek jelölés",
