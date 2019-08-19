@@ -38,7 +38,7 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 	 */
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = 'Rebuild existing logging.log_params data to form a serialized array with feedback id & page id';
+		$this->addDescription( 'Rebuild existing logging.log_params data to form a serialized array with feedback id & page id' );
 
 		$this->requireExtension( 'Article Feedback' );
 	}

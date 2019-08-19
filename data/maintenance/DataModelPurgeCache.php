@@ -32,7 +32,7 @@ class DataModelPurgeCache extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->addOption( 'model', 'Classname of the model to purge caches for', true, true );
-		$this->mDescription = 'Purge all DataModel caches.';
+		$this->addDescription( 'Purge all DataModel caches.' );
 
 		$this->requireExtension( 'Article Feedback' );
 	}
