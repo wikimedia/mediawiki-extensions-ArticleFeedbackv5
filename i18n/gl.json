@@ -3,7 +3,8 @@
 		"authors": [
 			"Elisardojm",
 			"Toliño",
-			"McDutchie"
+			"McDutchie",
+			"Navhy"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Enviar un comentario sobre un artigo",
@@ -611,5 +612,6 @@
 	"abusefilter-edit-action-aftv5hide": "(Avaliación de artigos) Agochado automaticamente",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Agochado automaticamente. Regra: $1",
 	"abusefilter-edit-action-aftv5request": "(Avaliación de artigos) Supervisión solicitada automaticamente",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Supervisión solicitada automaticamente. Regra: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Supervisión solicitada automaticamente. Regra: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "resolvido"
 }
