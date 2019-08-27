@@ -1372,7 +1372,7 @@
 			 * Gets the appropriate survey url, or returns false if none was
 			 * found
 			 *
-			 * @return {false|string} the url, if one is availabe, or false if not
+			 * @return {false|string} the url, if one is available, or false if not
 			 */
 			getSurveyUrl: function () {
 				var base = mw.config.get( 'wgArticleFeedbackv5SurveyUrls' );
