@@ -15,7 +15,8 @@
 			"Southparkfan",
 			"Tjcool007",
 			"Mainframe98",
-			"Mar(c)"
+			"Mar(c)",
+			"Rots61"
 		]
 	},
 	"apihelp-articlefeedbackv5-param-anontoken": "Token voor anonieme gebruikers",
@@ -569,5 +570,6 @@
 	"abusefilter-edit-action-aftv5hide": "(Paginaterugkoppeling) Automatisch verbergen",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Automatisch verborgen. Regel: $1",
 	"abusefilter-edit-action-aftv5request": "(Paginaterugkoppeling) Automatisch toezicht aanvragen",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Toezichtaanvraag is automatisch gemaakt. Regel: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Toezichtaanvraag is automatisch gemaakt. Regel: $1",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Terugkoppeling bekijken"
 }
