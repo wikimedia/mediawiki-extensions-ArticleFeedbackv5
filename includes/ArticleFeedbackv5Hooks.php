@@ -499,46 +499,6 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		$userIds = [];
-		if ( $pager->getContribs() == 'newbie' ) {
-			// fetch max user id from cache (if present)
-			global $wgMemc;
-			$key = $wgMemc->makeKey( 'articlefeedbackv5', 'maxUserId' );
-			$max = $wgMemc->get( $key );
-			if ( $max === false ) {
-				// max user id not present in cache; fetch from db & save to cache for 1h
-				$max = (int)$pager->getDatabase()->selectField( 'user', 'MAX(user_id)', '', __METHOD__ );
-				$wgMemc->set( $key, $max, 60 * 60 );
-			}
-
-			// newbie = last 1% of users, without usergroup
-			$rows = $pager->getDatabase()->select(
-				[ 'user', 'user_groups' ],
-				'user_id',
-				[
-					'user_id > ' . (int)( $max - $max / 100 ),
-					'ug_group' => null
-				],
-				__METHOD__,
-				[],
-				[
-					'user_groups' => [
-						'LEFT JOIN',
-						[
-							'ug_user = user_id'
-						]
-					]
-				]
-			);
-
-			$userIds = [];
-			foreach ( $rows as $row ) {
-				$userIds[] = $row->user_id;
-			}
-
-			if ( empty( $userIds ) ) {
-				return true;
-			}
-		}
 
 		$data[] = ArticleFeedbackv5Model::getContributionsData( $pager, $offset, $limit, $descending, $userIds );
 

@@ -170,16 +170,12 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		$fields[] = '"AFT" AS aft_contribution';
 		$fields[] = 'aft_timestamp AS ' . $pager->getIndexField(); // used for navbar
 
-		if ( $pager->getContribs() == 'newbie' ) {
-			$conds['aft_user'] = $userIds;
+		$uid = User::idFromName( $pager->getTarget() );
+		if ( $uid ) {
+			$conds['aft_user'] = $uid;
 		} else {
-			$uid = User::idFromName( $pager->getTarget() );
-			if ( $uid ) {
-				$conds['aft_user'] = $uid;
-			} else {
-				$conds['aft_user'] = 0;
-				$conds['aft_user_text'] = $pager->getTarget();
-			}
+			$conds['aft_user'] = 0;
+			$conds['aft_user_text'] = $pager->getTarget();
 		}
 
 		if ( $offset ) {
