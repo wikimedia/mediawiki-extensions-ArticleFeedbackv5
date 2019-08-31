@@ -4,7 +4,8 @@
 			"Elisardojm",
 			"Toliño",
 			"McDutchie",
-			"Navhy"
+			"Navhy",
+			"Banjo"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Enviar un comentario sobre un artigo",
@@ -613,5 +614,6 @@
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Agochado automaticamente. Regra: $1",
 	"abusefilter-edit-action-aftv5request": "(Avaliación de artigos) Supervisión solicitada automaticamente",
 	"articlefeedbackv5-abusefilter-note-aftv5request": "Supervisión solicitada automaticamente. Regra: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "útil",
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "resolvido"
 }
