@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Joetaras",
-			"Reder"
+			"Reder",
+			"Ruthven"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Manne 'na segnalazione d'a vôsce",
@@ -77,7 +78,7 @@
 	"articlefeedbackv5-cta2-confirmation-title": "Danne 'na màne a migliorà {{SITENAME}}",
 	"articlefeedbackv5-cta2-confirmation-call": "'Stù site web jè state ccrejète da crestiáne cumme tune. Puè danne 'na mane?",
 	"articlefeedbackv5-cta2-button-text": "'Mbare de cchiù",
-	"articlefeedbackv5-cta3-confirmation-title": "Pe piacere fà 'nu sondagge veloce veloce",
+	"articlefeedbackv5-cta3-confirmation-title": "Pe piacere fà nu sondagge ampressa",
 	"articlefeedbackv5-cta3-confirmation-call": "Pigghiate sulamende 'nu minute e danne 'na màne a migliorà {{SITENAME}}.",
 	"articlefeedbackv5-cta3-button-text": "Accuminze 'nu sondagge",
 	"articlefeedbackv5-cta4-confirmation-title": "Tràse jndr'à comunitate nostre",

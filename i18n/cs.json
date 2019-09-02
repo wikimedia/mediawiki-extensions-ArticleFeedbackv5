@@ -20,9 +20,11 @@
 			"Draceane",
 			"Cvanca",
 			"Dvorapa",
-			"Patriccck"
+			"Patriccck",
+			"SimonV"
 		]
 	},
+	"apihelp-articlefeedbackv5-param-anontoken": "Token pro anonymní uživatele",
 	"articlefeedbackv5-error-nonexistent-feedback": "Zpětná vazba neexistuje",
 	"articlefeedbackv5-cta-thanks": "Děkujeme!",
 	"articlefeedbackv5-cta-confirmation-message": "Váš příspěvek lze zobrazit na této [ $1  stránce s názory].",
