@@ -75,24 +75,24 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbr = wfGetDB( DB_REPLICA );
 
+		$commentQuery = CommentStore::getStore()->getJoin( 'log_comment' );
+		$actorQuery = ActorMigration::newMigration()->getJoin( 'log_user' );
+
 		$rows = $dbr->select(
-			[ 'logging', 'cu_changes' ],
+			[ 'logging', 'cu_changes' ] + $commentQuery['tables'] + $actorQuery['tables'],
 			[
 				'log_id',
 				'log_type',
 				'log_action',
 				'log_timestamp',
-				'log_user',
-				'log_user_text',
 				'log_namespace',
 				'log_title',
 				'log_page',
-				'log_comment',
 				'log_params',
 				'log_deleted',
 				'cuc_id',
 				'cuc_ip'
-			],
+			] + $commentQuery['fields'] + $actorQuery['fields'],
 			[
 				'log_timestamp >= ' . $dbr->addQuotes( $dbr->timestamp( $continue['timestamp'] ) ),
 				'log_id > ' . $continue['id'],
@@ -114,7 +114,7 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 						'log_user_text = cuc_user_text'
 					]
 				]
-			]
+			] + $commentQuery['joins'] + $actorQuery['joins']
 		);
 
 		$continue = null;
