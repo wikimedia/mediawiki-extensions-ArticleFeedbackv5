@@ -571,5 +571,8 @@
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Automatisch verborgen. Regel: $1",
 	"abusefilter-edit-action-aftv5request": "(Paginaterugkoppeling) Automatisch toezicht aanvragen",
 	"articlefeedbackv5-abusefilter-note-aftv5request": "Toezichtaanvraag is automatisch gemaakt. Regel: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "nuttig",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "opgelost",
+	"echo-category-title-feedback": "Terugkoppeling",
 	"articlefeedbackv5-notification-link-text-view-feedback": "Terugkoppeling bekijken"
 }
