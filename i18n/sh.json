@@ -439,6 +439,7 @@
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "Da, našao sam.",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "Nisam našao.",
 	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|(preostaje još jedan znak)|(preostaju još $1 znaka)|(preostaju još $1 znakova)}}",
+	"articlefeedbackv5-help-tooltip-title": "Šta je ovo?",
 	"articlefeedbackv5-help-tooltip-linktext": "Saznajte više.",
 	"articlefeedbackv5-sitesub-linktext": "Poboljšajte ovu stranicu",
 	"articlefeedbackv5-titlebar-linktext": "Pomozite nam da poboljšamo ovu stranicu >>",
