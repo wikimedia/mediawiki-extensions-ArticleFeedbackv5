@@ -21,7 +21,8 @@
 			"Cvanca",
 			"Dvorapa",
 			"Patriccck",
-			"SimonV"
+			"SimonV",
+			"MrJaroslavik"
 		]
 	},
 	"apihelp-articlefeedbackv5-param-anontoken": "Token pro anonymní uživatele",
@@ -100,7 +101,7 @@
 	"articlefeedbackv5-special-filter-inappropriate": "Nevhodné ($1)",
 	"articlefeedbackv5-special-filter-archived": "Archivovány ($1)",
 	"articlefeedbackv5-special-filter-allcomment": "Všechny komentáře ($1)",
-	"articlefeedbackv5-special-filter-hidden": "Neviditelné ($1)",
+	"articlefeedbackv5-special-filter-hidden": "Skryté ($1)",
 	"articlefeedbackv5-special-filter-requested": "Požadováno přehlédnutí ($1)",
 	"articlefeedbackv5-special-filter-declined": "Přehlédnutí ($1) odmítnuto",
 	"articlefeedbackv5-special-filter-oversighted": "Smazané ($1)",
