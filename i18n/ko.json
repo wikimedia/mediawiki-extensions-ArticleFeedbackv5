@@ -252,7 +252,7 @@
 	"articlefeedbackv5-discuss-user-section-content": "\"$7\"에 피드백을 게시해주셔서 감사합니다.\n\n$3에 이 의견을 게시했습니다. ([[$5|모든 피드백 보기]])\n\n$6\n\n이 문서에 기여를 해주셔서 감사합니다!\n\n~~~~",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2님이 그들이 찾고 있는 것을 발견했습니다.}}",
 	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2님이 그들이 찾고 있는 것을 발견할 수 없었습니다.}}",
-	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2님이 의견을 게시했습니다.}}",
+	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 님이 의견을 게시했습니다.}}",
 	"articlefeedbackv5-form2-header-praise": "{{GENDER:$1|$1}}에 칭찬을 했습니다:",
 	"articlefeedbackv5-form2-header-problem": "{{GENDER:$1|$1}}에 문제가 있습니다:",
 	"articlefeedbackv5-form2-header-question": "{{GENDER:$1|$1}}에 질문이 있습니다:",
