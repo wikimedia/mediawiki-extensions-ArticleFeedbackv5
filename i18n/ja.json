@@ -17,11 +17,13 @@
 			"Suchichi02",
 			"神樂坂秀吉",
 			"マツムシ",
-			"Abijeet Patro"
+			"Abijeet Patro",
+			"Reiwa period"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "記事のフィードバックを送信",
 	"apihelp-articlefeedbackv5-summary": "記事のフィードバックを送信",
+	"articlefeedbackv5-error-nonexistent-feedback": "フィードバックがありません",
 	"articlefeedbackv5-cta-thanks": "ありがとうございます!",
 	"articlefeedbackv5-cta-confirmation-message": "あなたの投稿はこの[$1 フィードバック ページ]に表示されます。",
 	"articlefeedbackv5-cta1-confirmation-title": "このページを編集できることをご存じですか?",
@@ -196,7 +198,11 @@
 	"articlefeedbackv5-form-decline": "抹消を却下",
 	"articlefeedbackv5-form-declined": "抹消却下済み",
 	"articlefeedbackv5-form-discuss-talk": "トークページで議論",
+	"articlefeedbackv5-form-discuss-talk-exists": "ノートページの議論を参照",
+	"articlefeedbackv5-form-discuss-user-exists": "利用者会話ページのメッセージを参照",
 	"articlefeedbackv5-form-tooltip-unhide": "非表示を解除",
+	"articlefeedbackv5-form-tooltip-unoversight": "オーバーサイトを取り消す",
+	"articlefeedbackv5-discuss-user-section-title": "\"$2\"でのあなたのフィードバック",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 が探していたものが見つかりました。}}",
 	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2 が探していたものは見つかりませんでした。}}",
 	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 がコメントを投稿しました。}}",

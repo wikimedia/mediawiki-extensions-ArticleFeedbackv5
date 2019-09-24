@@ -648,7 +648,16 @@
 	"echo-category-title-feedback": "回饋",
 	"echo-pref-tooltip-feedback": "當有人標記條目的回饋有幫助時通知我。",
 	"articlefeedbackv5-notification-link-text-view-feedback": "檢視回饋",
-	"articlefeedbackv5-notification-feedback-moderated-email-subject": "在 {{SITENAME}} 您對於$2的回饋已被{{GENDER:$1|標記}}為$3。",
-	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "在 {{SITENAME}} 您對於$2的回饋已被$1{{GENDER:$1|標記}}為$4。$3",
-	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "在 {{SITENAME}} 您對於$2的回饋已被$1與$5{{GENDER:$6|其他人}}給{{GENDER:$1|調整}}。$3"
+	"articlefeedbackv5-notification-feedback-watch": "[[User:$1|$1]]將有關[[$2]]的[[$3|回饋]]給{{GENDER:$1|標記}}為{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
+	"articlefeedbackv5-notification-feedback-watch-bundle": "[[User:$1|$1]]與$5{{PLURAL:$6|位其他人}}將有關[[$2]]的[[$3|回饋]]給{{GENDER:$1|標記}}為{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
+	"articlefeedbackv5-notification-feedback-watch-flyout": "[[User:$1|$1]]將有關[[$2]]的[[$3|回饋]]給{{GENDER:$1|標記}}為{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "在{{SITENAME}}上關於$2的回饋已被{{GENDER:$1|標記}}為$3。",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "在 {{SITENAME}} 關於$2的回饋已被$1{{GENDER:$1|標記}}為$4。$3",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "在{{SITENAME}}上關於$2的回饋已被$1與$5{{GENDER:$6|位其他人}}給{{GENDER:$1|標記}}為$4。$3",
+	"articlefeedbackv5-notification-feedback-moderated": "[[User:$1|$1]]將您對於[[$2]]的[[$3|回饋]]給{{GENDER:$1|標記}}為{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
+	"articlefeedbackv5-notification-feedback-moderated-bundle": "[[User:$1|$1]]與$4{{GENDER:$5|位其他人}}將您對於[[$2]]的[[$3|回饋]]給{{GENDER:$1|調整}}。",
+	"articlefeedbackv5-notification-feedback-moderated-flyout": "[[User:$1|$1]]將您對於[[$2]]的[[$3|回饋]]給{{GENDER:$1|標記}}為{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
+	"articlefeedbackv5-notification-feedback-moderated-email-subject": "在{{SITENAME}}上您對於$2的回饋已被{{GENDER:$1|標記}}為$3。",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "在{{SITENAME}}上您對於$2的回饋已被$1{{GENDER:$1|標記}}為$4。$3",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "在{{SITENAME}}上您對於$2的回饋已被$1與$5{{GENDER:$6|位其他人}}給{{GENDER:$1|調整}}。$3"
 }
