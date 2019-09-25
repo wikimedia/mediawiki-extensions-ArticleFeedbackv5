@@ -215,6 +215,7 @@
 	"articlefeedbackv5-error-loading-feedback": "フィードバックの読み込みエラー",
 	"articlefeedbackv5-insufficient-permissions": "権限のレベルが不十分です",
 	"articlefeedbackv5-invalid-feedback-id": "フィードバック ID が無効です",
+	"articlefeedbackv5-invalid-log-id": "無効な記録ID",
 	"articlefeedbackv5-invalid-log-update": "記録項目を更新できませんでした",
 	"articlefeedbackv5-invalid-feedback-flag": "フィードバックの荒らしフラグが無効です",
 	"articlefeedbackv5-invalid-feedback-state": "フィードバックの荒らしフラグの状態が無効です",
@@ -476,5 +477,6 @@
 	"abusefilter-edit-action-aftv5hide": "(記事へのフィードバック) 自動秘匿",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "自動で秘匿しました。規則: $1",
 	"abusefilter-edit-action-aftv5request": "(記事へのフィードバック) 抹消の自動要請",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "抹消を自動で要請しました。規則: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "抹消を自動で要請しました。規則: $1",
+	"echo-category-title-feedback": "フィードバック"
 }
