@@ -523,5 +523,6 @@
 	"abusefilter-edit-action-aftv5flagabuse": "Merkitse automaattisesti väärinkäytöksi",
 	"articlefeedbackv5-abusefilter-note-aftv5flag": "Automaattisesti merkitty väärinkäytöksi. Sääntö: $1",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Piilotettu automaattisesti. Sääntö: $1",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Pyydetty häivytystä automaattisesti. Sääntö: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Pyydetty häivytystä automaattisesti. Sääntö: $1",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Näytä palaute"
 }
