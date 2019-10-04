@@ -88,7 +88,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 *
 	 * @param mixed|null $id The id(s) to fetch
 	 * @param mixed|null $shard The corresponding shard value(s)
-	 * @return \Wikimedia\Rdbms\ResultWrapper
+	 * @return \Wikimedia\Rdbms\IResultWrapper
 	 */
 	public function get( $id = null, $shard = null ) {
 		// query conditions
@@ -170,7 +170,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @param int $limit The amount of entries to fetch
 	 * @param string|null $sort Sort to apply to list
 	 * @param string $order Sort the list ASC or DESC
-	 * @return \Wikimedia\Rdbms\ResultWrapper
+	 * @return \Wikimedia\Rdbms\IResultWrapper
 	 */
 	public function getList( $name, $shard = null, $offset = null, $limit, $sort = null, $order ) {
 		$dbr = $this->getDB( DB_REPLICA );
@@ -291,7 +291,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * all possible conditions, to know which caches need to be purged/updated.
 	 *
 	 * @param DataModel $entry
-	 * @return \Wikimedia\Rdbms\ResultWrapper
+	 * @return \Wikimedia\Rdbms\IResultWrapper
 	 */
 	public function evaluateConditions( DataModel $entry ) {
 		$class = $this->datamodel;

@@ -279,7 +279,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * @param int $limit exact query limit
 	 * @param bool $descending query direction, false for ascending, true for descending
 	 * @param array $userIds array of user_ids whose data is to be selected
-	 * @return \Wikimedia\Rdbms\ResultWrapper
+	 * @return \Wikimedia\Rdbms\IResultWrapper
 	 */
 	public static function getContributionsData( $pager, $offset, $limit, $descending, $userIds = [] ) {
 		return static::getBackend()->getContributionsData( $pager, $offset, $limit, $descending, $userIds );

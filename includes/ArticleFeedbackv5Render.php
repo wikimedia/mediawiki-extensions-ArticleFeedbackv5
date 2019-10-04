@@ -1363,7 +1363,7 @@ class ArticleFeedbackv5Render {
 
 	/**
 	 * @param ArticleFeedbackv5Model $record
-	 * @return ResultWrapper|bool
+	 * @return \Wikimedia\Rdbms\IResultWrapper|bool
 	 */
 	public function getLastActivity( ArticleFeedbackv5Model $record ) {
 		global $wgUser;
