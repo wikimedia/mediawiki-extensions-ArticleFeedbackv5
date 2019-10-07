@@ -18,7 +18,8 @@
 			"Vengir",
 			"CiaPan",
 			"Railfail536",
-			"Rail"
+			"Rail",
+			"FunPL"
 		]
 	},
 	"apihelp-articlefeedbackv5-param-anontoken": "Token dla użytkowników anonimowych",
@@ -205,7 +206,7 @@
 	"articlefeedbackv5-form-oversight": "Rewizor",
 	"articlefeedbackv5-form-unoversight": "Cofnij",
 	"articlefeedbackv5-form-request": "Wniosek o ukrycie edycji",
-	"articlefeedbackv5-form-unrequest": "Anuluj prośbę o przejrzenie",
+	"articlefeedbackv5-form-unrequest": "Cofnij prośbę o przejrzenie",
 	"articlefeedbackv5-form-decline": "Odrzuć prośbę o usunięcie",
 	"articlefeedbackv5-form-declined": "Prośba o usunięcie odrzucona",
 	"articlefeedbackv5-form-discuss-talk": "Skomentuj na stronie dyskusji",
@@ -297,9 +298,9 @@
 	"articlefeedbackv5-noteflyover-feature-placeholder": "Z jakiego powodu wyróżniasz ten wpis?",
 	"articlefeedbackv5-noteflyover-feature-submit": "Dodaj komentarz",
 	"articlefeedbackv5-noteflyover-feature-help": "Dowiedz się więcej",
-	"articlefeedbackv5-noteflyover-unfeature-caption": "Anuluj wyróżnienie tego wpisu",
+	"articlefeedbackv5-noteflyover-unfeature-caption": "Cofnięto oznaczenie jako użyteczny",
 	"articlefeedbackv5-noteflyover-unfeature-label": "Dodaj notatkę",
-	"articlefeedbackv5-noteflyover-unfeature-placeholder": "Z jakiego powodu anulujesz wyróżnienie tego wpisu?",
+	"articlefeedbackv5-noteflyover-unfeature-placeholder": "Z jakiego powodu usuważ wyróżnienie tego wpisu jako użyteczny?",
 	"articlefeedbackv5-noteflyover-unfeature-submit": "Dodaj komentarz",
 	"articlefeedbackv5-noteflyover-unfeature-help": "Dowiedz się więcej",
 	"articlefeedbackv5-noteflyover-resolve-caption": "Oznaczony jako rozwiązany",
