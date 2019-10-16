@@ -34,6 +34,7 @@
 	"articlefeedbackv5-permalink-info-post-id": "Хаам #$1",
 	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 дош|$1 дешнаш}}",
 	"articlefeedbackv5-permalink-info-length-characters": "({{PLURAL:$1|$1 символ}})",
+	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "Релеванталла:",
 	"articlefeedbackv5-permalink-activity-title": "Дийраш",
 	"articlefeedbackv5-permalink-activity-subtitle": "({{PLURAL:$1|$1 дийнарг}})",
 	"articlefeedbackv5-noteflyover-feature-label": "ТӀетоха билгалдаккхар",
