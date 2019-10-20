@@ -9,6 +9,10 @@ module.exports = function ( grunt ) {
 			all: 'i18n/'
 		},
 		eslint: {
+			options: {
+				cache: true,
+				reportUnusedDisableDirectives: true
+			},
 			all: [
 				'**/*.js',
 				'!node_modules/**',

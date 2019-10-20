@@ -10,7 +10,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 
 	protected $tablesUsed = [ 'aft_feedback' ];
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 
 		// init some volatile BagOStuff
@@ -50,7 +50,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 		);
 	}
 
-	public function tearDown() {
+	public function tearDown() : void {
 		unset( $this->sample );
 
 		$list = ArticleFeedbackv5Model::getList( '*', null, 0, 'age', 'DESC' );
