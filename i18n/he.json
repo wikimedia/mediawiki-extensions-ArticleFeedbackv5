@@ -19,15 +19,21 @@
 			"שמזן",
 			"המקיסט",
 			"Steeve815",
-			"Falling star"
+			"Falling star",
+			"דגש חזק"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "שליחת משוב על הערך",
 	"apihelp-articlefeedbackv5-summary": "שליחת ביקורת על הערך",
 	"apihelp-articlefeedbackv5-param-title": "כותרת הדף לשליחת משוב. לא ניתן להשתמש בזה יחד עם $1pageid",
+	"apihelp-articlefeedbackv5-param-pageid": "מזהה העמוד שאליו יש לשלוח משוב. לא ניתן להשתמש ביחד עם $1כותרת",
+	"apihelp-articlefeedbackv5-param-revid": "מספר הגרסה לשליחת משוב עבור",
 	"apihelp-articlefeedbackv5-param-anontoken": "אסימון עבור משתמשים אנונימיים",
 	"apihelp-articlefeedbackv5-get-count-param-filter": "איזה סינון ברצונך להחיל לרשימה",
+	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "סוג הדגל להחלה",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "מזהה היומן הדורש עדכון",
+	"apihelp-query+articlefeedbackv5-view-activity-param-limit": "כמה תוצאות פעילות להחזיר",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "איזה סינון ברצונך להחיל לרשימה",
 	"articlefeedbackv5-error-nonexistent-feedback": "משוב לא קיים",
 	"articlefeedbackv5-cta-thanks": "תודה!",
 	"articlefeedbackv5-cta-confirmation-message": "אפשר לראות את הרשומה שלך [$1 בדף המשוב] הזה.",
