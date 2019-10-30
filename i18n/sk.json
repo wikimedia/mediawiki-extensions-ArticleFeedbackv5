@@ -3,7 +3,8 @@
 		"authors": [
 			"Helix84",
 			"Sudo77(new)",
-			"Vlad5250"
+			"Vlad5250",
+			"Luky001"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Ďakujeme!",
@@ -83,6 +84,8 @@
 	"articlefeedbackv5-form-helpful": "Označiť ako užitočné ($1)",
 	"articlefeedbackv5-form-flag": "Označené ako zneužitie",
 	"articlefeedbackv5-form-unoversight": "Vrátiť",
+	"articlefeedbackv5-form-discuss-talk": "Diskutovať na diskusnej stránke",
+	"articlefeedbackv5-form-discuss-talk-exists": "Pozri diskusiu na diskusnej stránke",
 	"articlefeedbackv5-go-to-article": "Zobraziť stránku",
 	"articlefeedbackv5-discussion-page": "Diskusia",
 	"articlefeedbackv5-whats-this": "Pomoc",
