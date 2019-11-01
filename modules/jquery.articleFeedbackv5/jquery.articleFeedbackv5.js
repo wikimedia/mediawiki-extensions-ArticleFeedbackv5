@@ -191,73 +191,6 @@
 	$.articleFeedbackv5.throttleThresholdPostsPerHour = mw.config.get( 'wgArticleFeedbackv5ThrottleThresholdPostsPerHour' );
 
 	// }}}
-	// {{{ Templates
-
-	$.articleFeedbackv5.templates = {
-
-		panelOuter: '\
-			<div id="articleFeedbackv5-panel" class="articleFeedbackv5-panel">\
-				<div class="articleFeedbackv5-buffer">\
-					<div class="articleFeedbackv5-title-wrap">\
-						<h2 class="articleFeedbackv5-title"></h2>\
-					</div>\
-					<div class="articleFeedbackv5-ui">\
-						<div class="articleFeedbackv5-tooltip-wrap">\
-							<div class="articleFeedbackv5-tooltip">\
-								<div class="tooltip-top"></div>\
-								<div class="tooltip-repeat">\
-									<h3><html:msg key="help-tooltip-title" /></h3><span class="articleFeedbackv5-tooltip-close">&times;</span>\
-									<div class="clear"></div>\
-									<p class="articleFeedbackv5-tooltip-info"><html:msg key="help-tooltip-info" /></p>\
-									<p><a target="_blank" class="articleFeedbackv5-tooltip-link"><html:msg key="help-tooltip-linktext" />&nbsp;&gt;&gt;</a></p>\
-								</div>\
-								<div class="tooltip-bottom"></div>\
-							</div>\
-						</div>\
-						<div class="articleFeedbackv5-ui-inner"></div>\
-					</div>\
-				</div>\
-			</div>\
-			',
-
-		errorPanel: '<div class="articleFeedbackv5-error-wrap">\
-				<div class="articleFeedbackv5-error">\
-					<div class="articleFeedbackv5-error-message"></div>\
-				</div>\
-			</div>\
-			',
-
-		helpToolTipTrigger: '<div class="articleFeedbackv5-tooltip-trigger-wrap"><a href="#" class="articleFeedbackv5-tooltip-trigger"><html:msg key="help-tooltip-title" /></a></div>',
-
-		ctaTitleConfirm: '\
-			<div class="articleFeedbackv5-confirmation-text">\
-				<span class="articleFeedbackv5-confirmation-thanks"><html:msg key="cta-thanks" /></span>\
-				<span class="articleFeedbackv5-confirmation-follow-up"></span>\
-			</div>\
-			',
-
-		clear: '<div class="clear"></div>',
-
-		disableFlyover: '\
-			<div>\
-				<div class="articleFeedbackv5-disable-flyover">\
-					<div class="articleFeedbackv5-flyover-header">\
-						<h3 id="articleFeedbackv5-noteflyover-caption"><html:msg key="disable-flyover-title" /></h3>\
-						<a id="articleFeedbackv5-noteflyover-close" class="articleFeedbackv5-form-flyover-closebutton" href="#"></a>\
-					</div>\
-					<div class="articleFeedbackv5-form-flyover">\
-						<div class="articleFeedbackv5-disable-flyover-help" ></div>\
-						<div class="articleFeedbackv5-flyover-footer">\
-							<a class="articleFeedbackv5-disable-flyover-button" target="_blank"><html:msg key="disable-flyover-prefbutton" /></a>\
-						</div>\
-					</div>\
-				</div>\
-			</div>\
-			'
-
-	};
-
-	// }}}
 	// {{{ Bucket UI objects
 
 	/**
@@ -286,50 +219,6 @@
 			 */
 			currentDefaultText: '',
 
-			// {{{ templates
-
-			/**
-			 * Pull out the markup so it's easy to find
-			 */
-			templates: {
-
-				/**
-				 * The template for the whole block
-				 */
-				block: '\
-					<form>\
-						<div class="articleFeedbackv5-top-error"></div>\
-						<div class="form-row articleFeedbackv5-bucket1-toggle">\
-							<p class="instructions-left"><html:msg key="bucket1-question-toggle" /></p>\
-							<div class="buttons">\
-								<div class="form-item" data-value="yes" id="articleFeedbackv5-bucket1-toggle-wrapper-yes">\
-									<label for="articleFeedbackv5-bucket1-toggle-yes"><html:msg key="bucket1-toggle-found-yes-full" /></label>\
-									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-yes" value="yes" /></a>\
-									<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-yes" class="query-button" value="yes" />\
-								</div>\
-								<div class="form-item" data-value="no" id="articleFeedbackv5-bucket1-toggle-wrapper-no">\
-									<label for="articleFeedbackv5-bucket1-toggle-no"><html:msg key="bucket1-toggle-found-no-full" /></label>\
-									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket1-toggle-found-no" /></a>\
-									<input type="radio" name="toggle" id="articleFeedbackv5-bucket1-toggle-no" class="query-button last" value="no" />\
-								</div>\
-								<div class="clear"></div>\
-							</div>\
-							<div class="clear"></div>\
-						</div>\
-						<div class="articleFeedbackv5-comment">\
-							<textarea id="articleFeedbackv5-find-feedback" class="feedback-text" name="comment"></textarea>\
-						</div>\
-						<div class="articleFeedbackv5-disclosure">\
-							<p class="articlefeedbackv5-help-transparency-terms"></p>\
-						</div>\
-						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket1-form-submit" /></button>\
-						<div class="clear"></div>\
-					</form>\
-					'
-
-			},
-
-			// }}}
 			// {{{ getTitle
 
 			/**
@@ -353,7 +242,14 @@
 				var $block, message;
 
 				// Start up the block to return
-				$block = $( $.articleFeedbackv5.currentBucket().templates.block );
+				$block = mw.template.get( 'jquery.articleFeedbackv5', 'bucket1.mustache' ).render( {
+					'articlefeedbackv5-bucket1-question-toggle': mw.msg( 'articlefeedbackv5-bucket1-question-toggle' ),
+					'articlefeedbackv5-bucket1-toggle-found-yes-full': mw.msg( 'articlefeedbackv5-bucket1-toggle-found-yes-full' ),
+					'articlefeedbackv5-bucket1-toggle-found-yes': mw.msg( 'articlefeedbackv5-bucket1-toggle-found-yes' ),
+					'articlefeedbackv5-bucket1-toggle-found-no-full': mw.msg( 'articlefeedbackv5-bucket1-toggle-found-no-full' ),
+					'articlefeedbackv5-bucket1-toggle-found-no': mw.msg( 'articlefeedbackv5-bucket1-toggle-found-no' ),
+					'articlefeedbackv5-bucket1-form-submit': mw.msg( 'articlefeedbackv5-bucket1-form-submit' )
+				} );
 
 				// Fill in the disclosure text
 				message = 'articlefeedbackv5-help-transparency-terms';
@@ -379,7 +275,6 @@
 			 * @param {jQuery} $block the form block
 			 */
 			bindEvents: function ( $block ) {
-
 				// Enable submission and switch out the comment default on toggle selection
 				$block.find( '.articleFeedbackv5-button-placeholder' )
 					.button()
@@ -509,53 +404,6 @@
 		 */
 		'4': {
 
-			// {{{ templates
-
-			/**
-			 * Pull out the markup so it's easy to find
-			 */
-			templates: {
-
-				/**
-				 * The template for the whole block, if the user can edit the
-				 * article
-				 */
-				editable: '\
-					<div id="articleFeedbackv5-bucket4">\
-						<div class="form-row articleFeedbackv5-bucket4-toggle">\
-							<p class="sub-header"><strong><html:msg key="bucket4-subhead" /></strong></p>\
-							<p class="instructions-left"><html:msg key="bucket4-teaser-line1" /><br />\
-							<html:msg key="bucket4-teaser-line2" /></p>\
-						</div>\
-						<div class="articleFeedbackv5-disclosure">\
-							<p><a class="articleFeedbackv5-learn-to-edit" target="_blank"><html:msg key="bucket4-learn-to-edit" /> &raquo;</a></p>\
-						</div>\
-						<a class="articleFeedbackv5-cta-button" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket4-form-submit" /></a>\
-						<div class="clear"></div>\
-					</div>\
-					',
-
-				/**
-				 * The template for the whole block, if the user cannot edit the
-				 * article
-				 */
-				noneditable: '\
-					<div id="articleFeedbackv5-bucket4">\
-						<div class="form-row articleFeedbackv5-bucket4-toggle">\
-							<p class="instructions-left"><html:msg key="bucket4-noedit-teaser-line1" /><br />\
-							<html:msg key="bucket4-noedit-teaser-line2" /></p>\
-						</div>\
-						<div class="articleFeedbackv5-disclosure">\
-							<p>&nbsp;</p>\
-						</div>\
-						<a class="articleFeedbackv5-cta-button" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket4-noedit-form-submit" /></a>\
-						<div class="clear"></div>\
-					</div>\
-					'
-
-			},
-
-			// }}}
 			// {{{ getTitle
 
 			/**
@@ -576,10 +424,28 @@
 			 * @return {jQuery} the form
 			 */
 			buildForm: function () {
-				var $block, url;
+				var $block, url, templateName, templateVars;
 
 				// Start up the block to return
-				$block = $( $.articleFeedbackv5.editable ? $.articleFeedbackv5.currentBucket().templates.editable : $.articleFeedbackv5.currentBucket().templates.noneditable );
+				if ( $.articleFeedbackv5.editable ) {
+					templateName = 'bucket4-editable.mustache';
+					templateVars = {
+						'articlefeedbackv5-bucket4-subhead': mw.msg( 'articlefeedbackv5-bucket4-subhead' ),
+						'articlefeedbackv5-bucket4-teaser-line1': mw.message( 'articlefeedbackv5-bucket4-teaser-line1' ).text(), // uses {{SITENAME}},
+						'articlefeedbackv5-bucket4-teaser-line2': mw.msg( 'articlefeedbackv5-bucket4-teaser-line2' ),
+						'articlefeedbackv5-bucket4-learn-to-edit': mw.msg( 'articlefeedbackv5-bucket4-learn-to-edit' ),
+						'articlefeedbackv5-bucket4-form-submit': mw.msg( 'articlefeedbackv5-bucket4-form-submit' )
+					};
+				} else {
+					templateName = 'bucket4-noneditable.mustache';
+					templateVars = {
+						'articlefeedbackv5-bucket4-noedit-teaser-line1': mw.msg( 'articlefeedbackv5-bucket4-noedit-teaser-line1' ),
+						'articlefeedbackv5-bucket4-noedit-teaser-line2': mw.msg( 'articlefeedbackv5-bucket4-noedit-teaser-line2' ),
+						'articlefeedbackv5-bucket4-noedit-form-submit': mw.msg( 'articlefeedbackv5-bucket4-noedit-form-submit' )
+					};
+				}
+
+				$block = mw.template.get( 'jquery.articleFeedbackv5', templateName ).render( templateVars );
 
 				// Fill in the learn to edit link
 				$block.find( '.articleFeedbackv5-learn-to-edit' )
@@ -635,51 +501,6 @@
 		 */
 		'6': {
 
-			// {{{ templates
-
-			/**
-			 * Pull out the markup so it's easy to find
-			 */
-			templates: {
-
-				/**
-				 * The template for the whole block
-				 */
-				block: '\
-					<form>\
-						<div class="articleFeedbackv5-top-error"></div>\
-						<div class="form-row articleFeedbackv5-bucket6-toggle">\
-							<p class="instructions-left"><html:msg key="bucket6-question-toggle" /></p>\
-							<div class="buttons">\
-								<div class="form-item" data-value="yes" id="articleFeedbackv5-bucket6-toggle-wrapper-yes">\
-									<label for="articleFeedbackv5-bucket6-toggle-yes"><html:msg key="bucket6-toggle-found-yes-full" /></label>\
-									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-yes" value="yes" /></a>\
-									<input type="radio" name="toggle" id="articleFeedbackv5-bucket6-toggle-yes" class="query-button" value="yes" />\
-								</div>\
-								<div class="form-item" data-value="no" id="articleFeedbackv5-bucket6-toggle-wrapper-no">\
-									<label for="articleFeedbackv5-bucket6-toggle-no"><html:msg key="bucket6-toggle-found-no-full" /></label>\
-									<a href="#" class="articleFeedbackv5-button-placeholder"><html:msg key="bucket6-toggle-found-no" /></a>\
-									<input type="radio" name="toggle" id="articleFeedbackv5-bucket6-toggle-no" class="query-button last" value="no" />\
-								</div>\
-								<div class="clear"></div>\
-							</div>\
-							<div class="clear"></div>\
-						</div>\
-						<div class="articleFeedbackv5-comment">\
-							<p id="articlefeedbackv5-feedback-countdown"></p>\
-							<textarea id="articleFeedbackv5-find-feedback" class="feedback-text" name="comment"></textarea>\
-						</div>\
-						<div class="articleFeedbackv5-disclosure">\
-							<p class="articlefeedbackv5-help-transparency-terms"></p>\
-						</div>\
-						<button class="articleFeedbackv5-submit" type="submit" disabled="disabled" id="articleFeedbackv5-submit-bttn"><html:msg key="bucket6-form-submit" /></button>\
-						<div class="clear"></div>\
-					</form>\
-					'
-
-			},
-
-			// }}}
 			// {{{ getTitle
 
 			/**
@@ -703,7 +524,14 @@
 				var $block, message;
 
 				// Start up the block to return
-				$block = $( $.articleFeedbackv5.currentBucket().templates.block );
+				$block = mw.template.get( 'jquery.articleFeedbackv5', 'bucket6.mustache' ).render( {
+					'articlefeedbackv5-bucket6-question-toggle': mw.msg( 'articlefeedbackv5-bucket6-question-toggle' ),
+					'articlefeedbackv5-bucket6-toggle-found-yes-full': mw.msg( 'articlefeedbackv5-bucket6-toggle-found-yes-full' ),
+					'articlefeedbackv5-bucket6-toggle-found-yes': mw.msg( 'articlefeedbackv5-bucket6-toggle-found-yes' ),
+					'articlefeedbackv5-bucket6-toggle-found-no-full': mw.msg( 'articlefeedbackv5-bucket6-toggle-found-no-full' ),
+					'articlefeedbackv5-bucket6-toggle-found-no': mw.msg( 'articlefeedbackv5-bucket6-toggle-found-no' ),
+					'articlefeedbackv5-bucket6-form-submit': mw.msg( 'articlefeedbackv5-bucket6-form-submit' )
+				} );
 
 				// Fill in the disclosure text
 				message = 'articlefeedbackv5-help-transparency-terms';
@@ -732,7 +560,6 @@
 			 * @param {jQuery} $block the form block
 			 */
 			bindEvents: function ( $block ) {
-
 				// enable submission and switch out the comment default on toggle selection
 				$block.find( '.articleFeedbackv5-button-placeholder' )
 					.button()
@@ -1001,31 +828,6 @@
 
 		'1': {
 
-			// {{{ templates
-
-			/**
-			 * Pull out the markup so it's easy to find
-			 */
-			templates: {
-
-				/**
-				 * The template for the whole block
-				 */
-				block: '\
-					<div class="clear"></div>\
-					<div class="articleFeedbackv5-confirmation-panel">\
-						<div class="articleFeedbackv5-panel-leftContent">\
-							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta1-confirmation-title" /></h3>\
-							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta1-confirmation-call" /></p>\
-						</div>\
-						<a href="&amp;action=edit" class="articleFeedbackv5-cta-button"><html:msg key="cta1-edit-linktext" /></a>\
-						<div class="clear"></div>\
-					</div>\
-					'
-
-			},
-
-			// }}}
 			// {{{ verify
 
 			/**
@@ -1046,9 +848,12 @@
 			 * @return {jQuery} the form
 			 */
 			build: function () {
-
 				// Start up the block to return
-				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
+				var $block = mw.template.get( 'jquery.articleFeedbackv5', 'cta1.mustache' ).render( {
+					'articlefeedbackv5-cta1-confirmation-title': mw.msg( 'articlefeedbackv5-cta1-confirmation-title' ),
+					'articlefeedbackv5-cta1-confirmation-call': mw.message( 'articlefeedbackv5-cta1-confirmation-call' ).text(), // uses {{SITENAME}}
+					'articlefeedbackv5-cta1-edit-linktext': mw.msg( 'articlefeedbackv5-cta1-edit-linktext' )
+				} );
 
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-cta-button' )
@@ -1078,31 +883,6 @@
 
 		'2': {
 
-			// {{{ templates
-
-			/**
-			 * Pull out the markup so it's easy to find
-			 */
-			templates: {
-
-				/**
-				 * The template for the whole block
-				 */
-				block: '\
-					<div class="clear"></div>\
-					<div class="articleFeedbackv5-confirmation-panel">\
-						<div class="articleFeedbackv5-panel-leftContent">\
-							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta2-confirmation-title" /></h3>\
-							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta2-confirmation-call" /></p>\
-						</div>\
-						<a href="&amp;action=edit" class="articleFeedbackv5-cta-button"><html:msg key="cta2-button-text" /></a>\
-						<div class="clear"></div>\
-					</div>\
-					'
-
-			},
-
-			// }}}
 			// {{{ build
 
 			/**
@@ -1111,9 +891,12 @@
 			 * @return {jQuery} the form
 			 */
 			build: function () {
-
 				// Start up the block to return
-				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
+				var $block = mw.template.get( 'jquery.articleFeedbackv5', 'cta2.mustache' ).render( {
+					'articlefeedbackv5-cta2-confirmation-title': mw.msg( 'articlefeedbackv5-cta2-confirmation-title' ),
+					'articlefeedbackv5-cta2-confirmation-call': mw.message( 'articlefeedbackv5-cta2-confirmation-call' ).text(), // uses {{SITENAME}}
+					'articlefeedbackv5-cta2-button-text': mw.msg( 'articlefeedbackv5-cta2-button-text' )
+				} );
 
 				// Fill in the button link
 				$block
@@ -1156,31 +939,6 @@
 
 		'3': {
 
-			// {{{ templates
-
-			/**
-			 * Pull out the markup so it's easy to find
-			 */
-			templates: {
-
-				/**
-				 * The template for the whole block
-				 */
-				block: '\
-					<div class="clear"></div>\
-					<div class="articleFeedbackv5-confirmation-panel">\
-						<div class="articleFeedbackv5-panel-leftContent">\
-							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta3-confirmation-title" /></h3>\
-							<p class="articleFeedbackv5-confirmation-call"><html:msg key="cta3-confirmation-call" /></p>\
-						</div>\
-						<a href="#" class="articleFeedbackv5-cta-button" target="_blank"><html:msg key="cta3-button-text" /></a>\
-						<div class="clear"></div>\
-					</div>\
-					'
-
-			},
-
-			// }}}
 			// {{{ verify
 
 			/**
@@ -1204,7 +962,11 @@
 				var $block, surveyUrl;
 
 				// Start up the block to return
-				$block = $( $.articleFeedbackv5.currentCTA().templates.block );
+				$block = mw.template.get( 'jquery.articleFeedbackv5', 'cta3.mustache' ).render( {
+					'articlefeedbackv5-cta3-confirmation-title': mw.msg( 'articlefeedbackv5-cta3-confirmation-title' ),
+					'articlefeedbackv5-cta3-confirmation-call': mw.message( 'articlefeedbackv5-cta3-confirmation-call' ).text(), // uses {{SITENAME}}
+					'articlefeedbackv5-cta3-button-text': mw.msg( 'articlefeedbackv5-cta3-button-text' )
+				} );
 
 				// Fill in the go-to-survey link
 				surveyUrl = $.articleFeedbackv5.currentCTA().getSurveyUrl();
@@ -1223,10 +985,10 @@
 			// {{{ getSurveyUrl
 
 			/**
-			 * Gets the appropriate survey url, or returns false if none was
+			 * Gets the appropriate survey URL, or returns false if none was
 			 * found
 			 *
-			 * @return {false|string} the url, if one is available, or false if not
+			 * @return {false|string} the URL, if one is available, or false if not
 			 */
 			getSurveyUrl: function () {
 				var base = mw.config.get( 'wgArticleFeedbackv5SurveyUrls' );
@@ -1287,35 +1049,6 @@
 
 		'4': {
 
-			// {{{ templates
-
-			/**
-			 * Pull out the markup so it's easy to find
-			 */
-			templates: {
-
-				/**
-				 * The template for the whole block
-				 */
-				block: '\
-					<div class="clear"></div>\
-					<div class="articleFeedbackv5-confirmation-panel">\
-						<div class="articleFeedbackv5-panel-leftContent">\
-							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta4-confirmation-title" /></h3>\
-							<p class="articleFeedbackv5-confirmation-call"><html:msg key="cta4-confirmation-call-line1" /><br /><html:msg key="cta4-confirmation-call-line2" /></p>\
-						</div>\
-						<div class="articleFeedbackv5-panel-buttons">\
-							<a href="#" class="articleFeedbackv5-cta-button articleFeedbackv5-cta-button-signup articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-signup" /></a>\
-							<span class="articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-or" /></span>\
-							<a href="#" class="articleFeedbackv5-cta-button-login articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-login" /></a>\
-<!--						<a href="#" class="articleFeedbackv5-cta-button-later articleFeedbackv5-panel-buttons-child"><html:msg key="cta4-button-text-later" /></a> -->\
-						</div>\
-						<div class="clear"></div>\
-					</div>\
-					'
-			},
-
-			// }}}
 			// {{{ verify
 
 			/**
@@ -1339,7 +1072,16 @@
 				var $block, signupUrl, loginUrl;
 
 				// Start up the block to return
-				$block = $( $.articleFeedbackv5.currentCTA().templates.block );
+				$block = mw.template.get( 'jquery.articleFeedbackv5', 'cta4.mustache' ).render( {
+					'articlefeedbackv5-cta4-confirmation-title': mw.msg( 'articlefeedbackv5-cta4-confirmation-title' ),
+					'articlefeedbackv5-cta4-confirmation-call-line1': mw.msg( 'articlefeedbackv5-cta4-confirmation-call-line1' ),
+					'articlefeedbackv5-cta4-confirmation-call-line2': mw.msg( 'articlefeedbackv5-cta4-confirmation-call-line2' ),
+					'articlefeedbackv5-cta4-button-text-signup': mw.msg( 'articlefeedbackv5-cta4-button-text-signup' ),
+					'articlefeedbackv5-cta4-button-text-or': mw.msg( 'articlefeedbackv5-cta4-button-text-or' ),
+					'articlefeedbackv5-cta4-button-text-login': mw.msg( 'articlefeedbackv5-cta4-button-text-login' ),
+					// This one's actually commented out in the HTML template file...
+					'articlefeedbackv5-cta4-button-text-later': mw.msg( 'articlefeedbackv5-cta4-button-text-later' )
+				} );
 
 				// Fill in the signup & login link
 				signupUrl = mw.util.getUrl( 'Special:UserLogin', {
@@ -1369,10 +1111,10 @@
 			// {{{ getSurveyUrl
 
 			/**
-			 * Gets the appropriate survey url, or returns false if none was
+			 * Gets the appropriate survey URL, or returns false if none was
 			 * found
 			 *
-			 * @return {false|string} the url, if one is available, or false if not
+			 * @return {false|string} the URL, if one is available, or false if not
 			 */
 			getSurveyUrl: function () {
 				var base = mw.config.get( 'wgArticleFeedbackv5SurveyUrls' );
@@ -1418,31 +1160,6 @@
 
 		'5': {
 
-			// {{{ templates
-
-			/**
-			 * Pull out the markup so it's easy to find
-			 */
-			templates: {
-
-				/**
-				 * The template for the whole block
-				 */
-				block: '\
-					<div class="clear"></div>\
-					<div class="articleFeedbackv5-confirmation-panel">\
-						<div class="articleFeedbackv5-panel-leftContent">\
-							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta5-confirmation-title" /></h3>\
-							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta5-confirmation-call" /></p>\
-						</div>\
-						<a href="#" class="articleFeedbackv5-cta-button"><html:msg key="cta5-button-text" /></a>\
-						<div class="clear"></div>\
-					</div>\
-					'
-
-			},
-
-			// }}}
 			// {{{ build
 
 			/**
@@ -1451,9 +1168,12 @@
 			 * @return {jQuery} the form
 			 */
 			build: function () {
-
 				// Start up the block to return
-				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
+				var $block = mw.template.get( 'jquery.articleFeedbackv5', 'cta5.mustache' ).render( {
+					'articlefeedbackv5-cta5-confirmation-title': mw.msg( 'articlefeedbackv5-cta5-confirmation-title' ),
+					'articlefeedbackv5-cta5-confirmation-call': mw.msg( 'articlefeedbackv5-cta5-confirmation-call' ),
+					'articlefeedbackv5-cta5-button-text': mw.msg( 'articlefeedbackv5-cta5-button-text' )
+				} );
 
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-cta-button' )
@@ -1499,31 +1219,6 @@
 
 		'6': {
 
-			// {{{ templates
-
-			/**
-			 * Pull out the markup so it's easy to find
-			 */
-			templates: {
-
-				/**
-				 * The template for the whole block
-				 */
-				block: '\
-					<div class="clear"></div>\
-					<div class="articleFeedbackv5-confirmation-panel">\
-						<div class="articleFeedbackv5-panel-leftContent">\
-							<h3 class="articleFeedbackv5-confirmation-title"><html:msg key="cta6-confirmation-title" /></h3>\
-							<p class="articleFeedbackv5-confirmation-wikipediaWorks"><html:msg key="cta6-confirmation-call" /></p>\
-						</div>\
-						<a href="#" class="articleFeedbackv5-cta-button"><html:msg key="cta6-button-text" /></a>\
-						<div class="clear"></div>\
-					</div>\
-					'
-
-			},
-
-			// }}}
 			// {{{ build
 
 			/**
@@ -1532,9 +1227,12 @@
 			 * @return {jQuery} the form
 			 */
 			build: function () {
-
 				// Start up the block to return
-				var $block = $( $.articleFeedbackv5.currentCTA().templates.block );
+				var $block = mw.template.get( 'jquery.articleFeedbackv5', 'cta6.mustache' ).render( {
+					'articlefeedbackv5-cta6-confirmation-title': mw.message( 'articlefeedbackv5-cta6-confirmation-title' ).text(), // uses {{SITENAME}}
+					'articlefeedbackv5-cta6-confirmation-call': mw.message( 'articlefeedbackv5-cta6-confirmation-call' ).text(), // uses {{SITENAME}}
+					'articlefeedbackv5-cta6-button-text': mw.msg( 'articlefeedbackv5-cta6-button-text' )
+				} );
 
 				// Fill in the link
 				$block.find( '.articleFeedbackv5-cta-button' )
@@ -2079,8 +1777,9 @@
 
 				// build link to article feedback page
 				$( '<div></div>' )
-					.html( $.articleFeedbackv5.templates.ctaTitleConfirm )
-					.localize( { prefix: 'articlefeedbackv5-' } );
+					.html( mw.template.get( 'jquery.articleFeedbackv5', 'cta-title-confirm.mustache' ).render( {
+						'articlefeedbackv5-cta-thanks': mw.msg( 'articlefeedbackv5-cta-thanks' )
+					} ) );
 
 				$linkView = $( '<li id="t-articlefeedbackv5-view"><a href="#"></a></li>' );
 				$linkView.find( 'a' )
@@ -2548,9 +2247,12 @@
 	 * Builds containers and loads them onto the page
 	 */
 	$.articleFeedbackv5.loadContainers = function () {
-
 		// Set up the panel
-		var $wrapper = $( $.articleFeedbackv5.templates.panelOuter );
+		var $wrapper = mw.template.get( 'jquery.articleFeedbackv5', 'panel-outer.mustache' ).render( {
+			'articlefeedbackv5-help-tooltip-title': mw.msg( 'articlefeedbackv5-help-tooltip-title' ),
+			'articlefeedbackv5-help-tooltip-info': mw.msg( 'articlefeedbackv5-help-tooltip-info' ),
+			'articlefeedbackv5-help-tooltip-linktext': mw.msg( 'articlefeedbackv5-help-tooltip-linktext' )
+		} );
 
 		// Add the help tooltip
 		$wrapper.find( '.articleFeedbackv5-tooltip-link' )
@@ -2564,20 +2266,21 @@
 		$wrapper.find( '.articleFeedbackv5-tooltip' ).hide();
 
 		// Set up the tooltip trigger for the panel version
-		$wrapper.find( '.articleFeedbackv5-title-wrap' ).append( $.articleFeedbackv5.templates.helpToolTipTrigger );
+		$wrapper.find( '.articleFeedbackv5-title-wrap' ).append(
+			mw.template.get( 'jquery.articleFeedbackv5', 'help-tooltip-trigger.mustache' ).render( {
+				'articlefeedbackv5-help-tooltip-title': mw.msg( 'articlefeedbackv5-help-tooltip-title' )
+			} )
+		);
 		$wrapper.find( '.articleFeedbackv5-tooltip-trigger' ).click( function ( e ) {
 			e.preventDefault();
 			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-tooltip' ).toggle();
 		} );
 
-		// Localize
-		$wrapper.localize( { prefix: 'articlefeedbackv5-' } );
-
 		// Add it to the page
 		$.articleFeedbackv5.$holder
 			.html( $wrapper )
 			.addClass( 'articleFeedbackv5' )
-			.append( $( $.articleFeedbackv5.templates.errorPanel ) )
+			.append( mw.template.get( 'jquery.articleFeedbackv5', 'error-panel.mustache' ).render() )
 			.append( '<div class="articleFeedbackv5-lock"></div>' );
 	};
 
@@ -2596,7 +2299,6 @@
 		if ( 'bindEvents' in bucket ) {
 			bucket.bindEvents( $block );
 		}
-		$block.localize( { prefix: 'articlefeedbackv5-' } );
 
 		// Add it to the appropriate container
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui-inner' )
@@ -2883,14 +2585,13 @@
 		if ( 'bindEvents' in cta ) {
 			cta.bindEvents( $block );
 		}
-		$block.localize( { prefix: 'articlefeedbackv5-' } );
 
 		// Add it to the appropriate container
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui-inner' ).empty();
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui-inner' )
 			.append( $block );
 
-		// Set the appropriate class on the ui block
+		// Set the appropriate class on the UI block
 		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-ui' )
 			.removeClass( 'articleFeedbackv5-option-' + $.articleFeedbackv5.bucketId )
 			.addClass( 'articleFeedbackv5-cta-' + $.articleFeedbackv5.ctaId );
@@ -2903,8 +2604,9 @@
 			title = cta.getTitle();
 		} else {
 			title = $( '<div></div>' )
-				.html( $.articleFeedbackv5.templates.ctaTitleConfirm )
-				.localize( { prefix: 'articlefeedbackv5-' } );
+				.html( mw.template.get( 'jquery.articleFeedbackv5', 'cta-title-confirm.mustache' ).render( {
+					'articlefeedbackv5-cta-thanks': mw.msg( 'articlefeedbackv5-cta-thanks' )
+				} ) );
 
 			title
 				.find( '.articleFeedbackv5-confirmation-follow-up' )
@@ -3040,8 +2742,10 @@
 				title: function () {
 					var $flyover, prefLink;
 
-					$flyover = $( $.articleFeedbackv5.templates.disableFlyover );
-					$flyover.localize( { prefix: 'articlefeedbackv5-' } );
+					$flyover = mw.template.get( 'jquery.articleFeedbackv5', 'disable-flyover.mustache' ).render( {
+						'articlefeedbackv5-disable-flyover-title': mw.msg( 'articlefeedbackv5-disable-flyover-title' ),
+						'articlefeedbackv5-disable-flyover-prefbutton': mw.msg( 'articlefeedbackv5-disable-flyover-prefbutton' )
+					} );
 					$flyover.find( '.articleFeedbackv5-disable-flyover' )
 						.addClass( 'articleFeedbackv5-disable-flyover-' + linkId );
 

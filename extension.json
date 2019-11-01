@@ -1,6 +1,6 @@
 {
 	"name": "Article Feedback",
-	"version": "5.4.3",
+	"version": "5.5.0",
 	"author": [
 		"Greg Chiasson",
 		"Reha Sterbin",
@@ -184,12 +184,26 @@
 		"jquery.appear": {
 			"scripts": "jquery.articleFeedbackv5/jquery.appear.js"
 		},
-		"jquery.articleFeedbackv5.localize": {
-			"scripts": "jquery.articleFeedbackv5/jquery.localize.js"
-		},
 		"jquery.articleFeedbackv5": {
 			"scripts": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
 			"styles": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.css",
+			"templates": {
+				"bucket1.mustache": "templates/bucket1.mustache",
+				"bucket4-editable.mustache": "templates/bucket4-editable.mustache",
+				"bucket4-noneditable.mustache": "templates/bucket4-noneditable.mustache",
+				"bucket6.mustache": "templates/bucket6.mustache",
+				"cta1.mustache": "templates/cta1.mustache",
+				"cta2.mustache": "templates/cta2.mustache",
+				"cta3.mustache": "templates/cta3.mustache",
+				"cta4.mustache": "templates/cta4.mustache",
+				"cta5.mustache": "templates/cta5.mustache",
+				"cta6.mustache": "templates/cta6.mustache",
+				"cta-title-confirm.mustache": "templates/cta-title-confirm.mustache",
+				"disable-flyover.mustache": "templates/disable-flyover.mustache",
+				"error-panel.mustache": "templates/error-panel.mustache",
+				"help-tooltip-trigger.mustache": "templates/help-tooltip-trigger.mustache",
+				"panel-outer.mustache": "templates/panel-outer.mustache"
+			},
 			"messages": [
 				"articlefeedbackv5-error-validation",
 				"articlefeedbackv5-error-nofeedback",
@@ -284,7 +298,6 @@
 			"dependencies": [
 				"jquery.appear",
 				"jquery.tipsy",
-				"jquery.articleFeedbackv5.localize",
 				"jquery.ui.button",
 				"jquery.cookie",
 				"mediawiki.cookie",
@@ -298,6 +311,10 @@
 		"jquery.articleFeedbackv5.special": {
 			"scripts": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
 			"styles": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css",
+			"templates": {
+				"loading.mustache": "templates/loading.mustache",
+				"note-panel.mustache": "templates/note-panel.mustache"
+			},
 			"messages": [
 				"articlefeedbackv5-error-flagging",
 				"articlefeedbackv5-invalid-feedback-id",
@@ -431,7 +448,6 @@
 				"mediawiki.util",
 				"jquery.cookie",
 				"jquery.tipsy",
-				"jquery.articleFeedbackv5.localize",
 				"jquery.ui.button"
 			]
 		}
