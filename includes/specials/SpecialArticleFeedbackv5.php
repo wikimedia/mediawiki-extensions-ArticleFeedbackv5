@@ -661,7 +661,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 					],
 					$this->msg( 'articlefeedbackv5-special-refresh' )->text()
 				) .
-				Html::element( 'div', [ 'class' => 'clear' ] )
+				Html::element( 'div', [ 'class' => 'articleFeedbackv5-clear' ] )
 			) .
 			$centralPageLink;
 	}

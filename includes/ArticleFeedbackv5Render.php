@@ -749,7 +749,7 @@ class ArticleFeedbackv5Render {
 					$abuseLink . $abuseStats
 				) .
 				$ownPost .
-				Html::element( 'div', [ 'class' => 'clear' ] )
+				Html::element( 'div', [ 'class' => 'articleFeedbackv5-clear' ] )
 			);
 	}
 
