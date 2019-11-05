@@ -103,7 +103,7 @@
 	"articlefeedbackv5-error": "En feil har oppstått. Prøv igjen senere.",
 	"articlefeedbackv5-error-blocked": "Blokkerte brukere får ikke gi tilbakemelding.",
 	"articlefeedbackv5-error-validation": "Valideringsfeil.",
-	"articlefeedbackv5-error-abuse": "Ditt innlegg har blitt avslått gjennom et programvarefilter som foreslår at det kanskje ikke møter {{SITENAME}}s [$1 retningslinjer for tilbakemeldinger]. Endre ditt innlegg og prøv igjen. ({{PLURAL:$2|Filter}}: $3)",
+	"articlefeedbackv5-error-abuse": "Ditt innlegg har blitt avslått gjennom et programvarefilter som foreslår at det kanskje ikke møter {{GRAMMAR:genitive|{{SITENAME}}}} [$1 retningslinjer for tilbakemeldinger]. Endre ditt innlegg og prøv igjen. ({{PLURAL:$2|Filter}}: $3)",
 	"articlefeedbackv5-error-unknown": "Ukjent feil.",
 	"articlefeedbackv5-error-submit": "Feil ved levering av skjema.",
 	"articlefeedbackv5-error-duplicate": "Den innsendte tilbakemeldingen er et duplikat av den siste tilbakemeldingen, kanskje du ved et uhell har sendt den to ganger?",
