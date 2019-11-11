@@ -33,7 +33,8 @@
 			"神樂坂秀吉",
 			"VulpesVulpes825",
 			"予弦",
-			"A Retired User"
+			"A Retired User",
+			"Ywang"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "提交条目反馈",
@@ -662,5 +663,6 @@
 	"articlefeedbackv5-notification-feedback-watch": "[[User:$1|$1]]将[[$2]]的[[$3|反馈]]标记为{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
 	"articlefeedbackv5-notification-feedback-watch-bundle": "[[User:$1|$1]]和{{PLURAL:$6|其他人|其他$5人}}将[[$2]]的[[$3|反馈]]标记为{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
 	"articlefeedbackv5-notification-feedback-watch-flyout": "[[User:$1|$1]]将[[$2]]的[[$3|反馈]]标记为{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
-	"articlefeedbackv5-notification-feedback-watch-email-subject": "$2的反馈已在{{SITENAME}}被标明为$3"
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "$2的反馈已在{{SITENAME}}被{{GENDER:$1|标明}}为$3。",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "$2的反馈已在{{SITENAME}}被$1{{GENDER:$1|表明}}为$4。$3"
 }
