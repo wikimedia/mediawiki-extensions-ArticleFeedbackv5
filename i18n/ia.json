@@ -10,7 +10,7 @@
 	"apihelp-articlefeedbackv5-param-title": "Titulo del pagina sur le qual submitter un commentario. Non pote esser combinate con $1pageid",
 	"apihelp-articlefeedbackv5-param-pageid": "ID del pagina sur le qual submitter un commentario. Non pote esser combinate con $1title",
 	"apihelp-articlefeedbackv5-param-revid": "ID del version pro le qual submitter un commentario",
-	"apihelp-articlefeedbackv5-param-anontoken": "Indicio pro usatores anonyme",
+	"apihelp-articlefeedbackv5-param-anontoken": "Token pro usatores anonyme",
 	"apihelp-articlefeedbackv5-param-bucket": "Qual formulario de evalutation ha essite monstrate al usator",
 	"apihelp-articlefeedbackv5-param-cta": "CTA monstrate post invio del formulario",
 	"apihelp-articlefeedbackv5-param-link": "Le ligamine sur que le usator ha cliccate pro attinger le widget",
