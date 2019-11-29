@@ -8,7 +8,8 @@
 			"Pedroca cerebral",
 			"Yekrats",
 			"Robin van der Vliet",
-			"Mirin"
+			"Mirin",
+			"Zarisi"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Sendi komenton pri artikolo",
@@ -66,6 +67,7 @@
 	"articlefeedbackv5-contribs-status-action-flag": "Markita",
 	"articlefeedbackv5-contribs-status-action-feature": "Utila",
 	"articlefeedbackv5-contribs-status-action-resolve": "Solvita",
+	"articlefeedbackv5-contribs-status-action-noaction": "Ne postulantaj agon",
 	"articlefeedbackv5-contribs-status-action-inappropriate": "Kaŝita",
 	"articlefeedbackv5-contribs-status-action-archive": "Enarkivigita",
 	"articlefeedbackv5-contribs-status-action-hide": "Kaŝi",
@@ -483,5 +485,7 @@
 	"abusefilter-edit-action-aftv5request": "(Artikolo-komento) Aŭtopeti kontroladon",
 	"articlefeedbackv5-abusefilter-note-aftv5request": "Kontroladon aŭtomate petis. Regulo: $1",
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "utila",
-	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "solvita"
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "solvita",
+	"echo-category-title-feedback": "Rimarkoj",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Vidi komentojn"
 }
