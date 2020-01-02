@@ -38,16 +38,30 @@ class ArticleFeedbackv5Render {
 	private $isHighlighted;
 
 	/**
+	 * Current user
+	 *
+	 * @var User
+	 */
+	private $user;
+
+	/**
 	 * Constructor
 	 *
+	 * @param User $user Current user.
 	 * @param $permalink bool [optional] whether this is a permalink?
 	 * @param $central   bool [optional] whether this is on the central log?
 	 * @param $highlight bool [optional] whether this is a highlighted row?
 	 */
-	public function __construct( $permalink = false, $central = false, $highlight = false ) {
+	public function __construct(
+		User $user,
+		$permalink = false,
+		$central = false,
+		$highlight = false
+	) {
 		$this->setIsPermalink( $permalink );
 		$this->setIsCentral( $central );
 		$this->setIsHighlighted( $highlight );
+		$this->user = $user;
 	}
 
 	/**
@@ -57,8 +71,6 @@ class ArticleFeedbackv5Render {
 	 * @return string the rendered row
 	 */
 	public function run( $record ) {
-		global $wgUser;
-
 		if ( !$record instanceof ArticleFeedbackv5Model ) {
 			return '';
 		}
@@ -71,9 +83,9 @@ class ArticleFeedbackv5Render {
 
 		// Special cases: when the record is deleted/hidden/inappropriate,
 		// but the user doesn't have permission to see it
-		if ( ( $record->isOversighted() && !ArticleFeedbackv5Activity::canPerformAction( 'oversight', $wgUser ) ) ||
-			( $record->isHidden() && !ArticleFeedbackv5Activity::canPerformAction( 'hide', $wgUser ) ) ||
-			( $record->isInappropriate() && !ArticleFeedbackv5Activity::canPerformAction( 'inappropriate', $wgUser ) ) ) {
+		if ( ( $record->isOversighted() && !ArticleFeedbackv5Activity::canPerformAction( 'oversight', $this->getUser() ) ) ||
+			( $record->isHidden() && !ArticleFeedbackv5Activity::canPerformAction( 'hide', $this->getUser() ) ) ||
+			( $record->isInappropriate() && !ArticleFeedbackv5Activity::canPerformAction( 'inappropriate', $this->getUser() ) ) ) {
 			// Called via permalink: show an empty gray mask
 			if ( $this->isPermalink ) {
 				return $this->emptyGrayMask( $record );
@@ -243,6 +255,20 @@ class ArticleFeedbackv5Render {
 			return false;
 		}
 		return $this->permissions[$key];
+	}
+
+	/**
+	 * @return User
+	 */
+	public function getUser() : User {
+		return $this->user;
+	}
+
+	/**
+	 * @param User $user
+	 */
+	public function setUser( User $user ) : void {
+		$this->user = $user;
 	}
 
 	/**
@@ -561,10 +587,15 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered footer
 	 */
 	private function renderFooter( $record ) {
-		global $wgLang, $wgUser, $wgRequest;
+		global $wgLang, $wgRequest;
 
 		$id = $record->aft_id;
-		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, $wgUser, $wgRequest, true );
+		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback(
+			$record,
+			$this->getUser(),
+			$wgRequest,
+			true
+		);
 
 		$voteLinks = '';
 		$voteStats = '';
@@ -691,7 +722,7 @@ class ArticleFeedbackv5Render {
 		if ( $ownFeedback && !$this->isAllowed( 'aft-editor' ) ) {
 			// Add ability for readers to mark own posts as non-actionable, only
 			// when we're certain that the feedback was posted by the current user
-			if ( ArticleFeedbackv5Utils::isOwnFeedback( $record, $wgUser, $wgRequest, false ) ) {
+			if ( ArticleFeedbackv5Utils::isOwnFeedback( $record, $this->getUser(), $wgRequest, false ) ) {
 				// get details on last editor action
 				$last = $record->getLastEditorActivity();
 
@@ -699,7 +730,7 @@ class ArticleFeedbackv5Render {
 				if ( !$record->isNonActionable() ) {
 					$action = 'noaction';
 				// can not unmark a post someone else has marked as non-actionable!
-				} elseif ( $last->log_user && $last->log_user == $wgUser->getId() ) {
+				} elseif ( $last->log_user && $last->log_user == $this->getUser()->getId() ) {
 					$action = 'unnoaction';
 				}
 
@@ -794,9 +825,9 @@ class ArticleFeedbackv5Render {
 			return '';
 		}
 
-		global $wgUser, $wgRequest;
+		global $wgRequest;
 
-		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, $wgUser, $wgRequest, true );
+		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, $this->getUser(), $wgRequest, true );
 		$toolbox = '';
 
 		// no editor-action has yet been performed, show tools
@@ -853,7 +884,7 @@ class ArticleFeedbackv5Render {
 				}
 
 				if ( $discussPage ) {
-					global $wgLang, $wgUser;
+					global $wgLang;
 					// Give grep a chance to find the usages:
 					// articlefeedbackv5-discuss-talk-section-title, articlefeedbackv5-discuss-user-section-title
 					$sectionTitle = wfMessage( "articlefeedbackv5-discuss-$discussType-section-title" )
@@ -882,8 +913,8 @@ class ArticleFeedbackv5Render {
 						->params(
 							$userText,
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$record->aft_id" ),
-							$wgLang->userDate( $record->aft_timestamp, $wgUser ),
-							$wgLang->userTime( $record->aft_timestamp, $wgUser ),
+							$wgLang->userDate( $record->aft_timestamp, $this->getUser() ),
+							$wgLang->userTime( $record->aft_timestamp, $this->getUser() ),
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title ),
 							Message::rawParam( Html::element( 'blockquote', [], $record->aft_comment ) ),
 							$record->getArticle()->getTitle()
@@ -935,8 +966,8 @@ class ArticleFeedbackv5Render {
 								'data-section-title' => $sectionTitleTruncated,
 								'data-section-content' => $sectionContent,
 								'data-section-edittime' => wfTimestampNow(),
-								'data-section-edittoken' => $wgUser->getEditToken(),
-								'data-section-watchlist' => (int)$wgUser->isWatched( $discussPage )
+								'data-section-edittoken' => $this->getUser()->getEditToken(),
+								'data-section-watchlist' => (int)$this->getUser()->isWatched( $discussPage )
 							],
 							// Give grep a chance to find the usages:
 							// articlefeedbackv5-form-discuss-talk, articlefeedbackv5-form-discuss-user,
@@ -986,7 +1017,7 @@ class ArticleFeedbackv5Render {
 				$note = '';
 				// if current user is the one who performed the action, add a link to
 				// leave a note to clarify why the action was performed
-				if ( $last->log_comment == '' && $last->log_user && $last->log_user == $wgUser->getId() ) {
+				if ( $last->log_comment == '' && $last->log_user && $last->log_user == $this->getUser()->getId() ) {
 					$note .=
 						Html::element(
 							'a',
@@ -1080,7 +1111,7 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered info section
 	 */
 	private function renderPermalinkInfo( $record ) {
-		global $wgLang, $wgUser;
+		global $wgLang;
 
 		if ( !$this->isAllowed( 'aft-editor' ) ) {
 			return '';
@@ -1111,7 +1142,7 @@ class ArticleFeedbackv5Render {
 					'p',
 					[],
 					wfMessage( 'articlefeedbackv5-permalink-info-posted' )
-						->params( $wgLang->userDate( $record->aft_timestamp, $wgUser ), $wgLang->userTime( $record->aft_timestamp, $wgUser ) )
+						->params( $wgLang->userDate( $record->aft_timestamp, $this->getUser() ), $wgLang->userTime( $record->aft_timestamp, $this->getUser() ) )
 						->escaped()
 				) .
 				Html::rawElement(
@@ -1296,7 +1327,7 @@ class ArticleFeedbackv5Render {
 							'span',
 							[],
 							wfMessage( 'articlefeedbackv5-permalink-activity-subtitle' )
-								->params( ArticleFeedbackv5Activity::getActivityCount( $record, $wgUser ) )
+								->params( ArticleFeedbackv5Activity::getActivityCount( $record, $this->getUser() ) )
 								->escaped()
 						)
 					) .
@@ -1314,14 +1345,14 @@ class ArticleFeedbackv5Render {
 	 * @return string
 	 */
 	private function buildToolboxLink( $record, $action, $class = '' ) {
-		global $wgUser, $wgRequest;
+		global $wgRequest;
 		// check if user is allowed to perform this action
 		if ( !isset( ArticleFeedbackv5Activity::$actions[$action] ) ||
-			!ArticleFeedbackv5Activity::canPerformAction( $action, $wgUser ) ) {
+			!ArticleFeedbackv5Activity::canPerformAction( $action, $this->getUser() ) ) {
 			return '';
 		}
 
-		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, $wgUser, $wgRequest, true );
+		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, $this->getUser(), $wgRequest, true );
 		$class .= " articleFeedbackv5-$action-link";
 		$class .= ( $ownFeedback ? " articleFeedbackv5-$action-own-link" : '' );
 
@@ -1369,8 +1400,7 @@ class ArticleFeedbackv5Render {
 	 * @return \Wikimedia\Rdbms\IResultWrapper|bool
 	 */
 	public function getLastActivity( ArticleFeedbackv5Model $record ) {
-		global $wgUser;
-		foreach ( ArticleFeedbackv5Activity::getList( $record, $wgUser, 1 ) as $last ) {
+		foreach ( ArticleFeedbackv5Activity::getList( $record, $this->getUser(), 1 ) as $last ) {
 			return $last;
 		}
 		return false;
@@ -1383,8 +1413,7 @@ class ArticleFeedbackv5Render {
 	 * @return bool whether it's allowed
 	 */
 	public function isAllowed( $permission ) {
-		global $wgUser;
-		return $wgUser->isAllowed( $permission ) && !$wgUser->isBlocked();
+		return $this->getUser()->isAllowed( $permission ) && !$this->getUser()->isBlocked();
 	}
 
 	/**

@@ -90,7 +90,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 			// re-render feedback entry
 			$permalink = $source === 'permalink';
 			$central = $source === 'central';
-			$renderer = new ArticleFeedbackv5Render( $permalink, $central );
+			$renderer = new ArticleFeedbackv5Render( $wgUser, $permalink, $central );
 			$results['render'] = $renderer->run( $feedback );
 		}
 

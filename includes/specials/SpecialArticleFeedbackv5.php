@@ -181,7 +181,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// build renderer
 		$permalink = (bool)$this->feedbackId;
 		$central = !(bool)$this->pageId;
-		$renderer = new ArticleFeedbackv5Render( $permalink, $central );
+		$renderer = new ArticleFeedbackv5Render( $this->getUser(), $permalink, $central );
 
 		// build title
 		if ( $permalink ) {
