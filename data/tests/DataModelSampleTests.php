@@ -44,7 +44,13 @@ class DataModelSampleTest extends MediaWikiTestCase {
 	public function tearDown() : void {
 		unset( $this->sample );
 
-		$list = DataModelSample::getList( 'all', null, 0, 'title' );
+		$list = DataModelSample::getList(
+			'all',
+			$this->createMock( User::class ),
+			null,
+			0,
+			'title'
+		);
 		if ( $list ) {
 			foreach ( $list as $entry ) {
 				$entry->delete();
@@ -99,14 +105,15 @@ class DataModelSampleTest extends MediaWikiTestCase {
 
 		// 1st batch
 		$offset = 0;
-		$list = DataModelSample::getList( 'hidden', null, $offset, 'title', 'ASC' );
+		$user = $this->createMock( User::class );
+		$list = DataModelSample::getList( 'hidden', $user, null, $offset, 'title', 'ASC' );
 		$this->assertEquals( $list->numRows(), DataModelSample::LIST_LIMIT );
 		$first = $list->fetchObject();
 		$this->assertEquals( $first->ds_title, 'Title #1' );
 
 		// 2nd batch
 		$offset = $list->nextOffset();
-		$list = DataModelSample::getList( 'hidden', null, $offset, 'title', 'ASC' );
+		$list = DataModelSample::getList( 'hidden', $user, null, $offset, 'title', 'ASC' );
 		$this->assertEquals( $list->numRows(), round( $size * $probability - DataModelSample::LIST_LIMIT ) );
 		$first = $list->fetchObject();
 		/*

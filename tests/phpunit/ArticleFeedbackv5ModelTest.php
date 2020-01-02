@@ -53,7 +53,14 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 	public function tearDown() : void {
 		unset( $this->sample );
 
-		$list = ArticleFeedbackv5Model::getList( '*', null, 0, 'age', 'DESC' );
+		$list = ArticleFeedbackv5Model::getList(
+			'*',
+			$this->getTestUser()->getUser(),
+			null,
+			0,
+			'age',
+			'DESC'
+		);
 		if ( $list ) {
 			foreach ( $list as $entry ) {
 				$entry->delete();
@@ -116,14 +123,15 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 
 		// 1st batch
 		$offset = 0;
-		$list = ArticleFeedbackv5Model::getList( 'allcomment', null, $offset, 'age', 'ASC' );
+		$user = $this->getTestUser()->getUser();
+		$list = ArticleFeedbackv5Model::getList( 'allcomment', $user, null, $offset, 'age', 'ASC' );
 		$this->assertEquals( $list->numRows(), ArticleFeedbackv5Model::LIST_LIMIT );
 		$first = $list->fetchObject();
 		$this->assertEquals( $first->aft_comment, 'Test feedback entry #1' );
 
 		// 2nd batch
 		$offset = $list->nextOffset();
-		$list = ArticleFeedbackv5Model::getList( 'allcomment', null, $offset, 'age', 'ASC' );
+		$list = ArticleFeedbackv5Model::getList( 'allcomment', $user, null, $offset, 'age', 'ASC' );
 		$this->assertEquals( $list->numRows(), round( $size * $probability - ArticleFeedbackv5Model::LIST_LIMIT ) );
 		$first = $list->fetchObject();
 		$this->assertEquals( $first->aft_comment, 'Test feedback entry #101' );

@@ -99,7 +99,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			if ( method_exists( $pm, 'addTemporaryUserRights' ) ) {
 				// MW 1.34 or newer
 				$guard = $pm->addTemporaryUserRights( $user, 'aft-noone' );
-				$list = ArticleFeedbackv5Model::getList( '*', $feedback->aft_page, 0, 'age', 'DESC' );
+				$list = ArticleFeedbackv5Model::getList( '*', $user, $feedback->aft_page, 0, 'age', 'DESC' );
 				// revoke temporary aft-noone right
 				ScopedCallback::consume( $guard );
 			}
@@ -108,11 +108,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			// which is handled below, or 1.34+ which is handled above), let's use
 			// the old 1.32 logic for now.
 			$user->mRights[] = 'aft-noone';
-			$list = ArticleFeedbackv5Model::getList( '*', $feedback->aft_page, 0, 'age', 'DESC' );
+			$list = ArticleFeedbackv5Model::getList( '*', $user, $feedback->aft_page, 0, 'age', 'DESC' );
 			$user->mRights = array_diff( $user->mRights, [ 'aft-noone' ] );
 		} else {
 			$user->mRights[] = 'aft-noone';
-			$list = ArticleFeedbackv5Model::getList( '*', $feedback->aft_page, 0, 'age', 'DESC' );
+			$list = ArticleFeedbackv5Model::getList( '*', $user, $feedback->aft_page, 0, 'age', 'DESC' );
 			$user->mRights = array_diff( $user->mRights, [ 'aft-noone' ] );
 		}
 
