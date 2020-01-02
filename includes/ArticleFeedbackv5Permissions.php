@@ -175,10 +175,17 @@ class ArticleFeedbackv5Permissions {
 	 * @param int $articleId
 	 * @param string $permission
 	 * @param string $expiry
+	 * @param User $performer
 	 * @param string $reason
 	 * @return bool
 	 */
-	public static function setRestriction( $articleId, $permission, $expiry, $reason = '' ) {
+	public static function setRestriction(
+		$articleId,
+		$permission,
+		$expiry,
+		User $performer,
+		$reason = ''
+	) {
 		// check if opt-in/-out is enabled
 		global $wgArticleFeedbackv5EnableProtection;
 		if ( !$wgArticleFeedbackv5EnableProtection ) {
@@ -195,8 +202,6 @@ class ArticleFeedbackv5Permissions {
 		if ( !self::isValidPermission( $permission ) ) {
 			return false;
 		}
-
-		global $wgUser;
 
 		$dbw = wfGetDB( DB_MASTER );
 		$dbr = wfGetDB( DB_REPLICA );
@@ -256,7 +261,7 @@ class ArticleFeedbackv5Permissions {
 			// insert into log
 			$logEntry = new ManualLogEntry( 'articlefeedbackv5', 'protect' );
 			$logEntry->setTarget( $pageObj->getTitle() );
-			$logEntry->setPerformer( $wgUser );
+			$logEntry->setPerformer( $performer );
 			$logEntry->setParameters( [ 'permission' => $permission, 'expiry' => $expiry ] );
 			$logEntry->setComment( $reason );
 			$logId = $logEntry->insert();

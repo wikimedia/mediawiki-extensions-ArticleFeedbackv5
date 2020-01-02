@@ -104,12 +104,12 @@ class ArticleFeedbackv5Utils {
 	 * this is more of a safety check.
 	 *
 	 * @param int $pageId The page ID
+	 * @param User $user
 	 * @return bool
 	 */
-	public static function isFeedbackEnabled( $pageId ) {
+	public static function isFeedbackEnabled( $pageId, User $user ) {
 		global $wgArticleFeedbackv5Namespaces,
-				$wgArticleFeedbackv5EnableProtection,
-				$wgUser;
+				$wgArticleFeedbackv5EnableProtection;
 
 		$title = Title::newFromID( $pageId );
 		if ( is_null( $title ) ) {
@@ -124,16 +124,16 @@ class ArticleFeedbackv5Utils {
 		$enable &= in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces );
 
 		// check if user is not blocked
-		$enable &= !$wgUser->isBlocked();
+		$enable &= !$user->isBlocked();
 
 		// check if a, to this user sufficient, permission level is defined
 		if ( $wgArticleFeedbackv5EnableProtection && isset( $restriction->pr_level ) ) {
-			$enable &= $wgUser->isAllowed( $restriction->pr_level );
+			$enable &= $user->isAllowed( $restriction->pr_level );
 
 		} else {
 			$enable &=
 				// check if a, to this user sufficient, default permission level (based on lottery) is defined
-				$wgUser->isAllowed( ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $pageId ) ) ||
+				$user->isAllowed( ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $pageId ) ) ||
 				// or check whitelist
 				self::isWhitelisted( $pageId );
 		}
@@ -142,7 +142,7 @@ class ArticleFeedbackv5Utils {
 		$enable &= !self::isBlacklisted( $pageId );
 
 		// not disabled via preferences
-		$enable &= !$wgUser->getOption( 'articlefeedback-disable' );
+		$enable &= !$user->getOption( 'articlefeedback-disable' );
 
 		// not viewing a redirect
 		$enable &= !$title->isRedirect();
@@ -220,14 +220,19 @@ class ArticleFeedbackv5Utils {
 	 * user id) from evaluating their own feedback, but should never be trusted.
 	 *
 	 * @param ArticleFeedbackv5Model $record The feedback record
+	 * @param User $curUser
+	 * @param WebRequest $request
 	 * @param bool $unsafe True if untrusted data can be evaluated
 	 * @return bool
 	 */
-	public static function isOwnFeedback( $record, $unsafe = false ) {
-		global $wgRequest, $wgUser;
-
+	public static function isOwnFeedback(
+		$record,
+		User $curUser,
+		WebRequest $request,
+		$unsafe = false
+	) {
 		// if logged in user, we can know for certain if feedback was posted when logged in
-		if ( $wgUser->getId() && isset( $record->aft_user ) && $wgUser->getId() == intval( $record->aft_user ) ) {
+		if ( $curUser->getId() && isset( $record->aft_user ) && $curUser->getId() == intval( $record->aft_user ) ) {
 			return true;
 		}
 
@@ -236,7 +241,7 @@ class ArticleFeedbackv5Utils {
 			 * If either the feedback was posted when not logged in, or the visitor is now not
 			 * logged in, compare the feedback's id with what's stored in a cookie.
 			 */
-			$cookie = json_decode( $wgRequest->getCookie( self::getCookieName( 'feedback-ids' ) ), true );
+			$cookie = json_decode( $request->getCookie( self::getCookieName( 'feedback-ids' ) ), true );
 			if ( $cookie !== null && is_array( $cookie ) && isset( $record->aft_id ) ) {
 				return in_array( $record->aft_id, $cookie );
 			}
@@ -376,13 +381,14 @@ class ArticleFeedbackv5Utils {
 	 *
 	 * @param string $value
 	 * @param int $pageId
+	 * @param User $user
 	 * @param callable|null $callback Callback function to be called by AbuseFilter
 	 * @return bool|array Will return boolean false if valid or error message array if flagged
 	 */
-	public static function validateAbuseFilter( $value, $pageId, $callback = null ) {
+	public static function validateAbuseFilter( $value, $pageId, User $user, $callback = null ) {
 		// Check AbuseFilter, if installed
 		if ( class_exists( 'AbuseFilter' ) ) {
-			global $wgUser, $wgArticleFeedbackv5AbuseFilterGroup;
+			global $wgArticleFeedbackv5AbuseFilterGroup;
 
 			// Add custom action handlers
 			if ( $callback && is_callable( $callback ) ) {
@@ -397,13 +403,13 @@ class ArticleFeedbackv5Utils {
 			// Set up variables
 			$title = Title::newFromID( $pageId );
 			$vars = new AbuseFilterVariableHolder;
-			$vars->addHolders( AbuseFilter::generateUserVars( $wgUser ), AbuseFilter::generateTitleVars( $title, 'PAGE' ) );
+			$vars->addHolders( AbuseFilter::generateUserVars( $user ), AbuseFilter::generateTitleVars( $title, 'PAGE' ) );
 			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
 			$vars->setVar( 'ACTION', 'feedback' );
 			$vars->setVar( 'new_wikitext', $value );
 			$vars->setLazyLoadVar( 'new_size', 'length', [ 'length-var' => 'new_wikitext' ] );
 
-			$status = AbuseFilter::filterAction( $vars, $title, $wgArticleFeedbackv5AbuseFilterGroup, $wgUser );
+			$status = AbuseFilter::filterAction( $vars, $title, $wgArticleFeedbackv5AbuseFilterGroup, $user );
 
 			return $status->isOK() ? false : $status->getErrorsArray();
 		}

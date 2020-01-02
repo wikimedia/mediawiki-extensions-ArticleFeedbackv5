@@ -686,7 +686,8 @@ class ArticleFeedbackv5Hooks {
 	public static function onProtectionSave( Page $article, &$errorMsg, $reason ) {
 		global $wgRequest,
 				$wgArticleFeedbackv5Namespaces,
-				$wgArticleFeedbackv5EnableProtection;
+				$wgArticleFeedbackv5EnableProtection,
+				$wgUser;
 
 		if ( !$article->exists() ) {
 			return true;
@@ -741,6 +742,7 @@ class ArticleFeedbackv5Hooks {
 			$article->getId(),
 			$requestPermission,
 			$expirationTime,
+			$wgUser,
 			$reason
 		);
 

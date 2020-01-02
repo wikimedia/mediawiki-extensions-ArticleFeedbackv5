@@ -57,7 +57,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		}
 
 		// Check if feedback is enabled on this page
-		if ( !ArticleFeedbackv5Utils::isFeedbackEnabled( $pageObj->getId() ) ) {
+		if ( !ArticleFeedbackv5Utils::isFeedbackEnabled( $pageObj->getId(), $user ) ) {
 			$this->dieWithError(
 				'articlefeedbackv5-page-disabled',
 				'invalidpage'
@@ -152,6 +152,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				$error = ArticleFeedbackv5Utils::validateAbuseFilter(
 					$feedback->aft_comment,
 					$feedback->aft_page,
+					$user,
 					[ $this, 'callbackAbuseActionFlag' ]
 				);
 
