@@ -289,18 +289,13 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * Get watchlist list, based on user ID rather than page id ($shard)
 	 *
 	 * @param string $name The list name (see static::$lists)
-	 * @param User|null $user The user who'se watchlisted feedback to fetch
+	 * @param User $user The user who'se watchlisted feedback to fetch
 	 * @param int|null $offset The offset to start from
 	 * @param string $sort Sort to apply to list
 	 * @param string $order Sort the list ASC or DESC
 	 * @return DataModelList
 	 */
-	public static function getWatchlistList( $name, User $user = null, $offset = null, $sort = 'relevance', $order = 'ASC' ) {
-		if ( !$user ) {
-			global $wgUser;
-			$user = $wgUser;
-		}
-
+	public static function getWatchlistList( $name, User $user, $offset = null, $sort = 'relevance', $order = 'ASC' ) {
 		/*
 		 * Get array of page ids
 		 *

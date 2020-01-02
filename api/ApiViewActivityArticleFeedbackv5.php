@@ -128,7 +128,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 					Html::element(
 						'div',
 						[ 'class' => 'articleFeedbackv5-activity-count' ],
-						wfMessage( 'articlefeedbackv5-activity-count' )->numParams( ArticleFeedbackv5Activity::getActivityCount( $feedback ) )->text()
+						wfMessage( 'articlefeedbackv5-activity-count' )->numParams( ArticleFeedbackv5Activity::getActivityCount( $feedback, $wgUser ) )->text()
 					)
 				);
 
