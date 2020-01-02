@@ -26,6 +26,8 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	 * a piece of feedback
 	 */
 	public function execute() {
+		$user = $this->getUser();
+
 		$affected = 0;
 		$results = [];
 
@@ -43,8 +45,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 			$this->dieWithError( 'notanarticle' );
 		}
 
-		global $wgUser;
-		if ( $wgUser->getId() ) {
+		if ( $user->getId() ) {
 			// update log entry in database
 			$dbw = ArticleFeedbackv5Utils::getDB( DB_MASTER );
 			$data = [
@@ -54,7 +55,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 				'log_action' => $action
 			];
 			// failsafe, making sure this can't be gamed to add comments to other users' feedback
-			$data += ActorMigration::newMigration()->getInsertValues( $dbw, 'log_user', $wgUser );
+			$data += ActorMigration::newMigration()->getInsertValues( $dbw, 'log_user', $user );
 			$logComment = MediaWikiServices::getInstance()->getCommentStore()->insert(
 				$dbw,
 				'log_comment',
@@ -90,7 +91,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 			// re-render feedback entry
 			$permalink = $source === 'permalink';
 			$central = $source === 'central';
-			$renderer = new ArticleFeedbackv5Render( $wgUser, $permalink, $central );
+			$renderer = new ArticleFeedbackv5Render( $user, $permalink, $central );
 			$results['render'] = $renderer->run( $feedback );
 		}
 

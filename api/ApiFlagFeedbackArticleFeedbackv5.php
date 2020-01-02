@@ -28,8 +28,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	 * a piece of feedback
 	 */
 	public function execute() {
-		global $wgUser;
-
+		$user = $this->getUser();
 		$results = [];
 
 		// get important values from our parameters
@@ -52,7 +51,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		}
 
 		// Fire up the flagging object
-		$flagger = new ArticleFeedbackv5Flagging( $wgUser, $feedbackId, $pageId );
+		$flagger = new ArticleFeedbackv5Flagging( $user, $feedbackId, $pageId );
 		$status = $flagger->run( $flag, $notes, $toggle, $source );
 
 		$feedback = ArticleFeedbackv5Model::get( $feedbackId, $pageId );
@@ -60,7 +59,7 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 			// re-render feedback entry
 			$permalink = $source == 'permalink';
 			$central = $source == 'central';
-			$renderer = new ArticleFeedbackv5Render( $wgUser, $permalink, $central );
+			$renderer = new ArticleFeedbackv5Render( $user, $permalink, $central );
 			$results['render'] = $renderer->run( $feedback );
 		}
 

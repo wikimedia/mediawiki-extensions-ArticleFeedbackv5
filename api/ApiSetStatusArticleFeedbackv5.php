@@ -19,8 +19,7 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 	}
 
 	public function execute() {
-		global $wgUser;
-
+		$user = $this->getUser();
 		$params = $this->extractRequestParams();
 
 		// get page object
@@ -32,7 +31,7 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 			);
 
 		// check if current user has editor permission
-		} elseif ( !$wgUser->isAllowed( 'aft-editor' ) ) {
+		} elseif ( !$user->isAllowed( 'aft-editor' ) ) {
 			$this->dieWithError(
 				'articlefeedbackv5-insufficient-permissions',
 				'nopermissions'
@@ -42,7 +41,7 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 		// check if it is not too tight (set tight by administrator, should not be overridden)
 		} elseif (
 			ArticleFeedbackv5Permissions::getProtectionRestriction( $pageObj->getId() ) !== false &&
-			!$wgUser->isAllowed( ArticleFeedbackv5Permissions::getAppliedRestriction( $pageObj->getId() )->pr_level )
+			!$user->isAllowed( ArticleFeedbackv5Permissions::getAppliedRestriction( $pageObj->getId() )->pr_level )
 		) {
 			$this->dieWithError(
 				'articlefeedbackv5-insufficient-permissions',
@@ -71,7 +70,7 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 				$pageObj->getId(),
 				$restriction,
 				$expiry,
-				$wgUser
+				$user
 			);
 
 			if ( !$success ) {

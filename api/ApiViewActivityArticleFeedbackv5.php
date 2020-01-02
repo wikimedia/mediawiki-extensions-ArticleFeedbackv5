@@ -36,9 +36,10 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		 */
 		$this->getMain()->getVal( '_' );
 
-		global $wgUser, $wgLang;
+		$user = $this->getUser();
+		$lang = $this->getLanguage();
 
-		if ( !$wgUser->isAllowed( 'aft-editor' ) ) {
+		if ( !$user->isAllowed( 'aft-editor' ) ) {
 			$this->dieWithError(
 				'articlefeedbackv5-error-permission-denied',
 				'permissiondenied'
@@ -78,7 +79,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 		// get our activities
 		try {
-			$activities = ArticleFeedbackv5Activity::getList( $feedback, $wgUser, $limit, $continue );
+			$activities = ArticleFeedbackv5Activity::getList( $feedback, $user, $limit, $continue );
 		} catch ( Exception $e ) {
 			$this->dieWithError( ( new RawMessage( '$1' ) )->plaintextParam( $e->getMessage() ), $e->getCode() );
 		}
@@ -111,9 +112,9 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 							[],
 							wfMessage( 'articlefeedbackv5-activity-feedback-date' )
 								->params(
-									$wgLang->userTimeAndDate( $feedback->aft_timestamp, $wgUser ),
-									$wgLang->userDate( $feedback->aft_timestamp, $wgUser ),
-									$wgLang->userTime( $feedback->aft_timestamp, $wgUser )
+									$lang->userTimeAndDate( $feedback->aft_timestamp, $user ),
+									$lang->userDate( $feedback->aft_timestamp, $user ),
+									$lang->userTime( $feedback->aft_timestamp, $user )
 								)->text()
 						) .
 						Html::rawElement(
@@ -128,7 +129,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 					Html::element(
 						'div',
 						[ 'class' => 'articleFeedbackv5-activity-count' ],
-						wfMessage( 'articlefeedbackv5-activity-count' )->numParams( ArticleFeedbackv5Activity::getActivityCount( $feedback, $wgUser ) )->text()
+						wfMessage( 'articlefeedbackv5-activity-count' )->numParams( ArticleFeedbackv5Activity::getActivityCount( $feedback, $user ) )->text()
 					)
 				);
 
@@ -144,7 +145,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		// divs of activity items
 		foreach ( $activities as $item ) {
 			// skip item if user is not permitted to see it
-			if ( !ArticleFeedbackv5Activity::canPerformAction( $item->log_action, $wgUser ) ) {
+			if ( !ArticleFeedbackv5Activity::canPerformAction( $item->log_action, $user ) ) {
 				continue;
 			}
 
@@ -181,9 +182,9 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 							->rawParams(
 								ArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
 								Linker::commentBlock( $item->log_comment ),
-								Html::element( 'span', [], $wgLang->userTimeAndDate( $item->log_timestamp, $wgUser ) ),
-								Html::element( 'span', [], $wgLang->userDate( $item->log_timestamp, $wgUser ) ),
-								Html::element( 'span', [], $wgLang->userTime( $item->log_timestamp, $wgUser ) )
+								Html::element( 'span', [], $lang->userTimeAndDate( $item->log_timestamp, $user ) ),
+								Html::element( 'span', [], $lang->userDate( $item->log_timestamp, $user ) ),
+								Html::element( 'span', [], $lang->userTime( $item->log_timestamp, $user ) )
 							)
 							->params( $item->log_user_text )
 							->escaped()
