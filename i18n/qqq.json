@@ -223,7 +223,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "Text to show on the link on the central feedback page to the watchlist-page. $1 is the link",
 	"articlefeedbackv5-special-watchlist-central-link": "Text to show on the link on the watchlist-page to the central feedback page. $1 is the link",
 	"articlefeedbackv5-updates-since": "Number of edits made to this article since this feedback was posted. $1 is the number of edits. Requires plural support",
-	"articleFeedbackv5-details-link": "Text for the link to the details/permalink page for that feedback post.\n{{Identical|Detail}}",
+	"articlefeedbackv5-details-link": "Text for the link to the details/permalink page for that feedback post.\n{{Identical|Detail}}",
 	"articlefeedbackv5-revision-link": "Link to view the exact revision this user commented on (may be the current live page, or a historical revision).",
 	"articlefeedbackv5-special-more": "{{Identical|More}}",
 	"articlefeedbackv5-special-refresh": "The text on a button that refreshes the list of feedback",
