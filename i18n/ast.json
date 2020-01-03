@@ -185,7 +185,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Comentarios de les páxines que vixilo]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Ver los comentarios de toles páxines]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 edición| $1 ediciones}} dende la publicación",
-	"articleFeedbackv5-details-link": "Detalles",
+	"articlefeedbackv5-details-link": "Detalles",
 	"articlefeedbackv5-revision-link": "(ver la páxina antigua)",
 	"articlefeedbackv5-special-more": "Ver más mensaxes",
 	"articlefeedbackv5-special-refresh": "Refrescar la llista",

@@ -129,7 +129,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Balik-simbag gikan sa sakuyang pinagbabantayan na mga pahina]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Tanawon an balik-simbag gikan sa gabos na mga pahina]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|$1 na mga pagliliwat}} poon pa kaidtong isinurat",
-	"articleFeedbackv5-details-link": "Mga Detalye",
+	"articlefeedbackv5-details-link": "Mga Detalye",
 	"articlefeedbackv5-revision-link": "(hilngon an lumaong pahina)",
 	"articlefeedbackv5-special-more": "Ipatanaw an kadagdagan na mga ipinaskil",
 	"articlefeedbackv5-special-refresh": "Preskohon an lista",

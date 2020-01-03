@@ -74,7 +74,7 @@
 	"articlefeedbackv5-special-sort-label": "Kārtot pēc:",
 	"articlefeedbackv5-special-filter-select-more": "Vairāk",
 	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|$1 ieraksti|$1 ieraksts|$1 ieraksti}}",
-	"articleFeedbackv5-details-link": "Detaļas",
+	"articlefeedbackv5-details-link": "Detaļas",
 	"articlefeedbackv5-revision-link": "(skatīt veco lapu)",
 	"articlefeedbackv5-special-more": "Rādīt vairāk ierakstu",
 	"articlefeedbackv5-special-refresh": "Atsvaidzināt sarakstu",

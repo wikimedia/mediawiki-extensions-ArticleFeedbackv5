@@ -127,7 +127,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Rimarkoj el miaj priatentataj paĝoj]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Vidi rimarkojn el ĉiuj paĝoj]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 redakto|$1 redaktoj}} ekde afiŝado",
-	"articleFeedbackv5-details-link": "Detaloj",
+	"articlefeedbackv5-details-link": "Detaloj",
 	"articlefeedbackv5-revision-link": "(vidi malnovan paĝon)",
 	"articlefeedbackv5-special-more": "Montri pliajn afiŝojn",
 	"articlefeedbackv5-special-refresh": "Refreŝigi liston",

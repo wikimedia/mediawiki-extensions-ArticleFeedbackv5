@@ -204,7 +204,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Feedback från mina bevakade sidor]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Visa feedback från alla sidor]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 redigering|$1 redigeringar}} sedan inlägg",
-	"articleFeedbackv5-details-link": "Detaljer",
+	"articlefeedbackv5-details-link": "Detaljer",
 	"articlefeedbackv5-revision-link": "(se gammal sida)",
 	"articlefeedbackv5-special-more": "Visa fler inlägg",
 	"articlefeedbackv5-special-refresh": "Uppdatera listan",

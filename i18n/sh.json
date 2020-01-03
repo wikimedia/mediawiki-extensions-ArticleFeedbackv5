@@ -188,7 +188,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Mišljenja za moje praćene stranice]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Mišljenja za sve stranice]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 uređivanje|$1 uređivanja}} od objavljivanja do danas",
-	"articleFeedbackv5-details-link": "Podrobno",
+	"articlefeedbackv5-details-link": "Podrobno",
 	"articlefeedbackv5-revision-link": "(pogl. staru stranicu)",
 	"articlefeedbackv5-special-more": "Više mišljenja",
 	"articlefeedbackv5-special-refresh": "Preučitaj popis",

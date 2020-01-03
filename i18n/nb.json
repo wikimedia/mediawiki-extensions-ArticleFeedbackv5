@@ -198,7 +198,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Tilbakemeldinger på mine overvåkede sider]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Vis tilbakemeldinger på alle sider]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 redigering|$1 redigeringer}} siden innlegg",
-	"articleFeedbackv5-details-link": "Detaljer",
+	"articlefeedbackv5-details-link": "Detaljer",
 	"articlefeedbackv5-revision-link": "(se gammel side)",
 	"articlefeedbackv5-special-more": "Vis flere innlegg",
 	"articlefeedbackv5-special-refresh": "Oppdater listen",

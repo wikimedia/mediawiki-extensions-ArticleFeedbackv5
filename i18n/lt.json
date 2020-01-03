@@ -145,7 +145,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Atsiliepimai iš mano stebimų puslapių]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Žiūrėti atsiliepimus iš visų puslapių]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 pataisymas|$1 pataisymai}} nuo paskelbimo",
-	"articleFeedbackv5-details-link": "Detalės",
+	"articlefeedbackv5-details-link": "Detalės",
 	"articlefeedbackv5-revision-link": "(žiūrėti seną puslapį)",
 	"articlefeedbackv5-special-more": "Rodyti daugiau pranešimų",
 	"articlefeedbackv5-special-refresh": "Atnaujinti sąrašą",

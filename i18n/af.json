@@ -37,7 +37,7 @@
 	"articlefeedbackv5-special-sort-age-desc": "Nuutste",
 	"articlefeedbackv5-special-sort-age-asc": "Oudste",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|$1 wysiging|$1 wysigings}} sedert boodskap,",
-	"articleFeedbackv5-details-link": "Details",
+	"articlefeedbackv5-details-link": "Details",
 	"articlefeedbackv5-revision-link": "(wys ou artikel)",
 	"articlefeedbackv5-special-more": "Wys meer boodskappe",
 	"articlefeedbackv5-loading-tag": "Laai...",

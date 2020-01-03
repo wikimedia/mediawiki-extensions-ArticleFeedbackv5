@@ -190,7 +190,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|משוב מדפים ברשימת המעקב שלי]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|תצוגת משוב מכל הדפים]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|עריכה אחת|$1 עריכות}} מאז שנשלח",
-	"articleFeedbackv5-details-link": "פרטים",
+	"articlefeedbackv5-details-link": "פרטים",
 	"articlefeedbackv5-revision-link": "(ראו את הדף הישן)",
 	"articlefeedbackv5-special-more": "רשומות נוספות",
 	"articlefeedbackv5-special-refresh": "רענון הרשימה",

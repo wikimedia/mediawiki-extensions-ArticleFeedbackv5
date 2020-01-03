@@ -193,7 +193,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Feedback pe' le mèje pàgene uardate]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Vide le feedback da totte le pàgene]]",
 	"articlefeedbackv5-updates-since": "\n{{PLURAL:$1|1 cangiamende|$1 cangiaminde}} da 'u messagge",
-	"articleFeedbackv5-details-link": "Dettaglie",
+	"articlefeedbackv5-details-link": "Dettaglie",
 	"articlefeedbackv5-revision-link": "(vide vôsce vicchie)",
 	"articlefeedbackv5-special-more": "Fa vedè cchiù messàgge",
 	"articlefeedbackv5-special-refresh": "Aggiorne 'a liste",

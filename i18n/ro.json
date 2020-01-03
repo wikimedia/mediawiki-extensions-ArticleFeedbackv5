@@ -112,7 +112,7 @@
 	"articlefeedbackv5-special-filter-select-more": "Mai mult",
 	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|1 comentariu|$1 comentarii|$1 de comentarii}}",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 modificare|$1 modificări|$1 de modificări}} din momentul comentariului",
-	"articleFeedbackv5-details-link": "Detalii",
+	"articlefeedbackv5-details-link": "Detalii",
 	"articlefeedbackv5-revision-link": "(vezi vechea pagină)",
 	"articlefeedbackv5-special-more": "Arată mai multe postări",
 	"articlefeedbackv5-special-refresh": "Reîmprospătează lista",

@@ -69,7 +69,7 @@
 	"articlefeedbackv5-special-sort-age-asc": "Nejstarše",
 	"articlefeedbackv5-special-filter-select-more": "Dalšne",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 změna|$1 změnje|$1 změny|$1 změnow}} wót pśinoska sem",
-	"articleFeedbackv5-details-link": "Drobnostki",
+	"articlefeedbackv5-details-link": "Drobnostki",
 	"articlefeedbackv5-revision-link": "(glědaj stary bok)",
 	"articlefeedbackv5-special-more": "Dalšne powěsći pokazaś",
 	"articlefeedbackv5-special-refresh": "Lisćinu aktualizěrowaś",

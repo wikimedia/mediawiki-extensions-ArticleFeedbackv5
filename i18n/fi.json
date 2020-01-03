@@ -147,7 +147,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Palaute tarkkailemistani sivuista]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Näytä palaute kaikista sivuista]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 muokkaus|$1 muokkausta}} viestin lähetyksen jälkeen",
-	"articleFeedbackv5-details-link": "Tiedot",
+	"articlefeedbackv5-details-link": "Tiedot",
 	"articlefeedbackv5-revision-link": "(näytä vanha sivu)",
 	"articlefeedbackv5-special-more": "Näytä lisää viestejä",
 	"articlefeedbackv5-special-refresh": "Päivitä luettelo",

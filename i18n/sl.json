@@ -68,7 +68,7 @@
 	"articlefeedbackv5-special-sort-age-asc": "Starejše",
 	"articlefeedbackv5-special-filter-select-more": "Več",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 urejanje|$1 urejanji|$1 urejanja |$1 urejanj}} po objavi",
-	"articleFeedbackv5-details-link": "Podrobnosti",
+	"articlefeedbackv5-details-link": "Podrobnosti",
 	"articlefeedbackv5-revision-link": "(ogled stare strani)",
 	"articlefeedbackv5-special-more": "Prikaži več objav",
 	"articlefeedbackv5-special-pagetitle": "Povratna informacija o $1",

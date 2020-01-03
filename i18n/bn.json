@@ -130,7 +130,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|আমার নজরে থাকা পাতা সম্পর্কিত প্রতিক্রিয়া]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|সব পাতা সম্পর্কিত প্রতিক্রিয়া দেখাও]]",
 	"articlefeedbackv5-updates-since": "পোস্টের পর থেকে {{PLURAL:$1|1টি সম্পাদনা}}",
-	"articleFeedbackv5-details-link": "বিস্তারিত",
+	"articlefeedbackv5-details-link": "বিস্তারিত",
 	"articlefeedbackv5-revision-link": "(পুরনো পাতা দেখুন)",
 	"articlefeedbackv5-special-more": "আরও ভুক্তি দেখাও",
 	"articlefeedbackv5-special-refresh": "তালিকা রিফ্রেশ করুন",

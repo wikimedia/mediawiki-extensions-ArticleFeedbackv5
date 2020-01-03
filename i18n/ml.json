@@ -114,7 +114,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|ഞാൻ ശ്രദ്ധിക്കുന്ന താളുകളെക്കുറിച്ചുള്ള പ്രതികരണങ്ങൾ]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|എല്ലാ താളുകൾക്കുമുണ്ടായിട്ടുള്ള പ്രതികരണങ്ങൾ കാണുക]]",
 	"articlefeedbackv5-updates-since": "പ്രസിദ്ധീകരിച്ചതിനു ശേഷം {{PLURAL:$1|ഒരു തിരുത്തൽ|$1 തിരുത്തലുകൾ}}",
-	"articleFeedbackv5-details-link": "വിശദാംശങ്ങൾ",
+	"articlefeedbackv5-details-link": "വിശദാംശങ്ങൾ",
 	"articlefeedbackv5-revision-link": "(പഴയ താൾ കാണുക)",
 	"articlefeedbackv5-special-more": "കൂടുതൽ കുറിപ്പുകൾ പ്രദർശിപ്പിക്കുക",
 	"articlefeedbackv5-special-refresh": "പട്ടിക പുതുക്കുക",

@@ -168,7 +168,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Comentarios sobre las páginas que vigilo]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Ver los comentarios sobre todas las páginas]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 edición| $1 ediciones}} desde la publicación",
-	"articleFeedbackv5-details-link": "Detalles",
+	"articlefeedbackv5-details-link": "Detalles",
 	"articlefeedbackv5-revision-link": "(Ver versión previa del artículo)",
 	"articlefeedbackv5-special-more": "Mostrar más entradas",
 	"articlefeedbackv5-special-refresh": "Actualizar lista",

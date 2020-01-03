@@ -203,7 +203,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|تعليقات من الصفحات المراقبة]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|طالع التعليقات لجميع الصفحات]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 تعديل|$1 تعديلات}} منذ التعليق",
-	"articleFeedbackv5-details-link": "تفاصيل",
+	"articlefeedbackv5-details-link": "تفاصيل",
 	"articlefeedbackv5-revision-link": "(شاهد المقالات القديمة)",
 	"articlefeedbackv5-special-more": "عرض تعليقات أكثر",
 	"articlefeedbackv5-special-refresh": "تحديث القائمة",

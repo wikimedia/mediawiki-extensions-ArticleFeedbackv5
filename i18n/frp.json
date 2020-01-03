@@ -81,7 +81,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Avis sur les pâges que siuvo]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Vêde los avis sur totes les pâges]]",
 	"articlefeedbackv5-updates-since": "$1 changement{{PLURAL:$1||s}} dês lo mèssâjo",
-	"articleFeedbackv5-details-link": "Dètalys",
+	"articlefeedbackv5-details-link": "Dètalys",
 	"articlefeedbackv5-revision-link": "(vêde lo viely articllo)",
 	"articlefeedbackv5-special-more": "Fâre vêre més de mèssâjos",
 	"articlefeedbackv5-special-refresh": "Betar a jorn la lista",

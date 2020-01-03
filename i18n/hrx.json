@@ -92,7 +92,7 @@
 	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|En Beitroch|$1 Beiträche}}",
 	"articlefeedbackv5-special-count-total-title": "{{PLURAL:$1|Ein Beitrag|$1 Beiträche}} mit Kommentare, {{PLURAL:$2|en Beitrooch|$2 Beiträche}} ohne",
 	"articlefeedbackv5-special-watchlist-showing": "Rückmeldunge zu Seite, die von [[$1|$2]] beobachtet sin",
-	"articleFeedbackv5-details-link": "Einzelheite",
+	"articlefeedbackv5-details-link": "Einzelheite",
 	"articlefeedbackv5-revision-link": "(alte Seit oonsiehn)",
 	"articlefeedbackv5-special-more": "Weitre Rückmeldunge oonzeichen",
 	"articlefeedbackv5-special-refresh": "List aktualisiere",

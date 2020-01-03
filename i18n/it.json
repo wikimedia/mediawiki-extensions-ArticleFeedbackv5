@@ -196,7 +196,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Feedback dalle mie pagine osservate]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Vedi feedback da tutte le pagine]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 modifica|$1 modifiche}} dal post",
-	"articleFeedbackv5-details-link": "Dettagli",
+	"articlefeedbackv5-details-link": "Dettagli",
 	"articlefeedbackv5-revision-link": "(vedi vecchia versione)",
 	"articlefeedbackv5-special-more": "Mostra altri post",
 	"articlefeedbackv5-special-refresh": "Aggiorna elenco",

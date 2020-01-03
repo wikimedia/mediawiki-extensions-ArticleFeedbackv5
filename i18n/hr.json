@@ -100,7 +100,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Povratne informacije s mojih praćenih stranica]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Pogledaj povratne informacije svih stranica]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 uređivanje|$1 uređivanja}} nakon poruke",
-	"articleFeedbackv5-details-link": "Detalji",
+	"articlefeedbackv5-details-link": "Detalji",
 	"articlefeedbackv5-loading-tag": "Učitavam…",
 	"articlefeedbackv5-new-marker": "novo",
 	"articlefeedbackv5-autohide-marker": "Skriven",

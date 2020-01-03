@@ -190,7 +190,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Comentarios sobre as páxinas que vixío]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Ollar os comentarios sobre todas as páxinas]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 edición|$1 edicións}} desde a publicación",
-	"articleFeedbackv5-details-link": "Detalles",
+	"articlefeedbackv5-details-link": "Detalles",
 	"articlefeedbackv5-revision-link": "(ollar a páxina vella)",
 	"articlefeedbackv5-special-more": "Amosar máis mensaxes",
 	"articlefeedbackv5-special-refresh": "Refrescar a lista",

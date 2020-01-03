@@ -91,7 +91,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Ruggmäldige zue vu mir beobachtete Syte]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Ruggmäldige zue allne Syte aaluege]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|Ei Bearbeitig|$1 Bearbeitige}} syt em Byytrag",
-	"articleFeedbackv5-details-link": "Einzelheite",
+	"articlefeedbackv5-details-link": "Einzelheite",
 	"articlefeedbackv5-revision-link": "(alte Artikel aaluege)",
 	"articlefeedbackv5-special-more": "Meh Ruckmäldige aazeige",
 	"articlefeedbackv5-special-refresh": "Lischt nej lade",

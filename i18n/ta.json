@@ -96,7 +96,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|என் கவனிப்புப்பட்டியலில் உள்ள பக்கங்களில் இருந்து பின்னூட்டம்]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|அனைத்துப் பக்கங்களில் இருந்தும் பின்னூட்டங்களைக் காண்]]",
 	"articlefeedbackv5-updates-since": "பதிவிலிருந்து {{PLURAL:$1|1 தொகுப்பு|$1 தொகுப்புகள்}}",
-	"articleFeedbackv5-details-link": "விவரங்கள்",
+	"articlefeedbackv5-details-link": "விவரங்கள்",
 	"articlefeedbackv5-revision-link": "(பழைய பக்கத்தைப் பார்க்கவும்)",
 	"articlefeedbackv5-special-more": "மேலதிக பதிவுகளை காண்பிக்கவும்",
 	"articlefeedbackv5-special-refresh": "பட்டியலை புதுப்பிக்கவும்",

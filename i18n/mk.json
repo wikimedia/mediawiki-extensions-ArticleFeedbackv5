@@ -193,7 +193,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Мислења за моите набљудувани страници]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Мислења за сите страници]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 уредување|$1 уредувања}} од објавувањето наваму",
-	"articleFeedbackv5-details-link": "Подробно",
+	"articlefeedbackv5-details-link": "Подробно",
 	"articlefeedbackv5-revision-link": "(погл. стара страница)",
 	"articlefeedbackv5-special-more": "Повеќе мислења",
 	"articlefeedbackv5-special-refresh": "Превчитај го списокот",

@@ -128,7 +128,7 @@
 	"articlefeedbackv5-special-watchlist-showing": "Повратне информације о страницама које надгледа [[$1|$2]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Повратне информације о свим страницама]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 измена|$1 измене|$1 измена}} од објављивања",
-	"articleFeedbackv5-details-link": "Детаљи",
+	"articlefeedbackv5-details-link": "Детаљи",
 	"articlefeedbackv5-revision-link": "(погледај старе странице)",
 	"articlefeedbackv5-special-more": "Прикажи више објава",
 	"articlefeedbackv5-special-refresh": "Освежи списак",

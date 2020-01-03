@@ -203,7 +203,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Avaliação das minhas páginas vigiadas]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Ver avaliação para todas as páginas]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 edição| $1 edições}} desde a publicação",
-	"articleFeedbackv5-details-link": "Detalhes",
+	"articlefeedbackv5-details-link": "Detalhes",
 	"articlefeedbackv5-revision-link": "(exibir conteúdo antigo)",
 	"articlefeedbackv5-special-more": "Mostrar mais comentários",
 	"articlefeedbackv5-special-refresh": "Atualizar lista",

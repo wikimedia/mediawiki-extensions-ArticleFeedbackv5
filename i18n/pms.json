@@ -91,7 +91,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Coment da le pàgine ch'i ten-o sot-euj]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Vëdde ij coment da tute le pàgine]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 modìfica|$1 modìfiche}} dal mëssagi",
-	"articleFeedbackv5-details-link": "Detaj",
+	"articlefeedbackv5-details-link": "Detaj",
 	"articlefeedbackv5-revision-link": "(vëdde la veja vos)",
 	"articlefeedbackv5-special-more": "Mostré pì 'd mëssagi",
 	"articlefeedbackv5-special-refresh": "Rinfrësca la lista",

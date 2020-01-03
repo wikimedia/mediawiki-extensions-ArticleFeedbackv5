@@ -219,7 +219,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Отзывы о статьях из моего списка наблюдения]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Вид обратной связи от всех страниц]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|$1 правка|$1 правки|$1 правок}} с момента публикации",
-	"articleFeedbackv5-details-link": "Подробности",
+	"articlefeedbackv5-details-link": "Подробности",
 	"articlefeedbackv5-revision-link": "(см. старую страницу)",
 	"articlefeedbackv5-special-more": "Показать больше отзывов",
 	"articlefeedbackv5-special-refresh": "Обновить список",

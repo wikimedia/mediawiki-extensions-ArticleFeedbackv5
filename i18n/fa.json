@@ -150,7 +150,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|بازخورد صفحه‌های پی‌گیری من]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|مشاهدهٔ بازخوردهای همهٔ صفحات]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 ویرایش|$1 ویرایش}} از زمان ارسال",
-	"articleFeedbackv5-details-link": "جزئیات",
+	"articlefeedbackv5-details-link": "جزئیات",
 	"articlefeedbackv5-revision-link": "(مشاهدهٔ صفحهٔ قدیمی)",
 	"articlefeedbackv5-special-more": "نمایش پست‌های بیشتر",
 	"articlefeedbackv5-special-refresh": "تازه کردن فهرست",

@@ -149,7 +149,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Opinie o artykułach z mojej listy obserwowanych]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Zobacz opinie o wszystkich stronach]]",
 	"articlefeedbackv5-updates-since": "$1 {{PLURAL:$1|edycja|edycje|edycji}} od zamieszczenia",
-	"articleFeedbackv5-details-link": "Szczegóły",
+	"articlefeedbackv5-details-link": "Szczegóły",
 	"articlefeedbackv5-revision-link": "(zobacz poprzednią wersję strony)",
 	"articlefeedbackv5-special-more": "Pokaż więcej wpisów",
 	"articlefeedbackv5-special-refresh": "Odśwież listę",

@@ -54,7 +54,7 @@
 	"articlefeedbackv5-special-sort-label": "اوډون ډول:",
 	"articlefeedbackv5-special-filter-select-more": "نور",
 	"articlefeedbackv5-updates-since": "د لېږلو له وخت راهيسې {{PLURAL:$1|1 سمون|$1 سمونونه}}",
-	"articleFeedbackv5-details-link": "تفصيلات",
+	"articlefeedbackv5-details-link": "تفصيلات",
 	"articlefeedbackv5-revision-link": "(زوړ مخ کتل)",
 	"articlefeedbackv5-special-more": "نورې تبصرې ښکاره کول",
 	"articlefeedbackv5-loading-tag": "رابرسېرېږي...",

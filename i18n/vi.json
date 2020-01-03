@@ -101,7 +101,7 @@
 	"articlefeedbackv5-special-filter-select-more": "Thêm nữa",
 	"articlefeedbackv5-special-count-total": "{{PLURAL:$2}}$1 bài đăng",
 	"articlefeedbackv5-special-count-total-title": "$1 {{PLURAL:$1}}bài đăng có ý kiến, $2 {{PLURAL:$2}}bài đăng không có",
-	"articleFeedbackv5-details-link": "Chi tiết",
+	"articlefeedbackv5-details-link": "Chi tiết",
 	"articlefeedbackv5-revision-link": "(xem trang cũ)",
 	"articlefeedbackv5-special-more": "Hiện thêm bài",
 	"articlefeedbackv5-special-refresh": "Làm tươi danh sách",

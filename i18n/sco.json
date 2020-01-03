@@ -129,7 +129,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Feedback fae ma watched pages]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|See the feedback fae aw pages]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 eidit|$1 eidits}} sin post",
-	"articleFeedbackv5-details-link": "Details",
+	"articlefeedbackv5-details-link": "Details",
 	"articlefeedbackv5-revision-link": "(see auld page)",
 	"articlefeedbackv5-special-more": "Shaw mair posts",
 	"articlefeedbackv5-special-refresh": "Refresh leet",

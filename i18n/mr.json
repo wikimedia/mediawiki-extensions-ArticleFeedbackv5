@@ -122,7 +122,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|माझ्या निरीक्षणाखाली असलेल्या पानांतर्फेच्या प्रतिक्रिया]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|सर्व पानांवरील प्रतिक्रिया बघा]]",
 	"articlefeedbackv5-updates-since": "उत्तरानंतर {{PLURAL:$1|1 संपादन|$1 संपादने}}",
-	"articleFeedbackv5-details-link": "तपशिल",
+	"articlefeedbackv5-details-link": "तपशिल",
 	"articlefeedbackv5-revision-link": "(जूने पान बघा)",
 	"articlefeedbackv5-special-more": "अधिक टपालन(पोस्टस्) दाखवा",
 	"articlefeedbackv5-special-refresh": "यादी तरोताजी करा",

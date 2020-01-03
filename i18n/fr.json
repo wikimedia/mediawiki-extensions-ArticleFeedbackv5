@@ -233,7 +233,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Commentaires des pages que je suis]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Voir les commentaires de toutes les pages]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|$1 modification|$1 modifications}} depuis le commentaire",
-	"articleFeedbackv5-details-link": "Détails",
+	"articlefeedbackv5-details-link": "Détails",
 	"articlefeedbackv5-revision-link": "(voir l’ancienne page)",
 	"articlefeedbackv5-special-more": "Afficher davantage de commentaires",
 	"articlefeedbackv5-special-refresh": "Rafraîchir la liste",

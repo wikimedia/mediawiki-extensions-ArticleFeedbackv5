@@ -117,7 +117,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Resposta de les meves pàgines vigilades]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Mostra respostes de totes les pàgines]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|Una contribució|$1 contribucions}} des del missatge",
-	"articleFeedbackv5-details-link": "Detalls",
+	"articlefeedbackv5-details-link": "Detalls",
 	"articlefeedbackv5-revision-link": "(vegeu la pàgina antiga)",
 	"articlefeedbackv5-special-more": "Mostra més missatges",
 	"articlefeedbackv5-special-refresh": "Recarrega la llista",

@@ -87,7 +87,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Minu jälgitavate lehekülgede tagasiside]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Vaata kõigi lehekülgede tagasisidet]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|Üks muudatus|$1 muudatust}} alates postitusest",
-	"articleFeedbackv5-details-link": "Üksikasjad",
+	"articlefeedbackv5-details-link": "Üksikasjad",
 	"articlefeedbackv5-revision-link": "(vaata vana lehekülge)",
 	"articlefeedbackv5-special-more": "Näita veel postitusi",
 	"articlefeedbackv5-special-refresh": "Värskenda loendit",

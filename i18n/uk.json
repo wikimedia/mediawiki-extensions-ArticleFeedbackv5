@@ -207,7 +207,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Відгуки про статті з мого списку спостереження]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Переглянути відгуки до всіх сторінок]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|$1 редагування|$1 редагування|$1 редагувань}} з моменту публікації",
-	"articleFeedbackv5-details-link": "Деталі",
+	"articlefeedbackv5-details-link": "Деталі",
 	"articlefeedbackv5-revision-link": "(див. стару редакцію)",
 	"articlefeedbackv5-special-more": "Показати більше повідомлень",
 	"articlefeedbackv5-special-refresh": "Оновити список",

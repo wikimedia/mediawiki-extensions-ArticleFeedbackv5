@@ -101,7 +101,7 @@
 	"articlefeedbackv5-special-sort-label": "Сартаваць паводле:",
 	"articlefeedbackv5-special-filter-select-more": "Болей",
 	"articlefeedbackv5-updates-since": "$1 {{PLURAL:$1|рэдагаваньне|рэдагаваньні|рэдагаваньняў}} пасьля разьмяшчэньня",
-	"articleFeedbackv5-details-link": "Падрабязнасьці",
+	"articlefeedbackv5-details-link": "Падрабязнасьці",
 	"articlefeedbackv5-revision-link": "(глядзіце старую старонку)",
 	"articlefeedbackv5-special-more": "Паказаць болей паведамленьняў",
 	"articlefeedbackv5-special-refresh": "Абнавіць сьпіс",

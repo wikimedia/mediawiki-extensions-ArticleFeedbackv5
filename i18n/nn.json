@@ -110,7 +110,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Attendemelding for sider eg overvakar]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Vis attendemelding for alle sider]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|eitt bidrag|$1 bidrag}} sidan innlegget",
-	"articleFeedbackv5-details-link": "Detaljar",
+	"articlefeedbackv5-details-link": "Detaljar",
 	"articlefeedbackv5-revision-link": "(sjå gamal side)",
 	"articlefeedbackv5-special-more": "Vis fleire innlegg",
 	"articlefeedbackv5-special-refresh": "Oppdater lista",

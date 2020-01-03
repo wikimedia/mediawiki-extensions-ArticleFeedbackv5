@@ -213,7 +213,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|我監視的頁面上的評論]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|檢視所有頁面的評論]]",
 	"articlefeedbackv5-updates-since": "發佈後有 $1 次編輯",
-	"articleFeedbackv5-details-link": "詳細資料",
+	"articlefeedbackv5-details-link": "詳細資料",
 	"articlefeedbackv5-revision-link": "(檢視舊頁面)",
 	"articlefeedbackv5-special-more": "顯示更多留言",
 	"articlefeedbackv5-special-refresh": "重新整理清單",

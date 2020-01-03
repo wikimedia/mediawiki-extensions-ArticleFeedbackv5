@@ -92,7 +92,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|مەن كۆرگەن بەتلەردىن كەلگەن قايتۇرما ئىنكاس]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|ھەممە بەتلەردىن كەلگەن ئىنكاسنى كۆرسەت]]",
 	"articlefeedbackv5-updates-since": "يازما يوللانغاندىن كېيىن {{PLURAL:$1|$1 قېتىم}} تەھرىرلەندى",
-	"articleFeedbackv5-details-link": "تەپسىلاتى",
+	"articlefeedbackv5-details-link": "تەپسىلاتى",
 	"articlefeedbackv5-revision-link": "(كونا ماقالىنى كۆرۈڭ)",
 	"articlefeedbackv5-special-more": "تېخىمۇ كۆپ يازمىنى كۆرسەت",
 	"articlefeedbackv5-special-refresh": "تىزىمنى يېڭىلا",

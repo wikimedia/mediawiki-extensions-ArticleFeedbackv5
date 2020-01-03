@@ -157,7 +157,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|내가 주시하는 문서에 대한 피드백]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|모든 문서에서 피드백 보기]]",
 	"articlefeedbackv5-updates-since": "게시 이후 {{PLURAL:$1|편집 1회|편집 $1회}}",
-	"articleFeedbackv5-details-link": "자세한 사항",
+	"articlefeedbackv5-details-link": "자세한 사항",
 	"articlefeedbackv5-revision-link": "(오래된 문서 보기)",
 	"articlefeedbackv5-special-more": "더 많은 게시물 보기",
 	"articlefeedbackv5-special-refresh": "목록 새로 고침",

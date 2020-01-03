@@ -140,7 +140,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Feedback vun de Säiten op menger Iwwerwaachungslëscht]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Feedback vun alle Säite weisen]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 Ännerung|$1 Ännerungen}} zanter der Matdeelung",
-	"articleFeedbackv5-details-link": "Detailer",
+	"articlefeedbackv5-details-link": "Detailer",
 	"articlefeedbackv5-revision-link": "(al Säit kucken)",
 	"articlefeedbackv5-special-more": "Méi Réckmeldunge weisen",
 	"articlefeedbackv5-special-refresh": "Lëscht aktualiséieren",

@@ -108,7 +108,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Általam figyelt oldalakról írt visszajelzések]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Összes visszajelzés olvasása]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|$1|$1}} szerkesztés a közzététel óta",
-	"articleFeedbackv5-details-link": "Részletek",
+	"articlefeedbackv5-details-link": "Részletek",
 	"articlefeedbackv5-revision-link": "(akkori állapot megjelenítése)",
 	"articlefeedbackv5-special-more": "További üzenetek megjelenítése",
 	"articlefeedbackv5-special-refresh": "Lista frissítése",

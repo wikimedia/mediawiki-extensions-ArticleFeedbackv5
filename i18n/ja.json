@@ -141,7 +141,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|自分がウォッチしているページへのフィードバック]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|すべてのページへのフィードバックを閲覧]]",
 	"articlefeedbackv5-updates-since": "投稿以降に {{PLURAL:$1|$1 回の編集}}",
-	"articleFeedbackv5-details-link": "詳細",
+	"articlefeedbackv5-details-link": "詳細",
 	"articlefeedbackv5-revision-link": "(旧版を見る)",
 	"articlefeedbackv5-special-more": "その他の投稿を表示",
 	"articlefeedbackv5-special-refresh": "一覧を更新",

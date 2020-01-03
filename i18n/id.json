@@ -138,7 +138,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Umpan balik dari halaman pantauan saya]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Lihat umpan balik dari semua halaman]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 suntingan| $1 suntingan}} sejak dikirimkan",
-	"articleFeedbackv5-details-link": "Rincian",
+	"articlefeedbackv5-details-link": "Rincian",
 	"articlefeedbackv5-revision-link": "(lihat artikel lama)",
 	"articlefeedbackv5-special-more": "Tampilkan lebih banyak kiriman",
 	"articlefeedbackv5-special-refresh": "Muat kembali daftar",

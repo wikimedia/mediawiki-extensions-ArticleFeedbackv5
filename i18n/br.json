@@ -117,7 +117,7 @@
 	"articlefeedbackv5-special-watchlist-showing": "Evezhiadennoù diwar-benn ar pajennoù evezhiet gant [[$1|$2]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Gwelet evezhiadennoù eus an holl bajennoù]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 c'hemm|$1 kemm}} abaoe m'eo bet embannet",
-	"articleFeedbackv5-details-link": "Munudoù",
+	"articlefeedbackv5-details-link": "Munudoù",
 	"articlefeedbackv5-revision-link": "(gwelet ar bajenn gozh)",
 	"articlefeedbackv5-special-more": "Diskouez evezhiadennoù all",
 	"articlefeedbackv5-special-refresh": "Freskaat ar roll",

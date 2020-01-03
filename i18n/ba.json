@@ -139,7 +139,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "Минең [[$1|күҙәтеү исемлегендәге мәҡәләләр тураһында фекрҙәр]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Бөтә биттәрҙән кире бәйләнеште ҡарау]]",
 	"articlefeedbackv5-updates-since": "Ҡуйылғандан башлап {{PLURAL:$1|1=1 үҙгәртеү|$1 үҙгәртеү}}",
-	"articleFeedbackv5-details-link": "Ентеклерәк",
+	"articlefeedbackv5-details-link": "Ентеклерәк",
 	"articlefeedbackv5-revision-link": "(элекке битте ҡара)",
 	"articlefeedbackv5-special-more": "Тағы хәбәрҙәр",
 	"articlefeedbackv5-special-refresh": "Исемлекте яңыртырға",

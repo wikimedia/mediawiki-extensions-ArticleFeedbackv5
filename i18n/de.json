@@ -196,7 +196,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Rückmeldungen zu von mir beobachteten Seiten]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Rückmeldungen zu allen Seiten ansehen]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|Eine Bearbeitung|$1 Bearbeitungen}} seit dem Beitrag",
-	"articleFeedbackv5-details-link": "Einzelheiten",
+	"articlefeedbackv5-details-link": "Einzelheiten",
 	"articlefeedbackv5-revision-link": "(alte Seite ansehen)",
 	"articlefeedbackv5-special-more": "Weitere Rückmeldungen anzeigen",
 	"articlefeedbackv5-special-refresh": "Liste aktualisieren",

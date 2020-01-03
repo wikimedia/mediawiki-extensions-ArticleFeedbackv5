@@ -187,7 +187,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Commentario ab mi paginas observate]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Vider commentario ab tote le paginas]]",
 	"articlefeedbackv5-updates-since": "$1 {{PLURAL:$1|modification|modificationes}} post invio",
-	"articleFeedbackv5-details-link": "Detalios",
+	"articlefeedbackv5-details-link": "Detalios",
 	"articlefeedbackv5-revision-link": "(vider le ancian pagina)",
 	"articlefeedbackv5-special-more": "Monstrar plus messages",
 	"articlefeedbackv5-special-refresh": "Refrescar lista",

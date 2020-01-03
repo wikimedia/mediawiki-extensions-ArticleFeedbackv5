@@ -110,7 +110,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Afturmeldingar frá mínum eftirlitssíðum]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Vís afturmeldingar frá øllum síðum]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 rætting|$1 rættingar}} síðan innslagið",
-	"articleFeedbackv5-details-link": "Smálutir",
+	"articlefeedbackv5-details-link": "Smálutir",
 	"articlefeedbackv5-revision-link": "(sí gamla síðu)",
 	"articlefeedbackv5-special-more": "Vís fleiri innsløg",
 	"articlefeedbackv5-special-refresh": "Dagfør listan",

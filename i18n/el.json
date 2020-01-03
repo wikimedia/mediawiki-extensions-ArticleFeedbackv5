@@ -134,7 +134,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Σχόλια για τα λήμματα που παρακολουθώ]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Προβολή σχολίων από όλα τα λήμματα]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|$1 επεξεργασία|$1 επεξεργασίες}} από αυτή τη δημοσίευση του σχολίου",
-	"articleFeedbackv5-details-link": "Λεπτομέρειες",
+	"articlefeedbackv5-details-link": "Λεπτομέρειες",
 	"articlefeedbackv5-revision-link": "(δείτε την παλιά σελίδα)",
 	"articlefeedbackv5-special-more": "Εμφάνιση περισσότερων δημοσιεύσεων",
 	"articlefeedbackv5-special-refresh": "Ανανέωση λίστας",

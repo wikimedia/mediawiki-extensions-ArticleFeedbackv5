@@ -92,7 +92,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Tugon mula sa aking mga pahinang binabantayan]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Tingnan ang tugon mula sa lahat ng mga pahina]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|$1 pagbabago|$1 mga pagbabago}} mula noong ipaskil",
-	"articleFeedbackv5-details-link": "Mga detalye",
+	"articlefeedbackv5-details-link": "Mga detalye",
 	"articlefeedbackv5-revision-link": "(tingnan ang lumang artikulo)",
 	"articlefeedbackv5-special-more": "Magpakita ng marami pang mga pagpapaskil",
 	"articlefeedbackv5-special-refresh": "Sariwain ang tala",

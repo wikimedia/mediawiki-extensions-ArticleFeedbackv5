@@ -106,7 +106,7 @@
 	"articlefeedbackv5-special-filter-select-more": "მეტი",
 	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|1 შეტყობინება|$1 შეტყობინება}}",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|$1 რედაქტირება}} გამოქვეყნებიდან",
-	"articleFeedbackv5-details-link": "დეტალები",
+	"articlefeedbackv5-details-link": "დეტალები",
 	"articlefeedbackv5-revision-link": "(იხილეთ ძველი გვერდი)",
 	"articlefeedbackv5-special-more": "მეტი გამოხმაურების ნახვა",
 	"articlefeedbackv5-special-refresh": "სიის განახლება",

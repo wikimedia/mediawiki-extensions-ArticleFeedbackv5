@@ -89,7 +89,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|මගේ නැරඹුම් පිටුවලින් ප්‍රතිපෝෂණ]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|සියලුම පිටුවලින් ප්‍රතිපෝෂණ නරඹන්න]]",
 	"articlefeedbackv5-updates-since": "හසුනෙන් පසු {{PLURAL:$1|සංස්කරණ}} $1 ක්",
-	"articleFeedbackv5-details-link": "විස්තර",
+	"articlefeedbackv5-details-link": "විස්තර",
 	"articlefeedbackv5-revision-link": "(පැරණි පිටුව නරඹන්න)",
 	"articlefeedbackv5-special-more": "තවත් හසුන් පෙන්වන්න",
 	"articlefeedbackv5-special-refresh": "ලැයිස්තුව ප්‍රතිපුරණය",

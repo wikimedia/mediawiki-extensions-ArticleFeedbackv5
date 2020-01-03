@@ -111,7 +111,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Komentary mojich wobkedźbowanych stronow]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Komentary wšěch stronow wobhladać]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 změna|$1 změnje|$1 změny|$1 změnow}} wot přinoška sem",
-	"articleFeedbackv5-details-link": "Podrobnosće",
+	"articlefeedbackv5-details-link": "Podrobnosće",
 	"articlefeedbackv5-revision-link": "(hlej staru stronu)",
 	"articlefeedbackv5-special-more": "Dalše powěsće pokazać",
 	"articlefeedbackv5-special-refresh": "Lisćinu aktualizować",

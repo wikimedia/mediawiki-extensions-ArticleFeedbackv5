@@ -87,7 +87,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|មតិកែលំអពីទំព័រតាមដានរបស់ខ្ញុំ]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|មើលមតិតកែលំអពីទំព័រទាំងអស់]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|១កំណែប្រែ|$1 កំណែប្រែ}}តាំងពីការដាក់ប្រកាស",
-	"articleFeedbackv5-details-link": "ព័ត៌មាន​លំអិត",
+	"articlefeedbackv5-details-link": "ព័ត៌មាន​លំអិត",
 	"articlefeedbackv5-revision-link": "(មើលទំព័រចាស់)",
 	"articlefeedbackv5-special-more": "មើលប្រកាសបន្ថែមទៀត",
 	"articlefeedbackv5-special-pagetitle": "មតិកែលអលើ $1",

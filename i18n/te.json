@@ -124,7 +124,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|నా వీక్షణలో ఉన్న పేజీలపై ఫీడుబ్యాకు]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|అన్ని పేజీలపై ఫీడుబ్యాకును చూపించు]]",
 	"articlefeedbackv5-updates-since": "ఫీడుబ్యాకు తరువాతి {{PLURAL:$1|1 మార్పు|$1 మార్పులు}}",
-	"articleFeedbackv5-details-link": "వివరాలు",
+	"articlefeedbackv5-details-link": "వివరాలు",
 	"articlefeedbackv5-revision-link": "(పాత పుటను చూడండి)",
 	"articlefeedbackv5-special-more": "మరిన్ని టపాలను చూపించు",
 	"articlefeedbackv5-special-refresh": "జాబితాను తాజాకరించు",

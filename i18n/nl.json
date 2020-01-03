@@ -146,7 +146,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Terugkoppeling op pagina's uit mijn volglijst]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Terugkoppeling op alle pagina's bekijken]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 bewerking|$1 bewerkingen}} sinds bericht",
-	"articleFeedbackv5-details-link": "Details",
+	"articlefeedbackv5-details-link": "Details",
 	"articlefeedbackv5-revision-link": "(zie oude pagina)",
 	"articlefeedbackv5-special-more": "Meer berichten weergeven",
 	"articlefeedbackv5-special-refresh": "Lijst vernieuwen",

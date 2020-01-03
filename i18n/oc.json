@@ -109,7 +109,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Comentaris de las paginas que seguissi]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Veire los comentaris de totas las paginas]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|$1 modificacion|$1 modificacions}} dempuèi lo comentari",
-	"articleFeedbackv5-details-link": "Detalhs",
+	"articlefeedbackv5-details-link": "Detalhs",
 	"articlefeedbackv5-revision-link": "(veire l'anciana pagina)",
 	"articlefeedbackv5-special-more": "Afichar mai de comentaris",
 	"articlefeedbackv5-special-refresh": "Refrescar la lista",

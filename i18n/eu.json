@@ -55,7 +55,7 @@
 	"articlefeedbackv5-special-sort-age-asc": "zaharrenak",
 	"articlefeedbackv5-special-filter-select-more": "Gehiago",
 	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|argitalpen 1|$1 argitalpen}}",
-	"articleFeedbackv5-details-link": "Xehetasunak",
+	"articlefeedbackv5-details-link": "Xehetasunak",
 	"articlefeedbackv5-special-more": "Ikusi argitalpen gehiago",
 	"articlefeedbackv5-loading-tag": "Kargatzen...",
 	"articlefeedbackv5-new-marker": "Berria",

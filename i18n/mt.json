@@ -82,7 +82,7 @@
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Rispons mill-paġni li nsegwi]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Ara r-rispons mill-paġni kollha]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|modifika waħda|$1 modifiki}} mill-messaġġ",
-	"articleFeedbackv5-details-link": "Dettalji",
+	"articlefeedbackv5-details-link": "Dettalji",
 	"articlefeedbackv5-revision-link": "(ara l-artiklu l-qadim)",
 	"articlefeedbackv5-special-more": "Uri aktar messaġġi",
 	"articlefeedbackv5-special-refresh": "Aġġorna l-lista",
