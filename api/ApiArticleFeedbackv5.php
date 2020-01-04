@@ -129,7 +129,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 					'articlefeedbackv5-error-spamregex',
 					'articlefeedbackv5-error-abuse'
 				);
-			} elseif ( ArticleFeedbackv5Utils::validateSpamBlacklist( $feedback->aft_comment, $feedback->aft_page ) ) {
+			} elseif ( ArticleFeedbackv5Utils::validateSpamBlacklist( $feedback->aft_comment, $feedback->aft_page, $user ) ) {
 				$this->dieWithError(
 					'articlefeedbackv5-error-spamblacklist',
 					'articlefeedbackv5-error-abuse'

@@ -354,22 +354,20 @@ class ArticleFeedbackv5Utils {
 	 *
 	 * @param string $value
 	 * @param int $pageId
+	 * @param User $user
 	 * @return bool Will return boolean false if valid or true if flagged
 	 */
-	public static function validateSpamBlacklist( $value, $pageId ) {
+	public static function validateSpamBlacklist( $value, $pageId, User $user ) {
 		// Check SpamBlacklist, if installed
-		$spam = false;
-		if ( class_exists( 'BaseBlacklist' ) ) {
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'SpamBlacklist' ) ) {
 			$spam = BaseBlacklist::getSpamBlacklist();
-		}
-		if ( $spam ) {
 			$title = Title::newFromText( 'ArticleFeedbackv5_' . $pageId );
 
 			$options = new \ParserOptions;
 			$output = MediaWikiServices::getInstance()->getParser()->parse( $value, $title, $options );
 			$links = $output->getExternalLinks();
 
-			$ret = $spam->filter( $links, $title );
+			$ret = $spam->filter( $links, $title, $user );
 			if ( $ret !== false ) {
 				return true;
 			}
