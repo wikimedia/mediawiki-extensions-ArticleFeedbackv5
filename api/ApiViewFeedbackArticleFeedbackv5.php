@@ -62,7 +62,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// build renderer
 		$highlight = (bool)$params['feedbackid'];
 		$central = !$pageId;
-		$renderer = new ArticleFeedbackv5Render( false, $central, $highlight );
+		$renderer = new ArticleFeedbackv5Render( $user, false, $central, $highlight );
 
 		// Build html
 		if ( $records ) {
