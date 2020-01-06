@@ -57,6 +57,8 @@ class ArticleFeedbackv5Render {
 	 * @return string the rendered row
 	 */
 	public function run( $record ) {
+		global $wgUser;
+
 		if ( !$record instanceof ArticleFeedbackv5Model ) {
 			return '';
 		}
@@ -69,9 +71,9 @@ class ArticleFeedbackv5Render {
 
 		// Special cases: when the record is deleted/hidden/inappropriate,
 		// but the user doesn't have permission to see it
-		if ( ( $record->isOversighted() && !ArticleFeedbackv5Activity::canPerformAction( 'oversight' ) ) ||
-			( $record->isHidden() && !ArticleFeedbackv5Activity::canPerformAction( 'hide' ) ) ||
-			( $record->isInappropriate() && !ArticleFeedbackv5Activity::canPerformAction( 'inappropriate' ) ) ) {
+		if ( ( $record->isOversighted() && !ArticleFeedbackv5Activity::canPerformAction( 'oversight', $wgUser ) ) ||
+			( $record->isHidden() && !ArticleFeedbackv5Activity::canPerformAction( 'hide', $wgUser ) ) ||
+			( $record->isInappropriate() && !ArticleFeedbackv5Activity::canPerformAction( 'inappropriate', $wgUser ) ) ) {
 			// Called via permalink: show an empty gray mask
 			if ( $this->isPermalink ) {
 				return $this->emptyGrayMask( $record );
@@ -1294,7 +1296,7 @@ class ArticleFeedbackv5Render {
 							'span',
 							[],
 							wfMessage( 'articlefeedbackv5-permalink-activity-subtitle' )
-								->params( ArticleFeedbackv5Activity::getActivityCount( $record ) )
+								->params( ArticleFeedbackv5Activity::getActivityCount( $record, $wgUser ) )
 								->escaped()
 						)
 					) .
@@ -1312,9 +1314,10 @@ class ArticleFeedbackv5Render {
 	 * @return string
 	 */
 	private function buildToolboxLink( $record, $action, $class = '' ) {
+		global $wgUser;
 		// check if user is allowed to perform this action
 		if ( !isset( ArticleFeedbackv5Activity::$actions[$action] ) ||
-			!ArticleFeedbackv5Activity::canPerformAction( $action ) ) {
+			!ArticleFeedbackv5Activity::canPerformAction( $action, $wgUser ) ) {
 			return '';
 		}
 

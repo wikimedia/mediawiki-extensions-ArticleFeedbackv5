@@ -202,17 +202,12 @@ class ArticleFeedbackv5Activity {
 	 * starting from point $continue, sorted by time - latest first
 	 *
 	 * @param ArticleFeedbackv5Model $feedback Model of the feedback item whose activity we're fetching
-	 * @param User|null $user User object who we're fetching activity for (to check permissions)
+	 * @param User $user User object who we're fetching activity for (to check permissions)
 	 * @param int $limit total limit number
 	 * @param string|null $continue used for offsets
 	 * @return IResultWrapper db record rows
 	 */
-	public static function getList( ArticleFeedbackv5Model $feedback, $user = null, $limit = 25, $continue = null ) {
-		if ( !$user ) {
-			global $wgUser;
-			$user = $wgUser;
-		}
-
+	public static function getList( ArticleFeedbackv5Model $feedback, User $user, $limit = 25, $continue = null ) {
 		// build where-clause for actions and feedback
 		$actions = self::buildWhereActions( $user->getRights() );
 		$title = self::buildWhereFeedback( $feedback );
@@ -271,19 +266,14 @@ class ArticleFeedbackv5Activity {
 	 * that has been posted already
 	 *
 	 * @param ArticleFeedbackv5Model $feedback
-	 * @param User|null $user
+	 * @param User $user
 	 * @return int
 	 */
-	public static function getActivityCount( ArticleFeedbackv5Model $feedback, User $user = null ) {
+	public static function getActivityCount( ArticleFeedbackv5Model $feedback, User $user ) {
 		global $wgArticleFeedbackv5Permissions, $wgMemc;
 		$total = 0;
 
-		if ( !$user ) {
-			global $wgUser;
-			$user = $wgUser;
-		}
-
-		if ( !$wgUser->isBlocked() ) {
+		if ( !$user->isBlocked() ) {
 			foreach ( $wgArticleFeedbackv5Permissions as $permission ) {
 				if ( $user->isAllowed( $permission ) ) {
 					// get count for this specific permission level from cache
@@ -528,16 +518,11 @@ class ArticleFeedbackv5Activity {
 	 * Check if a user has sufficient permissions to perform an action
 	 *
 	 * @param string $action
-	 * @param User|null $user
+	 * @param User $user
 	 * @return bool
 	 * @throws MWException
 	 */
-	public static function canPerformAction( $action, User $user = null ) {
-		if ( !$user ) {
-			global $wgUser;
-			$user = $wgUser;
-		}
-
+	public static function canPerformAction( $action, User $user ) {
 		if ( !isset( self::$actions[$action] ) ) {
 			throw new MWException( "Action '$action' does not exist." );
 		}
