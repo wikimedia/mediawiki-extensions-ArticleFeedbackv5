@@ -942,7 +942,7 @@ class ArticleFeedbackv5Flagging {
 	protected function sendOversightEmail( $notes = '' ) {
 		global $wgArticleFeedbackv5OversightEmails;
 
-		if ( $this->user === null ) {
+		if ( $this->isSystemCall() ) {
 			throw new LogicException( 'A User object must be set when calling this method.' );
 		}
 
