@@ -70,7 +70,8 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 			$success = ArticleFeedbackv5Permissions::setRestriction(
 				$pageObj->getId(),
 				$restriction,
-				$expiry
+				$expiry,
+				$wgUser
 			);
 
 			if ( !$success ) {

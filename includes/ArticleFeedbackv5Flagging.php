@@ -30,9 +30,9 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * The user performing the action
 	 *
-	 * Either zero for a system call, or $wgUser for a user-directed one
+	 * Either zero for a system call, or the current user for a user-directed one
 	 *
-	 * @var mixed
+	 * @var User|int
 	 */
 	private $user;
 
@@ -67,13 +67,13 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Constructor
 	 *
-	 * @param mixed $user the user performing the action ($wgUser), or
+	 * @param User|null $user the user performing the action, or
 	 *                          zero if it's a system call
 	 * @param int $feedbackId the feedback ID
 	 * @param int $pageId the page ID
 	 */
-	public function __construct( $user, $feedbackId, $pageId ) {
-		$this->user = $user;
+	public function __construct( ?User $user, $feedbackId, $pageId ) {
+		$this->user = $user ?: 0;
 		$this->feedback = ArticleFeedbackv5Model::get( $feedbackId, $pageId );
 	}
 
@@ -940,7 +940,11 @@ class ArticleFeedbackv5Flagging {
 	 * @param string $notes Additional text to include in the email
 	 */
 	protected function sendOversightEmail( $notes = '' ) {
-		global $wgUser, $wgArticleFeedbackv5OversightEmails;
+		global $wgArticleFeedbackv5OversightEmails;
+
+		if ( $this->user === null ) {
+			throw new LogicException( 'A User object must be set when calling this method.' );
+		}
 
 		// if the oversight email address is empty we're going to just skip all this
 		if ( $wgArticleFeedbackv5OversightEmails === null ) {
@@ -954,7 +958,7 @@ class ArticleFeedbackv5Flagging {
 		}
 
 		// make a title out of our user (sigh)
-		$userPage = $wgUser->getUserPage();
+		$userPage = $this->user->getUserPage();
 		if ( !$userPage ) {
 			return; // no user title object, no mail
 		}
@@ -964,7 +968,7 @@ class ArticleFeedbackv5Flagging {
 
 		// build our params
 		$params = [
-			'user_name' => $wgUser->getName(),
+			'user_name' => $this->user->getName(),
 			'user_url' => $userPage->getFullURL( '', false, PROTO_HTTPS ),
 			'page_name' => $page->getPrefixedText(),
 			'page_url' => $page->getFullURL( '', false, PROTO_HTTPS ),

@@ -561,10 +561,10 @@ class ArticleFeedbackv5Render {
 	 * @return string  the rendered footer
 	 */
 	private function renderFooter( $record ) {
-		global $wgLang, $wgUser;
+		global $wgLang, $wgUser, $wgRequest;
 
 		$id = $record->aft_id;
-		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, true );
+		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, $wgUser, $wgRequest, true );
 
 		$voteLinks = '';
 		$voteStats = '';
@@ -691,7 +691,7 @@ class ArticleFeedbackv5Render {
 		if ( $ownFeedback && !$this->isAllowed( 'aft-editor' ) ) {
 			// Add ability for readers to mark own posts as non-actionable, only
 			// when we're certain that the feedback was posted by the current user
-			if ( ArticleFeedbackv5Utils::isOwnFeedback( $record, false ) ) {
+			if ( ArticleFeedbackv5Utils::isOwnFeedback( $record, $wgUser, $wgRequest, false ) ) {
 				// get details on last editor action
 				$last = $record->getLastEditorActivity();
 
@@ -794,9 +794,9 @@ class ArticleFeedbackv5Render {
 			return '';
 		}
 
-		global $wgUser;
+		global $wgUser, $wgRequest;
 
-		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, true );
+		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, $wgUser, $wgRequest, true );
 		$toolbox = '';
 
 		// no editor-action has yet been performed, show tools
@@ -1314,14 +1314,14 @@ class ArticleFeedbackv5Render {
 	 * @return string
 	 */
 	private function buildToolboxLink( $record, $action, $class = '' ) {
-		global $wgUser;
+		global $wgUser, $wgRequest;
 		// check if user is allowed to perform this action
 		if ( !isset( ArticleFeedbackv5Activity::$actions[$action] ) ||
 			!ArticleFeedbackv5Activity::canPerformAction( $action, $wgUser ) ) {
 			return '';
 		}
 
-		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, true );
+		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, $wgUser, $wgRequest, true );
 		$class .= " articleFeedbackv5-$action-link";
 		$class .= ( $ownFeedback ? " articleFeedbackv5-$action-own-link" : '' );
 
