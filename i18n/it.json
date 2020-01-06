@@ -16,7 +16,8 @@
 			"Selven",
 			"McDutchie",
 			"GabryBarbe",
-			"Senpremì"
+			"Senpremì",
+			"Dansita"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Invia feedback alla voce",
@@ -37,6 +38,8 @@
 	"apihelp-articlefeedbackv5-get-count-param-filter": "Quale filtro applicare all'elenco",
 	"apihelp-articlefeedbackv5-flag-feedback-description": "Contrassegna un feedbackID come abusivo o nascosto.",
 	"apihelp-articlefeedbackv5-flag-feedback-summary": "Contrassegna un feedbackID come abusivo o nascosto.",
+	"apihelp-articlefeedbackv5-flag-feedback-param-title": "Titolo della pagina per la quale inviare il feedback. Non può essere usato insieme a $1pageid",
+	"apihelp-articlefeedbackv5-flag-feedback-param-pageid": "ID della pagina per la quale inviare il feedback. Non può essere usato insieme a $1title",
 	"apihelp-articlefeedbackv5-flag-feedback-param-feedbackid": "FeedbackID da segnare",
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Tipo di flag da applicare",
 	"apihelp-articlefeedbackv5-flag-feedback-param-note": "Informazioni sul motivo per cui si è verificata l'attività di feedback",
@@ -72,6 +75,11 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Quale filtro applicare all'elenco",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "L'ID di uno specifico feedback da recuperare",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Offset da cui avviare la cattura di dati",
+	"articlefeedbackv5-error-spamregex": "Il commento è stato contrassegnato come spam da SpamRegex",
+	"articlefeedbackv5-error-spamblacklist": "Il commento è stato contrassegnato come spam da SpamBlacklist",
+	"articlefeedbackv5-error-nonexistent-page": "La pagina per il feedback non esiste",
+	"articlefeedbackv5-error-permission-denied": "Non hai l'autorizzazione per visionare l'attività dei feedback",
+	"articlefeedbackv5-error-nonexistent-feedback": "Il feedback non esiste",
 	"articlefeedbackv5-cta-thanks": "Grazie!",
 	"articlefeedbackv5-cta-confirmation-message": "Il tuo post può essere visualizzato in [$1 questa pagina dei commenti].",
 	"articlefeedbackv5-cta1-confirmation-title": "Sai che è possibile modificare questa pagina?",
@@ -627,5 +635,8 @@
 	"abusefilter-edit-action-aftv5request": "(Article Feedback) richiesta soppressione automaticamente",
 	"articlefeedbackv5-abusefilter-note-aftv5request": "Richiesta soppressione automaticamente. Regola $1",
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "utile",
-	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "risolto"
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "risolto",
+	"echo-category-title-feedback": "Feedback",
+	"echo-pref-tooltip-feedback": "Inviami una notifica quando qualcuno contrassegna l'articolo come utile.",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Vedi feedback"
 }
