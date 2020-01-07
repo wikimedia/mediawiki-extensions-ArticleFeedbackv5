@@ -637,6 +637,6 @@
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "utile",
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "risolto",
 	"echo-category-title-feedback": "Feedback",
-	"echo-pref-tooltip-feedback": "Inviami una notifica quando qualcuno contrassegna l'articolo come utile.",
+	"echo-pref-tooltip-feedback": "Inviami una notifica quando qualcuno contrassegna il commento sulla voce come utile.",
 	"articlefeedbackv5-notification-link-text-view-feedback": "Vedi feedback"
 }
