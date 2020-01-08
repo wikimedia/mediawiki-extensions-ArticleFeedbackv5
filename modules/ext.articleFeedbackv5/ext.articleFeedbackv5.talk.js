@@ -27,42 +27,42 @@
 				filter: filter,
 				action: 'articlefeedbackv5-get-count'
 			} )
-			.done( function ( data ) {
-				var count, url, $link;
+				.done( function ( data ) {
+					var count, url, $link;
 
-				if ( 'articlefeedbackv5-get-count' in data && 'count' in data[ 'articlefeedbackv5-get-count' ] ) {
-					count = data[ 'articlefeedbackv5-get-count' ].count;
+					if ( 'articlefeedbackv5-get-count' in data && 'count' in data[ 'articlefeedbackv5-get-count' ] ) {
+						count = data[ 'articlefeedbackv5-get-count' ].count;
 
-					if ( count > 0 ) {
+						if ( count > 0 ) {
 						// Build the url to the Special:ArticleFeedbackv5 page
-						url =
+							url =
 							mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' +
 							mw.util.wikiUrlencode( mw.config.get( 'aftv5Article' ).title );
-						url += ( url.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( { ref: 'talk', filter: 'featured' } );
+							url += ( url.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( { ref: 'talk', filter: 'featured' } );
 
-						// Add the link to the feedback-page next to the title
-						$link = $( '<a id="articlefeedbackv5-talk-feedback-link"></a>' )
-							.text( mw.msg( 'articlefeedbackv5-talk-view-feedback' ) )
-							.attr( 'href', url );
+							// Add the link to the feedback-page next to the title
+							$link = $( '<a id="articlefeedbackv5-talk-feedback-link"></a>' )
+								.text( mw.msg( 'articlefeedbackv5-talk-view-feedback' ) )
+								.attr( 'href', url );
 
-						/*
+							/*
 						 * Add the link next to #siteSub. Append to #siteSub node if
 						 * it's visible, so we inherit its style. Otherwise, add as
 						 * new node, right after #siteSub if there is a #siteSub.
 						 * If there isn't, add it above #mw-content-text.
 						 */
-						if ( $( '#siteSub' ).length > 0 ) {
-							if ( $( '#siteSub' ).is( ':visible' ) ) {
-								$link.appendTo( '#siteSub' );
+							if ( $( '#siteSub' ).length > 0 ) {
+								if ( $( '#siteSub' ).is( ':visible' ) ) {
+									$link.appendTo( '#siteSub' );
+								} else {
+									$link.insertAfter( '#siteSub' );
+								}
 							} else {
-								$link.insertAfter( '#siteSub' );
+								$( '#mw-content-text' ).before( $link );
 							}
-						} else {
-							$( '#mw-content-text' ).before( $link );
 						}
 					}
-				}
-			} );
+				} );
 		}
 	} );
 }( jQuery, mediaWiki ) );

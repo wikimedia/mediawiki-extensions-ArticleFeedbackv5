@@ -74,7 +74,7 @@
 /* eslint quote-props: ["error", "as-needed", { "numbers": true }] */
 ( function ( $, mw ) {
 
-// {{{ articleFeedbackv5 definition
+	// {{{ articleFeedbackv5 definition
 
 	$.articleFeedbackv5 = {};
 
@@ -1757,7 +1757,7 @@
 				// build link to "add feedback" form
 				$linkAdd = $( '<li id="t-articlefeedbackv5-add"><a href="#"></a></li>' );
 				$linkAdd.find( 'a' )
-						.text( mw.msg( 'articlefeedbackv5-toolbox-add' ) );
+					.text( mw.msg( 'articlefeedbackv5-toolbox-add' ) );
 
 				if ( $.articleFeedbackv5.bucketId === '5' ) {
 					$linkAdd.find( 'a' )
@@ -2969,8 +2969,8 @@
 
 	// }}}
 
-// }}}
-// {{{ articleFeedbackv5 plugin
+	// }}}
+	// {{{ articleFeedbackv5 plugin
 
 	/**
 	 * Right now there are no options for this plugin, but there will be in the
@@ -3011,6 +3011,6 @@
 		return $( this );
 	};
 
-// }}}
+	// }}}
 
 }( jQuery, mediaWiki ) );

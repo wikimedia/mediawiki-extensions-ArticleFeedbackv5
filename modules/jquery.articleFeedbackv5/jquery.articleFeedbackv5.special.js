@@ -11,7 +11,7 @@
 
 ( function ( $, mw ) {
 
-// {{{ articleFeedbackv5special definition
+	// {{{ articleFeedbackv5special definition
 
 	$.articleFeedbackv5special = {};
 
@@ -1903,6 +1903,6 @@
 
 	// }}}
 
-// }}}
+	// }}}
 
 }( jQuery, mediaWiki ) );

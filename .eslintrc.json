@@ -7,5 +7,9 @@
 	},
 	"globals": {
 		"mediaWiki": false
+	},
+	"rules": {
+		"no-multi-str": "warn",
+		"no-tabs": "warn"
 	}
 }

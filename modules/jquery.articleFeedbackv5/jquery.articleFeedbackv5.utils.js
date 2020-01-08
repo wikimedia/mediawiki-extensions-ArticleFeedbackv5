@@ -11,7 +11,7 @@
 
 ( function ( $, mw ) {
 
-// {{{ aftUtils definition
+	// {{{ aftUtils definition
 
 	$.aftUtils = {};
 
@@ -332,34 +332,34 @@
 			enable: parseInt( enable ),
 			action: 'articlefeedbackv5-set-status'
 		} )
-		.done( function ( data ) {
+			.done( function ( data ) {
 			// invoke callback function
-			if ( typeof callback === 'function' ) {
-				if ( 'articlefeedbackv5-set-status' in data ) {
-					callback( data[ 'articlefeedbackv5-set-status' ], null );
+				if ( typeof callback === 'function' ) {
+					if ( 'articlefeedbackv5-set-status' in data ) {
+						callback( data[ 'articlefeedbackv5-set-status' ], null );
+					}
 				}
-			}
-		} )
-		.fail( function ( code, data ) {
-			var message = mw.msg( 'articlefeedbackv5-error-unknown' );
+			} )
+			.fail( function ( code, data ) {
+				var message = mw.msg( 'articlefeedbackv5-error-unknown' );
 
-			if ( 'error' in data && 'info' in data.error ) {
-				message = data.error.info;
-			}
+				if ( 'error' in data && 'info' in data.error ) {
+					message = data.error.info;
+				}
 
-			// invoke callback function
-			if ( typeof callback === 'function' ) {
-				callback( false, message );
-			} else {
-				alert( message );
-			}
-		} );
+				// invoke callback function
+				if ( typeof callback === 'function' ) {
+					callback( false, message );
+				} else {
+					alert( message );
+				}
+			} );
 	};
 
 	// }}}
 
-// }}}
+	// }}}
 
-// }}}
+	// }}}
 
 }( jQuery, mediaWiki ) );
