@@ -229,7 +229,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			if ( $record ) {
 				return new DataModelList(
 					[ [ 'id' => $record->aft_id, 'shard' => $record->aft_page ] ],
-					'ArticleFeedbackv5Model'
+					ArticleFeedbackv5Model::class,
+					$this->getUser()
 				);
 			}
 
@@ -251,6 +252,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 			return ArticleFeedbackv5Model::getList(
 				$this->startingFilter,
+				$this->getUser(),
 				$this->pageId,
 				$this->startingOffset,
 				$this->startingSort,
@@ -337,6 +339,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		if ( $wgArticleFeedbackv5Watchlist && !$this->pageId && $user->getId() ) {
 			$records = ArticleFeedbackv5Model::getWatchlistList(
 				'unreviewed',
+				$user,
 				$user
 			);
 

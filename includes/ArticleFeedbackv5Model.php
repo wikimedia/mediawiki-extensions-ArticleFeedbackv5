@@ -290,12 +290,13 @@ class ArticleFeedbackv5Model extends DataModel {
 	 *
 	 * @param string $name The list name (see static::$lists)
 	 * @param User $user The user who'se watchlisted feedback to fetch
+	 * @param User $performer The acting user
 	 * @param int|null $offset The offset to start from
 	 * @param string $sort Sort to apply to list
 	 * @param string $order Sort the list ASC or DESC
 	 * @return DataModelList
 	 */
-	public static function getWatchlistList( $name, User $user, $offset = null, $sort = 'relevance', $order = 'ASC' ) {
+	public static function getWatchlistList( $name, User $user, User $performer, $offset = null, $sort = 'relevance', $order = 'ASC' ) {
 		/*
 		 * Get array of page ids
 		 *
@@ -330,7 +331,7 @@ class ArticleFeedbackv5Model extends DataModel {
 			$shards[] = $article->page_id;
 		}
 
-		return static::getList( $name, $shards, $offset, $sort, $order );
+		return static::getList( $name, $performer, $shards, $offset, $sort, $order );
 	}
 
 	/**
@@ -350,12 +351,13 @@ class ArticleFeedbackv5Model extends DataModel {
 	 *
 	 * @param string $name The list name (see static::$lists)
 	 * @param array $shard Get only data for certain shard values
+	 * @param User $user
 	 * @param int|null $offset The offset to start from
 	 * @param string $sort Sort to apply to list
 	 * @param string $order Sort the list ASC or DESC
 	 * @return DataModelList
 	 */
-	protected static function getListArray( $name, array $shard, $offset = null, $sort = 'relevance', $order = 'ASC' ) {
+	protected static function getListArray( $name, array $shard, User $user, $offset = null, $sort = 'relevance', $order = 'ASC' ) {
 		// fetch data from db
 		$rows = static::getBackend()->getList( $name, $shard, $offset, static::LIST_LIMIT, $sort, $order );
 
@@ -373,7 +375,7 @@ class ArticleFeedbackv5Model extends DataModel {
 			];
 		}
 
-		$list = new DataModelList( $entries, get_called_class() );
+		$list = new DataModelList( $entries, get_called_class(), $user );
 
 		return $list;
 	}
@@ -435,28 +437,19 @@ class ArticleFeedbackv5Model extends DataModel {
 	}
 
 	/**
-	 * Fetch a list of entries
-	 *
-	 * @param string $name The list name (see static::$lists)
-	 * @param mixed|null $shard Get only data for a certain shard value
-	 * @param int|null $offset The offset to start from
-	 * @param string $sort Sort to apply to list
-	 * @param string $order Sort the list ASC or DESC
-	 * @return DataModelList
+	 * @inheritDoc
 	 */
-	public static function getList( $name, $shard = null, $offset = null, $sort = 'relevance', $order = 'ASC' ) {
-		global $wgUser;
-
-		if ( isset( self::$lists[$name] ) && !$wgUser->isAllowed( self::$lists[$name]['permissions'] ) ) {
+	public static function getList( $name, User $user, $shard = null, $offset = null, $sort = 'relevance', $order = 'ASC' ) {
+		if ( isset( self::$lists[$name] ) && !$user->isAllowed( self::$lists[$name]['permissions'] ) ) {
 			throw new MWException( "List '$name' is not allowed for this user" );
 		}
 
 		// watchlist workaround
 		if ( is_array( $shard ) ) {
-			return static::getListArray( $name, $shard, $offset, $sort, $order );
+			return static::getListArray( $name, $shard, $user, $offset, $sort, $order );
 		}
 
-		return parent::getList( $name, $shard, $offset, $sort, $order );
+		return parent::getList( $name, $user, $shard, $offset, $sort, $order );
 	}
 
 	/**
@@ -527,9 +520,10 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * in more efficient (fewer) queries to the backend.
 	 *
 	 * @param array $entries Array of items to be preloaded, in [id] => [shard] format
+	 * @param User $user Acting user
 	 */
-	public static function preload( array $entries ) {
-		parent::preload( $entries );
+	public static function preload( array $entries, User $user ) {
+		parent::preload( $entries, $user );
 
 		// when running unittests, ignore this
 		if ( defined( 'MW_PHPUNIT_TEST' ) && MW_PHPUNIT_TEST ) {
@@ -544,8 +538,7 @@ class ArticleFeedbackv5Model extends DataModel {
 		 * will display details of when the post was hidden), so abstain
 		 * from preloading this data.
 		 */
-		global $wgUser;
-		if ( $wgUser->isAllowed( 'aft-editor' ) ) {
+		if ( $user->isAllowed( 'aft-editor' ) ) {
 			// load editor activity for all requested entries
 			ArticleFeedbackv5Activity::getLastEditorActivity( $entries );
 		}

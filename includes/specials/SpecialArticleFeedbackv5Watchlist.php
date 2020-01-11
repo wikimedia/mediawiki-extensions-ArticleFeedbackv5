@@ -60,6 +60,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		return ArticleFeedbackv5Model::getWatchlistList(
 			$this->startingFilter,
 			$this->getUser(),
+			$this->getUser(),
 			$this->startingOffset,
 			$this->startingSort,
 			$this->startingSortDirection

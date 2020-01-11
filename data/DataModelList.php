@@ -16,12 +16,19 @@ class DataModelList extends FakeResultWrapper {
 	protected $className;
 
 	/**
+	 * @var User
+	 */
+	protected $user;
+
+	/**
 	 * @param array $data Should be formed like array( array( 'id' => [id], 'shard' => [shard] ), ... )
 	 * @param string $className the DataModel class
+	 * @param User $user
 	 */
-	public function __construct( $data, $className ) {
+	public function __construct( $data, $className, User $user ) {
 		$this->result = $data;
 		$this->className = $className;
+		$this->user = $user;
 
 		$this->preload();
 	}
@@ -32,7 +39,7 @@ class DataModelList extends FakeResultWrapper {
 
 	protected function preload() {
 		$class = $this->className;
-		$class::preload( $this->result );
+		$class::preload( $this->result, $this->user );
 	}
 
 	/**

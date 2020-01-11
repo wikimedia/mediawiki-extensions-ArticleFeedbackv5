@@ -233,6 +233,7 @@ abstract class DataModel {
 	 * enable us to do fewer queries when that data is finally requested.
 	 *
 	 * @param string $name The list name (see static::$lists)
+	 * @param User $user The acting user
 	 * @param mixed|null $shard Get only data for a certain shard value
 	 * @param string|null $offset The offset to start from
 	 * @param string|null $sort Sort to apply to list
@@ -240,7 +241,7 @@ abstract class DataModel {
 	 * @return DataModelList
 	 * @throws MWException
 	 */
-	public static function getList( $name, $shard = null, $offset = null, $sort = null, $order = 'ASC' ) {
+	public static function getList( $name, User $user, $shard = null, $offset = null, $sort = null, $order = 'ASC' ) {
 		$order = strtoupper( $order );
 
 		if ( !isset( static::$lists[$name] ) ) {
@@ -313,7 +314,7 @@ abstract class DataModel {
 				$partial = array_splice( $entries, 0, static::LIST_LIMIT );
 
 				// build list object
-				$list = new DataModelList( $partial, get_called_class() );
+				$list = new DataModelList( $partial, get_called_class(), $user );
 				if ( $nextOffset !== false ) {
 					$list->setNextOffset( $nextOffset );
 				}
@@ -335,7 +336,7 @@ abstract class DataModel {
 		}
 
 		if ( !$list ) {
-			return new DataModelList( [], get_called_class() );
+			return new DataModelList( [], get_called_class(), $user );
 		}
 
 		return $list;
@@ -573,8 +574,9 @@ abstract class DataModel {
 	 * in more efficient (fewer) queries to the backend.
 	 *
 	 * @param array $entries Array of items to be preloaded, in [id] => [shard] format
+	 * @param User $user Acting user
 	 */
-	public static function preload( array $entries ) {
+	public static function preload( array $entries, User $user ) {
 		/*
 		 * $entries contains an array of [id] => [shard] entries.
 		 * We'll now want to fetch the actual data for these entries; gather a

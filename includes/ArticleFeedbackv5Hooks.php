@@ -207,6 +207,7 @@ class ArticleFeedbackv5Hooks {
 				if ( $wgArticleFeedbackv5Watchlist && $user->getId() ) {
 					$records = ArticleFeedbackv5Model::getWatchlistList(
 						'unreviewed',
+						$user,
 						$user
 					);
 

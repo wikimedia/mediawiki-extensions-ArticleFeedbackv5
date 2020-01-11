@@ -95,7 +95,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			if ( $record ) {
 				return new DataModelList(
 					[ [ 'id' => $record->aft_id, 'shard' => $record->aft_page ] ],
-					'ArticleFeedbackv5Model'
+					ArticleFeedbackv5Model::class,
+					$this->getUser()
 				);
 			}
 
