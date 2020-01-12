@@ -127,7 +127,7 @@ class ArticleFeedbackv5Permissions {
 			[
 				'pr_page' => $articleId,
 				'pr_type' => 'aft',
-				'pr_expiry = "infinity" OR pr_expiry >= ' . $dbr->addQuotes( $dbr->encodeExpiry( wfTimestampNow() ) )
+				'pr_expiry = ' . $dbr->addQuotes( $dbr->getInfinity() ) . ' OR pr_expiry >= ' . $dbr->addQuotes( $dbr->encodeExpiry( wfTimestampNow() ) )
 			],
 			__METHOD__
 		);
