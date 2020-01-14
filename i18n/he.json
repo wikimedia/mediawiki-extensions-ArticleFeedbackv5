@@ -63,6 +63,7 @@
 	"apihelp-articlefeedbackv5-set-status-param-title": "כותרת העמוד להפעלה / השבתה של AFTv5 בשבילו. לא ניתן לשימוש יחד עם $1pageid",
 	"apihelp-articlefeedbackv5-set-status-param-pageid": "מזהה העמוד להפעלה / השבתה של AFTv5 בשבילו. לא ניתן לשימוש יחד עם $1title",
 	"apihelp-articlefeedbackv5-set-status-param-enable": "1 כדי להפעיל, 0 כדי להשבית את AFTv5",
+	"apihelp-query+articlefeedbackv5-view-activity-param-feedbackid": "מזהה של משוב הערך כדי לקבל בשבילו פעילות",
 	"apihelp-query+articlefeedbackv5-view-activity-param-limit": "כמה תוצאות פעילות להחזיר",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "איזה סינון ברצונך להחיל לרשימה",
 	"articlefeedbackv5-error-nonexistent-feedback": "משוב לא קיים",
