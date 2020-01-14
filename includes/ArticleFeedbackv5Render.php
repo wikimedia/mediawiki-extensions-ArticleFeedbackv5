@@ -378,7 +378,7 @@ class ArticleFeedbackv5Render {
 	 * Returns the feedback head and comment
 	 *
 	 * @param  $record ArticleFeedbackv5Model the record
-	 * @return string  the rendered feedback info
+	 * @return string the rendered feedback info
 	 */
 	private function render( $record ) {
 		if ( $this->isCentral ) {
@@ -404,7 +404,7 @@ class ArticleFeedbackv5Render {
 	 *                           feedback (e.g., "USER found what they were
 	 *                           looking for")
 	 * @param  $record  ArticleFeedbackv5 the record
-	 * @return string   the rendered feedback head
+	 * @return string the rendered feedback head
 	 */
 	private function feedbackHead( $message, $record ) {
 		$anonMessage = '';
@@ -484,7 +484,7 @@ class ArticleFeedbackv5Render {
 	 * Returns the permalink/timestamp
 	 *
 	 * @param  $record ArticleFeedbackv5Model the record
-	 * @return string  the rendered permalink/timestamp
+	 * @return string the rendered permalink/timestamp
 	 */
 	private function renderPermalinkTimestamp( $record ) {
 		$title = Title::newFromId( $record->aft_page );
@@ -521,7 +521,7 @@ class ArticleFeedbackv5Render {
 	 * Returns the marked-up feedback comment
 	 *
 	 * @param  $record ArticleFeedbackv5Model the record
-	 * @return string  the rendered comment
+	 * @return string the rendered comment
 	 */
 	private function renderComment( $record ) {
 		global $wgLang;
@@ -584,7 +584,7 @@ class ArticleFeedbackv5Render {
 	 * Returns the footer links
 	 *
 	 * @param  $record ArticleFeedbackv5Model the record
-	 * @return string  the rendered footer
+	 * @return string the rendered footer
 	 */
 	private function renderFooter( $record ) {
 		global $wgLang, $wgRequest;
@@ -817,7 +817,7 @@ class ArticleFeedbackv5Render {
 	 * Returns the toolbox
 	 *
 	 * @param  $record ArticleFeedbackv5Model the record
-	 * @return string  the rendered toolbox
+	 * @return string the rendered toolbox
 	 */
 	private function renderToolbox( $record ) {
 		// check if people are allowed to perform actions
@@ -1108,7 +1108,7 @@ class ArticleFeedbackv5Render {
 	 * Returns the permalink info section
 	 *
 	 * @param  $record array the record, with keys 0 + answers
-	 * @return string  the rendered info section
+	 * @return string the rendered info section
 	 */
 	private function renderPermalinkInfo( $record ) {
 		global $wgLang;

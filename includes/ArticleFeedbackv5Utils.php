@@ -112,7 +112,7 @@ class ArticleFeedbackv5Utils {
 				$wgArticleFeedbackv5EnableProtection;
 
 		$title = Title::newFromID( $pageId );
-		if ( is_null( $title ) ) {
+		if ( $title === null ) {
 			return false;
 		}
 
@@ -160,7 +160,7 @@ class ArticleFeedbackv5Utils {
 	 */
 	protected static function getPageCategories( $pageId ) {
 		$title = Title::newFromID( $pageId );
-		if ( is_null( $title ) ) {
+		if ( $title === null ) {
 			return [];
 		}
 
@@ -266,7 +266,7 @@ class ArticleFeedbackv5Utils {
 			$userId = (int)$userId;
 			if ( $userId !== 0 ) { // logged-in users
 				$user = User::newFromId( $userId );
-			} elseif ( !is_null( $userIp ) ) { // IP users
+			} elseif ( $userIp !== null ) { // IP users
 				$userText = $userIp;
 				$user = User::newFromName( $userText, false );
 			} else { // magic user

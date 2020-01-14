@@ -53,7 +53,7 @@ class ArticleFeedbackv5Permissions {
 	 */
 	public static function getLottery( $articleId ) {
 		$title = Title::newFromID( $articleId );
-		if ( is_null( $title ) ) {
+		if ( $title === null ) {
 			return false;
 		}
 

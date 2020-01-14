@@ -1,7 +1,7 @@
 <?php
 
-use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Rdbms\FakeResultWrapper;
+use Wikimedia\Rdbms\IResultWrapper;
 
 /**
  * This class provides some functionality to easily get feedback's activity.
