@@ -16,7 +16,8 @@
 			"Tjcool007",
 			"Mainframe98",
 			"Mar(c)",
-			"Rots61"
+			"Rots61",
+			"Robin van der Vliet"
 		]
 	},
 	"apihelp-articlefeedbackv5-param-anontoken": "Token voor anonieme gebruikers",
@@ -239,8 +240,8 @@
 	"articlefeedbackv5-discuss-user-section-title": "Uw terugkoppeling op \"$2\"",
 	"articlefeedbackv5-discuss-talk-section-content": "$1 heeft [[$2|deze reactie]] geplaatst op $3 ([[$5|alle terugkoppeling bekijken]]).\n\n$6\n\nWilt u reageren?\n\n~~~~",
 	"articlefeedbackv5-discuss-user-section-content": "Bedankt voor het plaatsen van uw terugkoppeling op \"$7\".\n\nU hebt deze opmerking geplaatst op $3 ([[$5|alle terugkoppeling bekijken]]).\n\n$6\n\nWe waarderen uw bijdrage aan deze pagina!\n\n~~~~",
-	"articlefeedbackv5-form1-header-found": "$2 heeft gevonden wat {{GENDER:$1|hij|zij|hij of zij}} zocht",
-	"articlefeedbackv5-form1-header-not-found": "$2 heeft niet gevonden wat {{GENDER:$1|hij|zij|hij of zij}} zocht",
+	"articlefeedbackv5-form1-header-found": "$2 heeft gevonden wat {{GENDER:$1|hij|zij|die}} zocht.",
+	"articlefeedbackv5-form1-header-not-found": "$2 heeft niet gevonden wat {{GENDER:$1|hij|zij|die}} zocht.",
 	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2}} heeft een reactie geplaatst.",
 	"articlefeedbackv5-form2-header-praise": "{{GENDER:$1|$1}} had een compliment:",
 	"articlefeedbackv5-form2-header-problem": "{{GENDER:$1|$1}} had een probleem:",
