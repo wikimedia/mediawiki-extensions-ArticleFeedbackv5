@@ -255,7 +255,8 @@ class ArticleFeedbackv5Permissions {
 				[ 'articlefeedbackv5' => $permission ],
 				[ 'articlefeedbackv5' => $expiry ],
 				false,
-				$reason
+				$reason,
+				$performer
 			);
 
 			// insert into log
