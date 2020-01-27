@@ -521,7 +521,6 @@ class ArticleFeedbackv5Hooks {
 	 */
 	public static function onProtectionForm( Page $article, &$output ) {
 		global $wgLang,
-				$wgUser,
 				$wgArticleFeedbackv5Namespaces,
 				$wgArticleFeedbackv5EnableProtection;
 
@@ -539,7 +538,8 @@ class ArticleFeedbackv5Hooks {
 			return true;
 		}
 
-		$permErrors = $article->getTitle()->getUserPermissionsErrors( 'protect', $wgUser );
+		$user = $article->getContext()->getUser();
+		$permErrors = $article->getTitle()->getUserPermissionsErrors( 'protect', $user );
 		if ( wfReadOnly() ) {
 			$permErrors[] = [ 'readonlytext', wfReadOnlyReason() ];
 		}
@@ -687,8 +687,7 @@ class ArticleFeedbackv5Hooks {
 	public static function onProtectionSave( Page $article, &$errorMsg, $reason ) {
 		global $wgRequest,
 				$wgArticleFeedbackv5Namespaces,
-				$wgArticleFeedbackv5EnableProtection,
-				$wgUser;
+				$wgArticleFeedbackv5EnableProtection;
 
 		if ( !$article->exists() ) {
 			return true;
@@ -739,11 +738,12 @@ class ArticleFeedbackv5Hooks {
 			return true;
 		}
 
+		$user = $article->getContext()->getUser();
 		$success = ArticleFeedbackv5Permissions::setRestriction(
 			$article->getId(),
 			$requestPermission,
 			$expirationTime,
-			$wgUser,
+			$user,
 			$reason
 		);
 

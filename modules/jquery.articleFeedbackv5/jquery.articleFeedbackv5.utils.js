@@ -128,7 +128,7 @@
 	 * Check if the user is permitted to see the AFT feedback form
 	 * on this particular page, as defined by its protection level
 	 *
-	 * This is roughly equivalent to $wgUser->isAllowed( <permissionLevel> );
+	 * This is roughly equivalent to $user->isAllowed( <permissionLevel> );
 	 *
 	 * @param {Object} article
 	 * @param {string|boolean} permissionLevel
