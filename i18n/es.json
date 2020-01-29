@@ -33,7 +33,8 @@
 			"Carlosmg.dg",
 			"Marcelo9987",
 			"Agusbou2015",
-			"Joanmp17"
+			"Joanmp17",
+			"Nancystodd"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Enviar sugerencias sobre el artículo",
@@ -560,12 +561,15 @@
 	"articlefeedbackv5-leave-warning": "Los datos que ingresaste no se han guardado.",
 	"articlefeedbackv5-toolbox-enable": "Activar sugerencias",
 	"articlefeedbackv5-disable-preference": "No mostrar el ''widget'' de comentarios de artículos en las páginas",
+	"action-aft-reader": "publicar comentario y marcar como (no) útil",
 	"right-aft-reader": "Publicar comentario y marcarlo como (in)útil",
+	"action-aft-member": "publicar comentario y marcar como (no) útil",
 	"right-aft-member": "Publicar comentario y marcarlo como (in)útil",
 	"action-aft-editor": "retroalimentación de características y resolución",
 	"right-aft-editor": "Destacar y resolver comentario",
 	"action-aft-monitor": "ocultar comentarios y solicitar supervisión",
 	"right-aft-monitor": "Ocultar comentario y solicitar supervisión",
+	"action-aft-administrator": "ver AFT en páginas protegidas",
 	"right-aft-administrator": "Ver AFT en las páginas protegidas",
 	"right-aft-oversighter": "Suprimir comentario",
 	"log-name-articlefeedbackv5": "Registro de actividad de comentarios del artículo",
@@ -654,5 +658,15 @@
 	"echo-pref-tooltip-feedback": "Notificarme cuando alguien marque la retroalimentación de un artículo como útil.",
 	"articlefeedbackv5-notification-link-text-view-feedback": "Ver comentarios",
 	"articlefeedbackv5-notification-feedback-watch": "[[User:$1|$1]] {{GENDER:$1|marcó}} los [[$3|comentarios]] sobre [[$2]] como {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}.",
-	"articlefeedbackv5-notification-feedback-watch-bundle": "[[User:$1|$1]] y $5 {{PLURAL:$6|usuario más|usuarios más}} {{GENDER:$1|marcaron}} los [[$3|comentarios]] sobre [[$2]] como {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}"
+	"articlefeedbackv5-notification-feedback-watch-bundle": "[[User:$1|$1]] y $5 {{PLURAL:$6|usuario más|usuarios más}} {{GENDER:$1|marcaron}} los [[$3|comentarios]] sobre [[$2]] como {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}",
+	"articlefeedbackv5-notification-feedback-watch-flyout": "[[$3|El comentario]] sobre [[$2]] fue {{GENDER:$1|marcado}} como {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} por [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "El comentario sobre $2 fue {{GENDER:$1|marcado}} como $3 en {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "El comentario sobre $2 fue {{GENDER:$1|marcado}} como $4 por $1 en {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "El comentario sobre $2 fue {{GENDER:$1|marcado}} como $4 por $1 y $5 {{PLURAL:$6|otro|otros}} en {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated": "[[$3|Su comentario]] sobre [[$2]] fue {{GENDER:$1|marcado}} como {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} por [[User:$1|$1]]",
+	"articlefeedbackv5-notification-feedback-moderated-bundle": "[[$3|Su comentario]] sobre [[$2]] fue {{GENDER:$1|moderado}} por [[User:$1|$1]] y $4 {{PLURAL:$5|otro|otros}}.",
+	"articlefeedbackv5-notification-feedback-moderated-flyout": "[[$3|Su comentario]] sobre [[$2]] fue {{GENDER:$1|marcado}} como {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} por [[User:$1|$1]]",
+	"articlefeedbackv5-notification-feedback-moderated-email-subject": "Su comentario sobre $2 fue {{GENDER:$1|marcado}} como $3 en {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "Su comentario sobre $2 fue {{GENDER:$1|marcado}} como $4 por $1 en {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "Su comentario sobre $2 fue {{GENDER:$1|moderado}} por $1 y $5 {{PLURAL:$6|otro|otros}} en {{SITENAME}}. $3"
 }
