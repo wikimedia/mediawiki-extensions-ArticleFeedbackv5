@@ -21,6 +21,7 @@
 		]
 	},
 	"apihelp-articlefeedbackv5-param-anontoken": "Token voor anonieme gebruikers",
+	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Bij te werken Log-ID",
 	"articlefeedbackv5-cta-thanks": "Bedankt!",
 	"articlefeedbackv5-cta-confirmation-message": "U kunt uw bericht bekijken op deze [$1 terugkoppelingspagina].",
 	"articlefeedbackv5-cta1-confirmation-title": "Wist u dat u deze pagina kunt bewerken?",
