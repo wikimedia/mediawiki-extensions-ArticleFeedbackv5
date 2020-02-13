@@ -129,7 +129,7 @@
 	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 çeku|$1 çekuy}}",
 	"articlefeedbackv5-permalink-info-length-characters": "({{PLURAL:$1|$1 Karakter|$1 Karakteri}})",
 	"articlefeedbackv5-permalink-info-stats-title-scores": "Skori",
-	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "Eleqeyin:",
+	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "Eleqe:",
 	"articlefeedbackv5-permalink-info-stats-subtitle-helpfulness": "Bêpeştiyey:",
 	"articlefeedbackv5-permalink-activity-title": "Fealiyet",
 	"articlefeedbackv5-short-status-request": "{{GENDER:$1|$1i çım ra viyarna ra:$1}}",
