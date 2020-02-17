@@ -39,6 +39,7 @@
 	"articlefeedbackv5-special-filter-all": "सबै ($1)",
 	"articlefeedbackv5-updates-since": "पछिल्लो प्रकाशन पछिका {{PLURAL:$1|1 सम्पादन|$1 सम्पादनहरू}}",
 	"articlefeedbackv5-special-more": "अझै धेरै प्रकाशनहरू देखाउने",
+	"articlefeedbackv5-special-refresh": "सूची ताजा गर्नुहोस्",
 	"articlefeedbackv5-special-pagetitle": "प्रतिक्रिया: $1",
 	"articlefeedbackv5-discussion-page": "वार्ता",
 	"articlefeedbackv5-desc": "लेखकोबारेमा पृष्ठपोषण",

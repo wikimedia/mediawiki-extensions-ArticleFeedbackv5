@@ -584,5 +584,6 @@
 	"articlefeedbackv5-abusefilter-note-aftv5request": "특정판 삭제가 자동으로 요청되었습니다. 규칙: $1",
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "유용함",
 	"echo-category-title-feedback": "피드백",
-	"echo-pref-tooltip-feedback": "누군가가 문서 피드백을 유용한 것으로 표시하면 내게 알립니다."
+	"echo-pref-tooltip-feedback": "누군가가 문서 피드백을 유용한 것으로 표시하면 내게 알립니다.",
+	"articlefeedbackv5-notification-link-text-view-feedback": "피드백 보기"
 }
