@@ -34,10 +34,9 @@
 						count = data[ 'articlefeedbackv5-get-count' ].count;
 
 						if ( count > 0 ) {
-						// Build the url to the Special:ArticleFeedbackv5 page
-							url =
-							mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' +
-							mw.util.wikiUrlencode( mw.config.get( 'aftv5Article' ).title );
+							// Build the url to the Special:ArticleFeedbackv5 page
+							url = mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' +
+								mw.util.wikiUrlencode( mw.config.get( 'aftv5Article' ).title );
 							url += ( url.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( { ref: 'talk', filter: 'featured' } );
 
 							// Add the link to the feedback-page next to the title
@@ -46,11 +45,11 @@
 								.attr( 'href', url );
 
 							/*
-						 * Add the link next to #siteSub. Append to #siteSub node if
-						 * it's visible, so we inherit its style. Otherwise, add as
-						 * new node, right after #siteSub if there is a #siteSub.
-						 * If there isn't, add it above #mw-content-text.
-						 */
+							 * Add the link next to #siteSub. Append to #siteSub node if
+							 * it's visible, so we inherit its style. Otherwise, add as
+							 * new node, right after #siteSub if there is a #siteSub.
+							 * If there isn't, add it above #mw-content-text.
+							 */
 							if ( $( '#siteSub' ).length > 0 ) {
 								if ( $( '#siteSub' ).is( ':visible' ) ) {
 									$link.appendTo( '#siteSub' );

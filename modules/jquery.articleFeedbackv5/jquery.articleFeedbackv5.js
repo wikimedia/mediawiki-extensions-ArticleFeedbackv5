@@ -1756,8 +1756,7 @@
 
 				// build link to "add feedback" form
 				$linkAdd = $( '<li id="t-articlefeedbackv5-add"><a href="#"></a></li>' );
-				$linkAdd.find( 'a' )
-					.text( mw.msg( 'articlefeedbackv5-toolbox-add' ) );
+				$linkAdd.find( 'a' ).text( mw.msg( 'articlefeedbackv5-toolbox-add' ) );
 
 				if ( $.articleFeedbackv5.bucketId === '5' ) {
 					$linkAdd.find( 'a' )

@@ -36,9 +36,9 @@
 					count = data[ 'articlefeedbackv5-get-count' ].count;
 
 					if ( count > 0 ) {
-					// Build the url to the Special:ArticleFeedbackv5 page
+						// Build the url to the Special:ArticleFeedbackv5 page
 						url = mw.config.get( 'wgArticleFeedbackv5SpecialUrl' ) + '/' +
-						mw.util.wikiUrlencode( mw.config.get( 'aftv5Article' ).title );
+							mw.util.wikiUrlencode( mw.config.get( 'aftv5Article' ).title );
 						url += ( url.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( { ref: 'article', filter: 'featured' } );
 
 						// Add the link to the feedback-page next to the title
@@ -47,16 +47,15 @@
 							.attr( 'href', url );
 
 						/*
-					 * Add the link next to #siteSub. Append to #siteSub node if
-					 * it's visible, so we inherit it's style. Otherwise, add as
-					 * new node, right after #siteSub
-					 */
+						 * Add the link next to #siteSub. Append to #siteSub node if
+						 * it's visible, so we inherit it's style. Otherwise, add as
+						 * new node, right after #siteSub
+						 */
 						if ( $( '#siteSub' ).is( ':visible' ) ) {
 							$link.appendTo( '#siteSub' );
 						} else {
 							$link.insertAfter( '#siteSub' );
 						}
-
 					}
 				}
 			} );
