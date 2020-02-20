@@ -114,6 +114,7 @@
 	"articlefeedbackv5-form-unhide": "Peyser bıgê",
 	"articlefeedbackv5-form-archive": "Arşiv",
 	"articlefeedbackv5-form-unarchive": "Peyser bıgê",
+	"articlefeedbackv5-form-oversight": "Bıpawe",
 	"articlefeedbackv5-form-unoversight": "Peyser bıgê",
 	"articlefeedbackv5-form-tooltip-unhide": "Menımne",
 	"articlefeedbackv5-form-anon-username": "Yew wendoğ",
@@ -205,6 +206,7 @@
 	"articlefeedbackv5-noteflyover-unrequest-submit": "Waştışi bıtexelne",
 	"articlefeedbackv5-noteflyover-unrequest-help": "Tayêna bımuse",
 	"articlefeedbackv5-noteflyover-oversight-label": "Yew note cı ke",
+	"articlefeedbackv5-noteflyover-oversight-submit": "Bıpawe",
 	"articlefeedbackv5-noteflyover-oversight-help": "Tayêna bımuse",
 	"articlefeedbackv5-noteflyover-unoversight-label": "Yew note cı ke",
 	"articlefeedbackv5-noteflyover-unoversight-submit": "Note cı ke",
@@ -228,5 +230,6 @@
 	"articlefeedbackv5-activity-permalink": "gıreyo daimi",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Şo tercihan dê mı",
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "faydeyın",
-	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "agoziya"
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "agoziya",
+	"echo-category-title-feedback": "Peyserrıştış"
 }
