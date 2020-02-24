@@ -665,6 +665,8 @@
 	"articlefeedbackv5-notification-feedback-watch-flyout": "[[User:$1|$1]]将[[$2]]的[[$3|反馈]]标记为{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
 	"articlefeedbackv5-notification-feedback-watch-email-subject": "$2的反馈已在{{SITENAME}}被{{GENDER:$1|标明}}为$3。",
 	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "$2的反馈已在{{SITENAME}}被$1{{GENDER:$1|表明}}为$4。$3",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "您在{{SITENAME}}关于$2的反馈已被$1和$5 {{PLURAL:$6|位其他人}}所{{GENDER:$1|标记}}。$3",
+	"articlefeedbackv5-notification-feedback-moderated": "[[User:$1|$1]]将您关于[[$2]]的[[$3|反馈]]给{{GENDER:$1|标记}}为{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
 	"articlefeedbackv5-notification-feedback-moderated-email-subject": "您在{{SITENAME}}关于$2的反馈已被{{GENDER:$1|标明}}为$3。",
 	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "您在{{SITENAME}}关于$2的反馈已被$1{{GENDER:$1|标明}}为$4。$3",
 	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "您在{{SITENAME}}关于$2的反馈已被$1和$5 {{PLURAL:$6|位其他人}}所{{GENDER:$1|调解}}。$3"
