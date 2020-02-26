@@ -539,7 +539,8 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		$user = $article->getContext()->getUser();
-		$permErrors = $article->getTitle()->getUserPermissionsErrors( 'protect', $user );
+		$permErrors = MediaWikiServices::getInstance()->getPermissionManager()
+			->getPermissionErrors( 'protect', $user, $article->getTitle() );
 		if ( wfReadOnly() ) {
 			$permErrors[] = [ 'readonlytext', wfReadOnlyReason() ];
 		}
