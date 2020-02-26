@@ -5,5 +5,6 @@
 		]
 	},
 	"articlefeedbackv5-special-filter-select-more": "Lissää",
+	"articlefeedbackv5-form2-header-problem": "Käyttäjällä {{GENDER:$1|$1}} oli prupleema:",
 	"articlefeedbackv5-comment-more": "Lissää"
 }
