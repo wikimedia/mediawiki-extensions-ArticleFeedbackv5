@@ -49,6 +49,7 @@
 	"articlefeedbackv5-form-helpful-label": "Na peyd rıştışi rê peşti bi?",
 	"articlefeedbackv5-form-helpful-yes-label": "Eya",
 	"articlefeedbackv5-form-helpful-no-label": "Nê",
+	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|Wanayoğan ra nasılsın nezdi %$1 no faydeyın vinayo.}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 e|$1 e}} / {{PLURAL:$2|1 nê|$2 nê}}",
 	"articlefeedbackv5-special-filter-featured": "Top ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Çım ra nêraviyarnayo ($1)",
