@@ -111,7 +111,7 @@
 	"articlefeedbackv5-cta6-confirmation-title": "דרושה לך עזרה בעריכת {{SITENAME}}?",
 	"articlefeedbackv5-cta6-confirmation-call": "ההודעה הזאת אמורה להופיע רק בוויקיפדיה האנגלית. אם אתם רואים אותה במקום אחר, [https://bugzilla.wikimedia.org/show_bug.cgi?id=39578 זה באג].",
 	"articlefeedbackv5-cta6-button-text": "זה לא כפתור",
-	"articlefeedbackv5-overlay-close": "סגור",
+	"articlefeedbackv5-overlay-close": "סגירה",
 	"articlefeedbackv5-error": "אירעה שגיאה. נא לנסות שוב מאוחר יותר.",
 	"articlefeedbackv5-error-blocked": "משתמשים חסומים אינם יכולים לשלוח משוב.",
 	"articlefeedbackv5-error-validation": "שגיאת אימות.",
