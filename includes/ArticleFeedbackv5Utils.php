@@ -424,8 +424,7 @@ class ArticleFeedbackv5Utils {
 	 * @return string
 	 */
 	public static function formatId( $id ) {
-		global $wgLang;
-		return $wgLang->truncateForVisual( $id, 10 );
+		return RequestContext::getMain()->getLanguage()->truncateForVisual( $id, 10 );
 	}
 
 	/**

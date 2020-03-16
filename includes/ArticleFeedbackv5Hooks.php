@@ -520,9 +520,7 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function onProtectionForm( Page $article, &$output ) {
-		global $wgLang,
-				$wgArticleFeedbackv5Namespaces,
-				$wgArticleFeedbackv5EnableProtection;
+		global $wgArticleFeedbackv5Namespaces, $wgArticleFeedbackv5EnableProtection;
 
 		if ( !$article->exists() ) {
 			return true;
@@ -533,14 +531,17 @@ class ArticleFeedbackv5Hooks {
 			return true;
 		}
 
+		$title = $article->getTitle();
 		// only on pages in namespaces where it is enabled
-		if ( !$article->getTitle()->inNamespaces( $wgArticleFeedbackv5Namespaces ) ) {
+		if ( !$title->inNamespaces( $wgArticleFeedbackv5Namespaces ) ) {
 			return true;
 		}
 
-		$user = $article->getContext()->getUser();
+		$context = $article->getContext();
+		$user = $context->getUser();
+		$lang = $context->getLanguage();
 		$permErrors = MediaWikiServices::getInstance()->getPermissionManager()
-			->getPermissionErrors( 'protect', $user, $article->getTitle() );
+			->getPermissionErrors( 'protect', $user, $title );
 		if ( wfReadOnly() ) {
 			$permErrors[] = [ 'readonlytext', wfReadOnlyReason() ];
 		}
@@ -587,9 +588,9 @@ class ArticleFeedbackv5Hooks {
 
 			// add option to re-use existing expiry
 			if ( $mExistingExpiry && $mExistingExpiry != 'infinity' ) {
-				$timestamp = $wgLang->timeanddate( $mExistingExpiry, true );
-				$d = $wgLang->date( $mExistingExpiry, true );
-				$t = $wgLang->time( $mExistingExpiry, true );
+				$timestamp = $lang->timeanddate( $mExistingExpiry, true );
+				$d = $lang->date( $mExistingExpiry, true );
+				$t = $lang->time( $mExistingExpiry, true );
 				$expiryFormOptions .=
 					Xml::option(
 						wfMessage( 'protect-existing-expiry', $timestamp, $d, $t )->escaped(),
