@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use Wikimedia\IPUtils;
 
 /**
  * Hooks for ArticleFeedback
@@ -814,7 +815,7 @@ class ArticleFeedbackv5Hooks {
 			if (
 				$feedback &&
 				!$feedback->aft_user &&
-				$feedback->aft_user_text == IP::sanitizeIP( $wgRequest->getIP() ) &&
+				$feedback->aft_user_text == IPUtils::sanitizeIP( $wgRequest->getIP() ) &&
 				!$feedback->aft_claimed_user
 			 ) {
 				$feedback->aft_claimed_user = $currentUser->getId();

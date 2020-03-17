@@ -6,3 +6,4 @@
 *.kate-swp
 .*.swp
 /.eslintcache
+.DS_Store

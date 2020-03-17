@@ -9,6 +9,7 @@
  */
 
 use MediaWiki\MediaWikiServices;
+use Wikimedia\IPUtils;
 
 /**
  * Handles rendering of a submitted feedback entry in the Special page's list view
@@ -416,7 +417,7 @@ class ArticleFeedbackv5Render {
 
 			$title = SpecialPage::getTitleFor( 'Contributions', $record->aft_user_text );
 
-			if ( IP::isIPv4( $record->aft_user_text ) ) {
+			if ( IPUtils::isIPv4( $record->aft_user_text ) ) {
 				// IPv4 - display the same way regular users are displayed
 
 				// display name = visitor's ip
