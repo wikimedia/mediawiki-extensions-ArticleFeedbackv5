@@ -713,7 +713,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			// articlefeedbackv5-special-filter-oversighted,
 			// articlefeedbackv5-special-filter-all
 			foreach ( $this->filters as $filter ) {
-				if ( in_array( $filter, array_keys( $filterLabels ) ) ) {
+				if ( isset( $filterLabels[$filter] ) ) {
 					continue;
 				}
 
@@ -812,7 +812,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$request = $this->getRequest();
 			$cookie = json_decode( $request->getCookie( ArticleFeedbackv5Utils::getCookieName( 'last-filter' ) ) );
 			if ( $cookie !== null && is_object( $cookie )
-				&& isset( $cookie->listControls ) && is_object( $cookie->listControls ) ) {
+				&& isset( $cookie->listControls ) && is_object( $cookie->listControls )
+			) {
 				$cookie_filter = $cookie->listControls->filter;
 				$cookie_sort   = $cookie->listControls->sort;
 				$cookie_dir    = $cookie->listControls->sortDirection;
@@ -846,7 +847,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Was a sort included in the cookie?
 		if ( isset( $cookie_filter ) && $cookie_filter == $filter
-			&& isset( $cookie_sort ) && isset( $cookie_dir ) ) {
+			&& isset( $cookie_sort ) && isset( $cookie_dir )
+		) {
 			if ( in_array( $cookie_sort . '-' . $cookie_dir, $this->sorts ) ) {
 				$sort = $cookie_sort;
 				$dir = strtoupper( $cookie_dir );
@@ -874,6 +876,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		return $user->isAllowed( $permission ) && !$user->isBlocked();
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	protected function getGroupName() {
 		return 'other';
 	}

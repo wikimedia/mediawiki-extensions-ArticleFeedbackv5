@@ -151,8 +151,9 @@ class ArticleFeedbackv5Hooks {
 	 * BeforePageDisplay hook - this hook will determine if and what javascript will be loaded
 	 *
 	 * @param OutputPage $out
+	 * @param Skin $skin
 	 */
-	public static function beforePageDisplay( OutputPage &$out, Skin &$skin ) {
+	public static function beforePageDisplay( OutputPage $out, Skin $skin ) {
 		global $wgArticleFeedbackv5Namespaces;
 		$title = $out->getTitle();
 		$user = $out->getUser();
@@ -311,7 +312,7 @@ class ArticleFeedbackv5Hooks {
 	 * hook: it makes these variables accessible through JS. However, these are added on a per-page basis,
 	 * on the page itself (also setting us free from potential browser cache issues)
 	 *
-	 * @param array $vars
+	 * @param array &$vars
 	 */
 	public static function makeGlobalVariablesScript( array &$vars, OutputPage $out ) {
 		$user = $out->getUser();
@@ -327,7 +328,7 @@ class ArticleFeedbackv5Hooks {
 	 * Add the preference in the user preferences with the GetPreferences hook.
 	 *
 	 * @param User $user
-	 * @param array $preferences
+	 * @param array[] &$preferences
 	 */
 	public static function getPreferences( $user, &$preferences ) {
 		// need to check for existing key, if deployed simultaneously with AFTv4
@@ -825,7 +826,7 @@ class ArticleFeedbackv5Hooks {
 	}
 
 	/**
-	 * @param array $names
+	 * @param string[] &$names
 	 */
 	public static function onUserGetReservedNames( &$names ) {
 		$names[] = 'msg:articlefeedbackv5-default-user';
@@ -834,9 +835,9 @@ class ArticleFeedbackv5Hooks {
 	/**
 	 * Add AFTv5 events to Echo.
 	 *
-	 * @param array $notifications Echo notifications
-	 * @param array $notificationCategories Echo notification categories
-	 * @param array $icons Icon details
+	 * @param array[] &$notifications Echo notifications
+	 * @param array[] &$notificationCategories Echo notification categories
+	 * @param array[] &$icons Icon details
 	 */
 	public static function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories, &$icons ) {
 		$notificationCategories['feedback'] = [
@@ -891,7 +892,7 @@ class ArticleFeedbackv5Hooks {
 	 * Add users to be notified on Echo events.
 	 *
 	 * @param EchoEvent $event
-	 * @param array $users
+	 * @param User[] &$users
 	 */
 	public static function onEchoGetDefaultNotifiedUsers( EchoEvent $event, &$users ) {
 		switch ( $event->getType() ) {
@@ -962,7 +963,7 @@ class ArticleFeedbackv5Hooks {
 	 * AFTv5 notification bundling rules.
 	 *
 	 * @param EchoEvent $event
-	 * @param string $bundleString
+	 * @param string &$bundleString
 	 */
 	public static function onEchoGetBundleRules( EchoEvent $event, &$bundleString ) {
 		switch ( $event->getType() ) {

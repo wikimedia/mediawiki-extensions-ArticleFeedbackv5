@@ -167,7 +167,7 @@ abstract class DataModelBackend {
 	 * these 2 values, we can create a where-clause that will accurately
 	 * select a subset following the entry whose $offset was passed here.
 	 *
-	 * @param string $offset Either in the format "<sort>|<id>" or "<id>"
+	 * @param string $offsets Either in the format "<sort>|<id>" or "<id>"
 	 * @return array
 	 */
 	public function unpackOffset( $offsets ) {

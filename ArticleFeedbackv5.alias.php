@@ -144,8 +144,22 @@ $specialPageAliases['tl'] = [
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = [
-	'ArticleFeedbackv5' => [ 'MaddeDeğerlendirmesis5', 'MaddeDeğerlendirmesiv5', 'MaddeDeğerlendirmes5', 'MaddeDeğerlendirmev5', 'MaddeGeribildirimis5', 'MaddeGeribildirimiv5' ],
-	'ArticleFeedbackv5Watchlist' => [ 'MaddeDeğerlendirmesis5İzlemeListesi', 'MaddeDeğerlendirmesiv5İzlemeListesi', 'MaddeDeğerlendirmes5İzlemeListesi', 'MaddeDeğerlendirmev5İzlemeListesi', 'MaddeGeribildirimis5İzlemeListesi', 'MaddeGeribildirimiv5İzlemeListesi' ],
+	'ArticleFeedbackv5' => [
+		'MaddeDeğerlendirmesis5',
+		'MaddeDeğerlendirmesiv5',
+		'MaddeDeğerlendirmes5',
+		'MaddeDeğerlendirmev5',
+		'MaddeGeribildirimis5',
+		'MaddeGeribildirimiv5',
+	],
+	'ArticleFeedbackv5Watchlist' => [
+		'MaddeDeğerlendirmesis5İzlemeListesi',
+		'MaddeDeğerlendirmesiv5İzlemeListesi',
+		'MaddeDeğerlendirmes5İzlemeListesi',
+		'MaddeDeğerlendirmev5İzlemeListesi',
+		'MaddeGeribildirimis5İzlemeListesi',
+		'MaddeGeribildirimiv5İzlemeListesi',
+	],
 ];
 
 /** Vietnamese (Tiếng Việt) */

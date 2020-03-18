@@ -832,7 +832,14 @@ class ArticleFeedbackv5Render {
 		$toolbox = '';
 
 		// no editor-action has yet been performed, show tools
-		if ( !$record->isFeatured() && !$record->isResolved() && !$record->isNonActionable() && !$record->isInappropriate() && !$record->isArchived() && !$record->isHidden() && !$record->isOversighted() ) {
+		if ( !$record->isFeatured() &&
+			!$record->isResolved() &&
+			!$record->isNonActionable() &&
+			!$record->isInappropriate() &&
+			!$record->isArchived() &&
+			!$record->isHidden() &&
+			!$record->isOversighted()
+		) {
 			$tools =
 				( $ownFeedback ? '' : $this->buildToolboxLink( $record, 'feature' ) ) .
 				$this->buildToolboxLink( $record, 'resolve' ) .

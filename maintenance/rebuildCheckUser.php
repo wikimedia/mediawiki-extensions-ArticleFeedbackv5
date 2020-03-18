@@ -131,7 +131,8 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 			// identified as "Article Feedback V5" rather than as IP
 			if ( $row->log_user_text == 'Article Feedback V5'
 				&& $row->log_comment != 'Automatic un-hide'
-				&& !in_array( $row->log_type, [ 'autohide', 'autoflag' ] ) ) {
+				&& !in_array( $row->log_type, [ 'autohide', 'autoflag' ] )
+			) {
 				$dbw->update(
 					'logging',
 					[ 'log_user_text' => $row->cuc_ip ],

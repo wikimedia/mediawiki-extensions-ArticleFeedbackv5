@@ -81,7 +81,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 *
 	 * @var int
 	 */
-	const LIST_LIMIT = 50;
+	public const LIST_LIMIT = 50;
 
 	/**
 	 * All lists the data can be displayed as
@@ -102,11 +102,15 @@ class ArticleFeedbackv5Model extends DataModel {
 		// reader lists
 		'featured' => [
 			'permissions' => 'aft-reader',
-			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_inappropriate = 0', 'aft_net_helpful > 0 OR aft_feature = 1' ],
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0',
+				'aft_hide = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_inappropriate = 0',
+				'aft_net_helpful > 0 OR aft_feature = 1' ],
 		],
 		'unreviewed' => [
 			'permissions' => 'aft-reader',
-			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0', 'aft_hide = 0', 'aft_feature = 0', 'aft_resolve = 0', 'aft_noaction = 0', 'aft_inappropriate = 0' ],
+			'conditions' => [ 'aft_has_comment = 1', 'aft_oversight = 0', 'aft_archive = 0',
+				'aft_hide = 0', 'aft_feature = 0', 'aft_resolve = 0', 'aft_noaction = 0',
+				'aft_inappropriate = 0' ],
 		],
 
 		// editor lists
@@ -406,17 +410,17 @@ class ArticleFeedbackv5Model extends DataModel {
 		}
 
 		global $wgArticleFeedbackv5DisplayBuckets;
-		if ( !in_array( $this->aft_form, array_keys( $wgArticleFeedbackv5DisplayBuckets['buckets'] ) ) ) {
+		if ( !isset( $wgArticleFeedbackv5DisplayBuckets['buckets'][$this->aft_form] ) ) {
 			throw new MWException( "Invalid form id '$this->aft_form'." );
 		}
 
 		global $wgArticleFeedbackv5CTABuckets;
-		if ( !in_array( $this->aft_cta, array_keys( $wgArticleFeedbackv5CTABuckets['buckets'] ) ) ) {
+		if ( !isset( $wgArticleFeedbackv5CTABuckets['buckets'][$this->aft_cta] ) ) {
 			throw new MWException( "Invalid cta id '$this->aft_cta'." );
 		}
 
 		global $wgArticleFeedbackv5LinkBuckets;
-		if ( !in_array( $this->aft_link, array_keys( $wgArticleFeedbackv5LinkBuckets['buckets'] ) ) ) {
+		if ( !isset( $wgArticleFeedbackv5LinkBuckets['buckets'][$this->aft_link] ) ) {
 			throw new MWException( "Invalid link id '$this->aft_link'." );
 		}
 
@@ -425,7 +429,8 @@ class ArticleFeedbackv5Model extends DataModel {
 		}
 
 		if ( $wgArticleFeedbackv5MaxCommentLength > 0
-			&& strlen( $this->aft_comment ) > $wgArticleFeedbackv5MaxCommentLength ) {
+			&& strlen( $this->aft_comment ) > $wgArticleFeedbackv5MaxCommentLength
+		) {
 			throw new MWException( "Comment length exceeds the maximum of '$wgArticleFeedbackv5MaxCommentLength'." );
 		}
 
