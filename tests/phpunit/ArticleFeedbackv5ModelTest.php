@@ -75,33 +75,51 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 
 		// data in cache
 		global $wgMemc;
-		$key = $wgMemc->makeKey( 'ArticleFeedbackv5Model', 'get', $this->sample->{ArticleFeedbackv5Model::getIdColumn()}, $this->sample->{ArticleFeedbackv5Model::getShardColumn()} );
+		$key = $wgMemc->makeKey( 'ArticleFeedbackv5Model', 'get',
+			$this->sample->{ArticleFeedbackv5Model::getIdColumn()},
+			$this->sample->{ArticleFeedbackv5Model::getShardColumn()}
+		);
 		$this->assertEquals( $this->sample, $wgMemc->get( $key ) );
 
 		// data in db
-		$row = ArticleFeedbackv5Model::getBackend()->get( $this->sample->{ArticleFeedbackv5Model::getIdColumn()}, $this->sample->{ArticleFeedbackv5Model::getShardColumn()} );
+		$row = ArticleFeedbackv5Model::getBackend()->get(
+			$this->sample->{ArticleFeedbackv5Model::getIdColumn()},
+			$this->sample->{ArticleFeedbackv5Model::getShardColumn()}
+		);
 		$this->assertEquals( get_object_vars( $this->sample ), get_object_vars( $row->fetchObject() ) );
 	}
 
 	public function testUpdate() {
 		$this->sample->insert();
-		$sample = ArticleFeedbackv5Model::get( $this->sample->{ArticleFeedbackv5Model::getIdColumn()}, $this->sample->{ArticleFeedbackv5Model::getShardColumn()} );
+		$sample = ArticleFeedbackv5Model::get(
+			$this->sample->{ArticleFeedbackv5Model::getIdColumn()},
+			$this->sample->{ArticleFeedbackv5Model::getShardColumn()}
+		);
 		$sample->aft_comment = "This is an updated feedback entry";
 		$this->sample->update();
 
 		// data in cache
 		global $wgMemc;
-		$key = $wgMemc->makeKey( 'ArticleFeedbackv5Model', 'get', $this->sample->{ArticleFeedbackv5Model::getIdColumn()}, $this->sample->{ArticleFeedbackv5Model::getShardColumn()} );
+		$key = $wgMemc->makeKey( 'ArticleFeedbackv5Model', 'get',
+			$this->sample->{ArticleFeedbackv5Model::getIdColumn()},
+			$this->sample->{ArticleFeedbackv5Model::getShardColumn()}
+		);
 		$this->assertEquals( $this->sample, $wgMemc->get( $key ) );
 
 		// data in db
-		$row = ArticleFeedbackv5Model::getBackend()->get( $this->sample->{ArticleFeedbackv5Model::getIdColumn()}, $this->sample->{ArticleFeedbackv5Model::getShardColumn()} );
+		$row = ArticleFeedbackv5Model::getBackend()->get(
+			$this->sample->{ArticleFeedbackv5Model::getIdColumn()},
+			$this->sample->{ArticleFeedbackv5Model::getShardColumn()}
+		);
 		$this->assertEquals( get_object_vars( $this->sample ), get_object_vars( $row->fetchObject() ) );
 	}
 
 	public function testGet() {
 		$this->sample->insert();
-		$this->assertEquals( $this->sample, ArticleFeedbackv5Model::get( $this->sample->{ArticleFeedbackv5Model::getIdColumn()}, $this->sample->{ArticleFeedbackv5Model::getShardColumn()} ) );
+		$this->assertEquals( $this->sample, ArticleFeedbackv5Model::get(
+			$this->sample->{ArticleFeedbackv5Model::getIdColumn()},
+			$this->sample->{ArticleFeedbackv5Model::getShardColumn()}
+		) );
 	}
 
 	public function testGetList() {

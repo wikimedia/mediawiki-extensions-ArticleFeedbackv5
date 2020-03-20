@@ -38,6 +38,7 @@ class DataModelList extends FakeResultWrapper {
 	}
 
 	protected function preload() {
+		/** @var DataModel $class */
 		$class = $this->className;
 		$class::preload( $this->result, $this->user );
 	}
@@ -63,7 +64,7 @@ class DataModelList extends FakeResultWrapper {
 		$this->nextOffset = $offset;
 	}
 
-	function next() {
+	public function next() {
 		$this->pos++;
 		return $this->fetchObject();
 	}
@@ -71,7 +72,7 @@ class DataModelList extends FakeResultWrapper {
 	/**
 	 * @return int
 	 */
-	function current() {
+	public function current() {
 		return $this->fetchObject();
 	}
 

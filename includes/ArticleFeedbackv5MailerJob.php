@@ -34,7 +34,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 	 * @param array $params
 	 * @param int $id
 	 */
-	function __construct( $title, $params, $id = 0 ) {
+	public function __construct( $title, $params, $id = 0 ) {
 		parent::__construct( __CLASS__, $title, $params, $id );
 	}
 
@@ -42,7 +42,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 	 * Run the job
 	 * @return bool success
 	 */
-	function run() {
+	public function run() {
 		global $wgArticleFeedbackv5OversightEmails, $wgArticleFeedbackv5OversightEmailName;
 		global $wgPasswordSender, $wgNoReplyAddress;
 

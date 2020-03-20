@@ -132,7 +132,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 			// articlefeedbackv5-special-filter-requested-watchlist, articlefeedbackv5-special-filter-declined-watchlist,
 			// articlefeedbackv5-special-filter-oversighted-watchlist, articlefeedbackv5-special-filter-all-watchlist
 			foreach ( $this->filters as $filter ) {
-				if ( in_array( $filter, array_keys( $filterLabels ) ) ) {
+				if ( isset( $filterLabels[$filter] ) ) {
 					continue;
 				}
 

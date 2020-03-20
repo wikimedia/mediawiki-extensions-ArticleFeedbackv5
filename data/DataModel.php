@@ -89,7 +89,7 @@ abstract class DataModel {
 	 *
 	 * @var int
 	 */
-	const LIST_LIMIT = 25;
+	public const LIST_LIMIT = 25;
 
 	/**
 	 * Instance of the backend object.
@@ -246,7 +246,7 @@ abstract class DataModel {
 
 		if ( !isset( static::$lists[$name] ) ) {
 			throw new MWException( "List '$name' is no known list" );
-		} elseif ( $sort !== null && !in_array( $sort, array_keys( static::$sorts ) ) ) {
+		} elseif ( $sort !== null && !isset( static::$sorts[$sort] ) ) {
 			throw new MWException( "Sort '$sort' does not exist" );
 		} elseif ( !in_array( $order, [ 'ASC', 'DESC' ] ) ) {
 			throw new MWException( 'Order should be either ASC or DESC' );
