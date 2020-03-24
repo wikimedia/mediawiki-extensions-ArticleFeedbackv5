@@ -525,13 +525,11 @@ class ArticleFeedbackv5Render {
 	 * @return string the rendered comment
 	 */
 	private function renderComment( $record ) {
-		global $wgLang;
-
 		$id = $record->aft_id;
 		$text = $record->aft_comment;
 
 		// permalink should always display long version ;)
-		$short = $this->isPermalink ? $text : $wgLang->truncateForVisual( $text, 250 );
+		$short = $this->isPermalink ? $text : RequestContext::getMain()->getLanguage()->truncateForVisual( $text, 250 );
 
 		// If the short string is the same size as the original, no truncation
 		// happened, so no controls are needed.  If it's longer, show the short
@@ -588,7 +586,7 @@ class ArticleFeedbackv5Render {
 	 * @return string the rendered footer
 	 */
 	private function renderFooter( $record ) {
-		global $wgLang, $wgRequest;
+		global $wgRequest;
 
 		$id = $record->aft_id;
 		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback(
@@ -689,8 +687,9 @@ class ArticleFeedbackv5Render {
 							'data-action'  => 'flag',
 						],
 						wfMessage(
-							'articlefeedbackv5-form-flag',
-							$wgLang->formatNum( $record->aft_flag )
+							'articlefeedbackv5-form-flag'
+						)->numParams(
+							$record->aft_flag
 						)->text()
 					);
 
@@ -712,8 +711,9 @@ class ArticleFeedbackv5Render {
 							'class' => $aclass
 						],
 						wfMessage(
-							'articlefeedbackv5-form-abuse-count',
-							$wgLang->formatNum( $record->aft_flag )
+							'articlefeedbackv5-form-abuse-count'
+						)->numParams(
+							$record->aft_flag
 						)->text()
 					);
 			}
@@ -892,14 +892,14 @@ class ArticleFeedbackv5Render {
 				}
 
 				if ( $discussPage ) {
-					global $wgLang;
+					$lang = RequestContext::getMain()->getLanguage();
 					// Give grep a chance to find the usages:
 					// articlefeedbackv5-discuss-talk-section-title, articlefeedbackv5-discuss-user-section-title
 					$sectionTitle = wfMessage( "articlefeedbackv5-discuss-$discussType-section-title" )
 						->params( $record->aft_comment, $record->getArticle()->getTitle() )
 						->inContentLanguage()
 						->text();
-					$sectionTitleTruncated = $wgLang->truncateForVisual( $sectionTitle, 60 );
+					$sectionTitleTruncated = $lang->truncateForVisual( $sectionTitle, 60 );
 
 					$title = Title::newFromId( $record->aft_page )->getPrefixedDBkey();
 					$userText = $record->aft_user_text; // anon users
@@ -912,7 +912,7 @@ class ArticleFeedbackv5Render {
 						 * Truncate the title even further - this was added to make sure
 						 * that we don't truncate at 48chars when there are only 50 total.
 						 */
-						$sectionTitleTruncated = $wgLang->truncateForVisual( $sectionTitle, 48 );
+						$sectionTitleTruncated = $lang->truncateForVisual( $sectionTitle, 48 );
 					}
 					// Give grep a chance to find the usages:
 					// articlefeedbackv5-discuss-talk-section-content, articlefeedbackv5-discuss-user-section-content
@@ -921,8 +921,8 @@ class ArticleFeedbackv5Render {
 						->params(
 							$userText,
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$record->aft_id" ),
-							$wgLang->userDate( $record->aft_timestamp, $this->getUser() ),
-							$wgLang->userTime( $record->aft_timestamp, $this->getUser() ),
+							$lang->userDate( $record->aft_timestamp, $this->getUser() ),
+							$lang->userTime( $record->aft_timestamp, $this->getUser() ),
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title ),
 							Message::rawParam( Html::element( 'blockquote', [], $record->aft_comment ) ),
 							$record->getArticle()->getTitle()
@@ -1119,11 +1119,12 @@ class ArticleFeedbackv5Render {
 	 * @return string the rendered info section
 	 */
 	private function renderPermalinkInfo( $record ) {
-		global $wgLang;
-
 		if ( !$this->isAllowed( 'aft-editor' ) ) {
 			return '';
 		}
+
+		$context = RequestContext::getMain();
+		$lang = $context->getLanguage();
 
 		// Metadata section
 		$metadata =
@@ -1150,7 +1151,10 @@ class ArticleFeedbackv5Render {
 					'p',
 					[],
 					wfMessage( 'articlefeedbackv5-permalink-info-posted' )
-						->params( $wgLang->userDate( $record->aft_timestamp, $this->getUser() ), $wgLang->userTime( $record->aft_timestamp, $this->getUser() ) )
+						->params(
+							$lang->userDate( $record->aft_timestamp, $this->getUser() ),
+							$lang->userTime( $record->aft_timestamp, $this->getUser() )
+						)
 						->escaped()
 				) .
 				Html::rawElement(

@@ -20,7 +20,7 @@ class ArticleFeedbackv5Log {
 	 * @return int The id of the newly inserted log entry
 	 */
 	public static function log( $type, $pageId, $itemId, $notes, $doer, array $params = [] ) {
-		global $wgLogActionsHandlers, $wgArticleFeedbackv5MaxActivityNoteLength, $wgLang;
+		global $wgLogActionsHandlers, $wgArticleFeedbackv5MaxActivityNoteLength;
 
 		if ( isset( ArticleFeedbackv5Activity::$actions[$type]['log_type'] ) ) {
 			// log type for actions (the more delicate actions should go to suppression log)
@@ -49,7 +49,10 @@ class ArticleFeedbackv5Log {
 		}
 
 		// truncate comment
-		$note = $wgLang->truncateForDatabase( $notes, $wgArticleFeedbackv5MaxActivityNoteLength );
+		$note = RequestContext::getMain()->getLanguage()->truncateForDatabase(
+			$notes,
+			$wgArticleFeedbackv5MaxActivityNoteLength
+		);
 
 		// add page id & feedback id to params
 		$params['feedbackId'] = (string)$itemId;
