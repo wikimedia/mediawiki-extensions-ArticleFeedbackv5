@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * Permissions for ArticleFeedback
  *
@@ -245,7 +248,9 @@ class ArticleFeedbackv5Permissions {
 			$pageObj->doPurge();
 
 			// make sure timestamp doesn't overlap with protection log's null revision (if any)
-			$timestamp = Revision::getTimestampFromId( $pageObj->getTitle(), $pageObj->getLatest() );
+			$timestamp = MediaWikiServices::getInstance()
+				->getRevisionLookup()
+				->getTimestampFromId( $pageObj->getLatest() );
 			if ( $timestamp === wfTimestampNow() ) {
 				sleep( 1 );
 			}
