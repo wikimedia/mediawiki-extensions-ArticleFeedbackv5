@@ -424,7 +424,7 @@ class ArticleFeedbackv5Utils {
 	 * @return string
 	 */
 	public static function formatId( $id ) {
-		return RequestContext::getMain()->getLanguage()->truncateForVisual( $id, 10 );
+		return MediaWikiServices::getInstance()->getContentLanguage()->truncateForVisual( $id, 10 );
 	}
 
 	/**
