@@ -7,6 +7,8 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * This class allows one to add a note describing activity, after the action
  * has been performed already.
@@ -80,9 +82,12 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 				 * While we're at it, since activity has occurred, the editor activity
 				 * data in cache may be out of date.
 				 */
-				global $wgMemc;
-				$key = $wgMemc->makeKey( 'ArticleFeedbackv5Activity', 'getLastEditorActivity', $feedbackId );
-				$wgMemc->delete( $key );
+				$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+				$key = $cache->makeKey(
+					'ArticleFeedbackv5Activity-getLastEditorActivity',
+					$feedbackId
+				);
+				$cache->delete( $key );
 			}
 		}
 

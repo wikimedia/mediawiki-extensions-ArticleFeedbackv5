@@ -1,9 +1,12 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * This class represents "a data entry".
  *
  * DataModel allows for data to be written to/read from a backend (e.g.
- * MySQL), while caching the results with BagOStuff (e.g. Memcached,
+ * MySQL), while caching the results with WANObjectCache (e.g. Memcached,
  * Redis, ...). This cache is especially important if the backend is
  * sharded; where fetching a number of entries could theoretically mean
  * that 10 servers would need to be queried.
@@ -101,7 +104,7 @@ abstract class DataModel {
 	/**
 	 * Instance of cache object.
 	 *
-	 * @var BagOStuff
+	 * @var WANObjectCache
 	 */
 	protected static $cache;
 
@@ -187,8 +190,9 @@ abstract class DataModel {
 	 * @return DataModel|bool
 	 */
 	public static function get( $id, $shard ) {
-		$key = static::getCache()->makeKey( get_called_class(), 'get', $id, $shard );
-		$entry = static::getCache()->get( $key );
+		$wanCache = static::getCache();
+		$key = $wanCache->makeKey( get_called_class() . '-get', $id, $shard );
+		$entry = $wanCache->get( $key );
 
 		// when not found in cache, load data from DB
 		if ( $entry === false ) {
@@ -252,17 +256,30 @@ abstract class DataModel {
 			throw new MWException( 'Order should be either ASC or DESC' );
 		}
 
+		$wanCache = static::getCache();
+
 		// internal key to identify this exact list by
-		$keyGetList = static::getCache()->makeKey( get_called_class(), 'getList', $name, $shard, $offset, $sort, $order );
-		$keyGetListValidity = static::getCache()->makeKey( get_called_class(), 'getListValidity', $name, $shard );
+		$keyGetList = $wanCache->makeKey(
+			get_called_class() . '-getList',
+			$name,
+			$shard,
+			$offset,
+			$sort,
+			$order
+		);
+		$keyGetListValidity = $wanCache->makeKey(
+			get_called_class() . '-getListValidity',
+			$name,
+			$shard
+		);
 
 		// get data from cache
-		$cache = static::getCache()->get( $keyGetList );
+		$cache = $wanCache->get( $keyGetList );
 
 		$list = false;
 		if ( $cache != false ) {
 			// check if cached lists for this list/shard are valid
-			$validity = static::getCache()->get( $keyGetListValidity );
+			$validity = $wanCache->get( $keyGetListValidity );
 			if ( $validity === false || $cache['time'] > $validity ) {
 				$list = $cache['list'];
 			}
@@ -350,7 +367,7 @@ abstract class DataModel {
 	 * - when fetching from db, it requires an aggregate function, so not so cheap
 	 *
 	 * @param string $name The list name (see static::$lists)
-	 * @param mixed|null $shard Get only data for a certain shard value
+	 * @param string|int|null $shard Get only data for a certain shard value
 	 * @return int
 	 */
 	public static function getCount( $name, $shard = null ) {
@@ -358,18 +375,21 @@ abstract class DataModel {
 			throw new MWException( "List '$name' is no known list" );
 		}
 
-		// internal key to identify this exact list by
-		$key = static::getCache()->makeKey( get_called_class(), 'getCount', $name, $shard );
+		$wanCache = static::getCache();
+		$key = $wanCache->makeKey( get_called_class() . '-getCount', $name, $shard );
 
-		// (try to) fetch list from cache
-		$count = static::getCache()->get( $key );
-
-		if ( $count === false ) {
-			$count = static::getBackend()->getCount( $name, $shard );
-			static::getCache()->set( $key, $count );
-		}
-
-		return (int)$count;
+		return (int)$wanCache->getWithSetCallback(
+			$key,
+			$wanCache::TTL_WEEK,
+			function () use ( $name, $shard ) {
+				return static::getBackend()->getCount( $name, $shard );
+			},
+			[
+				// Avoid cache stampedes on invalidations
+				'checkKeys' => [ $key ],
+				'lockTSE' => 30
+			]
+		);
 	}
 
 	/**
@@ -509,19 +529,20 @@ abstract class DataModel {
 	/**
 	 * Get the cache instance.
 	 *
-	 * @return BagOStuff
+	 * @return WANObjectCache
 	 */
 	public static function getCache() {
 		if ( static::$cache === null ) {
-			global $wgMemc;
-
+			$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 			/*
 			 * If no cache is set, use HashBagOStuff; even though it won't persist
 			 * across requests. ::getList will retrieve all info from DB already and
 			 * "cache" it, so that ::get (which is called by DataModelList) does not
 			 * need to re-fetch it from DB because it's in cache or HashBagOStuff.
 			 */
-			$cache = get_class( $wgMemc ) != 'EmptyBagOStuff' ? $wgMemc : new HashBagOStuff;
+			if ( $cache->getQoS( $cache::ATTR_DURABILITY ) <= $cache::QOS_DURABILITY_NONE ) {
+				$cache = new WANObjectCache( [ 'cache' => new HashBagOStuff() ] );
+			}
 			static::setCache( $cache );
 		}
 
@@ -531,10 +552,10 @@ abstract class DataModel {
 	/**
 	 * Set the cache instance.
 	 *
-	 * @param BagOStuff $cache
-	 * @return BagOStuff
+	 * @param WANObjectCache $cache
+	 * @return WANObjectCache
 	 */
-	public static function setCache( BagOStuff $cache ) {
+	public static function setCache( WANObjectCache $cache ) {
 		static::$cache = $cache;
 		return static::$cache;
 	}
@@ -577,6 +598,7 @@ abstract class DataModel {
 	 * @param User $user Acting user
 	 */
 	public static function preload( array $entries, User $user ) {
+		$wanCache = static::getCache();
 		/*
 		 * $entries contains an array of [id] => [shard] entries.
 		 * We'll now want to fetch the actual data for these entries; gather a
@@ -587,8 +609,8 @@ abstract class DataModel {
 			$id = $entry['id'];
 			$shard = $entry['shard'];
 
-			$keyGet = static::getCache()->makeKey( get_called_class(), 'get', $id, $shard );
-			if ( static::getCache()->get( $keyGet ) === false ) {
+			$keyGet = $wanCache->makeKey( get_called_class() . '-get', $id, $shard );
+			if ( $wanCache->get( $keyGet ) === false ) {
 				$missing[$id] = $shard;
 			}
 		}
@@ -616,8 +638,14 @@ abstract class DataModel {
 		 * is not lagging; we don't want to cache outdated data.
 		 */
 		if ( static::getBackend()->allowCache() ) {
-			$key = static::getCache()->makeKey( get_called_class(), 'get', $this->{static::getIdColumn()}, $this->{static::getShardColumn()} );
-			static::getCache()->set( $key, $this, 60 * 60 );
+			$wanCache = static::getCache();
+
+			$key = $wanCache->makeKey(
+				get_called_class() . '-get',
+				$this->{static::getIdColumn()},
+				$this->{static::getShardColumn()}
+			);
+			$wanCache->set( $key, $this, 60 * 60 );
 		}
 
 		return $this;
@@ -629,8 +657,14 @@ abstract class DataModel {
 	 * @return DataModel
 	 */
 	public function uncache() {
-		$key = static::getCache()->makeKey( get_called_class(), 'get', $this->{static::getIdColumn()}, $this->{static::getShardColumn()} );
-		static::getCache()->delete( $key );
+		$wanCache = static::getCache();
+
+		$key = $wanCache->makeKey(
+			get_called_class() . '-get',
+			$this->{static::getIdColumn()},
+			$this->{static::getShardColumn()}
+		);
+		$wanCache->delete( $key );
 
 		return $this;
 	}
@@ -646,14 +680,22 @@ abstract class DataModel {
 	 * @param string $order Sort the list ASC or DESC
 	 */
 	public static function cacheList( $list, $name, $shard, $offset, $sort, $order ) {
+		$wanCache = static::getCache();
 		/*
 		 * Make sure that the backend's current state (from which we just read data)
 		 * is not lagging; we don't want to cache outdated data.
 		 */
 		if ( static::getBackend()->allowCache() ) {
 			$cache = [ 'time' => wfTimestampNow(), 'list' => $list ];
-			$keyGetList = static::getCache()->makeKey( get_called_class(), 'getList', $name, $shard, $offset, $sort, $order );
-			static::getCache()->set( $keyGetList, $cache, 60 * 60 );
+			$keyGetList = $wanCache->makeKey(
+				get_called_class() . '-getList',
+				$name,
+				$shard,
+				$offset,
+				$sort,
+				$order
+			);
+			$wanCache->set( $keyGetList, $cache, 60 * 60 );
 		}
 	}
 
@@ -665,6 +707,7 @@ abstract class DataModel {
 	 * @param mixed $shard The shard value
 	 */
 	public static function uncacheList( $name, $shard ) {
+		$wanCache = static::getCache();
 		/*
 		 * All calls to ::getList result in partial (length of static::LIST_LIMIT)
 		 * caches. Having to invalidate all of them would not scale: if the amount
@@ -680,8 +723,8 @@ abstract class DataModel {
 		 * found in this validity cache.
 		 */
 		foreach ( [ $shard, null ] as $shard ) {
-			$key = static::getCache()->makeKey( get_called_class(), 'getListValidity', $name, $shard );
-			static::getCache()->set( $key, wfTimestampNow(), 60 * 60 );
+			$key = $wanCache->makeKey( get_called_class() . '-getListValidity', $name, $shard );
+			$wanCache->set( $key, wfTimestampNow(), 60 * 60 );
 		}
 	}
 
@@ -750,38 +793,12 @@ abstract class DataModel {
 	 * @return DataModel
 	 */
 	protected function updateCountCache( $name, $shard, $difference ) {
-		// update both shard-specific as well as general all-shard count
+		$wanCache = static::getCache();
+		// Invalidate both shard-specific as well as general all-shard count
 		foreach ( [ $shard, null ] as $shard ) {
 			$class = get_called_class();
-			$key = static::getCache()->makeKey( $class, 'getCount', $name, $shard );
-
-			/**
-			 * Callback method, updating the cached counts.
-			 *
-			 * @param BagOStuff $cache
-			 * @param string $key
-			 * @param int $existingValue
-			 * @use string $name The list name (see static::$lists)
-			 * @use mixed $shard The shard value
-			 * @use int $difference The difference to apply to current count
-			 * @use string $class The called class
-			 * @return int
-			 */
-			$callback = function ( BagOStuff $cache, $key, $existingValue ) use ( $name, $shard, $difference, $class ) {
-				// if nothing is cached, leave be; cache will rebuild when it's requested
-				if ( $existingValue === false ) {
-					return false;
-				}
-
-				// if count is in cache already, update it right away, avoiding any more DB reads
-				return $existingValue + $difference;
-			};
-
-			// CAS new value, or - in case of failure - clear value to fallback to db value
-			$result = static::getCache()->merge( $key, $callback );
-			if ( $result === false ) {
-				static::getCache()->delete( $key );
-			}
+			$key = $wanCache->makeKey( $class . '-getCount', $name, $shard );
+			$wanCache->touchCheckKey( $key );
 		}
 
 		return $this;

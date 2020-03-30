@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * This class will test the datamodel sample.
  *
@@ -20,8 +23,8 @@ class DataModelSampleTest extends MediaWikiTestCase {
 		$this->setMwGlobals( [
 			'wgMemc' => new HashBagOStuff,
 		] );
-		global $wgMemc;
-		DataModelSample::setCache( $wgMemc );
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		DataModelSample::setCache( $cache );
 
 		// define db backend
 		global $wgDataModelBackendClass;
@@ -62,9 +65,13 @@ class DataModelSampleTest extends MediaWikiTestCase {
 		$this->sample->insert();
 
 		// data in cache
-		global $wgMemc;
-		$key = $wgMemc->makeKey( 'DataModelSample', 'get', $this->sample->{DataModelSample::getIdColumn()}, $this->sample->{DataModelSample::getShardColumn()} );
-		$this->assertEquals( $this->sample, $wgMemc->get( $key ) );
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$key = $cache->makeKey(
+			'DataModelSample-get',
+			$this->sample->{DataModelSample::getIdColumn()},
+			$this->sample->{DataModelSample::getShardColumn()}
+		);
+		$this->assertEquals( $this->sample, $cache->get( $key ) );
 
 		// data in db
 		$row = DataModelSample::getBackend()->get( $this->sample->{DataModelSample::getIdColumn()}, $this->sample->{DataModelSample::getShardColumn()} );
@@ -78,9 +85,13 @@ class DataModelSampleTest extends MediaWikiTestCase {
 		$this->sample->update();
 
 		// data in cache
-		global $wgMemc;
-		$key = $wgMemc->makeKey( 'DataModelSample', 'get', $this->sample->{DataModelSample::getIdColumn()}, $this->sample->{DataModelSample::getShardColumn()} );
-		$this->assertEquals( $this->sample, $wgMemc->get( $key ) );
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$key = $cache->makeKey(
+			'DataModelSample-get',
+			$this->sample->{DataModelSample::getIdColumn()},
+			$this->sample->{DataModelSample::getShardColumn()}
+		);
+		$this->assertEquals( $this->sample, $cache->get( $key ) );
 
 		// data in db
 		$row = DataModelSample::getBackend()->get( $this->sample->{DataModelSample::getIdColumn()}, $this->sample->{DataModelSample::getShardColumn()} );

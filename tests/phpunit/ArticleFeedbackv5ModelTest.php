@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This class will test the datamodel sample.
  *
@@ -14,10 +15,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 		parent::setUp();
 
 		// init some volatile BagOStuff
-		$cache = new HashBagOStuff;
-		$this->setMwGlobals( [
-			'wgMemc' => $cache,
-		] );
+		$cache = new WANObjectCache( [ 'cache' => new HashBagOStuff ] );
 		ArticleFeedbackv5Model::setCache( $cache );
 
 		// don't connect to external cluster but use main db, that has been prepared for unittests ($this->db)
@@ -73,14 +71,6 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 	public function testInsert() {
 		$this->sample->insert();
 
-		// data in cache
-		global $wgMemc;
-		$key = $wgMemc->makeKey( 'ArticleFeedbackv5Model', 'get',
-			$this->sample->{ArticleFeedbackv5Model::getIdColumn()},
-			$this->sample->{ArticleFeedbackv5Model::getShardColumn()}
-		);
-		$this->assertEquals( $this->sample, $wgMemc->get( $key ) );
-
 		// data in db
 		$row = ArticleFeedbackv5Model::getBackend()->get(
 			$this->sample->{ArticleFeedbackv5Model::getIdColumn()},
@@ -97,14 +87,6 @@ class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
 		);
 		$sample->aft_comment = "This is an updated feedback entry";
 		$this->sample->update();
-
-		// data in cache
-		global $wgMemc;
-		$key = $wgMemc->makeKey( 'ArticleFeedbackv5Model', 'get',
-			$this->sample->{ArticleFeedbackv5Model::getIdColumn()},
-			$this->sample->{ArticleFeedbackv5Model::getShardColumn()}
-		);
-		$this->assertEquals( $this->sample, $wgMemc->get( $key ) );
 
 		// data in db
 		$row = ArticleFeedbackv5Model::getBackend()->get(
