@@ -203,7 +203,7 @@
 	"articlefeedbackv5-form2-header-question": "Ur goulenn zo bet savet ouzh {{GENDER:$1|$1}} :",
 	"articlefeedbackv5-form2-header-suggestion": "Ur c'hinnig zo bet graet gant {{GENDER:$1|$1}} :",
 	"articlefeedbackv5-form-anon-username": "Ul lenner",
-	"articlefeedbackv5-form-anon-message": "Psotet en un doare dizanv gant $1.",
+	"articlefeedbackv5-form-anon-message": "Postet en un doare dizanv gant $1.",
 	"articlefeedbackv5-form-invalid": "Direizh eo ID ar furmskrid da reiñ e soñj.",
 	"articlefeedbackv5-central-header-left-comment": "{{GENDER:$1|$2}} en deus kaset [[$4|un evezhiadenn]] da $3",
 	"articlefeedbackv5-abuse-saved": "Merkañ evel dizereat",

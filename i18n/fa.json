@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alirezaaa",
 			"Dalba",
 			"Ebraminio",
+			"FarsiNevis",
+			"Fatemi127",
 			"Hooshmand.hasannia",
 			"Huji",
 			"KhabarNegar",
@@ -19,10 +22,7 @@
 			"Rmashhadi",
 			"ZxxZxxZ",
 			"جواد",
-			"پسر یاس",
-			"Fatemi127",
-			"Alirezaaa",
-			"FarsiNevis"
+			"پسر یاس"
 		]
 	},
 	"apihelp-query+articlefeedbackv5-view-activity-param-limit": "تعداد فعالیت‌ها برای نمایش در نتایج",

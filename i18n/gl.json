@@ -1,12 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm",
-			"Toliño",
-			"McDutchie",
-			"Navhy",
 			"Banjo",
-			"Iváns"
+			"Elisardojm",
+			"Iváns",
+			"McDutchie",
+			"Toliño"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Enviar un comentario sobre un artigo",

@@ -2,6 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Chmee2",
+			"Cvanca",
+			"Draceane",
+			"Dvorapa",
 			"Frettie",
 			"Jezevec",
 			"Jkjk",
@@ -13,16 +16,13 @@
 			"Michaelbrabec",
 			"Mormegil",
 			"Mr. Richard Bolla",
+			"MrJaroslavik",
+			"Patriccck",
 			"Paxt",
+			"SimonV",
 			"Tchoř",
 			"Utar",
-			"Vks",
-			"Draceane",
-			"Cvanca",
-			"Dvorapa",
-			"Patriccck",
-			"SimonV",
-			"MrJaroslavik"
+			"Vks"
 		]
 	},
 	"apihelp-articlefeedbackv5-param-anontoken": "Token pro anonymní uživatele",

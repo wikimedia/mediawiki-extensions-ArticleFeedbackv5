@@ -1,25 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alan ffm",
 			"Ankry",
 			"BeginaFelicysym",
 			"Chrumps",
+			"CiaPan",
+			"FunPL",
 			"Lazowik",
 			"Matma Rex",
 			"Odder",
 			"Olgak85",
 			"Przemub",
+			"Rail",
+			"Railfail536",
 			"Rzuwig",
 			"Sp5uhe",
 			"Ty221",
-			"WTM",
-			"Woytecr",
-			"Alan ffm",
 			"Vengir",
-			"CiaPan",
-			"Railfail536",
-			"Rail",
-			"FunPL"
+			"WTM",
+			"Woytecr"
 		]
 	},
 	"apihelp-articlefeedbackv5-param-anontoken": "Token dla użytkowników anonimowych",
