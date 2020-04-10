@@ -4,6 +4,7 @@
 			"Als-Holder",
 			"Danmichaelo",
 			"Erzbischof",
+			"FF11",
 			"Filzstift",
 			"Geitost",
 			"Inkowik",
@@ -639,5 +640,17 @@
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "Erledigt",
 	"echo-category-title-feedback": "Feedback",
 	"echo-pref-tooltip-feedback": "Benachrichtige mich, wenn jemand meinen Artikel als nützlich markiert.",
-	"articlefeedbackv5-notification-link-text-view-feedback": "Rückmeldungen ansehen"
+	"articlefeedbackv5-notification-link-text-view-feedback": "Rückmeldungen ansehen",
+	"articlefeedbackv5-notification-feedback-watch": "[[$3|Das Feedback]] über [[$2]] wurde durch [[User:$1|$1]] als {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} markiert.",
+	"articlefeedbackv5-notification-feedback-watch-bundle": "[[$3|Das Feedback]] über [[$2]] wurde durch [[User:$1|$1]] und {{PLURAL:$6|einen anderen Benutzer|$5 andere Benutzern}} als {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} markiert.",
+	"articlefeedbackv5-notification-feedback-watch-flyout": "[[$3|Das Feedback]] über [[$2]] wurde durch [[User:$1|$1]] als {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} markiert.",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "Das Feedback über $2 wurde auf {{SITENAME}} als $3 markiert.",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "Das Feedback über $2 wurde von $1 auf {{SITENAME}} als $4 markiert. $3",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "Das Feedback über $2 wurde von $1 und {{PLURAL:$6|einem anderen Benutzer|$5 anderen Benutzern}} auf {{SITENAME}} als $4 markiert. $3",
+	"articlefeedbackv5-notification-feedback-moderated": "[[$3|Dein Feedback]] über [[$2]] wurde von [[User:$1|$1]] als {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} markiert.",
+	"articlefeedbackv5-notification-feedback-moderated-bundle": "[[$3|Dein Feedback]] über [[$2]] wurde von [[User:$1|$1]] und {{PLURAL:$5|einem anderen Benutzer|$4 anderen Benutzern}} moderiert.",
+	"articlefeedbackv5-notification-feedback-moderated-flyout": "[[$3|Dein Feedback]] über [[$2]] wurde von [[User:$1|$1]] als {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} markiert.",
+	"articlefeedbackv5-notification-feedback-moderated-email-subject": "Dein Feedback über $2 wurde als $3 markiert.",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "Dein Feedback über $2 wurde von $1 auf {{SITENAME}} als $4 markiert. $3",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "Dein Feedback über $2 wurde von $1 und {{PLURAL:$6|einem anderen Benutzer|$5 anderen Benutzern}} auf {{SITENAME}} als moderiert. $3"
 }

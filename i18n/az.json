@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Cekli829",
+			"Toghrul Rahimli",
 			"Vago",
 			"Wertuose"
 		]
@@ -10,6 +11,7 @@
 	"articlefeedbackv5-loading-tag": "Yüklənir…",
 	"articlefeedbackv5-new-marker": "Yeni",
 	"articlefeedbackv5-hide-marker": "Gizli",
+	"articlefeedbackv5-discussion-page": "Müzakirə",
 	"articlefeedbackv5-whats-this": "Kömək",
 	"articlefeedbackv5-bucket1-toggle-found-yes": "Bəli",
 	"articlefeedbackv5-bucket1-toggle-found-no": "Xeyr",
