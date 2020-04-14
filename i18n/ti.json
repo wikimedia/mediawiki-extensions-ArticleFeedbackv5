@@ -15,7 +15,7 @@
 	"articlefeedbackv5-special-sort-label": "ጎጅል ብ፥",
 	"articlefeedbackv5-special-filter-select-more": "ተወሳኺ",
 	"articlefeedbackv5-details-link": "ዝርዝሪት",
-	"articlefeedbackv5-loading-tag": "ጽዕነት...",
+	"articlefeedbackv5-loading-tag": "ይጽዕን ኣሎ...",
 	"articlefeedbackv5-new-marker": "ሓድሽ",
 	"articlefeedbackv5-form-unresolve": "ፈትሐ",
 	"articlefeedbackv5-form-unnoaction": "ፈትሐ",
@@ -50,5 +50,6 @@
 	"articlefeedbackv5-bucket4-noedit-form-submit": "ተወሳኺ ፍለጥ",
 	"articlefeedbackv5-bucket6-toggle-found-yes": "እወ",
 	"articlefeedbackv5-bucket6-toggle-found-no": "ኣይፋል",
-	"articlefeedbackv5-help-tooltip-linktext": "ተወሳኺ ፍለጥ"
+	"articlefeedbackv5-help-tooltip-linktext": "ተወሳኺ ፍለጥ",
+	"articlefeedbackv5-section-linktext": "ግብረ-መልሲ"
 }
