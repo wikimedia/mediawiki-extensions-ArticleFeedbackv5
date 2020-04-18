@@ -255,7 +255,7 @@ class ArticleFeedbackv5Permissions {
 				sleep( 1 );
 			}
 
-			$pageObj->insertProtectNullRevision(
+			$pageObj->insertNullProtectionRevision(
 				'articlefeedbackv5-protection-title',
 				[ 'articlefeedbackv5' => $permission ],
 				[ 'articlefeedbackv5' => $expiry ],
