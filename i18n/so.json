@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abdullahi",
 			"Abshirdheere"
 		]
 	},
@@ -50,6 +51,8 @@
 	"articlefeedbackv5-disabled": "Faalada waxaa laga dhigay howl gab",
 	"articlefeedbackv5-special-filter-featured": "Kiis gaar ah ($1)",
 	"articlefeedbackv5-special-filter-select-more": "Dheeraad",
+	"articlefeedbackv5-form-tooltip-inappropriate": "Macno darro, spam, gardarro , xog gaar ah ...",
+	"articlefeedbackv5-form-tooltip-hide": "Macno la aan, spam, Gardarro, xog gaar ah ...",
 	"articlefeedbackv5-bucket1-title": "Naga caawi hagaajinta Boggaan",
 	"articlefeedbackv5-bucket1-question-toggle": "Ma ka heshay wixii aad raadineeysay?",
 	"articlefeedbackv5-bucket1-form-submit": "Faafi ama dir faaladaada",
