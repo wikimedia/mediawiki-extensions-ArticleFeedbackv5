@@ -428,5 +428,8 @@
 	"articlefeedbackv5-disable-flyover-prefbutton": "Mont da'm fenndibaboù",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "Diskoulmet ent emgefre. Reolenn : $1",
 	"abusefilter-edit-action-aftv5hide": "(Evezhiadenn war ar pennad) Emguzhat",
-	"articlefeedbackv5-abusefilter-note-aftv5hide": "Kuzhet ent emgefre. Reolenn : $1"
+	"articlefeedbackv5-abusefilter-note-aftv5hide": "Kuzhet ent emgefre. Reolenn : $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "talvoudus",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "diskoulmet",
+	"echo-category-title-feedback": "Soñjoù"
 }

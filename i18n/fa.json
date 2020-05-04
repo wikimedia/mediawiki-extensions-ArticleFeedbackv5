@@ -561,7 +561,7 @@
 	"articlefeedbackv5-activity-more": "نمایش فعالیت بیشتر",
 	"articlefeedbackv5-article-view-feedback": "$1 {{PLURAL:$1|نظر}} بازدیدکننده",
 	"articlefeedbackv5-talk-view-feedback": "نمایش بازخورد خواننده‌ها",
-	"articlefeedbackv5-watchlist-view-feedback": "بازخورد صفحاتی که در فهرست پی‌گیری من قرار دارند.",
+	"articlefeedbackv5-watchlist-view-feedback": "بازخورد صفحاتی که در فهرست پی‌گیری‌های من قرار دارند.",
 	"articlefeedbackv5-email-request-oversight-subject": "درخواست پنهان‌گری برای بازخورد این مقاله",
 	"articlefeedbackv5-email-request-oversight-body": "سلام بر پنهانگرها!\n\nپنهان‌گری توسط $1 برای بازخورد ارسال‌شده به این صفحه درخواست شده‌است:\n\n$2\n\nلطفاً این بازخورد را بررسی کنید، سپس این درخواست پنهان‌گری را تأیید و یا رد کنید:\n\n$3\n$5\n\nباتشکر از شما\n\nتیم {{SITENAME}}\n\nپی‌نوشت: در صورت داشتن هرگونه سوال در رابطه با استفاده از دسترسی پنهانگری در بازخورد مقاله‌ها، لطفاً پرسخ‌پاسخ‌های متداول پنهانگری را بررسی کنید:\n\n$4",
 	"articlefeedbackv5-email-request-oversight-body-notes": "این نظر به درخواست پنهانگری افزوده شده‌است:\n\n\n$1",

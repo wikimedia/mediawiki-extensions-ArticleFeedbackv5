@@ -270,5 +270,6 @@
 	"articlefeedbackv5-activity-pane-header": "Aktivitetslog",
 	"articlefeedbackv5-activity-permalink": "permanent henvisning",
 	"articlefeedbackv5-activity-more": "Vis mere aktivitet",
-	"articlefeedbackv5-disable-flyover-title": "Fjern dette værktøj?"
+	"articlefeedbackv5-disable-flyover-title": "Fjern dette værktøj?",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "nyttigt"
 }
