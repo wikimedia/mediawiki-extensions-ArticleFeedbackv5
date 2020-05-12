@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alirezaaa",
+			"Amir1arch",
 			"Dalba",
 			"Ebraminio",
 			"FarsiNevis",
@@ -181,7 +182,7 @@
 	"articlefeedbackv5-status-unarchive": "این ارسال توسط $1 در تاریخ $2 و ساعت $3  از بایگانی خارج شد.",
 	"articlefeedbackv5-new-marker": "جديد",
 	"articlefeedbackv5-oversight-marker": "پنهان‌شده",
-	"articlefeedbackv5-autohide-marker": "پنهان",
+	"articlefeedbackv5-autohide-marker": "پنهان شده خودکار",
 	"articlefeedbackv5-hide-marker": "پنهان",
 	"articlefeedbackv5-feature-marker": "مفید",
 	"articlefeedbackv5-resolve-marker": "حل شده",
@@ -274,7 +275,7 @@
 	"articlefeedbackv5-found-percent-title": "بر اساس  $1   {{PLURAL:$1| نظر|نظرها}} (به جز نظرات نامناسب)",
 	"articlefeedbackv5": "صفحهٔ اصلی بازخورد مقاله",
 	"articlefeedbackv5watchlist": "بازخورد مقاله - صفحات پی‌گیری‌شدهٔ من",
-	"articlefeedbackv5-desc": "ارزیابی مقاله‌ها",
+	"articlefeedbackv5-desc": "کاربران را با دادن اجازه تشویق میکند تا مقاله‌ها را بازبینی و تغییرات پیشنهاد کنند.",
 	"articlefeedbackv5-comment-more": "بیشتر",
 	"articlefeedbackv5-comment-empty": "هیچ متنی وارد نشده‌است",
 	"articlefeedbackv5-page-disabled": "صفحهٔ نظرات مقاله برای این مقاله فعال نیست.",
@@ -579,5 +580,6 @@
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "سودمند",
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "حل شده",
 	"echo-category-title-feedback": "بازخورد",
+	"echo-pref-tooltip-feedback": "وقتی کسی بازخورد این مقاله را مفید برچسب زد باخبرم کن.",
 	"articlefeedbackv5-notification-link-text-view-feedback": "مشاهدهٔ بازخورد"
 }
