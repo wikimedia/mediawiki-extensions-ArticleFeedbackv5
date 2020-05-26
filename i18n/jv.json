@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Diki Ananta",
 			"NoiX180"
 		]
 	},
@@ -8,10 +9,10 @@
 	"apihelp-articlefeedbackv5-param-title": "Sesirah kaca kang arep kawènèhan pamrayoga. Ora bisa kaanggo bebarengan karo $1pageid",
 	"apihelp-articlefeedbackv5-param-pageid": "IDné kaca kang arep kawènèhan pamrayoga. Ora bisa kaanggo bebarengan karo $1title",
 	"apihelp-articlefeedbackv5-param-revid": "ID révisi kang arep kawènèhan pamrayoga",
-	"apihelp-articlefeedbackv5-param-anontoken": "Token tumrap panganggo anonim",
-	"apihelp-articlefeedbackv5-param-bucket": "Formulir pamrayoga kang katuduhaké marang panganggoné",
+	"apihelp-articlefeedbackv5-param-anontoken": "Token tumrap naraguna anonim",
+	"apihelp-articlefeedbackv5-param-bucket": "Formulir pamrayoga kang katuduhaké marang naragunané",
 	"apihelp-articlefeedbackv5-param-cta": "CTA dipitontonaké sawisé formulir dikirim",
-	"apihelp-articlefeedbackv5-param-link": "Pranala kang diklik panganggoné saperlu masang widgèté",
+	"apihelp-articlefeedbackv5-param-link": "Pranala kang diklik naragunané saperlu masang widgèté",
 	"articlefeedbackv5-cta-thanks": "Matur nuwun!",
 	"articlefeedbackv5-cta-confirmation-message": "Kirimané panjenengan bisa dideleng ing [kaca saran $1] iki.",
 	"articlefeedbackv5-cta1-confirmation-title": "Panjenengan ngerti ta yèn bisa mbesut kaca iki?",
@@ -36,7 +37,7 @@
 	"articlefeedbackv5-cta5-button-text": "Deleng kabèh tanggepan",
 	"articlefeedbackv5-overlay-close": "Tutup",
 	"articlefeedbackv5-error": "Ana masalah. Mangga jajalen manèh mengko.",
-	"articlefeedbackv5-error-blocked": "Panganggo kablokir ora bisa ngirim lebon saran.",
+	"articlefeedbackv5-error-blocked": "Naraguna kablokir ora bisa ngirim lebon saran.",
 	"articlefeedbackv5-error-validation": "Masalah pangesahan.",
 	"articlefeedbackv5-error-unknown": "Masalah ora dingertèni.",
 	"articlefeedbackv5-error-submit": "Masalah pangiriman formulir.",
@@ -149,7 +150,7 @@
 	"articlefeedbackv5-found-percent": "{{PLURAL:$2|$1 nemu kang digolèki}}",
 	"articlefeedbackv5": "Lebon saran artikel - Kaca pusat",
 	"articlefeedbackv5watchlist": "Lebon saran artikel - Kaca kang tak awasi",
-	"articlefeedbackv5-desc": "Ngajaki para panganggo supaya padha gelem nyumbang kanthi cara ngolèhaké para panganggo mriksa artikel lan mrayogakaké owah-owahan",
+	"articlefeedbackv5-desc": "Ngajaki para naraguna supaya padha gelem nyumbang kanthi cara ngolèhaké para naraguna mriksa artikel lan mrayogakaké owah-owahan",
 	"articlefeedbackv5-comment-more": "Luwih akèh",
 	"articlefeedbackv5-comment-empty": "Ora ana tèks kang diisèkaké",
 	"articlefeedbackv5-page-disabled": "Kaca Lebon Saran Artikel ora diurubaké kanggo artikel iki.",
@@ -161,8 +162,8 @@
 	"articlefeedbackv5-special-central-goback": "Deleng pamrayoga liyané saka kaca liyané",
 	"articlefeedbackv5-permalink-info-title": "Inpormasi kiriman iki",
 	"articlefeedbackv5-permalink-info-post-id": "Kiriman #$1",
-	"articlefeedbackv5-permalink-written-by-editor": "Ditulis déning panganggo kadhaftar",
-	"articlefeedbackv5-permalink-written-by-reader": "Ditulis déning panganggo anonim",
+	"articlefeedbackv5-permalink-written-by-editor": "Ditulis déning naraguna kadhaftar",
+	"articlefeedbackv5-permalink-written-by-reader": "Ditulis déning naraguna anonim",
 	"articlefeedbackv5-permalink-info-revision-link": "Deleng vèrsi lawas kaca iki",
 	"articlefeedbackv5-permalink-info-posted": "Dikirim tanggal $1 wanci $2",
 	"articlefeedbackv5-permalink-info-stats-title-length": "Dawané",

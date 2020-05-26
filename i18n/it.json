@@ -3,6 +3,7 @@
 		"authors": [
 			"Anto",
 			"Aushulz",
+			"BaRaN6161 TURK",
 			"Beta16",
 			"Dansita",
 			"Darth Kule",
@@ -335,7 +336,7 @@
 	"articlefeedbackv5-invalid-feedback": "Il commento richiesto non esiste.",
 	"articlefeedbackv5-viewactivity": "Vedi attività",
 	"articlefeedbackv5-mask-view-contents": "Vedi contenuto",
-	"articlefeedbackv5-mask-text-inappropriate": "Questo post #$1 {{GENERE:$2|è stato contrassegnato come inappropriato da $2}} $3.",
+	"articlefeedbackv5-mask-text-inappropriate": "Questo post #$1 {{GENDER:$2|è stato contrassegnato come inappropriato da $2}} $3.",
 	"articlefeedbackv5-mask-text-autohide": "Il post #$1 è stato nascosto automaticamente da $2 $3.",
 	"articlefeedbackv5-mask-text-hide": "Il post #$1 è stato nascosto da $2 $3.",
 	"articlefeedbackv5-mask-text-oversight": "Il post #$1 è stato soppresso da $2 $3.",
