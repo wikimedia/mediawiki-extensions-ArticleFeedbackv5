@@ -80,10 +80,10 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Run a flagging action
 	 *
-	 * @param  $flag      string the flag
-	 * @param  $notes     string [optional] any notes to send to the activity log
-	 * @param  $toggle    bool   [optional] whether to toggle the flag
-	 * @param  $source    string [optional] the origin of the flag (article, central, watchlist, permalink)
+	 * @param $flag string the flag
+	 * @param $notes string [optional] any notes to send to the activity log
+	 * @param $toggle bool   [optional] whether to toggle the flag
+	 * @param $source string [optional] the origin of the flag (article, central, watchlist, permalink)
 	 * @return bool true upon successful flagging, false on failure. In the event of a failure,
 	 *                    the error can be fetched through ->getError())
 	 */
@@ -169,8 +169,8 @@ class ArticleFeedbackv5Flagging {
 	 * This flag allows monitors (who can hide feedback but not delete it) to
 	 * submit a post for deletion.
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function request( $notes, $toggle ) {
@@ -204,8 +204,8 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: un-request oversight
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function unrequest( $notes, $toggle ) {
@@ -234,8 +234,8 @@ class ArticleFeedbackv5Flagging {
 	 * This flag allows oversighters to decline a request for oversight.  It
 	 * unsets all request/unrequest on a piece of feedback.
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function decline( $notes, $toggle ) {
@@ -257,8 +257,8 @@ class ArticleFeedbackv5Flagging {
 	 * This flag allows monitors to highlight a particularly useful or
 	 * interesting post.
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function feature( $notes, $toggle ) {
@@ -300,8 +300,8 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: un-feature
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function unfeature( $notes, $toggle ) {
@@ -337,8 +337,8 @@ class ArticleFeedbackv5Flagging {
 	 * This flag allows monitors to mark a post as resolved, when the
 	 * suggestion has been implemented.
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function resolve( $notes, $toggle ) {
@@ -374,8 +374,8 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: un-mark a post as resolved
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function unresolve( $notes, $toggle ) {
@@ -410,8 +410,8 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * This flag allows monitors to mark a post as not actionable.
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function noaction( $notes, $toggle ) {
@@ -444,8 +444,8 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: un-mark a post as not actionable
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function unnoaction( $notes, $toggle ) {
@@ -478,8 +478,8 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: mark a post as inappropriate
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function inappropriate( $notes, $toggle ) {
@@ -512,8 +512,8 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: unmark a post as inappropriate
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function uninappropriate( $notes, $toggle ) {
@@ -546,8 +546,8 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: hide
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function hide( $notes, $toggle ) {
@@ -580,8 +580,8 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: un-hide
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function unhide( $notes, $toggle ) {
@@ -621,8 +621,8 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: mark feedback as archived
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function archive( $notes, $toggle ) {
@@ -655,8 +655,8 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: un-mark a post as archived
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function unarchive( $notes, $toggle ) {
@@ -689,8 +689,8 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: oversight
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function oversight( $notes, $toggle ) {
@@ -725,8 +725,8 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: unoversight
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function unoversight( $notes, $toggle ) {
@@ -763,8 +763,8 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * This flag allows readers to vote a piece of feedback up.
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function helpful( $notes, $toggle ) {
@@ -784,8 +784,8 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * This flag allows readers to un-vote a piece of feedback up.
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function undo_helpful( $notes, $toggle ) {
@@ -805,8 +805,8 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * This flag allows readers to vote a piece of feedback down.
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function unhelpful( $notes, $toggle ) {
@@ -826,8 +826,8 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * This flag allows readers to un-vote a piece of feedback down.
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function undo_unhelpful( $notes, $toggle ) {
@@ -847,8 +847,8 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * This flag allows readers to flag a piece of feedback as abusive.
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function flag( $notes, $toggle ) {
@@ -878,8 +878,8 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * This flag allows readers to remove an abuse flag on a piece of feedback.
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	public function unflag( $notes, $toggle ) {
@@ -905,8 +905,8 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Flag: clear all abuse flags
 	 *
-	 * @param  $notes     string   any notes passed in
-	 * @param  $toggle    bool     whether to toggle the flag
+	 * @param $notes string   any notes passed in
+	 * @param $toggle bool     whether to toggle the flag
 	 * @return array|bool
 	 */
 	protected function clear_flags( $notes, $toggle ) {

@@ -258,7 +258,7 @@ class ArticleFeedbackv5Hooks {
 	/**
 	 * ResourceLoaderGetConfigVars hook
 	 *
-	 * @param $vars array
+	 * @param &$vars array
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
 		global
@@ -363,9 +363,9 @@ class ArticleFeedbackv5Hooks {
 	 * Intercept contribution entries and format those belonging to AFT
 	 *
 	 * @param $page SpecialPage object for contributions
-	 * @param $ret string the HTML line
+	 * @param &$ret string the HTML line
 	 * @param $row Row the DB row for this line
-	 * @param $classes the classes to add to the surrounding <li>
+	 * @param &$classes the classes to add to the surrounding <li>
 	 * @return bool
 	 */
 	public static function contributionsLineEnding( $page, &$ret, $row, &$classes ) {
@@ -489,7 +489,7 @@ class ArticleFeedbackv5Hooks {
 	/**
 	 * Adds a user's AFT-contributions to the My Contributions special page
 	 *
-	 * @param $data array an array of results of all contribs queries, to be merged to form all contributions data
+	 * @param &$data array an array of results of all contribs queries, to be merged to form all contributions data
 	 * @param $pager ContribsPager object hooked into
 	 * @param $offset String: index offset, inclusive
 	 * @param $limit Integer: exact query limit
@@ -518,7 +518,7 @@ class ArticleFeedbackv5Hooks {
 	 * Parts of code are heavily "inspired" by ProtectionForm.
 	 *
 	 * @param Page $article
-	 * @param $output
+	 * @param &$output
 	 * @return bool
 	 */
 	public static function onProtectionForm( Page $article, &$output ) {
