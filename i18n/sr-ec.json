@@ -363,7 +363,7 @@
 	"articlefeedbackv5-activity-pane-header": "Дневник активности",
 	"articlefeedbackv5-activity-feedback-info": "Повратне информације од корисника $2",
 	"articlefeedbackv5-activity-feedback-date": "Објављено на датум $1",
-	"articlefeedbackv5-activity-permalink": "трајна веза",
+	"articlefeedbackv5-activity-permalink": "трајан линк",
 	"articlefeedbackv5-disable-flyover-title": "Желите да уклоните ову алатку?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Иди у корисничка подешавања",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "Аутоматски решено. Правило: $1",
