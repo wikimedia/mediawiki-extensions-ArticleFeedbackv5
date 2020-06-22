@@ -8,6 +8,9 @@
 			"Vlad5250"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "Odoslať spätnú väzbu k článku",
+	"apihelp-articlefeedbackv5-summary": "Odoslať spätnú väzbu k článku",
+	"articlefeedbackv5-error-nonexistent-feedback": "Spätná väzba neexistuje.",
 	"articlefeedbackv5-cta-thanks": "Ďakujeme!",
 	"articlefeedbackv5-cta1-edit-linktext": "Upraviť túto stránku",
 	"articlefeedbackv5-cta2-button-text": "Ďalšie informácie",

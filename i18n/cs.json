@@ -25,7 +25,7 @@
 			"Vks"
 		]
 	},
-	"apihelp-articlefeedbackv5-param-anontoken": "Token pro anonymní uživatele",
+	"apihelp-articlefeedbackv5-param-anontoken": "Token pro neregistrované uživatele",
 	"articlefeedbackv5-error-nonexistent-feedback": "Zpětná vazba neexistuje",
 	"articlefeedbackv5-cta-thanks": "Děkujeme!",
 	"articlefeedbackv5-cta-confirmation-message": "Váš příspěvek lze zobrazit na této [ $1  stránce s názory].",
@@ -208,7 +208,7 @@
 	"articlefeedbackv5-permalink-info-title": "Informace o tomto příspěvku",
 	"articlefeedbackv5-permalink-info-post-id": "Post #$1",
 	"articlefeedbackv5-permalink-written-by-editor": "Autorem je registrovaný uživatel",
-	"articlefeedbackv5-permalink-written-by-reader": "Autorem je anonymní uživatel",
+	"articlefeedbackv5-permalink-written-by-reader": "Autorem je neregistrovaný uživatel",
 	"articlefeedbackv5-permalink-info-revision-link": "Prohlédnout starou verzi této stránky",
 	"articlefeedbackv5-permalink-info-posted": "Zveřejněno $1 ve $2",
 	"articlefeedbackv5-permalink-info-stats-title-length": "Délka",
