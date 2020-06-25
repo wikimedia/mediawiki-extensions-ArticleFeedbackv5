@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BaRaN6161 TURK",
 			"Dinhxuanduyet",
 			"Minh Nguyen",
 			"Thienhau2003",
@@ -184,8 +185,8 @@
 	"articlefeedbackv5-short-status-undo-helpful": "{{GENDER:$1}}$1 đã xem xét lại",
 	"articlefeedbackv5-short-status-unhelpful": "{{GENDER:$1}}$1 đã xem xét lại",
 	"articlefeedbackv5-short-status-undo-unhelpful": "{{GENDER:$1}}$1 đã xem xét lại",
-	"articlefeedbackv5-permalink-status-flag": "{{THỂ LOẠI:$1|<strong>Đã gắn cờ</strong> bởi $1}} $2",
-	"articlefeedbackv5-permalink-status-autoflag": "{{THỂ LOẠI:$1|<strong>Tự động gắn cờ</strong> bởi $1}} $2",
+	"articlefeedbackv5-permalink-status-flag": "{{GENDER:$1|<strong>Đã gắn cờ</strong> bởi $1}} $2",
+	"articlefeedbackv5-permalink-status-autoflag": "{{GENDER:$1|<strong>Tự động gắn cờ</strong> bởi $1}} $2",
 	"articlefeedbackv5-noteflyover-feature-submit": "Thêm ghi chú",
 	"articlefeedbackv5-noteflyover-feature-help": "Tìm hiểu thêm",
 	"articlefeedbackv5-noteflyover-unfeature-submit": "Thêm ghi chú",

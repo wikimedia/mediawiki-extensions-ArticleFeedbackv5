@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BaRaN6161 TURK",
 			"Cocu",
 			"Danmichaelo",
 			"EivindJ",
@@ -608,7 +609,7 @@
 	"articlefeedbackv5-activity-item-unhelpful": "$1 {{GENDER:$6|merket}} denne posten som unyttig $4 $5 $2",
 	"articlefeedbackv5-activity-item-undo-helpful": "$1 {{GENDER:$6|fjernet}} merkingen av denne posten som nyttig $4 $5 $2",
 	"articlefeedbackv5-activity-item-undo-unhelpful": "$1 {{GENDER:$6|fjernet}} merkingen av denne posten som unyttig $4 $5 $2",
-	"articlefeedbackv5-activity-item-clear-flags": "$1 {{GENEDR:$6|fjernet}} alle merkinger for denne posten $4 $5 $2",
+	"articlefeedbackv5-activity-item-clear-flags": "$1 {{GENDER:$6|fjernet}} alle merkinger for denne posten $4 $5 $2",
 	"articlefeedbackv5-activity-note-archive": "Arkivert etter {{PLURAL:$1|én dags|$1 dagers}} inaktivitet",
 	"articlefeedbackv5-activity-count": "{{PLURAL:$1|$1 hendelse for dette innlegget|$1 hendelser for dette innlegget}}",
 	"articlefeedbackv5-activity-more": "Vis mer aktivitet",

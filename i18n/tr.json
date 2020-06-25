@@ -649,7 +649,7 @@
 	"articlefeedbackv5-notification-feedback-watch": "[[$2]] hakkında [[$3|geri bildirim]], [[User:$1|$1]] tarafından {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} olarak işaretlendi.",
 	"articlefeedbackv5-notification-feedback-watch-bundle": "[[$2]] hakkında [[$3|geri bildirim]], [[User:$1|$1]] tarafından {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} ve $5 {{PLURAL:$6|diğer|diğer}} olarak işaretlendi.",
 	"articlefeedbackv5-notification-feedback-watch-flyout": "[[$2]] hakkında [[$3|geri bildirim]], [[User:$1|$1]] tarafından {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} olarak işaretlendi.",
-	"articlefeedbackv5-notification-feedback-watch-email-subject": "$2 ile ilgili geri bildirim {{SENDENAME}} için $3 olarak {{GENDER:$1|işaretli}}.",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "$2 ile ilgili geri bildirim {{SITENAME}} için $3 olarak {{GENDER:$1|işaretli}}.",
 	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "{{SITENAME}} için $2 ile ilgili geri bildirim $1 ile $4 olarak {{GENDER:$1|işaretlendi}}. $3",
 	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "{{SITENAME}} üzerindeki $2 hakkındaki geri bildirim, $1 ve $5 {{GENDER:$6|diğer|diğerleri}} tarafından $4 olarak {{GENDER:$1|işaretlendi}}. $3",
 	"articlefeedbackv5-notification-feedback-moderated": "[[$2]] hakkında [[$3|geri bildiriminiz]], [[User:$1|$1]] tarafından {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} olarak işaretlendi.",
