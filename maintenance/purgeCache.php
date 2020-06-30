@@ -4,6 +4,9 @@
  * DataModelPurgeClass is a good starting point to purge all caches;
  * extend that class and add some more caches to be clear here.
  */
+
+use MediaWiki\MediaWikiServices;
+
 $maintClassOverride = true;
 require_once __DIR__ . '/../data/maintenance/DataModelPurgeCache.php';
 
@@ -38,8 +41,9 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 		parent::execute();
 
 		// clear max user id
-		global $wgMemc;
-		$wgMemc->delete( $wgMemc->makeKey( 'articlefeedbackv5', 'maxUserId' ) );
+
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$cache->delete( $cache->makeKey( 'articlefeedbackv5', 'maxUserId' ) );
 	}
 
 	/**
@@ -50,18 +54,25 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 	public function purgeObject( DataModel $object ) {
 		parent::purgeObject( $object );
 
-		global $wgMemc;
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 
 		// feedback activity count per permission
 		global $wgArticleFeedbackv5Permissions;
 		foreach ( $wgArticleFeedbackv5Permissions as $permission ) {
-			$key = $wgMemc->makeKey( 'articlefeedbackv5', 'getActivityCount', $permission, $object->aft_id );
-			$wgMemc->delete( $key );
+			$key = $cache->makeKey(
+				'articlefeedbackv5-getActivityCount',
+				$permission,
+				$object->aft_id
+			);
+			$cache->delete( $key );
 		}
 
 		// feedback last editor activity
-		$key = $wgMemc->makeKey( 'ArticleFeedbackv5Activity', 'getLastEditorActivity', $object->aft_id );
-		$wgMemc->delete( $key );
+		$key = $cache->makeKey(
+			'ArticleFeedbackv5Activity-getLastEditorActivity',
+			$object->aft_id
+		);
+		$cache->delete( $key );
 	}
 
 	/**
@@ -75,8 +86,9 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 		$class = $this->getClass();
 
 		// clear page found percentage
-		global $wgMemc;
-		$key = $wgMemc->makeKey( $class, 'getCountFound', $shard );
+
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$key = $cache->makeKey( $class, 'getCountFound', $shard );
 		$class::getCache()->delete( $key );
 	}
 }

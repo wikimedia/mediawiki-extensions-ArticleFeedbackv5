@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\IResultWrapper;
 
@@ -189,9 +190,10 @@ class ArticleFeedbackv5Activity {
 			 * While we're at it, since activity has occurred, the editor activity
 			 * data in cache may be out of date.
 			 */
-			global $wgMemc;
-			$key = $wgMemc->makeKey( get_called_class(), 'getLastEditorActivity', $itemId );
-			$wgMemc->delete( $key );
+
+			$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+			$key = $cache->makeKey( get_called_class(), 'getLastEditorActivity', $itemId );
+			$cache->delete( $key );
 		}
 
 		return $logId;
@@ -270,15 +272,20 @@ class ArticleFeedbackv5Activity {
 	 * @return int
 	 */
 	public static function getActivityCount( ArticleFeedbackv5Model $feedback, User $user ) {
-		global $wgArticleFeedbackv5Permissions, $wgMemc;
+		global $wgArticleFeedbackv5Permissions;
 		$total = 0;
 
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		if ( !$user->isBlocked() ) {
 			foreach ( $wgArticleFeedbackv5Permissions as $permission ) {
 				if ( $user->isAllowed( $permission ) ) {
 					// get count for this specific permission level from cache
-					$key = $wgMemc->makeKey( 'articlefeedbackv5', 'getActivityCount', $permission, $feedback->aft_id );
-					$count = $wgMemc->get( $key );
+					$key = $cache->makeKey(
+						'articlefeedbackv5-getActivityCount',
+						$permission,
+						$feedback->aft_id
+					);
+					$count = $cache->get( $key );
 
 					if ( $count === false ) {
 						$count = self::getActivityCountFromDB( $feedback, $permission );
@@ -290,7 +297,7 @@ class ArticleFeedbackv5Activity {
 					 * feedback is dealt with, it won't be accessed again so there's
 					 * no point in cluttering memory)
 					 */
-					$wgMemc->set( $key, $count, 60 * 60 * 24 * 7 );
+					$cache->set( $key, $count, 60 * 60 * 24 * 7 );
 
 					$total += $count;
 				}
@@ -309,20 +316,24 @@ class ArticleFeedbackv5Activity {
 	 * @param string $action
 	 */
 	public static function incrementActivityCount( $feedbackId, $action ) {
-		global $wgMemc;
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 
 		// get permission level that should be updated
 		$permission = self::$actions[$action]['permissions'];
 
-		$key = $wgMemc->makeKey( 'articlefeedbackv5', 'getActivityCount', $permission, $feedbackId );
-		$count = $wgMemc->get( $key );
+		$key = $cache->makeKey(
+			'articlefeedbackv5-getActivityCount',
+			$permission,
+			$feedbackId
+		);
+		$count = $cache->get( $key );
 
 		/*
 		 * if the data is not (yet) in cache, don't bother fetching it from db yet,
 		 * that'll happen in due time, when it's actually requested
 		 */
 		if ( $count !== false ) {
-			$wgMemc->set( $key, $count + 1, 60 * 60 * 24 * 7 );
+			$cache->set( $key, $count + 1, 60 * 60 * 24 * 7 );
 		}
 	}
 
@@ -367,7 +378,7 @@ class ArticleFeedbackv5Activity {
 	 * @return stdClass[] db record rows
 	 */
 	public static function getLastEditorActivity( array $entries ) {
-		global $wgMemc;
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$dbr = ArticleFeedbackv5Utils::getDB( DB_REPLICA );
 
 		$activity = [];
@@ -381,8 +392,12 @@ class ArticleFeedbackv5Activity {
 				continue;
 			}
 
-			$key = $wgMemc->makeKey( get_called_class(), 'getLastEditorActivity', $feedback->aft_id );
-			$cache = $wgMemc->get( $key );
+			$key = $cache->makeKey(
+				get_called_class(),
+				'getLastEditorActivity',
+				$feedback->aft_id
+			);
+			$cache = $cache->get( $key );
 			if ( $cache !== false ) {
 				$activity[$feedback->aft_id] = $cache;
 			} else {

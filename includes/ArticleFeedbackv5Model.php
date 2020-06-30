@@ -212,44 +212,11 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * Votes for feedback marked as inappropriate/hidden/oversighted are disregarded.
 	 */
 	public function updateCountFound() {
-		$oldRating = 0;
-		$newRating = 0;
-		if ( $this->{static::getIdColumn()} ) {
-			$old = static::get( $this->{static::getIdColumn()}, $this->{static::getShardColumn()} );
-			if ( $old && !$old->aft_inappropriate && !$old->aft_hide && !$old->aft_oversight ) {
-				$oldRating = (int)$old->aft_rating;
-			}
-		}
-		if ( !$this->aft_inappropriate && !$this->aft_hide && !$this->aft_oversight ) {
-			$newRating = (int)$this->aft_rating;
-		}
-		$difference = $newRating - $oldRating;
+		$wanCache = static::getCache();
 
-		$class = get_called_class();
 		foreach ( [ $this->{self::getShardColumn()}, null ] as $shard ) {
-			/**
-			 * Callback method, updating the cached counts
-			 *
-			 * @param BagOStuff $cache
-			 * @param string $key
-			 * @param int $existingValue
-			 * @use mixed $shard The shard value
-			 * @use int $difference The difference to apply to current count
-			 * @use string $class The called class
-			 * @return int
-			 */
-			$callback = function ( BagOStuff $cache, $key, $existingValue ) use ( $shard, $difference, $class ) {
-				// if nothing is cached, leave be; cache will rebuild when it's requested
-				if ( $existingValue === false ) {
-					return false;
-				}
-
-				// if count is in cache already, update it right away, avoiding any more DB reads
-				return $existingValue + $difference;
-			};
-
-			$key = static::getCache()->makeKey( get_called_class(), 'getCountFound', $shard );
-			static::getCache()->merge( $key, $callback );
+			$key = $wanCache->makeKey( get_called_class() . '-getCountFound', $shard );
+			$wanCache->touchCheckKey( $key );
 		}
 	}
 
@@ -264,15 +231,22 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * @return float
 	 */
 	public static function getCountFound( $pageId = null ) {
-		$key = static::getCache()->makeKey( get_called_class(), 'getCountFound', $pageId );
-		$found = static::getCache()->get( $key );
+		$wanCache = static::getCache();
 
-		if ( $found === false ) {
-			$found = static::getBackend()->getCountFound( $pageId );
-			static::getCache()->set( $key, $found );
-		}
+		$key = $wanCache->makeKey( get_called_class(), 'getCountFound', $pageId );
 
-		return $found;
+		return $wanCache->getWithSetCallback(
+			$key,
+			$wanCache::TTL_WEEK,
+			function () use ( $pageId ) {
+				return static::getBackend()->getCountFound( $pageId );
+			},
+			[
+				// Avoid cache stampedes on invalidations
+				'checkKeys' => [ $key ],
+				'lockTSE' => 30
+			]
+		);
 	}
 
 	/**
