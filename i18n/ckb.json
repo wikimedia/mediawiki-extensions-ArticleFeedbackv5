@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sarchia"
+			"Sarchia",
+			"ئارام بکر"
 		]
 	},
-	"articlefeedbackv5-form-toolbox-label": "نیشانکردن وەکوو:"
+	"articlefeedbackv5-form-toolbox-label": "نیشانکردن وەکوو:",
+	"articlefeedbackv5-special-filter-select-more": "زیاتر",
+	"articlefeedbackv5-comment-more": "زیاتر"
 }
