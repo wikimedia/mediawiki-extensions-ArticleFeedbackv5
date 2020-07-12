@@ -16,6 +16,8 @@
 class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	/**
 	 * Constructor
+	 * @param ApiQuery $query
+	 * @param string $moduleName
 	 */
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, '' );

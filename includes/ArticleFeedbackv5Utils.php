@@ -55,6 +55,7 @@ class ArticleFeedbackv5Utils {
 	 *                belongs to. May contain a single string if the query is only
 	 *                in one group.
 	 * @param string $wiki The wiki ID, or false for the current wiki
+	 * @return \Wikimedia\Rdbms\IDatabase
 	 */
 	public static function getDB( $db, $groups = [], $wiki = false ) {
 		$lb = static::getLB( $wiki );

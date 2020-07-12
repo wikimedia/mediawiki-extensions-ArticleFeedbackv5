@@ -87,8 +87,8 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 	/**
 	 * Move a batch of AFT entries
 	 *
-	 * @param $continue int      [optional] the pull the next batch starting at
-	 *                           this aft_id
+	 * @param int $continue the pull the next batch starting at this aft_id
+	 * @return int|null
 	 */
 	public function moveBatch( $continue ) {
 		global

@@ -92,7 +92,7 @@ class ArticleFeedbackv5Permissions {
 	/**
 	 * Validate a permission level
 	 *
-	 * @param $permission
+	 * @param string $permission
 	 * @return bool
 	 */
 	public static function isValidPermission( $permission ) {

@@ -89,6 +89,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 	 * @param string $pageUrl page url
 	 * @param string $feedbackPermalink permalink url to feedback
 	 * @param string $notes additional text
+	 * @return string[]
 	 */
 	protected function composeMail( $requestorName, $requestorUrl, $pageName, $pageUrl, $feedbackPermalink, $notes = '' ) {
 		global $wgArticleFeedbackv5OversightEmailHelp;

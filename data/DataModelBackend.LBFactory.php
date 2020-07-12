@@ -34,6 +34,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 *                belongs to. May contain a single string if the query is only
 	 *                in one group.
 	 * @param string|bool $wiki The wiki ID, or false for the current wiki
+	 * @return \Wikimedia\Rdbms\IDatabase
 	 */
 	public function getDB( $db, $groups = [], $wiki = false ) {
 		/*

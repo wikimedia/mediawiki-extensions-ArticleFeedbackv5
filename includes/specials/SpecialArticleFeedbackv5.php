@@ -84,6 +84,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 	/**
 	 * Constructor
+	 * @param string $name
+	 * @param string $restriction
+	 * @param bool $listed
+	 * @param bool $function
+	 * @param string $file
+	 * @param bool $includable
 	 */
 	public function __construct(
 		$name = 'ArticleFeedbackv5', $restriction = '', $listed = true,
@@ -95,7 +101,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	/**
 	 * Executes the special page
 	 *
-	 * @param $param string the parameter passed in the url
+	 * @param string|null $param the parameter passed in the url
 	 */
 	public function execute( $param ) {
 		$request = $this->getRequest();
@@ -574,8 +580,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	/**
 	 * Outputs a permalink
 	 *
-	 * @param $renderer ArticleFeedbackv5Render the renderer
-	 * @param $record ArticleFeedbackv5Model the fetched record
+	 * @param ArticleFeedbackv5Render $renderer the renderer
+	 * @param ArticleFeedbackv5Model $record the fetched record
 	 * @return string
 	 */
 	protected function buildPermalink( $renderer, $record ) {

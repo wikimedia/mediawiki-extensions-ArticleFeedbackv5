@@ -258,7 +258,7 @@ class ArticleFeedbackv5Hooks {
 	/**
 	 * ResourceLoaderGetConfigVars hook
 	 *
-	 * @param &$vars array
+	 * @param array &$vars
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
 		global
@@ -313,6 +313,7 @@ class ArticleFeedbackv5Hooks {
 	 * on the page itself (also setting us free from potential browser cache issues)
 	 *
 	 * @param array &$vars
+	 * @param OutputPage $out
 	 */
 	public static function makeGlobalVariablesScript( array &$vars, OutputPage $out ) {
 		$user = $out->getUser();
@@ -362,13 +363,13 @@ class ArticleFeedbackv5Hooks {
 	/**
 	 * Intercept contribution entries and format those belonging to AFT
 	 *
-	 * @param $page SpecialPage object for contributions
-	 * @param &$ret string the HTML line
-	 * @param $row Row the DB row for this line
-	 * @param &$classes the classes to add to the surrounding <li>
+	 * @param ContribsPager $pager The ContribsPager object hooked into
+	 * @param string &$ret the HTML line
+	 * @param stdClass $row Row the DB row for this line
+	 * @param array &$classes the classes to add to the surrounding <li>
 	 * @return bool
 	 */
-	public static function contributionsLineEnding( $page, &$ret, $row, &$classes ) {
+	public static function contributionsLineEnding( $pager, &$ret, $row, &$classes ) {
 		if ( !isset( $row->aft_contribution ) || $row->aft_contribution !== 'AFT' ) {
 			return true;
 		}
@@ -383,8 +384,8 @@ class ArticleFeedbackv5Hooks {
 			return true;
 		}
 
-		$lang = $page->getLanguage();
-		$user = $page->getUser();
+		$lang = $pager->getLanguage();
+		$user = $pager->getUser();
 		$feedbackTitle = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() . "/$record->aft_id" );
 		$centralPageName = MediaWikiServices::getInstance()->getSpecialPageFactory()
 			->getLocalNameFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() );
@@ -409,7 +410,7 @@ class ArticleFeedbackv5Hooks {
 
 		// show user names for /newbies as there may be different users.
 		$userlink = '';
-		if ( $page->contribs == 'newbie' ) {
+		if ( $pager->contribs == 'newbie' ) {
 			$username = User::whoIs( $record->aft_user );
 			if ( $username !== false ) {
 				$userlink = ' . . ' . Linker::userLink( $record->aft_user, $username );
@@ -489,11 +490,11 @@ class ArticleFeedbackv5Hooks {
 	/**
 	 * Adds a user's AFT-contributions to the My Contributions special page
 	 *
-	 * @param &$data array an array of results of all contribs queries, to be merged to form all contributions data
-	 * @param $pager ContribsPager object hooked into
-	 * @param $offset String: index offset, inclusive
-	 * @param $limit Integer: exact query limit
-	 * @param $descending Boolean: query direction, false for ascending, true for descending
+	 * @param array &$data an array of results of all contribs queries, to be merged to form all contributions data
+	 * @param ContribsPager $pager ContribsPager object hooked into
+	 * @param string $offset index offset, inclusive
+	 * @param int $limit exact query limit
+	 * @param bool $descending query direction, false for ascending, true for descending
 	 * @return bool
 	 */
 	public static function contributionsData( &$data, $pager, $offset, $limit, $descending ) {
@@ -518,7 +519,7 @@ class ArticleFeedbackv5Hooks {
 	 * Parts of code are heavily "inspired" by ProtectionForm.
 	 *
 	 * @param Page $article
-	 * @param &$output
+	 * @param string &$output
 	 * @return bool
 	 */
 	public static function onProtectionForm( Page $article, &$output ) {
@@ -759,6 +760,7 @@ class ArticleFeedbackv5Hooks {
 	 *
 	 * @param Page $article
 	 * @param OutputPage $out
+	 * @return bool
 	 */
 	public static function onShowLogExtract( Page $article, OutputPage $out ) {
 		global $wgArticleFeedbackv5Namespaces;

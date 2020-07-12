@@ -68,8 +68,8 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 	/**
 	 * Refreshes a batch of checkuser
 	 *
-	 * @param $continue array    Pull the next batch starting at
-	 *                           this [log_timestamp, log_id]
+	 * @param array $continue Pull the next batch starting at this [log_timestamp, log_id]
+	 * @return array|null
 	 */
 	public function refreshBatch( $continue ) {
 		$dbw = wfGetDB( DB_MASTER );

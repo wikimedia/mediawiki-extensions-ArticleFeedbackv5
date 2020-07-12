@@ -68,8 +68,8 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 	/**
 	 * Refreshes a batch of logging entries
 	 *
-	 * @param $continue int      [optional] the pull the next batch starting at
-	 *                           this log_id
+	 * @param int $continue the pull the next batch starting at this log_id
+	 * @return int|null
 	 */
 	public function refreshBatch( $continue ) {
 		$dbw = wfGetDB( DB_MASTER );

@@ -47,6 +47,7 @@ class EchoArticleFeedbackv5ModeratedPresentationModel extends EchoArticleFeedbac
 	/**
 	 * Overriding this because the other Echo class uses the hash as a separator in
 	 * the permalink function and we don't want that here
+	 * @return string[]
 	 */
 	public function getPrimaryLink() {
 		return [

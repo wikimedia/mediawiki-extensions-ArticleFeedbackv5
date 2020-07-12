@@ -49,9 +49,9 @@ class ArticleFeedbackv5Render {
 	 * Constructor
 	 *
 	 * @param User $user Current user.
-	 * @param $permalink bool [optional] whether this is a permalink?
-	 * @param $central bool [optional] whether this is on the central log?
-	 * @param $highlight bool [optional] whether this is a highlighted row?
+	 * @param bool $permalink whether this is a permalink?
+	 * @param bool $central whether this is on the central log?
+	 * @param bool $highlight whether this is a highlighted row?
 	 */
 	public function __construct(
 		User $user,
@@ -68,7 +68,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the HTML for the given feedback entry
 	 *
-	 * @param $record ArticleFeedbackv5Model the record
+	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the rendered row
 	 */
 	public function run( $record ) {
@@ -182,7 +182,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Sets whether this is a permalink
 	 *
-	 * @param $isPermalink bool whether this is a permalink
+	 * @param bool $isPermalink whether this is a permalink
 	 * @return bool whether it passed validation and was set
 	 */
 	public function setIsPermalink( $isPermalink ) {
@@ -202,7 +202,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Sets whether this is on the central log
 	 *
-	 * @param $isCentral bool whether this is on the central log
+	 * @param bool $isCentral whether this is on the central log
 	 * @return bool whether it passed validation and was set
 	 */
 	public function setIsCentral( $isCentral ) {
@@ -222,7 +222,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Sets whether this is is a highlighted row
 	 *
-	 * @param $isHighlighted bool whether this is is a highlighted row
+	 * @param bool $isHighlighted whether this is is a highlighted row
 	 * @return bool whether it passed validation and was set
 	 */
 	public function setIsHighlighted( $isHighlighted ) {
@@ -233,8 +233,8 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Sets a permission
 	 *
-	 * @param $key string the key
-	 * @param $value bool   whether that permission is on
+	 * @param string $key the key
+	 * @param bool $value whether that permission is on
 	 * @return bool whether it passed validation and was set
 	 */
 	public function setPermission( $key, $value ) {
@@ -248,7 +248,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns whether a permission is on
 	 *
-	 * @param $key string the key
+	 * @param string $key the key
 	 * @return bool whether the permission is on
 	 */
 	public function hasPermission( $key ) {
@@ -275,7 +275,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns an empty gray mask
 	 *
-	 * @param $record ArticleFeedbackv5Model the record
+	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the empty gray mask
 	 */
 	private function emptyGrayMask( $record ) {
@@ -301,9 +301,8 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns a gray mask
 	 *
-	 * @param $record ArticleFeedbackv5Model the record
-	 * @param $empty bool  [optional] whether the mask is empty; defaults to
-	 *                       false
+	 * @param ArticleFeedbackv5Model $record the record
+	 * @param bool $empty whether the mask is empty; defaults to false
 	 * @return string the gray mask
 	 */
 	private function grayMask( $record, $empty = false ) {
@@ -368,7 +367,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the mood of the feedback
 	 *
-	 * @param $record ArticleFeedbackv5Model the record
+	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the mood (positive or negative)
 	 */
 	public function getMood( $record ) {
@@ -378,7 +377,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the feedback head and comment
 	 *
-	 * @param $record ArticleFeedbackv5Model the record
+	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the rendered feedback info
 	 */
 	private function render( $record ) {
@@ -401,10 +400,10 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the feedback head
 	 *
-	 * @param $message string   the message key describing the nature of the
+	 * @param string $message the message key describing the nature of the
 	 *                           feedback (e.g., "USER found what they were
 	 *                           looking for")
-	 * @param $record ArticleFeedbackv5 the record
+	 * @param ArticleFeedbackv5 $record the record
 	 * @return string the rendered feedback head
 	 */
 	private function feedbackHead( $message, $record ) {
@@ -484,7 +483,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the permalink/timestamp
 	 *
-	 * @param $record ArticleFeedbackv5Model the record
+	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the rendered permalink/timestamp
 	 */
 	private function renderPermalinkTimestamp( $record ) {
@@ -521,7 +520,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the marked-up feedback comment
 	 *
-	 * @param $record ArticleFeedbackv5Model the record
+	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the rendered comment
 	 */
 	private function renderComment( $record ) {
@@ -582,7 +581,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the footer links
 	 *
-	 * @param $record ArticleFeedbackv5Model the record
+	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the rendered footer
 	 */
 	private function renderFooter( $record ) {
@@ -817,7 +816,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the toolbox
 	 *
-	 * @param $record ArticleFeedbackv5Model the record
+	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the rendered toolbox
 	 */
 	private function renderToolbox( $record ) {
@@ -1115,7 +1114,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the permalink info section
 	 *
-	 * @param $record array the record, with keys 0 + answers
+	 * @param array $record the record, with keys 0 + answers
 	 * @return string the rendered info section
 	 */
 	private function renderPermalinkInfo( $record ) {

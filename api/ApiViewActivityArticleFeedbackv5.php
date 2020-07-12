@@ -19,6 +19,8 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 	/**
 	 * Constructor
+	 * @param ApiQuery $query
+	 * @param string $moduleName
 	 */
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'aa' );

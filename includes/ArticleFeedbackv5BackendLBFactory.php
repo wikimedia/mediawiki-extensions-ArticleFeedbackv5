@@ -15,6 +15,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	/**
 	 * Override getLB so that AFT's data can be on a separate cluster.
 	 *
+	 * @param string|false $wiki
 	 * @return \Wikimedia\Rdbms\LoadBalancer
 	 */
 	public function getLB( $wiki = false ) {

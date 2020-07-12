@@ -24,6 +24,12 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 
 	/**
 	 * Constructor
+	 * @param string $name
+	 * @param string $restriction
+	 * @param bool $listed
+	 * @param bool $function
+	 * @param string $file
+	 * @param bool $includable
 	 */
 	public function __construct(
 		$name = 'ArticleFeedbackv5Watchlist', $restriction = '', $listed = true,
@@ -35,7 +41,7 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 	/**
 	 * Executes the special page
 	 *
-	 * @param $param string the parameter passed in the url
+	 * @param string|null $param the parameter passed in the url
 	 */
 	public function execute( $param ) {
 		global $wgArticleFeedbackv5Watchlist;

@@ -27,6 +27,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 	/**
 	 * Constructor
+	 * @param ApiMain $main
+	 * @param string $action
 	 */
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action );

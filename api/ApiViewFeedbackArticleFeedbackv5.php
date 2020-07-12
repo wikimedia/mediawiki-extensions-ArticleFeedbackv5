@@ -16,6 +16,8 @@
 class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	/**
 	 * Constructor
+	 * @param ApiQuery $query
+	 * @param string $moduleName
 	 */
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'afvf' );
@@ -86,6 +88,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	/**
 	 * @param array $params
+	 * @param int $pageId
 	 * @return DataModelList
 	 */
 	protected function fetchData( $params, $pageId ) {
