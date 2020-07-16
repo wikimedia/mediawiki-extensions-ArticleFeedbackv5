@@ -71,42 +71,42 @@
 	 * User activity: for each feedback record on this page, anything the user
 	 * has done (flagged as abuse, marked as helpful/unhelpful)
 	 *
-	 * @var object
+	 * @member object
 	 */
 	$.articleFeedbackv5special.activity = {};
 
 	/**
 	 * Filter cookie name (page id is appended on init)
 	 *
-	 * @var string
+	 * @member string
 	 */
 	$.articleFeedbackv5special.filterCookieName = 'last-filter';
 
 	/**
 	 * User activity cookie name (page id is appended on init)
 	 *
-	 * @var string
+	 * @member string
 	 */
 	$.articleFeedbackv5special.activityCookieName = 'aft-activity';
 
 	/**
 	 * Currently displayed panel host element id attribute value
 	 *
-	 * @var string
+	 * @member string
 	 */
 	$.articleFeedbackv5special.currentPanelHostId = undefined;
 
 	/**
 	 * Callback to be executed when tipsy form is submitted
 	 *
-	 * @var function
+	 * @member function
 	 */
 	$.articleFeedbackv5special.tipsyCallback = undefined;
 
 	/**
 	 * Highlighted feedback ID
 	 *
-	 * @var int
+	 * @member int
 	 */
 	$.articleFeedbackv5special.highlightId = undefined;
 
