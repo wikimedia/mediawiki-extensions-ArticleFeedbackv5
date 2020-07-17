@@ -140,6 +140,7 @@
 	"articlefeedbackv5-form-unarchive": "Fortryd",
 	"articlefeedbackv5-form-helpful": "Markere som nyttig ( $1 )",
 	"articlefeedbackv5-form-unoversight": "Fortryd",
+	"articlefeedbackv5-form-discuss-talk": "Diskuter på diskussionsiden",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 fandt hvad de søgte.}}",
 	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2 fandt ikke hvad de søgte.}}",
 	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 skrev en kommentar.}}",
