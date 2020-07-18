@@ -1,4 +1,8 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
+
 /**
  * This class represents a feedback entry, which can be backed by
  * a sharded database setup and heavy cache usage.
@@ -615,12 +619,14 @@ class ArticleFeedbackv5Model extends DataModel {
 	}
 
 	/**
-	 * Get revision object for this entry
+	 * Get the revision for this entry
 	 *
-	 * @return Revision|null Revision object or null if invalid revision
+	 * @return RevisionRecord|null RevisionRecord object or null if invalid revision
 	 */
-	public function getRevision() {
-		return Revision::newFromId( $this->aft_page_revision );
+	private function getRevision() {
+		return MediaWikiServices::getInstance()
+			->getRevisionLookup()
+			->getRevisionById( $this->aft_page_revision );
 	}
 
 	/**
