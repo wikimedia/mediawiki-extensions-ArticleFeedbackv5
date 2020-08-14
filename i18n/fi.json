@@ -524,6 +524,9 @@
 	"articlefeedbackv5-abusefilter-note-aftv5flag": "Automaattisesti merkitty väärinkäytöksi. Sääntö: $1",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Piilotettu automaattisesti. Sääntö: $1",
 	"articlefeedbackv5-abusefilter-note-aftv5request": "Pyydetty häivytystä automaattisesti. Sääntö: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "hyödyllinen",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "ratkaistu",
 	"echo-category-title-feedback": "Palaute",
+	"echo-pref-tooltip-feedback": "Ilmoita minulle kun joku merkitsee artikkelin palautteen hyödylliseksi",
 	"articlefeedbackv5-notification-link-text-view-feedback": "Näytä palaute"
 }
