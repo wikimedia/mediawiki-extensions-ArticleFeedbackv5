@@ -20,6 +20,7 @@
  * @subpackage Api
  */
 
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\MediaWikiServices;
 
 class ArticleFeedbackv5Utils {
@@ -388,7 +389,7 @@ class ArticleFeedbackv5Utils {
 	 */
 	public static function validateAbuseFilter( $value, $pageId, User $user, $callback = null ) {
 		// Check AbuseFilter, if installed
-		if ( class_exists( 'AbuseFilter' ) ) {
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'AbuseFilter' ) ) {
 			global $wgArticleFeedbackv5AbuseFilterGroup;
 
 			// Add custom action handlers
@@ -403,8 +404,8 @@ class ArticleFeedbackv5Utils {
 
 			// Set up variables
 			$title = Title::newFromID( $pageId );
-			$vars = new AbuseFilterVariableHolder;
-			$vars->addHolders( AbuseFilter::generateUserVars( $user ), AbuseFilter::generateTitleVars( $title, 'PAGE' ) );
+			$gen = new VariableGenerator( new AbuseFilterVariableHolder );
+			$vars = $gen->addUserVars( $user )->addTitleVars( $title, 'page' )->getVariableHolder();
 			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
 			$vars->setVar( 'ACTION', 'feedback' );
 			$vars->setVar( 'new_wikitext', $value );
