@@ -19,6 +19,7 @@
 			"MrJaroslavik",
 			"Patriccck",
 			"Paxt",
+			"Robins7",
 			"SimonV",
 			"Tchoř",
 			"Utar",
@@ -364,5 +365,9 @@
 	"articlefeedbackv5-talk-view-feedback": "Zobrazit názor čtenáře",
 	"articlefeedbackv5-watchlist-view-feedback": "Názor pro mé sledované stránky",
 	"articlefeedbackv5-disable-flyover-title": "Odstranit tento nástroj?",
-	"articlefeedbackv5-disable-flyover-prefbutton": "Přejít na moje předvolby"
+	"articlefeedbackv5-disable-flyover-prefbutton": "Přejít na moje předvolby",
+	"echo-category-title-feedback": "Zpětná vazba",
+	"echo-pref-tooltip-feedback": "Upozorněte mě, když někdo označí zpětnou vazbu k článku jako užitečnou.",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Zobrazit zpětnou vazbu",
+	"articlefeedbackv5-notification-feedback-watch": "[[$3|Zpětná vazba]] k [[$2]] byla označena jako {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} uživatelem [[User:$1|$1]]."
 }
