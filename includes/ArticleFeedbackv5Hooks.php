@@ -524,8 +524,10 @@ class ArticleFeedbackv5Hooks {
 	 */
 	public static function onProtectionForm( Page $article, &$output ) {
 		global $wgArticleFeedbackv5Namespaces, $wgArticleFeedbackv5EnableProtection;
+		$page = $article->getPage();
+		$pageId = $page->getId();
 
-		if ( !$article->exists() ) {
+		if ( !$page->exists() ) {
 			return true;
 		}
 
@@ -551,8 +553,6 @@ class ArticleFeedbackv5Hooks {
 		$disabled = $permErrors != [];
 		$disabledAttrib = $disabled ? [ 'disabled' => 'disabled' ] : [];
 
-		$articleId = $article->getId();
-
 		// on a per-page basis, AFT can only be restricted from these levels
 		$levels = [
 			'aft-reader' => 'protect-level-aft-reader',
@@ -563,7 +563,7 @@ class ArticleFeedbackv5Hooks {
 		];
 
 		// build permissions dropdown
-		$existingRestriction = ArticleFeedbackv5Permissions::getAppliedRestriction( $articleId );
+		$existingRestriction = ArticleFeedbackv5Permissions::getAppliedRestriction( $pageId );
 		$id = 'articlefeedbackv5-protection-level';
 		$attribs = [
 			'id' => $id,
@@ -584,7 +584,7 @@ class ArticleFeedbackv5Hooks {
 			$mExistingExpiry,
 			$mExpiry,
 			$mExpirySelection
-		) = ArticleFeedbackv5Permissions::getExpiry( $articleId );
+		) = ArticleFeedbackv5Permissions::getExpiry( $pageId );
 
 		if ( $showProtectOptions ) {
 			$expiryFormOptions = '';
@@ -694,7 +694,10 @@ class ArticleFeedbackv5Hooks {
 				$wgArticleFeedbackv5Namespaces,
 				$wgArticleFeedbackv5EnableProtection;
 
-		if ( !$article->exists() ) {
+		$page = $article->getPage();
+		$pageId = $page->getId();
+
+		if ( !$page->exists() ) {
 			return true;
 		}
 
@@ -713,7 +716,7 @@ class ArticleFeedbackv5Hooks {
 		$requestExpirySelection = $wgRequest->getVal( 'articlefeedbackv5-protection-expiration-selection' );
 
 		if ( $requestExpirySelection == 'existing' ) {
-			$expirationTime = ArticleFeedbackv5Permissions::getAppliedRestriction( $article->getId() )->pr_expiry;
+			$expirationTime = ArticleFeedbackv5Permissions::getAppliedRestriction( $pageId )->pr_expiry;
 		} else {
 			if ( $requestExpirySelection == 'othertime' ) {
 				$value = $requestExpiry;
@@ -738,14 +741,14 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		// don't save if nothing's changed
-		$existingRestriction = ArticleFeedbackv5Permissions::getAppliedRestriction( $article->getId() );
+		$existingRestriction = ArticleFeedbackv5Permissions::getAppliedRestriction( $pageId );
 		if ( $existingRestriction->pr_level == $requestPermission && $existingRestriction->pr_expiry == $expirationTime ) {
 			return true;
 		}
 
 		$user = $article->getContext()->getUser();
 		$success = ArticleFeedbackv5Permissions::setRestriction(
-			$article->getId(),
+			$pageId,
 			$requestPermission,
 			$expirationTime,
 			$user,
