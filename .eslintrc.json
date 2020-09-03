@@ -10,6 +10,7 @@
 	},
 	"rules": {
 		"no-multi-str": "warn",
-		"no-tabs": "warn"
+		"no-tabs": "warn",
+		"no-shadow": "warn"
 	}
 }
