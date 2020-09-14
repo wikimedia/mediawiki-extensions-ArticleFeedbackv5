@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bishnu Saikia"
+			"Bishnu Saikia",
+			"Simbu123"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "ধন্যবাদ!",
@@ -32,7 +33,7 @@
 	"articlefeedbackv5-new-marker": "নতুন",
 	"articlefeedbackv5-hide-marker": "অদৃশ্য",
 	"articlefeedbackv5-form-anon-username": "এজন পঢ়ুৱৈ",
-	"articlefeedbackv5-go-to-article": "প্ৰবন্ধ চাওক",
+	"articlefeedbackv5-go-to-article": "পৃষ্ঠা চাওক",
 	"articlefeedbackv5-discussion-page": "কথা-বতৰা",
 	"articlefeedbackv5-whats-this": "সহায়",
 	"articlefeedbackv5-comment-more": "অধিক",
