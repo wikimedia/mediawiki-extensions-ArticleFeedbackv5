@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"1233qwer1234qwer4",
 			"AS",
 			"AlexSm",
 			"Assele",
@@ -333,7 +334,7 @@
 	"articlefeedbackv5-invalid-log-update": "Запись журнала не может быть обновлена",
 	"articlefeedbackv5-invalid-feedback-flag": "Недопустимая отметка отзыва",
 	"articlefeedbackv5-invalid-feedback-state": "Недопустимое состояние отметки отзыва",
-	"articlefeedbackv5-feedback-reloaded-after-error": "Произошла ошибка ($1). Отзыв был перезагружен для того, чтоб отражать своё текущее состояние.",
+	"articlefeedbackv5-feedback-reloaded-after-error": "Произошла ошибка ($1). Отзыв был перезагружен для того, чтобы отражать своё текущее состояние.",
 	"articlefeedbackv5-go-to-article": "Просмотр страницы",
 	"articlefeedbackv5-discussion-page": "Обсуждение",
 	"articlefeedbackv5-whats-this": "Справка",
