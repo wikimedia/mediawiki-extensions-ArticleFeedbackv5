@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"AmaryllisGardener",
-			"John Reid"
+			"John Reid",
+			"MJL"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Thank ye!",
@@ -455,7 +456,7 @@
 	"right-aft-administrator": "See AFT oan protectit pages",
 	"right-aft-oversighter": "Owersicht feedback",
 	"log-name-articlefeedbackv5": "Airticle feedback acteevitie log",
-	"log-description-articlefeedbackv5": "This is the log o acteevitie taen oan feedback eetems haunit in bi uisers bi wa o Airticle Feedback.",
+	"log-description-articlefeedbackv5": "This is the log o acteevitie taen oan feedback items haunit in bi uisers bi wa o Airticle Feedback.",
 	"logentry-articlefeedbackv5-create": "$1 {{GENDER:$2|haunit in}} [[$3|feedback post #$4]] oan [[$5]]",
 	"logentry-articlefeedbackv5-oversight": "$1 {{GENDER:$2|chynged the status til owersicht o}} [[$3|feedback post #$4]] oan [[$5]]",
 	"logentry-articlefeedbackv5-unoversight": "$1 {{GENDER:$2|remuived the owersicht status o}} [[$3|feedback post #$4]] oan [[$5]]",
