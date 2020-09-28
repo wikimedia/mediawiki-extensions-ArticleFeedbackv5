@@ -1,13 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Azniv Stepanian"
+			"Azniv Stepanian",
+			"Kareyac"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Շնորհակալութիւն յայտնել",
 	"articlefeedbackv5-form-unfeature": "Յետարկել",
 	"articlefeedbackv5-form-unresolve": "Յետարկել",
+	"articlefeedbackv5-form-unnoaction": "Յետարկել",
 	"articlefeedbackv5-form-uninappropriate": "Յետարկել",
 	"articlefeedbackv5-form-unarchive": "Յետարկել",
-	"articlefeedbackv5-form-unoversight": "Յետարկել"
+	"articlefeedbackv5-form-unoversight": "Յետարկել",
+	"articlefeedbackv5-whats-this": "Օգնութիւն"
 }
