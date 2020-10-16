@@ -173,7 +173,7 @@
 	"articlefeedbackv5-permalink-info-stats-title-scores": "Skor",
 	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "Kaitané:",
 	"articlefeedbackv5-permalink-info-stats-subtitle-helpfulness": "Kamigunanèn:",
-	"articlefeedbackv5-permalink-activity-title": "Kagiatan",
+	"articlefeedbackv5-permalink-activity-title": "Kagiyatan",
 	"articlefeedbackv5-permalink-activity-subtitle": "({{PLURAL:$1|$1 laku|$1 laku}})",
 	"articlefeedbackv5-permalink-activity-none": "Ora ana kagiatan nèng kiriman iki.",
 	"articlefeedbackv5-short-status-request": "{{GENDER:$1|Dipriksa $1}}",
