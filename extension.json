@@ -753,15 +753,6 @@
 			"description": "The full URL for the special page survey link",
 			"value": "https://www.surveymonkey.com/s/aft5-5"
 		},
-		"AbuseFilterAvailableActions": {
-			"description": "Add custom action handlers for the AbuseFilter extension",
-			"value": [
-				"aftv5resolve",
-				"aftv5flagabuse",
-				"aftv5hide",
-				"aftv5request"
-			]
-		},
 		"ArticleFeedbackv5BackendClass": {
 			"description": "Defines the backend class to be used by AFT's DataModel. Currently, only 1 (ArticleFeedbackv5BackendLBFactory) backend is supported, so better not touch that ;)",
 			"value": "ArticleFeedbackv5BackendLBFactory"
