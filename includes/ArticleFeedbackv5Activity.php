@@ -397,9 +397,9 @@ class ArticleFeedbackv5Activity {
 				'getLastEditorActivity',
 				$feedback->aft_id
 			);
-			$cache = $cache->get( $key );
-			if ( $cache !== false ) {
-				$activity[$feedback->aft_id] = $cache;
+			$cachedEntry = $cache->get( $key );
+			if ( $cachedEntry !== false ) {
+				$activity[$feedback->aft_id] = $cachedEntry;
 			} else {
 				$actions = [];
 
@@ -494,8 +494,8 @@ class ArticleFeedbackv5Activity {
 				}
 
 				// cache, per feedback entry
-				$key = $wgMemc->makeKey( get_called_class(), 'getLastEditorActivity', $params['feedbackId'] );
-				$wgMemc->set( $key, $action, 60 * 60 );
+				$key = $cache->makeKey( get_called_class(), 'getLastEditorActivity', $params['feedbackId'] );
+				$cache->set( $key, $action, 60 * 60 );
 
 				$activity[$params['feedbackId']] = $action;
 			}
