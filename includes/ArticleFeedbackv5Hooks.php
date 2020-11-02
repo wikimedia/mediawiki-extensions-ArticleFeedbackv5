@@ -82,11 +82,10 @@ class ArticleFeedbackv5Hooks {
 				__DIR__ . '/../sql/index_user_data.sql'
 			);
 
-			$updater->modifyField(
+			$updater->modifyExtensionField(
 				'aft_article_feedback',
 				'af_user_ip',
-				__DIR__ . '/../sql/userip_length.sql',
-				true
+				__DIR__ . '/../sql/userip_length.sql'
 			);
 
 			// move all data from old schema to new, sharded, schema
