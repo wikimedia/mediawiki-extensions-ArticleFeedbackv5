@@ -14,6 +14,7 @@ class ArticleFeedbackv5Hooks {
 	public static function registerExtension() {
 		global $wgContentNamespaces, $wgGroupPermissions, $wgLogActionsHandlers;
 		global $wgAbuseFilterValidGroups, $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount, $wgAbuseFilterEmergencyDisableAge;
+		global $wgAbuseFilterActions;
 		global $wgArticleFeedbackv5AbuseFilterGroup, $wgArticleFeedbackv5DefaultPermissions, $wgArticleFeedbackv5Namespaces;
 
 		// register activity log formatter hooks
@@ -24,14 +25,24 @@ class ArticleFeedbackv5Hooks {
 			}
 		}
 
-		if ( $wgArticleFeedbackv5AbuseFilterGroup != 'default' ) {
-			// Add a custom filter group for AbuseFilter
-			$wgAbuseFilterValidGroups[] = $wgArticleFeedbackv5AbuseFilterGroup;
+		// Note, it's too early to use ExtensionRegistry->isLoaded()
+		if ( $wgAbuseFilterActions !== null ) {
+			if ( $wgArticleFeedbackv5AbuseFilterGroup != 'default' ) {
+				// Add a custom filter group for AbuseFilter
+				$wgAbuseFilterValidGroups[] = $wgArticleFeedbackv5AbuseFilterGroup;
 
-			// set abusefilter emergency disable values for AFT feedback
-			$wgAbuseFilterEmergencyDisableThreshold[$wgArticleFeedbackv5AbuseFilterGroup] = 0.10;
-			$wgAbuseFilterEmergencyDisableCount[$wgArticleFeedbackv5AbuseFilterGroup] = 50;
-			$wgAbuseFilterEmergencyDisableAge[$wgArticleFeedbackv5AbuseFilterGroup] = 86400; // One day.
+				// set abusefilter emergency disable values for AFT feedback
+				$wgAbuseFilterEmergencyDisableThreshold[$wgArticleFeedbackv5AbuseFilterGroup] = 0.10;
+				$wgAbuseFilterEmergencyDisableCount[$wgArticleFeedbackv5AbuseFilterGroup] = 50;
+				$wgAbuseFilterEmergencyDisableAge[$wgArticleFeedbackv5AbuseFilterGroup] = 86400; // One day.
+			}
+
+			$wgAbuseFilterActions += [
+				'aftv5resolve' => true,
+				'aftv5flagabuse' => true,
+				'aftv5hide' => true,
+				'aftv5request' => true
+			];
 		}
 
 		// Permissions: 6 levels of permissions are built into ArticleFeedbackv5: reader, member, editor,
