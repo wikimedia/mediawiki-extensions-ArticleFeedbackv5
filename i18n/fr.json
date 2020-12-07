@@ -77,7 +77,7 @@
 	"apihelp-articlefeedbackv5-add-flag-note-param-title": "Titre de la page pour laquelle est donné l’avis. Impossible à utiliser avec $1pageid",
 	"apihelp-articlefeedbackv5-add-flag-note-param-pageid": "ID de la page pour laquelle est donné l’avis. Impossible à utiliser avec $1title",
 	"apihelp-articlefeedbackv5-add-flag-note-param-feedbackid": "Identifiant de commentaire à labelliser",
-	"apihelp-articlefeedbackv5-add-flag-note-param-source": "L’origine de la marque : article (page), centrale (page de commentaire), liste de suivi (page), lien permanent",
+	"apihelp-articlefeedbackv5-add-flag-note-param-source": "L’origine de la marque : article (page), centrale (page de commentaire), liste de suivi (page), lien permanent",
 	"apihelp-articlefeedbackv5-set-status-description": "Activer/désactiver AFTv5 pour une certaine page.",
 	"apihelp-articlefeedbackv5-set-status-summary": "Activer/Désactiver AFTv5 pour une page donnée.",
 	"apihelp-articlefeedbackv5-set-status-param-title": "Titre de la page pour activer/désactiver AFTv5. Ne peut être utilisé avec $1pageid",
