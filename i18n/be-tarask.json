@@ -580,6 +580,7 @@
 	"articlefeedbackv5-activity-more": "Паказаць дадатковыя дзеяньні",
 	"articlefeedbackv5-article-view-feedback": "{{PLURAL:$1|$1 чытацкі камэнтар|$1 чытацкія камэнтары|$1 чытацкіх камэнтароў}}",
 	"articlefeedbackv5-disable-flyover-title": "Зьняць гэта блякаваньне?",
+	"articlefeedbackv5-abusefilter-note-aftv5hide": "Аўтаматычна схавана. Правіла: $1",
 	"echo-category-title-feedback": "Водгук",
 	"echo-pref-tooltip-feedback": "Паведамляць мне, калі хтосьці пазначае водгук пра артыкул карысным.",
 	"articlefeedbackv5-notification-link-text-view-feedback": "Праглядзець водгукі"
