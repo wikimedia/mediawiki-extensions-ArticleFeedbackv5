@@ -239,12 +239,6 @@ class ArticleFeedbackv5Activity {
 			[
 				'LIMIT' => $limit + 1,
 				'ORDER BY' => 'log_timestamp DESC',
-				// Force the page_time index (on _namespace, _title, _timestamp)
-				// We don't expect many if any rows for Special:ArticleFeedbackv5/foo that
-				// don't match log_type='articlefeedbackv5' , so we can afford to have that
-				// clause be unindexed. The alternative is to have the log_type clause be indexed
-				// and the namespace/title clauses unindexed, that would be bad.
-				'USE INDEX' => [ 'logging' => 'page_time' ]
 			],
 			$commentQuery['joins'] + $actorQuery['joins']
 		);
@@ -440,17 +434,8 @@ class ArticleFeedbackv5Activity {
 			$where = [ '(' . implode( ') OR (', $where ) . ')' ];
 			$options['GROUP BY'] = [ 'log_namespace', 'log_title' ];
 
-			/*
-			 * Even though log_title is already in the above where-conditions (to find
-			 * specific actions per title), we'll add these again to target index
-			 * page_time (on _namespace, _title, _timestamp). This will result in very
-			 * few remaining columns (all logging data for maximum
-			 * ArticleFeedbackv5Model::LIST_LIMIT pages), which can then easily be
-			 * scanned using WHERE.
-			 */
 			$where['log_namespace'] = NS_SPECIAL;
 			$where['log_title'] = $titles;
-			$options['USE INDEX'] = [ 'logging' => 'page_time' ];
 
 			/*
 			 * The goal is to fetch only the last (editor) action for every feedback
