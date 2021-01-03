@@ -402,7 +402,7 @@ class ArticleFeedbackv5Utils {
 
 			// Set up variables
 			$title = Title::newFromID( $pageId );
-			$gen = new VariableGenerator( new AbuseFilterVariableHolder );
+			$gen = new VariableGenerator();
 			$vars = $gen->addUserVars( $user )->addTitleVars( $title, 'page' )->getVariableHolder();
 			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
 			$vars->setVar( 'ACTION', 'feedback' );
