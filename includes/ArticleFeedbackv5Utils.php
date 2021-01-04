@@ -20,7 +20,7 @@
  * @subpackage Api
  */
 
-use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\MediaWikiServices;
 
 class ArticleFeedbackv5Utils {
@@ -402,7 +402,7 @@ class ArticleFeedbackv5Utils {
 
 			// Set up variables
 			$title = Title::newFromID( $pageId );
-			$gen = new VariableGenerator();
+			$gen = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator();
 			$vars = $gen->addUserVars( $user )->addTitleVars( $title, 'page' )->getVariableHolder();
 			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
 			$vars->setVar( 'ACTION', 'feedback' );
