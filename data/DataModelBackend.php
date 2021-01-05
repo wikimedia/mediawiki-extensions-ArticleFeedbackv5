@@ -21,11 +21,13 @@ abstract class DataModelBackend {
 	 *
 	 * @var string
 	 */
-	protected
-		$datamodel,
-		$table,
-		$idColumn,
-		$shardColumn;
+	protected $datamodel;
+	/** @var string */
+	protected $table;
+	/** @var string */
+	protected $idColumn;
+	/** @var string */
+	protected $shardColumn;
 
 	/**
 	 * @param string $datamodel

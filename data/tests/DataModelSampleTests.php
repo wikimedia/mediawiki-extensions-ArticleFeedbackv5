@@ -9,8 +9,10 @@ use MediaWiki\MediaWikiServices;
  * @group Database
  */
 class DataModelSampleTest extends MediaWikiTestCase {
+	/** @var DataModelSample */
 	protected $sample;
 
+	/** @inheritDoc */
 	protected $tablesUsed = [ 'datamodel_sample' ];
 
 	public function setUp() : void {

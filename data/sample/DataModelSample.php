@@ -11,15 +11,19 @@ class DataModelSample extends DataModel {
 	/**
 	 * These are the exact columns an entry consists of in the DB.
 	 *
-	 * @var int|string
+	 * @var int
 	 */
-	public
-		$ds_id,
-		$ds_shard,
-		$ds_title,
-		$ds_email,
-		$ds_visible,
-		$ds_timestamp;
+	public $ds_id;
+	/** @var string */
+	public $ds_shard;
+	/** @var string */
+	public $ds_title;
+	/** @var string */
+	public $ds_email;
+	/** @var string */
+	public $ds_visible;
+	/** @var string */
+	public $ds_timestamp;
 
 	/**
 	 * Database table to hold the data.

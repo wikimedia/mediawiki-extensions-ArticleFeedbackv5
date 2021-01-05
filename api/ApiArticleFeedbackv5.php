@@ -19,14 +19,13 @@ use Wikimedia\ScopedCallback;
  * @subpackage Api
  */
 class ApiArticleFeedbackv5 extends ApiBase {
-	// Allow auto-flagging of feedback
+	/** @var string[] Allow auto-flagging of feedback */
 	private $autoFlag = [];
 
-	// filters incremented on creation
+	/** @var int[] filters incremented on creation */
 	protected $filters = [ 'visible' => 1, 'notdeleted' => 1, 'all' => 1 ];
 
 	/**
-	 * Constructor
 	 * @param ApiMain $main
 	 * @param string $action
 	 */

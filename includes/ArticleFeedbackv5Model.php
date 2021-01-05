@@ -14,50 +14,71 @@ class ArticleFeedbackv5Model extends DataModel {
 	/**
 	 * These are the exact columns a feedback entry consists of in the DB
 	 *
-	 * @var int|string
+	 * @var int|null
 	 */
-	public
-		// regular AFT data
-		$aft_id,
-		$aft_page,
-		$aft_page_revision,
-		$aft_user,
-		$aft_user_text,
-		$aft_user_token,
-		$aft_claimed_user,
-		$aft_form,
-		$aft_cta,
-		$aft_link,
-		$aft_rating,
-		$aft_comment,
-		$aft_timestamp,
-
-		// will hold the date after which an entry may be archived
-		$aft_archive_date,
-
-		// will hold info if discussion about the feedback has been started on user or article talk page
-		$aft_discuss,
-
-		// denormalized status indicators for actions of which real records are in logging table
-		$aft_oversight = 0,
-		$aft_decline = 0,
-		$aft_request = 0,
-		$aft_hide = 0,
-		$aft_autohide = 0,
-		$aft_flag = 0,
-		$aft_autoflag = 0,
-		$aft_feature = 0,
-		$aft_resolve = 0,
-		$aft_noaction = 0,
-		$aft_inappropriate = 0,
-		$aft_archive = 0,
-		$aft_helpful = 0,
-		$aft_unhelpful = 0,
-
-		// even more denormalized stuff, allowing easy DB-indexing sort columns
-		$aft_has_comment,
-		$aft_net_helpful = 0,
-		$aft_relevance_score = 0;
+	public $aft_id;
+	/** @var int|null */
+	public $aft_page;
+	/** @var int|null */
+	public $aft_page_revision;
+	/** @var int|null */
+	public $aft_user;
+	/** @var string|null */
+	public $aft_user_text;
+	/** @var string|null */
+	public $aft_user_token;
+	/** @var int|null */
+	public $aft_claimed_user;
+	/** @var int|null */
+	public $aft_form;
+	/** @var int|null */
+	public $aft_cta;
+	/** @var int|null */
+	public $aft_link;
+	/** @var bool|null */
+	public $aft_rating;
+	/** @var string|null */
+	public $aft_comment;
+	/** @var string|null */
+	public $aft_timestamp;
+	/** @var string|null will hold the date after which an entry may be archived */
+	public $aft_archive_date;
+	/** @var string|null will hold info if discussion about the feedback has been started on user or article talk page */
+	public $aft_discuss;
+	/** @var int denormalized status indicators for actions of which real records are in logging table */
+	public $aft_oversight = 0;
+	/** @var int */
+	public $aft_decline = 0;
+	/** @var int */
+	public $aft_request = 0;
+	/** @var int */
+	public $aft_hide = 0;
+	/** @var int */
+	public $aft_autohide = 0;
+	/** @var int */
+	public $aft_flag = 0;
+	/** @var int */
+	public $aft_autoflag = 0;
+	/** @var int */
+	public $aft_feature = 0;
+	/** @var int */
+	public $aft_resolve = 0;
+	/** @var int */
+	public $aft_noaction = 0;
+	/** @var int */
+	public $aft_inappropriate = 0;
+	/** @var int */
+	public $aft_archive = 0;
+	/** @var int */
+	public $aft_helpful = 0;
+	/** @var int */
+	public $aft_unhelpful = 0;
+	/** @var int|null even more denormalized stuff, allowing easy DB-indexing sort columns */
+	public $aft_has_comment;
+	/** @var int */
+	public $aft_net_helpful = 0;
+	/** @var int */
+	public $aft_relevance_score = 0;
 
 	/**
 	 * Database table to hold the data
