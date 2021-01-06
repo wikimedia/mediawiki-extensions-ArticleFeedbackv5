@@ -201,7 +201,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			)->parse();
 
 			$res = $flagger->run( $flag, $notes, false, 'abusefilter' );
-			if ( 'Error' == $res['result'] ) {
+			if ( $res['result'] == 'Error' ) {
 				// TODO: Log somewhere?
 			}
 		}
