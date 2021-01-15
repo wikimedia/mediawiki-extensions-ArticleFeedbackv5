@@ -15,7 +15,6 @@
  */
 class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	/**
-	 * Constructor
 	 * @param ApiQuery $query
 	 * @param string $moduleName
 	 */

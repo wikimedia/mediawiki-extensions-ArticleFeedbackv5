@@ -3,6 +3,7 @@
  * Formatter for feedback-watch
  */
 class EchoArticleFeedbackv5PresentationModel extends EchoEventPresentationModel {
+	/** @inheritDoc */
 	public function getIconType() {
 		return 'feedback-watch';
 	}
@@ -16,6 +17,7 @@ class EchoArticleFeedbackv5PresentationModel extends EchoEventPresentationModel 
 		return "articlefeedbackv5-notification-{$this->getType()}-flyout";
 	}
 
+	/** @inheritDoc */
 	public function getHeaderMessage() {
 		// XXX FIXME
 		// getMessageWithAgent() adds the username as $2 for GENDER
@@ -42,6 +44,7 @@ class EchoArticleFeedbackv5PresentationModel extends EchoEventPresentationModel 
 		return $msg;
 	}
 
+	/** @inheritDoc */
 	public function getBodyMessage() {
 		// Don't want to show this since it just duplicates the "header"/main message,
 		// but unlike in the header/main message, at least in the flyout menu the
@@ -77,6 +80,7 @@ class EchoArticleFeedbackv5PresentationModel extends EchoEventPresentationModel 
 		*/
 	}
 
+	/** @inheritDoc */
 	public function getPrimaryLink() {
 		return [
 			'url' => $this->getAFTv5PermalinkTitleFromEvent( $this->event, '#' )->getLocalURL(),
@@ -84,6 +88,7 @@ class EchoArticleFeedbackv5PresentationModel extends EchoEventPresentationModel 
 		];
 	}
 
+	/** @inheritDoc */
 	public function getSecondaryLinks() {
 		$title = $this->getAFTv5PermalinkTitleFromEvent( $this->event );
 		return [

@@ -5,10 +5,12 @@
  * This is the per-feedback entry formatter.
  */
 class EchoArticleFeedbackv5ModeratedPresentationModel extends EchoArticleFeedbackv5PresentationModel {
+	/** @inheritDoc */
 	public function getIconType() {
 		return 'feedback-moderated';
 	}
 
+	/** @inheritDoc */
 	public function getBodyMessage() {
 		// Don't want to show this since it just duplicates the "header"/main message,
 		// but unlike in the header/main message, at least in the flyout menu the

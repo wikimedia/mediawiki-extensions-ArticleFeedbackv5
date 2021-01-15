@@ -17,6 +17,10 @@
  * @subpackage Api
  */
 class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
+	/**
+	 * @param ApiQuery $query
+	 * @param string $moduleName
+	 */
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, '' );
 	}

@@ -18,7 +18,6 @@ use MediaWiki\MediaWikiServices;
 class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 	/**
-	 * Constructor
 	 * @param ApiQuery $query
 	 * @param string $moduleName
 	 */

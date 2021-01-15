@@ -15,7 +15,6 @@
  */
 class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	/**
-	 * Constructor
 	 * @param ApiQuery $query
 	 * @param string $moduleName
 	 */

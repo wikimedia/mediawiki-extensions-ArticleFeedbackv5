@@ -3,12 +3,14 @@
 /**
  * This class will test the datamodel sample.
  *
- * @author     Matthias Mullie <mmullie@wikimedia.org>
+ * @author Matthias Mullie <mmullie@wikimedia.org>
  * @group Database
  */
 class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
+	/** @var ArticleFeedbackv5Model */
 	protected $sample;
 
+	/** @inheritDoc */
 	protected $tablesUsed = [ 'aft_feedback' ];
 
 	public function setUp() : void {
