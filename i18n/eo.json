@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Blahma",
+			"Jakub Fabijan",
 			"KuboF",
 			"Lucas",
 			"Mirin",
@@ -221,6 +222,7 @@
 	"articlefeedbackv5watchlist": "Komentoj pri artikoloj - Mia atentaro",
 	"articlefeedbackv5-desc": "Takso de artikolo",
 	"articlefeedbackv5-comment-more": "Pli",
+	"articlefeedbackv5-comment-empty": "Neniu teksto estis tajpita",
 	"articlefeedbackv5-page-disabled": "Komenta Paĝo malŝaltas por ĉi tiu artikolo.",
 	"articlefeedbackv5-no-feedback": "Kun la elektitaj kriterioj korespondas neniuj komentoj. Por ŝanĝi la filtrilon, elektu unu el la supraj opcioj (ekz.: 'Plej rilataj' au 'Ĉiuj komentoj').",
 	"articlefeedbackv5-viewactivity": "Vidi aktivecon",
