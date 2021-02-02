@@ -20,6 +20,7 @@
 	"apihelp-articlefeedbackv5-summary": "문서 의견 제출",
 	"apihelp-articlefeedbackv5-param-revid": "의견을 제출할 판 ID",
 	"apihelp-articlefeedbackv5-param-anontoken": "익명 사용자에 대한 토큰",
+	"apihelp-articlefeedbackv5-param-comment": "자유형 텍스트 피드백",
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "적용할 플래그의 종류",
 	"apihelp-articlefeedbackv5-flag-feedback-param-note": "피드백 활동이 발생한 이유에 관한 정보",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "업데이트할 로그 ID",
