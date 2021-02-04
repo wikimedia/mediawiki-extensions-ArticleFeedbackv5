@@ -185,7 +185,7 @@
 	"articlefeedbackv5-activity-permalink": "Trajna povezava",
 	"articlefeedbackv5-activity-count": "{{PLURAL:$1|Eno dejanje pri tej objavi|$1 dejanji pri tej objavi|$1 dejanja pri tej objavi|$1 dejanj pri tej objavi}}",
 	"articlefeedbackv5-activity-more": "Prikaži več aktivnosti",
-	"articlefeedbackv5-email-request-oversight-subject": "Nadzor za stran s povratnimi sporočili je bil zahtevan",
+	"articlefeedbackv5-email-request-oversight-subject": "Prošnja za nadzor strani s povratnimi sporočili",
 	"articlefeedbackv5-email-request-oversight-body": "Pozdravljeni, nadzorniki!\n\n$1 je {{GENDER:$1|zahteval|zahtevala|zahteval(-a)}} izbris povratne informacije na strani:\n\n$2\n\nProsimo, preglejte objavljeno povratno informacijo in potrdite ali zavrnite izbris:\n\n$3\n$5\n\nHvala,\n\n\nEkipa {{GRAMMAR:rodilnik|{{SITENAME}}}}\n\n\nP.S.: Če imate katerokoli vprašanje o uporabi možnosti brisanja na\nstrani s povratnimi informacijami, preverite naslednja vprašanja z odgovori:\n\n$4",
 	"articlefeedbackv5-disable-flyover-title": "Odstranim orodje?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Pojdi na moje nastavitve"
