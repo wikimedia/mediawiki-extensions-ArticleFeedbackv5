@@ -69,7 +69,7 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 		return wfMessage( "logentry-articlefeedbackv5-$action" )
 			->params( [
 				Message::rawParam( $this->getPerformerElement() ),
-				$this->entry->getPerformer()->getId(),
+				$this->entry->getPerformerIdentity()->getId(),
 				$target,
 				ArticleFeedbackv5Utils::formatId( $parameters['feedbackId'] ),
 				$page
