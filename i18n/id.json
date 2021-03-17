@@ -563,5 +563,7 @@
 	"abusefilter-edit-action-aftv5hide": "(Umpan Balik Artikel) Sembunyikan secara otomatis",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Disembunyikan secara otomatis. Aturan: $1",
 	"abusefilter-edit-action-aftv5request": "(Umpan Balik Artikel) Minta hak pengawas secara otomatis",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Hak pengawas diminta secara otomatis. Aturan: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Hak pengawas diminta secara otomatis. Aturan: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "terselesaikan",
+	"echo-category-title-feedback": "Umpan balik"
 }
