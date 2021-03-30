@@ -5,7 +5,9 @@
 		]
 	},
 	"articlefeedbackv5-overlay-close": "Закрыць",
+	"articlefeedbackv5-special-filter-select-more": "Болей",
 	"articlefeedbackv5-whats-this": "Даведка",
+	"articlefeedbackv5-comment-more": "Болей",
 	"logentry-articlefeedbackv5-archive": "$1 {{GENDER:$2|перанёс|перанесла}} [[$3|водгук #$4]] на [[$5]]",
 	"abusefilter-edit-action-aftv5resolve": "(Водгук на артыкул) Аўтаматычны дазвол",
 	"abusefilter-edit-action-aftv5flagabuse": "(Водгук на артыкул) Аўтаматычна пазначаць як парушэнне",
