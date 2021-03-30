@@ -7,6 +7,8 @@
  * @author     Greg Chiasson <greg@omniti.com>
  */
 
+use MediaWiki\User\UserOptionsManager;
+
 /**
  * This class pulls the individual ratings/comments for the feedback page.
  *
@@ -14,12 +16,22 @@
  * @subpackage Api
  */
 class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
+
+	/** @var UserOptionsManager */
+	private $userOptionsManager;
+
 	/**
 	 * @param ApiQuery $query
 	 * @param string $moduleName
+	 * @param UserOptionsManager $userOptionsManager
 	 */
-	public function __construct( $query, $moduleName ) {
+	public function __construct(
+		$query,
+		$moduleName,
+		UserOptionsManager $userOptionsManager
+	) {
 		parent::__construct( $query, $moduleName, 'afvf' );
+		$this->userOptionsManager = $userOptionsManager;
 	}
 
 	/**
@@ -55,7 +67,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		// Save filter in user preference
 		$user = $this->getUser();
-		$user->setOption( 'aftv5-last-filter', $params['filter'] );
+		$this->userOptionsManager->setOption( $user, 'aftv5-last-filter', $params['filter'] );
 		$user->saveSettings();
 
 		$records = $this->fetchData( $params, $pageId );
