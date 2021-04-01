@@ -263,72 +263,51 @@
 .articleFeedbackv5-feedback .articleFeedbackv5-feature-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_feature.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_feature.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_feature.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_feature.svg);
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-resolve-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_resolve.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_resolve.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_resolve.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_resolve.svg);
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-archive-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_archive.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-noaction-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_noaction.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_noaction.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_noaction.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_noaction.svg);
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-inappropriate-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_inappropriate.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-autohide-marker:before,
 .articleFeedbackv5-feedback .articleFeedbackv5-hide-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_hide.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_hide.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_hide.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_hide.svg);
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-oversight-marker:before {
 	/* @embed */
 	background-image: url(images/toolbox_oversight.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_oversight.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_oversight.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_oversight.svg);
 }
 .articleFeedbackv5-feedback .articleFeedbackv5-feature-marker,
@@ -446,123 +425,87 @@
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-feature-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_feature.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_feature.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_feature.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_feature.svg);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-resolve-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_resolve.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_resolve.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_resolve.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_resolve.svg);
 }
 .articleFeedbackv5-noaction-own-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-noaction-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_noaction.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_noaction.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_noaction.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_noaction.svg);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-inappropriate-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_inappropriate.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_inappropriate.svg);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-hide-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_hide.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_hide.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_hide.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_hide.svg);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-archive-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_archive.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_archive.svg);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-request-link:before,
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-oversight-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_oversight.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_oversight.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_oversight.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_oversight.svg);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-decline-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_decline.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_decline.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_decline.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_decline.svg);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-discuss-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_discuss.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_discuss.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_discuss.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_discuss.svg);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-discuss-talk-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_discuss_talk.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_discuss_talk.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_discuss_talk.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_discuss_talk.svg);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-discuss-user-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_discuss_user.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_discuss_user.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_discuss_user.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_discuss_user.svg);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-discuss-exists-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_discuss_view.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_discuss_view.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_discuss_view.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_discuss_view.svg);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-activity-link:before {
@@ -580,11 +523,8 @@
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-unoversight-link:before {
 	/* @embed */
 	background-image: url(images/toolbox_undo.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(images/toolbox_undo.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(images/toolbox_undo.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(images/toolbox_undo.svg);
 }
 .articleFeedbackv5-feedback-tools li a.articleFeedbackv5-request-link.inactive:before,

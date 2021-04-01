@@ -104,11 +104,8 @@ select {
 
 	/* @embed */
 	background-image: url(../jquery.articleFeedbackv5/images/toolbox_discuss.png);
-	/* @embed */
 	background-image: -webkit-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/toolbox_discuss.svg);
-	/* @embed */
 	background-image: -moz-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/toolbox_discuss.svg);
-	/* @embed */
 	background-image: linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/toolbox_discuss.svg);
 
 	background-repeat: no-repeat;
