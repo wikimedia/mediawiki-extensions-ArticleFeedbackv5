@@ -61,7 +61,12 @@
 		"articlefeedbackv5": "ApiArticleFeedbackv5"
 	},
 	"APIListModules": {
-		"articlefeedbackv5-view-feedback": "ApiViewFeedbackArticleFeedbackv5",
+		"articlefeedbackv5-view-feedback": {
+			"class": "ApiViewFeedbackArticleFeedbackv5",
+			"services": [
+				"UserOptionsManager"
+			]
+		},
 		"articlefeedbackv5-view-activity": "ApiViewActivityArticleFeedbackv5"
 	},
 	"MessagesDirs": {
