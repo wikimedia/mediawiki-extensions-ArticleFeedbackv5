@@ -254,7 +254,7 @@
 	"articlefeedbackv5-status-feature": "Ce commentaire a été marqué comme utile par $1, le $2 à $3",
 	"articlefeedbackv5-status-unfeature": "Ce commentaire n’a plus été marqué comme utile par $1 le $2 à $3",
 	"articlefeedbackv5-status-resolve": "Ce commentaire a été marqué comme résolu par $1, le $2 à $3",
-	"articlefeedbackv5-status-unresolve": "Ce commentaire n’a plus été plus marqué comme résolu par $1, le $2 à $3",
+	"articlefeedbackv5-status-unresolve": "Le marquage de ce commentaire par $1 comme résolu a été retiré le $2 à $3",
 	"articlefeedbackv5-status-noaction": "Ce commentaire a été marqué comme inexploitable par $1 le $2 à $3",
 	"articlefeedbackv5-status-unnoaction": "Ce commentaire n’a plus été marqué comme inexploitable par $1 le $2 à $3",
 	"articlefeedbackv5-status-inappropriate": "Ce commentaire a été marqué comme inapproprié par $1, le $2 à $3",
