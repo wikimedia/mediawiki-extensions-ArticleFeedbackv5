@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\IPUtils;
 
@@ -992,6 +993,18 @@ class ArticleFeedbackv5Hooks {
 			case 'feedback-moderated':
 				$bundleString = $event->getType() . '-' . $event->getExtraParam( 'aft-id' );
 				break;
+		}
+	}
+
+	/**
+	 * @param array &$actions
+	 */
+	public static function onAbuseFilterCustomActions( array &$actions ) : void {
+		$customActionNames = [ 'aftv5resolve', 'aftv5flagabuse', 'aftv5hide', 'aftv5request' ];
+		foreach ( $customActionNames as $name ) {
+			$actions[$name] = function ( Parameters $params ) use ( $name ) {
+				return new ArticleFeedbackv5AbuseFilterConsequence( $params, $name );
+			};
 		}
 	}
 }

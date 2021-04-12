@@ -382,26 +382,19 @@ class ArticleFeedbackv5Utils {
 	 * @param string $value
 	 * @param int $pageId
 	 * @param User $user
-	 * @param callable|null $callback Callback function to be called by AbuseFilter
 	 * @return bool|array Will return boolean false if valid or error message array if flagged
 	 */
-	public static function validateAbuseFilter( $value, $pageId, User $user, $callback = null ) {
+	public static function validateAbuseFilter( $value, $pageId, User $user ) {
 		// Check AbuseFilter, if installed
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'AbuseFilter' ) ) {
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'Abuse Filter' ) ) {
 			global $wgArticleFeedbackv5AbuseFilterGroup;
-
-			// Add custom action handlers
-			if ( $callback && is_callable( $callback ) ) {
-				global $wgAbuseFilterCustomActionsHandlers;
-
-				$wgAbuseFilterCustomActionsHandlers['aftv5resolve'] = $callback;
-				$wgAbuseFilterCustomActionsHandlers['aftv5flagabuse'] = $callback;
-				$wgAbuseFilterCustomActionsHandlers['aftv5hide'] = $callback;
-				$wgAbuseFilterCustomActionsHandlers['aftv5request'] = $callback;
-			}
 
 			// Set up variables
 			$title = Title::newFromID( $pageId );
+			if ( !$title ) {
+				// XXX Can this happen?
+				return false;
+			}
 			$gen = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator();
 			$vars = $gen->addUserVars( $user )->addTitleVars( $title, 'page' )->getVariableHolder();
 			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );

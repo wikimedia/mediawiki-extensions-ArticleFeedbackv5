@@ -9,6 +9,7 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\ScopedCallback;
 
@@ -19,8 +20,12 @@ use Wikimedia\ScopedCallback;
  * @subpackage Api
  */
 class ApiArticleFeedbackv5 extends ApiBase {
-	/** @var string[] Allow auto-flagging of feedback */
-	private $autoFlag = [];
+	/**
+	 * @var string[] Flags added by AbuseFilter
+	 * FIXME Avoid global state.
+	 * TODO This can only report issues from a single filter.
+	 */
+	public static $abuseFilterFlags = [];
 
 	/** @var int[] filters incremented on creation */
 	protected $filters = [ 'visible' => 1, 'notdeleted' => 1, 'all' => 1 ];
@@ -134,11 +139,12 @@ class ApiArticleFeedbackv5 extends ApiBase {
 					'articlefeedbackv5-error-abuse'
 				);
 			} else {
+				// Ensure that we're starting without flags.
+				self::$abuseFilterFlags = [];
 				$error = ArticleFeedbackv5Utils::validateAbuseFilter(
 					$feedback->aft_comment,
 					$feedback->aft_page,
-					$user,
-					[ $this, 'callbackAbuseActionFlag' ]
+					$user
 				);
 
 				if ( $error !== false ) {
@@ -192,8 +198,11 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $feedback->aft_id );
 
 		// Are we set to auto-flag?
-		$flagger = new ArticleFeedbackv5Flagging( null, $feedback->aft_id, $feedback->aft_page );
-		foreach ( $this->autoFlag as $flag => $rule_desc ) {
+		$afUser = MediaWikiServices::getInstance()
+			->getUserFactory()
+			->newFromUserIdentity( AbuseFilterServices::getFilterUser()->getUser() );
+		$flagger = new ArticleFeedbackv5Flagging( $afUser, $feedback->aft_id, $feedback->aft_page );
+		foreach ( self::$abuseFilterFlags as $flag => $rule_desc ) {
 			$notes = wfMessage(
 				"articlefeedbackv5-abusefilter-note-aftv5$flag",
 				[ $rule_desc ]
@@ -214,35 +223,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 				'permalink'   => $permalink->getLinkUrl( [ 'ref' => 'cta' ] ),
 			]
 		);
-	}
-
-	/**
-	 * AbuseFilter callback: flag feedback (abuse, oversight, hide, etc.)
-	 *
-	 * @param string $action the action name (AF)
-	 * @param array $parameters the action parameters (AF)
-	 * @param Title $title the title passed in
-	 * @param AbuseFilterVariableHolder $vars the variables passed in
-	 * @param string $rule_desc the rule description
-	 */
-	public function callbackAbuseActionFlag( $action, $parameters, $title, $vars, $rule_desc ) {
-		switch ( $action ) {
-			case 'aftv5resolve':
-				$this->autoFlag['resolve'] = $rule_desc;
-				break;
-			case 'aftv5flagabuse':
-				$this->autoFlag['flag'] = $rule_desc;
-				break;
-			case 'aftv5hide':
-				$this->autoFlag['hide'] = $rule_desc;
-				break;
-			case 'aftv5request':
-				$this->autoFlag['request'] = $rule_desc;
-				break;
-			default:
-				// Fall through silently
-				break;
-		}
 	}
 
 	/**

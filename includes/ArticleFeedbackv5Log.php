@@ -15,7 +15,7 @@ class ArticleFeedbackv5Log {
 	 * @param int $pageId The id of the page so we can look it up
 	 * @param int $itemId The id of the feedback item, used to build permalinks
 	 * @param string $notes Any notes that were stored with the activity
-	 * @param User $doer User who did the action
+	 * @param User|int|null $doer User who did the action
 	 * @param array $params Array of parameters that can be passed into the msg thing - used for "perpetrator" for log entry
 	 * @return int The id of the newly inserted log entry
 	 */

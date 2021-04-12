@@ -104,7 +104,8 @@
 		"SpecialArticleFeedbackv5Watchlist": "includes/specials/SpecialArticleFeedbackv5Watchlist.php",
 		"ArticleFeedbackv5Model": "includes/ArticleFeedbackv5Model.php",
 		"ArticleFeedbackv5BackendLBFactory": "includes/ArticleFeedbackv5BackendLBFactory.php",
-		"ArticleFeedbackv5Activity": "includes/ArticleFeedbackv5Activity.php"
+		"ArticleFeedbackv5Activity": "includes/ArticleFeedbackv5Activity.php",
+		"ArticleFeedbackv5AbuseFilterConsequence": "includes/ArticleFeedbackv5AbuseFilterConsequence.php"
 	},
 	"ResourceModules": {
 		"jquery.articleFeedbackv5.utils": {
@@ -476,7 +477,8 @@
 		"UserGetReservedNames": "ArticleFeedbackv5Hooks::onUserGetReservedNames",
 		"BeforeCreateEchoEvent": "ArticleFeedbackv5Hooks::onBeforeCreateEchoEvent",
 		"EchoGetDefaultNotifiedUsers": "ArticleFeedbackv5Hooks::onEchoGetDefaultNotifiedUsers",
-		"EchoGetBundleRules": "ArticleFeedbackv5Hooks::onEchoGetBundleRules"
+		"EchoGetBundleRules": "ArticleFeedbackv5Hooks::onEchoGetBundleRules",
+		"AbuseFilterCustomActions": "ArticleFeedbackv5Hooks::onAbuseFilterCustomActions"
 	},
 	"config": {
 		"ArticleFeedbackv5DefaultFilters": {

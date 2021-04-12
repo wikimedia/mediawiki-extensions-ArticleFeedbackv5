@@ -31,6 +31,8 @@ class ArticleFeedbackv5Flagging {
 	 * The user performing the action
 	 *
 	 * Either zero for a system call, or the current user for a user-directed one
+	 * FIXME The system call case is not correctly handled everywhere (e.g. in case of AbuseFilter
+	 * actions)
 	 *
 	 * @var User|int
 	 */
@@ -151,10 +153,10 @@ class ArticleFeedbackv5Flagging {
 	 * @param int $pageId
 	 * @param mixed $feedbackId
 	 * @param string $comment
-	 * @param User|null $user
+	 * @param User|int|null $user
 	 * @return int
 	 */
-	protected function log( $action, $pageId, $feedbackId, $comment, User $user = null ) {
+	protected function log( $action, $pageId, $feedbackId, $comment, $user = null ) {
 		$params = [];
 		if ( $this->source ) {
 			$params['source'] = $this->source;
