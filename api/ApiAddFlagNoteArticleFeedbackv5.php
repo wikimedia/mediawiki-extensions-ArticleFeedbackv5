@@ -53,7 +53,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 
 		if ( $user->getId() ) {
 			// update log entry in database
-			$dbw = ArticleFeedbackv5Utils::getDB( DB_MASTER );
+			$dbw = ArticleFeedbackv5Utils::getDB( DB_PRIMARY );
 			$data = [
 				'log_id' => $logId,
 				// failsafe, making sure this can't be gamed to add comments to anything other than AFTv5 entries

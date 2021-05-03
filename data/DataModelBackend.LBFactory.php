@@ -51,7 +51,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 
 		$lb = $this->getLB( $wiki );
 
-		if ( $db === DB_MASTER ) {
+		if ( $db === DB_PRIMARY ) {
 			// mark that we're writing data
 			static::$written[$wikiId] = true;
 		} elseif ( isset( static::$written[$wikiId] ) && static::$written[$wikiId] ) {
@@ -60,7 +60,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 				 * Let's keep querying master to make sure we have up-to-date
 				 * data (waiting for slaves to sync up might take some time)
 				 */
-				$db = DB_MASTER;
+				$db = DB_PRIMARY;
 			} else {
 				/*
 				 * If another db is requested and we already requested master,
@@ -117,7 +117,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @return int
 	 */
 	public function insert( DataModel $entry ) {
-		return $this->getDB( DB_MASTER )->insert(
+		return $this->getDB( DB_PRIMARY )->insert(
 			$this->table,
 			$entry->toArray(),
 			__METHOD__
@@ -134,7 +134,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 		$data = $entry->toArray();
 		unset( $data[$this->shardColumn] );
 
-		return $this->getDB( DB_MASTER )->update(
+		return $this->getDB( DB_PRIMARY )->update(
 			$this->table,
 			$data,
 			[
@@ -152,7 +152,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @return int
 	 */
 	public function delete( DataModel $entry ) {
-		return $this->getDB( DB_MASTER )->delete(
+		return $this->getDB( DB_PRIMARY )->delete(
 			$this->table,
 			[
 				$this->idColumn => $entry->{$this->idColumn},

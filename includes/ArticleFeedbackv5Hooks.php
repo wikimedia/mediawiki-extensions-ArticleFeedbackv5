@@ -923,7 +923,7 @@ class ArticleFeedbackv5Hooks {
 				$page = Title::newFromID( $extra['aft-page'] );
 
 				// @todo Could we just use EchoUserLocator::locateUsersWatchingTitle( $event ) here instead?
-				$dbw = wfGetDB( DB_MASTER );
+				$dbw = wfGetDB( DB_PRIMARY );
 				$res = $dbw->select(
 					'watchlist',
 					[ 'wl_user' ],
@@ -1002,7 +1002,7 @@ class ArticleFeedbackv5Hooks {
 	public static function onAbuseFilterCustomActions( array &$actions ) : void {
 		$customActionNames = [ 'aftv5resolve', 'aftv5flagabuse', 'aftv5hide', 'aftv5request' ];
 		foreach ( $customActionNames as $name ) {
-			$actions[$name] = function ( Parameters $params ) use ( $name ) {
+			$actions[$name] = static function ( Parameters $params ) use ( $name ) {
 				return new ArticleFeedbackv5AbuseFilterConsequence( $params, $name );
 			};
 		}
