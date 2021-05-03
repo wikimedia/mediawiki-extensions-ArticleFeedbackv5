@@ -206,7 +206,7 @@ class ArticleFeedbackv5Permissions {
 			return false;
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$record = $dbr->selectField(

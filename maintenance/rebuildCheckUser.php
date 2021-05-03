@@ -72,7 +72,7 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 	 * @return array|null
 	 */
 	public function refreshBatch( $continue ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$commentQuery = CommentStore::getStore()->getJoin( 'log_comment' );

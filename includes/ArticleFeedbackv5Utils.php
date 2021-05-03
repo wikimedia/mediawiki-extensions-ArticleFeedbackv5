@@ -61,7 +61,7 @@ class ArticleFeedbackv5Utils {
 	public static function getDB( $db, $groups = [], $wiki = false ) {
 		$lb = static::getLB( $wiki );
 
-		if ( $db === DB_MASTER ) {
+		if ( $db === DB_PRIMARY ) {
 			// mark that we're writing data
 			static::$written[$wiki] = true;
 		} elseif ( isset( static::$written[$wiki] ) && static::$written[$wiki] ) {
@@ -70,7 +70,7 @@ class ArticleFeedbackv5Utils {
 				 * Let's keep querying master to make sure we have up-to-date
 				 * data (waiting for slaves to sync up might take some time)
 				 */
-				$db = DB_MASTER;
+				$db = DB_PRIMARY;
 			} else {
 				/*
 				 * If another db is requested and we already requested master,
