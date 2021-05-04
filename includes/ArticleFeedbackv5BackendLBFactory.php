@@ -3,7 +3,7 @@
  * AFTv5-specific implementation to power DataModel, allowing AFTv5 to be
  * put on a separate cluster.
  *
- * This class will connect to a single database setup with master/slaves
+ * This class will connect to a single database setup with primary/replicas
  * architecture.
  *
  * @author     Matthias Mullie <mmullie@wikimedia.org>

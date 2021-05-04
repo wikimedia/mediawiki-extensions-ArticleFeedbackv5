@@ -49,8 +49,8 @@ class ArticleFeedbackv5Utils {
 	/**
 	 * Wrapper function for wfGetDB.
 	 *
-	 * @param int $db Index of the connection to get. May be DB_MASTER for the
-	 *            master (for write queries), DB_REPLICA for potentially lagged read
+	 * @param int $db Index of the connection to get. May be DB_PRIMARY for the
+	 *            primary database (for write queries), DB_REPLICA for potentially lagged read
 	 *            queries, or an integer >= 0 for a particular server.
 	 * @param array|string $groups Query groups. An array of group names that this query
 	 *                belongs to. May contain a single string if the query is only
@@ -67,13 +67,13 @@ class ArticleFeedbackv5Utils {
 		} elseif ( isset( static::$written[$wiki] ) && static::$written[$wiki] ) {
 			if ( $db === DB_REPLICA ) {
 				/*
-				 * Let's keep querying master to make sure we have up-to-date
+				 * Let's keep querying primary database to make sure we have up-to-date
 				 * data (waiting for slaves to sync up might take some time)
 				 */
 				$db = DB_PRIMARY;
 			} else {
 				/*
-				 * If another db is requested and we already requested master,
+				 * If another db is requested and we already requested primary database,
 				 * make sure this slave has caught up!
 				 */
 				$lb->waitFor( $lb->getMasterPos() );

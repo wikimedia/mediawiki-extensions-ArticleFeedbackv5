@@ -70,7 +70,7 @@ class ArticleFeedbackv5Log {
 		/**
 		 * ManualLogEntry will have written to database. To make sure that subsequent
 		 * reads are up-to-date, I'll set a flag to know that we've written data, so
-		 * DB_MASTER will be queried.
+		 * DB_PRIMARY will be queried.
 		 */
 		$wiki = false;
 		ArticleFeedbackv5Utils::$written[$wiki] = true;
