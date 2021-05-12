@@ -763,7 +763,7 @@ class ArticleFeedbackv5Render {
 					Html::element(
 						'p',
 						[ 'class' => 'articleFeedbackv5-form-own-feedback' ],
-						wfMessage( 'articlefeedbackv5-form-own-feedback' )
+						wfMessage( 'articlefeedbackv5-form-own-feedback' )->text()
 					);
 			}
 		}
@@ -926,7 +926,7 @@ class ArticleFeedbackv5Render {
 							Message::rawParam( Html::element( 'blockquote', [], $record->aft_comment ) ),
 							$record->getArticle()->getTitle()
 						)
-						->escaped();
+						->text();
 
 					$sectionExists = ( $record->aft_discuss == $discussType );
 

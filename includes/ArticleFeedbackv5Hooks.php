@@ -584,7 +584,7 @@ class ArticleFeedbackv5Hooks {
 		$permissionsDropdown = Xml::openElement( 'select', $attribs );
 		foreach ( $levels as $key => $label ) {
 			// possible labels: protect-level-aft-(reader|member|editor|administrator|noone)
-			$permissionsDropdown .= Xml::option( wfMessage( $label )->escaped(), $key, $key == $existingRestriction->pr_level );
+			$permissionsDropdown .= Xml::option( wfMessage( $label )->text(), $key, $key == $existingRestriction->pr_level );
 		}
 		$permissionsDropdown .= Xml::closeElement( 'select' );
 
@@ -607,14 +607,14 @@ class ArticleFeedbackv5Hooks {
 				$t = $lang->time( $mExistingExpiry, true );
 				$expiryFormOptions .=
 					Xml::option(
-						wfMessage( 'protect-existing-expiry', $timestamp, $d, $t )->escaped(),
+						wfMessage( 'protect-existing-expiry', $timestamp, $d, $t )->text(),
 						'existing',
 						$mExpirySelection == 'existing'
 					);
 			}
 
 			// add regular expiry options
-			$expiryFormOptions .= Xml::option( wfMessage( 'protect-othertime-op' )->escaped(), 'othertime' );
+			$expiryFormOptions .= Xml::option( wfMessage( 'protect-othertime-op' )->text(), 'othertime' );
 			foreach ( explode( ',', $scExpiryOptions ) as $option ) {
 				if ( strpos( $option, ':' ) === false ) {
 					$show = $value = $option;
@@ -622,11 +622,7 @@ class ArticleFeedbackv5Hooks {
 					list( $show, $value ) = explode( ':', $option );
 				}
 
-				$expiryFormOptions .= Xml::option(
-					htmlspecialchars( $show ),
-					htmlspecialchars( $value ),
-					$mExpirySelection == $value
-				);
+				$expiryFormOptions .= Xml::option( $show, $value, $mExpirySelection == $value );
 			}
 
 			// build expiry dropdown
@@ -638,7 +634,7 @@ class ArticleFeedbackv5Hooks {
 					'onchange' => 'javascript:if ( $( this ).val() != "othertime" ) $( "#articlefeedbackv5-protection-expiration" ).val( "" );',
 				],
 				$expiryFormOptions );
-			$mProtectExpiry = Xml::label( wfMessage( 'protectexpiry' )->escaped(), 'mwProtectExpirySelection-aft' );
+			$mProtectExpiry = Xml::label( wfMessage( 'protectexpiry' )->text(), 'mwProtectExpirySelection-aft' );
 		}
 
 		// build custom expiry field

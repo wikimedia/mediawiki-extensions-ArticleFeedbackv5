@@ -725,10 +725,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 				$count = ArticleFeedbackv5Model::getCount( $filter, $this->pageId );
 
-				$key =
-					$this->msg( "articlefeedbackv5-special-filter-$filter" )
+				$key = $this->msg( "articlefeedbackv5-special-filter-$filter" )
 						->numParams( $count )
-						->escaped();
+						->text();
 				$opts[(string)$key] = $filter;
 			}
 
@@ -773,9 +772,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			if ( $i % 2 == 0 && $i > 0 ) {
 				// Add dividers between each pair (append trailing spaces so
 				// that they all get added)
-				$opts[ '---------' . str_repeat( ' ', $i ) ] = '';
+				$opts['---------' . str_repeat( ' ', $i )] = '';
 			}
-			$key = $this->msg( strtolower( "articlefeedbackv5-special-sort-$sort" ) )->escaped();
+			$key = $this->msg( strtolower( "articlefeedbackv5-special-sort-$sort" ) )->text();
 			$opts[(string)$key] = $sort;
 		}
 		$sortSelect = new XmlSelect( false, 'articleFeedbackv5-sort-select' );
