@@ -466,6 +466,8 @@
 	"articlefeedbackv5-noteflyover-request-caption": "Запыт на прыхаваньне",
 	"articlefeedbackv5-noteflyover-request-description": "Перш чым запытаць прыхоўваньне, праверце, калі ласка, што гэты допіс мае адно з наступнага:\n* тэлефонныя нумары\n* адрасы э-пошты\n* парнаграфічныя спасылкі\n* абразьлівыя/паклёпніцкія камэнтары на асобу\n* [//en.wikipedia.org/wiki/Wikipedia:Oversight#Policy іншыя прычыны для прыхаваньня]",
 	"articlefeedbackv5-noteflyover-request-help": "Даведацца больш",
+	"articlefeedbackv5-noteflyover-unrequest-caption": "Скасаваны запыт на прыхоўваньне",
+	"articlefeedbackv5-noteflyover-unrequest-label": "Дадаць заўвагу",
 	"articlefeedbackv5-noteflyover-unrequest-submit": "Скасаваць запыт",
 	"articlefeedbackv5-noteflyover-unrequest-help": "Даведацца больш",
 	"articlefeedbackv5-noteflyover-oversight-label": "Дадаць заўвагу",
@@ -585,6 +587,8 @@
 	"articlefeedbackv5-article-view-feedback": "{{PLURAL:$1|$1 чытацкі камэнтар|$1 чытацкія камэнтары|$1 чытацкіх камэнтароў}}",
 	"articlefeedbackv5-disable-flyover-title": "Зьняць гэта блякаваньне?",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Аўтаматычна схавана. Правіла: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "карысна",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "вырашана",
 	"echo-category-title-feedback": "Водгук",
 	"echo-pref-tooltip-feedback": "Паведамляць мне, калі хтосьці пазначае водгук пра артыкул карысным.",
 	"articlefeedbackv5-notification-link-text-view-feedback": "Праглядзець водгукі"
