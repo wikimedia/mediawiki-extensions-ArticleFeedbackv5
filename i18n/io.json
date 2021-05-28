@@ -11,6 +11,7 @@
 	"protect-level-aft-editor": "Permisita nur por uzeri automatale konfirmata",
 	"articlefeedbackv5-form-helpful-no-label": "No",
 	"articlefeedbackv5-special-filter-unreviewed": "Sen revizo ($1)",
+	"articlefeedbackv5-special-filter-unreviewed-watchlist": "Sen revizo",
 	"articlefeedbackv5-special-sort-label": "Ordinar segun:",
 	"articlefeedbackv5-special-filter-select-more": "Pluse",
 	"articlefeedbackv5-special-refresh": "Rinovigar listo",
