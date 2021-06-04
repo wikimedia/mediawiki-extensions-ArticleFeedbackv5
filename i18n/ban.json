@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Chinamoonroll",
 			"Joseagush"
 		]
 	},
+	"articlefeedbackv5-form-toolbox-label": "Cihna dados:",
+	"articlefeedbackv5-form-helpful": "Cihna ngawantu ($1)",
 	"articlefeedbackv5-mask-view-contents": "Cingak cakepan"
 }
