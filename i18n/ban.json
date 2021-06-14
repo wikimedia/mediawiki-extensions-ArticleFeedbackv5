@@ -5,7 +5,14 @@
 			"Joseagush"
 		]
 	},
+	"apihelp-articlefeedbackv5-param-found": "Inggih/nénten umpan walik nyaurin pitakén pinaka kaca punika ngawantu",
 	"articlefeedbackv5-form-toolbox-label": "Cihna dados:",
+	"articlefeedbackv5-form-helpful-yes-label": "Inggih",
+	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 inggih|$1 inggih}} / {{PLURAL:$2|1 nénten|$2 nénten}}",
 	"articlefeedbackv5-form-helpful": "Cihna ngawantu ($1)",
-	"articlefeedbackv5-mask-view-contents": "Cingak cakepan"
+	"articlefeedbackv5-mask-view-contents": "Cingak cakepan",
+	"articlefeedbackv5-bucket1-toggle-found-yes": "Inggih",
+	"articlefeedbackv5-bucket1-toggle-found-yes-full": "Inggih, tiang nepukin sané tiang rereh.",
+	"articlefeedbackv5-bucket6-toggle-found-yes": "Inggih",
+	"articlefeedbackv5-bucket6-toggle-found-yes-full": "Inggih, tiang nepukin sané tiang rereh."
 }
