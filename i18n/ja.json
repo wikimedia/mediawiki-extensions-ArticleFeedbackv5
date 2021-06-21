@@ -3,6 +3,7 @@
 		"authors": [
 			"A2y4",
 			"Aefgh39622",
+			"Ajeje Brazorf",
 			"Akaniji",
 			"Buntschann",
 			"Eseki",
@@ -506,6 +507,7 @@
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "自動で秘匿しました。規則: $1",
 	"abusefilter-edit-action-aftv5request": "(記事へのフィードバック) 抹消の自動要請",
 	"articlefeedbackv5-abusefilter-note-aftv5request": "抹消を自動で要請しました。規則: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "役に立つ",
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "解決済",
 	"echo-category-title-feedback": "フィードバック",
 	"articlefeedbackv5-notification-link-text-view-feedback": "フィードバックを見る"
