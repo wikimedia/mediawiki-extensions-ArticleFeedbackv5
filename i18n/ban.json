@@ -6,6 +6,7 @@
 		]
 	},
 	"apihelp-articlefeedbackv5-param-found": "Inggih/nénten umpan walik nyaurin pitakén pinaka kaca punika ngawantu",
+	"articlefeedbackv5-contribs-hidden-feedback": "penampen kaengkebang",
 	"articlefeedbackv5-form-toolbox-label": "Cihna dados:",
 	"articlefeedbackv5-form-helpful-yes-label": "Inggih",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 inggih|$1 inggih}} / {{PLURAL:$2|1 nénten|$2 nénten}}",
