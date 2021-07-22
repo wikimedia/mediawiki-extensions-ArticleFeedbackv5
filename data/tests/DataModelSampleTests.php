@@ -15,7 +15,7 @@ class DataModelSampleTest extends MediaWikiTestCase {
 	/** @inheritDoc */
 	protected $tablesUsed = [ 'datamodel_sample' ];
 
-	public function setUp() : void {
+	public function setUp(): void {
 		parent::setUp();
 
 		// include sample
@@ -46,7 +46,7 @@ class DataModelSampleTest extends MediaWikiTestCase {
 		$this->sample->ds_visible = rand( 0, 1 );
 	}
 
-	public function tearDown() : void {
+	public function tearDown(): void {
 		unset( $this->sample );
 
 		$list = DataModelSample::getList(

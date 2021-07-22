@@ -261,14 +261,14 @@ class ArticleFeedbackv5Render {
 	/**
 	 * @return User
 	 */
-	public function getUser() : User {
+	public function getUser(): User {
 		return $this->user;
 	}
 
 	/**
 	 * @param User $user
 	 */
-	public function setUser( User $user ) : void {
+	public function setUser( User $user ): void {
 		$this->user = $user;
 	}
 

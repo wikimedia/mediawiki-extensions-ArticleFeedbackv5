@@ -34,7 +34,7 @@ class ArticleFeedbackv5AbuseFilterConsequence extends Consequence {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute() : bool {
+	public function execute(): bool {
 		ApiArticleFeedbackv5::$abuseFilterFlags[$this->autoFlagKey] = $this->parameters->getFilter()->getName();
 		return true;
 	}
