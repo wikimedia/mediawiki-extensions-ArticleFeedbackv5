@@ -64,23 +64,11 @@ class DataModelList extends FakeResultWrapper {
 		$this->nextOffset = $offset;
 	}
 
-	public function next() {
-		$this->pos++;
-		return $this->fetchObject();
-	}
-
-	/**
-	 * @return int
-	 */
-	public function current() {
-		return $this->fetchObject();
-	}
-
 	/**
 	 * @return array|bool
 	 */
-	public function fetchRow() {
-		$object = $this->fetchObject();
+	public function doFetchRow() {
+		$object = $this->doFetchObject();
 		if ( $object ) {
 			return $object->toArray();
 		}
@@ -90,9 +78,9 @@ class DataModelList extends FakeResultWrapper {
 	/**
 	 * @return DataModel|bool
 	 */
-	public function fetchObject() {
-		if ( isset( $this->result[$this->pos] ) ) {
-			$this->currentRow = $this->result[$this->pos];
+	public function doFetchObject() {
+		if ( isset( $this->result[$this->currentPos] ) ) {
+			$this->currentRow = $this->result[$this->currentPos];
 
 			$class = $this->className;
 			return $class::get( $this->currentRow['id'], $this->currentRow['shard'] );
