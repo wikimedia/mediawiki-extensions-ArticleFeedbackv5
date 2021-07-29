@@ -32,6 +32,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "Sleutel om records te sorteren op",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Welke filtering moet worden toegepast op de lijst",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "De ID van een specifiek feedbackitem dat moet worden opgehaald",
+	"articlefeedbackv5-error-nonexistent-page": "Pagina voor feedback bestaat niet",
 	"articlefeedbackv5-error-permission-denied": "Je bent niet gemachtigd om feedbackactiviteit te bekijken",
 	"articlefeedbackv5-error-nonexistent-feedback": "Feedback bestaat niet",
 	"articlefeedbackv5-cta-thanks": "Bedankt!",
@@ -594,5 +595,6 @@
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "nuttig",
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "opgelost",
 	"echo-category-title-feedback": "Terugkoppeling",
+	"echo-pref-tooltip-feedback": "Laat het me weten als iemand feedback op artikelen als nuttig markeert.",
 	"articlefeedbackv5-notification-link-text-view-feedback": "Terugkoppeling bekijken"
 }
