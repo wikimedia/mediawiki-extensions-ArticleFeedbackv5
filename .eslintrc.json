@@ -17,7 +17,6 @@
 		"mediawiki/class-doc": "off",
 		"mediawiki/msg-doc": "off",
 		"max-len": "off",
-		"vars-on-top": "off",
 		"no-multi-str": "warn",
 		"no-tabs": "warn",
 		"no-shadow": "warn"
