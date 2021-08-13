@@ -33,5 +33,7 @@
 	"articlefeedbackv5-bucket1-question-toggle": "Attruvasti zocchi stavi circannu?",
 	"articlefeedbackv5-bucket1-toggle-found-yes": "Sì",
 	"articlefeedbackv5-bucket1-toggle-found-no": "No",
-	"articlefeedbackv5-bucket1-toggle-found-yes-full": "Sì, attruvai zocchi stava circannu."
+	"articlefeedbackv5-bucket1-toggle-found-yes-full": "Sì, attruvai zocchi stava circannu.",
+	"articlefeedbackv5-bucket6-toggle-found-yes": "Sì",
+	"articlefeedbackv5-bucket6-toggle-found-no": "No"
 }
