@@ -58,15 +58,15 @@ class DataModelBackendLBFactory extends DataModelBackend {
 			if ( $db === DB_REPLICA ) {
 				/*
 				 * Let's keep querying primary database to make sure we have up-to-date
-				 * data (waiting for slaves to sync up might take some time)
+				 * data (waiting for replicas to sync up might take some time)
 				 */
 				$db = DB_PRIMARY;
 			} else {
 				/*
 				 * If another db is requested and we already requested primary database,
-				 * make sure this slave has caught up!
+				 * make sure this replica has caught up!
 				 */
-				$lb->waitFor( $lb->getMasterPos() );
+				$lb->waitFor( $lb->getPrimaryPos() );
 				static::$written[$wikiId] = false;
 			}
 		}
@@ -76,7 +76,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 
 	/**
 	 * Before caching data read from backend, we have to make sure that the
-	 * content read is in fact "cacheable" (e.g. not read from a lagging slave)
+	 * content read is in fact "cacheable" (e.g. not read from a lagging replica)
 	 *
 	 * @return bool
 	 */
