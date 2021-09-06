@@ -3,6 +3,7 @@
 		"authors": [
 			"Bugoslav",
 			"Herr Mlinka",
+			"MaGa",
 			"Neptune, the Mystic",
 			"Roberta F.",
 			"SpeedyGonsales"
@@ -144,7 +145,7 @@
 	"articlefeedbackv5-discussion-page": "Razgovor",
 	"articlefeedbackv5-whats-this": "Pomoć",
 	"articlefeedbackv5-settings-menu-title": "Postavke",
-	"articlefeedbackv5": "Ocjenjivanje članaka",
+	"articlefeedbackv5": "Ocjenjivanje članaka - središnja stranica",
 	"articlefeedbackv5-desc": "Ocjenjivanje članaka (probna inačica)",
 	"articlefeedbackv5-short-status-archive": "{{GENDER:$1|je pregledao $1|je pregledala $1}}"
 }
