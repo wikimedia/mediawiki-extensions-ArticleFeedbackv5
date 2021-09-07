@@ -44,7 +44,7 @@ abstract class DataModelBackend {
 
 	/**
 	 * Before caching data read from backend, we have to make sure that the
-	 * content read is in fact "cacheable" (e.g. not read from a lagging slave)
+	 * content read is in fact "cacheable" (e.g. not read from a lagging replica)
 	 *
 	 * @return bool
 	 */

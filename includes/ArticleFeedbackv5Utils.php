@@ -68,15 +68,15 @@ class ArticleFeedbackv5Utils {
 			if ( $db === DB_REPLICA ) {
 				/*
 				 * Let's keep querying primary database to make sure we have up-to-date
-				 * data (waiting for slaves to sync up might take some time)
+				 * data (waiting for replicas to sync up might take some time)
 				 */
 				$db = DB_PRIMARY;
 			} else {
 				/*
 				 * If another db is requested and we already requested primary database,
-				 * make sure this slave has caught up!
+				 * make sure this replica has caught up!
 				 */
-				$lb->waitFor( $lb->getMasterPos() );
+				$lb->waitFor( $lb->getPrimaryPos() );
 				static::$written[$wiki] = false;
 			}
 		}
