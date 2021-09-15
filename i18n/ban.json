@@ -12,6 +12,7 @@
 	"articlefeedbackv5-form-helpful-yes-label": "Inggih",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 inggih|$1 inggih}} / {{PLURAL:$2|1 nénten|$2 nénten}}",
 	"articlefeedbackv5-form-helpful": "Cihna ngawantu ($1)",
+	"articlefeedbackv5-form2-header-problem": "{{GENDER:$1|$1}} madué pikobet:",
 	"articlefeedbackv5-go-to-article": "Cingak kaca",
 	"articlefeedbackv5-viewactivity": "Cingak parilaksana",
 	"articlefeedbackv5-mask-view-contents": "Cingak cakepan",
