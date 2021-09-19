@@ -1,14 +1,12 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
-
 /**
  * This class will test the datamodel sample.
  *
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @group Database
  */
-class DataModelSampleTest extends MediaWikiTestCase {
+class DataModelSampleTest extends MediaWikiIntegrationTestCase {
 	/** @var DataModelSample */
 	protected $sample;
 
@@ -21,11 +19,7 @@ class DataModelSampleTest extends MediaWikiTestCase {
 		// include sample
 		require_once __DIR__ . '/../sample/DataModelSample.php';
 
-		// init some volatile BagOStuff
-		$this->setMwGlobals( [
-			'wgMemc' => new HashBagOStuff,
-		] );
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$cache = $this->getServiceContainer()->getMainWANObjectCache();
 		DataModelSample::setCache( $cache );
 
 		// define db backend
@@ -67,7 +61,7 @@ class DataModelSampleTest extends MediaWikiTestCase {
 		$this->sample->insert();
 
 		// data in cache
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$cache = $this->getServiceContainer()->getMainWANObjectCache();
 		$key = $cache->makeKey(
 			'DataModelSample-get',
 			$this->sample->{DataModelSample::getIdColumn()},
@@ -87,7 +81,7 @@ class DataModelSampleTest extends MediaWikiTestCase {
 		$this->sample->update();
 
 		// data in cache
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$cache = $this->getServiceContainer()->getMainWANObjectCache();
 		$key = $cache->makeKey(
 			'DataModelSample-get',
 			$this->sample->{DataModelSample::getIdColumn()},
