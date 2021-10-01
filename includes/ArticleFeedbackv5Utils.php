@@ -20,6 +20,7 @@
  * @subpackage Api
  */
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\MediaWikiServices;
 
