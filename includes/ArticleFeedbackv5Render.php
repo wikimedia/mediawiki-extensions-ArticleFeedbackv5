@@ -1424,7 +1424,7 @@ class ArticleFeedbackv5Render {
 	 * @return bool whether it's allowed
 	 */
 	public function isAllowed( $permission ) {
-		return $this->getUser()->isAllowed( $permission ) && !$this->getUser()->isBlocked();
+		return $this->getUser()->isAllowed( $permission ) && !$this->getUser()->getBlock();
 	}
 
 	/**

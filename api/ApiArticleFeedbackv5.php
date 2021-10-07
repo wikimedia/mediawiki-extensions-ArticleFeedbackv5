@@ -44,7 +44,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	public function execute() {
 		// Blocked users are, well, blocked.
 		$user = $this->getUser();
-		if ( $user->isBlocked() ) {
+		if ( $user->getBlock() ) {
 			$this->dieWithError(
 				'articlefeedbackv5-error-blocked',
 				'userblocked'

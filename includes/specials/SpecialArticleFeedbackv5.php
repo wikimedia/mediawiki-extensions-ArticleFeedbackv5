@@ -878,7 +878,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 */
 	public function isAllowed( $permission ) {
 		$user = $this->getUser();
-		return $user->isAllowed( $permission ) && !$user->isBlocked();
+		return $user->isAllowed( $permission ) && !$user->getBlock();
 	}
 
 	/**

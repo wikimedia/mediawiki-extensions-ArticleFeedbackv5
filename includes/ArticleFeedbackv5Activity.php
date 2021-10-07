@@ -270,7 +270,7 @@ class ArticleFeedbackv5Activity {
 		$total = 0;
 
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		if ( !$user->isBlocked() ) {
+		if ( !$user->getBlock() ) {
 			foreach ( $wgArticleFeedbackv5Permissions as $permission ) {
 				if ( $user->isAllowed( $permission ) ) {
 					// get count for this specific permission level from cache
@@ -527,7 +527,7 @@ class ArticleFeedbackv5Activity {
 			throw new MWException( "Action '$action' does not exist." );
 		}
 
-		return $user->isAllowed( self::$actions[$action]['permissions'] ) && !$user->isBlocked();
+		return $user->isAllowed( self::$actions[$action]['permissions'] ) && !$user->getBlock();
 	}
 
 	/**

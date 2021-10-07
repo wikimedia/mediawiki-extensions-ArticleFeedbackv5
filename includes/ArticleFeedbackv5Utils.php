@@ -127,7 +127,7 @@ class ArticleFeedbackv5Utils {
 		$enable &= in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces );
 
 		// check if user is not blocked
-		$enable &= !$user->isBlocked();
+		$enable &= !$user->getBlock();
 
 		// check if a, to this user sufficient, permission level is defined
 		if ( $wgArticleFeedbackv5EnableProtection && isset( $restriction->pr_level ) ) {
