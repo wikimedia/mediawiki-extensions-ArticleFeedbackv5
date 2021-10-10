@@ -20,12 +20,13 @@
 		"test": [
 			"parallel-lint . --exclude node_modules --exclude vendor",
 			"minus-x check .",
-			"phpcs -sp"
+			"@phpcs"
 		],
 		"fix": [
 			"phpcbf",
 			"minus-x fix .",
 			"phpcbf"
-		]
+		],
+		"phpcs": "phpcs -sp"
 	}
 }
