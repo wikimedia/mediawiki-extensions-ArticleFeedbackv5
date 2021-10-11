@@ -6,7 +6,7 @@
  * @author Matthias Mullie <mmullie@wikimedia.org>
  * @group Database
  */
-class ArticleFeedbackv5ModelTest extends MediaWikiTestCase {
+class ArticleFeedbackv5ModelTest extends MediaWikiIntegrationTestCase {
 	/** @var ArticleFeedbackv5Model */
 	protected $sample;
 

@@ -8,7 +8,7 @@ use MediaWiki\MediaWikiServices;
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @group Database
  */
-class DataModelSampleTest extends MediaWikiTestCase {
+class DataModelSampleTest extends MediaWikiIntegrationTestCase {
 	/** @var DataModelSample */
 	protected $sample;
 
