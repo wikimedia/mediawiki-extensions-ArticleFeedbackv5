@@ -116,7 +116,7 @@ class DataModelSampleTest extends MediaWikiIntegrationTestCase {
 		$list = DataModelSample::getList( 'hidden', $user, null, $offset, 'title', 'ASC' );
 		$this->assertEquals( $list->numRows(), DataModelSample::LIST_LIMIT );
 		$first = $list->fetchObject();
-		$this->assertEquals( $first->ds_title, 'Title #1' );
+		$this->assertEquals( 'Title #1', $first->ds_title );
 
 		// 2nd batch
 		$offset = $list->nextOffset();
@@ -129,7 +129,7 @@ class DataModelSampleTest extends MediaWikiIntegrationTestCase {
 		 * 50-something. This accounts for the 4-digit difference with what
 		 * you might expect at first glance ;)
 		 */
-		$this->assertEquals( $first->ds_title, 'Title #55' );
+		$this->assertEquals( 'Title #55', $first->ds_title );
 	}
 
 	public function testGetCount() {
