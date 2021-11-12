@@ -12,6 +12,7 @@
 			"Priviet",
 			"Revi",
 			"Ricolyuki",
+			"Underbaaar",
 			"Ykhwong",
 			"Ysjbserver",
 			"아라"
@@ -502,7 +503,9 @@
 	"articlefeedbackv5-leave-warning": "입력한 데이터는 저장되지 않을 수 있습니다.",
 	"articlefeedbackv5-toolbox-enable": "피드백 활성화",
 	"articlefeedbackv5-disable-preference": "문서에 평가 도구 보이지 않기",
+	"action-aft-reader": "의견제시 및 유용/부적절 로 표시",
 	"right-aft-reader": "피드백 게시 및 유용하거나 유용하지 않은 것으로 표시",
+	"action-aft-member": "의견제시 및 유용/부적절 로 표시",
 	"right-aft-member": "피드백 게시 및 유용하거나 유용하지 않은 것으로 표시",
 	"right-aft-editor": "알참 및 해결 피드백",
 	"right-aft-monitor": "피드백 숨기기 및 기록보호 요청",
