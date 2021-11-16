@@ -6,7 +6,8 @@
 			"MaGa",
 			"Neptune, the Mystic",
 			"Roberta F.",
-			"SpeedyGonsales"
+			"SpeedyGonsales",
+			"Ponor"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Hvala!",
@@ -26,9 +27,9 @@
 	"articlefeedbackv5-cta5-button-text": "Pogledajte sve komentare",
 	"articlefeedbackv5-cta6-confirmation-title": "Je li Vam potrebna pomoć u uređivanju {{SITENAME}}?",
 	"articlefeedbackv5-overlay-close": "Zatvori",
-	"articlefeedbackv5-error": "Došlo je do pogrješke.\nMolimo, pokušajte ponovno kasnije.",
+	"articlefeedbackv5-error": "Došlo je do pogreške. Pokušajte ponovno kasnije.",
 	"articlefeedbackv5-error-blocked": "Blokirani suradnici ne mogu ostavljati primjedbe.",
-	"articlefeedbackv5-error-unknown": "Nepoznata pogrješka.",
+	"articlefeedbackv5-error-unknown": "Nepoznata pogreška.",
 	"articlefeedbackv5-error-nofeedback": "Molimo ostavite Vaš komentar.",
 	"articlefeedbackv5-protection-level": "Ocjenjivanje članka",
 	"protect-level-aft-reader": "Omogući za sve suradnike",

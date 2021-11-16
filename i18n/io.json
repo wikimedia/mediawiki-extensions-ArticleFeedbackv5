@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joao Xavier"
+			"Joao Xavier",
+			"JSantos"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Danko!",
@@ -11,6 +12,8 @@
 	"articlefeedbackv5-error-blocked": "Blokusita uzeri ne povas sendar komenti.",
 	"articlefeedbackv5-error-flagging": "Eventis eroro dum signalado di ''feedback''.",
 	"protect-level-aft-editor": "Permisita nur por uzeri automatale konfirmata",
+	"articlefeedbackv5-contribs-status-action-hide": "Celez",
+	"articlefeedbackv5-form-helpful-yes-label": "Yes",
 	"articlefeedbackv5-form-helpful-no-label": "No",
 	"articlefeedbackv5-special-filter-unreviewed": "Sen revizo ($1)",
 	"articlefeedbackv5-special-filter-unreviewed-watchlist": "Sen revizo",
@@ -22,13 +25,18 @@
 	"articlefeedbackv5-form-unresolve": "Desfacez",
 	"articlefeedbackv5-form-unnoaction": "Desfacez",
 	"articlefeedbackv5-form-uninappropriate": "Desfacez",
+	"articlefeedbackv5-form-hide": "Celez ca redakto",
 	"articlefeedbackv5-form-unhide": "Desfacez",
 	"articlefeedbackv5-form-unarchive": "Desfacez",
 	"articlefeedbackv5-form-unoversight": "Desfacez",
+	"articlefeedbackv5-form-tooltip-unhide": "Desvelizez",
 	"articlefeedbackv5-error-loading-feedback": "Eventis eroro charjanta ''feedback''",
+	"articlefeedbackv5-discussion-page": "Diskutez",
+	"articlefeedbackv5-settings-menu-title": "Preferaji",
 	"articlefeedbackv5-comment-more": "Plusa",
 	"articlefeedbackv5-permalink-written-by-editor": "Skribita da enrejistrita uzero",
 	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "Importo:",
+	"articlefeedbackv5-permalink-activity-title": "Aktiveso",
 	"articlefeedbackv5-short-status-request": "{{GENDER:$1|Revizita da $1}}",
 	"articlefeedbackv5-short-status-unrequest": "{{GENDER:$1|Revizita da $1}}",
 	"articlefeedbackv5-short-status-decline": "{{GENDER:$1|Revizita da $1}}",
@@ -58,7 +66,9 @@
 	"articlefeedbackv5-noteflyover-unfeature-help": "Lernez pluse",
 	"articlefeedbackv5-noteflyover-resolve-help": "Lernez pluse",
 	"articlefeedbackv5-noteflyover-unresolve-help": "Lernez pluse",
+	"articlefeedbackv5-noteflyover-hide-caption": "Celez",
 	"articlefeedbackv5-noteflyover-hide-help": "Lernez pluse",
+	"articlefeedbackv5-noteflyover-unhide-caption": "Desvelizez",
 	"articlefeedbackv5-noteflyover-unhide-help": "Lernez pluse",
 	"articlefeedbackv5-noteflyover-noaction-help": "Lernez pluse",
 	"articlefeedbackv5-noteflyover-unnoaction-help": "Lernez pluse",
@@ -79,6 +89,7 @@
 	"articlefeedbackv5-bucket4-form-submit": "Redaktar ca pagino",
 	"articlefeedbackv5-bucket4-noedit-form-submit": "Lernez pluse",
 	"articlefeedbackv5-bucket6-question-toggle": "Ka vu trovis quon vu serchabis?",
+	"articlefeedbackv5-bucket6-toggle-found-yes": "Yes",
 	"articlefeedbackv5-bucket6-toggle-found-no": "No",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "Yes, me trovis quon me serchabis.",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "No, me ne trovis quon me serchabis.",
