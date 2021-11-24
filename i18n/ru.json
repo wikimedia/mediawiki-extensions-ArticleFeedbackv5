@@ -63,6 +63,7 @@
 	"apihelp-articlefeedbackv5-flag-feedback-param-feedbackid": "ID отзыва для отметки",
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Применяемый тип отметки",
 	"apihelp-articlefeedbackv5-flag-feedback-param-note": "Информация о том, почему выполнено действие с отзывом",
+	"apihelp-articlefeedbackv5-flag-feedback-param-toggle": "Флаг переключается атомарно, полезно только для (не)полезных",
 	"apihelp-articlefeedbackv5-flag-feedback-param-source": "Источник отметки: статья (страница), центральная (страница для отзывов), список наблюдения (страница), постоянная ссылка",
 	"apihelp-articlefeedbackv5-add-flag-note-description": "Добавить замечание, описывая активность после того, как действие было уже выполнено.",
 	"apihelp-articlefeedbackv5-add-flag-note-summary": "Добавить замечание, описывая активность после того, как действие было уже выполнено.",

@@ -14,7 +14,8 @@
 			"Rafael Vargas",
 			"Raylton P. Sousa",
 			"TheGabrielZaum",
-			555
+			555,
+			"TheEduGobi"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Enviar um comentário sobre um artigo",
@@ -413,7 +414,7 @@
 	"articlefeedbackv5-noteflyover-feature-label": "Adicionar uma nota",
 	"articlefeedbackv5-noteflyover-feature-placeholder": "Porque marcou esta postagem como útil?",
 	"articlefeedbackv5-noteflyover-feature-submit": "Adicionar nota",
-	"articlefeedbackv5-noteflyover-feature-help": "Saiba mais",
+	"articlefeedbackv5-noteflyover-feature-help": "Saber mais",
 	"articlefeedbackv5-noteflyover-unfeature-caption": "Marcada como útil",
 	"articlefeedbackv5-noteflyover-unfeature-label": "Adicionar uma nota",
 	"articlefeedbackv5-noteflyover-unfeature-placeholder": "Porque desmarcou esta postagem como útil?",
