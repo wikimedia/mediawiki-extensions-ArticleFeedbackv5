@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kipala",
 			"Kwisha",
 			"Lloffiwr",
 			"Stephenwanjau"
@@ -13,7 +14,7 @@
 	"articlefeedbackv5-cta2-confirmation-title": "Saidia kuboresha {{SITENAME}}",
 	"articlefeedbackv5-cta2-confirmation-call": "Wavuti hu umetengenezwa na watu kama wewe. Unaweza tupa mkono?",
 	"articlefeedbackv5-cta2-button-text": "Soma zaidi",
-	"articlefeedbackv5-cta4-confirmation-title": "Ungana na jumuia yetu",
+	"articlefeedbackv5-cta4-confirmation-title": "Ungana na jumuiya yetu",
 	"articlefeedbackv5-cta4-button-text-signup": "Sajili akaunti",
 	"articlefeedbackv5-cta4-button-text-login": "Ingia",
 	"articlefeedbackv5-cta4-button-text-later": "Labda baadaye",
