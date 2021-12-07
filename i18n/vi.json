@@ -7,7 +7,8 @@
 			"Thienhau2003",
 			"Vinhtantran",
 			"Withoutaname",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"NguoiDungKhongDinhDanh"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Cảm ơn!",
@@ -113,7 +114,7 @@
 	"articlefeedbackv5-status-autoflag": "Bài viết này đã được tự động gắn cờ bởi $1 trong $2 tại $3",
 	"articlefeedbackv5-new-marker": "Mới",
 	"articlefeedbackv5-oversight-marker": "Đã xóa hẳn",
-	"articlefeedbackv5-autohide-marker": "Bị ẩn",
+	"articlefeedbackv5-autohide-marker": "Bị tự động ẩn",
 	"articlefeedbackv5-hide-marker": "Ẩn",
 	"articlefeedbackv5-feature-marker": "Hữu ích",
 	"articlefeedbackv5-form-note": "Thêm ghi chú",

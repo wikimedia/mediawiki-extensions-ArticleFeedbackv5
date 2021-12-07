@@ -23,9 +23,15 @@
 			"Rmashhadi",
 			"ZxxZxxZ",
 			"جواد",
-			"پسر یاس"
+			"پسر یاس",
+			"Jeeputer"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "ثبت بازخورد دربارهٔ مقاله",
+	"apihelp-articlefeedbackv5-summary": "ثبت بازخورد دربارهٔ مقاله",
+	"apihelp-articlefeedbackv5-param-title": "عنوان صفحه برای قبت بازخورد دربارهٔ آن. نمی‌تواند به‌همراه $1pageid استفاده شود",
+	"apihelp-articlefeedbackv5-param-anontoken": "توکن برای کاربران ناشناس",
+	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "نوع پرچم برای افزودن",
 	"apihelp-query+articlefeedbackv5-view-activity-param-limit": "تعداد فعالیت‌ها برای نمایش در نتایج",
 	"articlefeedbackv5-cta-thanks": "سپاس!",
 	"articlefeedbackv5-cta-confirmation-message": "بازخورد ارسالی شما را می‌توان در [$1  صفحهٔ بازخورد] مشاهده کرد.",

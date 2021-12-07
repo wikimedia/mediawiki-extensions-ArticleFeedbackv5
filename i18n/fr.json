@@ -41,7 +41,8 @@
 			"Verdy p",
 			"Wikifan",
 			"Wladek92",
-			"Wyz"
+			"Wyz",
+			"Jules*"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Soumettre un commentaire sur un article",
@@ -563,7 +564,7 @@
 	"articlefeedbackv5-help-special-linkurl": "//fr.wikipedia.org/w/index.php?title=Aide:Outil_de_retour_des_lecteurs",
 	"articlefeedbackv5-help-special-linkurl-editors": "//fr.wikipedia.org/wiki/Aide:Outil_de_retour_des_lecteurs/Contributeurs",
 	"articlefeedbackv5-help-special-linkurl-monitors": "//fr.wikipedia.org/wiki/Aide:Outil_de_retour_des_lecteurs/Administrateurs",
-	"articlefeedbackv5-help-special-linkurl-oversighters": "//fr.wikipedia.org/w/index.php?title=Aide:Outil_de_retour_des_lecteurs/Masqueurs",
+	"articlefeedbackv5-help-special-linkurl-oversighters": "//fr.wikipedia.org/w/index.php?title=Aide:Outil_de_retour_des_lecteurs/Modérateurs",
 	"articlefeedbackv5-help-form-linkurl": "//fr.wikipedia.org/wiki/Aide:Outil de retour des lecteurs",
 	"articlefeedbackv5-help-form-linkurl-editors": "//fr.wikipedia.org/wiki/Wikipédia:Outil_de_retour_des_lecteurs",
 	"articlefeedbackv5-help-form-linkurl-monitors": "//fr.wikipedia.org/wiki/Aide:Outil de retour des lecteurs",

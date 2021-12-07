@@ -5,7 +5,8 @@
 			"Ans",
 			"Just Sayori",
 			"Nullzero",
-			"กิ๊ฟ เลิกล่ะ สายแข็ง"
+			"กิ๊ฟ เลิกล่ะ สายแข็ง",
+			"Bebiezaza"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "ส่งคำติชมบทความ",
@@ -138,6 +139,7 @@
 	"articlefeedbackv5-form-unarchive": "เลิกทำ",
 	"articlefeedbackv5-form-helpful": "ทำเครื่องหมายว่าเป็นประโยชน์ ($1)",
 	"articlefeedbackv5-form-unoversight": "เลิกทำ",
+	"articlefeedbackv5-form-tooltip-unhide": "เลิกซ่อน",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 พบสิ่งที่เขากำลังมองหา}}",
 	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2 ไม่พบสิ่งที่เขากำลังมองหา}}",
 	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 โพสต์ความคิดเห็น}}",

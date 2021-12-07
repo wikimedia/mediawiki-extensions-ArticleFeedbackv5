@@ -21,7 +21,8 @@
 			"חיים",
 			"ערן",
 			"פוילישער",
-			"שמזן"
+			"שמזן",
+			"דגש"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "שליחת משוב על הערך",
@@ -91,7 +92,7 @@
 	"articlefeedbackv5-cta1-confirmation-title": "הידעת שבאפשרותך לערוך דף זה?",
 	"articlefeedbackv5-cta1-confirmation-call": "אתר {{SITENAME}} עובד כי כל אחד יכול לערוך את הדפים בו. קדימה, נסו לערוך. היו נועזים!",
 	"articlefeedbackv5-cta1-learn-how": "למדו כיצד לערוך",
-	"articlefeedbackv5-cta1-edit-linktext": "עריכת דף זה",
+	"articlefeedbackv5-cta1-edit-linktext": "עריכת הדף הזה",
 	"articlefeedbackv5-cta2-confirmation-title": "עזרו לשפר את {{SITENAME}}",
 	"articlefeedbackv5-cta2-confirmation-call": "אתר זה נוצר על־ידי אנשים כמוך. אפשר לבקש ממך לעזור לנו?",
 	"articlefeedbackv5-cta2-button-text": "לפרטים נוספים",
@@ -515,7 +516,7 @@
 	"articlefeedbackv5-bucket4-teaser-line1": "אתר {{SITENAME}} עובד כי כל אחד יכול לערוך בו דפים.",
 	"articlefeedbackv5-bucket4-teaser-line2": "יאללה, באומץ, אפשר לנסות!",
 	"articlefeedbackv5-bucket4-learn-to-edit": "ללמוד איך לערוך",
-	"articlefeedbackv5-bucket4-form-submit": "לערוך את הדף הזה",
+	"articlefeedbackv5-bucket4-form-submit": "עריכת הדף הזה",
 	"articlefeedbackv5-bucket4-help-tooltip-info": "אתר {{SITENAME}} רוצה לדעת מה דעתך. אפשר לעזור לשפר את הדף הזה על־ידי הצטרפות לעורכים.",
 	"articlefeedbackv5-bucket4-noedit-title": "סייעו לשפר את {{SITENAME}}",
 	"articlefeedbackv5-bucket4-noedit-teaser-line1": "את האתר הזה יוצרים אנשים כמוך.",
