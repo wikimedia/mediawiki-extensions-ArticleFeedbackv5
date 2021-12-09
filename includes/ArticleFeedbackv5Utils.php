@@ -145,7 +145,8 @@ class ArticleFeedbackv5Utils {
 		$enable &= !self::isBlacklisted( $pageId );
 
 		// not disabled via preferences
-		$enable &= !$user->getOption( 'articlefeedback-disable' );
+		$enable &= !MediaWikiServices::getInstance()
+			->getUserOptionsLookup()->getOption( $user, 'articlefeedback-disable' );
 
 		// not viewing a redirect
 		$enable &= !$title->isRedirect();

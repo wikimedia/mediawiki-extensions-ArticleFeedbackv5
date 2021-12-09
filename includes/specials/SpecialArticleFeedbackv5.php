@@ -809,7 +809,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Was a filter requested via (hidden) user preference?
 		if ( !$filter || !in_array( $filter, $this->filters ) ) {
-			$filter = $this->getUser()->getOption( 'aftv5-last-filter' );
+			$filter = MediaWiki\MediaWikiServices::getInstance()
+				->getUserOptionsLookup()->getOption( $this->getUser(), 'aftv5-last-filter' );
 		}
 
 		// Was a filter requested via cookie?
