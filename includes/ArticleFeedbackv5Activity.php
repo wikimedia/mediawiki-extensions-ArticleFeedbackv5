@@ -211,7 +211,9 @@ class ArticleFeedbackv5Activity {
 	 */
 	public static function getList( ArticleFeedbackv5Model $feedback, User $user, $limit = 25, $continue = null ) {
 		// build where-clause for actions and feedback
-		$actions = self::buildWhereActions( $user->getRights() );
+		$actions = self::buildWhereActions(
+			MediaWikiServices::getInstance()->getPermissionManager()->getUserPermissions( $user )
+		);
 		$title = self::buildWhereFeedback( $feedback );
 
 		// nothing to get? return empty resultset
