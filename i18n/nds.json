@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Joachim Mos",
-			"Servien"
+			"Servien",
+			"Slomox"
 		]
 	},
 	"articlefeedbackv5-cta4-button-text-or": "oder",
@@ -20,7 +21,7 @@
 	"articlefeedbackv5-form-archive": "Archiv",
 	"articlefeedbackv5-form-unarchive": "Rutnehmen",
 	"articlefeedbackv5-form-unoversight": "Rutnehmen",
-	"articlefeedbackv5-go-to-article": "Sied ankieken",
+	"articlefeedbackv5-go-to-article": "Siet ankieken",
 	"articlefeedbackv5-discussion-page": "Diskuschoon",
 	"articlefeedbackv5-whats-this": "Hülp",
 	"articlefeedbackv5-comment-more": "Mehr",

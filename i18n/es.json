@@ -34,7 +34,8 @@
 			"Sporeunai",
 			"Stephensuleeman",
 			"Toliño",
-			"Translationista"
+			"Translationista",
+			"Jakeukalane"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Enviar sugerencias sobre el artículo",
@@ -102,7 +103,7 @@
 	"articlefeedbackv5-cta-thanks": "¡Gracias!",
 	"articlefeedbackv5-cta-confirmation-message": "Tu comentario puede verse en esta [$1 página de comentarios].",
 	"articlefeedbackv5-cta1-confirmation-title": "¿Sabías que puedes editar esta página?",
-	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} funciona porque cualquier persona puede editar sus páginas. Adelante, ¡inténtalo!. ¡Sé valiente!",
+	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} funciona porque cualquier persona puede editar sus páginas. Adelante, ¡inténtalo! ¡sé valiente!",
 	"articlefeedbackv5-cta1-learn-how": "Aprender a editar",
 	"articlefeedbackv5-cta1-edit-linktext": "Editar esta página",
 	"articlefeedbackv5-cta2-confirmation-title": "Ayuda a mejorar {{SITENAME}}",

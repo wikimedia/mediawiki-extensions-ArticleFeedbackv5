@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"AmaryllisGardener",
-			"John Reid"
+			"John Reid",
+			"MJL"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Thank ye!",
@@ -78,7 +79,7 @@
 	"articlefeedbackv5-form-own-toolbox-label": "Maurk yer post aes:",
 	"articlefeedbackv5-form-own-feedback": "Ye canna review yer ain posts.",
 	"articlefeedbackv5-form-helpful-label": "Is this feedback heelpfu?",
-	"articlefeedbackv5-form-helpful-yes-label": "Ai",
+	"articlefeedbackv5-form-helpful-yes-label": "Aye",
 	"articlefeedbackv5-form-helpful-no-label": "Naw",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% o readers foond this heelpfu}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 ai|$1 ai}} / {{PLURAL:$2|1 naw|$2 naw}}",
@@ -404,7 +405,7 @@
 	"articlefeedbackv5-noteflyover-decline-help": "Learn mair",
 	"articlefeedbackv5-bucket1-title": "Heelp impruiv this page",
 	"articlefeedbackv5-bucket1-question-toggle": "Did ye fynd whit ye were seekin?",
-	"articlefeedbackv5-bucket1-toggle-found-yes": "Ay",
+	"articlefeedbackv5-bucket1-toggle-found-yes": "Aye",
 	"articlefeedbackv5-bucket1-toggle-found-no": "Na",
 	"articlefeedbackv5-bucket1-toggle-found-yes-full": "Ay, Ah foond whit Ah wis seekin.",
 	"articlefeedbackv5-bucket1-toggle-found-no-full": "Na, Ah didna fynd whit Ah wis seekin.",
@@ -424,7 +425,7 @@
 	"articlefeedbackv5-bucket4-noedit-form-submit": "Learn mair",
 	"articlefeedbackv5-bucket6-title": "Heelp impruiv this page",
 	"articlefeedbackv5-bucket6-question-toggle": "Did ye fynd whit ye were seekin?",
-	"articlefeedbackv5-bucket6-toggle-found-yes": "Ay",
+	"articlefeedbackv5-bucket6-toggle-found-yes": "Aye",
 	"articlefeedbackv5-bucket6-toggle-found-no": "Na",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "Ay, Ah foond whit Ah wis seekin.",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "Na, Ah didna fynd whit Ah wis seekin.",
@@ -455,7 +456,7 @@
 	"right-aft-administrator": "See AFT oan protectit pages",
 	"right-aft-oversighter": "Owersicht feedback",
 	"log-name-articlefeedbackv5": "Airticle feedback acteevitie log",
-	"log-description-articlefeedbackv5": "This is the log o acteevitie taen oan feedback eetems haunit in bi uisers bi wa o Airticle Feedback.",
+	"log-description-articlefeedbackv5": "This is the log o acteevitie taen oan feedback items haunit in bi uisers bi wa o Airticle Feedback.",
 	"logentry-articlefeedbackv5-create": "$1 {{GENDER:$2|haunit in}} [[$3|feedback post #$4]] oan [[$5]]",
 	"logentry-articlefeedbackv5-oversight": "$1 {{GENDER:$2|chynged the status til owersicht o}} [[$3|feedback post #$4]] oan [[$5]]",
 	"logentry-articlefeedbackv5-unoversight": "$1 {{GENDER:$2|remuived the owersicht status o}} [[$3|feedback post #$4]] oan [[$5]]",

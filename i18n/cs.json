@@ -22,9 +22,16 @@
 			"SimonV",
 			"Tchoř",
 			"Utar",
-			"Vks"
+			"Vks",
+			"Jan Myšák",
+			"Patrik L.",
+			"Robins7"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "Odeslat zpětnou vazbu k článku",
+	"apihelp-articlefeedbackv5-summary": "Odeslat zpětnou vazbu k článku",
+	"apihelp-articlefeedbackv5-param-title": "Název stránky, ke které posíláte zpětnou vazbu. Nelze použít dohromady s $1pageid",
+	"apihelp-articlefeedbackv5-param-pageid": "ID stránky, ke které posíláte zpětnou vazbu. Nelze použít dohromady s $1title",
 	"apihelp-articlefeedbackv5-param-anontoken": "Token pro neregistrované uživatele",
 	"articlefeedbackv5-error-nonexistent-feedback": "Zpětná vazba neexistuje",
 	"articlefeedbackv5-cta-thanks": "Děkujeme!",
@@ -95,6 +102,7 @@
 	"articlefeedbackv5-special-filter-unreviewed": "Nezkontrolované ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Užitečné ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Neužitečné ($1)",
+	"articlefeedbackv5-special-filter-flagged": "Označeno ($1)",
 	"articlefeedbackv5-special-filter-useful": "Užitečné ($1)",
 	"articlefeedbackv5-special-filter-resolved": "Vyřešen ($1)",
 	"articlefeedbackv5-special-filter-noaction": "Není nutná žádná akce ($1)",
@@ -165,7 +173,7 @@
 	"articlefeedbackv5-form-unarchive": "Zpět",
 	"articlefeedbackv5-form-helpful": "Označit jako užitečné ($1)",
 	"articlefeedbackv5-form-flag": "Označeno jako zneužití",
-	"articlefeedbackv5-form-oversight": "Dozorce",
+	"articlefeedbackv5-form-oversight": "Utajovatel",
 	"articlefeedbackv5-form-unoversight": "Vrátit",
 	"articlefeedbackv5-form-request": "Žádost o dozor",
 	"articlefeedbackv5-form-discuss-talk": "Diskutovat na diskusní stránce",
@@ -175,6 +183,7 @@
 	"articlefeedbackv5-form-tooltip-noaction-own": "Nejasné, irelevantní, chvála, duplicitní...",
 	"articlefeedbackv5-form-tooltip-hide": "Nesmysl, spam, urážlivý obsah, soukromé údaje…",
 	"articlefeedbackv5-form-tooltip-unhide": "odkrýt",
+	"articlefeedbackv5-discuss-talk-section-title": "Zpětná vazba čtenářů: $1",
 	"articlefeedbackv5-form1-header-found": "$2 {{GENDER:$1|našel, co hledal|našla, co hledala}}.",
 	"articlefeedbackv5-form1-header-not-found": "$2 {{GENDER:$1|nenašel, co hledal|nenašla, co hledala}}.",
 	"articlefeedbackv5-form1-header-left-comment": "$2 {{GENDER:$1|přidal|přidala}} komentář.",
@@ -364,5 +373,10 @@
 	"articlefeedbackv5-talk-view-feedback": "Zobrazit názor čtenáře",
 	"articlefeedbackv5-watchlist-view-feedback": "Názor pro mé sledované stránky",
 	"articlefeedbackv5-disable-flyover-title": "Odstranit tento nástroj?",
-	"articlefeedbackv5-disable-flyover-prefbutton": "Přejít na moje předvolby"
+	"articlefeedbackv5-disable-flyover-prefbutton": "Přejít na moje předvolby",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "užitečné",
+	"echo-category-title-feedback": "Zpětná vazba",
+	"echo-pref-tooltip-feedback": "Upozorněte mě, když někdo označí zpětnou vazbu k článku jako užitečnou.",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Zobrazit zpětnou vazbu",
+	"articlefeedbackv5-notification-feedback-watch": "[[$3|Zpětná vazba]] k [[$2]] byla označena jako {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} uživatelem [[User:$1|$1]]."
 }

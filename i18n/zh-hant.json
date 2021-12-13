@@ -24,7 +24,8 @@
 			"Simon Shek",
 			"StephDC",
 			"Waihorace",
-			"Xiplus"
+			"Xiplus",
+			"Winston Sung"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "提交條目回饋",
@@ -95,7 +96,7 @@
 	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}}因所有人皆可編輯其頁面而存在。繼續吧，試一試，勇敢一些！",
 	"articlefeedbackv5-cta1-learn-how": "學習如何編輯",
 	"articlefeedbackv5-cta1-edit-linktext": "編輯此頁",
-	"articlefeedbackv5-cta2-confirmation-title": "幫助改善{{SITENAME}}",
+	"articlefeedbackv5-cta2-confirmation-title": "協助改善{{SITENAME}}",
 	"articlefeedbackv5-cta2-confirmation-call": "這個網站由像您一樣的人建立。您願意幫一把嗎？",
 	"articlefeedbackv5-cta2-button-text": "瞭解更多",
 	"articlefeedbackv5-cta3-confirmation-title": "請完成一下一張簡短的問卷",
@@ -520,7 +521,7 @@
 	"articlefeedbackv5-bucket4-learn-to-edit": "學習如何編輯",
 	"articlefeedbackv5-bucket4-form-submit": "編輯此頁",
 	"articlefeedbackv5-bucket4-help-tooltip-info": "{{SITENAME}}想知道您的意見。成為編輯者來幫助改善這個頁面。",
-	"articlefeedbackv5-bucket4-noedit-title": "幫助改善{{SITENAME}}",
+	"articlefeedbackv5-bucket4-noedit-title": "協助改善{{SITENAME}}",
 	"articlefeedbackv5-bucket4-noedit-teaser-line1": "本網站是由像您一樣的人間建立的。",
 	"articlefeedbackv5-bucket4-noedit-teaser-line2": "您可以幫助我們嗎？",
 	"articlefeedbackv5-bucket4-noedit-form-submit": "瞭解更多",

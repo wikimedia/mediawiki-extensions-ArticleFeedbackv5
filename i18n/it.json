@@ -18,7 +18,8 @@
 			"Saracrovetto",
 			"Selven",
 			"Senpremì",
-			"Ximo17"
+			"Ximo17",
+			"Daimona Eaytoy"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Invia feedback alla voce",
@@ -121,7 +122,7 @@
 	"articlefeedbackv5-protection-level-error": "Il livello di protezione del commento alla voce non può essere superiore al livello di protezione in Modifica",
 	"protect-level-aft-reader": "Abilita per tutti gli utenti",
 	"protect-level-aft-member": "Abilita solo per gli utenti che hanno effettuato l'accesso",
-	"protect-level-aft-editor": "Abilita solo per gli utenti \"autoconfermati\"",
+	"protect-level-aft-editor": "Abilita solo per gli utenti autoconvalidati",
 	"protect-level-aft-administrator": "Abilita solo per gli amministratori",
 	"protect-level-aft-noone": "Disabilita per tutti gli utenti",
 	"articlefeedbackv5-protection-title": "Modificata la visibilità dello strumento di feedback per \"[[$1]]\"",

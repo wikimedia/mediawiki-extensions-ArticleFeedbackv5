@@ -35,7 +35,9 @@
 			"佛壁灯",
 			"列维劳德",
 			"神樂坂秀吉",
-			"阿pp"
+			"阿pp",
+			"LaMagiaaa",
+			"SkEy"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "提交条目反馈",
@@ -668,6 +670,7 @@
 	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "$2的反馈已在{{SITENAME}}被$1{{GENDER:$1|表明}}为$4。$3",
 	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "您在{{SITENAME}}关于$2的反馈已被$1和$5 {{PLURAL:$6|位其他人}}给{{GENDER:$1|标记}}为$4。$3",
 	"articlefeedbackv5-notification-feedback-moderated": "[[User:$1|$1]]将您关于[[$2]]的[[$3|反馈]]给{{GENDER:$1|标记}}为{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
+	"articlefeedbackv5-notification-feedback-moderated-bundle": "您对于[[$2]]的[[$3|反馈]]已被用户[[User:$1|$1]]以及{{PLURAL:$5|其他}}$4名用户{{GENDER:$1|审核}}。",
 	"articlefeedbackv5-notification-feedback-moderated-flyout": "[[User:$1|$1]]将您关于[[$2]]的[[$3|反馈]]给{{GENDER:$1|标记}}为{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}。",
 	"articlefeedbackv5-notification-feedback-moderated-email-subject": "您在{{SITENAME}}关于$2的反馈已被{{GENDER:$1|标明}}为$3。",
 	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "您在{{SITENAME}}关于$2的反馈已被$1{{GENDER:$1|标明}}为$4。$3",

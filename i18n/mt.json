@@ -3,7 +3,8 @@
 		"authors": [
 			"Chrisportelli",
 			"Leli Forte",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"ToniSant"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Grazzi!",
@@ -266,6 +267,7 @@
 	"articlefeedbackv5-activity-pane-header": "Reġistru tal-attività",
 	"articlefeedbackv5-activity-feedback-date": "Mibgħut nhar il-$1",
 	"articlefeedbackv5-activity-permalink": "ħolqa permanenti",
+	"articlefeedbackv5-activity-note-archive": "Arkivjati wara {{PLURAL:$1|$1 jum|$1 jiem}} mingħajr attività",
 	"articlefeedbackv5-activity-more": "Uri aktar attività",
 	"articlefeedbackv5-disable-flyover-title": "Neħħi din l-għodda?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Mur fil-preferenzi tiegħi"

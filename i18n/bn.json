@@ -6,7 +6,10 @@
 			"Bellayet",
 			"Nasir8891",
 			"Wikitanvir",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"MdsShakil",
+			"YahyA",
+			"Yahya"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "ধন্যবাদ!",
@@ -213,7 +216,7 @@
 	"articlefeedbackv5-found-percent": "{{PLURAL:$2|$1 যা তারা খুঁজেছিলেন তা তারা পেয়েছেন}}",
 	"articlefeedbackv5": "নিবন্ধ প্রতিক্রিয়া - কেন্দ্রীয় পাতা",
 	"articlefeedbackv5watchlist": "নিবন্ধ প্রতিক্রিয়া - আমার পর্যবেক্ষণকৃত পাতাসমূহ",
-	"articlefeedbackv5-desc": "নিবন্ধ প্রতিক্রিয়া",
+	"articlefeedbackv5-desc": "ব্যবহারকারীদের একটি নিবন্ধ পর্যালোচনা এবং পরিবর্তনের পরামর্শ দেওয়ার মাধ্যমে অবদান রাখতে উৎসাহিত করে",
 	"articlefeedbackv5-comment-more": "আরও",
 	"articlefeedbackv5-comment-empty": "কোন পাঠ্য প্রবেশ হয়নি",
 	"articlefeedbackv5-page-disabled": "নিবন্ধ প্রতিক্রিয়ার পাতা এই পাতার জন্য সক্রিয় করা হয়নি।",
@@ -374,7 +377,7 @@
 	"articlefeedbackv5-toolbox-add": "আপনার প্রতিক্রিয়া যোগ করুন",
 	"articlefeedbackv5-toolbox-enable": "প্রতিক্রিয়া সক্রিয় করো",
 	"articlefeedbackv5-disable-preference": "পাতায় নিবন্ধ প্রতিক্রিয়া উইজেটটি দেখিও না",
-	"articlefeedbackv5-activity-pane-header": "সক্রিয়তা লগ্",
+	"articlefeedbackv5-activity-pane-header": "সক্রিয়তা লগ",
 	"articlefeedbackv5-activity-feedback-info": "$2 কর্তৃক প্রতিক্রিয়া",
 	"articlefeedbackv5-activity-feedback-date": "পোস্ট করেছিলেন $1",
 	"articlefeedbackv5-activity-permalink": "স্থায়ী সংযোগ",

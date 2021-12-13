@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bishnu Saikia"
+			"Bishnu Saikia",
+			"Simbu123"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "ধন্যবাদ!",
@@ -27,16 +28,19 @@
 	"articlefeedbackv5-special-sort-helpful-desc": "সহায়ক",
 	"articlefeedbackv5-special-sort-age-desc": "নতুনতম",
 	"articlefeedbackv5-special-sort-age-asc": "আটাইতকৈ পুৰণি",
+	"articlefeedbackv5-special-filter-select-more": "অধিক",
 	"articlefeedbackv5-details-link": "বিৱৰণসমূহ",
+	"articlefeedbackv5-special-more": "অধিক প'ষ্ট দেখুৱাওক",
 	"articlefeedbackv5-loading-tag": "ল'ড হৈ আছে…",
 	"articlefeedbackv5-new-marker": "নতুন",
 	"articlefeedbackv5-hide-marker": "অদৃশ্য",
 	"articlefeedbackv5-form-anon-username": "এজন পঢ়ুৱৈ",
-	"articlefeedbackv5-go-to-article": "প্ৰবন্ধ চাওক",
+	"articlefeedbackv5-go-to-article": "পৃষ্ঠা চাওক",
 	"articlefeedbackv5-discussion-page": "কথা-বতৰা",
 	"articlefeedbackv5-whats-this": "সহায়",
 	"articlefeedbackv5-comment-more": "অধিক",
 	"articlefeedbackv5-permalink-info-stats-title-length": "দৈর্ঘ্য",
+	"articlefeedbackv5-noteflyover-feature-help": "আৰু পঢ়ক",
 	"articlefeedbackv5-noteflyover-unfeature-help": "আৰু পঢ়ক।",
 	"articlefeedbackv5-noteflyover-resolve-label": "এটা টোকা যোগ কৰক",
 	"articlefeedbackv5-noteflyover-resolve-help": "আৰু পঢ়ক।",
@@ -44,11 +48,15 @@
 	"articlefeedbackv5-noteflyover-hide-label": "এটা টোকা যোগ কৰক",
 	"articlefeedbackv5-noteflyover-hide-help": "আৰু পঢ়ক।",
 	"articlefeedbackv5-noteflyover-unhide-label": "এটা টোকা যোগ কৰক",
+	"articlefeedbackv5-noteflyover-unhide-help": "আৰু পঢ়ক",
+	"articlefeedbackv5-noteflyover-noaction-help": "আৰু পঢ়ক",
+	"articlefeedbackv5-noteflyover-unnoaction-help": "আৰু পঢ়ক",
 	"articlefeedbackv5-noteflyover-request-label": "এটা টোকা যোগ কৰক",
 	"articlefeedbackv5-bucket1-toggle-found-yes": "হয়",
 	"articlefeedbackv5-bucket1-toggle-found-no": "নহয়",
 	"articlefeedbackv5-bucket4-noedit-form-submit": "আৰু পঢ়ক।",
 	"articlefeedbackv5-bucket6-toggle-found-yes": "হয়",
 	"articlefeedbackv5-bucket6-toggle-found-no": "নহয়",
-	"articlefeedbackv5-section-linktext": "মন্তব্য"
+	"articlefeedbackv5-section-linktext": "মন্তব্য",
+	"articlefeedbackv5-activity-more": "অধিক কাৰ্যকলাপ দেখুৱাওক"
 }

@@ -35,7 +35,9 @@
 			"Wikisaurus",
 			"Александр Сигачёв",
 			"Сrower",
-			"Сай"
+			"Сай",
+			"1233qwer1234qwer4",
+			"DDPAT"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Отправить отзыв на статью",
@@ -61,6 +63,7 @@
 	"apihelp-articlefeedbackv5-flag-feedback-param-feedbackid": "ID отзыва для отметки",
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Применяемый тип отметки",
 	"apihelp-articlefeedbackv5-flag-feedback-param-note": "Информация о том, почему выполнено действие с отзывом",
+	"apihelp-articlefeedbackv5-flag-feedback-param-toggle": "Флаг переключается атомарно, полезно только для (не)полезных",
 	"apihelp-articlefeedbackv5-flag-feedback-param-source": "Источник отметки: статья (страница), центральная (страница для отзывов), список наблюдения (страница), постоянная ссылка",
 	"apihelp-articlefeedbackv5-add-flag-note-description": "Добавить замечание, описывая активность после того, как действие было уже выполнено.",
 	"apihelp-articlefeedbackv5-add-flag-note-summary": "Добавить замечание, описывая активность после того, как действие было уже выполнено.",
@@ -90,7 +93,10 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-pageid": "ID страницы, для которой требуется получить оценки. Не может использоваться одновременно с $1title.",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-watchlist": "Загрузить отзывы из списка наблюдения участника (1) или из всех страниц (0)",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "Ключ для сортировки записей",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-sortdirection": "Направление (ASC|DESC) для сортировки отзывов по",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Какую фильтрацию применить к списку",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "Идентификатор конкретного элемента обратной связи для получения",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Смещение для начала сбора данных с",
 	"articlefeedbackv5-error-spamregex": "Комментарий был помечен SpamRegex'ом как оскорбительный",
 	"articlefeedbackv5-error-spamblacklist": "Комментарий был помечен SpamBlacklist'ом как оскорбительный",
 	"articlefeedbackv5-error-nonexistent-page": "Страница обратной связи не существует",
@@ -333,7 +339,7 @@
 	"articlefeedbackv5-invalid-log-update": "Запись журнала не может быть обновлена",
 	"articlefeedbackv5-invalid-feedback-flag": "Недопустимая отметка отзыва",
 	"articlefeedbackv5-invalid-feedback-state": "Недопустимое состояние отметки отзыва",
-	"articlefeedbackv5-feedback-reloaded-after-error": "Произошла ошибка ($1). Отзыв был перезагружен для того, чтоб отражать своё текущее состояние.",
+	"articlefeedbackv5-feedback-reloaded-after-error": "Произошла ошибка ($1). Отзыв был перезагружен для того, чтобы отражать своё текущее состояние.",
 	"articlefeedbackv5-go-to-article": "Просмотр страницы",
 	"articlefeedbackv5-discussion-page": "Обсуждение",
 	"articlefeedbackv5-whats-this": "Справка",

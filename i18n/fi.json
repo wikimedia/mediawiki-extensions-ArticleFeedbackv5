@@ -18,7 +18,8 @@
 			"Snidata",
 			"Stryn",
 			"Valtlait",
-			"VezonThunder"
+			"VezonThunder",
+			"Yupik"
 		]
 	},
 	"articlefeedbackv5-error-nonexistent-feedback": "Palautetta ei ole olemassa",
@@ -487,7 +488,7 @@
 	"articlefeedbackv5-activity-pane-header": "Toimintaloki",
 	"articlefeedbackv5-activity-feedback-info": "Palaute käyttäjältä $2",
 	"articlefeedbackv5-activity-feedback-date": "Lähetetty $1",
-	"articlefeedbackv5-activity-permalink": "Ikilinkki",
+	"articlefeedbackv5-activity-permalink": "ikilinkki",
 	"articlefeedbackv5-activity-item-request": "$1 {{GENDER:$6|pyysi}} häivytystä $4 kello $5 $2",
 	"articlefeedbackv5-activity-item-unrequest": "$1 {{GENDER:$6|perui}} häivytyspyynnön $4 kello $5 $2",
 	"articlefeedbackv5-activity-item-decline": "$1 {{GENDER:$6|torjui}} häivytyspyynnön $4 kello $5 $2",
@@ -524,6 +525,9 @@
 	"articlefeedbackv5-abusefilter-note-aftv5flag": "Automaattisesti merkitty väärinkäytöksi. Sääntö: $1",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Piilotettu automaattisesti. Sääntö: $1",
 	"articlefeedbackv5-abusefilter-note-aftv5request": "Pyydetty häivytystä automaattisesti. Sääntö: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "hyödyllinen",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "ratkaistu",
 	"echo-category-title-feedback": "Palaute",
+	"echo-pref-tooltip-feedback": "Ilmoita minulle kun joku merkitsee artikkelin palautteen hyödylliseksi",
 	"articlefeedbackv5-notification-link-text-view-feedback": "Näytä palaute"
 }
