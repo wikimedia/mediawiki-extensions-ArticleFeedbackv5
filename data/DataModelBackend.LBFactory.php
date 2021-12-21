@@ -41,13 +41,13 @@ class DataModelBackendLBFactory extends DataModelBackend {
 		 * Since we'll save a flag to indicate if a certain wiki has been written
 		 * to, we'll want to be certain that this data is accurate, and we don't
 		 * want a lower-down function to determine that false will result in
-		 * wfWikiID().
+		 * WikiMap::getCurrentWikiId().
 		 * Let's make sure that false also translates to a literal wiki name (e.g.
-		 * "enwiki", or whatever wfWikiID() results in); this way, if we access 2
+		 * "enwiki", or whatever WikiMap::getCurrentWikiId() results in); this way, if we access 2
 		 * the same wiki in 2 different ways, we'll still know for sure if data
 		 * has been written to that database already.
 		 */
-		$wikiId = ( $wiki === false ) ? wfWikiID() : $wiki;
+		$wikiId = ( $wiki === false ) ? WikiMap::getCurrentWikiId() : $wiki;
 
 		$lb = $this->getLB( $wiki );
 
