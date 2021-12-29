@@ -4,6 +4,7 @@
 			"Yupik"
 		]
 	},
+	"articlefeedbackv5-cta-thanks": "Späʹsseb!",
 	"articlefeedbackv5-cta1-edit-linktext": "Muuʹtt tän seeid",
 	"articlefeedbackv5-cta4-button-text-signup": "Raaj tobdldõõǥǥ",
 	"articlefeedbackv5-cta4-button-text-login": "Ǩeeʹrjtõõđ sizz",
@@ -20,5 +21,8 @@
 	"articlefeedbackv5-noteflyover-hide-caption": "Čiõǥǥ",
 	"articlefeedbackv5-bucket4-form-submit": "Muuʹtt tän seeid",
 	"articlefeedbackv5-section-linktext": "maacctõs",
-	"articlefeedbackv5-activity-permalink": "põõšši liŋkk"
+	"articlefeedbackv5-toolbox-view": "Čuäʹjet maacctõõzz",
+	"articlefeedbackv5-activity-permalink": "põõšši liŋkk",
+	"echo-category-title-feedback": "Maacctõs",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Čuäʹjet maacctõõzz"
 }
