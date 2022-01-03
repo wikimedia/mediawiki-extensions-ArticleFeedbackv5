@@ -595,5 +595,6 @@
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "해결됨",
 	"echo-category-title-feedback": "피드백",
 	"echo-pref-tooltip-feedback": "누군가가 문서 피드백을 유용한 것으로 표시하면 내게 알립니다.",
-	"articlefeedbackv5-notification-link-text-view-feedback": "피드백 보기"
+	"articlefeedbackv5-notification-link-text-view-feedback": "피드백 보기",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "{{SITENAME}}의 $2에 대한 제안은 $3(으)로 {{GENDER:$1|검토}}되었습니다."
 }
