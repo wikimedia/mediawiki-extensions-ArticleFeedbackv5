@@ -8,9 +8,14 @@
 			"Thienhau2003",
 			"Vinhtantran",
 			"Withoutaname",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Thingofme"
 		]
 	},
+	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "ID nhật trình để cập nhật",
+	"articlefeedbackv5-error-nonexistent-page": "Trang để phản hồi không tồn tại",
+	"articlefeedbackv5-error-permission-denied": "Bạn không có quyền để xem hoạt động phản hồi",
+	"articlefeedbackv5-error-nonexistent-feedback": "Phản hồi không tồn tại",
 	"articlefeedbackv5-cta-thanks": "Cảm ơn!",
 	"articlefeedbackv5-cta1-confirmation-title": "Bạn có biết rằng bạn có thể sửa đổi trang này?",
 	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} hoạt động được vì bất cứ ai cũng có thể sửa được trang. Nào, hãy thử xem. Tự tin lên!",
