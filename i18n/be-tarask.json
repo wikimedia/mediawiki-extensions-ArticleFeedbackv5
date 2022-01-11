@@ -636,5 +636,12 @@
 	"articlefeedbackv5-notification-link-text-view-feedback": "Праглядзець водгукі",
 	"articlefeedbackv5-notification-feedback-watch": "[[$3|Водгук]] пра [[$2]] быў пазначаны {{GENDER:$1|ўдзельнікам|ўдзельніцай}} [[User:$1|$1]] як {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}.",
 	"articlefeedbackv5-notification-feedback-watch-bundle": "[[$3|Водгук]] пра [[$2]] быў пазначаны {{GENDER:$1|ўдзельнікам|ўдзельніцай}} [[User:$1|$1]] і $5 {{PLURAL:$6|іншым|іншымі}} як {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}.",
-	"articlefeedbackv5-notification-feedback-watch-flyout": "[[$3|Водгук]] пра [[$2]] быў пазначаны {{GENDER:$1|ўдзельнікам|ўдзельніцай}} [[User:$1|$1]] як {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}."
+	"articlefeedbackv5-notification-feedback-watch-flyout": "[[$3|Водгук]] пра [[$2]] быў пазначаны {{GENDER:$1|ўдзельнікам|ўдзельніцай}} [[User:$1|$1]] як {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}.",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "Водгук пра $2 быў {{GENDER:$1|пазначаны}} як $3 на бачыне {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "Водгук пра $2 быў {{GENDER:$1|пазначаны}} як $4 карыстальнікам $1 на бачыне {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "Водгук пра $2 быў {{GENDER:$1|пазначаны}} як $4 карыстальнікам $1 і $5 {{PLURAL:$6|іншым|іншымі}} на бачыне {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated": "[[$3|Ваш водгук]] пра [[$2]] быў пазначаны як {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} {{GENDER:$1|удзельнікам|удзельніцай}} [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-bundle": "[[$3|Ваш водгук]] пра [[$2]] быў мадэраваны {{GENDER:$1|удзельнікам|удзельніцай}} [[User:$1|$1]] і $4 {{PLURAL:$5|іншым|іншымі}}.",
+	"articlefeedbackv5-notification-feedback-moderated-flyout": "[[$3|Ваш водгук]] пра [[$2]] быў пазначаны як {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} {{GENDER:$1|удзельнікам|удзельніцай}} [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-email-subject": "Ваш водгук пра $2 быў {{GENDER:$1|пазначаны}} як $3 на бачыне {{SITENAME}}."
 }
