@@ -8,6 +8,8 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Handles flagging of feedback
  *
@@ -979,7 +981,7 @@ class ArticleFeedbackv5Flagging {
 		];
 
 		$job = new ArticleFeedbackv5MailerJob( $page, $params );
-		JobQueueGroup::singleton()->push( $job );
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push( $job );
 	}
 
 	/**
