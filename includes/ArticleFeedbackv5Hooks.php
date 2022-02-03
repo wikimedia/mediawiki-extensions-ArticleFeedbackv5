@@ -557,10 +557,12 @@ class ArticleFeedbackv5Hooks {
 		$context = $article->getContext();
 		$user = $context->getUser();
 		$lang = $context->getLanguage();
-		$permErrors = MediaWikiServices::getInstance()->getPermissionManager()
+		$services = MediaWikiServices::getInstance();
+		$permErrors = $services->getPermissionManager()
 			->getPermissionErrors( 'protect', $user, $title );
-		if ( wfReadOnly() ) {
-			$permErrors[] = [ 'readonlytext', wfReadOnlyReason() ];
+		$readOnlyMode = $services->getReadOnlyMode();
+		if ( $readOnlyMode->isReadOnly() ) {
+			$permErrors[] = [ 'readonlytext', $readOnlyMode->getReason() ];
 		}
 		$disabled = $permErrors != [];
 		$disabledAttrib = $disabled ? [ 'disabled' => 'disabled' ] : [];
