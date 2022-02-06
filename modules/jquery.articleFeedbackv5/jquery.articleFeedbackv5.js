@@ -765,7 +765,7 @@
 
 				// remove excessive characters
 				if ( length < 0 ) {
-					$element.val( $element.val().substr( 0, maxLength ) );
+					$element.val( $element.val().slice( 0, Math.max( 0, maxLength ) ) );
 				}
 
 				// only display the countdown for the last X characters
@@ -2376,7 +2376,7 @@
 		// check throttling
 		if ( $.articleFeedbackv5.throttleThresholdPostsPerHour !== -1 ) {
 			// MSIE<9 does not support Date.now(), hence the workaround
-			now = ( new Date() ).getTime();
+			now = Date.now();
 			msInHour = 3600000;
 
 			timestampsCookieName = mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'submission_timestamps' );

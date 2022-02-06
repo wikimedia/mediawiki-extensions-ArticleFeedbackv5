@@ -22,7 +22,7 @@
 
 			remove = function () {
 				var $aft = $( '#mw-articlefeedback' ),
-					timeDiff = ( ( new Date() ).getTime() - initTime.getTime() ) / 1000;
+					timeDiff = ( Date.now() - initTime.getTime() ) / 1000;
 
 				if ( $aft.length > 0 ) {
 					$aft.remove();

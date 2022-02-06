@@ -248,9 +248,9 @@
 
 	/**
 	 * Before the current getCookieName() function, cookie names were:
-	 * * really long
-	 * * incorrect using the tracking version number to differentiate JS/cookie versions
-	 * * not being prefixed by wgCookiePrefix
+	 * really long
+	 * incorrect using the tracking version number to differentiate JS/cookie versions
+	 * not being prefixed by wgCookiePrefix
 	 *
 	 * These issues have since been fixed, but this will make sure that lingering old
 	 * cookie are cleaned up. This function will not merge the old cookies to the new
