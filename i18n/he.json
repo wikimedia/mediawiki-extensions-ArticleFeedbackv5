@@ -22,7 +22,8 @@
 			"חיים",
 			"ערן",
 			"פוילישער",
-			"שמזן"
+			"שמזן",
+			"לואיקה"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "שליחת משוב על הערך",
@@ -78,7 +79,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-pageid": "מזהה הדף לשליחת ציוני משוב. לא ניתן לשימוש יחד עם $1pageid",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-watchlist": "טען משוב מרשימת הצפייה של המשתמש (1) או מכל הדפים (0)",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "מפתח למיון רשומות לפי",
-	"apihelp-query+articlefeedbackv5-view-feedback-param-sortdirection": "כיוון (ASC | DESC) למיון המשוב לפי",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-sortdirection": "Direction (ASC|DESC) to sort the feedback by",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "איזה סינון ברצונך להחיל לרשימה",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "המזהה של פריט משוב ספציפי שיש להגיע אליו",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "קיזוז כדי להתחיל למשוך נתונים ב",
