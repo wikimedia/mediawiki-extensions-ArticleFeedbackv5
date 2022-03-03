@@ -225,7 +225,7 @@
 	"articlefeedbackv5-special-sort-helpful-desc": "Utile",
 	"articlefeedbackv5-special-sort-helpful-asc": "Inutile",
 	"articlefeedbackv5-special-sort-age-desc": "Les plus récents en premier",
-	"articlefeedbackv5-special-sort-age-asc": "Les plus anciens en premier",
+	"articlefeedbackv5-special-sort-age-asc": "Depuis les plus anciens",
 	"articlefeedbackv5-special-sort-label": "Trier par :",
 	"articlefeedbackv5-special-filter-select-more": "Plus",
 	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|Un commentaire|$1 commentaires}}",
