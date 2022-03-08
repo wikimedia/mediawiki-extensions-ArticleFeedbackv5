@@ -17,6 +17,7 @@
 	"articlefeedbackv5-status-hide": "Taan viestâ čievâi $1 $2 tme $3",
 	"articlefeedbackv5-autohide-marker": "Automaatlávt čiehhum",
 	"articlefeedbackv5-discussion-page": "Savâstâllâm",
+	"articlefeedbackv5-whats-this": "Iše",
 	"articlefeedbackv5-settings-menu-title": "Asâttâsah",
 	"articlefeedbackv5-mask-text-autohide": "{{GENDER:$2|$2}} čievâi automaatlávt taam viestâ #$1 $3.",
 	"articlefeedbackv5-permalink-activity-subtitle": "({{PLURAL:$1|$1 toimâdem|$1 tooimâdmid}})",
