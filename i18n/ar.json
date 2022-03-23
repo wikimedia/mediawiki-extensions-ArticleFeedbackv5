@@ -3,6 +3,7 @@
 		"authors": [
 			"Asaifm",
 			"Ciphers",
+			"FiberAhmed",
 			"Ibrahim.ID",
 			"Kuwaity26",
 			"Maroen1990",
@@ -81,7 +82,7 @@
 	"articlefeedbackv5-cta-thanks": "شكرا!",
 	"articlefeedbackv5-cta-confirmation-message": "تم نشر ملاحظاتك [ $1  هنا].",
 	"articlefeedbackv5-cta1-confirmation-title": "هل تعلم أنه بإمكانك تحرير هذه الصفحة؟",
-	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} تعمل لأنه يمكن لأي شخص تحرير صفحاتها. كن جريئا وقم بالمحاولة!",
+	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} تعمل لأنه يمكن لأي شخص تحرير صفحاتها. كن جريئًا وقم بالمحاولة!",
 	"articlefeedbackv5-cta1-learn-how": "تعلم كيف تحرر",
 	"articlefeedbackv5-cta1-edit-linktext": "تعديل هذه الصفحة",
 	"articlefeedbackv5-cta2-confirmation-title": "ساعد في تحسين {{SITENAME}}",
