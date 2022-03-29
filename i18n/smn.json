@@ -21,7 +21,7 @@
 	"articlefeedbackv5-whats-this": "Iše",
 	"articlefeedbackv5-settings-menu-title": "Asâttâsah",
 	"articlefeedbackv5-mask-text-autohide": "{{GENDER:$2|$2}} čievâi automaatlávt taam viestâ #$1 $3.",
-	"articlefeedbackv5-permalink-activity-subtitle": "({{PLURAL:$1|$1 toimâdem|$1 tooimâdmid}})",
+	"articlefeedbackv5-permalink-activity-subtitle": "({{PLURAL:$1|$1 toimâdem|$1 toimâdem|$1 toimâdem|$1 tooimâdmid}})",
 	"articlefeedbackv5-permalink-status-autohide": "{{GENDER:$1|<strong>Automaatlávt čiehâm</strong> $1}} $2",
 	"articlefeedbackv5-permalink-status-hide": "{{GENDER:$1|<strong>Čiehâm</strong> $1}} $2",
 	"articlefeedbackv5-noteflyover-hide-caption": "Čievâ",
