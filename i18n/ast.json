@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu"
+			"Xuacu",
+			"Fitoschido"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Unviar un comentariu sobro l'artículu",
@@ -20,8 +21,8 @@
 	"apihelp-articlefeedbackv5-get-count-param-title": "Títulu de la páxina pa la que llograr la clasificación de los comentarios. Nun puede usase xunto con $1pageid",
 	"apihelp-articlefeedbackv5-get-count-param-pageid": "Identificador de la páxina pa la que llograr la clasificación de comentarios. Nun puede usase xunto con $1title",
 	"apihelp-articlefeedbackv5-get-count-param-filter": "Qué filtráu aplicar a la llista",
-	"apihelp-articlefeedbackv5-flag-feedback-description": "Marcar un identificador de comentariu como abusivu o tapecíu.",
-	"apihelp-articlefeedbackv5-flag-feedback-summary": "Marcar un identificador de comentariu como abusivu o tapecíu.",
+	"apihelp-articlefeedbackv5-flag-feedback-description": "Marcar un identificador de comentariu como abusivu o anubríu.",
+	"apihelp-articlefeedbackv5-flag-feedback-summary": "Marcar un identificador de comentariu como abusivu o anubríu.",
 	"apihelp-articlefeedbackv5-flag-feedback-param-title": "Títulu de la páxina pa la que marcar un comentariu. Nun puede usase xunto con $1pageid",
 	"apihelp-articlefeedbackv5-flag-feedback-param-pageid": "Identificador de la páxina pa la que marcar un comentariu. Nun puede usase xunto con $1title",
 	"apihelp-articlefeedbackv5-flag-feedback-param-feedbackid": "Identificador del comentariu a marcar",
@@ -129,7 +130,7 @@
 	"articlefeedbackv5-contribs-status-action-hide": "Anubrir",
 	"articlefeedbackv5-contribs-status-action-request": "Agüeyamientu solicitáu",
 	"articlefeedbackv5-contribs-status-action-oversight": "Güeyáu",
-	"articlefeedbackv5-contribs-hidden-feedback": "comentariu tapecíu",
+	"articlefeedbackv5-contribs-hidden-feedback": "comentariu anubríu",
 	"articlefeedbackv5-form-toolbox-label": "Marcar como:",
 	"articlefeedbackv5-form-own-toolbox-label": "Marcar el so mensaxe como:",
 	"articlefeedbackv5-form-own-feedback": "Nun pue revisar los mensaxes propios.",
@@ -215,8 +216,8 @@
 	"articlefeedbackv5-status-unarchive": "$1 desarchivó esti mensaxe el $2 a les $3",
 	"articlefeedbackv5-new-marker": "Nuevu",
 	"articlefeedbackv5-oversight-marker": "Supervisáu",
-	"articlefeedbackv5-autohide-marker": "Tapecíu automáticamente",
-	"articlefeedbackv5-hide-marker": "Tapecíu",
+	"articlefeedbackv5-autohide-marker": "Anubríu n’automático",
+	"articlefeedbackv5-hide-marker": "Anubríu",
 	"articlefeedbackv5-feature-marker": "Útil",
 	"articlefeedbackv5-resolve-marker": "Resueltu",
 	"articlefeedbackv5-noaction-marker": "Nun fai falta una aición",
@@ -235,7 +236,7 @@
 	"articlefeedbackv5-form-unnoaction-own": "Amosar el mio mensaxe",
 	"articlefeedbackv5-form-inappropriate": "Inapropiáu",
 	"articlefeedbackv5-form-uninappropriate": "Desfacer",
-	"articlefeedbackv5-form-hide": "Tapecer esti mensaxe",
+	"articlefeedbackv5-form-hide": "Anubrir esti mensaxe",
 	"articlefeedbackv5-form-unhide": "Desfacer",
 	"articlefeedbackv5-form-archive": "Archivar",
 	"articlefeedbackv5-form-unarchive": "Desfacer",
@@ -365,7 +366,7 @@
 	"articlefeedbackv5-permalink-status-request": "{{GENDER:$1|$1 solicitó una <strong>supervisión</strong>}} $2",
 	"articlefeedbackv5-permalink-status-unrequest": "{{GENDER:$1|$1 anuló la solicitú de <strong>supervisión</strong>}} $2",
 	"articlefeedbackv5-permalink-status-decline": "{{GENDER:$1|$1 declinó la <strong>supervisión</strong>}} $2",
-	"articlefeedbackv5-permalink-status-autohide": "{{GENDER:$1|<strong>Tapecíu automáticamente</strong> por $1}} $2",
+	"articlefeedbackv5-permalink-status-autohide": "{{GENDER:$1|<strong>Anubríu n’automático</strong> por $1}} $2",
 	"articlefeedbackv5-permalink-status-oversight": "{{GENDER:$1|<strong>Supervisáu</strong> por $1}} $2",
 	"articlefeedbackv5-permalink-status-unoversight": "{{GENDER:$1|<strong>Supervisión anulada</strong> por $1}} $2",
 	"articlefeedbackv5-permalink-status-flag": "{{GENDER:$1|<strong>Marcáu</strong> por $1}} $2",
@@ -381,7 +382,7 @@
 	"articlefeedbackv5-permalink-status-uninappropriate": "{{GENDER:$1|<strong>Desmarcáu como inapropiáu</strong> por $1}} $2",
 	"articlefeedbackv5-permalink-status-archive": "{{GENDER:$1|Archiváu por $1}} $2",
 	"articlefeedbackv5-permalink-status-unarchive": "{{GENDER:$1|Desarchiváu por $1}} $2",
-	"articlefeedbackv5-permalink-status-hide": "{{GENDER:$1|<strong>Tapecíu</strong> por $1}} $2",
+	"articlefeedbackv5-permalink-status-hide": "{{GENDER:$1|<strong>Anubríu</strong> por $1}} $2",
 	"articlefeedbackv5-permalink-status-unhide": "{{GENDER:$1|<strong>Amosáu</strong> por $1}} $2",
 	"articlefeedbackv5-permalink-status-helpful": "{{GENDER:$1|<strong>Marcáu como útil</strong> por $1}} $2",
 	"articlefeedbackv5-permalink-status-undo-helpful": "{{GENDER:$1|<strong>Desmarcáu como útil</strong> por $1}} $2",
@@ -606,8 +607,8 @@
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "Resueltu automáticamente. Regla: $1",
 	"abusefilter-edit-action-aftv5flagabuse": "(Article Feedback) Marcar automáticamente como abusivu",
 	"articlefeedbackv5-abusefilter-note-aftv5flag": "Marcáu automáticamente como abusu. Regla: $1",
-	"abusefilter-edit-action-aftv5hide": "(Article Feedback) Tapecer automáticamente",
-	"articlefeedbackv5-abusefilter-note-aftv5hide": "Tapecíu automáticamente. Regla: $1",
+	"abusefilter-edit-action-aftv5hide": "(Article Feedback) Anubrir n’automático",
+	"articlefeedbackv5-abusefilter-note-aftv5hide": "Anubríu n’automático. Regla: $1",
 	"abusefilter-edit-action-aftv5request": "(Article Feedback) Pidir supervisión automáticamente",
 	"articlefeedbackv5-abusefilter-note-aftv5request": "Supervisión solicitada automáticamente.  Regla: $1"
 }
