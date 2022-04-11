@@ -35,6 +35,7 @@
 	"apihelp-articlefeedbackv5-param-anontoken": "توکن برای کاربران ناشناس",
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "نوع پرچم برای افزودن",
 	"apihelp-query+articlefeedbackv5-view-activity-param-limit": "تعداد فعالیت‌ها برای نمایش در نتایج",
+	"articlefeedbackv5-error-nonexistent-feedback": "بازخورد وجود ندارد",
 	"articlefeedbackv5-cta-thanks": "سپاس!",
 	"articlefeedbackv5-cta-confirmation-message": "بازخورد ارسالی شما را می‌توان در [$1  صفحهٔ بازخورد] مشاهده کرد.",
 	"articlefeedbackv5-cta1-confirmation-title": "آیا می‌دانید که می‌توانید این صفحه را ویرایش کنید؟",
