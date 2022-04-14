@@ -11,7 +11,7 @@
 		"mediawiki/abuse-filter": "dev-master"
 	},
 	"require-dev": {
-		"mediawiki/mediawiki-codesniffer": "31.0.0",
+		"mediawiki/mediawiki-codesniffer": "38.0.0",
 		"mediawiki/minus-x": "1.1.0",
 		"php-parallel-lint/php-console-highlighter": "0.5.0",
 		"php-parallel-lint/php-parallel-lint": "1.2.0"
@@ -20,12 +20,13 @@
 		"test": [
 			"parallel-lint . --exclude node_modules --exclude vendor",
 			"minus-x check .",
-			"phpcs -sp"
+			"@phpcs"
 		],
 		"fix": [
 			"phpcbf",
 			"minus-x fix .",
 			"phpcbf"
-		]
+		],
+		"phpcs": "phpcs -sp"
 	}
 }
