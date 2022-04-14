@@ -4,7 +4,8 @@
 			"Kipala",
 			"Kwisha",
 			"Lloffiwr",
-			"Stephenwanjau"
+			"Stephenwanjau",
+			"Wangombe"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Asante!",
@@ -21,7 +22,7 @@
 	"articlefeedbackv5-cta4-button-text-or": "au",
 	"articlefeedbackv5-cta5-button-text": "Ona maoni yote",
 	"articlefeedbackv5-overlay-close": "Funga",
-	"articlefeedbackv5-contribs-entry-status": "Hali: $1",
+	"articlefeedbackv5-contribs-entry-status": ". . Hali: $1",
 	"articlefeedbackv5-contribs-hidden-feedback": "maoni yaliyofichwa",
 	"articlefeedbackv5-form-helpful-yes-label": "Ndiyo",
 	"articlefeedbackv5-form-helpful-no-label": "Hapana",
@@ -35,7 +36,7 @@
 	"articlefeedbackv5-new-marker": "Mpya",
 	"articlefeedbackv5-hide-marker": "Imefichwa",
 	"articlefeedbackv5-form-anon-username": "Msomaji",
-	"articlefeedbackv5-go-to-article": "Tazama makala",
+	"articlefeedbackv5-go-to-article": "Tazama ukurasa",
 	"articlefeedbackv5-discussion-page": "Majadiliano",
 	"articlefeedbackv5-whats-this": "Msaada",
 	"articlefeedbackv5-invalid-page-id": "ID ya ukurasa ni batili",
