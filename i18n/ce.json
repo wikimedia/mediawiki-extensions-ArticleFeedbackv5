@@ -5,6 +5,7 @@
 			"Умар"
 		]
 	},
+	"articlefeedbackv5-error-nonexistent-feedback": "Йуханехьа зӀе йац",
 	"articlefeedbackv5-cta-thanks": "Баркалла!",
 	"articlefeedbackv5-cta2-button-text": "Ма-дарра",
 	"articlefeedbackv5-cta4-button-text-login": "Системин довзийтар",
@@ -12,6 +13,7 @@
 	"articlefeedbackv5-overlay-close": "ДӀачӀагӀа",
 	"restriction-articlefeedbackv5": "Гуш хилар",
 	"articlefeedbackv5-disabled-admin-button-text": "Ларйар хийцар",
+	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Йуханехьа зӀе: $4]] $5 $6 $7",
 	"articlefeedbackv5-contribs-status-action-hide": "Къайлаяьккхина",
 	"articlefeedbackv5-form-helpful-yes-label": "ХӀаъ",
 	"articlefeedbackv5-special-filter-unreviewed-watchlist": "Талланзарш",
@@ -74,5 +76,6 @@
 	"articlefeedbackv5-help-tooltip-linktext": "Ма-дарра",
 	"articlefeedbackv5-section-linktext": "йазде хьайна хетарг",
 	"articlefeedbackv5-activity-permalink": "Цахийцалун хьажорг",
+	"articlefeedbackv5-watchlist-view-feedback": "Сан гӀарйаьлла агӀонашкара йуханехьа зӀе",
 	"articlefeedbackv5-email-request-oversight-body": "Маршалла ду шоьга ревизораш!\n\nДекъашхочо $1 дехар дина $2 агӀонгахь дехнарг къайладаккхар:\n\n\n\nДехар до, хӀокху дехаре хьаьжжина кхочуш де йа тӀе малаца:\n\n$3\n$5\n\nБаркалла,\n\n\nКуьйгалла {{SITENAME}}\n\n\nP.S.: Ревизорин функцех лаьцна хьай хатар делахь FAQ йеша:\n\n$4"
 }
