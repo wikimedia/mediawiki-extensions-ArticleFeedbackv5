@@ -31,7 +31,8 @@
 			"カッパ鳥",
 			"マツムシ",
 			"神樂坂秀吉",
-			"青子守歌"
+			"青子守歌",
+			"春春眠眠"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "記事のフィードバックを送信",
@@ -638,6 +639,7 @@
 	"articlefeedbackv5-article-view-feedback": "$1 件の読者{{PLURAL:$1|コメント}}",
 	"articlefeedbackv5-talk-view-feedback": "読者の提案を表示",
 	"articlefeedbackv5-watchlist-view-feedback": "自分がウォッチしているページへのフィードバック",
+	"articlefeedbackv5-email-request-oversight-subject": "オーバーサイトは記事のフィードバックページをリクエストしました。",
 	"articlefeedbackv5-email-request-oversight-body": "こんにちは、秘匿者の皆さん！\n\n\n$1によって、下記ページの投稿について秘匿がリクエストされました。\n\n$2\n\n内容を確認し、この秘匿の許可あるいは拒否の判断してください。\n\n$3\n$5\n\nよろしくお願いいたします。\n\n{{SITENAME}} チームより\n\n\n追伸：\n秘匿について何かわからないことがあれば、下記の秘匿者FAQをご覧ください。\n\n$4",
 	"articlefeedbackv5-email-request-oversight-body-notes": "このコメントは秘匿申請に追加されました。\n\n$1",
 	"articlefeedbackv5-disable-flyover-title": "このツールを除去しますか?",
