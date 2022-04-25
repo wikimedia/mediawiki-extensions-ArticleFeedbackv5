@@ -23,7 +23,9 @@
 			"Tiin",
 			"Tomabrafix",
 			"Wikifan",
-			"Wnme"
+			"Wnme",
+			"FF-11",
+			"ZiqiLiang"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Versendet die Artikel-Rückmeldung",
@@ -33,8 +35,10 @@
 	"apihelp-articlefeedbackv5-param-revid": "Versionskennung, für die die Rückmeldung abgesandt werden soll.",
 	"apihelp-articlefeedbackv5-param-anontoken": "Token für anonyme Benutzer",
 	"apihelp-articlefeedbackv5-param-bucket": "Welches Rückmeldungsformular dem Benutzer angezeigt wurde",
+	"apihelp-articlefeedbackv5-param-cta": "CTA wird nach dem Absenden des Formulars angezeigt",
 	"apihelp-articlefeedbackv5-param-link": "Welchen Link der Benutzer angeklickt hat, um das Widget zu erhalten.",
 	"apihelp-articlefeedbackv5-param-found": "Ja-Nein-Antwort auf die Frage, ob die Seite hilfreich war.",
+	"apihelp-articlefeedbackv5-param-comment": "Das Freitext-Feedback",
 	"apihelp-articlefeedbackv5-get-count-description": "Ruft die Menge an Rückmeldungen für eine bestimmte Seite/einen bestimmten Filter ab",
 	"apihelp-articlefeedbackv5-get-count-summary": "Ruft die Anzahl der Rückmeldungen für eine bestimmte Seite oder einen bestimmten Filter ab",
 	"apihelp-articlefeedbackv5-get-count-param-filter": "Welche Filterung für die Liste angewandt werden soll",
