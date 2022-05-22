@@ -6,10 +6,13 @@
 		<exclude name="MediaWiki.Commenting.MissingCovers.MissingCovers" />
 		<exclude name="MediaWiki.Files.ClassMatchesFilename.NotMatch" />
 		<exclude name="MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName" />
+		<exclude name="MediaWiki.PHPUnit.AssertionOrder.WrongOrder" />
+		<exclude name="MediaWiki.Usage.DeprecatedConstantUsage.DB_MASTER" />
 		<exclude name="MediaWiki.Usage.ExtendClassUsage.FunctionConfigUsage" />
 		<exclude name="MediaWiki.Usage.ExtendClassUsage.FunctionVarUsage" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
 		<exclude name="PEAR.Functions.ValidDefaultValue.NotAtEnd" />
+		<exclude name="PSR12.Functions.ReturnTypeDeclaration.SpaceBeforeColon" />
 		<exclude name="Squiz.Classes.ValidClassName.NotCamelCaps" />
 	</rule>
 	<rule ref="Generic.Files.LineLength">
