@@ -441,11 +441,14 @@ class ArticleFeedbackv5Activity {
 
 			/*
 			 * The goal is to fetch only the last (editor) action for every feedback
-			 * entry. To achieve this, we'll need to get all most recent ids through
+			 * entry. To achieve this, we'll need to get all most recent ids <s>through
 			 * a subquery (the below $ids query), which will then be folded into the
-			 * main query that will get all of those last actions' details.
+			 * main query that will get all of those last actions' details</s>.
+			 *
+			 * @note No longer using a subquery.
+			 * @see https://phabricator.wikimedia.org/T308685
 			 */
-			$ids = ArticleFeedbackv5Utils::getDB( DB_REPLICA )->selectSQLText(
+			$ids = ArticleFeedbackv5Utils::getDB( DB_REPLICA )->selectField(
 				[ 'logging' ],
 				[ 'last_id' => 'MAX(log_id)' ],
 				$where,
@@ -457,8 +460,7 @@ class ArticleFeedbackv5Activity {
 			$actorQuery = ActorMigration::newMigration()->getJoin( 'log_user' );
 			$rows = ArticleFeedbackv5Utils::getDB( DB_REPLICA )->select(
 				[
-					'logging',
-					'ids' => "($ids)" // the subquery that will provide the most recent log_id's
+					'logging'
 				] + $commentQuery['tables'] + $actorQuery['tables'],
 				[
 					'log_id',
@@ -467,7 +469,7 @@ class ArticleFeedbackv5Activity {
 					'log_title',
 					'log_params',
 				] + $commentQuery['fields'] + $actorQuery['fields'],
-				[ 'log_id = last_id' ],
+				[ 'log_id' => $ids ],
 				__METHOD__,
 				[],
 				$commentQuery['joins'] + $actorQuery['joins']
