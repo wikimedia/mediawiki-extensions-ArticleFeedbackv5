@@ -592,7 +592,7 @@
 	"logentry-articlefeedbackv5-undo-helpful": "$1, [[$5]] sayfasında [[$3|#$4 geri bildirim gönderisini]] faydasız olarak {{GENDER:$2|işaretledi}}",
 	"logentry-articlefeedbackv5-undo-unhelpful": "$1, [[$5]] sayfasında [[$3|#$4 geri bildirim gönderisini]] faydasız olarak {{GENDER:$2|işareti kaldırdı}}",
 	"logentry-articlefeedbackv5-clear-flags": "$1, [[$5]] sayfasında [[$3|#$4 geri bildirim gönderisini]] {{GENDER:$2|tüm işaretleri temizledi}}",
-	"logentry-articlefeedbackv5-protect": "$1, \"$3\" sayfasında madde geri bildirim aracının görünürlüğünü değiştirdi $4",
+	"logentry-articlefeedbackv5-protect": "$1, \"$3\" sayfasında madde geri bildirim aracının görünürlüğünü {{GENDER:$2|değiştirdi}} $4",
 	"articlefeedbackv5-activity-pane-header": "Etkinlik Günlüğü",
 	"articlefeedbackv5-activity-feedback-info": "$2 tarafından bildirildi",
 	"articlefeedbackv5-activity-feedback-date": "$1 tarihinde gönderildi",
