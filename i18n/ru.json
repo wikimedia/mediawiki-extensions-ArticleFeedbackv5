@@ -37,7 +37,9 @@
 			"Сrower",
 			"Сай",
 			"1233qwer1234qwer4",
-			"DDPAT"
+			"DDPAT",
+			"Gulka.nik",
+			"Ice bulldog"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Отправить отзыв на статью",
@@ -661,5 +663,6 @@
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "решено",
 	"echo-category-title-feedback": "Обратная связь",
 	"echo-pref-tooltip-feedback": "Уведомлять меня, когда кто-то помечает отзыв о статье как полезный.",
-	"articlefeedbackv5-notification-link-text-view-feedback": "Посмотреть ответы"
+	"articlefeedbackv5-notification-link-text-view-feedback": "Посмотреть ответы",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "Отзыв о $2 был {{GENDER:$1|отмечен}} как $3 на {{SITENAME}}."
 }
