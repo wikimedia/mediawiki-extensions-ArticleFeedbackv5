@@ -8,6 +8,7 @@
 			"Buntschann",
 			"Eseki",
 			"Fryed-peach",
+			"Kkairri",
 			"LaMagiaaa",
 			"Marine-Blue",
 			"Naohiro19",
@@ -634,6 +635,7 @@
 	"articlefeedbackv5-activity-item-undo-helpful": "$1 が $4 $5 にこの投稿の役に立つの印を{{GENDER:$6|除去しました}} $2",
 	"articlefeedbackv5-activity-item-undo-unhelpful": "$1 が $4 $5 にこの投稿の役に立たないの印を{{GENDER:$6|除去しました}} $2",
 	"articlefeedbackv5-activity-item-clear-flags": "$1 が $4 $5 にこの投稿の荒らしフラグをすべて{{GENDER:$6|解除しました}} $2",
+	"articlefeedbackv5-activity-note-archive": "{{PLURAL:$1|$1日}}後、もしくは編集者がアクティブでなくなったらアーカイブされます",
 	"articlefeedbackv5-activity-count": "{{PLURAL:$1|この投稿に $1 件のアクション}}",
 	"articlefeedbackv5-activity-more": "その他の活動を表示",
 	"articlefeedbackv5-article-view-feedback": "$1 件の読者{{PLURAL:$1|コメント}}",
@@ -656,5 +658,6 @@
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "役に立つ",
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "解決済",
 	"echo-category-title-feedback": "フィードバック",
+	"echo-pref-tooltip-feedback": "誰かが記事を有益だとフィートバックした時に通知する。",
 	"articlefeedbackv5-notification-link-text-view-feedback": "フィードバックを見る"
 }
