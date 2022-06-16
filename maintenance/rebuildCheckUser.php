@@ -164,5 +164,5 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 	}
 }
 
-$maintClass = "ArticleFeedbackv5_RebuildCheckUser";
+$maintClass = ArticleFeedbackv5_RebuildCheckUser::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

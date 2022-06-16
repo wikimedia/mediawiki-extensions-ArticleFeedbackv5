@@ -129,5 +129,5 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 	}
 }
 
-$maintClass = "ArticleFeedbackv5_SetArchiveDate";
+$maintClass = ArticleFeedbackv5_SetArchiveDate::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

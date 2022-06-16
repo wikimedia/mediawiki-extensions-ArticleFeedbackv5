@@ -448,5 +448,5 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 	}
 }
 
-$maintClass = "ArticleFeedbackv5_LegacyToShard";
+$maintClass = ArticleFeedbackv5_LegacyToShard::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

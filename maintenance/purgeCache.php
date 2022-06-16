@@ -93,5 +93,5 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 	}
 }
 
-$maintClass = 'ArticleFeedbackv5_PurgeCache';
+$maintClass = ArticleFeedbackv5_PurgeCache::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

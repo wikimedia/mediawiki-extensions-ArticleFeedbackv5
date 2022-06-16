@@ -102,7 +102,7 @@ class ArticleFeedbackv5Hooks {
 
 			// move all data from old schema to new, sharded, schema
 			require_once __DIR__ . '/../maintenance/legacyToShard.php';
-			$updater->addPostDatabaseUpdateMaintenance( 'ArticleFeedbackv5_LegacyToShard' );
+			$updater->addPostDatabaseUpdateMaintenance( ArticleFeedbackv5_LegacyToShard::class );
 			/*
 			 * Because this update involves moving data around, the old schema
 			 * will not automatically be removed (just to be sure no valuable
@@ -125,7 +125,7 @@ class ArticleFeedbackv5Hooks {
 		);
 		// fix archive dates for existing feedback
 		require_once __DIR__ . '/../maintenance/setArchiveDate.php';
-		$updater->addPostDatabaseUpdateMaintenance( 'ArticleFeedbackv5_SetArchiveDate' );
+		$updater->addPostDatabaseUpdateMaintenance( ArticleFeedbackv5_SetArchiveDate::class );
 
 		$updater->addExtensionField(
 			'aft_feedback',

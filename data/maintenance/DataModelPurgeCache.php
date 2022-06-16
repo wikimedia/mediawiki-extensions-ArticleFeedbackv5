@@ -117,6 +117,6 @@ class DataModelPurgeCache extends Maintenance {
 
 // allow extension-specific override before including this file
 if ( !isset( $maintClassOverride ) || !$maintClassOverride ) {
-	$maintClass = "DataModelPurgeCache";
+	$maintClass = DataModelPurgeCache::class;
 	require_once RUN_MAINTENANCE_IF_MAIN;
 }

@@ -148,5 +148,5 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 	}
 }
 
-$maintClass = "ArticleFeedbackv5_LoggingUpdate";
+$maintClass = ArticleFeedbackv5_LoggingUpdate::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

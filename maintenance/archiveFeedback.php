@@ -122,5 +122,5 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 	}
 }
 
-$maintClass = "ArticleFeedbackv5_ArchiveFeedback";
+$maintClass = ArticleFeedbackv5_ArchiveFeedback::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
