@@ -7,7 +7,8 @@
 			"ITshnik",
 			"MIKHEIL",
 			"Mehman97",
-			"გიორგიმელა"
+			"გიორგიმელა",
+			"Გიო ოქრო"
 		]
 	},
 	"apihelp-articlefeedbackv5-param-anontoken": "ჟეტონი ანონიმური მომხმარებლებისთვის",
@@ -20,7 +21,7 @@
 	"articlefeedbackv5-cta1-learn-how": "გ",
 	"articlefeedbackv5-cta1-edit-linktext": "ამ გვერდის რედაქტირება",
 	"articlefeedbackv5-cta2-confirmation-title": "დაგვეხმარეთ გავაუმჯობესოდ {{SITENAME}}",
-	"articlefeedbackv5-cta2-confirmation-call": "ეს ვებ-გვერდი შექმნილია თქვენნაირი ადამიანების მიერ. თქვენ შეძლებთ ხელი გამოგვიწოდოთ?",
+	"articlefeedbackv5-cta2-confirmation-call": "ეს ვვებსაიტი შექმნილია თქვენნაირი ადამიანების მიერ. შეგიძლიათ დაგვეხმაროთ?",
 	"articlefeedbackv5-cta2-button-text": "გაიგეთ მეტი",
 	"articlefeedbackv5-cta3-confirmation-title": "გთხოვთ, მიიღოთ მონაწილეობა გამოკითხვაში",
 	"articlefeedbackv5-cta3-confirmation-call": "ამას დაჭირდება სულ ერთი წუთი და დაეხმარება გაუმჯობესდეს {{SITENAME}}.",

@@ -24,7 +24,16 @@
 			"Msz2001"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "Prześlij opinię o artykule",
+	"apihelp-articlefeedbackv5-summary": "Prześlij opinię o artykule",
+	"apihelp-articlefeedbackv5-param-title": "Tytuł strony, dla której zostanie przesłana opinia. Nie może być użyty razem z $1pageid.",
+	"apihelp-articlefeedbackv5-param-pageid": "Identyfikator strony, dla której zostanie przesłana opinia. Nie może zostać użyty razem z $1title.",
+	"apihelp-articlefeedbackv5-param-revid": "Identyfikator wersji, dla której zostanie przesłana opinia",
 	"apihelp-articlefeedbackv5-param-anontoken": "Token dla użytkowników anonimowych",
+	"apihelp-articlefeedbackv5-param-bucket": "Który formularz opinii został wyświetlony użytkownikowi",
+	"apihelp-articlefeedbackv5-param-link": "Po kliknięciu na jaki link został wyświetlony widżet",
+	"apihelp-articlefeedbackv5-param-found": "Opinia tak/nie, określająca czy strona była pomocna",
+	"apihelp-articlefeedbackv5-param-comment": "Odpowiedź na pytanie otwarte",
 	"apihelp-articlefeedbackv5-set-status-param-enable": "1 aby włączyć, 0 aby wyłączyć AFTv5",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "Klucz do sortowania rekordów według",
 	"articlefeedbackv5-cta-thanks": "Dziękujemy!",
