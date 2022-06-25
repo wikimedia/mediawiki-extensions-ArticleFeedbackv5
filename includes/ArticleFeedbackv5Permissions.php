@@ -196,7 +196,7 @@ class ArticleFeedbackv5Permissions {
 		}
 
 		// make sure a valid articleId was passed
-		$pageObj = WikiPage::newFromID( $articleId );
+		$pageObj = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $articleId );
 		if ( !$pageObj ) {
 			return false;
 		}

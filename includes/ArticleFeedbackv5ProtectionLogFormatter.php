@@ -16,7 +16,7 @@ class ArticleFeedbackv5ProtectionLogFormatter extends LogFormatter {
 		$params = parent::getMessageParameters();
 
 		$articleId = $this->entry->getTarget()->getArticleID();
-		$page = WikiPage::newFromID( $articleId );
+		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $articleId );
 		if ( $page ) {
 			$parameters = $this->entry->getParameters();
 			$permission = [ 'articlefeedbackv5' => $parameters['permission'] ];
