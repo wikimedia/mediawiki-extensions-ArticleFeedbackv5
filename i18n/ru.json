@@ -664,5 +664,10 @@
 	"echo-category-title-feedback": "Обратная связь",
 	"echo-pref-tooltip-feedback": "Уведомлять меня, когда кто-то помечает отзыв о статье как полезный.",
 	"articlefeedbackv5-notification-link-text-view-feedback": "Посмотреть ответы",
-	"articlefeedbackv5-notification-feedback-watch-email-subject": "Отзыв о $2 был {{GENDER:$1|отмечен}} как $3 на {{SITENAME}}."
+	"articlefeedbackv5-notification-feedback-watch": "[[$3|Отзыв]] о [[$2]] был {{GENDER:$1|помечен}} как {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} участником [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-bundle": "[[$3|Отзыв]] о [[$2]] был {{GENDER:$1|помечен}} как {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} участником [[User:$1|$1]] и {{PLURAL:$6|$5 другим|еще $5}}.",
+	"articlefeedbackv5-notification-feedback-watch-flyout": "[[$3|Отзыв]] о [[$2]] был {{GENDER:$1|помечен}} как {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} участником [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-watch-email-subject": "Отзыв о $2 был {{GENDER:$1|отмечен}} как $3 на {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "Отзыв о $2 был {{GENDER:$1|помечен}} как $4 на $1 на {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "Отзыв о $2 был {{GENDER:$1|помечен}} as $4 участником $1 и {{PLURAL:$6|$5 другим|еще $5}} на {{SITENAME}}. $3"
 }
