@@ -30,6 +30,7 @@
 			"Mouse21",
 			"Okras",
 			"Ole Yves",
+			"Pacha Tchernof",
 			"Putnik",
 			"Redredsonia",
 			"Sobloku",
@@ -669,5 +670,11 @@
 	"articlefeedbackv5-notification-feedback-watch-flyout": "[[$3|Отзыв]] о [[$2]] был {{GENDER:$1|помечен}} как {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} участником [[User:$1|$1]].",
 	"articlefeedbackv5-notification-feedback-watch-email-subject": "Отзыв о $2 был {{GENDER:$1|отмечен}} как $3 на {{SITENAME}}.",
 	"articlefeedbackv5-notification-feedback-watch-email-batch-body": "Отзыв о $2 был {{GENDER:$1|помечен}} как $4 на $1 на {{SITENAME}}. $3",
-	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "Отзыв о $2 был {{GENDER:$1|помечен}} as $4 участником $1 и {{PLURAL:$6|$5 другим|еще $5}} на {{SITENAME}}. $3"
+	"articlefeedbackv5-notification-feedback-watch-email-batch-bundle-body": "Отзыв о $2 был {{GENDER:$1|помечен}} as $4 участником $1 и {{PLURAL:$6|$5 другим|еще $5}} на {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated": "[[$3|Обратная связь]], оставленная вами о странице ''[[$2]]'', была {{GENDER:$1|помечена}} как {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} {{GENDER:$1|участником|участницей|участни_цей}} [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-bundle": "[[$3|Обратная связь]], оставленная вами о ''[[$2]]'', была {{GENDER:$1|проверена}} {{GENDER:$1|участником|участницей|участником_цей}} [[User:$1|$1]] и $4 {{PLURAL:$5|другим|другими}}.",
+	"articlefeedbackv5-notification-feedback-moderated-flyout": "[[$3|Обратная связь]], оставленная вами о ''[[$2]]'', была {{GENDER:$1|помечена}} как {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} {{GENDER:$1|участником|участницей|участни_цей}} [[User:$1|$1]].",
+	"articlefeedbackv5-notification-feedback-moderated-email-subject": "Обратная связь, оставленная вами о ''$2'', была {{GENDER:$1|помечена}} как $3 в {{SITENAME}}.",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "Обратная связь, оставленная вами о '$2'', была отмечена как $4 {{GENDER:$1|участником|участницей|участником_цей}} $1 в {{SITENAME}}. $3",
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "Обратная связь, оставленная вами о ''$2'', была {{GENDER:$1|помечена}} {{GENDER:$1|участником|участницей|участником_цей}} $1 и $5 {{PLURAL:$6|другим|другими}} в {{SITENAME}}. $3"
 }
