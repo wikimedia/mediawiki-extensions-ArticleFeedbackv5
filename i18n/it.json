@@ -19,7 +19,8 @@
 			"Selven",
 			"Senpremì",
 			"Ximo17",
-			"Daimona Eaytoy"
+			"Daimona Eaytoy",
+			"GpieroMW"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Invia feedback alla voce",
@@ -640,5 +641,6 @@
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "risolto",
 	"echo-category-title-feedback": "Feedback",
 	"echo-pref-tooltip-feedback": "Inviami una notifica quando qualcuno contrassegna il commento sulla voce come utile.",
-	"articlefeedbackv5-notification-link-text-view-feedback": "Vedi feedback"
+	"articlefeedbackv5-notification-link-text-view-feedback": "Vedi feedback",
+	"articlefeedbackv5-notification-feedback-moderated-email-subject": "Il tuo feedback su $2 è stato {{GENDER:$1| contrassegnato}} come $3 su {{SITENAME}}."
 }
