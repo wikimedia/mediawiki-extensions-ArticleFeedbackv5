@@ -4,13 +4,18 @@
 			"Yupik"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "Vuõlttâd maacctõõzz artikkeeʹlest",
+	"apihelp-articlefeedbackv5-summary": "Vuõlttâd maacctõõzz artikkeeʹlest",
 	"articlefeedbackv5-cta-thanks": "Späʹsseb!",
 	"articlefeedbackv5-cta1-edit-linktext": "Muuʹtt tän seeid",
 	"articlefeedbackv5-cta2-button-text": "Lââʹssteâđ",
 	"articlefeedbackv5-cta4-button-text-signup": "Raaj tobdldõõǥǥ",
 	"articlefeedbackv5-cta4-button-text-login": "Ǩeeʹrjtõõđ sizz",
+	"articlefeedbackv5-cta5-button-text": "Čuäʹjet puk kommeeʹntid",
 	"articlefeedbackv5-contribs-status-action-hide": "Čiõǥǥ",
+	"articlefeedbackv5-special-filter-allcomment": "Puk kommeeʹnt ($1)",
 	"articlefeedbackv5-special-filter-hidden": "Čiõkkum ($1)",
+	"articlefeedbackv5-special-filter-allcomment-watchlist": "Puk kommeeʹnt",
 	"articlefeedbackv5-special-filter-hidden-watchlist": "Čiõkkum",
 	"articlefeedbackv5-special-sort-age-desc": "Ođđsummuz",
 	"articlefeedbackv5-revision-link": "(čuäʹjet vuäʹmm seeid)",
@@ -53,6 +58,7 @@
 	"articlefeedbackv5-help-tooltip-linktext": "Lââʹssteâđ",
 	"articlefeedbackv5-section-linktext": "maacctõs",
 	"articlefeedbackv5-toolbox-view": "Čuäʹjet maacctõõzz",
+	"articlefeedbackv5-toolbox-add": "Uuʹd maacctõõzz",
 	"articlefeedbackv5-activity-permalink": "põõšši liŋkk",
 	"echo-category-title-feedback": "Maacctõs",
 	"articlefeedbackv5-notification-link-text-view-feedback": "Čuäʹjet maacctõõzz"
