@@ -20,7 +20,6 @@
  * @subpackage Api
  */
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\MediaWikiServices;
 
@@ -404,7 +403,9 @@ class ArticleFeedbackv5Utils {
 			$vars->setVar( 'new_wikitext', $value );
 			$vars->setLazyLoadVar( 'new_size', 'length', [ 'length-var' => 'new_wikitext' ] );
 
-			$status = AbuseFilter::filterAction( $vars, $title, $wgArticleFeedbackv5AbuseFilterGroup, $user );
+			$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
+			$runner = $runnerFactory->newRunner( $user, $title, $vars, $wgArticleFeedbackv5AbuseFilterGroup );
+			$status = $runner->run();
 
 			return $status->isOK() ? false : $status->getErrorsArray();
 		}
