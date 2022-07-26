@@ -10,7 +10,8 @@
 			"Sasa Stefanovic",
 			"Zoranzoki21",
 			"Михајло Анђелковић",
-			"Сербијана"
+			"Сербијана",
+			"Vlad5250"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Пошаљи повратне информације о чланку",
@@ -178,6 +179,7 @@
 	"articlefeedbackv5-form-tooltip-noaction-own": "Нејасно, небитно, похвала, дупликат ...",
 	"articlefeedbackv5-form-tooltip-inappropriate": "Глупости, спам, увредљиво, лични подаци ...",
 	"articlefeedbackv5-form-tooltip-hide": "Глупости, непожељан садржај, увредљиво, приватни подаци ...",
+	"articlefeedbackv5-form-tooltip-unhide": "Откриј",
 	"articlefeedbackv5-form-tooltip-flag": "Глупости, непожељан садржај, увредљиво, лични подаци ...",
 	"articlefeedbackv5-form-tooltip-oversight": "Увредљиво, лични подаци ...",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 је сазнао оно што је тражио|$2 је сазнала оно што је тражила|$2 је сазнао оно што је тражио}}",
@@ -268,7 +270,9 @@
 	"articlefeedbackv5-noteflyover-hide-placeholder": "Зашто сакривате ову поруку?",
 	"articlefeedbackv5-noteflyover-hide-submit": "Додај напомену",
 	"articlefeedbackv5-noteflyover-hide-help": "Сазнајте више",
+	"articlefeedbackv5-noteflyover-unhide-caption": "Откриј",
 	"articlefeedbackv5-noteflyover-unhide-label": "Додајте белешку",
+	"articlefeedbackv5-noteflyover-unhide-placeholder": "Зашто откривате ову поруку?",
 	"articlefeedbackv5-noteflyover-unhide-submit": "Додај напомену",
 	"articlefeedbackv5-noteflyover-unhide-help": "Сазнајте више",
 	"articlefeedbackv5-noteflyover-noaction-label": "Додај напомену",
@@ -368,5 +372,9 @@
 	"articlefeedbackv5-disable-flyover-title": "Желите да уклоните ову алатку?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Иди у корисничка подешавања",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "Аутоматски решено. Правило: $1",
-	"articlefeedbackv5-abusefilter-note-aftv5hide": "Аутоматски сакривено.  Правило: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5hide": "Аутоматски сакривено.  Правило: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "корисно",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "решено",
+	"echo-category-title-feedback": "Повратне информације",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Погледајте повратне информације"
 }
