@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bada Kaji",
 			"Bhawani Gautam",
 			"Bhawani Gautam Rhk",
 			"Nirajan pant",
@@ -46,6 +47,7 @@
 	"articlefeedbackv5-special-refresh": "सूची ताजा गर्नुहोस्",
 	"articlefeedbackv5-special-pagetitle": "प्रतिक्रिया: $1",
 	"articlefeedbackv5-discussion-page": "वार्ता",
+	"articlefeedbackv5-settings-menu-title": "मेरो अभिरुचिहरू",
 	"articlefeedbackv5-desc": "लेखकोबारेमा पृष्ठपोषण",
 	"articlefeedbackv5-comment-more": "थप",
 	"articlefeedbackv5-page-disabled": "यस लेखको लागि लेख प्रतिक्रिया पृष्ठ सुचारू गरिएको छैन।",
