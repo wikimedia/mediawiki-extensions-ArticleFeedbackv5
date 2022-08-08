@@ -38,7 +38,9 @@
 			"阿pp",
 			"LaMagiaaa",
 			"SkEy",
-			"Tranve"
+			"Tranve",
+			"Diskdance",
+			"Stang"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "提交条目反馈",
@@ -235,7 +237,7 @@
 	"articlefeedbackv5-special-permalink-pagetitle": "$1的反馈帖",
 	"articlefeedbackv5-special-watchlist-pagetitle": "我监视的页面的反馈",
 	"articlefeedbackv5-special-central-pagetitle": "中心反馈页面",
-	"articlefeedbackv5-loading-tag": "正在载入...",
+	"articlefeedbackv5-loading-tag": "正在加载...",
 	"articlefeedbackv5-status-hide": "该帖子被$1于$2 $3隐藏",
 	"articlefeedbackv5-status-unhide": "该帖子被$1于$2 $3取消隐藏",
 	"articlefeedbackv5-status-request": "此帖子已由$1于$2 $3请求监督",
@@ -333,7 +335,7 @@
 	"articlefeedbackv5-central-header-left-comment": "{{GENDER:$1|$2}}在$3上发表了[[$4|反馈]]",
 	"articlefeedbackv5-abuse-saved": "标记为滥用",
 	"articlefeedbackv5-abuse-saved-tooltip": "删除您设置的标记",
-	"articlefeedbackv5-error-loading-feedback": "载入评论时发生错误",
+	"articlefeedbackv5-error-loading-feedback": "加载评论时发生错误",
 	"articlefeedbackv5-insufficient-permissions": "没有足够的权限级别",
 	"articlefeedbackv5-invalid-feedback-id": "无效反馈ID",
 	"articlefeedbackv5-invalid-log-id": "无效的日志ID",
