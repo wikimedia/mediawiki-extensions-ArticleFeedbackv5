@@ -8,6 +8,7 @@
 			"Yerpo"
 		]
 	},
+	"apihelp-articlefeedbackv5-param-found": "Povratna informacija da/ne kot odgovor na vprašanje, ali je bila stran koristna",
 	"articlefeedbackv5-cta-thanks": "Hvala!",
 	"articlefeedbackv5-cta1-confirmation-title": "Ste vedeli, da lahko uredite to stran?",
 	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} deluje, ker lahko vsak ureja njene strani. Poskusi tudi ti, kar pogumno!",
@@ -54,7 +55,7 @@
 	"articlefeedbackv5-contribs-status-action-hide": "Skrij",
 	"articlefeedbackv5-contribs-hidden-feedback": "skrit komentar",
 	"articlefeedbackv5-form-toolbox-label": "Označi kot:",
-	"articlefeedbackv5-form-helpful-label": "Ali je povratna informacija v pomoč?",
+	"articlefeedbackv5-form-helpful-label": "Ali je ta povratna informacija koristna?",
 	"articlefeedbackv5-form-helpful-yes-label": "Da",
 	"articlefeedbackv5-form-helpful-no-label": "Ne",
 	"articlefeedbackv5-special-filter-helpful": "V pomoč ($1)",
