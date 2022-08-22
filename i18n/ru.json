@@ -237,7 +237,7 @@
 	"articlefeedbackv5-special-permalink-pagetitle": "Отзыв на $1",
 	"articlefeedbackv5-special-watchlist-pagetitle": "Отзывы о статьях из моего списка наблюдения",
 	"articlefeedbackv5-special-central-pagetitle": "Центральная страница обратной связи",
-	"articlefeedbackv5-loading-tag": "Загрузка…",
+	"articlefeedbackv5-loading-tag": "Загружается…",
 	"articlefeedbackv5-status-hide": "Этот отзыв был скрыт участником $1 $2 в $3",
 	"articlefeedbackv5-status-unhide": "Этот отзыв был раскрыт участником $1 $2 в $3",
 	"articlefeedbackv5-status-request": "Запрошено скрытие этого отзыва участником $1 $2 в $3",
