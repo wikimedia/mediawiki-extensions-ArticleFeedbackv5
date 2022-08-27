@@ -168,13 +168,13 @@ $specialPageAliases['vi'] = [
 	'ArticleFeedbackv5Watchlist' => [ 'Danh_sách_theo_dõi_Phản_hồi_bài_v5' ],
 ];
 
-/** Simplified Chinese (中文（简体）‎) */
+/** Simplified Chinese (中文（简体）) */
 $specialPageAliases['zh-hans'] = [
 	'ArticleFeedbackv5' => [ '条目反馈v5' ],
 	'ArticleFeedbackv5Watchlist' => [ '条目反馈v5监视列表' ],
 ];
 
-/** Traditional Chinese (中文（繁體）‎) */
+/** Traditional Chinese (中文（繁體）) */
 $specialPageAliases['zh-hant'] = [
 	'ArticleFeedbackv5' => [ '條目意見回饋v5' ],
 	'ArticleFeedbackv5Watchlist' => [ '條目意見回饋v5監視清單' ],
