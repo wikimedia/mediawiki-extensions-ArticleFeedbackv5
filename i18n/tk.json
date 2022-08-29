@@ -1,9 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hanberke"
+			"Hanberke",
+			"TayfunEt."
 		]
 	},
+	"articlefeedbackv5-cta-thanks": "Sag boluň!",
+	"articlefeedbackv5-cta1-learn-how": "Redaktirlemegi öwreniň",
+	"articlefeedbackv5-cta1-edit-linktext": "Bu sahypany düzet",
+	"articlefeedbackv5-cta2-confirmation-call": "Bu web sahypasy siziň ýaly adamlar tarapyndan döredildi. Bize el berip bilersiňizmi?",
+	"articlefeedbackv5-cta2-button-text": "Köpräk oka",
+	"articlefeedbackv5-cta4-button-text-signup": "Hasap döret",
+	"articlefeedbackv5-cta4-button-text-login": "Hasaba gir",
+	"articlefeedbackv5-cta4-button-text-later": "Belki soňrak",
+	"articlefeedbackv5-cta4-button-text-or": "ýa-da",
+	"articlefeedbackv5-cta5-confirmation-title": "Başgalaryň näme diýýänine serediň",
+	"articlefeedbackv5-cta5-confirmation-call": "Siz ýaly beýleki okyjylaryň tekliplerini görüň. Iň gowy pikirleri saýlamaga kömek edip bilersiňizmi?",
+	"articlefeedbackv5-cta5-button-text": "Ähli teswirlere serediň",
+	"articlefeedbackv5-cta6-button-text": "Çaýhana baryp görüň",
+	"articlefeedbackv5-overlay-close": "Ýap",
+	"articlefeedbackv5-error-unknown": "Näbelli ýalňyşlyk.",
 	"articlefeedbackv5": "Makala berlen baha",
 	"articlefeedbackv5-desc": "Makala berlen baha (synag warianty)"
 }
