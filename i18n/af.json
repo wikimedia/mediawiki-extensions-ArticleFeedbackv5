@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Naudefj",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Rooiratel"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Dankie!",
@@ -16,6 +17,7 @@
 	"articlefeedbackv5-cta4-button-text-signup": "Registreer",
 	"articlefeedbackv5-cta4-button-text-later": "Miskien later",
 	"articlefeedbackv5-cta4-button-text-or": "of",
+	"articlefeedbackv5-cta5-button-text": "Sien alle opmerkings",
 	"articlefeedbackv5-error": "Is 'n fout. Probeer asseblief weer later.",
 	"articlefeedbackv5-error-validation": "Validasiefout.",
 	"articlefeedbackv5-error-unknown": "Onbekende fout.",
@@ -30,10 +32,13 @@
 	"articlefeedbackv5-contribs-status-action-feature": "Uitgelig",
 	"articlefeedbackv5-contribs-status-action-resolve": "Opgelos",
 	"articlefeedbackv5-contribs-status-action-inappropriate": "Versteek",
+	"articlefeedbackv5-contribs-hidden-feedback": "versteekte opmerking",
 	"articlefeedbackv5-form-helpful-yes-label": "Ja",
 	"articlefeedbackv5-form-helpful-no-label": "Nee",
+	"articlefeedbackv5-special-filter-allcomment": "Alle opmerkings ($1)",
 	"articlefeedbackv5-special-filter-hidden": "Onsigbaar",
 	"articlefeedbackv5-special-filter-all": "Alles (toesig) ($1)",
+	"articlefeedbackv5-special-filter-allcomment-watchlist": "Alle opmerkings",
 	"articlefeedbackv5-special-sort-age-desc": "Nuutste",
 	"articlefeedbackv5-special-sort-age-asc": "Oudste",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|$1 wysiging|$1 wysigings}} sedert boodskap,",
@@ -42,6 +47,7 @@
 	"articlefeedbackv5-special-more": "Wys meer boodskappe",
 	"articlefeedbackv5-loading-tag": "Laai...",
 	"articlefeedbackv5-new-marker": "Nuut",
+	"articlefeedbackv5-form-discuss-talk-exists": "Sien bespreking op besprekingsbladsy",
 	"articlefeedbackv5-error-loading-feedback": "Fout tydens laai terugvoer",
 	"articlefeedbackv5-go-to-article": "Gaan na bladsy",
 	"articlefeedbackv5-whats-this": "Hulp",
