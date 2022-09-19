@@ -102,6 +102,7 @@
 	"articlefeedbackv5-error-nofeedback": "Unesite mišljenje.",
 	"articlefeedbackv5-error-flagging": "Greška pri označavanju mišljenja.",
 	"articlefeedbackv5-error-throttled": "Vaše je mišlenje odbijeno jer ste nedavno objavili više mišlenja od preporučenih u smjernicama {{SITENAME}}. Nemojte postavljati previše mišlenja i ne gledati ih jedno za drugim.",
+	"articlefeedbackv5-protection-level": "Ocjenjivanje članka",
 	"articlefeedbackv5-protection-level-error": "Stupanj zaštite ne može biti veći od uređivanja",
 	"protect-level-aft-reader": "Omogući svim korisnicima",
 	"protect-level-aft-member": "Omogući samo prijavljenim korisnicima",
