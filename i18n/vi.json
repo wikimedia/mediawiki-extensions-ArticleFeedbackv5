@@ -9,7 +9,8 @@
 			"Thingofme",
 			"Vinhtantran",
 			"Withoutaname",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"NguyenHung"
 		]
 	},
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "ID nhật trình để cập nhật",
@@ -156,7 +157,7 @@
 	"articlefeedbackv5-settings-menu-title": "Tùy chọn",
 	"articlefeedbackv5-invalid-page-id": "ID trang không hợp lệ",
 	"articlefeedbackv5": "Phản hồi bài – Trang chính",
-	"articlefeedbackv5-desc": "Phản hồi bài",
+	"articlefeedbackv5-desc": "Khuyến khích thành viên đóng góp bằng cách cho phép họ đánh giá bài viết và đề xuất các thay đổi",
 	"articlefeedbackv5-comment-more": "Thêm",
 	"articlefeedbackv5-viewactivity": "Xem hoạt động",
 	"articlefeedbackv5-mask-view-contents": "Xem nội dung",
