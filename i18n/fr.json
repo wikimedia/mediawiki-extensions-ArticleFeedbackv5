@@ -49,7 +49,7 @@
 	"apihelp-articlefeedbackv5-summary": "Envoyer un commentaire sur l’article",
 	"apihelp-articlefeedbackv5-param-title": "Titre de la page pour laquelle soumettre un avis. Ne pas utiliser avec $1pageid",
 	"apihelp-articlefeedbackv5-param-pageid": "ID de la page pour laquelle soumettre un commentaire. Ne peut pas être utilisé conjointement avec $1title",
-	"apihelp-articlefeedbackv5-param-revid": "ID de la version pour laquelle soumettre un commentaire",
+	"apihelp-articlefeedbackv5-param-revid": "Identifiant de la version pour laquelle soumettre un commentaire",
 	"apihelp-articlefeedbackv5-param-anontoken": "Jeton pour les utilisateurs anonymes",
 	"apihelp-articlefeedbackv5-param-bucket": "Quel formulaire de commentaire a été affiché à l’utilisateur",
 	"apihelp-articlefeedbackv5-param-cta": "CTA affiché après l’envoi du formulaire",
