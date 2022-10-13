@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Abbas dhothar"
+			"Abbas dhothar",
+			"Bgo eiu"
 		]
 	},
 	"articlefeedbackv5-cta2-button-text": "ہور سکھو",
@@ -58,7 +59,7 @@
 	"articlefeedbackv5-whats-this": "مدد",
 	"articlefeedbackv5-settings-menu-title": "ترتیباں",
 	"articlefeedbackv5-comment-more": "ہور",
-	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 لفظ|$1 الفاظ}}",
+	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 لفظ}}",
 	"articlefeedbackv5-permalink-info-stats-title-scores": "زریعے",
 	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "متعلقہ:",
 	"articlefeedbackv5-permalink-activity-title": "سرگرمی",
