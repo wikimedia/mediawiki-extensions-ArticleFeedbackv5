@@ -12,6 +12,7 @@
 			"Msz2001",
 			"Odder",
 			"Olgak85",
+			"Pefect",
 			"Przemub",
 			"Rail",
 			"Railfail536",
@@ -331,6 +332,7 @@
 	"articlefeedbackv5-noteflyover-hide-help": "Dowiedz się więcej",
 	"articlefeedbackv5-noteflyover-unhide-caption": "Pokaż",
 	"articlefeedbackv5-noteflyover-unhide-label": "Dodaj notatkę",
+	"articlefeedbackv5-noteflyover-unhide-placeholder": "Dlaczego cofnąłeś ukrycie tego wpisu?",
 	"articlefeedbackv5-noteflyover-unhide-submit": "Dodaj komentarz",
 	"articlefeedbackv5-noteflyover-unhide-help": "Dowiedz się więcej",
 	"articlefeedbackv5-noteflyover-noaction-label": "Dodaj komentarz",
@@ -459,5 +461,6 @@
 	"abusefilter-edit-action-aftv5flagabuse": "(Opinia o artykule) Autoflaga nadużycia",
 	"abusefilter-edit-action-aftv5hide": "(Opinia o artykule) Autoukrywanie",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Automatycznie ukryte. Reguła: $1",
-	"echo-category-title-feedback": "Opinie"
+	"echo-category-title-feedback": "Opinie",
+	"articlefeedbackv5-notification-link-text-view-feedback": "Wyświetl opinię"
 }

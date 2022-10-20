@@ -199,6 +199,7 @@
 	"articlefeedbackv5-bottomrighttab-linktext": "Izboljšajte stran",
 	"articlefeedbackv5-section-linktext": "odziv",
 	"articlefeedbackv5-disable-preference": "Na strani ne pokaži gradnika Povratna informacija članka",
+	"logentry-articlefeedbackv5-protect": "$1 je {{GENDER:$2|spremenil|spremenila|spremenil/a}} vidnost orodja za povratne informacije o člankih na »$3« $4",
 	"articlefeedbackv5-activity-pane-header": "Dnevnik aktivnosti",
 	"articlefeedbackv5-activity-feedback-info": "Povratna informacija $2",
 	"articlefeedbackv5-activity-feedback-date": "Objavljeno ob $1",
