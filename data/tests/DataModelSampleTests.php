@@ -5,6 +5,7 @@
  *
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  * @group Database
+ * @covers DataModelSample
  */
 class DataModelSampleTest extends MediaWikiIntegrationTestCase {
 	/** @var DataModelSample */
