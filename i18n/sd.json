@@ -9,6 +9,7 @@
 	"articlefeedbackv5-cta-thanks": "مھرباني!",
 	"articlefeedbackv5-cta1-confirmation-title": "ڇا توهان ڄاڻو ٿا تہ اوهان هن صفحي کي سنواري سگهو ٿا؟",
 	"articlefeedbackv5-cta1-learn-how": "سنوار ڪرڻ سکو",
+	"articlefeedbackv5-cta1-edit-linktext": "هيءُ صفحو سنواريو",
 	"articlefeedbackv5-cta2-button-text": "وڌيڪ سکو",
 	"articlefeedbackv5-overlay-close": "بند ڪريو",
 	"articlefeedbackv5-disabled-editor-button-text": "موٽ قابل-بڻايو",
@@ -31,6 +32,10 @@
 	"articlefeedbackv5-noteflyover-unfeature-help": "وڌيڪ سکو",
 	"articlefeedbackv5-bucket4-subhead": "ڇا توهان ڄاڻو ٿا تہ اوهان هن صفحي کي سنواري سگهو ٿا؟",
 	"articlefeedbackv5-bucket4-learn-to-edit": "سنوارڻ ڪرڻ سکو",
+	"articlefeedbackv5-bucket4-form-submit": "هيءُ صفحو سنواريو",
+	"articlefeedbackv5-sitesub-linktext": "ھن صفحي کي بھتر بڻايو",
+	"articlefeedbackv5-fixedtab-linktext": "ھن صفحي کي بھتر بڻايو",
+	"articlefeedbackv5-bottomrighttab-linktext": "ھن صفحي کي بھتر بڻايو",
 	"articlefeedbackv5-leave-warning": "توھان جيڪا ڊيٽا داخل ڪئي اھا نٿي سانڍي سگهجي.",
 	"articlefeedbackv5-toolbox-enable": "موٽ-ڏيڻ کي قابل-بڻايو"
 }
