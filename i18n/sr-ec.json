@@ -182,6 +182,7 @@
 	"articlefeedbackv5-form-tooltip-unhide": "Откриј",
 	"articlefeedbackv5-form-tooltip-flag": "Глупости, непожељан садржај, увредљиво, лични подаци ...",
 	"articlefeedbackv5-form-tooltip-oversight": "Увредљиво, лични подаци ...",
+	"articlefeedbackv5-form-tooltip-request": "Увредљиво, лични подаци ...",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 је сазнао оно што је тражио|$2 је сазнала оно што је тражила|$2 је сазнао оно што је тражио}}",
 	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2 није сазнао оно што је тражио|$2 није сазнала оно што је тражила|$2 није сазнао оно што је тражио}}",
 	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 је поставио коментар|$2 је поставила коментар|$2 је поставио коментар}}.",
