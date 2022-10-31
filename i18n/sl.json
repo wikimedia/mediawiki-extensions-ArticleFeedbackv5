@@ -77,6 +77,8 @@
 	"articlefeedbackv5-special-sort-age-asc": "Starejše",
 	"articlefeedbackv5-special-sort-label": "Razvrsti po:",
 	"articlefeedbackv5-special-filter-select-more": "Več",
+	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|1 objava|2 objavi|$1 objave|$1 objav}}",
+	"articlefeedbackv5-special-count-total-title": "$1 {{PLURAL:$1|objava|objavi|objave|objav}} s komentarji, $2 {{PLURAL:$2|objava|objavi|objave|objav}} brez komentarja",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 urejanje|$1 urejanji|$1 urejanja |$1 urejanj}} po objavi",
 	"articlefeedbackv5-details-link": "Podrobnosti",
 	"articlefeedbackv5-revision-link": "(ogled stare strani)",
