@@ -511,7 +511,7 @@ class ArticleFeedbackv5Render {
 				Html::element(
 					'span',
 					[ 'class' => 'articleFeedbackv5-comment-details-date' ],
-					$timestamp->getHumanTimestamp()
+					RequestContext::getMain()->getLanguage()->getHumanTimestamp( $timestamp, null, $this->getUser() )
 				) .
 				$permalink
 			);
@@ -1281,7 +1281,7 @@ class ArticleFeedbackv5Render {
 						[ 'class' => 'articleFeedbackv5-feedback-permalink-status articleFeedbackv5-laststatus-' . $last->log_action ],
 						wfMessage( 'articlefeedbackv5-permalink-status-' . $last->log_action )
 							->rawParams( ArticleFeedbackv5Utils::getUserLink( $last->log_user, $last->log_user_text ) )
-							->params( $timestamp->getHumanTimestamp() )
+							->params( $lang->getHumanTimestamp( $timestamp, null, $this->getUser() ) )
 							->parse()
 					) .
 					$notes
