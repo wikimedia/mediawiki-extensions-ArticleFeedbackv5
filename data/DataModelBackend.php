@@ -99,7 +99,7 @@ abstract class DataModelBackend {
 	 * @param string $order Sort the list ASC or DESC
 	 * @return \Wikimedia\Rdbms\IResultWrapper
 	 */
-	abstract public function getList( $name, $shard = null, $offset = null, $limit, $sort = null, $order );
+	abstract public function getList( $name, $shard, $offset, $limit, $sort, $order );
 
 	/**
 	 * Get the amount of entries in a certain list.

@@ -173,7 +173,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @param string $order Sort the list ASC or DESC
 	 * @return \Wikimedia\Rdbms\IResultWrapper
 	 */
-	public function getList( $name, $shard = null, $offset = null, $limit, $sort = null, $order ) {
+	public function getList( $name, $shard, $offset, $limit, $sort, $order ) {
 		$dbr = $this->getDB( DB_REPLICA );
 
 		$tables = [];
