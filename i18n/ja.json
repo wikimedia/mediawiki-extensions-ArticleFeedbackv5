@@ -33,7 +33,9 @@
 			"カッパ鳥",
 			"Yamagata Yusuke",
 			"春春眠眠",
-			"Kkairri"
+			"Kkairri",
+			"Hzy980512",
+			"Omotecho"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "記事のフィードバックを送信",
@@ -613,7 +615,7 @@
 	"logentry-articlefeedbackv5-undo-helpful": "$1 が [[$5]] への役に立つという[[$3|フィードバック投稿 #$4]] に{{GENDER:$2|印を除去しました}}",
 	"logentry-articlefeedbackv5-undo-unhelpful": "$1 が [[$5]] への役に立たないという[[$3|フィードバック投稿 #$4]] に{{GENDER:$2|印を除去しました}}",
 	"logentry-articlefeedbackv5-clear-flags": "$1 が [[$5]] への[[$3|フィードバック投稿 #$4]] の{{GENDER:$2|荒らしフラグをすべて解除しました}}",
-	"logentry-articlefeedbackv5-protect": "$1が\"$3\"の記事フィードバックツールの閲覧レベルを$4に{{GENDER:$2|変更}}しました",
+	"logentry-articlefeedbackv5-protect": "$1が「$3」の記事フィードバックツールの閲覧レベルを$4に{{GENDER:$2|変更}}しました",
 	"articlefeedbackv5-activity-pane-header": "活動記録",
 	"articlefeedbackv5-activity-feedback-info": "$2 によるフィードバック",
 	"articlefeedbackv5-activity-feedback-date": "投稿日時 $1",
@@ -626,7 +628,7 @@
 	"articlefeedbackv5-activity-item-autoflag": "$1 が $4 $5 にこの投稿に{{GENDER:$6|荒らしフラグを立てました}} $2",
 	"articlefeedbackv5-activity-item-oversight": "$1 が $4 $5 にこの投稿を{{GENDER:$6|抹消しました}} $2",
 	"articlefeedbackv5-activity-item-unoversight": "$1 が $4 $5 にこの投稿の抹消を{{GENDER:$6|解除しました}} $2",
-	"articlefeedbackv5-activity-item-feature": "$1 が $4 $5 にこの投稿に役に立つの{{GENDER:$6|印を付けました}} $2",
+	"articlefeedbackv5-activity-item-feature": "$1は$4$5に$2と言って、この投稿は役に立つと{{GENDER:$6|印を付けました}}",
 	"articlefeedbackv5-activity-item-unfeature": "$1 が $4 $5 にこの投稿の役に立つの印を{{GENDER:$6|除去しました}} $2",
 	"articlefeedbackv5-activity-item-resolve": "$1 が $4 $5 にこの投稿を解決済に{{GENDER:$6|しました}} $2",
 	"articlefeedbackv5-activity-item-unresolve": "$1 が $4 $5 にこの投稿を未解決に{{GENDER:$6|しました}} $2",
@@ -634,6 +636,7 @@
 	"articlefeedbackv5-activity-item-unnoaction": "$1 が $4 $5 にこの投稿の対応の必要なしの{{GENDER:$6|印を除去しました}} $2",
 	"articlefeedbackv5-activity-item-inappropriate": "$1 が $4 $5 にこの投稿に不適切の{{GENDER:$6|印を付けました}} $2",
 	"articlefeedbackv5-activity-item-uninappropriate": "$1 が $4 $5 にこの投稿を秘匿{{GENDER:$6|解除しました}} $2",
+	"articlefeedbackv5-activity-item-hide": "$1は$4 $5にこの投稿を{{GENDER:$6|秘匿しました}} $2",
 	"articlefeedbackv5-activity-item-autohide": "$1 が $4 $5 にこの投稿を{{GENDER:$6|自動秘匿しました}} $2",
 	"articlefeedbackv5-activity-item-helpful": "$1 が $4 $5 にこの投稿に役に立つの{{GENDER:$6|印を付けました}} $2",
 	"articlefeedbackv5-activity-item-unhelpful": "$1 が $4 $5 にこの投稿に役に立たないの{{GENDER:$6|印を付けました}} $2",
