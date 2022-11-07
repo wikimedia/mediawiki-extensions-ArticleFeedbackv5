@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Arman musikyan",
+			"Armenoid",
 			"Kareyac"
 		]
 	},
@@ -14,6 +15,8 @@
 	"articlefeedbackv5-contribs-status-action-hide": "Թաքցնել",
 	"articlefeedbackv5-form-helpful-yes-label": "Այո",
 	"articlefeedbackv5-form-helpful-no-label": "Ոչ",
+	"articlefeedbackv5-special-filter-unreviewed": "Չվերանայված ($1)",
+	"articlefeedbackv5-special-filter-unreviewed-watchlist": "Չվերանայված",
 	"articlefeedbackv5-special-filter-allcomment-watchlist": "Բոլոր մեկնաբանություններ",
 	"articlefeedbackv5-special-filter-hidden-watchlist": "Թաքցված",
 	"articlefeedbackv5-special-filter-select-more": "Ավելին",
