@@ -34,7 +34,8 @@
 			"春春眠眠",
 			"神樂坂秀吉",
 			"青子守歌",
-			"Omotecho"
+			"Omotecho",
+			"Hzy980512"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "記事のフィードバックを送信",
@@ -635,6 +636,7 @@
 	"articlefeedbackv5-activity-item-unnoaction": "$1 が $4 $5 にこの投稿の対応の必要なしの{{GENDER:$6|印を除去しました}} $2",
 	"articlefeedbackv5-activity-item-inappropriate": "$1 が $4 $5 にこの投稿に不適切の{{GENDER:$6|印を付けました}} $2",
 	"articlefeedbackv5-activity-item-uninappropriate": "$1 が $4 $5 にこの投稿を秘匿{{GENDER:$6|解除しました}} $2",
+	"articlefeedbackv5-activity-item-hide": "$1は$4 $5にこの投稿を{{GENDER:$6|秘匿しました}} $2",
 	"articlefeedbackv5-activity-item-autohide": "$1 が $4 $5 にこの投稿を{{GENDER:$6|自動秘匿しました}} $2",
 	"articlefeedbackv5-activity-item-helpful": "$1 が $4 $5 にこの投稿に役に立つの{{GENDER:$6|印を付けました}} $2",
 	"articlefeedbackv5-activity-item-unhelpful": "$1 が $4 $5 にこの投稿に役に立たないの{{GENDER:$6|印を付けました}} $2",
