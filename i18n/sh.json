@@ -91,6 +91,7 @@
 	"articlefeedbackv5-cta5-button-text": "Svi komentari",
 	"articlefeedbackv5-cta6-confirmation-title": "Je li Vam potrebna pomoć u uređivanju {{SITENAME}}?",
 	"articlefeedbackv5-cta6-confirmation-call": "Idite u čajanu, gdje novi i iskusniji korisnici razmjenjuju savjete o uređivanju {{SITENAME}}.",
+	"articlefeedbackv5-cta6-button-text": "Posjetite Teahouse",
 	"articlefeedbackv5-overlay-close": "Zatvori",
 	"articlefeedbackv5-error": "Došlo je do greške. Pokušajte ponovo.",
 	"articlefeedbackv5-error-blocked": "Blokirani korisnici ne mogu davati mišlenja.",
