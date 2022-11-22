@@ -609,7 +609,7 @@
 		var requestData;
 
 		// default parameters
-		note = typeof note !== undefined ? note : '';
+		note = note || '';
 
 		if ( $.articleFeedbackv5special.listControls.disabled ) {
 			return false;
