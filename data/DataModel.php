@@ -262,15 +262,15 @@ abstract class DataModel {
 		$keyGetList = $wanCache->makeKey(
 			get_called_class() . '-getList',
 			$name,
-			$shard,
-			$offset,
-			$sort,
+			$shard ?? '',
+			$offset ?? '',
+			$sort ?? '',
 			$order
 		);
 		$keyGetListValidity = $wanCache->makeKey(
 			get_called_class() . '-getListValidity',
 			$name,
-			$shard
+			$shard ?? ''
 		);
 
 		// get data from cache
@@ -376,7 +376,7 @@ abstract class DataModel {
 		}
 
 		$wanCache = static::getCache();
-		$key = $wanCache->makeKey( get_called_class() . '-getCount', $name, $shard );
+		$key = $wanCache->makeKey( get_called_class() . '-getCount', $name, $shard ?? '' );
 
 		return (int)$wanCache->getWithSetCallback(
 			$key,
@@ -674,9 +674,9 @@ abstract class DataModel {
 	 *
 	 * @param DataModelList $list
 	 * @param string $name The list name (see static::$lists)
-	 * @param mixed $shard The shard value
-	 * @param string $offset The offset to start from
-	 * @param string $sort Sort to apply to list
+	 * @param mixed|null $shard The shard value
+	 * @param string|null $offset The offset to start from
+	 * @param string|null $sort Sort to apply to list
 	 * @param string $order Sort the list ASC or DESC
 	 */
 	public static function cacheList( $list, $name, $shard, $offset, $sort, $order ) {
@@ -690,9 +690,9 @@ abstract class DataModel {
 			$keyGetList = $wanCache->makeKey(
 				get_called_class() . '-getList',
 				$name,
-				$shard,
-				$offset,
-				$sort,
+				$shard ?? '',
+				$offset ?? '',
+				$sort ?? '',
 				$order
 			);
 			$wanCache->set( $keyGetList, $cache, 60 * 60 );
@@ -704,7 +704,7 @@ abstract class DataModel {
 	 * from the database all over again.
 	 *
 	 * @param string $name The list name (see static::$lists)
-	 * @param mixed $shard The shard value
+	 * @param mixed|null $shard The shard value
 	 */
 	public static function uncacheList( $name, $shard ) {
 		$wanCache = static::getCache();
@@ -722,8 +722,8 @@ abstract class DataModel {
 		 * if the timestamp stored along with it is more recent than the timestamp
 		 * found in this validity cache.
 		 */
-		foreach ( [ $shard, null ] as $shard ) {
-			$key = $wanCache->makeKey( get_called_class() . '-getListValidity', $name, $shard );
+		foreach ( [ $shard, '' ] as $shard ) {
+			$key = $wanCache->makeKey( get_called_class() . '-getListValidity', $name, $shard ?? '' );
 			$wanCache->set( $key, wfTimestampNow(), 60 * 60 );
 		}
 	}
@@ -795,7 +795,7 @@ abstract class DataModel {
 	protected function updateCountCache( $name, $shard, $difference ) {
 		$wanCache = static::getCache();
 		// Invalidate both shard-specific as well as general all-shard count
-		foreach ( [ $shard, null ] as $shard ) {
+		foreach ( [ $shard, '' ] as $shard ) {
 			$class = get_called_class();
 			$key = $wanCache->makeKey( $class . '-getCount', $name, $shard );
 			$wanCache->touchCheckKey( $key );

@@ -239,7 +239,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	public function updateCountFound() {
 		$wanCache = static::getCache();
 
-		foreach ( [ $this->{self::getShardColumn()}, null ] as $shard ) {
+		foreach ( [ $this->{self::getShardColumn()}, '' ] as $shard ) {
 			$key = $wanCache->makeKey( get_called_class() . '-getCountFound', $shard );
 			$wanCache->touchCheckKey( $key );
 		}
@@ -258,7 +258,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	public static function getCountFound( $pageId = null ) {
 		$wanCache = static::getCache();
 
-		$key = $wanCache->makeKey( get_called_class(), 'getCountFound', $pageId );
+		$key = $wanCache->makeKey( get_called_class(), 'getCountFound', $pageId ?? '' );
 
 		return $wanCache->getWithSetCallback(
 			$key,
