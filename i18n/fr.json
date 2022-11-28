@@ -186,7 +186,7 @@
 	"articlefeedbackv5-form-helpful-yes-label": "Oui",
 	"articlefeedbackv5-form-helpful-no-label": "Non",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|}}$1 % des lecteurs ont trouvé cela utile",
-	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|}}$1 oui / {{PLURAL:$2|}}$2 non",
+	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|}}$1 oui / {{PLURAL:$2|}}$2 non",
 	"articlefeedbackv5-special-survey-button-text": "Que pensez-vous de cet outil de commentaire ?",
 	"articlefeedbackv5-special-filter-featured": "Promus ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Non vérifiés ($1)",
