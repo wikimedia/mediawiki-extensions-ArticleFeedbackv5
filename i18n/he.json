@@ -34,7 +34,7 @@
 	"apihelp-articlefeedbackv5-param-anontoken": "אסימון עבור משתמשים אנונימיים",
 	"apihelp-articlefeedbackv5-param-bucket": "איזה טופס משוב הוצג למשתמש",
 	"apihelp-articlefeedbackv5-param-cta": "CTA מוצג לאחר הגשת הטופס",
-	"apihelp-articlefeedbackv5-param-link": "על איזה קישור המשתמש לחץ כדי להיכנס לווידג'ט",
+	"apihelp-articlefeedbackv5-param-link": "על איזה קישור המשתמש לחץ כדי להיכנס לכלי",
 	"apihelp-articlefeedbackv5-param-found": "משוב כן/לא עונה על השאלה האם הדף היה מועיל",
 	"apihelp-articlefeedbackv5-param-comment": "המשוב הטקסטואלי בצורה חופשית",
 	"apihelp-articlefeedbackv5-get-count-description": "קבל את כמות המשאבים עבור דף/מסנן מסויים",
