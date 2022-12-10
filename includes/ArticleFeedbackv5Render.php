@@ -557,7 +557,8 @@ class ArticleFeedbackv5Render {
 
 		// if no comment was entered, display message
 		if ( $text == '' ) {
-			$short = Linker::commentBlock( wfMessage( 'articlefeedbackv5-comment-empty' )->escaped() );
+			$short = MediaWikiServices::getInstance()->getCommentFormatter()
+				->formatBlock( wfMessage( 'articlefeedbackv5-comment-empty' )->escaped() );
 		} else {
 			$short = Html::element( 'span',
 				[
@@ -1247,7 +1248,8 @@ class ArticleFeedbackv5Render {
 					Html::rawElement(
 						'span',
 						[ 'class' => 'articlefeedbackv5-permalink-last-action-comment' ],
-						Linker::formatComment( $last->log_comment )
+						MediaWikiServices::getInstance()->getCommentFormatter()
+							->format( $last->log_comment )
 					);
 			}
 

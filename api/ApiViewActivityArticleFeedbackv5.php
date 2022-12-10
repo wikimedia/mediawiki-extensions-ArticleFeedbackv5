@@ -142,6 +142,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		}
 
 		$count = 0;
+		$commentFormatter = MediaWikiServices::getInstance()->getCommentFormatter();
 
 		// divs of activity items
 		foreach ( $activities as $item ) {
@@ -182,7 +183,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 						wfMessage( 'articlefeedbackv5-activity-item-' . $item->log_action )
 							->rawParams(
 								ArticleFeedbackv5Utils::getUserLink( $item->log_user, $item->log_user_text ),
-								Linker::commentBlock( $item->log_comment ),
+								$commentFormatter->formatBlock( $item->log_comment ),
 								Html::element( 'span', [], $lang->userTimeAndDate( $item->log_timestamp, $user ) ),
 								Html::element( 'span', [], $lang->userDate( $item->log_timestamp, $user ) ),
 								Html::element( 'span', [], $lang->userTime( $item->log_timestamp, $user ) )
