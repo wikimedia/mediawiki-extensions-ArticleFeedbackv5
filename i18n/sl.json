@@ -215,7 +215,7 @@
 	"articlefeedbackv5-page-disabled": "Pri tem članku stran za povratne informacije ni omogočena.",
 	"articlefeedbackv5-viewactivity": "Ogled dejavnosti",
 	"articlefeedbackv5-mask-view-contents": "Prikaži vsebino",
-	"articlefeedbackv5-mask-text-hide": "Objavo št. $1 je {{GENDER:$2|skril|skrila|skril_a)}} $2 $3.",
+	"articlefeedbackv5-mask-text-hide": "Objavo št. $1 je {{GENDER:$2|skril|skrila|skril_a}} $2 $3.",
 	"articlefeedbackv5-mask-text-oversight": "Objavo št. $1 je {{GENDER:$2|pregledal|pregledala|pregledal_a}} $2 $3.",
 	"articlefeedbackv5-permalink-info-post-id": "Objava št. $1",
 	"articlefeedbackv5-permalink-info-stats-title-length": "Dolžina",
