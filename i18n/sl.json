@@ -63,6 +63,8 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "Ključ za razvrstitev zapisov",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sortdirection": "Smer (ASC|DESC) za razvrstitev povratnih informacij",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Kakšno filtriranje naj se uporabi za seznam",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "ID določene povratne informacije za pridobitev",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Odmik za začetek zajemanja podatkov",
 	"articlefeedbackv5-cta-thanks": "Hvala!",
 	"articlefeedbackv5-cta1-confirmation-title": "Ste vedeli, da lahko uredite to stran?",
 	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} deluje, ker lahko vsak ureja njene strani. Poskusi tudi ti, kar pogumno!",
