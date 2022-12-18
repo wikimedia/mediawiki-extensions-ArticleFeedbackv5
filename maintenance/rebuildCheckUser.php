@@ -75,7 +75,7 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 		$dbw = wfGetDB( DB_PRIMARY );
 		$dbr = wfGetDB( DB_REPLICA );
 
-		$commentQuery = CommentStore::getStore()->getJoin( 'log_comment' );
+		$commentQuery = MediaWikiServices::getInstance()->getCommentStore()->getJoin( 'log_comment' );
 		$actorQuery = ActorMigration::newMigration()->getJoin( 'log_user' );
 
 		$rows = $dbr->select(

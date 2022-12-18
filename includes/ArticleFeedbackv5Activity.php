@@ -226,7 +226,7 @@ class ArticleFeedbackv5Activity {
 		$where['log_namespace'] = NS_SPECIAL;
 		$where = self::applyContinue( $continue, $where );
 
-		$commentQuery = CommentStore::getStore()->getJoin( 'log_comment' );
+		$commentQuery = MediaWikiServices::getInstance()->getCommentStore()->getJoin( 'log_comment' );
 		$actorQuery = ActorMigration::newMigration()->getJoin( 'log_user' );
 		$activity = ArticleFeedbackv5Utils::getDB( DB_REPLICA )->select(
 			[ 'logging' ] + $commentQuery['tables'] + $actorQuery['tables'],
@@ -456,7 +456,7 @@ class ArticleFeedbackv5Activity {
 				$options
 			);
 
-			$commentQuery = CommentStore::getStore()->getJoin( 'log_comment' );
+			$commentQuery = MediaWikiServices::getInstance()->getCommentStore()->getJoin( 'log_comment' );
 			$actorQuery = ActorMigration::newMigration()->getJoin( 'log_user' );
 			$rows = ArticleFeedbackv5Utils::getDB( DB_REPLICA )->select(
 				[
