@@ -178,7 +178,7 @@
 	"articlefeedbackv5-special-filter-resolved": "已解決 ($1)",
 	"articlefeedbackv5-special-filter-noaction": "無需操作 ($1)",
 	"articlefeedbackv5-special-filter-inappropriate": "不恰當 ($1)",
-	"articlefeedbackv5-special-filter-archived": "已存檔 ($1)",
+	"articlefeedbackv5-special-filter-archived": "已存檔（$1）",
 	"articlefeedbackv5-special-filter-allcomment": "所有評論 ($1)",
 	"articlefeedbackv5-special-filter-hidden": "隱藏 ($1)",
 	"articlefeedbackv5-special-filter-requested": "已請求監督 ($1)",

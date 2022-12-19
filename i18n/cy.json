@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Afalau",
 			"Lloffiwr",
 			"Pwyll",
 			"Robin Owain"
@@ -23,6 +24,7 @@
 	"articlefeedbackv5-error-nofeedback": "Ysgrifennwch eich adborth.",
 	"articlefeedbackv5-protection-level": "Adborth ar erthyglau",
 	"protect-level-aft-reader": "Galluogi i bob defnyddiwr",
+	"protect-level-aft-member": "Galluogi ar gyfer defnyddwyr sydd wedi mewngofnodi",
 	"articlefeedbackv5-contribs-status-action-feature": "Defnyddiol",
 	"articlefeedbackv5-contribs-status-action-resolve": "Wedi datrys",
 	"articlefeedbackv5-contribs-status-action-noaction": "Dim angen gweithredu",
@@ -32,6 +34,7 @@
 	"articlefeedbackv5-form-helpful-label": "Ydy'r adborth hwn yn ddefnyddiol?",
 	"articlefeedbackv5-form-helpful-yes-label": "Ydy",
 	"articlefeedbackv5-form-helpful-no-label": "Nacydy",
+	"articlefeedbackv5-invalid-log-id": "ID log annilys",
 	"articlefeedbackv5": "Adborth ar erthygl - Prif dudalen",
 	"articlefeedbackv5-desc": "Adborth am erthygl",
 	"articlefeedbackv5-permalink-info-stats-title-scores": "Sgor",
