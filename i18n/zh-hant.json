@@ -25,7 +25,8 @@
 			"StephDC",
 			"Waihorace",
 			"Xiplus",
-			"Winston Sung"
+			"Winston Sung",
+			"捍粵者"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "提交條目回饋",
@@ -135,7 +136,7 @@
 	"protect-level-aft-noone": "對所有使用者停用",
 	"articlefeedbackv5-protection-title": "已變更 \"[[$1]]\" 的文章回饋工具可見性",
 	"restriction-articlefeedbackv5": "可見性",
-	"articlefeedbackv5-disabled": "回饋已被停用",
+	"articlefeedbackv5-disabled": "回饋已停用",
 	"articlefeedbackv5-disabled-admin-admin": "讀者和編輯已被停用回饋。他們不能在此頁上發佈新的回饋。",
 	"articlefeedbackv5-disabled-admin-editor": "讀者已被停用回饋。他們不能在此頁上發佈新的回饋。",
 	"articlefeedbackv5-disabled-editor-admin": "回饋已被管理員停用。讀者和編輯不能在此頁上發佈新的回饋。",
@@ -358,8 +359,8 @@
 	"articlefeedbackv5-permalink-info-revision-link": "查閱此頁的舊版本",
 	"articlefeedbackv5-permalink-info-posted": "發佈於 $1 $2",
 	"articlefeedbackv5-permalink-info-stats-title-length": "長度",
-	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 個字}}",
-	"articlefeedbackv5-permalink-info-length-characters": " ($1 字元)",
+	"articlefeedbackv5-permalink-info-length-words": "$1字",
+	"articlefeedbackv5-permalink-info-length-characters": "（$1字元）",
 	"articlefeedbackv5-permalink-info-stats-title-scores": "分數",
 	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "相關度：",
 	"articlefeedbackv5-permalink-info-stats-subtitle-helpfulness": "有用度：",
