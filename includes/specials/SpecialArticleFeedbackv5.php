@@ -816,16 +816,17 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// Was a filter requested via cookie?
 		if ( !$filter || !in_array( $filter, $this->filters ) ) {
 			$request = $this->getRequest();
-			$cookie = json_decode( $request->getCookie( ArticleFeedbackv5Utils::getCookieName( 'last-filter' ) ) );
-			if ( $cookie !== null && is_object( $cookie )
-				&& isset( $cookie->listControls ) && is_object( $cookie->listControls )
+			$cookie = $request->getCookie( ArticleFeedbackv5Utils::getCookieName( 'last-filter' ) );
+			$cookieObj = $cookie !== null ? json_decode( $cookie ) : null;
+			if ( $cookieObj !== null && is_object( $cookieObj )
+				&& isset( $cookieObj->listControls ) && is_object( $cookieObj->listControls )
 			) {
-				$cookie_filter = $cookie->listControls->filter;
-				$cookie_sort   = $cookie->listControls->sort;
-				$cookie_dir    = $cookie->listControls->sortDirection;
+				$cookieObj_filter = $cookieObj->listControls->filter;
+				$cookieObj_sort   = $cookieObj->listControls->sort;
+				$cookieObj_dir    = $cookieObj->listControls->sortDirection;
 			}
-			if ( isset( $cookie_filter ) && in_array( $cookie_filter, $this->filters ) ) {
-				$filter = $cookie_filter;
+			if ( isset( $cookieObj_filter ) && in_array( $cookieObj_filter, $this->filters ) ) {
+				$filter = $cookieObj_filter;
 			}
 		}
 
@@ -852,12 +853,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		// Was a sort included in the cookie?
-		if ( isset( $cookie_filter ) && $cookie_filter == $filter
-			&& isset( $cookie_sort ) && isset( $cookie_dir )
+		if ( isset( $cookieObj_filter ) && $cookieObj_filter == $filter
+			&& isset( $cookieObj_sort ) && isset( $cookieObj_dir )
 		) {
-			if ( in_array( $cookie_sort . '-' . $cookie_dir, $this->sorts ) ) {
-				$sort = $cookie_sort;
-				$dir = strtoupper( $cookie_dir );
+			if ( in_array( $cookieObj_sort . '-' . $cookieObj_dir, $this->sorts ) ) {
+				$sort = $cookieObj_sort;
+				$dir = strtoupper( $cookieObj_dir );
 			}
 		}
 
