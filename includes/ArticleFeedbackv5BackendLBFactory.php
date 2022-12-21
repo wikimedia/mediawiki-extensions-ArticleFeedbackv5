@@ -171,9 +171,9 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		$fields[] = '"AFT" AS aft_contribution';
 		$fields[] = 'aft_timestamp AS ' . $pager->getIndexField(); // used for navbar
 
-		$uid = User::idFromName( $pager->getTarget() );
-		if ( $uid ) {
-			$conds['aft_user'] = $uid;
+		$userIdentity = MediaWikiServices::getInstance()->getUserIdentityLookup()->getUserIdentityByName( $pager->getTarget() );
+		if ( $userIdentity && $userIdentity->isRegistered() ) {
+			$conds['aft_user'] = $userIdentity->getId();
 		} else {
 			$conds['aft_user'] = 0;
 			$conds['aft_user_text'] = $pager->getTarget();
