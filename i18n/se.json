@@ -1,15 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kimberli Mäkäräinen (WMNO)",
 			"Yupik"
 		]
 	},
+	"articlefeedbackv5-cta-thanks": "Giitu!",
 	"articlefeedbackv5-cta2-button-text": "Lassedieđut",
 	"articlefeedbackv5-cta4-button-text-signup": "Ráhkat dovddaldaga",
 	"articlefeedbackv5-cta4-button-text-login": "Čálit sisa",
 	"articlefeedbackv5-error-unknown": "Dovdameahttun feaila.",
 	"articlefeedbackv5-contribs-status-action-hide": "Čiega",
 	"articlefeedbackv5-new-marker": "Ođđa",
+	"articlefeedbackv5-go-to-article": "Čájet siiddu",
 	"articlefeedbackv5-noteflyover-feature-help": "Lassedieđut",
 	"articlefeedbackv5-noteflyover-unfeature-help": "Lassedieđut",
 	"articlefeedbackv5-noteflyover-resolve-help": "Lassedieđut",
