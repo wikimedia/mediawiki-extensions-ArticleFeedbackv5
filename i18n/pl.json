@@ -22,7 +22,9 @@
 			"WTM",
 			"WaldiSt",
 			"Woytecr",
-			"Pefect"
+			"Pefect",
+			"Luku123",
+			"Superjurek"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Prześlij opinię o artykule",
@@ -32,6 +34,7 @@
 	"apihelp-articlefeedbackv5-param-revid": "Identyfikator wersji, dla której zostanie przesłana opinia",
 	"apihelp-articlefeedbackv5-param-anontoken": "Token dla użytkowników anonimowych",
 	"apihelp-articlefeedbackv5-param-bucket": "Który formularz opinii został wyświetlony użytkownikowi",
+	"apihelp-articlefeedbackv5-param-cta": "CTA wyświetlane po przesłaniu formluarza",
 	"apihelp-articlefeedbackv5-param-link": "Po kliknięciu na jaki link został wyświetlony widżet",
 	"apihelp-articlefeedbackv5-param-found": "Opinia tak/nie, określająca czy strona była pomocna",
 	"apihelp-articlefeedbackv5-param-comment": "Odpowiedź na pytanie otwarte",
@@ -229,6 +232,7 @@
 	"articlefeedbackv5-form-tooltip-inappropriate": "Wygłupy, spam, ataki, dane prywatne ...",
 	"articlefeedbackv5-form-tooltip-hide": "Wygłupy, spam, ataki, dane prywatne ...",
 	"articlefeedbackv5-form-tooltip-unhide": "Pokaż",
+	"articlefeedbackv5-form-tooltip-unarchive": "Cofnij archiwizację",
 	"articlefeedbackv5-form-tooltip-flag": "Wygłupy, spam, ataki, dane prywatne ...",
 	"articlefeedbackv5-form-tooltip-oversight": "Ataki, dane prywatne ...",
 	"articlefeedbackv5-form-tooltip-request": "Ataki, dane prywatne ...",
