@@ -275,6 +275,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	}
 
 	/**
+	 * @deprecated since MediaWiki 1.25
+	 *
 	 * Gets the parameter descriptions
 	 *
 	 * @return array the descriptions, indexed by allowed key
@@ -313,6 +315,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	}
 
 	/**
+	 * @deprecated since MediaWiki 1.25
+	 *
 	 * Gets a description
 	 *
 	 * @return string
