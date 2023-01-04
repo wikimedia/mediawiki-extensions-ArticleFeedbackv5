@@ -70,6 +70,8 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	}
 
 	/**
+	 * @deprecated since MediaWiki 1.25
+	 *
 	 * Gets the parameter descriptions
 	 *
 	 * @return array the descriptions, indexed by allowed key
@@ -84,6 +86,8 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	}
 
 	/**
+	 * @deprecated since MediaWiki 1.25
+	 *
 	 * Gets the api descriptions
 	 *
 	 * @return array the description as the first element in an array
@@ -95,6 +99,8 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	}
 
 	/**
+	 * @deprecated since MediaWiki 1.25
+	 *
 	 * Gets an example
 	 *
 	 * @return array the example as the first element in an array
