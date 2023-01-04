@@ -69,8 +69,6 @@ class ArticleFeedbackv5Flagging {
 	private $logId;
 
 	/**
-	 * Constructor
-	 *
 	 * @param User|null $user the user performing the action, or
 	 *                          zero if it's a system call
 	 * @param int $feedbackId the feedback ID

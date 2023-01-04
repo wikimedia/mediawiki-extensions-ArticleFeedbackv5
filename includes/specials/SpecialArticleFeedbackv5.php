@@ -83,7 +83,6 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	protected $startingSortDirection;
 
 	/**
-	 * Constructor
 	 * @param string $name
 	 * @param string $restriction
 	 * @param bool $listed

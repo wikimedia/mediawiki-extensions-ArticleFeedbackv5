@@ -33,9 +33,6 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 	 */
 	private $completeCount = 0;
 
-	/**
-	 * Constructor
-	 */
 	public function __construct() {
 		parent::__construct();
 		$this->addDescription( 'Rebuild checkuser actiontext & logging usernames (based on checkuser data)' );

@@ -32,9 +32,6 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 	 */
 	private $completeCount = 0;
 
-	/**
-	 * Constructor
-	 */
 	public function __construct() {
 		parent::__construct();
 		$this->addDescription( 'Mark old feedback that is not particularly interesting as archived.' );

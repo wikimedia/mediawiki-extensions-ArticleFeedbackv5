@@ -33,9 +33,6 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 	 */
 	private $completeCount = 0;
 
-	/**
-	 * Constructor
-	 */
 	public function __construct() {
 		parent::__construct();
 		$this->addDescription( 'Rebuild existing logging.log_params data to form a serialized array with feedback id & page id' );

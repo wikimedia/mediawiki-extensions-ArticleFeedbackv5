@@ -26,9 +26,6 @@ class DataModelPurgeCache extends Maintenance {
 	 */
 	protected $shards = [ null ];
 
-	/**
-	 * Constructor
-	 */
 	public function __construct() {
 		parent::__construct();
 		$this->addOption( 'model', 'Classname of the model to purge caches for', true, true );

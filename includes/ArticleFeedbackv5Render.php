@@ -46,8 +46,6 @@ class ArticleFeedbackv5Render {
 	private $user;
 
 	/**
-	 * Constructor
-	 *
 	 * @param User $user Current user.
 	 * @param bool $permalink whether this is a permalink?
 	 * @param bool $central whether this is on the central log?

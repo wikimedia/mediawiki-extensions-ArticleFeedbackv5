@@ -16,9 +16,7 @@ require_once __DIR__ . '/../data/maintenance/DataModelPurgeCache.php';
  * @ingroup Maintenance
  */
 class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
-	/**
-	 * Constructor
-	 */
+
 	public function __construct() {
 		parent::__construct();
 		$this->deleteOption( 'model' );

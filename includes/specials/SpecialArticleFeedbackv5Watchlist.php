@@ -23,7 +23,6 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 	protected $user;
 
 	/**
-	 * Constructor
 	 * @param string $name
 	 * @param string $restriction
 	 * @param bool $listed
