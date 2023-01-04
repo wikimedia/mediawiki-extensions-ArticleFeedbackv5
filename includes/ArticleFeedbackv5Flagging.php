@@ -175,7 +175,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function request( $notes, $toggle ) {
 		// already requested?
@@ -210,7 +210,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function unrequest( $notes, $toggle ) {
 		// not yet requested?
@@ -240,7 +240,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function decline( $notes, $toggle ) {
 		// not requested?
@@ -263,7 +263,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function feature( $notes, $toggle ) {
 		if (
@@ -306,7 +306,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function unfeature( $notes, $toggle ) {
 		if (
@@ -343,7 +343,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function resolve( $notes, $toggle ) {
 		if (
@@ -380,7 +380,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function unresolve( $notes, $toggle ) {
 		if (
@@ -416,7 +416,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function noaction( $notes, $toggle ) {
 		if (
@@ -450,7 +450,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function unnoaction( $notes, $toggle ) {
 		if (
@@ -484,7 +484,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function inappropriate( $notes, $toggle ) {
 		if (
@@ -518,7 +518,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function uninappropriate( $notes, $toggle ) {
 		if (
@@ -552,7 +552,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function hide( $notes, $toggle ) {
 		if (
@@ -586,7 +586,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function unhide( $notes, $toggle ) {
 		if (
@@ -627,7 +627,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function archive( $notes, $toggle ) {
 		if (
@@ -661,7 +661,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function unarchive( $notes, $toggle ) {
 		if (
@@ -695,7 +695,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function oversight( $notes, $toggle ) {
 		if (
@@ -731,7 +731,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function unoversight( $notes, $toggle ) {
 		if (
@@ -769,7 +769,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function helpful( $notes, $toggle ) {
 		$this->feedback->aft_helpful++;
@@ -790,7 +790,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function undo_helpful( $notes, $toggle ) {
 		if ( $this->feedback->aft_helpful < 1 ) {
@@ -811,7 +811,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function unhelpful( $notes, $toggle ) {
 		$this->feedback->aft_unhelpful++;
@@ -832,7 +832,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function undo_unhelpful( $notes, $toggle ) {
 		if ( $this->feedback->aft_unhelpful < 1 ) {
@@ -853,7 +853,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function flag( $notes, $toggle ) {
 		$flag = $this->isSystemCall() ? 'autoflag' : 'flag';
@@ -884,7 +884,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	public function unflag( $notes, $toggle ) {
 		if ( $this->feedback->aft_flag <= 0 ) {
@@ -911,7 +911,7 @@ class ArticleFeedbackv5Flagging {
 	 *
 	 * @param string $notes any notes passed in
 	 * @param bool $toggle whether to toggle the flag
-	 * @return array|bool
+	 * @return bool
 	 */
 	protected function clear_flags( $notes, $toggle ) {
 		$this->feedback->aft_autoflag = 0;

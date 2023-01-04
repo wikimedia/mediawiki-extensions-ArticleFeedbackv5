@@ -53,7 +53,7 @@ class DataModelSample extends DataModel {
 	 * Key is the filter name, the value is an array of the conditions an "entry"
 	 * must abide to to qualify for this list.
 	 *
-	 * @var array
+	 * @var array<string,string[]>
 	 */
 	public static $lists = [
 		// all entries, sorted by title or timestamp
@@ -74,7 +74,7 @@ class DataModelSample extends DataModel {
 	 * When creating indexes on the database, create a compound index for each of
 	 * the sort-columns, along with the id column.
 	 *
-	 * @var array
+	 * @var array<string,string>
 	 */
 	public static $sorts = [
 		'title' => 'ds_title',

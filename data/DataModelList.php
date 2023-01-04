@@ -65,7 +65,7 @@ class DataModelList extends FakeResultWrapper {
 	}
 
 	/**
-	 * @return array|bool
+	 * @return array|false
 	 */
 	public function doFetchRow() {
 		$object = $this->doFetchObject();

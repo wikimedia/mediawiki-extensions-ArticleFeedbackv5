@@ -48,6 +48,7 @@ class DataModelPurgeCache extends Maintenance {
 	 * Execute the script
 	 */
 	public function execute() {
+		/** @var DataModel $class */
 		$class = $this->getClass();
 
 		$this->output( "Purging $class caches.\n" );
@@ -102,6 +103,7 @@ class DataModelPurgeCache extends Maintenance {
 	 * @param mixed $shard The shard column's value
 	 */
 	public function purgeShard( $shard ) {
+		/** @var DataModel $class */
 		$class = $this->getClass();
 
 		foreach ( $class::$lists as $list => $properties ) {

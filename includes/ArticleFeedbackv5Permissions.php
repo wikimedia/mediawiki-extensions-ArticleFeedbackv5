@@ -14,7 +14,7 @@ class ArticleFeedbackv5Permissions {
 	 * The AFT permission levels
 	 *
 	 * @see https://www.mediawiki.org/wiki/Article_feedback/Version_5/Feature_Requirements#Access_and_permissions
-	 * @var array
+	 * @var string[]
 	 */
 	public static $permissions = [
 		/*
@@ -39,7 +39,7 @@ class ArticleFeedbackv5Permissions {
 	/**
 	 * The current permission level(s) & expiry for a page
 	 *
-	 * @var array
+	 * @var array<int,stdClass|false>
 	 */
 	protected static $current = [];
 

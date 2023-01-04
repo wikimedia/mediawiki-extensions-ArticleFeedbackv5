@@ -111,7 +111,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	/**
 	 * All lists the data can be displayed as
 	 *
-	 * @var array
+	 * @var array<string,array>
 	 */
 	public static $lists = [
 		// no-one should see this list, we'll use it to keep count of all articles ;)
@@ -209,7 +209,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * When creating indexes on the database, create a compound index for each of
 	 * the sort-columns, along with the id column.
 	 *
-	 * @var array
+	 * @var array<string,string>
 	 */
 	public static $sorts = [
 		'relevance' => 'aft_relevance_score',

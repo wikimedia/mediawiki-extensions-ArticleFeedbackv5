@@ -17,7 +17,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 	/**
 	 * Params required to be able to send email.
 	 *
-	 * @var array
+	 * @var string[]
 	 */
 	protected $requiredParams = [
 		'user_name',
