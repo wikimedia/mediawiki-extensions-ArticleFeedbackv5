@@ -106,7 +106,7 @@ abstract class DataModelBackend {
 	 *
 	 * @param string $name The list name (see <datamodel>::$lists)
 	 * @param mixed|null $shard Get only data for a certain shard value
-	 * @return array
+	 * @return int
 	 */
 	abstract public function getCount( $name, $shard = null );
 

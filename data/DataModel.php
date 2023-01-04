@@ -55,7 +55,7 @@ abstract class DataModel {
 	 * Key is the filter name, the value is an array of the conditions an "entry"
 	 * must abide to to qualify for this list.
 	 *
-	 * @var array
+	 * @var array<string,string[]>
 	 */
 	public static $lists = [ /*
 		// sample list that would include all entries (there are no conditions)
@@ -72,7 +72,7 @@ abstract class DataModel {
 	 * When creating indexes on the database, create a compound index for each of
 	 * the sort-columns, along with the id column.
 	 *
-	 * @var array
+	 * @var array<string,string>
 	 */
 	public static $sorts = [ /*
 		// sample order on id value - note: unlike a traditional auto-increment id,
@@ -732,7 +732,7 @@ abstract class DataModel {
 	 * Get a list's conditions.
 	 *
 	 * @param string $name
-	 * @return array
+	 * @return string[]
 	 * @throws MWException
 	 */
 	public static function getListConditions( $name ) {

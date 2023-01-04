@@ -12,12 +12,12 @@ use MediaWiki\MediaWikiServices;
 
 class DataModelBackendLBFactory extends DataModelBackend {
 	/**
-	 * @var array [bool]
+	 * @var bool[]
 	 */
 	protected static $written = [];
 
 	/**
-	 * @param string|bool $wiki The wiki ID, or false for the current wiki
+	 * @param string|false $wiki The wiki ID, or false for the current wiki
 	 * @return \Wikimedia\Rdbms\LoadBalancer
 	 */
 	public function getLB( $wiki = false ) {
@@ -30,10 +30,10 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * @param int $db Index of the connection to get. May be DB_PRIMARY for the
 	 *            primary database (for write queries), DB_REPLICA for potentially lagged read
 	 *            queries, or an integer >= 0 for a particular server.
-	 * @param string|array $groups Query groups. An array of group names that this query
+	 * @param string[]|string $groups Query groups. An array of group names that this query
 	 *                belongs to. May contain a single string if the query is only
 	 *                in one group.
-	 * @param string|bool $wiki The wiki ID, or false for the current wiki
+	 * @param string|false $wiki The wiki ID, or false for the current wiki
 	 * @return \Wikimedia\Rdbms\IDatabase
 	 */
 	public function getDB( $db, $groups = [], $wiki = false ) {
@@ -245,7 +245,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 *
 	 * @param string $name The list name (see <datamodel>::$lists)
 	 * @param mixed|null $shard Get only data for a certain shard value
-	 * @return array
+	 * @return int
 	 */
 	public function getCount( $name, $shard = null ) {
 		$dbr = $this->getDB( DB_REPLICA );

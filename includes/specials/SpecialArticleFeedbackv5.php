@@ -22,14 +22,14 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 *
 	 * Will be create on construction based on user permissions
 	 *
-	 * @var array
+	 * @var string[]
 	 */
 	protected $filters;
 
 	/**
 	 * The sorts available
 	 *
-	 * @var array
+	 * @var string[]
 	 */
 	protected $sorts;
 

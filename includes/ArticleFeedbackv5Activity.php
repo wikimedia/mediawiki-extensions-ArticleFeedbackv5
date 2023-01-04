@@ -33,7 +33,7 @@ class ArticleFeedbackv5Activity {
 	 *   value should be 'articlefeedbackv5', but other (e.g. suppress for more
 	 *   delicate actions) are acceptable.
 	 *
-	 * @var array
+	 * @var array<string,array<string,string>>
 	 */
 	public static $actions = [
 		'helpful' => [

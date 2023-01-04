@@ -25,17 +25,17 @@ use MediaWiki\MediaWikiServices;
 
 class ArticleFeedbackv5Utils {
 	/**
-	 * @var array \Wikimedia\Rdbms\LoadBalancer
+	 * @var \Wikimedia\Rdbms\LoadBalancer[]
 	 */
 	protected static $lb = [];
 
 	/**
-	 * @var array [bool]
+	 * @var bool[]
 	 */
 	public static $written = [];
 
 	/**
-	 * @param string $wiki The wiki ID, or false for the current wiki
+	 * @param string|false $wiki The wiki ID, or false for the current wiki
 	 * @return \Wikimedia\Rdbms\LoadBalancer
 	 */
 	public static function getLB( $wiki = false ) {
@@ -52,10 +52,10 @@ class ArticleFeedbackv5Utils {
 	 * @param int $db Index of the connection to get. May be DB_PRIMARY for the
 	 *            primary database (for write queries), DB_REPLICA for potentially lagged read
 	 *            queries, or an integer >= 0 for a particular server.
-	 * @param array|string $groups Query groups. An array of group names that this query
+	 * @param string[]|string $groups Query groups. An array of group names that this query
 	 *                belongs to. May contain a single string if the query is only
 	 *                in one group.
-	 * @param string $wiki The wiki ID, or false for the current wiki
+	 * @param string|false $wiki The wiki ID, or false for the current wiki
 	 * @return \Wikimedia\Rdbms\IDatabase
 	 */
 	public static function getDB( $db, $groups = [], $wiki = false ) {
@@ -159,7 +159,7 @@ class ArticleFeedbackv5Utils {
 	 * defined in config, we'll find the correct match)
 	 *
 	 * @param int $pageId
-	 * @return array
+	 * @return string[]
 	 */
 	protected static function getPageCategories( $pageId ) {
 		$title = Title::newFromID( $pageId );
@@ -256,7 +256,7 @@ class ArticleFeedbackv5Utils {
 	/**
 	 * Creates a user link for a log row
 	 *
-	 * @param int $userId can be null or a user object
+	 * @param User|int|null $userId can be null or a user object
 	 * @param string|null $userIp (name works too)
 	 * @return string Anchor tag link to user
 	 */
@@ -384,7 +384,7 @@ class ArticleFeedbackv5Utils {
 	 * @param string $value
 	 * @param int $pageId
 	 * @param User $user
-	 * @return bool|array Will return boolean false if valid or error message array if flagged
+	 * @return array[]|false Will return boolean false if valid or error message array if flagged
 	 */
 	public static function validateAbuseFilter( $value, $pageId, User $user ) {
 		// Check AbuseFilter, if installed
