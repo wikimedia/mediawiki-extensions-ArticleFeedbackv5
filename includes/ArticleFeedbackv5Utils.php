@@ -71,13 +71,6 @@ class ArticleFeedbackv5Utils {
 				 * data (waiting for replicas to sync up might take some time)
 				 */
 				$db = DB_PRIMARY;
-			} else {
-				/*
-				 * If another db is requested and we already requested primary database,
-				 * make sure this replica has caught up!
-				 */
-				$lb->waitFor( $lb->getPrimaryPos() );
-				static::$written[$wiki] = false;
 			}
 		}
 
