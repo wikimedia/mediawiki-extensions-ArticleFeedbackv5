@@ -275,28 +275,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	}
 
 	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
-	 * Gets the parameter descriptions
-	 *
-	 * @return array the descriptions, indexed by allowed key
-	 */
-	public function getParamDescription() {
-		$p = $this->getModulePrefix();
-		return [
-			'title'      => "Title of the page to submit feedback for. Cannot be used together with {$p}pageid",
-			'pageid'     => "ID of the page to submit feedback for. Cannot be used together with {$p}title",
-			'revid'      => 'Revision ID to submit feedback for',
-			'anontoken'  => 'Token for anonymous users',
-			'bucket'     => 'Which feedback form was shown to the user',
-			'cta'        => 'CTA displayed after form submission',
-			'link'       => 'Which link the user clicked on to get to the widget',
-			'found'      => 'Yes/no feedback answering the question if the page was helpful',
-			'comment'    => 'the fee-form textual feedback',
-		];
-	}
-
-	/**
 	 * Returns whether this API call is post-only
 	 *
 	 * @return bool
@@ -312,17 +290,6 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 */
 	public function isWriteMode() {
 		return true;
-	}
-
-	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
-	 * Gets a description
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return 'Submit article feedback';
 	}
 
 	/**

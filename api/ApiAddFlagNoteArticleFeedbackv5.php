@@ -158,39 +158,6 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	}
 
 	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
-	 * Gets the parameter descriptions
-	 *
-	 * @return array the descriptions, indexed by allowed key
-	 */
-	public function getParamDescription() {
-		$p = $this->getModulePrefix();
-		return [
-			'logid' => 'Log ID to update',
-			'flagtype' => 'Type of flag to apply',
-			'note'   => 'Information on why the feedback activity occurred',
-			'title' => "Title of the page the feedback was given for. Cannot be used together with {$p}pageid",
-			'pageid' => "ID of the page the feedback was given for. Cannot be used together with {$p}title",
-			'feedbackid' => 'FeedbackID to flag',
-			'source' => 'The origin of the flag: article (page), central (feedback page), watchlist (page), permalink',
-		];
-	}
-
-	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
-	 * Gets the api descriptions
-	 *
-	 * @return array the description as the first element in an array
-	 */
-	public function getDescription() {
-		return [
-			'Add a note describing activity, after the action has been performed already.'
-		];
-	}
-
-	/**
 	 * Gets an example
 	 *
 	 * @return array the example as the first element in an array

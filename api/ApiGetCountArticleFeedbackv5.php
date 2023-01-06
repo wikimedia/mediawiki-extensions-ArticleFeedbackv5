@@ -72,35 +72,6 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	/**
 	 * @deprecated since MediaWiki 1.25
 	 *
-	 * Gets the parameter descriptions
-	 *
-	 * @return array the descriptions, indexed by allowed key
-	 */
-	public function getParamDescription() {
-		$p = $this->getModulePrefix();
-		return [
-			'title' => "Title of the page to get feedback ratings for. Cannot be used together with {$p}pageid",
-			'pageid' => "ID of the page to get feedback ratings for. Cannot be used together with {$p}title",
-			'filter' => 'What filtering to apply to list',
-		];
-	}
-
-	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
-	 * Gets the api descriptions
-	 *
-	 * @return array the description as the first element in an array
-	 */
-	public function getDescription() {
-		return [
-			'Get the amount of feedback for a certain page/filter'
-		];
-	}
-
-	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
 	 * Gets an example
 	 *
 	 * @return array the example as the first element in an array
