@@ -112,35 +112,6 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 	}
 
 	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
-	 * Gets the parameter descriptions
-	 *
-	 * @return array the descriptions, indexed by allowed key
-	 */
-	public function getParamDescription() {
-		$p = $this->getModulePrefix();
-		return [
-			'title' => "Title of the page to enable/disable AFTv5 for. Cannot be used together with {$p}pageid",
-			'pageid' => "ID of the page to enable/disable AFTv5 for. Cannot be used together with {$p}title",
-			'enable' => '1 to enable, 0 to disable AFTv5',
-		];
-	}
-
-	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
-	 * Gets the api descriptions
-	 *
-	 * @return array the description as the first element in an array
-	 */
-	public function getDescription() {
-		return [
-			'Enable/disable AFTv5 for a certain page.'
-		];
-	}
-
-	/**
 	 * Gets an example
 	 *
 	 * @return array the example as the first element in an array

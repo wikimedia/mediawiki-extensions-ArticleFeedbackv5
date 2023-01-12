@@ -123,39 +123,6 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	}
 
 	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
-	 * Gets the parameter descriptions
-	 *
-	 * @return array the descriptions, indexed by allowed key
-	 */
-	public function getParamDescription() {
-		$p = $this->getModulePrefix();
-		return [
-			'title' => "Title of the page to flag feedback for. Cannot be used together with {$p}pageid",
-			'pageid' => "ID of the page to flag feedback for. Cannot be used together with {$p}title",
-			'feedbackid' => 'FeedbackID to flag',
-			'flagtype' => 'Type of flag to apply',
-			'note' => 'Information on why the feedback activity occurred',
-			'toggle' => 'The flag is being toggled atomically, only useful for (un)helpful',
-			'source' => 'The origin of the flag: article (page), central (feedback page), watchlist (page), permalink',
-		];
-	}
-
-	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
-	 * Gets the api descriptions
-	 *
-	 * @return array the description as the first element in an array
-	 */
-	public function getDescription() {
-		return [
-			'Flag a feedbackID as abusive or hidden.'
-		];
-	}
-
-	/**
 	 * Gets an example
 	 *
 	 * @return array the example as the first element in an array

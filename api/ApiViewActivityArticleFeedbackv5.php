@@ -249,38 +249,6 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	/**
 	 * @deprecated since MediaWiki 1.25
 	 *
-	 * Gets the parameter descriptions
-	 *
-	 * @return array the descriptions, indexed by allowed key
-	 */
-	public function getParamDescription() {
-		$p = $this->getModulePrefix();
-		return [
-			'feedbackid' => 'ID of article feedback to get activity for',
-			'title' => "Title of the page the feedback was given for. Cannot be used together with {$p}pageid",
-			'pageid' => "ID of the page the feedback was given for. Cannot be used together with {$p}title",
-			'limit' => 'How many activity results to return',
-			'continue' => 'When more results are available, use this to continue',
-			'noheader' => 'Skip the header markup, even if this is the first page',
-		];
-	}
-
-	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
-	 * Gets the api descriptions
-	 *
-	 * @return array the description as the first element in an array
-	 */
-	public function getDescription() {
-		return [
-			'List article feedback activity for a specified page'
-		];
-	}
-
-	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
 	 * Gets an example
 	 *
 	 * @return array the example as the first element in an array

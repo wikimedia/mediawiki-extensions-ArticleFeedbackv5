@@ -200,40 +200,6 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	/**
 	 * @deprecated since MediaWiki 1.25
 	 *
-	 * Gets the parameter descriptions
-	 *
-	 * @return array the descriptions, indexed by allowed key
-	 */
-	public function getParamDescription() {
-		$p = $this->getModulePrefix();
-		return [
-			'title'         => "Title of the page to get feedback ratings for. Cannot be used together with {$p}pageid",
-			'pageid'        => "ID of the page to get feedback ratings for. Cannot be used together with {$p}title",
-			'watchlist'     => "Load feedback from user's watchlisted pages (1) or from all pages (0)",
-			'sort'          => 'Key to sort records by',
-			'sortdirection' => 'Direction (ASC|DESC) to sort the feedback by',
-			'filter'        => 'What filtering to apply to list',
-			'feedbackid'    => 'The ID of a specific feedback item to fetch',
-			'offset'        => 'Offset to start grabbing data at',
-		];
-	}
-
-	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
-	 * Gets the api descriptions
-	 *
-	 * @return array the description as the first element in an array
-	 */
-	public function getDescription() {
-		return [
-			'List article feedback for a specified page'
-		];
-	}
-
-	/**
-	 * @deprecated since MediaWiki 1.25
-	 *
 	 * Gets an example
 	 *
 	 * @return array the example as the first element in an array
