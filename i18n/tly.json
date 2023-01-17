@@ -2,10 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Erdemaslancan",
-			"Patriot Kur"
+			"Patriot Kur",
+			"Patriot Kor"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Sepas!",
+	"articlefeedbackv5-form-helpful-no-label": "Ne",
 	"articlefeedbackv5-discussion-page": "Mızokirə",
-	"articlefeedbackv5-whats-this": "Koməq"
+	"articlefeedbackv5-whats-this": "Koməq",
+	"articlefeedbackv5-bucket1-toggle-found-no": "Ne",
+	"articlefeedbackv5-bucket6-toggle-found-no": "Ne"
 }
