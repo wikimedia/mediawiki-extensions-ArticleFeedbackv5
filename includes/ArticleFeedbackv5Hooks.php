@@ -488,7 +488,8 @@ class ArticleFeedbackv5Hooks {
 			)
 			->rawParams(
 				$userlink, // userlink (for newbies)
-				Linker::commentBlock( $feedback ) // comment
+				MediaWikiServices::getInstance()->getCommentFormatter()
+					->formatBlock( $feedback ) // comment
 			)
 			->params( $status ) // status
 			->rawParams( $dateFormats['date'], $dateFormats['time'] ) // date, time
