@@ -50,7 +50,7 @@
 	"apihelp-query+articlefeedbackv5-view-activity-param-title": "Наслов на страницата за која се дава мислее. Не може да се користи заедно со $1pageid",
 	"apihelp-query+articlefeedbackv5-view-activity-param-pageid": "Назнака на страницата за која се дава мислење. Не може да се користи заедно со $1title",
 	"apihelp-query+articlefeedbackv5-view-activity-param-limit": "Колку ставки од активностите да се дадат",
-	"apihelp-query+articlefeedbackv5-view-activity-param-continue": "Употребете го ова за да продолжите кога има повеќе расположиви ставки.",
+	"apihelp-query+articlefeedbackv5-view-activity-param-continue": "Употребете го ова за да продолжите кога има повеќе расположливи ставки.",
 	"apihelp-query+articlefeedbackv5-view-activity-param-noheader": "Прескокни ги ознаките за заглавие, дури и ако ова е прва страница",
 	"apihelp-query+articlefeedbackv5-view-feedback-description": "Список на мислења за дадена страница",
 	"apihelp-query+articlefeedbackv5-view-feedback-summary": "Список на мислења за дадена страница",
