@@ -35,6 +35,7 @@
 			"マツムシ",
 			"春春眠眠",
 			"神樂坂秀吉",
+			"背番号4のエース",
 			"青子守歌"
 		]
 	},
@@ -637,7 +638,10 @@
 	"articlefeedbackv5-activity-item-inappropriate": "$1 が $4 $5 にこの投稿に不適切の{{GENDER:$6|印を付けました}} $2",
 	"articlefeedbackv5-activity-item-uninappropriate": "$1 が $4 $5 にこの投稿を秘匿{{GENDER:$6|解除しました}} $2",
 	"articlefeedbackv5-activity-item-hide": "$1は$4 $5にこの投稿を{{GENDER:$6|秘匿しました}} $2",
+	"articlefeedbackv5-activity-item-unhide": "$1 が $4 $5 にこの投稿を{{GENDER:$6|自動秘匿しました}} $2",
 	"articlefeedbackv5-activity-item-autohide": "$1 が $4 $5 にこの投稿を{{GENDER:$6|自動秘匿しました}} $2",
+	"articlefeedbackv5-activity-item-archive": "$1は$4 $5にこの投稿を{{GENDER:$6|秘匿しました}} $2",
+	"articlefeedbackv5-activity-item-unarchive": "$1 が $4 $5 にこの投稿の{{GENDER:$6|荒らしフラグを解除しました}} $2",
 	"articlefeedbackv5-activity-item-helpful": "$1 が $4 $5 にこの投稿に役に立つの{{GENDER:$6|印を付けました}} $2",
 	"articlefeedbackv5-activity-item-unhelpful": "$1 が $4 $5 にこの投稿に役に立たないの{{GENDER:$6|印を付けました}} $2",
 	"articlefeedbackv5-activity-item-undo-helpful": "$1 が $4 $5 にこの投稿の役に立つの印を{{GENDER:$6|除去しました}} $2",
@@ -667,5 +671,7 @@
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "解決済",
 	"echo-category-title-feedback": "フィードバック",
 	"echo-pref-tooltip-feedback": "誰かが記事を有益だとフィートバックした時に通知する。",
-	"articlefeedbackv5-notification-link-text-view-feedback": "フィードバックを見る"
+	"articlefeedbackv5-notification-link-text-view-feedback": "フィードバックを見る",
+	"articlefeedbackv5-notification-feedback-watch": "[[$3|フィードバック]] [[$2]] については{{GENDER:$1| {{int:articlefeedbackv5-notification-feedback-moderation-flag- $4}} として [[ユーザー:$1|$1]]。",
+	"articlefeedbackv5-notification-feedback-watch-bundle": "[[$3|フィードバック]][[$2]]については{{GENDER:$1| {{int:articlefeedbackv5-notification-feedback-moderation-flag- $4}}として [[ユーザー:$1|$1]]と$5 {{PLURAL:$6|その他|その他}}。"
 }
