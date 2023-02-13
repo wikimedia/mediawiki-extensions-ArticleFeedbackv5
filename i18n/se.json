@@ -9,7 +9,7 @@
 	"articlefeedbackv5-cta2-button-text": "Lassedieđut",
 	"articlefeedbackv5-cta4-button-text-signup": "Ráhkat dovddaldaga",
 	"articlefeedbackv5-cta4-button-text-login": "Čálit sisa",
-	"articlefeedbackv5-error-unknown": "Dovdameahttun feaila.",
+	"articlefeedbackv5-error-unknown": "Dovdameahttun meattáhus.",
 	"articlefeedbackv5-contribs-status-action-hide": "Čiega",
 	"articlefeedbackv5-new-marker": "Ođđa",
 	"articlefeedbackv5-go-to-article": "Čájet siiddu",
@@ -37,6 +37,7 @@
 	"articlefeedbackv5-help-tooltip-linktext": "Lassedieđut",
 	"articlefeedbackv5-section-linktext": "máhcahat",
 	"articlefeedbackv5-toolbox-view": "Čájet máhcahaga",
+	"articlefeedbackv5-activity-permalink": "bissovaš liŋka",
 	"echo-category-title-feedback": "Máhcahat",
 	"articlefeedbackv5-notification-link-text-view-feedback": "Čájet máhcahaga"
 }
