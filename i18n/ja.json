@@ -684,5 +684,5 @@
 	"articlefeedbackv5-notification-feedback-moderated-flyout": "[[User:$1|$1]]さんが[[$2]]に関する[[$3|あなたのフィードバック]]を{{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}}として{{GENDER:$1|マーク}}しました。",
 	"articlefeedbackv5-notification-feedback-moderated-email-subject": "$2に関するフィードバックは{{GENDER:$1| {{SITENAME}} で}}を$3とマークしました。",
 	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "$2に関するフィードバックは{{GENDER:$1| {{SITENAME}} で$1によって$4としてマークされた}}。 $3",
-	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "$2に関するフィードバックは{{GENDER:$1| $1と$5 {{PLURAL:$6|によって$4としてマークされた}} {{SITENAME}} の other|others}}。 $3"
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "$2に関するフィードバックは{{SITENAME}}において$1と$5 ほか{{PLURAL:$6|人}}によって{{GENDER:$1|訂正されました}}$3。"
 }
