@@ -198,19 +198,21 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$permalink = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $feedback->aft_id );
 
 		// Are we set to auto-flag?
-		$afUser = MediaWikiServices::getInstance()
-			->getUserFactory()
-			->newFromUserIdentity( AbuseFilterServices::getFilterUser()->getUser() );
-		$flagger = new ArticleFeedbackv5Flagging( $afUser, $feedback->aft_id, $feedback->aft_page );
-		foreach ( self::$abuseFilterFlags as $flag => $rule_desc ) {
-			$notes = wfMessage(
-				"articlefeedbackv5-abusefilter-note-aftv5$flag",
-				[ $rule_desc ]
-			)->parse();
+		if ( $wgArticleFeedbackv5AbuseFiltering ) {
+			$afUser = MediaWikiServices::getInstance()
+				->getUserFactory()
+				->newFromAuthority( AbuseFilterServices::getFilterUser()->getAuthority() );
+			$flagger = new ArticleFeedbackv5Flagging( $afUser, $feedback->aft_id, $feedback->aft_page );
+			foreach ( self::$abuseFilterFlags as $flag => $rule_desc ) {
+				$notes = wfMessage(
+					"articlefeedbackv5-abusefilter-note-aftv5$flag",
+					[ $rule_desc ]
+				)->parse();
 
-			$res = $flagger->run( $flag, $notes, false, 'abusefilter' );
-			if ( $res['result'] == 'Error' ) {
-				// TODO: Log somewhere?
+				$res = $flagger->run( $flag, $notes, false, 'abusefilter' );
+				if ( $res['result'] == 'Error' ) {
+					// TODO: Log somewhere?
+				}
 			}
 		}
 
