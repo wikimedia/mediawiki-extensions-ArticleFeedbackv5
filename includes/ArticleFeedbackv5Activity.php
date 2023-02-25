@@ -226,23 +226,34 @@ class ArticleFeedbackv5Activity {
 		$where['log_namespace'] = NS_SPECIAL;
 		$where = self::applyContinue( $continue, $where );
 
-		$commentQuery = MediaWikiServices::getInstance()->getCommentStore()->getJoin( 'log_comment' );
-		$actorQuery = ActorMigration::newMigration()->getJoin( 'log_user' );
 		$activity = ArticleFeedbackv5Utils::getDB( DB_REPLICA )->select(
-			[ 'logging' ] + $commentQuery['tables'] + $actorQuery['tables'],
+			[ 'logging', 'actor', 'comment' ],
 			[
 				'log_id',
 				'log_action',
 				'log_timestamp',
-				'log_title'
-			] + $commentQuery['fields'] + $actorQuery['fields'],
+				'log_title',
+				'log_user_text' => 'actor_name',
+				'log_user' => 'actor_user',
+				'log_actor',
+				// lazy hack because a lot of places in the codebase still expect
+				// log_comment to exist, so let's pretend it does :)
+				'log_comment' => 'comment_text',
+				// no clue if these are needed or not, but the migration layer provided
+				// them, so I might as well fetch 'em...
+				'comment_data',
+				'comment_id'
+			],
 			$where,
 			__METHOD__,
 			[
 				'LIMIT' => $limit + 1,
 				'ORDER BY' => 'log_timestamp DESC',
 			],
-			$commentQuery['joins'] + $actorQuery['joins']
+			[
+				'comment' => [ 'JOIN', 'comment_id = log_comment_id' ],
+				'actor' => [ 'JOIN', 'actor_id = log_actor' ]
+			]
 		);
 
 		return $activity;
@@ -456,23 +467,36 @@ class ArticleFeedbackv5Activity {
 				$options
 			);
 
-			$commentQuery = MediaWikiServices::getInstance()->getCommentStore()->getJoin( 'log_comment' );
-			$actorQuery = ActorMigration::newMigration()->getJoin( 'log_user' );
 			$rows = ArticleFeedbackv5Utils::getDB( DB_REPLICA )->select(
 				[
-					'logging'
-				] + $commentQuery['tables'] + $actorQuery['tables'],
+					'logging',
+					'actor',
+					'comment'
+				],
 				[
 					'log_id',
 					'log_action',
 					'log_timestamp',
 					'log_title',
 					'log_params',
-				] + $commentQuery['fields'] + $actorQuery['fields'],
+					'log_user_text' => 'actor_name',
+					'log_user' => 'actor_user',
+					'log_actor',
+					// lazy hack because a lot of places in the codebase still expect
+					// log_comment to exist, so let's pretend it does :)
+					'log_comment' => 'comment_text',
+					// no clue if these are needed or not, but the migration layer provided
+					// them, so I might as well fetch 'em...
+					'comment_data',
+					'comment_id'
+				],
 				[ 'log_id' => $ids ],
 				__METHOD__,
 				[],
-				$commentQuery['joins'] + $actorQuery['joins']
+				[
+					'comment' => [ 'JOIN', 'comment_id = log_comment_id' ],
+					'actor' => [ 'JOIN', 'actor_id = log_actor' ]
+				]
 			);
 
 			foreach ( $rows as $action ) {

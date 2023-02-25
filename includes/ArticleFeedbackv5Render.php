@@ -826,7 +826,8 @@ class ArticleFeedbackv5Render {
 
 		global $wgRequest;
 
-		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, $this->getUser(), $wgRequest, true );
+		$currentUser = $this->getUser();
+		$ownFeedback = ArticleFeedbackv5Utils::isOwnFeedback( $record, $currentUser, $wgRequest, true );
 		$toolbox = '';
 
 		// no editor-action has yet been performed, show tools
@@ -919,8 +920,8 @@ class ArticleFeedbackv5Render {
 						->params(
 							$userText,
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$record->aft_id" ),
-							$lang->userDate( $record->aft_timestamp, $this->getUser() ),
-							$lang->userTime( $record->aft_timestamp, $this->getUser() ),
+							$lang->userDate( $record->aft_timestamp, $currentUser ),
+							$lang->userTime( $record->aft_timestamp, $currentUser ),
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title ),
 							Message::rawParam( Html::element( 'blockquote', [], $record->aft_comment ) ),
 							$record->getArticle()->getTitle()
@@ -972,8 +973,9 @@ class ArticleFeedbackv5Render {
 								'data-section-title' => $sectionTitleTruncated,
 								'data-section-content' => $sectionContent,
 								'data-section-edittime' => wfTimestampNow(),
-								'data-section-edittoken' => $this->getUser()->getEditToken(),
-								'data-section-watchlist' => (int)$this->getUser()->isWatched( $discussPage )
+								'data-section-edittoken' => $currentUser->getEditToken(),
+								'data-section-watchlist' => (int)MediaWikiServices::getInstance()
+									->getWatchlistManager()->isWatched( $currentUser, $discussPage )
 							],
 							// Give grep a chance to find the usages:
 							// articlefeedbackv5-form-discuss-talk, articlefeedbackv5-form-discuss-user,
@@ -1023,7 +1025,7 @@ class ArticleFeedbackv5Render {
 				$note = '';
 				// if current user is the one who performed the action, add a link to
 				// leave a note to clarify why the action was performed
-				if ( $last->log_comment == '' && $last->log_user && $last->log_user == $this->getUser()->getId() ) {
+				if ( $last->log_comment == '' && $last->log_user && $last->log_user == $currentUser->getId() ) {
 					$note .=
 						Html::element(
 							'a',

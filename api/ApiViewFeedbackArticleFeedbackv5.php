@@ -162,7 +162,11 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 			'pageid'        => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'integer'
+				// @note Special:ArticleFeedbackv5 can call this API module with an empty
+				// 'pageid' param; if the type is 'integer' instead of 'string', then the
+				// calls on that special page will fail with this error:
+				// Invalid value "" for integer parameter "afvfpageid".
+				ApiBase::PARAM_TYPE     => 'string'
 			],
 			'watchlist'     => [
 				ApiBase::PARAM_REQUIRED => false,
