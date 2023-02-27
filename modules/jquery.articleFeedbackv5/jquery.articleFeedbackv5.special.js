@@ -290,7 +290,7 @@
 					$container.data( 'pageid' ),
 					$noteLink.data( 'log-id' ),
 					$noteLink.data( 'action' ),
-					$( '#articleFeedbackv5-noteflyover-note' ).attr( 'value' )
+					$( '#articleFeedbackv5-noteflyover-note' ).val()
 				);
 			}
 
