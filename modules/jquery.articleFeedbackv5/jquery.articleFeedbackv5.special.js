@@ -379,6 +379,11 @@
 			}
 		} );
 
+		// bind character countdown on flyover panels' input field
+		$( document ).on( 'keyup', '#articleFeedbackv5-noteflyover-note', function () {
+			$.aftUtils.countdown( $( this ), $( '#articleFeedbackv5-noteflyover-countdown' ), 250 );
+		} );
+
 		// bind short/long version toggle
 		$( document ).on( 'click touchstart', '.articleFeedbackv5-comment-toggle', function ( e ) {
 			e.preventDefault();

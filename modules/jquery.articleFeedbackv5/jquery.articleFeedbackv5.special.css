@@ -591,6 +591,12 @@ p.articleFeedbackv5-form-own-feedback {
 form.articleFeedbackv5-form-flyover {
 	padding: 0 25px 0 0;
 }
+form.articleFeedbackv5-form-flyover #articleFeedbackv5-noteflyover-countdown {
+	float: right;
+	font-size: 0.8em;
+	margin-right: -15px;
+	margin-bottom: 0;
+}
 form.articleFeedbackv5-form-flyover label {
 	display: block;
 	margin: 5px 10px;
