@@ -4,7 +4,8 @@
 			"Catrope",
 			"Les Meloures",
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Volvox"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Artikel-Feedback ofginn",
@@ -20,7 +21,7 @@
 	"articlefeedbackv5-error-nonexistent-feedback": "Feedback gëtt et net",
 	"articlefeedbackv5-cta-thanks": "Merci!",
 	"articlefeedbackv5-cta-confirmation-message": "Äre Reaktioun ass op dëser [$1 Feedbacksäit ze gesinn].",
-	"articlefeedbackv5-cta1-confirmation-title": "Wousst Dir datt Dir dës Säit ännere kënnt?",
+	"articlefeedbackv5-cta1-confirmation-title": "Wousst Dir, datt Dir dës Säit ännere kënnt?",
 	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} funktionéiert well jiddwereen do Säiten ännere kann. Maacht weider, probéiert et. Sidd kéng!",
 	"articlefeedbackv5-cta1-learn-how": "Wéi een ännere kann",
 	"articlefeedbackv5-cta1-edit-linktext": "Dës Säit änneren",
@@ -396,7 +397,7 @@
 	"articlefeedbackv5-bucket1-question-placeholder-no": "Hutt dir Virschléi fir Verbesserungen?",
 	"articlefeedbackv5-bucket1-form-submit": "Publizéiert Äre Feedback",
 	"articlefeedbackv5-bucket4-title": "Hëlleft dës Säit ze verbesseren",
-	"articlefeedbackv5-bucket4-subhead": "Wousst Dir datt Dir dës Säit ännere kënnt?",
+	"articlefeedbackv5-bucket4-subhead": "Wousst Dir, datt Dir dës Säit ännere kënnt?",
 	"articlefeedbackv5-bucket4-teaser-line1": "{{SITENAME}} funktionéiert, well jiddwereen hir Säiten ännere kann.",
 	"articlefeedbackv5-bucket4-teaser-line2": "Maacht weider, probéiert et. Sidd king!",
 	"articlefeedbackv5-bucket4-learn-to-edit": "Wéi een ännere kann",
