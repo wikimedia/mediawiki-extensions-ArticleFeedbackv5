@@ -1,13 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Artsiom91"
+			"Artsiom91",
+			"Kareyac"
 		]
 	},
 	"articlefeedbackv5-overlay-close": "Закрыць",
+	"articlefeedbackv5-form-helpful-yes-label": "Так",
 	"articlefeedbackv5-special-filter-select-more": "Болей",
 	"articlefeedbackv5-whats-this": "Даведка",
 	"articlefeedbackv5-comment-more": "Болей",
+	"articlefeedbackv5-bucket1-toggle-found-yes": "Так",
+	"articlefeedbackv5-bucket6-toggle-found-yes": "Так",
 	"logentry-articlefeedbackv5-archive": "$1 {{GENDER:$2|перанёс|перанесла}} [[$3|водгук #$4]] на [[$5]]",
 	"abusefilter-edit-action-aftv5resolve": "(Водгук на артыкул) Аўтаматычны дазвол",
 	"abusefilter-edit-action-aftv5flagabuse": "(Водгук на артыкул) Аўтаматычна пазначаць як парушэнне",
