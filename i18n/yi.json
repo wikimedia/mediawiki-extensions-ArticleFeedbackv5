@@ -3,6 +3,7 @@
 		"authors": [
 			"Har-wradim",
 			"Imre",
+			"Pacha Tchernof",
 			"פוילישער",
 			"පසිඳු කාවින්ද"
 		]
@@ -72,7 +73,7 @@
 	"articlefeedbackv5-special-sort-helpful-asc": "נישט העלפֿיק",
 	"articlefeedbackv5-special-sort-age-desc": "נײַעסט",
 	"articlefeedbackv5-special-sort-age-asc": "עלטסט",
-	"articlefeedbackv5-special-filter-select-more": "נאך",
+	"articlefeedbackv5-special-filter-select-more": "נאָך",
 	"articlefeedbackv5-special-watchlist-showing": "פידבעק פאר בלעטער אויפגעפאסט דורך [[$1|$2]]",
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|פידבעק פון מיינע אויפגעפאסטע בלעטער]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|באקוקן פידבעק פון אלע בלעטער]]",
@@ -128,7 +129,7 @@
 	"articlefeedbackv5": "ארטיקל פֿידבעק טאוול – צענטראלער בלאט",
 	"articlefeedbackv5watchlist": "ארטיקל פידבעק – מיינע אויפגעפאסטע בלעטער",
 	"articlefeedbackv5-desc": "דערמוטיקט באניצער ביישטייערן דורך ערלויבן זיי צו רעצענזירן אן ארטיקל און פארשלאגן ענדערונגען",
-	"articlefeedbackv5-comment-more": "נאך",
+	"articlefeedbackv5-comment-more": "נאָך",
 	"articlefeedbackv5-comment-empty": "קיין טעקסט נישט אײַנגעגעבן",
 	"articlefeedbackv5-page-disabled": "ארטיקל פידבעק בלאט איז נישט אקטיווירט פאר דעם ארטיקל.",
 	"articlefeedbackv5-viewactivity": "באקוקן אקטיוויטעט",
@@ -153,6 +154,7 @@
 	"articlefeedbackv5-noteflyover-resolve-submit": "צולייגן הערה",
 	"articlefeedbackv5-noteflyover-unresolve-submit": "צולייגן הערה",
 	"articlefeedbackv5-noteflyover-unresolve-help": "לערנען נאך",
+	"articlefeedbackv5-noteflyover-hide-caption": "באַהאַלטן",
 	"articlefeedbackv5-noteflyover-unhide-submit": "צולייגן הערה",
 	"articlefeedbackv5-noteflyover-unnoaction-submit": "צולייגן הערה",
 	"articlefeedbackv5-noteflyover-archive-submit": "צולייגן הערה",
