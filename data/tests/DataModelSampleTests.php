@@ -115,7 +115,7 @@ class DataModelSampleTest extends MediaWikiIntegrationTestCase {
 		$offset = 0;
 		$user = $this->createMock( User::class );
 		$list = DataModelSample::getList( 'hidden', $user, null, $offset, 'title', 'ASC' );
-		$this->assertEquals( $list->numRows(), DataModelSample::LIST_LIMIT );
+		$this->assertEquals( DataModelSample::LIST_LIMIT, $list->numRows() );
 		$first = $list->fetchObject();
 		$this->assertEquals( 'Title #1', $first->ds_title );
 

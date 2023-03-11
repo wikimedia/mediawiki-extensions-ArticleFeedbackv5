@@ -128,7 +128,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiIntegrationTestCase {
 		$offset = 0;
 		$user = $this->getTestUser()->getUser();
 		$list = ArticleFeedbackv5Model::getList( 'allcomment', $user, null, $offset, 'age', 'ASC' );
-		$this->assertEquals( $list->numRows(), ArticleFeedbackv5Model::LIST_LIMIT );
+		$this->assertEquals( ArticleFeedbackv5Model::LIST_LIMIT, $list->numRows() );
 		$first = $list->fetchObject();
 		$this->assertEquals( 'Test feedback entry #1', $first->aft_comment );
 
