@@ -618,7 +618,9 @@
 						}
 
 						$.articleFeedbackv5.unlockForm();
-						$.articleFeedbackv5.currentBucket().countdown( $( this ) );
+
+						var maxLength = mw.config.get( 'wgArticleFeedbackv5MaxCommentLength' );
+						$.aftUtils.countdown( $( this ), $( '#articlefeedbackv5-feedback-countdown' ), maxLength, 500 );
 					} );
 
 				// clicking the back-link on step 2 should show step 1 again
@@ -733,46 +735,6 @@
 				$backLink.text( mw.msg( 'articlefeedbackv5-bucket6-backlink-text' ) );
 				$backLink.attr( 'title', mw.msg( 'articlefeedbackv5-bucket6-backlink-text' ) );
 				$( '.articleFeedbackv5-title' ).before( $backLink );
-			},
-
-			// }}}
-			// {{{ countdown
-
-			/**
-			 * Character countdown
-			 *
-			 * Note: will not do server-side check: this is only used to encourage people to keep their
-			 * feedback concise, there's no technical reason not to allow more
-			 *
-			 * @param {jQuery} $element the form element to count the characters down for
-			 */
-			countdown: function ( $element ) {
-				var displayLength = 500, maxLength, $countdown, length, message;
-
-				maxLength = mw.config.get( 'wgArticleFeedbackv5MaxCommentLength' );
-				if ( maxLength === 0 ) {
-					return;
-				}
-
-				$countdown = $( '#articlefeedbackv5-feedback-countdown' );
-
-				// grab the current length of the form element (or set to 0 if the current text is bogus placeholder)
-				length = maxLength - $element.val().length;
-
-				// display the amount of characters
-				message = mw.msg( 'articlefeedbackv5-bucket6-feedback-countdown', length );
-				$countdown.text( message );
-
-				// remove excessive characters
-				if ( length < 0 ) {
-					$element.val( $element.val().slice( 0, Math.max( 0, maxLength ) ) );
-				}
-
-				// only display the countdown for the last X characters
-				$countdown.hide();
-				if ( length < displayLength ) {
-					$countdown.show();
-				}
 			}
 
 			// }}}

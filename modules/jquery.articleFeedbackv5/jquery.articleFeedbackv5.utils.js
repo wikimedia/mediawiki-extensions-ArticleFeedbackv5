@@ -6,7 +6,7 @@
  * @package    ArticleFeedback
  * @subpackage Resources
  * @author     Reha Sterbin <reha@omniti.com>
- * @author     Matthas Mullie <mmullie@wikimedia.org>
+ * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
 ( function ( $, mw ) {
@@ -51,9 +51,6 @@
 	 */
 	$.aftUtils.verify = function ( location ) {
 		var article, enable, defaultPermissionLevel;
-
-		// remove obsolete cookies
-		$.aftUtils.removeLegacyCookies();
 
 		article = $.aftUtils.article();
 
@@ -244,37 +241,6 @@
 	};
 
 	// }}}
-	// {{{ removeLegacyCookies
-
-	/**
-	 * Before the current getCookieName() function, cookie names were:
-	 * really long
-	 * incorrect using the tracking version number to differentiate JS/cookie versions
-	 * not being prefixed by wgCookiePrefix
-	 *
-	 * These issues have since been fixed, but this will make sure that lingering old
-	 * cookie are cleaned up. This function will not merge the old cookies to the new
-	 * cookie name though.
-	 *
-	 * @deprecated Function is only intended to bridge a temporary "gap" while old
-	 *             data persists in cookie. After awhile, cookies have either expired
-	 *             by themselves or this will have cleaned them up, so this function
-	 *             (and where it's being called) can be cleaned up at will.
-	 */
-	$.aftUtils.removeLegacyCookies = function () {
-		// old cookie names
-		var legacyCookieName = function ( suffix ) {
-			return 'ext.articleFeedbackv5@11-' + suffix;
-		};
-
-		// remove old cookie names
-		$.cookie( legacyCookieName( 'activity' ), null, { expires: -1, path: '/' } );
-		$.cookie( legacyCookieName( 'last-filter' ), null, { expires: -1, path: '/' } );
-		$.cookie( legacyCookieName( 'submission_timestamps' ), null, { expires: -1, path: '/' } );
-		$.cookie( legacyCookieName( 'feedback-ids' ), null, { expires: -1, path: '/' } );
-	};
-
-	// }}}
 	// {{{ canSetStatus
 
 	/**
@@ -353,8 +319,46 @@
 			}
 		} );
 	};
-
 	// }}}
+	// {{{ countdown
+	/**
+	 * Character countdown
+	 *
+	 * Note: will not do server-side check: this is only used to encourage people to keep their
+	 * feedback concise, there's no technical reason not to allow more
+	 *
+	 * @param jQuery $element the form element to count the characters down for
+	 * @param jQuery $text the DOM element to insert the countdown text in
+	 * @param int amount the amount of characters to count down from
+	 * @param int[optional] displayLength the amount of remaining characters to start displaying
+	 *        the countdown from (no value = always show)
+	 */
+	$.aftUtils.countdown = function ( $element, $text, amount, displayLength ) {
+		if ( !amount ) {
+			return;
+		}
+
+		// grab the current length of the form element (or set to 0 if the current text is bogus placeholder)
+		var length = amount - $element.val().length;
+
+		// remove excessive characters
+		if ( length < 0 ) {
+			// eslint-disable-next-line unicorn/prefer-string-slice
+			$element.val( $element.val().substr( 0, amount ) );
+			length = 0;
+		}
+
+		// display the amount of characters
+		var message = mw.msg( 'articlefeedbackv5-countdown', length );
+		$text.text( message );
+
+		// only display the countdown for the last X characters
+		$text.hide();
+
+		if ( typeof displayLength === 'undefined' || length < displayLength ) {
+			$text.show();
+		}
+	};
 
 	// }}}
 

@@ -111,7 +111,8 @@
 		"jquery.articleFeedbackv5.utils": {
 			"scripts": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.utils.js",
 			"messages": [
-				"articlefeedbackv5-error-unknown"
+				"articlefeedbackv5-error-unknown",
+				"articlefeedbackv5-countdown"
 			],
 			"dependencies": [
 				"jquery.cookie",
@@ -272,7 +273,6 @@
 				"articlefeedbackv5-bucket6-toggle-found-yes-full",
 				"articlefeedbackv5-bucket6-toggle-found-no",
 				"articlefeedbackv5-bucket6-toggle-found-no-full",
-				"articlefeedbackv5-bucket6-feedback-countdown",
 				"articlefeedbackv5-bucket6-question-instructions-yes",
 				"articlefeedbackv5-bucket6-question-placeholder-yes",
 				"articlefeedbackv5-bucket6-question-instructions-no",
