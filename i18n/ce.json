@@ -72,10 +72,10 @@
 	"articlefeedbackv5-bucket1-toggle-found-yes": "ХӀаъ",
 	"articlefeedbackv5-bucket1-form-submit": "Дахьийта хетарг",
 	"articlefeedbackv5-bucket6-toggle-found-yes": "ХӀаъ",
-	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|(дисина 1 хьаьрк)}}",
 	"articlefeedbackv5-help-tooltip-linktext": "Ма-дарра",
 	"articlefeedbackv5-section-linktext": "йазде хьайна хетарг",
 	"articlefeedbackv5-activity-permalink": "Цахийцалун хьажорг",
 	"articlefeedbackv5-watchlist-view-feedback": "Сан гӀарйаьлла агӀонашкара йуханехьа зӀе",
-	"articlefeedbackv5-email-request-oversight-body": "Маршалла ду шоьга ревизораш!\n\nДекъашхочо $1 дехар дина $2 агӀонгахь дехнарг къайладаккхар:\n\n\n\nДехар до, хӀокху дехаре хьаьжжина кхочуш де йа тӀе малаца:\n\n$3\n$5\n\nБаркалла,\n\n\nКуьйгалла {{SITENAME}}\n\n\nP.S.: Ревизорин функцех лаьцна хьай хатар делахь FAQ йеша:\n\n$4"
+	"articlefeedbackv5-email-request-oversight-body": "Маршалла ду шоьга ревизораш!\n\nДекъашхочо $1 дехар дина $2 агӀонгахь дехнарг къайладаккхар:\n\n\n\nДехар до, хӀокху дехаре хьаьжжина кхочуш де йа тӀе малаца:\n\n$3\n$5\n\nБаркалла,\n\n\nКуьйгалла {{SITENAME}}\n\n\nP.S.: Ревизорин функцех лаьцна хьай хатар делахь FAQ йеша:\n\n$4",
+	"articlefeedbackv5-countdown": "{{PLURAL:$1|(дисина 1 хьаьрк)}}"
 }

@@ -179,7 +179,6 @@
 	"articlefeedbackv5-bucket6-toggle-found-no": "Ně",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "Jo, som namakał, což som pytał.",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "Ně, njejsom namakał, což som pytał.",
-	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|(1 znamuško wušej)|($1 znamušce wušej)|($1 znamuška wušej)|($1 znamuškow wušej)}}",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "Wjelicnje. Někake pólěpšowańske naraźenje?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "Napiš how swójo naraźenje (na pś.: \"Toś ten bok trjeba wobraz\")",
 	"articlefeedbackv5-bucket6-question-placeholder-no": "Napiš how swójo naraźenje (na pś.: \"Toś ten bok trjeba wobraz\")",
@@ -203,6 +202,7 @@
 	"articlefeedbackv5-watchlist-view-feedback": "Komentary k mójim wobglědowanym bokam",
 	"articlefeedbackv5-disable-flyover-title": "Toś ten rěd wótpóraś?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "K nastajenjam",
+	"articlefeedbackv5-countdown": "{{PLURAL:$1|(1 znamuško wušej)|($1 znamušce wušej)|($1 znamuška wušej)|($1 znamuškow wušej)}}",
 	"abusefilter-edit-action-aftv5hide": "(Komentary) Awtomatiski schowaś",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Awtomatiski schowany. Pšawidło: $1"
 }

@@ -245,7 +245,6 @@
 	"articlefeedbackv5-bucket6-toggle-found-no": "ไม่",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "ใช่ ฉันพบสิ่งที่ฉันกำลังมองหา",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "ไม่ ฉันไม่พบสิ่งที่ฉันกำลังมองหา",
-	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|(เหลืออีก $1 ตัวอักษร)}}",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "ยอดเยี่ยม มีคำแนะนำเกี่ยวกับการปรับปรุงหรือไม่?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "เขียนคำแนะนำของคุณที่นี่ (เช่น \"หน้านี้ต้องมีรูปภาพ\")",
 	"articlefeedbackv5-bucket6-question-placeholder-no": "เขียนคำแนะนำของคุณที่นี่ (เช่น \"หน้านี้ต้องมีรูปภาพ\")",
@@ -265,5 +264,6 @@
 	"articlefeedbackv5-activity-permalink": "ลิงก์ถาวร",
 	"articlefeedbackv5-activity-more": "แสดงกิจกรรมเพิ่มเติม",
 	"articlefeedbackv5-disable-flyover-title": "เอาเครื่องมือนี้ออกหรือไม่?",
+	"articlefeedbackv5-countdown": "{{PLURAL:$1|(เหลืออีก $1 ตัวอักษร)}}",
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "มีประโยชน์"
 }

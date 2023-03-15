@@ -358,7 +358,6 @@
 	"articlefeedbackv5-bucket6-toggle-found-no": "না",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "হ্যাঁ, আমি যা খুঁজেছিলাম তা পেয়েছি।",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "না, আমি যা খুঁজেছিলাম তা পাইনি।",
-	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|(১ অক্ষর বাকি)|($1 অক্ষর বাকি)}}",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "চমৎকার। মানোন্নয়নে আপনার কোন পরামর্শ রয়েছে?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "আপনার পরামর্শ এখানে লিখুন (যেমন: 'এই পাতায় ছবির প্রয়োজন')",
 	"articlefeedbackv5-bucket6-question-instructions-no": "সেটির জন্য দুঃখিত। উন্নতিসাধনের জন্য কোন পরামর্শ?",
@@ -388,6 +387,7 @@
 	"articlefeedbackv5-disable-flyover-title": "এই সরঞ্জাম সরাবেন?",
 	"articlefeedbackv5-disable-flyover-help-message": "নিবন্ধ প্রতিক্রিয়া অপসারণের জন্য, \"$1\" এ যান > \"$2\" এবং পরীক্ষা করুন \"$3\"",
 	"articlefeedbackv5-disable-flyover-prefbutton": "আমার পছন্দসমূহে যাও",
+	"articlefeedbackv5-countdown": "{{PLURAL:$1|(১ অক্ষর বাকি)|($1 অক্ষর বাকি)}}",
 	"abusefilter-edit-action-aftv5resolve": "(নিবন্ধ প্রতিক্রিয়া) স্বয়ংক্রিয়-মীমাংসা",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "স্বয়ংক্রিয়ভাবে সমাধান হয়েছে। বিধি: $1"
 }
