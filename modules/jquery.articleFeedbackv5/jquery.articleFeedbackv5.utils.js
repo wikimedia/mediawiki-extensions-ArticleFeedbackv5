@@ -327,10 +327,10 @@
 	 * Note: will not do server-side check: this is only used to encourage people to keep their
 	 * feedback concise, there's no technical reason not to allow more
 	 *
-	 * @param jQuery $element the form element to count the characters down for
-	 * @param jQuery $text the DOM element to insert the countdown text in
-	 * @param int amount the amount of characters to count down from
-	 * @param int[optional] displayLength the amount of remaining characters to start displaying
+	 * @param {jQuery} $element the form element to count the characters down for
+	 * @param {jQuery} $text the DOM element to insert the countdown text in
+	 * @param {number} amount the amount of characters to count down from
+	 * @param {number} displayLength [optional] the amount of remaining characters to start displaying
 	 *        the countdown from (no value = always show)
 	 */
 	$.aftUtils.countdown = function ( $element, $text, amount, displayLength ) {
