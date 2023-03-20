@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Agam Riyandana",
 			"Anakmalaysia",
 			"Arifin.wijaya",
 			"C5st4wr6ch",
@@ -16,6 +17,13 @@
 			"පසිඳු කාවින්ද"
 		]
 	},
+	"apihelp-articlefeedbackv5-description": "Kirim umpan balik artikel",
+	"apihelp-articlefeedbackv5-summary": "Kirim umpan balik artikel",
+	"apihelp-articlefeedbackv5-param-title": "Judul halaman untuk mengirim umpan balik. Tidak dapat digunakan bersama dengan $1 pageid",
+	"apihelp-articlefeedbackv5-param-pageid": "ID halaman untuk mengirim umpan balik. Tidak dapat digunakan bersama dengan judul $1",
+	"apihelp-articlefeedbackv5-param-revid": "ID Revisi untuk mengirimkan masukan",
+	"apihelp-articlefeedbackv5-param-anontoken": "Token untuk pengguna anonim",
+	"apihelp-articlefeedbackv5-param-bucket": "Formulir umpan balik mana yang ditampilkan kepada pengguna",
 	"articlefeedbackv5-cta-thanks": "Terima kasih!",
 	"articlefeedbackv5-cta-confirmation-message": "Pos Anda dapat dilihat di [$1 halaman umpan balik] ini.",
 	"articlefeedbackv5-cta1-confirmation-title": "Tahukah Anda bahwa Anda dapat menyunting laman ini?",
