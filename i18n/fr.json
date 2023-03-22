@@ -664,7 +664,7 @@
 	"articlefeedbackv5-disable-flyover-title": "Retirer cet outil ?",
 	"articlefeedbackv5-disable-flyover-help-message": "Pour retirer l’outil Commentaires d’articles, allez sur « $1 » &gt; « $2 » et cochez « $3 »",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Aller à mes préférences",
-	"articlefeedbackv5-countdown": "($1 {{PLURAL:$1|caractère restant|caractères restants}})",
+	"articlefeedbackv5-countdown": "($1 caractère{{PLURAL:$1||s}} restant{{PLURAL:$1||s}})",
 	"abusefilter-edit-action-aftv5resolve": "(Commentaire d’article) Résolution automatique",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "Résolu automatiquement. Règle : $1",
 	"abusefilter-edit-action-aftv5flagabuse": "(Commentaire d’article) Signaler automatiquement comme abusif",
