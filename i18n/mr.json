@@ -369,7 +369,6 @@
 	"articlefeedbackv5-bucket6-toggle-found-no": "नाही",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "होय,मी काय शोधत होतो ते मिळाले.",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "नाही, मी काय शोधत होतो ते मिळाले नाही.",
-	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|(1 वर्ण बाकी)|($1 वर्ण बाकी)}}",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "महान आहात.सुधारवण्याबाबत काही सूचना?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "आपल्या सूचना येथे करा(उदा.:\"या पानात चित्र हवे\")",
 	"articlefeedbackv5-bucket6-question-instructions-no": "त्याबद्दल माफ करा.सुधारवण्याबाबत काही सूचना?",
@@ -395,5 +394,6 @@
 	"articlefeedbackv5-talk-view-feedback": "वाचकांच्या प्रतिक्रिया दाखवा",
 	"articlefeedbackv5-watchlist-view-feedback": "माझ्या पहाऱ्याखाली असलेल्या पानांवरील प्रतिक्रिया",
 	"articlefeedbackv5-disable-flyover-title": "हे उपकरण काढायचे काय?",
-	"articlefeedbackv5-disable-flyover-prefbutton": "माझ्या पसंतीक्रमाकडे जा"
+	"articlefeedbackv5-disable-flyover-prefbutton": "माझ्या पसंतीक्रमाकडे जा",
+	"articlefeedbackv5-countdown": "{{PLURAL:$1|(1 वर्ण बाकी)|($1 वर्ण बाकी)}}"
 }

@@ -17,7 +17,6 @@
 	"articlefeedbackv5-bucket6-toggle-found-no": "ਨਹੀਂ",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "ਹਾਂ, ਮੈਨੂੰ ਮਿਲ ਗਿਆ ਜੋ ਮੈਂ ਲੱਭ ਰਿਹਾ ਸੀ।",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "ਨਹੀਂ, ਮੈਂ ਜੋ ਲੱਭ ਰਿਹਾ ਸੀ ਮੈਨੂੰ ਨਹੀਂ ਮਿਲਿਆ।",
-	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|($1 ਅੱਖਰ ਬਾਕੀ)}}",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "ਬਹੁਤ ਵਧੀਆ। ਸੁਧਾਰ ਲਈ ਕੋਈ ਸਲਾਹ?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "ਆਪਣੀ ਸਲਾਹ ਇੱਥੇ ਲਿਖੋ (ਮਿਸਾਲ: \"ਇਸ ਸਫ਼ੇ ਵਿਚ ਤਸਵੀਰ ਲੋੜੀਂਦੀ ਹੈ\")",
 	"articlefeedbackv5-bucket6-question-instructions-no": "ਸਾਨੂੰ ਅਫ਼ਸੋਸ ਹੈ। ਸੁਧਾਰ ਲਈ ਕੋਈ ਸਲਾਹ?",
@@ -35,5 +34,6 @@
 	"articlefeedbackv5-toolbox-add": "ਆਪਣੀ ਫ਼ੀਡਬੈਕ ਜੋੜੋ",
 	"articlefeedbackv5-toolbox-enable": "ਫ਼ੀਡਬੈਕ ਚਾਲੂ ਕਰੋ",
 	"articlefeedbackv5-activity-more": "ਹੋਰ ਕਾਰਵਾਈ ਵਿਖਾਓ",
-	"articlefeedbackv5-talk-view-feedback": "ਪਾਠਕ ਦੀ ਫ਼ੀਡਬੈਕ ਵੇਖੋ"
+	"articlefeedbackv5-talk-view-feedback": "ਪਾਠਕ ਦੀ ਫ਼ੀਡਬੈਕ ਵੇਖੋ",
+	"articlefeedbackv5-countdown": "{{PLURAL:$1|($1 ਅੱਖਰ ਬਾਕੀ)}}"
 }

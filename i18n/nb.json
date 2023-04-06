@@ -10,7 +10,8 @@
 			"Jeblad",
 			"Jon Harald Søby",
 			"Nghtwlkr",
-			"Sjurhamre"
+			"Sjurhamre",
+			"EdoAug"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Send inn tilbakemelding på artikkel",
@@ -208,7 +209,7 @@
 	"articlefeedbackv5-special-permalink-pagetitle": "Tilbakemeldinger på $1",
 	"articlefeedbackv5-special-watchlist-pagetitle": "Tilbakemeldinger på mine overvåkede sider",
 	"articlefeedbackv5-special-central-pagetitle": "Den sentrale tilbakemeldingssiden",
-	"articlefeedbackv5-loading-tag": "Laster…",
+	"articlefeedbackv5-loading-tag": "Laster …",
 	"articlefeedbackv5-status-hide": "Denne posten ble skjult av $1 $2 kl. $3",
 	"articlefeedbackv5-status-unhide": "Denne posten ble vist igjen av $1 $2 kl. $3",
 	"articlefeedbackv5-status-request": "$1 ba $2 klokken $3 om at innlegget ble fjernet",
@@ -294,7 +295,7 @@
 	"articlefeedbackv5-discuss-talk-section-content": "$1 postet [[$2|denne kommentaren]] på $3 ([[$5|vis alle tilbakemeldinger]]).\n\n$6\n\nNoen tanker?\n\n~~~~",
 	"articlefeedbackv5-discuss-user-section-content": "Takk for at du postet en tilbakemelding på «$7».\n\nDu postet denne kommentaren $3 ([[$5|vis alle tilbakemeldinger]]).\n\n$6\n\nVi setter pris på bidragene dine til denne siden!\n\n~~~~",
 	"articlefeedbackv5-form1-header-found": "$2 fant det {{GENDER:$1|han|hun|vedkommende}} lette etter.",
-	"articlefeedbackv5-form1-header-not-found": "$2 fant ikke det {{GENDER:$1|han|hun|han eller hun}} var ute etter.",
+	"articlefeedbackv5-form1-header-not-found": "$2 fant ikke det {{GENDER:$1|han|hun|vedkommende}} var ute etter.",
 	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 skrev en kommentar.}}",
 	"articlefeedbackv5-form2-header-praise": "{{GENDER:$1|$1}} kom med en lovprisende kommentar:",
 	"articlefeedbackv5-form2-header-problem": "{{GENDER:$1|$1}} opplevde et problem:",
@@ -517,7 +518,6 @@
 	"articlefeedbackv5-bucket6-toggle-found-no": "Nei",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "Ja, jeg fant det jeg var ute etter.",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "Nei, jeg fant ikke det jeg var ute etter.",
-	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|($1 tegn gjenstår)}}",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "Supert. Noen forslag til forbedringer?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "Skriv inn ditt forslag her (f.eks. «Denne artikkelen trenger et bilde»)",
 	"articlefeedbackv5-bucket6-question-instructions-no": "Det var leit. Har du noen forslag til forbedringer?",
@@ -623,6 +623,7 @@
 	"articlefeedbackv5-disable-flyover-title": "Fjern dette verktøyet?",
 	"articlefeedbackv5-disable-flyover-help-message": "For å fjerne artikkeltilbakemeldinge, gå til «$1» > «$2» og marker «$3»",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Gå til mine innstillinger",
+	"articlefeedbackv5-countdown": "{{PLURAL:$1|($1 tegn gjenstår)}}",
 	"abusefilter-edit-action-aftv5resolve": "(Artikkeltilbakemelding) Løs automatisk",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "Automatisk løst. Regel: $1",
 	"abusefilter-edit-action-aftv5flagabuse": "(Artikkeltilbakemelding) Merk automatisk som misbruk",

@@ -58,6 +58,7 @@
 	"articlefeedbackv5-special-filter-helpful": "Utli ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Inutli ($1)",
 	"articlefeedbackv5-special-filter-resolved": "Solvuti ($1)",
+	"articlefeedbackv5-special-filter-allcomment": "Il-kummenti kollha ( $1 )",
 	"articlefeedbackv5-special-filter-hidden": "Moħbija ($1)",
 	"articlefeedbackv5-special-filter-requested": "Trażżin rikjest ($1)",
 	"articlefeedbackv5-special-filter-declined": "Trażżin rifjutat ($1)",
@@ -67,6 +68,7 @@
 	"articlefeedbackv5-special-filter-helpful-watchlist": "Utli",
 	"articlefeedbackv5-special-filter-unhelpful-watchlist": "Inutli",
 	"articlefeedbackv5-special-filter-resolved-watchlist": "Solvut",
+	"articlefeedbackv5-special-filter-allcomment-watchlist": "Il-kummenti kollha",
 	"articlefeedbackv5-special-filter-hidden-watchlist": "Moħbi",
 	"articlefeedbackv5-special-filter-requested-watchlist": "Trażżin rikjest",
 	"articlefeedbackv5-special-filter-declined-watchlist": "Trażżin rifjutat",
@@ -246,7 +248,6 @@
 	"articlefeedbackv5-bucket6-toggle-found-no": "Le",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "Iva, sibt dak li kont qed infittex.",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "Le, ma sibtx dak li kont qed infittex.",
-	"articlefeedbackv5-bucket6-feedback-countdown": "({{PLURAL:$1|jonqos karattru wieħed|jonqsu $1 karattri}})",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "Tal-ġenn. Għandek xi suġġeriment għat-titjib?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "Ikteb is-suġġeriment tiegħek hawnhekk (eż. \"Dan l-artiklu għandu bżonn stampa\")",
 	"articlefeedbackv5-bucket6-question-instructions-no": "Skużana ħabba dik. Xi suġġerimenti biex nitjiebu?",
@@ -271,5 +272,6 @@
 	"articlefeedbackv5-activity-note-archive": "Arkivjati wara {{PLURAL:$1|$1 jum|$1 jiem}} mingħajr attività",
 	"articlefeedbackv5-activity-more": "Uri aktar attività",
 	"articlefeedbackv5-disable-flyover-title": "Neħħi din l-għodda?",
-	"articlefeedbackv5-disable-flyover-prefbutton": "Mur fil-preferenzi tiegħi"
+	"articlefeedbackv5-disable-flyover-prefbutton": "Mur fil-preferenzi tiegħi",
+	"articlefeedbackv5-countdown": "({{PLURAL:$1|jonqos karattru wieħed|jonqsu $1 karattri}})"
 }

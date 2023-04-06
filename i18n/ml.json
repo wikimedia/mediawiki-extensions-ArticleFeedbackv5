@@ -323,7 +323,6 @@
 	"articlefeedbackv5-bucket6-toggle-found-no": "ഇല്ല",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "ഉവ്വ്. ഞാൻ തിരഞ്ഞത് കണ്ടെത്താനായി.",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "ഇല്ല, ഞാൻ തിരഞ്ഞത് കണ്ടെത്താനായില്ല.",
-	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|(ഒരക്ഷരം കൂടി ചേർക്കാം)|($1 അക്ഷരങ്ങൾ കൂടി ചേർക്കാം)}}",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "കൊള്ളാം. മെച്ചപ്പെടുത്താവാനെന്തെങ്കിലും അഭിപ്രായം ഉണ്ടോ?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "താങ്കളുടെ നിർദ്ദേശം ഇവിടെയെഴുതുക (ഉദാ: 'ലേഖനത്തിൽ ചിത്രം ആവശ്യമാണ്)",
 	"articlefeedbackv5-bucket6-question-instructions-no": "അങ്ങനെ വന്നതിൽ ഖേദിക്കുന്നു. മെച്ചപ്പെടുത്താൻ എന്തെങ്കിലും നിർദ്ദേശം?",
@@ -359,6 +358,7 @@
 	"articlefeedbackv5-watchlist-view-feedback": "ഞാൻ ശ്രദ്ധിക്കുന്ന താളുകളെക്കുറിച്ചുള്ള പ്രതികരണങ്ങൾ",
 	"articlefeedbackv5-disable-flyover-title": "ഈ ഉപകരണം നീക്കം ചെയ്യണോ?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "എന്റെ ക്രമീകരണങ്ങളിലേയ്ക്ക് പോവുക",
+	"articlefeedbackv5-countdown": "{{PLURAL:$1|(ഒരക്ഷരം കൂടി ചേർക്കാം)|($1 അക്ഷരങ്ങൾ കൂടി ചേർക്കാം)}}",
 	"abusefilter-edit-action-aftv5hide": "(ലേഖനത്തിനുള്ള പ്രതികരണം) സ്വയം-മറയ്ക്കൽ",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "സ്വയം മറച്ചു. നിയമം: $1"
 }

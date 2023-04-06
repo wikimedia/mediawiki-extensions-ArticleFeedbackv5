@@ -253,7 +253,6 @@
 	"articlefeedbackv5-bucket6-toggle-found-no": "නැත",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "ඔව්,මම සෙවූ දේ මට හමුවුණා.",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "නෑ, මම සෙවූ දේ මට හමුවුනේ නෑ.",
-	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|(1 අකුරක් ඉතිරියි)|(අකුරු $1 ඉතිරියි)}}",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "යසයි. වැඩිදියුණු කිරීමට යෝජනාවක් තිබේද?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "මෙම ලිපිය වැඩිදියුණු කල යුත්තේ කෙසේද?",
 	"articlefeedbackv5-bucket6-question-instructions-no": "ඒ පිළිබඳ කණගාටුයි, යෝජනාවක් හෝ වැඩිදියුණු කිරීමක් තිබේද?",
@@ -287,6 +286,7 @@
 	"articlefeedbackv5-email-request-oversight-subject": "ලිපි ප්‍රතිපෝෂණ පිටුව සඳහා පාලනය අයදින ලදී",
 	"articlefeedbackv5-disable-flyover-title": "මෙම මෙවලම ඉවත් කරන්නද?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "මගේ අභිරුචි වෙත යන්න",
+	"articlefeedbackv5-countdown": "{{PLURAL:$1|(1 අකුරක් ඉතිරියි)|(අකුරු $1 ඉතිරියි)}}",
 	"abusefilter-edit-action-aftv5hide": "(ලිපි ප්‍රතිචාරය) ස්වයං-සැඟවීම",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "ස්වයංක්‍රීයව සැඟවෙන. නීතිය: $1",
 	"articlefeedbackv5-abusefilter-note-aftv5request": "පාලනය ස්වයංක්‍රියාව අයදින ලදී. රීතිය: $1"

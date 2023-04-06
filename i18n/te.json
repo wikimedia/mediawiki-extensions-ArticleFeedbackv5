@@ -370,7 +370,6 @@
 	"articlefeedbackv5-bucket6-toggle-found-no": "కాదు",
 	"articlefeedbackv5-bucket6-toggle-found-yes-full": "ఆ.., నేను వెతికేది కనబడింది.",
 	"articlefeedbackv5-bucket6-toggle-found-no-full": "లేదు, దొరకలేదు.",
-	"articlefeedbackv5-bucket6-feedback-countdown": "{{PLURAL:$1|(1 అక్షరం మిగిలివుంది)|($1 అక్షరాలు మిగిలివున్నాయి)}}",
 	"articlefeedbackv5-bucket6-question-instructions-yes": "మంచిది. మరి, దీన్ని మెరుగు పరచేందుకు సూచనలేమైనా చేస్తారా?",
 	"articlefeedbackv5-bucket6-question-placeholder-yes": "మీ సూచన ఇక్కడ రాయండి (ఉదా.: \"ఈ పేజీలో ఓ బొమ్మ కూడా ఉండాలి\")",
 	"articlefeedbackv5-bucket6-question-instructions-no": "క్షమాపణలు. మెరుగుపరచడానికి ఏమైనా సూచనలు ఇస్తారా?",
@@ -404,5 +403,6 @@
 	"articlefeedbackv5-activity-more": "మరిన్ని కార్యకలాపాలు చూపించు",
 	"articlefeedbackv5-disable-flyover-title": "ఈ పనిముట్టును తొలగించాలా?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "నా అభిరుచులకు వెళ్ళు",
+	"articlefeedbackv5-countdown": "{{PLURAL:$1|(1 అక్షరం మిగిలివుంది)|($1 అక్షరాలు మిగిలివున్నాయి)}}",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "ఆటోమాటిగ్గా దాచబడినది. నియమం: $1"
 }
