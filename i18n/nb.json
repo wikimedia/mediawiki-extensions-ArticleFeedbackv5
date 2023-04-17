@@ -18,7 +18,7 @@
 	"apihelp-articlefeedbackv5-summary": "Send inn tilbakemelding på artikkel",
 	"apihelp-articlefeedbackv5-param-title": "Tittelen på siden du vil sende tilbakemelding på. Kan ikke brukes sammen med $1pageid",
 	"apihelp-articlefeedbackv5-param-pageid": "ID til siden du vil sende tilbakemelding for. Kan ikke brukes sammen med $1title",
-	"apihelp-articlefeedbackv5-param-revid": "Revisjons-ID det skal leveres tilbakemelding på",
+	"apihelp-articlefeedbackv5-param-revid": "Sideversjons-ID det skal leveres tilbakemelding på",
 	"apihelp-articlefeedbackv5-param-anontoken": "Tegn for anonyme brukere",
 	"apihelp-articlefeedbackv5-param-bucket": "Hvilket tilbakemeldingsskjema ble vist til brukeren",
 	"apihelp-articlefeedbackv5-param-cta": "CTA vist etter skjemalevering",
