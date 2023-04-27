@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Masiziva"
+		]
+	},
+	"articlefeedbackv5-form-helpful-yes-label": "Hongu",
+	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 hongu|$1 hongu}} / {{PLURAL:$2|1 kwete|$2 kwete}}",
+	"articlefeedbackv5-bucket1-toggle-found-yes": "Hongu",
+	"articlefeedbackv5-bucket1-toggle-found-yes-full": "Hongu, ndawana zvandangandichitsvaga.",
+	"articlefeedbackv5-bucket6-toggle-found-yes": "Hongu",
+	"articlefeedbackv5-bucket6-toggle-found-yes-full": "Hongu, ndawana zvandangandichitsvaga."
+}
