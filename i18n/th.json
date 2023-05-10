@@ -7,7 +7,8 @@
 			"Just Sayori",
 			"Nullzero",
 			"กิ๊ฟ เลิกล่ะ สายแข็ง",
-			"Patsagorn Y."
+			"Patsagorn Y.",
+			"Ekminarin"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "ส่งคำติชมบทความ",
@@ -156,6 +157,7 @@
 	"articlefeedbackv5-comment-empty": "ไม่ได้ป้อนข้อความใด ๆ",
 	"articlefeedbackv5-viewactivity": "ดูกิจกรรม",
 	"articlefeedbackv5-mask-view-contents": "ดูเนื้อหา",
+	"articlefeedbackv5-permalink-info-title": "ข้อมูลเกี่ยวกับโพสต์นี้",
 	"articlefeedbackv5-permalink-written-by-editor": "เขียนโดยผู้ใช้ลงทะเบียน",
 	"articlefeedbackv5-permalink-written-by-reader": "เขียนโดยผู้ใช้ไม่ระบุตัวตน",
 	"articlefeedbackv5-permalink-info-revision-link": "ดูรุ่นเก่าของหน้านี้",
