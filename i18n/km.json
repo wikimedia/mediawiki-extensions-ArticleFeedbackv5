@@ -94,5 +94,18 @@
 	"articlefeedbackv5-special-permalink-pagetitle": "មតិកែលអដែលបានបិទប្រកាសលើ $1",
 	"articlefeedbackv5-special-watchlist-pagetitle": "មតិកែលំអពីទំព័រតាមដានរបស់ខ្ញុំ",
 	"articlefeedbackv5-special-central-pagetitle": "ទំព័រមតិកែលំអមជ្ឈិម",
-	"articlefeedbackv5-loading-tag": "កំពុងផ្ទុក…"
+	"articlefeedbackv5-loading-tag": "កំពុងផ្ទុក…",
+	"articlefeedbackv5-short-status-request": "{{GENDER:$1| ផ្ទៀងផ្ទាត់ដោយ $1}}",
+	"articlefeedbackv5-short-status-decline": "{{GENDER:$1| ផ្ទៀងផ្ទាត់ដោយ $1}}",
+	"articlefeedbackv5-short-status-oversight": "{{GENDER:$1| ផ្ទៀងផ្ទាត់ដោយ $1}}",
+	"articlefeedbackv5-short-status-unflag": "{{GENDER:$1| ផ្ទៀងផ្ទាត់ដោយ $1}}",
+	"articlefeedbackv5-short-status-autoflag": "{{GENDER:$1| ផ្ទៀងផ្ទាត់ដោយ $1}}",
+	"articlefeedbackv5-short-status-unfeature": "{{GENDER:$1| ផ្ទៀងផ្ទាត់ដោយ $1}}",
+	"articlefeedbackv5-short-status-unresolve": "{{GENDER:$1| ផ្ទៀងផ្ទាត់ដោយ $1}}",
+	"articlefeedbackv5-short-status-unnoaction": "{{GENDER:$1| ផ្ទៀងផ្ទាត់ដោយ $1}}",
+	"articlefeedbackv5-short-status-uninappropriate": "{{GENDER:$1| ផ្ទៀងផ្ទាត់ដោយ $1}}",
+	"articlefeedbackv5-short-status-unhide": "{{GENDER:$1| ផ្ទៀងផ្ទាត់ដោយ $1}}",
+	"articlefeedbackv5-short-status-unarchive": "{{GENDER:$1| ផ្ទៀងផ្ទាត់ដោយ $1}}",
+	"articlefeedbackv5-short-status-undo-helpful": "{{GENDER:$1| ផ្ទៀងផ្ទាត់ដោយ $1}}",
+	"articlefeedbackv5-short-status-undo-unhelpful": "{{GENDER:$1| ផ្ទៀងផ្ទាត់ដោយ $1}}"
 }
