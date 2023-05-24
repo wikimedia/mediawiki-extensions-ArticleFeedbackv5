@@ -34,13 +34,7 @@ select {
 	margin-bottom: 10px;
 
 	/* @embed */
-	background: url(images/big_lock.png);
-	/* @embed */
-	background-image: -webkit-linear-gradient(transparent, transparent), url(images/big_lock.svg);
-	/* @embed */
-	background-image: -moz-linear-gradient(transparent, transparent), url(images/big_lock.svg);
-	/* @embed */
-	background-image: linear-gradient(transparent, transparent), url(images/big_lock.svg);
+	background-image: url(images/big_lock.svg);
 
 	background-color: #fefcea;
 	background-repeat: no-repeat;
@@ -102,11 +96,7 @@ select {
 
 	padding: 5px 0 5px 25px;
 
-	/* @embed */
-	background-image: url(../jquery.articleFeedbackv5/images/toolbox_discuss.png);
-	background-image: -webkit-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/toolbox_discuss.svg);
-	background-image: -moz-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/toolbox_discuss.svg);
-	background-image: linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/toolbox_discuss.svg);
+	background-image: url(../jquery.articleFeedbackv5/images/toolbox_discuss.svg);
 
 	background-repeat: no-repeat;
 	background-position: left;
@@ -136,33 +126,15 @@ select {
 }
 #articleFeedbackv5-percent-found-wrap .positive {
 	/* @embed */
-	background-image: url(../jquery.articleFeedbackv5/images/emotion_positive.png);
-	/* @embed */
-	background-image: -webkit-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/emotion_positive.svg);
-	/* @embed */
-	background-image: -moz-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/emotion_positive.svg);
-	/* @embed */
-	background-image: linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/emotion_positive.svg);
+	background-image: url(../jquery.articleFeedbackv5/images/emotion_positive.svg);
 }
 #articleFeedbackv5-percent-found-wrap .negative {
 	/* @embed */
-	background-image: url(../jquery.articleFeedbackv5/images/emotion_negative.png);
-	/* @embed */
-	background-image: -webkit-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/emotion_negative.svg);
-	/* @embed */
-	background-image: -moz-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/emotion_negative.svg);
-	/* @embed */
-	background-image: linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/emotion_negative.svg);
+	background-image: url(../jquery.articleFeedbackv5/images/emotion_negative.svg);
 }
 #articleFeedbackv5-percent-found-wrap .neutral {
 	/* @embed */
-	background-image: url(../jquery.articleFeedbackv5/images/emotion_neutral.png);
-	/* @embed */
-	background-image: -webkit-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/emotion_neutral.svg);
-	/* @embed */
-	background-image: -moz-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/emotion_neutral.svg);
-	/* @embed */
-	background-image: linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/emotion_neutral.svg);
+	background-image: url(../jquery.articleFeedbackv5/images/emotion_neutral.svg);
 }
 .aftv5-feedbackpage .aftv5-feedbackpage-comment-display-header {
 	height: 40px;
