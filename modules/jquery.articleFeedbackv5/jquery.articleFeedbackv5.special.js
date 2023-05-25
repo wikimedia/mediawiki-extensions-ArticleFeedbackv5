@@ -855,8 +855,7 @@
 				}
 			},
 			error: function () {
-				// FIXME this messages isn't defined
-				$( location ).text( mw.msg( 'articleFeedbackv5-view-activity-error' ) );
+				$( location ).text( mw.msg( 'articlefeedbackv5-error' ) );
 			}
 		} );
 
