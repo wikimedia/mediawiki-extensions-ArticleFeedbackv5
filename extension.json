@@ -192,8 +192,14 @@
 			"scripts": "jquery.articleFeedbackv5/jquery.appear.js"
 		},
 		"jquery.articleFeedbackv5": {
-			"scripts": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
-			"styles": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.css",
+			"scripts": [
+				"jquery.articleFeedbackv5/jquery.articleFeedbackv5.js",
+				"lib/jquery.tipsy.js"
+			],
+			"styles": [
+				"jquery.articleFeedbackv5/jquery.articleFeedbackv5.css",
+				"lib/jquery.tipsy.css"
+			],
 			"templates": {
 				"bucket1.mustache": "templates/bucket1.mustache",
 				"bucket4-editable.mustache": "templates/bucket4-editable.mustache",
@@ -303,7 +309,6 @@
 			],
 			"dependencies": [
 				"jquery.appear",
-				"jquery.tipsy",
 				"jquery.ui",
 				"jquery.cookie",
 				"mediawiki.cookie",
@@ -314,8 +319,14 @@
 			]
 		},
 		"jquery.articleFeedbackv5.special": {
-			"scripts": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
-			"styles": "jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css",
+			"scripts": [
+				"jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.js",
+				"lib/jquery.tipsy.js"
+			],
+			"styles": [
+				"jquery.articleFeedbackv5/jquery.articleFeedbackv5.special.css",
+				"lib/jquery.tipsy.css"
+			],
 			"templates": {
 				"loading.mustache": "templates/loading.mustache",
 				"note-panel.mustache": "templates/note-panel.mustache"
@@ -452,7 +463,6 @@
 				"mediawiki.user",
 				"mediawiki.util",
 				"jquery.cookie",
-				"jquery.tipsy",
 				"jquery.ui"
 			]
 		}

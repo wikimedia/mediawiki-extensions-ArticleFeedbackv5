@@ -13,6 +13,7 @@ module.exports = function ( grunt ) {
 			},
 			all: [
 				'**/*.{js,json}',
+				'!modules/lib/**',
 				'!node_modules/**',
 				'!vendor/**'
 			]
