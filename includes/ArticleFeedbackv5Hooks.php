@@ -192,7 +192,7 @@ class ArticleFeedbackv5Hooks {
 				list( /* special */, $mainTitle ) = MediaWikiServices::getInstance()->getSpecialPageFactory()->resolveAlias( $out->getTitle()->getDBkey() );
 
 				// Permalinks: drop the feedback ID
-				$mainTitle = preg_replace( '/(\/[0-9]+)$/', '', $mainTitle );
+				$mainTitle = preg_replace( '/(\/[0-9]+)$/', '', $mainTitle ?? '' );
 				$mainTitle = Title::newFromDBkey( $mainTitle );
 
 				// Central feedback page
