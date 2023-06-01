@@ -1,9 +1,5 @@
 #articlefeedbackv5-article-feedback-link {
-	/* @embed */
-	background-image: url(../jquery.articleFeedbackv5/images/toolbox_discuss.png);
-	background-image: -webkit-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/toolbox_discuss.svg);
-	background-image: -moz-linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/toolbox_discuss.svg);
-	background-image: linear-gradient(transparent, transparent), url(../jquery.articleFeedbackv5/images/toolbox_discuss.svg);
+	background-image: url(../jquery.articleFeedbackv5/images/toolbox_discuss.svg);
 
 	background-repeat: no-repeat;
 	background-position: left;
