@@ -64,6 +64,8 @@
 	"articlefeedbackv5-short-status-undo-helpful": "{{GENDER:$1|Revizita da $1}}",
 	"articlefeedbackv5-short-status-unhelpful": "{{GENDER:$1|Revizita da $1}}",
 	"articlefeedbackv5-short-status-undo-unhelpful": "{{GENDER:$1|Revizita da $1}}",
+	"articlefeedbackv5-permalink-status-autohide": "{{GENDER:$1|<strong>Su-celita</strong> da $1}} $2",
+	"articlefeedbackv5-permalink-status-oversight": "{{GENDER:$1|<strong>Supervidado</strong> da $1}} $2",
 	"articlefeedbackv5-noteflyover-feature-help": "Lernez pluse",
 	"articlefeedbackv5-noteflyover-unfeature-help": "Lernez pluse",
 	"articlefeedbackv5-noteflyover-resolve-help": "Lernez pluse",
