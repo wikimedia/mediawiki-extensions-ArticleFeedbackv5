@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Deryck Chan",
-			"Ktchankt"
+			"Ktchankt",
+			"捍粵者"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "多謝！",
@@ -13,7 +14,7 @@
 	"articlefeedbackv5-cta4-button-text-later": "或者遲啲先",
 	"articlefeedbackv5-cta4-button-text-or": "或",
 	"articlefeedbackv5-overlay-close": "閂",
-	"restriction-articlefeedbackv5": "可見性",
+	"restriction-articlefeedbackv5": "可毋可見",
 	"articlefeedbackv5-contribs-status-action-hide": "收埋",
 	"articlefeedbackv5-form-helpful-yes-label": "係",
 	"articlefeedbackv5-form-helpful-no-label": "唔係",
