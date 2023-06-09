@@ -130,11 +130,6 @@ select {
 #articleFeedbackv5-percent-found-wrap .neutral {
 	background-image: url(../jquery.articleFeedbackv5/images/emotion_neutral.svg);
 }
-.aftv5-feedbackpage .aftv5-feedbackpage-comment-display-header {
-	height: 40px;
-	background: url(images/bg-feedbackpage-header.png) repeat-x;
-	padding: 0 10px;
-}
 
 /** Filter & sort line **/
 #articleFeedbackv5-sort > div, #articleFeedbackv5-sort > span, #articleFeedbackv5-sort > a,
@@ -153,9 +148,7 @@ select {
 	line-height: 1.5em;
 	clear: both;
 	padding: 10px 0 0 0;
-	background-image: url(images/bg-feedbackpage-header.png);
-	background-position: bottom left;
-	background-repeat: repeat-x;
+	background-image: linear-gradient( to top, #bfdbf2 4px, transparent 4px );
 	overflow: hidden;
 }
 #articleFeedbackv5-sort-filter-controls:after {
@@ -166,9 +159,7 @@ select {
 	padding-right: 5px;
 }
 .articleFeedbackv5-filter-link:hover {
-	background-image: url(images/bg-feedbackpage-header-on.png);
-	background-position: bottom left;
-	background-repeat: repeat-x;
+	background-image: linear-gradient( to top, #3492d1 4px, transparent 4px );
 	text-decoration: none;
 }
 #articleFeedbackv5-filter {
@@ -176,9 +167,7 @@ select {
 }
 .filter-active, .filter-active:hover, .articleFeedbackv5-filter-link.filter-active:hover {
 	font-weight: bold;
-	background-image: url(images/bg-feedbackpage-header-on.png);
-	background-position: bottom left;
-	background-repeat: repeat-x;
+	background-image: linear-gradient( to top, #3492d1 4px, transparent 4px );
 }
 .filter-active, .filter-active:visited {
 	color: #000;
@@ -191,9 +180,7 @@ select {
 }
 #articleFeedbackv5-select-wrapper:hover,
 #articleFeedbackv5-select-wrapper.filter-active {
-	background-image: url(images/bg-feedbackpage-header-on.png);
-	background-position: bottom left;
-	background-repeat: repeat-x;
+	background-image: linear-gradient( to top, #3492d1 4px, transparent 4px );
 }
 #articleFeedbackv5-filter-select,
 #articleFeedbackv5-sort-select {
