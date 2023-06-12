@@ -117,7 +117,6 @@
 	font-size: 1em;
 	padding-left: 28px;
 	line-height: 32px;
-	/* @embed */
 	background-image: url(images/success.png);
 	background-repeat: no-repeat;
 	background-position: left center;
@@ -129,11 +128,6 @@
 	margin: 0;
 	background-color: #fff;
 	border: solid 1px silver;
-	/*
-	background-image: url(images/pop.png);
-	background-position: center center;
-	background-repeat: no-repeat;
-	*/
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -164,22 +158,18 @@
 }
 
 .articleFeedbackv5-switch-form {
-	/* @embed */
 	background-image: url(images/form.png);
 }
 
 .articleFeedbackv5-switch-report {
-	/* @embed */
 	background-image: url(images/report.png);
 }
 
 .articleFeedbackv5-switch-form:hover {
-	/* @embed */
 	background-image: url(images/form-hover.png);
 }
 
 .articleFeedbackv5-switch-report:hover {
-	/* @embed */
 	background-image: url(images/report-hover.png);
 }
 
@@ -205,64 +195,50 @@
 
 /* Green stars for Option 3 */
 .articleFeedbackv5-rating-label {
-	/* @embed */
 	background-image: url(images/star-empty.png);
 }
 .articleFeedbackv5-rating-clear {
-	/* @embed */
 	background-image: url(images/trash.png);
 	display: none;
 }
 .articleFeedbackv5-rating-labels:hover .articleFeedbackv5-rating-clear {
-	/* @embed */
 	background-image: url(images/trash-hover.png);
 }
 .articleFeedbackv5-rating-label-full {
-	/* @embed */
 	background-image: url(images/star-full.png);
 }
 .articleFeedbackv5-expired .articleFeedbackv5-rating-label-full {
-	/* @embed */
 	background-image: url(images/star-full-expired.png);
 }
 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-full,
 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-hover-tail {
-	/* @embed */
 	background-image: url(images/star-new.png);
 }
 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-hover-head {
-	/* @embed */
 	background-image: url(images/star-new-hover.png);
 }
 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-down {
-	/* @embed */
 	background-image: url(images/star-new-down.png);
 }
 
 /** Old red stars for option 5 **/
 .articleFeedbackv5-rating-label {
-	/* @embed */
 	background-image: url(images/old-star-empty.png);
 }
 .articleFeedbackv5-rating-label-full {
-	/* @embed */
 	background-image: url(images/old-star-full.png);
 }
 .articleFeedbackv5-expired .articleFeedbackv5-rating-label-full {
-	/* @embed */
 	background-image: url(images/old-star-full-expired.png);
 }
 .articleFeedbackv5-option-5 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-full,
 .articleFeedbackv5-option-5 .articleFeedbackv5-rating .articleFeedbackv5-rating-label-hover-tail {
-	/* @embed */
 	background-image: url(images/old-star-new.png);
 }
 .articleFeedbackv5-option-5 .articleFeedbackv5-rating .articleFeedbackv5-rating-label-hover-head {
-	/* @embed */
 	background-image: url(images/old-star-new-hover.png);
 }
 .articleFeedbackv5-option-5 .articleFeedbackv5-rating-new .articleFeedbackv5-rating-label-down {
-	/* @embed */
 	background-image: url(images/old-star-new-down.png);
 }
 
@@ -297,7 +273,6 @@
 	width: 104px;
 	border: solid 1px #ccc;
 	border-radius: 3px;
-	/* @embed */
 	background-image: url(images/segment-empty.png);
 	background-repeat: repeat-x;
 	background-position: left center;
@@ -307,7 +282,6 @@
 .articleFeedbackv5-rating-meter div {
 	float: left;
 	height: 17px;
-	/* @embed */
 	background-image: url(images/segment-full.png);
 	background-repeat: repeat-x;
 	background-position: left center;
@@ -324,14 +298,12 @@
 .articleFeedbackv5-label {
 	cursor: pointer;
 	padding-left: 20px;
-	/* @embed */
 	background-image: url(images/question.png);
 	background-repeat: no-repeat;
 	background-position: left center;
 }
 
 .articleFeedbackv5-label:hover {
-	/* @embed */
 	background-image: url(images/question-hover.png);
 }
 
@@ -418,12 +390,10 @@
 }
 
 .articleFeedbackv5-pending span {
-	/* @embed */
 	background-image: url(images/attention.png);
 }
 
 .articleFeedbackv5-success span {
-	/* @embed */
 	background-image: url(images/success.png);
 }
 
@@ -436,7 +406,6 @@
 .articleFeedbackv5-expiry-title {
 	font-size: 1.2em;
 	padding-left: 28px;
-	/* @embed */
 	background-image: url(images/alert.png);
 	background-repeat: no-repeat;
 	background-position: left center;
@@ -494,13 +463,11 @@
 }
 
 .articleFeedbackv5-tooltip .tooltip-top {
-	/* @embed */
 	background: url(images/bg-tooltip-top.png);
 	height: 11px;
 }
 
 .articleFeedbackv5-tooltip .tooltip-repeat {
-	/* @embed */
 	background: url(images/bg-tooltip.png) repeat-y;
 	padding: 0 20px 1px;
 	margin: 0;
@@ -522,7 +489,6 @@
 }
 
 .articleFeedbackv5-tooltip .tooltip-bottom {
-	/* @embed */
 	background: url(images/bg-tooltip-bottom.png);
 	height: 26px;
 }
@@ -540,7 +506,6 @@
 }
 
 .articleFeedbackv5-arrow-back {
-	/* @embed */
 	background: url(images/bg-arrow-back.png) no-repeat 0 50%;
 	height: 2em;
 	width: 10px;
@@ -595,7 +560,6 @@
 	font-weight: bold;
 	margin: 0 !important;
 	border: none !important;
-	/* @embed */
 	-webkit-border-radius: 3px;
 	-khtml-border-radius: 3px; /* for old Konqueror browsers */
 	-moz-border-radius: 3px;
@@ -658,10 +622,6 @@
 	padding-top: 0;
 	padding-bottom: 0;
 	text-align: center;
-	/*text-shadow: 1px 1px 1px #000;*/
-	/*padding: 1px 30px 0 0;*/
-	/* @embed */
-	/*background: url(images/bg-submit-icon.png) right center no-repeat;*/
 }
 
 /*** Option 4 ***/
@@ -718,7 +678,6 @@
 	padding: 0 0 0 30px;
 	margin: 0 10px 0 0;
 	height: 25px;
-	/* @embed */
 	background: url(images/bg-confirmation-thanks.png) left center no-repeat;
 }
 .articleFeedbackv5-confirmation-panel .articleFeedbackv5-panel-leftContent .articleFeedbackv5-confirmation-learnHow {
@@ -743,7 +702,6 @@
 	display: block;
 	height: 27px;
 	width: 26px;
-	/* @embed */
 	background: url(images/bg-close-off.png) no-repeat !important;
 	float: right;
 	position: relative;
@@ -752,7 +710,6 @@
 }
 
 .articleFeedbackv5-clear-trigger:hover {
-	/* @embed */
 	background: url(images/bg-close-hov.png) no-repeat !important;
 	cursor: pointer;
 	text-decoration: none;
@@ -825,42 +782,14 @@
 }
 .articleFeedbackv5-fixedtabbox {
 	position: relative;
-	/*
-	-moz-transform:rotate(90deg);
-	-moz-transform-origin: top left;
-	-webkit-transform: rotate(90deg);
-	-webkit-transform-origin: top left;
-	-o-transform: rotate(90deg);
-	-o-transform-origin: top left;
-	-ms-transform: rotate(90deg);
-	-ms-transform-origin: top left;
-	transform: rotate(90deg);
-	transform-origin: top left;
-	*/
 }
 .articleFeedbackv5-fixedtablink {
-	/*
-	border: none;
-	background-color: #5373a6;
-	-moz-border-radius: 0 0 10px 10px;
-	-webkit-border-radius: 0 0 10px 10px;
-	-ms-border-radius: 0 0 10px 10px;
-	border-radius: 0 0 10px 10px;
-	min-width: 105px;
-	*/
 	width: 27px;
 	height: 114px;
 	right: 0;
 	display: block;
 	margin: 0;
-	/* @embed */
 	background: url(../ext.articleFeedbackv5/images/img_aftv5_tablink.png) no-repeat;
-	/*
-	padding: 5px 10px;
-	color: #fff;
-	text-align: center;
-	writing-mode: tb-rl;
-	*/
 	position: absolute;
 	z-index: 999;
 }
@@ -885,7 +814,6 @@
 	border-top: 1px solid gray;
 	border-left: 1px solid gray;
 	background-color: #255fa3;
-	/* @embed */
 	background-image: url(images/1x1_tab_blue.png);
 	color: #fff;
 	min-width: 105px;
@@ -936,7 +864,6 @@
 }
 .articleFeedbackv5-disable-flyover-tip-A .tipsy-arrow,
 .articleFeedbackv5-disable-flyover-tip-E .tipsy-arrow {
-	/* @embed */
 	background-image: url(images/tipsy-flyover.png);
 	width: 23px;
 	height: 11px;
@@ -973,7 +900,6 @@
 	margin-top: 22px;
 	width: 16px;
 	height: 16px;
-	/* @embed */
 	background-image: url(images/flyover_x.png);
 	background-repeat: no-repeat;
 	background-position: left top;
@@ -996,7 +922,6 @@
 }
 
 .articleFeedbackv5-trigger-link-holder.articleFeedbackv5-trigger-link-holder-E .articleFeedbackv5-close-trigger-link {
-	/* @embed */
 	background-image: url(images/tab_x_off.png);
 	background-size: auto;
 	background-position: center top;
@@ -1007,6 +932,5 @@
 	margin-left: 5px;
 }
 .articleFeedbackv5-trigger-link-holder.articleFeedbackv5-trigger-link-holder-E:hover .articleFeedbackv5-close-trigger-link {
-	/* @embed */
 	background-image: url(images/tab_x_on.png);
 }
