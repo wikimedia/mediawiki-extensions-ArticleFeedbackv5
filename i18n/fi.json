@@ -21,9 +21,11 @@
 			"Stryn",
 			"Valtlait",
 			"VezonThunder",
-			"Yupik"
+			"Yupik",
+			"Valtlai"
 		]
 	},
+	"articlefeedbackv5-error-nonexistent-page": "Palautesivua ei ole olemassa",
 	"articlefeedbackv5-error-nonexistent-feedback": "Palautetta ei ole olemassa",
 	"articlefeedbackv5-cta-thanks": "Kiitos!",
 	"articlefeedbackv5-cta-confirmation-message": "Viestisi voidaan nähdä tällä [$1 palautesivulla].",
