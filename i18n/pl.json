@@ -465,6 +465,8 @@
 	"abusefilter-edit-action-aftv5flagabuse": "(Opinia o artykule) Autoflaga nadużycia",
 	"abusefilter-edit-action-aftv5hide": "(Opinia o artykule) Autoukrywanie",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Automatycznie ukryte. Reguła: $1",
+	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "przydatne",
+	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "rozwiązane",
 	"echo-category-title-feedback": "Opinie",
 	"articlefeedbackv5-notification-link-text-view-feedback": "Wyświetl opinię"
 }
