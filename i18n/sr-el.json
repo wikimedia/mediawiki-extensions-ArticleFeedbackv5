@@ -7,7 +7,6 @@
 			"Zoranzoki21"
 		]
 	},
-	"apihelp-articlefeedbackv5-description": "Pošalji povratne informacije o članku",
 	"apihelp-articlefeedbackv5-summary": "Pošalji povratne informacije o članku",
 	"apihelp-articlefeedbackv5-param-anontoken": "Token za anonimne korisnike",
 	"articlefeedbackv5-error-nonexistent-page": "Stranica za povratne informacije ne postoji",

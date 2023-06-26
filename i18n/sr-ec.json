@@ -14,7 +14,6 @@
 			"Сербијана"
 		]
 	},
-	"apihelp-articlefeedbackv5-description": "Пошаљи повратне информације о чланку",
 	"apihelp-articlefeedbackv5-summary": "Пошаљи повратне информације о чланку",
 	"apihelp-articlefeedbackv5-param-anontoken": "Токен за анонимне кориснике",
 	"articlefeedbackv5-error-nonexistent-page": "Страница за повратне информације не постоји",

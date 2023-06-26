@@ -12,7 +12,6 @@
 			"Tjernobyl"
 		]
 	},
-	"apihelp-articlefeedbackv5-description": "Indsend tilbagemelding på artikel",
 	"apihelp-articlefeedbackv5-summary": "Indsend tilbagemelding på artikel",
 	"apihelp-articlefeedbackv5-set-status-param-enable": "1 for at aktivere, 0 for at deaktivere AFTv5",
 	"articlefeedbackv5-cta-thanks": "Tak!",

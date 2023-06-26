@@ -13,7 +13,6 @@
 			"Zarisi"
 		]
 	},
-	"apihelp-articlefeedbackv5-description": "Sendi komenton pri artikolo",
 	"apihelp-articlefeedbackv5-summary": "Sendi komenton pri artikolo",
 	"apihelp-articlefeedbackv5-param-anontoken": "Ĵetono por anonimuloj",
 	"apihelp-articlefeedbackv5-set-status-param-enable": "1 por ŝalti, 0 por malŝalti AFTv5",

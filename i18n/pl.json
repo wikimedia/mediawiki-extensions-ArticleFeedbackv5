@@ -27,7 +27,6 @@
 			"Woytecr"
 		]
 	},
-	"apihelp-articlefeedbackv5-description": "Prześlij opinię o artykule",
 	"apihelp-articlefeedbackv5-summary": "Prześlij opinię o artykule",
 	"apihelp-articlefeedbackv5-param-title": "Tytuł strony, dla której zostanie przesłana opinia. Nie może być użyty razem z $1pageid.",
 	"apihelp-articlefeedbackv5-param-pageid": "Identyfikator strony, dla której zostanie przesłana opinia. Nie może zostać użyty razem z $1title.",

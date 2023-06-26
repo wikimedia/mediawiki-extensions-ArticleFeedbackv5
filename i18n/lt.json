@@ -12,7 +12,6 @@
 			"Vogone"
 		]
 	},
-	"apihelp-articlefeedbackv5-description": "Siųsti straipsnio atsiliepimą",
 	"apihelp-articlefeedbackv5-summary": "Pateikti atsiliepimą straipsniui",
 	"apihelp-articlefeedbackv5-param-title": "Puslapio, kuriam teikiamas atsiliepimas, pavadinimas. Negali būti naudojama kartu su $1pageid",
 	"apihelp-articlefeedbackv5-param-pageid": "Puslapio, kuriam teikiamas atsiliepimas, ID. Negali būti naudojama kartu su $1title",
@@ -22,7 +21,6 @@
 	"apihelp-articlefeedbackv5-get-count-param-filter": "Kokį filtravimą taikyti sąrašui",
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Taikomos žymės tipas",
 	"apihelp-articlefeedbackv5-flag-feedback-param-note": "Informacija kodėl atsiliepimo veikla įvyko",
-	"apihelp-articlefeedbackv5-add-flag-note-description": "Pridėkite pastabą, apibūdinančią veiklą, po to kai veiksmas jau buvo atliktas.",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Žurnalo ID atnaujinimui",
 	"apihelp-articlefeedbackv5-add-flag-note-param-flagtype": "Taikomos žymės tipas",
 	"apihelp-articlefeedbackv5-add-flag-note-param-note": "Informacija kodėl atsiliepimo veikla įvyko",

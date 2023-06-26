@@ -14,7 +14,6 @@
 	"apihelp-articlefeedbackv5-param-anontoken": "ჟეტონი ანონიმური მომხმარებლებისთვის",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "შესვლა ID განაახლებისთვის",
 	"apihelp-articlefeedbackv5-add-flag-note-param-flagtype": "დროშის ტიპი გამოყენებისთვის",
-	"apihelp-query+articlefeedbackv5-view-feedback-description": "სტატიის სია უკუკავშირის კონკრეტული გვერდი",
 	"articlefeedbackv5-cta-thanks": "დიდი მადლობა!",
 	"articlefeedbackv5-cta1-confirmation-title": "იცით, რომ თქვენ ამ სტატიის რედაქტირება შეგიძლიათ?",
 	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} მუშაობს იმიტომ, რომ ნებისმიერს შეუძლია მისი რედაქტირება. თავად სცადეთ შესწორება. თამამად!",

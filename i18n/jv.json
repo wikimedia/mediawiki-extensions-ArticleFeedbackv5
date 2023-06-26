@@ -6,7 +6,6 @@
 			"Sumbukompor"
 		]
 	},
-	"apihelp-articlefeedbackv5-description": "Kirim pamrayoga tumrap artikel",
 	"apihelp-articlefeedbackv5-param-title": "Sesirah kaca kang arep kawènèhan pamrayoga. Ora bisa kaanggo bebarengan karo $1pageid",
 	"apihelp-articlefeedbackv5-param-pageid": "IDné kaca kang arep kawènèhan pamrayoga. Ora bisa kaanggo bebarengan karo $1title",
 	"apihelp-articlefeedbackv5-param-revid": "ID révisi kang arep kawènèhan pamrayoga",

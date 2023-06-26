@@ -28,7 +28,6 @@
 			"Vks"
 		]
 	},
-	"apihelp-articlefeedbackv5-description": "Odeslat zpětnou vazbu k článku",
 	"apihelp-articlefeedbackv5-summary": "Odeslat zpětnou vazbu k článku",
 	"apihelp-articlefeedbackv5-param-title": "Název stránky, ke které posíláte zpětnou vazbu. Nelze použít dohromady s $1pageid",
 	"apihelp-articlefeedbackv5-param-pageid": "ID stránky, ke které posíláte zpětnou vazbu. Nelze použít dohromady s $1title",

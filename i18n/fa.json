@@ -31,7 +31,6 @@
 			"پسر یاس"
 		]
 	},
-	"apihelp-articlefeedbackv5-description": "ثبت بازخورد دربارهٔ مقاله",
 	"apihelp-articlefeedbackv5-summary": "ثبت بازخورد دربارهٔ مقاله",
 	"apihelp-articlefeedbackv5-param-title": "عنوان صفحه برای قبت بازخورد دربارهٔ آن. نمی‌تواند به‌همراه $1pageid استفاده شود",
 	"apihelp-articlefeedbackv5-param-anontoken": "توکن برای کاربران ناشناس",
@@ -41,7 +40,6 @@
 	"apihelp-query+articlefeedbackv5-view-activity-param-limit": "تعداد فعالیت‌ها برای نمایش در نتایج",
 	"apihelp-query+articlefeedbackv5-view-activity-param-continue": "زمانی که نتایج بیش‌تری موجود هستند، از این برای ادامه دادن استفاده کنید.",
 	"apihelp-query+articlefeedbackv5-view-activity-param-noheader": "از نشانه گذاری سرتیتر صرفنظر کنید، حتی اگر این صفحه اول است.",
-	"apihelp-query+articlefeedbackv5-view-feedback-description": "بازخورد مقاله را برای یک صفحه مشخص شده فهرست کنید.",
 	"apihelp-query+articlefeedbackv5-view-feedback-summary": "بازخورد مقاله را برای یک صفحه مشخص شده فهرست کنید.",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-title": "عنوان صفحه برای دریافت بازخورد دربارهٔ آن. نمی‌تواند به‌همراه $1pageid استفاده شود.",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "کلید برای مرتب‌سازی رکوردها بر اساس",
