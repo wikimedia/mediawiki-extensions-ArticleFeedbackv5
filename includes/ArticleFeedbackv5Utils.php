@@ -390,10 +390,14 @@ class ArticleFeedbackv5Utils {
 				// XXX Can this happen?
 				return false;
 			}
-			$gen = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator();
-			$vars = $gen->addUserVars( $user )->addTitleVars( $title, 'page' )->getVariableHolder();
-			$vars->setVar( 'SUMMARY', 'Article Feedback 5' );
-			$vars->setVar( 'ACTION', 'feedback' );
+			$vars = AbuseFilterServices::getVariableGeneratorFactory()
+				->newGenerator()
+				->addUserVars( $user )
+				->addTitleVars( $title, 'page' )
+				->addGenericVars()
+				->getVariableHolder();
+			$vars->setVar( 'summary', 'Article Feedback 5' );
+			$vars->setVar( 'action', 'feedback' );
 			$vars->setVar( 'new_wikitext', $value );
 			$vars->setLazyLoadVar( 'new_size', 'length', [ 'length-var' => 'new_wikitext' ] );
 
