@@ -7,7 +7,19 @@
 		]
 	},
 	"articlefeedbackv5-cta4-button-text-login": "Кирүү",
+	"articlefeedbackv5-contribs-status-action-archive": "Архивделген",
+	"articlefeedbackv5-form-helpful-yes-label": "Ооба",
+	"articlefeedbackv5-form-helpful-no-label": "Жок",
+	"articlefeedbackv5-special-filter-archived": "Архивделген ($1)",
+	"articlefeedbackv5-special-filter-archived-watchlist": "Архивделген",
 	"articlefeedbackv5-details-link": "Чоо-жайы",
 	"articlefeedbackv5-loading-tag": "Жүктөлүүдө...",
-	"articlefeedbackv5-new-marker": "Жаңы"
+	"articlefeedbackv5-new-marker": "Жаңы",
+	"articlefeedbackv5-archive-marker": "Архивделген",
+	"articlefeedbackv5-form-archive": "Архивдештирүү",
+	"articlefeedbackv5-noteflyover-archive-caption": "Архивделген",
+	"articlefeedbackv5-bucket1-toggle-found-yes": "Ооба",
+	"articlefeedbackv5-bucket1-toggle-found-no": "Жок",
+	"articlefeedbackv5-bucket6-toggle-found-yes": "Ооба",
+	"articlefeedbackv5-bucket6-toggle-found-no": "Жок"
 }
