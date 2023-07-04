@@ -14,7 +14,8 @@
 			"Stephensuleeman",
 			"William Surya Permana",
 			"පසිඳු කාවින්ද",
-			"Agam Riyandana"
+			"Agam Riyandana",
+			"Veracious"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Kirim umpan balik artikel",
@@ -547,9 +548,9 @@
 	"right-aft-editor": "Pilih & selesaikan umpan balik",
 	"action-aft-monitor": "sembunyikan umpan balik & minta pengawasan",
 	"right-aft-monitor": "Sembunyikan umpan balik & minta pengawasan",
-	"action-aft-administrator": "Lihat AFT di halaman terlindungi",
+	"action-aft-administrator": "lihat AFT di halaman terlindungi",
 	"right-aft-administrator": "Lihat AFT di halaman terlindungi",
-	"action-aft-oversighter": "Umpan balik pengawasan",
+	"action-aft-oversighter": "umpan balik pengawasan",
 	"right-aft-oversighter": "Umpan balik pengawasan",
 	"log-name-articlefeedbackv5": "Log Aktivitas Umpan Balik Artikel",
 	"log-description-articlefeedbackv5": "Ini adalah log aktivitas yang diambil pada item umpan balik yang dikirim oleh para pengguna melalui Umpan Balik Artikel.",
