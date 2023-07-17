@@ -5,13 +5,5 @@
 			"Piano1forte2"
 		]
 	},
-	"articlefeedbackv5-protection-title": "Changed visibility of the article feedback tool on '[[$1]]'",
-	"articlefeedbackv5-discuss-user-section-title": "Your feedback on '$2'",
-	"articlefeedbackv5-discuss-user-section-content": "Thanks for posting your feedback on '$7'.\n\nYou posted this comment on $3 ([[$5|view all feedback]]).\n\n$6\n\nWe appreciate your contributions to this page!\n\n~~~~",
-	"articlefeedbackv5-no-feedback": "There is no feedback for the filter you selected. To change your filter, try one of the options above (e.g.: 'Featured' or 'Unreviewed').",
-	"articlefeedbackv5-noteflyover-unrequest-caption": "Cancelled oversight request",
-	"articlefeedbackv5-bucket6-question-placeholder-yes": "Write your suggestion here (e.g.: 'This page needs a picture')",
-	"articlefeedbackv5-bucket6-question-placeholder-no": "Write your suggestion here (e.g.: 'This page needs a picture')",
-	"logentry-articlefeedbackv5-protect": "$1 {{GENDER:$2|changed}} visibility of the article feedback tool on '$3' $4",
-	"articlefeedbackv5-disable-flyover-help-message": "To remove Article Feedback, go to '$1' > '$2' and check '$3'"
+	"articlefeedbackv5-noteflyover-unrequest-caption": "Cancelled oversight request"
 }
