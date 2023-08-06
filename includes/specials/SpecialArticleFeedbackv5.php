@@ -185,17 +185,18 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// build renderer
 		$permalink = (bool)$this->feedbackId;
-		$central = !(bool)$this->pageId;
+		$central = !$this->pageId;
 		$renderer = new ArticleFeedbackv5Render( $this->getUser(), $permalink, $central );
 
 		// build title
 		if ( $permalink ) {
-			$out->setPageTitle( $this->msg( 'articlefeedbackv5-special-permalink-pagetitle', $this->title )->escaped() );
-		} elseif ( $this->pageId ) {
-			$out->setPageTitle( $this->msg( 'articlefeedbackv5-special-pagetitle', $this->title )->escaped() );
+			$msg = $this->msg( 'articlefeedbackv5-special-permalink-pagetitle', $this->title );
+		} elseif ( !$central ) {
+			$msg = $this->msg( 'articlefeedbackv5-special-pagetitle', $this->title );
 		} else {
-			$out->setPageTitle( $this->msg( 'articlefeedbackv5-special-central-pagetitle' )->escaped() );
+			$msg = $this->msg( 'articlefeedbackv5-special-central-pagetitle' );
 		}
+		$out->setPageTitle( $msg->escaped() );
 
 		// output content
 		$out->addHTML(
@@ -211,17 +212,18 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		$filterCount = ArticleFeedbackv5Model::getCount( 'featured', $this->pageId );
 		$totalCount = ArticleFeedbackv5Model::getCount( '*', $this->pageId );
 
-		// JS variables
-		$out->addJsConfigVars( 'afPageId', $this->pageId );
-		$out->addJsConfigVars( 'afReferral', $request->getText( 'ref', 'url' ) );
-		$out->addJsConfigVars( 'afStartingFilter', $this->startingFilter );
-		$out->addJsConfigVars( 'afStartingFeedbackId', $permalink ? $this->feedbackId : null );
-		$out->addJsConfigVars( 'afStartingSort', $this->startingSort );
-		$out->addJsConfigVars( 'afStartingSortDirection', $this->startingSortDirection );
-		$out->addJsConfigVars( 'afCount', $totalCount );
-		$out->addJsConfigVars( 'afFilterCount', $filterCount );
-		$out->addJsConfigVars( 'afOffset', $records ? $records->nextOffset() : 0 );
-		$out->addJsConfigVars( 'afShowMore', $records ? $records->hasMore() : false );
+		$out->addJsConfigVars( [
+			'afPageId' => $this->pageId,
+			'afReferral' => $request->getText( 'ref', 'url' ),
+			'afStartingFilter' => $this->startingFilter,
+			'afStartingFeedbackId' => $permalink ? $this->feedbackId : null,
+			'afStartingSort' => $this->startingSort,
+			'afStartingSortDirection' => $this->startingSortDirection,
+			'afCount' => $totalCount,
+			'afFilterCount' => $filterCount,
+			'afOffset' => $records ? $records->nextOffset() : 0,
+			'afShowMore' => $records && $records->hasMore(),
+		] );
 	}
 
 	/**
@@ -439,16 +441,16 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	 * @return string
 	 */
 	protected function getHelpLink() {
-		$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl' )->text();
 		if ( $this->isAllowed( 'aft-oversighter' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-oversighters' )->text();
+			$msg = 'articlefeedbackv5-help-special-linkurl-oversighters';
 		} elseif ( $this->isAllowed( 'aft-monitor' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-monitors' )->text();
+			$msg = 'articlefeedbackv5-help-special-linkurl-monitors';
 		} elseif ( $this->isAllowed( 'aft-editor' ) ) {
-			$helpLink = $this->msg( 'articlefeedbackv5-help-special-linkurl-editors' )->text();
+			$msg = 'articlefeedbackv5-help-special-linkurl-editors';
+		} else {
+			$msg = 'articlefeedbackv5-help-special-linkurl';
 		}
-
-		return $helpLink;
+		return $this->msg( $msg )->text();
 	}
 
 	/**
@@ -460,21 +462,11 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	protected function buildStatusBox() {
 		// check if opt-in/-out is enabled
 		global $wgArticleFeedbackv5EnableProtection;
-		if ( !$wgArticleFeedbackv5EnableProtection ) {
-			return '';
-		}
-
-		if ( !$this->pageId ) {
-			return '';
-		}
-
-		/*
-		 * Don't show status box if page is enabled/disabled via the categories.
-		 * To change that, one would have to edit the page and remove that
-		 * category, not change it via the button for page protection that we'll
-		 * be displaying here.
-		 */
-		if (
+		if ( !$wgArticleFeedbackv5EnableProtection ||
+			!$this->pageId ||
+			// Don't show status box if page is enabled/disabled via the categories. To change that,
+			// one would have to edit the page and remove that category, not change it via the
+			// button for page protection that we'll be displaying here.
 			ArticleFeedbackv5Utils::isWhitelisted( $this->pageId ) ||
 			ArticleFeedbackv5Utils::isBlacklisted( $this->pageId )
 		) {
