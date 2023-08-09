@@ -78,5 +78,7 @@
 	"articlefeedbackv5-bucket4-form-submit": "यस पृष्ठ सम्पादन गर्नुहोस्",
 	"articlefeedbackv5-bucket4-noedit-form-submit": "थप जान्नुहोस्",
 	"articlefeedbackv5-help-tooltip-title": "यो के हो?",
-	"articlefeedbackv5-help-tooltip-linktext": "थप जान्नुहोस्"
+	"articlefeedbackv5-help-tooltip-linktext": "थप जान्नुहोस्",
+	"articlefeedbackv5-section-linktext": "प्रतिक्रिया",
+	"echo-category-title-feedback": "प्रतिक्रिया"
 }
