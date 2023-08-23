@@ -542,7 +542,7 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	text-align: center;
 	color: #333;
 	font-weight: bold;
-	background: url(images/bg-button-disable.png) repeat-x;
+	background-image: linear-gradient( #efefef, #bebebe );
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
@@ -552,7 +552,7 @@ form.articleFeedbackv5-form-flyover input#articleFeedbackv5-noteflyover-note {
 	box-shadow: -2px 2px 1px #999;
 }
 .articleFeedbackv5-flyover-button:hover {
-	background: url(images/bg-button-hov.png) repeat-x;
+	background-image: linear-gradient( #e0e0e0, #a1a1a1 );
 	cursor: pointer;
 	color: #333;
 	text-decoration: none;
