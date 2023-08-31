@@ -40,7 +40,8 @@
 			"Wikisaurus",
 			"Александр Сигачёв",
 			"Сrower",
-			"Сай"
+			"Сай",
+			"Света Поторочина"
 		]
 	},
 	"apihelp-articlefeedbackv5-summary": "Отправить отзыв на статью",
@@ -252,7 +253,7 @@
 	"articlefeedbackv5-status-unarchive": "Это сообщение было разархивировано $1 $2 в $3",
 	"articlefeedbackv5-new-marker": "Новый",
 	"articlefeedbackv5-oversight-marker": "Скрыто ревизором",
-	"articlefeedbackv5-autohide-marker": "Автоматически скрываемое",
+	"articlefeedbackv5-autohide-marker": "Асэрказ ватэм",
 	"articlefeedbackv5-hide-marker": "скрытый",
 	"articlefeedbackv5-feature-marker": "Полезно",
 	"articlefeedbackv5-resolve-marker": "Урегулирован",
