@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kaganer"
+			"Kaganer",
+			"Света Поторочина"
 		]
 	},
 	"articlefeedbackv5-special-filter-select-more": "Эшшо",
-	"articlefeedbackv5-form-unfeature": "Берытсконо",
+	"articlefeedbackv5-form-unfeature": "берланьтоно",
 	"articlefeedbackv5-form-tooltip-unhide": "Возьматыны"
 }
