@@ -179,7 +179,7 @@ class ArticleFeedbackv5Hooks {
 			}
 
 		// talk page
-		} elseif ( in_array( $title->getSubjectPage()->getNameSpace(), $wgArticleFeedbackv5Namespaces ) ) {
+		} elseif ( in_array( $title->getSubjectPage()->getNamespace(), $wgArticleFeedbackv5Namespaces ) ) {
 			// load module
 			$out->addJsConfigVars( 'aftv5Article', self::getPageInformation( $title->getSubjectPage() ) );
 			$out->addModules( 'ext.articleFeedbackv5.talk' );
