@@ -4,7 +4,7 @@
  *
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
-class DataModelList extends FakeResultWrapper {
+class DataModelList extends Wikimedia\Rdbms\FakeResultWrapper {
 	/**
 	 * @var string
 	 */
