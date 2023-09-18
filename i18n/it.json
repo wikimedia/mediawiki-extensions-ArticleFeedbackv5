@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Anto",
 			"Aushulz",
 			"BaRaN6161 TURK",
@@ -43,7 +44,7 @@
 	"apihelp-articlefeedbackv5-flag-feedback-param-feedbackid": "FeedbackID da segnare",
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Tipo di flag da applicare",
 	"apihelp-articlefeedbackv5-flag-feedback-param-note": "Informazioni sul motivo per cui si è verificata l'attività di feedback",
-	"apihelp-articlefeedbackv5-flag-feedback-param-toggle": "Il contrassegno viene attivato in modo atomico, utile solo per  (in)utile",
+	"apihelp-articlefeedbackv5-flag-feedback-param-toggle": "Il contrassegno viene attivato in modo atomico, utile solo per (in)utile",
 	"apihelp-articlefeedbackv5-add-flag-note-summary": "Aggiunge una nota che descrive l'attività dopo che l'azione è già stata eseguita.",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "ID registro da aggiornare",
 	"apihelp-articlefeedbackv5-add-flag-note-param-flagtype": "Tipo di flag da applicare",
