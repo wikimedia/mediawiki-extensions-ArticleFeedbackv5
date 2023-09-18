@@ -166,6 +166,7 @@ class ArticleFeedbackv5Hooks {
 	 */
 	public static function beforePageDisplay( OutputPage $out, Skin $skin ) {
 		global $wgArticleFeedbackv5Namespaces;
+
 		$title = $out->getTitle();
 		$user = $out->getUser();
 
@@ -187,9 +188,9 @@ class ArticleFeedbackv5Hooks {
 		// special page
 		} elseif ( $title->getNamespace() == NS_SPECIAL ) {
 			// central feedback page, article feedback page, permalink page & watchlist feedback page
-			if ( $out->getTitle()->isSpecial( 'ArticleFeedbackv5' ) || $out->getTitle()->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
+			if ( $title->isSpecial( 'ArticleFeedbackv5' ) || $title->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
 				// fetch the title of the article this special page is related to
-				list( /* special */, $mainTitle ) = MediaWikiServices::getInstance()->getSpecialPageFactory()->resolveAlias( $out->getTitle()->getDBkey() );
+				list( /* special */, $mainTitle ) = MediaWikiServices::getInstance()->getSpecialPageFactory()->resolveAlias( $title->getDBkey() );
 
 				// Permalinks: drop the feedback ID
 				$mainTitle = preg_replace( '/(\/[0-9]+)$/', '', $mainTitle ?? '' );
@@ -213,7 +214,7 @@ class ArticleFeedbackv5Hooks {
 				// load module
 				$out->addJsConfigVars( 'aftv5Article', $article );
 				$out->addModules( 'ext.articleFeedbackv5.dashboard' );
-			} elseif ( $out->getTitle()->isSpecial( 'Watchlist' ) ) {
+			} elseif ( $title->isSpecial( 'Watchlist' ) ) {
 				// watchlist page
 				global $wgArticleFeedbackv5Watchlist;
 
