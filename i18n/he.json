@@ -69,7 +69,7 @@
 	"apihelp-query+articlefeedbackv5-view-activity-summary": "פירוט פעילות משוב ערך עבור דף מסוים",
 	"apihelp-query+articlefeedbackv5-view-activity-param-feedbackid": "מזהה של משוב הערך כדי לקבל בשבילו פעילות",
 	"apihelp-query+articlefeedbackv5-view-activity-param-title": "כותרת הדף שהמשוב ניתן עליו. לא יכול לשמש יחד עם $1pageid",
-	"apihelp-query+articlefeedbackv5-view-activity-param-pageid": "מזהה הדף שאליו ניתן המשוב.  לא ניתן להשתמש יחד עם $1title",
+	"apihelp-query+articlefeedbackv5-view-activity-param-pageid": "מזהה הדף שהמשוב ניתן עבורו. לא ניתן להשתמש בזה יחד עם $1title",
 	"apihelp-query+articlefeedbackv5-view-activity-param-limit": "כמה תוצאות פעילות להחזיר",
 	"apihelp-query+articlefeedbackv5-view-activity-param-continue": "כשזמינות עוד תוצאות, יש להשתמש בזה כדי להמשיך.",
 	"apihelp-query+articlefeedbackv5-view-activity-param-noheader": "לדלג על סימון הכותרות, אפילו אם זה הדף הראשון",
