@@ -229,34 +229,6 @@ class ArticleFeedbackv5Render {
 	}
 
 	/**
-	 * Sets a permission
-	 *
-	 * @param string $key the key
-	 * @param bool $value whether that permission is on
-	 * @return bool whether it passed validation and was set
-	 */
-	public function setPermission( $key, $value ) {
-		if ( !isset( $this->permissions[$key] ) ) {
-			return false;
-		}
-		$this->permissions[$key] = $value ? true : false;
-		return true;
-	}
-
-	/**
-	 * Returns whether a permission is on
-	 *
-	 * @param string $key the key
-	 * @return bool whether the permission is on
-	 */
-	public function hasPermission( $key ) {
-		if ( !isset( $this->permissions[$key] ) ) {
-			return false;
-		}
-		return $this->permissions[$key];
-	}
-
-	/**
 	 * @return User
 	 */
 	public function getUser(): User {
