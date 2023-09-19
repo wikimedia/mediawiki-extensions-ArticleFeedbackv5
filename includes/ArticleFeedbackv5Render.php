@@ -932,7 +932,7 @@ class ArticleFeedbackv5Render {
 
 					if ( $sectionExists ) {
 						$sectionAnchor = Sanitizer::normalizeSectionNameWhitespace( $sectionTitleTruncated );
-						$sectionAnchor = Sanitizer::escapeId( $sectionAnchor );
+						$sectionAnchor = Sanitizer::escapeIdForLink( $sectionAnchor );
 
 						$discussLink = $discussPage->getLinkURL() . '#' . $sectionAnchor;
 					} else {
