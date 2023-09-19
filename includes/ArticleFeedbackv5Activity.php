@@ -221,6 +221,7 @@ class ArticleFeedbackv5Activity {
 			return new FakeResultWrapper( [] );
 		}
 
+		$where = [];
 		$where[] = $actions;
 		$where['log_title'] = $title;
 		$where['log_namespace'] = NS_SPECIAL;
@@ -364,6 +365,7 @@ class ArticleFeedbackv5Activity {
 			return 0;
 		}
 
+		$where = [];
 		$where[] = $actions;
 		$where['log_title'] = $title;
 		$where['log_namespace'] = NS_SPECIAL;
@@ -531,7 +533,7 @@ class ArticleFeedbackv5Activity {
 
 		$values = explode( '|', $continue, 3 );
 		if ( count( $values ) !== 2 ) {
-			throw new MWException( 'Invalid continue param. You should pass the original value returned by the previous query', 'badcontinue' );
+			throw new MWException( 'Invalid continue param. You should pass the original value returned by the previous query' );
 		}
 
 		$db = ArticleFeedbackv5Utils::getDB( DB_REPLICA );

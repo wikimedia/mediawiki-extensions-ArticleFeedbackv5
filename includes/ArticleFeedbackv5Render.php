@@ -1115,7 +1115,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the permalink info section
 	 *
-	 * @param array $record the record, with keys 0 + answers
+	 * @param ArticleFeedbackv5Model $record the record, with keys 0 + answers
 	 * @return string the rendered info section
 	 */
 	private function renderPermalinkInfo( $record ) {

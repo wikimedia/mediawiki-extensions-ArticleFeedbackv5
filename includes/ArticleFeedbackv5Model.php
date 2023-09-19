@@ -264,6 +264,7 @@ class ArticleFeedbackv5Model extends DataModel {
 			$key,
 			$wanCache::TTL_WEEK,
 			function () use ( $pageId ) {
+				// @phan-suppress-next-line PhanUndeclaredMethod Phan thinks the class in question is DataModelBackend
 				return static::getBackend()->getCountFound( $pageId );
 			},
 			[
@@ -285,6 +286,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * @return \Wikimedia\Rdbms\IResultWrapper
 	 */
 	public static function getContributionsData( $pager, $offset, $limit, $descending, $userIds = [] ) {
+		// @phan-suppress-next-line PhanUndeclaredMethod Phan thinks the class in question is DataModelBackend
 		return static::getBackend()->getContributionsData( $pager, $offset, $limit, $descending, $userIds );
 	}
 
@@ -386,6 +388,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	/**
 	 * Validate the entry's data
 	 *
+	 * @suppress PhanTypeArraySuspicious
 	 * @return DataModel
 	 */
 	public function validate() {
@@ -617,7 +620,7 @@ class ArticleFeedbackv5Model extends DataModel {
 			$creation = wfTimestamp( TS_UNIX, $this->aft_timestamp );
 
 			// add ttl to creation timestamp and return in mediawiki timestamp format
-			return wfTimestamp( TS_MW, $creation + $ttl );
+			return wfTimestamp( TS_MW, (int)$creation + $ttl );
 		} else {
 			return $this->aft_archive_date;
 		}

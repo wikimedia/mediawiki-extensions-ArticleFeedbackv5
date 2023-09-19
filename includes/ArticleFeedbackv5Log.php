@@ -17,7 +17,8 @@ class ArticleFeedbackv5Log {
 	 * @param string $notes Any notes that were stored with the activity
 	 * @param User|int|null $doer User who did the action
 	 * @param array $params Array of parameters that can be passed into the msg thing - used for "perpetrator" for log entry
-	 * @return int The id of the newly inserted log entry
+	 * @return int|null The id of the newly inserted log entry or null if no log type or handler is configured
+	 *   for a given $type or if the page in question ($pageId) does not exis
 	 */
 	public static function log( $type, $pageId, $itemId, $notes, $doer, array $params = [] ) {
 		global $wgLogActionsHandlers, $wgArticleFeedbackv5MaxActivityNoteLength;

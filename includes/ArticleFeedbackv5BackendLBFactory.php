@@ -164,13 +164,15 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 * @return \Wikimedia\Rdbms\IResultWrapper
 	 */
 	public function getContributionsData( $pager, $offset, $limit, $descending, $userIds = [] ) {
-		$tables[] = 'aft_feedback';
+		$tables = [ 'aft_feedback' ];
 
+		$fields = [];
 		$fields[] = 'aft_id';
 		$fields[] = 'aft_page';
 		$fields[] = '"AFT" AS aft_contribution';
 		$fields[] = 'aft_timestamp AS ' . $pager->getIndexField(); // used for navbar
 
+		$conds = [];
 		$userIdentity = MediaWikiServices::getInstance()->getUserIdentityLookup()->getUserIdentityByName( $pager->getTarget() );
 		if ( $userIdentity && $userIdentity->isRegistered() ) {
 			$conds['aft_user'] = $userIdentity->getId();
@@ -185,6 +187,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 		}
 
 		$order = $descending ? 'ASC' : 'DESC'; // something's wrong with $descending - see logic applied in includes/Pager.php
+		$options = [];
 		$options['ORDER BY'] = [ $pager->getIndexField() . " $order" ];
 		$options['LIMIT'] = $limit;
 

@@ -392,6 +392,7 @@ class ArticleFeedbackv5Hooks {
 			return true;
 		}
 
+		/** @var $record ArticleFeedbackv5Model */
 		$record = ArticleFeedbackv5Model::get( $row->aft_id, $row->aft_page );
 		if ( !$record ) {
 			return true;
@@ -602,6 +603,8 @@ class ArticleFeedbackv5Hooks {
 			$mExpirySelection
 		) = ArticleFeedbackv5Permissions::getExpiry( $pageId );
 
+		$protectExpiry = $mProtectExpiry = '';
+
 		if ( $showProtectOptions ) {
 			$expiryFormOptions = '';
 
@@ -696,12 +699,12 @@ class ArticleFeedbackv5Hooks {
 	 *
 	 * Parts of code are heavily "inspired" by ProtectionForm.
 	 *
-	 * @param Page $article
+	 * @param Article|Page $article
 	 * @param string &$errorMsg
 	 * @param string $reason
 	 * @return bool
 	 */
-	public static function onProtectionSave( Page $article, &$errorMsg, $reason ) {
+	public static function onProtectionSave( $article, &$errorMsg, $reason ) {
 		global $wgRequest,
 				$wgArticleFeedbackv5Namespaces,
 				$wgArticleFeedbackv5EnableProtection;
@@ -739,6 +742,9 @@ class ArticleFeedbackv5Hooks {
 			if ( $value == 'infinite' || $value == 'indefinite' || $value == 'infinity' ) {
 				$expirationTime = wfGetDB( DB_REPLICA )->getInfinity();
 			} else {
+				if ( !$value ) {
+					$value = '';
+				}
 				$unix = strtotime( $value );
 
 				if ( !$unix || $unix === -1 ) {
@@ -802,7 +808,7 @@ class ArticleFeedbackv5Hooks {
 		$id = 0;
 
 		// feedback id is c-parameter in the referrer, extract it
-		$referrer = ( $wgRequest->getVal( 'referrer' ) ) ? $wgRequest->getVal( 'referrer' ) : $wgRequest->getHeader( 'referer' );
+		$referrer = $wgRequest->getVal( 'referrer' ) ?: $wgRequest->getHeader( 'referer' );
 		$url = parse_url( $referrer );
 		$values = [];
 		if ( isset( $url['query'] ) ) {
