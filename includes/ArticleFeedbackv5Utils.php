@@ -358,7 +358,7 @@ class ArticleFeedbackv5Utils {
 			$spam = BaseBlacklist::getSpamBlacklist();
 			$title = Title::newFromText( 'ArticleFeedbackv5_' . $pageId );
 
-			$options = new \ParserOptions;
+			$options = new \ParserOptions( $user );
 			$output = MediaWikiServices::getInstance()->getParser()->parse( $value, $title, $options );
 			$links = $output->getExternalLinks();
 
