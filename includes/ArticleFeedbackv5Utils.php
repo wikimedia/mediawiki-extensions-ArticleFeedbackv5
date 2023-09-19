@@ -62,10 +62,12 @@ class ArticleFeedbackv5Utils {
 	public static function getDB( $db, $groups = [], $wiki = false ) {
 		$lb = static::getLB( $wiki );
 
+		$wikiId = ( $wiki === false ) ? WikiMap::getCurrentWikiId() : $wiki;
+
 		if ( $db === DB_PRIMARY ) {
 			// mark that we're writing data
-			static::$written[$wiki] = true;
-		} elseif ( isset( static::$written[$wiki] ) && static::$written[$wiki] ) {
+			static::$written[$wikiId] = true;
+		} elseif ( isset( static::$written[$wikiId] ) && static::$written[$wikiId] ) {
 			if ( $db === DB_REPLICA ) {
 				/*
 				 * Let's keep querying primary database to make sure we have up-to-date

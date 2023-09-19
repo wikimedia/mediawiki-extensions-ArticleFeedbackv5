@@ -386,7 +386,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 						)
 					)
 					->numParams( $totalCount )
-					->text()
+					->parse()
 			);
 
 		// % found
