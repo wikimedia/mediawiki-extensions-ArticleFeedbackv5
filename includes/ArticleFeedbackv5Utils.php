@@ -298,7 +298,7 @@ class ArticleFeedbackv5Utils {
 	 * Helper function to create a mask line
 	 *
 	 * @param string $type the type (hidden or oversight)
-	 * @param int $feedbackId the feedback post id
+	 * @param string $feedbackId the feedback post id
 	 * @param int $userId the user id
 	 * @param string|null $timestamp the timestamp, from the db
 	 * @return string the mask line

@@ -401,7 +401,7 @@ class ArticleFeedbackv5Render {
 	 * @param string $message the message key describing the nature of the
 	 *                           feedback (e.g., "USER found what they were
 	 *                           looking for")
-	 * @param ArticleFeedbackv5 $record the record
+	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the rendered feedback head
 	 */
 	private function feedbackHead( $message, $record ) {
