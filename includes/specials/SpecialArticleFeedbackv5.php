@@ -48,9 +48,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	protected $title;
 
 	/**
-	 * The feedback ID we're operating on (if permalink)
+	 * The feedback ID we're operating on (if permalink); still /not/ a pure int
 	 *
-	 * @var int
+	 * @var string
 	 */
 	protected $feedbackId;
 
@@ -232,6 +232,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	protected function fetchData() {
 		// permalink page
 		if ( $this->feedbackId ) {
+			/** @var ArticleFeedbackv5Model $record */
 			$record = ArticleFeedbackv5Model::get( $this->feedbackId, $this->pageId );
 			if ( $record ) {
 				return new DataModelList(

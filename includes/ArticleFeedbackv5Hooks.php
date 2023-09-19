@@ -392,7 +392,7 @@ class ArticleFeedbackv5Hooks {
 			return true;
 		}
 
-		/** @var $record ArticleFeedbackv5Model */
+		/** @var ArticleFeedbackv5Model $record */
 		$record = ArticleFeedbackv5Model::get( $row->aft_id, $row->aft_page );
 		if ( !$record ) {
 			return true;
@@ -836,6 +836,7 @@ class ArticleFeedbackv5Hooks {
 			 * Make sure the current request's IP actually still matches the one saved for
 			 * the original submission.
 			 */
+			/** @var ArticleFeedbackv5Model $feedback */
 			$feedback = ArticleFeedbackv5Model::get( $id, $pageId );
 			if (
 				$feedback &&

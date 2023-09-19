@@ -77,6 +77,7 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 				$list = $backend->getList( 'archive_scheduled', null, null, $this->limit, 'age', 'ASC' );
 
 				foreach ( $list as $row ) {
+					/** @var ArticleFeedbackv5Model $feedback */
 					$feedback = ArticleFeedbackv5Model::loadFromRow( $row );
 
 					$timestamp = wfTimestamp( TS_UNIX, $feedback->aft_timestamp );

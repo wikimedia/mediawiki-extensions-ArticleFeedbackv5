@@ -105,6 +105,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	protected function fetchData( $params, $pageId ) {
 		// permalink page
 		if ( $params['feedbackid'] ) {
+			/** @var ArticleFeedbackv5Model $record */
 			$record = ArticleFeedbackv5Model::get( $params['feedbackid'], $pageId );
 			if ( $record ) {
 				return new DataModelList(

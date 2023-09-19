@@ -14,7 +14,8 @@ class ArticleFeedbackv5Model extends DataModel {
 	/**
 	 * These are the exact columns a feedback entry consists of in the DB
 	 *
-	 * @var int|null
+	 * @var string|null Feedback ID; not an auto-incrementing integer but a PHP-generated value that _will_
+	 *  contain letters
 	 */
 	public $aft_id;
 	/** @var int|null */

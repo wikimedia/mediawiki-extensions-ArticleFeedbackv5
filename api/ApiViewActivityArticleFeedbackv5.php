@@ -60,6 +60,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		}
 
 		// fetch our activity database information
+		/** @var ArticleFeedbackv5Model $feedback */
 		$feedback = ArticleFeedbackv5Model::get( $params['feedbackid'], $pageObj->getId() );
 		// if this is false, this is bad feedback - move along
 		if ( !$feedback ) {
