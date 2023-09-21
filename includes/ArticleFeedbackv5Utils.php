@@ -21,6 +21,7 @@
  */
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\SpamBlacklist\BaseBlacklist;
 use MediaWiki\MediaWikiServices;
 
 class ArticleFeedbackv5Utils {
