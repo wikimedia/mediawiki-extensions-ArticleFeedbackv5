@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Acamicamacaraca",
+			"Amire80",
 			"BadDog",
 			"Kizule",
 			"Milicevic01",
@@ -373,7 +374,7 @@
 	"articlefeedbackv5-disable-flyover-prefbutton": "Иди у корисничка подешавања",
 	"articlefeedbackv5-countdown": "{{PLURAL:$1|(преостаје 1 знак)|(преостају $1 знака)|(преостаје $1 знакова)}}",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "Аутоматски решено. Правило: $1",
-	"articlefeedbackv5-abusefilter-note-aftv5hide": "Аутоматски сакривено.  Правило: $1",
+	"articlefeedbackv5-abusefilter-note-aftv5hide": "Аутоматски сакривено. Правило: $1",
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "корисно",
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "решено",
 	"echo-category-title-feedback": "Повратне информације",

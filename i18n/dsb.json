@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Michawiki",
 			"아라"
 		]
@@ -166,7 +167,7 @@
 	"articlefeedbackv5-bucket1-form-submit": "Twój komentar wótpósłaś",
 	"articlefeedbackv5-bucket4-title": "Pomóž toś ten bok pólěpšyś",
 	"articlefeedbackv5-bucket4-subhead": "Sy wěźeł, až móžoš toś ten bok wobźěłaś?",
-	"articlefeedbackv5-bucket4-teaser-line1": "{{SITENAME}}  funkcioněrujo, dokulaž kuždy móžo jeje boku wobźěłaś.",
+	"articlefeedbackv5-bucket4-teaser-line1": "{{SITENAME}} funkcioněrujo, dokulaž kuždy móžo jeje boku wobźěłaś.",
 	"articlefeedbackv5-bucket4-learn-to-edit": "Nawukni, kak se wobźěłujo",
 	"articlefeedbackv5-bucket4-form-submit": "Toś ten bok wobźěłaś",
 	"articlefeedbackv5-bucket4-noedit-title": "Pomóž {{GRAMMAR:akuzatiw|{{SITENAME}}}} polěpšyś",

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Fitoschido",
 			"Xuacu"
 		]
@@ -603,5 +604,5 @@
 	"abusefilter-edit-action-aftv5hide": "(Article Feedback) Anubrir n’automático",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Anubríu n’automático. Regla: $1",
 	"abusefilter-edit-action-aftv5request": "(Article Feedback) Pidir supervisión automáticamente",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Supervisión solicitada automáticamente.  Regla: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Supervisión solicitada automáticamente. Regla: $1"
 }

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"ChrisPtDe"
 		]
 	},
@@ -314,7 +315,7 @@
 	"articlefeedbackv5-countdown": "{{PLURAL:$1|($1 caractèro que réste)|($1 caractèros que réstont)}}",
 	"abusefilter-edit-action-aftv5flagabuse": "(Èstimacion d’articllos) Signalar ôtomaticament coment abusif",
 	"abusefilter-edit-action-aftv5hide": "(Èstimacion d’articllos) Cachiér ôtomaticament",
-	"articlefeedbackv5-abusefilter-note-aftv5hide": "Cachiê ôtomaticament.  Règlla : $1",
+	"articlefeedbackv5-abusefilter-note-aftv5hide": "Cachiê ôtomaticament. Règlla : $1",
 	"abusefilter-edit-action-aftv5request": "(Èstimacion d’articllos) Demandar ôtomaticament na suprèssion",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Demandâ ôtomaticament na suprèssion.  Règlla : $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Demandâ ôtomaticament na suprèssion. Règlla : $1"
 }

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Purodha"
 		]
 	},
@@ -26,7 +27,7 @@
 	"articlefeedbackv5-cta5-confirmation-title": "Loor, wat andere saare",
 	"articlefeedbackv5-cta5-confirmation-call": "Beloor de Beidrääsch vun andere Schriiver, wi De sellver eine bes. Kanns De methellfe, de bäßte Ideeje eruß ze söhke?",
 	"articlefeedbackv5-cta5-button-text": "All de Aanmärkonge beloore",
-	"articlefeedbackv5-cta6-confirmation-title": "Bruchs De Hölp beim  {{SITENAME}}-Beärbeide?",
+	"articlefeedbackv5-cta6-confirmation-title": "Bruchs De Hölp beim {{SITENAME}}-Beärbeide?",
 	"articlefeedbackv5-cta6-confirmation-call": "Öm övver et Ändere {{GRAMMAR:em|{{ucfirst:{{SITENAME}}}}}} ze kalle, kumm en et Teehuus, woh de äfahre Schriever zosamme kumme donn, un kalle, un Tips ußtuusche.",
 	"articlefeedbackv5-cta6-button-text": "En et Teehuus jonn",
 	"articlefeedbackv5-cta6-button-link": "//en.wikipedia.org/wiki/Wikipedia:Teahouse?ref=aft",

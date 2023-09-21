@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Catrope",
 			"Les Meloures",
 			"Robby",
@@ -450,7 +451,7 @@
 	"articlefeedbackv5-talk-view-feedback": "Virschléi vun de Lieser weisen >>",
 	"articlefeedbackv5-watchlist-view-feedback": "Feedback vun de Säiten op menger Iwwerwaachungslëscht",
 	"articlefeedbackv5-disable-flyover-title": "Dës Funktioun ewechhuelen?",
-	"articlefeedbackv5-disable-flyover-help-message": "Fir de Feedback vum Artikel ewechzehuelen gitt op \"$1\" >  \"$2\" a klickt \"$3\"",
+	"articlefeedbackv5-disable-flyover-help-message": "Fir de Feedback vum Artikel ewechzehuelen gitt op \"$1\" > \"$2\" a klickt \"$3\"",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Op meng Astellunge goen",
 	"articlefeedbackv5-countdown": "(Nach {{PLURAL:$1|een|$1}} Zeechen iwwreg)",
 	"abusefilter-edit-action-aftv5resolve": "(Artikel-Feedback) Automatesch léisen",

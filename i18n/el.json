@@ -3,6 +3,7 @@
 		"authors": [
 			"AK",
 			"Aitolos",
+			"Amire80",
 			"Crazymadlover",
 			"Flyax",
 			"FocalPoint",
@@ -53,7 +54,7 @@
 	"articlefeedbackv5-error": "Παρουσιάστηκε σφάλμα. Παρακαλούμε δοκιμάστε πάλι αργότερα.",
 	"articlefeedbackv5-error-blocked": "Χρήστες που βρίσκονται σε αποκλεισμό δεν μπορούν να υποβάλλουν σχόλια.",
 	"articlefeedbackv5-error-validation": "Εμφανίστηκε σφάλμα κατά την επικύρωση.",
-	"articlefeedbackv5-error-abuse": "Το κείμενό σας απορρίφθηκε από ένα φίλτρο  βάσει του οποίου ενδέχεται να μη συμμορφώνεται [$1 οδηγίες για την υποβολή σχολίων] στην {{SITENAME}}. Παρακαλούμε να επανεξετάσετε το κείμενό σας πριν δοκιμάσετε πάλι την υποβολή του ({{PLURAL:$2|Filter|Filters}}: $3).",
+	"articlefeedbackv5-error-abuse": "Το κείμενό σας απορρίφθηκε από ένα φίλτρο βάσει του οποίου ενδέχεται να μη συμμορφώνεται [$1 οδηγίες για την υποβολή σχολίων] στην {{SITENAME}}. Παρακαλούμε να επανεξετάσετε το κείμενό σας πριν δοκιμάσετε πάλι την υποβολή του ({{PLURAL:$2|Filter|Filters}}: $3).",
 	"articlefeedbackv5-error-unknown": "Άγνωστο σφάλμα.",
 	"articlefeedbackv5-error-submit": "Σφάλμα κατά την υποβολή της φόρμας.",
 	"articlefeedbackv5-error-duplicate": "Το σχόλιο που υποβλήθηκε είναι ακριβές αντίγραφο του τελευταίου σχολίου αξιολόγησης· μήπως υποβάλλατε κατά λάθος το ίδιο κείμενο δύο φορές;",
@@ -546,7 +547,7 @@
 	"abusefilter-edit-action-aftv5resolve": "(Σχόλια Αξιολόγησης) Αυτόματη επίλυση",
 	"abusefilter-edit-action-aftv5flagabuse": "(Σχόλια Αξιολόγησης) Αυτόματη σήμανση ως προσβλητικό",
 	"abusefilter-edit-action-aftv5hide": "(Σχόλια Αξιολόγησης) Αυτόματη απόκρυψη",
-	"articlefeedbackv5-abusefilter-note-aftv5hide": "Αποκρύφθηκε αυτόματα.  Κανόνας:$1",
+	"articlefeedbackv5-abusefilter-note-aftv5hide": "Αποκρύφτηκε αυτόματα. Κανόνας :$1",
 	"abusefilter-edit-action-aftv5request": "(Σχόλια Αξιολόγησης) Αυτόματη αίτηση για εποπτεία",
 	"articlefeedbackv5-abusefilter-note-aftv5request": "Ζητήθηκε αυτόματα εποπτεία. Κανόνας: $1"
 }
