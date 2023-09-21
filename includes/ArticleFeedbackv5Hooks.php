@@ -502,7 +502,7 @@ class ArticleFeedbackv5Hooks {
 	 * @return bool
 	 */
 	public static function contributionsData( &$data, $pager, $offset, $limit, $descending ) {
-		if ( $pager->getNamespace() !== '' || $pager->getTagFilter() !== false ) {
+		if ( $pager->getNamespace() !== '' || $pager->getTagFilter() !== [] ) {
 			return true;
 		}
 
