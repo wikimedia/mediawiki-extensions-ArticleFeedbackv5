@@ -422,17 +422,6 @@ class ArticleFeedbackv5Hooks {
 			}
 		}
 
-		// show user names for /newbies as there may be different users.
-		$userlink = '';
-		if ( $pager->contribs == 'newbie' ) {
-			$username = User::whoIs( $record->aft_user );
-			if ( $username !== false ) {
-				$userlink = ' . . ' . Linker::userLink( $record->aft_user, $username );
-				$userlink .= ' ' . wfMessage( 'parentheses' )->rawParams(
-					Linker::userTalkLink( $record->aft_user, $username ) )->escaped() . ' ';
-			}
-		}
-
 		// feedback (truncated)
 		$feedback = '';
 		if ( $record->aft_comment != '' ) {
@@ -489,7 +478,7 @@ class ArticleFeedbackv5Hooks {
 				$pageTitle->getPrefixedText() // article title
 			)
 			->rawParams(
-				$userlink, // userlink (for newbies)
+				'', // legacy
 				MediaWikiServices::getInstance()->getCommentFormatter()
 					->formatBlock( $feedback ) // comment
 			)
