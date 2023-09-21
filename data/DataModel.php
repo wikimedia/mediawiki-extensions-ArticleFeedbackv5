@@ -111,7 +111,7 @@ abstract class DataModel {
 	/**
 	 * Validate the entry's data.
 	 *
-	 * @return DataModel
+	 * @return static
 	 * @throws MWException
 	 */
 	public function validate() {
@@ -128,11 +128,11 @@ abstract class DataModel {
 	/**
 	 * Purge relevant Squid cache when updating data.
 	 *
-	 * @return DataModel
+	 * @return static
 	 */
 	public function purgeSquidCache() {
 		/*
-		 * If there are Squid cached to clear after having saved data, this
+		 * If there are Squid caches to clear after having saved data, this
 		 * is the place to do it. Example code:
 		 *
 		 * 	$uri = wfAppendQuery(
@@ -160,7 +160,7 @@ abstract class DataModel {
 	 * if not, the extending class can extend this method.
 	 *
 	 * @param stdClass $row The db row
-	 * @return DataModel
+	 * @return static
 	 */
 	public function toObject( stdClass $row ) {
 		foreach ( $this->toArray() as $column => $value ) {
@@ -187,7 +187,7 @@ abstract class DataModel {
 	 *
 	 * @param int $id The id of the entry to fetch
 	 * @param int $shard The shard key value
-	 * @return DataModel|bool
+	 * @return static|bool
 	 */
 	public static function get( $id, $shard ) {
 		$wanCache = static::getCache();
@@ -396,7 +396,7 @@ abstract class DataModel {
 	 * Insert entry.
 	 *
 	 * @param bool $validate True if data should be validated
-	 * @return DataModel
+	 * @return static
 	 * @throws MWException
 	 */
 	public function insert( $validate = true ) {
@@ -426,7 +426,7 @@ abstract class DataModel {
 	 * Update entry.
 	 *
 	 * @param bool $validate True if data should be validated
-	 * @return DataModel
+	 * @return static
 	 * @throws MWException
 	 */
 	public function update( $validate = true ) {
@@ -457,7 +457,7 @@ abstract class DataModel {
 	/**
 	 * Delete entry.
 	 *
-	 * @return DataModel
+	 * @return static
 	 * @throws MWException
 	 */
 	public function delete() {
@@ -630,7 +630,7 @@ abstract class DataModel {
 	/**
 	 * Cache entry for an hour.
 	 *
-	 * @return DataModel
+	 * @return static
 	 */
 	public function cache() {
 		/*
@@ -654,7 +654,7 @@ abstract class DataModel {
 	/**
 	 * Delete entry from cache.
 	 *
-	 * @return DataModel
+	 * @return static
 	 */
 	public function uncache() {
 		$wanCache = static::getCache();
@@ -747,7 +747,7 @@ abstract class DataModel {
 	 * Update an entry's presence & sort values in all defined lists.
 	 *
 	 * @param stdClass|null $old The pre-save conditions' results
-	 * @return DataModel
+	 * @return static
 	 */
 	public function updateLists( $old = null ) {
 		$new = static::getBackend()->evaluateConditions( $this );
@@ -790,7 +790,7 @@ abstract class DataModel {
 	 * @param string $name The list name (see static::$lists)
 	 * @param mixed $shard The shard value
 	 * @param int $difference The difference to apply to current count
-	 * @return DataModel
+	 * @return static
 	 */
 	protected function updateCountCache( $name, $shard, $difference ) {
 		$wanCache = static::getCache();
@@ -805,10 +805,10 @@ abstract class DataModel {
 	}
 
 	/**
-	 * Build a DataModel entry from it's row data.
+	 * Build a DataModel entry from its row data.
 	 *
 	 * @param stdClass $row
-	 * @return DataModel
+	 * @return static
 	 */
 	public static function loadFromRow( stdClass $row ) {
 		$entry = new static;
