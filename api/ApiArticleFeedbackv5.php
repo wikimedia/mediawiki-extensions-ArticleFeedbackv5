@@ -234,7 +234,10 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	 */
 	public function getAllowedParams() {
 		global $wgArticleFeedbackv5DisplayBuckets, $wgArticleFeedbackv5CTABuckets, $wgArticleFeedbackv5LinkBuckets;
+
+		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal
 		$formIds = array_map( 'strval', array_keys( $wgArticleFeedbackv5DisplayBuckets['buckets'] ) );
+		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal
 		$ctaIds = array_map( 'strval', array_keys( $wgArticleFeedbackv5CTABuckets['buckets'] ) );
 		$linkIds = array_map( 'strval', array_keys( $wgArticleFeedbackv5LinkBuckets['buckets'] ) );
 

@@ -173,11 +173,11 @@ class ArticleFeedbackv5Activity {
 	 *
 	 * @param string $type The type of activity we'll be logging
 	 * @param int $pageId The id of the page so we can look it up
-	 * @param int $itemId The id of the feedback item, used to build permalinks
+	 * @param string $itemId The id of the feedback item, used to build permalinks
 	 * @param string $notes Any notes that were stored with the activity
 	 * @param User|int|null $doer User who did the action
 	 * @param array $params Array of parameters that can be passed into the msg thing - used for "perpetrator" for log entry
-	 * @return int The id of the newly inserted log entry
+	 * @return int|null The id of the newly inserted log entry, if any was inserted
 	 */
 	public static function log( $type, $pageId, $itemId, $notes, $doer, array $params = [] ) {
 		$logId = ArticleFeedbackv5Log::log( $type, $pageId, $itemId, $notes, $doer, $params );
@@ -320,7 +320,7 @@ class ArticleFeedbackv5Activity {
 	 * method will just increment the data that is in cache already (instead of
 	 * purging the cache data to have it re-read from DB, which should be last-resort)
 	 *
-	 * @param int $feedbackId
+	 * @param string $feedbackId
 	 * @param string $action
 	 */
 	public static function incrementActivityCount( $feedbackId, $action ) {

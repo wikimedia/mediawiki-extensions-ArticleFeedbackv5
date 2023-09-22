@@ -99,8 +99,8 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 	/**
 	 * @param array $params
-	 * @param int $pageId
-	 * @return DataModelList
+	 * @param int|null $pageId Page ID or null for the central feedback page
+	 * @return DataModelList|ArticleFeedbackv5Model|array
 	 */
 	protected function fetchData( $params, $pageId ) {
 		// permalink page

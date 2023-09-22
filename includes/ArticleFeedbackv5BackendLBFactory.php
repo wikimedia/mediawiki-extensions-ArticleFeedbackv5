@@ -23,7 +23,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 
 		// connect to external, aft-specific, cluster
 		if ( $wgArticleFeedbackv5Cluster ) {
-			return MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getExternalLB( $wgArticleFeedbackv5Cluster, $wiki );
+			return MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getExternalLB( $wgArticleFeedbackv5Cluster );
 		} else {
 			return parent::getLB( $wiki );
 		}

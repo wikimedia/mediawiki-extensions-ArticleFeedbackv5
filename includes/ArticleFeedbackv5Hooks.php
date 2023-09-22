@@ -926,7 +926,7 @@ class ArticleFeedbackv5Hooks {
 					'watchlist',
 					[ 'wl_user' ],
 					[
-						'wl_user != ' . intval( $event->getAgent()->getID() ),
+						'wl_user != ' . $event->getAgent()->getID(),
 						'wl_namespace' => $page->getNamespace(),
 						'wl_title' => $page->getDBkey(),
 					],
@@ -968,7 +968,7 @@ class ArticleFeedbackv5Hooks {
 				}
 
 				// don't notify for self-moderated feedback
-				unset( $users[intval( $event->getAgent()->getID() )] );
+				unset( $users[$event->getAgent()->getID()] );
 
 				break;
 		}

@@ -1386,7 +1386,7 @@ class ArticleFeedbackv5Render {
 
 	/**
 	 * @param ArticleFeedbackv5Model $record
-	 * @return \Wikimedia\Rdbms\IResultWrapper|bool
+	 * @return stdClass|bool
 	 */
 	public function getLastActivity( ArticleFeedbackv5Model $record ) {
 		foreach ( ArticleFeedbackv5Activity::getList( $record, $this->getUser(), 1 ) as $last ) {

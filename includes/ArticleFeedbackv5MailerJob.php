@@ -71,7 +71,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 			$params['page_name'],
 			$params['page_url'],
 			$params['permalink'],
-			isset( $params['notes'] ) ? $params['notes'] : ''
+			$params['notes'] ?? ''
 		);
 
 		// @phan-suppress-next-line SecurityCheck-XSS Per the note in composeMail() below, escaping not needed
