@@ -183,7 +183,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 
 			// build username from user id
 			if ( $feedback->aft_user && !$feedback->aft_user_text ) {
-				$feedback->aft_user->text = $feedback->getUser()->getName();
+				$feedback->aft_user_text = $feedback->getUser()->getName();
 			}
 
 			$logging = $dbr->select(
