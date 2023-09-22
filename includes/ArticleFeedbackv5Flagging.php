@@ -71,7 +71,7 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * @param User|null $user the user performing the action, or
 	 *                          zero if it's a system call
-	 * @param int $feedbackId the feedback ID
+	 * @param string $feedbackId the feedback ID
 	 * @param int $pageId the page ID
 	 */
 	public function __construct( ?User $user, $feedbackId, $pageId ) {

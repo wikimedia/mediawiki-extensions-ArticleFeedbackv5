@@ -111,7 +111,7 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 			if ( !$params ) {
 				$params = [];
 			}
-			$params['source'] = isset( $params['source'] ) ? $params['source'] : 'unknown';
+			$params['source'] = $params['source'] ?? 'unknown';
 			$params['feedbackId'] = (int)$row->feedback_id;
 			$params['pageId'] = (int)$row->page_id;
 

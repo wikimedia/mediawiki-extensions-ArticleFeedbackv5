@@ -49,7 +49,7 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 	 *
 	 * @param ArticleFeedbackv5Model $object The object
 	 */
-	public function purgeObject( DataModel $object ) {
+	public function purgeObject( $object ) {
 		parent::purgeObject( $object );
 
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();

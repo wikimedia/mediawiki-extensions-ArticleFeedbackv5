@@ -80,8 +80,8 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 					/** @var ArticleFeedbackv5Model $feedback */
 					$feedback = ArticleFeedbackv5Model::loadFromRow( $row );
 
-					$timestamp = wfTimestamp( TS_UNIX, $feedback->aft_timestamp );
-					$archiveDate = wfTimestamp( TS_UNIX, $feedback->aft_archive_date );
+					$timestamp = (int)wfTimestamp( TS_UNIX, $feedback->aft_timestamp );
+					$archiveDate = (int)wfTimestamp( TS_UNIX, $feedback->aft_archive_date );
 					$days = round( ( $archiveDate - $timestamp ) / ( 60 * 60 * 24 ) );
 					$note = wfMessage( 'articlefeedbackv5-activity-note-archive', $days )->escaped();
 

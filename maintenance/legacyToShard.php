@@ -121,7 +121,9 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 				'af_created' // timestamp
 			],
 			[
+				// @phan-suppress-next-line PhanTypeMismatchArgumentInternal
 				'af_form_id' => array_keys( $wgArticleFeedbackv5DisplayBuckets['buckets'] ),
+				// @phan-suppress-next-line PhanTypeMismatchArgumentInternal
 				'af_cta_id' => array_keys( $wgArticleFeedbackv5CTABuckets['buckets'] ),
 				'af_link_id' => array_keys( $wgArticleFeedbackv5LinkBuckets['buckets'] ),
 				"af_id > $continue"
@@ -170,13 +172,13 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 			$feedback->aft_page = $row->af_page_id;
 			$feedback->aft_page_revision = $row->af_revision_id;
 			$feedback->aft_user = $row->af_user_id;
-			$feedback->aft_user_text = $row->af_user_ip ? $row->af_user_ip : User::newFromId( $row->af_user_id )->getName();
+			$feedback->aft_user_text = $row->af_user_ip ?: User::newFromId( $row->af_user_id )->getName();
 			$feedback->aft_user_token = $row->af_user_anon_token;
 			$feedback->aft_form = $row->af_form_id;
 			$feedback->aft_cta = $row->af_cta_id;
-			$feedback->aft_link = $row->af_link_id ? $row->af_link_id : 'X';
+			$feedback->aft_link = $row->af_link_id ?: 'X';
 			$feedback->aft_rating = $row->rating;
-			$feedback->aft_comment = isset( $row->comment ) ? $row->comment : '';
+			$feedback->aft_comment = $row->comment ?? '';
 			$feedback->aft_timestamp = $row->af_created;
 
 			// build username from user id
@@ -342,7 +344,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 							$feedback->aft_flag = 0;
 						}
 						break;
-					case 'inappropriate':
+					case 'archive':
 						$feedback->aft_feature = 0;
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;
@@ -351,7 +353,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 						$feedback->aft_hide = 0;
 						$feedback->aft_oversight = 0;
 						break;
-					case 'uninappropriate':
+					case 'unarchive':
 						$feedback->aft_feature = 0;
 						$feedback->aft_resolve = 0;
 						$feedback->aft_noaction = 0;

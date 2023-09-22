@@ -74,6 +74,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 			isset( $params['notes'] ) ? $params['notes'] : ''
 		);
 
+		// @phan-suppress-next-line SecurityCheck-XSS Per the note in composeMail() below, escaping not needed
 		$status = UserMailer::send( $to, $from, $subject, $body, [ 'replyTo' => $replyto ] );
 
 		return $status->isOK();

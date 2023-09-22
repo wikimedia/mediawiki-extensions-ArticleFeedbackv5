@@ -15,7 +15,7 @@
  */
 class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	/**
-	 * @param ApiQuery $query
+	 * @param ApiMain $query
 	 * @param string $moduleName
 	 */
 	public function __construct( $query, $moduleName ) {
@@ -64,7 +64,7 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => $filters,
-				ApiBase::PARAM_DFLT     => ( isset( $filters[0] ) ? $filters[0] : '' )
+				ApiBase::PARAM_DFLT     => ( $filters[0] ?? '' )
 			],
 		];
 	}

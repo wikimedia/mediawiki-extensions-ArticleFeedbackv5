@@ -253,7 +253,7 @@ class ArticleFeedbackv5Hooks {
 			'title' => $title->getFullText(),
 			'namespace' => $title->getNamespace(),
 			'categories' => [],
-			'permissionLevel' => isset( $permissions->pr_level ) ? $permissions->pr_level : false,
+			'permissionLevel' => $permissions->pr_level ?? false,
 		];
 
 		foreach ( $title->getParentCategories() as $category => $page ) {
@@ -522,12 +522,13 @@ class ArticleFeedbackv5Hooks {
 	 *
 	 * Parts of code are heavily "inspired" by ProtectionForm.
 	 *
-	 * @param Page $article
+	 * @param Article|Page $article
 	 * @param string &$output
 	 * @return bool
 	 */
 	public static function onProtectionForm( Page $article, &$output ) {
 		global $wgArticleFeedbackv5Namespaces, $wgArticleFeedbackv5EnableProtection;
+
 		$page = $article->getPage();
 		$pageId = $page->getId();
 

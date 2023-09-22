@@ -93,7 +93,7 @@ abstract class DataModelBackend {
 	 *
 	 * @param string $name The list name (see <datamodel>::$lists)
 	 * @param mixed|null $shard Get only data for a certain shard value
-	 * @param int|null $offset The offset to start fetching entries from
+	 * @param string|null $offset The offset to start fetching entries from
 	 * @param int $limit The amount of entries to fetch
 	 * @param string|null $sort Sort to apply to list
 	 * @param string $order Sort the list ASC or DESC
@@ -125,7 +125,7 @@ abstract class DataModelBackend {
 	 * For a given list name, this will fetch the list's conditions.
 	 *
 	 * @param string $name The list name (see <datamodel>::$lists)
-	 * @return string
+	 * @return array
 	 */
 	public function getConditions( $name ) {
 		$class = $this->datamodel;

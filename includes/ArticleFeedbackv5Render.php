@@ -360,6 +360,10 @@ class ArticleFeedbackv5Render {
 				$msg = 'articlefeedbackv5-form1-header-found';
 			} elseif ( $mood == 'negative' ) {
 				$msg = 'articlefeedbackv5-form1-header-not-found';
+			} else {
+				throw new LogicException(
+					'This should not happen, but I just want to keep phan happy'
+				);
 			}
 		}
 

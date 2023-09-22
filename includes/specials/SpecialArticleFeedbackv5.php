@@ -475,7 +475,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		}
 
 		$restriction = ArticleFeedbackv5Permissions::getProtectionRestriction( $this->pageId );
-		$permissionLevel = isset( $restriction->pr_level ) ? $restriction->pr_level : false;
+		$permissionLevel = $restriction->pr_level ?? false;
 		$defaultPermissionLevel = ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $this->pageId );
 
 		// not restricted
@@ -835,6 +835,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			}
 		}
 
+		$dir = '';
 		// Was a sort requested?
 		if ( $sort ) {
 			if ( in_array( $sort, $this->sorts ) ) {

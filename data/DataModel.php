@@ -185,7 +185,7 @@ abstract class DataModel {
 	/**
 	 * Fetch a data entry by its id & shard key.
 	 *
-	 * @param int $id The id of the entry to fetch
+	 * @param string $id The id of the entry to fetch
 	 * @param int $shard The shard key value
 	 * @return static|bool
 	 */
@@ -568,7 +568,7 @@ abstract class DataModel {
 	public static function getBackend() {
 		if ( static::$backend === null ) {
 			global $wgDataModelBackendClass;
-			$class = isset( $wgDataModelBackendClass ) ? $wgDataModelBackendClass : 'DataModelBackendLBFactory';
+			$class = $wgDataModelBackendClass ?? 'DataModelBackendLBFactory';
 
 			$backend = new $class( get_called_class(), static::getTable(), static::getIdColumn(), static::getShardColumn() );
 			static::setBackend( $backend );
@@ -811,6 +811,7 @@ abstract class DataModel {
 	 * @return static
 	 */
 	public static function loadFromRow( stdClass $row ) {
+		// @phan-suppress-next-line PhanTypeInstantiateAbstractStatic
 		$entry = new static;
 		return $entry->toObject( $row );
 	}
@@ -830,6 +831,6 @@ abstract class DataModel {
 		 * Pad the string to full 32-char length if the value is lower.
 		 */
 		$id = UIDGenerator::newTimestampedUID128( 16 );
-		return str_pad( $id, 32, 0, STR_PAD_LEFT );
+		return str_pad( $id, 32, '0', STR_PAD_LEFT );
 	}
 }

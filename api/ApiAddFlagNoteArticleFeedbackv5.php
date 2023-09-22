@@ -18,7 +18,7 @@ use MediaWiki\MediaWikiServices;
  */
 class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	/**
-	 * @param ApiQuery $query
+	 * @param ApiMain $query
 	 * @param string $moduleName
 	 */
 	public function __construct( $query, $moduleName ) {

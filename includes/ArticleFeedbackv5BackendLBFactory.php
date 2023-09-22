@@ -104,7 +104,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 * For a given list name, this will fetch the list's conditions.
 	 *
 	 * @param string $name The list name (see <datamodel>::$lists)
-	 * @return string
+	 * @return array
 	 */
 	public function getConditions( $name ) {
 		$class = $this->datamodel;

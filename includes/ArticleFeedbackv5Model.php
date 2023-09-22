@@ -564,7 +564,7 @@ class ArticleFeedbackv5Model extends DataModel {
 			throw new MWException( "List '$name' is no known list" );
 		}
 
-		return isset( static::$lists[$name]['conditions'] ) ? static::$lists[$name]['conditions'] : [];
+		return static::$lists[$name]['conditions'] ?? [];
 	}
 
 	/**

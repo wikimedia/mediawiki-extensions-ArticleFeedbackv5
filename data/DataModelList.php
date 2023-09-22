@@ -51,14 +51,14 @@ class DataModelList extends Wikimedia\Rdbms\FakeResultWrapper {
 	}
 
 	/**
-	 * @return int
+	 * @return string
 	 */
 	public function nextOffset() {
 		return $this->nextOffset;
 	}
 
 	/**
-	 * @param int $offset
+	 * @param string $offset
 	 */
 	public function setNextOffset( $offset ) {
 		$this->nextOffset = $offset;

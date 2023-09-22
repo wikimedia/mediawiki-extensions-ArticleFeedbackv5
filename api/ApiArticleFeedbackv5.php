@@ -102,7 +102,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		 */
 		$pm = $services->getPermissionManager();
 		$guard = $pm->addTemporaryUserRights( $user, 'aft-noone' );
-		$list = ArticleFeedbackv5Model::getList( '*', $user, $feedback->aft_page, 0, 'age', 'DESC' );
+		$list = ArticleFeedbackv5Model::getList( '*', $user, $feedback->aft_page, null, 'age', 'DESC' );
 		// revoke temporary aft-noone right
 		ScopedCallback::consume( $guard );
 
@@ -209,8 +209,8 @@ class ApiArticleFeedbackv5 extends ApiBase {
 					[ $rule_desc ]
 				)->parse();
 
-				$res = $flagger->run( $flag, $notes, false, 'abusefilter' );
-				if ( $res['result'] == 'Error' ) {
+				$success = $flagger->run( $flag, $notes, false, 'abusefilter' );
+				if ( !$success ) {
 					// TODO: Log somewhere?
 				}
 			}
