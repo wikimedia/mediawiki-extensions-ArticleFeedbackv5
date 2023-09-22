@@ -52,7 +52,7 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 		if ( !$dbr->tableExists( 'aft_article_feedback' ) ) {
 			// not necessary to run, there is no source data
 			return true;
-		} elseif ( !$dbr->tableExists( 'aft_article_feedback' ) ) {
+		} elseif ( !$dbr->tableExists( 'aft_feedback' ) ) {
 			// not possible to run, there is no target
 			$this->output( "Target table 'aft_feedback' does not exist.\n" );
 			return false;
