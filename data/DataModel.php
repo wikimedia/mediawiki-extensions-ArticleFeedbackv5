@@ -756,8 +756,8 @@ abstract class DataModel {
 			$existsOld = $old != null;
 			$existsNew = true;
 			foreach ( static::getListConditions( $list ) as $condition ) {
-				$existsOld &= isset( $old->{$condition} ) && $old->{$condition};
-				$existsNew &= isset( $new->{$condition} ) && $new->{$condition};
+				$existsOld = $existsOld && isset( $old->{$condition} ) && $old->{$condition};
+				$existsNew = $existsNew && isset( $new->{$condition} ) && $new->{$condition};
 			}
 
 			// update list totals

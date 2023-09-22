@@ -117,17 +117,16 @@ class ArticleFeedbackv5Utils {
 		$enable = true;
 
 		// only on pages in namespaces where it is enabled
-		$enable &= in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces );
+		$enable = $enable && in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces );
 
 		// check if user is not blocked
-		$enable &= !$user->getBlock();
+		$enable = $enable && !$user->getBlock();
 
 		// check if a, to this user sufficient, permission level is defined
 		if ( $wgArticleFeedbackv5EnableProtection && isset( $restriction->pr_level ) ) {
-			$enable &= $user->isAllowed( $restriction->pr_level );
-
+			$enable = $enable && $user->isAllowed( $restriction->pr_level );
 		} else {
-			$enable &=
+			$enable = $enable &&
 				// check if a, to this user sufficient, default permission level (based on lottery) is defined
 				$user->isAllowed( ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $pageId ) ) ||
 				// or check whitelist
@@ -135,14 +134,14 @@ class ArticleFeedbackv5Utils {
 		}
 
 		// category is not blacklisted
-		$enable &= !self::isBlacklisted( $pageId );
+		$enable = $enable && !self::isBlacklisted( $pageId );
 
 		// not disabled via preferences
-		$enable &= !MediaWikiServices::getInstance()
+		$enable = $enable && !MediaWikiServices::getInstance()
 			->getUserOptionsLookup()->getOption( $user, 'articlefeedback-disable' );
 
 		// not viewing a redirect
-		$enable &= !$title->isRedirect();
+		$enable = $enable && !$title->isRedirect();
 
 		return $enable;
 	}
