@@ -400,8 +400,9 @@ class ArticleFeedbackv5Hooks {
 
 		$lang = $pager->getLanguage();
 		$user = $pager->getUser();
+		$services = MediaWikiServices::getInstance();
 		$feedbackTitle = SpecialPage::getTitleFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() . "/$record->aft_id" );
-		$centralPageName = MediaWikiServices::getInstance()->getSpecialPageFactory()
+		$centralPageName = $services->getSpecialPageFactory()
 			->getLocalNameFor( 'ArticleFeedbackv5', $pageTitle->getPrefixedDBkey() );
 		$feedbackCentralPageTitle = Title::makeTitle( NS_SPECIAL, $centralPageName, "$record->aft_id" );
 
@@ -411,7 +412,7 @@ class ArticleFeedbackv5Hooks {
 		$dateFormats['date'] = $lang->userDate( $record->aft_timestamp, $user );
 		$dateFormats['time'] = $lang->userTime( $record->aft_timestamp, $user );
 
-		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
+		$linkRenderer = $services->getLinkRenderer();
 
 		// if feedback should be hidden from users, a special class "history-deleted" should be added
 		$historyDeleted = ( $record->isHidden() || $record->isRequested() || $record->isOversighted() );
@@ -479,8 +480,7 @@ class ArticleFeedbackv5Hooks {
 			)
 			->rawParams(
 				'', // legacy
-				MediaWikiServices::getInstance()->getCommentFormatter()
-					->formatBlock( $feedback ) // comment
+				$services->getCommentFormatter()->formatBlock( $feedback ) // comment
 			)
 			->params( $status ) // status
 			->rawParams( $dateFormats['date'], $dateFormats['time'] ) // date, time
