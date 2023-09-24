@@ -360,7 +360,7 @@ class ArticleFeedbackv5Utils {
 
 			$options = new \ParserOptions( $user );
 			$output = MediaWikiServices::getInstance()->getParser()->parse( $value, $title, $options );
-			$links = $output->getExternalLinks();
+			$links = array_keys( $output->getExternalLinks() );
 
 			$ret = $spam->filter( $links, $title, $user );
 			if ( $ret !== false ) {
