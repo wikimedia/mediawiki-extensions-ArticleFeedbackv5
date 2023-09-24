@@ -412,13 +412,12 @@ class ArticleFeedbackv5Hooks {
 		$dateFormats['date'] = $lang->userDate( $record->aft_timestamp, $user );
 		$dateFormats['time'] = $lang->userTime( $record->aft_timestamp, $user );
 
-		$linkRenderer = $services->getLinkRenderer();
-
 		// if feedback should be hidden from users, a special class "history-deleted" should be added
 		$historyDeleted = ( $record->isHidden() || $record->isRequested() || $record->isOversighted() );
 		foreach ( $dateFormats as $format => &$formattedTime ) {
-			$formattedTime = $linkRenderer->makeLink( $feedbackTitle, $formattedTime );
 			if ( $historyDeleted ) {
+				// @note This variable looks unused at a quick glance but it's actually _not_ since it's
+				// modified by reference!
 				$formattedTime = '<span class="history-deleted">' . $formattedTime . '</span>';
 			}
 		}
@@ -426,7 +425,7 @@ class ArticleFeedbackv5Hooks {
 		// feedback (truncated)
 		$feedback = '';
 		if ( $record->aft_comment != '' ) {
-			if ( $record->isHidden() || $record->isRequested() || $record->isOversighted() ) {
+			if ( $historyDeleted ) {
 				// (probably) abusive comment that has been hidden/oversight-requested/oversighted
 				$feedback = wfMessage( 'articlefeedbackv5-contribs-hidden-feedback' )->escaped();
 			} else {
@@ -472,18 +471,18 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		$ret = wfMessage( 'articlefeedbackv5-contribs-entry' )
-			->rawParams( $dateFormats['timeAndDate'] ) // timeanddate
 			->params(
+				$dateFormats['timeAndDate'], // timeanddate
 				ChangesList::showCharacterDifference( 0, strlen( $record->aft_comment ) ), // chardiff
 				$feedbackCentralPageTitle->getFullText(), // feedback link
-				$pageTitle->getPrefixedText() // article title
+				$pageTitle->getPrefixedText(), // article title
+				$record->aft_id // feedback entry ID, used for building the link to the AFTv5 special page
 			)
 			->rawParams(
-				'', // legacy
 				$services->getCommentFormatter()->formatBlock( $feedback ) // comment
 			)
 			->params( $status ) // status
-			->rawParams( $dateFormats['date'], $dateFormats['time'] ) // date, time
+			->params( $dateFormats['date'], $dateFormats['time'] ) // date, time
 			->parse();
 
 		$classes[] = 'mw-aft-contribution';
