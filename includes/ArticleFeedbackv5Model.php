@@ -74,7 +74,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	public $aft_helpful = 0;
 	/** @var int */
 	public $aft_unhelpful = 0;
-	/** @var int|null even more denormalized stuff, allowing easy DB-indexing sort columns */
+	/** @var bool|null even more denormalized stuff, allowing easy DB-indexing sort columns */
 	public $aft_has_comment;
 	/** @var int */
 	public $aft_net_helpful = 0;
@@ -297,7 +297,7 @@ class ArticleFeedbackv5Model extends DataModel {
 	 * @param string $name The list name (see static::$lists)
 	 * @param User $user The user who'se watchlisted feedback to fetch
 	 * @param User $performer The acting user
-	 * @param int|null $offset The offset to start from
+	 * @param string|null $offset The offset to start from
 	 * @param string $sort Sort to apply to list
 	 * @param string $order Sort the list ASC or DESC
 	 * @return DataModelList
@@ -428,6 +428,7 @@ class ArticleFeedbackv5Model extends DataModel {
 		}
 
 		if ( !in_array( $this->aft_rating, [ 0, 1 ] ) ) {
+			// @phan-suppress-next-line PhanTypeSuspiciousStringExpression
 			throw new MWException( "Invalid rating '$this->aft_rating'." );
 		}
 

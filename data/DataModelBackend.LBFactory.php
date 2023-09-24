@@ -107,7 +107,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * Insert entry.
 	 *
 	 * @param DataModel $entry
-	 * @return int
+	 * @return bool
 	 */
 	public function insert( DataModel $entry ) {
 		return $this->getDB( DB_PRIMARY )->insert(
@@ -121,7 +121,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * Update entry.
 	 *
 	 * @param DataModel $entry
-	 * @return int
+	 * @return bool
 	 */
 	public function update( DataModel $entry ) {
 		$data = $entry->toArray();
@@ -142,7 +142,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * Delete entry.
 	 *
 	 * @param DataModel $entry
-	 * @return int
+	 * @return bool
 	 */
 	public function delete( DataModel $entry ) {
 		return $this->getDB( DB_PRIMARY )->delete(
@@ -285,7 +285,7 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * all possible conditions, to know which caches need to be purged/updated.
 	 *
 	 * @param DataModel $entry
-	 * @return \Wikimedia\Rdbms\IResultWrapper
+	 * @return stdClass
 	 */
 	public function evaluateConditions( DataModel $entry ) {
 		$class = $this->datamodel;

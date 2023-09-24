@@ -263,7 +263,7 @@ class ArticleFeedbackv5Activity {
 	/**
 	 * Returns a timestamp/id tuple for subsequent request continuing from this record
 	 *
-	 * @param IResultWrapper $row
+	 * @param stdClass $row
 	 * @return string
 	 */
 	public static function getContinue( $row ) {

@@ -68,7 +68,7 @@ abstract class DataModelBackend {
 	 * Insert entry.
 	 *
 	 * @param DataModel $entry
-	 * @return int
+	 * @return bool
 	 */
 	abstract public function insert( DataModel $entry );
 
@@ -76,7 +76,7 @@ abstract class DataModelBackend {
 	 * Update entry.
 	 *
 	 * @param DataModel $entry
-	 * @return int
+	 * @return bool
 	 */
 	abstract public function update( DataModel $entry );
 
@@ -84,7 +84,7 @@ abstract class DataModelBackend {
 	 * Delete entry.
 	 *
 	 * @param DataModel $entry
-	 * @return int
+	 * @return bool
 	 */
 	abstract public function delete( DataModel $entry );
 
@@ -113,11 +113,11 @@ abstract class DataModelBackend {
 	/**
 	 * Evaluate an entry to possible conditions.
 	 *
-	 * Before updating data, DataModel will want to re-evaluate en entry to
+	 * Before updating data, DataModel will want to re-evaluate an entry to
 	 * all possible conditions, to know which caches need to be purged/updated.
 	 *
 	 * @param DataModel $entry
-	 * @return \Wikimedia\Rdbms\IResultWrapper
+	 * @return stdClass
 	 */
 	abstract public function evaluateConditions( DataModel $entry );
 

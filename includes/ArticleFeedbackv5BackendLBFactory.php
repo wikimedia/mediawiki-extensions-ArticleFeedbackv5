@@ -50,7 +50,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 * Update entry.
 	 *
 	 * @param DataModel $entry
-	 * @return int
+	 * @return bool
 	 */
 	public function update( DataModel $entry ) {
 		/*
@@ -67,7 +67,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 * Delete entry.
 	 *
 	 * @param DataModel $entry
-	 * @return int
+	 * @return bool
 	 */
 	public function delete( DataModel $entry ) {
 		/*

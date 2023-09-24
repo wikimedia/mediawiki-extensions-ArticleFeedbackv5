@@ -79,6 +79,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 
 		// Build html
 		if ( $records ) {
+			// @phan-suppress-next-line PhanTypeSuspiciousNonTraversableForeach
 			foreach ( $records as $record ) {
 				$html .= $renderer->run( $record );
 				$length++;
