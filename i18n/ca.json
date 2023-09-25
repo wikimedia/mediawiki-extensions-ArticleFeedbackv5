@@ -3,6 +3,7 @@
 		"authors": [
 			"Aleator",
 			"Alvaro Vidal-Abarca",
+			"Amire80",
 			"Arnaugir",
 			"BroOk",
 			"El libre",
@@ -249,8 +250,8 @@
 	"articlefeedbackv5-permalink-status-request": "{{GENDER:$1|La <strong>supervisió</strong> fou sol·licitada per $1}} fa $2",
 	"articlefeedbackv5-permalink-status-unrequest": "{{GENDER:$1|<strong>Supervisió</strong> no sol·licitada per $1}} fa $2",
 	"articlefeedbackv5-permalink-status-decline": "{{GENDER:$1|<strong>Supervisió</strong> rebutjada per $1}} fa $2",
-	"articlefeedbackv5-permalink-status-inappropriate": "{{GENDER:$1|<strong>Amagat</strong> per  $1}} fa $2",
-	"articlefeedbackv5-permalink-status-uninappropriate": "{{GENDER:$1|<strong>Mostrat</strong> per  $1}} fa $2",
+	"articlefeedbackv5-permalink-status-inappropriate": "{{GENDER:$1|<strong>Amagat</strong> per $1}} fa $2",
+	"articlefeedbackv5-permalink-status-uninappropriate": "{{GENDER:$1|<strong>Mostrat</strong> per $1}} fa $2",
 	"articlefeedbackv5-permalink-status-archive": "{{GENDER:$1|<strong>Arxivat</strong> per $1}} $2",
 	"articlefeedbackv5-permalink-last-action": "Darrera acció",
 	"articlefeedbackv5-permalink-activity-more": "Mostra més accions...",

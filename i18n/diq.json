@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"1917 Ekim Devrimi",
+			"Amire80",
 			"Asmen",
 			"Erdemaslancan",
 			"Gorizon",
@@ -55,7 +56,7 @@
 	"articlefeedbackv5-special-filter-unreviewed": "Çım ra nêraviyarnayo ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Peştikar ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Peştikar ($1)",
-	"articlefeedbackv5-special-filter-flagged": "Nışanın  ($1)",
+	"articlefeedbackv5-special-filter-flagged": "Nışanın ($1)",
 	"articlefeedbackv5-special-filter-useful": "Luzımıno ($1)",
 	"articlefeedbackv5-special-filter-resolved": "Vılêşnayın ($1)",
 	"articlefeedbackv5-special-filter-noaction": "Hereket icab nêkeno ($1)",
