@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"ChrisPtDe"
+			"ChrisPtDe",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Grant-marci !",
@@ -314,7 +315,7 @@
 	"articlefeedbackv5-disable-flyover-prefbutton": "Alar a mes prèferences",
 	"abusefilter-edit-action-aftv5flagabuse": "(Èstimacion d’articllos) Signalar ôtomaticament coment abusif",
 	"abusefilter-edit-action-aftv5hide": "(Èstimacion d’articllos) Cachiér ôtomaticament",
-	"articlefeedbackv5-abusefilter-note-aftv5hide": "Cachiê ôtomaticament.  Règlla : $1",
+	"articlefeedbackv5-abusefilter-note-aftv5hide": "Cachiê ôtomaticament. Règlla : $1",
 	"abusefilter-edit-action-aftv5request": "(Èstimacion d’articllos) Demandar ôtomaticament na suprèssion",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Demandâ ôtomaticament na suprèssion.  Règlla : $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Demandâ ôtomaticament na suprèssion. Règlla : $1"
 }

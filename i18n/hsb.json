@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"J budissin",
-			"Michawiki"
+			"Michawiki",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Wulki dźak!",
@@ -41,7 +42,7 @@
 	"articlefeedbackv5-error-submit": "Zmylk při wotesyłanju formulara.",
 	"articlefeedbackv5-error-nofeedback": "Prošu zapodaj swój komentar.",
 	"articlefeedbackv5-error-flagging": "Zmylk při woznamjenjenju komentara.",
-	"articlefeedbackv5-error-throttled": "Twój přinošk je so wotpokazał, dokelž sy wjace komentarow zawostajił hač směrnicy za komentary {{GRAMMAR:genitiw|{{SITENAME}}}} dopušćeja.  Prošu njezawostaj přewjele komentarow.",
+	"articlefeedbackv5-error-throttled": "Twój přinošk je so wotpokazał, dokelž sy wjace komentarow zawostajił hač směrnicy za komentary {{GRAMMAR:genitiw|{{SITENAME}}}} dopušćeja. Prošu njezawostaj přewjele komentarow.",
 	"articlefeedbackv5-protection-level": "Komentary wo nastawkach",
 	"articlefeedbackv5-protection-level-error": "Škitna runina za komentary wo nastawkach njemóže wyša być hač škitna runina za wobdźěłowanje",
 	"protect-level-aft-reader": "Za wšěch wužiwarjow zmóžnić",

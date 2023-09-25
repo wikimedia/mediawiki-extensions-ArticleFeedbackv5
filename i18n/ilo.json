@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ansumang",
-			"Lam-ang"
+			"Lam-ang",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Agyaman!",
@@ -42,11 +43,11 @@
 	"articlefeedbackv5-form2-header-problem": "{{GENDER:$1|$1}} kadda problema:",
 	"articlefeedbackv5-form2-header-question": "{{GENDER:$1|$1}} ket adda saludsod na:",
 	"articlefeedbackv5-form2-header-suggestion": "{{GENDER:$1|$1}} ket adda idagadag na:",
-	"articlefeedbackv5-form-invalid": "Imbalido nga ID ti  nakabuklan a  panagiparupaan.",
+	"articlefeedbackv5-form-invalid": "Imbalido nga ID ti nakabuklan a panagiparupaan.",
 	"articlefeedbackv5-abuse-saved": "Nabanderaan a kas naabuso",
 	"articlefeedbackv5-error-loading-feedback": "Biddut ti panagikarga ti panagipagarupan",
-	"articlefeedbackv5-invalid-feedback-id": "Imbalido nga ID ti  panagiparupaan",
-	"articlefeedbackv5-invalid-feedback-flag": "Imbalido a bandera ti  panagiparupaan",
+	"articlefeedbackv5-invalid-feedback-id": "Imbalido nga ID ti panagiparupaan",
+	"articlefeedbackv5-invalid-feedback-flag": "Imbalido a bandera ti panagiparupaan",
 	"articlefeedbackv5-go-to-article": "Kitaen ti panid",
 	"articlefeedbackv5-discussion-page": "Pagtungtongan",
 	"articlefeedbackv5-whats-this": "Tulong",

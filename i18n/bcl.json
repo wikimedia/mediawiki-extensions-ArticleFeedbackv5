@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Brazal.dang",
-			"Geopoet"
+			"Geopoet",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Mabalos!",
@@ -34,7 +35,7 @@
 	"articlefeedbackv5-error": "Sarong kasalaan an nangyari. Pakiotroha giraray aro-atyan.",
 	"articlefeedbackv5-error-blocked": "Pinagkubkob na mga paragamit puwedeng dae na magsumite nin balik-simbag.",
 	"articlefeedbackv5-error-validation": "Balidasyon nin kasalaan.",
-	"articlefeedbackv5-error-abuse": "An saimong ipinaskil pinaghaboan kan sarong saraan nin panuklob na minasuhestiyon na ini  bakong pasado sa {{SITENAME}} na [$1 giya kan mga balik-simbag]. Pakirebisaha an saimong ipinaskil asin otroha giraray.({{PLURAL:$2|Saraan|Mga Saraan}}:$3)",
+	"articlefeedbackv5-error-abuse": "An saimong ipinaskil pinaghaboan kan sarong saraan nin panuklob na minasuhestiyon na ini bakong pasado sa {{SITENAME}} na [$1 giya kan mga balik-simbag]. Pakirebisaha an saimong ipinaskil asin otroha giraray.({{PLURAL:$2|Saraan|Mga Saraan}}:$3)",
 	"articlefeedbackv5-error-unknown": "Bakong bistadong kasalaan",
 	"articlefeedbackv5-error-submit": "Magporma nin pagsusumite nin kasalaan.",
 	"articlefeedbackv5-error-duplicate": "An pinagsumiteng balik-simbag sarong duplikadong balik-simbag na nakaagi na; baka aksidenteng naisumite mo nin duwang beses an saimong balik-simbag?",
@@ -456,8 +457,8 @@
 	"articlefeedbackv5-help-tooltip-title": "Ano tabi ini?",
 	"articlefeedbackv5-help-tooltip-info": "An {{SITENAME}} gustuhong madangog kun ano an saimong kaisipan sa pahinang ini. Pakiheras an saimong balik-simbag sa mga paraliwat — asin magtabang na padahomon ining pahina.",
 	"articlefeedbackv5-help-tooltip-linktext": "Makanuod pa nin iba",
-	"articlefeedbackv5-help-transparency-terms": "Tabi man magpaskil sa [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines nin nakakatabang na balik-simbag]. Sa pagpapaskil, ika minauyon sa kalantaran sa lindong kaining  [//foundation.wikimedia.org/wiki/Feedback_privacy_statement mga termino].",
-	"articlefeedbackv5-help-transparency-terms-anon": "Tabi man magpaskil sa [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines nin nakakatabang na balik-simbag]. Sa pagpapaskil, ika minauyon na magpapabisto sa paagi kan saimong estada sa IP, asin sa kalantaran sa lindong kaining  [//foundation.wikimedia.org/wiki/Feedback_privacy_statement na mga termino].",
+	"articlefeedbackv5-help-transparency-terms": "Tabi man magpaskil sa [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines nin nakakatabang na balik-simbag]. Sa pagpapaskil, ika minauyon sa kalantaran sa lindong kaining [//foundation.wikimedia.org/wiki/Feedback_privacy_statement mga termino].",
+	"articlefeedbackv5-help-transparency-terms-anon": "Tabi man magpaskil sa [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines nin nakakatabang na balik-simbag]. Sa pagpapaskil, ika minauyon na magpapabisto sa paagi kan saimong estada sa IP, asin sa kalantaran sa lindong kaining [//foundation.wikimedia.org/wiki/Feedback_privacy_statement na mga termino].",
 	"articlefeedbackv5-sitesub-linktext": "Padahomon ining pahina",
 	"articlefeedbackv5-titlebar-linktext": "Magtabang na padahomon ining pahina >>",
 	"articlefeedbackv5-fixedtab-linktext": "Padahomon ining pahina",

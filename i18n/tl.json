@@ -3,13 +3,14 @@
 		"authors": [
 			"AnakngAraw",
 			"Jojit fb",
-			"Sky Harbor"
+			"Sky Harbor",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Salamat!",
 	"articlefeedbackv5-cta-confirmation-message": "Ang paskil mo ay matitingnan sa [$1 pahina ng pagtugon] na ito.",
 	"articlefeedbackv5-cta1-confirmation-title": "Alam mo bang mababago mo ang pahinang ito?",
-	"articlefeedbackv5-cta1-confirmation-call": "Mabisa ang {{SITENAME}}  dahil kahit sino ay makakapagbabago ng mga pahina nito. Sige na, subukan ito. Maglakas-loob!",
+	"articlefeedbackv5-cta1-confirmation-call": "Mabisa ang {{SITENAME}} dahil kahit sino ay makakapagbabago ng mga pahina nito. Sige na, subukan ito. Maglakas-loob!",
 	"articlefeedbackv5-cta1-learn-how": "Matuto kung paano mamatnugot",
 	"articlefeedbackv5-cta1-learn-how-url": "//en.wikipedia.org/wiki/Wikipedia:Article_Feedback_Tool/Tutorial",
 	"articlefeedbackv5-cta1-edit-linktext": "Baguhin ang pahinang ito",
@@ -34,7 +35,7 @@
 	"articlefeedbackv5-cta6-button-text": "Dalawin ang Bahay-Tsaahan",
 	"articlefeedbackv5-cta6-button-link": "//en.wikipedia.org/wiki/Wikipedia:Teahouse?ref=aft",
 	"articlefeedbackv5-overlay-close": "Isara",
-	"articlefeedbackv5-error": "Naganap ang isang kamalian.  Paki subukan uli mamaya.",
+	"articlefeedbackv5-error": "Naganap ang isang kamalian. Paki subukan uli mamaya.",
 	"articlefeedbackv5-error-blocked": "Ang hinarang na mga tagagamit ay hindi maaaring magpasa ng tugon.",
 	"articlefeedbackv5-error-validation": "Kamalian sa pagpapatunay.",
 	"articlefeedbackv5-error-abuse": "Tinanggihan ang iyong pagpapaskil ng isang pansala ng sopwer na nagmumungkahi na maaaaring lumabag ito sa [$1 feedback guidelines] ng {{SITENAME}}. Paki baguhin ang pagpapaskil mo at sumubok uli.",
@@ -353,7 +354,7 @@
 	"articlefeedbackv5-disable-flyover-prefbutton": "Pumunta sa mga kanaisan ko",
 	"abusefilter-edit-action-aftv5flagabuse": "(Tugon sa Artikulo) Kusang iwatawat bilang pagmamalabis",
 	"abusefilter-edit-action-aftv5hide": "(Tugon sa Artikulo) Kusang itago",
-	"articlefeedbackv5-abusefilter-note-aftv5hide": "Kusang itinago.  Patakaran: $1",
+	"articlefeedbackv5-abusefilter-note-aftv5hide": "Kusang itinago. Patakaran: $1",
 	"abusefilter-edit-action-aftv5request": "(Tugon sa Artikulo) Kusang hilingin ang pagkalingat",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Kusang hiniling ang pangangalingat.  Patakaran: $1"
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Kusang hiniling ang pangangalingat. Patakaran: $1"
 }

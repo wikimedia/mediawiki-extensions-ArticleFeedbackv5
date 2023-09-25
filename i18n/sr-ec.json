@@ -11,7 +11,8 @@
 			"Михајло Анђелковић",
 			"Сербијана",
 			"Kizule",
-			"Vlad5250"
+			"Vlad5250",
+			"Amire80"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Пошаљи повратне информације о чланку",
@@ -374,7 +375,7 @@
 	"articlefeedbackv5-disable-flyover-title": "Желите да уклоните ову алатку?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Иди у корисничка подешавања",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "Аутоматски решено. Правило: $1",
-	"articlefeedbackv5-abusefilter-note-aftv5hide": "Аутоматски сакривено.  Правило: $1",
+	"articlefeedbackv5-abusefilter-note-aftv5hide": "Аутоматски сакривено. Правило: $1",
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "корисно",
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "решено",
 	"echo-category-title-feedback": "Повратне информације",

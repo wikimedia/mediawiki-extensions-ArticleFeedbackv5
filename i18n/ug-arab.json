@@ -3,7 +3,8 @@
 		"authors": [
 			"Arlin",
 			"Sahran",
-			"Uzdil"
+			"Uzdil",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "رەھمەت!",
@@ -41,7 +42,7 @@
 	"articlefeedbackv5-error-submit": "جەدۋەل يوللاش خاتالىقى.",
 	"articlefeedbackv5-error-nofeedback": "قايتۇرما ئىنكاسىڭىزنى كىرگۈزۈڭ.",
 	"articlefeedbackv5-error-flagging": "خاتا بەلگە قويۇلغان قايتۇرما ئىنكاس.",
-	"articlefeedbackv5-error-throttled": "يازمىڭىز رەت قىلىندى چۈنكى سىز يېقىندا يوللىغان قايتۇرما ئىنكاس {{SITENAME}} نىڭ قايتۇرما ئىنكاس يېتەكچى قوللانمىسىدا تەۋسىيە قىلىنغاندىن كۆپ. قايتۇرما ئىنكاسنى تەكرار ياكى  ھەددىدىن ئارتۇق يوللىماڭ.",
+	"articlefeedbackv5-error-throttled": "يازمىڭىز رەت قىلىندى چۈنكى سىز يېقىندا يوللىغان قايتۇرما ئىنكاس {{SITENAME}} نىڭ قايتۇرما ئىنكاس يېتەكچى قوللانمىسىدا تەۋسىيە قىلىنغاندىن كۆپ. قايتۇرما ئىنكاسنى تەكرار ياكى ھەددىدىن ئارتۇق يوللىماڭ.",
 	"articlefeedbackv5-protection-level": "ماقالە قايتۇرما ئىنكاسى",
 	"articlefeedbackv5-protection-level-error": "ماقالە قايتۇرما ئىنكاسنىڭ قوغداش دەرىجىسى تەھرىرلەش قوغداش دەرىجىسىدىن يۇقىرى بولمايدۇ",
 	"protect-level-aft-reader": "ھەممە ئىشلەتكۈچىلەر ئۈچۈن قوزغات",
@@ -141,7 +142,7 @@
 	"articlefeedbackv5-form-anon-username": "بىر ئوقۇرمەن",
 	"articlefeedbackv5-form-anon-message": "$1 دىن ئاتسىز يوللانغان.",
 	"articlefeedbackv5-form-invalid": "ئىناۋەتسىز قايتۇرما ئىنكاس كىملىكى.",
-	"articlefeedbackv5-central-header-left-comment": "{{GENDER:$1|$2}}  $3 دا [[$4|قايتۇرما ئىنكاس]]نى يوللىدى.",
+	"articlefeedbackv5-central-header-left-comment": "{{GENDER:$1|$2}} $3 دا [[$4|قايتۇرما ئىنكاس]]نى يوللىدى.",
 	"articlefeedbackv5-abuse-saved": "سۈيىئىستىمال بايرىقى قادالدى",
 	"articlefeedbackv5-abuse-saved-tooltip": "سىز تەڭشىگەن بايراقنى چىقىرىۋېتىدۇ",
 	"articlefeedbackv5-error-loading-feedback": "قايتۇرما ئىنكاسنى يۈكلەۋاتقاندا خاتالىق كۆرۈلدى",

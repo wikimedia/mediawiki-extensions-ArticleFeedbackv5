@@ -5,7 +5,8 @@
 			"Aviator",
 			"Pizza1016",
 			"Tedbundyjr",
-			"Tofeiku"
+			"Tofeiku",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Terima kasih!",
@@ -553,10 +554,10 @@
 	"abusefilter-edit-action-aftv5resolve": "(Maklumbalas Rencana) Selesaikan secara automatik",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "Diselesaikan secara automatik. Peraturan: $1",
 	"abusefilter-edit-action-aftv5flagabuse": "(Maklum Balas Rencana) Tanda sebagai salah guna secara automatik",
-	"articlefeedbackv5-abusefilter-note-aftv5flag": "Ditandai secara automatik sebagai salah guna.  Peraturan: $1",
+	"articlefeedbackv5-abusefilter-note-aftv5flag": "Ditandai secara automatik sebagai salah guna. Peraturan: $1",
 	"abusefilter-edit-action-aftv5hide": "(Maklum Balas Rencana) Sorokkan secara automatik",
-	"articlefeedbackv5-abusefilter-note-aftv5hide": "Disorokkan secara automatik.  Peraturan: $1",
+	"articlefeedbackv5-abusefilter-note-aftv5hide": "Disorokkan secara automatik. Peraturan: $1",
 	"abusefilter-edit-action-aftv5request": "(Maklum Balas Rencana) Pohon pengetepian secara automatik",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Pengetepian dipohon secara automatik.  Peraturan: $1",
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Pengetepian dipohon secara automatik. Peraturan: $1",
 	"echo-category-title-feedback": "Maklum balas"
 }

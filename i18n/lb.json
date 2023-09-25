@@ -5,7 +5,8 @@
 			"Les Meloures",
 			"Robby",
 			"Soued031",
-			"Volvox"
+			"Volvox",
+			"Amire80"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Artikel-Feedback ofginn",
@@ -455,7 +456,7 @@
 	"articlefeedbackv5-talk-view-feedback": "Virschléi vun de Lieser weisen >>",
 	"articlefeedbackv5-watchlist-view-feedback": "Feedback vun de Säiten op menger Iwwerwaachungslëscht",
 	"articlefeedbackv5-disable-flyover-title": "Dës Funktioun ewechhuelen?",
-	"articlefeedbackv5-disable-flyover-help-message": "Fir de Feedback vum Artikel ewechzehuelen gitt op \"$1\" >  \"$2\" a klickt \"$3\"",
+	"articlefeedbackv5-disable-flyover-help-message": "Fir de Feedback vum Artikel ewechzehuelen gitt op \"$1\" > \"$2\" a klickt \"$3\"",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Op meng Astellunge goen",
 	"abusefilter-edit-action-aftv5resolve": "(Artikel-Feedback) Automatesch léisen",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "Automatesch geléist. Reegel: $1",

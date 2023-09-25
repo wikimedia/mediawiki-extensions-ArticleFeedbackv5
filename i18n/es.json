@@ -35,7 +35,8 @@
 			"Stephensuleeman",
 			"Toliño",
 			"Translationista",
-			"Jakeukalane"
+			"Jakeukalane",
+			"Amire80"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Enviar sugerencias sobre el artículo",
@@ -653,9 +654,9 @@
 	"abusefilter-edit-action-aftv5flagabuse": "(Comentarios del artículo) Marcado automático como abusivo",
 	"articlefeedbackv5-abusefilter-note-aftv5flag": "Marcado automáticamente como abuso. Regla: $1",
 	"abusefilter-edit-action-aftv5hide": "(Comentarios del artículo) Ocultar automáticamente",
-	"articlefeedbackv5-abusefilter-note-aftv5hide": "Ocultado automáticamente.  Regla: $1",
+	"articlefeedbackv5-abusefilter-note-aftv5hide": "Ocultado automáticamente. Regla: $1",
 	"abusefilter-edit-action-aftv5request": "(Comentarios del artículo) Solicitud de supervisión automática",
-	"articlefeedbackv5-abusefilter-note-aftv5request": "Supervisión solicitada automáticamente.  Regla: $1",
+	"articlefeedbackv5-abusefilter-note-aftv5request": "Supervisión solicitada automáticamente. Regla: $1",
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "útil",
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "resuelto",
 	"echo-category-title-feedback": "Comentarios",

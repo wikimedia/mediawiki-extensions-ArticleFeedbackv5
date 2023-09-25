@@ -40,7 +40,8 @@
 			"SkEy",
 			"Tranve",
 			"Diskdance",
-			"Stang"
+			"Stang",
+			"LittlePaw365"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "提交条目反馈",
@@ -99,7 +100,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sortdirection": "排序反馈的方向（升序|降序）",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "应用到列表的过滤",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "要取得的特定反馈项的ID",
-	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "开始抓取数据的偏移值",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "开始抓取数据的偏移量",
 	"articlefeedbackv5-error-spamregex": "评论已被SpamRegex标记为滥用",
 	"articlefeedbackv5-error-spamblacklist": "评论已被SpamBlacklist标记为滥用",
 	"articlefeedbackv5-error-nonexistent-page": "页面或反馈不存在",

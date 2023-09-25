@@ -9,12 +9,13 @@
 			"राम प्रसाद जोशी",
 			"सरोज कुमार ढकाल",
 			"Bada Kaji",
-			"बडा काजी"
+			"बडा काजी",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "धन्यबाद!",
 	"articlefeedbackv5-cta1-confirmation-title": "के तपाईलाई यो पृष्ठ सम्पादन गर्न सकिन्छ भनेर थाहा थियो?",
-	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} काम गर्छ किनभने कसैले पनि यसका पृष्ठहरू सम्पादन गर्न सक्छन्।  जानुहोस्, गएर कोशिस गर्नुहोस्। आँटिलो बन्नुहोस्!",
+	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} काम गर्छ किनभने कसैले पनि यसका पृष्ठहरू सम्पादन गर्न सक्छन्। जानुहोस्, गएर कोशिस गर्नुहोस्। आँटिलो बन्नुहोस्!",
 	"articlefeedbackv5-cta1-learn-how": "पृष्ठ सम्पादन गर्न सिक्नुहोस",
 	"articlefeedbackv5-cta1-edit-linktext": "यो पृष्ठ सम्पादन गर्नुहोस",
 	"articlefeedbackv5-cta2-confirmation-title": "{{SITENAME}} लाई अझ राम्रो बनाउन मद्दत गर्नुहोस्",
@@ -29,7 +30,7 @@
 	"articlefeedbackv5-error": "एउटा त्रुटि भएको छ। कृपया फेरि प्रयास गर्नुहोला।",
 	"articlefeedbackv5-error-blocked": "प्रतिबन्धित प्रयोगकर्ताहरूले प्रतिक्रिया दिन सकिदैनन्।",
 	"articlefeedbackv5-error-validation": "वैधानिक त्रुटी।",
-	"articlefeedbackv5-error-abuse": "तपाईंको पोस्ट फिल्टर गरिएको एक सफ्टवायर द्वारा रिजेक्ट भएको छ त्यो {{SITENAME}}लाई भेटाउने सल्लाह दिन्न [$1 गाइडलाईन फिडब्याक] दिनुहोस् । कृपया तपाईंको पोस्ट प्राप्त गर्न पुनः प्रयास गर्नुहोस् ।  ({{PLURAL:$2|फिल्टर|फिल्टरहरू}}: $3)",
+	"articlefeedbackv5-error-abuse": "तपाईंको पोस्ट फिल्टर गरिएको एक सफ्टवायर द्वारा रिजेक्ट भएको छ त्यो {{SITENAME}}लाई भेटाउने सल्लाह दिन्न [$1 गाइडलाईन फिडब्याक] दिनुहोस् । कृपया तपाईंको पोस्ट प्राप्त गर्न पुनः प्रयास गर्नुहोस् । ({{PLURAL:$2|फिल्टर|फिल्टरहरू}}: $3)",
 	"articlefeedbackv5-error-unknown": "अज्ञात त्रुटि।",
 	"articlefeedbackv5-error-submit": "फारम बुझाउने त्रुटी।",
 	"articlefeedbackv5-error-nofeedback": "आफ्नो कृपया प्रतिक्रिया दिनुहोला।",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Haribanshi"
+			"Haribanshi",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "धन्यवाद!",
@@ -118,5 +119,5 @@
 	"articlefeedbackv5-section-linktext": "प्रतिक्रिया",
 	"articlefeedbackv5-toolbox-view": "सुझाव देखु",
 	"articlefeedbackv5-activity-permalink": "स्थायी कड़ी",
-	"articlefeedbackv5-disable-flyover-title": "ई  प्रतिबन्ध हटाउ"
+	"articlefeedbackv5-disable-flyover-title": "ई प्रतिबन्ध हटाउ"
 }

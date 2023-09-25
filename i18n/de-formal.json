@@ -6,7 +6,8 @@
 			"Imre",
 			"Kghbln",
 			"Umherirrender",
-			"Wikifan"
+			"Wikifan",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-confirmation-message": "Ihre Rückmeldung wurde [$1 hier gespeichert].",
@@ -17,13 +18,13 @@
 	"articlefeedbackv5-cta3-confirmation-title": "Bitte nehmen Sie an einer kurzen Umfrage teil",
 	"articlefeedbackv5-cta4-confirmation-title": "Treten Sie unserer Gemeinschaft bei",
 	"articlefeedbackv5-cta4-confirmation-call-line1": "Registrieren Sie sich oder melden Sie sich an, damit andere Benutzer auf Ihre Rückmeldung reagieren können.",
-	"articlefeedbackv5-cta4-confirmation-call-line2": "Ihr kostenfreies Benutzerkonto erleichtert das Teilen von Wissen auf  {{SITENAME}}.",
+	"articlefeedbackv5-cta4-confirmation-call-line2": "Ihr kostenfreies Benutzerkonto erleichtert das Teilen von Wissen auf {{SITENAME}}.",
 	"articlefeedbackv5-cta5-confirmation-title": "Sehen Sie sich an, was andere sagen",
 	"articlefeedbackv5-cta5-confirmation-call": "Sehen Sie sich Vorschläge von anderen Lesern wie Ihnen an. Können Sie mithelfen, die besten Ideen auszuwählen?",
 	"articlefeedbackv5-cta6-confirmation-title": "Brauchen Sie Hilfe beim Bearbeiten von {{SITENAME}}?",
 	"articlefeedbackv5-cta6-confirmation-call": "Kommen Sie zum Teehaus, um das Bearbeiten von {{SITENAME}} zu diskutieren. Dort tauschen neue und erfahrene Autoren nützliche Tipps untereinander aus.",
 	"articlefeedbackv5-error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
-	"articlefeedbackv5-error-abuse": "Ihr Beitrag wurde vom Softwarefilter zurückgewiesen, der nahelegt, dass er möglicherweise die [$1 Rückmeldungsrichtlinien] von {{SITENAME}} verletzt.  Bitte überarbeiten Sie Ihren Beitrag und versuchen Sie es noch einmal.",
+	"articlefeedbackv5-error-abuse": "Ihr Beitrag wurde vom Softwarefilter zurückgewiesen, der nahelegt, dass er möglicherweise die [$1 Rückmeldungsrichtlinien] von {{SITENAME}} verletzt. Bitte überarbeiten Sie Ihren Beitrag und versuchen Sie es noch einmal.",
 	"articlefeedbackv5-error-nofeedback": "Bitte geben Sie Ihre Rückmeldung ein.",
 	"articlefeedbackv5-error-throttled": "Ihr Beitrag wurde zurückgewiesen, da Sie in jüngster Vergangenheit mehr als die empfohlene Anzahl an Rückmeldungen, gemäß der Rückmeldungsrichtlinien von {{SITENAME}}, hinterlassen haben. Bitte hinterlassen Sie nicht zu viele Rückmeldungen.",
 	"articlefeedbackv5-special-survey-button-text": "Was halten Sie von diesem Rückmeldewerkzeug?",
