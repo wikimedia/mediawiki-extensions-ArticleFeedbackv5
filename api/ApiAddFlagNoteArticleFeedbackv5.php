@@ -78,7 +78,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 			 * reads are up-to-date, I'll set a flag to know that we've written data, so
 			 * DB_PRIMARY will be queried.
 			 */
-			$wiki = false;
+			$wiki = WikiMap::getCurrentWikiId();
 			ArticleFeedbackv5Utils::$written[$wiki] = true;
 
 			if ( $affected > 0 ) {

@@ -16,7 +16,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 * Override getLB so that AFT's data can be on a separate cluster.
 	 *
 	 * @param string|false $wiki
-	 * @return \Wikimedia\Rdbms\LoadBalancer
+	 * @return \Wikimedia\Rdbms\ILoadBalancer
 	 */
 	public function getLB( $wiki = false ) {
 		global $wgArticleFeedbackv5Cluster;
@@ -87,7 +87,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 * all possible conditions, to know which caches need to be purged/updated.
 	 *
 	 * @param DataModel $entry
-	 * @return \Wikimedia\Rdbms\IResultWrapper
+	 * @return stdClass
 	 */
 	public function evaluateConditions( DataModel $entry ) {
 		/*

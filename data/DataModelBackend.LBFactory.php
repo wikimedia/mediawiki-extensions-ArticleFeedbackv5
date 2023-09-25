@@ -12,13 +12,13 @@ use MediaWiki\MediaWikiServices;
 
 class DataModelBackendLBFactory extends DataModelBackend {
 	/**
-	 * @var bool[]
+	 * @var array<string,bool>
 	 */
 	protected static $written = [];
 
 	/**
 	 * @param string|false $wiki The wiki ID, or false for the current wiki
-	 * @return \Wikimedia\Rdbms\LoadBalancer
+	 * @return \Wikimedia\Rdbms\ILoadBalancer
 	 */
 	public function getLB( $wiki = false ) {
 		return MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getMainLB( $wiki );

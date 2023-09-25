@@ -214,7 +214,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		$result->addValue( $this->getModuleName(), 'activity', $html );
 
 		// continue only goes in if it's not empty
-		if ( $count > $limit ) {
+		if ( $count > $limit && $item ) {
 			$this->setContinueEnumParameter( 'continue', ArticleFeedbackv5Activity::getContinue( $item ) );
 		}
 	}

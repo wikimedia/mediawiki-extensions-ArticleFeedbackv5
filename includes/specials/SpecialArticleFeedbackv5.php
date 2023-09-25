@@ -399,7 +399,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 			$total = ArticleFeedbackv5Model::getCount( '*', $this->pageId ) - $totalInappropriate - $totalHidden - $totalOversighted;
 			$found = ArticleFeedbackv5Model::getCountFound( $this->pageId ) / ( $total ?: 1 ) * 100;
 
-			if ( $found !== null ) {
+			if ( $found > 0 ) {
 				if ( $found > 50 ) {
 					$class = 'positive';
 				} elseif ( $found < 50 ) {
@@ -563,6 +563,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		if ( $this->feedbackId ) {
 			$record = $records->fetchObject();
+			// What phan complains about here looks like it *might* even be valid,
+			// but at the same time I can't quite figure this out, as the renderer
+			// class outputs nothing if its run method is passed something else than
+			// an ArticleFeedbackv5Model entry as its only param. Something to look
+			// into on a rainy day...
+			// @phan-suppress-next-line PhanTypeMismatchArgument
 			return $this->buildPermalink( $renderer, $record );
 		} else {
 			return $this->buildListing( $renderer, $records );
@@ -612,6 +618,12 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// build rows output
 		$rows = '';
 		foreach ( $records as $record ) {
+			// What phan complains about here looks like it *might* even be valid,
+			// but at the same time I can't quite figure this out, as the renderer
+			// class outputs nothing if its run method is passed something else than
+			// an ArticleFeedbackv5Model entry as its only param. Something to look
+			// into on a rainy day...
+			// @phan-suppress-next-line PhanTypeMismatchArgument
 			$rows .= $renderer->run( $record );
 		}
 

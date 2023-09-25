@@ -58,7 +58,7 @@ class ArticleFeedbackv5Hooks {
 			'aft-oversighter' => [ 'oversight' ],
 		];
 		foreach ( $wgArticleFeedbackv5DefaultPermissions as $permission => $groups ) {
-			foreach ( (array)$groups as $group ) {
+			foreach ( $groups as $group ) {
 				if ( isset( $wgGroupPermissions[$group] ) ) {
 					$wgGroupPermissions[$group][$permission] = true;
 				}

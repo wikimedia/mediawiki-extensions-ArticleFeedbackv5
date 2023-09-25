@@ -31,7 +31,7 @@ class ArticleFeedbackv5Utils {
 	protected static $lb = [];
 
 	/**
-	 * @var bool[]
+	 * @var array<string,bool>
 	 */
 	public static $written = [];
 
@@ -114,10 +114,8 @@ class ArticleFeedbackv5Utils {
 
 		$restriction = ArticleFeedbackv5Permissions::getProtectionRestriction( $title->getArticleID() );
 
-		$enable = true;
-
 		// only on pages in namespaces where it is enabled
-		$enable = $enable && in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces );
+		$enable = in_array( $title->getNamespace(), $wgArticleFeedbackv5Namespaces );
 
 		// check if user is not blocked
 		$enable = $enable && !$user->getBlock();

@@ -47,7 +47,7 @@ class ArticleFeedbackv5_PurgeCache extends DataModelPurgeCache {
 	/**
 	 * Per-object cache removal
 	 *
-	 * @param ArticleFeedbackv5Model $object The object
+	 * @param ArticleFeedbackv5Model|DataModel $object The object [de facto always ArticleFeedbackv5Model here]
 	 */
 	public function purgeObject( $object ) {
 		parent::purgeObject( $object );
