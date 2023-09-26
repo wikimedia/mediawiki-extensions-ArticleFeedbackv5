@@ -96,7 +96,7 @@
 	"articlefeedbackv5-settings-status-enable": "Włącz opinie na tej stronie",
 	"articlefeedbackv5-settings-status-disable": "Wyłącz opinie na tej stronie",
 	"articlefeedbackv5-enabled-form-message": "Informacje zwrotne o stronie zostały włączone. Posty czytelników są widoczne na [$1 stronie opinii].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Opinia na temat: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Opinia na temat: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Status: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Pomocny",
 	"articlefeedbackv5-contribs-status-action-flag": "Oznaczony",

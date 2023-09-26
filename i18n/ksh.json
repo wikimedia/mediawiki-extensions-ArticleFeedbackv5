@@ -52,7 +52,7 @@
 	"articlefeedbackv5-protection-title": "Donn de Seeschbakeid vum article feedback tool op dä Sigg „[[$1]]“ anndere",
 	"restriction-articlefeedbackv5": "Seeschbakeid",
 	"articlefeedbackv5-disabled-admin-button-text": "Donn der Schoz änndere",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Aanmärkong zoh: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Aanmärkong zoh: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Der Zohschtand es: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Hellef",
 	"articlefeedbackv5-contribs-status-action-flag": "Makkehrt",

@@ -45,7 +45,7 @@
 	"protect-level-aft-member": "អនុញ្ញាតអោយប្រើសម្រាប់តែអ្នកប្រើប្រាស់ដែលបានកត់ឈ្មោះចូលប៉ុណ្ណោះ",
 	"protect-level-aft-editor": "អនុញ្ញាតអោយប្រើសម្រាប់តែអ្នកប្រើប្រាស់បញ្ជាក់ទទួលស្គាល់ស្វ័យប្រវត្តិប៉ុណ្ណោះ",
 	"protect-level-aft-administrator": "អនុញ្ញាតអោយប្រើសម្រាប់តែអភិបាលប៉ុណ្ណោះ",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|មតិកែលំអ៖ $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|មតិកែលំអ៖ $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . ស្ថានភាព៖ $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "មានប្រយោជន៍",
 	"articlefeedbackv5-contribs-status-action-flag": "មានទង់",

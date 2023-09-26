@@ -45,7 +45,7 @@
 	"protect-level-aft-member": "දැනටමත් ප්‍රවේශ වූ පරිශීලකයන්ට පමණක් සක්‍රිය කරන්න",
 	"protect-level-aft-editor": "ස්වයංතහවුරුකළ පරිශීලකයන්ට පමණක් සක්‍රිය කරන්න",
 	"protect-level-aft-administrator": "පරිපාලකයන් සඳහා පමණක් සක්‍රිය කරන්න",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|ප්‍රතිචාරය: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|ප්‍රතිචාරය: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . තත්වය: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "උපකාරශීලි",
 	"articlefeedbackv5-contribs-status-action-flag": "ක්‍රමයෙන් හීන වන",

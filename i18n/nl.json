@@ -135,7 +135,7 @@
 	"articlefeedbackv5-settings-status-enable": "Terugkoppeling voor deze pagina inschakelen",
 	"articlefeedbackv5-settings-status-disable": "Terugkoppeling voor deze pagina uitschakelen",
 	"articlefeedbackv5-enabled-form-message": "Terugkoppeling is zojuist ingeschakeld. Berichten van lezer worden zichtbaar op de [$1 terugkoppelingspagina].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Terugkoppeling: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Terugkoppeling: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Status: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Nuttig",
 	"articlefeedbackv5-contribs-status-action-flag": "Gemarkeerd",

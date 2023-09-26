@@ -48,7 +48,7 @@
 	"protect-level-aft-member": "புகுபதிகை செய்த பயனர்களுக்கு மட்டும் செயலாக்கு",
 	"protect-level-aft-editor": "தானாக உறுதி செய்யப்பட்ட பயனர்களுக்கு மட்டும் செயலாக்கு",
 	"protect-level-aft-administrator": "நிருவாகிகளுக்கு மட்டும் செயலாக்கு.",
-	"articlefeedbackv5-contribs-entry-status": "நிலைமை: $1",
+	"articlefeedbackv5-contribs-entry-status": ". . நிலைமை: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "உதவியானது",
 	"articlefeedbackv5-contribs-status-action-flag": "கொடியிடப்பட்டுள்ளது",
 	"articlefeedbackv5-contribs-status-action-feature": "பயன்மிகு",

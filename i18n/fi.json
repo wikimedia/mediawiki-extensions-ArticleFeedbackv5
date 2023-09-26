@@ -84,7 +84,7 @@
 	"articlefeedbackv5-settings-status-enable": "Ota palautteen antaminen käyttöön tällä sivulla",
 	"articlefeedbackv5-settings-status-disable": "Poista palautteen antaminen käytöstä tällä sivulla",
 	"articlefeedbackv5-enabled-form-message": "Palautteen antaminen on käytössä. Lukijoiden viestit tulevat näkyviin[$1 Palaute-sivulle].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Palaute: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Palaute: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Tila: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Avulias",
 	"articlefeedbackv5-contribs-status-action-flag": "Merkitty",

@@ -133,7 +133,7 @@
 	"articlefeedbackv5-settings-status-enable": "Abilita il feedback su questa pagina",
 	"articlefeedbackv5-settings-status-disable": "Disattiva il feedback su questa pagina",
 	"articlefeedbackv5-enabled-form-message": "Il feedback è appena stato abilitato. I messaggi dei lettori saranno visibili [$1 sulla pagina di feedback].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Commento: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Commento: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Stato: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Utile",
 	"articlefeedbackv5-contribs-status-action-flag": "Contrassegnato",

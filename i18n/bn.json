@@ -66,7 +66,7 @@
 	"articlefeedbackv5-settings-status-enable": "এই পাতায় প্রতিক্রিয়া সক্রিয় করো",
 	"articlefeedbackv5-settings-status-disable": "এই পাতায় প্রতিক্রিয়া নিস্ক্রিয় করো",
 	"articlefeedbackv5-enabled-form-message": "প্রতিক্রিয়া এইমাত্র সক্রিয় করা হয়েছে। পাঠকের পোস্ট [$1 প্রতিক্রিয়া পাতায়] দৃশ্যমান হবে।",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|প্রতিক্রিয়া: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|প্রতিক্রিয়া: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . অবস্থা: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "সহায়ক",
 	"articlefeedbackv5-contribs-status-action-flag": "ফ্লাগড",

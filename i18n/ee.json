@@ -16,7 +16,7 @@
 	"articlefeedbackv5-settings-status-enable": "Tiae be dɔgbedenya nawɔ dɔ le axa sia",
 	"articlefeedbackv5-settings-status-disable": "Tiae be dɔgbedenya megawɔ dɔ le axa sia o",
 	"articlefeedbackv5-enabled-form-message": "Wotiae fifi laa be dɔgbedenya nawɔ dɔ. Nuxlẽla ƒe nuŋɔŋlɔwo adze [$1 le dɔgbedenya ƒe axa].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Dɔgbedenya: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Dɔgbedenya: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Nɔnɔme: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Ɖe vi"
 }

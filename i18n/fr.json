@@ -159,7 +159,7 @@
 	"articlefeedbackv5-settings-status-enable": "Autoriser les commentaires sur cette page",
 	"articlefeedbackv5-settings-status-disable": "Interdire les commentaires sur cette page",
 	"articlefeedbackv5-enabled-form-message": "Les commentaires viennent juste d’être autorisés. Les commentaires des lecteurs seront visibles [$1 sur la page de commentaires].",
-	"articlefeedbackv5-contribs-entry": "$1 — $2 — [[$3|Commentaire : $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] — $2 — [[$3|Commentaire : $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . État : $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Utile",
 	"articlefeedbackv5-contribs-status-action-flag": "Marqué",

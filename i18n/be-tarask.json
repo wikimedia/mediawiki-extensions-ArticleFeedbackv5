@@ -123,7 +123,7 @@
 	"articlefeedbackv5-settings-status-enable": "Дазволіць водгукі на гэтай старонцы",
 	"articlefeedbackv5-settings-status-disable": "Забараніць водгукі на гэтай старонцы",
 	"articlefeedbackv5-enabled-form-message": "Зваротная сувязь толькі што была ўключаная. Водгукі чытачоў будуць бачныя [$1 на старонцы зваротнай сувязі].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Зваротная сувязь: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Зваротная сувязь: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Стан: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Карысна",
 	"articlefeedbackv5-contribs-status-action-flag": "Пазначаныя",

@@ -26,7 +26,7 @@
 	"articlefeedbackv5-error": "कश्चन दोषः जातः । पुनः अनन्तरं प्रयतताम् ।",
 	"articlefeedbackv5-error-unknown": "अज्ञातः दोषः",
 	"articlefeedbackv5-error-nofeedback": "भवतः प्रतिस्पन्दः दर्श्यताम् ।",
-	"articlefeedbackv5-contribs-entry-status": "स्थितिः : $1",
+	"articlefeedbackv5-contribs-entry-status": ". . स्थितिः : $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "उपकारकम्",
 	"articlefeedbackv5-contribs-status-action-feature": "उपयुक्तम्",
 	"articlefeedbackv5-contribs-status-action-resolve": "परिहृतम्",

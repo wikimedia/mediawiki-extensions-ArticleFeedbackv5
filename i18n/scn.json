@@ -20,7 +20,7 @@
 	"articlefeedbackv5-error-unknown": "Erruri scanusciutu.",
 	"restriction-articlefeedbackv5": "Visibbilità",
 	"articlefeedbackv5-disabled-admin-button-text": "Cancia la prutizzioni",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Cummentu: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Cummentu: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Statu: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Ùtili",
 	"articlefeedbackv5-contribs-status-action-feature": "Ùtili",

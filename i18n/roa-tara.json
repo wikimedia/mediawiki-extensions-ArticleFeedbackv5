@@ -119,7 +119,7 @@
 	"articlefeedbackv5-settings-status-enable": "Abbilite 'a segnalazione sus a sta pàgene",
 	"articlefeedbackv5-settings-status-disable": "Disabbilite 'a segnalazione sus a sta pàgene",
 	"articlefeedbackv5-enabled-form-message": "'A segnalazione ha state abbilitateda 'nu picche. Le messàgge de le letture se ponne 'ndrucà [$1 sus a pàgene de le segnalaziune].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Segnalazione: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Segnalazione: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . State: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Utile",
 	"articlefeedbackv5-contribs-status-action-flag": "Signate",

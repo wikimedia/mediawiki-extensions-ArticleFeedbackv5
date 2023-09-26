@@ -13,7 +13,7 @@
 	"articlefeedbackv5-overlay-close": "ДӀачӀагӀа",
 	"restriction-articlefeedbackv5": "Гуш хилар",
 	"articlefeedbackv5-disabled-admin-button-text": "Ларйар хийцар",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Йуханехьа зӀе: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Йуханехьа зӀе: $4]] $6 $7",
 	"articlefeedbackv5-contribs-status-action-hide": "Къайлайаьккхина",
 	"articlefeedbackv5-form-helpful-yes-label": "ХӀаъ",
 	"articlefeedbackv5-special-filter-unreviewed-watchlist": "Талланзарш",

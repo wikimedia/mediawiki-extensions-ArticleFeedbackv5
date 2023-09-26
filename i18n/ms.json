@@ -66,7 +66,7 @@
 	"articlefeedbackv5-settings-status-enable": "Bolehkan maklum balas pada halaman ini",
 	"articlefeedbackv5-settings-status-disable": "Matikan maklum balas pada halaman ini",
 	"articlefeedbackv5-enabled-form-message": "Feedback telah dibolehkan. Pos pembaca akan disiarkan [$1 pada halaman maklum balas].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Maklum balas: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Maklum balas: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Status: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Membantu",
 	"articlefeedbackv5-contribs-status-action-flag": "Ditanda sebagai salah laku",

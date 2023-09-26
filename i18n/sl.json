@@ -122,7 +122,7 @@
 	"articlefeedbackv5-settings-status-enable": "Omogoči povratne informacije na tej strani",
 	"articlefeedbackv5-settings-status-disable": "Onemogoči povratne informacije na tej strani",
 	"articlefeedbackv5-enabled-form-message": "Povratne informacije so bile vključene. Sporočila bralcev bodo prikazana na [$1 strani s povratnimi informacijami].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Povratna informacija: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Povratna informacija: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Stanje: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Koristno",
 	"articlefeedbackv5-contribs-status-action-flag": "Prijavljeno",

@@ -47,7 +47,7 @@
 	"protect-level-aft-member": "Abilité mach per j'utent intrà ant ël sistema",
 	"protect-level-aft-editor": "Abìlita mach per j'utent autoconfirmà",
 	"protect-level-aft-administrator": "Abilité mach per j'aministrator",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Validassion: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Validassion: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Statù: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Ùtil",
 	"articlefeedbackv5-contribs-status-action-flag": "Marcà",

@@ -157,7 +157,7 @@
 	"articlefeedbackv5-settings-status-enable": "Включить отзывы на этой странице",
 	"articlefeedbackv5-settings-status-disable": "Отключить отзывы на этой странице",
 	"articlefeedbackv5-enabled-form-message": "Отзывы были включены. Сообщения читателей будут видны [$1 на странице отзывов].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Обратная связь: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Обратная связь: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Статус: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Полезно",
 	"articlefeedbackv5-contribs-status-action-flag": "Отмеченный",

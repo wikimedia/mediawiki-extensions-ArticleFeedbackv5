@@ -26,7 +26,7 @@
 	"articlefeedbackv5-error-nofeedback": "Gee jou terugvoer.",
 	"articlefeedbackv5-error-flagging": "Fout het gemerk terugvoer.",
 	"protect-level-aft-administrator": "Skakel slegs vir administrateurs aan",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Terugvoer: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Terugvoer: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Status: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Nuttig",
 	"articlefeedbackv5-contribs-status-action-flag": "Gemerk",

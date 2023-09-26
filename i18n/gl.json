@@ -114,7 +114,7 @@
 	"articlefeedbackv5-settings-status-enable": "Activar os comentarios nesta páxina",
 	"articlefeedbackv5-settings-status-disable": "Desactivar os comentarios nesta páxina",
 	"articlefeedbackv5-enabled-form-message": "Os comentarios sobre esta páxina están activados. As mensaxes dos lectores poden verse [$1 na páxina de comentarios].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Comentarios: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Comentarios: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Estado: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Útil",
 	"articlefeedbackv5-contribs-status-action-flag": "Marcado",

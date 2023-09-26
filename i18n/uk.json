@@ -138,7 +138,7 @@
 	"articlefeedbackv5-settings-status-enable": "Увімкнути відгуки на цій сторінці",
 	"articlefeedbackv5-settings-status-disable": "Відключити відгуки на цій сторінці",
 	"articlefeedbackv5-enabled-form-message": "Зворотний зв'язок щойно було увімкнено. Відгуки читачів будуть видимими [$1 на сторінці зворотного зв'язку].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Відгук: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Відгук: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Статус: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Корисно",
 	"articlefeedbackv5-contribs-status-action-flag": "Відмічено",

@@ -141,7 +141,7 @@
 	"articlefeedbackv5-settings-status-enable": "開啟對此頁的回饋",
 	"articlefeedbackv5-settings-status-disable": "停用對此頁的回饋",
 	"articlefeedbackv5-enabled-form-message": "回饋已開啟。讀者文章將可被看見 [$1 在回饋頁面]。",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|回饋：$4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|回饋：$4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . 狀態：$1",
 	"articlefeedbackv5-contribs-status-action-helpful": "有幫助",
 	"articlefeedbackv5-contribs-status-action-flag": "已標記",

@@ -118,7 +118,7 @@
 	"articlefeedbackv5-settings-status-enable": "Овозможи мислења на страницава",
 	"articlefeedbackv5-settings-status-disable": "Оневозможи мислења на страницава",
 	"articlefeedbackv5-enabled-form-message": "Давањето мислења е овозможено од скоро. Мислењата на читателите ќе се истакнуваат на [$1 страницата за мислења].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Мислење: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Мислење: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Статус: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Корисно",
 	"articlefeedbackv5-contribs-status-action-flag": "Означено",

@@ -61,7 +61,7 @@
 	"articlefeedbackv5-disabled-admin-button-text": "Védelem módosítása",
 	"articlefeedbackv5-disabled-editor-button-text": "Visszajelzés engedélyezése",
 	"articlefeedbackv5-settings-status-enable": "Engedélyezi a visszajelzést ezen az oldalon",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Visszajelzés: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Visszajelzés: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Állapot: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Hasznos",
 	"articlefeedbackv5-contribs-status-action-flag": "Visszaélésnek jelölt",

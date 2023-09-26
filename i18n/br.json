@@ -53,7 +53,7 @@
 	"articlefeedbackv5-disabled-editor-button-text": "Aotren an evezhiadennoù",
 	"articlefeedbackv5-settings-status-enable": "Aotren an evezhiadennoù war ar bajenn-mañ",
 	"articlefeedbackv5-settings-status-disable": "Diweredekaat an evezhiadennoù war ar bajenn-mañ",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Evezhiadenn : $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Evezhiadenn : $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ".. Statud : $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Talvoudus",
 	"articlefeedbackv5-contribs-status-action-flag": "Merket",

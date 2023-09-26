@@ -154,7 +154,7 @@
 	"articlefeedbackv5-settings-status-enable": "このページヘのフィードバックを有効にする",
 	"articlefeedbackv5-settings-status-disable": "このページヘのフィードバックを無効にする",
 	"articlefeedbackv5-enabled-form-message": "フィードバックはちょうど有効になったところです。読者の投稿は[$1 こちらのフィードバックページ]で読むことができます。",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|フィードバック: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|フィードバック: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . 状態: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "役に立つ",
 	"articlefeedbackv5-contribs-status-action-flag": "荒らしフラグあり",

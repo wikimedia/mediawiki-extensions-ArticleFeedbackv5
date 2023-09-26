@@ -117,7 +117,7 @@
 	"articlefeedbackv5-settings-status-enable": "Activar evalutation in iste pagina",
 	"articlefeedbackv5-settings-status-disable": "Disactivar evalutation in iste pagina",
 	"articlefeedbackv5-enabled-form-message": "Le functionalitate de evalutation ha justo essite activate. Commentarios de lectores essera visibile [$1 in le pagina de evalutation].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Evalutation: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Evalutation: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Stato: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Utile",
 	"articlefeedbackv5-contribs-status-action-flag": "Marcate",

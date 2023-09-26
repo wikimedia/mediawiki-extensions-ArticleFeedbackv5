@@ -126,7 +126,7 @@
 	"articlefeedbackv5-settings-status-enable": "Tilby tilbakemelding på denne siden",
 	"articlefeedbackv5-settings-status-disable": "Avslå tilbakemelding på denne siden",
 	"articlefeedbackv5-enabled-form-message": "Tilbakemelding har nettopp blitt slått på. Lesermeldinger vil bli synlige [$1 på tilbakemeldingssiden].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Feedback:$4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Feedback:$4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Status: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Hjelpsom",
 	"articlefeedbackv5-contribs-status-action-flag": "Merket",

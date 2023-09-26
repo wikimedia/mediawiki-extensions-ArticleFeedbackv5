@@ -104,7 +104,7 @@
 	"articlefeedbackv5-settings-status-enable": "فعال کردن بازخوردها در این صفحه",
 	"articlefeedbackv5-settings-status-disable": "غیرفعال کردن بازخوردها در این صفحه",
 	"articlefeedbackv5-enabled-form-message": "سامانهٔ نظردهی همین‌اکنون فعال شد. فرستاده‌های خوانندگان در [$1 در صفحهٔ بازخورد] قابل رویت خواهد بود.",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|بازخورد: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|بازخورد: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . وضعیت: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "سودمند",
 	"articlefeedbackv5-contribs-status-action-flag": "پرچم‌گذاری‌شده",

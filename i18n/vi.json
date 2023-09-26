@@ -59,7 +59,7 @@
 	"articlefeedbackv5-disabled-admin-button-text": "Đổi mức khóa",
 	"articlefeedbackv5-disabled-editor-button-text": "Cho phép phản hồi",
 	"articlefeedbackv5-enabled-form-message": "Thông tin phản hồi mới được kích hoạt. Các bài đã đăng của người đọc sẽ được hiển thị [$1 tại trang thông tin phản hồi].",
-	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Phản hồi: $4]] $5 $6 $7",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Phản hồi: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Trạng thái: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Giúp ích",
 	"articlefeedbackv5-contribs-status-action-flag": "Đã gắn cờ",
