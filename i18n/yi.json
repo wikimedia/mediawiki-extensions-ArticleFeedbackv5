@@ -5,7 +5,8 @@
 			"Imre",
 			"פוילישער",
 			"පසිඳු කාවින්ද",
-			"Pacha Tchernof"
+			"Pacha Tchernof",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "אַ דאַנק",
@@ -37,7 +38,7 @@
 	"articlefeedbackv5-error": "ס׳האָט פּאַסירט אַ פעלער. פּרובירט נאָכאַמאָל.",
 	"articlefeedbackv5-error-blocked": "בלאקירטע באניצער קענען נישט אריינגעבן פידבעק.",
 	"articlefeedbackv5-error-validation": "באגילטיקן פעלער.",
-	"articlefeedbackv5-error-abuse": "א ווייכווארג פֿילטער האט אפגעווארפן אײַער הערה, עס ווײַזט אויס אז זי שטימט נישט מיט {{SITENAME}}'ס [$1 פידבעק וועגווײַזונגען].  ביטע באארבעט  אײַער הערה און פרואווט נאכאמאל.({{PLURAL:$2|פילטער|פילטערס}}: $3)",
+	"articlefeedbackv5-error-abuse": "א ווייכווארג פֿילטער האט אפגעווארפן אײַער הערה, עס ווײַזט אויס אז זי שטימט נישט מיט {{SITENAME}}'ס [$1 פידבעק וועגווײַזונגען]. ביטע באארבעט אײַער הערה און פרואווט נאכאמאל.({{PLURAL:$2|פילטער|פילטערס}}: $3)",
 	"articlefeedbackv5-error-unknown": "אומבאַקאַנטער פֿעלער",
 	"articlefeedbackv5-error-submit": "פֿאָרם אַריינגעבן פֿעלער.",
 	"articlefeedbackv5-error-nofeedback": "ביטע גיט אריין אייער פידבעק.",
@@ -87,8 +88,8 @@
 	"articlefeedbackv5-special-watchlist-pagetitle": "פידבעק פון מיינע אויפגעפאסטע בלעטער",
 	"articlefeedbackv5-special-central-pagetitle": "צענטראלער פידבעק־בלאט",
 	"articlefeedbackv5-loading-tag": "אָנלאָדן...",
-	"articlefeedbackv5-status-hide": "די הערה האט $1 באהאלטן אום  $2 $3",
-	"articlefeedbackv5-status-unhide": "די הערה האט $1 אויפגעדעקט אום  $2 $3",
+	"articlefeedbackv5-status-hide": "די הערה האט $1 באהאלטן אום $2 $3",
+	"articlefeedbackv5-status-unhide": "די הערה האט $1 אויפגעדעקט אום $2 $3",
 	"articlefeedbackv5-status-request": "איבערזיכט פאר דער דאזיקער מעלדונג געבעטן דורך $1 אום $2 ביי $3",
 	"articlefeedbackv5-new-marker": "נײַ",
 	"articlefeedbackv5-autohide-marker": "אויטאמאַטיש באַהאַלטן",
@@ -125,7 +126,7 @@
 	"articlefeedbackv5-discussion-page": "שמועס",
 	"articlefeedbackv5-whats-this": "הילף",
 	"articlefeedbackv5-invalid-page-id": "אומגילטיקער בלאט אידענטיפיצירער",
-	"articlefeedbackv5-found-percent": "{{PLURAL:$2|$1  האבן געטראפֿן וואס זיי האבן געזוכט}}",
+	"articlefeedbackv5-found-percent": "{{PLURAL:$2|$1 האבן געטראפֿן וואס זיי האבן געזוכט}}",
 	"articlefeedbackv5": "ארטיקל פֿידבעק טאוול – צענטראלער בלאט",
 	"articlefeedbackv5watchlist": "ארטיקל פידבעק – מיינע אויפגעפאסטע בלעטער",
 	"articlefeedbackv5-desc": "דערמוטיקט באניצער ביישטייערן דורך ערלויבן זיי צו רעצענזירן אן ארטיקל און פארשלאגן ענדערונגען",

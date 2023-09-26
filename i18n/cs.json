@@ -25,7 +25,8 @@
 			"SimonV",
 			"Tchoř",
 			"Utar",
-			"Vks"
+			"Vks",
+			"Amire80"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Odeslat zpětnou vazbu k článku",
@@ -35,7 +36,7 @@
 	"apihelp-articlefeedbackv5-param-anontoken": "Token pro neregistrované uživatele",
 	"articlefeedbackv5-error-nonexistent-feedback": "Zpětná vazba neexistuje",
 	"articlefeedbackv5-cta-thanks": "Děkujeme!",
-	"articlefeedbackv5-cta-confirmation-message": "Váš příspěvek lze zobrazit na této [ $1  stránce s názory].",
+	"articlefeedbackv5-cta-confirmation-message": "Váš příspěvek lze zobrazit na této [$1 stránce s názory].",
 	"articlefeedbackv5-cta1-confirmation-title": "Věděli jste, že můžete tuto stránku upravit?",
 	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} funguje, protože kdokoliv může upravovat její stránky. Zkuste to. Buďte odvážný!",
 	"articlefeedbackv5-cta1-learn-how": "Zjistěte, jak editovat",
@@ -57,7 +58,7 @@
 	"articlefeedbackv5-cta5-confirmation-call": "Podívejte se na návrhy jiných čtenářů. Pomůžete vybrat nejlepší nápady?",
 	"articlefeedbackv5-cta5-button-text": "Zobrazit všechny komentáře",
 	"articlefeedbackv5-cta6-confirmation-title": "Potřebujete pomoci s úpravou {{SITENAME}}?",
-	"articlefeedbackv5-cta6-confirmation-call": "Diskutovat o úpravách na {{SITENAME}} můžete v Čajovně, kde se scházejí  noví i zkušení editoři k výměně užitečných tipů.",
+	"articlefeedbackv5-cta6-confirmation-call": "Diskutovat o úpravách na {{SITENAME}} můžete v Čajovně, kde se scházejí noví i zkušení editoři k výměně užitečných tipů.",
 	"articlefeedbackv5-cta6-button-text": "Navštivte Pod Lípou",
 	"articlefeedbackv5-overlay-close": "Zavřít",
 	"articlefeedbackv5-error": "Došlo k chybě. Zkuste to prosím později.",
@@ -221,7 +222,7 @@
 	"articlefeedbackv5-permalink-info-revision-link": "Prohlédnout starou verzi této stránky",
 	"articlefeedbackv5-permalink-info-posted": "Zveřejněno $1 ve $2",
 	"articlefeedbackv5-permalink-info-stats-title-length": "Délka",
-	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 slovo| $1  slova}}",
+	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 slovo|$1 slova}}",
 	"articlefeedbackv5-permalink-info-length-characters": "({{PLURAL:$1|$1 znak|$1 znaky|$1 znaků}})",
 	"articlefeedbackv5-permalink-info-stats-title-scores": "Hodnocení",
 	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "Relevance:",

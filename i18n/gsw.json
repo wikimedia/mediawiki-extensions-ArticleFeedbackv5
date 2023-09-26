@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Als-Chlämens",
-			"Als-Holder"
+			"Als-Holder",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Dankschen!",
@@ -35,7 +36,7 @@
 	"articlefeedbackv5-error": "S het e Fähler gee. Bitte versuech s speter nomol.",
 	"articlefeedbackv5-error-blocked": "Gsperrti Benutzer chenne kei Ruckmäldig gee.",
 	"articlefeedbackv5-error-validation": "Fähler bim Validiere.",
-	"articlefeedbackv5-error-abuse": "Dyy Byytrag isch vum Softwarefilter zruckgwise wore. Villicht verletzt erd  [$1 Ruggmöldigsrichtlinie]vu {{SITENAME}} . Bitte iberarbeit Dyy Byytrag un versuech s nomol.",
+	"articlefeedbackv5-error-abuse": "Dyy Byytrag isch vum Softwarefilter zruckgwise wore. Villicht verletzt erd [$1 Ruggmöldigsrichtlinie]vu {{SITENAME}}. Bitte iberarbeit Dyy Byytrag un versuech s nomol.",
 	"articlefeedbackv5-error-unknown": "Nit bekannte Fähler.",
 	"articlefeedbackv5-error-submit": "Fähler bim Spychere.",
 	"articlefeedbackv5-error-nofeedback": "Bitte gib Dyy Ruckmäldig yy.",
@@ -69,7 +70,7 @@
 	"articlefeedbackv5-special-filter-hidden": "Versteckt ($1)",
 	"articlefeedbackv5-special-filter-requested": "Leschig (''„oversight“'') gforderet ($1)",
 	"articlefeedbackv5-special-filter-declined": "Leschig (''„oversight“'') abglähnt ($1)",
-	"articlefeedbackv5-special-filter-oversighted": "Glescht  ($1)",
+	"articlefeedbackv5-special-filter-oversighted": "Glescht ($1)",
 	"articlefeedbackv5-special-filter-all": "Alli Bytreg ($1)",
 	"articlefeedbackv5-special-filter-featured-watchlist": "Bsundersch glunge",
 	"articlefeedbackv5-special-filter-helpful-watchlist": "Hilfrych",
@@ -128,7 +129,7 @@
 	"articlefeedbackv5-form-helpful": "As hilfryych markiere ($1)",
 	"articlefeedbackv5-form-oversight": "E Aatrag uf Leschig stelle",
 	"articlefeedbackv5-form-unoversight": "Leschaatrag zrucknee",
-	"articlefeedbackv5-form-decline": "Leschig  ablähne",
+	"articlefeedbackv5-form-decline": "Leschig ablähne",
 	"articlefeedbackv5-form-declined": "Versionsleschig abglähnt",
 	"articlefeedbackv5-form1-header-found": "$1 het gfunde, wo {{GENDER:$1|$2 er|$2 si|$2 er oder si}} nooch gsuecht het",
 	"articlefeedbackv5-form1-header-not-found": "$1 het nit gfunde, wo {{GENDER:$1|$2 er|$2 si|$2 er oder si}} nooch gsuecht het",
@@ -244,7 +245,7 @@
 	"articlefeedbackv5-noteflyover-unoversight-placeholder": "Worum nimmsch d Oversight-Leschig vu däre Ruckmäldig zruck?",
 	"articlefeedbackv5-noteflyover-unoversight-submit": "Oversight vu däre Ruckmäldig zruckneh",
 	"articlefeedbackv5-noteflyover-unoversight-help": "Meh läse.",
-	"articlefeedbackv5-noteflyover-decline-caption": "Leschig  ablähne",
+	"articlefeedbackv5-noteflyover-decline-caption": "Leschig ablähne",
 	"articlefeedbackv5-noteflyover-decline-label": "E Aamerkig dezuefiege",
 	"articlefeedbackv5-noteflyover-decline-placeholder": "Worum lähnsch dr Oversight-Aatrag ab?",
 	"articlefeedbackv5-noteflyover-decline-help": "Meh läse.",

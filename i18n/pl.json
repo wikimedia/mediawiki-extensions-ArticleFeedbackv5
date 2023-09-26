@@ -24,7 +24,8 @@
 			"Woytecr",
 			"Pefect",
 			"Luku123",
-			"Superjurek"
+			"Superjurek",
+			"Amire80"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Prześlij opinię o artykule",
@@ -63,7 +64,7 @@
 	"articlefeedbackv5-cta5-confirmation-call": "Zobacz sugestie od innych czytelników takich jak ty. Pomożesz wybrać najlepsze pomysły?",
 	"articlefeedbackv5-cta5-button-text": "Zobacz wszystkie komentarze",
 	"articlefeedbackv5-cta6-confirmation-title": "Potrzebujesz pomocy edycji {{SITENAME}}?",
-	"articlefeedbackv5-cta6-confirmation-call": "Aby dyskutować o edycji {{SITENAME}} przejdź do Kawiarenki,  gdzie zaawansowani użytkownicy mogą pomóc początkującym",
+	"articlefeedbackv5-cta6-confirmation-call": "Aby dyskutować o edycji {{SITENAME}} przejdź do Kawiarenki, gdzie zaawansowani użytkownicy mogą pomóc początkującym",
 	"articlefeedbackv5-cta6-button-text": "Odwiedź herbaciarnię",
 	"articlefeedbackv5-overlay-close": "Zamknij",
 	"articlefeedbackv5-error": "Wystąpił błąd. Proszę spróbować ponownie później.",

@@ -3,11 +3,12 @@
 		"authors": [
 			"Sureshkhole",
 			"Suyog",
-			"V.narsikar"
+			"V.narsikar",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "धन्यवाद!",
-	"articlefeedbackv5-cta-confirmation-message": "आपले उत्तर या  [$1 प्रतिक्रिया पानावर] बघता येउ शकते.",
+	"articlefeedbackv5-cta-confirmation-message": "आपले उत्तर या [$1 प्रतिक्रिया पानावर] बघता येउ शकते.",
 	"articlefeedbackv5-cta1-confirmation-title": "आपण हे पान संपादित करू शकता हे आपणास माहित होते काय?",
 	"articlefeedbackv5-cta1-confirmation-call": "{{SITENAME}} चालतो कारण कोणीही त्याची पाने संपादित करू शकतात.पुढे जा, प्रयत्न करा.धिटपणे!",
 	"articlefeedbackv5-cta1-learn-how": "संपादन कसे करावे ते शिका",
@@ -184,7 +185,7 @@
 	"articlefeedbackv5-discuss-talk-section-title": "वाचकांची प्रतिक्रिया:$1",
 	"articlefeedbackv5-discuss-user-section-title": "आपली प्रतिक्रिया \"$2\" वर आहे",
 	"articlefeedbackv5-discuss-talk-section-content": "$1 ने [[$2|त्याचा शेरा]] $3 वर टाकला ([[$5|सर्व प्रतिक्रिया बघा]]).\n\n$6\n\nयाबद्दल आपले काही विचार?",
-	"articlefeedbackv5-discuss-user-section-content": "\"$7\" वर आपली प्रतिक्रिया टाकल्याबद्दल धन्यवाद.\n\nआपण  $3 वर हा शेरा टाकला ([[$5|सर्व प्रतिक्रिया बघा]]).\n\n$6\n\nया पानावरच्या आपल्या योगदानास आम्ही मोलाचे मानतो!",
+	"articlefeedbackv5-discuss-user-section-content": "\"$7\" वर आपली प्रतिक्रिया टाकल्याबद्दल धन्यवाद.\n\nआपण $3 वर हा शेरा टाकला ([[$5|सर्व प्रतिक्रिया बघा]]).\n\n$6\n\nया पानावरच्या आपल्या योगदानास आम्ही मोलाचे मानतो!",
 	"articlefeedbackv5-form1-header-found": "{{GENDER:$1|$2 ला ते काय बघत होते ते सापडले.}}",
 	"articlefeedbackv5-form1-header-not-found": "{{GENDER:$1|$2 ला ते काय बघत होते ते सापडले नाही.}}",
 	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 ने शेरा टाकला.}}",
@@ -215,7 +216,7 @@
 	"articlefeedbackv5-invalid-feedback": "आपण विनंती केलेली प्रतिक्रिया अस्तित्वात नाही.",
 	"articlefeedbackv5-viewactivity": "क्रिया बघा",
 	"articlefeedbackv5-mask-view-contents": "आशय बघा",
-	"articlefeedbackv5-mask-text-inappropriate": "#$1 या उत्तरास{{GENDER:$2|$2ने  अयोग्य म्हणून खूण केली}} $3.",
+	"articlefeedbackv5-mask-text-inappropriate": "#$1 या उत्तरास{{GENDER:$2|$2ने अयोग्य म्हणून खूण केली}} $3.",
 	"articlefeedbackv5-mask-text-autohide": "#$1 या उत्तरास {{GENDER:$2|$2ने स्वयंचलितरित्या लपविले}} $3.",
 	"articlefeedbackv5-mask-text-hide": "#$1 या उत्तरास {{GENDER:$2|$2ने लपविले}} $3.",
 	"articlefeedbackv5-special-goback": "प्रतिक्रिया पान बघा",
@@ -289,7 +290,7 @@
 	"articlefeedbackv5-noteflyover-resolve-help": "अधिक शिका",
 	"articlefeedbackv5-noteflyover-unresolve-caption": "वियोजित म्हणून केलेली खूण काढल्या गेली",
 	"articlefeedbackv5-noteflyover-unresolve-label": "टिप्पणी लिहा",
-	"articlefeedbackv5-noteflyover-unresolve-placeholder": "आपण या उत्तरास वियोजित म्हणून केलेली  खूण कां काढली?",
+	"articlefeedbackv5-noteflyover-unresolve-placeholder": "आपण या उत्तरास वियोजित म्हणून केलेली खूण कां काढली?",
 	"articlefeedbackv5-noteflyover-unresolve-submit": "टिप्पणी लिहा",
 	"articlefeedbackv5-noteflyover-unresolve-help": "अधिक शिका",
 	"articlefeedbackv5-noteflyover-hide-caption": "लपवा",
