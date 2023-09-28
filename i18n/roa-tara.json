@@ -3,7 +3,8 @@
 		"authors": [
 			"Joetaras",
 			"Reder",
-			"Ruthven"
+			"Ruthven",
+			"Amire80"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Manne 'na segnalazione d'a vôsce",
@@ -314,7 +315,7 @@
 	"articlefeedbackv5-invalid-page-id": "Pàgene ID invalide",
 	"articlefeedbackv5-found-percent": "{{PLURAL:$2|$1 onne acchiate quidde ca ste cercavane}}",
 	"articlefeedbackv5-found-percent-title": "Basate sus a $1 {{PLURAL:$1|messàgge}} (escludenne commende inappropriate)",
-	"articlefeedbackv5": "Cruscotte d'a valutazione de le vôsce -  Pàgena cendrale",
+	"articlefeedbackv5": "Cruscotte d'a valutazione de le vôsce - Pàgena cendrale",
 	"articlefeedbackv5watchlist": "Segnalazione d'a vôsce - Lè pàggene condrollate mije",
 	"articlefeedbackv5-desc": "'Ngoragge le utinde a condrebbuì, facenne fà a lore 'na valutazzione d'a vôsce e suggerì le cangiaminde",
 	"articlefeedbackv5-comment-more": "De cchiù",

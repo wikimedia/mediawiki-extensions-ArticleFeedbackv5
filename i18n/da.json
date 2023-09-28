@@ -9,7 +9,8 @@
 			"Peter Alberti",
 			"Saederup92",
 			"Sarrus",
-			"Tjernobyl"
+			"Tjernobyl",
+			"Amire80"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Indsend tilbagemelding på artikel",
@@ -279,6 +280,6 @@
 	"articlefeedbackv5-activity-more": "Vis mere aktivitet",
 	"articlefeedbackv5-disable-flyover-title": "Fjern dette værktøj?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Gå til mine indstillinger",
-	"articlefeedbackv5-countdown": "{{PLURAL:$1|(1 tegn tilbage) |( $1  resterende tegn)}}",
+	"articlefeedbackv5-countdown": "{{PLURAL:$1|(1 tegn tilbage)|($1 resterende tegn)}}",
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "nyttigt"
 }

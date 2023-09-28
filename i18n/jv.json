@@ -45,7 +45,7 @@
 	"articlefeedbackv5-error-nofeedback": "Sumangga isi mawa pamrayogané panjenengan.",
 	"articlefeedbackv5-error-flagging": "Masalah ing nengeri pamrayoga",
 	"articlefeedbackv5-error-throttled": "Kirimané panjenengan ditulak amarga panjenengan mentas ngirimi saran kang cacahé munjuli pathokané {{SITENAME}}. Panjenengan aja ngirim saran akèh-akèh tur bola-bali.",
-	"articlefeedbackv5-contribs-entry-status": "Status: $1",
+	"articlefeedbackv5-contribs-entry-status": ". . Status: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Migunani",
 	"articlefeedbackv5-contribs-status-action-flag": "Ditengeri",
 	"articlefeedbackv5-contribs-status-action-feature": "Migunani",

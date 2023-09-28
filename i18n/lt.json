@@ -9,7 +9,8 @@
 			"Perkunas",
 			"Tomasdd",
 			"Vogone",
-			"Nokeoo"
+			"Nokeoo",
+			"Amire80"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Siųsti straipsnio atsiliepimą",
@@ -511,7 +512,7 @@
 	"articlefeedbackv5-watchlist-view-feedback": "Atsiliepimai iš mano stebimų puslapių",
 	"articlefeedbackv5-disable-flyover-title": "Pašalinti šį įrankį?",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Eiti į mano nuostatas",
-	"articlefeedbackv5-countdown": "{{PLURAL:$1|(beliko vienas ženklas).( $1  beliko ženklų)}}",
+	"articlefeedbackv5-countdown": "{{PLURAL:$1|(beliko vienas ženklas)|($1 beliko ženklų)}}",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "Automatiškai išspręstas. Taisyklė: $1",
 	"articlefeedbackv5-abusefilter-note-aftv5flag": "Automatiškai pažymėtas kaip piktnaudžiavimas. Taisyklė: $1",
 	"articlefeedbackv5-abusefilter-note-aftv5hide": "Automatiškai paslėptas. Taisyklė: $1",

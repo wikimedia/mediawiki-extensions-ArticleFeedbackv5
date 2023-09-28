@@ -4,7 +4,8 @@
 			"Adithyak1997",
 			"Praveenp",
 			"Santhosh.thottingal",
-			"Suresh.balasubra"
+			"Suresh.balasubra",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "നന്ദി!",
@@ -37,7 +38,7 @@
 	"articlefeedbackv5-error": "എന്തോ പിഴവുണ്ടായിരിക്കുന്നു. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.",
 	"articlefeedbackv5-error-blocked": "തടയപ്പെട്ടിരിക്കുന്ന ഉപയോക്താക്കൾക്ക് പ്രതികരണം അറിയിക്കാൻ കഴിഞ്ഞേക്കില്ല.",
 	"articlefeedbackv5-error-validation": "മൂല്യനിർണ്ണയ പിഴവ്.",
-	"articlefeedbackv5-error-abuse": "താങ്കളുടെ കുറിപ്പ് സോഫ്റ്റ്‌വേർ അരിപ്പ നിരാകരിച്ചിരിക്കുന്നു, അത് {{SITENAME}} സംരംഭത്തിന്റെ  [$1 പ്രതികരണ മാർഗ്ഗരേഖകൾ] ലംഘിക്കുന്നതിനാലാവണം അപ്രകാരം സംഭവിച്ചത്. താങ്കളുടെ കുറിപ്പ് നവീകരിച്ച് വീണ്ടും ശ്രമിക്കുക. ({{PLURAL:$2|അരിപ്പ|അരിപ്പകൾ}}: $3)",
+	"articlefeedbackv5-error-abuse": "താങ്കളുടെ കുറിപ്പ് സോഫ്റ്റ്‌വേർ അരിപ്പ നിരാകരിച്ചിരിക്കുന്നു, അത് {{SITENAME}} സംരംഭത്തിന്റെ [$1 പ്രതികരണ മാർഗ്ഗരേഖകൾ] ലംഘിക്കുന്നതിനാലാവണം അപ്രകാരം സംഭവിച്ചത്. താങ്കളുടെ കുറിപ്പ് നവീകരിച്ച് വീണ്ടും ശ്രമിക്കുക. ({{PLURAL:$2|അരിപ്പ|അരിപ്പകൾ}}: $3)",
 	"articlefeedbackv5-error-unknown": "അപരിചിതമായ പിഴവ്.",
 	"articlefeedbackv5-error-submit": "ഫോം സമർപ്പിക്കുന്നതിൽ പിഴവുണ്ടായി.",
 	"articlefeedbackv5-error-nofeedback": "താങ്കളുടെ പ്രതികരണം നൽകുക.",
@@ -332,7 +333,7 @@
 	"articlefeedbackv5-help-tooltip-title": "എന്താണിത്?",
 	"articlefeedbackv5-help-tooltip-info": "താങ്കൾ ഈ താളിനെക്കുറിച്ച് എന്താണ് വിചാരിക്കുന്നതെന്ന് അറിയാൻ {{SITENAME}} ആഗ്രഹിക്കുന്നു. താങ്കളുടെ പ്രതികരണം ലേഖകരുമായി പങ്ക് വെയ്ക്കുക - ഒപ്പം ഈ താൾ മെച്ചപ്പെടുത്തുക.",
 	"articlefeedbackv5-help-tooltip-linktext": "കൂടുതൽ അറിയുക",
-	"articlefeedbackv5-help-transparency-terms": "ദയവായി [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines സഹായകരമായ പ്രതികരണങ്ങൾ] ഇടുക. പ്രതികരണങ്ങൾ ഇടുമ്പോൾ ഈ  [//foundation.wikimedia.org/wiki/Feedback_privacy_statement നിബന്ധനകൾ] പ്രകാരമുള്ള സുതാര്യത താങ്കൾ അംഗീകരിക്കുന്നുണ്ട്.",
+	"articlefeedbackv5-help-transparency-terms": "ദയവായി [//en.wikipedia.org/wiki/Wikipedia:Feedback_guidelines സഹായകരമായ പ്രതികരണങ്ങൾ] ഇടുക. പ്രതികരണങ്ങൾ ഇടുമ്പോൾ ഈ [//foundation.wikimedia.org/wiki/Feedback_privacy_statement നിബന്ധനകൾ] പ്രകാരമുള്ള സുതാര്യത താങ്കൾ അംഗീകരിക്കുന്നുണ്ട്.",
 	"articlefeedbackv5-sitesub-linktext": "ഈ താൾ മെച്ചപ്പെടുത്തുക",
 	"articlefeedbackv5-titlebar-linktext": "ഈ താൾ മെച്ചപ്പെടുത്താൻ സഹായിക്കുക >>",
 	"articlefeedbackv5-fixedtab-linktext": "ഈ താൾ മെച്ചപ്പെടുത്തുക",

@@ -5,7 +5,8 @@
 			"Les Meloures",
 			"Robby",
 			"Soued031",
-			"Volvox"
+			"Volvox",
+			"Amire80"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Artikel-Feedback ofginn",
@@ -372,7 +373,7 @@
 	"articlefeedbackv5-noteflyover-request-help": "Fir méi ze wëssen",
 	"articlefeedbackv5-noteflyover-unrequest-caption": "Annuléiert Ufroe fir z'iwwerpréiwen",
 	"articlefeedbackv5-noteflyover-unrequest-label": "Eng Notiz derbäisetzen",
-	"articlefeedbackv5-noteflyover-unrequest-placeholder": "Firwat hutt Dir d'Ufro fir z'iwwerpréiwen  zréckgezunn?",
+	"articlefeedbackv5-noteflyover-unrequest-placeholder": "Firwat hutt Dir d'Ufro fir z'iwwerpréiwen zréckgezunn?",
 	"articlefeedbackv5-noteflyover-unrequest-submit": "Ufro annuléieren",
 	"articlefeedbackv5-noteflyover-unrequest-help": "Fir méi ze wëssen",
 	"articlefeedbackv5-noteflyover-oversight-caption": "Dës Matdeelung iwwerpréiwen",
@@ -454,7 +455,7 @@
 	"articlefeedbackv5-talk-view-feedback": "Virschléi vun de Lieser weisen >>",
 	"articlefeedbackv5-watchlist-view-feedback": "Feedback vun de Säiten op menger Iwwerwaachungslëscht",
 	"articlefeedbackv5-disable-flyover-title": "Dës Funktioun ewechhuelen?",
-	"articlefeedbackv5-disable-flyover-help-message": "Fir de Feedback vum Artikel ewechzehuelen gitt op \"$1\" >  \"$2\" a klickt \"$3\"",
+	"articlefeedbackv5-disable-flyover-help-message": "Fir de Feedback vum Artikel ewechzehuelen gitt op \"$1\" > \"$2\" a klickt \"$3\"",
 	"articlefeedbackv5-disable-flyover-prefbutton": "Op meng Astellunge goen",
 	"articlefeedbackv5-countdown": "(Nach {{PLURAL:$1|een|$1}} Zeechen iwwreg)",
 	"abusefilter-edit-action-aftv5resolve": "(Artikel-Feedback) Automatesch léisen",

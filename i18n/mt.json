@@ -4,7 +4,8 @@
 			"Chrisportelli",
 			"Leli Forte",
 			"ToniSant",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Amire80"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Grazzi!",
@@ -105,7 +106,7 @@
 	"articlefeedbackv5-status-autoflag": "Dan il-messaġġ ġie mmarkat awtomatikament minn $1 fil-$2 fil-$3",
 	"articlefeedbackv5-status-feature": "Dan il-messaġġ sar partikulari minn $1 fil-$2 fil-$3",
 	"articlefeedbackv5-status-unfeature": "Għal dan il-messaġġ tneħħietlu l-partikularità minn $1 fil-$2 fil-$3",
-	"articlefeedbackv5-status-resolve": "Dan il-messaġġ ġie mmarkat bħala solvut  minn $1 fil-$2 fil-$3",
+	"articlefeedbackv5-status-resolve": "Dan il-messaġġ ġie mmarkat bħala solvut minn $1 fil-$2 fil-$3",
 	"articlefeedbackv5-status-unresolve": "Għal dan il-messaġġ tneħħietlu l-marka li hu solvut minn $1 fil-$2 fil-$3",
 	"articlefeedbackv5-new-marker": "Ġdid",
 	"articlefeedbackv5-oversight-marker": "Imrażżan",

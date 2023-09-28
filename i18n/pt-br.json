@@ -15,7 +15,8 @@
 			"Raylton P. Sousa",
 			"TheEduGobi",
 			"TheGabrielZaum",
-			555
+			555,
+			"Amire80"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Enviar um comentário sobre um artigo",
@@ -264,7 +265,7 @@
 	"articlefeedbackv5-form-oversight": "Supervisão",
 	"articlefeedbackv5-form-unoversight": "Desfazer",
 	"articlefeedbackv5-form-request": "Supervisão requerida",
-	"articlefeedbackv5-form-unrequest": "Supervisão  não requerida",
+	"articlefeedbackv5-form-unrequest": "Supervisão não requerida",
 	"articlefeedbackv5-form-decline": "Rejeitar supervisão",
 	"articlefeedbackv5-form-declined": "Supervisão recusada",
 	"articlefeedbackv5-form-discuss-talk": "Discuta na página de discussão",
