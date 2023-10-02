@@ -222,7 +222,7 @@
 	"articlefeedbackv5-permalink-info-revision-link": "Prohlédnout starou verzi této stránky",
 	"articlefeedbackv5-permalink-info-posted": "Zveřejněno $1 ve $2",
 	"articlefeedbackv5-permalink-info-stats-title-length": "Délka",
-	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 slovo| $1  slova}}",
+	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 slovo|$1 slova}}",
 	"articlefeedbackv5-permalink-info-length-characters": "({{PLURAL:$1|$1 znak|$1 znaky|$1 znaků}})",
 	"articlefeedbackv5-permalink-info-stats-title-scores": "Hodnocení",
 	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "Relevance:",

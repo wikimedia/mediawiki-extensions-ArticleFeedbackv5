@@ -145,7 +145,7 @@
 	"articlefeedbackv5-settings-status-disable": "לבטל שליחת משוב בדף זה",
 	"articlefeedbackv5-enabled-form-message": "אפשרות שליחת משוב הופעלה. משוב של קוראים יהיה גלוי [$1 בדף המשוב].",
 	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|משוב: $4]] $5 $6 $7",
-	"articlefeedbackv5-contribs-entry-status": ". .מצב: $1",
+	"articlefeedbackv5-contribs-entry-status": ". . מצב: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "מועיל",
 	"articlefeedbackv5-contribs-status-action-flag": "סומן",
 	"articlefeedbackv5-contribs-status-action-feature": "שימושי",

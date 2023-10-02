@@ -50,7 +50,7 @@
 	"protect-level-aft-member": "Paganahin para sa nakalagdang mga tagagamit lamang",
 	"protect-level-aft-editor": "Paganahin para sa mga tagagamit na natiyak na kusa lamang",
 	"protect-level-aft-administrator": "Paganahin para sa mga tagapangasiwa lamang",
-	"articlefeedbackv5-contribs-entry-status": "Katayuan: $1",
+	"articlefeedbackv5-contribs-entry-status": ". . Katayuan: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Nakakatulong",
 	"articlefeedbackv5-contribs-status-action-flag": "Iwinatawat",
 	"articlefeedbackv5-contribs-status-action-feature": "Itinatampok",
