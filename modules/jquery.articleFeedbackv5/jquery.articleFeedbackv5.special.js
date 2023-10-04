@@ -1729,7 +1729,9 @@
 			tipsyHtml: '\
 				<div>\
 					<div class="articleFeedbackv5-flyover-header">\
-						<h3 id="articleFeedbackv5-noteflyover-caption"><html:msg key="activity-pane-header" /></h3>\
+						<h3 id="articleFeedbackv5-noteflyover-caption">' +
+							mw.msg( 'articlefeedbackv5-activity-pane-header' ) +
+						'</h3>\
 						<a id="articleFeedbackv5-noteflyover-close" href="#"></a>\
 					</div>\
 					<div id="articleFeedbackv5-activity-log"></div>\

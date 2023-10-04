@@ -10,7 +10,11 @@
 .tipsy-inner {
 	background-color: #fff;
 	color: #000;
-	max-width: 15em;
+	/* This squeezes the Activity Log on the Special:ArticleFeedbackv5 into an
+	 * uncomfortably narrow and basically unusable width since this is basically
+	 * saying "halve the available space for the Activity Log"
+	 */
+	/*max-width: 15em;*/
 	padding: 5px 8px 4px 8px;
 	border: 1px solid #a2a9b1;
 	border-radius: 2px;
