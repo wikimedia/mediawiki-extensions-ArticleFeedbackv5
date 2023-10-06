@@ -211,11 +211,12 @@ class ArticleFeedbackv5Permissions {
 
 		$record = $dbr->selectField(
 			'page_restrictions',
-			[ 'pr_page', 'pr_type' ],
+			'pr_type',
 			[
 				'pr_page' => $articleId,
 				'pr_type' => 'aft'
-			]
+			],
+			__METHOD__
 		);
 
 		// insert new restriction entry
