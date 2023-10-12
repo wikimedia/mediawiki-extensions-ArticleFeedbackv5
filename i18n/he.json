@@ -158,7 +158,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "לא",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% מהאנשים חשבו שזה מועיל}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 כן|$1 כן}} / {{PLURAL:$2|1 לא|$2 לא}}",
-	"articlefeedbackv5-special-survey-button-text": "מה דעתך על כלי משוב זה?",
 	"articlefeedbackv5-special-filter-featured": "הומלץ ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "לא נסקרו ($1)",
 	"articlefeedbackv5-special-filter-helpful": "מועיל ($1)",

@@ -117,7 +117,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Nie",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% uważa to za przydatne}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 tak|$1 tak}} / {{PLURAL:$2|1 nie|$2 nie}}",
-	"articlefeedbackv5-special-survey-button-text": "Co sądzisz o tym narzędziu do oceniania?",
 	"articlefeedbackv5-special-filter-featured": "Wyróżniony ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Nieprzejrzane ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Pomocne ($1)",

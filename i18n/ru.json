@@ -178,7 +178,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Нет",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% читателей считают это полезным}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|$1 «да»}} / {{PLURAL:$2|$2 «нет»}}",
-	"articlefeedbackv5-special-survey-button-text": "Что вы думаете об этом инструменте обратной связи?",
 	"articlefeedbackv5-special-filter-featured": "Избранные ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Непроверенные ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Полезный ($1)",

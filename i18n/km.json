@@ -62,7 +62,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "បាទ​/ចាស",
 	"articlefeedbackv5-form-helpful-no-label": "ទេ",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|បាទឬចាស 1|បាទឬចាស $1}} / {{PLURAL:$2|ទេ 1|ទេ $2}}",
-	"articlefeedbackv5-special-survey-button-text": "តើអ្នកយល់យ៉ាងណាអំពីឧបករណ៍ផ្ដល់មតិកែលំអនេះ?",
 	"articlefeedbackv5-special-filter-featured": "ពិសេស ($1)",
 	"articlefeedbackv5-special-filter-helpful": "មានប្រយោជន៍ ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "គ្មានប្រយោជន៍ ($1)",

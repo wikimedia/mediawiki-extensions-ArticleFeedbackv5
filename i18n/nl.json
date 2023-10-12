@@ -156,7 +156,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Nee",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% van de lezers vond dit nuttig}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 keer ja|$1 keer ja}} / {{PLURAL:$2|1 keer nee|$2 keer nee}}",
-	"articlefeedbackv5-special-survey-button-text": "Wat vind u van deze functie om terugkoppeling te geven?",
 	"articlefeedbackv5-special-filter-featured": "Uitgelicht ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Ongecontroleerd ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Nuttig ($1)",

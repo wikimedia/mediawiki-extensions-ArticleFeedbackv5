@@ -93,7 +93,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Юҡ",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% уҡыусы быны файҙалы тип баһалай}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1=1 эйе|$1 эйе}} / {{PLURAL:$2|1=1 юҡ|$2 юҡ}}",
-	"articlefeedbackv5-special-survey-button-text": "Фекер белдереү ҡоралы тураһында ни уйлайһығыҙ?",
 	"articlefeedbackv5-special-filter-featured": "Һайланғандар ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Тикшерелмәгәндәр ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Ярҙамлы ($1)",

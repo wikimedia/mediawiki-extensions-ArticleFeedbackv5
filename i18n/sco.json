@@ -83,7 +83,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Naw",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% o readers foond this heelpfu}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 ai|$1 ai}} / {{PLURAL:$2|1 naw|$2 naw}}",
-	"articlefeedbackv5-special-survey-button-text": "Whit dae ye think o this feedback tuil?",
 	"articlefeedbackv5-special-filter-featured": "Featured ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Onreviewed ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Heelpfu ($1)",

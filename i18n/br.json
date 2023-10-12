@@ -74,7 +74,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Ket",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% lenner en deus kavet e oa sikourus}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 ya|$1 ya}} / {{PLURAL:$2|1 ket|$2 ket}}",
-	"articlefeedbackv5-special-survey-button-text": "Ha petra a soñjit eus an ostilh-mañ evit kas evezhiadennoù ?",
 	"articlefeedbackv5-special-filter-unreviewed": "Da wiriañ ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Talvoudus ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Didalvez ($1)",

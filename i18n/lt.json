@@ -106,7 +106,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Ne",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% skaitytojų mano, kad tai naudinga}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 taip|$1 taip}} / {{PLURAL:$2|1 ne|$2 ne}}",
-	"articlefeedbackv5-special-survey-button-text": "Ką manote apie šį atsiliepimų įrankį?",
 	"articlefeedbackv5-special-filter-featured": "Puikus ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Neperžiūrėtų ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Naudinga ( $1 )",

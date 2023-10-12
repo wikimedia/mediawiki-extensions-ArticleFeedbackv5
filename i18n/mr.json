@@ -83,7 +83,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "नाही",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% वाचकांना हे सहाय्यीभूत वाटले}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 होय|$1होय}} / {{PLURAL:$2|1 नाही|$2 नाही}}",
-	"articlefeedbackv5-special-survey-button-text": "या प्रतिक्रिया साधनाबाबत आपले काय मत आहे?",
 	"articlefeedbackv5-special-filter-unreviewed": "अपुनरावलोकित ($1)",
 	"articlefeedbackv5-special-filter-helpful": "सहाय्यक ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "सहाय्यक नसलेले ($1)",

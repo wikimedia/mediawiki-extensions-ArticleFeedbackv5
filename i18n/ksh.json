@@ -73,7 +73,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Nää",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% vun de Lässer han jefonge, dat dat heh hellef}}.",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|Eijmohl Joh|$1 Mohl Yoh|Keimohl Joh}} / {{PLURAL:$2|Eijmohl Nääo|$2 Mohö Nää|Keijmohl Nää}}",
-	"articlefeedbackv5-special-survey-button-text": "Wat dängks De övver heh dat Wärkzüsch för Aanmärkonge?",
 	"articlefeedbackv5-special-filter-featured": "Erußschtallt ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Nit nohjelohrt ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Hellef ($1)",

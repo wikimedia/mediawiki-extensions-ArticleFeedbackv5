@@ -57,7 +57,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "Jah",
 	"articlefeedbackv5-form-helpful-no-label": "Ei",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 jah|$1 jah}} / {{PLURAL:$2|1 ei|$2 ei}}",
-	"articlefeedbackv5-special-survey-button-text": "Mida arvad sellest tagasiside tööriistast?",
 	"articlefeedbackv5-special-filter-featured": "Esiletõstetud ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Kasulik ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Ebakasulik ($1)",

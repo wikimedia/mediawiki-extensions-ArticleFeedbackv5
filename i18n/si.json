@@ -59,7 +59,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "ඔව්",
 	"articlefeedbackv5-form-helpful-no-label": "නැත",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|ඔව්}} $1 / {{PLURAL:$2|නැහැ}} $1",
-	"articlefeedbackv5-special-survey-button-text": "මෙම ප්‍රතිචාර මෙවලම පිලිබඳ ඔබ සිතන්නේ මොනවාද?",
 	"articlefeedbackv5-special-filter-featured": "විශේෂාංගමය ($1)",
 	"articlefeedbackv5-special-filter-helpful": "උපකාරශීලි ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "උපකාරශීලි නොවන ($1)",

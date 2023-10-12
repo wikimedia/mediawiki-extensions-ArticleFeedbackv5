@@ -140,7 +140,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "None",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% de letture onne acchiate quiste utile}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 sìne}} / {{PLURAL:$2|1 none}}",
-	"articlefeedbackv5-special-survey-button-text": "Ce ne pinze de stu strumende de segnalazione?",
 	"articlefeedbackv5-special-filter-featured": "Prime piane ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "None reviste ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Utile ($1)",

@@ -91,7 +91,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Neen",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1 % vun de Lieser hunn dëst nëtzlech fonnt}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 x Jo|$1 x Jo}} / {{PLURAL:$2|1 x Nenn|$2 x Neen}}",
-	"articlefeedbackv5-special-survey-button-text": "Wat haalt Dir vun dëser Feedback-Tool?",
 	"articlefeedbackv5-special-filter-featured": "Exzellent ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Net nogekuckt ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Hëllefräich ($1)",

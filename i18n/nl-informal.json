@@ -15,7 +15,6 @@
 	"articlefeedbackv5-error-abuse": "Je bericht is afgewezen door een softwarefilter dat aangeeft dat mogelijk niet aan de [$1 richtlijnen voor terugkoppeling] van {{SITENAME}} is voldaan. Pas je opmerking aan en probeer het opnieuw. {{PLURAL:$2|Filter|Filters}}: $3.",
 	"articlefeedbackv5-error-nofeedback": "Geef je terugkoppeling.",
 	"articlefeedbackv5-error-throttled": "Je bericht is geweigerd omdat je recentelijk meer terugkoppeling hebt gegeven dan wordt aangeraden in de richtlijnen voor terugkoppeling van {{SITENAME}}. Geef je terugkoppeling niet herhaaldelijk of excessief.",
-	"articlefeedbackv5-special-survey-button-text": "Wat vind je van deze functie om terugkoppeling te geven?",
 	"articlefeedbackv5-no-feedback": "Er is geen terugkoppeling voor het filter dat je hebt geselecteerd. Probeer een van de bovenstaande opties om je filter te wijzigen (bijvoorbeeld \"Uitgelicht\" of \"Ongecontroleerd\").",
 	"articlefeedbackv5-noteflyover-feature-placeholder": "Waarom heb je dit bericht als nuttig gemarkeerd?",
 	"articlefeedbackv5-noteflyover-unfeature-placeholder": "Waarom heb je de markering nuttig voor dit bericht verwijderd?",

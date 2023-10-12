@@ -105,7 +105,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Ei",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% lukijoista piti tätä hyödyllisenä}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 kyllä|$1 kyllä}} / {{PLURAL:$2|1 ei|$2 ei}}",
-	"articlefeedbackv5-special-survey-button-text": "Mitä mieltä olet palautetyökalusta?",
 	"articlefeedbackv5-special-filter-featured": "Nostettu ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Tarkistamattomat ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Hyödyllinen ($1)",

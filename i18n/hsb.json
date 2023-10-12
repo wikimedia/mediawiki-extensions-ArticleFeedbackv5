@@ -69,7 +69,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Ně",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1 % čitarjow měješe to za wužitne}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 haj|$1 haj}} / {{PLURAL:$2|1 ně|$2 ně}}",
-	"articlefeedbackv5-special-survey-button-text": "Što mysliš wo tutym komentarowym nastroju?",
 	"articlefeedbackv5-special-filter-featured": "Wuzběhnjeny ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Njepřepruwowane ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Pomocliwy ($1)",

@@ -61,7 +61,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "É!",
 	"articlefeedbackv5-form-helpful-no-label": "Nò",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 è!|$1 é!}} / {{PLURAL:$2|1 nò|$2 nò}}",
-	"articlefeedbackv5-special-survey-button-text": "Lòn ch'a pensa ëd cost ùtiss ëd coment?",
 	"articlefeedbackv5-special-filter-featured": "Arcomandà ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Ùtil ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Inùtil ($1)",

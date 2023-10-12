@@ -55,7 +55,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "ହଁ",
 	"articlefeedbackv5-form-helpful-no-label": "ନାହିଁ",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 yes|$1 yes}} / {{PLURAL:$2|1 no|$2 no}}",
-	"articlefeedbackv5-special-survey-button-text": "ଏହି ମତାମତ ଟୁଲ ବିଷୟରେ ଆପଣଙ୍କ ଭାବନା କଣ ?",
 	"articlefeedbackv5-special-filter-featured": "ବିଶେଷ($1)",
 	"articlefeedbackv5-special-filter-helpful": "ଦରକାରୀ ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "ଅଦରକାରୀ ($1)",

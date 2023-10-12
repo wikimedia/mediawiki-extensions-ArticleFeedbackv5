@@ -63,7 +63,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "ھەئە",
 	"articlefeedbackv5-form-helpful-no-label": "ياق",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|$1ھەئە}} / {{PLURAL:$2|$2 ياق}}",
-	"articlefeedbackv5-special-survey-button-text": "سىزنىڭچە بۇ قايتۇرما ئىنكاس قورالى قانداقكەن؟",
 	"articlefeedbackv5-special-filter-featured": "داڭلىق ($1)",
 	"articlefeedbackv5-special-filter-helpful": "پايدىلىق ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "پايدىسىز ($1)",

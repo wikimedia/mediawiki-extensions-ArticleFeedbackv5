@@ -116,7 +116,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "아니오",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1%의 독자는 유용하다고 평가했습니다}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|예 1표|예 $1표}} / {{PLURAL:$2|아니오 1표|아니오 $2표}}",
-	"articlefeedbackv5-special-survey-button-text": "이 피드백 도구에 대해 어떻게 생각하나요?",
 	"articlefeedbackv5-special-filter-featured": "알참 ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "검토하지 않음 ($1)",
 	"articlefeedbackv5-special-filter-helpful": "유용함 ($1)",

@@ -77,7 +77,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "కాదు",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% చదువరులకు సహాయకరంగా ఉందనిపించింది}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 ఔను|$1 ఔను}} / {{PLURAL:$2|1 లేదు|$2 లేదు}}",
-	"articlefeedbackv5-special-survey-button-text": "ఈ ఫీడుబ్యాకు పరికరంపై మీ అభిప్రాయం ఏమిటి?",
 	"articlefeedbackv5-special-filter-featured": "విశేషమైన ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "సమీక్షించనివి ($1)",
 	"articlefeedbackv5-special-filter-helpful": "సహాయకరం ($1)",

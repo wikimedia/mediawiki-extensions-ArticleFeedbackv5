@@ -63,7 +63,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Ne",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% čitatelja nalazi ovo korisnim}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 da|$1 da}} / {{PLURAL:$2|1 ne|$2 ne}}",
-	"articlefeedbackv5-special-survey-button-text": "Što mislite o ovom alatu za povratnu informaciju?",
 	"articlefeedbackv5-special-filter-featured": "Izabrani ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Nepregledani ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Korisni ($1)",

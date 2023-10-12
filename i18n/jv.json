@@ -57,7 +57,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "Iya",
 	"articlefeedbackv5-form-helpful-no-label": "Ora",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 iya|$1 iya}} / {{PLURAL:$2|1 ora|$2 ora}}",
-	"articlefeedbackv5-special-survey-button-text": "Apa panemumu ngenani piranti saran iki?",
 	"articlefeedbackv5-special-filter-featured": "Pinilih ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Migunani ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Ora nulungi ($1)",

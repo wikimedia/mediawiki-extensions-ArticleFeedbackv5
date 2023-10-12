@@ -90,7 +90,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Όχι",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% των αναγνωστών το βρήκε χρήσιμο}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 ναι|$1 ναι}} / {{PLURAL:$2|1 όχι|$2 όχι}}",
-	"articlefeedbackv5-special-survey-button-text": "Ποια η γνώμη σας γι' αυτό το εργαλείο σχολιασμών αξιολόγησης;",
 	"articlefeedbackv5-special-filter-featured": "Αξιόλογα ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Μη επιθεωρημένα ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Χρήσιμο ($1)",

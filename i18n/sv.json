@@ -151,7 +151,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Nej",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% av läsarna tyckte att detta var hjälpsamt}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 ja|$1 ja}} / {{PLURAL:$2|1 nej|$2 nej}}",
-	"articlefeedbackv5-special-survey-button-text": "Vad tycker du om verktyget feedback?",
 	"articlefeedbackv5-special-filter-featured": "Framhävt ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Ogranskade ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Användbart ($1)",

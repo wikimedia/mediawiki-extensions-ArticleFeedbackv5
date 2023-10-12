@@ -66,7 +66,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Nei",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% av lesarane fann ho hjelpsam}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|$1 ja}} / {{PLURAL:$2|$2 nei}}",
-	"articlefeedbackv5-special-survey-button-text": "Kva synest du om dette attendemeldingsverktøyet?",
 	"articlefeedbackv5-special-filter-featured": "Framhevt ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Ikkje vurdert ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Hjelpsame ($1)",

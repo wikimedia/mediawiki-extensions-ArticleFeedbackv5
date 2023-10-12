@@ -68,7 +68,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "დიახ",
 	"articlefeedbackv5-form-helpful-no-label": "არა",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 დიახ|$1 დიახ}} / {{PLURAL:$2|1 არა|$2 არა}}",
-	"articlefeedbackv5-special-survey-button-text": "რას ფიქრობთ გამოხმაურების დატოვების ამ ხელსაწყოზე?",
 	"articlefeedbackv5-special-filter-featured": "რჩეული ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "შეუმოწმებელი ($1)",
 	"articlefeedbackv5-special-filter-helpful": "სასარგებლო ($1)",

@@ -135,7 +135,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Non",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|O $1% dos lectores atopou isto útil}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 si|$1 si}}/{{PLURAL:$2|1 non|$2 non}}",
-	"articlefeedbackv5-special-survey-button-text": "Que pensa sobre esta ferramenta de comentarios?",
 	"articlefeedbackv5-special-filter-featured": "Destacados ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Sen revisar ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Útiles ($1)",

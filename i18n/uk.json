@@ -159,7 +159,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Ні",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% визнано корисними}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1=1 так|$1 так}} / {{PLURAL:$2|1=1 ні|$2 ні}}",
-	"articlefeedbackv5-special-survey-button-text": "Як Вам цей інструмент зворотного зв'язку?",
 	"articlefeedbackv5-special-filter-featured": "Рекомендовано ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Не переглянуті ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Корисно ($1)",

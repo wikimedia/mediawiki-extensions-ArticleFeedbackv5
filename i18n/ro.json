@@ -69,7 +69,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Nu",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% dintre cititori l-au considerat util}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 da|$1 da}} / {{PLURAL:$2|1 nu|$2 nu}}",
-	"articlefeedbackv5-special-survey-button-text": "Ce părere aveți despre această unealtă pentru comentarii?",
 	"articlefeedbackv5-special-filter-featured": "Recomandat ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Neverificat ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Util ($1)",

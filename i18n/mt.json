@@ -54,7 +54,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "Iva",
 	"articlefeedbackv5-form-helpful-no-label": "Le",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1|$1}} iva / {{PLURAL:$2|1|$2}} le",
-	"articlefeedbackv5-special-survey-button-text": "X'taħseb minn din l-għodda għall-kummenti?",
 	"articlefeedbackv5-special-filter-featured": "Partikulari ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Utli ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Inutli ($1)",

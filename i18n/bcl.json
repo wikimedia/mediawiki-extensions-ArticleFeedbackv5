@@ -83,7 +83,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Dae",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% kan mga parabasa nanagboan ining nakakatabang}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 iyo|$1 iyo}}/{{PLURAL:$2|1 dae|$2 dae}}",
-	"articlefeedbackv5-special-survey-button-text": "Ano tabi sa isip mo ining gamit sa balik-simbag?",
 	"articlefeedbackv5-special-filter-featured": "Pinag-estima($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Bakong repasado ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Nakakatabang($1)",

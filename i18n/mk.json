@@ -139,7 +139,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Не",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|На $1% од читателите ова им е корисно}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 да|$1 да}} / {{PLURAL:$2|1 не|$2 не}}",
-	"articlefeedbackv5-special-survey-button-text": "Што мислите за алаткава за мислења?",
 	"articlefeedbackv5-special-filter-featured": "Истакнати ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Непроверени ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Корисни ($1)",

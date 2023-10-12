@@ -125,7 +125,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "خیر",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1٪ خوانندگان این را مفید دانستند}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|۱ بله|$1 بله}} / {{PLURAL:$2|۱ خیر|$2 خیر}}",
-	"articlefeedbackv5-special-survey-button-text": "نظرتان دربارهٔ این ابزار بازخورد چیست؟",
 	"articlefeedbackv5-special-filter-featured": "گزیده‌ها ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "بازبینی‌نشده ($1)",
 	"articlefeedbackv5-special-filter-helpful": "مفید ($1)",

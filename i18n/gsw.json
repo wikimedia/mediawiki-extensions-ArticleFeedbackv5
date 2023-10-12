@@ -62,7 +62,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "Jo",
 	"articlefeedbackv5-form-helpful-no-label": "Nei",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 x Jo|$1 x Jo}} / {{PLURAL:$2|1 x Nei|$2 x Nei}}",
-	"articlefeedbackv5-special-survey-button-text": "Was meinsch du zue däm Ruggmäldigswerchzüg?",
 	"articlefeedbackv5-special-filter-featured": "Bsundersch glunge ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Hilfryych ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Nit hilfryych ($1)",

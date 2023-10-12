@@ -152,7 +152,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "لا",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% من القراء وجدوا هذا مفيدا}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 نعم|$1 نعم}} / {{PLURAL:$2|1 لا|$2 لا}}",
-	"articlefeedbackv5-special-survey-button-text": "ما رأيك في أداة ردود الأفعال هذه؟",
 	"articlefeedbackv5-special-filter-featured": "مميزة ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "غير مراجعة ($1)",
 	"articlefeedbackv5-special-filter-helpful": "مفيدة ($1)",

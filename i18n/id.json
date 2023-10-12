@@ -150,7 +150,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Tidak",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% pembaca menganggap artikel ini bermanfaat}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 ya|$1 ya}} / {{PLURAL:$2|1 tidak|$2 tidak}}",
-	"articlefeedbackv5-special-survey-button-text": "Apa pendapat Anda tentang alat umpan balik ini?",
 	"articlefeedbackv5-special-filter-featured": "Pilihan ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Belum ditinjau ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Membantu ($1)",

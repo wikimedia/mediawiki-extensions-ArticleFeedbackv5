@@ -147,7 +147,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Nei",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1 % av leserne syntes dette var hjelpsomt}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|$1 ja}} / {{PLURAL:$2|$2 nei}}",
-	"articlefeedbackv5-special-survey-button-text": "Hva synes du om tilbakemeldingsverktøyet?",
 	"articlefeedbackv5-special-filter-featured": "Fremhevede ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Ikke vurdert ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Hjelpsomme ($1)",

@@ -157,7 +157,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Hayır",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|Okuyucuların %$1 kadarı bunu yararlı buldu.}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 evet|$1 evet}} / {{PLURAL:$2|1 hayır|$2 hayır}}",
-	"articlefeedbackv5-special-survey-button-text": "Bu geri bildirim aracı hakkında ne düşünüyorsunuz?",
 	"articlefeedbackv5-special-filter-featured": "Özellik ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "İncelenmemiş ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Yararlı ($1)",

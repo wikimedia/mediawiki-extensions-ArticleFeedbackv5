@@ -163,7 +163,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Nein",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1 % der Leser fanden dies hilfreich}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 x Ja|$1 x Ja}} / {{PLURAL:$2|1 x Nein|$2 x Nein}}",
-	"articlefeedbackv5-special-survey-button-text": "Was halten Sie von diesem Rückmeldewerkzeug?",
 	"articlefeedbackv5-special-filter-featured": "Hervorgehoben ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Ungeprüft ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Überwiegend hilfreich ($1)",

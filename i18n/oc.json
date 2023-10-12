@@ -62,7 +62,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Non",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1 % dels lectors an trobat aquò utile}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 òc|$1 òc}} / {{PLURAL:$2|1 non|$2 non}}",
-	"articlefeedbackv5-special-survey-button-text": "Qué pensatz d'aquesta aisina de comentari&nbsp;?",
 	"articlefeedbackv5-special-filter-featured": "Promolguts ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Pas verificats ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Utiles ($1)",

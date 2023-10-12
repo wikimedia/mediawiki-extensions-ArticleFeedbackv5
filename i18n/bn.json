@@ -87,7 +87,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "না",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% পাঠক এটি সহায়ক মনে করেন}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 হ্যাঁ|$1 হ্যাঁ}} / {{PLURAL:$2|1 না|$2 না}}",
-	"articlefeedbackv5-special-survey-button-text": "এই প্রতিক্রিয়া টুলটি সম্পর্কে আপনার মতামত কি?",
 	"articlefeedbackv5-special-filter-featured": "নির্বাচিত ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "অপর্যালোচিত ($1)",
 	"articlefeedbackv5-special-filter-helpful": "সহায়ক ($1)",

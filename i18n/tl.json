@@ -63,7 +63,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "Oo",
 	"articlefeedbackv5-form-helpful-no-label": "Hindi",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 oo|$1 oo}} / {{PLURAL:$2|1 hindi|$2 hindi}}",
-	"articlefeedbackv5-special-survey-button-text": "Ano ba ang tingin mo sa kasangkapang ito na pangtugon?",
 	"articlefeedbackv5-special-filter-featured": "Itinatampok ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Nakakatulong ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Hindi nakakatulong ($1)",

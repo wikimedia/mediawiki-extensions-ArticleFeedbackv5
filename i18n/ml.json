@@ -82,7 +82,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "അതെ",
 	"articlefeedbackv5-form-helpful-no-label": "അല്ല",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|ഒരു അതെ|$1 അതെ}} / {{PLURAL:$2|ഒരു അല്ല|$2 അല്ല}}",
-	"articlefeedbackv5-special-survey-button-text": "ഈ പ്രതികരണ അറിയിപ്പ് ഉപകരണത്തെക്കുറിച്ച് എന്താണഭിപ്രായം?",
 	"articlefeedbackv5-special-filter-helpful": "സഹായകരം ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "സഹായകരമല്ല ($1)",
 	"articlefeedbackv5-special-filter-resolved": "പരിഹരിച്ചത് ($1)",

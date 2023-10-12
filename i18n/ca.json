@@ -82,7 +82,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "Sí",
 	"articlefeedbackv5-form-helpful-no-label": "No",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 si|$1 si}} / {{PLURAL:$2|1 no|$2 no}}",
-	"articlefeedbackv5-special-survey-button-text": "Què en penses d'aquesta eina de comentaris?",
 	"articlefeedbackv5-special-filter-featured": "Destacats ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "No verificat ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Útils ($1)",

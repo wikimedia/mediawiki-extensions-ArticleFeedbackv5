@@ -81,7 +81,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Ne",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% de legintoj trovis ĉi tion utila}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 jes|$1 jes}} / {{PLURAL:$2|1 ne|$2 ne}}",
-	"articlefeedbackv5-special-survey-button-text": "Kion vi opinias pri ĉi tiu komentilo?",
 	"articlefeedbackv5-special-filter-featured": "Elstaraj ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "Ne reviziita ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Utila ($1)",

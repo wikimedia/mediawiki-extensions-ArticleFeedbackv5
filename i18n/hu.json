@@ -77,7 +77,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "Igen",
 	"articlefeedbackv5-form-helpful-no-label": "Nem",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|$1 igen|$1 igen}} / {{PLURAL:$2|$2 nem|$2 nem}}",
-	"articlefeedbackv5-special-survey-button-text": "Mit gondolsz a visszajelzés-küldő eszközről?",
 	"articlefeedbackv5-special-filter-featured": "Kiemelt ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Hasznos ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Nem hasznos ($1)",

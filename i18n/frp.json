@@ -52,7 +52,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "Ouè",
 	"articlefeedbackv5-form-helpful-no-label": "Nan",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 ouè|$1 ouè}} / {{PLURAL:$2|1 nan|$2 nan}}",
-	"articlefeedbackv5-special-survey-button-text": "Què pensâd-vos de cet’outil d’avis ?",
 	"articlefeedbackv5-special-filter-featured": "Remarcâblos ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Utilo ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Inutilo ($1)",

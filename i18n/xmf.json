@@ -54,7 +54,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "ვარი",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|მაკითხირეეფიშ $1%-ის მოღეთ მიოჩქჷ}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 ქო|$1 ქო}} / {{PLURAL:$2|1 ვარი|$2 ვარი}}",
-	"articlefeedbackv5-special-survey-button-text": "მუს ფირქენთ კჷნოხონარაფაშ დოტებაშ ხეჭკუდშენ?",
 	"articlefeedbackv5-special-filter-featured": "გიშნაგორა ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "უგნუჯინუ ($1)",
 	"articlefeedbackv5-special-filter-helpful": "მოღე ($1)",

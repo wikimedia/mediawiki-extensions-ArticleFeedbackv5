@@ -176,7 +176,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "否",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1%的读者认为它有帮助}}",
 	"articlefeedbackv5-form-helpful-votes-count": "$1次赞同 / $2次反感",
-	"articlefeedbackv5-special-survey-button-text": "您觉得这个反馈工具怎样？",
 	"articlefeedbackv5-special-filter-featured": "特色（$1）",
 	"articlefeedbackv5-special-filter-unreviewed": "未审查 ($1)",
 	"articlefeedbackv5-special-filter-helpful": "有帮助（$1）",

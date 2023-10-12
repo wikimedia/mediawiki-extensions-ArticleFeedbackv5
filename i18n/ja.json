@@ -175,7 +175,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "いいえ",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% の読者が、これが役に立つと評価しました}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|はい}}($1) / {{PLURAL:$2|いいえ}}($2)",
-	"articlefeedbackv5-special-survey-button-text": "このフィードバックツールをどう思いますか?",
 	"articlefeedbackv5-special-filter-featured": "おすすめ ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "未査読 ($1)",
 	"articlefeedbackv5-special-filter-helpful": "役に立つ ($1)",

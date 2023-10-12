@@ -64,7 +64,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "ஆம்",
 	"articlefeedbackv5-form-helpful-no-label": "இல்லை",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 ஆம்|$1 ஆம்}} / {{PLURAL:$2|1 இல்லை|$2 இல்லை}}",
-	"articlefeedbackv5-special-survey-button-text": "இந்த பின்னூட்ட கருவி பற்றி நீங்கள் என்ன நினைகிறீர்கள்?",
 	"articlefeedbackv5-special-filter-featured": "சிறப்பானது ($1)",
 	"articlefeedbackv5-special-filter-unreviewed": "மீள்பார்வையிடப்படாதது",
 	"articlefeedbackv5-special-filter-helpful": "உதவிகரமானது ($1)",

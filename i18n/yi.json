@@ -58,7 +58,6 @@
 	"articlefeedbackv5-form-helpful-yes-label": "יא",
 	"articlefeedbackv5-form-helpful-no-label": "ניין",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 יא|$1 יא}} / {{PLURAL:$2|1 ניין|$2 ניין}}",
-	"articlefeedbackv5-special-survey-button-text": "וואס האלט איר פון דעם פידבעק געצייג?",
 	"articlefeedbackv5-special-filter-featured": "רעקאמאנדירט ($1)",
 	"articlefeedbackv5-special-filter-helpful": "העלפֿיק ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "נישט העלפיק ($1)",

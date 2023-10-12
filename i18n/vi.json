@@ -77,7 +77,6 @@
 	"articlefeedbackv5-form-helpful-no-label": "Không",
 	"articlefeedbackv5-form-helpful-votes-percent": "{{PLURAL:$1|$1% độc giả tìm thấy điều này là hữu ích}}",
 	"articlefeedbackv5-form-helpful-votes-count": "{{PLURAL:$1|1 có|$1 có}} / {{PLURAL:$2|1 không có|$2 không có}}",
-	"articlefeedbackv5-special-survey-button-text": "Bạn nghĩ gì về công cụ phản hồi này?",
 	"articlefeedbackv5-special-filter-featured": "Đặc trưng ($1)",
 	"articlefeedbackv5-special-filter-helpful": "Giúp ích ($1)",
 	"articlefeedbackv5-special-filter-unhelpful": "Vô ích ($1)",
