@@ -22,28 +22,28 @@ class ArticleFeedbackv5Render {
 	 *
 	 * @var bool
 	 */
-	private $isPermalink;
+	protected $isPermalink;
 
 	/**
 	 * Whether this is on the central log
 	 *
 	 * @var bool
 	 */
-	private $isCentral;
+	protected $isCentral;
 
 	/**
 	 * Whether this is a highlighted row
 	 *
 	 * @var bool
 	 */
-	private $isHighlighted;
+	protected $isHighlighted;
 
 	/**
 	 * Current user
 	 *
 	 * @var User
 	 */
-	private $user;
+	protected $user;
 
 	/**
 	 * @param User $user Current user.
@@ -248,7 +248,7 @@ class ArticleFeedbackv5Render {
 	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the empty gray mask
 	 */
-	private function emptyGrayMask( $record ) {
+	protected function emptyGrayMask( $record ) {
 		// hide or oversight?
 		if ( $record->isOversighted() ) {
 			$class = 'oversight';
@@ -275,7 +275,7 @@ class ArticleFeedbackv5Render {
 	 * @param bool $empty whether the mask is empty; defaults to false
 	 * @return string the gray mask
 	 */
-	private function grayMask( $record, $empty = false ) {
+	protected function grayMask( $record, $empty = false ) {
 		if ( $record->isOversighted() ) {
 			$type = 'oversight';
 		} elseif ( $record->isHidden() ) {
@@ -350,7 +350,7 @@ class ArticleFeedbackv5Render {
 	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the rendered feedback info
 	 */
-	private function render( $record ) {
+	protected function render( $record ) {
 		if ( $this->isCentral ) {
 			$msg = 'articlefeedbackv5-central-header-left-comment';
 		} else {
@@ -380,7 +380,7 @@ class ArticleFeedbackv5Render {
 	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the rendered feedback head
 	 */
-	private function feedbackHead( $message, $record ) {
+	protected function feedbackHead( $message, $record ) {
 		$anonMessage = '';
 		$linkRender = MediaWikiServices::getInstance()->getLinkRenderer();
 
@@ -460,7 +460,7 @@ class ArticleFeedbackv5Render {
 	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the rendered permalink/timestamp
 	 */
-	private function renderPermalinkTimestamp( $record ) {
+	protected function renderPermalinkTimestamp( $record ) {
 		$title = Title::newFromId( $record->aft_page );
 		$timestamp = new MWTimestamp( $record->aft_timestamp );
 
@@ -497,7 +497,7 @@ class ArticleFeedbackv5Render {
 	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the rendered comment
 	 */
-	private function renderComment( $record ) {
+	protected function renderComment( $record ) {
 		$id = $record->aft_id;
 		$text = $record->aft_comment;
 
@@ -559,7 +559,7 @@ class ArticleFeedbackv5Render {
 	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the rendered footer
 	 */
-	private function renderFooter( $record ) {
+	protected function renderFooter( $record ) {
 		global $wgRequest;
 
 		$id = $record->aft_id;
@@ -767,7 +767,7 @@ class ArticleFeedbackv5Render {
 	 * @param ArticleFeedbackv5Model $record The record
 	 * @return string The rendered tag block
 	 */
-	private function renderTagBlock( $record ) {
+	protected function renderTagBlock( $record ) {
 		$last = $record->getLastEditorActivity();
 		if ( !$last ) {
 			return '';
@@ -794,7 +794,7 @@ class ArticleFeedbackv5Render {
 	 * @param ArticleFeedbackv5Model $record the record
 	 * @return string the rendered toolbox
 	 */
-	private function renderToolbox( $record ) {
+	protected function renderToolbox( $record ) {
 		// check if people are allowed to perform actions
 		if ( !$this->isAllowed( 'aft-editor' ) ) {
 			return '';
@@ -1094,7 +1094,7 @@ class ArticleFeedbackv5Render {
 	 * @param ArticleFeedbackv5Model $record the record, with keys 0 + answers
 	 * @return string the rendered info section
 	 */
-	private function renderPermalinkInfo( $record ) {
+	protected function renderPermalinkInfo( $record ) {
 		if ( !$this->isAllowed( 'aft-editor' ) ) {
 			return '';
 		}
@@ -1333,7 +1333,7 @@ class ArticleFeedbackv5Render {
 	 * @param string $class [optional] Additional class to add
 	 * @return string
 	 */
-	private function buildToolboxLink( $record, $action, $class = '' ) {
+	protected function buildToolboxLink( $record, $action, $class = '' ) {
 		global $wgRequest;
 		// check if user is allowed to perform this action
 		if ( !isset( ArticleFeedbackv5Activity::$actions[$action] ) ||
@@ -1415,7 +1415,7 @@ class ArticleFeedbackv5Render {
 	 * @param string $str Input string
 	 * @return int Calculated word count
 	 */
-	private function str_word_count_utf8( $str ) {
+	protected function str_word_count_utf8( $str ) {
 		$a = preg_split( '/\W+/u', $str, -1, PREG_SPLIT_NO_EMPTY );
 		return count( $a );
 	}
