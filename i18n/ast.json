@@ -3,7 +3,8 @@
 		"authors": [
 			"Xuacu",
 			"Fitoschido",
-			"Amire80"
+			"Amire80",
+			"YoaR"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Unviar un comentariu sobro l'artículu",
@@ -246,7 +247,7 @@
 	"articlefeedbackv5-form-oversight": "Supervisar",
 	"articlefeedbackv5-form-unoversight": "Desfacer",
 	"articlefeedbackv5-form-request": "Solicitar supervisión",
-	"articlefeedbackv5-form-unrequest": "Encaboxar la solicitú de supervisión",
+	"articlefeedbackv5-form-unrequest": "Zarrar la solicitú de supervisión",
 	"articlefeedbackv5-form-decline": "Refugar la supervisión",
 	"articlefeedbackv5-form-declined": "Supervisión refugada",
 	"articlefeedbackv5-form-discuss-talk": "Discutir na páxina d'alderique",
@@ -461,7 +462,7 @@
 	"articlefeedbackv5-noteflyover-unrequest-caption": "Solicitú de supervisión encaboxada",
 	"articlefeedbackv5-noteflyover-unrequest-label": "Amestar una nota",
 	"articlefeedbackv5-noteflyover-unrequest-placeholder": "¿Por qué encaboxasti la solicitú de supervisión?",
-	"articlefeedbackv5-noteflyover-unrequest-submit": "Encaboxar la solicitú",
+	"articlefeedbackv5-noteflyover-unrequest-submit": "Zarrar la solicitú",
 	"articlefeedbackv5-noteflyover-unrequest-help": "Más información",
 	"articlefeedbackv5-noteflyover-oversight-caption": "Supervisar esta entrada",
 	"articlefeedbackv5-noteflyover-oversight-label": "Amestar una nota",
