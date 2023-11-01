@@ -3,7 +3,8 @@
 		"authors": [
 			"AmaryllisGardener",
 			"John Reid",
-			"MJL"
+			"MJL",
+			"CiphriusKane"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Thank ye!",
@@ -267,7 +268,7 @@
 	"articlefeedbackv5-mask-text-oversight": "This post #$1 {{GENDER:$2|wis owersichted bi $2}} $3.",
 	"articlefeedbackv5-special-goback": "See the feedback page",
 	"articlefeedbackv5-special-central-goback": "See mair feedback fae ither pages",
-	"articlefeedbackv5-permalink-info-title": "Info aneat this post",
+	"articlefeedbackv5-permalink-info-title": "Info anent this post",
 	"articlefeedbackv5-permalink-written-by-editor": "Wrutten bi ae registert uiser",
 	"articlefeedbackv5-permalink-written-by-reader": "Wrutten bi aen anonimos uiser",
 	"articlefeedbackv5-permalink-info-revision-link": "See auld version o this page",
@@ -519,7 +520,7 @@
 	"articlefeedbackv5-talk-view-feedback": "See reader feedback",
 	"articlefeedbackv5-watchlist-view-feedback": "Feedback fae ma watched pages",
 	"articlefeedbackv5-email-request-oversight-subject": "Owersicht speired fer oan airticle feedback page",
-	"articlefeedbackv5-email-request-oversight-body": "Hallo, owersichters!\n\nOwersicht wis speired fer bi $1 fer feedback posted oan this page:\n\n$2\n\nPlease luikower this feedback post, than appruiv or decline this owersicht\nspeirin:\n\n$3\n$5\n\nThank ye,\n\n\nThe {{SITENAME}} Team\n\n\nP.S.: Gif ye hae onie speirins aneat uisin the owersicht featurs o the\nairticle feedback page, please check this owersichter FAQ:\n\n$4",
+	"articlefeedbackv5-email-request-oversight-body": "Hullo, owersichters!\n\nOwersicht wis speirt fur bi $1 fur feedback postit on this page:\n\n$2\n\nPlease luikower this feedback post, than appruive or decline this owersicht\nspeirin:\n\n$3\n$5\n\nThank ye,\n\n\nThe {{SITENAME}} Team\n\n\nP.S.: Gin ye hae ony speirins anent uisin the owersicht featurs o the\nairticle feedback page, please check this owersichter FAQ:\n\n$4",
 	"articlefeedbackv5-email-request-oversight-body-notes": "This comment wis eikit til the owersicht speirin:\n\n$1",
 	"articlefeedbackv5-disable-flyover-title": "Remuiv this tuil?",
 	"articlefeedbackv5-disable-flyover-help-message": "Tae remuiv Airticle Feedback, gang til \"$1\" > \"$2\" n check \"$3\"",
