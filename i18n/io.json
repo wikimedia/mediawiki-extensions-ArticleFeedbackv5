@@ -23,6 +23,7 @@
 	"articlefeedbackv5-special-filter-select-more": "Pluse",
 	"articlefeedbackv5-special-refresh": "Rinovigar listo",
 	"articlefeedbackv5-loading-tag": "Karganta...",
+	"articlefeedbackv5-form-abuse-count": "{{PLURAL:$1|$1 flago|$1 flagi}}",
 	"articlefeedbackv5-form-unfeature": "Desfacez",
 	"articlefeedbackv5-form-unresolve": "Desfacez",
 	"articlefeedbackv5-form-unnoaction": "Desfacez",
