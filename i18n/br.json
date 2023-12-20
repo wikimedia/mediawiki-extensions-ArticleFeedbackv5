@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Adriendelucca",
 			"Fohanno",
 			"Fulup",
 			"Gwendal",
@@ -8,6 +9,7 @@
 			"Y-M D"
 		]
 	},
+	"apihelp-articlefeedbackv5-summary": "Kas ar gemennadenn diwar-benn ar pennad",
 	"articlefeedbackv5-cta-thanks": "Trugarez !",
 	"articlefeedbackv5-cta-confirmation-message": "Gallout a ra ho kemennadenn bezañ gwelet war ar [$1 bajenn evezhiadennoù-mañ].",
 	"articlefeedbackv5-cta1-confirmation-title": "Ha gouzout a rit e c'hallit degas kemmoù war ar bajenn-mañ ?",
