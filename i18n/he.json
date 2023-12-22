@@ -109,7 +109,7 @@
 	"articlefeedbackv5-overlay-close": "סגירה",
 	"articlefeedbackv5-error": "אירעה שגיאה. נא לנסות שוב מאוחר יותר.",
 	"articlefeedbackv5-error-blocked": "משתמשים חסומים אינם יכולים לשלוח משוב.",
-	"articlefeedbackv5-error-validation": "שגיאת אימות.",
+	"articlefeedbackv5-error-validation": "שגיאת בדיקת תקינות.",
 	"articlefeedbackv5-error-abuse": "תוכנת סינון דחתה את הרשומה שלך, כי נראה שהיא מפרה את [$1 מדיניות המשוב] של {{SITENAME}}. נא לשנות את הרשומה ולנסות שוב. ({{PLURAL:$2|מסנן|מסננים}}: $3)",
 	"articlefeedbackv5-error-unknown": "שגיאה בלתי־ידועה.",
 	"articlefeedbackv5-error-submit": "שגיאה בהזנת הטופס.",
