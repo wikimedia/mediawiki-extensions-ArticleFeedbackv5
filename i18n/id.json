@@ -15,7 +15,8 @@
 			"William Surya Permana",
 			"Daud I.F. Argana",
 			"Agam Riyandana",
-			"Veracious"
+			"Veracious",
+			"Stevannus rua"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Kirim umpan balik artikel",
@@ -637,5 +638,5 @@
 	"echo-category-title-feedback": "Umpan balik",
 	"echo-pref-tooltip-feedback": "Beri tahu saya ketika seseorang menandai umpan balik artikel sebagai bermanfaat",
 	"articlefeedbackv5-notification-link-text-view-feedback": "Lihat umpan balik",
-	"articlefeedbackv5-notification-feedback-watch": "[[ $3 |Masukan]] tentang [[ $2 ]] adalah {{GENDER:$1| ditandai}} sebagai {{int:articlefeedbackv5-notification-feedback-moderation-flag- $4 }} oleh [[User: $1 | $1 ]]."
+	"articlefeedbackv5-notification-feedback-watch": "[[$3|Masukan]] tentang [[$2]] adalah {{GENDER:$1|ditandai}} sebagai {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} oleh [[User:$1|$1]]."
 }
