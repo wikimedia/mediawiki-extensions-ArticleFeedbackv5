@@ -10,7 +10,8 @@
 			"Wikitanvir",
 			"YahyA",
 			"Yahya",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"Aishik Rehman"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "ধন্যবাদ!",
@@ -219,7 +220,7 @@
 	"articlefeedbackv5watchlist": "নিবন্ধ প্রতিক্রিয়া - আমার পর্যবেক্ষণকৃত পাতাসমূহ",
 	"articlefeedbackv5-desc": "ব্যবহারকারীদের একটি নিবন্ধ পর্যালোচনা এবং পরিবর্তনের পরামর্শ দেওয়ার মাধ্যমে অবদান রাখতে উৎসাহিত করে",
 	"articlefeedbackv5-comment-more": "আরও",
-	"articlefeedbackv5-comment-empty": "কোন পাঠ্য প্রবেশ হয়নি",
+	"articlefeedbackv5-comment-empty": "কোনো পাঠ্য প্রবেশ হয়নি",
 	"articlefeedbackv5-page-disabled": "নিবন্ধ প্রতিক্রিয়ার পাতা এই পাতার জন্য সক্রিয় করা হয়নি।",
 	"articlefeedbackv5-viewactivity": "কার্যকলাপ দেখুন",
 	"articlefeedbackv5-mask-view-contents": "বিষয়বস্তু দেখাও",
@@ -237,9 +238,9 @@
 	"articlefeedbackv5-permalink-info-stats-title-scores": "স্কোর",
 	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "প্রাসঙ্গিকতা:",
 	"articlefeedbackv5-permalink-info-stats-subtitle-helpfulness": "উপকারিতা:",
-	"articlefeedbackv5-permalink-activity-title": "কর্মকান্ড",
+	"articlefeedbackv5-permalink-activity-title": "কর্মকাণ্ড",
 	"articlefeedbackv5-permalink-activity-subtitle": "({{PLURAL:$1|$1টি পদক্ষেপ}})",
-	"articlefeedbackv5-permalink-activity-none": "এই পোস্টের কোন কার্যকলাপ হয়নি।",
+	"articlefeedbackv5-permalink-activity-none": "এই পোস্টের কোনো কার্যকলাপ হয়নি।",
 	"articlefeedbackv5-short-status-request": "{{GENDER:$1|$1 দ্বারা পর্যালোচিত}}",
 	"articlefeedbackv5-short-status-unrequest": "{{GENDER:$1|$1 দ্বারা পর্যালোচিত}}",
 	"articlefeedbackv5-short-status-decline": "{{GENDER:$1|$1 দ্বারা পর্যালোচিত}}",

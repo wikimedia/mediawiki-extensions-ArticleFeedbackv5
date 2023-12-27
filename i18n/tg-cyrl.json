@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"ToJack"
+			"ToJack",
+			"ZulfiqorF"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Сипосгузорам!",
+	"articlefeedbackv5-cta1-learn-how": "Омӯзиши тартиби тарҷума",
 	"articlefeedbackv5-invalid-page-id": "Рамзи саҳифа нодуруст аст"
 }
