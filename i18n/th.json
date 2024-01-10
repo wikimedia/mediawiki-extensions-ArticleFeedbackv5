@@ -112,7 +112,7 @@
 	"articlefeedbackv5-special-sort-age-asc": "ที่เก่าสุด",
 	"articlefeedbackv5-special-sort-label": "จัดเรียงตาม:",
 	"articlefeedbackv5-special-filter-select-more": "เพิ่มเติม",
-	"articlefeedbackv5-special-count-total-title": "$1 {{PLURAL:$1|โพสต์}}พร้อมความเห็น และอีก $2 โพสต์ที่ไม่มีความเห็น",
+	"articlefeedbackv5-special-count-total-title": "$1 {{PLURAL:$1|เผยแพร่}}พร้อมความเห็น และอีก $2 เผยแพร่ที่ไม่มีความเห็น",
 	"articlefeedbackv5-details-link": "รายละเอียด",
 	"articlefeedbackv5-revision-link": "(ดูหน้าเก่า)",
 	"articlefeedbackv5-special-more": "แสดงโพสต์เพิ่มเติม",
