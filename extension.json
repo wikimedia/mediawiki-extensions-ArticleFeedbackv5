@@ -115,7 +115,6 @@
 				"articlefeedbackv5-countdown"
 			],
 			"dependencies": [
-				"jquery.cookie",
 				"mediawiki.util",
 				"mediawiki.user"
 			]
@@ -147,9 +146,9 @@
 				"mediawiki.jqueryMsg",
 				"jquery.ui",
 				"jquery.articleFeedbackv5",
-				"jquery.cookie",
 				"jquery.articleFeedbackv5.utils",
 				"mediawiki.api",
+				"mediawiki.cookie",
 				"mediawiki.util"
 			]
 		},
@@ -310,7 +309,6 @@
 			"dependencies": [
 				"jquery.appear",
 				"jquery.ui",
-				"jquery.cookie",
 				"mediawiki.cookie",
 				"mediawiki.jqueryMsg",
 				"mediawiki.Uri",
@@ -460,9 +458,9 @@
 				"articlefeedbackv5-settings-status-disable"
 			],
 			"dependencies": [
+				"mediawiki.cookie",
 				"mediawiki.user",
 				"mediawiki.util",
-				"jquery.cookie",
 				"jquery.ui"
 			]
 		}

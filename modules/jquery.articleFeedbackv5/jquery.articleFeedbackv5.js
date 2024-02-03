@@ -2341,12 +2341,12 @@
 			now = Date.now();
 			msInHour = 3600000;
 
-			timestampsCookieName = mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'submission_timestamps' );
+			timestampsCookieName = $.aftUtils.getCookieName( 'submission_timestamps' );
 
 			priorTimestamps = [];
 			savedTimestamps = [];
 
-			priorCookieValue = $.cookie( timestampsCookieName );
+			priorCookieValue = mw.cookie.get( timestampsCookieName );
 			if ( priorCookieValue ) {
 				priorTimestamps = priorCookieValue.split( ',' );
 			}
@@ -2365,14 +2365,28 @@
 				$.articleFeedbackv5.markTopError( message );
 
 				// re-store pruned post timestamp list
-				$.cookie( timestampsCookieName, savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
+				mw.cookie.set(
+					timestampsCookieName,
+					savedTimestamps.join( ',' ),
+					{
+						expires: 1,
+						path: '/'
+					}
+				);
 
 				return;
 			}
 
 			// if we get this far, they haven't been throttled, so update the post timestamp list with the current time and re-store it
 			savedTimestamps.push( now );
-			$.cookie( timestampsCookieName, savedTimestamps.join( ',' ), { expires: 1, path: '/' } );
+			mw.cookie.set(
+				timestampsCookieName,
+				savedTimestamps.join( ',' ),
+				{
+					expires: 1,
+					path: '/'
+				}
+			);
 		}
 
 		// Lock the form
@@ -2409,7 +2423,8 @@
 			success: function ( data ) {
 				var feedbackIdsCookieName, feedbackIds, msg;
 
-				if ( 'articlefeedbackv5' in data &&
+				if (
+					'articlefeedbackv5' in data &&
 					'feedback_id' in data.articlefeedbackv5 &&
 					'aft_url' in data.articlefeedbackv5
 				) {
@@ -2420,24 +2435,26 @@
 					$.articleFeedbackv5.unlockForm();
 					$.articleFeedbackv5.showCTA();
 
-					feedbackIdsCookieName = mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( 'feedback-ids' );
+					feedbackIdsCookieName = $.aftUtils.getCookieName( 'feedback-ids' );
 
-					// save add feedback id to cookie (only most recent 20)
-					feedbackIds = JSON.parse( $.cookie( feedbackIdsCookieName ) );
+					// save added feedback ID to cookie (only most recent 20)
+					feedbackIds = JSON.parse( mw.cookie.get( feedbackIdsCookieName ) );
 					if ( !Array.isArray( feedbackIds ) ) {
 						feedbackIds = [];
 					}
 					feedbackIds.unshift( data.articlefeedbackv5.feedback_id );
-					$.cookie(
+					mw.cookie.set(
 						feedbackIdsCookieName,
 						JSON.stringify( feedbackIds.splice( 0, 20 ) ),
-						{ expires: 30, path: '/' }
+						{
+							expires: 30,
+							path: '/'
+						}
 					);
 
 					// Clear out anything that needs removing (usually trigger links)
 					$.articleFeedbackv5.$toRemove.remove();
 					$.articleFeedbackv5.$toRemove = $( [] );
-
 				} else {
 					msg = mw.msg( 'articlefeedbackv5-error-unknown' );
 

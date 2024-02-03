@@ -1123,7 +1123,7 @@
 	$.articleFeedbackv5special.loadActivity = function () {
 		var flatActivity, actions, action, i, parts, fid, indexes, j;
 
-		flatActivity = $.cookie( mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( $.articleFeedbackv5special.activityCookieName ) );
+		flatActivity = mw.cookie.get( $.aftUtils.getCookieName( $.articleFeedbackv5special.activityCookieName ) );
 		if ( flatActivity ) {
 			// get "indexes" for each action - shorter than the action name string
 			actions = [];
@@ -1186,8 +1186,8 @@
 		// only the most recent 100 are of interest
 		flatActivity = flatActivity.splice( -100 );
 
-		$.cookie(
-			mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( $.articleFeedbackv5special.activityCookieName ),
+		mw.cookie.set(
+			$.aftUtils.getCookieName( $.articleFeedbackv5special.activityCookieName ),
 			flatActivity.join( '|' ),
 			{ expires: 365, path: '/' }
 		);
@@ -1256,8 +1256,8 @@
 
 		// note: we're overwriting the same cookie for every page; assuming that they won't like to come
 		// back later to previous pages and find their previous settings again (plus less cookie size)
-		$.cookie(
-			mw.config.get( 'wgCookiePrefix' ) + $.aftUtils.getCookieName( $.articleFeedbackv5special.filterCookieName ),
+		mw.cookie.set(
+			$.aftUtils.getCookieName( $.articleFeedbackv5special.filterCookieName ),
 			filterParams,
 			{ expires: 1, path: '/' }
 		);
