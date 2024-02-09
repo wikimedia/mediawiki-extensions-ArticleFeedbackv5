@@ -111,11 +111,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 
 		$conditions = [];
 		if ( isset( $class::$lists[$name]['conditions'] ) ) {
-			$conditions = $class::$lists[$name]['conditions'];
-		}
-
-		if ( empty( $conditions ) ) {
-			$conditions = [];
+			$conditions = $class::$lists[$name]['conditions'] ?: [];
 		}
 
 		return $conditions;

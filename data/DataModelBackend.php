@@ -132,11 +132,7 @@ abstract class DataModelBackend {
 
 		$conditions = [];
 		if ( isset( $class::$lists[$name] ) ) {
-			$conditions = $class::$lists[$name];
-		}
-
-		if ( empty( $conditions ) ) {
-			$conditions = [];
+			$conditions = $class::$lists[$name] ?: [];
 		}
 
 		return $conditions;
