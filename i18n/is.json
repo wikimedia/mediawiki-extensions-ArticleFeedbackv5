@@ -1,14 +1,24 @@
 {
 	"@metadata": {
 		"authors": [
+			"Stefán Örvar Sigmundsson",
 			"Sveinn í Felli",
 			"පසිඳු කාවින්ද"
 		]
 	},
+	"articlefeedbackv5-cta2-confirmation-call": "Þetta vefsetur er búið til af fólki eins og þér. Geturðu veitt okkur hönd?",
+	"articlefeedbackv5-cta4-button-text-signup": "Búa til aðgang",
 	"articlefeedbackv5-cta4-button-text-login": "Innskrá",
 	"articlefeedbackv5-overlay-close": "Loka",
+	"articlefeedbackv5-contribs-status-action-flag": "Markað",
 	"articlefeedbackv5-form-helpful-yes-label": "Já",
 	"articlefeedbackv5-form-helpful-no-label": "Nei",
+	"articlefeedbackv5-special-filter-flagged": "Markað ($1)",
+	"articlefeedbackv5-special-filter-flagged-watchlist": "Markað",
+	"articlefeedbackv5-form-abuse-count": "{{PLURAL:$1|$1 mark|$1 mörk}}",
+	"articlefeedbackv5-form-flag": "Marka sem misnotkun",
+	"articlefeedbackv5-abuse-saved": "Markað sem misnotkun",
+	"articlefeedbackv5-abuse-saved-tooltip": "Fjarlægja markið sem þú settir",
 	"articlefeedbackv5-discussion-page": "Spjall",
 	"articlefeedbackv5-whats-this": "Hjálp",
 	"articlefeedbackv5-comment-more": "Meira",
@@ -27,6 +37,7 @@
 	"articlefeedbackv5-short-status-undo-unhelpful": "{{GENDER:$1|Yfirfarið af $1}}",
 	"articlefeedbackv5-bucket1-toggle-found-yes": "Já",
 	"articlefeedbackv5-bucket1-toggle-found-no": "Nei",
+	"articlefeedbackv5-bucket4-noedit-teaser-line1": "Þetta vefsetur er búið til af fólki eins og þér.",
 	"articlefeedbackv5-bucket6-toggle-found-yes": "Já",
 	"articlefeedbackv5-bucket6-toggle-found-no": "Nei"
 }
