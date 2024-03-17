@@ -851,7 +851,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 		// Was a sort requested?
 		if ( $sort ) {
 			if ( in_array( $sort, $this->sorts ) ) {
-				list( $sort, $dir ) = explode( '-', $sort );
+				[ $sort, $dir ] = explode( '-', $sort );
 			} else {
 				$sort = false;
 			}
@@ -869,7 +869,7 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// Decide on our default sort info
 		if ( !$sort ) {
-			list( $sort, $dir ) = $wgArticleFeedbackv5DefaultSorts[$filter];
+			[ $sort, $dir ] = $wgArticleFeedbackv5DefaultSorts[$filter];
 		}
 
 		$this->startingFilter = $filter;

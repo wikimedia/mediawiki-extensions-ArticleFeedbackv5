@@ -24,7 +24,7 @@ class EchoArticleFeedbackv5PresentationModel extends EchoEventPresentationModel 
 		// the i18n strings don't currently take that into account as doing that
 		// would require renumbering all the numeric keys there
 		$msg = $this->msg( $this->getHeaderMessageKey() );
-		list( $formattedName, /* $genderName */ ) = $this->getAgentForOutput();
+		[ $formattedName, /* $genderName */ ] = $this->getAgentForOutput();
 		$msg->params( $formattedName );
 
 		// $msg = $this->getMessageWithAgent( $this->getHeaderMessageKey() );
@@ -209,7 +209,7 @@ class EchoArticleFeedbackv5PresentationModel extends EchoEventPresentationModel 
 		// the i18n strings don't currently take that into account as doing that
 		// would require renumbering all the numeric keys there
 		$msg = $this->msg( $msgKey );
-		list( $formattedName, /* $genderName */ ) = $this->getAgentForOutput();
+		[ $formattedName, /* $genderName */ ] = $this->getAgentForOutput();
 		$msg->params( $formattedName );
 
 		// $msg = $this->getMessageWithAgent( $msgKey );

@@ -65,7 +65,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 		$replyto = new MailAddress( $wgNoReplyAddress );
 
 		// get our text
-		list( $subject, $body ) = $this->composeMail(
+		[ $subject, $body ] = $this->composeMail(
 			$params['user_name'],
 			$params['user_url'],
 			$params['page_name'],

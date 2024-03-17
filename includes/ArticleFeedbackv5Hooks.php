@@ -190,7 +190,7 @@ class ArticleFeedbackv5Hooks {
 			// central feedback page, article feedback page, permalink page & watchlist feedback page
 			if ( $title->isSpecial( 'ArticleFeedbackv5' ) || $title->isSpecial( 'ArticleFeedbackv5Watchlist' ) ) {
 				// fetch the title of the article this special page is related to
-				list( /* special */, $mainTitle ) = MediaWikiServices::getInstance()->getSpecialPageFactory()->resolveAlias( $title->getDBkey() );
+				[ /* special */, $mainTitle ] = MediaWikiServices::getInstance()->getSpecialPageFactory()->resolveAlias( $title->getDBkey() );
 
 				// Permalinks: drop the feedback ID
 				$mainTitle = preg_replace( '/\/\w+$/', '', $mainTitle ?? '' );
@@ -583,11 +583,11 @@ class ArticleFeedbackv5Hooks {
 		$scExpiryOptions = wfMessage( 'protect-expiry-options' )->inContentLanguage()->text();
 		$showProtectOptions = ( $scExpiryOptions !== '-' );
 
-		list(
+		[
 			$mExistingExpiry,
 			$mExpiry,
 			$mExpirySelection
-		) = ArticleFeedbackv5Permissions::getExpiry( $pageId );
+		] = ArticleFeedbackv5Permissions::getExpiry( $pageId );
 
 		$protectExpiry = $mProtectExpiry = '';
 
@@ -613,7 +613,7 @@ class ArticleFeedbackv5Hooks {
 				if ( strpos( $option, ':' ) === false ) {
 					$show = $value = $option;
 				} else {
-					list( $show, $value ) = explode( ':', $option );
+					[ $show, $value ] = explode( ':', $option );
 				}
 
 				$expiryFormOptions .= Xml::option( $show, $value, $mExpirySelection == $value );
