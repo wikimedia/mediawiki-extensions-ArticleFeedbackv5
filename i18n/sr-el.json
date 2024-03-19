@@ -368,7 +368,7 @@
 	"articlefeedbackv5-disable-flyover-prefbutton": "Idi u korisnička podešavanja",
 	"articlefeedbackv5-countdown": "{{PLURAL:$1|(preostaje 1 znak)|(preostaju $1 znaka)|(preostaje $1 znakova)}}",
 	"articlefeedbackv5-abusefilter-note-aftv5resolve": "Automatski rešeno. Pravilo: $1",
-	"articlefeedbackv5-abusefilter-note-aftv5hide": "Automatski sakriveno.  Pravilo: $1",
+	"articlefeedbackv5-abusefilter-note-aftv5hide": "Automatski sakriveno. Pravilo: $1",
 	"articlefeedbackv5-notification-feedback-moderation-flag-feature": "korisno",
 	"articlefeedbackv5-notification-feedback-moderation-flag-resolve": "rešeno",
 	"echo-category-title-feedback": "Povratne informacije",
