@@ -652,5 +652,5 @@
 	"articlefeedbackv5-notification-feedback-moderated-flyout": "ה[[$3|משוב שלך]] על [[$2]] סומן בתור {{int:articlefeedbackv5-notification-feedback-moderation-flag-$4}} על־ידי [[User:$1|$1]].",
 	"articlefeedbackv5-notification-feedback-moderated-email-subject": "המשוב שלך על $2 {{GENDER:$1|סומן}} בתור $3 באתר {{SITENAME}}.",
 	"articlefeedbackv5-notification-feedback-moderated-email-batch-body": "המשוב שלך על $2 {{GENDER:$1|סומן}} בתור $4 באתר {{SITENAME}}. $3",
-	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "המשוב שלך על $2 {{GENDER:$1|נבדק}} על־ידי $1 ועוד  {{PLURAL:$6|מישהו|$5 אנשים}} באתר {{SITENAME}}. $3"
+	"articlefeedbackv5-notification-feedback-moderated-email-batch-bundle-body": "המשוב שלך על $2 {{GENDER:$1|נבדק}} על־ידי $1 ועוד {{PLURAL:$6|מישהו|$5 אנשים}} באתר {{SITENAME}}. $3"
 }
