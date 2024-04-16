@@ -85,6 +85,7 @@
 		"ApiFlagFeedbackArticleFeedbackv5": "api/ApiFlagFeedbackArticleFeedbackv5.php",
 		"ApiGetCountArticleFeedbackv5": "api/ApiGetCountArticleFeedbackv5.php",
 		"ApiViewActivityArticleFeedbackv5": "api/ApiViewActivityArticleFeedbackv5.php",
+		"ApiArticleFeedbackv5Render": "api/ApiArticleFeedbackv5Render.php",
 		"DataModel": "data/DataModel.php",
 		"DataModelBackend": "data/DataModelBackend.php",
 		"DataModelBackendLBFactory": "data/DataModelBackend.LBFactory.php",

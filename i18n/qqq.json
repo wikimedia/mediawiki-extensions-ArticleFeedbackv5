@@ -84,6 +84,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "{{doc-apihelp-param|query+articlefeedbackv5-view-feedback|filter}}",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "{{doc-apihelp-param|query+articlefeedbackv5-view-feedback|feedbackid}}",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "{{doc-apihelp-param|query+articlefeedbackv5-view-feedback|offset}}",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "{{doc-apihelp-param|query+articlefeedbackv5-view-feedback|mode}}",
 	"articlefeedbackv5-error-spamregex": "Error message displayed via an API module when the feedback submitted by the user trips [[mw:Manual:$wgSpamRegex|$wgSpamRegex]]",
 	"articlefeedbackv5-error-spamblacklist": "Error message displayed via an API module when the feedback submitted by the user trips [[mw:Extension:SpamBlacklist|the SpamBlacklist extension]]",
 	"articlefeedbackv5-error-nonexistent-page": "Error message displayed via an API module",

@@ -49,7 +49,9 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$params   = $this->extractRequestParams();
 		$result   = $this->getResult();
 		$html     = '';
+		$data     = [];
 		$length   = 0;
+		$wantHTML = ( isset( $params['mode'] ) && $params['mode'] === 'html' );
 
 		// no page id = central feedback page = null (getAllowedParams will have messed up null values)
 		if ( !$params['pageid'] && !$params['title'] ) {
@@ -75,13 +77,21 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		// build renderer
 		$highlight = (bool)$params['feedbackid'];
 		$central = !$pageId;
-		$renderer = new ArticleFeedbackv5Render( $user, false, $central, $highlight );
+		if ( $wantHTML ) {
+			$renderer = new ArticleFeedbackv5Render( $user, false, $central, $highlight );
+		} else {
+			$renderer = new ApiArticleFeedbackv5Render( $user, false, $central, $highlight );
+		}
 
-		// Build html
+		// Build data
 		if ( $records ) {
 			// @phan-suppress-next-line PhanTypeSuspiciousNonTraversableForeach
 			foreach ( $records as $record ) {
-				$html .= $renderer->run( $record );
+				if ( $wantHTML ) {
+					$html .= $renderer->run( $record );
+				} else {
+					$data[] = $renderer->run( $record );
+				}
 				$length++;
 			}
 		}
@@ -95,7 +105,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		$result->addValue( $this->getModuleName(), 'filtercount', $filterCount );
 		$result->addValue( $this->getModuleName(), 'offset', $records ? $records->nextOffset() : null );
 		$result->addValue( $this->getModuleName(), 'more', $records ? $records->hasMore() : false );
-		$result->addValue( $this->getModuleName(), 'feedback', $html );
+		$result->addValue( $this->getModuleName(), 'feedback', ( $wantHTML ? $html : $data ) );
 	}
 
 	/**
@@ -199,6 +209,10 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI  => false,
 				ApiBase::PARAM_TYPE     => 'string'
+			],
+			'mode'       => [
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_TYPE     => [ 'html', 'structured' ]
 			],
 		];
 	}

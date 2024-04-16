@@ -895,6 +895,7 @@
 			afvfsortdirection: $.articleFeedbackv5special.listControls.sortDirection,
 			afvfoffset: $.articleFeedbackv5special.listControls.offset,
 			afvfwatchlist: $.articleFeedbackv5special.watchlist,
+			afvfmode: 'html',
 			action: 'query',
 			format: 'json',
 			list: 'articlefeedbackv5-view-feedback',

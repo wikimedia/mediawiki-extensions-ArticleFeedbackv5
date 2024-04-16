@@ -60,6 +60,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "What filtering to apply to list",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "The ID of a specific feedback item to fetch",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Offset to start grabbing data at",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "Rendering mode, <kbd>html</kbd> for HTML (uses the ArticleFeedbackv5Render class internally) or <kbd>structured</kbd> for more structured, machine-readable data (uses the ApiArticleFeedbackv5Render class internally)",
 	"articlefeedbackv5-error-spamregex": "Comment was flagged as abusive by SpamRegex",
 	"articlefeedbackv5-error-spamblacklist": "Comment was flagged as abusive by SpamBlacklist",
 	"articlefeedbackv5-error-nonexistent-page": "Page for feedback does not exist",
