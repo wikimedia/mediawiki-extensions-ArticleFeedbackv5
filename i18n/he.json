@@ -76,6 +76,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "איזה סינון ברצונך להחיל לרשימה",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "המזהה של פריט משוב ספציפי שיש להגיע אליו",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "קיזוז כדי להתחיל למשוך נתונים ב",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "מצב תיצוג, <kbd>html</kbd> עבור HTML (משתמש במחלקת ArticleFeedbackv5Render באופן פנימי) או <kbd>structured</kbd> עבור נתונים מובְנים יותר וקריאים במכונה (זה משתמש במחלקת ApiArticleFeedbackv5Render באופן פנימי)",
 	"articlefeedbackv5-error-spamregex": "ההערה סומנה כמעשה פוגע על ידי SpamRegex",
 	"articlefeedbackv5-error-spamblacklist": "ההערה סומנה כמעשה פוגע על ידי SpamBlacklist",
 	"articlefeedbackv5-error-nonexistent-page": "הדף למשוב לא קיים",

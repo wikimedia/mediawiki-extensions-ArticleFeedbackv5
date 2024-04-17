@@ -55,6 +55,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Qual filtrage applicar al lista",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "Le ID de un evalutation specific a recuperar",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Offset a partir del qual comenciar le captura de datos",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "Le modo de rendition: <kbd>html</kbd> pro HTML (usa internemente le classe ArticleFeedbackv5Render) o <kbd>structured</kbd> pro datos plus structurate e legibile per machina (usa internemente le classe ApiArticleFeedbackv5Render).",
 	"articlefeedbackv5-error-spamregex": "Le commento ha essite signalate como abusive per SpamRegex",
 	"articlefeedbackv5-error-spamblacklist": "Le commento ha essite signalate como abusive per SpamBlacklist",
 	"articlefeedbackv5-error-nonexistent-page": "Le pagina pro commentarios non existe",

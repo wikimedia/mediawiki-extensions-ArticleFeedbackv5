@@ -79,6 +79,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Welche Filterung für die Liste angewandt werden soll",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "Die Kennung für ein spezifisches abzurufendes Rückmeldungsobjekt",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Offset für den Beginn des Datenabrufs",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "Rendering-Modus, <kbd>html</kbd> für HTML (verwendet intern die Klasse ArticleFeedbackv5Render) oder <kbd>structured</kbd> für strukturiertere, maschinenlesbare Daten (verwendet intern die Klasse ApiArticleFeedbackv5Render)",
 	"articlefeedbackv5-error-spamregex": "Der Kommentar wurde von SpamRegex als Missbrauch markiert",
 	"articlefeedbackv5-error-spamblacklist": "Der Kommentar wurde von der SpamBlacklist als Missbrauch markiert",
 	"articlefeedbackv5-error-nonexistent-page": "Die Seite für Rückmeldungen ist nicht vorhanden",
