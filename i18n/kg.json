@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bergerdias",
 			"Rkupsala"
 		]
 	},
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "Mutindu ya kutendula, <kbd>html</kbd> sambu na HTML (ke sadila articleFeedbackv5Render na kati) to ya kuyidika sambu na bansangu ya kuyidika mbote, yina bo lenda tanga na mashini (ke sadila ApiArticleFeedbackV5Render class na kati)",
 	"articlefeedbackv5-noteflyover-hide-caption": "Bûmbisa"
 }

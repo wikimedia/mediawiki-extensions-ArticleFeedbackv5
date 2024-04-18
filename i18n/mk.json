@@ -55,6 +55,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Како да се филтрира списокот",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "Назнака на дадената одѕивна ставка што треба да се даде",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Отстап на преземањето податоци",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "Режим на испис, <kbd>html</kbd> за HTML (ја користи класата ArticleFeedbackv5Render внатрешно) или <kbd>structured</kbd> за поструктурирани машински читливи податоци (ја користи класата ApiArticleFeedbackv5Render внатрешно)",
 	"articlefeedbackv5-error-spamregex": "Коментарот е означен како навредлив од SpamRegex",
 	"articlefeedbackv5-error-spamblacklist": "Коментарот е означен како навредлив од SpamBlacklist",
 	"articlefeedbackv5-error-nonexistent-page": "Страницата за мислења не постои",
