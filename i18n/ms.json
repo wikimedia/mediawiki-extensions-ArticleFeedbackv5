@@ -6,7 +6,8 @@
 			"Pizza1016",
 			"Tedbundyjr",
 			"Tofeiku",
-			"Amire80"
+			"Amire80",
+			"Hakimi97"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Terima kasih!",
@@ -62,8 +63,8 @@
 	"articlefeedbackv5-disabled-editor-editor": "Maklum balas telah dimatikan. Pembaca tidak boleh mengepos maklum balas baru pada halaman ini.",
 	"articlefeedbackv5-disabled-reader": "Maklum balas telah dimatikan. Pembaca tidak boleh mengepos maklum balas baru pada halaman ini.",
 	"articlefeedbackv5-disabled-admin-button-text": "Laraskan perlindungan",
-	"articlefeedbackv5-disabled-editor-button-text": "Bolehkan maklum balas",
-	"articlefeedbackv5-settings-status-enable": "Bolehkan maklum balas pada halaman ini",
+	"articlefeedbackv5-disabled-editor-button-text": "Dayakan maklum balas",
+	"articlefeedbackv5-settings-status-enable": "Dayakan maklum balas pada halaman ini",
 	"articlefeedbackv5-settings-status-disable": "Matikan maklum balas pada halaman ini",
 	"articlefeedbackv5-enabled-form-message": "Feedback telah dibolehkan. Pos pembaca akan disiarkan [$1 pada halaman maklum balas].",
 	"articlefeedbackv5-contribs-entry": "$1 . . $2 . . [[$3|Maklum balas: $4]] $5 $6 $7",
@@ -471,7 +472,7 @@
 	"articlefeedbackv5-toolbox-view": "Baca maklum balas",
 	"articlefeedbackv5-toolbox-add": "Tambahkan maklum balas anda",
 	"articlefeedbackv5-leave-warning": "Data yang telah anda masukkan mungkin tidak tersimpan.",
-	"articlefeedbackv5-toolbox-enable": "Bolehkan maklum balas",
+	"articlefeedbackv5-toolbox-enable": "Dayakan maklum balas",
 	"articlefeedbackv5-disable-preference": "Jangan tunjukkan widget Maklum balas rencana pada laman",
 	"right-aft-reader": "Menghantar maklum balas & menilai keberbantuan",
 	"right-aft-member": "Menghantar maklum balas & menilai keberbantuan",
