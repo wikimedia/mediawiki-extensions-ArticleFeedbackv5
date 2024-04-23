@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alien333",
 			"Alno",
 			"Amire80",
 			"Arkanosis",
@@ -95,6 +96,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Quel filtrage appliquer aux listes",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "L’identité d’un commentaire précis à récupérer",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Décalage à partir duquel récupérer les données",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "Mode de rendu, <kbd>html</kbd> pour HTML (utilise la classe ArticleFeedbackv5Render en interne) ou <kbd>structured</kbd> pour des données plus structurées et compréhensibles par un ordinateur (utilise la classe ApiArticleFeedbackv5Render en interne)",
 	"articlefeedbackv5-error-spamregex": "Le commentaire a été marqué comme abusif par SpamRegex.",
 	"articlefeedbackv5-error-spamblacklist": "Le commentaire a été marqué comme abusif par SpamBlacklist.",
 	"articlefeedbackv5-error-nonexistent-page": "La page pour un retour n’existe pas",
