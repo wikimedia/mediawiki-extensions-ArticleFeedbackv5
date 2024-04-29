@@ -321,7 +321,8 @@ class ArticleFeedbackv5Utils {
 	}
 
 	/**
-	 * Run comment through SpamRegex
+	 * Run comment through SpamRegex, both the $wg* global configuration variable
+	 * and if installed, the anti-spam extension of the same name as well
 	 *
 	 * @param string $value
 	 * @return bool Will return boolean false if valid or true if flagged
@@ -329,15 +330,41 @@ class ArticleFeedbackv5Utils {
 	public static function validateSpamRegex( $value ) {
 		// Respect $wgSpamRegex
 		global $wgSpamRegex;
-		if ( ( is_array( $wgSpamRegex ) && count( $wgSpamRegex ) > 0 )
-			|| ( is_string( $wgSpamRegex ) && strlen( $wgSpamRegex ) > 0 ) ) {
-			// In older versions, $wgSpamRegex may be a single string rather than
-			// an array of regexes, so make it compatible.
-			$regexes = (array)$wgSpamRegex;
-			foreach ( $regexes as $regex ) {
-				if ( preg_match( $regex, $value ) ) {
-					return true;
-				}
+
+		// Apparently this has to use the name SpamRegex specifies in its extension.json
+		// rather than the shorter directory name...
+		$spamRegexExtIsInstalled = ExtensionRegistry::getInstance()->isLoaded( 'Regular Expression Spam Block' );
+
+		// If and only if the config var is neither an array nor a string nor
+		// do we have the extension installed, bail out then and *only* then.
+		// It's entirely possible to have the extension installed without
+		// the config var being explicitly changed from the default value.
+		if (
+			!(
+				( is_array( $wgSpamRegex ) && count( $wgSpamRegex ) > 0 ) ||
+				( is_string( $wgSpamRegex ) && strlen( $wgSpamRegex ) > 0 )
+			) &&
+			!$spamRegexExtIsInstalled
+		) {
+			return false;
+		}
+
+		// In older versions, $wgSpamRegex may be a single string rather than
+		// an array of regexes, so make it compatible.
+		$regexes = (array)$wgSpamRegex;
+
+		// Support [[mw:Extension:SpamRegex]] if it's installed (T347215)
+		if ( $spamRegexExtIsInstalled ) {
+			$phrases = SpamRegex::fetchRegexData( SpamRegex::TYPE_TEXTBOX );
+			if ( $phrases && is_array( $phrases ) ) {
+				$regexes = array_merge( $regexes, $phrases );
+			}
+		}
+
+		foreach ( $regexes as $regex ) {
+			if ( preg_match( $regex, $value ) ) {
+				// $value contains spam
+				return true;
 			}
 		}
 
