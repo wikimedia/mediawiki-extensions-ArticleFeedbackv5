@@ -72,6 +72,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Welke filtering moet worden toegepast op de lijst",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "De ID van een specifiek feedbackitem dat moet worden opgehaald",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Offset waarop moet worden begonnen met het oppakken van gegevens",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "Weergavemodus: <kbd>html</kbd> voor HTML (gebruikt intern de klasse ArticleFeedbackv5Render) of <kbd>structured</kbd> voor meer gestructureerde, machinaal leesbare gegevens (gebruikt intern de klasse ApiArticleFeedbackv5Render)",
 	"articlefeedbackv5-error-spamregex": "Reactie is door SpamRegex als ongewenst gemarkeerd",
 	"articlefeedbackv5-error-spamblacklist": "Reactie is door SpamBlacklist als ongewenst gemarkeerd",
 	"articlefeedbackv5-error-nonexistent-page": "Pagina voor feedback bestaat niet",
