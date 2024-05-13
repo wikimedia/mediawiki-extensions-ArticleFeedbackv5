@@ -59,6 +59,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Kakšno filtriranje naj se uporabi za seznam",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "ID določene povratne informacije za pridobitev",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Odmik za začetek zajemanja podatkov",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "Način upodabljanja, <kbd>html</kbd> za HTML (interno uporablja razred ArticleFeedbackv5Render) ali <kbd>structured</kbd> za bolj strukturirane, strojno berljive podatke (interno uporablja razred ApiArticleFeedbackv5Render)",
 	"articlefeedbackv5-error-spamregex": "SpamRegex je povratno informacijo označil kot zlorabo",
 	"articlefeedbackv5-error-spamblacklist": "SpamBlacklist je povratno informacijo označil kot neprimerno",
 	"articlefeedbackv5-error-nonexistent-page": "Stran za povratne informacije ne obstaja",
