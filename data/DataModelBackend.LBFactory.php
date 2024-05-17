@@ -71,10 +71,10 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	 * Before caching data read from backend, we have to make sure that the
 	 * content read is in fact "cacheable" (e.g. not read from a lagging replica)
 	 *
-	 * @return bool
+	 * @return bool Always true now as per T348573#9458157
 	 */
 	public function allowCache() {
-		return !$this->getLB()->laggedReplicaUsed();
+		return true;
 	}
 
 	/**
