@@ -603,11 +603,11 @@
 	/**
 	 * Sends the request to mark a response
 	 *
-	 * @param {number} id		the feedback id
-	 * @param {number} pageId	the page id
-	 * @param {string} action	action to execute
-	 * @param {string} note		note for action (default empty)
-	 * @param {Object} options	key => value pairs of additional API action-specific parameters
+	 * @param {string} id		The feedback ID, e.g. 0619fe4e85e28dc88bbc001c259ad3eb
+	 * @param {number} pageId	The page ID
+	 * @param {string} action	Action to execute
+	 * @param {string} note		Note for action (default empty)
+	 * @param {Object} options	Key => value pairs of additional API action-specific parameters
 	 * @return {boolean}
 	 */
 	$.articleFeedbackv5special.flagFeedback = function ( id, pageId, action, note, options ) {
@@ -708,11 +708,11 @@
 	/**
 	 * Updates the previous flag with a textual comment about it
 	 *
-	 * @param {number} id		the feedback id
-	 * @param {number} pageId	the page id
-	 * @param {number} logId	the log id
-	 * @param {string} action	original action
-	 * @param {string} note		note for action (default empty)
+	 * @param {string} id		The feedback ID, e.g. 0619fe4e85e28dc88bbc001c259ad3eb
+	 * @param {number} pageId	The page ID
+	 * @param {number} logId	The log ID
+	 * @param {string} action	Original action
+	 * @param {string} note		Note for action (default empty)
 	 * @return {boolean}
 	 */
 	$.articleFeedbackv5special.addNote = function ( id, pageId, logId, action, note ) {
@@ -800,7 +800,7 @@
 	/**
 	 * Load the activity log for a feedback post item
 	 *
-	 * @param {number} id           feedback post item id
+	 * @param {string} id           Feedback post item ID
 	 * @param {number} pageId
 	 * @param {string} continueInfo should be null for the first request (first page), then the continue info returned from the last API call
 	 * @param {string} location     where to put the results
@@ -1010,7 +1010,7 @@
 	// {{{ markActiveFlags
 
 	/**
-	 * Mark reader tools als active when they've been flagged
+	 * Mark reader tools as active when they've been flagged
 	 * by this user already
 	 *
 	 * @param {string} id
@@ -1086,8 +1086,8 @@
 	/**
 	 * Utility method: Gets the activity for a feedback ID
 	 *
-	 * @param {number} fid the feedback ID
-	 * @param {string} action the action
+	 * @param {string} fid The feedback ID
+	 * @param {string} action The action
 	 * @return {boolean} true if action executed by user, false if not
 	 */
 	$.articleFeedbackv5special.getActivityFlag = function ( fid, action ) {
