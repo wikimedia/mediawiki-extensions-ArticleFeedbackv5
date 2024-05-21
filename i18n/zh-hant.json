@@ -27,7 +27,9 @@
 			"Winston Sung",
 			"Xiplus",
 			"列维劳德",
-			"捍粵者"
+			"捍粵者",
+			"Cookai1205",
+			"H78c67c"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "提交條目回饋",
@@ -633,7 +635,7 @@
 	"articlefeedbackv5-talk-view-feedback": "檢視讀者回饋",
 	"articlefeedbackv5-watchlist-view-feedback": "我監視的頁面上的回饋",
 	"articlefeedbackv5-email-request-oversight-subject": "對文章回饋頁面的監督請求",
-	"articlefeedbackv5-email-request-oversight-body": "您好，監督員！\n\n$1 請求監督此頁面上的回饋：\n\n$2\n\n請審查此回饋，然後透過或拒絕此監督請求：\n\n$3\n$5\n\n謝謝您，\n\n{{SITENAME}}團隊\n\n註：如果您有關於在文章回饋頁使用監督刪除功能任何疑問，請閱讀此監督員常見問題：\n\n$4",
+	"articlefeedbackv5-email-request-oversight-body": "您好，監督員！\n\n$1 請求監督此頁面上的回饋：\n\n$2\n\n請審查此回饋，然後核准或拒絕此監督請求：\n\n$3\n$5\n\n謝謝您，\n\n{{SITENAME}}團隊\n\n註：如果您有關於在文章回饋頁使用監督刪除功能任何疑問，請閱讀此監督員常見問題：\n\n$4",
 	"articlefeedbackv5-email-request-oversight-body-notes": "此評論已被加入監督請求：\n\n$1",
 	"articlefeedbackv5-disable-flyover-title": "移除此工具？",
 	"articlefeedbackv5-disable-flyover-help-message": "若要刪除文章回饋，請到 \"$1\" > \"$2\" ，請核取 \"$3\"",
