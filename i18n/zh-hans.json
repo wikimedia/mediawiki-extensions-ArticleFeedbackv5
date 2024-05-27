@@ -136,7 +136,7 @@
 	"articlefeedbackv5-error-flagging": "标记反馈时出错。",
 	"articlefeedbackv5-error-throttled": "您的帖子已被拒绝，因为您最近发表的反馈已超出{{SITENAME}}的反馈方针推荐的数量。请不要重复或过度发表反馈。",
 	"articlefeedbackv5-protection-level": "条目反馈",
-	"articlefeedbackv5-protection-level-error": "条目反馈保护级别不能高于编辑保护级别",
+	"articlefeedbackv5-protection-level-error": "条目反馈保护等级不能高于编辑保护等级",
 	"protect-level-aft-reader": "对所有用户启用",
 	"protect-level-aft-member": "仅对登录用户启用",
 	"protect-level-aft-editor": "仅对自动确认用户启用",
