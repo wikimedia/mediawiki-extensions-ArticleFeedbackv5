@@ -459,6 +459,7 @@
 				"articlefeedbackv5-settings-status-disable"
 			],
 			"dependencies": [
+				"mediawiki.api",
 				"mediawiki.cookie",
 				"mediawiki.user",
 				"mediawiki.util",

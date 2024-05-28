@@ -644,60 +644,53 @@
 		// this "options" is currently solely used to add "toggle" to params, when appropriate
 		$.extend( requestData, options );
 
-		$.ajax( {
-			url: $.articleFeedbackv5special.apiUrl,
-			type: 'POST',
-			dataType: 'json',
-			data: requestData,
-			success: function ( data ) {
-				var errorMessage;
+		( new mw.Api() ).postWithToken( 'csrf', requestData ).done( function ( data ) {
+			var errorMessage;
 
-				if ( 'articlefeedbackv5-flag-feedback' in data ) {
-					data = data[ 'articlefeedbackv5-flag-feedback' ];
+			if ( 'articlefeedbackv5-flag-feedback' in data ) {
+				data = data[ 'articlefeedbackv5-flag-feedback' ];
 
-					// replace entry by new render
-					if ( 'render' in data ) {
-						$( '.articleFeedbackv5-feedback[data-id=' + id + ']' )
-							.replaceWith( data.render );
-					}
-
-					// invoke the registered onSuccess callback for the executed action
-					if ( 'onSuccess' in $.articleFeedbackv5special.actions[ action ] ) {
-						$.articleFeedbackv5special.actions[ action ].onSuccess( id, data );
-					}
-
-				// display error message
-				} else if ( 'error' in data ) {
-					errorMessage = data.error.info;
-
-					if ( 'render' in data.error ) {
-						$( '.articleFeedbackv5-feedback[data-id=' + id + ']' )
-							.replaceWith( data.error.render );
-
-						errorMessage = mw.msg( 'articlefeedbackv5-feedback-reloaded-after-error', errorMessage );
-					}
-
-					$( '.articleFeedbackv5-feedback[data-id=' + id + '] .articleFeedbackv5-feedback-tools' )
-						.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
+				// replace entry by new render
+				if ( 'render' in data ) {
+					$( '.articleFeedbackv5-feedback[data-id=' + id + ']' )
+						.replaceWith( data.render );
 				}
 
-				// re-mark active flags in reader tools
-				$.articleFeedbackv5special.markActiveFlags( id );
+				// invoke the registered onSuccess callback for the executed action
+				if ( 'onSuccess' in $.articleFeedbackv5special.actions[ action ] ) {
+					$.articleFeedbackv5special.actions[ action ].onSuccess( id, data );
+				}
 
-				// re-bind panels (tipsies)
-				$.articleFeedbackv5special.bindTipsies( $( '.articleFeedbackv5-feedback[data-id="' + id + '"]' ) );
+			// display error message
+			} else if ( 'error' in data ) {
+				errorMessage = data.error.info;
 
-				// re-enable ajax flagging
-				$.articleFeedbackv5special.listControls.disabled = false;
-			},
-			error: function () {
-				var errorMessage = mw.msg( 'articlefeedbackv5-error-flagging' );
+				if ( 'render' in data.error ) {
+					$( '.articleFeedbackv5-feedback[data-id=' + id + ']' )
+						.replaceWith( data.error.render );
+
+					errorMessage = mw.msg( 'articlefeedbackv5-feedback-reloaded-after-error', errorMessage );
+				}
+
 				$( '.articleFeedbackv5-feedback[data-id=' + id + '] .articleFeedbackv5-feedback-tools' )
 					.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
-
-				// re-enable ajax flagging
-				$.articleFeedbackv5special.listControls.disabled = false;
 			}
+
+			// re-mark active flags in reader tools
+			$.articleFeedbackv5special.markActiveFlags( id );
+
+			// re-bind panels (tipsies)
+			$.articleFeedbackv5special.bindTipsies( $( '.articleFeedbackv5-feedback[data-id="' + id + '"]' ) );
+
+			// re-enable ajax flagging
+			$.articleFeedbackv5special.listControls.disabled = false;
+		} ).fail( function () {
+			var errorMessage = mw.msg( 'articlefeedbackv5-error-flagging' );
+			$( '.articleFeedbackv5-feedback[data-id=' + id + '] .articleFeedbackv5-feedback-tools' )
+				.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
+
+			// re-enable ajax flagging
+			$.articleFeedbackv5special.listControls.disabled = false;
 		} );
 		return false;
 	};
@@ -740,55 +733,35 @@
 			action: 'articlefeedbackv5-add-flag-note'
 		};
 
-		$.ajax( {
-			url: $.articleFeedbackv5special.apiUrl,
-			type: 'POST',
-			dataType: 'json',
-			data: requestData,
-			success: function ( data ) {
-				var errorMessage;
+		( new mw.Api() ).postWithToken( 'csrf', requestData ).done( function ( data ) {
+			data = data[ 'articlefeedbackv5-add-flag-note' ];
 
-				if ( 'articlefeedbackv5-add-flag-note' in data ) {
-					data = data[ 'articlefeedbackv5-add-flag-note' ];
-
-					// replace entry by new render
-					if ( 'render' in data ) {
-						$( '.articleFeedbackv5-feedback[data-id=' + id + ']' )
-							.replaceWith( data.render );
-					}
-
-					// re-mark active flags in reader tools
-					$.articleFeedbackv5special.markActiveFlags( id );
-
-					// re-bind panels (tipsies)
-					$.articleFeedbackv5special.bindTipsies( $( '.articleFeedbackv5-feedback[data-id="' + id + '"]' ) );
-
-				// display error message
-				} else if ( 'error' in data ) {
-					errorMessage = data.error.info;
-
-					if ( 'render' in data.error ) {
-						$( '.articleFeedbackv5-feedback[data-id=' + id + ']' )
-							.replaceWith( data.error.render );
-
-						errorMessage = mw.msg( 'articlefeedbackv5-feedback-reloaded-after-error', errorMessage );
-					}
-
-					$( '.articleFeedbackv5-feedback[data-id=' + id + '] .articleFeedbackv5-feedback-tools' )
-						.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
-				}
-
-				// re-enable ajax flagging
-				$.articleFeedbackv5special.listControls.disabled = false;
-			},
-			error: function () {
-				var errorMessage = mw.msg( 'articlefeedbackv5-invalid-log-update' );
-				$( '.articleFeedbackv5-feedback[data-id=' + id + '] .articleFeedbackv5-feedback-tools' )
-					.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
-
-				// re-enable ajax flagging
-				$.articleFeedbackv5special.listControls.disabled = false;
+			// replace entry by new render
+			if ( 'render' in data ) {
+				$( '.articleFeedbackv5-feedback[data-id=' + id + ']' )
+					.replaceWith( data.render );
 			}
+
+			// re-mark active flags in reader tools
+			$.articleFeedbackv5special.markActiveFlags( id );
+
+			// re-bind panels (tipsies)
+			$.articleFeedbackv5special.bindTipsies( $( '.articleFeedbackv5-feedback[data-id="' + id + '"]' ) );
+		} ).fail( function ( errorCode, errorInfo ) {
+			var errorMessage = mw.msg( 'articlefeedbackv5-invalid-log-update' );
+
+			if ( errorCode === 'render' ) {
+				$( '.articleFeedbackv5-feedback[data-id=' + id + ']' )
+					.replaceWith( errorInfo );
+
+				errorMessage = mw.msg( 'articlefeedbackv5-feedback-reloaded-after-error', errorMessage );
+			}
+
+			$( '.articleFeedbackv5-feedback[data-id=' + id + '] .articleFeedbackv5-feedback-tools' )
+				.append( '<p class="articleFeedbackv5-form-toolbox-error">' + errorMessage + '</p>' );
+
+			// re-enable ajax flagging
+			$.articleFeedbackv5special.listControls.disabled = false;
 		} );
 
 		return false;

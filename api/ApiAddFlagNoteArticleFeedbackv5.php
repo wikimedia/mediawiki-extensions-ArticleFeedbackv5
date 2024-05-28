@@ -168,12 +168,14 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 		];
 	}
 
+	/** @inheritDoc */
 	public function isWriteMode() {
 		return true;
 	}
 
-	public function mustBePosted() {
-		return true;
+	/** @inheritDoc */
+	public function needsToken() {
+		return 'csrf';
 	}
 
 }
