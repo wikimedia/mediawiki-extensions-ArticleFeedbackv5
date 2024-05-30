@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Babanwalia"
+			"Babanwalia",
+			"Cabal"
 		]
 	},
-	"articlefeedbackv5-loading-tag": "ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...",
+	"articlefeedbackv5-cta4-confirmation-title": "ਭਾਈਚਾਰੇ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ",
+	"articlefeedbackv5-loading-tag": "ਲੱਦ ਰਿਹਾ ਹੈ...",
 	"articlefeedbackv5-bucket4-learn-to-edit": "ਸੋਧਣਾ ਸਿੱਖੋ",
 	"articlefeedbackv5-bucket4-form-submit": "ਇਹ ਸਫ਼ਾ ਸੋਧੋ",
 	"articlefeedbackv5-bucket4-noedit-title": "{{SITENAME}} ਨੂੰ ਸੁਧਾਰਣ ਵਿਚ ਮਦਦ ਕਰੋ",
@@ -29,7 +31,7 @@
 	"articlefeedbackv5-titlebar-linktext": "ਇਹ ਸਫ਼ਾ ਸੁਧਾਰਣ ਵਿਚ ਮਦਦ ਕਰੋ >>",
 	"articlefeedbackv5-fixedtab-linktext": "ਇਹ ਸਫ਼ਾ ਸੁਧਾਰੋ",
 	"articlefeedbackv5-bottomrighttab-linktext": "ਇਹ ਸਫ਼ਾ ਸੁਧਾਰੋ",
-	"articlefeedbackv5-section-linktext": "ਫ਼ੀਡਬੈਕ",
+	"articlefeedbackv5-section-linktext": "ਸੁਝਾਅ",
 	"articlefeedbackv5-toolbox-view": "ਫ਼ੀਡਬੈਕ ਵੇਖੋ",
 	"articlefeedbackv5-toolbox-add": "ਆਪਣੀ ਫ਼ੀਡਬੈਕ ਜੋੜੋ",
 	"articlefeedbackv5-toolbox-enable": "ਫ਼ੀਡਬੈਕ ਚਾਲੂ ਕਰੋ",
