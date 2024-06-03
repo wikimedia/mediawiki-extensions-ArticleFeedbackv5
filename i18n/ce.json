@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Sasan700",
+			"Исмаил Садуев",
 			"Умар"
 		]
 	},
@@ -10,7 +11,7 @@
 	"articlefeedbackv5-cta-thanks": "Баркалла!",
 	"articlefeedbackv5-cta1-confirmation-title": "Хьуна хаари, хьайна хӀокхy агӀонна хийцамаш бан луш дуй?",
 	"articlefeedbackv5-cta1-learn-how": "Хьажа, муха хийцамаш бо",
-	"articlefeedbackv5-cta1-edit-linktext": "Нисйе хӀара агӀо",
+	"articlefeedbackv5-cta1-edit-linktext": "ХӀара агӀо нисйан",
 	"articlefeedbackv5-cta2-confirmation-title": "ГӀо де «{{SITENAME}}» проект дика йан",
 	"articlefeedbackv5-cta2-confirmation-call": "ХӀара сайт кхоьллина хьо санна наха. Тхоьга куьг кховдой ахь?",
 	"articlefeedbackv5-cta2-button-text": "Ма-дарра",
@@ -273,7 +274,7 @@
 	"articlefeedbackv5-bucket1-toggle-found-no-full": "ХӀан-хӀа, суна ца карий аса лоьхуш дерг.",
 	"articlefeedbackv5-bucket1-form-submit": "Дахьийта хетарг",
 	"articlefeedbackv5-bucket4-learn-to-edit": "Хьажа, муха хийцамаш бо",
-	"articlefeedbackv5-bucket4-form-submit": "Нисйе хӀара агӀо",
+	"articlefeedbackv5-bucket4-form-submit": "ХӀара агӀо нисйан",
 	"articlefeedbackv5-bucket4-noedit-title": "ГӀо де «{{SITENAME}}» проект дика йан",
 	"articlefeedbackv5-bucket4-noedit-teaser-line1": "ХӀара веб-сайт хьо санначу наха кхоьллина.",
 	"articlefeedbackv5-bucket4-noedit-teaser-line2": "Кховдой ахь тхоьга куьг?",
