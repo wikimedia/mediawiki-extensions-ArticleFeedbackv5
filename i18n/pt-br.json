@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			555,
 			"Amire80",
 			"Cainamarques",
 			"Eduardo Addad de Oliveira",
@@ -15,8 +16,7 @@
 			"Rafael Vargas",
 			"Raylton P. Sousa",
 			"TheEduGobi",
-			"TheGabrielZaum",
-			555
+			"TheGabrielZaum"
 		]
 	},
 	"apihelp-articlefeedbackv5-summary": "Enviar comentários sobre um artigo",
