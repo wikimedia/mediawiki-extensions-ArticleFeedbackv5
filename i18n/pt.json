@@ -69,6 +69,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Que filtragem aplicar à lista",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "Identificador da avaliação específica a obter",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Desfasamento a partir do qual começar a obter dados",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "Modo de composição de imagem; <kbd>html</kbd> para HTML (usa internamente a classe ArticleFeedbackv5Render) ou <kbd>structured</kbd> para dados mais estruturados, passíveis de leitura por computador (usa internamente a classe ApiArticleFeedbackv5Render)",
 	"articlefeedbackv5-error-spamregex": "O comentário foi sinalizado como abusivo por SpamRegex",
 	"articlefeedbackv5-error-spamblacklist": "O comentário foi sinalizado como abusivo por SpamBlacklist",
 	"articlefeedbackv5-error-nonexistent-page": "A página para a avaliação não existe",
