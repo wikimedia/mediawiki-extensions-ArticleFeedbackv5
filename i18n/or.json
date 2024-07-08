@@ -137,7 +137,7 @@
 	"articlefeedbackv5-permalink-info-revision-link": "ପୁରୁଣା ସଂସ୍କରଣ ଦେଖିବେ",
 	"articlefeedbackv5-permalink-info-posted": "$1ରେ $2ଠାରେ ପୋଷ୍ଟ ହେଇଛି",
 	"articlefeedbackv5-permalink-info-stats-title-length": "ଦୈର୍ଘ୍ୟ",
-	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 word|$1 words}}",
+	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 ଶବ୍ଦ|$1 ଶବ୍ଦସବୁ}}",
 	"articlefeedbackv5-permalink-info-length-characters": "({{PLURAL:$1|$1 character|$1 characters}})",
 	"articlefeedbackv5-permalink-info-stats-title-scores": "ଗଣନା",
 	"articlefeedbackv5-permalink-info-stats-subtitle-helpfulness": "ସାହାଯ୍ୟପୂର୍ଣତା:",
