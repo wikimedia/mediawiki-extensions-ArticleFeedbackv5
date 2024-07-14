@@ -142,7 +142,12 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 			// fix bad action texts for AFT: the native formatter getPlainActionText
 			// did not support AFT entries too well, leaving it packed with
 			// escaped html entities, causing a horrible display
-			$formatter = LogFormatter::newFromRow( $row );
+			if ( class_exists( LogFormatterFactory::class ) ) {
+				// MW 1.42+
+				$formatter = MediaWikiServices::getInstance()->getLogFormatterFactory()->newFromRow( $row );
+			} else {
+				$formatter = LogFormatter::newFromRow( $row );
+			}
 			if ( $formatter ) {
 				$update['cuc_actiontext'] = $formatter->getPlainActionText();
 			}
