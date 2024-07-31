@@ -134,7 +134,7 @@
 	"articlefeedbackv5-special-filter-select-more": "Méi",
 	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|1 Matdeelung|$1 Matdeelungen}}",
 	"articlefeedbackv5-special-count-total-title": "$1 {{PLURAL:$1|Matdeelung|Matdeelunge}} mat Bemierkungen, $2 {{PLURAL:$2|Matdeelung|Matdeelungen}} ouni",
-	"articlefeedbackv5-special-watchlist-showing": "Feedback fir Säiten déi vum [[$1|$2]] iwwerwaacht ginn",
+	"articlefeedbackv5-special-watchlist-showing": "Feedback fir Säiten, déi vum [[$1|$2]] iwwerwaacht ginn",
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|Feedback vun de Säiten op menger Iwwerwaachungslëscht]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|Feedback vun alle Säite weisen]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 Ännerung|$1 Ännerungen}} zanter der Matdeelung",
