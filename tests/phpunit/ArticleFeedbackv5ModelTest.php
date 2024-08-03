@@ -22,7 +22,7 @@ class ArticleFeedbackv5ModelTest extends MediaWikiIntegrationTestCase {
 		ArticleFeedbackv5Model::setCache( $cache );
 
 		// don't connect to external cluster but use main db, that has been prepared for unittests ($this->db)
-		$this->setMwGlobals( 'wgArticleFeedbackv5Cluster', false );
+		$this->overrideConfigValue( 'ArticleFeedbackv5Cluster', false );
 
 		// init sample object
 		$this->sample = new ArticleFeedbackv5Model();
@@ -40,15 +40,9 @@ class ArticleFeedbackv5ModelTest extends MediaWikiIntegrationTestCase {
 
 		// we'll be using the * list a couple of times; pretend to have the
 		// required permissions
-		global $wgGroupPermissions;
-		$this->mergeMwGlobalArrayValue(
-			'wgGroupPermissions', [
-				'*' => array_merge(
-					$wgGroupPermissions['*'],
-					array_fill_keys( ArticleFeedbackv5Permissions::$permissions, true )
-				)
-			]
-		);
+		$this->setGroupPermissions( [
+			'*' => array_fill_keys( ArticleFeedbackv5Permissions::$permissions, true )
+		] );
 	}
 
 	public function tearDown(): void {
