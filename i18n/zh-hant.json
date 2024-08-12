@@ -82,6 +82,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "要套用到清單的過濾",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "要索取特定回饋項目的 ID",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "開始抓取資料的偏移量",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "呈現模式，用於 HTML 的 <kbd>html</kbd>（內在使用 ArticleFeedbackv5Render 類別），或是用於更結構化、機器可讀資料的 <kbd>structured</kbd>（內在使用 ApiArticleFeedbackv5Render 類別）",
 	"articlefeedbackv5-error-spamregex": "透過 SpamRegex 標記評論為濫用。",
 	"articlefeedbackv5-error-spamblacklist": "透過 SpamBlacklist 標記評論為濫用。",
 	"articlefeedbackv5-error-nonexistent-page": "回饋用頁面不存在",
