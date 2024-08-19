@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jack Phoenix",
 			"Winston Sung"
 		]
 	},
@@ -115,6 +116,7 @@
 	"articlefeedbackv5-settings-status-enable": "Omogući mišljenja na ovoj stranici",
 	"articlefeedbackv5-settings-status-disable": "Onemogući mišljenja na ovoj stranici",
 	"articlefeedbackv5-enabled-form-message": "Dajanje mišljenja je uskoro omogućeno. Mišljenja čitatelja pojavit će se na [$1 stranici za mišljenja].",
+	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Mišljenje: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Status: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Korisno",
 	"articlefeedbackv5-contribs-status-action-flag": "Označeno",
