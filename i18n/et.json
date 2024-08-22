@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Avjoska",
+			"Jack Phoenix",
 			"Pikne"
 		]
 	},
@@ -43,6 +44,7 @@
 	"protect-level-aft-member": "Luba ainult sisseloginud kasutajatele",
 	"protect-level-aft-editor": "Luba ainult automaatselt kinnitatud kasutajatele",
 	"protect-level-aft-administrator": "Luba ainult administraatoritele",
+	"articlefeedbackv5-disabled-admin-button-text": "Muuda kaitset",
 	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Tagasiside: $4]] $6 $7",
 	"articlefeedbackv5-contribs-entry-status": ". . Olek: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Kasulik",
