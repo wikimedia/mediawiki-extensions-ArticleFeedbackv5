@@ -830,7 +830,9 @@ abstract class DataModel {
 		 * in a 32-character (at max) string of hexadecimal characters.
 		 * Pad the string to full 32-char length if the value is lower.
 		 */
-		$id = UIDGenerator::newTimestampedUID128( 16 );
+		$gen = MediaWikiServices::getInstance()->getGlobalIdGenerator();
+		$id = $gen->newTimestampedUID128( 16 );
+
 		return str_pad( $id, 32, '0', STR_PAD_LEFT );
 	}
 }
