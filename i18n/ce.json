@@ -147,7 +147,7 @@
 	"articlefeedbackv5-permalink-info-post-id": "Хаам #$1",
 	"articlefeedbackv5-permalink-info-posted": "$1 йиллина $2 чу",
 	"articlefeedbackv5-permalink-info-stats-title-length": "Йохалла",
-	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 дош|$1 дешнаш}}",
+	"articlefeedbackv5-permalink-info-length-words": "{{PLURAL:$1|$1 дош}}",
 	"articlefeedbackv5-permalink-info-length-characters": "({{PLURAL:$1|$1 хьаьрк}})",
 	"articlefeedbackv5-permalink-info-stats-title-scores": "Маххадор",
 	"articlefeedbackv5-permalink-info-stats-subtitle-relevance": "Релеванталла:",
