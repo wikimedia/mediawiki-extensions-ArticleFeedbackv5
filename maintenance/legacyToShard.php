@@ -49,10 +49,10 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 		global $wgArticleFeedbackv5Cluster;
 
 		$dbr = $this->getDB( DB_REPLICA );
-		if ( !$dbr->tableExists( 'aft_article_feedback' ) ) {
+		if ( !$dbr->tableExists( 'aft_article_feedback', __METHOD__ ) ) {
 			// not necessary to run, there is no source data
 			return true;
-		} elseif ( !$dbr->tableExists( 'aft_feedback' ) ) {
+		} elseif ( !$dbr->tableExists( 'aft_feedback', __METHOD__ ) ) {
 			// not possible to run, there is no target
 			$this->output( "Target table 'aft_feedback' does not exist.\n" );
 			return false;

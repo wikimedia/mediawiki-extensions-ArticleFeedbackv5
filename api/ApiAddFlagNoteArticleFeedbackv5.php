@@ -70,7 +70,8 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 			$affected = $dbw->update(
 				'logging',
 				$logComment,
-				$data
+				$data,
+				__METHOD__
 			);
 
 			/**

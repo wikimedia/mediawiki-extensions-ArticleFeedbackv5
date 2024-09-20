@@ -82,7 +82,7 @@ class ArticleFeedbackv5Hooks {
 		);
 
 		// old schema support
-		if ( $updater->getDB()->tableExists( 'aft_article_feedback' ) ) {
+		if ( $updater->getDB()->tableExists( 'aft_article_feedback', __METHOD__ ) ) {
 			$updater->addExtensionTable(
 				'aft_article_answer_text',
 				__DIR__ . '/../sql/offload_large_feedback.sql'
