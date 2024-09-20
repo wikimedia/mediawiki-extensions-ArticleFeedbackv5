@@ -805,9 +805,10 @@ class ArticleFeedbackv5Hooks {
 
 		// if c-parameter is no longer in url (e.g. account creation didn't work at first attempts), try cookie data
 		} else {
-			$cookie = json_decode( $wgRequest->getCookie( ArticleFeedbackv5Utils::getCookieName( 'feedback-ids' ) ), true );
-			if ( is_array( $cookie ) ) {
-				$id = array_shift( $cookie );
+			$cookie = $wgRequest->getCookie( ArticleFeedbackv5Utils::getCookieName( 'feedback-ids' ) );
+			$cookieArray = $cookie !== null ? json_decode( $cookie, true ) : null;
+			if ( is_array( $cookieArray ) ) {
+				$id = array_shift( $cookieArray );
 			}
 		}
 
