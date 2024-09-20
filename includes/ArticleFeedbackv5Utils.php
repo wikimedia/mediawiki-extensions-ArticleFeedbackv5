@@ -237,9 +237,10 @@ class ArticleFeedbackv5Utils {
 			 * If either the feedback was posted when not logged in, or the visitor is now not
 			 * logged in, compare the feedback's id with what's stored in a cookie.
 			 */
-			$cookie = json_decode( $request->getCookie( self::getCookieName( 'feedback-ids' ) ), true );
-			if ( $cookie !== null && is_array( $cookie ) && isset( $record->aft_id ) ) {
-				return in_array( $record->aft_id, $cookie );
+			$cookie = $request->getCookie( self::getCookieName( 'feedback-ids' ) );
+			$cookieArray = $cookie !== null ? json_decode( $cookie, true ) : null;
+			if ( $cookieArray !== null && is_array( $cookieArray ) && isset( $record->aft_id ) ) {
+				return in_array( $record->aft_id, $cookieArray );
 			}
 		}
 
