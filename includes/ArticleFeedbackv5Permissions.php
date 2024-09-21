@@ -122,7 +122,7 @@ class ArticleFeedbackv5Permissions {
 			return self::$current[$articleId];
 		}
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 
 		$restriction = $dbr->selectRow(
 			'page_restrictions',
@@ -161,7 +161,7 @@ class ArticleFeedbackv5Permissions {
 		if ( $restriction === false ) {
 			$restriction = (object)[
 				'pr_level' => self::getDefaultPermissionLevel( $articleId ),
-				'pr_expiry' => wfGetDB( DB_REPLICA )->getInfinity()
+				'pr_expiry' => MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA )->getInfinity()
 			];
 		}
 
@@ -206,8 +206,9 @@ class ArticleFeedbackv5Permissions {
 			return false;
 		}
 
-		$dbw = wfGetDB( DB_PRIMARY );
-		$dbr = wfGetDB( DB_REPLICA );
+		$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
+		$dbw = $lb->getConnection( DB_PRIMARY );
+		$dbr = $lb->getConnection( DB_REPLICA );
 
 		$record = $dbr->selectField(
 			'page_restrictions',
