@@ -7,6 +7,8 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * This class allows one to quickly enable/disable the AFTv5 form for a certain page.
  *
@@ -68,7 +70,8 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 			 * resulting in it not being displayed for anyone.
 			 */
 			$default = ArticleFeedbackv5Permissions::getLottery( $pageObj->getId() );
-			$expiry = $params['enable'] == $default ? wfTimestamp( TS_MW ) : wfGetDB( DB_REPLICA )->getInfinity();
+			$expiry = $params['enable'] == $default ? wfTimestamp( TS_MW )
+				: MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA )->getInfinity();
 
 			$success = ArticleFeedbackv5Permissions::setRestriction(
 				$pageObj->getId(),

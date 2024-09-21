@@ -726,7 +726,7 @@ class ArticleFeedbackv5Hooks {
 			}
 
 			if ( $value == 'infinite' || $value == 'indefinite' || $value == 'infinity' ) {
-				$expirationTime = wfGetDB( DB_REPLICA )->getInfinity();
+				$expirationTime = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA )->getInfinity();
 			} else {
 				if ( !$value ) {
 					$value = '';
@@ -918,7 +918,7 @@ class ArticleFeedbackv5Hooks {
 				$page = Title::newFromID( $extra['aft-page'] );
 
 				// @todo Could we just use EchoUserLocator::locateUsersWatchingTitle( $event ) here instead?
-				$dbw = wfGetDB( DB_PRIMARY );
+				$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 				$res = $dbw->select(
 					'watchlist',
 					[ 'wl_user' ],

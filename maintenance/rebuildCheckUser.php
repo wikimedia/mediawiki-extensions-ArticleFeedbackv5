@@ -69,8 +69,9 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 	 * @return array|null
 	 */
 	public function refreshBatch( $continue ) {
-		$dbw = wfGetDB( DB_PRIMARY );
-		$dbr = wfGetDB( DB_REPLICA );
+		$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
+		$dbw = $lb->getConnection( DB_PRIMARY );
+		$dbr = $lb->getConnection( DB_REPLICA );
 
 		$commentQuery = MediaWikiServices::getInstance()->getCommentStore()->getJoin( 'log_comment' );
 		$actorQuery = ActorMigration::newMigration()->getJoin( 'log_user' );

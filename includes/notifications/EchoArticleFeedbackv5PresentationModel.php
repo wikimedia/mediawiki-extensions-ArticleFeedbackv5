@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * Formatter for feedback-watch
  */
@@ -107,7 +110,7 @@ class EchoArticleFeedbackv5PresentationModel extends EchoEventPresentationModel 
 	 * @return Title
 	 */
 	protected function getTitleFromLogId( $id ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$titleText = $dbr->selectField(
 			'logging',
 			'log_title',

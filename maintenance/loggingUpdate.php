@@ -69,8 +69,9 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 	 * @return int|null
 	 */
 	public function refreshBatch( $continue ) {
-		$dbw = wfGetDB( DB_PRIMARY );
-		$dbr = wfGetDB( DB_REPLICA );
+		$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
+		$dbw = $lb->getConnection( DB_PRIMARY );
+		$dbr = $lb->getConnection( DB_REPLICA );
 
 		$rows = $dbr->select(
 			[ 'logging', 'page' ],
