@@ -135,7 +135,8 @@ class ArticleFeedbackv5_LoggingUpdate extends Maintenance {
 					'log_action' => $action,
 					'log_params' => serialize( $params )
 				],
-				[ 'log_id' => $row->log_id ]
+				[ 'log_id' => $row->log_id ],
+				__METHOD__
 			);
 
 			$this->completeCount++;

@@ -133,7 +133,8 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 				$dbw->update(
 					'logging',
 					[ 'log_user_text' => $row->cuc_ip ],
-					[ 'log_id' => $row->log_id ]
+					[ 'log_id' => $row->log_id ],
+					__METHOD__
 				);
 
 				$update['cuc_user_text'] = $row->cuc_ip;
@@ -156,7 +157,8 @@ class ArticleFeedbackv5_RebuildCheckUser extends Maintenance {
 			$dbw->update(
 				'cu_changes',
 				$update,
-				[ 'cuc_id' => $row->cuc_id ]
+				[ 'cuc_id' => $row->cuc_id ],
+				__METHOD__
 			);
 
 			$this->completeCount++;

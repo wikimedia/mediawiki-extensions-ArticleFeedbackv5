@@ -235,12 +235,14 @@ class ArticleFeedbackv5Permissions {
 				[
 					'pr_page' => $articleId,
 					'pr_type' => 'aft'
-				]
+				],
+				__METHOD__
 			);
 		} else {
 			$dbw->insert(
 				'page_restrictions',
-				$vars
+				$vars,
+				__METHOD__
 			);
 		}
 
