@@ -577,9 +577,9 @@ class ArticleFeedbackv5Activity {
 		foreach ( self::$actions as $action => $options ) {
 			if (
 				// check if permissions match; if none provided, all are acceptable
-				$permissions && !in_array( $options['permissions'], $permissions ) ||
+				( $permissions && !in_array( $options['permissions'], $permissions ) ) ||
 				// check if action matches; if none provided, all are acceptable
-				$actions && !in_array( $action, $actions )
+				( $actions && !in_array( $action, $actions ) )
 			) {
 				continue;
 			}

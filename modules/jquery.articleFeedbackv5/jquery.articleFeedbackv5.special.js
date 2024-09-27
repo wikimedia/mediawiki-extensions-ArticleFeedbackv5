@@ -1,6 +1,8 @@
 /**
  * ArticleFeedback special page
  *
+ * @param $
+ * @param mw
  * @package    ArticleFeedback
  * @subpackage Resources
  * @author     Greg Chiasson <gchiasson@omniti.com>

@@ -1,5 +1,8 @@
 /**
  * Script for Article Feedback Extension: Talk pages
+ *
+ * @param $
+ * @param mw
  */
 
 ( function ( $, mw ) {
