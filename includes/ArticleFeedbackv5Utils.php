@@ -126,9 +126,9 @@ class ArticleFeedbackv5Utils {
 		if ( $wgArticleFeedbackv5EnableProtection && isset( $restriction->pr_level ) ) {
 			$enable = $enable && $user->isAllowed( $restriction->pr_level );
 		} else {
-			$enable = $enable &&
+			$enable = ( $enable &&
 				// check if a, to this user sufficient, default permission level (based on lottery) is defined
-				$user->isAllowed( ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $pageId ) ) ||
+				$user->isAllowed( ArticleFeedbackv5Permissions::getDefaultPermissionLevel( $pageId ) ) ) ||
 				// or check whitelist
 				self::isWhitelisted( $pageId );
 		}

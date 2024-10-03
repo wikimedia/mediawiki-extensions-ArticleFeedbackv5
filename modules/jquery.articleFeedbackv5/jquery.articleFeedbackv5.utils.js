@@ -3,6 +3,8 @@
  *
  * This file checks to make sure that AFT is allowed on the current page.
  *
+ * @param $
+ * @param mw
  * @package    ArticleFeedback
  * @subpackage Resources
  * @author     Reha Sterbin <reha@omniti.com>
