@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Dim Grits",
-			"Gazeb"
+			"Gazeb",
+			"Constraque"
 		]
 	},
 	"articlefeedbackv5-error": "Дішло ку хыбі. Просиме, попробуйте пізнїше.",
@@ -33,7 +34,7 @@
 	"articlefeedbackv5-noteflyover-request-label": "Придати позначку",
 	"articlefeedbackv5-noteflyover-request-help": "Далшы інформації",
 	"articlefeedbackv5-noteflyover-unrequest-label": "Придати позначку",
-	"articlefeedbackv5-noteflyover-unrequest-submit": "Зрушыти пожадавку",
+	"articlefeedbackv5-noteflyover-unrequest-submit": "Зрушити пожадавку",
 	"articlefeedbackv5-noteflyover-unrequest-help": "Далшы інформації",
 	"articlefeedbackv5-noteflyover-oversight-label": "Придати позначку",
 	"articlefeedbackv5-noteflyover-oversight-help": "Далшы інформації",
