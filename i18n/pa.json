@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Babanwalia",
-			"Cabal"
+			"Cabal",
+			"Kuldeepburjbhalaike"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "ਧੰਨਵਾਦ!",
-	"articlefeedbackv5-cta1-edit-linktext": "ਇਹ ਵਰਕਾ ਸੋਧੋ",
+	"articlefeedbackv5-cta1-edit-linktext": "ਇਹ ਸਫ਼ਾ ਸੋਧੋ",
 	"articlefeedbackv5-cta2-confirmation-title": "{{SITENAME}} ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰੋ",
 	"articlefeedbackv5-cta2-button-text": "ਹੋਰ ਸਿੱਖੋ",
 	"articlefeedbackv5-cta4-confirmation-title": "ਭਾਈਚਾਰੇ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ",
@@ -25,6 +26,7 @@
 	"articlefeedbackv5-contribs-status-action-hide": "ਲੁਕਾਓ",
 	"articlefeedbackv5-contribs-status-action-request": "ਨਿਗਰਾਨੀ ਦੀ ਬੇਨਤੀ ਕੀਤੀ ਗਈ",
 	"articlefeedbackv5-contribs-hidden-feedback": "ਲੁਕਵੀਂ ਟਿੱਪਣੀ",
+	"articlefeedbackv5-form-toolbox-label": "ਵਜੋਂ ਨਿਸ਼ਾਨ ਲਾਓ:",
 	"articlefeedbackv5-form-helpful-yes-label": "ਹਾਂ",
 	"articlefeedbackv5-form-helpful-no-label": "ਨਹੀਂ",
 	"articlefeedbackv5-special-filter-helpful": "ਮਦਦਗਾਰ ($1)",
