@@ -894,7 +894,7 @@ class ArticleFeedbackv5Render {
 					$sectionContent = wfMessage( "articlefeedbackv5-discuss-$discussType-section-content" )
 						->inContentLanguage()
 						->params(
-							$userText,
+							(string)$userText,
 							SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$record->aft_id" ),
 							$lang->userDate( $record->aft_timestamp, $currentUser ),
 							$lang->userTime( $record->aft_timestamp, $currentUser ),
