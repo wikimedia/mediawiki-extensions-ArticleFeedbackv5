@@ -2,7 +2,6 @@
 	"@metadata": {
 		"authors": [
 			"Alno",
-			"Amire80",
 			"Arkanosis",
 			"Automatik",
 			"Boniface",
@@ -42,7 +41,8 @@
 			"Verdy p",
 			"Wikifan",
 			"Wladek92",
-			"Wyz"
+			"Wyz",
+			"Alien333"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Soumettre un commentaire sur un article",
