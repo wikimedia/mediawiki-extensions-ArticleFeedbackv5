@@ -88,7 +88,7 @@ class DataModelPurgeCache extends Maintenance {
 	/**
 	 * Per-object cache removal
 	 *
-	 * @param DataModel $object The object
+	 * @param DataModel $object
 	 */
 	public function purgeObject( DataModel $object ) {
 		$object->uncache();

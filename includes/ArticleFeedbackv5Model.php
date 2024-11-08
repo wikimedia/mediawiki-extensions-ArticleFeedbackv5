@@ -104,8 +104,6 @@ class ArticleFeedbackv5Model extends DataModel {
 
 	/**
 	 * Pagination limit: how many entries should be fetched at once for lists
-	 *
-	 * @var int
 	 */
 	public const LIST_LIMIT = 50;
 

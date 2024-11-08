@@ -82,7 +82,7 @@ class ArticleFeedbackv5Flagging {
 	/**
 	 * Run a flagging action
 	 *
-	 * @param string $flag the flag
+	 * @param string $flag
 	 * @param string $notes any notes to send to the activity log
 	 * @param bool $toggle whether to toggle the flag
 	 * @param string $source the origin of the flag (article, central, watchlist, permalink)

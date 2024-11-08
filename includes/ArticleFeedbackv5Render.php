@@ -66,7 +66,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the HTML for the given feedback entry
 	 *
-	 * @param ArticleFeedbackv5Model $record the record
+	 * @param ArticleFeedbackv5Model $record
 	 * @return string the rendered row
 	 */
 	public function run( $record ) {
@@ -245,7 +245,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns an empty gray mask
 	 *
-	 * @param ArticleFeedbackv5Model $record the record
+	 * @param ArticleFeedbackv5Model $record
 	 * @return string the empty gray mask
 	 */
 	protected function emptyGrayMask( $record ) {
@@ -271,7 +271,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns a gray mask
 	 *
-	 * @param ArticleFeedbackv5Model $record the record
+	 * @param ArticleFeedbackv5Model $record
 	 * @param bool $empty whether the mask is empty; defaults to false
 	 * @return string the gray mask
 	 */
@@ -337,7 +337,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the mood of the feedback
 	 *
-	 * @param ArticleFeedbackv5Model $record the record
+	 * @param ArticleFeedbackv5Model $record
 	 * @return string the mood (positive or negative)
 	 */
 	public function getMood( $record ) {
@@ -347,7 +347,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the feedback head and comment
 	 *
-	 * @param ArticleFeedbackv5Model $record the record
+	 * @param ArticleFeedbackv5Model $record
 	 * @return string the rendered feedback info
 	 */
 	protected function render( $record ) {
@@ -377,7 +377,7 @@ class ArticleFeedbackv5Render {
 	 * @param string $message the message key describing the nature of the
 	 *                           feedback (e.g., "USER found what they were
 	 *                           looking for")
-	 * @param ArticleFeedbackv5Model $record the record
+	 * @param ArticleFeedbackv5Model $record
 	 * @return string the rendered feedback head
 	 */
 	protected function feedbackHead( $message, $record ) {
@@ -457,7 +457,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the permalink/timestamp
 	 *
-	 * @param ArticleFeedbackv5Model $record the record
+	 * @param ArticleFeedbackv5Model $record
 	 * @return string the rendered permalink/timestamp
 	 */
 	protected function renderPermalinkTimestamp( $record ) {
@@ -494,7 +494,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the marked-up feedback comment
 	 *
-	 * @param ArticleFeedbackv5Model $record the record
+	 * @param ArticleFeedbackv5Model $record
 	 * @return string the rendered comment
 	 */
 	protected function renderComment( $record ) {
@@ -556,7 +556,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the footer links
 	 *
-	 * @param ArticleFeedbackv5Model $record the record
+	 * @param ArticleFeedbackv5Model $record
 	 * @return string the rendered footer
 	 */
 	protected function renderFooter( $record ) {
@@ -764,7 +764,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the tag block
 	 *
-	 * @param ArticleFeedbackv5Model $record The record
+	 * @param ArticleFeedbackv5Model $record
 	 * @return string The rendered tag block
 	 */
 	protected function renderTagBlock( $record ) {
@@ -791,7 +791,7 @@ class ArticleFeedbackv5Render {
 	/**
 	 * Returns the toolbox
 	 *
-	 * @param ArticleFeedbackv5Model $record the record
+	 * @param ArticleFeedbackv5Model $record
 	 * @return string the rendered toolbox
 	 */
 	protected function renderToolbox( $record ) {

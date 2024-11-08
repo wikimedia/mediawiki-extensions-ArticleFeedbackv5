@@ -197,7 +197,7 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 * length with null-bytes. Make sure out values are re-padded to
 	 * 32 characters before looking for them in the database.
 	 *
-	 * @param string $id The id
+	 * @param string $id
 	 * @return string
 	 */
 	protected function standardizeId( $id ) {

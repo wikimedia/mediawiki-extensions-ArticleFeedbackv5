@@ -1,9 +1,5 @@
 <?php
 /**
- * ApiFlagFeedbackArticleFeedbackv5 class
- *
- * @package    ArticleFeedback
- * @subpackage Api
  * @author     Greg Chiasson <greg@omniti.com>
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
  * @author     Matthias Mullie <mmullie@wikimedia.org>
