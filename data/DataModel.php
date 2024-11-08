@@ -568,7 +568,7 @@ abstract class DataModel {
 	public static function getBackend() {
 		if ( static::$backend === null ) {
 			global $wgDataModelBackendClass;
-			$class = $wgDataModelBackendClass ?? 'DataModelBackendLBFactory';
+			$class = $wgDataModelBackendClass ?? DataModelBackendLBFactory::class;
 
 			$backend = new $class( get_called_class(), static::getTable(), static::getIdColumn(), static::getShardColumn() );
 			static::setBackend( $backend );

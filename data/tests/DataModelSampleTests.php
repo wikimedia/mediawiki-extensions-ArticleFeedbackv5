@@ -25,7 +25,7 @@ class DataModelSampleTest extends MediaWikiIntegrationTestCase {
 
 		// define db backend
 		global $wgDataModelBackendClass;
-		$wgDataModelBackendClass = 'DataModelBackendLBFactory';
+		$wgDataModelBackendClass = DataModelBackendLBFactory::class;
 
 		// setup db tables
 		$this->db->begin();

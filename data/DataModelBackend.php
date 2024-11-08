@@ -19,7 +19,7 @@ abstract class DataModelBackend {
 	/**
 	 * DataModel details.
 	 *
-	 * @var string
+	 * @var class-string<DataModel>
 	 */
 	protected $datamodel;
 	/** @var string */
@@ -30,7 +30,7 @@ abstract class DataModelBackend {
 	protected $shardColumn;
 
 	/**
-	 * @param string $datamodel
+	 * @param class-string<DataModel> $datamodel
 	 * @param string $table
 	 * @param string $idColumn
 	 * @param string $shardColumn
