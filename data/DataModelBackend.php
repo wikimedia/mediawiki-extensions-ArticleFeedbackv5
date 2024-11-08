@@ -129,13 +129,7 @@ abstract class DataModelBackend {
 	 */
 	public function getConditions( $name ) {
 		$class = $this->datamodel;
-
-		$conditions = [];
-		if ( isset( $class::$lists[$name] ) ) {
-			$conditions = $class::$lists[$name] ?: [];
-		}
-
-		return $conditions;
+		return $class::$lists[$name] ?? [];
 	}
 
 	/**
@@ -146,13 +140,7 @@ abstract class DataModelBackend {
 	 */
 	public function getSort( $sort ) {
 		$class = $this->datamodel;
-
-		$sorts = [];
-		if ( isset( $class::$sorts[$sort] ) ) {
-			return $class::$sorts[$sort];
-		}
-
-		return '';
+		return $class::$sorts[$sort] ?? '';
 	}
 
 	/**

@@ -69,10 +69,7 @@ class DataModelList extends Wikimedia\Rdbms\FakeResultWrapper {
 	 */
 	public function doFetchRow() {
 		$object = $this->doFetchObject();
-		if ( $object ) {
-			return $object->toArray();
-		}
-		return false;
+		return $object ? $object->toArray() : false;
 	}
 
 	/**
