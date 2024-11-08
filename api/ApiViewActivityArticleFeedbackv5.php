@@ -83,7 +83,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		try {
 			$activities = ArticleFeedbackv5Activity::getList( $feedback, $user, $limit, $continue );
 		} catch ( Exception $e ) {
-			$this->dieWithError( ( new RawMessage( '$1' ) )->plaintextParam( $e->getMessage() ), $e->getCode() );
+			$this->dieWithError( ( new RawMessage( '$1' ) )->plaintextParams( $e->getMessage() ), $e->getCode() );
 		}
 
 		// generate our html
