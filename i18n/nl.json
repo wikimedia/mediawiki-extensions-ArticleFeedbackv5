@@ -562,7 +562,7 @@
 	"action-aft-oversighter": "toezicht op feedback aan te vragen",
 	"right-aft-oversighter": "Terugkoppeling onder toezicht plaatsen",
 	"log-name-articlefeedbackv5": "Logboek paginaterugkoppelingsactiviteit",
-	"log-description-articlefeedbackv5": "Dit is het logboek met handelingen die uitgevoerd zijn op terugkoppelingsitems die zijn verzameld via pagina's die \"Paginaterugkoppeling\" gebruiken.",
+	"log-description-articlefeedbackv5": "Dit is het logboek met handelingen die verricht zijn op de terugkoppelingen die gebruikers via “Paginaterugkoppeling” hebben ingediend.",
 	"logentry-articlefeedbackv5-create": "$1 {{GENDER:$2|heeft}} [[$3|terugkoppelingsbericht #$4]] geplaatst voor [[$5]]",
 	"logentry-articlefeedbackv5-oversight": "$1 {{GENDER:$2|heeft}} [[$3|terugkoppelingsbericht #$4]] op [[$5]] onder toezicht geplaatst",
 	"logentry-articlefeedbackv5-unoversight": "$1 {{GENDER:$2|heeft}} ondertoezichtstelling verwijderd voor [[$3|terugkoppelingsbericht #$4]] op [[$5]]",
