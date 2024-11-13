@@ -67,6 +67,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Vilken filtrering att tillämpa i listan",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "ID för en specifik återkopplingsobjekt att hämta",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Offset att börja hämta data från",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "Renderingsläge, <kbd>html</kbd> för HTML (använder klassen ArticleFeedbackv5Render internt) eller <kbd>structured</kbd> för mer strukturerad och maskinläsbar data (använder klassen ApiArticleFeedbackv5Render internt)",
 	"articlefeedbackv5-error-spamregex": "Kommentaren flaggades som missbruk av SpamRegex",
 	"articlefeedbackv5-error-spamblacklist": "Kommentaren flaggades som missbruk av SpamBlacklist",
 	"articlefeedbackv5-error-nonexistent-page": "Återkopplingssidan finns inte",
