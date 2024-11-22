@@ -70,6 +70,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "أية تصفية لتطبيقها على القائمة",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "معرف عنصر التعليقات المحدد لجلبه",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "الإزاحة لبدء التقاط البيانات فيها",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "وضع العرض، <kbd>html</kbd> لـ HTML (يستخدم فئة ArticleFeedbackv5Render داخليًا) أو <kbd>منظم</kbd> للحصول على بيانات أكثر هيكلة وقابلة للقراءة آليًا (يستخدم فئة ApiArticleFeedbackv5Render داخليًا)",
 	"articlefeedbackv5-error-spamregex": "تم الإبلاغ عن التعليق باعتباره مسيئا من قبل SpamRegex",
 	"articlefeedbackv5-error-spamblacklist": "تم الإبلاغ عن التعليق باعتباره مسيئا من قبل قائمة السخام السوداء",
 	"articlefeedbackv5-error-nonexistent-page": "صفحة التعليقات غير موجودة",
