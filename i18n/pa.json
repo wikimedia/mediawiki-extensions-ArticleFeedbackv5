@@ -6,6 +6,8 @@
 			"Kuldeepburjbhalaike"
 		]
 	},
+	"apihelp-articlefeedbackv5-summary": "ਲੇਖ ਸੁਝਾਅ ਜਮ੍ਹਾਂ ਕਰੋ",
+	"apihelp-articlefeedbackv5-param-title": "ਸੁਝਾਅ ਜਮ੍ਹਾਂ ਕਰਨ ਲਈ ਸਫ਼ੇ ਦਾ ਸਿਰਲੇਖ। $1Pageid ਨਾਲ ਇਕੱਠੇ ਨਹੀਂ ਵਰਤਿਆ ਜਾ ਸਕਦਾ",
 	"articlefeedbackv5-cta-thanks": "ਧੰਨਵਾਦ!",
 	"articlefeedbackv5-cta1-edit-linktext": "ਇਹ ਸਫ਼ਾ ਸੋਧੋ",
 	"articlefeedbackv5-cta2-confirmation-title": "{{SITENAME}} ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰੋ",
@@ -17,6 +19,7 @@
 	"articlefeedbackv5-cta5-confirmation-title": "ਵੇਖੋ ਹੋਰ ਲੋਕ ਕੀ ਕਹਿੰਦੇ ਹਨ",
 	"articlefeedbackv5-cta5-button-text": "ਸਾਰੀਆਂ ਟਿੱਪਣੀਆਂ ਵੇਖੋ",
 	"articlefeedbackv5-overlay-close": "ਬੰਦ ਕਰੋ",
+	"articlefeedbackv5-error-validation": "ਤਸਦੀਕ ਗਲਤੀਆਂ",
 	"articlefeedbackv5-error-unknown": "ਅਣਜਾਣ ਗ਼ਲਤੀ।",
 	"articlefeedbackv5-contribs-status-action-helpful": "ਮਦਦਗਾਰ",
 	"articlefeedbackv5-contribs-status-action-feature": "ਲਾਹੇਵੰਦ",
@@ -61,6 +64,7 @@
 	"articlefeedbackv5-form-resolve": "ਹੱਲ-ਕੱਢਿਆ ਗਿਆ",
 	"articlefeedbackv5-form-archive": "ਪੁਰਾਲੇਖ",
 	"articlefeedbackv5-form-tooltip-unhide": "ਮੁੜ-ਵਿਖਾਓ",
+	"articlefeedbackv5-whats-this": "ਮਦਦ",
 	"articlefeedbackv5-noteflyover-feature-caption": "ਲਾਹੇਵੰਦ ਵਜੋਂ ਨਿਸ਼ਾਨਬੱਧ ਕਰੋ",
 	"articlefeedbackv5-noteflyover-unhide-caption": "ਮੁੜ-ਵਿਖਾਓ",
 	"articlefeedbackv5-bucket4-learn-to-edit": "ਸੋਧਣਾ ਸਿੱਖੋ",
