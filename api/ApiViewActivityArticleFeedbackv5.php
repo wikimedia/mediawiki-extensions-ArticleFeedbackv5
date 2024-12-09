@@ -107,7 +107,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 								->params( $feedback->aft_id )
 								->rawParams( ArticleFeedbackv5Utils::getUserLink( $feedback->aft_user, $feedback->aft_user_text ) )
 								->params( $feedback->aft_user_text ) // username or ip
-								->text()
+								->escaped()
 						) .
 						Html::element(
 							'div',

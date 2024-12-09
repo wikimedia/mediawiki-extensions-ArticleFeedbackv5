@@ -1706,7 +1706,7 @@
 				<div>\
 					<div class="articleFeedbackv5-flyover-header">\
 						<h3 id="articleFeedbackv5-noteflyover-caption">' +
-							mw.msg( 'articlefeedbackv5-activity-pane-header' ) +
+							mw.message( 'articlefeedbackv5-activity-pane-header' ).escaped() +
 						'</h3>\
 						<a id="articleFeedbackv5-noteflyover-close" href="#"></a>\
 					</div>\
