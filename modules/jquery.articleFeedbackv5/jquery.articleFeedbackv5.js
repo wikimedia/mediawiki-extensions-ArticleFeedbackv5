@@ -707,7 +707,7 @@
 				$( '.articleFeedbackv5-arrow-back' ).remove();
 
 				// reset regular title
-				$( '.articleFeedbackv5-title' ).html( $.articleFeedbackv5.currentBucket().getTitle() );
+				$( '.articleFeedbackv5-title' ).text( $.articleFeedbackv5.currentBucket().getTitle() );
 			},
 
 			// }}}
@@ -1319,10 +1319,10 @@
 				// and it needs to show up if the site subhead (e.g., "From Wikipedia, the free
 				// encyclopedia") is not visible for any reason.
 				if ( $( '#siteSub' ).filter( ':visible' ).length ) {
-					$link.prepend( ' &nbsp; ' + mw.msg( 'pipe-separator' ) + ' &nbsp; ' );
+					$link.prepend( ' &nbsp; ', mw.message( 'pipe-separator' ).escaped(), ' &nbsp; ' );
 					$( '#siteSub' ).append( $link );
 				} else if ( $( 'h1.pagetitle + p.subtitle' ).filter( ':visible' ).length ) {
-					$link.prepend( ' &nbsp; ' + mw.msg( 'pipe-separator' ) + ' &nbsp; ' );
+					$link.prepend( ' &nbsp; ', mw.message( 'pipe-separator' ).escaped(), ' &nbsp; ' );
 					$( 'h1.pagetitle + p.subtitle' ).append( $link );
 				} else if ( $( '#mw_contentholder .mw-topboxes' ).length ) {
 					$( '#mw_contentholder .mw-topboxes' ).after( $link );
@@ -2038,47 +2038,39 @@
 	 * @return {string} the html
 	 */
 	$.articleFeedbackv5.buildLink = function ( fulltext ) {
-		var full, args, i, sub, replacement;
+		var parameters, i, sub, tag, text, $element, key;
 
-		full = mw.html.escape( mw.msg( fulltext ) );
-		args = arguments;
-		return full.replace( /\$(\d+)/g, function ( str, number ) {
-			i = parseInt( number, 10 );
-			sub = args[ i ];
-			replacement = '';
-			if ( sub.tag === 'quotes' ) {
-				replacement = '&quot;' + mw.msg( sub.text ) + '&quot';
+		parameters = [ fulltext ];
+		for ( i = 1; i < arguments.length; i++ ) {
+			sub = arguments[ i ];
+			tag = sub.tag;
+			text = mw.msg( sub.text );
+
+			delete sub.tag;
+			delete sub.text;
+
+			if ( tag === 'quotes' ) {
+				parameters.push( '"' + text + '"' );
 			} else {
-				replacement = mw.html.element(
-					'tag' in sub ? sub.tag : 'a',
-					$.articleFeedbackv5.attribs( sub ),
-					mw.msg( sub.text )
-				).toString();
-			}
-			return replacement;
-		} );
-	};
+				// We don't do the $( html, attributes ) shorthand syntax since that can
+				// call functions, and while it would be weird to define an attribute with
+				// the same name as a jQuery function, the previous code would have treated
+				// it like a regular attribute, so it's being replicated here.
+				$element = $( '<' + tag + '/>' );
+				for ( key in sub ) {
+					$element.attr( key, sub[ key ] );
+				}
+				$element.text( text );
 
-	// }}}
-	// {{{ attribs
-
-	/**
-	 * Utility method: Set up the attributes for a link (works with
-	 * buildLink())
-	 *
-	 * @param {Object} link the first link, as { href: '#', text: 'click here'.
-	 *                     other-attrib: 'whatever'}
-	 * @return {Object} the attributes
-	 */
-	$.articleFeedbackv5.attribs = function ( link ) {
-		var k, attr = {};
-
-		for ( k in link ) {
-			if ( k !== 'text' && k !== 'tag' ) {
-				attr[ k ] = link[ k ];
+				parameters.push( $element );
 			}
 		}
-		return attr;
+
+		// This really needs to be Message.parse()--the documentation says "DOM/jQuery parameters
+		// can be used to achieve the equivalent of rawParams()", but this seemingly only works
+		// for Message.parse(), not Message.escaped(). Debug this if you want to, but this is good
+		// enough
+		return mw.message.apply( null, parameters ).parse();
 	};
 
 	// }}}
@@ -2272,7 +2264,7 @@
 
 		// Set the title
 		if ( 'getTitle' in bucket ) {
-			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title' ).html( bucket.getTitle() );
+			$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-title' ).text( bucket.getTitle() );
 		}
 
 		// Link to help is dependent on the group the user belongs to
@@ -2815,7 +2807,7 @@
 	 * @param {string} msg the error message
 	 */
 	$.articleFeedbackv5.markTopError = function ( msg ) {
-		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-top-error' ).html( msg );
+		$.articleFeedbackv5.$holder.find( '.articleFeedbackv5-top-error' ).text( msg );
 	};
 
 	// }}}
