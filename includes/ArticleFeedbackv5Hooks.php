@@ -813,8 +813,8 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		// the page that feedback was added to is the one we'll be returned to
-		$title = Title::newFromDBkey( $wgRequest->getVal( 'returnto' ) );
-		if ( $title !== null && $id ) {
+		$title = Title::newFromDBkey( (string)$wgRequest->getVal( 'returnto' ) );
+		if ( $title && $id ) {
 			$pageId = $title->getArticleID();
 
 			/*
