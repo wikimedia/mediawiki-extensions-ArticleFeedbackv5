@@ -228,7 +228,7 @@ class ArticleFeedbackv5Utils {
 		$unsafe = false
 	) {
 		// if logged in user, we can know for certain if feedback was posted when logged in
-		if ( $curUser->getId() && isset( $record->aft_user ) && $curUser->getId() == intval( $record->aft_user ) ) {
+		if ( $curUser->getId() && $record->aft_user !== null && $curUser->getId() == intval( $record->aft_user ) ) {
 			return true;
 		}
 
@@ -239,7 +239,7 @@ class ArticleFeedbackv5Utils {
 			 */
 			$cookie = $request->getCookie( self::getCookieName( 'feedback-ids' ) );
 			$cookieArray = $cookie !== null ? json_decode( $cookie, true ) : null;
-			if ( $cookieArray !== null && is_array( $cookieArray ) && isset( $record->aft_id ) ) {
+			if ( $cookieArray !== null && is_array( $cookieArray ) && $record->aft_id !== null ) {
 				return in_array( $record->aft_id, $cookieArray );
 			}
 		}
