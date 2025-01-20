@@ -108,13 +108,8 @@ class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	 */
 	public function getConditions( $name ) {
 		$class = $this->datamodel;
-
-		$conditions = [];
-		if ( isset( $class::$lists[$name]['conditions'] ) ) {
-			$conditions = $class::$lists[$name]['conditions'] ?: [];
-		}
-
-		return $conditions;
+		/** @var class-string<ArticleFeedbackv5Model> $class */
+		return $class::$lists[$name]['conditions'] ?? [];
 	}
 
 	/**
