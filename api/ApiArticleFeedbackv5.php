@@ -1,9 +1,5 @@
 <?php
 /**
- * ApiArticleFeedbackv5 class
- *
- * @package    ArticleFeedback
- * @subpackage Api
  * @author     Greg Chiasson <greg@omniti.com>
  * @author     Reha Sterbin <reha@omniti.com>
  * @author     Matthias Mullie <mmullie@wikimedia.org>
@@ -15,9 +11,6 @@ use Wikimedia\ScopedCallback;
 
 /**
  * This saves the ratings
- *
- * @package    ArticleFeedback
- * @subpackage Api
  */
 class ApiArticleFeedbackv5 extends ApiBase {
 	/**

@@ -1,9 +1,5 @@
 <?php
 /**
- * ApiAddFlagNoteArticleFeedbackv5 class
- *
- * @package    ArticleFeedback
- * @subpackage Api
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
@@ -12,9 +8,6 @@ use MediaWiki\MediaWikiServices;
 /**
  * This class allows one to add a note describing activity, after the action
  * has been performed already.
- *
- * @package    ArticleFeedback
- * @subpackage Api
  */
 class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	/**

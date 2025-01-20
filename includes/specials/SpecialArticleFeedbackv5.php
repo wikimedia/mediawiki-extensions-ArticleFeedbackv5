@@ -552,8 +552,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	}
 
 	/**
-	 * @param ArticleFeedbackv5Render $renderer the renderer
-	 * @param DataModelList $records the fetched records
+	 * @param ArticleFeedbackv5Render $renderer
+	 * @param DataModelList $records
 	 * @return string
 	 */
 	protected function buildContent( $renderer, $records ) {
@@ -578,8 +578,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	/**
 	 * Outputs a permalink
 	 *
-	 * @param ArticleFeedbackv5Render $renderer the renderer
-	 * @param ArticleFeedbackv5Model $record the fetched record
+	 * @param ArticleFeedbackv5Render $renderer
+	 * @param ArticleFeedbackv5Model $record
 	 * @return string
 	 */
 	protected function buildPermalink( $renderer, $record ) {
@@ -610,8 +610,8 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 	/**
 	 * Outputs a listing
 	 *
-	 * @param ArticleFeedbackv5Render $renderer the renderer
-	 * @param DataModelList $records the fetched records &etc.
+	 * @param ArticleFeedbackv5Render $renderer
+	 * @param DataModelList $records
 	 * @return string
 	 */
 	protected function buildListing( $renderer, $records ) {

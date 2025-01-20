@@ -89,8 +89,6 @@ abstract class DataModel {
 	 * if any arbitrary limit would be accepted, it would become madness to
 	 * cache the results. Therefore, limit is a fixed number, so that it
 	 * does make sense to cache the data.
-	 *
-	 * @var int
 	 */
 	public const LIST_LIMIT = 25;
 
