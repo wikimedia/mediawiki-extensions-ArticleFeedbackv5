@@ -21,6 +21,7 @@
 	"articlefeedbackv5-special-filter-unreviewed-watchlist": "Sen revizo",
 	"articlefeedbackv5-special-sort-label": "Ordinar segun:",
 	"articlefeedbackv5-special-filter-select-more": "Pluse",
+	"articlefeedbackv5-details-link": "Detali",
 	"articlefeedbackv5-special-refresh": "Rinovigar listo",
 	"articlefeedbackv5-loading-tag": "Karganta...",
 	"articlefeedbackv5-form-abuse-count": "{{PLURAL:$1|$1 flago|$1 flagi}}",
