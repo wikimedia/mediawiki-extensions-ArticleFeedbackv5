@@ -10,7 +10,7 @@
 	"articlefeedbackv5-cta1-confirmation-title": "Wist je dat je deze pagina kunt bewerken?",
 	"articlefeedbackv5-cta2-confirmation-call": "Deze website wordt gemaakt door mensen zoals jij. Kan je ons helpen?",
 	"articlefeedbackv5-cta4-confirmation-call-line1": "Registreer een gebruiker of meld je aan zodat andere gebruikers op je terugkoppeling kunnen reageren.",
-	"articlefeedbackv5-cta4-confirmation-call-line2": "Jouw gratis gebruiker maakt het eenvoudiger om wat je weet te delen in {{SITENAME}}.",
+	"articlefeedbackv5-cta4-confirmation-call-line2": "Met jouw gratis account kun je op {{SITENAME}} eenvoudiger delen wat je weet.",
 	"articlefeedbackv5-cta5-confirmation-call": "Bekijk suggesties van andere lezers. Kan je helpen de beste ideeën te kiezen?",
 	"articlefeedbackv5-error-abuse": "Je bericht is afgewezen door een softwarefilter dat aangeeft dat mogelijk niet aan de [$1 richtlijnen voor terugkoppeling] van {{SITENAME}} is voldaan. Pas je opmerking aan en probeer het opnieuw. {{PLURAL:$2|Filter|Filters}}: $3.",
 	"articlefeedbackv5-error-nofeedback": "Geef je terugkoppeling.",
