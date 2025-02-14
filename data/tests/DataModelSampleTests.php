@@ -11,9 +11,6 @@ class DataModelSampleTest extends MediaWikiIntegrationTestCase {
 	/** @var DataModelSample */
 	protected $sample;
 
-	/** @inheritDoc */
-	protected $tablesUsed = [ 'datamodel_sample' ];
-
 	public function setUp(): void {
 		parent::setUp();
 

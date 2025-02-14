@@ -11,9 +11,6 @@ class ArticleFeedbackv5ModelTest extends MediaWikiIntegrationTestCase {
 	/** @var ArticleFeedbackv5Model */
 	protected $sample;
 
-	/** @inheritDoc */
-	protected $tablesUsed = [ 'aft_feedback' ];
-
 	public function setUp(): void {
 		parent::setUp();
 
