@@ -532,13 +532,11 @@ abstract class DataModel {
 	public static function getCache() {
 		if ( static::$cache === null ) {
 			$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-			/*
-			 * If no cache is set, use HashBagOStuff; even though it won't persist
-			 * across requests. ::getList will retrieve all info from DB already and
-			 * "cache" it, so that ::get (which is called by DataModelList) does not
-			 * need to re-fetch it from DB because it's in cache or HashBagOStuff.
-			 */
-			if ( $cache->getQoS( $cache::ATTR_DURABILITY ) <= $cache::QOS_DURABILITY_NONE ) {
+			// If no cache is set, use HashBagOStuff; even though it won't persist
+			// across requests. ::getList will retrieve all info from DB already and
+			// "cache" it, so that ::get (which is called by DataModelList) does not
+			// need to re-fetch it from DB because it's in cache or HashBagOStuff.
+			if ( $cache->getQoS( BagOStuff::ATTR_DURABILITY ) <= BagOStuff::QOS_DURABILITY_NONE ) {
 				$cache = new WANObjectCache( [ 'cache' => new HashBagOStuff() ] );
 			}
 			static::setCache( $cache );
