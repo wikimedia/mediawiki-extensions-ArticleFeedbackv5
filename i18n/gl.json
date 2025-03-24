@@ -52,7 +52,7 @@
 	"apihelp-query+articlefeedbackv5-view-activity-param-title": "Título da páxina para a que se enviou o comentario. Non pode usarse xunto con $1pageid",
 	"apihelp-query+articlefeedbackv5-view-activity-param-pageid": "Identificador da páxina para a que se enviou o comentario. Non pode usarse xunto con $1title",
 	"apihelp-query+articlefeedbackv5-view-activity-param-limit": "Cantos resultados de actividade devolver",
-	"apihelp-query+articlefeedbackv5-view-activity-param-continue": "Cando estean dispoñibles máis resultados, use isto para continuar",
+	"apihelp-query+articlefeedbackv5-view-activity-param-continue": "Cando estean dispoñibles máis resultados, utiliza isto para continuar",
 	"apihelp-query+articlefeedbackv5-view-activity-param-noheader": "Saltar as etiquetas da cabeceira, incluso se esta é a primeira páxina",
 	"apihelp-query+articlefeedbackv5-view-feedback-description": "Lista os comentarios do artigo para a páxina indicada",
 	"apihelp-query+articlefeedbackv5-view-feedback-summary": "Lista os comentarios do artigo para a páxina indicada",
