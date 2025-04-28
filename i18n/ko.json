@@ -153,7 +153,7 @@
 	"articlefeedbackv5-special-sort-helpful-desc": "유용함",
 	"articlefeedbackv5-special-sort-helpful-asc": "유용하지 않음",
 	"articlefeedbackv5-special-sort-age-desc": "최신",
-	"articlefeedbackv5-special-sort-age-asc": "오래됨",
+	"articlefeedbackv5-special-sort-age-asc": "최초",
 	"articlefeedbackv5-special-sort-label": "정렬 기준:",
 	"articlefeedbackv5-special-filter-select-more": "더 많은 필터",
 	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|게시물 1개|게시물 $1개}}",
