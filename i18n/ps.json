@@ -4,7 +4,8 @@
 			"Af420",
 			"Ahmed-Najib-Biabani-Ibrahimkhel",
 			"Amjad Khan",
-			"Baloch Khan"
+			"Baloch Khan",
+			"شاه زمان پټان"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "مننه!",
@@ -17,7 +18,7 @@
 	"articlefeedbackv5-cta4-button-text-login": "ننوتل",
 	"articlefeedbackv5-cta4-button-text-later": "کېدای شي وروسته",
 	"articlefeedbackv5-cta4-button-text-or": "يا",
-	"articlefeedbackv5-cta5-confirmation-title": "وگورۍ چې نور خلک څه وايي",
+	"articlefeedbackv5-cta5-confirmation-title": "وگورئ چې نور خلک څه وايي",
 	"articlefeedbackv5-cta5-button-text": "ټولې تبصرې کتل",
 	"articlefeedbackv5-cta6-confirmation-title": "د {{SITENAME}} په سمولو کې مرسته غواړۍ؟",
 	"articlefeedbackv5-overlay-close": "تړل",
@@ -64,7 +65,7 @@
 	"articlefeedbackv5-status-request": "دا پوسټ د $1 لخوا په $2 کي په $3 باندې غوښتل شوي وو",
 	"articlefeedbackv5-status-unarchive": "دا پوسټ د $1 لخوا په $2 کي په $3 باندې آرشيو شو",
 	"articlefeedbackv5-new-marker": "نوی",
-	"articlefeedbackv5-autohide-marker": "پټ",
+	"articlefeedbackv5-autohide-marker": "خپلکاره پټ‌شوی",
 	"articlefeedbackv5-hide-marker": "پټ",
 	"articlefeedbackv5-feature-marker": "گټور",
 	"articlefeedbackv5-form-abuse-count": "{{PLURAL:$1|$1 رپی|$1 رپيان}}",
