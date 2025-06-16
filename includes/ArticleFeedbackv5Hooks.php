@@ -2,6 +2,7 @@
 
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Xml\Xml;
 use Wikimedia\IPUtils;
 
 /**
@@ -634,12 +635,13 @@ class ArticleFeedbackv5Hooks {
 		// build custom expiry field
 		$attribs = [
 			'id' => 'articlefeedbackv5-protection-expiration',
+			'size' => 50,
 			// when entering an other time, make sure "othertime" is selected in the dropdown
 			'onkeyup' => 'javascript:if ( $( this ).val() ) $( "#articlefeedbackv5-protection-expiration-selection" ).val( "othertime" );',
 			'onchange' => 'javascript:if ( $( this ).val() ) $( "#articlefeedbackv5-protection-expiration-selection" ).val( "othertime" );'
 		] + $disabledAttrib;
 
-		$protectOther = Xml::input( 'articlefeedbackv5-protection-expiration', 50, $mExpiry, $attribs );
+		$protectOther = Html::input( 'articlefeedbackv5-protection-expiration', $mExpiry, 'text', $attribs );
 		$mProtectOther = Xml::label( wfMessage( 'protect-othertime' )->text(), "mwProtect-aft-expires" );
 
 		// build output
