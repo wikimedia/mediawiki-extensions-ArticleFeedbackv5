@@ -1,6 +1,9 @@
 <?php
 
+use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
 
 /**
  * Formatter for feedback-watch
@@ -107,7 +110,7 @@ class EchoArticleFeedbackv5PresentationModel extends EchoEventPresentationModel 
 	 *
 	 * @see https://phabricator.wikimedia.org/T167401
 	 * @param int $id log_id, stored as an EchoEvent's aft-moderation-log-id extra param
-	 * @return Title
+	 * @return MediaWiki\Title\Title
 	 */
 	protected function getTitleFromLogId( $id ) {
 		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
@@ -135,7 +138,7 @@ class EchoArticleFeedbackv5PresentationModel extends EchoEventPresentationModel 
 	 * "Your feedback" (articlefeedbackv5-notification-link-text-view-feedback)
 	 * instead of "ArticleFeedback...".
 	 *
-	 * @param Title $title
+	 * @param MediaWiki\Title\Title $title
 	 * @param string $description
 	 * @param bool $prioritized
 	 * @param array $query
@@ -166,11 +169,11 @@ class EchoArticleFeedbackv5PresentationModel extends EchoEventPresentationModel 
 	 * separator being the slash for a certain feedback entry and hash for when
 	 * you want to link to the main AFTv5 overview page for a given PageTitle.
 	 *
-	 * @param EchoEvent $event
+	 * @param MediaWiki\Extension\Notifications\Model\Event $event
 	 * @param string $separator Slash (/) or hash (#), the latter being used to link to all feedbacks per page
 	 * @return Title
 	 */
-	protected function getAFTv5PermalinkTitleFromEvent( EchoEvent $event, $separator = '/' ) {
+	protected function getAFTv5PermalinkTitleFromEvent( $event, $separator = '/' ) {
 		$feedbackId = $event->getExtraParam( 'aft-id' );
 		$feedbackPage = $event->getExtraParam( 'aft-page' );
 
@@ -203,7 +206,7 @@ class EchoArticleFeedbackv5PresentationModel extends EchoEventPresentationModel 
 	 *
 	 * This message is used as the subject line in single-notification emails.
 	 *
-	 * @return Message
+	 * @return MediaWiki\Message\Message
 	 */
 	public function getSubjectMessage() {
 		$msgKey = $this->getSubjectMessageKey();

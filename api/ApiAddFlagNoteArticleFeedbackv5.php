@@ -3,7 +3,12 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
+use MediaWiki\Api\ApiBase;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\ActorMigration;
+use MediaWiki\WikiMap\WikiMap;
+use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
 /**
  * This class allows one to add a note describing activity, after the action
@@ -11,7 +16,7 @@ use MediaWiki\MediaWikiServices;
  */
 class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	/**
-	 * @param ApiMain $query
+	 * @param MediaWiki\Api\ApiMain $query
 	 * @param string $moduleName
 	 */
 	public function __construct( $query, $moduleName ) {
@@ -29,6 +34,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 
 		$affected = 0;
 		$results = [];
+		$services = MediaWikiServices::getInstance();
 
 		// get important values from our parameters
 		$params = $this->extractRequestParams();
@@ -55,7 +61,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 			];
 			// failsafe, making sure this can't be gamed to add comments to other users' feedback
 			$data += ActorMigration::newMigration()->getInsertValues( $dbw, 'log_user', $user );
-			$logComment = MediaWikiServices::getInstance()->getCommentStore()->insert(
+			$logComment = $services->getCommentStore()->insert(
 				$dbw,
 				'log_comment',
 				$notes
@@ -80,7 +86,7 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 				 * While we're at it, since activity has occurred, the editor activity
 				 * data in cache may be out of date.
 				 */
-				$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+				$cache = $services->getMainWANObjectCache();
 				$key = $cache->makeKey(
 					'ArticleFeedbackv5Activity-getLastEditorActivity',
 					$feedbackId
@@ -121,32 +127,32 @@ class ApiAddFlagNoteArticleFeedbackv5 extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'logid' => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_MIN => 1
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'integer',
+				IntegerDef::PARAM_MIN => 1
 			],
 			'flagtype' => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => array_keys( ArticleFeedbackv5Activity::$actions )
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => array_keys( ArticleFeedbackv5Activity::$actions )
 			],
 			'note' => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => 'string'
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string'
 			],
 			'title' => null,
 			'pageid' => [
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'integer'
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => 'integer'
 			],
 			'feedbackid' => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'string'
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => 'string'
 			],
 			'source' => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => [ 'article', 'central', 'watchlist', 'permalink', 'unknown' ]
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => [ 'article', 'central', 'watchlist', 'permalink', 'unknown' ]
 			],
 		];
 	}

@@ -30,7 +30,7 @@ class ArticleFeedbackv5MailerJob extends Job {
 	/**
 	 * Passthrough that sends the name of the class as the name of the job
 	 *
-	 * @param Title $title
+	 * @param MediaWiki\Title\Title $title
 	 * @param array $params
 	 * @param int $id
 	 */

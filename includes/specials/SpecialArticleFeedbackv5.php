@@ -9,6 +9,11 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
+use MediaWiki\Html\Html;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
+use MediaWiki\Xml\XmlSelect;
+
 /**
  * This is the Special page the shows the feedback dashboard
  *

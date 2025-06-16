@@ -5,6 +5,9 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
+use MediaWiki\Api\ApiBase;
+use Wikimedia\ParamValidator\ParamValidator;
+
 /**
  * This class allows you to performs a certain action (e.g. resolve,
  * mark as useful) to feedback.
@@ -14,7 +17,7 @@
  */
 class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	/**
-	 * @param ApiMain $query
+	 * @param MediaWiki\Api\ApiMain $query
 	 * @param string $moduleName
 	 */
 	public function __construct( $query, $moduleName ) {
@@ -89,31 +92,31 @@ class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 		return [
 			'title' => null,
 			'pageid' => [
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'integer'
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => 'integer'
 			],
 			'feedbackid' => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'string'
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => 'string'
 			],
 			'flagtype' => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Activity::$actions ),
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => array_keys( ArticleFeedbackv5Activity::$actions ),
 			],
 			'note' => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'string'
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => 'string'
 			],
 			'toggle' => [
-				ApiBase::PARAM_TYPE     => 'boolean'
+				ParamValidator::PARAM_TYPE     => 'boolean'
 			],
 			'source' => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => [ 'article', 'central', 'watchlist', 'permalink', 'unknown' ]
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => [ 'article', 'central', 'watchlist', 'permalink', 'unknown' ]
 			],
 		];
 	}

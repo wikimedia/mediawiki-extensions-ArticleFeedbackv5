@@ -1,7 +1,11 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
+use MediaWiki\Extension\Notifications\Model\Event as EchoEvent;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
 use MediaWiki\Xml\Xml;
 use Wikimedia\IPUtils;
 
@@ -74,7 +78,7 @@ class ArticleFeedbackv5Hooks {
 	/**
 	 * LoadExtensionSchemaUpdates hook
 	 *
-	 * @param DatabaseUpdater $updater
+	 * @param MediaWiki\Installer\DatabaseUpdater $updater
 	 */
 	public static function loadExtensionSchemaUpdates( $updater ) {
 		$updater->addExtensionTable(
@@ -160,12 +164,12 @@ class ArticleFeedbackv5Hooks {
 	}
 
 	/**
-	 * BeforePageDisplay hook - this hook will determine if and what javascript will be loaded
+	 * BeforePageDisplay hook - this hook will determine if and what JavaScript will be loaded
 	 *
-	 * @param OutputPage $out
+	 * @param MediaWiki\Output\OutputPage $out
 	 * @param Skin $skin
 	 */
-	public static function beforePageDisplay( OutputPage $out, Skin $skin ) {
+	public static function beforePageDisplay( $out, $skin ) {
 		global $wgArticleFeedbackv5Namespaces;
 
 		$title = $out->getTitle();
@@ -243,7 +247,7 @@ class ArticleFeedbackv5Hooks {
 	 * pages don't have the appropriate information available for Javascript, this
 	 * method will build the relevant info.
 	 *
-	 * @param Title $title the article
+	 * @param MediaWiki\Title\Title $title the article
 	 * @return array the article's info, to be exposed to JS
 	 */
 	public static function getPageInformation( Title $title ) {
@@ -326,9 +330,9 @@ class ArticleFeedbackv5Hooks {
 	 * on the page itself (also setting us free from potential browser cache issues)
 	 *
 	 * @param array &$vars
-	 * @param OutputPage $out
+	 * @param MediaWiki\Output\OutputPage $out
 	 */
-	public static function makeGlobalVariablesScript( array &$vars, OutputPage $out ) {
+	public static function makeGlobalVariablesScript( array &$vars, $out ) {
 		$user = $out->getUser();
 
 		// expose AFT permissions for this user to JS
@@ -342,7 +346,7 @@ class ArticleFeedbackv5Hooks {
 	/**
 	 * Add the preference in the user preferences with the GetPreferences hook.
 	 *
-	 * @param User $user
+	 * @param MediaWiki\User\User $user
 	 * @param array[] &$preferences
 	 */
 	public static function getPreferences( $user, &$preferences ) {
@@ -359,8 +363,8 @@ class ArticleFeedbackv5Hooks {
 	 * with a hook in PageContentSaveComplete)
 	 *
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/EditPage::showEditForm:fields
-	 * @param EditPage $editPage
-	 * @param OutputPage $output
+	 * @param MediaWiki\EditPage\EditPage $editPage
+	 * @param MediaWiki\Output\OutputPage $output
 	 */
 	public static function pushFieldsToEdit( $editPage, $output ) {
 		// push AFTv5 values back into the edit page form, so we can pick them up after submitting the form
@@ -635,13 +639,13 @@ class ArticleFeedbackv5Hooks {
 		// build custom expiry field
 		$attribs = [
 			'id' => 'articlefeedbackv5-protection-expiration',
-			'size' => 50,
+			'size' => '50',
 			// when entering an other time, make sure "othertime" is selected in the dropdown
 			'onkeyup' => 'javascript:if ( $( this ).val() ) $( "#articlefeedbackv5-protection-expiration-selection" ).val( "othertime" );',
 			'onchange' => 'javascript:if ( $( this ).val() ) $( "#articlefeedbackv5-protection-expiration-selection" ).val( "othertime" );'
 		] + $disabledAttrib;
 
-		$protectOther = Html::input( 'articlefeedbackv5-protection-expiration', $mExpiry, 'text', $attribs );
+		$protectOther = Html::input( 'articlefeedbackv5-protection-expiration', '50', $mExpiry, $attribs );
 		$mProtectOther = Xml::label( wfMessage( 'protect-othertime' )->text(), "mwProtect-aft-expires" );
 
 		// build output
@@ -768,10 +772,10 @@ class ArticleFeedbackv5Hooks {
 	 * Add AFT permission logs to action=protect.
 	 *
 	 * @param Page $article
-	 * @param OutputPage $out
+	 * @param MediaWiki\Output\OutputPage $out
 	 * @return bool
 	 */
-	public static function onShowLogExtract( Page $article, OutputPage $out ) {
+	public static function onShowLogExtract( Page $article, $out ) {
 		global $wgArticleFeedbackv5Namespaces;
 
 		// only on pages in namespaces where it is enabled
@@ -785,9 +789,9 @@ class ArticleFeedbackv5Hooks {
 	}
 
 	/**
-	 * Post-login update new user's last feedback with his new id
+	 * Post-login update new user's last feedback with their new ID
 	 *
-	 * @param User $currentUser
+	 * @param MediaWiki\User\User $currentUser
 	 * @param string $injected_html
 	 */
 	public static function userLoginComplete( $currentUser, $injected_html ) {
@@ -906,7 +910,7 @@ class ArticleFeedbackv5Hooks {
 	 * Add users to be notified on Echo events.
 	 *
 	 * @param EchoEvent $event
-	 * @param User[] &$users
+	 * @param MediaWiki\User\User[] &$users
 	 */
 	public static function onEchoGetDefaultNotifiedUsers( EchoEvent $event, &$users ) {
 		switch ( $event->getType() ) {

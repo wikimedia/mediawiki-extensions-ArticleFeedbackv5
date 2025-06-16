@@ -7,6 +7,9 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
+use MediaWiki\Api\ApiBase;
+use Wikimedia\ParamValidator\ParamValidator;
+
 /**
  * This class gets the amount of feedback for a certain page/filter.
  *
@@ -15,7 +18,7 @@
  */
 class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	/**
-	 * @param ApiMain $query
+	 * @param MediaWiki\Api\ApiMain $query
 	 * @param string $moduleName
 	 */
 	public function __construct( $query, $moduleName ) {
@@ -55,16 +58,16 @@ class ApiGetCountArticleFeedbackv5 extends ApiBase {
 		return [
 			'title' => null,
 			'pageid' => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'integer',
-				ApiBase::PARAM_DFLT     => 0
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => 'integer',
+				ParamValidator::PARAM_DEFAULT     => 0
 			],
 			'filter' => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => $filters,
-				ApiBase::PARAM_DFLT     => ( $filters[0] ?? '' )
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => $filters,
+				ParamValidator::PARAM_DEFAULT     => ( $filters[0] ?? '' )
 			],
 		];
 	}

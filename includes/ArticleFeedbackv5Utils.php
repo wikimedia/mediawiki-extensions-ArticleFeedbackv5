@@ -20,9 +20,16 @@
  * @subpackage Api
  */
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\Notifications\Model\Event as EchoEvent;
 use MediaWiki\Extension\SpamBlacklist\BaseBlacklist;
+use MediaWiki\Linker\Linker;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Parser\ParserOptions;
+use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\Title\Title;
+use MediaWiki\WikiMap\WikiMap;
 
 class ArticleFeedbackv5Utils {
 	/**
@@ -216,15 +223,15 @@ class ArticleFeedbackv5Utils {
 	 * user id) from evaluating their own feedback, but should never be trusted.
 	 *
 	 * @param ArticleFeedbackv5Model $record The feedback record
-	 * @param User $curUser
-	 * @param WebRequest $request
+	 * @param MediaWiki\User\User $curUser
+	 * @param MediaWiki\Request\WebRequest $request
 	 * @param bool $unsafe True if untrusted data can be evaluated
 	 * @return bool
 	 */
 	public static function isOwnFeedback(
 		$record,
-		User $curUser,
-		WebRequest $request,
+		$curUser,
+		$request,
 		$unsafe = false
 	) {
 		// if logged in user, we can know for certain if feedback was posted when logged in
@@ -386,7 +393,7 @@ class ArticleFeedbackv5Utils {
 			$spam = BaseBlacklist::getSpamBlacklist();
 			$title = Title::newFromText( 'ArticleFeedbackv5_' . $pageId );
 
-			$options = new \ParserOptions( $user );
+			$options = new ParserOptions( $user );
 			$output = MediaWikiServices::getInstance()->getParser()->parse( $value, $title, $options );
 			$links = array_keys( $output->getExternalLinks() );
 
@@ -404,10 +411,10 @@ class ArticleFeedbackv5Utils {
 	 *
 	 * @param string $value
 	 * @param int $pageId
-	 * @param User $user
+	 * @param MediaWiki\User\User $user
 	 * @return array[]|false Will return boolean false if valid or error message array if flagged
 	 */
-	public static function validateAbuseFilter( $value, $pageId, User $user ) {
+	public static function validateAbuseFilter( $value, $pageId, $user ) {
 		// Check AbuseFilter, if installed
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'Abuse Filter' ) ) {
 			global $wgArticleFeedbackv5AbuseFilterGroup;
@@ -418,6 +425,7 @@ class ArticleFeedbackv5Utils {
 				// XXX Can this happen?
 				return false;
 			}
+
 			$vars = AbuseFilterServices::getVariableGeneratorFactory()
 				->newGenerator()
 				->addUserVars( $user )
@@ -453,12 +461,12 @@ class ArticleFeedbackv5Utils {
 	 * Fire feedback-watch notification.
 	 *
 	 * @param ArticleFeedbackv5Model $feedback
-	 * @param User $agent
+	 * @param MediaWiki\User\User $agent
 	 * @param string $flag
 	 * @param int $logId
 	 * @return bool
 	 */
-	public static function notifyWatch( ArticleFeedbackv5Model $feedback, User $agent, $flag, $logId ) {
+	public static function notifyWatch( ArticleFeedbackv5Model $feedback, $agent, $flag, $logId ) {
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
 			return false;
 		}
@@ -489,12 +497,12 @@ class ArticleFeedbackv5Utils {
 	 * Fire feedback-moderated notification.
 	 *
 	 * @param ArticleFeedbackv5Model $feedback
-	 * @param User $agent
+	 * @param MediaWiki\User\User $agent
 	 * @param string $flag
 	 * @param int $logId
 	 * @return bool
 	 */
-	public static function notifyModerated( ArticleFeedbackv5Model $feedback, User $agent, $flag, $logId ) {
+	public static function notifyModerated( ArticleFeedbackv5Model $feedback, $agent, $flag, $logId ) {
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
 			return false;
 		}

@@ -7,7 +7,15 @@
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
  */
 
+use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiQueryBase;
+use MediaWiki\Html\Html;
+use MediaWiki\Language\RawMessage;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
+use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
 /**
  * This class pulls the aggregated ratings for display in Bucket #5
@@ -18,7 +26,7 @@ use MediaWiki\MediaWikiServices;
 class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
 	/**
-	 * @param ApiQuery $query
+	 * @param MediaWiki\Api\ApiQuery $query
 	 * @param string $moduleName
 	 */
 	public function __construct( $query, $moduleName ) {
@@ -86,8 +94,10 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 			$this->dieWithError( ( new RawMessage( '$1' ) )->plaintextParams( $e->getMessage() ), $e->getCode() );
 		}
 
-		// generate our html
+		// generate our HTML
 		$html = '';
+
+		$services = MediaWikiServices::getInstance();
 
 		// only do this if continue is not null
 		if ( !$continue && !$params['noheader'] ) {
@@ -122,7 +132,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 						Html::rawElement(
 							'div',
 							[ 'class' => 'articleFeedbackv5-activity-feedback-permalink' ],
-							MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
+							$services->getLinkRenderer()->makeLink(
 								SpecialPage::getTitleFor( 'ArticleFeedbackv5', $page->getPrefixedDBkey() . '/' . $feedback->aft_id ),
 								wfMessage( 'articlefeedbackv5-activity-permalink' )->text()
 							)
@@ -143,7 +153,7 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 		}
 
 		$count = 0;
-		$commentFormatter = MediaWikiServices::getInstance()->getCommentFormatter();
+		$commentFormatter = $services->getCommentFormatter();
 
 		// divs of activity items
 		foreach ( $activities as $item ) {
@@ -227,23 +237,23 @@ class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 	public function getAllowedParams() {
 		return [
 			'feedbackid' => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE     => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE     => 'string',
 			],
 			'title' => null,
 			'pageid' => [
-				ApiBase::PARAM_TYPE     => 'integer',
+				ParamValidator::PARAM_TYPE     => 'integer',
 			],
 			'limit' => [
-				ApiBase::PARAM_DFLT => 25,
-				ApiBase::PARAM_TYPE => 'limit',
-				ApiBase::PARAM_MIN => 1,
-				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
-				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
+				ParamValidator::PARAM_DEFAULT => 25,
+				ParamValidator::PARAM_TYPE => 'limit',
+				IntegerDef::PARAM_MIN => 1,
+				IntegerDef::PARAM_MAX => ApiBase::LIMIT_BIG1,
+				IntegerDef::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			],
 			'continue' => null,
 			'noheader' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 		];
 	}

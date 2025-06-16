@@ -7,7 +7,9 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
+use MediaWiki\Api\ApiBase;
 use MediaWiki\MediaWikiServices;
+use Wikimedia\ParamValidator\ParamValidator;
 
 /**
  * This class allows one to quickly enable/disable the AFTv5 form for a certain page.
@@ -17,7 +19,7 @@ use MediaWiki\MediaWikiServices;
  */
 class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 	/**
-	 * @param ApiMain $query
+	 * @param MediaWiki\Api\ApiMain $query
 	 * @param string $moduleName
 	 */
 	public function __construct( $query, $moduleName ) {
@@ -104,12 +106,12 @@ class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 		return [
 			'title' => null,
 			'pageid' => [
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'integer'
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => 'integer'
 			],
 			'enable' => [
-				ApiBase::PARAM_TYPE     => [ '0', '1' ],
-				ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE     => [ '0', '1' ],
+				ParamValidator::PARAM_REQUIRED => true,
 			],
 		];
 	}

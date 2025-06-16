@@ -7,7 +7,9 @@
  * @author     Greg Chiasson <greg@omniti.com>
  */
 
+use MediaWiki\Api\ApiQueryBase;
 use MediaWiki\User\UserOptionsManager;
+use Wikimedia\ParamValidator\ParamValidator;
 
 /**
  * This class pulls the individual ratings/comments for the feedback page.
@@ -21,7 +23,7 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 	private $userOptionsManager;
 
 	/**
-	 * @param ApiQuery $query
+	 * @param MediaWiki\Api\ApiQuery $query
 	 * @param string $moduleName
 	 * @param UserOptionsManager $userOptionsManager
 	 */
@@ -172,47 +174,47 @@ class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 		return [
 			'title'         => null,
 			'pageid'        => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_ISMULTI  => false,
 				// @note Special:ArticleFeedbackv5 can call this API module with an empty
 				// 'pageid' param; if the type is 'integer' instead of 'string', then the
 				// calls on that special page will fail with this error:
 				// Invalid value "" for integer parameter "afvfpageid".
-				ApiBase::PARAM_TYPE     => 'string'
+				ParamValidator::PARAM_TYPE     => 'string'
 			],
 			'watchlist'     => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'integer'
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => 'integer'
 			],
 			'sort'          => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Model::$sorts )
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => array_keys( ArticleFeedbackv5Model::$sorts )
 			],
 			'sortdirection' => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => [ 'DESC', 'ASC', 'desc', 'asc' ]
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => [ 'DESC', 'ASC', 'desc', 'asc' ]
 			],
 			'filter'        => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => array_keys( ArticleFeedbackv5Model::$lists )
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => array_keys( ArticleFeedbackv5Model::$lists )
 			],
 			'feedbackid'   => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'string'
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => 'string'
 			],
 			'offset'       => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_ISMULTI  => false,
-				ApiBase::PARAM_TYPE     => 'string'
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_ISMULTI  => false,
+				ParamValidator::PARAM_TYPE     => 'string'
 			],
 			'mode'       => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_TYPE     => [ 'html', 'structured' ]
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE     => [ 'html', 'structured' ]
 			],
 		];
 	}

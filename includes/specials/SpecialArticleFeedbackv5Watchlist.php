@@ -7,6 +7,9 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
+use MediaWiki\Html\Html;
+use MediaWiki\Xml\XmlSelect;
+
 /**
  * This is the Special page the shows the feedback dashboard for pages on one's watchlist
  *

@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 
 /**
  * Permissions for ArticleFeedback
@@ -195,8 +196,10 @@ class ArticleFeedbackv5Permissions {
 			return false;
 		}
 
+		$services = MediaWikiServices::getInstance();
+
 		// make sure a valid articleId was passed
-		$pageObj = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $articleId );
+		$pageObj = $services->getWikiPageFactory()->newFromID( $articleId );
 		if ( !$pageObj ) {
 			return false;
 		}
@@ -206,7 +209,7 @@ class ArticleFeedbackv5Permissions {
 			return false;
 		}
 
-		$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
+		$lb = $services->getDBLoadBalancer();
 		$dbw = $lb->getConnection( DB_PRIMARY );
 		$dbr = $lb->getConnection( DB_REPLICA );
 
@@ -252,7 +255,7 @@ class ArticleFeedbackv5Permissions {
 			$pageObj->doPurge();
 
 			// make sure timestamp doesn't overlap with protection log's null revision (if any)
-			$timestamp = MediaWikiServices::getInstance()
+			$timestamp = $services
 				->getRevisionLookup()
 				->getTimestampFromId( $pageObj->getLatest() );
 			if ( $timestamp === wfTimestampNow() ) {

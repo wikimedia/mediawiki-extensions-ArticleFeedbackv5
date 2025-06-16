@@ -1,5 +1,10 @@
 <?php
 
+use MediaWiki\Context\RequestContext;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
+use MediaWiki\WikiMap\WikiMap;
+
 /**
  * This class formats all articlefeedbackv5log entries.
  *

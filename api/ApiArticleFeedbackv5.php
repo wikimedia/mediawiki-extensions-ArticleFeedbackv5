@@ -5,8 +5,12 @@
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
+use MediaWiki\Api\ApiBase;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
+use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ScopedCallback;
 
 /**
@@ -24,7 +28,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 	protected $filters = [ 'visible' => 1, 'notdeleted' => 1, 'all' => 1 ];
 
 	/**
-	 * @param ApiMain $main
+	 * @param MediaWiki\Api\ApiMain $main
 	 * @param string $action
 	 */
 	public function __construct( $main, $action ) {
@@ -192,8 +196,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 
 		// Are we set to auto-flag?
 		if ( $wgArticleFeedbackv5AbuseFiltering ) {
-			$afUser = MediaWikiServices::getInstance()
-				->getUserFactory()
+			$afUser = $services->getUserFactory()
 				->newFromAuthority( AbuseFilterServices::getFilterUser()->getAuthority() );
 			$flagger = new ArticleFeedbackv5Flagging( $afUser, $feedback->aft_id, $feedback->aft_page );
 			foreach ( self::$abuseFilterFlags as $flag => $rule_desc ) {
@@ -237,35 +240,35 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		$ret = [
 			'title' => null,
 			'pageid' => [
-				ApiBase::PARAM_TYPE     => 'integer',
+				ParamValidator::PARAM_TYPE     => 'integer',
 			],
 			'revid' => [
-				ApiBase::PARAM_TYPE     => 'integer',
-				ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE     => 'integer',
+				ParamValidator::PARAM_REQUIRED => true,
 			],
 			'anontoken' => [
-				ApiBase::PARAM_TYPE     => 'string',
-				ApiBase::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE     => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
 			],
 			'bucket' => [
-				ApiBase::PARAM_TYPE     => $formIds,
-				ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE     => $formIds,
+				ParamValidator::PARAM_REQUIRED => true,
 			],
 			'cta' => [
-				ApiBase::PARAM_TYPE     => $ctaIds,
-				ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE     => $ctaIds,
+				ParamValidator::PARAM_REQUIRED => true,
 			],
 			'link' => [
-				ApiBase::PARAM_TYPE     => $linkIds,
-				ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE     => $linkIds,
+				ParamValidator::PARAM_REQUIRED => true,
 			],
 			'found' => [
-				ApiBase::PARAM_TYPE     => [ '0', '1' ],
-				ApiBase::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE     => [ '0', '1' ],
+				ParamValidator::PARAM_REQUIRED => false,
 			],
 			'comment' => [
-				ApiBase::PARAM_TYPE     => 'string',
-				ApiBase::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE     => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
 			]
 		];
 
