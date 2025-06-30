@@ -18,7 +18,8 @@
 			"محمد أحمد عبد الفتاح",
 			"NEHAOUA",
 			"علاء",
-			"XIDME"
+			"XIDME",
+			"Mohammed Qays"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "تقديم ردود فعل المقالات",
@@ -202,7 +203,7 @@
 	"articlefeedbackv5-special-sort-age-asc": "الأقدم",
 	"articlefeedbackv5-special-sort-label": "رتب بواسطة:",
 	"articlefeedbackv5-special-filter-select-more": "المزيد",
-	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|1 تعليق|$1 تعليقات}}",
+	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|منشور واحد|منشوران|$1 منشورات|$1 منشورًا|$1 منشور}}",
 	"articlefeedbackv5-special-count-total-title": "$1 {{PLURAL:$1|مشاركة}} بتعليقات $2 {{PLURAL:$2|مشاركة}} بدون",
 	"articlefeedbackv5-special-watchlist-showing": "تعليقات لصفحات مراقبة من قبل [[$1|$2]]",
 	"articlefeedbackv5-special-central-watchlist-link": "[[$1|تعليقات من الصفحات المراقبة]]",
