@@ -30,7 +30,7 @@ class ApiArticleFeedbackv5Render extends ArticleFeedbackv5Render {
 
 		try {
 			$record->validate();
-		} catch ( Exception $e ) {
+		} catch ( Exception ) {
 			return [];
 		}
 

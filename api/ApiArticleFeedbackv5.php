@@ -166,8 +166,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 		// Save feedback
 		try {
 			$feedback->insert();
-		} catch ( MWException $e ) {
-			// $this->dieWithError( ( new RawMessage( '$1' ) )->plaintextParam( $e->getMessage() ), 'inserterror' ); // easier when debugging: show exact exception message
+		} catch ( MWException ) {
 			$this->dieWithError(
 				'articlefeedbackv5-error-submit',
 				'inserterror'
