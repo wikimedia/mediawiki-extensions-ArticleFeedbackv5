@@ -168,6 +168,12 @@ $specialPageAliases['vi'] = [
 	'ArticleFeedbackv5Watchlist' => [ 'Danh_sách_theo_dõi_Phản_hồi_bài_v5' ],
 ];
 
+/** Chinese (中文) */
+$specialPageAliases['zh'] = [
+	'ArticleFeedbackv5' => [ 'ArticleFeedbackv5' ],
+	'ArticleFeedbackv5Watchlist' => [ 'ArticleFeedbackv5Watchlist' ],
+];
+
 /** Simplified Chinese (中文（简体）) */
 $specialPageAliases['zh-hans'] = [
 	'ArticleFeedbackv5' => [ '条目反馈v5' ],
