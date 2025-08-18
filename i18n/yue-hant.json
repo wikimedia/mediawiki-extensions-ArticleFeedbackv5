@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Winston Sung"
+			"Winston Sung",
+			"Yueman"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "多謝！",
@@ -32,6 +33,7 @@
 	"articlefeedbackv5-form-unoversight": "還原",
 	"articlefeedbackv5-discussion-page": "傾偈",
 	"articlefeedbackv5-whats-this": "幫手",
+	"articlefeedbackv5-settings-menu-title": "自定喜好",
 	"articlefeedbackv5-comment-more": "多啲",
 	"articlefeedbackv5-noteflyover-hide-caption": "收埋",
 	"articlefeedbackv5-noteflyover-hide-help": "知多啲",
