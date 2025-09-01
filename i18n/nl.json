@@ -82,7 +82,7 @@
 	"articlefeedbackv5-error-spamregex": "Reactie is door SpamRegex als ongewenst gemarkeerd",
 	"articlefeedbackv5-error-spamblacklist": "Reactie is door SpamBlacklist als ongewenst gemarkeerd",
 	"articlefeedbackv5-error-nonexistent-page": "Pagina voor feedback bestaat niet",
-	"articlefeedbackv5-error-permission-denied": "Je bent niet gemachtigd om feedbackactiviteit te bekijken",
+	"articlefeedbackv5-error-permission-denied": "U bent niet gemachtigd om feedbackactiviteit te bekijken",
 	"articlefeedbackv5-error-nonexistent-feedback": "Feedback bestaat niet",
 	"articlefeedbackv5-cta-thanks": "Bedankt!",
 	"articlefeedbackv5-cta-confirmation-message": "U kunt uw bericht bekijken op deze [$1 terugkoppelingspagina].",
