@@ -7,10 +7,6 @@ class ArticleFeedbackv5AbuseFilterConsequence extends Consequence {
 	/** @var string */
 	private $autoFlagKey;
 
-	/**
-	 * @param Parameters $parameters
-	 * @param string $consName
-	 */
 	public function __construct( Parameters $parameters, string $consName ) {
 		parent::__construct( $parameters );
 		switch ( $consName ) {

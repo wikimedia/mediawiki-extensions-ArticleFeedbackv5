@@ -997,9 +997,6 @@ class ArticleFeedbackv5Hooks {
 		}
 	}
 
-	/**
-	 * @param array &$actions
-	 */
 	public static function onAbuseFilterCustomActions( array &$actions ): void {
 		$customActionNames = [ 'aftv5resolve', 'aftv5flagabuse', 'aftv5hide', 'aftv5request' ];
 		foreach ( $customActionNames as $name ) {
