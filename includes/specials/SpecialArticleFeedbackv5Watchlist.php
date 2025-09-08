@@ -3,7 +3,6 @@
  * SpecialArticleFeedbackv5Watchlist class
  *
  * @package    ArticleFeedback
- * @subpackage Special
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
@@ -14,7 +13,6 @@ use MediaWiki\Xml\XmlSelect;
  * This is the Special page the shows the feedback dashboard for pages on one's watchlist
  *
  * @package    ArticleFeedback
- * @subpackage Special
  */
 class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 

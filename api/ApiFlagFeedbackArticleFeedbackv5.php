@@ -13,7 +13,6 @@ use Wikimedia\ParamValidator\ParamValidator;
  * mark as useful) to feedback.
  *
  * @package    ArticleFeedback
- * @subpackage Api
  */
 class ApiFlagFeedbackArticleFeedbackv5 extends ApiBase {
 	/**

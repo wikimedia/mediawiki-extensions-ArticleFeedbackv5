@@ -12,10 +12,8 @@ use Wikimedia\IPUtils;
 /**
  * Hooks for ArticleFeedback
  *
- * @file
  * @ingroup Extensions
  */
-
 class ArticleFeedbackv5Hooks {
 	public static function registerExtension() {
 		global $wgContentNamespaces, $wgGroupPermissions, $wgLogActionsHandlers;

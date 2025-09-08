@@ -3,7 +3,6 @@
  * ApiSetStatusArticleFeedbackv5 class
  *
  * @package    ArticleFeedback
- * @subpackage Api
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
@@ -15,7 +14,6 @@ use Wikimedia\ParamValidator\ParamValidator;
  * This class allows one to quickly enable/disable the AFTv5 form for a certain page.
  *
  * @package    ArticleFeedback
- * @subpackage Api
  */
 class ApiSetStatusArticleFeedbackv5 extends ApiBase {
 	/**

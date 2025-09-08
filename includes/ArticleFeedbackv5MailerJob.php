@@ -3,7 +3,6 @@
  * SpecialArticleFeedbackv5 class
  *
  * @package    ArticleFeedback
- * @subpackage Job
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
  */
 
@@ -11,7 +10,6 @@
  * This is a job to do mailings for oversight requests
  *
  * @package    ArticleFeedback
- * @subpackage Job
  */
 class ArticleFeedbackv5MailerJob extends Job {
 	/**

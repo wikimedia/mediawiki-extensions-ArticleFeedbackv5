@@ -42,7 +42,7 @@ abstract class DataModel {
 	/**
 	 * Name of column to shard data over.
 	 *
-	 * @todo: at some point, we might want to shard over multiple columns;
+	 * @todo at some point, we might want to shard over multiple columns;
 	 * for now, only 1 is supported
 	 *
 	 * @var string

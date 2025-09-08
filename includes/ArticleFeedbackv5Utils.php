@@ -3,7 +3,6 @@
  * ArticleFeedbackv5Utils class
  *
  * @package    ArticleFeedback
- * @subpackage Api
  * @author     Greg Chiasson <greg@omniti.com>
  * @author     Reha Sterbin <reha@omniti.com>
  * @author     Matthias Mullie <mmullie@wikimedia.org>
@@ -17,7 +16,6 @@
  * class with inheritable methods. I don't get it either.
  *
  * @package    ArticleFeedback
- * @subpackage Api
  */
 
 use MediaWiki\Context\RequestContext;

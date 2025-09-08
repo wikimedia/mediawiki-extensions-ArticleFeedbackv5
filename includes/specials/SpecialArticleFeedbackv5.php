@@ -3,7 +3,6 @@
  * SpecialArticleFeedbackv5 class
  *
  * @package    ArticleFeedback
- * @subpackage Special
  * @author     Greg Chiasson <gchiasson@omniti.com>
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
  * @author     Matthias Mullie <mmullie@wikimedia.org>
@@ -18,7 +17,6 @@ use MediaWiki\Xml\XmlSelect;
  * This is the Special page the shows the feedback dashboard
  *
  * @package    ArticleFeedback
- * @subpackage Special
  */
 class SpecialArticleFeedbackv5 extends SpecialPage {
 

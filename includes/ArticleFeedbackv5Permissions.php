@@ -6,10 +6,8 @@ use MediaWiki\Title\Title;
 /**
  * Permissions for ArticleFeedback
  *
- * @file
  * @ingroup Extensions
  */
-
 class ArticleFeedbackv5Permissions {
 	/**
 	 * The AFT permission levels

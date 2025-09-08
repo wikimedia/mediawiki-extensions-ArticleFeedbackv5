@@ -3,7 +3,6 @@
  * ApiViewFeedbackArticleFeedbackv5 class
  *
  * @package    ArticleFeedback
- * @subpackage Api
  * @author     Greg Chiasson <greg@omniti.com>
  */
 
@@ -15,7 +14,6 @@ use Wikimedia\ParamValidator\ParamValidator;
  * This class pulls the individual ratings/comments for the feedback page.
  *
  * @package    ArticleFeedback
- * @subpackage Api
  */
 class ApiViewFeedbackArticleFeedbackv5 extends ApiQueryBase {
 

@@ -66,7 +66,6 @@
  *   set foldcolumn=0
  *
  * @package    ArticleFeedback
- * @subpackage Resources
  * @author     Reha Sterbin <reha@omniti.com>
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */

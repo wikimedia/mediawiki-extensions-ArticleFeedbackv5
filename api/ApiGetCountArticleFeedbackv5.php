@@ -3,7 +3,6 @@
  * ApiGetCountArticleFeedbackv5 class
  *
  * @package    ArticleFeedback
- * @subpackage Api
  * @author     Matthias Mullie <mmullie@wikimedia.org>
  */
 
@@ -14,7 +13,6 @@ use Wikimedia\ParamValidator\ParamValidator;
  * This class gets the amount of feedback for a certain page/filter.
  *
  * @package    ArticleFeedback
- * @subpackage Api
  */
 class ApiGetCountArticleFeedbackv5 extends ApiBase {
 	/**

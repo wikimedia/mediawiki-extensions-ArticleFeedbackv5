@@ -4,7 +4,6 @@
  * @param $
  * @param mw
  * @package    ArticleFeedback
- * @subpackage Resources
  * @author     Greg Chiasson <gchiasson@omniti.com>
  * @author     Yoni Shostak <yoni@omniti.com>
  * @author     Reha Sterbin <reha@omniti.com>

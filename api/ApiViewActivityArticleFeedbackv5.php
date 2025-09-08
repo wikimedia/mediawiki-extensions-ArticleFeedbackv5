@@ -3,7 +3,6 @@
  * ApiViewActivityArticleFeedbackv5 class
  *
  * @package    ArticleFeedback
- * @subpackage Api
  * @author     Elizabeth M Smith <elizabeth@omniti.com>
  */
 
@@ -21,7 +20,6 @@ use Wikimedia\ParamValidator\TypeDef\IntegerDef;
  * This class pulls the aggregated ratings for display in Bucket #5
  *
  * @package    ArticleFeedback
- * @subpackage Api
  */
 class ApiViewActivityArticleFeedbackv5 extends ApiQueryBase {
 
