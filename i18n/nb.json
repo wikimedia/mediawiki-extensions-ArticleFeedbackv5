@@ -64,6 +64,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Hva slags filtrering som skal brukes på lista",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "ID-en til et spesifikt tilbakemeldingselement som skal hentes",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Offset data skal begynne å hentes fra",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "Visningsmodus; <kbd>html</kbd> for HTML (bruker ArticleFeedackv5Render-klassen internt) eller <kbd>structured</kbd> for mer strukturerte, maskinlesbare data (bruker ApiArticleFeedbackv5Render-klassen internt)",
 	"articlefeedbackv5-error-spamregex": "Kommentaren ble merket som krenkende av SpamRegex",
 	"articlefeedbackv5-error-spamblacklist": "Kommentaren ble merket som krenkende av SpamBlacklist",
 	"articlefeedbackv5-error-nonexistent-page": "Siden for tilbakemelding finnes ikke",
