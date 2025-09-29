@@ -392,7 +392,7 @@
 	"articlefeedbackv5-permalink-status-resolve": "{{GENDER:$1|<strong>Merket som løst</strong> av $1}} for $2",
 	"articlefeedbackv5-permalink-status-unresolve": "{{GENDER:$1|<strong>Avmerket som løst</strong> av $1}} for $2",
 	"articlefeedbackv5-permalink-status-noaction": "{{GENDER:$1|<strong>Merket som ikke-handling</strong> av $1}} $2",
-	"articlefeedbackv5-permalink-status-unnoaction": "{{GENDER:$1|<strong>Avmerket son ikke-handling</strong> av $1}} $2",
+	"articlefeedbackv5-permalink-status-unnoaction": "{{GENDER:$1|<strong>Avmerket som ikke-handling</strong> av $1}} $2",
 	"articlefeedbackv5-permalink-status-inappropriate": "{{GENDER:$1|<strong>Skjult</strong> av $1}} for $2 siden",
 	"articlefeedbackv5-permalink-status-uninappropriate": "{{GENDER:$1|<strong>Vist igjen</strong> av $1}} for $2 siden",
 	"articlefeedbackv5-permalink-status-archive": "{{GENDER:$1|<strong>Arkivert</strong> av $1}} $2",
