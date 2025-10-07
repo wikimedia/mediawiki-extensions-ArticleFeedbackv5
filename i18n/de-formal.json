@@ -11,7 +11,5 @@
 	},
 	"articlefeedbackv5-cta6-confirmation-call": "Kommen Sie zum Teehaus, um das Bearbeiten von {{SITENAME}} zu diskutieren. Dort tauschen neue und erfahrene Autoren nützliche Tipps untereinander aus.",
 	"articlefeedbackv5-error-abuse": "Ihr Beitrag wurde vom Softwarefilter zurückgewiesen, der nahelegt, dass er möglicherweise die [$1 Rückmeldungsrichtlinien] von {{SITENAME}} verletzt. Bitte überarbeiten Sie Ihren Beitrag und versuchen Sie es noch einmal.",
-	"articlefeedbackv5-error-throttled": "Ihr Beitrag wurde zurückgewiesen, da Sie in jüngster Vergangenheit mehr als die empfohlene Anzahl an Rückmeldungen, gemäß der Rückmeldungsrichtlinien von {{SITENAME}}, hinterlassen haben. Bitte hinterlassen Sie nicht zu viele Rückmeldungen.",
-	"articlefeedbackv5-bucket6-question-placeholder-yes": "Geben Sie Ihren Verbesserungsvorschlag hier an (z. B. „Dieser Artikel muss noch bebildert werden.“)",
-	"articlefeedbackv5-bucket6-question-placeholder-no": "Geben Sie Ihren Verbesserungsvorschlag hier an (z. B. „Dieser Artikel muss noch bebildert werden.“)"
+	"articlefeedbackv5-error-throttled": "Ihr Beitrag wurde zurückgewiesen, da Sie in jüngster Vergangenheit mehr als die empfohlene Anzahl an Rückmeldungen, gemäß der Rückmeldungsrichtlinien von {{SITENAME}}, hinterlassen haben. Bitte hinterlassen Sie nicht zu viele Rückmeldungen."
 }
