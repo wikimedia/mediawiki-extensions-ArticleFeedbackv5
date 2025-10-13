@@ -42,7 +42,8 @@
 			"Wikifan",
 			"Wladek92",
 			"Wyz",
-			"Alien333"
+			"Alien333",
+			"Escargot bleu"
 		]
 	},
 	"apihelp-articlefeedbackv5-description": "Soumettre un commentaire sur un article",
@@ -69,7 +70,7 @@
 	"apihelp-articlefeedbackv5-flag-feedback-param-flagtype": "Type d’indicateur à appliquer",
 	"apihelp-articlefeedbackv5-flag-feedback-param-note": "Informations sur la raison pour laquelle les commentaires ont commencé",
 	"apihelp-articlefeedbackv5-flag-feedback-param-toggle": "L’indicateur est géré unitairement, utile uniquement pour apporter une aide ou pas",
-	"apihelp-articlefeedbackv5-flag-feedback-param-source": "L’origine de l’indicateur : article (une page), centrale (page de commentaires), liste de surveillance (page), permalien",
+	"apihelp-articlefeedbackv5-flag-feedback-param-source": "L’origine de l’indicateur : article (une page), centrale (page de commentaires), liste de suivi (page), permalien",
 	"apihelp-articlefeedbackv5-add-flag-note-description": "Ajouter une note décrivant l’activité, après que l’action ait déjà été effectuée.",
 	"apihelp-articlefeedbackv5-add-flag-note-summary": "Ajouter une note décrivant l’activité après que l’action ait déjà été effectuée.",
 	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Identifiant de journal à mettre à jour",
