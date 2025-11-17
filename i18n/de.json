@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Als-Holder",
+			"Ameisenigel",
 			"Danmichaelo",
 			"DraconicDark",
 			"Erzbischof",
@@ -513,7 +514,7 @@
 	"articlefeedbackv5-bucket4-title": "Sie können helfen, diesen Artikel zu verbessern:",
 	"articlefeedbackv5-bucket4-subhead": "{{#FORMAL:Wusstest du|Wussten Sie}}, dass {{#FORMAL:du|Sie}} diese Seite bearbeiten {{#FORMAL:kannst|können}}?",
 	"articlefeedbackv5-bucket4-teaser-line1": "{{SITENAME}} funktioniert, weil jeder die Seiten bearbeiten kann.",
-	"articlefeedbackv5-bucket4-teaser-line2": "Nur zu, versuchen Sie es und seien Sie mutig!",
+	"articlefeedbackv5-bucket4-teaser-line2": "Nur zu, versuche es und sei mutig!",
 	"articlefeedbackv5-bucket4-learn-to-edit": "Erfahren Sie, wie man Seiten bearbeitet",
 	"articlefeedbackv5-bucket4-form-submit": "Diese Seite bearbeiten",
 	"articlefeedbackv5-bucket4-help-tooltip-info": "{{SITENAME}} möchte wissen, was Sie denken. Helfen Sie mit, diese Seite zu verbessern, indem Sie ein Autor werden.",
