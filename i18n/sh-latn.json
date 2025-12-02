@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jack Phoenix",
-			"Winston Sung"
+			"Winston Sung",
+			"Aca"
 		]
 	},
 	"apihelp-articlefeedbackv5-summary": "Dajte mišljenje o članku",
@@ -252,7 +253,7 @@
 	"articlefeedbackv5-form-tooltip-note": "Dodajte bilješku s objašnjavanjem za oznaku",
 	"articlefeedbackv5-form-tooltip-feature": "Ovo može pomoći poboljšati stranicu",
 	"articlefeedbackv5-form-tooltip-unfeature": "Vrati oznaku za korisnost",
-	"articlefeedbackv5-form-tooltip-resolve": "To koristilo se (ili razgledavalo se za upotrebu) na stranici",
+	"articlefeedbackv5-form-tooltip-resolve": "To se koristilo (ili razgledavalo se za upotrebu) na stranici",
 	"articlefeedbackv5-form-tooltip-unresolve": "Vrati oznaku za riješenost",
 	"articlefeedbackv5-form-tooltip-noaction": "Nejasno, nerelevantno, pohvalno, duplikat ...",
 	"articlefeedbackv5-form-tooltip-unnoaction": "Vrati oznaku za netraženje postupka",
