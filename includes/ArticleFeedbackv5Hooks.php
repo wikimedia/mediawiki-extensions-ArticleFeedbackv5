@@ -6,7 +6,6 @@ use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
-use MediaWiki\Xml\Xml;
 use Wikimedia\IPUtils;
 
 /**
@@ -576,12 +575,16 @@ class ArticleFeedbackv5Hooks {
 			'name' => $id,
 			'size' => count( $levels )
 		] + $disabledAttrib;
-		$permissionsDropdown = Xml::openElement( 'select', $attribs );
+		$permissionsDropdown = Html::openElement( 'select', $attribs );
 		foreach ( $levels as $key => $label ) {
 			// possible labels: protect-level-aft-(reader|member|editor|administrator|noone)
-			$permissionsDropdown .= Xml::option( wfMessage( $label )->text(), $key, $key == $existingRestriction->pr_level );
+			$permissionsDropdown .= Html::element(
+				'option',
+				[ 'value' => $key, 'selected' => $key == $existingRestriction->pr_level ? 'selected' : null ],
+				wfMessage( $label )->text()
+			);
 		}
-		$permissionsDropdown .= Xml::closeElement( 'select' );
+		$permissionsDropdown .= Html::closeElement( 'select' );
 
 		$scExpiryOptions = wfMessage( 'protect-expiry-options' )->inContentLanguage()->text();
 		$showProtectOptions = ( $scExpiryOptions !== '-' );
@@ -603,15 +606,15 @@ class ArticleFeedbackv5Hooks {
 				$d = $lang->date( $mExistingExpiry, true );
 				$t = $lang->time( $mExistingExpiry, true );
 				$expiryFormOptions .=
-					Xml::option(
-						wfMessage( 'protect-existing-expiry', $timestamp, $d, $t )->text(),
-						'existing',
-						$mExpirySelection == 'existing'
+					Html::element(
+						'option',
+						[ 'value' => 'existing', 'selected' => $mExpirySelection == 'existing' ? 'selected' : null ],
+						wfMessage( 'protect-existing-expiry', $timestamp, $d, $t )->text()
 					);
 			}
 
 			// add regular expiry options
-			$expiryFormOptions .= Xml::option( wfMessage( 'protect-othertime-op' )->text(), 'othertime' );
+			$expiryFormOptions .= Html::element( 'option', [ 'value' => 'othertime' ], wfMessage( 'protect-othertime-op' )->text() );
 			foreach ( explode( ',', $scExpiryOptions ) as $option ) {
 				if ( strpos( $option, ':' ) === false ) {
 					$show = $value = $option;
@@ -619,11 +622,11 @@ class ArticleFeedbackv5Hooks {
 					[ $show, $value ] = explode( ':', $option );
 				}
 
-				$expiryFormOptions .= Xml::option( $show, $value, $mExpirySelection == $value );
+				$expiryFormOptions .= Html::element( 'option', [ 'value' => $value, 'selected' => $mExpirySelection == $value ? 'selected' : null ], $show );
 			}
 
 			// build expiry dropdown
-			$protectExpiry = Xml::tags( 'select',
+			$protectExpiry = Html::rawElement( 'select',
 				[
 					'id' => 'articlefeedbackv5-protection-expiration-selection',
 					'name' => 'articlefeedbackv5-protection-expiration-selection',
@@ -650,9 +653,9 @@ class ArticleFeedbackv5Hooks {
 		$output .= "
 				<tr>
 					<td>" .
-			Xml::openElement( 'fieldset' ) .
-			Xml::element( 'legend', null, wfMessage( 'articlefeedbackv5-protection-level' )->text() ) .
-			Xml::openElement( 'table', [ 'id' => 'mw-protect-table-aft' ] ) . "
+			Html::openElement( 'fieldset' ) .
+			Html::element( 'legend', [], wfMessage( 'articlefeedbackv5-protection-level' )->text() ) .
+			Html::openElement( 'table', [ 'id' => 'mw-protect-table-aft' ] ) . "
 								<tr>
 									<td>$permissionsDropdown</td>
 								</tr>
@@ -676,8 +679,8 @@ class ArticleFeedbackv5Hooks {
 										</table>
 									</td>
 								</tr>" .
-			Xml::closeElement( 'table' ) .
-			Xml::closeElement( 'fieldset' ) . "
+			Html::closeElement( 'table' ) .
+			Html::closeElement( 'fieldset' ) . "
 					</td>
 				</tr>";
 
@@ -782,7 +785,7 @@ class ArticleFeedbackv5Hooks {
 		}
 
 		$protectLogPage = new LogPage( 'articlefeedbackv5' );
-		$out->addHTML( Xml::element( 'h2', null, $protectLogPage->getName()->text() ) );
+		$out->addHTML( Html::element( 'h2', [], $protectLogPage->getName()->text() ) );
 		LogEventsList::showLogExtract( $out, 'articlefeedbackv5', $article->getTitle() );
 	}
 
