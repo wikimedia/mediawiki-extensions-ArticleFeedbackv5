@@ -631,7 +631,7 @@ class ArticleFeedbackv5Hooks {
 					'onchange' => 'javascript:if ( $( this ).val() != "othertime" ) $( "#articlefeedbackv5-protection-expiration" ).val( "" );',
 				],
 				$expiryFormOptions );
-			$mProtectExpiry = Xml::label( wfMessage( 'protectexpiry' )->text(), 'mwProtectExpirySelection-aft' );
+			$mProtectExpiry = Html::label( wfMessage( 'protectexpiry' )->text(), 'mwProtectExpirySelection-aft' );
 		}
 
 		// build custom expiry field
@@ -644,7 +644,7 @@ class ArticleFeedbackv5Hooks {
 		] + $disabledAttrib;
 
 		$protectOther = Html::input( 'articlefeedbackv5-protection-expiration', '50', $mExpiry, $attribs );
-		$mProtectOther = Xml::label( wfMessage( 'protect-othertime' )->text(), "mwProtect-aft-expires" );
+		$mProtectOther = Html::label( wfMessage( 'protect-othertime' )->text(), "mwProtect-aft-expires" );
 
 		// build output
 		$output .= "
