@@ -87,17 +87,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 	/**
 	 * @param string $name
-	 * @param string $restriction
-	 * @param bool $listed
-	 * @param bool $function
-	 * @param string $file
-	 * @param bool $includable
 	 */
-	public function __construct(
-		$name = 'ArticleFeedbackv5', $restriction = '', $listed = true,
-		$function = false, $file = 'default', $includable = false
-	) {
-		parent::__construct( $name, $restriction, $listed, $function, $file, $includable );
+	public function __construct( $name = 'ArticleFeedbackv5' ) {
+		parent::__construct( $name );
 	}
 
 	/**

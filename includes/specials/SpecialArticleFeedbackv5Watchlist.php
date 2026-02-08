@@ -23,19 +23,8 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 	 */
 	protected $user;
 
-	/**
-	 * @param string $name
-	 * @param string $restriction
-	 * @param bool $listed
-	 * @param bool $function
-	 * @param string $file
-	 * @param bool $includable
-	 */
-	public function __construct(
-		$name = 'ArticleFeedbackv5Watchlist', $restriction = '', $listed = true,
-		$function = false, $file = 'default', $includable = false
-	) {
-		parent::__construct( $name, $restriction, $listed, $function, $file, $includable );
+	public function __construct() {
+		parent::__construct( 'ArticleFeedbackv5Watchlist' );
 	}
 
 	/**
