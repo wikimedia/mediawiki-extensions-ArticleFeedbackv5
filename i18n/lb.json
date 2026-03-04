@@ -214,7 +214,7 @@
 	"articlefeedbackv5-form1-header-not-found": "$1 huet net fonnt wat {{GENDER:$1|$2 hien|$2 si|$2 hien oder si}} gesicht huet",
 	"articlefeedbackv5-form1-header-left-comment": "{{GENDER:$1|$2 huet eng Bemierkung publizéiert.}}",
 	"articlefeedbackv5-form2-header-praise": "{{GENDER:$1|$1}} huet e Luef ausgeschwat:",
-	"articlefeedbackv5-form2-header-problem": "{{GENDER:$1|$1}} hat e Probleem:",
+	"articlefeedbackv5-form2-header-problem": "{{GENDER:$1|De(n) $1|D'$1}} hat e Problem:",
 	"articlefeedbackv5-form2-header-question": "{{GENDER:$1|$1}} hat eng Fro:",
 	"articlefeedbackv5-form2-header-suggestion": "{{GENDER:$1|$1}} huet e Virschlag gemaach:",
 	"articlefeedbackv5-form-anon-username": "E Lieser",
