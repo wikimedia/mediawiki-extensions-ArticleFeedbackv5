@@ -871,7 +871,7 @@ class ArticleFeedbackv5Render {
 					// Give grep a chance to find the usages:
 					// articlefeedbackv5-discuss-talk-section-title, articlefeedbackv5-discuss-user-section-title
 					$sectionTitle = wfMessage( "articlefeedbackv5-discuss-$discussType-section-title" )
-						->params( $record->aft_comment, $record->getArticle()->getTitle() )
+						->params( $record->aft_comment, $record->getArticle()->getTitle()->getPrefixedText() )
 						->inContentLanguage()
 						->text();
 					$sectionTitleTruncated = $lang->truncateForVisual( $sectionTitle, 60 );
@@ -895,12 +895,12 @@ class ArticleFeedbackv5Render {
 						->inContentLanguage()
 						->params(
 							(string)$userText,
-							SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$record->aft_id" ),
+							SpecialPage::getTitleFor( 'ArticleFeedbackv5', "$title/$record->aft_id" )->getPrefixedText(),
 							$lang->userDate( $record->aft_timestamp, $currentUser ),
 							$lang->userTime( $record->aft_timestamp, $currentUser ),
-							SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title ),
+							SpecialPage::getTitleFor( 'ArticleFeedbackv5', $title )->getPrefixedText(),
 							Message::rawParam( Html::element( 'blockquote', [], $record->aft_comment ) ),
-							$record->getArticle()->getTitle()
+							$record->getArticle()->getTitle()->getPrefixedText()
 						)
 						->text();
 

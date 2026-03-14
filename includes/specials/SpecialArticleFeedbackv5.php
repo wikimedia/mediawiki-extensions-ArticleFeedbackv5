@@ -185,9 +185,9 @@ class SpecialArticleFeedbackv5 extends SpecialPage {
 
 		// build title
 		if ( $permalink ) {
-			$msg = $this->msg( 'articlefeedbackv5-special-permalink-pagetitle', $this->title );
+			$msg = $this->msg( 'articlefeedbackv5-special-permalink-pagetitle', $this->title->getPrefixedText() );
 		} elseif ( !$central ) {
-			$msg = $this->msg( 'articlefeedbackv5-special-pagetitle', $this->title );
+			$msg = $this->msg( 'articlefeedbackv5-special-pagetitle', $this->title->getPrefixedText() );
 		} else {
 			$msg = $this->msg( 'articlefeedbackv5-special-central-pagetitle' );
 		}

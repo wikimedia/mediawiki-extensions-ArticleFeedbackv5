@@ -72,7 +72,7 @@ class ArticleFeedbackv5LogFormatter extends LogFormatter {
 			->params( [
 				Message::rawParam( $this->getPerformerElement() ),
 				$this->entry->getPerformerIdentity()->getId(),
-				$target,
+				$target->getPrefixedText(),
 				ArticleFeedbackv5Utils::formatId( $parameters['feedbackId'] ),
 				$page
 			] )
