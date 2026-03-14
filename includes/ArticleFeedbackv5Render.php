@@ -1199,7 +1199,7 @@ class ArticleFeedbackv5Render {
 						Html::element(
 							'dd',
 							[],
-							$relevance > 0 ? '+' . $relevance : $relevance
+							$relevance > 0 ? '+' . $relevance : (string)$relevance
 						) .
 						Html::rawElement(
 							'dt',
@@ -1209,7 +1209,7 @@ class ArticleFeedbackv5Render {
 						Html::element(
 							'dd',
 							[],
-							$helpfulness > 0 ? '+' . $helpfulness : $helpfulness
+							$helpfulness > 0 ? '+' . $helpfulness : (string)$helpfulness
 						)
 					)
 				)

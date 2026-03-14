@@ -198,6 +198,7 @@ class ApiArticleFeedbackv5 extends ApiBase {
 			$afUser = $services->getUserFactory()
 				->newFromAuthority( AbuseFilterServices::getFilterUser()->getAuthority() );
 			$flagger = new ArticleFeedbackv5Flagging( $afUser, $feedback->aft_id, $feedback->aft_page );
+			// @phan-suppress-next-line PhanEmptyForeach
 			foreach ( self::$abuseFilterFlags as $flag => $rule_desc ) {
 				$notes = wfMessage(
 					"articlefeedbackv5-abusefilter-note-aftv5$flag",

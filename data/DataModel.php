@@ -542,6 +542,7 @@ abstract class DataModel {
 			static::setCache( $cache );
 		}
 
+		// @phan-suppress-next-line PhanTypeMismatchReturnProbablyReal
 		return static::$cache;
 	}
 
@@ -570,6 +571,7 @@ abstract class DataModel {
 			static::setBackend( $backend );
 		}
 
+		// @phan-suppress-next-line PhanTypeMismatchReturnProbablyReal
 		return static::$backend;
 	}
 

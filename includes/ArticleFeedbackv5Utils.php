@@ -31,7 +31,7 @@ use MediaWiki\WikiMap\WikiMap;
 
 class ArticleFeedbackv5Utils {
 	/**
-	 * @var \Wikimedia\Rdbms\LoadBalancer[]
+	 * @var \Wikimedia\Rdbms\ILoadBalancer[]
 	 */
 	protected static $lb = [];
 
@@ -42,7 +42,7 @@ class ArticleFeedbackv5Utils {
 
 	/**
 	 * @param string|false $wiki The wiki ID, or false for the current wiki
-	 * @return \Wikimedia\Rdbms\LoadBalancer
+	 * @return \Wikimedia\Rdbms\ILoadBalancer
 	 */
 	public static function getLB( $wiki = false ) {
 		if ( !isset( static::$lb[$wiki] ) ) {
