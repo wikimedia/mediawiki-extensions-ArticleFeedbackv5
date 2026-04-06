@@ -38,8 +38,8 @@ class SpecialArticleFeedbackv5Watchlist extends SpecialArticleFeedbackv5 {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
-		// if watchlist not enabled or anon user is visiting, redirect to central feedback page
-		if ( !$wgArticleFeedbackv5Watchlist || $user->isAnon() ) {
+		// if watchlist not enabled or an anon or temporary user is visiting, redirect to central feedback page
+		if ( !$wgArticleFeedbackv5Watchlist || !$user->isNamed() ) {
 			$out->redirect( SpecialPage::getTitleFor( 'ArticleFeedbackv5' )->getFullUrl() );
 		}
 

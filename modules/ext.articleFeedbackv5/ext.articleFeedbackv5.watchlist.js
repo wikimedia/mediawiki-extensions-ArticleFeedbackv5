@@ -15,8 +15,8 @@
 		// Check if the watchlist is enabled & link can be shown
 		if ( mw.config.get( 'wgArticleFeedbackv5Watchlist' ) && mw.config.get( 'wgArticleFeedbackv5WatchlistLink' ) ) {
 
-			// Check if we're not dealing with anon user
-			if ( mw.user.isAnon() ) {
+			// Check if we're not dealing with an anon or a temporary user
+			if ( !mw.user.isNamed() ) {
 				return;
 			}
 
