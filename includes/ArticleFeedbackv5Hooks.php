@@ -469,10 +469,13 @@ class ArticleFeedbackv5Hooks {
 				->plain();
 		}
 
+		$chardiff = ChangesList::showCharacterDifference(
+			0, strlen( $record->aft_comment ), $pager->getContext()
+		);
 		$ret = wfMessage( 'articlefeedbackv5-contribs-entry' )
 			->params(
 				$dateFormats['timeAndDate'], // timeanddate
-				ChangesList::showCharacterDifference( 0, strlen( $record->aft_comment ) ), // chardiff
+				$chardiff,
 				$feedbackCentralPageTitle->getFullText(), // feedback link
 				$pageTitle->getPrefixedText(), // article title
 				$record->aft_id // feedback entry ID, used for building the link to the AFTv5 special page
