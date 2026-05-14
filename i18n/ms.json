@@ -544,7 +544,7 @@
 	"articlefeedbackv5-talk-view-feedback": "Baca cadangan pengguna",
 	"articlefeedbackv5-watchlist-view-feedback": "Maklum balas dari halaman-halaman yang saya pantau",
 	"articlefeedbackv5-email-request-oversight-subject": "Pengetepian dipohon untuk halaman maklum balas rencana",
-	"articlefeedbackv5-email-request-oversight-body": "Selamat sejahtera, para petugas pengetepian!\n\n$1 telah memohon agar diketepikannya maklum balas yang dihantar tentang halaman ini:\n\n$2\n\nSila meneliti pos maklum balas ini, kemudian terima atau tolak pemohonan ini:\n\n$3\n\n$5\n\nTerima kasih,\n\n\nPasukan {{SITENAME}}\n\n\nP.S.: Jika anda ada sebarang soalah tentang penggunaan ciri-ciri pengetepian pada laman maklum balas rencana, sila meneliti Soalan Lazim untuk petugas pengetepian yang berikut:\n\n$4",
+	"articlefeedbackv5-email-request-oversight-body": "Salam sejahtera para pengawas!\n\nPengawasan telah diminta oleh $1 untuk maklum balas yang disiarkan pada laman ini:\n\n$2\n\nSila semak siaran maklum balas ini, kemudian luluskan atau tolak permintaan pengawasan ini:\n\n$3\n$5\n\nTerima kasih,\n\n\nPasukan {{SITENAME}}.\n\n\nP.S.: Jika anda mempunyai sebarang soalan tentang cara penggunaan ciri pengawasan laman maklum balas rencana, sila semak Soalan Lazim pengawas di sini:\n\n$4",
 	"articlefeedbackv5-email-request-oversight-body-notes": "Komen ini disertakan dengan permohonan pengetepian ini:\n\n$1",
 	"articlefeedbackv5-disable-flyover-title": "Gugurkan alat ini?",
 	"articlefeedbackv5-disable-flyover-help-message": "Untuk menggugurkan Maklum Balas, pergi ke \"$1\" > \"$2\", kemudian tanda \"$3\"",
