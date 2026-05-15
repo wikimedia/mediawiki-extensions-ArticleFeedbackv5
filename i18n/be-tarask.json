@@ -125,7 +125,7 @@
 	"articlefeedbackv5-settings-status-disable": "Забараніць водгукі на гэтай старонцы",
 	"articlefeedbackv5-enabled-form-message": "Водгукі былі ўключаныя. Водгукі чытачоў будуць бачныя [$1 на старонцы водгукаў].",
 	"articlefeedbackv5-contribs-entry": "[[Special:ArticleFeedbackv5/$4/$5|$1]] . . $2 . . [[$3|Водгук: $4]] $6 $7",
-	"articlefeedbackv5-contribs-entry-status": ". . Стан: $1",
+	"articlefeedbackv5-contribs-entry-status": ". . Статус: $1",
 	"articlefeedbackv5-contribs-status-action-helpful": "Карысна",
 	"articlefeedbackv5-contribs-status-action-flag": "Пазначаныя",
 	"articlefeedbackv5-contribs-status-action-feature": "Карысна",
