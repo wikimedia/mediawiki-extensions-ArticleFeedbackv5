@@ -22,7 +22,8 @@
 			"SiLveRLeaD",
 			"Stultiwikia",
 			"Suelnur",
-			"Vito Genovese"
+			"Vito Genovese",
+			"HakanIST"
 		]
 	},
 	"apihelp-articlefeedbackv5-summary": "Madde geri bildirimi gönder",
@@ -75,6 +76,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "Listeye uygulanacak filtreleme",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-feedbackid": "Alınacak belirli bir geribildirim öğesinin kimliği",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-offset": "Konumunda kapma verilerini başlatmak için ofset",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-mode": "Oluşturma modu: HTML için <kbd>html</kbd> (dahili olarak ArticleFeedbackv5Render sınıfını kullanır) veya daha yapılandırılmış, makine tarafından okunabilir veriler için <kbd>structured</kbd> (dahili olarak ApiArticleFeedbackv5Render sınıfını kullanır).",
 	"articlefeedbackv5-error-spamregex": "Yorum SpamRegex tarafından kötü niyetli olarak işaretlendi",
 	"articlefeedbackv5-error-spamblacklist": "Yorum SpamBlacklist tarafından kötü niyetli olarak işaretlendi",
 	"articlefeedbackv5-error-nonexistent-page": "Geri bildirim sayfası yok",
