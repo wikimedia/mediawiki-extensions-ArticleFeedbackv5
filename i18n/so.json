@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Abdullahi",
-			"Abshirdheere"
+			"Abshirdheere",
+			"AhmedG612"
 		]
 	},
 	"articlefeedbackv5-cta-thanks": "Mahdsanid!",
@@ -43,11 +44,11 @@
 	"articlefeedbackv5-error-throttled": "La ogola ka qayb galkaada maxaa yeelay waxaad sameeysay faalooyin farabadan taasoo ka badan inta la ogolyahay ee xeerka {{SITENAME}}'ha. Fadlan waqti yar oo kooban gudihiis faalooyin farabadan hasamaynin.",
 	"articlefeedbackv5-protection-level": "Faalooyinka maqaalada",
 	"articlefeedbackv5-protection-level-error": "Suuragal maaha in ay ahaato heerka ilaalinta faalooyinka maqaalada mid ka sareeysa heerka ilaalinta wax bedelka",
-	"protect-level-aft-reader": "Gudagalayaasha dhamantood loo sahlay",
-	"protect-level-aft-member": "Waxaa loo sahlay dhamaan isticmaale yaasha gudaha galay oo kaliya",
-	"protect-level-aft-editor": "Waxaa loo sahlay isticmaale yaasha la hubiyey si \"Iskeed ah\"",
-	"protect-level-aft-administrator": "Waxaa loo sahlay maamule yaasha oo kaliya",
-	"protect-level-aft-noone": "Looma ogola dhamaan isticmaale yaasha",
+	"protect-level-aft-reader": "Daar dhammaan isticmaalayaasha",
+	"protect-level-aft-member": "Daar isticmaalayaasha soo galay oo keliya",
+	"protect-level-aft-editor": "Daar isticmaalayaasha si toos ah loo xaqiijiyay oo keliya",
+	"protect-level-aft-administrator": "Daar maamulayaasha oo keliya",
+	"protect-level-aft-noone": "Dami dhammaan isticmaalayaasha",
 	"articlefeedbackv5-disabled": "Faalada waxaa laga dhigay howl gab",
 	"articlefeedbackv5-special-filter-featured": "Kiis gaar ah ($1)",
 	"articlefeedbackv5-special-filter-select-more": "Dheeraad",
