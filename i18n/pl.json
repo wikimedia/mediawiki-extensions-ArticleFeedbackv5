@@ -24,7 +24,8 @@
 			"Vengir",
 			"WTM",
 			"WaldiSt",
-			"Woytecr"
+			"Woytecr",
+			"PanWor"
 		]
 	},
 	"apihelp-articlefeedbackv5-summary": "Prześlij opinię o artykule",
@@ -52,7 +53,7 @@
 	"articlefeedbackv5-cta3-confirmation-call": "To zajmie tylko minutę a pomoże w ulepszeniu witryny {{SITENAME}}.",
 	"articlefeedbackv5-cta3-button-text": "Początek ankiety",
 	"articlefeedbackv5-cta4-confirmation-title": "Dołącz do naszej społeczności",
-	"articlefeedbackv5-cta4-confirmation-call-line1": "Zarejestruj się lub zaloguj aby edytorzy mogli odpowiedzieć na twoje uwagi.",
+	"articlefeedbackv5-cta4-confirmation-call-line1": "Zarejestruj się lub zaloguj, aby redaktorzy mogli odpowiedzieć na Twoje uwagi.",
 	"articlefeedbackv5-cta4-confirmation-call-line2": "Darmowe konto ułatwia dzielenie się tym co wiesz na {{SITENAME}}.",
 	"articlefeedbackv5-cta4-button-text-signup": "Załóż konto",
 	"articlefeedbackv5-cta4-button-text-login": "Zaloguj się",
