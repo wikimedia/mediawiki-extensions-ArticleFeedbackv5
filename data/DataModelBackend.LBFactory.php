@@ -18,24 +18,16 @@ class DataModelBackendLBFactory extends DataModelBackend {
 	protected static $written = [];
 
 	/**
-	 * @param string|false $wiki The wiki ID, or false for the current wiki
-	 * @return \Wikimedia\Rdbms\ILoadBalancer
-	 */
-	public function getLB( $wiki = false ) {
-		return MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getMainLB( $wiki );
-	}
-
-	/**
 	 * Wrapper function for wfGetDB.
 	 *
 	 * @param int $db Index of the connection to get. May be DB_PRIMARY for the
-	 *            primary database (for write queries), DB_REPLICA for potentially lagged read
-	 *            queries, or an integer >= 0 for a particular server.
+	 *            primary database (for write queries) or DB_REPLICA for potentially lagged read
+	 *            queries.
 	 * @param string[]|string $groups Query groups. An array of group names that this query
 	 *                belongs to. May contain a single string if the query is only
 	 *                in one group.
 	 * @param string|false $wiki The wiki ID, or false for the current wiki
-	 * @return \Wikimedia\Rdbms\IDatabase
+	 * @return \Wikimedia\Rdbms\IDatabase|\Wikimedia\Rdbms\IReadableDatabase
 	 */
 	public function getDB( $db, $groups = [], $wiki = false ) {
 		/*
@@ -50,8 +42,6 @@ class DataModelBackendLBFactory extends DataModelBackend {
 		 */
 		$wikiId = ( $wiki === false ) ? WikiMap::getCurrentWikiId() : $wiki;
 
-		$lb = $this->getLB( $wiki );
-
 		if ( $db === DB_PRIMARY ) {
 			// mark that we're writing data
 			static::$written[$wikiId] = true;
@@ -65,7 +55,23 @@ class DataModelBackendLBFactory extends DataModelBackend {
 			}
 		}
 
-		return $lb->getConnection( $db, $groups, $wiki );
+		$services = MediaWikiServices::getInstance();
+		if ( $db === DB_PRIMARY ) {
+			return $services->getDBLoadBalancerFactory()->getPrimaryDatabase( 'virtual-articlefeedbackv5' );
+		} else {
+			// Assume $db is DB_REPLICA, then
+			$groupStr = $groups;
+			if ( is_array( $groups ) && isset( $groups[0] ) ) {
+				$groupStr = $groups[0];
+			} elseif ( $groups === [] ) {
+				$groupStr = null;
+			}
+
+			return $services->getDBLoadBalancerFactory()->getReplicaDatabase(
+				'virtual-articlefeedbackv5',
+				$groupStr
+			);
+		}
 	}
 
 	/**

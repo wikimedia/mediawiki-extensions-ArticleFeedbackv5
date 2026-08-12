@@ -53,7 +53,7 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 	 * it works similar to any other action plus caches will update nicely.
 	 */
 	public function execute() {
-		global $wgArticleFeedbackv5Cluster, $wgArticleFeedbackv5AutoArchiveEnabled;
+		global $wgArticleFeedbackv5AutoArchiveEnabled;
 
 		if ( !$wgArticleFeedbackv5AutoArchiveEnabled ) {
 			$this->output( 'IMPORTANT! Auto-archive is currently disabled. To enable, set $wgArticleFeedbackv5AutoArchiveEnabled = true.' . "\n" );
@@ -71,9 +71,13 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 			];
 
 			$backend = ArticleFeedbackv5Model::getBackend();
+			$dbProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+
 			while ( true ) {
 				$break = true;
 				$feedback = null;
+
+				$ticket = $dbProvider->getEmptyTransactionTicket( __METHOD__ );
 
 				$list = $backend->getList( 'archive_scheduled', null, null, $this->limit, 'age', 'ASC' );
 
@@ -104,12 +108,7 @@ class ArticleFeedbackv5_ArchiveFeedback extends Maintenance {
 					$this->output( "--moved to entry #$feedback->aft_id\n" );
 				}
 
-				$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-				$factory->waitForReplication( [
-					'ifWritesSince' => false,
-					'domain' => false,
-					'cluster' => $wgArticleFeedbackv5Cluster
-				] );
+				$dbProvider->commitAndWaitForReplication( __METHOD__, $ticket );
 
 				if ( $break ) {
 					break;

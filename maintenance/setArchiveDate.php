@@ -49,8 +49,6 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 	 * @return bool
 	 */
 	protected function doDBUpdates() {
-		global $wgArticleFeedbackv5Cluster;
-
 		$this->output( "Fixing archive dates.\n" );
 
 		/**
@@ -66,10 +64,14 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 		$next = null;
 
 		$backend = ArticleFeedbackv5Model::getBackend();
+		$dbProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+
 		while ( true ) {
 			$break = true;
 			$feedback = null;
 			$offset = null;
+
+			$ticket = $dbProvider->getEmptyTransactionTicket( __METHOD__ );
 
 			$list = $backend->getList( 'archive_scheduled', null, $next, $this->limit, 'age', 'ASC' );
 
@@ -97,12 +99,7 @@ class ArticleFeedbackv5_SetArchiveDate extends LoggedUpdateMaintenance {
 				$next = $offset;
 			}
 
-			$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-			$factory->waitForReplication( [
-				'ifWritesSince' => false,
-				'domain' => false,
-				'cluster' => $wgArticleFeedbackv5Cluster
-			] );
+			$dbProvider->commitAndWaitForReplication( __METHOD__, $ticket );
 
 			if ( $break ) {
 				break;

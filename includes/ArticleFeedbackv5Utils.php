@@ -31,26 +31,9 @@ use MediaWiki\WikiMap\WikiMap;
 
 class ArticleFeedbackv5Utils {
 	/**
-	 * @var \Wikimedia\Rdbms\ILoadBalancer[]
-	 */
-	protected static $lb = [];
-
-	/**
 	 * @var array<string,bool>
 	 */
 	public static $written = [];
-
-	/**
-	 * @param string|false $wiki The wiki ID, or false for the current wiki
-	 * @return \Wikimedia\Rdbms\ILoadBalancer
-	 */
-	public static function getLB( $wiki = false ) {
-		if ( !isset( static::$lb[$wiki] ) ) {
-			static::$lb[$wiki] = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getMainLB( $wiki );
-		}
-
-		return static::$lb[$wiki];
-	}
 
 	/**
 	 * Wrapper function for wfGetDB.
@@ -62,11 +45,9 @@ class ArticleFeedbackv5Utils {
 	 *                belongs to. May contain a single string if the query is only
 	 *                in one group.
 	 * @param string|false $wiki The wiki ID, or false for the current wiki
-	 * @return \Wikimedia\Rdbms\IDatabase
+	 * @return \Wikimedia\Rdbms\IDatabase|\Wikimedia\Rdbms\IReadableDatabase
 	 */
 	public static function getDB( $db, $groups = [], $wiki = false ) {
-		$lb = static::getLB( $wiki );
-
 		$wikiId = ( $wiki === false ) ? WikiMap::getCurrentWikiId() : $wiki;
 
 		if ( $db === DB_PRIMARY ) {
@@ -82,7 +63,18 @@ class ArticleFeedbackv5Utils {
 			}
 		}
 
-		return $lb->getConnection( $db, $groups, $wiki );
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		if ( $db === DB_REPLICA ) {
+			$groupStr = $groups;
+			if ( is_array( $groups ) && isset( $groups[0] ) ) {
+				$groupStr = $groups[0];
+			} elseif ( $groups === [] ) {
+				$groupStr = null;
+			}
+			return $lbFactory->getReplicaDatabase( 'virtual-articlefeedbackv5', $groupStr );
+		} elseif ( $db === DB_PRIMARY ) {
+			return $lbFactory->getPrimaryDatabase( 'virtual-articlefeedbackv5' );
+		}
 	}
 
 	/**

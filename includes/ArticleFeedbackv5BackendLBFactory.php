@@ -13,23 +13,6 @@ use MediaWiki\MediaWikiServices;
 
 class ArticleFeedbackv5BackendLBFactory extends DataModelBackendLBFactory {
 	/**
-	 * Override getLB so that AFT's data can be on a separate cluster.
-	 *
-	 * @param string|false $wiki
-	 * @return \Wikimedia\Rdbms\ILoadBalancer
-	 */
-	public function getLB( $wiki = false ) {
-		global $wgArticleFeedbackv5Cluster;
-
-		// connect to external, aft-specific, cluster
-		if ( $wgArticleFeedbackv5Cluster ) {
-			return MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getExternalLB( $wgArticleFeedbackv5Cluster );
-		} else {
-			return parent::getLB( $wiki );
-		}
-	}
-
-	/**
 	 * Query to fetch entries from DB.
 	 *
 	 * @param mixed|null $id The id(s) to fetch, either a single id or an array of them

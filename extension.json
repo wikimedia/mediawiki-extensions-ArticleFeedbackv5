@@ -769,12 +769,11 @@
 		"ArticleFeedbackv5BackendClass": {
 			"description": "Defines the backend class to be used by AFT's DataModel. Currently, only 1 (ArticleFeedbackv5BackendLBFactory) backend is supported, so better not touch that ;)",
 			"value": "ArticleFeedbackv5BackendLBFactory"
-		},
-		"ArticleFeedbackv5Cluster": {
-			"description": "Will define what external server should be used. If set to false, the current database (wfGetDB) will be used to read/write data from/to. If AFT data is supposed to be stored on an external database, set the value of this variable to the $wgExternalServers key representing that external connection.",
-			"value": false
 		}
 	},
+	"DatabaseVirtualDomains": [
+		"virtual-articlefeedbackv5"
+	],
 	"load_composer_autoloader": true,
 	"manifest_version": 2
 }

@@ -18,9 +18,6 @@ class ArticleFeedbackv5ModelTest extends MediaWikiIntegrationTestCase {
 		$cache = new WANObjectCache( [ 'cache' => new HashBagOStuff ] );
 		ArticleFeedbackv5Model::setCache( $cache );
 
-		// don't connect to external cluster but use main db, that has been prepared for unittests ($this->db)
-		$this->overrideConfigValue( 'ArticleFeedbackv5Cluster', false );
-
 		// init sample object
 		$this->sample = new ArticleFeedbackv5Model();
 		$this->sample->aft_page = 1;

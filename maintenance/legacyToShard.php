@@ -48,8 +48,6 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 	 * @return bool
 	 */
 	protected function doDBUpdates() {
-		global $wgArticleFeedbackv5Cluster;
-
 		$dbr = $this->getDB( DB_REPLICA );
 		if ( !$dbr->tableExists( 'aft_article_feedback', __METHOD__ ) ) {
 			// not necessary to run, there is no source data
@@ -63,15 +61,13 @@ class ArticleFeedbackv5_LegacyToShard extends LoggedUpdateMaintenance {
 		$this->output( "Moving legacy ArticleFeedbackv5 entries to sharded table.\n" );
 
 		$continue = 0;
+		$dbProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+
 		while ( $continue !== null ) {
+			$ticket = $dbProvider->getEmptyTransactionTicket( __METHOD__ );
 			$continue = $this->moveBatch( $continue );
 
-			$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-			$factory->waitForReplication( [
-				'ifWritesSince' => false,
-				'domain' => false,
-				'cluster' => $wgArticleFeedbackv5Cluster
-			] );
+			$dbProvider->commitAndWaitForReplication( __METHOD__, $ticket );
 
 			if ( $continue ) {
 				$this->output( "--moved to entry #$continue\n" );
