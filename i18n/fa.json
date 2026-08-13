@@ -168,7 +168,7 @@
 	"articlefeedbackv5-special-count-total": "{{PLURAL:$2|1 ارسال| $1 ارسال}}",
 	"articlefeedbackv5-special-count-total-title": "$1 {{PLURAL:$1|ارسال|ارسال}} با نظر، $2 {{PLURAL:$2|ارسال|ارسال}} بدون نظر",
 	"articlefeedbackv5-special-watchlist-showing": "بازخورد برای صفحه‌های پیگیری‌شده توسط [[$1|$2]]",
-	"articlefeedbackv5-special-central-watchlist-link": "[[$1|بازخورد صفحه‌های پی‌گیری من]]",
+	"articlefeedbackv5-special-central-watchlist-link": "[[$1|بازخورد صفحه‌های پیگیری من]]",
 	"articlefeedbackv5-special-watchlist-central-link": "[[$1|مشاهدهٔ بازخوردهای همهٔ صفحه‌ها]]",
 	"articlefeedbackv5-updates-since": "{{PLURAL:$1|1 ویرایش|$1 ویرایش}} از زمان ارسال",
 	"articlefeedbackv5-details-link": "جزئیات",

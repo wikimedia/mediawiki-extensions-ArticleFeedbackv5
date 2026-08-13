@@ -50,7 +50,7 @@
 	"articlefeedbackv5-protection-level-error": "Tahap perlindungan Maklum balas rencana tidak boleh melebihi tahap perlindungan Sunting",
 	"protect-level-aft-reader": "Hidupkan untuk semua pengguna",
 	"protect-level-aft-member": "Hidupkan untuk pengguna yang log masuk sahaja",
-	"protect-level-aft-editor": "Hidupkan untuk pengguna yang diautosahkan sahaja",
+	"protect-level-aft-editor": "Dayakan untuk pengguna sah automatik sahaja",
 	"protect-level-aft-administrator": "Hidupkan untuk penyelia sahaja",
 	"protect-level-aft-noone": "Matikan untuk semua pengguna",
 	"articlefeedbackv5-protection-title": "Mengubah keterlihatan alat maklum balas rencana di \"[[$1]]\"",
