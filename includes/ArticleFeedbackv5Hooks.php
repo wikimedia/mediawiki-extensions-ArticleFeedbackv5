@@ -855,6 +855,25 @@ class ArticleFeedbackv5Hooks {
 	}
 
 	/**
+	 * For integration with user renames.
+	 *
+	 * @param MediaWiki\RenameUser\RenameuserSQL $renameUserSQL
+	 */
+	public static function onRenameUserSQL( $renameUserSQL ) {
+		// @todo Or use $renameUserSQL->tablesJob instead to use the job queue?
+		$renameUserSQL->tables['aft_feedback'] = [ 'aft_user_text', 'aft_user' ];
+	}
+
+	/**
+	 * For integration with the UserMerge extension.
+	 *
+	 * @param array &$updateFields
+	 */
+	public static function onUserMergeAccountFields( &$updateFields ) {
+		$updateFields[] = [ 'aft_feedback', 'aft_user', 'aft_user_text' ];
+	}
+
+	/**
 	 * Add AFTv5 events to Echo.
 	 *
 	 * @param array[] &$notifications Echo notifications

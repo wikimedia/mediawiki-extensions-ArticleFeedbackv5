@@ -485,6 +485,8 @@
 		"ProtectionForm::showLogExtract": "ArticleFeedbackv5Hooks::onShowLogExtract",
 		"UserLoginComplete": "ArticleFeedbackv5Hooks::userLoginComplete",
 		"UserGetReservedNames": "ArticleFeedbackv5Hooks::onUserGetReservedNames",
+		"RenameUserSQL": "ArticleFeedbackv5Hooks::onRenameUserSQL",
+		"UserMergeAccountFields": "ArticleFeedbackv5Hooks::onUserMergeAccountFields",
 		"BeforeCreateEchoEvent": "ArticleFeedbackv5Hooks::onBeforeCreateEchoEvent",
 		"EchoGetDefaultNotifiedUsers": "ArticleFeedbackv5Hooks::onEchoGetDefaultNotifiedUsers",
 		"EchoGetBundleRules": "ArticleFeedbackv5Hooks::onEchoGetBundleRules",
