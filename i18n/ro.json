@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Andrei Stroe",
+			"Blaséd",
 			"Firilacroco",
 			"Minisarm",
 			"Stelistcristi",
@@ -32,7 +33,7 @@
 	"articlefeedbackv5-cta5-button-text": "Vezi toate comentariile",
 	"articlefeedbackv5-cta6-confirmation-title": "Aveți nevoie de ajutor pentru a contribui la {{SITENAME}}?",
 	"articlefeedbackv5-cta6-button-text": "Vizitați Cafeneaua",
-	"articlefeedbackv5-overlay-close": "Închidere",
+	"articlefeedbackv5-overlay-close": "Închide",
 	"articlefeedbackv5-error": "A apărut o eroare. Vă rugăm să reîncercați mai târziu.",
 	"articlefeedbackv5-error-blocked": "Utilizatorii blocați nu pot trimite păreri.",
 	"articlefeedbackv5-error-validation": "Eroare de validare.",
