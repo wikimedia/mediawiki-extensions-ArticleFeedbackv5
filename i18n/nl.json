@@ -45,7 +45,7 @@
 	"apihelp-articlefeedbackv5-flag-feedback-param-toggle": "De vlag wordt atomair omgeschakeld en is alleen nuttig voor (on)behulpzaam",
 	"apihelp-articlefeedbackv5-flag-feedback-param-source": "De oorsprong van de vlag: artikel (pagina), centraal (feedbackpagina), volglijst (pagina), permalink",
 	"apihelp-articlefeedbackv5-add-flag-note-summary": "Een notitie toevoegen waarin de activiteit wordt beschreven, nadat de handeling al is verricht.",
-	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Bij te werken Log-ID",
+	"apihelp-articlefeedbackv5-add-flag-note-param-logid": "Bij te werken Logboek-ID",
 	"apihelp-articlefeedbackv5-add-flag-note-param-flagtype": "Type markering om aan te brengen",
 	"apihelp-articlefeedbackv5-add-flag-note-param-note": "Informatie over waarom de terugkoppeling is ingediend",
 	"apihelp-articlefeedbackv5-add-flag-note-param-title": "Titel van de pagina waarover de terugkoppeling is gegeven. Kan niet samen met $1pageid worden gebruikt.",
