@@ -5,7 +5,8 @@
 			"Ahmed-Najib-Biabani-Ibrahimkhel",
 			"Amjad Khan",
 			"Baloch Khan",
-			"شاه زمان پټان"
+			"شاه زمان پټان",
+			"باران"
 		]
 	},
 	"apihelp-articlefeedbackv5-summary": "د ليکنې غبرگون سپارل",
@@ -45,7 +46,7 @@
 	"protect-level-aft-editor": "يوازې خپلکاره‌تاييدشويو کارنانو ته يې چارن کړئ",
 	"protect-level-aft-administrator": "يوازې پازوالانو ته يې چارن کړئ",
 	"protect-level-aft-noone": "ټولو کارنانو ته يې ناچارن کړئ",
-	"restriction-articlefeedbackv5": "ښکارېدنه",
+	"restriction-articlefeedbackv5": "څرگندتيا",
 	"articlefeedbackv5-disabled": "غبرگون ناچارن شوی دی",
 	"articlefeedbackv5-disabled-admin-button-text": "ژغورنه بدلول",
 	"articlefeedbackv5-disabled-editor-button-text": "غبرگون چارنول",
