@@ -273,7 +273,7 @@
 	"articlefeedbackv5-form2-header-question": "{{GENDER:$1|$1}} یک سوال دارد:",
 	"articlefeedbackv5-form2-header-suggestion": "{{GENDER:$1|$1}} یک پیشنهاد دارد:",
 	"articlefeedbackv5-form-anon-username": "یک خواننده",
-	"articlefeedbackv5-form-anon-message": "به صورت ناشناس ارسال شده از $1.",
+	"articlefeedbackv5-form-anon-message": "فرستاده‌شده به‌صورت ناشناس از $1.",
 	"articlefeedbackv5-form-invalid": "شناسهٔ فرم بازخورد نامعتبر است.",
 	"articlefeedbackv5-central-header-left-comment": "{{GENDER:$1|$2}} ارسال‌کرده [[$4|بازخورد]] برای $3",
 	"articlefeedbackv5-abuse-saved": "مشخص‌شده به عنوان استفادهٔ نادرست",
