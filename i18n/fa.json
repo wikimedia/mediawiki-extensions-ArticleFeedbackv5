@@ -46,7 +46,7 @@
 	"apihelp-query+articlefeedbackv5-view-feedback-param-title": "عنوان صفحه برای دریافت بازخورد دربارهٔ آن. نمی‌تواند به‌همراه $1pageid استفاده شود.",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sort": "کلید برای مرتب‌سازی رکوردها بر اساس",
 	"apihelp-query+articlefeedbackv5-view-feedback-param-sortdirection": "جهت (ASC|DESC) برای مرتب‌سازی بازخورد بر اساس",
-	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "چه فیلتر کردنی برای لیست اعمال شود",
+	"apihelp-query+articlefeedbackv5-view-feedback-param-filter": "چه پالایه‌ای برای فهرست اعمال شود",
 	"articlefeedbackv5-error-nonexistent-feedback": "بازخورد وجود ندارد",
 	"articlefeedbackv5-cta-thanks": "سپاس!",
 	"articlefeedbackv5-cta-confirmation-message": "بازخورد ارسالی شما را می‌توان در [$1 صفحهٔ بازخورد] مشاهده کرد.",
